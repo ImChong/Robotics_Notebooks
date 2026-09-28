@@ -10,7 +10,9 @@
 - **相关：** [SAM 3D Objects](https://github.com/facebookresearch/sam-3d-objects)、[MHR](https://github.com/facebookresearch/MHR)
 - **权重：** Hugging Face `facebook/sam-3d-body-dinov3`、`facebook/sam-3d-body-vith`
 - **数据集：** Hugging Face `facebook/sam-3d-body-dataset`
-- **入库日期：** 2026-05-30
+- **项目页：** <https://ai.meta.com/sam3d/> · <https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/>
+- **入库日期：** 2026-05-30（链接再核 2026-09-28）
+- **项目页归档：** [meta-sam3d-body.md](../sites/meta-sam3d-body.md)
 - **一句话说明：** 官方 PyTorch 推理、demo、checkpoint 申请与 notebook；单图（可选 keypoint/mask 提示）输出 MHR 全身网格，默认 ViTDet 或 SAM3 人体检测 + MoGe2 FOV。
 - **沉淀到 wiki：** [SAM 3D Body](../../wiki/entities/sam-3d-body.md)
 

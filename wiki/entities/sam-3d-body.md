@@ -3,8 +3,9 @@ type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
 arxiv: "2602.15989"
-updated: 2026-09-15
+updated: 2026-09-28
 related:
+  - ./instanthmr.md
   - ./paper-biomechanical-3d-body.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam3dbody-cpp.md
@@ -18,6 +19,8 @@ related:
 sources:
   - ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
   - ../../sources/repos/sam-3d-body.md
+  - ../../sources/sites/meta-sam3d-body.md
+  - ../../sources/repos/instanthmr.md
 summary: "SAM 3D Body（3DB）是 Meta 发布的可提示单图全身人体网格恢复基础模型：基于 MHR 参数化解耦骨架与表面，encoder–decoder 架构支持 2D 关键点/mask 引导，在 3DPW/EMDB 等基准报告 SOTA 级误差，并开放 checkpoint、数据集与 Hugging Face 推理接口。"
 ---
 
@@ -44,7 +47,7 @@ summary: "SAM 3D Body（3DB）是 Meta 发布的可提示单图全身人体网�
 
 - **机器人感知上游**：单目视频/图像 → **一致的人体 3D 姿态** 是 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) 与 [Whole-Body Tracking](../concepts/whole-body-tracking-pipeline.md) 的常见输入；3DB 把 **手–脚–躯干** 放在同一 MHR 表示里，减少「全身 SMPL + 独立手部网络」拼接误差。
 - **可提示 = 可纠错**：类似 SAM 的 **keypoint / mask** 条件让操作者或上游检测器在遮挡、截断帧上 **引导推理**，适合半自动标注与遥操作质检。
-- **工程生态已成型**：官方 PyTorch + Hugging Face checkpoint；社区 [SAM3DBody-cpp](./sam3dbody-cpp.md) 提供 **ONNX + 零 Python 运行时** 与 **BVH 动捕导出**，缩短「论文 → 动捕文件 → 重定向」路径。
+- **工程生态已成型**：官方 PyTorch + Hugging Face checkpoint；社区 [SAM3DBody-cpp](./sam3dbody-cpp.md) 提供 **ONNX + 零 Python 运行时** 与 **BVH 动捕导出**；[InstantHMR](./instanthmr.md) 在 **同一 MHR 标注** 上训练 **单文件 ONNX**（~5 ms/帧 HMR），适合实时 demo 与边缘部署。
 - **与生成式运动模型分工明确**：[GENMO](../methods/genmo.md) 等偏 **时序 SMPL 生成/估计**；3DB 偏 **单帧（或可逐帧）几何 HMR**，二者可在视频管线上串联（3DB 逐帧 + 时序平滑 / 生成模型补洞）。
 - **生物力学延伸**：[Biomechanical 3D Body](./paper-biomechanical-3d-body.md)（arXiv:2608.29928）在 3DB 上增加生物力学预测头，用 MuJoCo+JAX IK 蒸馏 **临床语义关节角** —— 网格恢复与生物力学分析的分叉点。
 
@@ -83,12 +86,12 @@ flowchart LR
 
 ## 与 WiLoR、GENMO 的关系
 
-| 维度 | SAM 3D Body | [PEAR](./paper-pear-pixel-aligned-expressive-hmr.md) | [WiLoR](../methods/wilor.md) | [GENMO](../methods/genmo.md) |
-|------|-------------|------------------------------------------------------|------------------------------|------------------------------|
-| 覆盖 | 全身 + 手脚（MHR） | 全身 + 脸手（EHM-s / SMPL-X+FLAME） | 双手 MANO 级细节 | 时序 SMPL 估计/生成 |
-| 输入 | 单图（可提示） | 单图 256²，无裁剪 | 单图/逐帧视频 | 视频/2D/文本/音乐等多模态 |
-| 速度 | 重型基础模型 | **>100 FPS**（论文） | 逐帧手部 | 时序模型 |
-| 典型下游 | 动捕 BVH、重定向 | 实时虚拟人 / 低延迟动捕 | 灵巧操作、ExoActor 双手支路 | 长序列运动合成、跟踪参考 |
+| 维度 | SAM 3D Body | [InstantHMR](./instanthmr.md) | [PEAR](./paper-pear-pixel-aligned-expressive-hmr.md) | [WiLoR](../methods/wilor.md) | [GENMO](../methods/genmo.md) |
+|------|-------------|-------------------------------|------------------------------------------------------|------------------------------|------------------------------|
+| 覆盖 | 全身 + 手脚（MHR） | 全身 MHR（70 关键点） | 全身 + 脸手（EHM-s / SMPL-X+FLAME） | 双手 MANO 级细节 | 时序 SMPL 估计/生成 |
+| 输入 | 单图（可提示） | 224² crop（RF-DETR） | 单图 256²，无裁剪 | 单图/逐帧视频 | 视频/2D/文本/音乐等多模态 |
+| 速度 | 重型基础模型 | **~5 ms HMR**（ONNX） | **>100 FPS**（论文） | 逐帧手部 | 时序模型 |
+| 典型下游 | 动捕 BVH、重定向 | 实时 ONNX / Rerun demo | 实时虚拟人 / 低延迟动捕 | 灵巧操作、ExoActor 双手支路 | 长序列运动合成、跟踪参考 |
 
 **实践建议**：需要 **手指精细语义** 时仍可用 WiLoR 补强；需要 **长时一致轨迹** 时在 3DB 逐帧输出上加时序滤波（见 [SAM3DBody-cpp](./sam3dbody-cpp.md)）或接 GENMO 类模型。仅头脸参数化生成/语义控制时，可对照 Google 开源的 [GNM Head](./gnm-head.md)（3DMM 生态，Apache 2.0）。
 
@@ -101,6 +104,7 @@ flowchart LR
 
 ## 关联页面
 
+- [InstantHMR](./instanthmr.md) — SAM 3D Body GT 训练的轻量 ONNX 学生
 - [SAM3DBody-cpp](./sam3dbody-cpp.md) — ONNX 实时推理、BVH 导出、Blender 插件
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 视频估计上游节点
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 参考运动采集阶段
@@ -112,12 +116,15 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- 项目页：<https://ai.meta.com/sam3d/> · 论文页：<https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/>
 - 论文：<https://arxiv.org/abs/2602.15989>
 - 官方仓库：<https://github.com/facebookresearch/sam-3d-body>
 - MHR：<https://github.com/facebookresearch/MHR>
-- Hugging Face 权重：<https://huggingface.co/facebook/sam-3d-body-dinov3>
+- Hugging Face 权重：<https://huggingface.co/facebook/sam-3d-body-dinov3> · ViT-H：<https://huggingface.co/facebook/sam-3d-body-vith> · 数据集：<https://huggingface.co/datasets/facebook/sam-3d-body-dataset>
 
 ## 参考来源
 
 - [SAM 3D Body（arXiv:2602.15989）](../../sources/papers/sam_3d_body_arxiv_2602_15989.md)
 - [SAM 3D Body 官方仓库](../../sources/repos/sam-3d-body.md)
+- [Meta SAM 3D Body 项目页](../../sources/sites/meta-sam3d-body.md)
+- [InstantHMR 仓库](../../sources/repos/instanthmr.md)
