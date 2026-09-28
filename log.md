@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | MMLab Physical RSI 1.0 项目页：Self-Harness 实体 + RoboDojo Overall #1 叙事（代码待发布）
+
 ## [2026-09-28] ingest | human five ROBOTIS Humanoid Skills：K1 全身 BeyondMimic/Newton + Worker GR00T/Cosmos 技术地图与实体交叉
 
 ## [2026-09-28] lint | wiki/comparisons/robot-foundation-model-company-paths-2026.md — 读者视角重构：新增分层图、公司×视角矩阵、开放程度速览与阅读路径图

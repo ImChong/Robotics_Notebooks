@@ -4272,6 +4272,7 @@
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [Physical Commonsense（Generalist 产业观点）](wiki/entities/physical-commonsense-generalist.md) — The Dark Matter of Robotics: Physical Commonsense**（Andy Zeng & Generalist Team，[2026-01-29](https `📅unknown` `[entity_page]`
+- [Physical RSI 1.0（Recursive Self-Harness）](wiki/entities/physical-rsi.md) — Physical RSI 1.0**（*Recursive Self-Harness for Scaling Embodied Skills*，[项目页](https://mmlab.hk/res `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [The Physical Intelligence Layer：伙伴现场里的模型层](wiki/entities/pi-physical-intelligence-layer.md) — 2026-02-24 的博客 The Physical Intelligence Layer 不发布新模型。Physica `📅unknown` `[entity_page]`
 - [Robot Olympics：用 π₀.₆ 微调硬操作](wiki/entities/pi-robot-olympics.md) — Physical Intelligence 在 2025-12-22 的博客 [Moravec's Paradox and the Robot Olympics](https://www.pi.web `📅unknown` `[entity_page]`
