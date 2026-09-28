@@ -701,7 +701,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Cyclo Intelligence（ROBOTIS Physical AI 栈）](../entities/cyclo-intelligence.md) — Docker 化数据/训练/推理 + BT 任务机
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — BT 生命周期与 VLA chunk 分层模式
 - [LimX COSA（人形大脑 OS）](../entities/limx-cosa.md) — S2/S1/S0 调度 V³-0 VLA + LimX WBT 的产业长程 loco-manipulation 栈（2026-07）
-- [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源人形 VLA 训练/推理工程底座（π0.5/GR00T/OpenVLA 等）
+- [FluxVLA Engine](../entities/fluxvla-engine.md) — 逐际开源 VLA 工程平台（arXiv:2609.17210；配置驱动数据→RTC 推理→真机；π0.5/GR00T/Cosmos3/FastWAM 等）
 - [OAT 有序动作 Tokenization](../entities/paper-oat-ordered-action-tokenization.md)
 - [ActFovea](../entities/paper-actfovea.md) — 免训练的 VLA **运行时防护**：时空视觉–动作一致性检测 + 有界安全失败（arXiv:2607.29169）
 - [Seeker](../entities/paper-seeker.md) — 无语言 IL 的动作监督视觉瓶颈；对照 VLA grounding 裁剪（arXiv:2608.13422；已开源）
