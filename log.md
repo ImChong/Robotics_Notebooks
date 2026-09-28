@@ -16,6 +16,12 @@
 - **开源结论：** ForceTwin **未开源**；Contact-Guided **未开源**（2026-09-28 复核）
 - **关键页：** [paper-forcetwin](wiki/entities/paper-forcetwin.md)、[paper-contact-guided-exploration-locomanipulation](wiki/entities/paper-contact-guided-exploration-locomanipulation.md)
 
+## [2026-09-28] ingest | sources/papers/dita_arxiv_2410_15959.md + sites/robodita-github-io + repos/robodita_dita — Dita 扩散 Transformer VLA（2410.15959 → 2503.19757）；RoboDita/Dita MIT 已开源；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2410.15959 与 robodita.github.io
+- **开源结论：** **已开源**（GitHub + Drive 权重；OXE 预训练需 S3/多 GPU）
+- **关键页：** [paper-dita-scaling-diffusion-transformer-vla](wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md)
+
 ## [2026-09-28] ingest | sources/papers/scaledp_arxiv_2409_14411.md + sites/scaling-diffusion-policy-github-io — ScaleDP（arXiv:2409.14411，ICRA 2025）；AdaLN+unmasking 使 DP-T 扩至 1B；项目页 Code 误链 DexVLA、无官方仓；自动合并 PR
 
 - **意图：** 用户指定 arXiv:2409.14411 与 scaling-diffusion-policy.github.io
