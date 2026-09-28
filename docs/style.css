@@ -2777,7 +2777,7 @@ button.home-wiki-heatmap-cell.is-active {
   }
   .hero-badge { margin-bottom: 16px; }
   .hero .hero-subtitle { margin-bottom: 24px; }
-  .hero-stats { gap: 14px 28px; padding-top: 18px; }
+  .hero-stats { gap: 14px 16px; padding-top: 18px; }
   .hero-stat-num { font-size: 1.4rem; }
   .page-hero {
     padding: 34px 0 12px;
