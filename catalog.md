@@ -5038,6 +5038,7 @@
 - [RNN vs CNN vs Transformer vs Mamba](wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 **递推状态（RNN）**、**局部卷积（CNN）**、**全局注意力（Transformer）** 到 **选择性状态空间（Mamba）**，在长程建模能力、训练并行度与推理复杂度三维上做骨干选 `📅unknown` `[comparison_page]`
 - [八大机器人控制体系分类](wiki/comparisons/robot-control-eight-paradigms-taxonomy.md) — 从机器人 **任务规划 → 控制算法 → 伺服执行** 的分层闭环出发，控制算法层可划分为 **八大体系**；前四类侧重 **显式建模**，后四类分别面向 **接触作业、约束优化、数据补偿与自主习得 `📅unknown` `[comparison_page]`
 - [机器人描述目录选型](wiki/comparisons/robot-description-catalogs.md) — 四份公开入口解决同一问题的不同切片：**发现、Python 加载、ROS 2/Isaac 国内机型、冻结研究语料**。 `📅unknown` `[comparison_page]`
+- [机器人基础模型与通用人形：公司技术路线对照（2026）](wiki/comparisons/robot-foundation-model-company-paths-2026.md) — 把公司技术分享按**世界与动作建模、整机层级控制、全身技能与仿真迁移**三种阅读视角组织，可以更快找到训练目标、动作接口和真机闭环的不同答案；一家公司可以同时出现在几条路线中。 `📅unknown` `[comparison_page]`
 - [机器人学习五大范式：模仿、强化、视频、多模态与持续学习](wiki/comparisons/robot-learning-five-paradigms-taxonomy.md) — 机器人学习五大范式** 是按 **学习信号来源** 划分的选型框架：示范（IL）、奖励交互（RL）、互联网视频先验（LfV）、视觉–语言–动作统一（VLA）、以及时间维上的能力保持（持续学习）；核 `📅unknown` `[comparison_page]`
 - [机器人路径规划五大范式：图搜索、采样、势场、最优控制与 AI](wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md) — 路径规划五大范式** 是按 **环境信息形态与决策层次** 划分的选型框架：在完整地图上搜路（图搜索）、在高维空间采样可行轨迹（采样）、用势场做近场反应（APF）、用滚动优化保证动力学可行（最优控 `📅unknown` `[comparison_page]`
 - [机器人运控开发板选型（按策略网络模型）](wiki/comparisons/robot-policy-deployment-dev-board-selection.md) — 先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离 `📅unknown` `[comparison_page]`
