@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | 收录 Physical Intelligence 官网 13 篇技术文章并梳理 π 系模型、动作表示与闭环控制路线
+
 ## [2026-09-28] ingest | FluxVLA Engine arXiv:2609.17210 — 论文/sources/sites/repos 归档并深化 fluxvla-engine 实体（流程图+RTC 真机读法）
 
 ## [2026-09-28] ingest | KIWI（360° 相机双臂 UMI，arXiv:2609.22809）项目页核查：代码待发布
