@@ -7,6 +7,7 @@ updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md
+  - ./instanthmr.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./freemocap.md
   - ../methods/motion-retargeting-gmr.md
