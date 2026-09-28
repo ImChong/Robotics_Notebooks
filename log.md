@@ -1,3 +1,5 @@
+## [2026-09-28] structural | references/papers/survey-papers 重写为站内综述实体索引
+
 ## [2026-09-28] structural | 新增公司技术路线子页 company.html（12 家公司纵向时间轴，节点链接本库页面与官方原文）；首页入口区「更多路线」下加「公司路线」入口卡
 
 ## [2026-09-28] ingest | RCL WAM 综述 arXiv:2609.16074 升格 canonical 论文实体；修复 paper-oraclezoom 孤儿页；自动合并 PR

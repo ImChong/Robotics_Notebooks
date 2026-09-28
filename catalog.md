@@ -5376,7 +5376,7 @@
 - [Locomotion RL](references/papers/locomotion-rl.md) — 聚焦人形/腿足机器人 locomotion 中的强化学习论文。 `📅unknown` `[reference_page]`
 - [MPC (Model Predictive Control)](references/papers/mpc.md) — 聚焦模型预测控制在机器人（特别是腿式/人形）中的理论、工程实现与应用论文。 `📅unknown` `[reference_page]`
 - [Optimal Control](references/papers/optimal-control.md) — 最优控制理论基础、动态规划与轨迹优化奠基工作。 `📅unknown` `[reference_page]`
-- [Survey Papers](references/papers/survey-papers.md) — 想快速建立某个方向的全局认识时，先读综述。本页收的是机器人学习、运动控制、人形与模仿学习方向的代表性综述。 `📅unknown` `[reference_page]`
+- [Survey Papers](references/papers/survey-papers.md) — 想快速建立某个方向的全局认识时，先读综述。本页按方向索引站内已收录的综述论文实体页（每条链到 wiki 实体，arXiv / DOI 见实体页），只收机器人学习、运动控制、人形与具身相关的综述。 `📅unknown` `[reference_page]`
 - [Whole-Body Control](references/papers/whole-body-control.md) — 聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。 `📅unknown` `[reference_page]`
 - [开源生态 / Repos](references/repos/README.md) — 这里不是代码仓库镜像，而是开源项目与工具链的导航层。 `📅unknown` `[reference_page]`
 - [Humanoid Projects](references/repos/humanoid-projects.md) — 本页收的是人形方向可以直接上手的开源项目：运动控制、模仿学习、感知与真机部署。 `📅unknown` `[reference_page]`
