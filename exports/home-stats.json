@@ -9,226 +9,215 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/hand-eye-calibration.md",
-      "detail_id": "wiki-concepts-hand-eye-calibration",
-      "label": "手眼标定（Hand-Eye Calibration）",
-      "type": "concept",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "视觉感知（Robot Perception） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-actgaze.md",
-      "detail_id": "entity-paper-actgaze",
-      "label": "ActGaze",
+      "path": "wiki/entities/paper-banana-kick-humanoid-soccer.md",
+      "detail_id": "entity-paper-banana-kick-humanoid-soccer",
+      "label": "Banana Kick（arXiv:2609.27269）",
       "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-bkmbd-koopman-diffusion.md",
-      "detail_id": "entity-paper-bkmbd-koopman-diffusion",
-      "label": "BK-MBD",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-copre-proprioceptive-contact.md",
-      "detail_id": "entity-paper-copre-proprioceptive-contact",
-      "label": "CoPRE",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-deltawam.md",
-      "detail_id": "entity-paper-deltawam",
-      "label": "DeltaWAM",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-grid-general-robot-intelligence-development.md",
-      "detail_id": "entity-paper-grid-general-robot-intelligence-development",
-      "label": "GRID（General Robot Intelligence Development）",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "产业与开源生态（Industry and Open-Source Ecosystem） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-keygen.md",
-      "detail_id": "entity-paper-keygen",
-      "label": "KeyGen",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-knowbody.md",
-      "detail_id": "entity-paper-knowbody",
-      "label": "KnowBody",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-physical-ai-mechanical-hardware.md",
-      "detail_id": "entity-paper-physical-ai-mechanical-hardware",
-      "label": "Physical AI is enabled by mechanical hardware",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "硬件与执行器（Hardware and Actuators） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-roborecover.md",
-      "detail_id": "entity-paper-roborecover",
-      "label": "RoboRecover",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "评测与基准（Evaluation and Benchmarks） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-s2c-safety-filtered-rl.md",
-      "detail_id": "entity-paper-s2c-safety-filtered-rl",
-      "label": "S2C",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-sceneagent-real2sim-capture-physics.md",
-      "detail_id": "entity-paper-sceneagent-real2sim-capture-physics",
-      "label": "SceneAgent（3D 捕获 → 预测物理仿真环境与策略训练）",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-simplerenv-real2sim-eval.md",
-      "detail_id": "entity-paper-simplerenv-real2sim-eval",
-      "label": "SIMPLER：仿真里评真实数据训练的 manipulation 策略",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-rl-continual-robotics.md",
-      "detail_id": "entity-paper-streaming-rl-continual-robotics",
-      "label": "Streaming RL 分析",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-streaming-wam.md",
-      "detail_id": "entity-paper-streaming-wam",
-      "label": "Streaming-WAM",
-      "type": "entity",
-      "recency": "2026-09-27",
-      "source": "git",
-      "action": "added",
-      "has_repo": true,
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-tactilestep.md",
-      "detail_id": "entity-paper-tactilestep",
-      "label": "TactileStep",
-      "type": "entity",
-      "recency": "2026-09-27",
+      "recency": "2026-09-28",
       "source": "git",
       "action": "added",
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
-      "path": "wiki/entities/openxr.md",
-      "detail_id": "entity-openxr",
-      "label": "OpenXR",
+      "path": "wiki/entities/paper-brace-yourself-environmental-bracing.md",
+      "detail_id": "entity-paper-brace-yourself-environmental-bracing",
+      "label": "Brace Yourself（arXiv:2609.25486）",
       "type": "entity",
-      "recency": "2026-09-27",
+      "recency": "2026-09-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
     },
     {
-      "path": "wiki/entities/immersive-web-emulation-runtime.md",
-      "detail_id": "entity-immersive-web-emulation-runtime",
-      "label": "Immersive Web Emulation Runtime（IWER）",
+      "path": "wiki/entities/paper-cartesian-hand-linear-fingers.md",
+      "detail_id": "entity-paper-cartesian-hand-linear-fingers",
+      "label": "Cartesian Hand（arXiv:2609.25696）",
       "type": "entity",
-      "recency": "2026-09-27",
+      "recency": "2026-09-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
-      "community_label": "遥操作与数据（Teleoperation and Embodied Data） 社区"
+      "community_label": "操作（Manipulation） 社区"
     },
     {
-      "path": "wiki/entities/paper-lift-reactive-force-vla-posttrain.md",
-      "detail_id": "entity-paper-lift-reactive-force-vla-posttrain",
-      "label": "LIFT（Late Reactive Force · VLA Post-Training · arXiv:2607.14236）",
+      "path": "wiki/entities/paper-cfm-multitask-distillation.md",
+      "detail_id": "entity-paper-cfm-multitask-distillation",
+      "label": "CFM 多任务蒸馏（arXiv:2609.28107）",
       "type": "entity",
-      "recency": "2026-09-27",
+      "recency": "2026-09-28",
       "source": "git",
       "action": "added",
-      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-core-wam-tracedelta.md",
+      "detail_id": "entity-paper-core-wam-tracedelta",
+      "label": "CoRe-WAM（arXiv:2609.27314）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-duty-factor-quadruped-robustness.md",
+      "detail_id": "entity-paper-duty-factor-quadruped-robustness",
+      "label": "占空比预测鲁棒性（arXiv:2609.22073）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-emopose-emotion-gesture.md",
+      "detail_id": "entity-paper-emopose-emotion-gesture",
+      "label": "EmoPose（arXiv:2609.23414）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },
     {
-      "path": "wiki/overview/embodied-simulators-series-technology-map.md",
-      "detail_id": "wiki-overview-embodied-simulators-series-technology-map",
-      "label": "具身仿真器系列 · 十大平台技术地图",
-      "type": "overview",
-      "recency": "2026-09-27",
+      "path": "wiki/entities/paper-flycns-connectome-communication.md",
+      "detail_id": "entity-paper-flycns-connectome-communication",
+      "label": "FlyCNS（arXiv:2609.28816）",
+      "type": "entity",
+      "recency": "2026-09-28",
       "source": "git",
       "action": "added",
-      "community_label": "仿真平台（Simulation Platforms） 社区"
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-frames-failure-recovery-loco-manip.md",
+      "detail_id": "entity-paper-frames-failure-recovery-loco-manip",
+      "label": "FRAMES（arXiv:2609.22538）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "移动操作（Loco-Manipulation, Loco-Manip） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-glotouch-haptic-grasping.md",
+      "detail_id": "entity-paper-glotouch-haptic-grasping",
+      "label": "GLoTouch（arXiv:2609.27695）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-higennto-noise-space-optimization.md",
+      "detail_id": "entity-paper-higennto-noise-space-optimization",
+      "label": "HIGenNTO（arXiv:2609.22611）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-humanoid-fly-inspired-rnn.md",
+      "detail_id": "entity-paper-humanoid-fly-inspired-rnn",
+      "label": "果蝇启发 RNN 控制器（arXiv:2609.27001）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "运动控制（Locomotion） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-internw0-physical-world-model.md",
+      "detail_id": "entity-paper-internw0-physical-world-model",
+      "label": "InternW0（arXiv:2609.27656）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "世界模型（World Models） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-jamb-bimanual-diffusion.md",
+      "detail_id": "entity-paper-jamb-bimanual-diffusion",
+      "label": "JAMB（arXiv:2609.25322）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "操作（Manipulation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-limbo-barrier-objectives-wbc.md",
+      "detail_id": "entity-paper-limbo-barrier-objectives-wbc",
+      "label": "LIMBO（arXiv:2609.22075）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-online-sim2real-closed-loop-modeling.md",
+      "detail_id": "entity-paper-online-sim2real-closed-loop-modeling",
+      "label": "在线闭环 Sim2Real（arXiv:2609.28878）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "仿真到现实（Simulation to Reality, Sim2Real） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-opt2vla-force-aware-humanoid.md",
+      "detail_id": "entity-paper-opt2vla-force-aware-humanoid",
+      "label": "Opt2VLA（arXiv:2609.23968）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-plat-sparse-keyframe-tracking.md",
+      "detail_id": "entity-paper-plat-sparse-keyframe-tracking",
+      "label": "PLAT（arXiv:2609.25754）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-primo-human-motion-odometry.md",
+      "detail_id": "entity-paper-primo-human-motion-odometry",
+      "label": "PRIMO（arXiv:2609.23610）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-redact-robust-perceptive-locomotion.md",
+      "detail_id": "entity-paper-redact-robust-perceptive-locomotion",
+      "label": "REDACT（arXiv:2609.25450）",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/hand-eye-calibration.md",
-    "detail_id": "wiki-concepts-hand-eye-calibration",
-    "label": "手眼标定（Hand-Eye Calibration）",
-    "type": "concept",
-    "recency": "2026-09-27",
+    "path": "wiki/entities/paper-banana-kick-humanoid-soccer.md",
+    "detail_id": "entity-paper-banana-kick-humanoid-soccer",
+    "label": "Banana Kick（arXiv:2609.27269）",
+    "type": "entity",
+    "recency": "2026-09-28",
     "source": "git",
     "action": "added",
-    "community_label": "视觉感知（Robot Perception） 社区"
+    "community_label": "运动控制（Locomotion） 社区"
   },
   "top_communities": [
     {
