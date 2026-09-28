@@ -12,7 +12,7 @@ tags:
   - shengshu
   - tsinghua
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 arxiv: "2608.01880"
 related:
   - ./paper-gwm-first-principles.md
@@ -193,7 +193,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- Black, Galliker, Levine, *Real-time execution of action chunking flow policies* — <https://arxiv.org/abs/2506.07339>
+- [Real-Time Chunking](./paper-real-time-chunking.md) — flow chunk 的推理期补全；原文 <https://arxiv.org/abs/2506.07339>
 - Black et al., *Training-time action conditioning for efficient real-time chunking* — <https://arxiv.org/abs/2512.05964>
 - Motubrain 技术报告 — <https://arxiv.org/abs/2604.27792>
 - SmolVLA 异步融合 — <https://arxiv.org/abs/2506.01844>

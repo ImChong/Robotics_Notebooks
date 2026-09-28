@@ -500,7 +500,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 参考来源
 
-- [Physical Intelligence 官网技术文章索引](../../sources/sites/pi-website-technical-articles.md) — π₀ 至 π₀.₇ 的 13 篇官方技术文章，涵盖动作表示、泛化、实时执行、记忆和在线 RL。
+- [Physical Intelligence 官网技术文章索引](../../sources/sites/pi-website-technical-articles.md) — π₀ 至 π₀.₇ 的官方博客：动作表示、分层指令、知识隔离、实时执行、经验 RL、人视频迁移与伙伴部署。
 
 - [wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md](../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md) — PinkRobot：VLA 从动作 token 到分层具身智能体的演进综述
 - [wechat_shenlan_robot_learning_five_paradigms.md](../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md) — 深蓝具身智能：机器人学习五大范式中的多模态 / VLA 定位
