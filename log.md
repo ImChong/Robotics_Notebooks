@@ -1,3 +1,7 @@
+## [2026-09-28] structural | wiki/entities 重复节点审计 — 合并 25 个同论文重复节点（arXiv 号/完整标题逐对核实），登记 page-aliases，更正 In-N-On 与 Hand-4DGS 误标 arXiv
+
+## [2026-09-28] ingest | wiki/entities/paper-notebook-*（06_Manipulation 34 篇）— stub 升格 complete：据 arXiv 全文补实验与评测 / 与其他工作对比 / 局限与风险，逐篇核查开源状态（14 篇补源码运行时序图），补交叉链接与机构标签
+
 ## [2026-09-28] ingest | 七篇扩散→DiT→Flow 阅读链 — robotic_dit_2410.10088 + gr00t-n1.5 GEAR + rdt sources + roadmap/depth-robotics-diffusion-dit-flow；DiT-Block/dit-policy 已开源；自动合并 PR
 
 - **意图：** 用户指定 DP→Ingredients→RDT→π₀→GR00T N1/N1.5→Dita 专题 ingest
