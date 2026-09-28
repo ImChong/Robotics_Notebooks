@@ -2,11 +2,13 @@
 type: entity
 tags: [robotis, ai-worker, physical-ai, ros2, humanoid, ffw, teleoperation, open-source]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-28
 summary: "ROBOTIS AI Worker（FFW）官方 ROS 2 包 ai_worker：描述、bringup、导航、遥操作与 Docker；对接 Physical AI Tools / cyclo_lab / MuJoCo；可选 Isaac ROS cuMotion 碰撞感知双臂规划（cyclo_solution）。"
 related:
   - ./robotis-ai-worker-isaac-cumotion.md
   - ./robotis.md
+  - ../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md
+  - ../entities/cosmos-transfer.md
   - ./robotis-physical-ai-tools.md
   - ./cyclo-lab.md
   - ./cyclo-intelligence.md
@@ -19,6 +21,7 @@ related:
 sources:
   - ../../sources/repos/ai_worker.md
   - ../../sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md
+  - ../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md
 ---
 
 # ROBOTIS AI Worker（ai_worker）
@@ -79,6 +82,7 @@ flowchart LR
 4. 仿真对照：[robotis_mujoco_menagerie](./robotis-mujoco-menagerie.md) 中 FFW 模型。
 5. 碰撞感知双臂规划：读 [cuMotion 集成页](./robotis-ai-worker-isaac-cumotion.md) 与 [cyclo_solution](https://github.com/ROBOTIS-GIT/cyclo_solution)（当前 JetPack 6.2 常配 **外置 GPU 工作站**）。
 6. 数据集与权重：[Hugging Face/ROBOTIS](https://huggingface.co/ROBOTIS)。
+7. **GR00T + Cosmos 真机案例（2026-09）**：**268** 条遥操作 episode（约 3 h）微调 **GR00T 1.7** 后，用 [Cosmos Transfer 2.5](./cosmos-transfer.md) 在 **不改动作标签** 前提下增广 **300** 条视觉样本（合计 **568**），缓解夹爪阴影误检等分布外视觉；板载 **Jetson AGX Orin** 推理。流程见 [Humanoid Skills 技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)。
 
 ## 局限与风险
 
@@ -89,6 +93,7 @@ flowchart LR
 ## 关联页面
 
 - [ROBOTIS 组织 hub](./robotis.md)
+- [Humanoid Skills × NVIDIA 栈技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md)
 - [cyclo_lab](./cyclo-lab.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
 - [Isaac ROS cuMotion 集成](./robotis-ai-worker-isaac-cumotion.md)
@@ -98,6 +103,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/repos/ai_worker.md](../../sources/repos/ai_worker.md)
+- [human five · Humanoid Skills（AI Worker GR00T/Cosmos 案例）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 - 上游：<https://github.com/ROBOTIS-GIT/ai_worker>
 
 ## 推荐继续阅读

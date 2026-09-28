@@ -110,6 +110,7 @@ flowchart LR
 | 复现 1.0 论文 / 4K / AV Sample | `cosmos-transfer1` | 7B；Edge Distilled 1 步；Llama Guard 3 过滤 |
 | 仿真→照片级 | Cookbook：CARLA、Warehouse、X-Mobility、农机 | 先保证仿真 depth/seg 对齐，再调 weight |
 | 真机多样性 | Cookbook：Weather、Real-World Manipulation | 同一段 RGB 换 prompt，勿改控制图 |
+| ROBOTIS AI Worker | [Humanoid Skills 技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md) | **268** 真机 + **300** Transfer 2.5 增广 → GR00T 1.7；缓解阴影误检 |
 
 开源结论（2026-09-05 项目页核查）：**Transfer1 / Transfer2.5 代码与权重已开源**（Apache-2.0 + NVIDIA Open Model License）。两仓 README 均写 **有限维护**。HF 仓多为门控。
 
@@ -169,6 +170,7 @@ sequenceDiagram
 - [cosmos-transfer2.5 仓库](../../sources/repos/nvidia_cosmos_transfer25.md)
 - [Cosmos Cookbook 站点](../../sources/sites/cosmos-cookbook.md)
 - [Predict2.5 论文摘录](../../sources/papers/cosmos_predict25_arxiv_2511_00062.md)
+- [human five · Humanoid Skills（ROBOTIS Worker Cosmos 案例）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 
 ## 推荐继续阅读
 
