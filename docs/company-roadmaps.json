@@ -16,7 +16,9 @@
       "nodes": [
         { "date": "2024-10", "title": "π₀", "track": "VLA", "desc": "跨本体数据训练，流匹配动作专家输出连续动作。", "id": "entity-paper-pi0", "url": "https://www.pi.website/blog/pi0" },
         { "date": "2025-01", "title": "FAST", "track": "动作表示", "desc": "DCT + 量化 + BPE 把动作 chunk 压成离散 token。", "id": "entity-paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la", "url": "https://www.pi.website/research/fast" },
+        { "date": "2025-02", "title": "openpi", "track": "开源", "desc": "开源 π₀ / π₀-FAST 权重与微调、推理示例，成为社区复现底座。", "id": "wiki-methods-π0-policy", "url": "https://www.pi.website/blog/openpi" },
         { "date": "2025-04", "title": "π₀.₅", "track": "VLA", "desc": "混合知识来源，面向陌生家庭的开放世界泛化。", "id": "entity-paper-pi05-open-world-vla", "url": "https://www.pi.website/blog/pi05" },
+        { "date": "2025-11", "title": "π*₀.₆", "track": "经验 RL", "desc": "RECAP 优势条件化融合示范、自主 rollout 与人工纠正；最难任务吞吐翻倍以上、失败率约减半。", "id": "wiki-methods-pi07-policy", "url": "https://www.pi.website/blog/pistar06" },
         { "date": "2026-03", "title": "MEM", "track": "记忆", "desc": "短期视频 + 长期语言记忆，支撑十分钟级多步任务。", "id": "entity-paper-pai-2603-03596-memmultiscaleembodiedmemory", "url": "https://www.pi.website/research/memory" },
         { "date": "2026-03", "title": "RL Token", "track": "在线 RL", "desc": "从 VLA 提取 RL 友好表示，提升精密操作的在线 RL 效率。", "id": "entity-paper-rcl-2604-23073-rl-token-bootstrapping-online-rl-with-vision-lan", "url": "https://www.pi.website/research/rlt" },
         { "date": "2026-04", "title": "π₀.₇", "track": "VLA", "desc": "多模态提示对齐异构经验，推理时可控调度行为。", "id": "wiki-methods-pi07-policy", "url": "https://www.pi.website/blog/pi07" }
