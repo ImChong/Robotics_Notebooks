@@ -86,6 +86,7 @@ sequenceDiagram
 | [AdaHVLA](./paper-adahvla.md) | 同期「演化 harness」路线；AdaHVLA 侧重 VLA 长程执行的多 agent 解耦修订与修订图，HarnessPAI 强调 **模型/本体无关** 并把失败蒸馏为可复用技能 |
 | [Harness VLA](./paper-harness-vla.md) | 冻结 VLA 作接触原语、agentic planner 编排；HarnessPAI 以 **代码** 作为组织动作原语的可执行、可演化接口 |
 | [RoboHarness](./paper-robo-harness.md) | 把 VLA / RL / TAMP 封装为 agentic skills 并做能力边界管理；HarnessPAI 覆盖桌面臂、家用机器人、扫地机与腿式 agent，RoboCasa atomic 上较 WorldDreamer **+27.2 分** |
+| [Physical RSI 1.0](./physical-rsi.md) | 同族 **harness 进化**；强调 **RoboDojo Overall #1**（2026-09-28 项目页）与 **π₀.₅ 作 motor tool**；页内尚无 arXiv/代码，与 HarnessPAI **已开源** 复现路径不同 |
 
 ## 关联页面
 

@@ -2,8 +2,9 @@
 type: entity
 tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 related:
+  - ./physical-rsi.md
   - ./paper-gpt-6-astra-embodied-policy.md
   - ./robolab.md
   - ./xpolicylab.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/repos/robodojo.md
   - ../../sources/repos/xpolicylab.md
   - ../../sources/blogs/robodojo_open_longterm_eval_2026-07.md
+  - ../../sources/sites/mmlab-physical-rsi.md
 summary: "RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评测——42 仿真五维任务 + 18 真机任务（Piper X/Piper/ARX X5）；Isaac 异构并行 + RealEval 云真机；XPolicyLab 一次集成；2026-07 开放长期公益榜，verified 上榜须开源训推与权重并公布评测视频。"
 ---
 
@@ -54,6 +56,7 @@ summary: "RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评�
 - **能力维而非换皮任务：** 五维（泛化 / 记忆 / 精度 / 长程 / 开放词汇）刻意拉开难度，暴露简单基准掩盖的失败模式。
 - **工程一次集成：** [XPolicyLab](./xpolicylab.md) 把 40+ 前沿模型接到统一观测–动作契约，本地 debug → 仿真 → 真机云评测路径清晰。
 - **公益治理 + 开源上榜门槛：** AI MMLab Club 与学术机构公益运行；**分数公开前**须开源训推与权重并公布视频——比「只贴数字」的社区摘录榜（如 [VLA SOTA Leaderboard](./vla-sota-leaderboard.md)）更强复现约束。
+- **榜单动态（项目页叙事，2026-09-28）：** [Physical RSI 1.0](./physical-rsi.md) 在 MMLab 项目页宣称 **RoboDojo-Sim Official Overall #1**（Score **36**、SR **31%**）；**以官网 verified 条目与开源 artifact 为准**，页内分数在代码未发布前仅供选型参考。
 
 ## 核心原理
 
@@ -188,6 +191,7 @@ sequenceDiagram
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 论文摘录榜对照
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 已报 RoboDojo 仿真分数的 VLA 案例
 - [RoboDawn](./paper-robodawn.md) — **零 robot 训练** 的冻结 VLM agent；42 任务 1-shot **47.17%**（GPT-6 Astra）；**210** 评测轨迹可在 [robodawn.top/results](https://robodawn.top/results) 回放
+- [Physical RSI 1.0](./physical-rsi.md) — Self-Harness 基线；项目页报 **2026-09-28 Overall #1**（代码待发布）
 - [Simate](./simate.md) — Sipai 模型绑定 RoboDojo 评测（**进行中、分数未公开**，截至 2026-09-23）
 - [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 2026-07-03 公开视频做过程评测；SR 与 OPD 排名不完全一致
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — 独立十任务子集：π0.5+GPT 混合 48% vs Direct 26%（50 对齐实例）
