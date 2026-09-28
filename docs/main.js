@@ -354,14 +354,17 @@
     var edgeEl = document.getElementById('heroEdgeCount');
     var mainEl = document.getElementById('heroMainRouteCount');
     var depthEl = document.getElementById('heroDepthRouteCount');
-    if (!nodeEl && !edgeEl && !mainEl && !depthEl) return;
+    var companyEl = document.getElementById('heroCompanyCount');
+    if (!nodeEl && !edgeEl && !mainEl && !depthEl && !companyEl) return;
 
     var homeDepthLinks = document.querySelectorAll('#homeRouteLinks a');
+    var homeCompanyLinks = document.querySelectorAll('#homeCompanyLinks a');
     heroStatsCountUpFallbacks = {
       nodes: readHeroStatFallback(nodeEl, 0),
       edges: readHeroStatFallback(edgeEl, 0),
       main: readHeroStatFallback(mainEl, 1),
-      depth: homeDepthLinks.length || readHeroStatFallback(depthEl, 23)
+      depth: homeDepthLinks.length || readHeroStatFallback(depthEl, 23),
+      company: homeCompanyLinks.length || readHeroStatFallback(companyEl, 12)
     };
 
     if (!getHeroStatsCountUpEnabled()) {
@@ -369,6 +372,7 @@
       setHeroStatStatic(edgeEl, heroStatsCountUpFallbacks.edges);
       setHeroStatStatic(mainEl, heroStatsCountUpFallbacks.main);
       setHeroStatStatic(depthEl, heroStatsCountUpFallbacks.depth);
+      setHeroStatStatic(companyEl, heroStatsCountUpFallbacks.company);
       return;
     }
 
@@ -377,6 +381,7 @@
     if (edgeEl) heroStatsAnimators.edges = animateCountUp(edgeEl, heroStatsCountUpFallbacks.edges);
     if (mainEl) heroStatsAnimators.main = animateCountUp(mainEl, heroStatsCountUpFallbacks.main);
     if (depthEl) heroStatsAnimators.depth = animateCountUp(depthEl, heroStatsCountUpFallbacks.depth);
+    if (companyEl) heroStatsAnimators.company = animateCountUp(companyEl, heroStatsCountUpFallbacks.company);
   }
 
   function renderHomeStats(graphStats) {
@@ -384,8 +389,10 @@
     var heroEdgeCount = document.getElementById('heroEdgeCount');
     var heroMainRouteCount = document.getElementById('heroMainRouteCount');
     var heroDepthRouteCount = document.getElementById('heroDepthRouteCount');
+    var heroCompanyCount = document.getElementById('heroCompanyCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
-    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle && !heroMainRouteCount && !heroDepthRouteCount) {
+    if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle && !heroMainRouteCount && !heroDepthRouteCount &&
+      !heroCompanyCount) {
       return;
     }
 
@@ -423,6 +430,10 @@
     if (heroDepthRouteCount) {
       var depthTarget = fallbacks ? fallbacks.depth : parseHeroStatNumber(heroDepthRouteCount, 23);
       if (play || fallbacks) applyStat(heroDepthRouteCount, 'depth', depthTarget);
+    }
+    if (heroCompanyCount) {
+      var companyTarget = fallbacks ? fallbacks.company : parseHeroStatNumber(heroCompanyCount, 12);
+      if (play || fallbacks) applyStat(heroCompanyCount, 'company', companyTarget);
     }
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
@@ -6286,6 +6297,8 @@
   var depthRouteCount = document.getElementById('heroDepthRouteCount');
   var mainRouteCard = document.getElementById('home-start-main-route');
   var moreRoutesCard = document.getElementById('home-more-routes');
+  var companyCount = document.getElementById('heroCompanyCount');
+  var companyRoutesCard = document.getElementById('home-company-routes');
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
   // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
@@ -6437,6 +6450,10 @@
     pulseHintElement(routeToggle);
   }
 
+  function pulseCompanyToggleHint() {
+    pulseHintElement(document.getElementById('homeCompanyToggle'));
+  }
+
   function pulseMiniGraphExpandHint() {
     pulseHintElement(document.getElementById('mini-graph-expand'));
   }
@@ -6570,6 +6587,16 @@
     });
   }
 
+  // Hero「公司路线」数字：同纵深路线——滚到「公司路线」卡中心描边一圈（不展开），随后高亮展开按钮
+  if (companyCount && companyRoutesCard) {
+    companyCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(companyRoutesCard, '#home-company-routes', function () {
+        playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
+      });
+    });
+  }
+
   // 入口卡「项目查询 / 知识图谱」：区块顶对齐（同旧锚点），模块描边特效保持；项目查询额外聚焦搜索框
   var searchInput = document.getElementById('wikiSearchInput');
   var homeTraceTriggers = document.querySelectorAll('[data-trace-target]');
@@ -6616,6 +6643,10 @@
   } else if (window.location.hash === '#home-more-routes' && moreRoutesCard) {
     scrollEntryCardToCenter(moreRoutesCard, null, function () {
       playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
+    });
+  } else if (window.location.hash === '#home-company-routes' && companyRoutesCard) {
+    scrollEntryCardToCenter(companyRoutesCard, null, function () {
+      playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
     });
   } else if (window.location.hash === '#wiki-search') {
     var searchSection = document.getElementById('wiki-search');

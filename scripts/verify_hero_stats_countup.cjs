@@ -32,7 +32,7 @@ const path = require('path');
 
   async function sampleHero(page) {
     return page.evaluate(() => {
-      const ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount'];
+      const ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount', 'heroCompanyCount'];
       const out = {};
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -128,7 +128,7 @@ const path = require('path');
   async function waitForCountUpDone(page) {
     await page.waitForFunction(
       () => {
-        const ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount'];
+        const ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount', 'heroCompanyCount'];
         for (const id of ids) {
           const el = document.getElementById(id);
           if (!el || el.classList.contains('is-counting')) return false;

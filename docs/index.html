@@ -59,6 +59,11 @@
             <a class="hero-stat-num" id="heroDepthRouteCount" href="#home-more-routes" aria-label="定位到更多路线入口卡">26</a>
             <span class="hero-stat-label">纵深路线</span>
           </li>
+          <li class="hero-stat">
+            <!-- 运行时由首页「公司路线」入口按钮数量同步 -->
+            <a class="hero-stat-num" id="heroCompanyCount" href="#home-company-routes" aria-label="定位到公司路线入口卡">12</a>
+            <span class="hero-stat-label">公司路线</span>
+          </li>
         </ul>
         <script>
           /* 解析到数字后、首屏绘制前归零，避免「终值 → 0」闪跳；reduced-motion 保留终值 */
@@ -66,7 +71,7 @@
             try {
               if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             } catch (e) { /* ignore */ }
-            var ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount'];
+            var ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount', 'heroCompanyCount'];
             for (var i = 0; i < ids.length; i++) {
               var el = document.getElementById(ids[i]);
               if (!el) continue;

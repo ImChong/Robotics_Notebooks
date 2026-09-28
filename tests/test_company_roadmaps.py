@@ -51,3 +51,9 @@ def test_home_entry_links_match_data_order() -> None:
     assert [key for key, _ in links] == [c["key"] for c in DATA["companies"]]
     # 折叠态只露出前 4 家，其余带 data-company-extra hidden
     assert [("hidden" in attrs) for _, attrs in links] == [i >= 4 for i in range(len(links))]
+
+
+def test_hero_company_count_fallback_matches_data() -> None:
+    html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    match = re.search(r'id="heroCompanyCount"[^>]*>(\d+)<', html)
+    assert match and int(match.group(1)) == len(DATA["companies"])
