@@ -135,4 +135,4 @@
 - wiki/entities/paper-saber-semantic-affordance-legged.md
 - wiki/entities/paper-unipoint-sensor-fusion-locomotion.md
 
-📊 Sources 覆盖率：5377/5377 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：5378/5378 (100%) wiki/entity 页有 ingest 来源
