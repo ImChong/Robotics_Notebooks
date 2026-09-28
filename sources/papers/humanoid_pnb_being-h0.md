@@ -8,6 +8,9 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2507.15597>
 - **入库日期：** 2026-07-10
+- **项目页：** <https://beingbeyond.github.io/Being-H0>
+- **代码：** <https://github.com/BeingBeyond/Being-H0>（另见 [sources/repos/being-h0.md](../repos/being-h0.md)）
+- **开源核查（2026-09-28）：** 部分开源——推理 / 评测、权重与后训练数据已发布；训练代码、真机开发、仿真基准仍在 README TODO
 - **一句话说明：** Being-H0 是一个在大规模人类视频上训练的灵巧视觉-语言-动作模型（VLA）。现有 VLA 在高灵巧操作上吃力、对新场景泛化差，主因是依赖有 sim-to-real 差距的合成数据或缺规模与多样性的遥操作演示。为破数据瓶颈，本文把人手当作基础操作器（foundation manipulator），利用网络数据中丰富的灵巧性与可扩展性。方法核心是物理指令微调（physical instruction tuning）：结合大规模人类视频 VLA 预训练、3D 推理的物理空间对齐、以及面向机器人任务的后训练适配。还提出部件级运动 token 化（part-level motion tokenization），达毫米级重建精度以建模精确手部轨迹；并构建融合动捕、VR、RGB-only 视频的百万级运动指令数据集。实验显示 Being-H0 在手部动作生成与指令跟随上优异，随模型与数据规模良好扩展，并在真机操作上随物理指令微调见效。
 
 ## 核心摘录（策展，非全文）

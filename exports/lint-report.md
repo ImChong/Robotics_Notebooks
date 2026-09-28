@@ -2,7 +2,7 @@
 
 ## [2026-09-28] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **7** 条信息型预警）：
+共发现 **0** 个问题（另含 **13** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -108,8 +108,8 @@
 ### 💡 paper-* 实体缺「结论」章节（信息型；后续 ingest 必做）（0 个）
 - 无
 
-### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con.md（缺 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-lightsplat.md（含绝对化措辞「SOTA」，updated=2026-09-27；同主题更新页 wiki/entities/paper-banana-kick-humanoid-soccer.md updated=2026-09-28）
@@ -123,14 +123,18 @@
 ### 💡 VLM/VLN/VLA/VLX/World-Model 家族概念/对比页缺回链「具身大模型分类学选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 benchmark/evaluation 实体/对比/概念页缺回链「具身大模型评测基准选型闭环」知识链枢纽（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-notebook-towards-proprioception-aware-embodied-planning-f.md
 
 ### 💡 actuator/eda/foc 实体/对比/概念页缺回链「执行器驱动链选型闭环」知识链枢纽（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（3 个）
+### 💡 detection/segmentation/perception/semantic-mapping 实体/对比/概念/方法页缺回链「机器人视觉感知栈选型闭环」知识链枢纽（信息型，不阻塞 CI）（7 个）
 - wiki/entities/paper-forcetwin.md
+- wiki/entities/paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md
+- wiki/entities/paper-notebook-learning-to-look-around-enhancing-teleoperation.md
+- wiki/entities/paper-notebook-learning-to-look-seeking-information-for-decisio.md
+- wiki/entities/paper-notebook-vision-in-action-learning-active-perception-from.md
 - wiki/entities/paper-saber-semantic-affordance-legged.md
 - wiki/entities/paper-unipoint-sensor-fusion-locomotion.md
 

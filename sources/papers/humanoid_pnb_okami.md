@@ -8,6 +8,9 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2410.11792>
 - **入库日期：** 2026-07-10
+- **项目页：** <https://ut-austin-rpl.github.io/OKAMI/>
+- **代码：** <https://github.com/UT-Austin-RPL/OKAMI>
+- **开源核查（2026-09-28）：** 已开源——项目页链到官方仓库；含计划生成、仿真重定向与 ACT 训练脚本
 - **一句话说明：** 研究从单段视频演示模仿来教人形机器人操作技能。OKAMI 从单段 RGB-D 视频生成操作计划并导出可执行策略。其核心是物体感知重定向（object-aware retargeting）：让人形复现视频中的人类动作，同时在部署时适应不同物体位置。OKAMI 用开放世界视觉模型识别任务相关物体，并分别重定向身体动作与手部姿态。实验表明 OKAMI 在多变视觉与空间条件下强泛化，在开放世界从观察模仿（imitation from observation）上超越 SOTA 基线。进一步地，用 OKAMI 的 rollout 轨迹训练闭环视觉运动策略，在无需费力遥操作的情况下达平均 79.2% 成功率。
 
 ## 核心摘录（策展，非全文）

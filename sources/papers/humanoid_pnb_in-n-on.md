@@ -8,6 +8,9 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2511.15704>
 - **入库日期：** 2026-07-10
+- **项目页：** <https://xiongyicai.github.io/In-N-On/>
+- **代码：** <https://github.com/XiongyiCai/Human0>；数据 <https://huggingface.co/datasets/XiongyiC/PHSD>；模型 <https://huggingface.co/XiongyiC/Human0>
+- **开源核查（2026-09-28）：** 仓库 / 数据 / 模型已发布；README 未给训练与部署命令
 - **一句话说明：** 第一视角（egocentric）视频是学操作策略的宝贵可扩展数据源，但数据异质性大，多数方法只把人类数据用于简单预训练，没释放全部潜力。本文先给出一套可扩展配方：把人类数据分成两类——野外（in-the-wild）与任务对齐（on-task），并系统分析如何使用。作者整理出数据集 PHSD，含 1000+ 小时多样野外第一视角数据与 20+ 小时直接对齐目标任务的任务数据。据此训练一个大型语言条件流匹配策略 Human0；配合域适应技术，Human0 缩小人到人形的差距。实证表明，规模化人类数据带来若干新性质：仅凭人类数据就能听从语言指令、少样本学习、以及用任务数据提升的鲁棒性。
 
 ## 核心摘录（策展，非全文）

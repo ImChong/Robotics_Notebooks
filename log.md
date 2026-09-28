@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | wiki/entities/paper-notebook-*（06_Manipulation 34 篇）— stub 升格 complete：据 arXiv 全文补实验与评测 / 与其他工作对比 / 局限与风险，逐篇核查开源状态（14 篇补源码运行时序图），补交叉链接与机构标签
+
 ## [2026-09-28] ingest | sources/blogs/wechat_lerobot_humanoid_open_stack_2026-09-28.md + repos/lerobot_humanoid_* + lerobot_legged_zoo — LeRobot Humanoid 四仓开源栈（HF 硬件/运行时 + MJLab 训练 + MJWarp 辨识）；已开源；自动合并 PR
 
 - **意图：** 用户指定微信公众号策展链与四仓 + LeRobot/NVIDIA 文档入口
