@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | AgentSTAR（arXiv:2609.24487）单目 agentic shape track；Amazon FAR；官方 MIT harness 已开源；wiki paper-agenticstar + sources 三件套
+
 ## [2026-09-28] structural | 首页入口区桌面端「更多路线」与「公司路线」两卡改为左右并排（≤860px 不变）
 
 ## [2026-09-28] structural | 首页 Hero 统计新增「公司路线」数字：点击滚到公司路线入口卡并描边、高亮展开按钮（同纵深路线）
