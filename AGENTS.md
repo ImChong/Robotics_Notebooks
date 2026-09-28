@@ -119,7 +119,7 @@
 - 优先复用现有页面与链接
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
-- 新增页面后运行 `make catalog` 更新 `catalog.md`；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
+- 新增页面**不需要**手动更新 `catalog.md`（合入 main 后 `export.yml` 自动重新生成，PR 不得修改它）；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
 
 ### 浏览器验证工具
 
@@ -146,7 +146,7 @@
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页的 ingest 必须先打开项目页核查源码/数据是否开放**（已开源 / 部分 / 待发布 / 未开源），并写入 `sources/sites/`、`sources/repos/` 与 wiki 局限或工程实践；详见 [schema/ingest-workflow.md § 步骤 2.5](schema/ingest-workflow.md)
-- 每次 ingest **建议**追加到 `log.md`（叙事：意图 / 开源结论 / 关键页；**不必**列出全部 wiki 路径）
+- 每次 ingest **建议**记一条日志（叙事：意图 / 开源结论 / 关键页；**不必**列出全部 wiki 路径）：用 `make log OP=ingest DESC="..."` 写入 **`log.d/` 碎片**，**不要直接改 `log.md`**（合入 main 后自动并入）
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
@@ -154,12 +154,11 @@
 - **论文实体页（`wiki/entities/paper-*.md`）必须包含 `## 结论` 区块**（评测节之后：1 句总判 + 3–7 条可操作要点）。**后续 ingest 一律不得省略**；历史页大幅改写时补齐。格式见 [schema/page-types.md](schema/page-types.md)
 - **论文实体页（`wiki/entities/paper-*.md`）在官方有可运行代码时，必须增加 `## 源码运行时序图`**（`mermaid sequenceDiagram`，节点对齐 `sources/repos/` 与 README 入口；无可运行实现时写明「不适用」及原因）。详见 [schema/ingest-workflow.md § 步骤 5](schema/ingest-workflow.md)
 - **CI 质量网关（必须通过）**：
-  - 提交前必须本地运行 `make ci-preflight`，它会按固定顺序同步 `catalog.md`、`exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 与 `docs/index.html`，然后执行 lint/search/export 检查。其中大体积站点 JSON 与 sitemap 已 gitignore、**不随提交入库**（Pages 部署时现场生成），preflight 重新生成它们只为本地检查与预览。
-  - 若只想确认派生文件是否已经全部提交，运行 `make ci-check`；该命令会在重新生成后发现未提交的统计/导出差异并失败。
-  - 不要只手动运行 `make catalog`、`make graph` 或 `make export` 其中一部分；最近的 GitHub Actions 问题主要来自这些派生文件不同步。
+  - 提交前必须本地运行 `make ci-preflight`：重新生成 `exports/`、`docs/exports/`、搜索索引、sitemap、图谱与首页统计，然后执行 lint/search/export 检查。**这些派生产物全部 gitignore、不随提交入库**（Pages 部署时现场生成），preflight 生成它们只为本地检查与预览；preflight 不会改动任何入库文件（`make ci-check` 可验证）。
+  - **PR 只提交源文件**（`wiki/`、`sources/`、`roadmap/`、`schema/`、`log.d/` 碎片、脚本等）。**不得修改** `catalog.md`、`log.md`（由 main 上的 `export.yml` 维护），也不要提交 `README.md` 徽章数字、`docs/index.html` Hero 数字、`docs/sw.js` 缓存版本这类统计改动——它们在部署时生成。PR 上的 **Wiki Lint** 会用 `scripts/pr_derived_guard.py` 检查。
+  - **与 main 冲突 / guard 失败**：运行 `make sync-main`（合入 `origin/main`，派生文件一律以 main 为准，分支写进 `log.md` 的条目自动转存为 `log.d/` 碎片），然后 push。只有真正的源文件（同一 wiki 页）冲突才需要按内容手工合并。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
-  - **同步统计数据**：若新增/删除了 wiki 页面，必须通过 `make ci-preflight` 同步 `catalog.md`、统计与导出文件，并把本次任务相关的派生文件一起 stage，否则 GitHub Actions 会因数据不一致而报错。
-  - **首页「最新知识节点」**：由 git 中 `wiki/` / `roadmap/` 的**首次加入日**驱动（最近窗口内的新增节点）；`log.md` 不再作为站点活动数据源。任务末尾 `make ci-preflight` 以更新 `exports/home-stats.json` / `docs/exports/home-stats.json`。
+  - **首页「最新知识节点」**：由 git 中 `wiki/` / `roadmap/` 的**首次加入日**驱动（最近窗口内的新增节点）；`log.md` 不再作为站点活动数据源。`home-stats.json` 等统计不入库，部署时生成。
 
 ### Git 提交规范 (Git Commit Convention)
 
@@ -179,7 +178,6 @@
    - 类型 (type)：feat, fix, chore, docs, refactor, style, test。
    - 范围 (scope)：可选（如 ux, actions, wiki）。
    示例：`fix(actions): 修复 CLAW 页面格式缺失主要技术路线的问题`
-   示例：`chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
 
 ## Cursor Cloud specific instructions
 
@@ -203,13 +201,14 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 |------|---------|
 | Full CI gate (mirrors GH Actions) | `make ci-test` |
 | Wiki health check | `make lint` |
-| Pre-commit preflight (syncs all derived files + checks) | `make ci-preflight` |
+| Pre-commit preflight (regenerates gitignored derived files + checks) | `make ci-preflight` |
+| Merge main & auto-resolve derived-file conflicts | `make sync-main` |
 | Unit tests only | `make test` |
 | Serve static site locally | `make export graph && cd docs && python3 -m http.server 8080`（站点 JSON 不入库，先生成约 40s） |
 
 ### Before committing wiki changes
 
-Always run `make ci-preflight` — it regenerates derived files (`catalog.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data. Note: the large site JSONs and sitemap are gitignored (generated at Pages deploy time) — only the small derived files (stats, badges, `catalog.md`) still need to be committed.
+Always run `make ci-preflight` — it regenerates derived files (`exports/`, `docs/exports/`, search index, sitemap, graph/home stats) and then runs lint + export checks. All of these are gitignored (generated at Pages deploy time), so **commit only source files**. Never modify `catalog.md` or `log.md` in a PR (bot-owned: `export.yml` regenerates the catalog and folds `log.d/` fragments into `log.md` on main); write log entries with `make log` (creates a `log.d/` fragment). If the PR conflicts with main or the Wiki Lint guard fails, run `make sync-main` and push.
 
 **ingest 提速**：交叉更新多个 wiki 后先 `make bump-wiki-from-sources`（或 `bump_wiki_updated_for_sources.py` 指定本次 `sources/papers/...`），再 commit，最后 **只跑一轮** `make ci-preflight`（preflight 内 lint 只执行一次；图谱社区为 `schema/topics.json` 固定主题，全库约 2–5 分钟量级）。
 

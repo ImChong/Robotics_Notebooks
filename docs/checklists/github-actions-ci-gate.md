@@ -16,7 +16,7 @@
 
 | 工作流 | 说明 |
 |--------|------|
-| **Auto Export & Lint** | `wiki/` / `sources/` 等变更时同步派生文件 |
+| **Auto Export & Lint** | 重新生成 `catalog.md`、把 `log.d/` 碎片并入 `log.md`（PR 不碰这两个文件，故不冲突） |
 | **Deploy GitHub Pages** | 站点发布 |
 
 本地 **`make ci-preflight`** 与 GitHub Actions **互补**：提交前本地预检；PR 上仍以 Actions 检查结果为准。

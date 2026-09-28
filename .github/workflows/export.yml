@@ -1,13 +1,22 @@
 name: Auto Export & Lint
 
+# main 上唯一会改「机器人专属」入库文件的地方：
+#   - 重新生成 catalog.md
+#   - 把 log.d/ 碎片并入 log.md 顶部
+# PR 不修改这两个文件（lint.yml 的 pr_derived_guard 会拦），所以这里的提交不会与任何 PR 冲突。
+# 统计 JSON / 徽章 / Hero 数字已不入库，由 pages.yml 部署时生成。
+
 on:
   push:
     branches: [main]
     paths:
       - 'wiki/**'
-      - 'sources/**'
       - 'roadmap/**'
-      - 'scripts/**'
+      - 'tech-map/**'
+      - 'references/**'
+      - 'log.d/**'
+      - 'scripts/generate_page_catalog.py'
+      - 'scripts/log_md.py'
   workflow_dispatch:
 
 # 串行执行，避免与并发 main 推送互相 cancel / 抢写导致 git push 被拒
@@ -25,43 +34,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # 取最新 main 而非触发事件的 SHA：串行排队的后一轮能看到前一轮已并入的碎片
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
-          # ci_preflight → generate_link_graph 需要完整历史以计算 git 首次加入日
-          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
-          cache-dependency-path: requirements-ci-lite.txt
 
-      - name: Install lightweight dependencies
-        run: pip install -r requirements-ci-lite.txt
+      - name: Regenerate catalog and fold log fragments
+        run: |
+          python3 scripts/generate_page_catalog.py
+          python3 scripts/fold_log_fragments.py
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-
-      - name: Run CI preflight
-        run: python3 scripts/ci_preflight.py
-
-      - name: Commit updated exports
+      - name: Commit
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 大体积站点 JSON 与 sitemap 已改为 pages.yml 部署时生成（见 .gitignore），
-          # 此处仅提交仍入库的小型派生文件（统计、徽章、目录等）
-          git add exports/ docs/exports/ catalog.md README.md docs/index.html
+          git add -A catalog.md log.md log.d/
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "chore: auto-export + badge [skip ci]"
-          # 与其他 PR 合并推送竞态时 rebase 重试，避免 ! [rejected] (fetch first)
+          git commit -m "chore: auto catalog + fold log.d [skip ci]"
+          # 与其他 PR 合并推送竞态时 rebase 重试；PR 不碰 catalog.md / log.md，rebase 不会冲突
           for attempt in 1 2 3 4 5; do
             if git push; then
               echo "Pushed on attempt ${attempt}"
