@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | Project SuperDex 复核（projectsuperdex.com + v1.0.0）；更新 sources 与 entity 开源/发布/引用占位
+
 ## [2026-09-28] ingest | Compression is Routing（arXiv:2512.16963）重建误差作无门控 MoE 路由；技术报告未开源；paper-compression-is-routing
 
 ## [2026-09-28] ingest | AgentSTAR（arXiv:2609.24487）单目 agentic shape track；Amazon FAR；官方 MIT harness 已开源；wiki paper-agenticstar + sources 三件套
