@@ -2,10 +2,11 @@
 type: overview
 tags: [vla, vision-language-action, survey, rt2, pi0, helix, gr00t, action-chunking, hierarchical-control, pinkrobot]
 status: complete
-updated: 2026-09-17
+updated: 2026-09-28
 related:
   - ../methods/vla.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
+  - ../comparisons/robot-foundation-model-company-paths-2026.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../methods/saycan.md
   - ../methods/robotics-transformer-rt-series.md
@@ -166,6 +167,7 @@ flowchart TB
 
 - **方法总览：** [VLA](../methods/vla.md)
 - **五类模型 taxonomy：** [VLM/VLN/VLA/VLX/WM](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- **公司路线对照：** [机器人基础模型与通用人形：公司技术路线对照](../comparisons/robot-foundation-model-company-paths-2026.md) — 将本页的动作架构演进映射到不同团队的公开研究重点，不把公司分类当作性能排名。
 - **14 篇精读地图：** [vla-wm-reading-roadmap](./vla-wm-reading-roadmap-14-papers-technology-map.md)
 - **Foundation policy 抽象：** [foundation-policy](../concepts/foundation-policy.md)
 
