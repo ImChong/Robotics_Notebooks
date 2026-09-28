@@ -10,7 +10,7 @@
 - **入库日期：** 2026-09-06
 - **当前主线：** **JetPack 7**（页内强调 **7.2** 能力：Yocto、NemoClaw 一键安装、Agent Skills）
 - **一句话说明：** Jetson 官方 **BSP + AI 栈捆绑**：Linux 6.8 / Ubuntu 24.04、CUDA/TensorRT/vLLM、Isaac ROS、**Agentic**（NemoClaw + Jetson Agent Skills），Thor 对齐 **SBSA + CUDA 13**。
-- **沉淀到 wiki：** [`wiki/entities/nvidia-jetson.md`](../../wiki/entities/nvidia-jetson.md)
+- **沉淀到 wiki：** [`wiki/entities/nvidia-jetson.md`](../../wiki/entities/nvidia-jetson.md)、[`wiki/entities/nvidia-cuda.md`](../../wiki/entities/nvidia-cuda.md)
 
 ## 开源边界（步骤 2.5）
 

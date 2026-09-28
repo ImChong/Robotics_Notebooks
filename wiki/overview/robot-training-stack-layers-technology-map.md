@@ -102,6 +102,7 @@ flowchart TB
 | 快速验证奖励、sim2sim、上真机检查点 | [MuJoCo Playground](../entities/mujoco-playground.md) → [MuJoCo](../entities/mujoco.md) |
 | 长期维护多任务 env（obs/reward/curriculum 模块化） | [mjlab](../entities/mjlab.md) |
 | 无 CUDA 或要 CPU 物理 + GPU 学习重叠 | [UniLab](../entities/unilab.md) |
+| 对齐 NVIDIA 驱动 / CTK / JetPack 基线 | [NVIDIA CUDA](../entities/nvidia-cuda.md) |
 | 关注底层物理可微与多框架对接 | [Newton Physics](../entities/newton-physics.md) |
 | 基础模型闭环评测、real-to-sim 相关性 | [Genesis World 1.0](../entities/genesis-world-10.md) |
 | FM→策略→WBC 全栈评测 orchestration、跨层 trace 诊断 | [DeepInsight](../entities/deepinsight.md) |
