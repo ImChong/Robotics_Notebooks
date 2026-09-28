@@ -1,3 +1,10 @@
+## [2026-09-27] lint | 清零全库 25 条信息型预警：14 篇 paper-* 补「与其他工作对比」（SimplerEnv 另补「实验与评测」）、RoboRecover/SimplerEnv 回链评测基准枢纽、手眼标定回链感知栈与接触力旋量枢纽、Physical AI 硬件观点文回链执行器驱动链枢纽、Switch 落地到人形运动跟踪选型 Query、SceneAgent 补 venue/code、缺页巡检把 GitHub/Agent/skills 纳入停用词、数据集巡检内联 tags 改整标签匹配（修 dataset-collection 误判）
+
+- **触发：** 定时任务「跑一遍全量知识库 lint，修复所有警告（含信息型）」；`python3 scripts/lint_wiki.py` 基线 **0 失败 / 25 条信息型**
+- **内容修复：** 14 篇 `paper-*` 的对比段只按页面自身与 sources 已有内容做问题设定/接口/管线位置对照，不新增数字；新增链接全部 `test -f` 核验
+- **巡检修正：** `_check_dataset_entity_metadata` 内联 `tags: [...]` 由 `\bdataset\b` 改为整标签匹配（与列表式口径一致），`aloha-2` / `aloha` / `leju-robotics` 等 `dataset-collection` / `dataset-ecosystem` 派生标签不再误判为数据集实体；两项均补回归测试
+- **验证：** lint「✅ 所有检查通过！」（0 失败 / 0 信息型）；`ruff check` + `ruff format --check` 通过；`pytest` 453 passed（5 个失败均依赖未入库的 `exports/site-data-v1.json`，基线同样失败）；`eval_search_quality` 37/40 通过阈值（3 条 BM25 排名回归为既有问题，本轮未改）
+
 ## [2026-09-27] structural | roadmap 全量巡检（近 21 天 ingest vs 27 条纵深路线）：depth-real2sim.md Stage 4 补 SIMPLER/SimplerEnv（real-to-sim 评测范式奠基，此前仅 depth-vla.md 一笔带过）；depth-teleoperation.md Stage 1 补 ALOHA 2（初代 ALOHA 的官方硬件迭代 + Menagerie 仿真工位，缺失的配套条目）；其余 27 条近期 ingest 逐一复核后判定非里程碑级或已有覆盖，不需要改动。
 
 ## [2026-09-27] ingest | sources/sites/khronos-openxr.md + sources/repos/khronos_openxr_sdk.md + sources/repos/collabora_monado.md — Khronos OpenXR 一手门户/SDK/Monado；升格 wiki/entities/openxr.md；交叉 teleoperation、XRoboToolkit、Isaac Teleop；自动合并 PR

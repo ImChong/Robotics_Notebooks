@@ -53,6 +53,16 @@ summary: "S2C（2609.27312）：先学鲁棒安全过滤器，再在过滤环境
 
 **不适用**（无统一官方入口或未开源）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Safety Filter](../concepts/safety-filter.md) | 概念页把过滤器定位为部署期「最小修改投影回安全集」的最后一层；S2C 则**先学鲁棒安全过滤器，再把它放进训练环**，过滤器是策略学习环境的一部分 |
+| [Safe RL](../methods/safe-rl.md) | 方法页四条路线中最接近「安全层屏蔽器」，该页指出屏蔽会改变环境反馈、可能误导上层 RL；S2C 在过滤后的环境中训练策略，与这一问题的关系以原文为准 |
+| [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) | 同为「训练期注入安全」：PAC-MAN 把 Link/Joint-CBF **写进奖励** 并面向人形躲避球；S2C 用**独立过滤器约束训练环境**，关注竞争任务中的胜率与可利用性 |
+| [真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md) | 该页聚焦 sim2real 后**真机在线适配**时用安全壳约束探索；S2C 的问题设定是竞争任务下「安全 → 能力 / 难被 exploit」，不是部署后微调 |
+| [Streaming RL 分析](./paper-streaming-rl-continual-robotics.md) | 同属 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)「持续与安全训练」一线：Streaming RL 看目标/环境/身体变化下的流式适应，S2C 看安全约束下的竞争策略 |
+
 ## 结论
 
 **总判：S2C 适合作为「Safety-filtered RL 把安全约束放进训练环，使策略在竞争任务中既强又更难被 exploit。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

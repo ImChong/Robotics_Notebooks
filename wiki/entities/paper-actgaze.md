@@ -53,6 +53,15 @@ summary: "ActGaze（2609.28955）：反事实视觉干预找出影响动作预�
 
 **不适用**（无统一官方入口或未开源）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Gaze2Act](./paper-ego-05-gaze2act.md) | 把 **人类第一视角 gaze** 映射到机器人视角作 VLA 条件输入，gaze 是外部意图信号；ActGaze **无需外部注视标签**，gaze 由反事实视觉干预从策略自身动作预测中得出 |
+| [Gaze-Regularized VLMs](./paper-sa-2603-23190-gaze-regularized-vlms-for-ego-centric-behavior-u.md) | 用 **眼动数据** 正则 VLM 注意力，面向第一视角行为理解；ActGaze 的注意力监督是 **action-grounded**，面向精密操作动作输出 |
+| [CoPRE](./paper-copre-proprioceptive-contact.md) · [TactileStep](./paper-tactilestep.md) | 同期「改 sensing」条目：CoPRE 补 **本体接触检测**、TactileStep 补 **足底触觉**；ActGaze 不加传感器，改的是 **视觉注意力分配** |
+| [KeyGen](./paper-keygen.md) | 同为给策略注入 **空间先验**：KeyGen 从点云学 **显式物体关键点** 作条件；ActGaze 找出影响动作的 **图像区域** 并作为空间监督回传 |
+
 ## 结论
 
 **总判：ActGaze 适合作为「无需外部注视标签，用 counterfactual 干预学习 action-grounded 视觉注意力以提升精密操作。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

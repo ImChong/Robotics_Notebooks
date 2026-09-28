@@ -2,7 +2,7 @@
 type: method
 tags: [reinforcement-learning, skill-switching, humanoid, skill-graph, motion-imitation, unitree-g1]
 status: complete
-updated: 2026-04-30
+updated: 2026-09-27
 related:
   - ./imitation-learning.md
   - ./any2track.md
@@ -70,6 +70,7 @@ Switch 的高层调度器不仅仅是简单的顺序执行器：
 - [AMS](./ams.md) — 侧重于物理可行性过滤。
 - [Unitree G1](../entities/unitree-g1.md) — Switch 的实验验证平台。
 - [CHOREO（论文实体）](../entities/paper-choreo.md) — **免训练** 轨迹库 + 边界过渡组合；与 Switch 的 **图内 RL 切换** 对照阅读。
+- [Query：人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — Switch 在选型链里的位置：叠在通用 tracker 之上的多技能切换编排层。
 
 ## 参考来源
 

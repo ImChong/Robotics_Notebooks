@@ -55,6 +55,16 @@ summary: "KnowBody（2609.28530）：为冻结 VLM 提供可查询/可修订身�
 
 **不适用**（请按 GitHub README 入口自行补 sequenceDiagram；入库日未逐仓核对）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) | 该页结论：物理能力取决于接入抽象层级；KnowBody 不微调 VLM，而是加一层 **可查询/可修订的 body harness** 来连接指令与控制效果 |
+| [VLA](../methods/vla.md) | VLA 把视觉-语言-动作训进同一策略；KnowBody 保持 VLM **冻结**，身体知识外置、跨回合更新 |
+| [SayCan](../methods/saycan.md) | 用价值函数给语言子任务打可行性分；KnowBody 用 **交互证据** 修订身体关系模型，面向直接控制 |
+| [Robot In-Context Learning](../concepts/robot-in-context-learning.md) | 同为部署期不改权重的适应；KnowBody 的更新落在 **外部身体知识**，而非上下文示范或快权重 |
+| [KeyGen](./paper-keygen.md) | 同期「改条件化」条目；KeyGen 条件化于 **物体** 关键点几何，KnowBody 条件化于 **机器人自身** 身体关系 |
+
 ## 结论
 
 **总判：KnowBody 适合作为「VLM 外挂可自改进的 body harness，跨回合验证后更新身体知识以改进直接控制。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

@@ -112,6 +112,19 @@ def test_frontmatter_key_stopword_venue_ignored(tmp_path, monkeypatch) -> None:
     assert results["missing_concept_pages"] == []
 
 
+def test_infra_and_framework_stopwords_ignored(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(
+            wiki, f"p{i}.md", "代码见 **GitHub**；| **Agent** | 训练模块 |；用 `skills` CLI 安装。"
+        )
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    results = _run(pages)
+    # GitHub 是托管平台、Agent 是框架表格行标签/类名族、skills 是 CLI 名与泛指复数，均非概念
+    assert results["missing_concept_pages"] == []
+
+
 def test_covered_elsewhere_libero_plus_ignored(tmp_path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     pages = [

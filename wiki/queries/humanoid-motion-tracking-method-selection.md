@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-09-18
+updated: 2026-09-27
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/loopermuscle_arxiv_2608_00820.md
@@ -94,6 +94,8 @@ flowchart TD
 ### 3. 通用 tracker 与实时原语
 
 [MotionBricks](../methods/motionbricks.md) 强调实时 smart primitives + 全身控制；[GMT](../entities/paper-gmt.md) 用 **Adaptive Sampling + Motion MoE** 做大规模 filtered MoCap 上的**单策略**真机跟踪；[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md) 面向**多参考、抗扰、负载变化**的通用跟踪器，常作为「身体基础模型」层。
+
+若瓶颈不是「跟得上单条参考」而是**多技能之间的大跨度切换**（翻滚→起身→踢腿等非连续衔接、切换时受扰），通用 tracker 靠网络隐式学过渡，难任务切换成功率可能很低；此时看 [Switch](../methods/switch-framework.md)：用**增强技能图 + 缓冲节点**显式规划跨技能跳转，底层 buffer-aware PPO 只在缓冲段放松模仿、改奖励「到达下一技能入口」，并在扰动/跌倒后于图上重规划到最近节点或起身段。它是**技能编排层**而非更强的 tracker，可叠在上述通用 tracker 之上；免训练的轨迹库拼接路线见 [CHOREO](../entities/paper-choreo.md)。
 
 当瓶颈是 **墙钟** 而非数据规模——需要在 **29-DoF 全身跟踪** 上快速试参考/奖励/域随机，且可接受 off-policy 配方时，优先评估 **[LooperMuscle](../entities/paper-loopermuscle.md)**：在 [FastSAC](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) 基座上叠加 **上下身分组 MoE + 专家感知 DVF + 配额路由 replay**；40 条 LAFAN1 上约 **45 min** 追回 PPO（~6 h）约 **72%** 归一化奖励，相对裸 FastSAC-MLP body err **↓34%**。注意论文主表在 **MJLab 特权 anchor 观测**，真机需在 **Holosoma 154-D 可部署接口重训**，勿把基准数字当部署承诺。
 
@@ -204,6 +206,7 @@ flowchart TD
 - [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)、[CMP](../entities/paper-cmp.md)、[PFM-HR](../entities/paper-pfm-hr.md)
 - [MotionBricks](../methods/motionbricks.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[EGM](../methods/egm-efficient-general-mimic.md)
+- [Switch](../methods/switch-framework.md) — 多技能图 + 缓冲节点的显式技能切换编排层
 - [YAHMP](../entities/paper-yahmp.md) — 开源 G1 GMT 消融试验台（命令/历史/残差/PD/手部力）
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 高动态持续学习 generalist（未开源）
 - [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)

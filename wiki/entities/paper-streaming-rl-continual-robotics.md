@@ -55,6 +55,15 @@ summary: "Streaming RL 分析（2609.28807）：流式 DRL 适应目标/环境/�
 
 **不适用**（请按 GitHub README 入口自行补 sequenceDiagram；入库日未逐仓核对）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Intentional Updates for Streaming RL](../methods/intentional-updates-streaming-rl.md) | 提出 batch=1、无 replay 下的稳定更新 **算法**；本文是 **分析型**，看 streaming DRL 在机器人持续适应中的峰值、长期均值与稳定性 |
+| [无奖励持续适应（Space）](./paper-reward-free-continual-adaptation-space.md) | 冻结 DreamerV3 编码器/奖励头、只更新 RSSM 动态做适应；本文分析 **streaming DRL** 在线更新，本页摘要亦提到操作任务可能先恢复后退化 |
+| [Compositional CL WM Benchmark](./paper-wm-compositional-cl-benchmark.md) | 测 world model 任务序列中的 reuse / forgetting；本文关注目标、环境、身体变化下的 **在线策略适应** |
+| [S2C](./paper-s2c-safety-filtered-rl.md) | 同期「改训练」条目；S2C 把 **安全过滤** 放进训练环，本文讨论 **持续/流式** 训练的长期稳定性 |
+
 ## 结论
 
 **总判：Streaming RL 分析 适合作为「系统分析 streaming RL 在机器人持续学习中的峰值、长期均值与稳定性，而非提出单点 SOTA 算法。…」方向的入口页；机制细节以 arXiv 与项目页为准。**

@@ -19,6 +19,8 @@ tags:
   - droid
   - vla
 status: complete
+venue: "Harvard Computational Robotics project page (preprint, 2026)"
+code: https://github.com/ComputationalRobotics/SceneAgent
 updated: 2026-09-27
 related:
   - ../concepts/sim2real.md

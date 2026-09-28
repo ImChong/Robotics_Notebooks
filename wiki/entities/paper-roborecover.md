@@ -8,6 +8,7 @@ code: https://github.com/RUCKBReasoning/RoboRecover
 related:
   - ../overview/embodied-research-12-papers-recover-wam-technology-map.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/roborecover_arxiv_2609_28952.md
   - ../../sources/repos/roborecover.md
@@ -55,6 +56,16 @@ summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测�
 
 **不适用**（请按 GitHub README 入口自行补 sequenceDiagram；入库日未逐仓核对）。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [LIBERO](./libero-benchmark.md) | 标准套件从 **理想初态** 测 SR；RoboRecover 在 LIBERO 固定 200 场景上用 **动作前缀回放** 造偏差起点，把「从头成功」与「出错后继续」拆开报 |
+| [LIBERO-Recover](./paper-libero-recover.md) | 同为 LIBERO 系恢复评测：LIBERO-Recover 的失败态来自 SOTA 模型 **真实 rollout** + VLM 定位、L1–L4 分级并附人类恢复 demo；RoboRecover 用 **动作前缀回放固定** 偏差起点。两者都指向「正常起点排名 ≠ 恢复排名」 |
+| [PRM-as-a-Judge](./paper-prm-as-a-judge.md) | 同样质疑单一 SR：PRM-as-a-Judge 改 **指标**（进度曲线 / OPD）；RoboRecover 改 **评测起点**，指标仍是 SR |
+| [ReflexVLA / ReflexBench](./paper-reflexvla.md) | 把 **决策时延** 写进评测；RoboRecover 把 **执行偏差** 写进评测——都是静态 LIBERO 分数不能蕴含的维度 |
+| [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) | 落在 **③ 策略任务成功率评测层**：补「SR 均值掩盖长尾失败」一类误判；UniFOLM 98.83%→48.00% 与 π₀.₅ 94.17%→64.40%（公众号口径）的排名反转即是例证 |
+
 ## 结论
 
 **总判：RoboRecover 适合作为「动作前缀回放固定偏差起点，测策略能否修复关系并完成原任务——把「从头成功」与「出错后继续」拆成两个维度。…」方向的入口页；机制细节以 arXiv 与项目页为准。**
@@ -67,6 +78,7 @@ summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测�
 
 - [具身研究 12 篇（恢复/WAM）技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — ③ 策略任务成功率评测层：从执行偏差起点测恢复 SR，补「正常起点 SR 均值掩盖出错后能否继续」的盲区
 
 ## 参考来源
 

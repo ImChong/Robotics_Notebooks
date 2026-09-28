@@ -155,6 +155,13 @@ sequenceDiagram
   NB->>Dev: rerun 可视化或日志
 ```
 
+## 与其他工作对比
+
+- **[GRID 产品实体](./grid-general-robotics.md)** — 本页是 2023 技术报告（Foundation Mosaic + AirGen）；产品页覆盖 Open GRID / Cortex / Enterprise auto-engineering 的现状，读论文能力与读产品能力需分开。
+- **[Isaac Lab 入门](./nvidia-getting-started-isaac-lab.md)** — Isaac Lab 是开源的 MDP / 并行 RL 训练与 sim-to-real 工作流；GRID 以 LLM 编排现成 FM + 控制原语为主，且 Cortex 与 Enterprise 部分闭源，需要全栈审计时优先 Isaac Lab。
+- **[Cyclo Intelligence](./cyclo-intelligence.md)** — 同为 Physical AI 全栈平台，但 Cyclo 以行为树编排 VLA 后端生命周期 + 宏动作、单仓开源；GRID 以 LLM Actor–Critic 生成控制代码、托管模型为主。
+- **[真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md)** — 都走「LLM/agent 写代码 + 可验证反馈」闭环；该 query 以 ENPIRE 为骨架、强调真机自动 reset/verify，GRID 论文反馈主要来自 AirGen 仿真与 aerial demo。
+
 ## 结论
 
 **GRID 把「机器人 Foundation Model  scarcity」转译为「仿真 + Mosaic 编排 + LLM 工程闭环」，2023 报告已验证 aerial 组合任务；现 Open GRID / Playground 提供可审计入口，Enterprise 承载 auto-engineering 复利。**

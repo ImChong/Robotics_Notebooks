@@ -13,6 +13,7 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ./paper-simfoundry-real2sim-scene-generation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/simplerenv_arxiv_2405_05941.md
   - ../../sources/sites/simpler-env.md
@@ -97,6 +98,22 @@ sequenceDiagram
 | **解读** | sim 升 ≠ 真机必升；关注 **相对排序** 与 **shift 敏感性** 是否与真机一致 |
 | **扩展** | 文档含 **新建环境** workflow——新机器人/setup 应对齐控制/视觉 gap 方法 |
 
+## 实验与评测
+
+- **评测对象：** 在真实数据上训练的通才操作策略（RT-1 / RT-1-X、Octo 等），用官方推理脚本在 SIMPLER 环境中运行。
+- **设定：** Google Robot（RT 系评测设定）与 Bridge V2 / WidowX；gap 缓解手段为离线系统辨识、绿幕观测（真机背景贴图）、物体纹理烘焙。
+- **实证：** 多个开源策略做 **paired sim-and-real** 评测，约 **1500 episodes**，报告 sim 与真机成功率 **强 Pearson 相关**；sim 同时反映 **分布偏移敏感性** 等行为模式。
+- **读法：** 相关性针对 **策略排序 / 行为诊断**，不承诺绝对成功率可迁移；本库未搬运逐任务数字，以原文表格为准。
+
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | SimFoundry 从单段真机视频**重建 sim-ready 数字孪生**并生成 digital cousins，同时服务 real-to-sim 评测与 sim-to-real 训练；SIMPLER **不追求 digital twin**，只对齐控制/视觉 gap 以保排名相关 |
+| [RoboDojo](./robodojo.md) | RoboDojo 用 Isaac 仿真 42 任务 + RealEval 云真机在**同一接口**直接报告 sim 与真机；SIMPLER 以仿真为真机的**代理**，靠 paired eval 验证相关性 |
+| [LIBERO](./libero-benchmark.md) | LIBERO 是固定仿真任务套件，考察终身学习/迁移中的分布偏移；SIMPLER 评的是**已在真实数据上训练**的策略，核心诉求是 sim 分数能预测真机 |
+| [sim↔real 评测 gap](../concepts/sim-vs-real-eval-gap.md) | 该概念页的「real-to-sim 相关性锚定」路线（报告排名相关而非绝对分），SIMPLER 是这一路线的代表性工程实现 |
+
 ## 结论
 
 **SIMPLER 的价值是「可扩展、可复现的 VLA 评测代理」，不是替代每一次真机 gold-standard。**
@@ -118,6 +135,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md) · [RT 系列](../methods/robotics-transformer-rt-series.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 另一条 real2sim 场景生成线
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — 属第 ④ 层「sim↔real 评测 gap 校准」：以 paired sim-and-real 的排名相关性验证仿真评测能否外推真机
 
 ## 参考来源
 
