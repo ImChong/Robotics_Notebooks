@@ -2,10 +2,11 @@
 type: entity
 tags: [nvidia, jetson, edge-ai, physical-ai, tutorials, open-source, llm, vla, robotics]
 status: complete
-updated: 2026-09-06
+updated: 2026-09-28
 related:
   - ./nvidia-jetson.md
   - ./jetson-orin-nx.md
+  - ./jetson-openpi-pi05-on-thor.md
   - ./isaac-gr00t.md
   - ./tensorrt.md
   - ./nvidia-physical-ai-learning.md
@@ -13,6 +14,7 @@ related:
   - ../concepts/hardware-in-the-loop.md
   - ../methods/vla.md
 sources:
+  - ../../sources/courses/jetson_openpi_pi05_on_thor.md
   - ../../sources/sites/jetson-ai-lab.md
   - ../../sources/sites/nvidia-jetpack.md
   - ../../sources/sites/jetson-linux-r392-developer-guide.md
@@ -90,7 +92,7 @@ flowchart TD
 | **Agent** | 读 **Jetson Agent Skills** 教程 — Device 侧跑在板子；BSP 侧在 **刷机前主机** |
 | **容器** | 站点 **Browse All Jetson Containers** 查 NGC/L4T 兼容镜像 |
 | **大模型内存** | 先跟 **RAM Optimization**（关 GUI、swap）再跑 8B+ VLM |
-| **Thor VLA** | 跟 VLA 分区 + [TensorRT](../entities/tensorrt.md) NVFP4 教程；核对 **SBSA/CUDA 13** 安装器 |
+| **Thor VLA** | OpenPi：跟 [π₀.₅ on Thor](./jetson-openpi-pi05-on-thor.md)；GR00T：VLA 分区 + [TensorRT](../entities/tensorrt.md) NVFP4；核对 **SBSA/CUDA 13** |
 
 开源结论（2026-09-06）：教程聚合 **开源模型与示例仓库**；**JetPack/Jetson Linux** 仍为商业 SDK（见 [`nvidia-jetpack.md`](../../sources/sites/nvidia-jetpack.md)）。
 
@@ -111,9 +113,11 @@ flowchart TD
 - [ORT vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
 - [VLA](../methods/vla.md)
+- [OpenPi π₀.₅ on Jetson Thor](./jetson-openpi-pi05-on-thor.md)
 
 ## 参考来源
 
+- [OpenPi π₀.₅ on Thor 教程归档](../../sources/courses/jetson_openpi_pi05_on_thor.md)
 - [Jetson AI Lab 教程站摘录](../../sources/sites/jetson-ai-lab.md)
 - [NVIDIA JetPack 产品页摘录](../../sources/sites/nvidia-jetpack.md)
 - [Jetson Linux r39.2 Developer Guide 摘录](../../sources/sites/jetson-linux-r392-developer-guide.md)

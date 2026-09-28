@@ -44,9 +44,17 @@
 
 Featured 机器人/VLA 读法：VLA 分区直接对接 [Isaac GR00T](../../wiki/entities/isaac-gr00t.md) 与 Physical Intelligence OpenPi 机载部署叙事。
 
+## OpenPi π₀.₅ on Thor（2026-09-28 入库）
+
+- **链接：** <https://www.jetson-ai-lab.com/tutorials/openpi_on_thor/>
+- **归档：** [`sources/courses/jetson_openpi_pi05_on_thor.md`](../courses/jetson_openpi_pi05_on_thor.md)
+- **wiki：** [`wiki/entities/jetson-openpi-pi05-on-thor.md`](../../wiki/entities/jetson-openpi-pi05-on-thor.md)
+- **要点：** JAX→PyTorch→ONNX（ModelOpt FP8/NVFP4）→TensorRT；`pi05_libero` TRT **~49 ms**；openpi pin **`15a9616`** + `download.sh` 注入 Thor 脚本
+
 ## 对 wiki 的映射
 
 - 实体：[`wiki/entities/jetson-ai-lab.md`](../../wiki/entities/jetson-ai-lab.md)
+- OpenPi Thor 教程：[`wiki/entities/jetson-openpi-pi05-on-thor.md`](../../wiki/entities/jetson-openpi-pi05-on-thor.md)
 - 平台：[`wiki/entities/nvidia-jetson.md`](../../wiki/entities/nvidia-jetson.md)
 - JetPack：[`sources/sites/nvidia-jetpack.md`](./nvidia-jetpack.md)
 - 开发者指南：[`sources/sites/jetson-linux-r392-developer-guide.md`](./jetson-linux-r392-developer-guide.md)

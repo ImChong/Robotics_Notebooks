@@ -22,3 +22,4 @@
 - [π0-policy](../../wiki/methods/π0-policy.md) — HMI 开源主表入口 Physical-Intelligence/openpi（π0 / π0-FAST / π0.5 官方代码与权重）
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)
 - [χ₀ / kai0](../../wiki/entities/paper-kai0.md) — 基于 openpi 的协同叠衣后训练与部署对齐（OpenDriveLab/kai0）
+- [Jetson OpenPi π₀.₅ on Thor 教程](../courses/jetson_openpi_pi05_on_thor.md) — NVIDIA 官方 Thor TRT/NVFP4 部署链（[`wiki/entities/jetson-openpi-pi05-on-thor.md`](../../wiki/entities/jetson-openpi-pi05-on-thor.md)）

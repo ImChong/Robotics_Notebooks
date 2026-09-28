@@ -144,7 +144,8 @@ sequenceDiagram
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 延迟/异步对照
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — RLinf 栈索引
 - [NVIDIA Jetson](./nvidia-jetson.md) — Thor/Orin 硬件
-- [Jetson AI Lab](./jetson-ai-lab.md) — OpenPi on Thor 官方教程（互补）
+- [Jetson AI Lab](./jetson-ai-lab.md) — 教程 hub
+- [OpenPi π₀.₅ on Jetson Thor](./jetson-openpi-pi05-on-thor.md) — NVIDIA 官方 ModelOpt+TRT 路线（~49 ms；与 APXInf 协议兼容）
 - [TensorRT](./tensorrt.md) — 通用 NVIDIA 优化运行时对照
 - [FluxVLA Engine](./fluxvla-engine.md) — 另一开源 VLA 工程底座
 
