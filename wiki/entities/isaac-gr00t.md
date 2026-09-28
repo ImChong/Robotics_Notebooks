@@ -7,6 +7,7 @@ summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 G
 related:
   - ./nvidia-gr00t-e2e-g1-workflow.md
   - ../entities/paper-hrl-stack-34-gr00t_n1.md
+  - ../entities/paper-gr00t-n1-5.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/lerobot.md
   - ../entities/isaac-gym-isaac-lab.md

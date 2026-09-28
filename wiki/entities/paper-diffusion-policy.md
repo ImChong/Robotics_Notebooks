@@ -16,6 +16,8 @@ related:
   - ../concepts/receding-horizon-policy-execution.md
   - ./paper-pi0.md
   - ./paper-act.md
+  - ./paper-robotic-dit-ingredients-dit-block-policy.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
 sources:
   - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
