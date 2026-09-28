@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-09-26
+updated: 2026-09-28
 related:
   - ./π0-policy.md
   - ./vla.md
@@ -122,5 +122,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* — <https://arxiv.org/abs/2410.24164>（π 系方法学前身）
-- Physical Intelligence 博客《Recap / π*₀.₆ 专精策略》— <https://www.pi.website/blog/pistar06>（RL 专精与吞吐优化叙事，π₀.₇ 蒸馏源之一）
-- Physical Intelligence, *HiRobot* — <https://www.pi.website/research/hirobot>（博客中用于自动生成子任务语言的高层策略参照）
+- [π*₀.₆ / RECAP](../entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 优势条件专精，π₀.₇ 蒸馏源之一
+- [Hi Robot](../entities/paper-hi-robot.md) — 高层语言步骤与低层 π₀ 的分层参照

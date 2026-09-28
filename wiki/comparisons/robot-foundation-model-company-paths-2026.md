@@ -34,7 +34,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 
 | 阅读视角 | 代表团队和作品 | 阅读时追问 |
 | --- | --- | --- |
-| 世界与动作基础模型 / VLA | [PI](../../sources/sites/pi-website-technical-articles.md)：π₀→π₀.₇、FAST、RTC、MEM；1X：World Model / Redwood；Galbot：AstraBrain-WAM；Galaxea：G0 / Fast-WAM；[AgiBot](../../sources/sites/agibot-world.md)：GO / AgiBot World；Google DeepMind：Gemini Robotics | 预测的是未来观测、未来动作还是二者？推理时真的运行世界预测吗？数据、权重和训练代码开放到哪一层？ |
+| 世界与动作基础模型 / VLA | [PI](../../sources/sites/pi-website-technical-articles.md)：π₀→π₀.₇，含 FAST、Hi Robot、KI、RTC、π*₀.₆、人视频迁移、MEM；1X：World Model / Redwood；Galbot：AstraBrain-WAM；Galaxea：G0 / Fast-WAM；[AgiBot](../../sources/sites/agibot-world.md)：GO / AgiBot World；Google DeepMind：Gemini Robotics | 预测的是未来观测、未来动作还是二者？推理时真的运行世界预测吗？数据、权重和训练代码开放到哪一层？ |
 | 通用人形整机与大小脑接口 | Figure：Helix→Helix 02→Helix 2.5；[Skild](../entities/skild-ai.md)：Skild Brain；[NVIDIA](../entities/isaac-gr00t.md)：GR00T / Cosmos / Isaac Lab；LimX：COSA / FluxVLA；1X：NEO / Redwood；Unitree：G1 / UnifoLM | 视觉语言模块输出关节目标、运动 latent 还是高层指令？高频低层由谁执行？不同模块延迟如何闭环？ |
 | 强全身技能、Real2Sim2Real | [Light Origins](../entities/light-o1.md)：Light-O1、REACT、Parkour、Nav；Galbot：AstraBrain-WBC；LimX：腿足技能 / COSA；Unitree：G1 控制生态；NVIDIA：GR00T Control / Isaac Lab | 人视频/动作先验如何变成可执行参考？仿真如何覆盖接触、跌倒、损伤？真机部署观察和动作频率是什么？ |
 
@@ -73,6 +73,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
 - [Skild AI 官方站归档](../../sources/sites/skild-ai.md)
+- [The Physical Intelligence Layer](../entities/pi-physical-intelligence-layer.md) — 伙伴现场部署，不是新模型发布
 
 ## 推荐继续阅读
 

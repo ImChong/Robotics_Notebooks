@@ -114,6 +114,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - `关联页面` — 至少 2 个相关 wiki 页
 - `推荐继续阅读` — 至少 1 个外部资源
 - **源码开放状态（有项目页时）** — 在「工程实践」或「局限与风险」中写明项目页核查结论（见步骤 2.5）；已开源则链到 `sources/repos/` 与官方仓库
+- **不要让 Wiki Lint 变红** — 新建页之前检索 frontmatter `arxiv:`，命中已有页（含 `paper-rcl-*` 索引）就升级该页；新页必须有至少一条 **wiki 内链** 指入；正文避免 [canonical-facts.json](canonical-facts.json) 的否定模式与页内术语出现在同一行。这三项会失败 GitHub **Wiki Lint**。细则见步骤 8 表格。本地大量「sources 比 wiki 新」在 Actions 上不检查。
 - **源码运行时序图（`wiki/entities/paper-*.md` 且有可运行官方代码时必做）** — 步骤 2.5 判定为 **已开源**，或 **部分开源且仓库内存在可辨识的训练 / 推理 / 部署入口**（脚本、CLI、`train.py` / `eval.py`、README 运行步骤等）时，在升格后的论文实体页增加 `## 源码运行时序图` 节（建议放在「流程总览」或「核心原理」之后、「工程实践」之前）。用 ```mermaid 的 `sequenceDiagram` 描绘 **运行时** 模块交互（数据加载 → 训练 / 推理 → 仿真或真机 IO），节点名应对齐 `sources/repos/` 中的目录或 README 入口；推荐 `autonumber`，并在图下用 1–2 句点明关键复现路径。若仅有占位 README、权重未发布或无可运行实现，仍保留该节或于「工程实践」表中写明 `源码运行时序图 | **不适用**（原因）`，勿静默省略。
 - **Mermaid 流程图（推荐，管线类资料建议必做）** — 若资料的主贡献是**多阶段数据流、训练流水线或闭环系统**（例如「采集 → 重定向 → 仿真修正 → 策略训练」），在升格后的 wiki 页中增加一节（如「流程总览」），用 ```mermaid 代码块绘制**一张主干流程图**：节点对应模块边界，边对应数据/监督信号流向；子细节可用文字分节或第二张图，避免单图过度拥挤。渲染侧以 GitHub / 站点 Mermaid 为准，避免使用非标准语法。
 - 必要时更新 `index.md`
@@ -170,7 +171,10 @@ make ci-test       # 镜像 .github/workflows/tests.yml（含 pytest）
 | PR 与 main **合并冲突** | 旧分支仍带派生文件改动，或与他人改了同一 wiki 页 | `make sync-main`；派生文件自动消解，只剩真实源文件冲突时按内容手工合并 |
 | **Wiki Lint** 或 **Export Quality** 失败 | 只跑了 `make graph` / `make export` 之一，本地派生 JSON 不全 | 只跑一轮 `make ci-preflight`（派生文件不入库，无需 commit） |
 | **pytest** `FileNotFoundError`（`link-graph.json` 等） | 全新环境未生成 gitignore 的站点 JSON | 先 `make export graph`，再 `make test` |
-| lint「sources 比 wiki 新」反复失败 | 交叉改多个 wiki 后未 bump `updated` | 先 `make bump-wiki-from-sources`（或指定 source），再 **一轮** `make ci-preflight` |
+| lint「sources 比 wiki 新」反复失败 | 交叉改多个 wiki 后未 bump `updated` | 先 `make bump-wiki-from-sources`（或指定 source），再 **一轮** `make ci-preflight`。GitHub Actions 上此检查被跳过（`GITHUB_ACTIONS=true`），**不能**用它判断 PR 是否会红 |
+| **Wiki Lint** `duplicate_arxiv` | 新建页的 frontmatter `arxiv:` 与已有页（常见是 `paper-rcl-*` 策展索引）重复。一篇论文只允许一个详情节点 | 建页前 `rg '^arxiv: "ID"' wiki`。已有索引页则**改那一页**，不要再新建；公司路线 `id` 用该页的 `path_to_id` |
+| **Wiki Lint** 孤儿页 / `graph-stats` 孤儿节点 | 新 wiki 页没有任何 **wiki 内链** 指向它。`company-roadmaps.json` 和 `sources/` 不算入链 | 至少从一个已有 wiki 页链入（对照页、方法页或相关实体）。改完后 lint 会先跑 `generate_link_graph.py`，只改 JSON 不够 |
+| **Wiki Lint** `contradictions` | 新页正文命中 [canonical-facts.json](canonical-facts.json) 的 `neg_claims`，而其他页命中 `pos_claims`。匹配是**整页**正则，`π₀.*无预训练` 会在同一行从「π₀.₆」跨到后面的「无预训练」 | 否定句换说法，避免术语和否定模式落在同一行（尤其 `summary`）。不确定时用该事实的 `terms` / `neg_claims` 对新页跑一次检索 |
 | 首页「最新知识节点」缺本次新增页 | 当日 wiki/roadmap 未进 git（未 commit）或仅为维护改动 | 提交新建页后重跑 `make ci-preflight`；维护改动出现在「更新记录」的维护开关下 |
 | 「更新记录」新增远少于实际建页 | 旧口径解析 `log.md` 路径（已废弃） | 现以 git `A` 为准；确认新建文件已 commit 且 `make ci-preflight` 已跑 |
 

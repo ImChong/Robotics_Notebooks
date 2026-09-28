@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-09-26
+updated: 2026-09-28
 related:
   - ../entities/paper-pi0.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -59,6 +59,8 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 [openpi](https://github.com/Physical-Intelligence/openpi) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)。
 
 主表定位：官方仓同时维护流匹配 π0、π0-FAST 与 π0.5，并提供检查点、数据配置、微调与推理服务。接入新本体时关键是动作归一化、字段映射与推理频率对齐。本库以本方法页（及 [π0.7](./pi07-policy.md)）承载 openpi 入口，不另建重复实体。
+
+2025-02-04 的 [Open Sourcing π₀](https://www.pi.website/blog/openpi) 放出 base π₀ 与 π₀-FAST 权重、ALOHA / DROID / LIBERO 示例检查点，以及微调与推理示例。博客给出的经验是大约 1–20 小时本机数据可以适配一批任务，并写明换平台不保证成功。同期还有 Hugging Face 的 PyTorch 移植。这次发布不含 [Knowledge Insulation](../entities/paper-knowledge-insulation.md) 的训练环：openpi 里的 π₀.₅ 权重来自该配方，微调脚本仍会把动作专家梯度送进骨干。
 
 **Jetson Thor 机载部署：** NVIDIA [OpenPi π₀.₅ on Thor](../entities/jetson-openpi-pi05-on-thor.md) 教程（ModelOpt FP8/NVFP4 + TensorRT，~49 ms）；第三方 [APXInf](../entities/apxinf.md) 提供更低延迟 OpenPI-compatible serve。总览见 [VLA 真机部署指南](../queries/vla-deployment-guide.md)。
 
