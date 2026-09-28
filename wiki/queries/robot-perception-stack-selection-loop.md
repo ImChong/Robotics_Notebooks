@@ -48,6 +48,7 @@ related:
   - ../entities/paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
   - ../entities/paper-microsaccade-inspired-event-camera.md
   - ../entities/paper-simple-evrgb-cal.md
+  - ../entities/paper-oraclezoom.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
