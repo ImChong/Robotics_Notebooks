@@ -29,6 +29,7 @@ related:
   - ./paper-lucida-r2s.md
   - ./paper-sceneagent-real2sim-capture-physics.md
   - ./articraft.md
+  - ./paper-agenticstar.md
   - ./paper-video2door-traversal.md
   - ./paper-bfm-zero.md
   - ../tasks/manipulation.md
@@ -181,6 +182,7 @@ flowchart LR
 - [Lucida](./paper-lucida-r2s.md) — 室内物体级 Real2Sim；VLM 做 gizmo 放置而非 episode 编排
 - [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 → USD 场景 + agent 审查（非 episode twin）
 - [Articraft](./articraft.md) — agentic VLM 铰接资产生成
+- [AgentSTAR](./paper-agenticstar.md) — 单目视频 agentic shape + pose track（GLB + 关节轨迹，非 episode twin）
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 同属 simulator-in-the-loop agent，单位是单门视频孪生再学穿门策略，不是 DROID episode twin
 - [BFM-Zero](./paper-bfm-zero.md) — 人形适配器运动上下文
 - [Manipulation](../tasks/manipulation.md) — 操作任务入口
