@@ -26,6 +26,8 @@ related:
   - ./paper-octo.md
   - ./paper-scaledp-scaling-diffusion-transformer-policy.md
   - ./paper-dit-scalable-diffusion-transformers.md
+  - ./paper-robotic-dit-ingredients-dit-block-policy.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/dita_arxiv_2410_15959.md
