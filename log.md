@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | sources/papers/robogesture_arxiv_2608_28693.md + sites/robogesture-arxiv.md — RoboGesture 共语手势（arXiv:2608.28693，ECCV 2026）；英文题名/作者/六机构；项目页复核仍无代码；深化 wiki/entities/paper-robogesture.md；自动合并 PR
+
+- **意图：** 用户指定 arXiv 题名 *RoboGesture: Real-Time Semantic-aligned Co-Speech Gestures Generation for Humanoid Interaction*（清华/Galbot/北理工/哈工大/北大/上海期智）
+- **开源结论：** **未开源** — RoboGesture.github.io 截至 2026-09-28 无 GitHub/权重/数据链
+- **关键页：** [paper-robogesture](wiki/entities/paper-robogesture.md)
+
 ## [2026-09-27] lint | 清零全库 25 条信息型预警：14 篇 paper-* 补「与其他工作对比」（SimplerEnv 另补「实验与评测」）、RoboRecover/SimplerEnv 回链评测基准枢纽、手眼标定回链感知栈与接触力旋量枢纽、Physical AI 硬件观点文回链执行器驱动链枢纽、Switch 落地到人形运动跟踪选型 Query、SceneAgent 补 venue/code、缺页巡检把 GitHub/Agent/skills 纳入停用词、数据集巡检内联 tags 改整标签匹配（修 dataset-collection 误判）
 
 - **触发：** 定时任务「跑一遍全量知识库 lint，修复所有警告（含信息型）」；`python3 scripts/lint_wiki.py` 基线 **0 失败 / 25 条信息型**
