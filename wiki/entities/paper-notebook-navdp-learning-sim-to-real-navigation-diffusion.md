@@ -188,6 +188,7 @@ sequenceDiagram
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — NavDP 是局部 planner，下面仍需 MPC / locomotion follower
 - [NoMaD](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) — RGB 真机数据、goal masking 与 topological memory 对照
 - [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 image-goal；Table I 以 NavDP 为最强生成对照之一（未开源）
+- [X-NavDP](./paper-x-navdp.md) — 同一 NavDP 骨干上的 GQRM RL 后训练（arXiv:2607.28560；`baselines/x-navdp` 已开源）
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 可作为语言高层，NavDP 补快速系统一局部规划
 
 ## 参考来源
