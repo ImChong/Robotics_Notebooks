@@ -32,12 +32,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
-      # ingest 合并后 README 徽章常与入库 graph-stats 短暂不同步（auto-export 用 [skip ci] 补交）。
-      # 先按当前 wiki 重算图谱统计并同步徽章，再 lint，避免误报 readme_badge。
-      - name: Sync graph-stats and README badge before lint
-        run: |
-          python3 scripts/generate_link_graph.py
-          python3 scripts/sync_readme_graph_badge.py
+      # PR 不得修改 catalog.md / log.md / 部署生成的统计文件，否则与 main 的自动提交冲突。
+      # 修复：make sync-main（见 scripts/pr_derived_guard.py）
+      - name: Guard bot-owned / deploy-generated files
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/pr_derived_guard.py check --base "origin/${{ github.base_ref }}"
+
+      # graph-stats.json 不入库（部署时生成），lint 的孤儿节点检查需要先现场生成
+      - name: Generate graph-stats before lint
+        run: python3 scripts/generate_link_graph.py
 
       - name: Run wiki lint
         run: python3 scripts/lint_wiki.py --report

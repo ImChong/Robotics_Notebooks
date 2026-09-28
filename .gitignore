@@ -37,6 +37,15 @@ exports/link-graph.json
 exports/wiki-activity.json
 exports/hub-rankings.json
 
+# 全局统计与报告：每次合并都会变，PR 提交必然互相冲突 → 不入库，
+# 由 pages.yml 部署时生成（README 知识图谱徽章读部署后的 graph-badge.json）
+exports/graph-stats.json
+exports/home-stats.json
+exports/lint-report.md
+docs/exports/graph-stats.json
+docs/exports/home-stats.json
+docs/exports/graph-badge.json
+
 # Cloud Agent 本地验证截图与临时 HTML（勿提交）
 .cursor-artifacts/
 

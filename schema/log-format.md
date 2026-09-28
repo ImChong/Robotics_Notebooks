@@ -40,7 +40,10 @@
 
 ## 追加方式
 
-**新记录写在文件顶部**（首条 `## [YYYY-MM-DD]` 之前）；不要用尾部追加。
+**PR 不直接修改 `log.md`。** 并行 PR 都在 `log.md` 顶部同一位置插入，必然合并冲突。
+改为在 [`log.d/`](../log.d/README.md) 下新增一个碎片文件（内容就是一条完整条目）；合入 main 后
+`export.yml` 运行 `scripts/fold_log_fragments.py`，按文件名顺序把碎片并入 `log.md` **顶部**（最新在上）并删除碎片。
+PR 上的 Wiki Lint 会拦截对 `log.md` 的修改（`scripts/pr_derived_guard.py`）。
 
 **不必**为了首页/热力图列出全部 `wiki/...` 路径——那些由 git 统计。正文写意图与关键结论即可。
 
@@ -51,15 +54,17 @@ make log OP=lint DESC="0 issues，覆盖率 75%"
 make log OP=query DESC="locomotion reward → wiki/queries/xxx.md"
 ```
 
+`make log` 生成形如 `log.d/2026-09-28-153012-ingest-a1b2c3.md` 的唯一文件名。
+
 **直接调用脚本：**
 ```bash
 python3 scripts/append_log.py ingest "sources/papers/xxx.md — 描述"
 python3 scripts/append_log.py lint "0 issues，覆盖率 75%"
 ```
 
-**手动追加**（大型操作）：在 log.md **顶部**（说明行之后、现有首条 `## [` 之前）插入 `## [date] op | desc` 标题 + 详细列表。
+**手写**（大型操作）：新建 `log.d/YYYY-MM-DD-<唯一后缀>.md`，写入 `## [date] op | desc` 标题 + 详细列表。
 
-**lint 健康报告**（`make lint` 带 `--write-log`，或 `python3 scripts/lint_wiki.py --write-log`）：同样插入顶部，标题形如 `## [YYYY-MM-DD] lint | health-check | ...`；勿在文件末尾追加。
+**lint 健康报告**（`python3 scripts/lint_wiki.py --write-log`）：同样写成 `log.d/` 碎片，标题形如 `## [YYYY-MM-DD] lint | health-check | ...`。
 
 ---
 

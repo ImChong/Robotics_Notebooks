@@ -1,42 +1,41 @@
 #!/usr/bin/env python3
 """
-sync_all_stats.py — 自动化统计数据同步工具
+sync_all_stats.py — 部署时统计数据同步工具（pages.yml 调用；结果不入库）
 
 功能：
 1. 调用 generate_link_graph.py (make graph) 更新图谱数据
 2. 调用 generate_home_stats.py 更新首页轻量级统计 JSON
 3. 自动同步数据文件到 docs/exports/
-4. 更新 README.md 中的 Badges 和最后更新时间戳
-5. 更新 docs/index.html 中的硬编码 Hero 统计数据
+4. 写 docs/exports/graph-badge.json（README 知识图谱徽章的 shields.io endpoint 数据）
+5. 更新 docs/index.html 中的 Hero 兜底统计数字、docs/sw.js 缓存版本
+
+4、5 会改入库文件的工作区副本，只应在部署构建里运行；PR 不要提交这些改动
+（否则并行 PR 在同几行冲突，见 scripts/pr_derived_guard.py）。
 """
 
 import json
 import re
 import subprocess
 import sys
-from datetime import date
 from pathlib import Path
 
 from graph_exports_sync import copy_graph_exports_to_docs
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INDEX_HTML = REPO_ROOT / "docs" / "index.html"
-README_MD = REPO_ROOT / "README.md"
 HOME_STATS_JSON = REPO_ROOT / "exports" / "home-stats.json"
-CHECKLIST_DIR = REPO_ROOT / "docs" / "checklists"
+GRAPH_BADGE_JSON = REPO_ROOT / "docs" / "exports" / "graph-badge.json"
 
 
-def _stem_version(path: Path) -> int:
-    match = re.search(r"v(\d+)", path.stem)
-    return int(match.group(1)) if match else -1
-
-
-def latest_checklist_path() -> Path:
-    candidates = sorted(CHECKLIST_DIR.glob("tech-stack-next-phase-checklist-v*.md"))
-    if not candidates:
-        print(f"❌ 找不到技术栈 checklist: {CHECKLIST_DIR}")
-        sys.exit(1)
-    return max(candidates, key=_stem_version)
+def graph_badge_payload(nodes: int, edges: int) -> dict:
+    """shields.io endpoint 徽章数据（README 通过 img.shields.io/endpoint?url=... 引用）。"""
+    return {
+        "schemaVersion": 1,
+        "label": "知识图谱",
+        "message": f"{nodes}节点 {edges}边",
+        "color": "blue",
+        "namedLogo": "d3.js",
+    }
 
 
 def run_command(cmd: list[str], description: str):
@@ -54,7 +53,9 @@ def run_command(cmd: list[str], description: str):
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description="同步图谱统计、首页 JSON、README 与 docs 硬编码")
+    parser = argparse.ArgumentParser(
+        description="部署时同步图谱统计、首页 JSON、徽章与 docs 硬编码"
+    )
     parser.add_argument(
         "--skip-graph",
         action="store_true",
@@ -91,41 +92,14 @@ def main():
     edges = stats["edge_count"]
     cov_done = stats["coverage"]["covered"]
     cov_total = stats["coverage"]["total"]
-    cov_pct = stats["coverage"]["percent"]
 
-    # 4. 更新 README.md
-    if README_MD.exists():
-        print("📝 更新 README.md...")
-        content = README_MD.read_text(encoding="utf-8")
-
-        # 更新 Badge
-        graph_badge = f"[![Knowledge Graph](https://img.shields.io/badge/知识图谱-{nodes}节点_{edges}边-blue?logo=d3.js)]"
-        content = re.sub(
-            r"\[!\[Knowledge Graph\]\([^)]+\)\]\([^)]+\)",
-            f"{graph_badge}(https://imchong.github.io/Robotics_Notebooks/graph.html)",
-            content,
-        )
-
-        cov_color = "green" if cov_pct >= 90 else "yellow"
-        cov_badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{cov_pct}%25-{cov_color})]"
-        checklist_path = latest_checklist_path().relative_to(REPO_ROOT)
-        content = re.sub(
-            r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)",
-            f"{cov_badge}({checklist_path})",
-            content,
-        )
-
-        # 更新时间戳注释
-        today_str = date.today().isoformat()
-        checklist_version = _stem_version(latest_checklist_path())
-        content = re.sub(
-            r"<!-- Last updated: .* -->",
-            f"<!-- Last updated: {today_str} (V{checklist_version} 自动更新：图谱 {nodes} 节点 {edges} 边) -->",
-            content,
-        )
-
-        README_MD.write_text(content, encoding="utf-8")
-        print("✅ README.md 更新完成")
+    # 4. README 知识图谱徽章的 endpoint 数据（README 本身不再写入数字）
+    GRAPH_BADGE_JSON.parent.mkdir(parents=True, exist_ok=True)
+    GRAPH_BADGE_JSON.write_text(
+        json.dumps(graph_badge_payload(nodes, edges), ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(f"✅ 已写入 {GRAPH_BADGE_JSON.relative_to(REPO_ROOT)}")
 
     # 5. 更新 docs/index.html（Hero 盘点硬编码数字；结构由前端维护，此处只刷 node/edge）
     if INDEX_HTML.exists():

@@ -121,13 +121,9 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 > **为什么要在 wiki 页面内标注来源**：git 记录文件变更时间线，`log.md` 可选记录操作意图，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 git / log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
-### 步骤 6：更新 catalog.md Page Catalog
+### 步骤 6：catalog.md 自动更新（PR 不提交）
 
-每次新增 wiki 页面后，必须重新生成完整目录 `catalog.md`：
-
-```bash
-make catalog  # 等价于 python3 scripts/generate_page_catalog.py
-```
+`catalog.md` 由 main 上的 `export.yml` 在合并后自动重新生成。**PR 不要修改 / 提交 `catalog.md`**（并行 PR 都改它会互相冲突；PR 上的 Wiki Lint 会用 `scripts/pr_derived_guard.py` 拦截）。本地想预览可以 `make catalog`，但提交前用 `git checkout -- catalog.md` 还原。
 
 ### 步骤 7：运行导出脚本
 
@@ -155,7 +151,7 @@ python3 scripts/bump_wiki_updated_for_sources.py sources/papers/your_new_paper.m
 确认知识库健康状态：
 
 ```bash
-make ci-preflight  # 推荐：同步派生文件 + lint + export 质量门（单次约 2–5 分钟）
+make ci-preflight  # 推荐：重新生成（gitignore 的）派生文件 + lint + export 质量门（单次约 2–5 分钟）
 # 仅快速体检、不改派生文件时：make lint
 ```
 
@@ -170,22 +166,23 @@ make ci-test       # 镜像 .github/workflows/tests.yml（含 pytest）
 | 症状 / 触发场景 | 根因 | 本地修复 |
 |----------------|------|----------|
 | **Tests / pytest** 报 `institution ... label=...` | 新增 `schema/institutions.json` 时 `label` 非 `中文（English）`（纯英文或颠倒格式） | 按 [naming.md § 研究机构命名](naming.md) 改 `label`，再 `make test` |
-| **Wiki Lint** 或 **Export Quality** 失败 | 只跑了 `make catalog` / `make graph` 之一，派生 JSON / `index.md` / badge 未同步 | 只跑一轮 `make ci-preflight`，把列出的派生文件一并 commit |
-| **CI PR Gate (smoke)** 失败 | 大改后未 `make ci-preflight` 或 `make ci-check` | `make ci-check` 确认工作区与重生派生文件一致 |
+| **Wiki Lint**「Guard bot-owned / deploy-generated files」失败 | PR 修改了 `catalog.md` / `log.md` 或提交了统计文件 | `make sync-main` 后 push（自动以 main 为准，`log.md` 新增条目转存为 `log.d/` 碎片） |
+| PR 与 main **合并冲突** | 旧分支仍带派生文件改动，或与他人改了同一 wiki 页 | `make sync-main`；派生文件自动消解，只剩真实源文件冲突时按内容手工合并 |
+| **Wiki Lint** 或 **Export Quality** 失败 | 只跑了 `make graph` / `make export` 之一，本地派生 JSON 不全 | 只跑一轮 `make ci-preflight`（派生文件不入库，无需 commit） |
 | **pytest** `FileNotFoundError`（`link-graph.json` 等） | 全新环境未生成 gitignore 的站点 JSON | 先 `make export graph`，再 `make test` |
 | lint「sources 比 wiki 新」反复失败 | 交叉改多个 wiki 后未 bump `updated` | 先 `make bump-wiki-from-sources`（或指定 source），再 **一轮** `make ci-preflight` |
 | 首页「最新知识节点」缺本次新增页 | 当日 wiki/roadmap 未进 git（未 commit）或仅为维护改动 | 提交新建页后重跑 `make ci-preflight`；维护改动出现在「更新记录」的维护开关下 |
 | 「更新记录」新增远少于实际建页 | 旧口径解析 `log.md` 路径（已废弃） | 现以 git `A` 为准；确认新建文件已 commit 且 `make ci-preflight` 已跑 |
 
-> **维护者习惯**：wiki / sources / schema 改动后，默认顺序为 `make ci-preflight` →（若动过 `institutions.json`、脚本或 `tests/`）`make test` → commit 全部相关派生文件 → push。
+> **维护者习惯**：wiki / sources / schema 改动后，默认顺序为 `make ci-preflight` →（若动过 `institutions.json`、脚本或 `tests/`）`make test` → **只 commit 源文件与 `log.d/` 碎片** → push。
 
-### 步骤 9：记录到 `log.md`（叙事，可选但推荐）
+### 步骤 9：记录日志到 `log.d/` 碎片（叙事，可选但推荐）
 
 `log.md` 是 **运营叙事**（一次 ingest 的意图、开源结论、query 问答），**不是** 站点活动数据源。
 
 首页「最新知识节点」、更新记录热力图、图谱「更新明度」均由 **git 历史**驱动（`wiki/` / `roadmap/` 的 `A`/`M`/`R`）。因此 **不必** 在日志里逐条列出全部新建页路径；漏写路径不会再导致首页少显示节点。
 
-仍建议每次 ingest / query 写入顶部一条（`make log` / `append_log.py`），方便 LLM grep 近期意图：
+仍建议每次 ingest / query 记一条（`make log` / `append_log.py`），方便 LLM grep 近期意图。**PR 不直接改 `log.md`**：`make log` 在 `log.d/` 下新建唯一文件名的碎片，合入 main 后由 `export.yml` 自动并入 `log.md` 顶部（避免并行 PR 在 `log.md` 顶部冲突）：
 
 ```bash
 make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面与开源结论"
@@ -194,7 +191,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 
 格式参考 `schema/log-format.md`。正文可点到关键页，但完整文件清单以 git 为准。
 
-**首页「最新知识节点」**：静态站 `docs/index.html` 通过 `exports/home-stats.json` 中的 `latest_wiki_nodes` 渲染。数据由 `make graph`（`scripts/generate_link_graph.py`）从 git 首次加入日收集最近窗口内的 **新增** 节点；浅克隆时回退 `log.md`。维护完成后运行 `make ci-preflight` 以同步 `exports/` 与 `docs/exports/`。
+**首页「最新知识节点」**：静态站 `docs/index.html` 通过 `exports/home-stats.json` 中的 `latest_wiki_nodes` 渲染。数据由 `make graph`（`scripts/generate_link_graph.py`）从 git 首次加入日收集最近窗口内的 **新增** 节点；浅克隆时回退 `log.md`。统计文件不入库，Pages 部署时生成；本地预览前运行 `make ci-preflight` 或 `make export graph`。
 
 ---
 
@@ -244,7 +241,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 > 综合来源：<列出精读的 wiki 页面>
 ```
 
-**Step 6：记录到 `log.md`**
+**Step 6：记录日志（`make log OP=query ...` 写入 `log.d/` 碎片，勿直接改 `log.md`）**
 
 ```markdown
 ## [YYYY-MM-DD] query | <topic> | <问题一句话>
@@ -303,8 +300,8 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 `index.md` 只保留核心导航与推荐阅读顺序；`catalog.md` 是自动生成的全量页面目录。每次新增页面必须重新生成目录，不允许知识页缺席于 `catalog.md`。
 
 更新内容：
-- 运行 `make catalog`，由脚本扫描 `wiki/`、`roadmap/`、`tech-map/` 与 `references/`
-- 不要手工编辑 `catalog.md`
+- 由 main 上的 `export.yml` 运行 `scripts/generate_page_catalog.py` 自动重新生成（扫描 `wiki/`、`roadmap/`、`tech-map/` 与 `references/`）
+- 不要手工编辑 `catalog.md`，PR 也不要提交它
 - 只有核心入口、推荐顺序或主线变化时才手工更新 `index.md`
 
 ---
@@ -337,5 +334,5 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页必先查源码是否开放**（步骤 2.5），再写 wiki 开源表述与 `sources/repos/` 归档
-- 每次 ingest 都要运行 `make catalog` 更新 `catalog.md`，并追加 `log.md`，不要遗漏
-- 子网页优化、纯 wiki 扩写、纵深路线更新等 **structural** 记录若在当日 `log.md` 正文中写明 `wiki/...` 或 `roadmap/...`，首页「最新知识节点」会与其他同日条目一并列出；提交前务必 `make ci-preflight` 刷新派生 JSON
+- 每次 ingest 用 `make log` 写一条 `log.d/` 碎片，不要遗漏；**不要**在 PR 里改 `catalog.md` / `log.md`
+- 提交前务必 `make ci-preflight` 做本地检查（派生 JSON 不入库）

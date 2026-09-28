@@ -119,3 +119,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - **流程主文档**：[docs/checklists/cloud-agent-pr-workflow.md](docs/checklists/cloud-agent-pr-workflow.md) — 分支、`ci-preflight`、截图脚本细节、Playwright 兜底等。
 - **AGENTS.md** 内的「Cursor Cloud specific instructions」给出了同一指针；CLAUDE.md 这一节是 **Claude Code Agent 视角的对齐说明**，避免每次重新查阅。
 - 中文 commit 规范（ingest / structural / fix 等格式）见 [AGENTS.md](AGENTS.md) §「Git 提交规范」。
+
+### 5.4 避免合并冲突（agent 无需人工介入即可合入）
+
+- **只提交源文件**：派生统计 / 导出 JSON 全部 gitignore，部署时生成；`make ci-preflight` 只做本地检查。
+- **不改 `catalog.md` / `log.md`**：由 main 上的 `export.yml` 维护。日志用 `make log OP=... DESC="..."` 写入 `log.d/` 碎片。
+- **PR 与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push（派生文件自动以 main 为准，`log.md` 新增条目自动转存为碎片）。只剩真实源文件冲突时再按内容合并。

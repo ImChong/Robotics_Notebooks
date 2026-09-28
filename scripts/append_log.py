@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-append_log.py — 向 log.md 顶部插入一条操作记录（叙事层；站点活动以 git 为准）
+append_log.py — 新增一条操作记录到 log.d/ 碎片（叙事层；站点活动以 git 为准）
+
+碎片由 main 上的 export.yml 自动并入 log.md 顶部；PR 不要直接改 log.md（避免合并冲突）。
 
 用法:
     python3 scripts/append_log.py <op> "<描述>"
@@ -16,7 +18,7 @@ append_log.py — 向 log.md 顶部插入一条操作记录（叙事层；站点
 import sys
 from datetime import date
 
-from log_md import DEFAULT_LOG_PATH, write_log_prepend
+from log_md import write_log_fragment
 
 VALID_OPS = {"ingest", "query", "lint", "catalog", "index", "structural"}
 
@@ -40,9 +42,9 @@ def main() -> None:
 
     today = date.today().isoformat()
     entry = f"## [{today}] {op} | {desc}\n\n"
-    write_log_prepend(entry, DEFAULT_LOG_PATH)
+    path = write_log_fragment(entry, op, today=today)
 
-    print(f"✅ 已插入 log.md 顶部: [{today}] {op} | {desc}")
+    print(f"✅ 已写入日志碎片 {path.name}: [{today}] {op} | {desc}")
 
 
 if __name__ == "__main__":

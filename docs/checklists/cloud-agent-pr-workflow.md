@@ -5,7 +5,8 @@
 ## 1. 分支与提交
 
 1. 自 `main`（或任务指定的 base）检出功能分支，名称使用仓库约定前缀与后缀（例如 `cursor/<topic>-e361`）。
-2. 涉及 `wiki/` 或派生索引时，提交前**必须**运行 `make ci-preflight`（或任务要求的等价 CI 门禁），避免仍入库的派生文件（统计、徽章、`catalog.md` 等）与远端不一致；大体积站点 JSON 与 sitemap 已 gitignore，无需提交。
+2. 涉及 `wiki/` 或派生索引时，提交前**必须**运行 `make ci-preflight`（或任务要求的等价 CI 门禁）做本地检查。派生文件（站点 JSON、sitemap、统计、徽章）全部 gitignore，**只提交源文件**；**不得修改 `catalog.md` / `log.md`**（main 上 `export.yml` 维护；日志用 `make log` 写 `log.d/` 碎片）。
+   - **合并前与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push——派生文件冲突自动以 main 为准，无需人工介入；只有同一源文件（如同一 wiki 页）被双方改动时才需按内容合并。
 3. 仅 `stage` 与本次任务相关的文件；提交信息遵循根目录 [`AGENTS.md`](../../AGENTS.md) 中的 **中文 commit 规范**。
 
 ## 2. 推送远端
