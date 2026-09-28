@@ -20,6 +20,13 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 
 把公司技术分享按**世界与动作建模、整机层级控制、全身技能与仿真迁移**三种阅读视角组织，可以更快找到训练目标、动作接口和真机闭环的不同答案；一家公司可以同时出现在几条路线中。
 
+## 30 秒读懂
+
+- **三种视角对应机器人栈的三层**：上层“看懂世界、生成动作”（VLA / WAM），中层“大小脑怎么接”（整机接口），下层“身体怎么稳稳做出来”（WBC、仿真迁移）。见下方分层图。
+- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree 在矩阵里都横跨两列以上。
+- **“有模型名” ≠ “能复现”**：开放程度差异很大，从“代码 + 权重”到“只有博客叙述”都有；复现前逐项核对代码、权重、数据、真机接口。
+- **不能排名**：各家任务、本体、频率、测评环境不同，本页只做路线对照，不是基准测试。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -30,33 +37,121 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 | RTC | Real-Time Action Chunking | 在执行中衔接新旧动作块以减小推理停顿 |
 | RL | Reinforcement Learning | 用交互反馈优化策略 |
 
-## 三种视角与各自的核心问题
+## 一张图：三种视角落在机器人栈的哪一层
 
-| 阅读视角 | 代表团队和作品 | 阅读时追问 |
+```mermaid
+flowchart TB
+  subgraph L1 ["① 世界与动作基础模型 / VLA"]
+    direction LR
+    IN["相机图像 + 语言指令<br/>（+ 人类视频 / 机器人数据预训练）"]
+    WM["世界预测<br/>未来观测 / 视频"]
+    ACT["动作生成<br/>动作块 chunk / Flow"]
+    IN --> ACT
+    IN -.->|"部分路线"| WM
+    WM -.->|"推理时是否真的运行？须逐项核查"| ACT
+  end
+  subgraph L2 ["② 整机与大小脑接口"]
+    IF["输出什么给下层？<br/>关节目标 / 运动 latent / 高层指令"]
+  end
+  subgraph L3 ["③ 强全身技能 / Real2Sim2Real"]
+    direction LR
+    SIM["仿真训练<br/>接触、跌倒、扰动覆盖"]
+    WBC["全身控制 WBC<br/>高频低层执行"]
+    SIM -->|"sim2real"| WBC
+  end
+  ACT --> IF
+  IF --> WBC
+  WBC --> ROBOT["人形真机"]
+```
+
+读图要点：
+
+- **虚线是最常被宣传混淆的地方**：“有世界模型”不代表推理时走了“世界预测 → 动作”这条边；读每个项目时确认它实际用了哪条边。
+- **第 ② 层决定延迟闭环**：上层模型慢、下层控制快，中间接口的形式决定谁负责高频稳定。
+- **第 ③ 层的难点在仿真覆盖**：接触、跌倒、损伤能否在仿真中出现，决定策略能否上真机。
+
+## 公司 × 视角矩阵
+
+● = 本页主要代表作品落在此列；○ = 公开材料有涉及、可作补充对照；空 = 本页未归入该视角。依据为已收录的官方入口，**非完整业务盘点**。
+
+| 公司 / 团队 | ① 世界与动作 / VLA | ② 整机与接口 | ③ 全身技能 / 仿真 | 代表作品 |
+| --- | :---: | :---: | :---: | --- |
+| [Physical Intelligence](../../sources/sites/pi-website-technical-articles.md) | ● |  |  | π₀→π₀.₇、FAST、Hi Robot、KI、RTC、π*₀.₆、MEM |
+| 1X | ● | ● |  | World Model、Redwood、NEO |
+| Google DeepMind | ● |  |  | Gemini Robotics |
+| Galaxea 星海图 | ● |  |  | G0、Fast-WAM |
+| [AgiBot 智元](../../sources/sites/agibot-world.md) | ● |  |  | GO 系列、AgiBot World 数据 |
+| Galbot 银河通用 | ● |  | ● | AstraBrain-WAM、AstraBrain-WBC |
+| Figure |  | ● |  | Helix → Helix 02 → Helix 2.5 |
+| [Skild AI](../entities/skild-ai.md) |  | ● |  | Skild Brain |
+| [NVIDIA](../entities/isaac-gr00t.md) | ○ | ● | ● | GR00T、Cosmos、Isaac Lab、GR00T Control |
+| LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
+| Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
+| [Light Origins 亮源新创](../entities/light-o1.md) | ○ |  | ● | Light-O1、REACT、Parkour、Nav |
+
+NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）。
+
+## 三种视角各自追问什么
+
+| 阅读视角 | 核心追问 | 读完应能回答 |
 | --- | --- | --- |
-| 世界与动作基础模型 / VLA | [PI](../../sources/sites/pi-website-technical-articles.md)：π₀→π₀.₇，含 FAST、Hi Robot、KI、RTC、π*₀.₆、人视频迁移、MEM；1X：World Model / Redwood；Galbot：AstraBrain-WAM；Galaxea：G0 / Fast-WAM；[AgiBot](../../sources/sites/agibot-world.md)：GO / AgiBot World；Google DeepMind：Gemini Robotics | 预测的是未来观测、未来动作还是二者？推理时真的运行世界预测吗？数据、权重和训练代码开放到哪一层？ |
-| 通用人形整机与大小脑接口 | Figure：Helix→Helix 02→Helix 2.5；[Skild](../entities/skild-ai.md)：Skild Brain；[NVIDIA](../entities/isaac-gr00t.md)：GR00T / Cosmos / Isaac Lab；LimX：COSA / FluxVLA；1X：NEO / Redwood；Unitree：G1 / UnifoLM | 视觉语言模块输出关节目标、运动 latent 还是高层指令？高频低层由谁执行？不同模块延迟如何闭环？ |
-| 强全身技能、Real2Sim2Real | [Light Origins](../entities/light-o1.md)：Light-O1、REACT、Parkour、Nav；Galbot：AstraBrain-WBC；LimX：腿足技能 / COSA；Unitree：G1 控制生态；NVIDIA：GR00T Control / Isaac Lab | 人视频/动作先验如何变成可执行参考？仿真如何覆盖接触、跌倒、损伤？真机部署观察和动作频率是什么？ |
+| ① 世界与动作基础模型 / VLA | 预测的是未来观测、未来动作还是二者？推理时真的运行世界预测吗？数据、权重和训练代码开放到哪一层？ | 训练目标是什么、动作以何种形式输出 |
+| ② 整机与大小脑接口 | 视觉语言模块输出关节目标、运动 latent 还是高层指令？高频低层由谁执行？不同模块延迟如何闭环？ | 系统分几层、每层频率和接口 |
+| ③ 强全身技能 / Real2Sim2Real | 人视频/动作先验如何变成可执行参考？仿真如何覆盖接触、跌倒、损伤？真机部署观察和动作频率是什么？ | 从动作先验到真机的完整链路 |
 
-上述是**学习视角**，并非互斥的公司赛道：例如 Light-O1 也做视觉语言动作预训练，1X 既研究世界模型又构建整机。
+## 四组容易误读的对照
 
-## 四个具体对照
+| 对照 | 左边公开的重点 | 右边公开的重点 | 常见误读 → 正确做法 |
+| --- | --- | --- | --- |
+| π 系 vs 1X 世界模型 | VLA 动作生成、动作块执行、记忆等多个独立研究问题 | 动作条件下未来视频/行为的建模 | “有世界模型” ⇒ “已公开 World Model→Policy 部署” ✗ → 查推理时是否运行世界预测 |
+| Figure vs NVIDIA | Helix 在 Figure 机器人上的多系统全身闭环 | Cosmos、仿真、GR00T、端侧平台等多层资产 | 把两者当同类产品比较 ✗ → Figure 追系统接口，NVIDIA 追数据生成→训练→部署的模块边界 |
+| Light Origins vs Galbot | 人类动作预训练、Real2Sim2Real、韧性控制 | 区分 AstraBrain-WAM 与 AstraBrain-WBC | “做 WBC” ⇒ “端到端 WAM” ✗ → 观察世界侧与执行侧如何连接 |
+| 有 GitHub vs 真开放 | openpi、Light-O1 推理代码/预览权重、Isaac-GR00T 提供复现入口 | Figure / Skild 公开博客主要是方法与实验叙述 | “公司有 GitHub 账号” ⇒ “模型开源” ✗ → 以各项目资源页为准 |
 
-1. **π 系与 1X 世界模型：** π 系公开了 VLA 动作生成、动作块执行与记忆的多个独立研究问题；1X 世界模型主要展示对动作条件下未来视频/行为的建模。不能把“有世界模型”直接推导为“已公开端到端 World Model→Policy 的部署实现”。
-2. **Figure 与 NVIDIA：** Helix 发布聚焦在 Figure 机器人上的多系统全身闭环；NVIDIA 公开 Cosmos、仿真、GR00T 和端侧平台等多层资产。学习 Figure 时追系统接口，学习 NVIDIA 时追数据生成、训练到部署的实际模块边界。
-3. **Light Origins 与 Galbot：** 前者的公开材料适合追人类动作预训练、Real2Sim2Real 和韧性控制；后者区分 AstraBrain-WAM 与 AstraBrain-WBC，适合观察“世界侧”和“执行侧”如何连接。WBC 也不自动等于端到端 WAM。
-4. **开源程度：** PI 的 openpi、Light-O1 的推理代码/预览权重、NVIDIA 的 Isaac-GR00T 等提供具体复现入口；Figure / Skild 的公开博客主要提供方法与实验叙述。比较时应以各项目资源页为准，不用公司是否有 GitHub 账号代替资产核查。
+## 开放程度速览
+
+按[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)“开放程度及核查入口”一列整理；✅ 有公开入口，🟡 部分公开，❌ 技术发布页未见，❓ 需逐项目核查。
+
+| 公司 | 代码 | 权重 | 数据 | 备注 |
+| --- | :---: | :---: | :---: | --- |
+| Physical Intelligence | ✅ | ✅ | ❓ | [openpi](https://github.com/Physical-Intelligence/openpi)；不代表后续所有版本开放 |
+| Light Origins | 🟡 | 🟡 | ❌ | [Light-O1](https://github.com/lightorigins/Light-O1) 推理代码与预览权重；完整预训练资产未公开 |
+| NVIDIA | ✅ | ❓ | ❓ | [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)、Isaac Lab 有公开仓；各模块授权分别核查 |
+| AgiBot | ❓ | ❓ | ✅ | AgiBot World 数据集；模型版本分开核查 |
+| 1X | ❓ | ❓ | 🟡 | 早期 World Model 发布页提供部分数据/基线；Redwood 完整策略另查 |
+| Galaxea | 🟡 | ❓ | ❓ | 有公开仓，不代表所有模型开放 |
+| LimX | 🟡 | ❓ | ❓ | FluxVLA 文档有可操作入口；COSA 以各发布页为准 |
+| Unitree | 🟡 | ❓ | ❓ | 有 SDK / 示例仓；不等于 UnifoLM 完整训练开放 |
+| Figure | ❌ | ❓ | ❓ | Helix 技术发布页未提供训练与部署源码链接 |
+| Skild AI | ❓ | ❓ | ❓ | 以公开说明为主 |
+| Google DeepMind | ❓ | ❓ | ❓ | 官方页面区分论文/演示与可获得模型 |
+| Galbot | ❓ | ❓ | ❓ | 项目级源码/权重须从各发布页核对 |
+
+> ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表按截至 2026-09-28 的收录资料整理，会过期。
 
 ## 建议阅读顺序
 
-- **想研究 VLA / Flow / chunk：** [PI 逐篇索引](../../sources/sites/pi-website-technical-articles.md) → [VLA 演进](../overview/vla-evolution-lineage.md) → [VLA 纵深](../../roadmap/depth-vla.md)。
-- **想研究世界预测如何帮助执行：** [1X World Model 归档](../../sources/sites/1x-world-model-redwood.md) → [WAM 概念](../concepts/world-action-models.md) → [WAM 纵深](../../roadmap/depth-wam.md)；再比 Galbot / Galaxea 的最新发布。
-- **想研究人形全身落地：** [Light-O1](../entities/light-o1.md) → [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) → [全身运控技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)；对照 Figure Helix 和 GR00T。
-- **想动手复现：** 优先核对官方仓库里的**代码、权重、数据、真机接口**是否齐备；按 [VLA 开源复现谱系](../overview/vla-open-source-repro-landscape-2025.md) 选与硬件匹配的项目。
+```mermaid
+flowchart LR
+  Q{"你想研究什么？"}
+  Q -->|"VLA / Flow / chunk"| A1["PI 逐篇索引"] --> A2["VLA 演进"] --> A3["VLA 纵深路线"]
+  Q -->|"世界预测如何帮助执行"| B1["1X World Model"] --> B2["WAM 概念"] --> B3["WAM 纵深路线"] --> B4["对比 Galbot / Galaxea"]
+  Q -->|"人形全身落地"| C1["Light-O1"] --> C2["具身三层控制架构"] --> C3["全身运控技术地图"] --> C4["对照 Figure Helix / GR00T"]
+  Q -->|"动手复现"| D1["核对代码 / 权重 / 数据 / 真机接口"] --> D2["VLA 开源复现谱系"]
+```
+
+对应链接：
+
+- **VLA / Flow / chunk：** [PI 逐篇索引](../../sources/sites/pi-website-technical-articles.md) → [VLA 演进](../overview/vla-evolution-lineage.md) → [VLA 纵深](../../roadmap/depth-vla.md)。
+- **世界预测如何帮助执行：** [1X World Model 归档](../../sources/sites/1x-world-model-redwood.md) → [WAM 概念](../concepts/world-action-models.md) → [WAM 纵深](../../roadmap/depth-wam.md)；再比 Galbot / Galaxea 的最新发布。
+- **人形全身落地：** [Light-O1](../entities/light-o1.md) → [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) → [全身运控技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)；对照 Figure Helix 和 GR00T。
+- **动手复现：** 先用上方“开放程度速览”筛选，再按 [VLA 开源复现谱系](../overview/vla-open-source-repro-landscape-2025.md) 选与硬件匹配的项目。
 
 ## 局限与风险
 
-截至 2026-09-28，此页比较的是**官方公开材料及已收录资料**，并非统一基准实验。不同团队的任务、本体、频率和测评环境不同，不能从宣传演示直接排出性能名次。1X 的世界模型、Figure 的 Helix 与各 WAM 的源码开放范围应按单篇项目页复核。
+- 截至 2026-09-28，此页比较的是**官方公开材料及已收录资料**，并非统一基准实验。
+- 不同团队的任务、本体、频率和测评环境不同，不能从宣传演示直接排出性能名次。
+- 矩阵和开放程度表是阅读辅助，1X 的世界模型、Figure 的 Helix 与各 WAM 的源码开放范围应按单篇项目页复核。
 
 ## 关联页面
 
@@ -65,6 +160,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 - [VLA 演进](../overview/vla-evolution-lineage.md)
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md)
 - [人形运控小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
 
 ## 参考来源
 
