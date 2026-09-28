@@ -16,6 +16,12 @@
 - **开源结论：** ForceTwin **未开源**；Contact-Guided **未开源**（2026-09-28 复核）
 - **关键页：** [paper-forcetwin](wiki/entities/paper-forcetwin.md)、[paper-contact-guided-exploration-locomanipulation](wiki/entities/paper-contact-guided-exploration-locomanipulation.md)
 
+## [2026-09-28] ingest | sources/papers/scaledp_arxiv_2409_14411.md + sites/scaling-diffusion-policy-github-io — ScaleDP（arXiv:2409.14411，ICRA 2025）；AdaLN+unmasking 使 DP-T 扩至 1B；项目页 Code 误链 DexVLA、无官方仓；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2409.14411 与 scaling-diffusion-policy.github.io
+- **开源结论：** **未开源**（项目页 Code → juruobenruo/DexVLA，非 ScaleDP）
+- **关键页：** [paper-scaledp-scaling-diffusion-transformer-policy](wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md)
+
 ## [2026-09-28] ingest | sources/papers/peebles_dit_arxiv_2212_09748.md + sites/dit-wpeebles-com + repos/facebookresearch-dit — DiT（arXiv:2212.09748，ICCV 2023）；项目页链 GitHub + XL/2 权重；升格 paper-dit-scalable-diffusion-transformers、合并 RCL #086 stub；自动合并 PR
 
 - **意图：** 用户指定 arXiv:2212.09748 与 wpeebles.com/DiT
