@@ -18,7 +18,7 @@
 | 2025-04-22 | [π₀.₅: A VLA with Open-World Generalization](https://www.pi.website/blog/pi05) | 混合知识来源提升陌生家庭环境中的任务泛化；[论文实体](../../wiki/entities/paper-pi05-open-world-vla.md)。 |
 | 2025-05-28 | [VLAs that Train Fast, Run Fast, and Generalize Better](https://www.pi.website/research/knowledge_insulation) | Knowledge Insulation 用 FAST token 训练骨干，动作专家梯度不回传。[论文实体](../../wiki/entities/paper-knowledge-insulation.md)。 |
 | 2025-06-09 | [Real-Time Action Chunking with Large Models](https://www.pi.website/research/real_time_chunking) | RTC 在推理期补全下一段动作 chunk，针对大模型延迟造成的停顿。文章还链接 2025-12-08 的训练期后续论文。[论文实体](../../wiki/entities/paper-real-time-chunking.md)。 |
-| 2025-11-17 | [π*₀.₆: A VLA that Learns from Experience](https://www.pi.website/blog/pistar06) | RECAP 用真实执行经验和优势条件专精通用策略，针对成功率与任务吞吐。[论文实体](../../wiki/entities/paper-pistar06-recap.md)。 |
+| 2025-11-17 | [π*₀.₆: A VLA that Learns from Experience](https://www.pi.website/blog/pistar06) | RECAP 用真实执行经验和优势条件专精通用策略，针对成功率与任务吞吐。[论文实体](../../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)。 |
 | 2025-12-16 | [Emergence of Human to Robot Transfer in VLAs](https://www.pi.website/research/human_to_robot) | 预训练多样性足够后，人视频共微调才会出现迁移；不要理解成无需机器人数据。[论文实体](../../wiki/entities/paper-pi-human-to-robot.md)。 |
 | 2025-12-22 | [Moravec's Paradox and the Robot Olympics](https://www.pi.website/blog/olympics) | 用涂花生酱、洗锅、插钥匙等精细任务检验 π₀.₆ 微调后的操作能力与难点。[笔记](../../wiki/entities/pi-robot-olympics.md)。 |
 | 2026-03-03 | [VLAs with Long and Short-Term Memory](https://www.pi.website/research/memory) | Multi-Scale Embodied Memory (MEM) 同时利用短期和长期历史来执行跨多个步骤、超过十分钟的任务。 |

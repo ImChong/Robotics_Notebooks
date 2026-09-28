@@ -73,6 +73,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
 - [Skild AI 官方站归档](../../sources/sites/skild-ai.md)
+- [The Physical Intelligence Layer](../entities/pi-physical-intelligence-layer.md) — 伙伴现场部署，不是新模型发布
 
 ## 推荐继续阅读
 

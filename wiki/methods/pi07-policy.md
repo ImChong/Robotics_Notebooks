@@ -122,5 +122,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* — <https://arxiv.org/abs/2410.24164>（π 系方法学前身）
-- [π*₀.₆ / RECAP](../entities/paper-pistar06-recap.md) — 优势条件专精，π₀.₇ 蒸馏源之一
+- [π*₀.₆ / RECAP](../entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 优势条件专精，π₀.₇ 蒸馏源之一
 - [Hi Robot](../entities/paper-hi-robot.md) — 高层语言步骤与低层 π₀ 的分层参照

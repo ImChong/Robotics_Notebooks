@@ -21,7 +21,7 @@
         { "date": "2025-04", "title": "π₀.₅", "track": "VLA", "desc": "混合知识来源，面向陌生家庭的开放世界泛化。", "id": "entity-paper-pi05-open-world-vla", "url": "https://www.pi.website/blog/pi05" },
         { "date": "2025-05", "title": "KI", "track": "训练", "desc": "FAST token 训练骨干，动作专家出连续动作且梯度不回传。", "id": "entity-paper-knowledge-insulation", "url": "https://www.pi.website/research/knowledge_insulation" },
         { "date": "2025-06", "title": "RTC", "track": "推理", "desc": "推理期补全下一段动作 chunk，避免大模型在边界停顿或跳变。", "id": "entity-paper-real-time-chunking", "url": "https://www.pi.website/research/real_time_chunking" },
-        { "date": "2025-11", "title": "π*₀.₆", "track": "经验 RL", "desc": "RECAP 优势条件化融合示范、自主 rollout 与人工纠正；最难任务吞吐翻倍以上、失败率约减半。", "id": "entity-paper-pistar06-recap", "url": "https://www.pi.website/blog/pistar06" },
+        { "date": "2025-11", "title": "π*₀.₆", "track": "经验 RL", "desc": "RECAP 优势条件化融合示范、自主 rollout 与人工纠正；最难任务吞吐翻倍以上、失败率约减半。", "id": "entity-paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience", "url": "https://www.pi.website/blog/pistar06" },
         { "date": "2025-12", "title": "人→机器人", "track": "数据", "desc": "预训练多样性足够后，人视频按另一种本体共微调即可迁移。", "id": "entity-paper-pi-human-to-robot", "url": "https://www.pi.website/research/human_to_robot" },
         { "date": "2025-12", "title": "Robot Olympics", "track": "评测", "desc": "微调 π₀.₆ 尝试外部家务挑战；自报平均成功率 52%，无预训练对照进度 9%。", "id": "entity-pi-robot-olympics", "url": "https://www.pi.website/blog/olympics" },
         { "date": "2026-02", "title": "PI Layer", "track": "应用", "desc": "伙伴用自有硬件接 π₀ 到 π*₀.₆；Weave / Ultra 现场报告干预下降。", "id": "entity-pi-physical-intelligence-layer", "url": "https://www.pi.website/blog/partner" },

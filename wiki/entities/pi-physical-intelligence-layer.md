@@ -7,7 +7,7 @@ updated: 2026-09-28
 related:
   - ../methods/π0-policy.md
   - ./paper-pi05-open-world-vla.md
-  - ./paper-pistar06-recap.md
+  - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ../methods/pi07-policy.md
 sources:
   - ../../sources/blogs/pi_physical_intelligence_layer_2026-02-24.md
@@ -58,14 +58,14 @@ Ultra 写美国客户仓库的订单打包。一段连续镜头标注自主率 *
 ## 局限与风险
 
 - 确认未开源。没有伙伴栈的代码、π₀.₆ 权重或「数据进预训练」的配方。
-- 42%、50%、96.4% 是伙伴自述。任务、夹爪、干预定义与 [π\*₀.₆](./paper-pistar06-recap.md)、[π₀.₇](../methods/pi07-policy.md) 的实验不同，不能横比吞吐。
+- 42%、50%、96.4% 是伙伴自述。任务、夹爪、干预定义与 [π\*₀.₆](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)、[π₀.₇](../methods/pi07-policy.md) 的实验不同，不能横比吞吐。
 - 图表里没写进正文的柱高不要从截图估成精确百分比。
 
 ## 关联页面
 
 - [π₀](../methods/π0-policy.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)
-- [π\*₀.₆ / RECAP](./paper-pistar06-recap.md)
+- [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [π₀.₇](../methods/pi07-policy.md)
 
 ## 参考来源

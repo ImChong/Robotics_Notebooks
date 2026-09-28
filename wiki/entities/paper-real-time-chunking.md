@@ -9,7 +9,7 @@ code: https://github.com/Physical-Intelligence/real-time-chunking-kinetix
 related:
   - ../methods/action-chunking.md
   - ../methods/π0-policy.md
-  - ./paper-pistar06-recap.md
+  - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-wam-realtime-async.md
 sources:
   - ../../sources/papers/real_time_chunking_arxiv_2506_07339.md
@@ -86,7 +86,7 @@ Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `trai
 
 - [Action Chunking](../methods/action-chunking.md)
 - [π₀](../methods/π0-policy.md)
-- [π\*₀.₆ / RECAP](./paper-pistar06-recap.md)
+- [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [异步 WAM 部署](./paper-wam-realtime-async.md)
 
 ## 参考来源

@@ -5,14 +5,14 @@ title: PI Robot Olympics 微调演示
 status: complete
 updated: 2026-09-28
 related:
-  - ./paper-pistar06-recap.md
+  - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-pi-human-to-robot.md
   - ../methods/π0-policy.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/blogs/pi_robot_olympics_2025-12-22.md
   - ../../sources/sites/pi-website-technical-articles.md
-summary: "2025-12-22 博客：微调 π₀.₆ 尝试 Holson 的 Robot Olympics。五项中三项金、两项银；自报平均成功率 52%、进度 72%。无预训练 VLM 对照进度 9%。确认未开源。"
+summary: "2025-12-22 博客：微调 π₀.₆ 尝试 Holson 的 Robot Olympics。五项中三项金、两项银；自报平均成功率 52%、进度 72%。对照 VLM 未做机器人预训练，进度 9%。确认未开源。"
 ---
 
 # Robot Olympics：用 π₀.₆ 微调硬操作
@@ -59,7 +59,7 @@ Moravec 悖论在这里被说成数据问题：认知任务能从网上的解释
 
 ## 关联页面
 
-- [π\*₀.₆ / RECAP](./paper-pistar06-recap.md)
+- [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [人视频迁移](./paper-pi-human-to-robot.md)
 - [π₀](../methods/π0-policy.md)
 - [操作任务](../tasks/manipulation.md)
