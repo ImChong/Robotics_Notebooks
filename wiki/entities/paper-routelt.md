@@ -10,6 +10,7 @@ related:
   - ../methods/behavior-cloning.md
   - ../entities/paper-steam-advantage-modeling.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-21_25.md
   - ../../sources/papers/routelt_arxiv_2609_26467.md
 summary: "RouteRLT（arXiv:2609.26467）：从冻结 SmolVLA latent 学习何时切换哪枚 RL specialist；LIBERO 92.22%、真机 insertion 35.0%；代码未列链接。"
 ---

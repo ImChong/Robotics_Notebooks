@@ -21,6 +21,7 @@ related:
   - ../overview/collab-wm-12-papers-technology-map.md
   - ../overview/li-auto-machembodied-4-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-21_25.md
   - ../../sources/papers/me-u0_arxiv_2609_25627.md
   - ../../sources/repos/me_u0.md
   - ../../sources/sites/me-u0.md

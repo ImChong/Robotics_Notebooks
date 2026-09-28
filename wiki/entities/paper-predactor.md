@@ -11,6 +11,7 @@ related:
   - ../tasks/locomotion.md
   - ../entities/unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/predactor_arxiv_2609_24840.md
   - ../../sources/sites/predactor-masteryip-github-io.md
   - ../../sources/repos/predactor.md

@@ -20,6 +20,7 @@ related:
   - ../concepts/latent-imagination.md
   - ./paper-ctrl-world.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-21_25.md
   - ../../sources/papers/pointcast_arxiv_2609_28393.md
   - ../../sources/sites/pointcast-wm-github-io.md
 summary: "PointCast（ICRA'27 投稿）：19.8M DiT 点集 WM—持久点身份轨迹监督；local/global 注意力 + actor cross-attn；一套权重覆盖 rigid/cloth/rope/cabinet；仿真 4 regime 中 3 第一；PGND 真机 6 类 4 第一；冻结 WM MPC 规划。"

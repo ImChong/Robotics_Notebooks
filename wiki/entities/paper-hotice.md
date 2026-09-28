@@ -12,6 +12,7 @@ related:
   - ../entities/unitree-g1.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/hotice_arxiv_2609_25363.md
   - ../../sources/sites/hotice2027-github-io.md
 summary: "HOTICE（arXiv:2609.25363，USC）：HOD-PF 人形/物体解耦势场 + dual-agent RL + specialist 蒸馏；MuJoCo 88.5% SR、G1 真机 cluttered 搬运；代码待发布。"

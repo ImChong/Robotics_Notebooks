@@ -15,6 +15,7 @@ related:
   - ./paper-humanoid-dart.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/dcrr_arxiv_2609_21467.md
 summary: "DCRR（arXiv:2609.21467，KETI/SNU/高丽大学）：单条重定向搬运 clip 经 reference recomposition + 冻结 teacher 闭环 replay + achieved-goal relabel 构造距离条件终止监督，BC 蒸馏为无参考策略并 PPO RLFT；G1 上 Carry/Kick-Push/Crouch-Push/Drag 四模式，DCRR-BC 总体归一化距离 MAE 0.15 vs Src-BC 0.28，硬件可调运输距离。"
 ---

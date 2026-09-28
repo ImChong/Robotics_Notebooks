@@ -11,6 +11,7 @@ related:
   - ../entities/paper-predactor.md
   - ../entities/unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/sample_simulate_select_arxiv_2609_26420.md
   - ../../sources/sites/sample-simulate-select-memmesheimer.md
 summary: "S³（arXiv:2609.26420）：零训练 text-to-motion→G1 IK→SONIC 物理 rollout 选优；HumanML3D 直立 89.5%@N=8；177/177 真机 gate 站立；代码未开源。"

@@ -20,6 +20,7 @@ related:
   - ./paper-vision-dribbling-humanoid-soccer-privileged-representation.md
   - ../overview/embodied-13-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/davis-humanoid-soccer_arxiv_2609_28175.md
   - ../../sources/sites/davis-thusi-lab.md
   - ../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md
