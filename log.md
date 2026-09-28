@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | Jetson AI Lab OpenPi π₀.₅ on Thor 教程入库：sources/courses + wiki/entities，交叉更新 VLA 部署与 APXInf 对照
+
 ## [2026-09-28] ingest | 收录 Physical Intelligence 官网 13 篇技术文章并梳理 π 系模型、动作表示与闭环控制路线
 
 ## [2026-09-28] ingest | FluxVLA Engine arXiv:2609.17210 — 论文/sources/sites/repos 归档并深化 fluxvla-engine 实体（流程图+RTC 真机读法）
