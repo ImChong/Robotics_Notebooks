@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | human five ROBOTIS Humanoid Skills：K1 全身 BeyondMimic/Newton + Worker GR00T/Cosmos 技术地图与实体交叉
+
 ## [2026-09-28] lint | wiki/comparisons/robot-foundation-model-company-paths-2026.md — 读者视角重构：新增分层图、公司×视角矩阵、开放程度速览与阅读路径图
 
 ## [2026-09-28] ingest | sources/sites/pi-website-technical-articles.md — 按 pi.website/blog 补齐 Hi Robot、KI、RTC、π*₀.₆、人视频迁移、Olympics 与 PI Layer，并修正公司路线跳转
