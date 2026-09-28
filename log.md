@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | HomeBody（Stanford TML）G1+GPT Astra 技能库长程 loco-manip；GitHub 待发布；paper-homebody + sources 三件套
+
 ## [2026-09-28] ingest | Project SuperDex 复核（projectsuperdex.com + v1.0.0）；更新 sources 与 entity 开源/发布/引用占位
 
 ## [2026-09-28] ingest | Compression is Routing（arXiv:2512.16963）重建误差作无门控 MoE 路由；技术报告未开源；paper-compression-is-routing
