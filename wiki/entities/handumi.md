@@ -13,6 +13,7 @@ related:
   - ./paper-bifrost-umi.md
   - ./paper-halomi-humanoid-loco-manipulation.md
   - ./paper-hifi-umi.md
+  - ./paper-kiwi-kinematic-interface-wild.md
   - ./xyz-deux.md
   - ./twindex.md
 sources:
