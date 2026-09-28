@@ -5325,7 +5325,7 @@
 - [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
-- [路线（纵深）：扩散动作 → Robotic DiT → Flow → 人形 GR00T](roadmap/depth-robotics-diffusion-dit-flow.md) — 摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形  `📅unknown` `[roadmap_page]`
+- [路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 RSI（递归自我改进）](roadmap/depth-rsi.md) — 摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL / 真机安全部署）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，最后落到真机上的分层安全部署（急停 / 安全状态机 / 跌倒减损  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`
