@@ -21,6 +21,7 @@ related:
   - ./paper-orthoskillvla.md
   - ./libero-benchmark.md
   - ./calvin-benchmark.md
+  - ./paper-compression-is-routing.md
 sources:
   - ../../sources/papers/atomicvla_arxiv_2603_07648.md
   - ../../sources/sites/atomicvla-zhanglk9-github-io.md
@@ -161,7 +162,7 @@ sequenceDiagram
 
 - **读论文盯三输出耦合：** plan / skill / action 是否联合训练，以及 **SG-MoE** 如何分配 expert——这是相对 π₀ 的核心差异。
 - **长程增益集中在 LONG 与 CALVIN 链长：** LIBERO 标准集 **+2.4%** 边际较小，**+10% LIBERO-LONG** 更能代表方法价值。
-- **持续学习看 routing encoder：** 新技能自动挂 expert 是工程上可扩展点；与 [OrthoSkillVLA](./paper-orthoskillvla.md) 的子空间/MoE 路线可对照选型。
+- **持续学习看 routing encoder：** 新技能自动挂 expert 是工程上可扩展点；与 [OrthoSkillVLA](./paper-orthoskillvla.md) 的子空间/MoE 路线可对照选型；信息论侧无门控路由对照见 [Compression is Routing](./paper-compression-is-routing.md)（LLM 技术报告，**未开源**）。
 - **复现先 HF 后自训：** [likui/AtomicVLA-libero](https://huggingface.co/likui/AtomicVLA-libero) + `serve_policy.py` 验证协议；完整训练需自备 reasoning JSON。
 - **生态位：** openpi 用户的长程/技能库增强选项，而非替代 π₀ 预训练权重本身。
 
