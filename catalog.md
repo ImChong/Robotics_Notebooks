@@ -656,6 +656,7 @@
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
+- [LeRobot Humanoid](wiki/entities/lerobot-humanoid.md) — Hugging Face **LeRobot** 系开源 **12-DoF 双足** 整机：从 Onshape/BOM/3D 打印到 CAN 真机控制、MJLab 行走 RL、动力学辨识与 LeRob `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署 `📅unknown` `[entity_page]`
 - [LET-Base-Dataset](wiki/entities/let-base-dataset.md) — LET-Base-Dataset**（HF [`LejuRobotics/LET-Base-Dataset`](https://huggingface.co/datasets/LejuRoboti `📅unknown` `[entity_page]`
 - [LeTools](wiki/entities/letools.md) — LeTools**（<https://www.letools.lejurobot.com/>）是乐聚为 **Kuavo 全尺寸人形** 提供的 **采集–训练–部署软件层**：产品站把「All I `📅unknown` `[entity_page]`

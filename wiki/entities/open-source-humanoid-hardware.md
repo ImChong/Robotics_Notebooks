@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-09-24
+updated: 2026-09-28
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
@@ -23,6 +23,7 @@ related:
   - ./open-duck-mini-viewer.md
   - ./hightorque-robotics.md
   - ./encos-hunter130.md
+  - ./lerobot-humanoid.md
   - ../queries/humanoid-hardware-selection.md
   - ../../roadmap/motion-control.md
 sources:
@@ -70,6 +71,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 | **Asimov v1** | Asimov Inc. | 25 主动 + 2 被动（公开 README） | 铝结构 + MJF 尼龙；关节驱动以官方设计为准 | DIY Kit 目标价量级约 **1.5 万 USD**（以官网为准） | 单仓含 CAD/电气/**MuJoCo**；运控 API/策略仍在路线图 |
 | **OpenLoong 青龙** | 人形机器人（上海）/ 开放原子 | **43**（公开硬件 README） | 全尺寸公版；**EtherCAT** 关节总线；五指灵巧手 | 全栈开源图纸（制造门槛高，非 DIY 低价档） | **Framework**（ROS-free C++）+ **Dyn-Control**（MPC/WBC+MuJoCo）+ Isaac Gym/ROS 并行栈；详见 [OpenLoong](./openloong.md) |
 | **Handroid** | UNC Chapel Hill / Stanford | **27**（双形态） | **Dynamixel** + 3D 打印模块；滑轨在手/人形间重配置 | 桌面级（**0.33 m / 2.05 kg**）；CAD+BOM 已公开 | 统一遥操作/IL/RL 栈；控制代码截至 2026-07 待链出；详见 [Handroid](./handroid.md) |
+| **LeRobot Humanoid** | Hugging Face | **12**（双足、无臂） | **RobStride** CAN | DIY BOM + 3D 打印（成本随 BOM 波动） | 四仓：hardware / runtime / **MJLab** 训练 / MJWarp 辨识 + [LeRobot](./lerobot.md) 集成；详见 [LeRobot Humanoid](./lerobot-humanoid.md) |
 
 ## 1. Berkeley Humanoid (准直接驱动派)
 - **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。
@@ -124,6 +126,13 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **优点：** RoboCup 人形小尺寸官方生态、ICRA 2026 发布；与 [HoST](./paper-host-humanoid-standingup.md) 起身扩展、Panthera-HT 机械臂同源关节模组。
 - **局限：** 小型平台动态与载荷能力与全尺寸人形不可直接类比；多软件栈环境依赖需自行对齐。
 - **详情：** [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
+
+## 2g. LeRobot Humanoid（Hub 生态 12-DoF 双足）
+
+- **特点：** Hugging Face 与社区维护的 **四仓栈**（BOM/CAD、CAN+MuJoCo 运行时、MJLab 行走 RL、CMA-ES 辨识）；**先 commissioning 电机再总装** 的制造纪律写进 hardware README。
+- **优点：** 与 [LeRobot](./lerobot.md) 数据集/CLI 同生态；Onshape 公开 CAD；Pi 5 + `uv` 机载栈清晰。
+- **局限：** 当前迭代 **无双臂**；legged-zoo **无官方预训练行走权重**；真机 MIT 控制需严格安全流程。
+- **详情：** [LeRobot Humanoid](./lerobot-humanoid.md)
 
 ## 2f. Encos Hunter 130 / Hunter V2（130 cm 全栈开源）
 

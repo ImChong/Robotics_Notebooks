@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-09-24
+updated: 2026-09-28
 related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
@@ -30,6 +30,7 @@ related:
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ./isaac-teleop.md
+  - ./lerobot-humanoid.md
 sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/sites/lerobot-envhub-docs.md
@@ -63,7 +64,7 @@ sources:
 
 - **数据集（LeRobotDataset）**：存储和加载机器人演示数据。**v3.0** 为 Parquet shard + 分相机 MP4 + 关系型 `meta/`（多 episode  per 文件、Hub 流式、`finalize()` 推送）；详见 [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md)。`LeRobotDataset("lerobot/...")` 从 Hub 缓存或流式读取
 - **策略库**：内置主流策略实现。模仿学习：ACT、[Diffusion Policy](../methods/diffusion-policy.md)、VQ-BeT；强化学习：HIL-SERL、TDMPC；VLA：π0 / π0.5、GR00T N1.7、SmolVLA、XVLA、Evo-1；世界模型：VLA-JEPA、FastWAM
-- **硬件接口**：统一的 `Robot` 类连接电机、相机和真机。原生：SO-100/101、LeKiwi、Koch、HopeJR、Reachy2、OpenARM、Unitree G1、reBot B601 等；第三方包按 `lerobot_robot_*` / `lerobot_teleoperator_*` / `lerobot_camera_*` 命名即可被自动发现
+- **硬件接口**：统一的 `Robot` 类连接电机、相机和真机。原生：SO-100/101、LeKiwi、Koch、HopeJR、Reachy2、OpenARM、Unitree G1、reBot B601 等；第三方包按 `lerobot_robot_*` / `lerobot_teleoperator_*` / `lerobot_camera_*` 命名即可被自动发现。开源 **12-DoF 双足** [LeRobot Humanoid](./lerobot-humanoid.md) 在独立四仓提供 BOM/CAN 运行时与 MJLab 训练，并经 `lerobot_humanoid_lerobot_integration` 接入本框架
 - **仿真评测**：`lerobot-eval` 跑闭环评测。内置 LIBERO、Meta-World 等 `--env.type`；也可从 Hub 拉取第三方环境（EnvHub），见 [LeRobot EnvHub](../concepts/lerobot-envhub.md)
 
 ## 代码在 GitHub，权重和数据在 Hub
@@ -125,6 +126,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 
 ### 换一台机器人
 
+- [LeRobot Humanoid](./lerobot-humanoid.md)：Hugging Face 系 **12-DoF 双足** DIY 平台（hardware + runtime + MJLab 训练 + 动力学辨识四仓）；RobStride CAN、Pi 5 机载、LeRobot 数据集与部署接口
 - [unitree_lerobot](./unitree-lerobot.md)：Unitree 官方改版，适配 G1 双臂灵巧手采数 / 训练 / 测试；常与 [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md) 组成官方模仿学习闭环（组织导航见 [Unitree](./unitree.md)）
 - [LeTools](./letools.md)：乐聚 Kuavo 官方改版，rosbag 转 LeRobot Dataset v3，统一训 ACT / π / GR00T / LingbotVLA；数据对接 [LET-Base](./let-base-dataset.md) 与 [REAL-I](./icra-2026-real-i.md)
 - [reBot-DevArm](./rebot-devarm.md)：Seeed B601 桌面臂，官方 Wiki 有 LeRobot 入门教程；适合要 >1 kg 负载又想沿用 LeRobot 格式

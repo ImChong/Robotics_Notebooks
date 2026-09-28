@@ -22,6 +22,7 @@ related:
   - ./openloong.md
   - ./x-humanoid.md
   - ./tienkung-humanoid-open-source.md
+  - ./lerobot-humanoid.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ./figure-ai.md
@@ -152,6 +153,7 @@ flowchart TD
 - [全身运动控制](../concepts/whole-body-control.md)
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 - [Unitree](./unitree.md)
+- [LeRobot Humanoid](./lerobot-humanoid.md) — Hugging Face 12-DoF 开源双足（BOM + CAN 运行时 + MJLab + LeRobot 集成）
 - [乐聚机器人 / KUAVO](./leju-robotics.md)
 - [高擎机电（HighTorque Robotics）](./hightorque-robotics.md)
 - [四足机器人](./quadruped-robot.md)

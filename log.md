@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | sources/blogs/wechat_lerobot_humanoid_open_stack_2026-09-28.md + repos/lerobot_humanoid_* + lerobot_legged_zoo — LeRobot Humanoid 四仓开源栈（HF 硬件/运行时 + MJLab 训练 + MJWarp 辨识）；已开源；自动合并 PR
+
+- **意图：** 用户指定微信公众号策展链与四仓 + LeRobot/NVIDIA 文档入口
+- **开源结论：** **已开源**（hardware/runtime/identification Apache-2.0；legged-zoo 无预训练策略）
+- **关键页：** [lerobot-humanoid](wiki/entities/lerobot-humanoid.md)
+
 ## [2026-09-28] ingest | sources/papers/x_navdp_arxiv_2607_28560.md + sites/x-navdp-project-page + repos/internrobotics_x_navdp — X-NavDP GQRM 导航扩散 RL 后训练（arXiv:2607.28560）；已开源 NavDP/baselines/x-navdp + HF；自动合并 PR
 
 - **意图：** 用户指定项目页、HF、arXiv:2607.28560

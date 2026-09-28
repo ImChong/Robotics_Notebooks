@@ -14,7 +14,8 @@
 - **最近复核：** 2026-09-06（EnvHub / `lerobot-eval`）
 - **一句话说明：** Hugging Face 具身智能全栈：PyTorch 库与 CLI（GitHub）+ Hub 上的模型 / LeRobotDataset / **EnvHub 仿真环境**。
 - **代码：** https://github.com/huggingface/lerobot（**已开源**，Apache 2.0）
-- **沉淀到 wiki：** [lerobot](../../wiki/entities/lerobot.md)、[lerobot-envhub](../../wiki/concepts/lerobot-envhub.md)、[lerobot-dataset-v3](../../wiki/concepts/lerobot-dataset-v3.md)
+- **沉淀到 wiki：** [lerobot](../../wiki/entities/lerobot.md)、[lerobot-humanoid](../../wiki/entities/lerobot-humanoid.md)、[lerobot-envhub](../../wiki/concepts/lerobot-envhub.md)、[lerobot-dataset-v3](../../wiki/concepts/lerobot-dataset-v3.md)
+- **LeRobot Humanoid 四仓：** [lerobot_humanoid_hardware.md](lerobot_humanoid_hardware.md)、[lerobot_humanoid_runtime.md](lerobot_humanoid_runtime.md)、[lerobot_legged_zoo.md](lerobot_legged_zoo.md)、[lerobot_humanoid_identification.md](lerobot_humanoid_identification.md)
 - **交叉归档：** [lerobot-huggingface-org.md](../sites/lerobot-huggingface-org.md)、[lerobot-envhub-docs.md](../sites/lerobot-envhub-docs.md)、[lerobot-dataset-v3-docs.md](../sites/lerobot-dataset-v3-docs.md)
 
 ---

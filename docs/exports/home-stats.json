@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-28",
-  "node_count": 5403,
-  "edge_count": 47194,
+  "node_count": 5404,
+  "edge_count": 47208,
   "coverage": {
-    "covered": 5374,
-    "total": 5374,
+    "covered": 5375,
+    "total": 5375,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -268,7 +268,7 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
-      "degree": 1555,
+      "degree": 1556,
       "community_label": "运动控制（Locomotion） 社区"
     },
     {
