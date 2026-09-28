@@ -7,14 +7,14 @@
 - **机构：** Meta Platforms, Inc. / facebookresearch
 - **链接：** https://projectsuperdex.com/
 - **GitHub：** https://github.com/facebookresearch/project_superdex
-- **入库日期：** 2026-09-09
+- **入库日期：** 2026-09-09（2026-09-28 步骤 2.5 复核）
 - **一句话说明：** Meta 面向接触密集型灵巧操作的研究平台官网：四模块（Physics / Robotics / Studio / Lab）端到端管线，VR 遥操作计划 Q4 2026 发布。
 - **代码：** https://github.com/facebookresearch/project_superdex（**已开源**，Apache 2.0；资产与文档 CC BY 4.0）
 - **沉淀到 wiki：** 是 → [`wiki/entities/project-superdex.md`](../../wiki/entities/project-superdex.md)
 
 ---
 
-## 站点结构（2026-09-09 核查）
+## 站点结构（2026-09-28 复核）
 
 | 模块 | 文档入口 |
 |------|----------|
@@ -36,7 +36,8 @@
 | PyPI | `uv pip install superdex`（Python 3.12 预编译 wheel） |
 | 分支 | `stable` 对齐最新发布 |
 | 遥操作 | **SuperDex Teleop** 标 Q4 2026；Quest 3 端侧 C++，README 称 UE5 虚拟遥操作组件 |
-| 论文 | README 写「Citation details will be added here upon publication」——截至入库日 **无正式论文引用** |
+| 论文 | GitHub README 占位 citation（Mochi Team / implicit physics engine）；**无 arXiv 号** |
+| 发布 | GitHub **v1.0.0**（2026-08-24）；项目页与 `stable` 分支一致 |
 
 ---
 

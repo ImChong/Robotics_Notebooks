@@ -7,8 +7,9 @@
 - **机构：** Meta / facebookresearch
 - **链接：** https://github.com/facebookresearch/project_superdex
 - **主页：** https://projectsuperdex.com/
-- **Stars：** ~611（2026-09-09）
-- **入库日期：** 2026-09-09
+- **Stars：** ~691（2026-09-28）
+- **最新发布：** [v1.0.0](https://github.com/facebookresearch/project_superdex/releases/tag/v1.0.0)（2026-08-24）；`stable` 分支对齐发布
+- **入库日期：** 2026-09-09（2026-09-28 复核更新）
 - **一句话说明：** Meta 开源的灵巧操作统一仿真平台：自研接触优先物理引擎 + 机器人 SDK + Studio 资产工具 + Gymnasium 风格 Lab，打通场景搭建、仿真、遥操作（计划）到 RL 策略训练。
 - **代码：** https://github.com/facebookresearch/project_superdex（**已开源**，Apache 2.0）
 - **沉淀到 wiki：** 是 → [`wiki/entities/project-superdex.md`](../../wiki/entities/project-superdex.md)
@@ -35,7 +36,8 @@
 - **快速安装：** `uv venv` → `uv pip install superdex`
 - **源码构建：** `uv sync --extra gui`（含 Studio / Physics Debugger / mesh-cli）；`--extra core` 含 physics + robotics + lab
 - **编译器：** Clang 17+（Linux/macOS）；MSVC + ClangCL（Windows）；GCC/MSVC 非官方 CI 支持
-- **精度：** 默认 float32；`SUPERDEX_PRECISION=double` 或 `--extra double` 启用 fp64
+- **精度：** 默认 fp32；运行时 fp64 设 `SUPERDEX_PRECISION=fp64`（Quick Start）或 `SUPERDEX_PRECISION=double`（源码 README）；构建 fp64 绑定用 `uv sync --extra double`
+- **C++ 直调：** Physics/Robotics 为 C++ 核心；lean Release 示例 `cmake -B build ... -DMOCHI_BUILD_DEBUGGER=OFF -DMOCHI_USE_PYBIND=OFF`；完整 C++ 示例 README 称 **未来将分享**
 
 ---
 
@@ -74,7 +76,7 @@ uv run --no-project superdex-studio
 | 可运行 | Physics/Robotics 示例 + Studio GUI（Linux 需 X11 + OpenGL 4.1） |
 | Lab | early preview，README 称将大幅改进 |
 | Teleop | **未发布**（Q4 2026 路线图） |
-| 论文 | 暂无正式 citation 块 |
+| 论文 | README 提供占位 `@misc{mochi2026}`（*An Implicit Physics Engine for Contact-Rich Simulation*，The Mochi Team）；**arXiv/DOI 仍空** |
 
 ---
 
