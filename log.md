@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | sources/papers/x_navdp_arxiv_2607_28560.md + sites/x-navdp-project-page + repos/internrobotics_x_navdp — X-NavDP GQRM 导航扩散 RL 后训练（arXiv:2607.28560）；已开源 NavDP/baselines/x-navdp + HF；自动合并 PR
+
+- **意图：** 用户指定项目页、HF、arXiv:2607.28560
+- **开源结论：** **已开源**（MIT baseline + HF checkpoint；Isaac Sim 5 / Lab 0.46 / Scene-N1 外部依赖）
+- **关键页：** [paper-x-navdp](wiki/entities/paper-x-navdp.md)
+
 ## [2026-09-28] ingest | sources/blogs/wechat_senlanke_weekly_*_2026-09-21_25.md — senlanke 9.21–9.25 双周更（人形/四足 35 + Manipulation 15）；48 唯一 arXiv 节点（32 新建 + 16 复用）；技术地图 senlanke-weekly-2026-09-21-25；自动合并 PR
 
 - **意图：** 用户指定两篇 mp.weixin.qq.com 周更；每篇论文独立非重复详情节点

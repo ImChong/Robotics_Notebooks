@@ -24,6 +24,7 @@
 | 通信 | planner server 与 benchmark 通过 HTTP 解耦 |
 | 执行 | benchmark 内 asynchronous MPC trajectory follower |
 | 资产 | InternData-N1 / Scene-N1（Hugging Face） |
+| X-NavDP 后训练 | `baselines/x-navdp/`（GQRM RL；权重 [InternRobotics/X-NavDP](https://huggingface.co/InternRobotics/X-NavDP)）→ [paper-x-navdp](../../wiki/entities/paper-x-navdp.md) |
 
 ## 对 wiki 的映射
 
