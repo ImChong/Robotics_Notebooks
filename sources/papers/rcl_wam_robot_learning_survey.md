@@ -59,6 +59,7 @@
 
 ## 对 wiki 的映射
 
+- **canonical 论文实体**：[World-Action Models for Robot Learning and Control: A Survey（RCL）](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)
 - 策展实体：[Awesome World-Action Models（RCL）](../../wiki/entities/awesome-world-action-models-rcl.md)
 - 概念补强：[World Action Models（WAM）](../../wiki/concepts/world-action-models.md) — 补 RCL 2×2 taxonomy 与 control utility
 - 对照综述：[world_action_models_survey_2605.md](world_action_models_survey_2605.md)（OpenMOSS · arXiv:2605.12090）
