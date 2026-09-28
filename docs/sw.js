@@ -18,6 +18,7 @@ const OPTIONAL_ASSETS = [
   '/Robotics_Notebooks/graph.html',
   '/Robotics_Notebooks/change-log.html',
   '/Robotics_Notebooks/hubs.html',
+  '/Robotics_Notebooks/company.html',
   '/Robotics_Notebooks/detail.html',
   '/Robotics_Notebooks/wiki-type-labels.js',
   '/Robotics_Notebooks/graph-tooltip.js',

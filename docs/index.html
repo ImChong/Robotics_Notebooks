@@ -144,6 +144,27 @@
             </div>
             <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 27 条纵深路线 ↓</button>
           </div>
+          <div class="card home-entry-card home-entry-card-more" id="home-company-routes">
+            <span class="home-entry-label">公司路线</span>
+            <h3>按公司查看具身基础模型与人形技术演进</h3>
+            <!-- 顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
+                 默认露出前 4 家，其余 data-company-extra + hidden，由 company-roadmap.js 的展开按钮控制 -->
+            <div class="home-entry-route-links" id="homeCompanyLinks">
+              <a class="btn-secondary" href="company.html?id=pi">Physical Intelligence</a>
+              <a class="btn-secondary" href="company.html?id=1x">1X</a>
+              <a class="btn-secondary" href="company.html?id=figure">Figure</a>
+              <a class="btn-secondary" href="company.html?id=skild">Skild AI</a>
+              <a class="btn-secondary" href="company.html?id=gdm" data-company-extra hidden>Google DeepMind</a>
+              <a class="btn-secondary" href="company.html?id=nvidia" data-company-extra hidden>NVIDIA</a>
+              <a class="btn-secondary" href="company.html?id=light" data-company-extra hidden>亮源新创<span class="route-en">（Light Origins）</span></a>
+              <a class="btn-secondary" href="company.html?id=galbot" data-company-extra hidden>银河通用<span class="route-en">（Galbot）</span></a>
+              <a class="btn-secondary" href="company.html?id=galaxea" data-company-extra hidden>星海图<span class="route-en">（Galaxea）</span></a>
+              <a class="btn-secondary" href="company.html?id=agibot" data-company-extra hidden>智元<span class="route-en">（AgiBot）</span></a>
+              <a class="btn-secondary" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
+              <a class="btn-secondary" href="company.html?id=unitree" data-company-extra hidden>宇树<span class="route-en">（Unitree）</span></a>
+            </div>
+            <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks">展开全部 12 家公司 ↓</button>
+          </div>
         </div>
       </div>
     </section>
@@ -220,17 +241,6 @@
         <p class="home-hub-more"><a href="hubs.html">查看完整榜单</a></p>
       </div>
     </section>
-
-    <section class="section section-alt" id="company-roadmap-section" aria-labelledby="company-roadmap-heading">
-      <div class="container">
-        <h2 class="section-title" id="company-roadmap-heading">具身公司 · 技术路线</h2>
-        <p class="section-subtitle">点选公司，按时间看它的公开技术演进；每个节点可跳本库笔记或官方原文。</p>
-        <div id="companyRoadmapModule" class="data-loading" aria-live="polite">
-          <p class="data-meta">正在加载公司路线…</p>
-        </div>
-        <p class="home-hub-more"><a href="detail.html?id=wiki-comparisons-robot-foundation-model-company-paths-2026">查看三视角对照与阅读顺序</a></p>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -245,7 +255,6 @@
   <script src="graph-node-size.js"></script>
   <script src="vendor/d3.min.js" defer></script>
   <script src="mini-graph.js" defer></script>
-  <script src="company-roadmap.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

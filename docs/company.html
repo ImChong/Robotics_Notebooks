@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Robotics Notebooks 具身公司技术路线 - 按时间查看机器人基础模型与人形公司的公开技术演进，每个节点链接本库笔记与官方原文。" />
+  <title>公司技术路线 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+  <script src="theme-init.js"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#191919" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="company-section" aria-labelledby="company-heading">
+      <div class="container">
+        <p class="co-breadcrumb"><a href="index.html#home-company-routes">← 首页 · 公司路线</a></p>
+        <h1 class="section-title" id="company-heading">公司技术路线</h1>
+        <p class="section-subtitle">按时间查看公开技术演进；每个节点可跳本库笔记或官方原文。公司可同时属于多个阅读视角，不代表性能排名。</p>
+        <div id="companyRoadmapPage" class="data-loading" aria-live="polite">
+          <p class="data-meta">正在加载公司路线…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">Chong Liu</a> 2026 · Robotics Notebooks</p>
+    </div>
+  </footer>
+
+  <script src="wiki-type-labels.js"></script>
+  <script src="main.js"></script>
+  <script src="company-roadmap.js"></script>
+</body>
+</html>
