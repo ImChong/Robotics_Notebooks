@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | InstantHMR（Apache-2.0 ONNX MHR 学生，GT 来自 sam-3d-body-dataset）入库；SAM 3D Body 补 Meta 项目页溯源与 HF 链接再核
+
 ## [2026-09-28] structural | wiki/entities 重复节点审计 — 合并 25 个同论文重复节点（arXiv 号/完整标题逐对核实），登记 page-aliases，更正 In-N-On 与 Hand-4DGS 误标 arXiv
 
 ## [2026-09-28] ingest | wiki/entities/paper-notebook-*（06_Manipulation 34 篇）— stub 升格 complete：据 arXiv 全文补实验与评测 / 与其他工作对比 / 局限与风险，逐篇核查开源状态（14 篇补源码运行时序图），补交叉链接与机构标签
