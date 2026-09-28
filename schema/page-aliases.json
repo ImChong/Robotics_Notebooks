@@ -171,6 +171,7 @@
     "entity-cn-os-video-prediction-policy": "entity-paper-shenlan-wm-02-vpp",
     "entity-cn-os-world-in-your-hands": "entity-paper-wiyh",
     "entity-cn-os-dit4dit": "entity-paper-dit4dit-video-action-model",
+    "entity-paper-rcl-ref-b4155f59c47b47bdc94d-scalable-diffusion-models-with-transformers": "entity-paper-dit-scalable-diffusion-transformers",
     "entity-paper-hrl-stack-28-viral": "entity-paper-viral-humanoid-visual-sim2real",
     "entity-paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum": "entity-paper-doorman-opening-sim2real-door",
     "entity-paper-hrl-stack-40-heracles": "entity-paper-heracles-humanoid-diffusion",

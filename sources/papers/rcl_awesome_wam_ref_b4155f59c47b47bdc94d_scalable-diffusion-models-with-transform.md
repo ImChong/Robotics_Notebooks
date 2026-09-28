@@ -7,15 +7,15 @@
 - **分组：** Components of WAMs
 - **编号：** 086/564
 - **入库日期：** 2026-09-25
-- **arXiv：** （无 / 非 arXiv）
+- **arXiv：** [2212.09748](https://arxiv.org/abs/2212.09748)
 - **出处：** ICCV 2023
 - **提交日：** —
 - **论文：** <https://openaccess.thecvf.com/content/ICCV2023/html/Peebles_Scalable_Diffusion_Models_with_Transformers_ICCV_2023_paper.html>
-- **代码：** 未在清单中标注
+- **代码：** <https://github.com/facebookresearch/DiT>（清单未标注；项目页已链）
 
 - **子类 / 象限：** Generative modeling & tokenizers · 扩散与流匹配基础 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-b4155f59c47b47bdc94d-scalable-diffusion-models-with-transformers.md`](../../wiki/entities/paper-rcl-ref-b4155f59c47b47bdc94d-scalable-diffusion-models-with-transformers.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-dit-scalable-diffusion-transformers.md`](../../wiki/entities/paper-dit-scalable-diffusion-transformers.md)（canonical；RCL 索引 stub 已合并）
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-b4155f59c47b47bdc94d-scalable-diffusion-models-with-transformers.md`](../../wiki/entities/paper-rcl-ref-b4155f59c47b47bdc94d-scalable-diffusion-models-with-transformers.md)
+- 实体页：[`wiki/entities/paper-dit-scalable-diffusion-transformers.md`](../../wiki/entities/paper-dit-scalable-diffusion-transformers.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
