@@ -9,6 +9,17 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-x-navdp.md",
+      "detail_id": "entity-paper-x-navdp",
+      "label": "X-NavDP：跨本体导航扩散策略 RL 后训练",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
+    },
+    {
       "path": "wiki/entities/paper-banana-kick-humanoid-soccer.md",
       "detail_id": "entity-paper-banana-kick-humanoid-soccer",
       "label": "Banana Kick（arXiv:2609.27269）",
@@ -197,27 +208,18 @@
       "source": "git",
       "action": "added",
       "community_label": "模型控制与全身控制（Model-Based and Whole-Body Control） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-redact-robust-perceptive-locomotion.md",
-      "detail_id": "entity-paper-redact-robust-perceptive-locomotion",
-      "label": "REDACT（arXiv:2609.25450）",
-      "type": "entity",
-      "recency": "2026-09-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "强化学习（Reinforcement Learning, RL） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-banana-kick-humanoid-soccer.md",
-    "detail_id": "entity-paper-banana-kick-humanoid-soccer",
-    "label": "Banana Kick（arXiv:2609.27269）",
+    "path": "wiki/entities/paper-x-navdp.md",
+    "detail_id": "entity-paper-x-navdp",
+    "label": "X-NavDP：跨本体导航扩散策略 RL 后训练",
     "type": "entity",
     "recency": "2026-09-28",
     "source": "git",
     "action": "added",
-    "community_label": "运动控制（Locomotion） 社区"
+    "has_repo": true,
+    "community_label": "导航与 SLAM（Navigation and SLAM） 社区"
   },
   "top_communities": [
     {
