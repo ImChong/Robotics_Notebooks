@@ -86,7 +86,7 @@ flowchart LR
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
-- 若目标是把 **DP → Robotic DiT → Flow → GR00T** 七篇读串：见专题 [扩散动作 → DiT → Flow 纵深](depth-robotics-diffusion-dit-flow.md)
+- 若目标是把 **DP → Robotic DiT → Flow → GR00T** 七篇读串：见专题 [扩散与流匹配策略纵深](depth-robotics-diffusion-dit-flow.md)
 
 ### 学完输出什么
 - 一个能在仿真里跑通的视觉-动作模仿策略

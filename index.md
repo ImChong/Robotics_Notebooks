@@ -34,7 +34,7 @@
 | 想让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
 | 想用生成模型造人形动作 | [动作生成纵深路线](roadmap/depth-motion-generation.md) |
 | 想让机器人听懂指令干活 | [VLA 纵深路线](roadmap/depth-vla.md) |
-| 想沿 Diffusion Policy → DiT → Flow → GR00T 读动作生成演进 | [扩散→DiT→Flow 纵深路线](roadmap/depth-robotics-diffusion-dit-flow.md) |
+| 想沿 Diffusion Policy → DiT → Flow → GR00T 读动作生成演进 | [扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) |
 | 想把真实世界变成可训练/可评测的仿真资产 | [Real2Sim 纵深路线](roadmap/depth-real2sim.md) |
 | 想为具身模型建一条可交付的数据供给管线 | [具身数据纵深路线](roadmap/depth-embodied-data.md) |
 | 想让策略预知动作如何改变世界 | [WAM 纵深路线](roadmap/depth-wam.md) |
