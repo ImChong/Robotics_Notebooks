@@ -41,32 +41,32 @@
 | 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
 | 有一条路线照着走 | [运动控制成长路线](roadmap/motion-control.md) |
 | 先看纵深总目录再选方向 | [路线总览](roadmap/README.md) |
-| 用遥操作采集数据并实时操控人形（含全身 + 手指） | [遥操作纵深路线](roadmap/depth-teleoperation.md) |
-| 设计力矩控制关节电机 | [力矩电机设计纵深路线](roadmap/depth-torque-motor-design.md) |
-| 学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
-| 设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件设计纵深路线](roadmap/depth-humanoid-hardware-design.md) |
-| 学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
-| 让研发闭环自己变强（递归自我改进） | [递归自我改进（RSI）纵深路线](roadmap/depth-rsi.md) |
-| 做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
-| 让机器人自主从 A 到 B | [导航纵深路线](roadmap/depth-navigation.md) |
-| 给策略挑网络结构（骨干 / 动作头 / 多模态基座） | [模型架构纵深路线](roadmap/depth-model-architecture.md) |
-| 学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
-| 用强化学习做运动控制 | [强化学习（RL）纵深路线](roadmap/depth-rl-locomotion.md) |
-| 让机器人边走边动手 | [移动操作（Loco-Manipulation）纵深路线](roadmap/depth-loco-manipulation.md) |
-| 让机器人追球射门打比赛 | [人形足球纵深路线](roadmap/depth-humanoid-soccer.md) |
-| 把人体/动物动作变成人形或四足参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
-| 让一群人形同台跳舞变队形炫技 | [人形群控展演纵深路线](roadmap/depth-humanoid-swarm-performance.md) |
-| 让仿真训好的策略稳上真机 | [仿真到真机（Sim2Real）纵深路线](roadmap/depth-sim2real.md) |
-| 让两台人形在擂台上对打 | [人形拳击纵深路线](roadmap/depth-humanoid-boxing.md) |
-| 让机器人读完一条示范就会新任务 | [上下文学习（ICL）纵深路线](roadmap/depth-icl.md) |
-| 做人形全身行为基础模型 | [行为基础模型（BFM）纵深路线](roadmap/depth-bfm.md) |
-| 证明/证伪一个具身模型（含运控模型）到底好不好 | [具身模型测评纵深路线](roadmap/depth-embodied-eval.md) |
-| 让机器人看地形越障 | [感知越障纵深路线](roadmap/depth-perceptive-locomotion.md) |
-| 用生成模型造人形动作 | [动作生成纵深路线](roadmap/depth-motion-generation.md) |
-| 让机器人听懂指令干活 | [视觉–语言–动作（VLA）纵深路线](roadmap/depth-vla.md) |
-| 把真实世界变成可训练/可评测的仿真资产 | [真实到仿真（Real2Sim）纵深路线](roadmap/depth-real2sim.md) |
-| 为具身模型建一条可交付的数据供给管线 | [具身数据纵深路线](roadmap/depth-embodied-data.md) |
-| 让策略预知动作如何改变世界 | [世界–动作模型（WAM）纵深路线](roadmap/depth-wam.md) |
+| 用遥操作采集数据并实时操控人形（含全身 + 手指） | [遥操作（Teleoperation）](roadmap/depth-teleoperation.md) |
+| 设计力矩控制关节电机 | [力矩电机设计（Torque Motor Design）](roadmap/depth-torque-motor-design.md) |
+| 学传统模型控制（MPC/WBC）| [传统控制（Classical Control）](roadmap/depth-classical-control.md) |
+| 设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件（Humanoid Hardware）](roadmap/depth-humanoid-hardware-design.md) |
+| 学安全控制（CLF/CBF）| [安全控制（Safe Control）](roadmap/depth-safe-control.md) |
+| 让研发闭环自己变强（递归自我改进） | [递归自我改进（RSI）](roadmap/depth-rsi.md) |
+| 做接触丰富的操作任务 | [接触操作（Contact Manipulation）](roadmap/depth-contact-manipulation.md) |
+| 让机器人自主从 A 到 B | [导航（Navigation）](roadmap/depth-navigation.md) |
+| 给策略挑网络结构（骨干 / 动作头 / 多模态基座） | [模型架构（Model Architecture）](roadmap/depth-model-architecture.md) |
+| 学模仿学习与技能迁移 | [模仿学习（Imitation Learning）](roadmap/depth-imitation-learning.md) |
+| 用强化学习做运动控制 | [强化学习运动控制（RL Locomotion）](roadmap/depth-rl-locomotion.md) |
+| 让机器人边走边动手 | [移动操作（Loco-Manipulation）](roadmap/depth-loco-manipulation.md) |
+| 让机器人追球射门打比赛 | [人形足球（Humanoid Soccer）](roadmap/depth-humanoid-soccer.md) |
+| 把人体/动物动作变成人形或四足参考轨迹 | [动作重定向（Motion Retargeting）](roadmap/depth-motion-retargeting.md) |
+| 让一群人形同台跳舞变队形炫技 | [人形群控展演（Swarm Performance）](roadmap/depth-humanoid-swarm-performance.md) |
+| 让仿真训好的策略稳上真机 | [仿真到真机迁移（Sim2Real）](roadmap/depth-sim2real.md) |
+| 让两台人形在擂台上对打 | [人形拳击（Humanoid Boxing）](roadmap/depth-humanoid-boxing.md) |
+| 让机器人读完一条示范就会新任务 | [具身上下文学习（ICL）](roadmap/depth-icl.md) |
+| 做人形全身行为基础模型 | [人形行为基础模型（BFM）](roadmap/depth-bfm.md) |
+| 证明/证伪一个具身模型（含运控模型）到底好不好 | [具身测评（Embodied Evaluation）](roadmap/depth-embodied-eval.md) |
+| 让机器人看地形越障 | [感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) |
+| 用生成模型造人形动作 | [动作生成（Motion Generation）](roadmap/depth-motion-generation.md) |
+| 让机器人听懂指令干活 | [视觉-语言-动作模型（VLA）](roadmap/depth-vla.md) |
+| 把真实世界变成可训练/可评测的仿真资产 | [真实到仿真（Real2Sim）](roadmap/depth-real2sim.md) |
+| 为具身模型建一条可交付的数据供给管线 | [具身数据（Embodied Data）](roadmap/depth-embodied-data.md) |
+| 让策略预知动作如何改变世界 | [世界-动作模型（WAM）](roadmap/depth-wam.md) |
 | 浏览所有知识页 | [完整页面目录](catalog.md) |
 | 搜索特定概念 | [站点搜索](https://imchong.github.io/Robotics_Notebooks/) |
 
