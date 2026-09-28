@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | OracleZoom（arXiv:2609.06490）：递归 SR 参考约束 + on-policy 训练；GitHub/HF/Space 已开源，沉淀 paper-oraclezoom 实体与 sources 三件套
+
 ## [2026-09-28] ingest | NVIDIA CUDA Toolkit 官方文档与 cuda-samples 一手资料；新建 wiki/entities/nvidia-cuda.md；交叉链 TensorRT/Jetson/训练栈
 
 ## [2026-09-28] ingest | Jetson AI Lab OpenPi π₀.₅ on Thor 教程入库：sources/courses + wiki/entities，交叉更新 VLA 部署与 APXInf 对照
