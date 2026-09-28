@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | 七篇扩散→DiT→Flow 阅读链 — robotic_dit_2410.10088 + gr00t-n1.5 GEAR + rdt sources + roadmap/depth-robotics-diffusion-dit-flow；DiT-Block/dit-policy 已开源；自动合并 PR
+
+- **意图：** 用户指定 DP→Ingredients→RDT→π₀→GR00T N1/N1.5→Dita 专题 ingest
+- **开源结论：** dit-policy、RDT、GR00T N1.5（Isaac-GR00T+HF）**已开源**；①④⑤⑦ 实体此前已有，本次新增 ②⑥ 实体与路线图
+- **关键页：** [depth-robotics-diffusion-dit-flow](roadmap/depth-robotics-diffusion-dit-flow.md)、[paper-robotic-dit-ingredients-dit-block-policy](wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md)、[paper-gr00t-n1-5](wiki/entities/paper-gr00t-n1-5.md)
+
 ## [2026-09-28] ingest | sources/blogs/wechat_lerobot_humanoid_open_stack_2026-09-28.md + repos/lerobot_humanoid_* + lerobot_legged_zoo — LeRobot Humanoid 四仓开源栈（HF 硬件/运行时 + MJLab 训练 + MJWarp 辨识）；已开源；自动合并 PR
 
 - **意图：** 用户指定微信公众号策展链与四仓 + LeRobot/NVIDIA 文档入口

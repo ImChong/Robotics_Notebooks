@@ -16,6 +16,8 @@ related:
   - ../methods/pi07-policy.md
   - ./paper-diffusion-policy.md
   - ./paper-openvla.md
+  - ./paper-gr00t-n1-5.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./paper-dexholdem.md
   - ./paper-deicticvla.md

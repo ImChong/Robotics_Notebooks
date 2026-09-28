@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-09-28",
-  "node_count": 5407,
-  "edge_count": 47236,
+  "node_count": 5410,
+  "edge_count": 47285,
   "coverage": {
-    "covered": 5378,
-    "total": 5378,
+    "covered": 5380,
+    "total": 5380,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -38,7 +38,7 @@
       "source": "git",
       "action": "added",
       "has_repo": true,
-      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/paper-cartesian-hand-linear-fingers.md",
@@ -240,7 +240,7 @@
     },
     {
       "label": "视觉-语言-动作",
-      "size": 381
+      "size": 382
     },
     {
       "label": "仿真到现实",
@@ -264,7 +264,7 @@
       "detail_id": "wiki-methods-vla",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "degree": 1871,
+      "degree": 1873,
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
     },

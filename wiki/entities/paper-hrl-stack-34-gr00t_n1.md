@@ -18,6 +18,8 @@ related:
   - ../methods/diffusion-policy.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/isaac-gr00t.md
+  - ./paper-gr00t-n1-5.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
   - ./paper-deed.md
   - ./paper-data-pyramid-embodied-manipulation.md
   - ./paper-pi-r2.md
