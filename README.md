@@ -63,6 +63,7 @@
 | 证明/证伪一个具身模型（含运控模型）到底好不好 | [具身测评（Embodied Evaluation）](roadmap/depth-embodied-eval.md) |
 | 让机器人看地形越障 | [感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) |
 | 用生成模型造人形动作 | [动作生成（Motion Generation）](roadmap/depth-motion-generation.md) |
+| 理解从扩散去噪到流匹配的机器人动作策略 | [扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) |
 | 让机器人听懂指令干活 | [视觉-语言-动作模型（VLA）](roadmap/depth-vla.md) |
 | 把真实世界变成可训练/可评测的仿真资产 | [真实到仿真（Real2Sim）](roadmap/depth-real2sim.md) |
 | 为具身模型建一条可交付的数据供给管线 | [具身数据（Embodied Data）](roadmap/depth-embodied-data.md) |

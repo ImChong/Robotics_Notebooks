@@ -1,4 +1,4 @@
-# 路线（纵深）：扩散动作 → Robotic DiT → Flow → 人形 GR00T
+# 路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）
 
 **摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形 DiT** 读透七篇代表作」的专题路线；与 [VLA 纵深](depth-vla.md) Stage 1–2 重叠，但按 **动作生成机制演进** 排序，并区分 **图像 DiT / DiT-Block IL / Dita VLA** 命名。
 

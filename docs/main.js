@@ -356,11 +356,12 @@
     var depthEl = document.getElementById('heroDepthRouteCount');
     if (!nodeEl && !edgeEl && !mainEl && !depthEl) return;
 
+    var homeDepthLinks = document.querySelectorAll('#homeRouteLinks a');
     heroStatsCountUpFallbacks = {
       nodes: readHeroStatFallback(nodeEl, 0),
       edges: readHeroStatFallback(edgeEl, 0),
       main: readHeroStatFallback(mainEl, 1),
-      depth: readHeroStatFallback(depthEl, 23)
+      depth: homeDepthLinks.length || readHeroStatFallback(depthEl, 23)
     };
 
     if (!getHeroStatsCountUpEnabled()) {
@@ -6300,13 +6301,13 @@
   var prefetchWikiSearchIndex = function () {};
 
   function setHomeRoutesExpanded(expanded) {
-    if (!routeToggle) return;
+    if (!routeToggle || !routeLinks) return;
     var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
     for (var rti = 0; rti < extras.length; rti++) {
       extras[rti].hidden = !expanded;
     }
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 26 条纵深路线 ↓';
+    routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 ' + routeLinks.querySelectorAll('a').length + ' 条纵深路线 ↓';
     if (routeLinks) {
       routeLinks.classList.toggle('is-expanded', !!expanded);
     }
@@ -6525,6 +6526,7 @@
   }
 
   if (routeToggle) {
+    setHomeRoutesExpanded(false);
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
       setHomeRoutesExpanded(!expanded);
