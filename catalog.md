@@ -1770,6 +1770,7 @@
 - [KILVO：人形多传感器运动学–惯性–激光–视觉里程计](wiki/entities/paper-kilvo.md) — KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid R `📅unknown` `[entity_page]`
 - [KineBench（IDM-free 运动学接地的具身世界模型基准）](wiki/entities/paper-kinebench.md) — KineBench**（*Benchmarking Embodied World Models via IDM-Free Kinematic Grounding*，[arXiv:2607.1987 `📅unknown` `[entity_page]`
 - [KINO：关键帧接口连接 VLM 规划与人形全身控制](wiki/entities/paper-kino.md) — KINO**（*A Keyframe Interface for VLM Planning and Whole-Body Control in Humanoid Loco-Manipulation `📅unknown` `[entity_page]`
+- [KIWI（Kinematic Interface for the Wild）](wiki/entities/paper-kiwi-kinematic-interface-wild.md) — KIWI**（*Kinematic Interface for the Wild: Modular Bimanual Loco-Manipulation Capture from 360° Cam `📅unknown` `[entity_page]`
 - [KnowBody](wiki/entities/paper-knowbody.md) — Know Your Body: A Harness for Direct and Self-Improving Robot Control with VLMs**（[arXiv:2609.2853 `📅unknown` `[entity_page]`
 - [Achieving precise and reliable locomotion with differentiable simulation-based system identification](wiki/entities/paper-kovalev-differentiable-simulation-locomotion-sysid.md) — Achieving precise and reliable locomotion with differentiable simulation-based system identificati `📅unknown` `[entity_page]`
 - [KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）](wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — KungFuAthleteBot**（*A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challeng `📅unknown` `[entity_page]`
