@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | Compression is Routing（arXiv:2512.16963）重建误差作无门控 MoE 路由；技术报告未开源；paper-compression-is-routing
+
 ## [2026-09-28] ingest | AgentSTAR（arXiv:2609.24487）单目 agentic shape track；Amazon FAR；官方 MIT harness 已开源；wiki paper-agenticstar + sources 三件套
 
 ## [2026-09-28] structural | 首页入口区桌面端「更多路线」与「公司路线」两卡改为左右并排（≤860px 不变）

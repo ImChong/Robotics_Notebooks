@@ -1342,6 +1342,7 @@
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2 `📅unknown` `[entity_page]`
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav**（*Robots Ask the Way: Communication-Enabled Social Navigation*，[arXiv:2607.01044](https:/ `📅unknown` `[entity_page]`
 - [Compact Visuotactile WM（arXiv:2609.09597）](wiki/entities/paper-compact-visuotactile-wm-lifting.md) — Compact Visuotactile WM**（*Compact Visuotactile World Models for Lifting: Prediction, Reward Align `📅unknown` `[entity_page]`
+- [Compression is Routing（重建误差作模块化 LLM 内在路由信号）](wiki/entities/paper-compression-is-routing.md) — Compression is Routing**（*Reconstruction Error as an Intrinsic Signal for Modular Language Models `📅unknown` `[entity_page]`
 - [ConceptGraphs](wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md) — ConceptGraphs** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上 `📅unknown` `[entity_page]`
 - [Concurrent Training of Control Policy and State Estimator](wiki/entities/paper-concurrent-policy-estimator-locomotion.md) — Ji, Mun, Kim & Hwangbo（KAIST，arXiv:2202.05481）** 提出 locomotion `📅unknown` `[entity_page]`
 - [ConfAL-WM](wiki/entities/paper-confal-wm.md) — ConfAL-WM: Confidence-Guided Active Learning for Action-Conditioned World Models**（[arXiv:2608.255 `📅unknown` `[entity_page]`
