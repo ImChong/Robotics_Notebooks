@@ -30,7 +30,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
 
 用法：
   python3 scripts/lint_wiki.py
-  python3 scripts/lint_wiki.py --write-log   # 同时将报告插入 log.md 顶部
+  python3 scripts/lint_wiki.py --write-log   # 同时将报告写入 log.d/ 碎片
   python3 scripts/lint_wiki.py --report      # 保存 markdown 报告到 exports/lint-report.md
 """
 
@@ -1486,26 +1486,18 @@ def _check_checklist_badge(readme_content: str, results: dict[str, Any]) -> None
 
 
 def _check_graph_badge(readme_content: str, results: dict[str, Any]) -> None:
-    """检查 README 中 Knowledge Graph badge 数据是否与 graph-stats.json 一致。"""
-    graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
-    if not graph_stats_path.exists():
-        return
-    graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
-    node_count = graph_stats.get("node_count")
-    edge_count = graph_stats.get("edge_count")
-    graph_badge_match = re.search(
-        r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/badge/知识图谱-(\d+)节点_(\d+)边-blue\?logo=d3\.js\)\]\([^)]+\)",
+    """README 的 Knowledge Graph 徽章须为读取部署产物 graph-badge.json 的 endpoint 徽章。
+
+    数字不写进 README（否则每个 PR 都改同一行、互相冲突），由 pages.yml 部署时生成
+    docs/exports/graph-badge.json，shields.io 实时读取。
+    """
+    if not re.search(
+        r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/endpoint\?url=[^)]*graph-badge\.json\)\]\([^)]+\)",
         readme_content,
-    )
-    if not graph_badge_match:
-        results["readme_badge"].append("README 缺少 Knowledge Graph badge 或格式异常")
-    else:
-        badge_nodes = int(graph_badge_match.group(1))
-        badge_edges = int(graph_badge_match.group(2))
-        if badge_nodes != node_count or badge_edges != edge_count:
-            results["readme_badge"].append(
-                f"README Knowledge Graph badge 为 {badge_nodes}节点/{badge_edges}边，但实际为 {node_count}节点/{edge_count}边"
-            )
+    ):
+        results["readme_badge"].append(
+            "README 缺少 Knowledge Graph endpoint 徽章（img.shields.io/endpoint?url=...graph-badge.json）"
+        )
 
 
 def _check_readme_badges(results: dict[str, Any]) -> None:
@@ -2411,7 +2403,7 @@ def main():
     parser.add_argument(
         "--write-log",
         action="store_true",
-        help="将结果插入 log.md 顶部（叙事层；与 append_log 一致）",
+        help="将结果写入 log.d/ 碎片（叙事层；与 append_log 一致，main 上自动并入 log.md）",
     )
     parser.add_argument(
         "--report", action="store_true", help="将 markdown 健康报告保存到 exports/lint-report.md"
@@ -2435,10 +2427,10 @@ def main():
         print(f"⚠️  共发现 {total} 个问题，请参考上方报告处理。")
 
     if args.write_log:
-        from log_md import DEFAULT_LOG_PATH, write_log_prepend
+        from log_md import write_log_fragment
 
-        write_log_prepend(report + "\n", DEFAULT_LOG_PATH)
-        print(f"\n已将报告插入 {DEFAULT_LOG_PATH} 顶部")
+        path = write_log_fragment(report + "\n", "lint")
+        print(f"\n已将报告写入日志碎片 {path}（合入 main 后自动并入 log.md）")
 
     if args.report:
         exports_dir = REPO_ROOT / "exports"

@@ -1,4 +1,4 @@
-.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph topic-diagnose anki slides fetch badge vectors eval-search ci-preflight ci-check bump-wiki-from-sources paper-notebook-links paper-notebook-bootstrap paper-notebook-dedupe paper-notebook-summaries rl-sim2sim-demo-links
+.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph topic-diagnose anki slides fetch vectors eval-search ci-preflight ci-check pr-check sync-main bump-wiki-from-sources paper-notebook-links paper-notebook-bootstrap paper-notebook-dedupe paper-notebook-summaries rl-sim2sim-demo-links
 
 # 与 .github/workflows/tests.yml 步骤顺序一致（不含 Wiki lint）
 ci-test:
@@ -88,9 +88,7 @@ slides:
 fetch:
 	python3 scripts/fetch_to_source.py $(URL) --name $(NAME)
 
-badge:
-	python3 scripts/update_badge.py
-
+# 部署时由 pages.yml 调用：会改 docs/index.html / docs/sw.js 工作区副本，勿提交这些改动
 sync-stats:
 	python3 scripts/sync_all_stats.py
 
@@ -117,3 +115,11 @@ ci-preflight:
 
 ci-check:
 	python3 scripts/ci_preflight.py --check-generated-clean
+
+# PR 不得修改 catalog.md / log.md / 部署生成的统计文件（lint.yml 在 PR 上同样检查）
+pr-check:
+	python3 scripts/pr_derived_guard.py check
+
+# 合入 origin/main；上述文件的冲突自动以 main 为准，分支写进 log.md 的条目转存为 log.d/ 碎片
+sync-main:
+	python3 scripts/pr_derived_guard.py sync

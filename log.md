@@ -1,4 +1,8 @@
-## [2026-09-28] ingest | wiki/entities/paper-notebook-*（06_Manipulation 34 篇）— stub 升格 complete：据 arXiv 全文补实验与评测 / 与其他工作对比 / 局限与风险，逐篇核查开源状态（14 篇补源码运行时序图），补交叉链接与机构标签
+## [2026-09-28] ingest | 七篇扩散→DiT→Flow 阅读链 — robotic_dit_2410.10088 + gr00t-n1.5 GEAR + rdt sources + roadmap/depth-robotics-diffusion-dit-flow；DiT-Block/dit-policy 已开源；自动合并 PR
+
+- **意图：** 用户指定 DP→Ingredients→RDT→π₀→GR00T N1/N1.5→Dita 专题 ingest
+- **开源结论：** dit-policy、RDT、GR00T N1.5（Isaac-GR00T+HF）**已开源**；①④⑤⑦ 实体此前已有，本次新增 ②⑥ 实体与路线图
+- **关键页：** [depth-robotics-diffusion-dit-flow](roadmap/depth-robotics-diffusion-dit-flow.md)、[paper-robotic-dit-ingredients-dit-block-policy](wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md)、[paper-gr00t-n1-5](wiki/entities/paper-gr00t-n1-5.md)
 
 ## [2026-09-28] ingest | sources/blogs/wechat_lerobot_humanoid_open_stack_2026-09-28.md + repos/lerobot_humanoid_* + lerobot_legged_zoo — LeRobot Humanoid 四仓开源栈（HF 硬件/运行时 + MJLab 训练 + MJWarp 辨识）；已开源；自动合并 PR
 
@@ -17,6 +21,18 @@
 - **意图：** 用户指定两篇 arXiv + 项目页 ingest
 - **开源结论：** ForceTwin **未开源**；Contact-Guided **未开源**（2026-09-28 复核）
 - **关键页：** [paper-forcetwin](wiki/entities/paper-forcetwin.md)、[paper-contact-guided-exploration-locomanipulation](wiki/entities/paper-contact-guided-exploration-locomanipulation.md)
+
+## [2026-09-28] ingest | sources/papers/dita_arxiv_2410_15959.md + sites/robodita-github-io + repos/robodita_dita — Dita 扩散 Transformer VLA（2410.15959 → 2503.19757）；RoboDita/Dita MIT 已开源；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2410.15959 与 robodita.github.io
+- **开源结论：** **已开源**（GitHub + Drive 权重；OXE 预训练需 S3/多 GPU）
+- **关键页：** [paper-dita-scaling-diffusion-transformer-vla](wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md)
+
+## [2026-09-28] ingest | sources/papers/scaledp_arxiv_2409_14411.md + sites/scaling-diffusion-policy-github-io — ScaleDP（arXiv:2409.14411，ICRA 2025）；AdaLN+unmasking 使 DP-T 扩至 1B；项目页 Code 误链 DexVLA、无官方仓；自动合并 PR
+
+- **意图：** 用户指定 arXiv:2409.14411 与 scaling-diffusion-policy.github.io
+- **开源结论：** **未开源**（项目页 Code → juruobenruo/DexVLA，非 ScaleDP）
+- **关键页：** [paper-scaledp-scaling-diffusion-transformer-policy](wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md)
 
 ## [2026-09-28] ingest | sources/papers/peebles_dit_arxiv_2212_09748.md + sites/dit-wpeebles-com + repos/facebookresearch-dit — DiT（arXiv:2212.09748，ICCV 2023）；项目页链 GitHub + XL/2 权重；升格 paper-dit-scalable-diffusion-transformers、合并 RCL #086 stub；自动合并 PR
 

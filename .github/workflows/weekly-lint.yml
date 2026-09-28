@@ -29,10 +29,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
+      # lint-report.md 不入库（避免与 PR 冲突），作为 workflow artifact 保存
       - name: Run lint and save report
-        run: |
-          python3 scripts/lint_wiki.py --report
-          python3 scripts/update_badge.py
+        run: python3 scripts/lint_wiki.py --report
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: exports/lint-report.md
 
       # 顺带记录当日星标总数（增长趋势页 docs/star-history.html 的数据源）
       - name: Record star count
@@ -43,12 +49,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add exports/lint-report.md README.md docs/exports/star-history.json
+          git add docs/exports/star-history.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "chore: 自动更新每日 lint 报告 + sources badge + 星标数 [skip ci]"
+          git commit -m "chore: 自动更新星标数 [skip ci]"
           for attempt in 1 2 3 4 5; do
             if git push; then
               echo "Pushed on attempt ${attempt}"

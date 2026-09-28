@@ -4,7 +4,7 @@
 
 ## 提交前跑什么（三步）
 
-1. **改了 `wiki/`，或会影响页面目录、导出 JSON、搜索索引、图谱、sitemap、`README` 统计区、`docs/index.html` 等派生物** → 运行 **`make ci-preflight`**，并把命令重新生成后有变化的文件与本次编辑的源文件一并提交。
+1. **改了 `wiki/`，或会影响导出 JSON、搜索索引、图谱、sitemap 等派生物** → 运行 **`make ci-preflight`** 做本地检查。派生物全部 gitignore（部署时生成），**只提交源文件**；日志用 `make log` 写入 `log.d/` 碎片，不要改 `catalog.md` / `log.md`（main 上自动维护）。与 main 冲突时运行 **`make sync-main`**。
 2. **只改了 `scripts/`、`tests/`、`docs/main.js` 或本地工具配置**（不动上述派生链）→ 运行 **`make ci-test`**（与 [`.github/workflows/tests.yml`](.github/workflows/tests.yml) 对齐：Ruff、Mypy、pip-audit、ESLint、pytest）。
 3. **只在本地查词、搜页、阅读 markdown，不写回仓库** → 不必跑 CI 全套；需要时可单独用 `make lint` 或 `python3 scripts/search_wiki.py <关键词>` 做轻量检查。
 

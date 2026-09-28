@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-28
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../overview/ai-architecture-map.md
@@ -366,7 +366,7 @@ flowchart TD
 - **Eka VFA（2026，非 VLA 扩展）**：[Eka Robotics](../entities/eka-robotics-vfa.md) 公开 **Vision-Force-Action** 路线：力与视觉同为闭环一等信号，训练以 **仿真 RL** 为主并宣称 sim-to-real 产品级吞吐；**无论文/无官方代码**（见 [官网归档](../../sources/sites/eka_robotics_com.md)），与 π 系 VLA 对照阅读即可，勿混为同一 API 栈。
 - **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）
 - **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
-- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与项目页为准）
+- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与 [GR00T N1.5 实体](../entities/paper-gr00t-n1-5.md) / GEAR 项目页为准）
 - **LLM 监督 VLA（Anthropic Embody，2026-07）：** 通用聊天模型不直接出关节，而是对 **MolmoAct** 的 7 维提案做接受/修改/替换。这把操作成功率从直接控制的个位数抬到可用，但 **所有测试模型仍弱于 VLA 单独跑**；过改会伤分，VLA 不会的新场景上最强模型才有净增益。接口抽象见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)，评测床见 [Embody](../entities/anthropic-embody.md)。
 - **Vesta（planner VLM，非 VLA）**：在 **Qwen3-VL-8B** 上 **SFT 统一** 定位 / VLN / 具身推理 / **带 memory 的子任务规划**，作 **System-2 planner** 向 **Gr00t-N1.6** 等 actor 输出文本子任务；四轴 benchmark 平均超最强单基线 **>20 pt**，R2R-CE SR **55.5%** 逼近 navigation specialist（见 [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md)，arXiv:2606.20905）
 - **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
@@ -642,6 +642,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 LeRobot/VLA 胶水与技能编排
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
 - [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
+- [Dita](../entities/paper-dita-scaling-diffusion-transformer-vla.md) — in-context 扩散 Transformer VLA；OXE + 10-shot Franka（RoboDita/Dita 已开源）
 - [Arcadia](../entities/paper-arcadia.md) — 共享 VLN/VLA 骨干 + Sim-from-Real；G1 操作 27/100（部分开源）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照
 - [RLDX-1](../entities/rldx-1.md) — 多流扩散动作头 + 可选触觉/力矩与 RTC 推理栈的工程参考

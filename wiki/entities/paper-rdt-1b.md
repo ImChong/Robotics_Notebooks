@@ -1,33 +1,40 @@
 ---
 type: entity
-tags: [paper, vla, diffusion, bimanual, thu]
+tags: [paper, vla, diffusion, bimanual, thu, open-source, transformer]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-28
 arxiv: "2410.07864"
 code: https://github.com/thu-ml/RoboticsDiffusionTransformer
 related:
   - ./paper-pi0.md
   - ./paper-cogact.md
+  - ./paper-robotic-dit-ingredients-dit-block-policy.md
+  - ./paper-dita-scaling-diffusion-transformer-vla.md
   - ../tasks/bimanual-manipulation.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
 sources:
+  - ../../sources/papers/rdt_1b_arxiv_2410_07864.md
+  - ../../sources/sites/rdt-robotics-github-io.md
+  - ../../sources/repos/thu_ml_robotics_diffusion_transformer.md
   - ../../sources/blogs/wechat_lumina_vla_survey_part1_2026-09-20.md
-summary: "RDT-1B（arXiv:2410.07864）：双臂扩散 Transformer；thu-ml/RoboticsDiffusionTransformer 已开源。"
+summary: "RDT-1B（arXiv:2410.07864）：1.2B 扩散 Transformer；语言+三视角 RGB+本体→64 步 action chunk；1M+ episode 预训练；thu-ml 仓与 HF 权重已开源。"
 ---
 
 # RDT-1B（Robotics Diffusion Transformer）
 
-**RDT-1B（Robotics Diffusion Transformer）**（[arXiv:2410.07864](https://arxiv.org/abs/2410.07864)，[代码](https://github.com/thu-ml/RoboticsDiffusionTransformer)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
+**RDT-1B**（*a Diffusion Foundation Model for Bimanual Manipulation*，[arXiv:2410.07864](https://arxiv.org/abs/2410.07864)，[项目页](https://rdt-robotics.github.io/rdt-robotics/)，[代码](https://github.com/thu-ml/RoboticsDiffusionTransformer)，[HF rdt-1b](https://huggingface.co/robotics-diffusion-transformer/rdt-1b)）由 **清华大学** 等提出。阅读顺序见 [扩散 → DiT → Flow 纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) 第 ③ 步。
 
 ## 一句话定义
 
-**十亿级扩散 Transformer 面向双臂操作。**
+**在统一 action 空间里，用 1.2B 扩散 Transformer 对语言+多相机+本体条件去噪出未来 64 步动作 chunk。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| RDT | Robotics Diffusion Transformer | 本文基础模型族 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| LLM | Large Language Model | 大语言模型 |
+| DP | Diffusion Policy | chunk 级 DDPM 动作生成范式 |
 | IL | Imitation Learning | 模仿学习 |
 | BC | Behavior Cloning | 行为克隆 |
 
@@ -37,7 +44,10 @@ summary: "RDT-1B（arXiv:2410.07864）：双臂扩散 Transformer；thu-ml/Robot
 |----|------|
 | **机构** | 清华大学（THU） |
 | **arXiv** | [2410.07864](https://arxiv.org/abs/2410.07864) |
-| **开源** | **已开源** |
+| **输入** | 语言 + 最多 **3** 路 RGB + 低维本体；扩散步 \(k\) |
+| **输出** | 去噪 **64** 步 action chunk（跨单臂/双臂/关节/EEF/移动底统一嵌入） |
+| **规模** | **1.2B** 参数；**1M+** episode 预训练；**6K+** ALOHA 双臂微调 |
+| **开源** | **已开源** — `train/train.py`、Maniskill 评测、`scripts/agilex_inference.py` |
 
 ## 实验与评测
 
@@ -63,20 +73,23 @@ RDT-1B 把扩散+Transformer+双臂推到基础模型尺度。
 
 ## 源码运行时序图
 
-官方仓库提供训练/推理入口；节点对齐 README。
-
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant Repo as 官方仓库
-    participant Policy as 策略
-    participant Env as 仿真/真机
-    Dev->>Repo: clone + 依赖
-    Dev->>Policy: 加载权重
-    loop 控制环
-        Env->>Policy: 观测
-        Policy->>Env: 动作
+    participant Train as train/train.py
+    participant Enc as T5 + SigLIP 编码器
+    participant RDT as models/rdt_runner.py
+    participant HF as HF rdt-1b
+    participant Robot as ALOHA / Maniskill
+    Dev->>HF: 下载 checkpoint
+    Dev->>Train: DeepSpeed 微调（可选）
+    Train->>Enc: 语言 + 图像条件
+    Enc->>RDT: 条件 + 带噪 chunk
+    RDT->>RDT: 扩散去噪迭代
+    loop 部署
+        Robot->>RDT: 观测
+        RDT->>Robot: 64 步 chunk / 执行子集
     end
 ```
 
@@ -88,6 +101,9 @@ sequenceDiagram
 
 ## 参考来源
 
+- [rdt_1b_arxiv_2410_07864.md](../../sources/papers/rdt_1b_arxiv_2410_07864.md)
+- [rdt-robotics-github-io.md](../../sources/sites/rdt-robotics-github-io.md)
+- [thu_ml_robotics_diffusion_transformer.md](../../sources/repos/thu_ml_robotics_diffusion_transformer.md)
 - [wechat_lumina_vla_survey_part1_2026-09-20.md](../../sources/blogs/wechat_lumina_vla_survey_part1_2026-09-20.md)
 
 ## 推荐继续阅读

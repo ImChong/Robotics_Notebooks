@@ -43,6 +43,11 @@ jobs:
           python3 scripts/generate_home_stats.py
           python3 scripts/graph_exports_sync.py
 
+      # 统计数字不入库（避免并行 PR 冲突），仅在构建产物里写入：
+      # README 徽章 endpoint JSON、docs/index.html Hero 兜底数字、docs/sw.js 缓存版本
+      - name: Stamp stats into site build
+        run: python3 scripts/sync_all_stats.py --skip-graph --skip-home-stats
+
       - name: Copy README to docs
         run: cp README.md docs/README.md
 
