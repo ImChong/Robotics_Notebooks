@@ -7,6 +7,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/teleoperation.md
 related:
+  - ../entities/paper-kiwi-kinematic-interface-wild.md
   - ../tasks/teleoperation.md
   - ../entities/oculust-quest-teleop.md
   - ../concepts/embodied-data-cleaning.md
@@ -37,6 +38,7 @@ related:
 | **SpaceMouse** | 6DoF 末端速度控制 | 低 | 低（~150 USD） | 单臂、简单拾取放置 | 设置简单；不直观，学习曲线高 |
 | **动觉示教**（Kinesthetic） | 全关节直接引导 | 零（直接物理接触） | 无额外硬件 | 精细任务、接触丰富操作 | 最直觉；需要机器人支持反向驱动 |
 | **手套 / 手部追踪**（Leap / MediaPipe） | 手指 + 手腕 | 中 | 低–中 | 灵巧手操作 | 手指精度高；腕部绝对位置漂移 |
+| **[KIWI](../entities/paper-kiwi-kinematic-interface-wild.md)**（360° 腕摄） | 双手 6-DoF + 3DGS | **离线** 重建 | 低（消费相机 + 打印件） | 双臂野外 / room-scale | 无 VR/无 LiDAR；代码 **待发布** |
 
 **选型原则：**
 - 任务需要双手协调 → ALOHA 或双臂 VR 方案
