@@ -795,6 +795,123 @@ a.hero-stat-num:focus-visible {
 /* 仅首页这个入口居中：左对齐时会被左下角的 .home-nav-fab 浮动按钮压住（移动端尤其
    明显）。hubs.html 复用了 .home-hub-more，但那页没有该浮动按钮，保持左对齐。 */
 #home-hub-section .home-hub-more { text-align: center; }
+/* 首页「具身公司 · 技术路线」：视角筛选 + 公司 tab + 时间轴（桌面横向滚动、窄屏纵向） */
+#company-roadmap-section .home-hub-more { text-align: center; }
+.co-lens-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.co-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.co-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: .88rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+.co-tab:hover { border-color: var(--border-strong); }
+.co-tab.is-active { border-color: var(--accent); background: var(--quote-bg); font-weight: 600; }
+.co-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.co-tab-count { font-size: .72rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.co-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 18px 20px 8px;
+}
+.co-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 16px;
+}
+.co-panel-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 1.05rem; }
+.co-panel-title strong { margin-right: 4px; }
+.co-panel-official { font-size: .85rem; }
+.co-panel-summary { margin: 8px 0 4px; color: var(--text-muted); font-size: .9rem; }
+.co-lens-badge {
+  font-size: .72rem;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.co-lens-wam { border-color: rgba(91, 156, 246, .55); }
+.co-lens-humanoid { border-color: rgba(214, 150, 60, .6); }
+.co-lens-wbc { border-color: rgba(80, 170, 120, .6); }
+.co-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 14px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  position: relative;
+}
+.co-node {
+  position: relative;
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  padding-top: 26px;
+  animation: co-node-in .28s ease both;
+  animation-delay: calc(var(--co-i) * 40ms);
+}
+/* 节点间的连线：每个节点画到下一个节点，最后一个不画 */
+.co-node::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -14px;
+  height: 2px;
+  background: var(--border);
+}
+.co-node:last-child::before { right: auto; width: 0; }
+.co-node-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  box-sizing: border-box;
+}
+.co-node-card {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-alt);
+}
+.co-node-meta { display: flex; justify-content: space-between; gap: 8px; font-size: .75rem; color: var(--text-muted); }
+.co-node-date { font-variant-numeric: tabular-nums; }
+.co-node-date.is-empty { font-style: italic; }
+.co-node-track { white-space: nowrap; }
+.co-node-title { margin: 0; font-size: .95rem; line-height: 1.35; }
+.co-node-desc { margin: 0; font-size: .82rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+.co-node-links { display: flex; gap: 12px; margin-top: 4px; font-size: .8rem; }
+@keyframes co-node-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .co-node { animation: none; } }
+@media (max-width: 720px) {
+  .co-panel { padding: 14px 14px 4px; }
+  .co-timeline { flex-direction: column; overflow-x: visible; gap: 12px; padding-left: 4px; }
+  .co-node { flex: none; padding-top: 0; padding-left: 26px; }
+  .co-node::before { top: 14px; left: 6px; right: auto; bottom: -12px; width: 2px; height: auto; }
+  .co-node:last-child::before { bottom: auto; height: 0; }
+  .co-node-dot { top: 12px; }
+}
 /* 详情页关联区块：复用互链枢纽紧凑行（类型 / 标题+后缀 / 尾列元信息） */
 .detail-compact-list {
   list-style: none;

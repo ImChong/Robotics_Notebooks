@@ -23,6 +23,8 @@ const OPTIONAL_ASSETS = [
   '/Robotics_Notebooks/graph-tooltip.js',
   '/Robotics_Notebooks/graph-node-size.js',
   '/Robotics_Notebooks/mini-graph.js',
+  '/Robotics_Notebooks/company-roadmap.js',
+  '/Robotics_Notebooks/company-roadmaps.json',
   '/Robotics_Notebooks/vendor/d3.min.js',
   '/Robotics_Notebooks/exports/home-stats.json',
   '/Robotics_Notebooks/exports/graph-stats.json',

@@ -1,0 +1,162 @@
+{
+  "updated": "2026-09-28",
+  "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
+  "lenses": {
+    "wam": "世界 / 动作模型",
+    "humanoid": "通用人形整机",
+    "wbc": "强全身控制"
+  },
+  "companies": [
+    {
+      "key": "pi",
+      "name": "Physical Intelligence",
+      "lenses": ["wam"],
+      "summary": "从 π₀ 连续动作流出发，沿动作表示、开放泛化、推理时延、经验 RL、记忆与可控提示逐步迭代通才 VLA。",
+      "official": "https://www.pi.website/research",
+      "nodes": [
+        { "date": "2024-10", "title": "π₀", "track": "VLA", "desc": "跨本体数据训练，流匹配动作专家输出连续动作。", "id": "entity-paper-pi0", "url": "https://www.pi.website/blog/pi0" },
+        { "date": "2025-01", "title": "FAST", "track": "动作表示", "desc": "DCT + 量化 + BPE 把动作 chunk 压成离散 token。", "id": "entity-paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la", "url": "https://www.pi.website/research/fast" },
+        { "date": "2025-04", "title": "π₀.₅", "track": "VLA", "desc": "混合知识来源，面向陌生家庭的开放世界泛化。", "id": "entity-paper-pi05-open-world-vla", "url": "https://www.pi.website/blog/pi05" },
+        { "date": "2026-03", "title": "MEM", "track": "记忆", "desc": "短期视频 + 长期语言记忆，支撑十分钟级多步任务。", "id": "entity-paper-pai-2603-03596-memmultiscaleembodiedmemory", "url": "https://www.pi.website/research/memory" },
+        { "date": "2026-03", "title": "RL Token", "track": "在线 RL", "desc": "从 VLA 提取 RL 友好表示，提升精密操作的在线 RL 效率。", "id": "entity-paper-rcl-2604-23073-rl-token-bootstrapping-online-rl-with-vision-lan", "url": "https://www.pi.website/research/rlt" },
+        { "date": "2026-04", "title": "π₀.₇", "track": "VLA", "desc": "多模态提示对齐异构经验，推理时可控调度行为。", "id": "wiki-methods-pi07-policy", "url": "https://www.pi.website/blog/pi07" }
+      ]
+    },
+    {
+      "key": "1x",
+      "name": "1X",
+      "lenses": ["wam", "humanoid"],
+      "summary": "轮式 EVE 到家用双足 NEO 的整机路线，叠加动作条件世界模型做评测与数据引擎。",
+      "official": "https://www.1x.tech/discover/category/research",
+      "nodes": [
+        { "date": "", "title": "EVE → NEO", "track": "整机", "desc": "从结构化场景轮式人形转向家庭场景双足平台。", "id": "entity-1x-technologies", "url": "https://www.1x.tech/" },
+        { "date": "2025-06", "title": "1X World Model", "track": "世界模型", "desc": "全身人形动作条件视频预测，用作策略评测引擎。", "id": "entity-paper-1xwm-redwood-world-model", "url": "https://www.1x.tech/discover/redwood-ai-world-model" }
+      ]
+    },
+    {
+      "key": "figure",
+      "name": "Figure",
+      "lenses": ["humanoid"],
+      "summary": "垂直整合整机 + Helix 分层 VLA：从上半身操作走到含 System 0 的全身控制与零样本家庭泛化。",
+      "official": "https://www.figure.ai/news",
+      "nodes": [
+        { "date": "2025-02", "title": "Helix", "track": "VLA", "desc": "System 2 语义 + System 1 高频动作的上半身 VLA。", "id": "entity-paper-rcl-ref-cb61c489d1333f433fc4-helix-a-vision-language-action-model-for-general", "url": "https://www.figure.ai/news/helix" },
+        { "date": "", "title": "Helix 02", "track": "全身控制", "desc": "加入 System 0 平衡/接触层，扩展到全身闭环。", "id": "entity-figure-ai", "url": "https://www.figure.ai/news/helix-02" },
+        { "date": "2026-09", "title": "Helix 2.5", "track": "VLA", "desc": "Index 人视频预训练，30 个陌生家庭零样本全身任务。", "id": "entity-helix-25", "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization" }
+      ]
+    },
+    {
+      "key": "skild",
+      "name": "Skild AI",
+      "lenses": ["humanoid"],
+      "summary": "主张 omni-bodied 单一大脑（Skild Brain）控制任意本体，公开材料以方法博客为主。",
+      "official": "https://www.skild.ai/blogs",
+      "nodes": [
+        { "date": "", "title": "Skild Brain", "track": "基础模型", "desc": "跨本体统一策略脑的公司叙事与定位。", "id": "entity-skild-ai", "url": "https://www.skild.ai/" },
+        { "date": "2026-08", "title": "S1", "track": "操作", "desc": "以视频为上下文的机器人 In-Context Learning。", "id": "entity-skild-s1", "url": "https://www.skild.ai/blogs/s1" },
+        { "date": "2026-09", "title": "Physical Self-Play", "track": "后训练", "desc": "S1 级模型在仿真中自博弈后训练。", "id": "entity-skild-physical-self-play", "url": "https://www.skild.ai/blogs/physical-self-play" }
+      ]
+    },
+    {
+      "key": "gdm",
+      "name": "Google DeepMind",
+      "lenses": ["wam"],
+      "summary": "基于 Gemini 多模态栈：VLA 策略 + 具身推理 ER agent + 端侧模型的三件套。",
+      "official": "https://deepmind.google/models/gemini-robotics/",
+      "nodes": [
+        { "date": "2025-03", "title": "Gemini Robotics", "track": "VLA", "desc": "Gemini 骨干的视觉语言动作模型与 ER 具身推理。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/models/gemini-robotics/" },
+        { "date": "2026-07", "title": "Gemini Robotics 2", "track": "全身控制", "desc": "VLA 推进到全身人形控制，配套 ER 2 与 On-Device 2。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" }
+      ]
+    },
+    {
+      "key": "nvidia",
+      "name": "NVIDIA",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "平台型路线：Cosmos 世界生成 + Isaac 仿真 + GR00T 人形基础模型 + 全身控制栈，多层资产分别开放。",
+      "official": "https://developer.nvidia.com/blog/tag/robotics/",
+      "nodes": [
+        { "date": "", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架，sim2real 主力栈。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/" },
+        { "date": "2025-01", "title": "Cosmos 1.0", "track": "世界模型", "desc": "大规模视频预训练的世界基础模型平台。", "id": "entity-paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi", "url": "https://developer.nvidia.com/cosmos" },
+        { "date": "2025-03", "title": "GR00T N1", "track": "VLA", "desc": "Eagle VLM + DiT 动作头，数据金字塔联合预训练。", "id": "entity-paper-hrl-stack-34-gr00t_n1", "url": "https://github.com/NVIDIA/Isaac-GR00T" },
+        { "date": "2025-06", "title": "GR00T N1.5", "track": "VLA", "desc": "冻结 VLM 的改进版通用人形 VLA。", "id": "entity-paper-gr00t-n1-5", "url": "https://research.nvidia.com/labs/gear/gr00t-n1_5/" },
+        { "date": "2026-06", "title": "Cosmos 3", "track": "世界模型", "desc": "全模态世界模型，服务数据生成与策略。", "id": "entity-cosmos-3", "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/" },
+        { "date": "", "title": "GR00T-WholeBodyControl", "track": "全身控制", "desc": "解耦 WBC、SONIC 与 MotionBricks 的统一单仓。", "id": "entity-gr00t-wholebodycontrol", "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/" }
+      ]
+    },
+    {
+      "key": "light",
+      "name": "亮源新创 Light Origins",
+      "lenses": ["wbc"],
+      "summary": "人视频动作预训练 + Real2Sim2Real，在自研 Lightbot 0 上追全身韧性技能、跑酷与导航。",
+      "official": "https://www.lightorigins.com/en/blog/",
+      "nodes": [
+        { "date": "2026-08", "title": "LightParkour", "track": "全身控制", "desc": "Real2Sim2Real 稀疏种子扩张 + 多专家跑酷。", "id": "entity-paper-light-loco-parkour", "url": "https://www.lightorigins.com/blog/lightparkour" },
+        { "date": "2026-09", "title": "LightNav-0", "track": "导航", "desc": "激发 VLM 空间智能的通用具身导航。", "id": "entity-paper-lightnav-0", "url": "https://www.lightorigins.com/en/blog/lightnav-0" },
+        { "date": "2026-09", "title": "Light REACT", "track": "全身控制", "desc": "故障与扰动下的全身自适应恢复。", "id": "entity-light-react", "url": "https://www.lightorigins.com/blog/light-react" },
+        { "date": "2026-09", "title": "Light-O1", "track": "基础模型", "desc": "从互联网视频恢复人类动作做预训练；推理代码与预览权重开源。", "id": "entity-light-o1", "url": "https://www.lightorigins.com/en/blog/light-o1" }
+      ]
+    },
+    {
+      "key": "galbot",
+      "name": "银河通用 Galbot",
+      "lenses": ["wam", "wbc"],
+      "summary": "区分“世界侧” AstraBrain-WAM 与“执行侧” AstraBrain-WBC；开源侧以 GraspVLA 与 SDK 为主。",
+      "official": "https://galbot.com/",
+      "nodes": [
+        { "date": "", "title": "GraspVLA", "track": "VLA", "desc": "视觉语言目标到六自由度抓取动作的开源 VLA。", "id": "entity-cn-os-graspvla", "url": "https://github.com/GalaxyGeneralRobotics" },
+        { "date": "", "title": "AstraBrain-WAM / WBC", "track": "世界模型", "desc": "世界预测—动作与全身执行两条线分别发布（本库暂按对照页收录）。", "id": "wiki-comparisons-robot-foundation-model-company-paths-2026", "url": "https://galbot.com/" }
+      ]
+    },
+    {
+      "key": "galaxea",
+      "name": "星海图 Galaxea",
+      "lenses": ["wam"],
+      "summary": "G0 系列 VLA 与 Fast-WAM：跨本体操作，推理期跳过未来视频去噪换取低延迟。",
+      "official": "https://galaxea-ai.com/",
+      "nodes": [
+        { "date": "2026-03", "title": "Fast-WAM", "track": "世界模型", "desc": "训练期视频共训、推理期跳过未来视频去噪，190 ms 延迟。", "id": "entity-paper-fast-wam", "url": "https://yuantianyuan01.github.io/FastWAM/" },
+        { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" }
+      ]
+    },
+    {
+      "key": "agibot",
+      "name": "智元 AgiBot",
+      "lenses": ["wam", "wbc"],
+      "summary": "真机大数据（AgiBot World）+ 世界模型平台 + GO 执行基座 + BFM 运控基座，数据与模型分开开放。",
+      "official": "https://www.agibot.com/research/",
+      "nodes": [
+        { "date": "2025-03", "title": "AgiBot World Colosseo", "track": "数据", "desc": "大规模真机操作数据平台。", "id": "entity-paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation", "url": "https://agibot-world.com/" },
+        { "date": "2025-08", "title": "Genie Envisioner", "track": "世界模型", "desc": "面向操作的统一世界基础平台。", "id": "entity-paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat", "url": "https://github.com/AgibotTech/Genie-Envisioner" },
+        { "date": "2026-01", "title": "GO-2", "track": "VLA", "desc": "动作思维链 + 异步双系统的执行基座。", "id": "entity-go-2", "url": "https://arxiv.org/abs/2601.11404" },
+        { "date": "2026-06", "title": "AgiBot World 2026", "track": "数据", "desc": "新一代开源真实世界操作数据集。", "id": "entity-agibot-world-2026", "url": "https://huggingface.co/datasets/agibot-world/AgiBotWorld2026" },
+        { "date": "2026-06", "title": "BFM-2", "track": "全身控制", "desc": "智元运控基座模型。", "id": "entity-agibot-bfm-2", "url": "https://www.agibot.com.cn/article/315/detail/161.html" }
+      ]
+    },
+    {
+      "key": "limx",
+      "name": "逐际动力 LimX",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "腿足本体与 RL 部署起家，向上做 COSA 人形大脑操作系统与 FluxVLA 工程平台。",
+      "official": "https://www.limxdynamics.com/en",
+      "nodes": [
+        { "date": "", "title": "TRON1 RL 部署", "track": "全身控制", "desc": "ONNX 策略经 ROS 2 控制器与低层 SDK 上真机。", "id": "entity-cn-os-tron1-rl-deploy-ros2", "url": "https://github.com/limxdynamics" },
+        { "date": "2026-07", "title": "COSA 0.5", "track": "系统", "desc": "人形大脑操作系统，重点升级人形 VLA。", "id": "entity-limx-cosa", "url": "https://www.limxdynamics.com/en/news/BK000067" },
+        { "date": "2026-09", "title": "FluxVLA Engine", "track": "平台", "desc": "配置驱动的开源 VLA 工程平台，含 RTC 推理与真机 operator。", "id": "entity-fluxvla-engine", "url": "https://github.com/FluxVLA/FluxVLA" }
+      ]
+    },
+    {
+      "key": "unitree",
+      "name": "宇树 Unitree",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "高性价比 G1 硬件 + RL 训练仓生态，再往上叠 UnifoLM 世界模型 / VLA / WLA 家族。",
+      "official": "https://github.com/unitreerobotics",
+      "nodes": [
+        { "date": "", "title": "G1", "track": "整机", "desc": "教育科研人形，仿真学习生态最广的本体之一。", "id": "entity-unitree-g1", "url": "https://www.unitree.com/" },
+        { "date": "", "title": "unitree_rl_gym", "track": "全身控制", "desc": "官方 RL 训练仓：Train → Play → Sim2Sim → Sim2Real。", "id": "entity-unitree-rl-gym", "url": "https://github.com/unitreerobotics/unitree_rl_gym" },
+        { "date": "", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "世界模型既做交互仿真生成数据，也接动作头增强策略。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action" },
+        { "date": "", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "面向通用人形操作的 VLA，训练 / 推理 / 权重开源。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla" },
+        { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA：具身推理 → 动态区域预测 → 动作专家。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla" }
+      ]
+    }
+  ]
+}

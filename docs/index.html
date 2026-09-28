@@ -220,6 +220,17 @@
         <p class="home-hub-more"><a href="hubs.html">查看完整榜单</a></p>
       </div>
     </section>
+
+    <section class="section section-alt" id="company-roadmap-section" aria-labelledby="company-roadmap-heading">
+      <div class="container">
+        <h2 class="section-title" id="company-roadmap-heading">具身公司 · 技术路线</h2>
+        <p class="section-subtitle">点选公司，按时间看它的公开技术演进；每个节点可跳本库笔记或官方原文。</p>
+        <div id="companyRoadmapModule" class="data-loading" aria-live="polite">
+          <p class="data-meta">正在加载公司路线…</p>
+        </div>
+        <p class="home-hub-more"><a href="detail.html?id=wiki-comparisons-robot-foundation-model-company-paths-2026">查看三视角对照与阅读顺序</a></p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -234,6 +245,7 @@
   <script src="graph-node-size.js"></script>
   <script src="vendor/d3.min.js" defer></script>
   <script src="mini-graph.js" defer></script>
+  <script src="company-roadmap.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
