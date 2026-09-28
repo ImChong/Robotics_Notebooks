@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 机器人操作基准 · 强化学习基准 · 物理仿真 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-4c7d069bbfa0f1875587-meta-world-a-benchmark-and-evaluation-for-multi.md`](../../wiki/entities/paper-rcl-ref-4c7d069bbfa0f1875587-meta-world-a-benchmark-and-evaluation-for-multi.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md`](../../wiki/entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-4c7d069bbfa0f1875587-meta-world-a-benchmark-and-evaluation-for-multi.md`](../../wiki/entities/paper-rcl-ref-4c7d069bbfa0f1875587-meta-world-a-benchmark-and-evaluation-for-multi.md)
+- 实体页：[`wiki/entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md`](../../wiki/entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

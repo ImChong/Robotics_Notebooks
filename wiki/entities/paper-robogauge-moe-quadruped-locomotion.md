@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, quadruped, reinforcement-learning, mixture-of-experts, sim2real, locomotion, unitree-go2, xjtu]
+tags: [paper, quadruped, reinforcement-learning, mixture-of-experts, sim2real, locomotion, unitree-go2, xjtu, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 arxiv: "2602.00678"
 venue: "RSS 2026"
 code: https://github.com/wty-yy/go2_rl_gym
@@ -11,8 +11,9 @@ related:
   - ../concepts/domain-randomization.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
-  - ./paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md
   - ./paper-cmoe.md
+  - ../overview/paper-notebook-category-05-locomotion.md
+  - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/sites/robogauge.md
   - ../../sources/blogs/wechat_pinkrobot_robogauge_rss2026_2026-09-15.md
@@ -165,7 +166,6 @@ sequenceDiagram
 
 - Sim-to-Sim **不等价** Sim-to-Real；RoboGauge 是保守 proxy，不能替代最终真机验收。
 - 平台与感知设定为四足 + proprio-only；视觉/人形需重新标定指标与阈值。
-- 深读笔记级细节见 [paper-notebook stub](./paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md)。
 
 ## 关联页面
 

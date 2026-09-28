@@ -1,9 +1,9 @@
 ---
 
 type: entity
-tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource]
+tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 arxiv: "2412.14803"
 venue: ICML 2025
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"
@@ -15,12 +15,20 @@ related:
   - ../concepts/world-action-models.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/vla.md
+  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_02_vpp.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
   - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/video-prediction-policy.md
+  - ../../sources/papers/rcl_awesome_wam_ref_2b3f47a14556997eb476_video-prediction-policy-a-generalist-rob.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
 # Video Prediction Policy (VPP)
@@ -92,6 +100,10 @@ sources:
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
 - [video-prediction-policy 源码归档](../../sources/repos/video-prediction-policy.md)（<https://github.com/roboterax/video-prediction-policy>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [`sources/papers/rcl_awesome_wam_ref_2b3f47a14556997eb476_video-prediction-policy-a-generalist-rob.md`](../../sources/papers/rcl_awesome_wam_ref_2b3f47a14556997eb476_video-prediction-policy-a-generalist-rob.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

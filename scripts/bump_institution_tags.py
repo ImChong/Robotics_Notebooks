@@ -214,7 +214,7 @@ PAGE_INSTITUTION_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/atom01-deploy.md": ["linux-foundation"],
     "wiki/entities/awesome-text-to-motion-zilize.md": ["linux-foundation"],
     "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md": ["unitree", "nvidia"],
-    "wiki/entities/paper-quadruped-agile-sim2real-rss2018.md": ["mit"],
+    "wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md": ["google"],
     "wiki/entities/paper-cassie-iterative-locomotion-sim2real.md": ["berkeley"],
     "wiki/entities/paper-doorman-opening-sim2real-door.md": ["nvidia"],
 }

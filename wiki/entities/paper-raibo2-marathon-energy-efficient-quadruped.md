@@ -20,7 +20,7 @@ code: https://github.com/railabatkaist/raisimGym_nature
 related:
   - ../tasks/locomotion.md
   - ./quadruped-robot.md
-  - ./paper-quadruped-agile-sim2real-rss2018.md
+  - ./paper-tan-quadruped-agile-locomotion-sim2real.md
   - ./paper-concurrent-policy-estimator-locomotion.md
   - ./paper-walk-these-ways-quadruped-mob.md
   - ../concepts/sim2real.md
@@ -56,7 +56,7 @@ summary: "Nature 2026：KAIST RAIBO2 整机损耗模型驱动机械/驱动/RL �
 - **户外四足的主瓶颈是航程，不是峰值速度：** 救援、巡检、山地物流需要 **数小时** 连续步行；以往四足 demo 多强调 **3–5 m/s 冲刺或特技**，与 **Wh/km** 产品指标错位。
 - **能效必须软硬一体：** 仅 **轻腿** 或仅 **Joule 奖励** 都会在其它损耗项上反弹；论文用 **Fig. 3 损耗分解 + Extended Data 驱动器 ablation** 说明 **联合设计** 必要性。
 - **Nature 级系统证据：** 完整 **马拉松**（非缩圈实验室）+ **Zenodo 数据** + **训练代码**，为 [Locomotion](../tasks/locomotion.md) 路线增加 **「CoT / 续航」** 与 **「敏捷 / 感知」** 并列的选型轴。
-- **与 Hwangbo 组技术栈连续：** 同 [RSS 2018 四足 sim2real](./paper-quadruped-agile-sim2real-rss2018.md)、[并发策略–估计器](./paper-concurrent-policy-estimator-locomotion.md) 的 RaiSim/raisimGym 脉络，便于把 **能效奖励** 接到已有训练管线。
+- **与 Hwangbo 组技术栈连续：** 同 [RSS 2018 四足 sim2real](./paper-tan-quadruped-agile-locomotion-sim2real.md)、[并发策略–估计器](./paper-concurrent-policy-estimator-locomotion.md) 的 RaiSim/raisimGym 脉络，便于把 **能效奖励** 接到已有训练管线。
 
 ## 核心信息
 
@@ -198,7 +198,7 @@ sequenceDiagram
 
 - [Locomotion 任务](../tasks/locomotion.md) — 四足 RL 与能效指标
 - [四足机器人](./quadruped-robot.md) — 平台谱系
-- [RSS 2018 敏捷四足 sim2real](./paper-quadruped-agile-sim2real-rss2018.md) — 同团队 RaiSim 迁移脉络
+- [RSS 2018 敏捷四足 sim2real](./paper-tan-quadruped-agile-locomotion-sim2real.md) — 同团队 RaiSim 迁移脉络
 - [并发策略–估计器](./paper-concurrent-policy-estimator-locomotion.md) — RaiLab 训练框架
 - [Sim2Real](../concepts/sim2real.md) — 仿真到实机部署语境
 

@@ -65,7 +65,7 @@ related:
   - ../entities/paper-cassie-feedback-control-drl.md
   - ../entities/paper-argus-dynamic-symmetry.md
   - ../entities/paper-quadruped-torque-control-rl.md
-  - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-tan-quadruped-agile-locomotion-sim2real.md
   - ../entities/paper-barkour-quadruped-agility-benchmark.md
   - ../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
   - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
@@ -274,7 +274,7 @@ flowchart TD
 - [RAIBO2（Nature 2026 单次充电马拉松 / CoT 0.25）](../entities/paper-raibo2-marathon-energy-efficient-quadruped.md)
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
-- [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
+- [RSS 2018 敏捷四足 sim2real](../entities/paper-tan-quadruped-agile-locomotion-sim2real.md)
 - [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
 - [DreamWaQ++（多模态点云 + 本体四足障碍感知行走）](../entities/dreamwaq-plus.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)

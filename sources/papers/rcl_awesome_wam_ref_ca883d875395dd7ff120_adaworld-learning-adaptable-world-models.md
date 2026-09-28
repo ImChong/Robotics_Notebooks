@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 潜动作预训练 · 神经世界模拟器 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-ca883d875395dd7ff120-adaworld-learning-adaptable-world-models-with-la.md`](../../wiki/entities/paper-rcl-ref-ca883d875395dd7ff120-adaworld-learning-adaptable-world-models-with-la.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2503-18938-adaworld-learning-adaptable-world-models-with-la.md`](../../wiki/entities/paper-sa-2503-18938-adaworld-learning-adaptable-world-models-with-la.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-ca883d875395dd7ff120-adaworld-learning-adaptable-world-models-with-la.md`](../../wiki/entities/paper-rcl-ref-ca883d875395dd7ff120-adaworld-learning-adaptable-world-models-with-la.md)
+- 实体页：[`wiki/entities/paper-sa-2503-18938-adaworld-learning-adaptable-world-models-with-la.md`](../../wiki/entities/paper-sa-2503-18938-adaworld-learning-adaptable-world-models-with-la.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

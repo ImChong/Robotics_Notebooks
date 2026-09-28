@@ -29,7 +29,7 @@ related:
   - ../overview/hub-sim2real.md
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
-  - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-tan-quadruped-agile-locomotion-sim2real.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
@@ -106,7 +106,7 @@ flowchart TD
 
 - **参数不是越多越好**：激励不足时拟合高频相关项易过拟合。单关节上延迟/摩擦/惯量在阶跃上纠缠时，先按 [实验设计](../methods/sim2real-joint-sysid-experiment-design.md) 分级拆开，再写回仿真。
 - **目标不是永恒精确模型**，而是给 RL 一个合理中心；随后 DR 覆盖公差与测量误差——**不要在错误默认 URDF 上盲目放大随机范围**。
-- 早期参照：Minitaur 路线先建电机与延迟模型再随机化（见 [四足敏捷 Sim2Real RSS 2018](../entities/paper-quadruped-agile-sim2real-rss2018.md) 与 [SysID](../concepts/system-identification.md)）。
+- 早期参照：Minitaur 路线先建电机与延迟模型再随机化（见 [四足敏捷 Sim2Real RSS 2018](../entities/paper-tan-quadruped-agile-locomotion-sim2real.md) 与 [SysID](../concepts/system-identification.md)）。
 
 ### 2. 观测 / 动作 / 奖励：训练即面向部署
 

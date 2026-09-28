@@ -15,7 +15,7 @@
 - **项目页：** <https://pku-epic.github.io/DyWA/>
 - **子类 / 象限：** 三维多视角建模 · 联合视频动作建模 · 泛化与动作对齐 · Q1 · One Model × 联合预测
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-283b7da95c4145cf56d0-dywa-dynamics-adaptive-world-action-model-for-ge.md`](../../wiki/entities/paper-rcl-ref-283b7da95c4145cf56d0-dywa-dynamics-adaptive-world-action-model-for-ge.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge.md`](../../wiki/entities/paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-283b7da95c4145cf56d0-dywa-dynamics-adaptive-world-action-model-for-ge.md`](../../wiki/entities/paper-rcl-ref-283b7da95c4145cf56d0-dywa-dynamics-adaptive-world-action-model-for-ge.md)
+- 实体页：[`wiki/entities/paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge.md`](../../wiki/entities/paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

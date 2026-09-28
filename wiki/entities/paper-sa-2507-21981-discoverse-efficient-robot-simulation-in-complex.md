@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
+tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r, awesome-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-28
 arxiv: "2507.21981"
 venue: "IROS 2025"
 summary: "The first unified, modular, open-source 3DGS-based simulation framework for Real2Sim2Real robot learning. Features a holistic Real2Sim pipeline that synthesizes hyper-realistic geometry and appearance of complex real-wor"
@@ -13,11 +13,17 @@ related:
   - ../methods/crisp-real2sim.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../entities/awesome-sim2real.md
+  - ../overview/lc-awesome-sim2real-technology-map.md
+  - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/sun_awesome_r2s2r_2507_21981_discoverse-efficient-robot-simulation-in.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/repos/discoverse.md
+  - ../../sources/papers/lc_awesome_sim2real_noarxiv_084_discoverse-efficient-robot-simulation-in.md
+  - ../../sources/papers/lc_awesome_sim2real_catalog.md
+  - ../../sources/repos/awesome-sim2real.md
 ---
 
 # DISCOVERSE
@@ -99,6 +105,9 @@ The first unified, modular, open-source 3DGS-based simulation framework for Real
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2507.21981>
+- [`sources/papers/lc_awesome_sim2real_noarxiv_084_discoverse-efficient-robot-simulation-in.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_084_discoverse-efficient-robot-simulation-in.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 
 ## 推荐继续阅读
 

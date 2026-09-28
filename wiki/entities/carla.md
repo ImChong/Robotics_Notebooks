@@ -1,9 +1,10 @@
 ---
 
 type: entity
-tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft]
+tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft, curated-index, awesome-sim2real, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-15
+arxiv: "1711.03938"
+updated: 2026-09-28
 related:
   - ./unreal-engine-5.md
   - ./airsim.md
@@ -11,10 +12,25 @@ related:
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ../concepts/sim2real.md
   - ../overview/sim-platforms-decade-technology-map.md
+  - ../entities/awesome-sim2real.md
+  - ../overview/lc-awesome-sim2real-technology-map.md
+  - ../methods/reinforcement-learning.md
+  - ../tasks/locomotion.md
+  - ../tasks/manipulation.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../methods/vla.md
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/repos/carla.md
   - ../../sources/papers/racing_drift_rl_open_source_landscape.md
+  - ../../sources/papers/lc_awesome_sim2real_1711_03938_carla-an-open-urban-driving-simulator.md
+  - ../../sources/papers/lc_awesome_sim2real_catalog.md
+  - ../../sources/repos/awesome-sim2real.md
+  - ../../sources/papers/rcl_awesome_wam_ref_75baf2ba00d451202231_carla-an-open-urban-driving-simulator.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动的高保真城市场景、多传感器套件与交通参与者，是 AD 感知–规划–控制闭环与 Sim2Real 研究的经典基础设施；亦是多条 CARLA 系漂移 RL 研究的仿真宿主。"
 ---
 
@@ -70,6 +86,13 @@ summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动�
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
 - [sources/repos/carla.md](../../sources/repos/carla.md)
 - Dosovitskiy et al., *CARLA: An Open Urban Driving Simulator* — [arXiv](https://arxiv.org/abs/1711.03938)
+- [`sources/papers/lc_awesome_sim2real_1711_03938_carla-an-open-urban-driving-simulator.md`](../../sources/papers/lc_awesome_sim2real_1711_03938_carla-an-open-urban-driving-simulator.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- [`sources/papers/rcl_awesome_wam_ref_75baf2ba00d451202231_carla-an-open-urban-driving-simulator.md`](../../sources/papers/rcl_awesome_wam_ref_75baf2ba00d451202231_carla-an-open-urban-driving-simulator.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

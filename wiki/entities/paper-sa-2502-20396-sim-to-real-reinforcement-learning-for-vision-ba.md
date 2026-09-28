@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
+tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-28
 arxiv: "2502.20396"
 venue: "arXiv 2025"
 summary: "Introduces a practical sim-to-real RL recipe that trains a humanoid robot to perform three challenging dexterous manipulation tasks: grasp-and-reach, box lift and bimanual handover"
@@ -13,10 +13,13 @@ related:
   - ../methods/crisp-real2sim.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../overview/paper-notebook-category-06-manipulation.md
+  - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/sun_awesome_r2s2r_2502_20396_sim-to-real-reinforcement-learning-for-v.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
+  - ../../sources/papers/humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md
 ---
 
 # Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on...
@@ -96,6 +99,8 @@ Introduces a practical sim-to-real RL recipe that trains a humanoid robot to per
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2502.20396>
+- [humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md](../../sources/papers/humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md)
+- [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 
 ## 推荐继续阅读
 

@@ -1,17 +1,26 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
+tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, curated-index, awesome-sim2real]
 status: stub
-updated: 2026-09-20
+updated: 2026-09-28
 arxiv: "1703.06907"
 related:
   - ../overview/paper-notebook-category-01-foundational-rl.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
+  - ../entities/awesome-sim2real.md
+  - ../overview/lc-awesome-sim2real-technology-map.md
+  - ../concepts/sim2real.md
+  - ../methods/reinforcement-learning.md
+  - ../tasks/locomotion.md
+  - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_domain-randomization-for-transferring-deep-neura.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
+  - ../../sources/papers/lc_awesome_sim2real_noarxiv_117_domain-randomization-for-transferring-de.md
+  - ../../sources/papers/lc_awesome_sim2real_catalog.md
+  - ../../sources/repos/awesome-sim2real.md
 summary: "在视觉参数随机化的仿真环境里训练神经网络，让真实世界看起来只是仿真的\"另一个变体\"，从而无需任何真实数据即可完成 sim-to-real 迁移。"
 ---
 
@@ -66,6 +75,9 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 - [humanoid_pnb_domain-randomization-for-transferring-deep-neura.md](../../sources/papers/humanoid_pnb_domain-randomization-for-transferring-deep-neura.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World.html>
 - 论文：<https://arxiv.org/abs/1703.06907>
+- [`sources/papers/lc_awesome_sim2real_noarxiv_117_domain-randomization-for-transferring-de.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_117_domain-randomization-for-transferring-de.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 
 ## 推荐继续阅读
 

@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 理论与规划 · 三维表示与状态估计 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-47f59ffa32a9f466d486-probabilistic-robotics.md`](../../wiki/entities/paper-rcl-ref-47f59ffa32a9f466d486-probabilistic-robotics.md)
+- **沉淀到 wiki：** [`wiki/entities/painode-029-probabilisticrobotics.md`](../../wiki/entities/painode-029-probabilisticrobotics.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-47f59ffa32a9f466d486-probabilistic-robotics.md`](../../wiki/entities/paper-rcl-ref-47f59ffa32a9f466d486-probabilistic-robotics.md)
+- 实体页：[`wiki/entities/painode-029-probabilisticrobotics.md`](../../wiki/entities/painode-029-probabilisticrobotics.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

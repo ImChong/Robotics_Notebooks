@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 理论与规划 · 经典WM与模型式RL · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-206bb9b995e39760f7d0-reinforcement-learning-an-introduction.md`](../../wiki/entities/paper-rcl-ref-206bb9b995e39760f7d0-reinforcement-learning-an-introduction.md)
+- **沉淀到 wiki：** [`wiki/entities/sutton-barto-rl-book.md`](../../wiki/entities/sutton-barto-rl-book.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-206bb9b995e39760f7d0-reinforcement-learning-an-introduction.md`](../../wiki/entities/paper-rcl-ref-206bb9b995e39760f7d0-reinforcement-learning-an-introduction.md)
+- 实体页：[`wiki/entities/sutton-barto-rl-book.md`](../../wiki/entities/sutton-barto-rl-book.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

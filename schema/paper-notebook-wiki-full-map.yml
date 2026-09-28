@@ -568,7 +568,7 @@ overrides:
   Thinking_in_360__Humanoid_Visual_Search_in_the_Wild:
   - wiki/tasks/vision-language-navigation.md
   Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion:
-  - wiki/entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md
+  - wiki/entities/paper-robogauge-moe-quadruped-locomotion.md
   Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distillation_and_Reinforced_Fine-Tuning:
   - wiki/entities/paper-adaptive-humanoid-control.md
   Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots:
@@ -1013,7 +1013,7 @@ overrides:
   sim-to-real-learning-for-humanoid-box-loco-manip:
   - wiki/entities/paper-notebook-sim-to-real-learning-for-humanoid-box-loco-manip.md
   sim-to-real-reinforcement-learning-for-vision-ba:
-  - wiki/entities/paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba.md
+  - wiki/entities/paper-sa-2502-20396-sim-to-real-reinforcement-learning-for-vision-ba.md
   simgenhoi-physically-realistic-whole-body-humano:
   - wiki/entities/paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md
   skater-synthesized-kinematics-for-advanced-trave:

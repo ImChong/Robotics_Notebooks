@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Generalizable HOI world model with two-stage VLM prior inference + DiT flow matching trajectory generation
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-113-megohand-multimodal-egocentric-hand-object-inter.md`](../../wiki/entities/paper-sa-ego-113-megohand-multimodal-egocentric-hand-object-inter.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter.md`](../../wiki/entities/paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-ego-113-megohand-multimodal-egocentric-hand-object-inter.md`](../../wiki/entities/paper-sa-ego-113-megohand-multimodal-egocentric-hand-object-inter.md)
+- 实体页：[`wiki/entities/paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter.md`](../../wiki/entities/paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter.md)
 - 列表实体：[`wiki/entities/awesome-egocentric-vision.md`](../../wiki/entities/awesome-egocentric-vision.md)

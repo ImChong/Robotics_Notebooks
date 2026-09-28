@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 venue: "NeurIPS 2025"
 summary: "Proposes a two-layer architecture framework, using VLM to infer motion priors at the high level, and generating fine-grained trajectories based on DiT flow matching at the low level"
 related:
@@ -16,6 +16,7 @@ sources:
   - ../../sources/papers/sun_awesome_ego_noarxiv_026_megohand-multimodal-egocentric-hand-obje.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
+  - ../../sources/papers/sun_awesome_ego_noarxiv_113_megohand-multimodal-egocentric-hand-obje.md
 ---
 
 # MEgoHand
@@ -95,6 +96,7 @@ Proposes a two-layer architecture framework, using VLM to infer motion priors at
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://proceedings.neurips.cc/paper_files/paper/2025/hash/469c396a192043e3d70c04bdb3e5a532-Abstract-Conference.html>
+- [`sources/papers/sun_awesome_ego_noarxiv_113_megohand-multimodal-egocentric-hand-obje.md`](../../sources/papers/sun_awesome_ego_noarxiv_113_megohand-multimodal-egocentric-hand-obje.md) — 本条目策展摘录
 
 ## 推荐继续阅读
 

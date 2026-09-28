@@ -205,7 +205,7 @@ sources:
 
 | # | 论文 | 详情节点 |
 |---|------|----------|
-| 084 | DISCOVERSE: Efficient Robot Simulation in Complex High-Fidelity Environments | [paper-as-084-discoverse-efficient-robot-simulation-in-complex](../entities/paper-as-084-discoverse-efficient-robot-simulation-in-complex.md) |
+| 084 | DISCOVERSE: Efficient Robot Simulation in Complex High-Fidelity Environments | [paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex](../entities/paper-sa-2507-21981-discoverse-efficient-robot-simulation-in-complex.md) |
 | 085 | Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer | [humanoid-gym](../entities/humanoid-gym.md) |
 | 086 | ManipulaTHOR: A Framework for Visual Object Manipulation | [paper-as-2104-11213-manipulathor-a-framework-for-visual-object-manip](../entities/paper-as-2104-11213-manipulathor-a-framework-for-visual-object-manip.md) |
 | 087 | NeuronsGym: A Hybrid Framework and Benchmark for Robot Tasks with Sim2Real Policy Learning | [paper-as-087-neuronsgym-a-hybrid-framework-and-benchmark-for](../entities/paper-as-087-neuronsgym-a-hybrid-framework-and-benchmark-for.md) |
@@ -258,7 +258,7 @@ sources:
 |---|------|----------|
 | 115 | Active Domain Randomization | [paper-as-1904-04762-active-domain-randomization](../entities/paper-as-1904-04762-active-domain-randomization.md) |
 | 116 | Crossing the gap: A deep dive into zero-shot sim-to-real transfer for dynamics | [paper-as-116-crossing-the-gap-a-deep-dive-into-zero-shot-sim](../entities/paper-as-116-crossing-the-gap-a-deep-dive-into-zero-shot-sim.md) |
-| 117 | Domain randomization for transferring deep neural networks from simulation to the real wor | [paper-as-117-domain-randomization-for-transferring-deep-neura](../entities/paper-as-117-domain-randomization-for-transferring-deep-neura.md) |
+| 117 | Domain randomization for transferring deep neural networks from simulation to the real wor | [paper-notebook-domain-randomization-for-transferring-deep-neura](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) |
 | 118 | Sim-to-real learning for bipedal locomotion under unsensed dynamic loads | [paper-as-2204-04340-sim-to-real-learning-for-bipedal-locomotion-unde](../entities/paper-as-2204-04340-sim-to-real-learning-for-bipedal-locomotion-unde.md) |
 | 119 | Understanding domain randomization for sim-to-real transfer | [paper-notebook-domain-randomization-understanding-sim-to-real-t](../entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md) |
 
@@ -283,7 +283,7 @@ sources:
 | # | 论文 | 详情节点 |
 |---|------|----------|
 | 126 | AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforc | [paper-as-2304-11496-autovrl-a-high-fidelity-autonomous-ground-vehicl](../entities/paper-as-2304-11496-autovrl-a-high-fidelity-autonomous-ground-vehicl.md) |
-| 127 | CARLA: An open urban driving simulator | [paper-as-1711-03938-carla-an-open-urban-driving-simulator](../entities/paper-as-1711-03938-carla-an-open-urban-driving-simulator.md) |
+| 127 | CARLA: An open urban driving simulator | [carla](../entities/carla.md) |
 | 128 | CityFlow: A Multi-Agent Reinforcement Learning Environment for Large Scale City Traffic Sc | [paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en](../entities/paper-as-128-cityflow-a-multi-agent-reinforcement-learning-en.md) |
 | 129 | Deepdrive Zero | [paper-as-129-deepdrive-zero](../entities/paper-as-129-deepdrive-zero.md) |
 | 130 | Duckietown: An open, inexpensive and flexible platform for autonomy education and research | [paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat](../entities/paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md) |

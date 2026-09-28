@@ -112,7 +112,7 @@
 - **核心贡献：** 随机化动力学与传感，在仿真中学 **高频扭矩/力矩式** 敏捷运动并迁移到实物四足，建立后续「位置目标 + 低层 PD」与「直接力矩」两条线争论的 **历史参照系**。
 - **与 Kp/Kd：** 帮助建立 **「为何位置/扭矩接口在工业与论文中长期并存」** 的直觉：不同硬件带宽与安全需求会锁定不同接口层。
 - **对 wiki 的映射：**
-  - [论文实体：RSS 2018 敏捷四足 sim2real](../../wiki/entities/paper-quadruped-agile-sim2real-rss2018.md)
+  - [论文实体：RSS 2018 敏捷四足 sim2real](../../wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md)
   - [Sim2Real](../../wiki/concepts/sim2real.md)
   - [Legged / Humanoid RL 中 Kp/Kd 设置](../../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 

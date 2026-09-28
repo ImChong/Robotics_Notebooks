@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers]
+tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-23
+updated: 2026-09-28
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md
@@ -12,11 +12,20 @@ related:
   - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
   - ../methods/reinforcement-learning.md
   - ../concepts/exploration-in-rl.md
+  - ../entities/awesome-world-action-models-rcl.md
+  - ../overview/rcl-awesome-wam-technology-map.md
+  - ../methods/generative-world-models.md
+  - ../methods/vla.md
+  - ../tasks/manipulation.md
+  - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/bfm_awesome_diayn_iclr_2018.md
   - ../../sources/repos/diayn_sac.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/rcl_awesome_wam_ref_8c0a34d0c6ab6b64e3ae_diversity-is-all-you-need-learning-skill.md
+  - ../../sources/papers/rcl_awesome_wam_catalog.md
+  - ../../sources/repos/awesome-world-action-models-rcl.md
 summary: "DIAYN（ICLR 2018）：互信息 + 最大熵 SAC 无奖励发现可区分技能；Ant 涌现走/跳/翻，可作 BFM 03 类 intrinsic 预训练与下游 init/分层/模仿的原型。"
 ---
 
@@ -182,6 +191,10 @@ DIAYN 与另两条「给策略一个 motor prior」的路线放在一起才看�
 - [diayn_sac.md](../../sources/repos/diayn_sac.md)
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md)
 - 论文：<https://arxiv.org/abs/1802.06070>
+- [`sources/papers/rcl_awesome_wam_ref_8c0a34d0c6ab6b64e3ae_diversity-is-all-you-need-learning-skill.md`](../../sources/papers/rcl_awesome_wam_ref_8c0a34d0c6ab6b64e3ae_diversity-is-all-you-need-learning-skill.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 
 ## 推荐继续阅读
 

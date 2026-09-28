@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-28
 venue: "ICLR 2026"
 summary: "A benchmark for evaluating embodied cognition through egocentric interaction world modeling, revealing that VLMs perform better on inverse tasks than forward prediction"
 related:
@@ -16,6 +16,7 @@ sources:
   - ../../sources/papers/sun_awesome_ego_noarxiv_033_enact-evaluating-embodied-cognition-with.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
+  - ../../sources/papers/sun_awesome_ego_noarxiv_104_enact-evaluating-embodied-cognition-with.md
 ---
 
 # ENACT
@@ -96,6 +97,7 @@ A benchmark for evaluating embodied cognition through egocentric interaction wor
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://openreview.net/forum?id=Patx6MRipw>
+- [`sources/papers/sun_awesome_ego_noarxiv_104_enact-evaluating-embodied-cognition-with.md`](../../sources/papers/sun_awesome_ego_noarxiv_104_enact-evaluating-embodied-cognition-with.md) — 本条目策展摘录
 
 ## 推荐继续阅读
 

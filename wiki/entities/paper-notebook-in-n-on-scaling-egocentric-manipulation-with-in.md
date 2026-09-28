@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, egocentric, human-video, vla, co-training, ucsd, unitree]
+tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, egocentric, human-video, vla, co-training, ucsd, unitree, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-09-28
 arxiv: "2511.15704"
@@ -13,8 +13,17 @@ related:
   - ./paper-notebook-humanoid-policy-human-policy.md
   - ../concepts/data-flywheel.md
   - ./paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/awesome-egocentric-vision.md
+  - ../overview/sun-awesome-ego-technology-map.md
+  - ../methods/vla.md
+  - ../methods/imitation-learning.md
+  - ../tasks/manipulation.md
+  - ../tasks/teleoperation.md
 sources:
   - ../../sources/papers/humanoid_pnb_in-n-on.md
+  - ../../sources/papers/sun_awesome_ego_2511_12643_in-n-on-scaling-egocentric-manipulation.md
+  - ../../sources/papers/sun_awesome_ego_catalog.md
+  - ../../sources/repos/awesome-egocentric-vision.md
 summary: "第一视角（egocentric）视频是学操作策略的宝贵可扩展数据源，但数据异质性大，多数方法只把人类数据用于简单预训练，没释放全部潜力。本文先给出一套可扩展配方：把人类数据分成两类——野外（in-the-wild）与任务对齐（on-task），并系统分析如何使用。作者整理出数据集 PHSD，含 1000+ 小时多样野外第一视角数据与 20+ 小时直接对齐目标任务的任务数据。据此训练一个大型语言条件流匹配策略 Human0；配合域适应技术，Human0 缩小人到人形的差距。实证表明，规模化人类数据带来若干新性质：仅凭人类数据就能听从语言指令、少样本学习、以及用任务数据提升的鲁棒性。"
 ---
 
@@ -117,7 +126,6 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 - **on-task 数据仍需专门采集**：20+ 小时任务对齐数据是鲁棒性的来源，换任务就要重录。
 - **训练成本**：基座训练 8×H200；后训练可单卡，但依赖基座权重。
 - **开源边界**：仓库、数据、模型均已发布，但 README 未给运行命令；源码运行时序图 **不适用**（无可辨识的训练 / 部署入口）。
-- **库内重复节点**：[paper-sa-2511-12643-in-n-on…](./paper-sa-2511-12643-in-n-on-scaling-egocentric-manipulation-with-in.md) 描述同一论文，但其 frontmatter 的 arXiv 号 2511.12643 实为另一篇论文，正确编号是 2511.15704。
 
 ## 与其他页面的关系
 
@@ -136,6 +144,9 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 - 论文：<https://arxiv.org/abs/2511.15704>
 - 论文正文（Table 1–2、消融）：<https://arxiv.org/html/2511.15704>
 - 仓库：<https://github.com/XiongyiCai/Human0>
+- [`sources/papers/sun_awesome_ego_2511_12643_in-n-on-scaling-egocentric-manipulation.md`](../../sources/papers/sun_awesome_ego_2511_12643_in-n-on-scaling-egocentric-manipulation.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
+- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 
 ## 推荐继续阅读
 

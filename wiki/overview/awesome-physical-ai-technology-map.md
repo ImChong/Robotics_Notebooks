@@ -92,7 +92,7 @@ sources:
 | 027 | Modern Robotics | [modern-robotics-book](../entities/modern-robotics-book.md) | natnew |
 | 028 | Planning Algorithms | [painode-028-planningalgorithms](../entities/painode-028-planningalgorithms.md) | natnew |
 | 029 | Probabilistic Robotics | [painode-029-probabilisticrobotics](../entities/painode-029-probabilisticrobotics.md) | natnew |
-| 030 | Reinforcement Learning: An Introduction | [painode-030-reinforcementlearninganintroducti](../entities/painode-030-reinforcementlearninganintroducti.md) | natnew |
+| 030 | Reinforcement Learning: An Introduction | [sutton-barto-rl-book](../entities/sutton-barto-rl-book.md) | natnew |
 | 031 | Robotics, Vision and Control | [painode-031-roboticsvisionandcontrol](../entities/painode-031-roboticsvisionandcontrol.md) | natnew |
 
 ### Community

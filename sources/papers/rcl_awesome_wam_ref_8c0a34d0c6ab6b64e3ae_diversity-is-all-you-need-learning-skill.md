@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 动作策略基础 · 理论与规划 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-8c0a34d0c6ab6b64e3ae-diversity-is-all-you-need-learning-skills-withou.md`](../../wiki/entities/paper-rcl-ref-8c0a34d0c6ab6b64e3ae-diversity-is-all-you-need-learning-skills-withou.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-bfm-30-diayn.md`](../../wiki/entities/paper-bfm-30-diayn.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-8c0a34d0c6ab6b64e3ae-diversity-is-all-you-need-learning-skills-withou.md`](../../wiki/entities/paper-rcl-ref-8c0a34d0c6ab6b64e3ae-diversity-is-all-you-need-learning-skills-withou.md)
+- 实体页：[`wiki/entities/paper-bfm-30-diayn.md`](../../wiki/entities/paper-bfm-30-diayn.md)
 - 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)

@@ -75,7 +75,7 @@ SysID 基准 → 观测/奖励对齐实机 → DR + Curriculum 泛化 → 前馈
 | [Sim2Real Checklist](../../wiki/queries/sim2real-checklist.md) / [Gap 缩减](../../wiki/queries/sim2real-gap-reduction.md) | 工程清单与根因工具箱 |
 | [Safety Filter](../../wiki/concepts/safety-filter.md) / [Robot Safety FSM](../../wiki/concepts/robot-safety-state-machine.md) | 分层安全侧 |
 | [ANYmal Parkour](../../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) | 技能库 + 高层选技 |
-| [四足敏捷 Sim2Real（RSS 2018）](../../wiki/entities/paper-quadruped-agile-sim2real-rss2018.md) | 早期 SysID/DR 敏捷迁移参照 |
+| [四足敏捷 Sim2Real（RSS 2018）](../../wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md) | 早期 SysID/DR 敏捷迁移参照 |
 
 ## 开源 / 项目页核查
 
