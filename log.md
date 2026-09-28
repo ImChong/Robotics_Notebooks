@@ -1,3 +1,5 @@
+## [2026-09-28] structural | 新增公司技术路线子页 company.html（12 家公司纵向时间轴，节点链接本库页面与官方原文）；首页入口区「更多路线」下加「公司路线」入口卡
+
 ## [2026-09-28] ingest | RCL WAM 综述 arXiv:2609.16074 升格 canonical 论文实体；修复 paper-oraclezoom 孤儿页；自动合并 PR
 
 ## [2026-09-28] ingest | OracleZoom（arXiv:2609.06490）：递归 SR 参考约束 + on-policy 训练；GitHub/HF/Space 已开源，沉淀 paper-oraclezoom 实体与 sources 三件套
