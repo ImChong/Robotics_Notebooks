@@ -3044,6 +3044,13 @@
         "deepseek-ai"
       ]
     },
+    "delta-intelligence": {
+      "label": "德塔智能（Delta Intelligence）",
+      "aliases": [
+        "delta-intelligence",
+        "deltai"
+      ]
+    },
     "galaxea": {
       "label": "星海图（Galaxea）",
       "aliases": [
