@@ -2,8 +2,9 @@
 type: entity
 tags: [curated-list, world-action-models, wam, vla, embodied-ai, survey, mbzuai]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 related:
+  - ./paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/pi07-policy.md
   - ../concepts/world-action-models.md
@@ -25,7 +26,7 @@ summary: "RCL Robotics / MBZUAI 维护的 Awesome World-Action Models：564 条 
 
 # Awesome World-Action Models（RCL / MBZUAI）
 
-**Awesome World-Action Models**（GitHub：[rcl-robotics/Awesome-World-Action-Models](https://github.com/rcl-robotics/Awesome-World-Action-Models)，站点：[rcl-robotics.github.io/Awesome-World-Action-Models](https://rcl-robotics.github.io/Awesome-World-Action-Models/)）是 *World-Action Models for Robot Learning and Control: A Survey* 的 **配套策展与交互索引**：按 **架构四象限**、八大类与主题标签组织 **564** 条文献，并提供证据化 Reading reports。
+**Awesome World-Action Models**（GitHub：[rcl-robotics/Awesome-World-Action-Models](https://github.com/rcl-robotics/Awesome-World-Action-Models)，站点：[rcl-robotics.github.io/Awesome-World-Action-Models](https://rcl-robotics.github.io/Awesome-World-Action-Models/)）是 [配套综述（arXiv:2609.16074）](./paper-rcl-wam-robot-learning-control-survey.md) 的 **策展与交互索引**：按 **架构四象限**、八大类与主题标签组织 **564** 条文献，并提供证据化 Reading reports。
 
 ## 一句话定义
 
