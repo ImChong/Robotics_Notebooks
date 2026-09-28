@@ -82,6 +82,7 @@ flowchart LR
 - [RF-DETR](./rf-detr.md)
 - [Humanoid-GPT](./paper-humanoid-gpt.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [NVIDIA CUDA](./nvidia-cuda.md) — TRT 依赖的 GPU 平台与驱动/CTK 对齐
 
 ## 参考来源
 

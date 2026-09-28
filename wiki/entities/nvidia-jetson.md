@@ -131,6 +131,7 @@ flowchart TB
 
 ## 关联页面
 
+- [NVIDIA CUDA](./nvidia-cuda.md) — JetPack 捆绑的 CTK 与驱动兼容矩阵
 - [Jetson AI Lab](./jetson-ai-lab.md) — LLM/VLM/VLA 官方教程 hub
 - [Holoscan Sensor Bridge](./holoscan-sensor-bridge.md) — Sensor-over-Ethernet 低延迟 GPU 传感器流
 - [Jetson Orin NX](./jetson-orin-nx.md) — 四足/轻量机器人常用模组深读
