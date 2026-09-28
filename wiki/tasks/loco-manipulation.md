@@ -374,6 +374,7 @@ flowchart TD
 - [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 经验配方（arXiv:2606.22174，已开源）
 - [HAF（论文实体）](../entities/paper-haf-humanoid-vla-adaptation.md) — 三阶段 action flow + DCT 潜空间 SAC 适配通才 VLA 到天工家庭 loco-manipulation（arXiv:2608.16837，未开源）
 - [POT-VLA（论文实体）](../entities/paper-pot-vla.md) — 持久 3D 对象 token + 几何谓词可验证闭环；G1 上 GR00T-N1.7 **39/80→71/80**（arXiv:2607.18016）
+- [HomeBody（论文实体）](../entities/paper-homebody.md) — **GPT Astra 直接编排技能库** + 探索持久空间记忆 + 自采 Real2Sim（Isaac Sim）；G1 真机长程厨房 demo；**GitHub 待发布**（TML 2026 项目页）
 
 ### 世界–动作模型与未来预测
 

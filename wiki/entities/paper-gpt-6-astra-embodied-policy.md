@@ -15,6 +15,7 @@ related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ./vla-sota-leaderboard.md
   - ./walterzhu-astra-and-beyond.md
+  - ./paper-homebody.md
 sources:
   - ../../sources/papers/gpt_6_astra_embodied_policy_2026.md
   - ../../sources/sites/gpt-6-astra-embodied-policy-eval.md
