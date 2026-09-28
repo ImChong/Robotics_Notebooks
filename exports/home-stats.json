@@ -9,6 +9,16 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "roadmap/depth-robotics-diffusion-dit-flow.md",
+      "detail_id": "roadmap-depth-robotics-diffusion-dit-flow",
+      "label": "路线（纵深）：扩散动作 → Robotic DiT → Flow → 人形 GR00T",
+      "type": "roadmap_page",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
       "path": "wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md",
       "detail_id": "entity-paper-dita-scaling-diffusion-transformer-vla",
       "label": "Dita：可扩展的扩散 Transformer 通才 VLA",
@@ -18,6 +28,28 @@
       "action": "added",
       "has_repo": true,
       "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-gr00t-n1-5.md",
+      "detail_id": "entity-paper-gr00t-n1-5",
+      "label": "GR00T N1.5：通用人形 VLA 的改进版",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
+    },
+    {
+      "path": "wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md",
+      "detail_id": "entity-paper-robotic-dit-ingredients-dit-block-policy",
+      "label": "DiT-Block Policy：机器人扩散 Transformer 的「配方」",
+      "type": "entity",
+      "recency": "2026-09-28",
+      "source": "git",
+      "action": "added",
+      "has_repo": true,
+      "community_label": "模仿学习（Imitation Learning, IL） 社区"
     },
     {
       "path": "wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md",
@@ -182,47 +214,16 @@
       "source": "git",
       "action": "added",
       "community_label": "动作模仿与生成（Motion Imitation and Generation） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-fly-inspired-rnn.md",
-      "detail_id": "entity-paper-humanoid-fly-inspired-rnn",
-      "label": "果蝇启发 RNN 控制器（arXiv:2609.27001）",
-      "type": "entity",
-      "recency": "2026-09-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "运动控制（Locomotion） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-internw0-physical-world-model.md",
-      "detail_id": "entity-paper-internw0-physical-world-model",
-      "label": "InternW0（arXiv:2609.27656）",
-      "type": "entity",
-      "recency": "2026-09-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "世界模型（World Models） 社区"
-    },
-    {
-      "path": "wiki/entities/paper-jamb-bimanual-diffusion.md",
-      "detail_id": "entity-paper-jamb-bimanual-diffusion",
-      "label": "JAMB（arXiv:2609.25322）",
-      "type": "entity",
-      "recency": "2026-09-28",
-      "source": "git",
-      "action": "added",
-      "community_label": "操作（Manipulation） 社区"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md",
-    "detail_id": "entity-paper-dita-scaling-diffusion-transformer-vla",
-    "label": "Dita：可扩展的扩散 Transformer 通才 VLA",
-    "type": "entity",
+    "path": "roadmap/depth-robotics-diffusion-dit-flow.md",
+    "detail_id": "roadmap-depth-robotics-diffusion-dit-flow",
+    "label": "路线（纵深）：扩散动作 → Robotic DiT → Flow → 人形 GR00T",
+    "type": "roadmap_page",
     "recency": "2026-09-28",
     "source": "git",
     "action": "added",
-    "has_repo": true,
     "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区"
   },
   "top_communities": [

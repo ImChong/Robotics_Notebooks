@@ -39,7 +39,7 @@ flowchart TB
 
 ---
 
-## ① Diffusion Policy（★★★★★ · 先看）
+## Stage 1 · Diffusion Policy（① ★★★★★ · 先看）
 
 ### 核心问题
 
@@ -57,7 +57,7 @@ flowchart TB
 
 ---
 
-## ② The Ingredients for Robotic Diffusion Transformers（★★★★★）
+## Stage 2 · The Ingredients for Robotic Diffusion Transformers（② ★★★★★）
 
 ### 核心问题
 
@@ -75,7 +75,7 @@ flowchart TB
 
 ---
 
-## ③ RDT-1B（★★★★☆）
+## Stage 3 · RDT-1B（③ ★★★★☆）
 
 ### 核心问题
 
@@ -93,7 +93,7 @@ flowchart TB
 
 ---
 
-## ④ π₀（★★★★★ · Flow Matching 机器人入门）
+## Stage 4 · π₀（④ ★★★★★ · Flow Matching 机器人入门）
 
 ### 核心问题
 
@@ -111,7 +111,7 @@ flowchart TB
 
 ---
 
-## ⑤ GR00T N1（★★★★★ · 人形 / NVIDIA）
+## Stage 5 · GR00T N1（⑤ ★★★★★ · 人形 / NVIDIA）
 
 ### 核心问题
 
@@ -128,7 +128,7 @@ flowchart TB
 
 ---
 
-## ⑥ GR00T N1.5（★★★★★ · 紧接 N1）
+## Stage 6 · GR00T N1.5（⑥ ★★★★★ · 紧接 N1）
 
 ### 核心问题
 
@@ -146,7 +146,7 @@ flowchart TB
 
 ---
 
-## ⑦ Diffusion Transformer Policy / Dita（★★★★☆）
+## Stage 7 · Diffusion Transformer Policy / Dita（⑦ ★★★★☆）
 
 ### 核心问题
 
