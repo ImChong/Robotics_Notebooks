@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | Delta Intelligence Δ₀ 官方博客入库：sources/blogs + sites/deltai-com + wiki 实体；项目页无 GitHub，标未开源
+
 ## [2026-09-28] ingest | MMLab Physical RSI 1.0 项目页：Self-Harness 实体 + RoboDojo Overall #1 叙事（代码待发布）
 
 ## [2026-09-28] ingest | human five ROBOTIS Humanoid Skills：K1 全身 BeyondMimic/Newton + Worker GR00T/Cosmos 技术地图与实体交叉
