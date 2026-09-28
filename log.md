@@ -1,3 +1,9 @@
+## [2026-09-28] ingest | sources/blogs/wechat_lerobot_humanoid_open_stack_2026-09-28.md + repos/lerobot_humanoid_* + lerobot_legged_zoo — LeRobot Humanoid 四仓开源栈（HF 硬件/运行时 + MJLab 训练 + MJWarp 辨识）；已开源；自动合并 PR
+
+- **意图：** 用户指定微信公众号策展链与四仓 + LeRobot/NVIDIA 文档入口
+- **开源结论：** **已开源**（hardware/runtime/identification Apache-2.0；legged-zoo 无预训练策略）
+- **关键页：** [lerobot-humanoid](wiki/entities/lerobot-humanoid.md)
+
 ## [2026-09-28] ingest | sources/sites/cartesian-hand-v1-generalroboticslab.md + repos/cartesian_hand.md — Cartesian Hand v1 项目页与 GRL 控制栈；已开源 Apache-2.0；深化 paper-cartesian-hand-linear-fingers；自动合并 PR
 
 - **意图：** 用户指定 https://generalroboticslab.com/cartesian_handv1
