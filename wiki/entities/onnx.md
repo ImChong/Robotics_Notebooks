@@ -4,7 +4,7 @@ title: ONNX
 date: 2026-06-25
 tags: [framework, deployment, onnx, model-export, interoperability, linux-foundation]
 summary: "ONNX 是开放神经网络交换格式（IR）：用统一计算图、算子集与 .onnx 文件衔接训练框架与推理引擎，是机器人策略从 PyTorch/JAX 导出到机载 C++ 的常见中间契约。"
-updated: 2026-07-26
+updated: 2026-09-29
 ---
 
 # ONNX
@@ -45,7 +45,7 @@ updated: 2026-07-26
 ## 与机器人研究与工程的关系
 
 - **人形 RL / tracking**：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 真机层普遍写「**ONNX / TensorRT @ ~50 Hz**」；策略冻结，观测构造需与训练 **字节级一致**。
-- **感知**：[RF-DETR](./rf-detr.md) 等工作流 `model.export(format="onnx")` 后再接 TensorRT/Jetson。
+- **感知**：[RF-DETR](./rf-detr.md) 等工作流 `model.export(format="onnx")` 后再接 TensorRT/Jetson；极小 ROI 分类见 [OCEC](./ocec.md)（24×40 开/闭眼 ONNX 级联）。
 - **浏览器 Demo**：[BotLab MotionCanvas](../entities/botlab-motioncanvas.md) 用 **ONNX Runtime WASM/WebGPU** 在浏览器跑 policy。
 - **格式 ≠ 运行时**：`.onnx` 文件需由 [ONNX Runtime](./onnxruntime.md)、[TensorRT](./tensorrt.md)、[MNN](./mnn.md) 等 **执行**；选型见 [机载推理 Runtime 选型](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)。
 
