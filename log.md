@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | OCEC 开/闭眼微分类：sources/repos+HF 数据集归档，wiki/entities/ocec，ONNX 页交叉引用；GitHub/Zenodo/Releases 已开源
+
 ## [2026-09-29] ingest | RLinf-USER（arXiv:2602.07837，RSS 2026）真机在线系统；sources+wiki/entities/paper-rlinf-user.md；交叉 rlinf/RLark/STEAM/VLA 景观；步骤 2.5 已开源 RLinf/RLinf
 
 ## [2026-09-29] ingest | RLinf/RLark 跨集群具身云原生平台（2026-09 开源）；sources/repos+sites、wiki/entities/rlark.md；交叉 rlinf、APXInf、VLA 复现景观；步骤 2.5 已开源
