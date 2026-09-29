@@ -4351,6 +4351,7 @@
 - [Richard Sutton](wiki/entities/richard-sutton.md) — Richard S. Sutton** 是现代 **强化学习（RL）** 的奠基研究者之一：与 Andrew Barto 合著 RL 标准教材、提出 TD learning / eligibili `📅unknown` `[entity_page]`
 - [RigMo：统一 Rig 与 Motion 的生成式动画](wiki/entities/rigmo.md) — RigMo**（*Unifying Rig and Motion Learning for Generative Animation*，arXiv:2601.06378；GitHub 标注 CVP `📅unknown` `[entity_page]`
 - [rl_games](wiki/entities/rl-games.md) — rl_games](https://github.com/Denys88/rl_games) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
+- [RLark（跨集群具身智能云原生平台）](wiki/entities/rlark.md) — RLark**（`RLinf/RLark`，[文档](https://rlark.readthedocs.io/en/lates `📅unknown` `[entity_page]`
 - [RLBench](wiki/entities/rlbench.md) — RLBench](https://github.com/stepjam/RLBench) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
 - [RLDX-1](wiki/entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [RLE-Bench（Coding Agent 机器人学习工程资格考）](wiki/entities/rle-bench.md) — RLE-Bench**（*A Qualifying Exam for Coding Agents as Robot Learning Engineers*，[项目页](https://rle-be `📅unknown` `[entity_page]`

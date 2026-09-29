@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | RLinf/RLark 跨集群具身云原生平台（2026-09 开源）；sources/repos+sites、wiki/entities/rlark.md；交叉 rlinf、APXInf、VLA 复现景观；步骤 2.5 已开源
+
 ## [2026-09-29] ingest | Zeva-Ego（2609.24411）Ego mid-training + ICCL；feature/zeva_ego 已开源；交叉 Zeva/π0.5
 
 ## [2026-09-29] ingest | IQuest-Q1：接入 HF/GitHub/项目页，开放 320B MoE CLI agent 权重与 SGLang/vLLM 部署文档；新建实体页与机构 iquest。
