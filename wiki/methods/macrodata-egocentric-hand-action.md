@@ -3,7 +3,7 @@ type: method
 tags: [egocentric, hand-pose, 3d-vision, data-engine, manipulation, imitation-learning, vla, macrodata, wilor, hawor]
 title: Macrodata Egocentric Hand-Action Pipeline
 summary: "Macrodata Labs 工程博客给出的 RGB-only 开源配方：保守 WiLoR 检测 + 时序 HaWoR 手重建 + 窗口化 VGGT-Omega 度量相机轨迹与窄后处理，把 egocentric 视频变成世界系 21 关节度量手轨迹；HOT3D Action MPJPE 52.04 mm、81.23% 覆盖、15.53 FPS@H100。"
-updated: 2026-09-15
+updated: 2026-09-28
 status: complete
 related:
   - ./wilor.md
@@ -20,6 +20,7 @@ related:
   - ../overview/ego-category-02-human-to-robot.md
   - ../queries/dexterous-manipulation-data-pipeline.md
   - ../tasks/manipulation.md
+  - ../entities/paper-agenticstar.md
 sources:
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/sites/macrodata-co.md
@@ -147,6 +148,7 @@ flowchart TB
 - [Perceptron Egocentric](../entities/perceptron-egocentric.md) — Macrodata **WGO** 子任务标注对照生态
 - [Ego 数据采集](../overview/ego-category-01-data-collection.md) / [人→机器人](../overview/ego-category-02-human-to-robot.md)
 - [灵巧操作数据管线 Query](../queries/dexterous-manipulation-data-pipeline.md)
+- [AgentSTAR](../entities/paper-agenticstar.md) — 同用 HOT3D，但任务是物体形状与 6-DoF 位姿重建，而非手轨迹
 
 ## 参考来源
 

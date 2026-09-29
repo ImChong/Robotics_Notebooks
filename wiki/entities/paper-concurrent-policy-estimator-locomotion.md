@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, state-estimation, locomotion, quadruped, sim2real, kaist]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 arxiv: "2202.05481"
 related:
   - ./paper-raibo2-marathon-energy-efficient-quadruped.md

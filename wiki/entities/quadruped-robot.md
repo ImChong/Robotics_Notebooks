@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, legged, hardware, platform, locomotion]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 related:
   - ./paper-raibo2-marathon-energy-efficient-quadruped.md
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-09-26
+updated: 2026-09-28
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -35,6 +35,7 @@ related:
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
+  - ../entities/paper-kiwi-kinematic-interface-wild.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
@@ -250,6 +251,7 @@ flowchart TD
 - [EasyMocap](../entities/easymocap.md) — 标定多视角 / 镜面视频 → SMPL 系参数的上游工具箱
 - [MILO](../entities/paper-milo.md) — 单图 LRM→SMPL-H + 物体网格的上游 HOI 几何；不是关节指令，进本管线前还要做坐标系/尺度对齐
 - [Morphometric Imitation](../entities/paper-morphometric-imitation.md) — **灵巧 HOI**：MMO 形态+接触运动学 retarget → 残差 RL → visuomotor；三/四/五指手、真机 zero-shot
+- [KIWI](../entities/paper-kiwi-kinematic-interface-wild.md) — 双手 6-DoF 工具轨迹作重定向上游
 
 ## 推荐继续阅读
 

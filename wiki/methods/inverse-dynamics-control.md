@@ -6,7 +6,7 @@ tags:
   - inverse-dynamics
   - manipulation
 status: complete
-updated: 2026-08-13
+updated: 2026-09-28
 summary: "以前馈逆动力学为主、弱反馈为辅的轨迹跟踪控制。"
 related:
   - ../overview/robot-control-paradigm-model-based-nonlinear-dynamics.md
@@ -61,6 +61,7 @@ $\tau_{ff} = M(q)\ddot{q}_d + C(q,\dot{q})\dot{q} + g(q)$；$\tau = \tau_{ff} + 
 
 ## 关联页面
 
+- [逆动力学模型（IDM）](../concepts/inverse-dynamics-model.md) — 同名不同义：学习式「观测变化 → 动作」模型，非力矩求解
 - [pinocchio](../entities/pinocchio.md)
 - [Computed Torque Control](./computed-torque-control.md)
 - [Feedback Linearization](./feedback-linearization-control.md)

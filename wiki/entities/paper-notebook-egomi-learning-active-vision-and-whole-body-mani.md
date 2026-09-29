@@ -12,6 +12,7 @@ related:
   - ./paper-notebook-learning-to-look-seeking-information-for-decisio.md
   - ../methods/imitation-learning.md
   - ./paper-ego-03-egomimic.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_pnb_egomi.md
 summary: "机器人从人类视频学操作，要跨越具身差距。人在做任务时会主动协调头与手，用动态视角变化与视觉搜索策略。EgoMI 捕捉同步的末端执行器与头部轨迹，可迁移到半人形机器人；并引入一个记忆增强策略（memory-augmented policy），选择性纳入历史观测以应对视角切换。在带可动相机头的双臂机器人上测试：显式建模头部运动的策略持续优于基线，说明协调的手眼学习能有效弥合人-机具身差距（针对半人形）。"
@@ -122,6 +123,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 - 信息寻求式主动视觉：[paper-notebook-learning-to-look-seeking-information-for-decisio](./paper-notebook-learning-to-look-seeking-information-for-decisio.md)
 - 模仿学习：[imitation-learning](../methods/imitation-learning.md)
 - 第一视角人类演示路线对照：[paper-ego-03-egomimic](./paper-ego-03-egomimic.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 主动视觉（头部运动）在感知栈选型中的位置
 
 ## 参考来源
 

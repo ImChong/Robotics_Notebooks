@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-28
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -50,6 +50,7 @@ related:
   - ../entities/paper-autohorizon.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
+  - ../entities/fluxvla-engine.md
 ---
 
 # Action Chunking（动作块输出）
@@ -238,3 +239,4 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行
 - [滚动预测执行（Receding Horizon）](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE 一手对照
+- [FluxVLA Engine](../entities/fluxvla-engine.md) — 工程平台侧的 chunk 执行：RTC + 加速推理后端 + 远程 GPU 服务

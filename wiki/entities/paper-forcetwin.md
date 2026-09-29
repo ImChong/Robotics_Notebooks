@@ -11,6 +11,7 @@ related:
   - ../concepts/impedance-control.md
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-contact-guided-exploration-locomanipulation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/forcetwin_arxiv_2609_21751.md
   - ../../sources/sites/forcetwin-website.md
@@ -128,6 +129,7 @@ flowchart TB
 - [Impedance Control](../concepts/impedance-control.md) — 前馈动力学接入点
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 视频 Real2Sim 默认物性 vs 实测动力学
 - [Contact-Guided Exploration](./paper-contact-guided-exploration-locomanipulation.md) — 同机构 loco-manip 探索线
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 交互式感知（探激辨识铰接物性）在感知栈选型中的位置
 
 ## 参考来源
 

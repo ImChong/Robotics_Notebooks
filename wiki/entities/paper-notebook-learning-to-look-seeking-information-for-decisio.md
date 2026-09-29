@@ -13,6 +13,7 @@ related:
   - ./painode-167-palroboticstiago.md
   - ./paper-notebook-vision-in-action-learning-active-perception-from.md
   - ./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-to-look.md
 summary: "许多操作任务需要主动或交互式探索才能成功——智能体要主动寻找每一阶段所需的信息（如移动机器人的头去找操作相关信息；或多机器人里一个侦察机器人为另一个找信息）。本文把这类任务刻画为一种新问题：因子化上下文马尔可夫决策过程（factorized Contextual MDP），并提出 DISaM ——一个双策略解法：① 信息寻求策略（information-seeking）探索环境找到相关上下文信息；② 信息接收策略（information-receiving）利用上下文达成操作目标。这种因子化让两策略可分开训练（用接收策略给寻求策略提供奖励）。测试时，双智能体按操作策略对\"下一步最佳动作\"的不确定性来平衡探索与利用。在五个需信息寻求的操作任务（仿真 + 真机）上，DISaM 大幅优于已有方法。"
@@ -139,6 +140,7 @@ sequenceDiagram
 - 真机平台 Tiago：[painode-167-palroboticstiago](./painode-167-palroboticstiago.md)
 - 感知层主动视觉对照：[paper-notebook-vision-in-action-learning-active-perception-from](./paper-notebook-vision-in-action-learning-active-perception-from.md)
 - 带记忆的主动视觉对照：[paper-notebook-egomi-learning-active-vision-and-whole-body-mani](./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 部分可观下的主动信息获取在感知栈选型中的位置
 
 ## 参考来源
 

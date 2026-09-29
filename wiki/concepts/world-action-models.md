@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-28
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
+  - ./inverse-dynamics-model.md
   - ../entities/paper-vgi-white-paper.md
   - ../entities/paper-lawa.md
   - ../entities/paper-riemann-1.md
@@ -438,6 +439,7 @@ flowchart TB
 - [世界模型定义与路线图（上海人工智能实验室）](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
+- [逆动力学模型（IDM）](./inverse-dynamics-model.md) — 「IDM 接口」一侧的动作解码机制
 - [Model-Based RL](../methods/model-based-rl.md)
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — WAM 是其世界模型轴下的联合建模行
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标

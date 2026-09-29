@@ -12,6 +12,7 @@ related:
   - ../concepts/humanoid-policy-observation-inputs.md
   - ./paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the.md
   - ./paper-notebook-hierarchical-vision-language-planning-for-multi.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_pnb_towards-proprioception-aware-embodied-planning-f.md
 summary: "近年多模态大模型（MLLM）能做高层规划，让机器人遵从复杂人类指令。但在涉及双臂人形的长时程任务上效果仍有限——原因是仿真平台不足与当前 MLLM 的具身感知（embodiment awareness）欠缺。本文用一个新的双臂人形模拟器 DualTHOR（带连续过渡与意外机制），并提出 Proprio-MLLM：一个融合本体感受信息、基于运动的位置嵌入、跨空间编码器（cross-spatial encoder）的增强模型，以提升具身感知。在 DualTHOR 环境中，Proprio-MLLM 的规划性能平均提升 19.75%（相比现有 MLLM）。"
@@ -125,6 +126,7 @@ MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连�
 - 本体感受作为策略输入：[humanoid-policy-observation-inputs](../concepts/humanoid-policy-observation-inputs.md)
 - BiBo：现成 VLM 驱动人形的对照：[paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the](./paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the.md)
 - 人形多步操作的层级视觉–语言规划：[paper-notebook-hierarchical-vision-language-planning-for-multi](./paper-notebook-hierarchical-vision-language-planning-for-multi.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — DualTHOR 仿真规划基准在评测选型中的位置
 
 ## 参考来源
 

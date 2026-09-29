@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, vla, loco-manipulation, whole-body-control, orchestration, limx, product, deployment]
 status: complete
-updated: 2026-07-16
+updated: 2026-09-28
 related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
