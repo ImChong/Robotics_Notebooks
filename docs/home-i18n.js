@@ -22,6 +22,7 @@
     '定位到公司路线入口卡': 'Jump to company roadmaps',
     '入口': 'Starting points', '从零开始': 'Getting started',
     '建立运动控制全局认识': 'Build an overview of motion control',
+    '一条主线打通具身智能全栈': 'One roadmap through the full embodied AI stack',
     '进入主路线 →': 'Follow the main roadmap →', '项目查询': 'Find a project',
     '查找框架、论文与机器人平台': 'Find frameworks, papers and robot platforms',
     '搜索知识库 →': 'Search the knowledge base →', '知识图谱': 'Knowledge graph',
