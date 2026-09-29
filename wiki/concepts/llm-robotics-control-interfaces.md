@@ -2,7 +2,7 @@
 type: concept
 tags: [llm-agents, control-interface, vla, locomotion, manipulation, anthropic, safety, sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-29
 related:
   - ../entities/anthropic-embody.md
   - ./model-hardware-standard.md
@@ -19,6 +19,7 @@ related:
   - ../entities/unitree-g1.md
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-locovlm.md
 sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/repos/safety-research-embody.md
@@ -58,6 +59,8 @@ summary: "LLM 机器人控制接口：同一语言模型的物理能力主要由
 | **程序控制** | `controller(obs) -> action` 的 Python | 编译后的脚本 | 奖励/目标难写时不如 RL；仍受感知限制 |
 | **RL 监督** | reward、网络、训练日程 | 学到的 PPO 策略 | 设环境+奖励本身是复杂搜索；多数模型弱于写代码 |
 | **策略控制** | 速度/偏航/自然语言，或对 VLA 提案的接受/修改 | 预训练步态或 MolmoAct | 过信或过改策略；空间记忆仍差 |
+
+**腿足语义适配（顾问层检索）：** [LocoVLM](../entities/paper-locovlm.md) 将 LLM **离线**扩「指令 → 步态参数」技能库，机载 VLM **检索** motion descriptor 后交给 50 Hz 风格条件策略——推理时不查云 LLM，属于「策略控制」台阶上的 **检索式高层接口**，而非逐步力矩或在线 chat。
 
 ```mermaid
 flowchart TB
