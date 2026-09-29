@@ -2,10 +2,11 @@
 type: overview
 tags: [autonomous-driving, racing, drift, reinforcement-learning, mpc, f1tenth, carla, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-29
 related:
   - ../methods/reinforcement-learning.md
   - ../methods/model-predictive-control.md
+  - ../entities/open-source-games.md
   - ../entities/f1tenth-gym.md
   - ../entities/barc.md
   - ../entities/drift-drl.md
@@ -160,6 +161,7 @@ flowchart LR
 - [MPC](../methods/model-predictive-control.md) — LMPC/NMPC 理论基础
 - [Sim2Real](../concepts/sim2real.md) — Gym-Khana、xcar-rlgpu、drift-mpc-ackermann 均强调域随机或摩擦自适应
 - [仿真平台十年地图](../overview/sim-platforms-decade-technology-map.md) — CARLA 在 AD 基础设施中的位置
+- [open-source-games](../entities/open-source-games.md) — GitHub **品类化**开源游戏索引（Racing 节含 STK、TORCS 等）；本页 10 仓之外的横向发现
 
 ## 参考来源
 
@@ -171,3 +173,4 @@ flowchart LR
 - [F1TENTH Gym 文档](https://f1tenth-gym.readthedocs.io)
 - [drift_drl 论文](https://arxiv.org/abs/2001.01377)（ICRA 2020）
 - [BARC Wiki](https://github.com/MPC-Berkeley/barc/wiki)
+- [open-source-games Racing games 节](https://github.com/bobeff/open-source-games#racing-games)
