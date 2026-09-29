@@ -29,7 +29,7 @@
     '俯瞰节点与连接全貌': 'Explore the nodes and their connections',
     '查看图谱预览 →': 'Preview the graph →', '更多路线': 'More roadmaps',
     '按研究方向进入纵深路线': 'Explore roadmaps by research area',
-    '按公司查看具身基础模型与人形技术演进': 'Explore embodied models and humanoid advances by company',
+    '按公司查看具身基础模型与人形技术演进': 'Explore embodied AI by company',
     '收起纵深路线 ↑': 'Collapse roadmaps ↑', '收起公司列表 ↑': 'Collapse companies ↑',
     '搜索知识库': 'Search the knowledge base',
     '搜索概念、方法或任务：MPC、PPO、Diffusion Policy…': 'Search concepts, methods or tasks: MPC, PPO, Diffusion Policy…',
