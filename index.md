@@ -10,7 +10,7 @@
 
 | 你的目标 | 从这里进入 |
 |---------|-----------|
-| 想有一条学习路线照着走 | [主路线：运动控制成长路线](roadmap/motion-control.md) |
+| 想有一条学习路线照着走 | [主路线：运动控制 → Physical AI 全栈成长路线](roadmap/motion-control.md) |
 | 想遥操作人形采集数据（全身 + 手指） | [遥操作纵深路线](roadmap/depth-teleoperation.md) |
 | 想设计力矩控制关节电机 | [力矩电机设计纵深路线](roadmap/depth-torque-motor-design.md) |
 | 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
@@ -139,7 +139,7 @@
 回答"应该先学什么、再学什么、学完输出什么"。
 
 核心路线：
-- [主路线：运动控制成长路线](roadmap/motion-control.md)（含 RL / IL / 安全 / 接触操作等 [可选纵深](roadmap/motion-control.md#depth-optional-index)）
+- [主路线：运动控制 → Physical AI 全栈成长路线](roadmap/motion-control.md)（含 RL / IL / 安全 / 接触操作等 [可选纵深](roadmap/motion-control.md#depth-optional-index)）
 
 ### tech-map/ — 技术栈地图
 回答"模块之间是什么关系"。

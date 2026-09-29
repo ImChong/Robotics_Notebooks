@@ -10,8 +10,8 @@
 
 ## 主路线（核心）
 
-- **[主路线：运动控制算法工程师成长路线](motion-control.md)**  
-  含 L−1 序言 → L0–L6 主干 → L7 出口的完整阶段。覆盖人形运动控制的传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），以及 RL/IL 扩展与 sim2real 实战。
+- **[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)**（Physical AI & Robot Learning）  
+  含 L−1 序言 → L0–L6 主干 → L7 出口 → L8–L12 Physical AI 扩展的完整阶段。覆盖人形运动控制的传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC）、RL/IL 扩展与 sim2real 实战，再向上接 Transformer / 动作生成（Diffusion · Flow Matching · DiT）/ VLA（π0 · GR00T）/ 世界模型（Cosmos），向下接 ONNX / ROS2 / 实时总线的真机部署。
 
 ## 纵深路线（按目标选其一深入）
 
@@ -47,4 +47,4 @@
 - [如果目标是具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) —— 想为具身模型建一条可交付的数据供给管线（起点：Open X-Embodiment 跨具身数据聚合，2023）
 - [如果目标是 WAM（世界–动作模型）](depth-wam.md) —— 想让策略在出动作前显式预知世界会怎么变（起点：World Action Models 综述形式化，2026）
 
-说明：感知、规划、系统、部署等更广的全栈知识在主路线的 **L−1 全景层** 和 **L7 出口层** 集中扫盲，提供进入对应子方向的入口，而不在本目录维护并列的独立路线图文件。
+说明：感知、规划、系统、部署等更广的全栈知识在主路线的 **L−1 全景层**、**L7 出口层** 与 **L8–L12 Physical AI 扩展层** 集中扫盲，提供进入对应子方向的入口，而不在本目录维护并列的独立路线图文件。

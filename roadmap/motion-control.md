@@ -1,17 +1,18 @@
-# 主路线：运动控制算法工程师成长路线
+# 主路线：运动控制 → Physical AI 全栈成长路线
 
 **首屏导读**：
 
-- **为谁**：想做人形 / 双足运动控制的算法工程师（入门到进阶均可）。
-- **怎么走**：L−1 全景入门 → L0–L7 逐层加深，每层都给「读什么 / 做什么 / 输出什么」。
-- **四段骨架**：打底（L0–L3）→ 传统控制（L4）→ RL/IL（L5）→ Sim2Real 与全栈出口（L6–L7）。
+- **为谁**：想做人形 / 双足运动控制，并想一路看懂 Physical AI（VLA / World Model / 部署）的算法工程师。
+- **怎么走**：L−1 全景入门 → L0–L7 运动控制主干 → L8–L12 Physical AI 全栈扩展，每层都给「读什么 / 做什么 / 输出什么」。
+- **五段骨架**：打底（L0–L3）→ 传统控制（L4）→ RL/IL（L5）→ Sim2Real 与全栈出口（L6–L7）→ Transformer · 动作生成 · VLA · 世界模型 · 部署（L8–L12）。
 
 **摘要**：
 
-- **一条主线**：从 L−1 全景到 L7 出口，串通人形 / 双足运动控制。
+- **一条主线**：从 L−1 全景到 L7 出口，串通人形 / 双足运动控制；L8–L12 再向上接 Foundation Model、向下接真机部署。
 - **L−1 → L3**：机器人技术栈全景与术语，再用数学、运动学、动力学、控制基础打底。
 - **L4 → L5**：传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），再把 RL / IL / 动作重定向接上去。
 - **L6 → L7**：sim2real 闭环，以及全栈视角与 2024–2026 前沿地图。
+- **L8 → L12**：Transformer / VLM → Action Chunk · Diffusion · Flow Matching · DiT → π0 / GR00T → Cosmos 世界模型 → ONNX / ROS2 / 实时总线上真机。
 
 ## 三句话先懂这条路线
 
@@ -19,14 +20,145 @@
 2. **再把学习方法接上去**：RL/IL 用来补能力，不是替代控制结构。
 3. **每一层都要有可运行输出**：代码、实验记录、失败复盘，缺一不可。
 
+> **本路线要回答的终极问题**：一个 Physical AI 系统，从 camera image 到 robot motor torque，中间到底经过了哪些模块？答案见 [Physical AI 全栈视图](#physical-ai-full-stack-view)，逐层展开在 L0–L12。
+
 <a id="roadmap-nav-start"></a>
 
 ## 先看哪里（导航）
 
 - 想 **30 秒先理解整个机器人技术栈**：跳到 [L−1 序言](#l1-序言机器人技术栈全景--怎么读这条路线)。
 - 想 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。
-- 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读。
+- 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读，再进入 L8–L12 的 Physical AI 扩展。
+- 想 **先看 Physical AI 全栈地图 / 时间有限只走核心路径**：跳到 [Physical AI 全栈视图](#physical-ai-full-stack-view) 与 [Physical AI Core Path](#physical-ai-core-path)。
+- 看到 **新模型 / 新论文不知道要不要学**：先用 [How to filter new Physical AI work](#physical-ai-signal-vs-noise) 过一遍。
 - 想 **直接走某个方向**：跳到 [可选纵深](#depth-optional-index)，二十六条独立路线页各自标了适合谁、从主线哪一层衔接。
+
+---
+
+## Physical AI 全栈视图：从 camera image 到 motor torque
+
+<a id="physical-ai-full-stack-view"></a>
+
+**这一节是整条路线的"地图页"。** 本路线以 **Robot Control + Robot Learning + Sim2Real** 为纵向主干（L0–L6），再向上扩展到 **Transformer → 动作生成 → VLA → World Model**（L8–L11），向下落到 **真机部署**（L12）。原有 L0–L7 的编号、标题与内容保持不变，L8–L12 是在其上追加的 Physical AI 扩展层。
+
+### 8 层 + 部署：与本路线章节的对应
+
+| 层 | 这一层要回答什么 | 本路线章节 | 关键节点 |
+|----|----------------|-----------|---------|
+| **① Robot Fundamentals** | 机器人为什么会动？神经网络最终控制的对象是什么？ | [L0](#l0-数学与编程基础)–[L2](#l2-动力学与刚体建模) | 坐标系 · SO(3) / SE(3) · FK / IK · Jacobian · 刚体 / 接触动力学 · 摩擦 · 执行器 · 状态估计 |
+| **② Robot Control** | policy 输出之后，谁把它变成力矩？ | [L3](#l3-控制基础与最优化)–[L4](#l4-人形运动控制主干) | PID / PD · 位置 / 速度 / 力矩控制 · 阻抗 · MIT-style PD · WBC · QP · MPC |
+| **③ Robot Learning** | 策略怎么从数据 / 试错里学出来？ | [L5](#l5-强化学习与模仿学习) | MDP → Value → Policy Gradient → Actor-Critic → GAE → PPO；BC · DAgger · DeepMimic · AMP · BeyondMimic · MimicKit |
+| **④ Sim2Real** | 仿真里好的策略，为什么真机上会失败？ | [L6](#l6-综合实战) | DR · 观测噪声 · 延迟 · 执行器建模 · SysID · Teacher-Student · Sim2Sim |
+| **⑤ Transformer / Representation** | 图像、语言、机器人状态怎么变成同一种"token"？ | [L8](#physical-ai-l8-transformer) | token · embedding · QKV · self / cross-attention · ViT · VLM |
+| **⑥ Action Generation** | 为什么现代策略一次输出一段动作，而不是一个动作？ | [L9](#physical-ai-l9-action-generation) | Action Chunk · Diffusion Policy · Flow Matching · DiT · Action Expert |
+| **⑦ VLA / Foundation Policy** | 一个模型怎么同时"看懂、听懂、动起来"？ | [L10](#physical-ai-l10-vla) | π0 → π0.5 → 后续 π 模型 · GR00T N1（System 2 / System 1） |
+| **⑧ World Model + Physical AI Platform** | 数据不够、真机太贵时，拿什么训练和评测？ | [L11](#physical-ai-l11-world-model) | World Foundation Model · Cosmos · Isaac Sim / Isaac Lab · 合成数据 |
+| **Deployment → Real Robot** | 训练好的网络怎么在真机上按时跑起来？ | [L12](#physical-ai-l12-deployment)（系统背景见 [L7.4](#l7-4-system-stack)） | ONNX · TensorRT · ROS2 · ros2_control · Jetson · PREEMPT_RT · CAN / EtherCAT |
+
+### 主干与分支（不是单链）
+
+```mermaid
+flowchart TB
+  P["① Robot Physics<br/>FK / IK · Jacobian · Dynamics<br/>L0–L2"]
+  C["② Robot Control<br/>PD · Impedance · WBC · MPC<br/>L3–L4"]
+  RL["③ RL<br/>MDP → Actor-Critic → PPO<br/>L5.1–L5.2"]
+  IL["③ IL / Motion Imitation<br/>BC · DAgger · DeepMimic · AMP<br/>L5.3–L5.4"]
+  S2R["④ Sim2Real<br/>DR · SysID · Teacher-Student<br/>L6"]
+  TF["⑤ Transformer / VLM<br/>token · QKV · ViT<br/>L8"]
+  GEN["⑥ Action Generation<br/>Diffusion · Flow Matching · DiT<br/>→ Action Chunk · L9"]
+  VLA["⑦ VLA / Foundation Policy<br/>π0 · GR00T<br/>L10"]
+  WM["⑧ World Model<br/>Cosmos<br/>L11"]
+  SIM["Simulation / Data<br/>Isaac Sim · Isaac Lab<br/>L11"]
+  DEP["Deployment<br/>ONNX · TensorRT · ROS2<br/>L12"]
+  HW["Real Robot<br/>CAN / EtherCAT · Motor<br/>L12"]
+
+  P --> C --> RL --> S2R
+  C --> IL --> S2R
+  RL --> IL
+  S2R --> TF --> GEN --> VLA --> WM --> SIM --> DEP --> HW
+  IL -. BC 是动作生成的起点 .-> GEN
+
+  classDef trunk fill:#142a3a,stroke:#00d4ff,stroke-width:2px,color:#fff
+  classDef ext fill:#0d4f5c,stroke:#00d4ff,stroke-width:2px,color:#fff
+  classDef hw fill:#1a1a1a,stroke:#888,color:#ddd
+  class P,C,RL,IL,S2R trunk
+  class TF,GEN,VLA,WM,SIM ext
+  class DEP,HW hw
+```
+
+图中只画主干与最关键的一条分支；其余交叉依赖：
+
+- **Simulation → RL**：L11 的仿真平台同样是 L5 RL 训练的场地。
+- **Sim2Real → Deployment**：经典 RL 运动策略不经过 VLA，训练后直接走 L12 部署。
+- **Control → Real Robot**：无论上层是 PPO 还是 VLA，低层 PD / WBC 始终在环（见 [L3](#policy-vs-low-level-controller)）。
+- **Real Robot → Sim2Real**：真机失败回到 [L6 失败来源表](#l6-sim2real-chain) 复盘。
+
+### 一个 Physical AI 系统：从 camera image 到 motor torque
+
+```mermaid
+flowchart TB
+  Img["Camera image"] --> VT["Patch → visual token"]
+  Lang["Language instruction"] --> TT["Text token"]
+  St["Robot state<br/>q · q̇ · IMU"] --> SE["State embedding"]
+  VT --> VLM["VLM · System 2<br/>语义理解 / 任务推理"]
+  TT --> VLM
+  VLM --> AE["Action Expert · System 1<br/>Flow Matching / Diffusion · DiT"]
+  SE --> AE
+  AE --> AC["Action chunk<br/>a_t … a_t+H"]
+  AC --> LL["低层策略 / WBC<br/>RL tracking policy 或 QP"]
+  LL --> QT["q_target / τ_ff"]
+  QT --> PD["PD / 阻抗（常在驱动器内）<br/>τ = Kp(q_des − q) + Kd(q̇_des − q̇)"]
+  PD --> BUS["CAN / EtherCAT"]
+  BUS --> M["电机电流环 → torque"]
+```
+
+电机编码器与 IMU 的读数再作为下一拍的 Robot state 反馈回来，形成闭环。
+
+| 环节 | 典型频率量级（因平台而异） | 在本路线哪一层 |
+|------|--------------------------|--------------|
+| VLM 语义理解（System 2） | 较慢；与动作头解耦运行 | L8 / L10 |
+| 动作头出 action chunk（System 1） | 端到端网络常 10–50 Hz；GR00T N1 报告约 120 Hz 出 chunk、π0 约 50 Hz 控制 | L9 / L10 |
+| 低层 tracking policy / WBC | 平衡与力控需 200–1000 Hz | L4.4 / L5.2 |
+| 关节 PD / 电流环 | 驱动器内更高频闭环 | L3 / L12 |
+
+> 频率数字来自站内已有页面：[控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md)、[GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[π0](../wiki/entities/paper-pi0.md)。**要点不是具体数字，而是"慢的大模型 + 快的低层控制器"必须分层**——这也是为什么 L3–L4 的控制基础在 VLA 时代仍然不可跳过。
+
+<a id="physical-ai-core-path"></a>
+
+### Physical AI Core Path（时间有限时的最短路径）
+
+如果学习者时间有限，优先按以下顺序，**不要一次学完全部**：
+
+1. Robot Kinematics / Dynamics — [L1](#l1-机器人学骨架) · [L2](#l2-动力学与刚体建模)
+2. PD / Torque Control — [L3：Policy ≠ 底层控制器](#policy-vs-low-level-controller)
+3. MDP / Actor-Critic — [L5.1](#l5-1-rl-basics)
+4. PPO — [PPO](../wiki/methods/ppo.md)
+5. DeepMimic / AMP — [L5.3](#l5-3-imitation-learning)
+6. Sim2Real — [L6](#l6-综合实战)
+7. Transformer / Attention — [L8](#physical-ai-l8-transformer)
+8. Diffusion Policy — [L9](#physical-ai-l9-action-generation)
+9. Flow Matching / DiT — [L9](#physical-ai-l9-action-generation)
+10. π0 / GR00T — [L10](#physical-ai-l10-vla)
+11. World Model / Cosmos — [L11](#physical-ai-l11-world-model)
+12. Deployment — [L12](#physical-ai-l12-deployment)
+
+建议节奏：**Control → Robot Learning → Sim2Real → Transformer → Action Generation → VLA → World Model**，部署（L12）可在任何一段做完仿真后穿插进行。
+
+<a id="physical-ai-signal-vs-noise"></a>
+
+### How to filter new Physical AI work（Signal vs Noise）
+
+看到一个新模型 / 新论文，先问：
+
+1. 它改变了 Physical AI pipeline 的**哪个模块**（上面 8 层 + 部署中的哪一格）？
+2. 是**新的机制**，还是只是新的 model name？
+3. 是否**跨机器人 / 跨任务**有效？
+4. 是否有 **paper / code / benchmark**？
+5. **6–12 个月之后**这个概念是否仍然值得知道？
+
+> **If you cannot place a new work into the roadmap, do not learn it deeply yet.**
+
+**资料选择原则**：每个关键概念最多推荐 **1 个 canonical paper + 1 个官方 project page + 1 个 GitHub + 可选 Hugging Face**，没有对应链接就跳过；优先官方来源，不收二手博客 / 聚合站。L8–L12 的"推荐读什么"都按这个规则写。
 
 ---
 
@@ -146,6 +278,8 @@ flowchart LR
 | Ch 11：Robot Control | L3 / L4.4 |
 
 > Ch 7（Force Control）、Ch 10（Motion Planning）也很有价值，但相对偏离本路线主干，作为可选。
+
+**官方资源**：[项目页](https://modernrobotics.northwestern.edu/) · [书 PDF 与视频（Northwestern wiki）](https://hades.mech.northwestern.edu/index.php/Modern_Robotics) · [配套代码 NxRLab/ModernRobotics](https://github.com/NxRLab/ModernRobotics)。**不要求读完整本书**——对 Physical AI 路线，重点吃透 **SE(3)、FK / IK、Jacobian、Dynamics** 四块（上表 Ch 2–6、Ch 8）即可。
 
 ---
 
@@ -381,6 +515,14 @@ flowchart TD
 - [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)
 - [Contact Dynamics](../wiki/concepts/contact-dynamics.md) / [Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)
 
+### Physical AI 视角补充：摩擦 · 执行器 · 状态估计
+
+神经网络最终控制的不是"理想刚体"，而是 **带摩擦、带延迟、带饱和的电机 + 传动**，并且它看到的状态是 **估计值** 而不是真值。这三件事是 L6 sim2real gap 的主要来源，在 L2 先建立概念：
+
+- **摩擦**：库仑 + 粘滞 + Stribeck，减速器越大越明显 → [关节摩擦模型](../wiki/concepts/joint-friction-models.md) / [摩擦补偿](../wiki/concepts/friction-compensation.md)
+- **执行器 / 电机**：力矩常数、饱和、带宽、电流环；仿真里常被理想化 → [显式 / 隐式执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) / [Actuator Network](../wiki/methods/actuator-network.md)
+- **状态估计**：浮动基位姿 / 速度靠 IMU + 编码器融合，policy 的观测质量取决于它 → [State Estimation](../wiki/concepts/state-estimation.md)
+
 ### 学完输出什么
 - 能解释正逆动力学在机器人控制里的作用
 - 能理解 centroidal dynamics 为什么重要
@@ -467,6 +609,36 @@ flowchart TD
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md) / [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md) / [HQP](../wiki/concepts/hqp.md) / [零空间控制](../wiki/concepts/null-space-control.md)
 - [Numerical Optimization Curriculum](../wiki/entities/numerical-optimization-curriculum.md)（数值优化 L0+ 课程地图）、[CMU Optimal Control 2025](../wiki/entities/cmu-optimal-control-curriculum.md)（16-745 公开录像策展）
+
+<a id="policy-vs-low-level-controller"></a>
+
+### Policy ≠ 底层控制器：从 q_target 到电机力矩
+
+**learning policy 和 low-level controller 不是同一个东西。** 绝大多数人形 RL / VLA 策略并不直接输出电流，而是输出关节目标，再由底层控制器闭环：
+
+```mermaid
+flowchart TB
+  Pol["Policy（RL / IL / VLA）<br/>10–50 Hz 量级"] --> Tgt["q_target / τ_ff<br/>（或末端 / 质心任务）"]
+  Tgt --> LL["PD / 阻抗 / WBC<br/>更高频闭环"]
+  LL --> Tau["τ（关节力矩指令）"]
+  Tau --> Mot["电机驱动器 · 电流环"]
+  Mot -. 编码器 q, q̇ .-> LL
+```
+
+最常见的一层就是关节 PD（"MIT-style PD"，常称 MIT 模式：驱动器同时接收 \(q_{des}, \dot q_{des}, K_p, K_d, \tau_{ff}\) 五个量并在驱动器内闭环；这种接口形式随 [MIT Mini Cheetah](../wiki/entities/mit-mini-cheetah.md) 开源驱动器普及）：
+
+$$\tau = K_p\,(q_{des} - q) + K_d\,(\dot q_{des} - \dot q) + \tau_{ff}$$
+
+| 控制模式 | 上层给什么 | 适合 | 与 policy 的关系 |
+|---------|-----------|------|-----------------|
+| **Position Control** | \(q_{des}\)（高增益） | 工业臂、慢速精确定位 | 刚性大，接触冲击差 |
+| **Velocity Control** | \(\dot q_{des}\) | 轮式、底盘 | 人形关节少用 |
+| **Torque Control** | \(\tau\) | WBC / 力控 / 高动态 | 需要准确动力学与电机模型 |
+| **Impedance / PD（MIT-style）** | \(q_{des}, K_p, K_d, \tau_{ff}\) | 人形 RL 的主流动作空间 | policy 出 \(q_{des}\)，\(K_p, K_d\) 决定"软硬" |
+| **Whole-Body Control / QP / MPC** | 任务空间目标 | 多接触、多任务 | 见 [L4](#l4-人形运动控制主干)，也可作为 policy 的下层 |
+
+- 重点不是公式推导，而是：**同一个 policy 换一套 \(K_p, K_d\) 或控制频率，真机行为就会变**——这是 L6 sim2real 的第一类坑。
+- 延伸：[PID Control](../wiki/methods/pid-control.md) · [阻抗控制](../wiki/concepts/impedance-control.md) · [Computed Torque Control](../wiki/methods/computed-torque-control.md) · [人形 RL 的 PD 增益怎么设](../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
 ### 学完输出什么
 - 能解释 LQR 和 MPC 的区别
@@ -880,6 +1052,8 @@ flowchart TD
 
 深蓝具身智能《具身智能基础》专栏第 4 篇对以上脉络有面向初学者的展开，与 L0–L4 的几何 / 控制主线互补，见 [专栏地图](../wiki/overview/shenlan-embodied-ai-fundamentals-series.md)。
 
+<a id="l5-1-rl-basics"></a>
+
 ### L5.1 强化学习基础
 
 > **场景隐喻：** 把机器人扔进仿真器，给它定一个奖励规则（"前进 +1，摔倒 -10"），让它反复试错——它能学出一个策略。L5.1 教你这套"试错训练"框架。
@@ -915,6 +1089,26 @@ flowchart TD
 - [Policy Optimization](../wiki/methods/policy-optimization.md)
 - [PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)
 - [POMDP](../wiki/formalizations/pomdp.md) — 真机部署前必读
+
+**RL 主干概念链（Physical AI 视角只需吃透这一条）：**
+
+```mermaid
+flowchart LR
+  MDP["MDP<br/>S · A · R · P · γ"] --> V["Value Function<br/>V(s) / Q(s,a)"]
+  V --> PG["Policy Gradient<br/>∇ log π · Advantage"]
+  PG --> AC["Actor-Critic<br/>actor 出动作 · critic 估值"]
+  AC --> GAE["GAE<br/>λ 加权的 TD error"]
+  GAE --> PPO["PPO<br/>ratio + clipping"]
+```
+
+PPO 一次迭代里要真正看懂的 8 个概念：**trajectory**（并行环境 rollout）→ **reward** → **TD error** \(\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)\) → **GAE** → **Advantage** \(\hat A_t\) → **ratio** \(r_t = \pi_\theta / \pi_{old}\) → **clipping** \(\mathrm{clip}(r_t, 1-\epsilon, 1+\epsilon)\) → **policy update**（多 epoch minibatch）。
+
+| 概念 | Canonical paper | 站内卡片 |
+|------|----------------|---------|
+| PPO | [Proximal Policy Optimization Algorithms（arXiv:1707.06347）](https://arxiv.org/abs/1707.06347) | [PPO](../wiki/methods/ppo.md) |
+| GAE | [High-Dimensional Continuous Control Using Generalized Advantage Estimation（arXiv:1506.02438）](https://arxiv.org/abs/1506.02438) | [GAE](../wiki/methods/gae.md) |
+
+工程实现参考：[rsl_rl](https://github.com/leggedrobotics/rsl_rl)（legged_gym / Isaac Lab 人形与足式训练常用的 PPO 实现）。
 
 **学完输出什么：**
 - 能解释 PPO 的核心思路
@@ -982,6 +1176,18 @@ flowchart TD
 - [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)
 - [Query：开源运动控制项目导航](../wiki/queries/open-source-motion-control-projects.md)
 
+**PPO 在人形上的四个分支：**
+
+```mermaid
+flowchart TB
+  PPO["PPO"] --> Loco["Locomotion RL<br/>速度跟踪 · 地形 curriculum"]
+  PPO --> Mimic["Motion Imitation<br/>DeepMimic 式跟踪奖励（L5.3）"]
+  PPO --> AMP["AMP<br/>task reward + style reward"]
+  PPO --> S2R["Sim2Real<br/>DR · Teacher-Student（L6）"]
+```
+
+- 训练平台：[Isaac Lab](../wiki/entities/isaac-lab.md)（GPU 并行仿真 + RL 任务框架）；AMP 的奖励结构见 [AMP Reward](../wiki/methods/amp-reward.md)。
+
 **学完输出什么：**
 - 能在仿真里训练一个人形行走 RL 策略
 - 能解释 RL 和 WBC 各自的优势和局限
@@ -1011,6 +1217,8 @@ flowchart TD
 </details>
 
 ---
+
+<a id="l5-3-imitation-learning"></a>
 
 ### L5.3 模仿学习
 
@@ -1045,6 +1253,30 @@ flowchart TD
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md)
 - [DAgger](../wiki/methods/dagger.md)
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md)
+
+**模仿学习谱系（从监督到"参考动作 + 物理仿真 + RL"）：**
+
+```mermaid
+flowchart TB
+  IL["Imitation Learning"] --> BC["Behavior Cloning<br/>监督回归专家动作"]
+  BC --> DAg["DAgger<br/>在策略访问状态上补标注"]
+  IL --> DM["DeepMimic<br/>reference motion + 物理仿真 + RL"]
+  DM --> AMP["AMP<br/>判别器学 motion prior<br/>task reward + style reward"]
+  DM --> BM["BeyondMimic<br/>规模化动作跟踪 → 引导扩散"]
+  DM --> MK["MimicKit<br/>DeepMimic / AMP / ASE 统一代码底座"]
+  AMP --> MK
+  BC -. 生成式动作头 .-> Gen["L9 动作生成"]
+```
+
+| 方法 | 一句话抓重点 | Canonical paper | Project | Code | 站内卡片 |
+|------|-------------|-----------------|---------|------|---------|
+| **DeepMimic** | reference motion + physics simulation + RL：跟踪奖励让物理角色复现动捕 | [arXiv:1804.02717](https://arxiv.org/abs/1804.02717) | [项目页](https://xbpeng.github.io/projects/DeepMimic/) | [xbpeng/DeepMimic](https://github.com/xbpeng/DeepMimic) | [DeepMimic](../wiki/methods/deepmimic.md) |
+| **AMP** | discriminator 学 motion prior，总奖励 = task reward + style reward，不再逐帧跟踪 | [arXiv:2104.02180](https://arxiv.org/abs/2104.02180) | [项目页](https://xbpeng.github.io/projects/AMP/) | [MimicKit · AMP](https://github.com/xbpeng/MimicKit/blob/main/docs/README_AMP.md) | [AMP Reward](../wiki/methods/amp-reward.md) · [AMP 谱系综述](../wiki/overview/humanoid-amp-motion-prior-survey.md) |
+| **BeyondMimic** | 真机人形的规模化动作跟踪 + 用引导扩散组合技能 | [arXiv:2508.08241](https://arxiv.org/abs/2508.08241) | [项目页](https://beyondmimic.github.io/) | [whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) | [BeyondMimic](../wiki/methods/beyondmimic.md) |
+| **MimicKit** | Peng 团队的模块化运动模仿框架，一套代码跑多种算法 | [arXiv:2510.13794](https://arxiv.org/abs/2510.13794) | — | [xbpeng/MimicKit](https://github.com/xbpeng/MimicKit) | [MimicKit](../wiki/entities/mimickit.md) |
+| **DAgger** | 交互式补标注，缓解 BC 的 compounding error | [arXiv:1011.0686](https://arxiv.org/abs/1011.0686) | — | — | [DAgger](../wiki/methods/dagger.md) |
+
+> AMP 官方项目页给出的代码入口是 DeepMimic / MimicKit 仓库，本路线以 MimicKit 中的 AMP 文档为代码链接。
 
 **学完输出什么：**
 - 能把一段 MoCap 数据迁移到人形机器人上
@@ -1189,6 +1421,43 @@ flowchart TD
 - [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)（含[快速部署检查](../wiki/queries/sim2real-checklist.md#快速部署检查)）
 - [机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)
 
+<a id="l6-sim2real-chain"></a>
+
+### Sim2Real 主链：从仿真到真机的 10 个关卡
+
+Sim2Real 不是 RL 的一个小节点，而是一条独立的工程链路：
+
+```mermaid
+flowchart TB
+  Sim["Simulation"] --> DR["Domain Randomization"]
+  DR --> ON["Observation Noise"]
+  ON --> Lat["Latency"]
+  Lat --> Act["Actuator Modeling"]
+  Act --> SID["System Identification"]
+  SID --> TS["Teacher-Student"]
+  TS --> Val["Policy Validation"]
+  Val --> S2S["Sim2Sim<br/>换一个物理引擎再验"]
+  S2S --> Real["Real Robot"]
+  Real -. 失败复盘 .-> SID
+```
+
+**真机 policy 失败的常见来源**（按排查顺序，越靠前越"低级"、越常见）：
+
+| 来源 | 典型症状 | 排查入口 |
+|------|---------|---------|
+| **joint ordering** | 上电即抽搐 / 左右腿互换 | [Robot Joint Order Check Tool Online](https://imchong.github.io/Robot_Joint_Order_Check_Tool_Online/)：并排比较 URDF / MJCF 在 Isaac Gym、Isaac Lab、MuJoCo、ros2_control 等中的关节顺序 |
+| **observation mismatch** | 观测维度 / 坐标系 / 单位 / 归一化与训练不一致 | [Robot Learning IO Board Online](https://imchong.github.io/Robot_Learning_IO_Board_Online/)：对照 SONIC / BeyondMimic 等项目训练态与部署态的观测输入、动作输出 · [人形策略观测输入](../wiki/concepts/humanoid-policy-observation-inputs.md) |
+| **action scaling** | 动作幅度过大 / 过小，default pose 偏移 | 同上：对照参考项目的动作输出定义，核对 action scale、default joint pos |
+| **control frequency** | 仿真 decimation 与真机控制周期不一致 | [控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md) |
+| **latency** | 高频振荡、相位滞后 | [控制环延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) |
+| **motor model** | 力矩饱和、带宽不足、PD 行为与仿真不同 | [Actuator Network](../wiki/methods/actuator-network.md) · [System Identification](../wiki/concepts/system-identification.md) |
+| **sensor noise** | IMU 漂移、编码器噪声导致抖动 | [Domain Randomization](../wiki/concepts/domain-randomization.md) · [State Estimation](../wiki/concepts/state-estimation.md) |
+| **contact mismatch** | 打滑、落脚冲击与仿真不同 | [Contact Dynamics](../wiki/concepts/contact-dynamics.md) · Sim2Sim 交叉验证 |
+
+- **Sim2Sim 先于 Sim2Real**：在 Isaac 训练、在 MuJoCo 回放验证，能在上真机前筛掉大部分顺序 / 缩放 / 频率类错误。在线演示：[Robot Learning Sim2Sim Online](https://imchong.github.io/Robot_Learning_Sim2Sim_Online/)（MuJoCo + ONNX 浏览器内推理）。
+- **Teacher-Student**：特权信息 teacher → 部署观测 student，见 [Teacher-Student / DAgger 训练](../wiki/methods/teacher-student-dagger-training.md)。
+- 系统化展开见 [Sim2Real 纵深路线](depth-sim2real.md)；部署侧的推理 / 通信 / 实时性见 [L12](#physical-ai-l12-deployment)。
+
 ### 学完输出什么
 - 一个能跑的人形 RL 策略（仿真内）
 - 一次 sim2real 迁移实验记录
@@ -1308,6 +1577,8 @@ flowchart TD
 
 **入口页**：[Manipulation 任务地图](../wiki/tasks/manipulation.md) · [接触丰富操作纵深路线](depth-contact-manipulation.md)
 
+<a id="l7-4-system-stack"></a>
+
 ### L7.4 系统与软件栈（ROS / 中间件 / 部署）
 
 #### 英文缩写速查（L7.4）
@@ -1331,7 +1602,7 @@ flowchart TD
 - L4 的 TSID / WBC 通常运行在 **实时进程**（1 kHz），上层 MPC 跑在 **非实时进程**（50–500 Hz），由 ROS2 / shared memory 通信。理解这层架构才能解释"为什么一个看似能跑的算法上真机就崩"。
 - L6 的 sim2real 整链路依赖 URDF / 控制器 / 通信延迟的对齐。
 
-**入口页**：[Pinocchio](../wiki/entities/pinocchio.md) · [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
+**入口页**：[Pinocchio](../wiki/entities/pinocchio.md) · [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md) · 策略导出到总线的完整部署链见 [L12 Deployment](#physical-ai-l12-deployment)
 
 ### L7.5 2024–2026 前沿地图（你会反复看到的关键词）
 
@@ -1365,13 +1636,424 @@ flowchart TD
 
 > 这一节不展开任何一个方向——它们随便一个都够再开一条主线。读到这里，你已经能 **听懂每一条** 在解决什么问题，这就是 L7 的目的。
 
+> 其中 **VLA / Humanoid Foundation Model / World Model** 三个方向，在 [L8–L11](#physical-ai-l8-transformer) 按 Physical AI pipeline 拆成可学习的层；部署落地在 [L12](#physical-ai-l12-deployment)。
+
 ### 学完这条路线，你能做到的事
 
 回到 L−1 的"三种读者"视角：
 
 - **外行**：能在饭桌上说出"人形机器人为什么走起来这么难"、"VLA 和 PPO 是不同层的东西"、"sim2real gap 主要来自哪里"。
 - **想入行**：手上至少有一个能在仿真里跑通 PPO + WBC 的项目，可以面试机器人控制 / 仿真岗位。
-- **资深从业者**：把零散经验串成一条心智索引，知道每个新论文该挂在 L0–L7 的哪里、和你已知方法的对接点是哪里。
+- **资深从业者**：把零散经验串成一条心智索引，知道每个新论文该挂在 L0–L12 的哪里、和你已知方法的对接点是哪里。
+
+---
+
+## L8 Transformer 与表征：从 token 到 VLM
+
+<a id="physical-ai-l8-transformer"></a>
+
+**L0–L7 是运动控制主线；从这里开始的 L8–L12 是 Physical AI 全栈扩展段。L8 是从传统 robot learning 跨入 Foundation Model 的桥。**
+
+> **场景隐喻：** 图像、语言、关节角原本是三种"语言"。Transformer 先把它们都翻译成同一种"单词"（token），再让每个单词去查询其它单词和自己有多相关。
+
+> **上一层的局限：** L5–L6 的策略多是 MLP，输入是固定维度的本体状态向量。一旦输入里加入相机图像、语言指令、多帧历史，就需要一种能把不同模态变成同一种序列、并让它们互相"查询"的结构。
+
+### 英文缩写速查（L8）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Token | Token | 序列中的一个单元：一个图像 patch、一个子词或一个状态向量。 |
+| QKV | Query / Key / Value | 注意力的三组投影：用 Q 去匹配 K，按匹配度加权 V。 |
+| MHA | Multi-Head Attention | 多组 QKV 并行，各自关注不同关系后拼接。 |
+| ViT | Vision Transformer | 把图像切成 patch 当 token 送入 Transformer。 |
+| VLM | Vision-Language Model | 视觉编码器 + 语言模型；VLA 的"理解"骨干。 |
+| MLP | Multi-Layer Perceptron | Transformer block 中注意力之后的逐 token 前馈层。 |
+
+### 前置知识
+- L5 的神经网络训练直觉（MLP、损失函数、梯度下降）
+- 线性代数：矩阵乘法、softmax
+
+### 核心结构
+
+```mermaid
+flowchart TB
+  Img["Image"] --> Patch["Patch → Visual Token"]
+  Lang["Language"] --> Txt["Text Token"]
+  State["Robot State"] --> Emb["Embedding"]
+  Patch --> TF["Transformer<br/>Self / Cross-Attention · MLP · Residual"]
+  Txt --> TF
+  Emb --> TF
+  TF --> Out["上下文表征<br/>→ L9 动作头"]
+```
+
+一个 Transformer block：`x → LayerNorm → Multi-Head Attention → +x（residual）→ LayerNorm → MLP → +x（residual）`，其中注意力为 \(\mathrm{softmax}(QK^\top/\sqrt{d_k})\,V\)。
+
+### 只需要真正理解以下内容
+
+**不要求读完整篇论文。** 只需要真正理解：
+
+- **token / embedding**：任何输入先变成一串向量
+- **QKV 与 attention matrix**：矩阵第 \(i\) 行 = 第 \(i\) 个 token 对所有 token 的关注权重
+- **self-attention vs cross-attention**：同一序列内互看 vs 一个序列（如动作 token）去查询另一个序列（如 VLM token）
+- **multi-head attention**、**residual**、**MLP**、**transformer block**
+- **ViT**：图像 patch 当 token；**VLM**：视觉 token 接入语言模型
+
+### 推荐读什么
+- Canonical paper：[Attention Is All You Need（arXiv:1706.03762）](https://arxiv.org/abs/1706.03762) · 站内卡片 [论文页](../wiki/entities/paper-attention-is-all-you-need.md)
+- [Transformer](../wiki/concepts/transformer.md) · [Multi-Head Attention](../wiki/concepts/multi-head-attention.md) · [跨模态注意力](../wiki/formalizations/cross-modal-attention.md)
+- [Vision Transformer](../wiki/concepts/vision-transformer.md)（canonical：[An Image is Worth 16x16 Words（arXiv:2010.11929）](https://arxiv.org/abs/2010.11929)）
+- VLM：[PaliGemma](../wiki/entities/paper-rcl-2407-07726-paligemma-a-versatile-3b-vlm-for-transfer.md)（π0 的 VLM 骨干）· [VLM / VLA / World Model 分类对照](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- 多模态怎么变 token：[VLA Tokenization](../wiki/formalizations/vla-tokenization.md)
+- 想系统选骨干：[模型架构纵深路线](depth-model-architecture.md)
+
+### 学完输出什么
+- 能用 ≤ 30 行 NumPy / PyTorch 手写单头 attention，并解释 attention matrix 每一行的含义
+- 能画出"图像 + 语言 + 状态 → token → Transformer"的数据流，说清每种 token 从哪来
+
+### 自测题（学完应能答出）
+- self-attention 与 cross-attention 的 Q、K、V 分别来自哪里？VLA 的动作头为什么常用 cross-attention 读 VLM？
+- 为什么 attention 分数要除以 \(\sqrt{d_k}\)？
+- 机器人状态（关节角、IMU）通常怎么变成 token？和图像 patch token 有何不同？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+<ol>
+<li><strong>self vs cross：</strong> self-attention 的 Q、K、V 都来自同一序列；cross-attention 的 Q 来自一个序列（如带噪动作 token），K、V 来自另一个序列（如 VLM 输出 token）。动作头用 cross-attention 读 VLM，可以让动作生成网络保持较小、单独高频运行，同时按需"查询"语义与视觉信息。</li>
+<li><strong>除以 \(\sqrt{d_k}\)：</strong> 点积的方差随维度 \(d_k\) 增长，不缩放时 softmax 容易饱和成近似 one-hot，梯度变小、训练不稳定。</li>
+<li><strong>状态 token：</strong> 通常用一个小 MLP / 线性层把整段本体状态（或每个关节）投影成与其它 token 同维的 embedding；它没有空间 patch 结构，维度低、频率高，常作为动作头的直接条件输入。</li>
+</ol>
+</details>
+
+---
+
+## L9 动作生成：Action Chunk · Diffusion · Flow Matching · DiT
+
+<a id="physical-ai-l9-action-generation"></a>
+
+> **场景隐喻：** 与其每一步都问"下一步做什么"，不如一次规划接下来半秒的整段动作，再按节拍执行。
+
+> **上一层的局限：** L8 给了一个能同时理解图像、语言、状态的表征，但"怎么从表征出动作"还没解决。L5.3 的 BC 用 MSE 回归单个动作：示范是多模态时（同一场景左绕、右绕都对）会被平均成"直直撞上去"；单步输出也对推理延迟很敏感。
+
+### 英文缩写速查（L9）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BC | Behavior Cloning | 监督回归专家动作；动作生成的起点。 |
+| DP | Diffusion Policy | 用去噪扩散生成一段动作序列。 |
+| FM | Flow Matching | 学速度场，把噪声沿 ODE 积分到动作。 |
+| DiT | Diffusion Transformer | 用 Transformer 做去噪 / 速度场网络。 |
+| ACT | Action Chunking with Transformers | 一次预测 H 步动作的模仿学习架构。 |
+| H | Horizon | action chunk 的长度（一次输出多少步）。 |
+
+### 先对比：传统 policy vs 现代 VLA 动作头
+
+```mermaid
+flowchart TB
+  subgraph Old["传统 policy"]
+    O1["observation"] --> A1["one action a_t"]
+  end
+  subgraph New["现代 VLA 动作头"]
+    O2["image + language + state"] --> AC["action chunk<br/>a_t, a_t+1, …, a_t+H"]
+  end
+```
+
+### Diffusion Policy：去噪出一段动作
+
+```mermaid
+flowchart TB
+  N["noisy action trajectory<br/>高斯噪声"] --> C["condition on observation<br/>图像 / 状态特征"]
+  C --> D["iterative denoising<br/>K 步"]
+  D --> S["action sequence"]
+```
+
+好处：能表达多模态动作分布、整段动作时序一致、训练就是去噪回归所以稳定；代价：推理要多步去噪，延迟高。
+
+### Diffusion → Flow Matching → DiT：为什么适合机器人
+
+- **Flow Matching**：不再模拟"加噪—去噪"的随机过程，而是直接学一个速度场，把噪声沿接近直线的 ODE 积分成动作。**对机器人的意义不在数学，而在工程**：保留扩散的多模态表达能力，但积分步数少（π0 论文用 10 步）→ 延迟低，更容易赶上控制频率；训练目标是简单的回归，便于和 VLM 骨干一起训。
+- **DiT**：把去噪网络从 U-Net 换成 Transformer。在机器人里，token 变成 action chunk 的各个时间步，观测条件通过 cross-attention / AdaLN 注入 → 可以直接接上 L8 的 VLM token。
+- **Action Expert**：π0 的叫法——在 VLM 之外单独一套较小的 Transformer 权重，专门处理状态与带噪动作 token，用 flow matching 生成 action chunk；GR00T N1 的 DiT 动作头扮演同一角色（见 L10）。
+- **Action Chunk 的代价**：chunk 内是开环执行，对突发扰动反应慢，需要 temporal ensembling 或 [Real-Time Chunking](../wiki/entities/paper-real-time-chunking.md) 这类衔接策略。
+
+### 推荐读什么
+
+| 概念 | Canonical paper | Project | Code | 站内卡片 |
+|------|----------------|---------|------|---------|
+| Diffusion Policy | [arXiv:2303.04137](https://arxiv.org/abs/2303.04137) | [项目页](https://diffusion-policy.cs.columbia.edu/) | [real-stanford/diffusion_policy](https://github.com/real-stanford/diffusion_policy) | [Diffusion Policy](../wiki/methods/diffusion-policy.md) |
+| Action Chunking（ACT） | [arXiv:2304.13705](https://arxiv.org/abs/2304.13705) | — | [tonyzhaozh/act](https://github.com/tonyzhaozh/act) | [Action Chunking](../wiki/methods/action-chunking.md) |
+| Flow Matching | [arXiv:2210.02747](https://arxiv.org/abs/2210.02747) | — | — | [具身策略里的流匹配](../wiki/concepts/flow-matching-embodied-policy.md) |
+| DiT | [arXiv:2212.09748](https://arxiv.org/abs/2212.09748) | — | [facebookresearch/DiT](https://github.com/facebookresearch/DiT) | [DiT 论文页](../wiki/entities/paper-dit-scalable-diffusion-transformers.md) · [Diffusion Transformer](../wiki/concepts/diffusion-transformer.md) |
+
+- 系统展开：[扩散与流匹配策略纵深路线](depth-robotics-diffusion-dit-flow.md) · 课程：[MIT Flow Matching & Diffusion 2026](../wiki/overview/mit-flow-matching-diffusion-2026.md)
+
+### 学完输出什么
+- 在一个 2D 玩具任务（如 Push-T）跑通 Diffusion Policy，对比 H=1 与 H=16 的行为差异
+- 能解释为什么 MSE-BC 在多模态示范上失败，而扩散 / 流匹配不会
+
+### 自测题（学完应能答出）
+- action chunk 带来了哪两个好处和一个代价？
+- 同样的多模态表达能力，为什么 flow matching 比 DDPM 式扩散更适合高频机器人控制？
+- DiT 动作头里，观测 / 语言条件可以通过哪些方式注入？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+<ol>
+<li><strong>action chunk：</strong> 好处是 ① 整段动作时序一致、减少逐步抖动和 BC 的 compounding error；② 推理可以比控制慢，低层在等待下一次推理时继续执行已有 chunk。代价是 chunk 内开环，对突发扰动反应变慢，需要 temporal ensembling / 实时 chunk 衔接。</li>
+<li><strong>flow matching 更快：</strong> 它学的是接近直线的确定性 ODE 速度场，少量积分步即可得到高质量样本；DDPM 式扩散通常需要更多去噪步。步数少 → 每次推理延迟低 → 更容易满足控制频率。</li>
+<li><strong>条件注入：</strong> 常见三种：cross-attention（动作 token 作为 Q 查询观测 / VLM token）、AdaLN（用条件向量调制 LayerNorm 的尺度和偏移，DiT 原论文做法）、直接把条件 token 拼进序列做 self-attention。</li>
+</ol>
+</details>
+
+---
+
+## L10 VLA / Foundation Policy：π 系列与 GR00T
+
+<a id="physical-ai-l10-vla"></a>
+
+> **场景隐喻：** 把 L8 的"眼睛 + 语言理解"和 L9 的"手上功夫"装进同一个大脑，再用许多机器人、许多任务的数据一起训练。
+
+> **上一层的局限：** L9 的动作头只会"根据观测生成动作"，理解能力取决于前面的编码器；单任务 Diffusion Policy 换个任务就得重新采数据重训。VLA 把预训练 VLM（带互联网规模的语义知识）和动作头拼起来，用跨任务、跨机器人数据训练。
+
+**这一层只跟踪少数代表体系：Physical Intelligence 的 π 系列与 NVIDIA 的 GR00T。** 其它 VLA 先过一遍 [Signal vs Noise](#physical-ai-signal-vs-noise) 再决定是否深入；全景见 [VLA 纵深路线](depth-vla.md)。
+
+### 英文缩写速查（L10）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision–Language–Action | 视觉–语言条件下直接输出动作的模型。 |
+| VLM | Vision-Language Model | VLA 的理解骨干（π0 用 PaliGemma，GR00T N1 用 Eagle-2）。 |
+| System 2 / System 1 | Dual-System | 慢速语义推理 / 快速动作生成的双系统分工。 |
+| DiT | Diffusion Transformer | GR00T N1 的动作头网络结构。 |
+| FM | Flow Matching | π0 与 GR00T N1 共同的动作生成目标。 |
+| WBC | Whole-Body Control | VLA 之下仍需要的低层全身控制。 |
+
+### π 系列：同一架构上的演进
+
+```mermaid
+flowchart TB
+  In["image + language + robot state"] --> VLM["VLM<br/>（PaliGemma 骨干）"]
+  VLM --> AE["Action Expert<br/>Flow Matching"]
+  AE --> AC["Action Chunk"]
+```
+
+```mermaid
+flowchart LR
+  P0["π0<br/>VLM + flow matching<br/>action expert"] --> P05["π0.5<br/>异构数据共训<br/>开放世界泛化"]
+  P05 --> PL["后续 π 模型<br/>（如 π0.7）"]
+```
+
+- **π0**：确立"VLM + Action Expert + Flow Matching → Action Chunk"的骨架；动作 token 通过注意力读取 VLM token。
+- **π0.5**：同一骨架上加入异构数据共训（多机器人、网页数据、高层语义子任务），先出语义子任务、再高频生成动作块，目标是开放环境泛化。
+- **后续 π 模型**：继续在同一骨架上改数据对齐与提示方式（如 π0.7 的多模态提示）。**学习方式：每出一个新 π 模型，只问它改了骨架的哪一块。**
+
+| 模型 | Paper | Project / Blog | Code | 站内卡片 |
+|------|-------|---------------|------|---------|
+| π0 | [arXiv:2410.24164](https://arxiv.org/abs/2410.24164) | [pi.website/blog/pi0](https://www.pi.website/blog/pi0) | [Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi) | [π0](../wiki/entities/paper-pi0.md) |
+| π0.5 | [arXiv:2504.16054](https://arxiv.org/abs/2504.16054) | [pi.website/blog/pi05](https://www.pi.website/blog/pi05) | openpi（同上） | [π0.5](../wiki/entities/paper-pi05-open-world-vla.md) |
+| π0.7 | [arXiv:2604.15483](https://arxiv.org/abs/2604.15483) | [pi.website/blog/pi07](https://www.pi.website/blog/pi07) | — | [π0.7](../wiki/methods/pi07-policy.md) |
+
+### GR00T：System 2 / System 1 双系统
+
+```mermaid
+flowchart TB
+  V["Vision"] --> VLM["VLM · System 2<br/>语义理解 / 推理"]
+  L["Language"] --> VLM
+  VLM --> R["representation<br/>（VLM 中间层 token）"]
+  R -->|cross-attention| DiT["DiT · System 1<br/>Flow Matching 去噪"]
+  S["Robot State"] --> DiT
+  DiT --> AC["Action Chunk"]
+```
+
+- **System 2 ≈ reasoning / semantic understanding**：VLM 看图读指令，慢但懂语义。
+- **System 1 ≈ fast motor action generation**：DiT 动作头以更高频率出 action chunk（GR00T N1 报告约 120 Hz）。
+- **五个词的关系**：VLM 产出表征 → **DiT** 是动作头的网络结构 → **Cross Attention** 是 DiT 读 VLM 表征的方式 → **Flow Matching** 是 DiT 的训练 / 采样目标 → **Action Chunk** 是输出形式。
+- **GR00T 不替代低层控制**：人形全身平衡仍交给低层控制器（如 [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md)）——回到 [L3 的分层](#policy-vs-low-level-controller)。
+
+| 条目 | Paper | Project | Code | Hugging Face | 站内卡片 |
+|------|-------|---------|------|--------------|---------|
+| GR00T N1 | [arXiv:2503.14734](https://arxiv.org/abs/2503.14734) | [NVIDIA 研究页](https://research.nvidia.com/labs/lpr/publication/gr00tn1_2025/) | [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | [nvidia/GR00T-N1-2B](https://huggingface.co/nvidia/GR00T-N1-2B) | [GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) · [Isaac GR00T 平台](../wiki/entities/isaac-gr00t.md) · [GR00T N1.5](../wiki/entities/paper-gr00t-n1-5.md) |
+
+- 概念卡片：[VLA](../wiki/methods/vla.md) · [Foundation Policy](../wiki/concepts/foundation-policy.md)
+
+### 学完输出什么
+- 能画出 π0 与 GR00T N1 的数据流，并指出二者在"VLM → 动作头"接口上的异同
+- 有 GPU 时，用 openpi 或 Isaac-GR00T 的示例跑通一次离线推理，记录单次推理耗时
+
+### 自测题（学完应能答出）
+- π0 的 Action Expert 和 GR00T N1 的 DiT 分别怎么读取 VLM 的信息？
+- 为什么 VLA 输出动作之后，人形上仍需要 WBC / PD 这一层？
+- 一个新的 π 模型发布了，你用什么方法判断要不要深入学？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+<ol>
+<li><strong>读取方式：</strong> π0 把 VLM 和 Action Expert 放在同一个 Transformer 序列里（两套权重），动作 token 通过注意力直接看 VLM token；GR00T N1 的 DiT 是独立网络，用 cross-attention 读 VLM 中间层输出的 token。两者都用 flow matching 生成 action chunk。</li>
+<li><strong>仍需低层控制：</strong> VLA 的动作频率（几十到一百多 Hz）远低于平衡与力控需要的频率，而且它输出的是关节目标 / 末端目标，不含接触力分配和力矩饱和处理；这些仍由 WBC / PD / 驱动器电流环完成（见 L3、L4.4）。</li>
+<li><strong>判断新模型：</strong> 放回 π0 骨架（VLM / Action Expert / 数据 / 训练目标 / 推理方式）看它改了哪一块，再过 5 个 Signal-vs-Noise 问题；放不进骨架、也没有代码和 benchmark 的，先不深学。</li>
+</ol>
+</details>
+
+---
+
+## L11 World Model 与 Physical AI 平台
+
+<a id="physical-ai-l11-world-model"></a>
+
+> **场景隐喻：** 飞行员先在模拟器里飞几千小时。World Model 就是机器人的"可学习模拟器"：给定当前世界和一个动作，预测接下来会看到什么。
+
+> **上一层的局限：** VLA 需要海量、多样、带动作标注的数据；真机采集贵、慢，很难覆盖长尾场景，每个 checkpoint 上真机评测也很贵。
+
+### 英文缩写速查（L11）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WM | World Model | 学习"状态 + 动作 → 未来"的环境模型。 |
+| WFM | World Foundation Model | 大规模视频预训练、可被下游后训练的通用世界模型。 |
+| SDG | Synthetic Data Generation | 由仿真或世界模型生成训练数据。 |
+| WAM | World–Action Model | 同时预测世界变化与动作的模型。 |
+| Sim | Simulation | 基于物理引擎的仿真（如 Isaac Sim）。 |
+
+### 核心定义
+
+```mermaid
+flowchart LR
+  S["current world state"] --> WM["World Model"]
+  A["action"] --> WM
+  WM --> F["predicted future<br/>视频帧 / 状态"]
+```
+
+- **World Model**：学习环境动力学；**World Foundation Model**：在大规模视频上预训练的通用世界模型；**Video World Model**：以视频帧为预测对象；**Synthetic Data**：仿真或世界模型生成的数据；**Physical AI Data**：带物理交互与动作标注的真实 / 合成数据。
+
+### 客户为什么需要这一层
+
+World Model 不是"最新 AI"标签，它解决的是 VLA 落地时的四个具体瓶颈：
+
+1. **数据**：真机遥操作数据是瓶颈 → 用仿真 + 世界模型扩增（换光照、纹理、场景、视角）。
+2. **评测**：每个 checkpoint 都上真机测太贵 → 先在仿真 / 世界模型里筛。
+3. **长尾**：罕见失败场景难以在现实复现 → 合成出来训练和测试。
+4. **规划**：部分方法用世界模型"想象"动作后果再选动作（见 [WAM 纵深路线](depth-wam.md)）。
+
+### 平台分工：每个模块在 pipeline 的哪一格
+
+```mermaid
+flowchart TB
+  Cos["Cosmos<br/>World Foundation Model"] --> Data["synthetic / world data"]
+  IS["Isaac Sim<br/>物理仿真 · 渲染"] --> Data
+  IS --> IL["Isaac Lab<br/>robot learning（RL / IL）"]
+  Data --> G["GR00T<br/>foundation robot policy"]
+  IL --> G
+  G --> J["Jetson<br/>边缘推理 · deployment"]
+  J --> R["ROS2<br/>robot integration"]
+```
+
+> 这里用 NVIDIA 栈举例，是因为它在每一格都有公开组件；**每一格都有替代品**（仿真：MuJoCo / Genesis；训练：LeRobot；策略：openpi；边缘算力：其它开发板）。要学的是"格子"，不是产品。
+
+### 推荐读什么
+
+| 条目 | Paper | 官方 | Code | Hugging Face | 站内卡片 |
+|------|-------|------|------|--------------|---------|
+| Cosmos | [arXiv:2501.03575](https://arxiv.org/abs/2501.03575) | [nvidia.com/ai/cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | [NVIDIA/Cosmos](https://github.com/NVIDIA/Cosmos) | [Cosmos-Predict2 集合](https://huggingface.co/collections/nvidia/cosmos-predict2) | [NVIDIA Cosmos](../wiki/entities/nvidia-cosmos.md) · [论文页](../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) |
+| Isaac Lab | [arXiv:2511.04831](https://arxiv.org/abs/2511.04831) | [文档](https://isaac-sim.github.io/IsaacLab/) | [isaac-sim/IsaacLab](https://github.com/isaac-sim/IsaacLab) | — | [Isaac Lab](../wiki/entities/isaac-lab.md) |
+| Isaac Sim | — | [developer.nvidia.com/isaac/sim](https://developer.nvidia.com/isaac/sim) | — | — | [Isaac Sim](../wiki/entities/isaac-sim.md) |
+
+- 世界模型概念：[世界模型功能分类](../wiki/concepts/functional-taxonomy-world-models.md) · [生成式世界模型](../wiki/methods/generative-world-models.md) · [World Action Models](../wiki/concepts/world-action-models.md)
+- 数据侧：[Cosmos Transfer](../wiki/entities/cosmos-transfer.md) · [NVIDIA Physical AI 数据集](../wiki/entities/nvidia-physical-ai-datasets.md) · [具身数据纵深路线](depth-embodied-data.md) · [Real2Sim 纵深路线](depth-real2sim.md)
+
+### 学完输出什么
+- 能用一张图说明：一个 VLA 项目的数据从哪来（真机 / 仿真 / 世界模型 / 人类视频），各自解决什么问题
+- 能区分"物理仿真器"和"视频世界模型"各自的优势与不可替代之处
+
+### 自测题（学完应能答出）
+- 物理仿真器（Isaac Sim / MuJoCo）和视频世界模型（Cosmos）在训练机器人时各有什么优势、各自的短板是什么？
+- 用世界模型合成数据训练策略，最大的风险是什么？怎么缓解？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+<ol>
+<li><strong>仿真器 vs 视频世界模型：</strong> 物理仿真器有显式物理、可交互、可并行 RL、能给出真值状态和接触力，但外观真实感和资产成本是短板；视频世界模型从真实视频学外观与常见物理现象，视觉真实感和场景多样性强，但物理一致性无保证、难以给出接触力等真值、推理成本高。常见做法是二者互补：仿真出结构和动作，世界模型做外观迁移与扩增。</li>
+<li><strong>合成数据的风险：</strong> 生成的未来与真实物理不一致（物体穿透、质量不守恒），策略学到"模型里的物理"。缓解：用真实数据校准和混合配比、用物理仿真生成结构再用世界模型只改外观、在真机或高保真仿真上做最终评测。</li>
+</ol>
+</details>
+
+---
+
+## L12 Deployment：从训练好的策略到真机电机
+
+<a id="physical-ai-l12-deployment"></a>
+
+> **场景隐喻：** 模型训练完只是"菜谱写好了"；部署是要在固定节拍里准时把菜端上桌——晚一拍机器人就可能摔倒。
+
+> **上一层的局限：** L5–L11 的训练都在 GPU 服务器上；真机上算力、内存、功耗受限，而且推理必须和实时控制循环、总线、驱动器同步。路线必须走到真实机器人，而不是停在模型。
+
+### 英文缩写速查（L12）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ONNX | Open Neural Network Exchange | 跨框架的模型交换格式。 |
+| ORT | ONNX Runtime | 跨平台 ONNX 推理引擎。 |
+| TRT | TensorRT | NVIDIA GPU 上的推理优化与运行时。 |
+| ROS 2 | Robot Operating System 2 | 机器人节点 / 话题 / 服务中间件。 |
+| RT | Real-Time | 有确定时限的执行；PREEMPT_RT 是 Linux 实时补丁。 |
+| CAN | Controller Area Network | 常见电机总线。 |
+| EtherCAT | Ethernet for Control Automation Technology | 低延迟、强同步的工业实时以太网。 |
+
+### 部署主链
+
+```mermaid
+flowchart TB
+  P["trained policy<br/>PyTorch"] --> E["Policy Export"]
+  E --> O["ONNX"]
+  O --> RT["TensorRT / ONNX Runtime<br/>Jetson 或 x86 GPU"]
+  RT --> N["ROS2 node<br/>观测组装 · 推理 · 动作后处理"]
+  N --> C["robot controller<br/>ros2_control / 自研实时循环<br/>Real-Time Linux（PREEMPT_RT）"]
+  C --> B["CAN / EtherCAT"]
+  B --> D["Motor Driver<br/>PD / 电流环"]
+  D --> M["Motor → Real Robot"]
+```
+
+### 关键工程概念
+
+| 概念 | 是什么 | 为什么会让真机失败 |
+|------|-------|------------------|
+| **inference frequency** | 网络每秒推理几次 | 低于训练时的策略频率 → 动作变稀疏、行为变形 |
+| **control frequency** | 低层控制循环频率 | 与仿真 decimation 不一致 → PD 行为和训练不同 |
+| **latency** | 观测采集到力矩生效的总延迟 | 相位滞后 → 振荡（见 [L6 自测](#l6-综合实战)） |
+| **jitter** | 周期时间的抖动 | 平均延迟正常但偶发超时，更难复现、更危险 |
+| **observation delay** | 传感数据到达策略时已过时 | 训练时没建模 → 状态估计与实际不符 |
+| **action delay** | 动作从输出到驱动器生效的延迟 | 总线排队、驱动器周期叠加 |
+| **hardware synchronization** | 多驱动器 / 传感器在同一时刻采样与执行 | 各关节不同步 → 全身协调失真；EtherCAT 分布式时钟用于解决它 |
+
+### 推荐读什么
+- 导出与推理：[ONNX](../wiki/entities/onnx.md)（[onnx.ai](https://onnx.ai/)）· [ONNX Runtime](../wiki/entities/onnxruntime.md)（[onnxruntime.ai](https://onnxruntime.ai/)）· [TensorRT](../wiki/entities/tensorrt.md)（[官方](https://developer.nvidia.com/tensorrt)）· [推理引擎对比](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- 中间件与控制器：[ROS2 基础](../wiki/concepts/ros2-basics.md)（[ROS 2 文档](https://docs.ros.org/en/rolling/)）· [ros2_control](../wiki/entities/ros2-control.md)（[control.ros.org](https://control.ros.org/)）· [实时控制中间件指南](../wiki/queries/real-time-control-middleware-guide.md)
+- 算力：[NVIDIA Jetson](../wiki/entities/nvidia-jetson.md) · [部署开发板选型](../wiki/comparisons/robot-policy-deployment-dev-board-selection.md)
+- 实时系统：[PREEMPT_RT（Linux Foundation Realtime wiki）](https://wiki.linuxfoundation.org/realtime/start)
+- 总线与驱动：[EtherCAT](../wiki/concepts/ethercat-protocol.md) · [CAN](../wiki/concepts/can-bus-protocol.md) · [CAN vs EtherCAT](../wiki/comparisons/can-vs-ethercat-joint-bus.md) · [电机驱动固件与总线协议](../wiki/overview/motor-drive-firmware-bus-protocols.md)
+- 场景指南：[RL 策略 sim2real 部署条件](../wiki/queries/rl-sim2real-deployment-conditions.md) · [VLA 部署指南](../wiki/queries/vla-deployment-guide.md)
+
+### 学完输出什么
+- 把一个 Isaac Lab 训练的策略导出为 ONNX，先在 MuJoCo sim2sim 验证，再在 ROS2 节点中以固定频率推理
+- 测出端到端延迟分布（均值 + P99）与控制周期 jitter，并写进部署记录
+- 上真机后按 [L6 Sim2Real 主链](#l6-sim2real-chain) 的失败来源表逐项排查
+
+### 自测题（学完应能答出）
+- 推理频率低于控制频率时，动作怎么衔接？
+- 为什么 jitter 往往比平均延迟更危险？
+- 导出 ONNX / TensorRT 之后，怎么确认推理结果和 PyTorch 一致？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+
+<ol>
+<li><strong>频率衔接：</strong> 常见做法是推理线程与控制线程解耦：控制线程每周期读取最新动作，对 action chunk 按时间索引取值，或在相邻目标之间插值 / 保持；目标关节位置再由高频 PD 跟踪。</li>
+<li><strong>jitter 更危险：</strong> 固定延迟可以在训练中建模（延迟随机化）或在控制器里补偿；jitter 是随机、偶发的超时，训练时难以覆盖，一次长周期就可能让平衡控制失稳，而且难以复现和定位。</li>
+<li><strong>一致性验证：</strong> 用同一批固定输入（含边界值）分别跑 PyTorch、ONNX Runtime、TensorRT，比较输出最大绝对误差；FP16 / INT8 量化后要单独设容差，并在 sim2sim 闭环里再验证一次行为。</li>
+</ol>
+</details>
 
 ---
 
@@ -1429,6 +2111,9 @@ flowchart TD
 
 ### 5. Modern Robotics 看完了，但不知道和人形控制怎么接
 解决思路：参见 [L−1 的"Modern Robotics 在本路线扮演什么角色"](#一本贯穿全程的教材modern-robotics)。MR 是数学语言 + 固定基机器人基础；真正进入人形后还要补 [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md) 和 [Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+
+### 6. VLA / 世界模型新论文太多，追不过来
+解决思路：先用 [How to filter new Physical AI work](#physical-ai-signal-vs-noise) 把它放进 8 层 + 部署中的某一格；放不进去、也没有 paper / code / benchmark 的，先不深学。
 
 ---
 
