@@ -4,12 +4,12 @@ type: method
 title: Chasing Autonomy Pipeline
 tags: [robot-learning, humanoid, locomotion, reinforcement-learning, sim2real, motion-retargeting, unitree]
 summary: "一种结合硬约束动态重定向与控制引导强化学习的流水线，利用单一人类演示实现高性能的人形机器人跑步与避障。"
-updated: 2026-09-15
+updated: 2026-09-29
 ---
 
 # Chasing Autonomy Pipeline
 
-**Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了人体动作重定向（Motion Retargeting）与强化学习（RL），利用单一的人类演示动作生成高质量的参考库，并在真实世界上实现了快速、具有环境避障能力的跑步。
+**Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了人体动作重定向（Motion Retargeting）与强化学习（RL），利用单一的人类演示动作生成高质量的参考库，并在真实世界上实现了快速、具有环境避障能力的跑步。同组后续工作 [Generate, Track, Improve](../entities/paper-generate-track-improve.md)（arXiv:2609.31577）把 **动态优化 clip 库 + CLF-RL 跟踪** 扩展到 **双深度 flow matching 生成器** 与 **AWR 生成器微调**，覆盖走跑跳箱与户外楼梯等多技能感知 locomotion。
 
 ## 英文缩写速查
 

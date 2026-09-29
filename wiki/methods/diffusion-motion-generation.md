@@ -146,6 +146,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 地形条件扩散规划 + RL 全身跟踪，真机验证
 - [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) — omni-modal 生成器 + HoloMotion tracker，G1 真机多模态切换
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 控制环内生成式中间件（flow matching + tracking）
+- [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 全身 plan + CLF-RL 跟踪；AWR 微调生成器（Caltech G1 真机；代码待发布）
 - [PhyGile](../entities/paper-phygile.md) — 文本→262D robot-native 扩散 + GMT 生成–跟踪闭环
 - [MoLingo](../entities/paper-molingo.md) — 语义对齐连续 latent + AR flow 人体 T2M；retarget→PHC→G1
 - [DiffSHEG](../entities/paper-diffsheg.md) — 语音→3D 表情+手势联合扩散（数字人资产；非机器人策略）
