@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [repo, tooling, computer-vision, object-detection, keypoint-detection, soccer, sports-analytics, tracking, perception, roboflow, mit]
+tags: [repo, tooling, computer-vision, object-detection, keypoint-detection, soccer, basketball, ocr, sports-analytics, tracking, perception, roboflow, mit]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-29
 code: https://github.com/roboflow/sports
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -17,7 +17,9 @@ related:
   - ./tennis-vision.md
 sources:
   - ../../sources/repos/roboflow_sports.md
-summary: "roboflow/sports：MIT 体育 CV 工具库 + 足球分析 demo；YOLOv8 检测、球场关键点单应、球跟踪与 SigLIP 球队聚类，输出俯视雷达；第三人称广播视角对照 RoboCup 机载感知。"
+  - ../../sources/datasets/roboflow-basketball-court-detection-2.md
+  - ../../sources/datasets/roboflow-basketball-jersey-numbers-ocr.md
+summary: "roboflow/sports：MIT 体育 CV 工具库 + 足球 RADAR demo；Universe 另挂篮球球场关键点与球衣 OCR 集；YOLOv8 检测、单应俯视、SigLIP 分队——广播第三人称对照 RoboCup 机载感知。"
 ---
 
 # Roboflow Sports
@@ -39,6 +41,7 @@ summary: "roboflow/sports：MIT 体育 CV 工具库 + 足球分析 demo；YOLOv8
 | UMAP | Uniform Manifold Approximation and Projection | 嵌入降维后再聚类 |
 | MOT | Multi-Object Tracking | 球员跨帧 ID（Supervision tracker） |
 | RADAR | Radar / Bird's-eye Overlay | 俯视球场上叠加球员与球位置 |
+| OCR | Optical Character Recognition | 球衣号码读取；篮球 Universe 集已挂，soccer demo 未一等交付 |
 | MIT | Massachusetts Institute of Technology License | 本仓分析代码默认许可 |
 
 ## 为什么重要
@@ -53,7 +56,7 @@ summary: "roboflow/sports：MIT 体育 CV 工具库 + 足球分析 demo；YOLOv8
 | 项 | 内容 |
 |----|------|
 | **机构** | 罗博福流（Roboflow） |
-| **代码** | <https://github.com/roboflow/sports>（~5.2k★，2026-07-27） |
+| **代码** | <https://github.com/roboflow/sports>（~5.4k★，2026-09-29） |
 | **开源** | **已开源**（库 + `examples/soccer`）；权重/样例视频经 `setup.sh` + Google Drive |
 | **安装** | `pip install git+https://github.com/roboflow/sports.git`（尚无正式 PyPI 版） |
 | **许可** | 库 **MIT**；demo 检测权重链路受 **Ultralytics AGPL-3.0** 约束 |
@@ -101,6 +104,35 @@ flowchart TB
 
 二者共享「**先稳定几何特征，再投到场地坐标**」的骨架；机载侧还要处理对称歧义、可观测性与滤波，见 [场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md)。
 
+### 篮球侧数据（代码未对等 demo）
+
+README 将篮球与足球 **并列挂在 Universe**，但可运行示例仍集中在 `examples/soccer/`：
+
+| 用途 | Universe | 工程状态 |
+|------|----------|----------|
+| 球场关键点 / 单应 | [basketball-court-detection-2](https://universe.roboflow.com/roboflow-jvuqo/basketball-court-detection-2) | 数据 **850** 图、单类 `court`（2026-09-29）；可复用 `ViewTransformer` 思路，需自训或 Universe hosted 关键点模型 |
+| 球衣号码 OCR | [basketball-jersey-numbers-ocr](https://universe.roboflow.com/roboflow-jvuqo/basketball-jersey-numbers-ocr) | 对齐 README「Reading jersey numbers」挑战；**无** soccer 式 CLI 模式，与 SigLIP **分队**（非号码 ID）互补 |
+
+```mermaid
+flowchart LR
+  bvid["篮球广播帧"]
+  ckpt["court 关键点模型\n(Universe 集训练)"]
+  Hb["单应 → 俯视平面"]
+  ocr["球衣 OCR 模型\n(Universe 集)"]
+  stats["号码级统计 / Re-ID"]
+  bvid --> ckpt --> Hb
+  bvid --> ocr --> stats
+  Hb --> stats
+```
+
+## Universe 数据集（官方 README）
+
+| 运动 | 用途 | 链接 |
+|------|------|------|
+| ⚽ | 球员 / 球 / 球场关键点 | [players](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc) · [ball](https://universe.roboflow.com/roboflow-jvuqo/football-ball-detection-rejhg) · [pitch](https://universe.roboflow.com/roboflow-jvuqo/football-field-detection-f07vi) |
+| 🏀 | 球场关键点 | [basketball-court-detection-2](https://universe.roboflow.com/roboflow-jvuqo/basketball-court-detection-2) → [sources 归档](../../sources/datasets/roboflow-basketball-court-detection-2.md) |
+| 🏀 | 球衣号码 OCR | [basketball-jersey-numbers-ocr](https://universe.roboflow.com/roboflow-jvuqo/basketball-jersey-numbers-ocr) → [sources 归档](../../sources/datasets/roboflow-basketball-jersey-numbers-ocr.md) |
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -110,7 +142,7 @@ flowchart TB
 | 换检测器 | 保持 Supervision `Detections` 接口，可将 YOLOv8 换成 [RF-DETR](./rf-detr.md) 或 YOLO11/26，以规避 AGPL 或提升域迁移 |
 | 单应稳健性 | 可见关键点过少时勿硬解；应对齐 pitch 模型单位（本仓默认 **cm**） |
 | 分队 | KMeans `n_clusters=2` 假设两队主色可分；裁判/门将需按 class id 排除后再拟合 |
-| 数据集 | Universe：球员检测、球检测、球场关键点；另有篮球球场关键点与球衣 OCR 集 |
+| 数据集 | 见下节 **Universe 数据集**；篮球侧已归档球场关键点（850 图量级）与球衣 OCR 集 |
 
 ### 源码运行时序图
 
@@ -146,7 +178,8 @@ sequenceDiagram
 - **许可叠层：** 分析代码 MIT ≠ 整条 demo 可闭源商用；Ultralytics 权重与训练脚本仍受 AGPL 约束。
 - **无正式 PyPI：** API 与版本以 git main 为准，生产应钉 commit。
 - **README 未完成项：** RADAR 闪烁平滑、离线统计 notebook 仍在 roadmap。
-- **球衣 OCR / 再识别：** 挑战已列出，篮球 OCR 数据集有挂，但完整号码识别管线未作为一等 demo 模式交付。
+- **球衣 OCR / 再识别：** [篮球 OCR Universe 集](https://universe.roboflow.com/roboflow-jvuqo/basketball-jersey-numbers-ocr) 已挂；完整号码识别管线未作为 soccer 同级 demo 交付，与 `TeamClassifier` 分队并存时需明确身份语义（簇 ID ≠ 号码）。
+- **篮球无 examples/：** 仅有数据集与 hosted 模型入口；复现需自训或 Inference SDK，勿假设与 `setup.sh` 足球权重同包。
 
 ## 关联页面
 
@@ -162,11 +195,14 @@ sequenceDiagram
 
 ## 参考来源
 
-- [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — GitHub 仓库归档（2026-07-27 核查）
+- [roboflow_sports.md](../../sources/repos/roboflow_sports.md) — GitHub 仓库归档（2026-09-29 核查）
+- [roboflow-basketball-court-detection-2.md](../../sources/datasets/roboflow-basketball-court-detection-2.md) — 篮球场关键点 Universe 集
+- [roboflow-basketball-jersey-numbers-ocr.md](../../sources/datasets/roboflow-basketball-jersey-numbers-ocr.md) — 篮球球衣 OCR Universe 集
 - [roboflow/sports](https://github.com/roboflow/sports) — 官方代码与 soccer 示例
 
 ## 推荐继续阅读
 
 - [examples/soccer/README.md](https://github.com/roboflow/sports/blob/main/examples/soccer/README.md) — 六模式命令与数据集徽章
-- [Roboflow Universe 足球相关数据集](https://universe.roboflow.com/) — 球员 / 球 / 球场关键点
+- [basketball-court-detection-2](https://universe.roboflow.com/roboflow-jvuqo/basketball-court-detection-2) — 篮球球场关键点训练/部署入口
+- [basketball-jersey-numbers-ocr](https://universe.roboflow.com/roboflow-jvuqo/basketball-jersey-numbers-ocr) — 球衣号码 OCR 数据
 - [Supervision](https://github.com/roboflow/supervision) — 标注与跟踪依赖
