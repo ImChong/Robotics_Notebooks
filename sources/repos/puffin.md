@@ -5,7 +5,7 @@
 - **标题：** Puffin Series — Towards Unified Multimodal 3D World Models
 - **类型：** repo
 - **链接：** https://github.com/KangLiao929/Puffin
-- **Stars：** ~472（2026-09-10）
+- **Stars：** ~503（2026-09-29）
 - **许可：** NTU S-Lab License 1.0
 - **入库日期：** 2026-09-10
 - **一句话说明：** Puffin 系列统一多模态 3D 世界模型仓：含 ICLR 2026 **Puffin**（相机中心理解/生成）与 **Puffin-World**（原生 3D 世界状态 + 训练/评测/demo）。
@@ -31,8 +31,10 @@
 | `scripts/demo/world_modeling.py` | 给定初始视角 + 相机轨迹 → 多视角 RGB/深度 + 点云重建 |
 | `scripts/demo/physics_perception.py` | 单图重力感知相机理解（roll/pitch/vFoV） |
 | `scripts/demo/spatial_simulation.py` | 相机可控 text-to-image 空间仿真 |
+| `scripts/demo/freeview_world_exp.py` | mimic world exploration（固定轨迹扩展 3D 世界） |
+| `scripts/demo/self_calibration.py` | self-calibrated world exploration |
 
-权重：`huggingface-cli download KangLiao/Puffin-World --local-dir checkpoints`（Base / Pro / Caption）。
+权重：[ACERobotics/Puffin-World](https://huggingface.co/ACERobotics/Puffin-World)（`hf download KangLiao/Puffin-World` 或 `ACERobotics/Puffin-World` → `checkpoints/`，Base / Pro / Caption）。
 
 训练：`configs/pipelines/final_stage_*` 多阶段对齐与世界建模；评测见 `documents/EVALUATION.md`。
 
