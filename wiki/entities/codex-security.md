@@ -92,8 +92,8 @@ sequenceDiagram
   Model-->>Plugin: candidates + validations
   Plugin->>FS: seal findings.json · coverage · manifest
   Plugin-->>CLI: report path + severity summary
-  CLI-->>Dev: stdout JSON/report; exit 0/1/2
-  opt CI export
+  CLI-->>Dev: stdout JSON/report（exit 0/1/2）
+  opt CI SARIF export
     Dev->>CLI: export --export-format sarif
     CLI->>FS: write results.sarif
   end

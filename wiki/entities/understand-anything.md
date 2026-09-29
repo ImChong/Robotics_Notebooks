@@ -92,7 +92,7 @@ flowchart TB
   subgraph out [产出]
     JSON[".ua/knowledge-graph.json"]
     DASH[understand-dashboard / viewer]
-    CHAT[/understand-chat / diff / explain]
+    CHAT["/understand-chat · diff · explain"]
   end
   CODE --> SCAN --> FILE --> ARCH --> TOUR --> REV --> JSON
   CODE --> DOM

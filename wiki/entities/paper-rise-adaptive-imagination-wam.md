@@ -141,7 +141,7 @@ sequenceDiagram
   participant Pred as train_latent_predictor
   participant P0 as train_predictor_rollout_planner
   participant TQ as generate_navsim_cf_trajectory_quality.py
-  participant Off as train_cvoi_offline
+  participant Offline as train_cvoi_offline
   participant Ora as run_cvoi_manual_oracle.py
   participant EPD as run_cvoi_direct_epdms.py
 
@@ -152,18 +152,18 @@ sequenceDiagram
   Op->>Op: 人工拷 handoff/p0_selected.pt
   Op->>TQ: 生成 CF trajectory-quality sidecar
   Op->>App: 03_field_full.yaml
-  App->>Off: Field → handoff/field.pt
+  App->>Offline: Field → handoff/field.pt
   Op->>App: 04_calibration_full.yaml
-  App->>Off: Calibration → calibration.pt
+  App->>Offline: Calibration → calibration.pt
   Op->>App: 05_p1_full.yaml
   App->>P0: 引导 Π1
   Op->>Op: 人工拷 handoff/p1_selected.pt
   Op->>App: 06_stop_full.yaml
-  App->>Off: Stop → stop.pt
+  App->>Offline: Stop → stop.pt
   Op->>Ora: build-manifest + score H0–H4 + aggregate
   Ora-->>Op: handoff/oracle_full.sqlite3
   Op->>App: 07_gate_full.yaml
-  App->>Off: Gate → gate.pt
+  App->>Offline: Gate → gate.pt
   Op->>EPD: full_controller.yaml → NavTest EPDMS
 ```
 

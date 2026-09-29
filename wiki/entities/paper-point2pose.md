@@ -109,7 +109,7 @@ sequenceDiagram
     participant TRK as tracker (tapir)
     participant SAMPL as sampler (super_point)
     participant REG as register (svd_*)
-    participant OPT as optimizer (lm_graph / isam2)
+    participant OptGraph as optimizer (lm_graph / isam2)
     participant REC as reconstructor (sdf_builder)
     participant VIZ as Rerun / cv2 UI
     U->>MP: 点击 prompt + 按 s 开始
@@ -121,8 +121,8 @@ sequenceDiagram
         MP->>SAMPL: 关键点采样
         MP->>REG: 3D 配准
         REG-->>MP: 6D 位姿
-        MP->>OPT: 图优化 refine
-        OPT-->>MP: 优化位姿 + 地图
+        MP->>OptGraph: 图优化 refine
+        OptGraph-->>MP: 优化位姿 + 地图
         MP->>REC: 深度融合 TSDF
         REC-->>VIZ: mesh / 位姿轴
     end

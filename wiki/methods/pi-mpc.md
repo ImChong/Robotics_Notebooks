@@ -75,8 +75,8 @@ $$\bar{x}_{k+1}=\bar{A}_{t,k}\bar{x}_k+\bar{B}_{t,k}\Delta u_k+\bar{e}_{t,k}$$
 flowchart LR
   subgraph parallel_k [并行于 k=0..N-1]
     DU[闭式更新 Δu_k]
-    XBAR[闭式更新 x̄_{k+1}]
-    ZV[闭式更新 z_{k+1}, v_k\nProj + 平均]
+    XBAR["闭式更新 x̄_{k+1}"]
+    ZV["闭式更新 z_{k+1}, v_k<br/>Proj + 平均"]
     DUAL[更新 θ, β, λ]
   end
   DU --> XBAR --> ZV --> DUAL

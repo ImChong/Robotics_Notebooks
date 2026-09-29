@@ -60,8 +60,8 @@ flowchart LR
   kern[CUDA Kernels<br/>自定义 / 库 / TRT / Torch]
   d2h[D2H 或 device-only 输出]
   host --> h2d --> kern --> d2h
-  kern -.->|重复环可 capture| graph[CUDA Graph]
-  graph --> kern
+  kern -.->|重复环可 capture| capGraph[CUDA Graph]
+  capGraph --> kern
 ```
 
 ## 工程实践

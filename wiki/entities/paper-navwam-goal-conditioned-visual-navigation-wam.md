@@ -80,7 +80,7 @@ flowchart TB
   end
   subgraph pred [顶层预测帧 latent]
     A[action chunk]
-    ST2[state_{t+1}]
+    ST2["state_{t+1}"]
     O1[future obs 1]
     O2[future obs 2]
     V[goal-progress value]

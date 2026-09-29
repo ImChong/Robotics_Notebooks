@@ -67,22 +67,22 @@ summary: "Agent Skills（addyosmani/agent-skills）是 Addy Osmani 维护的 25 
 ```mermaid
 flowchart LR
   subgraph DEFINE
-    A[/spec] --> B[interview-me / idea-refine / spec-driven-development]
+    A["/spec"] --> B[interview-me / idea-refine / spec-driven-development]
   end
   subgraph PLAN
-    C[/plan] --> D[planning-and-task-breakdown]
+    C["/plan"] --> D[planning-and-task-breakdown]
   end
   subgraph BUILD
-    E[/build] --> F[incremental-implementation + TDD + domain skills]
+    E["/build"] --> F[incremental-implementation + TDD + domain skills]
   end
   subgraph VERIFY
-    G[/test] --> H[debugging + browser-testing-with-devtools]
+    G["/test"] --> H[debugging + browser-testing-with-devtools]
   end
   subgraph REVIEW
-    I[/review] --> J[code-review-and-quality + security + performance]
+    I["/review"] --> J[code-review-and-quality + security + performance]
   end
   subgraph SHIP
-    K[/ship] --> L[shipping-and-launch + ci-cd + observability]
+    K["/ship"] --> L[shipping-and-launch + ci-cd + observability]
   end
   DEFINE --> PLAN --> BUILD --> VERIFY --> REVIEW --> SHIP
 ```

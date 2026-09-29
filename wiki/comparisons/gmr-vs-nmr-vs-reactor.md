@@ -79,7 +79,7 @@ flowchart TD
   end
 
   subgraph reactor_path["ReActor：在线双层 RL"]
-    R1[参数化参考 g_t(p)]
+    R1["参数化参考 g_t(p)"]
     R2[策略 π_φ + PD + RFC]
     R3[物理仿真<br/>接触 / 自碰 / 限位]
     R4[上层近似梯度 → 更新 p]

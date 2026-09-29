@@ -69,7 +69,7 @@ flowchart TD
   B -->|否，要完整游戏或引擎源码| D[open-source-games README<br/>按品类浏览]
   D --> E{条目类型}
   E -->|已有 wiki 实体| F[跳转 STK 等实体页]
-  E -->|仅列表链接| G[打开 [[source]] 仓<br/>读许可与构建说明]
+  E -->|仅列表链接| G[打开 source 链接仓库<br/>读许可与构建说明]
   C --> H[Sim2Real / 传感器 / 奖励设计]
   G --> I[自封装或当引擎样本]
 ```

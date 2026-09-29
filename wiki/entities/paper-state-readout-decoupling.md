@@ -64,7 +64,7 @@ flowchart TB
   end
   subgraph SRD [SRD]
     ZT2[z_t] --> INIT[g_φ 初始化 h]
-    INIT --> GRU[GRU 沿 a_{t:t+H-1}]
+    INIT --> GRU["GRU 沿 a_{t:t+H-1}"]
     GRU --> HSEQ["h_0…h_{H-1}"]
     HSEQ --> READ[R_φ readout]
     READ --> ZSEQ["ẑ_{t+1: t+H}（仅读数）"]

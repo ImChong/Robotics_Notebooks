@@ -108,26 +108,26 @@ sequenceDiagram
   autonumber
   participant User as 用户/评测器
   participant CLI as embodiedskills-run
-  participant Loop as AgentLoop (clawvla)
+  participant AgentLp as AgentLoop (clawvla)
   participant VLM as Qwen3-VL (+LoRA)
   participant RT as Guarded runtime
   participant VLA as OpenPI π₀.₅ worker
   participant Env as RoboTwin/LIBERO/RMBench
 
   User->>CLI: instruction + runtime config
-  CLI->>Loop: 初始化 phase=Observe
+  CLI->>AgentLp: 初始化 phase=Observe
   loop 每步
-    Loop->>VLM: 紧凑上下文 C_t (plan, artifacts, history)
-    VLM-->>Loop: RunSkill(k,q) | AdvanceStage | FinishRun
-    Loop->>RT: guard(skill/advance/finish)
+    AgentLp->>VLM: 紧凑上下文 C_t (plan, artifacts, history)
+    VLM-->>AgentLp: RunSkill(k,q) | AdvanceStage | FinishRun
+    AgentLp->>RT: guard(skill/advance/finish)
     alt Preflight 通过
       RT->>VLA: subgoal + obs + state + budget
       VLA-->>RT: action chunk
       RT->>Env: 执行 chunk
-      Env-->>Loop: 新观测 + 执行报告
-      Loop->>VLM: Verify 路由 (Continue/Advance/Replan/Recover)
+      Env-->>AgentLp: 新观测 + 执行报告
+      AgentLp->>VLM: Verify 路由 (Continue/Advance/Replan/Recover)
     else Guard 失败
-      RT-->>Loop: blocked + 证据写入 trace
+      RT-->>AgentLp: blocked + 证据写入 trace
     end
   end
   Env-->>User: 终端 evaluator success

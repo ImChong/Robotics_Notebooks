@@ -75,12 +75,12 @@ summary: "SHELLS（arXiv:2605.31283，Google，SIGGRAPH 2026）：粗引导分�
 flowchart TB
   imgs["标定多视角 RGB\n+ 相机参数"]
   dino["共享 DINOv2 + LoRA\n特征图"]
-  graph["稀疏全局采样图\n投影采样 + μ/σ² 融合"]
+  sparseGraph["稀疏全局采样图\n投影采样 + μ/σ² 融合"]
   coarse["XCiT 粗预测\n~3k 顶点粗网格"]
   shells["法向分层壳\n表面感知可见性融合"]
   fine["共享 XCiT 精预测\n~18k 固定拓扑网格"]
   apps["Performance / 3DMM 建库\n/ telepresence 上游"]
-  imgs --> dino --> graph --> coarse --> shells --> fine --> apps
+  imgs --> dino --> sparseGraph --> coarse --> shells --> fine --> apps
 ```
 
 关键直觉：粗阶段在捕获体积内**定位**头部；壳阶段把采样限制在估计表面邻域，既减无关特征又与最终分辨率解耦；transformer **一次**回归全体顶点，而不是每点独立体积细化——这对遮挡区（发丝、口腔）更稳。

@@ -116,16 +116,16 @@ sequenceDiagram
     participant Repo as irnkim/poppy
     participant RGB as 冻结 RGB 法线骨干
     participant Pol as 偏振输入 0/45/90/135°
-    participant Opt as 测试时优化
+    participant Topt as 测试时优化
     participant Render as 可微偏振渲染
     Dev->>Repo: 安装 Marigold/MoGe/Lotus 依赖
-    Pol->>Opt: 单次偏振测量
-    RGB->>Opt: 初始法线预测
+    Pol->>Topt: 单次偏振测量
+    RGB->>Topt: 初始法线预测
     loop 测试时迭代
-        Opt->>Render: 法线+反射率分解
-        Render->>Opt: Stokes 一致性损失
+        Topt->>Render: 法线+反射率分解
+        Render->>Topt: Stokes 一致性损失
     end
-    Opt-->>Dev: 细化法线 / 网格重建
+    Topt-->>Dev: 细化法线 / 网格重建
 ```
 
 运行时节点对齐 `irnkim/poppy` README 中的安装与评测脚本。

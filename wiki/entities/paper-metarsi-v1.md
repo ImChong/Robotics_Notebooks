@@ -110,7 +110,7 @@ sequenceDiagram
     participant Stores as Session stores<br/>~/.rsih · ~/.pi · ~/.claude
     participant Plan as 证据化计划<br/>用户确认
     participant Val as rsih genome validate
-    participant Gen as ~/.rsih/genomes/&lt;id&gt;/
+    participant Gen as genome bundle dir
     Dev->>Install: clone RSI-Harness
     Install->>RSIH: 安装 rsih → ~/.local/bin
     Dev->>GEE: gee（Harness-RSI 演示）
@@ -120,7 +120,7 @@ sequenceDiagram
     Dev->>Plan: 确认
     Plan->>Gen: 写入 genome.json + 12 components
     Gen->>Val: 校验 bundle
-    Dev->>RSIH: rsih :&lt;genome_id&gt;
+    Dev->>RSIH: rsih 加载 genome_id
     RSIH->>Gen: 编译 managed keys → ~/.rsih/settings.json
     Note over Dev,RSIH: 无 Genome 时 rsih ≡ pi（仅 ~/.rsih 配置根）
 ```

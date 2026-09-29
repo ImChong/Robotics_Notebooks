@@ -118,18 +118,18 @@ sequenceDiagram
   participant U as 用户
   participant Env as environment.jl<br>（机器人 + 流体场景定义）
   participant Sim as aquarium_sim.jl<br>（可微仿真步进）
-  participant Opt as trajectory_opt.jl<br>（轨迹优化）
+  participant TrajOpt as trajectory_opt.jl<br>（轨迹优化）
   participant HW as 真机接口<br>（硬件控制）
 
   U->>Env: 定义机器人几何、流体域参数
-  U->>Opt: 设置任务目标（游泳速度、C-start）
-  Opt->>Sim: 调用前向仿真 rollout(u)
+  U->>TrajOpt: 设置任务目标（游泳速度、C-start）
+  TrajOpt->>Sim: 调用前向仿真 rollout(u)
   Sim->>Sim: 多体 + NS 联合步进（Lagrangian 框架）
-  Sim->>Opt: 返回轨迹 τ 与 cost
-  Opt->>Opt: Zygote 自动微分 ∂cost/∂u
-  Opt->>Opt: 梯度下降/二阶优化更新 u
-  Opt-->>Sim: 迭代直至收敛
-  Opt->>HW: 输出优化控制序列
+  Sim->>TrajOpt: 返回轨迹 τ 与 cost
+  TrajOpt->>TrajOpt: Zygote 自动微分 ∂cost/∂u
+  TrajOpt->>TrajOpt: 梯度下降/二阶优化更新 u
+  TrajOpt-->>Sim: 迭代直至收敛
+  TrajOpt->>HW: 输出优化控制序列
   HW->>HW: 直接执行（无额外微调）
 ```
 

@@ -73,7 +73,7 @@ flowchart TB
   end
   subgraph assoc [关联]
     tracks["稀疏多视图 tracks"]
-    graph["全局 pose graph\n重叠窗合并"]
+    poseGraph["全局 pose graph\n重叠窗合并"]
   end
   subgraph opt [全局优化]
     rot["旋转平均"]
@@ -81,8 +81,8 @@ flowchart TB
     ba["Bundle Adjustment\n重投影 + 可选内参"]
     dense["稠密深度尺度对齐\n点云融合"]
   end
-  seq --> pi3 --> kf --> warp --> tracks --> graph
-  graph --> rot --> trans --> ba --> dense
+  seq --> pi3 --> kf --> warp --> tracks --> poseGraph
+  poseGraph --> rot --> trans --> ba --> dense
 ```
 
 ## 核心原理

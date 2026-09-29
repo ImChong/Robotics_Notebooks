@@ -83,7 +83,7 @@ flowchart TD
   E -->|否| H{只依赖 y/x?}
   H -->|是| HOM[令 u=y/x]
   H -->|否| B{Bernoulli?}
-  B -->|是| BER[令 v=y^{1-n}]
+  B -->|是| BER["令 v=y^{1-n}"]
   B -->|否| SUB[组合代换 / 数值 / 定性]
 ```
 
