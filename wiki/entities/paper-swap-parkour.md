@@ -81,13 +81,13 @@ flowchart TB
   end
   subgraph pol["高频 Equivariant Actor-Critic"]
     hist["proprio 短历史 + 速度指令"]
-    actor["Equivariant Actor μ_θ"]
+    polActor["Equivariant Actor μ_θ"]
     critic["Invariant Critic V_ψ\n(特权 terrain 等)"]
     act["12-DoF 关节动作"]
-    hist --> actor
-    rssm -.->|sg(h_t)| actor
-    rssm -.->|sg(h_t)| critic
-    actor --> act
+    hist --> polActor
+    rssm -.->|sg h_t| polActor
+    rssm -.->|sg h_t| critic
+    polActor --> act
   end
   act --> env["Isaac Gym 跑酷课\n→ Apollo 零样本"]
   env --> dep

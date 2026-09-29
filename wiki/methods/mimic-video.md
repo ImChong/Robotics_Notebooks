@@ -94,8 +94,8 @@ mimic-video 是一类把互联网规模视频生成模型当作操作语义与�
 flowchart LR
   obs[多相机图像历史 + 语言指令]
   vid[预训练视频 DiT 骨干<br/>可选 LoRA 域适配]
-  z[未来帧潜变量<br/>部分去噪至 \(\tau_v\)]
-  h[第 k 层隐状态<br/>\(\mathbf{h}^{\tau_v}\)]
+  z["未来帧潜变量<br/>部分去噪至 tau_v"]
+  h["第 k 层隐状态 h^tau_v"]
   dec[流匹配动作 DiT<br/>本体 + 动作块序列]
   act[动作 chunk 输出]
 
@@ -104,7 +104,7 @@ flowchart LR
   z --> h
   h --> dec
   obs --> dec
-  act <-- dec
+  dec --> act
 ```
 
 ## 常见误区或局限

@@ -89,22 +89,22 @@ sequenceDiagram
     actor Dev as 开发者
     participant CFG as configs/ier/*.yaml
     participant Train as train.py run
-    participant Loop as train_loops/ier/
+    participant TrainLp as train_loops/ier/
     participant Env as environments/
     participant Mem as memory/ replay
     participant Alg as algorithms/ SAC|TD3
     Dev->>CFG: 指定 env、seed、RN、算法
     Dev->>Train: python train.py run --config ...
-    Train->>Loop: 初始化 R_max、重复计数
+    Train->>TrainLp: 初始化 R_max、重复计数
     loop 每个 environment step
         alt 探索 / 策略 / 重复模式
-            Loop->>Env: 执行 a_t
+            TrainLp->>Env: 执行 a_t
         end
-        Env-->>Loop: s', r, done
-        Loop->>Mem: store transition
-        Loop->>Alg: 标准 off-policy 更新
+        Env-->>TrainLp: s', r, done
+        TrainLp->>Mem: store transition
+        TrainLp->>Alg: 标准 off-policy 更新
     end
-    Note over Loop,Env: episode 结束：若 R_ep > R_max 则存 a* 并激活 RN 次重复
+    Note over TrainLp,Env: episode 结束：若 R_ep > R_max 则存 a* 并激活 RN 次重复
 ```
 
 - **最短复现：** clone → `conda create -n ier python=3.10` → `python train.py run --config configs/ier/<task>.yaml`；RN=0 即基线。

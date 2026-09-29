@@ -84,7 +84,7 @@ flowchart TB
   end
   subgraph cascade [三级级联]
     OBS[多视角观测 + 语言 l]
-    OBS --> Z[Video latent z_{t+1}\n世界建模 CFM]
+    OBS --> Z["Video latent z_{t+1}<br/>世界建模 CFM"]
     Z --> M[Latent action m_t\n运动抽象 CFM]
     M --> ACT[可执行动作 a_t\nmove + manip CFM]
   end

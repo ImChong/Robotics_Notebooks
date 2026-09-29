@@ -92,7 +92,7 @@ flowchart TB
   fuse --> lm["Qwen2.5-0.5B + action query"]
   lm --> act["动作 chunk"]
   lm --> fut["future token → 冻结 DINOv3 空间"]
-  graph["CUDA Graph replay"] --> act
+  cudaReplay["CUDA Graph replay"] --> act
 ```
 
 可训练未来目标会把表示空间一起拧歪（传送带 SR 36.8→**4.9**）；冻结目标则 36.8→**62.8**。

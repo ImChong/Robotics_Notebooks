@@ -123,20 +123,20 @@ sequenceDiagram
     participant Ray as Ray 集群
     participant Verl as verl / rpg2_trainer
     participant DS as rl_dataset.py
-    participant Actor as πθ 学生
+    participant Student as πθ 学生
     participant Teach as πθ(·|c,x) 教师
     participant Ref as π_ref 冻结
     Dev->>Ray: ray start --head --num-gpus=8
     Dev->>Verl: run_qwen3_4b_sdpg_boxed.sh
     Verl->>DS: 加载 teacher parquet
     loop 每训练步
-        DS->>Actor: prompt x（无 c）
-        Actor->>Verl: G 条 rollout + logprob
+        DS->>Student: prompt x（无 c）
+        Student->>Verl: G 条 rollout + logprob
         Verl->>Verl: verifier → A_out
         DS->>Teach: x + c 全序列
         Teach->>Verl: full-vocab q_t
         Verl->>Verl: gated KL + clip loss + α·KL(π, π_ref)
-        Verl->>Actor: 更新 θ
+        Verl->>Student: 更新 θ
     end
 ```
 

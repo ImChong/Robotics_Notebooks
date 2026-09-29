@@ -93,9 +93,11 @@ sequenceDiagram
   C->>GG: 预处理 → ViT → DPT/pose 头
   GG-->>C: depth[H×W], conf, ext 3×4, intr 3×3
   C-->>App: 缓冲指针（须 da_capi_free_floats）
-  opt App->>C: da_capi_export_glb / da_capi_points
-  C->>IO: 无 trimesh/pycolmap 依赖写出
-  IO-->>App: scene.glb / COLMAP 目录 / PLY
+  opt Optional mesh export
+    App->>C: da_capi_export_glb / da_capi_points
+    C->>IO: 无 trimesh/pycolmap 依赖写出
+    IO-->>App: scene.glb / COLMAP 目录 / PLY
+  end
   App->>C: da_capi_free(ctx)
 ```
 

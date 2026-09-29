@@ -109,24 +109,24 @@ sequenceDiagram
     participant S1 as Stage I train
     participant Prep as preprocess
     participant Learner as GPU learner
-    participant Actor as GPU actor
+    participant GpuActor as GPU actor
     participant Rob as serve-robot
     participant Bridge as robot-agent-bridge
     participant Env as UR/Franka 化学任务
     Dev->>S1: OpenPI SFT (norm-stats + train)
     Dev->>Prep: 填充 Replay + Context Buffer
     Dev->>Learner: stage2 train --role learner
-    Dev->>Actor: stage2 train --role actor
+    Dev->>GpuActor: stage2 train --role actor
     Dev->>Rob: serve-robot
     Dev->>Bridge: robot-agent-bridge
     loop 在线 RL episode
         Env->>Rob: 观测
         Rob->>Bridge: 本地 IO
-        Bridge->>Actor: streaming 请求
-        Actor-->>Bridge: action
+        Bridge->>GpuActor: streaming 请求
+        GpuActor-->>Bridge: action
         Bridge->>Rob: 执行
         Rob->>Learner: 经验写回 buffer
-        Learner->>Actor: ACoB 权重同步
+        Learner->>GpuActor: ACoB 权重同步
     end
     Dev->>Rob: stage2 evaluate
 ```

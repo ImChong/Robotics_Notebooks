@@ -74,10 +74,10 @@ flowchart TB
   subgraph match [跨视角匹配]
     epi["对称极线距离亲和"]
     hung["Hungarian 一对一分配"]
-    graph["环一致对应图"]
-    epi --> hung --> graph
+    corrGraph["环一致对应图"]
+    epi --> hung --> corrGraph
   end
-  subgraph opt [ma_3d · SMPL-X 优化]
+  subgraph smplOpt [ma_3d · SMPL-X 优化]
     s1["Stage 1: 平移/旋转重投影"]
     s2["Stage 2: pose+shape<br/>Geman-McClure"]
     s3["Stage 3: 接触能量 + Huber 精修"]
@@ -88,7 +88,7 @@ flowchart TB
   sam --> net
   cal --> match
   out2d --> match
-  graph --> opt
+  corrGraph --> smplOpt
   smpl --> vis["ma_vis 叠加 / Rerun"]
 ```
 

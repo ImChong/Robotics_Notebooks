@@ -87,15 +87,15 @@ flowchart TB
   fe[ Conditional Frontend\n关键帧 + 局部 KV ]
   mem[ Memory / 条件块\n坐标系与尺度 ]
   lb[ Local Backend\n周期窗口精炼 ]
-  graph[ Pose-Geometry Graph\n前端 + 回环边 ]
+  pgGraph[ Pose-Geometry Graph\n前端 + 回环边 ]
   pggo[ Global PGGO\n联合位姿 + pointmap ]
   out[ 全局一致轨迹与稠密地图 ]
   rgb --> fe --> mem
   mem --> fe
   fe --> lb --> mem
-  fe --> graph
-  lb --> graph
-  graph --> pggo --> out
+  fe --> pgGraph
+  lb --> pgGraph
+  pgGraph --> pggo --> out
 ```
 
 ## 源码运行时序图

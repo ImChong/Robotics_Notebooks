@@ -75,7 +75,7 @@ flowchart TB
     ROPE[3D RoPE 时空位置]
   end
   subgraph attn [跨体交互]
-    HUB[Sparse Hub Attention\nhub 中介 · O(N) 跨体代价]
+    HUB["Sparse Hub Attention<br/>hub 中介 · O(N) 跨体代价"]
   end
   subgraph train [训练]
     TCH[双向多智能体扩散教师\n全上下文]

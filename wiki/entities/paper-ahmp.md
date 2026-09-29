@@ -80,16 +80,16 @@ sequenceDiagram
     actor Dev as 开发者
     participant Dock as ci/ Docker<br/>run_docker.sh
     participant Shell as cem_exps/run_exps.sh
-    participant Par as trajopt_parallel.py
+    participant ParRun as trajopt_parallel.py
     participant CEM as src/cem
     participant TO as src/nltrajopt
     participant Pin as Pinocchio + Ipopt
     Dev->>Dock: docker build -t ahmp；可选放入 HSL
     Dev->>Shell: 或直接调用并行脚本
-    Shell->>Par: --exp handrails/chimney --robot talos --dz
+    Shell->>ParRun: --exp handrails/chimney --robot talos --dz
     loop CEM 迭代
-      Par->>CEM: SamplePop 接触掩码与时长
-      Par->>TO: 并行 SolveTrajopt
+      ParRun->>CEM: SamplePop 接触掩码与时长
+      ParRun->>TO: 并行 SolveTrajopt
       TO->>Pin: 全身逆动力学与切空间雅可比
       Pin-->>TO: 约束违反 / 轨迹
       TO-->>CEM: 适应度，更新分布

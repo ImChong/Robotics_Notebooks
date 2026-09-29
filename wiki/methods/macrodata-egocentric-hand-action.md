@@ -76,7 +76,7 @@ flowchart TB
   DET[WiLoR detect<br/>conf ≥ 0.75<br/>≤4-frame gap IoU≥0.20]
   HAND[HaWoR temporal MANO<br/>16-frame / 8-overlap]
   CAM[VGGT-Omega windows<br/>200 / 40 overlap / 416px]
-  ALIGN[Depth-derived Sim(3)<br/>+ linear blend]
+  ALIGN["Depth-derived Sim(3)<br/>+ linear blend"]
   FUSE[World-space fusion<br/>R,t · p_cam]
   POST[Camera binomial filter<br/>bone-scale ±3.5%<br/>ray wrist-depth λ=0.2]
   OUT[Metric 21-joint<br/>hand-action trajectory]

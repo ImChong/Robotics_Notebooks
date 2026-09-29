@@ -80,7 +80,7 @@ flowchart LR
     A[联合动作]
   end
   subgraph wsr [World State Registers]
-    Rprev[r_{i-1}]
+    Rprev["r_{i-1}"]
     G[更新 Gθ]
     Ri[提交 r_i]
   end

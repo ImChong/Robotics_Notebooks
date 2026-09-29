@@ -78,8 +78,8 @@ summary: "IRASim（arXiv:2406.14540，ByteDance×HKUST）：DiT + 帧级动作�
 ```mermaid
 flowchart LR
   subgraph input [输入]
-    HIST[历史帧 I^{t-h:t}]
-    TRAJ[动作轨迹 a^{t:t+n}]
+    HIST["历史帧 I^{t-h:t}"]
+    TRAJ["动作轨迹 a^{t:t+n}"]
   end
   subgraph model [IRASim]
     VAE_E[VAE Enc]

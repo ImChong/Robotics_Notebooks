@@ -84,12 +84,12 @@ sequenceDiagram
     participant Patch as apply_newton_patch.sh
     participant UV as uv sync --extra sim
     participant Ex as examples/<br/>comparison_*.py
-    participant Opt as experiments/<br/>轨迹优化
+    participant TrajOpt as experiments/<br/>轨迹优化
     Dev->>Clone: 拉取 Newton 子模块
     Dev->>Patch: 修复无 CUDA 时 GL viewer
     Dev->>UV: 安装 pinned 依赖
     Dev->>Ex: 跑稳定性/梯度/扩展性对比
-    Dev->>Opt: 三角网格地形 10s 梯度优化
+    Dev->>TrajOpt: 三角网格地形 10s 梯度优化
 ```
 
 - **最短复现：** `git clone` → `git submodule update --init --recursive` → `./scripts/apply_newton_patch.sh` → `uv sync --extra sim` → `examples/comparison_gradient_old.py` 等。

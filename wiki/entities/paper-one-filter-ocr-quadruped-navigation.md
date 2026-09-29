@@ -121,14 +121,14 @@ flowchart TB
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Off as 离线数据生成
+  participant Offline as 离线数据生成
   participant VN as OCR-VN
   participant Lidar as LiDAR
   participant Est as 扰动估计
   participant QP as 安全 QP
   participant Nom as Nominal 控制器
   participant Loco as 腿足 locomotion
-  Off->>VN: HJ 监督训练
+  Offline->>VN: HJ 监督训练
   Lidar->>VN: 扫描距离
   Est->>VN: d̄
   Nom->>QP: u_nom

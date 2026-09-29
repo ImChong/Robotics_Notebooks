@@ -93,17 +93,17 @@ flowchart TB
   fe[ Two-view Frontend\nf_2v: 深度 + Sim3 相对位姿 ]
   be[ Multi-view Backend\nf_mv: 子图 w=16, phi=2 ]
   init[ 深度统计尺度初始化 S_m ]
-  graph[ Unified Sim3 Factor Graph\nE_temp + E_v2s + E_s2s ]
-  opt[ Huber + LM on sim3 ]
+  sim3Graph[ Unified Sim3 Factor Graph\nE_temp + E_v2s + E_s2s ]
+  huberOpt[ Huber + LM on sim3 ]
   lc[ Loop submap 可选 ]
   out[ 全局轨迹 + 稠密重建 ]
   rgb --> kf --> fe
   kf --> be --> init
-  fe --> graph
-  be --> graph
-  init --> graph
-  lc --> graph
-  graph --> opt --> out
+  fe --> sim3Graph
+  be --> sim3Graph
+  init --> sim3Graph
+  lc --> sim3Graph
+  sim3Graph --> huberOpt --> out
 ```
 
 ## 源码运行时序图
