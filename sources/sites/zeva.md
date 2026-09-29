@@ -20,5 +20,6 @@
 ## 交叉链接
 
 - 论文摘录：[zeva_arxiv_2608_30880](../papers/zeva_arxiv_2608_30880.md)
+- 后续工作：[Zeva-Ego 项目页](zeva-ego.md)（arXiv:2609.24411，`feature/zeva_ego`）
 - 仓库：[air-embodied-brain/Zeva](../repos/air-embodied-brain-zeva.md)
 - 主实体：[Zeva](../../wiki/entities/paper-zeva.md)

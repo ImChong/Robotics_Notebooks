@@ -24,6 +24,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ./paper-zeva.md
+  - ./paper-zeva-ego.md
   - ./paper-harness-vla.md
   - ./paper-correctvla.md
   - ./paper-emerge-policy.md
