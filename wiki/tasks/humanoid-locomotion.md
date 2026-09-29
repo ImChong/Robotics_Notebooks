@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-29
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -30,6 +30,7 @@ related:
   - ../entities/paper-bridge-humanoid.md
   - ../entities/paper-gm-loco.md
   - ../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md
+  - ../entities/paper-generate-track-improve.md
   - ../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md
   - ../entities/paper-visible-reachable-workspace-humanoid-design.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
@@ -140,6 +141,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
 - [RAVEN：RL 自适应可见图 + cf-MPC](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — 导航层 RL 改障碍膨胀，行走层 Booster Gym；延迟与噪声下鲁棒导航
+- [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 生成 + CLF-RL 跟踪 + AWR 微调生成器；G1 户外走跑跳箱/楼梯（arXiv:2609.31577；代码待发布）
 - [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 结合重定向与控制引导的 RL 实现高性能奔跑
 - [楼梯与障碍感知移动](./stair-obstacle-perceptive-locomotion.md) — 带/不带感知的上下楼梯与越障挂接点
 - [Locomotion](./locomotion.md)
