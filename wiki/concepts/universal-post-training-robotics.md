@@ -2,12 +2,14 @@
 type: concept
 tags: [post-training, vla, reinforcement-learning, foundation-policy, value-based-rl, deployment, stanford]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-29
 related:
   - ./foundation-policy.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md
   - ../methods/policy-optimization.md
+  - ../entities/paper-expo.md
+  - ../entities/paper-expo-ft.md
   - ../entities/paper-real-time-expo-ft.md
   - ../entities/paper-qwm.md
   - ../entities/skild-physical-self-play.md
@@ -16,7 +18,10 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
+  - ../../sources/blogs/wechat_embodied_heart_expo_universal_post_training_2026-09-29.md
   - ../../sources/sites/pd-perry-post-training.md
+  - ../../sources/papers/expo_arxiv_2507_07986.md
+  - ../../sources/papers/expo_ft_arxiv_2605_25477.md
 summary: "Perry Dong 框架：机器人预训练 VLA/WAM 已能演示复杂行为，但缺 LLM 式通用 post-training 配方；需 value-based RL 算法 + reward/reset/HIL 等标准协议，才能把「九十五分演示」推到可部署 nines。"
 ---
 
@@ -77,7 +82,7 @@ Frontier VLA 常用 **扩散/flow 动作头**（多模态正确动作）。经�
 - **只采样选 Q 最大** → 大模型权重 **不更新**
 - **只 steer 噪声** → 无法超出预训练行为包络
 
-**EXPO(-FT)**（Perry Dong 组）代表一条折中：**大 VLA 提案 + 轻量 edit policy 有界修正 + Q 选 chunk + 成功轨迹回灌大模型** — 详见 [Real-Time EXPO-FT](../entities/paper-real-time-expo-ft.md) 与 [QWM](../entities/paper-qwm.md)（测试时 WM 搜索）。
+**EXPO(-FT)**（Perry Dong 组）代表一条折中：**大 VLA 提案 + 轻量 edit policy 有界修正 + Q 选 chunk + 成功轨迹回灌大模型** — 算法源头 [EXPO](../entities/paper-expo.md)（ICLR 2026），VLA 真机 [EXPO-FT](../entities/paper-expo-ft.md)，延迟感知续作 [Real-Time EXPO-FT](../entities/paper-real-time-expo-ft.md)；测试时 WM 搜索见 [QWM](../entities/paper-qwm.md)。
 
 ### 4. 配方 = 算法 + 标准协议（第二半）
 
@@ -118,6 +123,8 @@ Frontier VLA 常用 **扩散/flow 动作头**（多模态正确动作）。经�
 - [Foundation Policy](./foundation-policy.md)
 - [VLA](../methods/vla.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [EXPO](../entities/paper-expo.md)
+- [EXPO-FT](../entities/paper-expo-ft.md)
 - [Real-Time EXPO-FT](../entities/paper-real-time-expo-ft.md)
 - [QWM](../entities/paper-qwm.md)
 - [Skild Physical Self-Play](../entities/skild-physical-self-play.md)
@@ -128,7 +135,10 @@ Frontier VLA 常用 **扩散/flow 动作头**（多模态正确动作）。经�
 ## 参考来源
 
 - [Towards Universal Post-Training for Robotics（博客归档）](../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md)
+- [具身智能之心：Finn/EXPO 解读（2026-09-29）](../../sources/blogs/wechat_embodied_heart_expo_universal_post_training_2026-09-29.md)
 - [pd-perry.github.io 博文页归档](../../sources/sites/pd-perry-post-training.md)
+- [expo_arxiv_2507_07986.md](../../sources/papers/expo_arxiv_2507_07986.md)
+- [expo_ft_arxiv_2605_25477.md](../../sources/papers/expo_ft_arxiv_2605_25477.md)
 
 ## 推荐继续阅读
 
