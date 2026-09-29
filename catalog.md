@@ -443,6 +443,7 @@
 - [DBHL窄地形全身运动](wiki/entities/dbhl-whole-body-loco.md) — DBHL窄地形全身运动](https://whole-body-loco.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [DDR](wiki/entities/ddr-direct-dynamics-retargeting.md) — DDR](https://arxiv.org/abs/2605.23762) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
+- [Deep Agents](wiki/entities/deep-agents.md) — Deep Agents** 是 LangChain 生态的 **开箱 agent harness**（*The batteries-included agent harness*）：在 **[La `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
 - [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
 - [DeepSeek Harness](wiki/entities/deepseek-harness.md) — DeepSeek Harness**（`dsh`，[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-ha `📅unknown` `[entity_page]`
@@ -649,7 +650,10 @@
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
-- [LangChain](wiki/entities/langchain.md) — LangChain**（GitHub: langchain-ai/langchain）是 **agent  `📅unknown` `[entity_page]`
+- [langchain-ai（GitHub 组织）](wiki/entities/langchain-ai.md) — langchain-ai](https://github.com/langchain-ai)** 是 LangChain 公司的官方 GitHub 组织，托管 **agent 工程栈 OSS 主 `📅unknown` `[entity_page]`
+- [LangChain](wiki/entities/langchain.md) — LangChain**（GitHub: langchain-ai/langchain，[langchain `📅unknown` `[entity_page]`
+- [LangGraph](wiki/entities/langgraph.md) — LangGraph**（GitHub: langchain-ai/langgraph）是 **低层编排框架 `📅unknown` `[entity_page]`
+- [LangSmith](wiki/entities/langsmith.md) — LangSmith**（langchain.com/langsmith，控制台 [smith.langchain.co `📅unknown` `[entity_page]`
 - [Laya-CoreML（Apple Neural Engine 运行时）](wiki/entities/laya-coreml.md) — Laya-CoreML** 指把 Laya **322M multilingual**（及英文/typed 变体）转到 **Apple Core ML** 后在设备上跑  `📅unknown` `[entity_page]`
 - [Laya-MLX（Apple Silicon MLX 运行时）](wiki/entities/laya-mlx.md) — Laya-MLX**（GitHub，[PyPI](https://pypi.org/project/laya-ml `📅unknown` `[entity_page]`
 - [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`

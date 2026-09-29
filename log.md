@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | LangChain 生态全量入库：LangGraph/LangSmith/Deep Agents/langchain-ai 实体与产品页源
+
 ## [2026-09-29] ingest | langchain-ai/langchain 主仓与文档站入库，升格 wiki/entities/langchain.md，RAG 与 Easy-Vibe 互链
 
 ## [2026-09-29] ingest | bobeff/open-source-games 开源游戏 mega-list：sources/repos + wiki 实体，补赛车景观交叉引用
