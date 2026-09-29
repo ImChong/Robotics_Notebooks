@@ -280,6 +280,7 @@ flowchart LR
 - [Fault-Tolerant Locomotion（论文实体）](../entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment 应对执行器功率损失（arXiv:2608.07328）
 - [TEMPO（论文实体）](../entities/paper-tempo.md) — VLA 语义/动作双 TD3 环与双频后训练（arXiv:2608.07314）
 - [Temporal GRPO（论文实体）](../entities/paper-temporal-grpo.md) — VLA 结果 GRPO 的阶段信用写回（arXiv:2608.13026；未开源）
+- [MiniMind](../entities/minimind.md) — 小 LLM 教程仓内 **PyTorch 原生 GRPO/CISPO** 与 Agentic RL（非 VLA）
 - [Q-Planning（论文实体）](../entities/paper-qplanning.md) — 冻结 BC + 离策略 Q 吸收失败 rollout 自改进（arXiv:2608.21204；已开源）
 - [SRL-MPC（论文实体）](../entities/paper-srl-mpc.md) — RL 调 MPC 参数而非端到端策略（arXiv:2608.21175）
 - [TOSS Framework（论文实体）](../entities/paper-toss-framework.md) — 人类教学四维过程模型 + OSF 数据（arXiv:2608.21083）

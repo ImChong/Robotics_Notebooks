@@ -90,6 +90,7 @@ sources:
 - [PyTorch](../entities/pytorch.md)
 - [TensorFlow](../entities/tensorflow.md)
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
+- [MiniMind](../entities/minimind.md) — 中文社区「从 0 训练小 LLM」PyTorch 全链路开源教程
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
 
 ## 参考来源
