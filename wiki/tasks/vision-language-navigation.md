@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-09-21
+updated: 2026-09-29
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -32,6 +32,7 @@ related:
   - ../entities/paper-3d-ic-joint-navigation-manipulation-planning.md
   - ../entities/paper-da-nav.md
   - ../entities/paper-fsd-vln.md
+  - ../entities/paper-tadreamer.md
   - ../entities/paper-spark-vln.md
   - ../entities/paper-language-to-navigation-goals-rgbd.md
   - ../entities/paper-arcadia.md
@@ -116,6 +117,7 @@ sources:
 - **零样本统一 agent：** [Uni-LaViRA](../entities/paper-uni-lavira.md)（arXiv:2605.27582）把 VLN-CE / ObjectNav / EQA / Aerial-VLN 写成同一 **Language→Vision→Robot** 翻译环，**无机器人轨迹训练**；OpenUAV SR 40.0%，并与训练式导航基础模型对照。
 - **ROS 2 分层语义导航（待开源）：** [Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md)（arXiv:2607.13624）用远程 VLM bbox + RGB-D 投影生成 **Nav2** 目标，TurtleBot3 端到端导航误差约 0.70 m，Go2 真机定位约 0.51 m；与端到端 VLN 策略互补。
 - **快慢双系统（仿真、未开源）：** [FSD-VLN](../entities/paper-fsd-vln.md)（arXiv:2607.08359）冻结 VLM 写 **VLSF**，GR00T N1 系 DiT 异步出 8 类离散飞行动作；未见相对自复现 OpenFly SR 5.1%→**13.6%**，单步/任务时长约减半，但 **H=1 最好**、无真机。勿与 WorldVLN 的世界转移或室内 3 m SR 混读。
+- **陆空双模 + 视频想象（真机、未开源）：** [TADreamer](../entities/paper-tadreamer.md)（arXiv:2609.19824）VLM→Wan 第一人称导航视频→DA3 重建→**ToF 点云两阶段标定**→TABR 模式规划；七场景真机，深度误差相对 NavDreamer 约 **−87%**。
 
 ### 动态社会 VLN：推理时不暂停仿真
 
