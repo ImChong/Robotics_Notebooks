@@ -2977,6 +2977,7 @@
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
 - [RISE：驾驶 WAM 的自适应想象调度](wiki/entities/paper-rise-adaptive-imagination-wam.md) — RISE**（*Refining Imagination through SElective Rollout*；论文 *RISE: Adaptive Imagination for World A `📅unknown` `[entity_page]`
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
+- [RLinf-USER：真机在线策略学习统一系统](wiki/entities/paper-rlinf-user.md) — RLinf-USER**（*A Unified and Extensible System for Real-World Online Policy Learning in Embodied AI `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
 - [RMR（优化式 Rig 统一的人形重定向）](wiki/entities/paper-rmr.md) — RMR**（项目页标题 *Robust Robot Motion Retargeting*；论文 *Robust and Expressive Humanoid Motion Retargetin `📅unknown` `[entity_page]`
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
