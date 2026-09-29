@@ -10,7 +10,7 @@
 - **项目页：** <https://kangliao929.github.io/projects/puffin-world/> — 归档见 [`sources/sites/puffin-world-project.md`](../sites/puffin-world-project.md)
 - **HF Blog：** <https://huggingface.co/blog/KangLiao/puffin-world>
 - **代码：** <https://github.com/KangLiao929/Puffin>（`Puffin-World/` 子目录；**已开源**，NTU S-Lab License 1.0）
-- **模型：** <https://huggingface.co/KangLiao/Puffin-World>（Base / Pro / Caption）
+- **模型：** <https://huggingface.co/ACERobotics/Puffin-World>（Base / Pro / Caption；`KangLiao/Puffin-World` 重定向）
 - **数据：** <https://huggingface.co/datasets/KangLiao/Puffin-16M>（Puffin-Cam-15M + Puffin-Traj-1M + 28 数据集相机标注）
 - **机构：** 南洋理工大学 S-Lab（NTU）、密歇根大学、北京交通大学、大晓机器人（ACE Robotics）等
 - **入库日期：** 2026-09-10

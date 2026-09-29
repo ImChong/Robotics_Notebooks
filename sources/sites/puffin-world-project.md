@@ -8,9 +8,10 @@
 - **论文：** arXiv:2609.04196
 - **机构：** NTU S-Lab、University of Michigan、BJTU、ACE Robotics
 - **入库日期：** 2026-09-10
+- **项目页核查：** 2026-09-29（链接与开源状态与入库一致；HF 权重页已迁至 ACE Robotics 组织）
 - **一句话说明：** 官方展示页：三类原生 3D 世界状态（physics / geometry / appearance）、Omni-Camera、交互式 3D 重建 demo、相机理解基准表与 Puffin-16M 数据发布入口。
 - **代码：** https://github.com/KangLiao929/Puffin（**已开源**）
-- **模型：** https://huggingface.co/KangLiao/Puffin-World
+- **模型：** https://huggingface.co/ACERobotics/Puffin-World（`KangLiao/Puffin-World` 301 重定向至此）
 - **数据：** https://kangliao929.github.io/projects/puffin-16m/ · https://huggingface.co/datasets/KangLiao/Puffin-16M
 - **沉淀到 wiki：** [paper-puffin-world](../../wiki/entities/paper-puffin-world.md)
 - **交叉归档：** [puffin_world_arxiv_2609_04196.md](../papers/puffin_world_arxiv_2609_04196.md)、[puffin.md](../repos/puffin.md)

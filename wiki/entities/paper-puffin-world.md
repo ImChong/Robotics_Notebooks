@@ -11,7 +11,7 @@ tags:
   - bjtu
   - ace-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-09-29
 arxiv: "2609.04196"
 code: https://github.com/KangLiao929/Puffin/tree/main/Puffin-World
 related:
@@ -32,7 +32,7 @@ summary: "Puffin-World（arXiv:2609.04196，NTU×Michigan×BJTU 等）：用 phy
 
 # Puffin-World（原生 3D 世界状态统一多模态世界模型 · arXiv:2609.04196）
 
-**Puffin-World**（*Scaling a Unified Multimodal Model with Native 3D World States*，[arXiv:2609.04196](https://arxiv.org/abs/2609.04196)，Kang Liao 等 · **南洋理工大学 S-Lab** / **密歇根大学** / **北京交通大学** / **ACE Robotics**；[项目页](https://kangliao929.github.io/projects/puffin-world/)，[GitHub `Puffin-World/`](https://github.com/KangLiao929/Puffin/tree/main/Puffin-World)，[HF 权重](https://huggingface.co/KangLiao/Puffin-World)，[Puffin-16M](https://huggingface.co/datasets/KangLiao/Puffin-16M)）把世界表示从「RGB 帧序列」扩展为三类 **原生 3D 世界状态**，在 **同一框架** 内完成相机到世界理解、自由视点仿真、图文到 3D 世界生成与重建，**不依赖** 任务专用外部感知/重建模块。
+**Puffin-World**（*Scaling a Unified Multimodal Model with Native 3D World States*，[arXiv:2609.04196](https://arxiv.org/abs/2609.04196)，Kang Liao 等 · **南洋理工大学 S-Lab** / **密歇根大学** / **北京交通大学** / **ACE Robotics**；[项目页](https://kangliao929.github.io/projects/puffin-world/)，[GitHub `Puffin-World/`](https://github.com/KangLiao929/Puffin/tree/main/Puffin-World)，[HF 权重](https://huggingface.co/ACERobotics/Puffin-World)，[Puffin-16M](https://huggingface.co/datasets/KangLiao/Puffin-16M)）把世界表示从「RGB 帧序列」扩展为三类 **原生 3D 世界状态**，在 **同一框架** 内完成相机到世界理解、自由视点仿真、图文到 3D 世界生成与重建，**不依赖** 任务专用外部感知/重建模块。
 
 ## 一句话定义
 
@@ -93,7 +93,7 @@ sequenceDiagram
   participant HF as checkpoints/*.pth
   participant O as output/
 
-  U->>D: world_modeling.py / physics_perception.py / spatial_simulation.py
+  U->>D: world_modeling / physics_perception / spatial_simulation / freeview_world_exp / self_calibration
   D->>HF: 加载 Base|Pro|Caption 权重
   alt 物理感知
     U->>D: 单图 demo.jpg
@@ -110,7 +110,7 @@ sequenceDiagram
   end
 ```
 
-复现最短路径：`cd Puffin/Puffin-World` → 安装 `requirements.txt` + `flash-attn` → `huggingface-cli download KangLiao/Puffin-World --local-dir checkpoints` → `python scripts/demo/physics_perception.py demo.jpg --checkpoint checkpoints/Puffin-World-Pro.pth`。
+复现最短路径：`cd Puffin/Puffin-World` → 安装 `requirements.txt` + `flash-attn` → `hf download ACERobotics/Puffin-World --local-dir checkpoints` → `python scripts/demo/physics_perception.py demo.jpg --model Puffin-World-Pro --checkpoint checkpoints/Puffin-World-Pro.pth`。
 
 ## 核心原理
 
@@ -135,7 +135,8 @@ sequenceDiagram
 |----|----------|
 | **环境** | Python 3.10、PyTorch 2.7.0、CUDA 12.6；`flash-attn==2.8.3` |
 | **权重选型** | **Pro**（Qwen2.5-1.5B + C-RADIOv4-H）为 README 推荐统一建模；**Caption** 仅理解 |
-| **Demo** | `world_modeling.py` / `physics_perception.py` / `spatial_simulation.py` |
+| **Demo** | `world_modeling.py` / `physics_perception.py` / `spatial_simulation.py` / `freeview_world_exp.py` / `self_calibration.py` |
+| **HF 权重页** | [ACERobotics/Puffin-World](https://huggingface.co/ACERobotics/Puffin-World)（原 `KangLiao/*` 重定向） |
 | **训练** | `configs/pipelines/final_stage_{1..4}_*` 多阶段；见 `documents/EVALUATION.md` |
 | **许可** | NTU S-Lab License 1.0（商用需单独核对） |
 
