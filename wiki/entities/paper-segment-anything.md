@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-29
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
