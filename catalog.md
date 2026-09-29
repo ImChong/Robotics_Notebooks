@@ -649,6 +649,7 @@
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
+- [LangChain](wiki/entities/langchain.md) — LangChain**（GitHub: langchain-ai/langchain）是 **agent  `📅unknown` `[entity_page]`
 - [Laya-CoreML（Apple Neural Engine 运行时）](wiki/entities/laya-coreml.md) — Laya-CoreML** 指把 Laya **322M multilingual**（及英文/typed 变体）转到 **Apple Core ML** 后在设备上跑  `📅unknown` `[entity_page]`
 - [Laya-MLX（Apple Silicon MLX 运行时）](wiki/entities/laya-mlx.md) — Laya-MLX**（GitHub，[PyPI](https://pypi.org/project/laya-ml `📅unknown` `[entity_page]`
 - [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`
@@ -910,7 +911,7 @@
 - [Statistical Reliability of RL Evaluations](wiki/entities/painode-117-statisticalreliabilityofrlevalua.md) — Statistical Reliability of RL Evaluations** 收录于 awesome-physical-ai（natnew）**第 117/384** 条，分组 **Ev `📅unknown` `[entity_page]`
 - [Waymo Open Challenges](wiki/entities/painode-118-waymoopenchallenges.md) — Waymo Open Challenges** 收录于 awesome-physical-ai（natnew）**第 118/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
 - [copper-rs](wiki/entities/painode-124-copperrs.md) — copper-rs** 收录于 awesome-physical-ai（aichr）**第 124/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
-- [LangChain](wiki/entities/painode-125-langchain.md) — LangChain** 收录于 awesome-physical-ai（aichr）**第 125/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
+- [LangChain（Physical AI 清单 #125）](wiki/entities/painode-125-langchain.md) — LangChain** 收录于 awesome-physical-ai（aichr）**第 125/384** 条，分组 **Frameworks & Libraries**。清单级元数据保留在本 `📅unknown` `[entity_page]`
 - [LlamaFactory](wiki/entities/painode-126-llamafactory.md) — LlamaFactory** 收录于 awesome-physical-ai（aichr）**第 126/384** 条，分组 **Frameworks & Libraries**。本页为知识库  `📅unknown` `[entity_page]`
 - [OpenHands](wiki/entities/painode-128-openhands.md) — OpenHands** 收录于 awesome-physical-ai（aichr）**第 128/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策 `📅unknown` `[entity_page]`
 - [RAI](wiki/entities/painode-129-rai.md) — RAI** 收录于 awesome-physical-ai（aichr）**第 129/384** 条，分组 **Frameworks & Libraries**。本页为知识库 **策展索引级 `📅unknown` `[entity_page]`
