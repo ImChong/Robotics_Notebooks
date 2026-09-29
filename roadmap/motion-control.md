@@ -77,10 +77,6 @@ flowchart TB
   RL --> IL
   S2R --> TF --> GEN --> VLA --> WM --> SIM --> DEP --> HW
   IL -. BC 是动作生成的起点 .-> GEN
-  SIM -. 仿真训练 / 评测 .-> RL
-  S2R -. 经典 RL 策略直接部署 .-> DEP
-  C -. 低层 PD / WBC 始终在环 .-> HW
-  HW -. 真机失败复盘 .-> S2R
 
   classDef trunk fill:#142a3a,stroke:#00d4ff,stroke-width:2px,color:#fff
   classDef ext fill:#0d4f5c,stroke:#00d4ff,stroke-width:2px,color:#fff
@@ -89,6 +85,13 @@ flowchart TB
   class TF,GEN,VLA,WM,SIM ext
   class DEP,HW hw
 ```
+
+图中只画主干与最关键的一条分支；其余交叉依赖：
+
+- **Simulation → RL**：L11 的仿真平台同样是 L5 RL 训练的场地。
+- **Sim2Real → Deployment**：经典 RL 运动策略不经过 VLA，训练后直接走 L12 部署。
+- **Control → Real Robot**：无论上层是 PPO 还是 VLA，低层 PD / WBC 始终在环（见 [L3](#policy-vs-low-level-controller)）。
+- **Real Robot → Sim2Real**：真机失败回到 [L6 失败来源表](#l6-sim2real-chain) 复盘。
 
 ### 一个 Physical AI 系统：从 camera image 到 motor torque
 
@@ -107,8 +110,9 @@ flowchart TB
   QT --> PD["PD / 阻抗（常在驱动器内）<br/>τ = Kp(q_des − q) + Kd(q̇_des − q̇)"]
   PD --> BUS["CAN / EtherCAT"]
   BUS --> M["电机电流环 → torque"]
-  M -. 编码器 / IMU 反馈 .-> St
 ```
+
+电机编码器与 IMU 的读数再作为下一拍的 Robot state 反馈回来，形成闭环。
 
 | 环节 | 典型频率量级（因平台而异） | 在本路线哪一层 |
 |------|--------------------------|--------------|
