@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-09-28
+updated: 2026-09-29
 related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
@@ -25,6 +25,7 @@ related:
   - ./paper-ros2smolvla.md
   - ./perceptron-isaac-05.md
   - ./rebot-devarm.md
+  - ./carm-lerobot.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../methods/vla.md
   - ../concepts/model-hardware-standard.md
@@ -130,6 +131,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [unitree_lerobot](./unitree-lerobot.md)：Unitree 官方改版，适配 G1 双臂灵巧手采数 / 训练 / 测试；常与 [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md) 组成官方模仿学习闭环（组织导航见 [Unitree](./unitree.md)）
 - [LeTools](./letools.md)：乐聚 Kuavo 官方改版，rosbag 转 LeRobot Dataset v3，统一训 ACT / π / GR00T / LingbotVLA；数据对接 [LET-Base](./let-base-dataset.md) 与 [REAL-I](./icra-2026-real-i.md)
 - [reBot-DevArm](./rebot-devarm.md)：Seeed B601 桌面臂，官方 Wiki 有 LeRobot 入门教程；适合要 >1 kg 负载又想沿用 LeRobot 格式
+- [carm-lerobot](./carm-lerobot.md)：视源 CARM A3 官方 fork（LeRobot 0.5.1），网页手柄 `a3_leader` 采数，支持 ACT 至 π0.5 / WALL-OSS 真机推理；依赖 `pip install carm`
 - [ROS2SmolVLA](./paper-ros2smolvla.md)：用 Docker 把 `lerobot-record` / `lerobot-train` 接到 ROS 2 Jazzy + UR10e 工业臂；权重与 349 条 episode 数据已开源
 - [ROBOTIS](./robotis.md)：[Cyclo Intelligence](./cyclo-intelligence.md) 把 LeRobot 作为 Docker 策略容器里的推理后端（ACT / SmolVLA / π₀），由行为树管理加载与停止；[`lerobot_robot_ros2_zenoh`](https://github.com/ROBOTIS-GIT/lerobot_robot_ros2_zenoh) 插件可在本机不装 ROS 2 的情况下经 Zenoh 接关节话题
 
@@ -190,6 +192,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [Cyclo Intelligence 仓库归档](../../sources/repos/cyclo_intelligence.md) — LeRobot 作为 Cyclo 推理后端之一
 - [Evo-1 论文与仓库归档](../../sources/papers/evo1_arxiv_2511_04555.md) — 官方 LeRobot 内置轻量 VLA 策略（SO100/SO101）
 - [reBot-DevArm 仓库归档](../../sources/repos/rebot-devarm.md) — Seeed 开源桌面臂官方 LeRobot 教程对接
+- [carm-lerobot 仓库归档](../../sources/repos/carm_lerobot.md) — 视源 CARM A3/D3 LeRobot 改版与 SDK 交叉
 - [ROS2SmolVLA Docker 仓库归档](../../sources/repos/ros2smolvla_docker.md) — `lerobot-record` / `lerobot-train` 接 UR 真机的示例命令
 - [Model Hardware Standard 公告归档](../../sources/sites/anthropic-model-hardware-standard.md) — LeRobot 被列为早期 MHS 采用方（研究预览）
 - [LeHome / Learning to Fold](../../sources/repos/lehome_solution.md) — SO-ARM101 竞赛全链路与 `lehome_sim` / `lehome_real` 权重

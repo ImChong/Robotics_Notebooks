@@ -491,6 +491,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [All Hands Up](../entities/all-hands-up.md) — RLWRLD 腕装灵巧手 URDF 画廊与仿真 Kapandji 对照
 - [ARTiS](../entities/paper-artis-gripper.md) — 拆解工具夹爪（arXiv:2609.03362）
 - [reBot-DevArm（Seeed B601）](../entities/rebot-devarm.md) — 全栈开源桌面六轴臂（DM/RS）；LeRobot / ROS2 / Pinocchio 已适配
+- [carm-lerobot（CVTE CARM A3）](../entities/carm-lerobot.md) — 视源协作臂官方 LeRobot 0.5.1 fork；ACT/VLA 真机闭环
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 
 **数据集与基准**
