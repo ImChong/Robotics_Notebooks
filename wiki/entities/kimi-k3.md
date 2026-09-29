@@ -12,6 +12,7 @@ related:
   - ../concepts/ai-auto-research.md
   - ./llada2-2-flash.md
   - ./deepseek-harness.md
+  - ./iquest-q1.md
   - ./paper-freetoken.md
 sources:
   - ../../sources/blogs/kimi_k3_tech_blog.md
@@ -187,6 +188,7 @@ sequenceDiagram
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化阶段论
 - [LLaDA2.2-flash](./llada2-2-flash.md) — 开放权重 dLLM / 高吞吐 agent 后端对照（Apache-2.0）
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方 coding agent 宿主（可挂自定义 OpenAI-compatible 端点）
+- [IQuest-Q1](./iquest-q1.md) — CLI 专精开放 MoE（Claude Code / Codex harness）
 
 ## 推荐继续阅读
 

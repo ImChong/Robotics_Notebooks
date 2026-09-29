@@ -18,6 +18,7 @@ related:
   - ./sciencediscovery.md
   - ./openjiuwen.md
   - ./kimi-k3.md
+  - ./iquest-q1.md
   - ./paper-freetoken.md
   - ./cli-anything.md
   - ./paper-harnessbank.md

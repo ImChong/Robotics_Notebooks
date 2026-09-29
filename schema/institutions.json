@@ -502,6 +502,15 @@
         "insta360-research"
       ]
     },
+    "iquest": {
+      "label": "至知创新研究院（IQuest Research）",
+      "aliases": [
+        "iquest",
+        "iquestlab",
+        "iquest-lab",
+        "iquest-research"
+      ]
+    },
     "toyota-research": {
       "label": "丰田研究院（TRI）",
       "aliases": [
