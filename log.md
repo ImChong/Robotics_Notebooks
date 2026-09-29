@@ -1,3 +1,5 @@
+## [2026-09-29] structural | roadmap/motion-control.md — 主路线扩展为运动控制 → Physical AI 全栈：新增全栈视图/Core Path/Signal vs Noise，L2/L3/L5/L6 补充，新增 L8–L12（Transformer、动作生成、VLA、世界模型、部署）
+
 ## [2026-09-29] ingest | Generate Track Improve（arXiv:2609.31577，Caltech AMBER）：双层感知 flow matching+CLF-RL 与 AWR 生成器微调；项目页代码待发布；新建 paper-generate-track-improve 实体与 sources 归档
 
 ## [2026-09-29] ingest | DM0.5 四次核查：接入 Dexbotic 工具栈归档，更新 dexmal-dm05 双栈复现与 OpenDM 对照
