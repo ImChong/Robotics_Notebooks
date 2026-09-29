@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | MIT CDFG Living Survey（3D/CAD/机器人 frontier agent）：sources 三件套 + overview 阅读坐标；RoboDojo 互链
+
 ## [2026-09-29] ingest | SAM 3.1（Object Multiplex）：Release Notes + HF facebook/sam3.1；升级 paper-sam3 与 sources 归档；开源已核
 
 ## [2026-09-29] structural | 公司路线新增励元智能 Reward AI（rewardai.com/blog，DexCap → OM-1 节点）并同步对照页
