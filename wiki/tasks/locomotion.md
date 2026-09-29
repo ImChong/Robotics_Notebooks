@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-29
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -38,6 +38,7 @@ related:
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
   - ../concepts/wheel-legged-quadruped.md
+  - ../entities/paper-locovlm.md
   - ../concepts/wheel-legged-biped.md
   - ../entities/tita-rl.md
   - ../entities/wheel-legged-genesis.md
