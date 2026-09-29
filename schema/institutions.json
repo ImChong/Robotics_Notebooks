@@ -1602,6 +1602,14 @@
         "currentworld"
       ]
     },
+    "cvte": {
+      "label": "视源股份（CVTE / MAXHUB）",
+      "aliases": [
+        "cvte",
+        "cvte-robotics",
+        "maxhub"
+      ]
+    },
     "symbiosis-robotics": {
       "label": "共生机器人（Symbiosis Robotics）",
       "aliases": [

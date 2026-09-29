@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-09-20
+updated: 2026-09-29
 sources:
   - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
@@ -318,6 +318,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — 操作员侧可穿戴尺寸+刚度力触觉渲染（arXiv:2509.05433）
 - [Ego-OSCAR / Stereo-550（论文实体）](../entities/paper-ego-oscar.md) — 观测-only 开源硬件立体+IMU 头戴（~USD 200；非 teleop/EE 通道）
 - [reBot-DevArm（Seeed B601）](../entities/rebot-devarm.md) — 开源桌面臂；Star Arm 102 Leader + LeRobot / ROS2 遥操作采数路径
+- [carm-lerobot（CVTE CARM A3）](../entities/carm-lerobot.md) — 网页手柄 `a3_leader` + `a3_follower` LeRobot 采数（无需 ROS Leader 臂）
 - [Transformer Transformer（论文实体）](../entities/paper-transformer-transformer.md) — UMI 示范 → 运动条件机体共设计（ALOHA/双臂）
 
 ### 全身人形系统与低层执行
