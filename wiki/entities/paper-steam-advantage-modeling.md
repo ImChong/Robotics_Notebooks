@@ -172,6 +172,7 @@ flowchart LR
 - [DEED](./paper-deed.md) — G1-Edu + GR00T N1.6 零售补货：Data-Efficient + 文本 advantage 前缀 RECAP（未开源）。
 - [Manipulation](../tasks/manipulation.md) — 长程桌面/零售操作任务背景。
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md) — RLinf 系统定位。
+- [RLinf-USER](./paper-rlinf-user.md) — 同仓 **真机在线** 系统（HAL、异步、持久 buffer）；与 STEAM **离线** advantage 分工不同。
 
 ## 推荐继续阅读
 

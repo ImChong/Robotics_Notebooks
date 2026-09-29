@@ -12,6 +12,7 @@ related:
   - ./paper-harness-vla.md
   - ./genie-sim-3.md
   - ./lerobot.md
+  - ./paper-rlinf-user.md
 sources:
   - ../../sources/repos/rlark.md
   - ../../sources/sites/rlark-readthedocs.md
@@ -40,7 +41,7 @@ summary: "RLark（RLinf/RLark，2026-09 开源）是跨集群具身智能云原�
 
 ## 为什么重要
 
-- **与 RLinf 分工清晰：** [RLinf](https://github.com/RLinf/RLinf) 解决 **具身 RL 训练系统**（流水线、STEAM/RECAP、OpenPI 对接）；RLark 解决 **资源在哪跑、如何跨站点组网、如何声明分布式 Job**——选型时勿把二者混为「一个 pip install」。
+- **与 RLinf 分工清晰：** [RLinf](https://github.com/RLinf/RLinf) 解决 **具身 RL 训练系统**（流水线、STEAM/RECAP、OpenPI 对接）；RLark 解决 **资源在哪跑、如何跨站点组网、如何声明分布式 Job**——选型时勿把二者混为「一个 pip install」。真机 **在线 runtime** 另见 [RLinf-USER](./paper-rlinf-user.md)（Ray + EasyTier；与 RLark 的 kcp/CRD 路径不同）。
 - **云–边一体抽象：** 同一平台描述 **GPU 集群训练** 与 **边缘 embodied-runtime**（ROS、相机 gRPC），契合「仿真/训练在云上、闭环在边上」的常见落地形态。
 - **跨集群 Pod 直连：** 基于 **TUN + gVisor netstack + SSH 隧道** 的虚拟网络，文档强调 **无需 NAT 打洞** 的 Pod–Pod 通信——云 GPU 与边缘设备可直接对话，降低多数据中心 + 真机混合拓扑的集成成本。
 - **可验证 Quick Start：** [Read the Docs Quick Start](https://rlark.readthedocs.io/en/latest/quickstart/) 提供 **一键 CLI**（控制面 + 双 kind 数据面 + 连通性验证）与 **Web UI** 建集群/Domain/Job 流程，适合 POC 前阅读 [管理员指南](https://rlark.readthedocs.io/en/latest/admin-guide/) 中的网络与安全章节。
