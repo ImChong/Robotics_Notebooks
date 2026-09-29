@@ -38,6 +38,7 @@ related:
   - ../entities/vla-sota-leaderboard.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/paper-demomimic.md
+  - ../entities/paper-roboaug.md
   - ../entities/paper-embodiedskills.md
   - ../methods/regrind-retargeting-guided-rl.md
   - ../entities/paper-dexverse.md
