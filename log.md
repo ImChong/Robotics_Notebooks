@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | wiki/entities/robbyant.md — 新增蚂蚁灵波 Robbyant 公司实体（Ant Group → Robbyant → LingBot），按 Physical AI 栈串起 Vision / Depth / Map / Video / World / VA / VLA；新增 sources/sites/robbyant_github.md、antgroup_robbyant.md、technology-robbyant-com.md；开源结论：除 VA 2.0（仅技术报告、权重未确认）外均已开源；公司路线新增 robbyant，首页计数改为 14 家
+
 ## [2026-09-29] ingest | 用户指定 cvte-robotics/carm-lerobot；已开源（Apache-2.0 + carm SDK）；实体 carm-lerobot + 组织地图；自动合并 PR
 
 ## [2026-09-29] ingest | Roboflow Sports：归档篮球球场关键点与球衣 OCR Universe 集，刷新 roboflow/sports 仓库与实体页（2026-09-29 GitHub/Universe 核查）

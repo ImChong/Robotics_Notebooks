@@ -4353,6 +4353,7 @@
 - [RLDX-1](wiki/entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [RLE-Bench（Coding Agent 机器人学习工程资格考）](wiki/entities/rle-bench.md) — RLE-Bench**（*A Qualifying Exam for Coding Agents as Robot Learning Engineers*，[项目页](https://rle-be `📅unknown` `[entity_page]`
 - [RoamerX（智身四足导航栈）](wiki/entities/roamerx-navigation.md) — RoamerX**（社区开源版 **RoamerX Lite**）是智身科技（GENISOM AI）面向四足机器人的 **ROS 2 导航栈**：在 **Nav2** 基础上增强 **SLAM、全 `📅unknown` `[entity_page]`
+- [Robbyant（蚂蚁灵波）](wiki/entities/robbyant.md) — Robbyant（蚂蚁灵波）** 是 **蚂蚁集团（Ant Group）** 旗下的具身智能公司，重点研发面向物理世界的感知、空间理解、世界模型、VLA、World-Action Model 和跨 `📅unknown` `[entity_page]`
 - [RoboBench（MLLM 具身大脑综合评测）](wiki/entities/robo-bench.md) — RoboBench**（*A Comprehensive Evaluation Benchmark for Multimodal Large Language Models as Embodied `📅unknown` `[entity_page]`
 - [RoboOrchardLab](wiki/entities/robo-orchard-lab.md) — RoboOrchardLab** 是 **Horizon Robotics（地平线）** 在 **RoboOrchard** 大项目下发布的 **Python 具身 AI 训练与评测框架**：核心 `📅unknown` `[entity_page]`
 - [RoboCasa / RoboCasa365](wiki/entities/robocasa.md) — RoboCasa** 是德州大学奥斯汀分校（UT Austin）团队发布的大规模 **厨房日常任务仿真框架**（MuJoCo + [robosuite](https://github.com/AR `📅unknown` `[entity_page]`
