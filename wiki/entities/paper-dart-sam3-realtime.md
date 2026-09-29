@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, open-vocabulary, detection, sam3, tensorrt, real-time, computer-vision, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-29
 arxiv: "2603.11441"
 code: https://github.com/mkturkcan/DART
 related:
@@ -113,7 +113,7 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| 与 SAM3 分工 | SAM3：概念分割/掩码；DART：**多类框检测实时化**，权重同源 |
+| 与 SAM3 分工 | SAM3/3.1：概念分割/掩码（3.1 **Object Multiplex** 偏视频多目标）；DART：**多类框检测实时化**，权重同源 |
 | 机载 | Orin 优先 **DARTF** INT8；工作站用 TRT FP16 + ViT-H 或 Pruned-16 |
 | 类别数 | 提示越多 decoder 越重，但骨干仍 O(1)；按任务裁剪提示集 |
 | 建图 | 检测框仍需深度/LiDAR 提升；见 [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md) |
