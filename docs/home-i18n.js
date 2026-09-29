@@ -7,12 +7,10 @@
   try { if (localStorage.getItem(storageKey) === 'en') language = 'en'; } catch (_) { /* optional */ }
   var copy = {
     'Robotics Notebooks | 机器人技术栈地图': 'Robotics Notebooks | Robotics Knowledge Map',
-    '🗺️ Robotics Notebooks | 机器人技术栈地图': '🗺️ Robotics Notebooks | Robotics Knowledge Map',
-    '机器人技术栈地图首页': 'Robotics Knowledge Map home',
     '切换白天黑夜模式': 'Toggle light / dark mode',
     '持续更新的机器人技术栈地图': 'An evolving robotics knowledge map',
-    '面向人形机器人': 'Humanoid robotics', '运动控制的知识入口': 'humanoid motion control',
-    '从运动控制到': 'From motion control to',
+    '面向人形机器人': 'For humanoid robots', '运动控制的知识入口': 'humanoid motion control',
+    '从运动控制到': 'From motion control to ', '物理智能': 'Physical AI',
     '先选一个入口，沿': 'Choose a starting point and explore',
     '路线、图谱、模块、论文': 'roadmaps, graphs, modules and papers', '逐步深入。': 'step by step.',
     '知识库当前规模': 'Knowledge base size', '知识节点': 'Knowledge nodes',
@@ -24,13 +22,14 @@
     '定位到公司路线入口卡': 'Jump to company roadmaps',
     '入口': 'Starting points', '从零开始': 'Getting started',
     '建立运动控制全局认识': 'Build an overview of motion control',
+    '一条主线打通具身智能全栈': 'One roadmap through the full embodied AI stack',
     '进入主路线 →': 'Follow the main roadmap →', '项目查询': 'Find a project',
     '查找框架、论文与机器人平台': 'Find frameworks, papers and robot platforms',
     '搜索知识库 →': 'Search the knowledge base →', '知识图谱': 'Knowledge graph',
     '俯瞰节点与连接全貌': 'Explore the nodes and their connections',
     '查看图谱预览 →': 'Preview the graph →', '更多路线': 'More roadmaps',
     '按研究方向进入纵深路线': 'Explore roadmaps by research area',
-    '按公司查看具身基础模型与人形技术演进': 'Explore embodied models and humanoid advances by company',
+    '按公司查看具身基础模型与人形技术演进': 'Explore embodied AI by company',
     '收起纵深路线 ↑': 'Collapse roadmaps ↑', '收起公司列表 ↑': 'Collapse companies ↑',
     '搜索知识库': 'Search the knowledge base',
     '搜索概念、方法或任务：MPC、PPO、Diffusion Policy…': 'Search concepts, methods or tasks: MPC, PPO, Diffusion Policy…',
@@ -69,7 +68,8 @@
     '赞助我': 'Support my work', '微信扫一扫，赞助支持作者 ☕': 'Scan with WeChat to support the author ☕',
     '微信收款码': 'WeChat payment QR code', '关闭': 'Close',
     '新增': 'Added', '维护': 'Updated', '回到顶部': 'Back to top',
-    '章节导航': 'Section navigation', '打开或关闭章节导航': 'Toggle section navigation'
+    '章节导航': 'Section navigation', '打开或关闭章节导航': 'Toggle section navigation',
+    '刘冲': 'Chong Liu', '2026 · 机器人技术栈地图': '2026 · Robotics Notebooks'
   };
   var description = '面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。';
   copy[description] = 'A knowledge map for humanoid robotics and Physical AI: motion control, reinforcement learning, imitation learning, Sim2Real, VLA, world models and deployment.';
