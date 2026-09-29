@@ -89,7 +89,7 @@ flowchart TB
 sequenceDiagram
   autonumber
   actor User as 玩家
-  participant Loop as 主循环 rAF
+  participant MainLoop as 主循环 rAF
   participant Player as player / boat
   participant Game as game 钓具与 UI
   participant Ocean as ocean 仿真与渲染
@@ -99,8 +99,8 @@ sequenceDiagram
   User->>Player: WASD / 鼠标 / E 交互
   Player->>Game: 竿状态 / 船 helm / 交易
   Game->>Game: 咬口判定 / 张力条 / localStorage
-  Loop->>Ocean: 更新 FFT + swash + 碎浪
-  Loop->>Engine: 提交场景 + WGSL passes
+  MainLoop->>Ocean: 更新 FFT + swash + 碎浪
+  MainLoop->>Engine: 提交场景 + WGSL passes
   Engine-->>User: WebGPU 呈现
   Game->>Audio: 钓具 / 浪 / 引擎 positional 事件
 ```
