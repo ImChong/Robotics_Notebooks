@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | Morphometric Imitation 三角链接再核查：补 HF papers/2609.28660；GitHub 仍 Code soon
+
 ## [2026-09-29] structural | roadmap/motion-control.md — 可选纵深表补齐扩散与流匹配策略（depth-robotics-diffusion-dit-flow），计数改为二十七条
 
 ## [2026-09-29] ingest | TADreamer（arXiv:2609.19824，ZJU）零样本 TABR 视频想象语言导航 + 点云标定；未列官方代码
