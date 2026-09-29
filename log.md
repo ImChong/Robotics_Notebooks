@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | 用户指定 cvte-robotics/carm-lerobot；已开源（Apache-2.0 + carm SDK）；实体 carm-lerobot + 组织地图；自动合并 PR
+
 ## [2026-09-29] ingest | Roboflow Sports：归档篮球球场关键点与球衣 OCR Universe 集，刷新 roboflow/sports 仓库与实体页（2026-09-29 GitHub/Universe 核查）
 
 ## [2026-09-29] structural | roadmap/depth-*.md — 纵深页主路线链接文字统一为「运动控制 → Physical AI 全栈成长路线」；README 适合谁补 Physical AI 范围
