@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | Zeva-Ego（2609.24411）Ego mid-training + ICCL；feature/zeva_ego 已开源；交叉 Zeva/π0.5
+
 ## [2026-09-29] ingest | IQuest-Q1：接入 HF/GitHub/项目页，开放 320B MoE CLI agent 权重与 SGLang/vLLM 部署文档；新建实体页与机构 iquest。
 
 ## [2026-09-29] ingest | sources/blogs/wechat_ai_tech_review_phybot_badminton_iros_2026_2026-09-29.md — 动易 PHYBOT IROS 2026 羽毛球分层口述；补全技能选择/联赛 MARL/DQ-Flow；升级 paper-notebook-humanoid-whole-body-badminton；自动合并 PR
