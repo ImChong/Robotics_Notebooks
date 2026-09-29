@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-09-28
+updated: 2026-09-29
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -13,7 +13,7 @@ related:
 sources:
   - ../../sources/sites/robot-foundation-model-company-research-2026.md
   - ../../sources/sites/deltai-com.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 13 家团队的公开技术路线与复现边界。"
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 14 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -91,6 +91,7 @@ flowchart TB
 | Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
 | [Light Origins 亮源新创](../entities/light-o1.md) | ○ |  | ● | Light-O1、REACT、Parkour、Nav |
 | [Delta Intelligence 德塔智能](../entities/delta-0-humanoid-foundation-model.md) | ● | ● | ○ | Δ₀（潜空间 world–action brain + 69-DoF 全身控制器） |
+| [Robbyant 蚂蚁灵波](../entities/robbyant.md) | ● |  |  | LingBot-VLA 2.0、LingBot-VA、LingBot-World（另有 Vision / Depth / Map / Video 感知与预训练层） |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）。
 
@@ -130,8 +131,9 @@ NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O
 | Google DeepMind | ❓ | ❓ | ❓ | 官方页面区分论文/演示与可获得模型 |
 | Galbot | ❓ | ❓ | ❓ | 项目级源码/权重须从各发布页核对 |
 | Delta Intelligence | ❌ | ❌ | ❌ | [Δ₀ 博客](https://deltai.com/en/blog/delta-0) 未列 GitHub / HF / 论文链接（[核查](../../sources/sites/deltai-com.md)） |
+| Robbyant | ✅ | 🟡 | 🟡 | [github.com/robbyant](https://github.com/robbyant) 9 个模型仓；VA 2.0 仅技术报告、权重未确认；公开 LingBot-Depth 300 万 RGB-D 与 GM-100，VLA 预训练池未公开（[核查](../../sources/sites/robbyant_github.md)） |
 
-> ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表按截至 2026-09-28 的收录资料整理，会过期。
+> ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表按截至 2026-09-29 的收录资料整理，会过期。
 
 ## 建议阅读顺序
 
@@ -174,6 +176,7 @@ flowchart LR
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
 - [Skild AI 官方站归档](../../sources/sites/skild-ai.md)
 - [Delta Intelligence 官网归档与开源核查](../../sources/sites/deltai-com.md)
+- [Robbyant GitHub / HF 组织开源核查](../../sources/sites/robbyant_github.md)
 - [The Physical Intelligence Layer](../entities/pi-physical-intelligence-layer.md) — 伙伴现场部署，不是新模型发布
 
 ## 推荐继续阅读

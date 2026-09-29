@@ -363,6 +363,8 @@ flowchart TB
 
 **文献实例（生数产品线）**：[Motubrain](../entities/paper-motubrain.md) 在 Motus 的 UniDiffuser video–action 上做三流 MoT 与真机工程，RoboTwin 2.0 报 **95.8 / 96.1**；异步 chunk 怎么切见同团队 [WAM 实时异步部署](../entities/paper-wam-realtime-async.md)（仓均为占位）。
 
+**产品线实例（蚂蚁灵波 · Video-Action）**：[LingBot-VA](../entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md)（arXiv:2601.21998）用 **MoT 共享潜空间** 交错建模视频与动作，配 **闭环 rollout**（真实观测回灌）与 **异步推理**；VA 2.0 项目页再加 semantic visual-action tokenizer、因果 DiT 与视频流 MoE（仅公开技术报告）。同公司从感知到 VLA 的全栈见 [Robbyant（蚂蚁灵波）](../entities/robbyant.md)。
+
 ### 相邻与横切：不完全算 Joint WAM 的对照
 
 边界样本与策展地图，用来校准前面几组的归类。
@@ -527,6 +529,7 @@ flowchart TB
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [Motubrain](../entities/paper-motubrain.md) — 生数 Joint WAM（RoboTwin 95.8/96.1；仓占位）
 - [DSWAM（双系统 WAM 执行）](../entities/paper-dswam-dual-system-wam.md)
+- [Robbyant（蚂蚁灵波）](../entities/robbyant.md) — LingBot-VA / World / VLA 同公司全栈（VA 1.0 权重开源，VA 2.0 仅技术报告）
 
 ### 边界与对照：不完全算 WAM
 

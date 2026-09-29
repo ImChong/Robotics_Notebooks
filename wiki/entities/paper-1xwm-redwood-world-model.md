@@ -159,6 +159,7 @@ sequenceDiagram
 - [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 - [1X Technologies](./1x-technologies.md)
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-World：开源动作条件交互世界模型对照
 - [Redwood（Architect Labs AI 加速器）](./paper-redwood-architectlabs-accelerator.md) — 同名不同实体，推理硅 vs 本页 WM
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)

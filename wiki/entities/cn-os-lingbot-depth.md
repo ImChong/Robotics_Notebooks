@@ -57,6 +57,7 @@ institutions:
 
 ## 关联页面
 
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — 公司页：LingBot-Depth（masked depth modeling）与 VLA 深度蒸馏的关系
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

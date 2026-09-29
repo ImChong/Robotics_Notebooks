@@ -523,17 +523,19 @@ sources:
 
 #### 蚂蚁灵波（9）
 
+公司页：[Robbyant（蚂蚁灵波）](../entities/robbyant.md)
+
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
 | LingBot-VLA 2.0 | VLA/操作模型 | [LingBot-VLA 2.0](../entities/lingbot-vla-v2.md) |
 | LingBot-VA | 世界模型 | [LingBot-VA](../entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) |
-| LingBot-World 2.0 | 世界模型 | [LingBot-World 2.0](../entities/botworld.md) |
+| LingBot-World 2.0 | 世界模型 | [LingBot-World 2.0](../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md) |
 | LingBot-Map | 评测 | [LingBot-Map](../entities/paper-lingbot-map.md) |
 | LingBot-Depth | 工程与工具 | [LingBot-Depth](../entities/cn-os-lingbot-depth.md) |
 | LingBot-Vision | 评测 | [LingBot-Vision](../entities/cn-os-lingbot-vision.md) |
 | LingBot-Video | 世界模型 | [LingBot-Video](../entities/cn-os-lingbot-video.md) |
 | LingBot-VLA 1.0 | VLA/操作模型 | [LingBot-VLA 1.0](../entities/lingbot-vla.md) |
-| LingBot-World 1.0 | 世界模型 | [LingBot-World 1.0](../entities/botworld.md) |
+| LingBot-World 1.0 | 世界模型 | [LingBot-World 1.0](../entities/lingbot-world.md) |
 
 #### 蚂蚁集团（1）
 

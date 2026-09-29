@@ -92,6 +92,7 @@ flowchart LR
 - **概念：** [Robot In-Context Learning](../concepts/robot-in-context-learning.md) — Light REACT 的部署段 ICL 读法
 - **任务：** [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — Light-Loco-Parkour 跑酷线
 - **盘点：** [国内具身开源 424 覆盖](../queries/china-domestic-opensource-424-coverage.md) — 亮源新创条目
+- **国内公司对照：** [Robbyant（蚂蚁灵波）](./robbyant.md) — 感知→世界模型→VLA 的 LingBot 模型全栈路线
 
 ## 推荐继续阅读
 
