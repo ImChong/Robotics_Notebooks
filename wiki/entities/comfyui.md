@@ -19,6 +19,7 @@ related:
   - ../concepts/diffusion-model.md
   - ../methods/generative-data-augmentation.md
   - ./paper-wan-video.md
+  - ./minimax-h3.md
   - ../concepts/text-to-cad.md
   - ./img2threejs.md
   - ./gpufree.md
