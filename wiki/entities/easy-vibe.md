@@ -20,7 +20,7 @@ related:
   - ./openclaw.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
-  - ../entities/painode-125-langchain.md
+  - ../entities/langchain.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/easy-vibe.md
@@ -80,7 +80,7 @@ flowchart TB
 |------|----------|
 | 第一次 vibe coding | [AI 能力体感（游戏）](https://datawhalechina.github.io/easy-vibe/en/stage-1/ai-capabilities-through-games/) |
 | 维护 markdown 知识库 | Stage 1 产品思维 + 本站 [ingest](../../schema/ingest-workflow.md)；Agent 读 [`llms.txt`](https://github.com/datawhalechina/easy-vibe/blob/main/llms.txt) |
-| 接 MCP / Claude Code | [Stage 3 MCP 指南](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/mcp/) → 对照 [OpenClaw](openclaw.md) / [LangChain](painode-125-langchain.md) |
+| 接 MCP / Claude Code | [Stage 3 MCP 指南](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/mcp/) → 对照 [OpenClaw](openclaw.md) / [LangChain](langchain.md) |
 | 学 RAG 流水线 | [RAG 介绍](https://datawhalechina.github.io/easy-vibe/en/stage-3/ai-advanced/rag-introduction/) → [RAG 概念页](../concepts/retrieval-augmented-generation.md) |
 | 本地预览教程站 | 克隆仓后按 README **Run Locally**（npm）；License **CC BY-NC-SA 4.0** |
 | OpenClaw 入门 | 官方链 [hello-claw](https://github.com/datawhalechina/hello-claw) → [OpenClaw 实体页](openclaw.md) |
@@ -98,7 +98,7 @@ flowchart TB
 - [Retrieval-Augmented Generation（RAG）](../concepts/retrieval-augmented-generation.md) — 理论概念 + Easy-Vibe 交互演示
 - [LearnPrompt](learnprompt.md) — 中文 Agent/Skill 实战对照
 - [OpenClaw](openclaw.md) — hello-claw 侧链
-- [LangChain](painode-125-langchain.md) — Stage 3 RAG 生态常提及框架
+- [LangChain](langchain.md) — Stage 3 RAG 生态常提及框架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — llms.txt 导航同构
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
