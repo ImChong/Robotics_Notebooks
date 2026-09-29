@@ -1910,6 +1910,7 @@
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [LocoFormer](wiki/entities/paper-locoformer.md) — LocoFormer**（LocoFormer: Generalist Locomotion via Long-Context Adaptation）在 [Light Origins · Ligh `📅unknown` `[entity_page]`
+- [LocoVLM](wiki/entities/paper-locovlm.md) — LocoVLM**（*Grounding Vision and Language for Adapting Versatile Legged Locomotion Policies*，[arXiv `📅unknown` `[entity_page]`
 - [Look Before You Leap（LBYL）](wiki/entities/paper-look-before-you-leap.md) — Look Before You Leap（LBYL）**（arXiv:2311.17842）收录于 Lumina [Embo `📅unknown` `[entity_page]`
 - [LooperMuscle：结构化 MoE 加速人形全身跟踪](wiki/entities/paper-loopermuscle.md) — LooperMuscle**（*LooperMuscle: Fast and Stable Learning of Humanoid Whole-Body Tracking via Structu `📅unknown` `[entity_page]`
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`
