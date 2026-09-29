@@ -17,9 +17,10 @@
 | 项 | 结论（截至 2026-09-24） |
 |----|-------------------------|
 | 博客页 | [pd-perry.github.io/posts/post-training.html](https://pd-perry.github.io/posts/post-training.html) |
-| EXPO-FT 项目页 | [pd-perry.github.io/expo-ft/](https://pd-perry.github.io/expo-ft/) — 真机视频、Q 可视化、BibTeX（arXiv:2605.25477）；**页内无 GitHub 链接** |
-| Real-Time EXPO-FT | [pd-perry.github.io/real-time-expo-ft/](https://pd-perry.github.io/real-time-expo-ft/) — 同上，**待发布** |
-| 代码 / 权重 | **待发布** — 项目页未列可运行仓库；本库 [Real-Time EXPO-FT](../../wiki/entities/paper-real-time-expo-ft.md) 实体已标待发布 |
+| EXPO（ICLR 2026） | [arXiv:2507.07986](https://arxiv.org/abs/2507.07986) — 代码 [pd-perry/EXPO](https://github.com/pd-perry/EXPO) |
+| EXPO-FT 项目页 | [pd-perry.github.io/expo-ft/](https://pd-perry.github.io/expo-ft/) — GitHub [pd-perry/expo-ft](https://github.com/pd-perry/expo-ft) |
+| Real-Time EXPO-FT | [pd-perry.github.io/real-time-expo-ft/](https://pd-perry.github.io/real-time-expo-ft/) — 与 EXPO-FT **同仓**不同分支 |
+| 代码 / 权重 | **已开源**（2026-09-29 复核）— EXPO-FT 需 clone OpenPI/DROID fork；π 权重按 OpenPI 文档 |
 | 可信度边界 | 观点 + 系统总结文，非 peer-reviewed；EXPO-FT 数字来自 CoRL 2026 论文与项目页 |
 
 ## 核心摘录（归纳，非全文）

@@ -8,9 +8,9 @@
 - **日期：** September 2026
 - **类型：** 研究博客（Stanford CS PhD；DeepMind 合作）
 - **入库日期：** 2026-09-24
-- **关联论文 / 系统：** EXPO、EXPO-FT（[expo-ft 项目页](https://pd-perry.github.io/expo-ft/)）、Real-Time EXPO-FT、QWM
-- **代码：** **待发布** — 博文与 expo-ft 页均未列 GitHub（**2026-09-25** 复核仍无 GitHub 链）
-- **最后复核：** 2026-09-25
+- **关联论文 / 系统：** [EXPO](https://arxiv.org/abs/2507.07986)（[GitHub](https://github.com/pd-perry/EXPO)）、[EXPO-FT](https://arxiv.org/abs/2605.25477)（[GitHub](https://github.com/pd-perry/expo-ft)）、Real-Time EXPO-FT、QWM
+- **代码：** **已开源** — [pd-perry/EXPO](https://github.com/pd-perry/EXPO)、[pd-perry/expo-ft](https://github.com/pd-perry/expo-ft)（**2026-09-29** 复核）
+- **最后复核：** 2026-09-29
 
 ## 页面结构
 

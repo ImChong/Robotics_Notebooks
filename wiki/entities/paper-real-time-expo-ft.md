@@ -11,7 +11,7 @@ tags:
   - manipulation
   - stanford
 status: complete
-updated: 2026-09-20
+updated: 2026-09-29
 arxiv: "2609.18207"
 related:
   - ../concepts/universal-post-training-robotics.md
@@ -28,8 +28,11 @@ sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md
   - ../../sources/papers/real_time_expo_ft_arxiv_2609_18207.md
   - ../../sources/sites/real-time-expo-ft.md
+  - ../../sources/repos/expo-ft.md
+  - ./paper-expo.md
+  - ./paper-expo-ft.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md
-summary: "Real-Time EXPO-FT（arXiv:2609.18207，Stanford）：慢 VLA 提案 chunk + 快 edit policy 按最新观测修正 + Q 选候选；Kinetix 10/10 环境 delayed 设定最优；真机 10 min 在线数据 42%→97%；代码待发布。"
+summary: "Real-Time EXPO-FT（arXiv:2609.18207，Stanford）：慢 VLA 提案 chunk + 快 edit policy 按最新观测修正 + Q 选候选；Kinetix 10/10 环境 delayed 设定最优；真机 10 min 在线数据 42%→97%；代码见 pd-perry/expo-ft 同仓 real-time 分支。"
 ---
 
 # Real-Time EXPO-FT：实时残差 RL 修正 VLA
@@ -65,7 +68,7 @@ summary: "Real-Time EXPO-FT（arXiv:2609.18207，Stanford）：慢 VLA 提案 ch
 | **基座** | EXPO-FT + 大 pretrained VLA |
 | **仿真** | Kinetix：**10/10** 环境 delayed policy 最佳（含 delayed / non-delayed 对照） |
 | **真机任务** | object passing、ball balancing、table soccer kicking、dynamic object picking |
-| **开源** | **待发布** — 项目页 Code 为占位（2026-09-17） |
+| **开源** | **已开源** — 与 EXPO-FT 共用 [pd-perry/expo-ft](https://github.com/pd-perry/expo-ft)（OpenPI/DROID `real-time-expo-ft` 分支；2026-09-29） |
 
 ## 核心原理
 
@@ -103,7 +106,7 @@ flowchart LR
 | RTC 消融 | 项目页分 **w/ RTC** 与 **w/o RTC** 报告 | 动态任务上两者差距大；静态任务差距会被掩盖 |
 | 视频判据 | 演示为 **1× wall-clock** | 非加速剪辑，可作为实时性的粗验证 |
 
-代码 **待发布**（项目页 Code 为 `#` 占位，2026-09-17），edit policy 结构、Q 头与 EXPO-FT 的耦合细节暂不可审计。
+代码已随 [pd-perry/expo-ft](https://github.com/pd-perry/expo-ft) 发布（OpenPI/DROID `real-time-expo-ft` 分支）；仍依赖 fork 与真机栈，复现成本高于纯仿真。
 
 ## 与其他工作对比
 
@@ -147,7 +150,7 @@ flowchart LR
 - **结构可解释：** 慢生成 / 快编辑 / Q 选择职责分离，便于 ablate 与部署替换。
 - **仿真+真机双验证：** Kinetix 全覆盖 + 四动态真机 **42%→97%**。
 - **样本效率高：** 10 分钟级在线数据 — 工程友好。
-- **复现待 code：** 截至入库日 **待发布**。
+- **复现：** 见 [expo-ft.md](../../sources/repos/expo-ft.md) README **Real-Time EXPO-FT** 分支说明。
 
 ## 参考来源
 
