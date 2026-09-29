@@ -1,6 +1,7 @@
 ---
 type: task
 sources:
+  - ../../sources/papers/ultra_arxiv_2603_03279.md
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/locomotion_rl.md
 summary: "ULTRA survey 汇总统一多模态 loco-manipulation 控制器的关键设计，是移动操作前沿路线的综述入口。"
@@ -97,11 +98,13 @@ ULTRA 是一个**统一的多模态控制器**——有动作参考时能精确�
 
 ## 参考来源
 
+- [ultra_arxiv_2603_03279.md](../../sources/papers/ultra_arxiv_2603_03279.md)
+- [ultra-humanoid-github-io.md](../../sources/sites/ultra-humanoid-github-io.md)
 - arXiv: [2603.03279](https://arxiv.org/abs/2603.03279) — ULTRA 原论文
-- 项目主页：[ultra-humanoid.github.io](https://ultra-humanoid.github.io/)
 
 ## 关联页面
 
+- [ULTRA 论文实体页](../entities/paper-notebook-ultra-unified-multimodal-control-for-autonomous.md) — **完整机制、指标与复现路径（优先阅读）**
 - [Locomotion](./locomotion.md) — ULTRA 的运动控制子任务
 - [Loco-Manipulation](./loco-manipulation.md) — ULTRA 解决的核心任务类型
 - [Imitation Learning](../methods/imitation-learning.md) — ULTRA 基于 IL 框架
