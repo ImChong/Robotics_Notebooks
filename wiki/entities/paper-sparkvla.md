@@ -13,6 +13,7 @@ related:
 sources:
   - ../../sources/papers/sparkvla_arxiv_2608_16172.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/sites/sparkvla.md
   - ../../sources/repos/sparkvla.md
 summary: "SparkVLA（arXiv:2608.16172）：层级 VLA 将 Stop 与 action-prefix 统一排序；RoboCerebra 47.12%；GitHub 已开源。"
