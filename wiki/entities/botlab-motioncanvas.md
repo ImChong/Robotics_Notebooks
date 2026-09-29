@@ -4,6 +4,7 @@ tags: [software, simulation, web, onnx, mujoco, unitree, embodied-ai]
 status: complete
 updated: 2026-06-18
 related:
+  - ./tidewater.md
   - ./mujoco.md
   - ./unitree-g1.md
   - ./quadruped-robot.md
@@ -76,6 +77,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) 讨论中，可把本工具视为 **策略侧快速可视化** 的一环，而非系统辨识或域随机化的主战场。
 - 「节点图/动画语言进入策略调试」的工具层定位，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 解释为何同一张画布既能服务角色化人形又能服务通用机器人控制。
 - [BotWorld](./botworld.md) — 资产广场与 BotLab 项目展示入口（`botlab.d-robotics.cc` 亦可从广场跳转）。
+- [Tidewater](./tidewater.md) — 同为浏览器 **WebGPU** 重场景 Demo，但偏实时海洋/大气渲染而非策略–MuJoCo 编排。
 
 ## 推荐继续阅读
 
