@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-29
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -35,6 +35,7 @@ related:
   - ../entities/paper-libero-recover.md
   - ../entities/rle-bench.md
   - ../entities/paper-karma-hand-metric.md
+  - ./frontier-models-3d-cad-robotics-survey.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
@@ -129,6 +130,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW；② 层）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
+- [前沿模型 × 3D/CAD/机器人 Living Survey（MIT CDFG）](./frontier-models-3d-cad-robotics-survey.md) — 345 帖 horizon scan：harness 归因、RoboDojo progress、演示 vs 可复现代码 Tier
 - [RoboLab](../entities/robolab.md) — 120 任务高保真 sim 榜
 - [Manda 开源策略横评](../entities/manda-robotics-open-policy-evaluation.md) — RoboLab-120 五策略 6k episode 行为审计（2026-09）
 - [Inspect Robots](../entities/inspect-robots.md) — 真机优先 EvalLog + Rerun harness（③ 层；MIT）
