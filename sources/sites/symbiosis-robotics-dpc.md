@@ -11,6 +11,7 @@
 - **发表：** August 2026 · SYMBIOSIS RESEARCH
 - **入库日期：** 2026-08-17
 - **一句话说明：** 主张去掉分层感知–控制里的中间运动接口 \(Z_t\)（以冻结 [SONIC](../../wiki/methods/sonic-motion-tracking.md) 解码器为靶），用单一模型把视觉/语言/本体/动作历史直接映射到 G1 可执行关节与手部 PD 目标；配套 Symbiotic Attention 与 DriftDistill 闭环蒸馏；自报统一语料 **15,010 小时**。
+- **公司站复核（2026-09-29）：** 站点根 <https://symbiosis-robotics.com/> 直接呈现 DPC 页，`/research/` 列表返回 403；公开研究仅 DPC 一篇，仍未列代码 / 权重 / 数据链接。
 - **开源状态（2026-08-17 核查）：** **确认未开源。** 页头/页脚/Resources 无 GitHub、Hugging Face、Zenodo 或数据集下载；无 arXiv/PDF 链接；Citation 标注为 *Symbiosis Robotics Blog*。可复现入口仅联系邮箱。
 
 ## 页面公开信息
