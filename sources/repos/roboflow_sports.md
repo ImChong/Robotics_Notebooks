@@ -6,14 +6,14 @@
 - **类型：** repo / computer-vision / sports-analytics / object-detection / keypoint-detection
 - **机构：** 罗博福流（Roboflow）
 - **链接：** <https://github.com/roboflow/sports>
-- **Stars / Forks：** ~5.2k★ / —（2026-07-27 核查）
+- **Stars / Forks：** ~5.4k★ / —（2026-09-29 核查）
 - **许可：** **MIT**（`sports` 分析与可视化代码；依赖 [Supervision](https://github.com/roboflow/supervision) 同为 MIT）
 - **安装：** 尚无独立 PyPI 正式版；`pip install git+https://github.com/roboflow/sports.git`（Python ≥3.8）
 - **项目页：** 无独立 `*.github.io`；以 GitHub README + `examples/soccer/` 为入口
 - **入库日期：** 2026-07-27
 - **一句话说明：** Roboflow 开源的 **体育 CV 工具与足球分析 demo**：可复用的球场配置 / 单应变换 / 球跟踪 / 球队聚类，叠加 YOLOv8 检测与 Supervision 标注，打通「检测 → 跟踪 → 俯视雷达」管线。
 - **为什么值得保留：** 为人形足球 / RoboCup 感知提供 **第三人称广播视角** 对照实现——尤其是 **球场关键点 → 单应 → 俯视坐标** 与小目标球跟踪；与本库 [场线检测](../../wiki/methods/soccer-field-line-detection.md)、[Ultralytics](../../wiki/entities/ultralytics.md) 直接互补。
-- **开源状态（2026-07-27 核查）：** **已开源** — 库代码 + soccer 示例完整可跑；预训练 `.pt` 与样例视频经 `examples/soccer/setup.sh`（`gdown`）从 Google Drive 拉取；Universe 上另有球员/球/球场关键点等数据集。
+- **开源状态（2026-09-29 核查）：** **已开源** — 库代码 + soccer 示例完整可跑；预训练 `.pt` 与样例视频经 `examples/soccer/setup.sh`（`gdown`）从 Google Drive 拉取；Universe 挂 **足球三集** + **篮球球场关键点** + **篮球球衣 OCR**（见下表）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/roboflow-sports.md`](../../wiki/entities/roboflow-sports.md)
 
 ---
@@ -42,7 +42,19 @@
 4. **球员再识别** — 出画再入画、移动机位、外观相似  
 5. **相机标定** — 动态机位下仍要支撑速度/跑动距离等高级统计  
 
-篮球侧另挂球场关键点与球衣号码 OCR 的 Universe 数据集（库代码当前以足球 demo 为主）。
+篮球侧另挂球场关键点与球衣号码 OCR 的 Universe 数据集（库代码当前以足球 demo 为主；**无** `examples/basketball/`）。
+
+---
+
+## Roboflow Universe 数据集（README 表，2026-09-29）
+
+| 运动 / 用途 | Universe 项目 | 本库归档 |
+|-------------|---------------|----------|
+| ⚽ 球员检测 | [football-players-detection-3zvbc](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc) | —（soccer demo 训练 Colab 引用） |
+| ⚽ 球检测 | [football-ball-detection-rejhg](https://universe.roboflow.com/roboflow-jvuqo/football-ball-detection-rejhg) | — |
+| ⚽ 球场关键点 | [football-field-detection-f07vi](https://universe.roboflow.com/roboflow-jvuqo/football-field-detection-f07vi) | — |
+| 🏀 球场关键点 | [basketball-court-detection-2](https://universe.roboflow.com/roboflow-jvuqo/basketball-court-detection-2) | [`roboflow-basketball-court-detection-2.md`](../datasets/roboflow-basketball-court-detection-2.md) |
+| 🏀 球衣号码 OCR | [basketball-jersey-numbers-ocr](https://universe.roboflow.com/roboflow-jvuqo/basketball-jersey-numbers-ocr) | [`roboflow-basketball-jersey-numbers-ocr.md`](../datasets/roboflow-basketball-jersey-numbers-ocr.md) |
 
 ---
 
