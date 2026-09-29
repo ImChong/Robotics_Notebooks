@@ -11,7 +11,8 @@
 - **入库日期：** 2026-07-11
 - **一句话说明：** 大规模具身/智能体 **RL 训练系统**（弹性流水线、自适应通信、调度）；内置 **RECAP** 与 **STEAM** 等 **离线策略优化** 管线，对接 **OpenPI（π₀/π₀.₅）**、**LeRobot** 数据与 **Maniskill/LIBERO** 环境栈。
 - **端侧推理：** <https://github.com/RLinf/APXinf-robo>（[APXInf](../../wiki/entities/apxinf.md) — π₀.₅ on Jetson Thor/Orin，OpenPI 兼容 serve）
-- **沉淀到 wiki：** [STEAM（论文实体）](../../wiki/entities/paper-steam-advantage-modeling.md)、[Harness VLA / RPent](../../wiki/entities/paper-harness-vla.md)、[APXInf](../../wiki/entities/apxinf.md)
+- **跨集群编排：** <https://github.com/RLinf/RLark>（[RLark](../../wiki/entities/rlark.md) — 云–边 Job/Task、kcp 控制面、跨集群 Pod 网络；[文档](https://rlark.readthedocs.io/en/latest/)）
+- **沉淀到 wiki：** [STEAM（论文实体）](../../wiki/entities/paper-steam-advantage-modeling.md)、[Harness VLA / RPent](../../wiki/entities/paper-harness-vla.md)、[APXInf](../../wiki/entities/apxinf.md)、[RLark](../../wiki/entities/rlark.md)
 
 ## 与本仓库知识的关系
 
@@ -20,6 +21,7 @@
 | [VLA 开源复现景观](../../wiki/overview/vla-open-source-repro-landscape-2025.md) | **RLinf** 列为「搭集群 RL 基建」入口；**≠** 单一策略 checkpoint 仓库 |
 | [RPent](rpent.md) | 同生态 **agentic 运行时**（Harness VLA）；依赖本仓 runtime / openpi fork |
 | [APXinf-robo](apxinf-robo.md) | 同生态 **端侧 VLA 推理引擎**（π₀.₅ Thor/Orin；OpenPI websocket） |
+| [RLark](rlark.md) | 同生态 **跨集群云原生编排**（GPU 训练 Job + 边缘 embodied-runtime；≠ 本仓训练脚本） |
 | [STEAM](../../wiki/entities/paper-steam-advantage-modeling.md) | 论文官方实现：**三阶段 offline pipeline**（critic SFT → ensemble advantage → CFG policy） |
 | [VLA](../../wiki/methods/vla.md) | π-RL、advantage-conditioned 后训练与 **RECAP/STEAM** 经验学习 |
 | [LeRobot](../../wiki/entities/lerobot.md) | STEAM/RECAP 数据格式：**sft** 与 **rollout** 混合 LeRobot 数据集 |

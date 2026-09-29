@@ -137,6 +137,7 @@ sequenceDiagram
 ## 关联页面
 
 - [RLinf 训练系统](../../sources/repos/rlinf.md) — 上游基建
+- [RLark](./rlark.md) — 同生态跨集群云–边 Job 编排（可选）
 - [Harness VLA / RPent](./paper-harness-vla.md) — 同 RLinf 生态 agentic 运行时
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 默认 benchmark 模型
 - [π₀ Policy](../methods/π0-policy.md) — OpenPI 官方栈
