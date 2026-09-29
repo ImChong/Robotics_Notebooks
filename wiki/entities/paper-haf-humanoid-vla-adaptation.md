@@ -19,6 +19,7 @@ related:
   - ./x-humanoid.md
 sources:
   - ../../sources/papers/haf_arxiv_2608_16837.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/sites/haf-github-io.md
 summary: "HAF（arXiv:2608.16837，北大/北京人形/南开/西交）用 HAF-VLA 三阶段层次 action flow 与 HAF-Steer DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工 2.0/3.0 七项家庭 loco-manipulation；平均归一化任务分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）；截至入库日未开源。"
 ---

@@ -14,6 +14,7 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/rcl_awesome_wam_2608_17209_teach-and-grow-an-agent-centered-archite.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---

@@ -14,6 +14,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/prism_grpo_arxiv_2608_17423.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
 summary: "Prism-GRPO（arXiv:2608.17423，AWS AI）：success+λ·quality 打破 Binary GRPO 同结果退化组；RoboTwin 四任务 rollout 最多 −56%；抑制 shove-cheat；基座 SimpleVLA-RL 已开源、Prism 补丁未单独发布。"
 ---
 

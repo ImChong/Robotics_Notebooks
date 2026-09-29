@@ -30,6 +30,7 @@ related:
   - ./ge-sim-2.md
 sources:
   - ../../sources/papers/tau0_vla_arxiv_2608_16885.md
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/sites/tau0-vla-github-io.md
   - ../../sources/repos/sii_research_tau_0_vla.md
 summary: "τ₀-VLA（arXiv:2608.16885）：记忆增强高层子任务策略 + 世界模型引导 TTC beam search；Qwen3.5+MoT 低层 generalist VLA（40 维、40,115 h）；长程真机分层 45.0% vs 直出 27.5%；低层权重与后训练已开源，高层组件逐步发布。"
