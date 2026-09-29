@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 arxiv: "2607.25895"
 related:
   - ./handumi.md
@@ -17,6 +17,7 @@ related:
   - ../methods/star-vla.md
   - ../concepts/world-action-models.md
   - ../queries/humanoid-training-data-pipeline.md
+  - ./paper-kiwi-kinematic-interface-wild.md
 sources:
   - ../../sources/papers/hifi_umi_arxiv_2607_25895.md
   - ../../sources/sites/hifi-umi-project.md
@@ -166,6 +167,7 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md) — WAM 侧
 - [具身数据金字塔](./paper-data-pyramid-embodied-manipulation.md) — UMI 层定位
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md) — 数据工厂 checklist
+- [KIWI](./paper-kiwi-kinematic-interface-wild.md) — 另一条 UMI 路线：纯 360° 相机、共享后视地图、零额外电子
 
 ## 参考来源
 

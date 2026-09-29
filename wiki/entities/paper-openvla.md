@@ -10,7 +10,7 @@ tags:
   - berkeley
   - max-planck
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 arxiv: "2406.09246"
 code: https://github.com/openvla/openvla
 related:
@@ -22,6 +22,7 @@ related:
   - ../methods/vla.md
   - ./vla-sota-leaderboard.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ./paper-dita-scaling-diffusion-transformer-vla.md
 sources:
   - ../../sources/papers/openvla_arxiv_2406_09246.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -136,6 +137,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 社区多基准摘录榜，核对本页发表时相对位次是否已被后续工作刷新
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [Dita](./paper-dita-scaling-diffusion-transformer-vla.md) — in-context 扩散 Transformer VLA：带噪 action chunk 直接进因果 Transformer，对照 OpenVLA 的离散 bin 动作
 
 ## 推荐继续阅读
 

@@ -63,6 +63,15 @@ flowchart TB
 - openpi 里的 π₀.₅ 权重来自 KI 预训练，微调脚本并没有实现 KI
 - 和 [FAST 论文](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) 的差别是：FAST token 在这里是训练目标，不是部署时的动作接口
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [π₀](./paper-pi0.md) / 联合训练 | 动作专家梯度回传 VLM：训练更慢、语言跟随变差；推理路径与 KI 相同（flow matching） |
+| [FAST / π₀-FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) | 离散 token 既是训练目标也是部署接口，自回归推理慢（单本体 bussing 完成时间约为 KI 两倍）；KI 只把 FAST 当训练目标 |
+| 冻结骨干 | 保住语义但控制表征不适配，衬衫折叠上不可用 |
+| [π₀.₅](./paper-pi05-open-world-vla.md) | KI 是对 π₀.₅ 训练方式的形式化，并给出单阶段配方 |
+
 ## 源码运行时序图
 
 **不适用**（KI 训练环）。openpi 可加载 KI 预训练的 π₀.₅ 并做 flow matching 推理与微调；[openpi#649](https://github.com/Physical-Intelligence/openpi/issues/649) 写明微调目前不会用 FAST 目标去更新骨干，动作专家梯度会进入 VLM。要复现本文的训练，不能直接跑仓库里的 `train.py`。

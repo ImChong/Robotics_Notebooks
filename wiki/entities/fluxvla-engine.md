@@ -70,7 +70,7 @@ summary: "FluxVLA Engine（arXiv:2609.17210，逐际动力）：配置驱动的�
 
 ## 为什么重要
 
-- **第三类 VLA 价值：** 相对「又一个 SOTA 模型」或 [Harness VLA](./paper-harness-vla.md) 式 **冻结策略 + Agent 编排**，FluxVLA 押 **训练栈、评测口径、推理运行时与本体接口** 的标准化——适合要 **切换 backbone、审计实验、推进部署** 的团队。
+- **第三类 VLA 价值：** 相对「又一个刷榜模型」或 [Harness VLA](./paper-harness-vla.md) 式 **冻结策略 + Agent 编排**，FluxVLA 押 **训练栈、评测口径、推理运行时与本体接口** 的标准化——适合要 **切换 backbone、审计实验、推进部署** 的团队。
 - **与 [LeRobot](./lerobot.md) 互补：** LeRobot 偏 **通用数据/策略格式**；FluxVLA 偏 **多 VLA/WAM 后端 + LimX 人形/双臂真机栈** 的统一 `configs/` 与 `scripts/`（二者可交叉，勿混为同一项目）。
 - **部署证据链完整：** README 同时给出 **LIBERO 数字**、**RoboCasa GR1**、**RoboDojo 长程** 与 **真机 Demo GIF**；RTC + Triton + ZMQ 远程 GPU 对齐 [VLA 部署](../queries/vla-deployment-guide.md) 与 [Action Chunking](../methods/action-chunking.md) 主线。
 - **国内开源地图锚点：** arXiv:2609.17210 在本库 **唯一详情节点即本页**（工程实体复用，不另建 `paper-fluxvla-*` 重复页）。

@@ -27,7 +27,7 @@ sources:
   - ../../sources/papers/lightsplat_cvpr_2026_arxiv_2603_24146.md
   - ../../sources/sites/lightsplat.md
   - ../../sources/repos/lightsplat.md
-summary: "LightSplat（UNIST/POSTECH，CVPR 2026）：training-free 开放词汇 3D 理解；2-byte 语义索引 + 簇级 CLIP；FD ~5 s、64× 更低内存；LERF/DL3DV/ScanNet SOTA 口径；官方代码待发布。"
+summary: "LightSplat（UNIST/POSTECH，CVPR 2026）：training-free 开放词汇 3D 理解；2-byte 语义索引 + 簇级 CLIP；FD ~5 s、64× 更低内存；LERF/DL3DV/ScanNet 上作者报告领先；官方代码待发布。"
 ---
 
 # LightSplat
@@ -36,7 +36,7 @@ summary: "LightSplat（UNIST/POSTECH，CVPR 2026）：training-free 开放词汇
 
 ## 一句话定义
 
-**开放词汇 3D 语义不必给每个高斯挂 CLIP 向量：只存 2-byte 掩码索引、在簇上比对语言特征，就能在约五秒内完成特征注入并保持 SOTA 级分割。**
+**开放词汇 3D 语义不必给每个高斯挂 CLIP 向量：只存 2-byte 掩码索引、在簇上比对语言特征，就能在约五秒内完成特征注入，并在 LERF / DL3DV / ScanNet 上报告优于 Dr.Splat、OpenGaussian 的分割精度。**
 
 ## 英文缩写速查
 
@@ -127,7 +127,7 @@ flowchart TB
 
 ## 结论
 
-**LightSplat 把开放词汇 3D 理解的代价从「逐高斯优化语言场」改成「索引 + 簇级 CLIP」，用 ~5 s FD 和 2 B/高斯换 SOTA 级分割，适合批量离线语义标注；代码待发布前只能跟论文与项目页指标选型。**
+**LightSplat 把开放词汇 3D 理解的代价从「逐高斯优化语言场」改成「索引 + 簇级 CLIP」，用 ~5 s FD 和 2 B/高斯换来论文基准上优于 Dr.Splat、OpenGaussian 的分割，适合批量离线语义标注；代码待发布前只能跟论文与项目页指标选型。**
 
 1. **真影响指标：** 去掉迭代 CLIP 优化与稠密高斯特征 → FD **秒级**、内存 **64×** 量级下降（相对 LUDVIG 等）。
 2. **真影响精度：** 3D 掩码过滤 + 几何/语义聚类 → LERF/DL3DV/ScanNet 上 mIoU/mAcc 优于 Dr.Splat、OpenGaussian 等（见上表）。

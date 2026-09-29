@@ -11,6 +11,7 @@ arxiv: "2609.21572"
 related:
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/saber-semantic-affordance-legged_arxiv_2609_21572.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
@@ -73,6 +74,7 @@ summary: "SABER（arXiv:2609.21572）：3D 几何+语义接触代价统一地形
 
 - [locomotion](../tasks/locomotion.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 语义地形感知在感知栈选型中的位置
 
 ## 参考来源
 

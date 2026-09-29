@@ -56,6 +56,15 @@ summary: "RTC（arXiv:2506.07339）：推理期把下一段 flow 动作 chunk �
 - 仿真复现走 Kinetix 仓；真机 π 栈没有同等入口
 - 训练期 RTC 是另一篇论文，咖啡演示不要和 2025-06 的纯推理版混为一谈
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| 时间集成（ACT，见 [Action Chunking](../methods/action-chunking.md)） | 相邻 chunk 做时间平均；本页注入 +100 / +200 ms 延迟后失败 |
+| 同步推理 | 每段 chunk 执行完停下等推理；停顿不在训练分布里 |
+| 训练期 RTC（[arXiv:2512.05964](https://arxiv.org/abs/2512.05964)） | 把延迟写进训练，π\*₀.₆ 咖啡演示用这一版；本页是纯推理期、不改权重 |
+| [WAM 实时异步部署实证](./paper-wam-realtime-async.md) | 在 WAM 上对照 sync / async / blend / infer / train：推理期方案压不住高延迟区，训练期方案综合最好，可与本页纯推理 RTC 对读 |
+
 ## 源码运行时序图
 
 仿真路径对齐 [real-time-chunking-kinetix](https://github.com/Physical-Intelligence/real-time-chunking-kinetix)。真机 inpainting 不在该仓。

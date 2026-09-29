@@ -12,6 +12,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/unipoint-sensor-fusion-locomotion_arxiv_2609_23666.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
@@ -75,6 +76,7 @@ summary: "UniPoint（arXiv:2609.23666）：360° LiDAR + 双深度→机身点�
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [sim2real](../concepts/sim2real.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 多传感器融合地形感知在感知栈选型中的位置
 
 ## 参考来源
 

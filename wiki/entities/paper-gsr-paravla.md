@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, instruction-generalization, libero, sjtu]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 arxiv: "2608.02497"
 code: https://github.com/AutoLab-SAI-SJTU/GSR-ParaVLA
 related:
@@ -13,6 +13,7 @@ related:
   - ./paper-why-action-chunking-improves-bc.md
   - ./paper-reflexvla.md
   - ./paper-ego2robot.md
+  - ./paper-compression-is-routing.md
 sources:
   - ../../sources/papers/gsr_paravla_arxiv_2608_02497.md
   - ../../sources/repos/gsr-paravla.md
@@ -151,6 +152,7 @@ sequenceDiagram
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)
 - [ReflexVLA](./paper-reflexvla.md) — 同校；延迟感知动态任务，不是指令路由
 - [Ego2Robot](./paper-ego2robot.md) — 数据侧补语言/物体扰动
+- [Compression is Routing](./paper-compression-is-routing.md) — 路由脆弱性的另一解：重建误差路由 vs 语义重绑
 
 ## 参考来源
 

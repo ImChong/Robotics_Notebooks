@@ -3,7 +3,7 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-09-18
+updated: 2026-09-28
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
@@ -181,6 +181,7 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — loco-manip 任务定义与数据路线谱系
 - [LUNA](../entities/paper-luna-universal-3d-human-animation.md) — 数字人外观动画层；不能当第 2 层重定向输入
 - [AHOY](../entities/paper-ahoy.md) — 遮挡野外视频 → 3DGS 数字人；同属外观层对照
+- [KIWI](../entities/paper-kiwi-kinematic-interface-wild.md) — 纯相机双臂采数：一次录制导出双手 6-DoF、夹爪开度与 3DGS 场景
 
 ## 一句话记忆
 

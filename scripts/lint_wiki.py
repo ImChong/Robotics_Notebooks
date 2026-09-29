@@ -505,6 +505,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "armature",
     "cartpole-v1",  # Gymnasium 环境注册 id，已由 concepts/cartpole.md 覆盖
+    # cfg：Classifier-Free Guidance 的缩写，机制（有/无条件双预测的线性外推公式、
+    # 「系数不是画质单调旋钮」误区条）已由 concepts/diffusion-model.md 定义，条件流匹配
+    # 侧对照在 concepts/flow-matching-embodied-policy.md。各页命中处均为「采样用 **CFG**」
+    # 式的指称。缩写 slug 与页面 stem 不同名，与 dit / ood 同类。
+    "cfg",
     # computeGeneralizedGravity：Pinocchio 的重力项专用 API 名，本体是已建页的
     # 重力项 $g(q)$——机制与「不要展开拉格朗日、用 $\mathrm{RNEA}(q,0,0)$」的算法
     # 口径已由 concepts/gravity-compensation.md 定义，库入口与 `computeStaticTorque`
@@ -520,6 +525,15 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 与 gae.md；entities/litereality-agent.md 的 `critic` 则是 agent 自查循环里的
     # 工具名，属另一义。与 rl / wbc 同类「已有归属、slug 与页面 stem 不同名」。
     "critic",
+    # cross-attention：机制已由 formalizations/cross-modal-attention.md 的「互注意力
+    # (Cross-Attention)」专节（Q 与 K/V 来自不同模态的公式）+ concepts/multi-head-attention.md
+    # （自/交叉注意力的多头形式）定义；各页命中处均为「动作 token 经 **cross-attention**
+    # 读视觉/语言特征」式的结构指称。与 dit / flow-matching 同类「slug 与页面 stem 不同名」。
+    "cross-attention",
+    # cuda：canonical 节点已是 entities/nvidia-cuda.md（NVIDIA 并行计算平台），各页命中处
+    # 均为「**CUDA** 加速 / CUDA 版本依赖」式的运行环境指称（cuVSLAM、cuRobo、TensorRT、
+    # Genesis）。与 onnx / mcap 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
+    "cuda",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     # dinov2：具体的自监督视觉骨干模型，canonical 节点是 entities/paper-dinov2.md
     # （arXiv:2304.07193 / Meta），选型语境已由 concepts/visual-representation-for-policy.md
@@ -552,6 +566,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "g1",
     "gmr",
     "heracles",
+    # idm：Inverse Dynamics Model 的缩写，已由 concepts/inverse-dynamics-model.md 定义
+    # （「当前 + 未来观测 → 动作」的级联 WAM 动作解码接口）。缩写 slug 与页面 stem
+    # 不同名，与 dit / ood / wam 同类。
+    "idm",
     "isaac-cartpole-v0",  # Isaac Lab 环境注册 id，已由 concepts/cartpole.md 覆盖
     "joint",  # 关节属性 / WAM Joint 族 / 消融条件名三义，已由 URDF + WAM 等页覆盖
     "lcm",  # 已由 concepts/lcm-basics.md 覆盖（缩写 slug 与页面 stem 不同名）
@@ -564,6 +582,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # Docker 录制-训练链、DM05-Lerobot 基座、Perceptron Isaac 的复现路径）。与
     # lerobot-eval 同类工具链 token，本体是已建页的框架，不单建概念页。
     "lerobot-train",
+    # lerobot-record：与 lerobot-train / lerobot-eval 成对的同一 CLI 命令表条目（录示范 +
+    # 加载策略真机回放），已由 entities/lerobot.md 的命令表与流程图覆盖，数据落盘格式归
+    # concepts/lerobot-dataset-v3.md。工具链 token，不单建概念页。
+    "lerobot-record",
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     # mcap：canonical 节点已是 entities/mcap-log-format.md（日志容器格式），与 HDF5 /
@@ -592,6 +614,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "moe",  # 已由 concepts/mixture-of-experts.md 覆盖（缩写 slug 与页面 stem 不同名）
     "mpc",
     "mujoco",
+    # newton：canonical 节点已是 entities/newton-physics.md（Linux Foundation 托管、基于
+    # NVIDIA Warp 的 GPU 物理引擎），各页命中处均为「**Newton** 物理后端」式的仿真器指称；与 mujoco /
+    # mjlab 同类「仿真器归 entities」。牛顿法一义已由 methods 下的
+    # newtons-method.md / gauss-newton.md 覆盖。
+    "newton",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect
     # Robots 的 `Model` = `Policy` + `Embodiment` 概念映射表、Isaac Lab 的观测组键
@@ -608,6 +635,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
     "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
+    # runtime：命中处全是架构分层表的**行标签**（「**Runtime** | FlexComm + 监控」、
+    # lerobot-humanoid 的 Runtime 仓库行、Unreal MCP 的 Runtime 模块类型、LIFT 的推理期
+    # 行），各自指代该系统的运行时层，互不相干；推理运行时本体已由 entities/onnxruntime.md
+    # 等实体页覆盖。与 demo / score 同类「表格字段标签而非可成页机制」。
+    "runtime",
     "sim-to-real",  # 已由 concepts/sim2real.md 覆盖（全称写法与页面 stem 不同名）
     "ros",  # 裸名写法，已由 concepts/ros2-basics.md 覆盖（与 ros2 同一 canonical 页）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
@@ -1233,6 +1265,10 @@ def _check_sources_health(results: dict[str, Any]) -> None:
     git_mtime_map = _build_git_mtime_map()
     seen_stale: set[Path] = set()
     for src_file in sorted(sources_papers_dir.glob("*.md")):
+        # 策展清单总表（*_catalog.md）是索引：一次链接改写会把它链到的数百页一起标陈旧，
+        # 而这些页各自另有逐篇 source 承载真实的陈旧信号；死链仍由上方孤儿检查覆盖。
+        if src_file.stem.endswith("_catalog"):
+            continue
         src_content = src_file.read_text(encoding="utf-8")
         src_mtime = _effective_mtime(src_file, git_mtime_map)
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
@@ -1640,7 +1676,17 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
 
     用于 ingest 工作流自检入口，缺失项作为基线快照写入 lint 报告。
     """
-    method_patterns = ["方法栈", "流程总览", "流程", "核心机制", "核心信息", "pipeline", "方法"]
+    # 「核心原理」是 scaffold_wiki_page.py 论文骨架的方法区块（方法栈 / 流程总览为其 ### 子节）
+    method_patterns = [
+        "方法栈",
+        "流程总览",
+        "流程",
+        "核心原理",
+        "核心机制",
+        "核心信息",
+        "pipeline",
+        "方法",
+    ]
     eval_patterns = ["评测", "实验", "量化", "结果", "benchmark"]
     compare_patterns = ["与其他工作", "与其他页面", "对比", "比较"]
     conclusion_patterns = ["结论"]

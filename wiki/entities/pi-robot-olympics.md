@@ -9,6 +9,7 @@ related:
   - ./paper-pi-human-to-robot.md
   - ../methods/π0-policy.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/pi_robot_olympics_2025-12-22.md
   - ../../sources/sites/pi-website-technical-articles.md
@@ -63,6 +64,7 @@ Moravec 悖论在这里被说成数据问题：认知任务能从网上的解释
 - [人视频迁移](./paper-pi-human-to-robot.md)
 - [π₀](../methods/π0-policy.md)
 - [操作任务](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Robot Olympics 式任务挑战在评测选型中的位置
 
 ## 参考来源
 

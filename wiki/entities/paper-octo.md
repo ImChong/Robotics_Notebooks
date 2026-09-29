@@ -9,7 +9,7 @@ tags:
   - stanford
   - google
 status: complete
-updated: 2026-09-15
+updated: 2026-09-28
 arxiv: "2405.12213"
 code: https://github.com/octo-models/octo
 related:
@@ -17,6 +17,7 @@ related:
   - ./paper-openvla.md
   - ./paper-open-x-embodiment.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ./paper-dita-scaling-diffusion-transformer-vla.md
 sources:
   - ../../sources/papers/octo_arxiv_2405_12213.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -121,6 +122,7 @@ sequenceDiagram
 - [OpenVLA](./paper-openvla.md)
 - [Open X-Embodiment](./paper-open-x-embodiment.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [Dita](./paper-dita-scaling-diffusion-transformer-vla.md) — 同为 OXE 预训练：Octo 单 embedding + 小 MLP 去噪 vs Dita 的 in-context 扩散 Transformer
 
 ## 推荐继续阅读
 

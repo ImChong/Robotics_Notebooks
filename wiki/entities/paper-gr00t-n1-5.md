@@ -132,7 +132,7 @@ sequenceDiagram
 - 学完 [π₀](./paper-pi0.md) 的 **Action Expert + FM** 后，用 N1 → N1.5 看 **人形开源栈** 如何把同一范式产品化。
 - 与 [Dita](./paper-dita-scaling-diffusion-transformer-vla.md) 对照：Dita 是 **学术通才 VLA + DDPM chunk**；GR00T 是 **人形 foundation + FM DiT 头**。
 - 微调与部署勿只读论文页，应跟 [Isaac GR00T](./isaac-gr00t.md) 的 LeRobot 管线与 embodiment tag。
-- N1.5 权重适合作为 **语言跟随 / 少样本** 基线；最新 GA 功能以仓库 **N1.7** 分支为准。
+- N1.5 权重适合作为 **语言跟随 / 少样本** 基线；后续 GA 功能以仓库 **N1.7** 分支为准。
 
 ## 局限与风险
 

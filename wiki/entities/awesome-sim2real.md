@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, reinforcement-learning, domain-randomization, foundation-models, survey, arizona-state]
 status: complete
-updated: 2026-09-18
+updated: 2026-09-28
 related:
   - ../overview/lc-awesome-sim2real-technology-map.md
   - ../overview/hub-sim2real.md

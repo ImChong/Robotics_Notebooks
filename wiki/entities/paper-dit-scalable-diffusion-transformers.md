@@ -34,7 +34,7 @@ summary: "DiT（ICCV 2023，arXiv:2212.09748，Berkeley/NYU/Meta）：LDM 中用
 
 # DiT：可扩展的 Transformer 扩散模型
 
-**DiT**（*Scalable Diffusion Models with Transformers*，[arXiv:2212.09748](https://arxiv.org/abs/2212.09748)，[项目页](https://www.wpeebles.com/DiT)，[代码](https://github.com/facebookresearch/DiT)）由 **William Peebles**（加州大学伯克利分校 UC Berkeley）、**Saining Xie**（纽约大学 NYU）提出（Peebles 实习于 **Meta AI FAIR**）：在 **隐空间扩散（LDM）** 中用 **patch 化 Vision Transformer** 作去噪骨干，系统验证 **前向 Gflops 与生成质量（FID）** 的可预测缩放，并在 class-conditional ImageNet 256×256 / 512×512 上达到当时扩散模型 SOTA。
+**DiT**（*Scalable Diffusion Models with Transformers*，[arXiv:2212.09748](https://arxiv.org/abs/2212.09748)，[项目页](https://www.wpeebles.com/DiT)，[代码](https://github.com/facebookresearch/DiT)）由 **William Peebles**（加州大学伯克利分校 UC Berkeley）、**Saining Xie**（纽约大学 NYU）提出（Peebles 实习于 **Meta AI FAIR**）：在 **隐空间扩散（LDM）** 中用 **patch 化 Vision Transformer** 作去噪骨干，系统验证 **前向 Gflops 与生成质量（FID）** 的可预测缩放，并在 class-conditional ImageNet 256×256 / 512×512 上取得发表时扩散模型中最好的 FID。
 
 ## 一句话定义
 
@@ -138,7 +138,7 @@ sequenceDiagram
 
 - 选型时优先看 **目标 Gflops / token 数**，不要只看参数量（XL/8 反例）。
 - 条件注入上 **AdaLN-Zero 残差调制** 是稳定训练的关键细节，迁移到动作 DiT 时值得保留。
-- 复现图像 SOTA 走 `sample.py` + 官方权重；训练全量 ImageNet 需 DDP 与数据管线，与机器人小数据微调不是同一路径。
+- 复现论文图像结果走 `sample.py` + 官方权重；训练全量 ImageNet 需 DDP 与数据管线，与机器人小数据微调不是同一路径。
 - 读 VLA 论文中的 DiT 头：数学仍是扩散/flow，**骨干结构** 可回溯本文。
 - ImageNet 类条件 ≠ 语言/动作条件；跨模态需另设计 cross-attn 或观测 encoder（见 WAM/VLA 页）。
 

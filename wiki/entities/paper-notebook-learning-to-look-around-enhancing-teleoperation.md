@@ -12,6 +12,7 @@ related:
   - ./paper-notebook-vision-in-action-learning-active-perception-from.md
   - ./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md
   - ./paper-notebook-learning-to-look-seeking-information-for-decisio.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-to-look-around.md
 summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系统，复刻自然人类头部运动与感知。系统支持窥视（peeking）、倾头（tilting）等行为，给操作者更好的环境视角、降低远程操作的认知负荷。作者在七个遥操作任务上展示收益，并研究可动颈如何通过增强空间感知、减少分布偏移（distribution shift）来改善模仿学习的自主策略训练——相比固定广角相机基线，可动颈在遥操作任务表现、操作者认知负荷与自主学习上都有改善。"
@@ -123,6 +124,7 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 - 6-DoF 颈部 + 点云 VR 的后续对照：[paper-notebook-vision-in-action-learning-active-perception-from](./paper-notebook-vision-in-action-learning-active-perception-from.md)
 - 无机器人采集的主动视觉：[paper-notebook-egomi-learning-active-vision-and-whole-body-mani](./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md)
 - 决策层信息寻求：[paper-notebook-learning-to-look-seeking-information-for-decisio](./paper-notebook-learning-to-look-seeking-information-for-decisio.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 遥操作主动视角在感知栈选型中的位置
 
 ## 参考来源
 

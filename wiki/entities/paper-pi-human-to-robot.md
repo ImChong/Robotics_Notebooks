@@ -55,6 +55,15 @@ summary: "arXiv:2512.22414（RSS 2026）：π₀.₅ 预训练多样性够了之
 - 有的任务人数据接近机器人域内数据，有的任务仍然差一截
 - 特征重叠是解释，不是可直接监控的上线指标
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [EgoMimic](./paper-ego-03-egomimic.md) | 同为第一视角人视频 + 3D 手轨迹与机器人数据共训；EgoMimic 讲人数据的缩放效率，本页讲迁移何时出现（取决于机器人预训练多样性） |
+| [Masquerade](./paper-notebook-masquerade-learning-from-in-the-wild-human-video.md) | 编辑人视频以闭合视觉具身差距；本页图像不做对齐 |
+| [EgoBridge](./paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md) | 用最优传输显式对齐人机分布；本页依赖预训练带来的隐式特征重叠 |
+| [人到机器人迁移分类](../overview/ego-category-02-human-to-robot.md) | 同类路线的综述入口 |
+
 ## 源码运行时序图
 
 **不适用**。截至 2026-09-28，项目页、arXiv 与 RSS 页都没有本文的代码、人视频或机器人数据。

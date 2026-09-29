@@ -13,6 +13,7 @@ related:
   - ./paper-diffusion-policy.md
   - ./painode-209-3ddiffusionpolicydp3.md
   - ./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/humanoid_pnb_vision-in-action.md
 summary: "Vision in Action（ViA）是面向双臂机器人操作的主动感知系统，直接从人类演示学任务相关的主动感知策略（如搜索、跟踪、聚焦）。硬件上，ViA 用一个简单有效的 6 自由度机器人颈实现灵活、拟人的头部运动。为捕捉人类主动感知策略，设计了基于 VR 的遥操作接口，在机器人与操作者之间建立共享观测空间。为缓解机器人物理运动延迟导致的VR 眩晕，接口用中间 3D 场景表征，在操作者端实时渲染视角、并异步用机器人最新观测更新场景。这些设计共同支撑了在三个含视觉遮挡的复杂多阶段双臂操作任务上学到鲁棒视觉运动策略，显著优于基线。"
@@ -143,6 +144,7 @@ sequenceDiagram
 - 策略骨架 Diffusion Policy：[paper-diffusion-policy](./paper-diffusion-policy.md)
 - 对比基线 DP3：[painode-209-3ddiffusionpolicydp3](./painode-209-3ddiffusionpolicydp3.md)
 - 无机器人采集的主动视觉路线：[paper-notebook-egomi-learning-active-vision-and-whole-body-mani](./paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 主动感知数据采集在感知栈选型中的位置
 
 ## 参考来源
 

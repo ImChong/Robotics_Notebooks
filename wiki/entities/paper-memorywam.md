@@ -7,7 +7,7 @@ tags:
   - memory
   - long-horizon
 status: complete
-updated: 2026-09-25
+updated: 2026-09-28
 arxiv: "2606.20562"
 code: https://github.com/yangsizhe/MemoryWAM
 related:
@@ -16,6 +16,7 @@ related:
   - ./paper-tempowam.md
   - ./lingbot-vla.md
   - ../overview/embodied-frontier-algorithms-technology-map.md
+  - ./paper-compression-is-routing.md
 sources:
   - ../../sources/papers/memorywam_arxiv_2606_20562.md
   - ../../sources/repos/memorywam.md
@@ -108,6 +109,7 @@ sequenceDiagram
 - [paper-fast-wam](./paper-fast-wam.md)
 - [paper-tempowam](./paper-tempowam.md)
 - [lingbot-vla](./lingbot-vla.md)
+- [Compression is Routing](./paper-compression-is-routing.md) — 同属长上下文压缩叙事：AE 重建误差作路由信号 vs 本页的记忆压缩
 
 ## 参考来源
 

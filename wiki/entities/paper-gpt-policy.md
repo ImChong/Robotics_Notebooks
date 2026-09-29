@@ -13,7 +13,7 @@ tags:
   - hust
   - sjtu
 status: complete
-updated: 2026-09-21
+updated: 2026-09-28
 arxiv: "2609.19138"
 code: https://github.com/cheng-haha/GPT-Policy
 related:
@@ -24,6 +24,7 @@ related:
   - ../concepts/foundation-policy.md
   - ./paper-kino.md
   - ../tasks/manipulation.md
+  - ./paper-homebody.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md
   - ../../sources/papers/gpt-policy_arxiv_2609_19138.md
@@ -173,6 +174,7 @@ sequenceDiagram
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [VLA](../methods/vla.md)
 - [KINO](./paper-kino.md) — keyframe 式 VLM 规划对照
+- [HomeBody](./paper-homebody.md) — 固定 VLM + tool 闭环的对照：探索 → Real2Sim → 技能库的长程 loco-manipulation
 
 ## 参考来源
 
