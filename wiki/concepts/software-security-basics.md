@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, security, authn, authz, secrets, supply-chain]
 status: complete
-updated: 2026-09-19
+updated: 2026-09-29
 related:
   - ./model-versioning-ota.md
   - ./container-orchestration-cicd.md
@@ -10,10 +10,12 @@ related:
   - ../overview/hub-systems-engineering.md
   - ../entities/codex-security.md
   - ../entities/cloudflare-security-audit-skill.md
+  - ../entities/owasp-mas.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
   - ../../sources/repos/codex-security.md
   - ../../sources/sites/openai-codex-security-docs.md
+  - ../../sources/sites/owasp-mas.md
 summary: "软件安全基础（身份认证、授权、密钥管理、供应链安全）：机器人云边通道与制品发布的最小安全基线。"
 ---
 
@@ -53,6 +55,7 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - 分环境凭证（dev/stage/prod）；禁止把 cloud key 打进机器人镜像。
 - PR 流水线跑漏洞扫描与许可证检查；发布需人工或策略门禁。
 - 与 [OTA](./model-versioning-ota.md) 联动：验签失败 → 拒绝更新并告警。
+- **移动 companion App：** 云边 AuthN/TLS 在本页；**iOS/Android 客户端**（本地凭证、证书钉扎、逆向韧性）对照 [OWASP MAS](../entities/owasp-mas.md)（MASVS / MASTG），与 OWASP ASVS 分工互补。
 - **Agent 驱动 AppSec（可选增强）：** 对遥操作网关 / OTA 服务 / 训练 farm API 等代码面，可用 [Codex Security](../entities/codex-security.md) 做 PR `--diff` 扫描与 SARIF 导出；深度审计可叠加 [Cloudflare Security Audit Skill](../entities/cloudflare-security-audit-skill.md)（覆盖率 ledger + 对抗验证 + `findings.json`）；与依赖锁定、SBOM、镜像签名叠用，勿替代 AuthN/AuthZ/KMS 基线。
 
 ## 局限与风险
@@ -67,14 +70,17 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - [边缘–云端协同](./edge-cloud-robotics.md)
 - [Codex Security](../entities/codex-security.md)
 - [Cloudflare Security Audit Skill](../entities/cloudflare-security-audit-skill.md)
+- [OWASP MAS（移动 App 安全标准）](../entities/owasp-mas.md)
 
 ## 参考来源
 
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
 - [Codex Security 仓库归档](../../sources/repos/codex-security.md)
 - [Codex Security 官方文档归档](../../sources/sites/openai-codex-security-docs.md)
+- [OWASP MAS 门户归档](../../sources/sites/owasp-mas.md)
 
 ## 推荐继续阅读
 
+- OWASP MAS（移动 App）：<https://mas.owasp.org/>；实体页 [OWASP MAS](../entities/owasp-mas.md)
 - OWASP ASVS；SLSA：<https://slsa.dev/>
 - Codex Security 文档：<https://developers.openai.com/codex/security>

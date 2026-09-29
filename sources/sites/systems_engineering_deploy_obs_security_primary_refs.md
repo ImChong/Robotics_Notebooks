@@ -41,6 +41,7 @@
 
 - **来源：**
   - [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/)
+  - [OWASP MAS](https://mas.owasp.org/)（移动 App：MASVS / MASTG / MASWE；归档 [owasp-mas.md](./owasp-mas.md) → [wiki/entities/owasp-mas.md](../../wiki/entities/owasp-mas.md)）
   - [NIST SP 800-63](https://pages.nist.gov/800-63-3/)（数字身份）
   - [SLSA](https://slsa.dev/) / [Sigstore](https://www.sigstore.dev/)（供应链与签名）
   - OAuth 2.0 / OIDC（[RFC 6749](https://www.rfc-editor.org/rfc/rfc6749)、[OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html)）
