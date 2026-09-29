@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | Roboflow Sports：归档篮球球场关键点与球衣 OCR Universe 集，刷新 roboflow/sports 仓库与实体页（2026-09-29 GitHub/Universe 核查）
+
 ## [2026-09-29] structural | roadmap/depth-*.md — 纵深页主路线链接文字统一为「运动控制 → Physical AI 全栈成长路线」；README 适合谁补 Physical AI 范围
 
 ## [2026-09-29] ingest | EXPO/EXPO-FT 深读+GitHub 已开源核查；新建 paper-expo；升格 paper-expo-ft；公众号 Finn/DPO 叙事；更新 universal-post-training 与 Real-Time 开源状态
