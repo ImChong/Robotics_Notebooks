@@ -251,7 +251,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [遥操作](depth-teleoperation.md) — 示范数据的主要采集入口
   - [VLA](depth-vla.md) — 在 IL 骨干上接视觉–语言条件

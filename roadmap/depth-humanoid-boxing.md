@@ -215,7 +215,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [BFM](depth-bfm.md) — 跟踪与潜空间技能先验
   - [动作重定向](depth-motion-retargeting.md) — MoCap/拳击动作折到本体

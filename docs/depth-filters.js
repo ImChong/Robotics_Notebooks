@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 26 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 27 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -20,7 +20,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（26 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（27 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -45,6 +45,7 @@
     'embodied-eval',
     'perceptive-locomotion',
     'motion-generation',
+    'robotics-diffusion-dit-flow',
     'vla',
     'real2sim',
     'embodied-data',
@@ -75,6 +76,7 @@
     'embodied-eval': 'roadmap/depth-embodied-eval.md',
     'perceptive-locomotion': 'roadmap/depth-perceptive-locomotion.md',
     'motion-generation': 'roadmap/depth-motion-generation.md',
+    'robotics-diffusion-dit-flow': 'roadmap/depth-robotics-diffusion-dit-flow.md',
     'vla': 'roadmap/depth-vla.md',
     'real2sim': 'roadmap/depth-real2sim.md',
     'embodied-data': 'roadmap/depth-embodied-data.md',
@@ -549,6 +551,31 @@
         'wiki/entities/paper-heracles-humanoid-diffusion.md'
       ])
     },
+    'robotics-diffusion-dit-flow': {
+      /* 只用 diffusion-policy 做路径命中：flow-matching / diffusion-transformer 会误伤位姿估计与自动驾驶 WAM 页，改为显式 ids。 */
+      segments: new Set(['diffusion-policy']),
+      ids: mergeIds('robotics-diffusion-dit-flow', [
+        'wiki/methods/diffusion-policy.md',
+        'wiki/methods/action-chunking.md',
+        'wiki/concepts/diffusion-model.md',
+        'wiki/concepts/diffusion-transformer.md',
+        'wiki/concepts/flow-matching-embodied-policy.md',
+        'wiki/concepts/receding-horizon-policy-execution.md',
+        'wiki/overview/mit-flow-matching-diffusion-2026.md',
+        'wiki/entities/paper-diffusion-policy.md',
+        'wiki/entities/paper-dit-scalable-diffusion-transformers.md',
+        'wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md',
+        'wiki/entities/paper-scaledp-scaling-diffusion-transformer-policy.md',
+        'wiki/entities/paper-rdt-1b.md',
+        'wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md',
+        'wiki/entities/paper-freqfm-vla-flow-matching.md',
+        'wiki/entities/paper-notebook-flow-matching-imitation-learning-for-multi-suppo.md',
+        'wiki/entities/paper-pi0.md',
+        'wiki/entities/paper-hrl-stack-34-gr00t_n1.md',
+        'wiki/entities/paper-gr00t-n1-5.md',
+        'wiki/entities/isaac-gr00t.md'
+      ])
+    },
     'vla': {
       communities: new Set(['community-vla']),
       segments: new Set([
@@ -790,6 +817,12 @@
       label: '动作生成（Motion Generation）',
       wikiPath: DEPTH_HUB_IDS['motion-generation'],
       description: '文本/多模态条件的人体与人形动作生成。'
+    },
+    'robotics-diffusion-dit-flow': {
+      emoji: '🌀',
+      label: '扩散与流匹配策略（Diffusion & Flow Matching）',
+      wikiPath: DEPTH_HUB_IDS['robotics-diffusion-dit-flow'],
+      description: '按动作去噪机制演进：Diffusion Policy → DiT → RDT → Flow Matching VLA。'
     },
     'vla': {
       emoji: '👀',

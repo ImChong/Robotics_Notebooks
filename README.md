@@ -20,7 +20,7 @@
 
 ## 适合谁
 
-想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++）与本科数学基础。
+想系统学人形机器人运动控制 / 强化学习 / 模仿学习，并一路看懂 Physical AI（VLA、世界模型、真机部署），有一定编程基础（Python / C++）与本科数学基础。
 
 不知道从哪开始？先走 [运动控制 → Physical AI 主路线](roadmap/motion-control.md)（Physical AI & Robot Learning：控制 → 学习 → Sim2Real → Transformer / VLA / 世界模型 → 部署）；已有明确方向时，按目标选一条 [纵深路线](roadmap/README.md)。
 
