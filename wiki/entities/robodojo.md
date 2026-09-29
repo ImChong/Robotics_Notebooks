@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
 status: complete
-updated: 2026-09-28
+updated: 2026-09-29
 related:
   - ./physical-rsi.md
   - ./paper-gpt-6-astra-embodied-policy.md
@@ -12,6 +12,7 @@ related:
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../overview/frontier-models-3d-cad-robotics-survey.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ./robo-bench.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/repos/xpolicylab.md
   - ../../sources/blogs/robodojo_open_longterm_eval_2026-07.md
   - ../../sources/sites/mmlab-physical-rsi.md
+  - ../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md
 summary: "RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评测——42 仿真五维任务 + 18 真机任务（Piper X/Piper/ARX X5）；Isaac 异构并行 + RealEval 云真机；XPolicyLab 一次集成；2026-07 开放长期公益榜，verified 上榜须开源训推与权重并公布评测视频。"
 ---
 
