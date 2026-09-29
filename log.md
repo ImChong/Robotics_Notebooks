@@ -1,3 +1,5 @@
+## [2026-09-28] ingest | LocoVLM（arXiv:2602.10399，KAIST SafeVLMs）：离线 LLM 技能库 + 机载 BLIP-2 检索步态 descriptor；项目页无 Code，GitHub 占位待发布
+
 ## [2026-09-28] structural | 公司路线对照页补入德塔智能：矩阵、开放程度表、来源与继续阅读，团队数改为 13
 
 ## [2026-09-28] structural | 公司路线新增德塔智能 Delta Intelligence（官方入口 deltai.com/en/blog，Δ₀ 节点），首页入口卡与计数改为 13 家
