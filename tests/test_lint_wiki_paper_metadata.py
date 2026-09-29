@@ -81,6 +81,18 @@ def test_partial_three_sections_records_missing(tmp_path: Path, monkeypatch) -> 
     assert results["paper_missing_conclusions"] == []
 
 
+def test_scaffold_core_principle_heading_counts_as_method(tmp_path: Path, monkeypatch) -> None:
+    """scaffold 论文骨架把方法栈放在「## 核心原理」下（### 子节不算 ## 区块）。"""
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    page = wiki / "entities" / "paper-scaffold.md"
+    page.write_text(
+        "---\narxiv: 2404.00002\n---\n## 核心原理\n### 方法栈\n## 评测\n## 结论\n## 与其他工作对比\n",
+        encoding="utf-8",
+    )
+    results = _run([page])
+    assert results["paper_missing_three_sections"] == []
+
+
 def test_missing_conclusions_is_flagged(tmp_path: Path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     page = wiki / "entities" / "paper-no-concl.md"

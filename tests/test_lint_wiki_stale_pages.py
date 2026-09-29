@@ -136,6 +136,25 @@ def test_genuine_stale_when_source_committed_later(
     assert "wiki/methods/foo.md" in results["stale_pages"][0].replace("\\", "/")
 
 
+def test_catalog_index_source_does_not_mark_pages_stale(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A later edit to a curated catalog index (*_catalog.md) is not a
+    per-page review signal; per-paper sources still are."""
+    repo = _init_repo(tmp_path, monkeypatch)
+    wiki = repo / "wiki" / "methods" / "foo.md"
+    wiki.write_text("# foo\n", encoding="utf-8")
+    _commit_at(repo, [wiki], int(time.time()) - 10 * 86400, "wiki")
+
+    src = repo / "sources" / "papers" / "awesome_x_catalog.md"
+    src.write_text("see [foo](../../wiki/methods/foo.md)\n", encoding="utf-8")
+    _commit_at(repo, [src], int(time.time()) - 1 * 86400, "catalog relink")
+
+    results = lw._empty_results()
+    lw._check_sources_health(results)
+    assert results["stale_pages"] == []
+
+
 def test_uncommitted_wiki_edit_falls_back_to_fs_mtime(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
