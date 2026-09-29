@@ -822,6 +822,7 @@
 - [OSQP](wiki/entities/osqp.md) — OSQP](https://github.com/osqp/osqp) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-moti `📅unknown` `[entity_page]`
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
+- [OWASP MAS（Mobile Application Security）](wiki/entities/owasp-mas.md) — OWASP Mobile Application Security (MAS)** 是 OWASP 旗舰项目，用 **MASVS**（该满足哪些控制）、**MASWE**（常见弱点是什么）和  `📅unknown` `[entity_page]`
 - [2025 GS Paper List](wiki/entities/painode-001-2025gspaperlist.md) — 2025 GS Paper List** 收录于 awesome-physical-ai（aichr）**第 001/384** 条，分组 **3D Computer Vision**。本页为知识 `📅unknown` `[entity_page]`
 - [Awesome 3D Gaussian Splatting](wiki/entities/painode-002-awesome3dgaussiansplatting.md) — Awesome 3D Gaussian Splatting** 收录于 awesome-physical-ai（aichr）**第 002/384** 条，分组 **3D Computer Vis `📅unknown` `[entity_page]`
 - [Depth Anything](wiki/entities/painode-003-depthanything.md) — Depth Anything** 收录于 awesome-physical-ai（aichr）**第 003/384** 条，分组 **3D Computer Vision**。本页为知识库  `📅unknown` `[entity_page]`
