@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | knight-L/sc-datav：Three.js 地理大屏已开源（Apache-2.0），实体页 + 可观测性交叉引用
+
 ## [2026-09-29] ingest | OWASP MAS（mas.owasp.org）门户与 MASVS/MASTG/MASWE 三仓归档，升格 wiki/entities/owasp-mas 并交叉 software-security-basics
 
 ## [2026-09-29] ingest | NVIDIA OASP 博客：OpenShell 已开源 + Sentry/BlueField 参考架构；新增 sources 与 wiki 实体并交叉 Agent 栈
