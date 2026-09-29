@@ -8,11 +8,12 @@
 - **arXiv：** <https://arxiv.org/abs/2609.28660>
 - **PDF：** <https://arxiv.org/pdf/2609.28660>
 - **项目页：** <https://morphometricimitation.github.io/> — 归档见 [`sources/sites/morphometricimitation-github-io.md`](../sites/morphometricimitation-github-io.md)
-- **代码：** <https://github.com/tsadja/morphometric> — 归档见 [`sources/repos/morphometric.md`](../repos/morphometric.md)（截至入库日 README 写 **Code will be released soon**）
+- **代码：** <https://github.com/tsadja/morphometric> — 归档见 [`sources/repos/morphometric.md`](../repos/morphometric.md)（截至 2026-09-29 README 仍写 **Code will be released soon**）
+- **Hugging Face Papers：** <https://huggingface.co/papers/2609.28660>
 - **作者：** Tara Sadjadpour、Siming He、C.K. Wolfe、Haozhi Qi、Lea Wilken、S. Shankar Sastry、Claire Tomlin*、Jitendra Malik*（* 共同 advising）
 - **机构：** 加州大学伯克利分校 EECS
 - **入库日期：** 2026-09-26
-- **开源状态（步骤 2.5，2026-09-26）：** GitHub 占位仓已建，**训练/推理代码待发布**；项目页链 Code → 同上仓库。
+- **开源状态（步骤 2.5，2026-09-29 再核查）：** GitHub 占位仓已建，**训练/推理代码待发布**；项目页 Code → 同仓；HF 为论文索引非权重。
 
 ## 核心论文摘录（MVP）
 
