@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-27
+updated: 2026-09-29
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -443,7 +443,7 @@ flowchart TD
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
 - [Awesome-Legged-Robot-Learning（ClearLab）](../entities/awesome-legged-robot-learning-clearlab.md) — SUSTech 腿足/WBC arXiv 精选
-- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)
+- [ULTRA 论文实体](../entities/paper-notebook-ultra-unified-multimodal-control-for-autonomous.md) — UIUC 统一多模态 G1 loco-manipulation（arXiv:2603.03279；[ultra-survey 摘要](./ultra-survey.md)）
 - [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O 
