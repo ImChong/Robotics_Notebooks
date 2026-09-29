@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | Puffin-World 项目页复核：HF 权重迁至 ACERobotics/Puffin-World，补闭环 demo 脚本与 stars
+
 ## [2026-09-29] ingest | Morphometric Imitation 三角链接再核查：补 HF papers/2609.28660；GitHub 仍 Code soon
 
 ## [2026-09-29] structural | roadmap/motion-control.md — 可选纵深表补齐扩散与流匹配策略（depth-robotics-diffusion-dit-flow），计数改为二十七条
