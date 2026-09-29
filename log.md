@@ -1,3 +1,7 @@
+## [2026-09-29] ingest | SAM 3.1（Object Multiplex）：Release Notes + HF facebook/sam3.1；升级 paper-sam3 与 sources 归档；开源已核
+
+## [2026-09-29] structural | 公司路线新增励元智能 Reward AI（rewardai.com/blog，DexCap → OM-1 节点）并同步对照页
+
 ## [2026-09-29] ingest | knight-L/sc-datav：Three.js 地理大屏已开源（Apache-2.0），实体页 + 可观测性交叉引用
 
 ## [2026-09-29] ingest | OWASP MAS（mas.owasp.org）门户与 MASVS/MASTG/MASWE 三仓归档，升格 wiki/entities/owasp-mas 并交叉 software-security-basics
