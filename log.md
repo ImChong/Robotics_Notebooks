@@ -1,3 +1,5 @@
+## [2026-09-29] structural | roadmap/depth-*.md — 纵深页主路线链接文字统一为「运动控制 → Physical AI 全栈成长路线」；README 适合谁补 Physical AI 范围
+
 ## [2026-09-29] ingest | EXPO/EXPO-FT 深读+GitHub 已开源核查；新建 paper-expo；升格 paper-expo-ft；公众号 Finn/DPO 叙事；更新 universal-post-training 与 Real-Time 开源状态
 
 ## [2026-09-29] ingest | ULTRA（2603.03279）项目页+GitHub 核查已开源；升格 paper-notebook-ultra 实体页（五阶段管线/指标/sim2sim）；归档 sites/repos/papers
