@@ -206,6 +206,10 @@ flowchart TD
 - [JEPA Policy](../entities/paper-jepa-policy.md)：成对监督 **动作块 + 未来视觉表征** 的扩散-free MIP；共享 Transformer 两次前向；仿真九任务 **83.0%** 均值、相对 100-step Diffusion Policy **33×** 决策加速（arXiv:2609.09630；**已开源**）
 - [InstantMimic](../entities/paper-instantmimic.md)：GPU-native 整环训练系统，标准动作跟踪 **秒级** 收敛、AMASS **37.4 h→约 30 min**（arXiv:2609.09821；**待发布**）
 
+### 真机示教语义增广（生成式场景扩增）
+
+- [RoboAug](../entities/paper-roboaug.md)：单任务 **ACT** 上 **一帧 bbox** + one-shot 区域匹配与 **SAM2** 传播，**SDv3 全背景合成** 与 **区域对比损失** 提升背景/光照/干扰物 OOD 成功率（35k 真机 trial；arXiv:2602.14032；代码 **Coming Soon**）
+
 ### 非自稳定运动的失重机制 (Weightlessness Mechanism, WM)
 
 针对非自稳定（non-self-stabilizing, NSS）运动（如坐下、躺下、靠墙），研究表明，过度严格的轨迹跟踪会阻碍机器人与环境建立稳定的接触。**Learn Weightlessness** (Xin et al., 2026) 提出通过模仿人类在 NSS 运动中的“失重”状态——选择性地放松特定关节，从而允许被动的身体-环境接触，最终实现运动的稳定。
