@@ -3925,3 +3925,20 @@ button.home-wiki-heatmap-cell.is-active {
   .co-node-card { grid-column: 2; }
   .co-pager { justify-content: center; }
 }
+
+/* Homepage language control and English text fit. */
+body:has(#homeLanguageToggle) .header-inner > .site-title { min-width: 0; }
+body:has(#homeLanguageToggle) .header-right { flex-shrink: 0; }
+.home-language-toggle {
+  border: 1px solid var(--border); border-radius: 6px; background: transparent;
+  color: var(--text); font: inherit; font-size: .78rem;
+  padding: 6px 9px; cursor: pointer; white-space: nowrap;
+}
+.home-language-toggle:hover { color: var(--accent); }
+.home-language-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+html[lang="en"] body:has(#homeLanguageToggle) .hero-title { font-size: clamp(2rem, 5vw, 3.4rem); }
+@media (max-width: 600px) {
+  body:has(#homeLanguageToggle) .site-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  body:has(#homeLanguageToggle) .header-right { gap: 8px; }
+  html[lang="en"] #mini-graph-stats { bottom: 44px !important; right: 16px; }
+}

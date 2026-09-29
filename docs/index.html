@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="Robotics Notebooks - 面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。" />
-  <meta name="keywords" content="Robotics Notebooks, 机器人技术栈, Humanoid Robot, Motion Control, Reinforcement Learning, Imitation Learning, Whole-Body Control" />
+  <meta name="description" content="Robotics Notebooks - 面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。"  data-home-copy/>
+  <meta name="keywords" content="Robotics Notebooks, 机器人技术栈, Humanoid Robot, Motion Control, Reinforcement Learning, Imitation Learning, Whole-Body Control"  data-home-copy/>
   <meta name="author" content="Chong Liu" />
-  <meta property="og:title" content="Robotics Notebooks | 机器人技术栈地图" />
-  <meta property="og:description" content="面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。" />
+  <meta property="og:title" content="Robotics Notebooks | 机器人技术栈地图"  data-home-copy/>
+  <meta property="og:description" content="面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。"  data-home-copy/>
   <meta property="og:type" content="website" />
-  <title>Robotics Notebooks | 机器人技术栈地图</title>
+  <title data-home-copy>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2"></script>
@@ -21,11 +21,12 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页" data-home-copy>🗺️ Robotics Notebooks | 机器人技术栈地图</a>
       <div class="header-spacer"></div>
       <div class="header-right">
+        <button type="button" id="homeLanguageToggle" class="home-language-toggle" aria-label="Switch homepage to English" hidden>English</button>
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式" data-home-copy>
           <span class="icon-sun">☀️</span>
           <span class="icon-moon">🌙</span>
         </button>
@@ -37,32 +38,32 @@
     <section id="hero" class="hero">
       <div class="hero-backdrop" aria-hidden="true"></div>
       <div class="container">
-        <span class="hero-badge"><i class="hero-badge-dot" aria-hidden="true"></i>持续更新的机器人技术栈地图</span>
-        <h1 class="hero-title">面向人形机器人<br />从运动控制到 <span style="white-space:nowrap">Physical AI</span></h1>
-        <p class="hero-subtitle">先选一个入口，沿 <strong>路线、图谱、模块、论文</strong> 逐步深入。</p>
+        <span class="hero-badge" data-home-copy><i class="hero-badge-dot" aria-hidden="true"></i>持续更新的机器人技术栈地图</span>
+        <h1 class="hero-title" data-home-copy>面向人形机器人<br />从运动控制到 <span style="white-space:nowrap">Physical AI</span></h1>
+        <p class="hero-subtitle" data-home-copy>先选一个入口，沿 <strong data-home-copy>路线、图谱、模块、论文</strong> 逐步深入。</p>
 
-        <ul class="hero-stats" aria-label="知识库当前规模">
+        <ul class="hero-stats" aria-label="知识库当前规模" data-home-copy>
           <li class="hero-stat">
-            <a class="hero-stat-num" id="heroNodeCount" href="graph.html" aria-label="查看知识图谱（知识节点）">5410</a>
-            <span class="hero-stat-label">知识节点</span>
+            <a class="hero-stat-num" id="heroNodeCount" href="graph.html" aria-label="查看知识图谱（知识节点）" data-home-copy>5410</a>
+            <span class="hero-stat-label" data-home-copy>知识节点</span>
           </li>
           <li class="hero-stat">
-            <a class="hero-stat-num" id="heroEdgeCount" href="graph.html" aria-label="查看知识图谱（互链关系）">47285</a>
-            <span class="hero-stat-label">互链关系</span>
+            <a class="hero-stat-num" id="heroEdgeCount" href="graph.html" aria-label="查看知识图谱（互链关系）" data-home-copy>47285</a>
+            <span class="hero-stat-label" data-home-copy>互链关系</span>
           </li>
           <li class="hero-stat">
-            <a class="hero-stat-num" id="heroMainRouteCount" href="#home-start-main-route" aria-label="定位到从零开始入口卡">1</a>
-            <span class="hero-stat-label">主路线</span>
+            <a class="hero-stat-num" id="heroMainRouteCount" href="#home-start-main-route" aria-label="定位到从零开始入口卡" data-home-copy>1</a>
+            <span class="hero-stat-label" data-home-copy>主路线</span>
           </li>
           <li class="hero-stat">
             <!-- 运行时由首页路线入口数量同步，部署时更新兜底统计 -->
-            <a class="hero-stat-num" id="heroDepthRouteCount" href="#home-more-routes" aria-label="定位到更多路线入口卡">26</a>
-            <span class="hero-stat-label">纵深路线</span>
+            <a class="hero-stat-num" id="heroDepthRouteCount" href="#home-more-routes" aria-label="定位到更多路线入口卡" data-home-copy>26</a>
+            <span class="hero-stat-label" data-home-copy>纵深路线</span>
           </li>
           <li class="hero-stat">
             <!-- 运行时由首页「公司路线」入口按钮数量同步 -->
-            <a class="hero-stat-num" id="heroCompanyCount" href="#home-company-routes" aria-label="定位到公司路线入口卡">13</a>
-            <span class="hero-stat-label">公司路线</span>
+            <a class="hero-stat-num" id="heroCompanyCount" href="#home-company-routes" aria-label="定位到公司路线入口卡" data-home-copy>13</a>
+            <span class="hero-stat-label" data-home-copy>公司路线</span>
           </li>
         </ul>
         <script>
@@ -86,27 +87,27 @@
       </div>
     </section>
 
-    <section class="section" id="home-start" aria-label="入口">
+    <section class="section" id="home-start" aria-label="入口" data-home-copy>
       <div class="container">
         <div class="card-grid home-entry-grid">
           <a class="card home-entry-card" id="home-start-main-route" href="roadmap.html?id=roadmap-motion-control">
-            <span class="home-entry-label">从零开始</span>
-            <h3>一条主线打通具身智能全栈</h3>
-            <span class="home-entry-link">进入主路线 →</span>
+            <span class="home-entry-label" data-home-copy>从零开始</span>
+            <h3 data-home-copy>一条主线打通具身智能全栈</h3>
+            <span class="home-entry-link" data-home-copy>进入主路线 →</span>
           </a>
           <a class="card home-entry-card" href="#wiki-search" data-focus-search data-trace-target="wiki-search-panel">
-            <span class="home-entry-label">项目查询</span>
-            <h3>查找框架、论文与机器人平台</h3>
-            <span class="home-entry-link">搜索知识库 →</span>
+            <span class="home-entry-label" data-home-copy>项目查询</span>
+            <h3 data-home-copy>查找框架、论文与机器人平台</h3>
+            <span class="home-entry-link" data-home-copy>搜索知识库 →</span>
           </a>
           <a class="card home-entry-card" href="#mini-graph-section" data-trace-target="mini-graph-wrap" data-pulse-hint="mini-graph-expand">
-            <span class="home-entry-label">知识图谱</span>
-            <h3>俯瞰节点与连接全貌</h3>
-            <span class="home-entry-link">查看图谱预览 →</span>
+            <span class="home-entry-label" data-home-copy>知识图谱</span>
+            <h3 data-home-copy>俯瞰节点与连接全貌</h3>
+            <span class="home-entry-link" data-home-copy>查看图谱预览 →</span>
           </a>
           <div class="card home-entry-card home-entry-card-more" id="home-more-routes">
-            <span class="home-entry-label">更多路线</span>
-            <h3>按研究方向进入纵深路线</h3>
+            <span class="home-entry-label" data-home-copy>更多路线</span>
+            <h3 data-home-copy>按研究方向进入纵深路线</h3>
             <!-- 按各方向起点里程碑的历史顺序排列：
                  遥操作（Goertz 主从机械手 1954）→ 力矩电机设计（FOC 1971）→ 传统控制（ZMP 1972）→ 安全控制（CLF 1983）→ RSI（EURISKO 自改启发式 1983）→ 接触操作（阻抗控制 1985）
                  → 导航（概率 SLAM 1986）→ 模型架构（反向传播 1986）→ 模仿学习（行为克隆 1988）→ 强化学习（Q-learning 1989）
@@ -147,11 +148,11 @@
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-embodied-data">具身数据<span class="route-en">（Embodied Data）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-wam">世界-动作模型<span class="route-en">（WAM）</span></a>
             </div>
-            <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks">展开全部 27 条纵深路线 ↓</button>
+            <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks" data-home-copy>展开全部 27 条纵深路线 ↓</button>
           </div>
           <div class="card home-entry-card home-entry-card-more" id="home-company-routes">
-            <span class="home-entry-label">公司路线</span>
-            <h3>按公司查看具身基础模型与人形技术演进</h3>
+            <span class="home-entry-label" data-home-copy>公司路线</span>
+            <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
             <!-- 顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
                  默认露出前 4 家，其余 data-company-extra + hidden，由 company-roadmap.js 的展开按钮控制 -->
             <div class="home-entry-route-links" id="homeCompanyLinks">
@@ -169,7 +170,7 @@
               <a class="btn-secondary" href="company.html?id=unitree" data-company-extra hidden>宇树<span class="route-en">（Unitree）</span></a>
               <a class="btn-secondary" href="company.html?id=deltai" data-company-extra hidden>德塔智能<span class="route-en">（Delta Intelligence）</span></a>
             </div>
-            <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks">展开全部 13 家公司 ↓</button>
+            <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks" data-home-copy>展开全部 13 家公司 ↓</button>
           </div>
         </div>
       </div>
@@ -177,7 +178,7 @@
 
     <section class="section section-alt" id="wiki-search">
       <div class="container">
-        <h2 class="section-title">搜索知识库</h2>
+        <h2 class="section-title" data-home-copy>搜索知识库</h2>
         <div class="search-bar-wrap" id="wiki-search-panel">
           <input
             id="wikiSearchInput"
@@ -185,14 +186,14 @@
             placeholder="搜索概念、方法或任务：MPC、PPO、Diffusion Policy…"
             aria-label="搜索知识页面"
             autocomplete="off"
-          />
-          <select id="wikiCommunityFilter" aria-label="按社区过滤">
-            <option value="">全部社区</option>
+           data-home-copy/>
+          <select id="wikiCommunityFilter" aria-label="按社区过滤" data-home-copy>
+            <option value="" data-home-copy>全部社区</option>
           </select>
         </div>
         <!-- 热门主题：main.js 用 home-stats.json 的 top_communities 覆盖为实时 Top 社区；
              以下静态 chips 仅为 JS/数据失败时的兜底快照 -->
-        <div id="wikiHotTopics" class="tag-cloud" aria-label="热门主题">
+        <div id="wikiHotTopics" class="tag-cloud" aria-label="热门主题" data-home-copy>
           <button class="tag-chip" data-wiki-tag="移动操作">移动操作</button>
           <button class="tag-chip" data-wiki-tag="机器人学习论文笔记">机器人学习论文笔记</button>
           <button class="tag-chip" data-wiki-tag="强化学习">强化学习</button>
@@ -206,25 +207,25 @@
 
     <section class="section" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
       <div class="container">
-        <h2 class="section-title" id="home-latest-wiki-heading">最新知识节点</h2>
+        <h2 class="section-title" id="home-latest-wiki-heading" data-home-copy>最新知识节点</h2>
         <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
-          <p class="data-meta">加载中…</p>
+          <p class="data-meta" data-home-copy>加载中…</p>
         </div>
       </div>
     </section>
 
     <section class="section section-alt" id="mini-graph-section">
       <div class="container">
-        <h2 class="section-title">知识图谱预览</h2>
+        <h2 class="section-title" data-home-copy>知识图谱预览</h2>
         <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
           <div id="mini-graph-3d" hidden></div>
-          <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换">
+          <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换" data-home-copy>
             <button type="button" id="miniGraphMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
             <button type="button" id="miniGraphMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
           </div>
           <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
-          <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;">打开完整图谱 →</a>
+          <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;" data-home-copy>打开完整图谱 →</a>
         </div>
         <div id="mini-graph-tooltip" class="graph-hover-tooltip hidden" role="tooltip" aria-hidden="true"></div>
       </div>
@@ -233,18 +234,18 @@
     <section class="section" id="home-hub-section" aria-labelledby="home-hub-heading">
       <div class="container">
         <div class="home-hub-head">
-          <h2 class="section-title" id="home-hub-heading">互链枢纽 · Top 10</h2>
-          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽">
-            <button type="button" id="homeHubTabAll" class="home-hub-tab is-active" aria-pressed="true">全站</button>
-            <button type="button" id="homeHubTabPaper" class="home-hub-tab" aria-pressed="false">论文</button>
+          <h2 class="section-title" id="home-hub-heading" data-home-copy>互链枢纽 · Top 10</h2>
+          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽" data-home-copy>
+            <button type="button" id="homeHubTabAll" class="home-hub-tab is-active" aria-pressed="true" data-home-copy>全站</button>
+            <button type="button" id="homeHubTabPaper" class="home-hub-tab" aria-pressed="false" data-home-copy>论文</button>
           </div>
         </div>
-        <p class="section-subtitle">按站内互链总数（无向度数）排序，从与其他条目连接最多的核心页开始探索。</p>
+        <p class="section-subtitle" data-home-copy>按站内互链总数（无向度数）排序，从与其他条目连接最多的核心页开始探索。</p>
         <div id="homeHubPanelAll" class="home-hub-panel data-loading" aria-live="polite">
-          <p class="data-meta">正在加载互链统计…</p>
+          <p class="data-meta" data-home-copy>正在加载互链统计…</p>
         </div>
         <div id="homeHubPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
-        <p class="home-hub-more"><a href="hubs.html">查看完整榜单</a></p>
+        <p class="home-hub-more"><a href="hubs.html" data-home-copy>查看完整榜单</a></p>
       </div>
     </section>
   </main>
@@ -255,6 +256,7 @@
     </div>
   </footer>
 
+  <script src="home-i18n.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
