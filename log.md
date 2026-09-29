@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | Generate Track Improve（arXiv:2609.31577，Caltech AMBER）：双层感知 flow matching+CLF-RL 与 AWR 生成器微调；项目页代码待发布；新建 paper-generate-track-improve 实体与 sources 归档
+
 ## [2026-09-29] ingest | DM0.5 四次核查：接入 Dexbotic 工具栈归档，更新 dexmal-dm05 双栈复现与 OpenDM 对照
 
 ## [2026-09-29] lint | 全量 wiki lint 清零：24 条信息型预警 + 924 条陈旧页（完整 git 历史下）全部处理；新建 concepts/inverse-dynamics-model.md；stale 检查跳过 *_catalog.md 索引源；论文三段式识别「核心原理」
