@@ -50,6 +50,22 @@ summary: "LIBERO-VIFO（arXiv:2608.17600）：八类视觉提示评测授权/未
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **基准结构：** **8 类视觉提示族**；两部分共 **4 个协议**——Part I 测提示理解与授权跟随，Part II 测语言–提示冲突及空语言条件下的**未授权跟随**。
+- **被测模型：** **7 个 VLA**；另做场景内提示、安全关键设定与实机（AgileX PiPER）扩展实验。
+- **主要发现：** 能理解视觉提示不等于能执行；而在没有语言指令时，当前 VLA 仍会执行提示所指任务，暴露「未授权视觉提示跟随」风险（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+
+## 与其他工作对比
+
+| 维度 | LIBERO-VIFO | 对照 |
+|------|-------------|------|
+| 评测对象 | 视觉提示的**能力 + 安全**（授权与否） | [DeicticVLA](./paper-deicticvla.md)：把指示 mask 作为输入模式来提升能力，不评未授权跟随 |
+| 安全定义 | 是否服从了不该服从的提示 | [MANIGUARD](./paper-maniguard.md)：执行过程是否违反 LTLf 安全规约 |
+| 基准底座 | 在 [LIBERO](./libero-benchmark.md) 上扩展协议 | LIBERO 原套件只看任务成功率 |
+
+评测基准选型见 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
+
 ## 结论
 
 **LIBERO-VIFO 在本库中作为 arXiv:2608.17600 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**

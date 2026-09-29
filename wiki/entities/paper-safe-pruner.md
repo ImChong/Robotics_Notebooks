@@ -50,6 +50,20 @@ future-aware token 剪枝，近 2× 加速。
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **设置：** LIBERO、SIMPLER 仿真及 Astribot S1 实机（见核心信息）；即插即用，不改模型权重。
+- **主结果：** 最高 **1.89×** 加速，成功率降幅 **< 1.5%**，并比 SoTA 剪枝方法高最多 **1.9%**（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **机制：** 利用「语义注意力一致性」预测深层 token 显著性，避免浅层线索提前剪掉深层需要的 token；注意力转移时刷新参考时间步。
+
+## 与其他工作对比
+
+| 维度 | SAFE-Pruner | 对照 |
+|------|-------------|------|
+| 加速手段 | 视觉 token 剪枝（前瞻深层注意力） | [Shallow-π](./paper-shallow-pi.md)：层蒸馏 18→6，>2× 加速 |
+| 是否训练 | 免训练、即插即用 | Shallow-π 需蒸馏训练 |
+| 复用对象 | 丢弃冗余视觉 token | [Neural Introspection Gating](./paper-neural-introspection-gating.md)：按置信度门控 KV 缓存复用 |
+
 ## 结论
 
 **SAFE-Pruner 在本库中作为 arXiv:2605.29662 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与项目页。**

@@ -50,6 +50,21 @@ summary: "Reuse Before You Retrieve（arXiv:2608.17484，KAIST）：诊断 headr
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **两个诊断量：** **可恢复余量（recoverable headroom）**——策略自身随机 rollout 中是否已有更好行为；**检索互补性（retrieval complementarity）**——外部动作先验是否填补了可测缺口。
+- **选择器：** episode 级重试选择器（可重试或并行执行），在 **LIBERO** 上对所有被测 VLA 骨干都有收益，最高 **+21.0 个成功率点**，且与可恢复余量紧密相关（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **迁移与鲁棒：** 迁到另一机器人与模拟器（SimplerEnv-Bridge）仍有效；观测降质（LIBERO-Occ）下依旧有效。
+- **反例：** 自回归 [OpenVLA](./paper-openvla.md) 说明「有余量」不等于「能给候选 rollout 排序」。检索只对动作先验缺口最大的策略有效，与选择器叠加还有额外收益。
+
+## 与其他工作对比
+
+| 维度 | 本文 | 对照 |
+|------|------|------|
+| 测试时手段 | 采样重试 vs 外部检索，先诊断再选 | [FabriMAE](./paper-fabrimae-vla-self-eval.md)：用内部注意力熵在多候选中选动作 |
+| 是否改参数 | 冻结策略 | [RoboTTT](./paper-robottt-test-time-training-vla-context.md)：测试时训练 fast weights |
+| 在线修正 | episode 级选择 | [SC-VLA](./paper-rcl-2602-21633-self-correcting-vla-online-action-refinement-via.md)：残差 SAC 在线细化动作 |
+
 ## 结论
 
 **Reuse Before You Retrieve 在本库中作为 arXiv:2608.17484 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**

@@ -49,6 +49,20 @@ summary: "NebulaVLA（arXiv:2608.16503，中兴）：低频理解 + 高频 Guide
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **仿真：** **LIBERO-Plus** 平均成功率 **85.5%**，显著优于同步（单频）基线（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **效率：** 动作生成加速约 **2.7×**（异步双频：高层语义推理与低层动作控制解耦）。
+- **实机：** AgiBot A2（见核心信息）；跨本体靠统一的语言化动作表示 **GESTURE-7**，平滑性靠 **Guide Action** 的 mask 平滑约束。
+
+## 与其他工作对比
+
+| 维度 | NebulaVLA | 对照 |
+|------|-----------|------|
+| 快慢系统 | 异步双频单模型 | [Fast-in-Slow](./cn-os-fast-in-slow.md)：慢推理系统组织任务、快策略执行 |
+| 提速手段 | 架构解耦（降低高层调用频率） | [SAFE-Pruner](./paper-safe-pruner.md)：视觉 token 剪枝；[Shallow-π](./paper-shallow-pi.md)：层蒸馏 |
+| 跨本体 | GESTURE-7 统一动作表示 | [π₀](./paper-pi0.md)：统一动作维度的 flow 动作专家 |
+
 ## 结论
 
 **NebulaVLA 在本库中作为 arXiv:2608.16503 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**

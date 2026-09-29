@@ -50,6 +50,20 @@ summary: "Geo-VLA（arXiv:2608.21440，北科大）：训练期内化道路几�
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **基准：** **NAVSIM v1**（非反应式端到端驾驶规划评测，见 [NAVSIM](./paper-rcl-ref-e25271fa6f028e5611cf-navsim-data-driven-non-reactive-autonomous-vehic.md)）。
+- **主结果：** **92.1 PDMS**，单相机 VLA 规划器中的新 SoTA；在多种动作生成架构的 VLA 规划器上均带来一致提升（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **数据：** 自建 **Geo-QA** 几何问答数据集，用于对比学习 + 指令微调注入道路几何；**推理时不需要高精地图或额外车道信息**。
+
+## 与其他工作对比
+
+| 维度 | Geo-VLA | 对照 |
+|------|---------|------|
+| 几何信息来源 | 训练时内化地图语义，推理仅单相机 | [OpenDriveVLA](./paper-rcl-ref-b5386c6f934f87f4cec4-opendrivevla-towards-end-to-end-autonomous-drivi.md) 等端到端驾驶 VLA 依赖图像/结构化感知输入 |
+| 形态 | 即插即用，增强已有 VLA 规划器 | [AutoVLA](./paper-rcl-2506-13757-autovla-a-vision-language-action-model-for-end-t.md)：完整的端到端驾驶 VLA 模型 |
+| 输出统一 | 保留原规划器动作头 | [EMMA（Waymo）](./paper-emma-waymo-e2e.md)：把轨迹/检测/路网统一成自然语言输出 |
+
 ## 结论
 
 **Geo-VLA 在本库中作为 arXiv:2608.21440 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**
@@ -64,6 +78,7 @@ summary: "Geo-VLA（arXiv:2608.21440，北科大）：训练期内化道路几�
 - [VLA](../methods/vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [一周 VLA 趋势地图（2026.08.17）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

@@ -93,6 +93,8 @@ CANONICAL_TOPIC_PAGES: dict[str, str] = {
     # 只登记英文键：中文「行为克隆」会同时出现在指向 imitation-learning.md 的用例里，
     # 登记中文键会把那条的正解继续往下压。
     "behavior cloning": "wiki/methods/behavior-cloning.md",
+    # dagger：模仿学习的核心交互式纠偏算法，imitation-learning.md 以「DAgger + BC」为两大支柱。
+    "dagger": "wiki/methods/imitation-learning.md",
     "接触力": "wiki/concepts/contact-dynamics.md",
     "contact dynamics": "wiki/concepts/contact-dynamics.md",
 }

@@ -124,6 +124,7 @@ sequenceDiagram
 - [ONNX Runtime](./onnxruntime.md) / [TensorRT](./tensorrt.md) — 推理后端
 - [遥操作](../tasks/teleoperation.md) — 人机接口与采数上下文
 - [机载推理 Runtime 选型](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 
