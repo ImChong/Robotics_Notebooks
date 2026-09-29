@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-29
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -23,18 +23,19 @@ related:
 sources:
   - ../../sources/blogs/dexmal_dm05.md
   - ../../sources/repos/dexmal_opendm.md
+  - ../../sources/repos/dexmal_dexbotic.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/opendm.md
-summary: "Dexmal DM0.5（OpenDM）：Gemma3-4B VLM + 680M Flow-Matching Action Expert 的开放世界 VLA；约 60s 历史上下文、11 类具身 CoT 与 DP 轨迹对齐；官方开源训练/推理栈与 DM05 / LIBERO / RobotWin2 / Table30v2 等权重。"
+summary: "Dexmal DM0.5：Gemma3-4B VLM + 680M Flow-Matching Action Expert 的开放世界 VLA；约 60s 历史、11 类具身 CoT 与 DP 轨迹对齐；官方 **OpenDM** 与 **Dexbotic** 双栈复现，共享 DM05 / LIBERO / RobotWin2 / Table30v2 等权重。"
 ---
 
-# Dexmal DM0.5（OpenDM）
+# Dexmal DM0.5（OpenDM · Dexbotic）
 
-**DM0.5**（[技术博客](https://www.dexmal.com/blog/dm0.5)，[GitHub `dexmal/opendm`](https://github.com/dexmal/opendm)，[HF DM05](https://huggingface.co/Dexmal/DM05)）是 [大晓智能（Dexmal）](https://www.dexmal.com/) 在 **DM0**（2026-02）之后的第二代原生具身基础模型，定位从「可控环境复杂动作」走向 **开放世界 zero-shot 与高效 fine-tuning**。架构延续 [VLA](../methods/vla.md) 范式，在 **历史上下文、具身推理、动作监督与数据质量** 上系统增强；官方以 **OpenDM** 开源 **权重、训练、推理、数据注册与评测流程**。
+**DM0.5**（[技术博客](https://www.dexmal.com/blog/dm0.5)，[OpenDM `dexmal/opendm`](https://github.com/dexmal/opendm)，[Dexbotic `dexmal/dexbotic`](https://github.com/dexmal/dexbotic)，[HF DM05](https://huggingface.co/Dexmal/DM05)）是 [大晓智能（Dexmal）](https://www.dexmal.com/) 在 **DM0**（2026-02）之后的第二代原生具身基础模型，定位从「可控环境复杂动作」走向 **开放世界 zero-shot 与高效 fine-tuning**。架构延续 [VLA](../methods/vla.md) 范式，在 **历史上下文、具身推理、动作监督与数据质量** 上系统增强；官方以 **OpenDM**（DM0.5 专用栈）与 **Dexbotic**（多 VLA 工具箱内的 DM05 一等入口）开源 **同一套 DM05 权重** 与互补训练/推理路径。
 
 ## 一句话定义
 
-以 **Gemma3-4B VLM + 680M Action Expert（Flow Matching）** 为骨干，通过 **最长约 60s 的历史视觉上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐监督**，在异构机器人数据与导航/人视频混合预训练上构建面向开放指令与长程记忆的 VLA；复现入口为 **OpenDM**（`script/dm05_launcher.sh` + HF/ModelScope checkpoint）。
+以 **Gemma3-4B VLM + 680M Action Expert（Flow Matching）** 为骨干，通过 **最长约 60s 的历史视觉上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐监督**，在异构机器人数据与导航/人视频混合预训练上构建面向开放指令与长程记忆的 VLA；复现可选 **OpenDM**（`script/dm05_launcher.sh`、JSONL 注册、TRT fast infer）或 **Dexbotic**（`libero_dm05.py`、统一 Inference API、历史帧 `history_images`）。
 
 ## 英文缩写速查
 
@@ -46,7 +47,8 @@ summary: "Dexmal DM0.5（OpenDM）：Gemma3-4B VLM + 680M Flow-Matching Action E
 | Flow Matching | Flow Matching | 连续动作生成的流匹配训练目标 |
 | DP | Dynamic Programming | 动态规划；用于轨迹进展上的单调动作锚点匹配 |
 | SFT | Supervised Fine-Tuning | 监督微调；OpenDM 提供 demo / LIBERO / RobotWin 等入口 |
-| OpenDM | OpenDM | Dexmal 官方 DM0.5 训练与推理开源仓库 |
+| OpenDM | OpenDM | Dexmal DM0.5 **专用**训练/推理/HTTP 服务仓库（Apache-2.0） |
+| Dexbotic | Dexbotic | Dexmal **VLA 工具箱**；含 DM0/DM05/π0 等（MIT；[arXiv:2510.23511](https://arxiv.org/pdf/2510.23511)） |
 | TRT | TensorRT | Fast 推理 backend 的 vision engine 编译路径 |
 | VLN | Vision-Language Navigation | 视觉-语言导航；DM0.5-Nav 覆盖 R2R/RxR 类基准 |
 | SR | Success Rate | 任务成功率，Table30/LIBERO 等基准常用指标 |
@@ -111,14 +113,25 @@ flowchart TB
 
 ## 开源状态
 
-| 项 | 状态（截至 2026-09-15） |
+| 项 | 状态（截至 2026-09-29） |
 |----|-------------------------|
-| **代码** | **已开源** — [dexmal/opendm](https://github.com/dexmal/opendm)（Apache-2.0） |
-| **基础权重** | **已开源** — [Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（亦见 ModelScope） |
+| **代码（OpenDM）** | **已开源** — [dexmal/opendm](https://github.com/dexmal/opendm)（Apache-2.0） |
+| **代码（Dexbotic）** | **已开源** — [dexmal/dexbotic](https://github.com/dexmal/dexbotic)（MIT；DM05 见 [`docs/DM05.md`](https://github.com/dexmal/dexbotic/blob/main/docs/DM05.md)） |
+| **基础权重** | **已开源** — [Dexmal/DM05](https://huggingface.co/Dexmal/DM05)（亦见 ModelScope；**两栈共用**） |
 | **下游权重** | **已开源** — LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 / **LeRobot** / **RoboDojo-Sim** 等（见下表） |
-| **HF 组织** | [Dexmal2026](https://huggingface.co/Dexmal2026) |
+| **HF 组织** | [Dexmal2026](https://huggingface.co/Dexmal2026) · [Dexmal](https://huggingface.co/Dexmal)（Dexbotic 文档常用） |
 | **权重许可** | **Gemma**（HF 模型卡；Gemma3 骨干衍生 checkpoint 须遵守 Gemma 使用条款） |
-| **技术报告 PDF** | 博文为主；细节以 OpenDM docs 与模型卡为准 |
+| **技术报告 PDF** | 博文 + Dexbotic [arXiv:2510.23511](https://arxiv.org/pdf/2510.23511)；benchmark 细节以 OpenDM / Dexbotic docs 为准 |
+
+### OpenDM 与 Dexbotic 怎么选
+
+| 目标 | 优先栈 | 理由 |
+|------|--------|------|
+| LIBERO 全 SFT / LoRA、与 π0/CogACT **同工具箱**对比 | **Dexbotic** | `libero_dm05.py` / `libero_dm05_lora.py` + FSDP2/DDP recipe |
+| 历史帧在线推理（`history_images`） | **Dexbotic** | 2026-09 主线 [History frame inference](https://github.com/dexmal/dexbotic/blob/main/docs/DM05.md#history-frame-inference) |
+| RobotWin2、VLA-Arena、Table30v2、SO101、LeRobot、RoboDojo-MEM | **OpenDM** | 专用 playground 与 `docs/en/dm05_*.md` |
+| HTTP 服务 + TensorRT **fast** backend | **OpenDM** | `script/dm05_launcher.sh` + `backend=fast` |
+| 统一 v1 Inference API（多 VLA 模型） | **Dexbotic** | [`docs/InferenceAPI.md`](https://github.com/dexmal/dexbotic/blob/main/docs/InferenceAPI.md) · `:7891/process_frame` |
 
 ### OpenDM 官方动态（README News）
 
@@ -127,7 +140,17 @@ flowchart TB
 | 2026-08-03 | [`robot_platforms.md`](https://github.com/dexmal/opendm/blob/main/docs/en/robot_platforms.md) — COBOT Magic / DOS-W1 真机相机与 `robot-name` 映射 |
 | 2026-07-24 | SO101 pick-cube checkpoint + LoRA SFT 指南 |
 | 2026-07-17 | RoboTwin2.0 generalist checkpoint + SFT 栈 |
+| 2026-09-23 | XPolicyLab **OpenDM policy**（RoboDojo 转换 + DM05-MEM） |
+| 2026-09-14 | [RoboColiseum](./robocoliseum.md) 四榜 **#1** |
 | 2026-07-09 | DM0.5 正式发布 + 技术博客 |
+
+### Dexbotic 官方动态（DM05）
+
+| 日期 | 更新 |
+|------|------|
+| 2026-09-11 | DM05 **历史帧推理**（`history_images` 多帧上下文） |
+| 2026-09-10 | DM05 **高性能推理 backend**（文称约 **5×** 核心推理加速） |
+| 2026-09-01 | Dexbotic 集成 **DM05** + LIBERO SFT/LoRA 入口 |
 
 ### 公开权重分工
 
@@ -173,15 +196,43 @@ sequenceDiagram
     end
 ```
 
-- **最短复现：** Docker `dexmal/opendm:latest` → `hf download Dexmal/DM05` → `script/dm05_launcher.sh --task inference --exp opendm/exp/dm05_exp.py …`。
+- **最短复现（OpenDM）：** Docker `dexmal/opendm:latest` → `hf download Dexmal/DM05` → `script/dm05_launcher.sh --task inference --exp opendm/exp/dm05_exp.py …`。
 - **下游对齐：** 勿混用「A 基准 checkpoint + B 基准 playground / chunk / 图像键」；`norm_stats` 与 `robot_type` 必须同训。
+
+### Dexbotic 运行时序图（LIBERO · DM05）
+
+节点对齐 [`sources/repos/dexmal_dexbotic.md`](../../sources/repos/dexmal_dexbotic.md) 与 [`docs/DM05.md`](https://github.com/dexmal/dexbotic/blob/main/docs/DM05.md)。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户 / 评测客户端
+    participant HF as Hugging Face
+    participant ENV as Docker dexmal/dexbotic:dm05
+    participant PG as libero_dm05.py
+    participant SRV as HTTP :7891/process_frame
+    U->>HF: 下载 DM05 或 DM05-libero + norm_stats
+    U->>ENV: pip install -e .
+    alt LIBERO 全 SFT / LoRA
+        U->>PG: torchrun --task train（FSDP2 或 DDP LoRA）
+        PG-->>U: user_checkpoints/dexbotic/libero_dm05/...
+    else 推理 / dexbotic-benchmark
+        U->>PG: --task inference --model_name_or_path ckpt
+        PG->>SRV: 加载 checkpoint + norm_stats
+        U->>SRV: text + agentview/wrist（可选 history_images）
+        SRV-->>U: action chunk
+    end
+```
+
+- **LIBERO 官方 99.0% 行：** serve [Dexmal/DM05-libero](https://huggingface.co/Dexmal/DM05-libero)，勿误用未微调 Base 做评测。
 
 ## 工程实践
 
 | 项 | 要点 |
 |----|------|
-| **环境** | Ubuntu 20.04/22.04 + NVIDIA；推荐 Docker；本地 Python 3.10 + CUDA torch + flash-attn |
-| **GPU** | 训练建议 **8 卡**；推理 **1 卡** 即可（4090 / A100 / H100 / H20） |
+| **环境（OpenDM）** | Docker `dexmal/opendm:latest`；Python 3.10 + flash-attn |
+| **环境（Dexbotic）** | Docker `dexmal/dexbotic:dm05` 或通用 `dexmal/dexbotic`；[`docs/DM05.md`](https://github.com/dexmal/dexbotic/blob/main/docs/DM05.md) |
+| **GPU** | 训练建议 **8 卡**（Dexbotic LoRA 可 8×4090）；推理 **1 卡** |
 | **推理频率（博客）** | 默认 50-step chunk + 10 flow steps；**4090 ~10Hz**、**H100 ~20Hz** |
 | **Fast backend** | 需 TensorRT、Triton、`torch.nn.attention.flex_attention`；首次启动有 ONNX/TRT 构建开销 |
 | **数据** | JSONL episode；注册于 `opendm/dataset/*.py`；demo 烟测用 `assets/demo/` |
@@ -206,7 +257,8 @@ sequenceDiagram
 - **相对 DM0：** 同一机构代际升级，重点在 **开放 zero-shot、历史记忆、CoT 监督与轨迹对齐**。
 - **相对 [π₀.₇](../methods/pi07-policy.md) / OpenPI 系：** 同属 **VLM + flow/chunk 动作** 族；DM0.5 更突出 **长历史 token 抽象** 与 **具身 CoT**；OpenDM README 在 LIBERO / RobotWin / Table30 上直接对照 **Pi0 / Pi0.5**。
 - **相对 [Qwen-VLA](./qwen-vla.md) / [LingBot-VLA 2.0](./lingbot-vla-v2.md)：** 均为开源或半开源通才 VLA；DM0.5 以 **OpenDM 全栈 + Gemma 骨干 + 60s 记忆叙事** 区分。
-- **相对 [Dexmal DW05](./dexmal-dw05.md)：** 同机构双线——DM0.5 / OpenDM 偏 **开放世界 VLA（语言→动作）**；DW05 / OpenDW 偏 **Wan + MoT 世界–动作联合** 与动作条件未来视频。
+- **相对 [Dexmal DW05](./dexmal-dw05.md)：** 同机构双线——DM0.5 偏 **开放世界 VLA（语言→动作）**；DW05 偏 **Wan + MoT 世界–动作联合**；DW05 加载示例在 **Dexbotic** `dexbotic.model.dw05`。
+- **OpenDM vs Dexbotic：** 共享 **DM05** 权重；OpenDM 覆盖 **更广 sim benchmark + fast HTTP**；Dexbotic 覆盖 **多 VLA 共栈 + LIBERO recipe + 历史帧 API**（见 [`dexmal_dexbotic.md`](../../sources/repos/dexmal_dexbotic.md)）。
 
 ## 常见误区或局限
 
@@ -219,6 +271,7 @@ sequenceDiagram
 ## 参考来源
 
 - [OpenDM 仓库归档](../../sources/repos/dexmal_opendm.md)
+- [Dexbotic 仓库归档](../../sources/repos/dexmal_dexbotic.md)
 - [DM0.5 官方博客归档](../../sources/blogs/dexmal_dm05.md)
 - [OpenDM GitHub](https://github.com/dexmal/opendm)
 - [DM0.5 技术博客](https://www.dexmal.com/blog/dm0.5)
@@ -245,6 +298,8 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [OpenDM README](https://github.com/dexmal/opendm)
+- [Dexbotic README · DM05 教程](https://github.com/dexmal/dexbotic/blob/main/docs/DM05.md)
+- [Dexbotic 在线文档](https://dexbotic.com/docs/)
 - [DM0.5 官方博客（Dexmal）](https://www.dexmal.com/blog/dm0.5)
 - [DM05 Inference Guide](https://github.com/dexmal/opendm/blob/main/docs/en/dm05_inference.md)
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md)

@@ -10,8 +10,10 @@
 - **修订日期：** 2026-08-08（补链官方开源仓 OpenDM 与 HF/ModelScope 权重集合）
 - **二次核查：** 2026-08-25（博客叙事与 OpenDM/HF 权重栈一致；无新增基准数值）
 - **三次核查：** 2026-09-15（补英文博客链、DM05-Lerobot、DM05-MEM-Robodojo-Sim、RoboColiseum 四榜 #1）
+- **四次核查：** 2026-09-29（方法叙事未变；官方 **DM05 复现** 新增 **[Dexbotic](../repos/dexmal_dexbotic.md)** 工具栈主线，与 [OpenDM](../repos/dexmal_opendm.md) 共用 HF 权重）
 - **前代模型：** DM0（2026-02 发布，Dexmal 第一代原生具身基础模型）
-- **开源代码：** <https://github.com/dexmal/opendm>（见 [dexmal_opendm.md](../repos/dexmal_opendm.md)）
+- **开源代码（DM0.5 专用）：** <https://github.com/dexmal/opendm>（见 [dexmal_opendm.md](../repos/dexmal_opendm.md)）
+- **开源代码（VLA 工具箱 · 含 DM05）：** <https://github.com/dexmal/dexbotic>（见 [dexmal_dexbotic.md](../repos/dexmal_dexbotic.md)）
 - **基础权重：** <https://huggingface.co/Dexmal/DM05>
 - **权重集合：** <https://huggingface.co/collections/Dexmal/dm05>
 - **一句话说明：** Dexmal **DM0.5** 是在 **Gemma3-4B VLM + 680M Action Expert** 上的 **开放世界 VLA 基础模型**：以 **最长约 60s 历史上下文**、**11 类具身 CoT 自回归任务** 与 **动态轨迹对齐（DP 动作匹配）** 强化长程记忆与指令遵循；多源混合预训练覆盖操作、导航与人视频，在 **zero-shot、Table30 v2、LIBERO、RoboTwin2.0、R2R/RxR** 等基准报告 SOTA 或显著领先 **DM0 / π0.5-Droid**；官方栈以 **OpenDM** 开源训练/推理与多下游 checkpoint。
@@ -63,12 +65,13 @@
 
 ### 开源跟进（2026-07 起，见 OpenDM）
 
-博文发布后，官方以 **[dexmal/opendm](https://github.com/dexmal/opendm)** 放出训练/推理代码与 **DM05** 系列权重（Base + LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 等）。方法主张仍以本博客为准；复现入口与 checkpoint 分工见 [dexmal_opendm.md](../repos/dexmal_opendm.md)。
+博文发布后，官方以 **[dexmal/opendm](https://github.com/dexmal/opendm)** 放出训练/推理代码与 **DM05** 系列权重（Base + LIBERO / RobotWin2 / SO101 / VLA-Arena / Table30v2 等）。**2026-09** 起 **[dexmal/dexbotic](https://github.com/dexmal/dexbotic)** 在统一 VLA 工具箱中集成 **DM05**（LIBERO SFT/LoRA、历史帧推理、高性能 backend）。方法主张仍以本博客为准；**OpenDM vs Dexbotic** 选型见 [dexmal_opendm.md](../repos/dexmal_opendm.md) 与 [dexmal_dexbotic.md](../repos/dexmal_dexbotic.md)。
 
 ## 对 wiki 的映射
 
 - [DM0.5](../../wiki/entities/dexmal-dm05.md)
 - [OpenDM 仓库归档](../repos/dexmal_opendm.md)
+- [Dexbotic 仓库归档](../repos/dexmal_dexbotic.md)
 - [VLA 方法页](../../wiki/methods/vla.md)
 - [Action Chunking](../../wiki/methods/action-chunking.md)
 - [Manipulation](../../wiki/tasks/manipulation.md)

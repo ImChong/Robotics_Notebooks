@@ -8,7 +8,7 @@
 - **代码：** <https://github.com/dexmal/opendw>
 - **权重（Base）：** <https://huggingface.co/Dexmal/DW05-Base>（Apache-2.0；32D action/proprio；训练 step 140000）
 - **权重（RobotWin SFT）：** <https://huggingface.co/Dexmal/DW05-Robotwin>（RoboTwin 2.0 微调；含 `norm_stats.json` 与在线 demo 配置）
-- **运行时依赖：** Dexbotic DW05（`pip install -e .`；README 亦提及 `gitlab.dexmal.com/robotics/dexbotic-open` 历史路径）
+- **运行时依赖：** [Dexbotic](./dexmal_dexbotic.md)（`pip install -e .` 于 <https://github.com/dexmal/dexbotic>；历史路径 `gitlab.dexmal.com/robotics/dexbotic-open`）
 - **入库日期：** 2026-07-16
 - **一句话说明：** **DW05** 是 Dexmal 开源的 **动作条件具身世界模型**：在 **Wan 骨干 + MoT 三专家头（video / action / value）** 上联合 **未来视频预测、动作生成与状态–价值估计**；提供 **DW05-Base** 通用 32 维 checkpoint 与 **DW05-Robotwin** 下游评测包，数据管线对齐 **RoboTwin 风格 JSONL**。
 
