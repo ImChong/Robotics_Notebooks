@@ -15,6 +15,7 @@ related:
   - ./paper-abot-world-0.md
   - ./paper-wan-video.md
   - ./cosmos-3.md
+  - ./minimax-h3.md
   - ./paper-gigaworld-1-policy-evaluation.md
 sources:
   - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
@@ -188,7 +189,7 @@ sequenceDiagram
 | Seedance 2.0\* | Prompt I2V | **75.5** #1 | Drift 第一；Obs-Q 第二 |
 | Wan 2.7\* | Prompt I2V | 75.0 #2 | **Intentional / Physical 第一** |
 | Kling 3.0\* | Prompt I2V | 74.4 #3 | Intentional 第二 |
-| MiniMax H3 | Prompt I2V | 74.3 #4 | 开源 I2V 前列 |
+| [MiniMax H3](./minimax-h3.md) | Prompt I2V | 74.3 #4 | 开源 I2V 前列 |
 | Cosmos3-Super | Prompt I2V | 71.9 #7 | 见 [Cosmos 3](./cosmos-3.md) |
 | Wan 2.2 | Prompt I2V | 67.7 #11 | 相对 2.7 明显掉 Intentional |
 | SANA-WM | Native action | 68.7 #10 | **Offscreen 第一**；Intentional 弱 |
@@ -248,6 +249,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md) — 被评对象所在方法谱系
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 像素仿真失效模式（漂移、因果、offscreen）
 - [ABot-World-0](./paper-abot-world-0.md) — Native action 被评模型；Exploratory 第一
+- [MiniMax H3](./minimax-h3.md) — 主榜 Prompt I2V #4；开源权重与 RunningHub/Comfy 工程入口
 - [Wan](./paper-wan-video.md) — Wan 2.2/2.7 在 Prompt I2V 族的位置
 - [Cosmos 3](./cosmos-3.md) — Cosmos3-Super 在同榜 Prompt I2V 族
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — WM 作策略评估器，轴线不同
