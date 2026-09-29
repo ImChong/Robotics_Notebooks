@@ -2,7 +2,7 @@
 type: concept
 tags: [rag, retrieval, llm, grounding, knowledge-base, agent, vlm, nlp]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-29
 summary: "RAG（Retrieval-Augmented Generation）在生成前从外部知识库检索相关片段再条件生成，用可更新、可溯源的非参数记忆补足 LLM 参数化知识，是 agent grounding、VLM 约束与 LLM Wiki 对照范式的共同基座。"
 related:
   - ../references/llm-wiki-karpathy.md
@@ -10,6 +10,7 @@ related:
   - ./transformer.md
   - ../methods/vla.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/langchain.md
   - ../entities/painode-125-langchain.md
   - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/lewis_rag_neurips_2020.md
   - ../../sources/papers/rag_survey_arxiv_2312_10997.md
   - ../../sources/repos/facebookresearch_dpr.md
+  - ../../sources/repos/langchain.md
   - ../../sources/repos/pai_awesome_resource_125_langchain.md
 ---
 
@@ -111,7 +113,7 @@ flowchart LR
 
 ### 框架与工具
 
-- **编排：** [LangChain](../entities/painode-125-langchain.md) 等提供 retriever、document loader、chain 抽象；生产还需观测（latency、retrieval hit rate）。
+- **编排：** [LangChain](../entities/langchain.md) 等提供 retriever、document loader、chain 抽象；生产还需观测（latency、retrieval hit rate）。
 - **复现检索器：** [`facebookresearch/DPR`](../../sources/repos/facebookresearch_dpr.md) — 理解 bi-encoder + FAISS 的经典路径。
 
 ## 局限与风险
@@ -131,7 +133,7 @@ flowchart LR
 - [SafeHumanoid（VLM-RAG 阻抗控制）](../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md)
 - [Robot-Powered Data Flywheel（Scanford）](../entities/paper-scanford-robot-powered-data-flywheel.md)
 - [数据飞轮（Data Flywheel）](./data-flywheel.md)
-- [LangChain](../entities/painode-125-langchain.md)
+- [LangChain](../entities/langchain.md)
 - [Easy-Vibe（Datawhale）](../entities/easy-vibe.md) — Stage 3 / 附录 **交互式 RAG** 教程
 
 ## 参考来源
@@ -139,7 +141,8 @@ flowchart LR
 - [Lewis et al. RAG（NeurIPS 2020）](../../sources/papers/lewis_rag_neurips_2020.md)
 - [Gao et al. RAG Survey（arXiv:2312.10997）](../../sources/papers/rag_survey_arxiv_2312_10997.md)
 - [facebookresearch/DPR 仓库归档](../../sources/repos/facebookresearch_dpr.md)
-- [LangChain 仓库归档（awesome-physical-ai #125）](../../sources/repos/pai_awesome_resource_125_langchain.md)
+- [LangChain 主仓归档](../../sources/repos/langchain.md)
+- [LangChain 清单摘录（awesome-physical-ai #125）](../../sources/repos/pai_awesome_resource_125_langchain.md)
 
 ## 推荐继续阅读
 
