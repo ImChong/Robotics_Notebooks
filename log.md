@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | RoboAug（arXiv:2602.14032）：单帧 bbox + 区域对比生成式增广；项目页 Code/Dataset Coming Soon；新建 paper-roboaug 与 sources 归档
+
 ## [2026-09-29] ingest | MiniMax H3（官方博客+GitHub/HF）与 RunningHub RH Enhanced Camp；实体 minimax-h3 + sources；交叉 ComfyUI、HarnessEval-W；步骤 2.5 权重已开源、Context-IR 部分未开源
 
 ## [2026-09-29] ingest | OCEC 开/闭眼微分类：sources/repos+HF 数据集归档，wiki/entities/ocec，ONNX 页交叉引用；GitHub/Zenodo/Releases 已开源
