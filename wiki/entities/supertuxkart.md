@@ -4,6 +4,7 @@ tags: [entity, racing, kart, driving-game, open-source, gpl, game-engine, multip
 status: complete
 updated: 2026-09-18
 related:
+  - ./open-source-games.md
   - ./drive-game.md
   - ./starter-kit-racing.md
   - ./carla.md
