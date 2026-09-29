@@ -802,6 +802,7 @@
 - [Open Duck Mini](wiki/entities/open-duck-mini.md) — Open Duck Mini** 是社区驱动的 **BDX 风格迷你双足机器人**：在娱乐角色外形下，把 **低成本舵机硬件** 与 **MuJoCo Playground RL + Disney `📅unknown` `[entity_page]`
 - [Open Duck Playground](wiki/entities/open-duck-playground.md) — Open Duck Playground** 是 Open Duck 项目的 **MuJoCo Playground 训练仓**：在 JAX/MJX 并行仿真里训练 `open_duck_mini `📅unknown` `[entity_page]`
 - [Open Duck Reference Motion Generator](wiki/entities/open-duck-reference-motion-generator.md) — Open Duck Reference Motion Generator** 为 Open Duck 生态提供 **可批量再生的参考运动**：基于 [Placo](https://github.c `📅unknown` `[entity_page]`
+- [open-source-games（bobeff）](wiki/entities/open-source-games.md) — bobeff/open-source-games](https://github.com/bobeff/open-source-games)** 是 GitHub 上维护的 **开源与商业游戏源 `📅unknown` `[entity_page]`
 - [开源人形机器人“大脑” (主控电脑) 选型](wiki/entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
