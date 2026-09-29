@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | TADreamer（arXiv:2609.19824，ZJU）零样本 TABR 视频想象语言导航 + 点云标定；未列官方代码
+
 ## [2026-09-29] ingest | 多模空间 VLA 周报 2026.08.17–23：16/16 canonical 节点（新建 11 论文实体 + 技术地图）
 
 ## [2026-09-29] structural | roadmap/motion-control.md — 主路线扩展为运动控制 → Physical AI 全栈：新增全栈视图/Core Path/Signal vs Noise，L2/L3/L5/L6 补充，新增 L8–L12（Transformer、动作生成、VLA、世界模型、部署）
