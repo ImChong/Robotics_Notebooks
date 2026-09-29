@@ -774,6 +774,8 @@
 - [NVIDIA Learn OpenUSD](wiki/entities/nvidia-learn-openusd.md) — Learn OpenUSD** 是 NVIDIA 维护的 **免费、开源** USD 自学路径（[在线课纲](https://docs.nvidia.com/learn-openusd/lates `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse NuRec](wiki/entities/nvidia-nurec.md) — NVIDIA Omniverse NuRec** 是面向 Physical AI 的 **神经重建与渲染栈**：把真实相机 / LiDAR 吃成可在仿真里重放、改视角的 3D 环境，主交付是带高斯 `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](wiki/entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 Isaac Sim 的运行底座。通过利 `📅unknown` `[entity_page]`
+- [NVIDIA Open Agent Safety Platform（OASP）](wiki/entities/nvidia-open-agent-safety-platform.md) — NVIDIA Open Agent Safety Platform**（OASP）是 NVIDIA 2026-09 公开的 **agent 安全参考架构**（[Developer Blog](ht `📅unknown` `[entity_page]`
+- [NVIDIA OpenShell](wiki/entities/nvidia-openshell.md) — NVIDIA OpenShell**（GitHub，[文档](https://docs.nvidia.com/open `📅unknown` `[entity_page]`
 - [NVIDIA OSMO（Physical AI 工作流编排）](wiki/entities/nvidia-osmo.md) — NVIDIA OSMO**（GitHub，[User Guide](https://nvidia.github.io/OSMO/ `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI 数据集（Hugging Face 集合）](wiki/entities/nvidia-physical-ai-datasets.md) — NVIDIA Physical AI**（[Hugging Face Collection](https://huggingface.co/collections/nvidia/physical- `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`

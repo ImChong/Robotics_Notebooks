@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | NVIDIA OASP 博客：OpenShell 已开源 + Sentry/BlueField 参考架构；新增 sources 与 wiki 实体并交叉 Agent 栈
+
 ## [2026-09-29] ingest | RoboAug（arXiv:2602.14032）：单帧 bbox + 区域对比生成式增广；项目页 Code/Dataset Coming Soon；新建 paper-roboaug 与 sources 归档
 
 ## [2026-09-29] ingest | MiniMax H3（官方博客+GitHub/HF）与 RunningHub RH Enhanced Camp；实体 minimax-h3 + sources；交叉 ComfyUI、HarnessEval-W；步骤 2.5 权重已开源、Context-IR 部分未开源
