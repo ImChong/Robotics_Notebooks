@@ -3,7 +3,7 @@
 - **类型：** 公司站点 / 具身操作与通才机器人策略（原始资料归档）
 - **收录日期：** 2026-09-15
 - **主链接：** <https://www.rewardai.com/>
-- **博客入口：** <https://www.rewardai.com/blog/OM-1/>（旗舰 **OM-1 / Omnibody**）
+- **博客入口：** <https://www.rewardai.com/blog/>（2026-09-29 复核：列表仅 1 篇，即旗舰 **OM-1 / Omnibody** <https://www.rewardai.com/blog/OM-1/>）
 - **GitHub：** 截至 **2026-09-15** 公司站与 OM-1 博文 **未见** 官方代码组织或公开仓链接
 - **前序学术：** 团队 [DexCap](https://dex-cap.github.io/)（Stanford；RSS 2024）
 

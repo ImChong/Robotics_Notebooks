@@ -195,6 +195,17 @@
         { "date": "2026-07", "title": "LingBot-VA 2.0", "track": "世界–动作", "desc": "语义视觉–动作 tokenizer + 因果 DiT + 视频流 MoE；仅公开技术报告。", "id": "entity-robbyant", "url": "https://technology.robbyant.com/lingbot-va-v2" },
         { "date": "2026-07", "title": "LingBot-Video", "track": "视频预训练", "desc": "DiT + MoE 具身视频基础模型，reward 对齐物理合理性与任务完成度。", "id": "entity-cn-os-lingbot-video", "url": "https://technology.robbyant.com/lingbot-video" }
       ]
+    },
+    {
+      "key": "rewardai",
+      "name": "励元智能 Reward AI",
+      "lenses": ["wam"],
+      "summary": "从 DexCap 可穿戴 mocap 学术前序出发，到 Omnibody 全栈：可穿戴 Hand 采集、统一多模态数据接口、仅人类示范训练的 OM-1 通才策略，加高频 RL 控制层跨工业臂与人形；截至 2026-09 未开源。",
+      "official": "https://www.rewardai.com/blog/",
+      "nodes": [
+        { "date": "2024-03", "title": "DexCap", "track": "前序学术", "desc": "团队前序（Stanford，RSS 2024）：可穿戴 SLAM + EMF 手套 mocap，经 DexIL 把野外人类示范迁移到灵巧手。", "id": "entity-paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti", "url": "https://dex-cap.github.io/" },
+        { "date": "2026-09", "title": "OM-1", "track": "通才策略", "desc": "仅人类穿戴示范、无遥操作 / 机上数据单阶段训练；高频 RL 控制层异步部署到工业臂与人形，宣称 <30 分钟人类数据上手新任务。", "id": "entity-reward-ai-om1", "url": "https://www.rewardai.com/blog/OM-1/" }
+      ]
     }
   ]
 }
