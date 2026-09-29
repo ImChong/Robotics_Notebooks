@@ -31,7 +31,7 @@
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读，再进入 L8–L12 的 Physical AI 扩展。
 - 想 **先看 Physical AI 全栈地图 / 时间有限只走核心路径**：跳到 [Physical AI 全栈视图](#physical-ai-full-stack-view) 与 [Physical AI Core Path](#physical-ai-core-path)。
 - 看到 **新模型 / 新论文不知道要不要学**：先用 [How to filter new Physical AI work](#physical-ai-signal-vs-noise) 过一遍。
-- 想 **直接走某个方向**：跳到 [可选纵深](#depth-optional-index)，二十六条独立路线页各自标了适合谁、从主线哪一层衔接。
+- 想 **直接走某个方向**：跳到 [可选纵深](#depth-optional-index)，二十七条独立路线页各自标了适合谁、从主线哪一层衔接。
 
 ---
 
@@ -2061,7 +2061,7 @@ flowchart TB
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但真正做研究或做项目时，总要往某个子方向深挖。下面二十六条纵深路径**各自是独立的路线页**，从主路线的某个阶段衔接出去（按各方向起点里程碑的时间先后排列）：
+主路线偏向"先稳住一条主干"，但真正做研究或做项目时，总要往某个子方向深挖。下面二十七条纵深路径**各自是独立的路线页**，从主路线的某个阶段衔接出去（按各方向起点里程碑的时间先后排列）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
@@ -2088,6 +2088,7 @@ flowchart TB
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
 | [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) | 想用生成模型造出人体/人形动作 | L5.3 之后 |
 | [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) | 想让机器人听懂指令干活 | L5.3 之后 |
+| [如果目标是扩散与流匹配策略（Diffusion Policy → DiT → Flow Matching VLA）](depth-robotics-diffusion-dit-flow.md) | 想按动作去噪机制演进读 DP / DiT-Block / RDT / π₀ / GR00T / Dita | L5.3 之后（L9 动作生成的展开版）|
 | [如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) | 想把真实世界压成可训练/可评测的仿真资产 | L6 / L7（L6/L7 资产与评测的展开版）|
 | [如果目标是具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) | 想为具身模型建一条可交付的数据供给管线 | L5 / L7（训练输入与数据基础设施的展开版）|
 | [如果目标是 WAM（世界–动作模型）](depth-wam.md) | 想让策略在出动作前显式预知世界会怎么变 | L5.3 之后 |
