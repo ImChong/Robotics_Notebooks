@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | HumanEgo arXiv:2605.24934 深读入库，TX-Leo 代码/数据/ICT+flow 管线
+
 ## [2026-09-29] ingest | MiniMind 主仓与 GitHub Pages 入库，实体页链 PyTorch/GRPO/深度学习基础
 
 ## [2026-09-29] ingest | LangChain 生态全量入库：LangGraph/LangSmith/Deep Agents/langchain-ai 实体与产品页源
