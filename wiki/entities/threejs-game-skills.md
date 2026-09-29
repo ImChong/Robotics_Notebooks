@@ -19,6 +19,7 @@ related:
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
   - ./video-shotcraft.md
+  - ./sc-datav.md
   - ../references/llm-wiki-karpathy.md
   - ../../docs/checklists/frontend-optimization-v1.md
 sources:
@@ -152,6 +153,7 @@ sequenceDiagram
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
+- [sc-datav](./sc-datav.md) — **Three.js + ECharts 地理大屏**（运营视图，非游戏循环）
 - [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 `docs/` 交互 roadmap
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 规约编译
 
