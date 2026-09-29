@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-13
 code: https://github.com/matsuoka-601/Particles4All
 related:
+  - ./tidewater.md
   - ./newton-physics.md
   - ./paper-dat-divide-and-truncate.md
   - ../queries/simulation-physics-fidelity.md
@@ -119,6 +120,7 @@ sequenceDiagram
 - [DAT](./paper-dat-divide-and-truncate.md)
 - [仿真物理保真（Query）](../queries/simulation-physics-fidelity.md)
 - [Genesis World 1.0](./genesis-world-10.md)
+- [Tidewater](./tidewater.md) — 浏览器 WebGPU 海洋/大气全场景 Demo（非粒子求解器）
 
 ## 参考来源
 
