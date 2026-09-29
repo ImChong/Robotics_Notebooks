@@ -50,6 +50,7 @@ summary: "robbyant/lingbot-world：蚂蚁灵波开源世界模型主线（视频
 
 ## 关联页面
 
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — 发布方公司页与 LingBot 全栈
 - [LingBot-VLA](./lingbot-vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [LingBot-World 论文索引](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md)

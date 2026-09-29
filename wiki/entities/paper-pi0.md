@@ -125,6 +125,7 @@ sequenceDiagram
 
 - [π₀ 方法页](../methods/π0-policy.md)
 - [π₀.7](../methods/pi07-policy.md)
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-VLA 同属 VLM + flow 动作专家族，可作跨公司对照
 - [Diffusion Policy](./paper-diffusion-policy.md)
 - [OpenVLA](./paper-openvla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)

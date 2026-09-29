@@ -86,6 +86,7 @@ Open-sourced world simulator stemming from video generation with high fidelity a
 
 ## 关联页面
 
+- 发布方：[Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot 全栈与 World 1.0 / 2.0 对照
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)

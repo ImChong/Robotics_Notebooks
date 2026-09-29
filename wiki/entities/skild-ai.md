@@ -82,6 +82,7 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [Generalist AI](./generalist-ai-robotics.md) — 另一条闭源通才 / ICL 产业线
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — 同讲「一个大脑控制多种机器人」，但 LingBot-VLA 公开权重
 - [海外具身智能实验室地图（2026）](../overview/overseas-embodied-ai-labs-landscape-2026.md)
 - [LocoFormer（论文笔记占位）](./paper-locoformer.md)
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品

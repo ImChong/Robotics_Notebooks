@@ -198,6 +198,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — 发布方公司页与 LingBot 全栈
 - [LingBot-World 1.0（索引）](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md)
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md) — 同团队 VLA 栈
 - [LingBot-Map](../methods/lingbot-map.md) — 流式 3D 几何

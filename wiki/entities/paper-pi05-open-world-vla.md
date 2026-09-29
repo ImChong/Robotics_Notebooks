@@ -132,6 +132,7 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [π0-policy](../methods/π0-policy.md)
 - [pi07-policy](../methods/pi07-policy.md)
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-VLA 1.0 / 2.0 与 LingBot-VA 论文均以 π₀.₅ 为对照基线
 - [vla](../methods/vla.md)
 - [Indi](./paper-indi.md) — 在 π0.5 与 GR00T-N1.7 上蒸馏行为意图（arXiv:2608.23478）
 - [foundation-policy](../concepts/foundation-policy.md)

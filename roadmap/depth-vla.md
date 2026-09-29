@@ -120,6 +120,7 @@ flowchart LR
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)
 - [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md) — 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅
 - [LingBot-VLA](../wiki/entities/lingbot-vla.md) — Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
+- [Robbyant（蚂蚁灵波）](../wiki/entities/robbyant.md) — LingBot-VLA 的发布方：把 VLA 放回 Vision / Depth / Map / Video / World / VA 全栈里看，并与 π₀ / GR00T / Skild Brain 对照
 - [BridgeVLA++](../wiki/entities/paper-bridgevla-plusplus.md) — 多视图 heatmap 对齐 3D VLA 加统一时空记忆（粗阶段关键帧检索 + 细阶段初始几何），RMBench 记忆依赖任务 18.9%→96.0%，RLBench 93.7%；代码与权重已开源
 - [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
 - [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md) — 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源

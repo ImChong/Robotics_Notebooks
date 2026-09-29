@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -174,6 +174,26 @@
       "official": "https://deltai.com/en/blog",
       "nodes": [
         { "date": "2026-09", "title": "Δ₀", "track": "基础模型", "desc": "MoT 潜空间 brain + delta-action 全身控制器；>1 万小时人数据预训练、real-to-sim-to-real 评测与真机 RL。", "id": "entity-delta-0-humanoid-foundation-model", "url": "https://deltai.com/en/blog/delta-0" }
+      ]
+    },
+    {
+      "key": "robbyant",
+      "name": "蚂蚁灵波 Robbyant",
+      "lenses": ["wam"],
+      "summary": "蚂蚁集团旗下具身智能公司；LingBot 模型家族从视觉、深度、流式 3D、视频预训练、世界模型、世界–动作模型一路做到跨本体 VLA，多数代码与权重开源。",
+      "official": "https://technology.robbyant.com/",
+      "nodes": [
+        { "date": "", "title": "LingBot 全栈", "track": "公司", "desc": "Ant Group → Robbyant → LingBot：感知 → 空间 → 视频 → 世界 → 动作七条模型线。", "id": "entity-robbyant", "url": "https://www.robbyant.com/about-robby" },
+        { "date": "2026-01", "title": "LingBot-Depth", "track": "感知", "desc": "masked depth modeling 补全噪声深度；开放约 300 万 RGB-D 样本，后成为 VLA 几何教师。", "id": "entity-cn-os-lingbot-depth", "url": "https://technology.robbyant.com/lingbot-depth" },
+        { "date": "2026-01", "title": "LingBot-VLA", "track": "VLA", "desc": "4B 务实 VLA：Qwen2.5-VL + flow 动作头，2 万小时双臂真机预训练，权重开源。", "id": "entity-lingbot-vla", "url": "https://technology.robbyant.com/lingbot-vla" },
+        { "date": "2026-01", "title": "LingBot-World", "track": "世界模型", "desc": "源自视频生成的开源交互世界模拟器，支持相机 / 动作条件。", "id": "entity-lingbot-world", "url": "https://technology.robbyant.com/lingbot-world" },
+        { "date": "2026-01", "title": "LingBot-VA", "track": "世界–动作", "desc": "MoT 共享潜空间交错建模视频与动作，闭环 rollout + 异步推理。", "id": "entity-paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g", "url": "https://technology.robbyant.com/lingbot-va" },
+        { "date": "2026-04", "title": "LingBot-Map", "track": "3D 重建", "desc": "Geometric Context Transformer 流式 3D 重建，约 20 FPS、万帧级稳定。", "id": "entity-paper-lingbot-map", "url": "https://technology.robbyant.com/lingbot-map" },
+        { "date": "2026-07", "title": "LingBot-Vision", "track": "感知", "desc": "masked boundary modeling 自监督视觉骨干，兼顾语义与几何。", "id": "entity-cn-os-lingbot-vision", "url": "https://technology.robbyant.com/lingbot-vision" },
+        { "date": "2026-07", "title": "LingBot-VLA 2.0", "track": "VLA", "desc": "6B MoE 动作专家，约 6 万小时 20 本体 + 人视频预训练，55 维全身动作空间（官方自报）。", "id": "entity-lingbot-vla-v2", "url": "https://technology.robbyant.com/lingbot-vla-v2" },
+        { "date": "2026-07", "title": "LingBot-World 2.0", "track": "世界模型", "desc": "720p 60 fps 无界交互视界，pilot / director 双 agent。", "id": "entity-paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling", "url": "https://technology.robbyant.com/lingbot-world-v2" },
+        { "date": "2026-07", "title": "LingBot-VA 2.0", "track": "世界–动作", "desc": "语义视觉–动作 tokenizer + 因果 DiT + 视频流 MoE；仅公开技术报告。", "id": "entity-robbyant", "url": "https://technology.robbyant.com/lingbot-va-v2" },
+        { "date": "2026-07", "title": "LingBot-Video", "track": "视频预训练", "desc": "DiT + MoE 具身视频基础模型，reward 对齐物理合理性与任务完成度。", "id": "entity-cn-os-lingbot-video", "url": "https://technology.robbyant.com/lingbot-video" }
       ]
     }
   ]

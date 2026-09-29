@@ -59,6 +59,7 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 ## 关联页面
 
 - [1X World Model（1XWM）](./paper-1xwm-redwood-world-model.md)
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-World 动作条件视频世界模型对照
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [人形机器人](./humanoid-robot.md)
 - [Figure AI](./figure-ai.md)（美国人形与 VLA 路线的可比节点）

@@ -119,6 +119,7 @@ flowchart TB
 - [MimicLite](./mimiclite.md) · [UFO](./roboparty-ufo.md) · [human-humanoid-tools](./human-humanoid-tools.md)
 - [TeCH 论文实体](./paper-tech-humanoid-control.md)
 - [INTACT 论文实体](./paper-intact.md) — Lab 联署意图→动作无搜索 WM
+- [Robbyant（蚂蚁灵波）](./robbyant.md) — 国内另一类开源路线：不做整机开源，开源 LingBot 感知→世界模型→VLA 模型栈
 
 ## 推荐继续阅读
 

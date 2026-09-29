@@ -150,6 +150,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Robbyant（蚂蚁灵波）](../entities/robbyant.md) — 发布方公司页：Map 在 LingBot 栈中的空间智能层
 - [LingBot-Map（论文实体页）](../entities/paper-lingbot-map.md) — arXiv:2604.14141 / ECCV 2026 oral
 - [Glob3R（全局 SfM + 3D 基础模型）](../entities/paper-glob3r.md) — 离线高精度对照
 - [VGG-T³（线性时间离线 VGGT）](../entities/paper-vgg-ttt.md) — 千图级前馈 pointmap / 查询定位对照

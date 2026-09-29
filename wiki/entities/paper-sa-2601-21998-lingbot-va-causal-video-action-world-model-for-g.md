@@ -88,6 +88,7 @@ Causal video-action world model for generalist robot control.
 
 ## 关联页面
 
+- 发布方：[Robbyant（蚂蚁灵波）](./robbyant.md) — 含 VA 1.0 三项设计与 VA 2.0（semantic visual-action tokenizer、因果 DiT、MoE）要点
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
