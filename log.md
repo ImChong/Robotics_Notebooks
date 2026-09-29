@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | ULTRA（2603.03279）项目页+GitHub 核查已开源；升格 paper-notebook-ultra 实体页（五阶段管线/指标/sim2sim）；归档 sites/repos/papers
+
 ## [2026-09-29] ingest | Puffin-World 项目页复核：HF 权重迁至 ACERobotics/Puffin-World，补闭环 demo 脚本与 stars
 
 ## [2026-09-29] ingest | Morphometric Imitation 三角链接再核查：补 HF papers/2609.28660；GitHub 仍 Code soon
