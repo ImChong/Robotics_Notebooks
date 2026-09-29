@@ -1,103 +1,168 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
+tags: [paper, ego-vla, human-video, zero-shot, flow-matching, manipulation, umd, awesome-egocentric-vision]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-29
 arxiv: "2605.24934"
 venue: "arXiv 2026"
-summary: "Bridges the embodiment gap by lifting each human demonstration to entity-level representation of hand-object interaction. With only 30 minutes of human videos per task, achieves 92.5% average success across four real-wor"
+code: https://github.com/TX-Leo/HumanEgo
+summary: "HumanEgo（arXiv:2605.24934）：~30 分钟/任务人类 Aria egocentric 视频 → 实体级 HOI + ICT + flow-matching，无机器人演示零样本部署；四任务约 92.5% 成功率；代码/数据/权重已开源。"
 related:
-  - ../entities/awesome-egocentric-vision.md
-  - ../overview/sun-awesome-ego-technology-map.md
-  - ../methods/vla.md
   - ../methods/imitation-learning.md
+  - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
+  - ../entities/gen-human-ego-dataset.md
+  - ../entities/awesome-egocentric-vision.md
+  - ../overview/sun-awesome-ego-technology-map.md
+  - ../methods/diffusion-policy.md
 sources:
+  - ../../sources/papers/humanego_arxiv_2605_24934.md
+  - ../../sources/repos/humanego.md
+  - ../../sources/sites/humanego-ai-github-io.md
   - ../../sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md
-  - ../../sources/papers/sun_awesome_ego_catalog.md
-  - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
 # HumanEgo
 
-**HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 088/249** 篇，分组 **27 Embodied AI & Vision-Language-Action Ego-VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**HumanEgo**（[arXiv:2605.24934](https://arxiv.org/abs/2605.24934)，[项目页](https://humanego-ai.github.io/)，[代码](https://github.com/TX-Leo/HumanEgo)）提出 **仅用少量人类第一人称视频、无需机器人演示** 的 **零样本 human→robot** 学习：把每条人类演示 **提升（lift）** 为 **实体级 hand–object interaction 表征**，训练 **flow-matching** 策略；部署时用 **Interaction-Centric Tokens（ICT）** + **embodiment-agnostic 干净相机图**（真臂 inpaint、虚拟夹爪）闭环输出末端轨迹。
 
 ## 一句话定义
 
-Bridges the embodiment gap by lifting each human demonstration to entity-level representation of hand-object interaction. With only 30 minutes of human videos per task, achieves 92.5% average success across four real-world tasks
+**从几十分钟 Aria egocentric 人类视频榨干 HOI 信号，用 ICT + flow matching 直接在真机双臂上零样本伺服，而不收集机器人示教。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Ego | Egocentric Vision | 第一人称可穿戴视角感知 |
-| HOI | Hand–Object Interaction | 手–物交互理解 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| VLM | Vision-Language Model | 视觉–语言模型 |
+| HOI | Hand–Object Interaction | 手–物交互实体表征 |
+| ICT | Interaction-Centric Tokens | 各手/物体 6DoF 实体 token |
+| MPS | Machine Perception Services | Project Aria 官方 SLAM + 手部跟踪 |
+| VLA | Vision-Language-Action | 与 ego-VLA 清单同分组；本方法偏 flow + ICT |
+| CFG | Classifier-Free Guidance | 训练 job `--use_cfg` |
 
 ## 为什么重要
 
-- Bridges the embodiment gap by lifting each human demonstration to entity-level representation of hand-object interaction. With only 30 minutes of human videos per task, achieves 92.5% average success across four real-world tasks
-- 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+- **数据成本轴：** 每任务约 **30 分钟** 人类视频即可（官网/论文叙事）；相对 **机器人 teleop 示教** 与 **大规模 ego 预训练语料**（如 [Gen-HumanEgo](../entities/gen-human-ego-dataset.md) 的 **1848 h** 发布数据）走 **「极少人类分钟数 + 强预处理」** 路线。
+- **Embodiment gap：** 显式 **实体级 HOI + 干净图 + 虚拟夹爪**，避免直接把人类像素当机器人动作；与 **仅重定向人手** 或 **纯 VLA 端到端** 可对照阅读。
+- **工程可复现：** 2026-06 起 **代码 + HF 数据 + checkpoint + 5 分钟 quick start** 全公开；`inference/` 提供 **Camera / RobotArm / Perception** 模板以便换平台。
+- **清单锚点：** 亦收录 [Awesome Egocentric Vision #088](../overview/sun-awesome-ego-technology-map.md)（分组 **Ego-VLA**）。
 
-## 核心信息
+## 流程总览
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 088/249 |
-| 分组 | 27 Embodied AI & Vision-Language-Action Ego-VLA |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2605.24934> |
+```mermaid
+flowchart LR
+  subgraph collect [人类采集]
+    Aria[Project Aria VRS]
+    MPS[MPS SLAM + 手跟踪]
+    Aria --> MPS
+  end
+  subgraph prep [预处理]
+    PP[preprocess.Preprocess]
+    VM[SAM2 / Grounding DINO / CoTracker …]
+    MPS --> PP --> VM
+  end
+  subgraph train [训练]
+    FM[FlowMatchingTrainer]
+    PP --> FM
+  end
+  subgraph deploy [零样本部署]
+    Cam[相机]
+    Per[感知 → 干净图 + ICT]
+    Pol[策略 → EE 轨迹]
+    Rob[双臂伺服]
+    Cam --> Per --> Pol --> Rob
+    Rob --> Cam
+  end
+  FM --> Pol
+```
 
 ## 核心机制（归纳）
 
-### 策展导读要点
-
-Bridges the embodiment gap by lifting each human demonstration to entity-level representation of hand-object interaction. With only 30 minutes of human videos per task, achieves 92.5% average success across four real-world tasks
-
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+| 阶段 | 要点 |
+|------|------|
+| **采集** | 默认 **Meta Project Aria** + MPS；README 正扩展 Quest / AVP / RealSense / iPhone 等 |
+| **预处理** | `python -m preprocess.Preprocess --mps_path … --task …`；任务 YAML 定义 **开放词汇检测 prompt**、跟踪哪只手 |
+| **表征** | 实体级 **HOI**；推理环使用 **ICT**（手与物体 6DoF entity） |
+| **训练** | `training.FlowMatchingTrainer --use_cfg --job HumanEgo`；hold-out 第 0 条录制做 eval |
+| **推理** | `inference/run_inference.py`；HF 预训练 `Leo-TX/HumanEgo/serve_bread/latest.pt` 等 |
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2605.24934) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 的 **27 Embodied AI & Vision-Language-Action Ego-VLA** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- **论文 / 清单 Highlights：** 四真实任务平均成功率约 **92.5%**（每任务 **~30 min** 人类视频设定）。
+- **发布任务示例：** `serve_bread`、`water_flowers`（仓库配置与 HF 数据对齐）。
+- **本页不搬运** 完整 ablation 表；数值与基线以 [PDF](https://arxiv.org/pdf/2605.24934) 为准。
 
 ## 结论
 
-**这一页能给你的是「HumanEgo」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**HumanEgo 把「极少 egocentric 人类分钟数」推到可部署机器人策略，关键在实体 HOI + ICT + 干净图，而不是堆机器人 teleop 数据。**
 
-- 可确证的只有清单坐标：分组 **27 Embodied AI & Vision-Language-Action Ego-VLA**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+- **真影响指标的是 HOI 提升 + ICT/干净图接口**，不是单纯放大人类像素或端到端 VLA 参数量。
+- **每任务 ~30 min 人类视频** 是方法主张的核心约束；完整 HF 数据集用于复现，但 **数据效率叙事** 仍按分钟级采集理解。
+- **零样本** 指 **无机器人演示**；换机器人/相机仍需 **手眼标定 + 三类硬件接口** 实现，并非 plug-and-play 二进制。
+- **预处理很重**（foundation models + MPS）；预算应算 **GPU 预处理时间**，不是只算训练 epoch。
+- **与 Gen-HumanEgo 等大规模 ego 数据正交**：后者供 **预训练/语料**；HumanEgo 供 **分钟级任务适配管线** 参照。
+- **开源完整**：优先走官方 **quick start 两录制 smoke test**，再扩 `download_data.py --task all`。
 
-## 常见误区
+## 工程实践
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+| 场景 | 命令/入口 |
+|------|-----------|
+| 环境 | `bash setup.sh`（默认跳过可选 hand 替代与硬件驱动） |
+| 快速端到端 | `scripts/download_data.py --task serve_bread --num 2 --input-only` → preprocess → `FlowMatchingTrainer` |
+| 跳过预处理 | 下载含 `preprocess/` 的 tar（~4 GB 两录制） |
+| 预训练策略 | `huggingface-cli download Leo-TX/HumanEgo --include "serve_bread/*"` |
+| 真机 | `SKIP_HARDWARE=0 bash setup.sh` → `inference/run_inference.py` |
+
+### 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Op as 操作者
+  participant DL as download_data.py
+  participant PP as preprocess.Preprocess
+  participant TR as FlowMatchingTrainer
+  participant INF as run_inference.py
+  participant Rob as 双臂 + RealSense
+  Op->>DL: 拉取 MPS/VRS（可选 preprocess）
+  Op->>PP: --mps_path --task
+  PP-->>Op: preprocess/ 标签
+  Op->>TR: --job HumanEgo
+  TR-->>Op: runs/.../latest.pt
+  Op->>INF: cfg/inference/*.yaml
+  loop 控制环
+    INF->>INF: 干净图 + ICT
+    INF->>Rob: EE 轨迹伺服
+  end
+```
+
+## 局限与风险
+
+- **默认绑定 Aria 生态：** MPS 手跟踪是主线；其他硬件需自证等价预处理质量。
+- **预处理算力与时间：** README 示例 ~33 s 视频在 4090 上 preprocess ~20 min。
+- **「任何机器人」** 需自行实现 `inference` 抽象；官方示例为 **Trossen 双臂 + RealSense**。
+- **许可：** GitHub 标注 **Other**；商用前读 LICENSE 与 HF 条款。
 
 ## 关联页面
 
-- 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
-- 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
-- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- [操作任务（Manipulation）](../tasks/manipulation.md)
+- [模仿学习](../methods/imitation-learning.md)
+- [VLA](../methods/vla.md)
+- [Gen-HumanEgo 数据集](../entities/gen-human-ego-dataset.md) — 大规模人类 ego **语料** 对照
+- [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md`](../../sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
-- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2605.24934>
+- [`sources/papers/humanego_arxiv_2605_24934.md`](../../sources/papers/humanego_arxiv_2605_24934.md)
+- [`sources/repos/humanego.md`](../../sources/repos/humanego.md)
+- [`sources/sites/humanego-ai-github-io.md`](../../sources/sites/humanego-ai-github-io.md)
+- [`sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md`](../../sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md) — 清单 #088 摘录
 
 ## 推荐继续阅读
 
-- [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2605.24934)
+- [论文 PDF](https://arxiv.org/pdf/2605.24934)
+- [项目页](https://humanego-ai.github.io/)
+- [YouTube 视频](https://youtu.be/pdL46diijuY)
+- [GitHub 仓库](https://github.com/TX-Leo/HumanEgo)
+- [HF 数据集](https://huggingface.co/datasets/Leo-TX/HumanEgo)

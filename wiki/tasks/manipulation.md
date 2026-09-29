@@ -224,6 +224,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 - **EgoScale**：在 **海量 egocentric 人视频** 上对 **流式 VLA** 做 **腕 + 重定向灵巧手** 显式预训练，并以 **对齐人–机 mid-training** 承接 embodiment gap，面向 **高 DoF 长程灵巧** 任务；入口见 [EgoScale](../methods/egoscale.md)
 - **EgoWorld-100W**：StellarNex **百万级** 头戴第一人称操作语料，按 **场景×物体×动作×手性** 结构化；**申请制**合作开放（非公开一键下载）；入口见 [EgoWorld-100W](../entities/egoworld-100w.md)（与 ICLR [EgoWorld exo→ego](../entities/paper-egoworld.md) **同名异物**）
+- **HumanEgo**（[实体页](../entities/paper-sa-2605-24934-humanego-zero-shot-robot-learning-from-minutes-o.md)，arXiv:2605.24934）：**~30 min/任务** Project Aria 人类 ego → **实体 HOI + ICT + flow matching**，**无机器人示教** 零样本双臂部署；四任务约 **92.5%** SR；[代码/数据/权重已开源](https://github.com/TX-Leo/HumanEgo)
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；代码与权重已开源；入口见 [EgoSteer](../entities/paper-egosteer.md)（arXiv:2607.09701）
 - **Psi-R2.5**（PsiBot 博客，2026-09）：**[强 pair data](../concepts/strong-pair-data.md)** + **Psi-W0 转换器** 对齐人–机 dynamic；QwenVL3.5-4B + Wan2.2-IT2V-5B 双层栈；ICL 与 HIL 后训练 **~99%** 3C 装配（自报）；**未开源**；入口见 [Psi-R2.5](../entities/psibot-r25.md)
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
