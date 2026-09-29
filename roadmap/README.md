@@ -41,8 +41,8 @@
 - [如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](depth-embodied-eval.md) —— 想证明/证伪一个具身模型（含 locomotion / 全身跟踪等运控模型）到底好不好（起点：RLBench 标准化视觉操作评测套件，2019）
 - [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) —— 想让机器人看着地形上楼梯、跨障碍、跑酷（起点：2020s 感知策略浪潮）
 - [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) —— 想用生成模型造出人体/人形动作（起点：MDM 扩散动作生成，2022）
-- [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) —— 想让机器人听懂指令干活（起点：RT-2 确立 VLA，2023）
 - [扩散与流匹配策略（Diffusion & Flow Matching）](depth-robotics-diffusion-dit-flow.md) —— 想按动作去噪机制演进读 DP / DiT-Block / RDT / π₀ / GR00T / Dita（起点：Diffusion Policy，2023）
+- [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) —— 想让机器人听懂指令干活（起点：RT-2 确立 VLA，2023）
 - [如果目标是 Real2Sim（可仿真判据 → 几何外观重建 → 物性关节化 → 场景/episode 孪生 → 回训评测）](depth-real2sim.md) —— 想把真实世界压成可训练/可评测的仿真资产（起点：3D Gaussian Splatting 规模化重建，2023）
 - [如果目标是具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) —— 想为具身模型建一条可交付的数据供给管线（起点：Open X-Embodiment 跨具身数据聚合，2023）
 - [如果目标是 WAM（世界–动作模型）](depth-wam.md) —— 想让策略在出动作前显式预知世界会怎么变（起点：World Action Models 综述形式化，2026）

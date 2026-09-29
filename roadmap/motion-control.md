@@ -2087,8 +2087,8 @@ flowchart TB
 | [如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](depth-embodied-eval.md) | 想证明/证伪一个具身模型（含运控模型）到底好不好 | L2–L5 的验收侧，L6 / L7 的出具结论环节 |
 | [如果目标是感知越障（Perceptive Locomotion）](depth-perceptive-locomotion.md) | 想让机器人看着地形上楼梯、跨障碍、跑酷 | L5 之后 |
 | [如果目标是动作生成（文本/多模态 → 人形动作）](depth-motion-generation.md) | 想用生成模型造出人体/人形动作 | L5.3 之后 |
-| [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) | 想让机器人听懂指令干活 | L5.3 之后 |
 | [如果目标是扩散与流匹配策略（Diffusion Policy → DiT → Flow Matching VLA）](depth-robotics-diffusion-dit-flow.md) | 想按动作去噪机制演进读 DP / DiT-Block / RDT / π₀ / GR00T / Dita | L5.3 之后（L9 动作生成的展开版）|
+| [如果目标是 VLA（视觉-语言-动作模型）](depth-vla.md) | 想让机器人听懂指令干活 | L5.3 之后 |
 | [如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) | 想把真实世界压成可训练/可评测的仿真资产 | L6 / L7（L6/L7 资产与评测的展开版）|
 | [如果目标是具身数据（金字塔分层 → 采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比飞轮）](depth-embodied-data.md) | 想为具身模型建一条可交付的数据供给管线 | L5 / L7（训练输入与数据基础设施的展开版）|
 | [如果目标是 WAM（世界–动作模型）](depth-wam.md) | 想让策略在出动作前显式预知世界会怎么变 | L5.3 之后 |
