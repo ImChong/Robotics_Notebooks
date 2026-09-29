@@ -248,7 +248,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 三条设计链的知识主页：[机械布局](../wiki/concepts/humanoid-mechanical-layout-design.md)、[配电架构](../wiki/concepts/robot-power-distribution-architecture.md)、[通信架构](../wiki/concepts/robot-onboard-communication-architecture.md)；本路线是它们的学习顺序展开版
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [力矩电机设计](depth-torque-motor-design.md) — 关节级底座，本路线的直接上游

@@ -232,7 +232,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)（本路线是 L5/L7 训练输入与数据基础设施环节的展开版）
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)（本路线是 L5/L7 训练输入与数据基础设施环节的展开版）
 - 知识链汇总页：[训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md) — 本路线的 wiki 侧枢纽
 - 姊妹路线：[Real2Sim（真实世界 → 可仿真资产/场景/孪生）](depth-real2sim.md) — 仿真侧资产供给，与本路线在 Stage 4 汇合
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：

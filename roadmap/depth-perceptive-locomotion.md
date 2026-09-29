@@ -188,7 +188,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [RL 运动控制](depth-rl-locomotion.md) — 盲走基线与训练管线
   - [导航](depth-navigation.md) — 大范围「往哪走」vs 落足「往哪迈」

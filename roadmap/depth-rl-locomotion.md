@@ -27,7 +27,7 @@ flowchart LR
 
 **和主路线的关系：**
 - 本路径是主路线的"快速分支版本"
-- 如果你在某个阶段遇到理论卡点，回到 [主路线：运动控制成长路线](motion-control.md) 查对应章节
+- 如果你在某个阶段遇到理论卡点，回到 [主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md) 查对应章节
 
 ---
 
@@ -229,7 +229,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [Sim2Real](depth-sim2real.md) — 本路线 Stage 4 的完整展开
   - [感知越障](depth-perceptive-locomotion.md) — 盲走基线之上的外感知

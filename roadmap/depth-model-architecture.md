@@ -252,7 +252,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [VLA](depth-vla.md) — 本路线 Stage 4 结构件在语义策略方向的完整展开
   - [WAM](depth-wam.md) — 把未来预测并进骨干后的 Cascaded / Joint 两条结构主线
