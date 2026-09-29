@@ -5,6 +5,7 @@
 - **标题：** LangChain OSS Python 文档
 - **类型：** site
 - **组织：** [LangChain](https://github.com/langchain-ai)
+- **产品页：** <https://www.langchain.com/>
 - **文档根：** <https://docs.langchain.com/oss/python/langchain/overview>
 - **生态产品概览：** <https://docs.langchain.com/oss/python/concepts/products>
 - **集成目录：** <https://docs.langchain.com/oss/python/integrations/providers/overview>
@@ -26,5 +27,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)
+- [LangChain](../../wiki/entities/langchain.md) · [LangGraph](../../wiki/entities/langgraph.md) · [LangSmith](../../wiki/entities/langsmith.md) · [Deep Agents](../../wiki/entities/deep-agents.md) · [langchain-ai](../../wiki/entities/langchain-ai.md)
+- 产品页汇总：[`langchain-com-ecosystem.md`](langchain-com-ecosystem.md)
 - 概念页：[`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md)

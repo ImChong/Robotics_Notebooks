@@ -4,8 +4,12 @@ tags: [entity, llm-agents, rag, agent-infrastructure, langchain, integrations, t
 status: complete
 updated: 2026-09-29
 code: https://github.com/langchain-ai/langchain
-summary: "LangChain（langchain-ai/langchain）是 MIT 开源的 agent 工程框架：统一模型/embedding/向量库/工具/检索器组件，快速搭建 RAG 与 tool-calling agent；复杂可控工作流配 LangGraph，生产观测配 LangSmith。"
+summary: "LangChain（langchain-ai/langchain）是 MIT 开源的 agent 工程框架：统一模型/embedding/向量库/工具/检索器组件；复杂编排见 LangGraph，开箱 harness 见 Deep Agents，生产观测见 LangSmith。"
 related:
+  - ./langgraph.md
+  - ./langsmith.md
+  - ./deep-agents.md
+  - ./langchain-ai.md
   - ../concepts/retrieval-augmented-generation.md
   - ../concepts/model-context-protocol.md
   - ./openclaw.md
@@ -17,12 +21,13 @@ related:
 sources:
   - ../../sources/repos/langchain.md
   - ../../sources/sites/langchain-docs.md
+  - ../../sources/sites/langchain-com-ecosystem.md
   - ../../sources/repos/pai_awesome_resource_125_langchain.md
 ---
 
 # LangChain
 
-**LangChain**（[GitHub: langchain-ai/langchain](https://github.com/langchain-ai/langchain)）是 **agent 与 LLM 应用** 的组件化框架：把聊天模型、embedding、向量库、检索器、工具调用等收成 **可互换接口**，便于 **RAG、agent 工具环、多模型实验**。官方自述为 *The agent engineering platform*；更复杂、需 **显式状态机 / 人机回路** 的 agent 工作流通常 **叠加 [LangGraph](https://github.com/langchain-ai/langgraph)**（独立仓库）。
+**LangChain**（[GitHub: langchain-ai/langchain](https://github.com/langchain-ai/langchain)，[langchain.com](https://www.langchain.com/)）是 **agent 与 LLM 应用** 的组件化框架：把聊天模型、embedding、向量库、检索器、工具调用等收成 **可互换接口**，便于 **RAG、agent 工具环、多模型实验**。官方自述为 *The agent engineering platform*。同公司栈内：**[LangGraph](./langgraph.md)**（有状态编排）、**[Deep Agents](./deep-agents.md)**（开箱 harness）、**[LangSmith](./langsmith.md)**（商业 eval/trace/部署）；组织索引见 **[langchain-ai](./langchain-ai.md)**。
 
 ## 一句话定义
 
@@ -49,12 +54,12 @@ sources:
 
 ### 生态分层（官方文档）
 
-| 产品 | 角色 |
-|------|------|
-| **LangChain（本仓）** | 组件、模型初始化、集成、快速原型 |
-| **[LangGraph](https://github.com/langchain-ai/langgraph)** | 低层 **可控** agent 工作流（分支、持久状态、HITL） |
-| **[Deep Agents](https://docs.langchain.com/oss/python/deepagents/)** | 内置规划、子 agent、文件系统等 **高层 agent 模式** |
-| **[LangSmith](https://docs.langchain.com/langsmith/home)** | Evals、tracing、调试（商业托管；框架可 standalone） |
+| 产品 | 角色 | 知识库实体 |
+|------|------|------------|
+| **LangChain（本仓）** | 组件、模型初始化、集成、快速原型 | 本页 |
+| **LangGraph** | 低层 **可控** agent 工作流 | [LangGraph](./langgraph.md) |
+| **Deep Agents** | 规划、子 agent、文件系统等 **高层 harness** | [Deep Agents](./deep-agents.md) |
+| **LangSmith** | Evals、tracing、调试与部署（商业） | [LangSmith](./langsmith.md) |
 
 ### Monorepo（`libs/`）
 
@@ -120,6 +125,10 @@ sequenceDiagram
 
 ## 关联页面
 
+- [LangGraph](./langgraph.md)
+- [Deep Agents](./deep-agents.md)
+- [LangSmith](./langsmith.md)
+- [langchain-ai 组织](./langchain-ai.md)
 - [Retrieval-Augmented Generation（RAG）](../concepts/retrieval-augmented-generation.md)
 - [OpenClaw](./openclaw.md)
 - [Hermes Agent](./hermes-agent.md)
@@ -129,13 +138,15 @@ sequenceDiagram
 
 ## 参考来源
 
+- [`sources/sites/langchain-com-ecosystem.md`](../../sources/sites/langchain-com-ecosystem.md) — 产品页与生态入口
 - [`sources/repos/langchain.md`](../../sources/repos/langchain.md) — 主仓结构与开源核查
 - [`sources/sites/langchain-docs.md`](../../sources/sites/langchain-docs.md) — 官方文档入口
 - [`sources/repos/pai_awesome_resource_125_langchain.md`](../../sources/repos/pai_awesome_resource_125_langchain.md) — Physical AI 清单摘录
 
 ## 推荐继续阅读
 
+- [LangGraph 实体页](./langgraph.md)
+- [Deep Agents 实体页](./deep-agents.md)
+- [LangSmith 实体页](./langsmith.md)
 - [LangChain Python 文档](https://docs.langchain.com/oss/python/langchain/overview)
-- [LangChain Integrations](https://docs.langchain.com/oss/python/integrations/providers/overview)
-- [LangGraph 仓库](https://github.com/langchain-ai/langgraph)
 - [原文 / GitHub 主仓](https://github.com/langchain-ai/langchain)
