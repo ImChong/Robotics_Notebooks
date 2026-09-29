@@ -45,5 +45,6 @@
 
 ## 对 wiki 的映射
 
-- 升格 **[`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)**（由 [`painode-125-langchain.md`](../../wiki/entities/painode-125-langchain.md) 合并为 canonical 实体，保留 painode 页作清单锚点）。
+- **[`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)** 及生态 sibling：[`langgraph.md`](../../wiki/entities/langgraph.md)、[`langsmith.md`](../../wiki/entities/langsmith.md)、[`deep-agents.md`](../../wiki/entities/deep-agents.md)、[`langchain-ai.md`](../../wiki/entities/langchain-ai.md)
+- 产品页：[`sources/sites/langchain-com-ecosystem.md`](../sites/langchain-com-ecosystem.md)
 - 轻量更新 **[`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md)** 链到深度实体与本文档源。

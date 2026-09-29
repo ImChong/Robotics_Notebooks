@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-05
 code: https://github.com/Pan-Chera/Multi-Agent-CAD
 related:
+  - ./langgraph.md
   - ../concepts/text-to-cad.md
   - ./cad-skills.md
   - ./freecad-mcp.md
@@ -170,5 +171,5 @@ sequenceDiagram
 
 - [quantified_quality.md](https://github.com/Pan-Chera/Multi-Agent-CAD/blob/main/docs/quantified_quality.md) — 基准方法与失败模式
 - [build123d 文档](https://build123d.readthedocs.io/)
-- [LangGraph](https://langchain-ai.github.io/langgraph/)
+- [LangGraph](./langgraph.md) — 本仓库四段编排运行时
 - [CAD Skills](https://www.cadskills.xyz)
