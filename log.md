@@ -1,3 +1,5 @@
+## [2026-09-29] ingest | MiniMind 主仓与 GitHub Pages 入库，实体页链 PyTorch/GRPO/深度学习基础
+
 ## [2026-09-29] ingest | LangChain 生态全量入库：LangGraph/LangSmith/Deep Agents/langchain-ai 实体与产品页源
 
 ## [2026-09-29] ingest | langchain-ai/langchain 主仓与文档站入库，升格 wiki/entities/langchain.md，RAG 与 Easy-Vibe 互链

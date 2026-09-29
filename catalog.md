@@ -722,6 +722,7 @@
 - [MiMo-V2.6（Scaling RL Toward Self-Improvement）](wiki/entities/mimo-v2-6.md) — MiMo-V2.6**（发布说明 · [技术报告 PDF](https://huggingfa `📅unknown` `[entity_page]`
 - [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
 - [MiniMax H3](wiki/entities/minimax-h3.md) — MiniMax H3**（官方博客，[GitHub](https://github.com/MiniMax-AI `📅unknown` `[entity_page]`
+- [MiniMind](wiki/entities/minimind.md) — MiniMind**（GitHub: jingyaogong/minimind，[项目页](https://j `📅unknown` `[entity_page]`
 - [Mink](wiki/entities/mink-ik.md) — Mink](https://github.com/kevinzakka/mink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [MIT Mini Cheetah（学习栈与开源边界）](wiki/entities/mit-mini-cheetah.md) — MIT Mini Cheetah**（Sangbae Kim 实验室；执行器由 Benjamin Katz 主导）是约 **0.3 m / 9 kg `📅unknown` `[entity_page]`
 - [Mixamo](wiki/entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
