@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, sim2real, imitation-learning, reinforcement-learning, contact-rich, single-demo, stanford, realab]
 status: complete
-updated: 2026-09-26
+updated: 2026-09-29
 arxiv: "2609.01938"
 venue: "2026 · Stanford（arXiv:2609.01938）"
 related:

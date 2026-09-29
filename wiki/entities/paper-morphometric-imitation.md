@@ -11,8 +11,9 @@ tags:
   - single-demo
   - berkeley
 status: complete
-updated: 2026-09-26
+updated: 2026-09-29
 arxiv: "2609.28660"
+code: https://github.com/tsadja/morphometric
 venue: "arXiv 2026"
 related:
   - ../tasks/manipulation.md
@@ -99,7 +100,7 @@ flowchart TB
 | 项 | 结论 |
 |----|------|
 | 官方仓库 | [tsadja/morphometric](https://github.com/tsadja/morphometric) |
-| 可运行入口 | **不适用**（截至 2026-09-26：README 写 **Code will be released soon**，无 train/eval 脚本） |
+| 可运行入口 | **不适用**（截至 2026-09-29：README 仍写 **Code will be released soon**，无 train/eval 脚本） |
 | 发布后预期链路 | HOI/GRAB 加载 → **MMO 优化** → 仿真 **残差 RL rollout** → **visuomotor IL 训练** → 真机视觉闭环部署 |
 
 ## 工程实践（含开源状态）
@@ -107,6 +108,7 @@ flowchart TB
 | 项 | 结论 |
 |----|------|
 | arXiv | <https://arxiv.org/abs/2609.28660> |
+| Hugging Face | [papers/2609.28660](https://huggingface.co/papers/2609.28660)（论文索引页，非模型权重） |
 | 项目页 | <https://morphometricimitation.github.io/> |
 | 代码 | **待发布** — [tsadja/morphometric](https://github.com/tsadja/morphometric) 占位仓（teaser + BibTeX）；页内 Code 链指向同仓 |
 | 数据 | 论文实验基于 **GRAB** 等 HOI；复现需自备重建/GRAB 管线（代码未发） |
@@ -149,5 +151,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.28660)
+- [Hugging Face Papers](https://huggingface.co/papers/2609.28660)
 - [项目页 Morphometric Optimization 交互 3D](https://morphometricimitation.github.io/)
 - [GRAB 数据集](https://grab.is.tue.mpg.de/) — 论文 HOI 评测来源

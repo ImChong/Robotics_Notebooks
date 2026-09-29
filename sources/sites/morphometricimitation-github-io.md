@@ -5,7 +5,9 @@
 - **URL：** <https://morphometricimitation.github.io/>
 - **配套论文：** [Morphometric Imitation（arXiv:2609.28660）](https://arxiv.org/abs/2609.28660) — 归档见 [`sources/papers/morphometric_imitation_arxiv_2609_28660.md`](../papers/morphometric_imitation_arxiv_2609_28660.md)
 - **代码：** <https://github.com/tsadja/morphometric> — 归档见 [`sources/repos/morphometric.md`](../repos/morphometric.md)
+- **Hugging Face Papers：** <https://huggingface.co/papers/2609.28660>
 - **入库日期：** 2026-09-26
+- **再核查：** 2026-09-29（用户指定 HF + GitHub + 项目页三角链接）
 
 ## 一句话摘要
 

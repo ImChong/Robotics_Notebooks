@@ -7,7 +7,8 @@
 - **配套论文：** [Morphometric Imitation（arXiv:2609.28660）](../papers/morphometric_imitation_arxiv_2609_28660.md)
 - **项目页：** [`sources/sites/morphometricimitation-github-io.md`](../sites/morphometricimitation-github-io.md)
 - **入库日期：** 2026-09-26
-- **开源结论（2026-09-26）：** 仓库 **已创建**（teaser GIF、`assets/`、BibTeX），README 明确 **「Code will be released soon」** — 归类 **待发布**；项目页 Code 链指向本仓。
+- **Hugging Face Papers：** <https://huggingface.co/papers/2609.28660>（论文索引，非权重仓）
+- **开源结论（2026-09-29 再核查）：** 仓库 **已创建**（teaser GIF、`assets/`、BibTeX），README 仍写 **「Code will be released soon」** — 归类 **待发布**；项目页 Code 链指向本仓。
 
 ## 一句话说明
 
