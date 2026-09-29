@@ -16,6 +16,7 @@
 - **入库日期：** 2026-08-08
 - **二次核查：** 2026-08-25（GitHub README + HF `Dexmal/DM05` 模型卡）
 - **三次核查：** 2026-09-15（补 `DM05-Lerobot`、`DM05-MEM-Robodojo-Sim`、英文博客、HF 组织页、RoboColiseum 榜单）
+- **四次核查：** 2026-09-29（与 [Dexbotic](./dexmal_dexbotic.md) 对照：权重链一致；OpenDM 仍承载 RobotWin/Table30/HTTP fast infer 等专用 docs）
 - **一句话说明：** **OpenDM** 是 Dexmal 为 **DM0.5** 发布的 **训练 / 推理 / 数据注册 / 评测** 开源仓库：提供 **DM05** 基础权重与 LIBERO / RoboTwin2.0 / VLA-Arena / SO101 / Table30v2 等下游 checkpoint，统一经 `script/dm05_launcher.sh` 启动 HTTP 推理（default / TensorRT **fast** backend）与 JSONL SFT。
 
 ## 开源状态（项目页 / README 核查）
@@ -36,6 +37,8 @@
 | 2026-08-03 | 发布 [真机改造指南 `robot_platforms.md`](https://github.com/dexmal/opendm/blob/main/docs/en/robot_platforms.md)（AgileX COBOT Magic、DOS-W1 相机与 `robot-name` 映射） |
 | 2026-07-24 | 新增 **SO101 pick-cube** checkpoint 与 LoRA SFT 流程（`docs/en/dm05_so101_lora_training.md`） |
 | 2026-07-17 | 开源 **RoboTwin2.0 generalist** checkpoint 与 SFT 代码（`docs/en/dm05_robotwin2.md`） |
+| 2026-09-23 | [XPolicyLab OpenDM policy](https://github.com/XPolicyLab/XPolicyLab/tree/main/policy/OpenDM)（RoboDojo 数据转换、DM05-MEM SFT） |
+| 2026-09-14 | [RoboColiseum](https://robocoliseum.ai/leaderboard) 四榜 **#1** |
 | 2026-07-09 | **DM0.5 正式发布**；技术博客见 [dm0.5](https://www.dexmal.com/blog/dm0.5) |
 
 ## 公开权重一览（README）
@@ -107,6 +110,7 @@
 |------|------|
 | [Dexmal DM0.5](../../wiki/entities/dexmal-dm05.md) | 实体归纳页：架构主张 + OpenDM 复现栈 |
 | [DM0.5 技术博客](../blogs/dexmal_dm05.md) | 方法叙事（历史上下文 / CoT / 轨迹对齐）一手来源 |
+| [Dexbotic / DM05 工具箱](./dexmal_dexbotic.md) | 多 VLA 统一栈内的 **DM05** LIBERO/历史推理；与 OpenDM **共用 checkpoint** |
 | [Dexmal DW05 / OpenDW](./dexmal_opendw.md) | 同机构 **世界模型** 开源线；OpenDM 为 **VLA** 线 |
 | [VLA](../../wiki/methods/vla.md) | flow/chunk VLA 族谱定位 |
 | [RoboTwin 2.0](../../wiki/entities/robotwin.md) | `DM05-robotwin2` 与 `robotwin2_generalist` 数据注册对齐 |
