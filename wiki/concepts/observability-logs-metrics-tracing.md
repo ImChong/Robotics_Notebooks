@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, observability, logging, metrics, tracing, opentelemetry]
 status: complete
-updated: 2026-07-21
+updated: 2026-09-29
 related:
   - ./container-orchestration-cicd.md
   - ./operating-system-basics.md
@@ -48,6 +48,7 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 2. 日志限速与采样；崩溃用环形缓冲。
 3. 云服务跟 RED；节点跟 USE。
 4. 告警基于 SLO，而非「有 error log 就叫人」。
+5. **队级/地理大屏（可选前端层）：** Metrics 聚合后可在浏览器用 Three.js + 图表库做运营视图；参考样板 [sc-datav](../entities/sc-datav.md)（静态 demo，需自接 API/OTel 查询，非内置后端）。
 
 ## 局限与风险
 
@@ -59,6 +60,7 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 - [操作系统基础](./operating-system-basics.md)
 - [容器编排与 CI/CD](./container-orchestration-cicd.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
+- [sc-datav（Three.js 数据可视化大屏）](../entities/sc-datav.md)
 
 ## 参考来源
 
