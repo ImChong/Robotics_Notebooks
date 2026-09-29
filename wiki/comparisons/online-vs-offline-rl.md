@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-29
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../concepts/rl-runner.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-splc.md
   - ../entities/paper-smpc2rl-loco-manipulation.md
+  - ../entities/paper-rlinf-user.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rove_arxiv_2606_17011.md
   - ../../sources/papers/splc_arxiv_2607_01925.md
+  - ../../sources/papers/rlinf_user_arxiv_2602_07837.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
 summary: "Online RL vs Offline RL"
 ---
@@ -183,6 +185,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [LWD](../methods/lwd.md) — 车队级 offline-to-online RL 后训练框架的代表
 - [ROVE（人形 VLA 干预后训练）](../entities/paper-rove-humanoid-vla-intervention.md) — 次优全身 MoCap 接管轨迹的 OVE + advantage conditioning
 - [HIL-HARC（真机在线 RL）](../entities/paper-hil-harc.md) — RLPD + CTDE/HRA；大随机下相对 HIL-SERL 抬升成功率
+- [RLinf-USER（真机在线系统）](../entities/paper-rlinf-user.md) — HAL + 全异步 pipeline + 持久 buffer；RSS 2026；开源于 RLinf/RLinf（arXiv:2602.07837）
 - [SPLC（人群导航社交偏好 Offline RL）](../entities/paper-splc.md) — 自动准则偏好学奖励后挂 IQL/CQL/TD3BC
 - [SMPC-to-RL](../entities/paper-smpc2rl-loco-manipulation.md) — 仿真 SMPC 演示冷启动稀疏 loco-manip；专家过早/过久都有害
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据飞轮的"模仿式"与"RL 式"两种范式

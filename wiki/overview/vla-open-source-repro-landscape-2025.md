@@ -103,7 +103,7 @@ flowchart TB
 |------|------------------|----------|------------|
 | **OpenPI** | Physical Intelligence 的 π0 / π0-FAST / π0.5；VLM 语义 + flow matching 动作；多真机平台微调 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π0 Policy](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[VLA](../methods/vla.md) |
 | **VLA-Adapter** | ~0.5B 轻量 VLA；Bridge Attention 注入 VL；强调低机器人预训练数据 | [VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) | [VLA](../methods/vla.md)、[选型 Query](../queries/manipulation-vla-architecture-selection.md) |
-| **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；内置 **STEAM/RECAP** 离线 advantage + CFG 管线；对接 OpenPI | [RLinf](https://github.com/RLinf/RLinf) | [STEAM](../entities/paper-steam-advantage-modeling.md)、[VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
+| **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；内置 **STEAM/RECAP** 离线 advantage + CFG 管线；**RLinf-USER** 真机在线 HAL/异步/buffer；对接 OpenPI | [RLinf](https://github.com/RLinf/RLinf) | [STEAM](../entities/paper-steam-advantage-modeling.md)、[RLinf-USER](../entities/paper-rlinf-user.md)、[VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
 | **RLark** | RLinf 生态 **跨集群云原生平台**（kcp 控制面、Domain/Job/Task、云 GPU↔边缘 Pod 直连）；2026-09 开源 | [RLark](https://github.com/RLinf/RLark) | [RLark](../entities/rlark.md)、[RLinf 归档](../../sources/repos/rlinf.md) |
 | **APXInf** | RLinf 生态 **端侧 VLA 推理引擎**（Rust + 定制 CUDA 算子）；π₀.₅ on Thor/Orin；OpenPI websocket serve；Thor FP8 P50 **~26–41 ms** | [APXinf-robo](https://github.com/RLinf/APXinf-robo) | [APXInf](../entities/apxinf.md)、[VLA 部署指南](../queries/vla-deployment-guide.md)、[π0.5](../entities/paper-pi05-open-world-vla.md) |
 | **RPent** | RLinf 生态 **agentic 运行时**：LLM planner + 固定原语 + 冻结 VLA（`vla_act`）；Harness VLA（arXiv:2607.08448v3）官方实现 | [RPent](https://github.com/RLinf/RPent) | [Harness VLA](../entities/paper-harness-vla.md)、[VLA](../methods/vla.md) |
@@ -127,6 +127,7 @@ flowchart TB
 | 单卡 / 小团队试 VLA | VLA-Adapter 或 StarVLA；Meta-World 轻量对照可用 [FabriVLA](../entities/paper-fabrivla.md) / [Evo-1](../entities/paper-evo1-lightweight-vla.md) | 勿与 OpenPI 数据规模假设混用；FabriVLA 需 DeepSpeed FP32 master |
 | 给已有 VLA 做 RL 后训练 | SimpleVLA-RL + 确认仿真/渲染依赖；或 **RLinf STEAM/RECAP**（离线 advantage + CFG，无需在线采样）；要 **在线异步 rollout 飞轮** 可对照 [lehome_solution](../entities/paper-lehome-learning-to-fold.md)；方法坐标可对照 [TEMPO](../entities/paper-tempo.md)（双频 TD3，**未开源**）与 [Temporal GRPO](../entities/paper-temporal-grpo.md)（阶段信用，**未开源**） | 需对齐 veRL 与 OpenVLA-OFT 版本；STEAM 见 [论文实体](../entities/paper-steam-advantage-modeling.md)；LeHome 需 Isaac Sim + HF Hub；TEMPO / Temporal GRPO 不可当复现栈 |
 | 搭集群 RL 基建 | RLinf | 系统项目，不等同于单一策略 checkpoint |
+| 真机在线 RL / HG-DAgger / π₀ 微调 | **RLinf-USER** + [Franka 示例](https://rlinf.readthedocs.io/en/latest/rst_source/examples/embodied/index.html) | 需真机与安全流程；与 STEAM **离线** 管线互补 |
 | 多站点/云–边统一调度具身 Job | **RLark** + [Quick Start](https://rlark.readthedocs.io/en/latest/quickstart/) | **≠ RLinf 训练脚本**；需 k8s/kcp 运维能力；小团队可只用 RLinf Docker |
 | π₀.₅ 机载低抖动推理（Thor/Orin） | **APXInf** + `lerobot/pi05_libero_base` + OpenPI `norm_stats` | 须在 **目标 GPU** 上编译 CUDA 内核；FP8 仅 Thor；勿与 vLLM 吞吐优化混用 |
 | 冻结 VLA + LLM harness 评测 | RPent（Harness VLA）+ LIBERO-Pro | 需 LLM API key 与 π₀.₅ / 仿真依赖；≠ 训练新 VLA |
