@@ -4459,6 +4459,7 @@
 - [Tesla Optimus](wiki/entities/tesla-optimus.md) — Tesla Optimus** 是特斯拉的 **通用人形机器人** 项目，与 **FSD 车队视觉数据** 共享部分「真实世界人类行为」数据叙事。LeoInAI Substack（2026-09） `📅unknown` `[entity_page]`
 - [Text2MuJoCo](wiki/entities/text2mujoco.md) — Text2MuJoCo**（ShawnJoeng/Text2Mujoco，MIT）是运行在 **现有编码代 `📅unknown` `[entity_page]`
 - [Three.js Game Skills](wiki/entities/threejs-game-skills.md) — Three.js Game Skills** 是 [majidmanzarpour/threejs-game-skills](https://github.com/majidmanzarpour/ `📅unknown` `[entity_page]`
+- [Tidewater](wiki/entities/tidewater.md) — Tidewater**（GitHub，[在线游玩](https://dgreenheck.github.io/ `📅unknown` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
 - [TienKung-Lab](wiki/entities/tienkung-lab.md) — Open-X-Humanoid/TienKung-Lab**](https://github.com/Open-X-Humanoid/TienKung-Lab) 是 **北京人形机器人创新中心（ `📅unknown` `[entity_page]`
