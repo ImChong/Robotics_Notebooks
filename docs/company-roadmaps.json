@@ -206,6 +206,16 @@
         { "date": "2024-03", "title": "DexCap", "track": "前序学术", "desc": "团队前序（Stanford，RSS 2024）：可穿戴 SLAM + EMF 手套 mocap，经 DexIL 把野外人类示范迁移到灵巧手。", "id": "entity-paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti", "url": "https://dex-cap.github.io/" },
         { "date": "2026-09", "title": "OM-1", "track": "通才策略", "desc": "仅人类穿戴示范、无遥操作 / 机上数据单阶段训练；高频 RL 控制层异步部署到工业臂与人形，宣称 <30 分钟人类数据上手新任务。", "id": "entity-reward-ai-om1", "url": "https://www.rewardai.com/blog/OM-1/" }
       ]
+    },
+    {
+      "key": "symbiosis",
+      "name": "Symbiosis Robotics",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "反对「VLA/WAM → 运动 latent → 冻结全身跟踪器」分层栈：单一模型把视觉、语言、本体直接映射到 G1 关节 PD 目标，配 DriftDistill 闭环蒸馏与 15,010 h 统一关节语料；截至 2026-09 未开源。",
+      "official": "https://symbiosis-robotics.com/research/dpc/en/",
+      "nodes": [
+        { "date": "2026-08", "title": "DPC", "track": "直接感知控制", "desc": "去掉中间运动接口 Zt（以冻结 SONIC 为靶），Symbiotic Attention 耦合感知与控制；仅定性真机演示，无成功率表。", "id": "entity-paper-dpc", "url": "https://symbiosis-robotics.com/research/dpc/en/" }
+      ]
     }
   ]
 }
