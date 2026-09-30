@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ./inverse-dynamics-model.md
@@ -332,6 +332,8 @@ flowchart TB
 **文献实例（滚动 joint denoise · replan 延迟）**：[Rolling-WAM](../entities/paper-rolling-wam.md) 在 **MoT video DiT + action Transformer** 上维护 **staggered-noise 滑动窗口**：每 replan **清 imminent action chunk**、远处 chunk **partial refine**，steady-state replan **215 ms**（RoboTwin 对照 **4.5×** Joint-WAM）；LIBERO **98.1%**、RoboTwin 2.0 **93.3%**、**G1 真机 85.0%**（arXiv:2609.30247，USC / TRI 等；**代码待发布**）。
 
 **文献实例（UniMotion-4K motion prior · 人形 WAM）**：[WholeBodyWAM·UniMotion-4K](../entities/paper-wholebodywam-unimotion-4k.md) 从 **4.1K+ h** 异构全身 motion 预训练 **Motion Expert**，再经 **Video–Motion–Action MoT** 接地 **天工 3.0** 真机 loco-manipulation；与同名 [WBC 接地版 WholeBodyWAM](../entities/paper-wholebodywam.md)（arXiv:2609.16644）为 **不同论文**（arXiv:2609.18197）。
+
+**文献实例（72-D 身–手 partial label · PICO mid-training · 人形 WAM）**：[WB-WAM](../entities/paper-wb-wam.md)（arXiv:2609.34199，清华 IIIS / MARS Lab 等）在 **生成式 video 预训练** 中注入 **body/root/Wuji 72-D 物理动作**，从 **1880.2 h** 九源 **部分通道标注** 联合训练 video–action expert，再经 **任务对齐 PICO 22 h** 与 **SONIC 真机 3.37 h** 适配；[HumanoidArena](../entities/paper-humanoidarena.md) **81.9%**、真机五任务 **84.0%**（相对 OpenWAM **80.0%**）；对齐 mid-training 可用 **30 ep/任务** 机端数据超 **100 ep** 直接适配（**73.8% vs 65.0%**）；**代码待发布**（2026-09-30）。
 
 **文献实例（潜空间 foresight · 人形并发家务 loco-manip）**：[ω-0](../entities/paper-omega-0.md) 用 **紧凑未来观测 embedding**（非像素视频重建）耦合 **扩散全身动作 latent**，经 **SONIC** 在 G1 上执行擦桌/拖地/洗衣等 **manipulate-while-moving**；配套 **ω-HOME**（40h+）；11 任务 Omni **SR 81.8% / Progress 90.3%**，显著高于 ψ-0 / DiT4DiT / Fast-WAM 等同协议基线（arXiv:2608.06375，NTU / PKU / BAAI / HKUST-GZ；代码与数据 WIP）。
 

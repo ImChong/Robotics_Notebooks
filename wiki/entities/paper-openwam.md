@@ -16,7 +16,7 @@ tags:
   - cuhk
   - sjtu
 status: complete
-updated: 2026-09-25
+updated: 2026-09-30
 arxiv: "2609.07398"
 code: https://github.com/OpenWAM-Official/OpenWAM
 related:
@@ -28,6 +28,7 @@ related:
   - ./paper-flex-pi.md
   - ./paper-dit4dit-video-action-model.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ./paper-wb-wam.md
   - ../overview/open-source-reproducibility-9-papers-technology-map.md
 sources:
   - ../../sources/papers/openwam_arxiv_2609_07398.md
@@ -184,6 +185,7 @@ sequenceDiagram
 | [GlanceWAM](./paper-glancewam.md) | 单 DiT 内异步稀疏前瞻，优化 **控制环延迟**；OpenWAM 强调 **预训练设计空间与全栈开源** |
 | [Flex-π](./paper-flex-pi.md) | 多流 Joint WAM + 推理时流掩码算力柔性；OpenWAM 默认 dual_system + 同步对角去噪 |
 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | 人形 loco-manip 实时 WAM；OpenWAM 聚焦 **操作多基准 + 统一 80-D 动作空间** |
+| [WB-WAM](./paper-wb-wam.md) | 清华系 **72-D 身–手 video 预训练 + HumanoidArena**；真机五任务 WB-WAM **84.0%** vs OpenWAM **80.0%**（作者对照，非同训练栈） |
 | π₀ / π₀.₅ / Fast-WAM / Being-H0.7 | 项目页同轴对比；OpenWAM-α 在 LIBERO-plus、RoboTwin-Full、RoboDojo 等多项领先或并列 |
 | [Awesome-WAM 综述](../concepts/world-action-models.md) | 文献 taxonomy；OpenWAM 补 **工程化预训练对照与开源基座** |
 
