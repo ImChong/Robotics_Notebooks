@@ -96,6 +96,14 @@ flowchart LR
 - **真机：** **LYNX M20 + Z1** 展示跨平台迁移；具体任务与扰动设置见原文 **Experimental Results**。
 - **读法：** 先对齐「策略输出维度 ↔ PADP 约束 ↔ WBC 频率」，再比成功率；勿与 arXiv 预印本数字混用。
 
+## 与其他工作对比
+
+| 维度 | PADP | 对照 |
+|------|-------------|------|
+| 物理结构的作用位置 | 部署时把 policy actions **投影** 到全身动力学可行指令（细节以 RA-L 正文为准） | [MPC-RL](./paper-mpc-rl-humanoid-locomotion-manipulation.md)：训练期质心 MPC 预测地标奖励指导 PPO，部署时 MPC 退场、纯 RL |
+| 核心问题 | 策略输出与耦合动力学 / 接触 / 关节限位之间的 **接口一致性** | [Contact-Guided Exploration](./paper-contact-guided-exploration-locomanipulation.md)：非抓取任务的 **稀疏接触探索**，用多 Critic PPO + 可退火探索权重 |
+| 平台与开源 | Go2 + Z1（MuJoCo）与 LYNX M20 + Z1（真机）；未见官方代码 | [Contact-Guided Exploration](./paper-contact-guided-exploration-locomanipulation.md)：ALMA 真机椅运；项目页同样无代码 |
+
 ## 结论
 
 **PADP 的价值在「策略—动力学」统一投影接口，适合作为四足+臂 loco-manipulation 的系统层参考，而非新的单点 RL 算法名。**

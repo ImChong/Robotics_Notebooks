@@ -69,6 +69,15 @@ summary: "FutureRTC（arXiv:2607.24008，川大/UESTC/Alberta）：冻结 VLA �
 - **Kinetix 12 任务：** \(d=0\to4\) 成功率仅降 ~3.0%；步数在 \(d\ge2\) 最少。
 - **双臂 AgileX + π₀.₅ @ 30 Hz：** 远程 ~170 ms（\(d\approx5\)）与 +150 ms 注入；三任务各 20 trial，延迟升高时 margin 扩大（如 Fold Towel @ 320 ms **80% vs 35%** naive）。
 
+## 与其他工作对比
+
+| 维度 | FutureRTC | 对照 |
+|------|-------------|------|
+| 修复位置 | **条件输入**：预测执行时刻的视觉 latent 与本体状态，再喂冻结 VLA | [Real-Time Chunking](./paper-real-time-chunking.md)：**动作空间** 推理期 inpainting，锁定已提交前缀、补全其余步 |
+| 是否改 VLA 权重 | 不改；只训练约 +5.19M 参数 adapter（数值摘自项目页） | [Training-Time RTC](./paper-training-time-real-time-chunking.md)：训练时随机 delay 并对 action prefix 条件化，需重训策略 |
+| 推理开销 | 约 +3.04 ms（π₀.₅ 档，数值摘自项目页） | [REMAC](./paper-remac.md)：训练期 masked chunking + prefix-preserving 采样，推理无额外延迟 |
+| 关系 | 改上下文，与改 policy 的方法正交 | [REMAC](./paper-remac.md) / [Training-Time RTC](./paper-training-time-real-time-chunking.md)：改 policy 本身；LIBERO 对比表中作为同协议对照 |
+
 ## 结论
 
 **异步 chunk 的第一性修复是「执行时刻条件输入」，不是只在 action 空间抹平；FutureRTC 用 adapter 逼近 oracle 条件，且不动 VLA 权重。**

@@ -7,7 +7,7 @@ tags:
   - geometry
   - map-semantics
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 arxiv: "2608.21440"
 related:
   - ../methods/vla.md
@@ -53,7 +53,7 @@ summary: "Geo-VLA（arXiv:2608.21440，北科大）：训练期内化道路几�
 ## 评测与指标
 
 - **基准：** **NAVSIM v1**（非反应式端到端驾驶规划评测，见 [NAVSIM](./paper-rcl-ref-e25271fa6f028e5611cf-navsim-data-driven-non-reactive-autonomous-vehic.md)）。
-- **主结果：** **92.1 PDMS**，单相机 VLA 规划器中的新 SoTA；在多种动作生成架构的 VLA 规划器上均带来一致提升（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **主结果：** **92.1 PDMS**，论文自报为发表时（2026-08）单相机 VLA 规划器中的最高分；在多种动作生成架构的 VLA 规划器上均带来一致提升（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
 - **数据：** 自建 **Geo-QA** 几何问答数据集，用于对比学习 + 指令微调注入道路几何；**推理时不需要高精地图或额外车道信息**。
 
 ## 与其他工作对比

@@ -17,6 +17,7 @@ related:
   - ./rle-bench.md
   - ../methods/aspire.md
   - ../methods/enpire.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/pptbench_arxiv_2609_29718.md
   - ../../sources/sites/pptbench-lab-einsia.md
@@ -62,6 +63,20 @@ summary: "PPTBench（Einsia/清华，arXiv:2609.29718）：500 项 arXiv 科学�
 - **四阶段 Judge（乘法）：** (1) artifact 有效性（确定性）；(2) 语义（节点、箭头方向）；(3) 渲染可读性；(4) 细粒度几何/文本 diff。
 - 人类一致性：200 盲测 gate \(\kappa=0.696\)。
 
+## 评测与指标
+
+- **设置：** 500 项 frozen 任务（50 个 arXiv 主类 / 10 展示域），31 个 agent 配置，共 46.5k 次 judge 判决；四阶段乘法门控打分（0–100），语义错即零分。
+- **主结果：** 最佳 Kimi K3 high effort **67.80**，中位配置 **19.47**；仅 **2.08%** 无法产出可用文件，**70.43%** 在可读 deck 后仍丢语义（数值摘自论文摘要）。
+- **机制：** 文本细节占扣分 **51.6%**；reasoning 主要帮助过 hard gate，自检渲染与分数相关更高（\(r=0.881\)）；Judge 与人类在 200 盲测 gate 上一致性 \(\kappa=0.696\)。
+
+## 与其他工作对比
+
+| 维度 | PPTBench | 对照 |
+|------|-------------|------|
+| 评测对象 | coding agent 从流程图重建 **可编辑 PPTX 对象图** | [RLE-Bench](./rle-bench.md)：coding agent 在物理仿真中完成控机 / 训策略 / 感知 / 机械设计四类工程闭环 |
+| 交付物与判据 | 单页 PPTX；四阶段乘法 Judge（有效性 × 语义 × 渲染 × 细粒度 diff） | [RLE-Bench](./rle-bench.md)：harness、ONNX policy、VLA recipe、MJCF 等 artifact，Harbor hidden test 打分并汇总为 RLE Index |
+| 与机器人的关系 | 间接：重建论文方法框图，服务文档 / 教学资产 | [ENPIRE](../methods/enpire.md)：真机策略自改进 harness，直接进控机闭环 |
+
 ## 结论
 
 **Agent 已会「写出合法 PPTX」，但还不会稳定「看懂流程图语义」——排行榜主要由过 gate 率驱动，细粒度质量靠自检渲染。**
@@ -86,6 +101,7 @@ summary: "PPTBench（Einsia/清华，arXiv:2609.29718）：500 项 arXiv 科学�
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [RLE-Bench](./rle-bench.md)
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准选型知识链；PPTBench 属 coding agent 评测轴的邻接基准
 
 ## 参考来源
 

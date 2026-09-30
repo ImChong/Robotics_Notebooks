@@ -122,6 +122,15 @@ sequenceDiagram
 - **RoboTwin 2.0：** SmolVLA SR **+12.6 pt**（34.8→47.4）— 固定短 \(h\) 可能过保守。
 - **真机：** 长 horizon drawer 任务增益最大；短 pick-place 在已 100% 时 mainly **减 call**。
 
+## 与其他工作对比
+
+| 维度 | Action Upcycling | 对照 |
+|------|-------------|------|
+| 自适应 horizon 的信号 | 只读已采样 chunk 的 **速度波动** \(c_k\)，不读模型内部 | [AutoHorizon](./paper-autohorizon.md)：读 flow VLA 的 **action self-attention** 估计每 chunk 的 execution horizon |
+| 加速轴 | 减 **policy call 次数**（执行更多 tail），单 call 延迟不变 | [FlashVLA](./paper-flashvla.md)：减 **单次解码延迟**（交错噪声缓冲 + chunk 级因果注意力），论文称二者可叠加 |
+| 是否改权重 | 训练-free，仅改执行环；离线标定一个标量 \(\tau\) | [FlashVLA](./paper-flashvla.md)：需改动作专家的时间步条件与注意力掩码并做一次多缓冲微调 |
+| 额外推理开销 | 零额外前向；AAC 对照需 K=20 额外 chunk（数值摘自论文） | [AutoHorizon](./paper-autohorizon.md)：几乎不增加推理开销，但仍每次 replan 做 full forward |
+
 ## 结论
 
 **Action Upcycling 把「丢弃 tail」改成可审计的部署资源，是 chunked VLA/WAM 上低成本、可复现的 policy-call 加速层。**

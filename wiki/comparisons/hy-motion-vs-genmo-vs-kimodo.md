@@ -3,7 +3,7 @@
 type: comparison
 tags: [human-motion, text-to-motion, motion-generation, flow-matching, diffusion, smpl, hy-motion, genmo, kimodo, comparison, engineering-selection, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-30
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
@@ -211,6 +211,7 @@ flowchart TD
 - [kimodo.cpp](../entities/kimodo-cpp.md) — Kimodo 的 C++/GGML 本地推理档（约束未移植）
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 扩散/流匹配生成范式概念入口
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — T2M 文献/数据/模型拓扑索引
+- [骨架动作识别（HOVL）](../methods/skeleton-action-recognition.md) — 判别侧的 motion-text 对齐（HumanML3D 为 HOV 基准来源之一）；三者生成结果的语义一致性需靠这类识别/检索模型复核，勿与生成质量指标混读
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与扩散共同的数学基础
 - [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — SMPL 系运动 → 机器人骨架的工程落点
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 生成运动 → 真机物理跟踪的下游消费方

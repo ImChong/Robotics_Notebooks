@@ -120,6 +120,15 @@ flowchart LR
 - **DreamZero / π0.5：** 项目表显示部分移动任务 **极低 SR** — 连续 WAM/VLA 在非 specialist 设定下落后。
 - **真机：** 推咖啡车、碗入水槽、瓶入垃圾桶等 **长语言链** demo（页内实时播放）。
 
+## 与其他工作对比
+
+| 维度 | Holo-M | 对照 |
+|------|-------------|------|
+| 动作表示 | 四部件离散 token（共 208）写入 VLM 词表，分组离散 diffusion 解码 | [Ψ0](./paper-loco-manip-161-156-psi0.md)：连续 action expert，需 gradient insulation；低层同为 decoupled WBC |
+| SIMPLE 成绩 | specialist **163/180**、generalist **143/180**（数值摘自论文） | [Ψ0](./paper-loco-manip-161-156-psi0.md)：specialist **154**、generalist **114**（同表，数值摘自论文） |
+| 离散/连续混合方式 | 全程离散 token，无单独 continuous head | [π0.5](./paper-pi05-open-world-vla.md)：预训练用 FAST 离散动作，后训练接连续 flow 专家；SIMPLE generalist **28/180**（数值摘自论文） |
+| 全身动作来源 | 端到端词表 + grouped diffusion，直接输出 EEF/body/hand/kinematics | [WholeBodyVLA](./paper-hrl-stack-30-wholebodyvla.md)：从视频学 latent action token，VLM 解码双臂动作与 locomotion command，由 LMO 执行 |
+
 ## 结论
 
 **Holo-M 证明离散 token VLA 可扩展到人形全身，并在 SIMPLE 上同时拿下 generalist 与 specialist SOTA。**

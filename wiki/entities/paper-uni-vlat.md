@@ -125,6 +125,15 @@ flowchart TB
 - **消融：** post-DiT 锚 **80%** vs pre-DiT **55%** — **上下文化 tactile** 是预测有效前提。
 - **π0.5：** Table Sweeping **30→60%**；Back-Tap **0→90%**。
 
+## 与其他工作对比
+
+| 维度 | Uni-VLaT | 对照 |
+|------|-------------|------|
+| 触觉如何进策略 | 8 区域全身触觉 token 门控注入预训练 VLA 的 DiT，训练期预测未来触觉 / 本体 / 视觉 latent | [WT-UMI](./paper-loco-manip-07-wt-umi.md)：全身触觉图像与接触力训练力监督 planner，再由触觉 admittance controller 闭环执行 |
+| 触觉的使用时机 | 触觉当物理锚，post-DiT 池化后做多模态未来预测；部署去掉预测头 | [DeCAL](./paper-decal.md)：接触感知门控决定何时信触觉，并用视触 latent co-imagination 补视觉看不见的动力学 |
+| 平台与动作空间 | 人形 G1 全身 loco-manipulation，SONIC 解码 64-D motion token | [DeCAL](./paper-decal.md)：面向灵巧操作 VLA，MoT 分专家做理解 / 想象 / 动作 |
+| 是否用触觉 | 分布式全身触觉 + 视觉 / 语言 / 本体 | [TANGO](./paper-tango-vla.md)：全身 VLA 语言导航，监督在仿真合成（路径规划→全身运动→RL tracking），不涉及触觉 |
+
 ## 结论
 
 **Uni-VLaT 表明：全身触觉适配预训练 VLA 的关键不仅是多一路传感器，而是 tactile-anchored 的多模态未来表征监督。**

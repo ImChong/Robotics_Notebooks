@@ -78,6 +78,15 @@ summary: "REMAC（ICLR 2026，UIC/Cisco 等）：训练期 masked action chunkin
 - **12** 个 Kinetix 仿真任务 + **3** 组真机（项目页含 +0 / +150 ms 注入 delay 视频）。
 - 报告：更高 completion、更快 wall-clock、delay 扫描下成功率更平；[FutureRTC](./paper-futurertc.md) 表格中 REMAC 作为 training-time 强基线。
 
+## 与其他工作对比
+
+| 维度 | REMAC | 对照 |
+|------|-------------|------|
+| 修复位置 | 训练期 prefix mask 修 **intra-chunk 不一致** + prefix-preserving 采样修 chunk 边界 | [Real-Time Chunking](./paper-real-time-chunking.md)：推理期 inpainting，只约束 **chunk 边界**，训练配方不变 |
+| 推理开销 | 与 base 相同，不增加去噪步或 VJP | [Real-Time Chunking](./paper-real-time-chunking.md)：采样环内做 inpainting 引导，去噪步需额外 VJP 计算 |
+| 训练适配方式 | delay 条件 mask 只监督可执行后缀 + 自条件课程（GT / 预训练预测按 \(\sigma\) 退火混合） | [Training-Time RTC](./paper-training-time-real-time-chunking.md)：prefix 喂干净 GT、token-wise timestep，loss 只算 postfix |
+| 是否改 VLA 权重 | 需第二阶段 LoRA 微调 | [FutureRTC](./paper-futurertc.md)：冻结 VLA，只训前置 adapter 预测执行时刻上下文；其 LIBERO 表把 REMAC 作 training-time 基线 |
+
 ## 结论
 
 **异步 chunk 要稳，既要修边界，也要修 chunk 内「观测晚了、动作还在按旧图走」——REMAC 用 mask + 自条件在训练里一次性付账。**

@@ -331,6 +331,19 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 脚本」的接口叙述（ScheduleStream）。它是编程语言/打包环境基础设施，非机器人
     # 概念/方法/形式化；与 uv / conda / printf 同类工具链停用词，不建独立页。
     "python",
+    # api：各页正文里的 **API** / `api` 全是服务或 SDK 入口指称——paper-* / 工具实体
+    # 「资源」表的 **API** 文档行（Vidu S2 的 platform 文档）、「个人走 **API** 而非
+    # 自托管」的部署口径（Kimi K3）、仿真器接口清单（Flightmare 的重置/控制/状态
+    # 获取）、硬件路线图里的「统一 **API**」与 RPent 的 `api` 规划器后端名。它是
+    # 软件接口基础设施，非机器人概念/方法/形式化；与 github / uv / python 同类
+    # 工具链停用词，不建独立页。
+    "api",
+    # infer：各页正文里的 `infer` / **infer** 均为仓库推理入口脚本名或 RPC 方法名
+    # （「无可辨识 `train` / `infer` 入口」、RoboColiseum 的 JSON-RPC `infer`、
+    # VGG-TTT 的「先 `infer` 全场景」），以及 RTC 对照表的推理时变体行标签；与已作
+    # 停用词的 `train` / `eval` 成对出现，是命令 token。推理期机制已由
+    # concepts/control-inference-frequency-decoupling.md 等页覆盖，不建独立页。
+    "infer",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -502,6 +515,12 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 与 base（基座/权重档名/消融条件三义）同类「属性标签而非可成页机制」。
     "training-free",
     "base",  # 基座连杆 / 权重档名 / 消融条件名三义，已由 URDF + 浮动基座等页覆盖
+    # benchmark：命中处均为 paper-* 实体「核心信息」表的 **Benchmark** 行标签（评测
+    # 套件名 + 任务数）、Isaac Lab 任务用途标签 `Benchmark` 与 tags 值 `benchmark`；
+    # 评测基准作为知识实体已由 overview/hub-embodied-eval-benchmark.md（选型闭环枢纽）
+    # + queries/embodied-eval-benchmark-selection-loop.md + concepts/sim-vs-real-eval-gap.md
+    # 承载，各具体基准归 entities。与 libero / eval 同类，不单建概念页。
+    "benchmark",
     "amp",
     "armature",
     "cartpole-v1",  # Gymnasium 环境注册 id，已由 concepts/cartpole.md 覆盖

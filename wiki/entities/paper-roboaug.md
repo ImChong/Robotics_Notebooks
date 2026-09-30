@@ -12,7 +12,7 @@ tags:
   - beihang
   - pku
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 arxiv: "2602.14032"
 venue: "2026 · arXiv"
 related:
@@ -144,7 +144,7 @@ flowchart TB
 
 - **SDv3 与 prompt 库：** 背景分布受 500 模板与生成模型偏见约束，极端真实场景可能仍 OOD。
 - **单参考帧：** 首帧严重遮挡时 one-shot 匹配可能失败；论文依赖选清晰首帧实践。
-- **ACT 为主：** 未在最新 VLA 上给出同等规模 ablation，迁移到 chunking/VLA 需自行验证 \(\mathcal{L}_{\text{RC}}\) 与增广 batch 设计。
+- **ACT 为主：** 未在 VLA 类策略上给出同等规模 ablation，迁移到 chunking/VLA 需自行验证 \(\mathcal{L}_{\text{RC}}\) 与增广 batch 设计。
 - **计算：** 离线 SD 背景生成 + SAM2 全库传播有 GPU 与存储成本。
 - **开源空窗：** Coming Soon 期间无法复现 RoboAug-D 检测数字与增广 magnitude scaling law（§IV-F）。
 
