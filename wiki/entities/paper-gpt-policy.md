@@ -13,7 +13,7 @@ tags:
   - hust
   - sjtu
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 arxiv: "2609.19138"
 code: https://github.com/cheng-haha/GPT-Policy
 related:

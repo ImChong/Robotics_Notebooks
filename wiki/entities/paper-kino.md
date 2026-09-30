@@ -11,7 +11,7 @@ tags:
   - eth
   - unitree-g1
 status: complete
-updated: 2026-09-21
+updated: 2026-09-30
 arxiv: "2609.18869"
 venue: "Preprint, 2026"
 related:
@@ -151,13 +151,13 @@ flowchart TB
 
 ## 局限与风险
 
-### 开源状态（步骤 2.5，2026-09-21）
+### 开源状态（步骤 2.5，2026-09-30）
 
 | 资源 | 状态 |
 |------|------|
-| arXiv / PDF | **已公开** |
+| arXiv / PDF | **已公开**（v1，2026-09-16） |
 | 项目页 | **无** |
-| GitHub | **未发布** |
+| GitHub | **未发布**（arXiv API / 项目页检索再核） |
 
 - **Keyframe 库 scalability：** 新任务需扩展库或自动 salient frame + VLM 标注（论文 future work）。
 - **感知栈：** 规划依赖第三人称视觉 + mocap 物体位姿 — **in-the-wild** 需 egocentric RGB-D 等 onboard 感知替换。
