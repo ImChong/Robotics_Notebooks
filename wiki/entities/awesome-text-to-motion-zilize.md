@@ -66,6 +66,7 @@ summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运�
 - [GENMO（统一人体运动估计与生成）](../methods/genmo.md) — 本列表收录的代表性人体扩散「通才」模型（GEM 发布名）
 - [General Motion Retargeting（GMR）](../methods/motion-retargeting-gmr.md) — 人体运动→机器人骨架的常见工程落点
 - [HumanML3D](./paper-notebook-humanml3d.md) — 主流文本–运动数据集与评测锚点
+- [UniMate（跨拓扑 rig 动画）](./paper-unimate.md) — 非 SMPL 模板、任意骨骼 + 文本的 SIGGRAPH Asia 2026 基础模型（已开源）
 - [Skeleton-based Action Recognition](../methods/skeleton-action-recognition.md) — HumanML3D 等在识别/异构基准中的使用语境
 
 ## 参考来源

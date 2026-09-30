@@ -2,13 +2,14 @@
 type: method
 tags: [skeleton, action-recognition, open-vocabulary, language-alignment, heterogeneous, contrastive-learning, transformer]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-30
 related:
   - ./imitation-learning.md
   - ./claw.md
   - ./vla.md
   - ./motion-retargeting-gmr.md
   - ./diffusion-motion-generation.md
+  - ../entities/paper-unimate.md
   - ../concepts/foundation-policy.md
   - ../concepts/data-flywheel.md
   - ../tasks/locomotion.md
@@ -125,7 +126,10 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 [VLA](./vla.md) 需要精准的动作-语言对应数据。HOVL 的多粒度对齐产生了帧级动作-文本配对，可作为 VLA 训练的高质量输入。
 
 ### 4. 跨形态迁移
-骨架统一表示思路与 [运动重定向](./motion-retargeting-gmr.md) 高度互补：重定向解决关节运动的几何映射，统一骨架表示解决特征空间的语义对齐。
+骨架统一表示思路与 [运动重定向](./motion-retargeting-gmr.md) 高度互补：重定向解决关节运动的几何映射，统一骨架表示解决特征空间的语义对齐。[UniMate](../entities/paper-unimate.md) 在 **生成侧** 用 TADiT 显式编码异构 kinematic tree（与识别侧的 HOVL 统一表示形成「生成↔理解」对照），输出骨骼轨迹可再进入 GMR。
+
+### 5. 与跨拓扑 motion 生成的边界
+骨架动作识别是 **判别/标注**；[UniMate](../entities/paper-unimate.md) 是 **条件生成**（rig + 文本 → motion）。二者共享「拓扑异构」问题表述，但评测分别为分类/检索 vs 生成质量与用户研究，勿混读指标。
 
 ## 局限性
 
@@ -147,6 +151,7 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 - [VLA](./vla.md) — 语言-动作对齐的下游应用场景
 - [InfoNCE Geometry](../entities/paper-infonce-geometry.md) — CLIP 式对比学习的 population geometry 与 modality gap 机制（ICML 2026）
 - [Motion Retargeting GMR](./motion-retargeting-gmr.md) — 跨骨架形态运动映射
+- [UniMate（跨拓扑 text-to-motion）](../entities/paper-unimate.md) — 异构骨骼生成基础模型
 - [Diffusion Motion Generation](./diffusion-motion-generation.md) — 动作生成的下游应用
 
 ## 推荐继续阅读
