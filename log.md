@@ -1,3 +1,9 @@
+## [2026-09-30] ingest | WB-WAM arXiv:2609.34199 — 72-D 身手异构 video WAM 预训练 + PICO mid-training + HumanoidArena 81.9%；项目页 GitHub/HF 待发布
+
+## [2026-09-30] ingest | RopeFormer arXiv:2609.23432 — TXL 跨 trial 动态绳 + H1-2 真机；项目页 Code SOON；实体 paper-ropeformer 与 Flying Knots/manipulation 交叉
+
+## [2026-09-30] ingest | Echo in the Steps 2609.28960 升格深读；CoRL 2026 清华 G1 门控记忆跑酷；代码 Coming soon；自动合并 PR
+
 ## [2026-09-30] ingest | Action Upcycling 2609.34911 已开源；Uni-VLaT 2609.35450 全身触觉 VLA；Holo-M 2609.35709 离散人形 VLA 代码待发布；自动合并 PR
 
 ## [2026-09-30] ingest | HOI-Retarget 2609.34674 接触中心 HOI 重定向；GitHub+HF 已开源；自动合并 PR

@@ -1482,7 +1482,7 @@
 - [E-SDS（Environment-aware See it, Do it, Sorted）](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — E-SDS** 面向 **人形感知行走** 的 **奖励函数仍难自动且感知型 RL 仍难手调** 这一交叉痛点：在 **VLM 从单段示范视频合成 Python 奖励** 的 **SDS** 路线 `📅unknown` `[entity_page]`
 - [EATR-Stereo](wiki/entities/paper-eatr-stereo.md) — EATR-Stereo**（*Embodiment-Aware Token Routing of Paired Stereo Evidence for Humanoid Vision-Langua `📅unknown` `[entity_page]`
 - [eBert：非线性正规模涌现四足步态](wiki/entities/paper-ebert-nonlinear-normal-modes.md) — eBert NNM Gaits**（arXiv:2609.00539）由 **慕尼黑工业大学（TUM）、德国航空航天中心（D `📅unknown` `[entity_page]`
-- [Echo in the Steps](wiki/entities/paper-echo-in-the-steps.md) — Echo in the Steps**（*Learning Perceptive Humanoid Parkour with Gated Memory*，[arXiv:2609.28960](ht `📅unknown` `[entity_page]`
+- [Echo in the Steps（arXiv:2609.28960）](wiki/entities/paper-echo-in-the-steps.md) — Echo in the Steps**（*Learning Perceptive Humanoid Parkour with Gated Memory*，清华大学，[arXiv:2609.2896 `📅unknown` `[entity_page]`
 - [ECoT：具身思维链推理（Embodied Chain-of-Thought）](wiki/entities/paper-ecot.md) — ECoT**（*Robotic Control via Embodied Chain-of-Thought Reasoning*，[arXiv:2407.08693](https://arxiv. `📅unknown` `[entity_page]`
 - [EcoVLA（arXiv:2608.15502）](wiki/entities/paper-ecovla.md) — EcoVLA**（*EcoVLA: Energy-Efficient Device-Edge Co-Inference for Vision-Language-Action Models unde `📅unknown` `[entity_page]`
 - [Effective Degree：多项式代理量化简洁性](wiki/entities/paper-effective-degree.md) — Effective Degree（ED）** 出自论文 *Quantifying and Optimizing Simplicity via Polynomial Representations `📅unknown` `[entity_page]`
@@ -3033,6 +3033,7 @@
 - [Rolling-WAM（滚动想象 · World Action Model）](wiki/entities/paper-rolling-wam.md) — Rolling-WAM**（*World Action Models with Rolling Imagination*，[arXiv:2609.30247](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Learning Safe Humanoid Navigation from Reduced Order Models（arXiv:2609.19272）](wiki/entities/paper-rom-nav.md) — Learning Safe Humanoid Navigation from Reduced Order Models**（*Learning Safe Humanoid Navigation f `📅unknown` `[entity_page]`
 - [RoMAN-Flow](wiki/entities/paper-roman-flow.md) — RoMAN-Flow: Taming Autoregressive Normalizing Flows for Offline Reinforcement Learning in Robotic  `📅unknown` `[entity_page]`
+- [RopeFormer（arXiv:2609.23432）](wiki/entities/paper-ropeformer.md) — RopeFormer**（*Cross-Trial Adaptation from Interaction History for Dynamic Rope Manipulation*，加州大学伯 `📅unknown` `[entity_page]`
 - [ROS2SmolVLA：工业轻量臂上的本地小型 VLA](wiki/entities/paper-ros2smolvla.md) — ROS2SmolVLA**（*Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade  `📅unknown` `[entity_page]`
 - [DAgger 原论文（Ross et al., 2011）](wiki/entities/paper-ross-dagger.md) — A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning**（[PMLR v `📅unknown` `[entity_page]`
 - [RouteRLT（arXiv:2609.26467）](wiki/entities/paper-routelt.md) — RouteRLT**（*Learning When and Which RL Specialist Should Control a Vision-Language-Action Policy*， `📅unknown` `[entity_page]`
@@ -4184,6 +4185,7 @@
 - [WARP（Whole-body-Aware Retargeting from human Pose）](wiki/entities/paper-warp-whole-body-retargeting.md) — WARP**（*WARP: Whole-Body Retargeting for Learning from Offline Human Demonstrations*，arXiv:[2606.2 `📅unknown` `[entity_page]`
 - [Watch, Recall, Act（arXiv:2609.28429）](wiki/entities/paper-watch-recall-act-concurrent-streams.md) — Watch, Recall, Act**（*Watch, Recall, Act: Always-On Robots in Concurrent Embodied Streams*，[arXiv: `📅unknown` `[entity_page]`
 - [WAVE-Go（arXiv:2609.18193）](wiki/entities/paper-wave-go.md) — WAVE-Go**（*WAVE-Go: World-Model Navigation with Adaptive Execution for Wheel-Legged Robots*，[arXiv `📅unknown` `[entity_page]`
+- [WB-WAM（异构身–手预训练 · 人形 Loco-Manipulation WAM）](wiki/entities/paper-wb-wam.md) — WB-WAM**（*Heterogeneous Body-Hand Pre-training for Humanoid Loco-Manipulation*，[arXiv:2609.34199 `📅unknown` `[entity_page]`
 - [Highly Dynamic Quadruped Locomotion via WBIC and MPC](wiki/entities/paper-wbic-mpc-mini-cheetah.md) — Kim, Di Carlo, Katz, Bledt & Kim（MIT，arXiv:1909.06586）** 给出 Mi `📅unknown` `[entity_page]`
 - [WCM：给 VLA 强化学习换一个会预测世界的 Critic](wiki/entities/paper-wcm-world-critic-model.md) — WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement  `📅unknown` `[entity_page]`
 - [WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation](wiki/entities/paper-weave.md) — WEAVE**（*Learning Whole-Body Dexterous Loco-Manipulation from Human–Object Interactions*，[arXiv:26 `📅unknown` `[entity_page]`
