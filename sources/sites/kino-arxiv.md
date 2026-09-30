@@ -8,14 +8,14 @@
 - **PDF：** <https://arxiv.org/pdf/2609.18869>
 - **机构：** 苏黎世联邦理工学院（ETH Zürich）
 - **作者：** Sitong Chen, Fatemeh Zargarbashi, Jin Cheng, Tianxu An, Stelian Coros
-- **入库日期：** 2026-09-21（步骤 2.5 再核）
+- **入库日期：** 2026-09-21（初核）；2026-09-30（步骤 2.5 再核，仍 v1、无代码）
 - **一句话说明：** VLM 选 whole-body keyframe → 场景重定向 → keyframe-conditioned RL；G1 真机 loco-manipulation。
 - **沉淀到 wiki：** [`wiki/entities/paper-kino.md`](../../wiki/entities/paper-kino.md)
 
-## 开源状态（步骤 2.5，2026-09-21）
+## 开源状态（步骤 2.5，2026-09-30）
 
 - **项目页：** **无** — arXiv 与 PDF 为唯一官方链接；未检索到 `*.github.io` 或 ETH lab 专页。
-- **GitHub：** **未发布** — arXiv v1（2026-09-16）无 code/data 链接；第三方同名仓库均无关。
+- **GitHub：** **未发布** — arXiv **v1**（2026-09-16，截至 2026-09-30 无 v2）无 code/data 链接；第三方同名仓库（如 `kino-mc/kino`）均无关。
 - **论文 PDF：** **已公开**。
 
 ## 论文核心摘录（再核）
