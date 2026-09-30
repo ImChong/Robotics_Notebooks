@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/behavior-tree-vla-orchestration.md
   - ./paper-harness-vla.md
+  - ./paper-robofoundry.md
   - ./paper-pi0.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./robotwin.md
@@ -174,6 +175,7 @@ sequenceDiagram
 | [Harness VLA](./paper-harness-vla.md) | 冻结 `vla_act` + **记忆重绑定**；EmbodiedSkills **训练** planner/verifier 并 **runtime guard** 每步 |
 | 端到端 VLA | 无显式子目标/验证；EmbodiedSkills 长程靠 **AgentLoop**（消融 86.2%→48.2%） |
 | [RoboHarness](./paper-robo-harness.md) | 异构策略路由；EmbodiedSkills 统一 **skill contract** + 可替换 π₀.₅ |
+| [RoboFoundry](./paper-robofoundry.md) | **System-as-Policy** 文件系统演化 + promote；EmbodiedSkills 偏 **固定 runtime 契约 + SFT** |
 | LLM code-as-policy | 提案不保证可执行；EmbodiedSkills **preflight + verify** 强制物理一致性 |
 
 ## 局限与风险
