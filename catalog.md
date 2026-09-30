@@ -3011,6 +3011,7 @@
 - [RoboDreamer（arXiv:2609.07096）](wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — RoboDreamer**（*RoboDreamer: Anticipatory Humanoid Locomotion with Predictive State-Space Models*， `📅unknown` `[entity_page]`
 - [RoboDrop（arXiv:2609.10021）](wiki/entities/paper-robodrop-vla-post-training.md) — RoboDrop**（*RoboDrop: Curating VLA Post-Training Data via Local Gradient Compatibility*，[arXiv:260 `📅unknown` `[entity_page]`
 - [RoboEdit：人类视频转机器人经验](wiki/entities/paper-roboedit.md) — RoboEdit**（*Turning Human Manipulation Videos into Scalable Robot Experience*；[arXiv:2608.18948](h `📅unknown` `[entity_page]`
+- [RoboFoundry（System-as-Policy · arXiv:2609.32862）](wiki/entities/paper-robofoundry.md) — RoboFoundry**（*RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents*，[arXiv:2 `📅unknown` `[entity_page]`
 - [RoboGauge：MoE 四足运动与 Sim-to-Real 可预测性](wiki/entities/paper-robogauge-moe-quadruped-locomotion.md) — Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion**（RSS 2026， `📅unknown` `[entity_page]`
 - [RoboGesture：人形实时语义对齐伴随语音手势](wiki/entities/paper-robogesture.md) — RoboGesture: Real-Time Semantic-aligned Co-Speech Gestures Generation for Humanoid Interaction**（ `📅unknown` `[entity_page]`
 - [RoboInter1.5（中间表示操作与世界建模套件）](wiki/entities/paper-robointer-1-5.md) — RoboInter1.5**（*A Holistic Intermediate Representation Suite for Embodied World Modeling and Robot `📅unknown` `[entity_page]`
