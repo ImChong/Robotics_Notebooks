@@ -1,0 +1,91 @@
+<svg viewBox="0 0 720 690" width="720" height="690" xmlns="http://www.w3.org/2000/svg">
+<style>.tk{fill:#a9c9da;font-size:22px}.v{font-size:21px;text-anchor:middle;dominant-baseline:middle}</style>
+<text x="190" y="40" fill="#8eb1c5" font-size="24">Key（被查询的 token）→</text>
+<text x="20" y="100" fill="#8eb1c5" font-size="24">Query ↓</text>
+<text class="tk" x="231.0" y="106" text-anchor="middle">patch₁</text>
+<text class="tk" x="313.0" y="106" text-anchor="middle">patch₂</text>
+<text class="tk" x="395.0" y="106" text-anchor="middle">“拿起”</text>
+<text class="tk" x="477.0" y="106" text-anchor="middle">“杯子”</text>
+<text class="tk" x="559.0" y="106" text-anchor="middle">state</text>
+<text class="tk" x="641.0" y="106" text-anchor="middle">action</text>
+<text class="tk" x="178" y="169.0" text-anchor="end">patch₁</text>
+<rect x="192" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.71)"/>
+<text class="v" x="231.0" y="161.0" fill="#04141e">0.40</text>
+<rect x="274" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.49)"/>
+<text class="v" x="313.0" y="161.0" fill="#dff4fb">0.25</text>
+<rect x="356" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="395.0" y="161.0" fill="#dff4fb">0.05</text>
+<rect x="438" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.34)"/>
+<text class="v" x="477.0" y="161.0" fill="#dff4fb">0.15</text>
+<rect x="520" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="559.0" y="161.0" fill="#dff4fb">0.10</text>
+<rect x="602" y="122" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="641.0" y="161.0" fill="#dff4fb">0.05</text>
+<text class="tk" x="178" y="251.0" text-anchor="end">patch₂</text>
+<rect x="192" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.41)"/>
+<text class="v" x="231.0" y="243.0" fill="#dff4fb">0.20</text>
+<rect x="274" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.78)"/>
+<text class="v" x="313.0" y="243.0" fill="#04141e">0.45</text>
+<rect x="356" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="395.0" y="243.0" fill="#dff4fb">0.05</text>
+<rect x="438" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.34)"/>
+<text class="v" x="477.0" y="243.0" fill="#dff4fb">0.15</text>
+<rect x="520" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="559.0" y="243.0" fill="#dff4fb">0.10</text>
+<rect x="602" y="204" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="641.0" y="243.0" fill="#dff4fb">0.05</text>
+<text class="tk" x="178" y="333.0" text-anchor="end">“拿起”</text>
+<rect x="192" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="231.0" y="325.0" fill="#dff4fb">0.10</text>
+<rect x="274" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="313.0" y="325.0" fill="#dff4fb">0.10</text>
+<rect x="356" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.71)"/>
+<text class="v" x="395.0" y="325.0" fill="#04141e">0.40</text>
+<rect x="438" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.56)"/>
+<text class="v" x="477.0" y="325.0" fill="#04141e">0.30</text>
+<rect x="520" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="559.0" y="325.0" fill="#dff4fb">0.05</text>
+<rect x="602" y="286" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="641.0" y="325.0" fill="#dff4fb">0.05</text>
+<text class="tk" x="178" y="415.0" text-anchor="end">“杯子”</text>
+<rect x="192" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.49)"/>
+<text class="v" x="231.0" y="407.0" fill="#dff4fb">0.25</text>
+<rect x="274" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.56)"/>
+<text class="v" x="313.0" y="407.0" fill="#04141e">0.30</text>
+<rect x="356" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="395.0" y="407.0" fill="#dff4fb">0.10</text>
+<rect x="438" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.49)"/>
+<text class="v" x="477.0" y="407.0" fill="#dff4fb">0.25</text>
+<rect x="520" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="559.0" y="407.0" fill="#dff4fb">0.05</text>
+<rect x="602" y="368" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="641.0" y="407.0" fill="#dff4fb">0.05</text>
+<text class="tk" x="178" y="497.0" text-anchor="end">state</text>
+<rect x="192" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="231.0" y="489.0" fill="#dff4fb">0.05</text>
+<rect x="274" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="313.0" y="489.0" fill="#dff4fb">0.05</text>
+<rect x="356" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="395.0" y="489.0" fill="#dff4fb">0.05</text>
+<rect x="438" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="477.0" y="489.0" fill="#dff4fb">0.05</text>
+<rect x="520" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,1.00)"/>
+<text class="v" x="559.0" y="489.0" fill="#04141e">0.60</text>
+<rect x="602" y="450" width="78" height="78" rx="6" fill="rgba(0,212,255,0.41)"/>
+<text class="v" x="641.0" y="489.0" fill="#dff4fb">0.20</text>
+<text class="tk" x="178" y="579.0" text-anchor="end">action</text>
+<rect x="192" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.27)"/>
+<text class="v" x="231.0" y="571.0" fill="#dff4fb">0.10</text>
+<rect x="274" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.63)"/>
+<text class="v" x="313.0" y="571.0" fill="#04141e">0.35</text>
+<rect x="356" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="395.0" y="571.0" fill="#dff4fb">0.05</text>
+<rect x="438" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.49)"/>
+<text class="v" x="477.0" y="571.0" fill="#dff4fb">0.25</text>
+<rect x="520" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.41)"/>
+<text class="v" x="559.0" y="571.0" fill="#dff4fb">0.20</text>
+<rect x="602" y="532" width="78" height="78" rx="6" fill="rgba(0,212,255,0.19)"/>
+<text class="v" x="641.0" y="571.0" fill="#dff4fb">0.05</text>
+<g data-s="2"><rect x="188" y="530" width="496" height="82" rx="8" fill="none" stroke="#ffbf47" stroke-width="5"/><text x="190" y="652" fill="#ffbf47" font-size="24">第 i 行 = 第 i 个 token 对所有 token 的注意力权重</text></g>
+<text x="190" y="684" fill="#6d8fa3" font-size="20">每行和为 1；数值为示意</text>
+</svg>

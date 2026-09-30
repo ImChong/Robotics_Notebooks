@@ -1,0 +1,20 @@
+<svg viewBox="0 0 820 620" width="820" height="620" xmlns="http://www.w3.org/2000/svg">
+<style>.sm{font-size:28px}.lk{stroke-width:18;stroke-linecap:round;fill:none}.jt{stroke-width:4}</style>
+<line x1="40" y1="562" x2="780" y2="562" stroke="#1d3a4f" stroke-width="3"/>
+<rect x="160" y="450" width="80" height="112" rx="8" fill="#1a2c3b" stroke="#2b5670" stroke-width="3"/>
+<g data-s="1">
+<path class="lk" d="M200,450 L345.6,246.8 L560,330" stroke="#00d4ff" opacity="0.95"/>
+<circle class="jt" cx="345.6" cy="246.8" r="16" fill="#0a1622" stroke="#00d4ff"/>
+<text class="sm" x="250" y="222" fill="#00d4ff">肘上</text>
+</g>
+<g data-s="2">
+<path class="lk" d="M200,450 L438.4,525.3 L560,330" stroke="#ffbf47" opacity="0.9"/>
+<circle class="jt" cx="438.4" cy="525.3" r="16" fill="#0a1622" stroke="#ffbf47"/>
+<text class="sm" x="410" y="606" fill="#ffbf47">肘下</text>
+</g>
+<circle class="jt" cx="200" cy="450" r="18" fill="#0a1622" stroke="#eaf6ff"/>
+<circle cx="560" cy="330" r="30" fill="none" stroke="#ff6b6b" stroke-width="3"/>
+<line x1="520" y1="330" x2="600" y2="330" stroke="#ff6b6b" stroke-width="3"/><line x1="560" y1="290" x2="560" y2="370" stroke="#ff6b6b" stroke-width="3"/>
+<text class="sm" x="600" y="300" fill="#ff6b6b">末端目标</text>
+<text class="sm" x="60" y="80" fill="#a9c9da">同一个末端位置 → 不止一组关节角</text>
+</svg>

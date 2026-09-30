@@ -1,0 +1,83 @@
+# chapter: id=c20; level=L10; name=L10 VLA / 基础策略：π 系列与 GR00T
+
+## slide: stage=chap
+::chap L10 | VLA / 基础策略 | 一个模型同时“看懂、听懂、动起来” | π0 → π0.5 → π0.7 · GR00T N1 · System 2 / System 1
+---
+0| L10，VLA，视觉语言动作模型。隐喻是：把 L8 的“眼睛加语言理解”，和 L9 的“手上功夫”，装进同一个大脑，再用许多机器人、许多任务的数据一起训练。
+0| 为什么需要它？L9 的动作头只会根据观测生成动作，理解能力取决于前面的编码器；单任务的 Diffusion Policy，换个任务就得重新采数据、重新训练。VLA 把带有互联网规模语义知识的预训练视觉语言模型和动作头拼在一起，用跨任务、跨机器人的数据来训练。
+0| 这一层只跟踪两个代表体系：Physical Intelligence 的 π 系列，和 NVIDIA 的 GR00T。其它 VLA，先用“信号还是噪声”的过滤方法判断要不要深入。
+
+## slide: tag=L10; title=π0：VLM + Action Expert + Flow Matching → Action Chunk; src=roadmap/motion-control.md §L10 · wiki/entities/paper-pi0.md · arXiv:2410.24164 · openpi
+<div class='flow' style='justify-content:center'>
+<div class='n' data-s='1' style='width:360px'><b>输入</b>多路图像 + 语言指令 + 机器人状态</div><div class='ar'>→</div>
+<div class='n' data-s='1' style='width:300px;border-color:#2ee6b8'><b>VLM</b>PaliGemma 骨干</div><div class='ar'>⇄</div>
+<div class='n' data-s='2' style='width:320px;border-color:#2ee6b8'><b>Action Expert</b>较小的独立权重</div><div class='ar'>→</div>
+<div class='n' data-s='3' style='width:300px'><b>Action Chunk</b>连续动作</div>
+</div>
+<div class='gridcards g3' style='margin-top:34px'>
+<div class='card' data-s='2'><h3>怎么读 VLM</h3><p>VLM 与 Action Expert 在<span class='k'>同一个 Transformer 序列</span>里、用两套权重；动作 token 通过注意力直接读取 VLM token</p></div>
+<div class='card good' data-s='3'><h3>动作怎么出</h3><p>Flow Matching 从噪声积分出一整段连续动作；约 50 Hz 控制，面向叠衣服、装袋等精细操作</p></div>
+<div class='card' data-s='4'><h3>对比扩散策略</h3><p>前向步数更少；代码在 <span class='mono'>openpi</span> 仓库开源</p></div>
+</div>
+---
+0| 先看 π0。它确立了一个骨架：视觉语言模型，加动作专家，加流匹配，输出动作块。
+1| 输入是多路相机图像、语言指令和机器人状态。视觉语言模型的骨干是 PaliGemma。
+2| 动作专家是一套单独的、较小的 Transformer 权重。它和视觉语言模型放在同一个 Transformer 序列里，动作 token 通过注意力直接读取视觉语言模型的 token。
+3| 动作专家用流匹配，从噪声积分出一整段连续动作，大约以五十赫兹控制机器人，适合叠衣服、装袋这类精细操作。
+4| 相比多步去噪的扩散策略，它需要的前向步数更少。代码在 openpi 仓库里开源。
+
+## slide: tag=L10; title=π 系列的演进：骨架不变，改的是哪一块; src=roadmap/motion-control.md §L10 · wiki/entities/paper-pi05-open-world-vla.md · wiki/methods/pi07-policy.md
+<div class='flow' style='justify-content:center'>
+<div class='n' data-s='0' style='width:440px'><b>π0</b>VLM + flow matching action expert</div><div class='ar'>→</div>
+<div class='n' data-s='1' style='width:440px'><b>π0.5</b>异构数据共训 · 开放世界泛化</div><div class='ar'>→</div>
+<div class='n' data-s='2' style='width:440px'><b>后续 π 模型</b>如 π0.7：多模态提示</div>
+</div>
+<div class='gridcards g2' style='margin-top:34px'>
+<div class='card' data-s='1'><h3>π0.5 做了什么</h3><p>多机器人数据 + 网页数据 + 高层语义子任务标注一起训；推理时先出语义子任务，再高频生成对应动作块</p></div>
+<div class='card gold' data-s='3'><h3>学习方法</h3><p>每出一个新 π 模型，只问：它改了骨架的<span class='a'>哪一块</span>？VLM · Action Expert · 数据 · 训练目标 · 推理方式</p></div>
+</div>
+---
+0| π 系列的演进，是在同一个骨架上做文章。
+1| π0.5 在同一个骨架上，加入了异构数据共训：多种机器人的数据、网页数据，以及高层的语义子任务标注。推理时，它先输出一个语义子任务，再高频地生成对应的动作块，目标是在从没见过的开放环境里泛化。
+2| 后续的 π 模型，比如 π0.7，继续在同一个骨架上改数据的对齐方式和提示方式，比如多模态提示。
+3| 所以学习方法很简单：每出一个新的 π 模型，只问它改了骨架的哪一块——视觉语言模型、动作专家、数据、训练目标，还是推理方式。
+
+## slide: tag=L10; title=GR00T N1：System 2 / System 1 双系统; src=roadmap/motion-control.md §L10 · wiki/entities/paper-hrl-stack-34-gr00t_n1.md · arXiv:2503.14734
+<div class='cols'>
+<div class='col' style='justify-content:center'>
+<div class='flow v' style='gap:8px'>
+<div class='n' data-s='0' style='width:700px'><b>Vision + Language</b></div><div class='ar'>↓</div>
+<div class='n' data-s='1' style='width:700px;border-color:#2ee6b8'><b>VLM · System 2（Eagle-2）</b>语义理解 / 推理：慢，但懂语义</div><div class='ar' data-s='3'>↓ 中间层 token · cross-attention</div>
+<div class='n' data-s='2' style='width:700px;border-color:#2ee6b8'><b>DiT · System 1</b>Flow Matching 去噪 ← Robot State</div><div class='ar' data-s='2'>↓</div>
+<div class='n' data-s='2' style='width:700px'><b>Action Chunk</b>报告约 120 Hz</div>
+</div>
+</div>
+<div class='col' style='justify-content:center'>
+<div class='card gold' data-s='3'><h3>五个词的关系</h3><ul class='b sm'><li><span class='a'>VLM</span> 产出表征</li><li><span class='a'>DiT</span> 是动作头的网络结构</li><li><span class='a'>Cross-Attention</span> 是 DiT 读 VLM 表征的方式</li><li><span class='a'>Flow Matching</span> 是训练 / 采样目标</li><li><span class='a'>Action Chunk</span> 是输出形式</li></ul></div>
+<div class='card' data-s='4'><h3>和 π0 对比</h3><p>π0：同一序列、两套权重，动作 token 直接注意 VLM token；GR00T N1：DiT 是独立网络，用 cross-attention 读 VLM 中间层输出。二者都用 flow matching 出 chunk</p></div>
+</div>
+</div>
+---
+0| 再看 NVIDIA 的 GR00T N1，它采用双系统设计。
+1| System 2 负责推理和语义理解：视觉语言模型看图、读指令，慢，但懂语义。它的骨干是 Eagle 2。
+2| System 1 负责快速的动作生成：一个 DiT 动作头，结合机器人状态，以更高的频率输出动作块，论文报告大约一百二十赫兹。
+3| 五个词的关系一定要分清：视觉语言模型产出表征；DiT 是动作头的网络结构；交叉注意力是 DiT 读取视觉语言模型表征的方式，读的是中间层的 token；流匹配是 DiT 的训练和采样目标；动作块是输出形式。
+4| 和 π0 对比：π0 把视觉语言模型和动作专家放在同一个序列里，用两套权重，动作 token 直接注意视觉语言模型的 token；GR00T N1 的 DiT 是独立网络，用交叉注意力读取视觉语言模型中间层的输出。两者都用流匹配生成动作块。
+
+## slide: tag=L10; title=VLA 之下为什么仍需要 WBC / PD，以及怎么判断新模型; src=roadmap/motion-control.md §L10 自测题 · wiki/entities/gr00t-wholebodycontrol.md
+<div class='cols'>
+<div class='col'>
+<div class='card warn' data-s='1'><h3>VLA 管不了的事</h3><ul class='b sm'><li>频率：几十到一百多 Hz，远低于平衡与力控需要</li><li>输出的是关节 / 末端目标，不含接触力分配，也不处理力矩饱和</li></ul></div>
+<div class='card good' data-s='2'><h3>所以</h3><p>仍由 WBC / PD / 驱动器电流环完成；GR00T 也把人形全身平衡交给低层控制器（GR00T-WholeBodyControl）——回到 L3 的分层</p></div>
+</div>
+<div class='col'>
+<div class='card gold' data-s='3'><h3>判断一个新 VLA</h3><p>放回 π0 骨架看改了哪一块 → 过 5 个 Signal-vs-Noise 问题 → 放不进骨架、也没有代码和 benchmark 的，先不深学</p></div>
+<div class='card' data-s='4'><h3>学完输出</h3><p>画出 π0 与 GR00T N1 的数据流并指出接口异同；有 GPU 就用 openpi 或 Isaac-GR00T 跑一次离线推理，记录单次耗时</p></div>
+</div>
+</div>
+---
+0| 一个关键问题：VLA 已经输出动作了，为什么人形上仍然需要全身控制和 PD 这一层？
+1| 因为 VLA 的动作频率在几十到一百多赫兹，远低于平衡和力控需要的频率；而且它输出的是关节目标或末端目标，不包含接触力的分配，也不处理力矩饱和。
+2| 这些仍然由全身控制、PD 和驱动器电流环来完成。GR00T 也把人形的全身平衡，交给了低层控制器 GR00T WholeBodyControl——又回到了 L3 讲的分层。
+3| 看到一个新的 VLA，怎么判断要不要深入学？把它放回 π0 的骨架，看它改了哪一块；再过一遍“信号还是噪声”的五个问题。放不进骨架、也没有代码和基准测试的，先不深学。
+4| 这一层的输出：能画出 π0 和 GR00T N1 的数据流，指出二者在“视觉语言模型到动作头”接口上的异同；有 GPU 的话，用 openpi 或 Isaac GR00T 跑通一次离线推理，记录单次推理的耗时。

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 1800 600" width="1800" height="600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7fb8d0"/></marker>
+<style>
+.bx{fill:#132b3e;stroke:#2b5670;stroke-width:2.5}
+.bm{fill:#0d4f5c;stroke:#00d4ff;stroke-width:4}
+.tt{fill:#eaf6ff;font-size:44px;font-weight:700;text-anchor:middle}
+.st{fill:#a9c9da;font-size:28px;text-anchor:middle}
+.ln{stroke:#7fb8d0;stroke-width:4;fill:none;marker-end:url(#la)}
+.fb{stroke:#7fb8d0;stroke-width:3;fill:none;stroke-dasharray:12 9;marker-end:url(#la)}
+.star{fill:#00d4ff;font-size:28px;font-weight:700;text-anchor:middle}
+</style>
+</defs>
+<g data-h="1"><rect class="bx" x="20" y="120" width="380" height="250" rx="22"/>
+<text class="tt" x="210" y="195">感知</text><text class="st" x="210" y="245">摄像头 · IMU · 编码器</text><text class="st" x="210" y="285">力觉 · 雷达</text><text class="st" x="210" y="335">“我在哪、世界长什么样”</text></g>
+<path class="ln" d="M400,245 H468"/>
+<g data-h="2"><rect class="bx" x="470" y="120" width="380" height="250" rx="22"/>
+<text class="tt" x="660" y="195">决策 / 规划</text><text class="st" x="660" y="245">任务规划 · 运动规划</text><text class="st" x="660" y="285">SLAM</text><text class="st" x="660" y="335">“去哪、走哪条路”</text></g>
+<path class="ln" d="M850,245 H918"/>
+<g data-h="3,5"><rect class="bm" x="920" y="120" width="380" height="250" rx="22"/>
+<text class="tt" x="1110" y="195">控制</text><text class="st" x="1110" y="245">规划目标 → 关节指令</text><text class="st" x="1110" y="285">每个关节这一毫秒出多少力</text><text class="star" x="1110" y="340">★ 本路线主战场 ★</text></g>
+<path class="ln" d="M1300,245 H1368"/>
+<g data-h="4"><rect class="bx" x="1370" y="120" width="380" height="250" rx="22"/>
+<text class="tt" x="1560" y="195">执行</text><text class="st" x="1560" y="245">电机 · 减速器 · 关节</text><text class="st" x="1560" y="285">本体结构</text><text class="st" x="1560" y="335">“把指令变成运动”</text></g>
+<path class="fb" d="M1560,370 V470 H210 V376"/>
+<text class="st" x="885" y="515">反馈：运动改变世界与自身状态，再被传感器测到</text>
+</svg>

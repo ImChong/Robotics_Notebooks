@@ -1,0 +1,143 @@
+# chapter: id=c06; level=L3; name=L3 控制基础与最优化
+
+## slide: stage=chap
+::chap L3 | 控制基础与最优化 | 从“算力矩”升级到“在线决策力矩” | PID · LQR · MPC · QP · HQP · 阻抗
+---
+0| L3，控制基础与最优化。L2 告诉你输入力矩会产生什么加速度，但没有告诉你“现在该输入多少力矩”——这是控制器的工作。
+0| L3 是 L4 所有方法的底层语法：没有控制理论，后面的 MPC、全身控制、强化学习都接不上。
+
+## slide: tag=L3; title=反馈控制：PD 与计算力矩; src=roadmap/motion-control.md §L3 · wiki/methods/pid-control.md · wiki/methods/computed-torque-control.md
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='0'><h3>PID</h3><p>P 按误差大小出力；D 按误差变化率提供阻尼；I 消除稳态误差</p></div>
+<div class='eq' data-s='1'><div class='sm m'>关节 PD：单关节保底，1 kHz+</div>$$\tau = K_p\,(q_{des} - q) + K_d\,(\dot q_{des} - \dot q)$$</div>
+<div class='card warn' data-s='2'><h3>局限</h3><p>看不到关节间耦合，处理不了多约束</p></div>
+</div>
+<div class='col'>
+<div class='eq' data-s='3'><div class='sm m'>计算力矩控制（逆动力学前馈 + 反馈）</div>$$\tau = M(q)\big(\ddot q_{des} + K_p e + K_d \dot e\big) + C(q,\dot q)\dot q + g(q)$$</div>
+<div class='card good' data-s='4'><h3>效果</h3><p>非线性被模型抵消，误差满足线性二阶方程</p>$$\ddot e + K_d \dot e + K_p e = 0$$</div>
+</div>
+</div>
+---
+0| 先看最基础的反馈控制 PID：比例项按误差大小出力，微分项按误差的变化率提供阻尼，积分项消除稳态误差。
+1| 在机器人关节上最常用的是 PD：力矩等于 K p 乘位置误差，加上 K d 乘速度误差。它是单关节闭环的保底方案，频率可以到一千赫兹以上。
+2| PD 的局限是：它看不到关节之间的耦合，也处理不了约束。
+3| 一个改进叫计算力矩控制：用动力学模型做前馈。把期望加速度加上 PD 修正项，乘以质量矩阵，再加上科氏项和重力项。
+4| 这样模型就把非线性抵消掉了，跟踪误差满足一个简单的线性二阶方程，选好 K p 和 K d，误差就会按预期收敛。代价是需要准确的动力学模型。
+
+## slide: tag=L3; title=最优控制：LQR 与 MPC; src=roadmap/motion-control.md §L3 自测题 · wiki/formalizations/lqr.md · wiki/methods/model-predictive-control.md
+<div class='cols w46'>
+<div class='col'>
+<div class='eq' data-s='0'><div class='sm m'>LQR：线性系统 + 二次代价</div>$$\dot x = Ax + Bu,\quad J = \int (x^\top Q x + u^\top R u)\,dt$$$$u = -Kx\quad(\text{解 Riccati 方程得 } K)$$</div>
+<div class='card gold' data-s='4'><h3>何时等价</h3><p>线性时不变 + 二次代价 + 无约束 + 时域 → ∞：MPC 的解 = LQR</p></div>
+<div class='card warn' data-s='5'><h3>必须用 MPC</h3><p>有状态 / 输入约束，非线性，有限或时变时域，需要跟踪参考</p></div>
+</div>
+<div class='col'>
+<div data-s='2'>::svg mpc_horizon.svg</div>
+</div>
+</div>
+---
+0| 再往上是最优控制。LQR，线性二次调节器：系统是线性的，代价是状态和控制量的二次型，求一个让总代价最小的反馈律。
+1| 答案非常漂亮：解一个 Riccati 方程，得到增益矩阵 K，控制律就是 u 等于负 K 乘 x。它是平衡控制的经典 baseline，比如倒立摆。
+2| MPC，模型预测控制，思路是“滚动时域”：每个控制周期，用模型预测未来一小段时间，求解一个带约束的有限时域最优控制问题；
+3| 但只执行第一步。到了下一个周期，拿到新的状态，再重新求解。靠这种不断的重规划，MPC 获得了反馈和抗扰动的能力。
+4| 什么时候 LQR 和 MPC 完全等价？当系统线性时不变、代价是二次的、没有约束，并且 MPC 的预测时域趋于无穷时，MPC 的解就是 LQR 的反馈律。
+5| 一旦出现状态或输入约束——这在机器人里最常见——或者系统非线性、时域有限、需要跟踪参考轨迹，就必须用 MPC。
+
+## slide: tag=L3; title=QP：为什么控制里到处都是凸二次规划; src=roadmap/motion-control.md §L3 自测题 · wiki/entities/numerical-optimization-curriculum.md
+<div class='eq'>$$\min_x\ \tfrac12\, x^\top P x + q^\top x \qquad \text{s.t.}\quad A x = b,\ \ G x \le h$$</div>
+<div class='gridcards g2' style='margin-top:26px'>
+<div class='card' data-s='1'><h3>凸性判定</h3><p>Hessian \(P \succeq 0\)（半正定），约束全是线性等式 / 仿射不等式 → 凸 QP</p></div>
+<div class='card good' data-s='2'><h3>WBC 为什么偏爱凸 QP</h3><p>唯一全局最优；求解快、收敛确定；OSQP / qpOASES 可在 1 kHz 实时求解</p></div>
+<div class='card warn' data-s='3'><h3>非凸的问题</h3><p>局部极小、求解时间不可控——对实时安全控制不可接受</p></div>
+<div class='card gold' data-s='0'><h3>出现在哪</h3><p>凸 MPC、TSID / WBC、IK、重定向……最后都落成一个 QP</p></div>
+</div>
+---
+0| 为什么 QP 在机器人控制里到处都是？因为凸 MPC、全身控制、逆运动学，最后都落成一个二次规划：目标是二次函数，约束是线性的。
+1| 判断一个 QP 是不是凸的很简单：目标函数的 Hessian 矩阵 P 半正定，约束都是线性等式和线性不等式，那它就是凸的。
+2| 全身控制强烈偏好凸 QP：它有唯一的全局最优解，求解快，收敛确定，OSQP、qpOASES 这类求解器能在一千赫兹下实时求解。
+3| 非凸问题会有局部极小，求解时间也不可控，这对要求实时、安全的控制来说是不可接受的。
+
+## slide: tag=L3; title=HQP：用零空间实现任务优先级; src=roadmap/motion-control.md §L3 自测题 · wiki/concepts/hqp.md · wiki/concepts/null-space-control.md
+<div class='cols'>
+<div class='col'>
+<div class='eq' data-s='1'><div class='sm m'>零空间投影</div>$$\dot q = J_1^{+}\dot x_1 + N_1 z,\qquad N_1 = I - J_1^{+}J_1$$</div>
+<div class='eq' data-s='3'><div class='sm m'>等价：多层 QP（上层最优作等式约束）</div>$$\min_z \|A_2 z - b_2\|^2 \ \ \text{s.t.}\ \ A_1 z = A_1 z_1^*,\ Cz \le d$$</div>
+<div class='card warn' data-s='5'><p>单层加权 QP：权重比再大，也<b>不能保证</b>高优先级被精确满足</p></div>
+</div>
+<div class='col'>
+<div class='card gold' data-s='4'><h3>人形典型优先级</h3>
+<ul class='b sm steps'>
+<li>动力学 + 接触约束</li>
+<li>CoM 跟踪 + 躯干姿态</li>
+<li>摆动腿末端轨迹</li>
+<li>手臂 / 上身动作</li>
+<li>关节姿态正则（零空间）</li>
+</ul>
+<p class='a' style='margin-top:10px'>先保命，再走路，再优雅</p></div>
+</div>
+</div>
+---
+0| 机器人经常同时有多个目标，而且互相冲突，比如保持平衡和挥手。怎么排优先级？答案是分层二次规划，HQP。
+1| 数学上靠零空间投影：先满足最高优先级的任务一；低优先级的任务，只能在“不影响任务一”的方向里做优化，也就是任务一雅可比的零空间。
+2| 公式里的 N 1，等于单位阵减去 J 1 的伪逆乘 J 1。它把任何附加动作投影进零空间里，逐层投影，就实现了严格的优先级。
+3| 等价的做法是多层 QP：把上一层的最优结果，作为下一层的等式约束，一层一层地求解。
+4| 人形的典型优先级是：动力学和接触约束最高；然后是质心和躯干平衡；再是摆动腿；再是手臂动作；最后是关节姿态正则。一句话：先保命，再走路，再优雅。
+5| 相比之下，单层加权 QP 只是软性的优先级：权重比再大，也不能保证高优先级任务被精确满足。
+
+## slide: tag=L3; title=和环境接触：阻抗 vs 导纳; src=roadmap/motion-control.md §L3 自测题 · wiki/concepts/impedance-control.md
+<div class='cols' style='height:auto'>
+<div class='card' data-s='1'><h3>阻抗控制：运动进、力出</h3>
+<div class='flow' style='margin:14px 0'><div class='n'>位置 / 速度偏差</div><div class='ar'>→</div><div class='n'>弹簧 + 阻尼</div><div class='ar'>→</div><div class='n'>力</div></div>
+$$F = K\,\Delta x + D\,\Delta \dot x$$
+<p>需要力矩驱动；环境刚时自身柔顺</p>
+<p class='t' style='margin-top:12px'>适合：环境软 / 未知，需高带宽柔顺与碰撞安全（人形腿）</p></div>
+<div class='card' data-s='2'><h3>导纳控制：力进、运动出</h3>
+<div class='flow' style='margin:14px 0'><div class='n'>测得外力</div><div class='ar'>→</div><div class='n'>虚拟动力学</div><div class='ar'>→</div><div class='n'>位置参考</div></div>
+<p style='margin-top:18px'>交给位置控制器执行；需要力传感器</p>
+<p class='t' style='margin-top:12px'>适合：驱动器只能精确位置控制、刚性环境、高位置精度（工业装配）</p></div>
+</div>
+---
+0| 和环境发生接触时，还要选控制的因果方向：阻抗，还是导纳。
+1| 阻抗控制是“输入运动、输出力”：根据位置和速度的偏差，按弹簧加阻尼的规律生成力。它需要力矩驱动，面对刚性环境时自身是柔顺的。环境软或者未知、需要高带宽柔顺和碰撞安全，比如人形的腿，用阻抗。
+2| 导纳控制反过来，“输入力、输出运动”：测量外力，据此生成位置参考，交给位置控制器执行。驱动器只能做精确位置控制、面对刚性环境、又要求高位置精度，比如工业装配，用导纳。
+
+## slide: tag=L3; title=Policy ≠ 底层控制器; src=roadmap/motion-control.md §L3 · Policy ≠ 底层控制器：从 q_target 到电机力矩
+<div class='cols w46'>
+<div class='col' style='justify-content:center'>
+<div class='flow v' style='gap:10px'>
+<div class='n' data-s='1' style='width:520px'><b>Policy（RL / IL / VLA）</b>10–50 Hz 量级</div><div class='ar' data-s='1'>↓</div>
+<div class='n' data-s='1' style='width:520px'><b>q_target / τ_ff</b>（或末端 / 质心任务）</div><div class='ar' data-s='2'>↓</div>
+<div class='n' data-s='2' style='width:520px'><b>PD / 阻抗 / WBC</b>更高频闭环</div><div class='ar' data-s='2'>↓</div>
+<div class='n' data-s='2' style='width:520px'><b>τ → 电机驱动器 · 电流环</b>编码器 q, q̇ 反馈</div>
+</div>
+</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='3'><div class='sm m'>MIT-style PD：驱动器接收 5 个量，在驱动器内闭环</div>$$\tau = K_p\,(q_{des} - q) + K_d\,(\dot q_{des} - \dot q) + \tau_{ff}$$</div>
+<div class='card' data-s='3'><p>接口随 MIT Mini Cheetah 开源驱动器普及：\(q_{des}, \dot q_{des}, K_p, K_d, \tau_{ff}\)</p></div>
+</div>
+</div>
+---
+0| L3 最后一个、也是贯穿整条路线的重要概念：学习出来的策略，和底层控制器，不是同一个东西。
+1| 绝大多数人形强化学习和 VLA 策略并不直接输出电流，而是以十到五十赫兹的量级，输出关节目标或者前馈力矩。
+2| 再由更高频的 PD、阻抗或全身控制闭环算出力矩，送进电机驱动器的电流环，编码器的读数再反馈回来。
+3| 最常见的一层是 MIT 式 PD：驱动器同时接收目标位置、目标速度、K p、K d 和前馈力矩这五个量，在驱动器内部闭环。这种接口随 MIT Mini Cheetah 的开源驱动器普及开来。
+
+## slide: tag=L3; title=五种控制模式与第一类 sim2real 坑; src=roadmap/motion-control.md §L3 · 控制模式表 · wiki/queries/legged-humanoid-rl-pd-gain-setting.md
+<table class='tb sm'>
+<tr><th>控制模式</th><th>上层给什么</th><th>适合</th><th>与 policy 的关系</th></tr>
+<tr data-s='0'><td>Position</td><td>\(q_{des}\)（高增益）</td><td>工业臂、慢速精确定位</td><td>刚性大，接触冲击差</td></tr>
+<tr data-s='1'><td>Velocity</td><td>\(\dot q_{des}\)</td><td>轮式、底盘</td><td>人形关节少用</td></tr>
+<tr data-s='2'><td>Torque</td><td>\(\tau\)</td><td>WBC / 力控 / 高动态</td><td>需要准确动力学与电机模型</td></tr>
+<tr data-s='3'><td>Impedance / PD（MIT）</td><td>\(q_{des}, K_p, K_d, \tau_{ff}\)</td><td>人形 RL 主流动作空间</td><td>policy 出 \(q_{des}\)，增益决定“软硬”</td></tr>
+<tr data-s='4'><td>WBC / QP / MPC</td><td>任务空间目标</td><td>多接触、多任务</td><td>见 L4，也可作 policy 的下层</td></tr>
+</table>
+<div class='card warn' data-s='5' style='margin-top:24px'><h3>第一类 sim2real 坑</h3><p>同一个 policy，换一套 \(K_p, K_d\) 或换控制频率，真机行为就会变</p></div>
+---
+0| 常见的控制模式有五种。位置控制：高增益跟踪目标角度，适合工业臂和慢速精确定位，但刚性大，接触冲击差。
+1| 速度控制：适合轮式和底盘，人形关节很少用。
+2| 力矩控制：适合全身控制、力控和高动态动作，但需要准确的动力学和电机模型。
+3| 阻抗式的 PD，也就是 MIT 模式，是人形强化学习的主流动作空间：策略输出目标关节角，K p 和 K d 决定关节的“软硬”。
+4| 全身控制、QP、MPC 这一类，接收任务空间的目标，适合多接触、多任务，也可以作为策略的下层。
+5| 这里最重要的结论是：同一个策略，换一套 K p、K d，或者换一个控制频率，真机上的行为就会改变。这是 L6 Sim2Real 要踩的第一类坑。
+5| 学完 L3，你应该能说清 LQR 和 MPC 的区别，知道 QP 在全身控制里解决什么问题，能搭一个简单模型的 MPC，并理解计算力矩、PD、阻抗控制和全身控制任务之间的关系。

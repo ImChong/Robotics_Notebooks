@@ -1,0 +1,61 @@
+# chapter: id=c11; level=L4; tag=L4.4; name=L4.4 TSID / 全身控制 WBC
+
+## slide: stage=chap
+::chap L4.4 | TSID / 全身控制 | MPC 给了参考，25 个关节谁先动、谁让位？ | QP / HQP · 动力学一致 · 接触约束 · 任务优先级
+---
+0| L4.4，TSID 和全身控制。MPC 已经告诉你：质心要在哪、脚要到哪、躯干怎么转，但它不直接告诉你每个关节该出多少力矩。
+0| 全身控制就是这个仲裁器：每个控制周期解一个 QP 或分层 QP，决定人形二十多个关节里，谁先动、谁后动、谁给安全约束让位。
+
+## slide: title=TSID：把全身控制写成一个 QP; src=roadmap/motion-control.md §L4.4 自测题 · wiki/formalizations/tsid-formulation.md · wiki/concepts/tsid.md
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='0'><h3>决策变量</h3>$$\mathcal X = [\,\ddot q,\ f,\ \tau\,]$$</div>
+<div class='eq' data-s='1'><div class='sm m'>等式①：浮动基动力学一致</div>$$M\ddot q + h = S^\top \tau + J_c^\top f$$</div>
+<div class='eq' data-s='2'><div class='sm m'>等式②：支撑点不滑、不穿地</div>$$J_c\,\ddot q + \dot J_c\,\dot q = 0$$</div>
+</div>
+<div class='col'>
+<div class='card' data-s='3'><h3>不等式</h3><p>摩擦锥；力矩 / 位置 / 速度限位；（可选）ZMP 在支撑多边形内</p></div>
+<div class='eq' data-s='4'><div class='sm m'>目标：各任务加权跟踪误差 + 正则</div>$$\min\ \sum_k w_k \big\| J_k\ddot q + \dot J_k \dot q - \ddot x_k^{*} \big\|^2 + \lambda \|\tau\|^2$$</div>
+<div class='eq' data-s='5'><div class='sm m'>期望任务加速度（PD 形式）</div>$$\ddot x^{*} = \ddot x_{ref} + K_p (x_{ref} - x) + K_d (\dot x_{ref} - \dot x)$$</div>
+</div>
+</div>
+---
+0| TSID 把全身控制写成一个二次规划。决策变量有三组：关节加速度、接触力、关节力矩。
+1| 等式约束第一条：浮动基动力学一致，也就是 L2 的那个方程，保证解出来的加速度、力和力矩在物理上是自洽的。
+2| 等式约束第二条：刚性接触的零加速度，支撑脚接触点的加速度为零，也就是不滑、不穿地。
+3| 不等式约束：接触力在摩擦锥内；关节力矩、位置、速度不超限；有时还加上 ZMP 在支撑多边形内。
+4| 目标函数，是各个任务跟踪误差的加权平方和：质心、脚、躯干姿态、姿势正则，每个任务希望的任务空间加速度，和实际能实现的加速度之差；再加上对力矩和接触力的正则。
+5| 期望的任务加速度通常由 PD 规律给出：参考加速度，加上位置误差和速度误差的反馈。这样，MPC 给的参考就被转成了每个关节的力矩。
+
+## slide: title=冲突时听谁的：优先级与阻抗; src=roadmap/motion-control.md §L4.4 自测题 · wiki/concepts/hqp.md · wiki/concepts/whole-body-control.md
+<div class='cols'>
+<div class='col'>
+<div class='card warn' data-s='1'><h3>CoM 参考 vs 接触约束冲突</h3><p>接触 / 动力学是硬约束 → 优先保接触可行；CoM 只被“尽量”跟踪：出现稳态误差或被裁剪</p></div>
+<div class='card good' data-s='2'><h3>处理：任务优先级</h3><p>接触 / 动力学放最高；CoM 作为较低优先级软任务，在不违反接触的零空间内逼近。HQP 严格分层，加权 QP 用大权重近似；必要时让上层 MPC 按反馈调整参考</p></div>
+</div>
+<div class='col'>
+<div class='card gold' data-s='3'><h3>为什么阻抗任务常放高优先级</h3><p>柔顺性直接关系接触稳定与交互安全；若被低优先级位置任务覆盖，易出现接触力失稳、刚性碰撞、接触跳变</p></div>
+<div class='card' data-s='4'><p>放在高层 → 无论下层怎样优化姿态，接触力始终被良好“整形”</p></div>
+</div>
+</div>
+---
+0| 如果 MPC 给的质心参考，和全身控制里的接触约束冲突了，会发生什么？
+1| 接触和动力学一致性是硬约束，全身控制会优先保证接触可行；质心参考只会被“尽量”跟踪，表现为稳态误差，或者被裁剪。
+2| 处理方法就是任务优先级：接触和动力学放在最高层，质心跟踪作为较低优先级的软任务，在不违反接触的零空间里尽量逼近。HQP 严格分层，加权 QP 用大权重来近似分层；必要时，让上层 MPC 根据反馈调整参考。
+3| 为什么阻抗任务常常放在较高优先级？因为柔顺性直接关系接触稳定和交互安全。如果被低优先级的位置任务覆盖，容易出现接触力失稳、刚性碰撞或者接触跳变。
+4| 把接触和末端的阻抗行为放在高层，就能保证：无论下层怎样优化姿态，接触力始终被良好地整形。
+
+## slide: title=L4 收束：一条完整的方法链; src=roadmap/motion-control.md §L4.4 · 推荐做什么 / 学完输出什么 · wiki/formalizations/tsid-formulation.md
+<div class='card' data-s='0'><h3>自动协调</h3><p>只告诉手去哪里，TSID 会自动算出躯干如何反向摆动、腿如何调整，来补偿手臂带来的动量变化</p></div>
+<div class='flow' data-s='2' style='justify-content:center;margin-top:30px'>
+<div class='n'><b>LIP / ZMP</b>直觉</div><div class='ar'>→</div>
+<div class='n'><b>Centroidal</b>中层模型</div><div class='ar'>→</div>
+<div class='n'><b>MPC</b>50–200 Hz</div><div class='ar'>→</div>
+<div class='n'><b>WBC</b>1 kHz</div><div class='ar'>→</div>
+<div class='n'><b>PD / 电流环</b>驱动器内</div>
+</div>
+<div class='card good' data-s='1' style='margin-top:30px'><h3>这一层做出什么</h3><p>用 TSID 库实现多层优先级 WBC：同时处理躯干稳住、足端跟踪、接触约束；能解释任务空间目标怎样映射到关节力矩</p></div>
+---
+0| 全身控制的威力在于自动协调：你只需要告诉手要去哪里，它会自动算出躯干该怎样反向摆动、腿该怎样调整，去补偿手臂运动带来的动量变化。
+1| 这一层的练习：用 TSID 库实现一个全身任务控制器，同时处理躯干稳定、足端跟踪和接触约束，并能解释任务空间目标怎样映射到关节力矩。
+2| 到这里，L4 的方法链就完整了：LIP 和 ZMP 给直觉；质心动力学给中层模型；MPC 在五十到两百赫兹规划未来；全身控制在一千赫兹把它落到每个关节的力矩；最后由关节 PD 和电流环执行。

@@ -1,0 +1,87 @@
+# chapter: id=c08; level=L4; tag=L4.1; name=L4.1 LIP / ZMP：会走路的倒立摆
+
+## slide: stage=chap
+::chap L4.1 | LIP / ZMP | 双足机器人怎么在地上走而不倒？ | 线性倒立摆 · ZMP · 支撑多边形 · 捕获点 / DCM
+---
+0| L4.1，LIP 和 ZMP。隐喻是走钢丝：身体的重心必须始终处在脚下不大的支撑面附近，才不会摔倒。LIP 和 ZMP，就是把这件事数学化。
+
+## slide: title=线性倒立摆：三个假设，一个线性方程; src=roadmap/motion-control.md §L4.1 自测题 · wiki/formalizations/zmp-lip.md · wiki/concepts/lip-zmp.md
+<div class='cols w46'>
+<div class='col'>::svg lip_pendulum.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card' data-s='0'><h3>三个假设</h3><ul class='b sm'><li>质量集中在质心 CoM</li><li>质心高度恒定 \(z_c\)</li><li>忽略角动量变化</li></ul></div>
+<div class='eq' data-s='2'>$$\ddot x = \omega^2\,(x - x_{zmp}),\qquad \omega = \sqrt{g/z_c}$$</div>
+<div class='eq' data-s='3'><div class='sm m'>推导：地面反力沿“腿”从 ZMP 指向质心</div>$$\frac{f_x}{f_z} = \frac{x - x_{zmp}}{z_c},\quad f_z = mg,\ \ f_x = m\ddot x$$</div>
+</div>
+</div>
+---
+0| 线性倒立摆模型做了三个大胆的简化：整机质量集中在质心；质心高度保持恒定；忽略角动量的变化。
+1| 于是，复杂的人形被近似成一个立在支点上的倒立摆：一个质点，架在一根没有质量的腿上，腿的下端就是 ZMP。
+2| 在高度恒定的假设下，水平方向的动力学变成线性的：质心的水平加速度，等于 ω 的平方，乘以质心相对 ZMP 的水平距离，其中 ω 等于根号下 g 除以质心高度。
+2| 物理含义很直观：质心偏离 ZMP 越远，就越快地往那一侧倒。而且 x、y 两个方向完全解耦，可以分别处理。
+3| 这个方程怎么来的？地面反力沿着“腿”，从 ZMP 指向质心，所以水平分力和竖直分力之比，等于水平偏移和高度之比。
+3| 高度不变，竖直分力就等于重力 m g；水平分力就是质量乘水平加速度。代进去，质量约掉，就得到这个方程。
+
+## slide: title=ZMP 与支撑多边形：经典的平衡判据; src=roadmap/motion-control.md §L4.1 自测题 · wiki/concepts/lip-zmp.md
+<div class='cols w46'>
+<div class='col'>::svg support_polygon.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card' data-s='0'><h3>ZMP</h3><p>地面反力在该点产生的水平力矩为零；脚与地面保持接触时 ZMP = 压力中心 CoP</p></div>
+<div class='card good' data-s='3'><h3>稳定条件</h3><p>\(p_{zmp} \in\) 支撑多边形</p></div>
+<div class='card warn' data-s='4'><h3>怎么从数据里发现“要倒”</h3><p>足底力 / 压力阵列实时算 CoP，看是否触界；或一侧法向力趋零 + IMU 出现意外角加速度</p></div>
+</div>
+</div>
+---
+0| ZMP，零力矩点：地面对机器人的反作用力，在这一点产生的水平力矩为零。直觉上，它就是足底压力的等效作用点；脚和地面保持接触时，它就等于压力中心 CoP。
+1| 支撑多边形：单脚支撑时，就是那只脚的接触区域；
+2| 双脚支撑时，是两只脚接触区域的凸包。
+3| 经典的稳定条件是：ZMP 必须留在支撑多边形之内。
+4| 为什么？因为压力中心不可能跑到脚外面去。如果动力学要求的 ZMP 跑到了支撑边界上，脚就会绕着边缘转动，出现单边接触，另一侧的足底法向力趋近于零，机器人开始翻倒。
+4| 工程上怎么在数据里发现这件事？用足底的力和力矩传感器或者压力阵列，实时算出压力中心，看它是否触碰边界；或者检测到一侧足底法向力趋零，同时 IMU 出现意料之外的角加速度。
+
+## slide: title=怎么用它生成步态：从 ZMP 参考到质心轨迹; src=roadmap/motion-control.md §L4.1 · Kajita 预览控制 · wiki/concepts/lip-zmp.md · wiki/formalizations/zmp-lip.md
+<div class='flow' style='justify-content:center;margin-top:10px'>
+<div class='n' data-s='1'><b>① 落脚点序列</b>足步规划</div><div class='ar'>→</div>
+<div class='n' data-s='1'><b>② ZMP 参考轨迹</b>单支撑待在脚内<br>换脚时平滑移动</div><div class='ar'>→</div>
+<div class='n' data-s='2'><b>③ 由 LIP 反求 CoM 轨迹</b>预览控制：提前看未来</div><div class='ar'>→</div>
+<div class='n' data-s='3'><b>④ 下层执行</b>MPC / WBC / 逆动力学</div>
+</div>
+<div class='gridcards g2' style='margin-top:36px'>
+<div class='card' data-s='2'><h3>为什么要“预览”</h3><p>倒立摆不稳定：质心必须<span class='a'>提前</span>朝下一只脚运动，所以要用未来一段 ZMP 参考来算当前的质心运动（Kajita 2003）</p></div>
+<div class='card' data-s='3'><h3>更现代的写法</h3><p>把同一方程放进线性 MPC，把“ZMP 在支撑多边形内”写成 QP 的不等式约束（Wieber 2006）</p></div>
+</div>
+---
+0| 那怎么用它生成步态？经典链路分四步。
+1| 先规划落脚点序列，再根据脚印排出一条 ZMP 参考轨迹：单脚支撑时，ZMP 待在支撑脚里；换脚时，平滑地移到下一只脚。
+2| 然后根据 LIP 动力学，反求出能实现这条 ZMP 轨迹的质心轨迹。因为倒立摆是不稳定的，质心必须提前朝下一只脚运动，所以 Kajita 用“预览控制”：提前看未来一段 ZMP 参考，来计算当前的质心运动。
+3| 最后，质心轨迹和脚的轨迹交给下层的 MPC、全身控制或逆动力学去执行。更现代的做法，是把同一个方程写进线性 MPC，把“ZMP 在支撑多边形内”写成 QP 的不等式约束。
+
+## slide: title=DCM / 捕获点：已经在倒，下一步踩哪？; src=roadmap/motion-control.md §L4.1 自测题 · wiki/concepts/capture-point-dcm.md
+<div class='cols w46'>
+<div class='col'>::svg dcm.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='1'><div class='sm m'>DCM：位置 + 趋势压成一个量</div>$$\xi = x + \frac{\dot x}{\omega}$$</div>
+<div class='eq' data-s='2'><div class='sm m'>它自己的动力学：一阶、发散</div>$$\dot\xi = \omega\,(\xi - x_{zmp})$$</div>
+<div class='card gold' data-s='5'><h3>比 ZMP 多解决了什么</h3><p>ZMP 答“现在稳不稳”；DCM 前瞻地答“该踩哪才能刹住”——更适合实时落脚点规划与扰动恢复</p></div>
+</div>
+</div>
+---
+0| ZMP 回答的是“现在还稳不稳”。但机器人已经开始往前倒的时候，更关键的问题是：下一步该踩哪？这就是捕获点和 DCM。
+1| DCM，发散运动分量，定义为：质心位置，加上质心速度除以 ω。它把位置和速度压成一个量，代表系统的发散趋势。
+2| 把倒立摆的解拆开，会发现一个稳定模态和一个发散模态，DCM 正好就是那个发散模态。它的动力学是：DCM 的变化率，等于 ω 乘以 DCM 与 ZMP 之差。
+3| 意思是，DCM 自己会以指数速度远离 ZMP，而 ZMP 可以用来把它“拉住”。控制于是只需要聚焦在这一个不稳定的一阶模态上。
+4| 捕获点就是：如果此刻一步踩到 DCM 所在的位置，让 ZMP 和它重合，DCM 就不再发散，质心会渐近地停下来。机器人冲得越快，捕获点就越靠前。
+5| 如果捕获点已经跑出了支撑区域，而又不能迈步，那么即使此刻 ZMP 还在支撑区内，最终也会摔倒。所以 DCM 比 ZMP 更适合实时的落脚点规划和扰动恢复。
+
+## slide: title=LIP 的边界，与这一层的产出; src=roadmap/motion-control.md §L4.1 自测题 / 推荐做什么 / 学完输出什么
+<div class='gridcards g2'>
+<div class='card' data-s='0'><h3>为什么假设高度恒定</h3><p>只有 \(z_c\) 恒定，水平动力学才线性、可解析；CoM 与 ZMP 才是线性关系</p></div>
+<div class='card warn' data-s='1'><h3>何时失效</h3><p>跳跃：高度剧变甚至腾空（接触力为 0）；上下楼梯 / 深蹲：高度持续变化 → 需要变高度模型、centroidal 或全身模型</p></div>
+<div class='card warn' data-s='2'><h3>还忽略了角动量</h3><p>挥手、扭腰、抬腿产生的角动量都解释不了 → L4.2 补上</p></div>
+<div class='card good' data-s='3'><h3>这一层做出什么</h3><p>实现最简单的 ZMP 步态生成；用 LIP 生成质心轨迹；能解释 ZMP 与支撑多边形的关系</p></div>
+</div>
+---
+0| LIP 为什么要假设质心高度恒定？因为只有高度恒定时，水平动力学才是线性的，才能解析求解，质心和 ZMP 之间才是线性关系。
+1| 代价是：跳跃时质心高度剧烈变化，甚至腾空、接触力为零；上下楼梯和深蹲时，高度也在持续变化。这时线性关系失效，就需要变高度模型、质心动力学或者全身模型。
+2| LIP 还忽略了角动量：挥手、扭腰、抬腿产生的角动量，它都解释不了。这正是下一层 L4.2 要补上的。
+3| 这一层的练习：实现一个最简单的 ZMP 步态生成，用 LIP 模型生成质心轨迹，并能解释 ZMP 和支撑多边形的关系。

@@ -1,0 +1,21 @@
+<svg viewBox="0 0 820 700" width="820" height="700" xmlns="http://www.w3.org/2000/svg">
+<style>.sm{font-size:27px}.lb{font-size:29px;font-weight:700}</style>
+<text class="sm" x="20" y="36" fill="#8eb1c5">俯视图</text>
+<rect x="170" y="150" width="150" height="330" rx="40" fill="#132b3e" stroke="#8eb1c5" stroke-width="3"/>
+<rect x="480" y="90" width="150" height="330" rx="40" fill="#132b3e" stroke="#8eb1c5" stroke-width="3"/>
+<text class="sm" x="200" y="520" fill="#8eb1c5">左脚</text><text class="sm" x="515" y="460" fill="#8eb1c5">右脚</text>
+<g data-s="1">
+<rect x="170" y="150" width="150" height="330" rx="40" fill="rgba(0,212,255,0.16)" stroke="#00d4ff" stroke-width="4"/>
+<text class="lb" x="40" y="120" fill="#00d4ff">单脚支撑：这只脚</text>
+</g>
+<g data-s="2">
+<path d="M210,150 L520,90 L590,90 L630,130 L630,380 L590,420 L280,480 L210,480 L170,440 L170,190 Z" fill="rgba(46,230,184,0.10)" stroke="#2ee6b8" stroke-width="4" stroke-dasharray="12 8"/>
+<text class="lb" x="40" y="560" fill="#2ee6b8">双脚支撑：两脚的凸包</text>
+</g>
+<g data-s="3">
+<circle cx="400" cy="290" r="14" fill="#2ee6b8"/><text class="sm" x="40" y="615" fill="#2ee6b8">● ZMP 在支撑多边形内：可平衡</text>
+</g>
+<g data-s="4">
+<circle cx="320" cy="250" r="14" fill="#ff6b6b"/><text class="sm" x="40" y="668" fill="#ff6b6b">● ZMP 触边：绕边缘翻转、另一侧法向力 → 0</text>
+</g>
+</svg>

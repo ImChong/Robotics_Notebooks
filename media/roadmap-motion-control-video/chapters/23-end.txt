@@ -1,0 +1,75 @@
+# chapter: id=c23; level=收尾; name=收尾：过滤新工作 · 纵深方向 · 常见卡点 · 全路线回顾
+
+## slide: tag=收尾; title=新模型 / 新论文：先过五个问题; src=roadmap/motion-control.md · How to filter new Physical AI work（Signal vs Noise）
+<ul class='b steps'>
+<li data-s='1'>它改变了 pipeline 的<span class='k'>哪个模块</span>（8 层 + 部署中的哪一格）？</li>
+<li data-s='1'>是<span class='k'>新的机制</span>，还是只是新的 model name？</li>
+<li data-s='2'>是否<span class='k'>跨机器人 / 跨任务</span>有效？</li>
+<li data-s='2'>有没有 <span class='k'>paper / code / benchmark</span>？</li>
+<li data-s='2'><span class='k'>6–12 个月之后</span>这个概念是否仍值得知道？</li>
+</ul>
+<div class='card gold' data-s='3' style='margin-top:30px'><p>If you cannot place a new work into the roadmap, <span class='a'>do not learn it deeply yet.</span></p></div>
+<div class='card' data-s='4' style='margin-top:20px'><p>资料原则：每个关键概念最多 1 篇 canonical paper + 1 个官方项目页 + 1 个 GitHub（+ 可选 Hugging Face），优先官方来源</p></div>
+---
+0| 最后，收个尾。Physical AI 的新论文、新模型太多，怎么判断要不要学？路线给了五个过滤问题。
+1| 一，它改变了 pipeline 的哪个模块，也就是八层加部署中的哪一格？二，它是新的机制，还是只是一个新的模型名字？
+2| 三，它是否跨机器人、跨任务有效？四，有没有论文、代码和基准测试？五，六到十二个月之后，这个概念是否仍然值得知道？
+3| 原则是：如果你没法把一个新工作放进这张路线图，就先不要深入学它。
+4| 资料也有选择原则：每个关键概念，最多一篇权威论文、一个官方项目页、一个代码仓库，外加可选的 Hugging Face，优先官方来源。
+
+## slide: tag=收尾; title=27 条可选纵深：主干之外往哪挖; src=roadmap/motion-control.md · 可选纵深（独立路线页）；分组为本视频为便于记忆所做
+<div class='gridcards g2'>
+<div class='card' data-s='1'><h3>控制与硬件 · 4</h3><p>传统模型控制 · 安全控制（CLF / CBF / Safe RL）· 力矩电机设计 · 人形整机硬件设计</p></div>
+<div class='card' data-s='1'><h3>学习与数据 · 8</h3><p>RL 运动控制 · 模仿学习 · 动作重定向 · 遥操作 · 具身数据 · Real2Sim · ICL · BFM</p></div>
+<div class='card' data-s='2'><h3>大模型 · 5</h3><p>VLA · 扩散与流匹配策略 · 模型架构 · WAM · 动作生成</p></div>
+<div class='card' data-s='2'><h3>具体任务 · 7</h3><p>接触丰富操作 · Loco-Manipulation · 感知越障 · 导航 · 人形足球 · 人形拳击 · 群控展演</p></div>
+<div class='card' data-s='2' style='grid-column:span 2'><h3>工程与评测 · 3</h3><p>Sim2Real 纵深 · 具身模型测评 · RSI（递归自我改进）</p></div>
+</div>
+---
+0| 主路线偏向先稳住一条主干；真正做研究或做项目时，总要往某个子方向深挖。路线附带了二十七条可选纵深，每条都是独立的路线页，标明了适合谁、从主线的哪一层衔接。
+1| 为了方便记忆，这里按方向分成五组。控制与硬件：传统模型控制、安全控制、力矩电机设计、人形整机设计。学习与数据：强化学习运动控制、模仿学习、动作重定向、遥操作、具身数据、Real2Sim、具身上下文学习、行为基础模型。
+2| 大模型方向：VLA、扩散与流匹配、模型架构、世界动作模型、动作生成。具体任务：接触操作、移动操作、感知越障、导航、足球、拳击、群控展演。以及工程与评测：Sim2Real 纵深、具身模型测评，和递归自我改进。
+
+## slide: tag=收尾; title=六个常见卡点与解法; src=roadmap/motion-control.md · 常见卡点
+<table class='tb sm'>
+<tr><th>卡点</th><th>解法</th></tr>
+<tr data-s='1'><td>学了一堆理论，串不起来</td><td>按 L0 → L6 顺序走，每个阶段都有输出物；不要只看不练</td></tr>
+<tr data-s='2'><td>RL 训练不稳定</td><td>先用 IL 初始化（给一个好的 policy prior），比纯 RL 从零训稳得多</td></tr>
+<tr data-s='3'><td>不知道模型对不对</td><td>先用 WBC / MPC 做 model-based baseline，RL 结果要有对比</td></tr>
+<tr data-s='4'><td>Sim2Real 差距太大</td><td>先做好 SysID，再用 DR 扩大扰动范围，最后考虑在线自适应</td></tr>
+<tr data-s='5'><td>看完 Modern Robotics 接不上人形</td><td>它是数学语言 + 固定基基础；人形还要补浮动基、质心、接触动力学与 WBC</td></tr>
+<tr data-s='6'><td>VLA / 世界模型论文太多</td><td>用五个过滤问题放进 8 层 + 部署中的一格；放不进、也无 paper / code / benchmark 的先不深学</td></tr>
+</table>
+---
+0| 然后是六个常见卡点和对应的解法。
+1| 学了一堆理论，不知道怎么串起来：按 L0 到 L6 的顺序走，每个阶段都有输出物，不要只看不练。
+2| 强化学习训练不稳定：先用模仿学习初始化，给策略一个好的先验，比纯强化学习从零训练稳得多。
+3| 不知道自己的模型对不对：先用全身控制或 MPC 这类基于模型的方法做基线，强化学习的结果要有对比，才知道好不好。
+4| Sim2Real 差距太大：先做好系统辨识，再用域随机化扩大扰动范围，最后考虑在线自适应。
+5| Modern Robotics 看完了，不知道怎么接人形控制：它是数学语言加固定基机器人的基础，进入人形还要补浮动基动力学、质心动力学、接触动力学和全身控制。
+6| VLA 和世界模型的新论文太多、追不过来：先用五个过滤问题，把它放进八层加部署中的某一格；放不进去、也没有论文代码和基准的，先不深学。
+
+## slide: tag=收尾; title=一张图回顾整条路线; src=roadmap/motion-control.md（全文）
+<div class='gridcards g5' style='gap:16px'>
+<div class='card' data-s='1'><h3>L−1</h3><p class='sm'>全景：感知 · 规划 · 控制 · 执行</p></div>
+<div class='card' data-s='1'><h3>L0</h3><p class='sm'>SO(3) / SE(3) · 流形插值 · QP</p></div>
+<div class='card' data-s='1'><h3>L1</h3><p class='sm'>PoE 正运动学 · IK 多解 · 雅可比</p></div>
+<div class='card' data-s='1'><h3>L2</h3><p class='sm'>M q̈ + C q̇ + g = τ · 浮动基 · Jᵀf</p></div>
+<div class='card' data-s='1'><h3>L3</h3><p class='sm'>PD · LQR / MPC · 凸 QP · HQP · 阻抗</p></div>
+<div class='card' data-s='2'><h3>L4</h3><p class='sm'>LIP/ZMP → Centroidal → MPC → WBC</p></div>
+<div class='card' data-s='2'><h3>L5</h3><p class='sm'>PPO · 教师–学生 · BC / DAgger / AMP · 重定向</p></div>
+<div class='card' data-s='2'><h3>L6</h3><p class='sm'>10 关卡 · SysID + DR · 失败来源表</p></div>
+<div class='card' data-s='2'><h3>L7</h3><p class='sm'>感知 · 规划 · 操作 · 系统栈 · 前沿地图</p></div>
+<div class='card' data-s='3'><h3>L8</h3><p class='sm'>token · QKV 注意力 · ViT · VLM</p></div>
+<div class='card' data-s='3'><h3>L9</h3><p class='sm'>Action Chunk · Diffusion · Flow Matching · DiT</p></div>
+<div class='card' data-s='3'><h3>L10</h3><p class='sm'>π0 骨架 · GR00T 双系统 · 低层仍在环</p></div>
+<div class='card' data-s='3'><h3>L11</h3><p class='sm'>世界模型：数据 · 评测 · 长尾 · 规划</p></div>
+<div class='card' data-s='3'><h3>L12</h3><p class='sm'>ONNX → ROS2 → RT → 总线 → 电机</p></div>
+<div class='card gold' data-s='4'><h3>全链路</h3><p class='sm'>每个模块都知道：在哪一层、解决什么、背后什么原理</p></div>
+</div>
+---
+0| 我们用一张图回顾整条路线。
+1| L−1，建立全景；L0，向量、旋转和优化的词汇表；L1，关节空间和任务空间的翻译器；L2，力和运动的因果关系，浮动基和接触；L3，反馈、最优控制、QP 和任务分层。
+2| L4，人形控制主干：LIP 和 ZMP、质心动力学、MPC、全身控制；L5，强化学习、模仿学习和动作重定向；L6，Sim2Real 的十个关卡；L7，全栈出口和前沿地图。
+3| L8，把一切变成 token；L9，一次生成一段动作；L10，VLA 把理解和动作装进一个大脑；L11，世界模型和平台补数据、做评测；L12，按时把力矩送到电机。
+4| 从相机图像到电机力矩，每一个模块，你现在都知道它在哪一层、解决什么问题、背后是什么原理。以上就是这条路线的完整讲解，谢谢观看。

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 1800 520" width="1800" height="520" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="sn_a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.bx{fill:#132b3e;stroke:#00d4ff;stroke-width:2.5}.rb{fill:#1a1a1a;stroke:#ffbf47;stroke-width:3}.hw{fill:#1a1a1a;stroke:#8eb1c5;stroke-width:2.5}.t1{fill:#eaf6ff;font-size:28px;font-weight:700;text-anchor:middle}.t2{fill:#a9c9da;font-size:24px;text-anchor:middle}.ln{stroke:#7fb8d0;stroke-width:4;fill:none;marker-end:url(#sn_a)}</style></defs>
+<g data-s="0"><rect class="bx" x="38" y="20" width="300" height="110" rx="16"/><text class="t1" x="188" y="67">Simulation</text><text class="t2" x="188" y="104">仿真</text>
+<path class="ln" d="M338,75 H392"/>
+</g>
+<g data-s="1"><rect class="bx" x="394" y="20" width="300" height="110" rx="16"/><text class="t1" x="544" y="67">Domain Rand.</text><text class="t2" x="544" y="104">域随机化</text>
+<path class="ln" d="M694,75 H748"/>
+</g>
+<g data-s="1"><rect class="bx" x="750" y="20" width="300" height="110" rx="16"/><text class="t1" x="900" y="67">Obs. Noise</text><text class="t2" x="900" y="104">观测噪声</text>
+<path class="ln" d="M1050,75 H1104"/>
+</g>
+<g data-s="1"><rect class="bx" x="1106" y="20" width="300" height="110" rx="16"/><text class="t1" x="1256" y="67">Latency</text><text class="t2" x="1256" y="104">延迟</text>
+<path class="ln" d="M1406,75 H1460"/>
+</g>
+<g data-s="1"><rect class="bx" x="1462" y="20" width="300" height="110" rx="16"/><text class="t1" x="1612" y="67">Actuator Model</text><text class="t2" x="1612" y="104">执行器建模</text>
+<path class="ln" d="M1612,130 V278"/>
+</g>
+<g data-s="2"><rect class="bx" x="1462" y="280" width="300" height="110" rx="16"/><text class="t1" x="1612" y="327">System ID</text><text class="t2" x="1612" y="364">系统辨识</text>
+<path class="ln" d="M1462,335 H1408"/>
+</g>
+<g data-s="2"><rect class="bx" x="1106" y="280" width="300" height="110" rx="16"/><text class="t1" x="1256" y="327">Teacher-Student</text><text class="t2" x="1256" y="364">特权蒸馏</text>
+<path class="ln" d="M1106,335 H1052"/>
+</g>
+<g data-s="3"><rect class="bx" x="750" y="280" width="300" height="110" rx="16"/><text class="t1" x="900" y="327">Policy Validation</text><text class="t2" x="900" y="364">策略验证</text>
+<path class="ln" d="M750,335 H696"/>
+</g>
+<g data-s="3"><rect class="bx" x="394" y="280" width="300" height="110" rx="16"/><text class="t1" x="544" y="327">Sim2Sim</text><text class="t2" x="544" y="364">换引擎再验</text>
+<path class="ln" d="M394,335 H340"/>
+</g>
+<g data-s="3"><rect class="rb" x="38" y="280" width="300" height="110" rx="16"/><text class="t1" x="188" y="327">Real Robot</text><text class="t2" x="188" y="364">真机</text>
+</g>
+<g data-s="3"><path d="M188,390 V450 H1612 V394" stroke="#ffbf47" stroke-width="4" stroke-dasharray="12 9" fill="none" marker-end="url(#sn_a)"/><text x="900" y="440" fill="#ffbf47" font-size="26" text-anchor="middle">真机失败 → 回到系统辨识复盘</text></g>
+</svg>

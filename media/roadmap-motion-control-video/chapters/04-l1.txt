@@ -1,0 +1,111 @@
+# chapter: id=c04; level=L1; name=L1 机器人学骨架：FK / IK / Jacobian
+
+## slide: stage=chap
+::chap L1 | 机器人学骨架 | 关节空间 ↔ 任务空间的翻译器 | SE(3) · FK / IK · Jacobian · PoE
+---
+0| L1，机器人学骨架。这是所有后续内容的基座，跳过的话，后面一定会回来补。
+0| 隐喻是：看着关节角的变化，能不能马上脑补出末端走出的轨迹？L1 教的就是这个翻译器：关节空间和任务空间之间的互相翻译。
+
+## slide: tag=L1; title=三步走，外加三个六维量; src=roadmap/motion-control.md §L1 · 这一层建议分三步走 / 英文缩写速查（L1）
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='1'><h3>L1.1 SE(3)、旋转与刚体变换</h3><p>旋转矩阵、齐次变换、twist / 螺旋轴、矩阵指数——后面所有内容的字母表</p></div>
+<div class='card' data-s='2'><h3>L1.2 正逆运动学 FK / IK</h3><p>关节角 ↔ 末端位姿</p></div>
+<div class='card' data-s='3'><h3>L1.3 雅可比与速度运动学</h3><p>关节速度 ↔ 末端速度；L4 任务空间控制的入门钥匙</p></div>
+</div>
+<div class='col'>
+<div class='card gold' data-s='4'><h3>三个六维量</h3>
+<ul class='b sm'>
+<li><span class='a'>Twist</span>：空间速度 = 角速度 + 线速度</li>
+<li><span class='a'>Screw</span>：螺旋轴，“绕一根轴转、同时沿轴移动”</li>
+<li><span class='a'>Wrench</span>：空间力 = 力 + 力矩</li>
+<li><span class='a'>Adjoint</span>：在坐标系之间变换 twist / wrench 的 6×6 矩阵</li>
+</ul></div>
+</div>
+</div>
+---
+0| 这一层分三步走，不要一口气啃完。
+1| 第一步，SE(3)、旋转和刚体变换：旋转矩阵、齐次变换、twist 和螺旋轴、矩阵指数。这是后面所有内容的字母表。
+2| 第二步，正逆运动学：关节角和末端位姿之间的互相换算。
+3| 第三步，雅可比和速度运动学：关节速度和末端速度之间的关系。这是 L4 任务空间控制的入门钥匙。
+4| 先认识几个词。twist 是六维的空间速度，角速度加线速度；screw 螺旋轴，描述“绕一根轴转、同时沿轴移动”的运动；wrench 是六维的空间力，力加力矩；伴随矩阵 Adjoint，负责在不同坐标系之间变换 twist 和 wrench。
+
+## slide: tag=L1.2; title=正运动学：指数积公式 PoE; src=roadmap/motion-control.md §L1 · Modern Robotics Ch 4 · wiki/formalizations/forward-kinematics.md
+<div class='cols w46'>
+<div class='col'>::svg poe.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='2'>$$T(\theta) = e^{[\mathcal S_1]\theta_1}\, e^{[\mathcal S_2]\theta_2} \cdots e^{[\mathcal S_n]\theta_n}\, M$$</div>
+<div class='card good' data-s='3'><h3>PoE 相比 D-H</h3>
+<ul class='b sm'>
+<li>只需关节螺旋轴 + 零位位姿，不必在每个连杆摆坐标系</li>
+<li>天然用 twist / screw 表达，与 Jacobian、wrench、动力学同一套语言</li>
+</ul></div>
+<div class='card warn' data-s='4'><h3>D-H 的麻烦</h3><p>对零位与坐标选取敏感，对树形结构和浮动基不友好</p></div>
+</div>
+</div>
+---
+0| 先看正运动学：已知关节角，求末端位姿。
+1| Modern Robotics 推荐用指数积公式，也叫 PoE。只需要两样东西：每个关节在零位时的螺旋轴 S，和末端在零位时的位姿 M。
+2| 然后从基座往外，每个关节贡献一个矩阵指数，意思是“绕自己的螺旋轴转过 θ”，依次连乘，最后乘上零位位姿 M，就得到当前的末端位姿。
+3| 和传统的 D-H 参数相比，PoE 不需要在每个连杆上摆坐标系，几何含义清楚；而且天然用 twist 和 screw 表达，和速度运动学、力、动力学是同一套语言。
+4| 这就是为什么 Pinocchio、TSID 这些工具都建立在 twist 和 SE(3) 上：PoE 能无缝接上它们。而 D-H 对零位和坐标选择很敏感，对树形结构和浮动基也不友好。
+
+## slide: tag=L1.2; title=逆运动学：解往往不唯一; src=roadmap/motion-control.md §L1 自测题 · wiki/formalizations/inverse-kinematics.md
+<div class='cols w46'>
+<div class='col'>::svg ik_elbow.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card' data-s='1'><h3>6R + 球形手腕：最多 8 组解</h3><p>肩前 / 后 × 肘上 / 下 × 腕翻转 = \(2^3 = 8\)；一般 6R 最多 16 组</p></div>
+<div class='card' data-s='2'><h3>“肘上 / 肘下”从哪来</h3><p>求肘关节角时方程的 ± 两个解：同一末端位置，肘可以向上拱，也可以向下拱</p></div>
+<div class='eq' data-s='3'><div class='sm m'>数值 IK（Newton–Raphson 的雅可比形式）</div>$$\Delta\theta = J^{+}(\theta)\, e \quad \text{迭代至收敛；奇异附近用阻尼最小二乘}$$</div>
+</div>
+</div>
+---
+0| 逆运动学反过来：给定末端目标，反推关节角。难点在于解往往不唯一。
+1| 以带球形手腕的六自由度机械臂为例，最多有八组解，来自三个二选一：肩朝前还是朝后、肘朝上还是朝下、手腕翻不翻转，二的三次方等于八。一般非球腕的六自由度臂，最多可以有十六组。
+2| 所谓“肘上”和“肘下”，来自求肘关节角时方程的正负两个解：同一个末端位置，肘可以向上拱，也可以向下拱。
+3| 工程里更常用数值解法：算出当前末端与目标之间的误差，用雅可比的伪逆换算成关节角的修正量，反复迭代直到收敛。靠近奇异位形时，要用阻尼最小二乘，避免伪逆数值爆炸；用上一拍的解做初值，收敛会快得多。
+
+## slide: tag=L1.3; title=雅可比：速度的线性映射，力的对偶映射; src=roadmap/motion-control.md §L1 自测题 · wiki/formalizations/robot-jacobian.md
+<div class='cols'>
+<div class='col'>
+<div class='eq' data-s='0'><div class='sm m'>关节速度 → 末端 twist</div>$$\mathcal V = J(\theta)\,\dot\theta$$</div>
+<div class='eq' data-s='1'><div class='sm m'>末端 wrench → 关节力矩（对偶）</div>$$\tau = J^\top(\theta)\,\mathcal F$$</div>
+<div class='eq' data-s='3'><div class='sm m'>space ↔ body</div>$$J_b = \big[\mathrm{Ad}_{T_{bs}}\big]\, J_s,\qquad T_{bs} = T_{sb}^{-1}$$</div>
+</div>
+<div class='col'>
+<div class='card' data-s='2'><h3>两种写法</h3>
+<ul class='b sm'>
+<li><span class='k'>\(J_s\)</span>：末端速度在<b>固定基坐标系</b>下表达</li>
+<li><span class='k'>\(J_b\)</span>：末端速度在<b>末端体坐标系</b>下表达</li>
+</ul></div>
+<div class='card gold' data-s='4'><h3>怎么选</h3><p>目标定义在哪个坐标系就用哪个：世界系目标用 \(J_s\)；视觉伺服、末端力控常用 \(J_b\)</p></div>
+<div class='card' data-s='5'><p>PoE 下，\(J_s\) 的第 i 列 = 经前 i−1 个关节变换后的螺旋轴 \(\mathcal S_i\)</p></div>
+</div>
+</div>
+---
+0| 第三步是雅可比矩阵。它是一个线性映射：关节速度乘以雅可比，就得到末端的 twist。
+1| 它还有一个对偶用法：末端要施加一个 wrench，所需的关节力矩，等于雅可比的转置乘以这个 wrench。这个关系在 L2、L4 会反复用到。
+2| 雅可比有两种写法：space 雅可比，在固定基坐标系里表达末端速度；body 雅可比，在末端自己的坐标系里表达。
+3| 两者之间差一个六乘六的伴随变换：body 雅可比，等于伴随矩阵乘以 space 雅可比。
+4| 目标定义在哪个坐标系，就用对应的雅可比：世界系下的目标用 space 雅可比；视觉伺服、末端力控这类以末端为参照的任务，常用 body 雅可比。
+5| 另外，在 PoE 下，space 雅可比的每一列，恰好就是经过前面关节变换之后的螺旋轴。这也是 PoE 和速度运动学天然统一的原因。
+
+## slide: tag=L1; title=L1 要做出什么; src=roadmap/motion-control.md §L1 · 推荐做什么 / 学完输出什么
+<div class='cols' style='height:auto'>
+<div class='card good'><h3>推荐做什么</h3>
+<ul class='b sm'>
+<li>用 Pinocchio 或 Robotics Toolbox 建模一个简单机械臂</li>
+<li>写出正运动学和逆运动学代码</li>
+<li data-s='1'>用 PoE 手写 2–3 自由度臂的 <span class='mono'>FKinSpace</span> / <span class='mono'>JacobianSpace</span>，与 Pinocchio 输出逐项对齐</li>
+</ul></div>
+<div class='card gold' data-s='2'><h3>学完输出</h3>
+<ul class='b sm'>
+<li>能自己建模并计算正逆运动学</li>
+<li>能解释雅可比是什么、有什么用</li>
+<li>能区分 space / body Jacobian，知道它们如何进入任务空间的速度与力映射</li>
+</ul></div>
+</div>
+---
+0| L1 的练习：用 Pinocchio 或 Robotics Toolbox 建模一个简单机械臂，写出正逆运动学。
+1| 再用 PoE 公式手写一个两到三自由度机械臂的正运动学和雅可比，和 Pinocchio 的输出逐项对齐。
+2| 学完之后，你应该能自己建模并计算正逆运动学，能说清雅可比是什么、有什么用，能区分 space 和 body 雅可比，并知道它们在任务空间控制里，怎样进入速度和力的映射。

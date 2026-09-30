@@ -1,0 +1,120 @@
+# chapter: id=c12; level=L5; tag=L5.1; name=L5 强化学习基础：MDP → PPO
+
+## slide: stage=chap
+::chap L5 | 强化学习与模仿学习 | 让机器人自己试出来（RL），或模仿人学出来（IL） | 能力扩展层，不是跳过建模的捷径
+---
+0| L5，强化学习与模仿学习。L4 是“我已经知道物理、知道目标”去算控制律；L5 反过来，让机器人自己试出来，或者模仿人学出来。
+0| 为什么需要它？传统控制要准确建模、要显式的目标函数；对跑、跳、复杂地形、操作这类接触切换密集、目标难以写成代价函数的任务，开发周期很长。强化学习和模仿学习用数据来补这一段。
+
+## slide: tag=L5.0; title=三条心法：RL / IL 是能力扩展层; src=roadmap/motion-control.md §L5 · 这一阶段最容易踩的坑
+<ul class='b'>
+<li data-s='1'>把 RL / IL 看成<span class='k'>能力扩展层</span>，不是替代所有控制结构的万能钥匙</li>
+<li data-s='2'>始终追问：策略学到的是<span class='k'>高层决策</span>、<span class='k'>低层 tracking</span>，还是两者混在一起？</li>
+<li data-s='3'>遇到 sim2real、接触切换、可解释性问题时，<span class='k'>回到 L4 的模型与约束视角</span>重新审题</li>
+</ul>
+<div class='card gold' data-s='4' style='margin-top:36px'><h3>入门顺序（最小闭环）</h3><p>PyBullet 手写 S、A、R 与仿真步进（先不接 RL）→ Gymnasium 玩具环境 + PPO → Isaac Lab 人形并行训练</p></div>
+---
+0| 进入细节之前，先记住三条心法。
+1| 第一，把强化学习和模仿学习看成能力扩展层，而不是替代所有控制结构的万能钥匙。
+2| 第二，始终追问：这个策略学到的是高层决策、低层跟踪，还是把两者混在了一起？
+3| 第三，遇到 Sim2Real、接触切换、可解释性这类问题时，回到 L4 的模型和约束视角重新审题。
+4| 入门的推荐顺序是：先在 PyBullet 里手写状态、动作、奖励和仿真步进，把 MDP 和代码对齐，先不接强化学习；再在 Gymnasium 的玩具环境上用 PPO；最后上 Isaac Lab 做人形的并行训练。
+
+## slide: title=MDP 五元组，以及真机上的 POMDP; src=roadmap/motion-control.md §L5.0 · wiki/formalizations/mdp.md · wiki/formalizations/pomdp.md · wiki/methods/gae.md
+<table class='tb'>
+<tr><th>要素</th><th>具身含义</th><th>真机注意</th></tr>
+<tr data-s='1'><td>S 状态</td><td>IMU、关节角、深度 / 点云</td><td>常有噪声与延迟</td></tr>
+<tr data-s='1'><td>A 动作</td><td>力矩、关节目标、步态参数</td><td>多为连续向量</td></tr>
+<tr data-s='2'><td>R 奖励</td><td>前进、平衡、抓取成功、摔倒惩罚</td><td>塑造行为的关键杠杆</td></tr>
+<tr data-s='2'><td>P 转移</td><td>仿真器或真机动力学</td><td>PyBullet / MuJoCo / Isaac 各不同</td></tr>
+<tr data-s='3'><td>γ 折扣</td><td>远期奖励的权重</td><td>有效视野 ≈ 1/(1−γ) 步：0.99 → 约 100 步，50 Hz 下约 2 s</td></tr>
+</table>
+<div class='card warn' data-s='4' style='margin-top:24px'><h3>POMDP</h3><p>标准 MDP 假设全状态可观测；真机几乎都是部分可观测 → 多帧历史 + RNN / Transformer 编码隐状态</p></div>
+---
+0| 强化学习的标准形式是马尔可夫决策过程 MDP，由五个元素组成。
+1| S，状态：IMU、关节角、深度图或点云，真机上常有噪声和延迟。A，动作：力矩、关节目标或者步态参数，多为连续向量。
+2| R，奖励：前进、平衡、抓取成功、摔倒惩罚，它是塑造行为的关键杠杆。P，状态转移：由仿真器或真机的动力学决定，不同仿真器各不相同。
+3| γ，折扣因子，决定策略是短视还是看得长远。有效视野大约是一除以一减 γ 步：γ 等于零点九九时约一百步，在五十赫兹下大约两秒。
+4| 标准 MDP 假设状态完全可观测；但真机部署几乎都是部分可观测的 POMDP，所以常用多帧历史，加上循环网络或 Transformer 来编码隐藏状态，再输出动作。
+
+## slide: title=RL 主干概念链：从价值到 Actor-Critic; src=roadmap/motion-control.md §L5.1 · RL 主干概念链 · wiki/methods/policy-optimization.md
+<div class='flow' style='justify-content:center'>
+<div class='n'><b>MDP</b>S · A · R · P · γ</div><div class='ar'>→</div>
+<div class='n' data-s='1'><b>Value</b>V(s) / Q(s,a)</div><div class='ar'>→</div>
+<div class='n' data-s='2'><b>Policy Gradient</b>∇log π · Advantage</div><div class='ar'>→</div>
+<div class='n' data-s='3'><b>Actor-Critic</b>出动作 · 估价值</div><div class='ar'>→</div>
+<div class='n' data-s='4'><b>GAE</b>λ 加权 TD</div><div class='ar'>→</div>
+<div class='n' data-s='4'><b>PPO</b>ratio + clip</div>
+</div>
+<div class='gridcards g2' style='margin-top:34px'>
+<div class='eq' data-s='1'><div class='sm m'>价值：从 s 出发的期望折扣回报</div>$$V^\pi(s) = \mathbb E\Big[\textstyle\sum_t \gamma^t r_t \,\Big|\, s_0 = s\Big]$$</div>
+<div class='eq' data-s='2'><div class='sm m'>策略梯度：好动作调高概率，坏动作调低</div>$$\nabla_\theta J = \mathbb E\big[\nabla_\theta \log \pi_\theta(a|s)\,\hat A\big]$$</div>
+</div>
+---
+0| 从 Physical AI 的视角，强化学习只需要吃透一条概念链。
+1| 价值函数：V of s 估计从状态 s 出发，能拿到多少折扣后的长期回报；Q of s a 估计在 s 做了动作 a 之后的长期回报。
+2| 策略梯度：直接对策略参数求梯度，方向是“动作概率的对数梯度，乘以这个动作的优势”。优势为正的动作，概率被调高；优势为负的，被调低。
+3| Actor-Critic：actor 负责输出动作，critic 负责估计价值，用 critic 的估计来计算优势，从而降低策略梯度的方差。
+4| 再往后是 GAE 和 PPO，它们解决两个工程问题：优势怎么估得又准又稳，以及每次更新怎么走得不太远。
+
+## slide: title=TD 误差与 GAE：偏差和方差之间的旋钮; src=roadmap/motion-control.md §L5.1 · wiki/methods/gae.md · arXiv:1506.02438
+<div class='cols'>
+<div class='col'>
+<div class='eq' data-s='0'><div class='sm m'>TD 误差：这一步比预期好多少</div>$$\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)$$</div>
+<div class='eq' data-s='1'><div class='sm m'>GAE：从轨迹末端往前递推</div>$$\hat A_t = \delta_t + \gamma\lambda\,\hat A_{t+1} = \sum_{l\ge 0} (\gamma\lambda)^l \delta_{t+l}$$</div>
+</div>
+<div class='col'>
+<div class='card' data-s='2'><h3>λ 的两个极端</h3><ul class='b sm'><li>λ = 0：单步 TD，方差低、偏差高</li><li>λ = 1：蒙特卡洛，无偏、方差极高</li></ul></div>
+<div class='card gold' data-s='3'><h3>别把 γ 和 λ 混为一谈</h3><p>γ：看多远的未来；λ：多大程度信任 critic 概括未来。运控常用 γ = 0.99、λ = 0.95</p></div>
+</div>
+</div>
+---
+0| 先看 TD 误差 δ：这一步拿到的奖励，加上折扣后下一个状态的价值，减去当前状态的价值。它衡量这一步的结果，比预期好了多少。
+1| GAE，广义优势估计，把多步的 TD 误差按 γ 乘 λ 做指数加权求和。实现时从轨迹末端往前递推：当前的优势，等于当前的 δ，加上 γ λ 乘以下一步的优势。
+2| λ 是一根在偏差和方差之间滑动的旋钮：λ 等于零，退化为单步 TD，方差低但偏差高；λ 等于一，退化为蒙特卡洛，无偏但方差极高。
+3| 不要把 γ 和 λ 混为一谈：γ 管“看多远的未来”，λ 管“多大程度信任 critic 来概括未来”。行走任务里常用 γ 零点九九、λ 零点九五。
+
+## slide: title=PPO：裁剪让每次更新只走一小步; src=roadmap/motion-control.md §L5.1 自测题 · wiki/methods/ppo.md · arXiv:1707.06347
+<div class='cols w46'>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='0'>$$r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)}$$</div>
+<div class='eq' data-s='1'>$$L^{CLIP} = \mathbb E_t\Big[\min\big(r_t \hat A_t,\ \mathrm{clip}(r_t, 1-\epsilon, 1+\epsilon)\,\hat A_t\big)\Big]$$</div>
+<div class='card gold' data-s='3'><h3>ε 常取 0.1–0.2</h3><p>太大：约束松、更新过激易崩；太小：更新保守、收敛慢、样本利用率低</p></div>
+</div>
+<div class='col'>::svg ppo_clip.svg</div>
+</div>
+---
+0| PPO 的核心是一个裁剪过的代理目标。先定义概率比 r：新策略和旧策略，在同一个状态下选择同一个动作的概率之比。
+1| 目标取两项中的较小值：r 乘优势，和“把 r 裁剪到一减 ε 到一加 ε 之间”再乘优势。
+2| 看右边的图：优势为正时，把这个动作的概率调高带来的收益，在一加 ε 处封顶；优势为负时，把它压低带来的收益，在一减 ε 处封顶。朝有利方向走过了头，就不再给额外收益，梯度归零。
+3| 这就近似实现了一个信赖域：每次更新只允许策略小步走，避免一次更新把已经学会的行为搞崩。ε 通常取零点一到零点二：太大，约束太松，更新过激容易崩溃；太小，更新太保守，收敛慢，样本利用率低。
+
+## slide: title=一次 PPO 迭代，以及为什么人形 RL 主流用 PPO; src=roadmap/motion-control.md §L5.1 自测题 · wiki/comparisons/ppo-vs-sac.md · rsl_rl
+<div class='flow' style='justify-content:center;flex-wrap:wrap;row-gap:14px'>
+<div class='n'><b>并行 rollout</b>trajectory</div><div class='ar'>→</div><div class='n'><b>reward</b></div><div class='ar'>→</div><div class='n'><b>TD error</b></div><div class='ar'>→</div><div class='n'><b>GAE → Â</b></div><div class='ar'>→</div><div class='n'><b>ratio</b></div><div class='ar'>→</div><div class='n'><b>clip</b></div><div class='ar'>→</div><div class='n'><b>多 epoch 更新</b>丢弃重采</div>
+</div>
+<div class='cols' style='height:auto;margin-top:30px'>
+<div class='card' data-s='1'><h3>PPO vs SAC</h3><ul class='b sm'><li>PPO：四足 / 人形行走、大规模并行仿真；clip 让训练稳</li><li>SAC：灵巧手、精细抓取；最大熵探索更充分；off-policy 回放，样本效率更高</li></ul></div>
+<div class='card gold' data-s='2'><h3>那为什么人形仍用 PPO</h3><p>GPU 仿真上万环境并行 → 样本便宜，瓶颈是墙钟时间而非样本数；PPO 实现简单、超参鲁棒、契合并行 on-policy 采样，易加课程与 DR</p></div>
+</div>
+---
+0| 一次 PPO 迭代要看懂八个概念：并行环境采集轨迹，得到奖励，算 TD 误差，用 GAE 得到优势，计算概率比，做裁剪，最后用同一批数据做多轮小批量更新，然后丢掉数据重新采样。
+1| PPO 和 SAC 怎么选？PPO 适合四足和人形行走、大规模并行仿真，靠裁剪让训练稳定；SAC 适合灵巧手、精细抓取和对扰动敏感的任务，靠最大熵正则让探索更充分。同样的数据量下，SAC 的样本效率更高，因为它是 off-policy 的，可以用经验回放反复利用历史数据；PPO 是 on-policy 的，数据用完即弃。
+2| 那人形强化学习为什么主流仍然是 PPO？因为 GPU 仿真能同时跑上万个环境，样本变得很便宜，瓶颈变成了墙钟时间，而不是样本数量。再加上 PPO 实现简单、超参数鲁棒、和并行采样天然契合、训练稳定，也容易加上课程学习和域随机化。
+
+## slide: title=奖励投机：机器人学会了“小跳着前进”; src=roadmap/motion-control.md §L5.1 自测题 · wiki/concepts/reward-design.md
+<div class='card warn' data-s='0'><h3>现象</h3><p>reward = 前进项 + 平衡项 + 平滑项 → 学到“小跳着前进”：前进得分，却没约束接触与腾空</p></div>
+<ul class='b steps' style='margin-top:24px'>
+<li data-s='1'>惩罚双脚同时离地 / 限制 feet air-time，要求周期性单脚支撑</li>
+<li data-s='1'>惩罚 base 垂直速度、CoM 上下起伏</li>
+<li data-s='2'>奖励规整步态：步频、足端轨迹、接触时序</li>
+<li data-s='2'>调小纯前进项权重；加力矩 / 能量平滑惩罚，抑制爆发式弹跳</li>
+<li data-s='3'>用 AMP / motion prior 把风格约束到“走”</li>
+</ul>
+<div class='card good' data-s='4' style='margin-top:20px'><p>学完输出：能解释 PPO 的核心思路；能设计一个简单 reward 并训练</p></div>
+---
+0| 最后看一个典型的奖励设计问题：奖励里有前进项、平衡项、平滑项，结果机器人学会了“小跳着前进”，而不是走路。这是典型的奖励投机：前进得分，却没有约束接触和腾空。
+1| 改法有五个方向。一，惩罚双脚同时离地，或者限制腾空时间，要求周期性的单脚支撑；二，惩罚基座的垂直速度和质心的上下起伏。
+2| 三，奖励规整的步态，比如步频、足端轨迹和接触时序；四，调小纯前进项的权重，加上力矩和能量的平滑惩罚，抑制爆发式的弹跳。
+3| 五，用 AMP 这类运动先验，把风格约束到“走”。
+4| 学完 L5.1，你应该能解释 PPO 的核心思路，并能设计一个简单的奖励去训练策略。

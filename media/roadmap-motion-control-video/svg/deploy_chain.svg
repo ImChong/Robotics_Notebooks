@@ -1,0 +1,27 @@
+<svg viewBox="0 0 1800 400" width="1800" height="400" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="sn_a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.bx{fill:#132b3e;stroke:#00d4ff;stroke-width:2.5}.rb{fill:#1a1a1a;stroke:#ffbf47;stroke-width:3}.hw{fill:#1a1a1a;stroke:#8eb1c5;stroke-width:2.5}.t1{fill:#eaf6ff;font-size:30px;font-weight:700;text-anchor:middle}.t2{fill:#a9c9da;font-size:24px;text-anchor:middle}.ln{stroke:#7fb8d0;stroke-width:4;fill:none;marker-end:url(#sn_a)}</style></defs>
+<g data-s="0"><rect class="bx" x="50" y="20" width="380" height="120" rx="16"/><text class="t1" x="240" y="72">Trained policy</text><text class="t2" x="240" y="111">PyTorch</text>
+<path class="ln" d="M430,80 H488"/>
+</g>
+<g data-s="1"><rect class="bx" x="490" y="20" width="380" height="120" rx="16"/><text class="t1" x="680" y="72">Policy Export</text><text class="t2" x="680" y="111">→ ONNX</text>
+<path class="ln" d="M870,80 H928"/>
+</g>
+<g data-s="1"><rect class="bx" x="930" y="20" width="380" height="120" rx="16"/><text class="t1" x="1120" y="72">TensorRT / ORT</text><text class="t2" x="1120" y="111">Jetson 或 x86 GPU</text>
+<path class="ln" d="M1310,80 H1368"/>
+</g>
+<g data-s="2"><rect class="bx" x="1370" y="20" width="380" height="120" rx="16"/><text class="t1" x="1560" y="72">ROS2 node</text><text class="t2" x="1560" y="111">观测组装 · 推理 · 后处理</text>
+<path class="ln" d="M1560,140 V248"/>
+</g>
+<g data-s="3"><rect class="bx" x="1370" y="250" width="380" height="120" rx="16"/><text class="t1" x="1560" y="302">Robot controller</text><text class="t2" x="1560" y="341">ros2_control / 自研 RT 循环</text>
+<path class="ln" d="M1370,310 H1312"/>
+</g>
+<g data-s="3"><rect class="bx" x="930" y="250" width="380" height="120" rx="16"/><text class="t1" x="1120" y="302">Real-Time Linux</text><text class="t2" x="1120" y="341">PREEMPT_RT</text>
+<path class="ln" d="M930,310 H872"/>
+</g>
+<g data-s="4"><rect class="hw" x="490" y="250" width="380" height="120" rx="16"/><text class="t1" x="680" y="302">CAN / EtherCAT</text><text class="t2" x="680" y="341">总线</text>
+<path class="ln" d="M490,310 H432"/>
+</g>
+<g data-s="4"><rect class="hw" x="50" y="250" width="380" height="120" rx="16"/><text class="t1" x="240" y="302">Motor Driver</text><text class="t2" x="240" y="341">PD / 电流环 → 电机</text>
+</g>
+</svg>

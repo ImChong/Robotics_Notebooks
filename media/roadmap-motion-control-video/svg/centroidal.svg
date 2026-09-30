@@ -1,0 +1,25 @@
+<svg viewBox="0 0 760 640" width="760" height="640" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:27px}.lb{font-size:30px;font-weight:700}.bd{stroke:#8eb1c5;stroke-width:12;stroke-linecap:round;fill:none}</style></defs>
+<rect x="20" y="560" width="720" height="24" fill="#1a2c3b"/><path d="M20,560 H740" stroke="#2b5670" stroke-width="3"/>
+<circle cx="380" cy="80" r="36" fill="none" stroke="#8eb1c5" stroke-width="10"/>
+<path class="bd" d="M380,118 V330"/>
+<path class="bd" d="M380,170 L300,125 L250,70"/><path class="bd" d="M380,170 L460,125 L510,70"/>
+<path class="bd" d="M380,330 L300,440 L250,555"/><path class="bd" d="M380,330 L450,440 L520,555"/>
+<circle cx="380" cy="270" r="18" fill="#00d4ff"/><text class="lb" x="402" y="250" fill="#00d4ff">c（CoM）</text>
+<g data-s="1">
+<path d="M398,270 H540" stroke="#2ee6b8" stroke-width="5" marker-end="url(#ca)"/><text class="sm" x="550" y="280" fill="#2ee6b8">l = m ċ</text>
+<path d="M345,228 A55,55 0 0 0 345,312" stroke="#ffbf47" stroke-width="5" fill="none" marker-end="url(#ca)"/><text class="lb" x="160" y="282" fill="#ffbf47">角动量 k</text>
+</g>
+<g data-s="2">
+<path d="M250,558 L270,420" stroke="#ff6b6b" stroke-width="6" marker-end="url(#ca)"/><text class="lb" x="200" y="420" fill="#ff6b6b">f₁</text>
+<path d="M520,558 L500,420" stroke="#ff6b6b" stroke-width="6" marker-end="url(#ca)"/><text class="lb" x="535" y="420" fill="#ff6b6b">f₂</text>
+<circle cx="250" cy="558" r="9" fill="#ff6b6b"/><circle cx="520" cy="558" r="9" fill="#ff6b6b"/>
+<text class="sm" x="210" y="612" fill="#ff6b6b">p₁</text><text class="sm" x="505" y="612" fill="#ff6b6b">p₂</text>
+</g>
+<g data-s="3">
+<path d="M380,270 L250,558" stroke="#b99bff" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M380,270 L520,558" stroke="#b99bff" stroke-width="3" stroke-dasharray="8 6"/>
+<text class="sm" x="560" y="500" fill="#b99bff">力臂 pᵢ − c</text>
+</g>
+</svg>

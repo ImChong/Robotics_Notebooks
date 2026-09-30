@@ -1,0 +1,31 @@
+<svg viewBox="0 0 820 620" width="820" height="620" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="sa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>
+.ax{stroke-width:5;fill:none;marker-end:url(#sa)}
+.lb{font-size:30px;font-weight:700}
+.sm{font-size:26px;fill:#a9c9da}
+</style>
+</defs>
+<line x1="60" y1="560" x2="780" y2="560" stroke="#1d3a4f" stroke-width="2"/>
+<path class="ax" d="M120,520 L330,520" stroke="#ff6b6b"/><text class="lb" x="338" y="530" fill="#ff6b6b">x_s</text>
+<path class="ax" d="M120,520 L120,310" stroke="#2ee6b8"/><text class="lb" x="92" y="298" fill="#2ee6b8">y_s</text>
+<text class="sm" x="60" y="600">{s} 世界坐标系</text>
+<g data-s="2">
+<path d="M120,520 L540,250" stroke="#ffbf47" stroke-width="4" stroke-dasharray="12 8" fill="none" marker-end="url(#sa)"/>
+<text class="lb" x="300" y="360" fill="#ffbf47">p</text><text class="sm" x="330" y="360">位置</text>
+</g>
+<g data-s="1">
+<path d="M545,247 L715,247" stroke="#5d7f93" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+<path class="ax" d="M545,247 L710,152" stroke="#ff6b6b"/><text class="lb" x="716" y="146" fill="#ff6b6b">x_b</text>
+<path class="ax" d="M545,247 L450,82" stroke="#2ee6b8"/><text class="lb" x="408" y="72" fill="#2ee6b8">y_b</text>
+<path d="M640,247 A95,95 0 0 0 627,200" stroke="#00d4ff" stroke-width="3" fill="none"/>
+<text class="lb" x="650" y="222" fill="#00d4ff">θ</text>
+<text class="sm" x="560" y="300">{b} 机体坐标系</text>
+<text class="sm" x="560" y="336">R：三根轴的朝向</text>
+</g>
+<g data-s="3">
+<circle cx="640" cy="120" r="9" fill="#b99bff"/><text class="sm" x="622" y="112" text-anchor="end" style="fill:#b99bff">点：v′ = Rv + p</text>
+<path d="M150,200 L230,154" stroke="#b99bff" stroke-width="5" fill="none" marker-end="url(#sa)"/><text class="sm" x="40" y="240" style="fill:#b99bff">方向：v′ = Rv（不受平移）</text>
+</g>
+</svg>

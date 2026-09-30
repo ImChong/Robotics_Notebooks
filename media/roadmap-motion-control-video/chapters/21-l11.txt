@@ -1,0 +1,64 @@
+# chapter: id=c21; level=L11; name=L11 世界模型与 Physical AI 平台
+
+## slide: stage=chap
+::chap L11 | 世界模型与 Physical AI 平台 | 数据不够、真机太贵时，拿什么训练和评测？ | World Model · Cosmos · Isaac Sim / Lab · 合成数据
+---
+0| L11，世界模型与 Physical AI 平台。隐喻是：飞行员先在模拟器里飞几千小时。世界模型，就是机器人的“可学习模拟器”：给定当前的世界和一个动作，预测接下来会看到什么。
+0| 为什么需要它？VLA 需要海量、多样、带动作标注的数据；真机采集又贵又慢，很难覆盖长尾场景；每个检查点都上真机评测，也很贵。
+
+## slide: tag=L11; title=定义与四个具体瓶颈; src=roadmap/motion-control.md §L11 · 核心定义 / 客户为什么需要这一层 · roadmap/depth-wam.md
+<div class='flow' style='justify-content:center'>
+<div class='n'><b>当前世界状态</b></div><div class='ar'>+</div><div class='n'><b>动作</b></div><div class='ar'>→</div><div class='n' style='border-color:#2ee6b8'><b>World Model</b></div><div class='ar'>→</div><div class='n'><b>预测的未来</b>视频帧 / 状态</div>
+</div>
+<div class='card' data-s='1' style='margin-top:22px'><p><span class='k'>WFM</span>：大规模视频预训练、可被下游后训练的通用世界模型 · <span class='k'>视频世界模型</span>：以视频帧为预测对象 · <span class='k'>合成数据</span>：仿真或世界模型生成</p></div>
+<div class='gridcards g4' style='margin-top:22px'>
+<div class='card' data-s='2'><h3>数据</h3><p>遥操作数据是瓶颈 → 换光照、纹理、场景、视角扩增</p></div>
+<div class='card' data-s='3'><h3>评测</h3><p>每个 checkpoint 上真机太贵 → 先在仿真 / 世界模型里筛</p></div>
+<div class='card' data-s='4'><h3>长尾</h3><p>罕见失败场景难复现 → 合成出来训练与测试</p></div>
+<div class='card' data-s='5'><h3>规划</h3><p>先“想象”动作后果再选动作 → 世界–动作模型 WAM</p></div>
+</div>
+---
+0| 世界模型的定义很简单：输入当前的世界状态和一个动作，输出预测的未来，可以是视频帧，也可以是状态。
+1| 几个相关的词：世界基础模型 WFM，是在大规模视频上预训练、可以被下游再训练的通用世界模型；视频世界模型，以视频帧为预测对象；合成数据，是仿真或世界模型生成的数据。
+2| 世界模型不是一个“最新 AI”的标签，它解决的是 VLA 落地时四个具体的瓶颈。第一，数据：真机遥操作数据是瓶颈，就用仿真和世界模型来扩增，换光照、换纹理、换场景、换视角。
+3| 第二，评测：每个检查点都上真机测太贵，就先在仿真或世界模型里筛一遍。
+4| 第三，长尾：罕见的失败场景在现实里很难复现，就合成出来，用于训练和测试。
+5| 第四，规划：有些方法用世界模型“想象”动作的后果，再选择动作，这就是世界动作模型的方向。
+
+## slide: tag=L11; title=平台分工：要学的是“格子”，不是产品; src=roadmap/motion-control.md §L11 · 平台分工 · wiki/entities/nvidia-cosmos.md · wiki/entities/isaac-lab.md
+<div class='flow' style='justify-content:center'>
+<div class='flow v' style='gap:10px'>
+<div class='n' data-s='0' style='width:380px'><b>Cosmos</b>世界基础模型 → 合成 / 世界数据</div>
+<div class='n' data-s='0' style='width:380px'><b>Isaac Sim</b>物理仿真 · 渲染</div>
+<div class='n' data-s='0' style='width:380px'><b>Isaac Lab</b>RL / IL 训练</div>
+</div>
+<div class='ar'>→</div>
+<div class='n' data-s='1' style='width:300px;border-color:#2ee6b8'><b>GR00T</b>基础机器人策略</div><div class='ar'>→</div>
+<div class='n' data-s='1' style='width:260px'><b>Jetson</b>边缘推理</div><div class='ar'>→</div>
+<div class='n' data-s='1' style='width:260px'><b>ROS2</b>机器人集成</div>
+</div>
+<div class='card gold' data-s='2' style='margin-top:36px'><h3>每一格都有替代品</h3><p>仿真：MuJoCo / Genesis · 训练：LeRobot · 策略：openpi · 边缘算力：其它开发板——要学的是“格子”，不是产品</p></div>
+---
+0| 平台上怎么分工？以 NVIDIA 栈为例：Cosmos 是世界基础模型，生成合成数据和世界数据；Isaac Sim 负责物理仿真和渲染，也产出数据；Isaac Lab 在它之上做机器人学习，强化学习和模仿学习都在这里。
+1| 这些数据和训练汇聚到 GR00T 这样的基础机器人策略；再部署到 Jetson 上做边缘推理；最后通过 ROS2 集成到机器人上。
+2| 用 NVIDIA 举例，只是因为它在每一格都有公开组件。每一格都有替代品：仿真可以用 MuJoCo、Genesis；训练可以用 LeRobot；策略可以用 openpi；边缘算力也有其它开发板。要学的是“格子”，不是产品。
+
+## slide: tag=L11; title=物理仿真器 vs 视频世界模型，以及合成数据的风险; src=roadmap/motion-control.md §L11 自测题 · wiki/concepts/functional-taxonomy-world-models.md
+<table class='tb'>
+<tr><th></th><th>物理仿真器（Isaac Sim / MuJoCo）</th><th>视频世界模型（Cosmos）</th></tr>
+<tr data-s='1'><td>优势</td><td>显式物理、可交互、可并行 RL；给出真值状态与接触力</td><td>从真实视频学外观与常见物理现象；视觉真实感、场景多样性强</td></tr>
+<tr data-s='2'><td>短板</td><td>外观真实感不足、资产成本高</td><td>物理一致性无保证、难给接触力等真值、推理成本高</td></tr>
+</table>
+<div class='card good' data-s='3' style='margin-top:20px'><p>常见做法是互补：<span class='t'>仿真出结构和动作，世界模型做外观迁移与扩增</span></p></div>
+<div class='cols' style='height:auto;margin-top:20px'>
+<div class='card warn' data-s='4'><h3>合成数据最大风险</h3><p>生成的未来与真实物理不一致（穿透、质量不守恒）→ 策略学到“模型里的物理”</p></div>
+<div class='card gold' data-s='5'><h3>缓解</h3><p>真实数据校准与混合配比；物理仿真生成结构、世界模型只改外观；最终评测放在真机或高保真仿真</p></div>
+</div>
+---
+0| 物理仿真器和视频世界模型，各有什么优势和短板？
+1| 物理仿真器有显式的物理，可以交互，可以并行跑强化学习，能给出真值状态和接触力；视频世界模型从真实视频里学习外观和常见的物理现象，视觉真实感和场景多样性很强。
+2| 反过来，物理仿真器的短板是外观真实感不足、资产制作成本高；视频世界模型的短板，是物理一致性没有保证，很难给出接触力这类真值，推理成本也高。
+3| 所以常见做法是二者互补：仿真负责结构和动作，世界模型负责外观迁移和扩增。
+4| 用世界模型合成数据训练策略，最大的风险是：生成的未来和真实物理不一致，比如物体穿透、质量不守恒，策略学到的是“模型里的物理”。
+5| 缓解办法有三：用真实数据校准，并控制混合配比；用物理仿真生成结构，只让世界模型改外观；最终评测一定放在真机或高保真仿真上。
+5| 这一层的输出：能用一张图说明一个 VLA 项目的数据从哪来——真机、仿真、世界模型、人类视频——各自解决什么问题；并能区分物理仿真器和视频世界模型各自不可替代的地方。

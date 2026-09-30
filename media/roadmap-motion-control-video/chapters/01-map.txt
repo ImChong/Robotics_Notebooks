@@ -1,0 +1,107 @@
+# chapter: id=c01; level=全景; name=全景地图：从 camera image 到 motor torque
+
+## slide: tag=全景; title=8 层 + 部署：每一层回答一个问题; src=roadmap/motion-control.md · Physical AI 全栈视图
+<table class='tb sm'>
+<tr><th>层</th><th>这一层要回答什么</th><th>章节</th><th>关键节点</th></tr>
+<tr data-s='1'><td>① Robot Fundamentals</td><td>机器人为什么会动？网络最终控制的对象是什么？</td><td>L0–L2</td><td>SE(3) · FK/IK · Jacobian · 刚体/接触动力学</td></tr>
+<tr data-s='2'><td>② Robot Control</td><td>policy 输出之后，谁把它变成力矩？</td><td>L3–L4</td><td>PD · 阻抗 · WBC · QP · MPC</td></tr>
+<tr data-s='3'><td>③ Robot Learning</td><td>策略怎么从数据 / 试错里学出来？</td><td>L5</td><td>MDP → PPO；BC · DAgger · DeepMimic · AMP</td></tr>
+<tr data-s='3'><td>④ Sim2Real</td><td>仿真里好的策略，为什么真机上会失败？</td><td>L6</td><td>DR · 延迟 · 执行器 · SysID · Teacher-Student</td></tr>
+<tr data-s='4'><td>⑤ Transformer</td><td>图像、语言、状态怎么变成同一种 token？</td><td>L8</td><td>token · QKV · ViT · VLM</td></tr>
+<tr data-s='4'><td>⑥ Action Generation</td><td>为什么一次输出一段动作？</td><td>L9</td><td>Action Chunk · Diffusion · Flow Matching · DiT</td></tr>
+<tr data-s='4'><td>⑦ VLA</td><td>一个模型怎么同时看懂、听懂、动起来？</td><td>L10</td><td>π0 → π0.5 · GR00T N1</td></tr>
+<tr data-s='4'><td>⑧ World Model</td><td>数据不够、真机太贵，拿什么训练和评测？</td><td>L11</td><td>Cosmos · Isaac Sim / Lab · 合成数据</td></tr>
+<tr data-s='5'><td>Deployment</td><td>训练好的网络怎么在真机上按时跑起来？</td><td>L12</td><td>ONNX · TensorRT · ROS2 · CAN / EtherCAT</td></tr>
+</table>
+---
+0| 这张表是整条路线的地图：八层加一个部署层，每一层回答一个问题。
+1| 第一层，机器人基础：机器人为什么会动，神经网络最终控制的对象到底是什么。对应 L0 到 L2。
+2| 第二层，机器人控制：策略输出之后，是谁把它变成力矩的。对应 L3 和 L4。
+3| 第三层，机器人学习：策略怎么从数据和试错里学出来，对应 L5。第四层，Sim2Real：仿真里好好的策略，为什么上真机就失败，对应 L6。
+4| 第五到第八层是 Physical AI 的扩展：Transformer 把图像、语言、状态变成同一种 token；动作生成解释为什么现代策略一次输出一段动作；
+4| VLA 让一个模型同时看懂、听懂、动起来；世界模型和仿真平台，解决数据不够、真机太贵的问题。
+5| 最后是部署层：训练好的网络，怎么在真机上按时跑起来，对应 L12。
+
+## slide: tag=全景; title=一个 Physical AI 系统的数据流; src=roadmap/motion-control.md · 一个 Physical AI 系统：从 camera image 到 motor torque
+<div class='cols w64'>
+<div class='col'>
+::svg pipeline.svg
+</div>
+<div class='col' data-s='5'>
+<table class='tb sm'>
+<tr><th>环节</th><th>频率量级</th></tr>
+<tr><td>VLM（System 2）</td><td>较慢，与动作头解耦</td></tr>
+<tr><td>动作头出 chunk</td><td>端到端网络常 10–50 Hz<br><span class='m xs'>GR00T N1 报告约 120 Hz；π0 约 50 Hz</span></td></tr>
+<tr><td>低层跟踪 / WBC</td><td>200–1000 Hz</td></tr>
+<tr><td>关节 PD / 电流环</td><td>驱动器内更高频</td></tr>
+</table>
+<div class='card gold'><h3>要点</h3><p>不是具体数字，而是<br><span class='a'>慢的大模型 + 快的低层控制器</span><br>必须分层</p></div>
+</div>
+</div>
+---
+0| 把这八层串起来，就是一条从相机图像到电机力矩的数据流。
+1| 相机图像切成视觉 token，语言指令变成文本 token，机器人自身状态——关节角、角速度、IMU——变成状态嵌入。
+2| 视觉语言模型负责语义理解和任务推理，也就是 System 2；动作专家用流匹配或扩散生成一段动作，也就是 System 1。
+3| 这段动作交给低层策略或全身控制，变成关节目标或前馈力矩，再由驱动器里的 PD 或阻抗控制算出力矩，经过 CAN 或 EtherCAT 总线，送到电机的电流环。
+4| 编码器和 IMU 的读数，再作为下一拍的状态反馈回来，形成闭环。
+5| 注意右边的频率：大模型慢，端到端网络常在十到五十赫兹；而平衡和力控需要两百到一千赫兹。
+5| 所以“慢的大模型加上快的低层控制器”必须分层。这就是为什么 L3、L4 的控制基础，在 VLA 时代仍然不能跳过。
+
+## slide: tag=全景; title=主干与分支：不是一条单链; src=roadmap/motion-control.md · 主干与分支（不是单链）
+::svg backbone.svg
+<div class='cols' style='height:auto;margin-top:18px;gap:30px'>
+<ul class='b sm'>
+<li data-s='1'><span class='k'>Simulation → RL</span>：L11 的仿真平台同样是 L5 RL 的训练场</li>
+<li data-s='1'><span class='k'>Sim2Real → Deployment</span>：经典 RL 运动策略不经过 VLA，训练后直接走 L12</li>
+</ul>
+<ul class='b sm'>
+<li data-s='2'><span class='k'>Control → Real Robot</span>：无论上层是 PPO 还是 VLA，低层 PD / WBC 始终在环</li>
+<li data-s='2'><span class='k'>Real Robot → Sim2Real</span>：真机失败回到 L6 失败来源表复盘</li>
+</ul>
+</div>
+---
+0| 这张图说明，路线不是一条单链。主干是：物理基础、控制、强化学习与模仿学习、Sim2Real，再往上接 Transformer、动作生成、VLA、世界模型、仿真数据、部署和真机。
+1| 还有几条交叉依赖：仿真平台同样是 L5 强化学习的训练场；经典的强化学习运动策略并不经过 VLA，训练完直接走 L12 部署。
+2| 无论上层是 PPO 还是 VLA，低层的 PD 和全身控制始终在环；真机失败了，要回到 L6 的失败来源表去复盘。
+3| 另外，模仿学习里的行为克隆，是 L9 动作生成的起点。
+
+## slide: tag=全景; title=时间有限：核心路径与 90 天版本; src=roadmap/motion-control.md · Physical AI Core Path / 最小可执行学习路径（90 天版本）
+<div class='cols'>
+<div class='col'>
+<div class='card'><h3>Physical AI Core Path<span class='sm'>不要一次学完</span></h3>
+<ul class='b sm steps' style='display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(6,auto);column-gap:18px'>
+<li data-s='1'>运动学 / 动力学</li>
+<li data-s='1'>PD / 力矩控制</li>
+<li data-s='1'>MDP / Actor-Critic</li>
+<li data-s='1'>PPO</li>
+<li data-s='1'>DeepMimic / AMP</li>
+<li data-s='1'>Sim2Real</li>
+<li data-s='2'>Transformer</li>
+<li data-s='2'>Diffusion Policy</li>
+<li data-s='2'>Flow Matching / DiT</li>
+<li data-s='2'>π0 / GR00T</li>
+<li data-s='2'>World Model</li>
+<li data-s='2'>Deployment</li>
+</ul></div>
+</div>
+<div class='col'>
+<div class='card good' data-s='3'><h3>90 天：只做 5 件事</h3>
+<ul class='b sm steps'>
+<li data-s='4'>跑通 Locomotion 仿真（站立 + 前进）</li>
+<li data-s='4'>倒立摆 LQR 或简单 MPC</li>
+<li data-s='5'>最小 WBC / TSID 示例</li>
+<li data-s='5'>PPO 基础策略 + 读 WBC vs RL 做取舍</li>
+<li data-s='6'>最小 Sim2Real checklist（仿真内 DR 对比也行）</li>
+</ul></div>
+<div class='card gold' data-s='7'><p>做完再回到 L0–L6 补理论，会更快理解“为什么要学这些”</p></div>
+</div>
+</div>
+---
+0| 如果时间有限，路线给了一条最短核心路径，一共十二步，而且强调不要一次学完。
+1| 前六步是控制与学习的地基：运动学和动力学、PD 与力矩控制、MDP 和 Actor-Critic、PPO、DeepMimic 和 AMP、Sim2Real。
+2| 后六步是大模型这一段：Transformer 与注意力、Diffusion Policy、流匹配与 DiT、π0 和 GR00T、世界模型 Cosmos，最后是部署。部署可以在任何一段做完仿真之后穿插进行。
+3| 还有一个更务实的九十天版本，只做五件事。
+4| 一，跑通一个行走仿真环境，能站立、能前进。二，实现一个倒立摆的 LQR，或者一个简单的 MPC。
+5| 三，跑通一个最小的全身控制或 TSID 示例。四，用 PPO 训练一个基础策略，并对照全身控制和强化学习各自的取舍。
+6| 五，完成一次最小的 Sim2Real 检查清单，哪怕只是在仿真里做一次域随机化的对比。
+7| 做完这五件事，再回头补 L0 到 L6 的理论，你会更快理解每一层“为什么要学”。

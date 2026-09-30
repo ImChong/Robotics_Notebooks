@@ -1,0 +1,7 @@
+# 依赖与生成物不入库：配音缓存、渲染帧、成片（~100 MB）
+node_modules/
+package-lock.json
+vendor/
+cache/
+out/
+__pycache__/

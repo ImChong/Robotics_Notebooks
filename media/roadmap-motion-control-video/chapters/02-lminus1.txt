@@ -1,0 +1,84 @@
+# chapter: id=c02; level=L−1; name=L−1 序言：机器人技术栈全景
+
+## slide: stage=chap
+::chap L−1 | 序言：机器人技术栈全景 | 30 秒看懂“一台机器人在干嘛”，以及怎么读这条路线 | 感知 · 规划 · 控制 · 执行
+---
+0| 第一章，L−1，序言。这一层是给完全没接触过机器人的人准备的“软着陆台阶”，资深读者也可以用它校准自己该从哪一层开始。
+
+## slide: tag=L−1; title=任何机器人都在循环跑同一个 4 步; src=roadmap/motion-control.md §L−1 · 30 秒看懂“一台机器人在干嘛”
+::svg loop4.svg
+---
+0| 任何机器人，扫地机、机械臂、自动驾驶、人形，拆开看都在循环跑同一个四步。
+1| 感知：摄像头、IMU、编码器、力觉、雷达，让机器人知道自己在哪、世界长什么样。
+2| 决策与规划：任务规划、运动规划、SLAM，决定要去哪、走哪条路。
+3| 控制：把规划目标变成关节级指令，决定每个关节这一毫秒该出多少力、转多少角度。
+4| 执行：电机、减速器、关节和本体结构，把指令变成真实的机械运动，再通过传感器反馈回来。
+5| 这条路线主攻第三个盒子：控制。其它三个盒子，会在 L7 出口层集中扫盲。
+
+## slide: tag=L−1; title=为什么以人形 / 双足为主载体; src=roadmap/motion-control.md §L−1 · 为什么以“人形 / 双足”为主载体
+<div class='gridcards g2' style='margin-top:6px'>
+<div class='card' data-s='1'><h3>高自由度</h3><p>20+ 个关节要一起协调（常见约 25 DOF）</p></div>
+<div class='card' data-s='2'><h3>浮动基</h3><p>躯干没固定在地面上：整机位置与姿态本身就是要控制的变量</p></div>
+<div class='card' data-s='3'><h3>接触切换</h3><p>两只脚轮流着地，接触状态一变，动力学也跟着切换</p></div>
+<div class='card' data-s='4'><h3>强不稳定</h3><p>重心永远想往外跑，一松手就倒</p></div>
+</div>
+<div class='card gold' data-s='5' style='margin-top:26px'><p>学会人形 → 迁移到机械臂、四足、轮式底盘几乎都是<span class='a'>降难度</span>；反之不成立。所以人形是当下的“最佳教学载体”。</p></div>
+---
+0| 为什么用人形和双足做主载体？因为人形同时具备四个难点。
+1| 第一，高自由度：二十多个关节要一起协调。
+2| 第二，浮动基：躯干没有固定在地面上，整机的位置和姿态本身就是要控制的变量。
+3| 第三，接触切换：两只脚轮流着地，接触状态不断改变，动力学也随之切换。
+4| 第四，强不稳定：重心永远想往外跑，一松手就倒。
+5| 学会人形控制，再迁移到机械臂、四足、轮式底盘，几乎都是降难度；反过来就不成立。所以人形是当下最好的教学载体。
+
+## slide: tag=L−1; title=怎么读：统一格式 + 两条主线别混着学; src=roadmap/motion-control.md §L−1 · 怎么用每一层 / 两条主线不要混着学
+<div class='cols'>
+<div class='col'>
+<div class='card'><h3>每一层的统一格式</h3>
+<ul class='b sm steps'>
+<li>场景隐喻：一句话比喻</li>
+<li>为什么存在 / 上一层的局限</li>
+<li>前置 → 核心问题 → 做什么 → 读什么 → 输出什么</li>
+<li>常见误区 + 自测题（本视频直接给答案）</li>
+</ul></div>
+<div class='card' data-s='3'><h3>三种读者</h3>
+<ul class='b sm'>
+<li><span class='k'>外行</span>：读隐喻、输出、缩写速查</li>
+<li><span class='k'>想入行</span>：90 天路径 → L0–L7 逐层做练习</li>
+<li><span class='k'>资深</span>：直接跳 L4 / L5，看误区与自测</li>
+</ul></div>
+</div>
+<div class='col'>
+<div class='card' data-s='1'><h3>传统控制主线<span class='sm'>L0–L4 + L6</span></h3><p>OCP → LIP/ZMP → Centroidal → MPC → TSID/WBC → 状态估计 → Sim2Real</p></div>
+<div class='card' data-s='2'><h3>Learning 主线<span class='sm'>L5</span></h3><p>RL 基础 → locomotion RL → IL / motion prior → 动作重定向 → teacher-student</p></div>
+<div class='card gold' data-s='3'><p>先把传统主线学通，再把 RL / IL 当扩展层接上去——否则只会调超参数，不理解控制结构为什么这样设计</p></div>
+</div>
+</div>
+---
+0| 路线里每一层都用同一个格式：一句场景隐喻；为什么这一层不能跳过；然后是前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么；最后是常见误区和自测题。
+1| 还要分清两条主线。传统控制主线在 L0 到 L4 加上 L6：最优控制问题、LIP 和 ZMP、质心动力学、MPC、全身控制、状态估计，再到 Sim2Real。
+2| 学习主线在 L5：强化学习基础、行走强化学习、模仿学习与运动先验、动作重定向、教师学生蒸馏。
+3| 建议先把传统主线学通，再把学习方法当作扩展层接上去。否则很容易只会调超参数，却不理解控制结构为什么这样设计。不同背景的读者，可以按左下角的建议选择起点。
+
+## slide: tag=L−1; title=一本贯穿 L0–L4 的“语法书”：Modern Robotics; src=roadmap/motion-control.md §L−1 · 一本贯穿全程的教材 · wiki/entities/modern-robotics-book.md
+<div class='cols w64'>
+<div class='col'>
+<table class='tb'>
+<tr><th>Modern Robotics 章节</th><th>接到本路线</th></tr>
+<tr data-s='2'><td>Ch 2–3 位形空间 / 刚体运动</td><td>L0–L1（SE(3) 字母表）</td></tr>
+<tr data-s='2'><td>Ch 4–6 正运动学 / 速度运动学 / 逆运动学</td><td>L1</td></tr>
+<tr data-s='2'><td>Ch 5、Ch 8 静力学 / 开链动力学</td><td>L2</td></tr>
+<tr data-s='2'><td>Ch 9 轨迹生成</td><td>L3 / L4.3</td></tr>
+<tr data-s='2'><td>Ch 11 机器人控制</td><td>L3 / L4.4</td></tr>
+</table>
+</div>
+<div class='col'>
+<div class='card' data-s='1'><h3>它的角色</h3><p>不教人形 locomotion，但用统一的 <span class='k'>twist / screw / wrench</span> 语言讲清了位姿、速度、力与动力学</p></div>
+<div class='card gold' data-s='3'><h3>不必读完整本</h3><p>吃透四块：<span class='a'>SE(3)、FK / IK、Jacobian、Dynamics</span></p></div>
+</div>
+</div>
+---
+0| 最后，一本教材贯穿 L0 到 L4：Lynch 和 Park 的 Modern Robotics。
+1| 它不教人形行走，但它用统一的 twist、screw、wrench 语言，把位姿、速度、力和动力学讲清楚了，是这条路线的“语法书”。
+2| 第二、三章对应 L0 和 L1 的位姿表示；四到六章是正运动学、速度运动学和逆运动学；第五、第八章是静力学和动力学；第九章是轨迹生成；第十一章是机器人控制。
+3| 不要求读完整本书，重点吃透四块：SE(3)、正逆运动学、雅可比、动力学。
