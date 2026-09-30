@@ -25,6 +25,8 @@ related:
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
   - ../entities/course-spec-driven-development-coding-agents.md
+  - ../concepts/ai-agent-evaluation.md
+  - ../entities/anthropic-claude-api-skill.md
   - ../entities/nvidia-openshell.md
   - ../entities/nvidia-open-agent-safety-platform.md
 sources:
