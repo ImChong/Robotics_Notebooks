@@ -30,6 +30,7 @@ related:
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-force-loop-bandwidth.md
   - ../entities/paper-vitacworld.md
+  - ../entities/paper-feelworld.md
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md

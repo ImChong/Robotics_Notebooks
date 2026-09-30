@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-30
 arxiv: "2603.19201"
 venue: "arXiv 2026"
 summary: "Large-scale OmniViTac dataset with 21,000+ tasks and 86 objects; world-model-based framework with self-supervised tactile encoder, two-stream visuo-tactile world model, contact-aware fusion policy, and 60Hz reflexive con"
@@ -13,6 +13,7 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+  - ./paper-feelworld.md
 sources:
   - ../../sources/papers/sun_awesome_touch_2603_19201_omnivta-visuo-tactile-world-modeling-for.md
   - ../../sources/papers/sun_awesome_touch_catalog.md
@@ -89,6 +90,7 @@ Large-scale OmniViTac dataset with 21,000+ tasks and 86 objects; world-model-bas
 - 列表实体：[Awesome Touch](../entities/awesome-touch.md)
 - 技术地图：[Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- 同族深读：[FeelWorld（分层视触觉 WM + CEM）](./paper-feelworld.md)（arXiv:2607.24267v1）
 
 ## 参考来源
 
