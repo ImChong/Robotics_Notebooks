@@ -38,7 +38,9 @@ sources:
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
+  - ../../sources/papers/in_context_learning_robots_arxiv_2609_36012.md
   - ../entities/paper-locoformer.md
+  - ../entities/paper-in-context-learning-robots-survey.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
 ---
 
@@ -246,6 +248,7 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [ICI-VLA](../entities/paper-ici-vla-spatiotemporal-icl.md) — DTW 对齐 micro-demo 检索 ICL；LIBERO 97.7%、RoboTwin 2.0 60.4%；无官方代码
 - [四路线对比（WAM-TTT / RoboTTT / StellaVLA / Zero-WAM）](../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 2026-08 可核对论文纵横向坐标系
 - [ICL 纵深路线](../../roadmap/depth-icl.md) — Stage 0–5 学习路径（判别边界 → 示范表征 → 遥操作/人视频两条数据线 → 机制选型 → 涌现与评测）
+- [In-Context Learning for Robots 综述](../entities/paper-in-context-learning-robots-survey.md) — arXiv:2609.36012；四类接口 taxonomy + Acquire/Transfer/Retain 评测议程
 - [跨具身知识链](../overview/hub-cross-embodiment.md) — 人视频 / 仿真 prompt→真机与重定向、域随机不同机制
 - [RealAB 14 篇地图](../overview/realab-14-papers-technology-map-2026.md) — BPP 等 in-context 操作索引
 - [Light REACT](../entities/light-react.md) — 全身运动反馈作上下文；故障下行走/爬行/恢复（亮源新创部署段）
@@ -269,3 +272,4 @@ MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯�
 - [S1: In-Context Learning for Robotics（Skild 博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)
 - [每日智能四篇 ICL 纵横向解读（2026-08-31）](../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md)
 - [亮源新创 Light REACT 全身韧性 ICL 发布（2026-09-09）](../../sources/blogs/wechat_lightorigins_light_react_2026-09-09.md)
+- [In-Context Learning for Robots 综述（arXiv:2609.36012）](../../sources/papers/in_context_learning_robots_arxiv_2609_36012.md)
