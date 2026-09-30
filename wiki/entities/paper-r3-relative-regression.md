@@ -153,6 +153,7 @@ sequenceDiagram
 |------|---------|
 | **VGGT / VGG-T³** | 全局绝对位姿 / TTT 线性化；R³ **相对位姿** + **流式** |
 | [LingBot-Map](../methods/lingbot-map.md) | 在线流式 GCA + Paged KV；R³ 用 **相对回归 + keyframe bank**，骨干为 DA3 |
+| [GAE](../entities/paper-gae-geometry-native-autoencoder.md) | 同 DA3 生态的 **生成式 geometry-native latent**（arXiv:2609.24981）；R³ 偏 SLAM 前端，GAE 偏 world generation 表征 |
 | [SLAMFormer-∞](./paper-slamformer-infinity.md) | 学习型在线 SLAM + PGGO；R³ 更轻量、无显式回环优化器 |
 | [Glob3R](./paper-glob3r.md) | 离线全局 SfM（tracks + BA）；R³ **前馈流式**，不做 BA |
 | **TTT3R** | TTT 线性替代；项目页 1k 图 **场景不完整**，R³ 强调 **回环一致** |
