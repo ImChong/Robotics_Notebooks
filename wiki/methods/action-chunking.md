@@ -94,6 +94,8 @@ related:
 
 [Action Upcycling](../entities/paper-action-upcycling.md)（arXiv:2609.34911，SKKU/KAIST）走另一条 **训练-free** 自适应轴：不读模型内部、不额外采样，只用 **已预测 chunk 的动作速度波动** 决定 tail 复用长度；π0.5 / SmolVLA / GR00T / FastWAM 上 **policy call 减 1.2–1.7×** 且成功率不低于 baseline，与 [FlashVLA](../entities/paper-flashvla.md) 等「减单次 forward 成本」正交；[GitHub 已开源](https://github.com/star-kwon/action-upcycling)。
 
+**Real-Time Chunking（RTC）谱系**（flow / diffusion VLA + 异步推理）：[Real-Time Chunking](../entities/paper-real-time-chunking.md)（arXiv:2506.07339，推理期 inpainting）→ [Training-Time RTC](../entities/paper-training-time-real-time-chunking.md)（arXiv:2512.05964，前缀条件化、零推理税）→ 训练适配对照 [REMAC](../entities/paper-remac.md)（intra-chunk mask）、[FutureRTC](../entities/paper-futurertc.md)（冻结 VLA + 执行时刻上下文预测）。工程入口：[LeRobot RTC 文档](https://huggingface.co/docs/lerobot/rtc)、社区 [openpi-rtc](../../sources/repos/openpi-rtc.md)；实证对照 [WAM 异步部署](../entities/paper-wam-realtime-async.md)。
+
 ## 主要技术路线
 
 与标准行为克隆只预测当前动作 $a_t$ 不同，动作块方法预测：
@@ -241,6 +243,11 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [ARLI](../entities/paper-arli.md) — 异步 chunk 执行下延迟感知 RL 后训练；中间已承诺动作条件 DSRL（arXiv:2608.23831；确认未开源）
 - [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — ArticuACT 在 ACT chunk=100 上加机器人系 Plücker 与交互进度辅助头（arXiv:2608.20251；代码待发布）
 - [WAM 实时异步部署](../entities/paper-wam-realtime-async.md) — 双臂 WAM 上对照 sync/async/blend/simple/infer/train（arXiv:2608.01880）
+- [Real-Time Chunking](../entities/paper-real-time-chunking.md) — flow chunk 推理期 inpainting（arXiv:2506.07339）
+- [Training-Time RTC](../entities/paper-training-time-real-time-chunking.md) — 训练期 prefix 条件化（arXiv:2512.05964）
+- [REMAC](../entities/paper-remac.md) — masked chunk 训练（arXiv:2601.20130）
+- [FutureRTC](../entities/paper-futurertc.md) — anticipatory adapter（arXiv:2607.24008）
+- [LeRobot](../entities/lerobot.md) — 内置 RTC 部署与 `lerobot-rollout`
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行
 - [滚动预测执行（Receding Horizon）](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE 一手对照
 - [FluxVLA Engine](../entities/fluxvla-engine.md) — 工程平台侧的 chunk 执行：RTC + 加速推理后端 + 远程 GPU 服务

@@ -11,6 +11,7 @@
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 - **沉淀到 wiki：** 方法页 [`wiki/methods/π0-policy.md`](../../wiki/methods/π0-policy.md)；论文详情 [`wiki/entities/paper-pi0.md`](../../wiki/entities/paper-pi0.md)
+- **RTC 社区实现：** [`openpi-rtc.md`](openpi-rtc.md) → [Real-Time Chunking 实体](../../wiki/entities/paper-real-time-chunking.md)；官方栈未内置 RTC 一等入口，LeRobot 见 [`lerobot-rtc-docs.md`](../sites/lerobot-rtc-docs.md)
 
 ## 为什么值得保留
 

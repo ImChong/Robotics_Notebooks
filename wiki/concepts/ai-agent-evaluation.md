@@ -139,6 +139,7 @@ flowchart TD
 
 - [anthropic-claude-api-skill](../entities/anthropic-claude-api-skill.md) — `build-eval` / `hillclimb` 工具化  
 - [RLE-Bench](../entities/rle-bench.md) — 机器人学习向 coding agent eval  
+- [PPTBench](../entities/paper-pptbench.md) — 科学流程图→可编辑 PPTX 的视觉 coding 重建榜（arXiv:2609.29718）  
 - [Agentic Coding 软件工程基础](./agentic-coding-software-fundamentals.md) — eval 不替代 SE 取舍  
 
 ## 推荐继续阅读
