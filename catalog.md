@@ -469,6 +469,7 @@
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
 - [DVID](wiki/entities/dvid.md) — DVID**（*Distributed, Versioned, Image-oriented Dataservice*）是 HHMI Janelia FlyEM 团队开发的 **大尺度科学数据版本 `📅unknown` `[entity_page]`
+- [Dyna-2.1（Physical Agent · Taku）](wiki/entities/dyna-2-1.md) — Dyna-2.1** 是 **Dyna Robotics**（2026-09-29 发布）对外宣称的首个可 **端到端完成长时真实工作流** 的 **physical agent** 系统：硬件为 `📅unknown` `[entity_page]`
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
@@ -4246,6 +4247,7 @@
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
+- [Ultralytics YOLO26（Unified Real-Time End-to-End Vision）](wiki/entities/paper-yolo26-unified-realtime-e2e-vision.md) — YOLO26** 是 Ultralytics 提出的 **统一实时视觉模型族**（arXiv:2606.03748）。在 Y `📅unknown` `[entity_page]`
 - [YOPO-MINCO](wiki/entities/paper-yopo-minco.md) — Some Modifications to Our End-to-End UAV Planner**（[arXiv:2608.15741](https://arxiv.org/abs/2608.1 `📅unknown` `[entity_page]`
 - [Zeno-1：机器人协作智能基础模型](wiki/entities/paper-zeno-1-collaborative-intelligence.md) — Zeno-1**（*Collaborative Intelligence for Robots That Work Together*，[Zeno AI 研究页](https://www.zeno `📅unknown` `[entity_page]`
 - [Zero-WAM](wiki/entities/paper-zero-wam.md) — Zero-WAM: In-Context World-Action Modeling from Human Videos for Open-Ended Task Generalization**（ `📅unknown` `[entity_page]`
