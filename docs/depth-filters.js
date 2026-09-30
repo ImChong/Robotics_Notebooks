@@ -684,7 +684,7 @@
       emoji: '🧭',
       label: '主路线-运动控制与 Physical AI（Motion Control & Physical AI）',
       wikiPath: DEPTH_HUB_IDS['motion-control'],
-      description: '运动控制 → Physical AI 全栈成长路线：L−1 全景 → L0–L7 运动控制主干 → L8–L12 Transformer / 动作生成 / VLA / 世界模型 / 部署。'
+      description: '运动控制 → 物理智能全栈成长路线：L−1 全景 → L0–L7 运动控制主干 → L8–L12 Transformer / 动作生成 / VLA / 世界模型 / 部署。'
     },
     'teleoperation': {
       emoji: '🎮',

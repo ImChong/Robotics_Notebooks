@@ -1,6 +1,6 @@
 # 运动控制主路线讲解视频：源稿与生成脚本
 
-把 [主路线：运动控制 → Physical AI 全栈成长路线](../../roadmap/motion-control.md)（站点 `roadmap.html?id=roadmap-motion-control`）做成一支逐级讲解视频：L−1 → L0–L7 → L8–L12，每一层讲清核心要点与原理，路线里的自测题直接在讲解中给出答案。
+把 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 `roadmap.html?id=roadmap-motion-control`）做成一支逐级讲解视频：L−1 → L0–L7 → L8–L12，每一层讲清核心要点与原理，路线里的自测题直接在讲解中给出答案。
 
 - 约 96 分钟、24 章（MP4 内嵌章节标记），1920×1080，中文配音 + 烧录字幕，另出 SRT 字幕与章节时间表。
 - 成片入库于 [`docs/assets/video/`](../../docs/assets/video/)（约 85 MiB，低于 GitHub 单文件 100 MB 上限），嵌在主路线页首可直接播放；用本目录可完整复现。

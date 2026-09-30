@@ -223,7 +223,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)（本路线是 L6/L7 仿真资产与评测环节的展开版）
+- 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)（本路线是 L6/L7 仿真资产与评测环节的展开版）
 - 姊妹路线：[Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 本路线的**反向补集**；Real2Sim 修仿真侧资产，Sim2Real 迁移到真机，工程上常串联
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [Sim2Real](depth-sim2real.md) — 反向补集；工程上常串联

@@ -52,8 +52,14 @@ window.loadSlide = async function (s) {
   renderMathInElement(document.getElementById("title"), { delimiters: [{ left: "\\(", right: "\\)", display: false }], throwOnError: false });
   await document.fonts.ready;
   await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  // 公式比所在框宽时逐级缩小字号，避免溢出边框
+  for (const e of c.querySelectorAll(".eq")) {
+    for (let f = 1; e.scrollWidth - e.clientWidth > 1 && f > 0.6; f -= 0.04) e.style.fontSize = f.toFixed(2) + "em";
+  }
+  const bad = [...c.querySelectorAll(".eq, .card, .box, .n, table")]
+    .filter(e => e.scrollWidth - e.clientWidth > 2).map(e => e.className || e.tagName);
   const over = c.scrollHeight - c.clientHeight;
-  return { overflow: over, sw: c.scrollWidth - c.clientWidth };
+  return { overflow: over, sw: c.scrollWidth - c.clientWidth, bad };
 };
 window.setFrame = function (f) {
   const c = document.getElementById("content");

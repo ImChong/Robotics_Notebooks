@@ -4,19 +4,19 @@
 <g data-s="2">
 <path class="ax" d="M60,420 H460"/><path class="ax" d="M60,440 V70"/>
 <text class="sm" x="440" y="460" fill="#8eb1c5">r</text><text class="sm" x="70" y="80" fill="#8eb1c5">L</text>
-<path class="gd" d="M212,420 V110"/><path class="gd" d="M250,420 V110"/><path class="gd" d="M288,420 V110"/>
-<text class="sm" x="180" y="490" fill="#8eb1c5">1−ε</text><text class="sm" x="244" y="490" fill="#8eb1c5">1</text><text class="sm" x="276" y="460" fill="#8eb1c5">1+ε</text>
-<path d="M60,420 L288,120 L440,120" stroke="#2ee6b8" stroke-width="6" fill="none"/>
-<path d="M288,120 L380,0" stroke="#2ee6b8" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
+<path class="gd" d="M200,420 V110"/><path class="gd" d="M250,420 V110"/><path class="gd" d="M300,420 V110"/>
+<g text-anchor="middle"><text class="sm" x="200" y="455" fill="#8eb1c5">1−ε</text><text class="sm" x="250" y="455" fill="#8eb1c5">1</text><text class="sm" x="300" y="455" fill="#8eb1c5">1+ε</text></g>
+<path d="M60,420 L300,120 L440,120" stroke="#2ee6b8" stroke-width="6" fill="none"/>
+<path d="M300,120 L348,60" stroke="#2ee6b8" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
 <text class="lb" x="90" y="40" fill="#2ee6b8">Â &gt; 0：收益在 1+ε 封顶</text>
 </g>
 <g data-s="2">
 <path class="ax" d="M520,100 H920"/><path class="ax" d="M520,80 V470"/>
 <text class="sm" x="905" y="88" fill="#8eb1c5">r</text><text class="sm" x="530" y="470" fill="#8eb1c5">L</text>
-<path class="gd" d="M672,100 V420"/><path class="gd" d="M710,100 V420"/><path class="gd" d="M748,100 V420"/>
-<text class="sm" x="640" y="90" fill="#8eb1c5">1−ε</text><text class="sm" x="704" y="130" fill="#8eb1c5">1</text><text class="sm" x="740" y="90" fill="#8eb1c5">1+ε</text>
-<path d="M520,220 L672,220 L900,400" stroke="#ff6b6b" stroke-width="6" fill="none"/>
-<path d="M520,100 L672,220" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
+<path class="gd" d="M670,100 V420"/><path class="gd" d="M720,100 V420"/><path class="gd" d="M770,100 V420"/>
+<g text-anchor="middle"><text class="sm" x="670" y="85" fill="#8eb1c5">1−ε</text><text class="sm" x="720" y="85" fill="#8eb1c5">1</text><text class="sm" x="770" y="85" fill="#8eb1c5">1+ε</text></g>
+<path d="M520,220 L670,220 L900,400" stroke="#ff6b6b" stroke-width="6" fill="none"/>
+<path d="M520,100 L670,220" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
 <text class="lb" x="560" y="505" fill="#ff6b6b">Â &lt; 0：压低在 1−ε 封顶</text>
 </g>
 </svg>

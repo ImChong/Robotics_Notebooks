@@ -10,7 +10,7 @@
 
 ## 主路线（核心）
 
-- **[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)**（Physical AI & Robot Learning）  
+- **[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)**（Physical AI & Robot Learning）  
   含 L−1 序言 → L0–L6 主干 → L7 出口 → L8–L12 Physical AI 扩展的完整阶段。覆盖人形运动控制的传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC）、RL/IL 扩展与 sim2real 实战，再向上接 Transformer / 动作生成（Diffusion · Flow Matching · DiT）/ VLA（π0 · GR00T）/ 世界模型（Cosmos），向下接 ONNX / ROS2 / 实时总线的真机部署。
 
 ## 纵深路线（按目标选其一深入）

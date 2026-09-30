@@ -1,4 +1,4 @@
-# 主路线：运动控制 → Physical AI 全栈成长路线
+# 主路线：运动控制 → 物理智能全栈成长路线
 
 **首屏导读**：
 
@@ -21,7 +21,7 @@
 <source src="assets/video/roadmap-motion-control-explained.mp4" type="video/mp4">
 当前浏览器无法内嵌播放，可<a href="https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4">直接打开视频文件</a>。
 </video>
-<figcaption><strong>视频讲解</strong>（1:35:36 · 24 章 · 中文配音 + 字幕）：按 L−1 → L0–L7 → L8–L12 逐级讲清每一层的核心要点与原理，自测题在讲解中直接给出答案。<a href="https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4">新标签页打开 / 下载</a> · <a href="https://github.com/ImChong/Robotics_Notebooks/tree/main/media/roadmap-motion-control-video">讲解稿与生成脚本</a></figcaption>
+<figcaption><strong>视频讲解</strong>（1:35:35 · 24 章 · 中文配音 + 字幕）：按 L−1 → L0–L7 → L8–L12 逐级讲清每一层的核心要点与原理，自测题在讲解中直接给出答案。<a href="https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4">新标签页打开 / 下载</a> · <a href="https://github.com/ImChong/Robotics_Notebooks/tree/main/media/roadmap-motion-control-video">讲解稿与生成脚本</a></figcaption>
 <details class="roadmap-video-chapters">
 <summary>章节时间点</summary>
 <ol>
@@ -65,7 +65,7 @@
 
 ## 先看哪里（导航）
 
-- 想 **先看一遍视频讲解**：播放页首的 [路线讲解视频](#roadmap-video)（1:35:36，24 章，逐级讲清每层要点与原理）。
+- 想 **先看一遍视频讲解**：播放页首的 [路线讲解视频](#roadmap-video)（1:35:35，24 章，逐级讲清每层要点与原理）。
 - 想 **30 秒先理解整个机器人技术栈**：跳到 [L−1 序言](#l1-序言机器人技术栈全景--怎么读这条路线)。
 - 想 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读，再进入 L8–L12 的 Physical AI 扩展。

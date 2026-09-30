@@ -183,7 +183,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
         "传统模型控制纵深路线（Classical Model-Based Control Deep-Dive Roadmap）"
     ),
     "roadmap/motion-control.md": (
-        "主路线：运动控制与 Physical AI 全栈成长路线（Motion Control & Physical AI Roadmap）"
+        "主路线：运动控制与 物理智能全栈成长路线（Motion Control & Physical AI Roadmap）"
     ),
     "wiki/entities/isaac-lab.md": "英伟达 Isaac Lab 机器人学习框架（Isaac Lab）",
     "wiki/entities/lerobot.md": "具身智能框架（LeRobot, Hugging Face）",
