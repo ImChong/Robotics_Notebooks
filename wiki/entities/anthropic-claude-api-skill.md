@@ -11,8 +11,10 @@ tags:
 status: complete
 updated: 2026-09-30
 related:
+  - ./anthropic-frontend-design-skill.md
   - ./agent-skills-addyosmani.md
   - ./mattpocock-skills.md
+  - ./find-skills-skill.md
   - ./rle-bench.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md

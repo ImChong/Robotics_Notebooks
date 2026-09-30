@@ -7,7 +7,7 @@
 - **作者：** Matt Pocock（Total TypeScript / aihero.dev）
 - **链接：** https://github.com/mattpocock/skills
 - **分发：** https://skills.sh/mattpocock/skills（`npx skills@latest add mattpocock/skills`）
-- **入库日期：** 2026-05-20
+- **入库日期：** 2026-05-20（精选子技能 skills.sh 核查：2026-09-30 → [`sources/sites/skills-sh-mattpocock-selected-skills.md`](../sites/skills-sh-mattpocock-selected-skills.md)）
 - **一句话说明：** 作者日常用于「真工程」而非 vibe coding 的可组合编码代理技能库：强调对齐（grill）、共享领域语言（`CONTEXT.md` + ADR）、反馈环（TDD / diagnose）与架构卫生；通过 skills.sh 按需安装，首跑 `/setup-matt-pocock-skills` 绑定 issue tracker 与文档布局。
 - **为什么值得保留：** 与本站 [Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) + [schema/ingest](../../schema/ingest-workflow.md) 同属「把工程习惯写成可版本化文件」；与 [obra/superpowers](obra-superpowers.md)（重流程交付）形成 **轻量可改编 vs 强制方法论** 对照；`productivity/caveman` 与 [JuliusBrussee/caveman](caveman.md) 同名但不同上游，值得并列索引。
 - **沉淀到 wiki：** 是 → [`wiki/entities/mattpocock-skills.md`](../wiki/entities/mattpocock-skills.md)
@@ -24,6 +24,7 @@
 - **技能目录（2026-05-20 快照，不含 deprecated/in-progress）：**
   - **engineering：** diagnose, grill-with-docs, improve-codebase-architecture, prototype, setup-matt-pocock-skills, tdd, to-issues, to-prd, triage, zoom-out
   - **productivity：** caveman（极简沟通 ~75% token）、grill-me, handoff, write-a-skill
+- **2026-09-30 子技能 wiki 升格（skills.sh 深链）：** [`grill-me`](../../wiki/entities/mattpocock-grill-me-skill.md)、[`grill-with-docs`](../../wiki/entities/mattpocock-grill-with-docs-skill.md)、[`improve-codebase-architecture`](../../wiki/entities/mattpocock-improve-codebase-architecture-skill.md)、[`tdd`](../../wiki/entities/mattpocock-tdd-skill.md)、[`setup-matt-pocock-skills`](../../wiki/entities/mattpocock-setup-skills-skill.md)、[`handoff`](../../wiki/entities/mattpocock-handoff-skill.md)、[`triage`](../../wiki/entities/mattpocock-triage-skill.md)
   - **misc：** git-guardrails-claude-code, migrate-to-shoehorn, scaffold-exercises, setup-pre-commit
 - **仓库结构：** 根级 `CONTEXT.md`、`CLAUDE.md`、`docs/`、`skills/`；含 `.claude-plugin` 与示例脚本。
 - **协议：** 见仓库 `LICENSE`（README 未单列，以仓库为准）。
