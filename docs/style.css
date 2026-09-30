@@ -2171,10 +2171,13 @@ button.home-wiki-heatmap-cell.is-active {
 /* 路线讲解视频：原生播放器 + 说明 + 可折叠章节时间点 */
 .detail-markdown-body .roadmap-video {
   margin: 1.25rem 0 1.5rem;
+  max-width: 100%;
+  min-width: 0;
 }
 .detail-markdown-body .roadmap-video video {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
   background: #0a1622;
@@ -2186,6 +2189,7 @@ button.home-wiki-heatmap-cell.is-active {
   color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 .detail-markdown-body .roadmap-video-chapters {
   margin-top: 0.4rem;
