@@ -665,6 +665,14 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # methods/teacher-student-multi-skill-bfm.md（多技能蒸馏）覆盖；与配对出现的
     # **Teacher** 同为该机制的半边角色标签，非独立可成页概念，不建 concepts/student.md。
     "student",
+    # teacher：与上面 student 成对的「特权训练侧半边」角色名，命中处同为
+    # **Teacher** / **Student** 两行训练表；机制已由 concepts/privileged-training.md +
+    # methods/teacher-student-dagger-training.md 覆盖，不建 concepts/teacher.md。
+    "teacher",
+    # vllm：LLM 推理服务引擎（PagedAttention / 连续批处理），命中处均为 VLM/VLA
+    # 部署栈的 serving 后端引用；工具本体已由 entities/painode-103-vllm.md 承载，
+    # 是部署基础设施而非机器人概念/方法，不建 concepts/vllm.md。
+    "vllm",
     "wbc",  # 已由 concepts/whole-body-control.md 覆盖（slug 与页面 stem 不同名）
     "wam",  # 已由 concepts/world-action-models.md 覆盖（缩写 slug 与页面 stem 不同名）
     "zero-shot",  # 迁移/评测的条件状语，已由 concepts/sim2real.md 等页覆盖

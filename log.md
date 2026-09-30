@@ -1,3 +1,5 @@
+## [2026-09-29] lint | 全量 wiki lint：修复 19 条信息型预警（12 篇 paper-* 补评测/对比段、5 页补知识链枢纽回链、Teacher/vLLM 登记为已覆盖）+ 搜索回归 3 条未命中（40/40）
+
 ## [2026-09-29] ingest | HumanEgo arXiv:2605.24934 深读入库，TX-Leo 代码/数据/ICT+flow 管线
 
 ## [2026-09-29] ingest | MiniMind 主仓与 GitHub Pages 入库，实体页链 PyTorch/GRPO/深度学习基础

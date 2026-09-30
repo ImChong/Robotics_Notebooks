@@ -12,7 +12,7 @@ related:
 summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对比：前者依赖精确动力学模型求解开环最优解，后者通过数据驱动学习具有鲁棒性的闭环策略。"
 ---
 
-# Trajectory Optimization vs Reinforcement Learning
+# 轨迹优化 vs 强化学习（Trajectory Optimization vs Reinforcement Learning）
 
 在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但又互补的技术路线。
 

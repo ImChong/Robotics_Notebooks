@@ -49,6 +49,22 @@ Markov 注意力熵自评；测试时多候选选更稳动作。
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **自评基准：** 自建 **LIBERO-Reflect**，共 **4,000** episode（2,000 标准 + 2,000 困难，分四个子集）。
+- **失败检测指标：** **AUPR / AUROC / FPR@95**；跨异构 VLA 架构均优于 SoTA 不确定性基线（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **下游应用：** 把 MAE 用于 **无验证器的测试时动作选择**（多次采样取最可靠者），在 **LIBERO-Plus** 上提升 π 系策略鲁棒性，运行时开销小。
+
+## 与其他工作对比
+
+| 维度 | FabriMAE | 对照 |
+|------|----------|------|
+| 可靠性信号 | VLA **内部**视觉注意力熵（Markov 注意力熵） | [FARM](./paper-farm-failure-readout.md)：冻结 VLA-JEPA 预测态 + 小型 readout 逐步打分（需训练 readout） |
+| 外部模型 | 不需要验证器 / 世界模型 | [CheckVLA](./paper-checkvla-execution-time-verification.md)：动作条件世界模型比较预测与真实观测 |
+| 用法 | 多候选中选动作（测试时） | [Reuse Before You Retrieve](./paper-reuse-before-you-retrieve-tta-vla.md)：episode 级重试选择器，先诊断可恢复余量 |
+
+评测基准选型见 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
+
 ## 结论
 
 **FabriMAE 在本库中作为 arXiv:2608.16697 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**

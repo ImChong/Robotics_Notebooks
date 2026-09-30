@@ -50,6 +50,21 @@ summary: "推理时注意力引导（arXiv:2608.17095，FAU）：无训练修改
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **场景：** Physical AI World Model Synthetic 数据集中的 **50 个变道场景**；骨干为 Alpamayo-R1 的 Qwen3-VL，以前向 pre-hook 注入，**不改权重**。
+- **剂量响应：** 轨迹解码器随偏置幅度**单调**变化，每个幅度都与配对零偏置对照可区分；平均位移约 **17 cm**，限幅处横向偏移最高约 **140 cm**（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **层消融：** 只挂前 8 层 **2.0 cm**，挂满 36 层 **67.6 cm**——动作相关信号位于深层。
+- **推理链：** Chain-of-Causation 文本不变，经逐次注入审计确认是偏置**未到达**推理通路，因此这是「暴露验证」而非鲁棒性证据。
+
+## 与其他工作对比
+
+| 维度 | 注意力引导 | 对照 |
+|------|------------|------|
+| 干预时机 | 推理时、无需重训 | [Geo-VLA](./paper-geo-vla.md)：训练时内化几何语义 |
+| 干预对象 | 检测器定位到的交通参与者对应的视觉 token | [Neural Introspection Gating](./paper-neural-introspection-gating.md)：同样只在推理时改注意力/缓存，但目标是提速而非改变注视 |
+| 结论性质 | 偏置决定「看哪里」，不编码目标行为 | [EMMA（Waymo）](./paper-emma-waymo-e2e.md)：训练期多任务统一，不提供推理时干预接口 |
+
 ## 结论
 
 **Inference-Time Attention Steering 在本库中作为 arXiv:2608.17095 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**
