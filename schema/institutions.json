@@ -3166,6 +3166,16 @@
         "national-institute-of-advanced-industrial-science-and-technology"
       ]
     },
+    "om-ai-lab": {
+      "label": "联汇科技 OmAI 实验室（Om AI Lab）",
+      "aliases": [
+        "om-ai-lab",
+        "omai-lab",
+        "omai",
+        "hzlh",
+        "om-agent"
+      ]
+    },
     "omron-sinic-x": {
       "label": "欧姆龙 SINIC X（OMRON SINIC X）",
       "aliases": [

@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
@@ -49,6 +49,7 @@ related:
   - ../entities/paper-microsaccade-inspired-event-camera.md
   - ../entities/paper-simple-evrgb-cal.md
   - ../entities/paper-oraclezoom.md
+  - ../entities/vlx-seek.md
   - ../queries/object-detection-model-selection.md
   - ../queries/perception-backbone-selection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -123,6 +124,7 @@ flowchart TD
 - **选什么/调什么**：闭集、类别已知且要实时机载——[YOLO 单阶段](../entities/paper-yolo-unified-realtime-detection.md) / [Ultralytics](../entities/ultralytics.md) 生态（速度-精度可裁剪）；要端到端、去掉 NMS/anchor 手工件——[RF-DETR](../entities/rf-detr.md) 等实时 DETR；类别开放/未知、要精细掩码——[SAM / SAM2](../entities/paper-segment-anything.md) 可提示分割。选型三轴见[目标检测模型选型 Query](./object-detection-model-selection.md)，骨干/表征层见[感知骨干选型 Query](./perception-backbone-selection.md)。要的是**逐像素类别图**（可行驶区域、地面/障碍二分、材质分区）而非实例框时，这一层落到语义分割一支：闭集、类别固定就用 [FCN 系全卷积密集预测](../methods/fcn-semantic-segmentation.md)（[U-Net](../methods/unet.md) / [PSPNet](../methods/pspnet.md) / [SegNet](../methods/segnet.md) 同族，机载最省），实例/全景之分见[图像分割任务分类](../concepts/image-segmentation-taxonomy.md)。
 - **取舍主线**：**实时机载算力 vs 服务器侧精度**——机载（Jetson 级）要卡帧率预算，大模型精度高但跑不动；**闭集准 vs 开放词汇泛**——闭集检测器对训练类别准但遇到未见类别失明，开放词汇/可提示分割泛化强但类别语义弱、易过分割。
 - **典型误判**：① 把「benchmark mAP 高」当「机载能实时」——mAP 与机载帧率是两回事，部署要按目标硬件重测时延；② 把「SAM 掩码很精细」当「知道这是什么」——[SAM/SAM2](../entities/paper-sam2.md) 输出的是**无类别语义的掩码**，类别标签要靠额外文本提示或检测器配套，直接拿来当语义分割用会缺语义。
+- **VLM 式 region grounding（开放词汇 + 引用式框）**：若任务需要 **语言条件实例定位** 且希望避免 LLM 直接吐坐标串，可看 [VLX-Seek](../entities/vlx-seek.md)（区域 token 检索/引用 + 可替换 proposal）；它 **不替代** 轻量闭集 YOLO 的机载帧率优势，也 **不自动解决** ③ 层 2D→3D 提升——下游仍要做坐标系与标定对齐。
 - **离线/显示链路的超分旁路（非闭环必需）**：若瓶颈是 **历史录像或人机界面分辨率** 而非机载实时检测，可对照参考约束递归 SR [OracleZoom](../entities/paper-oraclezoom.md)（on-policy zoom 链 + 末档 GT 约束，深倍率降幻觉）；它 **不替代** ② 层检测/分割选型，也 **不解决** 标定与 3D 提升问题。
 
 ## 3. ③ 2D→3D 提升与语义建图层：2D 准 ≠ 提升到 3D 不歧义
