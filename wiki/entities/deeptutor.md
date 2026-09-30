@@ -10,7 +10,7 @@ tags:
   - open-source
 status: complete
 arxiv: "2604.26962"
-updated: 2026-09-15
+updated: 2026-09-30
 related:
   - ./cli-anything.md
   - ./hermes-agent.md
@@ -23,12 +23,12 @@ sources:
   - ../../sources/repos/hkuds_deeptutor.md
   - ../../sources/sites/deeptutor-info.md
   - ../../sources/papers/deeptutor_arxiv_2604_26962.md
-summary: "DeepTutor（HKUDS）是 agent-native 终身个性化辅导工作区：统一 Chat/测验/研究/Book/Partner 等 capability runtime，多引擎 RAG + 三层可审计 Memory，并可通过 My Agents consult 本机 Claude Code/Codex/Hermes/OpenClaw；PyPI deeptutor 与 Docker 一键部署。"
+summary: "DeepTutor（HKUDS）是 agent-native 终身个性化辅导工作区：Home/Partners/My Agents/Co-Writer/Book/Learning Space/Memory/Knowledge Center 共享 runtime；多引擎 RAG、三层 Memory、EduHub skills；v1.6.12 起支持工作区 KB 迁移与 Kiwix；PyPI 与 Docker 一键部署。"
 ---
 
 # DeepTutor（HKUDS）
 
-**DeepTutor**（[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)，Apache-2.0）是香港大学 [HKUDS](https://github.com/HKUDS) 维护的 **agent-native 学习伴侣**：在单一 **capability + tools** 运行时里贯通辅导、出题、研究、可视化、解题、课程与 **living book**，并以 **Knowledge Center**（多引擎 RAG）、**三层 Memory**、**Partner IM** 与 **[EduHub](https://eduhub.deeptutor.info/)** skills 生态扩展。技术报告见 [arXiv:2604.26962](https://arxiv.org/abs/2604.26962)；文档与安装见 [deeptutor.info](https://deeptutor.info/)。
+**DeepTutor**（[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)，Apache-2.0）是香港大学 [HKUDS](https://github.com/HKUDS) 维护的 **agent-native 学习伴侣**：[deeptutor.info](https://deeptutor.info/) 将 **Home、Partners、My Agents、Co-Writer、Book、Learning Space、Memory、Knowledge Center** 八个表面接到同一 **capability + tools** 运行时（切换表面不丢 running context）。在辅导、出题、研究、可视化、解题、课程与 **living book** 之外，**Learning Space** 集中管理 skills、personas、notebook 与题库；**Knowledge Center** 提供多引擎 RAG（2026-09 稳定版 **v1.6.12** 起强调工作区级 KB 放置/迁移、Kiwix 归档与带源图的 grounded 回答）。技术报告 [arXiv:2604.26962](https://arxiv.org/abs/2604.26962)。
 
 ## 一句话定义
 
@@ -63,7 +63,8 @@ summary: "DeepTutor（HKUDS）是 agent-native 终身个性化辅导工作区：
 | **运行时** | **Capabilities**（Chat、Quiz、Research、Solve、Book…）+ **Tools** 插件；统一 `ChatOrchestrator` agent loop（多轮 tool call → 观察 → 无工具收尾） |
 | **上下文** | Sticky session（KB、persona、subagent、model）+ 单次引用（附件、历史、notebook、question bank） |
 | **个性化** | 静态 grounding（RAG / Book / 课程材料）+ 动态 **L1–L3 Memory** + Persona / Mastery Path |
-| **扩展** | MCP 服务、CLI Apps、[EduHub](https://eduhub.deeptutor.info/) / ClawHub skills、Partner 多通道 IM |
+| **Learning Space** | Skills（EduHub 导入 / CLI install）、Persona、Question Bank、Notebook；Practice 与 Mastery 衔接 |
+| **扩展** | MCP 服务、CLI Apps（含 CLI-Anything 目录）、[EduHub](https://eduhub.deeptutor.info/) / ClawHub skills、Partner 多通道 IM |
 | **子代理** | `consult_subagent` 实际 **运行** 外部 agent harness 并流式汇入 Activity |
 
 ### 流程总览
@@ -113,7 +114,7 @@ flowchart TB
 | **最快试用** | `mkdir my-deeptutor && cd my-deeptutor` → `pip install -U deeptutor` → `deeptutor init` → `deeptutor start` → 打开默认 `http://127.0.0.1:3782` |
 | **Docker** | `docker run … -p 127.0.0.1:3782:3782 -v deeptutor-data:/app/data ghcr.io/hkuds/deeptutor:latest`；仅需暴露前端端口 |
 | **开发** | `git clone` → `pip install -e .` → `cd web && npm ci --legacy-peer-deps` → `deeptutor start --dev` |
-| **无 Web CLI** | `pip install -e ./packaging/deeptutor-cli` → `deeptutor init --cli` → `deeptutor chat`（**仅源码路径**，2026-08-31 未单独上 PyPI） |
+| **无 Web CLI** | `pip install -e ./packaging/deeptutor-cli` → `deeptutor init --cli` → `deeptutor chat`（**仅源码路径**，截至 2026-09-30 未单独上 PyPI） |
 | **机器人 Wiki 自学** | 将 PDF/讲义入 KB → Chat 开 `rag` → 用 Quiz / Mastery Path 巩固 → Book 编译长线材料 |
 | **接子代理** | Settings / My Agents 连接本机 Claude Code 或 [Hermes](hermes-agent.md)；Chat 用 Agent chip 或 `consult_subagent` |
 | **装教学 skill** | `deeptutor skill search "socratic"` → `deeptutor skill install <slug>`（默认 EduHub；ClawHub 用 `clawhub:` 前缀） |
@@ -155,7 +156,7 @@ sequenceDiagram
 - **不是 Robot Gateway：** 不替代真机安全闸门、运动控制或仿真训练；仅适合 **知识学习与方法论** 辅导。
 - **依赖与信任面大：** office skills 默认经 **code_execution** 沙箱跑模型生成脚本；`sandbox_allow_subprocess` 关会禁用 docx/pdf 等产出——需显式信任决策。
 - **LLM 成本与密钥：** 多 capability、Book 编译、Partner 常驻 IM 会放大 token 与提供商账单；embedding/search 需单独配置。
-- **生态演进快：** 发布节奏密集（v1.6.x）；引擎列表、IM channel、provider 支持以官方 README / [deeptutor.info](https://deeptutor.info/) 为准。
+- **生态演进快：** 发布节奏密集（2026-09 为 **v1.6.12**）；KB 工作区迁移、Kiwix、Task Board 等新能力以 [Release](https://github.com/HKUDS/DeepTutor/releases) 为准。
 - **论文 vs 产品：** TutorBench 与论文指标来自特定评测设定；落地效果仍取决于材料质量、profile 与模型选择。
 - **误区：DeepTutor = OpenClaw。** OpenClaw/Hermes 可被 **consult**；DeepTutor 专有 Book、Mastery、EduHub、三层 Memory 与教学 UX。
 
