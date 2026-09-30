@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | Anthropic claude-api skill、agent eval 四篇博文与 Remotion 仓库：sources + wiki 实体/概念页与技能生态交叉引用
+
 ## [2026-09-30] ingest | TeleOCR（arXiv:2608.12898）：TeleAI ~1.2B 文档 VLM，GitHub/HF 已开源 + TeleAI 在线 demo；实体页与 sources 三件套
 
 ## [2026-09-30] ingest | WB-WAM arXiv:2609.34199 — 72-D 身手异构 video WAM 预训练 + PICO mid-training + HumanoidArena 81.9%；项目页 GitHub/HF 待发布

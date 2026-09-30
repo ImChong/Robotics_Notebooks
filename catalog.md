@@ -34,6 +34,7 @@
 - [AMP_mjlab (G1 统一 AMP 策略)](wiki/entities/amp-mjlab.md) — AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库 `📅unknown` `[entity_page]`
 - [AMP-RSL-RL](wiki/entities/amp-rsl-rl.md) — AMP-RSL-RL**（<https://github.com/gbionics/amp-rsl-rl>）由 **Istituto Italiano di Tecnologia (IIT)**（ `📅unknown` `[entity_page]`
 - [Andrej Karpathy](wiki/entities/andrej-karpathy.md) — Andrej Karpathy** 是连接 **深度学习教育、大规模视觉系统与 LLM 时代知识工程** 的关键人物：从 Stanford CS231n 与 micrograd 把神经网络讲清楚， `📅unknown` `[entity_page]`
+- [claude-api（Anthropic 官方 Skill）](wiki/entities/anthropic-claude-api-skill.md) — claude-api** 是 anthropics/skills 仓库中面向 **Claude Platform 应 `📅unknown` `[entity_page]`
 - [Embody（Anthropic）](wiki/entities/anthropic-embody.md) — Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模 `📅unknown` `[entity_page]`
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md) — AnyGrasp** 是上海交通大学 MVIG 团队提出的 **通用抓取感知** 系统：在 **平行夹爪** 设定下，从 **单目深度得到的场景点云** 中 **一次性** 预测 **稠密 7-D `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
@@ -4362,6 +4363,7 @@
 - [REK（Robot Embodied Kombat · 人形格斗联赛）](wiki/entities/rek.md) — REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **人形机器人格斗体育联赛**：选手在场边戴 **VR 头显**，通过自研 **REK TEK** 将人体动作 `📅unknown` `[entity_page]`
 - [RekaCS2-10k（CS2 第一人称游戏数据集）](wiki/entities/rekacs2-10k-dataset.md) — RekaCS2-10k**（HF 名 **CS2-10k**，<https://huggingface.co/datasets/RekaAI/CS2-10k>）是 [Reka AI](https: `📅unknown` `[entity_page]`
 - [RekaDaily-10k（家务第一人称视频数据集）](wiki/entities/rekadaily-10k-dataset.md) — RekaDaily-10k** 是 Reka AI 经 Claru 付费采集网络发布的 **无剧本第一人称家务 /  `📅unknown` `[entity_page]`
+- [Remotion](wiki/entities/remotion.md) — Remotion**（remotion-dev/remotion）是用 **React + TypeScri `📅unknown` `[entity_page]`
 - [GO2 Backflip（Robot-Nav / PPO-backflip）](wiki/entities/repo-go2-backflip.md) — GO2 Backflip** 是 Robot-Nav 社区在 **Unitree Go2** 上开源的 **高动态后空翻** 全流程 `📅unknown` `[entity_page]`
 - [rerun](wiki/entities/rerun-io.md) — rerun](https://github.com/rerun-io/rerun) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
@@ -4586,6 +4588,7 @@
 - [2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 机器人感知里几乎都默认一个隐含抽象：**2D 检测/分割结果可以干净地提升到 3D**——一个准的 2D 框或掩码，配上深度，就能得到策略可直接消费的「这个类别的对象在世界坐标里哪个位置、什么几何」。 `📅unknown` `[wiki_page]`
 - [3D 空间 VQA（3D Spatial Visual Question Answering）](wiki/concepts/3d-spatial-vqa.md) — 3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题 `📅unknown` `[wiki_page]`
 - [Agentic Coding 时代的软件工程基础](wiki/concepts/agentic-coding-software-fundamentals.md) — AI Engineering Skills Map: Software Engineering Fundamentals `📅unknown` `[wiki_page]`
+- [AI Agent 评测](wiki/concepts/ai-agent-evaluation.md) — AI agent evaluation** 指对 **agent harness（脚手架）+ 模型** 在固定 task 集上的自动化测量：不仅看最终自然语言，还看 **环境终态、工具轨迹与 tr `📅unknown` `[wiki_page]`
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](wiki/concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
 - [Autoencoder / VAE（自编码器与变分自编码器）](wiki/concepts/autoencoder.md) — 自编码器（AE）**：编码器把输入压到低维码，解码器重建输入，用重建损失训练。**VAE** 把码换成分布 \(q_\phi(z|x)\)，用 ELBO 同时做重建与先验对齐，从而能从先验采样新样 `📅unknown` `[wiki_page]`
