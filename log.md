@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | Skillry 交付物市场、Taste Skill 三旋钮反 slop、Impeccable 24 命令+61 detector；开源核查 Skillry 闭源/双仓 MIT+Apache-2.0
+
 ## [2026-09-30] ingest | ReFORM（ICLR 2026，OpenReview YvFsyRReeN）：MIT-REALM 已开源 reform；升格 paper-reform-iclr-2026 并挂接 offline RL 对比页
 
 ## [2026-09-30] ingest | UniMate（arXiv:2609.05415）：项目页/GitHub 已开源 TADiT 训练推理与 UniML3D 管线；新增 paper-unimate 实体与 sources 互链

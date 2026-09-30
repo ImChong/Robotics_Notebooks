@@ -604,6 +604,7 @@
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
 - [Immersive Web Emulation Runtime（IWER）](wiki/entities/immersive-web-emulation-runtime.md) — IWER**（[Immersive Web Emulation Runtime](https://github.com/meta-quest/immersive-web-emulation-run `📅unknown` `[entity_page]`
+- [Impeccable](wiki/entities/impeccable.md) — Impeccable**（pbakaus/impeccable，[impeccable.style](https: `📅unknown` `[entity_page]`
 - [InMoov（开源 3D 打印人形）](wiki/entities/inmoov-humanoid.md) — InMoov** 是 **Gael Langevin** 自 2012 年起维护的 **全球首个开源 3D 打印真人比例人形** 项目：以 **Arduino** 控制、**MyRobotLab `📅unknown` `[entity_page]`
 - [Innodata](wiki/entities/innodata.md) — Innodata**（纳斯达克：**INOD**）向 AI 实验室与企业提供 **训练数据、评测、对齐与安全** 服务。LeoInAI Substack（2026-09）将其列为「物理 AI 数据 `📅unknown` `[entity_page]`
 - [INSIGHT-Bench](wiki/entities/insight-bench.md) — INSIGHT-Bench**（项目页，[代码](https://github.com `📅unknown` `[entity_page]`
@@ -4475,6 +4476,7 @@
 - [Skild AI](wiki/entities/skild-ai.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Skild Physical Self-Play（后训练自博弈）](wiki/entities/skild-physical-self-play.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [S1：机器人 In-Context Learning（Skild）](wiki/entities/skild-s1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [Skillry](wiki/entities/skillry.md) — Skillry**（skillry.dev）是 **交付物导向的 Agent Skill 市场**： curated 工作流帮助 Claude Cod `📅unknown` `[entity_page]`
 - [skrl](wiki/entities/skrl.md) — skrl](https://github.com/Toni-SM/skrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [SLAM Toolbox](wiki/entities/slam-toolbox.md) — SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。 `📅unknown` `[entity_page]`
 - [senlanke/mimic：G1 上的 SMP / CMoE / AME 移植](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（SMP 同系 [SUZ-tsinghua/smp](https://github.com `📅unknown` `[entity_page]`
@@ -4500,6 +4502,7 @@
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [An Observation on Generalization（Ilya Sutskever, 2023）](wiki/entities/talk-ilya-sutskever-observation-on-generalization.md) — An Observation on Generalization** 是 **Ilya Sutskever**（OpenAI）在 **Simons Institute**「Large Langua `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
+- [Taste Skill](wiki/entities/taste-skill.md) — Taste Skill**（Leonxlnx/taste-skill，[tasteskill.dev](htt `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
 - [Telekinesis RLbotics](wiki/entities/telekinesis-rlbotics.md) — Telekinesis RLbotics**（[`telekinesis-ai/telekinesis-rlbotics`](https://github.com/telekinesis-ai/t `📅unknown` `[entity_page]`
 - [Tennis-Vision](wiki/entities/tennis-vision.md) — Tennis-Vision**（HarshTomar1234/Tennis-Vision）是一 `📅unknown` `[entity_page]`
@@ -5134,6 +5137,7 @@
 - [Sim2Real 方法横向对比](wiki/comparisons/sim2real-approaches.md) — Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fi `📅unknown` `[comparison_page]`
 - [Sim2Real 四条路线：可辨识性视角](wiki/comparisons/sim2real-four-routes-identifiability.md) — 仿真里优化 $J_{\mathrm{sim}}(\pi)$，真机却要 $J_{\mathrm{real}}(\pi)$ 高——**系统辨识、域随机化、在线适应、残差学习**出自不同传统，却都在回答同一 `📅unknown` `[comparison_page]`
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md) — 背景**：当一台机器人已经在仿真里训出可用策略、但真机上还差最后几成性能时，Sim2Real 链路的**最后一公里**有三种本质不同的修补思路 `📅unknown` `[comparison_page]`
+- [Skillry vs Taste Skill vs Impeccable（Agent 前端与交付物选型）](wiki/comparisons/skillry-taste-skill-impeccable.md) — 三者都服务 **coding agent 产出更好看的界面或媒体**，但 **治理层不同**： `📅unknown` `[comparison_page]`
 - [旋转表示方法对比（SO(3)）](wiki/comparisons/so3-rotation-representations.md) — 一句话选型：** 同一旋转属于流形 $SO(3)$，工程上用 **多种坐标** 各干各的——**欧拉角**给人看，**单位四元数**做存储与 SLERP，**旋转矩阵**做链式复合，**so(3 `📅unknown` `[comparison_page]`
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 背景**：当一段参考动作（MoCap、视频估计、生成模型）落到一台真实人形机器人上时，[Whole-Body Tracking Pipeline](../concepts/whole-body-t `📅unknown` `[comparison_page]`
 - [Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型](wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 两者都解决 **consumer 设备 上交互式浏览千万级 splat** 的问题，但 **生态绑定、格式与混渲能力** 不同。机器人研究若只需 **训练用光真实感观测**，应优先 [GS-Playg `📅unknown` `[comparison_page]`
