@@ -6,11 +6,13 @@
 - **类型：** repo / computer-vision / object-detection / tooling
 - **组织：** Ultralytics
 - **链接：** <https://github.com/ultralytics/ultralytics>
+- **论文：** <https://arxiv.org/abs/2606.03748>（YOLO26）
+- **HF 权重：** <https://huggingface.co/Ultralytics/YOLO26>
 - **文档：** <https://docs.ultralytics.com/>
 - **主页 / 平台：** <https://www.ultralytics.com/> · <https://platform.ultralytics.com>
 - **PyPI：** `pip install ultralytics`（入库日快照约 **8.4.x**；当前主推模型族 **YOLO26** / **YOLO11**）
 - **许可：** **AGPL-3.0**（研究/开源友好）；商用另见 [Enterprise License](https://www.ultralytics.com/license)
-- **入库日期：** 2026-07-26
+- **入库日期：** 2026-07-26（YOLO26 论文/HF 交叉：2026-09-30）
 - **一句话说明：** YOLO 系列工程主仓：统一 CLI/Python API 覆盖检测、实例/语义分割、分类、姿态、OBB、深度、跟踪与导出（ONNX/TensorRT/OpenVINO 等）。
 - **沉淀到 wiki：** [`wiki/entities/ultralytics.md`](../../wiki/entities/ultralytics.md)
 

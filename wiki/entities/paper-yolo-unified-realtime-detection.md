@@ -20,6 +20,7 @@ related:
   - ../concepts/vision-backbones.md
   - ./paper-resnet-deep-residual-learning.md
   - ./ultralytics.md
+  - ./paper-yolo26-unified-realtime-e2e-vision.md
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
 sources:
