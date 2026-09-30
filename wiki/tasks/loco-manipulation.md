@@ -427,6 +427,7 @@ flowchart TD
 
 - [轮式人形形态感知重定向](../entities/paper-morphology-aware-retargeting-wheeled-humanoid.md) — 三轮底座 + BaseDecode 21 维策略（arXiv:2609.11357；未见代码）
 - [TONAV](../entities/paper-tonav.md) — 四足铰接物体：任务导向导航 + 位置–速度动作块（arXiv:2608.22296）
+- [PADP（论文实体）](../entities/paper-padp-projection-legged-loco-manipulation.md) — RA-L：策略动作→全身动力学投影；Go2/LYNX M20 + Z1（DOI:10.1109/lra.2026.3734869；未见代码）
 - [FastGrasp（论文实体）](../entities/paper-fastgrasp-mobile-dexterous-grasping.md) — 轮式移动全身 RL + CVAE 抓取引导 + 二值触觉高速灵巧抓取（arXiv:2604.12879）
 - [3D-IC（论文实体）](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 共享 3D 地图的 OVMM 交互路点链联合规划（ICML 2026，Stretch 3）
 

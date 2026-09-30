@@ -53,6 +53,7 @@ flowchart LR
 
 ### 推荐读什么
 - [机器人 In-Context Learning（概念 taxonomy）](../wiki/concepts/robot-in-context-learning.md) — 概念枢纽，三类不确定性与判别口诀
+- [In-Context Learning for Robots 综述](../wiki/entities/paper-in-context-learning-robots-survey.md) — arXiv:2609.36012；四类接口 + Acquire/Transfer/Retain 评测轴
 - [π0.7](../wiki/methods/pi07-policy.md) — 映射选择的正面样本：metadata 选映射，不改函数形式
 - [LLM 控制接口](../wiki/concepts/llm-robotics-control-interfaces.md) · [Embody](../wiki/entities/anthropic-embody.md) — 通用 LLM 控机器人的代际优势来自短时程重试，截掉远期上下文多数模型不掉分
 - [具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — ICL 是 VLA 层的"部署期适应旋钮"，不是新的一层
