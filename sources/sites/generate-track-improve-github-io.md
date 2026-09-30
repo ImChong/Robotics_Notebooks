@@ -27,7 +27,7 @@ Caltech AMBER 官方站点：展示 **双层感知 locomotion**（flow matching 
 | 项 | 结论 |
 |----|------|
 | GitHub / HF / Zenodo | **无** — 页眉仅 Paper、arXiv、Video |
-| 开放程度 | **待发布** — 站点明确预留 Code 按钮位，截至 2026-09-29 无官方可运行仓库 |
+| 开放程度 | **待发布** — 站点明确预留 Code 按钮位，截至 2026-09-30 无官方可运行仓库（复核查 HTML TODO 仍在） |
 | 数据集 | 未单独发布；依赖 BONES-SEED + 自研优化 clip 库（论文描述） |
 | 部署栈 | 真机 demo 完整；复现需自建 Isaac Lab + flow matching + AWR 环 |
 

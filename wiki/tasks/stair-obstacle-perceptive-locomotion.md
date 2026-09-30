@@ -32,6 +32,7 @@ related:
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-pilot-perceptive-loco-manipulation.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
+  - ../entities/paper-generate-track-improve.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-agile-perceptive-traversal-sparse-3d.md
@@ -54,6 +55,7 @@ sources:
   - ../../sources/papers/now_you_see_that_arxiv_2602_06382.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
+  - ../../sources/papers/generate_track_improve_arxiv_2609_31577.md
   - ../../sources/papers/dpl_arxiv_2510_07152.md
   - ../../sources/papers/ladderman_arxiv_2606_05873.md
   - ../../sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md
@@ -142,6 +144,7 @@ flowchart TB
 | **有**（24×32 立体深度 + 8 步增广） | **双向长楼梯 · 沟/台 · 跑酷** | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) | 特权 height → 深度 DAgger；多 critic/discriminator；**30+ 级楼梯**、RDT-Bench **98.9%**；RSS 2026 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
 | **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |
+| **有**（双 raw depth，无 odom/高程图） | **户外楼梯 · 箱跳 · 走跑** | [GTI（Generate, Track, Improve）](../entities/paper-generate-track-improve.md) | Flow matching 生成 1.24 s 全身 plan + CLF-RL 50 Hz 跟踪；**AWR** 微调生成器 mode/地形一致；G1 **15 级楼梯**与跳箱；arXiv:2609.31577；代码待发布 |
 | **有**（单深度 → 交叉注意力高程重建） | **上下楼梯 · 缝隙 · 可动平台** | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | 现实深度合成进 RL 环 + 盲骨干多教师；无外定位；TienKung Ultra；重建 MAE 3.25 cm；IEEE RA-L |
 | **有**（单胸深相机 → 逐格查询 16×32 高程） | **连续户外 1.5 km · 踏石 · 楼梯** | [SOLO](../entities/paper-solo.md) | QR 保边界 + TA-MSE 轨迹蒸馏；天工 Omni 零样本；应力 97.5% / 踏石 96%；截至入库日未开源 |
 | **有**（深度历史 + per-foot 触地前瞻 query） | **户外/室内楼梯 · 平台 · 沟** | [FootQuery](../entities/paper-footquery-perceptive-humanoid-locomotion.md) | 预测下一触地点分布 → cross-attention 检索历史 depth；历史 ROI 监督；G1 单策略混合路线；arXiv:2609.21447；无官方代码 |
@@ -210,6 +213,7 @@ flowchart TB
 | 人形 **立体深度 sim2real** + 特权蒸馏 + 跑酷/长楼梯 | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) |
 | 人形 **边走边操作** + LiDAR 高程 LLC | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) |
 | 人形 **双向/多向** 深度感知 + **载荷** 爬楼梯/垫脚石 | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) |
+| 人形 **生成–跟踪分层** + **双 raw depth**（无 odom）+ 走跑跳箱/户外楼梯 | [GTI](../entities/paper-generate-track-improve.md) |
 | 人形 **单深度** + 学习高程重建（无外定位）+ 楼梯/缝隙 | [DPL](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) |
 | 人形 **连续公里级** + 单胸深相机 + 逐格高程 + 轨迹蒸馏 | [SOLO](../entities/paper-solo.md) |
 | 人形 **深度历史** + **per-foot 触地前瞻 query**（无显式高程图） | [FootQuery](../entities/paper-footquery-perceptive-humanoid-locomotion.md) |

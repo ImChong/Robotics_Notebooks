@@ -8,7 +8,7 @@
 - **arXiv HTML：** <https://arxiv.org/html/2609.31577v1>
 - **PDF：** <https://arxiv.org/pdf/2609.31577>；项目页镜像 <https://zolkin1.github.io/generate-track-improve/paper/generate-track-improve.pdf>
 - **项目页：** <https://zolkin1.github.io/generate-track-improve/>（归档见 [`sources/sites/generate-track-improve-github-io.md`](../sites/generate-track-improve-github-io.md)）
-- **代码：** **待发布** — 项目页 HTML 注释预留 Code 按钮，截至 2026-09-29 无 GitHub 链接
+- **代码：** **待发布** — 项目页 HTML 注释预留 Code 按钮，截至 2026-09-30 无 GitHub 链接
 - **作者：** Zachary Olkin, William D. Compton, Aaron D. Ames
 - **机构：** 加州理工学院（Caltech）Department of Control and Dynamical Systems / AMBER Lab
 - **资助：** Technology Innovation Institute (TII)
@@ -63,7 +63,7 @@
 - **AWR vs 基线（Fig. 5）：** 优于 filtered BC、arrival filtering、plain BC/self-distill、无 conditioning 扰动的 AWR；plain BC 失败说明需要 advantage 筛选信号。
 - **宏观增益（摘要/结论）：** 成功穿越最多 **+25 pp**；全技能正确选择最多 **+80 pp**（OOD 楼梯技能选择 0%→~80% 量级案例）。
 
-### 4) 开源状态（项目页核查 · 2026-09-29）
+### 4) 开源状态（项目页核查 · 2026-09-30）
 
 - **待发布** — 无 Code 按钮；勿按 PDF 臆断已开源。
 
