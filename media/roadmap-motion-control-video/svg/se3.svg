@@ -25,7 +25,7 @@
 <text class="sm" x="560" y="336">R：三根轴的朝向</text>
 </g>
 <g data-s="3">
-<circle cx="640" cy="120" r="9" fill="#b99bff"/><text class="sm" x="622" y="112" text-anchor="end" style="fill:#b99bff">点：v′ = Rv + p</text>
+<circle cx="360" cy="110" r="9" fill="#b99bff"/><text class="sm" x="345" y="100" text-anchor="end" style="fill:#b99bff">点：v′ = Rv + p</text>
 <path d="M150,200 L230,154" stroke="#b99bff" stroke-width="5" fill="none" marker-end="url(#sa)"/><text class="sm" x="40" y="240" style="fill:#b99bff">方向：v′ = Rv（不受平移）</text>
 </g>
 </svg>
