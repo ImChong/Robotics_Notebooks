@@ -12,6 +12,10 @@ updated: 2026-09-30
 related:
   - ./vercel-agent-browser-skill.md
   - ./anthropic-frontend-design-skill.md
+  - ./taste-skill.md
+  - ./impeccable.md
+  - ./skillry.md
+  - ../comparisons/skillry-taste-skill-impeccable.md
   - ./mattpocock-skills.md
   - ./agent-skills-addyosmani.md
   - ./hermes-agent.md
@@ -82,6 +86,7 @@ flowchart TD
 
 - [agent-browser（Vercel）](vercel-agent-browser-skill.md) — 浏览器自动化 CLI skill
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 官方 UI 审美 skill 样本
+- [Taste Skill](taste-skill.md) / [Impeccable](impeccable.md) / [Skillry](skillry.md) — 前端交付与反 slop 选型（见 [对比](../comparisons/skillry-taste-skill-impeccable.md)）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 工程习惯技能库
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 全 SDLC 25 技能包
 - [Hermes Agent](hermes-agent.md) — 常驻运行时与技能安装位
