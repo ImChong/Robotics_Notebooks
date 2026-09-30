@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | UniMate（arXiv:2609.05415）：项目页/GitHub 已开源 TADiT 训练推理与 UniML3D 管线；新增 paper-unimate 实体与 sources 互链
+
 ## [2026-09-30] ingest | KINO arXiv:2609.18869 用户指定 ingest 再核（ETH Coros）；仍 v1 无代码；实体 paper-kino 已完备
 
 ## [2026-09-30] ingest | 批量入库 find-skills、agent-browser、frontend-design 与 mattpocock 七项工程技能（skills.sh 核查已开源）；升格 10 个 wiki 实体页并交叉 mattpocock-skills
