@@ -1910,6 +1910,14 @@
         "meituan-dianping"
       ]
     },
+    "menlo-research": {
+      "label": "门罗研究（Menlo Research）",
+      "aliases": [
+        "menlo",
+        "menlo-research",
+        "menloresearch"
+      ]
+    },
     "mondo-robotics": {
       "label": "摩多机器人（Mondo Robotics）",
       "aliases": [

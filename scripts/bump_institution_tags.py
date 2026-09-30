@@ -211,6 +211,7 @@ PAGE_INSTITUTION_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/tnkr.md": ["linux-foundation"],
     "wiki/entities/world-labs.md": ["nvidia"],
     "wiki/entities/asimov-v1.md": ["unitree"],
+    "wiki/entities/isaac-asimov.md": ["menlo-research"],
     "wiki/entities/atom01-deploy.md": ["linux-foundation"],
     "wiki/entities/awesome-text-to-motion-zilize.md": ["linux-foundation"],
     "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md": ["unitree", "nvidia"],

@@ -120,7 +120,7 @@ mjlab 架构
 - [YAHMP](./paper-yahmp.md) — G1 全身 GMT 消融与 ONNX 部署（基于 mjlab）
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — mjlab + MuJoCo Warp 上 tiled SMPC 采数与稀疏 FastTD3（代码未开源）
 - [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) — mjlab 上感知感知 CBF-RL 躲避球（全栈开源）
-- [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
+- [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 见 asimov-mjlab（mjlab）与 [isaac_asimov](./isaac-asimov.md)（Isaac Lab）
 - [MuJoCo Playground](./mujoco-playground.md) — 上游任务参照；[mjlab_playground](./mjlab-playground.md) 端口
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 任务与训练入口层
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式

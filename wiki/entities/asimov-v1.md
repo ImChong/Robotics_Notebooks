@@ -3,13 +3,15 @@
 type: entity
 tags: [humanoid, hardware, open-source, mujoco, cad, can-bus, sim2real, unitree]
 status: complete
-updated: 2026-05-12
+updated: 2026-09-30
 related:
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ./open-source-humanoid-hardware.md
   - ./humanoid-robot.md
   - ./mujoco.md
   - ./mjlab.md
+  - ./isaac-asimov.md
+  - ./isaac-lab.md
   - ./roboto-origin.md
   - ./amp-mjlab.md
   - ../concepts/sim2real.md
@@ -17,8 +19,9 @@ related:
 sources:
   - ../../sources/repos/asimov-v1.md
   - ../../sources/repos/asimov-mjlab.md
+  - ../../sources/repos/isaac-asimov.md
   - ../../sources/blogs/menlo_noise_is_all_you_need.md
-summary: "Asimov v1 是 asimovinc 在单仓内开放的人形机器人全栈资料：机械与电气 CAD、MuJoCo 仿真、板载软件与官方手册/BOM；行走策略的公开训练入口在 asimov-mjlab（mjlab fork）中给出 PPO、imitation shaping 与 Sim2Real 取向说明。"
+summary: "Asimov v1 是 asimovinc 在单仓内开放的人形机器人全栈资料：机械与电气 CAD、MuJoCo 仿真、板载软件与官方手册/BOM；行走 RL 公开在 asimov-mjlab（mjlab）与 Menlo 的 isaac_asimov（Isaac Lab + AMP）两条官方训练线。"
 ---
 
 # Asimov v1（开源人形机器人仓库）
@@ -97,11 +100,11 @@ Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及
 
 ### 6. 公开路线图中的缺口（研究机会）
 
-README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile app** 等标为待发布；与此同时，官方已单独开放 **[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)** 作为 **行走速度策略** 的可复现训练入口（见下节），因此「策略代码在主仓内一键可得」与「已有公开 fork 可训」应区分理解。
+README 中的路线项仍将 **Asimov API**、**Locomotion policy（主仓内一键发布）**、**Mobile app** 等标为待发布；与此同时，**行走策略训练** 已在独立仓库公开：**[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)**（MuJoCo/mjlab）与 **[isaac_asimov](https://github.com/menloresearch/isaac_asimov)**（Menlo 官方 Isaac Lab + **AMP**）。因此「策略只在主仓」与「已有两条官方仿真训练栈」应区分理解（详见 [isaac_asimov](./isaac-asimov.md)）。
 
 ## 仿真、模仿学习与训练（公开资料）
 
-本节把 **主仓 MuJoCo 资产**、**并行仿真训练仓库** 与 **Menlo 工程博文** 三条公开信息源对齐，便于在 [Sim2Real](../concepts/sim2real.md) 与 [mjlab](./mjlab.md) 语境下定位 Asimov v1。
+本节把 **主仓 MuJoCo 资产**、**两条并行 RL 训练仓库（mjlab / Isaac Lab）** 与 **Menlo 工程博文** 对齐，便于在 [Sim2Real](../concepts/sim2real.md)、[mjlab](./mjlab.md) 与 [Isaac Lab](./isaac-lab.md) 语境下定位 Asimov v1。
 
 ### 1. 主仓库（asimov-v1）里的仿真定位
 
@@ -131,6 +134,22 @@ README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile a
 
 **命令入口（README）**：`uv run train Mjlab-Velocity-Flat-Asimov`、`uv run play Mjlab-Velocity-Flat-Asimov`（支持通过 Weights & Biases run 路径回放）。
 
+### 2b. Isaac Lab 官方扩展（isaac_asimov）
+
+**[menloresearch/isaac_asimov](https://github.com/menloresearch/isaac_asimov)** 由 Menlo Research 维护，自述为 **Asimov 1** 的 **official reinforcement learning training framework**，基于 **Isaac Lab**（非 mjlab）。
+
+**栈与安装（README / INSTALL）**
+
+- **独立 extension**：`source/isaac_asimov/` 注册 locomotion 任务；子模块 **`third_party/IsaacLab`** 与 **`third_party/asimov-1`**（机器人模型）。
+- **一键路径**：`./quick_install.sh`（**uv**、**Isaac Sim 5.1.0**、钉版 Lab + **RSL-RL 5.0.1**）；高级安装可复用已有 Lab checkout（见仓内 INSTALL.md）。
+- **包装脚本**：`./isaac_asimov.sh --train|--play` 调用 `scripts/rsl_rl/train.py`。
+
+**任务与算法（README）**
+
+- **推荐 baseline**：`Asimov1-Velocity-AMP-v0` — **PPO + AMP（对抗运动先验）**；对照 **`Asimov1-Velocity-v0`** 纯 PPO。
+- **规模**：baseline **4096 envs**（A6000 / RTX PRO 6000）；支持 `--distributed` 多卡与 `--onnx-output` 导出。
+- **与 mjlab 线差异**：本仓 **PhysX + AMP + 仓内 reference motion（`.npz`）**；`asimov-mjlab` 为 **MuJoCo Warp + 1.25 Hz gait imitation 奖励** — 勿混为同一实现。实体页见 [isaac_asimov](./isaac-asimov.md)。
+
 ### 3. Menlo 博文对「观测合同」的补充叙述
 
 [Menlo Research 博文 *Teaching a Humanoid to Walk*](https://menlo.ai/blog/teaching-a-humanoid-to-walk) 从工程角度解释：**Actor 仅使用真机可得的约 45 维观测**（含 IMU、投影重力、指令、分组关节状态与历史动作）、**刻意不提供 base 线速度**；并讨论 **按 CAN 读出顺序建模的分组观测时延**、**非对称 Actor–Critic**（Critic 使用足高、接触、GRF、**被动趾关节**等特权信息，以匹配真机无趾编码器的事实）。
@@ -141,12 +160,13 @@ README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile a
 
 [Menlo 博文 *Noise is all you need to bridge the sim-to-real locomotion gap*](https://menlo.ai/blog/noise-is-all-you-need) 描述在 MuJoCo 中运行 **生产固件**，通过 **I2C / CAN 外设仿真** 与 **电机响应路径上的随机延迟注入**，把 **线程调度、融合库数值语义、协议解析与策略** 一并纳入训练/CI 闭环；文中以 Asimov 腿足部署为例讨论 **零样本 sim2real** 与真机–仿真关节轨迹对照。概念层归纳见 [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)。
 
-### 4. 三条线对照表
+### 4. 四条线对照表
 
 | 信息层级 | 典型入口 | 你能直接拿到的内容 |
 |----------|----------|---------------------|
-| 资产与单机仿真 | [asimov-v1](https://github.com/asimovinc/asimov-v1) | CAD / 电气 / **MuJoCo 模型** / 板载软件；主仓路线图中的 **Locomotion policy** 仍标「即将到来」 |
-| 规模化 RL + imitation shaping | [asimov-mjlab](https://github.com/asimovinc/asimov-mjlab) | mjlab 式并行环境、**PPO**、含 **1.25 Hz 参考步态 imitation** 的奖励组合、**无 `base_lin_vel`** 的观测裁剪与 PD 叙述 |
+| 资产与单机仿真 | [asimov-v1](https://github.com/asimovinc/asimov-v1) | CAD / 电气 / **MuJoCo 模型** / 板载软件；主仓路线图中的 **内嵌 Locomotion policy 发布** 仍标「即将到来」 |
+| 规模化 RL + imitation shaping（MuJoCo） | [asimov-mjlab](https://github.com/asimovinc/asimov-mjlab) | mjlab 式并行环境、**PPO**、含 **1.25 Hz 参考步态 imitation** 的奖励组合、**无 `base_lin_vel`** 的观测裁剪与 PD 叙述 |
+| 规模化 RL + AMP（Isaac Lab） | [isaac_asimov](https://github.com/menloresearch/isaac_asimov) | Isaac Lab extension、**AMP + PPO** baseline、`quick_install`、ONNX 导出；README 面向 **训完部署真机** |
 | 设计叙事与消融动机 | [Menlo 博文](https://menlo.ai/blog/teaching-a-humanoid-to-walk)、[处理器在环 / 抖动注入](https://menlo.ai/blog/noise-is-all-you-need) | 观测合同、CAN 时延建模、非对称 AC、奖励与 **gait clock** 取舍；**固件在环 + 总线噪声** 的工程化 sim2real |
 
 ### 5. 被动脚尖：机械目标、主仓 MuJoCo 与行走 MJCF 的差异
@@ -183,7 +203,7 @@ Menlo 在 [《How we built humanoid legs from the ground up in 100 days》](http
 
 ## 常见误区或局限
 
-- **误区：把主仓当成「已内嵌唯一官方训练脚本」**。主仓强调 **制造 + MuJoCo 资产 + 板载软件**；**可复现的并行训练脚本**当前公开在 **asimov-mjlab**，与主仓路线图并行存在。
+- **误区：把主仓当成「已内嵌唯一官方训练脚本」**。主仓强调 **制造 + MuJoCo 资产 + 板载软件**；**可复现的并行训练** 当前公开在 **asimov-mjlab** 与 **isaac_asimov** 两仓，与主仓路线图并行存在。
 - **误区：默认主仓 MJCF 与 `asimov-mjlab` MJCF 在趾部完全等价**。主仓含 **被动趾铰链 + 弹簧参数**；行走 fork 多为 **固连趾刚体** 的 12-DOF 降阶——写 Sim2Real 或对比实验时应 **分别标注所用 XML 路径与版本**。
 - **误区：双板架构下任意进程都可进运控回路**。若不划分 **CPU 隔离、实时中间件与网络负载**，容易出现抖动与延迟尖峰，反而放大 Sim2Real gap。
 - **局限：商业套件与完全自采的 BOM 可能存在批次差异**，惯性参数与摩擦标定仍需以本机辨识为准。
@@ -222,6 +242,8 @@ flowchart TD
 - [人形机器人（Humanoid Robot）](./humanoid-robot.md)
 - [MuJoCo](./mujoco.md)
 - [mjlab](./mjlab.md)
+- [isaac_asimov（Isaac Lab 官方训练扩展）](./isaac-asimov.md)
+- [Isaac Lab](./isaac-lab.md)
 - [AMP_mjlab](./amp-mjlab.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Sim2Real](../concepts/sim2real.md)
@@ -232,7 +254,8 @@ flowchart TD
 
 - [Noise is all you need…（Menlo）](https://menlo.ai/blog/noise-is-all-you-need) — 固件在环与 CAN 抖动注入的工程叙事
 - [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 双板/异构计算与实时性分工
-- [asimovinc/asimov-mjlab（行走训练 fork）](https://github.com/asimovinc/asimov-mjlab)
+- [asimovinc/asimov-mjlab（MuJoCo 行走训练 fork）](https://github.com/asimovinc/asimov-mjlab)
+- [menloresearch/isaac_asimov（Isaac Lab + AMP 官方训练）](https://github.com/menloresearch/isaac_asimov)
 - [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — 被动趾与 **RSU 并联踝** 的产品/机构叙事
 - [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) — 人形踝设计综述语境
 - [Assembly Manual（官方）](https://manual.asimov.inc)
@@ -242,6 +265,7 @@ flowchart TD
 
 - [asimov-v1.md](../../sources/repos/asimov-v1.md)
 - [asimov-mjlab.md](../../sources/repos/asimov-mjlab.md)
+- [isaac-asimov.md](../../sources/repos/isaac-asimov.md)
 - [menlo_noise_is_all_you_need.md](../../sources/blogs/menlo_noise_is_all_you_need.md)
 - [asimovinc/asimov-v1 README（main）](https://github.com/asimovinc/asimov-v1/blob/main/README.md)
 - [asimovinc/asimov-mjlab README（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/README.md)

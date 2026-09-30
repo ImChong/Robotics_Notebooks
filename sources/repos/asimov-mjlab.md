@@ -14,7 +14,8 @@
 
 ## 为什么值得保留
 
-- **与主仓分工清晰**：`asimov-v1` 主仓提供全栈 CAD/MuJoCo/板载软件；`asimov-mjlab` 提供 **GPU 并行**下的速度跟踪 + **参考步态模仿 shaping** 的可复现训练入口。
+- **与主仓分工清晰**：`asimov-v1` 主仓提供全栈 CAD/MuJoCo/板载软件；`asimov-mjlab` 提供 **GPU 并行（MuJoCo/mjlab）** 下的速度跟踪 + **参考步态模仿 shaping** 的可复现训练入口。
+- **与 Isaac 线并列**：Menlo 另维护 [`isaac_asimov`](./isaac-asimov.md)（Isaac Lab + **AMP**）；选型时勿与 mjlab fork 混称同一后端。
 - **Sim2Real 取向明确**：README 写明去掉 `base_lin_vel`、给出 PD 增益与硬件上限的推导式叙述，便于与 [`wiki/entities/mjlab.md`](../../wiki/entities/mjlab.md) 生态对照。
 
 ## 与本仓库现有资料的关系
