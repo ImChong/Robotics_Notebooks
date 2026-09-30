@@ -2,7 +2,7 @@
 type: entity
 tags: [framework, open-source, agent, navigation, unitree, quadruped, humanoid, mcp, middleware]
 status: complete
-updated: 2026-08-03
+updated: 2026-09-30
 related:
   - ../concepts/ros2-basics.md
   - ../concepts/model-context-protocol.md
@@ -13,9 +13,13 @@ related:
   - ./navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../tasks/teleoperation.md
+  - ./dimensional-can-jev-nav-benchmark.md
+  - ./typesafe-jev.md
+  - ./paper-navjev-efficient-vln-jev.md
 sources:
   - ../../sources/repos/dimensionalos_dimos.md
   - ../../sources/sites/modelcontextprotocol-io.md
+  - ../../sources/sites/dimensional_research_can_jev_nav.md
 summary: "DimOS（Dimensional）是 agent-native 的物理空间操作系统：Python Module + Blueprint 编排感知/导航/空间记忆/控制，默认无需 ROS，经 LCM 等传输对接 Unitree Go2/G1、机械臂与无人机，并内置 MCP 自然语言 agent 控制。"
 ---
 
@@ -56,6 +60,18 @@ summary: "DimOS（Dimensional）是 agent-native 的物理空间操作系统：P
 | **Platform adapters** | `dimos.robot.unitree.go2` / `g1` 连接模块；真机 Go2 经 WebRTC + `ROBOT_IP` |
 | **Agents** | MCP server/client 模块；可接 Ollama 本地 LLM（`unitree-go2-agentic-ollama`） |
 | **Capabilities** | 导航建图、感知（检测/VLM/音频）、操作（manipulation extra）、空间记忆、可视化（Rerun 等） |
+
+### Navigation 能力（Go2 与 Habitat）
+
+仓库 [Navigation 文档](https://github.com/dimensionalOS/dimos/blob/main/docs/capabilities/navigation/index.md) 与 [Deep Dive](https://github.com/dimensionalOS/dimos/blob/main/docs/capabilities/navigation/deep_dive.md) 描述 **无 ROS** 的 Go2 栈：**column-carving 体素图** → **CostMapper** → **ReplanningAStarPlanner** → `Twist`；蓝图 `unitree-go2`（live mapping）与 `unitree-go2-relocalization`（premap）。无真机时可跑 **`habitat-nav`** 仿真蓝图。
+
+| 工作流 | Blueprint | 要点 |
+|--------|-----------|------|
+| Live mapping | `unitree-go2` | LiDAR 列雕刻、动态代价图、A* 重规划 |
+| Premap | `unitree-go2-relocalization` | 离线 PGO 导出 premap 后重定位 |
+| Habitat 评测 | `habitat-nav` | 与 [Can Jev Nav?](./dimensional-can-jev-nav-benchmark.md) / `dimos.evals.suites.habitat_nav` 同系 |
+
+**Nav Arena / Dimcode：** Dimensional 报告 [Can Jev Nav?](https://research.dimensional.org/system-one-navigation) 在 **dimOS + Habitat** 上对比 **Dimcode 导航 tool**、**TypeSafe Jev（2 Hz）** 与 **Pi coding agent**；复现见分支 `feat/typesafe-world-state` 与 [基准实体页](./dimensional-can-jev-nav-benchmark.md)。
 
 ## 流程总览（Agentic 四足蓝图）
 
@@ -108,10 +124,13 @@ flowchart LR
 - [Navigation2](./navigation2.md) — ROS 2 导航参考实现；DimOS 提供并行 native 导航路径
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md) — 本栈作为 ROS-optional agent 导航补充
 - [Teleoperation](../tasks/teleoperation.md) — 键盘遥操作 xArm7 等 manipulation 演示
+- [Can Jev Nav?（Nav Arena）](./dimensional-can-jev-nav-benchmark.md) — dimOS 上 Jev vs Dimcode vs Pi agent 导航基准
+- [Jev（TypeSafe）](./typesafe-jev.md) — Nav Arena 与 [NavJev](./paper-navjev-efficient-vln-jev.md) 的 System One 决策面
 
 ## 参考来源
 
 - [DimOS 仓库归档](../../sources/repos/dimensionalos_dimos.md)
+- [Can Jev Nav? 站点归档](../../sources/sites/dimensional_research_can_jev_nav.md)
 - [dimensionalOS/dimos（GitHub）](https://github.com/dimensionalOS/dimos)
 - [Dimensional 官网](https://dimensionalos.com/)
 - [MCP 官方文档归档](../../sources/sites/modelcontextprotocol-io.md)
@@ -120,4 +139,4 @@ flowchart LR
 
 - [RIO（Robot I/O）](./robot-io-rio.md) — 另一套跨形态 **实时 I/O + 异步 VLA 推理** 编排框架（CMU RSS 2026 线）
 - [unitree_ros（ROS1/Gazebo）](./unitree-ros.md) — Unitree 经典 ROS 遗产栈，与 DimOS 选型对照
-- DimOS 文档：[Modules](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/modules.md)、[Blueprints](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/blueprints.md)、[CLI](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/cli.md)（以仓库 `main` 为准）
+- DimOS 文档：[Modules](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/modules.md)、[Blueprints](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/blueprints.md)、[CLI](https://github.com/dimensionalOS/dimos/blob/main/docs/usage/cli.md)、[Navigation](https://github.com/dimensionalOS/dimos/blob/main/docs/capabilities/navigation/index.md)（以仓库 `main` 为准）

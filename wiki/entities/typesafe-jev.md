@@ -2,7 +2,7 @@
 type: entity
 tags: [typesafe-ai, jev, system-one-model, llm-agents, agent-infrastructure, open-source, decision-api]
 status: complete
-updated: 2026-09-20
+updated: 2026-09-30
 related:
   - ./valen.md
   - ./laya.md
@@ -12,6 +12,10 @@ related:
   - ./mattpocock-skills.md
   - ../concepts/ai-auto-research.md
   - ../methods/vla.md
+  - ./dimensional-can-jev-nav-benchmark.md
+  - ./paper-navjev-efficient-vln-jev.md
+  - ./dimensionalos-dimos.md
+  - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/blogs/typesafe_ai_introducing_system_one_models_jev.md
   - ../../sources/sites/typesafe-ai.md
@@ -20,6 +24,8 @@ sources:
   - ../../sources/repos/typesafe-ai-skills.md
   - ../../sources/repos/awesome-jev.md
   - ../../sources/repos/laya.md
+  - ../../sources/sites/dimensional_research_can_jev_nav.md
+  - ../../sources/papers/navjev_arxiv_2609_34969.md
 summary: "Jev 是 TypeSafe AI 首个 System One Model：并行采样、schema 约束的类型安全结构化决策 + 校准概率，用 RLCD 训练；官方 JS/Python SDK 与 Agent Skills 已 MIT 开源，模型为早期访问 API（非权重开放）。开源对照见 [Laya](./laya.md)、多模态开源延伸 [Valen](./valen.md)。"
 ---
 
@@ -145,13 +151,18 @@ sequenceDiagram
 - **类型错误率：** LLM 侧来自 OpenRouter 统计；Jev 侧 schema 匹配 **0%**（结构性保证，非经验估计）。
 - **Demo：** Doom ~10 QPS；Wikiracing 多步链接选择。
 
+### 机器人导航（第三方基准）
+
+- **[Can Jev Nav? / Nav Arena](./dimensional-can-jev-nav-benchmark.md)（Dimensional，2026）：** Habitat **327** object-goal 任务；Jev **2 Hz typed drive**（无 tool）得 **mean SPL 0.263 / 45.9% arrived**，低于 **Dimcode 导航 tool（0.743 / 88.4%）** 与 **Pi+Astra（0.522 / 76%）**；**&lt;10 m** 子集 **71.1% arrived**、**~$0.055/run**。报告强调 **WorldState 须 robot-frame + 语言 helper**（否则 Jev 完成率骤降）。
+- **[NavJev](./paper-navjev-efficient-vln-jev.md)（同济，arXiv:2609.34969）：** VLN-CE 上 **ACVC + DASM + Jev** → **27.0% SR / 22.4% SPL**，**0.65 s/步**；真机小样本 **SR 50%**。展示 Jev 在 **指令跟随 VLN** 而非仅 object-goal 上的 typed 用法。
+
 ## 局限与风险
 
 - **非通用 LLM：** 放弃自由文本生成；创意写作、长链 CoT 解释、开放式 chat **不是主场景**。
 - **早期访问：** 定价/可用性/区域（官方称西海岸服务）可能变化；**193.6× / 444.6×** 为 workflow 基准上界，生产增益需自测。
 - **权重未开源：** 无法本地部署或微调 Jev；依赖 TypeSafe  SLA 与 API 稳定性。
 - **Workflow 偏差：** 公开 workflow 由 TypeSafe 能力团队编写，可能存在选择偏差（博客自述）。
-- **与具身 VLA 关系：** Jev **不输出关节/action chunk**；机器人侧仅适合 **语义路由、安全评分、任务分类** 等 **System One** 子问题。
+- **与具身 VLA 关系：** Jev **不输出关节/action chunk**；长距导航 **SPL 仍弱于规划/tool**（见 [Can Jev Nav?](./dimensional-can-jev-nav-benchmark.md)）。适合 **短程 drive 分支、VLN waypoint 选择（NavJev）** 或与 **A\*/Nav2/Dimcode** 分层。
 
 ## 关联页面
 
@@ -162,10 +173,15 @@ sequenceDiagram
 - [Agent Lightning](./agent-lightning.md) — LLM agent RL；与 Jev 决策 API 不同层
 - [Matt Pocock Skills](./mattpocock-skills.md) — 同类「agent 技能包」生态参照
 - [VLA 方法页](../methods/vla.md) — 连续控制 vs 离散 typed 决策分工
+- [Can Jev Nav?（Nav Arena）](./dimensional-can-jev-nav-benchmark.md) — Habitat 上 Jev vs Dimcode vs Pi agent
+- [NavJev 论文](./paper-navjev-efficient-vln-jev.md) — VLN-CE typed waypoint 选择
+- [DimOS](./dimensionalos-dimos.md) — 评测运行时与 Go2/Habitat 导航栈
 
 ## 参考来源
 
 - [Introducing System One Models & Jev（官方博客）](../../sources/blogs/typesafe_ai_introducing_system_one_models_jev.md)
+- [Can Jev Nav? 站点归档](../../sources/sites/dimensional_research_can_jev_nav.md)
+- [NavJev arXiv 归档](../../sources/papers/navjev_arxiv_2609_34969.md)
 - [TypeSafe AI 站点归档](../../sources/sites/typesafe-ai.md)
 - [typesafe-sdk-js](../../sources/repos/typesafe-sdk-js.md)
 - [typesafe-sdk-python](../../sources/repos/typesafe-sdk-python.md)
