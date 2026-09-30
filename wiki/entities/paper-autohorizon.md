@@ -11,7 +11,7 @@ tags:
   - uic
   - cisco-research
 status: complete
-updated: 2026-09-20
+updated: 2026-09-30
 arxiv: "2602.21445"
 code: https://github.com/hatchetProject/AutoHorizon
 venue: "ECCV 2026"

@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -29,6 +29,7 @@ related:
   - ./humanoid-transformer-touch-dreaming.md
   - ./vla.md
   - ../entities/paper-flashvla.md
+  - ../entities/paper-action-upcycling.md
   - ../entities/xiaomi-robotics-0.md
   - ../queries/vla-deployment-guide.md
   - ../queries/vla-with-low-level-controller.md
@@ -90,6 +91,8 @@ related:
 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) 给出第三条证据：在人类风格（窄、时间相关）数据上，**无限数据** 的纯闭环 \(\pi(a_t\mid s_t)\) 可以完全失败，而 length-25 开环能做；把过去 24 帧状态拼进闭环 **并不** 自动追上开环（因果混淆 / 输入空间更大）。与 Revisiting 合并读：开环是短记忆补丁；要让闭环赢，上下文必须编码 **专家隐状态**（接触意图、分段决策），而不是更长的关节角窗口。
 
 [AutoHorizon](../entities/paper-autohorizon.md)（ECCV 2026，flow VLA / π0.5）在 **不改权重** 的 test-time 用 **action self-attention** 为每个 chunk **动态估计 execution horizon**：稳定段拉长前缀、接触段缩短以提高 replan 频率；LIBERO 上接近 per-task static oracle。与上文「加长 \(T_o\)」正交——AutoHorizon 调 **执行协议**，Revisiting 调 **条件输入**。
+
+[Action Upcycling](../entities/paper-action-upcycling.md)（arXiv:2609.34911，SKKU/KAIST）走另一条 **训练-free** 自适应轴：不读模型内部、不额外采样，只用 **已预测 chunk 的动作速度波动** 决定 tail 复用长度；π0.5 / SmolVLA / GR00T / FastWAM 上 **policy call 减 1.2–1.7×** 且成功率不低于 baseline，与 [FlashVLA](../entities/paper-flashvla.md) 等「减单次 forward 成本」正交；[GitHub 已开源](https://github.com/star-kwon/action-upcycling)。
 
 ## 主要技术路线
 
@@ -225,6 +228,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [πR²](../entities/paper-pi-r2.md) — 对 chunking flow 做本体感快通道 + 时延自适应日程，GR00T 约 25 Hz 闭环（arXiv:2607.26055）
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — CoRL 2026：Delay / RDE 机制消融与「训练≠必须 chunk 执行」
 - [FlashVLA](../entities/paper-flashvla.md) — 流匹配 VLA 用交错噪声缓冲把 chunk 解码摊到时间轴上，修异步错配（arXiv:2608.27384）
+- [Action Upcycling](../entities/paper-action-upcycling.md) — 训练-free 复用 chunk tail，速度波动门控减 policy call（arXiv:2609.34911，[已开源](https://github.com/star-kwon/action-upcycling)）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步执行环内对冻结 VLA 做 value-gradient 在线 RL（arXiv:2608.29768；项目页已上线、仍未开源）
 - [GlanceWAM](../entities/paper-glancewam.md) — WAM 动作块在潜空间 48 ms 解码，想象异步离环（arXiv:2608.23927）
 - [TONAV](../entities/paper-tonav.md) — 位置–速度动作块稳住四足铰接接触（arXiv:2608.22296）

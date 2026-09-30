@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-29
+updated: 2026-09-30
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -223,7 +223,7 @@ flowchart TD
 #### 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）；[HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（2026，三阶段 action flow + DCT 潜空间 SAC 把通才 VLA 适配到天工家庭 loco-manipulation，**未开源**）；[FWBC-VLA](../entities/paper-fwbc-vla.md)（2026，无 F/T 的残差力同时条件化 π₀.₅ 与轮足底盘补偿；擦白板终段 64%、开门 52%，**未开源**）。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)（2026，关节级全身遥操作 + π₀.₅ 系 VLA + HuMI 共训的全身原生配方，**已开源**）；[HAF](../entities/paper-haf-humanoid-vla-adaptation.md)（2026，三阶段 action flow + DCT 潜空间 SAC 把通才 VLA 适配到天工家庭 loco-manipulation，**未开源**）；[FWBC-VLA](../entities/paper-fwbc-vla.md)（2026，无 F/T 的残差力同时条件化 π₀.₅ 与轮足底盘补偿；擦白板终段 64%、开门 52%，**未开源**）；[Uni-VLaT](../entities/paper-uni-vlat.md)（2026，全身触觉 + 触觉锚定多模态未来预测适配 GR00T/π0.5，G1 五任务 **75%** 均值，**未开源**）；[Holo-M](../entities/paper-holo-m.md)（2026，离散 token 全身 VLA + SIMPLE **163/180** specialist，**代码待发布**）。
 
 #### 持久 3D 对象 token + 几何谓词闭环（POT-VLA · object-state divergence）
 - **核心**：长时程人形 VLA 中，**动作条件用的对象状态** 与 **验收用的对象状态** 易分叉；用 RGB-D 维护 **角色索引持久 3D 对象记录**，同一记忆条件化全身动作头并做几何谓词验收 / 局部恢复。
