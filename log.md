@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | 批量入库 find-skills、agent-browser、frontend-design 与 mattpocock 七项工程技能（skills.sh 核查已开源）；升格 10 个 wiki 实体页并交叉 mattpocock-skills
+
 ## [2026-09-30] ingest | PRISM（arXiv:2609.38172）：V2V counterfactual Real2Sim2Real G1 loco-manip；项目页 Code 404 待公开；升格 paper-prism-real2sim2real 并链 CRISP/loco-manip 路线
 
 ## [2026-09-30] ingest | 自由度 FreeDof 公众号：原始 OpenVLA 图像—指令—动作链路；补强 paper-openvla 推理边界

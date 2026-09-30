@@ -36,6 +36,7 @@
 - [Andrej Karpathy](wiki/entities/andrej-karpathy.md) — Andrej Karpathy** 是连接 **深度学习教育、大规模视觉系统与 LLM 时代知识工程** 的关键人物：从 Stanford CS231n 与 micrograd 把神经网络讲清楚， `📅unknown` `[entity_page]`
 - [claude-api（Anthropic 官方 Skill）](wiki/entities/anthropic-claude-api-skill.md) — claude-api** 是 anthropics/skills 仓库中面向 **Claude Platform 应 `📅unknown` `[entity_page]`
 - [Embody（Anthropic）](wiki/entities/anthropic-embody.md) — Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模 `📅unknown` `[entity_page]`
+- [frontend-design（Anthropic 官方 Skill）](wiki/entities/anthropic-frontend-design-skill.md) — frontend-design** 是 anthropics/skills 中 `skills/frontend-d `📅unknown` `[entity_page]`
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md) — AnyGrasp** 是上海交通大学 MVIG 团队提出的 **通用抓取感知** 系统：在 **平行夹爪** 设定下，从 **单目深度得到的场景点云** 中 **一次性** 预测 **稠密 7-D `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](wiki/entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
 - [ApexDrive AI（selfdriving-car）](wiki/entities/apexdrive-ai.md) — ApexDrive AI**（[poojithinavolu/selfdriving-car](https://github.com/poojithinavolu/selfdriving-car `📅unknown` `[entity_page]`
@@ -509,6 +510,7 @@
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
+- [find-skills（Vercel Labs 元技能）](wiki/entities/find-skills-skill.md) — find-skills** 位于 vercel-labs/skills 的 `skills/find-skills `📅unknown` `[entity_page]`
 - [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
 - [fiveages-sim/robot_descriptions](wiki/entities/fiveages-sim-robot-descriptions.md) — fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions) 是 **ROS 2 desc `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
@@ -706,7 +708,14 @@
 - [矩池云（Matpool）](wiki/entities/matpool.md) — 矩池云**（matpool.com）是专注人工智能领域的 **GPU 云服务商**，以算力市场租用主机为核心，并提供专有云、私有云与高校 A `📅unknown` `[entity_page]`
 - [MATRiX（智身科技联合仿真平台）](wiki/entities/matrix-simulation-platform.md) — MATRiX** 是 智身科技 / GENISOM AI 开源的机器人 **联合仿真与训练平台**：将 **MuJoCo 高精度（可微）物 `📅unknown` `[entity_page]`
 - [Matterport3D Simulator](wiki/entities/matterport3d-simulator.md) — Matterport3D Simulator** 是 2018 年随 **Room-to-Room (R2R)** 基准发布的 **视觉–语言导航（VLN）仿真环境**，直接利用 Matterpo `📅unknown` `[entity_page]`
+- [grill-me（Matt Pocock Skill）](wiki/entities/mattpocock-grill-me-skill.md) — grill-me**（skills.sh）是 [mattpocock/skills](https:/ `📅unknown` `[entity_page]`
+- [grill-with-docs（Matt Pocock Skill）](wiki/entities/mattpocock-grill-with-docs-skill.md) — grill-with-docs**（skills.sh）在 [grill-me](ma `📅unknown` `[entity_page]`
+- [handoff（Matt Pocock Skill）](wiki/entities/mattpocock-handoff-skill.md) — handoff**（skills.sh）生成 **跨会话交接文档**：摘要当前进度、**不重复** 已 `📅unknown` `[entity_page]`
+- [improve-codebase-architecture（Matt Pocock Skill）](wiki/entities/mattpocock-improve-codebase-architecture-skill.md) — improve-codebase-architecture**（[skills.sh](https://skills.sh/mattpocock/skills/improve-codebase-a `📅unknown` `[entity_page]`
+- [setup-matt-pocock-skills（Matt Pocock Skill）](wiki/entities/mattpocock-setup-skills-skill.md) — setup-matt-pocock-skills**（[skills.sh](https://skills.sh/mattpocock/skills/setup-matt-pocock-skill `📅unknown` `[entity_page]`
 - [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md) — Skills For Real Engineers** 是 mattpocock/skills 仓库及其 [skil `📅unknown` `[entity_page]`
+- [tdd（Matt Pocock Skill）](wiki/entities/mattpocock-tdd-skill.md) — tdd**（skills.sh）是 [mattpocock/skills](https://github.co `📅unknown` `[entity_page]`
+- [triage（Matt Pocock Skill）](wiki/entities/mattpocock-triage-skill.md) — triage**（skills.sh）把 issue tracker（与可选 **外部 PR**）纳入  `📅unknown` `[entity_page]`
 - [MAVSDK](wiki/entities/mavsdk.md) — MAVSDK**（mavlink/MAVSDK）把 **MAVLink** 报文封装为可维护的 **插件式服务**，是伴机 `📅unknown` `[entity_page]`
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [MCAP](wiki/entities/mcap-log-format.md) — MCAP**（foxglove/mcap，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 `📅unknown` `[entity_page]`
@@ -4547,6 +4556,7 @@
 - [Valen（万澜 · Multimodal System One Decision Model）](wiki/entities/valen.md) — Valen**（GitHub，HF 组织，[P `📅unknown` `[entity_page]`
 - [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
+- [agent-browser（Vercel Labs Skill）](wiki/entities/vercel-agent-browser-skill.md) — agent-browser**（vercel-labs/agent-browser）是面向 codi `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
 - [VGGNet](wiki/entities/vggnet.md) — VGGNet** 证明仅用小尺寸 3×3 卷积反复堆叠即可加深网络并提升 ImageNet 精度，以结构简单换取可迁移的通用特征。 `📅unknown` `[entity_page]`
 - [video-shotcraft（Vincentwei1021/video-shotcraft）](wiki/entities/video-shotcraft.md) — video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotc `📅unknown` `[entity_page]`
