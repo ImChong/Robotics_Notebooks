@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | RTC 生态续 ingest：T-RTC/REMAC/FutureRTC/PPTBench 实体与 sources；扩充 RTC 页 LeRobot/openpi-rtc 入口
+
 ## [2026-09-30] ingest | WWSimBench HF v0.1（Wuwen-AI/WWSimBench）USD 线缆/铰链/三场景资产；已开源无 GitHub runner；实体 wwsimbench + 交叉 EmbodiedGen/仿真评测基建；自动合并 PR
 
 ## [2026-09-30] ingest | Menlo isaac_asimov 入库：Isaac Lab Asimov1 AMP/PPO 官方训练线；新增实体页并互链 asimov-v1 / mjlab
