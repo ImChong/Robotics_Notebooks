@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | VoiceStudio（debpalash/VoiceStudio）：全本地 TTS/克隆/转写/MCP 工作台入库，交叉人形语音交互流水线
+
 ## [2026-09-30] ingest | VLX-Seek（om-ai-lab）：区域 token 细粒度感知 VLM，推理+10B 权重已开源；实体页与 sources/repos+site
 
 ## [2026-09-30] ingest | Donchitos/Claude-Code-Game-Studios：sources/repos + wiki 实体，交叉 Superpowers/image-blaster；MIT 已开源 Claude Code 游戏工作室模板（49 agents / 74 skills）
