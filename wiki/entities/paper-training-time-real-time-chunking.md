@@ -65,6 +65,15 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 - **Kinetix**（与 RTC 同设定，\(H=8\)）：delay 0–4；T-RTC 在 **delay≥2** 成功率高于 inference-time RTC；二者共享未条件化的 base checkpoint 再各微调 8 epoch 以对齐算力。
 - **真机 π₀.₆**：box building、espresso making；相对 inference-time RTC **算力更省**且任务表现与速度 **不差**（论文与 PI 博客口径）。
 
+## 与其他工作对比
+
+| 维度 | Training-Time RTC | 对照 |
+|------|-------------|------|
+| 前缀约束方式 | 训练期对已提交 prefix 条件化，推理直接喂 prefix，采样与标准 flow 相同 | [Real-Time Chunking](./paper-real-time-chunking.md)：推理期 pseudoinverse inpainting，对整个 overlap 做 soft 约束，每步去噪付 VJP 开销 |
+| 高 delay 表现 | Kinetix 上 delay≥2 成功率高于 inference-time RTC（同 base checkpoint、各微调 8 epoch） | [Real-Time Chunking](./paper-real-time-chunking.md)：真机注入 +100 / +200 ms 后吞吐基本持平，时间集成失败 |
+| 训练目标 | 随机采样 delay，loss 只算 postfix | [REMAC](./paper-remac.md)：delay 条件 mask 监督可执行后缀 + 自条件课程，额外强调 intra-chunk 不一致 |
+| 是否改 VLA 权重 | 改；需微调策略 | [FutureRTC](./paper-futurertc.md)：冻结 VLA，前挂 adapter 预测执行时刻视觉 latent 与本体状态 |
+
 ## 结论
 
 **若可接受少量微调预算，training-time 前缀条件化是 inference-time inpainting 的更省延迟默认项；高 delay 仿真增益更明显。**

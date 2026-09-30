@@ -145,6 +145,14 @@ sequenceDiagram
 - **Dr.DocBench Challenge：** 自报 **67.96** overall > MinerU 2.5 pro；formula CDM 仍低（**0.02**）— 竞赛轨与 OmniDoc 主榜 **不可直接混读**。
 - **ICDAR 2026 Sci-ImageMiner：** 榜单 **#1**（Weighted **41.81**）。
 
+## 与其他工作对比
+
+| 维度 | TeleOCR | 对照 |
+|------|-------------|------|
+| 识别对象 | 数字 PDF + 手机拍摄畸变文档的结构化解析（文本 / 公式 LaTeX / 表格 OTSL / 阅读顺序） | [RPDF / Scanford](./paper-scanford-robot-powered-data-flywheel.md)：图书馆书脊识别，困难英 / 中 OCR 作为域邻接评测（+21.8 / +7.2 pp，数值摘自该页论文摘录） |
+| 训练数据来源 | MCV 多模型共识伪标 + 渲染回图自验证 + 几何感知合成，少人工标注 | [RPDF / Scanford](./paper-scanford-robot-powered-data-flywheel.md)：野外部署机器人边执行任务边自动采集、策展数据并持续微调 VLM |
+| 在机器人数据栈中的位置 | 手册 / SOP / 论文 PDF 的上游 OCR，输出供知识库 ingest | [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)：VLM 为原始机器人轨迹生成文本描述与成功率标签，属轨迹语义标注 |
+
 ## 结论
 
 **TeleOCR 把文档解析从「要么级联版面、要么端到端胡编」推进到「1.2B 统一数字+拍摄、且开源可跑」的实用点。**
