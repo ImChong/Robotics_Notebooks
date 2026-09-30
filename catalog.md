@@ -613,6 +613,7 @@
 - [InternRobotics运动控制开源生态](wiki/entities/internrobotics.md) — InternRobotics运动控制开源生态](https://github.com/InternRobotics) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [IQuest-Q1](wiki/entities/iquest-q1.md) — IQuest-Q1** 是 IQuest（IQuestLab） 发布的 **开放权重** 稀疏 **MoE** 大模型：**约 32 `📅unknown` `[entity_page]`
 - [Ironless QDD Actuator（无铁芯转子摆线—行星执行器）](wiki/entities/ironless-qdd-actuator.md) — Ironless QDD Actuator**（[CKraft11/Ironless-QDD-Actuator](https://github.com/CKraft11/Ironless-QDD- `📅unknown` `[entity_page]`
+- [isaac_asimov（Asimov 1 × Isaac Lab）](wiki/entities/isaac-asimov.md) — isaac_asimov**（menloresearch/isaac_asimov）是 [Menl `📅unknown` `[entity_page]`
 - [Isaac GR00T（人形 VLA 开发平台）](wiki/entities/isaac-gr00t.md) — Isaac GR00T** 是 NVIDIA 面向通用人形机器人的 **开源开发平台**：以 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Sim / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym**、**Isaac Sim** 与 **Isaac Lab** 是 NVIDIA 机器人仿真与学习生态里需要分开理解的三个产品节点。 `📅unknown` `[entity_page]`
 - [Isaac Gym](wiki/entities/isaac-gym.md) — Isaac Gym** 是 NVIDIA 早期推出的 GPU 加速机器人强化学习仿真框架，主打「在单张 GPU 上同时跑几千到上万个环境」的大规模并行训练。 `📅unknown` `[entity_page]`
