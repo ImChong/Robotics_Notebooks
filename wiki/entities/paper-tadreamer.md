@@ -111,6 +111,15 @@ flowchart TB
 | 深度标定 | 均值 MADE **−87.7%** vs NavDreamer，**−80.0%** vs 纯 DA3 |
 | vs 几何规划 | 草地/台阶场景几何 baseline 误起飞；TADreamer 语义选 **ground** 节能 |
 
+## 与其他工作对比
+
+| 维度 | TADreamer | 对照 |
+|------|-----------|------|
+| 规划载体 | 生成视频 + 实测点云标定出 metric 路点 | NavDreamer：同为零样本视频想象导航，单尺度对齐（本文深度误差低约 87.7%） |
+| 平台 | 陆空双模（ground / flight 模式标签） | [FSD-VLN](./paper-fsd-vln.md)：空中长程 VLN 快慢双系统 |
+| 3D 条件 | 想象几何经 ICP 拉回真实尺度 | [WNM-3D-VLN](./paper-wnm-3d-vln.md)：3D 场景条件世界导航模型，闭环 RL 优化 |
+| 场景尺度 | 室内外七场景真机 | [DA-Nav](./paper-da-nav.md)：城市尺度户外 VLN，用商业导航方向指令 |
+
 ## 结论
 
 **TADreamer 的可复用结论是：TABR 语言导航可把生成视频当「语义+时序」规划载体，但执行前必须用实测几何（尤其各向异性 scale）校准 imagined 路点，否则 NavDreamer 式单尺度对齐不够。**

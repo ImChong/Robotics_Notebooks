@@ -93,6 +93,14 @@ flowchart LR
 - **发布任务示例：** `serve_bread`、`water_flowers`（仓库配置与 HF 数据对齐）。
 - **本页不搬运** 完整 ablation 表；数值与基线以 [PDF](https://arxiv.org/pdf/2605.24934) 为准。
 
+## 与其他工作对比
+
+| 维度 | HumanEgo | 对照 |
+|------|----------|------|
+| 机器人数据 | **零**机器人示教 | [EgoMimic](./paper-ego-03-egomimic.md)：Aria 人类数据与机器人遥操数据**共训** |
+| 人类数据量 | 每任务约 30 分钟 | [Gen-HumanEgo](./gen-human-ego-dataset.md)：1848 h 大规模 ego 语料，供预训练 |
+| 表征 | 实体级 HOI + ICT + flow matching | [EgoVLA](./paper-loco-manip-161-161-egovla.md)：端到端 VLA，多模态编码后模仿学习 |
+
 ## 结论
 
 **HumanEgo 把「极少 egocentric 人类分钟数」推到可部署机器人策略，关键在实体 HOI + ICT + 干净图，而不是堆机器人 teleop 数据。**

@@ -49,6 +49,20 @@ summary: "BATON（arXiv:2608.16889）：冻结 VLA + LLM 规划 + 子任务探�
 - 纳入 [一周 VLA 趋势（2026.08.17 第一篇）](../overview/vla-weekly-trends-2026-08-17-part1-technology-map.md) 横切面索引。
 - 与 [VLA](../methods/vla.md) 方法页及同周其他 **16/16 独立 canonical 节点** 交叉对照。
 
+## 评测与指标
+
+- **基准：** 长程记忆操作基准 **RoboMemArena**；VLA 冻结、**不更新任何参数**（agent + 记忆层做适配）。
+- **主结果：** 相对 SoTA，**任务成功率 +11.6%**、**累计（逐阶段）成功率 +14.9%**（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **机制指标：** 探索成本由整任务的 ~T^K 降为逐子任务的 ~T·K，且每次失败可归因到单一阶段——这是方法主张，读实验时重点看各阶段失败归因是否成立。
+
+## 与其他工作对比
+
+| 维度 | BATON | 对照 |
+|------|-------|------|
+| 记忆载体 | 语言记忆 + **transition-aware**（调用 / 交接 / 前瞻三类转移） | [HyMeS](./paper-hymes-hybrid-memory-manipulation.md)：coding agent 管高层记忆规则，VLA 学低层技能 |
+| 是否训练 | 不更新参数，测试时逐子任务探索 | [SimpleMemVLA](./paper-simplememvla.md)：把历史视频直接喂进 VLA 训练，无专用记忆模块 |
+| 长程分解 | agent 规划 + 解析原语走自由空间，VLA 只做接触段 | [τ₀-VLA](./paper-tau0-vla.md)：记忆增强高层子任务策略 + 世界模型引导 beam search |
+
 ## 结论
 
 **BATON 在本库中作为 arXiv:2608.16889 的 canonical 详情节点；部署与复现前请对照原文 PDF/HTML 与作者发布资源。**
