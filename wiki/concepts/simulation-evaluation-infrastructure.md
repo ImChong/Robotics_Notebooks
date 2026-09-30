@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-30
 related:
   - ../entities/deepinsight.md
   - ../entities/insight-bench.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-sceneagent-real2sim-capture-physics.md
   - ../entities/paper-loco-manip-161-075-simple.md
   - ../entities/robodojo.md
+  - ../entities/wwsimbench.md
   - ../entities/xpolicylab.md
   - ./sim2real.md
   - ./data-flywheel.md
@@ -128,6 +129,7 @@ flowchart TB
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
 - [RoboDojo](../entities/robodojo.md) — Isaac 异构并行 + RealEval 真机的统一评测栈工程样本
+- [WWSimBench](../entities/wwsimbench.md) — 无问芯穹 HF 公开 USD 资产（线缆/铰链/三场景）；无官方 runner
 
 ## 推荐继续阅读
 

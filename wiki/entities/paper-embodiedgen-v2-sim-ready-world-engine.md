@@ -19,6 +19,7 @@ related:
   - ../methods/vla.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
+  - ../entities/wwsimbench.md
   - ../entities/paper-deform360-deformable-visuotactile-dataset.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
@@ -171,6 +172,7 @@ flowchart TB
 - [GitHub 仓库](https://github.com/HorizonRobotics/EmbodiedGen)
 - [EmbodiedGenData 数据集](https://huggingface.co/datasets/HorizonRobotics/EmbodiedGenData)
 - [GigaWorld-1 论文实体](./paper-gigaworld-1-policy-evaluation.md)
+- [WWSimBench（无问 WWBench 仿真资产 HF v0.1）](./wwsimbench.md)
 
 ## 参考来源
 
