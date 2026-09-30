@@ -13,6 +13,7 @@ related:
   - ../concepts/ros2-basics.md
   - ../entities/unitree-g1.md
   - ../entities/unitree-g1-software-stack.md
+  - ../entities/voicestudio.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
 summary: "人形语音交互工程流水线：把唤醒/ASR→LLM 理解规划→技能或 VLN 执行→TTS 反馈串成可打断（barge-in）闭环，逐环给出选型、失败模式与首查项。"
@@ -71,7 +72,7 @@ flowchart LR
 | ASR | 本地（如 Whisper）vs 云 API | **噪声掉字/低置信**，赛场工厂噪声尤甚；云上传有隐私合规问题 | ASR 置信度日志与音频质量（麦阵、回声消除、采样） |
 | LLM 理解/规划 | 正则槽位 NLU vs 小 LLM vs LLM tool-calling | **幻觉指令**：生成不存在或未限幅的技能；开放搜索当工具风险更高 | 是否强制接地到技能白名单、移动类指令是否二次确认 |
 | 技能 / VLN 执行 | 预注册技能 API vs 语音→[VLN](../tasks/vision-language-navigation.md)/Nav2 | 技能**静默失败**；「去门口」缺地标/里程计而落不了地 | 技能返回码与执行状态是否回灌 LLM、失败是否语音报错 |
-| TTS 反馈 | 本地中英 TTS vs 云 TTS | **首包延迟高**、播报冗长挡住 barge-in 窗口 | 首包 TTS 延迟、播报时 VAD 是否仍在监听以支持打断 |
+| TTS 反馈 | 本地中英 TTS vs 云 TTS；Lab 侧可用 [VoiceStudio](../entities/voicestudio.md) 等多引擎对比后再抽单引擎上机 | **首包延迟高**、播报冗长挡住 barge-in 窗口 | 首包 TTS 延迟、播报时 VAD 是否仍在监听以支持打断 |
 | 闭环延迟 | 各环预算分配 | **端到端延迟**累积使对话体感迟钝（本地小模型通常更稳） | 分段计时（VAD+ASR / LLM / 首包 TTS），定位最慢环 |
 
 补充要点：
@@ -98,3 +99,4 @@ flowchart LR
 - [大模型赋能人形](../overview/large-model-empowered-humanoids.md) — 语音交互在「大模型赋能」方法地图中的位置
 - [NaVid](../entities/paper-vln-10-navid.md) — 语音→VLN 落地的代表性导航模型
 - [OpenLess](../entities/openless.md) — 开发者本机口述写作工具（ASR 管线对照；不做机器人四环闭环）
+- [VoiceStudio](../entities/voicestudio.md) — 全本地 TTS/克隆/转写/MCP 工作台（Lab 选型；非机载中间件）
