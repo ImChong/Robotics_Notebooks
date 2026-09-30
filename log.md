@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | FeelWorld（arXiv:2607.24267v1）：CASIA/ImprintX 分层视触觉 WM + contact-aware CEM；无官方代码仓
+
 ## [2026-09-30] ingest | RoboFoundry（arXiv:2609.32862）：NTU/北航/NUS/云蝶/上交 System-as-Policy 自进化框架；项目页未列代码；EmbodiedBench/RoboMemArena/LIBERO-PRO SOTA 叙事
 
 ## [2026-09-30] ingest | 双 ingest：arXiv:2609.36012 机器人 ICL 综述（awesome-robots-icl 文献库已开源）；RA-L PADP（DOI:10.1109/lra.2026.3734869，Go2/LYNX M20+Z1，未见代码）。澄清两篇非同一链接。

@@ -1558,6 +1558,7 @@
 - [FastStair（Learning to Run Up Stairs with Humanoid Robots）](wiki/entities/paper-faststair-humanoid-stair-ascent.md) — FastStair** 是面向 **人形机器人高速上楼梯** 的 **规划引导 + 多阶段强化学习** 工作（arXiv:2601.10365，LimX Dynamics 等）：用 **DCM 落 `📅unknown` `[entity_page]`
 - [Fault-Tolerant Locomotion（执行器失效自适应步态）](wiki/entities/paper-fault-tolerant-locomotion.md) — Learning Fault-Tolerant Locomotion with Adaptive Gait Timing**（[arXiv:2608.07328](https://arxiv.or `📅unknown` `[entity_page]`
 - [FDDC：首个可部署的动态 CoM 单腿平衡策略与基准](wiki/entities/paper-fddc.md) — FDDC**（*First Deployable Dynamic-CoM*；论文 *First Deployable Dynamic-CoM: A Unified Policy and Metho `📅unknown` `[entity_page]`
+- [FeelWorld（Hierarchical Visuo-Tactile WM · arXiv:2607.24267v1）](wiki/entities/paper-feelworld.md) — FeelWorld**（*FeelWorld: Visuo-Tactile World Model for Hierarchical Contact Prediction and Planning `📅unknown` `[entity_page]`
 - [FER ROS 2 Panda 栈](wiki/entities/paper-fer-ros2-panda-stack.md) — Keeping the Franka Emika Panda alive: a ROS 2 stack with a reliable position interface**（[arXiv:26 `📅unknown` `[entity_page]`
 - [Fetch My Beer（arXiv:2609.18119）](wiki/entities/paper-fetch-my-beer.md) — Fetch My Beer**（*Fetch My Beer: Synthetic-to-real Hierarchical Policy for Smooth Pick-and-place*， `📅unknown` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan**（*Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences*，[arXiv `📅unknown` `[entity_page]`
