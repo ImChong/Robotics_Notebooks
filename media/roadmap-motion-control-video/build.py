@@ -389,8 +389,8 @@ def assemble(total, segs, audio_parts, chaps, subs, name):
     mp4 = OUT / f"{name}.mp4"
     cmd = [ffmpeg_exe(), "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", str(wav),
            "-i", str(meta), "-map", "0:v", "-map", "1:a", "-map_metadata", "2", "-map_chapters", "2",
-           "-r", str(FPS), "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "21",
-           "-pix_fmt", "yuv420p", "-g", str(FPS * 10), "-c:a", "aac", "-b:a", "80k", "-ac", "1",
+           "-r", str(FPS), "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "22",
+           "-pix_fmt", "yuv420p", "-g", str(FPS * 60), "-c:a", "aac", "-b:a", "48k", "-ac", "1",
            "-movflags", "+faststart", "-shortest", str(mp4)]
     subprocess.run(cmd, check=True)
     # 字幕与章节表

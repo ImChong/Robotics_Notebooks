@@ -2168,6 +2168,37 @@ button.home-wiki-heatmap-cell.is-active {
   border: 0;
   border-top: 1px solid var(--border);
 }
+/* 路线讲解视频：原生播放器 + 说明 + 可折叠章节时间点 */
+.detail-markdown-body .roadmap-video {
+  margin: 1.25rem 0 1.5rem;
+}
+.detail-markdown-body .roadmap-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #0a1622;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.detail-markdown-body .roadmap-video figcaption {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.detail-markdown-body .roadmap-video-chapters {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.detail-markdown-body .roadmap-video-chapters summary {
+  cursor: pointer;
+}
+.detail-markdown-body .roadmap-video-chapters ol {
+  margin: 0.4rem 0 0;
+  columns: 2 18rem;
+}
 .detail-markdown-body ul,
 .detail-markdown-body ol {
   padding-left: 1.4em;

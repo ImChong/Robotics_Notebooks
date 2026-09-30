@@ -1,4 +1,4 @@
-# 依赖与生成物不入库：配音缓存、渲染帧、成片（~100 MB）
+# 依赖与中间产物不入库：配音缓存、渲染帧、本地输出（入库成片在 docs/assets/video/）
 node_modules/
 package-lock.json
 vendor/

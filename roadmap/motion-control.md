@@ -14,6 +14,45 @@
 - **L6 → L7**：sim2real 闭环，以及全栈视角与 2024–2026 前沿地图。
 - **L8 → L12**：Transformer / VLM → Action Chunk · Diffusion · Flow Matching · DiT → π0 / GR00T → Cosmos 世界模型 → ONNX / ROS2 / 实时总线上真机。
 
+<a id="roadmap-video"></a>
+
+<figure class="roadmap-video">
+<video controls preload="none" playsinline poster="assets/video/roadmap-motion-control-explained-poster.jpg">
+<source src="assets/video/roadmap-motion-control-explained.mp4" type="video/mp4">
+当前浏览器无法内嵌播放，可<a href="https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4">直接打开视频文件</a>。
+</video>
+<figcaption><strong>视频讲解</strong>（1:35:36 · 24 章 · 中文配音 + 字幕）：按 L−1 → L0–L7 → L8–L12 逐级讲清每一层的核心要点与原理，自测题在讲解中直接给出答案。<a href="https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4">新标签页打开 / 下载</a> · <a href="https://github.com/ImChong/Robotics_Notebooks/tree/main/media/roadmap-motion-control-video">讲解稿与生成脚本</a></figcaption>
+<details class="roadmap-video-chapters">
+<summary>章节时间点</summary>
+<ol>
+<li>00:00 开场：这条路线要回答什么</li>
+<li>01:44 全景地图：从 camera image 到 motor torque</li>
+<li>05:41 L−1 序言：机器人技术栈全景</li>
+<li>08:53 L0 数学与编程基础</li>
+<li>12:23 L1 机器人学骨架：FK / IK / Jacobian</li>
+<li>16:36 L2 动力学与刚体建模</li>
+<li>20:56 L3 控制基础与最优化</li>
+<li>27:35 L4 人形运动控制主干：方法链总览</li>
+<li>31:01 L4.1 LIP / ZMP：会走路的倒立摆</li>
+<li>36:04 L4.2 质心动力学 Centroidal Dynamics</li>
+<li>38:48 L4.3 轨迹优化与 MPC</li>
+<li>42:09 L4.4 TSID / 全身控制 WBC</li>
+<li>45:18 L5 强化学习基础：MDP → PPO</li>
+<li>51:56 L5.2 RL 在人形运动控制里的应用</li>
+<li>55:50 L5.3 模仿学习：BC · DAgger · DeepMimic · AMP</li>
+<li>59:36 L5.4 动作重定向</li>
+<li>1:03:42 L6 综合实战：Sim2Real</li>
+<li>1:08:15 L7 出口：从运动控制看整个技术栈</li>
+<li>1:12:18 L8 Transformer 与表征：从 token 到 VLM</li>
+<li>1:15:42 L9 动作生成：Action Chunk · Diffusion · Flow Matching · DiT</li>
+<li>1:20:03 L10 VLA / 基础策略：π 系列与 GR00T</li>
+<li>1:24:21 L11 世界模型与 Physical AI 平台</li>
+<li>1:27:56 L12 部署：从训练好的策略到真机电机</li>
+<li>1:31:44 收尾：过滤新工作 · 纵深方向 · 常见卡点 · 全路线回顾</li>
+</ol>
+</details>
+</figure>
+
 ## 三句话先懂这条路线
 
 1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。
@@ -26,6 +65,7 @@
 
 ## 先看哪里（导航）
 
+- 想 **先看一遍视频讲解**：播放页首的 [路线讲解视频](#roadmap-video)（1:35:36，24 章，逐级讲清每层要点与原理）。
 - 想 **30 秒先理解整个机器人技术栈**：跳到 [L−1 序言](#l1-序言机器人技术栈全景--怎么读这条路线)。
 - 想 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读，再进入 L8–L12 的 Physical AI 扩展。

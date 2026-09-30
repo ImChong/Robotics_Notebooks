@@ -68,6 +68,15 @@ test('SW ignores other projects, similar prefixes, external hosts and non-GET re
   }
 });
 
+test('SW leaves videos to the browser so range requests and seeking work', () => {
+  const h = harness();
+  h.handlers.fetch({
+    request: { url: 'https://imchong.github.io/Robotics_Notebooks/assets/video/roadmap-motion-control-explained.mp4', method: 'GET' },
+    respondWith() { assert.fail('must not intercept video'); },
+  });
+  assert.equal(h.opened.length, 0);
+});
+
 test('offline reads use the project cache for regular and network-first assets', async () => {
   for (const asset of ['main.js', 'sponsor.js', 'exports/site-catalog-v1.json']) {
     const h = harness();

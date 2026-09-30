@@ -68,6 +68,8 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
   if (!url.pathname.startsWith(PROJECT_PATH)) return;
+  // 视频交给浏览器原生 Range 请求（拖动进度条）：不进离线缓存，也不被改写成整段 200 响应。
+  if (url.pathname.endsWith('.mp4')) return;
 
   // 目录优先读网络，离线再用缓存；正文哈希 URL 与目录版本配套。
   if (url.pathname.endsWith('/sponsor.js') || url.pathname.endsWith('/site-catalog-v1.json')) {
