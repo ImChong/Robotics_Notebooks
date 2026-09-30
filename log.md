@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | VLX-Seek（om-ai-lab）：区域 token 细粒度感知 VLM，推理+10B 权重已开源；实体页与 sources/repos+site
+
 ## [2026-09-30] ingest | Donchitos/Claude-Code-Game-Studios：sources/repos + wiki 实体，交叉 Superpowers/image-blaster；MIT 已开源 Claude Code 游戏工作室模板（49 agents / 74 skills）
 
 ## [2026-09-30] ingest | DeepTutor 复核 v1.6.12 与 deeptutor.info 八大表面；更新 sources 与 wiki/entities/deeptutor.md
