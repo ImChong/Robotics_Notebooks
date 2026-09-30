@@ -170,7 +170,7 @@ flowchart TD
 ### 离线强化学习（Offline RL）
 从固定数据集中学习，不允许和环境交互。
 
-代表：CQL, IQL, Decision Transformer
+代表：CQL, IQL, Decision Transformer、[ReFORM](../entities/paper-reform-iclr-2026.md)（flow 策略 + support 内噪声操纵，OGBench）
 
 ## 在机器人控制中的典型应用
 

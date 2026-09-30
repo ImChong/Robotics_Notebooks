@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../concepts/rl-runner.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-splc.md
   - ../entities/paper-smpc2rl-loco-manipulation.md
   - ../entities/paper-rlinf-user.md
+  - ../entities/paper-reform-iclr-2026.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -43,7 +44,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 | **仿真依赖** | 高（通常需要仿真器） | 低（可用历史数据训练） |
 | **性能上限** | 理论上无上限（能超越数据集） | 受数据集质量上限限制 |
 | **安全性** | 低（探索会产生危险动作） | 高（不与真实环境交互） |
-| **代表算法** | PPO、SAC、TD3 | CQL、IQL、TD3+BC、Decision Transformer |
+| **代表算法** | PPO、SAC、TD3 | CQL、IQL、TD3+BC、Decision Transformer、[ReFORM](../entities/paper-reform-iclr-2026.md)（flow + support-by-construction） |
 
 ## Online RL
 
@@ -105,6 +106,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 | **IQL**（Implicit Q-Learning） | 不显式评估 OOD 动作，用 expectile regression |
 | **TD3+BC** | 行为克隆正则项约束策略不偏离数据集 |
 | **Decision Transformer** | 条件 sequence model，直接生成动作序列 |
+| **[ReFORM](../entities/paper-reform-iclr-2026.md)** | BC flow 有界源刻画 support + reflected 噪声在 support 内最大化 Q（无行为策略距离正则） |
 
 ### 机器人场景适用性
 
