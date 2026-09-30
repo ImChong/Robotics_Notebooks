@@ -10,6 +10,7 @@
 
 | 文件 | 内容 |
 |------|------|
+| [x] [prism_real2sim2real_arxiv_2609_38172.md](papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM：V2V counterfactual + 接触锚定 Real2Sim2Real 人形 loco-manip（arXiv:2609.38172，Amazon FAR 等；Code 链待公开）摘录与 wiki 映射 |
 | [x] [qplanning_arxiv_2608_21204.md](papers/qplanning_arxiv_2608_21204.md) | Q-Planning：冻结 BC/VLA + 离策略 Q 加权规划与 Q-only 自改进（arXiv:2608.21204，Georgia Tech；已开源）摘录与 wiki 映射 |
 | [x] [foretime_vla_arxiv_2608_20735.md](papers/foretime_vla_arxiv_2608_20735.md) | ForeTime-VLA：Fast-WAM 未来 token 蒸馏到因果 π₀.₅ 传送带操纵（arXiv:2608.20735，清华/上海 AI Lab/哈工大/云深处；未开源）摘录与 wiki 映射 |
 | [x] [g1_compliant_surface_standup_arxiv_2608_20852.md](papers/g1_compliant_surface_standup_arxiv_2608_20852.md) | G1 软地面参考引导起身（arXiv:2608.20852，IIT Kanpur；评测+软地权重已开源）摘录与 wiki 映射 |

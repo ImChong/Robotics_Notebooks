@@ -180,6 +180,10 @@ flowchart TD
 
 共同前提是**不从零学平衡与步态**——先有全身跟踪器、WBC 或 AMP 先验，再用残差、适配器或复合模仿把任务能力叠上去。
 
+#### Counterfactual V2V + 接触锚定 Real2Sim2Real（深度 + 摇杆 carry）
+- **核心**：**Video-to-video** 在少量真人 seed 上合成 **counterfactual 人–物交互**（换物体且人的行为随 affordance 变）；**CRISP 类 Real2Sim** 扩展动态物体，**接触锚** 贯穿 pose 优化、重定向与 RL；**co-tracking teacher** → **DAgger+PPO** 蒸馏为 **机载深度 + 摇杆** 统一策略，**无 MOCAP/参考 motion**。
+- **代表作**：[PRISM](../entities/paper-prism-real2sim2real.md) (Amazon FAR×Berkeley×Stanford×CMU, CoRL 2026, arXiv:2609.38172) — 4 seed→256 V2V；G1 真机 **20+ 物体** zero-shot pick–carry–drop；相对 OMOMO-only 在 PRISM OOD **12.5%→72.92%**；项目页 Code 链 **待公开**（入库日 GitHub 404）。
+
 #### 视觉分层 Sim2Real（Keypoint Tracker + Depth Visuomotor）
 - **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
 - **稳定技巧**：低层训时命令噪声；高层动作 clip 到人类动作空间（HMS）；仿真深度 heavy masking 抗 visual gap。

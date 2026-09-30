@@ -167,7 +167,7 @@ flowchart LR
 - 了解仿真训练策略再迁真机的基本闭环（可先读 [Sim2Real 纵深](depth-sim2real.md) Stage 0–2）
 
 ### 核心问题
-- **用途 A · 回仿真训练策略再迁真机**：在重建场景/数字表亲上训练并零样本部署——[Flexion 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) 的 RGB 导航、[VIRAL](../wiki/entities/paper-viral-humanoid-visual-sim2real.md) 的视觉 loco-manipulation、SimFoundry 的 sim-to-real 操作训练（YAM/DROID 近 99–100%）
+- **用途 A · 回仿真训练策略再迁真机**：在重建场景/数字表亲上训练并零样本部署——[Flexion 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) 的 RGB 导航、[VIRAL](../wiki/entities/paper-viral-humanoid-visual-sim2real.md) 的视觉 loco-manipulation、SimFoundry 的 sim-to-real 操作训练（YAM/DROID 近 99–100%）；[PRISM](../wiki/entities/paper-prism-real2sim2real.md) 用 **V2V counterfactual + 接触锚定 Real2Sim** 从 4 条真人视频扩成 G1 **深度+摇杆** pick–carry–drop（arXiv:2609.38172）
 - **用途 B · real-to-sim 策略评测基础设施**：把可信仿真当**可扩展闭环评测**，用 real-to-sim 相关性把模型迭代从墙钟瓶颈转成算力瓶颈（[仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md)）；SimFoundry 报告仿真↔真机均值 **Pearson 0.911 / MMRV 0.018**；口径要清楚"可复现性 ↔ 代表性"的取舍（[Sim vs Real 评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md)）；产业侧参照 [Genesis World 1.0](../wiki/entities/genesis-world-10.md)
 - **用途 C · Real2Sim 真机回放作为"最后一公里"微调路线**：不在真机上训练，用真机数据反修仿真后回训策略，真机零探索风险（[Sim2Real 残差适配 vs Real2Sim 真机回放对比](../wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md)）
 - **闭环观**：Real2Sim 先在仿真侧把 gap 修小 → 仿真里重训 → Sim2Real 残差适配在真机侧吸收剩余残差；三者在"gap 在哪被消化"这条轴上是连续谱
