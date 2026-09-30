@@ -10,7 +10,7 @@ tags:
   - berkeley
   - max-planck
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 arxiv: "2406.09246"
 code: https://github.com/openvla/openvla
 related:
@@ -26,6 +26,7 @@ related:
 sources:
   - ../../sources/papers/openvla_arxiv_2406_09246.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md
   - ../../sources/repos/openvla.md
 summary: "OpenVLA（arXiv:2406.09246）：7B 开源 VLA；DINOv2+SigLIP + Llama 2；OXE 预训练；LoRA/OFT 微调；openvla/openvla 已开源。"
 ---
@@ -77,6 +78,39 @@ flowchart LR
   proj --> llama
   llama --> tok[动作 token]
   tok --> detok[反分词器 → 连续动作]
+```
+
+## 推理与执行边界（原始 OpenVLA）
+
+下列边界对齐 [自由度 FreeDof 链路导读](../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md) 与 [openvla/openvla](https://github.com/openvla/openvla) 公开实现，便于区分 **神经网络预测** 与 **机器人侧控制**。
+
+| 环节 | 原始 OpenVLA 默认 |
+|------|-------------------|
+| **观测** | 单帧主相机 RGB + 语言指令；**不**把历史帧、关节角、夹爪开合作为显式 NN 输入 |
+| **一步输出** | 7 维 **末端** 增量（3 平移 + 3 旋转 + 1 夹爪），经 256-bin 离散 token **自回归** 生成整步后再解码 |
+| **反归一化** | 推理需指定与权重配套的 `unnorm_key`（常用 p1/p99 → [−1,1] 再还原物理量） |
+| **预测结束点** | 反归一化后的数值动作交给环境；**IK、限速、碰撞** 在下游 |
+| **Bridge/WidowX** | 末端增量 → 末端目标 → **IK** → 关节指令（IK 不在 token 语义内） |
+
+**控制循环：** 刷新图像 → 模型生成 **完整一步** → 调用执行接口 → 再观测；阻塞/非阻塞由评测脚本决定，不等于必须等机器人完全到位才采下一帧。
+
+**常见误读：**
+
+- 「自回归」指 **同一步 7 个动作分量** 的顺序依赖，不是一次输出整段语言计划或全长关节轨迹。
+- 论文 **256 档** vs 代码 **255 区间中心 + 边界裁剪** — 复现须跟仓库分箱，勿自行换规则。
+- 单帧看不见夹爪时模型仍会输出；若存在左/右对称歧义且 **无** 本体/历史，下一步 **不可靠** — 后续 VLA 改观测（多帧、状态、并行 chunk）多为此类缺口，见 [VLA 演进谱系](../overview/vla-evolution-lineage.md)。
+
+**推理算力（发表口径）：** ~7B、单卡 RTX 4090、无 compile 时约 **6 次完整推理/秒** — 这是 **策略调用频率** 的上界参考，不等于机械臂 1 kHz 关节环。
+
+```mermaid
+flowchart TB
+  obs[单帧 RGB + 指令] --> enc[DINOv2 + SigLIP → Projector]
+  enc --> llm[Llama 2 自回归 7 动作 token]
+  llm --> dec[解码 + unnorm_key]
+  dec --> ee[7D 末端命令]
+  ee --> ik[机器人侧 IK / 跟踪]
+  ik --> robot[执行]
+  robot --> obs
 ```
 
 ## 评测
@@ -148,4 +182,5 @@ sequenceDiagram
 
 - [openvla_arxiv_2406_09246](../../sources/papers/openvla_arxiv_2406_09246.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+- [自由度 FreeDof：OpenVLA 从看懂到动起来](../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md)
 - [openvla 仓库归档](../../sources/repos/openvla.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-30
 related:
   - ./paper-openvla.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -15,6 +15,7 @@ related:
   - ./paper-arcadia.md
 sources:
   - ../../sources/repos/openvla.md
+  - ../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
 summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + 离散动作 token，支持多数据集预训练与 LoRA/OFT 微调，常与 LeRobot 数据栈配合。"
 ---
@@ -45,7 +46,7 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 - **骨干**：Prismatic-7B 等 VLM，融合 SigLIP/DINO 视觉特征与 Llama 类语言模型。
 - **动作表示**：将连续控制 **离散化为 token**，便于自回归生成。
 - **训练**：多机器人数据集混合预训练；下游可用 **LoRA、OFT** 降低算力门槛。
-- **推理**：提供策略服务器与 Hugging Face 权重；真机需自行对接机器人 SDK。
+- **推理**：提供策略服务器与 Hugging Face 权重；真机需自行对接机器人 SDK。单帧 → 7D 末端 token → `unnorm_key` → **下游 IK** 的边界见 [paper-openvla §推理与执行边界](./paper-openvla.md#推理与执行边界原始-openvla)。
 
 ## 常见误区或局限
 
@@ -57,6 +58,7 @@ summary: "OpenVLA 是开源视觉-语言-动作模型：Prismatic VLM 骨干 + �
 ## 参考来源
 
 - [sources/repos/openvla.md](../../sources/repos/openvla.md)
+- [自由度 FreeDof：OpenVLA 感知—动作链路](../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md)
 - [openvla/openvla](https://github.com/openvla/openvla)
 - Kim et al., *OpenVLA: An Open-Source Vision-Language-Action Model*
 
