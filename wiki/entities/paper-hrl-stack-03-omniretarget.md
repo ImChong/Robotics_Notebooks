@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-09-16
+updated: 2026-09-30
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
@@ -22,6 +22,7 @@ related:
   - ./unitree-g1.md
   - ./paper-egohtr.md
   - ./paper-umr-unified-motion-retargeting.md
+  - ./paper-hoi-retarget.md
 sources:
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/sites/omniretarget-github-io.md
@@ -166,6 +167,9 @@ sequenceDiagram
 | VideoMimic | 软惩罚 | 地形为主 | 无 | 部分 |
 | IMMA | 有 | 无环境/物体 | 无 | 否 |
 | **OmniRetarget** | 有 | 有 | 有 | **holosoma + HF 数据** |
+| [HOI-Retarget](./paper-hoi-retarget.md) | 有（关节界） | 有（**物体系 contact**） | 物体尺度 | **GitHub + HF 6.9k clips** |
+
+**HOI 接触精度轴：** [HOI-Retarget](./paper-hoi-retarget.md)（arXiv:2609.34674）在 OMOMO/G1 上报告 mean contact-point gap **0.5 cm** vs 本文 interaction-mesh 路线 **18.3 cm**，且约 **4.6×** 更快 — 选型时若下游 LfD 敏感于 **抓取点/薄物体**，宜优先 contact-centric 参考；若需 **地形+全身场景交互 mesh**，仍用本文 holosoma 栈。
 
 ## 核心信息
 
@@ -187,6 +191,7 @@ sequenceDiagram
 - 下游数据消费：[EgoHTR](./paper-egohtr.md) 项目页声明 Human2Robot 场景感知 retarget 基于 OmniRetarget / GMR / CoACD
 - 表面对应对照：[UMR](./paper-umr-unified-motion-retargeting.md) — 点云接触向量、无粘脚硬约束；Carry/Kick/Stair 报告优于本文，Chair 上本文略好
 - 终端运输距离变体：[DCRR（2609.21467）](./paper-dcrr-distance-conditioned-humanoid-transport.md) — 在 retargeted 源参考上重拼 termination 段，构造距离条件 loco-manip 监督
+- HOI 接触保真：[HOI-Retarget（2609.34674）](./paper-hoi-retarget.md) — 物体系 contact target + 窗口 NLP；vendored GMR IK；可接 DynaRetarget 作 dynamic refinement
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 

@@ -31,6 +31,7 @@ related:
   - ../entities/easymocap.md
   - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../entities/paper-beyondretarget-monocular-humanoid.md
+  - ../entities/paper-hoi-retarget.md
   - ../entities/paper-morphometric-imitation.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
