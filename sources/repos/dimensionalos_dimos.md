@@ -68,6 +68,17 @@ Dimensional 自称「**下一代通用机器人 SDK 标准**」与「**物理空
 
 真机 Go2 经 **WebRTC + ROBOT_IP**；文档提供 `dimos[base,unitree]` 快速安装。
 
+## Navigation 文档与 Nav Arena 评测
+
+| 资源 | 链接 |
+|------|------|
+| Navigation 索引 | <https://github.com/dimensionalOS/dimos/blob/main/docs/capabilities/navigation/index.md> |
+| Go2 Deep Dive | <https://github.com/dimensionalOS/dimos/blob/main/docs/capabilities/navigation/deep_dive.md> |
+| Can Jev Nav? 报告 | <https://research.dimensional.org/system-one-navigation> |
+| 复现分支 | `feat/typesafe-world-state`（`dimos.evals.suites.habitat_nav`） |
+
+Dimensional **Nav Arena** 在 dimOS + Habitat 上对比 **Dimcode 导航 skills**、**TypeSafe Jev（2 Hz）** 与 **Pi coding agent**；归档见 [sources/sites/dimensional_research_can_jev_nav.md](../sites/dimensional_research_can_jev_nav.md)，wiki [Can Jev Nav? 基准](../../wiki/entities/dimensional-can-jev-nav-benchmark.md)。
+
 ## 代表性 Run 命令
 
 | 命令 | 作用 |
