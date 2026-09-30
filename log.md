@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | PRISM（arXiv:2609.38172）：V2V counterfactual Real2Sim2Real G1 loco-manip；项目页 Code 404 待公开；升格 paper-prism-real2sim2real 并链 CRISP/loco-manip 路线
+
 ## [2026-09-30] ingest | 自由度 FreeDof 公众号：原始 OpenVLA 图像—指令—动作链路；补强 paper-openvla 推理边界
 
 ## [2026-09-30] ingest | Dyna-2.1 physical agent（Taku·洗衣工作流）与 YOLO26 论文（2606.03748）入库；升格 dyna-2-1 / paper-yolo26 实体；核查 Dyna 闭源、Ultralytics 已开源

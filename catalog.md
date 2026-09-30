@@ -2558,6 +2558,7 @@
 - [Predict Before You Deploy（arXiv:2609.19441）](wiki/entities/paper-prede.md) — Predict Before You Deploy**（*Offline Prediction of Quantization-Induced Task Degradation for World `📅unknown` `[entity_page]`
 - [PRIMO（arXiv:2609.23610）](wiki/entities/paper-primo-human-motion-odometry.md) — PRIMO**（*PRIMO: Prior-Informed Odometry from Human-Motion Tracking for Humanoid Robots*，[arXiv:260 `📅unknown` `[entity_page]`
 - [Prism-GRPO：VLA 低样本 GRPO 优化](wiki/entities/paper-prism-grpo.md) — Prism-GRPO**（*Faster VLA Policy Optimization via Splitting Same-outcome Groups*，[arXiv:2608.17423 `📅unknown` `[entity_page]`
+- [PRISM（Counterfactual V2V Real2Sim2Real Loco-Manipulation）](wiki/entities/paper-prism-real2sim2real.md) — PRISM**（*Counterfactual Video Generation Enables Scalable Humanoid Loco-Manipulation*，[arXiv:2609. `📅unknown` `[entity_page]`
 - [PRISM：交互结构的多项式本体表征](wiki/entities/paper-prism.md) — PRISM**（*Polynomial Representations for Interaction-Structured Motor Control*，[arXiv:2607.23473](h `📅unknown` `[entity_page]`
 - [PRM-as-a-Judge：机器人执行过程评测](wiki/entities/paper-prm-as-a-judge.md) — PRM-as-a-Judge 1.5**（*A Toolkit for Robot Process Assessment*，[arXiv:2608.14284](https://arxiv.org `📅unknown` `[entity_page]`
 - [Progress Reward Modeling Survey（过程奖励综述 · arXiv:2607.21655）](wiki/entities/paper-progress-reward-modeling-survey.md) — Progress Reward Modeling for Robotic Learning: A Comprehensive Survey**（[arXiv:2607.21655](https:/ `📅unknown` `[entity_page]`
