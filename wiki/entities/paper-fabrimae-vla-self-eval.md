@@ -6,7 +6,7 @@ tags:
   - self-evaluation
   - manipulation
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 arxiv: "2608.16697"
 related:
   - ../methods/vla.md
@@ -52,7 +52,7 @@ Markov 注意力熵自评；测试时多候选选更稳动作。
 ## 评测与指标
 
 - **自评基准：** 自建 **LIBERO-Reflect**，共 **4,000** episode（2,000 标准 + 2,000 困难，分四个子集）。
-- **失败检测指标：** **AUPR / AUROC / FPR@95**；跨异构 VLA 架构均优于 SoTA 不确定性基线（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
+- **失败检测指标：** **AUPR / AUROC / FPR@95**；跨异构 VLA 架构均优于此前 SoTA 不确定性基线（数值摘自 arXiv 摘要，完整表格与基线设定以原文为准）。
 - **下游应用：** 把 MAE 用于 **无验证器的测试时动作选择**（多次采样取最可靠者），在 **LIBERO-Plus** 上提升 π 系策略鲁棒性，运行时开销小。
 
 ## 与其他工作对比
