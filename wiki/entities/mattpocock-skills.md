@@ -9,8 +9,18 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-09-07
+updated: 2026-09-30
 related:
+  - ./find-skills-skill.md
+  - ./vercel-agent-browser-skill.md
+  - ./anthropic-frontend-design-skill.md
+  - ./mattpocock-grill-me-skill.md
+  - ./mattpocock-grill-with-docs-skill.md
+  - ./mattpocock-tdd-skill.md
+  - ./mattpocock-improve-codebase-architecture-skill.md
+  - ./mattpocock-setup-skills-skill.md
+  - ./mattpocock-handoff-skill.md
+  - ./mattpocock-triage-skill.md
   - ./ponytail.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
@@ -64,10 +74,11 @@ summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开
 |------|------|
 | **分发** | GitHub 主仓 + [skills.sh/b/mattpocock/skills](https://skills.sh/mattpocock/skills)；安装器 `npx skills@latest add mattpocock/skills`。 |
 | **每仓库 bootstrap** | `setup-matt-pocock-skills`：绑定 issue tracker（GitHub / Linear / 本地）、triage 标签词表、`CONTEXT.md` 与 `docs/adr/` 布局。 |
-| **对齐层** | `grill-me`（通用）、`grill-with-docs`（工程向：挑战方案、更新 `CONTEXT.md` 与 ADR）。 |
-| **反馈层** | `tdd`（RED-GREEN-REFACTOR 垂直切片）、`diagnose`（系统化调试环）、`prototype`（可抛原型验证设计）。 |
-| **规划与卫生** | `to-prd`、`to-issues`、`triage`、`zoom-out`、`improve-codebase-architecture`。 |
-| **效率层** | `caveman`（极简沟通）、`handoff`（会话交接）、`write-a-skill`（元技能）。 |
+| **对齐层** | [`grill-me`](mattpocock-grill-me-skill.md)（通用）、[`grill-with-docs`](mattpocock-grill-with-docs-skill.md)（工程向：grilling + domain-modeling → `GLOSSARY.md` / ADR）。 |
+| **反馈层** | [`tdd`](mattpocock-tdd-skill.md)（RED-GREEN 垂直切片）、`diagnose`（系统化调试环）、`prototype`（可抛原型验证设计）。 |
+| **规划与卫生** | `to-prd`、`to-issues`、[`triage`](mattpocock-triage-skill.md)、`zoom-out`、[`improve-codebase-architecture`](mattpocock-improve-codebase-architecture-skill.md)。 |
+| **Bootstrap** | [`setup-matt-pocock-skills`](mattpocock-setup-skills-skill.md)（issue tracker + 标签 + domain 布局，首装必跑）。 |
+| **效率层** | `caveman`（极简沟通）、[`handoff`](mattpocock-handoff-skill.md)（会话交接）、`write-a-skill`（元技能）。 |
 | **护栏** | `git-guardrails-claude-code`、`setup-pre-commit` 等 misc 技能。 |
 
 ### 流程总览（日常工程环）
@@ -119,6 +130,9 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [find-skills（Vercel）](find-skills-skill.md) — 从 skills.sh 发现与本库相关的可安装技能
+- [agent-browser（Vercel）](vercel-agent-browser-skill.md) — 浏览器自动化 CLI skill（ingest 页截图验证）
+- [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 反模板化 UI skill
 - [Skills  Newsletter（aihero.dev）](https://www.aihero.dev/s/skills-newsletter) — 技能更新订阅（README 入口）
 - [course-video-manager CONTEXT.md 示例](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md) — README 引用的共享语言文档样例
 - [obra/superpowers](https://github.com/obra/superpowers) — 对照「流程包办型」技能方法论

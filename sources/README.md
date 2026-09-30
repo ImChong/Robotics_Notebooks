@@ -341,6 +341,9 @@
 | [x] [obra-superpowers.md](repos/obra-superpowers.md) | obra/superpowers：编码代理可组合技能 + TDD / worktree / 子代理交付方法论（多 harness 插件） |
 | [x] [caveman.md](repos/caveman.md) | JuliusBrussee/caveman：多 harness 洞穴语输出/上下文压缩技能（~65% 输出 token 宣称，MIT） |
 | [x] [mattpocock-skills.md](repos/mattpocock-skills.md) | mattpocock/skills：Skills For Real Engineers（grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装） |
+| [x] [vercel-labs-skills.md](repos/vercel-labs-skills.md) | vercel-labs/skills：开放 Agent Skills CLI + find-skills 元技能（skills.sh 发现/安装） |
+| [x] [vercel-labs-agent-browser.md](repos/vercel-labs-agent-browser.md) | vercel-labs/agent-browser：Rust 浏览器自动化 CLI + agent-browser skill（CDP/a11y ref） |
+| [x] [anthropics-frontend-design-skill.md](repos/anthropics-frontend-design-skill.md) | anthropics/skills frontend-design：官方反模板化 UI/UX Agent Skill |
 | [x] [sensenova-skills.md](repos/sensenova-skills.md) | OpenSenseNova/SenseNova-Skills：Agent Skills 办公技能库（信息图/PPT/Excel/深度研究；Hermes/OpenClaw，MIT） |
 | [x] [simplefoc_arduino_foc.md](repos/simplefoc_arduino_foc.md) | SimpleFOC / Arduino-FOC：跨 MCU 开源 FOC 库与 Shield/Mini 硬件生态（BLDC/步进） |
 | [x] [odrive_based_electric_motor_dynamometer.md](repos/odrive_based_electric_motor_dynamometer.md) | Capo01 ODrive 开源四象限电力测功机（对拖 + load cell；效率地图 / Kt） |
