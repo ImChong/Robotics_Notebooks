@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-30
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -23,6 +23,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./unitree-g1.md
   - ./paper-agile-perceptive-traversal-sparse-3d.md
+  - ./paper-echo-in-the-steps.md
 sources:
   - ../../sources/papers/php_parkour_arxiv_2602_15827.md
   - ../../sources/sites/php-parkour-github-io.md
@@ -174,6 +175,7 @@ flowchart TB
 - 对照（无技能标签 / 无运行时 motion graph）：[Light-Loco-Parkour（LightLP）](./paper-light-loco-parkour.md) — Lightbot 0；稀疏种子 Real2Sim2Real 扩张 + 转移组 RL
 - 对照（厘米级悬空细杆，原始固态 LiDAR）：[Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — ETH PM-01 猴架 jump-up→荡杆→跳下，与 PHP 稠密障碍跑酷对照
 - 对照（单策略未来监督，无 matching）：[ParkourFormer](./paper-parkourformer.md) — G1；query 历史 + 未来两步 AMP；九类地形 93.85%
+- 对照（门控深度记忆 + 交替对称，无 motion matching）：[Echo in the Steps（2609.28960）](./paper-echo-in-the-steps.md) — 清华 CoRL 2026；稀疏踏点 RL；相对 Hiking **+16.7 pt** SR；代码待发布
 - 总索引：[人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 
 ## 参考来源

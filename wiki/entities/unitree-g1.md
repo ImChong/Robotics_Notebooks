@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -82,6 +82,7 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 10. **无机器人全身示范部署**：[BifrostUMI](./paper-bifrost-umi.md)（BAAI Aether, 2026）在 G1 上验证 Pico + 双腕夹爪采集数据经扩散策略与 SKR 的杂乱桌面与桌下全身操作。
 11. **统一走跑起身（SD-AMP）**：[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)（HKU, arXiv:2605.18611）在 G1 真机用三条 LAFAN1 参考 + 双 AMP 判别器实现 recovery→walk→run 无部署模式切换。
 12. **感知跑酷（PHP）**：[Perceptive Humanoid Parkour](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)（arXiv:2602.15827，RSS 2026）在 G1 上仅用机载深度与 2D 速度指令完成 1.25 m 攀墙与长程多障碍跑酷。
+13. **稀疏踏点跑酷（Echo）**：[Echo in the Steps](./paper-echo-in-the-steps.md)（arXiv:2609.28960，CoRL 2026）门控深度记忆 + 交替对称损失；Jetson Orin NX + D435i；代码待发布。
 13. **显式楼梯几何爬梯**：[Explicit Stair Geometry Conditioning](./paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）在 G1 上零样本部署 BEV 点云 → 楼梯几何 token → PPO，户外连续 33 级上楼。
 14. **多姿态起身（HoST）**：[HoST](./paper-host-humanoid-standingup.md)（arXiv:2502.08378，RSS 2025 系统论文 finalist）在 G1 上从零 RL 学习跨地面/平台/墙/坡及俯仰卧、室内外场景的起身，官方 [InternRobotics/HoST](https://github.com/InternRobotics/HoST) 开源。
 15. **感知 loco-manipulation LLC（PILOT）**：[PILOT](./paper-pilot-perceptive-loco-manipulation.md)（arXiv:2601.17440，上海交大）在 G1 上用 LiDAR 高程图 + MoE 单阶段全身策略完成楼梯/高台等非结构化 **边走边操作**（VR 遥操作 + 分层 RL）。

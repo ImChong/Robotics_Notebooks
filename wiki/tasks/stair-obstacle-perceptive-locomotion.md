@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-09-22
+updated: 2026-09-30
 related:
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -175,6 +175,7 @@ flowchart TB
 | 人形 PM-01 | **头部固态 LiDAR（原始栅格）** | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) | AME-2+GRU 直接吃 E1R 稀疏回波；分阶段多教师蒸馏；猴架全序列真机 **14/15**、荡杆 0.5 m/s；截至 2026-09-04 未开源 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
 | 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
+| 人形 G1 | **深度** | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) | 显著性 prior + **门控记忆** + 交替对称损失；稀疏踏点/窄梁；CoRL 2026；Jetson Orin NX；代码 Coming Soon |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
 | 四足 Apollo | **深度 + RSSM WM** | [SWAP](../entities/paper-swap-parkour.md) | 对称等变潜变量世界模型 + 等变 Actor-Critic；2.13 m 远跳 / 1.63 m 攀台 |
@@ -203,6 +204,7 @@ flowchart TB
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **无技能标签** 深度跑酷 + 稀疏种子扩张 | [LightLP](../entities/paper-light-loco-parkour.md) |
 | 人形 **未来监督** Transformer 跑酷（单策略九类课） | [ParkourFormer](../entities/paper-parkourformer.md) |
+| 人形 **稀疏踏点** + 深度 **门控记忆**（相对 Hiking +16.7 pt SR） | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) |
 | 人形 **单阶段 raw 深度**（无 2.5D 建图 / 无几何辅助目标）+ 落脚奖励 | [CReF](../entities/paper-cref.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
 | 人形 **立体深度 sim2real** + 特权蒸馏 + 跑酷/长楼梯 | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) |
