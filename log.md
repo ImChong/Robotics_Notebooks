@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | GAE（arXiv:2609.24981）：Tencent ARC×HKUST geometry-native latent 入库；项目页+GitHub+HF 已开源（学术许可）；实体页含 codec/flow 时序图
+
 ## [2026-09-30] ingest | VoiceStudio（debpalash/VoiceStudio）：全本地 TTS/克隆/转写/MCP 工作台入库，交叉人形语音交互流水线
 
 ## [2026-09-30] ingest | VLX-Seek（om-ai-lab）：区域 token 细粒度感知 VLM，推理+10B 权重已开源；实体页与 sources/repos+site
