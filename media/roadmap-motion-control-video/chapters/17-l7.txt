@@ -1,0 +1,72 @@
+# chapter: id=c17; level=L7; name=L7 出口：从运动控制看整个技术栈
+
+## slide: stage=chap
+::chap L7 | 出口：从运动控制看整个技术栈 | 补齐全栈拼图，能和任何方向的工程师对话 | 感知 · 规划 · 操作 · 系统栈 · 前沿地图
+---
+0| L7，出口。这一层不教写代码。它的目的，是在你学完 L0 到 L6 之后，补上机器人全栈的最后一块拼图。每一块只讲三件事：它是什么，和运动控制怎么接，入口在哪。
+
+## slide: tag=L7; title=感知层与规划层; src=roadmap/motion-control.md §L7.1 / §L7.2 · wiki/concepts/state-estimation.md
+<div class='cols' style='height:auto'>
+<div class='card' data-s='0'><h3>L7.1 感知 / 状态估计 / SLAM</h3>
+<p><b>是什么</b>：从相机、IMU、雷达、编码器、力觉估出“自身位姿 + 世界几何 + 物体属性”；核心：状态估计、SLAM、3D 感知与语义</p>
+<p style='margin-top:14px' data-s='1'><b class='k'>怎么接</b>：WBC / MPC 严重依赖低延迟状态估计；真机 sim2real gap 一大半来自执行器模型不准 + 状态估计噪声</p>
+<p class='note' style='margin-top:10px'>入口：State Estimation · 导航与 SLAM 自主栈</p></div>
+<div class='card' data-s='2'><h3>L7.2 决策与规划</h3>
+<p><b>是什么</b>：运动规划（A* / RRT / RRT* / CHOMP / TrajOpt）、任务规划（HTN / PDDL）、人形特有的落脚点规划</p>
+<p style='margin-top:14px' data-s='3'><b class='k'>怎么接</b>：规划给参考轨迹，L4 的 MPC / WBC 跟踪；与 L4.3 TrajOpt 大量重叠，区别在是否带动力学约束、是否在线求解</p>
+<p class='note' style='margin-top:10px'>入口：Trajectory Optimization · Locomotion 任务地图</p></div>
+</div>
+---
+0| 先看感知层。它从摄像头、IMU、雷达、编码器、力觉里，估计出机器人自身的位姿、世界的几何和物体的属性。核心是三块：状态估计、SLAM，以及三维感知和语义理解。
+1| 它和运动控制的接口非常直接：全身控制和 MPC 严重依赖一个低延迟的状态估计器，状态估计差一点，下游就全乱套。真机上 Sim2Real 的差距，一大半来自执行器模型不准和状态估计噪声。
+2| 再看决策与规划层：运动规划，比如 A 星、RRT、CHOMP，给出无碰撞的轨迹；任务规划，把“把杯子放到桌上”分解成接近、抓取、移动、放下；人形特有的是落脚点规划，决定下一步踩哪、步态时序怎么排。
+3| 规划层给出参考轨迹，由 L4 的 MPC 和全身控制去跟踪。L4.3 的轨迹优化和传统运动规划有大量重叠，区别在于是否带动力学约束、是否在线求解。
+
+## slide: tag=L7; title=操作层与系统软件栈; src=roadmap/motion-control.md §L7.3 / §L7.4 · wiki/tasks/manipulation.md
+<div class='cols' style='height:auto'>
+<div class='card' data-s='0'><h3>L7.3 操作 / 抓取</h3>
+<p><b>是什么</b>：抓取、放置、装配、双臂协同、拧螺丝 / 插拔等接触丰富操作</p>
+<p style='margin-top:14px' data-s='1'><b class='k'>怎么接</b>：与行走共享阻抗控制 / WBC / 接触建模；主流走模仿学习（ACT / Diffusion Policy），但底层力控仍来自传统控制</p>
+<p class='note' style='margin-top:10px'>入口：Manipulation 任务地图 · 接触丰富操作纵深</p></div>
+<div class='card' data-s='2'><h3>L7.4 系统与软件栈</h3>
+<p><b>是什么</b>：ROS2 中间件；1–2 kHz 实时控制循环；MuJoCo / Isaac Sim / Gazebo / Drake；URDF / MJCF；CAN / EtherCAT</p>
+<p style='margin-top:14px' data-s='3'><b class='k'>怎么接</b>：WBC 跑在 1 kHz 实时进程，MPC 跑在 50–500 Hz 非实时进程，经 ROS2 / 共享内存通信——解释“为什么能跑的算法上真机就崩”</p>
+<p class='note' style='margin-top:10px'>入口：Pinocchio · Isaac Lab · L12 部署</p></div>
+</div>
+---
+0| 操作层，是手和物体的精细交互：抓取、放置、装配、双臂协同，还有拧螺丝、插拔这类接触丰富的任务。
+1| 操作和行走共享同一套阻抗控制、全身控制和接触建模。现代接触丰富的操作，主流走模仿学习路线，比如 ACT 和 Diffusion Policy；但底层力控仍然来自传统控制，所以 L4 的全身控制在操作里也是基石。
+2| 系统与软件栈，是把所有模块连起来、跑在真机上的基础设施：ROS2 中间件、一到两千赫兹的实时控制循环、MuJoCo 和 Isaac Sim 等仿真器、URDF 和 MJCF 模型描述、CAN 和 EtherCAT 总线。
+3| 典型架构是：全身控制跑在一千赫兹的实时进程里，上层 MPC 跑在五十到五百赫兹的非实时进程里，两者通过 ROS2 或共享内存通信。理解这一层，才能解释“为什么一个看似能跑的算法，上真机就崩”。
+
+## slide: tag=L7.5; title=2024–2026 前沿地图：你会反复看到的关键词; src=roadmap/motion-control.md §L7.5
+<table class='tb sm'>
+<tr><th>方向</th><th>关键问题</th><th>代表工作</th></tr>
+<tr data-s='1'><td>Humanoid Foundation Model</td><td>一个大模型驱动多种人形</td><td>GR00T、Helix、Astribot</td></tr>
+<tr data-s='1'><td>VLA</td><td>语言指令驱动机器人操作</td><td>RT-2、OpenVLA、π0、π0.5</td></tr>
+<tr data-s='2'><td>World Model</td><td>在“想象的世界”里训练</td><td>Dreamer-V3、UniSim、GAIA-1</td></tr>
+<tr data-s='2'><td>大规模 Teacher-Student</td><td>特权 teacher 训 student 实现 sim2real</td><td>Learning to Walk in Minutes、ANYmal</td></tr>
+<tr data-s='3'><td>AMP / Motion Prior</td><td>对抗损失把 MoCap 蒸馏进 RL</td><td>AMP、ASE、CALM、PHC</td></tr>
+<tr data-s='3'><td>End-to-End Locomotion</td><td>视觉 + 本体 → 关节动作</td><td>Extreme Parkour、DreamWaQ++</td></tr>
+<tr data-s='4'><td>Loco-Manipulation</td><td>边走边操作（搬箱、推门）</td><td>HumanPlus、OmniH2O、OKAMI</td></tr>
+<tr data-s='4'><td>LLM + RL 分层 · 内在奖励 · 触觉</td><td>语义层 + 底层力控；无奖励预训练；触觉闭环</td><td>VLA + 低层栈；RND、DIAYN；DIGIT、GelSight</td></tr>
+</table>
+---
+0| 然后是二零二四到二零二六年的前沿地图，这些关键词你会反复看到。
+1| 人形基础模型：一个大模型驱动多种人形，比如 NVIDIA 的 GR00T、Figure 的 Helix。VLA：用语言指令驱动机器人操作，比如 RT-2、OpenVLA、π0、π0.5。
+2| 机器人世界模型：让机器人在想象的世界里训练，比如 Dreamer V3、UniSim。大规模教师学生：用特权教师训练学生，实现 Sim2Real。
+3| AMP 和运动先验：用对抗损失把动捕动作蒸馏进强化学习策略。端到端行走：从视觉加本体感知直接到关节动作，比如 Extreme Parkour。
+4| 全身移动操作：边走边搬箱子、推门，比如 HumanPlus、OmniH2O。还有大模型加强化学习的分层、内在奖励探索，以及触觉和力觉闭环。
+
+## slide: tag=L7; title=关键认识与“学完 L0–L7 能做到的事”; src=roadmap/motion-control.md §L7.5 · 学完这条路线，你能做到的事
+<div class='card gold' data-s='0'><p>这些方向<span class='a'>不是替代 L4 的传统控制</span>，而是在传统控制之上叠了一层“通用化 / 端到端”；其中 VLA、人形基础模型、世界模型在 L8–L11 拆成可学习的层</p></div>
+<div class='gridcards g3' style='margin-top:28px'>
+<div class='card' data-s='1'><h3>外行</h3><p>说得清“人形为什么走起来这么难”“VLA 和 PPO 是不同层的东西”“sim2real gap 主要来自哪里”</p></div>
+<div class='card' data-s='2'><h3>想入行</h3><p>手上至少一个在仿真里跑通 PPO + WBC 的项目，可以面试控制 / 仿真岗位</p></div>
+<div class='card' data-s='3'><h3>资深从业者</h3><p>把零散经验串成心智索引：知道每篇新论文该挂在哪一层、和已知方法的接口在哪</p></div>
+</div>
+---
+0| 关键认识是：这些方向不是替代 L4 的传统控制，而是在传统控制之上，叠了一层“通用化”和“端到端”。其中 VLA、人形基础模型和世界模型，会在 L8 到 L11 拆成可以学习的层。
+1| 学完 L0 到 L7：外行能说清“人形为什么走起来这么难”、“VLA 和 PPO 是不同层的东西”、“Sim2Real 差距主要来自哪里”。
+2| 想入行的人，手上至少有一个在仿真里跑通 PPO 加全身控制的项目，可以去面试机器人控制和仿真岗位。
+3| 资深从业者，则把零散的经验串成一条心智索引：知道每篇新论文该挂在哪一层，和已知方法的接口在哪里。

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1080 700" width="1080" height="700" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7fb8d0"/></marker>
+<style>
+.bx{fill:#123049;stroke:#00d4ff;stroke-width:2}
+.bx2{fill:#0d4f5c;stroke:#2ee6b8;stroke-width:2}
+.bx3{fill:#1a2530;stroke:#8eb1c5;stroke-width:2}
+.tx{fill:#eaf6ff;font-size:24px;text-anchor:middle;dominant-baseline:middle}
+.ts{fill:#9fc3d6;font-size:19px;text-anchor:middle;dominant-baseline:middle}
+.ln{stroke:#7fb8d0;stroke-width:2.5;fill:none;marker-end:url(#pa)}
+.fb{stroke:#ffbf47;stroke-width:2.5;fill:none;stroke-dasharray:8 6;marker-end:url(#pa)}
+</style>
+</defs>
+<g>
+<rect class="bx3" x="10" y="8" width="320" height="58" rx="12"/><text class="tx" x="170" y="37">Camera image</text>
+<rect class="bx3" x="380" y="8" width="320" height="58" rx="12"/><text class="tx" x="540" y="37">Language instruction</text>
+<rect class="bx3" x="750" y="8" width="320" height="58" rx="12"/><text class="tx" x="910" y="37">Robot state q · q̇ · IMU</text>
+<path class="ln" d="M170,66 V104"/><path class="ln" d="M540,66 V104"/><path class="ln" d="M910,66 V104"/>
+<rect class="bx" x="10" y="106" width="320" height="56" rx="12"/><text class="tx" x="170" y="134">Patch → visual token</text>
+<rect class="bx" x="380" y="106" width="320" height="56" rx="12"/><text class="tx" x="540" y="134">Text token</text>
+<rect class="bx" x="750" y="106" width="320" height="56" rx="12"/><text class="tx" x="910" y="134">State embedding</text>
+</g>
+<g data-s="2">
+<path class="ln" d="M170,162 V204"/><path class="ln" d="M540,162 V204"/>
+<rect class="bx2" x="10" y="206" width="690" height="74" rx="14"/><text class="tx" x="355" y="232">VLM · System 2</text><text class="ts" x="355" y="262">语义理解 / 任务推理（较慢）</text>
+<path class="ln" d="M355,280 V318"/><path class="ln" d="M910,162 V318"/>
+<rect class="bx2" x="10" y="320" width="1060" height="74" rx="14"/><text class="tx" x="540" y="346">Action Expert · System 1</text><text class="ts" x="540" y="376">Flow Matching / Diffusion · DiT → 生成一段动作</text>
+</g>
+<g data-s="3">
+<path class="ln" d="M540,394 V430"/>
+<rect class="bx" x="330" y="432" width="420" height="60" rx="12"/><text class="tx" x="540" y="462">Action chunk  a_t … a_t+H</text>
+<path class="ln" d="M540,492 V514 H118 V540"/>
+<rect class="bx" x="10" y="542" width="216" height="74" rx="12"/><text class="tx" x="118" y="566">低层策略 / WBC</text><text class="ts" x="118" y="596">200–1000 Hz</text>
+<path class="ln" d="M226,579 H246"/>
+<rect class="bx" x="248" y="542" width="196" height="74" rx="12"/><text class="tx" x="346" y="566">q_target</text><text class="ts" x="346" y="596">/ τ_ff</text>
+<path class="ln" d="M444,579 H464"/>
+<rect class="bx" x="466" y="542" width="196" height="74" rx="12"/><text class="tx" x="564" y="566">PD / 阻抗</text><text class="ts" x="564" y="596">驱动器内闭环</text>
+<path class="ln" d="M662,579 H682"/>
+<rect class="bx" x="684" y="542" width="180" height="74" rx="12"/><text class="tx" x="774" y="566">CAN /</text><text class="tx" x="774" y="596">EtherCAT</text>
+<path class="ln" d="M864,579 H884"/>
+<rect class="bx" x="886" y="542" width="184" height="74" rx="12"/><text class="tx" x="978" y="566">电流环</text><text class="ts" x="978" y="596">→ motor torque</text>
+</g>
+<g data-s="4">
+<path class="fb" d="M978,616 V660 H1076 V37 H1072"/>
+<text class="ts" x="920" y="676" style="fill:#ffbf47">编码器 / IMU → 下一拍状态</text>
+</g>
+</svg>

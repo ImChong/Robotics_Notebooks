@@ -1,0 +1,75 @@
+# chapter: id=c13; level=L5; tag=L5.2; name=L5.2 RL 在人形运动控制里的应用
+
+## slide: stage=chap
+::chap L5.2 | RL 在人形运动控制里的应用 | 从 CartPole 到 25 自由度浮动基：需要哪些专门技巧？ | 动作空间 · 奖励 · 课程 · 特权信息 · 教师–学生
+---
+0| L5.2，强化学习在人形运动控制里的应用。通用算法直接套到人形上，往往学不会：人形二十多个自由度加浮动基，状态空间比 CartPole 高了好几个数量级。
+0| 需要合适的奖励、观测和动作空间，再加一整套训练技巧：奖励塑形、课程学习、提前终止、特权信息、教师学生。
+
+## slide: title=动作空间：为什么输出“关节目标 + PD”; src=roadmap/motion-control.md §L5.2 自测题 · wiki/methods/ppo.md · wiki/queries/legged-humanoid-rl-pd-gain-setting.md
+<div class='cols'>
+<div class='col'>
+<div class='eq' data-s='0'>$$q_{target} = q_{default} + \texttt{action\_scale}\cdot a$$</div>
+<div class='flow' data-s='0' style='justify-content:center'><div class='n'><b>policy</b>低频</div><div class='ar'>→</div><div class='n'><b>q_target</b></div><div class='ar'>→</div><div class='n'><b>PD</b>高频</div><div class='ar'>→</div><div class='n'><b>τ</b></div></div>
+<div class='card warn' data-s='3'><h3>缩放与归一化</h3><p>action_scale 太大：随机初始化就甩到限位；太小：迈不开步。观测量纲差几个数量级 → 必须归一化</p></div>
+</div>
+<div class='col'>
+<div class='card good' data-s='1'><h3>Isaac Lab 默认它的理由</h3><ul class='b sm'><li>PD 高频跟踪，给策略低频、平滑、易学的接口</li><li>PD 自带阻尼与稳定性，对网络输出噪声鲁棒</li><li>sim2real 时只需对齐 PD 增益</li></ul></div>
+<div class='card warn' data-s='2'><h3>直接输出力矩</h3><p>需要很高的策略频率，易抖、对延迟敏感：难训也难迁移</p></div>
+</div>
+</div>
+---
+0| 第一个设计选择是动作空间。人形强化学习的主流是位置型动作：策略输出相对默认姿态的关节偏移，乘以动作缩放系数，得到目标关节角，再交给底层 PD 去跟踪。
+1| 为什么 Isaac Lab 默认用这种？因为 PD 在高频跟踪，给策略提供了一个低频、平滑、容易学习的接口；PD 自带阻尼和稳定性，对网络输出的噪声也更鲁棒；做 Sim2Real 时，只要对齐 PD 增益即可。
+2| 直接输出力矩，则需要很高的策略频率，容易抖动，对延迟也更敏感，既难训练，也难迁移。
+3| 动作缩放系数要小心：太大，随机初始化时就会把关节甩到限位；太小，机器人迈不开步。观测的各个分量量纲相差好几个数量级，也必须做归一化。
+
+## slide: title=让人形学会走路的训练技巧; src=roadmap/motion-control.md §L5.2 · wiki/entities/legged-gym.md · wiki/methods/ppo.md
+<div class='gridcards g3'>
+<div class='card' data-s='1'><h3>奖励塑形</h3><p>速度跟踪为主项；加姿态、平滑、能量、接触时序项</p></div>
+<div class='card' data-s='2'><h3>课程学习</h3><p>地形与速度指令由易到难：平地 → 斜坡 → 台阶</p></div>
+<div class='card' data-s='3'><h3>提前终止</h3><p>摔倒或偏离过大立即重置，不在无意义状态上浪费样本</p></div>
+<div class='card' data-s='4'><h3>域随机化</h3><p>随机质量、摩擦、延迟、外部推力，为 sim2real 做准备</p></div>
+<div class='card gold' data-s='5' style='grid-column:span 2'><h3>大规模并行</h3><p>“Learning to Walk in Minutes”（Rudin 等）：GPU 上数千个并行环境，约二十分钟训出足式步态，开启大规模并行 RL 范式</p></div>
+</div>
+---
+0| 让人形学会走路，有几件常用的技巧。
+1| 奖励塑形：速度跟踪是主项，再加上姿态、平滑、能量和接触时序的项，引导出像样的步态。
+2| 课程学习：地形和速度指令由易到难，比如先平地、再斜坡、再台阶，让策略逐步适应。
+3| 提前终止：摔倒或者偏离太远就立刻重置，不在没有意义的状态上浪费样本。
+4| 域随机化：随机化质量、摩擦、延迟、外部推力，为 Sim2Real 做准备。
+5| 再加上大规模并行仿真：Rudin 等人的工作“Learning to Walk in Minutes”，在 GPU 上跑数千个并行环境，大约二十分钟就训出足式机器人的步态，开启了大规模并行强化学习的范式。
+
+## slide: title=特权信息与教师–学生蒸馏; src=roadmap/motion-control.md §L5.2 自测题 · wiki/methods/teacher-student-dagger-training.md · wiki/methods/amp-reward.md
+<div class='flow' style='justify-content:center'>
+<div class='n' data-s='0' style='width:520px'><b>Teacher（仿真）</b>本体感知 + 特权信息：真实摩擦 / 接触力、地形高度图、质量惯量、外力、精确 base 速度</div>
+<div class='ar' data-s='2'>→ 蒸馏 →</div>
+<div class='n' data-s='2' style='width:520px'><b>Student（可部署）</b>只用真机可得：IMU、编码器、历史动作 / 观测，可选视觉</div>
+</div>
+<div class='gridcards g2' style='margin-top:34px'>
+<div class='card' data-s='1'><h3>为什么先训 Teacher</h3><p>信息完整 → 训得又快又好</p></div>
+<div class='card gold' data-s='3'><h3>Student 拿不到特权，怎么办</h3><p>部署时根本没有这些传感器；但可以从<span class='a'>观测历史里隐式推断</span>，例如从最近几步的动作与响应推断地面有多滑</p></div>
+</div>
+---
+0| 什么是特权信息？就是仿真里拿得到、真机上拿不到的精确量。
+1| 比如真实的地面摩擦和接触力、地形高度图、机器人的质量和惯量、外部扰动力、精确的基座速度。教师学生的做法是：先用这些特权信息训练一个教师策略，它信息完整，训得又快又好。
+2| 再训练一个学生策略，它只能使用真机上拿得到的本体感知，也就是 IMU、编码器和历史，加上可选的视觉，通过蒸馏或者模仿教师，学会在受限观测下完成同样的任务。
+3| 学生拿不到特权信息，原因很简单：部署时根本没有这些传感器。但学生可以从观测历史里隐式地推断这些量，比如从最近几步的动作和响应，推断出地面有多滑。
+
+## slide: title=PPO 的四个分支，以及 RL 怎样和 WBC 组合; src=roadmap/motion-control.md §L5.2 · wiki/comparisons/wbc-vs-rl.md · wiki/methods/amp-reward.md
+<div class='gridcards g4'>
+<div class='card' data-s='0'><h3>Locomotion RL</h3><p>速度跟踪 · 地形课程</p></div>
+<div class='card' data-s='0'><h3>Motion Imitation</h3><p>DeepMimic 式跟踪奖励（L5.3）</p></div>
+<div class='card' data-s='0'><h3>AMP</h3><p>task reward + style reward</p></div>
+<div class='card' data-s='0'><h3>Sim2Real</h3><p>DR · Teacher-Student（L6）</p></div>
+</div>
+<div class='cols' style='height:auto;margin-top:28px'>
+<div class='card good' data-s='1'><h3>运动先验的工程优势</h3><p>免去手工设计复杂 reward：风格 / 自然度由判别器或模仿误差提供；缩小探索空间、加速收敛，避免怪异步态</p></div>
+<div class='card' data-s='2'><h3>RL + WBC（主流融合）</h3><p>RL 在高层输出质心速度参考 / 落脚点 / 接触时序；WBC 在低层保证动力学一致与安全约束，输出关节力矩</p></div>
+</div>
+<div class='card gold' data-s='3' style='margin-top:22px'><p>学完输出：在仿真里训出人形行走策略；能讲清 RL 与 WBC 各自的优势和局限</p></div>
+---
+0| PPO 在人形上有四个分支：行走强化学习，做速度跟踪和地形课程；运动模仿，用 DeepMimic 式的跟踪奖励；AMP，任务奖励加风格奖励；以及 Sim2Real，用域随机化和教师学生。
+1| AMP、DeepMimic 这类运动先验方法，相比纯 PPO 最大的工程优势是：省去了手工设计复杂的奖励。风格和自然度由对抗判别器或模仿误差自动提供，还能缩小探索空间、加快收敛，避免纯 PPO 学出怪异的步态。
+2| 强化学习也可以和全身控制组合。主流的一种是：强化学习在高层输出质心速度参考、落脚点或接触时序；全身控制在低层保证动力学一致和安全约束，输出关节力矩。两层解耦，可以各自调试。
+3| 这一层的输出：在仿真里训练一个人形行走策略，并能讲清强化学习和全身控制各自的优势和局限。

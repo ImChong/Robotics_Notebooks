@@ -1,0 +1,45 @@
+# chapter: id=c00; level=全景; name=开场：这条路线要回答什么
+
+## slide: tag=; title=; stage=cover
+<div class='cover'>
+<div class='kicker'>ROBOTICS NOTEBOOKS · 主路线逐级讲解</div>
+<div class='t1'>运动控制 → Physical AI<br>全栈成长路线</div>
+<div class='line'></div>
+<div class='t2'>L−1 → L0–L7 → L8–L12：每一层的核心要点与原理，自测题直接给答案</div>
+<div class='src'>讲解依据：roadmap/motion-control.md（站点页面 roadmap.html?id=roadmap-motion-control）及其链接的 wiki 页面</div>
+</div>
+---
+0| 大家好。这期视频，我们把 Robotics Notebooks 里的主路线“运动控制到 Physical AI 全栈成长路线”，从头到尾完整讲一遍。
+0| 每一层都讲清三件事：这一层解决什么问题，核心要点是什么，背后的原理是什么。
+0| 路线里原本留给读者的自测题，我们也会在讲解中直接给出答案，不留悬念。
+
+## slide: tag=导读; title=这条路线为谁、怎么走; src=roadmap/motion-control.md · 首屏导读
+<div class='col' style='gap:28px'>
+<div class='card' data-s='0'><h3>为谁</h3><p>想做<span class='k'>人形 / 双足运动控制</span>，并想一路看懂 Physical AI（VLA / 世界模型 / 部署）的算法工程师</p></div>
+<div class='card' data-s='1'><h3>怎么走</h3><p><span class='a'>L−1</span> 全景入门 → <span class='a'>L0–L7</span> 运动控制主干 → <span class='a'>L8–L12</span> Physical AI 全栈扩展；每层都给「读什么 / 做什么 / 输出什么」</p></div>
+<div class='card' data-s='2'><h3>五段骨架</h3>
+<div class='flow' style='margin-top:10px'>
+<div class='n'><b>打底</b>L0–L3</div><div class='ar'>→</div>
+<div class='n'><b>传统控制</b>L4</div><div class='ar'>→</div>
+<div class='n'><b>RL / IL</b>L5</div><div class='ar'>→</div>
+<div class='n'><b>Sim2Real · 出口</b>L6–L7</div><div class='ar'>→</div>
+<div class='n'><b>Transformer · 动作生成<br>VLA · 世界模型 · 部署</b>L8–L12</div>
+</div></div>
+</div>
+---
+0| 先说这条路线是给谁的：想做人形、双足运动控制，并且想一路看懂 VLA、世界模型和真机部署的算法工程师。
+1| 路线分三大段：L−1 是全景入门；L0 到 L7 是运动控制主干；L8 到 L12 是 Physical AI 全栈扩展。每一层都告诉你读什么、做什么、输出什么。
+2| 再细一点，是五段骨架：L0 到 L3 打底；L4 传统控制；L5 强化学习和模仿学习；L6、L7 是 Sim2Real 与全栈出口；L8 到 L12 是 Transformer、动作生成、VLA、世界模型和部署。
+
+## slide: tag=导读; title=三句话先懂这条路线; src=roadmap/motion-control.md · 三句话先懂这条路线
+<div class='col' style='gap:26px'>
+<div class='card' data-s='1'><h3>① 先把传统控制主干打通</h3><p>LIP/ZMP → Centroidal → MPC → TSID/WBC</p></div>
+<div class='card' data-s='2'><h3>② 再把学习方法接上去</h3><p>RL / IL 用来<span class='a'>补能力</span>，不是替代控制结构</p></div>
+<div class='card' data-s='3'><h3>③ 每一层都要有可运行输出</h3><p>代码、实验记录、失败复盘，缺一不可</p></div>
+<div class='card gold' data-s='4'><h3>终极问题</h3><p>一个 Physical AI 系统，从 <span class='k'>camera image</span> 到 <span class='k'>motor torque</span>，中间到底经过了哪些模块？</p></div>
+</div>
+---
+1| 整条路线可以浓缩成三句话。第一，先把传统控制主干打通：从 LIP 和 ZMP，到质心动力学，到 MPC，再到 TSID 和全身控制。
+2| 第二，再把学习方法接上去。强化学习和模仿学习是用来补能力的，不是用来替代控制结构的。
+3| 第三，每一层都要有可以运行的输出：代码、实验记录、失败复盘，缺一不可。
+4| 整条路线要回答的终极问题是：一个 Physical AI 系统，从相机图像到电机力矩，中间到底经过了哪些模块？下一章，我们先把这张地图画出来。

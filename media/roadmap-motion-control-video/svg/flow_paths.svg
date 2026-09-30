@@ -1,0 +1,64 @@
+<svg viewBox="0 0 860 600" width="860" height="600" xmlns="http://www.w3.org/2000/svg">
+<style>.sm{font-size:26px}.lb{font-size:28px;font-weight:700}</style>
+<text class="lb" x="40" y="60" fill="#a9c9da">噪声 x₀</text><text class="lb" x="620" y="60" fill="#2ee6b8">动作分布 x₁（多峰）</text>
+<g data-s="1">
+<path d="M124,438 L194,363 L234,367 L269,342 L325,308 L368,306 L430,242 L475,256 L512,222 L562,202 L613,163 L661,136 L710,110" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M78,409 L128,385 L207,362 L198,398 L286,404 L339,392 L395,404 L443,385 L507,390 L547,398 L604,377 L654,378 L707,374" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M108,271 L146,240 L189,249 L264,246 L287,260 L349,256 L405,235 L444,231 L487,232 L545,221 L588,213 L636,207 L685,203" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M205,317 L239,309 L277,308 L324,355 L348,326 L397,395 L430,384 L470,410 L508,424 L549,433 L588,439 L625,450 L665,464" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M118,380 L166,378 L223,329 L275,345 L320,299 L369,301 L427,258 L476,247 L521,245 L579,211 L627,199 L677,179 L728,161" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M171,297 L226,267 L268,339 L316,310 L361,335 L409,372 L453,366 L494,399 L540,407 L593,414 L644,430 L687,438 L731,456" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M146,193 L168,214 L254,181 L296,148 L340,165 L395,194 L447,183 L492,171 L547,171 L601,165 L651,164 L697,164 L746,163" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M103,252 L175,269 L208,296 L247,274 L285,330 L349,314 L404,363 L444,354 L503,370 L548,377 L607,400 L657,406 L705,422" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M60,134 L114,134 L150,109 L227,147 L270,167 L317,156 L378,151 L433,156 L485,159 L543,158 L592,166 L642,167 L695,169" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M47,274 L90,318 L146,296 L214,340 L273,355 L317,342 L377,377 L422,400 L483,398 L539,414 L589,441 L644,456 L700,472" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M112,265 L142,272 L197,247 L237,226 L308,230 L331,226 L399,196 L448,179 L486,189 L538,177 L577,151 L627,145 L673,137" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M123,153 L169,141 L231,208 L272,209 L315,223 L365,250 L413,260 L468,287 L512,314 L550,310 L604,338 L649,358 L696,377" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M116,326 L172,279 L224,278 L279,224 L341,256 L374,220 L442,220 L496,208 L551,165 L602,160 L658,139 L714,118 L768,98" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<path d="M154,207 L213,221 L247,230 L287,231 L335,261 L375,300 L437,311 L488,344 L531,347 L568,374 L620,391 L667,409 L713,424" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
+<text class="sm" x="250" y="585" fill="#b99bff">扩散：多步随机去噪，路径弯曲</text></g>
+<g data-s="3">
+<path d="M124,438 L710,110" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M78,409 L707,374" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M108,271 L685,203" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M205,317 L665,464" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M118,380 L728,161" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M171,297 L731,456" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M146,193 L746,163" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M103,252 L705,422" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M60,134 L695,169" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M47,274 L700,472" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M112,265 L673,137" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M123,153 L696,377" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M116,326 L768,98" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M154,207 L713,424" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<text class="sm" x="250" y="545" fill="#00d4ff">流匹配：学速度场，路径接近直线 → 少步积分</text></g>
+<circle cx="124" cy="438" r="7" fill="#a9c9da"/>
+<circle cx="78" cy="409" r="7" fill="#a9c9da"/>
+<circle cx="108" cy="271" r="7" fill="#a9c9da"/>
+<circle cx="205" cy="317" r="7" fill="#a9c9da"/>
+<circle cx="118" cy="380" r="7" fill="#a9c9da"/>
+<circle cx="171" cy="297" r="7" fill="#a9c9da"/>
+<circle cx="146" cy="193" r="7" fill="#a9c9da"/>
+<circle cx="103" cy="252" r="7" fill="#a9c9da"/>
+<circle cx="60" cy="134" r="7" fill="#a9c9da"/>
+<circle cx="47" cy="274" r="7" fill="#a9c9da"/>
+<circle cx="112" cy="265" r="7" fill="#a9c9da"/>
+<circle cx="123" cy="153" r="7" fill="#a9c9da"/>
+<circle cx="116" cy="326" r="7" fill="#a9c9da"/>
+<circle cx="154" cy="207" r="7" fill="#a9c9da"/>
+<circle cx="710" cy="110" r="7" fill="#2ee6b8"/>
+<circle cx="707" cy="374" r="7" fill="#2ee6b8"/>
+<circle cx="685" cy="203" r="7" fill="#2ee6b8"/>
+<circle cx="665" cy="464" r="7" fill="#2ee6b8"/>
+<circle cx="728" cy="161" r="7" fill="#2ee6b8"/>
+<circle cx="731" cy="456" r="7" fill="#2ee6b8"/>
+<circle cx="746" cy="163" r="7" fill="#2ee6b8"/>
+<circle cx="705" cy="422" r="7" fill="#2ee6b8"/>
+<circle cx="695" cy="169" r="7" fill="#2ee6b8"/>
+<circle cx="700" cy="472" r="7" fill="#2ee6b8"/>
+<circle cx="673" cy="137" r="7" fill="#2ee6b8"/>
+<circle cx="696" cy="377" r="7" fill="#2ee6b8"/>
+<circle cx="768" cy="98" r="7" fill="#2ee6b8"/>
+<circle cx="713" cy="424" r="7" fill="#2ee6b8"/>
+</svg>

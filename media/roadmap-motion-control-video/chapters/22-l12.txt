@@ -1,0 +1,50 @@
+# chapter: id=c22; level=L12; name=L12 部署：从训练好的策略到真机电机
+
+## slide: stage=chap
+::chap L12 | 部署：从策略到真机电机 | 菜谱写好了，还要在固定节拍里准时端上桌 | ONNX · TensorRT · ROS2 · PREEMPT_RT · CAN / EtherCAT
+---
+0| L12，部署。隐喻是：模型训练完，只是“菜谱写好了”；部署是要在固定的节拍里，准时把菜端上桌，晚一拍，机器人就可能摔倒。
+0| L5 到 L11 的训练都在 GPU 服务器上；真机上，算力、内存、功耗都受限，而且推理必须和实时控制循环、总线、驱动器同步。路线必须走到真实机器人，而不是停在模型。
+
+## slide: tag=L12; title=部署主链; src=roadmap/motion-control.md §L12 · 部署主链 · wiki/entities/onnx.md · wiki/entities/ros2-control.md
+::svg deploy_chain.svg
+<div class='card gold' data-s='5' style='margin-top:26px'><p>系统背景见 L7.4：WBC 在 1 kHz 实时进程，上层在非实时进程；这里把“网络 → 总线 → 电机”这一段走通</p></div>
+---
+0| 部署主链是这样的：训练好的 PyTorch 策略，
+1| 先导出成跨框架的 ONNX 格式；再用 TensorRT 或 ONNX Runtime，在 Jetson 或 x86 GPU 上做推理优化和运行。
+2| 推理放在一个 ROS2 节点里，负责组装观测、运行推理、对动作做后处理。
+3| 动作交给机器人控制器，可以是 ros2_control，也可以是自研的实时循环，跑在打了 PREEMPT_RT 实时补丁的 Linux 上。
+4| 控制器通过 CAN 或 EtherCAT 总线，把指令发给电机驱动器，驱动器里跑 PD 和电流环，最终驱动电机和真实的机器人。
+5| 系统层面的背景，L7.4 已经讲过：全身控制在一千赫兹的实时进程里，上层在非实时进程里。这一层，是把“网络到总线到电机”这一段真正走通。
+
+## slide: tag=L12; title=七个让真机失败的工程概念; src=roadmap/motion-control.md §L12 · 关键工程概念 · wiki/concepts/ethercat-protocol.md
+<table class='tb sm'>
+<tr><th>概念</th><th>是什么</th><th>为什么会让真机失败</th></tr>
+<tr data-s='1'><td>inference frequency</td><td>网络每秒推理几次</td><td>低于训练时的策略频率 → 动作变稀疏、行为变形</td></tr>
+<tr data-s='1'><td>control frequency</td><td>低层控制循环频率</td><td>与仿真 decimation 不一致 → PD 行为和训练不同</td></tr>
+<tr data-s='2'><td>latency</td><td>观测采集到力矩生效的总延迟</td><td>相位滞后 → 振荡</td></tr>
+<tr data-s='2'><td>jitter</td><td>周期时间的抖动</td><td>平均延迟正常但偶发超时，更难复现、更危险</td></tr>
+<tr data-s='3'><td>observation delay</td><td>传感数据到达策略时已过时</td><td>训练时没建模 → 估计与实际不符</td></tr>
+<tr data-s='3'><td>action delay</td><td>动作从输出到驱动器生效</td><td>总线排队、驱动器周期叠加</td></tr>
+<tr data-s='4'><td>hardware sync</td><td>多驱动器 / 传感器同一时刻采样与执行</td><td>各关节不同步 → 全身协调失真；EtherCAT 分布式时钟解决它</td></tr>
+</table>
+---
+0| 部署里有七个关键的工程概念，每一个都可能让真机失败。
+1| 推理频率：网络每秒推理几次，如果低于训练时的策略频率，动作就会变稀疏，行为变形。控制频率：低层控制循环的频率，如果和仿真的降采样倍数不一致，PD 的行为就和训练时不同。
+2| 延迟：从观测采集到力矩生效的总时间，会带来相位滞后和振荡。抖动 jitter：周期时间的波动，平均延迟正常，但偶尔超时，更难复现，也更危险。
+3| 观测延迟：传感数据到达策略时已经过时；动作延迟：动作从输出到驱动器生效，要经过总线排队和驱动器周期的叠加。
+4| 硬件同步：多个驱动器和传感器要在同一时刻采样和执行，否则各关节不同步，全身协调就会失真。EtherCAT 的分布式时钟，就是用来解决这个问题的。
+
+## slide: tag=L12; title=三个部署问题的答案; src=roadmap/motion-control.md §L12 自测题 · wiki/concepts/control-inference-frequency-decoupling.md
+<div class='gridcards g3'>
+<div class='card' data-s='1'><h3>推理慢于控制，怎么衔接</h3><p>推理线程与控制线程解耦：推理写无锁缓冲；控制线程每周期读最新动作，按时间索引取 chunk，或插值 / 保持；目标角由高频 PD 跟踪；超时则保持上一动作或进安全状态，绝不阻塞控制线程</p></div>
+<div class='card' data-s='2'><h3>为什么 jitter 比平均延迟更危险</h3><p>固定延迟可在训练中建模（延迟随机化）或在控制器里补偿；jitter 是随机偶发超时，训练难覆盖，一次长周期就可能让平衡失稳，且难复现、难定位</p></div>
+<div class='card' data-s='3'><h3>ONNX / TensorRT 与 PyTorch 一致吗</h3><p>同一批固定输入（含边界值）分别跑三者，比最大绝对误差；FP16 / INT8 量化单独设容差；再在 sim2sim 闭环里验证一次行为</p></div>
+</div>
+<div class='card good' data-s='4' style='margin-top:24px'><h3>学完输出</h3><p>Isaac Lab 策略 → ONNX → MuJoCo sim2sim 验证 → ROS2 节点固定频率推理；测端到端延迟分布（均值 + P99）与控制周期 jitter，写进部署记录；上真机按 L6 失败来源表逐项排查</p></div>
+---
+0| 最后是三个部署问题的答案。
+1| 推理频率低于控制频率时，动作怎么衔接？把推理线程和控制线程解耦：推理线程把结果写进一个无锁缓冲区；控制线程每个周期只读取最新的动作，对动作块按时间索引取值，或者在相邻目标之间插值、保持；目标关节角再由高频 PD 跟踪。推理超时的话，保持上一个动作或者切入安全状态，绝不能阻塞控制线程。
+2| 为什么抖动往往比平均延迟更危险？因为固定的延迟可以在训练中建模，比如做延迟随机化，也可以在控制器里补偿；而抖动是随机、偶发的超时，训练时很难覆盖，一次长周期就可能让平衡失稳，而且难以复现和定位。
+3| 导出 ONNX 或 TensorRT 之后，怎么确认推理结果和 PyTorch 一致？用同一批固定的输入，包括边界值，分别跑 PyTorch、ONNX Runtime 和 TensorRT，比较输出的最大绝对误差；FP16 或 INT8 量化之后要单独设定容差，并在 Sim2Sim 闭环里再验证一次行为。
+4| 这一层的输出：把一个 Isaac Lab 训练的策略导出为 ONNX，先在 MuJoCo 里做 Sim2Sim 验证，再在 ROS2 节点里以固定频率推理；测出端到端延迟的分布，包括均值和 P99，以及控制周期的抖动，写进部署记录；上真机后，按 L6 的失败来源表逐项排查。

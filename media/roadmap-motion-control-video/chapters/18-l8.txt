@@ -1,0 +1,72 @@
+# chapter: id=c18; level=L8; name=L8 Transformer 与表征：从 token 到 VLM
+
+## slide: stage=chap
+::chap L8 | Transformer 与表征 | 图像、语言、关节角，怎么变成同一种“单词”？ | token · QKV · 注意力 · ViT · VLM
+---
+0| 从 L8 开始，是 Physical AI 全栈扩展段。L8 是从传统机器人学习，跨入基础模型的桥。
+0| 为什么需要它？L5、L6 的策略多是多层感知机，输入是固定维度的本体状态向量。一旦输入里加入相机图像、语言指令、多帧历史，就需要一种结构：能把不同模态变成同一种序列，并让它们互相“查询”。
+
+## slide: tag=L8; title=第一步：任何输入都先变成一串向量（token）; src=roadmap/motion-control.md §L8 · 核心结构 · wiki/formalizations/vla-tokenization.md · wiki/concepts/vision-transformer.md
+<div class='gridcards g3'>
+<div class='card' data-s='1'><h3>图像 → 视觉 token</h3><p>切成 patch（如 16×16 像素），每块线性投影成一个向量——ViT 的做法</p></div>
+<div class='card' data-s='2'><h3>语言 → 文本 token</h3><p>切成子词，查表得到嵌入向量</p></div>
+<div class='card' data-s='3'><h3>机器人状态 → 嵌入</h3><p>小 MLP / 线性层投影到同一维度；无空间 patch 结构，维度低、频率高，常作动作头的直接条件</p></div>
+</div>
+<div class='flow' data-s='4' style='justify-content:center;margin-top:40px'>
+<div class='n'><b>所有 token</b>同一维度的序列</div><div class='ar'>→</div>
+<div class='n'><b>Transformer</b>Self / Cross-Attention · MLP · Residual</div><div class='ar'>→</div>
+<div class='n'><b>上下文表征</b>→ L9 动作头</div>
+</div>
+---
+0| 第一步，任何输入都先变成一串向量，也就是 token。
+1| 图像被切成一个个小块，比如十六乘十六像素的 patch，每一块经过线性投影，变成一个视觉 token。这就是 Vision Transformer，ViT 的做法。
+2| 语言被切成子词，每个子词查表，得到一个文本 token。
+3| 机器人状态，比如关节角和 IMU，通常用一个小的 MLP 或线性层，投影成和其它 token 同样维度的嵌入。它没有空间上的 patch 结构，维度低、频率高，常常作为动作头的直接条件输入。
+4| 所有 token 进入同一个 Transformer，输出融合了上下文的表征，交给下一层的动作头。
+
+## slide: tag=L8; title=注意力：用 Q 去匹配 K，按匹配度加权 V; src=roadmap/motion-control.md §L8 自测题 · wiki/concepts/transformer.md · arXiv:1706.03762
+<div class='cols w46'>
+<div class='col'>::svg attn.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='0'>$$\mathrm{Attention}(Q,K,V) = \mathrm{softmax}\!\Big(\frac{QK^\top}{\sqrt{d_k}}\Big)\,V$$</div>
+<div class='card' data-s='1'><h3>三步</h3><p>Q 与所有 K 点积 → 除以 \(\sqrt{d_k}\) 后 softmax 得权重 → 对所有 V 加权平均</p></div>
+<div class='card gold' data-s='3'><h3>为什么除以 \(\sqrt{d_k}\)</h3><p>点积方差随维度增长；不缩放时 softmax 易饱和成近似 one-hot，梯度变小、训练不稳</p></div>
+</div>
+</div>
+---
+0| Transformer 的核心是注意力。每个 token 通过三个线性投影，得到三个向量：查询 Q、键 K、值 V。
+1| 用 Q 去和所有的 K 做点积，得到相关度分数；除以根号 d k，再做 softmax，变成一组加起来等于一的权重；最后按这组权重，对所有的 V 做加权平均。
+2| 所以，注意力矩阵的第 i 行，就是第 i 个 token 对所有 token 的关注权重。左图里的数字只是示意。
+3| 为什么要除以根号 d k？因为点积的方差会随着维度 d k 增长；不缩放的话，softmax 很容易饱和成接近独热的分布，梯度变得很小，训练就不稳定。
+
+## slide: tag=L8; title=自注意力 vs 交叉注意力，以及 Transformer block; src=roadmap/motion-control.md §L8 自测题 · wiki/concepts/multi-head-attention.md · wiki/formalizations/cross-modal-attention.md
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='0'><h3>Self-Attention</h3><p>Q、K、V 都来自同一序列：序列内互看</p></div>
+<div class='card' data-s='0'><h3>Cross-Attention</h3><p>Q 来自一个序列（如带噪动作 token），K、V 来自另一个（如 VLM token）</p></div>
+<div class='card gold' data-s='1'><h3>动作头为何常用 Cross-Attention 读 VLM</h3><p>动作网络可以保持较小、单独高频运行，同时按需“查询”语义与视觉信息</p></div>
+</div>
+<div class='col'>
+<div class='card' data-s='2'><h3>Multi-Head</h3><p>多组 QKV 并行，各自关注不同关系后拼接</p></div>
+<div class='flow v' data-s='3' style='gap:6px'>
+<div class='n' style='width:640px'><b>x → LayerNorm → Multi-Head Attention</b></div><div class='ar'>↓ + x（残差）</div>
+<div class='n' style='width:640px'><b>LayerNorm → MLP</b>逐 token 前馈</div><div class='ar'>↓ + x（残差）</div>
+</div>
+<div class='card' data-s='4'><h3>VLM</h3><p>视觉编码器 token 接入语言模型——VLA 的“理解”骨干（π0 用 PaliGemma）</p></div>
+</div>
+</div>
+---
+0| 注意力有两种用法。自注意力：Q、K、V 都来自同一个序列，序列内部的 token 互相看。交叉注意力：Q 来自一个序列，比如带噪声的动作 token；K 和 V 来自另一个序列，比如视觉语言模型输出的 token。
+1| VLA 的动作头，为什么常用交叉注意力去读视觉语言模型？因为这样，动作生成网络可以保持较小、单独以高频运行，同时按需去“查询”语义和视觉信息。
+2| 多头注意力，是多组 QKV 并行，各自关注不同的关系，最后拼接起来。
+3| 一个 Transformer block 的结构是：层归一化、多头注意力、残差相加；再层归一化、MLP、残差相加。很多个 block 堆叠起来，就是 Transformer。
+4| 视觉语言模型 VLM，就是把视觉编码器的 token 接入语言模型。它是 VLA 负责“理解”的骨干，比如 π0 用的 PaliGemma。
+
+## slide: tag=L8; title=L8 要做出什么; src=roadmap/motion-control.md §L8 · 学完输出什么 / 推荐读什么
+<div class='gridcards g2'>
+<div class='card good' data-s='0'><h3>学完输出</h3><ul class='b sm'><li>≤ 30 行 NumPy / PyTorch 手写单头 attention，解释注意力矩阵每一行的含义</li><li>画出“图像 + 语言 + 状态 → token → Transformer”的数据流，说清每种 token 从哪来</li></ul></div>
+<div class='card' data-s='1'><h3>只读这些</h3><ul class='b sm'><li>Attention Is All You Need（arXiv:1706.03762）</li><li>ViT：An Image is Worth 16x16 Words（arXiv:2010.11929）</li><li>PaliGemma（π0 的 VLM 骨干）</li></ul></div>
+</div>
+---
+0| L8 的输出标准：能用三十行以内的 NumPy 或 PyTorch 手写单头注意力，并解释注意力矩阵每一行的含义；能画出图像、语言、状态变成 token、再进入 Transformer 的数据流，说清每种 token 从哪来。
+1| 路线强调不要求读完整篇论文，只需要真正理解这些结构。权威来源是：Attention Is All You Need、ViT 的原论文，以及 π0 的视觉语言骨干 PaliGemma。

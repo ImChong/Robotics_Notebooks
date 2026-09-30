@@ -1,0 +1,22 @@
+<svg viewBox="0 0 860 620" width="860" height="620" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:27px}.lb{font-size:30px;font-weight:700}</style></defs>
+<rect x="20" y="460" width="820" height="22" fill="#1a2c3b"/><path d="M20,460 H840" stroke="#2b5670" stroke-width="3"/>
+<path d="M110,460 L140,444 H230 L250,460 Z" fill="#132b3e" stroke="#8eb1c5" stroke-width="3"/>
+<circle cx="180" cy="460" r="11" fill="#ffbf47"/><text class="lb" x="140" y="520" fill="#ffbf47">ZMP</text>
+<path d="M180,460 L320,160" stroke="#eaf6ff" stroke-width="6"/>
+<circle cx="320" cy="160" r="34" fill="#123049" stroke="#00d4ff" stroke-width="5"/><text class="lb" x="290" y="108" fill="#00d4ff">CoM</text>
+<path d="M320,160 V460" stroke="#5d7f93" stroke-width="2" stroke-dasharray="6 6"/>
+<g data-s="1">
+<path d="M362,160 H500" stroke="#2ee6b8" stroke-width="6" marker-end="url(#da)"/><text class="sm" x="380" y="140" fill="#2ee6b8">速度 ẋ</text>
+<circle cx="580" cy="460" r="13" fill="#b99bff"/><text class="lb" x="580" y="420" fill="#b99bff" text-anchor="middle">ξ = x + ẋ/ω</text>
+<path d="M320,505 H572" stroke="#b99bff" stroke-width="3" fill="none" marker-end="url(#da)"/><text class="sm" x="446" y="540" fill="#b99bff" text-anchor="middle">ẋ/ω</text>
+</g>
+<g data-s="4">
+<path d="M520,460 L550,444 H640 L660,460 Z" fill="rgba(185,155,255,0.25)" stroke="#b99bff" stroke-width="3" stroke-dasharray="8 6"/>
+<text class="sm" x="590" y="592" fill="#b99bff" text-anchor="middle">一步踩到 ξ → 质心渐近停住</text>
+</g>
+<g data-s="3">
+<text class="sm" x="30" y="44" fill="#ffbf47">发散模态：ξ̇ = ω (ξ − x_zmp)</text>
+</g>
+</svg>

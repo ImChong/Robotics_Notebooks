@@ -1,0 +1,24 @@
+<svg viewBox="0 0 820 640" width="820" height="640" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="lpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:27px}.lb{font-size:30px;font-weight:700}</style></defs>
+<rect x="30" y="540" width="760" height="24" fill="#1a2c3b"/><path d="M30,540 H790" stroke="#2b5670" stroke-width="3"/>
+<path d="M220,540 L260,522 H360 L380,540 Z" fill="#132b3e" stroke="#8eb1c5" stroke-width="3"/>
+<path d="M40,180 H780" stroke="#5d7f93" stroke-width="2" stroke-dasharray="8 8"/>
+<text class="sm" x="40" y="165" fill="#8eb1c5">高度 z_c 恒定</text>
+<path d="M300,540 L500,180" stroke="#eaf6ff" stroke-width="7"/>
+<circle cx="500" cy="180" r="38" fill="#123049" stroke="#00d4ff" stroke-width="5"/><text class="lb" x="480" y="192" fill="#00d4ff">m</text>
+<circle cx="300" cy="540" r="11" fill="#ffbf47"/><text class="lb" x="252" y="600" fill="#ffbf47">ZMP</text>
+<path d="M300,590 V610 H500 V590" stroke="#b99bff" stroke-width="3" fill="none"/><path d="M500,540 V600" stroke="#b99bff" stroke-width="2" stroke-dasharray="5 5"/>
+<text class="sm" x="330" y="636" fill="#b99bff">x − x_zmp</text>
+<g data-s="1">
+<path d="M500,222 V330" stroke="#ff6b6b" stroke-width="5" marker-end="url(#lpa)"/><text class="lb" x="515" y="300" fill="#ff6b6b">mg</text>
+</g>
+<g data-s="3">
+<path d="M300,540 L390,378" stroke="#2ee6b8" stroke-width="7" marker-end="url(#lpa)"/><text class="lb" x="200" y="420" fill="#2ee6b8">地面反力 f</text>
+<path d="M300,540 V380" stroke="#2ee6b8" stroke-width="3" stroke-dasharray="7 6"/><text class="sm" x="228" y="470" fill="#2ee6b8">f_z</text>
+<path d="M300,380 H390" stroke="#2ee6b8" stroke-width="3" stroke-dasharray="7 6"/><text class="sm" x="325" y="368" fill="#2ee6b8">f_x</text>
+</g>
+<g data-s="2">
+<path d="M560,180 H700" stroke="#ffbf47" stroke-width="5" marker-end="url(#lpa)"/><text class="sm" x="580" y="235" fill="#ffbf47">越偏越倒</text>
+</g>
+</svg>

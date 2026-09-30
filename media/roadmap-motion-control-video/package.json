@@ -1,0 +1,11 @@
+{
+  "name": "roadmap-motion-control-video",
+  "private": true,
+  "description": "运动控制主路线讲解视频的幻灯片渲染依赖（KaTeX、思源黑体、playwright-core）",
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/noto-sans-sc": "5.3.0",
+    "katex": "0.18.9",
+    "playwright-core": "1.63.0"
+  }
+}

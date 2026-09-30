@@ -1,0 +1,85 @@
+# chapter: id=c05; level=L2; name=L2 动力学与刚体建模
+
+## slide: stage=chap
+::chap L2 | 动力学与刚体建模 | 给一个力矩，机器人会怎么动？ | M(q) · RNEA / CRBA / ABA · 浮动基 · 接触
+---
+0| L2，动力学与刚体建模。从运动学到动力学，是控制机器人最重要的一次跳跃。
+0| L1 只回答“关节速度和末端速度怎么对应”，却回答不了“加多大力矩，才能产生这个加速度”。没有动力学，你只能做位置控制，一碰到接触、高速运动、力交互就会崩。
+
+## slide: tag=L2.1; title=一行方程：固定基开链动力学; src=roadmap/motion-control.md §L2 自测题 · Modern Robotics Ch 8 · wiki/concepts/gravity-compensation.md
+<div class='eq' style='font-size:1.3em'>$$\underbrace{M(q)\,\ddot q}_{\text{惯性}} \;+\; \underbrace{C(q,\dot q)\,\dot q}_{\text{科氏 / 离心}} \;+\; \underbrace{g(q)}_{\text{重力}} \;=\; \tau$$</div>
+<div class='gridcards g3' style='margin-top:28px'>
+<div class='card' data-s='1'><h3>M(q) 质量矩阵</h3><p>对称正定；产生某个加速度需要多大广义力——惯性</p></div>
+<div class='card' data-s='2'><h3>C(q, q̇) q̇</h3><p>科里奥利与离心项：惯量随构型变化、各关节速度耦合，越快越明显</p></div>
+<div class='card' data-s='3'><h3>g(q) 重力项</h3><p>技巧：\(g(q) = \mathrm{RNEA}(q, 0, 0)\)，直接用于重力补偿</p></div>
+</div>
+---
+0| 固定基开链机器人的动力学，标准形式只有一行：M 乘加速度，加上 C 乘速度，再加上 g，等于关节力矩 τ。
+1| M 是质量矩阵，也叫惯量矩阵，对称正定。它刻画“要产生某个加速度，需要多大的广义力”，也就是惯性。
+2| C 项是科里奥利力和离心力。它来自惯量随构型的变化，以及各个关节速度之间的耦合，运动越快越明显。
+3| g 项是重力对应的广义力。一个常用技巧：把速度和加速度都设为零去算逆动力学，得到的正好是重力项，可以直接拿来做重力补偿。
+
+## slide: tag=L2.1; title=三个递归算法：RNEA / CRBA / ABA; src=roadmap/motion-control.md §L2 · 英文缩写速查 / 自测题 · Pinocchio
+<table class='tb'>
+<tr><th>算法</th><th>求什么</th><th>复杂度</th><th>典型用途</th></tr>
+<tr data-s='1'><td>RNEA 递归牛顿–欧拉</td><td>逆动力学：\((q,\dot q,\ddot q) \to \tau\)</td><td>\(O(n)\)</td><td>力矩前馈、1 kHz 控制循环</td></tr>
+<tr data-s='2'><td>CRBA 复合刚体</td><td>质量矩阵 \(M(q)\)</td><td>\(O(n^2)\)</td><td>喂给 QP / WBC</td></tr>
+<tr data-s='3'><td>ABA 铰接体</td><td>正动力学：\(\tau \to \ddot q\)</td><td>\(O(n)\)</td><td>仿真器正向积分</td></tr>
+</table>
+<div class='card gold' data-s='4' style='margin-top:28px'><p>1 kHz 控制循环：要力矩前馈 → <span class='a'>RNEA</span>；需要把 M 交给 QP → 再配 <span class='a'>CRBA</span>；ABA 主要给仿真器用</p></div>
+---
+0| 算动力学有三个经典的递归算法，Pinocchio 里都有现成实现。
+1| RNEA，递归牛顿欧拉算法：已知位置、速度、加速度，求所需的力矩，也就是逆动力学。复杂度是关节数的线性阶。
+2| CRBA，复合刚体算法：组装质量矩阵 M，复杂度是关节数的平方阶。
+3| ABA，铰接体算法：已知力矩，求加速度，也就是正动力学，同样是线性阶，仿真器做正向积分主要靠它。
+4| 所以在一个一千赫兹的控制循环里，要算力矩前馈就用 RNEA；需要把质量矩阵喂给 QP 时，再配上 CRBA。
+
+## slide: tag=L2.2; title=浮动基：身体本身也是自由变量; src=roadmap/motion-control.md §L2.2 · wiki/concepts/floating-base-dynamics.md · wiki/formalizations/tsid-formulation.md
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='1'><h3>状态必须带上基座</h3><p>\(q = (\,\underbrace{\text{base pose}}_{SE(3)},\ q_j \in \mathbb R^n)\)，速度维度 \(n+6\)</p></div>
+<div class='card warn' data-s='2'><h3>只用 \((q_j, \dot q_j)\) 不行</h3><p>表达不了整机在世界中的平移、旋转与动量，也写不出 CoM / ZMP / 接触等平衡约束</p></div>
+</div>
+<div class='col'>
+<div class='eq' data-s='3'>$$M(q)\ddot q + h(q,\dot q) = S^\top \tau + J_c^\top f_c$$</div>
+<div class='card gold' data-s='4'><h3>选择矩阵 S</h3><p>前 6 维（浮动基）全为 0：<span class='a'>基座不能被电机直接驱动</span>，身体要动只能靠接触力——这就是“欠驱动”</p></div>
+</div>
+</div>
+---
+0| 接下来是人形最关键的一步：浮动基。
+1| 人形的躯干没有固定在地面上，它在世界里的六维位姿本身就是自由变量。所以状态必须包含基座的位姿和速度，速度的总维度是 n 加 6。
+2| 只用关节角和关节速度，就表达不了整机在世界里的平移、旋转和动量，也写不出质心、ZMP、接触这些平衡约束。
+3| 浮动基动力学写成：M 乘加速度，加上非线性项 h，等于 S 转置乘关节力矩，加上接触雅可比的转置乘接触力。
+4| 这里的 S 是选择矩阵，它对应浮动基座的前六维全是零。意思是：基座不能被电机直接驱动，机器人要移动身体，只能通过脚和地面之间的接触力。这就是“欠驱动”。
+
+## slide: tag=L2.2; title=接触：力怎么变成力矩，又受什么限制; src=roadmap/motion-control.md §L2 自测题 · wiki/formalizations/contact-wrench-cone.md · wiki/concepts/centroidal-dynamics.md
+<div class='cols w46'>
+<div class='col'>::svg friction_cone.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='0'><div class='sm m'>虚功原理 / 雅可比转置</div>$$\tau = J_c^\top f_c$$</div>
+<div class='card' data-s='0'><p>机器人只能直接控制 \(\tau\)，平衡却靠 \(f_c\)：\(J_c^\top\) 是把“想要的接触力”翻译成“每个关节出多少力矩”的桥——<span class='k'>WBC 的核心一步</span></p></div>
+<div class='eq' data-s='3'><div class='sm m'>预告 L4.2：质心动量矩阵</div>$$h_g = A_g(q)\,\dot q$$</div>
+</div>
+</div>
+---
+0| 接触力怎么变成关节力矩？答案来自虚功原理：关节力矩等于接触雅可比的转置乘以接触力。
+0| 这一步是全身控制的核心：机器人能直接控制的只有关节力矩，而平衡靠的是接触力。雅可比转置，正是把“想要的接触力”翻译成“每个关节该出多少力矩”的桥梁。
+1| 接触力也不是想要多大就有多大。脚只能推地面、不能拉地面，所以法向力必须大于等于零；切向力不能超过摩擦系数乘以法向力，落在这个锥里，脚就不会滑。
+2| 一旦所需的接触力跑到锥外面，脚就会打滑。这个约束叫摩擦锥，后面的 MPC 和全身控制都要带着它求解。
+3| 最后预告一个量：质心动量矩阵 A g，它把全身的广义速度映射成六维的质心动量。它会在 L4.2 成为主角。
+
+## slide: tag=L2; title=Physical AI 视角：网络控制的不是理想刚体; src=roadmap/motion-control.md §L2 · Physical AI 视角补充：摩擦 · 执行器 · 状态估计
+<div class='gridcards g3'>
+<div class='card' data-s='1'><h3>摩擦</h3><p>库仑 + 粘滞 + Stribeck；减速比越大越明显</p><p class='note'>→ 关节摩擦模型 / 摩擦补偿</p></div>
+<div class='card' data-s='2'><h3>执行器 / 电机</h3><p>力矩常数、饱和、带宽、电流环；仿真里常被理想化</p><p class='note'>→ 显式 / 隐式执行器建模、Actuator Network</p></div>
+<div class='card' data-s='3'><h3>状态估计</h3><p>浮动基位姿 / 速度靠 IMU + 编码器融合；策略看到的是<span class='a'>估计值</span></p><p class='note'>→ State Estimation</p></div>
+</div>
+<div class='card gold' data-s='4' style='margin-top:26px'><p>这三件事 = L6 sim2real gap 的主要来源：在 L2 先建立概念</p></div>
+<div class='card good' data-s='5' style='margin-top:22px'><h3>学完输出</h3><p>能写出动力学方程并解释每一项；能把任务空间力 / 接触 wrench 写成雅可比转置形式；理解浮动基与质心动力学为什么重要</p></div>
+---
+0| L2 还有一个 Physical AI 视角的补充：神经网络最终控制的，不是理想刚体。
+1| 第一是摩擦：库仑摩擦、粘滞摩擦、Stribeck 效应，减速比越大越明显。
+2| 第二是执行器：电机有力矩常数、饱和、带宽和电流环，而仿真里它们常常被理想化。
+3| 第三是状态估计：浮动基的位姿和速度，要靠 IMU 和编码器融合估计出来。策略看到的是估计值，不是真值。
+4| 这三件事，正是 L6 里 Sim2Real 差距的主要来源。在 L2 先建立概念，到了 L6 就不会意外。
+5| 学完 L2，你应该能写出动力学方程并解释每一项，能把任务空间的力和接触力写成雅可比转置的形式，并且理解浮动基和质心动力学为什么重要。

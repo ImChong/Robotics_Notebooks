@@ -1,0 +1,59 @@
+# chapter: id=c09; level=L4; tag=L4.2; name=L4.2 质心动力学 Centroidal Dynamics
+
+## slide: stage=chap
+::chap L4.2 | 质心动力学 Centroidal Dynamics | LIP 太简、全身太重，中间那一层怎么写？ | 线动量 · 角动量 · 接触力 · 模型降阶
+---
+0| L4.2，质心动力学。LIP 把人形当成一根会走路的杆子，但挥手、扭腰、抬腿都会产生角动量，杆子模型解释不了；它还忽略了腿摆动的质量，把支撑多边形当成静态约束。
+0| 质心动力学给了一个“既不太重、又不太轻”的中间模型：比 LIP 更精确，又比全身动力学简单。
+
+## slide: title=整机的牛顿–欧拉：动量怎么变; src=roadmap/motion-control.md §L4.2 · wiki/concepts/centroidal-dynamics.md
+<div class='cols w46'>
+<div class='col'>::svg centroidal.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='1'><div class='sm m'>6 维质心动量</div>$$h = \begin{bmatrix} k \\ l \end{bmatrix},\qquad l = m\,\dot c$$</div>
+<div class='eq' data-s='2'><div class='sm m'>线动量：合外力</div>$$\dot l = \sum_i f_i + m g$$</div>
+<div class='eq' data-s='3'><div class='sm m'>角动量：接触力对质心的力矩</div>$$\dot k = \sum_i (p_i - c)\times f_i + \sum_i \tau_i$$</div>
+</div>
+</div>
+---
+0| 质心动力学不追问每个关节怎么动，而是先问：整台机器人的动量怎么变化。
+1| 动量分两部分：线动量等于总质量乘质心速度；角动量描述整机绕质心的转动。合起来，是一个六维的质心动量。
+2| 线动量的变化率，等于所有接触力之和，再加上重力。这就是整机的牛顿第二定律。
+3| 角动量的变化率，等于每个接触力对质心的力矩之和，再加上接触力矩。也就是说，接触力不仅推着机器人平移，还会通过力臂改变整机的转动。
+4| 这就是它比 LIP 强的地方：它显式保留了角动量，接触力也可以有多个，分布在不同位置。
+
+## slide: title=质心动量矩阵与“模型降阶”; src=roadmap/motion-control.md §L4.2 自测题 · wiki/concepts/centroidal-dynamics.md
+<div class='cols'>
+<div class='col'>
+<div class='eq' data-s='0'>$$h_g = A_g(q)\,\dot q,\qquad A_g \in \mathbb R^{6\times(n+6)}$$</div>
+<div class='card' data-s='2'><h3>零空间 = 内部自运动</h3><p>不改变整机线 / 角动量的运动，例如左右手对称反向挥动、绕 CoM 的内部重构</p></div>
+</div>
+<div class='col'>
+<div class='flow v' data-s='3' style='gap:8px'>
+<div class='n' style='width:640px'><b>全身动力学</b>(n+6) 维</div><div class='ar'>↓ 投影</div>
+<div class='n' style='width:640px'><b>6 维质心动量</b>只保留“合外力 / 力矩 = 动量变化率”</div><div class='ar'>↓ 再简化</div>
+<div class='n' style='width:640px'><b>LIP / ZMP</b>恒高、忽略角动量</div>
+</div>
+<div class='card warn' data-s='4'><h3>丢掉了什么</h3><p>具体构型与关节级分布（同一动量对应无穷多姿态）、关节限位、碰撞 → 由下层 WBC 补回</p></div>
+</div>
+</div>
+---
+0| 质心动量和全身速度之间，由质心动量矩阵 A g 联系：六维质心动量，等于 A g 乘以全身的广义速度。
+1| A g 的维度是六乘以 n 加六：六维动量，对应 n 个关节加上六维的基座。
+2| 它的零空间有明确的物理意义：那些不改变整机线动量和角动量的内部运动，比如左右手对称地反向挥动，效果互相抵消。
+3| 所以质心动力学是一种模型降阶：把 n 加 6 维的全身动力学，投影到 6 维的动量空间，只保留“合外力和合外力矩等于动量变化率”，用很少的状态抓住平衡最关键的量。再进一步简化，就回到了 LIP。
+4| 丢掉的是什么？各个肢体的具体构型和关节级分布——同一个动量可以由无穷多种姿态实现——还有关节限位和碰撞。这些由下层的全身控制补回来。
+
+## slide: title=为什么在线规划偏爱质心模型; src=roadmap/motion-control.md §L4.2 自测题 / 学完输出什么
+<div class='gridcards g2'>
+<div class='card good' data-s='1'><h3>Centroidal MPC</h3><p>6 维 + 接触力，中等规模凸 QP / NLP</p><p class='big t' style='margin-top:10px'>亚毫秒 ~ 几毫秒 / 步</p><p>→ 可 50–200 Hz 在线</p></div>
+<div class='card warn' data-s='2'><h3>全身动力学 MPC</h3><p>(n+6) 维、全约束非线性 OCP</p><p class='big r' style='margin-top:10px'>几十 ~ 上百毫秒 / 步</p><p>→ 多用于离线 TrajOpt 或低频</p></div>
+</div>
+<div class='card gold' data-s='3' style='margin-top:26px'><p>相差约 <span class='a'>1–2 个数量级</span>：在线层用质心 / 简化模型，全身模型留给离线或低频</p></div>
+<div class='card' data-s='4' style='margin-top:22px'><h3>学完输出</h3><p>能解释 centroidal 与 LIP 的区别；理解线动量、角动量在平衡控制里的作用</p></div>
+---
+0| 为什么在线规划偏爱质心动力学？看求解时间。
+1| 质心模型只有六维状态加接触力，是中等规模的凸 QP 或非线性规划，单步求解大约在亚毫秒到几毫秒，可以五十到两百赫兹在线运行。
+2| 全身动力学的 MPC，是 n 加 6 维、带全部约束的非线性最优控制问题，单步常常要几十到上百毫秒。
+3| 两者相差一到两个数量级。所以在线层多用质心模型或简化模型，全身动力学多用于离线轨迹优化或低频规划。
+4| 学完这一层，你应该能说清质心动力学和 LIP 的区别，并理解线动量、角动量在平衡控制中的作用。

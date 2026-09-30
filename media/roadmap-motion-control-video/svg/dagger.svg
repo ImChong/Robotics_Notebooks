@@ -1,0 +1,13 @@
+<svg viewBox="0 0 860 560" width="860" height="560" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="dga" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:26px}.lb{font-size:28px;font-weight:700}.bx{fill:#132b3e;stroke:#2b5670;stroke-width:3}.tt{fill:#eaf6ff;font-size:28px;text-anchor:middle}</style></defs>
+<g data-h="1"><rect class="bx" x="40" y="40" width="360" height="110" rx="18"/><text class="tt" x="220" y="90">① 当前策略去跑</text><text class="tt" x="220" y="128" style="font-size:23px;fill:#a9c9da">收集它访问到的状态</text></g>
+<g data-h="1"><rect class="bx" x="460" y="40" width="360" height="110" rx="18"/><text class="tt" x="640" y="90">② 专家标注</text><text class="tt" x="640" y="128" style="font-size:23px;fill:#a9c9da">这些状态下的正确动作</text></g>
+<g data-h="1"><rect class="bx" x="460" y="250" width="360" height="110" rx="18"/><text class="tt" x="640" y="300">③ 聚合数据集</text><text class="tt" x="640" y="338" style="font-size:23px;fill:#a9c9da">D ← D ∪ 新标注</text></g>
+<g data-h="1"><rect class="bx" x="40" y="250" width="360" height="110" rx="18"/><text class="tt" x="220" y="300">④ 重新训练策略</text><text class="tt" x="220" y="338" style="font-size:23px;fill:#a9c9da">监督学习</text></g>
+<path d="M400,95 H458" stroke="#7fb8d0" stroke-width="4" marker-end="url(#dga)"/>
+<path d="M640,150 V248" stroke="#7fb8d0" stroke-width="4" marker-end="url(#dga)"/>
+<path d="M460,305 H402" stroke="#7fb8d0" stroke-width="4" marker-end="url(#dga)"/>
+<path d="M220,250 V152" stroke="#7fb8d0" stroke-width="4" marker-end="url(#dga)"/>
+<g data-s="2"><text class="lb" x="60" y="450" fill="#2ee6b8">训练分布逐渐覆盖策略实际遇到的状态</text><text class="lb" x="60" y="500" fill="#2ee6b8">误差 ∝ ε·T（线性）</text></g>
+</svg>

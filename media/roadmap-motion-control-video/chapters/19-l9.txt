@@ -1,0 +1,91 @@
+# chapter: id=c19; level=L9; name=L9 动作生成：Action Chunk · Diffusion · Flow Matching · DiT
+
+## slide: stage=chap
+::chap L9 | 动作生成 | 为什么现代策略一次输出一段动作？ | Action Chunk · Diffusion · Flow Matching · DiT
+---
+0| L9，动作生成。隐喻是：与其每一步都问“下一步做什么”，不如一次规划接下来半秒的整段动作，再按节拍执行。
+
+## slide: tag=L9; title=均方误差行为克隆的两个问题; src=roadmap/motion-control.md §L9 · 上一层的局限 / 自测题
+<div class='cols w46'>
+<div class='col'>::svg multimodal.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card warn' data-s='2'><h3>问题一：多模态被平均</h3><p>MSE 学到的是<span class='a'>条件均值</span>；多峰分布的均值可能正落在两峰之间的低谷——“直直撞上去”</p></div>
+<div class='card warn' data-s='3'><h3>问题二：单步输出</h3><p>每个控制周期都要跑一次网络，对推理延迟非常敏感</p></div>
+</div>
+</div>
+---
+0| L8 解决了表征，但“怎么从表征出动作”还没解决。L5.3 的行为克隆，用均方误差回归单个动作，这里有两个问题。
+1| 第一个问题是多模态。比如前面有个障碍物，示范里有人从左边绕，有人从右边绕，两种都对。
+2| 但均方误差回归会把两种示范平均，得到的恰恰是“直直地撞上去”。因为均方误差学到的是条件均值，而多峰分布的均值，可能正好落在两个峰之间的低谷里。
+3| 第二个问题是：单步输出对推理延迟非常敏感，每个控制周期都要跑一次网络。
+
+## slide: tag=L9; title=Action Chunk：一次输出一段动作; src=roadmap/motion-control.md §L9 自测题 · wiki/methods/action-chunking.md · arXiv:2304.13705
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='0'><h3>传统 policy</h3><p>observation → 一个动作 \(a_t\)</p></div>
+<div class='card' data-s='0'><h3>现代 VLA 动作头</h3><p>image + language + state → \(a_t, a_{t+1}, \dots, a_{t+H}\)（ACT）</p></div>
+</div>
+<div class='col'>
+<div class='card good' data-s='1'><h3>好处 ①</h3><p>整段时序一致：减少逐步抖动；决策次数变少，也减轻 BC 的复合误差</p></div>
+<div class='card good' data-s='2'><h3>好处 ②</h3><p>推理可以比控制慢：等待下一次推理时，低层继续执行已有 chunk</p></div>
+<div class='card warn' data-s='3'><h3>代价</h3><p>chunk 内开环，对突发扰动反应慢 → temporal ensembling（重叠 chunk 加权平均）或 Real-Time Chunking</p></div>
+</div>
+</div>
+---
+0| 解决办法之一是动作块，action chunk：一次输出未来 H 步的动作序列，而不是一个动作。代表作是 ACT。
+1| 它有两个好处。第一，整段动作时序一致，减少了逐步的抖动；决策的次数变少了，也减轻了行为克隆的复合误差。
+2| 第二，推理可以比控制慢：在等待下一次推理的时候，低层控制器可以继续执行已经生成的动作块。
+3| 代价是：动作块内部是开环执行的，对突发扰动反应变慢。所以需要时间集成，也就是把重叠的多个动作块做加权平均；或者用 Real-Time Chunking 这类在执行中平滑衔接的策略。
+
+## slide: tag=L9; title=Diffusion Policy：从噪声里“去噪”出一段动作; src=roadmap/motion-control.md §L9 · wiki/methods/diffusion-policy.md · arXiv:2303.04137
+<div class='flow' style='justify-content:center'>
+<div class='n' data-s='1'><b>高斯噪声</b>整段动作轨迹</div><div class='ar'>→</div>
+<div class='n' data-s='1'><b>以观测为条件</b>图像 / 状态特征</div><div class='ar'>→</div>
+<div class='n' data-s='1'><b>迭代去噪 K 步</b>预测并去掉噪声</div><div class='ar'>→</div>
+<div class='n' data-s='1'><b>动作序列</b></div>
+</div>
+<div class='gridcards g3' style='margin-top:34px'>
+<div class='card' data-s='2'><h3>训练</h3><p>给专家动作加不同程度的噪声，让网络学会预测噪声：本质是<span class='a'>去噪回归</span>，稳定</p></div>
+<div class='card good' data-s='3'><h3>好处</h3><p>能表达多模态分布：每次采样落到某一个峰上（坚定地左绕），不取平均；整段时序一致</p></div>
+<div class='card warn' data-s='4'><h3>代价</h3><p>推理要多步去噪，延迟高</p></div>
+</div>
+---
+0| 解决多模态的第二个办法，是生成模型。Diffusion Policy 用去噪扩散，来生成一整段动作。
+1| 过程是：从纯高斯噪声的动作轨迹出发，以图像和状态特征为条件，让网络一步一步地预测并去掉噪声，迭代 K 步之后，得到一段干净的动作序列。
+2| 训练时则反过来：给专家动作加上不同程度的噪声，让网络学会预测这些噪声。所以训练本质上是一个去噪回归，很稳定。
+3| 它的好处是：能表达多模态的动作分布，每次采样会落到某一个峰上，比如坚定地从左边绕，而不是取平均；而且整段动作时序一致。
+4| 代价是：推理要跑很多步去噪，延迟高。
+
+## slide: tag=L9; title=Flow Matching：学一个速度场，沿近似直线积分; src=roadmap/motion-control.md §L9 自测题 · wiki/concepts/flow-matching-embodied-policy.md · arXiv:2210.02747
+<div class='cols w46'>
+<div class='col'>::svg flow_paths.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='2'><div class='sm m'>训练：直线插值上回归速度</div>$$x_t = (1-t)\,x_0 + t\,x_1,\qquad \mathcal L = \big\|v_\theta(x_t, t) - (x_1 - x_0)\big\|^2$$</div>
+<div class='eq' data-s='3'><div class='sm m'>推理：从噪声积分到动作</div>$$\frac{dx}{dt} = v_\theta(x, t),\quad t: 0 \to 1$$</div>
+<div class='card gold' data-s='4'><h3>对机器人的意义在工程</h3><p>保留多模态表达；路径近直线 → 少步积分（π0 论文用 10 步）→ 延迟低；训练目标是简单回归，便于和 VLM 骨干一起训</p></div>
+</div>
+</div>
+---
+0| 流匹配，Flow Matching，是一个更直接的版本。它不再模拟“加噪再去噪”的随机过程，而是直接学习一个速度场。
+1| 看左图：扩散的路径是多步随机去噪，弯弯曲曲；
+2| 流匹配则这样训练：把噪声点当起点、专家动作当终点，在两点之间的直线上取一个中间点，让网络预测此刻应有的速度，也就是终点减起点。这是一个简单的回归目标。
+3| 推理时，从一个随机噪声出发，沿着网络给出的速度场，对一个常微分方程做积分，从 t 等于零走到 t 等于一，就得到了动作。
+4| 对机器人的意义不在数学，而在工程：它保留了扩散的多模态表达能力，但路径接近直线，少量积分步就够了，π0 的论文用了十步。步数少，延迟就低，更容易赶上控制频率；训练目标又是简单的回归，方便和视觉语言模型骨干一起训练。
+
+## slide: tag=L9; title=DiT 与 Action Expert; src=roadmap/motion-control.md §L9 自测题 · wiki/concepts/diffusion-transformer.md · arXiv:2212.09748
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='0'><h3>DiT：去噪网络换成 Transformer</h3><p>token = action chunk 的各个时间步</p></div>
+<div class='card' data-s='1'><h3>条件注入三种方式</h3><ul class='b sm'><li><span class='k'>Cross-attention</span>：动作 token 作 Q 查询观测 / VLM token</li><li><span class='k'>AdaLN</span>：条件向量调制 LayerNorm 的尺度与偏移（DiT 原论文）</li><li><span class='k'>拼接</span>：条件 token 直接拼进序列做 self-attention</li></ul></div>
+</div>
+<div class='col'>
+<div class='card gold' data-s='3'><h3>Action Expert（π0 的叫法）</h3><p>VLM 之外一套较小的 Transformer 权重，专门处理状态与带噪动作 token，用 flow matching 生成 action chunk；GR00T N1 的 DiT 动作头扮演同一角色</p></div>
+<div class='card good' data-s='4'><h3>学完输出</h3><p>Push-T 上跑通 Diffusion Policy，对比 H = 1 与 H = 16；能解释 MSE-BC 为何在多模态示范上失败</p></div>
+</div>
+</div>
+---
+0| DiT，扩散 Transformer，把去噪网络从 U-Net 换成了 Transformer。在机器人里，Transformer 的 token，就是动作块里的各个时间步。
+1| 观测和语言条件怎么注入？常见三种方式：交叉注意力，让动作 token 作为查询，去读观测 token；AdaLN，用条件向量去调制层归一化的尺度和偏移，这是 DiT 原论文的做法；或者直接把条件 token 拼进序列，做自注意力。
+2| 这样，动作头就能直接接上 L8 的视觉语言模型 token。
+3| Action Expert，动作专家，是 π0 里的叫法：在视觉语言模型之外，单独一套较小的 Transformer 权重，专门处理状态和带噪声的动作 token，用流匹配生成动作块。GR00T N1 的 DiT 动作头，扮演的是同一个角色。
+4| L9 的输出：在 Push-T 这样的二维玩具任务上跑通 Diffusion Policy，对比 H 等于一和 H 等于十六的行为差异，并能解释为什么均方误差的行为克隆在多模态示范上会失败，而扩散和流匹配不会。

@@ -1,0 +1,17 @@
+<svg viewBox="0 0 860 620" width="860" height="620" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="mma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:26px}.lb{font-size:28px;font-weight:700}</style></defs>
+<rect x="360" y="250" width="140" height="90" rx="10" fill="#3a2323" stroke="#ff6b6b" stroke-width="3"/><text class="sm" x="385" y="305" fill="#ff9d9d">障碍物</text>
+<circle cx="430" cy="80" r="16" fill="#2ee6b8"/><text class="sm" x="455" y="88" fill="#2ee6b8">目标</text>
+<circle cx="430" cy="560" r="18" fill="#eaf6ff"/><text class="sm" x="455" y="568" fill="#eaf6ff">起点</text>
+<g data-s="1">
+<path d="M430,540 C420,450 250,420 260,300 C270,190 400,150 430,100" stroke="#00d4ff" stroke-width="6" fill="none" marker-end="url(#mma)"/>
+<path d="M430,540 C440,450 610,420 600,300 C590,190 460,150 430,100" stroke="#00d4ff" stroke-width="6" fill="none" marker-end="url(#mma)"/>
+<text class="lb" x="60" y="300" fill="#00d4ff">示范：左绕</text><text class="lb" x="640" y="300" fill="#00d4ff">示范：右绕</text>
+</g>
+<g data-s="2">
+<path d="M430,540 L430,352" stroke="#ff6b6b" stroke-width="6" stroke-dasharray="12 8" fill="none" marker-end="url(#mma)"/>
+<text x="430" y="372" font-size="48" font-weight="700" fill="#ff6b6b" text-anchor="middle">✕</text>
+<text class="lb" x="30" y="470" fill="#ff6b6b">MSE 平均：直直撞上去</text>
+</g>
+</svg>

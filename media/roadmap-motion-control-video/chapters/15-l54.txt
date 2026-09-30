@@ -1,0 +1,65 @@
+# chapter: id=c15; level=L5; tag=L5.4; name=L5.4 动作重定向
+
+## slide: stage=chap
+::chap L5.4 | 动作重定向 | 把“人怎么动”翻译成“机器人跟得住”的参考轨迹 | 骨架对齐 · IK / QP · 硬约束 · 质量门禁
+---
+0| L5.4，动作重定向。动捕里的那个人，和你的机器人不是同一副骨架：腿长比例不同、关节更少、限位更严。
+0| 把人的关节角直接抄过去，机器人会脚滑、穿地、姿态扭曲。重定向就是这道翻译闸。它的误差会原样传给下游策略，并在 L6 的 Sim2Real 阶段被继续放大。
+
+## slide: title=两类错配，与一条完整链路; src=roadmap/motion-control.md §L5.3 自测题 / §L5.4 · wiki/concepts/motion-retargeting-pipeline.md
+<div class='gridcards g2'>
+<div class='card warn' data-s='0'><h3>骨骼比例不同</h3><p>照搬关节角 → 手脚错位、脚穿地 / 打滑</p><p class='t'>→ 按比例缩放，用 IK 匹配末端与接触关键点</p></div>
+<div class='card warn' data-s='1'><h3>关节限位不同</h3><p>源动作超出物理限位 → 不可行 / 饱和</p><p class='t'>→ 裁剪、重映射，或在优化里加限位约束</p></div>
+</div>
+<div class='flow' data-s='2' style='justify-content:center;margin-top:34px'>
+<div class='n'><b>人体参考</b>MoCap / 视频 / 生成</div><div class='ar'>→</div>
+<div class='n'><b>骨架 / 坐标对齐</b></div><div class='ar'>→</div>
+<div class='n'><b>IK / QP 求解</b></div><div class='ar'>→</div>
+<div class='n'><b>硬约束</b></div><div class='ar'>→</div>
+<div class='n'><b>质量门禁</b></div><div class='ar'>→</div>
+<div class='n'><b>跟踪训练</b>跟不住则回修</div>
+</div>
+---
+0| 重定向要解决两类问题。第一，骨骼比例不同：照搬关节角，手和脚的位置就会错位，脚穿地或者打滑。办法是按比例缩放，并用 IK 去匹配末端和接触关键点，而不是照抄关节角。
+1| 第二，关节限位不同：人的动作可能超出机器人的物理限位，导致不可行或者饱和。办法是裁剪、重映射到可行范围，或者在优化里加上限位约束。
+2| 完整的链路是：人体参考，来自动捕、视频或者生成模型；先做骨架和坐标对齐；再用 IK 或 QP 求解；满足硬约束；过质量门禁；最后送进跟踪训练。跟不住的话，回头修参考。
+
+## slide: title=目标函数：哪些是偏好，哪些必须是硬约束; src=roadmap/motion-control.md §L5.4 自测题 · wiki/formalizations/motion-retargeting-objective.md
+<div class='eq'>$$\min_{q_{1:T}}\ w_{pose}E_{pose} + w_{ee}E_{contact} + w_{bal}E_{balance} + w_{sm}E_{smooth}\quad \text{s.t.}\ \ \text{限位 · 自碰 · 不穿地}$$</div>
+<div class='gridcards g2' style='margin-top:26px'>
+<div class='card' data-s='0'><h3>代价项（偏好，可加权取舍）</h3><ul class='b sm'><li>姿态相似：关节角 / 关键点对齐</li><li>末端与接触：手脚位置、支撑足零滑移</li><li>平衡：CoM / ZMP 落在支撑域</li><li>平滑：关节速度 / 加速度正则</li></ul></div>
+<div class='card gold' data-s='1'><h3>硬约束（可行性）</h3><p>关节限位、自碰撞、足底不穿地</p></div>
+<div class='card warn' data-s='2' style='grid-column:span 2'><h3>为什么不能写成罚项</h3><p>求解器会为降低姿态误差而“买断”惩罚，产出一条物理上执行不了的参考——错误直接进训练集</p></div>
+</div>
+---
+0| 重定向的目标函数通常是加权和：姿态相似项，让关节角或关键点位置对齐；末端和接触项，让手脚位置对齐、支撑脚不滑；平衡项，让质心或 ZMP 落在支撑域内；平滑项，约束关节速度和加速度。这些是偏好，可以加权取舍。
+1| 再加上关节限位、自碰撞和足底不穿地。这三条是可行性约束，必须写成硬约束。
+2| 为什么不能写成罚项？因为写成罚项时，求解器会为了降低姿态误差而“买断”惩罚，产出一条物理上根本执行不了的参考，这个错误会直接进入训练集。
+
+## slide: title=“看起来很像”却跟不住：运动学可行 ≠ 动力学可行; src=roadmap/motion-control.md §L5.4 自测题 · wiki/concepts/kinematic-vs-dynamic-feasibility.md
+<div class='gridcards g3'>
+<div class='card warn' data-s='1'><h3>能力不匹配</h3><p>质量分布、力矩 / 速度上限与人不同：参考加速度超出关节能力</p></div>
+<div class='card warn' data-s='1'><h3>接触有瑕疵</h3><p>接触时序被拉伸、毫米级穿透 / 脚滑 → 跟踪时接触力求解发散</p></div>
+<div class='card warn' data-s='1'><h3>根轨迹漂移</h3><p>基座高度 / 朝向带着源数据漂移：参考本身“站不住”</p></div>
+</div>
+<div class='card' data-s='2' style='margin-top:26px'><h3>排查顺序</h3><p>先量参考自身的物理指标（所需力矩、CoM / ZMP 是否出支撑域、足端滑移速度），再看跟踪策略的奖励与增益</p></div>
+<div class='card good' data-s='3' style='margin-top:22px'><h3>对症下药</h3><p>物理感知重定向（仿真内闭环）或对参考做动力学后处理——比继续调 tracking 超参数更有效</p></div>
+---
+0| 一个常见的坑：重定向结果看起来很像人，但跟踪策略怎么训都跟不住。这通常是因为，运动学可行不等于动力学可行：重定向只对齐了几何，关键点误差很小，却没有约束质量分布和接触力。
+1| 具体原因有三类：机器人的质量分布、执行器的力矩和速度上限都和人不同，参考里的加速度可能超出关节能力；支撑脚的接触时序被拉伸，或者存在毫米级的穿透和脚滑，跟踪时接触力求解发散；根轨迹，也就是基座的高度和朝向，带着源数据的漂移，参考本身就“站不住”。
+2| 排查顺序是：先量参考本身的物理指标，所需力矩、质心和 ZMP 是否出支撑域、足端滑移速度；再去看跟踪策略的奖励和增益。
+3| 用物理感知的重定向，在仿真里闭环，或者对参考做动力学后处理，比继续调跟踪的超参数更对症。
+
+## slide: title=质量门禁与路线选型; src=roadmap/motion-control.md §L5.4 · 推荐做什么 / 自测题 · wiki/comparisons/gmr-vs-nmr-vs-reactor.md
+<div class='card' data-s='0'><h3>质量门禁（进训练集之前）</h3><p>脚滑速度 · 穿透深度 · 关节速度 / 加速度尖峰 · 根轨迹漂移</p></div>
+<div class='cols' style='height:auto;margin-top:24px'>
+<div class='card good' data-s='1'><h3>实时遥操作</h3><p>毫秒级、单帧 / 滑窗、随时换机型 → <span class='t'>运动学优化（GMR 式 IK + QP）</span>：CPU 实时、免训练；物理可行性交给下游 WBC / 跟踪策略兜底</p></div>
+<div class='card gold' data-s='2'><h3>离线批量造 BFM / WBT 数据</h3><p>无实时预算、要物理一致与规模 → <span class='a'>学习式整段映射（NMR）</span>或<span class='a'>物理感知重定向（ReActor / SPIDER）</span>：接触与自碰在数据阶段就被内化</p></div>
+</div>
+<div class='card' data-s='4' style='margin-top:22px'><h3>入门反例实验</h3><p>AMASS / LAFAN1 动作直接拷关节角到人形 URDF → 量脚滑、穿透、越限</p></div>
+---
+0| 重定向的产物进训练集之前，要先过质量门禁：脚滑速度、穿透深度、关节速度和加速度的尖峰、根轨迹漂移，先过滤、再使用。
+1| 路线选型看场景。实时遥操作要毫秒级响应、单帧或滑动窗口输入，还要能随时换机型，就选运动学优化路线，比如 GMR 这种 IK 加 QP 的方法，CPU 上就能实时，不需要训练，物理可行性交给下游的全身控制或跟踪策略兜底。
+2| 离线批量制造行为基础模型或全身跟踪的训练数据，没有实时预算，但要求物理一致、规模大，就选学习式的整段映射，比如 NMR，用仿真锚定的配对数据训练前向网络，吞吐量高；
+3| 或者选物理感知的重定向，比如 ReActor、SPIDER，在仿真里联合优化参考和跟踪策略。这样，接触和自碰撞在数据阶段就被内化了，下游训练不用反复清洗。
+4| 一个很好的入门反例实验：取一段 AMASS 或 LAFAN1 的动作，把人体关节角直接拷到人形模型上播放，量一量脚滑、穿透和越限，你会立刻明白为什么不能不做重定向。

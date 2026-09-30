@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1800 430" width="1800" height="430" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ba" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7fb8d0"/></marker>
+<marker id="bb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ffbf47"/></marker>
+<style>
+.t1{fill:#142a3a;stroke:#00d4ff;stroke-width:2.5}
+.t2{fill:#0d4f5c;stroke:#2ee6b8;stroke-width:2.5}
+.t3{fill:#1a1a1a;stroke:#8eb1c5;stroke-width:2}
+.tx{fill:#eaf6ff;font-size:25px;text-anchor:middle;dominant-baseline:middle;font-weight:500}
+.ts{fill:#9fc3d6;font-size:21px;text-anchor:middle;dominant-baseline:middle}
+.ln{stroke:#7fb8d0;stroke-width:2.5;fill:none;marker-end:url(#ba)}
+.dl{stroke:#ffbf47;stroke-width:2.5;fill:none;stroke-dasharray:9 7;marker-end:url(#bb)}
+.lab{fill:#ffbf47;font-size:21px;text-anchor:middle}
+.rowlab{fill:#6d8fa3;font-size:20px}
+</style>
+</defs>
+<text class="rowlab" x="0" y="14">运动控制主干（L0–L6）</text>
+<rect class="t1" x="0" y="60" width="300" height="84" rx="14"/><text class="tx" x="150" y="90">① Robot Physics</text><text class="ts" x="150" y="122">FK/IK · Dynamics · L0–L2</text>
+<path class="ln" d="M300,102 H368"/>
+<rect class="t1" x="370" y="60" width="300" height="84" rx="14"/><text class="tx" x="520" y="90">② Robot Control</text><text class="ts" x="520" y="122">PD · WBC · MPC · L3–L4</text>
+<path class="ln" d="M670,102 H700 V70 H738"/><path class="ln" d="M670,102 H700 V168 H738"/>
+<rect class="t1" x="740" y="30" width="370" height="80" rx="14"/><text class="tx" x="925" y="58">③ RL</text><text class="ts" x="925" y="90">MDP → PPO · L5.1–L5.2</text>
+<rect class="t1" x="740" y="128" width="370" height="80" rx="14"/><text class="tx" x="925" y="156">③ IL / Motion Imitation</text><text class="ts" x="925" y="188">BC · DeepMimic · AMP · L5.3–5.4</text>
+<path class="ln" d="M925,110 V126"/>
+<path class="ln" d="M1110,70 H1140 V102 H1168"/><path class="ln" d="M1110,168 H1140 V102 H1168"/>
+<rect class="t1" x="1170" y="60" width="300" height="84" rx="14"/><text class="tx" x="1320" y="90">④ Sim2Real</text><text class="ts" x="1320" y="122">DR · SysID · T-S · L6</text>
+<path class="ln" d="M1470,102 H1530 V250 H120 V300"/>
+<text class="rowlab" x="0" y="244">Physical AI 扩展（L8–L12）</text>
+<rect class="t2" x="0" y="302" width="238" height="84" rx="14"/><text class="tx" x="119" y="332">⑤ Transformer</text><text class="ts" x="119" y="364">token · QKV · L8</text>
+<path class="ln" d="M238,344 H258"/>
+<rect class="t2" x="260" y="302" width="238" height="84" rx="14"/><text class="tx" x="379" y="332">⑥ 动作生成</text><text class="ts" x="379" y="364">Diffusion · FM · L9</text>
+<path class="ln" d="M498,344 H518"/>
+<rect class="t2" x="520" y="302" width="238" height="84" rx="14"/><text class="tx" x="639" y="332">⑦ VLA</text><text class="ts" x="639" y="364">π0 · GR00T · L10</text>
+<path class="ln" d="M758,344 H778"/>
+<rect class="t2" x="780" y="302" width="238" height="84" rx="14"/><text class="tx" x="899" y="332">⑧ World Model</text><text class="ts" x="899" y="364">Cosmos · L11</text>
+<path class="ln" d="M1018,344 H1038"/>
+<rect class="t2" x="1040" y="302" width="238" height="84" rx="14"/><text class="tx" x="1159" y="332">Sim / Data</text><text class="ts" x="1159" y="364">Isaac Sim / Lab · L11</text>
+<path class="ln" d="M1278,344 H1298"/>
+<rect class="t3" x="1300" y="302" width="238" height="84" rx="14"/><text class="tx" x="1419" y="332">Deployment</text><text class="ts" x="1419" y="364">ONNX · ROS2 · L12</text>
+<path class="ln" d="M1538,344 H1558"/>
+<rect class="t3" x="1560" y="302" width="238" height="84" rx="14"/><text class="tx" x="1679" y="332">Real Robot</text><text class="ts" x="1679" y="364">CAN / EtherCAT</text>
+<g data-s="3">
+<path class="dl" d="M925,208 V228 H379 V300"/>
+<text class="lab" x="650" y="222">BC 是动作生成的起点</text>
+</g>
+</svg>

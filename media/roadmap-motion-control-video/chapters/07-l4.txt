@@ -1,0 +1,64 @@
+# chapter: id=c07; level=L4; name=L4 人形运动控制主干：方法链总览
+
+## slide: stage=chap
+::chap L4 | 人形运动控制主干 | 浮动基 + 间歇接触 + 高维欠驱动：通用方法怎么重新组织？ | 模型：粗 → 细 · 控制：慢 → 快
+---
+0| L4，人形运动控制主干。这是整条路线的核心，也是最陡的台阶。
+0| L3 的方法在固定基机器人上很直接，但人形是浮动基、间歇接触、高维欠驱动，不能直接套。需要专门的简化模型，和分层的控制结构。
+
+## slide: tag=L4.0; title=两条轴，把 L1–L3 串成 L4 的方法链; src=roadmap/motion-control.md §L4.0 桥段
+<table class='tb'>
+<tr><th>轴</th><th>含义</th><th>实例</th></tr>
+<tr data-s='1'><td>模型粒度</td><td>用多少状态变量描述机器人</td><td>LIP（3 维）→ Centroidal（6 维动量 + 接触力）→ 全身动力学（n+6 维）</td></tr>
+<tr data-s='2'><td>控制频率</td><td>在哪个时间尺度上决策</td><td>落脚点 / 高层规划 1–10 Hz → MPC 50–200 Hz → WBC 1 kHz</td></tr>
+</table>
+<div class='flow' data-s='3' style='margin-top:30px;justify-content:center'>
+<div class='n'><b>L4.1 LIP / ZMP</b>粗模型 · 建立直觉</div><div class='ar'>→</div>
+<div class='n'><b>L4.2 Centroidal</b>角动量 + 接触力</div><div class='ar'>→</div>
+<div class='n'><b>L4.3 MPC</b>50–200 Hz 规划未来</div><div class='ar'>→</div>
+<div class='n'><b>L4.4 TSID / WBC</b>1 kHz 落到每个关节</div>
+</div>
+<div class='card gold' data-s='4' style='margin-top:30px'><p>学每个子方法都用三件事自检：<span class='a'>原理</span>（状态 / 约束 / 目标函数）· <span class='a'>最小代码</span>（跑通核心 loop）· <span class='a'>局限</span>（何时失效、为何需要下一层）</p></div>
+---
+0| 人形控制的核心矛盾是：全身动力学维度太高、非线性太强、接触切换太密集，直接拿 L3 的通用 LQR、MPC 套不上去。
+1| 解决办法不是发明新数学，而是沿两条轴拆分。第一条轴是模型粒度：从只有三维的线性倒立摆，到六维动量加接触力的质心动力学，再到 n 加 6 维的全身动力学。
+2| 第二条轴是控制频率：落脚点和高层规划一到十赫兹，MPC 五十到两百赫兹，全身控制一千赫兹。
+3| L4 的方法链，就是把两条轴串起来：LIP 和 ZMP 建立直觉；质心动力学引入真实力学；MPC 在线规划未来怎么走；全身控制把规划落到每个关节该出多少力。
+4| 学每个子方法时，用三件事检查自己：原理，也就是状态、约束、目标函数分别是什么；最小代码，能不能跑通核心循环；局限性，什么时候失效，为什么需要下一层接上来。
+
+## slide: tag=L4.0; title=方法谱系（上）：model-based 从粗到细、从慢到快; src=roadmap/motion-control.md §L4.0 · 方法谱系对比表
+<table class='tb sm'>
+<tr><th>方法</th><th>模型粒度</th><th>典型频率</th><th>典型用途</th><th>典型局限</th></tr>
+<tr data-s='1'><td>PID</td><td>关节角误差</td><td>1 kHz+</td><td>单关节闭环、保底</td><td>不能处理耦合 / 多约束</td></tr>
+<tr data-s='1'><td>LQR</td><td>线性化状态空间</td><td>100 Hz+</td><td>平衡 baseline、教学</td><td>模型必须线性化</td></tr>
+<tr data-s='2'><td>LIP / ZMP</td><td>CoM 3 维 + ZMP</td><td>离线 / 100 Hz</td><td>平地步态、平衡判据</td><td>忽略角动量与高度变化</td></tr>
+<tr data-s='2'><td>CP / DCM</td><td>CoM + 发散分量</td><td>100 Hz</td><td>实时平衡判据、落脚点</td><td>同 LIP 假设</td></tr>
+<tr data-s='3'><td>Centroidal</td><td>6D 动量 + 接触力</td><td>50–200 Hz</td><td>中层 MPC 模型</td><td>非全身，需配 WBC</td></tr>
+<tr data-s='4'><td>TrajOpt</td><td>全身状态轨迹</td><td>离线 / 慢</td><td>离线参考轨迹、跑酷</td><td>不实时、初值敏感</td></tr>
+<tr data-s='4'><td>MPC</td><td>简化 / Centroidal</td><td>50–500 Hz</td><td>在线步态 + 接触力</td><td>简化误差、实时性</td></tr>
+<tr data-s='5'><td>TSID / WBC</td><td>全身关节加速度</td><td>1 kHz</td><td>MPC 参考 → 关节力矩</td><td>依赖准确动力学</td></tr>
+</table>
+---
+0| 这张谱系表回答“这些名词到底是什么关系”。上半部分是基于模型的方法，从粗到细、从慢到快依次叠加。
+1| PID 只看关节误差，频率在一千赫兹以上，但处理不了耦合和多约束。LQR 用线性化的状态空间，是平衡控制的 baseline，但模型必须线性化。
+2| LIP 和 ZMP 只看质心和 ZMP，适合平地步态和平衡判据，但忽略了角动量和高度变化。捕获点和 DCM 基于同样的假设，擅长实时平衡判断和落脚点决策。
+3| 质心动力学看六维动量和接触力，五十到两百赫兹，适合作中层 MPC 的模型，但它不是全身模型，需要配合全身控制。
+4| 轨迹优化用全身状态和完整动力学，适合离线生成参考轨迹，比如跑酷，但不实时、对初值敏感。MPC 在线规划步态和接触力，挑战是模型简化误差和实时性。
+5| TSID 和全身控制在一千赫兹下，把 MPC 的参考落到每个关节的力矩上，代价是依赖准确的动力学模型。
+
+## slide: tag=L4.0; title=方法谱系（下）：learning-based 补模型难处理的部分; src=roadmap/motion-control.md §L4.0 · 方法谱系对比表 / 怎么读这张表
+<table class='tb sm'>
+<tr><th>方法</th><th>形式</th><th>训练 / 部署</th><th>典型用途</th><th>典型局限</th></tr>
+<tr data-s='1'><td>PPO（RL）</td><td>神经网络策略；reward + curriculum + DR</td><td>训练慢 / 部署快</td><td>端到端步态、跑酷、复杂地形</td><td>sim2real gap、不可解释</td></tr>
+<tr data-s='2'><td>BC / IL</td><td>监督数据</td><td>训练慢 / 部署快</td><td>操作、复杂动作迁移</td><td>compounding error</td></tr>
+<tr data-s='2'><td>DAgger</td><td>BC + 交互式查询</td><td>训练慢</td><td>缓解 BC 误差累积</td><td>需要可查询的 expert</td></tr>
+<tr data-s='3'><td>AMP</td><td>RL + 对抗判别器</td><td>训练慢 / 部署快</td><td>风格化动作、模仿 MoCap</td><td>数据采集成本高</td></tr>
+<tr data-s='3'><td>Diffusion Policy</td><td>生成 action 序列</td><td>训练慢 / 部署中等</td><td>多模态操作、抓取</td><td>推理延迟、数据要求高</td></tr>
+</table>
+<div class='card gold' data-s='4' style='margin-top:26px'><p>实际系统通常<span class='a'>混合使用</span>：MPC + WBC + RL 策略 prior + IL 数据初始化</p></div>
+---
+0| 下半部分是基于学习的方法，通常用来补模型方法难处理的部分：高维、难以显式建模、需要风格化的动作。
+1| PPO 训练慢、部署快，擅长端到端步态、跑酷和复杂地形，但有 Sim2Real 差距，也不可解释。
+2| 行为克隆适合操作和复杂动作迁移，但有复合误差。DAgger 通过交互式查询专家来缓解复合误差，代价是需要一个可以随时查询的专家。
+3| AMP 用强化学习加对抗判别器，学出风格化、像动捕的动作，代价是数据采集成本高。Diffusion Policy 生成整段动作序列，擅长多模态操作，但推理延迟高、数据要求高。
+4| 实际系统通常是混合使用：MPC 加全身控制，加上强化学习的策略先验，再用模仿学习的数据做初始化。

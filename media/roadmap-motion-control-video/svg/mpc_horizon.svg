@@ -1,0 +1,23 @@
+<svg viewBox="0 0 900 560" width="900" height="560" xmlns="http://www.w3.org/2000/svg">
+<style>.sm{font-size:26px}.lb{font-size:28px;font-weight:700}</style>
+<g>
+<text class="lb" x="10" y="40" fill="#eaf6ff">时刻 k</text>
+<rect x="300" y="60" width="480" height="170" rx="10" fill="rgba(0,212,255,0.07)" stroke="#1f6c88" stroke-width="2"/>
+<text class="sm" x="560" y="90" fill="#00d4ff">预测时域 N 步</text>
+<path d="M40,200 C120,190 200,170 300,160" stroke="#8eb1c5" stroke-width="5" fill="none"/>
+<circle cx="300" cy="160" r="10" fill="#eaf6ff"/>
+<path d="M300,160 C400,140 520,130 780,150" stroke="#00d4ff" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+<rect x="300" y="238" width="60" height="18" fill="#ffbf47"/>
+<text class="sm" x="372" y="256" fill="#ffbf47">只执行第一步</text>
+</g>
+<g data-s="3">
+<text class="lb" x="10" y="330" fill="#eaf6ff">时刻 k+1</text>
+<rect x="360" y="350" width="480" height="170" rx="10" fill="rgba(0,212,255,0.07)" stroke="#1f6c88" stroke-width="2"/>
+<path d="M40,490 C120,480 200,460 300,450 C320,448 340,446 360,445" stroke="#8eb1c5" stroke-width="5" fill="none"/>
+<circle cx="360" cy="445" r="10" fill="#eaf6ff"/>
+<path d="M360,445 C460,420 600,425 840,440" stroke="#00d4ff" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+<rect x="360" y="528" width="60" height="18" fill="#ffbf47"/>
+<text class="sm" x="432" y="546" fill="#ffbf47">新状态 → 重新求解</text>
+<path d="M330,262 L380,340" stroke="#7fb8d0" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+</g>
+</svg>

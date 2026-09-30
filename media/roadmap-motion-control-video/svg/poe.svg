@@ -1,0 +1,23 @@
+<svg viewBox="0 0 860 520" width="860" height="520" xmlns="http://www.w3.org/2000/svg">
+<style>.sm{font-size:28px}.lb{font-size:30px;font-weight:700}</style>
+<line x1="30" y1="470" x2="830" y2="470" stroke="#1d3a4f" stroke-width="3"/>
+<rect x="50" y="330" width="70" height="140" rx="8" fill="#1a2c3b" stroke="#2b5670" stroke-width="3"/>
+<g opacity="0.35"><path d="M85,330 L300,330 L520,330 L720,330" stroke="#8eb1c5" stroke-width="14" stroke-linecap="round" fill="none"/></g>
+<text class="sm" x="560" y="300" fill="#8eb1c5">零位（θ = 0）</text>
+<g data-s="1">
+<circle cx="85" cy="330" r="20" fill="#0a1622" stroke="#00d4ff" stroke-width="4"/><circle cx="85" cy="330" r="5" fill="#00d4ff"/><text class="lb" x="60" y="400" fill="#00d4ff">S₁</text>
+<circle cx="300" cy="330" r="20" fill="#0a1622" stroke="#00d4ff" stroke-width="4"/><circle cx="300" cy="330" r="5" fill="#00d4ff"/><text class="lb" x="282" y="400" fill="#00d4ff">S₂</text>
+<circle cx="520" cy="330" r="20" fill="#0a1622" stroke="#00d4ff" stroke-width="4"/><circle cx="520" cy="330" r="5" fill="#00d4ff"/><text class="lb" x="502" y="400" fill="#00d4ff">S₃</text>
+<rect x="705" y="315" width="30" height="30" fill="none" stroke="#ffbf47" stroke-width="4"/><text class="lb" x="700" y="400" fill="#ffbf47">M</text>
+<text class="sm" x="40" y="450" fill="#a9c9da">每个关节的螺旋轴 S（零位时）+ 末端零位位姿 M</text>
+</g>
+<g data-s="2">
+<path d="M85,330 L262,205 L468,236 L600,110" stroke="#00d4ff" stroke-width="14" stroke-linecap="round" fill="none"/>
+<circle cx="85" cy="330" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
+<circle cx="262" cy="205" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
+<circle cx="468" cy="236" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
+<rect x="585" y="95" width="30" height="30" fill="none" stroke="#ffbf47" stroke-width="4" transform="rotate(-44 600 110)"/>
+<text class="lb" x="630" y="100" fill="#ffbf47">T(θ)</text>
+<text class="sm" x="120" y="150" fill="#a9c9da">依次“绕自己的轴转 θᵢ”</text>
+</g>
+</svg>

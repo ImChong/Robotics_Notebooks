@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>slide</title>
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/500.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/400.css">
+<link rel="stylesheet" href="node_modules/katex/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="node_modules/katex/dist/katex.min.js"></script>
+<script src="node_modules/katex/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="stage">
+  <div id="progress"></div>
+  <div id="head"><span id="tag"></span><span id="title"></span></div>
+  <div id="content"></div>
+  <div id="src"></div>
+  <div id="subwrap"><div id="sub"></div></div>
+</div>
+<script>
+const LEVELS = ["全景","L−1","L0","L1","L2","L3","L4","L5","L6","L7","L8","L9","L10","L11","L12","收尾"];
+function renderProgress(level) {
+  const p = document.getElementById("progress");
+  p.innerHTML = "";
+  let passed = true;
+  for (const l of LEVELS) {
+    const d = document.createElement("span");
+    d.className = "chip" + (l === level ? " cur" : (passed ? " done" : ""));
+    if (l === level) passed = false;
+    d.textContent = l;
+    p.appendChild(d);
+  }
+  if (!LEVELS.includes(level)) for (const c of p.children) c.className = "chip";
+}
+window.loadSlide = async function (s) {
+  renderProgress(s.level);
+  document.getElementById("tag").textContent = s.tag || "";
+  document.getElementById("tag").style.display = s.tag ? "" : "none";
+  document.getElementById("title").innerHTML = s.title || "";
+  document.getElementById("src").innerHTML = s.src ? ("依据：" + s.src) : "";
+  const c = document.getElementById("content");
+  c.className = s.cls || "";
+  document.getElementById("stage").className = s.stage || "";
+  c.innerHTML = s.html;
+  renderMathInElement(c, {
+    delimiters: [{ left: "$$", right: "$$", display: true }, { left: "\\(", right: "\\)", display: false }],
+    throwOnError: false, strict: "ignore"
+  });
+  renderMathInElement(document.getElementById("title"), { delimiters: [{ left: "\\(", right: "\\)", display: false }], throwOnError: false });
+  await document.fonts.ready;
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const over = c.scrollHeight - c.clientHeight;
+  return { overflow: over, sw: c.scrollWidth - c.clientWidth };
+};
+window.setFrame = function (f) {
+  const c = document.getElementById("content");
+  for (const el of c.querySelectorAll("[data-s]")) {
+    const k = parseInt(el.dataset.s, 10);
+    el.classList.toggle("hid", k > f.step);
+    el.classList.toggle("now", k === f.step && f.step > 0);
+  }
+  for (const el of c.querySelectorAll("[data-h]")) {
+    const ks = el.dataset.h.split(",").map(x => parseInt(x, 10));
+    el.classList.toggle("now", ks.includes(f.step));
+  }
+  const sub = document.getElementById("sub");
+  sub.textContent = f.sub || "";
+  document.getElementById("subwrap").style.visibility = f.sub ? "visible" : "hidden";
+};
+</script>
+</body>
+</html>

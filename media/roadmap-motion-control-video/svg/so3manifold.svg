@@ -1,0 +1,21 @@
+<svg viewBox="0 0 860 620" width="860" height="620" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="sg" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#1f5a73"/><stop offset="70%" stop-color="#0f2a3b"/><stop offset="100%" stop-color="#0a1622"/></radialGradient>
+<marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.lb{font-size:30px;font-weight:700}.sm{font-size:26px}</style>
+</defs>
+<circle cx="430" cy="320" r="260" fill="url(#sg)" stroke="#2b6a86" stroke-width="3"/>
+<ellipse cx="430" cy="320" rx="260" ry="70" fill="none" stroke="#2b6a86" stroke-width="2" stroke-dasharray="6 7"/>
+<text class="sm" x="430" y="610" fill="#8eb1c5" text-anchor="middle">SO(3)：弯曲的流形，不是向量空间</text>
+<circle cx="240" cy="190" r="12" fill="#eaf6ff"/><text class="lb" x="176" y="176" fill="#eaf6ff">R₀</text>
+<circle cx="610" cy="190" r="12" fill="#eaf6ff"/><text class="lb" x="630" y="176" fill="#eaf6ff">R₁</text>
+<g data-s="1">
+<path d="M240,190 L610,190" stroke="#ff6b6b" stroke-width="4" stroke-dasharray="12 8" fill="none"/>
+<text x="425" y="203" font-size="44" font-weight="700" fill="#ff6b6b" text-anchor="middle">✕</text>
+<text class="sm" x="430" y="244" fill="#ff6b6b" text-anchor="middle">逐元素插值：跳出 SO(3)，不再正交</text>
+</g>
+<g data-s="2">
+<path d="M240,190 Q425,40 610,190" stroke="#00d4ff" stroke-width="5" fill="none" marker-end="url(#ma)"/>
+<text class="sm" x="430" y="82" fill="#00d4ff" text-anchor="middle">SLERP / exp–log：沿流形走</text>
+</g>
+</svg>

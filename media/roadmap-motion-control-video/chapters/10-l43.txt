@@ -1,0 +1,64 @@
+# chapter: id=c10; level=L4; tag=L4.3; name=L4.3 轨迹优化与 MPC
+
+## slide: stage=chap
+::chap L4.3 | 轨迹优化与 MPC | 预判未来 2 秒该往哪儿踩，并实时修正 | OCP · 滚动时域 · 凸 / 非线性 MPC · 接触时序
+---
+0| L4.3，轨迹优化和 MPC。隐喻是：上一秒看见脚滑了，能不能预判未来两秒该往哪儿踩，并且实时改步态？
+0| 质心动力学给了一组方程，但要用它们在线规划质心轨迹和接触力，还需要再加一层优化。这是从“模型”到“控制器”的过渡。
+
+## slide: title=共同的数学外壳：最优控制问题 OCP; src=roadmap/motion-control.md §L4.3 · wiki/methods/model-predictive-control.md · wiki/methods/trajectory-optimization.md
+<div class='eq'>$$\min_{x_{0:N},\,u_{0:N-1}}\ \sum_{k=0}^{N-1} \ell(x_k, u_k) + \ell_N(x_N)\quad \text{s.t.}\quad x_{k+1} = f(x_k,u_k),\ \ g(x_k,u_k) \le 0$$</div>
+<div class='gridcards g3' style='margin-top:26px'>
+<div class='card' data-s='1'><h3>动力学</h3><p>质心 MPC：状态 = 质心位置 / 速度、角动量、躯干姿态；控制量 = 各脚接触力</p></div>
+<div class='card' data-s='2'><h3>约束</h3><p>接触力在摩擦锥内、\(f_z \ge 0\)；按接触时序，腾空脚的力为 0；力的上下限</p></div>
+<div class='card' data-s='3'><h3>代价</h3><p>跟踪期望质心轨迹 / 速度；接触力正则；惩罚控制量变化 \(\Delta u\)，让输出更平滑</p></div>
+</div>
+---
+0| 轨迹优化和 MPC 的数学外壳是同一个东西：最优控制问题，简称 OCP。它由三部分组成：动力学、代价、约束。
+1| 以质心 MPC 为例：状态是质心的位置和速度、角动量以及躯干姿态；控制量是各只脚的接触力；动力学就是上一层的质心方程。
+2| 约束包括：接触力在摩擦锥内，法向力大于等于零；按照接触时序，腾空那只脚的接触力必须为零；还有力的上下限。
+3| 代价通常包括：跟踪期望的质心轨迹和速度，对接触力做正则，并惩罚控制量的变化，让输出更平滑。
+
+## slide: title=TrajOpt vs MPC：离线一次，还是在线滚动; src=roadmap/motion-control.md §L4.3 自测题
+<div class='cols' style='height:auto'>
+<div class='card' data-s='0'><h3>Trajectory Optimization</h3>
+<ul class='b sm'><li>多为离线：对整段时域一次求一条最优轨迹</li><li>可用全身动力学、长时域</li><li>初值敏感；常用 DDP / iLQR / IPOPT</li></ul></div>
+<div class='card' data-s='1'><h3>MPC</h3>
+<ul class='b sm'><li>在线滚动：每周期解一个短时域 OCP</li><li>只执行第一步，然后重规划</li><li>靠反馈抗扰动；必须实时</li></ul></div>
+</div>
+<div class='card gold' data-s='2' style='margin-top:26px'><p>人形里常混用：<span class='a'>MPC 每一步内部解的，正是一个小型 TrajOpt</span>——区别只在“离线一次”还是“在线滚动 + 实时”</p></div>
+---
+0| 轨迹优化和 MPC 有什么区别？轨迹优化多为离线，对整段时域一次性求出一条最优轨迹，可以用全身动力学、长时域，但对初值敏感，常用 DDP、iLQR 或 IPOPT 这类求解器。
+1| MPC 是在线滚动的：每个周期求解一个短时域的最优控制问题，只执行第一步，然后重新规划，靠反馈来抵抗扰动。
+2| 人形领域经常把这两个词混用，因为 MPC 在每一步内部解的，正是一个小型的轨迹优化问题。区别只在于“离线一次”，还是“在线滚动、并且实时”。
+
+## slide: title=凸 MPC vs 非线性 MPC，接触切换怎么处理; src=roadmap/motion-control.md §L4.3 自测题 · wiki/queries/mpc-solver-selection.md
+<table class='tb'>
+<tr><th></th><th>Convex MPC</th><th>Nonlinear MPC</th></tr>
+<tr data-s='1'><td>模型与约束</td><td>线性 / 凸化模型 + 凸约束</td><td>完整或非线性动力学</td></tr>
+<tr data-s='1'><td>求解</td><td>快、确定性</td><td>非凸、慢、初值敏感</td></tr>
+<tr data-s='2'><td>适合</td><td>周期性平地行走、高频实时</td><td>跑跳、复杂地形、同时优化接触力与姿态</td></tr>
+<tr data-s='3'><td>接触切换</td><td>预先给定 contact schedule；摩擦锥线性化</td><td>预定时序，或互补约束 / 相位优化</td></tr>
+</table>
+---
+0| MPC 又分凸 MPC 和非线性 MPC。
+1| 凸 MPC 用线性化或凸化的模型加凸约束，求解快而且确定；非线性 MPC 用完整或非线性的动力学，代价是非凸、求解慢、对初值敏感。
+2| 所以凸 MPC 适合周期性的平地行走和高频实时控制；非线性 MPC 适合跑跳、复杂地形，以及需要同时优化接触力和姿态的任务。
+3| 接触切换怎么处理？凸 MPC 靠预先给定的接触时序，接触力受线性化的摩擦锥约束；非线性 MPC 可以用预定时序，也可以用互补约束或相位优化，让优化器自己决定何时接触。
+
+## slide: title=MPC 步态发抖：由外到内的排查顺序; src=roadmap/motion-control.md §L4.3 自测题 · wiki/queries/mpc-tuning-guide.md
+<ul class='b steps'>
+<li data-s='1'><span class='k'>参考本身抖不抖</span>：上游落脚点 / CoM 轨迹是否连续</li>
+<li data-s='1'><span class='k'>求解器是否真收敛</span>：迭代上限、warm-start</li>
+<li data-s='2'><span class='k'>时序</span>：控制频率、求解延迟、是否补偿 one-step delay</li>
+<li data-s='2'><span class='k'>权重</span>：跟踪过硬、平滑过软 → 加 \(\Delta u\) 惩罚</li>
+<li data-s='3'><span class='k'>模型 / 约束</span>：接触切换处约束突变、摩擦锥或 ZMP 约束过紧</li>
+<li data-s='3'><span class='k'>状态估计</span>：噪声与延迟把抖动带进反馈</li>
+</ul>
+<div class='card good' data-s='4' style='margin-top:24px'><h3>这一层做出什么</h3><p>用 CasADi 或 Crocoddyl 实现一个简化 centroidal MPC，在仿真里跑通双足行走；能解释预测时域、代价函数、约束处理的设计</p></div>
+---
+0| 最后是一个非常实用的问题：MPC 跑起来步态发抖，怎么排查？路线给的顺序是由外到内。
+1| 第一，参考本身是不是在抖：上游的落脚点或质心轨迹是否连续。第二，求解器是否真的收敛：有没有触到迭代上限，有没有做热启动。
+2| 第三，时序：控制频率、求解延迟，是否补偿了一步的延迟。第四，权重：跟踪项过硬而平滑项过软，控制量就会高频震荡，这时要加上控制增量的惩罚。
+3| 第五，模型和约束：接触切换处约束是否突变，摩擦锥或 ZMP 约束是否过紧。第六，状态估计的噪声和延迟，会把抖动带进反馈。
+4| 这一层的输出：用 CasADi 或 Crocoddyl 实现一个简化的质心 MPC，在仿真里跑通双足行走，并能解释预测时域、代价函数和约束处理的设计思路。

@@ -1,0 +1,77 @@
+# chapter: id=c03; level=L0; name=L0 数学与编程基础
+
+## slide: stage=chap
+::chap L0 | 数学与编程基础 | 机器人世界最底层的词汇表：向量、矩阵、旋转、变换 | SO(3) · SE(3) · 矩阵指数 · QP
+---
+0| L0，数学与编程基础。这一层不需要深入，但不能跳过。
+0| 隐喻是：你刚拿到一台机器人，却连“它的胳膊指向哪里”都没法用代码描述。L0 就是机器人世界最底层的词汇表。之后每一层的公式都把位姿、速度、力当作“黑话”，没有 L0，每读一行都要现场查。
+
+## slide: tag=L0; title=位姿 = 朝向 R + 位置 p; src=roadmap/motion-control.md §L0 · wiki/formalizations/se3-representation.md
+<div class='cols w46'>
+<div class='col'>::svg se3.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='1'><div class='sm m'>SO(3)：所有合法旋转矩阵</div>$$R^\top R = I,\qquad \det R = 1$$</div>
+<div class='eq' data-s='2'><div class='sm m'>SE(3)：旋转 + 平移，齐次变换矩阵</div>$$T = \begin{bmatrix} R & p \\ 0 & 1 \end{bmatrix},\qquad T_{ac} = T_{ab}\,T_{bc}$$</div>
+<div class='eq' data-s='3'><div class='sm m'>同一个变换，作用在点与方向上不同</div>$$\text{点：}\; v' = Rv + p \qquad \text{方向：}\; v' = Rv$$</div>
+</div>
+</div>
+---
+0| 描述一个刚体在三维空间里的状态，需要两样东西：朝向和位置。
+1| 朝向用旋转矩阵 R 表示。所有合法的旋转矩阵构成一个集合，叫 SO(3)。它满足两个条件：R 的转置乘 R 等于单位阵，行列式等于一。也就是三根坐标轴互相正交、长度为一，而且是右手系。
+2| 朝向再加上位置向量 p，就是 SE(3)。工程上把 R 和 p 拼成一个四乘四的齐次变换矩阵，这样一连串的坐标变换，就能直接用矩阵连乘来组合。
+3| 同一个 SE(3) 元素，作用在点和方向上结果不一样：点要先旋转再平移，是 R 乘 v 加 p；方向向量不受平移影响，只旋转，是 R 乘 v。区分“点”和“方向”，是后面所有推导不出错的前提。
+
+## slide: tag=L0; title=旋转矩阵为什么不能直接相加 / 插值; src=roadmap/motion-control.md §L0 自测题 · wiki/comparisons/so3-rotation-representations.md
+<div class='cols w46'>
+<div class='col'>::svg so3manifold.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card warn' data-s='1'><h3>错误做法</h3><p>逐元素相加或线性插值：结果一般不再正交，已经不是旋转矩阵</p></div>
+<div class='card good' data-s='2'><h3>正确做法：在流形上插值</h3><p>四元数 SLERP，或李代数上的 exp / log：</p>
+<div class='eq' style='margin-top:8px'>$$R(t) = R_0\,\exp\!\big(t\,\log(R_0^\top R_1)\big)$$</div></div>
+<div class='card' data-s='3'><h3>矩阵指数</h3><p>\(\exp([\omega]_\times)\)：把角速度向量对应的反对称矩阵映射成旋转矩阵——L1 的 PoE 就建立在它上面</p></div>
+</div>
+</div>
+---
+0| 一个常见问题：旋转矩阵能不能直接相加、或者线性插值？答案是不能。
+1| 因为 SO(3) 不是向量空间，而是一个弯曲的流形。两个旋转矩阵逐元素相加或者线性插值，结果一般不再正交，已经跳出了 SO(3)，不再是合法的旋转。
+2| 正确做法是在流形上插值：用四元数的球面线性插值 SLERP；或者用李代数：先用对数映射求出两个朝向之间的相对旋转，再按比例 t 缩放，用指数映射走回去。
+3| 这里的指数映射，把一个角速度向量对应的反对称矩阵，映射成一个旋转矩阵。后面 L1 的正运动学公式 PoE，就建立在它上面。
+
+## slide: tag=L0; title=旋转怎么表示：三种方案的取舍; src=roadmap/motion-control.md §L0 自测题 · wiki/comparisons/so3-rotation-representations.md
+<table class='tb'>
+<tr><th>表示</th><th>优点</th><th>代价</th><th>工程用途</th></tr>
+<tr data-s='1'><td>旋转矩阵 + 矩阵指数</td><td>无奇异、可直接复合；与 twist / 李代数统一（PoE、Jacobian 基于它）</td><td>9 个数 + 6 个约束，冗余</td><td>链式 FK</td></tr>
+<tr data-s='2'><td>欧拉角</td><td>只有 3 个数，直观</td><td>万向锁奇异、表示不唯一、插值差</td><td>只做人读的输入输出</td></tr>
+<tr data-s='3'><td>四元数</td><td>4 个数、无奇异；复合与 SLERP 高效稳定</td><td>双重覆盖：\(q\) 与 \(-q\) 是同一个旋转</td><td>内部计算</td></tr>
+</table>
+<div class='card gold' data-s='4' style='margin-top:26px'><p>经验法则：<span class='a'>内部计算用四元数，链式 FK 用矩阵 / 矩阵指数，欧拉角只给人看</span></p></div>
+---
+0| 那旋转到底该用什么表示？路线给了一个清晰的选型。
+1| 旋转矩阵配合矩阵指数：没有奇异、可以直接复合，而且和 twist、李代数是同一套语言；代价是九个数加六个约束，比较冗余。
+2| 欧拉角：只有三个数，很直观；但有万向锁奇异，表示不唯一，插值效果也差。
+3| 四元数：四个数，没有奇异，复合和插值都高效稳定；唯一要注意的是双重覆盖，q 和负 q 表示同一个旋转。
+4| 工程上的习惯是：内部计算用四元数，链式正运动学用矩阵和矩阵指数，欧拉角只用来做给人看的输入输出。
+
+## slide: tag=L0; title=优化直觉 + 这一层要做出什么; src=roadmap/motion-control.md §L0 · 核心问题 / 推荐做什么 / 学完输出什么
+<div class='cols'>
+<div class='col'>
+<div class='card'><h3>优化直觉</h3><p>IK、MPC、WBC 本质上都是“在约束下找最好的解”</p></div>
+<div class='eq' data-s='1'><div class='sm m'>最常见的形式：二次规划 QP</div>$$\min_x\ \tfrac12 x^\top P x + q^\top x \quad \text{s.t.}\quad Ax \le b$$</div>
+<div class='card' data-s='1'><p><span class='k'>SVD</span>：看雅可比的秩与冗余度</p></div>
+</div>
+<div class='col'>
+<div class='card good' data-s='2'><h3>推荐做什么</h3>
+<ul class='b sm'>
+<li>跑通 Python / NumPy / Pinocchio 环境</li>
+<li>用 Modern Robotics 配套库跑 <span class='mono'>MatrixExp3</span>、<span class='mono'>MatrixExp6</span>、<span class='mono'>FKinSpace</span></li>
+<li>不用刷题，但要有手感和直觉</li>
+</ul></div>
+<div class='card gold' data-s='3'><h3>学完输出</h3>
+<ul class='b sm'><li>能用 NumPy 写矩阵运算</li><li>能跑通一个机械臂正运动学 Demo</li></ul></div>
+</div>
+</div>
+---
+0| L0 的另一半是优化直觉。机器人里到处都是“在约束下找最好的解”：逆运动学、MPC、全身控制，本质上都是优化问题。
+1| 其中最常见的形式是二次规划 QP：目标是二次函数，约束是线性的，后面 L3、L4 会反复用到它。奇异值分解 SVD，则帮你理解雅可比矩阵的秩和冗余度。
+2| 这一层要做的事很具体：跑通 Python、NumPy 和 Pinocchio 环境；用 Modern Robotics 的配套库，跑通 MatrixExp3、MatrixExp6、FKinSpace 这几个最小函数，把矩阵指数和刚体位姿变换连起来。
+3| 学完的标准是：能用 NumPy 写矩阵运算，能跑通一个机械臂正运动学的 Demo。

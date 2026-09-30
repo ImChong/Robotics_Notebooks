@@ -1,0 +1,18 @@
+<svg viewBox="0 0 860 560" width="860" height="560" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="coa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>
+<style>.sm{font-size:26px}.lb{font-size:28px;font-weight:700}</style></defs>
+<path d="M40,500 H820" stroke="#8eb1c5" stroke-width="2.5" marker-end="url(#coa)"/><text class="sm" x="790" y="535" fill="#8eb1c5">t</text>
+<path d="M60,330 C200,300 320,260 460,250 C600,240 700,260 800,240 L800,300 C700,320 600,300 460,310 C320,320 200,360 60,390 Z" fill="rgba(0,212,255,0.10)"/>
+<text class="sm" x="520" y="360" fill="#5fb7d4">训练数据覆盖的状态</text>
+<path d="M60,360 C200,330 320,290 460,280 C600,270 700,290 800,270" stroke="#00d4ff" stroke-width="6" fill="none"/>
+<text class="lb" x="640" y="250" fill="#00d4ff">专家轨迹</text>
+<g data-s="1">
+<path d="M60,360 C160,340 250,300 330,270 C420,230 520,160 640,90" stroke="#ffbf47" stroke-width="6" fill="none" stroke-dasharray="2 0"/>
+<text class="lb" x="600" y="70" fill="#ffbf47">策略轨迹</text>
+<circle cx="330" cy="270" r="9" fill="#ffbf47"/><text class="sm" x="200" y="210" fill="#ffbf47">小误差 → 没见过的状态</text>
+</g>
+<g data-s="2">
+<text class="lb" x="70" y="80" fill="#ff6b6b">总误差 ∝ ε·T²</text>
+<text class="sm" x="70" y="118" fill="#ff6b6b">（每步误差 ε，时域 T）</text>
+</g>
+</svg>

@@ -1,0 +1,81 @@
+# chapter: id=c14; level=L5; tag=L5.3; name=L5.3 模仿学习：BC · DAgger · DeepMimic · AMP
+
+## slide: stage=chap
+::chap L5.3 | 模仿学习 | 与其反复试错，不如“看人怎么做” | BC · DAgger · DeepMimic · AMP · BeyondMimic
+---
+0| L5.3，模仿学习。纯强化学习在跳舞、操作、跑酷这类复杂动作上，探索成本极高，奖励也极难写。模仿学习用人类的示范数据，给策略一个好的起点；但它本身有复合误差，通常要叠加强化学习或 DAgger 才稳。
+
+## slide: title=行为克隆 BC 与复合误差; src=roadmap/motion-control.md §L5.3 自测题 · wiki/methods/behavior-cloning.md
+<div class='cols w46'>
+<div class='col'>::svg compounding.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='eq' data-s='0'><div class='sm m'>BC：监督回归专家动作</div>$$\min_\theta\ \mathbb E_{(s,a)\sim \mathcal D}\,\big\|\pi_\theta(s) - a\big\|^2$$</div>
+<div class='card warn' data-s='1'><h3>协变量偏移</h3><p>训练只见过专家访问的状态；部署时小误差把策略带到没见过的状态，错误自我强化</p></div>
+<div class='eq' data-s='2'>$$\text{总误差} \sim O(\epsilon T^2)$$</div>
+</div>
+</div>
+---
+0| 最简单的模仿学习是行为克隆 BC：把专家的状态和动作当作监督数据，让策略去回归专家的动作。
+1| 它的核心问题叫复合误差。训练时，策略只见过专家访问过的那些状态；部署时，策略自己的一点小误差，会把它带到从没见过的状态，在那里它犯更大的错，误差沿着时间不断累积。
+2| 数学上，这叫协变量偏移，也就是状态分布的漂移。如果每一步的误差是 ε，总误差会随时域 T 呈 ε 乘 T 平方的二次放大。
+
+## slide: title=DAgger：在策略自己走到的状态上补标注; src=roadmap/motion-control.md §L5.3 自测题 · wiki/methods/dagger.md · arXiv:1011.0686
+<div class='cols w64'>
+<div class='col'>::svg dagger.svg</div>
+<div class='col' style='justify-content:center'>
+<div class='card good' data-s='2'><h3>为什么有效</h3><p>训练分布覆盖策略实际遇到的状态，消除协变量偏移：\(O(\epsilon T^2) \to O(\epsilon T)\)</p></div>
+<div class='card warn' data-s='3'><h3>代价</h3><p>需要可随时查询的在线专家持续标注；在真机上跑不成熟的策略可能不安全</p></div>
+</div>
+</div>
+---
+0| DAgger，数据集聚合，专门解决这个问题。
+1| 做法是一个循环：让当前策略自己去跑，收集它实际访问到的状态；请专家对这些状态标注正确的动作；把新数据并入数据集；重新训练，如此迭代。
+2| 这样，训练分布就逐渐覆盖了策略实际会遇到的状态，消除了协变量偏移，误差从 T 的平方降到了 T 的线性量级。
+3| 代价是：需要一个可以随时查询的在线专家持续标注，成本很高；而且在真机上，让一个不成熟的策略去跑，可能不安全。
+
+## slide: title=DeepMimic：参考动作 + 物理仿真 + RL; src=roadmap/motion-control.md §L5.3 · wiki/methods/deepmimic.md · arXiv:1804.02717
+<div class='flow' style='justify-content:center'>
+<div class='n'><b>参考动作</b>MoCap</div><div class='ar'>+</div><div class='n'><b>物理仿真</b>角色受真实动力学约束</div><div class='ar'>+</div><div class='n'><b>RL</b>跟踪奖励</div>
+</div>
+<div class='gridcards g3' style='margin-top:30px'>
+<div class='card' data-s='1'><h3>显式跟踪奖励</h3><p>每个时刻：关节姿态、速度、末端位置、质心，都尽量贴合参考</p></div>
+<div class='card' data-s='2'><h3>参考状态初始化 RSI</h3><p>回合从参考动作的随机时刻开始，后半段动作也能被充分练习</p></div>
+<div class='card' data-s='2'><h3>提前终止</h3><p>摔倒或偏离过大就重置，提高训练效率</p></div>
+</div>
+<div class='card warn' data-s='3' style='margin-top:24px'><h3>局限：“高级发条玩具”</h3><p>高保真复现固定片段；目标或物体稍变，往往需要新的参考</p></div>
+---
+0| 接下来是“参考动作加物理仿真加强化学习”这一支，代表作是 DeepMimic。它让物理仿真里的角色，通过强化学习去复现一段动捕动作。
+1| 奖励是显式的跟踪奖励：每个时刻，关节姿态、速度、末端位置和质心，都要尽量贴合参考。
+2| 两个关键技巧：参考状态初始化，每个回合从参考动作的随机时刻开始，让后半段的动作也能被充分练习；提前终止，摔倒或偏离过大就重置。
+3| 它的局限，是像一个高级的发条玩具：能高保真地复现固定片段，但目标或物体稍有变化，就往往需要新的参考动作。
+
+## slide: title=AMP：让判别器定义什么叫“自然”; src=roadmap/motion-control.md §L5.3 · wiki/methods/amp-reward.md · arXiv:2104.02180
+<div class='cols'>
+<div class='col'>
+<div class='card' data-s='1'><h3>判别器 D</h3><p>看一小段状态转移 \((s, s')\)：来自参考数据集，还是来自策略？</p></div>
+<div class='card' data-s='1'><h3>策略 = 生成器</h3><p>既要完成任务，又要让判别器把自己误认为“真实动作”</p></div>
+<div class='eq' data-s='2'>$$r = w_{task}\, r^{task} + w_{style}\, r^{style}(s, s')$$</div>
+</div>
+<div class='col'>
+<div class='card good' data-s='3'><h3>好处</h3><ul class='b sm'><li>不必逐帧对齐参考</li><li>少写关节速度 / 平滑等启发式惩罚</li><li>任务与风格分离 → 能组合已有动作完成新任务</li></ul></div>
+<div class='card' data-s='4'><h3>继续演进</h3><ul class='b sm'><li><span class='k'>BeyondMimic</span>：真机人形规模化动作跟踪 + 引导扩散组合技能</li><li><span class='k'>MimicKit</span>：一套代码跑 DeepMimic / AMP / ASE 等</li></ul></div>
+</div>
+</div>
+---
+0| AMP，对抗运动先验，换了一个思路：不再逐帧跟踪，而是让一个判别器去“悟”，什么才叫自然的动作。
+1| 判别器看一小段状态转移，判断它来自参考动作数据集，还是来自仿真里的策略。策略则像生成对抗网络里的生成器：除了完成任务，还要让判别器把自己的动作误认为真实动作。
+2| 于是，总奖励等于任务奖励加风格奖励。任务奖励说“去哪里、做什么”，风格奖励说“要做得像人”。
+3| 好处是：不用逐帧对齐；减少了关节速度惩罚、平滑惩罚这类启发式奖励；而且任务和风格分开，策略能把已有的动作组合起来完成新任务。
+4| 这一支还在继续演进：BeyondMimic 在真机人形上做规模化的动作跟踪，并用引导扩散来组合技能；MimicKit 是 Peng 团队的模块化框架，一套代码跑 DeepMimic、AMP、ASE 等多种算法。
+
+## slide: title=模仿学习谱系一览; src=roadmap/motion-control.md §L5.3 · 模仿学习谱系
+<div class='cols'>
+<div class='card' data-s='0'><h3>从监督学习出发</h3>
+<div class='flow v' style='gap:8px;margin-top:10px'><div class='n' style='width:600px'><b>Behavior Cloning</b>监督回归专家动作</div><div class='ar'>↓</div><div class='n' style='width:600px'><b>DAgger</b>在策略访问状态上补标注</div><div class='ar'>⇣</div><div class='n' style='width:600px'><b>L9 动作生成</b>生成式动作头：Diffusion / Flow</div></div></div>
+<div class='card' data-s='1'><h3>参考动作 + 物理仿真 + RL</h3>
+<div class='flow v' style='gap:8px;margin-top:10px'><div class='n' style='width:600px'><b>DeepMimic</b>显式跟踪</div><div class='ar'>↓</div><div class='n' style='width:600px'><b>AMP</b>判别器 motion prior</div><div class='ar'>↓</div><div class='n' style='width:600px'><b>BeyondMimic · MimicKit</b>规模化 · 统一底座</div></div></div>
+</div>
+---
+0| 用这张谱系把 L5.3 串起来：左边一支从监督学习出发，行为克隆、DAgger，并且行为克隆的思路会在 L9 发展成扩散策略和流匹配这样的生成式动作头。
+1| 右边一支是参考动作加物理仿真加强化学习：DeepMimic 显式跟踪，AMP 用判别器学运动先验，再到 BeyondMimic 和 MimicKit。
+1| 学完这一层，你应该能把一段动捕数据迁移到人形上，并能解释为什么 DAgger 比纯行为克隆更好。迁移的第一步——动作重定向，就是下一节的内容。
