@@ -130,9 +130,9 @@
           load: function () { return addedNodes.then(function (n) { return cumulative(dailyFromDates(n.map(function (v) { return v.date; }))); }); } },
         { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar',
           load: function () { return addedNodes.then(function (n) { return dailyFromDates(n.map(function (v) { return v.date; })); }); } },
-        { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line',
+        { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line', hidden: true,
           load: function () { return depthDaily().then(cumulative); } },
-        { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar',
+        { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar', hidden: true,
           load: depthDaily },
         { id: 'communities', label: '社区节点数', unit: '节点', kind: 'category',
           load: function () {
@@ -179,7 +179,8 @@
               return { traces: traces, total: names.length + ' 条纵深，合计 ' + sum + ' 节点次（一个节点可属多条纵深）' };
             });
           } }
-      ];
+      // 暂时隐藏的视图（纵深数趋势 / 每日纵深数）
+      VIEWS = VIEWS.filter(function (v) { return !v.hidden; });
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
       var current = null;
