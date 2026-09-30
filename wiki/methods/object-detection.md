@@ -76,6 +76,7 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 | 方法 | 核心思想 | 典型性能（论文时代） |
 |------|----------|----------------------|
 | [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md) | S×S 网格一次回归 | 63.4 mAP @ **45 FPS** |
+| [YOLO26](../entities/paper-yolo26-unified-realtime-e2e-vision.md) | DFL-free NMS-free 双头 + MuSGD/STAL | 40.9–57.5 mAP @ **1.7–11.8 ms**（T4 TRT） |
 | SSD | 多尺度 default boxes | 精度与速度折中 |
 | RetinaNet | Focal loss 平衡难易样本 | 单阶段逼近两阶段精度 |
 

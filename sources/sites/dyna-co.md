@@ -6,6 +6,7 @@
 - **类型：** company site
 - **官方入口：** <https://www.dyna.co/>
 - **研究入口（Dyna-2）：** <https://www.dyna.co/dyna-2>
+- **研究入口（Dyna-2.1）：** <https://www.dyna.co/dyna-2.1>
 - **代码：** **未开源**（公司站无公开训练/推理仓；截至 2026-08-11）
 - **机构：** DYNA Robotics Inc.（公关稿地址 Redwood City, Calif.）
 - **入库日期：** 2026-08-11
@@ -24,12 +25,12 @@
 | 层 | 名称 | 角色 |
 |----|------|------|
 | System 2 | DYNA-VLM | 高层 agentic 推理 |
-| System 1 | **DYNA-2** | 中层任务灵巧（WAM） |
+| System 1 | **DYNA-2** / **Dyna-2.1** | 中层任务灵巧（WAM）；2.1 为 physical agent 栈 |
 | System 0 | DYNA-System0 | 低层全身控制 |
 | Embodiment | DYNA-SAUR | 视觉 · 触觉 · 本体觉 |
 
 ## 对 wiki 的映射
 
-- 研究页：[`dyna-co-dyna-2.md`](./dyna-co-dyna-2.md)
-- 博文摘录：[`../blogs/dyna_2_million_hour_wam.md`](../blogs/dyna_2_million_hour_wam.md)
-- 实体：[`wiki/entities/dyna-2.md`](../../wiki/entities/dyna-2.md)
+- 研究页：[`dyna-co-dyna-2.md`](./dyna-co-dyna-2.md)、[`dyna-co-dyna-2-1.md`](./dyna-co-dyna-2-1.md)
+- 博文摘录：[`../blogs/dyna_2_million_hour_wam.md`](../blogs/dyna_2_million_hour_wam.md)、[`../blogs/dyna_2_1_physical_agent_taku.md`](../blogs/dyna_2_1_physical_agent_taku.md)
+- 实体：[`wiki/entities/dyna-2.md`](../../wiki/entities/dyna-2.md)、[`wiki/entities/dyna-2-1.md`](../../wiki/entities/dyna-2-1.md)

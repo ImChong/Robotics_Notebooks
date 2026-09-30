@@ -2,13 +2,14 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, yolo, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-09-05
+updated: 2026-09-30
 code: https://github.com/ultralytics/ultralytics
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md
   - ../queries/object-detection-model-selection.md
   - ./paper-yolo-unified-realtime-detection.md
+  - ./paper-yolo26-unified-realtime-e2e-vision.md
   - ./rf-detr.md
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
@@ -18,6 +19,8 @@ related:
   - ./dualmap.md
 sources:
   - ../../sources/repos/ultralytics.md
+  - ../../sources/papers/yolo26_arxiv_2606_03748.md
+  - ../../sources/sites/huggingface-ultralytics-yolo26.md
   - ../../sources/sites/docs-ultralytics.md
   - ../../sources/repos/roboflow_sports.md
 summary: "Ultralytics（ultralytics/ultralytics）：YOLO 工程主仓；统一 CLI/Python 覆盖检测/分割/姿态/OBB/深度/跟踪与 ONNX·TensorRT 导出；当前主推 YOLO26（AGPL-3.0，商用需 Enterprise）。"
@@ -170,6 +173,7 @@ sequenceDiagram
 - [目标检测（方法）](../methods/object-detection.md)
 - [目标检测模型选型](../queries/object-detection-model-selection.md)
 - [YOLO v1](./paper-yolo-unified-realtime-detection.md) — 范式原点
+- [YOLO26 论文实体](./paper-yolo26-unified-realtime-e2e-vision.md) — NMS-free / MuSGD / STAL 技术锚点（arXiv:2606.03748）
 - [RF-DETR](./rf-detr.md) — 实时 DETR 对照
 - [Booster RoboCup Demo](./booster-robocup-demo.md) — YOLOv8 真机范例
 - [人形足球](../tasks/humanoid-soccer.md) / [场地线检测](../methods/soccer-field-line-detection.md)

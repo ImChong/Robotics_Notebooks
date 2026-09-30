@@ -2,8 +2,9 @@
 type: entity
 tags: [wam, world-action-models, scaling-laws, egocentric-video, human-robot-transfer, foundation-model, manipulation, dexterous-manipulation, flow-matching, dyna-robotics, closed-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-09-30
 related:
+  - ./dyna-2-1.md
   - ../concepts/world-action-models.md
   - ../concepts/embodied-scaling-laws.md
   - ../methods/egoscale.md
@@ -157,6 +158,7 @@ flowchart TB
 - [DreamWAM](./paper-dreamwam.md) / [ω-0](./paper-omega-0.md) — 开源/WIP 学术 Joint WAM
 - [Riemann-1.0](./paper-riemann-1.md) — 同属闭源人视频 WAM，但是 **LAM→UMI→机** 对齐课程，不是零机器人预训练缩放律
 - [ACT-2（Sunday）](./sunday-robotics-act2.md) / [GEN-1 千手](./generalist-gen1-thousand-hands.md) — 闭源人类数据预训练产业对照
+- [Dyna-2.1（Physical Agent · Taku）](./dyna-2-1.md) — 同公司 **长时工作流** 与 Taku 硬件栈（2026-09）
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 3 / Stage 5 学习入口
 - [Manipulation](../tasks/manipulation.md) — 任务语境
 
