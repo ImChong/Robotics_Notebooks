@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | TeleOCR（arXiv:2608.12898）：TeleAI ~1.2B 文档 VLM，GitHub/HF 已开源 + TeleAI 在线 demo；实体页与 sources 三件套
+
 ## [2026-09-30] ingest | WB-WAM arXiv:2609.34199 — 72-D 身手异构 video WAM 预训练 + PICO mid-training + HumanoidArena 81.9%；项目页 GitHub/HF 待发布
 
 ## [2026-09-30] ingest | RopeFormer arXiv:2609.23432 — TXL 跨 trial 动态绳 + H1-2 真机；项目页 Code SOON；实体 paper-ropeformer 与 Flying Knots/manipulation 交叉
