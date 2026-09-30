@@ -23,6 +23,7 @@ const CHROME = process.env.CHROME_PATH || "/opt/pw-browsers/chromium-1194/chrome
     if (!todo.length) continue;
     const r = await page.evaluate(async (x) => window.loadSlide(x), s);
     if (r.overflow > 2 || r.sw > 2) report.push(`${s.id}: overflow v=${r.overflow} h=${r.sw}`);
+    if (r.bad.length) report.push(`${s.id}: box overflow ${r.bad.join(", ")}`);
     // 首帧前多等一会儿，保证 webfont 子集全部就绪
     await page.waitForTimeout(120);
     await page.evaluate(() => document.fonts.ready);

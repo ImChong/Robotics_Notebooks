@@ -3,13 +3,13 @@
 ## slide: tag=; title=; stage=cover
 <div class='cover'>
 <div class='kicker'>ROBOTICS NOTEBOOKS · 主路线逐级讲解</div>
-<div class='t1'>运动控制 → Physical AI<br>全栈成长路线</div>
+<div class='t1'>运动控制 → 物理智能<br>全栈成长路线</div>
 <div class='line'></div>
 <div class='t2'>L−1 → L0–L7 → L8–L12：每一层的核心要点与原理，自测题直接给答案</div>
 <div class='src'>讲解依据：roadmap/motion-control.md（站点页面 roadmap.html?id=roadmap-motion-control）及其链接的 wiki 页面</div>
 </div>
 ---
-0| 大家好。这期视频，我们把 Robotics Notebooks 里的主路线“运动控制到 Physical AI 全栈成长路线”，从头到尾完整讲一遍。
+0| 大家好。这期视频，我们把 Robotics Notebooks 里的主路线“运动控制到 物理智能全栈成长路线”，从头到尾完整讲一遍。
 0| 每一层都讲清三件事：这一层解决什么问题，核心要点是什么，背后的原理是什么。
 0| 路线里原本留给读者的自测题，我们也会在讲解中直接给出答案，不留悬念。
 

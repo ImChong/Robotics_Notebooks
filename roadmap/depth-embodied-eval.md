@@ -269,7 +269,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [Sim2Real](depth-sim2real.md) — 评测 gap 与真机部署对照
   - [具身数据](depth-embodied-data.md) — 飞轮的验收侧

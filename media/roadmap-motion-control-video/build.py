@@ -381,7 +381,7 @@ def assemble(total, segs, audio_parts, chaps, subs, name):
     lst.write_text("\n".join(lines) + "\n", encoding="utf-8")
     # 章节
     meta = ROOT / "cache" / f"{name}.ffmeta"
-    m = [";FFMETADATA1", "title=运动控制 → Physical AI 全栈成长路线：逐级讲解"]
+    m = [";FFMETADATA1", "title=运动控制 → 物理智能全栈成长路线：逐级讲解"]
     for i, (st, nm) in enumerate(chaps):
         en = chaps[i + 1][0] if i + 1 < len(chaps) else total
         m += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={round(st * 1000 / FPS)}", f"END={round(en * 1000 / FPS)}", f"title={nm}"]
@@ -404,7 +404,7 @@ def assemble(total, segs, audio_parts, chaps, subs, name):
 
 
 def write_script_md(chapters, name):
-    md = ["# 运动控制 → Physical AI 全栈成长路线：逐级讲解（旁白稿）", "",
+    md = ["# 运动控制 → 物理智能全栈成长路线：逐级讲解（旁白稿）", "",
           "> 由 `chapters/*.txt` 自动导出；每段旁白下方注明依据。", ""]
     for c in chapters:
         md += [f"## {c.get('name', c['id'])}", ""]

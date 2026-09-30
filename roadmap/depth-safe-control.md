@@ -170,7 +170,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [传统模型控制](depth-classical-control.md) — Safety Filter / CBF 约束嵌进 WBC/MPC
   - [Sim2Real](depth-sim2real.md) — Stage 4 真机安全部署的迁移侧（辨识、DR、上机流程）

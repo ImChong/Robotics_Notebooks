@@ -219,7 +219,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)
+- 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [动作生成](depth-motion-generation.md) — 群舞编排的动作来源
   - [动作重定向](depth-motion-retargeting.md) — 把编舞折到多台本体

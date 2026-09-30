@@ -225,7 +225,7 @@ flowchart LR
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[主路线：运动控制 → Physical AI 全栈成长路线](motion-control.md)（本路线是 L6 的展开版）
+- 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)（本路线是 L6 的展开版）
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [RL 运动控制](depth-rl-locomotion.md) — 本路线最常见的策略训练上游
   - [Real2Sim](depth-real2sim.md) — 反向补集：修仿真资产 vs 把策略搬上真机

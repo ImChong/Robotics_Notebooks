@@ -39,7 +39,7 @@
 | 你的目标 | 入口 |
 |---------|------|
 | 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
-| 有一条路线照着走 | [运动控制 → Physical AI 全栈成长路线](roadmap/motion-control.md) |
+| 有一条路线照着走 | [运动控制 → 物理智能全栈成长路线](roadmap/motion-control.md) |
 | 先看纵深总目录再选方向 | [路线总览](roadmap/README.md) |
 | 用遥操作采集数据并实时操控人形（含全身 + 手指） | [遥操作（Teleoperation）](roadmap/depth-teleoperation.md) |
 | 设计力矩控制关节电机 | [力矩电机设计（Torque Motor Design）](roadmap/depth-torque-motor-design.md) |
