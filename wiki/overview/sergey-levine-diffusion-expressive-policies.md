@@ -92,7 +92,7 @@ flowchart TB
 | 扩散 / flow 动作头 | [Diffusion Model](../concepts/diffusion-model.md)、[Probability Flow](../formalizations/probability-flow.md)、[Diffusion Policy](../methods/diffusion-policy.md)、[π₀](../methods/π0-policy.md) | 生成式连续动作的方法与形式化 |
 | Action chunks | [Action Chunking](../methods/action-chunking.md) | 训练目标 vs 部署协议可解耦；勿把「能表长序列」等同于「必须整段播放」 |
 | IL 收益 | [Imitation Learning](../methods/imitation-learning.md) | visuomotor / 操作模仿的主线入口 |
-| Offline / O2O | [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)、[LWD](../methods/lwd.md) | 固定数据与部署闭环如何吃同一类动作头 |
+| Offline / O2O | [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)、[LWD](../methods/lwd.md)、[ReFORM](../entities/paper-reform-iclr-2026.md) | 固定数据与部署闭环如何吃同一类动作头；ReFORM 例：flow + support 约束 |
 | 大规模模型 | [VLA](../methods/vla.md)、[Foundation Policy](../concepts/foundation-policy.md) | abstract 中「large-scale models」的下游地图 |
 
 ## 局限与风险（阅读时注意）
