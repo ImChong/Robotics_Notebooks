@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, deformable-objects, rope, iterative-learning-control, model-based-control, quadratic-programming, imitation-learning, cmu, arxiv2026]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-30
 arxiv: "2602.21302"
 venue: "arXiv preprint"
 related:
@@ -12,6 +12,7 @@ related:
   - ../concepts/impedance-control.md
   - ./flying-knots-public.md
   - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
+  - ./paper-ropeformer.md
 sources:
   - ../../sources/blogs/krishnasuresh_robot_whips_2026-09-26.md
   - ../../sources/papers/flying_knots_arxiv_2602_21302.md
@@ -142,6 +143,8 @@ flowchart TB
 
 与 [Imitation Learning](../methods/imitation-learning.md) 的关系：共享 **人类示教起点**，但后续是 **模型驱动迭代修正** 而非 **行为克隆扩展数据集**。
 
+与 [RopeFormer](./paper-ropeformer.md) 的对照：同为 **动态绳** 与 **多 trial 改善**；本文 **每 trial 显式更新 Bézier/ILC 命令**，RopeFormer **不改策略权重**，用 **Transformer-XL 跨 trial 保留交互史**（人形 H1-2、Swing/Twirl/Whip）。
+
 ## 关联页面
 
 - [Manipulation（操作）](../tasks/manipulation.md) — 可变形体操作子域
@@ -149,6 +152,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md) — 单示教 vs 大规模 IL 对照
 - [flying_knots_public（仓库实体）](./flying-knots-public.md) — 代码与依赖入口
 - [动捕手部开环动态操作](../methods/dynamic-manipulation-mocap-hand-open-loop.md) — 同作者组：跟踪足够时免学习；本文为跟踪不足后备
+- [RopeFormer](./paper-ropeformer.md) — 跨 trial TXL 历史 vs 本文 task-level ILC
 
 ## 推荐继续阅读
 
