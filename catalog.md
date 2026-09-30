@@ -2987,6 +2987,7 @@
 - [ReferTrack（Referring Then Tracking · arXiv:2607.20061）](wiki/entities/paper-refertrack.md) — ReferTrack**（*Referring Then Tracking for Embodied Visual Tracking*，[arXiv:2607.20061](https://arx `📅unknown` `[entity_page]`
 - [ReflexVLA：动态任务低延迟 VLA](wiki/entities/paper-reflexvla.md) — ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Criti `📅unknown` `[entity_page]`
 - [ReForce](wiki/entities/paper-reforce.md) — ReForce: Learning Force-aware Retargeting for Dexterous Manipulation**（[arXiv:2608.15560](https:// `📅unknown` `[entity_page]`
+- [ReFORM：Support 约束的 Reflected Flow Offline RL](wiki/entities/paper-reform-iclr-2026.md) — ReFORM**（*Reflected Flows for On-support Offline RL via Noise Manipulation*，**ICLR 2026**，[OpenRev `📅unknown` `[entity_page]`
 - [RelateAnything：实时开放词汇关系预测](wiki/entities/paper-relateanything.md) — RelateAnything**（*Real-Time Open-Vocabulary Relation Prediction From Any Inputs*，[arXiv:2609.12552 `📅unknown` `[entity_page]`
 - [REMAC（Masked Action Chunking · arXiv:2601.20130）](wiki/entities/paper-remac.md) — REMAC**（*Real-Time Robot Execution with Masked Action Chunking*，[arXiv:2601.20130](https://arxiv.o `📅unknown` `[entity_page]`
 - [Remember Smarter（RS）（arXiv:2608.15269）](wiki/entities/paper-remember-smarter-vla-memory.md) — Remember Smarter（RS）**（*Remember Smarter: Visual History Compressor and Hyperbolic Experience Spac `📅unknown` `[entity_page]`
