@@ -460,6 +460,7 @@
 - [Dexmal DM0.5（OpenDM · Dexbotic）](wiki/entities/dexmal-dm05.md) — DM0.5**（技术博客，[OpenDM `dexmal/opendm`](https://github.com/dexm `📅unknown` `[entity_page]`
 - [Dexmal DW05（OpenDW）](wiki/entities/dexmal-dw05.md) — DW05**（2026-07，GitHub `dexmal/opendw`，[DW05-Base](https://hugg `📅unknown` `[entity_page]`
 - [Diagram Design](wiki/entities/diagram-design.md) — Diagram Design**（cathrynlavery/diagram-design，M `📅unknown` `[entity_page]`
+- [Can Jev Nav?（Dimensional · Nav Arena）](wiki/entities/dimensional-can-jev-nav-benchmark.md) — Can Jev Nav?**（Dimensional Research，2026 `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
 - [Disney Holotile（全向活动地板）](wiki/entities/disney-holotile.md) — 一句话定义：** Holotile 是 Disney Research / Imagineering 的 **模块化全向地板**：用大量六边形地砖单元形成可 **被动全向行走** 与 **主动可编 `📅unknown` `[entity_page]`
 - [Disney Research LA（研究门户）](wiki/entities/disney-research-la.md) — 一句话定义：** Disney Research Los Angeles 是迪士尼面向全球研究社区的 **产业 `📅unknown` `[entity_page]`
@@ -2058,6 +2059,7 @@
 - [𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）](wiki/entities/paper-n0-vtla.md) — 𝒩₀-VTLA**（*Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens*，[项目页](https:// `📅unknown` `[entity_page]`
 - [NaP-Control：扩散先验噪声导航的快速全身角色控制](wiki/entities/paper-nap-control.md) — NaP-Control**（*Navigating Diffusion Prior for Versatile and Fast Character Control*，[arXiv:2605.20 `📅unknown` `[entity_page]`
 - [接近–安全跟随：别把跟紧和防撞塞进同一个 reward](wiki/entities/paper-nav-ps-balance.md) — 接近–安全跟随**（*Navigating the Proximity-Safety Balance*；[arXiv:2608.10056](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
+- [NavJev：ACVC + DASM + Jev 的高效 VLN-CE](wiki/entities/paper-navjev-efficient-vln-jev.md) — NavJev**（*Efficient Vision-Language Navigation via Action-Centric Visual Compression and Discrimin `📅unknown` `[entity_page]`
 - [NavVerse：室内–户外连续具身导航基准](wiki/entities/paper-navverse.md) — NavVerse**（*Benchmarking Indoor-to-Outdoor Embodied Navigation in Continuous Robot Simulation*，[ar `📅unknown` `[entity_page]`
 - [NavWAM（目标条件视觉导航 · Navigation World Action Model）](wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md) — NavWAM**（*A Navigation World Action Model for Goal-Conditioned Visual Navigation*，arXiv:2606.13494 `📅unknown` `[entity_page]`
 - [NBS：No Bias Stereo](wiki/entities/paper-nbs-no-bias-stereo.md) — NBS**（*No Bias Stereo*，arXiv:2608.28933，[项目页](https://intrinsi `📅unknown` `[entity_page]`
