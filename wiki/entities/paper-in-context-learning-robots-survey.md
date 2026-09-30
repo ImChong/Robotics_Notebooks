@@ -101,6 +101,14 @@ flowchart TB
 - 综述 **不提出单一 SOTA 数字**；选型应看各节引用的 **任务协议** 是否覆盖 teaching / transfer / retain。
 - 对比 [StellaVLA](./paper-stellavla-structured-icl-vla.md)、[RoboTTT](./paper-robottt-test-time-training-vla-context.md) 等站内节点时，先对齐 **是否部署期改权重**。
 
+## 与其他工作对比
+
+| 维度 | 本综述（arXiv:2609.36012） | 对照 |
+|------|-------------|------|
+| 文献类型 | 约 100 页综述，按四类上下文→执行接口整理文献，不提出单一算法 | [StellaVLA](./paper-stellavla-structured-icl-vla.md)：单点方法，离线 VLM 把示范转为结构化 in-context 示范再训练 VLA |
+| 部署期是否改权重 | 以「权重固定」作为 ICL 的定义前提 | [RoboTTT](./paper-robottt-test-time-training-vla-context.md)：用 TTT 层对 fast weights 做自监督梯度更新，属 test-time training 而非严格 ICL |
+| 概念划分 | Acquire / Transfer / Retain 三类问题 + teaching / transfer / retain 评测轴 | [机器人 ICL 概念页](../concepts/robot-in-context-learning.md)：按映射选择、状态记忆、映射本身不确定性三类区分「真 ICL」 |
+
 ## 结论
 
 **这是 2026 年机器人 ICL 的「接口地图 + 评测议程」，适合作为 depth-icl 路线的论文索引，而不是单点算法复现入口。**
