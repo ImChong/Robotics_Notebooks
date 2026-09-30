@@ -22,6 +22,7 @@ related:
   - ./cad-skills.md
   - ./video-shotcraft.md
   - ./mattpocock-skills.md
+  - ./claude-code-game-studios.md
   - ./3dgenstudio.md
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ../methods/generative-world-models.md
@@ -171,6 +172,7 @@ sequenceDiagram
 - [3D Gen Studio](./3dgenstudio.md) — ComfyUI 网格生产编排（Hunyuan3D 等）
 - [video-shotcraft](./video-shotcraft.md) — 前端/成片向 Agent Skills 对照
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码 Agent Skills
+- [Claude Code Game Studios（CCGS）](./claude-code-game-studios.md) — 引擎向 **工作室编制 + 故事/QA** 模板；可承接本仓产出的 Godot/UE/Unity 资产
 - [生成式世界模型](../methods/generative-world-models.md) — 生成式环境与 splat 在机器人管线中的位置
 - [Sim2Real](../concepts/sim2real.md) — 外观资产与动力学一致性提醒
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — sim-ready Real2Sim 场景生成对照

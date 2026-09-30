@@ -21,6 +21,7 @@ related:
   - ./hermes-agent.md
   - ./agent-reach.md
   - ./open-code-review.md
+  - ./claude-code-game-studios.md
   - ./birdview.md
   - ./graphify.md
   - ../references/llm-wiki-karpathy.md
@@ -105,6 +106,7 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [WikiSkill（论文实体）](paper-wikiskill.md) — **持久 wiki + 可执行 skill** 共进化；与本页「技能文件交付」形成学术对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
+- [Claude Code Game Studios（CCGS）](claude-code-game-studios.md) — **游戏域** 49 代理 + 74 skills + `project.yaml` rigor；与 Superpowers 的 **通用交付管线** 对照
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) — **蒸馏** 人与方法论为 skill；[Darwin Skill](darwin-skill.md) 可 **优化** 本类流程 skill 的 rubric
 
