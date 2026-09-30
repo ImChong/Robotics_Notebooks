@@ -236,6 +236,7 @@ flowchart TD
 #### 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
+- **异构身–手 WAM 预训练（清华 IIIS 等）：** [WB-WAM](../entities/paper-wb-wam.md)（arXiv:2609.34199）— **72-D** body/root/Wuji 监督注入 video 预训练；**1880.2 h** 九源 → **PICO 22 h** 任务对齐 mid-training → **SONIC** 真机 **3.37 h**；[HumanoidArena](../entities/paper-humanoidarena.md) **81.9%**、真机五任务 **84.0%**；代码待发布。
 - **潜空间 foresight 对照**：[ω-0](../entities/paper-omega-0.md) (NTU/PKU/BAAI/HKUST-GZ, 2026, arXiv:2608.06375) — 用 **未来观测 embedding**（非像素视频重建）耦合扩散全身动作 latent + SONIC；ω-HOME 40h+；G1 家务 11 任务 Omni **SR 81.8%**（代码/数据 WIP）。
 
 #### 去掉运动接口的直接感知控制（Direct-Joint · 无冻结 System 0）
@@ -388,6 +389,7 @@ flowchart TD
 - [WEM（论文实体）](../entities/paper-wem-world-ego-modeling.md) — 混合导航–操作长程 **视频世界模型** 与 **HTEWorld** 基准（arXiv:2605.19957，BEHAVIOR-1K）
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
+- [WB-WAM（论文实体）](../entities/paper-wb-wam.md) — 异构 72-D 身–手 video WAM 预训练 + PICO mid-training + SONIC 真机（arXiv:2609.34199）
 - [Rolling-WAM（论文实体）](../entities/paper-rolling-wam.md) — **滚动 partial joint denoise** 降 replan 延迟；G1 真机 SR **85.0%**（arXiv:2609.30247；代码待发布）
 - [ω-0（论文实体）](../entities/paper-omega-0.md) — 潜空间 foresight + 扩散全身 latent 的并发家务 loco-manip（arXiv:2608.06375）
 - [Being-M0.7（论文实体）](../entities/paper-being-m07-humanoid-latent-wam.md) — 潜空间 video-motion 先验 + action expert 人形 loco-manip（BeingBeyond, 2026-07）

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, humanoid, hierarchical-control, egocentric, loco-manipulation, imitation-learning, vla, hkust-gz, bjut, hit, smsu-bit, jd, unitree-g1]
 status: complete
-updated: 2026-09-27
+updated: 2026-09-30
 arxiv: "2606.17833"
 venue: "2026 · arXiv"
 code: https://github.com/William-wAng618/HumanoidArena
@@ -21,6 +21,7 @@ related:
   - ../entities/isaac-lab.md
   - ./paper-humanoidmimicgen.md
   - ./paper-choreo.md
+  - ./paper-wb-wam.md
 sources:
   - ../../sources/papers/humanoidarena_arxiv_2606_17833.md
   - ../../sources/sites/humanoidarena-github-io.md
@@ -219,6 +220,7 @@ sequenceDiagram
 - [GMR（方法）](../methods/motion-retargeting-gmr.md) — 共享上游重定向。
 - [Isaac Lab](./isaac-lab.md) — 仿真宿主与录制环境。
 - [HumanoidMimicGen](./paper-humanoidmimicgen.md) — 另一 G1 loco-manip 仿真基准对照。
+- [WB-WAM](./paper-wb-wam.md) — 在 HumanoidArena 七任务上报告 **81.9%** 均值 SR 的 WAM 方法（arXiv:2609.34199）。
 - [CHOREO](./paper-choreo.md) — 异源 SkillMotion 长程组合（免训练过渡）
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 真机全身 VLA 配方对照。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：人形分层全身控制基准，测 policy–tracker 接口可执行性/可转移性
