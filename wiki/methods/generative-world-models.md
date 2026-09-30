@@ -67,6 +67,7 @@ related:
   - ../entities/paper-wall-ss.md
   - ../entities/paper-rofacto.md
   - ../entities/paper-vitacworld.md
+  - ../entities/paper-feelworld.md
   - ../entities/paper-wan-move.md
   - ../entities/paper-go-with-the-track.md
   - ../entities/paper-wan-dancer.md
@@ -486,6 +487,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [RoboInter1.5 / RoboInter-World](../entities/paper-robointer-1-5.md) — **IR 控制视频** 条件世界模型 + VLA 套件（arXiv:2607.18709）。
 - [World Action Planner](../entities/paper-world-action-planner.md) — **pose-image** 条件多视角 WM + VLM 想象规划（arXiv:2607.27599；代码/权重已开源）。
 - [ViTacWorld](../entities/paper-vitacworld.md) — **视触觉** 动作条件 WM：dream 数据增强 + 策略评估（arXiv:2607.22530）。
+- [FeelWorld](../entities/paper-feelworld.md) — **分层 contact/tactile latent/slip** + contact-gated attention；V-JEPA 2 骨干 + **contact-aware CEM** 真机 **81.7%** 均值（arXiv:2607.24267v1；代码未发布）。
 - [DWM（Dexterous World Models）](./dwm.md) — 已知静态 3D 场景上的场景–手条件视频扩散与残差动力学学习。
 
 ### WAM 与策略联合
