@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | Arena-Rosnav 5.0 项目页与 GitHub 组织入库：ROS2 社交导航仿真 benchmark 实体页与导航栈交叉引用
+
 ## [2026-09-30] ingest | GAE（arXiv:2609.24981）：Tencent ARC×HKUST geometry-native latent 入库；项目页+GitHub+HF 已开源（学术许可）；实体页含 codec/flow 时序图
 
 ## [2026-09-30] ingest | VoiceStudio（debpalash/VoiceStudio）：全本地 TTS/克隆/转写/MCP 工作台入库，交叉人形语音交互流水线
