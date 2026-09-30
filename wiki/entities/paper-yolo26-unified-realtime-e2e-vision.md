@@ -134,6 +134,15 @@ sequenceDiagram
 
 图对应 [`sources/repos/ultralytics.md`](../../sources/repos/ultralytics.md) README 的 `predict` / `export` 入口；TensorRT 延迟以 Docs 协议为准。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [YOLO v1](./paper-yolo-unified-realtime-detection.md) | 单次回归范式起源；YOLO26 是 **工程谱系 2026 代** |
+| [Ultralytics](./ultralytics.md) | 同一 AGPL 栈的 **API/CLI 入口**；论文钉架构与训练主张 |
+| [RF-DETR](./rf-detr.md) | ViT + DETR、NAS 选点、默认更偏 **域迁移**；YOLO26 偏 **CNN 导出面与生态** |
+| YOLO11（前代） | 论文报告全尺度 **+1.6~+2.8 AP** 与多任务一致增益 |
+
 ## 局限与风险
 
 - **AGPL** 与闭源机器人产品冲突风险仍高于 Apache 系 DETR。
