@@ -108,6 +108,7 @@
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [ChangeMamba](wiki/entities/changemamba.md) — ChangeMamba 将 Mamba 用于遥感/视频变化检测，建模双时相长程依赖以突出变化区域。 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
+- [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
 - [CLI-Anything（HKUDS）](wiki/entities/cli-anything.md) — CLI-Anything**（HKUDS/CLI-Anything，Apache-2.0）是香港大学 HKUDS  `📅unknown` `[entity_page]`
 - [CLIP](wiki/entities/clip.md) — CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。 `📅unknown` `[entity_page]`
