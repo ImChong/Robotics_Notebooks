@@ -68,7 +68,7 @@ This can apply to a lot of different contexts. A few examples:
 
 There are three layers:
 
-**Raw sources** — your curated collection of source documents. Articles, papers, images, data files. These are immutable — the LLM reads from them but never modifies them. This is your source of truth.
+**Raw sources** — your curated collection of source documents. Articles, papers, images, data files. These are immutable — the LLM reads from them but never modifies them. This is your source of truth. For **PDF / 扫描件** 类原始资料，可先用专用文档 VLM（如本库 [TeleOCR](../entities/paper-teleocr.md) 归档）做结构化 OCR，再进入 `sources/` 归纳，避免把整份 PDF 直接丢给通用聊天模型重复解析。
 
 **The wiki** — a directory of LLM-generated markdown files. Summaries, entity pages, concept pages, comparisons, an overview, a synthesis. The LLM owns this layer entirely. It creates pages, updates them when new sources arrive, maintains cross-references, and keeps everything consistent. You read it; the LLM writes it.
 
