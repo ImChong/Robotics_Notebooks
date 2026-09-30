@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-09-29
+updated: 2026-09-30
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-kai0.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-parkour-in-the-wild.md
+  - ../entities/paper-prism-real2sim2real.md
   - ../entities/paper-ross-dagger.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -102,6 +103,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - **[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)**：分地形高程 **专家** 以 **DAgger 动作回归** 蒸馏为 **多视角深度** 统一下身策略；辅以 DFSV/RSM 处理多向与非对称感知
 - **[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)**：多几何攀爬 **专家** 以 **DAgger + PPO + KL** 蒸馏为 **深度 visuomotor** 统一策略；纯 DAgger 在梯子真机仅 **2/10**，RL 项关键
 - **[AssistMimic](../entities/paper-assistmimic.md)**：双人 assistive tracking 的 **generalist** 用 DAgger 蒸馏多 subject specialist（arXiv:2603.11346）
+- **[PRISM Real2Sim2Real](../entities/paper-prism-real2sim2real.md)**：co-tracking **privileged teacher** 以 **λ·PPO + (1−λ)·DAgger** 蒸馏 **深度+摇杆** loco-manip 学生（arXiv:2609.38172；末 20K iter λ=0.9）
 
 ## 潜在坑
 

@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-29
+updated: 2026-09-30
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -203,6 +203,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |
 | [GVHMR](../entities/gvhmr.md) | 单目视频→SMPL 全局人体运动（重定向上游） |
 | [VideoMimic](../entities/videomimic.md) | 视频→人形参考 + RL 模仿 |
+| [PRISM Real2Sim2Real](../entities/paper-prism-real2sim2real.md) | V2V 扩交互视频 + **contact-anchored retarget** → G1–物轨迹（arXiv:2609.38172） |
 | [human2humanoid](../entities/human2humanoid.md) | LECAR 遥操栈；含 AMASS 重定向脚本 |
 | [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) | 动物 MoCap→四足模仿奠基仓库 |
 | [STMR 四足重定向](../entities/stmr-quadruped-retargeting.md) | 空间+时间重定向 + legged_gym RL |

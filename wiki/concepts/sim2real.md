@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-29
+updated: 2026-09-30
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -256,6 +256,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 **操作场景与策略闭环：** [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md)（arXiv:2606.28276，NVIDIA GEAR，[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) **部分开源**）从**单段真机视频**模块化重建 **sim-ready 数字孪生**，并自动生成 **object/scene/task digital cousins**；同一环境支撑 **real-to-sim 策略评测**（均值 Pearson **0.911**）与 **sim-to-real 演示训练**（DROID / YAM，含多步、铰接与双手任务）。开源默认导出 OmniGibson 场景；论文级 VLA 训练/评测协议未随仓。
 
 **Episode 级 agentic 转换：** [Agentic Real2Sim](../entities/paper-agentic-real2sim.md)（arXiv:2607.19190）用 **可替换 VLM 后端**编排视觉/物性/场景/仿真内修复，把 **DROID 交互 episode** 转为 **可回放 MuJoCo 孪生**（并演示可变形/人形适配器）；评测主线是 **回放成功** 而非策略 Pearson，代码截至入库日 **coming soon**。
+
+**人形 loco-manip · V2V counterfactual 扩数据：** [PRISM Real2Sim2Real](../entities/paper-prism-real2sim2real.md)（arXiv:2609.38172，CoRL 2026）用 **SeedDance V2V** 把 4 条真人搬箱 seed 扩成 **256** 条 counterfactual 交互，经 **接触锚定 Real2Sim（CRISP 扩展）+ 重定向** 训 **G1 深度+摇杆** 统一 pick–carry–drop，**无真机微调**；项目页 Code 链截至入库日 **404 待公开**。
 
 **稀疏捕获行为范围 ego 细化：** [R2S-EGO](../entities/paper-r2s-ego.md)（arXiv:2608.06827，XPENG Robotics × PolyU）针对 **人类稀疏采集 vs 机器人 ego 消费** 的 support gap，用 **robot proxy（可执行查询/赤字）+ geometry proxy（结构条件/碰撞面）** 做固定预算生成并同化进 3DGS；六视角外观 **19.062** dB PSNR，真机 G1 坐姿相对 GaussGym **10%→82.5%**（同 SONIC 栈）；截至入库日 **未开源**。
 
