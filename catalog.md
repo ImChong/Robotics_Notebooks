@@ -4565,6 +4565,7 @@
 - [WorldArena](wiki/entities/worldarena.md) — WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
 - [舞肌科技（上海舞肌科技有限公司）](wiki/entities/wuji-robotics.md) — 舞肌科技** 面向 **具身 AI 机器人** 提供两类常被并列讨论的硬件叙事：**关节级电机方案**（**F 系列** 内转子永磁无刷、「**Pan Motor**」品牌报道）与 **五指灵巧手 `📅unknown` `[entity_page]`
+- [WWSimBench（WuWen 仿真基准资产 · HF v0.1）](wiki/entities/wwsimbench.md) — WWSimBench**（[Hugging Face · Wuwen-AI/WWSimBench](https://huggingface.co/datasets/Wuwen-AI/WWSimBe `📅unknown` `[entity_page]`
 - [X-Humanoid（北京人形机器人创新中心）](wiki/entities/x-humanoid.md) — X-Humanoid**（北京人形机器人创新中心 / Beijing Innovation Center of Humanoid Robotics）是面向人形机器人 **核心技术、产品与应用生态 `📅unknown` `[entity_page]`
 - [X-Loco](wiki/entities/x-loco-humanoid.md) — X-Loco](https://x-loco-humanoid.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/human `📅unknown` `[entity_page]`
 - [xcar-rlgpu](wiki/entities/xcar-rlgpu.md) — xcar-rlgpu** 是面向 **独立轮驱（IWD）自主漂移** 的 **GPU 加速强化学习** 框架：自研向量化环境与 **rl_games** 子模块，强调训练吞吐与 Sim2Real  `📅unknown` `[entity_page]`

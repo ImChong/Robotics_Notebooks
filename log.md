@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | WWSimBench HF v0.1（Wuwen-AI/WWSimBench）USD 线缆/铰链/三场景资产；已开源无 GitHub runner；实体 wwsimbench + 交叉 EmbodiedGen/仿真评测基建；自动合并 PR
+
 ## [2026-09-30] ingest | Menlo isaac_asimov 入库：Isaac Lab Asimov1 AMP/PPO 官方训练线；新增实体页并互链 asimov-v1 / mjlab
 
 ## [2026-09-30] ingest | Anthropic claude-api skill、agent eval 四篇博文与 Remotion 仓库：sources + wiki 实体/概念页与技能生态交叉引用
