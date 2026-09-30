@@ -354,6 +354,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面
 - [MuJoCo Playground](./mujoco-playground.md) — 轻量 time-to-robot 入口，复杂任务可再迁移至 Lab
 - [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
+- [isaac_asimov（Asimov 1）](./isaac-asimov.md) — Menlo 官方 Isaac Lab locomotion 扩展（PPO + AMP）
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
 - [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Lab 2.2.0，单 GPU，G1 零样本）
