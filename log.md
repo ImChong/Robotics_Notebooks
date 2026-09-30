@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | Generate Track Improve（arXiv:2609.31577）：复核查项目页仍待发布代码；楼梯中心节点挂接 GTI 实体
+
 ## [2026-09-30] ingest | FeelWorld（arXiv:2607.24267v1）：CASIA/ImprintX 分层视触觉 WM + contact-aware CEM；无官方代码仓
 
 ## [2026-09-30] ingest | RoboFoundry（arXiv:2609.32862）：NTU/北航/NUS/云蝶/上交 System-as-Policy 自进化框架；项目页未列代码；EmbodiedBench/RoboMemArena/LIBERO-PRO SOTA 叙事
