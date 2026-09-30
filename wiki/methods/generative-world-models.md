@@ -370,6 +370,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [MolmoMotion](../entities/molmo-motion.md)（Ai2，arXiv:2606.18558）走 **「预测 compact 3D 运动结构，而非整段像素视频」** 路线：以 **Molmo 2** 融合 RGB、**2D query 点特征** 与 **动作文本**，预测物体上各点在 **metric 世界坐标** 的未来轨迹（**MolmoMotion-AR** 坐标文本自回归 / **MolmoMotion-FM** 连续 flow matching）。配套 **MolmoMotion-1M**（116 万视频自动 3D 轨迹标注）与 **PointMotionBench**（2.7K 人工校验、ADE 米级误差）。下游上，DROID 微调后的 **MolmoBot** 在 pick-and-place **闭环成功率与样本效率** 显著优于 Molmo 2 初始化；预测轨迹亦可作 **DaS + I2V** 的 motion guidance，使 CogVideoX-5B 等小模型在 motion 指标上逼近更大 Wan2.2。与上文 **像素 rollout** 世界模型互补：轨迹 **更轻、更几何稳定**，但 **不直接给出力/接触**；与 [mimic-video](./mimic-video.md) 共享「**先学动力学结构再控**」动机，但中间表示是 **显式 3D 点** 而非 **视频潜计划**。
 
+### 几何原生潜空间（示例：GAE）
+
+[GAE（Geometry-Native Autoencoder）](../entities/paper-gae-geometry-native-autoencoder.md)（arXiv:2609.24981，Tencent ARC × HKUST 等）把 **Depth Anything 3** 四级特征经可学习 codec 压成 **64/128 通道** latent，**冻结 DPT 几何头 + 可学 RGB 头** 从 **同一生成态** 联合解码外观与 depth/相机/点云；Stage2 在标准化 latent 上做 **conditional flow**（文本 + metric Plücker rays + clean reference tokens）。**Matched DiT 协议**下仅换 latent 即 RealEstate10K / DL3DV **FVD −12.7% / −23.1%** 且 **相机轨迹误差约减半**（相对最强对照 VAE/RAE/raw DA3）。**代码 + GAE-D64-1B 权重已开源**（Tencent **学术许可**）。与 GLD / OneWorld 等 **直接 flow 高维几何特征** 的路线对照，GAE 强调 **单一 compact 欧氏态**；与 [TADreamer](../entities/paper-tadreamer.md) 等 **「生成视频 → DA3 重建」** 流水线正交——GAE 把几何放进 **evolving latent** 而非事后重建。
+
 ### 轨迹可控全景 ERP 世界模型（示例：PanoWorld）
 
 [PanoWorld](../entities/paper-panoworld-real-world-panoramic-generation.md)（arXiv:2607.09661，Insta360 Research 等）针对 **360° 等距圆柱（ERP）** 视频世界合成：利用 **rotation-equivariance** 将 **旋转视为几何变换**、**仅显式建模平移**，以 **Dense Panoramic Ray-Conditioning（DPRC）** 把相机平移编码为 **per-ray SE(3) 射线场**，并以 **Geometry-aware Memory Augmentation（GMA）** 在 **同一 PRoPE 流形** 检索历史特征、**confidence 门控** 抑制未观测区幻觉。骨干 **Wan2.2-5B + LoRA** 经 **三阶段** 训练（全景几何 → 纯平移动作 → 记忆锚定）；配套 **World360**（**120k** clip：7 万真实 UAV + 5 万 AirSim360）强调 **multi-altitude 户外物理变化**。相对 **Matrix-3D / OmniRoam**，在 FID 与轨迹 PSNR 上全面领先；**Causal Forcing** 蒸馏可实现 **161 帧 / 8 s** 交互式生成。与上文 **窄 FOV pinhole rollout** 正交：服务 **UAV / 自动驾驶环视** 等需 **全视场一致预测** 的场景，但 **地面人形 egocentric** 覆盖仍有限。
