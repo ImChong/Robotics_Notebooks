@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | DeepTutor 复核 v1.6.12 与 deeptutor.info 八大表面；更新 sources 与 wiki/entities/deeptutor.md
+
 ## [2026-09-30] ingest | Skillry 交付物市场、Taste Skill 三旋钮反 slop、Impeccable 24 命令+61 detector；开源核查 Skillry 闭源/双仓 MIT+Apache-2.0
 
 ## [2026-09-30] ingest | ReFORM（ICLR 2026，OpenReview YvFsyRReeN）：MIT-REALM 已开源 reform；升格 paper-reform-iclr-2026 并挂接 offline RL 对比页
