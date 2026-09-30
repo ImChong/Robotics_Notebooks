@@ -27,6 +27,8 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./walterzhu-astra-and-beyond.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../concepts/ai-agent-evaluation.md
+  - ./anthropic-claude-api-skill.md
 sources:
   - ../../sources/sites/rle-bench-github-io.md
   - ../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md

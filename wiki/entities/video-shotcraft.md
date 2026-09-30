@@ -13,6 +13,7 @@ status: complete
 updated: 2026-07-31
 related:
   - ./gsap-skills.md
+  - ./remotion.md
   - ./mattpocock-skills.md
   - ./img2threejs.md
   - ./sensenova-skills.md
@@ -32,7 +33,7 @@ summary: "video-shotcraft（Vincentwei1021/video-shotcraft）是面向 Claude Co
 
 # video-shotcraft（Vincentwei1021/video-shotcraft）
 
-**video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft)（Apache-2.0）分发的 **Agent Skill**：把 **镜头配方卡 + Remotion 参考实现 + 音频资产 + 制作方法论** 打包成可安装规约，使 Claude Code / Codex 能对 Web/桌面产品做分镜、2.5D 运镜动画与节拍对齐音效，产出电影感宣传片 / 发布片 / 功能演示。
+**video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft)（Apache-2.0）分发的 **Agent Skill**：把 **镜头配方卡 + [Remotion](./remotion.md) 参考实现 + 音频资产 + 制作方法论** 打包成可安装规约，使 Claude Code / Codex 能对 Web/桌面产品做分镜、2.5D 运镜动画与节拍对齐音效，产出电影感宣传片 / 发布片 / 功能演示。
 
 > **地址说明：** 外链偶写作 `trendshift/video-shotcraft`（**不存在**）；那是 [Trendshift](https://trendshift.io/repositories/88911) 榜单入口。官方仓与 Gallery 见上。
 
@@ -135,6 +136,6 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Live Gallery](https://vincentwei1021.github.io/video-shotcraft/) — 搜索/筛选 161 条动态样片并复制卡名
-- [Remotion 文档](https://www.remotion.dev/docs) — React 视频框架与许可说明
+- [Remotion（实体页）](./remotion.md) — React 可编程视频框架与许可说明；官方文档 <https://www.remotion.dev/docs>
 - [Agent Skills 规范](https://agentskills.io/) — `SKILL.md` 约定
 - [skills.sh](https://skills.sh/) — 跨 harness 技能安装

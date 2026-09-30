@@ -15,6 +15,8 @@ related:
   - ./open-code-review.md
   - ./humanlayer-skills.md
   - ./hermes-agent.md
+  - ./anthropic-claude-api-skill.md
+  - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../references/llm-wiki-karpathy.md
   - ./paper-wikiskill.md
