@@ -7,6 +7,7 @@
 - **链接：** https://github.com/huggingface/lerobot
 - **Hub 组织页：** https://huggingface.co/lerobot
 - **文档：** https://huggingface.co/docs/lerobot/index
+- **RTC 文档：** https://huggingface.co/docs/lerobot/rtc — [`lerobot-rtc-docs.md`](../sites/lerobot-rtc-docs.md)
 - **EnvHub 文档：** https://huggingface.co/docs/lerobot/envhub
 - **LeRobotDataset v3 文档：** https://huggingface.co/docs/lerobot/lerobot-dataset-v3
 - **Stars：** ~24k+（2026-09）

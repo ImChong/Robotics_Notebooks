@@ -3,18 +3,24 @@ type: entity
 tags: [paper, vla, action-chunking, inference, flow-matching, physical-intelligence, berkeley]
 title: Real-Time Chunking 实时动作块
 status: complete
-updated: 2026-09-28
+updated: 2026-09-30
 arxiv: "2506.07339"
 code: https://github.com/Physical-Intelligence/real-time-chunking-kinetix
 related:
   - ../methods/action-chunking.md
   - ../methods/π0-policy.md
+  - ./paper-training-time-real-time-chunking.md
+  - ./paper-remac.md
+  - ./paper-futurertc.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-wam-realtime-async.md
+  - ./lerobot.md
 sources:
   - ../../sources/papers/real_time_chunking_arxiv_2506_07339.md
   - ../../sources/repos/real-time-chunking-kinetix.md
-summary: "RTC（arXiv:2506.07339）：推理期把下一段 flow 动作 chunk 做成与正在执行的 chunk 一致的补全。Kinetix 仿真已开源，真机 π 推理未进 openpi。"
+  - ../../sources/repos/openpi-rtc.md
+  - ../../sources/sites/lerobot-rtc-docs.md
+summary: "RTC（arXiv:2506.07339）：推理期 inpainting 衔接 flow chunk；Kinetix 已开源；LeRobot 内置 RTC；社区 openpi-rtc 真机 ALOHA；训练期续篇见 T-RTC。"
 ---
 
 # Real-Time Chunking：边执行边补下一段动作
@@ -41,7 +47,7 @@ summary: "RTC（arXiv:2506.07339）：推理期把下一段 flow 动作 chunk �
 
 π 系动作为 50 步、约 1 秒。若推理占掉 3 个控制周期，新 chunk 的前 3 步已经过时，必须等于上一 chunk 里将被执行的值。再往后与旧 chunk 重叠的步只作部分约束，让策略还能根据新观测改主意。其余步自由生成。算法加在任何 flow 或 diffusion VLA 的采样过程上，训练配方不变。
 
-2025-12-08 的后续 [arXiv:2512.05964](https://arxiv.org/abs/2512.05964) 把延迟写进训练。博客说 π\*₀.₆ 的咖啡演示用的是这一版。
+2025-12-08 的后续 **[Training-Time RTC](./paper-training-time-real-time-chunking.md)**（[arXiv:2512.05964](https://arxiv.org/abs/2512.05964)）把延迟写进训练。博客说 π\*₀.₆ 的咖啡演示用的是这一版。
 
 ## 评测
 
@@ -62,7 +68,9 @@ summary: "RTC（arXiv:2506.07339）：推理期把下一段 flow 动作 chunk �
 |------|----------|
 | 时间集成（ACT，见 [Action Chunking](../methods/action-chunking.md)） | 相邻 chunk 做时间平均；本页注入 +100 / +200 ms 延迟后失败 |
 | 同步推理 | 每段 chunk 执行完停下等推理；停顿不在训练分布里 |
-| 训练期 RTC（[arXiv:2512.05964](https://arxiv.org/abs/2512.05964)） | 把延迟写进训练，π\*₀.₆ 咖啡演示用这一版；本页是纯推理期、不改权重 |
+| [Training-Time RTC](./paper-training-time-real-time-chunking.md) | 训练 prefix 条件化，推理零 inpainting；π\*₀.₆ 咖啡演示 |
+| [REMAC](./paper-remac.md) | 训练期 masked chunk + 修 intra-chunk 不一致；推理无额外延迟 |
+| [FutureRTC](./paper-futurertc.md) | 冻结 VLA + adapter 预测执行时刻 \((z,s)\) |
 | [WAM 实时异步部署实证](./paper-wam-realtime-async.md) | 在 WAM 上对照 sync / async / blend / infer / train：推理期方案压不住高延迟区，训练期方案综合最好，可与本页纯推理 RTC 对读 |
 
 ## 源码运行时序图
@@ -85,6 +93,17 @@ sequenceDiagram
 
 Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `train_flow.py` 对 `gs://rtc-assets/bc/` 里的检查点微调 8 个 epoch，然后同样走 `eval_flow.py`。
 
+## 工程实践（生态入口）
+
+| 入口 | 适用 |
+|------|------|
+| [real-time-chunking-kinetix](https://github.com/Physical-Intelligence/real-time-chunking-kinetix) | 官方 Kinetix 仿真 + training-time 微调 |
+| [LeRobot RTC 文档](https://huggingface.co/docs/lerobot/rtc) | π0 / π0.5 / SmolVLA：`RTCConfig`、`lerobot-rollout --inference.type=rtc` |
+| [openpi-rtc](../../sources/repos/openpi-rtc.md) | 社区 openpi + ALOHA `guided_inference` |
+| [openpi](../../sources/repos/openpi.md) | 官方 π 栈（**不含** RTC 为一等公民入口） |
+
+异步推理解决 **空转**；RTC 解决 **chunk 边界**——LeRobot 文档建议 **两者叠加**。
+
 ## 局限与风险
 
 - 部分开源。`expert/` 约 60GiB，且不包含 π₀ 真机策略。
@@ -95,6 +114,10 @@ Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `trai
 
 - [Action Chunking](../methods/action-chunking.md)
 - [π₀](../methods/π0-policy.md)
+- [Training-Time RTC](./paper-training-time-real-time-chunking.md)
+- [REMAC](./paper-remac.md)
+- [FutureRTC](./paper-futurertc.md)
+- [LeRobot](./lerobot.md)
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [异步 WAM 部署](./paper-wam-realtime-async.md)
 
@@ -102,8 +125,11 @@ Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `trai
 
 - [real_time_chunking_arxiv_2506_07339](../../sources/papers/real_time_chunking_arxiv_2506_07339.md)
 - [real-time-chunking-kinetix](../../sources/repos/real-time-chunking-kinetix.md)
+- [openpi-rtc](../../sources/repos/openpi-rtc.md)
+- [lerobot-rtc-docs](../../sources/sites/lerobot-rtc-docs.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2506.07339](https://arxiv.org/abs/2506.07339)
-- [Training-time RTC arXiv:2512.05964](https://arxiv.org/abs/2512.05964)
+- [Training-Time RTC](./paper-training-time-real-time-chunking.md)（[arXiv:2512.05964](https://arxiv.org/abs/2512.05964)）
+- [Hugging Face LeRobot RTC](https://huggingface.co/docs/lerobot/rtc)
