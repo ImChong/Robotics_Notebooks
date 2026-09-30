@@ -58,6 +58,7 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - **Perceptron Egocentric (Perceptron)**：基于 **Mk1** 具身感知模型的托管 API，将机器人/egocentric 视频转为 **原子操作分段 + 子任务标签 + 双手 21 关键点 grounding**；在 **WGO-Bench** 上报告超越 **Gemini Robotics ER-1.6 + Gemini 3.5 Flash** 的 Macrodata 管线，且 with-instruction 成本约为人工标注的 **1/10–1/15**。见 [Perceptron Egocentric](../entities/perceptron-egocentric.md)。
 - **Macrodata Egocentric Hand-Action（Macrodata Labs）**：与 WGO **语义分段** 正交的 **几何动作** 轴——RGB-only 开源配方（WiLoR + HaWoR + VGGT-Omega）把 egocentric 视频重建为世界系 **21 关节度量轨迹**；HOT3D **Action MPJPE 52.04 mm**、15.53 FPS@H100。公司专有检测/编排 **未开源**。见 [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)。
 - **Hand Visibility Detector（庆应 / AIST 等）**：几何标注的另一刀——冻结 HPE 骨干估计 **逐关节可见性**，给多视 2D 点做加权三角化，HO3D 重投影均值最多降 **10.1%**。这是观测质量门控，不是 VLM 语义标。见 [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)。
+- **TeleOCR（TeleAI，arXiv:2608.12898）**：**文档 VLM** 侧上游——把设备手册、SOP、论文 PDF（含手机拍摄页）解析为结构化文本/表格/公式，供知识库 ingest 或任务库编译；**非** egocentric 轨迹语义标。见 [TeleOCR](../entities/paper-teleocr.md)。
 
 ## 带来的优势
 
@@ -71,6 +72,7 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - [Perceptron Egocentric（子任务分段 + 双手 grounding API）](../entities/perceptron-egocentric.md)
 - [Macrodata Egocentric Hand-Action（度量 3D 手轨迹）](./macrodata-egocentric-hand-action.md)
 - [Hand Visibility Detector（逐关节可见性）](../entities/paper-hand-visibility-detector.md)
+- [TeleOCR（文档 PDF 结构化）](../entities/paper-teleocr.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 
 ## 参考来源
