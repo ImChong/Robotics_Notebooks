@@ -13,17 +13,19 @@
 - **技能生态：** [EduHub](https://eduhub.deeptutor.info/)（默认 skill registry）
 - **许可：** Apache-2.0（以仓库 `LICENSE` 为准）
 - **入库日期：** 2026-08-31
+- **复核日期：** 2026-09-30（release **v1.6.12** / GitHub stars ~40k+）
 - **一句话说明：** **agent-native 终身个性化辅导工作区**——在统一 capability runtime 下贯通 Chat、测验、研究、可视化、解题、课程、Book、Partner IM 与三层可审计 Memory，并以多引擎 RAG、MCP/CLI Apps 与 EduHub skills 扩展；可 **consult** 本机 Claude Code / Codex / Hermes / OpenClaw 等子代理。
 
 ## 开源状态（步骤 2.5）
 
-| 项 | 核查（2026-08-31） |
+| 项 | 核查（2026-09-30） |
 |----|-------------------|
 | **GitHub** | 公开仓 [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)；主语言 Python；Apache-2.0；README 与 [deeptutor.info](https://deeptutor.info/) 均链到本仓 |
 | **项目页** | [deeptutor.info](https://deeptutor.info/) 提供安装向导、能力导览与文档；**Collaborate** 入口在站内设链 |
 | **PyPI / 容器** | `pip install deeptutor`；GHCR `ghcr.io/hkuds/deeptutor:latest` 可一键起全栈 Web |
 | **论文** | arXiv:2604.26962 注释写明 *Code available at https://github.com/HKUDS/DeepTutor* |
-| **CLI-only 包** | `packaging/deeptutor-cli` 可从源码 editable 安装；README 写明 **尚未单独发布到 PyPI**（2026-08-31） |
+| **CLI-only 包** | `packaging/deeptutor-cli` 仍从源码 `pip install -e ./packaging/deeptutor-cli`；**未**作为独立 PyPI 包发布（README 2026-09-30） |
+| **最新稳定版** | [v1.6.12](https://github.com/HKUDS/DeepTutor/releases/tag/v1.6.12)（2026-09-27）：工作区可 **迁移/放置 Knowledge Base**、**Kiwix** 归档检索、答案携带 **source figures**、**Task Board**、德语 UI、会话恢复等 |
 | **结论** | **已开源**（全栈 Web + CLI + Docker + 论文一致）。可选 RAG/Partner/Matrix 等通过 install extras 或 `DEEPTUTOR_EXTRAS` 扩展。 |
 
 ## 与本仓库知识的关系
@@ -38,14 +40,16 @@
 | [Model Context Protocol](../../wiki/concepts/model-context-protocol.md) | DeepTutor 维护 per-account MCP Services store，与内置 tools/capabilities 并列 |
 | 机器人学习读者 | 可把 `wiki/`、论文 PDF、课程讲义建成 **Knowledge Center**，用 Quiz / Mastery Path / Book 做 **技术栈自学**（非运动控制栈） |
 
-## README / 架构要点（归纳，2026-08-31）
+## README / 架构要点（归纳，2026-09-30）
 
 - **定位：** *Lifelong Personalized Tutoring* — 教育场景下的 **agent-native learning workspace**，非通用 coding agent IDE。
+- **官网八大表面（deeptutor.info）：** Home、Partners、My Agents、Co-Writer、Book、Learning Space、Memory、Knowledge Center — **共享同一 agent-native runtime**，切换表面不丢上下文。
 - **统一 runtime：** Chat、Ask Questions、Quiz、Research、Visualize、Solve、Course Study、Mastery Path、Immersive Reading/Watching 共用 **capability + tools** 插件模型与 session context。
 - **个性化：** 三层 Memory（L1 traces / L2 summaries / L3 synthesis）+ Memory Graph 溯源；Persona、Question Bank、Notebook、Co-Writer、Book 跨工作流共享。
 - **知识：** Knowledge Center 支持 **LlamaIndex、PageIndex、GraphRAG、LightRAG、LightRAG Server、IMA、MarginNote 4、Obsidian** 等引擎；可插拔文档解析（MinerU、PyMuPDF4LLM、Apache Tika、LiteParse…）。
 - **子代理：** **My Agents** 可连接并 **consult** Claude Code、Codex、Antigravity、Kimi、opencode、MiMo、**Hermes**、**OpenClaw**、DeepSeek Harness 或 Partner；亦可导入历史会话作只读上下文。
 - **Partner：** 持久 IM 伴侣（Feishu、Telegram、Slack、Discord、Matrix… 视 extras），共享同一 `ChatOrchestrator` 大脑，独立 `SOUL.md` 与 workspace。
+- **Learning Space：** 技能 / Persona / Notebook / Question Bank / MCP / CLI Apps（含 [CLI-Anything](https://github.com/HKUDS/CLI-Anything) 目录）的组织层；Web 端 **Learning Space → Skills → Import from EduHub** 或 CLI `deeptutor skill search/install`。
 - **技能：** Agent-Skills 格式；默认 **[EduHub](https://eduhub.deeptutor.info/)**；兼容 **ClawHub**；`deeptutor skill install` 带安全门（verdict、zip 防护、剥离 `always:`）。
 - **安装四形态：** PyPI 全栈、`git clone` 源码、Docker 单容器、`packaging/deeptutor-cli` 无 Web UI。
 - **配置：** `data/user/settings/` 下 JSON/YAML（`model_catalog.json`、`system.json`、`agents.yaml`…）；工作区可用 `DEEPTUTOR_HOME` 或 `deeptutor start --home` 指定。

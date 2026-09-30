@@ -8,7 +8,8 @@
 - **技术报告：** <https://arxiv.org/abs/2604.26962>
 - **技能生态：** <https://eduhub.deeptutor.info/>
 - **收录日期：** 2026-08-31
-- **抓取说明：** 以 **2026-08-31** 对 deeptutor.info 首页与仓库 README 交叉核对为准；版本号与能力列表随 release 演进，勿在 wiki 固化具体 release 细节。
+- **复核日期：** 2026-09-30
+- **抓取说明：** 以 **2026-09-30** 对 [deeptutor.info](https://deeptutor.info/) 首页与仓库 README / [v1.6.12](https://github.com/HKUDS/DeepTutor/releases/tag/v1.6.12) 交叉核对；能力列表随 release 演进，wiki 只保留架构级描述。
 
 ## 一句话
 
@@ -30,7 +31,8 @@
 | 区块 | 内容 |
 |------|------|
 | **Hero** | Agent-native Learning Companion；Fully Open-Sourced |
-| **八大表面** | Chat 默认环、Partner IM、子代理 consult、Co-Writer、交互式 Book、Learning Space、三层 Memory、多引擎 Knowledge Center |
+| **八大表面** | Home（默认 agent loop）、Partners、My Agents、Co-Writer、Book、**Learning Space**（skills/personas/notebooks/questions）、Memory（三层可审计）、Knowledge Center（多引擎 RAG） |
+| **v1.6.12 产品向增量（2026-09-27）** | 工作区级 KB 创建/迁移；Kiwix 归档；grounded 答案带源图；Task Board；德语 UI |
 | **安装 I–IV** | PyPI 推荐；Docker GHCR；源码 dev；CLI headless（`packaging/deeptutor-cli`） |
 | **EduHub** | 教学向 skill registry；`deeptutor skill search/install/publish` |
 | **Collaborate** | 站内设链至合作入口 |
