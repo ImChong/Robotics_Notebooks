@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | 双 ingest：arXiv:2609.36012 机器人 ICL 综述（awesome-robots-icl 文献库已开源）；RA-L PADP（DOI:10.1109/lra.2026.3734869，Go2/LYNX M20+Z1，未见代码）。澄清两篇非同一链接。
+
 ## [2026-09-30] ingest | RTC 生态续 ingest：T-RTC/REMAC/FutureRTC/PPTBench 实体与 sources；扩充 RTC 页 LeRobot/openpi-rtc 入口
 
 ## [2026-09-30] ingest | WWSimBench HF v0.1（Wuwen-AI/WWSimBench）USD 线缆/铰链/三场景资产；已开源无 GitHub runner；实体 wwsimbench + 交叉 EmbodiedGen/仿真评测基建；自动合并 PR
