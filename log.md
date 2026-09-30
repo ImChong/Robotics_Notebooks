@@ -1,3 +1,5 @@
+## [2026-09-30] ingest | Action Upcycling 2609.34911 已开源；Uni-VLaT 2609.35450 全身触觉 VLA；Holo-M 2609.35709 离散人形 VLA 代码待发布；自动合并 PR
+
 ## [2026-09-30] ingest | HOI-Retarget 2609.34674 接触中心 HOI 重定向；GitHub+HF 已开源；自动合并 PR
 
 ## [2026-09-29] lint | 全量 wiki lint：修复 19 条信息型预警（12 篇 paper-* 补评测/对比段、5 页补知识链枢纽回链、Teacher/vLLM 登记为已覆盖）+ 搜索回归 3 条未命中（40/40）
