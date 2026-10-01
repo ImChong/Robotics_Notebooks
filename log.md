@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | Lot Vulture 项目页+GitHub lotvulture/lotvulture；源码可得 PolyForm Shield 衍生许可；实体 lotvulture + ORT 交叉；自动合并 PR
+
 ## [2026-10-01] ingest | Science Advances aed5603（FLEXOR 脊-腿协同，北理工×南大）；sources+实体页；项目页无代码
 
 ## [2026-10-01] ingest | LP-ACRL（arXiv:2601.17428 / RA-L）：ETH RSL 学习进度自动课程 + ANYmal D rough 2.5m/s；项目页无 GitHub，确认未开源
