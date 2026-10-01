@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | sources/repos/awesome-gpt-6-astra.md 与 sources/sites/astra-games.md — 收录 AI 浏览器交互作品集，核查展示站和部分作品源码开放边界，提炼机器人教学展示参考。
+
 ## [2026-10-01] ingest | AgentsDock 项目页+双仓（ZhengyiLuo/AgentsDock·AgentsServer）；Apache-2.0 已开源；实体 agentsdock + 交叉 zhengyi-luo；自动合并 PR
 
 ## [2026-10-01] ingest | arXiv:2510.20808 Reality Gap 综述深读：项目页核查无代码，升格实体页 taxonomy/recipe，补 sources 与 Sim2Real 概念互链
