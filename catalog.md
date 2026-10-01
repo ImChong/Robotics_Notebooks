@@ -481,6 +481,7 @@
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
+- [ECC（Everything Claude Code）](wiki/entities/ecc.md) — ECC**（affaan-m/ECC，ecc.tools）是把 **编码 Agent `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
 - [EgoSuite-Open100K](wiki/entities/egosuite-open100k.md) — EgoSuite-Open100K** 是 光轮智能（Lightwheel） 与 [Hugging Face](https://huggingf `📅2026-08-26` `[entity_page]`
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
@@ -555,6 +556,7 @@
 - [GNM Head（GNM 生态）](wiki/entities/gnm-head.md) — GNM**（**G**enerative a**N**thropometric **M**odel，读音类比 genome）是 Google 推进的 **参数化人体统计模型生态**；截至 2026 `📅unknown` `[entity_page]`
 - [GO-2（智元执行基座）](wiki/entities/go-2.md) — GO-2**（arXiv:2601.11404，项目页：<https://libra-vla.github.io/>）是智元 `📅unknown` `[entity_page]`
 - [Go2 Motion Imitation](wiki/entities/go2-motion-imitation.md) — Go2 Motion Imitation**（<https://github.com/TSUITUENYUE/motion-imitation>）是针对 **Unitree Go2** 的 **运 `📅unknown` `[entity_page]`
+- [God's Eye View](wiki/entities/gods-eye-view.md) — God's Eye View**（bilawalsidhu/gods-eye-view，入口 [m `📅unknown` `[entity_page]`
 - [Google Cloud GPU](wiki/entities/google-cloud-gpu.md) — Google Cloud GPU** 涵盖 **Compute Engine GPU 虚拟机**与 **Vertex AI** 托管 ML 服务，是除 AWS 外最常用的 **超大规模云 GPU `📅unknown` `[entity_page]`
 - [Google Colab](wiki/entities/google-colab.md) — Google Colab**（colab.research.google.com）是 Google 提供的 **云端 J `📅unknown` `[entity_page]`
 - [算力自由（GPUFree）](wiki/entities/gpufree.md) — 算力自由**（gpufree.cn，北京算力自由科技有限公司）是国内 **GPU 云平台**：整合多地 IDC 资源，用**容器化**方式把物 `📅unknown` `[entity_page]`
@@ -580,6 +582,7 @@
 - [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md) — Hermes Agent** 是 Nous Research 维护的开源自主代理栈（[NousResearch/hermes-agent `📅unknown` `[entity_page]`
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
+- [Hindsight](wiki/entities/hindsight.md) — Hindsight**（vectorize-io/hindsight，文档 [hindsight.vect `📅unknown` `[entity_page]`
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`
 - [HoloAgent](wiki/entities/holoagent.md) — HoloAgent](https://github.com/HorizonRobotics/HoloAgent) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
@@ -602,6 +605,8 @@
 - [HumanPlus-1000（同步第一人称 + 全身运动数据集）](wiki/entities/humanplus-1000-dataset.md) — HumanPlus-1000**（项目页 · [HF 预览](https:// `📅unknown` `[entity_page]`
 - [HumanTouch（可规模化人手触觉采集系统）](wiki/entities/humantouch.md) — HumanTouch**（*A Multimodal System for Scalable Human-Hand Tactile Acquisition*，[项目页](https://xspar `📅unknown` `[entity_page]`
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
+- [HyperFrames](wiki/entities/hyperframes.md) — HyperFrames**（heygen-com/hyperframes，npm `hyperframes `📅unknown` `[entity_page]`
+- [i-have-adhd](wiki/entities/i-have-adhd.md) — i-have-adhd**（ayghri/i-have-adhd）是安装到 Claude Code、Cursor  `📅unknown` `[entity_page]`
 - [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
@@ -835,6 +840,7 @@
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
+- [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVLA](wiki/entities/openvla.md) — OpenVLA**（openvla/openvla）提供可复现的 **Vision-Language-Action（VL `📅unknown` `[entity_page]`
@@ -4277,6 +4283,7 @@
 - [Halbach permanent magnet machines and applications（Zhu & Howe 2001）](wiki/entities/paper-zhu-howe-halbach-pm-machines-review.md) — Z. Q. Zhu & D. Howe（University of Sheffield，[IEE Proc. EPA 2001](https://doi.org/10.1049/ip-epa:20 `📅unknown` `[entity_page]`
 - [ZONDA：多楼层动态避障的零样本 ObjectNav](wiki/entities/paper-zonda.md) — ZONDA**（*Zero-shot Object Navigation with Dynamic Avoidance*，[arXiv:2607.21025](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [ZYT-World：闭环智驾实时可控世界模型](wiki/entities/paper-zyt-world.md) — ZYT-World**（*ZYT-World: A Real-Time Controllable World Model for Closed-Loop Autonomous-Driving Si `📅unknown` `[entity_page]`
+- [Paperclip](wiki/entities/paperclip.md) — Paperclip**（paperclipai/paperclip，[paperclip.ing](http `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
 - [Particles4All](wiki/entities/particles4all.md) — Particles4All**（GitHub，[在线 Demo](https://particle `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`

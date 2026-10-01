@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | Trendshift 批次：archify/gods-eye-view/ponytail/i-have-adhd/ECC/open-code-review/hindsight/OpenMAIC/paperclip/hyperframes 十项 Agent 技能与工具入库（7 新实体 + 3 热度更新）
+
 ## [2026-10-01] ingest | TactileStep（2609.28959）：清华 G1 足底压力四相位 RL；项目页 CoRL 2026 Spotlight，代码待发布；深化 paper-tactilestep 与 sources/sites
 
 ## [2026-10-01] ingest | LiveTalking（lipku）实时流式数字人引擎；项目页+GitHub 已开源、权重网盘；实体页 livetalking，交叉 MetaHuman/teleoperation
