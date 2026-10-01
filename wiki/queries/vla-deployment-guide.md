@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-01
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -16,6 +16,7 @@ related:
   - ./vla-with-low-level-controller.md
   - ../entities/lw-benchhub-tour.md
   - ../entities/jetson-openpi-pi05-on-thor.md
+  - ../concepts/llm-inference-vram-estimation.md
 sources:
   - ../../sources/courses/jetson_openpi_pi05_on_thor.md
   - ../../sources/papers/rl_foundation_models.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
+  - ../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md
 ---
 
 # VLA 真机部署指南：延迟、异步与加速
@@ -42,6 +44,14 @@ sources:
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
+## 0. 显存预算（与延迟并列的硬约束）
+
+VLA 部署前除 P99 延迟外，应估算 **GPU VRAM 能否常驻权重 + 解码 KV + 视觉侧激活**。纯 LLM 自回归的拆账公式（GQA/MLA/MoE、batch×上下文、TP 与 vLLM 碎片系数）见 [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)。具身读法要点：
+
+- **batch=1 端侧**：OpenPI / TensorRT 路径主要争 **权重 + 多相机特征**；KV 通常短于云端 chat serving。
+- **云端并发 teacher**：多请求 × 长上下文时 **KV 可大于权重**，租卡选型见 [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)。
+- **OOM 回退**：§4 安全回退中的显存溢出，应先在估算阶段留 **10–15% 余量** 并用 `nvidia-smi` 实测峰值。
 
 ## 1. 推理加速技巧：压榨每一毫秒
 
@@ -99,6 +109,7 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - **开源参考**：[Cyclo Intelligence](../entities/cyclo-intelligence.md) 的 `SendCommand` BT 动作 + [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)。
 
 ## 关联页面
+- [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
@@ -119,3 +130,4 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
 - [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT 编排 VLA 推理相位的工程参考
+- [sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md](../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md) — LLM 推理 VRAM 五块拆账与 TP 公式

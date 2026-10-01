@@ -2,8 +2,9 @@
 type: comparison
 tags: [infrastructure, gpu-cloud, training, china, cost, selection]
 status: complete
-updated: 2026-09-03
+updated: 2026-10-01
 related:
+  - ../concepts/llm-inference-vram-estimation.md
   - ../entities/autodl.md
   - ../entities/gpufree.md
   - ../entities/matpool.md
@@ -99,7 +100,7 @@ flowchart TD
 
 无论选哪家，建议统一检查：
 
-1. **显存**：parallel env 数 × 观测维度；人形 Isaac Lab 常 24GB 起，拉满考虑 48GB 或多卡。
+1. **显存**：parallel env 数 × 观测维度；人形 Isaac Lab 常 24GB 起，拉满考虑 48GB 或多卡。若同时跑 **LLM/VLA serving**（长上下文、多并发），先用 [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md) 算 **per_gpu**，再对照平台卡型表。
 2. **图形 vs headless**：带 GUI 仿真 **不能** 默认租纯计算卡（A100/H100 等可能无显示能力）。
 3. **容器套容器**：多数容器实例 **不能在里面再起容器**；复杂 Omniverse 部署需验证或裸金属。
 4. **存储路径**：弄清系统盘/数据盘/OSS，避免 conda 与数据集挤爆 `/`。
