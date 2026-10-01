@@ -1,0 +1,122 @@
+{
+  "album_title": "Modern Robotics 原理精读",
+  "album_id": "4521219024549937157",
+  "biz": "Mzg2ODgxOTA1Mw==",
+  "account": "写个 goodMan",
+  "album_url": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157",
+  "description": "从《Modern Robotics》出发，追问机器人运动、力与智能背后的原理。相信复杂可以被讲清，真正的创造始于真正的理解。",
+  "fetched": "2026-10-01",
+  "article_count": 10,
+  "articles": [
+    {
+      "mid": "2247483809",
+      "title": "从真实空间到 C-space：机器人运动规划的第一张地图",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483809&idx=1&sn=040d35532ec20f08e3a7666de1a10bf9&chksm=cea7c8a3f9d041b511bed857ac77ec34659153ebf33d1f289388477cd121fd4fe9436580a6a4#rd",
+      "series_ord": 1,
+      "status": "scraped",
+      "publish_time": "2026-05-17 05:37:22",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/01_mid2247483809/01_mid2247483809.md",
+      "chars": 477478
+    },
+    {
+      "mid": "2247483820",
+      "title": "Modern Robotics 第三章（1）：平面内的刚体运动",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483820&idx=1&sn=6da5efd636e9ebf34b176ef4009ad8bf&chksm=cea7c8aef9d041b81726f4ead46d4299565b55ab2db054859cb130693806c82452f59b5ad747#rd",
+      "series_ord": 2,
+      "status": "scraped",
+      "publish_time": "2026-05-19 03:35:24",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/02_mid2247483820/02_mid2247483820.md",
+      "chars": 505709
+    },
+    {
+      "mid": "2247483845",
+      "title": "Modern Robotics 第三章（2）：旋转与角速度",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483845&idx=1&sn=1a17f0564509a453d0344b887a256894&chksm=cea7c8c7f9d041d199ec2c0a5b41a1d39e9c732caf97eb10cbd44c94599ab80a1dd67ac83f55#rd",
+      "series_ord": 3,
+      "status": "scraped",
+      "publish_time": "2026-05-23 15:27:04",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/03_mid2247483845/03_mid2247483845.md",
+      "chars": 1181092
+    },
+    {
+      "mid": "2247483879",
+      "title": "为什么机器人学要用齐次变换矩阵描述刚体位姿？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483879&idx=1&sn=f4d4ce4f59e84e1c80de358787dd0781&chksm=cea7c8e5f9d041f318f936d3a37ede7d3fb1e74ed8bcd56ff59e2e7c16fe43e1d1656c18b45b#rd",
+      "series_ord": 4,
+      "status": "scraped",
+      "publish_time": "2026-05-27 09:39:42",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/04_mid2247483879/04_mid2247483879.md",
+      "chars": 686844
+    },
+    {
+      "mid": "2247483867",
+      "title": "为什么机器人学要用运动旋量描述刚体速度？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483867&idx=1&sn=cb0452d6522ce3eb99666d2181492fe6&chksm=cea7c8d9f9d041cfa28864cd43d5531e9a1f8476ff488b283c19ba898d9945e8b9d599d0b743#rd",
+      "series_ord": 5,
+      "status": "scraped",
+      "publish_time": "2026-05-27 02:51:21",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/05_mid2247483867/05_mid2247483867.md",
+      "chars": 939877
+    },
+    {
+      "mid": "2247483928",
+      "title": "运动旋量的一个核心视角：刚体瞬时速度场的 6 维坐标",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483928&idx=1&sn=a40aeeb2dbc13f229bd24e89109e852a&chksm=cea7cb1af9d0420c38766db092c9185014260bbb55930681871761b43b6d53166657e7d998c7#rd",
+      "series_ord": 6,
+      "status": "scraped",
+      "publish_time": "2026-05-30 05:14:09",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/06_mid2247483928/06_mid2247483928.md",
+      "chars": 113844
+    },
+    {
+      "mid": "2247483947",
+      "title": "刚体绕 z 轴转，螺旋轴却不一定是 z 轴？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483947&idx=1&sn=0272154cf0687557d29bf40891237eeb&chksm=cea7cb29f9d0423fcf065da9a6d9193b8bcf08ab577c038e65cae0d886470f68af21687be248#rd",
+      "series_ord": 7,
+      "status": "scraped",
+      "publish_time": "2026-06-02 02:06:23",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/07_mid2247483947/07_mid2247483947.md",
+      "chars": 127150
+    },
+    {
+      "mid": "2247483971",
+      "title": "刚体运动的指数坐标：螺旋轴和位形如何互相转换？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247483971&idx=1&sn=38fb6d1b209c1f8465a80394d8f79b46&chksm=cea7cb41f9d04257eaeae8a4a0dcc86c5f356e133204d3483d48b0c332dc368b0514caa27461#rd",
+      "series_ord": 8,
+      "status": "scraped",
+      "publish_time": "2026-06-03 02:29:46",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/08_mid2247483971/08_mid2247483971.md",
+      "chars": 622860
+    },
+    {
+      "mid": "2247484007",
+      "title": "为什么机器人学要用力旋量描述外力？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247484007&idx=1&sn=069d2a1343e001029f1e52a19a071a8c&chksm=cea7cb65f9d0427380b5e087ed88461b6b90114894534139f86579c08c5c3701af7db1bd40cc#rd",
+      "series_ord": 9,
+      "status": "scraped",
+      "publish_time": "2026-06-04 01:36:39",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/09_mid2247484007/09_mid2247484007.md",
+      "chars": 375899
+    },
+    {
+      "mid": "2247484173",
+      "title": "机器人学中的正向运动学到底在算什么？",
+      "url": "http://mp.weixin.qq.com/s?__biz=Mzg2ODgxOTA1Mw==&mid=2247484173&idx=1&sn=574f1696b63a16277bf38fbd52d6d3bb&chksm=cea7ca0ff9d04319309494b8b1925d425a0690218c4f7b4b2064799047b5591f08fc4484c11c#rd",
+      "series_ord": 10,
+      "status": "scraped",
+      "publish_time": "2026-06-08 01:13:15",
+      "author": "写个 goodMan",
+      "raw": "sources/raw/wechat_modern_robotics_album_4521219024549937157/10_mid2247484173/10_mid2247484173.md",
+      "chars": 429981
+    }
+  ]
+}

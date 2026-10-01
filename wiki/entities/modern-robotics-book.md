@@ -3,8 +3,9 @@
 type: entity
 tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-01
 related:
+  - ../overview/modern-robotics-wechat-principles-series.md
   - ./python-robotics.md
   - ./learn-robotics-qqfly-guide.md
   - ../formalizations/lie-group-rigid-body-motions.md
@@ -20,6 +21,7 @@ related:
   - ./linear-algebra-curriculum.md
 sources:
   - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/raw/wechat_modern_robotics_album_4521219024549937157.md
 summary: "Lynch & Park 的现代机器人学经典教材，独特之处是全程使用李群 / 螺旋理论作为统一数学语言，覆盖配置空间到全身控制、抓取、移动机器人的完整体系，是本知识库传统机器人学部分的主要参考底座。"
 ---
 

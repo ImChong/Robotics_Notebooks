@@ -2,9 +2,11 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-01
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ../overview/modern-robotics-wechat-principles-series.md
+  - ./spatial-twist-wrench-poe.md
   - ./homogeneous-coordinates-transform.md
   - ./forward-kinematics.md
   - ./3d-coordinate-transforms-vision-robotics.md
@@ -21,6 +23,8 @@ related:
   - ../concepts/floating-base-dynamics.md
 sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
+  - ../../sources/blogs/wechat_goodman_modern_robotics_ch3_planar_rigid_motion.md
+  - ../../sources/blogs/wechat_goodman_modern_robotics_ch3_rotation_angular_velocity.md
   - ../../sources/papers/modern_robotics_textbook.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
