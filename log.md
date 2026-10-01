@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | ChunkTrust arXiv:2609.39754 — AHS/QHA 动态 execution horizon；项目页核查 hf618/ChunkTrust + Niugan/ChunkTrust 已开源
+
 ## [2026-10-01] ingest | LocoWM（arXiv:2609.39179）：CASIA 等 WM 引导 preactive 残差高精度行走；Go2-W 真机三任务；GitHub 已开源；升格 paper-locowm 并交叉轮足/loco-manip。
 
 ## [2026-10-01] ingest | 微信公众号两篇：电机概念 FAQ + MIT 阻抗模式整定；新建 sources/blogs、wiki/concepts/electric-motor-fundamentals 与 wiki/methods/mit-joint-impedance-mode-tuning

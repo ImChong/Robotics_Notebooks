@@ -1370,6 +1370,7 @@
 - [CHOREO（Every Humanoid Skill as a Trajectory）](wiki/entities/paper-choreo.md) — CHOREO**（*CHOREO: Every Humanoid Skill as a Trajectory*，中国海洋大学 × 中国科学院大学 × 中国科学院自动化研究所，[arXiv:2609 `📅unknown` `[entity_page]`
 - [CHORUS：单一 VLA 权重的去中心化多本体协作](wiki/entities/paper-chorus.md) — CHORUS**（*Decentralized Multi-Embodiment Collaboration with One VLA Policy*，[arXiv:2606.12352](htt `📅unknown` `[entity_page]`
 - [Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）](wiki/entities/paper-chronos.md) — Chronos**（arXiv:2606.30318，[项目页](https://chronos-manipulation. `📅unknown` `[entity_page]`
+- [ChunkTrust（arXiv:2609.39754）](wiki/entities/paper-chunktrust.md) — ChunkTrust: Adapting Execution Horizons for Robot Policies with Action-Expert Evidence**（[arXiv:26 `📅unknown` `[entity_page]`
 - [CLAP：跨本体视频世界模型当零样本物理模拟器](wiki/entities/paper-clap-cross-embodiment.md) — CLAP**（*Cross-Embodiment Video World Models are Zero-Shot Physical Simulators*，[arXiv:2608.27406 `📅unknown` `[entity_page]`
 - [CLIFT：不打开模型盒子的闭环迭代微调](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md) — CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Huma `📅unknown` `[entity_page]`
 - [CLIP：自然语言监督下的可迁移视觉模型](wiki/entities/paper-clip.md) — CLIP**（*Learning Transferable Visual Models From Natural Language Supervision*，[arXiv:2103.00020 `📅unknown` `[entity_page]`
