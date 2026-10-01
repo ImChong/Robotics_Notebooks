@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-15
+updated: 2026-10-01
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -89,6 +89,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 | 场景 | 课程策略 | 代表工作 |
 |------|---------|---------|
 | 四足/双足 locomotion | 地形难度分级 | legged_gym (Rudin 2022) |
+| 四足多轴 velocity×terrain | episodic **learning progress** softmax 重采样 | [LP-ACRL](../entities/paper-lp-acrl-scaling-rough-terrain-locomotion.md)（Li et al., RA-L 2026） |
 | 高动态全身动作（跳跃/空翻） | 训练期外部辅助力按成功率衰减 | [EFGCL](../methods/efgcl.md)（Yoneda et al., RA-L 2026） |
 | 局部感知导航 | 沿特权路径的子目标序列逐步稀疏（horizon 扩展） | HiPAN / PGCL (Jeong et al., 2026) |
 | Dexterous manipulation | 物体位置随机化范围扩大 | OpenAI Dactyl (2019) |
@@ -135,6 +136,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：mask curriculum 让条件生成策略覆盖多种位级掩码（关节 / 根 / 关键点等接口）
 - **ingest 档案：** [sources/papers/kungfubot_pbhc_neurips2025.md](../../sources/papers/kungfubot_pbhc_neurips2025.md) — KungfuBot：双层优化 **自适应跟踪容差** 课程（按当前误差动态调节，优于固定 factor）
 - **ingest 档案：** [sources/papers/aware_arxiv_2604_23761.md](../../sources/papers/aware_arxiv_2604_23761.md) — AWARE：按规避成功率升高障碍飞行速度
+- **ingest 档案：** [sources/papers/lp_acrl_arxiv_2601_17428.md](../../sources/papers/lp_acrl_arxiv_2601_17428.md) — LP-ACRL：600 实例多轴 ANYmal 自动课程与 EPTE-SP 评测
 
 ---
 
@@ -153,3 +155,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 跟踪精度容差的双层优化自适应课程
 - [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) — 轮足动态障碍速度课程
 - [wheel_legged_genesis](../entities/wheel-legged-genesis.md) — Genesis 双轮足地形课程（v0.0.2 起）
+- [LP-ACRL](../entities/paper-lp-acrl-scaling-rough-terrain-locomotion.md) — learning progress softmax 自动课程（ANYmal D rough 高速）

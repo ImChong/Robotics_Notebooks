@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, rl, ppo, distillation, mixed-precision, bf16, isaac-lab, eth, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-01
 arxiv: "2509.10771"
 code: https://github.com/leggedrobotics/rsl_rl
 related:
