@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -77,6 +77,7 @@ related:
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-legged-robots-advances-challenges.md
+  - ../entities/paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ../queries/rl-sim2real-deployment-conditions.md
   - ../comparisons/sim2real-four-routes-identifiability.md
@@ -105,6 +106,7 @@ sources:
   - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
   - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
   - ../../sources/papers/legged_robots_advances_challenges_scirobotics_2026.md
+  - ../../sources/papers/reality_gap_robotics_arxiv_2510_20808.md
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
@@ -135,6 +137,7 @@ sources:
 - 真实机器人训练成本高、速度慢、容易损坏
 - 仿真可以并行加速、任意重置、无硬件损耗
 - 但仿真和现实有 domain gap，必须解决迁移问题
+- **结构化总览：** [Reality Gap in Robotics 综述（Annual Review 2026）](../entities/paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md) 按 gap 来源与 Reduce/Overcome 方法族梳理文献与实践 recipe
 
 ## Sim2Real 工程流程总览
 

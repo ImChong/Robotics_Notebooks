@@ -2,8 +2,9 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-01
 related:
+  - ./paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../overview/hub-sim2real.md
   - ../concepts/sim2real.md
@@ -63,7 +64,7 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 
 | 区块 | 内容侧重 |
 |------|----------|
-| Surveys | MDP 视角 Sim2Real taxonomy、物理仿真器角色、reality gap 综述 |
+| Surveys | MDP 视角 Sim2Real taxonomy、物理仿真器角色；**063** [Reality Gap 综述（Annual Review 2026）](./paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md) 已深读节点化 |
 | Sim-to-Real | RL 迁移 / 零样本 / DR·适配 / 基础模型增强 |
 | Real-to-Sim | 视频重建（含 CRISP）/ 操作与交互场景 |
 | Real2Sim2Real | 3DGS 框架与仿真管线闭环；avatar 阴影见 [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) |

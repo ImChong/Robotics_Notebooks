@@ -9,7 +9,8 @@
 - **arXiv：** 2510.20808
 - **出处：** Annual Review of Control, Robotics, and Autonomous Systems 2026
 - **论文：** <https://arxiv.org/abs/2510.20808>
-- **代码：** 未在清单中标注
+- **代码：** 未在清单中标注（深读 ingest 见 [`reality_gap_robotics_arxiv_2510_20808.md`](reality_gap_robotics_arxiv_2510_20808.md) 与 [`sources/sites/robotics-reality-gap.md`](../sites/robotics-reality-gap.md)：项目页无 GitHub）
+- **项目页：** <https://robotics-reality-gap.github.io/>
 
 - **Highlights（清单）：** A comprehensive overview of the sim-to-real landscape, highlighting the causes, solutions, and evaluation metrics for the reality gap and sim-to-real transfer
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md`](../../wiki/entities/paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md)
