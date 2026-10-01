@@ -2,13 +2,14 @@
 type: concept
 tags: [imitation-learning, action-chunking, deployment, receding-horizon, diffusion-policy, act, control]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-01
 summary: "IL 策略的滚动执行：预测一段 action sequence，只执行前缀，再用新观测重规划；Diffusion Policy 是经典 receding horizon，ACT 的 temporal ensemble 是重叠融合，二者不可混称。"
 sources:
   - ../../sources/papers/receding_horizon_il_primary_refs.md
   - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
   - ../../sources/papers/act_arxiv_2304_13705.md
   - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/papers/chunktrust_arxiv_2609_39754.md
 related:
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
@@ -16,6 +17,7 @@ related:
   - ../entities/paper-act.md
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-autohorizon.md
+  - ../entities/paper-chunktrust.md
   - ./control-inference-frequency-decoupling.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
   - ../methods/model-predictive-control.md
@@ -122,6 +124,7 @@ sequenceDiagram
 | 双臂 ALOHA 复现 | ACT 官方 TE 配方 | 换 RH 需改执行环，非 drop-in |
 | 高延迟 VLA | 异步 chunk + 前缀条件化 | 见 [Action Chunking](../methods/action-chunking.md) §VLA |
 | 接触丰富 / 动态扰动 | 缩短 \(T_e\) 或加长观测上下文 | [Revisiting Open-Loop](../entities/paper-revisiting-open-loop-action-chunking.md) |
+| Flow VLA / WAM，固定 \(T_e\) 次优 | **动态 \(T_e\)**：test-time 读 attention 或 action-expert trace | [AutoHorizon](../entities/paper-autohorizon.md)；[ChunkTrust](../entities/paper-chunktrust.md)（速度谱 + 边界连续性 + Beta 记忆） |
 
 **调试指标：** 重规划频率 \(1/T_e\)、chunk 边界 jerk、推理队列年龄、开环前缀内的跟踪误差。
 
@@ -139,6 +142,8 @@ sequenceDiagram
 - [Diffusion Policy 论文实体](../entities/paper-diffusion-policy.md)
 - [ACT 论文实体](../entities/paper-act.md)
 - [Why Action Chunking Improves BC](../entities/paper-why-action-chunking-improves-bc.md) — Delay / RDE vs TE
+- [AutoHorizon](../entities/paper-autohorizon.md) — attention 动态 \(T_e\)
+- [ChunkTrust](../entities/paper-chunktrust.md) — action-expert 证据动态 \(T_e\)
 - [控制/推理频率解耦](./control-inference-frequency-decoupling.md)
 - [MPC（模型预测控制）](../methods/model-predictive-control.md) — 控制论 receding horizon 对照
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
@@ -150,6 +155,7 @@ sequenceDiagram
 - [sources/papers/diffusion_policy_arxiv_2303_04137.md](../../sources/papers/diffusion_policy_arxiv_2303_04137.md)
 - [sources/papers/act_arxiv_2304_13705.md](../../sources/papers/act_arxiv_2304_13705.md)
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
+- [sources/papers/chunktrust_arxiv_2609_39754.md](../../sources/papers/chunktrust_arxiv_2609_39754.md)
 
 ## 推荐继续阅读
 

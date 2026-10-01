@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/repos/act-aloha.md
@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/revisiting_open_loop_action_chunking_arxiv_2608_15938.md
   - ../../sources/papers/autohorizon_arxiv_2602_21445.md
+  - ../../sources/papers/chunktrust_arxiv_2609_39754.md
   - ../../sources/papers/arli_arxiv_2608_23831.md
   - ../../sources/papers/video2door_traversal_arxiv_2608_20251.md
   - ../../sources/papers/receding_horizon_il_primary_refs.md
@@ -49,6 +50,7 @@ related:
   - ../entities/paper-video2door-traversal.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
   - ../entities/paper-autohorizon.md
+  - ../entities/paper-chunktrust.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/fluxvla-engine.md
@@ -91,6 +93,8 @@ related:
 [BC Mysteries](../concepts/behavioral-cloning-mysteries.md) 给出第三条证据：在人类风格（窄、时间相关）数据上，**无限数据** 的纯闭环 \(\pi(a_t\mid s_t)\) 可以完全失败，而 length-25 开环能做；把过去 24 帧状态拼进闭环 **并不** 自动追上开环（因果混淆 / 输入空间更大）。与 Revisiting 合并读：开环是短记忆补丁；要让闭环赢，上下文必须编码 **专家隐状态**（接触意图、分段决策），而不是更长的关节角窗口。
 
 [AutoHorizon](../entities/paper-autohorizon.md)（ECCV 2026，flow VLA / π0.5）在 **不改权重** 的 test-time 用 **action self-attention** 为每个 chunk **动态估计 execution horizon**：稳定段拉长前缀、接触段缩短以提高 replan 频率；LIBERO 上接近 per-task static oracle。与上文「加长 \(T_o\)」正交——AutoHorizon 调 **执行协议**，Revisiting 调 **条件输入**。
+
+[ChunkTrust](../entities/paper-chunktrust.md)（arXiv:2609.39754，清华等）同样 **冻结 base policy**，但从 **去噪 velocity 谱稳定性** 与 **executed history 边界连续性** 双证据在线选前缀；episode-local Beta 记忆跟踪阶段偏好，可选 **QHA** 学习 horizon 先验（[MIT 已开源](https://github.com/hf618/ChunkTrust)，QHA 权重 [Niugan/ChunkTrust](https://huggingface.co/Niugan/ChunkTrust)）；RoboTwin 2.0 / RoboCasa / 真机 π0.5 任务平均指标一致提升——与 AutoHorizon **信号源不同**，可作 flow chunk replan 层并列 baseline。
 
 [Action Upcycling](../entities/paper-action-upcycling.md)（arXiv:2609.34911，SKKU/KAIST）走另一条 **训练-free** 自适应轴：不读模型内部、不额外采样，只用 **已预测 chunk 的动作速度波动** 决定 tail 复用长度；π0.5 / SmolVLA / GR00T / FastWAM 上 **policy call 减 1.2–1.7×** 且成功率不低于 baseline，与 [FlashVLA](../entities/paper-flashvla.md) 等「减单次 forward 成本」正交；[GitHub 已开源](https://github.com/star-kwon/action-upcycling)。
 

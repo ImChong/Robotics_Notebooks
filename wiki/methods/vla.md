@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/ai-architecture-map.md
@@ -477,6 +477,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - **VLA↔RL 专家路由：** [RouteRLT](../entities/paper-routelt.md)（arXiv:2609.26467，IROS 2026 IARL）在 **冻结 SmolVLA** 上学习 **何时切换哪枚 phase RL specialist**，action-boundary manager 保证 mid-chunk 立即换控；LIBERO **92.22%**、真机 cable insertion **35.0%**；代码未列链接。
 - **Chunk 策略自动接管：** [AutoIntervene](../entities/paper-autointervene.md)（arXiv:2608.07065）用 visual-action 支持分位数校准双向人机切换，把干预段变成选择性 DAgger；九项双臂真机上 R2 平均 **80%** 成功且操作员时间低于人工盯梢。
 - **动态 execution horizon：** [AutoHorizon](../entities/paper-autohorizon.md)（arXiv:2602.21445，ECCV 2026）在 flow VLA test-time 读 action self-attention，为每 chunk 估计开环前缀长度；π0.5 + LIBERO 接近 static oracle，**Apache-2.0 代码已开源**。
+- **Action-expert 证据 horizon：** [ChunkTrust](../entities/paper-chunktrust.md)（arXiv:2609.39754）用去噪速度谱 + 执行边界连续性作 **训练-free AHS**，可选 **QHA** 先验；RoboTwin2.0 / RoboCasa / 真机 π0.5 增益；**MIT 代码 + HF QHA 已开源**。
 - **Tail 复用减 policy call：** [Action Upcycling](../entities/paper-action-upcycling.md)（arXiv:2609.34911）训练-free 执行 chunk tail（速度波动门控）；四 VLA/WAM × 三基准 **call 1.2–1.7×↓**、SR≥baseline；**Apache-2.0 已开源**。
 - **全身触觉适配 VLA：** [Uni-VLaT](../entities/paper-uni-vlat.md)（arXiv:2609.35450，清华等）post-DiT 触觉锚 + 未来触觉/本体/视觉 latent 预测；G1 五任务 **75%** vs 无触觉 **32%**；**截至入库日无官方代码**。
 - **离散 token 人形 VLA：** [Holo-M](../entities/paper-holo-m.md)（arXiv:2609.35709，地平线）四部件 tokenizer + 分组离散 diffusion；SIMPLE specialist **163/180**、generalist **143/180**；**代码待发布**。
