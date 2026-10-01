@@ -437,13 +437,43 @@ def all_index_rows() -> list[str]:
         ("SALT", "架构模块", "2608.10484", "paper-salt-vla-action-language-alignment", "新建"),
         ("TMRL", "训练范式", "2605.12236", "paper-tmrl-diffusion-timestep-pretraining", "新建"),
         ("MiDAS", "训练范式", "2608.11363", "paper-midas-minimal-data-vla-adaptation", "新建"),
-        ("Neural Introspection Gating", "性能提升", "2608.10824", "paper-neural-introspection-gating", "复用"),
-        ("RoboHarness（SJTU）", "长程记忆", "2603.24060", "paper-robo-harness-memory-ic-adaptation", "新建"),
+        (
+            "Neural Introspection Gating",
+            "性能提升",
+            "2608.10824",
+            "paper-neural-introspection-gating",
+            "复用",
+        ),
+        (
+            "RoboHarness（SJTU）",
+            "长程记忆",
+            "2603.24060",
+            "paper-robo-harness-memory-ic-adaptation",
+            "新建",
+        ),
         ("VGA", "空间感知", "2604.12908", "paper-vga-vision-geometry-action", "新建"),
-        ("Embodied MM Grounding", "空间感知/Agent", "2608.10756", "paper-embodied-multimodal-grounding-3dgs-mobile-manipulation", "新建"),
+        (
+            "Embodied MM Grounding",
+            "空间感知/Agent",
+            "2608.10756",
+            "paper-embodied-multimodal-grounding-3dgs-mobile-manipulation",
+            "新建",
+        ),
         ("TCAM", "末端操控", "2608.10718", "paper-tcam-deformable-manipulation-wbcd", "新建"),
-        ("HandPriorScore", "末端操控", "2608.11769", "paper-handprior-score-humanoid-dual-arm", "新建"),
-        ("DriveVLA-M0", "异常处理/智驾", "2608.10413", "paper-drivevla-m0-failure-aware-memory", "新建"),
+        (
+            "HandPriorScore",
+            "末端操控",
+            "2608.11769",
+            "paper-handprior-score-humanoid-dual-arm",
+            "新建",
+        ),
+        (
+            "DriveVLA-M0",
+            "异常处理/智驾",
+            "2608.10413",
+            "paper-drivevla-m0-failure-aware-memory",
+            "新建",
+        ),
         ("DURA", "异常处理/安全", "2608.10393", "paper-dura-diffusion-vla-visual-attack", "新建"),
     ]
     out: list[str] = []
@@ -596,7 +626,7 @@ def patch_reuse_sources() -> None:
 
 
 def patch_sibling_blogs() -> None:
-    link = f"- 同系列：[第一篇](wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) · **[第二篇](wechat_duomo_vla_weekly_trends_2026-08-10_part2.md)** · [第三篇](wechat_duomo_vla_weekly_trends_2026-08-10_part3.md) · [第四篇](wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)"
+    link = "- 同系列：[第一篇](wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) · **[第二篇](wechat_duomo_vla_weekly_trends_2026-08-10_part2.md)** · [第三篇](wechat_duomo_vla_weekly_trends_2026-08-10_part3.md) · [第四篇](wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)"
     for part in ("part1", "part3", "part4"):
         path = ROOT / "sources/blogs" / f"wechat_duomo_vla_weekly_trends_2026-08-10_{part}.md"
         text = path.read_text(encoding="utf-8")
