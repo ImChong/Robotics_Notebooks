@@ -4650,6 +4650,7 @@
 - [Character Animation vs Robotics（角色动画与机器人控制的边界）](wiki/concepts/character-animation-vs-robotics.md) — 一句话定义：** 当一个人形平台的目标函数里同时出现「表演可信度（character believability）」与「物理可控性（physical controllability）」时，工程取舍 `📅unknown` `[wiki_page]`
 - [时钟同步算法 (Clock Synchronization Algorithms)](wiki/concepts/clock-synchronization-algorithms.md) — 时钟同步算法** 解决一个看似简单、却在多板卡运控里反复折腾人的问题：**两台机器的时间到底差多少，怎么把这个差距持续压到与控制环路相比可忽略的水平？** 在人形机器人里，IMU 在一块板、关节驱 `📅unknown` `[wiki_page]`
 - [Collision Distance Optimization（碰撞距离优化）](wiki/concepts/collision-distance-optimization.md) — 碰撞距离优化**：求机器人构型 $q$ 与障碍物之间 **最小距离** 或 **有符号距离（SDF）**，并在 TrajOpt / NMPC 中作为不等式 $d(q) \ge d_{\min}$  `📅unknown` `[wiki_page]`
+- [位形空间（Configuration Space, C-space）](wiki/concepts/configuration-space.md) — 一句话：** 用最少独立坐标描述整台机器人的状态，所有可能位形的集合就是 C-space；规划器在 C-space 里找路径，碰撞与约束也首先在这里定义。 `📅unknown` `[wiki_page]`
 - [Constrained Optimization（约束优化）](wiki/concepts/constrained-optimization.md) — 约束优化**：在等式 $h(x)=0$ 与不等式 $g(x)\le 0$ 下最小化目标 $f(x)$；机器人 OCP、WBC、NMPC 的本质都是约束优化——动力学是等式，摩擦/碰撞/输入饱和是不 `📅unknown` `[wiki_page]`
 - [Contact Dynamics](wiki/concepts/contact-dynamics.md) — Contact Dynamics（接触动力学）**：研究机器人与环境交互时，**接触力 (Contact Force)**、**摩擦锥 (Friction Cone)** 约束和系统运动之间关系的 `📅unknown` `[wiki_page]`
 - [Contact Estimation（接触估计）](wiki/concepts/contact-estimation.md) — Contact Estimation 是指在机器人运动过程中，**实时判断哪个足/末端执行器处于接触状态（与地面或物体接触）**，并尽可能估计接触力的大小和方向。 `📅unknown` `[wiki_page]`
@@ -5089,6 +5090,7 @@
 - [机器人雅可比矩阵（Jacobian）](wiki/formalizations/robot-jacobian.md) — 一句话：** FK 告诉你末端「在哪」；雅可比告诉你当前构型下「怎么变」——同一张 $J$ 既做速度映射 $v=J\dot q$，又做力映射  `📅unknown` `[formalization_page]`
 - [Safe LoRA Update Projection（安全 LoRA 投影更新形式化）](wiki/formalizations/safe-lora-update-projection.md) — Safe LoRA Update Projection** 是 真机安全 RL 微调 「低秩残差  `📅unknown` `[formalization_page]`
 - [SE(3) Representation (位姿表示形式化)](wiki/formalizations/se3-representation.md) — 在机器人学与具身智能中，如何表示物体的**位姿（Pose）**——即位置与姿态的组合，是感知与控制的基础。**SE(3)** (Special Euclidean Group) 描述了三维空间中的刚体 `📅unknown` `[formalization_page]`
+- [运动旋量、力旋量与 PoE 正运动学](wiki/formalizations/spatial-twist-wrench-poe.md) — 一句话：** 刚体瞬时速度打包成 twist $\mathcal{V}=[\omega;v]$，外力打包成 wrench $\mathcal{F}=[f;\tau]$；每个关节的 screw 轴经 `📅unknown` `[formalization_page]`
 - [Symmetric Cone Programming（对称锥规划）](wiki/formalizations/symmetric-cone-programming.md) — 对称锥规划**：目标与约束可表示在对称锥（非负正交锥、二阶锥、半正定锥等）上的凸优化问题；比 LP/QP 更一般，能精确刻画摩擦锥、力矩椭球与部分时间最优问题。 `📅unknown` `[formalization_page]`
 - [tan_norm 旋转观测表示](wiki/formalizations/tan-norm-rotation.md) — 一句话：** **tan_norm** 把单位四元数 $q$ 编成 6 维向量 $[\,R(q)\mathbf{t}_0 \;\|\; R(q)\mathbf{n}_0\,]$，其中参考切向 $\ `📅unknown` `[formalization_page]`
 - [Task Space Inverse Dynamics (TSID) 形式化](wiki/formalizations/tsid-formulation.md) — TSID** 是一种在保持机器人物理一致性的前提下，实现多任务并行控制的数学框架。它将复杂的运动指令转换为底层的电机力矩。 `📅unknown` `[formalization_page]`
@@ -5305,6 +5307,7 @@
 - [Loco-Manip 接触横切面：五段链路技术地图](wiki/overview/loco-manip-contact-technology-map.md) — 人形 loco-manip 的接触不只是一只手碰到物体——**脚底支撑、重心、物体受力、负载摆动、触觉与上层调度** 须在同一链路里对齐；策展文把约 36 篇工作按 **数据 → 表示 → 生成补数  `📅unknown` `[overview_page]`
 - [Mimic 控制演进：DeepMimic → BeyondMimic](wiki/overview/mimic-control-evolution-lineage.md) — 物理角色与人形 mimic 的主线不是「把 PPO 换得更复杂」，而是不断改写 **动作先验如何表达**、**示范如何变成控制信号**、以及 **训练后如何组合技能**——从 DeepMimic 的显 `📅unknown` `[overview_page]`
 - [MIT 6.S184：Flow Matching & Diffusion Models（2026）](wiki/overview/mit-flow-matching-diffusion-2026.md) — 一门把随机微分方程、概率路径与神经网络生成组件（VAE、DiT、CTMC）串成完整 latent diffusion 管线的 IAP 课——适合作为本库扩散/flow 形式化与机器人生成式策略的上 `📅unknown` `[overview_page]`
+- [《Modern Robotics 原理精读》微信专辑地图](wiki/overview/modern-robotics-wechat-principles-series.md) — 运动规划与控制的共同语言是 **位形空间上的几何**：先在 C-space 里理解 dof 与约束，再用 SE(3) 齐次矩阵描述位姿，用 twist/wrench 描述速度与力，最后用 PoE 把关 `📅unknown` `[overview_page]`
 - [运动小脑分类 A：走路底座](wiki/overview/motion-cerebellum-category-01-locomotion-base.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [运动小脑分类 B：动作模仿源流](wiki/overview/motion-cerebellum-category-02-motion-imitation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [运动小脑分类 C：数据入口](wiki/overview/motion-cerebellum-category-03-data-pipeline.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
