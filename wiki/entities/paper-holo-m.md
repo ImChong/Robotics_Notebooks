@@ -9,7 +9,7 @@ tags:
   - horizon-robotics
   - unitree-g1
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 arxiv: "2609.35709"
 related:
   - ../methods/vla.md
@@ -131,7 +131,7 @@ flowchart LR
 
 ## 结论
 
-**Holo-M 证明离散 token VLA 可扩展到人形全身，并在 SIMPLE 上同时拿下 generalist 与 specialist SOTA。**
+**Holo-M 证明离散 token VLA 可扩展到人形全身，并在 SIMPLE 上 generalist（143/180）与 specialist（163/180）两项均高于论文同表对照（截至 2026-09 论文自报）。**
 
 1. **四部件 tokenizer** 是跨源训练的关键 — 避免单码本在 96-D 上爆炸或过粗。
 2. **分组 discrete diffusion** 把 208 token 解码压到 **32 步** — 满足 ~500 ms 控制环。

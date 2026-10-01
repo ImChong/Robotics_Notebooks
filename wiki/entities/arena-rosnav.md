@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, social-navigation, ros2, simulation, benchmark, mobile-robot, reinforcement-learning, nus, tum, open-source]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ./navigation2.md
   - ./paper-legnav-calf.md
@@ -10,6 +10,7 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../tasks/autonomous-exploration.md
   - ../concepts/ros2-basics.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/5-arena-rosnav.md
   - ../../sources/repos/arena-rosnav.md
@@ -104,6 +105,7 @@ flowchart LR
 - [Navigation2](./navigation2.md) — ROS 2 通用导航框架；Arena 在其上叠加 **行人场景与社交评测**。
 - [navigation-slam-autonomy-stack](../overview/navigation-slam-autonomy-stack.md) — 移动机器人 SLAM + Nav2 总览；学习型社交导航实验可接 Arena benchmark。
 - [LegNav/CALF](./paper-legnav-calf.md) — 踝高 LiDAR **腿部感知** 社交导航（不同传感与仿真假设，可互补对比）。
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — Arena 属其 ③ 策略任务成功率评测层的社交导航仿真基准；仿真指标外推真机需 ④ sim↔real 校准
 - [CommNav](./paper-commnav.md) — **主动通信** 找人导航（Habitat）；Arena 侧重 **避障与社交距离** 连续导航。
 
 ## 参考来源

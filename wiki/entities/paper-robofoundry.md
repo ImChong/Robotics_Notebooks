@@ -13,7 +13,7 @@ tags:
   - nus
   - sjtu
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 arxiv: "2609.32862"
 venue: "Preprint, 2026"
 related:
@@ -64,7 +64,7 @@ summary: "RoboFoundry（arXiv:2609.32862，NTU/北航/NUS 等）：Self-Evolving
 - **从组件优化到系统 policy：** 相对只改 memory harness、skill 库或 code-as-policy 单点，RoboFoundry 让 **执行历史决定改哪一层、改多大范围**（任务级 \(H_t\) vs 通用 \(H_g\)）。
 - **自进化需校验环：** 单次交互不等于改进；**held-out retention** 与 **promote** 避免无约束自改写（项目页 EB-Habitat spatial trace：21.4%→78.0% 经多次 commit/discard）。
 - **跨模型增益稳定：** GPT-5.5 EmbodiedBench Avg **56.9→72.7**（+15.8 pp）；Qwen3.7-Plus **60.0→70.3**，说明增益主要来自 **系统演化** 而非某一 proprietary backbone。
-- **记忆与扰动双 SOTA 叙事：** RoboMemArena Overall **53.5 / 72.8** TSR/CSR；LIBERO-PRO 三类扰动上与 [Harness VLA](./paper-harness-vla.md) 等同榜前列并大幅超 CaP-Agent0。
+- **记忆与扰动双榜前列（截至 2026-09 论文自报）：** RoboMemArena Overall **53.5 / 72.8** TSR/CSR；LIBERO-PRO 三类扰动上与 [Harness VLA](./paper-harness-vla.md) 等同榜前列并大幅超 CaP-Agent0。
 - **真机闭环：** 页内展示套娃、毛巾泛化、长程化学、人形语义导航等 **zero-shot transfer 与 online evolution**。
 
 ## 核心原理

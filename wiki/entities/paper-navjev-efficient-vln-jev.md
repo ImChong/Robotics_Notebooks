@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vln, vision-language-navigation, system-one-model, jev, zero-shot, tongji]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 arxiv: "2609.34969"
 related:
   - ./typesafe-jev.md
@@ -115,9 +115,19 @@ flowchart LR
 | **与规划栈组合** | 长距/低层避障仍可能需要 **Nav2 / DimOS A\***（见 [Can Jev Nav?](./dimensional-can-jev-nav-benchmark.md)） |
 | **state 语言** | 与 Nav Arena 一致：优先 **robot-frame + 离散语义 helper**，勿裸世界坐标 |
 
+## 与其他工作对比
+
+| 维度 | NavJev | 对照 |
+|------|--------|------|
+| 每步决策形式 | Jev **typed 选择**（waypoint id 或 STOP），一次出概率 | P2DNav（Qwen3-VL-32B）、SmartWay / Open-Nav（GPT-4o）：逐步 MLLM 自回归生成 |
+| R2R-CE 零样本 SR / SPL | **27.0 / 22.4** | P2DNav **50.0 / 30.6**；SmartWay 29.0 / 22.5；Open-Nav 19.0 / 16.1（项目页 Table 1–3） |
+| 步时 | **0.65 s**，峰值 ~4.46 GiB | P2DNav **4.92 s** |
+| 视觉 state | ACVC（几何 + BLIP + RAM）压成动作中心文本 + DASM 判别记忆 | [Can Jev Nav?](./dimensional-can-jev-nav-benchmark.md)：裸 WorldState + Jev，长距 object-goal 弱于规划工具 |
+| 决策模型可替换性 | Jev 为托管闭源 API | [Laya](./laya.md) / [Valen](./valen.md)：可本地替换做 ablation |
+
 ## 局限与风险
 
-- **精度上限：** SR **27%** 仍 **低于** 监督 SOTA（NavFoM **61.7%** 等）与 **P2DNav 零样本 50%** — 适合 **延迟/成本敏感** 而非刷榜。
+- **精度上限：** SR **27%** 仍 **低于** 监督方法（如 NavFoM **61.7%**，截至 2026-09 论文自报）与 **P2DNav 零样本 50%** — 适合 **延迟/成本敏感** 而非刷榜。
 - **细粒度空间关系：** 论文 §5.6：指令含 **「楼梯左侧第二走廊」** 类关系时，**视觉语义相近的 waypoint** 仍易混淆。
 - **代码未开源：** 无法审计 ACVC/DASM 实现细节与 R2R-CE 复现脚本。
 - **Jev 闭源权重：** 与 [Laya](./laya.md)/[Valen](./valen.md) 不同，**不能** 本地替换 Jev 做 ablation。
