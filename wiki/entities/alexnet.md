@@ -6,7 +6,7 @@ tags:
   - imagenet
   - image-classification
 status: complete
-updated: 2026-08-12
+updated: 2026-10-01
 summary: "AlexNet（2012）以深层 CNN+ReLU+Dropout+GPU 训练在 ImageNet 上取得突破，引爆现代深度视觉浪潮。"
 related:
   - ./lenet5.md

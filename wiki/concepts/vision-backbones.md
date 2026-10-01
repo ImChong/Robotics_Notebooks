@@ -7,7 +7,7 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-09-21
+updated: 2026-10-01
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/ai-architecture-map.md
