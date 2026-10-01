@@ -33,6 +33,7 @@ related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part2.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/sites/opengalaxea-g05.md
   - ../../sources/repos/galaxea-vla.md

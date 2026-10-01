@@ -18,6 +18,7 @@ related:
   - ./paper-evo1-lightweight-vla.md
   - ./paper-fm-vla.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part2.md
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
   - ../../sources/sites/neural-introspection-gating-github-io.md
 summary: "Neural Introspection Gating / Gated VLA-Cache（arXiv:2608.10824，东京大学，IROS 2026）：用动作 token logit margin 门控 KV 复用；LIBERO-Long 收回盲缓存掉点；截至入库日未开源。"
