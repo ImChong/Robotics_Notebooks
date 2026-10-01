@@ -1966,6 +1966,7 @@
 - [Look Before You Leap（LBYL）](wiki/entities/paper-look-before-you-leap.md) — Look Before You Leap（LBYL）**（arXiv:2311.17842）收录于 Lumina [Embo `📅unknown` `[entity_page]`
 - [LooperMuscle：结构化 MoE 加速人形全身跟踪](wiki/entities/paper-loopermuscle.md) — LooperMuscle**（*LooperMuscle: Fast and Stable Learning of Humanoid Whole-Body Tracking via Structu `📅unknown` `[entity_page]`
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`
+- [LP-ACRL（Scaling Rough Terrain Locomotion）](wiki/entities/paper-lp-acrl-scaling-rough-terrain-locomotion.md) — LP-ACRL**（*Scaling Rough Terrain Locomotion with Automatic Curriculum Reinforcement Learning*，Zimi `📅unknown` `[entity_page]`
 - [LpWM（稀疏世界模型 · arXiv:2608.22764）](wiki/entities/paper-lpwm.md) — LpWM / LpWorldModel**（*A Case for Sparse Representations in World Models*，[arXiv:2608.22764](https `📅unknown` `[entity_page]`
 - [LT-Mem：波动性感知的终身场景记忆](wiki/entities/paper-lt-mem.md) — LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19 `📅unknown` `[entity_page]`
 - [LUCID：用想象的技能级动力学做长时程人形 Loco-Manipulation](wiki/entities/paper-lucid.md) — LUCID**（*Latent-Skill Unified Control via Imagined Dynamics*；[arXiv:2608.07746](https://arxiv.org/ `📅unknown` `[entity_page]`
