@@ -3,15 +3,17 @@ type: comparison
 tags: [control, safety, clf, cbf, qp, stability, optimization, humanoid]
 status: stub
 summary: "CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。"
-sources:
-  - ../../sources/papers/optimal_control_theory.md
-updated: 2026-09-15
+updated: 2026-10-01
 related:
   - ../concepts/control-barrier-function.md
   - ../formalizations/control-lyapunov-function.md
   - ../concepts/whole-body-control.md
   - ../formalizations/lqr.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+  - ../entities/paper-rom-nav.md
+sources:
+  - ../../sources/papers/optimal_control_theory.md
+  - ../../sources/papers/rom_nav_arxiv_2609_19272.md
 ---
 
 # CLF vs CBF：稳定性与安全性的对偶工具
@@ -102,6 +104,7 @@ CBF 视角（安全性）：
 - 双足行走时的足端安全区约束 + 步态稳定
 - 机械臂操作中的工作空间限制 + 末端轨迹跟踪
 - 与 WBC 集成：CLF 驱动任务完成，CBF 保证接触力和关节安全
+- **仅 CBF 滤波（无 CLF）：** [RoM-Nav](../entities/paper-rom-nav.md) 在 RL 导航输出的平面速度上叠 **Poisson 占用场 CBF-QP**，OOD 障碍下零碰撞且成功率不降——名义命令来自策略而非 CLF 跟踪律
 
 ## CLF-CBF-QP 联合框架
 
@@ -191,6 +194,7 @@ CBF 保证系统**留在安全集内**，但安全集内的行为完全取决于
 - [Whole-Body Control](../concepts/whole-body-control.md) — CLF-CBF-QP 在全身控制中的应用
 - [LQR](../formalizations/lqr.md) — CLF 的线性系统特例
 - [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) — 训练期 CBF 奖励、部署无 CLF/CBF-QP 的感知感知躲避球
+- [RoM-Nav](../entities/paper-rom-nav.md) — 解析 Poisson CBF 滤导航速度；无 CLF 项
 
 ## 推荐继续阅读
 
