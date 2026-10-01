@@ -10,8 +10,10 @@ tags:
   - agent-infrastructure
   - open-source
 status: complete
-updated: 2026-09-19
+updated: 2026-10-01
 related:
+  - ./hyperframes.md
+  - ./gods-eye-view.md
   - ./diagram-design.md
   - ./drawio-scientific-illustrator.md
   - ./next-ai-draw-io.md
@@ -154,6 +156,8 @@ sequenceDiagram
 - [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方技能，沟通层但非架构拓扑
 - [graphify](./graphify.md) — **自动构图 + 图查询**；探索仓，不演示仓
 - [Birdview](./birdview.md) — **改码前** 从真实仓库 map 架构与变更 scope；本页偏描述驱动的展示图
+- [God's Eye View](./gods-eye-view.md) — **3D 空间态势 + voice Agent**；与静态架构 HTML 互补
+- [HyperFrames](./hyperframes.md) — **HTML→MP4** 动效视频；沟通层另一工件
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用工程技能对照
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 架构取舍仍要人转向；本工具只把已决定的边界画清楚
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译进 wiki；Archify 编译的是沟通工件

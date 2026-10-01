@@ -10,8 +10,9 @@ tags:
   - software-engineering
   - agent-skills
 status: complete
-updated: 2026-09-29
+updated: 2026-10-01
 related:
+  - ./ecc.md
   - ./superpowers-obra.md
   - ./agent-skills-addyosmani.md
   - ./agent-reach.md

@@ -8,8 +8,9 @@ tags:
   - context-compression
   - agent-infrastructure
 status: complete
-updated: 2026-07-16
+updated: 2026-10-01
 related:
+  - ./i-have-adhd.md
   - ./ponytail.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
@@ -105,6 +106,7 @@ flowchart LR
 
 ## 关联页面
 
+- [i-have-adhd](i-have-adhd.md) — **结论先行、编号步骤** 的输出结构（与 token 压缩正交）
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（与「更短输出」正交；基准中常并列对照）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 含同名 `productivity/caveman` 技能但 **不同上游**；与本页 JuliusBrussee 插件对照
 - [Superpowers（obra）](superpowers-obra.md) — 交付流程技能（与「更短输出」互补）

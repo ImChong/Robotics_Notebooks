@@ -7,6 +7,7 @@
 - **作者：** Dietrich Gebert
 - **链接：** https://github.com/DietrichGebert/ponytail
 - **入库日期：** 2026-07-03
+- **热度快照（2026-10-01）：** Trendshift 叙事约 **+32.7k stars/月**；GitHub API 约 **149.3k** stars
 - **一句话说明：** 面向 20+ 编码代理 harness 的可安装技能/插件：用「懒但资深」的 **必要性阶梯（YAGNI → 复用 → stdlib → 原生 → 依赖 → 一行 → 最小实现）** 约束代理 **少写代码** 而非少做思考；宣称在真实 agentic 基准上平均约 **-54% LOC、-22% token、-20% cost、-27% time** 且 **100% 安全**（验证/错误处理/安全/无障碍不砍）。
 - **为什么值得保留：** 与本站 [Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) + [schema/ingest](../../schema/ingest-workflow.md) 维护强相关：本仓库 ingest 会反复改脚本与派生文件，ponytail 针对 **过度工程化（装库写 wrapper）** 而非单纯 **输出措辞**；与 [Caveman](caveman.md)（压缩 mouth）、[Superpowers](obra-superpowers.md)（交付流程）形成 **代码量 / 措辞 / 流程** 三角对照；README 含可复现 agentic benchmark（FastAPI+React 模板、12 任务、n=4）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/ponytail.md`](../wiki/entities/ponytail.md)
