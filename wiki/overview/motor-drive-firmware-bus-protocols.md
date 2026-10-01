@@ -120,6 +120,8 @@ flowchart TB
 | Sim2Real | 闭源则难做处理器在环 | 开源固件可对齐 |
 | 风险 | 版本升级破坏二进制兼容 | 不同 lab fork 字段差异 |
 
+关节侧 **$K_p,K_d,\tau_{ff}$ 整定**（与 L3 阻抗语义配套）见 [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md)。
+
 **实践建议：** 采购前向厂商索要 **协议说明 + 周期推荐 + 模式定义**；若只有 DLL 无帧格式，后期 sim2real 成本会显著上升。
 
 ## 物理层速查（L1，指向纵深页）

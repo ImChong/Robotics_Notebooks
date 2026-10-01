@@ -122,6 +122,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — 由触觉信号在线驱动 $K_d, B_d$ 的变参数推广
 - [TSID](./tsid.md)
 - [Gravity Compensation](./gravity-compensation.md) — 柔顺环先扣掉 $g(q)$，否则弹簧在扛自重
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 关节 $K_p,K_d,\tau_{ff}$ bring-up 清单
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [LAC](../entities/paper-lac.md) — 人形上身线+角刚度命令；角通道走被动运动链（部分开源）
