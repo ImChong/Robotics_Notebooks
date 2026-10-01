@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | Generate Track Improve（arXiv:2609.31577）— 2026-10-01 复核查项目页 Code 仍待发布，同步开源锚点日期
+
 ## [2026-10-01] ingest | TactileStep（2609.28959）入库复核：main 已有实体页；补 unitree-g1 关联；项目页仍无 GitHub（待发布）
 
 ## [2026-10-01] ingest | ChunkTrust arXiv:2609.39754 — AHS/QHA 动态 execution horizon；项目页核查 hf618/ChunkTrust + Niugan/ChunkTrust 已开源
