@@ -4692,6 +4692,7 @@
 - [Domain Randomization](wiki/concepts/domain-randomization.md) — 域随机化**：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实。 `📅unknown` `[wiki_page]`
 - [动态障碍物滤波（导航地图制作）](wiki/concepts/dynamic-obstacle-filtering.md) — 动态障碍物滤波**在建图或代价地图流水线中识别并抑制 **非静态占用**（行人、临时堆物、扫描拖影），使二维导航地图主要表达墙体/家具等持久结构——对应课程第 4.1 节「动态障碍物剔除与二维导航 `📅unknown` `[wiki_page]`
 - [边缘计算与云端协同（Edge–Cloud Robotics）](wiki/concepts/edge-cloud-robotics.md) — 边缘–云端协同** 把机器人能力拆到 **低延迟本地闭环** 与 **高算力云端批处理**：边缘保安全与控制，云端保学习、存储与队级优化。 `📅unknown` `[wiki_page]`
+- [电机基础概念（Electric Motor Fundamentals）](wiki/concepts/electric-motor-fundamentals.md) — 电机**把电能换成机械转矩；机器人关节选型与控制读法，需要先分清 **机型（有刷/BLDC/PMSM/步进/伺服）**、**控制层（FOC/V/F/三环）** 与 **负载匹配（TN 曲线、惯量比 `📅unknown` `[wiki_page]`
 - [Embodied Data Cleaning (具身数据清洗)](wiki/concepts/embodied-data-cleaning.md) — 具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。 `📅unknown` `[wiki_page]`
 - [具身数据采集：四层术语地图](wiki/concepts/embodied-data-collection-four-layers-taxonomy.md) — 具身数据采集术语** 常被混在同一句话里，但分别回答四个问题：**从谁的位置看（视角）**、**用什么传感（设备）**、**人怎样示范（教法）**、**最终记什么（产物）**；贯穿四层的主线是  `📅unknown` `[wiki_page]`
 - [具身数据飞轮：最小闭环（避免空转）](wiki/concepts/embodied-data-flywheel-minimal-closed-loop.md) — 飞轮空转** 指只增加采集量却不改变下一版系统；**最小闭环** 要求：策略能在目标机器人上执行 → 每次执行留下可判定的结果与必要纠正 → 反馈触发可归因的更新并通过回归测试后再部署。 `📅unknown` `[wiki_page]`
@@ -4968,6 +4969,7 @@
 - [Multi-Agent Reinforcement Learning (MARL)](wiki/methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [Mask R-CNN](wiki/methods/mask-rcnn.md) — Mask R-CNN 在 Faster R-CNN 上增加并行掩码分支与 RoI Align，成为实例分割的长期标准两阶段框架。 `📅unknown` `[method_page]`
 - [mimic-video（Video-Action Model, VAM）](wiki/methods/mimic-video.md) — mimic-video 是一类把互联网规模视频生成模型当作操作语义与物理动力学先验的通用操作策略：先在视频潜空间里形成与语言指令一致的视觉动力学计划，再以流匹配动作头输出机器人动作块。 `📅2026-05-17` `[method_page]`
+- [MIT 关节阻抗模式参数整定](wiki/methods/mit-joint-impedance-mode-tuning.md) — MIT 模式**（开源四足/部分协作臂驱动器中的 **紧凑阻抗帧** 语义，见 [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-proto `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](wiki/methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC，模型预测控制)](wiki/methods/model-predictive-control.md) — 模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [GMR: 通用动作重定向](wiki/methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`

@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | 微信公众号两篇：电机概念 FAQ + MIT 阻抗模式整定；新建 sources/blogs、wiki/concepts/electric-motor-fundamentals 与 wiki/methods/mit-joint-impedance-mode-tuning
+
 ## [2026-10-01] ingest | Grounded Action Model (2609.23863)：Northwestern/UW/NUS 3D grounding 操纵 foundation model；项目页+GitHub 核查为代码待发布；升格 paper-grounded-action-model-3d-grounding 并链入 vla.md
 
 ## [2026-10-01] ingest | 多模空间一周 VLA 第二篇（15 篇）；新建 12 实体 + 技术地图；复用 G0.5/StellaVLA/Neural Introspection Gating
