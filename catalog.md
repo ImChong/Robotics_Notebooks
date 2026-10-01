@@ -1591,6 +1591,7 @@
 - [FlashVLA：流式异步 VLA 动作解码](wiki/entities/paper-flashvla.md) — FlashVLA**（*Streaming Action Decoding for Fast and Asynchronous VLA Inference*，[arXiv:2608.27384 `📅unknown` `[entity_page]`
 - [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
+- [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
 - [FlyCNS（arXiv:2609.28816）](wiki/entities/paper-flycns-connectome-communication.md) — FlyCNS**（*FlyCNS: Connectome-Grounded Information Organization for Communication-Constrained Embod `📅unknown` `[entity_page]`
 - [Flying Knots（Task-Level ILC for Deformable Rope Manipulation）](wiki/entities/paper-flying-knots.md) — Flying Knots** 是 CMU **Krishna Suresh & Chris Atkeson** 的 **可变形体动态操作** 论文（arXiv:2602.21302）：在 **fl `📅unknown` `[entity_page]`
 - [FM-VLA（Force-based Memory for Vision-Language-Action Models）](wiki/entities/paper-fm-vla.md) — FM-VLA**（arXiv:2607.18231，[项目页](https://qft-333.github.io/FM-V `📅unknown` `[entity_page]`
