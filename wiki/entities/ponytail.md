@@ -9,9 +9,11 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-07-03
+updated: 2026-10-01
 related:
+  - ./i-have-adhd.md
   - ./caveman.md
+  - ./ecc.md
   - ./nuwa-skill.md
   - ./cangjie-skill.md
   - ./darwin-skill.md

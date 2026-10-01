@@ -9,6 +9,7 @@
 - **官方站：** https://open-codereview.ai
 - **npm：** `@alibaba-group/open-code-review`（全局命令 `ocr`）
 - **入库日期：** 2026-09-19
+- **热度快照（2026-10-01）：** Trendshift 叙事约 **+21.2k stars/月**；GitHub API 约 **43.0k** stars
 - **协议：** Apache-2.0
 - **一句话说明：** 阿里巴巴内部 AI 代码评审助手开源版：以 **确定性工程管线**（精确选文件、智能分包、模板规则匹配、评论定位/反思）约束评审过程，再叠加 **带 tool-use 的 Agent** 做动态上下文检索；支持 `ocr review` / `ocr scan` / Delegation Mode 与多 harness 插件。
 - **为什么值得保留：** 与本知识库维护者常用的 **Cursor / Codex / Claude Code** 及 [Superpowers](../../wiki/entities/superpowers-obra.md) 工作流中的 **requesting-code-review** 环节直接相邻；对「如何把 code review 从纯 prompt skill 升级为可审计管线」有对照价值。

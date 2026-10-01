@@ -11,6 +11,7 @@
 - **许可：** MIT
 - **版本（入库时）：** 稳定发布 **v2.15.0**（2026-08-17）；默认分支开发号 **v2.16.0-dev.0**；`SKILL.md` metadata.version = `2.16`
 - **入库日期：** 2026-08-30
+- **热度快照（2026-10-01）：** Trendshift 叙事约 **+45.2k stars/月**；GitHub API 约 **75.3k** stars
 - **一句话说明：** 编码代理产出 **类型化 JSON IR**，Archify 确定性编译为 **自包含 HTML/SVG**；五种图（architecture / workflow / sequence / dataflow / lifecycle）带校验门、主题与导出，而不是主题化 Mermaid。
 - **开源状态：** **已开源** — MIT；仓内含 `archify/bin/archify.mjs` CLI、`schemas/`、`renderers/`、`examples/`、`archify/SKILL.md`、Proof Lab 产物与 `archify.zip`。项目页 Footer / Install 明确链回本仓。
 - **沉淀到 wiki：** 是 → [`wiki/entities/archify.md`](../../wiki/entities/archify.md)
