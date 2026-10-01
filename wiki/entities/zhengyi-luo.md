@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, teleoperation, sim2real, motion-tracking, egocentric-vision, cmu, nvidia, gear]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-01
 related:
+  - ./agentsdock.md
   - ./smplolympics.md
   - ./jim-fan.md
   - ./tairan-he.md
@@ -36,6 +37,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 - **人形学习管线枢纽作者**：与 [Tairan He](./tairan-he.md) 等在 **OmniH2O、HOVER、ASAP、SONIC、VIRAL** 上高度重叠署名，是理解 **2023–2026 通用人形控制 + 视觉迁移** 论文簇的关键人物节点；所属研究组见 [NVIDIA GEAR Lab](./nvidia-gear-lab.md)（PI：[Jim Fan](./jim-fan.md)、Yuke Zhu）。
 - **开源资产多**：PHC、PULSE、SimXR、EmbodiedPose、UniversalHumanoidControl 等仓库长期被社区用作 **仿真人形 baseline 与重定向参考**（以各仓库 README 为准）。
+- **编码代理基础设施**：[AgentsDock](./agentsdock.md)（跨端 IDE + 自托管 AgentsServer）面向 agentic AI 研究长跑场景，与上述人形论文栈正交但同属其 GitHub 生态。
 
 ## 核心研究脉络（归纳）
 
@@ -61,6 +63,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 - [MimicKit](./mimickit.md)
 - [人形机器人](./humanoid-robot.md)
 - [SMPLOlympics](./smplolympics.md) — 博士阶段主导的 SMPL 仿真人形体育 benchmark
+- [AgentsDock](./agentsdock.md) — 自托管编码代理 IDE（Claude Code / Codex / Cursor 等）
 
 ## 参考来源
 

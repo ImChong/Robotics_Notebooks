@@ -48,6 +48,7 @@
 ## 对 wiki 的映射
 
 - 升格页面：[wiki/entities/zhengyi-luo.md](../../wiki/entities/zhengyi-luo.md)
+- 相关工具：[AgentsDock 产品页](agentsdock-net.md) → [wiki/entities/agentsdock.md](../../wiki/entities/agentsdock.md)
 
 ## 参考链接
 
