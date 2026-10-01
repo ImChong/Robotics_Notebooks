@@ -4745,6 +4745,7 @@
 - [LeRobot EnvHub](wiki/concepts/lerobot-envhub.md) — EnvHub** 是 LeRobot 从 Hugging Face Hub **动态加载仿真环境**的机制：环境作者把任务封进 Hub 仓的 `env.py`，评测者用 `make_env("or `📅unknown` `[wiki_page]`
 - [LiDAR 传感（Light Detection and Ranging）](wiki/concepts/lidar-sensing.md) — LiDAR** 通过发射激光并测量回波时间（或相位）获得环境的 **度量点云**，为移动机器人提供与纹理无关的几何观测。四足与 VLN 实战中，它通常与相机、IMU、机载 Orin 组成导航感知前 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](wiki/concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
+- [LLM 推理显存估算（VRAM Budgeting）](wiki/concepts/llm-inference-vram-estimation.md) — 自回归大模型推理**时，GPU 显存通常被五块瓜分：**权重**（固定）、**KV cache**（随 batch 与上下文增长）、**激活**（相对小）、**每卡 CUDA 固定开销**（TP  `📅unknown` `[wiki_page]`
 - [LLM 机器人控制接口](wiki/concepts/llm-robotics-control-interfaces.md) — LLM 机器人控制接口**指把通用语言模型接到机器人时，模型完成同一任务的方式：从逐步输出力矩，到写 Python 控制器、训 RL 策略，再到向预训练步态/VLA 发高层命令——**接口抽象层级 `📅unknown` `[wiki_page]`
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [Mamba](wiki/concepts/mamba.md) — Mamba**：在 SSM 上加入 **选择性**——离散化参数随当前输入变化——并用硬件感知的 **并行扫描** 训练，推理时只更新常 `📅unknown` `[wiki_page]`
