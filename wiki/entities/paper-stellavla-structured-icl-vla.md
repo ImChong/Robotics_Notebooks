@@ -16,6 +16,7 @@ related:
   - ./paper-zero-wam.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
 sources:
+  - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part2.md
   - ../../sources/papers/stellavla_arxiv_2608_11671.md
   - ../../sources/sites/vla-arena.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md

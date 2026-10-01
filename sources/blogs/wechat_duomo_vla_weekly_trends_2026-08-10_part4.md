@@ -45,7 +45,7 @@
 ## 对 wiki 的映射
 
 - 阅读坐标：[一周 VLA 趋势技术地图（2026.08.10 第四篇）](../../wiki/overview/vla-weekly-trends-2026-08-10-part4-technology-map.md)
-- 同系列：[第一篇](wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) · [第三篇](wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
+- 同系列：[第一篇](wechat_duomo_vla_weekly_trends_2026-08-10_part1.md) · **[第二篇](wechat_duomo_vla_weekly_trends_2026-08-10_part2.md)** · [第三篇](wechat_duomo_vla_weekly_trends_2026-08-10_part3.md) · [第四篇](wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 
 ## 当前提炼状态
 
