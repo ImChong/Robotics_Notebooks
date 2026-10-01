@@ -16,6 +16,7 @@ related:
   - ./paper-parkourformer.md
   - ./paper-cref.md
   - ./paper-wm-loco.md
+  - ./paper-tactilestep.md
 sources:
   - ../../sources/papers/hiking_in_the_wild_arxiv_2601_07718.md
   - ../../sources/papers/humanoid_rl_stack_24_hiking_in_the_wild_a_scalable_perceptive_parkour.md
@@ -136,6 +137,7 @@ flowchart TB
 - 同族 MuJoCo、改未来监督：[ParkourFormer](./paper-parkourformer.md) — Instinct 九类课 + query 历史 / 未来两步 AMP；代码 Coming Soon
 - 无 AMP、无建图的单阶段 raw 深度：[CReF](./paper-cref.md) — 交叉注意 + 落脚奖励；X2 Ultra 实验室课
 - 复用足端体积点 / 边缘惩罚、加上 RSSM 共训：[WM-LOCO](./paper-wm-loco.md) — G1 沟/踏石上匹配 PPO 归零
+- 同深度栈、叠加 **足底 sole 闭环** 的后续工作：[TactileStep](./paper-tactilestep.md) — 以 Hiking 为 **外部强基线**，优化触地冲击与支撑（CoRL 2026 Spotlight）
 - 任务：[stair-obstacle-perceptive-locomotion.md](../tasks/stair-obstacle-perceptive-locomotion.md)
 - RL 栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#09/19）

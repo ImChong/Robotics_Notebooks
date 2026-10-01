@@ -20,6 +20,7 @@ related:
   - ../entities/paper-adp.md
   - ../entities/paper-learning-quiet-walking-aibo.md
   - ../entities/paper-quietwalk-humanoid-locomotion.md
+  - ../entities/paper-tactilestep.md
   - ../entities/paper-stay-seated.md
   - ../entities/paper-g1-confined-space-wbp.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
@@ -98,6 +99,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — 基于扩散模型与 RL 的全身移动框架。
 - [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md) — 人形机器人硬件平台综述。
 - [QuietWalk（arXiv:2604.23702）](../../sources/papers/quietwalk_arxiv_2604_23702.md) — PINN 估计竖直 GRF + RL 冲击惩罚，G1 跨鞋型低噪行走。
+- [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底 sole 特征进 actor + 相位触觉奖励；G1 跑酷真机；以 Hiking 为强基线。
 - [GaitSpan（arXiv:2607.12114）](../../sources/papers/gaitspan_arxiv_2607_12114.md) — 行走种子 + GaitWave/H-SLIP 技能生长，单策略连续走–慢跑–跑，五 embodiment 与户外零样本。
 - [被动轮轮滑 AMP（arXiv:2607.10815）](../../sources/papers/roller_skating_amp_arxiv_2607_10815.md) — Booster T1 被动轮滑，切片圆柱轮仿真 + 双 gait AMP-PPO，Pump/Push Glide 真机验证。
 - [RAVEN（arXiv:2607.15701）](../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md) — RL 自适应可见图膨胀 + DAVG-cfMPC + Booster Gym，延迟下人形导航。
@@ -118,6 +120,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [CReF 深度条件融合行走](../entities/paper-cref.md) — 无 2.5D 中间层的单阶段 raw 深度；本体查询注意 + GRU highway + 可支撑落脚奖励；X2 Ultra 零样本
 - [Now You See That 端到端视觉人形 locomotion](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏，双向长楼梯与跑酷零样本
 - [QuietWalk 物理感知低噪行走](../entities/paper-quietwalk-humanoid-locomotion.md) — 逆动力学 PINN 估计 GRF 作冲击惩罚；G1 真机 1.2 m/s 降噪约 7 dB，跨赤脚/运动鞋/高跟鞋与多地面材质
+- [TactileStep 足底触觉跑酷](../entities/paper-tactilestep.md) — 压力鞋垫特征对齐仿真 + 四相位软着陆/稳支撑奖励；相对 Hiking 基线真机冲击与噪声显著下降（CoRL 2026 Spotlight；代码待发布）
 - [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照（同名项目页 QuietWalk；ICRA 2025）
 - [GaitSpan 从行走到跑步的技能生长](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — 冻结行走种子 + GaitWave 节律组合 + H-SLIP 动态步幅；Booster T1/K1、G1 真机户外走–慢跑–跑连续变速
 - [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源

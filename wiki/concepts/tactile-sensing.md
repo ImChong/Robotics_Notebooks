@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-01
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
+  - ../entities/paper-tactilestep.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/repos/awesome-touch.md
+  - ../../sources/papers/tactilestep_arxiv_2609_28959.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -80,6 +82,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为奖励信号 (Reward Signal)**：在强化学习中，将“维持特定的法向压力范围”且“切向力不超过摩擦锥（Friction Cone）”作为稠密奖励，引导策略学会稳定的抓取。
 - **作为预测式辅助目标 (Predictive Auxiliary Target)**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) 在人形机器人行为克隆中预测未来手部力和触觉 latent，使触觉信号不只是输入，而是塑造接触感知表示的训练目标。
 - **作为抓取末段伺服输入**：[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) 把多指压阻触觉图做成 Siamese 目标条件策略，用腕部 regrasp 闭环精修薄板/圆盘/细杆的局部位姿。
+- **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 触觉是四层闭环链 **① 接触感知/估计层** 的关键模态
@@ -94,6 +97,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
+- [TactileStep（足底触觉跑酷）](../entities/paper-tactilestep.md) — G1 压力鞋垫 + 相位条件 RL；CoRL 2026 Spotlight
 - [GhostTac（触觉物理层 EMI 攻击）](../entities/paper-ghosttac.md) — CCS 2026；非接触操纵传感读数，提醒部署侧物理层威胁建模
 - [ViTacPhys（视触觉物理属性）](../entities/paper-vitacphys.md) — 人体视触觉示范预测质量/刚度/摩擦并条件化抓取
 - [Manipulation 任务](../tasks/manipulation.md)
@@ -111,3 +115,4 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统
 - [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
+- [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机
