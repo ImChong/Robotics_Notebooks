@@ -366,6 +366,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [亚厘米级管道检测机器人（论文实体）](../entities/paper-subcentimeter-pipeline-inspection-robot.md) — 清华 DEA 软体蠕虫机器人搭载微型摄像头遥控管内视频检测（Science Robotics 2022）
 - [SHELLS（论文实体）](../entities/paper-shells-layered-surface-sampling.md) — 标定多视角前馈稠密语义人头；telepresence / 表情 performance 注册上游（arXiv:2605.31283）
 - [UMA（论文实体）](../entities/paper-uma.md) — 多级表面对齐超精细可驱动着装人体；VR telepresence / 变焦数字人资产（arXiv:2506.01802，部分开源）
+- [LiveTalking（实体）](../entities/livetalking.md) — 2D 流式口型数字人 + WebRTC/API；遥呈现讲解 UI 层（Apache-2.0 社区版，权重网盘）
 - [DynHair（论文实体）](../entities/paper-dynhair.md) — 多视角显式发丝动态人头化身；telepresence 头发动力学（ECCV 2026，arXiv:2607.23861，GitHub 占位仓）
 - [NPHM（论文实体）](../entities/paper-nphm.md) — 神经参数化 **完整人头** morphable model（SDF 身份 + 形变表情 + 局部场；CVPR 2023，代码+预训练已开源）
 
