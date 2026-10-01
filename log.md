@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | AgentsDock 项目页+双仓（ZhengyiLuo/AgentsDock·AgentsServer）；Apache-2.0 已开源；实体 agentsdock + 交叉 zhengyi-luo；自动合并 PR
+
 ## [2026-10-01] ingest | arXiv:2510.20808 Reality Gap 综述深读：项目页核查无代码，升格实体页 taxonomy/recipe，补 sources 与 Sim2Real 概念互链
 
 ## [2026-10-01] ingest | RoM-Nav arXiv:2609.19272 深读 ingest：sources/sites 核查待发布、论文实体页方法/实验/Poisson CBF 与 GTI 交叉引用

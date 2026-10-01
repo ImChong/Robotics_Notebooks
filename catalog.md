@@ -14,6 +14,7 @@
 - [Agent Lightning（Microsoft）](wiki/entities/agent-lightning.md) — Agent Lightning**（microsoft/agent-lightning）是微软研究院 `📅2026-09-19` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [Agent Skills（Addy Osmani）](wiki/entities/agent-skills-addyosmani.md) — Agent Skills** 是 addyosmani/agent-skills 仓库及其 [skill `📅unknown` `[entity_page]`
+- [AgentsDock](wiki/entities/agentsdock.md) — AgentsDock](https://agentsdock.net/) 由 Zhengyi Luo 维护：**客户端**（[ZhengyiLuo/Agent `📅2026-10-01` `[entity_page]`
 - [AGILE（智元感控一体）](wiki/entities/agibot-agile.md) — AGILE** 是智元在 2026-06 发布地图 中推出的 **感控一体能力底 `📅unknown` `[entity_page]`
 - [AimDK X2（灵犀 X2 二次开发框架）](wiki/entities/agibot-aimdk-x2.md) — AimDK X2** 是智元机器人（AgiBot）为 **灵犀 X2** 人形提供的 **任务编程与扩展框架**：通过 [官方文档站](https://x2-aimdk.agibot.com/zh `📅unknown` `[entity_page]`
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
