@@ -2595,6 +2595,7 @@
 - [Q-Planning：冻结 VLA 的离策略 Q 函数自改进](wiki/entities/paper-qplanning.md) — Q-Planning**（*Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Learning Torque Control for Quadrupedal Locomotion](wiki/entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
+- [Qwen-Audio-Agent：全双工语音与异步任务怎么同时跑？](wiki/entities/paper-qwen-audio-agent.md) — Qwen-Audio-Agent**（*Qwen-Audio-Agent Technical Report*，[arXiv:2609.25195](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [QWM（Q-Learning With World Models）](wiki/entities/paper-qwm.md) — QWM**（*Q-Learning With World Models*，arXiv:2608.17163，[项目页](ht `📅unknown` `[entity_page]`
 - [R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化](wiki/entities/paper-r2s-ego.md) — R2S-EGO**（*Dual-Proxy Refinement for Sparse-Capture Real-to-Sim*，[arXiv:2608.06827](https://arxiv. `📅unknown` `[entity_page]`
 - [R2S-Eval：真实—仿真校准 + VLM 的机器人策略评测](wiki/entities/paper-r2s-eval.md) — R2S-Eval**（*Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models*，[arXiv:2609. `📅unknown` `[entity_page]`

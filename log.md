@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | Qwen-Audio-Agent（arXiv:2609.25195）：sources+实体页，开源全双工语音 harness 与座舱 mixed 评测；交叉更新人形语音交互方法页
+
 ## [2026-10-01] ingest | 写个 goodMan Modern Robotics 微信专辑 10 篇：C-space→twist/wrench→PoE FK；Camoufox 专辑同会话抓取
 
 ## [2026-10-01] ingest | Trendshift 批次：archify/gods-eye-view/ponytail/i-have-adhd/ECC/open-code-review/hindsight/OpenMAIC/paperclip/hyperframes 十项 Agent 技能与工具入库（7 新实体 + 3 热度更新）
