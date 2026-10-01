@@ -344,6 +344,7 @@ flowchart TD
 - [SWAP（对称等变世界模型四足跑酷）](../entities/paper-swap-parkour.md) — arXiv:2606.19928（SE-RSSM + 等变 Actor-Critic 端到端；Apollo 2.13 m 远跳 / 1.63 m 攀台）
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Learning to Adapt（Nature MI 2025 四足 bio-inspired 多步态）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) — πG/BGS/πL 分层 DRL，盲零样本复杂地形（RaiSim / ihcr）
+- [FLEXOR（Science Advances 2026 动态脊-腿协同）](../entities/paper-flexor-dynamic-spine-leg-synergy.md) — 北理工微小型四足；双关节耦合脊柱 + 相位协同；相对同规格单关节脊柱速度 +31.6%、CoT −32.2%（确认未开源）
 - [APT-RL（Science Robotics 2026 封面）](../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — TO+TVAE 力矩先验 + 深度/LiDAR 蒸馏；HOUND 野外长程与 trot/bound 感知切换
 - [执行器约束 RL 高速四足（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — MOR 扭矩–转速包络进训练；HOUND **6.5 m/s** 跑步机纪录；无 MOR 策略 **5 m/s 实机摔倒**
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
