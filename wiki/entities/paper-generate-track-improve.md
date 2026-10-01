@@ -14,7 +14,7 @@ tags:
   - isaac-lab
   - caltech
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 arxiv: "2609.31577"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -64,7 +64,7 @@ summary: "GTI（arXiv:2609.31577，Caltech AMBER）双层感知 locomotion：优
 | **平台** | Unitree G1；ZED X（前向）+ ZED X Mini（下视）；Jetson Thor + Orin |
 | **任务** | 多技能 **感知 locomotion**：平地走跑、跳箱、上下楼梯；户外与室内 |
 | **仿真** | 跟踪：Isaac Lab，8192 env，H100 ~48 h；生成器微调：5×~6 h/H100 |
-| **开源** | **待发布** — [项目页](https://zolkin1.github.io/generate-track-improve/) 源码注释预留 Code 按钮，截至 2026-09-30 无官方仓库 |
+| **开源** | **待发布** — [项目页](https://zolkin1.github.io/generate-track-improve/) 源码注释预留 Code 按钮，截至 **2026-10-01** 无官方仓库 |
 
 ## 为什么重要
 
@@ -120,7 +120,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-30 项目页未发布官方可运行代码；复现需自建 Isaac Lab 训练栈、flow matching 推理与 AWR 数据环，见 [项目页开源核查](../../sources/sites/generate-track-improve-github-io.md)。）
+**不适用**（截至 2026-10-01 项目页未发布官方可运行代码；复现需自建 Isaac Lab 训练栈、flow matching 推理与 AWR 数据环，见 [项目页开源核查](../../sources/sites/generate-track-improve-github-io.md)。）
 
 ## 实验要点（归纳）
 
