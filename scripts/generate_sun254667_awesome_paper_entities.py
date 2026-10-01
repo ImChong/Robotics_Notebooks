@@ -490,14 +490,12 @@ def render_tech_map(list_key: str, list_meta: dict, rows: list[dict]) -> str:
     sections_md = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
-        sections_md.append("| # | 论文 | 详情节点 |")
-        sections_md.append("|---|------|----------|")
+        sections_md.append("| # | 论文 |")
+        sections_md.append("|---|------|")
         for r in items:
             link = wiki_rel_from_root(r["wiki_rel"])
             title = r["title"].replace("|", "/")
-            sections_md.append(
-                f"| {r['idx']:03d} | {title[:90]} | [{Path(r['wiki_rel']).stem}]({link}) |"
-            )
+            sections_md.append(f"| {r['idx']:03d} | [{title[:90]}]({link}) |")
         sections_md.append("")
 
     return f"""---

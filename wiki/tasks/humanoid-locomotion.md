@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -75,6 +75,69 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - **环境自适应**：利用膝盖或身体侧面在狭窄空间支撑。
 - **坐姿推进（非常规）：** [Stay Seated](../entities/paper-stay-seated.md)（arXiv:2608.28090）在 **被动万向椅** 上学习 G1 **全向坐姿速度跟踪**，脚–地推进 + 非固定骨盆–椅接触，零样本 sim2real；走向 seated loco-manipulation 的第一步。
 
+## 按主题索引：论文与方法
+
+> 站内与人形移动相关的论文、方法与路线对比按主题归档；同一页面只在最贴切的一组出现一次。核心概念与方法见文末「关联页面」。
+
+### 感知行走与复杂地形
+
+- [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程
+- [SOLO 长程感知行走](../entities/paper-solo.md) — QR 逐格高程 + TA-MSE；天工 Omni 单胸深相机零样本 **1.5 km**（未开源）
+- [FootQuery 深度历史触地检索](../entities/paper-footquery-perceptive-humanoid-locomotion.md) — per-foot 下一触地点 query 深度历史；G1 户外/室内楼梯·平台·沟；arXiv:2609.21447（无官方代码）
+- [CReF 深度条件融合行走](../entities/paper-cref.md) — 无 2.5D 中间层的单阶段 raw 深度；本体查询注意 + GRU highway + 可支撑落脚奖励；X2 Ultra 零样本
+- [Now You See That 端到端视觉人形 locomotion](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏，双向长楼梯与跑酷零样本
+- [TRAMP（IEEE RA-L 2026）](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) — SJTU；单阶段低成本深度 + MoE + 平地/楼梯地形相关 AMP；真机坡/楼梯/高台/宽沟与户外（代码未开源）
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
+- [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
+- [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
+- [DWMP](../entities/paper-dwmp.md) — Koopman 本体 WM + DepthDreamer 深度 WM 双路表征；MuJoCo 五类越障 SR 0.85–0.95，G1 真机随机布局最高 0.95（arXiv:2609.12347；未开源）
+- [RoboDreamer](../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — Mamba PSSM 前瞻行走 + 推理动作细化（arXiv:2609.07096；未见代码）
+- [GM-Loco 颗粒介质地形自适应](../entities/paper-gm-loco.md) — 3D RFT 颗粒接触 + VAE Teacher-Student；G1 玄武岩/干沙/海滩沙走跑至 2.5 m/s（arXiv:2609.10286；代码待发布）
+- [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
+- [G1 屋顶斜坡全身作业 Locomotion](../entities/paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→metric 坡面 mesh 轨迹优化→相位门控 RL；钉枪/锤/推 clearance 0.26–0.53 cm；UF/G1（arXiv:2609.20558；未开源）
+- [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪；超 NIST 孔洞/倾斜楼梯（arXiv:2608.10220；未开源）
+
+### 跑酷、冲刺与高动态技能
+
+- [SPRINT 人形竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 极少 MoCap + 频域先验外推至高动态冲刺
+- [GaitSpan 从行走到跑步的技能生长](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — 冻结行走种子 + GaitWave 节律组合 + H-SLIP 动态步幅；Booster T1/K1、G1 真机户外走–慢跑–跑连续变速
+- [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 结合重定向与控制引导的 RL 实现高性能奔跑
+- [ZEST](../methods/zest.md) — Boston Dynamics 跨形态高动态模仿与零样本部署
+- [MTRG / GfR](../methods/mtrg-reference-goal-driven-rl.md) — RSS 2026；G1 箱式跑酷：参考塑形 + goal 泛化（超越 ZEST tracking 的 OOD 鲁棒性）
+- [HIL](../methods/hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 物理角色跑酷 + heading；官方代码未开源
+- [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
+- [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins / Lightbot 0；稀疏种子 Real2Sim2Real + 多专家蒸馏，无技能标签机载深度跑酷（代码未开源）
+- [ParkourFormer](../entities/paper-parkourformer.md) — HKUST-GZ 等；Transformer 查询历史 + 未来两步 AMP 监督；G1 九类地形单策略平均穿越 93.85%（代码 Coming Soon）
+
+### 运动先验与生成式控制
+
+- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
+- [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 生成 + CLF-RL 跟踪 + AWR 微调生成器；G1 户外走跑跳箱/楼梯（arXiv:2609.31577；代码待发布）
+- [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
+- [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
+
+### 低噪、触觉与安全停止
+
+- [QuietWalk 物理感知低噪行走](../entities/paper-quietwalk-humanoid-locomotion.md) — 逆动力学 PINN 估计 GRF 作冲击惩罚；G1 真机 1.2 m/s 降噪约 7 dB，跨赤脚/运动鞋/高跟鞋与多地面材质
+- [TactileStep 足底触觉跑酷](../entities/paper-tactilestep.md) — 压力鞋垫特征对齐仿真 + 四相位软着陆/稳支撑奖励；相对 Hiking 基线真机冲击与噪声显著下降（CoRL 2026 Spotlight；代码待发布）
+- [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照（同名项目页 QuietWalk；ICRA 2025）
+- [Safe-Stop](../entities/paper-safe-stop-humanoid.md) — 急停可停止性双估计 + 阻尼 fallback；G1 OOD 停止 96.4%（arXiv:2609.02358；代码待发布）
+
+### 硬件与标定
+
+- [可见—可达工作空间硬件设计](../entities/paper-visible-reachable-workspace-humanoid-design.md) — Duke V2 双 RGB-D；覆盖率 38%→97%（arXiv:2609.08905；未见代码）
+- [BRIDGE](../entities/paper-bridge-humanoid.md) — 形态–控制共设计的 80 cm / 12.5 kg / 21 DoF / ~$1500 人形（arXiv:2609.03497；CAD 已放，控制仓待录用）
+- [下肢关节零位标定](../entities/paper-contact-constrained-joint-offset-calibration.md) — 双支撑脚间变换一致性；AgiBot A2/A3（arXiv:2609.02306；未开源）
+- [双凸轮并联弹性踝](../entities/paper-dual-cam-parallel-elastic-ankle.md) — IIT 2-DoF PEA 单气弹簧双轴补偿（arXiv:2608.30832）
+
+### 相邻方向：飞行人形、导航、交互与移动操作
+
+- [飞行人形反重力行走](../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md) — 推力率输入 WBC-MPC；东大（arXiv:2609.07544；未见代码）
+- [RAVEN：RL 自适应可见图 + cf-MPC](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — 导航层 RL 改障碍膨胀，行走层 Booster Gym；延迟与噪声下鲁棒导航
+- [IHMC 可编辑 loco-manipulation 系统](../entities/paper-ihmc-fast-resilient-loco-manipulation.md) — Affordance Template + 行为树；H1-2/Alex 推门 34 s（arXiv:2609.01518；未见代码）
+- [RoboGesture](../entities/paper-robogesture.md) — 流式语音→G1 语义手势；DiT-CFM + MPC 安全滤波（arXiv:2608.28693；未开源）
+- [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -110,53 +173,13 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [TRAMP（IEEE RA-L 2026）](../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md) — 单阶段深度 + 层次特征/MoE + 平地/楼梯地形相关 AMP；SJTU 人形真机坡/楼梯/高台/沟与户外；代码未开源。
 
 ## 关联页面
+
+- [Locomotion](./locomotion.md)
+- [楼梯与障碍感知移动](./stair-obstacle-perceptive-locomotion.md) — 带/不带感知的上下楼梯与越障挂接点
 - [人形机器人运控策略的观测输入](../concepts/humanoid-policy-observation-inputs.md) — 主流运控策略输入的五类划分与获取链路
 - [人形机器人运控常见奖励函数分类](../concepts/humanoid-policy-reward-functions.md) — 运控 RL 奖励项的六类划分与权重量级
-- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
-- [SPRINT 人形竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 极少 MoCap + 频域先验外推至高动态冲刺
-- [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程
-- [SOLO 长程感知行走](../entities/paper-solo.md) — QR 逐格高程 + TA-MSE；天工 Omni 单胸深相机零样本 **1.5 km**（未开源）
-- [FootQuery 深度历史触地检索](../entities/paper-footquery-perceptive-humanoid-locomotion.md) — per-foot 下一触地点 query 深度历史；G1 户外/室内楼梯·平台·沟；arXiv:2609.21447（无官方代码）
-- [CReF 深度条件融合行走](../entities/paper-cref.md) — 无 2.5D 中间层的单阶段 raw 深度；本体查询注意 + GRU highway + 可支撑落脚奖励；X2 Ultra 零样本
-- [Now You See That 端到端视觉人形 locomotion](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏，双向长楼梯与跑酷零样本
-- [QuietWalk 物理感知低噪行走](../entities/paper-quietwalk-humanoid-locomotion.md) — 逆动力学 PINN 估计 GRF 作冲击惩罚；G1 真机 1.2 m/s 降噪约 7 dB，跨赤脚/运动鞋/高跟鞋与多地面材质
-- [TactileStep 足底触觉跑酷](../entities/paper-tactilestep.md) — 压力鞋垫特征对齐仿真 + 四相位软着陆/稳支撑奖励；相对 Hiking 基线真机冲击与噪声显著下降（CoRL 2026 Spotlight；代码待发布）
-- [Learning Quiet Walking（aibo）](../entities/paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照（同名项目页 QuietWalk；ICRA 2025）
-- [GaitSpan 从行走到跑步的技能生长](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — 冻结行走种子 + GaitWave 节律组合 + H-SLIP 动态步幅；Booster T1/K1、G1 真机户外走–慢跑–跑连续变速
-- [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
-- [G1 屋顶斜坡全身作业 Locomotion](../entities/paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→metric 坡面 mesh 轨迹优化→相位门控 RL；钉枪/锤/推 clearance 0.26–0.53 cm；UF/G1（arXiv:2609.20558；未开源）
-- [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪；超 NIST 孔洞/倾斜楼梯（arXiv:2608.10220；未开源）
-- [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
-- [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
-- [DWMP](../entities/paper-dwmp.md) — Koopman 本体 WM + DepthDreamer 深度 WM 双路表征；MuJoCo 五类越障 SR 0.85–0.95，G1 真机随机布局最高 0.95（arXiv:2609.12347；未开源）
-- [GM-Loco 颗粒介质地形自适应](../entities/paper-gm-loco.md) — 3D RFT 颗粒接触 + VAE Teacher-Student；G1 玄武岩/干沙/海滩沙走跑至 2.5 m/s（arXiv:2609.10286；代码待发布）
-- [RoboDreamer](../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — Mamba PSSM 前瞻行走 + 推理动作细化（arXiv:2609.07096；未见代码）
-- [飞行人形反重力行走](../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md) — 推力率输入 WBC-MPC；东大（arXiv:2609.07544；未见代码）
-- [可见—可达工作空间硬件设计](../entities/paper-visible-reachable-workspace-humanoid-design.md) — Duke V2 双 RGB-D；覆盖率 38%→97%（arXiv:2609.08905；未见代码）
-- [Safe-Stop](../entities/paper-safe-stop-humanoid.md) — 急停可停止性双估计 + 阻尼 fallback；G1 OOD 停止 96.4%（arXiv:2609.02358；代码待发布）
-- [BRIDGE](../entities/paper-bridge-humanoid.md) — 形态–控制共设计的 80 cm / 12.5 kg / 21 DoF / ~$1500 人形（arXiv:2609.03497；CAD 已放，控制仓待录用）
-- [IHMC 可编辑 loco-manipulation 系统](../entities/paper-ihmc-fast-resilient-loco-manipulation.md) — Affordance Template + 行为树；H1-2/Alex 推门 34 s（arXiv:2609.01518；未见代码）
-- [RoboGesture](../entities/paper-robogesture.md) — 流式语音→G1 语义手势；DiT-CFM + MPC 安全滤波（arXiv:2608.28693；未开源）
-- [下肢关节零位标定](../entities/paper-contact-constrained-joint-offset-calibration.md) — 双支撑脚间变换一致性；AgiBot A2/A3（arXiv:2609.02306；未开源）
-- [双凸轮并联弹性踝](../entities/paper-dual-cam-parallel-elastic-ankle.md) — IIT 2-DoF PEA 单气弹簧双轴补偿（arXiv:2608.30832）
-- [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
-- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
-- [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide
-- [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
-- [RAVEN：RL 自适应可见图 + cf-MPC](../entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — 导航层 RL 改障碍膨胀，行走层 Booster Gym；延迟与噪声下鲁棒导航
-- [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 生成 + CLF-RL 跟踪 + AWR 微调生成器；G1 户外走跑跳箱/楼梯（arXiv:2609.31577；代码待发布）
-- [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 结合重定向与控制引导的 RL 实现高性能奔跑
-- [楼梯与障碍感知移动](./stair-obstacle-perceptive-locomotion.md) — 带/不带感知的上下楼梯与越障挂接点
-- [Locomotion](./locomotion.md)
-- [ZEST](../methods/zest.md) — Boston Dynamics 跨形态高动态模仿与零样本部署
-- [MTRG / GfR](../methods/mtrg-reference-goal-driven-rl.md) — RSS 2026；G1 箱式跑酷：参考塑形 + goal 泛化（超越 ZEST tracking 的 OOD 鲁棒性）
-- [HIL](../methods/hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 物理角色跑酷 + heading；官方代码未开源
-- [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
-- [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins / Lightbot 0；稀疏种子 Real2Sim2Real + 多专家蒸馏，无技能标签机载深度跑酷（代码未开源）
-- [ParkourFormer](../entities/paper-parkourformer.md) — HKUST-GZ 等；Transformer 查询历史 + 未来两步 AMP 监督；G1 九类地形单策略平均穿越 93.85%（代码 Coming Soon）
-- [TRAMP（IEEE RA-L 2026）](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) — SJTU；单阶段低成本深度 + MoE + 平地/楼梯地形相关 AMP；真机坡/楼梯/高台/宽沟与户外（代码未开源）
-- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - [PPO](../methods/policy-optimization.md)
+- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md)
 - [Contact Dynamics](../concepts/contact-dynamics.md)
 

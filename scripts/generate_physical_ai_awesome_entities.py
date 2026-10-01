@@ -955,27 +955,23 @@ def render_tech_map(rows: list[dict[str, Any]]) -> str:
     by_sec: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for r in rows:
         by_sec[r["sections"][0]].append(r)
-    new_count = sum(1 for r in rows if r.get("created"))
-    reused = len(rows) - new_count
     sections_md: list[str] = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
-        sections_md.append("| # | 条目 | 详情节点 | 来源 |")
-        sections_md.append("|---|------|----------|------|")
+        sections_md.append("| # | 条目 | 来源 |")
+        sections_md.append("|---|------|------|")
         for r in items:
             link = wiki_rel_from_root(r["wiki_rel"])
             title = r["title"].replace("|", "/")
             lists = "+".join(r["lists"])
-            sections_md.append(
-                f"| {r['idx']:03d} | {title[:80]} | [{Path(r['wiki_rel']).stem}]({link}) | {lists} |"
-            )
+            sections_md.append(f"| {r['idx']:03d} | [{title[:80]}]({link}) | {lists} |")
         sections_md.append("")
     return f"""---
 type: overview
 tags: [overview, curated-index, physical-ai, awesome-physical-ai, technology-map]
 status: complete
 updated: {TODAY}
-summary: "Physical AI 双清单技术地图：natnew ∪ aichr 去重后 {len(rows)} 条，新建 {new_count}、复用 {reused}。"
+summary: "Physical AI 双清单技术地图：natnew 与 aichr 两份清单合并去重后 {len(rows)} 条，逐条可点开，按清单分组浏览。"
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../entities/awesome-physical-ai-aichr.md
@@ -990,11 +986,11 @@ sources:
 
 # Awesome Physical AI 技术地图
 
-> 本页把 [natnew/awesome-physical-ai]({NATNEW_URL}) 与 [aichr/awesome-physical-ai]({AICHR_URL}) 的清单条目映射为站内 **独立详情节点**（新建 `pai-*` / `paper-pai-*` 或复用已有 canonical 页）。
+> 本页把 [natnew/awesome-physical-ai]({NATNEW_URL}) 与 [aichr/awesome-physical-ai]({AICHR_URL}) 两份同名清单合并去重，逐条拆成站内可点开的一页，方便按分组浏览、搜索，并顺着链接读同方向的工作。
 
 ## 一句话定义
 
-**Physical AI 双清单技术地图** = 两份同名 Awesome 列表的并集节点化索引（按清单分组浏览，一点即达详情页）。
+**Physical AI 双清单技术地图** = 两份同名 Awesome 列表合并后的站内可点开版本（按清单分组浏览，一点即达详情页）。
 
 ## 英文缩写速查
 
@@ -1007,9 +1003,9 @@ sources:
 
 ## 为什么重要
 
-- Awesome 列表本身不是知识图谱节点；若不升格子条目，图谱只能停在清单 hub。
-- 本地图 **优先复用** 库内已有 arXiv / GitHub / 标题 canonical 页，仅对缺失条目新建索引级节点。
-- 统计：去重后 **{len(rows)}** 条（新建 **{new_count}**，复用 **{reused}**）。
+- 原清单每条只有标题 + 链接，翻起来只能靠搜索框；这里逐条给出一页，可检索、可顺着相关内容继续读。
+- 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：标题、原文链接与它在清单里的位置一页可见。
+- 两份清单合并去重后共 **{len(rows)}** 条，每条都能点开；「来源」列标出条目出自哪份清单。
 
 ## 覆盖范围
 
@@ -1025,9 +1021,9 @@ sources:
 
 ## 局限与风险
 
-- 索引级节点保留清单摘要，**不替代** 深度论文/工具页。
-- 人物、新闻通讯与部分实验室条目只有社交媒体或新闻链接，节点用于图谱覆盖而非复现。
-- 上游更新后需重跑 `python3 scripts/generate_physical_ai_awesome_entities.py` 再 `make ci-preflight`。
+- 清单摘要页只给清单要点，**不替代** 深度论文/工具页；要深读请从原文链接进。
+- 人物、新闻通讯与部分实验室条目只有社交媒体或新闻链接，页面只提供入口，不足以据此复现。
+- 上游清单仍在更新，本页是 {TODAY} 的快照；最新条目以上游仓库为准。
 
 ## 关联页面
 

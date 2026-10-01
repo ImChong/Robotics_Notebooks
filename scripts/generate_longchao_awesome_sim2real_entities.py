@@ -391,25 +391,20 @@ def render_tech_map(rows: list[dict]) -> str:
     sections_md = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
-        sections_md.append("| # | 论文 | 详情节点 |")
-        sections_md.append("|---|------|----------|")
+        sections_md.append("| # | 论文 |")
+        sections_md.append("|---|------|")
         for r in items:
             link = wiki_rel_from_root(r["wiki_rel"])
             title = r["title"].replace("|", "/")
-            sections_md.append(
-                f"| {r['idx']:03d} | {title[:90]} | [{Path(r['wiki_rel']).stem}]({link}) |"
-            )
+            sections_md.append(f"| {r['idx']:03d} | [{title[:90]}]({link}) |")
         sections_md.append("")
-
-    new_count = sum(1 for r in rows if r.get("created"))
-    reused = len(rows) - new_count
 
     return f"""---
 type: overview
 tags: [overview, curated-index, {LIST_META["tag"]}, longchao-sim2real, technology-map]
 status: complete
 updated: {TODAY}
-summary: "{LIST_META["title"]} 技术地图：为清单内论文提供独立详情节点索引（新建 {new_count}，复用已有 {reused}）。"
+summary: "{LIST_META["title"]} 技术地图：把清单里的 {len(rows)} 篇论文逐条拆成站内可点开的一页，按 MDP 四要素与领域分组浏览。"
 related:
   - {wiki_rel_from_root(LIST_META["entity"])}
   - {LIST_META["hub_methods"][0]}
@@ -422,11 +417,11 @@ sources:
 
 # {LIST_META["title"]} 技术地图
 
-> 本页把 [{LIST_META["title"]}]({LIST_META["url"]}) 清单中的论文条目映射为站内 **独立详情节点**（`wiki/entities/paper-as-*` 或已有 canonical 页），供图谱与 `detail.html` 检索。配套综述见 [Sim2Real RL Survey（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md)。
+> 本页把 [{LIST_META["title"]}]({LIST_META["url"]}) 清单里的论文逐条拆成站内可点开的一页，方便按分组浏览、搜索，并顺着链接读同方向的工作。配套综述见 [Sim2Real RL Survey（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md)。
 
 ## 一句话定义
 
-**{LIST_META["title"]} 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文策展列表的站内节点化索引（按 MDP 四要素 + 领域分组浏览）。
+**{LIST_META["title"]} 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文清单的站内可点开版本（按 MDP 四要素 + 领域分组浏览，一点即达论文页）。
 
 ## 英文缩写速查
 
@@ -436,9 +431,9 @@ sources:
 
 ## 为什么重要
 
-- Awesome 列表本身不是知识图谱节点；若不升格论文实体，首页/图谱无法挂上具体工作。
-- 本地图 **优先复用** 库内已有 arXiv canonical 页，仅对缺失条目新建索引级 `paper-as-*` 节点。
-- 统计：清单可解析条目 **{len(rows)}**（新建详情节点 **{new_count}**，复用已有 **{reused}**）。
+- 原清单每条只有标题 + 链接，翻起来只能靠搜索框；这里逐条给出一页，可检索、可顺着相关内容继续读。
+- 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：标题、原文链接与它在清单里的位置一页可见。
+- 清单共 **{len(rows)}** 条，每条都能点开。
 
 ## 覆盖范围
 
@@ -455,9 +450,9 @@ sources:
 
 ## 局限与风险
 
-- 索引级节点保留清单分组，**不替代** 深度论文页；主线工作应继续升格。
-- 清单含非 arXiv 链接（IEEE / ResearchGate）；无 arXiv 条目以标题 slug 建节点，后续若补 arXiv 需合并去重。
-- 上游更新后需重跑 `python3 scripts/generate_longchao_awesome_sim2real_entities.py` 再 `make ci-preflight`。
+- 清单摘要页只给清单要点，**不替代** 原文；要深读请从论文链接进。
+- 清单里混有非 arXiv 链接（IEEE / ResearchGate），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
+- 上游清单仍在更新，本页是 {TODAY} 的快照；最新条目以上游仓库为准。
 
 ## 关联页面
 
