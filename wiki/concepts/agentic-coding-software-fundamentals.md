@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-09-27
+updated: 2026-10-01
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身。吴恩达 AI Engineering Skills Map 把软件基础拆成全栈、数据、架构、安全可靠、生产运维五项。"
 related:
   - ../entities/mattpocock-skills.md
@@ -116,6 +116,8 @@ flowchart TD
 - **无代码可复现。** 步骤 2.5：**不适用**（论述文，无项目仓）。
 
 ## 关联页面
+
+- [Astra Games / Awesome GPT-6 Astra](../entities/astra-games.md) — 从可演示作品观察参数交互、暂停和测试边界；目录归因不构成模型基准。
 
 - [Spec-Driven Development（DeepLearning.AI 短课）](../entities/course-spec-driven-development-coding-agents.md) — constitution + feature spec 的 plan-implement-verify 可跟做模板
 - [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — 用 grill / TDD / 架构卫生对抗 vibe coding 的可安装技能
