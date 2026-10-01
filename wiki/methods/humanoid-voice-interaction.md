@@ -2,10 +2,11 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
+  - ../entities/paper-qwen-audio-agent.md
   - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-xiaomi-cocktailasr-1.md
   - ../entities/paper-vln-10-navid.md
@@ -51,6 +52,7 @@ summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可�
 | 技能表 + 规则 NLU | 意图/槽位模板 | 预注册 API | 课程入门、可控 |
 | LLM Tool-Calling | 多轮规划 | 白名单工具 | 复杂指令 |
 | 语音 → VLN | 语言指令 | Nav2 / [NaVid](../entities/paper-vln-10-navid.md) | Ch8 实践 |
+| 全双工 + 后台 Agent（开源 runtime） | Realtime 前台 + 委派任务 | [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) Gateway | 座舱 / 桌面；真机需接技能白名单 |
 | 端到端语音策略（研究） | 音频条件策略 | 需强安全层 | 非课程默认 |
 
 ## 核心原理
@@ -131,6 +133,7 @@ flowchart LR
 - [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md) — 长时多说话人 SATS 开源栈（ASR+diarization 上游）
 - [Xiaomi-CocktailASR-1](../entities/paper-xiaomi-cocktailasr-1.md) — 参考声纹 TS-ASR（混合场只听目标说话人 + 拒识）
 - [OpenLess](../entities/openless.md) — 桌面端 ASR→润色→光标注入（研究写作/Prompt 口述；**非**机载语音助手）
+- [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) — 开源全双工语音 harness：前台对话与后台 Agent 异步任务编排
 
 ## 参考来源
 
