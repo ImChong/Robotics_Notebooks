@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, multi-expert-distillation, dagger, rl-finetuning, ethz, nvidia, anymal]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-01
 arxiv: "2505.11164"
 venue: "IJRR 2026 (DOI 10.1177/02783649261455067)"
 related:
