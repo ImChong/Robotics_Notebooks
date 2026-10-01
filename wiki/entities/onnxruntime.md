@@ -125,6 +125,7 @@ flowchart LR
 - [BotLab MotionCanvas](./botlab-motioncanvas.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [Lot Vulture](./lotvulture.md) — 设施侧边缘 CV：`vulturevision` 以 ORT 做车位占用推理（Community CPU / Commercial GPU）。
 
 ## 参考来源
 
