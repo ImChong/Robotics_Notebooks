@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | LiveTalking（lipku）实时流式数字人引擎；项目页+GitHub 已开源、权重网盘；实体页 livetalking，交叉 MetaHuman/teleoperation
+
 ## [2026-09-30] ingest | Nav Arena/Can Jev Nav 与 NavJev(arXiv:2609.34969) 入库；DimOS/Jev/VLN 交叉更新；NavJev 项目页未列代码
 
 ## [2026-09-30] ingest | Arena-Rosnav 5.0 项目页与 GitHub 组织入库：ROS2 社交导航仿真 benchmark 实体页与导航栈交叉引用
