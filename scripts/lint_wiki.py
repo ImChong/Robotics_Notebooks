@@ -344,6 +344,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 停用词的 `train` / `eval` 成对出现，是命令 token。推理期机制已由
     # concepts/control-inference-frequency-decoupling.md 等页覆盖，不建独立页。
     "infer",
+    # direct：命中处是 Isaac Lab 环境名的 `Direct` 后缀 / **Direct** 工作流（单类实现，
+    # 对照 Manager-Based，entities/isaac-lab-default-environments.md）、HumanNet
+    # Embodied Use 的 Limited / Indirect / **Direct** 分档标签（comparisons/
+    # humannet-table1-human-video-corpora.md、paper-egoverse.md）与 INTACT 的 `Direct`
+    # 评测模式，多义被小写 slug 合并，非单一可成页概念；与 clip / skills 同类停用词。
+    "direct",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
