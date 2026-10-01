@@ -1,3 +1,7 @@
+## [2026-10-01] ingest | arXiv:2510.20808 Reality Gap 综述深读：项目页核查无代码，升格实体页 taxonomy/recipe，补 sources 与 Sim2Real 概念互链
+
+## [2026-10-01] ingest | RoM-Nav arXiv:2609.19272 深读 ingest：sources/sites 核查待发布、论文实体页方法/实验/Poisson CBF 与 GTI 交叉引用
+
 ## [2026-10-01] ingest | Generate Track Improve（arXiv:2609.31577）— 2026-10-01 复核查项目页 Code 仍待发布，同步开源锚点日期
 
 ## [2026-10-01] ingest | TactileStep（2609.28959）入库复核：main 已有实体页；补 unitree-g1 关联；项目页仍无 GitHub（待发布）
