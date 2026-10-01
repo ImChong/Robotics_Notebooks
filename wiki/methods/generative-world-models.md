@@ -17,6 +17,7 @@ related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-cap-perception-blind-humanoid.md
   - ../entities/paper-wm-loco.md
+  - ../entities/paper-locowm.md
   - ../entities/paper-openwam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md
