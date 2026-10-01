@@ -15,6 +15,7 @@ related:
   - ../entities/legged-gym.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-locowm.md
 sources:
   - ../../sources/repos/robot_lab.md
   - ../../sources/repos/rl_training.md
@@ -68,6 +69,7 @@ summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚�
 
 - **多技能盲走 + 极限高台：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058，ICRA 2026）在 **Go2-W** 上用 **单一本体策略** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机硬约束（P3O）** 与 **高层技能选择器** 实现零样本 sim2real；真机报告 **1 m 室内高台** 与连续多技能任务链。
 - **高动态反射式避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **Deep Robotics M20** 上用 **高层 RAR 威胁决策 + 低层双专家硬切换**（导航全向 / 高动态敏捷）做快速障碍反射规避，涌现前冲与侧闪；Isaac Lab + 真机抛箱/棍戳/脚踢验证。
+- **背载非固定载荷高精度行走：** [LocoWM](../entities/paper-locowm.md)（arXiv:2609.39179，CASIA 等）在 **Go2-W** 上用 **世界模型预测 task substate + preactive 残差** 做地形调平、加减速倾角补偿与推扰恢复；真机零样本，**已开源**。
 - **厂商官方训练入口：** M20 速度跟踪可走 [rl_training](../entities/deeprobotics-rl-training.md) 的 `Rough-Deeprobotics-M20-v0`；D1 / Tita 走 [DDT_Lab](../entities/ddt-lab.md) 的 NP3O 任务族。
 
 ## 与相邻概念的关系
