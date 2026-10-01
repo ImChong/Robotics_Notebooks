@@ -14,6 +14,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/character-animation-vs-robotics.md
   - ../overview/hub-motion-retargeting.md
+  - ./livetalking.md
 sources:
   - ../../sources/sites/metahuman-com.md
   - ../../sources/sites/metahuman-epic-docs.md
@@ -116,6 +117,7 @@ flowchart LR
 - [动作重定向知识链汇总](../overview/hub-motion-retargeting.md)
 - [AirSim（UE 无人机/自驾视觉仿真）](./airsim.md)
 - [MotionCode（产业侧运动数据）](./motioncode.md)
+- [LiveTalking（2D 流式交互数字人）](./livetalking.md)
 
 ## 参考来源
 
