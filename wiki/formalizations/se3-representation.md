@@ -2,8 +2,9 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-01
 related:
+  - ../overview/modern-robotics-wechat-principles-series.md
   - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
   - ./unit-quaternion-so3.md
@@ -16,6 +17,7 @@ related:
   - ../entities/mimickit.md
   - ../methods/trajectory-optimization.md
 sources:
+  - ../../sources/blogs/wechat_goodman_modern_robotics_ch3_rotation_angular_velocity.md
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/perception.md
   - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md

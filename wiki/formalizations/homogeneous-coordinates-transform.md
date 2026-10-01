@@ -2,9 +2,10 @@
 type: formalization
 tags: [kinematics, se3, homogeneous-coordinates, embodied-ai, shenlan]
 status: complete
-updated: 2026-08-13
+updated: 2026-10-01
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ../overview/modern-robotics-wechat-principles-series.md
   - ./lie-group-rigid-body-motions.md
   - ./3d-coordinate-transforms-vision-robotics.md
   - ./se3-representation.md
@@ -14,6 +15,7 @@ related:
   - ../methods/grasp-pose-estimation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md
+  - ../../sources/blogs/wechat_goodman_homogeneous_transform_why.md
   - ../../sources/raw/wechat_shenlan_homogeneous_coords_2026-06-18.md
   - ../../sources/papers/modern_robotics_textbook.md
 summary: "用 n+1 维齐次坐标把「旋转矩阵乘 + 平移向量加」统一为 4×4 SE(3) 矩阵乘法：空间点 w=1、方向 w=0；支撑多连杆 FK 连乘、SLAM/手眼位姿链与 se(3) 可微优化，是具身代码里位姿变量的默认形状。"

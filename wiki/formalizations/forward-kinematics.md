@@ -2,9 +2,11 @@
 type: formalization
 tags: [kinematics, dh, se3, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-08-13
+updated: 2026-10-01
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ../overview/modern-robotics-wechat-principles-series.md
+  - ./spatial-twist-wrench-poe.md
   - ./homogeneous-coordinates-transform.md
   - ./inverse-kinematics.md
   - ./robot-jacobian.md
@@ -15,6 +17,7 @@ related:
   - ../concepts/humanoid-parallel-joint-kinematics.md
 sources:
   - ../../sources/blogs/wechat_shenlan_forward_kinematics.md
+  - ../../sources/blogs/wechat_goodman_forward_kinematics_poe.md
   - ../../sources/raw/wechat_shenlan_forward_kinematics_2026-07-17.md
   - ../../sources/papers/modern_robotics_textbook.md
 summary: "正向运动学把关节角唯一映射到末端 SE(3) 位姿：标准 DH 四参数给出单连杆 4×4，再沿运动学链连乘。它是 IK、雅可比、URDF 仿真与 Sim2Real 位姿误差的共同底座。"
@@ -121,10 +124,13 @@ flowchart LR
 - [雅可比矩阵](./robot-jacobian.md) — FK 的速度/力接口
 - [李群 / SE(3)](./lie-group-rigid-body-motions.md) — 姿态合法表示
 - [Pinocchio](../entities/pinocchio.md) — 部署侧 FK/雅可比引擎
-- [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本篇为专栏 08
+- [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 深蓝专栏 08
+- [Modern Robotics 微信精读](../overview/modern-robotics-wechat-principles-series.md) — 专辑 10：PoE 推导
+- [Twist / PoE 专页](./spatial-twist-wrench-poe.md)
 
 ## 参考来源
 
+- [写个 goodMan：PoE 正运动学](../../sources/blogs/wechat_goodman_forward_kinematics_poe.md)
 - [深蓝具身智能：正向运动学](../../sources/blogs/wechat_shenlan_forward_kinematics.md)
 - [抓取落盘](../../sources/raw/wechat_shenlan_forward_kinematics_2026-07-17.md)
 - [Modern Robotics 教材摘录](../../sources/papers/modern_robotics_textbook.md)
