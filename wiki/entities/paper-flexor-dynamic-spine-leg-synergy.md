@@ -116,6 +116,17 @@ flowchart TB
 - 主指标：**平均前进速度**、**CoT**、**GRF 幅值与方向**、**相位协同参数**、腾空/支撑相占比；对照实验控制 **质量、包络尺寸与峰值驱动功率**。
 - 仿真 + **robophysical 实机** 联合识别最优相位；扩展模型做 **跨形态/尺度** 敏感性分析（细节见原文 Supplementary）。
 
+## 与其他工作对比
+
+| 对比轴 | FLEXOR（本文） | [Learning to Adapt](./paper-learning-to-adapt-bio-inspired-quadruped-gait.md) | [Walk These Ways](./paper-walk-these-ways-quadruped-mob.md) |
+|--------|----------------|-------------------------------------------------------------------------------|-------------------------------------------------------------|
+| 核心问题 | **脊-腿相位协同** 与 **闭链脊柱力放大** | **多步态切换** 与 BGS/πL 盲适应 | **MOB** 多技能 RL 与 sim 多样性 |
+| 本体重点 | 双关节耦合 **柔性脊柱** | 标准四足，不强调脊柱 | 标准四足 + 地形/命令随机化 |
+| 主要增益 | 同功率下 **速度 +31.6% / CoT −32.2%**（对单关节脊柱） | 复杂地形 **零样本** 多 gait | 大规模并行 sim 的 **鲁棒 locomotion** |
+| 开源 | **未开源**（2026-10-01） | [ihcr 仓库](https://github.com/ihcrlearning/learning_to_adapt) | 官方 MOB 栈 |
+
+- 与 [执行器约束 RL 高速四足](./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) 正交：后者把 **MOR 扭矩–转速包络** 写进训练换绝对 m/s，本文换 **结构协同** 而非堆电枢功率。
+
 ## 源码运行时序图
 
 **不适用。** 截至 **2026-10-01** 无官方可运行仓库；[步骤 2.5 核查](../../sources/sites/bit-flexor-sciadv-2026.md) 仅链到 DOI 与机构新闻。若团队后续发布训练/控制代码，应补 `sources/repos/` 与本节 `sequenceDiagram`。

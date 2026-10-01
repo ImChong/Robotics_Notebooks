@@ -23,7 +23,6 @@
 | PubMed | [42789728](https://pubmed.ncbi.nlm.nih.gov/42789728/) | 书目记录 |
 | 机构稿 | [bit-flexor-sciadv-2026.md](../sites/bit-flexor-sciadv-2026.md) | 开源核查 + 中文实验数字 |
 | 任务 | [`wiki/tasks/locomotion.md`](../../wiki/tasks/locomotion.md) | 四足高速运动 |
-| 对照 | [`wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md`](../../wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) | 生物启发四足步态/切换（Nature MI，不同尺度与问题） |
 
 ## 摘要级要点（Crossref abstract + 新闻稿互证）
 
