@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - ucas
 status: complete
-updated: 2026-09-15
+updated: 2026-10-01
 arxiv: "2604.23702"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -24,6 +24,7 @@ related:
   - ./paper-opencap-monocular.md
   - ./isaac-gym-isaac-lab.md
   - ./paper-learning-quiet-walking-aibo.md
+  - ./paper-tactilestep.md
 sources:
   - ../../sources/papers/quietwalk_arxiv_2604_23702.md
 summary: "QuietWalk（arXiv:2604.23702，NIMTE·UCAS·Westlake）：逆动力学约束 PINN 从本体感知估计双足竖直 GRF，冻结后作 RL 冲击惩罚；G1 真机 1.2 m/s 下平均降噪 7.17 dB（MNL），跨赤脚/滑板鞋/运动鞋/高跟鞋与多地面材质鲁棒行走，部署无需力传感器。"
@@ -158,6 +159,8 @@ flowchart TB
 | 部署传感 | **本体感知 only** | 本体感知 + 开关接触 | 纯 RL | 单目手机视频 |
 | 平台 | **G1** | Sony aibo | Themis | 人体 |
 
+同平台 **G1 低冲击** 的另一路线：[TactileStep](./paper-tactilestep.md) 把 **足底压力特征** 直接进部署 actor，面向感知跑酷而非常规 1.2 m/s 行走。
+
 ## 关联页面
 
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 人形行走任务总览
@@ -167,6 +170,7 @@ flowchart TB
 - [Learning Quiet Walking（aibo）](./paper-learning-quiet-walking-aibo.md) — 足端接触速度代理的低噪四足对照
 - [MPC-RL](./paper-mpc-rl-humanoid-locomotion-manipulation.md) — 特权 GRF 训练期指导对照
 - [Unitree G1](./unitree-g1.md) — 实验平台
+- [TactileStep](./paper-tactilestep.md) — G1 部署期 sole 触觉 + 四相位奖励（跑酷地形）
 
 ## 参考来源
 

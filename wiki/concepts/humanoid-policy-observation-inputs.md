@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, observation, proprioception, exteroception, state-estimation, privileged-training, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-01
 summary: "主流人形运控策略（RL/IL/跟踪系）的输入按「部署是否可得」分五类：本体感知、指令与参考、历史上下文、外部感知、特权信息（仅训练）；每类的关键工程问题是真机上如何获得——直读、滤波估计、学习估计、感知管线还是上层给定。"
 related:
   - ./state-estimation.md
@@ -20,6 +20,7 @@ related:
   - ../queries/humanoid-rl-cookbook.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
+  - ../entities/paper-tactilestep.md
 sources:
   - ../../sources/personal/humanoid-loco-policy-observation-inputs-faq.md
   - ../../sources/papers/privileged_training.md
@@ -139,6 +140,7 @@ flowchart LR
 |------|---------|-------------|---------|
 | 高程图 | 2.5D 栅格（11×11 ~ 64×64） | 激光雷达/深度相机 → elevation mapping 管线 | ETH 系感知行走 |
 | 深度图 | 单/多视角 depth image | 深度相机 → CNN/Transformer 编码 | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)（多视角深度学生）、LadderMan |
+| 足底触觉特征 | 归一化 $\bar F$、CoP、接触面积比（双足历史） | 压力鞋垫 + 与仿真一致的特征提取 | [TactileStep](../entities/paper-tactilestep.md)（叠加深度跑酷 actor 观测） |
 | scandots/点云 | 稀疏采样点 | 激光雷达采样（常作为仿真特权） | Extreme Parkour Teacher |
 | 地形 latent | 64–256 维向量 | 深度/高程经编码器压缩，**通常不是可读高度图** | 见 [地形 Latent 表征](./terrain-latent-representation.md) |
 | RGB/语义 | 图像或语义特征 | 相机 + 骨干网络 | VLA / 导航高层（低频接入） |
