@@ -9,7 +9,7 @@ tags:
   - classification
   - perception
 status: complete
-updated: 2026-09-21
+updated: 2026-10-01
 arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks
