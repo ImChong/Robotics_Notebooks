@@ -28,6 +28,7 @@ related:
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md
   - ./paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md
+  - ./paper-rom-nav.md
 sources:
   - ../../sources/papers/generate_track_improve_arxiv_2609_31577.md
   - ../../sources/sites/generate-track-improve-github-io.md
