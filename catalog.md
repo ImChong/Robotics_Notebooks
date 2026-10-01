@@ -436,7 +436,7 @@
 - [Cityscapes](wiki/entities/dataset-cityscapes.md) — Cityscapes**：城市场景语义/实例分割基准（车载视角）；自动驾驶与户外移动机器人视觉评测常用。 `📅unknown` `[entity_page]`
 - [MS COCO](wiki/entities/dataset-coco.md) — MS COCO**：目标检测/实例分割/关键点主流基准：约 20 万图、80 物类；mAP 与机器人检测迁移评测的事实标准之一。 `📅unknown` `[entity_page]`
 - [Flickr30K Entities](wiki/entities/dataset-flickr30k-entities.md) — Flickr30K Entities**：Flickr30K 的短语级图文对齐扩展：把描述中的实体短语与图像区域框关联，服务定位/接地评测。 `📅unknown` `[entity_page]`
-- [ImageNet / ImageNet-21K](wiki/entities/dataset-imagenet.md) — ImageNet / ImageNet-21K**：大规模图像分类与预训练基石：ILSVRC-1K（约 1.28M/1k 类）与 ImageNet-21K 更广词表；ViT/ResNet 等视觉骨 `📅unknown` `[entity_page]`
+- [ImageNet / ImageNet-21K](wiki/entities/dataset-imagenet.md) — ImageNet** 是以 **WordNet synset** 为骨架、人工质控的 **层次化大规模图像库**；**ILSVRC** 取其子集形成 **1000 类、百万级** 分类/检测/定位 `📅unknown` `[entity_page]`
 - [JFT-300M](wiki/entities/dataset-jft-300m.md) — JFT-300M**：Google 内部约 3 亿图的大规模弱标签分类数据；支撑 ViT 等大模型数据规模论证，外部通常不可直接下载。 `📅unknown` `[entity_page]`
 - [Mapillary Vistas](wiki/entities/dataset-mapillary.md) — Mapillary Vistas**：街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。 `📅unknown` `[entity_page]`
 - [MNIST](wiki/entities/dataset-mnist.md) — MNIST**：手写数字分类小规模基准：6 万训练/1 万测试灰度 28×28；教学与算法冒烟测试常用，非现代机器人感知主基准。 `📅unknown` `[entity_page]`

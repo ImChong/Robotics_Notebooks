@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | ImageNet 一手资料：CVPR 2009 建库论文、IJCV/arXiv ILSVRC 综述、image-net.org 站点归档；升格 dataset-imagenet 实体页
+
 ## [2026-10-01] ingest | Lot Vulture 项目页+GitHub lotvulture/lotvulture；源码可得 PolyForm Shield 衍生许可；实体 lotvulture + ORT 交叉；自动合并 PR
 
 ## [2026-10-01] ingest | Science Advances aed5603（FLEXOR 脊-腿协同，北理工×南大）；sources+实体页；项目页无代码
