@@ -33,7 +33,10 @@ ENTRIES: list[dict] = [
     {
         "blog": "wechat_goodman_modern_robotics_ch3_planar_rigid_motion.md",
         "ord": 2,
-        "wiki": ["lie-group-rigid-body-motions", "overview/modern-robotics-wechat-principles-series"],
+        "wiki": [
+            "lie-group-rigid-body-motions",
+            "overview/modern-robotics-wechat-principles-series",
+        ],
         "one_liner": "Modern Robotics 第 3 章（1）：向量与参考系、平面 SE(2) 刚体运动与旋转矩阵下标规则。",
         "bullets": [
             "几何向量与坐标列向量分离；同一向量在不同基下坐标不同。",
@@ -141,6 +144,7 @@ ENTRIES: list[dict] = [
 def blog_body(entry: dict, art: dict) -> str:
     raw_rel = art["raw"]
     wiki_links = entry["wiki"]
+
     def wiki_href(w: str) -> str:
         if w.startswith("overview/"):
             return f"../../wiki/{w}.md"
@@ -148,25 +152,23 @@ def blog_body(entry: dict, art: dict) -> str:
             return f"../../wiki/{w}.md"
         return f"../../wiki/formalizations/{w}.md"
 
-    mapping = "\n".join(
-        f"- [{w.split('/')[-1]}]({wiki_href(w)})" for w in wiki_links
-    )
+    mapping = "\n".join(f"- [{w.split('/')[-1]}]({wiki_href(w)})" for w in wiki_links)
     bullets = "\n".join(f"- {b}" for b in entry["bullets"])
     pub = (art.get("publish_time") or "")[:10]
-    return f"""# {art['title']}
+    return f"""# {art["title"]}
 
 > 来源归档（blog / 微信公众号 · Modern Robotics 原理精读）
 
-- **标题：** {art['title']}
+- **标题：** {art["title"]}
 - **类型：** blog
-- **作者：** {art.get('author', '写个 goodMan')}（微信公众号）
-- **原始链接：** {art['url']}
+- **作者：** {art.get("author", "写个 goodMan")}（微信公众号）
+- **原始链接：** {art["url"]}
 - **发表日期：** {pub}
 - **入库日期：** {TODAY}
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
-- **专栏专辑：** [Modern Robotics 原理精读]({ALBUM_URL})（第 {entry['ord']} 篇 / 10）
+- **专栏专辑：** [Modern Robotics 原理精读]({ALBUM_URL})（第 {entry["ord"]} 篇 / 10）
 - **原始抓取落盘：** [`{raw_rel}`](../{raw_rel})
-- **一句话说明：** {entry['one_liner']}
+- **一句话说明：** {entry["one_liner"]}
 
 ## 核心摘录（归纳，非全文）
 
@@ -201,8 +203,8 @@ def write_album_md(data: dict) -> None:
     ALBUM_MD.write_text(
         f"""# 微信公众号专辑：Modern Robotics 原理精读
 
-- **公众号：** {data['account']}（`__biz={data['biz']}`）
-- **专辑 ID：** {data['album_id']}
+- **公众号：** {data["account"]}（`__biz={data["biz"]}`）
+- **专辑 ID：** {data["album_id"]}
 - **专辑链接：** {ALBUM_URL}
 - **入库日期：** {TODAY}
 - **抓取方式：** 专辑 HTML 解析 10 条 `data-link`；正文 Camoufox 专辑同会话跳转；清单 JSON 见 [wechat_modern_robotics_album_4521219024549937157.json](./wechat_modern_robotics_album_4521219024549937157.json)
