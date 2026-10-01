@@ -11,7 +11,7 @@ tags:
   - datawhale
   - tutorial
 status: complete
-updated: 2026-09-23
+updated: 2026-10-01
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/retrieval-augmented-generation.md
@@ -93,6 +93,8 @@ flowchart TB
 - **License NC：** CC BY-NC-SA 限制 **商业再分发**；学习、内部引用、链到官方站无碍；二次商用需另议授权。
 
 ## 关联页面
+
+- [Astra Games / Awesome GPT-6 Astra](astra-games.md) — AI 辅助浏览器作品案例；参考交互与验证方法，源码和许可按作品核查。
 
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — vibe coding 之后必补的 SE 取舍
 - [Retrieval-Augmented Generation（RAG）](../concepts/retrieval-augmented-generation.md) — 理论概念 + Easy-Vibe 交互演示
