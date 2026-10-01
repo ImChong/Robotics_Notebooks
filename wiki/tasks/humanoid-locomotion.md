@@ -45,6 +45,22 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 让两条腿（甚至加上手和膝盖）在各种烂路上走稳、走远、走得像人。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 核心挑战
 
 1. **高维非线性动力学**：人形机器人具有数十个自由度，其动力学模型高度复杂且存在欠驱动（Under-actuated）阶段。
@@ -137,22 +153,6 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [IHMC 可编辑 loco-manipulation 系统](../entities/paper-ihmc-fast-resilient-loco-manipulation.md) — Affordance Template + 行为树；H1-2/Alex 推门 34 s（arXiv:2609.01518；未见代码）
 - [RoboGesture](../entities/paper-robogesture.md) — 流式语音→G1 语义手势；DiT-CFM + MPC 安全滤波（arXiv:2608.28693；未开源）
 - [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)

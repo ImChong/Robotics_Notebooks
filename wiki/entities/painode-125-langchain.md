@@ -16,7 +16,7 @@ sources:
 
 # LangChain（Physical AI 清单 #125）
 
-**LangChain** 收录于 awesome-physical-ai（aichr）**第 125/384** 条，分组 **Frameworks & Libraries**。清单级元数据保留在本页；**框架架构、RAG/agent 工程实践与开源边界** 见 canonical 实体页 **[LangChain](./langchain.md)**。
+**LangChain** 收录于 awesome-physical-ai（aichr）**第 125/384** 条，分组 **Frameworks & Libraries**。本页只给出清单信息；**框架架构、RAG/agent 工程实践与开源边界** 见 **[LangChain](./langchain.md)**。
 
 ## 一句话定义
 
@@ -30,7 +30,7 @@ sources:
 | LC | LangChain | 清单条目对应框架 |
 | RAG | Retrieval-Augmented Generation | 常见 LangChain 用例 |
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|

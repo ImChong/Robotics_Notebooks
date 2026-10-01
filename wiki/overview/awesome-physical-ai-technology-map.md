@@ -30,7 +30,7 @@ sources:
 |------|----------|----------|
 | PAI | Physical AI | 感知–推理–行动闭环的物理智能 |
 | VLA | Vision-Language-Action | 两清单共同主线 |
-| RFM | Robotics Foundation Model | natnew canonical 类 |
+| RFM | Robotics Foundation Model | 机器人基础模型（natnew 清单的一级分类） |
 | Sim2Real | Simulation to Real | 迁移与评测独立类 |
 
 ## 为什么重要

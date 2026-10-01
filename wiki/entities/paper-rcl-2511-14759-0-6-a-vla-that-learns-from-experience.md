@@ -23,7 +23,7 @@ summary: "π*₀.₆（arXiv:2511.14759）用 RECAP 把示范、自主经验和�
 
 # π\*₀.₆：用经验改进的 VLA
 
-**π\*₀.₆**（*π\*₀.₆: a VLA That Learns From Experience*，[arXiv:2511.14759](https://arxiv.org/abs/2511.14759)，[博客](https://www.pi.website/blog/pistar06)）由 **物理智能（Physical Intelligence）** 提出。方法名 **RECAP**（RL with Experience and Corrections via Advantage-conditioned Policies）：用优势值告诉策略哪些片段该模仿，从而把演示、自主 rollout 和人工纠正放进同一次训练。本页同时是 [RCL Awesome WAM](../overview/rcl-awesome-wam-technology-map.md) 清单第 **265/564** 篇（分组 VLA）的详情节点，不另建同 arXiv 页面。
+**π\*₀.₆**（*π\*₀.₆: a VLA That Learns From Experience*，[arXiv:2511.14759](https://arxiv.org/abs/2511.14759)，[博客](https://www.pi.website/blog/pistar06)）由 **物理智能（Physical Intelligence）** 提出。方法名 **RECAP**（RL with Experience and Corrections via Advantage-conditioned Policies）：用优势值告诉策略哪些片段该模仿，从而把演示、自主 rollout 和人工纠正放进同一次训练。本页同时是 [RCL Awesome WAM](../overview/rcl-awesome-wam-technology-map.md) 清单第 **265/564** 篇（分组 VLA）在站内对应的那一页。
 
 ## 一句话定义
 
@@ -67,7 +67,7 @@ flowchart LR
 | [π₀.₇](../methods/pi07-policy.md) | 把本页专精 rollout 蒸馏进可提示的通才，不是同一个训练环 |
 | [RTC](./paper-real-time-chunking.md) | 咖啡演示用了训练期 chunk 衔接，不改变优势条件本身 |
 | [PI Layer](./pi-physical-intelligence-layer.md) | 伙伴现场叙事，数字不能和本文实验表横比 |
-| RCL 清单索引 | 本页已升格为深度笔记，清单坐标保留在文首 |
+| RCL 清单索引 | 本页是深度笔记，清单坐标保留在文首 |
 
 ## 结论
 
@@ -77,7 +77,7 @@ flowchart LR
 - 优势条件是接口；价值函数、奖励和数据混合决定它学到什么
 - π₀.₇ 吸收的是这条专精路线产生的 rollout，二者不要合成一个模型页
 - openpi 的监督 `train.py` 不是 RECAP
-- 全库只保留这一页作为 arXiv:2511.14759 的详情节点
+- 站内关于 arXiv:2511.14759 的内容都集中在这一页
 
 ## 源码运行时序图
 
