@@ -4069,7 +4069,7 @@
 - [TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）](wiki/entities/paper-taco-tactile-wm-vla-posttrain.md) — TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [TacPAC：触觉预测驱动的 WAM 实时动作修正](wiki/entities/paper-tacpac.md) — TacPAC**（*Tactile Prediction and Real-Time Action Correction in World-Action Models for Contact-Ri `📅unknown` `[entity_page]`
 - [TacRefineNet：边缘突出物体的目标条件触觉抓取精修](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md) — TacRefineNet**（*Goal-Conditioned Tactile Grasp Refinement for Edge-Prominent Objects*，小米机器人实验室，arX `📅unknown` `[entity_page]`
-- [TactileStep](wiki/entities/paper-tactilestep.md) — TactileStep: Sole Tactile Learning for Regulating Foot-Terrain Interaction in Humanoid Locomotion `📅unknown` `[entity_page]`
+- [TactileStep：足底触觉学习调节人形足地交互](wiki/entities/paper-tactilestep.md) — TactileStep**（*Sole Tactile Learning for Regulating Foot-Terrain Interaction in Humanoid Locomotio `📅unknown` `[entity_page]`
 - [TADreamer](wiki/entities/paper-tadreamer.md) — TADreamer**（*Zero-Shot Language-Guided 3D Navigation for Terrestrial-Aerial Bimodal Robots via Vid `📅unknown` `[entity_page]`
 - [Sim-to-real: learning agile locomotion for quadruped robots](wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md) — Sim-to-real: learning agile locomotion for quadruped robots**（[arXiv:1804.10332](https://arxiv.org `📅unknown` `[entity_page]`
 - [TANDEM（arXiv:2609.28314）](wiki/entities/paper-tandem.md) — TANDEM: Task and Motion Planning with As-Needed Demonstrations for Efficient Vision-Language-Actio `📅unknown` `[entity_page]`
