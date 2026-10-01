@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | Grounded Action Model (2609.23863)：Northwestern/UW/NUS 3D grounding 操纵 foundation model；项目页+GitHub 核查为代码待发布；升格 paper-grounded-action-model-3d-grounding 并链入 vla.md
+
 ## [2026-10-01] ingest | 多模空间一周 VLA 第二篇（15 篇）；新建 12 实体 + 技术地图；复用 G0.5/StellaVLA/Neural Introspection Gating
 
 ## [2026-10-01] ingest | 微信公众号 LLM 推理显存估算长文；新建 concepts/llm-inference-vram-estimation + sources 归档；交叉 VLA 部署与国内租卡；自动合并 PR
