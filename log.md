@@ -1,3 +1,5 @@
+## [2026-10-01] ingest | 多模空间一周 VLA 第二篇（15 篇）；新建 12 实体 + 技术地图；复用 G0.5/StellaVLA/Neural Introspection Gating
+
 ## [2026-10-01] ingest | 微信公众号 LLM 推理显存估算长文；新建 concepts/llm-inference-vram-estimation + sources 归档；交叉 VLA 部署与国内租卡；自动合并 PR
 
 ## [2026-10-01] ingest | ImageNet 一手资料：CVPR 2009 建库论文、IJCV/arXiv ILSVRC 综述、image-net.org 站点归档；升格 dataset-imagenet 实体页
