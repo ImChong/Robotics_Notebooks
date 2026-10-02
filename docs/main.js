@@ -6730,6 +6730,8 @@
       el.classList.remove('home-reveal', 'is-revealed');
       el.style.removeProperty('--reveal-delay');
     };
+    // 不收缩视口底边：页面末尾的元素（如「查看完整榜单」）滚到底时离视口底只有约 120px，
+    // 高视口下 -8% 的底边收缩会让它永远不进入判定区，停在 opacity:0
     var revealObserver = new IntersectionObserver(function (entries) {
       var batch = 0;
       for (var rei = 0; rei < entries.length; rei++) {
@@ -6742,7 +6744,7 @@
         // 过渡结束后摘掉类名，恢复卡片原有的 hover transition
         window.setTimeout(finishReveal, REVEAL_MS + delay + 50, el);
       }
-    }, { rootMargin: '0px 0px -8% 0px' });
+    });
     for (var rpi = 0; rpi < revealPending.length; rpi++) {
       revealPending[rpi].classList.add('home-reveal');
       revealObserver.observe(revealPending[rpi]);
