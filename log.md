@@ -1,3 +1,7 @@
+## [2026-10-02] structural | 首页 P1 交互动效：Hero 点阵随指针点亮；知识图谱预览改为分帧离屏收敛，滚到区块时节点自中心向外扩散入场（终态与原先一致）；均有 prefers-reduced-motion 降级
+
+## [2026-10-02] structural | 首页 P0 交互动效：首屏以下区块滚动入场、入口卡指针光斑、主题切换圆形扩散（View Transitions）、路线 / 公司展开高度过渡；均有 prefers-reduced-motion 降级
+
 ## [2026-10-02] ingest | sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md — 逐篇映射30篇论文，补齐8个独立详情页；核查DexMV/TRAM代码与其余项目开放状态
 
 ## [2026-10-02] ingest | sources/papers/supermap_arxiv_2608_22896.md — 收录 CMU AirLab 时空 SLAM 与语言导航空间记忆；核查源码待发布，关联 VLN。
