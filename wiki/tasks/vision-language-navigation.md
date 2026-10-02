@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-09-30
+updated: 2026-10-02
 status: complete
 related:
   - ../entities/paper-abot-n1.md
@@ -216,6 +216,10 @@ sources:
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
+
+## 持久空间记忆
+
+[SuperMap](../entities/paper-supermap.md)（CMU AirLab，RSS 2026）用高频几何 SLAM 与异步开放词汇感知维护物体身份、空间关系和时间历史，为语言导航提供查询式 4D 场景图。截至 2026-10-02，官方仓库已公开，但可运行源码待发布。
 
 ## 关联页面
 
