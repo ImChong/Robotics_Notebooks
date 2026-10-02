@@ -142,6 +142,7 @@ flowchart LR
 - **元数据必须随轨迹走**：每个 episode 要保留本体、数据源、任务文本、观测键、动作语义与时间结构，否则统一张量会掩盖不可比数据
 - **正迁移不是必然**：RT-X 实际只选了 9 种本体入同一模型，结论支持"数据多样性帮助迁移"，不支持"训一次就能零样本控任意机器人"
 - **工具链与格式生态**：[LeRobot](../wiki/entities/lerobot.md) 把采集、训练、仿真评测与部署收进同一套数据抽象，是当前最省事的落地格式选择之一
+- **厂商模型的数据供给例子**：[KUAVO-VLA-1.0](../wiki/entities/kuavo-vla-1.md) 声称使用 600+ 小时 Kuavo 真机数据开展二次训练；其配套数据目前需申请审核，截图数字和许可边界见实体页。
 - **数据集选型与许可**：参考运动与操作数据集在规模、模态、许可上差异巨大（[数据集选型对照](../wiki/comparisons/humanoid-reference-motion-datasets.md)）；[NVIDIA Physical AI 数据集](../wiki/entities/nvidia-physical-ai-datasets.md) 等集合存在**部分子集门控**，选型时须先核查可商用边界
 
 ### 推荐做什么

@@ -22,6 +22,7 @@ related:
   - ./icra-2026-real-i.md
   - ./lingbot-vla.md
   - ./lingbot-vla-v2.md
+  - ./kuavo-vla-1.md
   - ./isaac-gr00t.md
   - ./cyclo-intelligence.md
   - ../concepts/behavior-tree-vla-orchestration.md
@@ -31,9 +32,10 @@ related:
 sources:
   - ../../sources/sites/letools-lejurobot.md
   - ../../sources/sites/letools-docs.md
+  - ../../sources/sites/kuavo-vla-1.md
   - ../../sources/repos/letools-learning.md
   - ../../sources/repos/letools_opensource.md
-summary: "LeTools 是乐聚面向 Kuavo 的具身软件层：Learning 仓把 rosbag 转成 LeRobot v3 并训练 ACT/π/GR00T/LingbotVLA；opensource 仓用 SkillBase + 行为树调 SDK。门户含文档双栏与托管 KuavoChat 助手。"
+summary: "LeTools 是乐聚面向 Kuavo 的具身软件层：Learning 仓把 rosbag 转成 LeRobot v3 并训练 ACT/π/GR00T/LingbotVLA，也承接 KUAVO-VLA-1.0 工具链；opensource 仓用 SkillBase + 行为树调 SDK。门户含文档双栏与托管 KuavoChat 助手。"
 ---
 
 # LeTools
@@ -123,6 +125,8 @@ python3 apps/test_upper_init/run_behavior_tree_json.py \
 这与 [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) **不是同一模式**：LeTools Skills 的 BT 调度的是 **硬件原子动作**；Cyclo 一类栈的 BT 调度的是 **VLA 生命周期（LOAD/RESUME/STOP）**。
 
 ## Learning 训练–部署
+
+[KUAVO-VLA-1.0](./kuavo-vla-1.md) 是乐聚面向 Kuavo 与工业操作场景发布的垂域模型；它的模型权重与配套数据通过 OpenLET 申请审核。下面的 LeTools-Learning 通用 rosbag→LeRobot→训练/部署工具链是相关工程入口，不能据此推断模型权重许可。
 
 推荐环境：Ubuntu 20.04、Python 3.12、ROS Noetic、CUDA、`conda` 环境名 `letools`、`bash setup_env.sh`。
 
