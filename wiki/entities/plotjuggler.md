@@ -2,8 +2,9 @@
 type: entity
 tags: [software, visualization, debugging, ros2, ros1, time-series, px4, middleware, linux-foundation, multimodal]
 status: complete
-updated: 2026-08-10
+updated: 2026-10-02
 related:
+  - ./serial-studio.md
   - ../concepts/ros2-basics.md
   - ../queries/robot-policy-debug-playbook.md
   - ./px4-autopilot.md
@@ -153,6 +154,8 @@ flowchart LR
 - **超大数据集**：虽宣称百万级点，极端高频全机 log 仍建议 **先裁剪 topic/时间窗**。
 
 ## 关联页面
+
+- [Serial Studio](./serial-studio.md) — 串口/MCU 硬件遥测仪表盘；CAN、Modbus、MQTT 属于其 Pro 功能，ROS 日志分析可与 PlotJuggler 分工。
 
 - [ROS 2 基础](../concepts/ros2-basics.md) — topic/bag 语义与 QoS；PJ 是 ROS 调试工具链一环。
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — obs/action 时序对比推荐工具之一。
