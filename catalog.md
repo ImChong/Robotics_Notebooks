@@ -1725,6 +1725,7 @@
 - [HIL：混合模仿学习做动态运动控制](wiki/entities/paper-hil-hybrid-imitation-learning.md) — HIL**（*Hybrid Imitation Learning for Dynamic Athletic Control*，[*ACM Transactions on Graphics* 202 `📅unknown` `[entity_page]`
 - [HINT：长视野操作的人类意图注入](wiki/entities/paper-hint-robot-manipulation.md) — HINT**（*Human-Intent Inception for Long-Horizon Robot Manipulation*，[arXiv:2609.02653](https://arx `📅unknown` `[entity_page]`
 - [hint²：层级世界模型推理时 LTL 引导](wiki/entities/paper-hint2.md) — hint²**（*Hierarchical World Models for Inference-Time Temporal Logic Guidance*；[arXiv:2608.13678 `📅unknown` `[entity_page]`
+- [HiPHI（高精度人体运动与人–物交互基准）](wiki/entities/paper-hiphi.md) — HiPHI** 是面向人形学习的光学动捕数据集与基准：以语义结构设计运动覆盖，同时记录人体动作、物体轨迹和物体几何，作为重定向与全身模仿的参考源。 `📅unknown` `[entity_page]`
 - [HiTac-WAM（分层触觉世界–动作模型）](wiki/entities/paper-hitac-wam.md) — HiTac-WAM**（*A Hierarchical Tactile World Action Model for Contact-Rich Robot Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [HKTex：热核纹理（不测地线高斯，也不 Splat）](wiki/entities/paper-hktex-heat-kernel-textures.md) — Heat Kernel Textures（HKTex）**（*Heat Kernel Textures: the Geodesic Gaussians That Do Not Splat*，[ar `📅unknown` `[entity_page]`
 - [HM3D-OVON](wiki/entities/paper-hm3d-ovon.md) — HM3D-OVON**（Open-Vocabulary Object Goal Navigation with Embodied Foundation Models）在 [Light Origin `📅unknown` `[entity_page]`
