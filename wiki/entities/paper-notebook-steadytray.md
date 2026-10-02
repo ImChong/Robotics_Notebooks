@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, loco-manipulation, residual-learning, reinforcement-learning, ppo, tray-transport, sim2real, unitree-g1, ucsd, humanoid-paper-notebooks]
+tags: [paper, humanoid, loco-manipulation, residual-learning, reinforcement-learning, ppo, tray-transport, sim2real, unitree-g1, ucsd, humanoid-paper-notebooks, iros-2026]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-02
 arxiv: "2603.10306"
 code: https://github.com/AllenHuangGit/steadytray
 related:
@@ -13,18 +13,20 @@ related:
   - ./paper-resmimic.md
   - ./paper-glori-humanoid-loco-manipulation.md
   - ./unitree-g1.md
+  - ../overview/iros-2026-awards-9-papers-technology-map.md
 sources:
   - ../../sources/papers/steadytray_arxiv_2603_10306.md
   - ../../sources/papers/humanoid_pnb_steadytray.md
   - ../../sources/sites/steadytray.md
   - ../../sources/repos/steadytray.md
   - ../../sources/repos/isaaclab-steadytray.md
-summary: "SteadyTray / ReST-RL（arXiv:2603.10306，UCSD）：base locomotion + 残差模块解耦托盘稳定与行走；四阶段 PPO 课程；G1 真机零样本 sim-to-real，仿真 96.9% 变速跟踪 / 74.5% 抗扰；训练与 sim2sim 已开源。"
+  - ../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md
+summary: "SteadyTray / ReST-RL（arXiv:2603.10306，IROS 2026 移动操作最佳论文，UCSD）：base locomotion + 残差模块解耦托盘稳定与行走；四阶段 PPO 课程；G1 真机零样本 sim-to-real；训练与 sim2sim 已开源。"
 ---
 
 # SteadyTray：人形托盘运输中的残差 RL 物体平衡
 
-**SteadyTray**（*Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Learning*，[arXiv:2603.10306](https://arxiv.org/abs/2603.10306)，[项目页](https://steadytray.github.io/)）由 **加州大学圣地亚哥分校（UCSD）** 提出 **ReST-RL**：把 **双足行走** 与 **托盘载荷稳定** 显式解耦——稳健 **base locomotion policy** 负责移动，**残差模块**（Residual Action Adapter / Residual FiLM Adapter）主动抵消步态引起的末端抖动。在 **Unitree G1** 上经四阶段课程训练，仿真达 **96.9%** 变速跟踪成功率与 **74.5%** 外力扰动鲁棒性，并 **零样本 sim-to-real** 搬运多种物体。[代码](https://github.com/AllenHuangGit/steadytray) · [IsaacLab fork](https://github.com/AllenHuangGit/IsaacLab_SteadyTray)
+**SteadyTray**（*Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Learning*，[arXiv:2603.10306](https://arxiv.org/abs/2603.10306)，[项目页](https://steadytray.github.io/)，**IROS 2026 移动操作最佳论文**）由 **加州大学圣地亚哥分校（UCSD）** 提出 **ReST-RL**：把 **双足行走** 与 **托盘载荷稳定** 显式解耦——稳健 **base locomotion policy** 负责移动，**残差模块**（Residual Action Adapter / Residual FiLM Adapter）主动抵消步态引起的末端抖动。在 **Unitree G1** 上经四阶段课程训练，仿真达 **96.9%** 变速跟踪成功率与 **74.5%** 外力扰动鲁棒性，并 **零样本 sim-to-real** 搬运多种物体。[代码](https://github.com/AllenHuangGit/steadytray) · [IsaacLab fork](https://github.com/AllenHuangGit/IsaacLab_SteadyTray)
 
 ## 一句话定义
 
@@ -167,6 +169,7 @@ sequenceDiagram
 - [steadytray 官方仓库](../../sources/repos/steadytray.md)
 - [IsaacLab_SteadyTray fork](../../sources/repos/isaaclab-steadytray.md)
 - [Paper Notebooks 深读笔记](../../sources/papers/humanoid_pnb_steadytray.md)
+- [IROS 2026 九篇获奖盘点（公众号）](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)
 
 ## 推荐继续阅读
 

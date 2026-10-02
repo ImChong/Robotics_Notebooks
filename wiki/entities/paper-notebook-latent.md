@@ -1,23 +1,26 @@
 ---
-
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
-status: stub
-updated: 2026-09-27
+tags: [paper, humanoid-paper-notebooks, unitree, iros-2026, open-source]
+status: complete
+updated: 2026-10-02
 arxiv: "2603.12686"
+code: https://github.com/GalaxyGeneralRobotics/LATENT
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
-  - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
+  - ../overview/iros-2026-awards-9-papers-technology-map.md
+  - ./paper-notebook-steadytray.md
+  - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/humanoid_pnb_latent.md
   - ../../sources/repos/latent.md
+  - ../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md
 summary: "LATENT 只用 5 小时、3 × 5 米小场地采集的\"业余网球动作碎片\"，就把 Unitree G1 训练成会在真人对打下完成连续多拍回合的\"人形网球手\"——核心办法是先用动作跟踪器学出一个可修正的 latent 动作空间，再让高层策略在该空间里做 \"修正 + 组合\"，并用 Latent Action Barrier (LAB) 约束策略别跑出先验分布。"
 ---
 
 # LATENT
 
-**LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。本页为 **清单索引实体**，链向深读笔记与原始论文；详细机制待从笔记消化后补充。
+**LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data**（[arXiv:2603.12686](https://arxiv.org/abs/2603.12686)，[项目页](https://zzk273.github.io/LATENT/)，[代码](https://github.com/GalaxyGeneralRobotics/LATENT)，**IROS 2026 最佳娱乐与游乐论文**）收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：04_Loco-Manipulation_and_WBC）。
 
 ## 一句话定义
 
@@ -67,6 +70,7 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 
 - [LATENT 源码归档](../../sources/repos/latent.md)（<https://github.com/GalaxyGeneralRobotics/LATENT>）
 
+- [IROS 2026 九篇获奖盘点（公众号）](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)
 - [humanoid_pnb_latent.md](../../sources/papers/humanoid_pnb_latent.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat.html>
 - 论文：<https://arxiv.org/abs/2603.12686>
