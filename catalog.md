@@ -1639,6 +1639,7 @@
 - [G1 斜坡全身作业 Locomotion（arXiv:2609.20558）](wiki/entities/paper-g1-slope-adaptive-roofing-locomotion.md) — Learning Slope-Adaptive Whole-Body Locomotion for Humanoid Robots in Roofing Construction**（佛罗里达大学 `📅unknown` `[entity_page]`
 - [G2G：利用组内几何做组间位姿估计](wiki/entities/paper-g2g.md) — G2G**（*Exploiting Intra-Group Geometry for Inter-Group Pose Estimation*，[arXiv:2606.08284](https:/ `📅unknown` `[entity_page]`
 - [GA 坡面双足（arXiv:2609.20570）](wiki/entities/paper-ga-biped-slope-gait.md) — GA 坡面双足**（*Walking on the Slope: Stable Bipedal Gaits with Genetic-Algorithm-Optimized Trajectorie `📅unknown` `[entity_page]`
+- [GAE：General Action Expert for Real-Time Humanoid Teleoperation](wiki/entities/paper-gae-general-action-expert.md) — GAE** 是让人形机器人实时模仿操作员全身动作的运动控制框架：离线用生成器清洗并适配人类动作，执行器直接接收人体动作，在部署时按实际延迟预判。 `📅unknown` `[entity_page]`
 - [GAE（Geometry-Native Autoencoder · arXiv:2609.24981）](wiki/entities/paper-gae-geometry-native-autoencoder.md) — GAE**（*Learning a Geometry-Native Latent Space for 3D-Consistent World Generation*，[arXiv:2609.249 `📅unknown` `[entity_page]`
 - [GAIA-1（GAIA-1: A Generative World Model for Autonomous Driving · arXiv:2309.17080）](wiki/entities/paper-gaia1.md) — GAIA-1**（*GAIA-1: A Generative World Model for Autonomous Driving*，[2309.17080](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [GAINS](wiki/entities/paper-gains.md) — GAINS: Leveraging Inconsistent Human Intervention Signals in Reinforcement Learning**（[arXiv:2608. `📅unknown` `[entity_page]`
