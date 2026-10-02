@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-02
 summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、动力学精炼（SBTO/DSMS/KDMR/SPARK）、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
 ---
 
@@ -44,6 +44,10 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 | 下游 | 重定向后如何进入 WBT / AMP | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 
 ## 与其他知识链的关系
+
+### Day 1：数据与重定向逐篇入口
+
+[原文的 30 篇论文逐篇索引](../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md)保留每篇独立详情页。此次新增 [DexMV](../entities/paper-dexmv.md)、[TRAM](../entities/paper-tram-global-human-motion.md)、[ECHO-G](../entities/paper-echo-g-cospeech-humanoid.md)、[OTRetarget](../entities/paper-otretarget.md)、[Dense Temporal Retargeting](../entities/paper-dense-temporal-motion-retargeting.md)、[GestAdapt](../entities/paper-gestadapt.md)、[PhyVisGen](../entities/paper-phyvisgen.md)、[Automatic Labelling](../entities/paper-automatic-labelling-bimanual-mobile.md)；其余已有论文节点直接复用，不另造同名页。
 
 - **[WBT](./hub-wbt.md)**：消费重定向轨迹做全身跟踪策略。
 - **[跨具身](./hub-cross-embodiment.md)**：重定向是跨形态迁移的前置步骤。
