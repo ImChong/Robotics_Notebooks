@@ -466,6 +466,9 @@
       pointer-events: none;
       z-index: 1;
     }
+    /* 点阵随指针点亮（.dot-glow-host，见 style.css）：点距与上方点阵一致，层级与之相同 */
+    #graph-wrap { --dot-glow-size: 30px; }
+    #graph-wrap::after { z-index: 1; }
 
     /* ── Tooltip ── */
     #graph-tooltip {
@@ -1892,7 +1895,7 @@
   </div>
 
   <!-- ── 图谱容器 ── -->
-  <div id="graph-wrap">
+  <div id="graph-wrap" class="dot-glow-host">
     <div id="graph-loading" role="status" aria-live="polite">
       <div class="graph-loading-inner">
         <div class="graph-loading-spinner" aria-hidden="true"></div>
