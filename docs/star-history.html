@@ -262,25 +262,21 @@
       }
 
       // 社区名 / 纵深名做横向条形图：长标签放纵轴水平排布，不再斜排挤占图面；
-      // 按合计降序（最大在上），条末标数值；多个 series 时按社区堆叠并显示图例
+      // 保持数据给出的顺序（社区按大小、纵深按 DEPTH_ORDER，首项在上），条末标数值；多个 series 时按社区堆叠并显示图例
       function drawCategory(view, s, text, muted, grid) {
         var narrow = narrowMq.matches;
         var totals = s.cats.map(function (_, i) {
           return s.series.reduce(function (a, t) { return a + t.values[i]; }, 0);
         });
-        var order = s.cats.map(function (_, i) { return i; })
-          .sort(function (a, b) { return totals[b] - totals[a]; });
         // 窄屏只显示中文名，完整「中文（English）」留给悬停提示
-        var labels = order.map(function (i) {
-          return narrow ? RNGraphTooltip.shortenCommunityLabel(s.cats[i]) : s.cats[i];
+        var labels = s.cats.map(function (c) {
+          return narrow ? RNGraphTooltip.shortenCommunityLabel(c) : c;
         });
         var stacked = s.series.length > 1;
         var traces = s.series.map(function (t) {
           return {
             type: 'bar', orientation: 'h', name: t.name,
-            y: labels, x: order.map(function (i) { return t.values[i]; }),
-            customdata: order.map(function (i) { return s.cats[i]; }),
-            marker: { color: Array.isArray(t.color) ? order.map(function (i) { return t.color[i]; }) : t.color },
+            y: labels, x: t.values, customdata: s.cats, marker: { color: t.color },
             hovertemplate: '%{customdata}<br>' + (t.name ? t.name + '：' : '') + '%{x} ' + view.unit + '<extra></extra>'
           };
         });
@@ -297,8 +293,8 @@
           margin: { t: 10, r: 12, b: 30, l: 10 },
           xaxis: { gridcolor: grid, rangemode: 'tozero', range: [0, max * 1.12], fixedrange: true },
           yaxis: { type: 'category', autorange: 'reversed', automargin: true, ticksuffix: ' ', fixedrange: true },
-          annotations: order.map(function (i, r) {
-            return { x: totals[i], y: labels[r], text: String(totals[i]), xanchor: 'left', xshift: 4,
+          annotations: totals.map(function (v, i) {
+            return { x: v, y: labels[i], text: String(v), xanchor: 'left', xshift: 4,
               showarrow: false, font: { color: muted, size: narrow ? 10 : 11 } };
           }),
           barmode: 'stack', bargap: 0.25, showlegend: false,
