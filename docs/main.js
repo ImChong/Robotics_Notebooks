@@ -6654,8 +6654,9 @@
   }
 
   // ── 点阵随指针点亮（全站，样式见 style.css「点阵随指针点亮」）：
-  //    body 底纹由固定小层 .dot-glow 跟随指针；自带点阵的 .dot-glow-host 容器写入指针相对容器的坐标 ──
-  if (finePointer && !prefersReducedMotion) {
+  //    body 底纹由固定小层 .dot-glow 跟随指针；自带点阵的 .dot-glow-host 容器写入指针相对容器的坐标。
+  //    图谱页（#graph-wrap）不启用：指针在画布上探索节点，点亮会干扰 ──
+  if (finePointer && !prefersReducedMotion && !document.getElementById('graph-wrap')) {
     var DOT_GLOW_RADIUS = 170; // 与 .dot-glow 宽高的一半、遮罩半径一致
     var dotGlow = document.createElement('div');
     dotGlow.className = 'dot-glow';
