@@ -28,6 +28,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ./unitree-g1.md
   - ./paper-twist2.md
+  - ./paper-gae-general-action-expert.md
   - ./paper-heft.md
   - ./paper-telegate.md
   - ./paper-immersive-social-vr-llm-humanoids.md
@@ -241,6 +242,8 @@ sequenceDiagram
 - [SONIC](../methods/sonic-motion-tracking.md) — Table 6 规模化 tracking 基线
 - [Unitree G1](./unitree-g1.md)、[Whole-Body Control](../concepts/whole-body-control.md)、[Motion Retargeting](../concepts/motion-retargeting.md)
 
+- [GAE：General Action Expert](./paper-gae-general-action-expert.md) — 同为西湖全身遥操作，着重万小时运动数据、双阶段训练与延迟预判。
+
 ## 参考来源
 
 - [teleopit-project.md](../../sources/sites/teleopit-project.md) — 项目页与五仓开源核查
@@ -257,3 +260,4 @@ sequenceDiagram
 - [TWIST2（便携采集对照）](./paper-twist2.md)
 - [HEFT（重载 VR 对照）](./paper-heft.md)
 - [OASIS（Teleopit 低层引用）](./paper-loco-manip-04-oasis.md)
+
