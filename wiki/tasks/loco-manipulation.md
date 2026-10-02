@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-09-30
+updated: 2026-10-02
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -104,6 +104,10 @@ flowchart TD
 ```
 
 ## 核心挑战
+
+### 攀爬与易碎物维护评测
+
+[Fiatlux](../entities/paper-fiatlux.md)把 G1 搬梯、上下梯、换灯与旧灯处置连接为十二子任务，并分别评分进度、成功和物品完整性。代码/仿真数据已公开；八个非攀爬子任务有成功遥操作，四个攀爬子任务仍缺通过门控的示范。优先把**梯上站稳、从地面上梯、持物下梯、完整任务切换**作为不同验收项。
 
 ### 1. 全身动力学耦合
 手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**
@@ -447,6 +451,9 @@ flowchart TD
 - [语义音频驱动 WBC（论文实体）](../entities/paper-semantic-audio-wbc-humanoid.md) — 音频指纹/语音语义在线调度 BeyondMimic 技能库（arXiv:2607.14182，G1 真机）
 
 ## 参考来源
+
+- [Fiatlux 论文与评测边界](../../sources/papers/fiatlux_arxiv_2609_38216.md)
+
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
 - [Awesome-Legged-Robot-Learning（ClearLab）](../entities/awesome-legged-robot-learning-clearlab.md) — SUSTech 腿足/WBC arXiv 精选

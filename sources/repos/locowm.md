@@ -7,6 +7,9 @@
 - **来源：** 中国科学院自动化研究所（CASIA）等
 - **链接：** <https://github.com/zhaozijie2022/LocoWM>
 - **入库日期：** 2026-10-01
+- **核查日期：** 2026-10-02
+- **项目页归档：** [LocoWM 项目页](../sites/locowm.md)
+- **论文归档：** [LocoWM 论文](../papers/locowm_arxiv_2609_39179.md)
 - **一句话说明：** LocoWM 官方仓库：Isaac Sim 5.1 / Isaac Lab 固定 commit 上的 Go2-W 两阶段 RSL-RL 训练、world model、残差 adapter 与 payload 成功率评测脚本。
 - **沉淀到 wiki：** [`wiki/entities/paper-locowm.md`](../../wiki/entities/paper-locowm.md)
 
@@ -40,3 +43,9 @@
 | [paper-locowm](../../wiki/entities/paper-locowm.md) | 论文实体与结论 |
 | [paper-notebook-steadytray](../../wiki/entities/paper-notebook-steadytray.md) | 同为托盘/载荷高精度行走；SteadyTray 为 **反应式** 残差，LocoWM 强调 **WM 预测 preactive** |
 | [paper-wm-loco](../../wiki/entities/paper-wm-loco.md) | 同名缩写不同工作：WM-LOCO 为人形落脚 RSSM+PPO，非本文 |
+
+## 2026-10-02 复核补充
+
+官方 README 的 `succ_eval` 会重试初始加速阶段掉载荷，并将其排除出成功/失败计数；复现时应报告重试/排除数量。Stage 1 policy 与 world model 需来自同一 run、同一迭代。公开任务入口主要为 Go2-W，不能视为现成 G1 真机包。
+
+**对 wiki 的映射：** [LocoWM](../../wiki/entities/paper-locowm.md)、[残差策略学习](../../wiki/methods/residual-policy-learning.md)。
