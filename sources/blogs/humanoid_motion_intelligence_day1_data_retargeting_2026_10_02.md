@@ -5,6 +5,7 @@
 - **文章：** <https://mp.weixin.qq.com/s/9Gh-3hxglD2Zw30DCva1pQ>
 - **原项目：** <https://github.com/RealXiaoze/humanoid-motion-intelligence>
 - **归档依据：** 用户提供的 30 页 PDF；以下是跨主题索引和逐篇独立详情入口，不转录原文。
+- **独立文章节点：** [具身智能从入门到精通 Day 1：数据与重定向](../../wiki/overview/humanoid-motion-intelligence-day1-data-retargeting.md)
 
 ## 主线
 
