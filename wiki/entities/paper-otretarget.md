@@ -10,6 +10,7 @@ related:
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md
   - ../../sources/sites/otretarget-project.md
+  - ../../sources/papers/otretarget_arxiv_2609_36602.md
 summary: "OTRetarget 用表面距离与最优传输同步重定向机器人和多个物体动作，保持接触而不固定物体原轨迹。"
 ---
 
@@ -53,7 +54,7 @@ summary: "OTRetarget 用表面距离与最优传输同步重定向机器人和�
 
 ## 工程实践
 
-复现关注表面采样密度、OT 计划、逐帧 IK 收敛及物体接触时序。项目页“Code”尚无可点击仓库链接；截至 2026-10-02 按**代码未发布**处理。
+复现关注表面采样密度、OT 计划、逐帧 IK 收敛及物体接触时序。项目页的 “Code” 标签目前没有可点击仓库 URL；截至 2026-10-02 暂按**待发布 / 未核实可运行代码**处理。论文 PDF 与 Hugging Face 论文索引可直接阅读，数据评测用 OMOMO；OMOMO 官方下载入口和非官方 HF 镜像需区分，后者没有 dataset card 或明确许可说明。
 
 ## 局限与风险
 
@@ -72,8 +73,10 @@ summary: "OTRetarget 用表面距离与最优传输同步重定向机器人和�
 
 - [Day 1 文章逐篇索引](../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md)
 - [项目页开放状态](../../sources/sites/otretarget-project.md)
+- [论文来源摘录](../../sources/papers/otretarget_arxiv_2609_36602.md)
 - [官方项目页](https://simple-robotics.github.io/publications/otretarget/)
-- [论文](https://arxiv.org/abs/2609.36602)
+- [论文](https://arxiv.org/abs/2609.36602) · [PDF](https://simple-robotics.github.io/publications/otretarget/static/paper/otretarget.pdf) · [Hugging Face 论文页](https://huggingface.co/papers/2609.36602)
+- [OMOMO 官方数据说明](https://lijiaman.github.io/projects/omomo/) · [非官方 Hugging Face 镜像](https://huggingface.co/datasets/snorfyang/omomo)（许可信息未明确）
 
 ## 推荐继续阅读
 

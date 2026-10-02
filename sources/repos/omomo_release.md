@@ -32,3 +32,8 @@ Stanford 团队发布的人–物交互（HOI）动捕数据集与条件扩散�
 - **wiki/entities/omomo-dataset.md**：数据集实体页（归纳级）。
 - **wiki/comparisons/humanoid-reference-motion-datasets.md**：与 AMASS / LAFAN1 / PHUMA / Humanoid Everyday 选型对照。
 - **wiki/entities/omniretarget-dataset.md**：OmniRetarget HF 子集 `robot-object/` 的 OMOMO 来源互链。
+
+## 额外下载入口（非官方镜像）
+
+- Hugging Face 镜像：<https://huggingface.co/datasets/snorfyang/omomo>（页面列出 OMOMO 相关序列文件，约 22.2 GB）。截至 2026-10-02，该页面没有 dataset card 或明确许可说明；仅作为发现入口，下载与使用前应以 [OMOMO 官方项目页](https://lijiaman.github.io/projects/omomo/) 的数据说明和许可为准。
+- 当前可访问范围偏向打包后的 `data.tar.gz` 及样例预览；不要据此假设它与官方完整数据包结构、内容或许可完全相同。
