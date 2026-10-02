@@ -1597,6 +1597,7 @@
 - [FlashDrive（arXiv:2608.12932）](wiki/entities/paper-flashdrive-vla-autonomous-driving.md) — FlashDrive**（arXiv:2608.12932）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [FlashVLA：流式异步 VLA 动作解码](wiki/entities/paper-flashvla.md) — FlashVLA**（*Streaming Action Decoding for Fast and Asynchronous VLA Inference*，[arXiv:2608.27384 `📅unknown` `[entity_page]`
 - [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`
+- [Flatness-Preserving Residual Learning（紧密四旋翼编队）](wiki/entities/paper-flatness-preserving-quadrotor-formation.md) — Flatness-Preserving Residual Learning for Real-Time Tight Quadrotor Formation Flight**（[arXiv:2607 `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
 - [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
 - [FlyCNS（arXiv:2609.28816）](wiki/entities/paper-flycns-connectome-communication.md) — FlyCNS**（*FlyCNS: Connectome-Grounded Information Organization for Communication-Constrained Embod `📅unknown` `[entity_page]`
@@ -1792,6 +1793,7 @@
 - [i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）](wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — i3dGS**（Meuleman et al., arXiv:2607.14481，项目页，[代码](htt `📅unknown` `[entity_page]`
 - [ICI-VLA（时空对齐 In-Context 模仿 · VLA）](wiki/entities/paper-ici-vla-spatiotemporal-icl.md) — ICI-VLA**（*In-Context Imitation with Spatiotemporally Aligned Demonstrations for Vision-Language-A `📅unknown` `[entity_page]`
 - [iCrowdNav（意图感知场景表征的视觉人群导航）](wiki/entities/paper-icrowdnav.md) — iCrowdNav**（*Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations `📅unknown` `[entity_page]`
+- [iFlax（Imperative neuro-symbolic Flax）](wiki/entities/paper-iflax.md) — Neuro-Symbolic Learning for Long-Horizon Task Planning Under Complex Logical Constraints**（[arXiv: `📅unknown` `[entity_page]`
 - [IHMC 快速抗扰可编辑人形 loco-manipulation 系统](wiki/entities/paper-ihmc-fast-resilient-loco-manipulation.md) — IHMC Fast Resilient Loco-Manipulation System**（[arXiv:2609.01518](https://arxiv.org/abs/2609.01518 `📅unknown` `[entity_page]`
 - [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real: Towards Zero-shot Humanoid-Object Interaction via Video Generative Priors**（arXiv:26 `📅unknown` `[entity_page]`
 - [Imagined Rollouts are Kinematic, Not Dynamic（长程世界模型失败诊断）](wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md) — Imagined Rollouts are Kinematic, Not Dynamic**（*A Diagnosis of Long-Horizon World-Model Failure*， `📅unknown` `[entity_page]`
@@ -2065,7 +2067,9 @@
 - [MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — MPC-RL**（*Accelerating and Scaling MPC-Guided Reinforcement Learning for Humanoid Locomotion and M `📅unknown` `[entity_page]`
 - [MPC 脚手架灵巧 RL（arXiv:2609.14878）](wiki/entities/paper-mpc-scaffolding-dex-rl.md) — MPC 脚手架灵巧 RL**（*Real-World Reinforcement Learning with MPC Scaffolding for Dexterous Manipulation `📅unknown` `[entity_page]`
 - [MRSVLMRA（arXiv:2609.27816）](wiki/entities/paper-mrsvlmra.md) — Safe Multi-Robot Coordination via VLM-LLM Reasoning and Reachability Analysis**（[代码](https://githu `📅unknown` `[entity_page]`
+- [MSDP（MultiSensory Dynamic Pretraining）](wiki/entities/paper-msdp.md) — Self-Supervised Multisensory Pretraining for Contact-Rich Robot Reinforcement Learning**（[arXiv:25 `📅unknown` `[entity_page]`
 - [MSFP Survey（具身 AI 多传感器融合感知）](wiki/entities/paper-msfp-embodied-ai-survey.md) — MSFP Survey**（*A Survey of Multi-sensor Fusion Perception for Embodied AI: Background, Methods, Ch `📅unknown` `[entity_page]`
+- [μ₀（3D Interaction-Trace World Model）](wiki/entities/paper-mu0-wm.md) — μ₀: A Scalable 3D Interaction-Trace World Model**（[arXiv:2606.13769](https://arxiv.org/abs/2606.13 `📅unknown` `[entity_page]`
 - [MUJICA：轮足多技能统一本体控制架构](wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2 `📅unknown` `[entity_page]`
 - [MulDP：四足跑酷自主导航扩散策略](wiki/entities/paper-muldp.md) — MulDP**（arXiv:2609.03984）由 **复旦大学智能机器人与先进制造学院** 提出（公众号周更 inges `📅unknown` `[entity_page]`
 - [Multi-Modal Legged Locomotion Framework with Automated Residual RL（ARRL，RA-L/IROS 2022）](wiki/entities/paper-multimodal-legged-arrl.md) — Multi-Modal Legged Locomotion Framework with Automated Residual Reinforcement Learning**（Chen Yu、A `📅unknown` `[entity_page]`
@@ -2274,7 +2278,7 @@
 - [KungfuBot 2（VMS — Versatile Motion Skills）](wiki/entities/paper-notebook-kungfubot-2.md) — KungfuBot 2**（*Learning Versatile Motion Skills for Humanoid Whole-Body Control*，ICRA 2026，arXiv: `📅unknown` `[entity_page]`
 - [KungfuBot（Physics-Based Highly-Dynamic WBT）](wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — KungfuBot**（*Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills*，NeurIPS `📅unknown` `[entity_page]`
 - [LapSurgie](wiki/entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md) — LapSurgie: Humanoid Robots Performing Surgery via Teleoperated Handheld Laparoscopy** 收录于 [Robot L `📅unknown` `[entity_page]`
-- [LATENT](wiki/entities/paper-notebook-latent.md) — LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data** 收录于 [Robot Lea `📅unknown` `[entity_page]`
+- [LATENT](wiki/entities/paper-notebook-latent.md) — LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data**（[arXiv:2603.12 `📅unknown` `[entity_page]`
 - [Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies](wiki/entities/paper-notebook-lcp-sim-to-real-action-smoothing.md) — Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies (LCP)** 收录于 [Robot Lear `📅unknown` `[entity_page]`
 - [Learning Aerodynamics for the Control of Flying Humanoid Robots](wiki/entities/paper-notebook-learning-aerodynamics-for-the-control-of-flying.md) — Learning Aerodynamics for the Control of Flying Humanoid Robots** 已列入 [Robot Learning Paper Notebo `📅unknown` `[entity_page]`
 - [Learning Agile and Dynamic Motor Skills for Legged Robots](wiki/entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md) — Learning Agile and Dynamic Motor Skills for Legged Robots** 收录于 [Robot Learning Paper Notebooks](h `📅unknown` `[entity_page]`
@@ -4177,6 +4181,7 @@
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`
 - [VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）](wiki/entities/paper-vad-vectorized-scene.md) — VAD**（*VAD: Vectorized Scene Representation for Efficient Autonomous Driving*，[2303.12077](https:/ `📅unknown` `[entity_page]`
 - [VANE（arXiv:2608.09448）](wiki/entities/paper-vane.md) — VANE**（arXiv:2608.09448）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–0 `📅unknown` `[entity_page]`
+- [VAP-TAMP（VLM-based Active Perception TAMP）](wiki/entities/paper-vap-tamp.md) — Robot Planning and Situation Handling with Active Perception**（[arXiv:2604.26988](https://arxiv.or `📅unknown` `[entity_page]`
 - [ε4P（arXiv:2609.26672）](wiki/entities/paper-varepsilon4p.md) — ε4P**（*Imperfection for Precision: Upcycling Imperfect Data for High-Precision Robotic Manipulatio `📅unknown` `[entity_page]`
 - [Learning Variable Impedance Control for Contact Sensitive Tasks](wiki/entities/paper-variable-impedance-contact-rl.md) — 一句话定义**：在 **接触丰富** 的任务里，让 RL 策略输出 **关节空间期望轨迹 + 可变阻抗参数**，并用 **额外正则** 约束阻抗变化，使学习 **更快、更稳、更可迁移** 到真机（ `📅unknown` `[entity_page]`
 - [Variable Stiffness for Robust Locomotion through Reinforcement Learning](wiki/entities/paper-variable-stiffness-locomotion-rl.md) — 一句话定义**：策略同时输出 **关节位置（或等价目标）与可变刚度参数**，在仿真中学会鲁棒行走，并展示 **刚度参数化粒度**（逐关节、分腿、混合）对性能与能耗的影响。 `📅unknown` `[entity_page]`
@@ -5302,6 +5307,7 @@
 - [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
 - [人形 RL 策略训练五模块：从 MDP 到蒸馏部署](wiki/overview/humanoid-rl-policy-training-five-modules.md) — 人形 RL 策略训练五模块** 把数据驱动运动控制拆成固定耦合的闭环：RL/MDP 交互框架 → Actor-Critic 决策–评估 → PPO 稳定更新 → 多维奖励塑形 → Teacher- `📅unknown` `[overview_page]`
 - [人形机器人发展历史](wiki/overview/humanoid-robot-history.md) — 人形机器人发展历史**梳理双足类人平台从实验室样机到可量产科研整机的关键里程碑，帮助理解今日 G1 等课程平台为何同时继承 **模型基平衡 `📅unknown` `[overview_page]`
+- [IROS 2026 九篇获奖论文：阅读地图](wiki/overview/iros-2026-awards-9-papers-technology-map.md) — IROS 2026 主会/workshop 获奖线同时覆盖「长期记忆、毫秒级传统控制+学习、人形 loco-manip、人类视频与轨迹 WM、接触 RL 表示、执行期 TAMP」——没有单一赢家范 `📅unknown` `[overview_page]`
 - [IROS 2026：1933 篇论文的六条变化](wiki/overview/iros-2026-six-trends-technology-map.md) — 大模型没有「吃掉」机器人学——学习、感知、规划、控制与操作以更高密度交织；VLA 从 scaling 转向效率/几何/记忆/系统壳，World Model 仍少（~1%）但更贴近控制环。 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
 - [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM / VLM / VLA** 等预训练模型承接语义理解与任务规划（有时含直接动作），再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图 `📅unknown` `[overview_page]`
