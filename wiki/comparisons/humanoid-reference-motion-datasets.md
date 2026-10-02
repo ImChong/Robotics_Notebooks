@@ -1,12 +1,13 @@
 ---
 type: comparison
-title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
+title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete / HiPHI）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
-summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态与 EgoHTR rough-terrain 人–场景扩展。"
-updated: 2026-09-15
+summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 HiPHI 高精度 HOI、KungFuAthlete 高动态与 EgoHTR 人–场景扩展。"
+updated: 2026-10-02
 status: complete
 related:
   - ../concepts/motion-retargeting.md
+  - ../entities/paper-hiphi.md
   - ../entities/amass.md
   - ../entities/lafan1-dataset.md
   - ../entities/omomo-dataset.md
@@ -19,6 +20,7 @@ related:
   - ../entities/paper-humantracker.md
   - ../entities/paper-humaps4d.md
 sources:
+  - ../../sources/papers/hiphi_arxiv_2608_16222.md
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
   - ../../sources/repos/omomo_release.md
@@ -53,6 +55,7 @@ sources:
 |--------|--------|
 | [AMASS](../entities/amass.md) | 最大宗 **SMPL 人体 MoCap 元库**；tracking 前必重定向 |
 | [LaFAN1](../entities/lafan1-dataset.md) | 小规模高质量 **BVH 棚拍**；recovery / 步态基准；**NC-ND** 许可敏感 |
+| [HiPHI](../entities/paper-hiphi.md) | **高精度光学动捕 + 同步 HOI**；617.5 h 含镜像；需重定向与申请数据访问 |
 | [OMOMO](../entities/omomo-dataset.md) | **人–物交互** MoCap；loco-manipulation 重定向源 |
 | [PHUMA](../entities/dataset-bfm-phuma.md) | **已 PhySINK 重定向到 G1/H1-2** 的 73 h locomotion；宇树友好 |
 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形操作** 多模态集；非 MoCap 参考库 |
@@ -60,6 +63,17 @@ sources:
 | [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；**HF 数据已发布**（~719 GB），代码待发布 |
 | [HumanTracker](../entities/paper-humantracker.md) | **153 h / 25K 四族光学评测集 + HumanScore**；GMR→29-DoF；**数据待发布**，评测代码已开 |
 | [HUMAPS-4D](../entities/paper-humaps4d.md) | **可穿戴生物力学 4D**（MoCap+RGB+sEMG+足底）；隐私友好姿态/动作识别；**DUA 数据、无代码** |
+
+## 扩展：高精度运动与同步物体（HiPHI）
+
+| 维度 | HiPHI |
+|------|-------|
+| **表示** | 55 关节 BVH + 同步物体位姿 CSV + OBJ 网格 + Frame–LU / 语言元数据 |
+| **规模口径** | 发布 617.5 h / 200.1M 帧，含镜像；原始采集约 308.7 h；HOI 发布量 245.7 h |
+| **采集** | 90 Hz 光学动捕，132 名表演者；单人、棚拍 |
+| **预重定向** | 否；人体/物体需共同变换，检查机器人与物体接触可行性 |
+| **开放与许可** | HF 已发布但需申请；非商业研究许可；GitHub Viewer 已开放，未找到完整策略训练部署代码 |
+| **选型提示** | 大规模人体参考 + 搬运/推拉等同步交互 → [HiPHI](../entities/paper-hiphi.md)；若要现成 G1/H1-2 参考 → PHUMA |
 
 ## 扩展：可穿戴生物力学（HUMAPS-4D）
 
@@ -128,6 +142,8 @@ flowchart TD
 5. **全合成 G1 loco-manip 参考**：[GRAIL Dataset](../entities/grail-locomanipulation-dataset.md) 直接提供 post-SONIC 物理可行 `robot/` + `objects/` 轨迹，适合 tracker / IL / 视觉策略数据混合。
 6. **粗糙地形场景对齐人演示**：[EgoHTR](../entities/paper-egohtr.md)（[HF 数据已发布](https://huggingface.co/datasets/leggedrobotics/egohtr)）→ OmniRetarget/GMR → 高度图条件 mimic；适合 foothold-critical 踏石/梁/废墟，**非** AMASS 规模替代。
 
+7. **高精度大规模人体与交互参考**：[HiPHI](../entities/paper-hiphi.md) → 人体/物体同步预处理 → 重定向 → 物理跟踪；以原始时长统计训练预算，人体和物体误差分开报告。
+
 ## 四段衔接：数据来源 → 质量评估 → 重定向 → 策略输入
 
 本表只解决端到端链路的**第一段（数据来源）**。把视角拉远，一份参考运动要变成 RL/IL 能消费的训练输入，需要顺次过四道关：
@@ -143,6 +159,8 @@ flowchart TD
 
 ## 常见误区
 
+- **把 HiPHI 发布量当原始采集量**：617.5 h 包含镜像增强；Viewer Apache-2.0 也不覆盖 HF 数据的独立研究许可。
+
 - **把 Humanoid Everyday 当 MoCap 重定向源**：它是 **机器人执行数据**，不解决「人体→机器人参考」问题。
 - **忽视 PHUMA 与 AMASS 的重叠与差异**：PHUMA 策展自大规模互联网/Motion-X 系源，强调 **物理可信 + 已重定向**；AMASS 覆盖更广但 **伪影与重定向成本** 由用户承担。
 - **LaFAN1 许可当 MIT**：**NC-ND** 限制衍生数据与商业再分发；OmniRetarget 因此 **不公开发布 LAFAN1 重定向结果**。
@@ -150,6 +168,9 @@ flowchart TD
 - **把 [Exercises Dataset](../entities/exercises-dataset.md) 当人形参考运动**：其为健身 **动作目录 + 180×180 GIF/缩略图 + 多语说明**（无 BVH/SMPL/关节序列）；适合 App/分类原型，**不能**直接做 WBT / AMP / 重定向输入。
 
 ## 参考来源
+
+- [HiPHI 论文摘录](../../sources/papers/hiphi_arxiv_2608_16222.md)
+- [HiPHI 项目与数据开放核查](../../sources/sites/hiphi.md)
 
 - [AMASS 站点归档](../../sources/sites/amass-dataset.md)
 - [LaFAN1 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
