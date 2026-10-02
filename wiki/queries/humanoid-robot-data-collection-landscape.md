@@ -7,12 +7,15 @@ summary: "Query：综合 LeoInAI Substack（2026-09-06）与 Scanford 论文，�
 related:
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
   - ../entities/scanford.md
+  - ../entities/eidon-tracker-pov-dataset.md
   - ../concepts/data-flywheel.md
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
   - ../../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md
+  - ../../sources/sites/eidon-ai.md
+  - ../../sources/datasets/eidon-tracker-pov.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人训练数据怎么采？Substack 里提到的项目/论文各自是什么？」
@@ -38,7 +41,7 @@ sources:
 |------|----------|--------|
 | **1. 野外机器人飞轮** | [RPDF / Scanford](../entities/paper-scanford-robot-powered-data-flywheel.md) · [Scanford 系统](../entities/scanford.md) | 机器人边干活边用任务结构自动标注，闭环微调 VLM |
 | **2. VR/外骨骼遥操作** | [Boston Dynamics](../entities/boston-dynamics.md) · [Tesla Optimus](../entities/tesla-optimus.md) · [1X](../entities/1x-technologies.md) | 人戴 VR/追踪器，机器人镜像记录 onboard |
-| **3. 可穿戴无机器人** | [Mimic U1](../entities/mimic-wearable-u1.md) · [Paxini](../entities/paxini.md) · [Rokoko](../entities/rokoko.md) | 手套/外骨骼/动捕，人在真场景操作 |
+| **3. 可穿戴无机器人** | [Eidon Tracker + POV](../entities/eidon-tracker-pov-dataset.md) · [Mimic U1](../entities/mimic-wearable-u1.md) · [Paxini](../entities/paxini.md) · [Rokoko](../entities/rokoko.md) | 7-IMU 上肢追踪与第一视角家庭视频配对；人在真场景采集，不需要机器人在场 |
 | **4. 服务换数据** | [Shift](../entities/shift-app-nyc.md) · [Figure Index](../entities/figure-ai.md) | 免费保洁或用户众包录像 |
 | **5. 消费品侧传感** | [Dyson CameraJet](../entities/dyson-camerajet.md) | 高频日用品内置相机（机器人解读为潜在臂部统计源） |
 | **6. 标注/地产层** | [Innodata](../entities/innodata.md) · [Appen](../entities/appen.md) · [Micro1](../entities/micro1.md) · [Brookfield](../entities/brookfield-physical-ai-data.md) | 动捕实验室、人类质检、物业场景房东 |
