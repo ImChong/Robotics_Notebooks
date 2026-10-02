@@ -150,6 +150,16 @@ sequenceDiagram
 | **增益集中区** | Harness 多步执行、工具交互、难代码题；指令跟随提升相对平稳 |
 | **Case study** | 调度/审计（证据检索与路径一致性）、WorkBuddy 泄漏审计（README 容忍窗口 vs 自创 2s）、Gomoku HTML（点击索引与落子状态） |
 
+## 与其他工作对比
+
+| 对照 | 差异 |
+|------|------|
+| **Qwen3.5-4B / 9B 基座** | 十项 macro-average 58.94→**64.87**（4B）、65.60→**69.04**（9B） |
+| **公开 Toucan 合成工具数据** | 同课程、匹配预算下，routing-harness 轨迹五基准 avg **+2.65 pp**（Table 3） |
+| **静态 teacher 轨迹 SFT** | 只蒸馏 off-policy 轨迹；NeoHorse 用 routing 排课程并加 OPD 对齐学生自生成前缀 |
+| **[RSI](../concepts/recursive-self-improvement.md) ignition 叙事（MetaRSI 等）** | NeoHorse 自称 initial prototype：有界数据闭环，非自主设计下一代架构 |
+| **[Physical Agentic AI](./paper-physical-agentic-ai.md)** | 同样依赖 harness 与门控，但面向多机器人物理执行；NeoHorse 基准为纯文本 agent |
+
 ## 结论
 
 **NeoHorse-1 的可复制价值在「harness 日志 → 质检 → routing 排序 → SFT+OPD → 评测反哺 mixture」这条链，而不是单点 benchmark 涨分。**

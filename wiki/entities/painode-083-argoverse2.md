@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, dataset]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-02
 summary: "High-quality motion-forecasting and 3D tracking datasets for real-world embodied prediction tasks."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -62,6 +62,7 @@ High-quality motion-forecasting and 3D tracking datasets for real-world embodied
 | 官方入口 | <https://www.argoverse.org/av2.html> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 数据模态 | **环视 + 立体相机 RGB、激光雷达点云、高精地图**；运动预测子集为目标轨迹 + 矢量地图（据官方简介，以官方文档 / 数据卡为准） |
 | 重定向就绪度 | **不适用**：车载运动预测 / 3D 跟踪标注，**无** 机器人关节或手姿字段；可作感知与轨迹预测预训练语料，不能重定向成本体动作（据清单与官方简介判断，以官方文档 / 数据卡为准） |
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。

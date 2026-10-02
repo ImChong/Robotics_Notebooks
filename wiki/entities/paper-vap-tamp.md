@@ -61,6 +61,15 @@ flowchart LR
 - 仿真服务任务 + **移动操作平台** 真机（切柠檬、捡 firewood 等演示视频）。
 - 项目页：相对基线 **更高成功率** 与 **可接受执行时间**（见 success rate / time 图）。
 
+## 与其他工作对比
+
+| 路线 | 执行期处理 | 与 VAP-TAMP 差异 |
+|------|------------|------------------|
+| **一次性 TAMP（开环执行）** | 不验证谓词 | 半开门、物体掉落等意外无法检测；VAP-TAMP 前后验 + 重规划 |
+| **VLM 作一次性规划助手** | 只在规划前调用 | 无执行监控；VAP-TAMP 用 PDDL 动作知识约束 VLM 谓词验证 |
+| **被动感知（固定视角）** | 视角不足即误判 | VAP-TAMP 主动选视点，详见 [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) |
+| **[iFlax](./paper-iflax.md)**（同盘点） | 离散搜索空间剪枝学习 | 互补：VAP-TAMP 偏连续感知–规划–执行 |
+
 ## 结论
 
 **VAP-TAMP 把 VLM 从「一次性规划助手」拉进 **闭环执行监控**** — 动作谓词结构化提示是降低幻觉验证的关键。
@@ -75,6 +84,7 @@ flowchart LR
 - [IROS 2026 九篇获奖地图](../overview/iros-2026-awards-9-papers-technology-map.md)
 - [iFlax](./paper-iflax.md)
 - [轨迹优化 / TAMP 方法页](../methods/trajectory-optimization.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 
