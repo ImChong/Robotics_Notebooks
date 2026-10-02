@@ -4436,6 +4436,7 @@
 - [Qwen-VLA](wiki/entities/qwen-vla.md) — Qwen-VLA**（QwenLM/Qwen-VLA）把 **操作（manipulation）**、**视觉–语言导航（ `📅unknown` `[entity_page]`
 - [Qwen3-VL](wiki/entities/qwen3-vl.md) — Qwen3-VL**（Qwen3-VL：视觉-语言基座（LightNav-ER 初始化））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
+- [React Bits](wiki/entities/react-bits.md) — React Bits** 是面向 React 网站的可定制动效组件集合：选一个组件、复制或安装源码，再用参数调整文字、背景和交互效果。 `📅unknown` `[entity_page]`
 - [reBot-DevArm（Seeed reBot Arm B601）](wiki/entities/rebot-devarm.md) — reBot-DevArm**（商品名 **reBot Arm B601**）是 Seeed Studio 推出的 **桌面级开源六轴 `📅unknown` `[entity_page]`
 - [RefSpatial-Bench](wiki/entities/refspatial.md) — RefSpatial-Bench** 是 RoboRefer 发布的 **空间指代** 评测（HF [`BAAI/RefSpatial-Bench `📅unknown` `[entity_page]`
 - [REK（Robot Embodied Kombat · 人形格斗联赛）](wiki/entities/rek.md) — REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **人形机器人格斗体育联赛**：选手在场边戴 **VR 头显**，通过自研 **REK TEK** 将人体动作 `📅unknown` `[entity_page]`

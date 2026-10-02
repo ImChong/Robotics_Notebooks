@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | 收录 React Bits 动效组件与官网入口，核查 MIT + Commons Clause 限制和 BlurText 源码，关联机器人展示界面的工程实践。
+
 ## [2026-10-02] structural | 点阵随指针点亮扩展到全站：深色主题 body 底纹（所有页面）、首页 Hero、图谱页画布点阵；有 prefers-reduced-motion 降级
 
 ## [2026-10-02] ingest | 接入 Serial Studio 硬件遥测仪表盘；核查 GPL 核心与专有 Pro 边界，补充单关节调试示例并关联 PlotJuggler。
