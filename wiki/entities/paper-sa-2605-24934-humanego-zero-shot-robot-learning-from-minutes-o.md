@@ -1,12 +1,12 @@
 ---
 type: entity
-tags: [paper, ego-vla, human-video, zero-shot, flow-matching, manipulation, umd, awesome-egocentric-vision]
+tags: [paper, ego-vla, human-video, zero-shot, flow-matching, manipulation, umd, awesome-egocentric-vision, iros-2026]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-02
 arxiv: "2605.24934"
 venue: "arXiv 2026"
 code: https://github.com/TX-Leo/HumanEgo
-summary: "HumanEgo（arXiv:2605.24934）：~30 分钟/任务人类 Aria egocentric 视频 → 实体级 HOI + ICT + flow-matching，无机器人演示零样本部署；四任务约 92.5% 成功率；代码/数据/权重已开源。"
+summary: "HumanEgo（arXiv:2605.24934，IROS 2026 WORLDS WS 最佳论文）：~30 分钟/任务人类 Aria egocentric 视频 → ICT + flow-matching 零样本真机；四任务约 92.5% 成功率；已开源。"
 related:
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -15,17 +15,19 @@ related:
   - ../entities/gen-human-ego-dataset.md
   - ../entities/awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
+  - ../overview/iros-2026-awards-9-papers-technology-map.md
   - ../methods/diffusion-policy.md
 sources:
   - ../../sources/papers/humanego_arxiv_2605_24934.md
   - ../../sources/repos/humanego.md
   - ../../sources/sites/humanego-ai-github-io.md
   - ../../sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md
+  - ../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md
 ---
 
 # HumanEgo
 
-**HumanEgo**（[arXiv:2605.24934](https://arxiv.org/abs/2605.24934)，[项目页](https://humanego-ai.github.io/)，[代码](https://github.com/TX-Leo/HumanEgo)）提出 **仅用少量人类第一人称视频、无需机器人演示** 的 **零样本 human→robot** 学习：把每条人类演示 **提升（lift）** 为 **实体级 hand–object interaction 表征**，训练 **flow-matching** 策略；部署时用 **Interaction-Centric Tokens（ICT）** + **embodiment-agnostic 干净相机图**（真臂 inpaint、虚拟夹爪）闭环输出末端轨迹。
+**HumanEgo**（[arXiv:2605.24934](https://arxiv.org/abs/2605.24934)，[项目页](https://humanego-ai.github.io/)，[代码](https://github.com/TX-Leo/HumanEgo)，**IROS 2026 WORLDS Workshop 最佳论文**）提出 **仅用少量人类第一人称视频、无需机器人演示** 的 **零样本 human→robot** 学习：把每条人类演示 **提升（lift）** 为 **实体级 hand–object interaction 表征**，训练 **flow-matching** 策略；部署时用 **Interaction-Centric Tokens（ICT）** + **embodiment-agnostic 干净相机图**（真臂 inpaint、虚拟夹爪）闭环输出末端轨迹。
 
 ## 一句话定义
 
@@ -166,6 +168,7 @@ sequenceDiagram
 - [`sources/repos/humanego.md`](../../sources/repos/humanego.md)
 - [`sources/sites/humanego-ai-github-io.md`](../../sources/sites/humanego-ai-github-io.md)
 - [`sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md`](../../sources/papers/sun_awesome_ego_2605_24934_humanego-zero-shot-robot-learning-from-m.md) — 清单 #088 摘录
+- [IROS 2026 九篇获奖盘点（公众号）](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)
 
 ## 推荐继续阅读
 

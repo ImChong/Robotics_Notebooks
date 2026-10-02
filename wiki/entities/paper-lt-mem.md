@@ -1,24 +1,26 @@
 ---
 type: entity
-tags: [paper, lifelong-scene-understanding, spatio-temporal-memory, slam, vqa]
+tags: [paper, lifelong-scene-understanding, spatio-temporal-memory, slam, vqa, iros-2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-02
 arxiv: "2608.19059"
 related:
   - ./paper-spatial-memory-agent.md
   - ../tasks/vision-language-navigation.md
   - ../methods/generative-world-models.md
   - ./paper-h2r-bench.md
+  - ../overview/iros-2026-awards-9-papers-technology-map.md
 sources:
   - ../../sources/papers/lt_mem_arxiv_2608_19059.md
   - ../../sources/sites/lt-mem-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
-summary: "LT-Mem（arXiv:2608.19059，DGIST）：波动性感知 Live/Delta/Meta 三层记忆 + 多会话 SLAM；LT-VQA 时间问答；令牌消耗低约 16×。数据集可下，代码 TBD。"
+  - ../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md
+summary: "LT-Mem（arXiv:2608.19059，IROS 2026 最佳论文，DGIST）：波动性感知 Live/Delta/Meta 三层记忆 + 多会话 SLAM；LT-VQA 时间问答；令牌消耗低约 16×。数据集可下，代码 TBD。"
 ---
 
 # LT-Mem：波动性感知的终身场景记忆
 
-**LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19059](https://arxiv.org/abs/2608.19059)，[项目页](https://lt-mem.github.io/)）由 **DGIST** 提出：长期运行的服务机器人反复进入 **变化环境** 时，单纯覆盖旧地图会丢失对象历史，逐次快照又难维持跨会话身份。
+**LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19059](https://arxiv.org/abs/2608.19059)，[项目页](https://lt-mem.github.io/)，**IROS 2026 最佳论文**）由 **DGIST** 提出：长期运行的服务机器人反复进入 **变化环境** 时，单纯覆盖旧地图会丢失对象历史，逐次快照又难维持跨会话身份。
 
 ## 一句话定义
 
@@ -132,6 +134,7 @@ flowchart TB
 - [LT-Mem 论文归档](../../sources/papers/lt_mem_arxiv_2608_19059.md)
 - [lt-mem 项目页](../../sources/sites/lt-mem-github-io.md)
 - [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
+- [IROS 2026 九篇获奖盘点（公众号）](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)
 
 ## 推荐继续阅读
 
