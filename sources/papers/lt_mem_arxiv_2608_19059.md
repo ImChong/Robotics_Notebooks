@@ -6,18 +6,23 @@
 - **类型：** paper / lifelong-scene-understanding / spatio-temporal-memory / slam / vqa
 - **arXiv abs：** <https://arxiv.org/abs/2608.19059>
 - **PDF：** <https://arxiv.org/pdf/2608.19059>
+- **HTML：** <https://arxiv.org/html/2608.19059v1>
 - **项目页：** <https://lt-mem.github.io/>（归档见 [`sources/sites/lt-mem-github-io.md`](../sites/lt-mem-github-io.md)）
+- **交互式 3D Demo：** <https://lt-mem.github.io/DEMO/>
+- **演示视频：** <https://www.youtube.com/watch?v=-zH3TV1hUjA>
+- **APRL 官方论文列表：** <https://team-aprl.github.io/publications.html>
 - **数据集：** [LT-VQA Google Drive](https://drive.google.com/drive/folders/1rrwXxJDqJO9P9-wf_-JENX6FP1v9AThC)
 - **机构：** DGIST（Robotics and Mechatronics Engineering）
 - **作者：** Yumin Lee、Hyoseok Ju、Giseop Kim†
-- **发表 / 上传：** 2026-08-21（arXiv v1）
-- **入库日期：** 2026-08-21
+- **发表时间：** 2026-08-19（arXiv v1）
+- **入库日期：** 2026-08-21；资源核查更新：2026-10-02
 - **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
-## 开源状态（步骤 2.5，2026-08-21）
+## 开源状态（步骤 2.5，2026-10-02）
 
-- **部分开源：** 项目页 **Code (TBD)**；**LT-VQA** 数据集可通过 Google Drive 下载（3 env / 30 sessions / 80 QA）。
-- **结论：** 数据可获取；**记忆系统代码未发布**。
+- **数据集已公开提供，方法代码待发布：** 项目页将代码标为 **Code (TBD)**，未链接 GitHub；**LT-VQA** 数据集可从 Google Drive 下载（3 environments / 30 sessions / 80 QA pairs）。
+- **交互资源：** 项目页提供交互式 3D Demo，可查看跨会话的对象轨迹与记忆状态；另有项目演示视频。
+- **结论：** 数据可获取；截至 2026-10-02，记忆系统代码仍未发布。
 
 ## 摘录 1：问题
 
