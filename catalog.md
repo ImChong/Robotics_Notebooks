@@ -5465,6 +5465,12 @@
 - [世界模型路线 02：联合架构](wiki/overview/world-models-route-02-joint.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型路线 03：虚拟沙盒](wiki/overview/world-models-route-03-virtual-sandbox.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [小鹏 IRON · 54 项专利技术地图](wiki/overview/xpeng-iron-54-patents-technology-map.md) — IRON 的「技术底牌」在专利层呈现为「机构/传感/步态/具身控制」五层堆叠 — 读专利应分模块对照，而非当作单一论文。 `📅unknown` `[overview_page]`
+- [智践行 · Microduck 具身智能入门专辑 — 技术地图](wiki/overview/zhixing-microduck-primer-album-technology-map.md) — 本页索引 **智践行** 公众号专辑（5 篇）的 **独立详情节点**：把 Pollen Microduck RL 与 [R `📅unknown` `[overview_page]`
+- [具身智能入门① · 零硬件 Microduck 认知起点](wiki/overview/zhixing-microduck-primer-part1-zero-hardware-start.md) — 不买整机** 也能从 Pollen 开源栈入门：先分清 **Python 训练仓** 与 **Rust 机载 Runtime**，理解 ONNX 是两者之间的唯一「桥」。 `📅unknown` `[overview_page]`
+- [具身智能入门② · 不写代码把 Microduck「玩」明白](wiki/overview/zhixing-microduck-primer-part2-play-without-code.md) — 在 **CPU/GPU 仿真** 里用官方脚本驱动已导出 ONNX，把 **命令槽 → 观测 → 动作** 的数据流玩熟，再谈改奖励或上真机。 `📅unknown` `[overview_page]`
+- [具身智能入门③（上）· 云 GPU 跑通 PPO 训练](wiki/overview/zhixing-microduck-primer-part3a-cloud-gpu-ppo-training.md) — 在 **云端 CUDA 实例**（含国内免费 GPU 实践）克隆 microduck_rl，用  `📅unknown` `[overview_page]`
+- [具身智能入门③（下）· 读懂 PPO 产出与 ONNX 导出](wiki/overview/zhixing-microduck-primer-part3b-ppo-logs-onnx-export.md) — 训练结束后用 **wandb 日志** 判断策略是否在学主任务，再用 **`scripts/export.py` 唯一路径** 得到 Runtime 可吃的 `[1,61]→[1,14]` ONNX。 `📅unknown` `[overview_page]`
+- [具身智能入门④ · Rust 运行时加载 ONNX（mock）](wiki/overview/zhixing-microduck-primer-part4-rust-runtime-onnx.md) — 在 **不开电机总线** 的前提下，用 `Policy::load` 把 ③下 导出的 ONNX 载入 Rust，**加载期校验** 61→14 维与 ORT 动态库，并用 `trace.json`  `📅unknown` `[overview_page]`
 
 ### Roadmaps（路线页）
 
