@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | OTRetarget 论文、项目页与 OMOMO 数据入口核查
+
 ## [2026-10-02] ingest | Eidon AI — 归档可穿戴硬件、仿真与 POV/IMU 数据，补充采集路线节点
 
 - 官方归档页确认公司停止运营，公开 Tracker/Glove/Sim 仓库以及 CC-BY-4.0 数据集。
