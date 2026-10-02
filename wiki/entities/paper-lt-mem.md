@@ -49,7 +49,7 @@ summary: "LT-Mem（arXiv:2608.19059，IROS 2026 最佳论文，DGIST）：波动
 | **机构** | DGIST（Robotics and Mechatronics Engineering） |
 | **感知** | 多会话 **MASt3R-SLAM** + 实例 3D 分割 |
 | **推理** | 波动性条件时序推理 + 确定性证据评分 |
-| **开源** | **部分开源** — [LT-VQA 数据集](https://drive.google.com/drive/folders/1rrwXxJDqJO9P9-wf_-JENX6FP1v9AThC) 可下；**Code TBD** |
+| **公开状态** | [LT-VQA 数据集](https://drive.google.com/drive/folders/1rrwXxJDqJO9P9-wf_-JENX6FP1v9AThC) 可下载；方法代码未提供（项目页标注 **Code TBD**） |
 
 ## 核心原理
 
