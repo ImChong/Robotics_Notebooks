@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, navigation, habitat, system-one-model, jev, dimos, quadruped, object-goal-navigation]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ./dimensionalos-dimos.md
   - ./typesafe-jev.md
@@ -11,6 +11,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-rcl-1807-06757-on-evaluation-of-embodied-navigation-agents.md
   - ./paper-navjev-efficient-vln-jev.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/dimensional_research_can_jev_nav.md
   - ../../sources/repos/dimensionalos_dimos.md
@@ -116,6 +117,7 @@ flowchart TB
 - [NavJev 论文](./paper-navjev-efficient-vln-jev.md) — VLN-CE 上 Jev + ACVC/DASM 的学术延伸
 - [具身导航 agent 评测（SPL 原论文）](./paper-rcl-1807-06757-on-evaluation-of-embodied-navigation-agents.md) — SPL 指标来源
 - [零样本 Object-Goal Navigation](../tasks/zero-shot-object-navigation.md) — 任务族对齐
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — Nav Arena 属其 ③ 策略任务成功率评测层（SR/SPL）；Habitat 结论外推 Go2 真机需 ④ sim↔real 校准
 
 ## 参考来源
 

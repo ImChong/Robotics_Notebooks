@@ -12,7 +12,7 @@ tags:
   - hku
   - ut-austin
 status: complete
-updated: 2026-09-30
+updated: 2026-10-01
 arxiv: "2609.24981"
 code: https://github.com/TencentARC/GAE-GeometricAutoEncoder
 related:
@@ -161,6 +161,15 @@ sequenceDiagram
 - **3D consistency：** 64-scene benchmark — GAE **40/64** 场景 normalized Chamfer 最优（项目页）。
 - **生成设定（项目页 latent 对照）：** 64 RE10K + 64 ScanNet++；9 views、1 conditioning frame、guidance 2.0、50 steps 等 — 与对照 latent **同协议**。
 - **Operating points：** **GAE-64** 偏 **紧凑生成 / 轨迹一致**；**GAE-128** 偏 **重建与跨视角对应**（Pareto 前沿叙事）。
+
+## 与其他工作对比
+
+| 维度 | GAE | 对照 |
+|------|-----|------|
+| 生成 latent 来源 | DA3 四级特征经 codec 压成 64/128 通道 **geometry-native** grid latent | SD VAE / [Wan](./paper-wan-video.md) VAE / RAEv2：appearance 导向 latent，几何需事后读出或外挂约束（项目页 §06 同 DiT 协议对照） |
+| 是否直接用 raw DA3 | 否 — raw 3072 通道有效维 ~11、条件数 10⁸–10¹⁶，先重参数化 | raw DA3 latent：项目页对照之一，病态 conditioning 不利 flow transport |
+| DA3 的角色 | 生成态的表征骨干（同一 \(z\) 联合解码 RGB + 深度 + 相机 + 点云） | [R³](./paper-r3-relative-regression.md)、[TADreamer](./paper-tadreamer.md)：DA3 作 **重建 / 标定前端**，不承担生成 |
+| 动作条件 | 无 — camera 轨迹 / 文本 / 参考图条件 | [DreamWAM](./paper-dreamwam.md)：训练期 DA3 几何支路 + 动作条件 Joint WAM |
 
 ## 结论
 

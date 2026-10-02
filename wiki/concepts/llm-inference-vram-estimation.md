@@ -10,6 +10,7 @@ related:
   - ../concepts/lora.md
   - ../entities/apxinf.md
   - ../entities/agent-lightning.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 sources:
   - ../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md
 summary: "LLM 自回归推理显存可拆成权重、KV cache、激活、CUDA 固定开销与框架因子；参数量 alone 不够，GQA/MLA/MoE、batch×上下文与 TP 决定能否上 24 GB 卡或必须多卡。"
@@ -120,6 +121,7 @@ flowchart TD
 - [LoRA](./lora.md)
 - [Agent Lightning](../entities/agent-lightning.md)
 - [APXInf](../entities/apxinf.md)
+- [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 本页的显存估算是该闭环 ③ VLA 动作执行层「泛化 ↔ 实时」取舍的部署侧约束：骨干规模与 KV cache 决定能否上机实时推理
 
 ## 推荐继续阅读
 
