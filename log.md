@@ -1,3 +1,7 @@
+## [2026-10-01] structural | 清单索引实体页读者化：rcl / painode / paper-pai / paper-as 共 740 页去掉「策展索引级详情节点 / 升格 / canonical」等维护者口径（与 sun254667 已改写页同措辞），4 个生成器模板同步；humanoid-locomotion 缩写表移到定义后；rcl 地图去「detail 节点」
+
+## [2026-10-01] structural | top-50 hub 读者化：7 张 Awesome 清单技术地图详情列改为标题链接（含 4 个生成器）；Physical AI / AwesomeSim2Real 地图与 Paper Notebooks 索引去维护者口径；manipulation / humanoid-locomotion 关联页面拆出「按主题索引」
+
 ## [2026-10-01] ingest | sources/repos/awesome-gpt-6-astra.md 与 sources/sites/astra-games.md — 收录 AI 浏览器交互作品集，核查展示站和部分作品源码开放边界，提炼机器人教学展示参考。
 
 ## [2026-10-01] ingest | AgentsDock 项目页+双仓（ZhengyiLuo/AgentsDock·AgentsServer）；Apache-2.0 已开源；实体 agentsdock + 交叉 zhengyi-luo；自动合并 PR
