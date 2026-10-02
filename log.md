@@ -1,3 +1,11 @@
+## [2026-10-02] ingest | Argus（Pantheon）机器人数据审计
+
+- 意图：将训练前数据质量审计接入机器人学习主线。
+- 开源结论：官方代码 Apache-2.0、标注 CC BY 4.0；原始录像与可选手部模型保留各自许可。
+- 关键页：[Argus](../wiki/entities/pantheon-argus.md)，从 LeRobot 生态入口互链。
+
+## [2026-10-02] structural | 图谱页 graph.html 不启用点阵随指针点亮（画布点阵与全站 body 底纹点亮均关闭）
+
 ## [2026-10-02] ingest | wiki/overview/humanoid-motion-intelligence-day1-data-retargeting.md — 为 Day 1 文章补独立综述节点和 30 篇论文入口
 
 ## [2026-10-02] ingest | 收录 React Bits 动效组件与官网入口，核查 MIT + Commons Clause 限制和 BlurText 源码，关联机器人展示界面的工程实践。

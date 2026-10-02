@@ -1062,6 +1062,7 @@
 - [Eureka (NVIDIA)](wiki/entities/painode-332-eurekanvidia.md) — Eureka (NVIDIA)** 收录于 awesome-physical-ai（natnew）**第 332/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给 `📅unknown` `[entity_page]`
 - [Genie 2 (DeepMind)](wiki/entities/painode-374-genie2deepmind.md) — Genie 2 (DeepMind)** 收录于 awesome-physical-ai（natnew）**第 374/384** 条，分组 **World Models**。本页是 **清单索引 `📅unknown` `[entity_page]`
 - [PAN Motion Retargeting](wiki/entities/pan-motion-retargeting.md) — pan-motion-retargeting**（<https://github.com/hlcdyy/pan-motion-retargeting>）是 TVCG 2023 论文 [*Pose- `📅unknown` `[entity_page]`
+- [Argus（Pantheon）：机器人数据标注与质量审计](wiki/entities/pantheon-argus.md) — Argus** 是 Pantheon 的开源机器人数据审计流水线：联合查看录像、状态/动作及指令，输出时间轴标注、成功区间、操作失误和录制故障，帮助训练前选择或修复数据。 `📅unknown` `[entity_page]`
 - [1X World Model（1XWM / Redwood 评测引擎）](wiki/entities/paper-1xwm-redwood-world-model.md) — 1X World Model（1XWM）**（技术报告 *1X World Model: Evaluating Bits, not Atoms*；发现页挂在 [Redwood AI World M `📅unknown` `[entity_page]`
 - [3D-IC（3D Interaction Chains · Joint Navigation and Manipulation Planning）](wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md) — 3D-IC**（*Joint Navigation and Manipulation Planning with 3D Interaction Chains*，Zhang 等，ICML 2026  `📅unknown` `[entity_page]`
 - [3D Printed Open-Source Actuators for Legged Locomotion](wiki/entities/paper-3d-printed-open-source-actuators-legged.md) — Urs, Enninful Adu, Rouse & Moore（密歇根大学，arXiv:2202.12395）** 给出两 `📅unknown` `[entity_page]`
