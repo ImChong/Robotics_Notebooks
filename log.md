@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | NeoHorse-1（2609.08183）：routing harness agentic post-training 与 RSI 原型环；TokenRhythm 权重+推理示例已开源，入库实体页与交叉引用
+
 ## [2026-10-02] ingest | sources/papers/hiphi_arxiv_2608_16222.md — 接入 HiPHI 高精度动捕与同步 HOI，核实数据门控、镜像口径及 Viewer 开放边界，补齐数据选型与重定向/具身数据路线
 
 ## [2026-10-02] ingest | LocoWM：复用已有节点，补充成对检查点、初始掉落排除口径与预测式残差入口
