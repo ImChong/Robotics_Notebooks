@@ -4042,19 +4042,50 @@ html.is-theme-switching *::before,
 html.is-theme-switching *::after {
   transition: none !important;
 }
-/* Hero 点阵随指针点亮：::after 是与 ::before 同尺寸同原点的强调色点阵（点位重合），
-   仅在指针周围的圆形遮罩内可见；坐标 --hero-mx / --hero-my 由 main.js 写入 */
-.hero-backdrop::after {
+/* 点阵随指针点亮（全站，坐标与开关由 main.js 写入）
+   1) 自带点阵的容器（.dot-glow-host：首页 .hero-backdrop、图谱页 #graph-wrap）：::after 叠一层与原点阵
+      同尺寸同原点的强调色点阵（点位重合），仅在 --glow-x / --glow-y 周围的圆形遮罩内可见；
+      点距不同的容器用 --dot-glow-size 覆盖
+   2) body 底纹点阵（仅深色主题可见）：.dot-glow 是跟随指针的固定小层，z-index:-1 垫在所有内容之下，
+      只在露出底纹的地方可见；背景偏移由 JS 换算到文档原点，与底纹点位重合 */
+.dot-glow-host::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.2px);
-  background-size: var(--grid-size) var(--grid-size);
+  background-size: var(--dot-glow-size, var(--grid-size)) var(--dot-glow-size, var(--grid-size));
   opacity: 0;
   transition: opacity .4s ease;
-  -webkit-mask-image: radial-gradient(170px circle at var(--hero-mx, -999px) var(--hero-my, -999px), #000 0%, transparent 100%);
-  mask-image: radial-gradient(170px circle at var(--hero-mx, -999px) var(--hero-my, -999px), #000 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(170px circle at var(--glow-x, -999px) var(--glow-y, -999px), #000 0%, transparent 100%);
+  mask-image: radial-gradient(170px circle at var(--glow-x, -999px) var(--glow-y, -999px), #000 0%, transparent 100%);
 }
-.hero.is-pointer-active .hero-backdrop::after {
+.dot-glow-host.is-dot-glow::after {
   opacity: .9;
+}
+/* 深色主题下 Hero 背后就是 body 底纹，由 .dot-glow 透过 Hero 半透明背景统一点亮，避免两层叠加 */
+:root:not([data-theme="light"]) .hero-backdrop::after {
+  display: none;
+}
+.dot-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 340px;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.2px);
+  background-size: var(--grid-size) var(--grid-size);
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.dot-glow.is-active {
+  opacity: .9;
+}
+/* 浅色主题 body 无底纹点阵（--grid-dot: transparent），不点亮 */
+[data-theme="light"] .dot-glow {
+  display: none;
 }

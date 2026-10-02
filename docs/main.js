@@ -6653,33 +6653,63 @@
     });
   }
 
-  // ── Hero 点阵随指针点亮：把指针相对 .hero-backdrop 的坐标写入 --hero-mx / --hero-my（样式见 style.css） ──
-  var heroSection = document.getElementById('hero');
-  var heroBackdrop = heroSection ? heroSection.querySelector('.hero-backdrop') : null;
-  if (heroBackdrop && finePointer && !prefersReducedMotion) {
-    var heroPointerX = 0;
-    var heroPointerY = 0;
-    var heroPointerRaf = 0;
-    heroSection.addEventListener('pointermove', function (event) {
-      heroPointerX = event.clientX;
-      heroPointerY = event.clientY;
-      if (heroPointerRaf) return;
-      heroPointerRaf = window.requestAnimationFrame(function () {
-        heroPointerRaf = 0;
-        var rect = heroBackdrop.getBoundingClientRect();
-        heroBackdrop.style.setProperty('--hero-mx', (heroPointerX - rect.left) + 'px');
-        heroBackdrop.style.setProperty('--hero-my', (heroPointerY - rect.top) + 'px');
-        heroSection.classList.add('is-pointer-active');
-      });
-    });
-    heroSection.addEventListener('pointerleave', function () {
-      // 取消尚未执行的帧，否则它会在离开后把高亮重新打开
-      if (heroPointerRaf) {
-        window.cancelAnimationFrame(heroPointerRaf);
-        heroPointerRaf = 0;
+  // ── 点阵随指针点亮（全站，样式见 style.css「点阵随指针点亮」）：
+  //    body 底纹由固定小层 .dot-glow 跟随指针；自带点阵的 .dot-glow-host 容器写入指针相对容器的坐标 ──
+  if (finePointer && !prefersReducedMotion) {
+    var DOT_GLOW_RADIUS = 170; // 与 .dot-glow 宽高的一半、遮罩半径一致
+    var dotGlow = document.createElement('div');
+    dotGlow.className = 'dot-glow';
+    dotGlow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(dotGlow);
+    var dotGlowHosts = document.querySelectorAll('.dot-glow-host');
+    var glowX = 0;
+    var glowY = 0;
+    var glowActive = false;
+    var glowRaf = 0;
+    var renderDotGlow = function () {
+      glowRaf = 0;
+      dotGlow.classList.toggle('is-active', glowActive);
+      if (glowActive) {
+        var left = glowX - DOT_GLOW_RADIUS;
+        var top = glowY - DOT_GLOW_RADIUS;
+        dotGlow.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
+        // body 底纹从文档原点平铺：换算成相对本层左上角的偏移，滚动后点位仍重合
+        dotGlow.style.backgroundPosition = (-left - window.scrollX) + 'px ' + (-top - window.scrollY) + 'px';
       }
-      heroSection.classList.remove('is-pointer-active');
+      for (var hi = 0; hi < dotGlowHosts.length; hi++) {
+        var host = dotGlowHosts[hi];
+        var rect = host.getBoundingClientRect();
+        // 指针在容器外但光圈仍会覆盖容器边缘时也点亮，避免贴边处光圈被截断
+        var near = glowActive &&
+          glowX > rect.left - DOT_GLOW_RADIUS && glowX < rect.right + DOT_GLOW_RADIUS &&
+          glowY > rect.top - DOT_GLOW_RADIUS && glowY < rect.bottom + DOT_GLOW_RADIUS;
+        host.classList.toggle('is-dot-glow', near);
+        if (near) {
+          host.style.setProperty('--glow-x', (glowX - rect.left) + 'px');
+          host.style.setProperty('--glow-y', (glowY - rect.top) + 'px');
+        }
+      }
+    };
+    var scheduleDotGlow = function () {
+      if (!glowRaf) glowRaf = window.requestAnimationFrame(renderDotGlow);
+    };
+    document.addEventListener('pointermove', function (event) {
+      if (event.pointerType === 'touch') return;
+      glowX = event.clientX;
+      glowY = event.clientY;
+      // 顶栏是毛玻璃，底纹点阵在其下不可见
+      glowActive = !(event.target.closest && event.target.closest('.site-header'));
+      scheduleDotGlow();
+    }, { passive: true });
+    // 指针移出窗口
+    document.addEventListener('pointerout', function (event) {
+      if (event.relatedTarget) return;
+      glowActive = false;
+      scheduleDotGlow();
     });
+    window.addEventListener('scroll', function () {
+      if (glowActive) scheduleDotGlow();
+    }, { passive: true });
   }
 
   // ── 首页滚动入场：首屏以下的入口卡 / 区块进入视口时淡入上移，同一批依次错开 ──────────
