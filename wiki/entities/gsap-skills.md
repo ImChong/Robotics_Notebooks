@@ -8,8 +8,9 @@ tags:
   - web-animation
   - agent-infrastructure
 status: complete
-updated: 2026-09-07
+updated: 2026-10-02
 related:
+  - ./react-bits.md
   - ./mattpocock-skills.md
   - ./cad-skills.md
   - ./img2threejs.md
@@ -91,6 +92,8 @@ flowchart TD
 - **局限：** 技能正文偏 **英文 Web 前端**；与机器人仿真栈（Isaac / MuJoCo / ROS）无直接耦合；Copilot 需单独复制 instructions 文件。
 
 ## 关联页面
+
+- [React Bits](./react-bits.md) — 可复制/安装的 React 动效组件；组件素材与 GSAP 动画设计规约可分工使用，许可须核查附加限制。
 
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — **通用编码工程** Agent Skills 对照
 - [CAD Skills](./cad-skills.md) — **硬件/CAD/URDF** 垂直 Agent Skills
