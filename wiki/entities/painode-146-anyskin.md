@@ -178,7 +178,7 @@ sequenceDiagram
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — visuo-tactile BC 语境
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — USB 插入等任务
 - [Sparsh（VBTS SSL）](./paper-sparsh.md) — 图像式触觉表征对照
-- [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — 本批 ingest 总览
+- [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — 同批九篇触觉论文总览
 - [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) — 触觉策展坐标
 
 ## 参考来源

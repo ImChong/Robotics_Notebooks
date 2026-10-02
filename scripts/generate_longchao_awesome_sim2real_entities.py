@@ -151,8 +151,7 @@ def parse_readme(path: Path) -> list[dict]:
             continue
         section = cur_h if not cur_sub else f"{cur_h} / {cur_sub}"
         highlights = (
-            f"LongchaoDa AwesomeSim2Real 收录；分组 {section}。"
-            " 本页为策展索引级节点，细节以原文为准。"
+            f"LongchaoDa AwesomeSim2Real 收录；分组 {section}。 本页是清单索引，细节以原文为准。"
         )
         entries.append(
             {
@@ -278,7 +277,7 @@ sources:
 
 # {short}
 
-**{e["title"]}** 收录于 [{LIST_META["title"]}]({LIST_META["url"]}) **第 {idx:03d}/{total:03d}** 篇，分组 **{e["section"]}**。本页为知识库 **策展索引级** 详情节点；方法细节与量化指标以原文 PDF / 项目页为准。
+**{e["title"]}** 收录于 [{LIST_META["title"]}]({LIST_META["url"]}) **第 {idx:03d}/{total:03d}** 篇，分组 **{e["section"]}**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
 ## 一句话定义
 
@@ -293,10 +292,10 @@ sources:
 ## 为什么重要
 
 - {hl}
-- 在 [{LIST_META["title"]} 技术地图]({tech_map_rel}) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 与列表实体 [{LIST_META["title"]}]({wiki_rel_from_root(LIST_META["entity"])}) 及站内 Sim2Real 方法/任务页交叉，便于从策展索引跳转到学习主线。
+- 想横向对照同一分组的其他工作，可以从 [{LIST_META["title"]} 技术地图]({tech_map_rel}) 逐条展开。
+- 顺着列表实体 [{LIST_META["title"]}]({wiki_rel_from_root(LIST_META["entity"])}) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -313,30 +312,30 @@ sources:
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
-## 评测与指标（索引级）
+## 评测与指标
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
+- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
 - 评测口径与具体数值以 [原文 / 项目页]({paper_link}) 为准。
 - 横向对照请回到 [技术地图]({tech_map_rel}) 同分组条目。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标，同分组横向对照请回到 [技术地图]({tech_map_rel}) 的 **{e["section"]}** 分组逐条展开。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单 Highlights 阅读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
+- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图]({tech_map_rel}) 的 **{e["section"]}** 分组逐条展开。
+- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
 - 与清单内相邻条目孰优孰劣，本页不下结论：Awesome 列表可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
 
 ## 结论
 
-**本条目的站内价值是把「{short}」从外部 Awesome 列表提升为可链接的知识节点，并保留清单分组作为阅读锚点。**
+**这一页能给你的是「{short}」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
-- 可确证的是策展坐标：列表分组 **{e["section"]}**，而不是本页自行推导的新算法结论。
-- 适用边界：索引级页面不能替代 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 若该工作成为学习主线，应再升格为深度论文实体（补机构、实验表、源码运行时序图或「不适用」说明）。
+- 可确证的只有清单坐标：分组 **{e["section"]}**；本页不自行推导新结论。
+- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
+- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
 
 ## 常见误区
 
 1. 不要把 Awesome 条目的分组标签当成完整方法证明——它只是策展导读。
-2. 同一 arXiv 在全库只允许一个 canonical 详情节点；若已有深度页，应以深度页为准。
+2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
 
 ## 关联页面
 
@@ -391,25 +390,20 @@ def render_tech_map(rows: list[dict]) -> str:
     sections_md = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
-        sections_md.append("| # | 论文 | 详情节点 |")
-        sections_md.append("|---|------|----------|")
+        sections_md.append("| # | 论文 |")
+        sections_md.append("|---|------|")
         for r in items:
             link = wiki_rel_from_root(r["wiki_rel"])
             title = r["title"].replace("|", "/")
-            sections_md.append(
-                f"| {r['idx']:03d} | {title[:90]} | [{Path(r['wiki_rel']).stem}]({link}) |"
-            )
+            sections_md.append(f"| {r['idx']:03d} | [{title[:90]}]({link}) |")
         sections_md.append("")
-
-    new_count = sum(1 for r in rows if r.get("created"))
-    reused = len(rows) - new_count
 
     return f"""---
 type: overview
 tags: [overview, curated-index, {LIST_META["tag"]}, longchao-sim2real, technology-map]
 status: complete
 updated: {TODAY}
-summary: "{LIST_META["title"]} 技术地图：为清单内论文提供独立详情节点索引（新建 {new_count}，复用已有 {reused}）。"
+summary: "{LIST_META["title"]} 技术地图：把清单里的 {len(rows)} 篇论文逐条拆成站内可点开的一页，按 MDP 四要素与领域分组浏览。"
 related:
   - {wiki_rel_from_root(LIST_META["entity"])}
   - {LIST_META["hub_methods"][0]}
@@ -422,11 +416,11 @@ sources:
 
 # {LIST_META["title"]} 技术地图
 
-> 本页把 [{LIST_META["title"]}]({LIST_META["url"]}) 清单中的论文条目映射为站内 **独立详情节点**（`wiki/entities/paper-as-*` 或已有 canonical 页），供图谱与 `detail.html` 检索。配套综述见 [Sim2Real RL Survey（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md)。
+> 本页把 [{LIST_META["title"]}]({LIST_META["url"]}) 清单里的论文逐条拆成站内可点开的一页，方便按分组浏览、搜索，并顺着链接读同方向的工作。配套综述见 [Sim2Real RL Survey（2502.13187）](../entities/paper-survey-sim2real-rl-foundation-models.md)。
 
 ## 一句话定义
 
-**{LIST_META["title"]} 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文策展列表的站内节点化索引（按 MDP 四要素 + 领域分组浏览）。
+**{LIST_META["title"]} 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文清单的站内可点开版本（按 MDP 四要素 + 领域分组浏览，一点即达论文页）。
 
 ## 英文缩写速查
 
@@ -436,9 +430,9 @@ sources:
 
 ## 为什么重要
 
-- Awesome 列表本身不是知识图谱节点；若不升格论文实体，首页/图谱无法挂上具体工作。
-- 本地图 **优先复用** 库内已有 arXiv canonical 页，仅对缺失条目新建索引级 `paper-as-*` 节点。
-- 统计：清单可解析条目 **{len(rows)}**（新建详情节点 **{new_count}**，复用已有 **{reused}**）。
+- 原清单每条只有标题 + 链接，翻起来只能靠搜索框；这里逐条给出一页，可检索、可顺着相关内容继续读。
+- 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：标题、原文链接与它在清单里的位置一页可见。
+- 清单共 **{len(rows)}** 条，每条都能点开。
 
 ## 覆盖范围
 
@@ -455,9 +449,9 @@ sources:
 
 ## 局限与风险
 
-- 索引级节点保留清单分组，**不替代** 深度论文页；主线工作应继续升格。
-- 清单含非 arXiv 链接（IEEE / ResearchGate）；无 arXiv 条目以标题 slug 建节点，后续若补 arXiv 需合并去重。
-- 上游更新后需重跑 `python3 scripts/generate_longchao_awesome_sim2real_entities.py` 再 `make ci-preflight`。
+- 清单摘要页只给清单要点，**不替代** 原文；要深读请从论文链接进。
+- 清单里混有非 arXiv 链接（IEEE / ResearchGate），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
+- 上游清单仍在更新，本页是 {TODAY} 的快照；最新条目以上游仓库为准。
 
 ## 关联页面
 

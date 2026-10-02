@@ -19,7 +19,7 @@ sources:
 
 # Grounded SAM 2
 
-**Grounded SAM 2** 收录于 awesome-physical-ai（aichr）**第 004/384** 条，分组 **3D Computer Vision**。本页为知识库 **策展索引级** 详情节点；细节以官方文档 / 原文为准。
+**Grounded SAM 2** 收录于 awesome-physical-ai（aichr）**第 004/384** 条，分组 **3D Computer Vision**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
 
 ## 一句话定义
 
@@ -36,10 +36,10 @@ For robotics.
 ## 为什么重要
 
 - For robotics.
-- 在 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 双清单去重后只保留一个 canonical 节点，并同时引用 natnew / aichr 来源。
+- 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
+- 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -53,9 +53,9 @@ For robotics.
 
 For robotics.
 
-该条目在 Physical AI 清单中的角色是 **resource**，分组 **3D Computer Vision**。本页只固化清单给出的问题设定与入口链接，不把外部营销页或课程大纲转存成知识正文。
+该条目在 Physical AI 清单中的角色是 **resource**，分组 **3D Computer Vision**。本页只给出清单里的问题设定与入口链接，不转载外部营销页或课程大纲。
 
-输入是读者要从清单跳到可复核的官方入口；输出是站内可检索、可互链的详情节点。机制细节、API 与版本以官方文档为准。
+这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
 ## 工程实践
 
@@ -66,7 +66,7 @@ For robotics.
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
 
-调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
+使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
 ## 局限与风险
 

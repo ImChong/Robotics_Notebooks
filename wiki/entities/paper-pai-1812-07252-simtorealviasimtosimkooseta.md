@@ -19,7 +19,7 @@ sources:
 
 # Sim-to-Real via Sim-to-Sim (Koos et al. line)
 
-**Sim-to-Real via Sim-to-Sim (Koos et al. line)** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组 **Sim-to-Real**。本页为知识库 **策展索引级** 详情节点；细节以官方文档 / 原文为准。
+**Sim-to-Real via Sim-to-Sim (Koos et al. line)** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
 
 ## 一句话定义
 
@@ -37,10 +37,10 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 ## 为什么重要
 
 - Bridging the reality gap with progressively more realistic intermediate simulators.
-- 在 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 双清单去重后只保留一个 canonical 节点，并同时引用 natnew / aichr 来源。
+- 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
+- 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -58,30 +58,30 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 
 本页不复述论文公式与完整实验表；工程落地请回到原文 / 项目页，并对照站内 VLA、Sim2Real 或任务页。
 
-## 评测与指标（索引级）
+## 评测与指标
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
+- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
 - 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/1812.07252) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标。
+- 本页 **不做** 与具体基线的逐项数值对比，只给出清单坐标。
 - 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单导读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；canonical 以本页 frontmatter 与技术地图为准。
+- 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；以本页主链接与技术地图为准。
 
 ## 结论
 
-**本条目的站内价值是把「Sim-to-Real via Sim-to-Sim (Koos et al. line)」从 awesome-physical-ai 列表提升为可链接的知识节点，并保留清单分组作为阅读锚点。**
+**这一页能给你的是「Sim-to-Real via Sim-to-Sim (Koos et al. line)」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
 1. **策展坐标** — 分组 **Sim-to-Real**，来源 natnew。
-2. **适用边界** — 索引级页面不能替代 PDF / 官方文档；开源状态以项目页实际链接为准。
-3. **去重** — 同一 arXiv / 同一 GitHub 仓在全库只允许一个 canonical 详情节点。
-4. **升格条件** — 若该工作进入学习主线，再补机构、实验表与源码运行时序图。
+2. **适用边界** — 本页不能替代原文 PDF / 官方文档；开源状态以项目页实际链接为准。
+3. **以深读页为准** — 若站内已有这篇的深读页，以那一页为准；本页只是清单入口。
+4. **怎么深读** — 要深读这篇，建议直接从原文入手。
 
 ## 源码运行时序图
 
-**不适用**（索引级节点未逐仓核 README 训练/推理入口；清单标注的仓库链接可能滞后，复现前按 ingest 步骤 2.5 打开项目页核对）。
+**不适用**（本页未逐仓核对 README 里的训练 / 推理入口；清单标注的仓库链接可能滞后，复现前请先打开项目页核对）。
 
 ## 局限与风险
 

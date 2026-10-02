@@ -803,30 +803,30 @@ def render_entity(e: dict[str, Any], src_rel: str, idx: int, total: int) -> str:
 
 本页不复述论文公式与完整实验表；工程落地请回到原文 / 项目页，并对照站内 VLA、Sim2Real 或任务页。
 
-## 评测与指标（索引级）
+## 评测与指标
 
-- 本条目为 Awesome 策展 **索引级** 摘录，**未搬运** 原文量化 benchmark 与实机指标。
+- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
 - 评测口径与具体数值以 [原文 / 项目页]({primary}) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
-## 与其他工作对比（索引级）
+## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比：索引级节点只保留清单坐标。
+- 本页 **不做** 与具体基线的逐项数值对比，只给出清单坐标。
 - 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单导读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；canonical 以本页 frontmatter 与技术地图为准。
+- 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；以本页主链接与技术地图为准。
 
 ## 结论
 
-**本条目的站内价值是把「{short}」从 awesome-physical-ai 列表提升为可链接的知识节点，并保留清单分组作为阅读锚点。**
+**这一页能给你的是「{short}」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
 1. **策展坐标** — 分组 **{sections}**，来源 {lists}。
-2. **适用边界** — 索引级页面不能替代 PDF / 官方文档；开源状态以项目页实际链接为准。
-3. **去重** — 同一 arXiv / 同一 GitHub 仓在全库只允许一个 canonical 详情节点。
-4. **升格条件** — 若该工作进入学习主线，再补机构、实验表与源码运行时序图。
+2. **适用边界** — 本页不能替代原文 PDF / 官方文档；开源状态以项目页实际链接为准。
+3. **以深读页为准** — 若站内已有这篇的深读页，以那一页为准；本页只是清单入口。
+4. **怎么深读** — 要深读这篇，建议直接从原文入手。
 
 ## 源码运行时序图
 
-**不适用**（索引级节点未逐仓核 README 训练/推理入口；清单标注的仓库链接可能滞后，复现前按 ingest 步骤 2.5 打开项目页核对）。
+**不适用**（本页未逐仓核对 README 里的训练 / 推理入口；清单标注的仓库链接可能滞后，复现前请先打开项目页核对）。
 """
     else:
         paper_sections = f"""
@@ -834,9 +834,9 @@ def render_entity(e: dict[str, Any], src_rel: str, idx: int, total: int) -> str:
 
 {e["desc"]}
 
-该条目在 Physical AI 清单中的角色是 **{e["kind"]}**，分组 **{sections}**。本页只固化清单给出的问题设定与入口链接，不把外部营销页或课程大纲转存成知识正文。
+该条目在 Physical AI 清单中的角色是 **{e["kind"]}**，分组 **{sections}**。本页只给出清单里的问题设定与入口链接，不转载外部营销页或课程大纲。
 
-输入是读者要从清单跳到可复核的官方入口；输出是站内可检索、可互链的详情节点。机制细节、API 与版本以官方文档为准。
+这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
 ## 工程实践
 
@@ -846,7 +846,7 @@ def render_entity(e: dict[str, Any], src_rel: str, idx: int, total: int) -> str:
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
 
-调试时先确认链接指向的是官方仓/文档而不是镜像或过期 fork，再决定是否升格为深度实体页。
+使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 """
     src_links = [
         f"- [`{src_rel}`](../../{src_rel}) — 本条目策展摘录",
@@ -871,7 +871,7 @@ sources:
 
 # {short}
 
-**{e["title"]}** 收录于 awesome-physical-ai（{lists}）**第 {idx:03d}/{total:03d}** 条，分组 **{sections}**。本页为知识库 **策展索引级** 详情节点；细节以官方文档 / 原文为准。
+**{e["title"]}** 收录于 awesome-physical-ai（{lists}）**第 {idx:03d}/{total:03d}** 条，分组 **{sections}**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
 
 ## 一句话定义
 
@@ -886,10 +886,10 @@ sources:
 ## 为什么重要
 
 - {e["desc"]}
-- 在 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 中提供可点击的独立详情节点，避免清单条目无法落入知识图谱。
-- 双清单去重后只保留一个 canonical 节点，并同时引用 natnew / aichr 来源。
+- 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
+- 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
-## 核心信息（索引级）
+## 核心信息
 
 | 字段 | 内容 |
 |------|------|
@@ -955,27 +955,23 @@ def render_tech_map(rows: list[dict[str, Any]]) -> str:
     by_sec: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for r in rows:
         by_sec[r["sections"][0]].append(r)
-    new_count = sum(1 for r in rows if r.get("created"))
-    reused = len(rows) - new_count
     sections_md: list[str] = []
     for sec, items in by_sec.items():
         sections_md.append(f"### {sec}\n")
-        sections_md.append("| # | 条目 | 详情节点 | 来源 |")
-        sections_md.append("|---|------|----------|------|")
+        sections_md.append("| # | 条目 | 来源 |")
+        sections_md.append("|---|------|------|")
         for r in items:
             link = wiki_rel_from_root(r["wiki_rel"])
             title = r["title"].replace("|", "/")
             lists = "+".join(r["lists"])
-            sections_md.append(
-                f"| {r['idx']:03d} | {title[:80]} | [{Path(r['wiki_rel']).stem}]({link}) | {lists} |"
-            )
+            sections_md.append(f"| {r['idx']:03d} | [{title[:80]}]({link}) | {lists} |")
         sections_md.append("")
     return f"""---
 type: overview
 tags: [overview, curated-index, physical-ai, awesome-physical-ai, technology-map]
 status: complete
 updated: {TODAY}
-summary: "Physical AI 双清单技术地图：natnew ∪ aichr 去重后 {len(rows)} 条，新建 {new_count}、复用 {reused}。"
+summary: "Physical AI 双清单技术地图：natnew 与 aichr 两份清单合并去重后 {len(rows)} 条，逐条可点开，按清单分组浏览。"
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../entities/awesome-physical-ai-aichr.md
@@ -990,11 +986,11 @@ sources:
 
 # Awesome Physical AI 技术地图
 
-> 本页把 [natnew/awesome-physical-ai]({NATNEW_URL}) 与 [aichr/awesome-physical-ai]({AICHR_URL}) 的清单条目映射为站内 **独立详情节点**（新建 `pai-*` / `paper-pai-*` 或复用已有 canonical 页）。
+> 本页把 [natnew/awesome-physical-ai]({NATNEW_URL}) 与 [aichr/awesome-physical-ai]({AICHR_URL}) 两份同名清单合并去重，逐条拆成站内可点开的一页，方便按分组浏览、搜索，并顺着链接读同方向的工作。
 
 ## 一句话定义
 
-**Physical AI 双清单技术地图** = 两份同名 Awesome 列表的并集节点化索引（按清单分组浏览，一点即达详情页）。
+**Physical AI 双清单技术地图** = 两份同名 Awesome 列表合并后的站内可点开版本（按清单分组浏览，一点即达详情页）。
 
 ## 英文缩写速查
 
@@ -1002,14 +998,14 @@ sources:
 |------|----------|----------|
 | PAI | Physical AI | 感知–推理–行动闭环的物理智能 |
 | VLA | Vision-Language-Action | 两清单共同主线 |
-| RFM | Robotics Foundation Model | natnew canonical 类 |
+| RFM | Robotics Foundation Model | 机器人基础模型（natnew 清单的一级分类） |
 | Sim2Real | Simulation to Real | 迁移与评测独立类 |
 
 ## 为什么重要
 
-- Awesome 列表本身不是知识图谱节点；若不升格子条目，图谱只能停在清单 hub。
-- 本地图 **优先复用** 库内已有 arXiv / GitHub / 标题 canonical 页，仅对缺失条目新建索引级节点。
-- 统计：去重后 **{len(rows)}** 条（新建 **{new_count}**，复用 **{reused}**）。
+- 原清单每条只有标题 + 链接，翻起来只能靠搜索框；这里逐条给出一页，可检索、可顺着相关内容继续读。
+- 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：标题、原文链接与它在清单里的位置一页可见。
+- 两份清单合并去重后共 **{len(rows)}** 条，每条都能点开；「来源」列标出条目出自哪份清单。
 
 ## 覆盖范围
 
@@ -1025,9 +1021,9 @@ sources:
 
 ## 局限与风险
 
-- 索引级节点保留清单摘要，**不替代** 深度论文/工具页。
-- 人物、新闻通讯与部分实验室条目只有社交媒体或新闻链接，节点用于图谱覆盖而非复现。
-- 上游更新后需重跑 `python3 scripts/generate_physical_ai_awesome_entities.py` 再 `make ci-preflight`。
+- 清单摘要页只给清单要点，**不替代** 深度论文/工具页；要深读请从原文链接进。
+- 人物、新闻通讯与部分实验室条目只有社交媒体或新闻链接，页面只提供入口，不足以据此复现。
+- 上游清单仍在更新，本页是 {TODAY} 的快照；最新条目以上游仓库为准。
 
 ## 关联页面
 

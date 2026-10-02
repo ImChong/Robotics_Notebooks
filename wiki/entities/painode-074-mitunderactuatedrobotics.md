@@ -45,7 +45,7 @@ summary: "MIT Underactuated Robotics（Russ Tedrake）公开在线教材：欠�
 1. **欠驱动 + 足式/操作的主线教材**：覆盖 walking/running/manipulation 模型系统，与本库 [运动控制路线](../../roadmap/motion-control.md) L3–L4 传统控制段高度对齐。
 2. **Drake 官方教学载体**：全书算法与示例在 [Drake](./drake.md) 中实现；读课即练 TrajOpt / 接触优化工具链。
 3. **与 CMU 16-745 互补而非替代**：[CMU Optimal Control 2025](./cmu-optimal-control-curriculum.md) 偏 OCP 系统课；Underactuated 偏 **机械结构 + 欠驱动现象 + 优化/学习螺旋**。
-4. **仍保留 Physical AI 清单坐标**：natnew **074/384** 条目；本页由索引级升格为 **章节策展**。
+4. **仍保留 Physical AI 清单坐标**：natnew **074/384** 条目；本页在清单条目之外补了 **章节导读**。
 
 ## 推荐学习路径
 
@@ -118,7 +118,7 @@ flowchart LR
 
 - **HTML 为主、PDF 滞后**：引用公式以在线章节为准；PDF 可能有转换 artifact。
 - **作业非全公开**：勿假设全部 MIT 内部作业可复现。
-- **域名混用**：历史链接常见 `underactuated.csail.mit.edu`；2024 起 canonical 为 [`underactuated.mit.edu`](https://underactuated.mit.edu/index.html)。
+- **域名混用**：历史链接常见 `underactuated.csail.mit.edu`；2024 起官方域名为 [`underactuated.mit.edu`](https://underactuated.mit.edu/index.html)。
 - **勿与 CMU Optimal Control 2025 playlist 混淆**：后者属 **CMU 16-745 / Manchester**（见 [`cmu-optimal-control-curriculum.md`](./cmu-optimal-control-curriculum.md)）。
 
 ## 源码运行时序图

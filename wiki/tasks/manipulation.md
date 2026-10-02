@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-09-30
+updated: 2026-10-01
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -287,39 +287,11 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - 泛化能力（对未见过的物体）
 - 速度
 
-## 关联任务
+## 按主题索引：论文、工具与基准
 
-- [Locomotion](./locomotion.md)：loco-manipulation 是两者的结合
-- [Loco-Manipulation](./loco-manipulation.md)：边走边操作，manipulation 的全身协调扩展
-- [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
+> 全站与操作相关的论文、工具、硬件、基准与选型页按主题归档；同一页面只在最贴切的一组出现一次。核心方法与概念见文末「关联页面」。
 
-## 关联页面
-
-- [senlanke 周更论文索引（2026-09-21–25）](../overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 操作 15 篇 arXiv 唯一节点
-- [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 操作 14 篇 arXiv 唯一节点
-
-> 全站与操作相关的方法、实体、基准与选型入口按主题归档；同一页面只在最贴切的一组出现一次。
-
-**方法与概念底座**
-
-- [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
-- [Reinforcement Learning](../methods/reinforcement-learning.md)
-- [Diffusion Policy](../methods/diffusion-policy.md)
-- [Behavior Cloning](../methods/behavior-cloning.md)
-- [DAgger](../methods/dagger.md)
-- [VLA](../methods/vla.md)
-- [Whole-Body Control](../concepts/whole-body-control.md)
-- [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
-- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
-- [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 极致的灵巧操作
-- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — 操作模型中常见的动作表示
-- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 操作数据的规模化定律
-- [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) — 自动化操作轨迹标注
-- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解；长程未见视频 ICL 见 [S1](../entities/skild-s1.md)
-- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
-- [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
-
-**VLA 架构、后训练与评测**
+### VLA 架构、后训练与评测
 
 - [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；真机双臂 UR5e 约 40%→近 100%（arXiv:2608.23831；确认未开源）
@@ -364,7 +336,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 过程评测套件（arXiv:2608.14284；已开源）
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区 VLA / 灵巧手多基准排行榜
 
-**世界模型与视频–动作模型（WAM / VAM）**
+### 世界模型与视频–动作模型（WAM / VAM）
 
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 5B 统一视频–动作世界模型与测试时后果评估
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) — Wan+MoT 联合视频/动作/价值；开源 Base 与 RoboTwin SFT 权重
@@ -389,7 +361,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [PointCast](../entities/paper-pointcast-point-set-world-model.md) — **19.8M** 点集 DiT WM；rigid/cloth/rope/cabinet + 冻结 MPC（arXiv:2609.28393）
 - [紧凑视觉触觉 WM 提升](../entities/paper-compact-visuotactile-wm-lifting.md) — ~650k 参数 WM；预测好≠策略好（arXiv:2609.09597；未见代码）
 
-**人视频 / egocentric 数据与迁移**
+### 人视频 / egocentric 数据与迁移
 
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
 - [EgoWorld-100W](../entities/egoworld-100w.md) — 百万级自中心操作数据（申请制；四维覆盖）
@@ -409,7 +381,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — 全尺寸人形真机操作小时库
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务（arXiv:2609.03591）
 
-**灵巧操作与重定向**
+### 灵巧操作与重定向
 
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）
@@ -426,7 +398,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [空间条件多智能体灵巧操作](../entities/paper-spatially-conditioned-multi-agent-dexterous.md) — 8×8 Soft Delta 阵列；稀疏激活 ~65%（arXiv:2609.06930；未见代码）
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 
-**触觉与力控**
+### 触觉与力控
 
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准
 - [OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md) — 冻结视觉策略 + 触觉残差真机 RL 的快速接触适应（arXiv:2607.03723）
@@ -437,7 +409,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉安全基准：Goal vs Safety Success（arXiv:2607.04234）
 - [NeoteAI / 𝒩₀](../entities/neoteai.md) — OpenNeoData + NeoForce；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) · [𝒩₀-TWAM](../entities/paper-n0-twam.md)
 
-**抓取与感知**
+### 抓取与感知
 
 - [Grasp Pose Estimation (抓取位姿估计)](../methods/grasp-pose-estimation.md) — RGBD/点云 → 6-DoF 抓取候选；GraspNet → Contact-GraspNet → GSNet/AnyGrasp 方法谱系
 - [AnyGrasp](../entities/anygrasp.md) — 平行夹爪稠密抓取感知与跨帧跟踪（GraspNet 系 SDK）
@@ -446,7 +418,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [MILO](../entities/paper-milo.md) — 单图 LRM 解释人—物三维交互（SMPL-H + 物体网格）；操作链路的上游几何，不是策略
 
-**规划、控制与执行栈**
+### 规划、控制与执行栈
 
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — 双臂/多臂 **物体分配 + 并行运动时间表** 的规划层框架（ICRA 2026）
 - [cuRobo（GPU 无碰撞运动生成）](../entities/curobo.md) — 到达、避障与 MoveIt / Isaac ROS 集成路径上的规划–优化参考栈
@@ -459,14 +431,14 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Philia](../entities/philia.md) — Astribot 多机器人物理 AI 助手运行时（OpenClaw + Robot Gateway，arXiv:2607.11377）
 - [机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md) — 示教 CSV / NPZ / MuJoCo 关键帧的离线修整与导出
 
-**Agent 与技能编排**
+### Agent 与技能编排
 
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
 - [EmbodiedSkills](../entities/paper-embodiedskills.md) — AgentLoop + skill contract；Qwen3-VL + π₀.₅；RoboTwin 86.20% / LIBERO 97.40%（arXiv:2609.01281，已开源）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — Graph-as-Policy 多 agent harness：ROS 式计算图 + MORSL 技能 + 仿真排练自学习，面向 [变体自动化](../concepts/variational-automation.md)（arXiv:2607.05369）
 
-**可变形体与家务操作**
+### 可变形体与家务操作
 
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳索动态打结的 Task-Level ILC + 单示教真机迭代（arXiv:2602.21302）
 - [RopeFormer](../entities/paper-ropeformer.md) — 动态绳跨 trial TXL 历史适应 + Newton PPO + H1-2 真机（arXiv:2609.23432）
@@ -476,7 +448,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [cRVAE 可变形体操作](../entities/paper-crvae-deformable-manipulation-partial-obs.md) — 角点→全形状实时估计；Go2 协作避绳（arXiv:2609.10308；未见代码）
 - [FolDeX 可变形衣物基准](../entities/paper-foldex-deformable-clothes-benchmark.md) — 2000+ h 真实数据 + FoldScore（arXiv:2609.10243；未见代码）
 
-**仿真资产与 Real2Sim**
+### 仿真资产与 Real2Sim
 
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 全屋 sim-ready furnished 3D 与 **>15 manipulable objects/scene** 的场景级生成（arXiv:2606.06390）
@@ -486,7 +458,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [SceneAgent](../entities/paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 → 预测物理 USD + digital sisters + demonstration factory（Harvard，代码待发布）
 - [Lucida](../entities/paper-lucida-r2s.md) — 室内多视角 → 可编辑物体资产 + GizmoAct 闭环放置（arXiv:2608.30821，未开源）
 
-**硬件：手 / 夹爪 / 臂**
+### 硬件：手 / 夹爪 / 臂
 
 - [Allegro Hand](../entities/allegro-hand.md) — 主流灵巧操作研究硬件
 - [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业 AI-first 腱驱动手（15+6 DoF，>25 kg 抓握）
@@ -499,7 +471,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [carm-lerobot（CVTE CARM A3）](../entities/carm-lerobot.md) — 视源协作臂官方 LeRobot 0.5.1 fork；ACT/VLA 真机闭环
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 
-**数据集与基准**
+### 数据集与基准
 
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
 - [DexVerse](../entities/paper-dexverse.md) — 100 项多任务多具身灵巧 benchmark + 3,180 VR 示范；IL/VLA 基线均值成功率 34%（arXiv:2607.08751，UNC/HKU/Berkeley）
@@ -507,8 +479,10 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [DexBench](../entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧规格（OSC / T00–T17）；规范页已公开，Arena 评测栈仍标 coming soon
 - [DexHoldem](../entities/paper-dexholdem.md) — 真机 ShadowHand 扑克基准：SPSR 47.5%、感知 exact match 34.3%（已开源）
 
-**综述与技术地图**
+### 综述与技术地图
 
+- [senlanke 周更论文索引（2026-09-21–25）](../overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 当周操作方向 15 篇论文，每篇一页
+- [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 当周操作方向 14 篇论文，每篇一页
 - [T-RO 2026 操作学习 5 篇技术地图](../overview/tro-manip-5-papers-technology-map.md) — 数据 scaling / SE(3) 等变 / DexRep / G3M 视频预训练 / 生成模型综述（深蓝具身智能策展）
 - [Is Diversity All You Need（T-RO 2026）](../entities/paper-tro-manip-01-diversity-scaling.md) — 任务/本体/演示者三维数据多样性 scaling 与 GO-1-Pro 分布去偏
 - [Canonical Policy（T-RO 2026）](../entities/paper-tro-manip-02-canonical-policy.md) — 规范化 3D 点云 SE(3) 等变模仿学习策略
@@ -519,7 +493,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [基础模型时代具身操作综述（Bai et al., arXiv:2512.22983）](../entities/paper-embodied-manipulation-foundation-models-survey.md) — 高层规划六类 × 低层学习管线双轴 taxonomy，配套 Awesome-Robotics-Manipulation
 - [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇：表征 / 抓取 / 数据 / 评测 / 硬件
 
-**Query 与选型指南**
+### Query 与选型指南
 
 - [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 如何高效采集人类演示数据
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md) — 装配、插拔、拧紧等任务的工程排错顺序
@@ -527,6 +501,31 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Query：操作 VLA 与视频-动作架构选型](../queries/manipulation-vla-architecture-selection.md) — VLA / mimic-video / DeFI / DWM / 开源策略族选型
 - [Query：灵巧操作数据管线与 RL 基建](../queries/dexterous-manipulation-data-pipeline.md) — 自动标注、WiLoR、GAE、Actuator Network
 - [Query：在 RL 中利用触觉反馈提升操作鲁棒性](../queries/tactile-feedback-in-rl.md) — 处理视觉遮挡的进阶方法
+
+## 关联任务
+
+- [Locomotion](./locomotion.md)：loco-manipulation 是两者的结合
+- [Loco-Manipulation](./loco-manipulation.md)：边走边操作，manipulation 的全身协调扩展
+- [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
+
+## 关联页面
+
+- [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
+- [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Diffusion Policy](../methods/diffusion-policy.md)
+- [Behavior Cloning](../methods/behavior-cloning.md)
+- [DAgger](../methods/dagger.md)
+- [VLA](../methods/vla.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
+- [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
+- [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 极致的灵巧操作
+- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — 操作模型中常见的动作表示
+- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 操作数据的规模化定律
+- [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) — 自动化操作轨迹标注
+- [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解；长程未见视频 ICL 见 [S1](../entities/skild-s1.md)
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
+- [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-08-28
+updated: 2026-10-01
 related:
   - ./paper-notebook-category-01-foundational-rl.md
   - ./paper-notebook-category-02-motion-retargeting.md
@@ -18,14 +18,14 @@ related:
   - ./paper-notebook-category-12-hardware-design.md
   - ./paper-notebook-category-13-physics-based-animation.md
   - ./paper-notebook-category-14-human-motion.md
-summary: "Robot Learning Paper Notebooks 137+ 篇深读笔记在本库的分类父节点与 wiki 子节点总索引（共 518 篇）。"
+summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个分类、共 518 篇，按分类进入每篇论文的站内页。"
 ---
 
 # Robot Learning Paper Notebooks 知识库索引
 
-本页把 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **14 类主页分类** 映射为本仓库 `wiki/overview/paper-notebook-category-*` **父节点**；每篇论文对应 **子节点**（已有深度 wiki 或 `wiki/entities/paper-notebook-*` 索引实体）。
+本页是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 论文笔记在站内的总入口：按笔记站的 **14 个分类** 各给一页，分类页里每篇论文一行，点进去是这篇论文的站内页。
 
-> **更名（2026-08-28）：** 姊妹仓库与 Pages 站点由 `Humanoid_Robot_Learning_Paper_Notebooks` 更名为 [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；本库内链文件名（如本页 `humanoid-paper-notebooks-index.md`）保持不变，以免打断已有 related。
+> **更名（2026-08-28）：** 笔记站由 `Humanoid_Robot_Learning_Paper_Notebooks` 更名为 [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；看到旧名，指的是同一个站。
 
 ## 英文缩写速查
 
@@ -35,7 +35,7 @@ summary: "Robot Learning Paper Notebooks 137+ 篇深读笔记在本库的分类�
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 
-## 分类父节点（与笔记主页面一致）
+## 14 个分类（与笔记站主页一致）
 
 - [Foundational RL（基础强化学习）](./paper-notebook-category-01-foundational-rl.md) — `01_Foundational_RL`，15 篇
 - [Motion Retargeting（运动重定向）](./paper-notebook-category-02-motion-retargeting.md) — `02_Motion_Retargeting`，4 篇
@@ -52,12 +52,11 @@ summary: "Robot Learning Paper Notebooks 137+ 篇深读笔记在本库的分类�
 - [Physics-Based Animation（物理动画）](./paper-notebook-category-13-physics-based-animation.md) — `13_Physics-Based_Animation`，27 篇
 - [Human Motion（人体动作分析与生成）](./paper-notebook-category-14-human-motion.md) — `14_Human_Motion`，39 篇
 
-## 维护说明
+## 怎么用
 
-- 笔记 URL 与分类元数据：`schema/paper-notebook-index.json`、`schema/paper-notebook-categories.json`
-- 论文 → wiki 完整映射：`schema/paper-notebook-wiki-full-map.yml`
-- 向已有 wiki 页注入深读链接：`make paper-notebook-links`
-- 补齐未映射论文的 sources/实体与分类树：`make paper-notebook-bootstrap`（含 progress.json 与 papers/PROGRESS.md）
+- **按方向找论文：** 先点上面的分类，分类页列出这个方向的全部论文。
+- **分清读到哪一步：** 已有深读笔记的论文，站内页给出笔记摘要；标「待深读」的只有分类位置与原文入口，要深读建议直接读原文。
+- **看笔记全文：** 全文在 [笔记站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)，站内页是摘要与交叉链接。
 
 ## 与其他页面的关系
 
