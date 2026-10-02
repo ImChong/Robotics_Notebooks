@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-09-29
+updated: 2026-10-02
 related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
@@ -143,6 +143,8 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [Imitator Game / IG-10K](./paper-imitator-game.md)：人视频模仿基准，以 LeRobot 0.5.0 格式发布 2 万余组人–机配对，附 `h5_to_lerobot` 转换脚本
 - [RoboFlywheel](./roboflywheel.md)：阿里的开放数据基础设施，把多源数据统一到 LeRobot v2.1
 - [Tnkr](./tnkr.md)：管理整机项目的 CAD、线束与代码版本；训练数据常导出为 LeRobot 格式
+
+- [Argus（Pantheon）](./pantheon-argus.md)：在 LeRobot 数据采集后增加 VLM 稠密标注与确定性质量审计，区分演示失误与录制故障，并标出目标完成区间。
 
 ### 用新的策略模型
 
