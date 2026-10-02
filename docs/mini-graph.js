@@ -345,34 +345,88 @@
       attributeFilter: ['data-theme']
     });
 
-    sim.on('tick', function() {
+    function renderPositions() {
       line
         .attr('x1',function(d){ return d.source.x; }).attr('y1',function(d){ return d.source.y; })
         .attr('x2',function(d){ return d.target.x; }).attr('y2',function(d){ return d.target.y; });
       nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
-    });
+    }
 
-    // 短预热去掉首帧毛刺后，以较高 alpha 开场，保留一次轻微回弹。
+    // 布局离屏算到收敛（预热 + 0.7 开场，tick 数与原先实时模拟一致，终态相同）：
+    // 每帧限时 8ms 分帧计算，避免一次性同步计算形成长任务；算完前隐藏画布，算完直接取景，
+    // 用户看到的动态改由下方「入场」负责，不再在首屏外空跑。
+    g.attr('visibility', 'hidden');
     sim.alpha(1);
     for (var wi = 0; wi < 12; wi++) sim.tick();
     nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
-    line
-      .attr('x1', function(d){ return d.source.x; }).attr('y1', function(d){ return d.source.y; })
-      .attr('x2', function(d){ return d.target.x; }).attr('y2', function(d){ return d.target.y; });
-    nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
-    sim.alpha(0.7).restart();
+    sim.alpha(0.7);
+    var layoutTimer = d3.timer(function () {
+      var budgetEnd = performance.now() + 8;
+      while (sim.alpha() >= sim.alphaMin() && performance.now() < budgetEnd) sim.tick();
+      if (sim.alpha() >= sim.alphaMin()) return;
+      layoutTimer.stop();
+      onLayoutReady();
+    });
 
-    sim.on('end', function() {
-      var allN = nodes.filter(function(n){ return n.x!=null; });
-      if (!allN.length) return;
-      var xs=allN.map(function(n){return n.x;}), ys=allN.map(function(n){return n.y;});
+    function onLayoutReady() {
+      var xs=nodes.map(function(n){return n.x;}), ys=nodes.map(function(n){return n.y;});
       var x0=Math.min.apply(null,xs), x1=Math.max.apply(null,xs);
       var y0=Math.min.apply(null,ys), y1=Math.max.apply(null,ys);
       var pad=40, cx=(x0+x1)/2, cy=(y0+y1)/2;
       var scale=Math.min(3, Math.max(0.3, Math.min(W/(x1-x0+pad), H/(y1-y0+pad))));
-      svg.transition().duration(600).call(zoom.transform,
-        d3.zoomIdentity.translate(W/2-scale*cx, H/2-scale*cy).scale(scale));
-    });
+      if (nodes.length) svg.call(zoom.transform, d3.zoomIdentity.translate(W/2-scale*cx, H/2-scale*cy).scale(scale));
+      g.attr('visibility', null);
+
+      // ── 入场：区块进入视口时，节点自取景中心由内到外错开扩散到终态位置并长大，连线随端点拉出、渐显 ──
+      var ENTRANCE_MS = 900;
+      var ENTRANCE_STAGGER_MS = 380;
+      var reduceMotion = false;
+      try { reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+      if (reduceMotion || typeof IntersectionObserver === 'undefined') {
+        renderPositions();
+        return;
+      }
+      var maxDist = 1;
+      nodes.forEach(function (n) {
+        n._fx = n.x;
+        n._fy = n.y;
+        n._dist = Math.hypot(n.x - cx, n.y - cy);
+        if (n._dist > maxDist) maxDist = n._dist;
+      });
+      nodes.forEach(function (n) { n._delay = n._dist / maxDist * ENTRANCE_STAGGER_MS; });
+
+      var setEntranceFrame = function (elapsed) {
+        var done = true;
+        nodes.forEach(function (n) {
+          var t = Math.max(0, Math.min(1, (elapsed - n._delay) / ENTRANCE_MS));
+          if (t < 1) done = false;
+          n._e = d3.easeCubicOut(t);
+          n.x = cx + (n._fx - cx) * n._e;
+          n.y = cy + (n._fy - cy) * n._e;
+        });
+        renderPositions();
+        // 圆点用 r 长大、标签只淡入不缩放：逐帧缩放文字会反复重新栅格化字形，实测掉到 ~20fps
+        nodeG.select('circle').attr('r', function(d){ return nodeRadius(d) * d._e; });
+        label.attr('opacity', function(d){ return Math.max(0, (d._e - 0.6) / 0.4); });
+        line.attr('stroke-opacity', function(d){ return Math.min(d.source._e, d.target._e); });
+        return done;
+      };
+
+      setEntranceFrame(0);
+      var entranceObserver = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (en) { return en.isIntersecting; })) return;
+        entranceObserver.disconnect();
+        var entranceTimer = d3.timer(function (elapsed) {
+          if (!setEntranceFrame(elapsed)) return;
+          entranceTimer.stop();
+          nodes.forEach(function (n) { n.x = n._fx; n.y = n._fy; });
+          renderPositions();
+          label.attr('opacity', null);
+          line.attr('stroke-opacity', null);
+        });
+      }, { threshold: 0.35 });
+      entranceObserver.observe(miniWrap);
+    }
 
 
     if (window.RNGraphTooltip) {
@@ -498,7 +552,7 @@
         .graphData({ nodes: nodes3d, links: links3d });
       wrap3d.addEventListener('mousemove', trackPointer3d);
       bindMiniGraph3dTooltipDismiss();
-      // 力模拟稳定后一次性取景填满容器（与 2D sim.on('end') 的自动 fit 对齐）；
+      // 力模拟稳定后一次性取景填满容器（与 2D 收敛后的自动 fit 对齐）；
       // 只做首次，避免用户拖拽节点触发的后续 engineStop 抢走相机
       var fitted3d = false;
       graph3d.onEngineStop(function () {
