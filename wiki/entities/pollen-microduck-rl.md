@@ -15,6 +15,7 @@ related:
   - ../concepts/domain-randomization.md
   - ../queries/sim2real-gap-reduction.md
   - ../queries/reward-design-guide.md
+  - ../overview/zhixing-microduck-primer-album-technology-map.md
 sources:
   - ../../sources/repos/microduck_rl.md
   - ../../sources/repos/microduck.md
@@ -145,6 +146,7 @@ uv run scripts/infer_policy.py --walking walk.onnx --standing stand.onnx --new-c
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Sim2Real Gap 缩减](../queries/sim2real-gap-reduction.md)
 - [Reward Design 实战指南](../queries/reward-design-guide.md)
+- [智践行 Microduck 入门专辑](../overview/zhixing-microduck-primer-album-technology-map.md) — 云 GPU 训练 → export → Rust 对齐
 
 ## 参考来源
 

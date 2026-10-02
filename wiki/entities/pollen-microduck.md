@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ../tasks/microduck-ball-balance.md
+  - ../overview/zhixing-microduck-primer-album-technology-map.md
 sources:
   - ../../sources/sites/pollen-robotics-microduck.md
   - ../../sources/repos/microduck.md
@@ -130,6 +131,7 @@ flowchart LR
 - [mjlab](./mjlab.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
+- [智践行 Microduck 入门专辑](../overview/zhixing-microduck-primer-album-technology-map.md) — 中文零硬件跟做链（5 篇独立节点）
 
 ## 参考来源
 
