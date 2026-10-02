@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-02
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ./retrieval-augmented-generation.md
@@ -169,6 +169,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Claude-shaped science](../entities/claude-shaped-science.md) — 适配模型能力的科研选题与专家判断。
+- [BootLoops](../entities/bootloops.md) — 精确计算工具与独立验证门禁，固定版本核查开放边界。
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
 - [Hermes Agent](../entities/hermes-agent.md)
 - [Agent Reach](../entities/agent-reach.md)
