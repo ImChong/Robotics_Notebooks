@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [software, visualization, debugging, telemetry, embedded, serial, can, mqtt]
+tags: [software, independent-maintainer, visualization, debugging, telemetry, embedded, serial, can, mqtt]
 status: complete
 updated: 2026-10-02
 related:
@@ -29,6 +29,14 @@ summary: "Serial Studio 把硬件遥测转成实时仪表盘；适合串口电�
 | DBC | Database CAN | 定义 CAN 报文与信号的数据库格式 |
 | FFT | Fast Fourier Transform | 观察信号频谱的变换 |
 | GPL | GNU General Public License | 核心源码采用的开源许可 |
+
+## 核心信息
+
+| 项目 | 内容 |
+|---|---|
+| 机构 | 独立维护者（Independent Maintainer）：Alex Spataru |
+| 官方代码 | https://github.com/Serial-Studio/Serial-Studio |
+| 官方项目页 | https://serial-studio.com/ |
 
 ## 为什么重要
 
