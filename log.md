@@ -1,3 +1,7 @@
+## [2026-10-02] structural | 点阵随指针点亮扩展到全站：深色主题 body 底纹（所有页面）、首页 Hero、图谱页画布点阵；有 prefers-reduced-motion 降级
+
+## [2026-10-02] ingest | 接入 Serial Studio 硬件遥测仪表盘；核查 GPL 核心与专有 Pro 边界，补充单关节调试示例并关联 PlotJuggler。
+
 ## [2026-10-02] structural | 首页 P1 交互动效：Hero 点阵随指针点亮；知识图谱预览改为分帧离屏收敛，滚到区块时节点自中心向外扩散入场（终态与原先一致）；均有 prefers-reduced-motion 降级
 
 ## [2026-10-02] structural | 首页 P0 交互动效：首屏以下区块滚动入场、入口卡指针光斑、主题切换圆形扩散（View Transitions）、路线 / 公司展开高度过渡；均有 prefers-reduced-motion 降级

@@ -4520,6 +4520,7 @@
 - [SegFormer](wiki/entities/segformer.md) — SegFormer** 结合 **分层高效 Transformer 编码器** 与 **极简 MLP 解码器**，在无pe、无重型解码头的情况下达到强语义分割精度与良好推理效率。 `📅unknown` `[entity_page]`
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-S `📅unknown` `[entity_page]`
 - [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
+- [Serial Studio](wiki/entities/serial-studio.md) — Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。 `📅unknown` `[entity_page]`
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Shift（shiftapp.nyc）](wiki/entities/shift-app-nyc.md) — Shift**（<https://www.shiftapp.nyc/>）是 **MicroAGI** 推出的消费者服务：在纽约为住户提供 **免费专业保洁**，保洁员佩戴 **头载相机** 录制第 `📅unknown` `[entity_page]`
