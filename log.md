@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | sources/sites/anthropic-claude-shaped-science.md 与 sources/repos/bootloops.md — 收录科研选题文章及固定版本计算工具箱，两个独立节点接入 AI Auto-Research；通用代码已开放，部分依赖与成果在仓外
+
 ## [2026-10-02] ingest | 智践行 Microduck 入门微信专辑 4688586645438726146；5/5 独立 overview 节点 + sources；④ Camoufox 全文；开源已核查
 
 ## [2026-10-02] ingest | Argus（Pantheon）机器人数据审计

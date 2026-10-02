@@ -93,6 +93,7 @@
 - [BLIP](wiki/entities/blip.md) — BLIP 统一理解与生成的图文预训练：通过自举过滤噪声网图，并联合对比、匹配与语言模型目标，为后续 BLIP-2 奠基。 `📅unknown` `[entity_page]`
 - [booster_mjlab（Booster K1 × mjlab）](wiki/entities/booster-mjlab.md) — booster_mjlab** 是由 whIRLwind Amsterdam（Intelligent Robotics Lab）维护的开源项目 `📅unknown` `[entity_page]`
 - [Booster Robotics RoboCup Demo](wiki/entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 Booster Robotics 官方维护的开源项 `📅unknown` `[entity_page]`
+- [BootLoops：可核验的精确科学计算工具箱](wiki/entities/bootloops.md) — BootLoops 1.0** 是 Matthew D. Schwartz 维护、模型无关的科学计算 harness：让代理调用有文档、误差口径和验收测试的工具，生成能独立检查的计算结果。 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](wiki/entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](wiki/entities/botlab-motioncanvas.md) — BotLab** 是 地瓜机器人（D-Robotics） 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
 - [BotWorld（机器人资产平台）](wiki/entities/botworld.md) — BotWorld**（<https://botworld.enkeebot.com/>）是 **EnkeeBot** 运营的 **机器人资产社区与分发平台**：把 **URDF/MJCF/SDF  `📅unknown` `[entity_page]`
@@ -112,6 +113,7 @@
 - [ChangeMamba](wiki/entities/changemamba.md) — ChangeMamba 将 Mamba 用于遥感/视频变化检测，建模双时相长程依赖以突出变化区域。 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
+- [Claude-shaped science：适配 AI 能力的科研选题](wiki/entities/claude-shaped-science.md) — Claude-shaped science** 是 Matthew Schwartz 在 Anthropic 发布的科研实践文章，主张先匹配代理的计算优势，再由人确定值得研究的问题；不是一项机器人 `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
 - [CLI-Anything（HKUDS）](wiki/entities/cli-anything.md) — CLI-Anything**（HKUDS/CLI-Anything，Apache-2.0）是香港大学 HKUDS  `📅unknown` `[entity_page]`
 - [CLIP](wiki/entities/clip.md) — CLIP 用图文对比学习在超大规模配对数据上对齐双编码器，实现强零样本分类与开放词汇检索，是现代 VLM/VLA 视觉塔的重要源头。 `📅unknown` `[entity_page]`
