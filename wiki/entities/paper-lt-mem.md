@@ -77,7 +77,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-08-21** 项目页 **Code (TBD)**，无官方训练/推理仓库。发布后预期：SLAM 会话对齐 → Tri-Memory 更新 → LT-VQA 问答接口。
+**不适用** — 截至 **2026-10-02** 项目页仍标注 **Code (TBD)**，无官方训练/推理仓库。发布后预期：SLAM 会话对齐 → Tri-Memory 更新 → LT-VQA 问答接口。
 
 ## 工程实践
 
@@ -139,5 +139,9 @@ flowchart TB
 ## 推荐继续阅读
 
 - [arXiv:2608.19059 PDF](https://arxiv.org/pdf/2608.19059)
+- [LT-Mem 交互式 3D Demo](https://lt-mem.github.io/DEMO/)
+- [项目演示视频](https://www.youtube.com/watch?v=-zH3TV1hUjA)
+- [APRL 官方论文列表](https://team-aprl.github.io/publications.html)
 - [LT-Mem 项目页](https://lt-mem.github.io/)
+- [论文 HTML](https://arxiv.org/html/2608.19059v1)
 - [LT-VQA 数据集](https://drive.google.com/drive/folders/1rrwXxJDqJO9P9-wf_-JENX6FP1v9AThC)
