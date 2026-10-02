@@ -15,16 +15,44 @@
 
   updateThemeToggle();
 
+  function toggleTheme() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem(key, isDark ? 'light' : 'dark');
+    updateThemeToggle();
+    const detailContentEl = document.getElementById('detailContent');
+    if (detailContentEl) renderDetailMermaid(detailContentEl);
+    const roadmapContentEl = document.getElementById('roadmapContent');
+    if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
+  }
+
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem(key, isDark ? 'light' : 'dark');
-      updateThemeToggle();
-      const detailContentEl = document.getElementById('detailContent');
-      if (detailContentEl) renderDetailMermaid(detailContentEl);
-      const roadmapContentEl = document.getElementById('roadmapContent');
-      if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
+      let reduceMotion = false;
+      try {
+        reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      } catch { /* 老浏览器无 matchMedia：按未开启减动处理 */ }
+      if (typeof document.startViewTransition !== 'function' || reduceMotion) {
+        toggleTheme();
+        return;
+      }
+      // 新主题从按钮中心圆形扩散揭开；快照期间关闭颜色过渡（style.css .is-theme-switching），
+      // 否则新画面会先做 0.3s 颜色渐变再被揭开，边缘发灰
+      const rect = themeToggle.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      root.classList.add('is-theme-switching');
+      const transition = document.startViewTransition(toggleTheme);
+      transition.ready.then(function () {
+        root.animate(
+          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+          { duration: 560, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
+        );
+      }).catch(function () { /* 过渡被跳过时主题已由回调切换 */ });
+      transition.finished.finally(function () {
+        root.classList.remove('is-theme-switching');
+      });
     });
   }
 
@@ -6542,11 +6570,40 @@
     scrollEntryCardIntoView(card, hash, onReady, 'center');
   }
 
+  /** 展开 / 收起路线按钮组：卡片高度平滑过渡，展开时新露出的按钮依次淡入（减动 / 无 WAAPI 时直接切换） */
+  function animateHomeLinksToggle(card, applyToggle, expanded, extras) {
+    if (prefersReducedMotion || !card || typeof card.animate !== 'function') {
+      applyToggle();
+      return;
+    }
+    // 连点时从当前动画中的高度接着过渡
+    var startHeight = card.getBoundingClientRect().height;
+    if (card._homeLinksAnim) card._homeLinksAnim.cancel();
+    applyToggle();
+    var endHeight = card.getBoundingClientRect().height;
+    if (Math.abs(endHeight - startHeight) > 1) {
+      // overflow 写进关键帧：动画结束 / 取消即自动还原，不与描边特效争用 inline overflow
+      card._homeLinksAnim = card.animate(
+        [{ height: startHeight + 'px', overflow: 'hidden' }, { height: endHeight + 'px', overflow: 'hidden' }],
+        { duration: 380, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+      );
+    }
+    if (!expanded) return;
+    for (var ei = 0; ei < extras.length; ei++) {
+      extras[ei].animate(
+        [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 300, delay: Math.min(ei * 16, 320), easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' }
+      );
+    }
+  }
+
   if (routeToggle) {
     setHomeRoutesExpanded(false);
     routeToggle.addEventListener('click', function () {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
-      setHomeRoutesExpanded(!expanded);
+      animateHomeLinksToggle(moreRoutesCard, function () {
+        setHomeRoutesExpanded(!expanded);
+      }, !expanded, routeLinks ? routeLinks.querySelectorAll('[data-route-extra]') : []);
     });
   }
 
@@ -6557,14 +6614,79 @@
     companyToggle.addEventListener('click', function () {
       var expanded = companyToggle.getAttribute('aria-expanded') !== 'true';
       var extras = companyLinks.querySelectorAll('[data-company-extra]');
-      for (var cti = 0; cti < extras.length; cti++) {
-        extras[cti].hidden = !expanded;
-      }
-      companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      companyToggle.textContent = expanded
-        ? '收起公司列表 ↑'
-        : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
+      animateHomeLinksToggle(companyRoutesCard, function () {
+        for (var cti = 0; cti < extras.length; cti++) {
+          extras[cti].hidden = !expanded;
+        }
+        companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        companyToggle.textContent = expanded
+          ? '收起公司列表 ↑'
+          : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
+      }, expanded, extras);
     });
+  }
+
+  // ── 首页入口卡指针光斑：把指针相对卡片的坐标写入 --spot-x / --spot-y（样式见 style.css） ──
+  var homeEntryGrid = document.querySelector('.home-entry-grid');
+  var finePointer = false;
+  try {
+    finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  } catch { /* 老浏览器无 matchMedia：不启用光斑 */ }
+  if (homeEntryGrid && finePointer && !prefersReducedMotion) {
+    var spotCard = null;
+    var spotX = 0;
+    var spotY = 0;
+    var spotRaf = 0;
+    homeEntryGrid.addEventListener('pointermove', function (event) {
+      var card = event.target.closest('.home-entry-card');
+      if (!card) return;
+      spotCard = card;
+      spotX = event.clientX;
+      spotY = event.clientY;
+      if (spotRaf) return;
+      spotRaf = window.requestAnimationFrame(function () {
+        spotRaf = 0;
+        var rect = spotCard.getBoundingClientRect();
+        spotCard.style.setProperty('--spot-x', (spotX - rect.left) + 'px');
+        spotCard.style.setProperty('--spot-y', (spotY - rect.top) + 'px');
+      });
+    });
+  }
+
+  // ── 首页滚动入场：首屏以下的入口卡 / 区块进入视口时淡入上移，同一批依次错开 ──────────
+  // 只隐藏初始化时完全位于首屏下方的元素：首屏不闪、JS 失败时内容照常可见、截图不留白
+  if (document.getElementById('home-start') && !prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
+    var REVEAL_MS = 700;
+    var REVEAL_STAGGER_MS = 70;
+    var revealCandidates = document.querySelectorAll(
+      '#home-start .home-entry-card, main > .section:not(#home-start) > .container > :not([role="tooltip"])'
+    );
+    var revealFold = window.innerHeight || document.documentElement.clientHeight;
+    var revealPending = [];
+    for (var rci = 0; rci < revealCandidates.length; rci++) {
+      if (revealCandidates[rci].getBoundingClientRect().top >= revealFold) revealPending.push(revealCandidates[rci]);
+    }
+    var finishReveal = function (el) {
+      el.classList.remove('home-reveal', 'is-revealed');
+      el.style.removeProperty('--reveal-delay');
+    };
+    var revealObserver = new IntersectionObserver(function (entries) {
+      var batch = 0;
+      for (var rei = 0; rei < entries.length; rei++) {
+        if (!entries[rei].isIntersecting) continue;
+        var el = entries[rei].target;
+        var delay = Math.min(batch++, 4) * REVEAL_STAGGER_MS;
+        revealObserver.unobserve(el);
+        el.style.setProperty('--reveal-delay', delay + 'ms');
+        el.classList.add('is-revealed');
+        // 过渡结束后摘掉类名，恢复卡片原有的 hover transition
+        window.setTimeout(finishReveal, REVEAL_MS + delay + 50, el);
+      }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    for (var rpi = 0; rpi < revealPending.length; rpi++) {
+      revealPending[rpi].classList.add('home-reveal');
+      revealObserver.observe(revealPending[rpi]);
+    }
   }
 
   // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈
