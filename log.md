@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | sources/papers/dawn_arxiv_2609_29092.md — 接入深度去噪与潜变量对齐四足跑酷，核查训练/回放已开源及真机入口边界，关联感知运动中心
+
 ## [2026-10-02] ingest | NeoHorse-1（2609.08183）：routing harness agentic post-training 与 RSI 原型环；TokenRhythm 权重+推理示例已开源，入库实体页与交叉引用
 
 ## [2026-10-02] ingest | sources/papers/hiphi_arxiv_2608_16222.md — 接入 HiPHI 高精度动捕与同步 HOI，核实数据门控、镜像口径及 Viewer 开放边界，补齐数据选型与重定向/具身数据路线
