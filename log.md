@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md — 逐篇映射30篇论文，补齐8个独立详情页；核查DexMV/TRAM代码与其余项目开放状态
+
 ## [2026-10-02] ingest | sources/papers/supermap_arxiv_2608_22896.md — 收录 CMU AirLab 时空 SLAM 与语言导航空间记忆；核查源码待发布，关联 VLN。
 
 ## [2026-10-02] ingest | sources/papers/dawn_arxiv_2609_29092.md — 接入深度去噪与潜变量对齐四足跑酷，核查训练/回放已开源及真机入口边界，关联感知运动中心
