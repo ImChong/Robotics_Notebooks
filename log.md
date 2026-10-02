@@ -1,3 +1,8 @@
+## [2026-10-02] ingest | Eidon AI — 归档可穿戴硬件、仿真与 POV/IMU 数据，补充采集路线节点
+
+- 官方归档页确认公司停止运营，公开 Tracker/Glove/Sim 仓库以及 CC-BY-4.0 数据集。
+- 将配对集与纯视频集分开记数，并链接到数据采集产业地图。
+
 ## [2026-10-02] ingest | sources/sites/anthropic-claude-shaped-science.md 与 sources/repos/bootloops.md — 收录科研选题文章及固定版本计算工具箱，两个独立节点接入 AI Auto-Research；通用代码已开放，部分依赖与成果在仓外
 
 ## [2026-10-02] ingest | 智践行 Microduck 入门微信专辑 4688586645438726146；5/5 独立 overview 节点 + sources；④ Camoufox 全文；开源已核查
