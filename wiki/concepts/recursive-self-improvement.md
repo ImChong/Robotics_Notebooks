@@ -20,6 +20,7 @@ related:
   - ../entities/rsi-harness.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-rsi-survey-2607-07663.md
+  - ../entities/paper-neohorse-1.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -137,6 +138,7 @@ flowchart LR
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇机制 taxonomy + 验证层级 + 开源语料
 - [Dream-RSI（2609.14858）](../entities/paper-dream-rsi.md) — discovery history 作 exact replay「世界」；exploration 层 dreaming RSI + evolving worlds pool
 - [Axis 可组合能力库（Grounded RSI）](../entities/axis-composable-capability-library.md) — 真机 rollout 共训后继策略的产业实验摘要
+- [NeoHorse-1（2609.08183）](../entities/paper-neohorse-1.md) — 文本 agent routing harness 上的 evaluation–selection–update 原型（权重开源，训练 flywheel 未公开）
 
 ## 参考来源
 
