@@ -2,8 +2,9 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-02
 related:
+  - ../entities/paper-dawn.md
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -48,6 +49,7 @@ related:
   - ../entities/paper-cmoe.md
   - ../entities/smp-g1-mjlab.md
 sources:
+  - ../../sources/papers/dawn_arxiv_2609_29092.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
@@ -181,6 +183,7 @@ flowchart TB
 | 人形 G1 | **深度** | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) | 显著性 prior + **门控记忆** + 交替对称损失；稀疏踏点/窄梁；CoRL 2026；Jetson Orin NX；代码 Coming Soon |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
+| 四足 Go1 | **原始深度 + 去噪 RSSM** | [DAWN](../entities/paper-dawn.md) | 带噪到干净重建 + 潜状态对齐；50 Hz 控制 / 10 Hz 深度；训练与仿真回放已开源，真机入口未见 |
 | 四足 Apollo | **深度 + RSSM WM** | [SWAP](../entities/paper-swap-parkour.md) | 对称等变潜变量世界模型 + 等变 Actor-Critic；2.13 m 远跳 / 1.63 m 攀台 |
 
 ### 概念与方法（跨论文）
@@ -253,6 +256,8 @@ flowchart TB
 - FastStair 项目页：<https://npcliu.github.io/FastStair>
 
 ## 参考来源
+
+- [DAWN 论文摘录](../../sources/papers/dawn_arxiv_2609_29092.md)
 
 - [FastStair 论文摘录（arXiv:2601.10365）](../../sources/papers/faststair_arxiv_2601_10365.md)
 - [SSR 论文摘录（arXiv:2605.30770）](../../sources/papers/ssr_arxiv_2605_30770.md)
