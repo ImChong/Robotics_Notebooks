@@ -1,3 +1,5 @@
+## [2026-10-02] ingest | wiki/overview/humanoid-motion-intelligence-day1-data-retargeting.md — 为 Day 1 文章补独立综述节点和 30 篇论文入口
+
 ## [2026-10-02] ingest | 收录 React Bits 动效组件与官网入口，核查 MIT + Commons Clause 限制和 BlurText 源码，关联机器人展示界面的工程实践。
 
 ## [2026-10-02] structural | 点阵随指针点亮扩展到全站：深色主题 body 底纹（所有页面）、首页 Hero、图谱页画布点阵；有 prefers-reduced-motion 降级

@@ -5319,6 +5319,7 @@
 - [人形机器人运动控制 Know-How 技术地图](wiki/overview/humanoid-motion-control-know-how-technology-map.md) — 把 RoboParty Know-How 从「飞书目录树」映射为可检索、可交叉引用的 **wiki 知识图**：宏观趋势与学习路线在上层，**Model-based 七段主链** 与 **Learni `📅unknown` `[overview_page]`
 - [人形机器人运动控制 Know-How](wiki/overview/humanoid-motion-control-know-how.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [人形机器人运动控制发展趋势](wiki/overview/humanoid-motion-control-trends.md) — 基于 RoboParty 飞书 Know-How 开篇与 [2026-0 `📅unknown` `[overview_page]`
+- [具身智能从入门到精通 Day 1：数据与重定向](wiki/overview/humanoid-motion-intelligence-day1-data-retargeting.md) — 从人类视频、动捕或遥操作得到的动作，必须经过时空恢复、跨本体重定向与接触/物理可行性检查，才能成为可靠的机器人训练数据；不同论文解决的是链上不同的误差来源。 `📅unknown` `[overview_page]`
 - [Robot Learning Paper Notebooks 知识库索引](wiki/overview/humanoid-paper-notebooks-index.md) — 本页是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index. `📅unknown` `[overview_page]`
 - [人形机器人 RL 运动控制：身体系统栈视角](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) — 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不 `📅unknown` `[overview_page]`
 - [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
