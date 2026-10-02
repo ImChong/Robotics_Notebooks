@@ -4042,3 +4042,19 @@ html.is-theme-switching *::before,
 html.is-theme-switching *::after {
   transition: none !important;
 }
+/* Hero 点阵随指针点亮：::after 是与 ::before 同尺寸同原点的强调色点阵（点位重合），
+   仅在指针周围的圆形遮罩内可见；坐标 --hero-mx / --hero-my 由 main.js 写入 */
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.2px);
+  background-size: var(--grid-size) var(--grid-size);
+  opacity: 0;
+  transition: opacity .4s ease;
+  -webkit-mask-image: radial-gradient(170px circle at var(--hero-mx, -999px) var(--hero-my, -999px), #000 0%, transparent 100%);
+  mask-image: radial-gradient(170px circle at var(--hero-mx, -999px) var(--hero-my, -999px), #000 0%, transparent 100%);
+}
+.hero.is-pointer-active .hero-backdrop::after {
+  opacity: .9;
+}

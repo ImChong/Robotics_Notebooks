@@ -6653,6 +6653,35 @@
     });
   }
 
+  // ── Hero 点阵随指针点亮：把指针相对 .hero-backdrop 的坐标写入 --hero-mx / --hero-my（样式见 style.css） ──
+  var heroSection = document.getElementById('hero');
+  var heroBackdrop = heroSection ? heroSection.querySelector('.hero-backdrop') : null;
+  if (heroBackdrop && finePointer && !prefersReducedMotion) {
+    var heroPointerX = 0;
+    var heroPointerY = 0;
+    var heroPointerRaf = 0;
+    heroSection.addEventListener('pointermove', function (event) {
+      heroPointerX = event.clientX;
+      heroPointerY = event.clientY;
+      if (heroPointerRaf) return;
+      heroPointerRaf = window.requestAnimationFrame(function () {
+        heroPointerRaf = 0;
+        var rect = heroBackdrop.getBoundingClientRect();
+        heroBackdrop.style.setProperty('--hero-mx', (heroPointerX - rect.left) + 'px');
+        heroBackdrop.style.setProperty('--hero-my', (heroPointerY - rect.top) + 'px');
+        heroSection.classList.add('is-pointer-active');
+      });
+    });
+    heroSection.addEventListener('pointerleave', function () {
+      // 取消尚未执行的帧，否则它会在离开后把高亮重新打开
+      if (heroPointerRaf) {
+        window.cancelAnimationFrame(heroPointerRaf);
+        heroPointerRaf = 0;
+      }
+      heroSection.classList.remove('is-pointer-active');
+    });
+  }
+
   // ── 首页滚动入场：首屏以下的入口卡 / 区块进入视口时淡入上移，同一批依次错开 ──────────
   // 只隐藏初始化时完全位于首屏下方的元素：首屏不闪、JS 失败时内容照常可见、截图不留白
   if (document.getElementById('home-start') && !prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
