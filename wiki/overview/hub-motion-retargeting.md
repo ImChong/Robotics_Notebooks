@@ -47,7 +47,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 
 ### Day 1：数据与重定向逐篇入口
 
-[原文的 30 篇论文逐篇索引](../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md)保留每篇独立详情页。此次新增 [DexMV](../entities/paper-dexmv.md)、[TRAM](../entities/paper-tram-global-human-motion.md)、[ECHO-G](../entities/paper-echo-g-cospeech-humanoid.md)、[OTRetarget](../entities/paper-otretarget.md)、[Dense Temporal Retargeting](../entities/paper-dense-temporal-motion-retargeting.md)、[GestAdapt](../entities/paper-gestadapt.md)、[PhyVisGen](../entities/paper-phyvisgen.md)、[Automatic Labelling](../entities/paper-automatic-labelling-bimanual-mobile.md)；其余已有论文节点直接复用，不另造同名页。
+[《具身智能从入门到精通 Day 1：数据与重定向》独立文章节点](./humanoid-motion-intelligence-day1-data-retargeting.md)梳理数据链，并提供 30 篇论文各自的详情入口。[来源索引](../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md)保留原文信息。
 
 - **[WBT](./hub-wbt.md)**：消费重定向轨迹做全身跟踪策略。
 - **[跨具身](./hub-cross-embodiment.md)**：重定向是跨形态迁移的前置步骤。
