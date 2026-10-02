@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-02
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -95,6 +95,10 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 
 ## 工程实践
 
+### 预测式残差：LocoWM
+
+[LocoWM](../entities/paper-locowm.md)先训练基础行走策略与动作条件世界模型，再冻结二者训练残差适配器：**本体历史 + 基础动作 → 预测未来任务子状态 → 加性动作修正**。预测目标是载荷平台姿态/加速度等物理量，并非视频想象；与只观察当前偏差的反应式残差对照。世界模型误差也会传到残差，冻结 base 不能自动保证安全。
+
 1. **什么时候用残差**：手头有 60–90 分的 base（控制器/参考/预训练策略），且失败模式集中在接触、扰动、模型误差等「难建模尾部」；base 完全不可用或任务与 base 无关时，残差无意义。
 2. **base 选型决策**：有模型 → MPC/WBC 打底（Jumping）；有参考轨迹/数据 → Motion Generator 或 GMT 打底（RuN、ResMimic）；有现成技能库 → 技能解码器打底（ReSkill）；有人在场 → 人打底（RSA）。
 3. **初始化与训练顺序**：残差末层零初始化 → value burn-in → 联合训练；base **冻结**（微调 base 会破坏先验，ResMimic Table I 显示微调甚至劣于残差）。
@@ -130,6 +134,8 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 直接微调 DP + 联合低层，对照冻结 DP + Residual RL
 
 ## 参考来源
+
+- [LocoWM 论文摘录](../../sources/papers/locowm_arxiv_2609_39179.md) — 两阶段训练与 preactive 残差
 
 - [Residual Policy / Residual RL 论文精读清单摘录](../../sources/personal/residual-policy-reading-list.md)
 - Silver et al., *Residual Policy Learning*, arXiv:1812.06298 — [sources/repos/residual-policy-learning](../../sources/repos/residual-policy-learning.md)

@@ -11,7 +11,7 @@
 - **代码：** <https://github.com/zhaozijie2022/LocoWM> — 归档见 [`sources/repos/locowm.md`](../repos/locowm.md)
 - **机构：** 中国科学院自动化研究所（CASIA）、中国科学院大学（UCAS）、北京邮电大学（BUPT）、北京交通大学（BJTU）
 - **入库日期：** 2026-10-01
-- **最后更新：** 2026-10-01
+- **最后更新：** 2026-10-02
 - **一句话说明：** 世界模型一次前向预测 action-conditioned 任务子状态序列，残差适配器据此做 **preactive** 修正 \(a_t=a_t^b+a_t^r\)；两阶段训练解耦行走与精度；Go2-W 真机零样本三类高精度任务，附录 G1 托盘仿真 94.1% 成功率。
 
 ## 开源状态（步骤 2.5，2026-10-01 核查）
@@ -19,7 +19,7 @@
 | 组件 | 状态 |
 |------|------|
 | 项目页 | 已上线（Paper / Code / 真机与仿真视频） |
-| GitHub | **已开源** — `zhaozijie2022/LocoWM`（Isaac Lab 5.1 + RSL-RL 两阶段训练与评测脚本） |
+| GitHub | **已开源** — `zhaozijie2022/LocoWM`（Isaac Sim 5.1 + Isaac Lab 固定提交 + RSL-RL 两阶段训练与评测脚本） |
 | 预训练权重 | README 未列公开 checkpoint；需按文档自训 Stage1/2 |
 
 **结论：已开源**（训练/评测管线完整；权重需本地训练）。
@@ -54,3 +54,9 @@
 - [x] 项目页与 GitHub 核查
 - [x] wiki 实体页
 - [x] 交叉更新轮足概念页与 loco-manipulation 任务页
+
+## 2026-10-02 复核补充
+
+官方 README 的 `succ_eval` 会重试初始加速阶段掉载荷，并将其排除出成功/失败计数；复现时应报告重试/排除数量。Stage 1 policy 与 world model 需来自同一 run、同一迭代。公开任务入口主要为 Go2-W，不能视为现成 G1 真机包。
+
+**对 wiki 的映射：** [LocoWM](../../wiki/entities/paper-locowm.md)、[残差策略学习](../../wiki/methods/residual-policy-learning.md)。

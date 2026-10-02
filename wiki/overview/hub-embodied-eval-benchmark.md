@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-02
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -101,6 +101,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 ## 评测选型的关键取舍
 
+- **高处长时程维护**：[Fiatlux](../entities/paper-fiatlux.md)提供 G1 攀梯换灯的十二子任务门控。部分进度不是成功率；八项遥操作可达与四项攀爬欠验证须分别报告，子任务独立重置也不能证明完整串联成功。
+
 - **可复现性 vs 真实代表性**：仿真基准在吞吐/可控/可复现上占优，代价是牺牲真实接触、感知噪声与长尾分布的代表性；评测结论能否外推真机取决于 real-to-sim 相关性。
 - **过程指标 vs 结果指标**：任务成功率（结果）直观但掩盖长尾失败模式；过程/中间指标可归因但可能与真实收益脱钩。
 - **代理指标 ≠ 下游收益**：世界模型视频质量高 ≠ 下游策略收益高、MLLM 认知评分高 ≠ 可执行动作能力强，跨层用代理指标要警惕。
@@ -147,6 +149,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
 ## 参考来源
+
+- [Fiatlux 论文归档](../../sources/papers/fiatlux_arxiv_2609_38216.md) — 攀爬、易碎物与长时程任务评分
 
 - [RoboBench 论文](../../sources/papers/robo_bench_arxiv_2510_17801.md) — MLLM 具身大脑五维评测
 - [EWMBench 论文](../../sources/papers/ewmbench.md) — 具身世界模型视频生成评测

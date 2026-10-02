@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, wheeled-legged, world-model, residual-rl, payload-transport, ppo, isaac-lab, unitree-go2, unitree-g1, casia, ucas, bupt, bjtu]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-02
 arxiv: "2609.39179"
+code: "https://github.com/zhaozijie2022/LocoWM"
 related:
   - ../concepts/wheel-legged-quadruped.md
   - ../tasks/loco-manipulation.md
@@ -88,14 +89,17 @@ sequenceDiagram
   participant Train as locowm.scripts.train
   participant IL as Isaac Lab env
   participant RSL as RSL-RL / loco_rl
+  participant Eval as locowm.scripts.succ_eval
   User->>Train: Stage1 Isaac-LocomotionGo2W-v1
   Train->>IL: rollout 4096 env
   IL->>RSL: PPO 更新 pi_b + MSE 更新 WM
   RSL-->>User: model_*.pt + world_model_*.pt
   User->>Train: Stage2 Isaac-TransportGo2W-Adapter-v1 + checkpoints
   Train->>IL: 冻结 pi_b/WM，PPO 训 adapter
-  User->>Train: succ_eval Isaac-SuccGo2W-Adapter-v1
-  Train->>IL: 载荷保留成功率评测
+  User->>Eval: Isaac-SuccGo2W-Adapter-v1 + checkpoints
+  Eval->>IL: 载荷保留成功率评测
+  IL-->>Eval: 成功或掉落事件
+  Eval-->>User: success.json / success.csv
 ```
 
 Stage 1/2 与 `succ_eval` 入口见 [`sources/repos/locowm.md`](../../sources/repos/locowm.md)；环境 pin 为 Isaac Sim 5.1 + Isaac Lab `c91a125c73`。
@@ -111,6 +115,12 @@ Stage 1/2 与 `succ_eval` 入口见 [`sources/repos/locowm.md`](../../sources/re
 | 命名冲突 | 勿与 [WM-LOCO](./paper-wm-loco.md)（arXiv:2609.02542）混为同一方法 |
 
 ## 实验与评测
+
+### 复现口径补充（2026-10-02）
+
+官方 README 明确：`succ_eval` 以走完指定距离且不掉载荷为成功，**初始加速阶段掉落会重试，并排除在成功/失败计数之外**。复现时额外记录重试与排除数量，避免与把所有启动失败都计入分母的成功率混比。
+
+Stage 1 的 policy 与 WM checkpoint 要使用**同一次运行、同一迭代**的文件；`eval` 输出姿态/跟踪/载荷指标，`succ_eval` 输出任务成功率。公开仓库以 Go2-W 仿真任务为主，G1 托盘附录结果和真机展示不能当作现成 G1 部署包。
 
 **仿真（Go2-W）：** terrain leveling（slope / bump / one-sided bridge / rough）、flat 上 **±1 m/s** 加减速 pitch 协调、0.5 m/s 前进下多方向推扰 **载荷保留率**。
 
@@ -151,6 +161,10 @@ Stage 1/2 与 `succ_eval` 入口见 [`sources/repos/locowm.md`](../../sources/re
 - **依赖栈重** — Isaac Sim 5.1 + 固定 Lab commit；升级需自行对齐 `robot_lab` 链路。
 
 ## 关联页面
+
+- [残差策略学习](../methods/residual-policy-learning.md) — 从反应式修正到预测式修正
+- [Fiatlux](./paper-fiatlux.md) — 移动精度之外的攀爬与换灯评测
+- [Sparse-WAM](./paper-sparse-wam.md) — 联合视觉–动作模型的推理加速，区别于本页子状态预测
 
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)

@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-02
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ./inverse-dynamics-model.md
@@ -169,6 +169,10 @@ sources:
 - 在 [Fei-Fei 功能分类](./functional-taxonomy-world-models.md) 里，WAM 落在 **Planner**，并通常横跨 Simulator。[上海人工智能实验室 2607.06401](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 据此强调：WAM **不是** 与 observation / latent / 3D 并列的第四实现列，只是「预测状态 ↔ 生成动作」的跨架构功能范式。
 
 ## 核心结构：与相邻概念的分界
+
+### 联合去噪内部的稀疏加速
+
+[Sparse-WAM](../entities/paper-sparse-wam.md)按动作对未来帧的注意力保留逐帧核心区域和共享空间锚点，Pilot 复用选择与打包，保留所有观测/动作 token。**无需额外训练**指加速机制，无须删掉整个未来分支，也不代表基座训练免费。RTX 4090 上 LIBERO 为 1.98×（dense eager 参照）；Cosmos 3 Edge 同后端对照为 **1.56×**。成功率、筛选开销和后端必须同步比较，chunk 推理延迟不可当作电机控制周期。
 
 | 范式 | 典型对象 | 角色 |
 |------|-----------|------|
@@ -401,6 +405,8 @@ flowchart TB
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — 另一篇 **领域综述 + Awesome 列表** 维护范式（学术全生命周期 vs 具身 WAM）。
 
 ## 参考来源
+
+- [Sparse-WAM 论文摘录](../../sources/papers/sparse_wam_arxiv_2609_38984.md) — 动作相关稀疏想象与同后端计时
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
 - [sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md) — WAM 不是第四架构列
