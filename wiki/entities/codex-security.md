@@ -127,9 +127,9 @@ sequenceDiagram
 - **沙箱边界：** `approvalPolicy: "never"`；`--codex` 覆盖不能收紧其文件系统/审批策略；仅扫有权评估的仓库。
 - **与机器人运控正交：** 不替代机载安全 FSM / 实时隔离；服务的是 **研发与云边代码面** 的 AppSec。
 
-- [OpenAI Codex CLI](./openai-codex-cli.md) — 本机通用编码代理的源码；Codex Security 是其相邻的专用 AppSec 工具。
-
 ## 关联页面
+
+- [OpenAI Codex CLI](./openai-codex-cli.md) — 本机通用编码代理的源码；Codex Security 是其相邻的专用 AppSec 工具。
 
 - [软件安全基础](../concepts/software-security-basics.md)
 - [容器编排与 CI/CD](../concepts/container-orchestration-cicd.md)
