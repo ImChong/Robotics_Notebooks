@@ -1479,6 +1479,7 @@
 - [DigitCode：按解剖单元做手部动作符号化](wiki/entities/paper-digitcode.md) — DigitCode**（*Symbolic Tokenization of Hand Motion by Anatomical Units*；[arXiv:2608.03127](https:// `📅unknown` `[entity_page]`
 - [DIMOS：室内 3D 场景中的多样人体运动合成](wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — DIMOS**（*Synthesizing Diverse Human Motions in 3D Indoor Scenes*，arXiv:2305.12411，ICCV 2023，[项目页 `📅unknown` `[entity_page]`
 - [DINOv2：无监督的稳健视觉特征](wiki/entities/paper-dinov2.md) — DINOv2**（*Learning Robust Visual Features without Supervision*，[arXiv:2304.07193](https://arxiv.or `📅unknown` `[entity_page]`
+- [Discrete Forcing（arXiv:2609.39526）](wiki/entities/paper-discrete-forcing.md) — Discrete Forcing** 先用离散动作 token 确定一个动作 chunk 的粗略结构，再以一次连续去噪恢复精确动作，让 VLA action expert 只需两次前向就完成粗到细 `📅unknown` `[entity_page]`
 - [Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing](wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md) — 一句话定义**：在四足 **足底** 嵌入 **低成本红外 ToF 接近传感器**，把 **接触前（pre-contact）** 的局部几何读数直接作为 RL 观测，使机器人在 **踏石、碎石、沟 `📅unknown` `[entity_page]`
 - [DissectVLA（arXiv:2609.28161）](wiki/entities/paper-dissect-vla-post-training.md) — Dissecting Advantage-Guided Post-Training for Vision-Language-Action Policies**（[项目页](https://diss `📅unknown` `[entity_page]`
 - [DiT：可扩展的 Transformer 扩散模型](wiki/entities/paper-dit-scalable-diffusion-transformers.md) — DiT**（*Scalable Diffusion Models with Transformers*，[arXiv:2212.09748](https://arxiv.org/abs/2212. `📅unknown` `[entity_page]`
