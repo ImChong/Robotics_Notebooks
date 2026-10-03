@@ -1,3 +1,5 @@
+## [2026-10-03] structural | 滚动入场动效扩展到全站（图谱页除外）：列表页按行 / 按日、详情与路线页正文按段落入场（正文区只淡入不上移，保持 TOC 与 hash 落点）；有 prefers-reduced-motion 降级
+
 ## [2026-10-03] ingest | EmbodiedSWE：coding agent 求解与示范生成
 
 - 来源：官方项目页、Apache-2.0 GitHub 仓库、arXiv:2609.27308 与 Hugging Face 仿真资产卡。
