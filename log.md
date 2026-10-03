@@ -1,3 +1,9 @@
+## [2026-10-03] ingest | ViLoMan arXiv 元数据补录与开放状态复核
+
+- 复用已存在的 arXiv:2609.19340 唯一论文节点，补齐作者与机构信息；不创建重复节点。
+- 复核项目页：补充材料仍匿名，公开了训练细节与演示，但没有代码仓库或数据下载入口。
+- 同步论文来源归档、项目页归档与 wiki 结论，记录截至 2026-10-03 的开源边界。
+
 ## [2026-10-03] ingest | openai/codex — 归档本地编码代理 CLI、Rust 实现与 TypeScript SDK；注明推理服务 / 权重不随源码开源
 
 ## [2026-10-03] ingest | Discrete Forcing（arXiv:2609.39526）— 离散 token 引导连续 action refinement；LIBERO 训练代码已开放，模型权重 Coming Soon，RoboTwin 代码待发布
