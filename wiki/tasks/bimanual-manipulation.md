@@ -151,7 +151,8 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 | HiFi-UMI-2K（2026） | 高保真无机器人双臂 UMI | 真机双臂部署评测 | 公开 **2000 h**；zero-robot 后训练对齐 teleop；见 [HiFi-UMI](../entities/paper-hifi-umi.md) |
 | MEVION（2026） | Leader–Follower + ACT | 四条 6-DoF 臂 | 约 $14k 的开源高力高速采集系统；见 [MEVION](../entities/paper-mevion.md) |
 | Transformer Transformer（2026） | DiT 共设计 + 跨具身控制 | 轮式双臂 / ALOHA2 | 按洗碗/抛布运动优化完整机体；见 [实体页](../entities/paper-transformer-transformer.md) |
-| LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |\n| DexRoam（CoRL 2026） | 第一视角全身人类示教 + 三阶段人机对齐 | 移动双臂真机 | 人类与机器人示教联合训练；见 [论文实体](../entities/paper-dexroam-mobile-bimanual-manipulation.md) |
+| LW BENCHHUB TOUR（2026） | SmolVLA 闭环评测 + 自过滤飞轮 | 仿真 DoublePiper-Abs | 厨房 PnP 基线 40%；cuRobo 闸门滤场景；见 [实体](../entities/lw-benchhub-tour.md) |
+| DexRoam（CoRL 2026） | 第一视角全身人类示教 + 三阶段人机对齐 | 移动双臂真机 | 人类与机器人示教联合训练；见 [论文实体](../entities/paper-dexroam-mobile-bimanual-manipulation.md) |
 
 - [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角点云 + DDPM 关节配置 + 力细化（IROS 2026；已开源）
 - [PartialBiGrasp](../entities/paper-partialbigrasp.md) — 局部点云隐式补几何 + 力闭合双臂抓取对（arXiv:2608.19188；架构仓部分开源）
@@ -191,7 +192,8 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — 运动条件双臂机体共设计（洗碗 / ALOHA 抛布）
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
 - [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
-- [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）\n- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — 免外置追踪器的人类全身示教，经三阶段对齐后改善移动双臂 VLA 真机表现
+- [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）
+- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — 免外置追踪器的人类全身示教，经三阶段对齐后改善移动双臂 VLA 真机表现
 - [M3](../entities/paper-m3-modality-masking.md) — 训练期模态遮蔽稳住查询式双臂 VLA（arXiv:2608.22419；未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 - [SAI](../entities/paper-sai-sequential-asymmetric-imitation.md) — 双移动操作臂物理耦合：单遥操作三阶段模仿课程（arXiv:2606.16490；代码待发布）
