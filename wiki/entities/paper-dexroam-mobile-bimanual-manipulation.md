@@ -2,7 +2,7 @@
 type: entity
 arxiv: "2609.35761"
 code: "https://github.com/zhourui9813/DexRoam"
-tags: [dexterous-manipulation, bimanual, loco-manipulation, humanoid, imitation-learning, vla, hkust, baai, pku, beihang, cas]
+tags: [dexterous-manipulation, bimanual, loco-manipulation, humanoid, imitation-learning, vla, hkust, baai, pku, beihang, casia]
 status: complete
 updated: 2026-10-04
 summary: "DexRoam 用免外置跟踪器的第一视角全身人类示教，经具身、动作语义与时间对齐后训练移动双臂灵巧操作 VLA。"
@@ -87,7 +87,7 @@ sequenceDiagram
 
 ## 实验与评测
 
-论文报告五项真实机器人任务：Pick Chips Can、Pour Water、Throw Trash、Deliver Fruit、Push Chair & Close Laptop。每项任务 20 次真机试验：
+论文报告五项真实机器人任务：Pick Chips Can、Pour Water、Throw Trash、Deliver Fruit、Push Chair & Close Laptop：
 
 | Backbone | 仅机器人示教 | 加入对齐人类示教 |
 |---|---:|---:|
