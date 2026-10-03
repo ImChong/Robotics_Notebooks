@@ -1561,6 +1561,7 @@
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [EmbodiedGPT](wiki/entities/paper-embodiedgpt.md) — EmbodiedGPT**（arXiv:2305.15021）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
 - [EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）](wiki/entities/paper-embodiedskills.md) — EmbodiedSkills**（arXiv:2609.01281，[GitHub](https://github.com/ `📅unknown` `[entity_page]`
+- [EmbodiedSWE（arXiv:2609.27308）](wiki/entities/paper-embodiedswe.md) — EmbodiedSWE**（*Coding Agents for Long-Horizon Dexterous Robotics*，[项目页](https://embodiedswe.github `📅unknown` `[entity_page]`
 - [EmbodiedVAE：为操作世界模型解耦的视频 VAE](wiki/entities/paper-embodiedvae.md) — EmbodiedVAE**（*Disentangled Video VAE for Efficient and Controllable Embodied Manipulation*；[arXiv `📅unknown` `[entity_page]`
 - [EMERGE-Policy：超越单一策略的机器人系统级「心智」](wiki/entities/paper-emerge-policy.md) — EMERGE-Policy**（*A Robot Mind Emerges Beyond a Single Policy*，[arXiv:2608.29896](https://arxiv.org `📅unknown` `[entity_page]`
 - [Emergent Transfer（跨配置遗留数据何时开始有用）](wiki/entities/paper-emergent-transfer-cross-config.md) — Emergent Transfer**（*When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration `📅unknown` `[entity_page]`
