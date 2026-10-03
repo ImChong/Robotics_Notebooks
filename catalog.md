@@ -783,6 +783,7 @@
 - [MuJoCo WASM（浏览器物理仿真）](wiki/entities/mujoco-wasm.md) — MuJoCo WASM** 是把 MuJoCo C 核心编译为 **WebAssembly**、并通过 **JavaScript/TypeScript** 暴露 `M `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](wiki/entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [Multi-Agent CAD（MAC）](wiki/entities/multi-agent-cad.md) — MAC**（Pan-Chera/Multi-Agent-CAD）是清华 [IEI Lab](http `📅unknown` `[entity_page]`
+- [Muse Gadgets](wiki/entities/muse-gadgets.md) — Muse Gadgets** 是 Meta Muse 助手的开源设备扩展：用 ESP32 固件或 Linux SDK，把屏幕、按钮、音频、传感器和本地服务接入 Muse。 `📅unknown` `[entity_page]`
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [natural-disasters（ABYSSAL）](wiki/entities/natural-disasters-abyssal.md) — natural-disasters**（品牌名 **ABYSSAL**，[`Token-Gremlin/natural-disasters`](https://github.com/Token-G `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
