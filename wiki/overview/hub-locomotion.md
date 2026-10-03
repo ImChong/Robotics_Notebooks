@@ -40,6 +40,10 @@ summary: "Locomotion 步态知识链汇总：双足/人形/四足在不同地形
 | 规划 | 落足与地形 | [Footstep Planning](../concepts/footstep-planning.md)、[Terrain Adaptation](../concepts/terrain-adaptation.md) |
 | 越障 | 楼梯/跑酷索引 | [Stair & Obstacle Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) |
 
+## 专题文章
+
+- [《具身智能从入门到精通 Day 2：运动控制与运动先验》独立文章节点](./humanoid-motion-intelligence-day2-locomotion-motion-priors.md)：按本体估计、感知行走、运动先验与技能调用，提供 34 篇论文的逐篇详情入口。
+
 ## 与其他知识链的关系
 
 - **[WBC](./hub-wbc.md)**：执行层协调全身满足行走约束。
