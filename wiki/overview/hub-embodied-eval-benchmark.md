@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -20,6 +20,8 @@ related:
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
   - ../entities/robolab.md
+  - ../entities/libero-benchmark.md
+  - ../entities/robocasa.md
   - ../entities/manda-robotics-open-policy-evaluation.md
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/xpolicylab.md
@@ -58,6 +60,13 @@ sources:
   - ../../sources/sites/rle-bench-github-io.md
   - ../../sources/blogs/rle_bench_introducing_blog_2026-09-14.md
   - ../../sources/papers/karma_hand_metric_arxiv_2605_15548.md
+  - ../../sources/repos/libero-plus.md
+  - ../../sources/repos/libero-pro.md
+  - ../../sources/repos/robotwin-2.md
+  - ../../sources/repos/behavior-1k-challenge.md
+  - ../../sources/sites/libero-pro-project.md
+  - ../../sources/sites/robotwin-platform.md
+  - ../../sources/sites/behavior-challenge.md
 summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页收拢为一条可导航的选型链，统一各层测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本取舍入口。"
 ---
 
@@ -98,6 +107,20 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | ③″ agentic 工程 | **Coding agent** 能否像 RLE 一样在仿真中 **观察—实验—改代码—交付 artifact**（控机 / harness / recipe / 感知 / 机械设计） | **RLE-Bench**（Harbor + hidden test；RLE Index） | [RLE-Bench](../entities/rle-bench.md)、[ASPIRE](../methods/aspire.md)、[ENPIRE](../methods/enpire.md) |
 | ③‴ 手型 kinematic | **URDF 阶段** rolling-pinch **平移/旋转/seed** 下界（无控制器） | **KaRMA**（KaRMA-T/R/S；16 手榜） | [KaRMA](../entities/paper-karma-hand-metric.md)、[HAND ERC](../entities/paper-hand-erc-benchmarking-dexterity.md)、[All Hands Up](../entities/all-hands-up.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
+
+## 仿真操纵基准：按任务分布选，不按总分硬排
+
+这些基准覆盖不同任务和环境分布，成功率不能直接横向比较。先选择与目标能力相符的评测，再对齐机器人、观察/动作接口、任务子集和版本。
+
+| 基准 | 主要测量对象 | 适合回答的问题 | 站内来源 |
+|------|--------------|----------------|----------|
+| **LIBERO / LIBERO-Plus / LIBERO-PRO** | 语言条件桌面操作、知识迁移与分布变化 | 策略是否记住轨迹；对视角、布局、物体、状态和指令扰动是否稳健 | [LIBERO 主实体](../entities/libero-benchmark.md)、[Plus](../../sources/repos/libero-plus.md)、[PRO](../../sources/repos/libero-pro.md) |
+| **RoboCasa365** | 厨房家庭操作、多任务与复合任务泛化 | 策略能否在多布局厨房完成日常任务 | [RoboCasa 实体](../entities/robocasa.md)、[项目归档](../../sources/repos/robocasa.md) |
+| **RoboTwin 2.0** | 双臂协作操作、合成数据与域随机化 | 合成数据和随机化能否提升未见场景的双臂操作鲁棒性 | [项目归档](../../sources/repos/robotwin-2.md) |
+| **BEHAVIOR-1K / 2026 Challenge** | 家庭尺度长时程任务、导航与物体状态变化 | 策略能否跨房间执行家务并满足终态条件 | [挑战归档](../../sources/repos/behavior-1k-challenge.md) |
+| **RoboLab-120** | 高保真仿真中的通用操纵策略 | 真机数据策略在仿真新任务上的表现如何 | [RoboLab 实体](../entities/robolab.md) |
+
+**选型提示：** LIBERO 扰动扩展适合检查记忆依赖；RoboTwin 聚焦双臂与合成数据，RoboCasa 聚焦厨房分布，BEHAVIOR 聚焦长时程家务，RoboLab 关注真机训练策略在高保真仿真中的表现。它们互补，不能用单一平均成功率构成统一排名。
 
 ## 评测选型的关键取舍
 
