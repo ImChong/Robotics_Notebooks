@@ -1232,7 +1232,7 @@
 - [A sim2real deep learning approach for the transformation of images from multi...](wiki/entities/paper-as-2005-04078-a-sim2real-deep-learning-approach-for-the-transf.md) — A sim2real deep learning approach for the transformation of images from multiple vehicle-mounted c `📅unknown` `[entity_page]`
 - [Reinforced grounded action transformation for sim-to-real transfer](wiki/entities/paper-as-2008-01279-reinforced-grounded-action-transformation-for-si.md) — Reinforced grounded action transformation for sim-to-real transfer** 收录于 [AwesomeSim2Real](https:/ `📅unknown` `[entity_page]`
 - [An imitation from observation approach to transfer learning with dynamics mis...](wiki/entities/paper-as-2008-01594-an-imitation-from-observation-approach-to-transf.md) — An imitation from observation approach to transfer learning with dynamics mismatch** 收录于 [AwesomeS `📅unknown` `[entity_page]`
-- [robosuite](wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) — robosuite: A modular simulation framework and benchmark for robot learning** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [robosuite: A modular simulation framework and benchmark for robot learning](wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) — 这篇论文](https://arxiv.org/abs/2009.12293)介绍 robosuite：一个基于 MuJoCo 的模块化仿真框架和机器人学习基准。项目将机器人模型、场景、操作物体、控 `📅unknown` `[entity_page]`
 - [Reinforcement learning with random delays](wiki/entities/paper-as-2010-02966-reinforcement-learning-with-random-delays.md) — Reinforcement learning with random delays** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/Aw `📅unknown` `[entity_page]`
 - [A brief review of domain adaptation](wiki/entities/paper-as-2010-03978-a-brief-review-of-domain-adaptation.md) — A brief review of domain adaptation** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeS `📅unknown` `[entity_page]`
 - [SMARTS](wiki/entities/paper-as-2010-09776-smarts-scalable-multi-agent-reinforcement-learni.md) — SMARTS: Scalable Multi-Agent Reinforcement Learning Training School for Autonomous Driving** 收录于  `📅unknown` `[entity_page]`
@@ -4481,7 +4481,7 @@
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial**（arXiv:2411.16537，[项目页](https://chanh.ee/RoboSpat `📅unknown` `[entity_page]`
-- [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Re `📅unknown` `[entity_page]`
+- [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体 `📅unknown` `[entity_page]`
 - [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) 是把分散在各 git 仓的  `📅unknown` `[entity_page]`
 - [Robot Explorer](wiki/entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`
 - [RIO（Robot I/O）](wiki/entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅unknown` `[entity_page]`
