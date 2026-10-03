@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, rtos, realtime, scheduling, freertos, preempt-rt]
 status: complete
-updated: 2026-07-21
+updated: 2026-10-04
 related:
   - ./operating-system-basics.md
   - ../queries/real-time-control-middleware-guide.md
@@ -11,6 +11,8 @@ related:
   - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
+  - ../../sources/sites/rt-thread-github-io.md
+  - ../../sources/repos/rt-thread.md
 summary: "实时操作系统与实时调度：硬/软实时、优先级调度、FreeRTOS 与 PREEMPT_RT Linux 在机器人分层中的位置。"
 ---
 
@@ -45,6 +47,7 @@ summary: "实时操作系统与实时调度：硬/软实时、优先级调度、
 ## 工程实践
 
 - MCU：FreeRTOS 任务拆分 FOC、通信、看门狗；中断极短。
+- [RT-Thread](../../sources/repos/rt-thread.md) 也是 MCU / 设备侧候选，可先按目标芯片 BSP、外设驱动、最坏时延和抖动验证，再决定是否承载控制任务。
 - 主控：`SCHED_FIFO`、CPU isolation、`mlockall`、避免在 RT 路径 syscall。
 - 测量：循环周期抖动直方图，而不是只看平均频率。
 - 与 [频率解耦](./control-inference-frequency-decoupling.md) 配合：推理线程低优先级或异核。
@@ -57,6 +60,7 @@ summary: "实时操作系统与实时调度：硬/软实时、优先级调度、
 ## 关联页面
 
 - [操作系统基础](./operating-system-basics.md)
+- [RT-Thread 项目文档](../../sources/sites/rt-thread-github-io.md)
 - [控制/推理频率解耦](./control-inference-frequency-decoupling.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 
