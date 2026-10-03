@@ -143,6 +143,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [Task and Motion Planning for Humanoid Loco-manipulation](../entities/paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md) — 待深读
 - [TextOp](../methods/genmo.md) — 见 wiki 实体页
 - [Thor](../entities/paper-hrl-stack-42-thor.md) — 见 wiki 实体页
+- [λ₀ / HumanVerse-500](../entities/paper-lambda0-egocentric-human-pretraining.md) — 第一视角全身人类数据预训练的人形 VLA
 - [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](../entities/paper-adamimic.md) — 见 [AdaMimic](../entities/paper-adamimic.md)（ICRA 2026 Oral，已 ingest）
 - [Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning](../entities/paper-adaptive-humanoid-control.md) — 见 wiki 实体页
 - [Towards Versatile Humanoid Table Tennis](../entities/paper-notebook-towards-versatile-humanoid-table-tennis.md) — 待深读
