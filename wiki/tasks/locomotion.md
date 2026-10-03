@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -411,6 +411,7 @@ flowchart TD
 - [Harness Robotic OS](../entities/paper-harness-robotic-os-quadruped-inspection.md) — 四足巡检统一运行时（arXiv:2609.11225；未见代码）
 - [步态相关负载运输](../entities/paper-gait-dependent-load-carrying-quadruped.md) — 被动背负步态–刚度设计图（arXiv:2609.11059；未见代码）
 - [帧编码腿式运动理论](../entities/paper-frame-coded-legged-locomotion-noisy-terrain.md) — 多足接触有限码可恢复性界限（arXiv:2609.10273；理论无真机策略）
+- [PredActor](../entities/paper-predactor.md) — proprio-only 预测式动作扩散，可引导的机载人形运动控制（arXiv:2609.24840；代码待发布）
 
 ## 推荐继续阅读
 

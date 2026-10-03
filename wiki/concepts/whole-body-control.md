@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ../entities/htd-decoupled-wbc.md
   - ../entities/embodied-interview-qa.md
@@ -218,6 +218,7 @@ print("joint acceleration command:", qdd_star)
 - [Immersive Social VR+LLM（论文实体）](../entities/paper-immersive-social-vr-llm-humanoids.md) — 语音高层 locomotion + VR 臂手分层遥操作（H1；非统一全身跟踪）
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无 F/T 残差力同时条件化 VLA 与轮足底盘补偿（arXiv:2609.03889；未开源）
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — generalist→specialist→DAgger 迭代蒸馏 + 统一速度/高度/pitch 指令，单策略跨 H1/G1/T1/N1/Adam（ICRA 2026；未开源）
+- [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；代码待发布）
 
 ## 继续深挖入口
 

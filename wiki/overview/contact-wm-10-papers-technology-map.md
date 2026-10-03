@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, wam, tactile, navigation, technology-map]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-03
 related:
   - ../entities/paper-agile-wam.md
   - ../entities/paper-inspect-view-selection.md

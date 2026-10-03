@@ -3,7 +3,7 @@ title: HMI 论文总索引 · 阅读导航
 type: query
 status: complete
 created: 2026-07-31
-updated: 2026-09-15
+updated: 2026-10-03
 summary: 具身智能研究室论文总索引（P001–P191）的站内阅读导航：每条论文对应站内哪一页、按主题怎么串着读。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md

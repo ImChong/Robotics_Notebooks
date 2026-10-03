@@ -81,7 +81,8 @@ robosuite 的核心贡献是提供可组合的仿真环境、机器人控制接�
 ## 关联页面
 
 - 工程实体：[robosuite](./robosuite.md)
-- 基准实体：[LIBERO](./libero-benchmark.md)
+- 基准实体：[LIBERO](./libero-benchmark.md)（论文页：[LIBERO 2306.03310](./paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md)）
+- 评测选型：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — robosuite 作为策略任务成功率评测层的仿真底座
 - 策展列表：[AwesomeSim2Real](./awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法与任务：[Sim2Real](../concepts/sim2real.md)、[强化学习](../methods/reinforcement-learning.md)、[操作](../tasks/manipulation.md)
