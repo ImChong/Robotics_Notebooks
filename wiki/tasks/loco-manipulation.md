@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-02
+updated: 2026-10-03
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -21,6 +21,7 @@ sources:
   - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
   - ../../sources/papers/halomi_arxiv_2606_18772.md
+  - ../../sources/papers/egoalign_arxiv_2609_38046.md
   - ../../sources/papers/coordex_arxiv_2606_23680.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
@@ -418,6 +419,7 @@ flowchart TD
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 - [CurrentWorld-0](../entities/current-robotics-currentworld.md) — 跨本体 / 多视角 / 力触觉交互世界模拟器；Curr-0 的评测与 Human-in-the-World-Model 环（2026-08；确认未开源）
 - [HALOMI（论文实体）](../entities/paper-halomi-humanoid-loco-manipulation.md) — UMI+egocentric 无机器人示范、BFM-Zero 流形头手 WBC、π₀.₅ VLA 与 G1 主动颈（arXiv:2606.18772）
+- [EgoAlign（论文实体）](../entities/paper-egoalign.md) — 将第一视角人类示范适配为控制器兼容的动作与因果状态监督；π₀.₅ 在 G1 上零样本完成长距离搬运、导航与脚踩交互（arXiv:2609.38046；代码待发布）
 - [WARP（论文实体）](../entities/paper-warp-whole-body-retargeting.md) — Meta Quest 离线人演示 → 闭式 c-SEW 全身重定向 → BC；RB-Y1 零样本 loco-manip（arXiv:2606.29940；未开源）
 - [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
 
@@ -506,3 +508,4 @@ flowchart TD
 ## 一句话记忆
 
 > Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。
+
