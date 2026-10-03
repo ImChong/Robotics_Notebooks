@@ -1,3 +1,8 @@
+## [2026-10-03] ingest | sprite-gen 2D 精灵图生成工具
+
+- 来源：<https://github.com/aldegad/sprite-gen>，Apache-2.0 开源 Python CLI / Codex 与 Claude skill。
+- 归档：记录图集生成、透明帧处理、视频循环与文档入口；标注其与机器人仿真及控制的边界，暂不升格为 wiki 知识页。
+
 ## [2026-10-03] ingest | EgoAlign — 归档人类示范适配、因果状态重建与 G1 长程移动操作评测
 
 - 项目页与 arXiv v2 已核查；官方仓当前只有静态站资源，方法代码与数据待发布。
