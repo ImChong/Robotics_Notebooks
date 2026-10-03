@@ -30,6 +30,17 @@ sources:
 
 把机器人操作任务按“物体变了、空间关系变了、目标变了、这些因素一起变了”分成几类，再观察机器人在连续学习这些任务时，能否把旧知识用到新任务上，同时保留旧任务能力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LIBERO | LIfelong learning BEnchmark on RObot manipulation tasks | 本文提出的终身机器人操作基准 |
+| BC | Behavioral Cloning | 从演示轨迹监督学习策略，论文统一采用的学习范式 |
+| ER | Experience Replay | 回放旧任务数据以缓解遗忘的持续学习方法 |
+| EWC | Elastic Weight Consolidation | 以参数重要性正则约束旧任务关键权重的持续学习方法 |
+| ViT | Vision Transformer | 论文比较的视觉编码器之一 |
+| PDDL | Planning Domain Definition Language | 官方数据附带的符号化场景/任务描述格式 |
+
 ## 为什么重要
 
 单任务成功率很难说明机器人是否真正学会迁移。连续学新任务时，策略可能忘掉旧技能；也可能因为物体、摆放或目标发生变化而无法复用已有知识。LIBERO 用标准化任务套件和演示数据，把这些变化分别控制起来，便于比较方法及分析失败原因。
@@ -80,13 +91,32 @@ LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练�
 - LIBERO 是仿真中的机器人操作基准，适合研究终身模仿学习、知识迁移、任务顺序和策略结构。
 - 在 LIBERO 上的结果不能直接等同于真实机械臂上的性能或 sim-to-real 能力。
 - 不同 LIBERO 扩展版、任务子集、训练数据和评估协议可能不同；比较分数前先核对具体套件、初始状态、rollout 数和训练设置。
+- **重定向就绪度（数据形态适配）：** 官方演示在 robosuite 中以单臂机械臂（Franka Panda）采集，可直接作为同形态 BC 策略的训练输入；换到其他机械臂、双臂或人形平台时需重新采集或做动作空间重定向，不能直接复用。
 - 本文是 2023 年提出的基准工作。后续如使用更新的仓库版本或扩展套件，应注明版本，避免将新增设置归到原论文。
+
+## 与其他工作对比
+
+| 维度 | LIBERO | [CALVIN](./calvin-benchmark.md) | [RLBench](./rlbench.md) |
+|---|---|---|---|
+| 核心问题 | 终身学习中的知识迁移与遗忘 | 长时程语言条件操作与跨环境泛化 | 大规模多任务操作与少样本学习 |
+| 变化控制 | 显式拆分空间关系 / 物体 / 目标 / 组合四类变化 | 以环境划分（A/B/C/D）考察泛化 | 以任务多样性为主，未按知识类型拆分 |
+| 仿真底座 | [robosuite](./robosuite.md)（MuJoCo） | PyBullet | CoppeliaSim |
+
+LIBERO 的独特之处在于把「迁移了什么知识」作为可控变量；后续大量 VLA 工作只取其四个套件做单次多任务成功率评测，已偏离原论文的终身学习协议，比较分数时需区分两种用法。
+
+## 结论
+
+- LIBERO 用 130 个语言条件任务和四类可控变化，把终身机器人学习中的知识迁移拆成可单独度量的问题。
+- 论文实验显示：没有一种架构通吃所有迁移类型；防遗忘方法不必然带来更好的前向迁移；朴素监督预训练可能损害后续终身学习。
+- 作为仿真基准，它适合定位迁移失败来源，但不代表真机性能；在 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中属于「策略任务成功率评测」层。
 
 ## 关联页面
 
 - [LIBERO 基准与工程入口](./libero-benchmark.md)
 - [机器人操作](../tasks/manipulation.md)
 - [ActFovea：LIBERO 上的 VLA 扰动与运行时安全评测](./paper-actfovea.md)
+- [robosuite 论文（2009.12293）](./paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) — LIBERO 的底层仿真框架
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准分层选型
 - [LIBERO 论文来源归档](../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md)
 - [LIBERO 项目仓库归档](../../sources/repos/libero-benchmark.md)
 

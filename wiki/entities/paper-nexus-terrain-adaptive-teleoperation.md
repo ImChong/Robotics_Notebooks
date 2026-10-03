@@ -84,3 +84,4 @@ NEXUS先按地形修正参考，再由全身策略执行；它与同名预告页
 - [nexus-humanoid](./nexus-humanoid.md)
 - [teleoperation](../tasks/teleoperation.md)
 - [whole-body-control](../concepts/whole-body-control.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 地形感知输入在感知栈选型中的位置

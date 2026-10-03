@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - tsinghua
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2609.34199"
 related:
   - ../concepts/world-action-models.md
@@ -159,6 +159,7 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md)
 - [HumanoidArena](./paper-humanoidarena.md)
 - [OpenWAM](./paper-openwam.md)
+- [λ₀ / HumanVerse-500](./paper-lambda0-egocentric-human-pretraining.md) — 同为全身人形 loco-manip 基础模型，但走第一视角人类数据预训练而非世界动作模型（arXiv:2610.00438）
 
 ## 参考来源
 

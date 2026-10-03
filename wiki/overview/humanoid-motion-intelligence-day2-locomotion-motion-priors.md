@@ -22,6 +22,17 @@ summary: "《具身智能从入门到精通 Day 2：运动控制与运动先验�
 
 腿式机器人先要从身体反馈中判断状态，再利用视觉为落脚做准备；运动先验与潜在技能则让自然动作成为可调用、可组合的能力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 本页大多数腿式运动控制策略的训练范式 |
+| RMA | Rapid Motor Adaptation | 从本体历史在线估计环境外参并适配策略 |
+| PIE | Parkour with Implicit-Explicit learning | 隐式—显式联合估计的感知跑酷框架 |
+| AMP | Adversarial Motion Priors | 以判别器奖励约束动作风格接近参考动捕 |
+| ASE | Adversarial Skill Embeddings | 预训练可复用潜在技能空间，供高层任务调用 |
+| BFM | Behavior Foundation Model | 可经提示调用多种行为的人形行为基础模型 |
+
 ## 阅读路线
 
 ```mermaid

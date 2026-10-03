@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, manipulation, bimanual, active-perception, egocentric, vr-teleoperation, memory, berkeley]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2511.00153"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
@@ -124,6 +124,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 - 模仿学习：[imitation-learning](../methods/imitation-learning.md)
 - 第一视角人类演示路线对照：[paper-ego-03-egomimic](./paper-ego-03-egomimic.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 主动视觉（头部运动）在感知栈选型中的位置
+- 第一视角全身人类数据预训练路线：[λ₀ / HumanVerse-500](./paper-lambda0-egocentric-human-pretraining.md) — 500 h 第一视角全身移动操作数据三阶段预训练，迁到全身人形 VLA（arXiv:2610.00438）
 
 ## 参考来源
 

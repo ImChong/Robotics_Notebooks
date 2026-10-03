@@ -86,3 +86,4 @@ PIE把深度与本体历史纳入同一感知跑酷策略，体现了显式估�
 - [pie-perceptive-locomotion](../methods/pie-perceptive-locomotion.md)
 - [dreamwaq](../methods/dreamwaq.md)
 - [dreamwaq-plus](./dreamwaq-plus.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 深度感知（隐式/显式地形估计）在感知栈选型中的位置

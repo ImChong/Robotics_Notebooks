@@ -3,7 +3,7 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-09-28
+updated: 2026-10-03
 related:
   - ../overview/ai-architecture-map.md
   - ../concepts/diffusion-transformer.md
@@ -178,6 +178,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [ScaleDP](../entities/paper-scaledp-scaling-diffusion-transformer-policy.md) — DP-T 扩至 1B：AdaLN + unmasking（ICRA 2025；截至入库日无官方代码）
 - [DiT-Block Policy（Ingredients）](../entities/paper-robotic-dit-ingredients-dit-block-policy.md) — U-Net 之外如何把扩散 Transformer 训稳：adaLN-Zero + 分相机 ResNet（arXiv:2410.10088；[dit-policy](https://github.com/SudeepDasari/dit-policy) 已开源）
 - [REALab 14 篇技术地图（2026）](../overview/realab-14-papers-technology-map-2026.md) — DF-ExpEnse / DICE-RL / GMP 等扩散策略微调与记忆线策展索引
+- [Discrete Forcing](../entities/paper-discrete-forcing.md) — 离散 token 定 chunk 粗结构 + 单步连续 flow 精修，2 NFE 的少步动作专家（arXiv:2609.39526；仅 LIBERO 管线开源）
+- [PredActor](../entities/paper-predactor.md) — proprio-only joint state–action 扩散 + CG/CFG 引导，G1 机载 50 Hz 全身控制（arXiv:2609.24840；代码待发布）
 
 ## 推荐继续阅读
 
