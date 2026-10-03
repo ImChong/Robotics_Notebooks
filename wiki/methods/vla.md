@@ -166,6 +166,7 @@ related:
   - ../concepts/variational-automation.md
   - ../entities/paper-discrete-forcing.md
 sources:
+  - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
