@@ -14,7 +14,9 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-09-25
+updated: 2026-10-03
+github: "https://github.com/gentlefress/Omega-0"
+dataset: "https://huggingface.co/datasets/keycharon/omega-HOME"
 arxiv: "2608.06375"
 related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -32,8 +34,10 @@ related:
 sources:
   - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/sites/omega0-github-io.md
+  - ../../sources/repos/omega-0.md
+  - ../../sources/datasets/omega-home.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
-summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来观测 embedding + 扩散全身动作 latent 的并发人形 loco-manipulation WAM；ω-HOME 40h+；G1 上 11 任务 Omni 成功率 81.8%；代码/数据 WIP。"
+summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来观测 embedding + 扩散全身动作 latent 的并发人形 loco-manipulation WAM；ω-HOME 40h+；G1 上 11 任务 Omni 成功率 81.8%；代码与数据页面已公开；预训练权重仍待发布。"
 ---
 
 # ω-0：潜空间预测式人形并发 Loco-Manipulation WAM
@@ -74,7 +78,7 @@ summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来�
 | **骨干** | Qwen3-VL-2B（动作 VLM）+ V-JEPA（当前帧）+ Wan（未来 latent 监督）+ T5（语言）+ action DiT |
 | **数据** | ω-HOME：40.3 h、4827 episodes、24 任务；评测 11 任务 × 10 trials 单多任务策略 |
 | **训练** | 三阶段；8×H100；公共运动经 SONIC 仿真回放接地 |
-| **开源** | **宣称将开源 / WIP**（项目页 Code & Dataset；截至 **2026-08-10** 无可运行仓） |
+| **开源** | **代码与数据已公开**：GitHub 含训练、推理、采集和 G1 部署代码；ω-HOME 已有 Hugging Face 数据集页。**预训练权重仍待发布**（官方仓库 README TODO）。 |
 
 ## 核心原理
 
@@ -112,7 +116,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（官方可运行代码尚未发布）。** 截至 **2026-08-10**：项目页 [OMEGA-0_page](https://gentlefress.github.io/OMEGA-0_page/) 仍标注 Code/Dataset **WIP**；发布后应补：数据加载 → Stage1–3 训练 → SONIC 部署推理的 `sequenceDiagram`。
+官方仓库现已公开：[gentlefress/OMEGA-0](https://github.com/gentlefress/Omega-0)（[源码归档](../../sources/repos/omega-0.md)）。README 提供动作 token 预训练、WAM 微调、G1 数据采集与部署流程；预训练权重仍待发布，且训练依赖外部模型资产。
 
 ## 工程实践
 
@@ -124,7 +128,7 @@ flowchart TB
 | 评测读法 | 同时看 SR / 子任务 Score / Task Progress；长程任务 Progress 更能反映中途失败 |
 | 数据接地 | 公共运动必须经控制器回放过滤不可执行轨迹，再进动作扩散 |
 | RTC | 训练暴露干净前缀；部署缓存上一 chunk 前几帧作时间锚 |
-| 复现现状 | **等官方代码与 ω-HOME**；当前只读论文/项目页选型 |
+| 复现现状 | 代码与数据集页面已公开，可检查流程并按自有资产运行；预训练权重仍待发布，不能视为开箱复现。 |
 
 ## 实验与评测
 
@@ -158,7 +162,7 @@ flowchart TB
 3. **真影响：数据接地管线** — SONIC 回放把人/公共运动变成可训监督。
 4. **次要代价：依赖低层** — 能力与复现都绑 SONIC / 灵巧手栈。
 5. **部署读法：Omni > Ego；V-JEPA 作当前帧** — 有外视就用；当前帧编码器别跟未来监督编码器盲目统一。
-6. **工程读法：代码 WIP** — 先作 WAM/loco-manip 选型坐标，勿宣称可复现训练。
+6. **工程读法：代码已公开、权重待发** — 可读训练/部署实现；完整复现仍需获取或训练依赖模型与检查点。
 
 ## 与其他工作对比
 
@@ -172,7 +176,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **开源未落地：** 无法核对三阶段数据清洗、RTC 前缀与 SONIC 对接细节（2026-08-10 仍 WIP）。
+- **发布完整度有限：** 训练和部署代码已公开；README 仍将预训练检查点列为待发布，训练需配置多个外部模型资产。
 - **平台绑定：** 主结果在 G1 + Inspire + SONIC；跨机需重新接地。
 - **评测套件自建：** 11 任务强相关 ω-HOME，跨实验室对比需谨慎。
 - **外视依赖：** Omni 最优；纯 ego 略降，视野遮挡仍是风险。
@@ -195,7 +199,9 @@ flowchart TB
 ## 参考来源
 
 - [omega0_arxiv_2608_06375.md](../../sources/papers/omega0_arxiv_2608_06375.md) — 论文摘录与开源核查
-- [omega0-github-io.md](../../sources/sites/omega0-github-io.md) — 项目页核查
+- [omega0-github-io.md](../../sources/sites/omega0-github-io.md) — 项目页与公开状态核查
+- [omega-0.md](../../sources/repos/omega-0.md) — 官方代码、入口与开放边界
+- [omega-home.md](../../sources/datasets/omega-home.md) — HF 数据集页面核查
 - [arXiv:2608.06375](https://arxiv.org/abs/2608.06375) — 原文
 
 ## 推荐继续阅读
