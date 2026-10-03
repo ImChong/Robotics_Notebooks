@@ -6,6 +6,7 @@ updated: 2026-10-01
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
   - ../entities/paper-discrete-forcing.md
 sources:
+  - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/repos/act-aloha.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
