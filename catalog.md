@@ -51,6 +51,7 @@
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
 - [arXiv（arXiv.org）](wiki/entities/arxiv.md) — arXiv.org](https://arxiv.org/)** 是面向多学科的 **开放获取学术预印本档案与分发平台**。对机器人研究与本知识库而言，它是「先公开、可检索、可机器拉取」的  `📅unknown` `[entity_page]`
 - [arXivisual：arXiv 论文可视化阅读器](wiki/entities/arxivisual.md) — arXivisual**（arxivisual.org，[GitHub](https://github.com/rajshah6/arXivis `📅unknown` `[entity_page]`
+- [ASD-STE100 Skill（danyuchn）](wiki/entities/asd-ste100-skill.md) — ASD-STE100 Skill** 是一个公开的 Claude Code Skill，用于把模糊、冗长的英文改写成更清楚的受控技术英语。仓库采用 MIT 许可证，源代码、示例和规则摘要公开。 `📅unknown` `[entity_page]`
 - [Asimov v1（开源人形机器人仓库）](wiki/entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Astra Games / Awesome GPT-6 Astra](wiki/entities/astra-games.md) — 一个社区 AI 辅助游戏与交互作品目录：GitHub 提供来源记录与部分源码，Astra Games 提供分类、搜索和体验入口，可作为机器人知识站的交互设计参考。 `📅unknown` `[entity_page]`
 - [Atlas OS（Windows 优化 Playbook）](wiki/entities/atlas-os.md) — Atlas OS**（Atlas-OS/Atlas，atlasos.net， `📅unknown` `[entity_page]`
@@ -4684,6 +4685,7 @@
 - [AI Agent 评测](wiki/concepts/ai-agent-evaluation.md) — AI agent evaluation** 指对 **agent harness（脚手架）+ 模型** 在固定 task 集上的自动化测量：不仅看最终自然语言，还看 **环境终态、工具轨迹与 tr `📅unknown` `[wiki_page]`
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](wiki/concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
+- [ASD-STE100（简化技术英语）](wiki/concepts/asd-ste100.md) — ASD-STE100 是为技术文档制定的受控英语规范，通过限定词汇与句式来减少误读。 `📅unknown` `[wiki_page]`
 - [Autoencoder / VAE（自编码器与变分自编码器）](wiki/concepts/autoencoder.md) — 自编码器（AE）**：编码器把输入压到低维码，解码器重建输入，用重建损失训练。**VAE** 把码换成分布 \(q_\phi(z|x)\)，用 ELBO 同时做重建与先验对齐，从而能从先验采样新样 `📅unknown` `[wiki_page]`
 - [反向传播算法 (Backpropagation)](wiki/concepts/backpropagation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Bayesian Belief Analysis（贝叶斯信念分析）](wiki/concepts/bayesian-belief-analysis.md) — 贝叶斯信念分析**：在 **部分可观测** 或 **模型不确定** 的序贯决策中，用 **概率分布 $b_t$** 表示对隐状态（或参数）的信念，并按 **Bayes 规则** 随观测递推更新，再 `📅unknown` `[wiki_page]`
@@ -5335,6 +5337,7 @@
 - [IROS 2026 九篇获奖论文：阅读地图](wiki/overview/iros-2026-awards-9-papers-technology-map.md) — IROS 2026 主会/workshop 获奖线同时覆盖「长期记忆、毫秒级传统控制+学习、人形 loco-manip、人类视频与轨迹 WM、接触 RL 表示、执行期 TAMP」——没有单一赢家范 `📅unknown` `[overview_page]`
 - [IROS 2026：1933 篇论文的六条变化](wiki/overview/iros-2026-six-trends-technology-map.md) — 大模型没有「吃掉」机器人学——学习、感知、规划、控制与操作以更高密度交织；VLA 从 scaling 转向效率/几何/记忆/系统壳，World Model 仍少（~1%）但更贴近控制环。 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
+- [Karpathy：用 ASD-STE100 与定制化产物提升 LLM 输出可理解性](wiki/overview/karpathy-asd-ste100-llm-outputs.md) — 让模型“说得更清楚”有两层：用一致、短而明确的语言降低歧义；再根据内容选择图、交互页面、排版报告或讲解视频，而不是默认把所有知识塞进长文本。 `📅unknown` `[overview_page]`
 - [大模型赋能人形机器人](wiki/overview/large-model-empowered-humanoids.md) — 大模型赋能人形**泛指用 **LLM / VLM / VLA** 等预训练模型承接语义理解与任务规划（有时含直接动作），再通过技能库、导航栈或端到端策略驱动人形执行——课程第 8.1 节的方法地图 `📅unknown` `[overview_page]`
 - [AwesomeSim2Real 技术地图](wiki/overview/lc-awesome-sim2real-technology-map.md) — AwesomeSim2Real 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文清单的站内可点开版本（按 MDP 四要素 + 领域分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [理想 MachEmbodied 四篇：记忆、认知、生成与触觉](wiki/overview/li-auto-machembodied-4-papers-technology-map.md) — 车企具身基座不是单模型，而是「记经验 → 定计划 → 生成动作 → 读触觉未来」四层；四篇 arXiv 各守一层，共享 MachEmbodied 品牌与部分代码栈。 `📅unknown` `[overview_page]`
