@@ -83,12 +83,15 @@ sequenceDiagram
 | 应用集成 | TypeScript SDK 会拉起 CLI 子进程并使用 JSONL 事件；集成端需管理工作目录、环境变量和事件消费 |
 | 访问控制 | 先了解所选沙箱和审批策略，尤其是允许写文件、访问网络或执行 shell 命令时 |
 
-## 开源状态与局限
+## 开源状态
 
 - **已开源：** [openai/codex](https://github.com/openai/codex) 为 Apache-2.0 项目，包含 Rust CLI、平台分发启动器、TypeScript SDK 与文档。
+- **不是 Codex Web 的源代码：** Codex Web / ChatGPT 内的云端体验与此 CLI 仓库应区分；[Codex Security](./codex-security.md) 是另一个聚焦应用安全扫描的产品。
+
+## 局限与风险
+
 - **依赖外部推理：** 该仓库是客户端与代理运行时，不含模型权重；使用需要 ChatGPT 登录或 API key 及可用模型服务。
 - **权限仍由环境决定：** 代理可以在工作目录中执行开发任务；实际访问边界取决于启用的 sandbox 与 execution policy，不能仅凭“本地运行”推断其没有外部副作用。
-- **不是 Codex Web 的源代码：** Codex Web / ChatGPT 内的云端体验与此 CLI 仓库应区分；[Codex Security](./codex-security.md) 是另一个聚焦应用安全扫描的产品。
 
 ## 与相邻代理的区别
 
