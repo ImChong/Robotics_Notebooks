@@ -108,4 +108,6 @@ flowchart TD
 
 ## 推荐继续阅读
 
-- [arXiv PDF](https://arxiv.org/pdf/2609.25450)\n- [REDACT 项目页](https://gatjungk.github.io/REDACT/)\n- [REDACT 项目网站源码](https://github.com/gatjungk/REDACT)
+- [arXiv PDF](https://arxiv.org/pdf/2609.25450)
+- [REDACT 项目页](https://gatjungk.github.io/REDACT/)
+- [REDACT 项目网站源码](https://github.com/gatjungk/REDACT)
