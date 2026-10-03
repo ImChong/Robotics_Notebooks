@@ -1,5 +1,8 @@
 # ViLoMan
 
-- **URL：** <https://viloman-anonymous.pages.dev/>
-- **代码：** 截至 2026-09-18 **待发布**
-- **关联论文：** wiki/entities/paper-*
+- **项目页：** <https://viloman-anonymous.pages.dev/>
+- **关联论文：** [ViLoMan arXiv:2609.19340](../../sources/papers/viloman_arxiv_2609_19340.md)
+- **项目页状态：** 截至 2026-10-03，页面仍显示 “Anonymous Authors”，内容包括方法、训练超参数、奖励定义和演示视频。
+- **代码：** 项目页未列 GitHub 或其他代码仓库链接；截至复核日待发布/未提供。
+- **数据：** 项目页未列数据集或训练数据下载入口。
+- **复核说明：** 论文作者和机构以 arXiv 元数据为准；项目补充页继续保持匿名。页面链接与开放状态需在发现官方发布入口后更新。
