@@ -22,6 +22,13 @@ summary: "NEXUS（arXiv:2609.39000）：把地形适配加入感知式全身遥�
 
 先按地形调整要跟踪的人体动作，再用机载感知和本体反馈完成全身控制。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| WBC | Whole-Body Control | 全身控制 |
+| G1 | Unitree G1 | 文章中的人形机器人平台 |
+
 ## 方法要点
 
 - 离线处理参考动作，使接触目标与机器人前方地形相适应。
@@ -32,8 +39,26 @@ summary: "NEXUS（arXiv:2609.39000）：把地形适配加入感知式全身遥�
 
 本页对应 **arXiv:2609.39000** 的 *Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation*。仓库中的 [较早 NEXUS 研究预告页](./nexus-humanoid.md)记录的是 *A Perceptive Foundation Policy for Cross-Domain Whole-Body Teleoperation*（2026-09-06 状态）；两者标题、时间与研究材料不同，不能合并。
 
-## 来源
+## 参考来源
 
 - [arXiv:2609.39000](https://arxiv.org/abs/2609.39000)
 - [项目页](https://nexus-humanoid.github.io/)
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
+
+## 评测
+
+文章报告仿真控制成功率 91.072%，去除深度后为 87.771%；真机展示楼梯与斜坡。
+
+## 与其他工作对比
+
+与 [早期 NEXUS 预告](./nexus-humanoid.md) 是两项不同工作；本页对应 arXiv:2609.39000，早期页对应另一题目。
+
+## 结论
+
+NEXUS先按地形修正参考，再由全身策略执行；它与同名预告页是不同工作。
+
+## 关联页面
+
+- [nexus-humanoid](./nexus-humanoid.md)
+- [teleoperation](../tasks/teleoperation.md)
+- [whole-body-control](../concepts/whole-body-control.md)

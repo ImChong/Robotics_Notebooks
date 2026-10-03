@@ -23,6 +23,13 @@ summary: "PIE：将深度历史与本体历史用于隐式—显式状态估计�
 
 让策略同时利用可解释的地形和运动估计，以及难以逐项标注的隐式环境线索。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| PIE | Parkour with Implicit-Explicit Learning | 本文感知跑酷框架 |
+| RL | Reinforcement Learning | 强化学习 |
+
 ## 方法要点
 
 - 输入包括深度观测与本体历史。
@@ -33,7 +40,25 @@ summary: "PIE：将深度历史与本体历史用于隐式—显式状态估计�
 
 [PIE 感知行走方法页](../methods/pie-perceptive-locomotion.md)介绍机制；本页保留论文级标题、来源和独立阅读入口。
 
-## 来源
+## 参考来源
 
 - [arXiv:2408.13740](https://arxiv.org/abs/2408.13740)
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
+
+## 评测
+
+文章将其作为深度与本体感知的腿式跑酷工作；评测平台和细分成功率请以论文原文为准。
+
+## 与其他工作对比
+
+与盲走 [DreamWaQ](../methods/dreamwaq.md) 相比，PIE加入深度历史；与 [DreamWaQ++](./dreamwaq-plus.md) 相比，两者采用不同的感知时序融合方式。
+
+## 结论
+
+PIE把深度与本体历史纳入同一感知跑酷策略，体现了显式估计与隐式表示的互补。
+
+## 关联页面
+
+- [pie-perceptive-locomotion](../methods/pie-perceptive-locomotion.md)
+- [dreamwaq](../methods/dreamwaq.md)
+- [dreamwaq-plus](./dreamwaq-plus.md)

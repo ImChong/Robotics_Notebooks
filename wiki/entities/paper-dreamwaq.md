@@ -23,6 +23,13 @@ summary: "DreamWaQ（ICRA 2023）：由本体历史估计机身速度和隐式�
 
 机器人不能直接读到地面摩擦等属性时，利用近期身体响应形成控制所需的环境线索，再据此调整步态。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| CENet | Context Estimation Network | 由本体历史估计速度和环境表示 |
+| RL | Reinforcement Learning | 强化学习 |
+
 ## 方法要点
 
 - **历史编码：** Context Estimation Network（CENet）处理本体历史，预测机身线速度并学习隐式环境表示。
@@ -35,8 +42,26 @@ summary: "DreamWaQ（ICRA 2023）：由本体历史估计机身速度和隐式�
 - [DreamWaQ++](./dreamwaq-plus.md)在后续工作中加入点云等外部感知。
 - [Robust Perceptive Locomotion](./paper-robust-perceptive-locomotion-wild.md)提供带噪高程图与本体历史融合的另一条路线。
 
-## 来源
+## 参考来源
 
 - [arXiv:2301.10602](https://arxiv.org/abs/2301.10602)
 - [项目页](https://sites.google.com/view/dreamwaq)
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
+
+## 评测
+
+文章以 A1 真机行走为例讨论该运动先验；完整实验范围与指标以论文原文为准。
+
+## 与其他工作对比
+
+与 [DreamWaQ++](./dreamwaq-plus.md) 对照时，前者依赖本体历史适应已接触到的变化，后者加入点云提供前向地形信息。
+
+## 结论
+
+DreamWaQ把身体历史用于接触后的速度与环境适应估计；跨沟和选落脚点仍需前向感知。
+
+## 关联页面
+
+- [dreamwaq](../methods/dreamwaq.md)
+- [dreamwaq-plus](./dreamwaq-plus.md)
+- [paper-notebook-learning-quadrupedal-locomotion-over-challenging](./paper-notebook-learning-quadrupedal-locomotion-over-challenging.md)

@@ -7,7 +7,7 @@ arxiv: "2609.37677"
 related:
   - ./paper-behavior-foundation-model-humanoid.md
   - ./paper-bfm-zero.md
-  - ./paper-ase-adversarial-skill-embeddings.md
+  - ../methods/ase.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md
 summary: "Spectral Skills（arXiv:2609.37677）：学习用于动作预测的连续潜在表示，支持人形技能跟踪、串联与组合。"
@@ -21,6 +21,13 @@ summary: "Spectral Skills（arXiv:2609.37677）：学习用于动作预测的连
 
 用连续潜变量描述身体接下来会怎样变化，让同一跟踪器执行、串联或组合技能。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| BFM | Behavior Foundation Model | 行为基础模型 |
+| DoF | Degrees of Freedom | 自由度 |
+
 ## 方法要点
 
 - 通过预测后续身体状态学习运动表示，而非只重建输入动作。
@@ -29,12 +36,30 @@ summary: "Spectral Skills（arXiv:2609.37677）：学习用于动作预测的连
 
 ## 与相邻工作
 
-- [ASE](./paper-ase-adversarial-skill-embeddings.md)学习可选择的潜在技能。
+- [ASE](../methods/ase.md)学习可选择的潜在技能。
 - [BFM-Zero](./paper-bfm-zero.md)使用目标提示调用预训练行为。
 - Spectral Skills重点在连续运动表示的可组合性。
 
-## 来源
+## 参考来源
 
 - [arXiv:2609.37677](https://arxiv.org/abs/2609.37677)
 - [项目页](https://spectral-skill.github.io/)
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
+
+## 评测
+
+文章报告 29-DoF Unitree G1 的全局跟踪误差较对比方法下降 62%，并展示技能串联与组合。
+
+## 与其他工作对比
+
+与 [ASE](../methods/ase.md)的离散潜在技能选择相比，Spectral Skills侧重连续运动表示的串联和组合。
+
+## 结论
+
+Spectral Skills把连续可组合运动表示作为规划器和冻结跟踪器之间的接口。
+
+## 关联页面
+
+- [ase](../methods/ase.md)
+- [paper-bfm-zero](./paper-bfm-zero.md)
+- [paper-behavior-foundation-model-humanoid](./paper-behavior-foundation-model-humanoid.md)

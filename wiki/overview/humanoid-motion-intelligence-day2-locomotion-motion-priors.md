@@ -35,7 +35,7 @@ flowchart TB
 |---|---|---|
 | 本体估计 | 打滑、受阻或动力学变化怎样进入策略？ | [RMA](../entities/paper-rma-rapid-motor-adaptation.md)、[DreamWaQ](../entities/paper-dreamwaq.md)、[Digit 真机行走](../entities/paper-digit-humanoid-locomotion-rl.md) |
 | 视觉感知 | 前方地形怎样与历史身体状态结合？ | [PIE](../entities/paper-pie-parkour-implicit-explicit.md)、[DreamWaQ++](../entities/dreamwaq-plus.md)、[Hiking in the Wild](../entities/paper-hiking-in-the-wild.md) |
-| 运动先验 | 怎样让动作自然且保留任务适应？ | [AMP](../entities/paper-amp-survey-01-amp.md)、[ASE](../entities/paper-ase-adversarial-skill-embeddings.md)、[BFM-Zero](../entities/paper-bfm-zero.md) |
+| 运动先验 | 怎样让动作自然且保留任务适应？ | [AMP](../entities/paper-amp-survey-01-amp.md)、[ASE](../methods/ase.md)、[BFM-Zero](../entities/paper-bfm-zero.md) |
 | 技能调用 | 怎样提示、串联和跨本体复用行为？ | [UFO](../entities/roboparty-ufo.md)、[CrossBFM](../entities/paper-crossbfm-shared-latent-behavior.md)、[Spectral Skills](../entities/paper-spectral-skills-motion-representation.md) |
 
 ## 34 篇论文的独立详情入口
@@ -62,7 +62,7 @@ flowchart TB
 | Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions | [Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions](../entities/paper-amp-locomotion-quadruped-rewards.md) | 将 AMP 运动先验用于 A1 真机行走。 |
 | Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids | [Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids](../entities/paper-hiking-in-the-wild.md) | 感知、落脚约束与动作先验共同支持 G1 跑酷。 |
 | Deep Whole-body Parkour | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 深度感知的人形全身动作跟踪与跑酷。 |
-| ASE: Large-scale Reusable Adversarial Skill Embeddings | [ASE: Large-scale Reusable Adversarial Skill Embeddings](../entities/paper-ase-adversarial-skill-embeddings.md) | 学习可选择、可复用的潜在动作技能。 |
+| ASE: Large-scale Reusable Adversarial Skill Embeddings | [ASE: Large-scale Reusable Adversarial Skill Embeddings](../methods/ase.md) | 学习可选择、可复用的潜在动作技能。 |
 | BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control | [BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control](../entities/paper-bfm-zero.md) | 通过目标提示调用预训练行为。 |
 | UFO: A General Unsupervised Reinforcement Learning Framework for Humanoid Control | [UFO: A General Unsupervised Reinforcement Learning Framework for Humanoid Control](../entities/roboparty-ufo.md) | 开源行为预训练框架，含 UFO-FB 与 UFO-TeCH 路线。 |
 
@@ -91,7 +91,7 @@ flowchart TB
 | World-Model-Augmented Visual Locomotion for Humanoids on Foothold-Constrained Terrain | [World-Model-Augmented Visual Locomotion for Humanoids on Foothold-Constrained Terrain](../entities/paper-wm-loco.md) | 用预测性记忆辅助踏石、楼梯和沟隙行走。 |
 | SOLO: Stable Omni-terrain Long-Horizon Perceptive Humanoid Locomotion | [SOLO: Stable Omni-terrain Long-Horizon Perceptive Humanoid Locomotion](../entities/paper-solo.md) | 把关键地形查询与长程误差归因用于感知行走。 |
 
-## 相关入口
+## 关联页面
 
 - [Day 1：数据与重定向](./humanoid-motion-intelligence-day1-data-retargeting.md)
 - [Locomotion 步态知识链](./hub-locomotion.md)
@@ -99,3 +99,7 @@ flowchart TB
 - [文章来源与逐篇索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
 
 原文中转述的数值用于定位研究结论，不构成同一实验条件下的横向排名。阅读时应回到论文核实平台、传感器、成功定义和实机条件。
+
+## 参考来源
+
+- [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)

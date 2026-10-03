@@ -29,7 +29,7 @@
 | Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions | [Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions](../../wiki/entities/paper-amp-locomotion-quadruped-rewards.md) | 将 AMP 运动先验用于 A1 真机行走。 |
 | Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids | [Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids](../../wiki/entities/paper-hiking-in-the-wild.md) | 感知、落脚约束与动作先验共同支持 G1 跑酷。 |
 | Deep Whole-body Parkour | [Deep Whole-body Parkour](../../wiki/entities/paper-deep-whole-body-parkour.md) | 深度感知的人形全身动作跟踪与跑酷。 |
-| ASE: Large-scale Reusable Adversarial Skill Embeddings | [ASE: Large-scale Reusable Adversarial Skill Embeddings](../../wiki/entities/paper-ase-adversarial-skill-embeddings.md) | 学习可选择、可复用的潜在动作技能。 |
+| ASE: Large-scale Reusable Adversarial Skill Embeddings | [ASE: Large-scale Reusable Adversarial Skill Embeddings](../../wiki/methods/ase.md) | 学习可选择、可复用的潜在动作技能。 |
 | BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control | [BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control](../../wiki/entities/paper-bfm-zero.md) | 通过目标提示调用预训练行为。 |
 | UFO: A General Unsupervised Reinforcement Learning Framework for Humanoid Control | [UFO: A General Unsupervised Reinforcement Learning Framework for Humanoid Control](../../wiki/entities/roboparty-ufo.md) | 开源行为预训练框架，含 UFO-FB 与 UFO-TeCH 路线。 |
 
