@@ -11,6 +11,7 @@ related:
   - ../concepts/model-versioning-ota.md
   - ./hermes-agent.md
   - ./cloudflare-security-audit-skill.md
+  - ./openai-codex-cli.md
 sources:
   - ../../sources/repos/codex-security.md
   - ../../sources/sites/openai-codex-security-docs.md
@@ -125,6 +126,8 @@ sequenceDiagram
 - **权限与数据：** 以本机用户权限读文件系统；结果含源码摘录与复现步骤——产物放仓外并限制访问；扫描进程可继承无关云凭证，应按需收窄环境变量。
 - **沙箱边界：** `approvalPolicy: "never"`；`--codex` 覆盖不能收紧其文件系统/审批策略；仅扫有权评估的仓库。
 - **与机器人运控正交：** 不替代机载安全 FSM / 实时隔离；服务的是 **研发与云边代码面** 的 AppSec。
+
+- [OpenAI Codex CLI](./openai-codex-cli.md) — 本机通用编码代理的源码；Codex Security 是其相邻的专用 AppSec 工具。
 
 ## 关联页面
 
