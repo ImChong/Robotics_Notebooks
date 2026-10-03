@@ -173,6 +173,7 @@ flowchart LR
 - **门控是必需品**：HarnessBank 用语义 Harness Gene Bank + 门控筛选在冻结模型下做可信自进化（七基准 Test Pass@1 +5.1%–15.4%）——没有门控，harness 搜索就是题库过拟合
 - **先省再 scale**：SoL-Pi 经 152 → 4 的 auto-research 环筛出四条效率扩展，EdgeBench 约保留 94% 分数而 token / 成本显著下降——"efficiency for efficiency"是把闭环转得更久的前提
 - **迁移性检查**：进化出来的 harness 换一个任务分布、换一个底座模型还成立吗？不成立就只是局部最优配置
+- **正则化搜索轨迹**：[RRSI](../wiki/entities/paper-rrsi-2609-24972.md) 同时约束 proposal 与 selection：编辑预算退火、历史去重探索、泄漏 critic、噪声门槛、token 成本规则与无效组件剪枝；检查收益是否迁移到 held-out 基准
 
 ### 推荐做什么
 - 选一条固定任务集，让 agent 只改 harness（不改权重），做 10 轮搜索，然后在 **另一组任务** 上验收——增益掉多少就是过拟合多少
@@ -182,7 +183,8 @@ flowchart LR
 ### 推荐读什么
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/rsi-harness.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
-- [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的门控式 harness 自进化
+- [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
+- [RRSI](../wiki/entities/paper-rrsi-2609-24972.md) — 通过 proposal 与 selection 正则化，降低 harness 搜索对演化基准的过拟合
 - [SoL-Pi](../wiki/entities/sol-pi.md) — auto-research 环筛效率扩展；先把 harness 做省再谈 scale
 - [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods)（外链）— 按 artifact 筛选同类工作
 
@@ -233,7 +235,7 @@ flowchart LR
 | Stage 1 | 改进怎么留下来 | [ASPIRE](../wiki/methods/aspire.md) · [karpathy/autoresearch](../wiki/entities/karpathy-autoresearch.md) |
 | Stage 2 | 权重级有界闭环 | [Motus2](../wiki/entities/paper-motus2.md) · [LWD](../wiki/methods/lwd.md) |
 | Stage 3 | 打分器与验证锚 | [ENPIRE](../wiki/methods/enpire.md) · [真机 autoresearch harness](../wiki/queries/real-robot-policy-autoresearch-harness.md) |
-| Stage 4 | harness 进化与门控 | [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) · [HarnessBank](../wiki/entities/paper-harnessbank.md) |
+| Stage 4 | harness 进化与门控 | [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) · [HarnessBank](../wiki/entities/paper-harnessbank.md) · [RRSI](../wiki/entities/paper-rrsi-2609-24972.md) |
 | Stage 5 | ignition 门槛与治理 | [递归自改进](../wiki/concepts/recursive-self-improvement.md) · [AI Auto-Research](../wiki/concepts/ai-auto-research.md) |
 
 ## 和其他页面的关系
