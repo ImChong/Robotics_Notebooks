@@ -1,28 +1,35 @@
 # robosuite: A modular simulation framework and benchmark for robot learning
 
-> 来源归档（LongchaoDa AwesomeSim2Real 策展索引级）
+> 来源归档（LongchaoDa AwesomeSim2Real 策展索引 + robosuite 官方资料）
 
 - **列表：** [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSim2Real)
 - **分组：** Action / Foundation Models
 - **编号：** 028/139
-- **入库日期：** 2026-09-18
-- **arXiv：** 2009.12293
-- **出处：** 见清单
-- **论文：** <https://arxiv.org/abs/2009.12293>
-- **代码：** 未在清单中标注
-- **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Action / Foundation Models。 本页为策展索引级节点，细节以原文为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md`](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- **首次入库：** 2026-09-18；2026-10-03 补充官方资料与 LIBERO 关联
+- **arXiv：** [2009.12293](https://arxiv.org/abs/2009.12293)
+- **官方项目：** [robosuite GitHub](https://github.com/ARISE-Initiative/robosuite)
+- **项目主页：** <https://robosuite.ai/>
+- **官方文档：** <https://robosuite.ai/docs/>
+- **白皮书：** <https://robosuite.ai/assets/whitepaper.pdf>
+- **LIBERO 依赖关系：** LIBERO 安装文档将 robosuite 作为底层仿真环境；其 [requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt) 固定 robosuite 1.4.0
+- **论文详情：** [robosuite 论文 wiki](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- **工程实体：** [robosuite 工程页](../../wiki/entities/robosuite.md)
 
----
+## 来源说明
 
-## 开源边界（步骤 2.5）
+AwesomeSim2Real 将该工作列在 Action / Foundation Models 分组。本条归档保留策展坐标，并补入项目方的代码、文档和论文入口；方法细节以论文和所选版本的官方文档为准。robosuite 当前文档为 v1.5，LIBERO requirements 固定 v1.4.0，二者版本语境不同。
 
-| 已发布 | 备注 |
-|--------|------|
-| 清单条目元数据 | 本 source 为策展摘录，非全文转存 |
-| 代码/权重 | 以项目页 / GitHub 实际链接为准；清单标注见上 |
+## 参考链接
+
+- [论文：robosuite: A Modular Simulation Framework and Benchmark for Robot Learning](https://arxiv.org/abs/2009.12293)
+- [robosuite 官方代码](https://github.com/ARISE-Initiative/robosuite)
+- [robosuite 官方文档](https://robosuite.ai/docs/)
+- [LIBERO 安装文档](https://lifelong-robot-learning.github.io/LIBERO/html/getting_started/installation.html)
+- [LIBERO requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt)
+- [AwesomeSim2Real 策展仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md`](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
-- 列表实体：[`wiki/entities/awesome-sim2real.md`](../../wiki/entities/awesome-sim2real.md)
+- 论文实体：[robosuite 论文 wiki](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- 工程实体：[robosuite 工程 wiki](../../wiki/entities/robosuite.md)
+- 列表实体：[AwesomeSim2Real](../../wiki/entities/awesome-sim2real.md)
