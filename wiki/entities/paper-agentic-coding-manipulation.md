@@ -7,13 +7,14 @@ tags:
   - manipulation
   - local-llm
 status: complete
-updated: 2026-09-23
+updated: 2026-10-03
 arxiv: "2609.26499"
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../entities/paper-pai-2209-07753-codeaspolicies.md
   - ./paper-industrialvla-bench.md
+  - ./paper-embodiedswe.md
   - ../overview/collab-wm-12-papers-technology-map.md
 sources:
   - ../../sources/papers/agentic-coding-manipulation_arxiv_2609_26499.md
@@ -66,6 +67,7 @@ summary: "Agentic Coding Agent（arXiv:2609.26499）：本地 Qwen3.8-27B + codi
 ## 与其他工作对比
 
 - 横向索引见 [12 篇技术地图](../overview/collab-wm-12-papers-technology-map.md)；与同 arXiv 节点不重复造页。
+- [EmbodiedSWE](./paper-embodiedswe.md) 将 coding agent 的可验证仿真解扩增为 VLA 示范，形成从任务程序到策略训练数据的另一条路线。
 
 ## 结论
 
