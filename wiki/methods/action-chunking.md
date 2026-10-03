@@ -218,9 +218,9 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
-- [Discrete Forcing](../entities/paper-discrete-forcing.md) — 离散动作 token 建立 chunk 粗结构，连续分支一次精修，作为 VLA action-chunk 生成的低 NFE 实例。
-
 ## 关联页面
+
+- [Discrete Forcing](../entities/paper-discrete-forcing.md) — 离散动作 token 建立 chunk 粗结构，连续分支一次精修，作为 VLA action-chunk 生成的低 NFE 实例。
 
 - [Behavior Cloning](./behavior-cloning.md) — 动作块是对单步 BC 的时间窗扩展
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — action chunks + 未来触觉 latent 预测的人形操作实例
