@@ -6713,31 +6713,46 @@
     }, { passive: true });
   }
 
-  // ── 首页滚动入场：首屏以下的入口卡 / 区块进入视口时淡入上移，同一批依次错开 ──────────
-  // 只隐藏初始化时完全位于首屏下方的元素：首屏不闪、JS 失败时内容照常可见、截图不留白
-  if (document.getElementById('home-start') && !prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
+  // ── 滚动入场（全站，图谱页除外）：首屏以下的区块 / 列表行进入视口时淡入上移，同一批依次错开 ──────────
+  // 只隐藏登记时完全位于视口下方的元素：首屏不闪、JS 失败时内容照常可见、截图不留白。
+  // 列表与正文多为异步渲染，用 MutationObserver 登记后来插入（或取消 hidden）的元素；
+  // 祖先仍在等待入场时子元素不再单独登记，随祖先一起出现，避免位移叠加。
+  if (!document.getElementById('graph-wrap') && !prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
     var REVEAL_MS = 700;
     var REVEAL_STAGGER_MS = 70;
-    var revealCandidates = document.querySelectorAll(
-      '#home-start .home-entry-card, main > .section:not(#home-start) > .container > :not([role="tooltip"])'
-    );
-    var revealFold = window.innerHeight || document.documentElement.clientHeight;
-    var revealPending = [];
-    for (var rci = 0; rci < revealCandidates.length; rci++) {
-      if (revealCandidates[rci].getBoundingClientRect().top >= revealFold) revealPending.push(revealCandidates[rci]);
-    }
+    var REVEAL_BATCH_MAX = 1000;
+    var REVEAL_SELECTOR = [
+      '#home-start .home-entry-card',
+      'main > .section:not(#home-start) > .container:not(.detail-content-layout) > :not([role="tooltip"])',
+      '.updates-day', // 更新日志：按日
+      // 互链榜单行 / 公司时间轴节点是 display:contents（无盒子），改由行内单元格入场，同行共用延迟
+      '.home-hub-row > *',
+      '.co-timeline > li > *',
+      '.detail-content-main > section:not(#detail-content-body):not(#roadmap-content)', // 详情页正文外区块
+      '.roadmap-flow-section',
+      '.detail-markdown-body > :not(.roadmap-timeline)', // 详情 / 路线正文：段落级
+      '.roadmap-timeline-item' // 路线正文时间轴：按阶段
+    ].join(', ');
+    var revealSeen = new WeakSet();
+    var revealMain = document.querySelector('main');
     var finishReveal = function (el) {
-      el.classList.remove('home-reveal', 'is-revealed');
+      el.classList.remove('scroll-reveal', 'is-revealed');
       el.style.removeProperty('--reveal-delay');
     };
     // 不收缩视口底边：页面末尾的元素（如「查看完整榜单」）滚到底时离视口底只有约 120px，
     // 高视口下 -8% 的底边收缩会让它永远不进入判定区，停在 opacity:0
     var revealObserver = new IntersectionObserver(function (entries) {
-      var batch = 0;
+      var batch = -1;
+      var lastGroup = null;
       for (var rei = 0; rei < entries.length; rei++) {
         if (!entries[rei].isIntersecting) continue;
         var el = entries[rei].target;
-        var delay = Math.min(batch++, 4) * REVEAL_STAGGER_MS;
+        var group = el.closest('.home-hub-row, .co-timeline > li') || el;
+        if (group !== lastGroup) {
+          batch++;
+          lastGroup = group;
+        }
+        var delay = Math.min(batch, 4) * REVEAL_STAGGER_MS;
         revealObserver.unobserve(el);
         el.style.setProperty('--reveal-delay', delay + 'ms');
         el.classList.add('is-revealed');
@@ -6745,10 +6760,42 @@
         window.setTimeout(finishReveal, REVEAL_MS + delay + 50, el);
       }
     });
-    for (var rpi = 0; rpi < revealPending.length; rpi++) {
-      revealPending[rpi].classList.add('home-reveal');
-      revealObserver.observe(revealPending[rpi]);
-    }
+    var registerReveal = function () {
+      var fold = window.innerHeight || document.documentElement.clientHeight;
+      var candidates = revealMain.querySelectorAll(REVEAL_SELECTOR);
+      var fresh = [];
+      for (var rci = 0; rci < candidates.length; rci++) {
+        if (!revealSeen.has(candidates[rci])) fresh.push(candidates[rci]);
+      }
+      // 一次插入上千个（如互链榜单「展开全部」数千行）时直接显示：逐个登记的样式重算与
+      // IntersectionObserver 初始计算会让展开多卡约 0.4s，几千行逐行入场也无意义
+      if (fresh.length > REVEAL_BATCH_MAX) {
+        for (var rfi = 0; rfi < fresh.length; rfi++) revealSeen.add(fresh[rfi]);
+        return;
+      }
+      var below = [];
+      // 先集中读布局再统一写类名：读写交替会让每次读都触发一次重排
+      for (var rni = 0; rni < fresh.length; rni++) {
+        var el = fresh[rni];
+        // 未渲染（hidden / display:none）的先不判定，取消 hidden 后再登记
+        if (!el.getClientRects().length) continue;
+        revealSeen.add(el);
+        if (el.getBoundingClientRect().top >= fold) below.push(el);
+      }
+      // 文档顺序，祖先先于子孙写入，closest 只做选择器匹配不触发布局
+      for (var rbi = 0; rbi < below.length; rbi++) {
+        if (below[rbi].parentElement.closest('.scroll-reveal')) continue;
+        below[rbi].classList.add('scroll-reveal');
+        revealObserver.observe(below[rbi]);
+      }
+    };
+    registerReveal();
+    new MutationObserver(registerReveal).observe(revealMain, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['hidden']
+    });
   }
 
   // Hero「主路线」数字：滚到「从零开始」卡中心并顺时针描边一圈

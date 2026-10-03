@@ -3975,19 +3975,21 @@ html[lang="en"] body:has(#homeLanguageToggle) .hero-title { font-size: clamp(2re
 }
 
 /* ── 首页交互动效（P0） ─────────────────────────────────────────── */
-/* 滚动入场：main.js 只给首屏以下的元素加 .home-reveal，入视口后加 .is-revealed，过渡结束摘掉两者 */
-.home-reveal {
+/* 滚动入场（全站，图谱页除外）：main.js 只给视口以下的元素加 .scroll-reveal，入视口后加 .is-revealed，过渡结束摘掉两者 */
+.scroll-reveal {
   opacity: 0;
   transform: translate3d(0, 16px, 0);
 }
-.home-reveal.is-revealed {
+/* 详情 / 路线页正文区只淡入不上移：TOC 与 hash 跳转按 scrollIntoView 定位，位移会让落点偏 16px */
+.detail-content-main .scroll-reveal { transform: none; }
+.scroll-reveal.is-revealed {
   opacity: 1;
   transform: none;
   transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 @media print {
-  .home-reveal { opacity: 1 !important; transform: none !important; }
+  .scroll-reveal { opacity: 1 !important; transform: none !important; }
 }
 /* 入口卡指针光斑：::before 为卡内柔光（垫在内容下），::after 经遮罩只露 1px 边框高光；
    坐标 --spot-x / --spot-y 由 main.js 写入，减动时停在卡片中心 */
