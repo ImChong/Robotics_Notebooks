@@ -3,6 +3,7 @@
 - **标题：** ASD-STE100 Simplified Technical English
 - **类型：** site / standard
 - **URL：** <https://www.asd-ste100.org/>
+- **入库核查：** 2026-10-03；官方首页标注 Issue 9 为 2025 年 1 月版本，并说明该规范于 2025 年成为国际标准。
 - **内容用途：** 受控技术英语规范的官方入口
 - **关联项目：** [asd-ste100-skill](../repos/danyuchn-asd-ste100-skill.md)
 - **沉淀到 wiki：** [ASD-STE100 概念页](../../wiki/concepts/asd-ste100.md)

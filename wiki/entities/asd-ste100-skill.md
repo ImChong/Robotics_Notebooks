@@ -29,7 +29,7 @@ summary: "danyuchn/asd-ste100-skill 将 ASD-STE100 原则封装为 Claude Code S
 | ASD | Aerospace, Security and Defence Industries Association of Europe | ASD-STE100 规范发布组织 |
 | STE | Simplified Technical English | Skill 借鉴的受控语言规范 |
 | LLM | Large Language Model | 按技能要求分析并改写英文文本的模型 |
-| MIT | Massachusetts Institute of Technology License | 仓库采用的宽松开源许可证 |
+| MIT | MIT License | 仓库采用的开源许可证名称 |
 
 ## 核心结构与用法
 
