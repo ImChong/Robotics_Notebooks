@@ -1,107 +1,100 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+tags: [paper, robot-manipulation, lifelong-learning, benchmark, imitation-learning, dataset, simulation]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-03
 arxiv: "2306.03310"
 venue: "NeurIPS 2023 Datasets and Benchmarks Track"
 code: https://github.com/Lifelong-Robot-Learning/LIBERO
-summary: "RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。"
+summary: "LIBERO 提供 130 个语言条件机器人操作任务与人类遥操作演示，将终身学习中的知识迁移拆成空间关系、物体、目标及其组合变化，并系统比较策略架构与持续学习算法。"
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
+  - ../entities/libero-benchmark.md
   - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+  - ../entities/paper-actfovea.md
 sources:
   - ../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md
-  - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+  - ../../sources/repos/libero-benchmark.md
 ---
 
-# LIBERO
+# LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning
 
-**LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 031/564** 篇，分组 **Benchmarks & simulators**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**LIBERO** 是面向机器人操作的终身学习基准。论文把知识迁移问题设计成一组可控的任务变化，并提供基准任务、仿真环境和人类遥操作演示数据，让研究者比较策略能否把已学到的知识迁移到后续任务。
 
-## 一句话定义
+- **作者：** Bo Liu、Yifeng Zhu、Chongkai Gao、Yihao Feng、Qiang Liu、Yuke Zhu、Peter Stone
+- **发表：** NeurIPS 2023 Datasets and Benchmarks Track
+- **论文：** [NeurIPS 页面](https://proceedings.neurips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html) · [PDF](https://proceedings.neurips.cc/paper_files/paper/2023/file/8c3c666820ea055a77726d66fc7d447f-Paper-Datasets_and_Benchmarks.pdf) · [arXiv:2306.03310](https://arxiv.org/abs/2306.03310)
+- **代码：** [Lifelong-Robot-Learning/LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO)
+- **资料：** [项目主页](https://libero-project.github.io/) · [文档](https://lifelong-robot-learning.github.io/LIBERO/) · [官方数据页](https://libero-project.github.io/datasets) · [Hugging Face 数据集](https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets)
 
-RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
+## 一句话理解
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WAM | World Action Model | 世界预测与动作生成耦合 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
-| WM | World Model | 环境前向预测模型 |
+把机器人操作任务按“物体变了、空间关系变了、目标变了、这些因素一起变了”分成几类，再观察机器人在连续学习这些任务时，能否把旧知识用到新任务上，同时保留旧任务能力。
 
 ## 为什么重要
 
-- RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+单任务成功率很难说明机器人是否真正学会迁移。连续学新任务时，策略可能忘掉旧技能；也可能因为物体、摆放或目标发生变化而无法复用已有知识。LIBERO 用标准化任务套件和演示数据，把这些变化分别控制起来，便于比较方法及分析失败原因。
 
-## 核心信息
+## 基准组成
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 031/564 |
-| 分组 | Benchmarks & simulators |
-| 出处 | NeurIPS 2023 Datasets and Benchmarks Track |
-| 论文 | <https://proceedings.nips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html> |
-| 代码/项目 | <https://github.com/Lifelong-Robot-Learning/LIBERO> |
-| 子类 / 象限 | 机器人操作基准 · 终身学习与知识迁移评测 · 物理仿真 · 不适用 |
+论文提出四个任务套件，共 **130 个语言条件操作任务**：
 
-## 核心机制（归纳）
+| 套件 | 任务数 | 主要考察的变化 |
+|---|---:|---|
+| LIBERO-Spatial | 10 | 物体之间的空间关系和摆放布局 |
+| LIBERO-Object | 10 | 操作对象类别 |
+| LIBERO-Goal | 10 | 任务目标 |
+| LIBERO-100 | 100 | 物体、布局与目标等知识的组合迁移 |
 
-### 策展导读要点
+LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练）与 **LIBERO-10**（用于下游终身学习评测）。官方数据包括人类遥操作演示；项目说明还列出工作区与腕部 RGB 图像、本体状态、语言任务描述和 PDDL 场景描述等内容。
 
-RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
+## 方法与评测设置
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+论文使用行为克隆（Behavioral Cloning, BC）从演示轨迹学习操作策略，以便在有限计算资源下比较终身学习设定。它研究三种视觉-运动策略架构：
 
-## 评测与指标
+- **ResNet-RNN：** ResNet 编码视觉输入，LSTM 汇总时间信息。
+- **ResNet-T：** ResNet 视觉特征与 Transformer 时间骨干结合。
+- **ViT-T：** Vision Transformer 处理视觉输入，并以 Transformer 建模时间序列。
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://proceedings.nips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
+比较的学习方案包括顺序微调和多任务学习基线，以及 Experience Replay（ER）、Elastic Weight Consolidation（EWC）和 PackNet 等终身学习方法。论文主要使用任务成功率评估，并研究任务顺序、策略结构、算法选择和预训练对迁移的影响。
 
-## 与其他工作对比
+## 论文报告的主要发现
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **Benchmarks & simulators** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+1. **架构和算法都影响迁移。** Transformer 时间骨干在抽象时序信息方面表现突出；不同视觉编码器在不同类型的知识迁移上各有强项，没有一种架构对所有套件都最好。
+2. **防遗忘不等于更强的前向迁移。** 在论文比较的设定中，ER、EWC、PackNet 等方法能缓解遗忘，但总体上顺序微调的前向迁移表现更好。
+3. **任务语言嵌入未必带来提升。** 使用语义丰富的任务描述嵌入，表现并未优于使用任务 ID 嵌入。
+4. **朴素监督预训练可能适得其反。** 在大规模离线数据上直接做监督预训练，可能降低后续终身学习表现。
 
-## 结论
+以上结论对应论文的任务、策略和训练协议；复现或横向比较时，应以原文实验设置为准。
 
-**这一页能给你的是「LIBERO」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+## 如何使用
 
-- 可确证的只有清单坐标：分组 **Benchmarks & simulators**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 从官方仓库安装环境，查看任务套件、策略配置和评估脚本。
+2. 使用官方脚本下载对应套件的遥操作演示数据；README 说明可选择 Hugging Face 下载来源。
+3. 选定 suite、策略和终身学习算法，按统一任务顺序及成功率协议评测。
+4. 对比 LIBERO-Spatial、Object、Goal 与 LIBERO-90/10 的结果，定位变化来自布局、物体、目标还是它们的组合。
 
-## 常见误区
+本页不复述完整安装步骤，依赖版本、命令和数据文件结构以[官方 README](https://github.com/Lifelong-Robot-Learning/LIBERO#readme)及[文档](https://lifelong-robot-learning.github.io/LIBERO/)为准。
 
-1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+## 适用范围与限制
+
+- LIBERO 是仿真中的机器人操作基准，适合研究终身模仿学习、知识迁移、任务顺序和策略结构。
+- 在 LIBERO 上的结果不能直接等同于真实机械臂上的性能或 sim-to-real 能力。
+- 不同 LIBERO 扩展版、任务子集、训练数据和评估协议可能不同；比较分数前先核对具体套件、初始状态、rollout 数和训练设置。
+- 本文是 2023 年提出的基准工作。后续如使用更新的仓库版本或扩展套件，应注明版本，避免将新增设置归到原论文。
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
-- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [LIBERO 基准与工程入口](./libero-benchmark.md)
+- [机器人操作](../tasks/manipulation.md)
+- [ActFovea：LIBERO 上的 VLA 扰动与运行时安全评测](./paper-actfovea.md)
+- [LIBERO 论文来源归档](../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md)
+- [LIBERO 项目仓库归档](../../sources/repos/libero-benchmark.md)
 
 ## 参考来源
 
-- [`sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md`](../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md) — 本条目策展摘录
-- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
-- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- 论文：<https://proceedings.nips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html>
+- [论文 PDF](https://proceedings.neurips.cc/paper_files/paper/2023/file/8c3c666820ea055a77726d66fc7d447f-Paper-Datasets_and_Benchmarks.pdf) 与 [arXiv 摘要](https://arxiv.org/abs/2306.03310)
+- [官方 GitHub 仓库](https://github.com/Lifelong-Robot-Learning/LIBERO)
+- [官方项目页](https://libero-project.github.io/) · [文档](https://lifelong-robot-learning.github.io/LIBERO/)
+- [官方数据页](https://libero-project.github.io/datasets) · [Hugging Face 数据集](https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets)
+- [RCL Awesome World-Action Models](https://github.com/rcl-robotics/Awesome-World-Action-Models)：第 031 项，仅作策展索引
 
-## 推荐继续阅读
-
-- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
-- [原文](https://proceedings.nips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html)
