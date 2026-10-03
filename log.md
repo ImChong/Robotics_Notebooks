@@ -1,3 +1,8 @@
+## [2026-10-03] ingest | EgoAlign — 归档人类示范适配、因果状态重建与 G1 长程移动操作评测
+
+- 项目页与 arXiv v2 已核查；官方仓当前只有静态站资源，方法代码与数据待发布。
+- 新增论文来源、项目页/代码仓来源归档与论文实体；在 Loco-Manipulation 数据入口加入回链。
+
 ## [2026-10-03] ingest | RRSI: Regularized Recursive Self-Improvement
 
 - 归档 arXiv v2、官方项目页与 Google Research 开源仓库；项目页已核查代码及演化浏览器。
