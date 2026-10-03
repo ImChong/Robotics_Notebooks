@@ -23,6 +23,8 @@ related:
 sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/repos/safety-research-embody.md
+  - ../../sources/sites/muse-gadgets.md
+  - ../../sources/repos/muse-gadget-sdk.md
 summary: "LLM 机器人控制接口：同一语言模型的物理能力主要由「接到机器人的抽象层级」决定——直接力矩几乎失败，写控制器或监督预训练步态/VLA 才能完成有限导航与操作。评估必须把访问级别当作系统的一部分。"
 ---
 
@@ -94,6 +96,7 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 | 先选接口再选模型 | 有可用步态/VLA 时，默认高层监督；不要用「聊天模型输出 τ」当第一刀 |
 | 监督 VLA 时测 follow 率 | 统计有多少步原样转发 7 维动作；过改会低于 VLA 单独跑，过信则修不了策略失败 |
 | 感知先给朝向 | 导航加世界系朝向角；操作给可查询的夹爪指向，再考虑深度/分割 |
+| 本地动作接口先做权限最小化 | [Muse Gadgets](../entities/muse-gadgets.md) 展示了 LLM 助手接入 Linux 命令、文件与本地 API 的边缘接口；其命令权限继承安装账户，机器人桥接应隔离进低权限账户并加白名单 |
 | 真机当定性 | Embody 真机 Go2 N 很小：反射当目标、准星误判障碍、走廊回路全失败——与仿真同族 |
 | 读评测时看暂停与否 | 直接控制分数若来自暂停仿真，不能当实时力矩环证据 |
 | 代码复现 | 仓公开前以研究文附录为准；见 [Embody 实体](../entities/anthropic-embody.md) 开源状态 |
@@ -109,6 +112,7 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 ## 关联页面
 
 - [Embody 评测套件](../entities/anthropic-embody.md) — 本页所编译的评测床与开源状态
+- [Muse Gadgets 边缘设备 SDK](../entities/muse-gadgets.md) — 语音助手通过本地设备命令 / API 触达实体外设的案例
 - [Model Hardware Standard](./model-hardware-standard.md) — 把 agent 接到真实仪器的驱动标准（研究预览）
 - [VLA](../methods/vla.md) — 高层操作接口里被监督的预训练策略
 - [Foundation Policy](./foundation-policy.md) — 为何部署系统会提供预训练控制器
@@ -124,6 +128,8 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 
 - [Claude plays robotics（Anthropic 研究文归档）](../../sources/sites/anthropic-claude-plays-robotics.md)
 - [safety-research/embody 仓占位](../../sources/repos/safety-research-embody.md)
+- [Muse Gadgets 官方项目页](../../sources/sites/muse-gadgets.md)
+- [Muse Gadget SDK](../../sources/repos/muse-gadget-sdk.md)
 
 ## 推荐继续阅读
 
