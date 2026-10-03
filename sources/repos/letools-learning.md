@@ -30,16 +30,26 @@
 |------|------|
 | 数据转换 | Rosbag → **LeRobot Dataset v3**；配置 `configs/data/KuavoRosbag2Lerobot.yaml`（`platform_type` 4pro/5/5w；`eef_type` leju_claw / rq2f85 / qiangnao） |
 | LeRobot 内置策略 | ACT、Diffusion（DPT）、Multi-task DiT；VLA：PI0、PI0_FAST、PI0.5、GR00T N1.5、WALL-X、XVLA、SmolVLA |
-| 外部模型 | Pi0 / Pi0.5 / GR00T **N1.7** / LingbotVla / **LingbotVla-v2** |
+| 外部模型 | KUAVO-VLA-1.0 / Pi0 / Pi0.5 / GR00T **N1.7** / LingbotVla / **LingbotVla-v2** |
 | 部署 | `configs/deploy/deploy.yaml`：`inference_env` sim\|real；`python kuavo_deploy/eval.py` |
 | 训练入口 | `python kuavo_model/train.py --policy <name>`；`--launcher python\|accelerate`；`--mode simple\|total` |
 | 边缘 | `README_AGX_ORIN.md` + `requirements_agxorin.txt` |
 
 ## News（README）
 
+- 2026-08-26：推出 KUAVO-VLA-1.0，定位为基于 Kuavo 本体与工业场景的垂域模型（资源见 [来源归档](../sites/kuavo-vla-1.md)）
 - 2026-05-30：LeRobot 0.5.2 内置 10 种模型 + 原版 lingbotvla / pi0 / pi0fast / pi05 / gr00tN1.7
 - 2026-06-13：离线推理、异步推理与 **RTC**
 - 2026-07-09：LingbotVLA-v2
+
+## KUAVO-VLA-1.0 资源与开放边界
+
+- **项目页：** <https://model.lejurobot.com/kuavo-vla-1/>
+- **模型卡：** HF <https://huggingface.co/LejuRobotics/LET-KUAVO-VLA-1.0-models> · ModelScope <https://www.modelscope.cn/models/lejurobot/LET-KUAVO-VLA-1.0-models>
+- **数据集卡：** HF <https://huggingface.co/datasets/LejuRobotics/LET-KUAVO-VLA-1.0-Dataset> · ModelScope <https://www.modelscope.cn/datasets/lejurobot/LET-KUAVO-VLA-1.0-Dataset>
+- **社区入口：** <https://openlet.openatom.tech/>
+- **访问状态：** OpenLET 将模型与配套数据列为申请审核资源；Hugging Face 模型/数据页也要求同意分享联系信息并通过审核后访问文件。
+- **许可边界：** 代码仓许可证为 GPL-3.0；这不自动决定权重或数据集许可。HF 数据卡列出 Apache-2.0 元数据，但内容仍需审核访问；模型权重许可以获批后显示条款为准。
 
 ## 目录职责
 
