@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, humanoid, trajectory-optimization, eth-zurich]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.38617"
 related:
   - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
@@ -30,6 +30,26 @@ summary: "Dense Temporal Motion Retargeting 联合优化机器人动作和参考
 ## 为什么重要
 
 固定帧率播放人体参考可能让机器人在动力学关键时刻来不及起跳或落脚。全局放慢则牺牲节奏；局部相位优化能只改困难段。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["人体参考动作"]
+    N1["参考相位"]
+    N2["机器人动作"]
+    N3["动态难段约束"]
+    N4["联合时序优化"]
+    N5["调整节奏的重定向动作"]
+    N0 --> N4
+    N1 --> N4
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N3
+```
 
 ## 方法
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-generation, speech, motion-retargeting]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.38400"
 related:
   - ./paper-echo-g-cospeech-humanoid.md
@@ -29,6 +29,28 @@ summary: "GestAdapt 让语音手势生成考虑双腕可达工作空间；降低
 ## 为什么重要
 
 看起来自然的手势可能在机器人旁有桌子、墙或身体形态变化时越界。生成模型需要同时满足表达和空间约束。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["音频与历史动作"]
+    N1["双腕工作空间"]
+    N2["手势采样"]
+    N3["越界修正"]
+    N4["GMR 与关节限位"]
+    N5["机器人动作"]
+    N6["越界与节拍评测"]
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N3
+```
 
 ## 方法
 

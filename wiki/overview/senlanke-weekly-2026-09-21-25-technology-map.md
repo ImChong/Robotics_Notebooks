@@ -2,7 +2,7 @@
 type: overview
 tags: [survey, humanoid, quadruped, manipulation, vla, wam, senlanke]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 related:
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
@@ -92,6 +92,26 @@ summary: "senlanke 具身运控lab 2026-09-21–25 双周更：腿式 35 + 操�
 | Opt2VLA | [../entities/paper-opt2vla-force-aware-humanoid](../entities/paper-opt2vla-force-aware-humanoid.md) |
 | Brace Yourself | [../entities/paper-brace-yourself-environmental-bracing](../entities/paper-brace-yourself-environmental-bracing.md) |
 | Watch Recall Act | [../entities/paper-watch-recall-act-concurrent-streams](../entities/paper-watch-recall-act-concurrent-streams.md) |
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["9 月 21 至 25 日周更"]
+    N1["腿式与人形"]
+    N2["Manipulation"]
+    N3["跨栏去重"]
+    N4["独立 canonical 论文"]
+    N5["按任务比较机制"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 关联页面
 

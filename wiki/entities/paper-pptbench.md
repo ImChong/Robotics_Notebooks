@@ -8,7 +8,7 @@ tags:
   - tsinghua
   - open-source
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2609.29718"
 code: https://github.com/Einsia/PPTBench
 related:
@@ -47,6 +47,27 @@ summary: "PPTBench（Einsia/清华，arXiv:2609.29718）：500 项 arXiv 科学�
 - **补 visual coding 榜：** 与 chart-to-code、screenshot-to-markup 邻近，但输出必须是 **读者可改的对象图**；禁止 raster 参考图作弊。
 - **与机器人线间接相关：** 科学流程图大量出现在机器人论文；agent 能否重建 **方法框图** 影响 slide / 文档 / 教学资产自动化（非控机闭环）。
 - **与 [RLE-Bench](./rle-bench.md) 互补：** RLE-Bench 测 **仿真里改训练代码**；PPTBench 测 **视觉结构 → 可编辑文档 artifact**。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["科学流程图参考"]
+    N1["Coding Agent"]
+    N2["可编辑 PPTX"]
+    N3["有效性门"]
+    N4["语义与可读性门"]
+    N5["几何与文本评分"]
+    N6["最终得分"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心信息
 
@@ -88,7 +109,25 @@ summary: "PPTBench（Einsia/清华，arXiv:2609.29718）：500 项 arXiv 科学�
 
 ## 源码运行时序图
 
-**不适用**：benchmark 以 agent harness + Judge 为主，无固定「训练–推理–真机」管线；本地复现走仓库 materializer + 评测脚本。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant D as pptbench-materialize
+    participant H as pptbench-eval harness-run
+    participant A as Coding Agent
+    participant J as pptbench-vlm-judge
+    participant R as rank 与 consensus-rank
+    D->>D: 下载并校验固定任务素材
+    D-->>H: 参考图与批准素材
+    H->>A: 隔离工作区内重建单页幻灯片
+    A-->>H: reconstruction.pptx
+    H->>H: 验证对象并用 LibreOffice 渲染
+    H-->>J: rollout-summary 与渲染证据
+    J-->>R: 三轮门控与细节 findings
+    R->>R: 合并门控并按固定规则计分
+```
+
+入口以 [PPTBench 仓库归档](../../sources/repos/pptbench.md) 和官方 README 为准；这是评测运行链路，素材下载、代理生成、渲染与裁判各自有依赖，图不表示本库已执行完整 benchmark。
 
 ## 局限与风险
 

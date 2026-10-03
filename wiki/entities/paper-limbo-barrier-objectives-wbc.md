@@ -6,7 +6,7 @@ tags:
   - wbc
   - safe-rl
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.22075"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,26 @@ summary: "LIMBO（arXiv:2609.22075）：围绕冻结控制器残差学习状态�
 ## 为什么重要
 
 - 解析安全证书难；在线安全滤波增开销。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["冻结基础控制器"]
+    N1["残差状态与动作"]
+    N2["学习屏障函数"]
+    N3["安全反馈"]
+    N4["任务策略训练"]
+    N5["内化安全的全身策略"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N1
+```
 
 ## 核心机制
 

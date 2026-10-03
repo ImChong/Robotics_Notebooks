@@ -6,7 +6,7 @@ tags:
   - loco-manipulation
   - teacher-student
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.23483"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,27 @@ summary: "STRIDER（arXiv:2609.23483）：AMP 行走 + 3D 落脚专家 + 笛卡�
 ## 为什么重要
 
 - 速度指令策略难控三维落点；单独踏步策略难与行走/操作统一。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["AMP 行走专家"]
+    N1["3D 落脚专家"]
+    N2["笛卡尔上肢专家"]
+    N3["DAgger 与 LD-PPO"]
+    N4["Teacher latent 对齐"]
+    N5["统一 Student"]
+    N6["多步态全身执行"]
+    N0 --> N3
+    N1 --> N3
+    N2 --> N3
+    N4 --> N3
+    N3 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

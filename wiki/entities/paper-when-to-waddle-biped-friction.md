@@ -5,7 +5,7 @@ tags:
   - biped
   - locomotion
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.21185"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,25 @@ summary: "何时摇摆行走（arXiv:2609.21185）：五执行器双足比较直
 ## 为什么重要
 
 - 低摩擦下地面反力受限，步态选择不明确。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["质心高度"]
+    N1["地面摩擦"]
+    N2["直立步态"]
+    N3["企鹅式躯干侧移"]
+    N4["五执行器双足测试"]
+    N5["稳定性比较"]
+    N0 --> N4
+    N1 --> N4
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 核心机制
 

@@ -7,7 +7,7 @@ tags:
   - test-driven-development
   - software-engineering
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ./mattpocock-skills.md
   - ./mattpocock-grill-with-docs-skill.md
@@ -41,6 +41,28 @@ summary: "tdd 技能把 RED-GREEN 垂直切片、seam 共识、反模式（实�
 
 - **本站 CI：** `make ci-preflight` / `make test` 是 **仓库级 seam**；用本 skill 改 `scripts/*.py` 时，应先 **与用户确认测哪些公共行为**（export、lint、graph），避免 mock 内部实现导致 refactor 即红。
 - **与 Superpowers / Addy：** [Superpowers](superpowers-obra.md) **强制** TDD 管线；[Addy Osmani](agent-skills-addyosmani.md) 有 `/test` 命令；mattpocock **tdd** 更细 **seam 与反模式** 文本。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["确认公共 seam"]
+    N1["单个行为规格"]
+    N2["RED 失败测试"]
+    N3["最小实现"]
+    N4["GREEN 验证"]
+    N5["下一垂直切片"]
+    N6["独立代码审阅"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N1
+    N4 --> N6
+```
 
 ## 核心规则（摘要）
 

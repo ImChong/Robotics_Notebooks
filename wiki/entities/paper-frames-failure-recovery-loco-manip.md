@@ -6,7 +6,7 @@ tags:
   - loco-manipulation
   - vlm
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.22538"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,31 @@ summary: "FRAMES（arXiv:2609.22538）：VLM 监控多视角时序+状态+接触
 ## 为什么重要
 
 - 语言规划选对技能仍可能在抓取/搬运阶段失败。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["多视角与状态"]
+    N1["接触证据"]
+    N2["VLM 时序监控"]
+    N3["失败原因"]
+    N4["恢复智能体"]
+    N5["记忆复用"]
+    N6["恢复执行"]
+    N7["重新监控"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N5 --> N4
+    N4 --> N6
+    N6 --> N5
+    N6 --> N7
+    N7 --> N2
+```
 
 ## 核心机制
 

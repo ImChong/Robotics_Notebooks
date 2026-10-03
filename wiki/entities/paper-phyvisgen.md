@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, synthetic-data, sim2real, visual-perception]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.25653"
 related:
   - ../tasks/manipulation.md
@@ -29,6 +29,28 @@ summary: "PhyVisGen 联合软夹爪接触仿真和路径追踪视觉渲染，从
 ## 为什么重要
 
 模拟抓取如果接触不真实，动作错；只把动作模拟好而透明物体、阴影不真实，视觉策略仍会错。两条误差要一起控制。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["RGB-D 场景"]
+    N1["软夹爪接触仿真"]
+    N2["路径追踪渲染"]
+    N3["同步双臂示范"]
+    N4["ACT 训练"]
+    N5["Franka 闭环执行"]
+    N6["定位与抓取评测"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 方法
 

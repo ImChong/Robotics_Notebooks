@@ -6,7 +6,7 @@ tags:
   - open-source
   - rl
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.26989"
 related:
   - ../tasks/locomotion.md
@@ -37,6 +37,28 @@ summary: "Spiderbot（arXiv:2609.26989）：两 DoF 四连杆+被动弹簧支撑
 
 - 三 DoF 腿增重与支撑力矩。
 
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["四连杆腿与被动弹簧"]
+    N1["重力补偿本体"]
+    N2["mjlab 仿真"]
+    N3["策略训练"]
+    N4["部署栈"]
+    N5["六足执行"]
+    N6["功耗与运动评测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N2
+```
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -47,7 +69,28 @@ summary: "Spiderbot（arXiv:2609.26989）：两 DoF 四连杆+被动弹簧支撑
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-28 未发布可运行官方代码或待核实）。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as uv run train
+    participant E as src/mjlab
+    participant P as ONNX 策略
+    participant V as sim2sim/test.py
+    participant H as sim2real/hardware_deploy.py
+    T->>E: 加载 Spiderbot 速度跟踪任务
+    loop 仿真训练
+        E-->>T: 观测、奖励与转移
+        T->>E: 策略动作与参数更新
+    end
+    Note over T,P: 训练 checkpoint 与兼容 ONNX 导出需单独衔接
+    V->>P: 匹配模型的历史观测
+    P-->>V: 仿真控制动作
+    H->>P: 匹配策略的硬件观测
+    P-->>H: 关节动作
+    H->>H: 舵机 SDK IO 与限位
+```
+
+入口对应 [SpiderBot 仓库归档](../../sources/repos/spiderbot.md)。先用 `sim2sim/test.py` 校验 ONNX 与观测、XML、动作缩放，再接 `sim2real/hardware_deploy.py`；默认 sim2sim 策略路径是占位值，不能直接当作已可用权重。
 
 ## 实验与评测
 
@@ -75,6 +118,8 @@ summary: "Spiderbot（arXiv:2609.26989）：两 DoF 四连杆+被动弹簧支撑
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 
 ## 参考来源
+
+- [官方源码运行入口归档](../../sources/repos/spiderbot.md)
 
 - [spiderbot-hexapod-open-source_arxiv_2609_26989.md](../../sources/papers/spiderbot-hexapod-open-source_arxiv_2609_26989.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md)

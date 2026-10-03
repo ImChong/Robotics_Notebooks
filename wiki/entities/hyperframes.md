@@ -7,7 +7,7 @@ tags:
   - video
   - open-source
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 related:
   - ./archify.md
   - ./gsap-skills.md
@@ -36,6 +36,26 @@ summary: "HyperFrames（heygen-com/hyperframes）是 Apache-2.0 的 HTML→确�
 | CLI | Command-Line Interface | 本地渲染与 `hyperframes skills` 管理 |
 | CSS | Cascading Style Sheets | 与 HTML 一并驱动画面 |
 | API | Application Programming Interface | 可选托管 authoring（HeyGen 生态） |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["HTML 与 CSS"]
+    N1["可 seek 动画与媒体"]
+    N2["CLI lint"]
+    N3["preview"]
+    N4["检查时间轴"]
+    N5["render MP4"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N4 --> N0
+```
 
 ## 核心信息
 

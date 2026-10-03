@@ -5,7 +5,7 @@ tags:
   - humanoid
   - locomotion
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.24552"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,27 @@ summary: "DeCap 平滑约束（arXiv:2609.24552）：DeCap：上下半身分别�
 ## 为什么重要
 
 - 平滑奖励与速度跟踪竞争；统一全身约束致迟缓。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["上半身运动约束"]
+    N1["下半身运动约束"]
+    N2["有界屏障惩罚"]
+    N3["任务奖励"]
+    N4["约束 RL 训练"]
+    N5["平滑行走策略"]
+    N6["跨地形评测"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

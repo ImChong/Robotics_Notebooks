@@ -4,7 +4,7 @@ title: Claude-shaped science：适配 AI 能力的科研选题
 tags: [ai-auto-research, scientific-workflow, llm-agents, anthropic]
 status: complete
 summary: "Matthew Schwartz 的客座文章：选择适合代理执行和外部核验的问题，并由领域专家判断科学价值；BootLoops 是相关工具实践。"
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./bootloops.md
   - ../concepts/ai-auto-research.md
@@ -27,6 +27,26 @@ sources:
 ## 为什么重要
 
 文章提醒读者区分两个问题：结果是否算对，以及是否回答了领域真正关心的问题。工具可检验性不能替代选题品味。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["科研候选问题"]
+    N1["代理可执行的计算"]
+    N2["BootLoops 等工具"]
+    N3["结果核验"]
+    N4["领域专家判断"]
+    N5["调整问题或方法"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N0
+```
 
 ## 核心原理
 

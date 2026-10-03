@@ -5,7 +5,7 @@ tags:
   - humanoid
   - motion-generation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.22611"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,26 @@ summary: "HIGenNTO（arXiv:2609.22611）：优化预训练文本动作模型的�
 ## 为什么重要
 
 - 接触丰富交互难获稳定物理可执行参考。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["文本条件与初始噪声"]
+    N1["预训练动作生成器"]
+    N2["候选交互轨迹"]
+    N3["接触避碰支撑约束"]
+    N4["噪声空间优化"]
+    N5["可跟踪动作参考"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N4
+    N3 --> N4
+    N4 --> N0
+    N2 --> N5
+```
 
 ## 核心机制
 

@@ -6,7 +6,7 @@ tags:
   - long-horizon
   - llm-planner
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2608.16889"
 related:
   - ../methods/vla.md
@@ -35,6 +35,29 @@ summary: "BATON（arXiv:2608.16889）：冻结 VLA + LLM 规划 + 子任务探�
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["长程任务"]
+    N1["LLM 子任务规划"]
+    N2["子任务探索"]
+    N3["冻结 VLA 执行"]
+    N4["转移结果"]
+    N5["transition-aware 记忆"]
+    N6["后续子任务"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N1
+    N4 --> N6
+    N6 --> N2
+```
 
 ## 核心信息
 

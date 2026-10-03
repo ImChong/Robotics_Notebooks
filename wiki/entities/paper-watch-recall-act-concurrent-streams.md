@@ -6,7 +6,7 @@ tags:
   - manipulation
   - memory
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.28429"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,28 @@ summary: "Watch, Recall, Act（arXiv:2609.28429）：π0.5 上三轻量模块压
 ## 为什么重要
 
 - 真实家庭并发事件需长期记忆而非 reset benchmark。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["持续视觉流"]
+    N1["状态与历史动作"]
+    N2["轻量上下文模块"]
+    N3["可读记忆 context"]
+    N4["π0.5 动作预测"]
+    N5["异步执行"]
+    N6["新动作历史"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+```
 
 ## 核心机制
 

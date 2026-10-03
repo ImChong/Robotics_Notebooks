@@ -3,7 +3,7 @@ type: entity
 title: Eidon Tracker + POV 数据集
 tags: [dataset, egocentric, imu, data-collection, household, manipulation]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 summary: "Eidon 发布的第一视角家庭任务数据集，以 7-IMU 上肢追踪配对 POV 视频；主配对集 1,273.8 小时，另有纯视频集。"
 related:
   - ../tasks/teleoperation.md
@@ -45,6 +45,25 @@ sources:
 ## 采集系统
 
 Eidon Tracker 在胸部、上臂、前臂和手部布置 7 个 BNO085 9-DOF IMU。项目页标注 24 Hz 采样率、约 1–2° RMS、8–12 小时续航。配套 Eidon Glove 使用 Hall-effect 传感器与嵌入磁体追踪 16 个手指自由度，约 100 Hz BLE。官方公开了 [Tracker](https://github.com/Eidon-AI/eidon-tracker)、[Glove](https://github.com/Eidon-AI/eidon-glove) 和 [Eidon Sim](https://github.com/Eidon-AI/eidon-sim) 仓库，以及介绍完整系统的[白皮书](https://www.eidon.ai/api/whitepaper)。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["7-IMU 上肢记录"]
+    N1["POV 视频"]
+    N2["recording_id 与时间戳对齐"]
+    N3["人体姿态重建"]
+    N4["动作分段与重定向"]
+    N5["机器人学习数据"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 工程实践
 

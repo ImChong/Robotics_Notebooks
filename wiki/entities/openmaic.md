@@ -7,7 +7,7 @@ tags:
   - education
   - open-source
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 related:
   - ./openclaw.md
   - ./paperclip.md
@@ -36,6 +36,31 @@ summary: "OpenMAIC（THU-MAIC/OpenMAIC）是清华 MIT 开源的多智能体互�
 | PBL | Project-Based Learning | 项目式学习场景类型 |
 | TTS | Text-to-Speech | AI 角色语音讲解 |
 | ASR | Automatic Speech Recognition | 可选 FunASR 等本地语音识别 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["主题或材料"]
+    N1["Classic 一键生成"]
+    N2["Agent Workbench 规划"]
+    N3["LangGraph 编排"]
+    N4["课程内容"]
+    N5["AI 师生互动"]
+    N6["课堂反馈"]
+    N7["课件与 HTML 导出"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N2
+    N4 --> N7
+```
 
 ## 核心信息
 

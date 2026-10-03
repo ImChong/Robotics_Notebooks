@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bimanual-manipulation, mobile-manipulation, data-annotation]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.24059"
 related:
   - ../tasks/bimanual-manipulation.md
@@ -29,6 +29,26 @@ summary: "Automatic Labelling for Bimanual Mobile Manipulation 用运动信号�
 ## 为什么重要
 
 移动机器人可能一边靠近目标一边双臂调整。把全部行为压成一条互斥时间线会丢失并行动作和接触信息，损害后续数据检索与监督。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["底盘与双臂运动信号"]
+    N1["视觉序列"]
+    N2["运动边界分段"]
+    N3["动作与目标语义"]
+    N4["并行子系统时间线"]
+    N5["低置信度人工复核"]
+    N0 --> N2
+    N1 --> N3
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N2
+```
 
 ## 方法
 

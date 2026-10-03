@@ -5,7 +5,7 @@ tags:
   - humanoid
   - locomotion
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27003"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,27 @@ summary: "走秀表现型行走（arXiv:2609.27003）：单目视频→重定向
 ## 为什么重要
 
 - 常规定位稳定/速度，难复现窄步宽与姿态风格。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["单目走秀视频"]
+    N1["人体动作重建"]
+    N2["机器人重定向"]
+    N3["动作修正"]
+    N4["跟踪策略训练"]
+    N5["Booster K1 执行"]
+    N6["表现与稳定性评测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

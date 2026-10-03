@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, technology-map, duomo-space]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 related:
   - ../entities/paper-geo-vla.md
   - ../entities/paper-inference-time-attention-steering-vla-driving.md
@@ -42,6 +42,30 @@ summary: "多模空间策展：2026.08.17–08.23 一周 16 篇 VLA 论文按架
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | GRPO | Group Relative Policy Optimization | 组相对策略优化 |
 | TTC | Test-Time Computation | 测试时额外推理计算 |
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["本期 16 篇 VLA"]
+    N1["架构模块"]
+    N2["诊断与安全"]
+    N3["训练范式"]
+    N4["长程与医疗"]
+    N5["独立详情页"]
+    N6["部署条件核对"]
+    N0 --> N1
+    N0 --> N2
+    N0 --> N3
+    N0 --> N4
+    N1 --> N5
+    N2 --> N5
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 节点索引（16/16）
 

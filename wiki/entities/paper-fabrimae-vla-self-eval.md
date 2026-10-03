@@ -6,7 +6,7 @@ tags:
   - self-evaluation
   - manipulation
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2608.16697"
 related:
   - ../methods/vla.md
@@ -35,6 +35,26 @@ Markov 注意力熵自评；测试时多候选选更稳动作。
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["当前观测"]
+    N1["多个动作候选"]
+    N2["Markov 注意力熵"]
+    N3["自评排序"]
+    N4["选择动作"]
+    N5["执行与新观测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N0
+```
 
 ## 核心信息
 

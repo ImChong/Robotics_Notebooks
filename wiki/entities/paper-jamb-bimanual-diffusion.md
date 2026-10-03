@@ -6,7 +6,7 @@ tags:
   - diffusion
   - manipulation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.25322"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,27 @@ summary: "JAMB（arXiv:2609.25322）：同一 Transformer 联合去噪双臂 act
 ## 为什么重要
 
 - 双臂 action-only 扩散不显式预测场景如何被改变。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["观测条件"]
+    N1["带噪双臂动作"]
+    N2["带噪未来点轨迹"]
+    N3["联合 Transformer 去噪"]
+    N4["双臂动作输出"]
+    N5["未来 3D 点轨迹输出"]
+    N0 --> N3
+    N1 --> N3
+    N2 --> N3
+    N3 --> N1
+    N3 --> N2
+    N3 --> N4
+    N3 --> N5
+```
 
 ## 核心机制
 

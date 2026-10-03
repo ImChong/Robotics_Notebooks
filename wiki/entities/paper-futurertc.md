@@ -9,7 +9,7 @@ tags:
   - scu
   - uestc
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2607.24008"
 related:
   - ../methods/action-chunking.md
@@ -48,6 +48,33 @@ summary: "FutureRTC（arXiv:2607.24008，川大/UESTC/Alberta）：冻结 VLA �
 - **Oracle 实验定因：** 项目页报告若喂 **真执行时刻** \((o,s)\)，LIBERO 成功率随 delay 几乎平坦（~96.6% @ π₀.₅）——性能掉点主要来自 **条件输入陈旧**，而非异步本身。
 - **同时动视觉与状态：** [VLASH](https://arxiv.org/abs/2512.01031) 类方法只补 proprio；机械臂运动导致 **视野内容变化**，FutureRTC 在 **VLA 视觉 latent** 上预测。
 - **开销可控：** 约 +5.19M 参数、+3.04 ms（π₀.₅ 档），相对远程 VLA forward 仍小。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["过时观测与状态"]
+    N1["已提交动作"]
+    N2["SCM 状态校正"]
+    N3["OPM 视觉预测"]
+    N4["执行时刻上下文"]
+    N5["冻结 VLA"]
+    N6["新动作 chunk"]
+    N7["一致性训练"]
+    N0 --> N2
+    N1 --> N2
+    N0 --> N3
+    N1 --> N3
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+    N7 --> N2
+    N7 --> N3
+```
 
 ## 核心信息
 

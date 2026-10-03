@@ -7,7 +7,7 @@ tags:
   - retrieval
   - kaist
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 arxiv: "2608.17484"
 related:
   - ../methods/vla.md
@@ -36,6 +36,27 @@ summary: "Reuse Before You Retrieve（arXiv:2608.17484，KAIST）：诊断 headr
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["冻结策略 rollout"]
+    N1["可恢复余量"]
+    N2["外部动作先验"]
+    N3["检索互补性"]
+    N4["重试候选排序"]
+    N5["检索增强"]
+    N6["任务成功评测"]
+    N0 --> N1
+    N2 --> N3
+    N1 --> N4
+    N3 --> N5
+    N4 --> N6
+    N5 --> N6
+```
 
 ## 核心信息
 

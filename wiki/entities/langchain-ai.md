@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, langchain-ai, org, llm-agents, open-source]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 summary: "langchain-ai 是 LangChain 公司官方 GitHub 组织：维护 LangChain、LangGraph、Deep Agents 等 OSS 主线及大量集成外迁仓库。"
 related:
   - ./langchain.md
@@ -30,6 +30,26 @@ sources:
 | LG | LangGraph | 有状态编排仓 |
 | OSS | Open Source Software | 主线框架 MIT 开源 |
 | SaaS | Software as a Service | LangSmith 等为商业层 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["模型与工具集成"]
+    N1["LangChain"]
+    N2["LangGraph 状态编排"]
+    N3["Deep Agents"]
+    N4["Agent 执行"]
+    N5["LangSmith tracing 与评测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N2
+```
 
 ## 本知识库已入库主线
 

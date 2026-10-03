@@ -2,7 +2,7 @@
 type: entity
 tags: [vibe-coding, coding-agents, visualization, web, software-engineering]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 summary: "Astra Games 与 Awesome GPT-6 Astra 是同一社区目录的展示站和仓库，适合参考浏览器交互、AI 协作记录与验证方法；展示站及部分作品源码公开，不能作为机器人动力学或模型能力基准。"
 related:
   - ./easy-vibe.md
@@ -34,6 +34,28 @@ sources:
 机器人教学常需要“调一个参数，立刻看到影响”。本目录提供可操作的浏览器成品与创作记录，让维护者观察参数面板、状态反馈、暂停和导出如何组成完整体验。与 [Easy-Vibe](easy-vibe.md) 的系统教程互补：教程学习构建过程，作品集观察交付结果。
 
 对本库的价值主要在展示与工程方法。真实动力学、策略推理和训练应结合 [Robot Viewer](robot-viewer.md) 等机器人工具理解，不能从游戏画面的合理性推导物理精度。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["作者作品与记录"]
+    N1["README 目录"]
+    N2["API 缓存"]
+    N3["分类与搜索"]
+    N4["独立作品体验"]
+    N5["源码与许可核查"]
+    N6["缓存失败回退"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N2 --> N6
+    N6 --> N3
+```
 
 ## 核心原理：来源、展示与体验分层
 

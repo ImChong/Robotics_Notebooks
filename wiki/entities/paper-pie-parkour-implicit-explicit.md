@@ -30,6 +30,30 @@ summary: "PIE：将深度历史与本体历史用于隐式—显式状态估计�
 | PIE | Parkour with Implicit-Explicit Learning | 本文感知跑酷框架 |
 | RL | Reinforcement Learning | 强化学习 |
 
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["深度历史"]
+    N1["本体历史"]
+    N2["显式物理量估计"]
+    N3["隐式环境表示"]
+    N4["感知跑酷策略"]
+    N5["腿式动作"]
+    N6["反馈"]
+    N0 --> N2
+    N1 --> N2
+    N0 --> N3
+    N1 --> N3
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+```
+
 ## 方法要点
 
 - 输入包括深度观测与本体历史。

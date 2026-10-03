@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, task-planning, neuro-symbolic, mobile-manipulation, iros-2026]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2606.06877"
 related:
   - ../methods/trajectory-optimization.md
@@ -36,6 +36,29 @@ summary: "iFlax（arXiv:2606.06877，IROS 2026 ReS AI WS 最佳论文）：在�
 - 纳入 [IROS 2026 九篇获奖盘点](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)。
 - 论文报告：MazeNamo 上相对 prior SOTA **失败率 −80.04%**、**规划时间 −57.14%**。
 - **开源结论（2026-10-02）：待发布** — 无公开 `sair-lab/iflax` 代码仓。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["任务关系图"]
+    N1["物体重要性预测"]
+    N2["剪枝搜索空间"]
+    N3["PDDL 规划器"]
+    N4["3R 恢复"]
+    N5["规划反馈"]
+    N6["更新神经网络"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N3
+    N3 --> N5
+    N5 --> N6
+    N6 --> N1
+```
 
 ## 核心机制
 

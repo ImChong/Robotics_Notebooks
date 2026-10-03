@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ./mattpocock-skills.md
   - ./mattpocock-triage-skill.md
@@ -40,6 +40,27 @@ summary: "setup-matt-pocock-skills 是每个仓库一次性 bootstrap：配置 i
 
 - **本仓库 AGENTS.md：** Cloud Agent 已含 Cursor 专用说明；若在 **下游应用仓** 安装 mattpocock 技能，setup 决定写 **CLAUDE.md 还是 AGENTS.md**（与 [本站 AGENTS.md](../../AGENTS.md) 角色类似）。
 - **Robotics_Notebooks 本身：** 主维护流是 **issue/PR + ingest**；triage 技能更适 **产品应用仓**，但 setup 文档化 **tracker 约定** 仍有借鉴价值。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["仓库现状"]
+    N1["Tracker 约定"]
+    N2["Triage 标签"]
+    N3["领域词汇布局"]
+    N4["分段确认"]
+    N5["docs/agents 与 Agent skills"]
+    N0 --> N1
+    N0 --> N2
+    N0 --> N3
+    N1 --> N4
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 核心产出
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, contact-rich, representation-learning, rl, tactile, tu-darmstadt, iros-2026]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2511.14427"
 related:
   - ../methods/reinforcement-learning.md
@@ -37,6 +37,28 @@ summary: "MSDP（arXiv:2511.14427，IROS 2026 IARL WS 最佳学生论文）：�
 - 纳入 [IROS 2026 九篇获奖盘点](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)。
 - 文内：真机插入/推块等，**~6000** 次在线交互即可高成功率；对传感器噪声、光照、刚度、外力扰动做鲁棒性评测。
 - **开源结论（2026-10-02）：待发布** — 项目页 **Code (Coming Soon)**。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["视觉力觉与本体"]
+    N1["掩码与跨传感器预测"]
+    N2["统一表示预训练"]
+    N3["冻结编码器"]
+    N4["Actor 池化"]
+    N5["Critic cross-attention"]
+    N6["非对称 RL"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N4 --> N6
+    N5 --> N6
+```
 
 ## 核心机制
 

@@ -7,7 +7,7 @@ tags:
   - benchmark
   - manipulation
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 arxiv: "2608.17386"
 related:
   - ../methods/vla.md
@@ -36,6 +36,28 @@ summary: "MANIGUARD（arXiv:2608.17386）：规格化安全约束 + 监控 + 安
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["操作任务"]
+    N1["LTLf 安全规约"]
+    N2["VLA rollout"]
+    N3["物理谓词"]
+    N4["自动机监视器"]
+    N5["任务成功判据"]
+    N6["安全与成功联合报告"]
+    N0 --> N2
+    N1 --> N4
+    N2 --> N3
+    N3 --> N4
+    N2 --> N5
+    N4 --> N6
+    N5 --> N6
+```
 
 ## 核心信息
 

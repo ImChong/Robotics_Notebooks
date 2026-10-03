@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ./mattpocock-skills.md
   - ./mattpocock-grill-with-docs-skill.md
@@ -42,6 +42,26 @@ summary: "grill-me 是 mattpocock/skills 的对齐入口：slash 技能触发 pr
 - **对抗 vibe coding：** 与 [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 同向 — 先 **选对问题** 再让 agent 写码。
 - **ingest 场景：** 新论文/仓库入库前用 grill 澄清「要沉淀概念还是实体页、开源边界」可减少 wiki 返工。
 - **与 grill-with-docs：** 本技能 **不写 GLOSSARY/ADR**；需要 **共建领域语言** 时用 [grill-with-docs](mattpocock-grill-with-docs-skill.md)。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["设计问题"]
+    N1["grill-me 入口"]
+    N2["grilling 设计树"]
+    N3["frontier 追问"]
+    N4["共享理解检查"]
+    N5["完成对齐"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N3
+    N4 --> N5
+```
 
 ## 核心机制
 

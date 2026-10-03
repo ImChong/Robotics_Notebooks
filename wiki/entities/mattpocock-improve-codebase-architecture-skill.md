@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - refactoring
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ./mattpocock-skills.md
   - ./mattpocock-grill-me-skill.md
@@ -39,6 +39,26 @@ summary: "improve-codebase-architecture 扫描代码库 shallow module，输出 
 
 - **scripts/ 与 exports 链路：** 派生 JSON 不入库但 **生成脚本** 入库；长期 ingest 易堆 **浅工具函数** — 本技能适合 periodic **human+agent 架构 review**（非替代 `make lint`）。
 - **与 agentic SE 概念页：** [软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲 **按阶段换架构**；本 skill 是 **操作化扫描**。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["git 热区"]
+    N1["GLOSSARY 与 ADR"]
+    N2["架构扫描"]
+    N3["HTML 候选报告"]
+    N4["用户选中候选"]
+    N5["grilling 深化方案"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N2
+```
 
 ## 核心流程
 

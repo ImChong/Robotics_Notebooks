@@ -6,7 +6,7 @@ tags:
   - motion-tracking
   - teacher-student
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.25754"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,25 @@ summary: "PLAT（arXiv:2609.25754）：稠密动作专家→DAgger 学 latent �
 ## 为什么重要
 
 - 稠密逐帧跟踪无法作高层运动控制器。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["稠密动作专家"]
+    N1["DAgger 蒸馏"]
+    N2["潜在转移先验"]
+    N3["RL 残差修正"]
+    N4["稀疏关键帧与到达时间"]
+    N5["部署跟踪"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N5
+    N4 --> N5
+```
 
 ## 核心机制
 

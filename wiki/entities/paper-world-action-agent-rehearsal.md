@@ -6,7 +6,7 @@ tags:
   - manipulation
   - agent
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.29964"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,29 @@ summary: "World Action Agent（arXiv:2609.29964）：Visual action workspace；A
 ## 为什么重要
 
 - VLM 未在执行前观察动作后果。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["任务与观测"]
+    N1["Visual action workspace"]
+    N2["候选动作预演"]
+    N3["预览与修改"]
+    N4["执行动作"]
+    N5["in-view correction"]
+    N6["技能积累"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N1
+    N4 --> N6
+    N6 --> N2
+```
 
 ## 核心机制
 

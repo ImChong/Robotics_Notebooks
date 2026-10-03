@@ -6,7 +6,7 @@ tags:
   - manipulation
   - safety
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.26313"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,29 @@ summary: "SafeLoop（arXiv:2609.26313）：外部 risk predictor 预测碰撞/�
 ## 为什么重要
 
 - 长程 VLA 小误差累积成不可逆失败。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["VLA 候选动作"]
+    N1["外部风险预测"]
+    N2["noop 或执行"]
+    N3["安全状态记录"]
+    N4["风险触发 rollback"]
+    N5["回到安全关节态"]
+    N6["重新查询 VLA"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N1 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N0
+```
 
 ## 核心机制
 

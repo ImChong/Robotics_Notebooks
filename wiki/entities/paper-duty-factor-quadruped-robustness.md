@@ -5,7 +5,7 @@ tags:
   - quadruped
   - locomotion
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.22073"
 related:
   - ../tasks/locomotion.md
@@ -35,6 +35,27 @@ summary: "占空比预测鲁棒性（arXiv:2609.22073）：在 TO+LQR、学习�
 ## 为什么重要
 
 - 步态类别不足以解释受限环境稳定性。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["TO 与 LQR"]
+    N1["学习控制"]
+    N2["质心 MPC"]
+    N3["占空比测量"]
+    N4["窄梁与扰动测试"]
+    N5["稳定性对照"]
+    N6["地形宽度条件"]
+    N0 --> N3
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N6 --> N3
+```
 
 ## 核心机制
 

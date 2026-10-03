@@ -29,6 +29,26 @@ summary: "Locomotion-Grounded Humanoid Soccer（arXiv:2609.38852）：以通用�
 | RL | Reinforcement Learning | 强化学习 |
 | G1 | Unitree G1 | 人形机器人平台 |
 
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["命令条件行走"]
+    N1["重定向踢球技能"]
+    N2["任务门控训练"]
+    N3["共享可控运动状态"]
+    N4["多方向踢球与切换"]
+    N5["行走恢复"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N3
+```
+
 ## 方法要点
 
 - 以通用命令条件行走策略作为运动底座。

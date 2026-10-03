@@ -3,7 +3,7 @@ type: entity
 tags: [company, vla, manipulation, evaluation, physical-intelligence]
 title: PI Robot Olympics 微调演示
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 related:
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-pi-human-to-robot.md
@@ -35,6 +35,29 @@ Physical Intelligence 在 2025-12-22 的博客 [Moravec's Paradox and the Robot 
 ## 为什么重要
 
 Moravec 悖论在这里被说成数据问题：认知任务能从网上的解释里学，拿刀、擦锅学不到，因为人不会把这些动作写成文本。通才模型的用处是提供一块物理先验，使新任务不必从零开始堆数据。这篇不是新算法，它给出这条先验在外部任务单上的一次微调结果，并明确写出硬件做不到的项目。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["Robot Olympics 五项挑战"]
+    N1["π0.6 微调"]
+    N2["标准 VLM 对照"]
+    N3["任务执行"]
+    N4["成功率"]
+    N5["任务进度"]
+    N6["预训练作用对照"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N4 --> N6
+    N5 --> N6
+```
 
 ## 核心原理
 
