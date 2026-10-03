@@ -16,8 +16,11 @@ related:
   - ../entities/graphify.md
   - ../entities/understand-anything.md
   - ../overview/robot-learning-overview.md
+  - ../overview/karpathy-asd-ste100-llm-outputs.md
+  - ../concepts/asd-ste100.md
+  - ../entities/asd-ste100-skill.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-09-20
+updated: 2026-10-03
 ---
 
 # LLM Wiki
@@ -116,6 +119,10 @@ The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, cu
 This document is intentionally abstract. It describes the idea, not a specific implementation. The exact directory structure, the schema conventions, the page formats, the tooling — all of that will depend on your domain, your preferences, and your LLM of choice. Everything mentioned above is optional and modular — pick what's useful, ignore what isn't. For example: your sources might be text-only, so you don't need image handling at all. Your wiki might be small enough that the index file is all you need, no search engine required. You might not care about slide decks and just want markdown pages. You might want a completely different set of output formats. The right way to use this is to share it with your LLM agent and work together to instantiate a version that fits your needs. The document's only job is to communicate the pattern. Your LLM can figure out the rest.
 
 ## 关联页面
+
+- [ASD-STE100 与 LLM 输出可理解性](../overview/karpathy-asd-ste100-llm-outputs.md) — 受控语言原则与按任务选择图示、交互页面和视频
+- [ASD-STE100 概念页](../concepts/asd-ste100.md) — 技术英语规范及用于 LLM 的边界
+- [ASD-STE100 Skill](../entities/asd-ste100-skill.md) — 公开的 Claude Code 实现与结构检查器
 
 - [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者与 Tesla / CS231n / Zero to Hero 背景
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
