@@ -666,6 +666,7 @@
 - [KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）](wiki/entities/kinetiq-ascend.md) — KinetIQ Ascend** 是 **Humanoid**（thehumanoid.ai）在 **KinetIQ** AI 框架上发布的  `📅unknown` `[entity_page]`
 - [Kinova Gen3](wiki/entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
 - [KITTI Stereo Benchmark](wiki/entities/kitti-stereo-benchmark.md) — KITTI** 立体评测（2012 / `📅unknown` `[entity_page]`
+- [KUAVO-VLA-1.0](wiki/entities/kuavo-vla-1.md) — KUAVO-VLA-1.0** 是乐聚面向 Kuavo 人形机器人与工业操作场景发布的垂域视觉-语言-动作模型，目标是把任务指令、视觉观察和机器人动作策略连接起来。 `📅unknown` `[entity_page]`
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [Lambda Cloud](wiki/entities/lambda-cloud.md) — Lambda Cloud**（lambda.ai）是 **AI 专用 GPU 云**，以 **Lambda Stack `📅unknown` `[entity_page]`
