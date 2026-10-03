@@ -1,3 +1,9 @@
+## [2026-10-03] ingest | embodied-manipulation-benchmarks | 仿真操作评测基准
+
+- **意图：** 整理 LIBERO-Plus / PRO、RoboTwin 2.0、RoboCasa365、BEHAVIOR Challenge 与 RoboLab。
+- **开源核查：** 新增项目补入官方代码/项目页和数据入口；RoboCasa365、RoboLab 复用现有归档。
+- **关键页：** 更新 LIBERO 实体页与具身评测选型总览，增加项目 sources 归档。
+
 ## [2026-10-03] ingest | π₀.₅ 官方项目页与 openpi 源码
 
 - 为既有 π₀.₅ 论文详情补充官方项目页、PDF、代码仓来源，归档 openpi 的公开 checkpoint、推理/微调入口与开源边界。
