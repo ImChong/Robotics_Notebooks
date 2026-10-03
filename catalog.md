@@ -1464,6 +1464,7 @@
 - [DexMachina（arXiv:2505.24853）](wiki/entities/paper-dexmachina.md) — DexMachina**（Mandi Zhao, Yifan Hou, Dieter Fox, Yashraj Narang, Ajay Mandlekar, Shuran Song；Stanfo `📅unknown` `[entity_page]`
 - [DexMV：Imitation Learning for Dexterous Manipulation from Human Videos](wiki/entities/paper-dexmv.md) — DexMV** 将人手操作视频转成机器人灵巧手示范，让操作策略先学会有意义的抓取与操作过程，再用任务奖励改进。 `📅unknown` `[entity_page]`
 - [Dexora（arXiv:2605.18722）](wiki/entities/paper-dexora.md) — Dexora**（*Dexora: Open-source VLA for High-DoF Bimanual Dexterity*，[arXiv:2605.18722](https://arxi `📅unknown` `[entity_page]`
+- [DexRoam：从第一视角全身示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam 将无需外部追踪器的人类全身示教映射到机器人动作空间，再与机器人示教联合学习移动双臂灵巧操作策略。 `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
 - [DF-ExpEnse（arXiv:2606.19656）](wiki/entities/paper-df-expense.md) — DF-ExpEnse**（Calvin Luo, Chen Sun, Shuran Song；Stanford University; Brown University；[arXiv:2606.1 `📅unknown` `[entity_page]`
 - [DIAL](wiki/entities/paper-dial-latent-world-vla.md) — DIAL**（*Decoupling Intent and Action via Latent World Modeling for End-to-End VLA*，Chen et al.，[ar `📅unknown` `[entity_page]`
