@@ -1,3 +1,8 @@
+## [2026-10-03] ingest | λ₀ / HumanVerse-500
+
+- 归档 arXiv:2610.00438，并新增独立论文实体页。
+- 记录 HumanVerse-500、三阶段训练、仿真与真机结果；当前代码、模型和数据入口待发布。
+
 ## [2026-10-03] ingest | embodied-manipulation-benchmarks | 仿真操作评测基准
 
 - **意图：** 整理 LIBERO-Plus / PRO、RoboTwin 2.0、RoboCasa365、BEHAVIOR Challenge 与 RoboLab。

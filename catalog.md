@@ -1862,6 +1862,7 @@
 - [KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）](wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — KungFuAthleteBot**（*A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challeng `📅unknown` `[entity_page]`
 - [LAC：人形全身线角柔顺](wiki/entities/paper-lac.md) — LAC**（*Linear and Angular Compliance for Humanoid Whole-body Control*，[arXiv:2608.25405](https://a `📅unknown` `[entity_page]`
 - [LadderMan：人形感知梯子攀爬与梯上操作](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — LadderMan**（*Learning Humanoid Perceptive Ladder Climbing*，Amazon FAR 等，arXiv:[2606.05873](https:/ `📅unknown` `[entity_page]`
+- [λ₀ / HumanVerse-500](wiki/entities/paper-lambda0-egocentric-human-pretraining.md) — λ₀**（*Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pret `📅unknown` `[entity_page]`
 - [LAMDA：把 VLM 语言原型蒸馏进车端标志识别](wiki/entities/paper-lamda-tsr.md) — LAMDA**（*Language-Anchored Model for Direction Alignment*；[arXiv:2608.08815](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [Language-Driven Quality-Diversity（语言驱动 QD 技能档案）](wiki/entities/paper-language-driven-robotic-qd.md) — Language-Driven QD**（*Autonomously Acquiring Robot Manipulation Skills with Language-Driven Qualit `📅unknown` `[entity_page]`
 - [Language-Tactile：语言引导跨传感器材料识别](wiki/entities/paper-language-guided-tactile.md) — Language-Tactile**（arXiv:2609.14783，[代码](https://github.com/Ma `📅unknown` `[entity_page]`
