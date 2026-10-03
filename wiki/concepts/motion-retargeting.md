@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-30
+updated: 2026-10-02
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -175,6 +175,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3. 接触保真度（Contact Consistency）
 - 重定向时需要保留"哪只脚在地面"的接触相位
 - 否则物理仿真下机器人会穿地或飞起
+- 人–物交互还需保留手与物体的接触：[OTRetarget](../entities/paper-otretarget.md) 用表面 proximity triple + 熵正则 OT 建立人体部位–机器人连杆对应，再联合求解机器人关节与物体位姿，使物体轨迹适配目标机器人身材（OMOMO 上交互 Jaccard 87%，OmniRetarget 28%）
 
 ### 4. 关节限制满足
 人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化
@@ -237,6 +238,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用
 - Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型
 - Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向
+- **ingest 档案：** [sources/papers/otretarget_arxiv_2609_36602.md](../../sources/papers/otretarget_arxiv_2609_36602.md) — OTRetarget：OT 表面对应 + 机器人/物体联合 IK（代码待发布）
 - **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：interaction mesh 交互保留重定向（PHP 等下游的上游）；配套 [holosoma 代码](../../sources/repos/holosoma.md)、[HF 数据集](../../sources/sites/omniretarget-dataset-huggingface.md)
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）

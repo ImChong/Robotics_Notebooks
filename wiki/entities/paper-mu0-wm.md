@@ -71,6 +71,15 @@ sequenceDiagram
 - 2D/3D trace 预测对比 **trace 专用模型与 tokenized VLM** 等基线（论文表格）。
 - 下游：**trace-conditioned policy** vs **action-pretrained VLA**。
 
+## 与其他工作对比
+
+| 路线 | 预测/监督目标 | 与 μ₀ 差异 |
+|------|---------------|------------|
+| **像素 [生成式世界模型](../methods/generative-world-models.md)** | 稠密未来帧 | μ₀ 只预测关键交互点 3D 轨迹，目标更紧凑、与具身无关 |
+| **action-labeled [VLA](../methods/vla.md)**（如 [π₀](./paper-pi0.md)） | 具身动作 | 需动作标注数据；μ₀ action-free 预训练，论文主张下游可与之竞争 |
+| **trace 专用模型 / tokenized VLM** | 2D/3D trace | 论文表格中的 trace 预测基线 |
+| **[HumanEgo](./paper-sa-2605-24934-humanego-zero-shot-robot-learning-from-minutes-o.md)**（同盘点） | 人类 ego 视频 → 直接策略 | μ₀ 走轨迹 WM → 动作专家再接地 |
+
 ## 结论
 
 **μ₀ 把 world model 目标从像素换成 3D 轨迹，是跨具身数据缩放的一条中间路线** — TraceExtract 质量决定上限。

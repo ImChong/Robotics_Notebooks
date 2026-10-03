@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, spatial-intelligence, memory-agent, frozen-vlm, procedure-memory]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-02
 arxiv: "2608.12743"
 related:
   - ../methods/vla.md
@@ -92,7 +92,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-相对后训练 spatial VLM：本文 **零参数更新**。相对外部 3D 工具链：本文 **推理时不调深度/重建专家**。
+相对后训练 spatial VLM：本文 **零参数更新**。相对外部 3D 工具链：本文 **推理时不调深度/重建专家**。相对 [LT-Mem](./paper-lt-mem.md)：LT-Mem 依赖多会话 SLAM + 实例分割维护对象级 3D 跨会话记忆，评测用其公开的 LT-VQA 数据集（方法代码 TBD）；本文面向单次推理的空间问答，不处理跨会话身份与环境变化。
 
 ## 关联页面
 

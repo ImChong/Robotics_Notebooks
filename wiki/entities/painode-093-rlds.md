@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, dataset]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-02
 code: https://github.com/google-research/rlds
 summary: "Standardized format and tooling for logged trajectories used across robot-learning datasets."
 related:
@@ -65,6 +65,7 @@ Standardized format and tooling for logged trajectories used across robot-learni
 | 代码/仓库 | <https://github.com/google-research/rlds> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 数据模态 | **格式层不限定模态**：episode/step 结构可承载图像、本体状态、动作、语言等任意观测字段，具体模态由装入的数据集决定（据官方简介，以官方文档 / 数据卡为准） |
 | 重定向就绪度 | **不适用（格式层）**：RLDS 是 episode 存储格式与工具链规范本身，重定向就绪度取决于装入其中的具体数据集，不由格式决定（据清单与官方简介判断，以官方文档 / 数据卡为准） |
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。

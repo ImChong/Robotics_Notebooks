@@ -66,6 +66,7 @@ summary: "PhyVisGen 联合软夹爪接触仿真和路径追踪视觉渲染，从
 
 - [操作](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

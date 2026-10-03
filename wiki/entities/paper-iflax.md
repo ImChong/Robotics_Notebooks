@@ -54,6 +54,14 @@ summary: "iFlax（arXiv:2606.06877，IROS 2026 ReS AI WS 最佳论文）：在�
 - 基准：MazeNamo、SokoMindPlus、LogisticsPlus 等。
 - 真机/仿真：**Spot 移动操作** 长时程 MazeNamo 执行。
 
+## 与其他工作对比
+
+| 路线 | 剪枝/规划方式 | 与 iFlax 差异 |
+|------|---------------|---------------|
+| **纯符号 PDDL 规划** | 全空间搜索 | 物体多、约束多时搜索空间爆炸；iFlax 先学重要性再剪枝 |
+| **Flax（离线训练剪枝器）** | 离线全空间标签训练神经剪枝 | 存在 train–test 搜索空间不一致（exposure bias）；iFlax 在 MazeNamo 上报告失败率 **−80.04%**、规划时间 **−57.14%** |
+| **[VAP-TAMP](./paper-vap-tamp.md)**（同盘点） | 执行期 VLM 验证 + 重规划 | VAP-TAMP 处理执行意外；iFlax 处理离散搜索空间，可互补 |
+
 ## 结论
 
 **iFlax 代表 neuro-symbolic 规划从「静态剪枝器」走向「规划反馈闭环训练」** — 3R 是稳定 imperative learning 的关键工程件。

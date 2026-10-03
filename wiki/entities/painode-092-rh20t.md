@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, dataset]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-02
 summary: "Robot manipulation dataset with paired human demonstrations for one-shot learning research."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -62,6 +62,7 @@ Robot manipulation dataset with paired human demonstrations for one-shot learnin
 | 官方入口 | <https://rh20t.github.io/> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
 | 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 数据模态 | **多视角 RGB-D、力/力矩、音频、本体关节状态** + 配对人类演示视频与语言描述（据官方简介，以官方文档 / 数据卡为准） |
 | 重定向就绪度 | **需适配**：真机操作轨迹与配对人类演示并存，同构机型可直接训练；配对的人类演示一侧与跨机型使用均须先重定向（据清单与官方简介判断，以官方文档 / 数据卡为准） |
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
