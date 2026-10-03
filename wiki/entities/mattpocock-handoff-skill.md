@@ -7,7 +7,7 @@ tags:
   - productivity
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ./mattpocock-skills.md
   - ./humanlayer-skills.md
@@ -39,6 +39,27 @@ summary: "handoff 把当前会话压缩为 OS 临时目录下的交接文档，�
 
 - **Cloud Agent 多轮：** Cursor Cloud 任务常 **换 run 续作**；handoff 与 [HumanLayer Skills](humanlayer-skills.md) 的 **持久 loop** 互补 — 前者 **adhoc 会话**，后者 **定时 PR 维护**。
 - **Wiki 维护：** 长 ingest 后 handoff 应指向 **`make ci-preflight` 状态、分支名、待测 page-id**，而非粘贴整篇 wiki diff。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["当前进度"]
+    N1["已有 spec 与 commit"]
+    N2["摘要与路径引用"]
+    N3["脱敏"]
+    N4["临时交接文档"]
+    N5["新会话读取"]
+    N6["按建议技能续作"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心规则
 

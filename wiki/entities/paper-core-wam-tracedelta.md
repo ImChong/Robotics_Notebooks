@@ -5,7 +5,7 @@ tags:
   - wam
   - manipulation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27314"
 related:
   - ../tasks/manipulation.md
@@ -36,6 +36,28 @@ summary: "CoRe-WAM（arXiv:2609.27314）：TraceDelta：tracking 对齐历史特
 ## 为什么重要
 
 - 相机/物体运动使同像素比较失效。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["历史视觉特征"]
+    N1["当前视觉特征"]
+    N2["tracking 对应对齐"]
+    N3["带符号特征差"]
+    N4["TraceDelta adapter"]
+    N5["冻结 Motus WAM"]
+    N6["动作预测"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N1 --> N5
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

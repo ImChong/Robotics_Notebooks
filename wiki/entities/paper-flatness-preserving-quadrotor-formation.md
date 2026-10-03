@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, aerial, multi-robot, control, system-identification, iros-2026, upenn]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2607.12275"
 related:
   - ../methods/reinforcement-learning.md
@@ -36,6 +36,28 @@ summary: "Flatness-Preserving Residual Learning（arXiv:2607.12275，IROS 2026 �
 - 纳入 [IROS 2026 九篇获奖盘点](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)：**传统控制 + 学习残差** 在 **IROS 主会最佳学生论文** 线获胜。
 - 文内/摘要：**~28 s** 飞行数据、**5 ms** 控制周期、平均误差 **−31%** vs 标称；算力约为 NMPC **一个数量级** 更低。
 - **开源结论（2026-10-02）：待发布** — 无官方 GitHub。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["ROM 下洗先验"]
+    N1["位置与速度"]
+    N2["受限残差网络"]
+    N3["保平坦性动力学"]
+    N4["扰动前馈"]
+    N5["线性反馈"]
+    N6["编队控制"]
+    N0 --> N3
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N6
+    N1 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

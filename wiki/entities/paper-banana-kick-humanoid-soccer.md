@@ -6,7 +6,7 @@ tags:
   - soccer
   - rl
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27269"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,26 @@ summary: "Banana Kick（arXiv:2609.27269）：RISE：按物理响应排序候选
 ## 为什么重要
 
 - 旋转奖励在普通射门策略附近梯度弱。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["普通射门技能"]
+    N1["候选目标变化"]
+    N2["物理响应评估"]
+    N3["RISE 排序"]
+    N4["逐步技能演化"]
+    N5["旋转球接触技能"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N1
+    N4 --> N5
+```
 
 ## 核心机制
 

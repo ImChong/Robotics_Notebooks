@@ -7,7 +7,7 @@ tags:
   - depth
   - sim2real
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.25450"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -38,6 +38,27 @@ summary: "REDACT（arXiv:2609.25450）：Teacher–Student + 特征遮蔽 + 共�
 ## 为什么重要
 
 - 真机深度常遇训练未覆盖的损坏；单纯数据增强无法覆盖未知 corruption。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["干净仿真深度"]
+    N1["特权 Teacher"]
+    N2["学生特征遮蔽"]
+    N3["Teacher-Student 蒸馏"]
+    N4["共识门控"]
+    N5["鲁棒行走策略"]
+    N6["未知视觉损坏评测"]
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

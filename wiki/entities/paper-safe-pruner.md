@@ -7,7 +7,7 @@ tags:
   - token-pruning
   - tsinghua
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2605.29662"
 related:
   - ../methods/vla.md
@@ -36,6 +36,28 @@ future-aware token 剪枝，近 2× 加速。
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["视觉 token"]
+    N1["语义注意力一致性"]
+    N2["预测深层显著性"]
+    N3["冗余 token 剪枝"]
+    N4["VLA 动作输出"]
+    N5["注意力转移检查"]
+    N6["刷新参考时间步"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+```
 
 ## 核心信息
 

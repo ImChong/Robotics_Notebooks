@@ -6,7 +6,7 @@ tags:
   - grasping
   - manipulation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27695"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,25 @@ summary: "GLoTouch（arXiv:2609.27695）：全局探针搜索+局部 visuotactil
 ## 为什么重要
 
 - 平行夹爪触觉范围小，难同时搜索与识别。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["全局探针搜索"]
+    N1["接触区域"]
+    N2["局部 visuotactile 感知"]
+    N3["物体 3D 模型"]
+    N4["模型匹配"]
+    N5["识别与抓取"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 核心机制
 

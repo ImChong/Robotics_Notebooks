@@ -31,6 +31,29 @@ summary: "danyuchn/asd-ste100-skill 将 ASD-STE100 原则封装为 Claude Code S
 | LLM | Large Language Model | 按技能要求分析并改写英文文本的模型 |
 | MIT | MIT License | 仓库采用的开源许可证名称 |
 
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["英文原文"]
+    N1["Strict 模式"]
+    N2["STE-flavored 模式"]
+    N3["保留事实的改写"]
+    N4["结构检查"]
+    N5["语义复核"]
+    N6["交付文本"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N5 --> N3
+```
+
 ## 核心结构与用法
 
 仓库提供两个模式：

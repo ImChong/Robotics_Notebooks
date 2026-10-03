@@ -2,7 +2,7 @@
 type: overview
 tags: [microduck, onnx, ppo, wandb, tutorial, wechat-curator, export]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./zhixing-microduck-primer-part3a-cloud-gpu-ppo-training.md
   - ./zhixing-microduck-primer-part4-rust-runtime-onnx.md
@@ -33,6 +33,30 @@ summary: "智践行专辑第③（下）：wandb 读懂 PPO 惩罚符号与课�
 
 - 手写 ONNX 导出会 **漏观测归一化**，viewer 仍「能走」，真机/Rust 才暴雷。
 - 日志符号错误时策略会 **刷惩罚项**；见 AGENTS「Episode_Reward ≤ 0」铁律。
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["wandb 训练日志"]
+    N1["奖励与课程核对"]
+    N2["checkpoint"]
+    N3["scripts/export.py"]
+    N4["含归一化 ONNX"]
+    N5["infer_policy.py"]
+    N6["观测与动作 CSV"]
+    N7["Rust 对齐检查"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N3
+```
 
 ## 核心原理
 

@@ -6,7 +6,7 @@ tags:
   - locomotion
   - neuroscience
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27001"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,29 @@ summary: "果蝇启发 RNN 控制器（arXiv:2609.27001）：3609 连续神经�
 ## 为什么重要
 
 - 生物启发控制器机制难分析。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["本体与指令"]
+    N1["循环神经状态"]
+    N2["果蝇启发 RNN"]
+    N3["G1 仿真动作"]
+    N4["状态反馈"]
+    N5["重置与路径替换"]
+    N6["行为来源分析"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N0
+    N2 --> N1
+    N5 --> N2
+    N3 --> N6
+```
 
 ## 核心机制
 

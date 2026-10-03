@@ -2,7 +2,7 @@
 type: entity
 tags: [software, independent-maintainer, frontend, react, web-animation, visualization, source-available]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./gsap-skills.md
   - ./threejs-game-skills.md
@@ -31,6 +31,28 @@ summary: "React Bits 是按需复制/安装的 React 动效组件集合，提供
 ## 为什么重要
 
 机器人作品集、实验 demo 和项目主页需要清晰呈现成果。React Bits 提供现成的标题动画、交互卡片与背景，减少展示界面从零设计的工作。其价值在展示层：动作、轨迹和实验数据仍由机器人程序及可视化工具产生。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["JS 或 TS 与样式变体"]
+    N1["安装或复制源码"]
+    N2["props 配置"]
+    N3["React 渲染"]
+    N4["视口触发"]
+    N5["motion 动画"]
+    N6["依赖与性能检查"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N2
+```
 
 ## 核心原理
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [software, independent-maintainer, visualization, debugging, telemetry, embedded, serial, can, mqtt]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./plotjuggler.md
   - ./foxglove-studio.md
@@ -29,6 +29,27 @@ summary: "Serial Studio 把硬件遥测转成实时仪表盘；适合串口电�
 | DBC | Database CAN | 定义 CAN 报文与信号的数据库格式 |
 | FFT | Fast Fourier Transform | 观察信号频谱的变换 |
 | GPL | GNU General Public License | 核心源码采用的开源许可 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["硬件字节流"]
+    N1["接入与切帧"]
+    N2["JS 或 Lua 解析"]
+    N3["字段标定与滤波"]
+    N4["实时仪表盘"]
+    N5["CSV 记录"]
+    N6["离线复盘"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N5 --> N6
+```
 
 ## 核心信息
 

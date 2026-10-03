@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, llm-agents, observability, evals, langsmith, commercial-saas]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 summary: "LangSmith 是 LangChain 公司的 agent 评测、tracing、调试与部署平台（smith.langchain.com）；OSS 框架可独立运行，生产可观测常选用此商业层。"
 related:
   - ./langchain.md
@@ -37,6 +37,26 @@ sources:
 - **与 LangGraph 成对出现：** LangGraph README 将 **debugging / deployment** 指向 LangSmith；读 LangGraph 工程实践时必须分清 **开源图运行时** vs **付费观测/托管**。
 - **机器人/agent 运维：** 长时 tool-calling、RAG 链路需要 **latency、失败步骤、检索 hit** 的可视化；LangSmith 是官方一体化选项，亦可自建 OTel。
 - **研究/Auto-Research 侧：** 与 [AI Auto-Research](../concepts/ai-auto-research.md) 中的 **评测与可复现** 需求同轴，但是 **产品化 SaaS** 而非论文基准。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["Agent 执行"]
+    N1["Tracing 轨迹"]
+    N2["数据集与评分器"]
+    N3["Evals 回归对比"]
+    N4["调试与修订"]
+    N5["Deployment"]
+    N0 --> N1
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N0
+    N4 --> N5
+```
 
 ## 核心结构
 

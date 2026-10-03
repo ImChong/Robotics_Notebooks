@@ -30,6 +30,30 @@ summary: "DreamWaQ（ICRA 2023）：由本体历史估计机身速度和隐式�
 | CENet | Context Estimation Network | 由本体历史估计速度和环境表示 |
 | RL | Reinforcement Learning | 强化学习 |
 
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["本体历史"]
+    N1["机身速度估计"]
+    N2["隐式地形上下文"]
+    N3["行走策略"]
+    N4["关节动作"]
+    N5["机器人反馈"]
+    N6["联合训练监督"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N0
+    N6 --> N1
+    N6 --> N2
+```
+
 ## 方法要点
 
 - **历史编码：** Context Estimation Network（CENet）处理本体历史，预测机身线速度并学习隐式环境表示。

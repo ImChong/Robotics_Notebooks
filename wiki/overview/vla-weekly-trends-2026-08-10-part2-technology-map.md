@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, technology-map, duomo-space]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 related:
   - ../entities/paper-galaxea-g05.md
   - ../entities/paper-stellavla-structured-icl-vla.md
@@ -43,6 +43,30 @@ summary: "多模空间 2026-10-01 策展：2026.08.10–08.16 一周 VLA 第二�
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | RL | Reinforcement Learning | 强化学习 |
 | 3DGS | 3D Gaussian Splatting | 三维高斯溅射场景表示 |
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["本期 15 篇 VLA"]
+    N1["架构与对齐"]
+    N2["训练与效率"]
+    N3["记忆与空间"]
+    N4["智驾与安全"]
+    N5["独立详情页"]
+    N6["按目标深入"]
+    N0 --> N1
+    N0 --> N2
+    N0 --> N3
+    N0 --> N4
+    N1 --> N5
+    N2 --> N5
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 节点索引（15/15）
 

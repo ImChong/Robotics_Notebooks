@@ -6,7 +6,7 @@ tags:
   - loco-manipulation
   - rl
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.25486"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,30 @@ summary: "Brace Yourself（arXiv:2609.25486）：Supporting Hand Strategy：任�
 ## 为什么重要
 
 - 单脚支撑限制最大操作力。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["任务与环境"]
+    N1["任务手策略"]
+    N2["支撑手策略"]
+    N3["操作目标"]
+    N4["环境支撑接触"]
+    N5["全身协调执行"]
+    N6["状态反馈"]
+    N0 --> N1
+    N0 --> N2
+    N1 --> N3
+    N2 --> N4
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+    N6 --> N2
+```
 
 ## 核心机制
 

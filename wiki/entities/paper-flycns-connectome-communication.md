@@ -6,7 +6,7 @@ tags:
   - rl
   - communication
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.28816"
 related:
   - ../tasks/locomotion.md
@@ -36,6 +36,28 @@ summary: "FlyCNS（arXiv:2609.28816）：果蝇连接组启发局部模块+上�
 ## 为什么重要
 
 - 分布式腿控不能把所有传感持续传到中央。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["局部运动模块"]
+    N1["上下行通信路径"]
+    N2["RL 学习信息内容"]
+    N3["RL 学习发送时机"]
+    N4["协调控制"]
+    N5["跟踪与通信量评测"]
+    N0 --> N1
+    N1 --> N2
+    N1 --> N3
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+    N5 --> N2
+    N5 --> N3
+```
 
 ## 核心机制
 

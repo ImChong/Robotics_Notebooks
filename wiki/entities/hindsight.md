@@ -7,7 +7,7 @@ tags:
   - open-source
   - mcp
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 related:
   - ./ecc.md
   - ./hermes-agent.md
@@ -37,6 +37,29 @@ summary: "Hindsight（vectorize-io/hindsight）是 MIT 开源的 Agent 记忆系
 | MCP | Model Context Protocol | 官方 MCP Server 集成路径 |
 | API | Application Programming Interface | 自托管默认 8888；UI 9999 |
 | LLM | Large Language Model | wrapper 可两行接入现有 Agent |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["新经验"]
+    N1["retain"]
+    N2["Memory bank"]
+    N3["任务查询"]
+    N4["recall"]
+    N5["Agent 执行"]
+    N6["reflect 与归纳"]
+    N0 --> N1
+    N1 --> N2
+    N3 --> N4
+    N2 --> N4
+    N4 --> N5
+    N5 --> N0
+    N2 --> N6
+    N6 --> N2
+```
 
 ## 核心信息
 

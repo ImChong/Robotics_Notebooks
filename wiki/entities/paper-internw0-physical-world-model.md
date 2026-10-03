@@ -5,7 +5,7 @@ tags:
   - wam
   - manipulation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.27656"
 related:
   - ../tasks/manipulation.md
@@ -36,6 +36,29 @@ summary: "InternW0（arXiv:2609.27656）：非对称 Video Expert 低频预测 +
 ## 为什么重要
 
 - WAM 每步重生成未来视频难实时。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["当前视觉上下文"]
+    N1["低频 Video Expert"]
+    N2["layer-wise KV 缓存"]
+    N3["context routing 修正"]
+    N4["高频 Action Expert"]
+    N5["机器人执行"]
+    N6["新观测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N0 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N0
+```
 
 ## 核心机制
 

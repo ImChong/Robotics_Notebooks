@@ -7,7 +7,7 @@ tags:
   - geometry
   - map-semantics
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 arxiv: "2608.21440"
 related:
   - ../methods/vla.md
@@ -36,6 +36,27 @@ summary: "Geo-VLA（arXiv:2608.21440，北科大）：训练期内化道路几�
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["道路几何"]
+    N1["地图语义"]
+    N2["训练期辅助监督"]
+    N3["VLA 骨干"]
+    N4["单相机推理"]
+    N5["动作头"]
+    N6["驾驶轨迹"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N4 --> N3
+    N3 --> N5
+    N5 --> N6
+```
 
 ## 核心信息
 

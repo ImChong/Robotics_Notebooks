@@ -2,7 +2,7 @@
 type: overview
 tags: [microduck, ppo, mjlab, cloud-gpu, tutorial, wechat-curator, uv]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./zhixing-microduck-primer-part3b-ppo-logs-onnx-export.md
   - ./zhixing-microduck-primer-part2-play-without-code.md
@@ -34,6 +34,31 @@ summary: "智践行专辑第③（上）：在魔搭等云 GPU 上 uv sync + smo
 
 - 把 **环境错误** 压在 smoke（64 env × 5 iter）阶段，避免云端长跑空烧。
 - 与 [BAM](../entities/bam-better-actuator-models.md) + DR 绑定的任务_cfg 一并生效，勿在 smoke 通过前改奖励。
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["云端 CUDA 环境"]
+    N1["uv sync"]
+    N2["64 env smoke"]
+    N3["环境与配置检查"]
+    N4["4096 env 长跑"]
+    N5["mjlab 与 BAM 仿真"]
+    N6["PPO 更新"]
+    N7["wandb 与 checkpoint"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N1
+    N4 --> N5
+    N5 --> N6
+    N6 --> N5
+    N6 --> N7
+```
 
 ## 核心原理
 

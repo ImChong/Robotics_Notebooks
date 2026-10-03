@@ -2,7 +2,7 @@
 type: overview
 tags: [microduck, pollen-robotics, tutorial, wechat-curator, sim2real, open-source]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ./zhixing-microduck-primer-album-technology-map.md
   - ./zhixing-microduck-primer-part2-play-without-code.md
@@ -36,6 +36,30 @@ summary: "智践行专辑第①篇：零硬件建立 Microduck 两仓分工（mi
 
 - 把 **商品机** 与 **开源软件** 拆开：学习 sim2real 不依赖预售到货。
 - 与 [Open Duck Mini](../entities/open-duck-mini.md) 的 DIY 路线对照：Microduck 强调 **fork 官方训练+Runtime 合同**。
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["microduck_rl 仿真训练"]
+    N1["checkpoint"]
+    N2["export.py 与归一化"]
+    N3["ONNX 策略"]
+    N4["61 维观测"]
+    N5["Rust Policy::load"]
+    N6["14 维动作"]
+    N7["50 Hz robotd"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+    N6 --> N7
+    N7 --> N4
+```
 
 ## 核心原理
 

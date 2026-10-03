@@ -7,7 +7,7 @@ tags:
   - mobile-manipulation
   - navigation
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 arxiv: "2608.10756"
 related:
   - ../methods/vla.md
@@ -40,6 +40,29 @@ summary: "Embodied MM Grounding（3DGS）（arXiv:2608.10756）：多角度更�
 - 移动操作需语言–视觉–3D–可行性统一；单视角 VLA 易定位错误。
 - 策展机构：香港科技大学（广州）；美的集团；香港科技大学
 - 开源结论：**待核实**（步骤 2.5，2026-10-01）。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["多视角观测"]
+    N1["语义三维高斯地图"]
+    N2["开放词汇定位"]
+    N3["避障与站位选择"]
+    N4["动作模型"]
+    N5["移动操作执行"]
+    N6["新视角"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N1 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N1
+```
 
 ## 核心机制
 

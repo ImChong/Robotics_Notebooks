@@ -5,7 +5,7 @@ tags:
   - sim2real
   - locomotion
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.28878"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,27 @@ summary: "在线闭环 Sim2Real（arXiv:2609.28878）：把机器人+已部署�
 ## 为什么重要
 
 - 迁移后残余动力学致持续跟踪偏差。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["期望指令"]
+    N1["参考适配器"]
+    N2["冻结策略与机器人"]
+    N3["实际响应"]
+    N4["闭环系统辨识"]
+    N5["指令响应模型"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N1 --> N4
+    N4 --> N5
+    N5 --> N1
+```
 
 ## 核心机制
 

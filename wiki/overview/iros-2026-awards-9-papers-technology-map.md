@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, iros-2026, technology-map, manipulation, planning, world-model]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 related:
   - ../entities/paper-lt-mem.md
   - ../entities/paper-flatness-preserving-quadrotor-formation.md
@@ -40,6 +40,30 @@ summary: "具身智能研究室 IROS 2026 九项获奖/高关注论文：记忆�
 
 - 公众号一次列齐 **9 项不同奖项**；需要按 **问题类型** 而非奖项名称检索。
 - **9/9 各有一页**，可核对 arXiv 与开源状态。
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["IROS 九篇资料"]
+    N1["记忆与规划"]
+    N2["运动与编队"]
+    N3["操作与多感官"]
+    N4["数据与世界模型"]
+    N5["独立论文节点"]
+    N6["按目标继续深读"]
+    N0 --> N1
+    N0 --> N2
+    N0 --> N3
+    N0 --> N4
+    N1 --> N5
+    N2 --> N5
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 节点索引
 

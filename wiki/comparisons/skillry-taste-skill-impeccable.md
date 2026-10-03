@@ -8,7 +8,7 @@ tags:
   - ux
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-03
 related:
   - ../entities/skillry.md
   - ../entities/taste-skill.md
@@ -44,6 +44,31 @@ summary: "Agent 前端/交付物能力选型：Skillry 是闭源交付物市场�
 | MIT | MIT License | Taste Skill 协议 |
 | OAuth | Open Authorization | Skillry 登录方式 |
 | PR | Pull Request | Impeccable CLI 可对接 CI |
+
+## 结构与流程图
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["交付目标"]
+    N1["成品与媒体"]
+    N2["前端生成约束"]
+    N3["长期 UI 治理"]
+    N4["Skillry"]
+    N5["Taste Skill"]
+    N6["Impeccable"]
+    N7["组合与验收"]
+    N0 --> N1
+    N0 --> N2
+    N0 --> N3
+    N1 --> N4
+    N2 --> N5
+    N3 --> N6
+    N4 --> N7
+    N5 --> N7
+    N6 --> N7
+```
 
 ## 核心特性对比
 

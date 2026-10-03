@@ -6,7 +6,7 @@ tags:
   - manipulation
   - dual-frequency
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 arxiv: "2608.16503"
 related:
   - ../methods/vla.md
@@ -35,6 +35,28 @@ summary: "NebulaVLA（arXiv:2608.16503，中兴）：低频理解 + 高频 Guide
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["视觉与语言"]
+    N1["低频语义理解"]
+    N2["GESTURE-7 表示"]
+    N3["高频 Guide Action"]
+    N4["平滑约束"]
+    N5["机器人动作"]
+    N6["新观测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N4 --> N3
+    N3 --> N5
+    N5 --> N6
+    N6 --> N0
+```
 
 ## 核心信息
 

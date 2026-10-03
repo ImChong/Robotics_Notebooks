@@ -6,7 +6,7 @@ tags:
   - vla
   - force-control
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.23968"
 related:
   - ../tasks/manipulation.md
@@ -37,6 +37,28 @@ summary: "Opt2VLA（arXiv:2609.23968）：多任务 VLA 同时输出几何目标
 ## 为什么重要
 
 - 几何相同但接触力需求不同的操作无法仅靠视觉区分。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["WTO 优化"]
+    N1["带接触力标签数据"]
+    N2["VLA 训练"]
+    N3["几何目标"]
+    N4["连续接触力参考"]
+    N5["RL 全身跟踪"]
+    N6["机器人执行"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N2 --> N4
+    N3 --> N5
+    N4 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

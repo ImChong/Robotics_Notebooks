@@ -7,7 +7,7 @@ tags:
   - ux
   - agent-infrastructure
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 related:
   - ./caveman.md
   - ./ponytail.md
@@ -44,6 +44,26 @@ summary: "i-have-adhd（ayghri/i-have-adhd）是编码代理输出结构技能�
   - **i-have-adhd** — **更清晰的行动结构**（顺序与步骤）
   - [Superpowers（obra）](superpowers-obra.md) — **更对的交付流程**
 - **维护本 wiki 的长会话：** ingest + `make ci-preflight` 常是多步；该技能降低 **在解释中丢失关键命令** 的概率，与 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md)「结论写进文件」可并用（文件写全、聊天说短）。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["当前任务与状态"]
+    N1["结论先行"]
+    N2["编号步骤"]
+    N3["抑制旁支"]
+    N4["单一下一步"]
+    N5["行动反馈"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N0
+```
 
 ## 核心结构
 

@@ -7,7 +7,7 @@ tags:
   - geometry
   - manipulation
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 arxiv: "2604.12908"
 related:
   - ../methods/vla.md
@@ -40,6 +40,29 @@ summary: "VGA（arXiv:2604.12908）：用语义/视频预训练骨干难保 3D �
 - 操作需要精确空间关系；VGA 把 manipulation 收成 vision-to-geometry 映射（ACM MM 2026）。
 - 策展机构：中山大学；广东省大数据分析与处理重点实验室；拓元智慧；美团龙猫；广东工业大学
 - 开源结论：**待核实**（步骤 2.5，2026-10-01）。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["三维结构预训练"]
+    N1["几何视觉骨干"]
+    N2["视觉与语言条件"]
+    N3["动作预测"]
+    N4["物体 3D 属性"]
+    N5["联合训练"]
+    N6["分布外视角评测"]
+    N0 --> N1
+    N1 --> N3
+    N2 --> N3
+    N1 --> N4
+    N3 --> N5
+    N4 --> N5
+    N5 --> N1
+    N3 --> N6
+```
 
 ## 核心机制
 

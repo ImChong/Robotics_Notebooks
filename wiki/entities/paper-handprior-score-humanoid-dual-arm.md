@@ -7,7 +7,7 @@ tags:
   - dual-arm
   - diagnostics
 status: complete
-updated: 2026-10-01
+updated: 2026-10-03
 arxiv: "2608.11769"
 related:
   - ../methods/vla.md
@@ -40,6 +40,27 @@ summary: "HandPriorScore（arXiv:2608.11769）：诊断 VLA 在双手起始姿�
 - 同任务不同初始手位成功率差异大；HandPriorScore 量化 policy-induced hand prior。
 - 策展机构：韩国科学技术研究院（KIST，韩）
 - 开源结论：**待核实**（步骤 2.5，2026-10-01）。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["同任务多种起始手位"]
+    N1["VLA rollout"]
+    N2["用手选择与成功率"]
+    N3["HandPriorScore 诊断"]
+    N4["薄弱姿态补数据"]
+    N5["扩展姿态覆盖"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N3 --> N5
+    N4 --> N1
+    N5 --> N1
+```
 
 ## 核心机制
 

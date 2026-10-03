@@ -5,7 +5,7 @@ tags:
   - humanoid
   - state-estimation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.23610"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -36,6 +36,25 @@ summary: "PRIMO（arXiv:2609.23610）：跟踪大量重定向人体动作扩分�
 ## 为什么重要
 
 - 单策略里程计过拟合；无约束网络 Sim2Real 不合理。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["大量人体动作"]
+    N1["机器人重定向"]
+    N2["动作跟踪数据"]
+    N3["物理与对称先验"]
+    N4["速度旋转预测"]
+    N5["里程计误差评测"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N4
+    N3 --> N4
+    N4 --> N5
+```
 
 ## 核心机制
 

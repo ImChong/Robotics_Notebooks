@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-generation, speech, unitree-g1]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.39575"
 related:
   - ../methods/sonic-motion-tracking.md
@@ -30,6 +30,28 @@ summary: "ECHO-G 将音频韵律与带时间戳文本映射为人形全身共语
 ## 为什么重要
 
 语音驱动动作既要语义自然，也要与停顿、重音对齐；静态姿势库不足以表达长句中变化的全身节奏。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["音频韵律"]
+    N1["带时间戳文本"]
+    N2["全身共语动作生成"]
+    N3["机器人重定向"]
+    N4["固定 SONIC 跟踪"]
+    N5["真机执行"]
+    N6["生成与执行分开评测"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N2 --> N6
+    N5 --> N6
+```
 
 ## 方法
 

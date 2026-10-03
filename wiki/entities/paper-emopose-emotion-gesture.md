@@ -6,7 +6,7 @@ tags:
   - social-hri
   - vlm
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.23414"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,28 @@ summary: "EmoPose（arXiv:2609.23414）：VLM 选手势类/版本/强度/语音�
 ## 为什么重要
 
 - VLM 直接出关节难保证可执行。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["语音与语义"]
+    N1["VLM 手势规划"]
+    N2["类别版本强度"]
+    N3["语音触发时间"]
+    N4["本地动作库"]
+    N5["验证与调度"]
+    N6["14-DoF 动作执行"]
+    N0 --> N1
+    N1 --> N2
+    N1 --> N3
+    N2 --> N4
+    N4 --> N5
+    N3 --> N5
+    N5 --> N6
+```
 
 ## 核心机制
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, human-object-interaction, unitree-g1]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-03
 arxiv: "2609.36602"
 related:
   - ./paper-hrl-stack-03-omniretarget.md
@@ -31,6 +31,26 @@ summary: "OTRetarget 用表面距离与最优传输同步重定向机器人和�
 ## 为什么重要
 
 只复制人体骨架或固定物体轨迹，臂长和桌高变化时双手可能够不到物体。保留“手在箱子哪一侧、脚在哪里支撑”比保持原世界坐标更关键。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["人体与多物体动作"]
+    N1["表面距离"]
+    N2["最优传输计划"]
+    N3["机器人与物体联合重定向"]
+    N4["逐帧 IK"]
+    N5["接触时序核验"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N3
+```
 
 ## 方法
 

@@ -5,7 +5,7 @@ tags:
   - flow-matching
   - manipulation
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.28107"
 related:
   - ../tasks/manipulation.md
@@ -36,6 +36,26 @@ summary: "CFM 多任务蒸馏（arXiv:2609.28107）：多 single-task CFM Expert
 ## 为什么重要
 
 - 每任务单独 CFM 成本高；混合训练易干扰。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["多任务示范"]
+    N1["单任务 CFM 专家"]
+    N2["专家 velocity fields"]
+    N3["共享 Multi-Task CFM"]
+    N4["示范 FM objective"]
+    N5["多任务动作生成"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N0 --> N4
+    N4 --> N3
+    N3 --> N5
+```
 
 ## 核心机制
 

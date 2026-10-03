@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, human-to-robot, egocentric, manipulation, physical-intelligence, georgia-tech]
 title: π 系人视频到机器人迁移
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2512.22414"
 related:
   - ./paper-pi05-open-world-vla.md
@@ -35,6 +35,26 @@ summary: "arXiv:2512.22414（RSS 2026）：π₀.₅ 预训练多样性够了之
 ## 为什么重要
 
 人视频便宜，但外观和动作都和机器人不同。常见做法是遮挡身体、生成机器人手，或改硬件去贴近人。本文声称这些对齐可以先不做什么：把人视频按现有多本体格式加入微调，迁移会在预训练规模上来之后自己出现。这和「多采一点人视频就能替代机器人数据」不是同一句话。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["多样机器人数据"]
+    N1["π0.5 预训练"]
+    N2["人视频 3D 手部轨迹"]
+    N3["联合微调"]
+    N4["机器人新任务执行"]
+    N5["多样性消融"]
+    N0 --> N1
+    N1 --> N3
+    N2 --> N3
+    N3 --> N4
+    N0 --> N5
+    N4 --> N5
+```
 
 ## 核心原理
 

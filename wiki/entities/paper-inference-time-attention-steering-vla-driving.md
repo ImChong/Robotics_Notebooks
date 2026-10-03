@@ -7,7 +7,7 @@ tags:
   - test-time
   - attention
 status: complete
-updated: 2026-09-29
+updated: 2026-10-03
 arxiv: "2608.17095"
 related:
   - ../methods/vla.md
@@ -36,6 +36,28 @@ summary: "推理时注意力引导（arXiv:2608.17095，FAU）：无训练修改
 | TTA | Test-Time Augmentation / Adaptation | 测试时增强或适配 |
 | SR | Success Rate | 任务成功率 |
 | LIBERO | LIBERO Benchmark | 常见操作仿真基准套件 |
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["驾驶视觉输入"]
+    N1["车辆区域定位"]
+    N2["视觉 token 注意力偏置"]
+    N3["VLA 深层注意力"]
+    N4["轨迹解码"]
+    N5["配对零偏置对照"]
+    N6["轨迹变化审计"]
+    N0 --> N1
+    N1 --> N2
+    N0 --> N3
+    N2 --> N3
+    N3 --> N4
+    N4 --> N6
+    N5 --> N6
+```
 
 ## 核心信息
 

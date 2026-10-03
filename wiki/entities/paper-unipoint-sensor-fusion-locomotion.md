@@ -6,7 +6,7 @@ tags:
   - perception
   - lidar
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.23666"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -38,6 +38,27 @@ summary: "UniPoint（arXiv:2609.23666）：360° LiDAR + 双深度→机身点�
 ## 为什么重要
 
 - 单前向深度覆盖有限；多相机编码成本高。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["360 度 LiDAR"]
+    N1["双深度"]
+    N2["机身点集体素 token"]
+    N3["线性自注意力"]
+    N4["本体查询 cross-attention"]
+    N5["全地形策略"]
+    N6["传感器退化训练"]
+    N0 --> N2
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N6 --> N2
+```
 
 ## 核心机制
 

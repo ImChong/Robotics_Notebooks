@@ -6,7 +6,7 @@ tags:
   - loco-manipulation
   - imitation-learning
 status: complete
-updated: 2026-09-28
+updated: 2026-10-03
 arxiv: "2609.22829"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -37,6 +37,28 @@ summary: "Whole-Body UMI（arXiv:2609.22829）：扩散策略预测 UMI 末端�
 ## 为什么重要
 
 - UMI 末端轨迹无法唯一确定全身协调。
+
+## 流程总览
+
+以下按本页已归纳的机制与资料绘制，表示模块或阅读路径关系。
+
+```mermaid
+flowchart TD
+    N0["UMI 示范与任务观测"]
+    N1["扩散策略"]
+    N2["末端轨迹"]
+    N3["实时全身运动生成器"]
+    N4["全身参考"]
+    N5["G1 跟踪执行"]
+    N6["本体反馈"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 --> N6
+    N6 --> N3
+```
 
 ## 核心机制
 
