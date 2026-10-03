@@ -1,6 +1,6 @@
 # 路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）
 
-**摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形 DiT** 读透七篇代表作」的专题路线；与 [VLA 纵深](depth-vla.md) Stage 1–2 重叠，但按 **动作生成机制演进** 排序，并区分 **图像 DiT / DiT-Block IL / Dita VLA** 命名。
+**摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形 DiT** 读透八篇代表作」的专题路线；与 [VLA 纵深](depth-vla.md) Stage 1–2 重叠，但按 **动作生成机制演进** 排序，并区分 **图像 DiT / DiT-Block IL / Dita VLA** 命名。
 
 ## 路线一览
 
@@ -13,16 +13,18 @@ flowchart TB
   G1["⑤ GR00T N1<br/><em>VLM + FM DiT · 人形</em>"]
   G15["⑥ GR00T N1.5<br/><em>Eagle + cross-attn DiT + FLARE</em>"]
   DITA["⑦ Dita VLA<br/><em>大型 multimodal DiT denoise chunk</em>"]
+  PA["⑧ PredActor<br/><em>人形 joint state–action diffusion · 机载 50 Hz</em>"]
 
   DP --> RDiT --> RDT --> PI --> G1 --> G15 --> DITA
+  DITA -. "人形控制 / onboard 专题" .-> PA
 
   classDef paper fill:#142a3a,stroke:#e74c3c,stroke-width:2px,color:#fff
-  class DP,RDiT,RDT,PI,G1,G15,DITA paper
+  class DP,RDiT,RDT,PI,G1,G15,DITA,PA paper
 ```
 
 ## 这条路径怎么用
 
-- **推荐度（用户策展）**：①②④⑤⑥为 ★★★★★；③⑦为 ★★★★☆；③适合理解 **十亿级 Robotics Diffusion Transformer**，⑦与②的 IL 配方互补、偏 **OXE 通才 VLA**。
+- **推荐度（用户策展）**：①②④⑤⑥⑧为 ★★★★★；③⑦为 ★★★★☆；③适合理解 **十亿级 Robotics Diffusion Transformer**，⑦与②的 IL 配方互补、偏 **OXE 通才 VLA**。
 - 每篇先抓 **action chunk** 与 **推理时 horizon**（receding horizon / 异步执行），再抓 **条件注入**（CNN/U-Net、adaLN、cross-attn VLM、flow 速度场）。
 - [模仿学习纵深](depth-imitation-learning.md) Stage 3 已覆盖 DP 概念时可 **跳过重复**，从 Stage ② 进入。
 
@@ -171,6 +173,7 @@ flowchart LR
   A["Diffusion Policy<br/>动作 = 去噪"] --> B["Robotic DiT<br/>U-Net → Transformer"]
   B --> C["π₀ / GR00T<br/>Diffusion → Flow Matching"]
   C --> D["Dita<br/>大 DiT = 动作生成器"]
+  D -. "人形机载控制专题" .-> E["PredActor<br/>joint state + action diffusion<br/>CFG + CG · Orin NX 50 Hz"]
 ```
 
 ## 快速入口汇总
@@ -184,6 +187,25 @@ flowchart LR
 | ⑤ | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
 | ⑥ | GR00T N1.5 | [paper-gr00t-n1-5](../wiki/entities/paper-gr00t-n1-5.md) |
 | ⑦ | Dita | [paper-dita-scaling-diffusion-transformer-vla](../wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md) |
+| ⑧ | PredActor（人形机载控制专题） | [paper-predactor](../wiki/entities/paper-predactor.md) |
+
+## Stage 8 · PredActor（⑧ ★★★★★ · 人形扩散策略机载控制专题）
+
+### 核心问题
+
+- 联合预测未来状态与动作，如何让未来状态只作为**内部 steering surface**，同时把动作直接交给机器人？
+- **Classifier guidance（CG）+ classifier-free guidance（CFG）** 如何在同一策略中支持目标引导与文本行为条件？
+- rolling denoising 与运行时优化怎样满足 **Jetson Orin NX 上 50 Hz** 控制周期？
+
+### 推荐读什么
+
+- [PredActor 实体](../wiki/entities/paper-predactor.md)
+- 项目页：<https://masteryip.github.io/predactor.github.io/> · 官方发布仓：<https://github.com/MasterYip/PredActor> · arXiv：<https://arxiv.org/abs/2609.24840>
+- **复现边界：** 截至 2026-10-03，官方仓 README 标注 Code Coming Soon；项目页 demo 可用于观察结果，但源码、权重与运行说明尚未发布。
+
+### 学完输出什么
+
+- 能解释 joint state–action diffusion 与 action-only diffusion 的差别，并判断完整 callback 的 p95 是否满足 20 ms 预算。
 
 ## 和其他页面的关系
 

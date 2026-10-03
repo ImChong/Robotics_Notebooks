@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, diffusion-policy, onboard-control, hit, roboparty, tsinghua, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-03
 arxiv: "2609.24840"
 related:
   - ../methods/diffusion-policy.md
@@ -10,6 +10,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md
   - ../entities/unitree-g1.md
+  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/predactor_arxiv_2609_24840.md
@@ -38,6 +39,8 @@ summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action �
 
 ## 为什么重要
 
+- **在扩散学习路线中的位置：** 可作为[扩散与流匹配纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md)的人形机载控制专题；重点从通用动作 chunk 去噪转向 joint state–action prediction、test-time steering 与端侧时延预算。
+
 - **统一 steering 接口：** 代表 joint diffusion 里少见的 **CFG（文本/行为）+ CG（状态目标）并存**，且 **仅 proprio** 输入 — 对比 Diffuse-CLoC、SCDP、SCRIPT 等（见论文 Table 1）。
 - **机载闭环证据：** 声称首个 **全 onboard** joint state–action diffusion 在 G1 Orin NX **50 Hz** 部署；p50 **16.790 ms**、p95 **19.383 ms**。
 - **相对 hierarchy：** 不做 generator→tracker 分拆，disturbance recovery 留在同一策略，避免规划/控制双时钟。
@@ -46,11 +49,11 @@ summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action �
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | 哈尔滨工业大学（HIT）、上海创智学院、RoboParty Lab、清华大学、上海交通大学等 |
+| 机构 | 哈尔滨工业大学（Harbin Institute of Technology）、上海创新研究院（Shanghai Innovation Institute）、RoboParty Lab、清华大学、上海交通大学 |
 | 平台 | Unitree G1 + Jetson Orin NX |
 | 输入 | Proprio 历史 + 可选任务 token（文本/语义/摇杆） |
 | 输出 | 选中关节动作；未来状态 **不外发** |
-| 开源 | **待发布** — [MasterYip/PredActor](https://github.com/MasterYip/PredActor) 占位 README（Code Coming Soon） |
+| 开源 | **待发布** — [MasterYip/PredActor](https://github.com/MasterYip/PredActor) 官方 release channel（截至 2026-10-03 仍为 Code Coming Soon） |
 
 ## 流程总览
 
@@ -83,6 +86,8 @@ flowchart LR
 **不适用（待发布）** — 官方仓截至 2026-09-24 无训练/部署脚本；公开后应对齐 README 中 rolling inference 与 onboard callback 路径。
 
 ## 工程实践
+
+- 官方项目页链接到[MasterYip/PredActor](../../sources/repos/predactor.md)作为 release channel；该仓 README 当前仅含 overview、docs 资源与 demo 链接，训练/部署代码、checkpoint 与安装说明均待发布，暂不能据此复现论文结果。
 
 | 检查项 | 建议 |
 |--------|------|
