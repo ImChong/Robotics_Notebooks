@@ -843,6 +843,7 @@
 - [开源人形机器人“大脑” (主控电脑) 选型](wiki/entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
+- [OpenAI Codex CLI（openai/codex）](wiki/entities/openai-codex-cli.md) — Codex CLI** 是一个在本机开发环境中运行的编码代理：命令行负责连接模型与当前工作区，CLI 能力由开源 Rust 程序提供，也可经 TypeScript SDK 从应用中调用。 `📅unknown` `[entity_page]`
 - [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
 - [openJiuwen（开放九问）](wiki/entities/openjiuwen.md) — openJiuwen**（openjiuwen.com，GitHub org [openJiuwen-ai](https://githu `📅unknown` `[entity_page]`
 - [OpenLess](wiki/entities/openless.md) — OpenLess**（openless.top，[GitHub: Open-Less/openless](https://github.com/O `📅unknown` `[entity_page]`
