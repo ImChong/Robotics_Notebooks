@@ -48,7 +48,7 @@ summary: "EgoAlign 将第一视角人类示范适配为 SONIC 可执行的动作
 
 ## 方法栈与流程总览
 
-```
+```mermaid
 flowchart TB
   H["人体第一视角采集<br/>PICO 追踪 + 双 GoPro 视角"] --> F["SONIC–MuJoCo 实时反馈<br/>采集者修正被抑制的动作"]
   F --> A["尺度对齐 + 控制器闭环修正<br/>保留移动/下肢参考，修正手部几何"]
