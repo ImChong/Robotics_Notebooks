@@ -29,8 +29,17 @@
 
 > checkpoint 可作为微调/推理起点；接入新机器人仍需适配观测、动作空间、归一化和执行接口。仓库示例不等于任意机器人开箱即用。
 
+## 延伸与策展
+
+- [Humanoid Motion Intelligence 开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 将 openpi 归入「世界模型、VLA与Agent」路线。
+- [openpi-rtc.md](openpi-rtc.md) 记录社区 Real-Time Chunking 实现；官方 openpi 栈未内置 RTC 一等入口，LeRobot 文档见 [lerobot-rtc-docs.md](../sites/lerobot-rtc-docs.md)。
+
 ## 对 wiki 的映射
 
 - [π0.5 论文实体](../../wiki/entities/paper-pi05-open-world-vla.md)
+- [π₀ 论文实体](../../wiki/entities/paper-pi0.md)
 - [π₀ 策略方法页](../../wiki/methods/π0-policy.md)
+- [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)
+- [χ₀ / kai0](../../wiki/entities/paper-kai0.md) — 基于 openpi 的协同叠衣后训练与部署对齐
+- [Jetson Thor π₀.₅ 教程](../courses/jetson_openpi_pi05_on_thor.md)
 - [Knowledge Insulation 论文实体](../../wiki/entities/paper-knowledge-insulation.md)
