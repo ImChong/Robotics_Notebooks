@@ -2,11 +2,12 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-04
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cref.md
+  - ../entities/paper-redact-robust-perceptive-locomotion.md
   - ../concepts/humanoid-policy-observation-inputs.md
   - ../concepts/humanoid-policy-reward-functions.md
   - ../concepts/terrain-adaptation.md
@@ -105,7 +106,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [TRAMP（IEEE RA-L 2026）](../entities/paper-tramp-vision-assisted-bipedal-locomotion.md) — SJTU；单阶段低成本深度 + MoE + 平地/楼梯地形相关 AMP；真机坡/楼梯/高台/宽沟与户外（代码未开源）
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 视觉/盲策略复合，高程图失效时切盲走恢复（G1/H1，ICRA 2026；代码 coming soon）
 - [P³](../entities/paper-p3.md) — VAE 高程 latent + PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
-- [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
+- [REDACT](../entities/paper-redact-robust-perceptive-locomotion.md) — clean-only 仿真训练 + 持续特征遮蔽 + 干净观测共识门控；项目页含编码器和校准参数，算法代码未公开（arXiv:2609.25450）\n- [WM-LOCO](../entities/paper-wm-loco.md) — RSSM+PPO 单深度预测特征；仿真沟/踏石上匹配 PPO 为 0%，G1 机载三类平均 93.3%（arXiv:2609.02542；代码待发布）
 - [DWMP](../entities/paper-dwmp.md) — Koopman 本体 WM + DepthDreamer 深度 WM 双路表征；MuJoCo 五类越障 SR 0.85–0.95，G1 真机随机布局最高 0.95（arXiv:2609.12347；未开源）
 - [RoboDreamer](../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — Mamba PSSM 前瞻行走 + 推理动作细化（arXiv:2609.07096；未见代码）
 - [GM-Loco 颗粒介质地形自适应](../entities/paper-gm-loco.md) — 3D RFT 颗粒接触 + VAE Teacher-Student；G1 玄武岩/干沙/海滩沙走跑至 2.5 m/s（arXiv:2609.10286；代码待发布）
