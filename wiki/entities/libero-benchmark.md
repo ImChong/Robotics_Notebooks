@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-09-27
+updated: 2026-10-03
 summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
 related:
   - ../concepts/sim2real.md
@@ -30,6 +30,8 @@ sources:
   - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
+  - ../../sources/repos/libero-plus.md
+  - ../../sources/repos/libero-pro.md
 ---
 
 # LIBERO
@@ -90,6 +92,15 @@ flowchart LR
 - **跨页数字不可直接横比**：各页的基座、训练数据与评测子集不同（如 [GaussianDream++](./paper-gaussiandream-plusplus.md) **87.8%**、[Kairos](./paper-kairos-native-world-model-stack.md) **89.0**、[Rift](./paper-rift-wam.md) **81.1%**、[Flex-π](./paper-flex-pi.md) **80.9%**、[SLIM-0.5B](./paper-slim-05b.md) **77.45%**），应回各自论文页核对协议后再比较。
 
 具体扰动定义与划分以上游 LIBERO-Plus 发布物为准；本页只做本库交叉引用的锚点。
+
+
+### 与 LIBERO-PRO 的区别
+
+- **LIBERO-Plus**：系统测试相机视角、物体布局、初态、指令、光照、背景纹理和传感器噪声等扰动，适合按扰动维度分析鲁棒性。
+- **LIBERO-PRO**：围绕对象、初始状态、任务指令和环境变化，检查模型是否理解任务并能适应合理变化，而非复现训练轨迹。
+- 两者基于 LIBERO 生态，但扰动定义、样本组织和指标协议不同。报告结果时需注明版本与设置，不能将它们视为同一排行榜。
+
+入口：[LIBERO-Plus](../../sources/repos/libero-plus.md)、[LIBERO-PRO](../../sources/repos/libero-pro.md)。
 
 ## 工程实践
 
