@@ -164,7 +164,9 @@ related:
   - ../entities/ken-goldberg-agentic-robotics-goosebumps.md
   - ../entities/paper-gap-graph-as-policy.md
   - ../concepts/variational-automation.md
+  - ../entities/paper-discrete-forcing.md
 sources:
+  - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/rl_foundation_models.md
@@ -567,6 +569,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
 
 ## 关联页面
+
+- [Discrete Forcing](../entities/paper-discrete-forcing.md) — 以离散 token 先定动作结构、再用连续 flow refinement 输出高精度动作；LIBERO 上两次 action-expert 前向达到 97.6%。
 - [AI 架构地图](../overview/ai-architecture-map.md) — VLA 在六支函数族中的决策层位置
 - [人形认知可靠性鸿沟](../concepts/humanoid-cognitive-reliability-gap.md) — VLA 已会抓 vs 仍缺情境常识、长时记忆与「暂停优先」
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) — VLA 常居「大脑层」；与 MPC/WBC、反射安全链的分工

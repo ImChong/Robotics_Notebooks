@@ -4,7 +4,9 @@ tags: [imitation-learning, vla, action-chunking, latency, transformers, deployme
 status: complete
 updated: 2026-10-01
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
+  - ../entities/paper-discrete-forcing.md
 sources:
+  - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/repos/act-aloha.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -217,6 +219,8 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
 ## 关联页面
+
+- [Discrete Forcing](../entities/paper-discrete-forcing.md) — 离散动作 token 建立 chunk 粗结构，连续分支一次精修，作为 VLA action-chunk 生成的低 NFE 实例。
 
 - [Behavior Cloning](./behavior-cloning.md) — 动作块是对单步 BC 的时间窗扩展
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — action chunks + 未来触觉 latent 预测的人形操作实例
