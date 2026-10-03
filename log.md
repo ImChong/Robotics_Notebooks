@@ -1,3 +1,9 @@
+## [2026-10-03] ingest | RRSI: Regularized Recursive Self-Improvement
+
+- 归档 arXiv v2、官方项目页与 Google Research 开源仓库；项目页已核查代码及演化浏览器。
+- 新增论文详情实体并串联 RSI 概念页与 Stage 4 路线，记录 harness 搜索的迁移、成本与复现边界。
+- 官方仓库 Apache-2.0，核心实现可运行；完整论文基准依赖模型服务和独立评测环境。
+
 ## [2026-10-03] ingest | Karpathy 的 ASD-STE100 与 LLM 输出可理解性
 
 - 归档机器之心文章及 ASD-STE100 官方入口、开源 Skill 项目；项目代码与 MIT 许可证公开。

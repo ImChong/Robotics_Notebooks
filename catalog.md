@@ -3114,6 +3114,7 @@
 - [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Am `📅unknown` `[entity_page]`
 - [RPV-SemNav（arXiv:2607.25448）](wiki/entities/paper-rpv-semnav.md) — RPV-SemNav**（*Room-Mediated Co-occurrence for Zero-Shot Object-Centric Semantic Navigation via Fro `📅unknown` `[entity_page]`
+- [RRSI：正则化的 Agent Harness 递归自我改进](wiki/entities/paper-rrsi-2609-24972.md) — RRSI**（arXiv:2609.24972v2）由 Google Cloud AI Research 等提出，研究如 `📅unknown` `[entity_page]`
 - [RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环](wiki/entities/paper-rsi-survey-2607-07663.md) — Recursive Self-Improvement in AI**（Chen, Wang & Qu；[arXiv:2607.07663](https://arxiv.org/abs/2607.0 `📅unknown` `[entity_page]`
 - [RT-1：规模化真机控制的 Robotics Transformer](wiki/entities/paper-rt-1.md) — RT-1**（*RT-1: Robotics Transformer for Real-World Control at Scale*，[arXiv:2212.06817](https://arx `📅unknown` `[entity_page]`
 - [RT-2：用 VLM 把网页知识迁到机器人控制](wiki/entities/paper-rt-2.md) — RT-2**（*RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*，[arXiv:2307 `📅unknown` `[entity_page]`
