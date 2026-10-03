@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [simulation, mujoco, robot-learning, manipulation, libero, repo]
+tags: [simulation, mujoco, robot-learning, manipulation, libero, repo, stanford]
 status: complete
 updated: 2026-10-03
 summary: "robosuite 是基于 MuJoCo 的模块化机器人仿真框架，提供机器人、场景、物体、控制器、传感器和操作任务组件；LIBERO 将其作为底层仿真环境，并在 requirements 中固定 robosuite 1.4.0。"
@@ -18,13 +18,22 @@ sources:
 
 # robosuite
 
+## 一句话定义
+
 [robosuite](https://github.com/ARISE-Initiative/robosuite) 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体、控制器和传感器组合成可配置的任务环境，并为策略训练、评测和遥操作提供接口。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| API | Application Programming Interface | 环境交互接口 |
+| MDP | Markov Decision Process | 状态、动作与转移的形式化模型 |
+| MuJoCo | Multi-Joint dynamics with Contact | robosuite 使用的物理仿真引擎 |
+| RL | Reinforcement Learning | 可使用仿真环境开展策略训练 |
 
 ## 核心定位
 
 robosuite 是仿真与任务环境层，不是一个单独的学习算法或真机驱动程序。研究者可以选择机器人和控制器，构造场景与任务，再通过环境 API 执行动作并取得观测、奖励和任务完成信息。具体接口与可用组件以所选版本的官方文档为准。
-
-常见使用链路：
 
 ```text
 机器人 / 场景 / 物体配置 → robosuite 仿真环境 → 动作与观测 → 策略训练或基准评估
@@ -40,7 +49,7 @@ robosuite 是仿真与任务环境层，不是一个单独的学习算法或真�
 
 ## 与 LIBERO 的关系
 
-[LIBERO](./libero-benchmark.md) 是终身机器人学习操作基准。其安装文档将 robosuite 作为底层仿真环境；LIBERO 仓库的 [requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt) 固定 `robosuite==1.4.0`。因此：
+[LIBERO](./libero-benchmark.md) 是终身机器人学习操作基准。其安装文档将 robosuite 作为底层仿真环境；LIBERO 仓库的 [requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt) 固定 robosuite 版本为 1.4.0。因此：
 
 - **分工：** robosuite 提供仿真引擎和环境组件；LIBERO 提供语言条件任务、演示数据和知识迁移评估协议。
 - **版本：** robosuite 当前官方文档对应 v1.5，而 LIBERO 依赖文件指定 v1.4.0。重跑 LIBERO 时应按其依赖文件和[安装文档](https://lifelong-robot-learning.github.io/LIBERO/html/getting_started/installation.html)使用匹配版本。
@@ -63,12 +72,20 @@ robosuite 是仿真与任务环境层，不是一个单独的学习算法或真�
 | 评估复现 | 固定环境版本、随机种子、控制器、观测模态和成功条件 |
 | 真机部署 | 仿真 API 本身不等同于真机驱动；另行核对机器人接口与迁移流程 |
 
-## 来源与关联页面
+## 关联页面
+
+- [LIBERO 基准实体](./libero-benchmark.md)
+- [robosuite 论文实体](./paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- [Sim2Real](../concepts/sim2real.md)
+- [Isaac Lab](./isaac-lab.md)
+- [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+
+## 参考来源
 
 - [robosuite 来源归档](../../sources/repos/robosuite.md)
-- [robosuite 论文实体](./paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
-- [LIBERO 基准实体](./libero-benchmark.md)
-- [Sim2Real](../concepts/sim2real.md)
+- [robosuite 论文来源归档](../../sources/papers/lc_awesome_sim2real_2009_12293_robosuite-a-modular-simulation-framework.md)
+- [LIBERO 来源归档](../../sources/repos/libero-benchmark.md)
 - [官方源码](https://github.com/ARISE-Initiative/robosuite)
 - [官方文档](https://robosuite.ai/docs/)
 - [LIBERO requirements](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt)
+- [LIBERO 安装文档](https://lifelong-robot-learning.github.io/LIBERO/html/getting_started/installation.html)
