@@ -8,8 +8,11 @@
 - **HMI ID：** P059
 - **年份：** 2025
 - **原文：** https://arxiv.org/abs/2504.16054
+- **论文 PDF：** https://www.pi.website/download/pi05.pdf
+- **官方项目页归档：** [sources/sites/pi05-open-world-generalization.md](../sites/pi05-open-world-generalization.md)
+- **官方代码仓归档：** [sources/repos/openpi.md](../repos/openpi.md)
 - **代码：** https://github.com/Physical-Intelligence/openpi
-- **项目页：** https://www.physicalintelligence.company/blog/pi05
+- **项目页：** https://www.pi.website/blog/pi05
 - **入库日期：** 2026-07-31
 - **一句话说明：** 预训练用 FAST 离散动作吃异构数据，后训练再为目标本体接入连续 flow 专家；推理时先出语义子任务再高频生成动作块。
 - **策展入口：** [HMI 论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) · [逐篇解读 P059](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P059.md)

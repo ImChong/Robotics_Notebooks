@@ -2,11 +2,11 @@
 type: entity
 tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-03
 arxiv: "2504.16054"
 code: https://github.com/Physical-Intelligence/openpi
 venue: "HMI curated · 2025"
-summary: "π0.5（HMI P059）：预训练用 FAST 离散动作吃异构数据，后训练再为目标本体接入连续 flow 专家；推理时先出语义子任务再高频生成动作块。"
+summary: "π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。"
 related:
   - ../methods/π0-policy.md
   - ../methods/pi07-policy.md
@@ -31,11 +31,13 @@ sources:
   - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
   - ../../sources/papers/flashvla_arxiv_2608_27384.md
   - ../../sources/papers/clap_arxiv_2608_27406.md
+  - ../../sources/sites/pi05-open-world-generalization.md
+  - ../../sources/repos/openpi.md
 ---
 
 # π0.5（HMI P059）
 
-**π0.5**（*π0.5: A Vision-Language-Action Model with Open-World Generalization*，2025，[arXiv:2504.16054](https://arxiv.org/abs/2504.16054)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P059**，主分类为 **世界模型、VLA与Agent**。本页为本库独立详情节点（编译自策展解读与公开元数据，非原文镜像）。
+**π0.5**（*π0.5: A Vision-Language-Action Model with Open-World Generalization*，2025，[arXiv:2504.16054](https://arxiv.org/abs/2504.16054)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P059**，主分类为 **世界模型、VLA与Agent**。官方资料：[项目页](https://www.pi.website/blog/pi05) · [论文 PDF](https://www.pi.website/download/pi05.pdf) · [openpi 代码仓](https://github.com/Physical-Intelligence/openpi)。本页为本库独立详情节点（编译自原论文、官方项目页与代码仓，并参考 HMI 策展解读，非原文镜像）。
 
 ## 一句话定义
 
@@ -74,26 +76,49 @@ sources:
 
 ```mermaid
 flowchart LR
-  A["问题 / 数据 / 观测"] --> B["π0.5"]
-  B --> C["控制 / 策略 / 数据产物"]
-  C --> D["评测或真机闭环"]
+  obs["当前图像 + 语言指令"] --> high["高层语义子任务"]
+  high --> low["连续动作专家"]
+  obs --> low
+  low --> chunk["动作块"]
+  chunk --> robot["机器人执行"]
+  robot --> obs
 ```
 
-模块边界与符号定义以原文为准；上图只固定阅读骨架。
+推理按不同节奏拆分语义子任务选择与连续动作生成；动作块执行后，模型接收新观测继续闭环。
 
 ## 工程实践
 
-FAST token保留一段动作的时序结构，使动作数据可以和“下一步子任务是什么”这类文本监督共用自回归训练接口；本体、相机和语言仍作为条件。后训练时连续flow expert重新接管精细动作输出，因此离散预训练表示负责迁移语义，连续头负责目标机器人控制。两阶段使用的动作表示不同，必须有明确的本体适配和对齐，不能把FAST token直接当成电机命令。
+π₀.₅ 的训练将来自不同机器人、一般视觉语言任务和高层语义标注等异构资料共同使用：离散 FAST 动作 token 可让 VLM 骨干学习机器人动作与语义任务，连续 flow-matching 专家负责精细动作生成。推理时先选择高层子任务，再条件化生成低层动作块；FAST token 是训练监督表示，不是部署时直接发送给电机的控制量。
 
 | 检查项 | 建议 |
 |--------|------|
 | 一手来源 | 回 arXiv / DOI / 项目页核对数值与声明 |
 | 开源边界 | 部分开源（openpi；完整数据与训练管线未全部公开） |
-| 本库定位 | 详情编译页；深入公式与实验表读原文 |
+| 官方代码与权重 | [openpi](https://github.com/Physical-Intelligence/openpi) 提供 π₀.₅ 基础及 LIBERO、DROID checkpoint，并含训练、推理示例 |
 
 ## 源码运行时序图
 
-**不适用**（部分开源（openpi；完整数据与训练管线未全部公开））。若后续官方发布可运行训练/推理入口，应补 `sources/repos/` 并更新本图。
+openpi 已提供可运行的 π₀.₅ 推理与微调入口；代码公开，但原始预训练数据未全部公开。下图按仓库 README 的策略服务路径概括，机器人侧仍需适配观测与动作接口。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Robot as Robot Client / Adapter
+  participant Server as serve_policy.py
+  participant Config as pi05_droid / pi05_libero Config
+  participant Model as π₀.₅ Policy
+  participant Store as openpi-assets Checkpoint
+  Robot->>Server: observation + prompt
+  Server->>Config: load model configuration
+  Server->>Store: download checkpoint if needed
+  Store-->>Model: π₀.₅ weights
+  Server->>Model: policy.infer(example)
+  Model-->>Server: action chunk
+  Server-->>Robot: action chunk
+  Robot->>Robot: adapt actions and execute
+```
+
+该路径从仓库的 scripts/serve_policy.py 和 pi05_droid / pi05_libero 配置开始；具体机器人 IO 由客户端集成。
 
 ## 实验与评测读法
 
@@ -109,12 +134,12 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 - 开源状态：部分开源（openpi；完整数据与训练管线未全部公开）。
 - 与本库已有相邻页交叉阅读，避免重复造页。
 - 数值、消融与许可以一手来源为准；本页是编译索引。
-- 若官方后续补齐代码/数据，应回写 `sources/` 与本节开源字段。
+- openpi 已发布可运行训练/推理代码及部分 checkpoint；完整预训练数据与完整训练数据配方仍未全部公开。
 
 ## 局限与风险
 
 - 后训练集中使用与目标家庭机器人最相关的数据，加入flow-matching action expert，并包含人类监督者给出的高层子任务。运行时，模型以较慢节奏输出“走到水槽前”、“拿起海绵”这类语义动作，再以当前子任务为条件高频生成action chunk。这是模型内的分层控制：两层共享表示，但不用同一频率重做全部决策。
-- 勿把 HMI 解读中的工程判断直接写成论文作者承诺。
+- openpi 公开的是可运行代码与特定 checkpoint，不能据此推断原始预训练数据和完整数据混合物均已公开。
 - 经典控制论文与现代 RL/VLA 论文的「可复现」标准不同，选型时分开评估。
 
 ## 与其他工作对比
@@ -130,6 +155,7 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [Knowledge Insulation（知识隔离）](./paper-knowledge-insulation.md) — 解释 π₀.₅ 异构 co-training 中 FAST 监督与连续动作专家的梯度隔离
 - [π0-policy](../methods/π0-policy.md)
 - [pi07-policy](../methods/pi07-policy.md)
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-VLA 1.0 / 2.0 与 LingBot-VA 论文均以 π₀.₅ 为对照基线
@@ -152,6 +178,8 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 
 ## 参考来源
 
+- [官方 π₀.₅ 项目页归档](../../sources/sites/pi05-open-world-generalization.md)
+- [openpi 官方仓库归档](../../sources/repos/openpi.md)
 - [sources/papers/hmi_p059_pi05-open-world-vla.md](../../sources/papers/hmi_p059_pi05-open-world-vla.md)
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格 chunk 对照
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
@@ -161,6 +189,8 @@ FAST token保留一段动作的时序结构，使动作数据可以和“下一�
 ## 推荐继续阅读
 
 - [arXiv:2504.16054](https://arxiv.org/abs/2504.16054)
-- [项目/官方解读](https://www.physicalintelligence.company/blog/pi05)
+- [Physical Intelligence π₀.₅ 项目页](https://www.pi.website/blog/pi05)
+- [论文 PDF](https://www.pi.website/download/pi05.pdf)
+- [Knowledge Insulation 技术说明](https://www.pi.website/research/knowledge_insulation)
 - [代码](https://github.com/Physical-Intelligence/openpi)
 - [HMI 逐篇解读 P059](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P059.md)
