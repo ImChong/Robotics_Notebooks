@@ -17,6 +17,7 @@ related:
   - ../entities/paper-from-agi-to-asi.md
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
+  - ../entities/paper-rrsi-2609-24972.md
   - ../entities/rsi-harness.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-rsi-survey-2607-07663.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
+  - ../../sources/papers/rrsi_arxiv_2609_24972.md
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
@@ -103,6 +105,12 @@ flowchart LR
 1. **失速 + 扩散：** 指数实为 S 曲线，或能源/芯片卡住。作者判为最不可能。即使能力冻结，今日模型的扩散仍会改经济（文内：漏洞发现已快过修补）。
 2. **复合效率、人仍掌舵：** 最可能。组织要学会拆 Amdahl 瓶颈（代码审查、想法过载）。
 3. **完全 RSI：** 进度≈算力与算法效率。对齐可能被后继者改善或在代际复合恶化。机器人被预期跟随，但社会时钟不跟随。
+
+### Harness 自进化的正则化：RRSI
+
+[RRSI（arXiv:2609.24972）](../entities/paper-rrsi-2609-24972.md)研究的是**冻结模型周围的 agent harness**：它不把可编辑对象缩小到某几个提示词，而是保留 prompt、工具、工作流、记忆等开放编辑空间，约束搜索提案与候选接纳。提案侧逐步减少单个候选可打包的改动数，并把完整修改历史交给提案器；筛选侧先排除基准泄漏，再要求候选超过基线噪声区间、用实测收益支付额外 token 成本，并移除近期不再贡献收益的组件。
+
+这使 RRSI 落在**有界 harness RSI**：被优化的是脚手架，底座模型保持冻结。项目页报告演化集与未见基准都有平均提升，同时策略 token 成本低于无正则化搜索；这说明迁移与成本可以同时作为 accept 条件，不等于模型权重本身变强。官方 [Google Research 仓库](../../sources/repos/rrsi.md)包含可运行搜索框架与三类 benchmark adapter；复现仍需要配置模型服务、各 benchmark 的独立运行环境与评测凭证。
 
 ## 工程实践
 
