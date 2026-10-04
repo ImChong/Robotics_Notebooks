@@ -12,6 +12,7 @@ related:
   - ../entities/paper-4dof-pen-sorting.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/paper-flying-knots.md
+  - ../entities/paper-prior-evolution-aerial-grasping.md
   - ../entities/paper-ropeformer.md
   - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
