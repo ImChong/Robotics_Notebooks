@@ -3,6 +3,7 @@ type: entity
 tags: [osint, geospatial, visualization, dashboard, repo]
 status: complete
 updated: 2026-10-04
+institutions: [independent-maintainer]
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ./cmu-mscv-semantic-3d-mapping.md
