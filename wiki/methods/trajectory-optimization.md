@@ -14,6 +14,7 @@ related:
   - ../entities/schedulestream.md
   - ../entities/paper-faro-feasibility-aware-robot-motion-optimization.md
   - ../entities/paper-ahmp.md
+  - ../entities/paper-prior-evolution-aerial-grasping.md
   - ../entities/paper-se3-tangent-to.md
 sources:
   - ../../sources/papers/optimal_control.md
