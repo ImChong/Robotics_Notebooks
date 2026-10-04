@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [robotics, visualization, multimodal, ros2, data-engineering, repo]
+tags: [robotics, visualization, multimodal, ros2, data-engineering, repo, rerun]
 status: complete
 updated: 2026-10-04
 related:
