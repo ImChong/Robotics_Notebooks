@@ -86,6 +86,7 @@ related:
   - ../entities/paper-xr2-bimanual-household.md
   - ../entities/paper-artis-gripper.md
   - ../entities/paper-gvla-gripper-aware-vla.md
+  - ../entities/paper-blind-grasp-reflex.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -529,6 +530,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [机器人 In-Context Learning（概念 taxonomy）](../concepts/robot-in-context-learning.md) — 示范/记忆/metadata/TTT 四类「上下文」拆解；长程未见视频 ICL 见 [S1](../entities/skild-s1.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
+- [Blind Grasp Reflex](../entities/paper-blind-grasp-reflex.md) — 将手臂到达与只依赖本体感觉的灵巧手抓取分开
 
 ## 参考来源
 
