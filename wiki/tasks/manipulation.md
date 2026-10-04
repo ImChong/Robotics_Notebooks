@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-01
+updated: 2026-10-04
 related:
   - ../entities/paper-imitator-game.md
   - ../entities/paper-flatlab.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-4dof-pen-sorting.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../entities/paper-flying-knots.md
+  - ../entities/paper-prior-evolution-aerial-grasping.md
   - ../entities/paper-ropeformer.md
   - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
@@ -158,6 +159,8 @@ flowchart TD
 ```
 
 ## 子问题地图
+
+空中抓取把轨迹初始化与真实任务成功对齐的案例见 [Prior Evolution and Task Alignment for Aerial Grasping](../entities/paper-prior-evolution-aerial-grasping.md)。
 
 Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触 → 规划 → 学习 → 评测的一串子问题；下表按子问题给出本库入口页。
 
