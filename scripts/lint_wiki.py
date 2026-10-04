@@ -44,6 +44,8 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from markdown_it import MarkdownIt
+
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
@@ -755,6 +757,22 @@ def strip_code_blocks(content: str) -> str:
     return content
 
 
+def find_mermaid_placeholder_lines(content: str) -> list[int]:
+    """找出未转换的 Mermaid 围栏占位符，忽略真正代码块中的示例。"""
+    candidates = [
+        i
+        for i, line in enumerate(content.splitlines())
+        if re.fullmatch(r"\s*§{3,}mermaid\s*", line, re.IGNORECASE)
+    ]
+    if not candidates:
+        return []
+    code_lines: set[int] = set()
+    for token in MarkdownIt("commonmark").parse(content):
+        if token.type in {"fence", "code_block"} and token.map:
+            code_lines.update(range(*token.map))
+    return [i + 1 for i in candidates if i not in code_lines]
+
+
 # 从文件中提取所有内部链接目标（相对路径 .md 文件）
 def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     targets = []
@@ -878,6 +896,7 @@ def _empty_results() -> dict[str, Any]:
         "invalid_topic": [],
         "wikilink_syntax": [],
         "unclosed_autolinks": [],
+        "mermaid_placeholder_fences": [],
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
         "duplicate_arxiv": [],
@@ -907,6 +926,11 @@ def _check_per_page(
         resolved = page.resolve()
         content = page.read_text(encoding="utf-8")
         rel = page.relative_to(REPO_ROOT)
+
+        for line_no in find_mermaid_placeholder_lines(content):
+            results["mermaid_placeholder_fences"].append(
+                f"{rel}:{line_no}: Mermaid 占位围栏须替换为 ```mermaid"
+            )
 
         if page.name.lower() not in ("readme.md", "index.md"):
             if not inbound.get(resolved):
@@ -2351,6 +2375,7 @@ def format_report(results: dict[str, Any]) -> str:
         ),
         ("broken_links", "断链（内链目标不存在）", "❌"),
         ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
+        ("mermaid_placeholder_fences", "Mermaid 围栏仍为占位符（图表不会渲染）", "❌"),
         (
             "unclosed_autolinks",
             "未闭合的 <https://...> 自动链接（表格/列表行缺少结尾 >）",
