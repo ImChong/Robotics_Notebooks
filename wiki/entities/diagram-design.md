@@ -13,8 +13,9 @@ tags:
   - agent-infrastructure
   - open-source
 status: complete
-updated: 2026-09-08
+updated: 2026-10-04
 related:
+  - ./mermaid-js.md
   - ./archify.md
   - ./drawio-scientific-illustrator.md
   - ./next-ai-draw-io.md
@@ -50,6 +51,8 @@ summary: "Diagram Design（cathrynlavery/diagram-design）是面向 Claude Code�
 | LLM | Large Language Model | 代理读 Skill 规约并生成/重绘图，不是运行时渲染引擎 |
 
 ## 为什么重要
+
+本站使用的文本式图表渲染库见 [Mermaid.js](./mermaid-js.md)；本页 Diagram Design 读取其语义后重绘为独立 HTML/SVG。
 
 1. **补 wiki 页内 Mermaid 的「对外沟通层」。** 本站方法页用 Mermaid 表达 **知识结构**（版本友好、lint 可检）；组会、博客、README、赞助页常需要 **editorial 密度与品牌色**。Diagram Design 专司这一层，不替代 git 内 Mermaid。
 2. **机器人栈同样需要「讲清楚」的五类图。** 仿真集群 / 策略服务 / 真机安全层（architecture）、遥操作→数据集→训练→评测（dataflow / process）、策略状态机（state）、多团队泳道（swimlane）、影响×工作量象限（quadrant）——Skill 已内置版式与 **semantic patterns**（队列、策略 trace、信任边界等）路由。
