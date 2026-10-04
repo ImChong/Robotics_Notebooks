@@ -10,8 +10,9 @@
 - **Hugging Face：** <https://huggingface.co/Niugan/ChunkTrust>（README badge；QHA checkpoint）
 - **机构：** 清华大学；北京智源人工智能研究院（BAAI）；中国人民大学等（见页内作者列表）
 - **入库日期：** 2026-10-01
+- **最后核查：** 2026-10-04
 
-## 步骤 2.5 开源核查（2026-10-01）
+## 步骤 2.5 开源与复现核查（2026-10-04）
 
 | 项 | 结论 |
 |----|------|
@@ -19,6 +20,7 @@
 | Hugging Face | **Niugan/ChunkTrust** — QHA head 与 `scripts/download_asset.py` 下载脚本 |
 | Base VLA 权重 | **非本仓分发**；RoboTwin / RoboCasa / OpenPI 等按 backend 文档自备 |
 | **判定** | **已开源（AHS 库 + QHA 权重 + 评测配置）**；策略 backbone 走各 benchmark 原链路 |
+| 结果复现 | HF 模型卡披露两处稿件与可用结果记录差异；没有宣称完成完整 benchmark 的新一轮重跑。QHA head 需要匹配的冻结 base policy。 |
 
 ## 页面结构归纳
 
