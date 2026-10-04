@@ -124,6 +124,7 @@ flowchart LR
 - [TouchWorld](../wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉基础模型：触觉世界模型预测接触子目标 + TRT 高频残差，人形长程六任务真机成功率 65.0%（干净）/ 53.7%（人为扰动）
 - [REGRIND](../wiki/methods/regrind-retargeting-guided-rl.md) — 单次人手–物体动捕重定向 + 残差 RL 跟踪物体关键点，零样本部署 LEAP/WUJI 完成剪刀、螺丝刀等 contact-rich 工具操作
 - [ADEPT](../wiki/entities/paper-adept-dexterity.md)（NVIDIA/密歇根）— 16 primitive reposing RL 预训练 + BC/critic-warmup/conservative PPO 后训练 + 两阶段 vision distill；Kuka–Allegro 与 Flexiv–Sharpa zero-shot 真机，触觉 8/10 vs 纯视觉 3/10；代码 Coming soon
+- [Blind Grasp Reflex](../wiki/entities/paper-blind-grasp-reflex.md) — 臂部到达与手部接触控制解耦：20-DoF 手策略仅用关节位置/命令误差历史做本体感觉抓取并输出抓取分数；仿真含 92% 动态抓取，官方代码待发布
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么
