@@ -4469,7 +4469,7 @@
 - [RekaDaily-10k（家务第一人称视频数据集）](wiki/entities/rekadaily-10k-dataset.md) — RekaDaily-10k** 是 Reka AI 经 Claru 付费采集网络发布的 **无剧本第一人称家务 /  `📅unknown` `[entity_page]`
 - [Remotion](wiki/entities/remotion.md) — Remotion**（remotion-dev/remotion）是用 **React + TypeScri `📅unknown` `[entity_page]`
 - [GO2 Backflip（Robot-Nav / PPO-backflip）](wiki/entities/repo-go2-backflip.md) — GO2 Backflip** 是 Robot-Nav 社区在 **Unitree Go2** 上开源的 **高动态后空翻** 全流程 `📅unknown` `[entity_page]`
-- [rerun](wiki/entities/rerun-io.md) — rerun](https://github.com/rerun-io/rerun) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
+- [Rerun](wiki/entities/rerun-io.md) — Rerun 是面向机器人与 Physical AI 的多模态数据工具链：用 SDK 或导入器接入多频率数据，在统一时间轴中可视化和查询，并将记录用于预处理与训练数据准备。 `📅unknown` `[entity_page]`
 - [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
 - [OM-1：通才操作策略（Reward AI）](wiki/entities/reward-ai-om1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Reward AI（机器人方向）](wiki/entities/reward-ai-robotics.md) — Reward AI**：聚焦 **人类同速灵巧操作** 的商业实体；对外叙事以 **Omnibody** 全栈为核心——可穿戴采集、统一多模态数据接口、**OM-1** 通才策略与跨工业臂/人形的 `📅unknown` `[entity_page]`
