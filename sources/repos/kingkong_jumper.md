@@ -40,11 +40,11 @@ Jumper 是一台仿蟹式六足机器人。主仓包含 MuJoCo 资产、mjlab �
 
 ## 复现入口
 
-`bash
+```bash
 python scripts/train.py --task jumper.tripod --num_envs 4096
 python scripts/play.py --task jumper.tripod --checkpoint <checkpoint>
 python scripts/export.py --task jumper.tripod --checkpoint <checkpoint>
-`
+```
 
 命令参数以当前配置和脚本 --help 为准。教程还覆盖 jumper.jump 与 jumper.dance；跳跃/舞蹈策略依赖随策略契约提供的参考轨迹，不能只复制权重文件便视为完整部署包。
 
