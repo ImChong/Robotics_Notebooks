@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-04
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -49,6 +49,7 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
   - ../entities/open-duck-mini.md
+  - ../entities/jumper-crab-robot.md
   - ../entities/disney-holotile.md
   - ../entities/disney-research-la.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
@@ -377,6 +378,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Jumper 六足机器人与训练部署栈](../entities/jumper-crab-robot.md) — 开源 MuJoCo/mjlab、PPO 与导出/打包工作流；板端和真机闭环待验证
 - [senlanke 周更论文索引（2026-09-21–25）](../overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 腿式 35 篇 arXiv 唯一节点
 - [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 腿式 28 篇 arXiv 唯一节点
 
