@@ -55,7 +55,7 @@ summary: "Blind Grasp Reflex 将臂部到达与手部接触控制拆分；20-DoF
 
 ### 闭环流程
 
-§§§mermaid
+```mermaid
 flowchart TD
     arm["独立手臂控制器"]
     command["掌心目标与抓取使能"]
@@ -73,7 +73,7 @@ flowchart TD
     robot --> feedback
     hand --> score
     score --> arm
-§§§
+```
 
 手臂模块和手部策略之间通过“抓取使能/释放”与“抓取分数”双向协作。上图是论文的系统接口归纳，不表示公开仓库中存在一键运行的实现。
 

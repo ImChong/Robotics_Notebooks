@@ -2,3 +2,4 @@
 # Tests 工作流仍使用 requirements-dev.txt
 numpy>=2.5.3
 pyyaml>=6.0.3
+markdown-it-py>=4.0.0,<5
