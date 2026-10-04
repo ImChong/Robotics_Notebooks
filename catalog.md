@@ -1797,7 +1797,7 @@
 - [HumanCLAW：VLM 能否通过身体行动？](wiki/entities/paper-humanclaw.md) — HumanCLAW**（*Can Vision-Language Models Act Through a Body?*，[arXiv:2607.27180](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Humanoid Badminton：从有限人类动作学习动态球拍技能](wiki/entities/paper-humanoid-badminton-dynamic-racket-skills.md) — Humanoid Badminton**（*Learning Dynamic Racket Skills from Limited Human Motion Data*，[arXiv:2609.3 `📅unknown` `[entity_page]`
 - [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
-- [果蝇启发 RNN 控制器（arXiv:2609.27001）](wiki/entities/paper-humanoid-fly-inspired-rnn.md) — 果蝇启发 RNN 控制器**（*Humanoid Locomotion with a Fly-Inspired Recurrent Controller*，[arXiv:2609.27001](h `📅unknown` `[entity_page]`
+- [果蝇启发循环控制器的人形行走分析](wiki/entities/paper-humanoid-fly-inspired-rnn.md) — Humanoid Locomotion with a Fly-Inspired Recurrent Controller**（[arXiv:2609.27001](https://arxiv.or `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`
 - [Humanoid Loco-Manipulation Survey（HMI P069）](wiki/entities/paper-humanoid-loco-manipulation-survey.md) — Humanoid Loco-Manipulation Survey**（*Humanoid Locomotion and Manipulation: Current Progress and Ch `📅unknown` `[entity_page]`
