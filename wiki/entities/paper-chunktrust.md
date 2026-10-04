@@ -13,7 +13,7 @@ tags:
   - baai
   - ruc
 status: complete
-updated: 2026-10-01
+updated: 2026-10-04
 arxiv: "2609.39754"
 code: https://github.com/hf618/ChunkTrust
 related:
@@ -165,6 +165,7 @@ sequenceDiagram
 | **对接自有 VLA** | 实现 `predict_with_trace` 返回 `[T,H,D]` velocity + `[H,D]` actions；坐标系与 normalizer 与训练一致（`docs/integration.md`） |
 | **QHA 权重** | `python scripts/download_asset.py qha_pi05_8task_step5000 --destination ...` |
 | **开源状态** | **已开源** — 见 [chunktrust.md](../../sources/repos/chunktrust.md) 与 [Niugan/ChunkTrust](https://huggingface.co/Niugan/ChunkTrust) |
+| **复现状态** | 官方 HF 模型卡记录了已发布结果与稿件之间两处尚未解决的差异，并明确说明没有重新跑完整 benchmark；复现时应核对仓库 manifests、episode outcomes 和对应策略版本。QHA head 必须搭配匹配的冻结 base policy。 |
 
 ## 局限与风险
 
@@ -172,6 +173,7 @@ sequenceDiagram
 - **Flow / denoising 假设：** 论文叙事与实验围绕 **action expert 去噪轨迹**；离散 FAST token 或单步回归策略需单独验证证据定义。
 - **QHA 候选基绑定：** checkpoint 与 `candidate_horizons` 配置不匹配会导致 silent 次优或无效先验。
 - **Base 权重外部依赖：** RoboTwin / RoboCasa / OpenPI 等环境搭建成本仍由 benchmark 决定，非「单 pip 端到端权重」。
+- **结果复现边界：** 官方 HF 模型卡披露结果记录与稿件之间有两处尚未解决的差异，且未声称对完整 benchmark 做过新一轮重跑；引用论文结果时应保留这一限定。
 
 ## 结论
 
@@ -200,6 +202,7 @@ sequenceDiagram
 - [chunktrust-project.md](../../sources/sites/chunktrust-project.md)
 - [chunktrust.md](../../sources/repos/chunktrust.md)
 - [arXiv:2609.39754](https://arxiv.org/abs/2609.39754)
+- [ChunkTrust Hugging Face 模型卡（权重与复现状态）](https://huggingface.co/Niugan/ChunkTrust)
 
 ## 推荐继续阅读
 
