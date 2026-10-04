@@ -10,7 +10,7 @@ tags:
   - eth
   - unitree-g1
 status: complete
-updated: 2026-10-02
+updated: 2026-10-04
 arxiv: "2609.34674"
 related:
   - ../methods/motion-retargeting-gmr.md
@@ -118,18 +118,18 @@ sequenceDiagram
   participant User as 用户
   participant CLI as Retargeting CLI
   participant Ret as GMR stage
-  participant Opt as Window optimizer
+  participant Solver as Window optimizer
   participant Out as PKL outputs
   User->>CLI: 选择输入文件或源目录
   CLI->>Ret: IK、物体缩放与接触目标
   Ret->>Out: 保存 kinematic window
   alt contact mode
-    CLI->>Opt: 窗口 NLP（Pinocchio 与 IPOPT）
-    Opt->>Out: 保存 contact window
+    CLI->>Solver: 窗口 NLP（Pinocchio 与 IPOPT）
+    Solver->>Out: 保存 contact window
   end
   opt 接触修正
     User->>CLI: 在 Viser 编辑接触目标
-    CLI->>Opt: 使用修正目标重新优化
+    CLI->>Solver: 使用修正目标重新优化
   end
 ```
 

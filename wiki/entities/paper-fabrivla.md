@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, meta-world, internvl, umac, youibot, mese, lerobot]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-04
 arxiv: "2607.08575"
 code: https://github.com/Youi-FabriX/FabriVLA
 related:
@@ -81,8 +81,10 @@ flowchart TB
     deep["layer 14 语义"]
     shallow["layer 6 空间"]
     fuse["concat_proj 融合 context C"]
-    rgb --> vlm
-    lang --> vlm
+    rgb --> deep
+    rgb --> shallow
+    lang --> deep
+    lang --> shallow
     deep --> fuse
     shallow --> fuse
   end
