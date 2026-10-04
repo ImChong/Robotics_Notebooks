@@ -66,7 +66,7 @@ summary: "Robocurve 的开源 Physical AI 评测框架：以 Task/Scene、Policy
 
 ### 2. 一次评测的数据流
 
-~~~mermaid
+```mermaid
 flowchart LR
   task["Task: scenes + horizon + scorer"] --> check{"Compatibility preflight"}
   policy["Policy: VLA / LLM / code"] --> check
@@ -79,7 +79,7 @@ flowchart LR
   scorer --> eval["EvalLog JSON: metrics + samples + status"]
   rollout -. optional .-> rerun["Rerun stream / RRD"]
   check -->|"mismatch"| error["CompatibilityError before motion"]
-~~~
+```
 
 流程关键点：
 
@@ -92,7 +92,7 @@ flowchart LR
 
 Robocurve 的 [Unitree G1 adapter](https://github.com/robocurve/inspect-robots-unitree-g1) 是独立于核心仓的插件。README 描述的配置注册 g1_arms 本体和 gr00t policy，将策略与本体映射到 **16 维绝对关节位置**契约；G1 处于站立姿态，臂目标通过 rt/arm_sdk 发布并逐步混入已运行的全身控制器。
 
-~~~mermaid
+```mermaid
 flowchart LR
   scene["Task Scene: language goal + initial state"] --> policy["GR00T PolicyServer"]
   camera["G1 head camera: D435i"] --> embodiment["g1_arms adapter: observe + arm-sdk"]
@@ -102,7 +102,7 @@ flowchart LR
   preflight --> rollout["arm targets: rt/arm_sdk"]
   rollout --> controller["Existing full-body controller: balance, legs, waist"]
   controller --> trial["TrialRecord + scorer"]
-~~~
+```
 
 **适用范围读法：** 这里的“全身控制器”指机器人原有的平衡、腿和腰控制仍在运行；Inspect Robots G1 适配器暴露的是双臂 manipulation 评测接口。它并未因此接管步态或完整 humanoid locomotion。具体策略契约、checkpoint tag、动作频率与夹爪配置见[G1 adapter 来源归档](../../sources/repos/robocurve_inspect_robots_unitree_g1.md)。
 
