@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-04
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -69,6 +69,7 @@ sources:
   - ../../sources/repos/plfm_radar.md
   - ../../sources/repos/oomwoo.md
   - ../../sources/papers/offroad_global_nav_arxiv_2607_23743.md
+  - ../../sources/repos/osiris-ai.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
 ---
 
@@ -222,6 +223,7 @@ flowchart TB
 - **把 SLAM 当规划器**：SLAM 只提供 **位姿与地图**；路径跟踪仍在 Nav2 controller 或 Autoware 控制模块。
 - **2D / 3D 混用不投影**：3D LIO 输出需 **投影或切片** 才能喂给经典 2D costmap，或使用 nvblox 等 3D 代价源。
 - **OpenVLA 与 Nav2 二选一**：VLA 管 **操作空间**；底盘导航仍常需 Nav2，除非端到端策略直接输出底盘速度且已安全验证。
+- **把全球情报图层当成本体定位地图**：[OSIRIS](../entities/osiris-global-osint.md) 汇聚公开地理信息，可作全局情境可视化参考；它不提供机器人 SLAM 位姿或可直接交给 Nav2 的局部代价地图。
 
 ## 参考来源
 
