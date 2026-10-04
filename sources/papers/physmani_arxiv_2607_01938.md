@@ -6,11 +6,17 @@
 - **类型：** paper
 - **venue：** ECCV 2026
 - **arXiv：** <https://arxiv.org/abs/2607.01938>（PDF：<https://arxiv.org/pdf/2607.01938v1>）
-- **代码：** <https://github.com/vLAR-group/PhysMani>（当前为项目 landing page；代码/数据/权重尚未发布）
+- **代码：** <https://github.com/vLAR-group/PhysMani>（截至 2026-10-04 已含训练/仿真评测代码与下载脚本；pre-release 范围见仓库 README）
+- **数据 / checkpoints：** <https://huggingface.co/datasets/vLAR/PhysMani-Bench>（官方 README 提供 PhysMani-Bench 与发布权重下载脚本）
 - **机构：** vLAR Group，香港理工大学（PolyU）；Astribot（中国）
 - **作者：** Peng Yun, Shouwang Huang, Hao Li, Jinxi Li, Jianan Wang, Bo Yang（通讯）
 - **入库日期：** 2026-07-14
+- **最近复核：** 2026-10-04
 - **一句话说明：** 面向 **非结构化 3D 环境中快速动态目标操作** 的轻量框架：以 **在线优化的无散度 3D Gaussian 速度场世界模型** 预测物理可信的未来场景动态，再以 **可学习 token 交叉注意力** 将预测注入 **3DFA 策略骨干**；提出 **PhysMani-Bench（16 任务）** 并在仿真与 **Astribot S1** 真机动态任务上显著优于 3D 策略与 π₀.₅ 等强基线。
+
+## 开源状态复核（2026-10-04）
+
+官方仓库从早期项目说明更新为 pre-release：提供 PhysMani 训练与仿真评测代码、PhysMani-Bench 数据下载脚本、checkpoint 下载脚本及 Docker 环境。当前版本尚未打包所有比较基线与重构后的代码布局；数据和发布权重入口为 [vLAR/PhysMani-Bench](https://huggingface.co/datasets/vLAR/PhysMani-Bench)。依赖版本锁定于 [reproducibility/versions.json](https://github.com/vLAR-group/PhysMani/blob/main/reproducibility/versions.json)。
 
 ## 摘要级要点
 
