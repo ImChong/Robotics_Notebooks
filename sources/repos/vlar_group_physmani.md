@@ -10,16 +10,20 @@
 - **venue：** ECCV 2026
 - **许可证：** CC BY-NC-SA 4.0
 - **入库日期：** 2026-07-14
-- **一句话说明：** **PhysMani** 官方 GitHub 入口：physics-principled **3D Gaussian 世界模型** + future-aware **3DFA 策略** 的动态操作框架；含 **PhysMani-Bench（16 任务）** 说明。**当前 release 仅为 landing page**，代码、数据与预训练权重尚未公开。
+- **一句话说明：** **PhysMani** 官方 GitHub 入口：physics-principled **3D Gaussian 世界模型** + future-aware **3DFA 策略** 的动态操作框架；含 **PhysMani-Bench（16 任务）** 说明。截至 2026-10-04，官方 pre-release 已含 PhysMani 训练/仿真评测代码、PhysMani-Bench 数据下载脚本及 checkpoint 下载脚本；数据与发布 checkpoint 见 [Hugging Face](https://huggingface.co/datasets/vLAR/PhysMani-Bench)。比较基线与重构版代码结构暂未打包。
 
-## Release Status（截至 2026-07-14）
+## Release Status（截至 2026-10-04）
 
 | 组件 | 状态 |
 |------|------|
-| README / 引用 / License | 已公开 |
-| 训练与推理代码 | **未发布** |
-| PhysMani-Bench 数据 | **未发布** |
-| 预训练模型 | **未发布** |
+| README / License / 引用 | 已公开 |
+| PhysMani 训练与仿真评测代码 | 已公开（pre-release；通过官方仓库及锁定的 submodules 运行） |
+| PhysMani-Bench 数据 | 已公开下载入口：[Hugging Face](https://huggingface.co/datasets/vLAR/PhysMani-Bench) |
+| 发布 checkpoint | 已公开下载脚本与 HF 数据集入口 |
+| 3DDA / ManiGaussian / π0 等比较基线 | 尚未纳入当前 release |
+| 重构版代码结构 | 尚未发布 |
+
+训练默认使用 3 GPU；Docker runtime 会编译 CUDA 扩展。第三方 submodule 的依赖与版本见 [reproducibility/versions.json](https://github.com/vLAR-group/PhysMani/blob/main/reproducibility/versions.json)。
 
 ## 与本仓库知识的关系
 

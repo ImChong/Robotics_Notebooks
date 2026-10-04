@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, manipulation, 3dgs, imitation-learning, dynamic-manipulation, polyu, eccv-2026]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-04
 arxiv: "2607.01938"
 venue: ECCV 2026
 code: https://github.com/vLAR-group/PhysMani
@@ -24,7 +24,7 @@ summary: "PhysMani（ECCV 2026）：在线优化的无散度 3D Gaussian 速度�
 
 **PhysMani**（*Physics-principled 3D World Model for Dynamic Object Manipulation*，arXiv:2607.01938，**ECCV 2026**，[代码](https://github.com/vLAR-group/PhysMani)）由 **香港理工大学 vLAR Group** 与 **Astribot** 提出：在 **非结构化 3D 环境** 中操纵 **快速运动目标** 时，将 **physics-principled 3D Gaussian 世界模型** 与 **future-aware 动作策略** 并行耦合——世界模型 **在线** 学习 **无散度 Gaussian 速度场** 以低延迟预报物理可信的未来动态，策略侧通过 **可学习 token 交叉注意力** 把预报注入 **3D FlowMatch Actor（3DFA）** 决策。
 
-> **发布状态：** 官方仓库当前仅为 **项目 landing page**；训练代码、PhysMani-Bench 数据与权重 **尚未公开**（见 [仓库归档](../../sources/repos/vlar_group_physmani.md)）。
+> **发布状态（截至 2026-10-04）：** 官方仓库已提供 PhysMani 训练与仿真评测代码、PhysMani-Bench 数据下载脚本和 checkpoint 下载脚本；数据与发布权重托管于 [Hugging Face](https://huggingface.co/datasets/vLAR/PhysMani-Bench)。当前为 pre-release：基线实现（3DDA、ManiGaussian、π0 等）及重构版代码结构尚未包含；复现依赖官方 Docker 环境和锁定的 submodule commits。许可证标为 **CC BY-NC-SA 4.0**。
 
 ## 一句话定义
 
@@ -85,6 +85,49 @@ flowchart TB
   pred --> knn
   flow --> ik[逆运动学 → 关节执行]
 ```
+
+## 源码运行时序图
+
+官方 README 当前给出三个分开的评测进程：评测驱动、世界模型服务和策略服务。数据与 checkpoint 先在宿主机下载，再由 Docker runtime 中的 RLBench/3D Diffuser Actor 评测脚本加载。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Host as Host scripts
+  participant HF as Hugging Face dataset
+  participant Docker as PhysMani Docker runtime
+  participant Eval as gpu0.sh evaluation runner
+  participant WM as world model server
+  participant Policy as policy server
+
+  Host->>HF: download PhysMani-Bench and checkpoints
+  HF-->>Host: data archives and model checkpoints
+  Host->>Docker: build image and run setup-runtime.sh
+  Host->>Eval: launch gpu0.sh in evaluation terminal
+  Host->>WM: launch world server on port 8866
+  Host->>Policy: launch policy server on port 8765
+  Eval->>WM: request future scene dynamics
+  WM-->>Eval: predicted Gaussian velocity features
+  Eval->>Policy: request future-aware action
+  Policy-->>Eval: predicted keypose action
+  Eval-->>Host: eval_logs for 5 checkpoints, 16 tasks, 100 episodes per task
+```
+
+以上顺序按当前 README 的评测入口和服务脚本归纳；具体端口、checkpoint 选择和 submodule revisions 以 [官方复现清单](https://github.com/vLAR-group/PhysMani/blob/main/reproducibility/versions.json) 为准。
+
+## 工程实践与复现
+
+| 阶段 | 官方入口 | 关键边界 |
+|------|----------|----------|
+| 拉取代码 | `git clone --recursive https://github.com/vLAR-group/PhysMani.git` | 需初始化 3D Diffuser Actor、RLBench、PyRep 等 submodules |
+| 准备环境 | `docker build -t physmani:v0.1 .`；容器内运行 `docker/setup-runtime.sh` | 按 GPU 设置 CUDA arch，并编译 CUDA extensions |
+| 下载数据 | `bash scripts/download_physmani_bench.sh all --extract` | 数据托管于 [PhysMani-Bench](https://huggingface.co/datasets/vLAR/PhysMani-Bench) |
+| 下载权重 | `bash scripts/download_physmani_checkpoints.sh --extract` | 下载 release checkpoints；不是所有 baseline 的权重 |
+| 训练 | `train_3darf.sh` 预训练 100k，再运行 `train_3dafdprf+velattn.sh` 继续训练 100k | 默认 `ngpus=3`；训练和评测 commit 记录在版本 manifest |
+| 评测 | `gpu0.sh`、`eval_sim_3dafdprf_world_server.sh`、`eval_sim_3dafdprf_policy_server.sh` | README 记载 5 个 checkpoints × 16 tasks × 100 episodes |
+
+- **发布状态（截至 2026-10-04）：** PhysMani 自身训练与仿真评测代码、benchmark 数据和 checkpoint 下载入口现已公开；3DDA / ManiGaussian / π0 等比较基线和重构版代码结构不在当前 pre-release 范围。
+- **许可证：** 官方仓库标注 CC BY-NC-SA 4.0；商用前应核对该许可证以及第三方 submodule 各自的许可。
 
 ## PhysMani-Bench（16 任务）
 
@@ -149,7 +192,8 @@ flowchart TB
 - **误区：** 把 PhysMani 当作 **通用 VLA**——核心是 **3D IL + 3DGS 物理 WM**，语言仅作任务条件，未走大规模 VLM 预训练路线。
 - **误区：** 认为 **2D 光流** 可替代 3D 动态——**3DFA-OF** 相对 3DFA **无增益**，仍远低于 PhysMani。
 - **局限：** 依赖 **多固定 RGB-D** 与 **脚本专家数据**；WM 在线优化仍占 **~200 ms**，与极高速交互（如乒乓球）仍有差距。
-- **局限：** **代码/数据未发布**（2026-07），复现须等待官方 release；Astribot 真机设置与 Franka 仿真存在 **域差**。
+- **开放范围：** 官方 pre-release 已开放 PhysMani 自身训练/评测入口、PhysMani-Bench 与发布 checkpoint；对比基线并未全部打包，训练默认需要 **3 GPU**，运行环境由 Docker 与锁定依赖约束。
+- **真机边界：** 当前真机结果来自 Astribot S1 双指臂、4 台固定 RGB-D 相机和 5 Hz 控制；与 Franka 仿真之间仍存在 **域差**。
 
 ## 与相邻路线对比
 
