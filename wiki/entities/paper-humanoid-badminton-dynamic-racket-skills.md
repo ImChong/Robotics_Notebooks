@@ -28,10 +28,12 @@ summary: "Humanoid Badminton（arXiv:2609.31840）：以任务随机化扩增稀
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
 | RL | Reinforcement Learning | 通过任务奖励训练技能与来球规划器 |
+| PPO | Proximal Policy Optimization | 论文中用于策略优化的强化学习算法 |
+| AMP | Adversarial Motion Prior | 对照基线；从动作数据学习对抗式运动先验 |
 | MoCap | Motion Capture | 真机部署时提供羽毛球和机器人基座位置 |
 | SR | Success Rate | 成功回球的发球比例 |
 | AC | Average Consecutive Hits | 连续成功回球次数的平均值 |
-| JFID | Jerk-based Fréchet Inception Distance | 本文用于比较生成动作与技能先验分布的指标 |
+| JFID | Joint FID (Fréchet Inception Distance) | 比较策略动作与 Stage 1 正样本动作分布的距离 |
 
 ## 为什么重要
 
