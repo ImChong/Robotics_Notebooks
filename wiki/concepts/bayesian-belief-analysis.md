@@ -11,12 +11,13 @@ related:
   - ./generalized-value-functions.md
   - ../methods/reinforcement-learning.md
   - ../entities/richard-sutton.md
+  - ../entities/paper-cortical-knowledge-word-learning.md
 sources:
   - ../../sources/papers/bayesian_analysis_rl_primary_refs.md
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/blogs/sutton_one_step_trap.md
 summary: "贝叶斯分析在机器人与 RL 中指用 belief（状态后验分布）递推不确定性并支撑决策；与 GVF 直接长期预测形成方法论对照。"
-updated: 2026-09-15
+updated: 2026-10-05
 ---
 
 # Bayesian Belief Analysis（贝叶斯信念分析）
@@ -107,6 +108,8 @@ flowchart TD
 - [Kalman Filter](../formalizations/kalman-filter.md) — 线性高斯 Bayes 滤波
 - [Generalized Value Functions](./generalized-value-functions.md) — 与 belief 展开相对照的预测性知识路线
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — POMDP 部署与 BRL 探索
+
+- [Cortical knowledge structures guide word concept learning](../entities/paper-cortical-knowledge-word-learning.md) — 用神经先验树建模新词概念的贝叶斯泛化；与本页的 POMDP belief-state 语境不同。
 
 ## 参考来源
 
