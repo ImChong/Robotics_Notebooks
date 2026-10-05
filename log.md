@@ -1,3 +1,5 @@
+## [2026-10-04] lint | 全量 wiki lint：复核 PhysMani 开源更新联动的 4 个陈旧页并 bump updated；Blind Grasp Reflex / 果蝇 RNN 补齐「对比」章节，警告与信息型预警清零
+
 ## [2026-10-04] structural | roadmap/depth-contact-manipulation.md — 接入 Blind Grasp Reflex 手部本体感觉抓取节点
 
 ## [2026-10-04] ingest | 更新 PhysMani 官方 release 与复现入口
