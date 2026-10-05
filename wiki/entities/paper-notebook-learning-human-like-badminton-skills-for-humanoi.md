@@ -12,6 +12,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-notebook-latent.md
   - ./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
+  - ./paper-humanoid-badminton-dynamic-racket-skills.md
   - ./paper-coordinated-badminton-skills-anymal.md
 sources:
   - ../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md
@@ -48,6 +49,7 @@ summary: "LHBS（arXiv:2602.08370）：Imitation-to-Interaction 四阶段渐进 
 - **真机稀缺结果：** 作者称 **首个** 拟人羽毛球技能 **零样本 sim2real**；PM01 受控试验正手挑球 **90%**、反手挑球 **70%** SR（各 10 次）。
 - **与 LATENT 互补：** 同为人形 **球类竞技** 路线，LATENT 解决不完美网球 MoCap + latent 修正；LHBS 解决 **物理击球交互** 与 AMP 稳定，可对照阅读 [LATENT](./paper-notebook-latent.md)。
 - **与 Phybot 退火 RL 对照：** [Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) 走 **无 MoCap 先验** 统一 WBC + 仿真 21 连拍 / 真机人机对打；LHBS 走 **拟人模仿 → 物理交互**。
+- **与潜技能规划路线对照：** [Humanoid Badminton（Dynamic Racket Skills）](./paper-humanoid-badminton-dynamic-racket-skills.md) 通过任务随机化扩增稀疏动作，再按来球状态规划连续潜技能；其真机状态输入依赖动捕。
 
 ## 核心信息
 
