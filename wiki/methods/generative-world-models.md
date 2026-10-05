@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-05
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -81,6 +81,7 @@ related:
   - ../entities/paper-x-world.md
   - ../entities/paper-x-cache.md
   - ../entities/paper-x-foresight.md
+  - ../entities/paper-foredrive.md
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-x-mind.md
   - ../entities/paper-m4world.md
@@ -109,6 +110,7 @@ sources:
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
   - ../../sources/papers/x_world_arxiv_2603_19979.md
   - ../../sources/papers/zyt_world_arxiv_2609_21712.md
+  - ../../sources/papers/foredrive_arxiv_2609_26299.md
   - ../../sources/papers/x_cache_arxiv_2604_20289.md
   - ../../sources/papers/x_foresight_arxiv_2605_24892.md
   - ../../sources/papers/x_mind_arxiv_2606_28758.md
@@ -165,7 +167,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 | 想把世界模型装进策略里 | [WAM 与潜空间](#wam-与潜空间-把世界模型装进策略) | Being-H0.7、MotionWAM、OpenWAM、τ₀-WM |
 | 想用它评策略 / 校准虚实 | [评测沙盒与虚实校准](#评测沙盒与虚实校准) | SC3-Eval、WorldEcho / WorldSync、WALL-SS |
 | 担心画面好看但物理不对 | [物理与几何一致性](#物理与几何一致性) | PhysisForcing、ODEWorld、PhysMani |
-| 做驾驶 / 多智能体 / 数字人 | [领域实例](#领域实例-驾驶-多智能体-数字人) | X-World 系列、M⁴World、Gamma-World |
+| 做驾驶 / 多智能体 / 数字人 | [领域实例](#领域实例-驾驶-多智能体-数字人) | X-World 系列、M⁴World、ForeDrive、Gamma-World |
 | 缺的是仿真资产而不是预测 | [静态 3D 资产](#相邻方向-静态-3d-资产与世界生成) | HomeWorld、InfiniteDiffusion、World Labs |
 | 看到别处也叫「世界模型」 | [术语辨析](#术语辨析) | RWM（状态动力学） |
 
@@ -391,6 +393,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [X-World](../entities/paper-x-world.md)（arXiv:2603.19979）给出 **动作条件 7 摄** 自车中心视频世界模型，服务端到端智驾可扩展评测；[X-Cache](../entities/paper-x-cache.md)（arXiv:2604.20289）在少步蒸馏后改沿 **跨 chunk** 缓存 DiT block，约 **2.7×** 加速近无损。策略侧 [X-Foresight](../entities/paper-x-foresight.md) 把预测式世界模型嵌进 VLA（chunk-wise 因果 + Renderer），[X-Mind](../entities/paper-x-mind.md) 则把 PWM 压成 **Visual CoT 抽象 sketch** 以上车。规划调度侧 [RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) 在 Encoder–Predictor–Planner 上按 Future Planning Gain 逐步停想象（NAVSIM；代码+CounterDrive 已开、权重未发）。整条链偏 **级联仿真底座 + 联合策略变体**；小鹏系列截至入库日项目页均 **未开源**，适合读设计对照而非复现。
 
+### 规划相关潜在未来（示例：ForeDrive）
+
+[ForeDrive](../entities/paper-foredrive.md) 将 JEPA 式未来潜变量直接送入锚点式 DiT 轨迹规划器：在线编码器与 EMA 目标编码器监督多时域视觉/自车状态潜变量，再以当前优先的门控融合、未来状态注入和 TAB 引导规划。它预测的是规划可用的 latent，而非未来 RGB 视频；主配置报告 NAVSIM v1 **89.9 PDMS**、v2 **90.0 one-stage EPDMS**（指标不可直接横比）。截至 2026-10-05 未找到官方项目页、公开代码或权重；详细机制与复现边界见[独立论文页](../entities/paper-foredrive.md)。
+
 ### 多视角多模态驾驶仿真（示例：M⁴World）
 
 [M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005，美团 × CASIA × BIT）在共享 **DiT** 潜空间上联合生成 **环视视频 + 同步 LiDAR range map**，并把物体条件从几何 box 扩展为 **布局 + SigLIP/文本外观**；经 Teacher Forcing → 4-step ODE → Self-Forcing/DMD → 长视频微调，支撑 **分钟级** 因果流式，并用 VLM judge 评可控性。相对 X-World 的 **动作条件评测底座**，M⁴World 更强调 **物体级交互操纵与相机–LiDAR 多模态**；截至入库日 **未开源**。
@@ -604,3 +610,4 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Wan Team (2025). *Wan* — 见 [sources/papers/wan_video_arxiv_2503_20314.md](../../sources/papers/wan_video_arxiv_2503_20314.md)。
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。
+- ForeDrive（2026）— [arXiv v2](https://arxiv.org/html/2609.26299v2)；来源摘录：[foredrive_arxiv_2609_26299.md](../../sources/papers/foredrive_arxiv_2609_26299.md)。
