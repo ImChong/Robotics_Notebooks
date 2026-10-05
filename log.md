@@ -1,3 +1,15 @@
+## [2026-10-05] ingest | 移动操作
+
+- 新增 Day 4 独立导读与来源索引，涵盖 30 项工作。
+- 补建 CEER2、DexWeave、CompliantWBC、VisForce 详情；Praxis 单独标注来源标题不一致。
+- 标准 Mermaid flowchart；未提交派生 catalog / log 文件。
+
+## [2026-10-05] ingest | 动作跟踪与全身控制
+
+- 新增 Day 3 独立导读与来源索引，涵盖 29 项工作。
+- 补建 H2O、StableMimic 详情；复用库内已有节点。
+- 标准 Mermaid flowchart；未提交派生 catalog / log 文件。
+
 ## [2026-10-05] ingest | 公司路线资料补齐：核查官方项目与源码，区分 AstraBrain WAM/WBC、Redwood 策略/世界模型及各代 Helix；补实薄弱详情，按代码、权重、数据分别记录开放边界，并补全已归档工程入口。
 
 ## [2026-10-05] ingest | cortical-knowledge-word-concept-learning | 单独收录论文与 OSF 来源，记录神经贝叶斯模型证据、LLM 对照和代码核验边界

@@ -1383,6 +1383,7 @@
 - [Learning Locomotion Skills for Cassie: Iterative Design and Sim-to-Real](wiki/entities/paper-cassie-iterative-locomotion-sim2real.md) — 一句话定义**：把 Cassie 行走 RL 从「一次性写 reward」还原成 **多轮迭代**：反复调整 **奖励、观测与动作语义**，并用 **DASS 等机制** 在奖励重写时复用旧策略数 `📅unknown` `[entity_page]`
 - [CAST](wiki/entities/paper-cast-mbrl.md) — CAST**（*Alternating State-Value Targets and Expanded Policy Gradients for Model-Based Reinforcemen `📅unknown` `[entity_page]`
 - [CausalVAE：latent 世界模型的可插拔因果结构模块](wiki/entities/paper-causalvae-world-models.md) — CausalVAE as a Plug-in for World Models**（arXiv:2604.07712，ECC `📅unknown` `[entity_page]`
+- [CEER2：方向可调的人形末端与根部柔顺](wiki/entities/paper-ceer2-directional-compliance.md) — CEER2 在固定全身跟踪策略上叠加分层控制，分别调节末端方向柔顺性和根部顺应行为。 `📅unknown` `[entity_page]`
 - [CFM 多任务蒸馏（arXiv:2609.28107）](wiki/entities/paper-cfm-multitask-distillation.md) — CFM 多任务蒸馏**（*Distillation for Efficient Multitask Manipulation Policies via Conditional Flow Match `📅unknown` `[entity_page]`
 - [CheckVLA](wiki/entities/paper-checkvla-execution-time-verification.md) — CheckVLA** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型 `📅unknown` `[entity_page]`
 - [CHORD（Contact Wrench Guidance for Dexterous Manipulation）](wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md) — CHORD**（*Contact Wrench Guidance from Human Demonstration in Robotic Dexterous Manipulation*，NVIDI `📅unknown` `[entity_page]`
@@ -1403,6 +1404,7 @@
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2 `📅unknown` `[entity_page]`
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav**（*Robots Ask the Way: Communication-Enabled Social Navigation*，[arXiv:2607.01044](https:/ `📅unknown` `[entity_page]`
 - [Compact Visuotactile WM（arXiv:2609.09597）](wiki/entities/paper-compact-visuotactile-wm-lifting.md) — Compact Visuotactile WM**（*Compact Visuotactile World Models for Lifting: Prediction, Reward Align `📅unknown` `[entity_page]`
+- [CompliantWBC：重型人形的全身柔顺](wiki/entities/paper-compliantwbc-heavy-humanoid.md) — CompliantWBC 估计外力 latent，并以有界阻抗目标残差调节冻结的全身策略，实现多身体接触位置的柔顺响应。 `📅unknown` `[entity_page]`
 - [Compression is Routing（重建误差作模块化 LLM 内在路由信号）](wiki/entities/paper-compression-is-routing.md) — Compression is Routing**（*Reconstruction Error as an Intrinsic Signal for Modular Language Models `📅unknown` `[entity_page]`
 - [ConceptGraphs](wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md) — ConceptGraphs** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上 `📅unknown` `[entity_page]`
 - [Concurrent Training of Control Policy and State Estimator](wiki/entities/paper-concurrent-policy-estimator-locomotion.md) — Ji, Mun, Kim & Hwangbo（KAIST，arXiv:2202.05481）** 提出 locomotion `📅unknown` `[entity_page]`
@@ -1475,6 +1477,7 @@
 - [Dexora（arXiv:2605.18722）](wiki/entities/paper-dexora.md) — Dexora**（*Dexora: Open-source VLA for High-DoF Bimanual Dexterity*，[arXiv:2605.18722](https://arxi `📅unknown` `[entity_page]`
 - [DexRoam：从第一视角全身示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam 将无需外部追踪器的人类全身示教映射到机器人动作空间，再与机器人示教联合学习移动双臂灵巧操作策略。 `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
+- [DexWeave：从人体示范学习灵巧人形移动操作](wiki/entities/paper-dexweave-humanoid-loco-manipulation.md) — DexWeave 将身体、手腕、手指和物体交互共同重定向，再以解剖区域注意力策略学习全身灵巧移动操作。 `📅unknown` `[entity_page]`
 - [DF-ExpEnse（arXiv:2606.19656）](wiki/entities/paper-df-expense.md) — DF-ExpEnse**（Calvin Luo, Chen Sun, Shuran Song；Stanford University; Brown University；[arXiv:2606.1 `📅unknown` `[entity_page]`
 - [DIAL](wiki/entities/paper-dial-latent-world-vla.md) — DIAL**（*Decoupling Intent and Action via Latent World Modeling for End-to-End VLA*，Chen et al.，[ar `📅unknown` `[entity_page]`
 - [From Prior to Pro（arXiv:2603.10263）](wiki/entities/paper-dice-rl.md) — From Prior to Pro**（Zhanyi Sun, Shuran Song；Stanford University；[arXiv:2603.10263](https://arxiv.o `📅unknown` `[entity_page]`
@@ -2635,6 +2638,7 @@
 - [POT-VLA（Persistent 3D Object Tokens · 可验证人形 Loco-Manipulation）](wiki/entities/paper-pot-vla.md) — POT-VLA**（*Closing the Loop in Humanoid VLA: Persistent 3D Object Tokens for Verifiable Loco-Manip `📅unknown` `[entity_page]`
 - [A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness（TOG）](wiki/entities/paper-ppf-cubic-barrier-contact-solver.md) — 一句话定义：** 本文提出一种 **三次障碍（cubic barrier）** 接触模型，并在接触矩阵组装时纳入 **弹性模态对动态刚度的贡献（elasticity-inclusive dynam `📅unknown` `[entity_page]`
 - [PPTBench（可编辑幻灯片视觉重建 · arXiv:2609.29718）](wiki/entities/paper-pptbench.md) — PPTBench**（*Can Coding Agents Reconstruct the Visual World through Structured, Editable Slides*，[a `📅unknown` `[entity_page]`
+- [Praxis：第一视角交互先验与全身操作（待核）](wiki/entities/paper-praxis-egocentric-interaction-priors.md) — 文章称该方法从第一视角视频提取手腕、手指及手物接触信息，并连接导航、姿态校准与灵巧操作。 `📅unknown` `[entity_page]`
 - [PredActor（arXiv:2609.24840）](wiki/entities/paper-predactor.md) — PredActor**（*Predictive Action Diffusion for Steerable Onboard Humanoid Control*，[arXiv:2609.24840 `📅unknown` `[entity_page]`
 - [Predict Before You Deploy（arXiv:2609.19441）](wiki/entities/paper-prede.md) — Predict Before You Deploy**（*Offline Prediction of Quantization-Induced Task Degradation for World `📅unknown` `[entity_page]`
 - [PRIMO（arXiv:2609.23610）](wiki/entities/paper-primo-human-motion-odometry.md) — PRIMO**（*PRIMO: Prior-Informed Odometry from Human-Motion Tracking for Humanoid Robots*，[arXiv:260 `📅unknown` `[entity_page]`
@@ -4112,6 +4116,7 @@
 - [SRU（Spatially-Enhanced Recurrent Memory）](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — SRU**（*Spatially-Enhanced Recurrent Memory for Long-Range Mapless Navigation via End-to-End Reinfo `📅unknown` `[entity_page]`
 - [SSP（arXiv:2608.14024）](wiki/entities/paper-ssp-syn2sim2phy-vla-eval.md) — SSP**（arXiv:2608.14024）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08 `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
+- [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
 - [STAR（arXiv:2609.12549）](wiki/entities/paper-star-vtla.md) — STAR**（[STAR: Sparse Tactile Representation Learning in Vision-Tactile-Language-Action Models for  `📅unknown` `[entity_page]`
 - [SRD：latent 世界模型的状态–读数解耦](wiki/entities/paper-state-readout-decoupling.md) — State–Readout Decoupling (SRD)**（PDF，香港大学 Ag `📅unknown` `[entity_page]`
 - [Stay Seated：G1 被动椅上的全向坐姿移动](wiki/entities/paper-stay-seated.md) — Stay Seated**（*Learning Omnidirectional Humanoid Locomotion on a Passive Mobile Chair with Casters `📅unknown` `[entity_page]`
@@ -4247,6 +4252,7 @@
 - [Vidu S2：实时交互、可编辑与空间视频生成](wiki/entities/paper-vidu-s2.md) — Vidu S2**（Zhang et al., arXiv:2609.11638，[项目页 / Demo](https:// `📅unknown` `[entity_page]`
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
+- [VisForce：视觉对齐当前力与目标力](wiki/entities/paper-visforce-force-grounding.md) — VisForce 把当前指尖力和子任务目标力渲染至对应视觉图像，再用目标条件策略生成力感知操作动作。 `📅unknown` `[entity_page]`
 - [Visible-Reachable Workspace（arXiv:2609.08905）](wiki/entities/paper-visible-reachable-workspace-humanoid-design.md) — Visible-Reachable Workspace**（*Visible-Reachable Workspace for Perception-Aware Humanoid Design*， `📅unknown` `[entity_page]`
 - [Vision Aided Dynamic Exploration of Unstructured Terrain](wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md) — Kim et al.（MIT，ICRA 2020，[DOI:10.1109/ICRA40945.2020.9196777](https://doi.org/10.1109/ICRA40945.20 `📅unknown` `[entity_page]`
 - [Vision-Based Tactile Intelligence：VBTS 综述（arXiv:2608.15490）](wiki/entities/paper-vision-based-tactile-intelligence.md) — Vision-Based Tactile Intelligence for Robotics: Sensing, Learning, and Embodied Manipulation**（[ar `📅unknown` `[entity_page]`
@@ -5356,6 +5362,8 @@
 - [人形机器人运动控制发展趋势](wiki/overview/humanoid-motion-control-trends.md) — 基于 RoboParty 飞书 Know-How 开篇与 [2026-0 `📅unknown` `[overview_page]`
 - [具身智能从入门到精通 Day 1：数据与重定向](wiki/overview/humanoid-motion-intelligence-day1-data-retargeting.md) — 从人类视频、动捕或遥操作得到的动作，必须经过时空恢复、跨本体重定向与接触/物理可行性检查，才能成为可靠的机器人训练数据；不同论文解决的是链上不同的误差来源。 `📅unknown` `[overview_page]`
 - [具身智能从入门到精通 Day 2：运动控制与运动先验](wiki/overview/humanoid-motion-intelligence-day2-locomotion-motion-priors.md) — 腿式机器人先要从身体反馈中判断状态，再利用视觉为落脚做准备；运动先验与潜在技能则让自然动作成为可调用、可组合的能力。 `📅unknown` `[overview_page]`
+- [具身智能从入门到精通 Day 3：动作跟踪与全身控制](wiki/overview/humanoid-motion-intelligence-day3-motion-tracking-wbc.md) — 动作跟踪需在参考动作与真实身体状态之间闭环。目标越稀疏，控制器需补全的身体自由度越多；进入导航与操作后，还要接入地形、视觉、接触和任务反馈。 `📅unknown` `[overview_page]`
+- [具身智能从入门到精通 Day 4：移动操作](wiki/overview/humanoid-motion-intelligence-day4-loco-manipulation.md) — 移动操作既要协调步态和手部目标，也要处理接触外力、末端柔顺与物体状态变化。低层身体控制、接触适应和上层任务阶段需要分层评估。 `📅unknown` `[overview_page]`
 - [Robot Learning Paper Notebooks 知识库索引](wiki/overview/humanoid-paper-notebooks-index.md) — 本页是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index. `📅unknown` `[overview_page]`
 - [人形机器人 RL 运动控制：身体系统栈视角](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) — 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不 `📅unknown` `[overview_page]`
 - [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
