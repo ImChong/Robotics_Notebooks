@@ -35,7 +35,7 @@
 - [x] GitHub Actions 模式 preflight 与全量测试通过；导出质量 13/13。
 - [x] 浏览器逐家核对 16 家、87 节点和详情链接；Envisioner 源码时序图正常渲染，无 console 错误。
 - [x] 独立复核并补充 RLT 关键阶段 / 完整任务与人工切换口径。
-- [ ] 仅提交源文件，创建 PR 交由用户 review。
+- [x] 仅提交源文件，创建 [PR #2529](https://github.com/ImChong/Robotics_Notebooks/pull/2529) 交由用户 review，未合并。
 
 ## 验证记录
 
