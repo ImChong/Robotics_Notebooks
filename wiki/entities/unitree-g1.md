@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-05
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -11,6 +11,7 @@ related:
   - ./paper-synthetic-video-humanoid-tasks.md
   - ./unitree-ros.md
   - ./unitree-ros2.md
+  - ./spingi.md
   - ./unitree-g1-software-stack.md
   - ./grove-g1.md
   - ./humanoid-system-curriculum.md
@@ -160,6 +161,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [G1 屋顶斜坡全身作业](./paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→坡面 mesh 语义优化→RL 跟踪；钉枪/锤/推（arXiv:2609.20558；未开源）。
 - [Uni-LaViRA（论文实体）](./paper-uni-lavira.md) — G1 真机零样本 VLN/ObjectNav/EQA 部署之一（arXiv:2605.27582）。
 - [DimOS（Dimensional）](./dimensionalos-dimos.md) — G1 MuJoCo 仿真与 beta 级 agent/导航集成栈。
+- [Spingi](./spingi.md) — sim-first 任务级 Physical Agent Runtime；MuJoCo 中的 G1 以运动学方式移动，当前不含真机 adapter 或动态步行控制。
 - [Grove-G1](./grove-g1.md) — ROS 2 Humble 自主栈：Nav2 + MoveIt + BehaviorTree 端到端 pick-place（[Adyansh04/grove-g1](https://github.com/Adyansh04/grove-g1)）。
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — G1 踝部闭链 IK/FK/雅可比参考实现（[Parallel_Ankle_Joint](https://github.com/feidedao/Parallel_Ankle_Joint)）。
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — G1 EDU 工业保护停可行性：外部链可评、机侧反应链不可评（arXiv:2608.02809）。
