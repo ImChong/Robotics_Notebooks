@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 
+import yaml
 from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -35,7 +37,27 @@ def test_every_node_links_site_page_and_original() -> None:
             label = f"{company['key']}/{node['title']}"
             assert node["id"] in site_ids, label
             assert node["url"].startswith("https://"), label
-            assert node["date"] == "" or len(node["date"]) == 7, label
+            assert node["id"] != DATA["comparison_id"], label
+            if node["date"]:
+                assert re.fullmatch(r"\d{4}-\d{2}", node["date"]), label
+                datetime.strptime(node["date"], "%Y-%m")
+            else:
+                assert node.get("date_note", "").strip(), label
+
+
+def test_route_detail_pages_have_resolvable_sources_and_core_sections() -> None:
+    """详情必须有可读归纳与本地溯源，避免有效 ID 指向空壳或断开的 source。"""
+    pages = {path_to_id(p, REPO_ROOT): p for p in (REPO_ROOT / "wiki").rglob("*.md")}
+    for node_id in {n["id"] for c in DATA["companies"] for n in c["nodes"]}:
+        page = pages[node_id]
+        text = page.read_text(encoding="utf-8")
+        frontmatter = yaml.safe_load(text.split("---", 2)[1])
+        for heading in ("## 英文缩写速查", "## 参考来源"):
+            assert heading in text, str(page)
+        assert frontmatter.get("sources"), str(page)
+        for source in frontmatter["sources"]:
+            assert (page.parent / source.split("#")[0]).is_file(), f"{page}: {source}"
+        assert "本页是 **清单索引**" not in text, str(page)
 
 
 def test_dated_nodes_are_chronological() -> None:

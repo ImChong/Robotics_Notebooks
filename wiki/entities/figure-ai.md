@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
-updated: 2026-09-17
+updated: 2026-10-05
 related:
   - ./helix-25.md
   - ./humanoid-robot.md
@@ -55,6 +55,10 @@ summary: "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自�
 - **合作关系变化快**：曾与 OpenAI 在模型侧合作的新闻较多；后续转向自研 Helix。**选型讨论应以最新官方博客为准**，媒体报道仅作时间线辅助。
 - **演示 ≠ 量产能力**：语音指令、抓取未知物体等亮点多在受控或半受控场景验证。
 - **学术可用性**：Figure 不是典型「科研开箱平台」，复现其完整栈依赖未公开的模型与数据；Helix 2.5 / Index **截至 2026-09-17 未开源**（见 [Helix 2.5 归档](../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md)）。
+
+## 公司路线中的版本定位
+
+- [Helix 02 全身架构](./helix-02.md)：与本页互补，按独立发布物核对架构和开放范围。
 
 ## 关联页面
 

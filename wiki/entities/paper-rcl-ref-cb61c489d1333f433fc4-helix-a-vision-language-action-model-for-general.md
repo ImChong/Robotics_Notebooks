@@ -1,105 +1,99 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+tags:
+- paper
+- figure-ai
+- vla
+- hierarchical-control
 status: complete
-updated: 2026-09-25
-venue: "2025"
-summary: "RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。"
+updated: '2026-10-05'
+venue: '2025'
+summary: Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享权重在 Figure 人形上完成语言指令驱动的上半身操作。
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+- ../entities/awesome-world-action-models-rcl.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+- ./figure-ai.md
+- ./helix-02.md
+- ./helix-25.md
 sources:
-  - ../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md
-  - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/sites/figure-helix-models.md
 ---
 
-# Helix
-
-**Helix: A Vision-Language-Action Model for Generalist Humanoid Control** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 239/564** 篇，分组 **VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# Helix：Figure 上半身视觉语言动作系统
 
 ## 一句话定义
 
-RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
+Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享权重在 Figure 人形上完成语言指令驱动的上半身操作。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WAM | World Action Model | 世界预测与动作生成耦合 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
-| WM | World Model | 环境前向预测模型 |
+| --- | --- | --- |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
+| VLM | Vision-Language Model | 场景和指令语义理解 |
+| GPU | Graphics Processing Unit | 机载推理硬件 |
 
 ## 为什么重要
 
-- RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
-- 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 语言理解与高频关节动作有不同时间尺度，Helix 给出显式分工。
+- 展示陌生物体与双机器人协作，是后续全身 Helix 02 的技术起点。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 239/564 |
-| 分组 | VLA |
-| 出处 | 2025 |
-| 论文 | <https://www.figure.ai/news/helix> |
-| 项目页 | <https://www.figure.ai/news/helix> |
-| 子类 / 象限 | 分层与双系统VLA · 不适用 |
+**System 2** 理解场景和语言并产生语义 latent；**System 1** 受该 latent 条件化，结合视觉与本体状态生成连续上半身动作。输出覆盖手臂、手指、头与躯干；官网强调同一组权重支持多个行为，推理在机载 GPU 运行。
 
-## 核心机制（归纳）
+初代的主要展示是上半身取放与协作；[Helix 02](helix-02.md) 增加全身 System 0、掌部视觉和触觉，两代硬件/接口不能混用。
 
-### 策展导读要点
+## 源码运行时序图
 
-RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
+**不适用**：官方发布页未提供可运行训练/推理/部署代码，不能将架构描述当成源码模块。
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+## 工程实践
+
+1. 用 S2→S1 接口理解语义计划与运动执行的解耦。
+2. 评估新物体、新指令、协作与长程任务时分别设计协议，不能由单条视频判断全部泛化。
+3. 官方 2025-02-20 发布页提供架构和演示，未列模型代码、权重或训练数据下载入口。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://www.figure.ai/news/helix) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **VLA** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+官方展示双机器人整理未见过的食品等行为。本页保留“新物体、指令条件、协作、机载执行”四个观察维度；没有重复试验和统一基准的数字，就不据此排性能名次。
 
 ## 结论
 
-**这一页能给你的是「Helix」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**Helix 的主线是语义 latent 与快速上半身执行的协同。**
 
-- 可确证的只有清单坐标：分组 **VLA**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 把语义和动作层分别计时。
+2. 区分上半身演示与后续全身控制。
+3. 把演示泛化与可独立复现分开判断。
 
-## 常见误区
+## 与其他工作对比
 
-1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+初版 Helix 展示语义 S2 与快速上半身 S1 的协作；[Helix 02](helix-02.md) 加入全身 S1、身体 S0 与掌部感知。不能用 Helix 02 的频率、触觉和全身演示解释初版 Helix；与开源 VLA 对照时还需区分可复现资产和演示证据。
+
+## 局限与风险
+
+- “共享权重”不意味着系统没有多个时标或专门动作头。
+- 初代展示不等于全身自主移动；应与 Helix 02 和 2.5 的评测分开。
+- 官方未提供足以独立复现的完整栈。
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
-- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [Figure](./figure-ai.md)
+- [Helix 02](./helix-02.md)
+- [Helix 2.5](./helix-25.md)
+- [VLA](../methods/vla.md)
 
 ## 参考来源
 
-- [`sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md`](../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md) — 本条目策展摘录
-- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
-- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- 论文：<https://www.figure.ai/news/helix>
+- [Helix 官方两代发布归档](../../sources/sites/figure-helix-models.md)
 
 ## 推荐继续阅读
 
-- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
-- [原文](https://www.figure.ai/news/helix)
+- [Helix 官方技术文章](https://www.figure.ai/news/helix)

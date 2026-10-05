@@ -14,7 +14,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-16
+updated: 2026-10-05
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
@@ -193,6 +193,12 @@ sequenceDiagram
 - Prompt steering 在文中是小样本定性，不是系统定量结论。
 - 半透明、低对比孔径等视觉 degenerate 场景仍弱。
 - 全参微调显存门槛高；不要把 DDP 理解成省显存。
+
+## G0 / G0Plus 与 G0.5 的版本边界
+
+官方 GalaxeaVLA 仓当前主线为 G0.5；[源码归档](../../sources/repos/galaxea-vla.md)保留旧 G0 / G0Plus 的 commit `13a16a9` 入口。复现历史模型应锁定历史 revision 与对应权重、依赖和动作空间，不能用当前 G0.5 命令假定兼容。
+
+公司路线把旧版本列作无确证首发日期的历史背景；本页的 RVQ 动作 codec、视觉记忆、训练和部署结论均指 **G0.5**。
 
 ## 关联页面
 

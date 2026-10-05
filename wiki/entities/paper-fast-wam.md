@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-09-25
+updated: 2026-10-05
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -63,15 +63,22 @@ summary: "Fast-WAM（arXiv:2603.16666）：训练期保留视频共训、推理�
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as 用户/评测脚本
-    participant R as FastWAM 仓库
-    participant M as 模型权重
-    participant E as 仿真/真机环境
-    U->>R: clone + 依赖安装（见 README）
-    U->>M: 下载 checkpoint（HF/Release）
-    U->>R: train / eval 入口
-    R->>E: rollout / 指标日志
-    E-->>U: success / latency 等
+    participant D as LeRobot 轨迹
+    participant P as scripts/precompute_text_embeds.py
+    participant T as scripts/train.py
+    participant M as FastWAM checkpoint
+    participant E as experiments/libero/run_libero_manager.py
+    participant S as LIBERO 环境
+    D->>P: 任务文本
+    P-->>T: 文本 embedding 缓存
+    D->>T: 视频与动作训练 batch
+    T-->>M: 视频共训的策略权重
+    E->>M: checkpoint 与匹配 dataset_stats
+    loop 闭环评测
+        S->>E: 当前观测
+        E->>M: 推理（不去噪未来视频）
+        M-->>S: 动作 chunk
+    end
 ```
 
 图下说明：复现以 [`sources/repos/fast_wam.md`](../../sources/repos/fast_wam.md) 与官方 README 为准。

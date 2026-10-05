@@ -1,73 +1,80 @@
 ---
 type: entity
-tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+tags:
+- repo
+- robbyant
+- vision-transformer
+- perception
+status: complete
+updated: '2026-10-05'
 related:
-  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/china-domestic-opensource-424-coverage.md
+- ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/china-domestic-opensource-424-coverage.md
+- ./cn-os-lingbot-depth.md
+- ./robbyant.md
+- ../concepts/vision-backbones.md
 sources:
-  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
-  - ../../sources/repos/lingbot-vision.md
-summary: "蚂蚁灵波 开源项目 LingBot-Vision（评测）：以面向几何和密集预测的自监督目标训练视觉编码器，使同一主干能够为深度、三维感知与机器人视觉任务提供特征；仓库开放代码、预训练权重和评测入口，适合比较通用视觉语义与空间几何预训练的差异。…"
+- ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+- ../../sources/repos/lingbot-vision.md
+- ../../sources/sites/robbyant_github.md
+summary: LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾语义与边界几何，提供供密集任务消费的 patch 特征。
 institutions:
-  - robbyant
+- robbyant
 ---
 
-# LingBot-Vision
+# LingBot-Vision：密集空间感知骨干
 
 ## 一句话定义
 
-**LingBot-Vision** 是 [蚂蚁灵波](https://github.com/Robbyant) 公开的 **评测** 开源项目：以面向几何和密集预测的自监督目标训练视觉编码器，使同一主干能够为深度、三维感知与机器人视觉任务提供特征；仓库开放代码、预训练权重和评测入口，适合比较通用视觉语义与空间几何预训练的差异。
+LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾语义与边界几何，提供供密集任务消费的 patch 特征。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 真机控制与状态读取接口 |
-| RL | Reinforcement Learning | 强化学习训练与策略优化 |
-| VLA | Vision-Language-Action | 视觉–语言–动作统一策略 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
-| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+| --- | --- | --- |
+| ViT | Vision Transformer | 图像 patch 的 Transformer 编码器 |
+| PCA | Principal Component Analysis | 将特征投影为可视化颜色 |
+| RGB-D | Red-Green-Blue and Depth | 彩色与深度数据 |
 
 ## 为什么重要
 
-- 收录于 [国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) 的 **第二层** 分组。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 同源策展；本页为 **独立详情节点**，便于从公司清单跳到机制与入口说明。
+- 通用语义骨干的物体理解不保证精确边界和空间结构，机器人感知需要两者。
+- 官方提供多规格骨干，使特征质量与机载成本可以分开选择。
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 蚂蚁灵波 |
-| 类别 | 评测 |
-| 官方组织 | https://github.com/Robbyant |
+通过以边界为中心的自监督目标，使 patch 表征同时保留语义分组与几何结构。官方模型覆盖 ViT-S/B/L/G，Giant 约 **1.1B 参数**，小模型由 teacher 蒸馏。
+
+发布资产是 **backbone-only `.pt`**，不含 optimizer、投影头或训练期 boundary heads。可用于深度估计、分割、视频目标传播；Depth 2.0 把该骨干用于 RGB-D 几何学习。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `LingBot-Vision` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. 从 `lingbot_vision.load_pretrained_backbone` 加载规格匹配的权重。
+2. 用 `load_image` 与 `extract_patch_tokens` 获取 `[B,H*W,C]` 特征；对齐输入 patch 网格和预处理。
+3. `scripts/run_pca_demo.sh` 只验证特征可运行；下游任务仍需预测头与评测协议。
+4. **部分开源（2026-10-05）**：推理/PCA 示例与 backbone 权重可用；完整预训练配方和所有数据未由 checkpoint 发布证明。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- PCA 颜色图并不是分割准确率或真实深度。
+- 发布骨干不等于所有下游模型和训练组件均公开。
+- Giant 与 Small 的成本、精度与输入设置须分别计量。
 
 ## 关联页面
 
-- [Robbyant（蚂蚁灵波）](./robbyant.md) — 公司页：LingBot-Vision（masked boundary modeling）在 Physical AI 栈中的位置
-- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
-- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
-- [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+
+- [LingBot-Depth](./cn-os-lingbot-depth.md)
+- [Robbyant](./robbyant.md)
+- [视觉骨干](../concepts/vision-backbones.md)
 
 ## 参考来源
 
-- [LingBot-Vision 源码归档](../../sources/repos/lingbot-vision.md)（<https://github.com/Robbyant/lingbot-vision>）
-
-- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [官方 Vision 仓库核查](../../sources/repos/lingbot-vision.md)
+- [官方组织资产索引](../../sources/sites/robbyant_github.md)
 
 ## 推荐继续阅读
 
-- [蚂蚁灵波 官方组织](https://github.com/Robbyant)
+- [项目页](https://technology.robbyant.com/lingbot-vision)
+- [官方仓库](https://github.com/robbyant/lingbot-vision)

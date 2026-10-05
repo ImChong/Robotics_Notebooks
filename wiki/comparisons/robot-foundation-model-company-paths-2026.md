@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-05
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -26,13 +26,6 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 
 把公司技术分享按**世界与动作建模、整机层级控制、全身技能与仿真迁移**三种阅读视角组织，可以更快找到训练目标、动作接口和真机闭环的不同答案；一家公司可以同时出现在几条路线中。
 
-## 30 秒读懂
-
-- **三种视角对应机器人栈的三层**：上层“看懂世界、生成动作”（VLA / WAM），中层“大小脑怎么接”（整机接口），下层“身体怎么稳稳做出来”（WBC、仿真迁移）。见下方分层图。
-- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree、德塔智能在矩阵里都横跨两列以上。
-- **“有模型名” ≠ “能复现”**：开放程度差异很大，从“代码 + 权重”到“只有博客叙述”都有；复现前逐项核对代码、权重、数据、真机接口。
-- **不能排名**：各家任务、本体、频率、测评环境不同，本页只做路线对照，不是基准测试。
-
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -42,6 +35,13 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 | WBC | Whole-Body Control | 全身运动与接触约束的协调控制 |
 | RTC | Real-Time Action Chunking | 在执行中衔接新旧动作块以减小推理停顿 |
 | RL | Reinforcement Learning | 用交互反馈优化策略 |
+
+## 30 秒读懂
+
+- **三种视角对应机器人栈的三层**：上层“看懂世界、生成动作”（VLA / WAM），中层“大小脑怎么接”（整机接口），下层“身体怎么稳稳做出来”（WBC、仿真迁移）。见下方分层图。
+- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree、德塔智能在矩阵里都横跨两列以上。
+- **“有模型名” ≠ “能复现”**：开放程度差异很大，从“代码 + 权重”到“只有博客叙述”都有；复现前逐项核对代码、权重、数据、真机接口。
+- **不能排名**：各家任务、本体、频率、测评环境不同，本页只做路线对照，不是基准测试。
 
 ## 一张图：三种视角落在机器人栈的哪一层
 
@@ -83,12 +83,12 @@ flowchart TB
 | 公司 / 团队 | ① 世界与动作 / VLA | ② 整机与接口 | ③ 全身技能 / 仿真 | 代表作品 |
 | --- | :---: | :---: | :---: | --- |
 | [Physical Intelligence](../../sources/sites/pi-website-technical-articles.md) | ● |  |  | π₀→π₀.₇、FAST、Hi Robot、KI、RTC、π*₀.₆、MEM |
-| 1X | ● | ● |  | World Model、Redwood、NEO |
+| [1X](../entities/1x-technologies.md) | ● | ● |  | [Redwood 策略](../entities/1x-redwood-policy.md)、World Model、NEO |
 | Google DeepMind | ● |  |  | Gemini Robotics |
 | Galaxea 星海图 | ● |  |  | G0、Fast-WAM |
 | [AgiBot 智元](../../sources/sites/agibot-world.md) | ● |  |  | GO 系列、AgiBot World 数据 |
-| Galbot 银河通用 | ● |  | ● | AstraBrain-WAM、AstraBrain-WBC |
-| Figure |  | ● |  | Helix → Helix 02 → Helix 2.5 |
+| [Galbot 银河通用](../entities/galbot-astrabrain.md) | ● |  | ● | AstraBrain-WAM、[WBC 0.5 / Humanoid-GPT](../entities/paper-humanoid-gpt.md)、GraspVLA |
+| [Figure](../entities/figure-ai.md) |  | ● |  | Helix → [Helix 02](../entities/helix-02.md) → Helix 2.5 |
 | [Skild AI](../entities/skild-ai.md) |  | ● |  | Skild Brain |
 | [NVIDIA](../entities/isaac-gr00t.md) | ○ | ● | ● | GR00T、Cosmos、Isaac Lab、GR00T Control |
 | LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
@@ -126,22 +126,30 @@ NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O
 | --- | :---: | :---: | :---: | --- |
 | Physical Intelligence | ✅ | ✅ | ❓ | [openpi](https://github.com/Physical-Intelligence/openpi)；不代表后续所有版本开放 |
 | Light Origins | 🟡 | 🟡 | ❌ | [Light-O1](https://github.com/lightorigins/Light-O1) 推理代码与预览权重；完整预训练资产未公开 |
-| NVIDIA | ✅ | ❓ | ❓ | [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)、Isaac Lab 有公开仓；各模块授权分别核查 |
-| AgiBot | ❓ | ❓ | ✅ | AgiBot World 数据集；模型版本分开核查 |
-| 1X | ❓ | ❓ | 🟡 | 早期 World Model 发布页提供部分数据/基线；Redwood 完整策略另查 |
-| Galaxea | 🟡 | ❓ | ❓ | 有公开仓，不代表所有模型开放 |
+| NVIDIA | ✅ | ✅ | 🟡 | Isaac-GR00T N1.7 与多种 Cosmos 权重公开；数据/许可按模块核查，见 [GR00T 平台](../entities/isaac-gr00t.md) |
+| AgiBot | ✅ | ✅ | ✅ | [Colosseo / GO-1](../entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md)、[Envisioner V1](../entities/paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat.md) 已有资产；不代表 GO-2、BFM-2、GE-Act 2 均完整开放 |
+| 1X | 🟡 | ❓ | 🟡 | 早期 World Model 部分资产；[Redwood 策略](../entities/1x-redwood-policy.md)官方页未列代码/权重，不能混用同名模型状态 |
+| Galaxea | ✅ | ✅ | 🟡 | [G0.5](../entities/paper-galaxea-g05.md)、[FastWAM](../entities/paper-fast-wam.md) 有代码/权重；全量预训练池与许可仍按项目核查 |
 | LimX | 🟡 | ❓ | ❓ | FluxVLA 文档有可操作入口；COSA 以各发布页为准 |
-| Unitree | 🟡 | ❓ | ❓ | 有 SDK / 示例仓；不等于 UnifoLM 完整训练开放 |
-| Figure | ❌ | ❓ | ❓ | Helix 技术发布页未提供训练与部署源码链接 |
+| Unitree | ✅ | 🟡 | 🟡 | SDK、遥操作/仿真/LeRobot、部分 UnifoLM 资产公开；模型训练与全部数据不等于完整开放 |
+| Figure | ❌ | ❌ | ❌ | [Helix / Helix 02 核查](../../sources/sites/figure-helix-models.md)：技术发布页未列模型代码、权重与数据 |
 | Skild AI | ❓ | ❓ | ❓ | 以公开说明为主 |
-| Google DeepMind | ❓ | ❓ | ❓ | 官方页面区分论文/演示与可获得模型 |
-| Galbot | ❓ | ❓ | ❓ | 项目级源码/权重须从各发布页核对 |
+| Google DeepMind | 🟡 | ❌ | ❓ | [Gemini Robotics](../entities/gemini-robotics.md)：编排样例开源，ER 提供 API；VLA 权重与训练代码未开放，API 不等于开源 |
+| Galbot | 🟡 | 🟡 | 🟡 | [GraspVLA](../entities/cn-os-graspvla.md) 有代码/权重/合成数据；WBC 0.5 有推理/部署与 checkpoint，训练/数据待发布；WAM 完整资产未确认 |
 | Delta Intelligence | ❌ | ❌ | ❌ | [Δ₀ 博客](https://deltai.com/en/blog/delta-0) 未列 GitHub / HF / 论文链接（[核查](../../sources/sites/deltai-com.md)） |
 | Robbyant | ✅ | 🟡 | 🟡 | [github.com/robbyant](https://github.com/robbyant) 9 个模型仓；VA 2.0 仅技术报告、权重未确认；公开 LingBot-Depth 300 万 RGB-D 与 GM-100，VLA 预训练池未公开（[核查](../../sources/sites/robbyant_github.md)） |
 | Reward AI | ❌ | ❌ | ❌ | [OM-1 博客](https://www.rewardai.com/blog/OM-1/) 未列 GitHub / HF / 数据下载；前序 DexCap 代码与数据开源，但非同一发布物（[核查](../../sources/sites/rewardai.md)） |
 | Symbiosis Robotics | ❌ | ❌ | ❌ | [DPC 项目页](https://symbiosis-robotics.com/research/dpc/en/) 未列 GitHub / HF / 数据集 / arXiv，仅联系邮箱（[核查](../../sources/sites/symbiosis-robotics-dpc.md)） |
 
-> ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表按截至 2026-09-29 的收录资料整理，会过期。
+> ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
+
+## 时间线与详情的读法
+
+公司路线的日期对应技术发布月份；工程教程或阶段发布地图明确按该事件标注，**不冒充模型首次发布日**。空日期表示公司/工具聚合入口或尚未确认首发日期，由路线数据 `date_note` 与描述说明；不以 wiki 入库日填补。
+
+共享详情页必须区分版本：Gemini Robotics 页有 1.0→1.5→2 沿革，Galaxea G0.5 页保存 G0 / G0Plus 历史 revision，Robbyant 家族页区分 VA 1.0 与 VA 2.0。Galbot WAM 的独立详情与 WBC 0.5 的 Humanoid-GPT 身份各有落点，避免公司节点回链此对照页。
+
+路线覆盖的是已归档的代表性研究与工程入口，不能据此宣称公司全部资料或最新资产齐全；未公开/未确认项见各详情的局限与日期化核查。
 
 ## 建议阅读顺序
 
@@ -163,7 +171,7 @@ flowchart LR
 
 ## 局限与风险
 
-- 截至 2026-09-28，此页比较的是**官方公开材料及已收录资料**，并非统一基准实验。
+- 此页比较的是**官方公开材料及已收录资料**，并非统一基准实验。
 - 不同团队的任务、本体、频率和测评环境不同，不能从宣传演示直接排出性能名次。
 - 矩阵和开放程度表是阅读辅助，1X 的世界模型、Figure 的 Helix 与各 WAM 的源码开放范围应按单篇项目页复核。
 
@@ -178,7 +186,12 @@ flowchart LR
 
 ## 参考来源
 
-- [12 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [Galbot AstraBrain 官方补核](../../sources/sites/galbot-astrabrain.md)
+- [Figure 两代 Helix 官方补核](../../sources/sites/figure-helix-models.md)
+- [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
+- [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
+
+- [16 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [PI 官方技术文章逐篇索引](../../sources/sites/pi-website-technical-articles.md)
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-05
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md
@@ -55,6 +55,10 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - **不要把融资报道当规格书**：估值与融资轮次与整机参数无直接对应关系。
 - **学术可得性**：与 Unitree 等科研平台相比，1X 更偏产品与试点部署，论文级 URDF / SDK 开放度需单独核实。
 - **自主 vs 遥操作**：公开演示中常见 VR 遥操作与高监督采集；「完全自主居家」仍是整个行业未解决的问题。
+
+## 公司路线中的版本定位
+
+- [Redwood 控制策略（与 World Model 区分）](./1x-redwood-policy.md)：与本页互补，按独立发布物核对架构和开放范围。
 
 ## 关联页面
 

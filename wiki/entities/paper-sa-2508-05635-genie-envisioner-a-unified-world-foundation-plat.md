@@ -1,108 +1,126 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags:
+- paper
+- agibot
+- world-model
+- vla
 status: complete
-updated: 2026-09-25
-arxiv: "2508.05635"
-venue: "arXiv 2025"
+updated: '2026-10-05'
+arxiv: '2508.05635'
+venue: arXiv 2025
 code: https://github.com/AgibotTech/Genie-Envisioner
-summary: "Unified world foundation platform for robotic manipulation."
+summary: Genie Envisioner 以 GE-Base 视频预训练表示为底座，分别适配 GE-Act 动作生成与 GE-Sim 动作条件视觉仿真，三者有不同运行接口。
 related:
-  - ../entities/awesome-world-models.md
-  - ../overview/sun-awesome-wm-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/model-based-rl.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+- ../entities/awesome-world-models.md
+- ../overview/sun-awesome-wm-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/model-based-rl.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+- ./agibot-world-2026.md
+- ./go-2.md
+- ./ge-sim-2.md
+- ./paper-ge-act-2.md
 sources:
-  - ../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md
-  - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
-  - ../../sources/repos/genie-envisioner-v1.md
+- ../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md
+- ../../sources/papers/sun_awesome_wm_catalog.md
+- ../../sources/repos/awesome-world-models.md
+- ../../sources/repos/genie-envisioner-v1.md
 ---
 
-# Genie Envisioner
-
-**Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 270/571** 篇，分组 **811 Foundation Embodied World Models**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# Genie Envisioner：世界模型、策略与视觉仿真
 
 ## 一句话定义
 
-Unified world foundation platform for robotic manipulation.
+Genie Envisioner 以 GE-Base 视频预训练表示为底座，分别适配 GE-Act 动作生成与 GE-Sim 动作条件视觉仿真，三者有不同运行接口。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| --- | --- | --- |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
+| WM | World Model | 预测未来视觉状态的模型 |
+| EWMB | Embodied World Model Benchmark | 评估具身世界模型的基准 |
 
 ## 为什么重要
 
-- Unified world foundation platform for robotic manipulation.
-- 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+- 共享预训练表示，分开验证“能预测未来”与“能控制机器人”。
+- GE-Sim 是视觉模拟，不应被当作具有精确接触力学的物理仿真器。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 270/571 |
-| 分组 | 811 Foundation Embodied World Models |
-| 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2508.05635> |
-| 代码/项目 | <https://github.com/AgibotTech/Genie-Envisioner> |
+| 分支 | 条件与目标 | 用途 |
+| --- | --- | --- |
+| GE-Base | 观测/语言到未来视频 | 世界表示预训练 |
+| GE-Act | 在共享表示上接动作学习 | 机器人操作策略 |
+| GE-Sim | 加入动作条件预测视频 | 策略视觉 rollout / 测试 |
 
-## 核心机制（归纳）
+仓库支持 LTX 与 Cosmos 系视频骨干；当前公开版本与论文初版要按配置区分。GE-Sim 2、GE-Act 2 是后续独立工作，不能把它们的架构和评测归给 V1。
 
-### 策展导读要点
+## 源码运行时序图
 
-Unified world foundation platform for robotic manipulation.
+```mermaid
+sequenceDiagram
+    autonumber
+    participant D as LeRobot dataset
+    participant N as scripts/get_statistics.py
+    participant T as main.py
+    participant M as GE-Act
+    participant S as web_infer_scripts/run_server.sh
+    participant C as run_simple_client.sh
+    D->>N: 轨迹状态与动作
+    N-->>T: 归一化统计与 YAML 配置
+    T->>M: 视频表示适配与策略训练
+    M-->>S: 策略 checkpoint
+    C->>S: 当前观测
+    S->>M: 动作推理
+    M-->>C: 动作 chunk
+```
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+图对应 GE-Act 路径；GE-Sim 的动作条件视频生成使用另一入口，不能替代策略执行。
+
+## 工程实践
+
+1. 自有 LeRobot 数据先由 `scripts/get_statistics.py` 计算状态/动作统计，配置数据路径、动作维度与归一化。
+2. `scripts/train.sh main.py` 分别使用 `video_model_lerobot.yaml` 与 `policy_model_lerobot.yaml` 训练视频/策略；视频推理由 `scripts/infer.sh` 进入。
+3. `web_infer_scripts/run_server.sh` 与客户端用于 GE-Act 部署；GE-Sim 另用 `gesim_video_gen_examples/infer_gesim.py`。
+4. **2026-10-05 核查**：训练/推理代码、GE-Base、Calvin GE-Act、Cosmos2 GE-Sim 权重有公开入口。部分复用目录 Apache-2.0，其余代码/数据 CC BY-NC-SA 4.0，不能把整仓称为宽松商用许可。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2508.05635) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **811 Foundation Embodied World Models** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+GE-Base 读世界预测与 EWMB；GE-Act 读操作成功率（公开 Calvin 权重与评测说明）；GE-Sim 读动作条件预测和策略 rollout。比较必须同时绑定分支、骨干、数据与采样配置。
 
 ## 结论
 
-**这一页能给你的是「Genie Envisioner」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**共享世界表示可以支持三个用途，但各分支的有效性需要分别验证。**
 
-- 可确证的只有清单坐标：分组 **811 Foundation Embodied World Models**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 按 GE-Base / GE-Act / GE-Sim 选择入口。
+2. 先验证统计量与动作维度，再微调部署。
+3. 不以视觉质量推定闭环控制可靠性。
 
-## 常见误区
+## 与其他工作对比
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+[GE-Sim 2](ge-sim-2.md) 延续动作条件视觉模拟并扩展闭环评测，[GE-Act 2](paper-ge-act-2.md) 是后续世界–动作策略；[Genie Sim 3](genie-sim-3.md) 是仿真平台。共享 Genie 名称不表示三者同一模型或同一物理接口。
+
+## 局限与风险
+
+- 视频逼真度、动作正确性与物理一致性是不同指标。
+- 权重开放不等于全部预训练混合数据开放；各分支资源与许可单独核对。
 
 ## 关联页面
 
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [智元数据平台](./agibot-world-2026.md)
+- [GO-2](./go-2.md)
+- [世界模型](../methods/generative-world-models.md)
+- [GE-Sim 2](./ge-sim-2.md)
+- [GE-Act 2](./paper-ge-act-2.md)
 
 ## 参考来源
 
-- [Genie-Envisioner-V1 源码归档](../../sources/repos/genie-envisioner-v1.md)（<https://github.com/AgibotTech/Genie-Envisioner-V1>）
-
-- [`sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md`](../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2508.05635>
+- [Genie Envisioner 官方源码核查](../../sources/repos/genie-envisioner-v1.md)
 
 ## 推荐继续阅读
 
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2508.05635)
+- [项目页](https://genie-envisioner.github.io/)
+- [官方源码](https://github.com/AgibotTech/Genie-Envisioner-V1)

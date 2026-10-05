@@ -18,3 +18,10 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-lingbot-vision.md](../../wiki/entities/cn-os-lingbot-vision.md)
+
+## 官方资源补核（2026-10-05）
+
+- **项目页：** <https://technology.robbyant.com/lingbot-vision/>；代码 <https://github.com/robbyant/lingbot-vision>。
+- **机制：** masked boundary modeling 视觉表征；G 级教师约 1.1B 参数，提供 S/B/L/G 骨干。
+- **入口：** `load_pretrained_backbone`、`extract_patch_tokens`、`load_image`、`scripts/run_pca_demo.sh`。
+- **范围：** 发布 `backboneonly.pt` 排除 optimizer、投影与 boundary heads；不能由骨干权重推定完整训练资产开放。代码 Apache-2.0，权重许可另查模型卡。

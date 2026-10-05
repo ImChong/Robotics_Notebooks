@@ -84,3 +84,7 @@ python -m scripts.vis --mocap_path storage/test
 ## 参考来源（原始）
 
 - GitHub 仓库 README — <https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>（2026-06-19 检索）
+
+## AstraBrain 身份补核（2026-10-05）
+
+官方 README 明确标注本仓是 **AstraBrain-WBC0.5 的官方实现**；项目页 <https://qizekun.github.io/Humanoid-GPT/> 指向该仓。推理/部署与 checkpoint 已发布，训练代码与训练数据仍是 TODO。与[Galbot 官方技术定位](../sites/galbot-astrabrain.md)互证，避免重复建立同一论文实体。
