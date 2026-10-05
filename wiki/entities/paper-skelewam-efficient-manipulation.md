@@ -36,6 +36,16 @@ summary: "SkeleWAM（arXiv:2610.02120，北京大学）：以 RGB-D 物体中心
 
 **把控制所需的机器人–物体几何关系显式写成一组稀疏 3D 点：动作头负责“现在怎么动”，未来骨架头在训练中补充“动作之后几何如何变化”的监督，部署时移除未来预测头。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| WAM | World Action Model | 联合学习未来状态预测与机器人动作生成的模型 |
+| RGB-D | Red Green Blue + Depth | 彩色图像与深度观测，用于估计物体几何关键点 |
+| FK | Forward Kinematics | 正向运动学，由关节状态计算机器人关键点位置 |
+| MAC | Medoid Action Consensus | 从随机采样的动作候选中选择平均距离最小的代表轨迹 |
+| LIBERO-Plus | LIBERO Plus benchmark | 带多种扰动设置的仿真操作评测基准 |
+
 ## 问题动机
 
 许多 WAM 通过生成未来视频或视觉 latent 学习环境变化。视频会包含大量与控制无关的外观细节，latent 则受视觉编码器目标影响，机器人与物体之间真正决定接触和操作的几何关系仍是隐式的。SkeleWAM 的取舍是仅表示稀疏控制几何：
@@ -118,7 +128,7 @@ flowchart TB
 - **感知误差仍会传入策略：** 真实输入的物体节点来自固定感知模型；仿真坐标参考整体仅比 RGB-D 高 1.8 个百分点，但两者设置不可混为一谈。
 - **开源边界：** 论文与项目页可读，页面有任务可视化演示；截至入库日未发现官方训练/推理代码、权重或数据下载入口。
 
-## 与相近工作区分
+## 对比：SkeleWAM 与 SkelWAM
 
 本篇 **SkeleWAM** 与库中 **SkelWAM**（[arXiv:2609.21983](./paper-skelwam.md)）是两篇不同论文：
 
@@ -131,10 +141,19 @@ flowchart TB
 
 两者名称相近且都讨论骨架化 WAM，但任务定义、表示、实验和作者团队均不同，详情记录分开维护。
 
-## 与知识库的连接
+## 关联页面
 
 - [World Action Models（WAM）](../concepts/world-action-models.md)：联合未来状态预测与动作生成的模型范式。
 - [生成式世界模型](../methods/generative-world-models.md)：未来预测作为训练监督、推理时可省略的设计。
 - [机器人操作](../tasks/manipulation.md)：操作任务、策略与评测背景。
 - [SkelWAM（跨具身迁移）](./paper-skelwam.md)：名称近似但研究问题不同。
 - [论文来源归档](../../sources/papers/skelewam_arxiv_2610_02120.md) · [官方项目页归档](../../sources/sites/skelewam-project.md)
+
+## 结论
+
+SkeleWAM 的核心设计是把 WAM 的未来监督从图像/视觉 latent 转到稀疏 3D 交互几何：训练期让未来骨架预测辅助动作学习，部署期只保留动作生成。论文在 LIBERO-Plus 和 ARX R5 报告了较强的整体结果，但布局变化仍是清晰短板；同时目前没有公开训练代码和权重，复现判断应以论文与项目页披露为限。
+
+## 参考来源
+
+- [论文来源归档](../../sources/papers/skelewam_arxiv_2610_02120.md) · [arXiv HTML](https://arxiv.org/html/2610.02120v1)
+- [官方项目页归档](../../sources/sites/skelewam-project.md) · [SkeleWAM 项目页](https://skelewam-project.github.io/)
