@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-05
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-wasm.md
@@ -21,6 +21,7 @@ related:
   - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
   - ./newton-physics.md
+  - ./robot-native-engine.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ./adams.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/repos/mujoco-menagerie.md
   - ../../sources/papers/simulation.md
   - ../../sources/repos/mujoco.md
+  - ../../sources/repos/robot-native-engine.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
   - ../../sources/repos/mujoco-lidar.md
@@ -105,6 +107,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — 以 URDF 为起点的派生模块目录（与 MJCF 这类仿真专用描述对照理解「预处理资产层」）
 - [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
 - [Newton Physics](./newton-physics.md) — Warp + MJWarp 的 GPU 多求解器引擎（LF 托管；MJWarp 路径 AD 未通）
+- [Robot Native Engine（RNE）](./robot-native-engine.md) — Rust 机器人仿真核心；通过后端接口连接 Rapier / MuJoCo，headless 回放与渲染分层
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 策略迁 MuJoCo 的双轮足 sim2sim
