@@ -19,11 +19,7 @@ summary: "ForeDrive（arXiv:2609.26299）：以 JEPA 式多时域未来潜变量
 
 # ForeDrive：让潜在未来直接服务自动驾驶规划
 
-**ForeDrive**（*Foresight-Guided End-to-End Autonomous Driving with a Planning-Relevant Latent World Model*，[arXiv:2609.26299](https://arxiv.org/abs/2609.26299)）提出一种「预测潜未来并直接条件化规划」的端到端自动驾驶架构：JEPA 式世界模型输出多时域视觉/自车状态潜变量，门控融合后送入 DiT 轨迹规划器；规划梯度更新共享在线编码器，但不直接更新潜变量预测器。论文作者来自华中科技大学、上海造父智能科技有限公司和同济大学。
-
-## 一句话定义
-
-**ForeDrive 的重点不是生成未来视频，而是学出能改变轨迹选择的未来潜表征，并以当前观测为主证据将其接入扩散规划。**
+**一句话定义：ForeDrive 用 JEPA 式世界模型预测多时域未来潜表征，再以当前观测为主证据将其接入 DiT 轨迹规划，而不是生成未来 RGB 视频。**
 
 ## 英文缩写速查
 
