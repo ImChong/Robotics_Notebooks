@@ -4572,6 +4572,7 @@
 - [SOMA-X（统一参数化人体模型）](wiki/entities/soma-x.md) — SOMA-X**（NVlabs/SOMA-X，PyPI `py-soma-x`，[arXiv:2603.16858](htt `📅unknown` `[entity_page]`
 - [Spark（Web 3DGS 渲染器）](wiki/entities/spark-3dgs-renderer.md) — Spark** 是 World Labs 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`
 - [SPEAR（Photorealistic Embodied AI Simulator）](wiki/entities/spear-sim.md) — SPEAR**（spear-sim/spear）是面向 **光真实感具身 AI 与合成视觉** 的 **Unreal E `📅unknown` `[entity_page]`
+- [Spingi（Unitree G1 分层物理 Agent 原型）](wiki/entities/spingi.md) — Spingi** 是面向人形机器人的 sim-first Physical Agent Runtime：它把自然语言任务或静态 YAML 计划转成可验证的技能步骤，在 MuJoCo 的 Unitr `📅unknown` `[entity_page]`
 - [SRU-Odin（SRU × Odin1 部署套件）](wiki/entities/sru-odin.md) — SRU-Odin**（ManifoldTechLtd/SRU-Odin）把 [SRU 论文](./pa `📅unknown` `[entity_page]`
 - [ssik（解析逆运动学）](wiki/entities/ssik.md) — ssik**（personalrobotics/ssik）面向 **6R 与 7R 全转动关节机械臂**，提 `📅unknown` `[entity_page]`
 - [Stable-Baselines3](wiki/entities/stable-baselines3.md) — Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) 收录于具身智能研究室 [开源项目主表](https://github. `📅unknown` `[entity_page]`
