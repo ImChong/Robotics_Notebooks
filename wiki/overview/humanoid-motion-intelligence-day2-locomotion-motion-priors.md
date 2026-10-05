@@ -9,6 +9,7 @@ related:
   - ./humanoid-motion-intelligence-day1-data-retargeting.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/privileged-training.md
+  - ./humanoid-motion-intelligence-day3-motion-tracking-wbc.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md
 summary: "《具身智能从入门到精通 Day 2：运动控制与运动先验》的独立导读：按本体状态估计、感知行走、动作先验和技能调用组织原文 34 篇论文，每篇指向独立详情节点。"
@@ -114,3 +115,9 @@ flowchart TB
 ## 参考来源
 
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
+
+
+## 系列后续
+
+- [Day 3：动作跟踪与全身控制](./humanoid-motion-intelligence-day3-motion-tracking-wbc.md)
+- [Day 4：移动操作](./humanoid-motion-intelligence-day4-loco-manipulation.md)
