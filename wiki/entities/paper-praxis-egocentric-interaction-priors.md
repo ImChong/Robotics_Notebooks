@@ -47,6 +47,12 @@ PDF 报告躯干相机导航、头部相机近距离操作、五指手触觉反�
 - 项目页标题与文章标题不一致；需要作者或论文标识符消除歧义。
 - 76.97% 为文章转述，尚未独立核实。
 
+## 关联页面
+
+- [Day 4：移动操作](../overview/humanoid-motion-intelligence-day4-loco-manipulation.md)
+- [DexRoam：第一视角移动双手操作](./paper-dexroam-mobile-bimanual-manipulation.md)
+
+
 ## 参考来源
 
 - [Praxis 标题核查记录](../../sources/papers/praxis_day4_project_title_mismatch_2026_10_05.md)

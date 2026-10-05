@@ -12,7 +12,7 @@
 | 工作 | 独立详情 | 作用 |
 |---|---|---|
 | DeepMimic | [DeepMimic](../../wiki/methods/deepmimic.md) | 物理动作模仿与恢复 |
-| H2O | [H2O](../../wiki/entities/paper-h2o-human-to-humanoid-teleoperation.md) | 视频遥操作和教师—学生全身控制 |
+| H2O | [H2O](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | 视频遥操作和教师—学生全身控制 |
 | TWIST | [TWIST](../../wiki/entities/paper-twist.md) | 遥操作与动作示范采集 |
 | TWIST 2 | [TWIST 2](../../wiki/entities/paper-twist2.md) | 便携人形动作数据采集 |
 | ExBody | [ExBody](../../wiki/entities/paper-exbody-expressive-humanoid.md) | 上身跟踪与下肢步态补全 |

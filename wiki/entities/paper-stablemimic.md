@@ -51,6 +51,12 @@ flowchart TB
 - 区分仿真评测、受控真机展示与开放场景能力。
 - 结合接触、身体平衡和任务进度评估，不用单一成功率代表通用性。
 
+## 关联页面
+
+- [平衡恢复任务](../tasks/balance-recovery.md)
+- [Day 3：动作跟踪与全身控制](../overview/humanoid-motion-intelligence-day3-motion-tracking-wbc.md)
+
+
 ## 参考来源
 
 - [来源档案](../../sources/papers/stablemimic_arxiv_2608_02385.md)

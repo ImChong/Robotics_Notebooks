@@ -48,7 +48,7 @@ flowchart TB
 | 工作 | 独立详情 | 在主线中的作用 |
 |---|---|---|
 | DeepMimic | [独立详情](../methods/deepmimic.md) | 物理动作模仿与恢复 |
-| H2O | [独立详情](../entities/paper-h2o-human-to-humanoid-teleoperation.md) | 视频遥操作和教师—学生全身控制 |
+| H2O | [独立详情](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | 视频遥操作和教师—学生全身控制 |
 | TWIST | [独立详情](../entities/paper-twist.md) | 遥操作与动作示范采集 |
 | TWIST 2 | [独立详情](../entities/paper-twist2.md) | 便携人形动作数据采集 |
 | ExBody | [独立详情](../entities/paper-exbody-expressive-humanoid.md) | 上身跟踪与下肢步态补全 |

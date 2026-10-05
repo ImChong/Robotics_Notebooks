@@ -51,6 +51,12 @@ flowchart TB
 - 区分仿真评测、受控真机展示与开放场景能力。
 - 结合接触、身体平衡和任务进度评估，不用单一成功率代表通用性。
 
+## 关联页面
+
+- [移动操作任务](../tasks/loco-manipulation.md)
+- [ViLoMan：视觉—本体移动操作](./paper-viloman.md)
+
+
 ## 参考来源
 
 - [来源档案](../../sources/papers/dexweave_arxiv_2609_34724.md)
