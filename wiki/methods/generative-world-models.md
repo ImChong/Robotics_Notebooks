@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-04
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -532,7 +532,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 物理、几何与记忆
 
 - [PhysisForcing](../entities/paper-physisforcing.md) — **训练期区域聚焦分层物理对齐**（像素轨迹 + 语义关系）；Wan/Cosmos 跨骨干，R-Bench SOTA 与 WorldArena / Fast-WAM 下游增益（arXiv:2606.28128）。
-- [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — **在线 3D Gaussian 无散度速度场 WM + 3DFA 动态操作**；PhysMani-Bench 16 任务（arXiv:2607.01938，ECCV 2026）。
+- [PhysMani](../entities/paper-physmani-dynamic-manipulation-world-model.md) — **在线 3D Gaussian 无散度速度场 WM + 3DFA 动态操作**；PhysMani-Bench 16 任务（arXiv:2607.01938，ECCV 2026）；截至 2026-10-04 官方仓库已 pre-release 训练/仿真评测代码与 Bench/权重下载脚本。
 - [PanoWorld](../entities/paper-panoworld-real-world-panoramic-generation.md) — **ERP 轨迹可控全景 WM**：DPRC 射线动作 + GMA 几何记忆 + World360 数据集（arXiv:2607.09661）。
 - [Puffin-World](../entities/paper-puffin-world.md) — **physics/geometry/appearance 三类原生 3D 世界状态** + Omni-Camera 物理锚定；单图相机理解、可控视角仿真与 3D 重建统一于 LLM+扩散（arXiv:2609.04196；[代码+权重已开源](https://github.com/KangLiao929/Puffin/tree/main/Puffin-World)（HF：[ACERobotics/Puffin-World](https://huggingface.co/ACERobotics/Puffin-World)））。
 - [LT-Mem](../entities/paper-lt-mem.md) — **波动性感知** Live/Delta/Meta 长期场景记忆 + LT-VQA（arXiv:2608.19059；数据集可下）。
