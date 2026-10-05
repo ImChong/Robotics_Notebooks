@@ -1,3 +1,8 @@
+## [2026-10-05] ingest | Human Body And Accessories
+
+- 收录 Ultralytics Platform 的 19 类人体部件与服饰分割数据集；区分可见索引信息、截图信息与未核实的访问/许可边界。
+- 新增独立数据集实体页，并从图像分割分类页建立交叉链接。
+
 ## [2026-10-04] lint | 全量 wiki lint：复核 PhysMani 开源更新联动的 4 个陈旧页并 bump updated；Blind Grasp Reflex / 果蝇 RNN 补齐「对比」章节，警告与信息型预警清零
 
 ## [2026-10-04] structural | roadmap/depth-contact-manipulation.md — 接入 Blind Grasp Reflex 手部本体感觉抓取节点

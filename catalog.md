@@ -597,6 +597,7 @@
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
 - [HTD 解耦全身控制器（IsaacLab-Decoupled-WBC）](wiki/entities/htd-decoupled-wbc.md) — HTD Decoupled WBC** 是 Humanoid Touch Dream（[方法页](../methods/hum `📅unknown` `[entity_page]`
 - [Human Atlas（3D 解剖探索器）](wiki/entities/human-atlas.md) — Human Atlas**（GitHub，[在线演示](https://human-atlas-seven.ve `📅unknown` `[entity_page]`
+- [Human Body And Accessories（人体部件与服饰分割数据集）](wiki/entities/human-body-and-accessories-dataset.md) — Human Body And Accessories** 是托管在 Ultralytics Platform 上的细粒度人体解析分割数据集：它将画面中的人体拆成脸、头发、衣物、肢体与配件等 19  `📅unknown` `[entity_page]`
 - [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`
 - [human2humanoid（LeCAR-Lab）](wiki/entities/human2humanoid.md) — human2humanoid**（<https://github.com/LeCAR-Lab/human2humanoid>）是 CMU **LECAR Lab** 的 **人形全身实时遥操作（h `📅unknown` `[entity_page]`
 - [HumanLayer Skills](wiki/entities/humanlayer-skills.md) — HumanLayer Skills** 是 humanlayer/skills 仓库及其 Claude Code m `📅unknown` `[entity_page]`
