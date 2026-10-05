@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29",
+  "updated": "2026-10-05",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -37,8 +37,9 @@
       "summary": "轮式 EVE 到家用双足 NEO 的整机路线，叠加动作条件世界模型做评测与数据引擎。",
       "official": "https://www.1x.tech/discover/category/research",
       "nodes": [
-        { "date": "", "title": "EVE → NEO", "track": "整机", "desc": "从结构化场景轮式人形转向家庭场景双足平台。", "id": "entity-1x-technologies", "url": "https://www.1x.tech/" },
-        { "date": "2025-06", "title": "1X World Model", "track": "世界模型", "desc": "全身人形动作条件视频预测，用作策略评测引擎。", "id": "entity-paper-1xwm-redwood-world-model", "url": "https://www.1x.tech/discover/redwood-ai-world-model" }
+        { "date": "2025-06", "title": "1X World Model", "track": "世界模型", "desc": "全身人形动作条件视频预测，用作策略评测引擎。", "id": "entity-paper-1xwm-redwood-world-model", "url": "https://www.1x.tech/discover/redwood-ai-world-model" },
+        { "date": "2025-06", "title": "Redwood AI 策略", "track": "VLA", "desc": "160M 机载策略联合移动、双臂与骨盆指令；区别于同名 World Model，未见策略资产下载。", "id": "entity-1x-redwood-policy", "url": "https://www.1x.tech/discover/redwood-ai" },
+        { "date": "", "title": "EVE → NEO", "track": "整机", "desc": "从结构化场景轮式人形转向家庭场景双足平台。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-1x-technologies", "url": "https://www.1x.tech/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
       ]
     },
     {
@@ -49,7 +50,7 @@
       "official": "https://www.figure.ai/news",
       "nodes": [
         { "date": "2025-02", "title": "Helix", "track": "VLA", "desc": "System 2 语义 + System 1 高频动作的上半身 VLA。", "id": "entity-paper-rcl-ref-cb61c489d1333f433fc4-helix-a-vision-language-action-model-for-general", "url": "https://www.figure.ai/news/helix" },
-        { "date": "", "title": "Helix 02", "track": "全身控制", "desc": "加入 System 0 平衡/接触层，扩展到全身闭环。", "id": "entity-figure-ai", "url": "https://www.figure.ai/news/helix-02" },
+        { "date": "2026-01", "title": "Helix 02", "track": "全身控制", "desc": "S2 语义、200 Hz S1 全身目标与 1 kHz S0 身体控制，含掌视觉和触觉。", "id": "entity-helix-02", "url": "https://www.figure.ai/news/helix-02" },
         { "date": "2026-09", "title": "Helix 2.5", "track": "VLA", "desc": "Index 人视频预训练，30 个陌生家庭零样本全身任务。", "id": "entity-helix-25", "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization" }
       ]
     },
@@ -60,9 +61,9 @@
       "summary": "主张 omni-bodied 单一大脑（Skild Brain）控制任意本体，公开材料以方法博客为主。",
       "official": "https://www.skild.ai/blogs",
       "nodes": [
-        { "date": "", "title": "Skild Brain", "track": "基础模型", "desc": "跨本体统一策略脑的公司叙事与定位。", "id": "entity-skild-ai", "url": "https://www.skild.ai/" },
         { "date": "2026-08", "title": "S1", "track": "操作", "desc": "以视频为上下文的机器人 In-Context Learning。", "id": "entity-skild-s1", "url": "https://www.skild.ai/blogs/s1" },
-        { "date": "2026-09", "title": "Physical Self-Play", "track": "后训练", "desc": "S1 级模型在仿真中自博弈后训练。", "id": "entity-skild-physical-self-play", "url": "https://www.skild.ai/blogs/physical-self-play" }
+        { "date": "2026-09", "title": "Physical Self-Play", "track": "后训练", "desc": "S1 级模型在仿真中自博弈后训练。", "id": "entity-skild-physical-self-play", "url": "https://www.skild.ai/blogs/physical-self-play" },
+        { "date": "", "title": "Skild Brain", "track": "基础模型", "desc": "跨本体统一策略脑的公司叙事与定位。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-skild-ai", "url": "https://www.skild.ai/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
       ]
     },
     {
@@ -72,7 +73,8 @@
       "summary": "基于 Gemini 多模态栈：VLA 策略 + 具身推理 ER agent + 端侧模型的三件套。",
       "official": "https://deepmind.google/models/gemini-robotics/",
       "nodes": [
-        { "date": "2025-03", "title": "Gemini Robotics", "track": "VLA", "desc": "Gemini 骨干的视觉语言动作模型与 ER 具身推理。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/models/gemini-robotics/" },
+        { "date": "2025-03", "title": "Gemini Robotics", "track": "VLA", "desc": "模型族历史起点：视觉语言动作与 ER 推理；详情页按版本区分 1.0、1.5 与 2。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/models/gemini-robotics/" },
+        { "date": "2025-09", "title": "Gemini Robotics 1.5 / ER 1.5", "track": "VLA / Agent", "desc": "ER 规划与调用工具，VLA 行动前推理和跨本体迁移；详情页有独立版本沿革。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/" },
         { "date": "2026-07", "title": "Gemini Robotics 2", "track": "全身控制", "desc": "VLA 推进到全身人形控制，配套 ER 2 与 On-Device 2。", "id": "entity-gemini-robotics", "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" }
       ]
     },
@@ -83,12 +85,16 @@
       "summary": "平台型路线：Cosmos 世界生成 + Isaac 仿真 + GR00T 人形基础模型 + 全身控制栈，多层资产分别开放。",
       "official": "https://developer.nvidia.com/blog/tag/robotics/",
       "nodes": [
-        { "date": "", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架，sim2real 主力栈。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/" },
         { "date": "2025-01", "title": "Cosmos 1.0", "track": "世界模型", "desc": "大规模视频预训练的世界基础模型平台。", "id": "entity-paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi", "url": "https://developer.nvidia.com/cosmos" },
         { "date": "2025-03", "title": "GR00T N1", "track": "VLA", "desc": "Eagle VLM + DiT 动作头，数据金字塔联合预训练。", "id": "entity-paper-hrl-stack-34-gr00t_n1", "url": "https://github.com/NVIDIA/Isaac-GR00T" },
         { "date": "2025-06", "title": "GR00T N1.5", "track": "VLA", "desc": "冻结 VLM 的改进版通用人形 VLA。", "id": "entity-paper-gr00t-n1-5", "url": "https://research.nvidia.com/labs/gear/gr00t-n1_5/" },
         { "date": "2026-06", "title": "Cosmos 3", "track": "世界模型", "desc": "全模态世界模型，服务数据生成与策略。", "id": "entity-cosmos-3", "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/" },
-        { "date": "", "title": "GR00T-WholeBodyControl", "track": "全身控制", "desc": "解耦 WBC、SONIC 与 MotionBricks 的统一单仓。", "id": "entity-gr00t-wholebodycontrol", "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/" }
+        { "date": "2026-07", "title": "GR00T N1.7 工程工作流", "track": "VLA / 部署", "desc": "以 7 月官方工程文章为事件日期：LeRobot 数采、N1.7 后训练、评测和 TensorRT 部署；不视为模型首发日。", "id": "entity-isaac-gr00t", "url": "https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/" },
+        { "date": "", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架，sim2real 主力栈。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "GR00T-WholeBodyControl", "track": "全身控制", "desc": "解耦 WBC、SONIC 与 MotionBricks 的统一单仓。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-gr00t-wholebodycontrol", "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "Cosmos Curator", "track": "数据", "desc": "视频筛选、去重与标注；持续维护工具，无单一版本首发日期。", "id": "entity-cosmos-curator", "url": "https://github.com/nvidia-cosmos/cosmos-curator", "date_note": "持续维护工具入口，不以入库日充当首发日。" },
+        { "date": "", "title": "Cosmos Transfer", "track": "数据生成", "desc": "条件视频生成 / 场景变换，逐模型核对权重与许可；此处是持续维护入口。", "id": "entity-cosmos-transfer", "url": "https://github.com/nvidia-cosmos/cosmos-transfer1", "date_note": "聚合多个版本的工具入口。" },
+        { "date": "", "title": "Cosmos Cookbook", "track": "实践", "desc": "串联数据整理、世界生成与后训练配方；持续维护的工程示例。", "id": "entity-cosmos-cookbook", "url": "https://github.com/nvidia-cosmos/cosmos-cookbook", "date_note": "持续维护的示例集合。" }
       ]
     },
     {
@@ -101,18 +107,23 @@
         { "date": "2026-08", "title": "LightParkour", "track": "全身控制", "desc": "Real2Sim2Real 稀疏种子扩张 + 多专家跑酷。", "id": "entity-paper-light-loco-parkour", "url": "https://www.lightorigins.com/blog/lightparkour" },
         { "date": "2026-09", "title": "LightNav-0", "track": "导航", "desc": "激发 VLM 空间智能的通用具身导航。", "id": "entity-paper-lightnav-0", "url": "https://www.lightorigins.com/en/blog/lightnav-0" },
         { "date": "2026-09", "title": "Light REACT", "track": "全身控制", "desc": "故障与扰动下的全身自适应恢复。", "id": "entity-light-react", "url": "https://www.lightorigins.com/blog/light-react" },
-        { "date": "2026-09", "title": "Light-O1", "track": "基础模型", "desc": "从互联网视频恢复人类动作做预训练；推理代码与预览权重开源。", "id": "entity-light-o1", "url": "https://www.lightorigins.com/en/blog/light-o1" }
+        { "date": "2026-09", "title": "Light-O1", "track": "基础模型", "desc": "从互联网视频恢复人类动作做预训练；推理代码与预览权重开源。", "id": "entity-light-o1", "url": "https://www.lightorigins.com/en/blog/light-o1" },
+        { "date": "2026-09", "title": "LightNav-ER", "track": "具身推理", "desc": "LightNav-0 官方 9 月文章中的空间推理阶段，未确认独立模型资产发布。", "id": "entity-lightnav-er", "url": "https://www.lightorigins.com/en/blog/lightnav-0" },
+        { "date": "", "title": "Light Origins 公司与全栈", "track": "公司", "desc": "Intelligence-first 路线与模型/数据/硬件关系；公司总览，无模型发布日期。", "id": "entity-light-origins", "url": "https://www.lightorigins.com/en/about", "date_note": "公司总览。" },
+        { "date": "", "title": "Lightbot 0", "track": "整机", "desc": "自研人形是 Parkour、REACT 的硬件载体；现有资料未给确证首发日。", "id": "entity-lightbot-0", "url": "https://www.lightorigins.com/blog/lightparkour", "date_note": "硬件背景，未确认首发日期。" },
+        { "date": "", "title": "InsightBench", "track": "评测", "desc": "开源评测 split 与 Habitat-GS 场景；训练侧规模不能视为全部开放，未确认独立首发日。", "id": "entity-insight-bench", "url": "https://github.com/lightorigins/Light-INSIGHT-Bench", "date_note": "评测入口，未确认独立首发日期。" }
       ]
     },
     {
       "key": "galbot",
       "name": "银河通用 Galbot",
       "lenses": ["wam", "wbc"],
-      "summary": "区分“世界侧” AstraBrain-WAM 与“执行侧” AstraBrain-WBC；开源侧以 GraspVLA 与 SDK 为主。",
+      "summary": "区分“世界侧” AstraBrain-WAM 与“执行侧” AstraBrain-WBC；开源侧包括 GraspVLA 与 Humanoid-GPT 的推理/部署。",
       "official": "https://galbot.com/",
       "nodes": [
-        { "date": "", "title": "GraspVLA", "track": "VLA", "desc": "视觉语言目标到六自由度抓取动作的开源 VLA。", "id": "entity-cn-os-graspvla", "url": "https://github.com/GalaxyGeneralRobotics" },
-        { "date": "", "title": "AstraBrain-WAM / WBC", "track": "世界模型", "desc": "世界预测—动作与全身执行两条线分别发布（本库暂按对照页收录）。", "id": "wiki-comparisons-robot-foundation-model-company-paths-2026", "url": "https://galbot.com/" }
+        { "date": "2025-05", "title": "GraspVLA", "track": "VLA", "desc": "合成抓取与语义联合预训练；代码、权重及 SynGrasp-1B 有公开入口。", "id": "entity-cn-os-graspvla", "url": "https://github.com/PKU-EPIC/GraspVLA" },
+        { "date": "2026-06", "title": "AstraBrain-WBC 0.5 / Humanoid-GPT", "track": "全身控制", "desc": "同一发布物：大规模运动跟踪；已开放推理/部署与 checkpoint，训练和全量数据待发布。", "id": "entity-paper-humanoid-gpt", "url": "https://qizekun.github.io/Humanoid-GPT/" },
+        { "date": "", "title": "AstraBrain-WAM", "track": "世界模型", "desc": "异构数据学习与世界–动作基座；官网持续更新，未确认首发日期与完整复现资产。", "id": "entity-galbot-astrabrain", "url": "https://galbot.com/about/", "date_note": "持续更新的官方介绍，未确认单一首发日期。" }
       ]
     },
     {
@@ -123,7 +134,8 @@
       "official": "https://galaxea-ai.com/",
       "nodes": [
         { "date": "2026-03", "title": "Fast-WAM", "track": "世界模型", "desc": "训练期视频共训、推理期跳过未来视频去噪，190 ms 延迟。", "id": "entity-paper-fast-wam", "url": "https://yuantianyuan01.github.io/FastWAM/" },
-        { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" }
+        { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" },
+        { "date": "", "title": "G0 / G0Plus 历史版本", "track": "VLA", "desc": "GalaxeaVLA 历史 commit 13a16a9；详情有版本边界，不能使用当前 G0.5 命令推定兼容。", "id": "entity-paper-galaxea-g05", "url": "https://github.com/OpenGalaxea/GalaxeaVLA/tree/13a16a9", "date_note": "历史版本归档，未确认首发日期。" }
       ]
     },
     {
@@ -135,9 +147,15 @@
       "nodes": [
         { "date": "2025-03", "title": "AgiBot World Colosseo", "track": "数据", "desc": "大规模真机操作数据平台。", "id": "entity-paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation", "url": "https://agibot-world.com/" },
         { "date": "2025-08", "title": "Genie Envisioner", "track": "世界模型", "desc": "面向操作的统一世界基础平台。", "id": "entity-paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat", "url": "https://github.com/AgibotTech/Genie-Envisioner" },
+        { "date": "2025-09", "title": "GO-1 开源", "track": "VLA", "desc": "在 Colosseo 平台后发布代码、GO-1 / Air 权重与微调、服务示例。", "id": "entity-paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation", "url": "https://github.com/OpenDriveLab/AgiBot-World" },
         { "date": "2026-01", "title": "GO-2", "track": "VLA", "desc": "动作思维链 + 异步双系统的执行基座。", "id": "entity-go-2", "url": "https://arxiv.org/abs/2601.11404" },
+        { "date": "2026-05", "title": "GE-Sim 2", "track": "视觉仿真", "desc": "动作条件多视角视频模拟器；区别于 Genie Sim 3 物理仿真平台。", "id": "entity-ge-sim-2", "url": "https://ge-sim-v2.github.io/" },
         { "date": "2026-06", "title": "AgiBot World 2026", "track": "数据", "desc": "新一代开源真实世界操作数据集。", "id": "entity-agibot-world-2026", "url": "https://huggingface.co/datasets/agibot-world/AgiBotWorld2026" },
-        { "date": "2026-06", "title": "BFM-2", "track": "全身控制", "desc": "智元运控基座模型。", "id": "entity-agibot-bfm-2", "url": "https://www.agibot.com.cn/article/315/detail/161.html" }
+        { "date": "2026-06", "title": "BFM-2", "track": "全身控制", "desc": "智元运控基座模型。", "id": "entity-agibot-bfm-2", "url": "https://www.agibot.com.cn/article/315/detail/161.html" },
+        { "date": "2026-06", "title": "Genie Sim 3", "track": "仿真平台", "desc": "6 月发布地图收录的场景、仿真训练与评测入口。", "id": "entity-genie-sim-3", "url": "https://agibot-world.com/genie-sim" },
+        { "date": "2026-06", "title": "AGILE", "track": "感控一体", "desc": "6 月发布地图中的视觉感控能力；架构与资产信息仍有限，独立于同名学术项目。", "id": "entity-agibot-agile", "url": "https://www.bilibili.com/video/BV1SmGD6xEPS/" },
+        { "date": "2026-06", "title": "Genie Studio Agent", "track": "编排 / 部署", "desc": "6 月发布地图的产业流程编排段；底层模型与平台资产分别核查。", "id": "entity-genie-studio-agent", "url": "https://mp.weixin.qq.com/s/Ha9_0TLyVtec-cL4WqFAbA" },
+        { "date": "2026-09", "title": "GE-Act 2", "track": "世界–动作", "desc": "CoAE、单步视频预测与 IDM 动作解码；独立于 Envisioner V1，开放状态见日期化核查。", "id": "entity-paper-ge-act-2", "url": "https://ge-act-v2.github.io/" }
       ]
     },
     {
@@ -147,9 +165,9 @@
       "summary": "腿足本体与 RL 部署起家，向上做 COSA 人形大脑操作系统与 FluxVLA 工程平台。",
       "official": "https://www.limxdynamics.com/en",
       "nodes": [
-        { "date": "", "title": "TRON1 RL 部署", "track": "全身控制", "desc": "ONNX 策略经 ROS 2 控制器与低层 SDK 上真机。", "id": "entity-cn-os-tron1-rl-deploy-ros2", "url": "https://github.com/limxdynamics" },
         { "date": "2026-07", "title": "COSA 0.5", "track": "系统", "desc": "人形大脑操作系统，重点升级人形 VLA。", "id": "entity-limx-cosa", "url": "https://www.limxdynamics.com/en/news/BK000067" },
-        { "date": "2026-09", "title": "FluxVLA Engine", "track": "平台", "desc": "配置驱动的开源 VLA 工程平台，含 RTC 推理与真机 operator。", "id": "entity-fluxvla-engine", "url": "https://github.com/FluxVLA/FluxVLA" }
+        { "date": "2026-09", "title": "FluxVLA Engine", "track": "平台", "desc": "配置驱动的开源 VLA 工程平台，含 RTC 推理与真机 operator。", "id": "entity-fluxvla-engine", "url": "https://github.com/FluxVLA/FluxVLA" },
+        { "date": "", "title": "TRON1 RL 部署", "track": "全身控制", "desc": "ONNX 策略经 ROS 2 控制器与低层 SDK 上真机。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-cn-os-tron1-rl-deploy-ros2", "url": "https://github.com/limxdynamics", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
       ]
     },
     {
@@ -159,11 +177,14 @@
       "summary": "高性价比 G1 硬件 + RL 训练仓生态，再往上叠 UnifoLM 世界模型 / VLA / WLA 家族。",
       "official": "https://github.com/unitreerobotics",
       "nodes": [
-        { "date": "", "title": "G1", "track": "整机", "desc": "教育科研人形，仿真学习生态最广的本体之一。", "id": "entity-unitree-g1", "url": "https://www.unitree.com/" },
-        { "date": "", "title": "unitree_rl_gym", "track": "全身控制", "desc": "官方 RL 训练仓：Train → Play → Sim2Sim → Sim2Real。", "id": "entity-unitree-rl-gym", "url": "https://github.com/unitreerobotics/unitree_rl_gym" },
-        { "date": "", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "世界模型既做交互仿真生成数据，也接动作头增强策略。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action" },
-        { "date": "", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "面向通用人形操作的 VLA，训练 / 推理 / 权重开源。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla" },
-        { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA：具身推理 → 动态区域预测 → 动作专家。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla" }
+        { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA：具身推理 → 动态区域预测 → 动作专家。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla" },
+        { "date": "", "title": "G1", "track": "整机", "desc": "教育科研人形，仿真学习生态最广的本体之一。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unitree-g1", "url": "https://www.unitree.com/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "unitree_rl_gym", "track": "全身控制", "desc": "官方 RL 训练仓：Train → Play → Sim2Sim → Sim2Real。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unitree-rl-gym", "url": "https://github.com/unitreerobotics/unitree_rl_gym", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "世界模型既做交互仿真生成数据，也接动作头增强策略。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "面向通用人形操作的 VLA，训练 / 推理 / 权重开源。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
+        { "date": "", "title": "XR Teleoperate", "track": "数采", "desc": "持续维护的官方遥操作入口，与仿真和 LeRobot 数据链路衔接。", "id": "entity-xr-teleoperate", "url": "https://github.com/unitreerobotics/xr_teleoperate", "date_note": "持续维护仓库。" },
+        { "date": "", "title": "Unitree Sim IsaacLab", "track": "仿真", "desc": "官方 Isaac Lab 仿真与遥操作/策略测试接口；持续维护仓库。", "id": "entity-unitree-sim-isaaclab", "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab", "date_note": "持续维护仓库。" },
+        { "date": "", "title": "Unitree LeRobot", "track": "训练 / 部署", "desc": "将数采转换、策略训练与真机推理连接；持续维护工程入口。", "id": "entity-unitree-lerobot", "url": "https://github.com/unitreerobotics/unitree_lerobot", "date_note": "持续维护仓库。" }
       ]
     },
     {
@@ -183,7 +204,6 @@
       "summary": "蚂蚁集团旗下具身智能公司；LingBot 模型家族从视觉、深度、流式 3D、视频预训练、世界模型、世界–动作模型一路做到跨本体 VLA，多数代码与权重开源。",
       "official": "https://technology.robbyant.com/",
       "nodes": [
-        { "date": "", "title": "LingBot 全栈", "track": "公司", "desc": "Ant Group → Robbyant → LingBot：感知 → 空间 → 视频 → 世界 → 动作七条模型线。", "id": "entity-robbyant", "url": "https://www.robbyant.com/about-robby" },
         { "date": "2026-01", "title": "LingBot-Depth", "track": "感知", "desc": "masked depth modeling 补全噪声深度；开放约 300 万 RGB-D 样本，后成为 VLA 几何教师。", "id": "entity-cn-os-lingbot-depth", "url": "https://technology.robbyant.com/lingbot-depth" },
         { "date": "2026-01", "title": "LingBot-VLA", "track": "VLA", "desc": "4B 务实 VLA：Qwen2.5-VL + flow 动作头，2 万小时双臂真机预训练，权重开源。", "id": "entity-lingbot-vla", "url": "https://technology.robbyant.com/lingbot-vla" },
         { "date": "2026-01", "title": "LingBot-World", "track": "世界模型", "desc": "源自视频生成的开源交互世界模拟器，支持相机 / 动作条件。", "id": "entity-lingbot-world", "url": "https://technology.robbyant.com/lingbot-world" },
@@ -193,7 +213,8 @@
         { "date": "2026-07", "title": "LingBot-VLA 2.0", "track": "VLA", "desc": "6B MoE 动作专家，约 6 万小时 20 本体 + 人视频预训练，55 维全身动作空间（官方自报）。", "id": "entity-lingbot-vla-v2", "url": "https://technology.robbyant.com/lingbot-vla-v2" },
         { "date": "2026-07", "title": "LingBot-World 2.0", "track": "世界模型", "desc": "720p 60 fps 无界交互视界，pilot / director 双 agent。", "id": "entity-paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling", "url": "https://technology.robbyant.com/lingbot-world-v2" },
         { "date": "2026-07", "title": "LingBot-VA 2.0", "track": "世界–动作", "desc": "语义视觉–动作 tokenizer + 因果 DiT + 视频流 MoE；仅公开技术报告。", "id": "entity-robbyant", "url": "https://technology.robbyant.com/lingbot-va-v2" },
-        { "date": "2026-07", "title": "LingBot-Video", "track": "视频预训练", "desc": "DiT + MoE 具身视频基础模型，reward 对齐物理合理性与任务完成度。", "id": "entity-cn-os-lingbot-video", "url": "https://technology.robbyant.com/lingbot-video" }
+        { "date": "2026-07", "title": "LingBot-Video", "track": "视频预训练", "desc": "DiT + MoE 具身视频基础模型，reward 对齐物理合理性与任务完成度。", "id": "entity-cn-os-lingbot-video", "url": "https://technology.robbyant.com/lingbot-video" },
+        { "date": "", "title": "LingBot 全栈", "track": "公司", "desc": "Ant Group → Robbyant → LingBot：感知 → 空间 → 视频 → 世界 → 动作七条模型线。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-robbyant", "url": "https://www.robbyant.com/about-robby", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
       ]
     },
     {
@@ -217,5 +238,6 @@
         { "date": "2026-08", "title": "DPC", "track": "直接感知控制", "desc": "去掉中间运动接口 Zt（以冻结 SONIC 为靶），Symbiotic Attention 耦合感知与控制；仅定性真机演示，无成功率表。", "id": "entity-paper-dpc", "url": "https://symbiosis-robotics.com/research/dpc/en/" }
       ]
     }
-  ]
+  ],
+  "date_policy": "日期优先对应原始技术发布；明确标注的工程文章/阶段地图按该事件月份；空日期由 date_note 说明，不用入库日代替首发日。"
 }

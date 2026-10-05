@@ -18,3 +18,10 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-lingbot-video.md](../../wiki/entities/cn-os-lingbot-video.md)
+
+## 官方资源补核（2026-10-05）
+
+- **项目页：** <https://technology.robbyant.com/lingbot-video/>；代码 <https://github.com/robbyant/lingbot-video>。
+- **机制：** Dense 1.3B / MoE 30B-A3B，70k+ 小时具身/网络视频；美学、物理与任务完成 reward 后训练。
+- **发布边界：** 2026-09-18 发布 8-step DMD T2V / Ti2V checkpoint，不等于所有训练数据公开。
+- **入口：** `scripts/inference.py`、`scripts/single-gpu/run_moe_dmd_t2v.sh` / `run_moe_dmd_ti2v.sh`、`rewriter/inference.py`；配置、权重与大显存要求需逐项匹配。

@@ -1,73 +1,80 @@
 ---
 type: entity
-tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+tags:
+- repo
+- robbyant
+- depth-estimation
+- perception
+status: complete
+updated: '2026-10-05'
 related:
-  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/china-domestic-opensource-424-coverage.md
+- ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/china-domestic-opensource-424-coverage.md
+- ./robbyant.md
+- ./cn-os-lingbot-vision.md
+- ./lingbot-vla.md
 sources:
-  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
-  - ../../sources/repos/lingbot-depth.md
-summary: "蚂蚁灵波 开源项目 LingBot-Depth（工程与工具）：把RGB外观与不完整或噪声深度对齐到统一潜空间，输出补全和精修后的度量深度；仓库开放推理代码、模型权重及约三百万RGB-D样本入口，可为抓取、重建和空间感知提供更稳定的几何输入。…"
+- ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+- ../../sources/repos/lingbot-depth.md
+- ../../sources/sites/robbyant_github.md
+summary: LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含噪或稀疏传感器深度补全为稠密深度和点云，属于感知层而非动作策略。
 institutions:
-  - robbyant
+- robbyant
 ---
 
-# LingBot-Depth
+# LingBot-Depth：深度补全与修复
 
 ## 一句话定义
 
-**LingBot-Depth** 是 [蚂蚁灵波](https://github.com/Robbyant) 公开的 **工程与工具** 开源项目：把RGB外观与不完整或噪声深度对齐到统一潜空间，输出补全和精修后的度量深度；仓库开放推理代码、模型权重及约三百万RGB-D样本入口，可为抓取、重建和空间感知提供更稳定的几何输入。
+LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含噪或稀疏传感器深度补全为稠密深度和点云，属于感知层而非动作策略。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 真机控制与状态读取接口 |
-| RL | Reinforcement Learning | 强化学习训练与策略优化 |
-| VLA | Vision-Language-Action | 视觉–语言–动作统一策略 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
-| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+| --- | --- | --- |
+| RGB-D | Red-Green-Blue and Depth | 彩色图像与深度 |
+| MDM | Masked Depth Modeling | 通过遮挡深度监督学习补全 |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
 
 ## 为什么重要
 
-- 收录于 [国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) 的 **第二层** 分组。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 同源策展；本页为 **独立详情节点**，便于从公司清单跳到机制与入口说明。
+- 反光、遮挡与传感器缺测会直接影响抓取和空间感知。
+- 给 VLA 提供几何教师，与实际生成机器人动作是两层职责。
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 蚂蚁灵波 |
-| 类别 | 工程与工具 |
-| 官方组织 | https://github.com/Robbyant |
+输入 RGB、原始深度和相机内参，利用视觉先验补全/修复深度。官方 `MDMModel` 返回 `depth` 与 `points`。v0.5 是官方推荐的修正版本，另有稀疏补全任务模型。
+
+公开 **3,019,200 RGB-D 样本**包含真实室内、VLA 采集与仿真子集；[Vision](cn-os-lingbot-vision.md) 中另介绍 Depth 2.0，用新的视觉骨干和更大训练池，不能混淆两代开放数据规模。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `LingBot-Depth` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. 从 `mdm.model.v2.MDMModel.from_pretrained` 加载官方 v0.5 权重。
+2. 示例把深度毫米转换为米，并按图像尺寸规范化相机内参。
+3. 运行 `python example.py`，检查预测深度、点云尺度和边缘，不只看渲染效果。
+4. **已开源（2026-10-05）**：官方仓提供推理实现、HF/ModelScope 权重与 3M RGB-D 数据；全量训练可复现性另核对。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- 补全可能生成符合视觉先验但不符合真实几何的表面；接触与避障仍需验证。
+- 相机标定、深度单位和输入分辨率不匹配会系统性影响点云。
+- Depth 2.0 的 150M 训练规模不代表 150M 数据全量公开。
 
 ## 关联页面
 
-- [Robbyant（蚂蚁灵波）](./robbyant.md) — 公司页：LingBot-Depth（masked depth modeling）与 VLA 深度蒸馏的关系
-- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
-- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
-- [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+
+- [Robbyant](./robbyant.md)
+- [LingBot-Vision](./cn-os-lingbot-vision.md)
+- [LingBot-VLA](./lingbot-vla.md)
 
 ## 参考来源
 
-- [LingBot-Depth 源码归档](../../sources/repos/lingbot-depth.md)（<https://github.com/Robbyant/LingBot-Depth>）
-
-- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [LingBot-Depth 官方仓库核查](../../sources/repos/lingbot-depth.md)
+- [官方组织资产索引](../../sources/sites/robbyant_github.md)
 
 ## 推荐继续阅读
 
-- [蚂蚁灵波 官方组织](https://github.com/Robbyant)
+- [官方项目页](https://technology.robbyant.com/lingbot-depth)
+- [官方代码](https://github.com/robbyant/lingbot-depth)

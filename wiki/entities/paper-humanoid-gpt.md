@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-05
 arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
@@ -219,6 +219,10 @@ sequenceDiagram
 - [humanoid_gpt_arxiv_2606_03985.md](../../sources/papers/humanoid_gpt_arxiv_2606_03985.md) — arXiv 策展摘录
 - [humanoid-gpt-qizekun-github-io.md](../../sources/sites/humanoid-gpt-qizekun-github-io.md) — 项目页公开主张与对比演示
 - [humanoid_gpt_galaxy_general_robotics.md](../../sources/repos/humanoid_gpt_galaxy_general_robotics.md) — 官方代码仓库索引
+
+## 公司路线中的版本定位
+
+- [AstraBrain-WAM / WBC 家族](./galbot-astrabrain.md)：与本页互补，按独立发布物核对架构和开放范围。
 
 ## 关联页面
 

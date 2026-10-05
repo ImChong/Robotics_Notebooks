@@ -18,3 +18,10 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-lingbot-depth.md](../../wiki/entities/cn-os-lingbot-depth.md)
+
+## 官方资源补核（2026-10-05）
+
+- **项目页：** <https://technology.robbyant.com/lingbot-depth/>；代码 <https://github.com/robbyant/lingbot-depth>。
+- **模型入口：** `mdm.model.v2.MDMModel.from_pretrained`、`python example.py`，输入 RGB、深度与内参，输出补全深度/点。
+- **数据：** README / 项目公开约 3,019,200 RGB-D 样本（2026-03-31 公布），并区分真实、VLA、合成与验证部分。
+- **工程检查：** 毫米转米与内参归一化须按示例处理；不要把后续 Depth 2 教师扩展视作本仓完整发布。

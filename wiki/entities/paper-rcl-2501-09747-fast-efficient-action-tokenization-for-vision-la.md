@@ -1,107 +1,113 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+tags:
+- paper
+- pi
+- action-tokenization
+- vla
 status: complete
-updated: 2026-09-25
-arxiv: "2501.09747"
-venue: "2025"
+updated: '2026-10-05'
+arxiv: '2501.09747'
+venue: '2025'
 code: https://huggingface.co/physical-intelligence/fast
-summary: "RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。"
+summary: FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列。
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+- ../entities/awesome-world-action-models-rcl.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+- ../methods/π0-policy.md
+- ./paper-real-time-chunking.md
 sources:
-  - ../../sources/papers/rcl_awesome_wam_2501_09747_fast-efficient-action-tokenization-for-v.md
-  - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/papers/rcl_awesome_wam_2501_09747_fast-efficient-action-tokenization-for-v.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/sites/pi-memory-rlt-fast.md
 ---
 
-# FAST
-
-**FAST: Efficient Action Tokenization for Vision-Language-Action Models** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 072/564** 篇，分组 **Components of WAMs**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# FAST：高效动作分词
 
 ## 一句话定义
 
-RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。
+FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WAM | World Action Model | 世界预测与动作生成耦合 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
-| WM | World Model | 环境前向预测模型 |
+| --- | --- | --- |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
+| DCT | Discrete Cosine Transform | 把时序动作转为频域系数 |
+| BPE | Byte Pair Encoding | 合并高频符号序列的分词方式 |
 
 ## 为什么重要
 
-- RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。
-- 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 逐时间步独立离散化会产生很长的 token 序列；时间相关性可以直接用于压缩。
+- tokenizer 是可复用的动作表示组件，适合比较自回归动作头与连续 flow 动作头。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 072/564 |
-| 分组 | Components of WAMs |
-| 出处 | 2025 |
-| 论文 | <https://arxiv.org/abs/2501.09747> |
-| 代码/项目 | <https://huggingface.co/physical-intelligence/fast> |
-| 子类 / 象限 | Action representations & policies · 动作策略基础 · 不适用 |
+连续动作 chunk → 沿时间轴 DCT → 系数量化 → BPE token → 自回归预测 → 逆变换恢复动作。低频系数聚集平滑运动信息，BPE 再利用符号重复；压缩率与误差取决于动作归一化、采样率和量化配置。
 
-## 核心机制（归纳）
+**FAST+** 提供跨机器人数据训练的通用 tokenizer。tokenizer 的泛化不等于策略在新本体上即插即用，控制输出仍须匹配动作维度和语义。
 
-### 策展导读要点
+## 源码运行时序图
 
-RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant D as 动作数据
+    participant T as HF FAST tokenizer
+    participant P as 自回归策略
+    participant R as 机器人适配器
+    D->>T: 归一化动作 chunk
+    T-->>P: 压缩 tokens（训练监督）
+    P->>T: 预测 tokens（推理）
+    T-->>R: 解码连续动作 chunk
+```
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+这里描绘官方 tokenizer 的编码/解码接口；策略训练与真机适配不属于 tokenizer 本身。
+
+## 工程实践
+
+1. 从官方 HF 模型卡加载 tokenizer，先验证自己的动作 chunk 编码→解码重建。
+2. 对齐采样率、chunk 长度、归一化与动作顺序，检查重建误差和每个 chunk 的 token 数。
+3. 比较闭环成功率与真实时延：训练序列缩短不保证逐 token 生成满足控制预算。
+4. 已有 tokenizer 实现与资产；全套策略/机器人接口须另查 [openpi](../methods/π0-policy.md)。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2501.09747) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **Components of WAMs** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+对比动作离散化方案时，至少同时记录 **token 数、解码误差、训练收敛与策略成功率、在线生成时延**。这些指标依赖机器人动作频率与任务，本页不把 tokenizer 压缩比当成整机性能提升比例。
 
 ## 结论
 
-**这一页能给你的是「FAST」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**FAST 的可操作价值是压缩动作序列，并提供可独立验证的 tokenizer。**
 
-- 可确证的只有清单坐标：分组 **Components of WAMs**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 先做动作重建检查，再接自回归策略。
+2. 把训练效率与实时执行效率分开评测。
+3. 高频灵巧任务须关注量化误差，而非只追求短序列。
 
-## 常见误区
+## 与其他工作对比
 
-1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+与连续 flow 动作头相比，FAST 优化的是自回归动作序列长度，仍须承担逐 token 生成成本。与 [RTC](paper-real-time-chunking.md) 相比，FAST 处理动作表示，RTC 处理执行中新旧 chunk 的调度；二者可以组合，不能用一项收益替代另一项评测。
+
+## 局限与风险
+
+- 高频接触动作的细节可能受量化与频域截断影响；应检查末端速度、夹爪事件和任务成功率。
+- 动作压缩与 [RTC](paper-real-time-chunking.md) 的推理调度处理不同问题。
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
-- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [π₀ / openpi](../methods/π0-policy.md)
+- [RTC](./paper-real-time-chunking.md)
+- [VLA](../methods/vla.md)
 
 ## 参考来源
 
-- [`sources/papers/rcl_awesome_wam_2501_09747_fast-efficient-action-tokenization-for-v.md`](../../sources/papers/rcl_awesome_wam_2501_09747_fast-efficient-action-tokenization-for-v.md) — 本条目策展摘录
-- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
-- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- 论文：<https://arxiv.org/abs/2501.09747>
+- [PI 一手资料补核](../../sources/sites/pi-memory-rlt-fast.md)
 
 ## 推荐继续阅读
 
-- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
-- [原文](https://arxiv.org/abs/2501.09747)
+- [官方 tokenizer](https://huggingface.co/physical-intelligence/fast)
+- [FAST 论文](https://arxiv.org/abs/2501.09747)

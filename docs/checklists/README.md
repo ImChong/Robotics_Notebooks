@@ -8,6 +8,7 @@
 - [技术栈项目执行清单 v31](tech-stack-next-phase-checklist-v31.md) — 当前技术栈、自动化、纵深建设与 UX 推进看板。
 - [前端体验优化清单 v1](frontend-optimization-v1.md) — GitHub Pages 首页与交互体验优化计划。
 - [读者视角内容审计 v1](reader-facing-content-audit-v1.md) — 全量扫描站点节点，定位仍带维护者口径的页面与段落，给出推进顺序。
+- [公司路线资料补齐 v1](company-roadmaps-completeness-v1.md) — 16 家公司代表作品、版本身份、公开资产与日期边界的核查和验收。
 - [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
 - [GitHub Actions CI 门禁](github-actions-ci-gate.md) — 合并 `main` 前必须等全量 Actions 全绿；branch protection 建议。
 

@@ -1,111 +1,100 @@
 ---
 type: entity
-tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
+tags:
+- paper
+- pi
+- vla
+- memory
 status: complete
-updated: 2026-09-25
-arxiv: "2603.03596"
-summary: "Memory architecture for vision-language-action models pairing a video encoder for short-horizon recall with language-based long-horizon memory. <!-- tags: paper -->"
+updated: '2026-10-05'
+arxiv: '2603.03596'
+summary: MEM 用短期视频记忆保留局部动态，用长期语言记忆保留任务事件，在 VLA 延迟预算内支持分钟级长程操作。
 related:
-  - ../entities/awesome-physical-ai-natnew.md
-  - ../overview/awesome-physical-ai-technology-map.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
+- ../entities/awesome-physical-ai-natnew.md
+- ../overview/awesome-physical-ai-technology-map.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
+- ./paper-hi-robot.md
 sources:
-  - ../../sources/papers/pai_awesome_2603_03596_mem-multi-scale-embodied-memory.md
-  - ../../sources/repos/awesome-physical-ai-union-catalog.md
-  - ../../sources/repos/awesome-physical-ai-natnew.md
-  - ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/papers/pai_awesome_2603_03596_mem-multi-scale-embodied-memory.md
+- ../../sources/repos/awesome-physical-ai-union-catalog.md
+- ../../sources/repos/awesome-physical-ai-natnew.md
+- ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/sites/pi-memory-rlt-fast.md
 ---
 
-# MEM — Multi-Scale Embodied Memory
-
-**MEM — Multi-Scale Embodied Memory** 收录于 awesome-physical-ai（natnew）**第 301/384** 条，分组 **Robotics Foundation Models**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
+# MEM：多尺度具身记忆
 
 ## 一句话定义
 
-Memory architecture for vision-language-action models pairing a video encoder for short-horizon recall with language-based long-horizon memory. <!-- tags: paper -->
+MEM 用短期视频记忆保留局部动态，用长期语言记忆保留任务事件，在 VLA 延迟预算内支持分钟级长程操作。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| PAI | Physical AI | 具身/物理智能策展主题 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| RFM | Robotics Foundation Model | 机器人基础模型 |
-| Sim2Real | Simulation to Real | 仿真到真机迁移 |
+| --- | --- | --- |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
+| MEM | Multi-Scale Embodied Memory | 秒级视觉与分钟级语言记忆 |
+| VLM | Vision-Language Model | 高层语义理解与记忆更新模型 |
 
 ## 为什么重要
 
-- Memory architecture for vision-language-action models pairing a video encoder for short-horizon recall with language-based long-horizon memory. <!-- tags: paper -->
-- 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
-- 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
+- 当前观测无法回答“此前做过什么”和“物体刚才怎么动”；两类记忆需要不同分辨率。
+- 把所有历史帧塞进模型会增加算力与时延，MEM 用不同尺度的表示控制成本。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 301/384 |
-| 分组 | Robotics Foundation Models |
-| 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/2603.03596> |
-| arXiv | 2603.03596 |
+| 记忆 | 机制 | 主要信息 |
+| --- | --- | --- |
+| 短期 | 高效视频编码器保留数秒视觉历史 | 动态、遮挡、抓取滑动与现场适应 |
+| 长期 | 高层策略更新自然语言记忆，条件化后续策略 | 已完成步骤、失败事件、跨分钟任务状态 |
 
-## 核心机制（归纳）
-
-### 策展导读要点
-
-Memory architecture for vision-language-action models pairing a video encoder for short-horizon recall with language-based long-horizon memory. <!-- tags: paper -->
-
-本页不复述论文公式与完整实验表；工程落地请回到原文 / 项目页，并对照站内 VLA、Sim2Real 或任务页。
-
-## 评测与指标
-
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2603.03596) 为准。
-- 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比，只给出清单坐标。
-- 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单导读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
-- 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；以本页主链接与技术地图为准。
-
-## 结论
-
-**这一页能给你的是「MEM — Multi-Scale Embodied Memory」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
-
-1. **策展坐标** — 分组 **Robotics Foundation Models**，来源 natnew。
-2. **适用边界** — 本页不能替代原文 PDF / 官方文档；开源状态以项目页实际链接为准。
-3. **以深读页为准** — 若站内已有这篇的深读页，以那一页为准；本页只是清单入口。
-4. **怎么深读** — 要深读这篇，建议直接从原文入手。
+论文将系统实例化为 **π₀.₆-MEM**。高层更新语义记忆，低层同时消费近期观测与记忆条件；语言压缩降低历史成本，但不保留精确接触几何，因此不能替代短期视频。
 
 ## 源码运行时序图
 
-**不适用**（本页未逐仓核对 README 里的训练 / 推理入口；清单标注的仓库链接可能滞后，复现前请先打开项目页核对）。
+**不适用**：本次可读原始论文，但官网项目页访问受限，未确认官方可运行训练/推理实现；这里不以 openpi 的存在推定 MEM 已开放。
+
+## 工程实践
+
+1. 用需要历史的任务评估：隐藏信息、重复子任务、已完成步骤确认。
+2. 比较无记忆、仅视频、仅语言与双尺度四种设置；保持任务/数据量一致。
+3. 同时记录任务完成率、记忆更新错误、推理时延和历史长度。
+4. 原始论文可读；本次官网返回 403，完整官方训练/部署代码 **未确认**。
+
+## 评测与指标
+
+论文报告厨房整理、烹饪等最长约 **15 分钟**任务。读实验时区分短期记忆改善局部操作、长期记忆改善子任务状态，以及模型/数据变化的收益；每项对比须绑定论文相应设置。
+
+## 结论
+
+**MEM 的关键是用两种表示分别保存局部动态和长期语义。**
+
+1. 用确实需要历史信息的任务测记忆价值。
+2. 逐尺度消融，避免把额外数据收益归到记忆结构。
+3. 部署时检查记忆更新可靠性与延迟预算。
+
+## 与其他工作对比
+
+[Hi Robot](paper-hi-robot.md) 重点是语言指令分层和现场纠正；MEM 重点是历史状态的保留。仅靠高层拆解任务不足以证明记住已执行步骤，比较时要加入需历史信息的任务与逐尺度记忆消融。
 
 ## 局限与风险
 
-- 不要把 Awesome 摘要当成完整方法证明或合规结论。
-- 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
-- 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
+- 长期语言记忆可能遗漏或误记事件；失误会持续影响后续动作。
+- “15 分钟任务”是论文中的评测范围，不代表任何任务均可无限记忆。
+- 当前未确认可运行官方实现，不把论文结构图当作源码运行时序图。
 
 ## 关联页面
 
-- [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
-- [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
-- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
-- [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [π₀.₆](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
+- [Hi Robot](./paper-hi-robot.md)
+- [VLA](../methods/vla.md)
 
 ## 参考来源
 
-- [`sources/papers/pai_awesome_2603_03596_mem-multi-scale-embodied-memory.md`](../../sources/papers/pai_awesome_2603_03596_mem-multi-scale-embodied-memory.md) — 本条目策展摘录
-- [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
-- [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
-- [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/2603.03596>
+- [PI 一手资料补核](../../sources/sites/pi-memory-rlt-fast.md)
 
 ## 推荐继续阅读
 
-- [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
-- [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/2603.03596)
+- [MEM 论文](https://arxiv.org/abs/2603.03596)

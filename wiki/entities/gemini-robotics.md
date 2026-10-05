@@ -5,7 +5,7 @@ title: Gemini Robotics
 status: complete
 arxiv: "2503.20020"
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈的机器人模型族；Gemini Robotics 2（2026-07）把 VLA 推进到全身人形控制，并配套公开预览的 ER 2 agent 与端侧 On-Device 2。"
-updated: 2026-09-21
+updated: 2026-10-05
 related:
   - ./paper-roborefer.md
   - ./robospatial.md
@@ -166,6 +166,16 @@ sequenceDiagram
 - 产品迭代快，博客数字需标注读取日期；勿把营销演示写成学术 SOTA。
 - 「同一 checkpoint 跨本体」的泛化边界（传感器、DoF、接触模态）未在公开材料中完整披露。
 - HF 上 ASIMOV-Agentic 可能有访问限制；写入评测前先核对该数据集实际可见性。
+
+## 版本沿革：1.0 → 1.5 → 2
+
+| 发布 | 版本 | 可确认的变化与开放边界 |
+| --- | --- | --- |
+| 2025-03 | Gemini Robotics / ER | 视觉语言动作与具身推理两类模型，历史起点 |
+| 2025-09-25 | Robotics 1.5 / ER 1.5 | ER 调工具并规划，VLA 执行且加入行动前推理、跨本体迁移；ER 提供 API，VLA 面向选定合作伙伴 |
+| 2026-07-30 | Robotics 2 / ER 2 / On-Device 2 | 本页主要叙述的全身控制、具身 agent 与端侧模型 |
+
+**API 可用与开源权重是不同状态**。1.5 的技术说明来自[官方版本发布归档](../../sources/sites/gemini-robotics-15.md)，不把 2 的接口和实验回写为 2025 首版能力。
 
 ## 关联页面
 

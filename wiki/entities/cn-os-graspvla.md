@@ -1,72 +1,96 @@
 ---
 type: entity
-tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+tags:
+- repo
+- galbot
+- vla
+- grasping
+- sim2real
+status: complete
+updated: '2026-10-05'
 related:
-  - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/china-domestic-opensource-424-coverage.md
+- ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/china-domestic-opensource-424-coverage.md
+- ./galbot-astrabrain.md
+- ../methods/vla.md
+- ../concepts/sim2real.md
 sources:
-  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
-  - ../../sources/repos/graspvla.md
-summary: "银河通用 开源项目 GraspVLA（VLA/操作模型）：视觉与语言目标经过空间理解和抓取策略生成六自由度末端动作，用于在开放物体与场景中完成抓取；项目连接视觉语言理解、抓取候选与机器人执行。…"
+- ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+- ../../sources/repos/graspvla.md
+summary: GraspVLA 在 SynGrasp-1B 合成动作数据上预训练，以自回归感知与 flow-matching 动作生成联合支持开放词汇抓取和零样本 Sim2Real。
 institutions:
-  - galbot
+- galbot
 ---
 
-# GraspVLA
+# GraspVLA：十亿级合成数据预训练的抓取基座
 
 ## 一句话定义
 
-**GraspVLA** 是 [银河通用](https://github.com/GalaxyGeneralRobotics) 公开的 **VLA/操作模型** 开源项目：视觉与语言目标经过空间理解和抓取策略生成六自由度末端动作，用于在开放物体与场景中完成抓取；项目连接视觉语言理解、抓取候选与机器人执行。
+GraspVLA 在 SynGrasp-1B 合成动作数据上预训练，以自回归感知与 flow-matching 动作生成联合支持开放词汇抓取和零样本 Sim2Real。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 真机控制与状态读取接口 |
-| RL | Reinforcement Learning | 强化学习训练与策略优化 |
-| VLA | Vision-Language-Action | 视觉–语言–动作统一策略 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
-| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+| --- | --- | --- |
+| VLA | Vision-Language-Action | 视觉和语言条件下生成动作 |
+| CoT | Chain of Thought | 串联感知与动作生成的思维链 |
+| HF | Hugging Face | 官方模型与数据分发平台 |
 
 ## 为什么重要
 
-- 收录于 [国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) 的 **第二层** 分组。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 同源策展；本页为 **独立详情节点**，便于从公司清单跳到机制与入口说明。
+- 展示大规模仿真数据能否预训练可真机迁移的抓取策略。
+- 已有模型服务、训练数据和仿真/真机接口，可从原先的公司清单入口转为复现入口。
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 银河通用 |
-| 类别 | VLA/操作模型 |
-| 官方组织 | https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC |
+**SynGrasp-1B** 是十亿帧合成抓取数据，官方 README 称覆盖 **240 类、超过一万物体**。模型将自回归感知任务与 flow-matching 动作生成置于统一 CoT，以联合利用动作数据与互联网语义；这使合成动作学习与开放词汇理解能共享表征。
+
+这里的“零样本”指论文设定下的直接 Sim2Real 抓取迁移，不代表任意本体、任意相机和任意接触任务无需适配。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as offline_test / 环境客户端
+    participant S as vla_network.scripts.serve
+    participant C as checkpoint + preprocessor
+    participant R as 仿真 / 真机接口
+    S->>C: 加载同一实验的配置、预处理与权重
+    U->>S: 图像、指令、机器人状态
+    S-->>U: 感知输出与动作预测
+    U->>R: 转换并执行动作
+    R-->>U: 下一帧观测
+```
+
+从 `offline_test` 验证服务协议，再接 README 的 simulation playground；真机控制需要独立适配。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `GraspVLA` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. 锁定官方 `PKU-EPIC/GraspVLA` 的版本，按 `uv sync --locked` 安装。
+2. 获取 HF `vegebirrd/GraspVLA` 权重；`config.json`、`preprocessor.npz` 与 checkpoint 必须来自同一实验目录。
+3. 启动 `vla_network.scripts.serve`，用 `vla_network.scripts.offline_test` 验证请求/响应及感知框。
+4. 先接 simulation playground，再查 real-world control interface；训练入口使用 SynGrasp-1B。
+5. **开源核查（2026-10-05）**：推理、训练入口、权重和 SynGrasp-1B 已列出；数据发布新闻日期为 2026-08-19。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- 配置/归一化不匹配会让可运行的服务生成错误动作，须先做离线回放。
+- 感知泛化与真机抓取成功率要分开；仿真 benchmark 不能替代硬件协议。
+- 公开代码与模型可用不自动说明所有训练依赖或每个许可都相同，使用前检查相应仓库/资产说明。
 
 ## 关联页面
 
-- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
-- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
-- [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [AstraBrain](./galbot-astrabrain.md)
+- [VLA](../methods/vla.md)
+- [Sim2Real](../concepts/sim2real.md)
 
 ## 参考来源
 
-- [GraspVLA 源码归档](../../sources/repos/graspvla.md)（<https://github.com/PKU-EPIC/GraspVLA>）
-
-- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [官方 GraspVLA 代码与资产核查](../../sources/repos/graspvla.md)
 
 ## 推荐继续阅读
 
-- [银河通用 官方组织](https://github.com/GalaxyGeneralRobotics)
+- [官方仓库](https://github.com/PKU-EPIC/GraspVLA)
+- [原始论文](https://arxiv.org/abs/2505.03233)
