@@ -5,6 +5,7 @@
 
 ### Entities（实体页）
 
+- [1X Redwood AI 控制策略](wiki/entities/1x-redwood-policy.md) — Redwood AI 是 1X 面向 EVE / NEO 的机载视觉语言动作策略，把移动、双臂操作与骨盆姿态联合预测；它与同名 World Model 是不同发布物。 `📅unknown` `[entity_page]`
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
 - [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
 - [acados](wiki/entities/acados.md) — acados**](https://github.com/acados/acados) 是面向 **模型预测控制（MPC）** 与 **最优控制问题（OCP）** 的开源求解框架：用 **Rea `📅unknown` `[entity_page]`
@@ -222,7 +223,7 @@
 - [Gloria-M-SDK](wiki/entities/cn-os-gloria-m-sdk.md) — Gloria-M-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：云犀夹爪 Python SDK `📅unknown` `[entity_page]`
 - [GR-MG](wiki/entities/cn-os-gr-mg.md) — GR-MG** 是 字节跳动机器人团队 公开的 **VLA/操作模型** 开源项目：GR-MG 机器人操作生成模型官方实现 `📅unknown` `[entity_page]`
 - [gr00t-agilex](wiki/entities/cn-os-gr00t-agilex.md) — gr00t-agilex** 是 松灵机器人 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块 `📅unknown` `[entity_page]`
-- [GraspVLA](wiki/entities/cn-os-graspvla.md) — GraspVLA** 是 银河通用 公开的 **VLA/操作模型** 开源项目：视觉与语言目标经过空间理解和 `📅unknown` `[entity_page]`
+- [GraspVLA：十亿级合成数据预训练的抓取基座](wiki/entities/cn-os-graspvla.md) — GraspVLA 在 SynGrasp-1B 合成动作数据上预训练，以自回归感知与 flow-matching 动作生成联合支持开放词汇抓取和零样本 Sim2Real。 `📅unknown` `[entity_page]`
 - [HesaiLidar_ROS_2.0](wiki/entities/cn-os-hesailidar-ros-2-0.md) — HesaiLidar_ROS_2.0** 是 禾赛科技 公开的 **工程与工具** 开源项目：把禾赛激光雷达接入ROS与 `📅unknown` `[entity_page]`
 - [HesaiLidar_SDK_2.0](wiki/entities/cn-os-hesailidar-sdk-2-0.md) — HesaiLidar_SDK_2.0** 是 禾赛科技 公开的 **SDK/驱动** 开源项目：提供禾赛激光雷达数据接收 `📅unknown` `[entity_page]`
 - [hi_dynamic_control](wiki/entities/cn-os-hi-dynamic-control.md) — hi_dynamic_control** 是 高擎机电 公开的 **部署运行时** 开源项目：策略部署运行时：加 `📅unknown` `[entity_page]`
@@ -243,9 +244,9 @@
 - [Lightwheel-simready-asset](wiki/entities/cn-os-lightwheel-simready-asset.md) — Lightwheel-simready-asset** 是 光轮智能 公开的 **本体模型资产** 开源项目：提供机器人训练和 `📅unknown` `[entity_page]`
 - [Lightwheel-YCB](wiki/entities/cn-os-lightwheel-ycb.md) — Lightwheel-YCB** 是 光轮智能 公开的 **仿真环境** 开源项目：提供刚体、关节体和柔性物体的仿真就绪YCB `📅unknown` `[entity_page]`
 - [limxsdk-lowlevel](wiki/entities/cn-os-limxsdk-lowlevel.md) — limxsdk-lowlevel** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的 `📅unknown` `[entity_page]`
-- [LingBot-Depth](wiki/entities/cn-os-lingbot-depth.md) — LingBot-Depth** 是 蚂蚁灵波 公开的 **工程与工具** 开源项目：把RGB外观与不完整或噪声深度对齐到统一潜空间，输 `📅unknown` `[entity_page]`
-- [LingBot-Video](wiki/entities/cn-os-lingbot-video.md) — LingBot-Video** 是 蚂蚁灵波 公开的 **世界模型** 开源项目：稠密与MoE视频模型从文本或图像条件生成未来视频，并 `📅unknown` `[entity_page]`
-- [LingBot-Vision](wiki/entities/cn-os-lingbot-vision.md) — LingBot-Vision** 是 蚂蚁灵波 公开的 **评测** 开源项目：以面向几何和密集预测的自监督目标训练视觉编码器，使同一 `📅unknown` `[entity_page]`
+- [LingBot-Depth：深度补全与修复](wiki/entities/cn-os-lingbot-depth.md) — LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含噪或稀疏传感器深度补全为稠密深度和点云，属于感知层而非动作策略。 `📅unknown` `[entity_page]`
+- [LingBot-Video：具身视频生成基座](wiki/entities/cn-os-lingbot-video.md) — LingBot-Video 是面向具身场景的视频生成基座，用 MoE、具身视频数据与多奖励对齐学习视觉动态；视频输出本身不是机器人动作。 `📅unknown` `[entity_page]`
+- [LingBot-Vision：密集空间感知骨干](wiki/entities/cn-os-lingbot-vision.md) — LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾语义与边界几何，提供供密集任务消费的 patch 特征。 `📅unknown` `[entity_page]`
 - [linkerhand-python-sdk](wiki/entities/cn-os-linkerhand-python-sdk.md) — linkerhand-python-sdk** 是 灵心巧手 公开的 **SDK/驱动** 开源项目：提供LinkerHand的P `📅unknown` `[entity_page]`
 - [linkerhand-sim](wiki/entities/cn-os-linkerhand-sim.md) — linkerhand-sim** 是 灵心巧手 公开的 **移动操作** 开源项目：提供LinkerHand仿真环境，用于抓取、控 `📅unknown` `[entity_page]`
 - [linkerhand-urdf](wiki/entities/cn-os-linkerhand-urdf.md) — linkerhand-urdf** 是 灵心巧手 公开的 **本体模型资产** 开源项目：提供LinkerHand多款灵巧手URD `📅unknown` `[entity_page]`
@@ -353,7 +354,7 @@
 - [teleoperation](wiki/entities/cn-os-teleoperation.md) — teleoperation** 是 傅利叶智能 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器人动作 `📅unknown` `[entity_page]`
 - [Ti5HandROS1SDK](wiki/entities/cn-os-ti5handros1sdk.md) — Ti5HandROS1SDK** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：钛虎五指灵巧手 ROS1 SDK `📅unknown` `[entity_page]`
 - [tron1-agent](wiki/entities/cn-os-tron1-agent.md) — tron1-agent** 是 逐际动力 公开的 **具身Agent/规划** 开源项目：具身 Agent：任务规划与技能调度 `📅unknown` `[entity_page]`
-- [TRON1 RL Deploy ROS2](wiki/entities/cn-os-tron1-rl-deploy-ros2.md) — TRON1 RL Deploy ROS2** 是 逐际动力 公开的 **仿真环境** 开源项目：ROS 2控制器加载训练导出的 `📅unknown` `[entity_page]`
+- [TRON1 RL Deploy ROS2：策略部署接口](wiki/entities/cn-os-tron1-rl-deploy-ros2.md) — TRON1 RL Deploy ROS2 用 ROS 2 控制器与 ONNX Runtime 执行训练后的运动策略，通过 robot_hw 与低层 SDK 对接仿真或 TRON1 真机。 `📅unknown` `[entity_page]`
 - [tron1-ss](wiki/entities/cn-os-tron1-ss.md) — tron1-ss** 是 逐际动力 公开的 **工程与工具** 开源项目：感知/定位/建图模块：为导航与控制提供环境状态 `📅unknown` `[entity_page]`
 - [tron2_env](wiki/entities/cn-os-tron2-env.md) — tron2_env** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
 - [tron2_openpi](wiki/entities/cn-os-tron2-openpi.md) — tron2_openpi** 是 逐际动力 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本 `📅unknown` `[entity_page]`
@@ -539,6 +540,7 @@
 - [FreeCAD MCP](wiki/entities/freecad-mcp.md) — FreeCAD MCP** 是 neka-nat/freecad-mcp 开源的 **Model Contex `📅unknown` `[entity_page]`
 - [FreeCAD（开源参数化机械 CAD）](wiki/entities/freecad.md) — FreeCAD** 是由社区与 FreeCAD 组织 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCAD `📅unknown` `[entity_page]`
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`
+- [银河通用 AstraBrain：世界–动作与全身控制路线](wiki/entities/galbot-astrabrain.md) — AstraBrain** 把银河通用的世界–动作学习与身体执行组织成一套模型系列；研究时应分别追踪 **WAM 的数据与动作接口**、**WBC 的参考运动跟踪**。 `📅unknown` `[entity_page]`
 - [Gazebo Sim](wiki/entities/gazebo-sim.md) — Gazebo Sim](https://github.com/gazebosim/gz-sim) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [GE-Sim 2.0（Genie Envisioner World Simulator 2.0）](wiki/entities/ge-sim-2.md) — GE-Sim 2.0**（arXiv:2605.27491，AgiBot 等）是 **Genie Envisioner** 平台上的 **闭环视频世界模拟器**：在 [Genie Envision `📅unknown` `[entity_page]`
 - [GelSlim（薄片化视觉触觉传感器）](wiki/entities/gel-slim.md) — GelSlim** 是以 MIT 为主线的视觉触觉传感器（vision-based tactile sensor）家族，目标是把 [GelSight](../concepts/tactile-se `📅unknown` `[entity_page]`
@@ -585,6 +587,7 @@
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
 - [hdl_graph_slam](wiki/entities/hdl-graph-slam.md) — hdl_graph_slam** 以 **NDT 配准 + 位姿图优化** 构建室外 3D 激光 SLAM。 `📅unknown` `[entity_page]`
+- [Helix 02：Figure 全身自主系统](wiki/entities/helix-02.md) — Helix 02 在 Helix 的语义与动作双系统下增加 System 0：200 Hz 全身关节目标由 1 kHz 身体控制层执行，联合移动、接触与灵巧操作。 `📅unknown` `[entity_page]`
 - [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md) — Hermes Agent** 是 Nous Research 维护的开源自主代理栈（[NousResearch/hermes-agent `📅unknown` `[entity_page]`
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
@@ -2568,7 +2571,7 @@
 - [HugWBC](wiki/entities/paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md) — HugWBC: Unified Humanoid Whole-Body Controller** 收录于 awesome-physical-ai（natnew）**第 182/384** 条，分组 `📅unknown` `[entity_page]`
 - [R&B-EnCoRe](wiki/entities/paper-pai-2602-08167-rbencore.md) — R&B-EnCoRe** 收录于 awesome-physical-ai（natnew）**第 305/384** 条，分组 **Robotics Foundation Models**。本页是  `📅unknown` `[entity_page]`
 - [Recursive Belief VLA](wiki/entities/paper-pai-2602-20659-recursivebeliefvla.md) — Recursive Belief VLA** 收录于 awesome-physical-ai（aichr）**第 123/384** 条，分组 **Foundation Models (VLA `📅unknown` `[entity_page]`
-- [MEM — Multi-Scale Embodied Memory](wiki/entities/paper-pai-2603-03596-memmultiscaleembodiedmemory.md) — MEM — Multi-Scale Embodied Memory** 收录于 awesome-physical-ai（natnew）**第 301/384** 条，分组 **Robotics F `📅unknown` `[entity_page]`
+- [MEM：多尺度具身记忆](wiki/entities/paper-pai-2603-03596-memmultiscaleembodiedmemory.md) — MEM 用短期视频记忆保留局部动态，用长期语言记忆保留任务事件，在 VLA 延迟预算内支持分钟级长程操作。 `📅unknown` `[entity_page]`
 - [ABot-AgentOS](wiki/entities/paper-pai-2607-10350-abotagentos.md) — ABot-AgentOS** 收录于 awesome-physical-ai（natnew）**第 255/384** 条，分组 **Production Patterns / Reference `📅unknown` `[entity_page]`
 - [PAKT（arXiv:2609.25630）](wiki/entities/paper-pakt.md) — PAKT**（*PAKT: Physically-Aligned Kinesthetic Teaching for Reinforcement Learning*，[arXiv:2609.2563 `📅unknown` `[entity_page]`
 - [PaLM-E（HMI P053）](wiki/entities/paper-palm-e-embodied-language-model.md) — PaLM-E**（*PaLM-E: An Embodied Multimodal Language Model*，2023，[arXiv:2303.03378](https://arxiv.org `📅unknown` `[entity_page]`
@@ -2720,7 +2723,7 @@
 - [Prediction with Action](wiki/entities/paper-rcl-2411-18179-prediction-with-action-visual-policy-learning-vi.md) — Prediction with Action: Visual Policy Learning via Joint Denoising Process** 收录于 [Awesome World-Ac `📅unknown` `[entity_page]`
 - [ACT-Bench](wiki/entities/paper-rcl-2412-05337-act-bench-towards-action-controllable-world-mode.md) — ACT-Bench: Towards Action Controllable World Models for Autonomous Driving** 收录于 [Awesome World-Ac `📅unknown` `[entity_page]`
 - [Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipula...](wiki/entities/paper-rcl-2412-15109-predictive-inverse-dynamics-models-are-scalable.md) — Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipulation** 收录于 [Awesome W `📅unknown` `[entity_page]`
-- [FAST](wiki/entities/paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) — FAST: Efficient Action Tokenization for Vision-Language-Action Models** 收录于 [Awesome World-Action  `📅unknown` `[entity_page]`
+- [FAST：高效动作分词](wiki/entities/paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) — FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列。 `📅unknown` `[entity_page]`
 - [VideoWorld](wiki/entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md) — VideoWorld: Exploring Knowledge Learning from Unlabeled Videos** 收录于 [Awesome World-Action Models  `📅unknown` `[entity_page]`
 - [VILP](wiki/entities/paper-rcl-2502-01784-vilp-imitation-learning-with-latent-video-planni.md) — VILP: Imitation Learning with Latent Video Planning** 收录于 [Awesome World-Action Models (RCL)](http `📅unknown` `[entity_page]`
 - [The Role of World Models in Shaping Autonomous Driving](wiki/entities/paper-rcl-2502-10498-the-role-of-world-models-in-shaping-autonomous-d.md) — The Role of World Models in Shaping Autonomous Driving: A Comprehensive Survey** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
@@ -2813,7 +2816,7 @@
 - [π_0.7](wiki/entities/paper-rcl-2604-15483-0-7-a-steerable-generalist-robotic-foundation-mo.md) — π_0.7: a Steerable Generalist Robotic Foundation Model with Emergent Capabilities** 收录于 [Awesome W `📅unknown` `[entity_page]`
 - [DexWorldModel](wiki/entities/paper-rcl-2604-16484-dexworldmodel-causal-latent-world-modeling-towar.md) — DexWorldModel: Causal Latent World Modeling towards Automated Learning of Embodied Tasks** 收录于 [Aw `📅unknown` `[entity_page]`
 - [RoboWM-Bench](wiki/entities/paper-rcl-2604-19092-robowm-bench-a-benchmark-for-evaluating-world-mo.md) — RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation** 收录于 [Awesome World `📅unknown` `[entity_page]`
-- [RL Token](wiki/entities/paper-rcl-2604-23073-rl-token-bootstrapping-online-rl-with-vision-lan.md) — RL Token: Bootstrapping Online RL with Vision-Language-Action Models** 收录于 [Awesome World-Action M `📅unknown` `[entity_page]`
+- [RL Token：用 VLA 表示启动在线强化学习](wiki/entities/paper-rcl-2604-23073-rl-token-bootstrapping-online-rl-with-vision-lan.md) — RL Token 将预训练 VLA 特征压成紧凑状态表示，在冻结大模型后用轻量 actor/critic 在线修正动作块，提高精密操作的学习效率。 `📅unknown` `[entity_page]`
 - [Privileged Foresight Distillation](wiki/entities/paper-rcl-2604-25859-privileged-foresight-distillation-zero-cost-futu.md) — Privileged Foresight Distillation: Zero-Cost Future Correction for World Action Models** 收录于 [Awes `📅unknown` `[entity_page]`
 - [Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising](wiki/entities/paper-rcl-2604-26694-unified-4d-world-action-modeling-from-video-prio.md) — Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
 - [Being-H0.7](wiki/entities/paper-rcl-2605-00078-being-h0-7-a-latent-world-action-model-from-egoc.md) — Being-H0.7: A Latent World-Action Model from Egocentric Videos** 收录于 [Awesome World-Action Models  `📅unknown` `[entity_page]`
@@ -3024,7 +3027,7 @@
 - [Towards Generalist Embodied AI](wiki/entities/paper-rcl-ref-c36572e136b3aca5087e-towards-generalist-embodied-ai-a-survey-on-world.md) — Towards Generalist Embodied AI: A Survey on World Models for VLA Agents** 收录于 [Awesome World-Actio `📅unknown` `[entity_page]`
 - [Mixture-of-Transformers](wiki/entities/paper-rcl-ref-c3cbdc6867eb310bf60b-mixture-of-transformers-a-sparse-and-scalable-ar.md) — Mixture-of-Transformers: A Sparse and Scalable Architecture for Multi-Modal Foundation Models** 收录 `📅unknown` `[entity_page]`
 - [The "Something Something" Video Database for Learning and Evaluating Visual C...](wiki/entities/paper-rcl-ref-c71dcf53130e8fdc61fa-the-something-something-video-database-for-learn.md) — The "Something Something" Video Database for Learning and Evaluating Visual Common Sense** 收录于 [Aw `📅unknown` `[entity_page]`
-- [Helix](wiki/entities/paper-rcl-ref-cb61c489d1333f433fc4-helix-a-vision-language-action-model-for-general.md) — Helix: A Vision-Language-Action Model for Generalist Humanoid Control** 收录于 [Awesome World-Action  `📅unknown` `[entity_page]`
+- [Helix：Figure 上半身视觉语言动作系统](wiki/entities/paper-rcl-ref-cb61c489d1333f433fc4-helix-a-vision-language-action-model-for-general.md) — Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享权重在 Figure 人形上完成语言指令驱动的上半身操作。 `📅unknown` `[entity_page]`
 - [Mean Flows for One-step Generative Modeling](wiki/entities/paper-rcl-ref-ce6916f81594a9c4c73f-mean-flows-for-one-step-generative-modeling.md) — Mean Flows for One-step Generative Modeling** 收录于 [Awesome World-Action Models (RCL)](https://gith `📅unknown` `[entity_page]`
 - [Percept-WAM](wiki/entities/paper-rcl-ref-ced7109d62bb4514d467-percept-wam-perception-enhanced-world-awareness.md) — Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Dri `📅unknown` `[entity_page]`
 - [BridgeData V2](wiki/entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md) — BridgeData V2: A Dataset for Robot Learning at Scale** 收录于 [Awesome World-Action Models (RCL)](htt `📅unknown` `[entity_page]`
@@ -3352,7 +3355,7 @@
 - [InDRiVE](wiki/entities/paper-sa-2503-05573-indrive-intrinsic-disagreement-based-rl-for-vehi.md) — InDRiVE: Intrinsic Disagreement based RL for Vehicle Exploration through Curiosity Driven Generali `📅unknown` `[entity_page]`
 - [Fish2Mesh Transformer](wiki/entities/paper-sa-2503-06089-fish2mesh-transformer-3d-human-mesh-recovery-fro.md) — Fish2Mesh Transformer: 3D Human Mesh Recovery from Egocentric Vision** 收录于 [Awesome Egocentric Vis `📅unknown` `[entity_page]`
 - [Object-Centric World Model for Language-Guided Manipulation](wiki/entities/paper-sa-2503-06170-object-centric-world-model-for-language-guided-m.md) — Object-Centric World Model for Language-Guided Manipulation** 收录于 [Awesome World Models](https://g `📅unknown` `[entity_page]`
-- [AgiBot-World Colosseo](wiki/entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md) — AgiBot-World Colosseo: A Large-scale Manipulation Platform for Scalable and Intelligent Embodied S `📅unknown` `[entity_page]`
+- [AgiBot-World Colosseo：数据与通才策略平台](wiki/entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md) — Colosseo 将大规模真机操作数据、评测与 GO-1 通才策略连接成可扩展平台；数据集发布与模型开源是不同时间的事件。 `📅unknown` `[entity_page]`
 - [RAVEN](wiki/entities/paper-sa-2503-06789-raven-query-guided-representation-alignment-for.md) — RAVEN: Query-Guided Representation Alignment for Question Answering over Audio, Video, Embedded Se `📅unknown` `[entity_page]`
 - [Temporal Triplane Transformers as Occupancy World Models](wiki/entities/paper-sa-2503-07338-temporal-triplane-transformers-as-occupancy-worl.md) — Temporal Triplane Transformers as Occupancy World Models** 收录于 [Awesome World Models](https://gith `📅unknown` `[entity_page]`
 - [WISA](wiki/entities/paper-sa-2503-08153-wisa-world-simulator-assistant-for-physics-aware.md) — WISA: World Simulator Assistant for Physics-Aware Text-to-Video Generation** 收录于 [Awesome World Mo `📅unknown` `[entity_page]`
@@ -3507,7 +3510,7 @@
 - [EgoTrigger](wiki/entities/paper-sa-2508-01915-egotrigger-toward-audio-driven-image-capture-for.md) — EgoTrigger: Toward Audio-Driven Image Capture for Human Memory Enhancement in All-Day Energy-Effic `📅unknown` `[entity_page]`
 - [DiWA](wiki/entities/paper-sa-2508-03645-diwa-diffusion-policy-adaptation-with-world-mode.md) — DiWA: Diffusion Policy Adaptation with World Models** 收录于 [Awesome World Models](https://github.co `📅unknown` `[entity_page]`
 - [LiDARCrafter](wiki/entities/paper-sa-2508-03692-lidarcrafter-dynamic-4d-world-modeling-from-lida.md) — LiDARCrafter: Dynamic 4D World Modeling from LiDAR Sequences** 收录于 [Awesome World Models](https:// `📅unknown` `[entity_page]`
-- [Genie Envisioner](wiki/entities/paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat.md) — Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
+- [Genie Envisioner：世界模型、策略与视觉仿真](wiki/entities/paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat.md) — Genie Envisioner 以 GE-Base 视频预训练表示为底座，分别适配 GE-Act 动作生成与 GE-Sim 动作条件视觉仿真，三者有不同运行接口。 `📅unknown` `[entity_page]`
 - [IRL-VLA](wiki/entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md) — IRL-VLA: Training an Vision-Language-Action Policy via Reward World Model** 收录于 [Awesome World Mod `📅unknown` `[entity_page]`
 - [Imaginative World Modeling with Scene Graphs for Embodied Agent Navigation](wiki/entities/paper-sa-2508-06990-imaginative-world-modeling-with-scene-graphs-for.md) — Imaginative World Modeling with Scene Graphs for Embodied Agent Navigation** 收录于 [Awesome World Mo `📅unknown` `[entity_page]`
 - [Matrix-3D](wiki/entities/paper-sa-2508-08086-matrix-3d-omnidirectional-explorable-3d-world-ge.md) — Matrix-3D: Omnidirectional Explorable 3D World Generation** 收录于 [Awesome World Models](https://git `📅unknown` `[entity_page]`
@@ -3652,7 +3655,7 @@
 - [TaF-VLA：VLA 中的触觉–力对齐（arXiv:2601.20321）](wiki/entities/paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md) — TaF-VLA**（*Tactile-Force Alignment in Vision-Language-Action Models for Force-aware Manipulation*， `📅unknown` `[entity_page]`
 - [Advancing Open-source World Models (LingBot-World)](wiki/entities/paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md) — Advancing Open-source World Models (LingBot-World)** 收录于 [Awesome World Models](https://github.com `📅unknown` `[entity_page]`
 - [WorldBench](wiki/entities/paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md) — WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models** 收录于 [Awesome World  `📅unknown` `[entity_page]`
-- [LingBot-VA](wiki/entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) — LingBot-VA: Causal video-action world model for generalist robot control** 收录于 [Awesome World Mode `📅unknown` `[entity_page]`
+- [LingBot-VA：因果视频–动作世界模型](wiki/entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) — LingBot-VA 在因果交错序列中建模视觉动态与动作，以真实观测更新缓存，并通过异步执行减少视频–动作联合推理的控制停顿。 `📅unknown` `[entity_page]`
 - [DISK](wiki/entities/paper-sa-2602-00440-disk-dynamic-inference-skipping-for-world-models.md) — DISK: Dynamic Inference SKipping for World Models** 收录于 [Awesome World Models](https://github.com/ `📅unknown` `[entity_page]`
 - [Research on World Models Is Not Merely Injecting World Knowledge into Specifi...](wiki/entities/paper-sa-2602-01630-research-on-world-models-is-not-merely-injecting.md) — Research on World Models Is Not Merely Injecting World Knowledge into Specific Tasks** 收录于 [Awesom `📅unknown` `[entity_page]`
 - [Causal Forcing](wiki/entities/paper-sa-2602-02214-causal-forcing-autoregressive-diffusion-distilla.md) — Causal Forcing: Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation `📅unknown` `[entity_page]`
