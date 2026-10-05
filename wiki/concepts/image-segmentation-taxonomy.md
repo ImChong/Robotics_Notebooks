@@ -7,12 +7,13 @@ tags:
   - panoptic-segmentation
   - computer-vision
 status: complete
-updated: 2026-08-12
+updated: 2026-10-05
 summary: "图像分割三类任务：语义（像素类别）、实例（区分同类别个体）、全景（stuff+things 统一）；决定标注协议、指标与模型头设计。"
 related:
   - ../methods/fcn-semantic-segmentation.md
   - ../methods/mask-rcnn.md
   - ../entities/paper-segment-anything.md
+  - ../entities/human-body-and-accessories-dataset.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
@@ -62,6 +63,7 @@ flowchart TB
 | 标注 | 勿把实例数据当纯语义训完就部署抓取 |
 | 机器人 | 可行驶/地形→语义；拣选→实例；场景理解→全景/开放词 |
 | 基础模型 | [SAM](../entities/paper-segment-anything.md) 偏交互/类别无关；需另接语义 |
+| 人体解析数据 | [Human Body And Accessories](../entities/human-body-and-accessories-dataset.md) 将人体区域、服饰与配件细分为 19 类；标签掩码仍不等于关键点或实例跟踪 |
 
 ## 局限与风险
 
@@ -71,6 +73,7 @@ flowchart TB
 
 - [FCN](../methods/fcn-semantic-segmentation.md)
 - [Mask R-CNN](../methods/mask-rcnn.md)
+- [Human Body And Accessories](../entities/human-body-and-accessories-dataset.md) — 细粒度人体部件与服饰分割数据集
 - [SEEM](../entities/seem.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 语义/实例/全景之分决定②层选什么头、③层能提升到什么粒度
@@ -78,6 +81,7 @@ flowchart TB
 ## 参考来源
 
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
+- [Human Body And Accessories 数据集归档](../../sources/datasets/human-body-and-accessories.md)
 
 ## 推荐继续阅读
 
