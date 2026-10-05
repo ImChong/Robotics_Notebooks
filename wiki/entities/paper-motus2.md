@@ -16,7 +16,7 @@ tags:
   - buaa
   - bit
 status: complete
-updated: 2026-09-25
+updated: 2026-10-05
 arxiv: "2608.30237"
 related:
   - ./paper-gwm-first-principles.md
@@ -36,8 +36,9 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/motus2_arxiv_2608_30237.md
   - ../../sources/sites/motus2.md
+  - ../../sources/repos/motus2.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
-summary: "Motus2（GensPI/清华等，arXiv:2608.30237v2）：在 Motus 共享 video–action 上暴露 policy/simulator/evaluator 三接口，用人数据金字塔 + 机端 mid-training 与 DiffusionNFT MBRL 闭环自进化灵巧双手；真机五任务宏平均 84%，MBRL+Planning 75%；截至 2026-09-12 未开源。"
+summary: "Motus2（arXiv:2608.30237v2）：单一共享 video–action 模型暴露 policy/simulator/evaluator 三接口；新增官方 GitHub 仓与 Hugging Face 模型入口。README 的开源路线图仍未勾选，尚未核实到可运行代码或 Motus2 权重。"
 ---
 
 # Motus2（自进化通用世界模型 · arXiv:2608.30237）
@@ -65,7 +66,7 @@ summary: "Motus2（GensPI/清华等，arXiv:2608.30237v2）：在 Motus 共享 v
 - **人数据金字塔有量化 scaling：** 立体 ego 子集 2K–20K 原始录制小时上，动作预测误差随数据量对数下降（项目页拟合 \(L=0.101-0.005\cdot\ln(D)\)）。
 - **真机数字可读：** 匹配 SFT 协议下五任务宏平均 **84%**；在 Put Phone / Multi-Finger 上 **MBRL + Planning** 把宏平均从 **65%→75%**。
 - **灵巧 + 触觉 + 记忆同页验证：** 非仅仿真榜——含 **Find Square / Press Button** 长程探测与 **撕纸 / 抽纸杯** 触觉任务。
-- **今日不能复现：** 项目页与 `motus-robotics` 组织截至 2026-09-12 **无** 可运行代码仓（arXiv v2 亦未挂 Code/Data）。
+- **开源状态有更新：** 项目页现已链接 [官方 GitHub](https://github.com/shengshu-ai/Motus2) 与 [Hugging Face 模型页](https://huggingface.co/motus-robotics)。截至 2026-10-05，GitHub 仓库只显示 README，README 中代码与 checkpoint 路线图项目仍未勾选；HF 链接指向团队模型主页，未确认有 Motus2 专属权重。
 
 ## 核心信息
 
@@ -77,7 +78,7 @@ summary: "Motus2（GensPI/清华等，arXiv:2608.30237v2）：在 Motus 共享 v
 | 前作 | Motus（arXiv:2512.13030） |
 | 骨干初始化 | Wan 2.2-TI2V-5B（视频支路） |
 | 机端数据 | mid-training **>100 h** 机器人轨迹 + 人对齐 |
-| 开源（截至 2026-09-12） | **未开源** — 项目页未列 GitHub/权重；组织仅静态站仓 |
+| 开源状态（2026-10-05） | **官方仓已公开，代码/权重未核实发布** — 仓库 README 显示路线图，所有发布项未勾选；HF 为团队模型主页 |
 
 ## 方法与核心结构
 
@@ -138,9 +139,15 @@ sequenceDiagram
   R->>C: 下一观测（含失败轨迹入库）
 ```
 
+## 官方代码与模型入口
+
+- **代码仓：** [shengshu-ai/Motus2](https://github.com/shengshu-ai/Motus2)。项目页现有 Code 按钮指向该仓；仓库当前只显示 README。
+- **开源路线图：** README 写明计划在 2026 年 9 月逐步发布代码与 checkpoints，但 Stage 1/2 checkpoints、video pretraining、video-action/value training、MBRL、memory 与 tactile 等项均未勾选。因此“有公开 GitHub 仓”不能等同“已有可运行训练/推理实现”。
+- **模型页：** [Hugging Face / motus-robotics](https://huggingface.co/motus-robotics) 是项目页链接的团队模型主页；当前目录未确认 Motus2 专属 checkpoint，不把 Motus v1 或其他模型误记为 Motus2 权重。
+
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-12）：[`motus-robotics`](https://github.com/motus-robotics) 组织仅有 [`motus-robotics.github.io`](https://github.com/motus-robotics/motus-robotics.github.io) 静态站，**无** 可辨识训练 / 推理 / 部署入口。官方发布后应补：ego 预训练 → 机端 mid-training（三模式混合）→ SFT / MBRL / tactile expert → Best-of-N 部署 的 `sequenceDiagram`。
+**暂不适用：** 当前官方代码仓只有发布路线图 README，未提供可依据的训练或推理入口；待路线图项目实际发布后再补代码级时序图。
 
 ## 工程实践
 
@@ -192,7 +199,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **未开源：** 截至 2026-09-12 无法复现训练与 MBRL 管线；数值以 PDF / 项目页为准。
+- **代码状态：** 官方 GitHub 仓已建立，但截至 2026-10-05 路线图所列训练代码、MBRL、memory、tactile 与 checkpoints 未勾选；尚不能据此称其为可复现基线。实验数字以论文 / 项目页为准。
 - **评测以自有硬件与任务为主：** 与 RoboTwin / LIBERO 等同协议榜 **不可直接横比**；读作「灵巧双手 + 自进化闭环」证据，而非通用仿真 SOTA。
 - **价值模型非校准成功率：** 输出为相对进度排序信号；失败轨迹可能出现「先升后降」形态，部署时需按任务设计阈值。
 - **Global AR 记忆代价：** 仿真更好但 KV 随 episode 增长；默认部署仍用 bounded sliding window。
@@ -221,6 +228,7 @@ sequenceDiagram
 
 - [`sources/papers/motus2_arxiv_2608_30237.md`](../../sources/papers/motus2_arxiv_2608_30237.md) — 论文摘录
 - [`sources/sites/motus2.md`](../../sources/sites/motus2.md) — 项目页与开源核查
+- [`sources/repos/motus2.md`](../../sources/repos/motus2.md) — 官方 GitHub 仓与发布路线图核查
 - 论文：<https://arxiv.org/abs/2608.30237>
 - 项目页：<https://motus-robotics.github.io/motus2/>
 
