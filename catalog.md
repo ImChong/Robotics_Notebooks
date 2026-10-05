@@ -1837,6 +1837,7 @@
 - [The Imitator Game：用目标等价衡量模仿](wiki/entities/paper-imitator-game.md) — The Imitator Game**（*Benchmarking Robot Imitative Ability Beyond Action Prediction*，[arXiv:2608.22 `📅unknown` `[entity_page]`
 - [IMLE-VLA（arXiv:2609.10915）](wiki/entities/paper-imle-vla.md) — IMLE-VLA**（[IMLE-VLA: Fast Single-Step Action Generation for Vision-Language-Action Policies](http `📅unknown` `[entity_page]`
 - [Immersive Social VR + LLM Humanoid Teleop](wiki/entities/paper-immersive-social-vr-llm-humanoids.md) — Immersive Social Interaction with VR and LLM-Assisted Humanoids**（[arXiv:2607.07430](https://arxiv `📅unknown` `[entity_page]`
+- [ImplicitRDP：端到端视觉–力扩散策略](wiki/entities/paper-implicitrdp-visual-force-diffusion-policy.md) — ImplicitRDP: An End-to-End Visual-Force Diffusion Policy With Structural Slow-Fast Learning** 是 RD `📅unknown` `[entity_page]`
 - [Importance Sampling + PCA：商业自动驾驶失败挖掘与 eigenfailure 诊断](wiki/entities/paper-importance-sampling-pca-av-failures.md) — Importance Sampling and PCA for Finding Failures in Commercial Autonomous Vehicles**（[arXiv:2607.1 `📅unknown` `[entity_page]`
 - [In-Context Learning for Robots（Methods and Applications）](wiki/entities/paper-in-context-learning-robots-survey.md) — In-Context Learning for Robots: Methods and Applications**（[arXiv:2609.36012](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [Indi：把行为意图蒸馏进 VLA 解码器](wiki/entities/paper-indi.md) — Indi**（*Act with Intent: Distilling Behavior Intent for Vision-Language-Action Models*，[arXiv:2608 `📅unknown` `[entity_page]`
@@ -3352,7 +3353,7 @@
 - [SENSEI](wiki/entities/paper-sa-2503-01584-sensei-semantic-exploration-guided-by-foundation.md) — SENSEI: Semantic Exploration Guided by Foundation Models to Learn Versatile World Models** 收录于 [Aw `📅unknown` `[entity_page]`
 - [DEMO^3](wiki/entities/paper-sa-2503-01837-demo-3-multi-stage-manipulation-with-demonstrati.md) — DEMO^3: Multi-Stage Manipulation with Demonstration-Augmented Reward, Policy, and World Model Lear `📅unknown` `[entity_page]`
 - [WMNav](wiki/entities/paper-sa-2503-02247-wmnav-integrating-vision-language-models-into-wo.md) — WMNav: Integrating Vision-Language Models into World Models for Object Goal Navigation** 收录于 [Awes `📅unknown` `[entity_page]`
-- [Reactive Diffusion Policy](wiki/entities/paper-sa-2503-02881-reactive-diffusion-policy-slow-fast-visual-tacti.md) — Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation `📅unknown` `[entity_page]`
+- [Reactive Diffusion Policy（RDP）](wiki/entities/paper-sa-2503-02881-reactive-diffusion-policy-slow-fast-visual-tacti.md) — Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation `📅unknown` `[entity_page]`
 - [Surgical Vision World Model](wiki/entities/paper-sa-2503-02904-surgical-vision-world-model.md) — Surgical Vision World Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-worl `📅unknown` `[entity_page]`
 - [EgoLife](wiki/entities/paper-sa-2503-03803-egolife.md) — EgoLife** 收录于 Awesome Egocentric Vision  `📅unknown` `[entity_page]`
 - [Revisiting the Othello World Model Hypothesis](wiki/entities/paper-sa-2503-04421-revisiting-the-othello-world-model-hypothesis.md) — Revisiting the Othello World Model Hypothesis** 收录于 [Awesome World Models](https://github.com/sun2 `📅unknown` `[entity_page]`
