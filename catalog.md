@@ -1650,6 +1650,7 @@
 - [ForceTwin（Physics-informed Digital Twins from Instrumented Human Interaction）](wiki/entities/paper-forcetwin.md) — ForceTwin**（arXiv:2609.21751，[项目页](https://timengelbracht.gith `📅unknown` `[entity_page]`
 - [ForceU-VLA（arXiv:2608.15009）](wiki/entities/paper-forceu-vla.md) — ForceU-VLA**（*ForceU-VLA: A Force-Aware Vision-Language-Action Model for Embodied Ultrasound Scann `📅unknown` `[entity_page]`
 - [ForceVLA：力感知 MoE 增强 VLA（NeurIPS 2025 · arXiv:2505.22159）](wiki/entities/paper-forcevla.md) — ForceVLA**（*Enhancing VLA Models with a Force-aware MoE for Contact-rich Manipulation*，[arXiv:2505 `📅unknown` `[entity_page]`
+- [ForeDrive：让潜在未来直接服务自动驾驶规划](wiki/entities/paper-foredrive.md) — 一句话定义：ForeDrive 用 JEPA 式世界模型预测多时域未来潜表征，再以当前观测为主证据将其接入 DiT 轨迹规划，而不是生成未来 RGB 视频。 `📅unknown` `[entity_page]`
 - [Foresight (PI)](wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md) — Foresight (PI)** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`
 - [ForeTime-VLA：世界模型未来 Token 蒸馏](wiki/entities/paper-foretime-vla.md) — ForeTime-VLA**（*Causal Future-Token Distillation from a World Action Model for Conveyor-Belt Manip `📅unknown` `[entity_page]`
 - [ForgetMimic（arXiv:2609.28378）](wiki/entities/paper-forgetmimic.md) — ForgetMimic: Motion Unlearning for Reinforcement Learning Humanoid Control**（[代码](https://github.c `📅unknown` `[entity_page]`
