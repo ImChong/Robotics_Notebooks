@@ -67,6 +67,7 @@ related:
   - ../entities/paper-world-action-planner.md
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-xpace.md
+  - ../entities/paper-skelewam-efficient-manipulation.md
   - ../entities/paper-worldscape-policy-2.md
   - ../entities/unifolm-world-model-action.md
   - ../entities/paper-gwm-first-principles.md
@@ -245,6 +246,8 @@ flowchart LR
 
 - **工程直觉**：耦合更紧，可能更利于 **一致性** 目标。
 - **主要张力**：**推理延迟**、训练目标设计、以及在多模态物理量（力触觉、形变）上的扩展。
+
+**文献实例（稀疏几何未来监督 · 高效操作）**：[SkeleWAM](../entities/paper-skelewam-efficient-manipulation.md) 将当前 RGB-D / 本体状态编码为机器人关键点 + 物体中心/交互点构成的稀疏 3D 骨架，训练时联合 flow-matching 动作与未来骨架，推理时去掉未来分支并由 MAC 选取动作候选 medoid；LIBERO-Plus **85.9%**，ARX R5 五项真机任务平均 **89%**，但布局扰动为 **66.6%**（arXiv:2610.02120，北京大学）。
 
 **文献实例（Joint + 驾驶多假设对）**：[MM-Future](../entities/paper-mm-future.md)（arXiv:2609.20377）在 **modality-aware flow** 里并行 **M 组 scene–action 假设** 双向共演化，用 **MM-Tokens** 降多视角 rollout 成本，并以 **future-conditioned scorer** 在配对未来上选轨；NAVSIM **94.0 PDMS / 91.5 EPDMS**，零样本 HUGSIM **32.3 HD-Score**；截至入库日 **代码待发布**。
 
