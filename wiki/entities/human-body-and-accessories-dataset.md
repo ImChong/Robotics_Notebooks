@@ -8,6 +8,7 @@ related:
   - ../concepts/image-segmentation-taxonomy.md
   - ./ultralytics.md
   - ../methods/fcn-semantic-segmentation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/datasets/human-body-and-accessories.md
   - ../../sources/sites/ultralytics-human-body-and-accessories.md
@@ -43,6 +44,7 @@ summary: "Ultralytics Platform 上的 19 类人体部件与服饰分割数据集
 | 平台名称 | Human Body And Accessories |
 | 发布账号 | Muhammadrizwanmunawar |
 | 任务 | Segment |
+| 模态 | 单帧 RGB 图像 + 19 类人体部件分割标注；未见深度、视频时序或关键点标注 |
 | 图像数 | 33,141 |
 | 标注数 | 826,524 |
 | 划分 | 28,142 训练 / 4,999 验证（截图所示） |
@@ -111,6 +113,7 @@ yolo train model=ul://ultralytics/yolo26/yolo26n-seg data=ul://muhammadrizwanmun
 - [图像分割任务分类](../concepts/image-segmentation-taxonomy.md) — 语义、实例与全景输出的区别
 - [Ultralytics YOLO](./ultralytics.md) — 数据集 URI 的通用训练框架
 - [FCN 语义分割](../methods/fcn-semantic-segmentation.md) — 像素级语义预测方法背景
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本集位于「2D 检测/分割选型」层；落到人机交互还需 2D→3D 提升与时序跟踪
 
 ## 参考来源
 

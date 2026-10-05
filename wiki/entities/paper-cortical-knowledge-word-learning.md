@@ -3,6 +3,8 @@ type: entity
 tags: [paper, cognition, concept-learning, bayesian, fmri, semantic-memory, pku]
 status: complete
 updated: 2026-10-05
+venue: "Nature Communications 17, 6366 (2026)"
+code: "https://doi.org/10.17605/OSF.IO/WRT9S"
 related:
   - ../concepts/bayesian-belief-analysis.md
   - ../concepts/deep-learning-foundations.md
@@ -66,7 +68,7 @@ flowchart TB
 - **新奇形状：** 先验较弱的形状条件试次量较少；对该条件的行为结果应谨慎解释，论文也报告 NBM 与 GPT-4o 的差异不显著。
 - **LLM 对照：** 作者测试 GPT-4o-2024-11-20 和 Qwen2.5-VL；每个试次在独立会话重复 20 次，比较「是」回答比例与人类行为的相关。混合神经与行为先验的贝叶斯模型在熟悉物体条件下拟合更好。
 
-### 与其他工作对比
+## 与其他工作对比
 
 | 对照 | 假设空间来源 | 该论文结果的含义 |
 |------|--------------|------------------|

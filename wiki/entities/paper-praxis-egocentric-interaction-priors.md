@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, egocentric-video, interaction]
 status: complete
 updated: 2026-10-05
+venue: "Unverified (Day 4 article; project page shows a different title)"
 related:
   - ../tasks/loco-manipulation.md
   - ../overview/humanoid-motion-intelligence-day4-loco-manipulation.md
@@ -37,9 +38,16 @@ flowchart TB
     D --> E["视觉/触觉检查任务进度"]
 ```
 
-## 文章报告与核查状态
+## 文章报告的评测与核查状态
 
 PDF 报告躯干相机导航、头部相机近距离操作、五指手触觉反馈，以及五项长程真机任务平均成功率 76.97%。这些结果尚未在与该标题一致的一手论文页中复核。所给项目 URL 当前展示 *Praxis: Scaling One-Shot Human Demonstration to Generalist Policy for Whole-Body Manipulation*；本页不把项目页信息并入该待核论文。
+
+## 与其他工作对比
+
+| 对照 | 示教来源 | 与本条目的关系 |
+|------|----------|----------------|
+| [DexRoam](./paper-dexroam-mobile-bimanual-manipulation.md) | 免外置跟踪器的第一视角全身人类示教 | 同为第一视角人类数据驱动移动/全身操作；DexRoam 有一手论文可核，本条目尚待核实 |
+| 项目页现示 *Praxis: Scaling One-Shot Human Demonstration…* | 单次人类示教扩展到通用策略 | 与 Day 4 所述「交互先验蒸馏」标题、方法、单位均不一致，**不可合并引用** |
 
 ## 结论
 

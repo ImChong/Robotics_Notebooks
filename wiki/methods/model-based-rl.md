@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-05
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -230,7 +230,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 
 ### WAM 内嵌 MBRL（共享参数 GWM）
 
-[Motus2](../entities/paper-motus2.md) 把 **policy / simulator / evaluator** 做成同一 video–action 模型的三种查询模式：策略提议 action chunk，仿真器想象视觉后果，价值模型评估相对任务进度；**DiffusionNFT** 用 evaluator 信号更新动作通路，**Best-of-N** 在测试时对候选分支排序。失败与次优真机轨迹进入 simulation / evaluation 监督而非动作模仿——与经典「外置动力学 + CEM」MBRL 不同，闭环完全在 **联合 WAM** 内完成（arXiv:2608.30237；截至 2026-09-01 **未开源**）。
+[Motus2](../entities/paper-motus2.md) 把 **policy / simulator / evaluator** 做成同一 video–action 模型的三种查询模式：策略提议 action chunk，仿真器想象视觉后果，价值模型评估相对任务进度；**DiffusionNFT** 用 evaluator 信号更新动作通路，**Best-of-N** 在测试时对候选分支排序。失败与次优真机轨迹进入 simulation / evaluation 监督而非动作模仿——与经典「外置动力学 + CEM」MBRL 不同，闭环完全在 **联合 WAM** 内完成（arXiv:2608.30237；截至 2026-10-05 官方 GitHub 仓已建立但仅有路线图 README，代码与权重**尚未发布**）。
 
 ---
 

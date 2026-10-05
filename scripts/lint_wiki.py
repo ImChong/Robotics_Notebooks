@@ -562,6 +562,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # Genesis）。与 onnx / mcap 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "cuda",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
+    # depth：命中处是观测/输出字段名（Isaac Lab `presets=depth`、VGG-T³ / LingBot-Depth
+    # 的 `depth` 输出键、Cosmos-Transfer 的 **Depth** 控制条件行、VisualMimic 学生策略的
+    # 观测模态）与 autoresearch 的 `DEPTH` 网络层数超参，互不相干。深度作为感知层级已由
+    # concepts/embodied-perception-six-spatial-representations.md（第 2 层「深度」专节：
+    # 相对 vs 度量、传感形态）承载，单目估计路线归 entities/paper-monocular-depth-estimation-survey.md。
+    # 与 rgb-d 同类「传感模态标签」，不单建概念页。
+    "depth",
     # dinov2：具体的自监督视觉骨干模型，canonical 节点是 entities/paper-dinov2.md
     # （arXiv:2304.07193 / Meta），选型语境已由 concepts/visual-representation-for-policy.md
     # 的「冻结通用骨干」一支（R3M / VC-1 / DINOv2 并列）承载；各页正文里的 **DINOv2**
@@ -1900,7 +1907,9 @@ TAG_KEYWORD_FALSE_POSITIVE_TOKENS: frozenset[str] = frozenset({"focal"})
 # OOD 监控与 sim2real 失配诊断，观测量是本体感知/动力学残差），与视觉感知栈的
 # 「2D 检测/分割选什么头」毫无关系；这类页回链感知栈枢纽只会污染知识链。
 # 故按**整标签**豁免，与 focal/foc 同为「前缀匹配分不开的两个领域」补丁。
-TAG_KEYWORD_FALSE_POSITIVE_TAGS: frozenset[str] = frozenset({"ood-detection"})
+# ``semantic-memory`` 同理：认知神经科学的「语义记忆」（词义/概念知识在皮层的组织），
+# 被 ``semantic``(-mapping) 前缀命中，但与机器人语义建图无关。
+TAG_KEYWORD_FALSE_POSITIVE_TAGS: frozenset[str] = frozenset({"ood-detection", "semantic-memory"})
 
 
 def _tag_keyword_match(tags: set[str], keywords: tuple[str, ...]) -> bool:
