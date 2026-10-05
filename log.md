@@ -1,3 +1,5 @@
+## [2026-10-05] ingest | cortical-knowledge-word-concept-learning | 单独收录论文与 OSF 来源，记录神经贝叶斯模型证据、LLM 对照和代码核验边界
+
 ## [2026-10-05] ingest | Spingi
 
 - 收录 ceccode/spingi 的官方代码与 Viewer 项目页，整理 LLM 计划校验、技能执行、安全监控和 episode 回放链路。
