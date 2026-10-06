@@ -559,3 +559,8 @@ flowchart TB
 - OpenMOSS **Awesome-WAM** 论文库与导航 — [GitHub 仓库](https://github.com/OpenMOSS/Awesome-WAM) · [静态站点](https://openmoss.github.io/Awesome-WAM)
 - RCL / MBZUAI **Awesome World-Action Models** — [项目页](https://rcl-robotics.github.io/Awesome-World-Action-Models/) · [GitHub](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [Awesome World Models（sun254667）](https://github.com/sun254667/awesome-world-models) — 更广的 WM 全谱策展对照
+
+
+## 近期 3D 灵巧操作实例：PointWAM
+
+- [PointWAM](../entities/paper-pointwam.md)（arXiv:2610.02840）在共同三维时空坐标中预测场景点与手关键点轨迹，再把手部未来重定向为动作；使用 1.15M EgoDex/VITRA 人类视频预训练，DexJoCo 十任务多任务均值 69.0%。项目页代码标注 “Code soon”。
