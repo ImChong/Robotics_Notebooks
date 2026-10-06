@@ -13,7 +13,7 @@ import subprocess
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
-from urllib.parse import unquote, urlsplit
+from urllib.parse import parse_qsl, unquote, urlencode, urlsplit
 
 import yaml
 
@@ -62,8 +62,17 @@ def resource_url(value: str, *, repository: bool = False) -> str:
         path = re.sub(r"/index\.html?$", "", path, flags=re.I)
     # Project anchors may distinguish projects on a shared lab listing page.
     fragment = "#" + url.fragment if url.fragment and not repository else ""
+    query = ""
+    if not repository and host != "github.com":
+        query = urlencode(
+            sorted(
+                (key, val)
+                for key, val in parse_qsl(url.query, keep_blank_values=True)
+                if not key.lower().startswith("utm_") and key.lower() not in {"gclid", "fbclid"}
+            )
+        )
     port = f":{url.port}" if url.port and url.port not in {80, 443} else ""
-    return host + port + path + fragment
+    return host + port + path + ("?" + query if query else "") + fragment
 
 
 def added_entities(root: Path, base: str) -> set[str]:

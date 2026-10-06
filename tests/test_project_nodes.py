@@ -124,6 +124,12 @@ def test_new_page_cannot_use_placeholder_identity_material(tmp_path: Path) -> No
 
 
 def test_normalization_preserves_lab_project_anchors() -> None:
+    assert resource_url("https://lab.org/blog?id=one") != resource_url(
+        "https://lab.org/blog?id=two"
+    )
+    assert resource_url("https://lab.org/blog?id=one&utm_source=feed") == resource_url(
+        "http://lab.org/blog?id=one"
+    )
     assert resource_url("https://lab.org/projects.html#one") != resource_url(
         "https://lab.org/projects.html#two"
     )
