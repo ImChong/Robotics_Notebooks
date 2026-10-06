@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [software, game-engine, rendering, visualization, simulation, open-source, godot]
+tags: [software, game-engine, rendering, visualization, simulation, open-source, godot, community-maintainer]
 status: complete
 updated: 2026-10-06
 related:
