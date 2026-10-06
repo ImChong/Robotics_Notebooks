@@ -1615,6 +1615,7 @@
 - [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`
 - [Fast-WAM（arXiv:2603.16666）](wiki/entities/paper-fast-wam.md) — Fast-WAM**（*Fast-WAM: Do World Action Models Need Test-time Future Imagination?*，[arXiv:2603.16666 `📅unknown` `[entity_page]`
 - [FastGrasp：移动操作器上的学习式全身快速灵巧抓取](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — FastGrasp**（*Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Mani `📅unknown` `[entity_page]`
+- [FastOPD：VLA 的快速 on-policy 蒸馏](wiki/entities/paper-fastopd.md) — FastOPD** 在学生策略自己的流生成轨迹上只查询一次教师，再以自一致性将局部监督传播到多步跳转，兼顾模型压缩和少步推理。 `📅unknown` `[entity_page]`
 - [FastStair（Learning to Run Up Stairs with Humanoid Robots）](wiki/entities/paper-faststair-humanoid-stair-ascent.md) — FastStair** 是面向 **人形机器人高速上楼梯** 的 **规划引导 + 多阶段强化学习** 工作（arXiv:2601.10365，LimX Dynamics 等）：用 **DCM 落 `📅unknown` `[entity_page]`
 - [Fault-Tolerant Locomotion（执行器失效自适应步态）](wiki/entities/paper-fault-tolerant-locomotion.md) — Learning Fault-Tolerant Locomotion with Adaptive Gait Timing**（[arXiv:2608.07328](https://arxiv.or `📅unknown` `[entity_page]`
 - [FDDC：首个可部署的动态 CoM 单腿平衡策略与基准](wiki/entities/paper-fddc.md) — FDDC**（*First Deployable Dynamic-CoM*；论文 *First Deployable Dynamic-CoM: A Unified Policy and Metho `📅unknown` `[entity_page]`
