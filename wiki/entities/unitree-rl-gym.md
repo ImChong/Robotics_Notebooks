@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-gym, locomotion, sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 related:
   - ./unitree.md
   - ./unitree-rl-lab.md
@@ -36,6 +36,10 @@ summary: "unitree_rl_gym 是宇树官方基于 Isaac Gym + legged_gym 风格的 
 | Sim2Sim | Simulation to Simulation | 换仿真器验证 |
 | Sim2Real | Simulation to Real | 真机部署 |
 | PPO | Proximal Policy Optimization | 常见策略优化算法（具体实现以上游为准） |
+
+## 项目时间边界
+
+官方仓库在 **2023-10-11** 的代码提交已包含实现，本路线将其标为「代码历史起点」；这不证明正式首发或首次公开日，也不表示当日已具备本页介绍的全部现有功能。提交证据见 [原始仓库时间核对](../../sources/repos/unitree_rl_gym.md)。
 
 ## 为什么重要
 

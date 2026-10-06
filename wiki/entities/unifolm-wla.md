@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, vla, foundation-model, imitation-learning, humanoid, whole-body]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 related:
   - ./unitree.md
   - ./unifolm-vla.md
@@ -17,7 +17,7 @@ sources:
   - ../../sources/repos/unifolm-wla.md
   - ../../sources/sites/unifolm-wla-github-io.md
   - ../../sources/repos/unitree.md
-summary: "UnifoLM-WLA-1.0 是宇树 6B 通用人形 WLA 基础模型：ER-1 具身推理 → 动态区域预测 + RVQ 离散动作（ER-Flow）→ MMDiT 动作专家；约 2,500h 真机、64 任务；ER 权重已开源，WLA-Base 与后训练代码待发布。"
+summary: "UnifoLM-WLA-1.0 是宇树 6B 通用人形 WLA 基础模型：ER-1 具身推理 → 动态区域预测 + RVQ 离散动作（ER-Flow）→ MMDiT 动作专家；约 2,500h 真机、64 任务；ER / WLA-Base 权重与动作专家训练、微调代码已分阶段开放；完整训练池与全任务复现未确认。"
 ---
 
 # UnifoLM-WLA-1.0（unifolm-wla）
@@ -92,7 +92,27 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-18）：[`unitreerobotics/unifolm-wla`](https://github.com/unitreerobotics/unifolm-wla) 仅含 README 与动作/状态处理规范，**Post-Train Code 未发布**，无 `train.py` / `eval.py` / 真机部署入口。待官方放出推理与部署脚本后，应按 ER-Flow → MMDiT 解码 → G1 控制链路补全本图。
+截至 2026-10-06 已有可运行入口；原 2026-09-18「仅 README、后训练待发布」判断已被 09-20 / 09-28 的发布更新。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant E as eval_local_episode.py
+  participant D as dataloader / unitree.yaml
+  participant M as WLA checkpoint
+  participant S as action_server_wbc_msgpack_unitree.py
+  participant C as 本地 episode 服务评估客户端
+  E->>D: 加载 episode 与统计配置
+  E->>M: 输入图像、状态与指令
+  M-->>E: 预测动作 chunk
+  E->>E: 对比真值并绘图
+  C->>S: websocket / msgpack 观测与指令
+  S->>M: 模型推理
+  M-->>S: 动作 chunk
+  S-->>C: Dex1 协议动作
+```
+
+入口对齐 [官方训练/评估文档](https://github.com/unitreerobotics/unifolm-wla/blob/main/docs/train_action_expert_en.md)。图中为离线评估与模型服务调用，不推定已有完整真机控制客户端；训练/微调另按官方脚本与数据配置执行。
 
 ## 工程实践
 
@@ -101,11 +121,19 @@ flowchart TB
 | 资源 | 链接 | 状态 |
 |------|------|------|
 | 项目页 | <https://unigen-x.github.io/unifolm-wla.github.io/> | 已发布 |
-| GitHub 枢纽仓 | <https://github.com/unitreerobotics/unifolm-wla> | README + 规范文档 |
+| GitHub 枢纽仓 | <https://github.com/unitreerobotics/unifolm-wla> | 模型模块、训练/微调、离线评估与模型服务代码已发布 |
 | UnifoLM-ER-1 | <https://huggingface.co/unitreerobotics/UnifoLM-ER-1> | 权重已发布（Apache-2.0，Qwen3-VL 系） |
 | UnifoLM-ER-Flow | <https://huggingface.co/unitreerobotics/UnifoLM-ER-Flow> | 权重已发布 |
-| UnifoLM-WLA-Base | HF Collection | **待发布** |
+| UnifoLM-WLA-1.0-Base | <https://huggingface.co/unitreerobotics/UnifoLM-WLA-1.0-Base> | 权重已发布（2026-09-28） |
 | UniBot-V1 Challenge Dataset | [HF Collection](https://huggingface.co/collections/unitreerobotics/unibot-v1-challenge-dataset) | 已发布 |
+
+### 分阶段开放日期
+
+- **2026-09-11：** ER-1 / ER-Flow 权重。
+- **2026-09-20：** 模型模块与动作专家训练代码。
+- **2026-09-28：** WLA-1.0-Base 权重与微调代码。
+
+依据 [版本化 README 归档](../../sources/repos/unifolm-wla.md)。WBT / Dex1 数据集合本次已可访问，首发日期未确认；模型 9 月路线不表示所有资产同日开放。
 
 ### 数据接口（统一动作空间）
 
@@ -123,12 +151,13 @@ flowchart TB
 |------|------|--------|
 | [UnifoLM-VLA-0](./unifolm-vla.md) | `unifolm-vla` | 较早一代操作 VLA；训练/推理代码 **已全开源** |
 | [UnifoLM-WMA-0](./unifolm-world-model-action.md) | `unifolm-world-model-action` | 显式 **世界模型** 仿真 + 决策双模式；部署栈已开源 |
-| **UnifoLM-WLA-1.0**（本页） | `unifolm-wla` | **6B 统一 WLA** + ER 系列中间权重；**后训练与 WLA 权重待发布** |
+| **UnifoLM-WLA-1.0**（本页） | `unifolm-wla` | **6B 统一 WLA**；ER / Base 权重与动作专家训练、微调已开放 |
 
 ## 局限与风险
 
-- **复现窗口不完整**：WLA-Base 权重与 Post-Train Code 均未发布，目前只能下载 ER-1/ER-Flow 与部分数据集，**不能端到端复现 64 任务策略**。
-- **环境依赖未钉扎**：全量训练栈（CUDA、FlashAttention、LeRobot 等）待官方 README 更新后再对齐；勿假设与 VLA-0 环境相同。
+- **全任务复现未确认**：动作专家代码、Base 权重与部分数据已开放；不据此推定完整训练池与全部 64 任务已可复现。本次核查未实际运行训练或真机评测。
+- **部署协议边界**：官方文档注明现有模型服务仅覆盖 Dex1；WBT 的手指与基座通道需要扩展，不能直接泛化到全身部署。
+- **环境依赖**：上游已给出 `uv` 与 FlashAttention 安装步骤；GPU/CUDA 环境仍须对齐，不沿用 VLA-0 的安装假设。
 - **benchmark 口径**：项目页表格含 †/‡ 等脚注（API 测试、子任务平均等），跨模型对比需读原始报告。
 - **与 WMA/VLA 非替代关系**：需要 **交互式世界模型仿真** 时仍看 WMA；需要 **已可跑通的 VLA 训练链** 时仍看 VLA-0。
 

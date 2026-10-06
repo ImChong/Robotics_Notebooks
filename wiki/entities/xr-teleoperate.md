@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, teleoperation, xr, humanoid, imitation-learning]
 status: complete
-updated: 2026-07-24
+updated: 2026-10-06
 related:
   - ./unitree.md
   - ./unitree-g1.md
@@ -38,6 +38,10 @@ summary: "xr_teleoperate 是宇树官方 XR（AVP/PICO/Quest）全身遥操作�
 | DoF | Degrees of Freedom | 自由度；G1 常标 29DoF |
 | IL | Imitation Learning | 下游模仿学习 |
 | G1 | Unitree G1 Humanoid | 主目标机型之一 |
+
+## 项目时间边界
+
+官方仓库在 **2024-08-06** 的代码提交已包含实现，本路线将其标为「代码历史起点」；这不证明正式首发或首次公开日，也不表示当日已具备本页介绍的全部现有功能。提交证据见 [原始仓库时间核对](../../sources/repos/xr_teleoperate.md)。
 
 ## 为什么重要
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, imitation-learning, lerobot, teleoperation, humanoid]
 status: complete
-updated: 2026-08-17
+updated: 2026-10-06
 related:
   - ./unitree.md
   - ./lerobot.md
@@ -37,6 +37,10 @@ summary: "unitree_lerobot 是宇树基于 Hugging Face LeRobot 的官方改版�
 | G1 | Unitree G1 Humanoid | 目标人形平台 |
 | DDS | Data Distribution Service | 真机/仿真通信 |
 | XR | Extended Reality | 采数常用前端 |
+
+## 项目时间边界
+
+官方仓库在 **2024-10-18** 的代码提交已包含实现，本路线将其标为「代码历史起点」；这不证明正式首发或首次公开日，也不表示当日已具备本页介绍的全部现有功能。提交证据见 [原始仓库时间核对](../../sources/repos/unitree_lerobot.md)。
 
 ## 为什么重要
 

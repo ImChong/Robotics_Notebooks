@@ -55,3 +55,16 @@
 - `GITHUB_ACTIONS=true make ci-preflight`：按仓库线上规则跳过历史 freshness，lint / search / export 全通过。
 - Chrome DevTools MCP：逐家公司挂载真实页面，87 个节点数量与链接均对齐 JSON；新增详情与 Mermaid 运行图可读。仅生成本地截图，不提交派生文件或二进制。
 - 额外 Codex CLI review 被自动审批拒绝（潜在向外部模型服务传输未提交内容），已用当前会话内独立只读复核替代。
+
+### 宇树公司路线时间核对（2026-10-06）
+
+- 在同步后的 main 工作区核对现有八节点，保留节点范围并按可核实事件时间排序；本轮未修改其他公司对象。
+- G1 按官网 2024-05-13 产品发布；RL Gym、XR Teleoperate、LeRobot、Sim IsaacLab 分别以 2023-10-11、2024-08-06、2024-10-18、2025-06-24 含实现的官方提交标记代码历史起点，不声称正式首发或首次公开。
+- WMA-0 区分 2025-09-15 训练/推理与权重、09-22 部署代码；VLA-0 记录 2026-01-29 代码/权重发布；WLA-1.0 区分 2026-09-11 ER 权重、09-20 动作专家训练代码、09-28 Base 权重与微调代码。
+- WLA 保留 2026-09-18 来源快照并更新当前开放状态；补运行时序图及 Dex1 服务协议限制，不推定全部 64 任务和完整训练池可复现。
+- 日期证据写入官方仓库及 G1 官网来源，编译到原有详情；不新增重复 wiki、不修改 catalog/log 或部署统计。
+- 定向公司路线测试 7 项通过；独立日期/内容、测试与可维护性复核通过。Chrome DevTools MCP 验证八节点顺序、有效详情链接和 WLA 两张 Mermaid，无 console 错误。
+- 验证截图：`.cursor-artifacts/screenshots/unitree-company-timeline.png` 与 `unitree-wla-release-runtime.png`，仅本地保存供 PR 展示。
+- 常规 `make ci-preflight` 仅 20 条既有 freshness 失败，相应 wiki/source 与 main 无 diff；未修改无关页面复核日期。
+- `GITHUB_ACTIONS=true make ci-preflight` 通过：零阻塞 lint、搜索回归通过、导出质量 13/13；派生产物均 gitignore。
+- `make ci-test` 全通过：486 tests、769 subtests、前端 75 tests；ruff、mypy 与 Python 依赖审计通过，覆盖率 63.70%。

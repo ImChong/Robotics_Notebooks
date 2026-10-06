@@ -32,3 +32,8 @@
 
 - 实体页：[`wiki/entities/unitree-rl-gym.md`](../../wiki/entities/unitree-rl-gym.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
+
+## 时间核对（2026-10-06）
+
+- **代码历史起点：** 2023-10-11（UTC），官方仓库提交 [`25877c7`](https://github.com/unitreerobotics/unitree_rl_gym/commit/25877c7eaf92d40ddd78313b261c7a1074905899) 已含 `legged_gym / resources` 实现。
+- **时间口径：** 当前可核实的早期代码提交；不等同于正式首发、仓库首次转为公开或当前版本发布日期。仓库创建日、最近推送日与 wiki 入库日不作为首发依据。
