@@ -1,3 +1,9 @@
+## [2026-10-06] ingest | sources/repos/redot-engine.md — Redot Engine 开源游戏引擎
+
+- 收录 Redot 官方项目入口、文档与源码仓库，建立独立实体页。
+- 归纳 Godot 分支关系、MIT 许可、平台导出范围和 26.2 LTS / 26.3 RC 版本状态。
+- 关联 Unity、Unreal 引擎条目，并区分游戏运行时能力与机器人控制级仿真验证。
+
 ## [2026-10-06] ingest | UniWAM — 统一物理推理、未来视觉与动作生成
 
 - 新增 UniWAM 独立论文/项目详情页、arXiv 来源和官方代码仓库归档，并更新 WAM 概念页。

@@ -4524,6 +4524,7 @@
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [React Bits](wiki/entities/react-bits.md) — React Bits** 是面向 React 网站的可定制动效组件集合：选一个组件、复制或安装源码，再用参数调整文字、背景和交互效果。 `📅unknown` `[entity_page]`
 - [reBot-DevArm（Seeed reBot Arm B601）](wiki/entities/rebot-devarm.md) — reBot-DevArm**（商品名 **reBot Arm B601**）是 Seeed Studio 推出的 **桌面级开源六轴 `📅unknown` `[entity_page]`
+- [Redot Engine（Godot 开源分支）](wiki/entities/redot-engine.md) — Redot Engine 是 2024 年从 Godot 分叉出来的社区维护 2D/3D 游戏引擎，采用 MIT 许可，以统一编辑器、渲染、物理、脚本和跨平台导出构建游戏与交互内容。 `📅unknown` `[entity_page]`
 - [RefSpatial-Bench](wiki/entities/refspatial.md) — RefSpatial-Bench** 是 RoboRefer 发布的 **空间指代** 评测（HF [`BAAI/RefSpatial-Bench `📅unknown` `[entity_page]`
 - [REK（Robot Embodied Kombat · 人形格斗联赛）](wiki/entities/rek.md) — REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **人形机器人格斗体育联赛**：选手在场边戴 **VR 头显**，通过自研 **REK TEK** 将人体动作 `📅unknown` `[entity_page]`
 - [RekaCS2-10k（CS2 第一人称游戏数据集）](wiki/entities/rekacs2-10k-dataset.md) — RekaCS2-10k**（HF 名 **CS2-10k**，<https://huggingface.co/datasets/RekaAI/CS2-10k>）是 [Reka AI](https: `📅unknown` `[entity_page]`
