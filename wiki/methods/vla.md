@@ -747,3 +747,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [OpenVLA](../entities/openvla.md) / Octo 开源实现
 - [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
+
+
+## 近期轻量化实例：FastOPD
+
+- [FastOPD](../entities/paper-fastopd.md)（arXiv:2610.02832）在单个学生 on-policy 状态上匹配教师速度，再用有限区间 self-consistency 蒸馏少步 flow policy；LIBERO 2-step 81.8%、推理延迟 301→66 ms。官方代码截至 2026-10-06 待发布。
