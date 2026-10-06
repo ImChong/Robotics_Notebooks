@@ -86,6 +86,7 @@ flowchart LR
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — 把跨引擎实证差异纳入机器人 RL 选型
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) · [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [MuJoCo](./mujoco.md) · [Isaac Sim / PhysX](./isaac-sim.md) · [Newton Physics](./newton-physics.md) · [Genesis](./genesis-sim.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页对应其 ④ sim↔real 评测 gap 校准层：同一 success 标签下跨引擎接触力/轨迹差异，提醒仿真评测分数须限定在具体引擎配置内
 
 ## 参考来源
 

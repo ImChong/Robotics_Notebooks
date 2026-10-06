@@ -44,6 +44,18 @@ flowchart TB
 
 该论文在 2026-08-19 更新至 v7。具体实验应以相应版本和原文数据为准。
 
+## 与其他工作对比
+
+| 工作 | 研究对象 | 与本文的区别 |
+|---|---|---|
+| 本文 | LLM embedding 与人类概念类别 | 分析性研究：用信息瓶颈衡量压缩与语义保真权衡，不提出新训练目标 |
+| [Semantic Tube Prediction](./paper-semantic-tube-prediction.md) | 语言模型训练中的隐藏状态轨迹 | 提出 JEPA 式训练正则并报告数据效率；本文只诊断表征，不改训练 |
+| [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md) | JEPA、世界模型与规划的综述 | 借用本文“过度压缩会丢细节”的观点作概念提醒，属于跨论文引申 |
+
+## 结论
+
+本文的价值在于提供一个**表征诊断视角**：LLM embedding 在粗粒度类别上与人类判断接近，但更偏向统计压缩、细粒度语义保真较弱。它可以作为评估 latent 表征“压缩是否过度”的参照，但不包含视觉、世界模型或机器人控制实验，不能直接当作机器人表征设计的实证依据。
+
 ## 关联页面
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)

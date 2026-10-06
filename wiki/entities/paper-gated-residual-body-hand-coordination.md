@@ -31,6 +31,18 @@ summary: "冻结 SONIC 全身跟踪器与 DexPilot 式手部重定向器，只�
 
 在冻结的人形全身动作跟踪器和独立手部重定向器之上，学习有界的身体与手部残差；动作门控依人体动作连续调节修正权限，训练时再依人体参考几何调节交互奖励权重。
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 含义 |
+|---|---|---|
+| PPO | Proximal Policy Optimization | 训练名义跟踪器与残差策略所用的强化学习算法 |
+| IK | Inverse Kinematics | 逆运动学；SOMA Retargeter 用于把人体动作重定向到机器人 |
+| BVH | Biovision Hierarchy | 人体动作捕捉文件格式（SEED 原始动作） |
+| SMPL | Skinned Multi-Person Linear model | 参数化人体模型，用于与 BVH 动作配对 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模人体动作库；本文用于名义跟踪器与跟踪保持评测 |
+| GRAB | GRasping Actions with Bodies | 全身抓取交互动作数据集；本文残差训练与 held-out 评测 |
+| DoF | Degrees of Freedom | 自由度；Agile One 身体为 29 DoF |
+
 ## 研究问题与贡献
 
 模块化遥操作便于独立开发身体控制器与手部重定向器，但两路命令即使各自跟踪良好，也不保证手腕相对位置、双手间距或指尖关系一致。本文把问题限定为**命令级身手协调**：保留既有两个模块，仅学习协调它们输出的残差，不要求显式物体状态或接触标签。
