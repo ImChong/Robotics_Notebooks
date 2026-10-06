@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-06
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ./inverse-dynamics-model.md
@@ -68,6 +68,7 @@ related:
   - ../entities/paper-rise-adaptive-imagination-wam.md
   - ../entities/paper-xpace.md
   - ../entities/paper-skelewam-efficient-manipulation.md
+  - ../entities/paper-uniwam-unified-world-action-model.md
   - ../entities/paper-worldscape-policy-2.md
   - ../entities/unifolm-world-model-action.md
   - ../entities/paper-gwm-first-principles.md
@@ -142,6 +143,8 @@ sources:
   - ../../sources/sites/unifolm-world-model-action-github-io.md
   - ../../sources/papers/openwam_arxiv_2609_07398.md
   - ../../sources/papers/wam_design_empirical_arxiv_2609_24048.md
+  - ../../sources/papers/uniwam_arxiv_2610_02054.md
+  - ../../sources/repos/uniwam.md
 ---
 
 # World Action Models（WAM，世界–动作模型）
@@ -564,3 +567,7 @@ flowchart TB
 ## 近期 3D 灵巧操作实例：PointWAM
 
 - [PointWAM](../entities/paper-pointwam.md)（arXiv:2610.02840）在共同三维时空坐标中预测场景点与手关键点轨迹，再把手部未来重定向为动作；使用 1.15M EgoDex/VITRA 人类视频预训练，DexJoCo 十任务多任务均值 69.0%。项目页代码标注 “Code soon”。
+
+## 新近统一预训练实例：UniWAM
+
+- [UniWAM](../entities/paper-uniwam-unified-world-action-model.md)（arXiv:2610.02054）将物理语言推理、未来视觉生成与动作流匹配放进一个 MoT，以 VQA、人类第一视角数据和机器人示教分别监督专家；历史动作初始化 flow matching。官方代码与 ModelScope 权重已发布，但当前 README 尚不含真机推理流程。
