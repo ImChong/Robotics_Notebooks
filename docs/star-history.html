@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线的节点数分布。" />
+  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司的节点数分布。" />
   <title>增长趋势 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
@@ -16,12 +16,12 @@
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>
   <style>
-    /* 六个视图在窄屏换行，并与副标题拉开距离 */
+    /* 七个视图在窄屏换行，并与副标题拉开距离 */
     #trend-tabs { flex-wrap: wrap; }
     #trend-section .home-hub-head { margin-bottom: 10px; }
     /* 底部按钮复用 change-log 的 .updates-timeline-actions；本页无时间线左轨道，去掉内缩 */
     #trend-section .updates-timeline-actions { padding-left: 0; padding-right: 0; }
-    /* 纵深节点数的社区配色图例：按宽度自动分列 */
+    /* 纵深 / 公司节点数的社区配色图例：按宽度自动分列 */
     .trend-legend {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px 12px;
       list-style: none; margin: 12px 0; padding: 0; font-size: .85rem; color: var(--text-muted);
@@ -53,7 +53,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱。</p>
+        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司节点数按公司技术路线收录统计。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div id="trend-chart" style="width:100%;min-height:460px"></div>
@@ -113,10 +113,14 @@
         return out;
       });
 
-      // 社区 / 纵深节点数：取当前知识图谱快照（仅在切到对应视图时加载）
+      // 社区 / 纵深 / 公司节点数：取当前知识图谱快照（仅在切到对应视图时加载）
       var linkGraphPromise = null;
       function linkGraph() {
         return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json'));
+      }
+      var companyRoadmapsPromise = null;
+      function companyRoadmaps() {
+        return companyRoadmapsPromise || (companyRoadmapsPromise = getJSON('company-roadmaps.json'));
       }
 
       function depthDaily() {
@@ -190,6 +194,38 @@
             });
           } }
       ];
+      VIEWS.push({ id: 'company-nodes', label: '公司节点数', unit: '节点', kind: 'category',
+        load: function () {
+          return Promise.all([linkGraph(), companyRoadmaps()]).then(function (data) {
+            var g = data[0];
+            var companies = data[1].companies || [];
+            var nodes = new Map(g.nodes.map(function (n) { return [n.detail_id, n]; }));
+            var count = {};
+            var sum = 0;
+            // 公司顺序与首页一致；同一公司内按知识节点 ID 去重，跨公司分别计数。
+            companies.forEach(function (company, i) {
+              var seen = new Set();
+              (company.nodes || []).forEach(function (entry) {
+                var n = nodes.get(entry.id);
+                if (!n || seen.has(n.id)) return;
+                seen.add(n.id);
+                var values = count[n.community] || (count[n.community] = companies.map(function () { return 0; }));
+                values[i] += 1;
+                sum += 1;
+              });
+            });
+            var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
+            return {
+              cats: companies.map(function (company) { return company.name; }),
+              series: RNGraphTooltip.getSortedCommunities(g.communities)
+                .filter(function (c) { return count[c.id]; })
+                .map(function (c) {
+                  return { name: RNGraphTooltip.shortenCommunityLabel(c.label), values: count[c.id], color: color[c.id] };
+                }),
+              total: companies.length + ' 家公司，合计 ' + sum + ' 节点次（公司内去重，一个节点可属多家公司）'
+            };
+          });
+        } });
       // 暂时隐藏的视图（纵深数趋势 / 每日纵深数）
       VIEWS = VIEWS.filter(function (v) { return !v.hidden; });
 
@@ -261,8 +297,8 @@
         return plotted;
       }
 
-      // 社区名 / 纵深名做横向条形图：长标签放纵轴水平排布，不再斜排挤占图面；
-      // 保持数据给出的顺序（社区按大小、纵深按 DEPTH_ORDER，首项在上），条末标数值；多个 series 时按社区堆叠并显示图例
+      // 社区名 / 纵深名 / 公司名做横向条形图：长标签放纵轴水平排布，不再斜排挤占图面；
+      // 保持数据给出的顺序，首项在上，条末标数值；多个 series 时按社区堆叠并显示图例
       function drawCategory(view, s, text, muted, grid) {
         var narrow = narrowMq.matches;
         var totals = s.cats.map(function (_, i) {
@@ -286,7 +322,7 @@
         }).join('') : '';
         legend.hidden = !stacked;
         var height = labels.length * (narrow ? 26 : 24) + 50;
-        var max = Math.max.apply(null, totals);
+        var max = Math.max.apply(null, [1].concat(totals));
         var plotted = Plotly.react('trend-chart', traces, {
           paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
           font: { color: text, size: narrow ? 11 : 12 }, height: height,
