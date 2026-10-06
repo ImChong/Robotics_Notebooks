@@ -1,217 +1,140 @@
 ---
-
 type: entity
-tags: [paper, humanoid, motion-tracking, martial-arts, dataset, balance-recovery, unitree-g1, reinforcement-learning, bit, gvhmr, gmr]
+tags: [paper, humanoid, motion-tracking, fall-recovery, motion-dataset, sim2real]
 status: complete
-updated: 2026-09-15
-arxiv: "2602.13656"
+updated: 2026-10-06
+arxiv: "2610.03388"
 code: https://github.com/NPCLEI/KungFuAthleteBot
-venue: "arXiv 2026"
+summary: "KungfuAthleteBot 从武术公开视频构建 G1 高动态运动参考，结合物理引导修复、伪低动能采样与统一跟踪-抗扰-恢复策略；新版论文报告真机任意跌倒约 0.7 秒恢复。"
 related:
   - ../tasks/balance-recovery.md
-  - ../tasks/loco-manipulation.md
+  - ../concepts/loco-manipulation.md
   - ../concepts/motion-retargeting.md
-  - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
-  - ../comparisons/humanoid-reference-motion-datasets.md
-  - ./unitree-g1.md
-  - ./paper-hrl-stack-41-safefall.md
-  - ./paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md
-  - ./paper-notebook-kungfubot-2.md
-  - ./dataset-bfm-phuma.md
 sources:
+  - ../../sources/papers/kungfuathletebot_arxiv_2610_03388.md
   - ../../sources/papers/kung_fu_athlete_bot.md
+  - ../../sources/sites/kungfuathletebot.md
   - ../../sources/repos/kungfuathletebot.md
-summary: "KungFuAthleteBot（BIT/QIYUAN，arXiv:2602.13656）从国家级武术运动员视频构建 KungFuAthlete 高动态数据集（848 样本，Jump 子集速度显著高于 LAFAN1/PHUMA/AMASS），提出 GVHMR→GMR 根高度抛物线校正管线，并用 FastSAC 单策略联合高动态 tracking 与 GRSI 重力随机跌倒恢复，在 Unitree G1 真机验证抗扰长时程武术执行。"
+  - ../../sources/datasets/kungfuathletebot-hf.md
 ---
 
-# KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）
+# KungfuAthleteBot：视频高动态动作学习与统一恢复
 
-**KungFuAthleteBot**（*A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challenging Motion Dataset and Autonomous Fall-Resilient Tracking*，arXiv:[2602.13656](https://arxiv.org/abs/2602.13656)，[项目页](https://kungfuathletebot.github.io/)，[GitHub](https://github.com/NPCLEI/KungFuAthleteBot)）由 **北京理工大学** 与 **启元实验室** 提出：从专业武术运动员日常训练视频构建 **KungFuAthlete** 高动态参考库，并训练 **单一 FastSAC 策略** 同时完成 **高动态 motion tracking** 与 **自主跌倒恢复**，把能力从「纯跟踪」扩展到 **recovery-enabled execution**。
-
-## 一句话定义
-
-KungFuAthleteBot 用国家级运动员视频经 GVHMR+GMR 构建 Jump/Ground 双档高动态武术数据集，以根高度抛物线校正清洗 noisy 参考，再用 FastSAC 单策略混合 tracking/recovery 奖励与 GRSI 跌倒初态采样，在 Unitree G1 上实现抗扰、可自主站回参考轨迹的长时程武术跟踪。
+**KungfuAthleteBot（KAB）** 将武术公开视频变为人形机器人可学习的高动态运动，并用同一策略处理跟踪、扰动拒绝和跌倒恢复。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| GVHMR | Gravity-View Human Motion Recovery | 单目视频人体网格恢复（本文数据重建入口） |
-| GMR | General Motion Retargeting | 人体运动重定向到人形关节参考 |
-| GRSI | Gravity-based Randomized State Initialization | 零力矩重力释放采样多样跌倒初态 |
-| LKE | Low Kinetic Energy Sampling | 参考轨迹低动能锚点 episode 初始化 |
-| WBT | Whole-Body Tracking | 全身关节/根轨迹跟踪类 RL 任务 |
-| FastSAC | Fast Soft Actor-Critic | 本文采用的 off-policy 并行 RL 算法 |
-| CoM | Center of Mass | 质心；奖励中用于支撑足对齐 |
-| G1 | Unitree G1 Humanoid | 论文真机平台（29 DoF，约 1.3 m） |
-| RL | Reinforcement Learning | 策略学习范式；混合 tracking/recovery 目标 |
+| KAB | KungfuAthleteBot | 从视频学武术高动态动作并统一恢复的框架 |
+| LKE | Low-Kinetic-Energy | 以低动能状态作为训练初始化锚点 |
+| GRSI | Gravity-based Randomized State Initialization | 用重力释放和随机姿态扩充跌倒状态 |
+| G1 | Unitree G1 humanoid robot | 论文评测的 29 自由度人形机器人 |
 
 ## 为什么重要
 
-- **填补高动态数据空白：** Jump 子集关节/线/角速度统计 **显著高于** LAFAN1、PHUMA、AMASS——适合在 **硬件与算法边界** 压测 humanoid WBT，而非仅日常 locomotion。
-- **unsafe 态统一建模：** 多数 tracking 假设全程安全；本文用 **单策略** 联合 $r_{\mathrm{mt}}$ 与条件 $r_{\mathrm{rc}}$，配合 GRSI，无需独立参考起身片段即可从任意跌倒态回到参考 motion。
-- **视频→机器人工程管线可复用：** 针对 GVHMR 常见 **根高度漂移** 的分段地面约束 + **抛物线跳跃重建** + SG 平滑，对 monocular 大规模参考库清洗有直接借鉴价值。
-- **与 KungfuBot 谱系互补：** 同域武术高动态 tracking，但强调 **运动员级数据集统计** + **tracking∪recovery** 训练范式（对照 [KungfuBot](./paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md)、[KungfuBot 2](./paper-notebook-kungfubot-2.md)）。
+武术视频比受控动捕容易获得，但单目重建的运动可能漂浮、穿地或抖动，且没有驱动力信息。直接把重定向结果当作机器人可执行轨迹，容易把策略初始化在动力学不可能状态。KAB 的价值不只是加大动作库，而是同时处理数据物理一致性、可学习初始化与跌倒后的任务连续性。
 
-## 核心信息
+## 方法栈：从视频到统一策略
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 北京理工大学（BIT）；启元实验室（QIYUAN Lab） |
-| 平台 | Unitree G1（29 DoF）；Isaac Sim 5.0 训练，MuJoCo 评测 |
-| 数据规模 | 197 视频 → 1,726 子片段 → **848** 最终样本 |
-| 子集 | **Ground**（非跳跃，~84% 日常训练）；**Jump**（空翻、旋子等） |
-| 项目状态 | Ground 子集 largely ready；Jump 与完整模型 **active development** |
-| 论文/项目 | <https://kungfuathletebot.github.io/> |
-| 代码 | <https://github.com/NPCLEI/KungFuAthleteBot> |
+### 1. 运动重建与参考修复
 
-## 流程总览
+197 段视频经时序切分得到 1,726 个子片段，再经 GVHMR 重建人体运动、GMR 重定向至 G1。对腾空段使用物理引导的抛物线根轨迹修正，修复根节点高度漂移；并处理着地穿透、高频噪声及关节抖动。该步骤仍涉及歧义局部极小值的人工标注，当前不是端到端视频到控制。
+
+### 2. 伪低动能采样和三阶段课程
+
+视频只给运动学，不给接触力、扭矩等动作可行性信息。误差驱动采样可能持续从不可能的腾空状态重新开始。伪 LKE 采样偏向动力学可行的低动能状态，让策略从可恢复处探索可行执行；三阶段课程逐步扩展跟踪与稳定要求。
+
+### 3. 跟踪、抗扰与恢复合一
+
+单一策略学习跟踪目标运动、抵抗外扰，并在任意跌倒姿态恢复后接续目标动作。GRSI 扩展训练跌倒状态；恢复不需要单独的人类起身参考数据，也不需运行时手动切换恢复模式。应区分「回到参考动作」与只优化防护/吸收冲击的跌倒安全策略。
 
 ```mermaid
-flowchart TB
-  subgraph data [数据管线]
-    vid["197 武术训练视频\n（运动员日常示范）"]
-    seg["自动时序切分\n1,726 子片段"]
-    gv["GVHMR 单目重建"]
-    gmr["GMR 重定向"]
-    fix["根高度漂移校正\n地面约束 + 抛物线跳跃 + SG 平滑"]
-    ds["KungFuAthlete\n848 样本 · Ground / Jump"]
-    vid --> seg --> gv --> gmr --> fix --> ds
-  end
-  subgraph train [单策略 FastSAC]
-    lke["LKE 低动能锚点采样"]
-    grsi["GRSI 重力随机跌倒初态"]
-    mix["Bernoulli 混合\ntracking / recovery episode"]
-    rew["r_mt + I_rc · r_rc"]
-    policy["统一 actor-critic"]
-    lke --> mix
-    grsi --> mix
-    ds --> lke
-    mix --> rew --> policy
-  end
-  subgraph deploy [部署]
-    sim["Isaac Sim 5.0 训练"]
-    mj["MuJoCo 评测"]
-    g1["Unitree G1 真机"]
-    policy --> sim --> mj --> g1
-  end
+flowchart LR
+  V[公开视频] --> H[GVHMR人体重建]
+  H --> R[GMR重定向与高度修复]
+  R --> D[G1运动参考]
+  D --> L[伪LKE采样与三阶段训练]
+  L --> P[统一跟踪与恢复策略]
+  P --> E[MuJoCo评测与G1部署]
 ```
 
-## 核心机制（归纳）
+## 工程实践：代码、数据与部署
 
-### 1）KungFuAthlete 数据集
-
-| 类别 | 数量 | 示例子类 |
-|------|------|----------|
-| Daily Training | 715 | — |
-| Fist | 53 | 长拳 33、太极拳 14、南拳 6 |
-| Staff | 30 | 棍术 |
-| Skills | 28 | 后空翻 12、旋子 9 |
-| Saber / Sword | 15 / 7 | 南刀、太极剑 |
-
-**动力学对照（论文 Table 1）：** Jump 子集 body ang. vel. **0.180** vs AMASS **0.009**、LAFAN1 **0.011**；Ground 子集仍高于自然 motion 库，体现 **地面发力、快旋、器械** 的非平稳性。
-
-### 2）根高度漂移校正
-
-- 支撑相：$ \hat{p}_t^{(z)} = p_t^{(z)} - z_{\min}(\mathbf{q}_t) $ 强制最低体点贴地。
-- 非锚点帧：速度阈值传播，抑制 GVHMR 垂直抖动。
-- 跳跃段：take-off/landing 极值间 **抛物线** 重建 airborne 根轨迹。
-- 后处理：Savitzky–Golay 滤波（窗口 ~T/10）保 apex 与接触相。
-
-### 3）单策略 tracking + recovery
-
-- **混合目标（Eq. 14）：** 以概率 $p$ 从参考低动能态做 tracking，$1-p$ 从 $\mathcal{D}_{\mathrm{GRSI}}$ 跌倒态做 recovery；recovery 奖励由肩高偏差指示 $\mathbb{I}_{\mathrm{rc}}$ 门控。
-- **LKE 采样：** 在参考动能局部极小初始化，失败归因最近前锚增权——避免 BeyondMimic 式失败驱动采样在 **腾空不可恢复相** 的死循环。
-- **GRSI：** 零力矩重力释放 + 随机摩擦 + 姿态旋转重组，扩覆盖跌倒初态。
-- **$r_{\mathrm{mt}}$：** BeyondMimic 式相对体位/朝向/角速度 + HuB 式 CoM–支撑足 + 强 **feet slip**（接触力 >8 时罚脚滑）+ 膝/踝 action rate。
-- **$r_{\mathrm{rc}}$：** 站起前罚肩高偏差、水平根移、动作突变——鼓励 **原地** 平滑恢复。
-- **终止：** recovery 模式允许连续 bad tracking 达阈值才终止，给恢复留窗口。
-
-### 4）仿真消融要点（1307 帧高难度序列）
-
-| Method | Succ. (6 trials) |
-|--------|------------------|
-| BeyondMimic 基线 | **0/6** |
-| + recovery task | **6/6** |
-| + feet slip (w=5) | 6/6，$E_{\mathrm{mpboe}}$ 进一步下降 |
-
-加 recovery 目标后，无扰 **单腿站** 场景 BeyondMimic 基线从全败变为可完成；feet slip + CoM + 膝踝 rate 改善交叉步 **抬脚质量**。
-
-## 源码运行时序图
-
-官方仓库 [NPCLEI/KungFuAthleteBot](https://github.com/NPCLEI/KungFuAthleteBot)：视频 → GVHMR / GMR / 高度修正 → `scripts/qpos_to_npz.py`；训练 `scripts/train.py Unitree-G1-1307-Stage-I/II/III`；回放 `scripts/play.py`；可导出 ONNX 部署。一次完整运行如下：
+官方仓库当前含 retarget/height-adjustment 脚本、Unitree RL Mjlab 训练代码、训练配置、1307 长时程恢复 checkpoint 和回放/部署说明。README 提供 `scripts/train.py` 的 Stage I–III 入口与 `scripts/play.py` 的 MuJoCo 回放，并接 Unitree RL Mjlab 部署路径。不要据此声称任一预训练权重都对应新论文所有实验。
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor U as 用户
-    participant VID as 武术视频数据集
-    participant HMR as GVHMR
-    participant RET as GMR + 高度修正
-    participant NPZ as qpos_to_npz.py
-    participant TR as scripts/train.py
-    participant MJ as Unitree RL Mjlab
-    participant PL as scripts/play.py
-    U->>VID: 准备演示视频
-    VID->>HMR: 提人体运动
-    HMR->>RET: 重定向到 G1 qpos
-    RET->>NPZ: 写参考 npz
-    U->>TR: Stage-I / II / III
-    loop 分阶段跟踪 RL
-        TR->>MJ: 并行环境
-        MJ-->>TR: 跟踪奖励
-        TR->>TR: PPO / FastSAC 更新
-    end
-    U->>PL: --checkpoint-file=…
-    PL-->>U: MuJoCo 回放 / 导出部署
+  actor U as 维护者
+  participant D as GVHMR/GMR与高度修复
+  participant Q as qpos运动参考
+  participant T as scripts/train.py
+  participant E as Unitree RL Mjlab环境
+  participant P as scripts/play.py
+  participant G as G1部署
+  U->>D: 视频重建与GMR重定向
+  D->>Q: 输出G1 qpos
+  U->>T: 选择Stage I / II / III配置
+  T->>E: 并行采样跟踪与恢复状态
+  E-->>T: 奖励、接触与本体状态
+  T->>T: 更新统一策略并保存checkpoint
+  U->>P: MuJoCo回放检查
+  P-->>U: 跟踪与恢复轨迹
+  U->>G: 按仓库部署说明部署策略
 ```
-
-- **三阶段课程**：不要跳过 Stage 顺序；高动态动作依赖前置稳定跟踪。
-- **上游感知可换**：GVHMR/GMR 可替换，但 npz 接口需对齐训练任务。
-
-## 常见误区
-
-1. **Jump 子集 ≠ 全部可用：** 项目页注明 Jump 因视频源仍有 minor imperfections，训练表现可能波动——应 **先试用 Ground 子集**。
-2. **不是纯数据集论文：** 核心贡献含 **校正算法 + 单策略 training paradigm**；仅下载数据而不做 GRSI/LKE 混合训练无法复现 recovery 能力。
-3. **与 KungfuBot 不同代：** KungfuBot 系列偏 physics-based tracking + curriculum；本文强调 **运动员视频统计上界** 与 **tracking∪recovery 统一 RL 目标**。
-4. **recovery ≠ SafeFall 保护摔：** 本文目标是 **回到参考 motion**；[SafeFall](./paper-hrl-stack-41-safefall.md) 侧重 **损伤缓解** 双策略切换——问题设定不同。
 
 ## 实验与评测
 
-- **仿真：** Isaac Sim 5.0 训练，MuJoCo 评测；Succ. / $E_{\mathrm{mpboe}}$ / Smooth（action rate）；FastSAC + FastSAC 域随机化。
-- **真机：** Unitree G1；项目页含抗 torso 拉力、单脚支撑恢复、快速恢复等演示（详见论文 §5 与 [项目页](https://kungfuathletebot.github.io/)）。
-- **量化以原文为准：** 本页为 ingest 编译摘要；完整 benchmark 与长时程（如连续太极）指标见 PDF / 项目页更新。
+- **任务与硬件：** Unitree G1 真机；长程例 Motion 1307 为约 5 分钟太极动作。
+- **主要结果：** 论文在真实 G1 上展示从多类跌倒姿态起身并回到参考动作，报告恢复约 0.7 秒；此为论文测试条件下数字，不构成通用安全保证。
+- **消融解读：** 去掉恢复奖励会失去起身能力；仅扩大随机跌倒状态而不联合训练与终止容忍度不足以学会「起身后继续跟踪」。完整方法收敛更慢，约 16k 对跟踪基线约 2.5k 迭代，表明鲁棒性有训练成本。
+- **数据规模：** 新论文附录 C 与 Hugging Face 卡片为 992 条（Ground 822 / Jump 170）。项目页及仓库 README 上部仍保留 848 旧版描述，附录 E 又称释放的是 848 screened samples；两个版本的样本数应保留来源口径，不混写。
+
+## 与其他工作对比
+
+- **纯动作跟踪：** 高动态跟踪能覆盖动作执行，却未必能在扰动/摔倒后恢复；KAB 将 tracking 与 recovery 放到单一训练目标。
+- **需要恢复参考的方法：** KAB 论文声称不需要恢复示范；相较依赖重定向起身动作的策略，数据需求更低，但并不意味着完全不需人类视频标注。
+- **前序版本：** 本节点此前记录 arXiv:2602.13656《A Kung Fu Athlete Bot That Can Do It All Day》。本次以 arXiv:2610.03388 为主，保留旧来源用于版本沿革；此前的 FastSAC 对比数字不直接当作新版论文主结果。
+- **数据许可：** 论文称完整 artifact 将在接收后按 MIT 发布，HF 当前卡标记 Apache-2.0；以实际下载资产和许可文件为准。运动员原视频不公开。
 
 ## 结论
 
-**高动态武术跟踪要把「运动员级参考清洗」与「tracking∪recovery 单策略」一起做，否则难复现抗扰长时程执行。**
+**核心不是直接模仿更激烈的视频动作，而是先修复物理不一致参考、从可行状态学习，并把跌倒恢复纳入同一控制目标。**
 
-1. **数据上界** — Jump 子集动力学显著高于 LAFAN1/PHUMA/AMASS（如 body ang. vel. 0.180 vs AMASS 0.009）；先用 Ground（~84%），Jump 仍在完善。
-2. **参考清洗** — GVHMR→GMR 后做根高度校正：支撑相贴地、速度传播、跳跃段抛物线重建 + SG 平滑，抑制 monocular 垂直漂移。
-3. **统一目标** — FastSAC 单策略混合 $r_{\mathrm{mt}}$ 与门控 $r_{\mathrm{rc}}$；LKE 锚点 + GRSI 跌倒初态，无需独立起身参考即可回到参考 motion。
-4. **消融读法** — 1307 帧高难序列：BeyondMimic 基线 0/6，加 recovery 后 6/6；feet slip（w=5）进一步降 $E_{\mathrm{mpboe}}$、改善抬脚。
-5. **与同域对照** — 相对 KungfuBot 偏自适应课程跟踪，本文强调数据集统计 + 跌倒恢复；相对 SafeFall 是回到参考，不是损伤缓解。
-6. **部署提醒** — Isaac Sim 训练 → MuJoCo 评测 → G1 真机；只下数据不做 GRSI/LKE 混合训，复现不出 recovery。
+1. **先修数据再调控制** — 腾空抛物线与着地修复针对视频运动重建的具体误差，不等于完整动力学辨识。
+2. **LKE 是关键训练约束** — 它阻止 error-driven sampling 一直从不可执行的空中姿态启动。
+3. **统一策略减少切换边界** — 跌倒后可以回到被跟踪的参考，而不依赖运行时人工切换控制器。
+4. **看清训练成本** — 统一跟踪/恢复提高任务覆盖，但论文消融显示收敛较慢。
+5. **先核对数据版本与许可** — HF 当前卡为 992 条，部分官网文案和论文附录 E 仍写 848；许可元数据也需按资产确认。
 
-## 与其他页面的关系
+## 局限与风险
 
-- **数据集选型：** [humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md) — Jump 子集动力学上界对照
-- **平衡恢复任务：** [balance-recovery](../tasks/balance-recovery.md) — 单策略 tracking+recovery 案例
-- **重定向与清洗：** [motion-retargeting](../concepts/motion-retargeting.md) — GVHMR/GMR + 根高度校正
-- **武术 tracking 姊妹：** [KungfuBot](./paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md)、[KungfuBot 2](./paper-notebook-kungfubot-2.md)
-- **跌倒安全对照：** [SafeFall](./paper-hrl-stack-41-safefall.md)、[HoST](./paper-host-humanoid-standingup.md)
-- **预重定向 locomotion 库：** [PHUMA](./dataset-bfm-phuma.md) — 物理可信 G1 轨迹，动力学低于 KungFuAthlete Jump
+- 新论文写明高度修正仍依赖对歧义局部极小的人工标注，未实现端到端视频到可执行策略。
+- Jump 样本存在源视频噪声；官方仓库提醒未经仿真验证不要直接真机训练或部署。
+- 原始视频含可识别个人影像，不随衍生运动数据分发。
+- 约 0.7 秒恢复时间来自指定硬件和论文协议，不能替代安全验证。
+- 公开仓库文档对样本规模有旧版 848 与当前 992 两种口径；HF license 与论文未来授权表述不同。
+
+## 关联页面
+
+- [平衡与恢复](../tasks/balance-recovery.md) — 统一恢复案例；已有回链至本实体。
+- [动作重定向](../concepts/motion-retargeting.md) — GVHMR/GMR 到人形参考运动。
+- [Sim2Real](../concepts/sim2real.md) — 仿真训练与真机验证边界。
+- [PHUMA](./dataset-bfm-phuma.md) — 人形参考运动数据对照。
 
 ## 参考来源
 
-- [kung_fu_athlete_bot.md](../../sources/papers/kung_fu_athlete_bot.md) — 论文 / 项目页 / arXiv 编译摘录
-- [kungfuathletebot.md](../../sources/repos/kungfuathletebot.md) — GitHub 仓库归档
+- [新论文来源](../../sources/papers/kungfuathletebot_arxiv_2610_03388.md)
+- [项目页归档](../../sources/sites/kungfuathletebot.md)
+- [代码仓库归档](../../sources/repos/kungfuathletebot.md)
+- [Hugging Face 数据卡归档](../../sources/datasets/kungfuathletebot-hf.md)
+- [前序论文归档](../../sources/papers/kung_fu_athlete_bot.md)
 
 ## 推荐继续阅读
 
-- 论文 PDF：<https://arxiv.org/pdf/2602.13656>
-- 项目页与数据集说明：<https://kungfuathletebot.github.io/>
-- 代码仓库：<https://github.com/NPCLEI/KungFuAthleteBot>
-- 视频素材授权说明：谢远航 Bilibili 公开示范（广西武术队，中国武术六段）
+- [arXiv:2610.03388](https://arxiv.org/abs/2610.03388)
+- [KungfuAthleteBot 项目页](https://kungfuathletebot.github.io/)
+- [官方代码](https://github.com/NPCLEI/KungFuAthleteBot)
+- [Hugging Face 数据集](https://huggingface.co/datasets/LuluCao/KungfuAthleteBot)
