@@ -2,9 +2,10 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 sources:
   - ../../sources/repos/unitree.md
+  - ../../sources/sites/unitree-g1-official.md
   - ../../sources/repos/unitree_ros2.md
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
@@ -82,6 +83,23 @@ related:
 | WMA | World-Model-Action | 世界模型–动作架构；UnifoLM-WMA-0 属此类 |
 | WLA | Whole-body Language-Action | 全身协调语言–动作；UnifoLM-WLA-1.0 属此类 |
 | IL | Imitation Learning | 模仿学习；官方 `unitree_lerobot` 对接 LeRobot 训练 |
+
+## 公司路线时间线（2026-10-06 核对）
+
+硬件先提供研究载体，RL 与遥操作/模仿学习工具形成工程生态，UnifoLM 再增加世界模型、VLA 与统一 WLA。以下是不同类型的可核实事件，不代表所有工具依次替代，也不代表各功能在首次提交时已齐备。
+
+| 日期 | 节点 | 时间口径与技术位置 |
+| --- | --- | --- |
+| 2023-10-11 | [unitree_rl_gym](./unitree-rl-gym.md) | 代码历史起点：RL 训练工程生态 |
+| 2024-05-13 | [G1](./unitree-g1.md) | 官方产品发布：人形硬件平台 |
+| 2024-08-06 | [XR Teleoperate](./xr-teleoperate.md) | 代码历史起点：遥操作与数采 |
+| 2024-10-18 | [Unitree LeRobot](./unitree-lerobot.md) | 代码历史起点：模仿学习训练与推理 |
+| 2025-06-24 | [Unitree Sim IsaacLab](./unitree-sim-isaaclab.md) | 代码历史起点：仿真与策略测试 |
+| 2025-09-15 → 09-22 | [UnifoLM-WMA-0](./unifolm-world-model-action.md) | 训练/推理代码与权重 → 机器人部署代码开放 |
+| 2026-01-29 | [UnifoLM-VLA-0](./unifolm-vla.md) | 训练/推理代码与权重开放 |
+| 2026-09-11 → 09-20 → 09-28 | [UnifoLM-WLA-1.0](./unifolm-wla.md) | ER 权重 → 动作专家训练代码 → WLA-Base 权重与微调代码开放 |
+
+四个工程仓的日期来自含实现的官方提交，不能证明首次公开或正式发布日期；模型日期对应 README 明确标注的资产开放事件。逐项证据见 [公司路线时间归档](../../sources/repos/unitree.md) 与 [G1 官网归档](../../sources/sites/unitree-g1-official.md)，不使用 wiki 入库日或最近推送日替代。
 
 ## 为什么重要
 
@@ -375,6 +393,8 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 - UnifoLM-WLA 项目页：<https://unigen-x.github.io/unifolm-wla.github.io/>
 
 ## 参考来源
+
+- [G1 官方发布时间](../../sources/sites/unitree-g1-official.md)
 
 - [unitree_slam 源码归档](../../sources/repos/unitree_slam.md)（<https://github.com/unitreerobotics/unitree_slam>）
 
