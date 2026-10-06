@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### papers/ — 论文来源归档
+- [x] [cari4d_arxiv_2512_11988.md](papers/cari4d_arxiv_2512_11988.md) | CARI4D CVPR 2026 论文摘录（arXiv:2512.11988）
 
 | 文件 | 内容 |
 | [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
@@ -152,6 +153,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [nvlabs-cari4d.md](repos/nvlabs-cari4d.md) | NVlabs/CARI4D 研究代码、训练与数据准备入口
 | 文件 | 内容 |
 |------|------|
 | [x] [easymocap.md](repos/easymocap.md) | zju3dv/EasyMocap：无标记多视角/互联网视频 SMPL 系动捕工具箱（非商业科研许可；ZJU-MoCap 协议申请） |
@@ -422,6 +424,7 @@
 | [x] [thehumanoid_kinetiq_ascend.md](blogs/thehumanoid_kinetiq_ascend.md) | Humanoid：KinetIQ Ascend 真机 CFM-VLA PPO 后训练（产线三项任务、prefix-CFM、解耦 Thor 采样，2026-06） |
 
 ### sites/ — 网站与在线工具归档
+- [x] [cari4d-project-page.md](sites/cari4d-project-page.md) | CARI4D 论文/代码、CoCoNet 商业模型和 FORM-HOI 官方入口及许可区分
 | 文件 | 内容 |
 | [x] [robotics_star_perchrl.md](sites/robotics_star_perchrl.md) | STAR Group PerchRL 项目页：CoRL 2026 在投、论文与两段视频入口；无公开代码链接 |
 |------|------|
@@ -575,6 +578,9 @@
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：官网 wuji.tech + F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 | [x] [simons_sergey_levine_diffusion_rl_robotics_2026.md](sites/simons_sergey_levine_diffusion_rl_robotics_2026.md) | Simons talk 页：Levine《Diffusion in RL and robotics…》（2026-08-07；abstract + YouTube `agi3xLTGyaU`） |
 | [x] [cmu_optimal_control_16_745.md](sites/cmu_optimal_control_16_745.md) | CMU 16-745 Optimal Control 课程站（optimalcontrol.ri.cmu.edu；配套 YouTube 2025 playlist） |
+
+### datasets/ — 数据集来源归档
+- [x] [form_hoi_nvidia.md](datasets/form_hoi_nvidia.md) | NVIDIA FORM-HOI 四相机人–物交互数据集（4,135 段；CC BY 4.0）
 
 ### courses/ — 课程与协议入门归档
 | 文件 | 内容 |

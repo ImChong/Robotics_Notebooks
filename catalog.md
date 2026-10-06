@@ -443,6 +443,7 @@
 - [Cityscapes](wiki/entities/dataset-cityscapes.md) — Cityscapes**：城市场景语义/实例分割基准（车载视角）；自动驾驶与户外移动机器人视觉评测常用。 `📅unknown` `[entity_page]`
 - [MS COCO](wiki/entities/dataset-coco.md) — MS COCO**：目标检测/实例分割/关键点主流基准：约 20 万图、80 物类；mAP 与机器人检测迁移评测的事实标准之一。 `📅unknown` `[entity_page]`
 - [Flickr30K Entities](wiki/entities/dataset-flickr30k-entities.md) — Flickr30K Entities**：Flickr30K 的短语级图文对齐扩展：把描述中的实体短语与图像区域框关联，服务定位/接地评测。 `📅unknown` `[entity_page]`
+- [FORM-HOI：多视角人–物交互数据集](wiki/entities/dataset-form-hoi.md) — 全称：** Foundry for Reconstruction from Multiview Human-Object Interaction `📅unknown` `[entity_page]`
 - [ImageNet / ImageNet-21K](wiki/entities/dataset-imagenet.md) — ImageNet** 是以 **WordNet synset** 为骨架、人工质控的 **层次化大规模图像库**；**ILSVRC** 取其子集形成 **1000 类、百万级** 分类/检测/定位 `📅unknown` `[entity_page]`
 - [JFT-300M](wiki/entities/dataset-jft-300m.md) — JFT-300M**：Google 内部约 3 亿图的大规模弱标签分类数据；支撑 ViT 等大模型数据规模论证，外部通常不可直接下载。 `📅unknown` `[entity_page]`
 - [Mapillary Vistas](wiki/entities/dataset-mapillary.md) — Mapillary Vistas**：街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。 `📅unknown` `[entity_page]`
@@ -1383,6 +1384,7 @@
 - [CAP（arXiv:2609.11553）](wiki/entities/paper-cap-perception-blind-humanoid.md) — CAP**（*Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising*，[arXiv:26 `📅unknown` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector** 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 [capvector.github.io](ht `📅unknown` `[entity_page]`
 - [CARF（arXiv:2609.21982）](wiki/entities/paper-carf.md) — CARF**（*CARF: Contrastive Attraction-Repulsion of Failure-Guided Flow Matching*，[arXiv:2609.21982 `📅unknown` `[entity_page]`
+- [CARI4D：类别无关的人–物交互 4D 重建](wiki/entities/paper-cari4d.md) — 论文：** [CARI4D: Category Agnostic 4D Reconstruction of Human-Object Interaction](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Cartesian Hand（arXiv:2609.25696）](wiki/entities/paper-cartesian-hand-linear-fingers.md) — Cartesian Hand**（*The Cartesian Hand: In-Hand Manipulation with All-Linear Fingers*，[arXiv:2609.25 `📅unknown` `[entity_page]`
 - [Cartesian Impedance Controller（Mayr et al., JOSS 2024）](wiki/entities/paper-cartesian-impedance-controller.md) — Mayr & Salt-Ducaju** 的 *A C++ Implementation of a Cartesian Impedance Controller for Robotic Manip `📅unknown` `[entity_page]`
 - [CASD（arXiv:2609.08638）](wiki/entities/paper-casd-chunk-semantic-distillation.md) — CASD**（*CASD: Chunk-Aligned Semantic Distillation for Multi-Stage Robot Manipulation*，[arXiv:2609. `📅unknown` `[entity_page]`
@@ -4509,6 +4511,7 @@
 - [PRIME](wiki/entities/prime-system-id.md) — PRIME**（*Physically-consistent Robotic Inertial and Motion Estimation*，[arXiv:2605.17681](https:// `📅unknown` `[entity_page]`
 - [AnyTouch 项目：代码、数据与复现入口](wiki/entities/project-anytouch.md) — 本页记录 AnyTouch 的**软件与数据项目**，与论文方法页分开维护。 `📅unknown` `[entity_page]`
 - [AnyTouch 2 项目：ToucHD、代码与模型入口](wiki/entities/project-anytouch2.md) — 本页聚焦 AnyTouch 2 的项目资产和当前可用入口；方法与实验论述见独立论文详情。 `📅unknown` `[entity_page]`
+- [CARI4D 项目与代码](wiki/entities/project-cari4d.md) — 该项目实现 CVPR 2026 CARI4D 论文，对单目第三人称 RGB 视频中的人体与物体进行类别无关、米制尺度的 4D 重建。官方 [NVlabs/CA `📅unknown` `[entity_page]`
 - [I-BFM 项目页：Reward-Conditioned Humanoid Interaction](wiki/entities/project-i-bfm.md) — 类型：** 人形–物体交互行为基础模型研究项目及官方演示页 `📅unknown` `[entity_page]`
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [Project Quiver](wiki/entities/project-quiver.md) — Project Quiver**（Arrow-air/project-quiver）是 Arrow A `📅unknown` `[entity_page]`
