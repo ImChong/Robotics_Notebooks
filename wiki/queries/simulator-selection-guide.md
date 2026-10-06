@@ -2,10 +2,11 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
@@ -14,6 +15,7 @@ sources:
   - ../../sources/repos/omnisim.md
 related:
   - ../concepts/robot-simulation-three-layers.md
+  - ../entities/mandarobotics-physics-engine-comparison.md
   - ../overview/sim-platforms-decade-technology-map.md
   - ../overview/embodied-simulators-series-technology-map.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -95,7 +97,8 @@ related:
 | 维度 | MuJoCo | Isaac Lab | Genesis |
 |------|--------|-----------|---------|
 | **速度（step/s，单机）** | ~50k（CPU）/ ~500k（GPU MJX） | ~10M–50M（GPU 并行） | ~1M–10M（GPU，持续提升中） |
-| **物理精度** | 高（接触建模精细，学术标准） | 中高（PhysX，工程向） | 中（基于 Taichi，精度仍在验证） |
+| **接触模型关注** | 接触参数、几何与步长共同决定结果；需按任务校验 | PhysX 接触配置需与目标接触族匹配并实测 | 刚体/柔体求解与耦合须按版本验证 |
+| **物理精度 / Sim2Real** | 不存在脱离任务和真机标定的通用引擎排名 | 同左；PhysX 与 MuJoCo-family 接触不能简单视为等价 | 同左；软体表现尤其需要独立验证 |
 | **并行采样支持** | 有限（MJX 支持 GPU batch，但生态较新） | 原生支持 8192+ envs | 原生 GPU 并行，架构更轻量 |
 | **Sim2Real Gap** | 小（接触/摩擦建模准确） | 中（PhysX 与真实存在差异） | 待评估（2024 年以来研究积累中） |
 | **开源 / 商业** | 开源（Apache 2.0，2022 年起） | 开源（但依赖 NVIDIA Omniverse 生态） | 开源（MIT） |
@@ -207,6 +210,12 @@ related:
 
 ---
 
+## 跨引擎评测：不要只看 task success
+
+[Manda Robotics 的匹配场景比较](../entities/mandarobotics-physics-engine-comparison.md)显示，单物体运动终点可相差仅约 0.05 mm，而部分接触力峰值仍可相差约 10 倍；拥挤接触、窄间隙插入和软体任务会进一步暴露路径、重复性与求解器差异。文章没有真机 ground truth，不能推出“哪个引擎最准”。
+
+用于 locomotion/manipulation RL 的评估至少应同时记录 task success、轨迹误差、接触力/过载、重复运行敏感性及引擎/数值配置。这个证据提醒我们不要把成功率或峰值吞吐量当作仿真保真度的替代指标。
+
 ## Sim2Real Gap 实践注意
 
 - **Isaac Lab**：PhysX 的接触模型对 sim2real 最大挑战是脚底摩擦，需要加强摩擦系数随机化（DR）
@@ -241,6 +250,8 @@ related:
 | Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
 
 ## 参考来源
+
+- [Manda Robotics：机器人仿真物理引擎比较](../entities/mandarobotics-physics-engine-comparison.md) — 特定版本下的接触、轨迹、重复性与吞吐差异（无真机 ground truth）
 
 - [Sim2Real 源文档](../../sources/papers/sim2real.md)
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (Isaac Lab 前身 legged_gym, 2022)
