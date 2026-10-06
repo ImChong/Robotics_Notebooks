@@ -9,6 +9,7 @@
 ### papers/ — 论文来源归档
 
 | 文件 | 内容 |
+| [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
 |------|------|
 | [x] [prism_real2sim2real_arxiv_2609_38172.md](papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM：V2V counterfactual + 接触锚定 Real2Sim2Real 人形 loco-manip（arXiv:2609.38172，Amazon FAR 等；Code 链待公开）摘录与 wiki 映射 |
 | [x] [qplanning_arxiv_2608_21204.md](papers/qplanning_arxiv_2608_21204.md) | Q-Planning：冻结 BC/VLA + 离策略 Q 加权规划与 Q-only 自改进（arXiv:2608.21204，Georgia Tech；已开源）摘录与 wiki 映射 |
@@ -421,6 +422,7 @@
 
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |
+| [x] [robotics_star_perchrl.md](sites/robotics_star_perchrl.md) | STAR Group PerchRL 项目页：CoRL 2026 在投、论文与两段视频入口；无公开代码链接 |
 |------|------|
 | [x] [easymocap-public-doc.md](sites/easymocap-public-doc.md) | EasyMocap 文档站 chingswy.github.io/easymocap-public-doc（安装/Quick Start；代码已开、数据协议申请） |
 | [x] [sonic-transfer-github-io.md](sites/sonic-transfer-github-io.md) | SONIC-Transfer 项目页 sonic-agibot-x2.github.io/sonic-transfer（冻结 GEAR-SONIC → X2；推理已开、无 arXiv） |
