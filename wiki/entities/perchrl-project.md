@@ -14,6 +14,14 @@ sources:
 
 这是 STAR Group 对 PerchRL 项目的公开介绍节点，与 [论文详情](./paper-perchrl-2606-03441.md) 分开：此页记录项目门户展示的身份、对外材料和成熟度；方法、消融、实验数据及限制以论文节点为主，避免把同一份摘要复制成第二篇“论文”。
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 本项目中的含义 |
+|---|---|---|
+| RL | Reinforcement Learning | 感知与飞行控制策略的学习框架 |
+| FOV | Field of View | 机载相机的有限视场 |
+| CoRL | Conference on Robot Learning | 页面标注的投稿会议 |
+
 ## 项目身份
 
 | 字段 | 内容 |
@@ -35,8 +43,14 @@ sources:
 - arXiv v3 作者名单含 Yitao Zeng；项目/出版物列表的公开作者行可能滞后于 v3。以指定论文版本元数据为论文作者来源。
 - 该页面没有给出独立的项目仓库、权重下载、安装步骤、训练配置或数据集链接；因此本项目节点不提供臆造的运行命令。
 
-## 相关详情
+## 关联页面
 
 - [论文与方法、实验、限制](./paper-perchrl-2606-03441.md)
 - [官方项目页来源归档](../../sources/sites/robotics_star_perchrl.md)
 - [arXiv 论文来源归档](../../sources/papers/perchrl_arxiv_2606_03441_v3.md)
+
+
+## 参考来源
+
+- [STAR Group 项目页来源归档](../../sources/sites/robotics_star_perchrl.md) — 项目介绍与公开媒体入口
+- [arXiv v3 论文来源归档](../../sources/papers/perchrl_arxiv_2606_03441_v3.md) — 论文技术细节和实验
