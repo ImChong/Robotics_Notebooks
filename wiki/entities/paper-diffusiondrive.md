@@ -9,7 +9,7 @@ tags:
   - navsim
   - hust
 status: complete
-updated: 2026-09-15
+updated: 2026-10-05
 venue: "CVPR 2025"
 arxiv: "2411.15139"
 code: https://github.com/hustvl/DiffusionDrive
@@ -21,6 +21,7 @@ related:
   - ./paper-s-squared-vla.md
   - ./paper-m4world.md
   - ../methods/vla.md
+  - ./paper-foredrive.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/papers/e2e_ad_diffusiondrive.md
@@ -118,6 +119,7 @@ sequenceDiagram
 | 标准扩散策略 | 质量高但太慢 | 无法实时 |
 | [S²-VLA](./paper-s-squared-vla.md) | 双流 VLA、纯相机 | PDMS 接近但范式不同 |
 | [VAD](./paper-vad-vectorized-scene.md) | 回归式规划 | 多模态意图弱 |
+| [ForeDrive](./paper-foredrive.md) | 同为 HUST 的 DiT 轨迹扩散规划，额外接入 JEPA 式多时域潜在未来与 TAB 注意力偏置 | NAVSIM v1 89.9 PDMS（匹配 current-only Base 88.9）；单卡 H20 约 17 FPS，暂未开源 |
 
 ## 工程实践
 
@@ -151,6 +153,7 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 - [S²-VLA](./paper-s-squared-vla.md) — 驾驶 VLA / NAVSIM 对照
 - [M⁴World](./paper-m4world.md) — 驾驶世界模型后继
+- [ForeDrive](./paper-foredrive.md) — 扩散轨迹规划 + 规划相关潜在世界模型
 - [VLA](../methods/vla.md)
 
 ## 参考来源

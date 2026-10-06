@@ -10,7 +10,7 @@ tags:
   - loco-manipulation
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-29
+updated: 2026-10-05
 arxiv: "2511.11218"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -20,6 +20,7 @@ related:
   - ../methods/table-tennis-strategy-skill-learning.md
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
   - ./paper-coordinated-badminton-skills-anymal.md
+  - ./paper-humanoid-badminton-dynamic-racket-skills.md
 sources:
   - ../../sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md
   - ../../sources/papers/humanoid_pnb_humanoid-whole-body-badminton-via-multi-stage-re.md
@@ -154,12 +155,13 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | 本文（Annealed RL） | LHBS | HITTER（乒乓球） |
-|------|------------------------|------|------------------|
-| **运动先验** | **无** | MoCap → AMP | 依赖示范参考 |
-| **统一全身** | 单策略，无独立基座位姿命令 | 四阶段模仿到交互 | 分层规划 + 全身控制 |
-| **预测** | EKF 或免预测 | 任务相关 | 模型规划 |
-| **开源** | 待发布 | 见 LHBS 页 | — |
+| 维度 | 本文（Annealed RL） | LHBS | Dynamic Racket Skills | HITTER（乒乓球） |
+|------|------------------------|------|------------------------|------------------|
+| **运动先验** | **无** | MoCap → AMP | 稀疏人类击球动作 + 任务随机化扩增 | 依赖示范参考 |
+| **统一全身** | 单策略，无独立基座位姿命令 | 四阶段模仿到交互 | 冻结低层控制器 + 潜技能高层规划 | 分层规划 + 全身控制 |
+| **预测** | EKF 或免预测 | 任务相关 | 规划器按来球状态出潜技能码 | 模型规划 |
+| **真机感知** | 动捕 | — | 动捕（球位 + 基座） | — |
+| **开源** | 待发布 | 见 LHBS 页 | 未见代码/权重 | — |
 
 ## 实验与评测
 
@@ -189,7 +191,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 羽毛球姊妹：[LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) · [ETH ANYmal 四足（Sci. Rob.）](./paper-coordinated-badminton-skills-anymal.md)
+- 羽毛球姊妹：[LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) · [Humanoid Badminton（Dynamic Racket Skills，CoRL 2026）](./paper-humanoid-badminton-dynamic-racket-skills.md) — 有限人类动作扩增 + 潜技能规划，与本文「无动作先验」相对 · [ETH ANYmal 四足（Sci. Rob.）](./paper-coordinated-badminton-skills-anymal.md)
 - 任务：[loco-manipulation](../tasks/loco-manipulation.md)
 - 乒乓球方法：[PhysicsPingPong / table-tennis](../methods/table-tennis-strategy-skill-learning.md)
 - 纵深：[人形足球 Stage 5](../../roadmap/depth-humanoid-soccer.md)、[人形拳击纵深](../../roadmap/depth-humanoid-boxing.md)

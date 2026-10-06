@@ -8,7 +8,7 @@ tags:
   - world-labs
   - shanghai-ai-lab
 status: complete
-updated: 2026-09-15
+updated: 2026-10-05
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
   - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
@@ -24,11 +24,13 @@ related:
   - ../methods/vla.md
   - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ../entities/paper-gwm-first-principles.md
+  - ../entities/paper-foredrive.md
 sources:
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/blogs/worldlabs_marble_world_model.md
+  - ../../sources/papers/foredrive_arxiv_2609_26299.md
 ---
 
 # 世界模型功能分类（Renderer / Simulator / Planner）
@@ -100,6 +102,8 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 加了表征轴：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
 
+驾驶侧样本：[ForeDrive](../entities/paper-foredrive.md) 落在 **latent-space × Planner** 格子——JEPA 式预测器只在表征空间预测多时域未来（不吐像素，故不是 Renderer），预测结果经 stop-gradient 喂给 DiT 轨迹规划器；规划梯度只塑造共享编码器、不改写预测器。它说明「预测得准」与「对规划有用」是两个合同，功能标签要按下游消费者判。
+
 ## 工程实践
 
 | 你在选什么 | 先问 | 本页读法 |
@@ -131,11 +135,13 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 - [Video-as-Simulation](./video-as-simulation.md) — 把视频预测器当引擎；功能轴上偏 Renderer，动作条件后才靠近 Simulator
 - [VLA](../methods/vla.md) / [Model-Based RL](../methods/model-based-rl.md) — Planner 的两条实现传统
 - [Cosmos 3](../entities/cosmos-3.md) — 同骨干切换 Renderer / Simulator / Policy 配置
+- [ForeDrive](../entities/paper-foredrive.md) — 自动驾驶 latent-space Planner 样本：潜在未来服务轨迹规划而非视频生成
 
 ## 参考来源
 
 - [World Labs / Fei-Fei：功能分类博客归档](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)
 - [A Definition and Roadmap for World Models 归档](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md)
+- [ForeDrive 论文归档](../../sources/papers/foredrive_arxiv_2609_26299.md) — 非对称梯度路由与规划相关潜在世界模型
 - [Marble GA 博客归档](../../sources/blogs/worldlabs_marble_world_model.md)
 
 ## 推荐继续阅读

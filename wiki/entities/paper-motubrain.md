@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-26
+updated: 2026-10-05
 arxiv: "2604.27792"
 related:
   - ./paper-gwm-first-principles.md
