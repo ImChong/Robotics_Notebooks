@@ -2,7 +2,7 @@
 type: entity
 tags: [uw, inverse-kinematics, manipulation, analytical-ik, python, open-source, ros]
 status: complete
-updated: 2026-08-09
+updated: 2026-10-06
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -77,7 +77,7 @@ flowchart LR
 | **IKFast** | 解析 codegen | 全部（成功生成时） | 经典 Pieper / 球腕 7R lock | 现代 sympy 下非 Pieper 易失败 |
 | **MINK / TracIK** | 数值 | 单解/种子 | 任意 URDF 几何 | 无分支枚举；FK 精度依赖迭代容差 |
 | **cuRobo** | GPU 数值 IK + 规划 | 并行多解探索 | 无碰撞 IK + 轨迹优化 | 非「全部分支」语义；偏规划栈 |
-| **[Dynibo](./dynibo.md)** | 数值 DLS（Rust 核心） | 单解/种子 | 树状 URDF 运行时 + 零分配 FK/RNEA 同库 | 无分支枚举；早期 v0.1 |
+| **[Dynibo](./dynibo.md)** | 固定基数值 DLS（Rust 核心） | 单解/种子依赖 | 固定/浮动基运动学与动力学；含 RNEA 和 ABA | 无解析多分支枚举；当前上游 v0.5.1 |
 
 ## 源码运行时序图
 
@@ -284,7 +284,7 @@ classDiagram
 - [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；ssik 可作 IK 插件或外部求解器对照
 - [cuRobo](./curobo.md) — GPU 并行 **无碰撞 IK + 轨迹优化**；解析分支枚举与数值规划可分层组合
 - [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 动力学/WBC 栈中的 **数值 IK** 示例；与 ssik **解析臂 IK** 互补
-- [Dynibo](./dynibo.md) — Rust 树状 URDF 上的 **DLS 数值 IK** + FK/RNEA；与 ssik 解析全分支互补
+- [Dynibo](./dynibo.md) — Rust 树状 URDF 上的 **固定基 DLS 数值 IK**；也支持浮动基动力学，与 ssik 解析全分支互补
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 多 IK 种子服务非凸轨迹优化
 
 ## 参考来源

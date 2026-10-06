@@ -3,7 +3,7 @@ type: query
 tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: stable
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
-updated: 2026-09-15
+updated: 2026-10-06
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
@@ -204,7 +204,7 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 - [robot_descriptions.py](../entities/robot-descriptions-py.md) — `loaders.pinocchio` 按名下载 URDF
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $Y_{\mathrm{rb}}$ 之外怎么拼 $I_a$/摩擦列
-- [Dynibo](../entities/dynibo.md) — Rust 轻量 FK/RNEA/DLS-IK；以 Pinocchio 为 oracle 的对照库
+- [Dynibo](../entities/dynibo.md) — Rust 轻量多语言 FK/Jacobian、RNEA/ABA 与 DLS-IK；以 Pinocchio 为 oracle 的对照库
 - [WBC Implementation Guide](./wbc-implementation-guide.md) — 基于 Pinocchio 的完整 WBC 实现
 - [TSID](../concepts/tsid.md) — TSID 框架使用 Pinocchio 作为底层引擎
 - [重力补偿](../concepts/gravity-compensation.md) — `computeGeneralizedGravity` / `computeStaticTorque`
