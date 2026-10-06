@@ -47,7 +47,7 @@ flowchart TB
 
 这项工作不是 action model：论文没有给出可供机器人执行的关节/末端动作策略。它更适合视为视觉语言语义表征路线的一种 JEPA 实例。
 
-## 关联工作与来源
+## 参考来源
 
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 视频自监督表征工作
 - [LeJEPA](./paper-lejepa.md) — 通过 SIGReg 约束 embedding 的 JEPA 配方

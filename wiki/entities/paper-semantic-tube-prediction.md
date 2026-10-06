@@ -55,7 +55,7 @@ STP 的“预测目标不只看表面 token，还约束内部状态轨迹”的�
 - NL-RX-SYNTH 的数据效率结论不等于真实语料、机器人视频或行动序列上的提升。
 - 本文引用的量化结果均以原论文指标和数据为准。
 
-## 关联页面与来源
+## 参考来源
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)
 - [LeJEPA](./paper-lejepa.md)

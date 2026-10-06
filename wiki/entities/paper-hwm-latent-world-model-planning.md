@@ -62,7 +62,7 @@ HWM 是模型预测控制和学习式状态表示结合的规划栈，不是 VLA
 
 论文的真机验证对象是 Franka，不是人形机器人。迁移到 Unitree G1 需要重新验证浮动基座、接触动力学、多关节动作空间与控制延迟，不能直接沿用机械臂成功率。
 
-## 关联论文与来源
+## 参考来源
 
 - [LeWorldModel](./paper-lewm.md) — action-conditioned latent dynamics 代表工作
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 视频特征 backbone 相关工作

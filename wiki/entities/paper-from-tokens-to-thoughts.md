@@ -44,7 +44,7 @@ flowchart TB
 
 该论文在 2026-08-19 更新至 v7。具体实验应以相应版本和原文数据为准。
 
-## 关联页面与来源
+## 参考来源
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)
 - [Semantic Tube Prediction](./paper-semantic-tube-prediction.md)

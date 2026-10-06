@@ -59,7 +59,7 @@ flowchart TB
 - [LeWorldModel](./paper-lewm.md) 进一步学习像素到未来 latent 的 action-conditioned dynamics。
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md) 将本论文用于说明 latent 几何与规划的关系。
 
-## 来源
+## 参考来源
 
 - [论文来源归档](../../sources/papers/when_does_lejepa_learn_world_model_arxiv_2605_26379.md)
 - [arXiv:2605.26379](https://arxiv.org/abs/2605.26379)

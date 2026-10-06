@@ -89,7 +89,7 @@ flowchart TB
 
 原文是 VideoDB Labs 的观点型技术文章，提出“从语言模型转向 world model”的架构判断，并串联多篇论文。文中对 LLM/VLA 的强判断属于作者观点；本文保留其问题框架，但不把预测当作研究共识。各论文页面分别记录原始实验、假设和限制。
 
-## 来源与关联页面
+## 参考来源
 
 - [VideoDB 原文归档](../../sources/blogs/videodb_jepa_from_language_models_to_world_models_2026-07-07.md)
 - 新建论文来源见上方关联工作页；LeJEPA、LeWorldModel 与 V-JEPA 2.1 复用站内已有详情页。
