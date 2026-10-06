@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
@@ -19,6 +19,10 @@ related:
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
   - ../entities/paper-tactilestep.md
+  - ../entities/paper-anytouch.md
+  - ../entities/project-anytouch.md
+  - ../entities/paper-anytouch2.md
+  - ../entities/project-anytouch2.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -29,6 +33,8 @@ sources:
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/repos/awesome-touch.md
   - ../../sources/papers/tactilestep_arxiv_2609_28959.md
+  - ../../sources/papers/anytouch_arxiv_2502_12191.md
+  - ../../sources/papers/anytouch2_arxiv_2602_09617.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -82,9 +88,12 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为奖励信号 (Reward Signal)**：在强化学习中，将“维持特定的法向压力范围”且“切向力不超过摩擦锥（Friction Cone）”作为稠密奖励，引导策略学会稳定的抓取。
 - **作为预测式辅助目标 (Predictive Auxiliary Target)**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) 在人形机器人行为克隆中预测未来手部力和触觉 latent，使触觉信号不只是输入，而是塑造接触感知表示的训练目标。
 - **作为抓取末段伺服输入**：[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) 把多指压阻触觉图做成 Siamese 目标条件策略，用腕部 regrasp 闭环精修薄板/圆盘/细杆的局部位姿。
+- **作为跨传感器共享表征**：[AnyTouch](../entities/paper-anytouch.md) 将静态图像与动态视频、文本语义和跨传感器配对结合；[AnyTouch 2](../entities/paper-anytouch2.md) 再以 ToucHD 动态数据和显式力变化目标扩展到动态触觉理解。两者是预训练表示工作，不应与可执行策略混为一谈；对应软件与数据入口分别见 [AnyTouch 项目](../entities/project-anytouch.md) 和 [AnyTouch 2 项目](../entities/project-anytouch2.md)。
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
+- [AnyTouch（论文）](../entities/paper-anytouch.md) 与 [项目](../entities/project-anytouch.md) — TacQuad 与静态–动态跨传感器表示
+- [AnyTouch 2（论文）](../entities/paper-anytouch2.md) 与 [项目](../entities/project-anytouch2.md) — ToucHD 与动态触觉/力表征
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 触觉是四层闭环链 **① 接触感知/估计层** 的关键模态
 - [接触丰富操作 (Contact-Rich Manipulation)](./contact-rich-manipulation.md)
 - [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)
@@ -115,4 +124,5 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统
 - [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
+- [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机
