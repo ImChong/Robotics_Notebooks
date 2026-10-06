@@ -41,6 +41,8 @@
 | [x] [rl_pd_action_interface_locomotion.md](papers/rl_pd_action_interface_locomotion.md) | RL+PD 动作接口与增益设计：Digit / Cassie / 四足经典 / 可变刚度 / 扭矩控制等 10 篇索引 |
 | [x] [sds_quadruped_arxiv_2410_11571.md](papers/sds_quadruped_arxiv_2410_11571.md) | SDS：四足单视频 VLM→奖励 + IsaacGym 闭环进化（arXiv:2410.11571），E-SDS 前序方法摘录 |
 | [x] [smp.md](papers/smp.md) | SMP：可复用 score-matching 运动先验（arXiv:2512.03028，SDS/ESM/GSI、100 风格组合、G1 真机）完整摘录 |
+| [anytouch_arxiv_2502_12191.md](papers/anytouch_arxiv_2502_12191.md) | AnyTouch：TacQuad + 静态/动态跨传感器视触觉表示（ICLR 2025，arXiv:2502.12191）论文来源归档与 wiki 映射 |
+| [anytouch2_arxiv_2602_09617.md](papers/anytouch2_arxiv_2602_09617.md) | AnyTouch 2：ToucHD + 动态光学触觉/力变化表示（ICLR 2026，arXiv:2602.09617）论文来源归档与 wiki 映射 |
 | [x] [sim2real.md](papers/sim2real.md) | Sim2Real ingest 摘要（DR/RMA/InEKF） |
 | [x] [rma_arxiv_2107_04034.md](papers/rma_arxiv_2107_04034.md) | RMA：四足快速运动自适应（RSS 2021，arXiv:2107.04034）特权 extrinsics + 历史适应模块；A1 零微调部署 |
 | [x] [spider_scalable_physics_informed_dexterous_retargeting.md](papers/spider_scalable_physics_informed_dexterous_retargeting.md) | SPIDER：并行物理仿真采样式重定向 + 课程式虚拟接触引导（arXiv:2511.09484）摘录与 wiki 映射 |
