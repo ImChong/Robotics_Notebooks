@@ -2,9 +2,10 @@
 type: entity
 tags: [software, unity, unity-technologies, game-engine, simulation, rendering, csharp, xr]
 status: complete
-updated: 2026-07-14
+updated: 2026-10-06
 related:
   - ./unreal-engine-5.md
+  - ./redot-engine.md
   - ./flightmare.md
   - ./airsim.md
   - ./mujoco.md
@@ -119,6 +120,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Redot Engine](./redot-engine.md) — 从 Godot 分叉的 MIT 许可 2D/3D 开源引擎，可对照跨平台编辑器与导出能力
 - [Unreal Engine 5](./unreal-engine-5.md) — 另一主流实时 3D 宿主
 - [Flightmare](./flightmare.md) — Unity 渲染四旋翼研究仿真
 - [AirSim](./airsim.md) — UE/Unity 视觉 UAV 仿真
