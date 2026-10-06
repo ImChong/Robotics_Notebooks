@@ -75,10 +75,13 @@ def test_home_entry_links_match_data_order() -> None:
     assert [("hidden" in attrs) for _, attrs in links] == [i >= 4 for i in range(len(links))]
 
 
-def test_hero_company_count_fallback_matches_data() -> None:
+def test_hero_company_count_uses_home_links_at_runtime() -> None:
+    """Hero 数字属于部署统计；新增入口时不要求 PR 重写历史 HTML 数字。"""
     html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     match = re.search(r'id="heroCompanyCount"[^>]*>(\d+)<', html)
-    assert match and int(match.group(1)) == len(DATA["companies"])
+    assert match and int(match.group(1)) > 0
+    script = (REPO_ROOT / "docs" / "main.js").read_text(encoding="utf-8")
+    assert "company: homeCompanyLinks.length || readHeroStatFallback(companyEl," in script
 
 
 def test_companies_are_ordered_by_founding_year() -> None:

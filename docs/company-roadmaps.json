@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -261,6 +261,26 @@
       ]
     },
     {
+      "key": "roboparty",
+      "name": "萝博派对 RoboParty",
+      "founded_year": 2025,
+      "founded_source": "https://github.com/Roboparty/roboto_origin/blob/main/README_cn.md",
+      "founded_note": "官方中文 README 确认成立于 2025-02-21；不用门户 JSON-LD 的冲突年份。",
+      "lenses": ["humanoid", "wbc", "wam"],
+      "summary": "Roboto Origin 整机开源 → Party OS 研发底座：重定向、监督跟踪与无监督运控并行，延伸到 INTACT 世界模型；VLA / Agentic Humanoid 仍是路线规划。",
+      "official": "https://github.com/Roboparty/Party_OS",
+      "nodes": [
+        { "date": "2026-01", "title": "Roboto Origin 全栈开源", "track": "整机 / 工程", "desc": "结构、电气、固件、模型描述、训练与 ROS 2 部署；快照聚合仓导向各模块开发仓。", "id": "entity-roboto-origin", "url": "https://github.com/Roboparty/roboto_origin" },
+        { "date": "2026-07", "title": "RoboParty Lab / Party OS", "track": "研发底座", "desc": "Lab 成立与首批工具链发布阶段：串联数据、运控和部署，并规划感知、全身操作与 Agent。", "id": "entity-party-os", "url": "https://github.com/Roboparty/Party_OS" },
+        { "date": "2026-07", "title": "INTACT", "track": "世界模型", "desc": "Lab 联署的意图→动作 JEPA；上游已发布训练、评测和权重入口，RoboParty fork 仍为研究预览。", "id": "entity-paper-intact", "url": "https://zju3dv.github.io/INTACT-JEPA/" },
+        { "date": "", "title": "Know-How / 完整研发文档", "track": "技术知识库", "desc": "运动控制 Know-How 与整机研发文档的阅读入口；本库笔记复用技术地图，已核查目录与部分正文，新增章节未确认。", "id": "wiki-overview-roboparty-lab-party-os-technology-map", "url": "https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87", "date_note": "持续维护文档；未确认首发日期，也不以本次核查日代替章节发布日期。" },
+        { "date": "", "title": "Human-Humanoid Tools / hhtools", "track": "数据 / 重定向", "desc": "人体→人形与机器人→机器人动作迁移、数据处理和可视化；外部人体模型资产单独获取。", "id": "entity-human-humanoid-tools", "url": "https://github.com/Roboparty/human-humanoid-tools", "date_note": "持续维护工具，具体版本首发日期未确认；属于 Lab 首批工具链。" },
+        { "date": "", "title": "MimicLite", "track": "监督运动跟踪", "desc": "训练、评测、数据转换与 ONNX / G1 部署入口；当前公开 PPO / ROA 策略，组件及数据许可分别核查。", "id": "entity-mimiclite", "url": "https://github.com/Roboparty/MimicLite", "date_note": "持续维护工具；当前 PPO / ROA 发布不沿用首批工具链的性能口径或日期。" },
+        { "date": "", "title": "UFO", "track": "无监督控制", "desc": "MJLab 上的 FB / TeCH 训练、动作数据导入、tracking / goal / reward 推理及 G1 真机遥操。", "id": "entity-roboparty-ufo", "url": "https://github.com/Roboparty/UFO", "date_note": "持续维护框架，未确认当前版本首发日期；属于 Lab 首批工具链。" },
+        { "date": "", "title": "TeCH", "track": "全身控制 / 表征", "desc": "时间距离与对比表征学习的人形运控方法；实现集成在 UFO，与 FB 路线形成对照。", "id": "entity-paper-tech-humanoid-control", "url": "https://lab.roboparty.com/outputs/tech", "date_note": "官方成果入口未确认单一首发日期，不以入库日代替。" }
+      ]
+    },
+    {
       "key": "deltai",
       "name": "德塔智能 Delta Intelligence",
       "founded_year": 2026,
@@ -289,4 +309,3 @@
   ],
   "date_policy": "日期优先对应原始技术发布；明确标注的工程文章/阶段地图按该事件月份；空日期由 date_note 说明，不用入库日代替首发日。"
 }
-

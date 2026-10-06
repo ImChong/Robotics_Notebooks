@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
@@ -26,7 +26,7 @@ sources:
   - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/sites/lab_roboparty_com.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
-summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四槽语法把物理意图与部署意图映射为动作律，条件均值作无搜索策略；LeWM 四任务 Direct 2.9–5.5 ms、宏约 95%（相对 CEM 约 300× 更快）；规范仓+Roboparty 镜像，训练代码 Coming Soon。"
+summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四槽语法把物理意图与部署意图映射为动作律，条件均值作无搜索策略；历史评测 Direct 2.9–5.5 ms、宏约 95%；规范仓已发布训练、评测和权重入口，RoboParty fork 仍为研究预览。"
 ---
 
 # INTACT（Search-Free Intent-to-Action World Model）
@@ -65,7 +65,7 @@ summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四
 | **评测** | 官方 LeWM 四任务 |
 | **Direct 宏 SR** | 约 **95.33%**（一 epoch，零搜索） |
 | **推理延迟** | **2.9–5.5 ms**（Direct；相对宽搜 CEM 约 **300×**） |
-| **开源** | **部分开源**：规范仓 + RoboParty fork 文档已上；训练/权重 **Coming Soon** |
+| **开源** | 2026-10-06：规范仓训练、评测与权重入口已公开；RoboParty fork 仍是研究预览；数据复用 LeWM，须单独获取 |
 
 ## 核心原理
 
@@ -104,7 +104,34 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（可运行训练/推理入口尚未发布）。** 截至 2026-07-30：规范仓 `zju3dv/INTACT-JEPA` 与镜像 `Roboparty/INTACT-JEPA` 提供方法/结果/复现文档与 MIT LICENSE，但 `docs/RELEASE.md` 将训练代码与 checkpoint 标为 Stage 2+ **Coming Soon**。仓库存在后应补：`train` → 编码/双意图 NLL → `Direct` 评测 →（可选）Guarded CEM 的 `sequenceDiagram`。
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 用户与本地 LeWM 数据
+  participant Train as scripts/train.sh 或 train_multitask.sh
+  participant Model as 共享编码器与意图动作预测器
+  participant Checkpoint as 训练产物或公开 checkpoint
+  participant Eval as scripts/eval.sh
+  participant Env as LeWM 任务环境
+  User->>Train: 配置数据路径与训练参数（可选 smoke）
+  Train->>Model: 批次观测、动作、未来目标
+  Model-->>Train: 前向 JEPA 与双意图似然损失
+  Train->>Checkpoint: 保存模型与运行配置
+  User->>Eval: 选择任务、权重及 direct / cem / guarded_a
+  Checkpoint->>Eval: 加载匹配版本的模型
+  loop 闭环评测
+    Env->>Eval: 当前观测与实际执行历史
+    Eval->>Model: 编码当前状态与目标意图
+    Model-->>Eval: Direct 动作块
+    opt guarded_a
+      Eval->>Model: 对 Direct 附近候选做局部验证
+      Model-->>Eval: 筛选后的动作块
+    end
+    Eval->>Env: 执行动作并记录评测结果
+  end
+```
+
+复现入口对齐[规范仓归档](../../sources/repos/intact-jepa.md)：先检查安装与数据，再跑 smoke；论文 checkpoint 使用 `paper_runtime/` 兼容路径。图中为 Direct / Guarded 主路径；`cem` 则关闭动作头，用前向模型搜索，不能混同零搜索推理。
 
 ## 工程实践
 
@@ -115,9 +142,11 @@ flowchart TB
 | Direct | 默认部署：取条件均值，**零候选** |
 | Guarded | 384 序列局部 CEM（相对 9000 约 **23.44×** 少） |
 | 诊断 | predicted–expert action-family kNN 应与 Direct SR 同向（\(r\sim0.95\)） |
-| 复现现状 | **等官方 Stage 2 代码**；规范仓锚定版本，RoboParty fork 仅作 Lab 导航 |
+| 复现现状 | 2026-10-06：上游已提供训练/评测/权重入口；固定源码与 manifest revision，RoboParty fork 仅作 Lab 导航 |
 
 ## 实验与评测
+
+下列数值保留原论文与 2026-07 归档口径。2026-10-06 上游 README 已有后续实现与评测记录；应按具体 checkpoint、源码和协议核对，不把不同版本成绩直接拼接或视作本次实测。
 
 - **单任务 Direct：** 四任务 **85.78% / 100% / 97.67% / 97.89%**；宏约 **95.33%**。
 - **Guarded：** 宏 **96.86%**，并相对纯 CEM **+16.00 pp**（采样更少）。
@@ -134,7 +163,7 @@ flowchart TB
 3. **真影响：Guarded 可选** — 小预算局部搜索锦上添花，而非主路径。
 4. **次要代价：示范支撑上的动作商** — 分布外意图族无保证。
 5. **部署读法：先看 Direct，再决定是否开 Guarded** — 带宽紧时默认关搜索。
-6. **工程读法：代码 Coming Soon** — 当前适合理论/指标选型；完整复现等 Stage 2；镜像勿当独立实现。
+6. **工程读法：以规范仓复现** — 当前已有训练、评测与权重入口；先 smoke、再按版本匹配协议；镜像勿当独立实现。
 
 ## 与其他工作对比
 
