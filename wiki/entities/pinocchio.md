@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
@@ -63,7 +63,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 
 ## 与 Dynibo 的对照
 
-[Dynibo](./dynibo.md)（Rust，MIT，v0.1.0）聚焦 **树状 URDF + Workspace 零分配** 的常用子集（FK / Jacobian / DLS-IK / 重力 / RNEA），并以 Pinocchio 作 **oracle 与 Criterion 对照**。需要解析导数、浮动基质心动量、ABA/CRBA 或 Crocoddyl 生态时仍选 Pinocchio；只需轻量多语言内核时可评估 Dynibo。
+[Dynibo](./dynibo.md) 当前支持固定/浮动基座、FK / Jacobian 与导数、固定基 DLS-IK、质量矩阵、重力、RNEA 逆动力学和 ABA 正动力学，并以 Pinocchio 作 **oracle 与性能对照**。需要更广的解析导数、质心动力学及 Crocoddyl 等下游生态时仍选 Pinocchio；只需轻量 Rust 核心和多语言绑定时可评估 Dynibo。
 
 ## 动力学回归矩阵
 
@@ -76,7 +76,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
 - [robot_descriptions.py](./robot-descriptions-py.md) — 190+ 开源 URDF/MJCF 的 Pinocchio loader
-- [Dynibo](./dynibo.md) — Rust 轻量 FK/RNEA/数值 IK，Pinocchio oracle 对照
+- [Dynibo](./dynibo.md) — Rust 轻量多语言 FK/Jacobian、RNEA/ABA 与 DLS-IK，Pinocchio oracle 对照
 - [正向运动学](../formalizations/forward-kinematics.md) — URDF 树 FK 的教学对照
 - [雅可比矩阵](../formalizations/robot-jacobian.md) — `computeFrameJacobian` 几何雅可比
 - [重力补偿](../concepts/gravity-compensation.md) — `computeGeneralizedGravity` / `computeStaticTorque`
