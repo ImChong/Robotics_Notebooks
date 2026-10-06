@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, mujoco, isaac-lab, genesis, mjlab, soft-body, sim2real, physics-engine, reinforcement-learning]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
@@ -17,10 +17,12 @@ related:
   - ../entities/mujoco-playground.md
   - ../entities/genesis-sim.md
   - ../entities/newton-physics.md
+  - ../entities/mandarobotics-physics-engine-comparison.md
   - ../entities/humanoid-motion-intelligence.md
   - ../formalizations/ode-solving-methods.md
 sources:
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
+  - ../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md
 summary: "机器人仿真按物理计算、场景平台、学习框架三层分工；选型须区分吞吐量与单步延迟、软接触与软体建模，并用 Sim2Real 三问与四问清单衡量真机价值而非峰值 FPS。"
 ---
 
@@ -138,6 +140,10 @@ flowchart TB
 
 **排错与搭建时间计入平台成本。** 可共享资产：校准模型、可复现 train/deploy 配置、真机失败固定测试用例。
 
+### 跨引擎验证示例：成功率不是全部
+
+[Manda Robotics 的四引擎比较](../entities/mandarobotics-physics-engine-comparison.md)提供了一个具体例子：同一 Panda 和共同控制器下，各引擎可在一些粗任务上取得相同成败，却出现不同接触力、物体路径与 tracking error；软体表现更依赖求解器和耦合实现。它没有真机 ground truth，说明的是配置差异和评测敏感性，而不是引擎精度名次。换后端时，应先核对导入质量/惯量/碰撞与接触族，再联合观察成功、轨迹、接触负载和重复性。
+
 ### 按任务选入口（简表）
 
 | 任务类型 | 优先关注 |
@@ -157,6 +163,8 @@ flowchart TB
 - **本文是策展框架，非性能榜单** — 数值与版本以各项目官方为准。
 
 ## 关联页面
+
+- [Manda Robotics：机器人仿真物理引擎比较](../entities/mandarobotics-physics-engine-comparison.md) — matched-scene 对照与结果边界
 
 - [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md) — 六层互补视角（大平台 / sim2sim / 任务入口 / 异构运行时 / 连接器 / 闭环评估）
 - [仿真器选型指南（locomotion）](../queries/simulator-selection-guide.md)

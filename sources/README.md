@@ -365,6 +365,7 @@
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [mandarobotics_comparing_physics_engines_2026-10-05.md](blogs/mandarobotics_comparing_physics_engines_2026-10-05.md) | Manda Robotics：PhysX / Newton-MuJoCo-Warp / MuJoCo CPU / Genesis 匹配场景比较（2026-10-05） |
 | [x] [egm_themoonlight_literature_review_2512_19043.md](blogs/egm_themoonlight_literature_review_2512_19043.md) | Moonlight 社区英文导读：EGM（arXiv:2512.19043）结构化摘要（非官方） |
 | [x] [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
 | [x] [ted_xiao_embodied_three_eras_primary_refs.md](blogs/ted_xiao_embodied_three_eras_primary_refs.md) | Ted Xiao 访谈编译稿涉及话题的一手文献索引（论文 / 官方博客 / 技术报告） |
