@@ -34,6 +34,10 @@ related:
   - ../entities/paper-vt-wam-visuotactile-contact-rich.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
+  - ../entities/paper-anytouch.md
+  - ../entities/project-anytouch.md
+  - ../entities/paper-anytouch2.md
+  - ../entities/project-anytouch2.md
   - ../entities/humantouch.md
 sources:
   - ../../sources/papers/perception.md
@@ -43,6 +47,8 @@ sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/papers/anytouch_arxiv_2502_12191.md
+  - ../../sources/papers/anytouch2_arxiv_2602_09617.md
   - ../../sources/sites/humantouch-xsparkai.md
 summary: "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
 ---
@@ -157,6 +163,10 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 
 - **与注意力融合的差别：** 不是「多拼触觉 token」，而是先统一物理量、再决定预测 vs 观测何时进动作头。
 - **开源提醒：** OpenNeoData（5k h）已放；模型代码/权重截至 2026-07-26 仍为占位（Roadmap 写 7/31）。
+
+### 跨传感器表示预训练
+
+[**AnyTouch**](../entities/paper-anytouch.md) 学习跨视觉触觉传感器的静态–动态共享表示，[**AnyTouch 2**](../entities/paper-anytouch2.md) 将监督扩展到多层级动态接触与力变化。它们的训练关注点是让触觉表示可跨传感器/任务迁移，和本页讨论的接触阶段多模态策略融合相邻但不同。对应的项目资产分列于 [AnyTouch](../entities/project-anytouch.md) 与 [AnyTouch 2](../entities/project-anytouch2.md) 项目页。
 
 ## 接触瞬间为什么难
 
