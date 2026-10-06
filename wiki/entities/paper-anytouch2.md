@@ -28,11 +28,19 @@ sources:
 | 论文 | [arXiv:2602.09617](https://arxiv.org/abs/2602.09617) · [ICLR 论文页](https://proceedings.iclr.cc/paper_files/paper/2026/hash/073c8584ef86bee26fe9d639ec648e28-Abstract-Conference.html) |
 | 项目与代码 | 独立的[项目详情页](./project-anytouch2.md) |
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 含义 |
+|---|---|---|
+| MAE | Masked Autoencoder | 掩码自编码器 |
+| ToucHD | Tactile Understanding through Contact Hierarchy Dataset | AnyTouch 2 的动态触觉数据集 |
+| RMSE | Root Mean Squared Error | 均方根误差 |
+
 ## ToucHD：由受控接触到真实操作
 
 ToucHD 汇总 2,426,174 个触觉样本，划分为 Sim（1,118,896）、Mani（584,842）和 Force（722,436）。Sim 包含五类传感器、六种原子动作和 1,043 个物体；Mani 汇总 46 项真实操作任务；Force 配对触觉观测与接触力。数据金字塔涵盖不同动态层级：受控按压、指定滑动/旋转、预设接触动作、真实操作以及力监督。不同子集的采集协议并不相同。
 
-## 表征学习目标
+## 方法：表征学习目标
 
 1. **时序视频掩码建模**：重建触觉视频帧，并学习帧间变化。
 2. **语义和匹配监督**：对齐语义描述、同物体数据及跨传感器样本。
@@ -56,13 +64,22 @@ flowchart LR
   R --> E["静态/动态基准与操作评估"]
 ```
 
-## 与 AnyTouch 前作
+## 对比：AnyTouch 前作与 Sparsh
 
 [AnyTouch（ICLR 2025）](./paper-anytouch.md)聚焦静态–动态统一表示、TacQuad 和文本锚定多模态对齐。AnyTouch 2 把监督范围拓展到更大规模动态接触层级和显式力变化目标。对应的软件实现、数据集和权重入口另列在[AnyTouch 2 项目页](./project-anytouch2.md)。
 
-## 入口
+## 结论
+
+AnyTouch 2 以更丰富的动态接触数据和力变化监督推进通用光学触觉表征，评测覆盖静态、动态、跨传感器与真实操作情境。仓库资产仍不等于完整真机部署栈，读取分数时应保留每个任务、传感器和输入设定。
+
+## 关联页面
 
 - [AnyTouch 2 项目详情](./project-anytouch2.md)
 - [AnyTouch 论文与项目](./paper-anytouch.md) · [项目实现](./project-anytouch.md)
 - [触觉感知](../concepts/tactile-sensing.md) · [视触觉融合](../concepts/visuo-tactile-fusion.md)
-- [论文来源摘录](../../sources/papers/anytouch2_arxiv_2602_09617.md)
+- [Sparsh](./paper-sparsh.md)
+
+## 参考来源
+
+- [论文来源摘录：AnyTouch 2](../../sources/papers/anytouch2_arxiv_2602_09617.md)
+- [arXiv](https://arxiv.org/abs/2602.09617) · [ICLR 2026](https://proceedings.iclr.cc/paper_files/paper/2026/hash/073c8584ef86bee26fe9d639ec648e28-Abstract-Conference.html)
