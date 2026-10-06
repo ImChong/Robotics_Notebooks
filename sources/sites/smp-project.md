@@ -7,7 +7,7 @@
 - **官方代码：** <https://github.com/xbpeng/MimicKit>（`docs/README_SMP.md`）— 归档见 [`sources/repos/mimickit.md`](../repos/mimickit.md)
 - **G1 复现代码：** <https://github.com/senlanke/mimic> — 归档见 [`sources/repos/senlanke_mimic.md`](../repos/senlanke_mimic.md)（2026-08-29 起同仓还挂 CMoE 移植与未完成 AME）
 - **入库日期：** 2026-08-25
-- **复核日期：** 2026-08-29
+- **复核日期：** 2026-10-06
 
 ## 一句话摘要
 
@@ -15,7 +15,8 @@ SFU / NVIDIA 等团队的 **Score-Matching Motion Priors (SMP)** 官方项目页
 
 ## 公开信息要点（截至入库日）
 
-- **机构：** Simon Fraser University、Sony Interactive Entertainment、Stanford University、Snap Inc.、National Research Council Canada、NVIDIA（共同一作 Yuxuan Mu、Ziyu Zhang、Yi Shi、Dun Yang）。
+- **机构：** Simon Fraser University、Sony Interactive Entertainment、Stanford University、Snap Inc.、National Research Council Canada、NVIDIA。
+- **作者：** 共 12 位；官网标注 Yuxuan Mu、Ziyu Zhang、Yi Shi 为共同一作。Dun Yang 列为 SFU 作者，但不在共同一作星号标注内。
 - **页首卖点：**
   - **Reusable** — 单一冻结扩散模型跨 locomotion / steering / dodgeball / zombie-walk 等多任务作奖励
   - **Modular** — 先验与策略解耦训练，下游 RL **无需访问原始 MoCap**

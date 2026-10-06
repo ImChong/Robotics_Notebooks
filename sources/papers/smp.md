@@ -15,9 +15,9 @@
 - **入库日期：** 2026-04-28（初版）；2026-05-27（扩写完整摘录）
 - **一句话说明：** 在无任务耦合的 MoCap 上预训练**运动扩散模型**并冻结，用 **SDS** 把 ε-预测误差变成可复用的 **SMP 奖励**；下游 RL **不再需要原始数据集**，并可经 **风格条件 / 组合** 派生百种风格先验，质量对标 **AMP** 类对抗模仿。
 
-## 作者与机构（以 arXiv v3 为准）
+## 作者与机构
 
-Yuxuan Mu、Ziyu Zhang、Yi Shi、Dun Yang（Simon Fraser University）；Minami Matsumoto、Kotaro Imamura、Michael Taylor（Sony Interactive Entertainment）；Guy Tevet（Stanford）；Chuan Guo（Snap）；Chang Shu、Pengcheng Xi（National Research Council Canada）；**Xue Bin Peng**（SFU / NVIDIA）。
+项目页列出 12 位作者，并以星号标注 Yuxuan Mu、Ziyu Zhang、Yi Shi 为共同一作。作者与机构对应为：Yuxuan Mu、Ziyu Zhang、Yi Shi、Dun Yang（Simon Fraser University）；Minami Matsumoto、Kotaro Imamura、Michael Taylor（Sony Interactive Entertainment）；Guy Tevet（Stanford University）；Chuan Guo（Snap Inc.）；Chang Shu、Pengcheng Xi（National Research Council Canada）；Xue Bin Peng（Simon Fraser University / NVIDIA）。
 
 ## 摘要级要点
 

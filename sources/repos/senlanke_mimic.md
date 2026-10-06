@@ -8,7 +8,7 @@
 - **默认分支：** `master`
 - **机构：** 清华大学 SUZ 课题组课程项目向移植（作者 GitHub: senlanke；SMP 同系 [SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp)）
 - **入库日期：** 2026-08-25
-- **复核日期：** 2026-08-29
+- **复核日期：** 2026-10-06
 - **一句话说明：** 在 **mjlab** 上把三条人形运动控制线接到 **Unitree G1**：SMP（完整）、CMoE（移植完成）、AME（未完成/未验证）。共享 `uv` 安装与 `scripts/train.py` / `play.py`。非任一上游官方实现。
 - **许可：** 根目录无 SPDX；移植的 CMoE 代码保留上游 BSD-3-Clause（`LICENSES/CMoE.txt` + `NOTICE`）；其余须遵守各上游与数据集许可。
 - **沉淀到 wiki：** 是 → [`wiki/entities/smp-g1-mjlab.md`](../../wiki/entities/smp-g1-mjlab.md)

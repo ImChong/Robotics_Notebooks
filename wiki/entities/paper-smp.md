@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-prior, diffusion, score-matching, amp, sfu, nvidia, sony, stanford, snap, unitree-g1, siggraph]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2512.03028"
 venue: "ACM TOG (SIGGRAPH 2026)"
 related:
@@ -60,8 +60,8 @@ summary: "SMP（arXiv:2512.03028，SIGGRAPH 2026）：预训练运动扩散模�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 西蒙菲莎大学（SFU）、英伟达（NVIDIA）、索尼（Sony）、斯坦福大学（Stanford）、斯纳普（Snap）等 |
-| **作者** | Yuxuan Mu、Ziyu Zhang、Yi Shi、Dun Yang（共同一作）等；通讯脉络含 **Xue Bin Peng** |
+| **机构** | 西蒙菲莎大学（SFU）、英伟达（NVIDIA）、索尼（Sony）、斯坦福大学（Stanford）、斯纳普（Snap）、加拿大国家研究委员会（NRC Canada） |
+| **作者** | 共 12 位；Yuxuan Mu、Ziyu Zhang、Yi Shi 为共同一作，另含 Dun Yang、Xue Bin Peng 等 |
 | **平台** | 仿真人形多任务；附录 **Unitree G1** 真机 |
 | **数据** | LaFAN1、100STYLE、人–物/人–场景交互 MoCap 等 |
 | **任务** | 速度跟踪、转向、落点、躲避球、搬运、楼梯、起身等 |
