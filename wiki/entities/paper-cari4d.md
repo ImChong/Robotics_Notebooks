@@ -21,6 +21,14 @@ sources:
 **论文：** [CARI4D: Category Agnostic 4D Reconstruction of Human-Object Interaction](https://arxiv.org/abs/2512.11988)  
 **会议：** CVPR 2026 camera-ready。作者来自 NVIDIA、University of Tübingen、Tübingen AI Center 与 Max Planck Institute for Informatics。
 
+## 英文缩写速查
+
+| 缩写 | 含义 |
+|---|---|
+| HOI | Human-Object Interaction，人–物交互 |
+| RGB | Red-Green-Blue，彩色图像 |
+| 4D | 三维空间随时间变化的人/物轨迹 |
+
 ## 研究问题与方法
 
 单目 RGB 视频缺少真实深度和已知物体模板，遮挡与接触又使逐帧人体/物体估计容易漂移。CARI4D 从普通单目视频恢复时间、空间一致且具有米制尺度的人体与刚体物体交互轨迹，并面向未见对象类别和野外视频泛化。
@@ -61,7 +69,19 @@ flowchart LR
 
 单目重建会受遮挡、初始化、分割、深度和对象网格质量影响；近似对称物体也可能造成姿态歧义。接触预测是几何/运动线索，不等价于接触力、摩擦或物理可行性。下游机器人部署需独立验证轨迹与接触，不能将重建输出直接当作安全控制命令。
 
-## 来源
+## 与其他工作对比
+
+| 路线 | 需要的先验 | 输出与边界 |
+|---|---|---|
+| 传统类别受限 HOI 重建 | 已知对象模板或固定对象类别 | 在已知类别/模板内优化，遇到野外未知对象时泛化受限 |
+| CARI4D | 单目 RGB 与基础模型生成的初始假设 | 类别无关、米制尺度的人–物 4D 重建；摘要报告分布内/未见数据误差改善 |
+| FORM-HOI 多视角标注 | 四路标定 RGB-D 与对象几何 | 作为高质量轨迹数据来源，可训练/评估重建模型；它是数据而非单目重建算法 |
+
+## 结论
+
+CARI4D 将人体、物体与接触放在同一时空重建闭环中，面向未知类别和野外单目视频。它为机器人学习提供带对象状态的参考数据，但真实接触物理和机器人控制仍需下游验证。
+
+## 参考来源
 
 - [arXiv 论文及 v3 版本](../../sources/papers/cari4d_arxiv_2512_11988.md)
 - [官方代码仓库](../../sources/repos/nvlabs-cari4d.md)

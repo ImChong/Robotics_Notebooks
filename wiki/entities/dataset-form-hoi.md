@@ -19,6 +19,15 @@ sources:
 **发布者：** NVIDIA  
 **数据卡：** [Hugging Face nvidia/form-hoi](https://huggingface.co/datasets/nvidia/form-hoi) · **v0.1.0** · **CC BY 4.0**
 
+## 英文缩写速查
+
+| 缩写 | 含义 |
+|---|---|
+| HOI | Human-Object Interaction，人–物交互 |
+| RGB-D | 彩色图像与深度图 |
+| SOMA / MHR | 两种人体姿态参数格式 |
+| CC BY 4.0 | Creative Commons Attribution 4.0 许可 |
+
 ## 数据规模与组成
 
 数据卡的统计针对清洗后的公开 release，排除 held-out object sequences。
@@ -61,7 +70,7 @@ flowchart LR
 - 数据许可为 CC BY 4.0。涉及人体视频和运动轨迹的下游应用仍需自行核验适用法律、授权、隐私和产品需求。
 - 数据卡称技术报告仍在撰写中；代码集成于 [NVIDIA Video to Data](https://github.com/nvidia-isaac/video_to_data) 仓库。
 
-## 来源
+## 参考来源
 
 - [FORM-HOI 数据卡来源归档](../../sources/datasets/form_hoi_nvidia.md)
 - [CARI4D 论文](./paper-cari4d.md)

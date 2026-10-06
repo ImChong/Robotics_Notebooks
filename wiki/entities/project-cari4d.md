@@ -16,6 +16,15 @@ sources:
 
 该项目实现 [CVPR 2026 CARI4D 论文](./paper-cari4d.md)，对单目第三人称 RGB 视频中的人体与物体进行类别无关、米制尺度的 4D 重建。官方 [NVlabs/CARI4D](https://github.com/NVlabs/CARI4D) 仓库提供推理 demo、BEHAVE 示例、训练代码与检查点入口。
 
+## 英文缩写速查
+
+| 缩写 | 含义 |
+|---|---|
+| CARI4D | Category-Agnostic Reconstruction of Interactions in 4D |
+| CoCoNet | CARI4D 中用于 refinement 的交互网络 |
+| MHR | Momentum Human Rig，人体参数化骨架 |
+| OMA | NVIDIA Open Model Agreement |
+
 ## 研究实现
 
 - **输入：** 视频、人体/物体分割、人体与物体初始化状态及带纹理对象网格。
@@ -44,7 +53,7 @@ NVIDIA 后续发布了 [CARI4D CoCoNet Native MHR 模型卡](https://huggingface
 
 [FORM-HOI](./dataset-form-hoi.md) 是多视角人–物数据集，提供标定、视频、人体姿态、对象轨迹和度量网格。数据卡将 CARI4D 列为 HOI 重建训练用途。CARI4D 论文以单目 RGB 为目标输入；FORM-HOI 则提供多相机重建标注，任务和观测条件不同。
 
-## 官方入口
+## 参考来源
 
 - [NVlabs/CARI4D GitHub](https://github.com/NVlabs/CARI4D)
 - [CARI4D 项目页](https://nvlabs.github.io/CARI4D/)
