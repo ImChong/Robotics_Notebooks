@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -12,12 +12,14 @@ related:
   - ../entities/delta-0-humanoid-foundation-model.md
   - ../entities/reward-ai-robotics.md
   - ../entities/paper-dpc.md
+  - ../entities/roboparty.md
 sources:
   - ../../sources/sites/robot-foundation-model-company-research-2026.md
   - ../../sources/sites/deltai-com.md
   - ../../sources/sites/rewardai.md
   - ../../sources/sites/symbiosis-robotics-dpc.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 16 家团队的公开技术路线与复现边界。"
+  - ../../sources/repos/party_os.md
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 17 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -98,8 +100,11 @@ flowchart TB
 | [Robbyant 蚂蚁灵波](../entities/robbyant.md) | ● |  |  | LingBot-VLA 2.0、LingBot-VA、LingBot-World（另有 Vision / Depth / Map / Video 感知与预训练层） |
 | [Reward AI 励元智能](../entities/reward-ai-robotics.md) | ● | ○ |  | OM-1（仅人类穿戴示范的通才操作策略 + Control Any Body 高频控制层） |
 | [Symbiosis Robotics](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
+| [RoboParty 萝博派对](../entities/roboparty.md) | ○ | ● | ● | [Roboto Origin](../entities/roboto-origin.md)、Party OS、hhtools、MimicLite、UFO / TeCH、INTACT |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
+
+RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
 ## 三种视角各自追问什么
 
@@ -140,6 +145,7 @@ NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O
 | Robbyant | ✅ | 🟡 | 🟡 | [github.com/robbyant](https://github.com/robbyant) 9 个模型仓；VA 2.0 仅技术报告、权重未确认；公开 LingBot-Depth 300 万 RGB-D 与 GM-100，VLA 预训练池未公开（[核查](../../sources/sites/robbyant_github.md)） |
 | Reward AI | ❌ | ❌ | ❌ | [OM-1 博客](https://www.rewardai.com/blog/OM-1/) 未列 GitHub / HF / 数据下载；前序 DexCap 代码与数据开源，但非同一发布物（[核查](../../sources/sites/rewardai.md)） |
 | Symbiosis Robotics | ❌ | ❌ | ❌ | [DPC 项目页](https://symbiosis-robotics.com/research/dpc/en/) 未列 GitHub / HF / 数据集 / arXiv，仅联系邮箱（[核查](../../sources/sites/symbiosis-robotics-dpc.md)） |
+| RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
 
@@ -191,7 +197,8 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [16 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [17 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
 - [PI 官方技术文章逐篇索引](../../sources/sites/pi-website-technical-articles.md)
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)

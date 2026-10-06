@@ -3,7 +3,8 @@
 - **类型：** 多站点资料索引（官方博客、研究页与项目页）
 - **收录日期：** 2026-09-28
 - **索引补核：** 2026-10-05（新增四家公司索引，开放范围按下列项目归档的核查日期）
-- **范围：** 以公司路线现有 16 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **范围：** 以公司路线现有 17 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **路线增补：** 2026-10-06，复用既有 RoboParty 归档并补核 Party OS 当前入口。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -24,8 +25,11 @@
 | 蚂蚁灵波 Robbyant | [技术站](https://technology.robbyant.com/)、[GitHub](https://github.com/robbyant) | LingBot 感知、3D、视频、世界、世界–动作和 VLA 家族 | [组织核查](./robbyant_github.md)与各模型仓：多数代码/部分权重和数据公开，VA 2.0 按报告边界处理 |
 | 励元智能 Reward AI | [技术博客](https://www.rewardai.com/blog/) | Omnibody、OM-1、可穿戴人类示范与跨本体控制 | [官网归档](./rewardai.md)：OM-1 未列完整模型资产；学术前序 DexCap 的开源不能替代 OM-1 |
 | Symbiosis Robotics | [DPC 项目](https://symbiosis-robotics.com/research/dpc/en/) | 直接感知控制、DriftDistill 与 G1 全身关节目标 | [DPC 核查](./symbiosis-robotics-dpc.md)：技术页未列源码、权重与数据下载 |
+| 萝博派对 RoboParty | [Party OS](https://github.com/Roboparty/Party_OS)、[Lab](https://lab.roboparty.com/)、[Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87) | Roboto Origin、hhtools、MimicLite、UFO / TeCH、INTACT | [Party OS 补核](../repos/party_os.md)：工具链源码与部分策略/数据公开，数据生成待发布；[Know-How](roboparty_motion_control_knowhow.md)只核查目录与部分正文；INTACT 上游已发布、组织 fork 仍为预览 |
 
 ## 核查边界
+
+新增公司：[萝博派对 RoboParty](https://github.com/Roboparty/Party_OS)以 [Roboto Origin](../repos/roboto_origin.md)整机工程、hhtools 动作重定向、MimicLite 监督跟踪、UFO / TeCH 无监督运控和 INTACT 世界模型组织阅读；[Party OS 补核](../repos/party_os.md)明确数据生成待发布、VLA / Agent 规划与 INTACT 上游/fork 边界。成立日期由[官方中文 README](https://github.com/Roboparty/roboto_origin/blob/main/README_cn.md)确认：2025-02-21。
 
 - “世界模型”“World-Action Model（WAM）”“VLA”“全身控制”指不同能力或模块；仅凭公司宣传名不能判定架构和动作接口。
 - 公司横跨多条路线。下面的 wiki 三组只是**阅读视角**，不是互斥分类或实测排名。

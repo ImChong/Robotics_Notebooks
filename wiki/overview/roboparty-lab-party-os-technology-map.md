@@ -2,7 +2,7 @@
 type: overview
 tags: [roboparty, humanoid, open-source, infrastructure, motion-tracking, unsupervised-rl, motion-retargeting, survey]
 status: complete
-updated: 2026-08-04
+updated: 2026-10-06
 related:
   - ../entities/roboparty.md
   - ../entities/party-os.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-bfm-zero.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
+  - ../../sources/sites/roboparty_motion_control_knowhow.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/sites/roboparty_com.md
   - ../../sources/sites/lab_roboparty_com.md
@@ -91,6 +92,12 @@ flowchart LR
 | **子实体** | [UFO（Roboparty）](../entities/roboparty-ufo.md) | 无监督 RL 控制全栈框架 |
 | **子实体** | [human-humanoid-tools](../entities/human-humanoid-tools.md) | 动作重定向与数据工作台 |
 
+## Know-How 与完整研发文档入口
+
+[Party OS 官方 README](https://github.com/Roboparty/Party_OS)将[《人形机器人运动控制 Know-How》](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)列为技术知识库；[Roboto Origin 完整研发文档](https://roboparty.com/roboto_origin/doc)对应整机工程与训练部署路径，见[文档归档](../../sources/sites/roboparty_com_roboto_origin_doc.md)。本地图作为网站公司路线的文档阅读坐标，不另建重复总节点。
+
+**核查边界（2026-10-06）：** 按 Agent Reach 的 Jina Reader 路径重试已读开篇与学习路线部分正文，浏览器已核查目录；目录覆盖 OCP、LIP/ZMP、SLIP/VMC、WBC/TSID、MPC/NMPC、状态估计，以及 RL、Teacher–Student/DAgger、DreamWaq、PIE、重定向与 DeepMimic。示例偏伪代码，完整复现转各项目仓；未逐章深读或确认新增章节，见[来源归档](../../sources/sites/roboparty_motion_control_knowhow.md)。Party OS 的数据生成模块仍标「即将开源」，VLA / Agentic Humanoid 属演进规划。MimicLite 当前 README 已切到 PPO / ROA 策略及组件仓，下方首批工具描述中的耗时为历史发布口径，复现需按当前版本核对。
+
 ## 三项工具速查
 
 | # | 工具 | 回答的问题 | Wiki |
@@ -114,7 +121,7 @@ flowchart LR
 |------|--------|------|
 | **INTACT**（arXiv:2607.26056） | LeWM 学「动作→效果」；INTACT 补「意图→动作」同构读出，Direct **2.9–5.5 ms**、四任务宏 SR ~**95%**（相对宽搜约 **300×**） | [paper-intact](../entities/paper-intact.md) |
 
-开源边界：规范仓 [zju3dv/INTACT-JEPA](https://github.com/zju3dv/INTACT-JEPA) + 组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)；训练/权重 **Coming Soon**（文档仓，非可训通实现）。
+开源边界（2026-10-06）：规范仓 [zju3dv/INTACT-JEPA](https://github.com/zju3dv/INTACT-JEPA)已有训练、评测与权重入口；组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)仍是研究预览，不能用 fork 的状态代替上游。复现与版本边界见 [INTACT 实体](../entities/paper-intact.md)及[规范仓归档](../../sources/repos/intact-jepa.md)。
 
 ## 文内收束判断（策展）
 
@@ -125,7 +132,7 @@ flowchart LR
 | UFO 补无监督线 | 与 MimicLite 监督跟踪形成 **互补**；集成 BFM-Zero 与 [TeCH](../entities/paper-tech-humanoid-control.md)（TLDR 时间距离表征） |
 | hhtools 降上游摩擦 | Any Motion / Any URDF / R2R 把 retarget 从「每机型定制脚本」推向 **工作台** |
 | 演进叙事 | ROBOTO Origin → RoboParty Lab：从单机开源到 **持续生长的开放技术系统** |
-| WM 接口 | [INTACT](../entities/paper-intact.md) 把 Manipulation 方向的 World Model 从「预测+搜索」推进到 **无搜索意图读出**（代码仍 Coming Soon） |
+| WM 接口 | [INTACT](../entities/paper-intact.md) 把 Manipulation 方向的 World Model 从「预测+搜索」推进到 **无搜索意图读出**（上游已发布实现，组织 fork 仍为预览） |
 | 任务坐标对照 | [FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) 把 MimicLite、UFO/BFM-Zero、INTACT 读成三种 latent 几何赌注，而非三条无关 demo |
 
 ## 关联页面
@@ -141,6 +148,11 @@ flowchart LR
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md)
 
 ## 参考来源
+
+- [运动控制 Know-How 目录与部分正文核查](../../sources/sites/roboparty_motion_control_knowhow.md)
+
+- [INTACT 规范仓与当前运行入口](../../sources/repos/intact-jepa.md)
+- [Roboto Origin 完整研发文档](../../sources/sites/roboparty_com_roboto_origin_doc.md)
 
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)

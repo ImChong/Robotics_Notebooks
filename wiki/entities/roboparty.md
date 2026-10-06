@@ -2,7 +2,7 @@
 type: entity
 tags: [roboparty, humanoid, open-source, hardware, infrastructure]
 status: complete
-updated: 2026-07-30
+updated: 2026-10-06
 related:
   - ./roboto-origin.md
   - ./party-os.md
@@ -16,6 +16,7 @@ related:
   - ./paper-intact.md
   - ./unitree.md
 sources:
+  - ../../sources/sites/roboparty_motion_control_knowhow.md
   - ../../sources/repos/roboparty-train.md
   - ../../sources/sites/roboparty_com.md
   - ../../sources/sites/lab_roboparty_com.md
@@ -96,6 +97,21 @@ flowchart TB
 | 2026-05 | 天使+轮（顺为领投、小米战投追加） |
 | 2026-07 | RoboParty Lab 成立；Party OS 首批三项工具链开源（见公众号一手）；Lab 联署 [INTACT](./paper-intact.md)（arXiv:2607.26056） |
 
+## 公司技术路线（2026-10-06 补核）
+
+路线的工程主线是 **[Roboto Origin](./roboto-origin.md)整机基线 → [Party OS](./party-os.md)可复用研发底座 → 运控与世界模型研究**。动作准备之后，[MimicLite](./mimiclite.md)监督跟踪和 [UFO / TeCH](./roboparty-ufo.md)无监督运控是并行选择，不能画成必须逐级替换的版本链。
+
+| 阶段 / 分支 | 已有入口 | 阅读重点与边界 |
+| --- | --- | --- |
+| 整机工程 | Roboto Origin、完整研发文档 | 结构/电气/固件/模型描述 → 训练 → Sim2Sim → ROS 2 部署；聚合仓用于导航 |
+| 知识与数据 | 运动控制 Know-How、hhtools | Know-How 已核查目录与部分正文，最近新增章节未确认；重定向与数据处理已有实现，独立数据生成模块待发布 |
+| 监督跟踪 | MimicLite | 当前 PPO / ROA 训练、评测与部署组件，性能口径按具体版本读取 |
+| 无监督运控 | UFO、TeCH | FB 与时间距离表征的不同路径；追踪训练数据、隐条件和 G1 真机接口 |
+| 世界模型 | [INTACT](./paper-intact.md) | Lab 联署项目；上游训练/评测/权重已有入口，RoboParty fork 仍为预览 |
+| 上层扩展 | Perception / Manipulation / Agent | 官方规划涉及 HSI / HOI、VLA、World Model 和 Agent + Skills；尚不能视为完整系统交付 |
+
+网站入口：[RoboParty 公司路线](../../docs/company.html?id=roboparty)；详细阅读坐标继续使用[现有技术地图](../overview/roboparty-lab-party-os-technology-map.md)。核查依据见 [Party OS 来源补核](../../sources/repos/party_os.md)。
+
 ## 常见误区 / 局限
 
 - **误区 1：把 RoboParty 等同于单一仓库。** 整机开发在 `rpo_*` / `roboparty_*` 子仓；Lab 工具在 MimicLite、UFO、hhtools 等独立仓；聚合仓仅作导航。
@@ -130,6 +146,8 @@ flowchart TB
 - [INTACT 组织镜像](https://github.com/Roboparty/INTACT-JEPA)
 
 ## 参考来源
+
+- [运动控制 Know-How 目录与部分正文核查](../../sources/sites/roboparty_motion_control_knowhow.md)
 
 - [roboparty_deploy 源码归档](../../sources/repos/roboparty_deploy.md)（<https://github.com/Roboparty/roboparty_deploy>）
 

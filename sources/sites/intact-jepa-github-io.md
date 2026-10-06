@@ -8,11 +8,14 @@
 - **代码（RoboParty 镜像）：** <https://github.com/Roboparty/INTACT-JEPA>
 - **Lab：** <https://lab.roboparty.com/>
 - **入库日期：** 2026-07-30
-- **最后更新：** 2026-07-30
+- **最后更新：** 2026-10-06
 - **一句话说明：** 官方落地页：项目片、同构意图接口叙事、LeWM 四任务结果与共享编码器几何；指向 GitHub。
-- **代码：** 规范仓与 RoboParty fork 已建；训练/权重徽章标 **Coming Soon**。
+- **代码：** [规范仓](https://github.com/zju3dv/INTACT-JEPA)已提供训练/评测；RoboParty fork 仍为研究预览。
+- **权重：** <https://huggingface.co/INTACT-JEPA/INTACT>（上游 README 的公开入口）
 
 ## 开源核查（步骤 2.5）
+
+2026-10-06：项目页的 Code 指向规范仓；规范仓已有训练、评测、checkpoint 与校验路径，详见[当前源码归档](../repos/intact-jepa.md)。数据复用官方 LeWM，须单独配置。下表保留首次入库时的历史状态，不表示当前上游仍待发布。
 
 | 项 | 状态（2026-07-30） |
 |----|-------------------|

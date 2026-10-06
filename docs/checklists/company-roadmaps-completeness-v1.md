@@ -39,6 +39,17 @@
 
 ## 验证记录
 
+### RoboParty 公司路线增补（2026-10-06）
+
+- 在 main 工作区完成源文件修改后切出 PR 分支，以 main 为目标提交 review。
+- 公司名单扩为 17 家；RoboParty 按 2025 年成立插入，八个节点复用现有 wiki：Roboto Origin、Party OS、INTACT、Know-How 阅读地图、hhtools、MimicLite、UFO、TeCH。
+- 同步首页入口、对照矩阵与官方来源索引。Hero 数字保留部署统计，由现有 JS 从入口链接计数；调整旧测试的静态数字假设。
+- 知识边界：Agent Reach / Jina 与浏览器已核查飞书目录及部分正文，新增章节未确认；微信本次验证码阻断；数据生成待发布、VLA / Agent 规划；MimicLite 当前策略不沿用首批性能数字；INTACT 上游与 RoboParty fork 开放状态分开，并补运行时序图。
+- 验收：`GITHUB_ACTIONS=true make ci-preflight` 零阻塞问题、搜索通过、导出 13/13；常规 `make ci-preflight` 仅 20 条既有 freshness 失败，相应文件与 main 无 diff，未修改其复核日期。
+- `make ci-test` 在 `/tmp` Python 3.12 隔离环境全通过：486 tests、769 subtests、前端 75 tests；ruff、mypy、依赖审计通过，覆盖率 63.70%。
+- Chrome DevTools MCP 验证首页动态 17 家、展开入口、RoboParty 八节点及有效详情 ID、无 console 错误；INTACT 两张 Mermaid 正常渲染。截图本地保存在 `.cursor-artifacts/screenshots/roboparty-company-roadmap.png` 与 `intact-runtime-detail.png`，不提交二进制。
+- 独立只读复核通过；修正 INTACT fork 摘要的历史残留，确认飞书归档未夸大为全文深读。
+
 - `make ci-test`：485 tests、769 subtests；前端 73 tests；ruff、mypy、依赖审计通过。
 - 常规 `make ci-preflight`：零断链、零缺来源、零孤儿；仅因 6 条既有 freshness 问题未通过。这些页为 `null-space-control`、`hqp`、`tsid`、`crocoddyl`、`capture-point-dcm`、`lip-zmp`，相应 wiki/source 与基线无 diff。本轮不将它们标记为已复核。
 - `GITHUB_ACTIONS=true make ci-preflight`：按仓库线上规则跳过历史 freshness，lint / search / export 全通过。

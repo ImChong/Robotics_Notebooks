@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, infrastructure, roboparty, motion-tracking, reinforcement-learning, motion-retargeting]
 status: complete
-updated: 2026-07-30
+updated: 2026-10-06
 related:
   - ./roboparty.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -16,6 +16,7 @@ related:
   - ../entities/mjlab.md
   - ../entities/paper-bfm-zero.md
 sources:
+  - ../../sources/sites/roboparty_motion_control_knowhow.md
   - ../../sources/repos/party_os.md
   - ../../sources/sites/lab_roboparty_com.md
   - ../../sources/sites/roboparty_com.md
@@ -86,7 +87,8 @@ flowchart TB
 
 - **快速演进：** 2026-07 首批发布，API 与文档可能频繁变更。
 - **性能数字：** 文内 GPU-hours、训练时长为自述，须以仓库复现为准。
-- **路线图 ≠ 已交付：** 四方向中 VLA infra、world model infra 等多为规划，非本次三项工具范围。
+- **路线图 ≠ 已交付：** 2026-10-06 README 中数据生成仍待发布，VLA / Agentic Humanoid 是规划；世界模型已有 [INTACT](./paper-intact.md)入口，上游已发布实现，但 RoboParty fork 仍为研究预览，不能据此推定全身操作系统已交付。
+- **知识入口：** README 直接列出[运动控制 Know-How 飞书文档](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)，本次重试已读取目录与部分正文，未确认新增章节；见[来源归档](../../sources/sites/roboparty_motion_control_knowhow.md)；完整研发文档与阅读坐标见[现有技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
 ## 关联页面
 
@@ -98,6 +100,8 @@ flowchart TB
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 
 ## 参考来源
+
+- [运动控制 Know-How 目录与部分正文核查](../../sources/sites/roboparty_motion_control_knowhow.md)
 
 - [party_os.md](../../sources/repos/party_os.md)
 - [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
