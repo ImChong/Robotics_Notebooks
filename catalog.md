@@ -2634,6 +2634,7 @@
 - [PointDiT：像素空间扩散估单目点图](wiki/entities/paper-pointdit.md) — PointDiT**（*PointDiT: Pixel-Space Diffusion for Monocular Geometry Estimation*，[arXiv:2607.02515 `📅unknown` `[entity_page]`
 - [Pointer-CAD v2（Plan-Then-Construct 参数精度 CAD 生成）](wiki/entities/paper-pointer-cad-v2.md) — Pointer-CAD v2**（*Plan-Then-Construct CAD Generation with Dimension-Aware Parametric Precision*，[a `📅unknown` `[entity_page]`
 - [Points as Tori（PAT）](wiki/entities/paper-points-as-tori.md) — Points as Tori（PAT）**（*Fast Pointwise Signed Distance for Point Clouds*，[arXiv:2607.16946](https:/ `📅unknown` `[entity_page]`
+- [PointWAM：灵巧操作的 3D 世界动作模型](wiki/entities/paper-pointwam.md) — PointWAM** 把场景与手都表示为同一三维坐标系下的点轨迹，联合预测二者如何共演化，并将未来手部轨迹转成机器人动作。 `📅unknown` `[entity_page]`
 - [PointZero（arXiv:2609.19142）](wiki/entities/paper-pointzero.md) — PointZero**（*PointZero: 3D Point Track Completion for Learning Transferable 3D Dynamics*，[arXiv:26 `📅unknown` `[entity_page]`
 - [PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization](wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md) — PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomizat `📅unknown` `[entity_page]`
 - [PolyUMI](wiki/entities/paper-polyumi.md) — PolyUMI**（*Accessible Visual-Tactile-Audio Data Collection for Object Inference and Manipulation*， `📅unknown` `[entity_page]`
