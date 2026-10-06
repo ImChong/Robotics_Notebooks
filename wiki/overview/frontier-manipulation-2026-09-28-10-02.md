@@ -40,14 +40,14 @@ flowchart LR
 
 | 论文节点 | arXiv | 文章中的问题线索 |
 |----------|-------|------------------|
-| [Rho：面向高效适应的 VLA 基础模型](../entities/wiki/entities/paper-rho.md) | [2609.38164](https://arxiv.org/abs/2609.38164) | 通用 VLA 一方面需要从大规模数据获得跨任务能力，另一方面部署到具体机器人后又需 要低成本适应。现有方案通常需要针对目标本体重新进行大量 Fine-Tuning，机器人 |
-| [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](../entities/wiki/entities/paper-dsdyn-vla.md) | [2609.39198](https://arxiv.org/abs/2609.39198) | 现有 VLA 在静态桌面操作上已经很强，但遇到传送带、运动目标等动态场景会同时遇到 三个问题：单帧视觉缺乏运动信息；大型 VLA 推理延迟导致动作输出时目标已经移动；Ac |
-| [GroundingPI：基于视觉基元的物理智能 Grounding 基础模型 机 构： XPeng Inc. 、 Peking University 、 The University of Hong Kong 、 UC Berkeley 、 Princeton University、NUS、Tsinghua University、HKUST (GZ) 等](../entities/wiki/entities/paper-groundingpi.md) | [2609.39601](https://arxiv.org/abs/2609.39601) | VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在 |
-| [RoboCoach：将世界模型作为组合式机器人技能的主动教练](../entities/wiki/entities/paper-robocoach.md) | [2609.39685](https://arxiv.org/abs/2609.39685) | 长程操作策略失败以后，通常继续收集整条任务的 End-to-End Demonstration，但真正的 问题往往只发生在其中某一个子技能。例如“开抽屉→拿物体→放入容器 |
-| [触觉好奇心驱动机器人交互](../entities/wiki/entities/paper-tactile-curiosity-drives-robot-interaction.md) | [2609.40134](https://arxiv.org/abs/2609.40134) | 机器人随机探索会浪费大量动作在自由空间；普通不确定性奖励也可能偏好自由空间中的模型未知，而不是能改变抓取、滑动和稳定性的接触经验。 |
-| [反事实视频生成实现可扩展人形机器人移动操作](../entities/wiki/entities/paper-prism-real2sim2real.md) | [2609.38172](https://arxiv.org/abs/2609.38172) | 从人类视频学习 Humanoid Loco-Manipulation 很有吸引力，但真正适合训练的数据很难 采：视频既要看清完整人体运动，又要看清人与物体的接触，遮挡不能 |
-| [T²Mem：面向机器人的测试时记忆学习](../entities/wiki/entities/paper-t2mem.md) | [2609.36720](https://arxiv.org/abs/2609.36720) | 很多长程 Manipulation 是部分可观测的。例如机器人几分钟前看见某个物体被放进抽屉， 现在当前相机画面已经没有这条信息；仅扩大 observation-hist |
-| [SafeVLA-Bench：视觉-语言-动作模型成功率与安全性差距评测基准](../entities/wiki/entities/paper-safevla-bench.md) | [2606.00773](https://arxiv.org/abs/2606.00773) | 当前 VLA Benchmark 主要看任务有没有完成，但“成功”不代表执行过程安全。例如机器 人最后把杯子放到了正确位置，但过程中可能碰倒旁边物体、施加过大的接触力、让 |
+| [Rho：面向高效适应的 VLA 基础模型](../entities/paper-rho.md) | [2609.38164](https://arxiv.org/abs/2609.38164) | 通用 VLA 一方面需要从大规模数据获得跨任务能力，另一方面部署到具体机器人后又需 要低成本适应。现有方案通常需要针对目标本体重新进行大量 Fine-Tuning，机器人 |
+| [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](../entities/paper-dsdyn-vla.md) | [2609.39198](https://arxiv.org/abs/2609.39198) | 现有 VLA 在静态桌面操作上已经很强，但遇到传送带、运动目标等动态场景会同时遇到 三个问题：单帧视觉缺乏运动信息；大型 VLA 推理延迟导致动作输出时目标已经移动；Ac |
+| [GroundingPI：基于视觉基元的物理智能 Grounding 基础模型 机 构： XPeng Inc. 、 Peking University 、 The University of Hong Kong 、 UC Berkeley 、 Princeton University、NUS、Tsinghua University、HKUST (GZ) 等](../entities/paper-groundingpi.md) | [2609.39601](https://arxiv.org/abs/2609.39601) | VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在 |
+| [RoboCoach：将世界模型作为组合式机器人技能的主动教练](../entities/paper-robocoach.md) | [2609.39685](https://arxiv.org/abs/2609.39685) | 长程操作策略失败以后，通常继续收集整条任务的 End-to-End Demonstration，但真正的 问题往往只发生在其中某一个子技能。例如“开抽屉→拿物体→放入容器 |
+| [触觉好奇心驱动机器人交互](../entities/paper-tactile-curiosity-drives-robot-interaction.md) | [2609.40134](https://arxiv.org/abs/2609.40134) | 机器人随机探索会浪费大量动作在自由空间；普通不确定性奖励也可能偏好自由空间中的模型未知，而不是能改变抓取、滑动和稳定性的接触经验。 |
+| [反事实视频生成实现可扩展人形机器人移动操作](../entities/paper-prism-real2sim2real.md) | [2609.38172](https://arxiv.org/abs/2609.38172) | 从人类视频学习 Humanoid Loco-Manipulation 很有吸引力，但真正适合训练的数据很难 采：视频既要看清完整人体运动，又要看清人与物体的接触，遮挡不能 |
+| [T²Mem：面向机器人的测试时记忆学习](../entities/paper-t2mem.md) | [2609.36720](https://arxiv.org/abs/2609.36720) | 很多长程 Manipulation 是部分可观测的。例如机器人几分钟前看见某个物体被放进抽屉， 现在当前相机画面已经没有这条信息；仅扩大 observation-hist |
+| [SafeVLA-Bench：视觉-语言-动作模型成功率与安全性差距评测基准](../entities/paper-safevla-bench.md) | [2606.00773](https://arxiv.org/abs/2606.00773) | 当前 VLA Benchmark 主要看任务有没有完成，但“成功”不代表执行过程安全。例如机器 人最后把杯子放到了正确位置，但过程中可能碰倒旁边物体、施加过大的接触力、让 |
 
 ## 阅读说明
 
