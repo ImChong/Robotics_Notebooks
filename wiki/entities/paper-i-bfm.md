@@ -8,7 +8,7 @@ venue: "2026 · arXiv preprint"
 related:
   - ./project-i-bfm.md
   - ./paper-bfm-zero.md
-  - ./paper-omnicontact.md
+  - ./paper-omnicontact-humanoid-loco-manipulation.md
   - ../concepts/behavior-foundation-model.md
 sources:
   - ../../sources/papers/i_bfm_arxiv_2610_06129.md
@@ -69,7 +69,7 @@ I-BFM 是面向人形–物体交互的行为基础模型：在统一潜在空�
 
 I-BFM 将在线无奖励探索与两个未标注的离线运动数据集联合训练（一个运动/行走类，一个交互类；论文未报告数据集规模及训练计算量）。目标由三部分组成：
 
-- **FB critic：** 学习交互状态的折扣后继分布；forward 表征 (F(s,a,z)) 与 backward 表征 (B(s')) 共同定义潜在行为及其价值。
+- **FB critic：** 学习交互状态的折扣后继分布；forward 表征 `F(s,a,z)` 与 backward 表征 `B(s')` 共同定义潜在行为及其价值。
 - **条件判别器：** 比较策略 rollout 与运动数据，为交互行为加入运动风格先验。
 - **辅助交互 critic：** 从环境级辅助奖励学习额外价值信号，用于控制平滑与训练稳定。
 
@@ -79,15 +79,15 @@ I-BFM 将在线无奖励探索与两个未标注的离线运动数据集联合�
 
 简单地把未来 8 步 backward feature 求均值，再投影为一个 latent 命令，可能将“当前应该做的接触动作”和“最后需要到达的目标”混在一起。LOGO 显式构造：
 
-- (z_{local})：下一步（(t+1)）的局部交互意图；
-- (z_{goal})：8 步窗口末端（(t+8)）的较远目标；
+- `z_local`：下一步（`t+1`）的局部交互意图；
+- `z_goal`：8 步窗口末端（`t+8`）的较远目标；
 - 两个目标分别映射到当前 latent 球面点的切空间，使用球面 log map 表示距离与方向，并交给同一个 actor。
 
 训练时保留原 actor 目标，并加入 local / goal 辅助 actor loss，权重比例 4:3、(eta=0.005)（作者通过受控超参数搜索选择）。这不是把两个 latent 直接相加，也不是动作标签监督。消融把 LOGO 移除后，改为八步特征平均。
 
 ### 4. 奖励推断与长程任务
 
-下游奖励 (r(s)) 通过对 backward 表征做奖励加权期望，得到对应 latent (z_r)；目标到达也可用目标状态的 backward embedding 构造 latent。策略随后按当前观测历史与该 latent 闭环执行。
+下游奖励 `r(s)` 通过对 backward 表征做奖励加权期望，得到对应 latent `z_r`；目标到达也可用目标状态的 backward embedding 构造 latent。策略随后按当前观测历史与该 latent 闭环执行。
 
 搬运被拆成靠近、抬起、向目标运输、降低、释放、稳定放置等阶段；推箱与踢箱也分别用接触模式、物体运动和稳定性构造阶段奖励。高层根据物体距离、接触和任务进度更新阶段目标/latent。多个子任务可顺序替换 reward 形成 push→carry→place，而不切换低层策略。
 
@@ -138,7 +138,7 @@ flowchart TB
 | 方法 | 主要交互表征/接口 | 失败恢复路径 | 与 I-BFM 的差别 |
 |---|---|---|---|
 | [BFM-Zero](./paper-bfm-zero.md) | FB + 无监督 RL，主要建模人形身体行为 | latent / reward 调用身体动作 | I-BFM 把物体和接触显式纳入状态，关注持久的人–物交互 |
-| [OmniContact](./paper-omnicontact.md) | contact-flow 条件 meta-skills，并可在线重规划 | 生成中间参考后由跟踪器执行 | I-BFM 直接由交互状态条件化单策略；论文报告的跌倒恢复差异尤其明显，但两方法的重规划/评测细节需结合附录 |
+| [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) | contact-flow 条件 meta-skills，并可在线重规划 | 生成中间参考后由跟踪器执行 | I-BFM 直接由交互状态条件化单策略；论文报告的跌倒恢复差异尤其明显，但两方法的重规划/评测细节需结合附录 |
 | HDMI / 人–物 co-tracking | 稠密人和物体参考轨迹 | 对参考进行跟踪 | I-BFM 不以固定交互轨迹作为下游策略优化目标，因而可响应接触变化 |
 | I-BFM | 物体–接触感知 FB latent + 奖励推断 + LOGO | 共享闭环策略在同一目标下恢复 | 一次预训练、以奖励/目标 latent 调用不同交互技能 |
 
@@ -161,7 +161,7 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 
 - [I-BFM 项目页详情](./project-i-bfm.md)
 - [BFM-Zero](./paper-bfm-zero.md) — 身体优先的 FB 行为基础模型
-- [OmniContact](./paper-omnicontact.md) — 接触流条件化交互与技能链
+- [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 接触流条件化交互与技能链
 - [行为基础模型概念](../concepts/behavior-foundation-model.md)
 
 ## 参考来源
