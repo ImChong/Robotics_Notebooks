@@ -329,6 +329,7 @@
     "entity-nymeria-dataset": "entity-paper-nymeria",
     "entity-paper-rcl-ref-8fa0ebc722d8d35eaf75-mastering-diverse-control-tasks-through-world-mo": "entity-paper-shenlan-wm-13-dreamerv3",
     "entity-paper-rcl-ref-502ccb43b26687d765d7-0-a-vision-language-action-flow-model-for-genera": "entity-paper-pi0",
-    "entity-paper-rcl-ref-a351afa5504418f3e26f-0-5-a-vision-language-action-model-with-open-wor": "entity-paper-pi05-open-world-vla"
+    "entity-paper-rcl-ref-a351afa5504418f3e26f-0-5-a-vision-language-action-model-with-open-wor": "entity-paper-pi05-open-world-vla",
+    "entity-project-cari4d": "entity-paper-cari4d"
   }
 }

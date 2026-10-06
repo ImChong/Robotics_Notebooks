@@ -3,10 +3,11 @@ type: entity
 tags: [dataset, human-object-interaction, multiview, 4d-reconstruction, nvidia, robot-learning]
 status: complete
 updated: 2026-10-06
+project_id: form-hoi
+project: https://huggingface.co/datasets/nvidia/form-hoi
 summary: "FORM-HOI：NVIDIA 四相机人–物交互数据集；清洗发布集含 4,135 段、约 29.144 小时、61 个对象和 22 位参与者，CC BY 4.0。"
 related:
   - ./paper-cari4d.md
-  - ./project-cari4d.md
   - ./paper-hoi-retarget.md
 sources:
   - ../../sources/datasets/form_hoi_nvidia.md
@@ -21,12 +22,12 @@ sources:
 
 ## 英文缩写速查
 
-| 缩写 | 含义 |
-|---|---|
-| HOI | Human-Object Interaction，人–物交互 |
-| RGB-D | 彩色图像与深度图 |
-| SOMA / MHR | 两种人体姿态参数格式 |
-| CC BY 4.0 | Creative Commons Attribution 4.0 许可 |
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| HOI | Human-Object Interaction | 人体与对象的交互数据 |
+| RGB-D | Red-Green-Blue and Depth | 同步彩色与深度输入 |
+| MHR | Momentum Human Rig | 数据发布的人体姿态参数格式 |
+| CC BY | Creative Commons Attribution | 数据卡声明的署名许可 |
 
 ## 数据规模与组成
 
@@ -48,14 +49,14 @@ sources:
 
 序列由人类操作员录制，再由自动化管线生成姿态与物体标注；人工检查并标记不合格时间段。数据卡中的 failure_segments.json 记录人工质检、Chamfer distance 和 silhouette containment 标记。几何/轮廓阈值命中代表**潜在质量问题**，不等同于已确认标注错误。
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   capture["四路同步 RGB-D"] --> calibration["相机标定与深度"]
   calibration --> reconstruction["人体与物体重建"]
   reconstruction --> review["自动指标与人工质检"]
   review --> release["清洗后的序列与轨迹"]
   release --> consumers["CARI4D 训练、策略 grounding、动作重定向"]
-\`\`\`
+```
 
 ## 适用方向与关联项目
 
@@ -73,6 +74,5 @@ flowchart LR
 ## 参考来源
 
 - [FORM-HOI 数据卡来源归档](../../sources/datasets/form_hoi_nvidia.md)
-- [CARI4D 论文](./paper-cari4d.md)
-- [CARI4D 项目及代码](./project-cari4d.md)
+- [CARI4D 论文、项目与源码](./paper-cari4d.md)
 - [CARI4D / Video to Data 入口](../../sources/sites/cari4d-project-page.md)
