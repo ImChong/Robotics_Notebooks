@@ -74,7 +74,7 @@ Jev 的任务动作曾在 MuJoCo 中通过 Jev API 生成，但网页只播放�
 
 - [DimOS（Dimensional 物理空间 Agent OS）](./dimensionalos-dimos.md) — MOSS README 将 dimOS 列为实机软件栈
 - [Jev（TypeSafe）](./typesafe-jev.md) — Jev 在 MOSS 仿真任务中的决策模型；网页演示是录制回放
-- [移动操作任务](../tasks/mobile-manipulation.md) — 移动底盘与机械臂协同的任务背景
+- [移动操作任务](../tasks/manipulation.md) — 移动底盘与机械臂协同的任务背景
 - [移动操作与全身操作](../tasks/loco-manipulation.md) — 机器人移动与接触操作的耦合问题
 
 ## 参考来源
