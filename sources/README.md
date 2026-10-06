@@ -29,6 +29,7 @@
 | [x] [softvtbench_arxiv_2607_04234.md](papers/softvtbench_arxiv_2607_04234.md) | SoftVTBench：Isaac Sim FEM 视触觉可变形操作安全基准 Goal/Safety Success（arXiv:2607.04234；代码+数据已开，参考权重待发） |
 | [x] [data_pyramid_embodied_manipulation_arxiv_2607_24744.md](papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md) | 具身数据金字塔综述：五层数据生态（真机/UMI/Ego-Exo/仿真/通用）× 六维属性 × 基础模型数据配方（arXiv:2607.24744，PKU 牵头 11 机构；Awesome 清单已开源） |
 | [x] [teledexter_arxiv_2607_11481.md](papers/teledexter_arxiv_2607_11481.md) | TeleDexter：hand–object co-tracking 灵巧遥操作（arXiv:2607.11481，清华/BIGAI/北大；未开源） |
+| [x] [gated-residual-body-hand-coordination_arxiv_2609_18763.md](papers/gated-residual-body-hand-coordination_arxiv_2609_18763.md) | Gated Residual Body–Hand Coordination：冻结全身/手部命令生成器 + 有界身手残差及双门控（arXiv:2609.18763；仿真、未发现专属公开代码） |
 | [x] [fm_vla_arxiv_2607_18231.md](papers/fm_vla_arxiv_2607_18231.md) | FM-VLA：Force-VAE 力觉长程记忆注入 π₀.₅（arXiv:2607.18231；清华/微软研究院/复旦/中科大；代码 coming soon） |
 | [x] [openhlm_arxiv_2606_22174.md](papers/openhlm_arxiv_2606_22174.md) | OpenHLM：全身原生人形 VLA 经验配方（arXiv:2606.22174，清华/期智/千寻；已开源） |
 | [x] [gmt_arxiv_2506_14770.md](papers/gmt_arxiv_2506_14770.md) | GMT：Adaptive Sampling + Motion MoE 统一人形全身跟踪（arXiv:2506.14770，UCSD×SFU；部分开源 sim2sim） |
