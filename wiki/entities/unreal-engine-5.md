@@ -2,9 +2,10 @@
 type: entity
 tags: [software, unreal-engine, epic-games, simulation, rendering, game-engine, photorealistic]
 status: complete
-updated: 2026-08-03
+updated: 2026-10-06
 related:
   - ./unity-engine.md
+  - ./redot-engine.md
   - ./unreal-mcp.md
   - ./metahuman.md
   - ./airsim.md
@@ -119,6 +120,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Redot Engine](./redot-engine.md) — Godot 的 MIT 许可开源分支，可作为另一套 2D/3D 引擎生态参照
 - [Unreal MCP](./unreal-mcp.md) — UE 5.8 编辑器内嵌 MCP server（Experimental）与 Toolset 扩展
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 编辑器 MCP 插件所依的开放协议
 - [Unity Engine](./unity-engine.md) — 另一主流实时 3D 宿主（C# / 跨平台 / Flightmare 等）
