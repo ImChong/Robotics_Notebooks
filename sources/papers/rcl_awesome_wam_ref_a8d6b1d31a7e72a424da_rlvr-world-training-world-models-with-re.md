@@ -15,7 +15,7 @@
 - **项目页：** <https://thuml.github.io/RLVR-World/>
 - **子类 / 象限：** 神经世界模拟器 · 训练优化与蒸馏 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-a8d6b1d31a7e72a424da-rlvr-world-training-world-models-with-reinforcem.md`](../../wiki/entities/paper-rcl-ref-a8d6b1d31a7e72a424da-rlvr-world-training-world-models-with-reinforcem.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-shenlan-wm-14-rlvr-world.md`](../../wiki/entities/paper-shenlan-wm-14-rlvr-world.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-a8d6b1d31a7e72a424da-rlvr-world-training-world-models-with-reinforcem.md`](../../wiki/entities/paper-rcl-ref-a8d6b1d31a7e72a424da-rlvr-world-training-world-models-with-reinforcem.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-shenlan-wm-14-rlvr-world.md`](../../wiki/entities/paper-shenlan-wm-14-rlvr-world.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -11,7 +11,7 @@ tags:
   - ppo
   - domain-randomization
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2404.05695"
 related:
   - ../concepts/sim2real.md

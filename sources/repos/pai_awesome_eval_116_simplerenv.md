@@ -10,7 +10,7 @@
 - **主链接：** <https://simpler-env.github.io/>
 - **代码：** <https://github.com/simpler-env/SimplerEnv>
 - **清单摘要：** Aligned simulator-based evaluation that correlates with real-robot performance for VLAs.
-- **沉淀到 wiki：** [`wiki/entities/painode-116-xsimplerenv.md`](../../wiki/entities/painode-116-xsimplerenv.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-simplerenv-real2sim-eval.md`](../../wiki/entities/paper-simplerenv-real2sim-eval.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-116-xsimplerenv.md`](../../wiki/entities/painode-116-xsimplerenv.md)
+- 实体页：[`wiki/entities/paper-simplerenv-real2sim-eval.md`](../../wiki/entities/paper-simplerenv-real2sim-eval.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

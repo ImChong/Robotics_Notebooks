@@ -6,7 +6,7 @@ tags:
   - locomotion
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2404.02887"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

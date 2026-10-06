@@ -11,7 +11,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md

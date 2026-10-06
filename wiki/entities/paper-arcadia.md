@@ -18,7 +18,7 @@ tags:
   - bytedance
   - adelaide
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2512.00076"
 code: https://github.com/Embodied-Arcadia/EmbodiedKit
 summary: "Arcadia（arXiv:2512.00076）：具身终身学习四段闭环——自主采集、生成式 USD、共享 VLN/VLA 骨干、Sim-from-Real 反馈；VLN-CE-Isaac SR 50.1%，G1+Dex-3 真机导航 46/100、操作 27/100。EmbodiedKit 部分开源：训练/数据脚本可辨识，探索/3DGS/反馈与权重未发布。"
@@ -28,7 +28,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/data-flywheel.md
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../tasks/manipulation.md
   - ./awesome-real2sim2real.md
@@ -204,7 +204,7 @@ Table 1 的 NaVILA 分数是 **本文 Isaac 协议下的复现**，不要和 NaV
 | 路线 | 生命周期覆盖 | 表征 | 开源 / 真机 |
 |------|--------------|------|-------------|
 | **NaVILA** | 仿真训 + 真机执行；外源视频补数据 | 分层语言动作 → 腿式低层 | [已开源](./paper-notebook-navila-legged-robot-vision-language-action-model.md)；Go2/T1 |
-| **OpenVLA** | 单阶段操作 BC | Prismatic + 动作 token | [已开源](./openvla.md)；桌面臂 |
+| **OpenVLA** | 单阶段操作 BC | Prismatic + 动作 token | [已开源](paper-openvla.md)；桌面臂 |
 | **GRUtopia** | 大规模仿真场景与 agent | 检索式资产库 | 仿真平台；本文批评其生成式不足 |
 | **SimFoundry / Agentic Real2Sim** | 视频 → 孪生场景，偏操作 Real2Sim | 场景生成 | 见 [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) |
 | **HumanoidVLN** | 人形物理 VLN 基准 | 分本体步态 + 现成 VLA | [待开源](./paper-humanoidvln.md) |
@@ -218,7 +218,7 @@ Table 1 的 NaVILA 分数是 **本文 Isaac 协议下的复现**，不要和 NaV
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim2Real：资产与策略一起更新
 - [数据飞轮](../concepts/data-flywheel.md) — 部署失败写回采集/仿真
 - [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) — 分层导航 VLA 基线与开源对照
-- [OpenVLA](./openvla.md) — 操作基线与 7D de-tokenizer 来源
+- [OpenVLA](paper-openvla.md) — 操作基线与 7D de-tokenizer 来源
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 可跑通栈；本文仓不能替代
 - [操作](../tasks/manipulation.md) — LIBERO / BridgeData / 桌面真机
 - [Awesome-Real2Sim2Real](./awesome-real2sim2real.md) — R2S2R 文献地图

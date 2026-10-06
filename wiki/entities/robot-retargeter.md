@@ -9,7 +9,7 @@ related:
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/motion-retargeting-gmr.md
   - ./soma-retargeter.md
-  - ./core-retarget.md
+  - ./paper-core.md
   - ./amass.md
   - ./unitree-g1.md
   - ./mujoco.md
@@ -98,7 +98,7 @@ flowchart LR
 
 ## 与相近工具对比（选型直觉）
 
-| 维度 | robot_retargeter | [GMR](../methods/motion-retargeting-gmr.md) | [SOMA Retargeter](./soma-retargeter.md) | [CoRe](./core-retarget.md) |
+| 维度 | robot_retargeter | [GMR](../methods/motion-retargeting-gmr.md) | [SOMA Retargeter](./soma-retargeter.md) | [CoRe](paper-core.md) |
 |------|------------------|---------------------------------------------|----------------------------------------|---------------------------|
 | 典型输入 | SMPL-X `.npz`、LAFAN1 CSV | BVH / SMPL / FBX 等多格式 | SOMA 统一 BVH | Kimodo `.npz` / GEM-X `.pt` |
 | IK 栈 | mink + MuJoCo | 自研 / Pinocchio 系 | Newton + Warp GPU | 方向向量 DMR + MuJoCo |
@@ -114,7 +114,7 @@ flowchart LR
 - [AMASS](./amass.md)
 - [Unitree G1](./unitree-g1.md)
 - [BifrostUMI（mink IK 另一用例）](./paper-bifrost-umi.md)
-- [CoRe v0.1.0](./core-retarget.md) — SOMA 接触精炼对照（非 SMPL-X 入口）
+- [CoRe v0.1.0](paper-core.md) — SOMA 接触精炼对照（非 SMPL-X 入口）
 
 ## 参考来源
 

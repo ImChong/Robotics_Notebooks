@@ -11,7 +11,7 @@
 - **入库日期：** 2026-09-20
 - **开源状态：** 待核实
 - **一句话说明：** 真机 rollout 学 delta action，冻结后嵌入仿真微调策略，部署时去掉修正模型。
-- **沉淀到 wiki：** [`wiki/entities/paper-hrl-stack-25-asap.md`](../../wiki/entities/paper-hrl-stack-25-asap.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md`](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 
 ## 核心摘录（归纳）
 
@@ -20,6 +20,6 @@
 
 ## 对 wiki 的映射
 
-- [paper-hrl-stack-25-asap](../../wiki/entities/paper-hrl-stack-25-asap.md)
+- [paper-hrl-stack-25-asap](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 - [freedof-sim2real-44-papers-technology-map](../../wiki/overview/freedof-sim2real-44-papers-technology-map.md)
 - [sim2real-four-routes-identifiability](../../wiki/comparisons/sim2real-four-routes-identifiability.md)

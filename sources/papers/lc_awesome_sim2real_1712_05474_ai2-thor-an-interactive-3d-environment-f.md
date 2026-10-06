@@ -11,7 +11,7 @@
 - **论文：** <https://arxiv.org/abs/1712.05474>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页为策展索引级节点，细节以原文为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md`](../../wiki/entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md)
+- **沉淀到 wiki：** [`wiki/entities/ai2-thor.md`](../../wiki/entities/ai2-thor.md)
 
 ---
 
@@ -24,5 +24,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md`](../../wiki/entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md)
+- 实体页：[`wiki/entities/ai2-thor.md`](../../wiki/entities/ai2-thor.md)
 - 列表实体：[`wiki/entities/awesome-sim2real.md`](../../wiki/entities/awesome-sim2real.md)

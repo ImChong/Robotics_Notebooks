@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md

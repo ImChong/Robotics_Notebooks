@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-03
+updated: 2026-10-06
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -78,7 +78,7 @@ sources:
 - 中文"移动操作"作为 **Loco-Manipulation** 的译名与统称使用；本页以腿式（人形）loco-manipulation 为主线。
 - 少量轮式 / 移动底座工作（[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md)、[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)、[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) 等）按学术定义属 mobile manipulation，因方法论相通收录进本页对应技术路线（ABot-M0.5 在[世界–动作模型](#世界-动作模型-用未来预测驱动全身动作)组，FastGrasp / 3D-IC 在[轮式 / 移动底座对照](#轮式-移动底座对照-学术定义属-mobile-manipulation)组），小节内已标注"轮式 / 移动底座"；实体层用 `mobile-manipulation` tag 区分。
 - 系统学习路径见 [Loco-Manipulation 纵深路线](../../roadmap/depth-loco-manipulation.md)。
-- **机构演示跟踪：** [STRIDER（X-Humanoid）](../entities/paper-strider.md) 公开 **multi-gait stepping + 分层 3D loco-manip** demo（2026-09，尚无论文）。
+- **机构演示跟踪：** [STRIDER（X-Humanoid）](../entities/paper-strider-multi-gait-loco-manip.md) 公开 **multi-gait stepping + 分层 3D loco-manip** demo（2026-09，尚无论文）。
 
 ## 英文缩写速查
 
@@ -201,7 +201,7 @@ flowchart TD
 
 #### 触觉增强的行为克隆路线 (Touch-Aware BC)
 - **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
-- **代表作**：[Humanoid Touch Dream](../entities/paper-humanoid-touch-dream.md) / [HTD 方法](../methods/humanoid-transformer-touch-dreaming.md) (IROS 2026) 使用 [解耦 WBC / LBC](../entities/htd-decoupled-wbc.md) 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。WBC 训练与 G1 部署已开源；HTD 策略代码截至 2026-09-03 仍待发布。
+- **代表作**：[Humanoid Touch Dream](../entities/paper-humanoid-touch-dream.md) / [HTD 方法](../methods/humanoid-transformer-touch-dreaming.md) (IROS 2026) 使用 [解耦 WBC / LBC](../entities/paper-humanoid-touch-dream.md) 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。WBC 训练与 G1 部署已开源；HTD 策略代码截至 2026-09-03 仍待发布。
 
 #### DP 规划器 + RL 跟踪器联合微调（REFINE-DP · 规划–控制同分布）
 - **核心**：高层 **Diffusion Policy** 只出 **基座速度 + 双手 SE(3)** 笛卡尔动作块；低层 **RL loco-manip**（足端落点 + 手姿跟踪）转关节参考；再用 **DPPO/PPO 联合微调** 两者，缩小规划命令与跟踪器输入的分布错配——相对「只扩示教」或「冻结 DP + 残差 RL」。
@@ -340,7 +340,7 @@ flowchart TD
 - [SMPC-to-RL（论文实体）](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 仿真专家 + 稀疏 offline-to-online RL；Spot/G1 真机（arXiv:2608.12063；截至 2026-08-17 未开源）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流：核验→训练→评测→描述符部署（G1/T1；arXiv:2603.20147）
 - [LAC](../entities/paper-lac.md) — G1 上身线+角柔顺；拧腕/托物可读 \(K_\theta\)（部分开源）
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Isaac Lab，G1 零样本）
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md) — HTD 开源下肢+腰控制器（Isaac Lab，G1 零样本）
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — LiDAR 高程图 + MoE 单阶段感知全身 LLC（arXiv:2601.17440）
 - [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
 - [FARO（论文实体）](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — 嵌套可行性剪枝（mode/edge→KSO→TO）加速接触搜索（arXiv:2607.18362）
@@ -508,4 +508,3 @@ flowchart TD
 ## 一句话记忆
 
 > Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。
-

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, manipulation, 3dgs, imitation-learning, dynamic-manipulation, polyu, eccv-2026]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-06
 arxiv: "2607.01938"
 venue: ECCV 2026
 code: https://github.com/vLAR-group/PhysMani

@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Proposes an object-centric policy for zero-shot dexterous tool manipulation. Generalizes across a diverse set of everyday tools, achieving strong zero-shot performance
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md`](../../wiki/entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md)
+- **沉淀到 wiki：** [`wiki/entities/simtoolreal.md`](../../wiki/entities/simtoolreal.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md`](../../wiki/entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md)
+- 实体页：[`wiki/entities/simtoolreal.md`](../../wiki/entities/simtoolreal.md)
 - 列表实体：[`wiki/entities/awesome-real2sim2real.md`](../../wiki/entities/awesome-real2sim2real.md)

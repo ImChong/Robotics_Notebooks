@@ -45,7 +45,7 @@
 - **链接：** <https://arxiv.org/html/2410.08650v1>（Algorithm 1；Section IV-E MuJoCo 在线更新 $K_c,K_v$）
 - **核心贡献：** 伺服模型 = **控制律（电压/电流 PID）+ 电机方程** + 扩展摩擦；辨识用四类摆锤轨迹（加速振荡、双频 sin、慢抬放、lift-and-drop），**CMA-ES（optuna）** 最小化仿真–实测 MAE；75% 训练 / 25% 验证。
 - **对 wiki 的映射：**
-  - [BAM（Better Actuator Models）仓库实体](../../wiki/entities/bam-better-actuator-models.md)
+  - [BAM（Better Actuator Models）仓库实体](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
 
 ### 4) 实验与 2R 验证（Section VI）
 

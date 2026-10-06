@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt, loco-manip-161-survey, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2506.14770"
 code: https://github.com/zixuan417/humanoid-general-motion-tracking
 related:
@@ -16,7 +16,7 @@ related:
   - ./paper-resmimic.md
   - ./paper-phygile.md
   - ./paper-loco-manip-161-007-exbody2.md
-  - ./paper-hrl-stack-25-asap.md
+  - ./paper-notebook-asap-aligning-simulation-and-real-world-physics.md
   - ./unitree-g1.md
   - ./paper-humantracker.md
   - ./paper-choreo.md
@@ -221,7 +221,7 @@ sequenceDiagram
 - [ResMimic](./paper-resmimic.md)
 - [PhyGile](./paper-phygile.md)
 - [ExBody2（161 索引）](./paper-loco-manip-161-007-exbody2.md)
-- [ASAP](./paper-hrl-stack-25-asap.md)
+- [ASAP](paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 - [Unitree G1](./unitree-g1.md)
 - [CHOREO](./paper-choreo.md) — 异源 SkillMotion 长程组合（冻结 GMT 后端）
 

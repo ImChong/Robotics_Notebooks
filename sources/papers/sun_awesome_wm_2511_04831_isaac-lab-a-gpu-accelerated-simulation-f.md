@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** An open‑source GPU‑accelerated physics simulation engine jointly developed by NVIDIA, Google DeepMind, and Disney Research, specifically designed for robotics and simulation research. Built on NVIDIA Warp, it aims to provide a robust, scalable, and extensible platform for Physical AI.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md`](../../wiki/entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md)
+- **沉淀到 wiki：** [`wiki/entities/isaac-lab.md`](../../wiki/entities/isaac-lab.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md`](../../wiki/entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md)
+- 实体页：[`wiki/entities/isaac-lab.md`](../../wiki/entities/isaac-lab.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

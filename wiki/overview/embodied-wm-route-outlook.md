@@ -29,8 +29,8 @@ sources:
 |------|-----------|----------|
 | Cosmos 3 | [cosmos-3](../entities/cosmos-3.md) | 统一骨干处理文本/图像/视频/音频/动作的全模态世界基础模型。 |
 | NVIDIA Cosmos | [nvidia-cosmos](../entities/nvidia-cosmos.md) | 1.0→2.5→3.0 平台；与 Newton 解析仿真互补。 |
-| WorldArena | [paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe](../entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md) | 对比视频质量与数据生成/策略评估/规划效用。 |
-| RoboWM-Bench | [paper-robowm-bench-action-faithfulness](../entities/paper-robowm-bench-action-faithfulness.md) | 把生成行为还原为机器人动作并在真机执行评测。 |
+| WorldArena | [paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe](../entities/worldarena.md) | 对比视频质量与数据生成/策略评估/规划效用。 |
+| RoboWM-Bench | [paper-robowm-bench-action-faithfulness](../entities/paper-rcl-2604-19092-robowm-bench-a-benchmark-for-evaluating-world-mo.md) | 把生成行为还原为机器人动作并在真机执行评测。 |
 | DreamDojo | [paper-hrl-stack-35-dreamdojo](../entities/paper-hrl-stack-35-dreamdojo.md) | 第一视角人类视频学日常交互，少量机器人数据恢复可控性。 |
 | PlayWorld | [paper-playworld-autonomous-play-data](../entities/paper-playworld-autonomous-play-data.md) | 自主玩耍采集漏抓/滑动/碰撞/形变等失败长尾。 |
 | Newton | [newton-physics](../entities/newton-physics.md) | 物理引擎提供几何/接触/约束，与神经 WM 融合。 |

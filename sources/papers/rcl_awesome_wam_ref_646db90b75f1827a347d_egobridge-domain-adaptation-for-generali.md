@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 动作策略基础 · 训练优化与蒸馏 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-646db90b75f1827a347d-egobridge-domain-adaptation-for-generalizable-im.md`](../../wiki/entities/paper-rcl-ref-646db90b75f1827a347d-egobridge-domain-adaptation-for-generalizable-im.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md`](../../wiki/entities/paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-646db90b75f1827a347d-egobridge-domain-adaptation-for-generalizable-im.md`](../../wiki/entities/paper-rcl-ref-646db90b75f1827a347d-egobridge-domain-adaptation-for-generalizable-im.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md`](../../wiki/entities/paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

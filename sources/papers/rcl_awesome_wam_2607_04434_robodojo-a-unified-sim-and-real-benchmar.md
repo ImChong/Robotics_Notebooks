@@ -15,7 +15,7 @@
 - **项目页：** <https://robodojo-benchmark.com/>
 - **子类 / 象限：** 机器人操作基准 · 仿真到真实评测 · 评测协议与诊断 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-2607-04434-robodojo-a-unified-sim-and-real-benchmark-for-co.md`](../../wiki/entities/paper-rcl-2607-04434-robodojo-a-unified-sim-and-real-benchmark-for-co.md)
+- **沉淀到 wiki：** [`wiki/entities/robodojo.md`](../../wiki/entities/robodojo.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-2607-04434-robodojo-a-unified-sim-and-real-benchmark-for-co.md`](../../wiki/entities/paper-rcl-2607-04434-robodojo-a-unified-sim-and-real-benchmark-for-co.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/robodojo.md`](../../wiki/entities/robodojo.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

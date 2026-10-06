@@ -106,7 +106,7 @@
 | ViT / TNT / CvT | [vision-transformer](../../wiki/concepts/vision-transformer.md)、[tnt](../../wiki/entities/tnt.md)、[cvt](../../wiki/entities/cvt.md) |
 | DETR 族 | [detr](../../wiki/entities/detr.md)、[deformable-detr](../../wiki/entities/deformable-detr.md) |
 | 分割任务分类 | [image-segmentation-taxonomy](../../wiki/concepts/image-segmentation-taxonomy.md) |
-| CLIP / LLaVA / SAM | [clip](../../wiki/entities/clip.md)、[llava](../../wiki/entities/llava.md)、[paper-segment-anything](../../wiki/entities/paper-segment-anything.md) |
+| CLIP / LLaVA / SAM | [clip](../../wiki/entities/paper-clip.md)、[llava](../../wiki/entities/paper-llava.md)、[paper-segment-anything](../../wiki/entities/paper-segment-anything.md) |
 | SSM / Mamba 视觉 | [state-space-model-ssm](../../wiki/concepts/state-space-model-ssm.md)、[vision-mamba-vim](../../wiki/entities/vision-mamba-vim.md)、[vmamba](../../wiki/entities/vmamba.md) |
 | 视觉基础模型趋势 | [visual-foundation-model-trends](../../wiki/concepts/visual-foundation-model-trends.md) |
 | 多模态 LLM 路线 | [multimodal-llm-development](../../wiki/overview/multimodal-llm-development.md) |

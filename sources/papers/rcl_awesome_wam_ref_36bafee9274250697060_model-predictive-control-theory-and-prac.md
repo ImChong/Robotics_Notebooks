@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-36bafee9274250697060-model-predictive-control-theory-and-practicea-su.md`](../../wiki/entities/paper-rcl-ref-36bafee9274250697060-model-predictive-control-theory-and-practicea-su.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

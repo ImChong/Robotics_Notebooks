@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-09-27
+updated: 2026-10-06
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -18,7 +18,7 @@ related:
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-rrsi-2609-24972.md
-  - ../entities/rsi-harness.md
+  - ../entities/paper-metarsi-v1.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-rsi-survey-2607-07663.md
   - ../entities/paper-neohorse-1.md

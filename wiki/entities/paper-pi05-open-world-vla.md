@@ -1,38 +1,54 @@
 ---
 type: entity
-tags: ["paper", "vla", "physical-intelligence", "flow-matching", "hmi-papers"]
+tags:
+- paper
+- vla
+- physical-intelligence
+- flow-matching
+- hmi-papers
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-10-03
-arxiv: "2504.16054"
+updated: 2026-10-06
+arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
-venue: "HMI curated · 2025"
-summary: "π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。"
+venue: HMI curated · 2025
+summary: π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。
 related:
-  - ../methods/π0-policy.md
-  - ../methods/pi07-policy.md
-  - ../methods/vla.md
-  - ../concepts/foundation-policy.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ./paper-emergent-transfer-cross-config.md
-  - ./paper-galaxea-g05.md
-  - ./paper-kai0.md
-  - ./paper-spd.md
-  - ./paper-indi.md
-  - ./paper-flashvla.md
-  - ./paper-clap-cross-embodiment.md
-  - ./paper-gpt-6-astra-embodied-policy.md
-  - ./robodojo.md
-  - ./robolab.md
-  - ./apxinf.md
-  - ./paper-autohorizon.md
+- ../methods/π0-policy.md
+- ../methods/pi07-policy.md
+- ../methods/vla.md
+- ../concepts/foundation-policy.md
+- ../entities/humanoid-motion-intelligence.md
+- ./paper-emergent-transfer-cross-config.md
+- ./paper-galaxea-g05.md
+- ./paper-kai0.md
+- ./paper-spd.md
+- ./paper-indi.md
+- ./paper-flashvla.md
+- ./paper-clap-cross-embodiment.md
+- ./paper-gpt-6-astra-embodied-policy.md
+- ./robodojo.md
+- ./robolab.md
+- ./apxinf.md
+- ./paper-autohorizon.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
-  - ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
-  - ../../sources/papers/flashvla_arxiv_2608_27384.md
-  - ../../sources/papers/clap_arxiv_2608_27406.md
-  - ../../sources/sites/pi05-open-world-generalization.md
-  - ../../sources/repos/openpi.md
+- ../../sources/papers/hmi_p059_pi05-open-world-vla.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/chi0_kai0_arxiv_2602_09021.md
+- ../../sources/papers/flashvla_arxiv_2608_27384.md
+- ../../sources/papers/clap_arxiv_2608_27406.md
+- ../../sources/sites/pi05-open-world-generalization.md
+- ../../sources/repos/openpi.md
+- ../../sources/papers/rcl_awesome_wam_ref_a351afa5504418f3e26f_0-5-a-vision-language-action-model-with.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: pi05-open-world-vla
 ---
 
 # π0.5（HMI P059）
@@ -51,6 +67,10 @@ sources:
 | FAST | Frequency-space Action Sequence Tokenization | 离散动作 token 化 |
 | FM | Flow Matching | 连续动作专家生成 |
 | BC | Behavior Cloning | 示范数据监督主线 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -176,6 +196,16 @@ sequenceDiagram
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) — RoboDojo 十任务上 π0.5 作「小脑」：混合 48% SR，仅 14.4% 步由 GPT 修正
 - [RoboLab](./robolab.md) — RoboLab-120 Default 指令约 **28%** SR / **43.4** Score（Leaderboard 快照）
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [robodojo](./robodojo.md)
+- [paper-autohorizon](./paper-autohorizon.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [官方 π₀.₅ 项目页归档](../../sources/sites/pi05-open-world-generalization.md)
@@ -186,6 +216,16 @@ sequenceDiagram
 - [HMI 论文总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)
 - [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — χ₀ 以 π₀.₅ 为生产向后训练基线
 
+- [`sources/papers/rcl_awesome_wam_ref_a351afa5504418f3e26f_0-5-a-vision-language-action-model-with.md`](../../sources/papers/rcl_awesome_wam_ref_a351afa5504418f3e26f_0-5-a-vision-language-action-model-with.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://proceedings.mlr.press/v305/black25a.html>
+
+- [flashvla_arxiv_2608_27384](../../sources/papers/flashvla_arxiv_2608_27384.md)
+
+- [clap_arxiv_2608_27406](../../sources/papers/clap_arxiv_2608_27406.md)
+
 ## 推荐继续阅读
 
 - [arXiv:2504.16054](https://arxiv.org/abs/2504.16054)
@@ -194,3 +234,6 @@ sequenceDiagram
 - [Knowledge Insulation 技术说明](https://www.pi.website/research/knowledge_insulation)
 - [代码](https://github.com/Physical-Intelligence/openpi)
 - [HMI 逐篇解读 P059](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P059.md)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://proceedings.mlr.press/v305/black25a.html)

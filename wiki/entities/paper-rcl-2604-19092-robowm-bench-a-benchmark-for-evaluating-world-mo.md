@@ -1,22 +1,33 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+tags:
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
+- world-models
+- survey-curated
+- embodied-wm-six-routes
 status: complete
-updated: 2026-09-25
-arxiv: "2604.19092"
-venue: "2026"
-summary: "RoboWM-Bench evaluates whether generated manipulation videos can be converted into robot actions that complete tasks in simulation. Separate human-hand retargeting and robot inverse-dynamics interfaces expose failures hi"
+updated: 2026-10-06
+arxiv: '2604.19092'
+venue: '2026'
+summary: RoboWM-Bench evaluates whether generated manipulation videos can be converted into robot actions that complete tasks in simulation. Separate human-hand retargeting and robot inverse-dynamics interfaces expose failures hi
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+- ../overview/embodied-wm-six-routes-technology-map.md
+- ../overview/embodied-wm-route-outlook.md
+- ../concepts/world-action-models.md
 sources:
-  - ../../sources/papers/rcl_awesome_wam_2604_19092_robowm-bench-a-benchmark-for-evaluating.md
-  - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/papers/rcl_awesome_wam_2604_19092_robowm-bench-a-benchmark-for-evaluating.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
+project_id: rcl-2604-19092-robowm-bench-a-benchmark-for-evaluating-world-mo
 ---
 
 # RoboWM-Bench
@@ -36,11 +47,13 @@ RoboWM-Bench evaluates whether generated manipulation videos can be converted in
 | IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 | WM | World Model | 环境前向预测模型 |
 
+| MPC | Model Predictive Control | 滚动时域优化选动作 |
+
 ## 为什么重要
 
 - RoboWM-Bench evaluates whether generated manipulation videos can be converted into robot actions that complete tasks in simulation. Separate human-hand retargeting and robot inverse-dynamics interfaces expose failures hidden by plausible imagery. Reliability tests support these interfaces on real demonstrations, but...
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
 ## 核心信息
 
@@ -85,11 +98,36 @@ RoboWM-Bench evaluates whether generated manipulation videos can be converted in
 1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
 2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 项 | 内容 |
+|----|------|
+| **路线** | 趋势与判断 |
+| **出处** | （策展文未给 arXiv；以原文为准） |
+| **文内角色** | 把生成行为还原为机器人动作并在真机执行评测。 |
+
+### 实验与评测
+
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [综述原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ) 指向的论文 / 项目页为准。
+- **该路线该看的指标**：该判断本身能否被复现——即所提指标 / 数据是否真的改变了对策略优劣的排序。
+- **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
+
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
+- [趋势与判断 分类 hub](../overview/embodied-wm-route-outlook.md)
+- [Generative World Models](../methods/generative-world-models.md)
+- [World Action Models](../concepts/world-action-models.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
 
 ## 参考来源
 
@@ -99,7 +137,11 @@ RoboWM-Bench evaluates whether generated manipulation videos can be converted in
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.19092>
 
+- [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+
 ## 推荐继续阅读
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2604.19092)
+
+- [具身世界模型六路线原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ)

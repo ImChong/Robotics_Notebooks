@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md`](../../wiki/entities/paper-rcl-ref-23e2ef710ce5722e25a2-advancing-ai-for-the-physical-world.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

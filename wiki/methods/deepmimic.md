@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng, paper, humanoid, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 code: https://github.com/xbpeng/DeepMimic
 venue: curated
 related:
@@ -111,4 +111,3 @@ sequenceDiagram
 - [sources/papers/modern_robotics_ch3_unit_quaternion.md](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 四元数 motion 格式与 MimicKit exp map 分层
 - [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 跟踪局限与超越路径（讲者自述归纳）
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
-

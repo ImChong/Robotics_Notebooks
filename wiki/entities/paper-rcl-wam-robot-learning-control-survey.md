@@ -1,38 +1,43 @@
 ---
 type: entity
 tags:
-  - paper
-  - survey
-  - world-action-models
-  - wam
-  - vla
-  - embodied-ai
-  - manipulation
-  - navigation
-  - autonomous-driving
-  - mbzuai
-  - rcl
+- paper
+- survey
+- world-action-models
+- wam
+- vla
+- embodied-ai
+- manipulation
+- navigation
+- autonomous-driving
+- mbzuai
+- rcl
+- curated-list
 status: complete
-updated: 2026-09-28
-arxiv: "2609.16074"
+updated: 2026-10-06
+arxiv: '2609.16074'
 code: https://github.com/RCL-Robotics/Awesome-World-Action-Models
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../concepts/world-action-models.md
-  - ../methods/vla.md
-  - ../methods/generative-world-models.md
-  - ../methods/model-based-rl.md
-  - ../methods/pi07-policy.md
-  - ../entities/paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie.md
-  - ../entities/paper-data-pyramid-embodied-manipulation.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../../roadmap/depth-wam.md
+- ../concepts/world-action-models.md
+- ../methods/vla.md
+- ../methods/generative-world-models.md
+- ../methods/model-based-rl.md
+- ../methods/pi07-policy.md
+- ../entities/paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie.md
+- ../entities/paper-data-pyramid-embodied-manipulation.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../../roadmap/depth-wam.md
+- ./awesome-world-models.md
+- ../overview/robot-world-models-training-loop-taxonomy.md
+- ../overview/robot-world-models-action-consequence-technology-map.md
 sources:
-  - ../../sources/papers/rcl_wam_robot_learning_survey.md
-  - ../../sources/sites/awesome-world-action-models-rcl.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
-  - ../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md
-summary: "RCL/MBZUAI 机器人向 WAM 综述（arXiv:2609.16074）：control utility 判据、One/Dual × Joint/IDM 四象限、数据金字塔与预训练→后训练工程路径，覆盖操纵/导航/驾驶与评测协议；配套 Awesome 564 条已开源。"
+- ../../sources/papers/rcl_wam_robot_learning_survey.md
+- ../../sources/sites/awesome-world-action-models-rcl.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+summary: RCL/MBZUAI 机器人向 WAM 综述（arXiv:2609.16074）：control utility 判据、One/Dual × Joint/IDM 四象限、数据金字塔与预训练→后训练工程路径，覆盖操纵/导航/驾驶与评测协议；配套 Awesome 564 条已开源。
+project_id: rcl-wam-robot-learning-control-survey
 ---
 
 # World-Action Models for Robot Learning and Control: A Survey
@@ -59,7 +64,6 @@ summary: "RCL/MBZUAI 机器人向 WAM 综述（arXiv:2609.16074）：control uti
 - **机器人导向的 WAM 判据**：强调 **动作是否可执行、时空是否自洽、闭环能否改进、是否满足实时预算** — 避免只用视频保真度或单点成功率评价 WAM。
 - **比 Cascaded/Joint 更细的 2×2 架构轴**：**One Model vs Dual-system** 与 **Joint prediction vs IDM** 解耦，形成 **Q1–Q4**；**Joint training  alone 不决定 One Model**，部分 IDM 推理时不滚完整未来。
 - **工程路径可落地**：**三类数据金字塔**（互联网/第三视角视频、第一视角人类演示、具身轨迹）+ **预训练（视频自监督 + 动作表征）→ 后训练（微调 / 世界模型增广 / 神经仿真 RL）** 与站内 [π0.5](../methods/pi07-policy.md)、EgoScale 类 VLA 扩展对照。
-- **配套 Awesome 可检索**：[Awesome World-Action Models（RCL）](./awesome-world-action-models-rcl.md) **564** 条 + `papers.json` / Reading reports，综述 PDF 与清单宜 **并列使用**。
 
 ## 核心信息
 
@@ -175,12 +179,84 @@ flowchart LR
 - 工程落地请下钻到具体 WAM 论文实体；本页 **不替代 PDF** 中的公式与完整 benchmark 表。
 - 开源边界：**策展仓库已开源**；复现某篇 WAM 方法须跟各自论文代码链，而非本 Awesome 仓。
 
+## 源码运行时序图
+
+**不适用**（配套仓库是论文、阅读报告和 `papers.json` 的策展资料库，不是本综述提出的机器人策略训练/推理实现；资料使用流程见本页核心结构与工程实践）。
+
+## 项目资源与工程补充
+
+### 核心结构（怎么读）
+
+#### 架构四象限
+
+```mermaid
+flowchart TB
+  subgraph axes["两轴独立"]
+    A1["One Model ↔ Dual-system"]
+    A2["Joint prediction ↔ IDM"]
+  end
+  Q1["Q1: One × Joint"]
+  Q2["Q2: One × IDM"]
+  Q3["Q3: Dual × Joint"]
+  Q4["Q4: Dual × IDM"]
+  A1 --> Q1
+  A1 --> Q2
+  A1 --> Q3
+  A1 --> Q4
+  A2 --> Q1
+  A2 --> Q2
+  A2 --> Q3
+  A2 --> Q4
+```
+
+站点提供各象限 **交互筛选**；联合训练 alone 不等价于 One Model。
+
+#### 八大类（截至 2026-09-13）
+
+| 类别 | 侧重 |
+|------|------|
+| Foundational work | 2026 前世界模型、MBRL、规划与理论 |
+| VLA | 视觉–语言–动作策略与学习方法 |
+| WAMs | 世界预测与动作生成耦合的完整系统 |
+| Datasets | 演示、交互、视频与多模态资源 |
+| Evaluation metrics | 预测质量、动作一致性与控制表现 |
+| Benchmarks & simulators | 任务、环境与仿真平台 |
+| Components of WAMs | 编码器、生成骨干、tokenizer、动作头 |
+| Related resources | 相关综述、运行时与表征研究 |
+
+#### 推荐浏览路径
+
+1. 站内 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — **564** 条逐篇独立 detail 节点（arXiv 去重链 canonical 页）
+2. [Research map](https://rcl-robotics.github.io/Awesome-World-Action-Models/map/) — 视觉化类别与架构
+3. [Paper library](https://rcl-robotics.github.io/Awesome-World-Action-Models/papers/) — 多维筛选
+4. [Reading reports](https://rcl-robotics.github.io/Awesome-World-Action-Models/reports/) — 单篇 evidence 解读
+5. 站内概念页 [WAM](../concepts/world-action-models.md) — 与实例论文实体交叉阅读
+
+### 中文导读（具身智能之心，2026-09-25）
+
+[近 300 篇工作调研 · WAM 训练策略](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md) 用中文串读综述主线：**WM/VLA/WAM 分界**、**π0.5 / EgoScale** 两类 VLA 扩展、**三类数据金字塔**、**预训练（视频自监督 + 动作表征）→ 后训练（微调 / 增广 / 神经仿真 RL）**，并与本站 Q1–Q4 架构轴对照。文内「近 300 篇」指综述梳理规模；本清单 **564 entries** 含 VLA/数据/基准分册，宜并列使用。
+
+### 局限与使用注意
+
+- **综述 PDF**：正式编号 [arXiv:2609.16074](https://arxiv.org/abs/2609.16074)；引用以 PDF 与项目页为准。
+- **清单滞后**：awesome 依赖维护者更新；关键结论以原文与官方仓为准。
+- **非可运行栈**：MIT 许可的是站点/策展工具链，不含训练代码。
+- **与 OpenMOSS 分工**：2605.12090 配套 [Awesome-WAM](../../sources/repos/awesome-wam-openmoss.md) 更早建立 Cascaded/Joint 叙事；本清单 **条目更多、架构轴更细**，宜并列使用而非互相替代。
+
 ## 关联页面
 
-- [Awesome World-Action Models（RCL）](./awesome-world-action-models-rcl.md)
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [VLA](../methods/vla.md)
+
+- [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — PAPERS.md 全量站内索引
+- [Awesome World Models](./awesome-world-models.md) — WM 全谱策展
+- [VLA](../methods/vla.md) · [Generative World Models](../methods/generative-world-models.md) · [Model-Based RL](../methods/model-based-rl.md)
+- [机器人世界模型训练闭环](../overview/robot-world-models-training-loop-taxonomy.md)
+- [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md)
+
+- [paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie](../entities/paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie.md)
+- [paper-data-pyramid-embodied-manipulation](../entities/paper-data-pyramid-embodied-manipulation.md)
 
 ## 参考来源
 
@@ -189,8 +265,15 @@ flowchart LR
 - [Awesome 仓库索引](../../sources/repos/awesome-world-action-models-rcl.md)
 - [具身智能之心 · WAM 训练策略导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 
+- [sources/papers/rcl_awesome_wam_catalog.md](../../sources/papers/rcl_awesome_wam_catalog.md) — PAPERS.md / papers.json 解析目录
+
 ## 推荐继续阅读
 
 - 综述 PDF：<https://arxiv.org/abs/2609.16074>
 - 交互索引：<https://rcl-robotics.github.io/Awesome-World-Action-Models/>
 - GitHub：<https://github.com/RCL-Robotics/Awesome-World-Action-Models>
+
+- [项目主页](https://rcl-robotics.github.io/Awesome-World-Action-Models/)
+- [GitHub 仓库 README](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [OpenMOSS Awesome-WAM](https://github.com/OpenMOSS/Awesome-WAM) — Cascaded/Joint 专题对照
+- Wang et al., *World Action Models: The Next Frontier in Embodied AI* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)

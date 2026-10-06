@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:

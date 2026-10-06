@@ -1,27 +1,46 @@
 ---
 type: entity
-tags: [simulation, physics-engine, reinforcement-learning, pybullet, bullet3, python]
+tags:
+- simulation
+- physics-engine
+- reinforcement-learning
+- pybullet
+- bullet3
+- python
+- paper
+- awesome-sim2real
+- longchao-sim2real
 status: complete
-updated: 2026-08-04
+updated: 2026-10-06
 related:
-  - ./gym-pybullet-drones.md
-  - ./motion-imitation-quadruped.md
-  - ./igibson.md
-  - ./habitat-sim.md
-  - ../overview/sim-platforms-decade-technology-map.md
-  - ./mujoco.md
-  - ./isaac-gym-isaac-lab.md
-  - ../concepts/embodied-rl-minimal-closed-loop.md
-  - ../methods/reinforcement-learning.md
-  - ../comparisons/mujoco-vs-isaac-sim.md
-  - ../formalizations/contact-complementarity.md
+- ./gym-pybullet-drones.md
+- ./motion-imitation-quadruped.md
+- ./igibson.md
+- ./habitat-sim.md
+- ../overview/sim-platforms-decade-technology-map.md
+- ./mujoco.md
+- ./isaac-gym-isaac-lab.md
+- ../concepts/embodied-rl-minimal-closed-loop.md
+- ../methods/reinforcement-learning.md
+- ../comparisons/mujoco-vs-isaac-sim.md
+- ../formalizations/contact-complementarity.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../concepts/sim2real.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/bullet3.md
-  - ../../sources/sites/pybullet-org.md
-  - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
-  - ../../sources/repos/habitat-sim.md
-  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
-summary: "PyBullet 是 Bullet3 物理引擎的 Python 绑定：URDF 加载、关节驱动、碰撞与传感器接口轻量，pip 即可安装；常用于 RL 入门闭环、四足模仿与课程实验；精细接触与人形大规模并行不如 MuJoCo / Isaac Lab。"
+- ../../sources/repos/bullet3.md
+- ../../sources/sites/pybullet-org.md
+- ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+- ../../sources/repos/habitat-sim.md
+- ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+- ../../sources/papers/lc_awesome_sim2real_noarxiv_099_pybullet-real-time-physics-simulation.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+summary: PyBullet 是 Bullet3 物理引擎的 Python 绑定：URDF 加载、关节驱动、碰撞与传感器接口轻量，pip 即可安装；常用于 RL 入门闭环、四足模仿与课程实验；精细接触与人形大规模并行不如 MuJoCo / Isaac Lab。
+project_id: pybullet
+venue: PyBullet project site (no formal publication)
 ---
 
 # PyBullet
@@ -42,6 +61,11 @@ summary: "PyBullet 是 Bullet3 物理引擎的 Python 绑定：URDF 加载、关
 | GUI | Graphical User Interface | `p.connect(p.GUI)` 可视化调试 |
 | LCP | Linear Complementarity Problem | Bullet 刚体接触常用 hard-contact 求解框架 |
 | FEM | Finite Element Method | Bullet3 可选可变形体仿真（相对 RL 主线较少用） |
+
+| Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
+| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
 
 ## 与 Bullet3 的分层
 
@@ -107,6 +131,14 @@ flowchart TB
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [接触互补形式化](../formalizations/contact-complementarity.md)
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [igibson](./igibson.md)
+- [sim-platforms-decade-technology-map](../overview/sim-platforms-decade-technology-map.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [Bullet3 Physics SDK](../../sources/repos/bullet3.md) — 官方 C++ 仓、`pybullet_envs` 与构建说明
@@ -115,8 +147,19 @@ flowchart TB
 - [PyBullet Quickstart Guide](https://docs.google.com/document/d/10sXEhzFRSnvFcl3XxNGhnD4N2SedqwdAvK3dsihxVUA/edit) — 官方 API 教程（以文档为准）
 - [bulletphysics/bullet3](https://github.com/bulletphysics/bullet3) · [pybullet.org](https://pybullet.org/wordpress/)
 
+- [`sources/papers/lc_awesome_sim2real_noarxiv_099_pybullet-real-time-physics-simulation.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_099_pybullet-real-time-physics-simulation.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://pybullet.org/wordpress/>
+
+- [habitat-sim](../../sources/repos/habitat-sim.md)
+
+- [wechat_shenlan_sim_platforms_top8_decade](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
+
 ## 推荐继续阅读
 
 - [PyBullet Quickstart Guide](https://docs.google.com/document/d/10sXEhzFRSnvFcl3XxNGhnD4N2SedqwdAvK3dsihxVUA/edit) — URDF、控制模式与传感器
 - [Google Colab PyBullet + SB3 示例](https://pybullet.org/wordpress/) — 站点链出的在线训练入口
 - [motion_imitation 项目页](https://github.com/google-research/motion_imitation) — 四足模仿动物官方实现
+
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)

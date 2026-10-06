@@ -2,14 +2,14 @@
 type: entity
 tags: ["paper", "dataset", "cross-embodiment", "vla", "rt-x", "hmi-papers"]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2310.08864"
 code: https://github.com/google-deepmind/open_x_embodiment
 venue: "HMI curated · 2023"
 summary: "Open X-Embodiment（HMI P055）：把 60+ 数据集、22 类本体整理到统一 schema，并用 RT-X 检验跨本体混合训练何时带来正迁移——统一的是存储与粗动作接口，不是动力学。"
 related:
   - ../methods/robotics-transformer-rt-series.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ../methods/octo-model.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/humanoid-motion-intelligence.md
@@ -104,7 +104,7 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | 本工作（OXE / RT-X） | [RT 系列](../methods/robotics-transformer-rt-series.md) | [Octo](../methods/octo-model.md) | [OpenVLA](openvla.md) |
+| 维度 | 本工作（OXE / RT-X） | [RT 系列](../methods/robotics-transformer-rt-series.md) | [Octo](../methods/octo-model.md) | [OpenVLA](paper-openvla.md) |
 |------|----------------------|--------------------------------------------------------|----------------------------------|-----------------------|
 | 定位 | 跨本体数据底座 + 统一 schema | 数据源之一，并以 RT-X 验证迁移 | 在 OXE 上训的开源通用策略 | 在 OXE 等上训的开源 VLA |
 | 主要贡献 | 60+ 数据集、22 类本体统一存储与粗动作接口 | Transformer 动作策略骨架 | 块状注意力 + 可换读出头 | Prismatic VLM + 离散动作 token |
@@ -116,7 +116,7 @@ flowchart LR
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [robotics-transformer-rt-series](../methods/robotics-transformer-rt-series.md)
-- [openvla](./openvla.md)
+- [openvla](paper-openvla.md)
 - [octo-model](../methods/octo-model.md)
 - [cross-embodiment-transfer-strategy](../queries/cross-embodiment-transfer-strategy.md)
 

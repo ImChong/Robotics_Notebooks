@@ -83,7 +83,7 @@
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 056 | AGILE | [paper-loco-manip-161-056-agile](../../wiki/entities/paper-loco-manip-161-056-agile.md) |
+| 056 | AGILE | [paper-loco-manip-161-056-agile](../../wiki/entities/paper-agile-humanoid-loco-manipulation.md) |
 | 057 | Being-0 | [paper-loco-manip-161-057-being-0](../../wiki/entities/paper-loco-manip-161-057-being-0.md) |
 | 058 | Cybo-Waiter | [paper-loco-manip-161-058-cybo-waiter](../../wiki/entities/paper-loco-manip-161-058-cybo-waiter.md) |
 | 059 | DemoHLM | [paper-loco-manip-161-059-demohlm](../../wiki/entities/paper-loco-manip-161-136-demohlm.md) |
@@ -238,4 +238,3 @@
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
 | 161 | EgoVLA | [paper-loco-manip-161-161-egovla](../../wiki/entities/paper-loco-manip-161-161-egovla.md) |
-

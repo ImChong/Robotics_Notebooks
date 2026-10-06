@@ -1,26 +1,38 @@
 ---
 type: entity
 tags:
-  - paper
-  - vla
-  - transformer
-  - manipulation
-  - foundation-policy
-  - google-deepmind
+- paper
+- vla
+- transformer
+- manipulation
+- foundation-policy
+- google-deepmind
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-15
-arxiv: "2212.06817"
+updated: 2026-10-06
+arxiv: '2212.06817'
 code: https://github.com/google-research/robotics_transformer
 related:
-  - ./paper-rt-2.md
-  - ../methods/robotics-transformer-rt-series.md
-  - ../methods/vla.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-rt-2.md
+- ../methods/robotics-transformer-rt-series.md
+- ../methods/vla.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/rt_1_arxiv_2212_06817.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/repos/google-research-robotics-transformer.md
-summary: "RT-1（arXiv:2212.06817，Google DeepMind）：大规模真机演示上的 Robotics Transformer；FiLM 语言条件 + TokenLearner + 256-bin 离散动作；google-research/robotics_transformer 已开源。"
+- ../../sources/papers/rt_1_arxiv_2212_06817.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/repos/google-research-robotics-transformer.md
+- ../../sources/papers/rcl_awesome_wam_ref_d73223ab358ff6f8ecd9_rt-1-robotics-transformer-for-real-world.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: RT-1（arXiv:2212.06817，Google DeepMind）：大规模真机演示上的 Robotics Transformer；FiLM 语言条件 + TokenLearner + 256-bin 离散动作；google-research/robotics_transformer 已开源。
+project_id: rt-1
+venue: RSS 2023
 ---
 
 # RT-1：规模化真机控制的 Robotics Transformer
@@ -39,6 +51,10 @@ summary: "RT-1（arXiv:2212.06817，Google DeepMind）：大规模真机演示�
 | FiLM | Feature-wise Linear Modulation | 用语言调制视觉特征 |
 | VLA | Vision-Language-Action | 后续由 [RT-2](./paper-rt-2.md) 命名的范式 |
 | BC | Behavior Cloning | 本工作的训练范式 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -123,13 +139,31 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 推荐继续阅读
 
 - [arXiv:2212.06817](https://arxiv.org/abs/2212.06817)
 - [google-research/robotics_transformer](https://github.com/google-research/robotics_transformer)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://www.roboticsproceedings.org/rss19/p025.pdf)
 
 ## 参考来源
 
 - [rt_1_arxiv_2212_06817](../../sources/papers/rt_1_arxiv_2212_06817.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [google-research-robotics-transformer](../../sources/repos/google-research-robotics-transformer.md)
+
+- [`sources/papers/rcl_awesome_wam_ref_d73223ab358ff6f8ecd9_rt-1-robotics-transformer-for-real-world.md`](../../sources/papers/rcl_awesome_wam_ref_d73223ab358ff6f8ecd9_rt-1-robotics-transformer-for-real-world.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://www.roboticsproceedings.org/rss19/p025.pdf>
+
+- [原论文与官方资源](https://robotics-transformer1.github.io)

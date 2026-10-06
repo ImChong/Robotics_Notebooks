@@ -6,12 +6,12 @@ tags:
 - vla
 - reinforcement-learning
 status: complete
-updated: '2026-10-05'
+updated: 2026-10-06
 arxiv: '2604.23073'
 venue: '2026'
 summary: RL Token 将预训练 VLA 特征压成紧凑状态表示，在冻结大模型后用轻量 actor/critic 在线修正动作块，提高精密操作的学习效率。
 related:
-- ../entities/awesome-world-action-models-rcl.md
+- paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
 - ../methods/generative-world-models.md
 - ../methods/vla.md

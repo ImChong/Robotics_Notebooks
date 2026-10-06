@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, sim2real, system-identification, actuator, locomotion, isaac-lab, anymal, quadruped, energy-efficiency, eth, ppo]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2509.06342"
 venue: IJRR (submitted)
 code: https://github.com/leggedrobotics/pace-sim2real

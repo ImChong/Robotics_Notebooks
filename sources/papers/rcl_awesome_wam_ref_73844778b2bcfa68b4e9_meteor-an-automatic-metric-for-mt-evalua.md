@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-73844778b2bcfa68b4e9-meteor-an-automatic-metric-for-mt-evaluation-wit.md`](../../wiki/entities/paper-rcl-ref-73844778b2bcfa68b4e9-meteor-an-automatic-metric-for-mt-evaluation-wit.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 venue: "IEEE Trans. 2024"
 summary: "Enhances sample efficiency and robustness via semantic masked world models."
 related:

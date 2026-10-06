@@ -67,7 +67,7 @@ flowchart LR
 
 1. 从官方权重与 README 的微调脚本起步，先固定相机与动作归一化。
 2. 新机器人优先改读出头与动作缩放，再决定是否解冻视觉主干。
-3. 与 [OpenVLA](../entities/openvla.md)、[π₀](./π0-policy.md) 对比时对齐数据预算与评测任务。
+3. 与 [OpenVLA](../entities/paper-openvla.md)、[π₀](./π0-policy.md) 对比时对齐数据预算与评测任务。
 
 | 检查项 | 建议 |
 |--------|------|

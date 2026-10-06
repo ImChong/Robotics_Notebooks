@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-2607-08127-understanding-and-mitigating-the-video-action-ge.md`](../../wiki/entities/paper-rcl-2607-08127-understanding-and-mitigating-the-video-action-ge.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

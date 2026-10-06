@@ -827,7 +827,7 @@ overrides:
   humanoidpano-hybrid-spherical-panoramic-lidar-cr:
   - wiki/entities/paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md
   humanoidverse-a-versatile-humanoid-for-vision-la:
-  - wiki/entities/paper-notebook-humanoidverse.md
+  - wiki/entities/humanoidverse.md
   hwc-loco-a-hierarchical-whole-body-control-appro:
   - wiki/entities/paper-notebook-hwc-loco-a-hierarchical-whole-body-control-appro.md
   hypermotion-learning-hybrid-behavior-planning-fo:

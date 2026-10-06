@@ -41,4 +41,4 @@
 - [FloBaRoID 实体](../../wiki/entities/flobaroid.md)
 - [关节执行器参数辨识](../../wiki/methods/joint-actuator-parameter-identification.md)
 - [论文簇](../papers/joint_actuator_parameter_identification.md)
-- 对照：[BAM](../../wiki/entities/bam-better-actuator-models.md)（摆锤、无力矩传感）、[PACE](../../wiki/entities/paper-pace-sim2real-legged-robots.md)（悬空 chirp）
+- 对照：[BAM](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)（摆锤、无力矩传感）、[PACE](../../wiki/entities/paper-pace-sim2real-legged-robots.md)（悬空 chirp）

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "1705.10667"
 venue: "Advances in neural information processing systems"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本页是清单索引，细节以原文为准。"

@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-2502-10498-the-role-of-world-models-in-shaping-autonomous-d.md`](../../wiki/entities/paper-rcl-2502-10498-the-role-of-world-models-in-shaping-autonomous-d.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

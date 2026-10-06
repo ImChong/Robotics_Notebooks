@@ -10,7 +10,7 @@ tags:
   - beihang
   - shanghaitech
 status: complete
-updated: 2026-09-24
+updated: 2026-10-06
 arxiv: "2601.20321"
 venue: "arXiv 2026"
 summary: "TaF-VLA（arXiv:2601.20321，北航/上科大/BIGAI/HKU）：触觉–力对齐（非触觉–视觉）；TaF-Device 10M+ 帧 TaF-Dataset + TaF-Adapter VQ 对比学习；7 力敏感任务平均 +22%；mrHuangyz/TaF-VLA 部分开源。"

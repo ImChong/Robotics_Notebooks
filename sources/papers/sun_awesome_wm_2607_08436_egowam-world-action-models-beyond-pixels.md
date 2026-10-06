@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 - **项目页：** <https://gatech-rl2.github.io/egowam.github.io/>
 - **Highlights（清单）：** World action models beyond pixels using in-the-wild egocentric human data.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md`](../../wiki/entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](../../wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md`](../../wiki/entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md)
+- 实体页：[`wiki/entities/paper-egowam-egocentric-human-wam-co-training.md`](../../wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

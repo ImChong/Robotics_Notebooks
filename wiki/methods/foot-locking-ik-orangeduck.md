@@ -2,14 +2,14 @@
 type: method
 tags: [kinematics, inverse-kinematics, animation, foot-locking, motion-retargeting, inertialization]
 status: complete
-updated: 2026-09-13
+updated: 2026-10-06
 related:
   - ../formalizations/inverse-kinematics.md
   - ../formalizations/forward-kinematics.md
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
   - ../entities/genoview-inverse-kinematics.md
-  - ../entities/core-retarget.md
+  - ../entities/paper-core.md
   - ../entities/paper-kdmr.md
 sources:
   - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
@@ -37,7 +37,7 @@ summary: "Andrew McDonald（The Orange Duck）的动画足锁管线：两骨 IK 
 | 场景 | 作用 |
 |------|------|
 | 游戏/动画 runtime | 根运动缩放、状态混合、程序化修正后，视觉脚滑几乎不可避免 |
-| 重定向后处理 | GMR 等几何重定向产出「像人」的轨迹，仍常需 **接触段足位** 修补（对照 [CoRe](../entities/core-retarget.md)、[KDMR](../entities/paper-kdmr.md) 的机器人侧做法） |
+| 重定向后处理 | GMR 等几何重定向产出「像人」的轨迹，仍常需 **接触段足位** 修补（对照 [CoRe](../entities/paper-core.md)、[KDMR](../entities/paper-kdmr.md) 的机器人侧做法） |
 | 数据质检 | 高对比网格地面 + 慢放，是发现脚滑/穿透的低成本手段（[GenoView](../entities/genoview-inverse-kinematics.md)） |
 
 脚滑在学术圈关注少于机器人动力学，却是 **动捕→ playable 动画** 链路上极常见的视觉瑕疵；此文给出可复现的四段配方与三条易错哲学，适合作为动画侧 IK 入门对照 [逆运动学形式化](../formalizations/inverse-kinematics.md) 中的雅可比/QP 路线。
@@ -122,7 +122,7 @@ IK 每步后需 **FK** 更新下游全局变换（实现可只重算子链）。
 | 3. Runtime | `blendTime`、`lockDistance`/`unlockDistance` 与角色步幅联调 |
 | 4. 腿 IK | `softening≈0.005 m`；knee side vector 与骨架 rest pose 一致 |
 | 5. 离线 | `softFactor`/`hardFactor` 权衡「跟源动画」vs「消脚滑」；迭代次数 vs 耗时 |
-| 6. 对照 | 机器人重定向脚滑见 [GMR](./motion-retargeting-gmr.md) 下游 [CoRe](../entities/core-retarget.md) / [KDMR](../entities/paper-kdmr.md) |
+| 6. 对照 | 机器人重定向脚滑见 [GMR](./motion-retargeting-gmr.md) 下游 [CoRe](../entities/paper-core.md) / [KDMR](../entities/paper-kdmr.md) |
 
 可运行参考：[GenoView-InverseKinematics](../entities/genoview-inverse-kinematics.md)（MIT，raylib + Geno BVH 导出脚本）。
 

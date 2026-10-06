@@ -65,7 +65,7 @@
 ## 对 wiki 的映射
 
 - 升格 [Temporal GRPO 论文实体](../../wiki/entities/paper-temporal-grpo.md)
-- 交叉：[VLA](../../wiki/methods/vla.md)、[TEMPO](../../wiki/entities/paper-tempo.md)、[Green-VLA](../../wiki/entities/paper-greenvla-staged-vla-humanoid.md)、[RoboTwin](../../wiki/entities/robotwin.md)、[LIBERO](../../wiki/entities/libero-benchmark.md)、[OpenVLA](../../wiki/entities/openvla.md)、[WCM](../../wiki/entities/paper-wcm-world-critic-model.md)、[RynnBrain 1.1](../../wiki/entities/paper-rynnbrain-1-1.md)
+- 交叉：[VLA](../../wiki/methods/vla.md)、[TEMPO](../../wiki/entities/paper-tempo.md)、[Green-VLA](../../wiki/entities/paper-greenvla-staged-vla-humanoid.md)、[RoboTwin](../../wiki/entities/robotwin.md)、[LIBERO](../../wiki/entities/libero-benchmark.md)、[OpenVLA](../../wiki/entities/paper-openvla.md)、[WCM](../../wiki/entities/paper-wcm-world-critic-model.md)、[RynnBrain 1.1](../../wiki/entities/paper-rynnbrain-1-1.md)
 
 ## 当前提炼状态
 

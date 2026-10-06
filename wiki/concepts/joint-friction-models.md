@@ -2,7 +2,7 @@
 type: concept
 tags: [friction, actuator, system-identification, sim2real, modeling]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./system-identification.md
   - ./friction-compensation.md
@@ -11,7 +11,7 @@ related:
   - ../methods/ssrm-steady-state-response-method.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -71,14 +71,14 @@ $$
 
 ### 3. 扩展执行器模型
 
-见 [BAM](../entities/bam-better-actuator-models.md)：摩擦 + 齿槽 + 伺服带宽联合建模。
+见 [BAM](../entities/paper-bam-extended-friction-servo-actuators.md)：摩擦 + 齿槽 + 伺服带宽联合建模。
 
 ## 辨识与可微拟合
 
 | 方法 | 思路 |
 |------|------|
 | 经典回归 / 最小二乘 | 正弦/Fourier 激励，拟合 $\tau_c, b$；有力矩时见 [FloBaRoID](../entities/flobaroid.md) |
-| CMA-ES 仿真对齐 | 无力矩传感时拟合 $I_a,b,\tau_c$（[BAM](../entities/bam-better-actuator-models.md) / [PACE](../entities/paper-pace-sim2real-legged-robots.md)） |
+| CMA-ES 仿真对齐 | 无力矩传感时拟合 $I_a,b,\tau_c$（[BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [PACE](../entities/paper-pace-sim2real-legged-robots.md)） |
 | 可微仿真 + 梯度 | 仿真轨迹 MSE 对摩擦参数求导（课程 `jax.grad`） |
 | 执行器网络 | 数据驱动补偿残差（[Actuator Network](../methods/actuator-network.md)） |
 

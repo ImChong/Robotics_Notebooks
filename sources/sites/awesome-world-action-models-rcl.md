@@ -56,7 +56,7 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[Awesome World-Action Models（RCL）](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[Awesome World-Action Models（RCL）](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)
 - 概念交叉：[World Action Models（WAM）](../../wiki/concepts/world-action-models.md) — 补 2×2 taxonomy 与 control utility 准则
 - 对照策展：[Awesome-WAM（OpenMOSS）](../repos/awesome-wam-openmoss.md) · [Awesome World Models（sun254667）](../repos/awesome-world-models.md)
 - 综述 source：[rcl_wam_robot_learning_survey.md](../papers/rcl_wam_robot_learning_survey.md)

@@ -1,28 +1,41 @@
 ---
 type: entity
 tags:
-  - paper
-  - vla
-  - generalist-policy
-  - manipulation
-  - berkeley
-  - stanford
-  - google
+- paper
+- vla
+- generalist-policy
+- manipulation
+- berkeley
+- stanford
+- google
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-28
-arxiv: "2405.12213"
+updated: 2026-10-06
+arxiv: '2405.12213'
 code: https://github.com/octo-models/octo
 related:
-  - ../methods/octo-model.md
-  - ./paper-openvla.md
-  - ./paper-open-x-embodiment.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
-  - ./paper-dita-scaling-diffusion-transformer-vla.md
+- ../methods/octo-model.md
+- ./paper-openvla.md
+- ./paper-open-x-embodiment.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-dita-scaling-diffusion-transformer-vla.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/octo_arxiv_2405_12213.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/repos/octo-models.md
-summary: "Octo（arXiv:2405.12213）：开源通用机器人策略；灵活 token 输入 + 独立读出头；~27M 即可工作。canonical 论文节点从方法页迁到本页。"
+- ../../sources/papers/octo_arxiv_2405_12213.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/repos/octo-models.md
+- ../../sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: Octo（arXiv:2405.12213）：开源通用机器人策略；灵活 token 输入 + 独立读出头；~27M 即可工作。canonical 论文节点从方法页迁到本页。
+project_id: octo
+venue: RSS 2024
 ---
 
 # Octo：灵活输入的开源通才操作策略
@@ -41,6 +54,10 @@ summary: "Octo（arXiv:2405.12213）：开源通用机器人策略；灵活 toke
 | VLA | Vision-Language-Action | 可含语言条件的通才策略 |
 | GC | Goal Conditioning | 目标图像条件 |
 | DoF | Degrees of Freedom | 读出头要适配的动作维 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -124,13 +141,30 @@ sequenceDiagram
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [Dita](./paper-dita-scaling-diffusion-transformer-vla.md) — 同为 OXE 预训练：Octo 单 embedding + 小 MLP 去噪 vs Dita 的 in-context 扩散 Transformer
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 推荐继续阅读
 
 - [项目页](https://octo-models.github.io/)
 - [arXiv:2405.12213](https://arxiv.org/abs/2405.12213)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://www.roboticsproceedings.org/rss20/p090.pdf)
 
 ## 参考来源
 
 - [octo_arxiv_2405_12213](../../sources/papers/octo_arxiv_2405_12213.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [octo-models](../../sources/repos/octo-models.md)
+
+- [`sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md`](../../sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://www.roboticsproceedings.org/rss20/p090.pdf>

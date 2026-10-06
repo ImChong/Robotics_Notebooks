@@ -2,14 +2,14 @@
 type: query
 tags: [recursive-self-improvement, llm-agents, agent-harness, self-improvement, ai-auto-research, governance, benchmarks]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-06
 summary: "用四层 RSI 标准（持久改进→有界闭环→ignition→开放式）与五次边界推进梳理 LLM/agent 自进化史：记忆、权重、AI 打分、harness 与研究过程逐层内收；2026 夏闭环可净正转几圈，点火与开放式 RSI 仍待证。"
 related:
   - ../../roadmap/depth-rsi.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
   - ../entities/awesome-rsi.md
-  - ../entities/rsi-harness.md
+  - ../entities/paper-metarsi-v1.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/karpathy-autoresearch.md
   - ../entities/paper-motus2.md
@@ -142,7 +142,7 @@ flowchart LR
 - [递归自改进（宏观）](../concepts/recursive-self-improvement.md) — Anthropic 生产率、三情景与具身跟随假设
 - [Awesome RSI](../entities/awesome-rsi.md) — 50+ 方法 / 29 基准的 artifact 索引
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇两轴 taxonomy + 验证层级 + 开源语料
-- [RSI-Harness](../entities/rsi-harness.md) · [MetaRSI-v1](../entities/paper-metarsi-v1.md) — harness 一等对象与三算子框架
+- [RSI-Harness](../entities/paper-metarsi-v1.md) · [MetaRSI-v1](../entities/paper-metarsi-v1.md) — harness 一等对象与三算子框架
 - [karpathy/autoresearch](../entities/karpathy-autoresearch.md) — 最小训练脚本自改环
 - [Motus2](../entities/paper-motus2.md) — 第五次推进中的 GWM 真机有界闭环
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 学术全生命周期自动化 vs agent 状态自更新

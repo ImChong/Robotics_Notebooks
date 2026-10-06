@@ -1,40 +1,55 @@
 ---
 type: entity
 tags:
-  - paper
-  - world-action-models
-  - wam
-  - manipulation
-  - flow-matching
-  - causal-autoregressive
-  - egocentric-video
-  - cross-embodiment
-  - closed-source
-  - riemann-dynamics
-  - kunlun-wanwei
+- paper
+- world-action-models
+- wam
+- manipulation
+- flow-matching
+- causal-autoregressive
+- egocentric-video
+- cross-embodiment
+- closed-source
+- riemann-dynamics
+- kunlun-wanwei
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
+- world-models
+- survey-curated
+- embodied-wm-six-routes
 status: complete
-updated: 2026-09-15
-venue: "Riemann Dynamics Technical Report 2026"
+updated: 2026-10-06
+venue: Riemann Dynamics Technical Report 2026
 related:
-  - ../concepts/world-action-models.md
-  - ../methods/vla.md
-  - ../methods/generative-world-models.md
-  - ../tasks/manipulation.md
-  - ../../roadmap/depth-wam.md
-  - ./dyna-2.md
-  - ./paper-abot-m05-mobile-manipulation-wam.md
-  - ./paper-galaxea-g05.md
-  - ./tau0-world-model.md
-  - ./paper-worldscape-policy-2.md
-  - ./paper-riemann-1-causal-action-video-wam.md
-  - ./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md
-  - ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
+- ../concepts/world-action-models.md
+- ../methods/vla.md
+- ../methods/generative-world-models.md
+- ../tasks/manipulation.md
+- ../../roadmap/depth-wam.md
+- ./dyna-2.md
+- ./paper-abot-m05-mobile-manipulation-wam.md
+- ./paper-galaxea-g05.md
+- ./tau0-world-model.md
+- ./paper-worldscape-policy-2.md
+- ./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md
+- ../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../tasks/locomotion.md
+- ../overview/embodied-wm-six-routes-technology-map.md
+- ../overview/embodied-wm-route-action.md
 sources:
-  - ../../sources/papers/riemann_1_0.md
-  - ../../sources/sites/riemann-1-0-website.md
-  - ../../sources/repos/riemann-1-0-website.md
-  - ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
-summary: "Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回归 WAM，先出动作再条件化未来视觉 latent，同一模型兼任策略与世界仿真；232K+ h 人/UMI/机三阶段预训练。RoboCasa365 62.6%、RoboTwin 94.3%、LIBERO 99.0%；天机 Marvin 真机均 85.0% SR。确认未开源。"
+- ../../sources/papers/riemann_1_0.md
+- ../../sources/sites/riemann-1-0-website.md
+- ../../sources/repos/riemann-1-0-website.md
+- ../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md
+- ../../sources/papers/rcl_awesome_wam_2608_27033_riemann-1-0-an-embodied-world-action-mod.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
+summary: Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回归 WAM，先出动作再条件化未来视觉 latent，同一模型兼任策略与世界仿真；232K+ h 人/UMI/机三阶段预训练。RoboCasa365 62.6%、RoboTwin 94.3%、LIBERO 99.0%；天机 Marvin 真机均 85.0% SR。确认未开源。
+project_id: riemann-1
+arxiv: '2608.27033'
 ---
 
 # Riemann-1.0（全因果自回归 World Action Model）
@@ -62,6 +77,10 @@ summary: "Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回
 | PSR | Progress Success Rate | 按中间里程碑计的过程成功率 |
 | UMI | Universal Manipulation Interface | 手持夹爪示教，桥接人–机动作空间 |
 | VAE | Variational Autoencoder | Wan 视觉压缩；LAM 也是帧对 VAE |
+
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -215,7 +234,17 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 - [G0.5](./paper-galaxea-g05.md) — 真机次强开源 VLA
 - [τ₀-WM](./tau0-world-model.md) — 联合视频–动作 + 测试时仿真
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 3 学习入口
-- [六路线策展入口](./paper-riemann-1-causal-action-video-wam.md) — 行动主导型导航钉；数字以本页为准
+
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
+- [行动主导型 分类 hub](../overview/embodied-wm-route-action.md)
+
+- [clap-cross-embodiment-vla-wm-9-papers-technology-map](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
 
 ## 参考来源
 
@@ -223,9 +252,24 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 - [Riemann-1.0 项目页归档](../../sources/sites/riemann-1-0-website.md)
 - [官网静态仓归档](../../sources/repos/riemann-1-0-website.md)
 
+- [`sources/papers/rcl_awesome_wam_2608_27033_riemann-1-0-an-embodied-world-action-mod.md`](../../sources/papers/rcl_awesome_wam_2608_27033_riemann-1-0-an-embodied-world-action-mod.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://arxiv.org/abs/2608.27033>
+
+- [六路线综述摘录](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+
+- [wechat_embodied_station_clap_9_papers_open_source_2026-08-31](../../sources/blogs/wechat_embodied_station_clap_9_papers_open_source_2026-08-31.md)
+
 ## 推荐继续阅读
 
 - [Riemann-1.0 项目页](https://riemann-dynamics.github.io/Riemann-1.0-Website)（含 PDF 与真机/仿真视频）
 - [ABot-M0.5（arXiv:2607.00678）](https://arxiv.org/abs/2607.00678) — RoboCasa365 对照
 - [G0.5 技术报告](https://opengalaxea.github.io/G05/) — 真机开源对照
 - Wang et al., *World Action Models* — [arXiv:2605.12090](https://arxiv.org/abs/2605.12090)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://arxiv.org/abs/2608.27033)
+
+- [六路线原文](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ)

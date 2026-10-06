@@ -21,6 +21,16 @@
 
 本地 **`make ci-preflight`** 与 GitHub Actions **互补**：提交前本地预检；PR 上仍以 Actions 检查结果为准。
 
+## 项目节点去重门禁（2026-10-06）
+
+- [x] 合并同项目论文 / 网站 / 官方源码及重复清单入口，迁移源资料映射与历史详情 ID。
+- [x] Wiki Lint 全库检查唯一 `project_id`、规范化 arXiv 编号（含 `paper` / `papers`）与官方项目 URL。
+- [x] PR / push 相对各自基线检查新增项目实体必须标注身份；新源码页复用既有官方仓库且无法区分独立工作时阻塞。
+- [x] 不以正文引用、原始资料归档或单纯共用库判重复；不同论文与明确的独立单仓模块可分别维护。
+- [x] `make ci-preflight` 接入同一检查，回归测试覆盖论文/项目拆分、版本号、URL、共仓边界和无效基线。
+
+快速复现：`python3 scripts/check_project_nodes.py --base HEAD`。出现失败时优先补充既有主节点；合并后同时登记 `schema/page-aliases.json`，不要只改字段来绕过检查。
+
 ## 若 PR 只有 Claude/Cursor checks、没有 GitHub Actions
 
 在 commit 的 check-suites 里若只看到 **Claude**、**Cursor** 为 `queued`，而 **没有任何** `Tests` / `Wiki Lint` / `CI PR Gate` 等 Actions 工作流 run（Actions 页 `created > 合并时间` 仍为 0），说明：

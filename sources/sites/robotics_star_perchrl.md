@@ -23,6 +23,6 @@ STAR Group 的 Publications 页面把论文列在 2026 年，并标注 “Submit
 
 ## wiki 映射
 
-- 项目实体：[perchrl-project.md](../../wiki/entities/perchrl-project.md)
+- 项目实体：[perchrl-project.md](../../wiki/entities/paper-perchrl-2606-03441.md)
 - 论文实体：[paper-perchrl-2606-03441.md](../../wiki/entities/paper-perchrl-2606-03441.md)
 - 论文来源：[perchrl_arxiv_2606_03441_v3.md](../papers/perchrl_arxiv_2606_03441_v3.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, jepa, transformer, low-latency, manipulation]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2609.09630"
 code: https://github.com/jiejie567/JEPA-Policy
 related:

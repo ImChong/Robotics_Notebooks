@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2512.17853"
 venue: "arXiv 2025"
 summary: "Introduces three AnyTask agents for generating expert demonstrations, trains behavior cloning policies on generated data, validates them in simulation, and deploys them directly on real robot hardware"

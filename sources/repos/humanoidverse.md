@@ -41,7 +41,7 @@ python humanoidverse/train_agent.py \
 
 ## 命名消歧
 
-- 本仓库是 **训练框架**，与 Paper Notebooks 中待深读的 VLN 论文 *HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement*（arXiv:2508.16943）**同名不同物**；后者见 [paper-notebook-humanoidverse](../../wiki/entities/paper-notebook-humanoidverse.md)。
+- 本仓库是 **训练框架**，与 Paper Notebooks 中待深读的 VLN 论文 *HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement*（arXiv:2508.16943）**同名不同物**；后者见 [paper-notebook-humanoidverse](../../wiki/entities/humanoidverse.md)。
 
 ## 对 Wiki 的映射
 

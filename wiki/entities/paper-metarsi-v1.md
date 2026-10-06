@@ -1,26 +1,37 @@
 ---
 type: entity
-tags: [paper, llm-agents, recursive-self-improvement, agent-harness, ai-auto-research, coding-agents, cosmosmind]
+tags:
+- paper
+- llm-agents
+- recursive-self-improvement
+- agent-harness
+- ai-auto-research
+- coding-agents
+- cosmosmind
+- entity
+- open-source
 status: complete
-updated: 2026-09-26
-arxiv: "2609.06396"
+updated: 2026-10-06
+arxiv: '2609.06396'
 code: https://github.com/CosmosMind-ai/RSI-Harness
 related:
-  - ./rsi-harness.md
-  - ./karpathy-autoresearch.md
-  - ./sol-pi.md
-  - ./paper-harnessbank.md
-  - ./deepseek-harness.md
-  - ./openclaw.md
-  - ../concepts/recursive-self-improvement.md
-  - ../concepts/ai-auto-research.md
-  - ../queries/real-robot-policy-autoresearch-harness.md
-  - ./paper-dream-rsi.md
+- ./karpathy-autoresearch.md
+- ./sol-pi.md
+- ./paper-harnessbank.md
+- ./deepseek-harness.md
+- ./openclaw.md
+- ../concepts/recursive-self-improvement.md
+- ../concepts/ai-auto-research.md
+- ../queries/real-robot-policy-autoresearch-harness.md
+- ./paper-dream-rsi.md
+- ./hermes-agent.md
+- ./awesome-rsi.md
 sources:
-  - ../../sources/papers/metarsi_v1_arxiv_2609_06396.md
-  - ../../sources/sites/cosmosmind-ai.md
-  - ../../sources/repos/rsi-harness.md
-summary: "MetaRSI-v1（arXiv:2609.06396，CosmosMind）：同一 loop kernel 上调度 Data-RSI / Harness-RSI / Model-RSI 三算子；两轴优化器 + meta-level schedule；无外部 teacher 在 code 与 closed-form science 上验证；Harness-RSI 开源为 RSI-Harness（Pi + Genome + GEE），训练/benchmark 代码未随仓发布。"
+- ../../sources/papers/metarsi_v1_arxiv_2609_06396.md
+- ../../sources/sites/cosmosmind-ai.md
+- ../../sources/repos/rsi-harness.md
+summary: MetaRSI-v1（arXiv:2609.06396，CosmosMind）：同一 loop kernel 上调度 Data-RSI / Harness-RSI / Model-RSI 三算子；两轴优化器 + meta-level schedule；无外部 teacher 在 code 与 closed-form science 上验证；Harness-RSI 开源为 RSI-Harness（Pi + Genome + GEE），训练/benchmark 代码未随仓发布。
+project_id: metarsi-v1
 ---
 
 # MetaRSI-v1：递归自改进系统的元递归自改进
@@ -43,11 +54,14 @@ summary: "MetaRSI-v1（arXiv:2609.06396，CosmosMind）：同一 loop kernel 上
 | GEE | Genome Expression Engine | RSI-Harness 中 `gee` → 从会话史生成 Genome |
 | Pi | Pi coding agent | RSI-Harness 所基于的不可 fork Core |
 
+| RSIH | RSI Harness | 本页 CLI 名 `rsih` 与仓库品牌 |
+| Genome | Genome configuration bundle | 12 组件 + `genome.json` 的自包含 harness 目录 |
+| MCP | Model Context Protocol | Genome `integrations` 组件可声明 stdio MCP |
+
 ## 为什么重要
 
 - **突破 format bound：** 既往 RSI 多在 **机器可检** 的 coding / formal QA 上验证；MetaRSI 主张下一跳是 **开放科学、工程与 meta-science** — 正确性靠论证、复现与测量，而非单点 pass@k。
 - **Harness 与 Model 双路线：** **Harness route** 不动权重，可把自改进延伸到 **任意经 interface 可达的模型**；**Model route** 走有界训练 — 与 [HarnessBank](./paper-harnessbank.md) / [SoL-Pi](./sol-pi.md) 的「只改 harness」同轴，但 **与 Data / Model 算子同一 kernel 可组合**。
-- **对本库机器人读者：** 真机 / 仿真 [autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) 长期依赖 **coding agent 写 env / reward / 评测脚本**；MetaRSI 的 **Harness-RSI** 给出 **可版本化 Genome**（见 [RSI-Harness](./rsi-harness.md)），是把「实验组织程序」从 chat 散配置收成 **diffable artifact** 的一步 — 仍 **不** 替代 reset / verify 环境。
 
 ## 核心信息
 
@@ -146,7 +160,7 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| **选型：只要 harness RSI** | 装 [RSI-Harness](./rsi-harness.md)；与 Pi 生态 [SoL-Pi](./sol-pi.md) 可叠（效率扩展 vs Genome 打包） |
+| **选型：只要 harness RSI** | 装 [RSI-Harness](#项目资源与工程补充)；与 Pi 生态 [SoL-Pi](./sol-pi.md) 可叠（效率扩展 vs Genome 打包） |
 | **选型：要 Model-RSI** | 截至入库日 **等论文/后续官方训练栈**；勿把 RSI-Harness 当全论文复现包 |
 | **Genome 分享** | `rsih genome validate` 通过后再 PR 到 `examples/genomes/`；分享前人工 redact 路径/密钥（仓内 **尚无** 自动 redaction gate） |
 | **对照最小环** | [karpathy/autoresearch](./karpathy-autoresearch.md) — 锁 `train.py` + val_bpb；MetaRSI 是 **多算子 schedule**，复杂度高一个数量级 |
@@ -175,20 +189,134 @@ sequenceDiagram
 
 1. **真影响：算子分解** — 数据、scaffold、权重三条改进面 **可组合**，而非 harness-only 或 train-only 二选一。
 2. **真影响：harness route** — 不动权重即可 RSI，理论上覆盖 **经 API 可达的任意 backbone**。
-3. **真影响：Harness-RSI artifact** — Genome + GEE 把 harness 变成 **可版本、可分享、可从 session 蒸馏** 的目录对象（见 [RSI-Harness](./rsi-harness.md)）。
+3. **真影响：Harness-RSI artifact** — Genome + GEE 把 harness 变成 **可版本、可分享、可从 session 蒸馏** 的目录对象（见 [RSI-Harness](#项目资源与工程补充)）。
 4. **次要代价：复杂度** — meta schedule + 三算子使 **验证与 debug** 显著难于 autoresearch 单环。
 5. **开源读法：** **部分** — 只装 RSI-Harness **≠** 复现 MetaRSI 全论文。
 6. **部署读法：** 机器人研究优先把 Harness-RSI 当 **实验组织与 coding agent 配置** 层，而非运动策略本身。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 宇宙心智（CosmosMind AI Lab） |
+| 代码 | <https://github.com/CosmosMind-ai/RSI-Harness> |
+| 论文 | [MetaRSI-v1](#项目资源与工程补充) · [arXiv:2609.06396](https://arxiv.org/abs/2609.06396) |
+| 运行时 | Node **≥ 22.19**；`./install.sh` → `~/.local/bin/rsih` |
+| Pi 版本 | README 徽章 pi-coding-agent **0.84.3** |
+| 开源结论 | **已开源（harness 栈）**；**无** benchmark / training / eval 代码 |
+| 许可 | 根目录 **无 LICENSE**（2026-09-14）；使用前确认仓库声明 |
+
+### 核心原理
+
+#### 栈：Pi → Genome adapter → Genomes
+
+```mermaid
+flowchart TB
+  pi["Pi coding-agent Core\n不 fork"]
+  adapter["Genome adapter\nRSIH 本项目"]
+  gl["Genome loader\ninherit · patch · validate"]
+  gen["Genome 目录\n12 components"]
+  rsih["rsih CLI"]
+  pi --> adapter --> gl
+  gen --> gl
+  gl --> rsih
+```
+
+**两条不变式（测试守卫）：**
+
+1. 无 `--genome` 时 `rsih` **行为 ≡ `pi`**（仅配置根改为 `~/.rsih`）。
+2. Pi 可配置的键，Genome **必须能路由** — Pi 升级增键时 `test/pi-surface.test.ts` 报红。
+
+#### 12 组件（互斥字段所有权）
+
+| 组件 | 拥有 |
+|------|------|
+| `instructions` | system / append prompt |
+| `tools` | 内建 tool 开关、参数收窄、生成 tool |
+| `skills` | inline + Pi skill 文件 |
+| `commands` | slash commands / prompt templates |
+| `model` | provider、model cycle、request options |
+| `runtime` | tool 执行、steering、max turns |
+| `policies` | tool policies、compaction、memory |
+| `integrations` | extensions、stdio MCP |
+| `appearance` | themes |
+| `settings` | `settings.json` 逃逸 hatch |
+| `keybindings` | 键位 |
+| `resources` | `isolate` — 关闭 Pi 自动发现 |
+
+配置语义：**缺省 inherit** · **`null` 显式 reset** · **present 覆盖**（对象递归 merge，数组整体替换）。
+
+#### 内置 Genome
+
+| ID | 用途 |
+|----|------|
+| `paperlab` | 论文实验 workflow 示例（scout / bootstrap / run-ops skills；`/run-status`） |
+| `harness-rsi` | **GEE**：从 session 史 **生成** 新 Genome |
+
+### 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 用户
+    participant Sh as install.sh
+    participant R as rsih
+    participant G as gee / harness-rsi
+    participant S as Session JSONL stores
+    participant V as genome validate
+    participant O as ~/.rsih/genomes/id/
+    User->>Sh: clone + ./install.sh
+    Sh->>R: rsih → ~/.local/bin
+    alt 直接使用 Pi 模式
+        User->>R: rsih -p "task"
+    else GEE 生成 Genome
+        User->>G: gee
+        G->>User: Genome 用途 + 选 session 路径
+        G->>S: histogram / 热文件 / 纠错模式
+        G->>User: 证据化计划 → 确认
+        User->>G: 确认
+        G->>O: 写 genome.json + components
+        O->>V: rsih genome validate
+    end
+    User->>R: rsih :id
+    R->>O: 加载 bundle
+    R->>R: 编译 managedKeys → settings.json
+```
+
+### 工程实践
+
+| 场景 | 做法 |
+|------|------|
+| 安装 | `git clone https://github.com/CosmosMind-ai/RSI-Harness.git && cd RSI-Harness && ./install.sh` |
+| 脚本化多轮 | `rsih -p "…" --run-id my-run --cwd ~/proj` — 同 id 追加同会话 |
+| 切换 Genome | `rsih :paperlab` / `rsih +harness-rsi`（仅 **首参** 可为 genome 标记） |
+| 校验分享包 | `rsih genome validate ./my-genome` 后再放入 `~/.rsih/genomes/` |
+| 与 SoL-Pi 叠用 | 先 `pi install` SoL-Pi extensions，再 RSIH Genome patch — 注意 **settings 编译层** 管理的键冲突 |
+| 开发 | `npm run check`；改组件契约后 `npm run sync:contracts` |
+
+### 局限与风险
+
+- **许可未声明：** 无 LICENSE 文件 — 企业集成前需法务确认。
+- **分享隐私：** GEE 从 **私有 transcript** 蒸馏 Genome；**无** 预发布 redaction gate — 分享前须人工清理路径/密钥/内网域。
+- **远程 install 未做：** `genome install` 仅内置名 + 本地路径，**不支持** git/npm URL 一键装（README「Not yet」）。
+- **不是具身栈：** 与 [RoboHarness](./paper-robo-harness.md) / [Harness VLA](./paper-harness-vla.md) **同名不同物** — 本页是 **软件 coding agent harness**。
+
 ## 关联页面
 
-- [RSI-Harness](./rsi-harness.md) — Harness-RSI 官方实现与 CLI
 - [递归自改进（RSI）](../concepts/recursive-self-improvement.md) — 概念框架与完全 RSI 距离
 - [AI Auto-Research](../concepts/ai-auto-research.md) — S3 实验自动化语境
 - [karpathy/autoresearch](./karpathy-autoresearch.md) — 最小固定 eval 环对照
 - [SoL-Pi](./sol-pi.md) — Pi harness 上的 auto-research 扩展
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — harness 前提与 verify 环境
 - [Dream-RSI（2609.14858）](./paper-dream-rsi.md) — exploration 层 replay-simulator RSI
+
+- [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方 agent OS
+- [Awesome RSI](./awesome-rsi.md) — Harness code artifact 文献索引
+
+- [openclaw](./openclaw.md)
+- [hermes-agent](./hermes-agent.md)
 
 ## 参考来源
 
@@ -201,3 +329,6 @@ sequenceDiagram
 - [MetaRSI-v1 项目页（CosmosMind）](https://www.cosmosmind.ai/research/metarsi-v1)
 - [arXiv:2609.06396 PDF](https://arxiv.org/pdf/2609.06396)
 - [CosmosMind-ai/RSI-Harness（GitHub）](https://github.com/CosmosMind-ai/RSI-Harness)
+
+- [RSI-Harness README（GitHub）](https://github.com/CosmosMind-ai/RSI-Harness/blob/main/README.md)
+- [Genome 文档索引](https://github.com/CosmosMind-ai/RSI-Harness/tree/main/docs/genome)

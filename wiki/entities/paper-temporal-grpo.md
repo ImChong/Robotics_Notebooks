@@ -11,7 +11,7 @@ tags:
   - openvla
   - iscas
 status: complete
-updated: 2026-09-26
+updated: 2026-10-06
 arxiv: "2608.13026"
 related:
   - ../methods/vla.md
@@ -20,7 +20,7 @@ related:
   - ./paper-greenvla-staged-vla-humanoid.md
   - ./robotwin.md
   - ./libero-benchmark.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ./paper-wcm-world-critic-model.md
   - ./paper-rynnbrain-1-1.md
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -182,7 +182,7 @@ flowchart TB
 - [Green-VLA](./paper-greenvla-staged-vla-humanoid.md) — 分阶段课程，不是轨迹内阶段
 - [RoboTwin 2.0](./robotwin.md) — 主仿真榜
 - [LIBERO](./libero-benchmark.md) — 信用探针与消融
-- [OpenVLA](./openvla.md) — 受控实验骨干（OFT）
+- [OpenVLA](paper-openvla.md) — 受控实验骨干（OFT）
 - [WCM](./paper-wcm-world-critic-model.md) — 已开源的另一条 VLA-RL critic 路线
 - [RynnBrain 1.1](./paper-rynnbrain-1-1.md) — 冻结阶段提案模型的同族
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 今日可跑的 RL 后训练入口

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, text-driven-control, diffusion-policy, unitree-g1, teleai, sjtu]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2602.07439"
 venue: "arXiv 2026"
 summary: "TextOp（arXiv:2602.07439，TeleAI/SJTU/ECUST）：流式文本驱动 G1 全身控制——高层自回归运动扩散（VAE+LDM，T_hist=2/T_fut=8）+ 低层 Isaac Lab RL 跟踪；真机用户交互延迟约 0.73 s；GitHub 已开源。"

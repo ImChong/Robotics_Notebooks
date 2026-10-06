@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ego-vla, human-video, zero-shot, flow-matching, manipulation, umd, awesome-egocentric-vision, iros-2026]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-06
 arxiv: "2605.24934"
 venue: "arXiv 2026"
 code: https://github.com/TX-Leo/HumanEgo

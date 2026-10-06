@@ -1,26 +1,37 @@
 ---
 type: entity
-tags: [paper, dataset, egocentric, human-motion, project-aria, meta, motion-language]
+tags:
+- paper
+- dataset
+- egocentric
+- human-motion
+- project-aria
+- meta
+- motion-language
+- mocap
 status: complete
-updated: 2026-09-23
-arxiv: "2406.09905"
-venue: "ECCV 2024"
+updated: 2026-10-06
+arxiv: '2406.09905'
+venue: ECCV 2024
 code: https://github.com/facebookresearch/nymeria_dataset
 related:
-  - ./nymeria-dataset.md
-  - ./light-o1.md
-  - ./paper-egoexomocap.md
-  - ../methods/egoscale.md
+- ./light-o1.md
+- ./paper-egoexomocap.md
+- ../methods/egoscale.md
+- ./hiw-500-dataset.md
+- ./amass.md
+- ../tasks/teleoperation.md
 sources:
-  - ../../sources/papers/nymeria_arxiv_2406_09905.md
-  - ../../sources/sites/nymeria-dataset-projectaria.md
-  - ../../sources/repos/nymeria_dataset.md
-summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observer 同步野外 egocentric 人类 motion 与层级 motion-language；论文演示 tracking/synthesis/recognition SOTA 评测。"
+- ../../sources/papers/nymeria_arxiv_2406_09905.md
+- ../../sources/sites/nymeria-dataset-projectaria.md
+- ../../sources/repos/nymeria_dataset.md
+summary: Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observer 同步野外 egocentric 人类 motion 与层级 motion-language；论文演示 tracking/synthesis/recognition SOTA 评测。
+project_id: nymeria
 ---
 
 # Nymeria（论文）
 
-**Nymeria: A Massive Collection of Multimodal Egocentric Daily Motion in the Wild**（Ma et al.，[arXiv:2406.09905](https://arxiv.org/abs/2406.09905)，ECCV 2024）介绍同名数据集的设计、采集协议与基准实验。数据产品细节见独立节点 [Nymeria Dataset](./nymeria-dataset.md)。
+**Nymeria: A Massive Collection of Multimodal Egocentric Daily Motion in the Wild**（Ma et al.，[arXiv:2406.09905](https://arxiv.org/abs/2406.09905)，ECCV 2024）介绍同名数据集的设计、采集协议与基准实验。数据采集、许可与工具入口见本页[项目资源与工程补充](#项目资源与工程补充)。
 
 ## 一句话定义
 
@@ -35,6 +46,8 @@ summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observ
 | MPS | Machine Perception Services | Aria 6DoF/点云/眼动深度管线 |
 | SMPL | Skinned Multi-Person Linear Model | 线性 blend skin 人体参数化 |
 | MPJPE | Mean Per-Joint Position Error | 关节位置误差（tracking 常用） |
+
+| CC BY-NC | Creative Commons Attribution-NonCommercial | 数据集开放许可（非商用） |
 
 ## 为什么重要
 
@@ -73,7 +86,6 @@ summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observ
 | 主要代价 | 多设备同步与标定工程量极大 | 低 | 中 |
 
 - **它的增量不在「更大」，在「野外 + 有 GT + 有层级语言」同时成立：** 这三者过去通常只能取其二；论文在 egocentric body tracking / motion synthesis / action recognition 三任务上的对照，证明的正是这一组合带来的增益，而非单纯数据量。
-- **与站内数据节点的分工：** 数据产品口径（下载、许可、工具链）见 [Nymeria Dataset](./nymeria-dataset.md)；本页只保留 **论文级** 的方法贡献与评测读法。
 - **横比注意：** 后续工作（如 [EgoExoMoCap](./paper-egoexomocap.md)）常只在 **Nymeria 子集** 上报 MPJPE 或识别指标，子集划分不同则数不可比；引用前先核对 split。
 
 ## 结论
@@ -91,11 +103,59 @@ summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observ
 
 **不适用（数据集论文）** — 运行时路径见 [nymeria_dataset](../../sources/repos/nymeria_dataset.md)：`Explorer JSON → aria_dataset_downloader → 本地序列 → 可视化/训练脚本`。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| **机构** | Meta（Project Aria） |
+| **序列** | **1200**（Nymeria / NymeriaPlus 各 **1100** 可选序列，~**80 TB**/版） |
+| **传感** | Aria 头显 + miniAria 腕带 + XSens + observer Aria |
+| **语言** | **230 h** 标注 · **6545** 词表 |
+| **许可** | **CC BY-NC 4.0** |
+| **工具** | [facebookresearch/nymeria_dataset](https://github.com/facebookresearch/nymeria_dataset) + `aria_dataset_downloader` |
+
+### 采集栈（概念）
+
+```mermaid
+flowchart TB
+  xsens["XSens MVN Link\n全身 GT @240Hz"] --> momentum["Meta Momentum\n重定向 SMPL/MHR"]
+  aria["Project Aria 头显\nRGB/眼动/IMU/..."] --> mps["MPS 6DoF + 点云"]
+  mini["miniAria 双腕"] --> mps
+  obs["Observer Aria\n第三人称"] --> mps
+  momentum --> world["统一 metric 3D 世界"]
+  mps --> world
+  world --> lang["层级 motion-language 标注"]
+```
+
+### 工程实践
+
+| 步骤 | 要点 |
+|------|------|
+| 申请 | Project Aria Dataset Explorer 筛选序列 → 下载 `*_download_urls.json` |
+| 下载 | `aria_dataset_downloader`；按 **group** 选择性拉取，避免一次 80TB |
+| 版本 | **NymeriaPlus** 用 `main`；原版可试 `nymeria_dataset_legacy` |
+| 隐私 | 官方 **EgoBlur** 人脸/车牌；遵守 Research 伦理条款 |
+| 机器人用法 | 人类 motion / 语言 / ego 视频作 **预训练或 scaling 探针**；上机需重定向 |
+
+### 局限与风险
+
+- **非机器人动作空间**：SMPL/MHR 轨迹 **≠** 关节角命令；迁移需 retarget + 控制栈。
+- **NC 许可**：商用与再分发受限。
+- **体量**：全量下载成本极高；实验应 **子集 + Explorer 过滤**。
+- **Nymeria vs Plus**：Plus 改运动与 bbox/ShapeR；混用版本需固定协议。
+
 ## 关联页面
 
-- [Nymeria Dataset（产品页实体）](./nymeria-dataset.md)
 - [Light-O1](./light-o1.md) — Transfer Scaling 适配轴
 - [EgoExoMoCap](./paper-egoexomocap.md) — 下游 ego-exo 动捕
+
+- 对照：[HIW-500](./hiw-500-dataset.md)（G1 野外 teleop）
+
+- [egoscale](../methods/egoscale.md)
+- [amass](./amass.md)
+- [teleoperation](../tasks/teleoperation.md)
 
 ## 参考来源
 
@@ -103,7 +163,11 @@ summary: "Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observ
 - [nymeria-dataset-projectaria.md](../../sources/sites/nymeria-dataset-projectaria.md)
 - 论文：<https://arxiv.org/abs/2406.09905>
 
+- [nymeria_dataset.md](../../sources/repos/nymeria_dataset.md)
+
 ## 推荐继续阅读
 
 - [ECCV 2024 Paper PDF](https://arxiv.org/pdf/2406.09905)
 - [Dataset Explorer](https://www.projectaria.com/datasets/nymeria/)
+
+- [GitHub nymeria_dataset](https://github.com/facebookresearch/nymeria_dataset)

@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, reinforcement-learning, domain-randomization, foundation-models, survey, arizona-state]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-06
 related:
   - ../overview/lc-awesome-sim2real-technology-map.md
   - ../overview/hub-sim2real.md
@@ -73,7 +73,7 @@ summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分�
 - [Sim2Real Hub](../overview/hub-sim2real.md) / [Sim2Real 概念](../concepts/sim2real.md)
 - [Sim2Real 四条路线](../comparisons/sim2real-four-routes-identifiability.md)
 - [Awesome-Real2Sim2Real](./awesome-real2sim2real.md) — Real2Sim2Real 闭环姊妹清单
-- [robosuite 论文（2009.12293）](./paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) — 清单收录的 MuJoCo 模块化仿真框架与基准；工具实体见 [robosuite](./robosuite.md)
+- [robosuite 论文（2009.12293）](robosuite.md) — 清单收录的 MuJoCo 模块化仿真框架与基准；工具实体见 [robosuite](./robosuite.md)
 
 ## 参考来源
 

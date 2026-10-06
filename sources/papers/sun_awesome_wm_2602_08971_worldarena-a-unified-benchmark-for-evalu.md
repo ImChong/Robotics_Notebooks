@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** A unified benchmark for evaluating perception and functional utility of embodied world models.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md`](../../wiki/entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md)
+- **沉淀到 wiki：** [`wiki/entities/worldarena.md`](../../wiki/entities/worldarena.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md`](../../wiki/entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md)
+- 实体页：[`wiki/entities/worldarena.md`](../../wiki/entities/worldarena.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

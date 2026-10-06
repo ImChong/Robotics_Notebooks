@@ -16,7 +16,7 @@ tags:
   - buaa
   - bit
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 arxiv: "2608.30237"
 related:
   - ./paper-gwm-first-principles.md

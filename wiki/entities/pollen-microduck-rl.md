@@ -8,7 +8,7 @@ related:
   - ./motrix.md
   - ./mjlab.md
   - ../tasks/microduck-ball-balance.md
-  - ./bam-better-actuator-models.md
+  - ./paper-bam-extended-friction-servo-actuators.md
   - ./open-duck-playground.md
   - ../concepts/sim2real.md
   - ../concepts/reward-design.md
@@ -46,7 +46,7 @@ summary: "Microduck 的 mjlab + PPO 训练仓：共享 61 维观测、BAM XL330�
 
 ## 为什么重要
 
-- **廉价小舵机上的执行器保真：** 官方判断此尺度下 sim2real 缺口主要在执行器，所以不用理想 PD，而用 [BAM](./bam-better-actuator-models.md) XL330 电压控制律。
+- **廉价小舵机上的执行器保真：** 官方判断此尺度下 sim2real 缺口主要在执行器，所以不用理想 PD，而用 [BAM](paper-bam-extended-friction-servo-actuators.md) XL330 电压控制律。
 - **可热切换的观测合同：** 61 维布局全任务共用，Runtime 才能在走 / 起身 / 把戏之间换脑而不改总线。
 - **把失败写成规范：** `AGENTS.md` 里的奖励符号、jackpot、零指令死权重、滤波不匹配，都是真机周级调试换来的，可直接对照 [Reward Design](../concepts/reward-design.md) 与 [Sim2Real Gap 缩减](../queries/sim2real-gap-reduction.md)。
 
@@ -139,7 +139,7 @@ uv run scripts/infer_policy.py --walking walk.onnx --standing stand.onnx --new-c
 
 - [Pollen Microduck](./pollen-microduck.md) — 整机与 Runtime
 - [mjlab](./mjlab.md) — 训练框架
-- [BAM](./bam-better-actuator-models.md) — 执行器模型
+- [BAM](paper-bam-extended-friction-servo-actuators.md) — 执行器模型
 - [Open Duck Playground](./open-duck-playground.md) — 另一条迷你鸭 RL 栈（MJX / 模仿奖励）
 - [Sim2Real](../concepts/sim2real.md)
 - [Reward Design](../concepts/reward-design.md)

@@ -19,5 +19,5 @@ aria_dataset_downloader --cdn_file Nymeria_download_urls.json --output_folder ./
 
 ## 对 wiki 的映射
 
-- [nymeria-dataset.md](../../wiki/entities/nymeria-dataset.md)
+- [nymeria-dataset.md](../../wiki/entities/paper-nymeria.md)
 - [paper-nymeria.md](../../wiki/entities/paper-nymeria.md)

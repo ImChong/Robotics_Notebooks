@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/ai-architecture-map.md
@@ -141,9 +141,9 @@ related:
   - ../entities/paper-code-as-world.md
   - ../entities/paper-infonce-geometry.md
   - ../entities/paper-clip.md
-  - ../entities/clip.md
+  - ../entities/paper-clip.md
   - ../entities/paper-llava.md
-  - ../entities/llava.md
+  - ../entities/paper-llava.md
   - ../entities/kinetiq-ascend.md
   - ../entities/cyclo-intelligence.md
   - ../entities/robo-bench.md
@@ -653,7 +653,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；相对 Joint-WAM 延迟 −42.9%（arXiv:2608.24882；代码待发布）
 - [LeTools](../entities/letools.md) — 乐聚 Kuavo 官方 LeRobot/VLA 胶水与技能编排
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2（GR2）
-- [OpenVLA](../entities/openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
+- [OpenVLA](../entities/paper-openvla.md) — 开源 Prismatic VLA 与 LoRA/OFT 微调
 - [Dita](../entities/paper-dita-scaling-diffusion-transformer-vla.md) — in-context 扩散 Transformer VLA；OXE + 10-shot Franka（RoboDita/Dita 已开源）
 - [Arcadia](../entities/paper-arcadia.md) — 共享 VLN/VLA 骨干 + Sim-from-Real；G1 操作 27/100（部分开源）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照
@@ -744,7 +744,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — 高保真 UMI-only 后训练匹配 teleop；HiFi-UMI-2K 2000 h（arXiv:2607.25895）
 - [Patch Policy](../entities/paper-patch-policy.md) — 直接消费密集 ViT patch token 的轻量高频控制策略
 - RT-2 / π₀ 原论文或项目博客
-- [OpenVLA](../entities/openvla.md) / Octo 开源实现
+- [OpenVLA](../entities/paper-openvla.md) / Octo 开源实现
 - [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
 

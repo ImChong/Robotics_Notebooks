@@ -1,23 +1,39 @@
 ---
-
 type: entity
-tags: [paper, world-models, shenlan-survey, open-source, tsinghua]
+tags:
+- paper
+- world-models
+- shenlan-survey
+- open-source
+- tsinghua
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-16
-arxiv: "2505.13934"
+updated: 2026-10-06
+arxiv: '2505.13934'
 venue: NeurIPS 2025
-summary: "RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。"
+summary: RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。
 related:
-  - ../overview/world-models-15-open-source-technology-map.md
-  - ../overview/world-models-route-03-virtual-sandbox.md
-  - ../overview/robot-world-models-training-loop-taxonomy.md
-  - ../methods/generative-world-models.md
-  - ../concepts/world-action-models.md
-  - ./paper-dash-opsd.md
+- ../overview/world-models-15-open-source-technology-map.md
+- ../overview/world-models-route-03-virtual-sandbox.md
+- ../overview/robot-world-models-training-loop-taxonomy.md
+- ../methods/generative-world-models.md
+- ../concepts/world-action-models.md
+- ./paper-dash-opsd.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/shenlan_wm_survey_14_rlvr-world.md
-  - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
-  - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+- ../../sources/papers/shenlan_wm_survey_14_rlvr-world.md
+- ../../sources/papers/shenlan_world_models_15_reference_catalog.md
+- ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+- ../../sources/papers/rcl_awesome_wam_ref_a8d6b1d31a7e72a424da_rlvr-world-training-world-models-with-re.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: shenlan-wm-14-rlvr-world
+code: https://github.com/thuml/RLVR-World
 ---
 
 # RLVR-World
@@ -33,6 +49,10 @@ RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 
 ## 为什么重要
 
@@ -89,7 +109,34 @@ RLVR 优化 WM 对齐任务成功指标，让想象更有目的性。
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
 
+- [`sources/papers/rcl_awesome_wam_ref_a8d6b1d31a7e72a424da_rlvr-world-training-world-models-with-re.md`](../../sources/papers/rcl_awesome_wam_ref_a8d6b1d31a7e72a424da_rlvr-world-training-world-models-with-re.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://proceedings.neurips.cc/paper_files/paper/2025/hash/b63a24a1832bd14fa945c71f535c0095-Abstract-Conference.html>
+
+- [原论文与官方资源](https://github.com/thuml/RLVR-World)
+
 ## 推荐继续阅读
 
 - [arXiv:2505.13934](https://arxiv.org/abs/2505.13934) — 论文全文
 - [深蓝具身智能原文](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://proceedings.neurips.cc/paper_files/paper/2025/hash/b63a24a1832bd14fa945c71f535c0095-Abstract-Conference.html)
+
+## 源码运行时序图
+
+**不适用**（本次合并的来源仅归档论文策展与官方仓库地址，尚未核验训练/推理入口；不能据清单编造实现时序。复现前须补充 README 运行步骤与源码模块归档）。
+
+## 关联页面
+
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)
+- [world-action-models](../concepts/world-action-models.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)

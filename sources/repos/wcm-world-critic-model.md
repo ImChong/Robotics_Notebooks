@@ -48,6 +48,6 @@
 | 关联 | 说明 |
 |------|------|
 | [paper-wcm-world-critic-model](../../wiki/entities/paper-wcm-world-critic-model.md) | 论文实体与结论 |
-| [openvla](../../wiki/entities/openvla.md) | 自回归主干（论文用 OpenVLA-OFT） |
+| [openvla](../../wiki/entities/paper-openvla.md) | 自回归主干（论文用 OpenVLA-OFT） |
 | [paper-pi05-open-world-vla](../../wiki/entities/paper-pi05-open-world-vla.md) | flow matching 主干（π₀.₅） |
 | [model-based-rl](../../wiki/methods/model-based-rl.md) | 对照：WCM 的世界模型只做 critic 表征监督，不做规划 rollout |

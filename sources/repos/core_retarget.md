@@ -9,7 +9,7 @@
 - **许可：** 代码 Apache-2.0；示例动作 CC BY 4.0；捆绑机器人描述保留厂商许可（见 `docs/licenses.md`）
 - **入库日期：** 2026-08-15
 - **一句话说明：** 高丽大学 Robot Intelligence Lab 开源的接触感知全身重定向工具：把 Kimodo `.npz` / GEM-X `.pt` 的 SOMA 人体运动，经 DMR + 接触精炼映射到 11 台捆绑人形，导出无 pickle 的 `core-robot-motion-v1` `.npz`。
-- **沉淀到 wiki：** 是 → [`wiki/entities/core-retarget.md`](../../wiki/entities/core-retarget.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md)
 
 ## 开源核查（步骤 2.5）
 
@@ -88,7 +88,7 @@ Python：`from core_retarget import Retargeter, RunConfig`。`backend="auto"` �
 
 ## 对 wiki 的映射
 
-- [`wiki/entities/core-retarget.md`](../../wiki/entities/core-retarget.md) — 软件实体
+- [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md) — 软件实体
 - [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md) — Humanoids 2025 论文
 - [`wiki/entities/paper-rmr.md`](../../wiki/entities/paper-rmr.md) — IROS 2025 论文（DMR / common-rigging）
 - 交叉：[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Pipeline](../../wiki/concepts/motion-retargeting-pipeline.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[SOMA Retargeter](../../wiki/entities/soma-retargeter.md)、[Kimodo](../../wiki/entities/kimodo.md)

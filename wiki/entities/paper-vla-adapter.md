@@ -13,7 +13,7 @@ code: https://github.com/OpenHelix-Team/VLA-Adapter
 related:
   - ../methods/vla.md
   - ../overview/vla-open-source-repro-landscape-2025.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ./paper-reflexvla.md
   - ../overview/embodied-frontier-algorithms-technology-map.md
 sources:
@@ -82,7 +82,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | VLA-Adapter（本页） | [OpenVLA](./openvla.md) 等大尺度 VLA | 从零训练小 VLA |
+| 维度 | VLA-Adapter（本页） | [OpenVLA](paper-openvla.md) 等大尺度 VLA | 从零训练小 VLA |
 |------|----------------------|----------------------------------------|-----------------|
 | 参数量 | **~0.5B** | 数 B 量级 | 视设计而定 |
 | VL 条件注入 | **Bridge Attention**（把 VL 条件接进动作侧） | 骨干内融合 | 自行设计 |
@@ -105,7 +105,7 @@ sequenceDiagram
 
 - [vla](../methods/vla.md)
 - [vla-open-source-repro-landscape-2025](../overview/vla-open-source-repro-landscape-2025.md)
-- [openvla](./openvla.md)
+- [openvla](paper-openvla.md)
 - [paper-reflexvla](./paper-reflexvla.md)
 
 ## 参考来源
@@ -118,4 +118,3 @@ sequenceDiagram
 
 - [arXiv PDF](https://arxiv.org/pdf/2509.09372)
 - [代码](https://github.com/OpenHelix-Team/VLA-Adapter)
-

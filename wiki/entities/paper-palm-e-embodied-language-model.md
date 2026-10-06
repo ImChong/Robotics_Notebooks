@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "vla", "multimodal", "foundation-model", "google", "hmi-papers"]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2303.03378"
 venue: "HMI curated · 2023"
 summary: "PaLM-E（HMI P053）：把连续相机与机器人状态投影成与文本相同的嵌入序列，使视觉、状态与语言共享自回归推理上下文（输出仍主要在语言层）。"
@@ -10,7 +10,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../methods/vla.md
   - ../methods/robotics-transformer-rt-series.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ../entities/humanoid-motion-intelligence.md
 sources:
   - ../../sources/papers/hmi_p053_palm-e-embodied-language-model.md
@@ -103,7 +103,7 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | 本工作（PaLM-E） | [VLA](../methods/vla.md) | [RT 系列](../methods/robotics-transformer-rt-series.md) | [OpenVLA](openvla.md) |
+| 维度 | 本工作（PaLM-E） | [VLA](../methods/vla.md) | [RT 系列](../methods/robotics-transformer-rt-series.md) | [OpenVLA](paper-openvla.md) |
 |------|------------------|--------------------------|--------------------------------------------------------|-----------------------|
 | 输出层 | 语言层：计划步骤/答案文本 | 直接输出低层动作 | 动作 token | 离散动作 token |
 | 输入接口 | 图像/3D/状态投影进 LLM 词嵌入，交错成多模态句子 | 视觉+语言条件→动作 | 图像+指令→动作 | VLM 骨干→动作 |
@@ -117,7 +117,7 @@ flowchart LR
 - [foundation-policy](../concepts/foundation-policy.md)
 - [vla](../methods/vla.md)
 - [robotics-transformer-rt-series](../methods/robotics-transformer-rt-series.md)
-- [openvla](./openvla.md)
+- [openvla](paper-openvla.md)
 
 ## 参考来源
 

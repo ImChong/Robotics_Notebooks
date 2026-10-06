@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md
@@ -12,7 +12,7 @@ related:
   - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
   - ../methods/reinforcement-learning.md
   - ../concepts/exploration-in-rl.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, interactive-world-model, video-generation, real-time, robbyant, wan, causal-inference, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2607.07534"
 venue: "arXiv 2026"
 code: https://github.com/robbyant/lingbot-world-v2

@@ -10,7 +10,7 @@ tags:
   - humanoid-paper-notebooks
   - apple
 status: complete
-updated: 2026-09-27
+updated: 2026-10-06
 arxiv: "2505.11709"
 code: https://github.com/apple/ml-egodex
 related:

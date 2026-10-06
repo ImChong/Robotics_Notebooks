@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, recursive-self-improvement, llm-agents, ai-auto-research, self-evaluation, governance, literature-review]
 status: complete
-updated: 2026-09-26
+updated: 2026-10-06
 arxiv: "2607.07663"
 code: https://github.com/deepgrounding/recursive-self-improvement
 related:
@@ -13,7 +13,7 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-dream-rsi.md
   - ../entities/karpathy-autoresearch.md
-  - ../entities/rsi-harness.md
+  - paper-metarsi-v1.md
   - ../entities/paper-harnessbank.md
   - ../entities/sol-pi.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -154,7 +154,7 @@ sequenceDiagram
 | 设计 agent 自进化 | 优先 **human-on-the-loop** + **执行反馈/形式验证** — 与 survey 主体一致 |
 | 文献 lint | 用 `corpus_v2.csv` 查遗漏 thread；对照 [Awesome RSI](./awesome-rsi.md) artifact 维度 |
 | 对标 Auto-Research | 生命周期问题 → [2605.18661 概念页](../concepts/ai-auto-research.md)；机制/闭环 → 本文 |
-| 机器人 harness | §3 harness 进化与 [RSI-Harness](./rsi-harness.md)、[MetaRSI-v1](./paper-metarsi-v1.md) 同轴 — 仍须外部 reset/verify |
+| 机器人 harness | §3 harness 进化与 [RSI-Harness](paper-metarsi-v1.md)、[MetaRSI-v1](./paper-metarsi-v1.md) 同轴 — 仍须外部 reset/verify |
 
 ## 语料与评测口径
 

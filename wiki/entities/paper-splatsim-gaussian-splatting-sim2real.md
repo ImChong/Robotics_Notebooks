@@ -6,7 +6,7 @@ tags:
   - gaussian-splatting
   - manipulation
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2409.10161"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

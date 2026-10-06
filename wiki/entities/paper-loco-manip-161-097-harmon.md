@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, vlm, loco-manipulation, ut-austin, nvidia, language-conditioning]
 status: complete
-updated: 2026-09-27
+updated: 2026-10-06
 arxiv: "2410.12773"
 venue: "arXiv 2024"
 related:

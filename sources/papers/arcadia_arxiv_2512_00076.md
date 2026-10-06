@@ -63,7 +63,7 @@
 - **摘录要点：** 同架构同预算下，仅换自主采集数据（w/o feedback）已比 NaVILA 平均 SR **+2.7 pp**；加反馈后再涨。LIBERO 消融：骨干 76.5 → Arcadia **87.2**；静态集 72.9、检索场景 81.4、稀疏反馈 85.3。真机 46%/27% 仍低，组合指令更差。
 - **对 wiki 的映射：**
   - [Arcadia](../../wiki/entities/paper-arcadia.md)
-  - [OpenVLA](../../wiki/entities/openvla.md)
+  - [OpenVLA](../../wiki/entities/paper-openvla.md)
   - [操作](../../wiki/tasks/manipulation.md)
 
 ### 4) 开源边界：接口脚本 ≠ 全生命周期可复现
@@ -82,7 +82,7 @@
 - [`wiki/concepts/sim2real.md`](../../wiki/concepts/sim2real.md) — Real2Sim2Real 闭环实例
 - [`wiki/concepts/data-flywheel.md`](../../wiki/concepts/data-flywheel.md) — 部署写回资产/策略
 - [`wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md`](../../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) — 主要 VLN 基线
-- [`wiki/entities/openvla.md`](../../wiki/entities/openvla.md) — 主要 VLA 基线
+- [`wiki/entities/paper-openvla.md`](../../wiki/entities/paper-openvla.md) — 主要 VLA 基线
 - [`wiki/overview/vln-open-source-repro-paradigms.md`](../../wiki/overview/vln-open-source-repro-paradigms.md) — 不可当新手可跑通栈
 - [`wiki/tasks/manipulation.md`](../../wiki/tasks/manipulation.md) — LIBERO / BridgeData / G1 操作
 - [`wiki/entities/awesome-real2sim2real.md`](../../wiki/entities/awesome-real2sim2real.md) — R2S2R 文献坐标

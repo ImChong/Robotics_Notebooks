@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-real2sim2real, sun254667, technology-map]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 summary: "Awesome-Real2Sim2Real 技术地图：把清单里的 63 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-real2sim2real.md
@@ -67,7 +67,7 @@ sources:
 | 010 | [FetchBot: Learning Generalizable Object Fetching in Cluttered Scenes via Zero-Shot Sim2Rea](../entities/paper-sa-2502-17894-fetchbot-learning-generalizable-object-fetching.md) |
 | 011 | [Isaac Sim-to-Real: Reinforcement Learning based Locomotion for Quadrupeds](../entities/paper-sa-2607-18135-isaac-sim-to-real-reinforcement-learning-based-l.md) |
 | 012 | [Right-Side-Out: Learning Zero-Shot Sim-to-Real Garment Reversal](../entities/paper-sa-2509-15953-right-side-out-learning-zero-shot-sim-to-real-ga.md) |
-| 013 | [SimToolReal: An Object-Centric Policy for Zero-Shot Dexterous Tool Manipulation](../entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md) |
+| 013 | [SimToolReal: An Object-Centric Policy for Zero-Shot Dexterous Tool Manipulation](../entities/simtoolreal.md) |
 | 014 | [SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation](../entities/paper-sa-2606-15338-simweaver-zero-shot-rgb-sim-to-real-for-deformab.md) |
 
 ### 23 Domain Randomization & Adaptation

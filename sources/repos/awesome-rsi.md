@@ -63,7 +63,7 @@ Agent 执行任务 → 从轨迹与反馈学习 → **更新自身状态** → �
 - 主沉淀：[Awesome RSI（Prism-Shadow 精选集）](../../wiki/entities/awesome-rsi.md)
 - 概念交叉：[递归自改进（RSI）](../../wiki/concepts/recursive-self-improvement.md) · [AI Auto-Research](../../wiki/concepts/ai-auto-research.md)
 - 站点镜像：[awesome-rsi-github-io.md](../sites/awesome-rsi-github-io.md)
-- 相关实体：[RSI-Harness](../../wiki/entities/rsi-harness.md) · [HarnessBank](../../wiki/entities/paper-harnessbank.md) · [MetaRSI-v1](../../wiki/entities/paper-metarsi-v1.md) · [karpathy/autoresearch](../../wiki/entities/karpathy-autoresearch.md)
+- 相关实体：[RSI-Harness](../../wiki/entities/paper-metarsi-v1.md) · [HarnessBank](../../wiki/entities/paper-harnessbank.md) · [MetaRSI-v1](../../wiki/entities/paper-metarsi-v1.md) · [karpathy/autoresearch](../../wiki/entities/karpathy-autoresearch.md)
 
 ## 参考来源（原始）
 

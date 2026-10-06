@@ -7,7 +7,7 @@ tags:
   - replanning
   - execution
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2608.09492"
 related:
   - ../concepts/world-action-models.md
@@ -101,4 +101,3 @@ summary: "TempoWAM（arXiv:2608.09492）：RPM 监测任务进度 + AEP 按需�
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2608.09492)
-

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2301.04195"
 venue: "IEEE Robotics and Automation"
 code: https://github.com/deeplearning-wisc/MCM.git

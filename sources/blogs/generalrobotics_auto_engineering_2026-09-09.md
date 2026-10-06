@@ -38,7 +38,7 @@
 
 ### 对 wiki 的映射
 
-- [GRID（General Robotics）](../../wiki/entities/grid-general-robotics.md) — 平台实体与 harness 流程总览
+- [GRID（General Robotics）](../../wiki/entities/paper-grid-general-robot-intelligence-development.md) — 平台实体与 harness 流程总览
 - [真机策略 autoresearch 闭环搭建指南](../../wiki/queries/real-robot-policy-autoresearch-harness.md) — coding/agent harness 与可验证反馈对照
 - [Sim2Real](../../wiki/concepts/sim2real.md) — 部署 harness 中的 sim-to-real gap 修复案例
 - [Data Flywheel](../../wiki/concepts/data-flywheel.md) — 「部署产生知识 → 下次更快」的复利叙事

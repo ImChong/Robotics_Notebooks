@@ -1,22 +1,51 @@
 ---
 type: entity
-tags: [software, simulation, mujoco, reinforcement-learning, benchmark, deepmind]
+tags:
+- software
+- simulation
+- mujoco
+- reinforcement-learning
+- benchmark
+- deepmind
+- paper
+- awesome-sim2real
+- longchao-sim2real
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
-  - ../queries/embodied-eval-benchmark-selection-loop.md
-  - ./mujoco.md
-  - ./mujoco-mjx.md
-  - ./brax.md
-  - ../methods/reinforcement-learning.md
-  - ../tasks/locomotion.md
-  - ../queries/simulator-selection-guide.md
-  - ./gymnasium.md
-  - ../concepts/cartpole.md
+- ../queries/embodied-eval-benchmark-selection-loop.md
+- ./mujoco.md
+- ./mujoco-mjx.md
+- ./brax.md
+- ../methods/reinforcement-learning.md
+- ../tasks/locomotion.md
+- ../queries/simulator-selection-guide.md
+- ./gymnasium.md
+- ../concepts/cartpole.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../concepts/sim2real.md
+- ../tasks/manipulation.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
 sources:
-  - ../../sources/repos/dm_control.md
-  - ../../sources/papers/dm_control_suite.md
-summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Control Suite 连续控制基准为核心，并提供查看器、MJCF 组合与 locomotion 等扩展，是学术 RL 与仿真实验的常用入口之一。"
+- ../../sources/repos/dm_control.md
+- ../../sources/papers/dm_control_suite.md
+- ../../sources/papers/lc_awesome_sim2real_noarxiv_101_dm-control-software-and-tasks-for-contin.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+- ../../sources/papers/rcl_awesome_wam_1801_00690_deepmind-control-suite.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Control Suite 连续控制基准为核心，并提供查看器、MJCF 组合与 locomotion 等扩展，是学术 RL 与仿真实验的常用入口之一。
+project_id: dm-control
+venue: Software Impacts
+arxiv: '1801.00690'
+code: https://github.com/google-deepmind/dm_control
 ---
 
 # dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）
@@ -40,6 +69,15 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 | JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 | Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
+| Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -78,13 +116,40 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 等并列讨论时的上下文
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：MuJoCo Control Suite 连续控制 RL 基准
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+
 ## 推荐继续阅读
 
 - 论文原文：[DeepMind Control Suite（arXiv:1801.00690）](https://arxiv.org/abs/1801.00690)
 - 仓库与安装说明：[google-deepmind/dm_control](https://github.com/google-deepmind/dm_control)
 - 入门 Colab：仓库 README 中的 `tutorial.ipynb` 徽章链接
 
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
+- [原文](https://www.sciencedirect.com/science/article/pii/S2665963820300099)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+
 ## 参考来源
 
 - [dm_control（仓库归档）](../../sources/repos/dm_control.md)
 - [DeepMind Control Suite（论文摘录）](../../sources/papers/dm_control_suite.md)
+
+- [`sources/papers/lc_awesome_sim2real_noarxiv_101_dm-control-software-and-tasks-for-contin.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_101_dm-control-software-and-tasks-for-contin.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://www.sciencedirect.com/science/article/pii/S2665963820300099>
+
+- [`sources/papers/rcl_awesome_wam_1801_00690_deepmind-control-suite.md`](../../sources/papers/rcl_awesome_wam_1801_00690_deepmind-control-suite.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://arxiv.org/abs/1801.00690>

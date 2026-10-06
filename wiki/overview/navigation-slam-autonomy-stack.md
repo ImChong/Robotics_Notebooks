@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-06
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -38,7 +38,7 @@ related:
   - ../entities/isaac-ros-nvblox.md
   - ../entities/openloong-dyn-control.md
   - ../entities/lerobot.md
-  - ../entities/openvla.md
+  - ../entities/paper-openvla.md
   - ../entities/mushr.md
   - ../entities/oomwoo.md
   - ../entities/aeris-10-plfm-radar.md
@@ -95,7 +95,7 @@ summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR
 
 - 仓库主线以 **腿式/人形运控与模仿学习** 为主，但 **移动底盘、AMR、低速无人车** 仍依赖成熟的 **定位—建图—规划** 栈；与 [VLN](../tasks/vision-language-navigation.md) 共享「感知—决策—执行」分层思想，**执行层接口不同**（`cmd_vel` / Ackermann vs 关节力矩）。
 - 21 仓覆盖从 **教学小车 MuSHR** 到 **Autoware Universe** 的完整谱系；常见错误：用 ORB-SLAM3 直接驱动 Nav2 而无坐标系/频率对齐，或把 FAST-LIO 当全局规划器。
-- [LeRobot](../entities/lerobot.md) / [OpenVLA](../entities/openvla.md) 解决 **操作与策略**，不替代 Nav2；二者常在「同一机器人」上 **分层共存**（导航栈 + 机械臂 VLA）。
+- [LeRobot](../entities/lerobot.md) / [OpenVLA](../entities/paper-openvla.md) 解决 **操作与策略**，不替代 Nav2；二者常在「同一机器人」上 **分层共存**（导航栈 + 机械臂 VLA）。
 - **[PythonRobotics](../entities/python-robotics.md)** 提供 **算法层入门**（EKF、A*、RRT*、DWA、Stanley/MPC 等可运行 Python 示例），与 Nav2 **互补而非替代**：先建立直觉，再读 ROS 2 工程集成。
 - **[DimOS（Dimensional）](../entities/dimensionalos-dimos.md)** 提供 **ROS-optional** 的 Python 导航 + **MCP agent** 蓝图（Unitree Go2/G1 等），默认 LCM 连模块流；适合快速验证「SLAM + 自然语言控车」而不先搭完整 ROS 2 工作空间。
 - **[Language-to-Navigation-Goals](../entities/paper-language-to-navigation-goals-rgbd.md)**（arXiv:2607.13624）展示 **ROS 2 + 远程 VLM bbox + RGB-D 投影 → Nav2** 的轻量语义导航分层实现（TurtleBot3 / Go2；代码待接收后开源）。

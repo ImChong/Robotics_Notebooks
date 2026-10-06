@@ -21,4 +21,4 @@ CoRe v0.1.0 的官方浏览器体验：上传 Kimodo `.npz` 或 GEM-X `.pt`（�
 
 ## 对 wiki 的映射
 
-- [`wiki/entities/core-retarget.md`](../../wiki/entities/core-retarget.md)
+- [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md)

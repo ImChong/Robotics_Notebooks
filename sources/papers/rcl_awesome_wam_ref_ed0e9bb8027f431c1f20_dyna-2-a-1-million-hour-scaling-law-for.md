@@ -15,7 +15,7 @@
 - **项目页：** <https://www.dyna.co/dyna-2>
 - **子类 / 象限：** 泛化与动作对齐 · 高效推理与实时控制 · 四象限外
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-ed0e9bb8027f431c1f20-dyna-2-a-1-million-hour-scaling-law-for-world-ac.md`](../../wiki/entities/paper-rcl-ref-ed0e9bb8027f431c1f20-dyna-2-a-1-million-hour-scaling-law-for-world-ac.md)
+- **沉淀到 wiki：** [`wiki/entities/dyna-2.md`](../../wiki/entities/dyna-2.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-ed0e9bb8027f431c1f20-dyna-2-a-1-million-hour-scaling-law-for-world-ac.md`](../../wiki/entities/paper-rcl-ref-ed0e9bb8027f431c1f20-dyna-2-a-1-million-hour-scaling-law-for-world-ac.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/dyna-2.md`](../../wiki/entities/dyna-2.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

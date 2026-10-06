@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, simulation, sim2real, control, rl, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ./sim2real.md
   - ./torque-source-abstraction-gap.md
@@ -16,7 +16,7 @@ related:
   - ../concepts/cartpole.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/mujoco.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
 sources:
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -117,7 +117,7 @@ flowchart LR
 | 早期验证 reward / 算法 | 常用 **implicit**，收敛快 |
 | 准备上真机、对齐电机包络 | 逐步切 **explicit**（DC 电机、摩擦、限幅）或 [Actuator Network](../methods/actuator-network.md) |
 | implicit 能训、explicit 不收敛 | 增大 `armature`、减小仿真步长、对齐 Kp/Kd，或对增益做域随机化 |
-| 量化仿真–真机执行器 gap | [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)、[BAM](../entities/bam-better-actuator-models.md) 等 |
+| 量化仿真–真机执行器 gap | [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)、[BAM](../entities/paper-bam-extended-friction-servo-actuators.md) 等 |
 
 ## 常见误区
 

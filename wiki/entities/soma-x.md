@@ -10,7 +10,7 @@ related:
   - ./soma-retargeter.md
   - ../methods/genmo.md
   - ./kimodo.md
-  - ./core-retarget.md
+  - ./paper-core.md
   - ./protomotions.md
   - ./amass.md
 sources:
@@ -108,7 +108,7 @@ flowchart TB
 
 ## 常见误区
 
-- **SOMA ≠ 重定向工具**：SOMA-X 解决 **人体表示统一**；机器人关节轨迹需 [SOMA Retargeter](./soma-retargeter.md)、[CoRe](./core-retarget.md) 或 GMR 等 **下游** 模块。
+- **SOMA ≠ 重定向工具**：SOMA-X 解决 **人体表示统一**；机器人关节轨迹需 [SOMA Retargeter](./soma-retargeter.md)、[CoRe](paper-core.md) 或 GMR 等 **下游** 模块。
 - **不等于替换 SMPL**：现有 SMPL 数据与工具链仍可用；SOMA 提供 **枢纽层** 而非废弃 SMPL。
 - **Pose Correctives 仍为 Beta**：跨模型 correctives 能力在迭代中，集成前宜核对版本 changelog。
 
@@ -119,7 +119,7 @@ flowchart TB
 - [SOMA Retargeter](./soma-retargeter.md)
 - [GENMO / GEM](../methods/genmo.md)
 - [Kimodo](./kimodo.md)
-- [CoRe v0.1.0](./core-retarget.md) — SOMA77 Kimodo/GEM-X → 11 机接触精炼
+- [CoRe v0.1.0](paper-core.md) — SOMA77 Kimodo/GEM-X → 11 机接触精炼
 - [ProtoMotions](./protomotions.md)
 - [AMASS](./amass.md)
 

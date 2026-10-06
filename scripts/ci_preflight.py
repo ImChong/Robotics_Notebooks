@@ -83,6 +83,12 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
+    if not args.skip_quality:
+        run(
+            ["python3", "scripts/check_project_nodes.py", "--base", "HEAD"],
+            "Check project identities and newly added entity metadata",
+        )
+
     run(["python3", "scripts/export_minimal.py"], "Export wiki JSON, sitemap, and search index")
     if (REPO_ROOT / "package-lock.json").is_file():
         run(["npm", "ci"], "Install Node dependencies (ESLint)")

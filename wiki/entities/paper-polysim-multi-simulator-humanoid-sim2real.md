@@ -7,7 +7,7 @@ tags:
   - domain-randomization
   - polysim
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2510.01708"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

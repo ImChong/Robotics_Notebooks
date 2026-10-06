@@ -4,7 +4,7 @@ type: entity
 tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft, curated-index, awesome-sim2real, awesome-world-action-models-rcl]
 status: complete
 arxiv: "1711.03938"
-updated: 2026-09-28
+updated: 2026-10-06
 related:
   - ./unreal-engine-5.md
   - ./airsim.md
@@ -17,7 +17,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md

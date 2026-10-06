@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, shanghai-pil, pku, tsinghua]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2509.13833"
 venue: "2025 · arXiv"
 code: https://github.com/GalaxyGeneralRobotics/OpenTrack

@@ -6,7 +6,7 @@ tags:
   - quadruped
   - domain-randomization
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "1804.10332"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

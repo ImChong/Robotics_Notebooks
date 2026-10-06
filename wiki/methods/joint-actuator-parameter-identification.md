@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./ssrm-steady-state-response-method.md
   - ../concepts/system-identification.md
@@ -14,7 +14,7 @@ related:
   - ../concepts/gravity-compensation.md
   - ./cma-es.md
   - ../entities/flobaroid.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ./sim2real-joint-sysid-experiment-design.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
@@ -65,7 +65,7 @@ $$
 \tau \approx I_a\ddot q + b\dot q + \tau_c\,\mathrm{sign}(\dot q) + \underbrace{Y_{\mathrm{rb}}(q,\dot q,\ddot q)\pi_{\mathrm{rb}}}_{\text{连杆刚体}}
 $$
 
-$I_a\ddot q$ 就是 MuJoCo `armature` 对力矩的贡献。扩展模型再加 Stribeck、负载相关摩擦、电气 $k_t/R$、延迟（见 [BAM](../entities/bam-better-actuator-models.md) / [PACE](../entities/paper-pace-sim2real-legged-robots.md)）。
+$I_a\ddot q$ 就是 MuJoCo `armature` 对力矩的贡献。扩展模型再加 Stribeck、负载相关摩擦、电气 $k_t/R$、延迟（见 [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [PACE](../entities/paper-pace-sim2real-legged-robots.md)）。
 
 ## 主要技术路线
 
@@ -135,7 +135,7 @@ flowchart TB
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md) / [Armature Modeling](../concepts/armature-modeling.md)
 - [CMA-ES](./cma-es.md) — BAM/PACE 的优化器
 - [FloBaRoID](../entities/flobaroid.md) — Fourier + 两步摩擦开源箱
-- [BAM](../entities/bam-better-actuator-models.md) / [BAM 论文](../entities/paper-bam-extended-friction-servo-actuators.md)
+- [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [BAM 论文](../entities/paper-bam-extended-friction-servo-actuators.md)
 - [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)
 - [Pinocchio](../entities/pinocchio.md) / [Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本页是 ③ 层「数从哪来」

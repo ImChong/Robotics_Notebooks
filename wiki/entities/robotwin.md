@@ -1,10 +1,33 @@
 ---
-
 type: entity
 title: RoboTwin 2.0
-tags: [simulation, data-generation, dual-arm, dataset, hku, shanghai-ai-lab, sjtu]
-summary: "RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。"
-updated: 2026-09-24
+tags:
+- simulation
+- data-generation
+- dual-arm
+- dataset
+- hku
+- shanghai-ai-lab
+- sjtu
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
+summary: RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。
+updated: 2026-10-06
+project_id: robotwin
+sources:
+- ../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+related:
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+arxiv: '2506.18088'
+venue: ICML 2026
 ---
 
 # RoboTwin 2.0
@@ -18,6 +41,11 @@ updated: 2026-09-24
 | AI | Artificial Intelligence | 人工智能 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要？
 
@@ -62,7 +90,28 @@ updated: 2026-09-24
 - [ME-Dex 1.0](./paper-me-dex-1-0.md) — 触觉增强 WAM；Clean→Random avg **78.9%**；推理 runtime 已开源（arXiv:2609.21449）
 - [RoboTwin-Phys](./paper-robotwin-phys.md) — 物理参数多样性评测轴（arXiv:2609.26292）
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [Lumina 官网归档](../../sources/sites/lumina-embodied-ai.md)
 - [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)
+
+- [`sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md`](../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://icml.cc/virtual/2026/poster/62192>
+
+- [原论文与官方资源](https://robotwin-platform.github.io)
+
+## 推荐继续阅读
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://icml.cc/virtual/2026/poster/62192)

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./humanoid-motion-control-30-papers-technology-map.md
   - ../entities/paper-hrl-stack-35-dreamdojo.md
@@ -163,7 +163,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 22 | Perceptive Humanoid Parkour | [paper-hrl-stack-22-perceptive_humanoid_parkour.md](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 23 | Deep Whole-body Parkour | [paper-deep-whole-body-parkour.md](../entities/paper-deep-whole-body-parkour.md) |
 | 24 | Hiking in the Wild | [paper-hiking-in-the-wild.md](../entities/paper-hiking-in-the-wild.md) |
-| 25 | ASAP | [paper-hrl-stack-25-asap.md](../entities/paper-hrl-stack-25-asap.md) |
+| 25 | ASAP | [paper-hrl-stack-25-asap.md](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | 26 | Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots | [paper-hrl-stack-26-learning_vision_driven_reactive_socc.md](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
 | 27 | Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking（**全文消化** · arXiv:2604.17335） | [paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) |
 | 28 | VIRAL | [paper-viral-humanoid-visual-sim2real.md](../entities/paper-viral-humanoid-visual-sim2real.md) |

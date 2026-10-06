@@ -26,5 +26,5 @@
 
 ## 对 wiki 的映射
 
-- [GRID（General Robotics）](../../wiki/entities/grid-general-robotics.md)
+- [GRID（General Robotics）](../../wiki/entities/paper-grid-general-robot-intelligence-development.md)
 - [grid-playground.md](../repos/grid-playground.md)

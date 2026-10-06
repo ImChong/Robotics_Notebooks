@@ -12,7 +12,7 @@
 - **官方数据页：** <https://libero-project.github.io/datasets>
 - **Hugging Face 数据集：** <https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets>
 - **论文：** [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310) — NeurIPS 2023 Datasets and Benchmarks Track
-- **论文详情页：** [paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel](../../wiki/entities/paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md)
+- **论文详情页：** [paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel](../../wiki/entities/libero-benchmark.md)
 - **仿真环境：** [robosuite](https://github.com/ARISE-Initiative/robosuite)；当前 requirements 固定版本 1.4.0
 - **安装说明：** [LIBERO installation](https://lifelong-robot-learning.github.io/LIBERO/html/getting_started/installation.html)
 - **依赖清单：** [requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt)
@@ -34,7 +34,7 @@
 ## 对 wiki 的映射
 
 - [LIBERO 项目与基准入口](../../wiki/entities/libero-benchmark.md)
-- [LIBERO 论文详情页](../../wiki/entities/paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md)
+- [LIBERO 论文详情页](../../wiki/entities/libero-benchmark.md)
 - [robosuite 仿真环境实体](../../wiki/entities/robosuite.md)
-- [robosuite 论文实体](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- [robosuite 论文实体](../../wiki/entities/robosuite.md)
 - [论文原始来源归档](../papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md)

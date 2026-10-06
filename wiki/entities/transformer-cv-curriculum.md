@@ -124,10 +124,10 @@ flowchart LR
 | 5.1.1 | 多模态基础 | [多模态基础概念](../concepts/multimodality-basics.md) |
 | 5.1.2 | Flickr30K Entities / VaTeX / WIT | [Flickr30K Entities](./dataset-flickr30k-entities.md)、[VaTeX](./dataset-vatex.md)、[WIT](./dataset-wit.md) |
 | 5.1.3 | 多模态 LLM 路线 | [多模态 LLM 发展路线](../overview/multimodal-llm-development.md) |
-| 5.2 | CLIP / BLIP / BLIP-2 | [CLIP](./clip.md)、[BLIP](./blip.md)、[BLIP-2](./paper-blip2.md) |
-| 6.1 | LLaVA / MiniGPT-4 / InstructBLIP | [LLaVA](./llava.md)、[MiniGPT-4](./minigpt4.md)、[InstructBLIP](./instructblip.md) |
+| 5.2 | CLIP / BLIP / BLIP-2 | [CLIP](paper-clip.md)、[BLIP](./blip.md)、[BLIP-2](./paper-blip2.md) |
+| 6.1 | LLaVA / MiniGPT-4 / InstructBLIP | [LLaVA](paper-llava.md)、[MiniGPT-4](./minigpt4.md)、[InstructBLIP](./instructblip.md) |
 | 6.2 | LISA / Sa2VA / SIDA | [LISA](./lisa.md)、[Sa2VA](./sa2va.md)、[SIDA](./sida.md) |
-| 作业 5 | LLaVA 指令微调 | [LLaVA](./llava.md) |
+| 作业 5 | LLaVA 指令微调 | [LLaVA](paper-llava.md) |
 
 ### 第 7 章 Mamba
 

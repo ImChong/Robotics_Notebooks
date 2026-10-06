@@ -16,7 +16,7 @@ tags:
   - mcgill
   - 2012-labs
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2607.18060"
 code: https://github.com/markli1hoshipu/RoboHarness
 related:

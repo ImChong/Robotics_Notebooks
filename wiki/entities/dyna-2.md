@@ -1,26 +1,49 @@
 ---
 type: entity
-tags: [wam, world-action-models, scaling-laws, egocentric-video, human-robot-transfer, foundation-model, manipulation, dexterous-manipulation, flow-matching, dyna-robotics, closed-source]
+tags:
+- wam
+- world-action-models
+- scaling-laws
+- egocentric-video
+- human-robot-transfer
+- foundation-model
+- manipulation
+- dexterous-manipulation
+- flow-matching
+- dyna-robotics
+- closed-source
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-30
+updated: 2026-10-06
 related:
-  - ./dyna-2-1.md
-  - ../concepts/world-action-models.md
-  - ../concepts/embodied-scaling-laws.md
-  - ../methods/egoscale.md
-  - ../methods/vla.md
-  - ../entities/paper-dreamwam.md
-  - ../entities/paper-omega-0.md
-  - ../entities/sunday-robotics-act2.md
-  - ../entities/generalist-gen1-thousand-hands.md
-  - ../entities/perceptron-isaac-05.md
-  - ../tasks/manipulation.md
-  - ../../roadmap/depth-wam.md
+- ./dyna-2-1.md
+- ../concepts/world-action-models.md
+- ../concepts/embodied-scaling-laws.md
+- ../methods/egoscale.md
+- ../methods/vla.md
+- ../entities/paper-dreamwam.md
+- ../entities/paper-omega-0.md
+- ../entities/sunday-robotics-act2.md
+- ../entities/generalist-gen1-thousand-hands.md
+- ../entities/perceptron-isaac-05.md
+- ../tasks/manipulation.md
+- ../../roadmap/depth-wam.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/blogs/dyna_2_million_hour_wam.md
-  - ../../sources/sites/dyna-co-dyna-2.md
-  - ../../sources/sites/dyna-co.md
-summary: "Dyna-2（Dyna Robotics, 2026-08）：≥100 万小时 egocentric 人视频预训练的 Joint 族 WAM；报告人 held-out 与人→机零样本幂律缩放，主张视频共训是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；闭源。"
+- ../../sources/blogs/dyna_2_million_hour_wam.md
+- ../../sources/sites/dyna-co-dyna-2.md
+- ../../sources/sites/dyna-co.md
+- ../../sources/papers/rcl_awesome_wam_ref_ed0e9bb8027f431c1f20_dyna-2-a-1-million-hour-scaling-law-for.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: Dyna-2（Dyna Robotics, 2026-08）：≥100 万小时 egocentric 人视频预训练的 Joint 族 WAM；报告人 held-out 与人→机零样本幂律缩放，主张视频共训是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；闭源。
+project_id: dyna-2
+venue: '2026'
 ---
 
 # Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）
@@ -48,6 +71,9 @@ summary: "Dyna-2（Dyna Robotics, 2026-08）：≥100 万小时 egocentric 人�
 | DiT | Diffusion Transformer | 视频/动作塔的扩散式骨干 |
 | MSE | Mean Squared Error | 动作 chunk 连续误差（缩放律主指标之一） |
 | NFE | Number of Function Evaluations | 一步视频蒸馏相对 teacher 步数 |
+
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -162,6 +188,18 @@ flowchart TB
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 3 / Stage 5 学习入口
 - [Manipulation](../tasks/manipulation.md) — 任务语境
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [paper-dreamwam](../entities/paper-dreamwam.md)
+- [paper-omega-0](../entities/paper-omega-0.md)
+- [sunday-robotics-act2](../entities/sunday-robotics-act2.md)
+- [generalist-gen1-thousand-hands](../entities/generalist-gen1-thousand-hands.md)
+- [perceptron-isaac-05](../entities/perceptron-isaac-05.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [sources/blogs/dyna_2_million_hour_wam.md](../../sources/blogs/dyna_2_million_hour_wam.md) — 研究长文归纳摘录
@@ -169,8 +207,15 @@ flowchart TB
 - [sources/sites/dyna-co.md](../../sources/sites/dyna-co.md) — 公司站与分层栈
 - 官方页：<https://www.dyna.co/dyna-2>
 
+- [`sources/papers/rcl_awesome_wam_ref_ed0e9bb8027f431c1f20_dyna-2-a-1-million-hour-scaling-law-for.md`](../../sources/papers/rcl_awesome_wam_ref_ed0e9bb8027f431c1f20_dyna-2-a-1-million-hour-scaling-law-for.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+
 ## 推荐继续阅读
 
 - [Dyna-2 官方研究页](https://www.dyna.co/dyna-2)（含视频与缩放曲线）
 - Zheng et al., *EgoScale* — [arXiv:2602.16710](https://arxiv.org/abs/2602.16710)
 - Ye et al., *DreamZero*（WAM 零样本策略）— [arXiv:2602.15922](https://arxiv.org/abs/2602.15922)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)

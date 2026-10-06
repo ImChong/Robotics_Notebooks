@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-5c37def65669693c1520-leveraging-procedural-generation-to-benchmark-re.md`](../../wiki/entities/paper-rcl-ref-5c37def65669693c1520-leveraging-procedural-generation-to-benchmark-re.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -15,7 +15,7 @@
 - **项目页：** <https://octo-models.github.io>
 - **子类 / 象限：** 扩散与流匹配VLA · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-1c048eabe2faa444f31b-octo-an-open-source-generalist-robot-policy.md`](../../wiki/entities/paper-rcl-ref-1c048eabe2faa444f31b-octo-an-open-source-generalist-robot-policy.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-1c048eabe2faa444f31b-octo-an-open-source-generalist-robot-policy.md`](../../wiki/entities/paper-rcl-ref-1c048eabe2faa444f31b-octo-an-open-source-generalist-robot-policy.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

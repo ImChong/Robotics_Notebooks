@@ -43,7 +43,7 @@ MIT 许可的 raylib 动画查看与 **足锁 IK 实验台**：把 BVH 导出为
 
 - **博文可复现**：页内代码片段的完整上下文（构建、数据导出、开关）集中在单仓，降低「只读伪代码」成本。
 - **动画质检工具**： procedural 网格 + 阴影/SSAO，低配置也能肉眼查脚滑与穿地（相对完整 DCC/引擎更轻）。
-- **与机器人 wiki 互补**：侧重 **skinned 动画 runtime**；机器人侧脚滑修补见 [足锁 IK 方法页](../methods/foot-locking-ik-orangeduck.md) 与 [CoRe](../entities/core-retarget.md) 对照表。
+- **与机器人 wiki 互补**：侧重 **skinned 动画 runtime**；机器人侧脚滑修补见 [足锁 IK 方法页](../methods/foot-locking-ik-orangeduck.md) 与 [CoRe](paper-core.md) 对照表。
 
 ## 核心原理
 

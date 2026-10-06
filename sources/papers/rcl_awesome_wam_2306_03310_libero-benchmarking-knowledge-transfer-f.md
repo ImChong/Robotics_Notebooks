@@ -16,7 +16,7 @@
 - **Hugging Face 数据集：** <https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets>
 - **策展列表：** [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models)，条目 031/564，分组 *Benchmarks & simulators*
 - **一句话说明：** 提出用于终身机器人操作学习的 LIBERO 基准，包含 130 个语言条件任务与人类遥操作演示数据，用于分析知识迁移、策略结构和持续学习方法。
-- **沉淀到 wiki：** [论文详情页](../../wiki/entities/paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md)
+- **沉淀到 wiki：** [论文详情页](../../wiki/entities/libero-benchmark.md)
 
 ## 论文要点
 
@@ -34,7 +34,7 @@ LIBERO 将机器人终身学习中的知识迁移问题拆成可控的任务分�
 
 ## 对 wiki 的映射
 
-- 论文详情页：[paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel](../../wiki/entities/paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md)
+- 论文详情页：[paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel](../../wiki/entities/libero-benchmark.md)
 - 基准工程页：[libero-benchmark](../../wiki/entities/libero-benchmark.md)
 - 项目仓库归档：[libero-benchmark source](../repos/libero-benchmark.md)
 - RCL 清单索引：[RCL catalog](rcl_awesome_wam_catalog.md)

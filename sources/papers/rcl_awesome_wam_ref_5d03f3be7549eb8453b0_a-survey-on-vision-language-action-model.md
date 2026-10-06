@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-5d03f3be7549eb8453b0-a-survey-on-vision-language-action-models-for-au.md`](../../wiki/entities/paper-rcl-ref-5d03f3be7549eb8453b0-a-survey-on-vision-language-action-models-for-au.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-e6aba3e8a3ffe044339d-when-to-trust-your-model-model-based-policy-opti.md`](../../wiki/entities/paper-rcl-ref-e6aba3e8a3ffe044339d-when-to-trust-your-model-model-based-policy-opti.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

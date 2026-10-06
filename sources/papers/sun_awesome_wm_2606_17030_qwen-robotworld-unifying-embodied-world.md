@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Language-conditioned video world model predicting future visual trajectories across multiple robotic domains.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md`](../../wiki/entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md)
+- **沉淀到 wiki：** [`wiki/entities/qwen-robot-world.md`](../../wiki/entities/qwen-robot-world.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md`](../../wiki/entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md)
+- 实体页：[`wiki/entities/qwen-robot-world.md`](../../wiki/entities/qwen-robot-world.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)

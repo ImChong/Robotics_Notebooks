@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-3fa175f81e25ece6b23f-scaling-data-generation-in-vision-and-language-n.md`](../../wiki/entities/paper-rcl-ref-3fa175f81e25ece6b23f-scaling-data-generation-in-vision-and-language-n.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

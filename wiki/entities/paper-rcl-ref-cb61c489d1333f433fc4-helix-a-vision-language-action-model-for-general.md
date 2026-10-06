@@ -6,11 +6,11 @@ tags:
 - vla
 - hierarchical-control
 status: complete
-updated: '2026-10-05'
+updated: 2026-10-06
 venue: '2025'
 summary: Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享权重在 Figure 人形上完成语言指令驱动的上半身操作。
 related:
-- ../entities/awesome-world-action-models-rcl.md
+- paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
 - ../methods/generative-world-models.md
 - ../methods/vla.md

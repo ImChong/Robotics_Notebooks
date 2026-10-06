@@ -58,7 +58,7 @@
 ## 对 wiki 的映射
 
 - 升格 [RMR 论文实体](../../wiki/entities/paper-rmr.md)
-- 软件实现 [CoRe](../../wiki/entities/core-retarget.md)
+- 软件实现 [CoRe](../../wiki/entities/paper-core.md)
 - 后续接触精炼 [CoRe 论文](../../wiki/entities/paper-core.md)
 - 对照 [GMR](../../wiki/methods/motion-retargeting-gmr.md)、[SOMA Retargeter](../../wiki/entities/soma-retargeter.md)
 

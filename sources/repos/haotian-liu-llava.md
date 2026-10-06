@@ -12,5 +12,5 @@ LLaVA 官方代码：CLIP 视觉塔 + Vicuna LLM 投影对齐、两阶段指令�
 ## 交叉链接
 
 - [LLaVA 论文实体](../../wiki/entities/paper-llava.md)
-- [LLaVA 模型实体](../../wiki/entities/llava.md)
+- [LLaVA 模型实体](../../wiki/entities/paper-llava.md)
 - [openai-clip](./openai-clip.md)

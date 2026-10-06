@@ -53,7 +53,7 @@
 
 ## 对 wiki 的映射
 
-- [HTD 解耦 WBC（实体）](../../wiki/entities/htd-decoupled-wbc.md)
+- [HTD 解耦 WBC（实体）](../../wiki/entities/paper-humanoid-touch-dream.md)
 - [HTD 方法页](../../wiki/methods/humanoid-transformer-touch-dreaming.md)
 - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
 - [Isaac Lab](../../wiki/entities/isaac-lab.md)

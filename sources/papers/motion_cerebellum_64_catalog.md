@@ -38,7 +38,7 @@
 | # | 工作 | 角色 | Wiki 实体 |
 |---|------|------|-----------|
 | 16 | GVHMR | 数据入口：视频动作恢复到重力对齐世界坐标 | [GVHMR](../../wiki/entities/gvhmr.md) |
-| 17 | TRAM | 数据入口：野外视频到全局人体轨迹 | [TRAM](../../wiki/entities/paper-motion-cerebellum-tram.md) |
+| 17 | TRAM | 数据入口：野外视频到全局人体轨迹 | [TRAM](../../wiki/entities/paper-tram-global-human-motion.md) |
 | 18 | GMR | 重定向：人类动作变成可跟踪机器人参考 | [GMR](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) |
 | 19 | NMR | 重定向：神经重定向与物理修正数据 | [NMR](../../wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) |
 | 20 | OmniRetarget | 重定向：交互关系保持的数据生成 | [OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |

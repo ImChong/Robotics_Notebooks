@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2605.06247"
 code: https://github.com/YuhuaJiang2002/CKT-WAM
 summary: "We propose \\textbf{CKT-WAM}, a parameter-efficient \\textbf{C}ontext \\textbf{K}nowledge \\textbf{T}ransfer framework that transfers teacher WAM's knowledge into a student WAM through a compact context in the text embedding"
 related:
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -40,7 +40,7 @@ We propose \textbf{CKT-WAM}, a parameter-efficient \textbf{C}ontext \textbf{K}no
 
 - We propose \textbf{CKT-WAM}, a parameter-efficient \textbf{C}ontext \textbf{K}nowledge \textbf{T}ransfer framework that transfers teacher WAM's knowledge into a student WAM through a compact context in the text embedding space, rather than output imitation or dense hidden-state matching. Experiments show that CKT-WA...
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
 ## 核心信息
 
@@ -88,7 +88,7 @@ We propose \textbf{CKT-WAM}, a parameter-efficient \textbf{C}ontext \textbf{K}no
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 

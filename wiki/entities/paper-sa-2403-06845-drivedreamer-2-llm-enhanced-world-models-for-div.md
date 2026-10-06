@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2403.06845"
 venue: "arXiv 2024"
 code: https://drivedreamer2.github.io/
@@ -14,7 +14,7 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/vla.md
 sources:

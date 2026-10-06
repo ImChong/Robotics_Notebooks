@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -128,4 +128,3 @@ sequenceDiagram
 - [arXiv PDF](https://arxiv.org/pdf/2603.16666)
 - [项目页](https://yuantianyuan01.github.io/FastWAM/)
 - [代码](https://github.com/yuantianyuan01/FastWAM)
-

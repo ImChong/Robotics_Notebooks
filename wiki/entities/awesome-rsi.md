@@ -7,7 +7,7 @@ related:
   - ../queries/rsi-four-tier-five-pushes.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
-  - ./rsi-harness.md
+  - ./paper-metarsi-v1.md
   - ./paper-metarsi-v1.md
   - ./paper-harnessbank.md
   - ./paper-rsi-survey-2607-07663.md
@@ -75,7 +75,7 @@ flowchart LR
 
 | Awesome RSI 线索 | 站内已有沉淀 |
 |------------------|--------------|
-| Harness code 自改 | [RSI-Harness](./rsi-harness.md)、[HarnessBank](./paper-harnessbank.md)、[DeepSeek Harness](./deepseek-harness.md) |
+| Harness code 自改 | [RSI-Harness](paper-metarsi-v1.md)、[HarnessBank](./paper-harnessbank.md)、[DeepSeek Harness](./deepseek-harness.md) |
 | 三算子 RSI 框架 | [MetaRSI-v1](./paper-metarsi-v1.md) |
 | 最小实验环 / 训练脚本自改 | [karpathy/autoresearch](./karpathy-autoresearch.md) |
 | Harness 效率再 scale | [SoL-Pi](./sol-pi.md) |
@@ -92,7 +92,7 @@ flowchart LR
 
 - [递归自改进（RSI）](../concepts/recursive-self-improvement.md) — 宏观 RSI 与具身跟随假设
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 学术研究自动化全谱
-- [RSI-Harness](./rsi-harness.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [HarnessBank](./paper-harnessbank.md)
+- [RSI-Harness](paper-metarsi-v1.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [HarnessBank](./paper-harnessbank.md)
 - [karpathy/autoresearch](./karpathy-autoresearch.md) · [SoL-Pi](./sol-pi.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 清单里的 29 条 benchmark 测的是 **agent 自进化**（Online/Offline 演化协议），与该闭环的四层具身评测正交：不要把 RSI 榜位当成具身策略的任一层能力证据
 

@@ -26,6 +26,6 @@ ToucHD 的公开划分为 Sim 1,118,896 帧、Mani 584,842 帧、Force 722,436 �
 
 ## 对应知识节点
 - 论文详情：[paper-anytouch2](../../wiki/entities/paper-anytouch2.md)
-- 项目详情：[project-anytouch2](../../wiki/entities/project-anytouch2.md)
-- 前作：[AnyTouch 论文](../../wiki/entities/paper-anytouch.md)、[AnyTouch 项目](../../wiki/entities/project-anytouch.md)
+- 项目详情：[project-anytouch2](../../wiki/entities/paper-anytouch2.md)
+- 前作：[AnyTouch 论文](../../wiki/entities/paper-anytouch.md)、[AnyTouch 项目](../../wiki/entities/paper-anytouch.md)
 - 主题：[触觉感知](../../wiki/concepts/tactile-sensing.md)、[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)

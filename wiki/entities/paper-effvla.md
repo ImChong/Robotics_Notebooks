@@ -106,7 +106,7 @@ sequenceDiagram
 
 | 对照 | 差异读法 |
 |------|----------|
-| [OpenVLA / OpenVLA-OFT](./openvla.md) | 同为 LIBERO 系 head 设计的参照系，但优化轴相反：OFT 主要在 **解码形态**（并行解码、连续动作、L1 回归）上做加法；EffVLA 的结论是这些表达力技巧属 **补偿项**，在 head 与语言骨干对齐后收益缩水，而 Init 轴上 EffVLA 领先 OFT **+37.9** |
+| [OpenVLA / OpenVLA-OFT](paper-openvla.md) | 同为 LIBERO 系 head 设计的参照系，但优化轴相反：OFT 主要在 **解码形态**（并行解码、连续动作、L1 回归）上做加法；EffVLA 的结论是这些表达力技巧属 **补偿项**，在 head 与语言骨干对齐后收益缩水，而 Init 轴上 EffVLA 领先 OFT **+37.9** |
 | [StarVLA](../methods/star-vla.md) | 同持「强 VLM 底座 + 轻 head 足够」的极简主张；EffVLA 把它从经验口号做成 **可测量的单杠杆**——VLM-init 带来 **+7.1** 点且 **零延迟成本**，并给出 CKA 0.76 vs 0.24 的对齐度证据 |
 | [π₀ / π₀.₇ 系](../methods/pi07-policy.md) | π 系代表 **flow matching 动作头** 一支；EffVLA 的消融显示对齐之后 flow matching 反而 **−4.4**，即「先买表达力」在延迟配对下不划算。注意二者训练数据规模差一个量级，本条只读 head 形态的取舍 |
 | [MINERVA](./paper-minerva-libero.md) | 同为「LIBERO 上做极小参数量」的效率工作，但砍的位置不同：MINERVA 砍到 0.54M **task-ID 策略**（不带语言泛化），EffVLA 保留完整 V+L 骨干、把膝点定在 ~**3.75B**。MINERVA 报 CPU 5.1 ms/chunk，EffVLA 报 RTX 5090 39.2 ms/chunk，**硬件不同不可横比** |

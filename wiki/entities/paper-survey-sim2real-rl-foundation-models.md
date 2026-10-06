@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, sim2real, reinforcement-learning, domain-randomization, foundation-models, awesome-sim2real, curated-index, sun254667-r2s2r, awesome-real2sim2real]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2502.13187"
 venue: "arXiv 2025 (v3 2025-03-08)"
 related:

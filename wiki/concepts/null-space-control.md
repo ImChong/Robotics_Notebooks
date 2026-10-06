@@ -2,7 +2,7 @@
 type: concept
 tags: [control, redundancy, inverse-kinematics, impedance-control, wbc, jacobian, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ../formalizations/inverse-kinematics.md
   - ../formalizations/robot-jacobian.md

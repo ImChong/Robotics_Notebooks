@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-egocentric-vision, sun254667, technology-map]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 summary: "Awesome Egocentric Vision 技术地图：把清单里的 249 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-egocentric-vision.md
@@ -170,7 +170,7 @@ sources:
 | 083 | [EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data](../entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) |
 | 084 | [EgoSteer: A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Vid](../entities/paper-egosteer.md) |
 | 085 | [EgoTSR: From Perception to Planning: Evolving Ego-Centric Task-Oriented Spatiotemporal Rea](../entities/paper-sa-2604-10517-egotsr-from-perception-to-planning-evolving-ego.md) |
-| 086 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) |
+| 086 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 087 | [Embodied VideoAgent: Persistent Memory from Egocentric Videos and Embodied Sensors Enables](../entities/paper-sa-2501-00358-embodied-videoagent-persistent-memory-from-egoce.md) |
 | 088 | [HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos](../entities/paper-sa-2605-24934-humanego-zero-shot-robot-learning-from-minutes-o.md) |
 | 089 | [HumanScale: Egocentric Human Video Can Outperform Real-Robot Data for Embodied Pretraining](../entities/paper-sa-2606-20521-humanscale-egocentric-human-video-can-outperform.md) |
@@ -199,7 +199,7 @@ sources:
 | 107 | [EgoForge: Goal-Directed Egocentric World Simulator](../entities/paper-sa-2603-20169-egoforge-goal-directed-egocentric-world-simulato.md) |
 | 108 | [EgoHOI: Egocentric World Model for Photorealistic Hand-Object Interaction Synthesis](../entities/paper-sa-2603-13615-egohoi-egocentric-world-model-for-photorealistic.md) |
 | 109 | [EgoSim: Egocentric World Simulator for Embodied Interaction Generation](../entities/paper-sa-2604-01001-egosim-egocentric-world-simulator-for-embodied-i.md) |
-| 110 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) |
+| 110 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 111 | [Hand2World: Autoregressive Egocentric Interaction Generation via Free-Space Hand Gestures](../entities/paper-sa-2602-09600-hand2world-autoregressive-egocentric-interaction.md) |
 | 112 | [LOME: Learning Human-Object Manipulation with Action-Conditioned Egocentric World Model](../entities/paper-sa-2603-27449-lome-learning-human-object-manipulation-with-act.md) |
 | 113 | [MEgoHand: Multimodal Egocentric Hand-Object Interaction Motion Generation](../entities/paper-sa-ego-026-megohand-multimodal-egocentric-hand-object-inter.md) |
@@ -242,7 +242,7 @@ sources:
 | 135 | [EASG-Bench: Video Q&A Benchmark with Egocentric Action Scene Graphs](../entities/paper-sa-2508-01867-from-pixels-to-graphs-using-scene-and-knowledge.md) |
 | 136 | [EOC-Bench: Can MLLMs Identify, Recall, and Forecast Objects in an Egocentric World?](../entities/paper-sa-2506-05287-eoc-bench-can-mllms-identify-recall-and-forecast.md) |
 | 137 | [EgoCoT-Bench: Benchmarking Grounded and Verifiable Operation-Centric Chain of Thought Reas](../entities/paper-sa-2605-19559-egocot-bench-benchmarking-grounded-and-verifiabl.md) |
-| 138 | [EgoLife: Towards Egocentric Life Assistant](../entities/paper-sa-ego-138-egolife-towards-egocentric-life-assistant.md) |
+| 138 | [EgoLife: Towards Egocentric Life Assistant](../entities/paper-sa-2503-03803-egolife.md) |
 | 139 | [EgoNight: Towards Egocentric Vision Understanding at Night with a Challenging Benchmark](../entities/paper-sa-2510-08961-egonight-towards-egocentric-vision-understanding.md) |
 | 140 | [EgoTextVQA: Towards Egocentric Scene-Text Aware Video Question Answering](../entities/paper-sa-ego-140-egotextvqa-towards-egocentric-scene-text-aware-v.md) |
 | 141 | [Grounded Multi-Hop VideoQA in Long-Form Egocentric Videos](../entities/paper-sa-ego-141-grounded-multi-hop-videoqa-in-long-form-egocentr.md) |

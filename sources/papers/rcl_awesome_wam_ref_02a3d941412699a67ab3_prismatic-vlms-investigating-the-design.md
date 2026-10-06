@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-02a3d941412699a67ab3-prismatic-vlms-investigating-the-design-space-of.md`](../../wiki/entities/paper-rcl-ref-02a3d941412699a67ab3-prismatic-vlms-investigating-the-design-space-of.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

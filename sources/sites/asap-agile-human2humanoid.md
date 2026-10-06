@@ -27,7 +27,7 @@
 ## 对 wiki 的映射
 
 - [paper-notebook-asap-aligning-simulation-and-real-world-physics](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
-- [paper-hrl-stack-25-asap](../../wiki/entities/paper-hrl-stack-25-asap.md)
+- [paper-hrl-stack-25-asap](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 - [HumanoidVerse 框架](../../wiki/entities/humanoidverse.md)
 - [human2humanoid](../../wiki/entities/human2humanoid.md)
 

@@ -75,5 +75,5 @@ uv run scripts/infer_policy.py --walking output.onnx
 | 训练栈与奖励课 | `wiki/entities/pollen-microduck-rl.md` |
 | 整机 Runtime | `wiki/entities/pollen-microduck.md` |
 | 框架 | `wiki/entities/mjlab.md` |
-| 执行器模型 | `wiki/entities/bam-better-actuator-models.md` |
+| 执行器模型 | `wiki/entities/paper-bam-extended-friction-servo-actuators.md` |
 | 奖励 / gap | `wiki/concepts/reward-design.md`、`wiki/queries/sim2real-gap-reduction.md` |

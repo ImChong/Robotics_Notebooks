@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, egocentric, exocentric, ego-exo, hmd, mocap, meta, eth, embodied-ai]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 arxiv: "2607.15868"
 venue: "ECCV 2026 Spotlight"
 related:
@@ -12,7 +12,7 @@ related:
   - ./paper-notebook-avatarposer-articulated-full-body-pose-tracking.md
   - ./paper-human-as-humanoid.md
   - ./paper-ego4d.md
-  - ./nymeria-dataset.md
+  - ./paper-nymeria.md
   - ./paper-nymeria.md
 sources:
   - ../../sources/papers/egoexomocap_arxiv_2607_15868.md

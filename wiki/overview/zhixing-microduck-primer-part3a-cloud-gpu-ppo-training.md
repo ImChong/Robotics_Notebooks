@@ -33,7 +33,7 @@ summary: "智践行专辑第③（上）：在魔搭等云 GPU 上 uv sync + smo
 ## 为什么重要
 
 - 把 **环境错误** 压在 smoke（64 env × 5 iter）阶段，避免云端长跑空烧。
-- 与 [BAM](../entities/bam-better-actuator-models.md) + DR 绑定的任务_cfg 一并生效，勿在 smoke 通过前改奖励。
+- 与 [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) + DR 绑定的任务_cfg 一并生效，勿在 smoke 通过前改奖励。
 
 ## 结构与流程图
 

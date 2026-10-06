@@ -1,24 +1,39 @@
 ---
 type: entity
-tags: [paper, manipulation, deformable-objects, rope, iterative-learning-control, model-based-control, quadratic-programming, imitation-learning, cmu, arxiv2026]
+tags:
+- paper
+- manipulation
+- deformable-objects
+- rope
+- iterative-learning-control
+- model-based-control
+- quadratic-programming
+- imitation-learning
+- cmu
+- arxiv2026
+- repo
+- simulation
+- open-source
 status: complete
-updated: 2026-09-30
-arxiv: "2602.21302"
-venue: "arXiv preprint"
+updated: 2026-10-06
+arxiv: '2602.21302'
+venue: arXiv preprint
 related:
-  - ../tasks/manipulation.md
-  - ../concepts/contact-rich-manipulation.md
-  - ../methods/imitation-learning.md
-  - ../concepts/impedance-control.md
-  - ./flying-knots-public.md
-  - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
-  - ./paper-ropeformer.md
+- ../tasks/manipulation.md
+- ../concepts/contact-rich-manipulation.md
+- ../methods/imitation-learning.md
+- ../concepts/impedance-control.md
+- ../methods/dynamic-manipulation-mocap-hand-open-loop.md
+- ./paper-ropeformer.md
 sources:
-  - ../../sources/blogs/krishnasuresh_robot_whips_2026-09-26.md
-  - ../../sources/papers/flying_knots_arxiv_2602_21302.md
-  - ../../sources/repos/flying_knots_public.md
-  - ../../sources/sites/flying-knots-github-io.md
-summary: "Flying Knots（arXiv:2602.21302，CMU）提出 Task-Level ILC：以单次 Vicon 人类示教与粒子绳模型，在 xArm7 真机上用 critical-point 任务误差驱动逆模型 QP 迭代修正 Bézier 命令，7 种绳索 ≤10 次试验 100% 成功且多数绳型 2–5 次可迁移。"
+- ../../sources/blogs/krishnasuresh_robot_whips_2026-09-26.md
+- ../../sources/papers/flying_knots_arxiv_2602_21302.md
+- ../../sources/repos/flying_knots_public.md
+- ../../sources/sites/flying-knots-github-io.md
+summary: Flying Knots（arXiv:2602.21302，CMU）提出 Task-Level ILC：以单次 Vicon 人类示教与粒子绳模型，在 xArm7 真机上用 critical-point 任务误差驱动逆模型 QP 迭代修正 Bézier 命令，7 种绳索 ≤10 次试验 100% 成功且多数绳型 2–5 次可迁移。
+project_id: flying-knots
+code: https://github.com/krish-suresh/flying_knots_public
+project: https://flying-knots.github.io/
 ---
 
 # Flying Knots（Task-Level ILC for Deformable Rope Manipulation）
@@ -35,6 +50,8 @@ summary: "Flying Knots（arXiv:2602.21302，CMU）提出 Task-Level ILC：以单
 | MoCap | Motion Capture | 本文用 Vicon 采集人手与绳 marker 轨迹 |
 | DoF | Degrees of Freedom | 可变形体有效自由度极高，是建模难点 |
 | IL | Imitation Learning | 对比路线：本文强调「单示教 + 迭代修正」而非大规模 BC |
+
+| URDF | Unified Robot Description Format | xArm7 模型在 `models/xarm_description/` |
 
 ## 核心信息
 
@@ -145,20 +162,67 @@ flowchart TB
 
 与 [RopeFormer](./paper-ropeformer.md) 的对照：同为 **动态绳** 与 **多 trial 改善**；本文 **每 trial 显式更新 Bézier/ILC 命令**，RopeFormer **不改策略权重**，用 **Transformer-XL 跨 trial 保留交互史**（人形 H1-2、Swing/Twirl/Whip）。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant H as main/human_capture
+    participant C as main/clean_demo
+    participant I as main/compute_ik
+    participant L as main/learning
+    participant S as simulation/inverse_model.py
+    participant R as xarm7 / Vicon
+    H->>C: 示教轨迹
+    C->>I: 清洗后的绳状态与 critical point
+    I->>L: 初始 Bézier 命令
+    loop Task-Level ILC
+        L->>R: 执行当前轨迹
+        R-->>L: 测得绳状态与任务误差
+        L->>S: 线性化模型与当前命令
+        S-->>L: 逆模型 QP 的命令修正
+    end
+```
+
+模块名对齐 [flying_knots_public 源码归档](../../sources/repos/flying_knots_public.md)；仿真路径可以替换真机执行，真机路径仍需要 xArm7 与 Vicon。
+
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 链接 | <https://github.com/krish-suresh/flying_knots_public> |
+| 论文 | [Flying Knots](#项目资源与工程补充)（arXiv:2602.21302） |
+| 依赖管理 | `uv sync` |
+| 数据根目录 | `$FLYING_KNOT_DATA`（默认 `~/flying_knot_data`） |
+
+### 快速入口
+
+```bash
+git clone https://github.com/krish-suresh/flying_knots_public
+cd flying_knots_public && uv sync
+# 配置 config/hardware、config/learning 后按 main/ 脚本顺序运行
+```
+
 ## 关联页面
 
 - [Manipulation（操作）](../tasks/manipulation.md) — 可变形体操作子域
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 自碰撞/contact 语义
 - [Imitation Learning](../methods/imitation-learning.md) — 单示教 vs 大规模 IL 对照
-- [flying_knots_public（仓库实体）](./flying-knots-public.md) — 代码与依赖入口
 - [动捕手部开环动态操作](../methods/dynamic-manipulation-mocap-hand-open-loop.md) — 同作者组：跟踪足够时免学习；本文为跟踪不足后备
 - [RopeFormer](./paper-ropeformer.md) — 跨 trial TXL 历史 vs 本文 task-level ILC
+
+- [impedance-control](../concepts/impedance-control.md)
 
 ## 推荐继续阅读
 
 - PyElastica（Cosserat 杆仿真）：<https://github.com/GazzolaLab/PyElastica>
 - xArm 官方 ROS：<https://github.com/xArm-Developer/xarm_ros>
 - Posa et al., *Trajectory Optimization with Discontinuous Contact Dynamics* — 接触丰富轨迹优化经典参考
+
+- 仓库 `docs/architecture.md` — 模块与数据布局
+- [Flying Knots 项目页](https://flying-knots.github.io/)
 
 ## 参考来源
 
@@ -167,3 +231,5 @@ flowchart TB
 - [flying_knots_public 仓库归档](../../sources/repos/flying_knots_public.md)
 - [Flying Knots 项目页归档](../../sources/sites/flying-knots-github-io.md)
 - Suresh & Atkeson, *Learning Deformable Object Manipulation Using Task-Level Iterative Learning Control*, arXiv:2602.21302, 2026. <https://arxiv.org/abs/2602.21302>
+
+- Suresh & Atkeson, arXiv:2602.21302 — 算法与实验细节以论文为准

@@ -2,12 +2,12 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, data-pipeline]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 summary: "运动小脑 64 篇长文 · C 数据入口（9 篇）— 数据入口等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
   - ../entities/gvhmr.md
-  - ../entities/paper-motion-cerebellum-tram.md
+  - ../entities/paper-tram-global-human-motion.md
   - ../entities/paper-hrl-stack-01-retargeting_matters.md
   - ../entities/paper-hrl-stack-02-make_tracking_easy.md
 sources:
@@ -36,7 +36,7 @@ sources:
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
 | 16 | GVHMR | [gvhmr.md](../entities/gvhmr.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 17 | TRAM | [paper-motion-cerebellum-tram.md](../entities/paper-motion-cerebellum-tram.md) | [catalog](../../sources/papers/motion_cerebellum_survey_17_tram.md) |
+| 17 | TRAM | [paper-motion-cerebellum-tram.md](../entities/paper-tram-global-human-motion.md) | [catalog](../../sources/papers/motion_cerebellum_survey_17_tram.md) |
 | 18 | GMR | [paper-hrl-stack-01-retargeting_matters.md](../entities/paper-hrl-stack-01-retargeting_matters.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 19 | NMR | [paper-hrl-stack-02-make_tracking_easy.md](../entities/paper-hrl-stack-02-make_tracking_easy.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 20 | OmniRetarget | [paper-hrl-stack-03-omniretarget.md](../entities/paper-hrl-stack-03-omniretarget.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |

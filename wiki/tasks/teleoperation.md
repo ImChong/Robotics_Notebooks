@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-09-29
+updated: 2026-10-06
 sources:
   - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
@@ -156,7 +156,7 @@ sources:
 |------|--------|---------|---------|------ |
 | OmniH2O（CMU/Tsinghua 2024） | Unitree H1/G1 | VR + 手套 | 全身遥操作 | 全身 DOF 控制，含移动基座 |
 | **[xr_teleoperate](../entities/xr-teleoperate.md)（Unitree 官方）** | Unitree G1 / H1 | AVP / PICO / Quest 等 XR | 官方参考实现 | 宇树开源全身遥操作主仓；可与 [unitree_sim_isaaclab](../entities/unitree-sim-isaaclab.md) 同 DDS 仿真采数；组织地图见 [Unitree](../entities/unitree.md) |
-| HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | [解耦 WBC](../entities/htd-decoupled-wbc.md) 稳定下肢已开源；VR 采数与 HTD 策略截至 2026-08-26 仍待发布 |
+| HTD（CMU/Bosch 2026） | 人形 + 灵巧手 | VR + 摇杆 + 分布式触觉 | 5 个真实接触丰富任务 | [解耦 WBC](../entities/paper-humanoid-touch-dream.md) 稳定下肢已开源；VR 采数与 HTD 策略截至 2026-08-26 仍待发布 |
 | [TWIST2](../entities/paper-twist2.md)（Amazon FAR, ICRA 2026） | Unitree G1 | PICO 4 Ultra + 2-DoF 颈 | 真机便携遥操作 | 全身 RL 跟踪 + 扩散 visuomotor 自主；15 min 级百次采集；底层 XR 流常用 XRoboToolkit |
 | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md)（上海交大 2026） | Unitree G1 | VR 头显 + 手柄 | 长程 loco-manip | 感知 **MoE 全身 LLC** 作底层；楼梯/高台等非结构化场景遥操作 |
 | [CWI](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md)（LimX / HKU 等 2026） | LimX Oli | **Meta Quest VR** + 手柄 | 全身 loco-manip | **双手 9D keypoint + 速度/身高** 蒸馏接口，无需全身 MoCap |
@@ -332,7 +332,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manipulation 与非结构化地形底层控制
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — Quest VR 双手接口 + 复合全身模仿 loco-manipulation（arXiv:2606.27676）
 - [ω-0（论文实体）](../entities/paper-omega-0.md) — Pico VR + SONIC 采集 ω-HOME；潜空间 foresight 家务并发 loco-manip（arXiv:2608.06375）
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — HTD 开源下肢控制器；采数栈仍待发布
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md) — HTD 开源下肢控制器；采数栈仍待发布
 - [motion_tracking（代码实体）](../entities/axellwppr-motion-tracking.md) — HEFT 官方 mjlab 训练与 sim2real 检查点
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）

@@ -56,7 +56,7 @@
 - **核心贡献：** 摆锤台架 + CMA-ES 同时辨识 **表观惯量 $J_m$（手册有 $J_r$ 则 $J_m=N^2 J_r$，否则当自由参数）**、电气 $k_t,R$ 与 M1–M6 摩擦。不需要六维力传感器。
 - **对 wiki 的映射：**
   - [关节执行器参数辨识](../../wiki/methods/joint-actuator-parameter-identification.md)
-  - [BAM](../../wiki/entities/bam-better-actuator-models.md)
+  - [BAM](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
 
 ### 5) Towards Bridging the Gap: Systematic Sim-to-Real Transfer for Diverse Legged Robots（Bjelonic et al., arXiv:2509.06342）
 

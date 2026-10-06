@@ -15,7 +15,7 @@
 - **项目页：** <https://giga-world-0.github.io/>
 - **子类 / 象限：** 合成数据与数据生成 · 三维场景数据生成 · 机器人交互数据 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-2511-19861-gigaworld-0-world-models-as-data-engine-to-empow.md`](../../wiki/entities/paper-rcl-2511-19861-gigaworld-0-world-models-as-data-engine-to-empow.md)
+- **沉淀到 wiki：** [`wiki/entities/gigaworld-0.md`](../../wiki/entities/gigaworld-0.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-2511-19861-gigaworld-0-world-models-as-data-engine-to-empow.md`](../../wiki/entities/paper-rcl-2511-19861-gigaworld-0-world-models-as-data-engine-to-empow.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/gigaworld-0.md`](../../wiki/entities/gigaworld-0.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -1,36 +1,59 @@
 ---
 type: entity
-tags: [benchmark, manipulation, vla, sim2real, evaluation, leaderboard, open-source, ai-mmlab-club, isaac-lab]
+tags:
+- benchmark
+- manipulation
+- vla
+- sim2real
+- evaluation
+- leaderboard
+- open-source
+- ai-mmlab-club
+- isaac-lab
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-29
+updated: 2026-10-06
 related:
-  - ./physical-rsi.md
-  - ./paper-gpt-6-astra-embodied-policy.md
-  - ./robolab.md
-  - ./xpolicylab.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../queries/embodied-eval-benchmark-selection-loop.md
-  - ../overview/hub-embodied-eval-benchmark.md
-  - ../overview/frontier-models-3d-cad-robotics-survey.md
-  - ../concepts/simulation-evaluation-infrastructure.md
-  - ../concepts/sim-vs-real-eval-gap.md
-  - ./robo-bench.md
-  - ./vla-sota-leaderboard.md
-  - ./paper-prm-as-a-judge.md
-  - ./xiaomi-robotics-1.md
-  - ./paper-robodawn.md
-  - ./simate.md
-  - ./isaac-gym-isaac-lab.md
+- ./physical-rsi.md
+- ./paper-gpt-6-astra-embodied-policy.md
+- ./robolab.md
+- ./xpolicylab.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../queries/embodied-eval-benchmark-selection-loop.md
+- ../overview/hub-embodied-eval-benchmark.md
+- ../overview/frontier-models-3d-cad-robotics-survey.md
+- ../concepts/simulation-evaluation-infrastructure.md
+- ../concepts/sim-vs-real-eval-gap.md
+- ./robo-bench.md
+- ./vla-sota-leaderboard.md
+- ./paper-prm-as-a-judge.md
+- ./xiaomi-robotics-1.md
+- ./paper-robodawn.md
+- ./simate.md
+- ./isaac-gym-isaac-lab.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/robodojo_arxiv_2607_04434.md
-  - ../../sources/sites/robodojo-benchmark.md
-  - ../../sources/repos/robodojo.md
-  - ../../sources/repos/xpolicylab.md
-  - ../../sources/blogs/robodojo_open_longterm_eval_2026-07.md
-  - ../../sources/sites/mmlab-physical-rsi.md
-  - ../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md
-summary: "RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评测——42 仿真五维任务 + 18 真机任务（Piper X/Piper/ARX X5）；Isaac 异构并行 + RealEval 云真机；XPolicyLab 一次集成；2026-07 开放长期公益榜，verified 上榜须开源训推与权重并公布评测视频。"
+- ../../sources/papers/robodojo_arxiv_2607_04434.md
+- ../../sources/sites/robodojo-benchmark.md
+- ../../sources/repos/robodojo.md
+- ../../sources/repos/xpolicylab.md
+- ../../sources/blogs/robodojo_open_longterm_eval_2026-07.md
+- ../../sources/sites/mmlab-physical-rsi.md
+- ../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md
+- ../../sources/papers/rcl_awesome_wam_2607_04434_robodojo-a-unified-sim-and-real-benchmar.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评测——42 仿真五维任务 + 18 真机任务（Piper X/Piper/ARX X5）；Isaac 异构并行 + RealEval 云真机；XPolicyLab 一次集成；2026-07 开放长期公益榜，verified 上榜须开源训推与权重并公布评测视频。
+project_id: robodojo
+arxiv: '2607.04434'
+code: https://github.com/RoboDojo-Benchmark/RoboDojo
+venue: '2026'
 ---
 
 # RoboDojo（统一仿真–真机通用操纵评测）
@@ -51,6 +74,10 @@ summary: "RoboDojo（arXiv:2607.04434）：通用操纵统一 sim-and-real 评�
 | EE | End-Effector | 末端执行器；策略动作常见表示空间 |
 | WSA | WebSocket Adapter | XPolicyLab 默认 `protocol: ws` 策略服务协议 |
 | MIT | Massachusetts Institute of Technology License | 官方评测仓根 `LICENSE` 文本（README 另有 Non-Commercial 文案，引用时以 LICENSE 为准） |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -200,6 +227,14 @@ sequenceDiagram
 - [RoboLab](./robolab.md) — NVIDIA 高保真 sim 榜 RoboLab-120；真机策略零样本评测；与 RoboArena ρ=0.94
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 仿真栈底座
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [frontier-models-3d-cad-robotics-survey](../overview/frontier-models-3d-cad-robotics-survey.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [论文摘录 robodojo_arxiv_2607_04434](../../sources/papers/robodojo_arxiv_2607_04434.md)
@@ -208,8 +243,21 @@ sequenceDiagram
 - [仓库归档 XPolicyLab](../../sources/repos/xpolicylab.md)
 - [公告：开放长期公益评测](../../sources/blogs/robodojo_open_longterm_eval_2026-07.md)
 
+- [`sources/papers/rcl_awesome_wam_2607_04434_robodojo-a-unified-sim-and-real-benchmar.md`](../../sources/papers/rcl_awesome_wam_2607_04434_robodojo-a-unified-sim-and-real-benchmar.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://arxiv.org/abs/2607.04434>
+
+- [mmlab-physical-rsi](../../sources/sites/mmlab-physical-rsi.md)
+
+- [dou_frontier_3d_modeling_robotics_mit_csail_2026](../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md)
+
 ## 推荐继续阅读
 
 - [RoboDojo Leaderboard Protocol](https://robodojo-benchmark.com/leaderboard/protocol) — 官方完整性与反刷榜全文
 - [RoboDojo Documentation](https://robodojo-benchmark.com/doc/) — 安装、任务与 Quick Evaluation
 - [XPolicyLab CONTRIBUTING / adapter 标准](https://github.com/XPolicyLab/XPolicyLab) — 上榜 PR 与 `demo_policy` 参考实现
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://arxiv.org/abs/2607.04434)

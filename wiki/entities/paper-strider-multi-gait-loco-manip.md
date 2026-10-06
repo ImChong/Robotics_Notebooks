@@ -1,21 +1,31 @@
 ---
 type: entity
 tags:
-  - paper
-  - humanoid
-  - loco-manipulation
-  - teacher-student
+- paper
+- humanoid
+- loco-manipulation
+- teacher-student
+- hierarchical-control
+- x-humanoid
+- demo-only
 status: complete
-updated: 2026-10-03
-arxiv: "2609.23483"
+updated: 2026-10-06
+arxiv: '2609.23483'
 related:
-  - ../tasks/humanoid-locomotion.md
-  - ../methods/reinforcement-learning.md
-  - ../concepts/sim2real.md
+- ../tasks/humanoid-locomotion.md
+- ../methods/reinforcement-learning.md
+- ../concepts/sim2real.md
+- ../tasks/loco-manipulation.md
+- ../concepts/whole-body-control.md
+- ./paper-omnicontact-humanoid-loco-manipulation.md
 sources:
-  - ../../sources/papers/strider-multi-gait-loco-manip_arxiv_2609_23483.md
-  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
-summary: "STRIDER（arXiv:2609.23483）：AMP 行走 + 3D 落脚专家 + 笛卡尔上肢；LD-PPO 在线 RL + DAgger + Teacher latent 对齐蒸馏统一 Student。"
+- ../../sources/papers/strider-multi-gait-loco-manip_arxiv_2609_23483.md
+- ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
+- ../../sources/papers/strider_x_humanoid_demo_2026.md
+- ../../sources/sites/strider-demo-youtube.md
+summary: STRIDER（arXiv:2609.23483）：AMP 行走 + 3D 落脚专家 + 笛卡尔上肢；LD-PPO 在线 RL + DAgger + Teacher latent 对齐蒸馏统一 Student。
+project_id: strider-multi-gait-loco-manip
+venue: X-Humanoid public demo (YouTube) 2026-09
 ---
 
 # STRIDER（arXiv:2609.23483）
@@ -33,6 +43,10 @@ summary: "STRIDER（arXiv:2609.23483）：AMP 行走 + 3D 落脚专家 + 笛卡�
 | RL | Reinforcement Learning | 强化学习 |
 | WBC | Whole-Body Control | 全身控制 |
 | MPC | Model Predictive Control | 模型预测控制 |
+
+| Loco-Manip | Loco-Manipulation | 移动与操作联合任务 |
+| Sim2Real | Simulation to Real | 仿真策略真机部署 |
+| HRL | Hierarchical Reinforcement Learning | 分层策略/技能组合 |
 
 ## 为什么重要
 
@@ -91,11 +105,71 @@ flowchart TD
 2. 指标须连同实验条件解读（仿真/真机、平台、成功阈值）。
 3. 关注 arXiv 版本更新与代码发布。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 北京人形机器人创新中心（X-Humanoid） |
+| 公开材料 | [YouTube demo](https://youtu.be/gf5RWjCZXtA) |
+| 论文 / arXiv | **未公开**（2026-09-23） |
+| 开源状态 | **未公开** |
+| 上传者（视频页） | Yuanzhuo Li |
+
+### 核心原理（待核实）
+
+从标题与 demo 语境可 **假设**（非论文结论）：
+
+```mermaid
+flowchart TB
+  subgraph high["高层 / 任务"]
+    T["Loco-manipulation 目标\n(位姿、物体、接触)"]
+  end
+  subgraph mid["步态 / Stepping"]
+    G["Multi-gait 调度\n(含 explicit stepping)"]
+  end
+  subgraph low["低层 / 全身"]
+    W["3D WBC / 关节扭矩跟踪"]
+  end
+  T --> G --> W
+```
+
+- **Stepping-Enabled：** 落脚/换步扩展操作 reachable workspace（与 [loco-manipulation](../tasks/loco-manipulation.md) 中「腿为臂让路」同族问题）。
+- **Multi-Gait：** 行走/站定/可能的特殊步态切换，服务非结构化 3D 场景。
+- **Hierarchical：** 任务层与步态/低层控制分离，降低单策略 reward 工程难度（对照 [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) 的 meta-skill 分层）。
+
+### 工程实践
+
+| 检查项 | 建议 |
+|--------|------|
+| 一手来源 | 等待 X-Humanoid 发布 PDF / 项目页后再读数值与接口 |
+| 开源边界 | 截至入库日 **无代码**；勿与 XR-1 仓库混为同一 release |
+| 选型 | 仅作路线跟踪；正式 benchmark 出来前不参与算法对比 |
+
+### 源码运行时序图
+
+**不适用**（截至 2026-09-23 无官方可运行代码或 README 入口）。
+
+### 实验与评测
+
+- 演示视频 **未附** 定量 SR/成功率、仿真器或真机平台说明。
+- 发布后应对齐：embodiment、任务集、是否与 Wise KaiWu / XR-1 共用数据或低层 API。
+
+### 局限与风险
+
+- **证据不足：** 任何关于算法族（RL / MPC / VLA）的猜测均待论文核实。
+- **Unlisted 视频：** 链接可能变更；入库日以 [`sources/sites/strider-demo-youtube.md`](../../sources/sites/strider-demo-youtube.md) 为准。
+
 ## 关联页面
 
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [sim2real](../concepts/sim2real.md)
+
+- [loco-manipulation](../tasks/loco-manipulation.md)
+- [whole-body-control](../concepts/whole-body-control.md)
+- [paper-omnicontact-humanoid-loco-manipulation](./paper-omnicontact-humanoid-loco-manipulation.md)
 
 ## 参考来源
 
@@ -103,6 +177,13 @@ flowchart TD
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md)
 - [arXiv:2609.23483](https://arxiv.org/abs/2609.23483)
 
+- [strider_x_humanoid_demo_2026.md](../../sources/papers/strider_x_humanoid_demo_2026.md)
+- [strider-demo-youtube.md](../../sources/sites/strider-demo-youtube.md)
+- [演示视频](https://youtu.be/gf5RWjCZXtA)
+
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.23483)
+
+- [X-Humanoid Tien Kung 3.0 新闻稿](https://www.prnewswire.com/news-releases/x-humanoid-introduces-embodied-tien-kung-3-0--a-more-open-and-practical-humanoid-robotics-platform-302688505.html)
+- [Open-X-Humanoid/XR-1](https://github.com/Open-X-Humanoid/XR-1)

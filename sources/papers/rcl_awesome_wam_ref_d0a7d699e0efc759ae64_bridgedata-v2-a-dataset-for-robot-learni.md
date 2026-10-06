@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 机器人示范与操作数据 · 跨机器人与多任务数据 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md`](../../wiki/entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md)
+- **沉淀到 wiki：** [`wiki/entities/painode-085-bridgedatav2.md`](../../wiki/entities/painode-085-bridgedatav2.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md`](../../wiki/entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/painode-085-bridgedatav2.md`](../../wiki/entities/painode-085-bridgedatav2.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

@@ -1,22 +1,37 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+tags:
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
+- repo
+- china-embodied-opensource
+- open-source
+- project
 status: complete
-updated: 2026-09-25
-arxiv: "2511.17502"
-venue: "arXiv preprint"
-summary: "RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and action-conditioned image prediction, then adds a parallel continuous-action head. Its strongest evidence is mutual training benefit: better exec"
+updated: 2026-10-06
+arxiv: '2511.17502'
+venue: arXiv preprint
+summary: 'RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and action-conditioned image prediction, then adds a parallel continuous-action head. Its strongest evidence is mutual training benefit: better exec'
 related:
-  - ../entities/awesome-world-action-models-rcl.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
+- ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/china-domestic-opensource-424-coverage.md
 sources:
-  - ../../sources/papers/rcl_awesome_wam_2511_17502_rynnvla-002-a-unified-vision-language-ac.md
-  - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/papers/rcl_awesome_wam_2511_17502_rynnvla-002-a-unified-vision-language-ac.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
+- ../../sources/repos/rynnvla-002.md
+institutions:
+- alibaba
+project_id: rcl-2511-17502-rynnvla-002-a-unified-vision-language-action-and
 ---
 
 # RynnVLA-002
@@ -36,11 +51,16 @@ RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and acti
 | IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 | WM | World Model | 环境前向预测模型 |
 
+| SDK | Software Development Kit | 真机控制与状态读取接口 |
+| RL | Reinforcement Learning | 强化学习训练与策略优化 |
+| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
+| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+
 ## 为什么重要
 
 - RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and action-conditioned image prediction, then adds a parallel continuous-action head. Its strongest evidence is mutual training benefit: better executed policies and better held-out visual predictions. Policy inference uses no imagined-image rol...
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
 ## 核心信息
 
@@ -85,11 +105,40 @@ RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and acti
 1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
 2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
 
+## 项目资源与工程补充
+
+### 核心原理
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 阿里巴巴 |
+| 类别 | VLA/操作模型 |
+| 官方组织 | https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy |
+
+### 工程实践
+
+1. 从官方 GitHub/Gitee 组织检索 `RynnVLA-002` 仓库并核对 README 许可与依赖。
+2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
+3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+
+### 局限与风险
+
+- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
+- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
+- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
+- [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
 
 ## 参考来源
 
@@ -99,7 +148,13 @@ RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and acti
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2511.17502>
 
+- [RynnVLA-002 源码归档](../../sources/repos/rynnvla-002.md)（<https://github.com/alibaba-damo-academy/RynnVLA-002>）
+
+- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
 ## 推荐继续阅读
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2511.17502)
+
+- [阿里巴巴 官方组织](https://github.com/amap-cvlab)

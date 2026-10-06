@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, residual-learning, reinforcement-learning, td3, manipulation, assembly, real-world-rl, siemens, berkeley]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "1812.03201"
 related:
   - ../methods/residual-policy-learning.md

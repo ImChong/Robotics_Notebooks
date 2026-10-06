@@ -39,7 +39,7 @@
 | 执行器 SysID + 零样本 | PACE | [paper-pace-sim2real-legged-robots](../../wiki/entities/paper-pace-sim2real-legged-robots.md) |
 | 主动激励实验设计 | SPI-Active | [paper-notebook-sampling-based-system-identification-with-active](../../wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md) |
 | 执行器残差 / UAN | Fey et al. 2025 | [actuator-network](../../wiki/methods/actuator-network.md) |
-| 动作层残差 | ASAP | [paper-hrl-stack-25-asap](../../wiki/entities/paper-hrl-stack-25-asap.md) |
+| 动作层残差 | ASAP | [paper-hrl-stack-25-asap](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | 在线适应 | RMA / UP-OSI | [paper-rma-rapid-motor-adaptation](../../wiki/entities/paper-rma-rapid-motor-adaptation.md) |
 | 多引擎 DR | PolySim | [paper-polysim-multi-simulator-humanoid-sim2real](../../wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md) |
 | 部署监控 | RAPT | [paper-rapt-sim2real-ood-detection](../../wiki/entities/paper-rapt-sim2real-ood-detection.md) |
@@ -106,7 +106,7 @@
 | 30 | 残差学习 | Sim-to-real transfer with neural-augmented robot simula | — | **新建** | [paper-golemo-neural-augmented-robot-simulation](../../wiki/entities/paper-golemo-neural-augmented-robot-simulation.md) |
 | 31 | 残差学习 | Bridging the sim-to-real gap for athletic loco-manipula | [2502.10894](https://arxiv.org/abs/2502.10894) | **复用** | [paper-notebook-bridging-the-sim-to-real-gap-for-athletic-loco-m](../../wiki/entities/paper-notebook-bridging-the-sim-to-real-gap-for-athletic-loco-m.md) |
 | 32 | 残差学习 | Residual reinforcement learning for robot control | [1812.03201](https://arxiv.org/abs/1812.03201) | **复用** | [paper-residual-rl-robot-control](../../wiki/entities/paper-residual-rl-robot-control.md) |
-| 33 | 残差学习 | ASAP: aligning simulation and real-world physics for le | [2502.01143](https://arxiv.org/abs/2502.01143) | **复用** | [paper-hrl-stack-25-asap](../../wiki/entities/paper-hrl-stack-25-asap.md) |
+| 33 | 残差学习 | ASAP: aligning simulation and real-world physics for le | [2502.01143](https://arxiv.org/abs/2502.01143) | **复用** | [paper-hrl-stack-25-asap](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | 34 | 残差学习 | MOSAIC: bridging the sim-to-real gap in generalist huma | [2602.08594](https://arxiv.org/abs/2602.08594) | **复用** | [paper-loco-manip-161-014-mosaic](../../wiki/entities/paper-loco-manip-161-014-mosaic.md) |
 | 35 | 残差学习 | Off-dynamics reinforcement learning: training for trans | [2006.13916](https://arxiv.org/abs/2006.13916) | **新建** | [paper-eysenbach-off-dynamics-rl](../../wiki/entities/paper-eysenbach-off-dynamics-rl.md) |
 | 36 | 残差学习 | Legged robots that keep on learning: fine-tuning locomo | [2110.05457](https://arxiv.org/abs/2110.05457) | **新建** | [paper-smith-legged-robots-keep-learning](../../wiki/entities/paper-smith-legged-robots-keep-learning.md) |
@@ -120,4 +120,3 @@
 | 44 | 资源 | Awesome Humanoid Robot Learning | — | **新建** | [paper-awesome-humanoid-robot-learning](../../wiki/entities/paper-awesome-humanoid-robot-learning.md) |
 
 - **44/44 独立节点**；阅读坐标：[freedof-sim2real-44-papers-technology-map](../../wiki/overview/freedof-sim2real-44-papers-technology-map.md)
-

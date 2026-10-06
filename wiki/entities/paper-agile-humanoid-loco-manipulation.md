@@ -1,27 +1,45 @@
 ---
 type: entity
-tags: [paper, humanoid, loco-manipulation, reinforcement-learning, sim2real, isaac-lab, workflow, unitree-g1, booster, nvidia]
+tags:
+- paper
+- humanoid
+- loco-manipulation
+- reinforcement-learning
+- sim2real
+- isaac-lab
+- workflow
+- unitree-g1
+- booster
+- nvidia
+- loco-manip-161-survey
 status: complete
-updated: 2026-09-15
-arxiv: "2603.20147"
+updated: 2026-10-06
+arxiv: '2603.20147'
 code: https://github.com/nvidia-isaac/WBC-AGILE
 related:
-  - ./isaac-lab.md
-  - ../tasks/loco-manipulation.md
-  - ../concepts/sim2real.md
-  - ./unitree-g1.md
-  - ../methods/beyondmimic.md
-  - ../methods/ppo.md
-  - ../concepts/privileged-training.md
-  - ../methods/vla.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
-  - ./paper-loco-manip-161-040-homie.md
-  - ./htd-decoupled-wbc.md
+- ./isaac-lab.md
+- ../tasks/loco-manipulation.md
+- ../concepts/sim2real.md
+- ./unitree-g1.md
+- ../methods/beyondmimic.md
+- ../methods/ppo.md
+- ../concepts/privileged-training.md
+- ../methods/vla.md
+- ./paper-hrl-stack-34-gr00t_n1.md
+- ./paper-loco-manip-161-040-homie.md
+- ./paper-humanoid-touch-dream.md
+- ../overview/humanoid-loco-manip-161-papers-technology-map.md
+- ../overview/loco-manip-161-category-03-visuomotor.md
 sources:
-  - ../../sources/papers/agile_arxiv_2603_20147.md
-  - ../../sources/repos/wbc_agile.md
-  - ../../sources/sites/wbc-agile-docs.md
-summary: "AGILE（NVIDIA，arXiv:2603.20147）是基于 Isaac Lab + RSL-RL 的人形 RL 全生命周期工作流：Prepare→Train→Evaluate→Deploy；描述符驱动 Sim2Sim/真机 I/O，在 Unitree G1 与 Booster T1 上验证五类技能并开源 nvidia-isaac/WBC-AGILE。"
+- ../../sources/papers/agile_arxiv_2603_20147.md
+- ../../sources/repos/wbc_agile.md
+- ../../sources/sites/wbc-agile-docs.md
+- ../../sources/papers/loco_manip_161_survey_056_agile.md
+- ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+- ../../sources/papers/humanoid_loco_manip_161_catalog.md
+summary: AGILE（NVIDIA，arXiv:2603.20147）是基于 Isaac Lab + RSL-RL 的人形 RL 全生命周期工作流：Prepare→Train→Evaluate→Deploy；描述符驱动 Sim2Sim/真机 I/O，在 Unitree G1 与 Booster T1 上验证五类技能并开源 nvidia-isaac/WBC-AGILE。
+project_id: agile-humanoid-loco-manipulation
+venue: curated
 ---
 
 # AGILE：人形 Loco-Manipulation 学习工作流
@@ -42,6 +60,9 @@ summary: "AGILE（NVIDIA，arXiv:2603.20147）是基于 Isaac Lab + RSL-RL 的�
 | L2C2 | Local Lipschitz Continuity Constraint | 平滑观测→动作映射的正则，抑高频作动 |
 | VLA | Vision-Language-Action | 解耦 WBC 上身路径上的 GR00T 微调示例 |
 | SDG | Synthetic Data Generation | 用冻结下肢 + 上身专家采集示范供 VLA |
+
+| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
 
 ## 为什么重要
 
@@ -180,6 +201,36 @@ sequenceDiagram
 - **真机定量：** 无动捕下的跟踪误差；硬件成功偏定性；完整 sim-to-real 驱动管线论文称将另行发布。
 - **勿误读为「新 SOTA 算法」：** 价值在可组合工程闭环与回归评测，算法模块多来自既有技术的统一实现。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 056/161 |
+| 分组 | 03 视觉感知驱动的人形移动操作 |
+| 原文题目 | AGILE: A Comprehensive Workflow for Humanoid Loco-Manipulation Learning |
+| 机构 | （见原文） |
+| 发表日期 | 2026年3月20日 |
+| 论文/项目 | https://github.com/nvidia-isaac/WBC-AGILE |
+
+### 核心机制（归纳）
+
+#### 策展导读要点
+
+AGILE 先从相机图像/多视角观测、本体状态与关节序列、仿真交互数据恢复场景、目标或运动表征，再用PPO/RL 策略训练、全身控制器/WBC/MPC、分层技能/专家策略生成低层控制器目标。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。
+
+### 评测与指标
+
+- 本条目为 161 篇清单索引条目，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](https://github.com/nvidia-isaac/WBC-AGILE)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-03-visuomotor.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
+### 常见误区
+
+1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
+2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
+
 ## 关联页面
 
 - [Isaac Lab](./isaac-lab.md) — 仿真与 MDP 底座
@@ -190,7 +241,13 @@ sequenceDiagram
 - [PPO](../methods/ppo.md) / [Privileged Training](../concepts/privileged-training.md) — 训练与蒸馏读法
 - [VLA](../methods/vla.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 上身专家微调路径
 - [HOMIE](./paper-loco-manip-161-040-homie.md) — 分层 loco-manip 对照
-- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — 另一条 Isaac Lab 单 GPU 解耦下肢控制器（G1，HTD）
+- [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — 另一条 Isaac Lab 单 GPU 解耦下肢控制器（G1，HTD）
+
+- 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
+- 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
+- 原始 source：[loco_manip_161_survey_056_agile.md](../../sources/papers/loco_manip_161_survey_056_agile.md)
+
+- [paper-humanoid-touch-dream](./paper-humanoid-touch-dream.md)
 
 ## 参考来源
 
@@ -199,8 +256,14 @@ sequenceDiagram
 - [wbc-agile-docs.md](../../sources/sites/wbc-agile-docs.md) — 官方文档站归档
 - [arXiv:2603.20147](https://arxiv.org/abs/2603.20147) — 原文（Submitted 2026-03-20）
 
+- [loco_manip_161_survey_056_agile.md](../../sources/papers/loco_manip_161_survey_056_agile.md) — 161 篇策展摘录
+- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
+
 ## 推荐继续阅读
 
 - [AGILE 文档站](https://nvidia-isaac.github.io/WBC-AGILE/) — 安装、任务 ID、训练与部署指南
 - [nvidia-isaac/WBC-AGILE](https://github.com/nvidia-isaac/WBC-AGILE) — 代码与 Office Hour FAQ
 - [Isaac Lab 文档](https://isaac-sim.github.io/IsaacLab/) — 上游 manager-based 环境约定
+
+- [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)

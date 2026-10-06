@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, sim2real, real2sim, real2sim2real, domain-randomization, gaussian-splatting, embodied-ai]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 related:
   - ./paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md
   - ../overview/sun-awesome-r2s2r-technology-map.md

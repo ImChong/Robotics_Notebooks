@@ -77,7 +77,7 @@ sources:
 | [NMR / MakeTrackingEasy](https://github.com/NJU3DV-HumanoidGroup/MakeTrackingEasy) | [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) |
 | [OmniRetarget](https://github.com/amazon-far/holosoma) | [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) |
 | [PHC](https://github.com/ZhengyiLuo/PHC) | [PHC（Perpetual Humanoid Control）](../entities/phc.md) |
-| [TRAM](https://github.com/yufu-wang/tram) | [TRAM](../entities/paper-motion-cerebellum-tram.md) |
+| [TRAM](https://github.com/yufu-wang/tram) | [TRAM](../entities/paper-tram-global-human-motion.md) |
 | [WHAM](https://github.com/yohanshin/WHAM) | [WHAM](../entities/wham-world-human-motion.md) |
 
 ### Locomotion与运动先验（24）
@@ -152,7 +152,7 @@ sources:
 | [HDMI](https://github.com/LeCAR-Lab/HDMI) | [HDMI](../entities/paper-hrl-stack-06-hdmi.md) |
 | [HumanX](https://wyhuai.github.io/human-x/) | [HumanX](../entities/paper-hrl-stack-05-humanx.md) |
 | [OASIS](https://github.com/TeleHuman/OASIS) | [OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Man…](../entities/paper-loco-manip-04-oasis.md) |
-| [OmniContact](https://github.com/Ingrid789/OmniContact_sim2sim) | [OmniContact sim2sim](../entities/omnicontact-sim2sim.md) |
+| [OmniContact](https://github.com/Ingrid789/OmniContact_sim2sim) | [OmniContact sim2sim](../entities/paper-omnicontact-humanoid-loco-manipulation.md) |
 | [OpenHLM](https://huggingface.co/OpenHLM) | [OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md) |
 | [SceneBot](https://ericcsr.github.io/scenebot/) | [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](../entities/paper-scenebot.md) |
 | [SimToolReal](https://github.com/tylerlum/simtoolreal) | [SimToolReal](../entities/simtoolreal.md) |
@@ -180,7 +180,7 @@ sources:
 | [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
 | [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../methods/octo-model.md) |
 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md) |
-| [OpenVLA](https://github.com/openvla/openvla) | [OpenVLA](../entities/openvla.md) |
+| [OpenVLA](https://github.com/openvla/openvla) | [OpenVLA](../entities/paper-openvla.md) |
 | [WholeBodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | [WholeBodyVLA](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | [WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) | [WorldArena](../entities/worldarena.md) |
 
@@ -188,7 +188,7 @@ sources:
 
 | 上游项目 | 本库详情 |
 | --- | --- |
-| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP](../entities/paper-hrl-stack-25-asap.md) · 清单索引页见 [paper-notebook-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
+| [ASAP](https://github.com/LeCAR-Lab/ASAP) | [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) · 清单索引页见 [paper-notebook-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) |
 | [BEHAVIOR / OmniGibson](https://github.com/StanfordVL/BEHAVIOR-1K) | [BEHAVIOR-1K](../entities/behavior-1k.md) · 同主题共用 |
 | [Brax](https://github.com/google/brax) | [Brax（JAX 可微物理与 RL 训练）](../entities/brax.md) |
 | [CALVIN](https://github.com/mees/calvin) | [CALVIN](../entities/calvin-benchmark.md) |
@@ -206,7 +206,7 @@ sources:
 | [Genie Studio Agent](https://www.agibot.com/article/231/detail/59.html) | [Genie Studio Agent](../entities/genie-studio-agent.md) |
 | [Humanoid Everyday](https://github.com/physical-superintelligence-lab/Humanoid-Everyday) | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) |
 | [HumanoidBench](https://github.com/carlosferrazza/humanoid-bench) | [HumanoidBench](../entities/humanoid-bench.md) |
-| [HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse) | [HumanoidVerse 框架](../entities/humanoidverse.md)（≠ [VLN 论文页](../entities/paper-notebook-humanoidverse.md)） |
+| [HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse) | [HumanoidVerse 框架](../entities/humanoidverse.md)（≠ [VLN 论文页](../entities/humanoidverse.md)） |
 | [Hydra](https://github.com/facebookresearch/hydra) | [Hydra](../entities/hydra-config.md) |
 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | [Isaac Lab](../entities/isaac-lab.md) |
 | [Isaac Sim](https://github.com/isaac-sim/IsaacSim) | [Isaac Sim](../entities/isaac-sim.md) |

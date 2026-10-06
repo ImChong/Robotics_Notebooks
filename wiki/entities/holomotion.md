@@ -3,7 +3,7 @@ type: entity
 tags: [repo, humanoid, motion-tracking, foundation-model, horizon-robotics, transformer, mixture-of-experts, ppo, zero-shot, teleoperation, imitation-learning]
 status: complete
 arxiv: "2605.15336"
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md

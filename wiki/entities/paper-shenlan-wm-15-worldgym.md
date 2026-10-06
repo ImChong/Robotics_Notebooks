@@ -1,22 +1,40 @@
 ---
 type: entity
-tags: [paper, world-models, shenlan-survey, open-source, google-deepmind, nyu, stanford]
+tags:
+- paper
+- world-models
+- shenlan-survey
+- open-source
+- google-deepmind
+- nyu
+- stanford
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-16
-arxiv: "2506.00613"
+updated: 2026-10-06
+arxiv: '2506.00613'
 venue: —
-summary: "WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度相关。"
+summary: WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度相关。
 related:
-  - ../overview/world-models-15-open-source-technology-map.md
-  - ../overview/world-models-route-03-virtual-sandbox.md
-  - ../overview/robot-world-models-training-loop-taxonomy.md
-  - ../methods/generative-world-models.md
-  - ../concepts/world-action-models.md
-  - ./paper-driftworld.md
+- ../overview/world-models-15-open-source-technology-map.md
+- ../overview/world-models-route-03-virtual-sandbox.md
+- ../overview/robot-world-models-training-loop-taxonomy.md
+- ../methods/generative-world-models.md
+- ../concepts/world-action-models.md
+- ./paper-driftworld.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/shenlan_wm_survey_15_worldgym.md
-  - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
-  - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+- ../../sources/papers/shenlan_wm_survey_15_worldgym.md
+- ../../sources/papers/shenlan_world_models_15_reference_catalog.md
+- ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+- ../../sources/papers/rcl_awesome_wam_ref_75da67884f9b1e1a961e_worldgym-world-model-as-an-environment-f.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: shenlan-wm-15-worldgym
 ---
 
 # WorldGym
@@ -33,6 +51,10 @@ WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度�
 |------|----------|----------|
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
 | VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 
 ## 为什么重要
 
@@ -90,7 +112,28 @@ WM 作策略评估虚拟靶场；VLM 奖励 + MC 模拟，与真机排名高度�
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
 
+- [`sources/papers/rcl_awesome_wam_ref_75da67884f9b1e1a961e_worldgym-world-model-as-an-environment-f.md`](../../sources/papers/rcl_awesome_wam_ref_75da67884f9b1e1a961e_worldgym-world-model-as-an-environment-f.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://proceedings.iclr.cc/paper_files/paper/2026/hash/7f5e909ac0324db03506b380c695ffaf-Abstract-Conference.html>
+
 ## 推荐继续阅读
 
 - [arXiv:2506.00613](https://arxiv.org/abs/2506.00613) — 论文全文
 - [深蓝具身智能原文](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/7f5e909ac0324db03506b380c695ffaf-Abstract-Conference.html)
+
+## 关联页面
+
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)
+- [world-action-models](../concepts/world-action-models.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)

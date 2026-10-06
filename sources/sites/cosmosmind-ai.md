@@ -7,7 +7,7 @@
 - **链接：** <https://cosmosmind.ai/>
 - **入库日期：** 2026-09-14
 - **一句话说明：** CosmosMind AI Lab 官方入口：以 Darwin 式 meta-engine 叙事组织 MetaRSI、SWE 评测与 agent harness 研究；MetaRSI-v1 链到 PDF / GitHub / Hugging Face。
-- **沉淀到 wiki：** [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)、[`wiki/entities/rsi-harness.md`](../../wiki/entities/rsi-harness.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)、[`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)
 
 ## 开源状态（步骤 2.5）
 

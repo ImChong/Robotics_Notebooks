@@ -72,6 +72,18 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ### 步骤 3：判断是否沉淀到 `wiki/`
 
+#### 同一项目只维护一个实体节点（CI 门禁）
+
+创建页面前先检索项目名、`project_id`、论文编号、官方项目地址和源码仓库。**论文、官方网站、官方训练/推理/部署实现是同一项目的不同材料，统一编译进一个 `wiki/entities/` 主节点**，不得再建 `project-*` / `repo-*` 或策展清单占位页来分流导航。清单与路线直接引用主节点；原始材料仍分别放在 `sources/papers/`、`sources/sites/`、`sources/repos/`。
+
+- 新项目实体填写稳定的 `project_id: <小写英文-slug>`，并标注主论文 `arxiv:` / `papers:`、官方 `project:` 或 `code:` 等身份材料。项目页可使用 `paper:` 引用论文编号，但也会参与重复检查。
+- 同一项目的多篇配套论文可以记入主节点的 `papers: ["ID1", "ID2"]`；arXiv 版本号不构成新节点。
+- 相同缩写、不同论文或独立工具不自动合并。一个源码仓库承载不同论文时，以各自主论文编号区分；确为独立单仓模块时，新节点须写明不同的 `code_scope`（模块路径）及 `project_distinction`（独立维护理由），不能用这两个字段为同项目资源拆页找理由。
+- 合并节点必须迁移内链、来源映射和公司路线 ID，并将旧详情页 ID 登记到 `schema/page-aliases.json`；保留独有方法、实验、运行流程与来源，不复制清单模板正文。
+- `python3 scripts/check_project_nodes.py --base HEAD` 是本地快速检查；`make ci-preflight` 自动执行。GitHub **Wiki Lint** 相对 PR base / push before 检查新增实体，且全库重复身份、规范化论文编号和项目 URL 均为阻塞项。正文引用和 `sources/` 多份归档不计作节点身份。
+
+检查依赖明确的主身份字段；维护者仍需核对没有编号或地址的同名材料，不能以 CI 通过代替语义判断。
+
 只有满足以下至少一条，才升格进 `wiki/`：
 - 能解释一个重要概念
 - 能补全一个方法页

@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - online-adaptation
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:

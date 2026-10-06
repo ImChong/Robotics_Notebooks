@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2008.01279"
 venue: "International Conference on Intelligent Robots and Systems (IROS)"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本页是清单索引，细节以原文为准。"

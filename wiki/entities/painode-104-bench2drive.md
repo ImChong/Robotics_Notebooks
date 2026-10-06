@@ -1,20 +1,37 @@
 ---
 type: entity
-tags: [curated-index, physical-ai, awesome-physical-ai, eval]
+tags:
+- physical-ai
+- awesome-physical-ai
+- eval
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 code: https://github.com/thinklab-sjtu/bench2drive
-summary: "Closed-loop evaluation protocol for end-to-end driving policies."
+summary: Closed-loop evaluation protocol for end-to-end driving policies.
 related:
-  - ../entities/awesome-physical-ai-natnew.md
-  - ../overview/awesome-physical-ai-technology-map.md
-  - ../methods/vla.md
-  - ../concepts/sim2real.md
+- ../entities/awesome-physical-ai-natnew.md
+- ../overview/awesome-physical-ai-technology-map.md
+- ../methods/vla.md
+- ../concepts/sim2real.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/repos/pai_awesome_eval_104_bench2drive.md
-  - ../../sources/repos/awesome-physical-ai-union-catalog.md
-  - ../../sources/repos/awesome-physical-ai-natnew.md
-  - ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/repos/pai_awesome_eval_104_bench2drive.md
+- ../../sources/repos/awesome-physical-ai-union-catalog.md
+- ../../sources/repos/awesome-physical-ai-natnew.md
+- ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/papers/rcl_awesome_wam_2406_03877_bench2drive-towards-multi-ability-benchm.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: 104-bench2drive
+arxiv: '2406.03877'
+venue: NeurIPS 2024 Datasets and Benchmarks Track
 ---
 
 # Bench2Drive
@@ -32,6 +49,10 @@ Closed-loop evaluation protocol for end-to-end driving policies.
 | PAI | Physical AI | 具身/物理智能策展主题 |
 | RL | Reinforcement Learning | 评测统计口径常用于 RL |
 | VLA | Vision-Language-Action | 通才策略评测对象 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -81,6 +102,15 @@ Closed-loop evaluation protocol for end-to-end driving policies.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [vla](../methods/vla.md)
+- [sim2real](../concepts/sim2real.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_eval_104_bench2drive.md`](../../sources/repos/pai_awesome_eval_104_bench2drive.md) — 本条目策展摘录
@@ -89,8 +119,17 @@ Closed-loop evaluation protocol for end-to-end driving policies.
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://github.com/Thinklab-SJTU/Bench2Drive>
 
+- [`sources/papers/rcl_awesome_wam_2406_03877_bench2drive-towards-multi-ability-benchm.md`](../../sources/papers/rcl_awesome_wam_2406_03877_bench2drive-towards-multi-ability-benchm.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://proceedings.neurips.cc/paper_files/paper/2024/hash/017761f94a1cd66d01c041aff85492c4-Abstract-Datasets_and_Benchmarks_Track.html>
+
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
 - [原文 / 官方入口](https://github.com/Thinklab-SJTU/Bench2Drive)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://proceedings.neurips.cc/paper_files/paper/2024/hash/017761f94a1cd66d01c041aff85492c4-Abstract-Datasets_and_Benchmarks_Track.html)

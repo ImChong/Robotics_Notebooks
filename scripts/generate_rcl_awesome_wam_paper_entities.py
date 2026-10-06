@@ -33,7 +33,7 @@ LIST_META: dict[str, Any] = {
     "url": "https://github.com/rcl-robotics/Awesome-World-Action-Models",
     "site": "https://rcl-robotics.github.io/Awesome-World-Action-Models/",
     "papers_md": "https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md",
-    "entity": "wiki/entities/awesome-world-action-models-rcl.md",
+    "entity": "wiki/entities/paper-rcl-wam-robot-learning-control-survey.md",
     "hub_methods": [
         "../methods/generative-world-models.md",
         "../methods/vla.md",

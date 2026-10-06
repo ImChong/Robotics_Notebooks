@@ -2,7 +2,7 @@
 type: comparison
 tags: [sim2real, system-identification, domain-randomization, online-adaptation, residual-learning, identifiability, locomotion, deployment]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -16,7 +16,7 @@ related:
   - ./sim2real-vs-real2sim-fine-tuning.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
-  - ../entities/paper-hrl-stack-25-asap.md
+  - ../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md
   - ../overview/hub-sim2real.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
@@ -99,7 +99,7 @@ flowchart TD
 | SimOpt / BayesSim（文内） | 放弃辨识 + 反馈 | 少量轨迹更新参数分布 | 无 |
 | PolySim（文内） | 放弃辨识 | 无（多引擎结构随机化） | 无 |
 | 执行器网络 / UAN | 辨识↔残差边界 | 响应轨迹匹配 | 训练期进仿真 |
-| [ASAP](../entities/paper-hrl-stack-25-asap.md) | 承认辨不出 | 真机 rollout 学 delta action | 微调后通常无 |
+| [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) | 承认辨不出 | 真机 rollout 学 delta action | 微调后通常无 |
 | [RMA](../entities/paper-rma-rapid-motor-adaptation.md) | 推迟辨识 | 训历史编码器 | 有，在线运行 |
 
 ### 症状 → 路线（节选）
@@ -135,7 +135,7 @@ flowchart TD
 
 ### 44 篇参考文献索引
 
-逐篇独立详情节点见 [Sim2Real 44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)（44/44，0 重复 arXiv）。代表节点：[PACE](../entities/paper-pace-sim2real-legged-robots.md)、[SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)、[RMA](../entities/paper-rma-rapid-motor-adaptation.md)、[ASAP](../entities/paper-hrl-stack-25-asap.md)、[PolySim](../entities/paper-polysim-multi-simulator-humanoid-sim2real.md)、[RAPT](../entities/paper-rapt-sim2real-ood-detection.md)。
+逐篇独立详情节点见 [Sim2Real 44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)（44/44，0 重复 arXiv）。代表节点：[PACE](../entities/paper-pace-sim2real-legged-robots.md)、[SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)、[RMA](../entities/paper-rma-rapid-motor-adaptation.md)、[ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)、[PolySim](../entities/paper-polysim-multi-simulator-humanoid-sim2real.md)、[RAPT](../entities/paper-rapt-sim2real-ood-detection.md)。
 
 ## 关联页面
 

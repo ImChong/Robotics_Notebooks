@@ -1,22 +1,35 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
+tags:
+- paper
+- awesome-egocentric-vision
+- sun254667-ego
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-16
-arxiv: "2509.19626"
-venue: "NeurIPS 2025"
-summary: "Optimal transport alignment between human visual-action distributions, improving imitation success rate by 44% over standard baselines"
+updated: 2026-10-06
+arxiv: '2509.19626'
+venue: NeurIPS 2025
+summary: Optimal transport alignment between human visual-action distributions, improving imitation success rate by 44% over standard baselines
 related:
-  - ../entities/awesome-egocentric-vision.md
-  - ../overview/sun-awesome-ego-technology-map.md
-  - ../methods/vla.md
-  - ../methods/imitation-learning.md
-  - ../tasks/manipulation.md
-  - ../tasks/teleoperation.md
+- ../entities/awesome-egocentric-vision.md
+- ../overview/sun-awesome-ego-technology-map.md
+- ../methods/vla.md
+- ../methods/imitation-learning.md
+- ../tasks/manipulation.md
+- ../tasks/teleoperation.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/sun_awesome_ego_2509_19626_egobridge-domain-adaptation-for-generali.md
-  - ../../sources/papers/sun_awesome_ego_catalog.md
-  - ../../sources/repos/awesome-egocentric-vision.md
+- ../../sources/papers/sun_awesome_ego_2509_19626_egobridge-domain-adaptation-for-generali.md
+- ../../sources/papers/sun_awesome_ego_catalog.md
+- ../../sources/repos/awesome-egocentric-vision.md
+- ../../sources/papers/rcl_awesome_wam_ref_646db90b75f1827a347d_egobridge-domain-adaptation-for-generali.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im
 ---
 
 # EgoBridge
@@ -35,6 +48,10 @@ Optimal transport alignment between human visual-action distributions, improving
 | HOI | Hand–Object Interaction | 手–物交互理解 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | VLM | Vision-Language Model | 视觉–语言模型 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -90,6 +107,15 @@ Optimal transport alignment between human visual-action distributions, improving
 - 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [imitation-learning](../methods/imitation-learning.md)
+- [teleoperation](../tasks/teleoperation.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [`sources/papers/sun_awesome_ego_2509_19626_egobridge-domain-adaptation-for-generali.md`](../../sources/papers/sun_awesome_ego_2509_19626_egobridge-domain-adaptation-for-generali.md) — 本条目策展摘录
@@ -97,7 +123,16 @@ Optimal transport alignment between human visual-action distributions, improving
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2509.19626>
 
+- [`sources/papers/rcl_awesome_wam_ref_646db90b75f1827a347d_egobridge-domain-adaptation-for-generali.md`](../../sources/papers/rcl_awesome_wam_ref_646db90b75f1827a347d_egobridge-domain-adaptation-for-generali.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://neurips.cc/virtual/2025/poster/119049>
+
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
 - [原文](https://arxiv.org/abs/2509.19626)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://neurips.cc/virtual/2025/poster/119049)

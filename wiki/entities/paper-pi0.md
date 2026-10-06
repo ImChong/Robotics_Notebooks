@@ -1,31 +1,44 @@
 ---
 type: entity
 tags:
-  - paper
-  - vla
-  - flow-matching
-  - foundation-policy
-  - manipulation
-  - physical-intelligence
+- paper
+- vla
+- flow-matching
+- foundation-policy
+- manipulation
+- physical-intelligence
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-26
-arxiv: "2410.24164"
+updated: 2026-10-06
+arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
 related:
-  - ../methods/π0-policy.md
-  - ../methods/pi07-policy.md
-  - ./paper-diffusion-policy.md
-  - ./paper-openvla.md
-  - ./paper-gr00t-n1-5.md
-  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
-  - ./paper-dexholdem.md
-  - ./paper-deicticvla.md
+- ../methods/π0-policy.md
+- ../methods/pi07-policy.md
+- ./paper-diffusion-policy.md
+- ./paper-openvla.md
+- ./paper-gr00t-n1-5.md
+- ../../roadmap/depth-robotics-diffusion-dit-flow.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-dexholdem.md
+- ./paper-deicticvla.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/pi0_arxiv_2410_24164.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/repos/openpi.md
-summary: "π₀（arXiv:2410.24164，Physical Intelligence）：PaliGemma 类 VLM + Flow Matching Action Expert；高频连续动作。官方仓是 Physical-Intelligence/openpi，不是 pi0。"
+- ../../sources/papers/pi0_arxiv_2410_24164.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/repos/openpi.md
+- ../../sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: π₀（arXiv:2410.24164，Physical Intelligence）：PaliGemma 类 VLM + Flow Matching Action Expert；高频连续动作。官方仓是 Physical-Intelligence/openpi，不是 pi0。
+project_id: pi0
+venue: RSS 2025
 ---
 
 # π₀：流匹配动作专家的通用 VLA
@@ -44,6 +57,10 @@ summary: "π₀（arXiv:2410.24164，Physical Intelligence）：PaliGemma 类 VL
 | VLM | Vision-Language Model | 语义骨干（PaliGemma 类） |
 | VLA | Vision-Language-Action | 本工作的模型类别 |
 | DP | Diffusion Policy | 多步去噪对照，见 [论文](./paper-diffusion-policy.md) |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -133,13 +150,32 @@ sequenceDiagram
 - [DeicticVLA](./paper-deicticvla.md) — π₀ 全参微调 + SAM 2 指示 mask；真机未见类别 VLI/VI 100% vs LI 16.7%
 - [AtomicVLA](./paper-atomicvla.md) — openpi 基座上 SG-MoE 原子技能；LIBERO-LONG +10% vs π₀（arXiv:2603.07648）
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [paper-gr00t-n1-5](./paper-gr00t-n1-5.md)
+- [depth-robotics-diffusion-dit-flow](../../roadmap/depth-robotics-diffusion-dit-flow.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 推荐继续阅读
 
 - [arXiv:2410.24164](https://arxiv.org/abs/2410.24164)
 - [Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://www.roboticsproceedings.org/rss21/p010.html)
 
 ## 参考来源
 
 - [pi0_arxiv_2410_24164](../../sources/papers/pi0_arxiv_2410_24164.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [openpi 仓库归档](../../sources/repos/openpi.md)
+
+- [`sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md`](../../sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://www.roboticsproceedings.org/rss21/p010.html>

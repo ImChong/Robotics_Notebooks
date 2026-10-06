@@ -40,7 +40,7 @@
 | [hdl_graph_slam.md](hdl_graph_slam.md) | [koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam) | 2.3k | [hdl-graph-slam](../../wiki/entities/hdl-graph-slam.md) |
 | [voxgraph.md](voxgraph.md) | [ethz-asl/voxgraph](https://github.com/ethz-asl/voxgraph) | 0.5k | [voxgraph](../../wiki/entities/voxgraph.md) |
 | [lerobot.md](lerobot.md) | [huggingface/lerobot](https://github.com/huggingface/lerobot) | 24.4k | [lerobot](../../wiki/entities/lerobot.md) |
-| [openvla.md](openvla.md) | [openvla/openvla](https://github.com/openvla/openvla) | 6.3k | [openvla](../../wiki/entities/openvla.md) |
+| [openvla.md](openvla.md) | [openvla/openvla](https://github.com/openvla/openvla) | 6.3k | [openvla](../../wiki/entities/paper-openvla.md) |
 | [mushr.md](mushr.md) | [prl-mushr/mushr](https://github.com/prl-mushr/mushr) | 0.2k | [mushr](../../wiki/entities/mushr.md) |
 | [isaac_ros_visual_slam.md](isaac_ros_visual_slam.md) | [NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam) | 1.4k | [isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md) |
 | [isaac_ros_nvblox.md](isaac_ros_nvblox.md) | [NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox) | 0.7k | [isaac-ros-nvblox](../../wiki/entities/isaac-ros-nvblox.md) |

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, sim2real, domain-randomization, real2sim, nvidia, sydney, utah, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 arxiv: "2510.20808"
 venue: "Annual Review of Control, Robotics, and Autonomous Systems 2026"
 summary: "Annual Review 2026 Sim2Real 综述（arXiv:2510.20808）：四维 gap 来源、Reduce/Overcome 方法 taxonomy、gap vs 迁移双轨指标与工程 recipe；NVIDIA/UZH/悉尼/华大/犹他联合；无官方代码。"

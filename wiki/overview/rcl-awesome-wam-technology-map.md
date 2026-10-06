@@ -2,10 +2,10 @@
 type: overview
 tags: [overview, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog, technology-map]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 summary: "RCL Awesome World-Action Models 技术地图：把 PAPERS.md 里的 564 条文献逐条拆成站内可点开的一页，按八大类浏览。"
 related:
-  - ../entities/awesome-world-action-models-rcl.md
+  - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
 sources:
@@ -42,7 +42,7 @@ sources:
 |----|-----|
 | 上游仓库 | <https://github.com/rcl-robotics/Awesome-World-Action-Models> |
 | PAPERS.md | <https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md> |
-| 列表实体 | [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md) |
+| 列表实体 | [Awesome World-Action Models（RCL）](../entities/paper-rcl-wam-robot-learning-control-survey.md) |
 | 目录 source | [rcl_awesome_wam_catalog.md](../../sources/papers/rcl_awesome_wam_catalog.md) |
 
 ## 分组索引
@@ -54,13 +54,13 @@ sources:
 | 001 | [A Large-scale Study of Representation Learning with the Visual Task Adaptation Benchmark](../entities/paper-rcl-1910-04867-a-large-scale-study-of-representation-learning-w.md) |
 | 002 | [ACT-Bench: Towards Action Controllable World Models for Autonomous Driving](../entities/paper-rcl-2412-05337-act-bench-towards-action-controllable-world-mode.md) |
 | 003 | [Behaviour Suite for Reinforcement Learning](../entities/paper-rcl-1908-03568-behaviour-suite-for-reinforcement-learning.md) |
-| 004 | [Bench2Drive: Towards Multi-Ability Benchmarking of Closed-Loop End-To-End Autonomous Drivi](../entities/paper-rcl-2406-03877-bench2drive-towards-multi-ability-benchmarking-o.md) |
+| 004 | [Bench2Drive: Towards Multi-Ability Benchmarking of Closed-Loop End-To-End Autonomous Drivi](../entities/painode-104-bench2drive.md) |
 | 005 | [Beyond the Nav-Graph: Vision-and-Language Navigation in Continuous Environments](../entities/paper-rcl-ref-f851fa79e6baee5a919e-beyond-the-nav-graph-vision-and-language-navigat.md) |
-| 006 | [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipu](../entities/paper-as-2112-03227-calvin-a-benchmark-for-language-conditioned-poli.md) |
+| 006 | [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipu](../entities/calvin-benchmark.md) |
 | 007 | [CARLA: An Open Urban Driving Simulator](../entities/carla.md) |
 | 008 | [Craftax: A Lightning-Fast Benchmark for Open-Ended Reinforcement Learning](../entities/paper-rcl-ref-3145193f87c43012f17a-craftax-a-lightning-fast-benchmark-for-open-ende.md) |
 | 009 | [Ctrl-World: A Controllable Generative World Model for Robot Manipulation](../entities/paper-ctrl-world.md) |
-| 010 | [DeepMind Control Suite](../entities/paper-rcl-1801-00690-deepmind-control-suite.md) |
+| 010 | [DeepMind Control Suite](../entities/dm-control.md) |
 | 011 | [Diffusion Transformer World-Action Model for AV Scene Prediction](../entities/paper-rcl-2606-12987-diffusion-transformer-world-action-model-for-av.md) |
 | 012 | [Do World Action Models Generalize Better than VLAs? A Robustness Study](../entities/paper-rcl-2603-22078-do-world-action-models-generalize-better-than-vl.md) |
 | 013 | [DriveDreamer-2: LLM-Enhanced World Models for Diverse Driving Video Generation](../entities/paper-sa-2403-06845-drivedreamer-2-llm-enhanced-world-models-for-div.md) |
@@ -81,7 +81,7 @@ sources:
 | 028 | [Interactive World Simulator for Robot Policy Training and Evaluation](../entities/paper-rcl-2603-08546-interactive-world-simulator-for-robot-policy-tra.md) |
 | 029 | [JailWAM: Jailbreaking World Action Models in Robot Control](../entities/paper-rcl-2604-05498-jailwam-jailbreaking-world-action-models-in-robo.md) |
 | 030 | [LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models](../entities/paper-rcl-2510-13626-libero-plus-in-depth-robustness-analysis-of-visi.md) |
-| 031 | [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](../entities/paper-rcl-2306-03310-libero-benchmarking-knowledge-transfer-for-lifel.md) |
+| 031 | [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](../entities/libero-benchmark.md) |
 | 032 | [Leveraging Procedural Generation to Benchmark Reinforcement Learning](../entities/paper-rcl-ref-5c37def65669693c1520-leveraging-procedural-generation-to-benchmark-re.md) |
 | 033 | [LongScape: Advancing Long-Horizon Embodied World Models with Context-Aware MoE](../entities/paper-rcl-2509-21790-longscape-advancing-long-horizon-embodied-world.md) |
 | 034 | [MIND-V: Hierarchical World Model for Long-Horizon Robotic Manipulation with RL-based Physi](../entities/paper-rcl-2512-06628-mind-v-hierarchical-world-model-for-long-horizon.md) |
@@ -96,9 +96,9 @@ sources:
 | 043 | [Persistent Robot World Models: Stabilizing Multi-Step Rollouts via Reinforcement Learning](../entities/paper-rcl-2603-25685-persistent-robot-world-models-stabilizing-multi.md) |
 | 044 | [Programmable World Model](../entities/paper-rcl-2609-10540-programmable-world-model.md) |
 | 045 | [Pseudo-Simulation for Autonomous Driving](../entities/paper-rcl-ref-361c60313b366d2109f0-pseudo-simulation-for-autonomous-driving.md) |
-| 046 | [RLBench: The Robot Learning Benchmark & Learning Environment](../entities/paper-as-1909-12271-rlbench-the-robot-learning-benchmark-learning-en.md) |
+| 046 | [RLBench: The Robot Learning Benchmark & Learning Environment](../entities/rlbench.md) |
 | 047 | [RoboCasa: Large-Scale Simulation of Everyday Tasks for Generalist Robots](../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md) |
-| 048 | [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robo](../entities/paper-rcl-2607-04434-robodojo-a-unified-sim-and-real-benchmark-for-co.md) |
+| 048 | [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robo](../entities/robodojo.md) |
 | 049 | [RoboScape: Physics-informed Embodied World Model](../entities/paper-sa-2506-23135-roboscape-physics-informed-embodied-world-model.md) |
 | 050 | [RoboSynChallenge: Mastering Real-World Dexterity via Generalizing Synthesized Manipulation](../entities/paper-robosynchallenge.md) |
 | 051 | [RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins](../entities/paper-rcl-ref-4aab09abc95513cc8eb4-robotwin-dual-arm-robot-benchmark-with-generativ.md) |
@@ -108,9 +108,9 @@ sources:
 | 055 | [The Arcade Learning Environment: An Evaluation Platform for General Agents](../entities/paper-as-1207-4708-the-arcade-learning-environment-an-evaluation-pl.md) |
 | 056 | [TourPhysics: Bringing Physics to World Models for Exploration and Manipulation from a Sing](../entities/paper-rcl-2609-04911-tourphysics-bringing-physics-to-world-models-for.md) |
 | 057 | [Toward Physically Consistent Driving Video World Models under Challenging Trajectories](../entities/paper-sa-2603-24506-toward-physically-consistent-driving-video-world.md) |
-| 058 | [WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodi](../entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md) |
+| 058 | [WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodi](../entities/worldarena.md) |
 | 059 | [WorldEval: World Model as Real-World Robot Policies Evaluator](../entities/paper-sa-2505-19017-worldeval-world-model-as-real-world-robot-polici.md) |
-| 060 | [WorldGym: World Model as An Environment for Policy Evaluation](../entities/paper-rcl-ref-75da67884f9b1e1a961e-worldgym-world-model-as-an-environment-for-polic.md) |
+| 060 | [WorldGym: World Model as An Environment for Policy Evaluation](../entities/paper-shenlan-wm-15-worldgym.md) |
 | 061 | [WorldLens: Full-Spectrum Evaluations of Driving World Models in Real World](../entities/paper-sa-2512-10958-worldlens-full-spectrum-evaluations-of-driving-w.md) |
 | 062 | [Wow, wo, val! A Comprehensive Embodied World Model Evaluation Turing Test](../entities/paper-rcl-2601-04137-wow-wo-val-a-comprehensive-embodied-world-model.md) |
 | 063 | [X-World: Controllable Ego-Centric Multi-Camera World Models for Scalable End-to-End Drivin](../entities/paper-x-world.md) |
@@ -160,27 +160,27 @@ sources:
 | 097 | [Are we ready for autonomous driving? The KITTI vision benchmark suite](../entities/paper-rcl-ref-46f2622e9aef7e722cb2-are-we-ready-for-autonomous-driving-the-kitti-vi.md) |
 | 098 | [Argoverse: 3D Tracking and Forecasting With Rich Maps](../entities/paper-rcl-ref-901dd4e018709bd1ca32-argoverse-3d-tracking-and-forecasting-with-rich.md) |
 | 099 | [BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning](../entities/paper-rcl-ref-663c359ac9bfe090d027-bdd100k-a-diverse-driving-dataset-for-heterogene.md) |
-| 100 | [BridgeData V2: A Dataset for Robot Learning at Scale](../entities/paper-rcl-ref-d0a7d699e0efc759ae64-bridgedata-v2-a-dataset-for-robot-learning-at-sc.md) |
+| 100 | [BridgeData V2: A Dataset for Robot Learning at Scale](../entities/painode-085-bridgedatav2.md) |
 | 101 | [Building Pretraining Data for World Models: An Unreal Engine-Based Pipeline for Action-Con](../entities/paper-rcl-2609-03557-building-pretraining-data-for-world-models-an-un.md) |
 | 102 | [CoPeD-Advancing Multi-Robot Collaborative Perception: A Comprehensive Dataset in Real-Worl](../entities/paper-rcl-2405-14731-coped-advancing-multi-robot-collaborative-percep.md) |
 | 103 | [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](../entities/paper-rcl-ref-aa9c28fbf4242ea03696-droid-a-large-scale-in-the-wild-robot-manipulati.md) |
 | 104 | [DexGraspNet: A Large-Scale Robotic Dexterous Grasp Dataset for General Objects Based on Si](../entities/paper-rcl-2210-02697-dexgraspnet-a-large-scale-robotic-dexterous-gras.md) |
 | 105 | [DreamGen: Unlocking Generalization in Robot Learning through Video World Models](../entities/paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) |
-| 106 | [Ego4D: Around the World in 3,000 Hours of Egocentric Video](../entities/paper-rcl-ref-51f5ebd773eec33b2c6b-ego4d-around-the-world-in-3-000-hours-of-egocent.md) |
+| 106 | [Ego4D: Around the World in 3,000 Hours of Egocentric Video](../entities/paper-ego4d.md) |
 | 107 | [EgoDex: Learning Dexterous Manipulation from Large-Scale Egocentric Video](../entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) |
-| 108 | [GigaWorld-0: World Models as Data Engine to Empower Embodied AI](../entities/paper-rcl-2511-19861-gigaworld-0-world-models-as-data-engine-to-empow.md) |
+| 108 | [GigaWorld-0: World Models as Data Engine to Empower Embodied AI](../entities/gigaworld-0.md) |
 | 109 | [HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone](../entities/paper-hifi-umi.md) |
 | 110 | [How to Instruct Your Robot: Dense Language Annotations Power Robot Policy Learning](../entities/paper-rcl-2605-17077-how-to-instruct-your-robot-dense-language-annota.md) |
 | 111 | [HowTo100M: Learning a Text-Video Embedding by Watching Hundred Million Narrated Video Clip](../entities/paper-rcl-ref-887c80067c952c4655d9-howto100m-learning-a-text-video-embedding-by-wat.md) |
 | 112 | [HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos](../entities/paper-hrl-stack-05-humanx.md) |
 | 113 | [Matterport3D: Learning from RGB-D Data in Indoor Environments](../entities/paper-rcl-1709-06158-matterport3d-learning-from-rgb-d-data-in-indoor.md) |
 | 114 | [MimicDreamer: Aligning Human and Robot Demonstrations for Scalable VLA Training](../entities/paper-rcl-2509-22199-mimicdreamer-aligning-human-and-robot-demonstrat.md) |
-| 115 | [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](../entities/paper-rcl-ref-5677f2aa425315809584-mimicgen-a-data-generation-system-for-scalable-r.md) |
+| 115 | [MimicGen: A Data Generation System for Scalable Robot Learning using Human Demonstrations](../entities/mimicgen.md) |
 | 116 | [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](../entities/paper-open-x-embodiment.md) |
 | 117 | [OpenScene: The Largest Up-to-Date 3D Occupancy Prediction Benchmark in Autonomous Driving](../entities/paper-rcl-ref-236eff7a0d0d26ae758e-openscene-the-largest-up-to-date-3d-occupancy-pr.md) |
 | 118 | [RoboNet: Large-Scale Multi-Robot Learning](../entities/paper-rcl-1910-11215-robonet-large-scale-multi-robot-learning.md) |
 | 119 | [RoboTransfer: Controllable Geometry-Consistent Video Diffusion for Manipulation Policy Tra](../entities/paper-rcl-2505-23171-robotransfer-controllable-geometry-consistent-vi.md) |
-| 120 | [RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for](../entities/paper-rcl-2506-18088-robotwin-2-0-a-scalable-data-generator-and-bench.md) |
+| 120 | [RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for](../entities/robotwin.md) |
 | 121 | [Room-Across-Room: Multilingual Vision-and-Language Navigation with Dense Spatiotemporal Gr](../entities/paper-rcl-ref-ad5e94306036d2729d9f-room-across-room-multilingual-vision-and-languag.md) |
 | 122 | [Scalability in Perception for Autonomous Driving: Waymo Open Dataset](../entities/paper-rcl-ref-7147250a035b50dba3eb-scalability-in-perception-for-autonomous-driving.md) |
 | 123 | [Scaling Data Generation in Vision-and-Language Navigation](../entities/paper-rcl-ref-3fa175f81e25ece6b23f-scaling-data-generation-in-vision-and-language-n.md) |
@@ -191,7 +191,7 @@ sources:
 | 128 | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](../entities/paper-rcl-ref-e064f89fc62c8df5da9f-universal-manipulation-interface-in-the-wild-rob.md) |
 | 129 | [Vision-and-Language Navigation: Interpreting Visually-Grounded Navigation Instructions in ](../entities/paper-rcl-ref-e0201a8da35e8b32ce42-vision-and-language-navigation-interpreting-visu.md) |
 | 130 | [Zenseact Open Dataset: A large-scale and diverse multimodal dataset for autonomous driving](../entities/paper-rcl-ref-12b97dfcece775bcc0b8-zenseact-open-dataset-a-large-scale-and-diverse.md) |
-| 131 | [nuScenes: A Multimodal Dataset for Autonomous Driving](../entities/paper-rcl-ref-a5d6a00ebc235c8fdf08-nuscenes-a-multimodal-dataset-for-autonomous-dri.md) |
+| 131 | [nuScenes: A Multimodal Dataset for Autonomous Driving](../entities/painode-090-nuscenes.md) |
 
 ### Evaluation metrics
 
@@ -225,7 +225,7 @@ sources:
 | 152 | [DayDreamer: World Models for Physical Robot Learning](../entities/paper-daydreamer-world-models-real-robots.md) |
 | 153 | [Deep Reinforcement Learning from Human Preferences](../entities/paper-rcl-ref-2062ffd7f6397312bd01-deep-reinforcement-learning-from-human-preferenc.md) |
 | 154 | [Diffusion for World Modeling: Visual Details Matter in Atari](../entities/paper-rcl-ref-3b350556ce83b51f84c8-diffusion-for-world-modeling-visual-details-matt.md) |
-| 155 | [Diffusion policy: Visuomotor policy learning via action diffusion](../entities/paper-rcl-ref-393a36f38d60db8631f4-diffusion-policy-visuomotor-policy-learning-via.md) |
+| 155 | [Diffusion policy: Visuomotor policy learning via action diffusion](../entities/paper-diffusion-policy.md) |
 | 156 | [Diversity is all you need: Learning skills without a reward function](../entities/paper-bfm-30-diayn.md) |
 | 157 | [Dream to Control: Learning Behaviors by Latent Imagination](../entities/paper-rcl-ref-23813a5cbed0b2b6d37e-dream-to-control-learning-behaviors-by-latent-im.md) |
 | 158 | [Factor Graphs for Robot Perception](../entities/paper-rcl-ref-dcea01617aaebb6971e4-factor-graphs-for-robot-perception.md) |
@@ -235,7 +235,7 @@ sources:
 | 162 | [Learning to summarize with human feedback](../entities/paper-rcl-ref-066817e565cc911bd5c1-learning-to-summarize-with-human-feedback.md) |
 | 163 | [LoRA: Low-Rank Adaptation of Large Language Models](../entities/paper-rcl-ref-71811bf04d6371d0bd82-lora-low-rank-adaptation-of-large-language-model.md) |
 | 164 | [Mastering Atari with Discrete World Models](../entities/paper-rcl-ref-e1815cc67e6f9fc2bb7e-mastering-atari-with-discrete-world-models.md) |
-| 165 | [Mastering diverse control tasks through world models](../entities/paper-rcl-ref-8fa0ebc722d8d35eaf75-mastering-diverse-control-tasks-through-world-mo.md) |
+| 165 | [Mastering diverse control tasks through world models](../entities/paper-shenlan-wm-13-dreamerv3.md) |
 | 166 | [Mean Flows for One-step Generative Modeling](../entities/paper-rcl-ref-ce6916f81594a9c4c73f-mean-flows-for-one-step-generative-modeling.md) |
 | 167 | [Model predictive control: Theory and practice—A survey](../entities/paper-rcl-ref-36bafee9274250697060-model-predictive-control-theory-and-practicea-su.md) |
 | 168 | [Model-Based Reinforcement Learning for Atari](../entities/paper-pai-1903-00374-simple.md) |
@@ -283,7 +283,7 @@ sources:
 | 200 | [Data Pyramid for Embodied Manipulation: A Survey](../entities/paper-data-pyramid-embodied-manipulation.md) |
 | 201 | [Dexterity from Smart Lenses: Multi-Fingered Robot Manipulation with In-the-Wild Human Demo](../entities/paper-notebook-dexterity-from-smart-lenses-multi-fingered-robot.md) |
 | 202 | [DynaMo: In-Domain Dynamics Pretraining for Visuo-Motor Control](../entities/paper-rcl-2409-12192-dynamo-in-domain-dynamics-pretraining-for-visuo.md) |
-| 203 | [EgoBridge: Domain Adaptation for Generalizable Imitation from Egocentric Human Data](../entities/paper-rcl-ref-646db90b75f1827a347d-egobridge-domain-adaptation-for-generalizable-im.md) |
+| 203 | [EgoBridge: Domain Adaptation for Generalizable Imitation from Egocentric Human Data](../entities/paper-sa-2509-19626-egobridge-domain-adaptation-for-generalizable-im.md) |
 | 204 | [Embodied.cpp: A Portable Inference Runtime of Embodied AI Models on Heterogeneous Robots](../entities/paper-rcl-2607-02501-embodied-cpp-a-portable-inference-runtime-of-emb.md) |
 | 205 | [FAST-LIVO2: Fast, Direct LiDAR-Inertial-Visual Odometry](../entities/paper-rcl-2408-14035-fast-livo2-fast-direct-lidar-inertial-visual-odo.md) |
 | 206 | [Factored Latent Action World Models](../entities/paper-rcl-2602-16229-factored-latent-action-world-models.md) |
@@ -331,12 +331,12 @@ sources:
 | 243 | [LatBot: Distilling Universal Latent Actions for Vision-Language-Action Models](../entities/paper-rcl-2511-23034-latbot-distilling-universal-latent-actions-for-v.md) |
 | 244 | [MEM: Multi-Scale Embodied Memory for Vision Language Action Models](../entities/paper-pai-2603-03596-memmultiscaleembodiedmemory.md) |
 | 245 | [OASIS: Observation-Action Space Alignment via SE(3) Trajectory Prediction for Robotic Mani](../entities/paper-rcl-2605-25829-oasis-observation-action-space-alignment-via-se.md) |
-| 246 | [Octo: An Open-Source Generalist Robot Policy](../entities/paper-rcl-ref-1c048eabe2faa444f31b-octo-an-open-source-generalist-robot-policy.md) |
+| 246 | [Octo: An Open-Source Generalist Robot Policy](../entities/paper-octo.md) |
 | 247 | [OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Mode](../entities/paper-rcl-ref-b5386c6f934f87f4cec4-opendrivevla-towards-end-to-end-autonomous-drivi.md) |
 | 248 | [OpenVLA: An Open-Source Vision-Language-Action Model](../entities/paper-openvla.md) |
 | 249 | [Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autono](../entities/paper-rcl-ref-ced7109d62bb4514d467-percept-wam-perception-enhanced-world-awareness.md) |
 | 250 | [RL Token: Bootstrapping Online RL with Vision-Language-Action Models](../entities/paper-rcl-2604-23073-rl-token-bootstrapping-online-rl-with-vision-lan.md) |
-| 251 | [RT-1: Robotics Transformer for Real-World Control at Scale](../entities/paper-rcl-ref-d73223ab358ff6f8ecd9-rt-1-robotics-transformer-for-real-world-control.md) |
+| 251 | [RT-1: Robotics Transformer for Real-World Control at Scale](../entities/paper-rt-1.md) |
 | 252 | [RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](../entities/paper-rt-2.md) |
 | 253 | [SLIM-0.5B: Learning Action-Grounded Predictive Latents for Robot Manipulation](../entities/paper-slim-05b.md) |
 | 254 | [Spatial Forcing: Implicit Spatial Representation Alignment for Vision-Language-Action Mode](../entities/paper-rcl-ref-0f2536c81a1992e3c3b8-spatial-forcing-implicit-spatial-representation.md) |
@@ -352,8 +352,8 @@ sources:
 | 264 | [dVLA-RL: Reinforcement Learning over Denoising Trajectories for Discrete Diffusion Vision-](../entities/paper-rcl-2606-23623-dvla-rl-reinforcement-learning-over-denoising-tr.md) |
 | 265 | [π^*_0.6: a VLA That Learns From Experience](../entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) |
 | 266 | [π_RL: Online RL Fine-tuning for Flow-based Vision-Language-Action Models](../entities/paper-rcl-2510-25889-rl-online-rl-fine-tuning-for-flow-based-vision-l.md) |
-| 267 | [π₀.₅: a Vision-Language-Action Model with Open-World Generalization](../entities/paper-rcl-ref-a351afa5504418f3e26f-0-5-a-vision-language-action-model-with-open-wor.md) |
-| 268 | [π₀: A Vision-Language-Action Flow Model for General Robot Control](../entities/paper-rcl-ref-502ccb43b26687d765d7-0-a-vision-language-action-flow-model-for-genera.md) |
+| 267 | [π₀.₅: a Vision-Language-Action Model with Open-World Generalization](../entities/paper-pi05-open-world-vla.md) |
+| 268 | [π₀: A Vision-Language-Action Flow Model for General Robot Control](../entities/paper-pi0.md) |
 
 ### WAMs
 
@@ -423,14 +423,14 @@ sources:
 | 330 | [Dual-Stream Diffusion for World-Model Augmented Vision-Language-Action Model](../entities/paper-rcl-2510-27607-dual-stream-diffusion-for-world-model-augmented.md) |
 | 331 | [DyWA: Dynamics-adaptive World Action Model for Generalizable Non-prehensile Manipulation](../entities/paper-sa-2503-16806-dywa-dynamics-adaptive-world-action-model-for-ge.md) |
 | 332 | [DynVLA: Learning World Dynamics for Action Reasoning in Autonomous Driving](../entities/paper-rcl-2603-11041-dynvla-learning-world-dynamics-for-action-reason.md) |
-| 333 | [Dyna-2: A 1-million-hour scaling law for world-action models](../entities/paper-rcl-ref-ed0e9bb8027f431c1f20-dyna-2-a-1-million-hour-scaling-law-for-world-ac.md) |
+| 333 | [Dyna-2: A 1-million-hour scaling law for world-action models](../entities/dyna-2.md) |
 | 334 | [DynamicWAM: Dual-Path Motion Conditioning for World-Action Models in Dynamic Manipulation](../entities/paper-rcl-2608-00793-dynamicwam-dual-path-motion-conditioning-for-wor.md) |
 | 335 | [EVA: Aligning Video World Models with Executable Robot Actions via Inverse Dynamics Reward](../entities/paper-rcl-2603-17808-eva-aligning-video-world-models-with-executable.md) |
 | 336 | [EWAM: An Enhanced World Action Model for Closed-Loop Online Adaptation in Embodied Intelli](../entities/paper-rcl-2606-12690-ewam-an-enhanced-world-action-model-for-closed-l.md) |
 | 337 | [Efficient Sim-to-Real Transfer of World-Action Models from Synthetic Priors](../entities/paper-sa-2606-31101-efficient-sim-to-real-transfer-of-world-action-m.md) |
 | 338 | [Efficient-WAM: A 1B-Parameter World-Action Model with Low-Cost Future Imagination](../entities/paper-rcl-2606-10040-efficient-wam-a-1b-parameter-world-action-model.md) |
 | 339 | [Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
-| 340 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) |
+| 340 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 341 | [EndoWAM: A Grounded World-Action Model for Generalizable Endoscopic Navigation](../entities/paper-rcl-2608-01221-endowam-a-grounded-world-action-model-for-genera.md) |
 | 342 | [EnerVerse: Envisioning Embodied Future Space for Robotics Manipulation](../entities/paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for.md) |
 | 343 | [Enhancing End-to-End Autonomous Driving with Latent World Model](../entities/paper-sa-2406-08481-law-enhancing-end-to-end-autonomous-driving-with.md) |
@@ -531,7 +531,7 @@ sources:
 | 438 | [Navigation World Models](../entities/paper-rcl-ref-2624494a0f9cbb4a61d2-navigation-world-models.md) |
 | 439 | [Next Forcing: Causal World Modeling with Multi-Chunk Prediction](../entities/paper-sa-2606-11187-next-forcing-causal-world-modeling-with-multi-ch.md) |
 | 440 | [NoiseGate: Learning Per-Latent Timestep Schedules as Information Gating in World Action Mo](../entities/paper-rcl-2605-07794-noisegate-learning-per-latent-timestep-schedules.md) |
-| 441 | [N₀-TWAM: Scaling Tactile-Native World-Action Model for Contact-Rich Manipulation](../entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md) |
+| 441 | [N₀-TWAM: Scaling Tactile-Native World-Action Model for Contact-Rich Manipulation](../entities/paper-n0-twam.md) |
 | 442 | [OA-WAM: Object-Addressable World Action Model for Robust Robot Manipulation](../entities/paper-rcl-2605-06481-oa-wam-object-addressable-world-action-model-for.md) |
 | 443 | [OccLLaMA: An Occupancy-Language-Action Generative World Model for Autonomous Driving](../entities/paper-sa-2409-03272-occllama-an-occupancy-language-action-generative.md) |
 | 444 | [OccWorld: Learning a 3D Occupancy World Model for Autonomous Driving](../entities/paper-sa-2311-16038-occworld-learning-a-3d-occupancy-world-model-for.md) |
@@ -550,12 +550,12 @@ sources:
 | 457 | [QuantWAMs: Calibrating at the Right Granularity for World Action Models](../entities/paper-rcl-2607-28405-quantwams-calibrating-at-the-right-granularity-f.md) |
 | 458 | [RISE: Adaptive Imagination for World Action Models](../entities/paper-rise-adaptive-imagination-wam.md) |
 | 459 | [RISE: Self-Improving Robot Policy with Compositional World Model](../entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md) |
-| 460 | [RLVR-World: Training World Models with Reinforcement Learning](../entities/paper-rcl-ref-a8d6b1d31a7e72a424da-rlvr-world-training-world-models-with-reinforcem.md) |
+| 460 | [RLVR-World: Training World Models with Reinforcement Learning](../entities/paper-shenlan-wm-14-rlvr-world.md) |
 | 461 | [ReWorld: Representation Learning for World Action Models](../entities/paper-rcl-2606-27504-reworld-representation-learning-for-world-action.md) |
 | 462 | [RepWAM: World Action Modeling with Representation Visual-Action Tokenizers](../entities/paper-rcl-2606-13674-repwam-world-action-modeling-with-representation.md) |
 | 463 | [Rethink Before You Execute: Adaptive Execution for World Action Models](../entities/paper-tempowam.md) |
 | 464 | [Retrieve, Don't Retrain: Extending Vision Language Action Models to New Tasks at Test Time](../entities/paper-rcl-2606-15631-retrieve-don-t-retrain-extending-vision-language.md) |
-| 465 | [Riemann-1.0: An Embodied World Action Model for Physical AI](../entities/paper-rcl-2608-27033-riemann-1-0-an-embodied-world-action-model-for-p.md) |
+| 465 | [Riemann-1.0: An Embodied World Action Model for Physical AI](../entities/paper-riemann-1.md) |
 | 466 | [RoboDreamer: Learning Compositional World Models for Robot Imagination](../entities/paper-sa-2404-12377-robodreamer-learning-compositional-world-models.md) |
 | 467 | [RoboHorizon: An LLM-Assisted Multi-View World Model for Long-Horizon Robotic Manipulation](../entities/paper-sa-2501-06605-robohorizon-an-llm-assisted-multi-view-world-mod.md) |
 | 468 | [Robotic World Model: A Neural Network Simulator for Robust Policy Optimization in Robotics](../entities/paper-sa-2501-10100-robotic-world-model-a-neural-network-simulator-f.md) |
@@ -665,7 +665,7 @@ sources:
 
 ## 关联页面
 
-- [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- [Awesome World-Action Models（RCL）](../entities/paper-rcl-wam-robot-learning-control-survey.md)
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [VLA](../methods/vla.md)
 

@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, privileged-training, dagger, teacher-student, sim2real]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-06
 summary: "飞书 Know-How 模块：Teacher-Student 用仿真特权信息训练教师，再蒸馏或 DAgger 聚合数据训练可部署学生，缓解 BC 分布偏移与 sim2real 观测差距。"
 related:
   - ./multi-expert-distillation.md
@@ -13,7 +13,7 @@ related:
   - ./imitation-learning.md
   - ../concepts/sim2real.md
   - ../overview/humanoid-rl-motion-control-methods.md
-  - ../entities/htd-decoupled-wbc.md
+  - ../entities/paper-humanoid-touch-dream.md
   - ../entities/paper-cts-concurrent-teacher-student-locomotion.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -84,7 +84,7 @@ RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset 
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Distillation Runner vs Imitation Runner：Teacher 网络 vs 专家演示
 - [Teacher-Student 多技能 BFM](./teacher-student-multi-skill-bfm.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — 开源 BC 250k → DAgger 至 600k 的 G1 下肢蒸馏日程
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md) — 开源 BC 250k → DAgger 至 600k 的 G1 下肢蒸馏日程
 - [CTS 并发 Teacher–Student](../entities/paper-cts-concurrent-teacher-student-locomotion.md) — 单阶段 PPO 联合优化（Legbot Lab 工程扩展）
 - [Fault-Tolerant Locomotion](../entities/paper-fault-tolerant-locomotion.md) — 单阶段非对称 actor–critic + latent-alignment（对照两阶段蒸馏）
 

@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-18fe7d2bfb0e93f4c45e-maniskill-generalizable-manipulation-skill-bench.md`](../../wiki/entities/paper-rcl-ref-18fe7d2bfb0e93f4c45e-maniskill-generalizable-manipulation-skill-bench.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

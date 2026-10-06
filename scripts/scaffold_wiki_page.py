@@ -317,6 +317,10 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     content = build_skeleton(args.type, args.title, dataset=args.dataset, paper=args.paper)
+    if args.type == "entity":
+        content = content.replace(
+            "type: entity\n", f"type: entity\nproject_id: {slug.removeprefix('paper-')}\n", 1
+        )
 
     problems = self_check(content, args.type)
     wc = word_count(content)

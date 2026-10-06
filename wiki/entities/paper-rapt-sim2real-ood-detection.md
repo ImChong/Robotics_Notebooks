@@ -7,7 +7,7 @@ tags:
   - ood-detection
   - sim2real
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 arxiv: "2602.01515"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

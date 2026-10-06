@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body-control, teacher-student, cvae, reinforcement-learning, sim2real, unitree-g1, loco-manipulation, loco-manip-161-survey, sjtu, shanghai-ai-lab, pku, zju, fudan, hkust-gz, shanghaitech]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2507.07356"
 venue: arXiv
 related:

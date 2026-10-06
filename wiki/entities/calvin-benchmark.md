@@ -1,20 +1,41 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
+tags:
+- sim2real
+- tooling
+- deployment
+- hmi-opensource-table
+- repo
+- linux-foundation
+- paper
+- awesome-sim2real
+- longchao-sim2real
 status: draft
-updated: 2026-09-18
-summary: "CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。"
+updated: 2026-10-06
+summary: CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。
 related:
-  - ../concepts/sim2real.md
-  - ../entities/isaac-lab.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
-  - ./paper-tempo.md
-  - ./paper-atomicvla.md
+- ../concepts/sim2real.md
+- ../entities/isaac-lab.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ./paper-tempo.md
+- ./paper-atomicvla.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../methods/reinforcement-learning.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/calvin-benchmark.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
-  - ../../sources/papers/tempo_arxiv_2608_07314.md
+- ../../sources/repos/calvin-benchmark.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/tempo_arxiv_2608_07314.md
+- ../../sources/papers/lc_awesome_sim2real_2112_03227_calvin-a-benchmark-for-language-conditio.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+project_id: calvin-benchmark
+arxiv: '2112.03227'
+code: https://github.com/mees/calvin
+venue: IEEE Robotics and Automation
 ---
 
 # CALVIN
@@ -33,6 +54,10 @@ sources:
 | Sim2Real | Simulation to Real | 仿真到真机部署主线 |
 | RL | Reinforcement Learning | 训练与评测常用框架 |
 | API | Application Programming Interface | 仿真/中间件编程接口 |
+
+| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
 
 ## 为什么重要
 
@@ -95,6 +120,14 @@ flowchart LR
 - [SLIM-0.5B](./paper-slim-05b.md) — 紧凑 latent 策略；ABC→D avg length 4.556（开源权重）
 - [AtomicVLA](./paper-atomicvla.md) — 链长 avg task length +0.22 / +0.25 vs π₀ / π₀.₅（arXiv:2603.07648）
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [reinforcement-learning](../methods/reinforcement-learning.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [CALVIN 来源归档](../../sources/repos/calvin-benchmark.md)
@@ -102,8 +135,16 @@ flowchart LR
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 - [TEMPO 论文摘录](../../sources/papers/tempo_arxiv_2608_07314.md)
 
+- [`sources/papers/lc_awesome_sim2real_2112_03227_calvin-a-benchmark-for-language-conditio.md`](../../sources/papers/lc_awesome_sim2real_2112_03227_calvin-a-benchmark-for-language-conditio.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://arxiv.org/abs/2112.03227>
+
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/mees/calvin)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
 - [TEMPO](./paper-tempo.md)
+
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
+- [原文](https://arxiv.org/abs/2112.03227)

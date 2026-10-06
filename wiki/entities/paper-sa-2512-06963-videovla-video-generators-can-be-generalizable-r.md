@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2512.06963"
 venue: "arXiv 2025"
 summary: "Video generators as generalizable robot manipulators."

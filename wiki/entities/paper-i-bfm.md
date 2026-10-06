@@ -1,19 +1,30 @@
 ---
 type: entity
-tags: [paper, humanoid, behavioral-foundation-model, forward-backward, unsupervised-rl, loco-manipulation, object-interaction, roboparty]
+tags:
+- paper
+- humanoid
+- behavioral-foundation-model
+- forward-backward
+- unsupervised-rl
+- loco-manipulation
+- object-interaction
+- roboparty
+- project
+- mujoco-demo
 status: complete
 updated: 2026-10-06
-arxiv: "2610.06129"
-venue: "2026 · arXiv preprint"
+arxiv: '2610.06129'
+venue: 2026 · arXiv preprint
 related:
-  - ./project-i-bfm.md
-  - ./paper-bfm-zero.md
-  - ./paper-omnicontact-humanoid-loco-manipulation.md
-  - ../concepts/behavior-foundation-model.md
+- ./paper-bfm-zero.md
+- ./paper-omnicontact-humanoid-loco-manipulation.md
+- ../concepts/behavior-foundation-model.md
 sources:
-  - ../../sources/papers/i_bfm_arxiv_2610_06129.md
-  - ../../sources/sites/i-bfm-project-page.md
-summary: "I-BFM 将人形本体、物体动力学与手–物接触共同编码进 forward–backward 行为空间，以奖励推断 latent 指令调用同一策略；LOGO 同时条件化近端交互意图与远端目标。G1 仿真评测覆盖搬运/推/踢与扰动恢复，项目页另提供定性真机视频和 MuJoCo 交互演示。"
+- ../../sources/papers/i_bfm_arxiv_2610_06129.md
+- ../../sources/sites/i-bfm-project-page.md
+summary: I-BFM 将人形本体、物体动力学与手–物接触共同编码进 forward–backward 行为空间，以奖励推断 latent 指令调用同一策略；LOGO 同时条件化近端交互意图与远端目标。G1 仿真评测覆盖搬运/推/踢与扰动恢复，项目页另提供定性真机视频和 MuJoCo 交互演示。
+project_id: i-bfm
+project: https://iamhardworking.github.io/I-BFM/
 ---
 
 # I-BFM: Reward-Conditioned Robust Humanoid Interaction via Unsupervised Reinforcement Learning
@@ -150,16 +161,55 @@ flowchart TB
 - 任务的阶段奖励仍需设计，推断 latent 后还需高层进度/接触逻辑选择阶段；“零样本”不等于无任务定义。
 - 真机结果是动捕工作区中的定性演示，策略执行为 50 Hz；没有真机统计成功率、多硬件泛化或广泛物体种类评测。
 - 稳健性结论依赖 MuJoCo 指定箱体与中途施加的固定方向/持续时间扰动协议；不等同于自然分布中所有失败模式的鲁棒性。
-- arXiv 表 I 的 Carry Eobj（0.15 m）与正文（0.11 m）冲突；项目网站公开结果卡与论文表格另有多项成功率数值不一致，见[项目节点](./project-i-bfm.md)。
 - 官方项目页将代码状态标为 **Coming soon**；目前未发现可下载代码仓库或权重/数据集发布入口。项目页提供浏览器内 MuJoCo 交互演示，但它不是训练代码公开。
+
+## 源码运行时序图
+
+**不适用**（截至 2026-10-06，官方项目页标注 Code Coming soon，未公开可运行训练/推理实现；网页 MuJoCo 演示不能替代源码）。
 
 ## 结论
 
 I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共享状态和 latent 行为从身体运动扩展到人形–物体–接触耦合。FB 奖励寻址提供统一调用接口，LOGO 则显式保留接触附近的下一步意图和较远的任务目标。在所报告的 G1 仿真测试中，尤其是 Carry 的中途机器人跌倒恢复，以及 G1 上的定性演示，展示了这一交互建模方向的潜力；但成本信息缺失、Eobj 与项目网页结果不一致、真机评估未量化等因素限制了现阶段的可复现性和结论外推范围。
 
+## 项目资源与工程补充
+
+### 项目页提供什么
+
+该站点是论文配套的视觉演示与试用入口，不是一个已发布的训练代码仓库。首页提供：
+
+- **研究概览视频**：呈现 I-BFM 预训练及奖励推断的框架。
+- **浏览器内交互演示**：Live MuJoCo Carry Box 与键盘控制入口。该交互 demo 可用于体验项目所表达的闭环操作概念，但不能据此复现训练。
+- **鲁棒性视频**：Carry Box、Push Box、Kick Box 的受扰表现，以及 Robust Goal Reaching。
+- **结果卡片**：把 Carry / Push / Kick 在无扰动、物体受扰、机器人受扰下的 300 episode 计数放到同一页面。
+
+### 项目站结果卡（按页面原值记录）
+
+| 条件 | Carry Box | Push Box | Kick Box |
+|---|---:|---:|---:|
+| 无外部扰动 | 94.33% (283/300) | 90.00% (270/300) | 81.67% (245/300) |
+| 物体受扰 | 91.00% (273/300) | 85.33% (256/300) | 79.67% (239/300) |
+| 机器人受扰 | 89.33% (268/300) | 84.67% (254/300) | 86.67% (260/300) |
+
+#### 与论文表格核对
+
+网站结果不完全等于 arXiv v1 Table I：例如 Push 标称成功率网页为 90.00%，论文表格为 75.0 ± 6.6%；Kick 标称网页为 81.67%，论文表格为 70.0 ± 3.6%。机器人扰动下 Kick 网页为 86.67%，论文表格为 60.0 ± 8.7%。项目页没有解释版本或协议差异。因此：
+
+1. 本节只把上述数字标为**网站结果卡所示**；
+2. 本页实验节保留 arXiv 表格数据与论文正文中 Carry Eobj 的数值冲突；
+3. 在作者澄清前，不推断哪一套数字更新，也不把项目站的 300-episode 数值写成论文表格结果。
+
+### 复现与资源状态
+
+| 资源 | 当前状态 |
+|---|---|
+| 项目页与演示视频 | 已公开 |
+| 浏览器内 MuJoCo 交互入口 | 项目页嵌入/链接提供 |
+| 论文 | [arXiv:2610.06129](https://arxiv.org/abs/2610.06129) |
+| 代码仓库 | 页面标注 Coming soon；未找到公开仓库 |
+| 权重 / 训练数据下载 | 未发现公开入口；论文也未给出可下载链接 |
+
 ## 关联页面
 
-- [I-BFM 项目页详情](./project-i-bfm.md)
 - [BFM-Zero](./paper-bfm-zero.md) — 身体优先的 FB 行为基础模型
 - [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 接触流条件化交互与技能链
 - [行为基础模型概念](../concepts/behavior-foundation-model.md)

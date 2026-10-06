@@ -81,7 +81,7 @@ HAND_ALIASES: dict[str, str] = {
     "lerobot evaluation scripts": "wiki/entities/lerobot.md",
     "lerobot hardware": "wiki/entities/lerobot.md",
     "lerobot tutorial": "wiki/entities/lerobot.md",
-    "openvla": "wiki/entities/openvla.md",
+    "openvla": "wiki/entities/paper-openvla.md",
     "open x-embodiment": "wiki/concepts/open-x-embodiment.md",
     "open x-embodiment tutorial": "wiki/concepts/open-x-embodiment.md",
     "rt-x": "wiki/entities/paper-open-x-embodiment.md",

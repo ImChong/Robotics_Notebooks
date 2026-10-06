@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-09-27
+updated: 2026-10-06
 venue: "SIGGRAPH Asia 2024 · ACM TOG"
 code: https://github.com/NVlabs/ProtoMotions
 summary: "MaskedMimic（TOG 2024）：masked motion inpainting 统一物理角色控制；稀疏/部分约束下补全全身轨迹；官方实现经 ProtoMotions 开源。"

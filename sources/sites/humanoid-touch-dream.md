@@ -36,6 +36,6 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/paper-humanoid-touch-dream.md`](../../wiki/entities/paper-humanoid-touch-dream.md) — canonical 论文实体页
-- [`wiki/entities/htd-decoupled-wbc.md`](../../wiki/entities/htd-decoupled-wbc.md) — 解耦 WBC 组件、训练/蒸馏/部署
+- [`wiki/entities/paper-humanoid-touch-dream.md`](../../wiki/entities/paper-humanoid-touch-dream.md) — 解耦 WBC 组件、训练/蒸馏/部署
 - [`wiki/methods/humanoid-transformer-touch-dreaming.md`](../../wiki/methods/humanoid-transformer-touch-dreaming.md) — HTD 策略方法页
 - [`wiki/tasks/loco-manipulation.md`](../../wiki/tasks/loco-manipulation.md) — 接触丰富移动操作任务

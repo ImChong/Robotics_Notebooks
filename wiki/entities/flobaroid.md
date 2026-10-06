@@ -2,7 +2,7 @@
 type: entity
 tags: [software, system-identification, dynamics, friction, urdf, open-source, iit]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 code: https://github.com/kjyv/FloBaRoID
 related:
   - ../methods/joint-actuator-parameter-identification.md
@@ -10,7 +10,7 @@ related:
   - ../concepts/joint-friction-models.md
   - ../concepts/robot-link-and-rotor-inertia.md
   - ../concepts/floating-base-dynamics.md
-  - ./bam-better-actuator-models.md
+  - ./paper-bam-extended-friction-servo-actuators.md
   - ./paper-pace-sim2real-legged-robots.md
   - ./pinocchio.md
   - ../queries/urdf-link-inertia-real-robot-check.md
@@ -41,7 +41,7 @@ summary: "FloBaRoID：IIT 起源的开源浮动基动力学辨识箱；Fourier �
 
 ## 为什么重要
 
-wiki 里 [BAM](./bam-better-actuator-models.md) / [PACE](./paper-pace-sim2real-legged-robots.md) 解决的是 **无力矩传感器、把仿真 $q(t)$ 对齐真机**。[本工具](https://github.com/kjyv/FloBaRoID) 走的是另一条经典线： **有力矩（或仿真力矩）时，把 Swevers/Gautier 线性辨识做成可复现流水线**，并且显式处理浮动基与摩擦耦合。算法选型见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
+wiki 里 [BAM](paper-bam-extended-friction-servo-actuators.md) / [PACE](./paper-pace-sim2real-legged-robots.md) 解决的是 **无力矩传感器、把仿真 $q(t)$ 对齐真机**。[本工具](https://github.com/kjyv/FloBaRoID) 走的是另一条经典线： **有力矩（或仿真力矩）时，把 Swevers/Gautier 线性辨识做成可复现流水线**，并且显式处理浮动基与摩擦耦合。算法选型见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。
 
 ## 开源状态
 
@@ -121,7 +121,7 @@ sequenceDiagram
 - [Joint Friction Models](../concepts/joint-friction-models.md)
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
-- [BAM](./bam-better-actuator-models.md)
+- [BAM](paper-bam-extended-friction-servo-actuators.md)
 - [PACE](./paper-pace-sim2real-legged-robots.md)
 - [Pinocchio](./pinocchio.md)
 - [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — 辨识写回 URDF 之前的书桌 / 称重 / $g(q)$ 抽检

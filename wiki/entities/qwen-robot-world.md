@@ -1,17 +1,36 @@
 ---
 type: entity
-tags: [world-models, qwen, video-generation, embodied-ai, language-conditioned]
+tags:
+- world-models
+- qwen
+- video-generation
+- embodied-ai
+- language-conditioned
+- paper
+- awesome-world-models
+- sun254667-wm
 status: complete
-updated: 2026-06-16
+updated: 2026-10-06
 related:
-  - ./qwen-robot-suite.md
-  - ../methods/generative-world-models.md
-  - ../overview/world-models-route-02-joint.md
-  - ./paper-shenlan-wm-07-worldvla.md
+- ./qwen-robot-suite.md
+- ../methods/generative-world-models.md
+- ../overview/world-models-route-02-joint.md
+- ./paper-shenlan-wm-07-worldvla.md
+- ../entities/awesome-world-models.md
+- ../overview/sun-awesome-wm-technology-map.md
+- ../methods/model-based-rl.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/blogs/qwen_robot_world.md
-  - ../../sources/blogs/qwen_robot_suite.md
-summary: "Qwen-RobotWorld 是通义具身世界模型：以自然语言统一操作/驾驶/导航动作接口，60 层双流 MMDiT 以 Qwen2.5-VL 编码动作，在 Embodied World Knowledge（8.6M video-text）上联合训练，支持 Scene2Robot 跨本体编辑与 2–4 视角几何一致视频预测。"
+- ../../sources/blogs/qwen_robot_world.md
+- ../../sources/blogs/qwen_robot_suite.md
+- ../../sources/papers/sun_awesome_wm_2606_17030_qwen-robotworld-unifying-embodied-world.md
+- ../../sources/papers/sun_awesome_wm_catalog.md
+- ../../sources/repos/awesome-world-models.md
+summary: Qwen-RobotWorld 是通义具身世界模型：以自然语言统一操作/驾驶/导航动作接口，60 层双流 MMDiT 以 Qwen2.5-VL 编码动作，在 Embodied World Knowledge（8.6M video-text）上联合训练，支持 Scene2Robot 跨本体编辑与 2–4 视角几何一致视频预测。
+project_id: qwen-robot-world
+arxiv: '2606.17030'
+venue: arXiv 2026
 ---
 
 # Qwen-RobotWorld
@@ -33,6 +52,10 @@ summary: "Qwen-RobotWorld 是通义具身世界模型：以自然语言统一操
 | VAE | Variational Autoencoder | 视频 latent 编解码 |
 | RoPE | Rotary Position Embedding | 旋转位置编码；文内 asymmetric 3D RoPE |
 | T2I | Text-to-Image | 文本到图像；预训练阶段锚定几何 |
+
+| WAM | World Action Model | 世界预测与动作联合建模 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| MBRL | Model-Based RL | 基于模型的强化学习 |
 
 ## 为什么重要
 
@@ -94,6 +117,11 @@ flowchart TB
 - [Qwen-RobotWorld 技术报告 PDF](https://qianwen-res.oss-accelerate.aliyuncs.com/qwenrobot/papers/Qwen_RobotWorld.pdf)
 - [Qwen-RobotWorld 深度博客](https://qwen.ai/blog?id=qwen-robotworld)
 
+- [`sources/papers/sun_awesome_wm_2606_17030_qwen-robotworld-unifying-embodied-world.md`](../../sources/papers/sun_awesome_wm_2606_17030_qwen-robotworld-unifying-embodied-world.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
+- 论文：<https://arxiv.org/abs/2606.17030>
+
 ## 关联页面
 
 - [Qwen-Robot Suite](./qwen-robot-suite.md)
@@ -102,7 +130,17 @@ flowchart TB
 - [世界模型 15 项目 · 02 联合架构](../overview/world-models-route-02-joint.md)
 - [WorldVLA / RynnVLA-002](./paper-shenlan-wm-07-worldvla.md)
 
+- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
+- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [model-based-rl](../methods/model-based-rl.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 推荐继续阅读
 
 - [Qwen-RobotWorld 深度博客](https://qwen.ai/blog?id=qwen-robotworld)
 - [Generative World Models 方法页](../methods/generative-world-models.md)
+
+- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
+- [原文](https://arxiv.org/abs/2606.17030)

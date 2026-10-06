@@ -44,6 +44,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from check_project_nodes import check as check_project_nodes
 from markdown_it import MarkdownIt
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -907,6 +908,7 @@ def _empty_results() -> dict[str, Any]:
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
         "duplicate_arxiv": [],
+        "duplicate_project_nodes": [],
         "paper_missing_three_sections": [],
         "paper_missing_conclusions": [],
         "dataset_missing_metadata": [],
@@ -2322,6 +2324,7 @@ def lint() -> dict[str, Any]:
     _check_methods_without_practitioner_query(pages, inbound, results)
     _check_paper_entity_metadata(pages, results)
     _check_duplicate_arxiv(pages, results)
+    results["duplicate_project_nodes"] = check_project_nodes(REPO_ROOT)
     _check_dataset_entity_metadata(pages, results)
     _check_stale_claims(pages, results)
     _check_physics_concept_crosslink(pages, results)
@@ -2397,6 +2400,11 @@ def format_report(results: dict[str, Any]) -> str:
             "❌",
         ),
         ("sources_orphans", "Sources 孤儿（sources/papers 死链）", "❌"),
+        (
+            "duplicate_project_nodes",
+            "项目身份重复或元数据无效（论文 / 项目页 / 官方源码须统一节点）",
+            "❌",
+        ),
         ("stale_pages", "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
         ("outdated_pages", "可能过期（updated: 距今 > 180 天）", "⚠️"),
         ("contradictions", "潜在矛盾（跨页面相反定性描述）", "⚠️"),

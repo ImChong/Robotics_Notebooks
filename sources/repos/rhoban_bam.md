@@ -10,7 +10,7 @@
 - **论文：** [arXiv:2410.08650](https://arxiv.org/abs/2410.08650v1)（ICRA 2025）
 - **入库日期：** 2026-05-28
 - **一句话说明：** 开源摆锤台架数据采集、后处理、CMA-ES 摩擦/电机参数拟合与 MuJoCo 2R 臂验证管线；内置 M1–M6 模型与 Dynamixel / eRob 示例。
-- **沉淀到 wiki：** [wiki/entities/bam-better-actuator-models.md](../../wiki/entities/bam-better-actuator-models.md)、[wiki/entities/paper-bam-extended-friction-servo-actuators.md](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
+- **沉淀到 wiki：** [wiki/entities/paper-bam-extended-friction-servo-actuators.md](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)、[wiki/entities/paper-bam-extended-friction-servo-actuators.md](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
 
 ---
 
@@ -46,7 +46,7 @@
 
 ## 对 wiki 的映射
 
-- [BAM 仓库实体](../../wiki/entities/bam-better-actuator-models.md)
+- [BAM 仓库实体](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
 - [扩展摩擦论文实体](../../wiki/entities/paper-bam-extended-friction-servo-actuators.md)
 - [Actuator Network](../../wiki/methods/actuator-network.md) — 数据驱动执行器建模对照
 - [SAGE](../../wiki/entities/sage-sim2real-actuator-gap-estimator.md) — 另一套「仿真–真机执行器 gap 度量」工具链

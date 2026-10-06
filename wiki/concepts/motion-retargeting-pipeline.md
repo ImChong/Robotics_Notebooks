@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-09-29
+updated: 2026-10-06
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -17,7 +17,7 @@ related:
   - ../methods/dynaretarget-sbto-motion-retargeting.md
   - ../entities/paper-kdmr.md
   - ../entities/paper-spark-skeleton-aligned-retargeting.md
-  - ../entities/core-retarget.md
+  - ../entities/paper-core.md
   - ../entities/paper-core.md
   - ../entities/paper-rmr.md
   - ../methods/sonic-motion-tracking.md
@@ -145,7 +145,7 @@ flowchart TD
 - **目标**：让末端（手、脚、骨盆、头）跟随源轨迹关键点。
 - **形式**：$\min \| \theta - \theta_{\mathrm{ref}} \|^2 \ \text{s.t.}\ \mathrm{FK}(\theta)=p_{\mathrm{target}},\ \theta_{\min} \le \theta \le \theta_{\max}$，接触约束。
 - **工具**：[Pinocchio](../entities/pinocchio.md) + TSID / [Crocoddyl](../entities/crocoddyl.md) / [cuRobo](../entities/curobo.md) / 各家自研 QP 求解器。
-- **代表实现**：[GMR](../methods/motion-retargeting-gmr.md) 等以此为核心；[robot_retargeter](../entities/robot-retargeter.md) 用 **mink + MuJoCo** 实现同类多目标任务 IK，并内置足端接触锁定 FrameTask。[RMR](../entities/paper-rmr.md) / [CoRe](../entities/core-retarget.md) 的 **DMR** 用方向向量 + MuJoCo IK，输入是已归一的 SOMA77。
+- **代表实现**：[GMR](../methods/motion-retargeting-gmr.md) 等以此为核心；[robot_retargeter](../entities/robot-retargeter.md) 用 **mink + MuJoCo** 实现同类多目标任务 IK，并内置足端接触锁定 FrameTask。[RMR](../entities/paper-rmr.md) / [CoRe](../entities/paper-core.md) 的 **DMR** 用方向向量 + MuJoCo IK，输入是已归一的 SOMA77。
 
 ### 5. 硬约束与平滑（Constraints & Smoothing）
 - **关节限位 / 角速度上限 / 加加速度（jerk）罚项**：防止「几何可行但电机跟不上」。
@@ -165,7 +165,7 @@ flowchart TD
 - **增量时域 SBTO（DynaRetarget）**：在 MuJoCo 中对 **PD 目标 knot** 做 **CEM 采样优化**，**外环增量扩展优化时域**以克服 SBMPC 短视距；把 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 等 **kinematic 参考** refinement 为长时域动力学可行轨迹，再供 PPO tracking（见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)）。
 - **GRF 多接触 NLP（KDMR）**：同步 GRF→heel–toe 日程 + CasADi 全身动力学 TO，再接 BeyondMimic（见 [KDMR](../entities/paper-kdmr.md)）。
 - **URDF 校准 + 渐进 KDTO（SPARK）**：骨架参数对齐降 IK 误差，再 KTO→ID→KDTO（可选力矩监督）服务高动态跟踪（见 [SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md)）。
-- **接触感知运动学精炼（CoRe）**：趾轨迹接触段 + 落脚 IK / 接地 + 手臂自碰，**不做**动力学级 TO；开源九段制品见 [CoRe v0.1.0](../entities/core-retarget.md)，论文主张其后接接触奖励 RL（[CoRe](../entities/paper-core.md)）。
+- **接触感知运动学精炼（CoRe）**：趾轨迹接触段 + 落脚 IK / 接地 + 手臂自碰，**不做**动力学级 TO；开源九段制品见 [CoRe v0.1.0](../entities/paper-core.md)，论文主张其后接接触奖励 RL（[CoRe](../entities/paper-core.md)）。
 - **交互 mesh + 残差 RL（REGRIND）**：单次 MoCap 人手–物体演示 → **Laplacian interaction mesh 重定向**（OmniRetarget 同族）→ **物体关键点跟踪 + RSI + 训练时 SE(3) 增广** 的残差 RL，面向剪刀/螺丝刀等 contact-rich 工具操作真机部署（见 [REGRIND](../methods/regrind-retargeting-guided-rl.md)）。
 
 ### 8. 产物落地（Outputs）
@@ -239,7 +239,7 @@ flowchart TD
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](../methods/dynaretarget-sbto-motion-retargeting.md) — kinematic 参考经增量时域 SBTO refinement 后接 PPO tracking
 - [KDMR](../entities/paper-kdmr.md) — GRF 锚定多接触全身 TO → BeyondMimic
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KTO/ID/KDTO
-- [CoRe v0.1.0](../entities/core-retarget.md) — SOMA → 11 机 DMR + 接触精炼；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)
+- [CoRe v0.1.0](../entities/paper-core.md) — SOMA → 11 机 DMR + 接触精炼；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线如何在同一条流水线上占据不同位置的选型视角
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — "跳过中间重定向"流水线的下游通用 tracker
 - [Whole-Body Control](./whole-body-control.md) — 下游消费参考的控制器接口

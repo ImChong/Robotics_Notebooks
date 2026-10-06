@@ -10,12 +10,12 @@ tags:
   - recursive-self-improvement
   - open-source
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ./karpathy-autoresearch.md
   - ./paper-harnessbank.md
   - ./paper-metarsi-v1.md
-  - ./rsi-harness.md
+  - ./paper-metarsi-v1.md
   - ./deepseek-harness.md
   - ./openclaw.md
   - ./hermes-agent.md

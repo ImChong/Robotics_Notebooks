@@ -218,7 +218,7 @@ sources:
 | 113 | [RoboArena](../methods/roboarena.md) | natnew |
 | 114 | [RoboHive](../entities/painode-114-robohive.md) | natnew |
 | 115 | [robomimic](../entities/robomimic.md) | natnew |
-| 116 | [SimplerEnv](../entities/painode-116-xsimplerenv.md) | natnew |
+| 116 | [SimplerEnv](../entities/paper-simplerenv-real2sim-eval.md) | natnew |
 | 117 | [Statistical Reliability of RL Evaluations](../entities/painode-117-statisticalreliabilityofrlevalua.md) | natnew |
 | 118 | [Waymo Open Challenges](../entities/painode-118-waymoopenchallenges.md) | natnew |
 
@@ -237,7 +237,7 @@ sources:
 | # | 条目 | 来源 |
 |---|------|------|
 | 124 | [copper-rs](../entities/painode-124-copperrs.md) | aichr |
-| 125 | [LangChain](../entities/painode-125-langchain.md) | aichr |
+| 125 | [LangChain](../entities/langchain.md) | aichr |
 | 126 | [LlamaFactory](../entities/painode-126-llamafactory.md) | aichr |
 | 127 | [OpenClaw](../entities/openclaw.md) | aichr |
 | 128 | [OpenHands](../entities/painode-128-openhands.md) | aichr |
@@ -480,7 +480,7 @@ sources:
 | 300 | [Helix (Figure)](../entities/helix-25.md) | natnew |
 | 301 | [MEM — Multi-Scale Embodied Memory](../entities/paper-pai-2603-03596-memmultiscaleembodiedmemory.md) | natnew |
 | 302 | [Octo](../entities/paper-octo.md) | natnew+aichr |
-| 303 | [OpenVLA](../entities/openvla.md) | natnew |
+| 303 | [OpenVLA](../entities/paper-openvla.md) | natnew |
 | 304 | [PaLM-E](../entities/paper-palm-e-embodied-language-model.md) | natnew+aichr |
 | 305 | [R&B-EnCoRe](../entities/paper-pai-2602-08167-rbencore.md) | natnew |
 | 306 | [RoboFlamingo](../entities/paper-pai-2311-01378-roboflamingo.md) | natnew |
@@ -528,7 +528,7 @@ sources:
 | 338 | [Sim-to-Real via Sim-to-Sim (Koos et al. line)](../entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) | natnew |
 | 339 | [SimGAN](../entities/paper-pai-1612-07828-simgan.md) | natnew |
 | 340 | [SimOpt](../entities/paper-pai-1910-13325-simopt.md) | natnew |
-| 341 | [SimToolReal](../entities/paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md) | natnew |
+| 341 | [SimToolReal](../entities/simtoolreal.md) | natnew |
 
 ### Simulators
 

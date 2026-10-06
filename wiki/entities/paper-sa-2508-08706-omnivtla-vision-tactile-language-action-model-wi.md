@@ -10,7 +10,7 @@ tags:
   - sjtu
   - paxini
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 arxiv: "2508.08706"
 venue: "arXiv 2025"
 summary: "OmniVTLA（arXiv:2508.08706，SJTU/Paxini）：ObjTac 135K 三模态 + SA-ViT 语义对齐 + dual-path encoder；夹爪 pick-place 96.9%、灵巧手 100%、peg 83.3%；ObjTac 已开源，代码 coming soon。"

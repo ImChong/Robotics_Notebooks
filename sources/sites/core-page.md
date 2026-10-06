@@ -36,4 +36,4 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md)
-- [`wiki/entities/core-retarget.md`](../../wiki/entities/core-retarget.md)
+- [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md)

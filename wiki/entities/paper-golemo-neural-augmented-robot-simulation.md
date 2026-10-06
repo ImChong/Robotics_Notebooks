@@ -6,7 +6,7 @@ tags:
   - sim2real
   - neural-augmented-simulation
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 venue: "CoRL 2018"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

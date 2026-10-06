@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 强化学习基准 · 物理仿真 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-1801-00690-deepmind-control-suite.md`](../../wiki/entities/paper-rcl-1801-00690-deepmind-control-suite.md)
+- **沉淀到 wiki：** [`wiki/entities/dm-control.md`](../../wiki/entities/dm-control.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-1801-00690-deepmind-control-suite.md`](../../wiki/entities/paper-rcl-1801-00690-deepmind-control-suite.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/dm-control.md`](../../wiki/entities/dm-control.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

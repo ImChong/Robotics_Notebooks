@@ -1,24 +1,41 @@
 ---
 type: entity
-tags: [paper, vla, evaluation, sim2real, manipulation, benchmark, google-deepmind, berkeley, stanford]
+tags:
+- paper
+- vla
+- evaluation
+- sim2real
+- manipulation
+- benchmark
+- google-deepmind
+- berkeley
+- stanford
+- physical-ai
+- awesome-physical-ai
+- eval
 status: complete
-updated: 2026-09-27
-arxiv: "2405.05941"
-venue: "arXiv 2024"
+updated: 2026-10-06
+arxiv: '2405.05941'
+venue: arXiv 2024
 code: https://github.com/simpler-env/SimplerEnv
 related:
-  - ./painode-116-xsimplerenv.md
-  - ../methods/vla.md
-  - ../concepts/sim2real.md
-  - ../methods/robotics-transformer-rt-series.md
-  - ../overview/awesome-physical-ai-technology-map.md
-  - ./paper-simfoundry-real2sim-scene-generation.md
-  - ../queries/embodied-eval-benchmark-selection-loop.md
+- ../methods/vla.md
+- ../concepts/sim2real.md
+- ../methods/robotics-transformer-rt-series.md
+- ../overview/awesome-physical-ai-technology-map.md
+- ./paper-simfoundry-real2sim-scene-generation.md
+- ../queries/embodied-eval-benchmark-selection-loop.md
+- ../entities/awesome-physical-ai-natnew.md
 sources:
-  - ../../sources/papers/simplerenv_arxiv_2405_05941.md
-  - ../../sources/sites/simpler-env.md
-  - ../../sources/repos/simplerenv.md
-summary: "SIMPLER / SimplerEnv（arXiv:2405.05941）：real-to-sim 评测通才操作策略；对齐控制与视觉 gap 后 sim 与 Google Robot / Bridge WidowX 真机强相关；Apache-2.0 开源。"
+- ../../sources/papers/simplerenv_arxiv_2405_05941.md
+- ../../sources/sites/simpler-env.md
+- ../../sources/repos/simplerenv.md
+- ../../sources/repos/pai_awesome_eval_116_simplerenv.md
+- ../../sources/repos/awesome-physical-ai-union-catalog.md
+- ../../sources/repos/awesome-physical-ai-natnew.md
+- ../../sources/repos/awesome-physical-ai-aichr.md
+summary: SIMPLER / SimplerEnv（arXiv:2405.05941）：real-to-sim 评测通才操作策略；对齐控制与视觉 gap 后 sim 与 Google Robot / Bridge WidowX 真机强相关；Apache-2.0 开源。
+project_id: simplerenv-real2sim-eval
 ---
 
 # SIMPLER：仿真里评真实数据训练的 manipulation 策略
@@ -39,12 +56,14 @@ summary: "SIMPLER / SimplerEnv（arXiv:2405.05941）：real-to-sim 评测通才�
 | Bridge | BridgeData V2 | WidowX 等常用真机数据/评测设定 |
 | Real-to-sim | Real-world data → Simulation eval | 本文评测方向（非 sim2real 训练） |
 
+| PAI | Physical AI | 具身/物理智能策展主题 |
+| RL | Reinforcement Learning | 评测统计口径常用于 RL |
+
 ## 为什么重要
 
 - **VLA 时代评测瓶颈：** 策略越 generalist，真机 sweep 任务/场景的成本越高；SIMPLER 给出 **可开源复现** 的代理指标。
 - **相关性 > 像素保真：** 证明「略简化的 sim」仍可做 **ranking / behavior mode** 分析（含 OOD 敏感性）。
 - **工程入口统一：** Gym API + 一行 import + 官方 RT-1/Octo 推理脚本，降低 lab 间对比摩擦。
-- **本库索引：** [Physical AI #116](./painode-116-xsimplerenv.md) 策展节点 **升格** 到本页为 canonical。
 
 ## 核心信息
 
@@ -129,13 +148,52 @@ sequenceDiagram
 - 相关性强 ≠ **绝对成功率** 可迁移；部署前仍需目标真机抽检。
 - 依赖外部 **policy checkpoint** 与推理栈版本。
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 116/384 |
+| 分组 | Evaluation Methodology |
+| 来源清单 | natnew |
+| 主链接 | <https://simpler-env.github.io/> |
+
+### 核心原理
+
+Aligned simulator-based evaluation that correlates with real-robot performance for VLAs.
+
+该条目在 Physical AI 清单中的角色是 **eval**，分组 **Evaluation Methodology**。本页只给出清单里的问题设定与入口链接，不转载外部营销页或课程大纲。
+
+这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
+
+### 工程实践
+
+| 字段 | 内容 |
+|------|------|
+| 官方入口 | <https://simpler-env.github.io/> |
+| 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
+| 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+
+使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
+
+### 局限与风险
+
+- 不要把 Awesome 摘要当成完整方法证明或合规结论。
+- 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
+- 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
+
 ## 关联页面
 
-- [SimplerEnv 策展索引 #116](./painode-116-xsimplerenv.md)
 - [VLA](../methods/vla.md) · [RT 系列](../methods/robotics-transformer-rt-series.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 另一条 real2sim 场景生成线
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — 属第 ④ 层「sim↔real 评测 gap 校准」：以 paired sim-and-real 的排名相关性验证仿真评测能否外推真机
+
+- [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
+- [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
+- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
+- [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
 ## 参考来源
 
@@ -143,8 +201,17 @@ sequenceDiagram
 - [simpler-env 项目页归档](../../sources/sites/simpler-env.md)
 - [SimplerEnv 仓库归档](../../sources/repos/simplerenv.md)
 
+- [`sources/repos/pai_awesome_eval_116_simplerenv.md`](../../sources/repos/pai_awesome_eval_116_simplerenv.md) — 本条目策展摘录
+- [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
+- [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
+- [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
+- 主链接：<https://simpler-env.github.io/>
+
 ## 推荐继续阅读
 
 - [arXiv:2405.05941](https://arxiv.org/abs/2405.05941)
 - [项目页](https://simpler-env.github.io/)
 - [GitHub: simpler-env/SimplerEnv](https://github.com/simpler-env/SimplerEnv)
+
+- [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
+- [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)

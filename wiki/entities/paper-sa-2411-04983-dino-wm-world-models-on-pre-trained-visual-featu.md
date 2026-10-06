@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2411.04983"
 venue: "arXiv 2024"
 summary: "World models on pre-trained visual features enable zero-shot planning."

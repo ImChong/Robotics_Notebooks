@@ -9,12 +9,12 @@ tags:
   - residual-learning
   - georgia-tech
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2607.20653"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
   - ./paper-core.md
-  - ./core-retarget.md
+  - ./paper-core.md
   - ../methods/generative-world-models.md
   - ../concepts/kinematic-vs-dynamic-feasibility.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
@@ -159,7 +159,7 @@ flowchart LR
 - [物理保真度与 Sim2Real 差距](../concepts/physics-fidelity-sim2real-gap.md) — sim-to-real 残差动机
 - [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) — 接触丰富另一信号通路
 - [KineBench](./paper-kinebench.md) — 可执行性评测（刚体操纵侧）
-- [CoRe（人形重定向，同名消歧）](./paper-core.md) / [CoRe 软件](./core-retarget.md)
+- [CoRe（人形重定向，同名消歧）](./paper-core.md) / [CoRe 软件](paper-core.md)
 
 ## 参考来源
 

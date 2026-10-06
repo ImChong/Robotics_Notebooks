@@ -10,7 +10,7 @@ tags:
   - pku
   - nvidia
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2606.28128"
 related:
   - ../methods/generative-world-models.md

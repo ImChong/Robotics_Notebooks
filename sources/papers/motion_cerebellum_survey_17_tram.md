@@ -17,7 +17,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-motion-cerebellum-tram](../../wiki/entities/paper-motion-cerebellum-tram.md)
+- [paper-motion-cerebellum-tram](../../wiki/entities/paper-tram-global-human-motion.md)
 - [motion-cerebellum-category-03-data-pipeline](../../wiki/overview/motion-cerebellum-category-03-data-pipeline.md)
 
 ## 参考来源（原始）

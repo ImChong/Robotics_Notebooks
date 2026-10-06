@@ -12,7 +12,7 @@ tags:
   - evolutionary-search
   - unitree-g1
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2606.06139"
 related:
   - ../tasks/loco-manipulation.md

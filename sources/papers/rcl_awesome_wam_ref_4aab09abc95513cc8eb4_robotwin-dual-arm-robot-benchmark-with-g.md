@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-4aab09abc95513cc8eb4-robotwin-dual-arm-robot-benchmark-with-generativ.md`](../../wiki/entities/paper-rcl-ref-4aab09abc95513cc8eb4-robotwin-dual-arm-robot-benchmark-with-generativ.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

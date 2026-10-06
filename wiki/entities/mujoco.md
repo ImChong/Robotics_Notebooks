@@ -1,43 +1,60 @@
 ---
 type: entity
-tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
+tags:
+- software
+- simulation
+- physics-engine
+- reinforcement-learning
+- deepmind
+- paper
+- awesome-sim2real
+- longchao-sim2real
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 related:
-  - ../overview/sim-platforms-decade-technology-map.md
-  - ./mujoco-wasm.md
-  - ./mujoco-mjx.md
-  - ./mujoco-warp.md
-  - ./nvidia-warp.md
-  - ./mujoco-playground.md
-  - ../overview/robot-training-stack-layers-technology-map.md
-  - ./brax.md
-  - ../comparisons/mujoco-vs-isaac-sim.md
-  - ./paper-barkour-quadruped-agility-benchmark.md
-  - ./robot-motion-keyframe-editors.md
-  - ./dm-control.md
-  - ./gymnasium.md
-  - ./wheel-legged-genesis.md
-  - ./jackhan-walke3-e3-ecosystem.md
-  - ./nvidia-omniverse.md
-  - ./newton-physics.md
-  - ./robot-native-engine.md
-  - ../methods/reinforcement-learning.md
-  - ../concepts/sim2real.md
-  - ./adams.md
-  - ./robot-descriptions-py.md
-  - ../comparisons/robot-description-catalogs.md
-  - ./mjbatch.md
-  - ./text2mujoco.md
+- ../overview/sim-platforms-decade-technology-map.md
+- ./mujoco-wasm.md
+- ./mujoco-mjx.md
+- ./mujoco-warp.md
+- ./nvidia-warp.md
+- ./mujoco-playground.md
+- ../overview/robot-training-stack-layers-technology-map.md
+- ./brax.md
+- ../comparisons/mujoco-vs-isaac-sim.md
+- ./paper-barkour-quadruped-agility-benchmark.md
+- ./robot-motion-keyframe-editors.md
+- ./dm-control.md
+- ./gymnasium.md
+- ./wheel-legged-genesis.md
+- ./jackhan-walke3-e3-ecosystem.md
+- ./nvidia-omniverse.md
+- ./newton-physics.md
+- ./robot-native-engine.md
+- ../methods/reinforcement-learning.md
+- ../concepts/sim2real.md
+- ./adams.md
+- ./robot-descriptions-py.md
+- ../comparisons/robot-description-catalogs.md
+- ./mjbatch.md
+- ./text2mujoco.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/mujoco-menagerie.md
-  - ../../sources/papers/simulation.md
-  - ../../sources/repos/mujoco.md
-  - ../../sources/repos/robot-native-engine.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
-  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
-  - ../../sources/repos/mujoco-lidar.md
-summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
+- ../../sources/repos/mujoco-menagerie.md
+- ../../sources/papers/simulation.md
+- ../../sources/repos/mujoco.md
+- ../../sources/repos/robot-native-engine.md
+- ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+- ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+- ../../sources/repos/mujoco-lidar.md
+- ../../sources/papers/lc_awesome_sim2real_noarxiv_097_mujoco-a-physics-engine-for-model-based.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+summary: MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。
+project_id: mujoco
+venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 ---
 
 # MuJoCo (物理引擎)
@@ -54,6 +71,11 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 | RL | Reinforcement Learning | 腿足/人形 loco 常用训练后端 |
 | PD | Proportional–Derivative | 仿真中常见的低层关节控制接口 |
 | WASM | WebAssembly | 浏览器内运行 MuJoCo 的 `@mujoco/mujoco` 绑定载体 |
+
+| Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
+| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
 
 ## 核心设计理念
 
@@ -116,6 +138,14 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [mjbatch](./mjbatch.md) — 官方 Python 绑定之上的 CPU 千路并行层（`bind` / `expand`）
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [sim-platforms-decade-technology-map](../overview/sim-platforms-decade-technology-map.md)
+- [jackhan-walke3-e3-ecosystem](./jackhan-walke3-e3-ecosystem.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [MuJoCo-LiDAR 源码归档](../../sources/repos/mujoco-lidar.md)（<https://github.com/discoverse-dev/MuJoCo-LiDAR>）
@@ -124,3 +154,23 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [MuJoCo 物理引擎（仓库归档）](../../sources/repos/mujoco.md)
 - [mujoco-mjx（MJX 子树归档）](../../sources/repos/mujoco-mjx.md)
 - Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.
+
+- [`sources/papers/lc_awesome_sim2real_noarxiv_097_mujoco-a-physics-engine-for-model-based.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_097_mujoco-a-physics-engine-for-model-based.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://ieeexplore.ieee.org/document/6386109>
+
+- [mujoco-menagerie](../../sources/repos/mujoco-menagerie.md)
+
+- [simulation](../../sources/papers/simulation.md)
+
+- [robot-native-engine](../../sources/repos/robot-native-engine.md)
+
+- [wechat_embodied_ai_lab_robot_training_stack_layers_2026](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
+
+- [wechat_shenlan_sim_platforms_top8_decade](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
+
+## 推荐继续阅读
+
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
+- [原文](https://ieeexplore.ieee.org/document/6386109)

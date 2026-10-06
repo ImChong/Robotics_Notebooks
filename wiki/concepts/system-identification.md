@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-closed-loop-inertia-calibration.md
@@ -9,7 +9,7 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../entities/prime-system-id.md

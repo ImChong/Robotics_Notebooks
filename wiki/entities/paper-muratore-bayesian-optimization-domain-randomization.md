@@ -6,7 +6,7 @@ tags:
   - sim2real
   - bayesian-optimization
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2003.02471"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

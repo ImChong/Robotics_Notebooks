@@ -16,7 +16,7 @@ tags:
   - manipulation
   - humanoid
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2609.17210"
 code: https://github.com/FluxVLA/FluxVLA
 related:
@@ -24,7 +24,7 @@ related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../entities/lerobot.md
-  - ../entities/openvla.md
+  - paper-openvla.md
   - ../entities/lingbot-vla.md
   - ../queries/vla-deployment-guide.md
   - ../overview/vla-deploy-12-papers-technology-map.md

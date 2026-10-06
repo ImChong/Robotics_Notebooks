@@ -1,21 +1,27 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
+tags:
+- paper
+- awesome-egocentric-vision
+- sun254667-ego
 status: complete
-updated: 2026-09-16
-arxiv: "2503.03803"
-summary: "策展清单收录条目；细节以原文 PDF / 项目页为准。"
+updated: 2026-10-06
+arxiv: '2503.03803'
+summary: 策展清单收录条目；细节以原文 PDF / 项目页为准。
 related:
-  - ../entities/awesome-egocentric-vision.md
-  - ../overview/sun-awesome-ego-technology-map.md
-  - ../methods/vla.md
-  - ../methods/imitation-learning.md
-  - ../tasks/manipulation.md
-  - ../tasks/teleoperation.md
+- ../entities/awesome-egocentric-vision.md
+- ../overview/sun-awesome-ego-technology-map.md
+- ../methods/vla.md
+- ../methods/imitation-learning.md
+- ../tasks/manipulation.md
+- ../tasks/teleoperation.md
 sources:
-  - ../../sources/papers/sun_awesome_ego_2503_03803_egolife.md
-  - ../../sources/papers/sun_awesome_ego_catalog.md
-  - ../../sources/repos/awesome-egocentric-vision.md
+- ../../sources/papers/sun_awesome_ego_2503_03803_egolife.md
+- ../../sources/papers/sun_awesome_ego_catalog.md
+- ../../sources/repos/awesome-egocentric-vision.md
+- ../../sources/papers/sun_awesome_ego_noarxiv_138_egolife-towards-egocentric-life-assistan.md
+project_id: sa-2503-03803-egolife
+venue: CVPR 2025
 ---
 
 # EgoLife
@@ -89,6 +95,9 @@ sources:
 - 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
 
+- [imitation-learning](../methods/imitation-learning.md)
+- [teleoperation](../tasks/teleoperation.md)
+
 ## 参考来源
 
 - [`sources/papers/sun_awesome_ego_2503_03803_egolife.md`](../../sources/papers/sun_awesome_ego_2503_03803_egolife.md) — 本条目策展摘录
@@ -96,7 +105,12 @@ sources:
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.03803>
 
+- [`sources/papers/sun_awesome_ego_noarxiv_138_egolife-towards-egocentric-life-assistan.md`](../../sources/papers/sun_awesome_ego_noarxiv_138_egolife-towards-egocentric-life-assistan.md) — 本条目策展摘录
+- 论文：<https://openaccess.thecvf.com/content/CVPR2025/html/EgoLife_Towards_Egocentric_Life_Assistant_CVPR_2025_paper.html>
+
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
 - [原文](https://arxiv.org/abs/2503.03803)
+
+- [原文](https://openaccess.thecvf.com/content/CVPR2025/html/EgoLife_Towards_Egocentric_Life_Assistant_CVPR_2025_paper.html)

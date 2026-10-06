@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2505.19017"
 venue: "arXiv 2025"
 summary: "World model as real-world robot policy evaluator."

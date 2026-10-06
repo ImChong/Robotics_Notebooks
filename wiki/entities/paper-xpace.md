@@ -22,7 +22,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./isaac-gr00t.md
   - ./paper-dreamwam.md
-  - ./paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md
+  - ./qwen-robot-world.md
 sources:
   - ../../sources/papers/xpace_arxiv_2609_17372.md
   - ../../sources/sites/xpace-project.md
@@ -151,7 +151,7 @@ flowchart TB
 | 维度 | XPACE | 邻近读法 |
 |------|-------|----------|
 | **WAM 族** | 联合 video+action，共享 backbone | [DreamWAM](./paper-dreamwam.md) 强调 beyond-RGB 结构化未来；[world-action-models](../concepts/world-action-models.md) 总览 |
-| **纯 world model** | simulator 分支 + SGF 长程 rollout | [Qwen-RobotWorld](./paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md) 偏语言条件视频轨迹 |
+| **纯 world model** | simulator 分支 + SGF 长程 rollout | [Qwen-RobotWorld](qwen-robot-world.md) 偏语言条件视频轨迹 |
 | **VLA 基线** | 真机对比 GR00T / DreamZero | [isaac-gr00t](./isaac-gr00t.md) — 注意 XPACE 额外 Stage I 与异构数据 |
 | **自改进** | Simulator 合成 recovery + 少量混合微调 | 区别于纯 online RL；recovery 数据 **过滤视觉一致性** 后进入 policy |
 

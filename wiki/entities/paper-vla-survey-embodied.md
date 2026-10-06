@@ -9,7 +9,7 @@ summary: "VLA Survey（HMI P071）：系统梳理具身 VLA 的数据、架构�
 related:
   - ../methods/vla.md
   - ../overview/vla-open-source-repro-landscape-2025.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ../methods/π0-policy.md
   - ../entities/humanoid-motion-intelligence.md
 sources:
@@ -103,7 +103,7 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | 本工作（VLA Survey） | [VLA（方法页）](../methods/vla.md) | [VLA 开源复现全景](../overview/vla-open-source-repro-landscape-2025.md) | [OpenVLA](openvla.md) |
+| 维度 | 本工作（VLA Survey） | [VLA（方法页）](../methods/vla.md) | [VLA 开源复现全景](../overview/vla-open-source-repro-landscape-2025.md) | [OpenVLA](paper-openvla.md) |
 |------|----------------------|------------------------------------|-----------------------------------------------------------------------|-----------------------|
 | 类型 | 综述 / 分类框架 | 概念-方法定义页 | 开源复现生态盘点 | 单个具体 VLA 模型 |
 | 主要作用 | 拆成组件 / control policy / task planner 三线 | 给出 VLA 范式与动作接口 | 汇总可复现实现、许可与门槛 | 提供开源基线 |
@@ -116,7 +116,7 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [vla](../methods/vla.md)
 - [vla-open-source-repro-landscape-2025](../overview/vla-open-source-repro-landscape-2025.md)
-- [openvla](./openvla.md)
+- [openvla](paper-openvla.md)
 - [π0-policy](../methods/π0-policy.md)
 
 ## 参考来源

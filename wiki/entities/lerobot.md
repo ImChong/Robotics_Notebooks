@@ -15,7 +15,7 @@ related:
   - ../entities/mcap-log-format.md
   - ./paper-imitator-game.md
   - ./paper-evo1-lightweight-vla.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ./lingbot-vla-v2.md
   - ./lingbot-vla.md
   - ./openlet.md

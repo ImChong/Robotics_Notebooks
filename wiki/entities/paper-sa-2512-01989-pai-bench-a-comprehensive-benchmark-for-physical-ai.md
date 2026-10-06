@@ -23,7 +23,7 @@ related:
   - ./nvidia-cosmos.md
   - ./paper-kairos-native-world-model-stack.md
   - ./paper-physisforcing.md
-  - ./paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md
+  - ./worldarena.md
   - ./paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md
   - ../overview/hub-embodied-eval-benchmark.md
 sources:
@@ -221,7 +221,7 @@ sequenceDiagram
 - [NVIDIA Cosmos](./nvidia-cosmos.md)
 - [Kairos](./paper-kairos-native-world-model-stack.md)
 - [PhysisForcing](./paper-physisforcing.md)
-- [WorldArena](./paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md)
+- [WorldArena](worldarena.md)
 - [WorldBench](./paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md)
 - [具身评测枢纽](../overview/hub-embodied-eval-benchmark.md)
 - [Sim2Real](../concepts/sim2real.md)

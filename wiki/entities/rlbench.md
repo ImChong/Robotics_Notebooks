@@ -1,17 +1,36 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
+tags:
+- sim2real
+- tooling
+- deployment
+- hmi-opensource-table
+- repo
+- linux-foundation
+- paper
+- awesome-sim2real
+- longchao-sim2real
 status: draft
-updated: 2026-07-30
-summary: "RLBench：在CoppeliaSim中封装多类视觉操作任务、动作模式和示范生成接口，可用于强化学习、模仿学习与少样本研究；任务构建API便于新增对象流程，并保持统一观测与成功判据。"
+updated: 2026-10-06
+summary: RLBench：在CoppeliaSim中封装多类视觉操作任务、动作模式和示范生成接口，可用于强化学习、模仿学习与少样本研究；任务构建API便于新增对象流程，并保持统一观测与成功判据。
 related:
-  - ../concepts/sim2real.md
-  - ../entities/isaac-lab.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
+- ../concepts/sim2real.md
+- ../entities/isaac-lab.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../methods/reinforcement-learning.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/rlbench.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/repos/rlbench.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/lc_awesome_sim2real_1909_12271_rlbench-the-robot-learning-benchmark-lea.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+project_id: rlbench
+arxiv: '1909.12271'
 ---
 
 # RLBench
@@ -30,6 +49,10 @@ sources:
 | RL | Reinforcement Learning | 训练与评测常用框架 |
 | API | Application Programming Interface | 仿真/中间件编程接口 |
 | SDK | Software Development Kit | 真机与工具链开发套件 |
+
+| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
 
 ## 为什么重要
 
@@ -89,13 +112,29 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [reinforcement-learning](../methods/reinforcement-learning.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [RLBench 来源归档](../../sources/repos/rlbench.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [`sources/papers/lc_awesome_sim2real_1909_12271_rlbench-the-robot-learning-benchmark-lea.md`](../../sources/papers/lc_awesome_sim2real_1909_12271_rlbench-the-robot-learning-benchmark-lea.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://arxiv.org/abs/1909.12271>
+
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/stepjam/RLBench)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
+- [原文](https://arxiv.org/abs/1909.12271)

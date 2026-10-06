@@ -48,7 +48,7 @@
 | 29 | SmoothRL | 走向连续任务 | [Astribot SmoothRL](https://www.astribot.com/en/AI/SmoothRL/) | [paper-smoothrl](../../wiki/entities/paper-smoothrl.md) |
 | 30 | Safe-Stop | 走向连续任务 | [junfeng-long.github.io/safestop](https://junfeng-long.github.io/safestop/) | [paper-safe-stop-humanoid](../../wiki/entities/paper-safe-stop-humanoid.md) |
 
-> **非 canonical 入口说明：** [paper-riemann-1-causal-action-video-wam](../../wiki/entities/paper-riemann-1-causal-action-video-wam.md) 仅为六路线策展 stub，**arXiv/方法以 [paper-riemann-1](../../wiki/entities/paper-riemann-1.md) 为准**；[paper-open-torque-controlled-modular-robot-solo](../../wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) 为同名不同工作，**勿与 #12 SOLO 混淆**。
+> **非 canonical 入口说明：** [paper-riemann-1-causal-action-video-wam](../../wiki/entities/paper-riemann-1.md) 仅为六路线策展 stub，**arXiv/方法以 [paper-riemann-1](../../wiki/entities/paper-riemann-1.md) 为准**；[paper-open-torque-controlled-modular-robot-solo](../../wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) 为同名不同工作，**勿与 #12 SOLO 混淆**。
 
 ## 核心摘录（MVP）
 

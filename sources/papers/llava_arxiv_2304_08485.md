@@ -24,7 +24,7 @@
 - **模型**：**CLIP ViT-L/14@336px** 视觉编码器 + **线性投影** + **Vicuna** LLM；Stage1 仅训投影（CC3M 对齐），Stage2 端到端指令微调。
 - **VLA 读法**：CLIP 解决「看见 ↔ 语言语义对齐」；LLaVA 解决「**多轮视觉指令跟随**」——多数开源 VLA（LlavaVLA、NaVILA 系、RoboInter-VLM 等）复用同一 **冻结视觉塔 + 投影 + LLM** 骨架，再替换/追加动作解码头。
 - **后续**：LLaVA-1.5（arXiv:2310.03744）在公开数据上进一步刷榜；本归档以 NeurIPS'23 首版论文为准。
-- **对 wiki 的映射：** [paper-llava](../../wiki/entities/paper-llava.md)；模型实体 [llava](../../wiki/entities/llava.md)；上游对齐 [paper-clip](../../wiki/entities/paper-clip.md)
+- **对 wiki 的映射：** [paper-llava](../../wiki/entities/paper-llava.md)；模型实体 [llava](../../wiki/entities/paper-llava.md)；上游对齐 [paper-clip](../../wiki/entities/paper-clip.md)
 
 ## 当前提炼状态
 

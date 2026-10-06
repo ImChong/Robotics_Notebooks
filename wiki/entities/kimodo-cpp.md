@@ -12,7 +12,7 @@ related:
   - ./sam3dbody-cpp.md
   - ./protomotions.md
   - ./unitree-g1.md
-  - ./core-retarget.md
+  - ./paper-core.md
   - ./ardy.md
 sources:
   - ../../sources/repos/kimodo-cpp.md
@@ -110,13 +110,13 @@ sequenceDiagram
 | 设备 | `KIMODO_DEVICE_CPU` / `VULKAN` / `AUTO`；`KIMODO_TEXT_LAYER_CHUNK=1..32` 调文本塔显存 |
 | 输出 | C 缓冲是借用指针，`kimodo_motion_free` 前有效；Demo 另写无网格骨架 GLB，方便拷进 Three.js |
 | 权重校验 | 安装器核 `MANIFEST.json` 与 SHA-256；运动 GGUF 元数据含骨架、schedule、归一化统计 |
-| 下游 | 运动学轨迹仍要进 [ProtoMotions](./protomotions.md) / [SONIC](../methods/sonic-motion-tracking.md) / [CoRe](./core-retarget.md)；**不要**把 GLB/旋转缓冲当真机指令。CoRe 当前契约吃的是官方 Kimodo **SOMA77 `.npz`**，本仓 30 关节缓冲不能直接喂 |
+| 下游 | 运动学轨迹仍要进 [ProtoMotions](./protomotions.md) / [SONIC](../methods/sonic-motion-tracking.md) / [CoRe](paper-core.md)；**不要**把 GLB/旋转缓冲当真机指令。CoRe 当前契约吃的是官方 Kimodo **SOMA77 `.npz`**，本仓 30 关节缓冲不能直接喂 |
 
 ## 局限与风险
 
 - **不是官方 NVIDIA 仓**：社区移植；数值靠 fixture / CPU–Vulkan parity，上游 `config.yaml` 或权重 revision 漂移要自己回归。
 - **能力子集**：README 明示 **通用约束输入、77 关节 SOMA 展开、蒙皮 GLB、量化模型尚未实现**。要导演式关键帧 / 2D 路径仍走官方 Python [Kimodo](./kimodo.md)。
-- **SOMA 关节数易踩坑**：对照官方 somaskel77 或 [CoRe](./core-retarget.md) 时，先确认走的是 30 还是 77。
+- **SOMA 关节数易踩坑**：对照官方 somaskel77 或 [CoRe](paper-core.md) 时，先确认走的是 30 还是 77。
 - **SMPL-X 再分发违法风险**：Internal R&D 许可禁止衍生权重分发；把自行转换的 SMPL-X GGUF 传到公开盘等于踩上游条款，与「骨架名字是 SMPL-X 形状」无关。
 - **文本塔条款独立**：`Llama-3-Kimodo-GGML` 含 Meta Llama 3 材料，下载前读模型卡。
 - **泄漏检测**：ASan 默认关 leak detect（Vulkan loader 全局分配）；不要据此判断「没有泄漏」。

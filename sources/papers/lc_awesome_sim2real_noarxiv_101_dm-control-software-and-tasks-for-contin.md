@@ -11,7 +11,7 @@
 - **论文：** <https://www.sciencedirect.com/science/article/pii/S2665963820300099>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页为策展索引级节点，细节以原文为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md`](../../wiki/entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md)
+- **沉淀到 wiki：** [`wiki/entities/dm-control.md`](../../wiki/entities/dm-control.md)
 
 ---
 
@@ -24,5 +24,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md`](../../wiki/entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md)
+- 实体页：[`wiki/entities/dm-control.md`](../../wiki/entities/dm-control.md)
 - 列表实体：[`wiki/entities/awesome-sim2real.md`](../../wiki/entities/awesome-sim2real.md)

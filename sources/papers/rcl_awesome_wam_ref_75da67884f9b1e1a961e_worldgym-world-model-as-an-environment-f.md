@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 神经策略评测环境 · 机器人操作基准 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-75da67884f9b1e1a961e-worldgym-world-model-as-an-environment-for-polic.md`](../../wiki/entities/paper-rcl-ref-75da67884f9b1e1a961e-worldgym-world-model-as-an-environment-for-polic.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-shenlan-wm-15-worldgym.md`](../../wiki/entities/paper-shenlan-wm-15-worldgym.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-75da67884f9b1e1a961e-worldgym-world-model-as-an-environment-for-polic.md`](../../wiki/entities/paper-rcl-ref-75da67884f9b1e1a961e-worldgym-world-model-as-an-environment-for-polic.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-shenlan-wm-15-worldgym.md`](../../wiki/entities/paper-shenlan-wm-15-worldgym.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

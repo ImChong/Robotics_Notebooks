@@ -93,7 +93,7 @@ related:
   - ../entities/paper-data-pyramid-embodied-manipulation.md
   - ../tasks/loco-manipulation.md
   - ./ai-auto-research.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../entities/awesome-world-models.md
 sources:
@@ -194,7 +194,7 @@ sources:
 
 ### RCL 主线：2×2（架构 × 预测–动作接口）
 
-[RCL 机器人向 WAM 综述（arXiv:2609.16074）](../entities/paper-rcl-wam-robot-learning-control-survey.md) 与 [Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md) 把两轴 **解耦**：
+[RCL 机器人向 WAM 综述（arXiv:2609.16074）](../entities/paper-rcl-wam-robot-learning-control-survey.md) 与 [Awesome World-Action Models（RCL）](../entities/paper-rcl-wam-robot-learning-control-survey.md) 把两轴 **解耦**：
 
 | 轴 | 选项 | 直觉 |
 |----|------|------|
@@ -460,7 +460,7 @@ flowchart TB
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — WAM 是其世界模型轴下的联合建模行
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — 具身闭环 + 生成世界模型作视觉计划；与 WAM「联合建模」同构的议程层坐标
 - [Awesome World Models（精选集）](../entities/awesome-world-models.md) — WM/WAM/MBRL/应用域全谱索引
-- [Awesome World-Action Models（RCL / MBZUAI）](../entities/awesome-world-action-models-rcl.md) — 564 条 WAM 生态策展；2×2 四象限 + Reading reports
+- [Awesome World-Action Models（RCL / MBZUAI）](../entities/paper-rcl-wam-robot-learning-control-survey.md) — 564 条 WAM 生态策展；2×2 四象限 + Reading reports
 - [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — PAPERS.md 全量逐篇 detail 节点
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — WAM 对应五层闭环的世界模型推演层

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-sim2real, longchao-sim2real, technology-map]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 summary: "AwesomeSim2Real 技术地图：把清单里的 139 篇论文逐条拆成站内可点开的一页，按 MDP 四要素与领域分组浏览。"
 related:
   - ../entities/awesome-sim2real.md
@@ -94,7 +94,7 @@ sources:
 |---|------|
 | 026 | [Local Policies Enable Zero-shot Long-horizon Manipulation](../entities/paper-as-2410-22332-local-policies-enable-zero-shot-long-horizon-man.md) |
 | 027 | [RLingua: Improving Reinforcement Learning Sample Efficiency in Robotic Manipulations With ](../entities/paper-as-2403-06420-rlingua-improving-reinforcement-learning-sample.md) |
-| 028 | [robosuite: A modular simulation framework and benchmark for robot learning](../entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) |
+| 028 | [robosuite: A modular simulation framework and benchmark for robot learning](../entities/robosuite.md) |
 
 ### Observation / Domain Adaptation
 
@@ -163,7 +163,7 @@ sources:
 
 | # | 论文 |
 |---|------|
-| 067 | [AI2-THOR: An Interactive 3D Environment for Visual AI](../entities/paper-as-1712-05474-ai2-thor-an-interactive-3d-environment-for-visua.md) |
+| 067 | [AI2-THOR: An Interactive 3D Environment for Visual AI](../entities/ai2-thor.md) |
 | 068 | [DeepMind Lab](../entities/paper-as-1612-03801-deepmind-lab.md) |
 | 069 | [OpenAI Gym Retro](../entities/paper-as-069-openai-gym-retro.md) |
 | 070 | [The Arcade Learning Environment: An Evaluation Platform for General Agents](../entities/paper-as-1207-4708-the-arcade-learning-environment-an-evaluation-pl.md) |
@@ -209,7 +209,7 @@ sources:
 | 085 | [Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer](../entities/humanoid-gym.md) |
 | 086 | [ManipulaTHOR: A Framework for Visual Object Manipulation](../entities/paper-as-2104-11213-manipulathor-a-framework-for-visual-object-manip.md) |
 | 087 | [NeuronsGym: A Hybrid Framework and Benchmark for Robot Tasks with Sim2Real Policy Learning](../entities/paper-as-087-neuronsgym-a-hybrid-framework-and-benchmark-for.md) |
-| 088 | [RLBench: The Robot Learning Benchmark & Learning Environment](../entities/paper-as-1909-12271-rlbench-the-robot-learning-benchmark-learning-en.md) |
+| 088 | [RLBench: The Robot Learning Benchmark & Learning Environment](../entities/rlbench.md) |
 | 089 | [RRLS : Robust Reinforcement Learning Suite](../entities/paper-as-2406-08406-rrls-robust-reinforcement-learning-suite.md) |
 | 090 | [Robust Gymnasium: A Unified Modular Benchmark for Robust Reinforcement Learning](../entities/paper-as-090-robust-gymnasium-a-unified-modular-benchmark-for.md) |
 
@@ -218,17 +218,17 @@ sources:
 | # | 论文 |
 |---|------|
 | 091 | [Assistive Gym: A Physics Simulation Framework for Assistive Robotics](../entities/paper-as-1910-04700-assistive-gym-a-physics-simulation-framework-for.md) |
-| 092 | [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipu](../entities/paper-as-2112-03227-calvin-a-benchmark-for-language-conditioned-poli.md) |
+| 092 | [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipu](../entities/calvin-benchmark.md) |
 | 093 | [Continuous Adaptation via Meta-Learning in Nonstationary and Competitive Environments](../entities/paper-as-1710-03641-continuous-adaptation-via-meta-learning-in-nonst.md) |
 | 094 | [Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks](../entities/paper-as-2301-04195-delving-deeper-into-out-of-distribution-detectio.md) |
 | 095 | [Design and use paradigms for Gazebo, an open-source multi-robot simulator](../entities/paper-as-095-design-and-use-paradigms-for-gazebo-an-open-sour.md) |
 | 096 | [Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning](../entities/paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md) |
-| 097 | [MuJoCo: A physics engine for model-based control](../entities/paper-as-097-mujoco-a-physics-engine-for-model-based-control.md) |
+| 097 | [MuJoCo: A physics engine for model-based control](../entities/mujoco.md) |
 | 098 | [OpenAI Gym](../entities/paper-as-1606-01540-openai-gym.md) |
-| 099 | [PyBullet: Real-Time Physics Simulation](../entities/paper-as-099-pybullet-real-time-physics-simulation.md) |
+| 099 | [PyBullet: Real-Time Physics Simulation](../entities/pybullet.md) |
 | 100 | [SoftGym: Benchmarking Deep Reinforcement Learning for Deformable Object Manipulation](../entities/paper-as-2011-07215-softgym-benchmarking-deep-reinforcement-learning.md) |
-| 101 | [dm_control: Software and tasks for continuous control](../entities/paper-as-101-dm-control-software-and-tasks-for-continuous-con.md) |
-| 102 | [robosuite: A Modular Simulation Framework and Benchmark for Robot Learning](../entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md) |
+| 101 | [dm_control: Software and tasks for continuous control](../entities/dm-control.md) |
+| 102 | [robosuite: A Modular Simulation Framework and Benchmark for Robot Learning](../entities/robosuite.md) |
 
 ### Survey Papers
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "1910.10897"
 venue: "CoRL"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清单索引，细节以原文为准。"
@@ -13,7 +13,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md

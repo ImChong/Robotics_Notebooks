@@ -33,7 +33,7 @@ sources:
 | Riemann-1.0 | [paper-riemann-1](../entities/paper-riemann-1.md) | 全因果动作优先 WAM；先出动作再条件化视觉后果；闭源，详见实体页。 |
 | World Tokens | [paper-world-tokens-inference-trimmed-wam](../entities/paper-world-tokens-inference-trimmed-wam.md) | 训练期世界监督、推理期裁剪生成分支的 WAM 趋势代表。 |
 | FLEX-π | [paper-flex-pi](../entities/paper-flex-pi.md) | RGB/点图/语义共同塑造未来表征的多流 Joint WAM。 |
-| MobileWAM | [paper-mobilewam-mobile-manipulation-wam](../entities/paper-mobilewam-mobile-manipulation-wam.md) | 从机械臂扩展到移动操作的 WAM。 |
+| MobileWAM | [paper-mobilewam-mobile-manipulation-wam](../entities/paper-rcl-2608-04657-mobilewam-bridging-world-action-models-to-mobile.md) | 从机械臂扩展到移动操作的 WAM。 |
 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) | 实时人形 loco-manipulation：Video DiT 隐状态条件 Motion DiT。 |
 
 ## 关联页面

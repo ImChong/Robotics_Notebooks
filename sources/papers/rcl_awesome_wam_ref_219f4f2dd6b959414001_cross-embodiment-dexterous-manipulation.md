@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-219f4f2dd6b959414001-cross-embodiment-dexterous-manipulation-through.md`](../../wiki/entities/paper-rcl-ref-219f4f2dd6b959414001-cross-embodiment-dexterous-manipulation-through.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

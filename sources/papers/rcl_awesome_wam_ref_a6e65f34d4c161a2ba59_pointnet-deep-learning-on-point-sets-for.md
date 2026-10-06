@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-a6e65f34d4c161a2ba59-pointnet-deep-learning-on-point-sets-for-3d-clas.md`](../../wiki/entities/paper-rcl-ref-a6e65f34d4c161a2ba59-pointnet-deep-learning-on-point-sets-for-3d-clas.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

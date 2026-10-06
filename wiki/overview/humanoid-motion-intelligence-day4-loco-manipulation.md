@@ -72,7 +72,7 @@ flowchart TB
 | Weave | [独立详情](../entities/paper-weave.md) | 人体示范灵巧移动操作 |
 | ForeTime-VLA | [独立详情](../entities/paper-foretime-vla.md) | 未来 token 蒸馏 |
 | DECOWAM | [独立详情](../entities/paper-decowam.md) | 解耦世界动作模型 |
-| MobileWAM | [独立详情](../entities/paper-mobilewam-mobile-manipulation-wam.md) | 移动操作世界动作模型 |
+| MobileWAM | [独立详情](../entities/paper-rcl-2608-04657-mobilewam-bridging-world-action-models-to-mobile.md) | 移动操作世界动作模型 |
 | TF-ART | [独立详情](../entities/paper-tf-art-tactile-force-survey.md) | 力觉和触觉学习综述 |
 | FARO | [独立详情](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) | 可行性约束的运动优化 |
 | SteadyTray | [独立详情](../entities/paper-notebook-steadytray.md) | 托盘物体平衡 |

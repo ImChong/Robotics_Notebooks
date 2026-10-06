@@ -161,7 +161,7 @@ flowchart LR
 - [Sim2Real 纵深](depth-sim2real.md) Stage 0–2 水平：理解高动态动作上真机的域差风险
 
 ### 核心问题
-- 高动态单机特技怎么练：[KungFuAthleteBot](../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) 的高速武术数据集 + 抗扰跟踪、[KungfuBot](../wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) 的物理可行化、[ASAP](../wiki/entities/paper-hrl-stack-25-asap.md) 的仿真-真机动力学对齐，各解决特技链路的哪一环
+- 高动态单机特技怎么练：[KungFuAthleteBot](../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) 的高速武术数据集 + 抗扰跟踪、[KungfuBot](../wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) 的物理可行化、[ASAP](../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) 的仿真-真机动力学对齐，各解决特技链路的哪一环
 - 特技的群体编排：接力式（依次空翻的波浪）、镜像式（对称武术阵）、协同式（多机搬举/对抛）三类编排对同步与安全的要求梯度
 - 多机物理协作的前沿：[TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md) 的去中心化多人协作搬运、[TeamPlay](../wiki/entities/paper-bfm-23-teamplay.md) 的协作行为基座——从"各跳各的"到"力学耦合"的跨越
 - 安全边界工程：特技失败半径、机间安全距离、观众隔离区怎么从仿真统计量变成现场执行规范；摔倒检测与 [跌倒恢复](../wiki/tasks/balance-recovery.md) 的自动接管
@@ -173,7 +173,7 @@ flowchart LR
 ### 推荐读什么
 - [KungFuAthleteBot](../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术跟踪 + 抗扰恢复
 - [KungfuBot](../wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) 与 [KungfuBot2](../wiki/entities/paper-notebook-kungfubot-2.md) — 物理可行化的功夫技能
-- [ASAP](../wiki/entities/paper-hrl-stack-25-asap.md) — 高动态技能的仿真-真机对齐
+- [ASAP](../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — 高动态技能的仿真-真机对齐
 - [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md) 与 [TeamPlay](../wiki/entities/paper-bfm-23-teamplay.md) — 多机物理协作前沿
 - [SMPLOlympics](../wiki/entities/smplolympics.md) — 高动态技能的仿真基准
 

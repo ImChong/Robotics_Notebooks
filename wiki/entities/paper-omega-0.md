@@ -14,7 +14,7 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-10-03
+updated: 2026-10-06
 github: "https://github.com/gentlefress/Omega-0"
 dataset: "https://huggingface.co/datasets/keycharon/omega-HOME"
 arxiv: "2608.06375"

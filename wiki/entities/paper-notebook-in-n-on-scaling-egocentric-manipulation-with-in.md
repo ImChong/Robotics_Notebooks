@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, egocentric, human-video, vla, co-training, ucsd, unitree, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2511.15704"
 code: https://github.com/XiongyiCai/Human0
 related:

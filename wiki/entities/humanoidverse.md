@@ -1,25 +1,42 @@
 ---
 type: entity
-tags: [repo, framework, humanoid, reinforcement-learning, sim2real, isaacgym, isaac-lab, genesis, lecar-lab, cmu]
+tags:
+- repo
+- framework
+- humanoid
+- reinforcement-learning
+- sim2real
+- isaacgym
+- isaac-lab
+- genesis
+- lecar-lab
+- cmu
+- paper
+- humanoid-paper-notebooks
 status: complete
-updated: 2026-09-22
+updated: 2026-10-06
 related:
-  - ./paper-notebook-asap-aligning-simulation-and-real-world-physics.md
-  - ./paper-hrl-stack-25-asap.md
-  - ./paper-loco-manip-161-109-falcon.md
-  - ./human2humanoid.md
-  - ../concepts/sim2real.md
+- ./paper-notebook-asap-aligning-simulation-and-real-world-physics.md
+- ./paper-loco-manip-161-109-falcon.md
+- ./human2humanoid.md
+- ../concepts/sim2real.md
+- ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
+- ../overview/humanoid-paper-notebooks-index.md
 sources:
-  - ../../sources/repos/humanoidverse.md
-  - ../../sources/repos/asap.md
-summary: "LeCAR-Lab HumanoidVerse 是人形多仿真器 RL 框架：simulator / task / algorithm 模块化，Hydra 一行 +simulator= 切换 IsaacGym、IsaacSim(IsaacLab) 与 Genesis；ASAP、FALCON 等工作的训练底座。"
+- ../../sources/repos/humanoidverse.md
+- ../../sources/repos/asap.md
+- ../../sources/papers/humanoid_pnb_humanoidverse.md
+summary: LeCAR-Lab HumanoidVerse 是人形多仿真器 RL 框架：simulator / task / algorithm 模块化，Hydra 一行 +simulator= 切换 IsaacGym、IsaacSim(IsaacLab) 与 Genesis；ASAP、FALCON 等工作的训练底座。
+project_id: humanoidverse
+arxiv: '2508.16943'
+venue: '2025.08'
 ---
 
 # HumanoidVerse（LeCAR-Lab）
 
 **HumanoidVerse**（[LeCAR-Lab/HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse)，MIT）是 CMU **LECAR Lab** 的 **人形多仿真器强化学习框架**。核心设计是把 **仿真后端、任务与算法解耦**，用统一 Hydra 入口 `humanoidverse/train_agent.py` 训练，换 IsaacGym / IsaacSim / Genesis 通常只需改 **`+simulator=<name>`**。
 
-> **命名消歧：** 本页指 **训练框架仓库**。Paper Notebooks 中另有 VLN 论文 *HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement*（arXiv:2508.16943），见 [paper-notebook-humanoidverse](./paper-notebook-humanoidverse.md)——**同名不同物**。
+> **命名消歧：** 本页指 **训练框架仓库**。Paper Notebooks 中另有 VLN 论文 *HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement*（arXiv:2508.16943），见 [paper-notebook-humanoidverse](#项目资源与工程补充)——**同名不同物**。
 
 ## 一句话定义
 
@@ -34,6 +51,8 @@ HumanoidVerse 用模块化配置把人形 RL 的 **仿真器、任务与算法**
 | Sim2Sim | Simulation to Simulation | 跨仿真器策略迁移（如 Gym→Sim/Genesis） |
 | DoF | Degree of Freedom | 支持的 H1/G1 等 embodiment 变体 |
 | Hydra | — | 配置组合与 CLI 覆盖机制 |
+
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 
 ## 为什么重要
 
@@ -121,7 +140,6 @@ sequenceDiagram
 - 与 ProtoMotions 等多 sim 框架相比，HumanoidVerse 明确押 **sim2sim + sim2real 管线**（在 ASAP 仓库完整落地），适合作为 LeCAR 系论文复现入口。
 - 下游 ASAP 把 motion tracking、delta action、AMASS 重定向与 Unitree G1 部署叠在同一 `humanoidverse/` 树上；读 ASAP 代码前应先把本框架的 modular 设计读清楚。
 - 局限：各 simulator 需 **独立 conda 环境**；Genesis 集成仍标注开发中；框架 README 的 motion tracking TODO 需以 ASAP 仓库为准。
-- **勿与 VLN 论文 HumanoidVerse 混淆**——Paper Notebooks 中 arXiv:2508.16943 是另一篇工作，见 [paper-notebook-humanoidverse](./paper-notebook-humanoidverse.md)。
 
 ## 与其他页面的关系
 
@@ -130,13 +148,37 @@ sequenceDiagram
 - [human2humanoid](./human2humanoid.md) — 同 LECAR 遥操/重定向谱系
 - [Sim2Real](../concepts/sim2real.md) — 概念层背景
 
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 分类 | 04_Loco-Manipulation_and_WBC |
+| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
+| 计划文件夹 | `papers/04_Loco-Manipulation_and_WBC/HumanoidVerse__A_Versatile_Humanoid_for_Vision-Language_Guided_Multi-Object_Rear` |
+
+### 实验与评测
+
+- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+
 ## 参考来源
 
 - [humanoidverse.md](../../sources/repos/humanoidverse.md) — 仓库归档
 - [asap.md](../../sources/repos/asap.md) — 下游 ASAP 实现
 - GitHub：<https://github.com/LeCAR-Lab/HumanoidVerse>
 
+- [humanoid_pnb_humanoidverse.md](../../sources/papers/humanoid_pnb_humanoidverse.md)
+- [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+
 ## 推荐继续阅读
 
 - HumanoidVerse README：<https://github.com/LeCAR-Lab/HumanoidVerse#training--evaluation>
 - ASAP 项目页：<https://agile.human2humanoid.com/>
+
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+
+## 关联页面
+
+- 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

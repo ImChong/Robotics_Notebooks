@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2604.05498"
 venue: "2026"
 summary: "JailWAM evaluates instruction-induced robot risk by rendering predicted actions as trajectory charts, screening them with a trained vision-language discriminator, and verifying selected candidates in closed-loop simulati"
 related:
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -40,7 +40,7 @@ JailWAM evaluates instruction-induced robot risk by rendering predicted actions 
 
 - JailWAM evaluates instruction-induced robot risk by rendering predicted actions as trajectory charts, screening them with a trained vision-language discriminator, and verifying selected candidates in closed-loop simulation. It reports 84.20% human-verified attack success on LingBot-VA, but its cheaper screening pipe...
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
 ## 核心信息
 
@@ -87,7 +87,7 @@ JailWAM evaluates instruction-induced robot risk by rendering predicted actions 
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 

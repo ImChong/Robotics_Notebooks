@@ -1,37 +1,56 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
+tags:
+- sim2real
+- tooling
+- deployment
+- hmi-opensource-table
+- repo
+- linux-foundation
+- paper
+- robot-manipulation
+- lifelong-learning
+- benchmark
+- imitation-learning
+- dataset
+- simulation
 status: draft
-updated: 2026-10-03
-summary: "LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。"
+updated: 2026-10-06
+summary: LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。
 related:
-  - ../concepts/sim2real.md
-  - ../entities/isaac-lab.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../entities/paper-world-action-planner.md
-  - ../entities/paper-why-action-chunking-improves-bc.md
-  - ../entities/paper-gsr-paravla.md
-  - ../entities/paper-actfovea.md
-  - ../entities/paper-neural-introspection-gating.md
-  - ../entities/paper-flex-pi.md
-  - ../entities/paper-galaxea-g05.md
-  - ../entities/paper-reflexvla.md
-  - ../entities/paper-deicticvla.md
-  - ../entities/paper-rift-wam.md
-  - ../entities/paper-odeworld.md
-  - ../queries/hmi-opensource-projects-coverage.md
-  - ../concepts/llm-robotics-control-interfaces.md
-  - ./anthropic-embody.md
+- ../concepts/sim2real.md
+- ../entities/isaac-lab.md
+- ../entities/humanoid-motion-intelligence.md
+- ../entities/paper-world-action-planner.md
+- ../entities/paper-why-action-chunking-improves-bc.md
+- ../entities/paper-gsr-paravla.md
+- ../entities/paper-actfovea.md
+- ../entities/paper-neural-introspection-gating.md
+- ../entities/paper-flex-pi.md
+- ../entities/paper-galaxea-g05.md
+- ../entities/paper-reflexvla.md
+- ../entities/paper-deicticvla.md
+- ../entities/paper-rift-wam.md
+- ../entities/paper-odeworld.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ../concepts/llm-robotics-control-interfaces.md
+- ./anthropic-embody.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/libero-benchmark.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
-  - ../../sources/papers/world_action_planner_arxiv_2607_27599.md
-  - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
-  - ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
-  - ../../sources/papers/odeworld_arxiv_2607_27924.md
-  - ../../sources/sites/anthropic-claude-plays-robotics.md
-  - ../../sources/repos/libero-plus.md
-  - ../../sources/repos/libero-pro.md
+- ../../sources/repos/libero-benchmark.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/world_action_planner_arxiv_2607_27599.md
+- ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+- ../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md
+- ../../sources/papers/odeworld_arxiv_2607_27924.md
+- ../../sources/sites/anthropic-claude-plays-robotics.md
+- ../../sources/repos/libero-plus.md
+- ../../sources/repos/libero-pro.md
+- ../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md
+project_id: libero-benchmark
+arxiv: '2306.03310'
+code: https://github.com/Lifelong-Robot-Learning/LIBERO
+venue: NeurIPS 2023 Datasets and Benchmarks Track
 ---
 
 # LIBERO
@@ -50,6 +69,12 @@ sources:
 | Sim2Real | Simulation to Real | 仿真到真机部署主线 |
 | RL | Reinforcement Learning | 训练与评测常用框架 |
 | API | Application Programming Interface | 仿真/中间件编程接口 |
+
+| BC | Behavioral Cloning | 从演示轨迹监督学习策略，论文统一采用的学习范式 |
+| ER | Experience Replay | 回放旧任务数据以缓解遗忘的持续学习方法 |
+| EWC | Elastic Weight Consolidation | 以参数重要性正则约束旧任务关键权重的持续学习方法 |
+| ViT | Vision Transformer | 论文比较的视觉编码器之一 |
+| PDDL | Planning Domain Definition Language | 官方数据附带的符号化场景/任务描述格式 |
 
 ## 为什么重要
 
@@ -93,7 +118,6 @@ flowchart LR
 
 具体扰动定义与划分以上游 LIBERO-Plus 发布物为准；本页只做本库交叉引用的锚点。
 
-
 ### 与 LIBERO-PRO 的区别
 
 - **LIBERO-Plus**：系统测试相机视角、物体布局、初态、指令、光照、背景纹理和传感器噪声等扰动，适合按扰动维度分析鲁棒性。
@@ -121,6 +145,57 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 项目资源与工程补充
+
+### 基准组成
+
+论文提出四个任务套件，共 **130 个语言条件操作任务**：
+
+| 套件 | 任务数 | 主要考察的变化 |
+|---|---:|---|
+| LIBERO-Spatial | 10 | 物体之间的空间关系和摆放布局 |
+| LIBERO-Object | 10 | 操作对象类别 |
+| LIBERO-Goal | 10 | 任务目标 |
+| LIBERO-100 | 100 | 物体、布局与目标等知识的组合迁移 |
+
+LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练）与 **LIBERO-10**（用于下游终身学习评测）。官方数据包括人类遥操作演示；项目说明还列出工作区与腕部 RGB 图像、本体状态、语言任务描述和 PDDL 场景描述等内容。
+
+### 方法与评测设置
+
+论文使用行为克隆（Behavioral Cloning, BC）从演示轨迹学习操作策略，以便在有限计算资源下比较终身学习设定。它研究三种视觉-运动策略架构：
+
+- **ResNet-RNN：** ResNet 编码视觉输入，LSTM 汇总时间信息。
+- **ResNet-T：** ResNet 视觉特征与 Transformer 时间骨干结合。
+- **ViT-T：** Vision Transformer 处理视觉输入，并以 Transformer 建模时间序列。
+
+比较的学习方案包括顺序微调和多任务学习基线，以及 Experience Replay（ER）、Elastic Weight Consolidation（EWC）和 PackNet 等终身学习方法。论文主要使用任务成功率评估，并研究任务顺序、策略结构、算法选择和预训练对迁移的影响。
+
+### 论文报告的主要发现
+
+1. **架构和算法都影响迁移。** Transformer 时间骨干在抽象时序信息方面表现突出；不同视觉编码器在不同类型的知识迁移上各有强项，没有一种架构对所有套件都最好。
+2. **防遗忘不等于更强的前向迁移。** 在论文比较的设定中，ER、EWC、PackNet 等方法能缓解遗忘，但总体上顺序微调的前向迁移表现更好。
+3. **任务语言嵌入未必带来提升。** 使用语义丰富的任务描述嵌入，表现并未优于使用任务 ID 嵌入。
+4. **朴素监督预训练可能适得其反。** 在大规模离线数据上直接做监督预训练，可能降低后续终身学习表现。
+
+以上结论对应论文的任务、策略和训练协议；复现或横向比较时，应以原文实验设置为准。
+
+### 如何使用
+
+1. 从官方仓库安装环境，查看任务套件、策略配置和评估脚本。
+2. 使用官方脚本下载对应套件的遥操作演示数据；README 说明可选择 Hugging Face 下载来源。
+3. 选定 suite、策略和终身学习算法，按统一任务顺序及成功率协议评测。
+4. 对比 LIBERO-Spatial、Object、Goal 与 LIBERO-90/10 的结果，定位变化来自布局、物体、目标还是它们的组合。
+
+本页不复述完整安装步骤，依赖版本、命令和数据文件结构以[官方 README](https://github.com/Lifelong-Robot-Learning/LIBERO#readme)及[文档](https://lifelong-robot-learning.github.io/LIBERO/)为准。
+
+### 适用范围与限制
+
+- LIBERO 是仿真中的机器人操作基准，适合研究终身模仿学习、知识迁移、任务顺序和策略结构。
+- 在 LIBERO 上的结果不能直接等同于真实机械臂上的性能或 sim-to-real 能力。
+- 不同 LIBERO 扩展版、任务子集、训练数据和评估协议可能不同；比较分数前先核对具体套件、初始状态、rollout 数和训练设置。
+- **重定向就绪度（数据形态适配）：** 官方演示在 robosuite 中以单臂机械臂（Franka Panda）采集，可直接作为同形态 BC 策略的训练输入；换到其他机械臂、双臂或人形平台时需重新采集或做动作空间重定向，不能直接复用。
+- 本文是 2023 年提出的基准工作。后续如使用更新的仓库版本或扩展套件，应注明版本，避免将新增设置归到原论文。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)
@@ -144,6 +219,26 @@ flowchart LR
 - [Embody](./anthropic-embody.md) — 用 LIBERO 厨房场景评 **LLM 直接控制 vs 监督 MolmoAct**，不是 VLA SOTA 榜
 - [AtomicVLA](./paper-atomicvla.md) — SG-MoE 原子技能 VLA；LIBERO +2.4%、LIBERO-LONG +10% vs π₀（已开源）
 
+- [机器人操作](../tasks/manipulation.md)
+- [robosuite 论文（2009.12293）](robosuite.md) — LIBERO 的底层仿真框架
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准分层选型
+- [LIBERO 论文来源归档](../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md)
+- [LIBERO 项目仓库归档](../../sources/repos/libero-benchmark.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [paper-world-action-planner](../entities/paper-world-action-planner.md)
+- [paper-why-action-chunking-improves-bc](../entities/paper-why-action-chunking-improves-bc.md)
+- [paper-gsr-paravla](../entities/paper-gsr-paravla.md)
+- [paper-actfovea](../entities/paper-actfovea.md)
+- [paper-neural-introspection-gating](../entities/paper-neural-introspection-gating.md)
+- [paper-flex-pi](../entities/paper-flex-pi.md)
+- [paper-galaxea-g05](../entities/paper-galaxea-g05.md)
+- [paper-reflexvla](../entities/paper-reflexvla.md)
+- [paper-deicticvla](../entities/paper-deicticvla.md)
+- [paper-rift-wam](../entities/paper-rift-wam.md)
+- [paper-odeworld](../entities/paper-odeworld.md)
+- [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
+
 ## 参考来源
 
 - [LIBERO 来源归档](../../sources/repos/libero-benchmark.md)
@@ -151,6 +246,18 @@ flowchart LR
 - [World Action Planner 论文策展](../../sources/papers/world_action_planner_arxiv_2607_27599.md)
 - [Why Action Chunking Improves BC 论文策展](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
+
+- [论文 PDF](https://proceedings.neurips.cc/paper_files/paper/2023/file/8c3c666820ea055a77726d66fc7d447f-Paper-Datasets_and_Benchmarks.pdf) 与 [arXiv 摘要](https://arxiv.org/abs/2306.03310)
+- [官方 GitHub 仓库](https://github.com/Lifelong-Robot-Learning/LIBERO)
+- [官方项目页](https://libero-project.github.io/) · [文档](https://lifelong-robot-learning.github.io/LIBERO/)
+- [官方数据页](https://libero-project.github.io/datasets) · [Hugging Face 数据集](https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets)
+- [RCL Awesome World-Action Models](https://github.com/rcl-robotics/Awesome-World-Action-Models)：第 031 项，仅作策展索引
+
+- [neural_introspection_gating_arxiv_2608_10824](../../sources/papers/neural_introspection_gating_arxiv_2608_10824.md)
+
+- [odeworld_arxiv_2607_27924](../../sources/papers/odeworld_arxiv_2607_27924.md)
+
+- [anthropic-claude-plays-robotics](../../sources/sites/anthropic-claude-plays-robotics.md)
 
 ## 推荐继续阅读
 

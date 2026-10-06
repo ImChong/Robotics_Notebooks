@@ -39,7 +39,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 | 选型 | GMR / NMR / Reactor 等路线差异 | [GMR vs NMR vs Reactor](../comparisons/gmr-vs-nmr-vs-reactor.md) |
 | 动力学精炼 | 运动学参考 → 全身动力学可行 | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)、[DSMS / Shooting for Contact](../entities/paper-shooting-for-contact.md)、[KDMR](../entities/paper-kdmr.md)、[SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md) |
 | 表面对应 | 不手写关键点、接触跟点走 | [UMR](../entities/paper-umr-unified-motion-retargeting.md)（点云对应；[GitHub 已开源](https://github.com/hanyang9/UMR)） |
-| 接触精炼（开源工具） | SOMA 人体 → 多人形 + 接触/自碰 | [CoRe v0.1.0](../entities/core-retarget.md)（论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)） |
+| 接触精炼（开源工具） | SOMA 人体 → 多人形 + 接触/自碰 | [CoRe v0.1.0](../entities/paper-core.md)（论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)） |
 | 数据 | 参考运动数据集与重定向就绪度 | [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) |
 | 下游 | 重定向后如何进入 WBT / AMP | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 
@@ -64,7 +64,7 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 - [KDMR](../entities/paper-kdmr.md) — GRF 锚定多接触全身 TO（Georgia Tech；BeyondMimic 下游）
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + 渐进 KDTO（UW–Madison / Berkeley / SII）
 - [UMR（学习点云对应）](../entities/paper-umr-unified-motion-retargeting.md) — 稠密表面对应替代手工关键点（HKUST-GZ / Noitom 等；arXiv:2609.02134）
-- [CoRe v0.1.0](../entities/core-retarget.md) — Kimodo/GEM-X → 11 机接触精炼（高丽大学；Humanoids/IROS 2025）
+- [CoRe v0.1.0](../entities/paper-core.md) — Kimodo/GEM-X → 11 机接触精炼（高丽大学；Humanoids/IROS 2025）
 
 ## 参考来源
 

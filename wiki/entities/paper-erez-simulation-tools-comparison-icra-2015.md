@@ -6,7 +6,7 @@ tags:
   - physics-engine
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 venue: "ICRA 2015"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

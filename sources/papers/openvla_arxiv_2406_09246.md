@@ -22,7 +22,7 @@
 
 - 视觉：DINOv2（几何）+ SigLIP（语言对齐）；语言主干 Llama 2 7B；7 维动作各 256 bin 自回归。
 - 数据：Open X-Embodiment（约 970k 轨迹）+ 内部数据；目标机器人微调 5k–10k 步即可适配。
-- **对 wiki 的映射：** [paper-openvla](../../wiki/entities/paper-openvla.md)；软件实体 [openvla](../../wiki/entities/openvla.md)
+- **对 wiki 的映射：** [paper-openvla](../../wiki/entities/paper-openvla.md)；软件实体 [openvla](../../wiki/entities/paper-openvla.md)
 
 ## 当前提炼状态
 

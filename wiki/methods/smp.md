@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 venue: arXiv
 related:
   - ../entities/paper-smp.md
@@ -124,4 +124,3 @@ flowchart TD
 - Mu et al., *SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*, 2026.
 - [CMP（arXiv:2608.03234）](../../sources/papers/cmp_arxiv_2608_03234.md) — 上下文条件适配扩展到 SMP。
 - 原始抓取：[wechat_humanoid_amp_19_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
-

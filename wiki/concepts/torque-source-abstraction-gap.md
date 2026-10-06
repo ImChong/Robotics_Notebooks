@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, control, sim2real, rl, mpc, friction, hardware]
 status: complete
-updated: 2026-07-21
+updated: 2026-10-06
 related:
   - ./implicit-explicit-actuator-modeling.md
   - ./joint-friction-models.md
@@ -11,7 +11,7 @@ related:
   - ./motor-torque-current-curve.md
   - ./field-oriented-control.md
   - ../methods/actuator-network.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-neuralactuator-neural-actuation-modeling.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -81,7 +81,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ### 路线①：摩擦辨识补偿（显式解析）
 
-- **做什么**：用 [BAM / BAM-extended](../entities/bam-better-actuator-models.md) 实测辨识 Stribeck / 黏滞 / 库仑等[关节摩擦](./joint-friction-models.md)参数，在控制器里做前馈补偿，或写回仿真做 [explicit 执行器](./implicit-explicit-actuator-modeling.md)。
+- **做什么**：用 [BAM / BAM-extended](../entities/paper-bam-extended-friction-servo-actuators.md) 实测辨识 Stribeck / 黏滞 / 库仑等[关节摩擦](./joint-friction-models.md)参数，在控制器里做前馈补偿，或写回仿真做 [explicit 执行器](./implicit-explicit-actuator-modeling.md)。
 - **取舍**：参数少、可解释、辨识成本中等；但解析模型对齿隙、温漂等强非线性覆盖有限。
 - **关键坑**：用**开环空载**扫参数代替**负载在环**辨识，得到的摩擦曲线在真实接触工况下系统性偏。
 
@@ -123,7 +123,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [Sim2Real](./sim2real.md) — 力矩执行 gap 是高保真迁移的关键子链路
 - [关节摩擦模型](./joint-friction-models.md) — 路线①显式补偿的建模对象
 - [Actuator Network](../methods/actuator-network.md) — 路线②数据驱动执行器映射
-- [BAM（执行器摩擦辨识）](../entities/bam-better-actuator-models.md) — 路线①显式辨识框架
+- [BAM（执行器摩擦辨识）](../entities/paper-bam-extended-friction-servo-actuators.md) — 路线①显式辨识框架
 - [NeuralActuator（神经执行器建模）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — 路线②数据驱动指令→力矩映射
 - [SAGE（sim2real 执行器 gap 估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — 量化执行器层 gap 占比，决定是否值得建模
 - [力矩-电流曲线](./motor-torque-current-curve.md) — 热降额/饱和区抽象破的标称背景

@@ -1,29 +1,42 @@
 ---
 type: entity
 tags:
-  - paper
-  - imitation-learning
-  - diffusion
-  - manipulation
-  - columbia
-  - mit
+- paper
+- imitation-learning
+- diffusion
+- manipulation
+- columbia
+- mit
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-15
-arxiv: "2303.04137"
+updated: 2026-10-06
+arxiv: '2303.04137'
 code: https://github.com/real-stanford/diffusion_policy
 related:
-  - ../methods/diffusion-policy.md
-  - ../concepts/receding-horizon-policy-execution.md
-  - ./paper-pi0.md
-  - ./paper-act.md
-  - ./paper-robotic-dit-ingredients-dit-block-policy.md
-  - ../../roadmap/depth-robotics-diffusion-dit-flow.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ../methods/diffusion-policy.md
+- ../concepts/receding-horizon-policy-execution.md
+- ./paper-pi0.md
+- ./paper-act.md
+- ./paper-robotic-dit-ingredients-dit-block-policy.md
+- ../../roadmap/depth-robotics-diffusion-dit-flow.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/repos/real-stanford-diffusion-policy.md
-summary: "Diffusion Policy（arXiv:2303.04137，Columbia/MIT）：用 DDPM 去噪生成 visuomotor 动作 chunk；表达多峰分布。real-stanford/diffusion_policy 已开源。"
+- ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/repos/real-stanford-diffusion-policy.md
+- ../../sources/papers/rcl_awesome_wam_ref_393a36f38d60db8631f4_diffusion-policy-visuomotor-policy-learn.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: Diffusion Policy（arXiv:2303.04137，Columbia/MIT）：用 DDPM 去噪生成 visuomotor 动作 chunk；表达多峰分布。real-stanford/diffusion_policy 已开源。
+project_id: diffusion-policy
+venue: International Journal of Robotics Research 2025
 ---
 
 # Diffusion Policy：用去噪生成动作序列
@@ -42,6 +55,11 @@ summary: "Diffusion Policy（arXiv:2303.04137，Columbia/MIT）：用 DDPM 去�
 | DDPM | Denoising Diffusion Probabilistic Model | 去噪训练目标 |
 | IL | Imitation Learning | 训练范式 |
 | ACT | Action Chunking Transformer | 并行的 chunk 路线，见 [ACT](./paper-act.md) |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -128,13 +146,32 @@ sequenceDiagram
 - [ACT](./paper-act.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [paper-robotic-dit-ingredients-dit-block-policy](./paper-robotic-dit-ingredients-dit-block-policy.md)
+- [depth-robotics-diffusion-dit-flow](../../roadmap/depth-robotics-diffusion-dit-flow.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 推荐继续阅读
 
 - [项目页](https://diffusion-policy.cs.columbia.edu/)
 - [arXiv:2303.04137](https://arxiv.org/abs/2303.04137)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://journals.sagepub.com/doi/10.1177/02783649241273668)
 
 ## 参考来源
 
 - [diffusion_policy_arxiv_2303_04137](../../sources/papers/diffusion_policy_arxiv_2303_04137.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [real-stanford-diffusion-policy](../../sources/repos/real-stanford-diffusion-policy.md)
+
+- [`sources/papers/rcl_awesome_wam_ref_393a36f38d60db8631f4_diffusion-policy-visuomotor-policy-learn.md`](../../sources/papers/rcl_awesome_wam_ref_393a36f38d60db8631f4_diffusion-policy-visuomotor-policy-learn.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://journals.sagepub.com/doi/10.1177/02783649241273668>

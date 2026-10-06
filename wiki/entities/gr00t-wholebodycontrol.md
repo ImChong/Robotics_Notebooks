@@ -16,7 +16,7 @@ related:
   - ./isaac-gr00t.md
   - ./paper-loco-manip-161-154-openhlm.md
   - ./paper-humanoidarena.md
-  - ./htd-decoupled-wbc.md
+  - ./paper-humanoid-touch-dream.md
   - ./isaac-teleop.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
@@ -106,7 +106,7 @@ sequenceDiagram
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
-- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
+- [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
 
 ## 参考来源
 

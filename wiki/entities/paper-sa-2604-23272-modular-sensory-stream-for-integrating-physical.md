@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2604.23272"
 venue: "arXiv 2026"
 summary: "Modular sensory stream for integrating physical feedback in VLA models."

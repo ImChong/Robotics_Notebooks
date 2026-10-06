@@ -30,7 +30,7 @@ sources:
 | ContactNets | [paper-contactnets-contact-dynamics](../entities/paper-contactnets-contact-dynamics.md) | 结构化状态空间学习接触几何与物理约束的动力学；以预测精度与穿透检验为终点。 |
 | GAIA-1 | [paper-gaia1](../entities/paper-gaia1.md) | 驾驶视频+文本+自车动作统一编码的动作条件视觉未来生成。 |
 | Cosmos Predict | [paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) | NVIDIA 从大规模视频与 Physical AI 数据学习时空先验，可后训练到机器人/自动驾驶。 |
-| Qwen-RobotWorld | [paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling](../entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md) | 自然语言作统一动作接口，跨操作/驾驶/导航与人到机器人迁移预测视觉未来。 |
+| Qwen-RobotWorld | [paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling](../entities/qwen-robot-world.md) | 自然语言作统一动作接口，跨操作/驾驶/导航与人到机器人迁移预测视觉未来。 |
 | Genie | [paper-sa-2402-15391-genie-generative-interactive-environments](../entities/paper-sa-2402-15391-genie-generative-interactive-environments.md) | 从无动作标签视频发现可交互潜在控制的可探索环境。 |
 | Matrix-Game 3.5 | [paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact](../entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) | 720p 实时流式交互世界与分钟级场景记忆；策展口径对应 Matrix-Game 3.x 线。 |
 

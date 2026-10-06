@@ -3,7 +3,7 @@ type: entity
 tags: [world-models, generative-ai, autoregressive, multi-view, embodied-synthesis, open-source, xiaomi, manipulation, data-augmentation, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 arxiv: "2607.11643"
-updated: 2026-09-16
+updated: 2026-10-06
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md

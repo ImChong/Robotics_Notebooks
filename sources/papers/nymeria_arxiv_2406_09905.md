@@ -16,7 +16,7 @@
 ### 1) 采集栈与同步
 
 - **要点：** 参与者佩戴 **Project Aria** 头显（RGB/灰度/眼动/IMU/磁力计/气压/音频）、**miniAria 腕带**、**XSens MVN Link** 全身惯导动捕；另有一名 **observer** 佩戴 Aria 提供第三人称视角；硬件同步 + 优化注册到 **同一 metric 3D 世界**。
-- **对 wiki 的映射：** [`wiki/entities/paper-nymeria.md`](../../wiki/entities/paper-nymeria.md)、[`wiki/entities/nymeria-dataset.md`](../../wiki/entities/nymeria-dataset.md)
+- **对 wiki 的映射：** [`wiki/entities/paper-nymeria.md`](../../wiki/entities/paper-nymeria.md)、[`wiki/entities/paper-nymeria.md`](../../wiki/entities/paper-nymeria.md)
 
 ### 2) 规模与 motion-language
 
@@ -44,7 +44,7 @@
 ## 对 wiki 的映射
 
 - [paper-nymeria.md](../../wiki/entities/paper-nymeria.md)
-- [nymeria-dataset.md](../../wiki/entities/nymeria-dataset.md)
+- [nymeria-dataset.md](../../wiki/entities/paper-nymeria.md)
 - [nymeria_dataset.md](../repos/nymeria_dataset.md)
 
 ## 参考来源（原始）

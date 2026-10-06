@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2412.14803"
 venue: ICML 2025
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"
@@ -15,7 +15,7 @@ related:
   - ../concepts/world-action-models.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/vla.md
   - ../tasks/manipulation.md

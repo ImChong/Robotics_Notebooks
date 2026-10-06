@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, diffusion-policy, contact-rich, visual-tactile, force-feedback, reactive-policy, rss-2025]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 arxiv: "2503.02881"
 venue: "Robotics: Science and Systems (RSS) 2025"
 summary: "RDP 将低频视觉 latent diffusion action chunks 与高频触觉/力自回归修正分层组合；TactAR 用 AR 呈现接触形变/力反馈。三项接触丰富真机任务验证反应性，并获 RSS 2025 Best Student Paper Finalist。"

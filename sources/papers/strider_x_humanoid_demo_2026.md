@@ -41,7 +41,7 @@
 
 ## 对 wiki 的映射
 
-- 新建实体页：[paper-strider](../../wiki/entities/paper-strider.md)（**演示级** 条目，待正式论文后升级）
+- 新建实体页：[paper-strider](../../wiki/entities/paper-strider-multi-gait-loco-manip.md)（**演示级** 条目，待正式论文后升级）
 - 交叉：[loco-manipulation](../../wiki/tasks/loco-manipulation.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)
 
 ## 当前提炼状态

@@ -50,5 +50,5 @@
 
 ## 对 wiki 的映射
 
-- [nymeria-dataset.md](../../wiki/entities/nymeria-dataset.md)
+- [nymeria-dataset.md](../../wiki/entities/paper-nymeria.md)
 - [paper-nymeria.md](../../wiki/entities/paper-nymeria.md)

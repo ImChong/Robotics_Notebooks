@@ -2,7 +2,7 @@
 type: overview
 tags: [open-source, curated-index, reinforcement-learning, imitation-learning, vla, wechat-curator, locomotion]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-06
 related:
   - ../entities/rsl-rl.md
   - ../entities/tienkung-lab.md
@@ -10,7 +10,7 @@ related:
   - ../entities/aloha.md
   - ../entities/paper-act.md
   - ../entities/paper-diffusion-policy.md
-  - ../entities/openvla.md
+  - ../entities/paper-openvla.md
   - ../entities/paper-octo.md
   - ../entities/lingbot-world.md
   - ../entities/lerobot.md
@@ -54,7 +54,7 @@ summary: "微信公众号「机器人研发工程师」16 项开源算法/框架
 | 4 | 足式 RL | [unitree_rl_gym](../entities/unitree-rl-gym.md) | [unitreerobotics/unitree_rl_gym](https://github.com/unitreerobotics/unitree_rl_gym) | ✓ |
 | 5 | 模仿学习 | [ALOHA](../entities/aloha.md) + [ACT](../entities/paper-act.md) | [tonyzhaozh/aloha](https://github.com/tonyzhaozh/aloha) · [tonyzhaozh/act](https://github.com/tonyzhaozh/act) | 原文 `StanfordVL/ALOHA` **404** |
 | 6 | 模仿学习 | [Diffusion Policy](../entities/paper-diffusion-policy.md) | [real-stanford/diffusion_policy](https://github.com/real-stanford/diffusion_policy) | 原文 org `real-strawberry` **404** |
-| 7 | VLA | [OpenVLA](../entities/openvla.md) | [openvla/openvla](https://github.com/openvla/openvla) | ✓ |
+| 7 | VLA | [OpenVLA](../entities/paper-openvla.md) | [openvla/openvla](https://github.com/openvla/openvla) | ✓ |
 | 8 | VLA | [Octo](../entities/paper-octo.md) | [octo-models/octo](https://github.com/octo-models/octo) | ✓ |
 | 9 | VLA / WM | [LingBot-World](../entities/lingbot-world.md) | [robbyant/lingbot-world](https://github.com/robbyant/lingbot-world) | 原文 `antgroup/lingbot` **404** |
 | 10 | 框架 | [LeRobot](../entities/lerobot.md) | [huggingface/lerobot](https://github.com/huggingface/lerobot) | ✓ |
@@ -70,7 +70,7 @@ summary: "微信公众号「机器人研发工程师」16 项开源算法/框架
 1. [RSL-RL](../entities/rsl-rl.md) + [unitree_mujoco](../entities/unitree-mujoco.md) — PPO 步态闭环  
 2. [LeRobot](../entities/lerobot.md) + [ALOHA](../entities/aloha.md)/[ACT](../entities/paper-act.md) — 模仿学习流水线  
 3. [Pinocchio](../entities/pinocchio.md) — 运动学 / 雅可比  
-4. [Octo](../entities/paper-octo.md) 推理 → 再 [OpenVLA](../entities/openvla.md) 微调  
+4. [Octo](../entities/paper-octo.md) 推理 → 再 [OpenVLA](../entities/paper-openvla.md) 微调
 
 ## 常见误区
 

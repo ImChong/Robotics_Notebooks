@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md

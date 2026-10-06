@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-901dd4e018709bd1ca32-argoverse-3d-tracking-and-forecasting-with-rich.md`](../../wiki/entities/paper-rcl-ref-901dd4e018709bd1ca32-argoverse-3d-tracking-and-forecasting-with-rich.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

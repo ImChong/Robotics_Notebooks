@@ -9,7 +9,7 @@
 - **分类：** 世界模型
 - **入库日期：** 2026-09-06
 - **一句话说明：** 字节跳动机器人团队 开源项目 VideoWorld（世界模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-videoworld.md`](../../wiki/entities/cn-os-videoworld.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md`](../../wiki/entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md)
 
 ## 开源状态
 
@@ -17,4 +17,4 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/cn-os-videoworld.md](../../wiki/entities/cn-os-videoworld.md)
+- [wiki/entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md](../../wiki/entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md)

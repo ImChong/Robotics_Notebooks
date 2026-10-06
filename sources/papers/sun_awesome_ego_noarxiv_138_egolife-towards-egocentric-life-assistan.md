@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** A project to develop an egocentric life assistant that accompanies and enhances personal efficiency through AI-powered wearable glasses
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-ego-138-egolife-towards-egocentric-life-assistant.md`](../../wiki/entities/paper-sa-ego-138-egolife-towards-egocentric-life-assistant.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-sa-2503-03803-egolife.md`](../../wiki/entities/paper-sa-2503-03803-egolife.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-ego-138-egolife-towards-egocentric-life-assistant.md`](../../wiki/entities/paper-sa-ego-138-egolife-towards-egocentric-life-assistant.md)
+- 实体页：[`wiki/entities/paper-sa-2503-03803-egolife.md`](../../wiki/entities/paper-sa-2503-03803-egolife.md)
 - 列表实体：[`wiki/entities/awesome-egocentric-vision.md`](../../wiki/entities/awesome-egocentric-vision.md)

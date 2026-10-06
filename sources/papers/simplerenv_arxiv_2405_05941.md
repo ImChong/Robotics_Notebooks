@@ -33,7 +33,7 @@
 
 **SIMPLER** 覆盖 RT-1 系 **Google Robot** 与 **BridgeData V2** WidowX 等常见设定；单 line import + Gym API；对 RT-1-X、Octo 等做 **paired sim-and-real**，~1500 episodes，报告 **强 Pearson 相关**；sim 还能反映 **distribution shift 敏感性** 等行为模式。
 
-**对 wiki 的映射：** 更新 [`painode-116-xsimplerenv`](../../wiki/entities/painode-116-xsimplerenv.md) 指向 canonical 论文实体；VLA 方法页 benchmark 引用。
+**对 wiki 的映射：** 更新 [`painode-116-xsimplerenv`](../../wiki/entities/paper-simplerenv-real2sim-eval.md) 指向 canonical 论文实体；VLA 方法页 benchmark 引用。
 
 ## BibTeX
 

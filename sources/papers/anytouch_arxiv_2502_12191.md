@@ -26,5 +26,5 @@ TacQuad 的两种配对粒度不可混为一个完全时空对齐集合；倒珠
 
 ## 对应知识节点
 - 论文详情：[paper-anytouch](../../wiki/entities/paper-anytouch.md)
-- 项目详情：[project-anytouch](../../wiki/entities/project-anytouch.md)
+- 项目详情：[project-anytouch](../../wiki/entities/paper-anytouch.md)
 - 主题：[触觉感知](../../wiki/concepts/tactile-sensing.md)、[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)

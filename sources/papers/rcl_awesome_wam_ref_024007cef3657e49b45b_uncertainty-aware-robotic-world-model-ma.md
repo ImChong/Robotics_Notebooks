@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-024007cef3657e49b45b-uncertainty-aware-robotic-world-model-makes-offl.md`](../../wiki/entities/paper-rcl-ref-024007cef3657e49b45b-uncertainty-aware-robotic-world-model-makes-offl.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

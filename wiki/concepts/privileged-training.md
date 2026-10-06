@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路；蒸馏本质是把 RL 探索问题转为 Teacher 标注的监督学习。"
 related:
   - ./terrain-latent-representation.md
@@ -31,7 +31,7 @@ related:
   - ../formalizations/mdp.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
-  - ../entities/htd-decoupled-wbc.md
+  - ../entities/paper-humanoid-touch-dream.md
   - ../entities/orcs.md
 sources:
   - ../../sources/personal/rl_runner_types.md
@@ -284,7 +284,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [RL 运动控制完整管线](../overview/robot-rl-motion-control-pipeline.md) — Teacher-Student 在四足工程链中的位置
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md) — teacher 足端接触特权、student 58 维本体历史 + BC→DAgger
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md) — teacher 足端接触特权、student 58 维本体历史 + BC→DAgger
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架
 - [RSL-RL](../entities/rsl-rl.md) — `DistillationRunner`：Teacher 特权动作 → Student BC

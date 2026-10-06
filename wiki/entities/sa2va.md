@@ -15,7 +15,7 @@ related:
   - ./transformer-cv-curriculum.md
   - ./lisa.md
   - ./paper-sam2.md
-  - ./llava.md
+  - ./paper-llava.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---

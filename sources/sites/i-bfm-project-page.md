@@ -21,5 +21,5 @@
 
 **对 wiki 的映射**
 
-- [project-i-bfm](../../wiki/entities/project-i-bfm.md)
+- [project-i-bfm](../../wiki/entities/paper-i-bfm.md)
 - [paper-i-bfm](../../wiki/entities/paper-i-bfm.md)

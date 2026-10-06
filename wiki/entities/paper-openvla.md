@@ -1,34 +1,42 @@
 ---
 type: entity
 tags:
-  - paper
-  - vla
-  - open-source
-  - manipulation
-  - foundation-policy
-  - stanford
-  - berkeley
-  - max-planck
+- paper
+- vla
+- open-source
+- manipulation
+- foundation-policy
+- stanford
+- berkeley
+- max-planck
+- repo
+- vision-language-action
 status: complete
-updated: 2026-09-30
-arxiv: "2406.09246"
+updated: 2026-10-06
+arxiv: '2406.09246'
 code: https://github.com/openvla/openvla
 related:
-  - ./openvla.md
-  - ./paper-ecot.md
-  - ./paper-fast-ecot.md
-  - ./paper-rt-2.md
-  - ./paper-octo.md
-  - ../methods/vla.md
-  - ./vla-sota-leaderboard.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
-  - ./paper-dita-scaling-diffusion-transformer-vla.md
+- ./paper-ecot.md
+- ./paper-fast-ecot.md
+- ./paper-rt-2.md
+- ./paper-octo.md
+- ../methods/vla.md
+- ./vla-sota-leaderboard.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-dita-scaling-diffusion-transformer-vla.md
+- ../entities/lerobot.md
+- ../overview/navigation-slam-autonomy-stack.md
+- ../overview/vla-open-source-repro-landscape-2025.md
+- ./paper-temporal-grpo.md
+- ./paper-arcadia.md
 sources:
-  - ../../sources/papers/openvla_arxiv_2406_09246.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md
-  - ../../sources/repos/openvla.md
-summary: "OpenVLA（arXiv:2406.09246）：7B 开源 VLA；DINOv2+SigLIP + Llama 2；OXE 预训练；LoRA/OFT 微调；openvla/openvla 已开源。"
+- ../../sources/papers/openvla_arxiv_2406_09246.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md
+- ../../sources/repos/openvla.md
+- ../../sources/papers/arcadia_arxiv_2512_00076.md
+summary: OpenVLA（arXiv:2406.09246）：7B 开源 VLA；DINOv2+SigLIP + Llama 2；OXE 预训练；LoRA/OFT 微调；openvla/openvla 已开源。
+project_id: openvla
 ---
 
 # OpenVLA：可复现的开源视觉–语言–动作模型
@@ -48,10 +56,14 @@ summary: "OpenVLA（arXiv:2406.09246）：7B 开源 VLA；DINOv2+SigLIP + Llama 
 | LoRA | Low-Rank Adaptation | 低成本微调 |
 | OFT | OpenVLA Fine-Tuning 变体 | 常用开源微调配方 |
 
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 为什么重要
 
 - 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的开源主线。
-- 软件实体见 [openvla](./openvla.md)；**本页是论文 canonical 节点**（`arxiv` 只出现一次）。
 - DINOv2 管几何、SigLIP 管语言对齐，成为后续 VLA 视觉塔的常见配方。
 - **已开源** 训练、推理与 HF 权重。
 
@@ -127,7 +139,6 @@ flowchart TB
 - 动作 token 让 LLM 主干无需改输出头类型
 - 预训练后微调是部署默认路径，不是可选
 - 7B 仍有延迟税，高频控制要看 [π₀](./paper-pi0.md) 或轻量适配
-- 软件栈细节（LeRobot、OFT）读 [openvla 实体](./openvla.md)
 
 ## 源码运行时序图
 
@@ -161,9 +172,23 @@ sequenceDiagram
 | [π₀](./paper-pi0.md) | 流匹配连续动作，非自回归 bin |
 | [ECoT](./paper-ecot.md) | 同骨干 + 具身思维链训练；泛化 **+28%** 绝对成功率 |
 
+## 项目资源与工程补充
+
+### 核心结构/机制
+
+- **骨干**：Prismatic-7B 等 VLM，融合 SigLIP/DINO 视觉特征与 Llama 类语言模型。
+- **动作表示**：将连续控制 **离散化为 token**，便于自回归生成。
+- **训练**：多机器人数据集混合预训练；下游可用 **LoRA、OFT** 降低算力门槛。
+
+### 常见误区或局限
+
+- **误区：OpenVLA 负责底盘导航** — 默认面向 **操作空间**；移动导航仍常需 [Nav2](./navigation2.md) 等栈。
+- **误区：零样本即可工业部署** — 需目标机器人 **微调、标定与安全围栏**。
+- **局限**：与 [人形全身控制](./openloong.md) 的关节级 WBC 是不同层级。
+- [Arcadia](./paper-arcadia.md) 把本页当操作基线（真机 9/100 vs Arcadia 27/100），并复用 7D de-tokenizer 思路；那是生命周期对照，不是 OpenVLA 官方 G1 协议。
+
 ## 关联页面
 
-- [OpenVLA 软件实体](./openvla.md)
 - [ECoT](./paper-ecot.md) — 基于 OpenVLA 的具身思维链奠基
 - [Fast ECoT](./paper-fast-ecot.md) — ECoT 推理时加速
 - [RT-2](./paper-rt-2.md)
@@ -172,6 +197,15 @@ sequenceDiagram
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — 社区多基准摘录榜，核对本页发表时相对位次是否已被后续工作刷新
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [Dita](./paper-dita-scaling-diffusion-transformer-vla.md) — in-context 扩散 Transformer VLA：带噪 action chunk 直接进因果 Transformer，对照 OpenVLA 的离散 bin 动作
+
+- [LeRobot](./lerobot.md)
+- [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md)
+- [WCM 世界模型 Critic](./paper-wcm-world-critic-model.md) — 用世界模型 critic 做 RL 后训练，OpenVLA-OFT 上 ManiSkill IND 28.1%→99.0%（arXiv:2607.29613）
+- [Temporal GRPO](./paper-temporal-grpo.md) — 同一 OFT SFT 热启动的阶段条件 GRPO；RoboTwin 75.8%（arXiv:2608.13026；未开源）
+- [Arcadia](./paper-arcadia.md) — 共享 VLN/VLA + 真机反馈；以本页为操作基线（部分开源）
+
+- [lerobot](../entities/lerobot.md)
+- [navigation-slam-autonomy-stack](../overview/navigation-slam-autonomy-stack.md)
 
 ## 推荐继续阅读
 
@@ -184,3 +218,8 @@ sequenceDiagram
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [自由度 FreeDof：OpenVLA 从看懂到动起来](../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md)
 - [openvla 仓库归档](../../sources/repos/openvla.md)
+
+- [openvla/openvla](https://github.com/openvla/openvla)
+- Kim et al., *OpenVLA: An Open-Source Vision-Language-Action Model*
+
+- [arcadia_arxiv_2512_00076](../../sources/papers/arcadia_arxiv_2512_00076.md)

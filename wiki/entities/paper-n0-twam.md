@@ -1,25 +1,47 @@
 ---
 type: entity
-tags: [paper, neoteai, fudan, world-action-models, tactile, flow-matching, mixture-of-transformers, contact-rich, twam]
+tags:
+- paper
+- neoteai
+- fudan
+- world-action-models
+- tactile
+- flow-matching
+- mixture-of-transformers
+- contact-rich
+- twam
+- awesome-touch
+- sun254667-touch
 status: complete
-updated: 2026-09-15
-venue: "Technical Report"
-code: "https://github.com/neoteai/N0-TWAM"
+updated: 2026-10-06
+venue: Technical Report
+code: https://github.com/neoteai/N0-TWAM
 related:
-  - ./neoteai.md
-  - ./paper-n0-foundation.md
-  - ./paper-n0-vtla.md
-  - ./paper-vt-wam-visuotactile-contact-rich.md
-  - ../concepts/world-action-models.md
-  - ../methods/generative-world-models.md
-  - ../concepts/visuo-tactile-fusion.md
-  - ../concepts/contact-rich-manipulation.md
-  - ../overview/wm-action-consequence-category-02-contact-modeling.md
+- ./neoteai.md
+- ./paper-n0-foundation.md
+- ./paper-n0-vtla.md
+- ./paper-vt-wam-visuotactile-contact-rich.md
+- ../concepts/world-action-models.md
+- ../methods/generative-world-models.md
+- ../concepts/visuo-tactile-fusion.md
+- ../concepts/contact-rich-manipulation.md
+- ../overview/wm-action-consequence-category-02-contact-modeling.md
+- ../entities/awesome-touch.md
+- ../overview/sun-awesome-touch-technology-map.md
+- ../methods/vla.md
+- ../methods/imitation-learning.md
+- ../tasks/manipulation.md
+- ../tasks/bimanual-manipulation.md
 sources:
-  - ../../sources/papers/n0_twam.md
-  - ../../sources/sites/research-neoteai-com.md
-  - ../../sources/repos/n0-twam.md
-summary: "𝒩₀-TWAM（2026-07-25，NeoteAI×复旦 TEAI）：非对称 MoT 触觉原生 WAM；预测视触未来再去噪动作；双通路触觉；UniVTAC 84.5% / NeoSim 49.4% / 真机 46.3%；代码权重待 2026-07-31。"
+- ../../sources/papers/n0_twam.md
+- ../../sources/sites/research-neoteai-com.md
+- ../../sources/repos/n0-twam.md
+- ../../sources/papers/sun_awesome_touch_2607_23783_n0-twam-scaling-tactile-native-world-act.md
+- ../../sources/papers/sun_awesome_touch_catalog.md
+- ../../sources/repos/awesome-touch.md
+summary: 𝒩₀-TWAM（2026-07-25，NeoteAI×复旦 TEAI）：非对称 MoT 触觉原生 WAM；预测视触未来再去噪动作；双通路触觉；UniVTAC 84.5% / NeoSim 49.4% / 真机 46.3%；代码权重待 2026-07-31。
+project_id: n0-twam
+arxiv: '2607.23783'
 ---
 
 # 𝒩₀-TWAM（Tactile-Native World Action Model）
@@ -47,6 +69,10 @@ summary: "𝒩₀-TWAM（2026-07-25，NeoteAI×复旦 TEAI）：非对称 MoT �
 | NeoForce | NeoForce | 观测通路力场 token 编码器 |
 | FM | Flow Matching | 视 / 触 / 动等权目标 |
 | UniVTAC | UniVTAC | 八任务仿真接触套件 |
+
+| VTLA | Vision-Tactile-Language-Action | 视–触–语言–动作策略 |
+| WM | World Model | 视触觉前向预测 |
+| Sim2Real | Simulation to Real | 仿真到真机迁移 |
 
 ## 为什么重要
 
@@ -155,14 +181,32 @@ Frame-id 因果级联：视频与触觉专家先共生成即将到来的场景�
 - [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) · [World Action Models](../concepts/world-action-models.md)
 - [接触建模类别](../overview/wm-action-consequence-category-02-contact-modeling.md)
 
+- 列表实体：[Awesome Touch](../entities/awesome-touch.md)
+- 技术地图：[Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
+- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [generative-world-models](../methods/generative-world-models.md)
+- [visuo-tactile-fusion](../concepts/visuo-tactile-fusion.md)
+- [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
+- [imitation-learning](../methods/imitation-learning.md)
+- [bimanual-manipulation](../tasks/bimanual-manipulation.md)
+
 ## 参考来源
 
 - [sources/papers/n0_twam.md](../../sources/papers/n0_twam.md)
 - [sources/sites/research-neoteai-com.md](../../sources/sites/research-neoteai-com.md)
 - [sources/repos/n0-twam.md](../../sources/repos/n0-twam.md)
 
+- [`sources/papers/sun_awesome_touch_2607_23783_n0-twam-scaling-tactile-native-world-act.md`](../../sources/papers/sun_awesome_touch_2607_23783_n0-twam-scaling-tactile-native-world-act.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
+- [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
+- 论文：<https://arxiv.org/abs/2607.23783>
+
 ## 推荐继续阅读
 
 - [项目页](https://research.neoteai.com/n0-twam/)
 - [技术报告 PDF](https://research.neoteai.com/assets/n0-twam-report.pdf)
 - [VT-WAM（arXiv:2607.02503）](./paper-vt-wam-visuotactile-contact-rich.md)
+
+- [Awesome Touch 仓库](https://github.com/sun254667/awesome-touch)
+- [原文](https://arxiv.org/abs/2607.23783)

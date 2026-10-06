@@ -11,7 +11,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 code: https://github.com/lightorigins/Light-O1
 related:
   - ./light-origins.md
@@ -21,7 +21,7 @@ related:
   - ./paper-lightnav-0.md
   - ./light-react.md
   - ./paper-nymeria.md
-  - ./nymeria-dataset.md
+  - ./paper-nymeria.md
   - ./paper-scaling-laws-neural-language-models.md
   - ./hiw-500-dataset.md
   - ../tasks/humanoid-locomotion.md
@@ -160,7 +160,7 @@ sequenceDiagram
 
 - [LightNav-0](./paper-lightnav-0.md) — 同机构规模化对齐段：VLM 通用导航
 - [Light REACT](./light-react.md) — 同机构规模化部署段：全身韧性 ICL
-- [Nymeria Dataset](./nymeria-dataset.md) / [Nymeria 论文](./paper-nymeria.md) — Transfer Scaling 人类 egocentric 适配轴
+- [Nymeria Dataset](paper-nymeria.md) / [Nymeria 论文](./paper-nymeria.md) — Transfer Scaling 人类 egocentric 适配轴
 - [HIW-500](./hiw-500-dataset.md) — Unitree G1 野外遥操作 scaling 轴
 - [Kaplan Scaling Laws](./paper-scaling-laws-neural-language-models.md) — 幂律拟合方法论原典
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
@@ -181,7 +181,7 @@ sequenceDiagram
 | [5] | An Observation on Generalization（Ilya Sutskever） | [talk-ilya-sutskever-observation-on-generalization](./talk-ilya-sutskever-observation-on-generalization.md) |
 | [6] | GPT-4 Technical Report | [paper-as-2303-08774-gpt-4-technical-report](./paper-as-2303-08774-gpt-4-technical-report.md) |
 | [7] | Attention Is All You Need | [paper-attention-is-all-you-need](./paper-attention-is-all-you-need.md) |
-| [8] | Nymeria（arXiv:2406.09905） | [paper-nymeria](./paper-nymeria.md) · 数据产品 [nymeria-dataset](./nymeria-dataset.md) |
+| [8] | Nymeria（arXiv:2406.09905） | [paper-nymeria](./paper-nymeria.md) · 数据产品 [nymeria-dataset](paper-nymeria.md) |
 | [9] | HIW-500: Humanoids In-the-Wild | [hiw-500-dataset](./hiw-500-dataset.md) |
 | [10] | Scaling Laws for Neural Language Models | [paper-scaling-laws-neural-language-models](./paper-scaling-laws-neural-language-models.md) |
 | [11] | GR00T N1.7 | [isaac-gr00t](./isaac-gr00t.md) |

@@ -182,7 +182,7 @@ flowchart LR
 
 ### 推荐读什么
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
-- [RSI-Harness](../wiki/entities/rsi-harness.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
+- [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
 - [RRSI](../wiki/entities/paper-rrsi-2609-24972.md) — 通过 proposal 与 selection 正则化，降低 harness 搜索对演化基准的过拟合
 - [SoL-Pi](../wiki/entities/sol-pi.md) — auto-research 环筛效率扩展；先把 harness 做省再谈 scale

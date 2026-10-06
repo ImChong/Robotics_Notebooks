@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, sim2real, unitree-g1, pku, beingbeyond, loco-manip-161-survey]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2510.11258"
 venue: "arXiv preprint; IEEE RA-L 2026-02-19"
 code: https://github.com/BeingBeyond/DemoHLM

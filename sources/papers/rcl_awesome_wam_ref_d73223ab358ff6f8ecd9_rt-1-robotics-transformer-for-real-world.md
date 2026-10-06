@@ -15,7 +15,7 @@
 - **项目页：** <https://robotics-transformer1.github.io/>
 - **子类 / 象限：** 离散动作VLA · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-d73223ab358ff6f8ecd9-rt-1-robotics-transformer-for-real-world-control.md`](../../wiki/entities/paper-rcl-ref-d73223ab358ff6f8ecd9-rt-1-robotics-transformer-for-real-world-control.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-rt-1.md`](../../wiki/entities/paper-rt-1.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-d73223ab358ff6f8ecd9-rt-1-robotics-transformer-for-real-world-control.md`](../../wiki/entities/paper-rcl-ref-d73223ab358ff6f8ecd9-rt-1-robotics-transformer-for-real-world-control.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-rt-1.md`](../../wiki/entities/paper-rt-1.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

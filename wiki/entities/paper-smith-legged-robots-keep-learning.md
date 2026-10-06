@@ -6,7 +6,7 @@ tags:
   - real-world-rl
   - locomotion
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2110.05457"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

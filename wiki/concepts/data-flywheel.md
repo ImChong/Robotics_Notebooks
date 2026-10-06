@@ -3,7 +3,7 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-09-20
+updated: 2026-10-06
 related:
   - ./embodied-data-flywheel-minimal-closed-loop.md
   - ./robot-data-supervision-signal-types.md
@@ -16,7 +16,7 @@ related:
   - ../entities/skild-s1.md
   - ./robot-in-context-learning.md
   - ./agentic-coding-software-fundamentals.md
-  - ../entities/grid-general-robotics.md
+  - ../entities/paper-grid-general-robot-intelligence-development.md
 sources:
   - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md

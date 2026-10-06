@@ -1,49 +1,60 @@
 ---
 type: entity
 tags:
-  - paper
-  - dataset
-  - egocentric
-  - egocentric-vision
-  - egocentric-video
-  - benchmark
-  - video-understanding
-  - hand-object-interaction
-  - forecasting
-  - episodic-memory
-  - meta
-  - ut-austin
-  - cmu
-  - georgia-tech
-  - berkeley
-  - mit
-  - nus
-  - upenn
+- paper
+- dataset
+- egocentric
+- egocentric-vision
+- egocentric-video
+- benchmark
+- video-understanding
+- hand-object-interaction
+- forecasting
+- episodic-memory
+- meta
+- ut-austin
+- cmu
+- georgia-tech
+- berkeley
+- mit
+- nus
+- upenn
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
 venue: CVPR 2022
-arxiv: "2110.07058"
-updated: 2026-09-26
+arxiv: '2110.07058'
+updated: 2026-10-06
 code: https://github.com/facebookresearch/Ego4D
 related:
-  - ../overview/ego-category-01-data-collection.md
-  - ../comparisons/humannet-table1-human-video-corpora.md
-  - ./paper-egoverse.md
-  - ./paper-ego-oscar.md
-  - ./rekadaily-10k-dataset.md
-  - ./paper-ace-data-0.md
-  - ./egoworld-100w.md
-  - ./humannet.md
-  - ../methods/egoscale.md
-  - ../concepts/visual-representation-for-policy.md
-  - ../concepts/embodied-scaling-laws.md
-  - ../tasks/manipulation.md
-  - ../queries/embodied-eval-benchmark-selection-loop.md
+- ../overview/ego-category-01-data-collection.md
+- ../comparisons/humannet-table1-human-video-corpora.md
+- ./paper-egoverse.md
+- ./paper-ego-oscar.md
+- ./rekadaily-10k-dataset.md
+- ./paper-ace-data-0.md
+- ./egoworld-100w.md
+- ./humannet.md
+- ../methods/egoscale.md
+- ../concepts/visual-representation-for-policy.md
+- ../concepts/embodied-scaling-laws.md
+- ../tasks/manipulation.md
+- ../queries/embodied-eval-benchmark-selection-loop.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/ego4d_arxiv_2110_07058.md
-  - ../../sources/sites/ego4d-data-org.md
-  - ../../sources/repos/ego4d.md
-  - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
-summary: "Ego4D（FAIR 等联盟，CVPR 2022 / arXiv:2110.07058）：约 3,670 小时、74 地点/9 国的大规模第一人称日常视频与五大 benchmark（记忆查询、手物状态变化、音视说话人、社交、预测）；数据需 license，CLI/工具 MIT 已开源。HumanNet Table 1 标为 Indirect 档 egocentric 语料。"
+- ../../sources/papers/ego4d_arxiv_2110_07058.md
+- ../../sources/sites/ego4d-data-org.md
+- ../../sources/repos/ego4d.md
+- ../../sources/papers/ego_oscar_arxiv_2608_08285.md
+- ../../sources/papers/rcl_awesome_wam_ref_51f5ebd773eec33b2c6b_ego4d-around-the-world-in-3-000-hours-of.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: Ego4D（FAIR 等联盟，CVPR 2022 / arXiv:2110.07058）：约 3,670 小时、74 地点/9 国的大规模第一人称日常视频与五大 benchmark（记忆查询、手物状态变化、音视说话人、社交、预测）；数据需 license，CLI/工具 MIT 已开源。HumanNet Table 1 标为 Indirect 档 egocentric 语料。
+project_id: ego4d
 ---
 
 # Ego4D（全球第一人称日常视频 · 数据集与基准套件）
@@ -65,6 +76,11 @@ summary: "Ego4D（FAIR 等联盟，CVPR 2022 / arXiv:2110.07058）：约 3,670 �
 | AVD | Audio-Visual Diarization | 音视说话人定位、分段与转写 |
 | LAM / TTM | Looking / Talking to Me | Social 基准：是否看我 / 是否对我说话 |
 | CLI | Command-Line Interface | `ego4d` 下载与子集选择工具 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -237,11 +253,27 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Ego4D 五大挑战可归入视频理解 / 交互预测类基准层，与策略成功率评测互补
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [Ego4D 论文摘录（arXiv:2110.07058）](../../sources/papers/ego4d_arxiv_2110_07058.md)
 - [Ego4D 项目页归档](../../sources/sites/ego4d-data-org.md)
 - [Ego4D 官方仓库归档](../../sources/repos/ego4d.md)
+
+- [`sources/papers/rcl_awesome_wam_ref_51f5ebd773eec33b2c6b_ego4d-around-the-world-in-3-000-hours-of.md`](../../sources/papers/rcl_awesome_wam_ref_51f5ebd773eec33b2c6b_ego4d-around-the-world-in-3-000-hours-of.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://openaccess.thecvf.com/content/CVPR2022/html/Grauman_Ego4D_Around_the_World_in_3000_Hours_of_Egocentric_Video_CVPR_2022_paper.html>
+
+- [ego_oscar_arxiv_2608_08285](../../sources/papers/ego_oscar_arxiv_2608_08285.md)
 
 ## 推荐继续阅读
 
@@ -251,3 +283,6 @@ sequenceDiagram
 - [facebookresearch/Ego4D](https://github.com/facebookresearch/Ego4D)
 - [EGO4D GitHub 组织（挑战基线）](https://github.com/EGO4D/)
 - [Ego-Exo4D 项目页](https://ego-exo4d-data.org/) — 同生态多视点后续
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://openaccess.thecvf.com/content/CVPR2022/html/Grauman_Ego4D_Around_the_World_in_3000_Hours_of_Egocentric_Video_CVPR_2022_paper.html)

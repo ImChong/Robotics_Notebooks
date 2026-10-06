@@ -13,7 +13,7 @@ tags:
   - diffusion
   - mixture-of-experts
 status: complete
-updated: 2026-09-16
+updated: 2026-10-06
 arxiv: "2605.19957"
 code: https://github.com/ZGCA-HMI-Lab/WEM
 related:

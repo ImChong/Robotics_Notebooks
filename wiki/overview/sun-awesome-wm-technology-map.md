@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-world-models, sun254667, technology-map]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 summary: "Awesome World Models 技术地图：把清单里的 571 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-world-models.md
@@ -84,7 +84,7 @@ sources:
 | 017 | [A Survey: Learning Embodied Intelligence from Physical Simulators and World Models](../entities/paper-sa-2507-00917-a-survey-learning-embodied-intelligence-from-phy.md) |
 | 018 | [Cosmos World Foundation Model Platform for Physical AI](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) |
 | 019 | [HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D ](../entities/paper-sa-2604-14268-hy-world-2-0-a-multi-modal-world-model-for-recon.md) |
-| 020 | [Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning](../entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md) |
+| 020 | [Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning](../entities/isaac-lab.md) |
 | 021 | [NVIDIA OmniDreams: Real-Time Generative World Model for Closed-Loop Autonomous Vehicle Sim](../entities/paper-sa-2606-03159-nvidia-omnidreams-real-time-generative-world-mod.md) |
 | 022 | [Nano World Models: A Minimalist Implementation of Future Video Prediction](../entities/paper-sa-2605-23993-nano-world-models-a-minimalist-implementation-of.md) |
 | 023 | [SimWorld: An Open-ended Simulator for Agents in Physical Environments](../entities/paper-sa-2512-01078-simworld-an-open-ended-simulator-for-agents-in-p.md) |
@@ -133,7 +133,7 @@ sources:
 | 046 | [RoboWorld: Fast and Reliable Neural Simulators for Generalist Robot Policy Evaluation](../entities/paper-sa-2607-01060-roboworld-fast-and-reliable-neural-simulators-fo.md) |
 | 047 | [SmallWorlds: Assessing Dynamics Understanding of World Models in Isolated Environments](../entities/paper-sa-2511-23465-smallworlds-assessing-dynamics-understanding-of.md) |
 | 048 | [World-in-World: World Models in a Closed-Loop World](../entities/paper-sa-2510-18135-world-in-world-world-models-in-a-closed-loop-wor.md) |
-| 049 | [WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodi](../entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md) |
+| 049 | [WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodi](../entities/worldarena.md) |
 | 050 | [WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models](../entities/paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md) |
 | 051 | [WorldPrediction: A Benchmark for High-level World Modeling and Long-horizon Procedural Pla](../entities/paper-sa-2506-04363-worldprediction-a-benchmark-for-high-level-world.md) |
 | 052 | [WorldSimBench: Towards Video Generation Models as World Simulators](../entities/paper-sa-2410-18072-worldsimbench-towards-video-generation-models-as.md) |
@@ -190,7 +190,7 @@ sources:
 | 083 | [Next Forcing: Causal World Modeling with Multi-Chunk Prediction](../entities/paper-sa-2606-11187-next-forcing-causal-world-modeling-with-multi-ch.md) |
 | 084 | [Orca: The World is in Your Mind](../entities/paper-sa-2606-30534-orca-the-world-is-in-your-mind.md) |
 | 085 | [PhyWorld: Physics-Faithful World Model for Video Generation](../entities/paper-sa-2605-19242-phyworld-physics-faithful-world-model-for-video.md) |
-| 086 | [Qwen-RobotWorld: Unifying Embodied World Modeling through Language-Conditioned Video Gener](../entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md) |
+| 086 | [Qwen-RobotWorld: Unifying Embodied World Modeling through Language-Conditioned Video Gener](../entities/qwen-robot-world.md) |
 | 087 | [Self-Forcing: Bridging the Train-Test Gap in Autoregressive Video Diffusion](../entities/paper-sa-2506-08009-self-forcing-bridging-the-train-test-gap-in-auto.md) |
 | 088 | [SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time](../entities/paper-sa-2512-25075-spacetimepilot-generative-rendering-of-dynamic-s.md) |
 
@@ -342,7 +342,7 @@ sources:
 | 190 | [DiM-WAM: World Action Modeling with Diverse Historical Event Memory](../entities/paper-sa-2606-27677-dim-wam-world-action-modeling-with-diverse-histo.md) |
 | 191 | [DiWA: Diffusion Policy Adaptation with World Models](../entities/paper-sa-2508-03645-diwa-diffusion-policy-adaptation-with-world-mode.md) |
 | 192 | [DreamVLA: A Vision-Language-Action Model Dreamed with Comprehensive World Knowledge](../entities/paper-sa-2507-04447-dreamvla-a-vision-language-action-model-dreamed.md) |
-| 193 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) |
+| 193 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 194 | [FlowWAM: Optical Flow as a Unified Action Representation for World Action Models](../entities/paper-sa-2607-13017-flowwam-optical-flow-as-a-unified-action-represe.md) |
 | 195 | [GigaWorld-Policy-0.5: A Faster and Stronger WAM Empowered by AutoResearch](../entities/paper-sa-2607-13960-gigaworld-policy-0-5-a-faster-and-stronger-wam-e.md) |
 | 196 | [Goal-VLA: Image-Generative VLMs as Object-Centric World Models Empowering Zero-shot Robot ](../entities/paper-sa-2506-23919-goal-vla-image-generative-vlms-as-object-centric.md) |
@@ -572,7 +572,7 @@ sources:
 | 375 | [ABot-M0.5: Unified Mobility-and-Manipulation World Action Model](../entities/paper-abot-m05-mobile-manipulation-wam.md) |
 | 376 | [DiWA: Diffusion Policy Adaptation with World Models](../entities/paper-sa-2508-03645-diwa-diffusion-policy-adaptation-with-world-mode.md) |
 | 377 | [DreamerV4: Training Agents Inside of Scalable World Models](../entities/paper-sa-2509-24527-dreamerv4-training-agents-inside-of-scalable-wor.md) |
-| 378 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-sa-2607-08436-egowam-world-action-models-beyond-pixels-with-in.md) |
+| 378 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 379 | [FlowWAM: Optical Flow as a Unified Action Representation for World Action Models](../entities/paper-sa-2607-13017-flowwam-optical-flow-as-a-unified-action-represe.md) |
 | 380 | [GigaWorld-Policy-0.5: A Faster and Stronger WAM Empowered by AutoResearch](../entities/paper-sa-2607-13960-gigaworld-policy-0-5-a-faster-and-stronger-wam-e.md) |
 | 381 | [LDA-1B: Scaling Latent Dynamics Action Model via Universal Embodied Data Ingestion](../entities/paper-sa-2602-12215-lda-1b-scaling-latent-dynamics-action-model-via.md) |

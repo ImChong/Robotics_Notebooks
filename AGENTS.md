@@ -116,6 +116,7 @@
 ## 对 LLM / 维护者的要求
 
 在新增或修改页面时：
+- 同一项目的论文、项目页、官方源码统一在一个 wiki 实体节点；`sources/` 按资料类型分别归档。新项目实体必填稳定 `project_id` 与主论文/官方资源身份字段；建页前检索既有身份，CI 规则见 `schema/ingest-workflow.md` 与 `scripts/check_project_nodes.py`。
 - 优先复用现有页面与链接
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`

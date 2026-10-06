@@ -13,7 +13,7 @@ tags:
   - nyu
   - meta
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2212.09748"
 code: https://github.com/facebookresearch/DiT
 related:

@@ -1,18 +1,38 @@
 ---
 type: entity
-tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, nvidia]
+tags:
+- sim2real
+- tooling
+- deployment
+- hmi-opensource-table
+- repo
+- nvidia
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: draft
-updated: 2026-09-15
-summary: "MimicGen：物体相对运动片段从少量人工示范中切出，再在随机初始布局中重组为四万八千余条轨迹和十二类任务数据。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。"
+updated: 2026-10-06
+summary: MimicGen：物体相对运动片段从少量人工示范中切出，再在随机初始布局中重组为四万八千余条轨迹和十二类任务数据。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。
 related:
-  - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
-  - ../methods/imitation-learning.md
-  - ./humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
-  - ./paper-seeker.md
+- ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
+- ../methods/imitation-learning.md
+- ./humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ./paper-seeker.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/repos/mimicgen.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/repos/mimicgen.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/rcl_awesome_wam_ref_5677f2aa425315809584_mimicgen-a-data-generation-system-for-sc.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: mimicgen
+venue: CoRL 2023
 ---
 
 # MimicGen
@@ -31,6 +51,11 @@ sources:
 | RL | Reinforcement Learning | 训练与评测常用框架 |
 | API | Application Programming Interface | 仿真/中间件编程接口 |
 | SDK | Software Development Kit | 真机与工具链开发套件 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -90,13 +115,32 @@ flowchart LR
 - [HMI 覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [Seeker](./paper-seeker.md) — 在本套六任务 100 demo 上用动作监督 ROI；官方仓重渲入口（arXiv:2608.13422）
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [MimicGen 来源归档](../../sources/repos/mimicgen.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [`sources/papers/rcl_awesome_wam_ref_5677f2aa425315809584_mimicgen-a-data-generation-system-for-sc.md`](../../sources/papers/rcl_awesome_wam_ref_5677f2aa425315809584_mimicgen-a-data-generation-system-for-sc.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://proceedings.mlr.press/v229/mandlekar23a.html>
+
+- [原论文与官方资源](https://mimicgen.github.io)
+
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/NVlabs/mimicgen)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://proceedings.mlr.press/v229/mandlekar23a.html)

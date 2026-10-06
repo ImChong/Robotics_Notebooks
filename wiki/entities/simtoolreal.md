@@ -1,17 +1,38 @@
 ---
 type: entity
-tags: [loco-manipulation, humanoid, contact, hmi-opensource-table, repo, linux-foundation]
+tags:
+- loco-manipulation
+- humanoid
+- contact
+- hmi-opensource-table
+- repo
+- linux-foundation
+- paper
+- awesome-real2sim2real
+- sun254667-r2s2r
 status: draft
-updated: 2026-07-30
-summary: "SimToolReal：程序化工具随机化几何和动力学，KUKA iiwa14与22自由度SHARPA手跟踪统一6D目标轨迹。140维状态输入和SAPG训练可用于研究跨工具Sim2Real，真实闭环仍依赖外部视觉与机械臂控制仓库。"
+updated: 2026-10-06
+summary: SimToolReal：程序化工具随机化几何和动力学，KUKA iiwa14与22自由度SHARPA手跟踪统一6D目标轨迹。140维状态输入和SAPG训练可用于研究跨工具Sim2Real，真实闭环仍依赖外部视觉与机械臂控制仓库。
 related:
-  - ../tasks/loco-manipulation.md
-  - ../concepts/whole-body-control.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
+- ../tasks/loco-manipulation.md
+- ../concepts/whole-body-control.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ../entities/awesome-real2sim2real.md
+- ../overview/sun-awesome-r2s2r-technology-map.md
+- ../methods/reinforcement-learning.md
+- ../methods/crisp-real2sim.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/simtoolreal.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/repos/simtoolreal.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/sun_awesome_r2s2r_2602_16863_simtoolreal-an-object-centric-policy-for.md
+- ../../sources/papers/sun_awesome_r2s2r_catalog.md
+- ../../sources/repos/awesome-real2sim2real.md
+project_id: simtoolreal
+arxiv: '2602.16863'
+venue: arXiv 2026
 ---
 
 # SimToolReal
@@ -30,6 +51,10 @@ sources:
 | RL | Reinforcement Learning | 接触丰富任务的策略学习 |
 | WBC | Whole-Body Control | 全身多任务控制 |
 | Sim2Real | Simulation to Real | 接触任务迁移到真机 |
+
+| Real2Sim | Real to Simulation | 真机数据重建/校准仿真 |
+| R2S2R | Real2Sim2Real | 真机→仿真→真机闭环 |
+| DR | Domain Randomization | 域随机化 |
 
 ## 为什么重要
 
@@ -89,13 +114,29 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
+- 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
+- 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
+- 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [crisp-real2sim](../methods/crisp-real2sim.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [SimToolReal 来源归档](../../sources/repos/simtoolreal.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [`sources/papers/sun_awesome_r2s2r_2602_16863_simtoolreal-an-object-centric-policy-for.md`](../../sources/papers/sun_awesome_r2s2r_2602_16863_simtoolreal-an-object-centric-policy-for.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
+- [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
+- 论文：<https://arxiv.org/abs/2602.16863>
+
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/tylerlum/simtoolreal)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+
+- [Awesome-Real2Sim2Real 仓库](https://github.com/sun254667/Awesome-Real2Sim2Real)
+- [原文](https://arxiv.org/abs/2602.16863)

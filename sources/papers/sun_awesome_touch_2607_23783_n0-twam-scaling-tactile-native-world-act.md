@@ -12,7 +12,7 @@
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** First tactile-native world-action model trained at large scale; predicts both future vision and contact with strong capability on contact-rich tasks.
-- **沉淀到 wiki：** [`wiki/entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md`](../../wiki/entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-n0-twam.md`](../../wiki/entities/paper-n0-twam.md)
 
 ---
 
@@ -25,5 +25,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md`](../../wiki/entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md)
+- 实体页：[`wiki/entities/paper-n0-twam.md`](../../wiki/entities/paper-n0-twam.md)
 - 列表实体：[`wiki/entities/awesome-touch.md`](../../wiki/entities/awesome-touch.md)

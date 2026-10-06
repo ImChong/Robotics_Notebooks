@@ -16,7 +16,7 @@
 
 | # | 项目 | 路线 | arXiv | 开源 | wiki |
 |---|------|------|-------|------|------|
-| 01 | OpenVLA | VLA | [2406.09246](https://arxiv.org/abs/2406.09246) | **已开源** | [openvla](../../wiki/entities/openvla.md)（**复用**） |
+| 01 | OpenVLA | VLA | [2406.09246](https://arxiv.org/abs/2406.09246) | **已开源** | [openvla](../../wiki/entities/paper-openvla.md)（**复用**） |
 | 02 | Octo | VLA | [2405.11172](https://arxiv.org/abs/2405.11172) | **已开源** | [paper-octo](../../wiki/entities/paper-octo.md)（**复用**） |
 | 03 | π-0 | VLA | [2503.06669](https://arxiv.org/abs/2503.06669) | **已开源** | [paper-pi0](../../wiki/entities/paper-pi0.md)（**复用**） |
 | 04 | π-0.5 | VLA | [2503.06669](https://arxiv.org/abs/2503.06669) | **已开源** | [paper-pi05-open-world-vla](../../wiki/entities/paper-pi05-open-world-vla.md)（**复用**） |

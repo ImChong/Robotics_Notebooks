@@ -1,19 +1,34 @@
 ---
 type: entity
-tags: [curated-index, physical-ai, awesome-physical-ai, dataset]
+tags:
+- physical-ai
+- awesome-physical-ai
+- dataset
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-10-02
-summary: "Multisensor autonomous-driving dataset with rich annotations for perception and planning research."
+updated: 2026-10-06
+summary: Multisensor autonomous-driving dataset with rich annotations for perception and planning research.
 related:
-  - ../entities/awesome-physical-ai-natnew.md
-  - ../overview/awesome-physical-ai-technology-map.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
+- ../entities/awesome-physical-ai-natnew.md
+- ../overview/awesome-physical-ai-technology-map.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/repos/pai_awesome_dataset_090_nuscenes.md
-  - ../../sources/repos/awesome-physical-ai-union-catalog.md
-  - ../../sources/repos/awesome-physical-ai-natnew.md
-  - ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/repos/pai_awesome_dataset_090_nuscenes.md
+- ../../sources/repos/awesome-physical-ai-union-catalog.md
+- ../../sources/repos/awesome-physical-ai-natnew.md
+- ../../sources/repos/awesome-physical-ai-aichr.md
+- ../../sources/papers/rcl_awesome_wam_ref_a5d6a00ebc235c8fdf08_nuscenes-a-multimodal-dataset-for-autono.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: 090-nuscenes
+venue: CVPR 2020
 ---
 
 # nuScenes
@@ -31,6 +46,11 @@ Multisensor autonomous-driving dataset with rich annotations for perception and 
 | PAI | Physical AI | 具身/物理智能策展主题 |
 | OXE | Open X-Embodiment | 跨本体轨迹语料参照 |
 | IL | Imitation Learning | 演示数据驱动的模仿学习 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -80,6 +100,14 @@ Multisensor autonomous-driving dataset with rich annotations for perception and 
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [vla](../methods/vla.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_dataset_090_nuscenes.md`](../../sources/repos/pai_awesome_dataset_090_nuscenes.md) — 本条目策展摘录
@@ -88,8 +116,17 @@ Multisensor autonomous-driving dataset with rich annotations for perception and 
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://www.nuscenes.org/>
 
+- [`sources/papers/rcl_awesome_wam_ref_a5d6a00ebc235c8fdf08_nuscenes-a-multimodal-dataset-for-autono.md`](../../sources/papers/rcl_awesome_wam_ref_a5d6a00ebc235c8fdf08_nuscenes-a-multimodal-dataset-for-autono.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://openaccess.thecvf.com/content_CVPR_2020/html/Caesar_nuScenes_A_Multimodal_Dataset_for_Autonomous_Driving_CVPR_2020_paper.html>
+
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
 - [原文 / 官方入口](https://www.nuscenes.org/)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://openaccess.thecvf.com/content_CVPR_2020/html/Caesar_nuScenes_A_Multimodal_Dataset_for_Autonomous_Driving_CVPR_2020_paper.html)

@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-touch, sun254667, technology-map]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 summary: "Awesome Touch 技术地图：把清单里的 65 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-touch.md
@@ -148,7 +148,7 @@ sources:
 | 056 | [Tactile-WAM: Touch-Aware World Action Model with Tactile Asymmetric Attention](../entities/paper-sa-2606-26663-tactile-wam-touch-aware-world-action-model-with.md) |
 | 057 | [VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation](../entities/paper-vt-wam-visuotactile-contact-rich.md) |
 | 058 | [VTAM: Video-Tactile-Action Models for Complex Physical Interaction Beyond VLAs](../entities/paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) |
-| 059 | [𝒩₀-TWAM: Scaling Tactile-Native World Action Model for Contact-Rich Manipulation](../entities/paper-sa-2607-23783-n0-twam-scaling-tactile-native-world-action-mode.md) |
+| 059 | [𝒩₀-TWAM: Scaling Tactile-Native World Action Model for Contact-Rich Manipulation](../entities/paper-n0-twam.md) |
 
 ### Visuo-Tactile World Models
 

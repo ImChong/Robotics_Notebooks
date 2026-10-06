@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md
@@ -10,7 +10,7 @@ related:
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-neuralactuator-neural-actuation-modeling.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../concepts/system-identification.md
   - ../entities/nvidia-getting-started-isaac-lab.md
 sources:
@@ -104,7 +104,7 @@ flowchart LR
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [ANYmal 实体页](../entities/anymal.md) — 广泛使用执行器网络的代表
 - [System Identification (系统辨识)](../concepts/system-identification.md)
-- [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
+- [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/paper-bam-extended-friction-servo-actuators.md)
 - [NeuralActuator（可微仿真 + 力感知）](../entities/paper-neuralactuator-neural-actuation-modeling.md) — 低成本操作臂多任务执行器建模
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — 论文对比基线；可解释参数辨识路线
 - [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 课内把 Actuator Network 写成 Real2Sim：冻结网络替换仿真 PID

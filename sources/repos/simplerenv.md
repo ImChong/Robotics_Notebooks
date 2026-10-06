@@ -21,5 +21,5 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/paper-simplerenv-real2sim-eval.md`](../../wiki/entities/paper-simplerenv-real2sim-eval.md)
-- [`wiki/entities/painode-116-xsimplerenv.md`](../../wiki/entities/painode-116-xsimplerenv.md)（策展索引 → canonical 论文页）
+- [`wiki/entities/paper-simplerenv-real2sim-eval.md`](../../wiki/entities/paper-simplerenv-real2sim-eval.md)（策展索引 → canonical 论文页）
 - [VLA](../../wiki/methods/vla.md)、[Sim2Real](../../wiki/concepts/sim2real.md)

@@ -50,7 +50,7 @@
 | ContactNets | 01 | [2011.08903](https://arxiv.org/abs/2011.08903) | 新建 | [paper-contactnets-contact-dynamics](../../wiki/entities/paper-contactnets-contact-dynamics.md) |
 | GAIA-1 | 01 | [2309.17080](https://arxiv.org/abs/2309.17080) | 既有 | [paper-gaia1](../../wiki/entities/paper-gaia1.md) |
 | Cosmos Predict | 01 | [2501.03575](https://arxiv.org/abs/2501.03575) | 既有 | [paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi](../../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md) |
-| Qwen-RobotWorld | 01 | — | 既有 | [paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling](../../wiki/entities/paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling.md) |
+| Qwen-RobotWorld | 01 | — | 既有 | [paper-sa-2606-17030-qwen-robotworld-unifying-embodied-world-modeling](../../wiki/entities/qwen-robot-world.md) |
 | Genie | 01 | [2402.15391](https://arxiv.org/abs/2402.15391) | 既有 | [paper-sa-2402-15391-genie-generative-interactive-environments](../../wiki/entities/paper-sa-2402-15391-genie-generative-interactive-environments.md) |
 | Matrix-Game 3.5 | 01 | — | 既有 | [paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact](../../wiki/entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) |
 | Visual Foresight | 02 | [1812.00568](https://arxiv.org/abs/1812.00568) | 新建 | [paper-visual-foresight-latent-mpc](../../wiki/entities/paper-visual-foresight-latent-mpc.md) |
@@ -80,10 +80,10 @@
 | Unified World Models (UWM) | 04 | — | 既有 | [paper-shenlan-wm-08-uwm](../../wiki/entities/paper-shenlan-wm-08-uwm.md) |
 | Cosmos Policy | 04 | — | 既有 | [paper-shenlan-wm-11-cosmos-policy](../../wiki/entities/paper-shenlan-wm-11-cosmos-policy.md) |
 | DreamZero | 04 | — | 既有 | [paper-notebook-dreamzero-world-action-models-are-zero-shot-poli](../../wiki/entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) |
-| Riemann-1.0 | 04 | — | 新建 | [paper-riemann-1-causal-action-video-wam](../../wiki/entities/paper-riemann-1-causal-action-video-wam.md) |
+| Riemann-1.0 | 04 | — | 新建 | [paper-riemann-1-causal-action-video-wam](../../wiki/entities/paper-riemann-1.md) |
 | World Tokens | 04 | — | 新建 | [paper-world-tokens-inference-trimmed-wam](../../wiki/entities/paper-world-tokens-inference-trimmed-wam.md) |
 | FLEX-π | 04 | [2608.10860](https://arxiv.org/abs/2608.10860) | 既有 | [paper-flex-pi](../../wiki/entities/paper-flex-pi.md) |
-| MobileWAM | 04 | — | 新建 | [paper-mobilewam-mobile-manipulation-wam](../../wiki/entities/paper-mobilewam-mobile-manipulation-wam.md) |
+| MobileWAM | 04 | — | 新建 | [paper-mobilewam-mobile-manipulation-wam](../../wiki/entities/paper-rcl-2608-04657-mobilewam-bridging-world-action-models-to-mobile.md) |
 | MotionWAM | 04 | [2606.09215](https://arxiv.org/abs/2606.09215) | 既有 | [paper-motionwam-humanoid-loco-manipulation-wam](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | WorldGym | 05 | [2506.00613](https://arxiv.org/abs/2506.00613) | 既有 | [paper-shenlan-wm-15-worldgym](../../wiki/entities/paper-shenlan-wm-15-worldgym.md) |
 | Veo World Simulator | 05 | — | 新建 | [paper-veo-world-simulator-policy-testing](../../wiki/entities/paper-veo-world-simulator-policy-testing.md) |
@@ -96,8 +96,8 @@
 | SayPlan | 06 | [2307.01871](https://arxiv.org/abs/2307.01871) | 新建 | [paper-sayplan-llm-scene-graph-planning](../../wiki/entities/paper-sayplan-llm-scene-graph-planning.md) |
 | RoboMemory | 06 | — | 新建 | [paper-robomemory-multi-type-embodied-memory](../../wiki/entities/paper-robomemory-multi-type-embodied-memory.md) |
 | Cosmos 3 | future | — | 既有 | [cosmos-3](../../wiki/entities/cosmos-3.md) |
-| WorldArena | future | [2602.08971](https://arxiv.org/abs/2602.08971) | 既有 | [paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe](../../wiki/entities/paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe.md) |
-| RoboWM-Bench | future | — | 新建 | [paper-robowm-bench-action-faithfulness](../../wiki/entities/paper-robowm-bench-action-faithfulness.md) |
+| WorldArena | future | [2602.08971](https://arxiv.org/abs/2602.08971) | 既有 | [paper-sa-2602-08971-worldarena-a-unified-benchmark-for-evaluating-pe](../../wiki/entities/worldarena.md) |
+| RoboWM-Bench | future | — | 新建 | [paper-robowm-bench-action-faithfulness](../../wiki/entities/paper-rcl-2604-19092-robowm-bench-a-benchmark-for-evaluating-world-mo.md) |
 | DreamDojo | future | — | 既有 | [paper-hrl-stack-35-dreamdojo](../../wiki/entities/paper-hrl-stack-35-dreamdojo.md) |
 | PlayWorld | future | — | 新建 | [paper-playworld-autonomous-play-data](../../wiki/entities/paper-playworld-autonomous-play-data.md) |
 | Newton | future | — | 既有 | [newton-physics](../../wiki/entities/newton-physics.md) |

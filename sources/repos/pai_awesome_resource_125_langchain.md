@@ -10,7 +10,7 @@
 - **主链接：** <https://github.com/langchain-ai/langchain>
 - **代码：** <https://github.com/langchain-ai/langchain>
 - **清单摘要：** Building agents with tools.
-- **沉淀到 wiki：** [`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)（canonical）；清单锚点 [`painode-125-langchain.md`](../../wiki/entities/painode-125-langchain.md)
+- **沉淀到 wiki：** [`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)（canonical）；清单锚点 [`painode-125-langchain.md`](../../wiki/entities/langchain.md)
 
 ---
 
@@ -24,7 +24,7 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)
-- 清单锚点：[`wiki/entities/painode-125-langchain.md`](../../wiki/entities/painode-125-langchain.md)
+- 清单锚点：[`wiki/entities/langchain.md`](../../wiki/entities/langchain.md)
 - 主仓归档：[`sources/repos/langchain.md`](langchain.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

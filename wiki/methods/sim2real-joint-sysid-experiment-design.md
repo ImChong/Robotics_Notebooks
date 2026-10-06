@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, sim2real, actuator, friction, armature, identification, experiment-design]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./ssrm-steady-state-response-method.md
   - ./joint-actuator-parameter-identification.md
@@ -19,7 +19,7 @@ related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
   - ../entities/paper-pace-sim2real-legged-robots.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/flobaroid.md
   - ../formalizations/damped-systems.md
 sources:
@@ -212,7 +212,7 @@ flowchart TB
 - [人形并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 几何雅可比；本页补有效惯量矩阵与 `armature` 容量
 - [Sim2Real](../concepts/sim2real.md) / [闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) / [驱动链枢纽](../overview/hub-actuator-drive-chain.md)
-- [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [BAM](../entities/bam-better-actuator-models.md) / [FloBaRoID](../entities/flobaroid.md)
+- [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [FloBaRoID](../entities/flobaroid.md)
 - [阻尼系统（ζ, ωₙ）](../formalizations/damped-systems.md) — 闭环二阶读法的形式化背景
 
 ## 参考来源

@@ -18,7 +18,7 @@
 - **版本提示：** robosuite 当前官方文档为 v1.5；LIBERO 仓库 requirements 固定使用 v1.4.0。复现实验时按 LIBERO 的版本约束安装，勿将当前文档版本视作 LIBERO 的依赖版本。
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 - **沉淀到 wiki：** 是 → [robosuite 工程实体页](../../wiki/entities/robosuite.md)
-- **论文详情页：** [robosuite 论文](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- **论文详情页：** [robosuite 论文](../../wiki/entities/robosuite.md)
 
 ## 与 LIBERO 的关系
 
@@ -31,6 +31,6 @@ LIBERO 的安装文档将 robosuite 描述为其底层仿真环境，当前 requ
 ## 对 wiki 的映射
 
 - [robosuite 工程实体](../../wiki/entities/robosuite.md)
-- [robosuite 论文实体](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- [robosuite 论文实体](../../wiki/entities/robosuite.md)
 - [LIBERO 项目实体](../../wiki/entities/libero-benchmark.md)
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)

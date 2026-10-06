@@ -11,7 +11,7 @@
 - **抓取方式：** WebFetch（`mp.weixin.qq.com`；本环境未预装 `wechat-article-for-ai`）
 - **原始抓取落盘：** [`wechat_embodied_heart_rcl_wam_survey_2026-09-25.md`](../raw/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 - **配套论文：** [RCL WAM 综述](../papers/rcl_wam_robot_learning_survey.md) · **arXiv:[2609.16074](https://arxiv.org/abs/2609.16074)**
-- **一句话说明：** 对 MBZUAI/RCL *World-Action Models for Robot Learning and Control: A Survey* 的中文导读——WM/VLA/WAM 分界、2×2 架构、三类数据金字塔、预训练/后训练闭环与开放挑战；同步综述 **arXiv 编号** 并交叉既有 [Awesome WAM（RCL）](../../wiki/entities/awesome-world-action-models-rcl.md) 与 [WAM 概念页](../../wiki/concepts/world-action-models.md)。
+- **一句话说明：** 对 MBZUAI/RCL *World-Action Models for Robot Learning and Control: A Survey* 的中文导读——WM/VLA/WAM 分界、2×2 架构、三类数据金字塔、预训练/后训练闭环与开放挑战；同步综述 **arXiv 编号** 并交叉既有 [Awesome WAM（RCL）](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md) 与 [WAM 概念页](../../wiki/concepts/world-action-models.md)。
 
 ## 核心摘录（归纳，非全文）
 
@@ -48,7 +48,7 @@
 
 ## 对 wiki 的映射
 
-- **补强（无新建实体）：** [Awesome World-Action Models（RCL）](../../wiki/entities/awesome-world-action-models-rcl.md)、[World Action Models（WAM）](../../wiki/concepts/world-action-models.md)
+- **补强（无新建实体）：** [Awesome World-Action Models（RCL）](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)、[World Action Models（WAM）](../../wiki/concepts/world-action-models.md)
 - **论文归档：** [rcl_wam_robot_learning_survey.md](../papers/rcl_wam_robot_learning_survey.md) — 更新 arXiv 与中文导读链
 - **交叉：** [VLA](../../wiki/methods/vla.md)、[Generative World Models](../../wiki/methods/generative-world-models.md)、[π0.5 政策](../../wiki/methods/pi07-policy.md)（π0.5 文内案例）、[depth-wam](../../roadmap/depth-wam.md)
 

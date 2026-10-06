@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 summary: "人形 Loco-Manip 161 篇 · 03 视觉感知驱动的人形移动操作（37 篇）— 视觉完成目标定位、场景理解和操作闭环。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -33,7 +33,7 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 056 | AGILE | [paper-loco-manip-161-056-agile](../entities/paper-loco-manip-161-056-agile.md) |
+| 056 | AGILE | [paper-loco-manip-161-056-agile](../entities/paper-agile-humanoid-loco-manipulation.md) |
 | 057 | Being-0 | [paper-loco-manip-161-057-being-0](../entities/paper-loco-manip-161-057-being-0.md) |
 | 058 | Cybo-Waiter | [paper-loco-manip-161-058-cybo-waiter](../entities/paper-loco-manip-161-058-cybo-waiter.md) |
 | 059 | DemoHLM | [paper-loco-manip-161-059-demohlm](../entities/paper-loco-manip-161-136-demohlm.md) |

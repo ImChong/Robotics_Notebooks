@@ -1,20 +1,29 @@
 ---
 type: entity
-tags: [paper, tactile-sensing, visuo-tactile, representation-learning, self-supervised-learning]
+tags:
+- paper
+- tactile-sensing
+- visuo-tactile
+- representation-learning
+- self-supervised-learning
+- project
+- dataset
+- code
 status: complete
 updated: 2026-10-06
-arxiv: "2502.12191"
-venue: "ICLR 2025"
-summary: "AnyTouch（ICLR 2025，RUC/WHUST/BUPT）：以 TacQuad、图像/视频掩码建模、语义对齐与跨传感器匹配学习统一静态—动态视触觉表征，并验证跨传感器迁移与真机倒珠。"
+arxiv: '2502.12191'
+venue: ICLR 2025
+summary: AnyTouch（ICLR 2025，RUC/WHUST/BUPT）：以 TacQuad、图像/视频掩码建模、语义对齐与跨传感器匹配学习统一静态—动态视触觉表征，并验证跨传感器迁移与真机倒珠。
 related:
-  - ./project-anytouch.md
-  - ./paper-anytouch2.md
-  - ./project-anytouch2.md
-  - ../concepts/tactile-sensing.md
-  - ../concepts/visuo-tactile-fusion.md
-  - ./paper-sparsh.md
+- ./paper-anytouch2.md
+- ../concepts/tactile-sensing.md
+- ../concepts/visuo-tactile-fusion.md
+- ./paper-sparsh.md
 sources:
-  - ../../sources/papers/anytouch_arxiv_2502_12191.md
+- ../../sources/papers/anytouch_arxiv_2502_12191.md
+project_id: anytouch
+project: https://gewu-lab.github.io/AnyTouch/
+code: https://github.com/GeWu-Lab/AnyTouch
 ---
 
 # AnyTouch：跨传感器统一静态–动态视触觉表征（ICLR 2025）
@@ -27,7 +36,7 @@ sources:
 | 单位 | 中国人民大学、武汉科技大学、北京邮电大学 |
 | 发表 | ICLR 2025 |
 | 论文 | [arXiv:2502.12191](https://arxiv.org/abs/2502.12191) · [ICLR 论文页](https://proceedings.iclr.cc/paper_files/paper/2025/hash/4d893f766ab60e5337659b9e71883af4-Abstract-Conference.html) |
-| 项目与代码 | 独立的[项目详情页](./project-anytouch.md) |
+| 项目与代码 | [项目、代码与数据入口](#项目资源与工程补充) |
 
 ## 英文缩写速查
 
@@ -36,6 +45,9 @@ sources:
 | SSL | Self-Supervised Learning | 自监督学习 |
 | MAE | Masked Autoencoder | 掩码自编码器 |
 | TacQuad | Tactile Quadruple | AnyTouch 构建的多传感器触觉数据 |
+
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 计算平台 |
+| HF | Hugging Face | 模型与数据托管平台 |
 
 ## 要解决的问题
 
@@ -78,16 +90,63 @@ flowchart LR
 
 ## 与后续工作的关系
 
-[AnyTouch 2](./paper-anytouch2.md) 延伸了通用光学触觉表示学习，将重点推进到动态接触、金字塔式 ToucHD 数据和显式力变化监督。其[项目实现与数据入口](./project-anytouch2.md)单独记录。与 [Sparsh](./paper-sparsh.md) 的关系是共享“传感器无关触觉表征”目标，但 AnyTouch 额外突出静态与动态统一、文本语义对齐及同物体跨传感器匹配。
+[AnyTouch 2](./paper-anytouch2.md) 延伸了通用光学触觉表示学习，将重点推进到动态接触、金字塔式 ToucHD 数据和显式力变化监督。其[项目实现与数据入口](paper-anytouch2.md)单独记录。与 [Sparsh](./paper-sparsh.md) 的关系是共享“传感器无关触觉表征”目标，但 AnyTouch 额外突出静态与动态统一、文本语义对齐及同物体跨传感器匹配。
+
+## 项目资源与工程补充
+
+| 资源 | 入口 | 说明 |
+|---|---|---|
+| 官方项目站 | [gewu-lab.github.io/AnyTouch](https://gewu-lab.github.io/AnyTouch/) | 项目概览与论文材料 |
+| 代码 | [GeWu-Lab/AnyTouch](https://github.com/GeWu-Lab/AnyTouch) | 训练、评估及数据处理代码 |
+| 论文 | [arXiv:2502.12191](https://arxiv.org/abs/2502.12191) | 本页论文方法与评测 |
+| TacQuad 数据集 | [项目页](https://gewu-lab.github.io/AnyTouch/) | 项目论文/页面介绍的数据集 |
+| 相关开放数据 | [TacQuad on Hugging Face](https://huggingface.co/datasets/xxuan01/TacQuad) | 数据卡与下载入口 |
+| 预训练权重 | [Google Drive](https://drive.google.com/file/d/1L4jGUjIHNBMzOiD33Rv0jxWYKHBORD1R/view?usp=sharing) | 仓库 README 提供的权重入口 |
+
+### 项目组成
+
+- **传感器覆盖**：GelSight Mini、DIGIT、DuraGel、Tac3D。
+- **训练代码**：官方仓库 README 描述两阶段流程：先做图像/视频掩码建模，再做语义对齐与跨传感器匹配。
+- **下游评估**：仓库包含静态/动态属性探测和跨传感器评估入口；真实机器人倒珠是论文实验，需结合论文设置理解。
+- **环境信息**：README 所列验证环境为 Ubuntu 20.04、PyTorch 2.1、CUDA 11.8。运行前应以当前仓库 README 和依赖文件为准。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  participant D as TacQuad 与配对数据
+  participant L as 数据加载器
+  participant S1 as 第一阶段掩码建模
+  participant S2 as 第二阶段对齐匹配
+  participant E as 下游探测
+  D->>L: 触觉图像、视频与配对信息
+  L->>S1: 图像/视频批次
+  S1->>S2: 预训练初始化
+  S2->>E: 共享表示
+  E-->>D: 属性、迁移及任务指标
+```
+
+### 使用边界
+
+仓库公开程度、数据条款和权重链接可能变化；实际复现请查看上游 README 与各数据卡。TacQuad Hugging Face 页面标注 MIT 许可。论文中的机器人任务需要相应硬件与传感器，不能仅凭训练脚本复现。
+
+### 模态与重定向就绪度
+
+- **模态**：视触觉图像/视频、配对文本与视觉语义。
+- **重定向就绪度**：原始代码与权重入口见 README；部署到新传感器仍需按传感器协议处理数据并评估迁移。
 
 ## 关联页面
 
-- [AnyTouch 项目详情](./project-anytouch.md) — 官方网站、代码仓库、TacQuad、权重与运行入口
-- [AnyTouch 2 论文与项目](./paper-anytouch2.md)、[项目页](./project-anytouch2.md)
+- [AnyTouch 2 论文与项目](./paper-anytouch2.md)、[项目页](paper-anytouch2.md)
 - [触觉感知](../concepts/tactile-sensing.md) · [视触觉融合](../concepts/visuo-tactile-fusion.md)
 - [Sparsh](./paper-sparsh.md)
+
+- [AnyTouch 2 项目](paper-anytouch2.md) 与 [AnyTouch 2 论文](./paper-anytouch2.md)
+- [触觉感知主题](../concepts/tactile-sensing.md)
 
 ## 参考来源
 
 - [论文来源摘录：AnyTouch](../../sources/papers/anytouch_arxiv_2502_12191.md)
 - [arXiv](https://arxiv.org/abs/2502.12191) · [ICLR 2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/4d893f766ab60e5337659b9e71883af4-Abstract-Conference.html)
+
+- [官方项目页](https://gewu-lab.github.io/AnyTouch/) · [代码仓库](https://github.com/GeWu-Lab/AnyTouch) · [TacQuad 数据卡](https://huggingface.co/datasets/xxuan01/TacQuad)

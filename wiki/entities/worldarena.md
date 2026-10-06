@@ -1,17 +1,38 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, repo, tsinghua]
+tags:
+- vla
+- world-model
+- imitation-learning
+- hmi-opensource-table
+- repo
+- tsinghua
+- paper
+- awesome-world-models
+- sun254667-wm
 status: draft
-updated: 2026-07-30
-summary: "WorldArena：十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。"
+updated: 2026-10-06
+summary: WorldArena：十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。
 related:
-  - ../methods/vla.md
-  - ../methods/imitation-learning.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
+- ../methods/vla.md
+- ../methods/imitation-learning.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- ../entities/awesome-world-models.md
+- ../overview/sun-awesome-wm-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/model-based-rl.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/repos/worldarena.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/repos/worldarena.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md
+- ../../sources/papers/sun_awesome_wm_catalog.md
+- ../../sources/repos/awesome-world-models.md
+project_id: worldarena
+arxiv: '2602.08971'
+venue: arXiv 2025
 ---
 
 # WorldArena
@@ -30,6 +51,9 @@ sources:
 | IL | Imitation Learning | 从示范学习控制 |
 | WM | World Model | 预测未来观测/状态的模型 |
 | BC | Behavior Cloning | 监督式模仿基线 |
+
+| WAM | World Action Model | 世界预测与动作联合建模 |
+| MBRL | Model-Based RL | 基于模型的强化学习 |
 
 ## 为什么重要
 
@@ -89,13 +113,29 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
+- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
+- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [model-based-rl](../methods/model-based-rl.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [WorldArena 来源归档](../../sources/repos/worldarena.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [`sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md`](../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
+- 论文：<https://arxiv.org/abs/2602.08971>
+
 ## 推荐继续阅读
 
 - [官方入口](https://github.com/tsinghua-fib-lab/WorldArena)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+
+- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
+- [原文](https://arxiv.org/abs/2602.08971)

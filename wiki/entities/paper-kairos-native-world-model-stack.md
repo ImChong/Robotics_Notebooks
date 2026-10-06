@@ -16,7 +16,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-04
+updated: 2026-10-06
 arxiv: "2606.16533"
 code: https://github.com/kairos-agi/kairos
 related:

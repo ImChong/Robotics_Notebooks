@@ -35,7 +35,7 @@
 - **两条路径：** **model route**（训练内化）与 **harness route**（权重不动 → 可延伸到 **任意经 interface 可达的模型**）；**Data-RSI** 重定义为 **喂给两条路线的共享底物**。
 - **理论产出：** 关于 loop 存在条件、算子如何 compose、supervision 买到什么的 **可反驳定律**。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)；Harness 实现链 [`wiki/entities/rsi-harness.md`](../../wiki/entities/rsi-harness.md)；概念互链 [`wiki/concepts/recursive-self-improvement.md`](../../wiki/concepts/recursive-self-improvement.md)、[`wiki/concepts/ai-auto-research.md`](../../wiki/concepts/ai-auto-research.md)。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)；Harness 实现链 [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)；概念互链 [`wiki/concepts/recursive-self-improvement.md`](../../wiki/concepts/recursive-self-improvement.md)、[`wiki/concepts/ai-auto-research.md`](../../wiki/concepts/ai-auto-research.md)。
 
 ## 摘录 2：Harness-RSI 与 RSI-Harness  artifact（项目页 + 官方仓）
 
@@ -60,6 +60,6 @@
 ## 建议 wiki 动作
 
 - 新建 **`wiki/entities/paper-metarsi-v1.md`**（含流程总览 mermaid + 结论 + Harness 时序图）。
-- 新建 **`wiki/entities/rsi-harness.md`**（Harness-RSI 工程选型页）。
+- 新建 **`wiki/entities/paper-metarsi-v1.md`**（Harness-RSI 工程选型页）。
 - 注册机构 **`cosmosmind`** → `schema/institutions.json`。
 - 轻量互链 [`wiki/concepts/recursive-self-improvement.md`](../../wiki/concepts/recursive-self-improvement.md) 的 `related`（可选）。

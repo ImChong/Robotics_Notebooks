@@ -103,7 +103,7 @@ README 宣称主表及补充约 **425** 题；入库日 Markdown `<summary>` 合
 
 | 场景 | 建议 |
 |------|------|
-| **VLA 岗二面** | 先刷卷三 L1→L2，再对照 [VLA](../methods/vla.md) / [π₀](../methods/π0-policy.md) / [OpenVLA](./openvla.md) |
+| **VLA 岗二面** | 先刷卷三 L1→L2，再对照 [VLA](../methods/vla.md) / [π₀](../methods/π0-policy.md) / [OpenVLA](paper-openvla.md) |
 | **人形 / 四足运控** | 卷六 + 卷二（算法）交叉；盲区回 [WBC](../concepts/whole-body-control.md) 与 [RL locomotion 纵深](../../roadmap/depth-rl-locomotion.md) |
 | **Sim2Real 专项** | 卷四；部署坑见 [Sim2Real](../concepts/sim2real.md) 与 [闭环误差分层](../queries/sim2real-closed-loop-engineering.md) |
 | **贡献新题** | 仓 README 格式；必须附公开面经来源，勿编造 |

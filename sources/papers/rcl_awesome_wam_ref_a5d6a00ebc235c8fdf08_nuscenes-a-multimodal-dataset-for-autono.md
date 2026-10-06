@@ -15,7 +15,7 @@
 - **项目页：** <https://www.nuscenes.org/>
 - **子类 / 象限：** 自动驾驶感知数据 · 多传感器与空间标注 · 基准与评测协议 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-a5d6a00ebc235c8fdf08-nuscenes-a-multimodal-dataset-for-autonomous-dri.md`](../../wiki/entities/paper-rcl-ref-a5d6a00ebc235c8fdf08-nuscenes-a-multimodal-dataset-for-autonomous-dri.md)
+- **沉淀到 wiki：** [`wiki/entities/painode-090-nuscenes.md`](../../wiki/entities/painode-090-nuscenes.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-a5d6a00ebc235c8fdf08-nuscenes-a-multimodal-dataset-for-autonomous-dri.md`](../../wiki/entities/paper-rcl-ref-a5d6a00ebc235c8fdf08-nuscenes-a-multimodal-dataset-for-autonomous-dri.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/painode-090-nuscenes.md`](../../wiki/entities/painode-090-nuscenes.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

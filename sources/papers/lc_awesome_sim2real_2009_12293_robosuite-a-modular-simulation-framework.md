@@ -12,7 +12,7 @@
 - **官方文档：** <https://robosuite.ai/docs/>
 - **白皮书：** <https://robosuite.ai/assets/whitepaper.pdf>
 - **LIBERO 依赖关系：** LIBERO 安装文档将 robosuite 作为底层仿真环境；其 [requirements.txt](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/requirements.txt) 固定 robosuite 1.4.0
-- **论文详情：** [robosuite 论文 wiki](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- **论文详情：** [robosuite 论文 wiki](../../wiki/entities/robosuite.md)
 - **工程实体：** [robosuite 工程页](../../wiki/entities/robosuite.md)
 
 ## 来源说明
@@ -30,6 +30,6 @@ AwesomeSim2Real 将该工作列在 Action / Foundation Models 分组。本条归
 
 ## 对 wiki 的映射
 
-- 论文实体：[robosuite 论文 wiki](../../wiki/entities/paper-as-2009-12293-robosuite-a-modular-simulation-framework-and-ben.md)
+- 论文实体：[robosuite 论文 wiki](../../wiki/entities/robosuite.md)
 - 工程实体：[robosuite 工程 wiki](../../wiki/entities/robosuite.md)
 - 列表实体：[AwesomeSim2Real](../../wiki/entities/awesome-sim2real.md)

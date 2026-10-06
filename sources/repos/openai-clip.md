@@ -11,4 +11,4 @@ CLIP 官方推理与权重加载：图文对比编码器。
 ## 交叉链接
 
 - [CLIP 论文实体](../../wiki/entities/paper-clip.md)
-- [CLIP 模型实体](../../wiki/entities/clip.md)
+- [CLIP 模型实体](../../wiki/entities/paper-clip.md)

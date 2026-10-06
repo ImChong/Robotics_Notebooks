@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-e1815cc67e6f9fc2bb7e-mastering-atari-with-discrete-world-models.md`](../../wiki/entities/paper-rcl-ref-e1815cc67e6f9fc2bb7e-mastering-atari-with-discrete-world-models.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

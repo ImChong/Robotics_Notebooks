@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2505.01458"
 venue: "arXiv 2025"
 summary: "Examines how physics simulators address the sim-to-real gap by analyzing their properties overlooked in previous surveys. Analyzes features for navigation and manipulation tasks along with hardware requirements. Provides"

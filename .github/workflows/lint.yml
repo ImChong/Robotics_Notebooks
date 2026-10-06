@@ -38,6 +38,15 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python3 scripts/pr_derived_guard.py check --base "origin/${{ github.base_ref }}"
 
+      - name: Guard unique project nodes and new entity identities
+        env:
+          PROJECT_NODE_BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || 'HEAD' }}
+        run: |
+          if [[ "$PROJECT_NODE_BASE" =~ ^0+$ ]]; then
+            PROJECT_NODE_BASE=origin/main
+          fi
+          python3 scripts/check_project_nodes.py --base "$PROJECT_NODE_BASE"
+
       # graph-stats.json 不入库（部署时生成），lint 的孤儿节点检查需要先现场生成
       - name: Generate graph-stats before lint
         run: python3 scripts/generate_link_graph.py

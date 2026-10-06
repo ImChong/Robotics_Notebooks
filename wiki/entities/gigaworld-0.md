@@ -1,18 +1,38 @@
 ---
 type: entity
-tags: [vla, world-model, imitation-learning, hmi-opensource-table, project]
+tags:
+- vla
+- world-model
+- imitation-learning
+- hmi-opensource-table
+- project
+- paper
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: draft
-updated: 2026-07-30
-summary: "GigaWorld-0：把视频外观、视角和动作建模与三维高斯场景、系统辨识及规划模块连接，形成服务VLA训练的数据生成流程；已开放训练、推理和模型配置，可核查世界建模如何产出机器人可用数据。"
+updated: 2026-10-06
+summary: GigaWorld-0：把视频外观、视角和动作建模与三维高斯场景、系统辨识及规划模块连接，形成服务VLA训练的数据生成流程；已开放训练、推理和模型配置，可核查世界建模如何产出机器人可用数据。
 related:
-  - ../methods/vla.md
-  - ../methods/imitation-learning.md
-  - ../entities/humanoid-motion-intelligence.md
-  - ../queries/hmi-opensource-projects-coverage.md
+- ../methods/vla.md
+- ../methods/imitation-learning.md
+- ../entities/humanoid-motion-intelligence.md
+- ../queries/hmi-opensource-projects-coverage.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/generative-world-models.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/sites/gigaworld-0.md
-  - ../../sources/repos/humanoid-motion-intelligence.md
-  - ../../sources/repos/giga-world-0.md
+- ../../sources/sites/gigaworld-0.md
+- ../../sources/repos/humanoid-motion-intelligence.md
+- ../../sources/repos/giga-world-0.md
+- ../../sources/papers/rcl_awesome_wam_2511_19861_gigaworld-0-world-models-as-data-engine.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+project_id: gigaworld-0
+arxiv: '2511.19861'
+code: https://github.com/open-gigaai/giga-world-0
+venue: '2025'
 ---
 
 # GigaWorld-0
@@ -31,6 +51,9 @@ sources:
 | IL | Imitation Learning | 从示范学习控制 |
 | WM | World Model | 预测未来观测/状态的模型 |
 | BC | Behavior Cloning | 监督式模仿基线 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 
 ## 为什么重要
 
@@ -90,6 +113,14 @@ flowchart LR
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [GigaWorld-0 源码归档](../../sources/repos/giga-world-0.md)（<https://github.com/open-gigaai/giga-world-0>）
@@ -98,7 +129,16 @@ flowchart LR
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [`sources/papers/rcl_awesome_wam_2511_19861_gigaworld-0-world-models-as-data-engine.md`](../../sources/papers/rcl_awesome_wam_2511_19861_gigaworld-0-world-models-as-data-engine.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://arxiv.org/abs/2511.19861>
+
 ## 推荐继续阅读
 
 - [官方入口](https://giga-world-0.github.io/)
 - [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://arxiv.org/abs/2511.19861)

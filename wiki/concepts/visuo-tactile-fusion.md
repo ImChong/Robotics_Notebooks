@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
@@ -35,9 +35,9 @@ related:
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-anytouch.md
-  - ../entities/project-anytouch.md
+  - ../entities/paper-anytouch.md
   - ../entities/paper-anytouch2.md
-  - ../entities/project-anytouch2.md
+  - ../entities/paper-anytouch2.md
   - ../entities/humantouch.md
 sources:
   - ../../sources/papers/perception.md
@@ -166,7 +166,7 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 
 ### 跨传感器表示预训练
 
-[**AnyTouch**](../entities/paper-anytouch.md) 学习跨视觉触觉传感器的静态–动态共享表示，[**AnyTouch 2**](../entities/paper-anytouch2.md) 将监督扩展到多层级动态接触与力变化。它们的训练关注点是让触觉表示可跨传感器/任务迁移，和本页讨论的接触阶段多模态策略融合相邻但不同。对应的项目资产分列于 [AnyTouch](../entities/project-anytouch.md) 与 [AnyTouch 2](../entities/project-anytouch2.md) 项目页。
+[**AnyTouch**](../entities/paper-anytouch.md) 学习跨视觉触觉传感器的静态–动态共享表示，[**AnyTouch 2**](../entities/paper-anytouch2.md) 将监督扩展到多层级动态接触与力变化。它们的训练关注点是让触觉表示可跨传感器/任务迁移，和本页讨论的接触阶段多模态策略融合相邻但不同。对应的项目资产分列于 [AnyTouch](../entities/paper-anytouch.md) 与 [AnyTouch 2](../entities/paper-anytouch2.md) 项目页。
 
 ## 接触瞬间为什么难
 

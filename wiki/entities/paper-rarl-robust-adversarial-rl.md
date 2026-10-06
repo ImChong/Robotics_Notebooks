@@ -6,7 +6,7 @@ tags:
   - sim2real
   - adversarial-training
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "1703.02702"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

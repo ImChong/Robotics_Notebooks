@@ -6,7 +6,7 @@ tags:
   - simulation
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2304.06372"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

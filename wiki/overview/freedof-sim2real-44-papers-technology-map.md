@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, sim2real, system-identification, domain-randomization, technology-map]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../concepts/sim2real.md
@@ -116,7 +116,7 @@ flowchart LR
 | 30 | Sim-to-real transfer with neural-augmented robot | [paper-golemo-neural-augmented-robot-simulation](../entities/paper-golemo-neural-augmented-robot-simulation.md) | 待核实 |
 | 31 | Bridging the sim-to-real gap for athletic loco-m | [paper-notebook-bridging-the-sim-to-real-gap-for-athletic-loco-m](../entities/paper-notebook-bridging-the-sim-to-real-gap-for-athletic-loco-m.md) | 待核实 |
 | 32 | Residual reinforcement learning for robot contro | [paper-residual-rl-robot-control](../entities/paper-residual-rl-robot-control.md) | 待核实 |
-| 33 | ASAP | [paper-hrl-stack-25-asap](../entities/paper-hrl-stack-25-asap.md) | 待核实 |
+| 33 | ASAP | [paper-hrl-stack-25-asap](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) | 待核实 |
 | 34 | MOSAIC | [paper-loco-manip-161-014-mosaic](../entities/paper-loco-manip-161-014-mosaic.md) | 待核实 |
 | 35 | Off-dynamics reinforcement learning | [paper-eysenbach-off-dynamics-rl](../entities/paper-eysenbach-off-dynamics-rl.md) | 待核实 |
 | 36 | Legged robots that keep on learning | [paper-smith-legged-robots-keep-learning](../entities/paper-smith-legged-robots-keep-learning.md) | 待核实 |
@@ -174,5 +174,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [PACE](../entities/paper-pace-sim2real-legged-robots.md)
-- [ASAP](../entities/paper-hrl-stack-25-asap.md)
+- [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 - [AwesomeSim2Real 综述](../entities/paper-survey-sim2real-rl-foundation-models.md)

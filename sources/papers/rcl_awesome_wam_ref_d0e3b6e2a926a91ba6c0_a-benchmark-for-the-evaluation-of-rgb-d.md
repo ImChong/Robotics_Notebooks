@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-d0e3b6e2a926a91ba6c0-a-benchmark-for-the-evaluation-of-rgb-d-slam-sys.md`](../../wiki/entities/paper-rcl-ref-d0e3b6e2a926a91ba6c0-a-benchmark-for-the-evaluation-of-rgb-d-slam-sys.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

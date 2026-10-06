@@ -61,7 +61,7 @@
 ## 对 wiki 的映射
 
 - 升格 [CoRe 论文实体](../../wiki/entities/paper-core.md)
-- 软件 [CoRe v0.1.0](../../wiki/entities/core-retarget.md)
+- 软件 [CoRe v0.1.0](../../wiki/entities/paper-core.md)
 - 前端重定向对照 [RMR](../../wiki/entities/paper-rmr.md)
 - 交叉 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Pipeline](../../wiki/concepts/motion-retargeting-pipeline.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)
 

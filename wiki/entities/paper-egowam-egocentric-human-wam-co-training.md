@@ -1,37 +1,49 @@
 ---
 type: entity
 tags:
-  - paper
-  - world-action-models
-  - imitation-learning
-  - behavior-cloning
-  - egocentric-vision
-  - bimanual-manipulation
-  - human-robot-transfer
-  - flow-matching
-  - georgia-tech
+- paper
+- world-action-models
+- imitation-learning
+- behavior-cloning
+- egocentric-vision
+- bimanual-manipulation
+- human-robot-transfer
+- flow-matching
+- georgia-tech
+- awesome-world-models
+- sun254667-wm
 status: complete
 venue: curated
-updated: 2026-09-15
+updated: 2026-10-06
 related:
-  - ../concepts/world-action-models.md
-  - ../methods/imitation-learning.md
-  - ../methods/egoscale.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../comparisons/humannet-table1-human-video-corpora.md
-  - ./paper-egoverse.md
-  - ./paper-ld4wam.md
-  - ./paper-motionwam-humanoid-loco-manipulation-wam.md
-  - ./paper-dit4dit-video-action-model.md
-  - ./paper-wam-ttt-human-video-test-time-steering.md
-  - ./paper-egosteer.md
-  - ./humannet.md
+- ../concepts/world-action-models.md
+- ../methods/imitation-learning.md
+- ../methods/egoscale.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../comparisons/humannet-table1-human-video-corpora.md
+- ./paper-egoverse.md
+- ./paper-ld4wam.md
+- ./paper-motionwam-humanoid-loco-manipulation-wam.md
+- ./paper-dit4dit-video-action-model.md
+- ./paper-wam-ttt-human-video-test-time-steering.md
+- ./paper-egosteer.md
+- ./humannet.md
+- ../entities/awesome-world-models.md
+- ../overview/sun-awesome-wm-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/model-based-rl.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/egowam.md
-  - ../../sources/papers/egosteer_arxiv_2607_09701.md
-  - ../../sources/papers/egoverse_arxiv_2604_07607.md
-summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅替换世界预测目标（Pixel/DINO/3D flow）的受控人–机协同训练——WAM 状态分支弥合具身差距，使机器人性能随野外 egocentric 人数据扩展；DINO 最高约 4× OOD 泛化，3D flow 域内 +20–30%，未对齐人数据下 BC 可跌至 robot-only 以下而 3D Flow 仍鲁棒。"
+- ../../sources/papers/egowam.md
+- ../../sources/papers/egosteer_arxiv_2607_09701.md
+- ../../sources/papers/egoverse_arxiv_2604_07607.md
+- ../../sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md
+- ../../sources/papers/sun_awesome_wm_catalog.md
+- ../../sources/repos/awesome-world-models.md
+summary: EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅替换世界预测目标（Pixel/DINO/3D flow）的受控人–机协同训练——WAM 状态分支弥合具身差距，使机器人性能随野外 egocentric 人数据扩展；DINO 最高约 4× OOD 泛化，3D flow 域内 +20–30%，未对齐人数据下 BC 可跌至 robot-only 以下而 3D Flow 仍鲁棒。
+project_id: egowam-egocentric-human-wam-co-training
+arxiv: '2607.08436'
 ---
 
 # EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）
@@ -52,6 +64,10 @@ summary: "EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅
 | OOD | Out-of-Distribution | 未见物体或场景的分布外泛化评测 |
 | RAE | Reconstruction Autoencoder | DINO 世界头的重建式表征空间（项目页用语） |
 | Ego | Egocentric | 第一人称视角采集的人或机器人观测 |
+
+| WM | World Model | 环境前向预测模型 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| MBRL | Model-Based RL | 基于模型的强化学习 |
 
 ## 为什么重要
 
@@ -153,11 +169,25 @@ flowchart TB
 - [JoyAI-RA 0.5](./paper-joyai-ra-05.md)
 - [LD4WAM](./paper-ld4wam.md)
 
+- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
+- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [vla](../methods/vla.md)
+- [humannet](./humannet.md)
+- [model-based-rl](../methods/model-based-rl.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [EgoWAM 项目页摘录](../../sources/papers/egowam.md)
 - [EgoSteer 论文摘录（对照）](../../sources/papers/egosteer_arxiv_2607_09701.md)
 - [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
+
+- [`sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md`](../../sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
+- 论文：<https://arxiv.org/abs/2607.08436>
 
 ## 推荐继续阅读
 
@@ -166,3 +196,6 @@ flowchart TB
 - [EgoVerse 项目页](https://egoverse.ai/)
 - [World Action Models 概念页](../concepts/world-action-models.md)
 - [EgoScale 方法页](../methods/egoscale.md) — VLA 人视频缩放对照
+
+- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
+- [原文](https://arxiv.org/abs/2607.08436)

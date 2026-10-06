@@ -78,7 +78,7 @@ GitHub huggingface/lerobot          Hugging Face org lerobot
 
 - 实体页：[lerobot](../../wiki/entities/lerobot.md) — 补充 **Hub 分发层** 与模型 / 数据 / Spaces 选型
 - 方法交叉：[vla](../../wiki/methods/vla.md)、[imitation-learning](../../wiki/methods/imitation-learning.md)
-- 相关实体：[lingbot-vla-v2](../../wiki/entities/lingbot-vla-v2.md)、[openvla](../../wiki/entities/openvla.md)、[paper-evo1-lightweight-vla](../../wiki/entities/paper-evo1-lightweight-vla.md)
+- 相关实体：[lingbot-vla-v2](../../wiki/entities/lingbot-vla-v2.md)、[openvla](../../wiki/entities/paper-openvla.md)、[paper-evo1-lightweight-vla](../../wiki/entities/paper-evo1-lightweight-vla.md)
 - 代码归档：[lerobot.md](../repos/lerobot.md)
 
 ## 参考来源（原始）

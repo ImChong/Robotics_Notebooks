@@ -73,7 +73,7 @@ OpenVLA 末端增量 → 末端目标 → **机器人侧 IK** → 关节目标 +
 
 ## 对 wiki 的映射
 
-- **不新建论文实体** — 交叉补强 [paper-openvla](../../wiki/entities/paper-openvla.md)「推理与执行边界」与 [openvla 软件实体](../../wiki/entities/openvla.md)
+- **不新建论文实体** — 交叉补强 [paper-openvla](../../wiki/entities/paper-openvla.md)「推理与执行边界」与 [openvla 软件实体](../../wiki/entities/paper-openvla.md)
 - [VLA 方法页](../../wiki/methods/vla.md)、[VLA 演进谱系](../../wiki/overview/vla-evolution-lineage.md)
 - 仓库归档：[openvla.md](../repos/openvla.md)；论文 source：[openvla_arxiv_2406_09246.md](../papers/openvla_arxiv_2406_09246.md)
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, world-action-models, latent-world-model, manipulation, humanoid, bimanual, astribot, foundation-model, flow-matching]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2607.11270"
 related:
   - ../concepts/world-action-models.md

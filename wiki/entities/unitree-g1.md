@@ -22,7 +22,7 @@ related:
   - ./paper-pac-man-perceptive-cbf-rl.md
   - ./paper-fddc.md
   - ./paper-agile-humanoid-loco-manipulation.md
-  - ./htd-decoupled-wbc.md
+  - ./paper-humanoid-touch-dream.md
   - ./paper-p3.md
   - ./paper-wm-loco.md
   - ./paper-safe-stop-humanoid.md
@@ -109,7 +109,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [人形系统课程策展](./humanoid-system-curriculum.md) — 深蓝学院 G1 系统课八章地图
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流；G1 速度/高度/stand-up/舞蹈/pick&place（arXiv:2603.20147）
 - [Blind Dexterity](./paper-blind-dexterity.md) — 纯本体 G1 全身操作：足球/滑板/手提箱与无 IMU 推抗行走（arXiv:2608.29487；代码待发布）
-- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰 RL 控制器；G1 零样本部署
+- [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — HTD 开源下肢+腰 RL 控制器；G1 零样本部署
 - [P³](./paper-p3.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机（arXiv:2607.25541，已开源）
 - [WM-LOCO](./paper-wm-loco.md) — 单深度 RSSM+PPO；沟/踏石/楼梯机载平均 93.3%（arXiv:2609.02542；代码待发布）
 - [Safe-Stop](./paper-safe-stop-humanoid.md) — 可停止性双估计急停；OOD 停止 96.4%（arXiv:2609.02358；代码待发布）

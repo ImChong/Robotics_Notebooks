@@ -2,13 +2,13 @@
 type: entity
 tags: [paper, aerial-grasping, aerial-manipulation, trajectory-optimization, cross-entropy-method, execution-aware-critic]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-06
 arxiv: "2609.18153"
 venue: "2026 · arXiv"
 related:
   - ../tasks/manipulation.md
   - ../methods/trajectory-optimization.md
-  - ../entities/flying-knots-public.md
+  - paper-flying-knots.md
   - ../methods/policy-optimization.md
 sources:
   - ../../sources/papers/prior_evolution_aerial_grasping_arxiv_2609_18153.md
@@ -94,7 +94,7 @@ Critic 学习轨迹在执行时是否成功，摘要列举的监督结果包括�
 | 解析结构 | 强 | 取决于策略结构 | 保留部署轨迹优化器 |
 | 当前复现性 | 依具体规划器而异 | 依权重 / 代码开放而异 | 本论文暂未发现官方实现入口 |
 
-相较于 [Flying Knots](./flying-knots-public.md) 等空中操作工作，本文聚焦点不是展示某个单一任务的操作能力，而是改善空中抓取规划的初始化与“优化目标—物理成功”对齐。
+相较于 [Flying Knots](paper-flying-knots.md) 等空中操作工作，本文聚焦点不是展示某个单一任务的操作能力，而是改善空中抓取规划的初始化与“优化目标—物理成功”对齐。
 
 ## 工程实践与开源状态
 
@@ -126,7 +126,7 @@ Critic 学习轨迹在执行时是否成功，摘要列举的监督结果包括�
 
 - [Manipulation](../tasks/manipulation.md) — 抓取、接触与物理任务成功的总览
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 保留显式轨迹求解器的优化背景
-- [Flying Knots](./flying-knots-public.md) — 空中操作领域的近邻任务
+- [Flying Knots](paper-flying-knots.md) — 空中操作领域的近邻任务
 - [Policy Optimization](../methods/policy-optimization.md) — 学习式策略优化对照
 
 ## 参考来源

@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2406.02523"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
   - ../overview/humanoid-paper-notebooks-index.md
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md

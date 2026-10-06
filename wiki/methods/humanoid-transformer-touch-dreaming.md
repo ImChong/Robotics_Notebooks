@@ -2,10 +2,10 @@
 type: method
 tags: [humanoid, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, loco-manipulation, transformer]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 related:
   - ../entities/paper-humanoid-touch-dream.md
-  - ../entities/htd-decoupled-wbc.md
+  - ../entities/paper-humanoid-touch-dream.md
   - ./imitation-learning.md
   - ./bc-with-transformer.md
   - ./action-chunking.md
@@ -55,7 +55,7 @@ HTD 的关键价值在于两点：
 
 HTD 依赖一个完整的人形操作数据闭环：
 
-1. **Lower-Body Controller (LBC)：** 在 Isaac Lab 中训练 RL teacher，再用 BC→DAgger 蒸馏到只依赖真机可观测本体信息的 student。LBC 跟踪底盘速度、躯干姿态和高度命令，是操作时的稳定性骨架。官方实现已开源为 [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)（[IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)）；遥操作采数与 HTD 策略代码截至 2026-09-03 仍待发布。
+1. **Lower-Body Controller (LBC)：** 在 Isaac Lab 中训练 RL teacher，再用 BC→DAgger 蒸馏到只依赖真机可观测本体信息的 student。LBC 跟踪底盘速度、躯干姿态和高度命令，是操作时的稳定性骨架。官方实现已开源为 [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)（[IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)）；遥操作采数与 HTD 策略代码截至 2026-09-03 仍待发布。
 2. **VR 遥操作采集：** 操作者的头、腕、手信号被映射为躯干命令、腕部 6D pose、灵巧手 retargeting target，摇杆提供底盘速度。
 3. **多模态 demonstration：** 数据同步包含头部/腕部 RGB、本体感受、手部关节力、双手触觉，以及 torso、end-effector、velocity、hand action targets。
 4. **HTD policy：** 多模态 tokenizer 将各输入压成 tokens，encoder-decoder Transformer 融合后，由 action experts 解码动作，由 dream experts 解码未来接触信号。
@@ -64,7 +64,7 @@ HTD 依赖一个完整的人形操作数据闭环：
 
 HTD 的路线不是“更大的端到端网络”，而是把稳定执行、遥操作采集和触觉预测式学习拆成三层：
 
-1. **稳定性先外包给 LBC。** 下肢和躯干由 RL lower-body controller 承担，策略学习主要处理上身、手部和速度命令，降低全身行为克隆的动力学负担。具体命令范围、15 DoF 部署与 teacher/student 观测差见 [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)。
+1. **稳定性先外包给 LBC。** 下肢和躯干由 RL lower-body controller 承担，策略学习主要处理上身、手部和速度命令，降低全身行为克隆的动力学负担。具体命令范围、15 DoF 部署与 teacher/student 观测差见 [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)。
 2. **示范数据必须包含接触。** VR teleoperation 同步采集视觉、本体、手部力和触觉，保证接触阶段不是事后补标签。
 3. **触觉通过预测目标进入表示。** 训练时预测未来 hand force 与 tactile latent，让 Transformer trunk 对接触变化敏感；推理时只保留动作输出，避免增加部署链路复杂度。
 
@@ -107,7 +107,7 @@ EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只�
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)：HTD 是 attention/token 化路线上的具体实例，但它额外强调未来触觉预测。
 - [触觉感知](../concepts/tactile-sensing.md)：HTD 使用双手分布式 tactile sensing 和手部关节力作为接触观测。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)：HTD 的任务不是固定底座操作，而是需要下肢稳定、躯干姿态和双手操作同时协调。
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)：论文 LBC 的开源实现（Isaac Lab 训练、G1 零样本部署）。
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)：论文 LBC 的开源实现（Isaac Lab 训练、G1 零样本部署）。
 - [Imitation Learning](./imitation-learning.md)：HTD 本质上是单阶段行为克隆，只是加入 touch dreaming 辅助目标。
 - [Action Chunking](./action-chunking.md)：HTD 继承 action chunking，用短 horizon 目标提升时序平滑性。
 
@@ -122,7 +122,7 @@ EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只�
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Teleoperation](../tasks/teleoperation.md)
-- [HTD 解耦 WBC](../entities/htd-decoupled-wbc.md)
+- [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)
 
 ## 推荐继续阅读
 

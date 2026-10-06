@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-06
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -60,8 +60,8 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
-  - ../entities/bam-better-actuator-models.md
-  - ../entities/grid-general-robotics.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
+  - ../entities/paper-grid-general-robot-intelligence-development.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/paper-rl-vs-gc.md
   - ../comparisons/rl-vs-geometric-control.md
@@ -376,7 +376,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [tita_rl](../entities/tita-rl.md)
 - [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足动态策略的低秩 + Recovery 安全层
 - [FADA（Planner–IDM 少样本动力学对齐）](../entities/paper-fada-humanoid.md) — 冻结 planner、LoRA 微调 IDM；约 2 min 目标 rollout（arXiv:2606.28476）
-- [BAM 扩展摩擦（舵机仿真）](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 开源仓库](../entities/bam-better-actuator-models.md) — M1–M6 摩擦辨识与 MuJoCo 2R 验证
+- [BAM 扩展摩擦（舵机仿真）](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 开源仓库](../entities/paper-bam-extended-friction-servo-actuators.md) — M1–M6 摩擦辨识与 MuJoCo 2R 验证
 - [Friction Compensation](./friction-compensation.md) — 前馈摩擦补偿与 Project 3 式三组对比实验
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md) — 四足 SysID → Sim2Real 系统课程
 - [ONNX](../entities/onnx.md) — 训练框架与机载 runtime 之间的开放模型交换格式

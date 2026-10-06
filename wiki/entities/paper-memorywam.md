@@ -7,7 +7,7 @@ tags:
   - memory
   - long-horizon
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2606.20562"
 code: https://github.com/yangsizhe/MemoryWAM
 related:
@@ -122,4 +122,3 @@ sequenceDiagram
 - [arXiv PDF](https://arxiv.org/pdf/2606.20562)
 - [项目页](https://yangsizhe.github.io/MemoryWAM/)
 - [代码](https://github.com/yangsizhe/MemoryWAM)
-

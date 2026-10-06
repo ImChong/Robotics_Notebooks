@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2509.17430"
 venue: "CVPR 2025"
 summary: "Personalizes policy training by efficiently capturing scenes with 3D Gaussian Splatting, analyzing training strategies, pre-training datasets, and mesh reconstruction techniques"

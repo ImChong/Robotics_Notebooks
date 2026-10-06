@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, sim2real, off-policy, fastsac, unitree-g1, booster-t1, amazon-far]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 arxiv: "2512.01996"
 code: https://github.com/amazon-far/holosoma
 related:

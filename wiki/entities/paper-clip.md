@@ -1,33 +1,39 @@
 ---
 type: entity
 tags:
-  - paper
-  - vlm
-  - contrastive-learning
-  - vision-language
-  - openai
+- paper
+- vlm
+- contrastive-learning
+- vision-language
+- openai
+- multimodal
+- deep-learning
+- foundation-model
 status: complete
-updated: 2026-09-23
-arxiv: "2103.00020"
+updated: 2026-10-06
+arxiv: '2103.00020'
 code: https://github.com/openai/CLIP
 related:
-  - ./clip.md
-  - ./paper-llava.md
-  - ./llava.md
-  - ./paper-dinov2.md
-  - ./paper-openvla.md
-  - ../methods/vla.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-llava.md
+- ./paper-dinov2.md
+- ./paper-openvla.md
+- ../methods/vla.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ../concepts/multimodality-basics.md
+- ../overview/multimodal-llm-development.md
+- ../entities/transformer-cv-curriculum.md
 sources:
-  - ../../sources/papers/clip_arxiv_2103_00020.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
-  - ../../sources/repos/openai-clip.md
-summary: "CLIP（arXiv:2103.00020，OpenAI）：图文对比预训练对齐双编码器；VLA 视觉–语言对齐基石。openai/CLIP 已开源。模型实体见 clip.md。"
+- ../../sources/papers/clip_arxiv_2103_00020.md
+- ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+- ../../sources/repos/openai-clip.md
+- ../../sources/courses/transformer_cv_applications_syllabus.md
+summary: CLIP（arXiv:2103.00020，OpenAI）：图文对比预训练对齐双编码器；VLA 视觉–语言对齐基石。openai/CLIP 已开源。模型实体见 clip.md。
+project_id: clip
 ---
 
 # CLIP：自然语言监督下的可迁移视觉模型
 
-**CLIP**（*Learning Transferable Visual Models From Natural Language Supervision*，[arXiv:2103.00020](https://arxiv.org/abs/2103.00020)，[代码](https://github.com/openai/CLIP)）由 **OpenAI** 提出：用超大规模图文对做 **对比学习**，让匹配图像与文本在嵌入空间靠近。模型/工程实体见 [clip](./clip.md)；**本页是论文 canonical 节点**。
+**CLIP**（*Learning Transferable Visual Models From Natural Language Supervision*，[arXiv:2103.00020](https://arxiv.org/abs/2103.00020)，[代码](https://github.com/openai/CLIP)）由 **OpenAI** 提出：用超大规模图文对做 **对比学习**，让匹配图像与文本在嵌入空间靠近。模型/工程实体见 [clip](#项目资源与工程补充)；**本页是论文 canonical 节点**。
 
 ## 一句话定义
 
@@ -41,6 +47,10 @@ summary: "CLIP（arXiv:2103.00020，OpenAI）：图文对比预训练对齐双�
 | VLM | Vision-Language Model | 后续多模态模型族 |
 | ZS | Zero-shot | 无任务微调的分类/检索 |
 | SigLIP | Sigmoid Language-Image Pretraining | 语言对齐后继 |
+
+| InfoNCE | InfoNCE Loss | 对比损失形式 |
+| ViT | Vision Transformer | 常用视觉塔 |
+| Text Enc | Text Transformer | 文本编码器 |
 
 ## 为什么重要
 
@@ -84,7 +94,6 @@ flowchart LR
 - 零样本能力解释「为何能认出训练没见过的杯子」
 - 操作还要几何特征，单 CLIP 塔往往不够
 - [OpenVLA](./paper-openvla.md) 用 SigLIP+DINOv2 补齐
-- API/工程细节读 [clip 实体](./clip.md)
 
 ## 源码运行时序图
 
@@ -116,13 +125,42 @@ sequenceDiagram
 | [OpenVLA](./paper-openvla.md) | 双塔消费 CLIP 后继 |
 | [RT-2](./paper-rt-2.md) | 把对齐后的 VLM 接到动作 |
 
+## 项目资源与工程补充
+
+### 核心原理
+
+双塔分别编码图像与文本，同一配对拉近、非配对推远；推理时用文本提示当分类器权重。
+
+```mermaid
+flowchart LR
+  IMG["视觉输入"] --> ENC["视觉编码/桥接"] --> LLM["语言侧/头"] --> OUT["文本/掩码/分数"]
+  TXT["文本/指令"] --> LLM
+```
+
+### 工程实践
+
+| 项 | 建议 |
+|----|------|
+| 权重 | 优先官方或 Hugging Face 发布 |
+| 微调 | 指令数据质量优先；可用 LoRA |
+| 机器人 | 明确延迟预算；重模型可云端核验 |
+
+### 局限与风险
+
+幻觉、错误 grounding、许可与安全过滤必须单独评估；开源状态以项目页为准，部署前核查权重协议。
+
 ## 关联页面
 
-- [CLIP 模型实体](./clip.md)
 - [LLaVA 论文实体](./paper-llava.md)
 - [DINOv2](./paper-dinov2.md)
 - [OpenVLA](./paper-openvla.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+
+- [VLA 方法](../methods/vla.md)
+- [多模态基础](../concepts/multimodality-basics.md)
+- [多模态 LLM 路线](../overview/multimodal-llm-development.md)
+- [BLIP-2](./paper-blip2.md)
+- [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 
 ## 推荐继续阅读
 
@@ -134,3 +172,5 @@ sequenceDiagram
 - [clip_arxiv_2103_00020](../../sources/papers/clip_arxiv_2103_00020.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [openai-clip](../../sources/repos/openai-clip.md)
+
+- [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)

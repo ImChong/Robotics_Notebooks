@@ -82,7 +82,7 @@ flowchart TD
 3. **MoReFlow / AdaMorph 代码待发布** — 2026-09-07 核查无官方 GitHub；选型时以 arXiv 为准。
 4. **AdaMorph ≠ UMR** — 同名「Unified Retargeting」不同论文；见 [UMR 消歧](../entities/paper-umr-unified-motion-retargeting.md)。
 5. **历史起点** — Gleicher 1998 奠定 retargeting 问题表述；见 [Motion Retargeting 概念](../concepts/motion-retargeting.md)。
-6. **脚滑修补是三路共有的下游工序** — 无论走哪条路线，接触段足位漂移都要单独处理，不要指望重定向本身消掉：动画侧的可复现配方（趾速阈值标接触 → 两骨 IK → 惯性化锁定 → 可选离线 PBD 修正）见 [足锁 IK（Orange Duck 配方）](../methods/foot-locking-ik-orangeduck.md)，它是**纯运动学修正**、不保证动力学可行；机器人侧对照 [CoRe](../entities/core-retarget.md) / [KDMR](../entities/paper-kdmr.md)。
+6. **脚滑修补是三路共有的下游工序** — 无论走哪条路线，接触段足位漂移都要单独处理，不要指望重定向本身消掉：动画侧的可复现配方（趾速阈值标接触 → 两骨 IK → 惯性化锁定 → 可选离线 PBD 修正）见 [足锁 IK（Orange Duck 配方）](../methods/foot-locking-ik-orangeduck.md)，它是**纯运动学修正**、不保证动力学可行；机器人侧对照 [CoRe](../entities/paper-core.md) / [KDMR](../entities/paper-kdmr.md)。
 
 ## 结论（可操作）
 

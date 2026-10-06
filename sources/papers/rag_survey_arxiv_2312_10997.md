@@ -66,7 +66,7 @@
 |--------|------|
 | [`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md) | 主概念页：taxonomy、工程 checklist |
 | [`wiki/concepts/ai-auto-research.md`](../../wiki/concepts/ai-auto-research.md) | S2 文献综合中的 RAG 方法族 |
-| [`wiki/entities/painode-125-langchain.md`](../../wiki/entities/painode-125-langchain.md) | 工业 RAG 编排框架实例 |
+| [`wiki/entities/langchain.md`](../../wiki/entities/langchain.md) | 工业 RAG 编排框架实例 |
 
 ## 当前提炼状态
 

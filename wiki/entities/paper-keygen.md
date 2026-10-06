@@ -59,7 +59,7 @@ summary: "KeyGen（2609.28818）：点云无监督 3D 关键点 + 物体中心�
 |------|----------|
 | [Diffusion Policy](./paper-diffusion-policy.md) | 动作 chunk 去噪的基线范式；KeyGen 在其条件端换成 **物体中心几何**（关键点）以追求类别内泛化 |
 | [DP3](./painode-209-3ddiffusionpolicydp3.md) | 同为 **点云条件扩散策略**；DP3 直接用点云表征，KeyGen 先做 **无监督 3D 关键点 + 规范化**，把条件压成 object-centric 结构 |
-| [SimToolReal](./paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md) | 同属 **object-centric policy**：SimToolReal 面向灵巧工具的零样本 sim2real；KeyGen 面向 **category-level 新实例** 泛化 |
+| [SimToolReal](simtoolreal.md) | 同属 **object-centric policy**：SimToolReal 面向灵巧工具的零样本 sim2real；KeyGen 面向 **category-level 新实例** 泛化 |
 | [AnyBody](./paper-anybody-keypoint-humanoid-control.md) | 同为 **关键点条件化**，但 AnyBody 的关键点是 **人形身体稀疏关键点**（全身意图）；KeyGen 的关键点在 **被操作物体** 上 |
 | [KnowBody](./paper-knowbody.md) | 同期「改条件化」条目：KnowBody 给冻结 VLM 补 **身体关系模型**；KeyGen 给策略补 **物体几何表征** |
 
@@ -85,4 +85,3 @@ summary: "KeyGen（2609.28818）：点云无监督 3D 关键点 + 物体中心�
 
 - [arXiv:2609.28818](https://arxiv.org/abs/2609.28818)
 - [项目页](https://robo-keygen.github.io/)
-

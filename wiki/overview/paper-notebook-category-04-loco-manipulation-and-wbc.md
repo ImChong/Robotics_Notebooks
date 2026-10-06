@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-06
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"
@@ -83,7 +83,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [Humanoid Manipulation Interface](../entities/paper-notebook-humanoid-manipulation-interface.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html)
 - [Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning](../entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html)
 - [HumanoidExo](../entities/paper-loco-manip-161-067-humanoidexo.md) — 见 wiki 实体页
-- [HumanoidVerse](../entities/paper-notebook-humanoidverse.md) — 待深读
+- [HumanoidVerse](../entities/humanoidverse.md) — 待深读
 - [Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning](../entities/paper-notebook-implicit-kinodynamic-motion-retargeting-for-huma.md) — 待深读
 - [It Takes Two](../entities/paper-notebook-it-takes-two.md) — 待深读
 - [JAEGER](../entities/paper-notebook-jaeger.md) — 待深读

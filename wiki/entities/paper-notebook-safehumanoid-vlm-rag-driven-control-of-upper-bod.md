@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, safety, impedance-control, vlm, rag, hri, unitree]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2511.23300"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md

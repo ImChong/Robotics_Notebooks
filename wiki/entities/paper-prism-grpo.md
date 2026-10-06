@@ -9,7 +9,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ./paper-temporal-grpo.md
   - ./robotwin.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../tasks/manipulation.md
 sources:
@@ -159,7 +159,7 @@ RoboTwin 四任务（Lift Pot、Move Can Pot、Handover Block、Beat Block Hamme
 - [SDPG（LLM 自蒸馏）](./paper-sdpg-self-distilled-policy-gradient.md) — 同为 GRPO 族 + privileged 稠密信号，领域为 LLM 数学 RLVR（arXiv:2606.04036）
 - [VLA 开源复现景观 2025](../overview/vla-open-source-repro-landscape-2025.md) — SimpleVLA-RL 入口
 - [RoboTwin](./robotwin.md) — 评测平台
-- [OpenVLA](./openvla.md) — 策略骨干
+- [OpenVLA](paper-openvla.md) — 策略骨干
 - [Manipulation 任务](../tasks/manipulation.md)
 
 ## 参考来源

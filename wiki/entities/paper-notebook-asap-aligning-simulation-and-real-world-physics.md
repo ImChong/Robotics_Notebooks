@@ -1,23 +1,41 @@
 ---
 type: entity
-tags: [paper, humanoid, sim2real, motion-tracking, residual-policy, rss-2025, lecar-lab, cmu, nvidia, unitree-g1]
+tags:
+- paper
+- humanoid
+- sim2real
+- motion-tracking
+- residual-policy
+- rss-2025
+- lecar-lab
+- cmu
+- nvidia
+- unitree-g1
+- rl
+- motion-control
+- body-system-stack
 status: complete
-updated: 2026-09-23
-arxiv: "2502.01143"
-venue: "RSS 2025"
+updated: 2026-10-06
+arxiv: '2502.01143'
+venue: RSS 2025
 related:
-  - ./humanoidverse.md
-  - ./paper-hrl-stack-25-asap.md
-  - ./human2humanoid.md
-  - ../methods/residual-policy-learning.md
-  - ../overview/freedof-sim2real-44-papers-technology-map.md
-  - ./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
+- ./humanoidverse.md
+- ./human2humanoid.md
+- ../methods/residual-policy-learning.md
+- ../overview/freedof-sim2real-44-papers-technology-map.md
+- ./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
+- ../overview/humanoid-rl-motion-control-body-system-stack.md
 sources:
-  - ../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md
-  - ../../sources/sites/asap-agile-human2humanoid.md
-  - ../../sources/repos/asap.md
-  - ../../sources/repos/humanoidverse.md
-summary: "ASAP（RSS 2025，arXiv:2502.01143）：真机 rollout 训 delta action 模型对齐 sim–real 动力学，冻结回灌仿真微调 motion tracking 策略，部署时去掉 delta；官方 MIT 代码 LeCAR-Lab/ASAP 基于 HumanoidVerse，含数据集、重定向、MuJoCo sim2sim 与 G1 sim2real。"
+- ../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md
+- ../../sources/sites/asap-agile-human2humanoid.md
+- ../../sources/repos/asap.md
+- ../../sources/repos/humanoidverse.md
+- ../../sources/papers/humanoid_rl_stack_25_asap_aligning_simulation_and_real_world_physics.md
+- ../../sources/papers/humanoid_rl_stack_42_catalog.md
+summary: ASAP（RSS 2025，arXiv:2502.01143）：真机 rollout 训 delta action 模型对齐 sim–real 动力学，冻结回灌仿真微调 motion tracking 策略，部署时去掉 delta；官方 MIT 代码 LeCAR-Lab/ASAP 基于 HumanoidVerse，含数据集、重定向、MuJoCo sim2sim 与 G1 sim2real。
+project_id: notebook-asap-aligning-simulation-and-real-world-physics
+code: https://github.com/LeCAR-Lab/ASAP
+project: https://agile.human2humanoid.com
 ---
 
 # ASAP：Aligning Simulation and Real-World Physics for Agile Humanoid Skills
@@ -152,10 +170,46 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
-- 42 篇栈姊妹篇：[paper-hrl-stack-25-asap](./paper-hrl-stack-25-asap.md)
 - Sim2Real 地图：[freedof-sim2real-44-papers-technology-map](../overview/freedof-sim2real-44-papers-technology-map.md)
 - 残差谱系：[residual-policy-learning](../methods/residual-policy-learning.md)
 - 框架底座：[HumanoidVerse](./humanoidverse.md)、[human2humanoid](./human2humanoid.md)
+
+## 项目资源与工程补充
+
+### 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 25/42 |
+| 系统栈层 | 03 感知式高动态运动 |
+| 机构 | 卡内基梅隆大学（CMU）；英伟达（NVIDIA） |
+| venue | RSS 2025 |
+| 项目页 | <https://agile.human2humanoid.com/> |
+| 代码 | <https://github.com/LeCAR-Lab/ASAP>（**已开源**） |
+
+### 流程总览
+
+```mermaid
+flowchart LR
+  sim["仿真 motion tracking 预训练"]
+  real["真机 rollout"]
+  delta["delta action 模型"]
+  ft["回灌仿真微调"]
+  dep["真机部署（无 delta）"]
+  sim --> real --> delta --> ft --> dep
+```
+
+### 常见误区
+
+1. 感知 locomotion 的难点在 **闭环时延与几何误差**，不是单纯「加相机输入」。
+2. **ASAP 需要真机闭环：** 不能期望纯仿真 DR 复现论文级敏捷 tracking；delta 训练依赖真机轨迹。
+3. 与 [RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) Table V 的 ASAP-style 基线为 **同协议重实现**，不可与原论文表格直接横比。
+
+### 实验与评测
+
+- 三类迁移：**IsaacGym→IsaacSim**、**IsaacGym→Genesis**、**IsaacGym→真机 G1**；相对 SysID、DR、不回灌 delta 基线降低跟踪误差。
+- 技能：侧跳、前跳、踢球、球星庆祝等全身敏捷动作（项目页 demo）。
+- 量化细节以 [论文 PDF](https://arxiv.org/pdf/2502.01143) 与 [项目页](https://agile.human2humanoid.com/) 为准。
 
 ## 参考来源
 
@@ -165,8 +219,20 @@ sequenceDiagram
 - [humanoidverse.md](../../sources/repos/humanoidverse.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html>
 
+- [humanoid_rl_stack_25_asap_aligning_simulation_and_real_world_physics.md](../../sources/papers/humanoid_rl_stack_25_asap_aligning_simulation_and_real_world_physics.md) — 42 篇栈策展摘录
+- [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
+
 ## 推荐继续阅读
 
 - 项目页：<https://agile.human2humanoid.com/>
 - 官方代码：<https://github.com/LeCAR-Lab/ASAP>
 - 论文 PDF：<https://arxiv.org/pdf/2502.01143>
+
+- [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
+
+## 关联页面
+
+- **框架底座：** [HumanoidVerse](./humanoidverse.md)
+- 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- Sim2Real 地图：[freedof-sim2real-44-papers-technology-map.md](../overview/freedof-sim2real-44-papers-technology-map.md)
+- 残差谱系：[residual-policy-learning.md](../methods/residual-policy-learning.md)

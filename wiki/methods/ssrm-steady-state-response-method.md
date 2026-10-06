@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, identification, steady-state]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-06
 related:
   - ./joint-actuator-parameter-identification.md
   - ./sim2real-joint-sysid-experiment-design.md
@@ -11,7 +11,7 @@ related:
   - ../concepts/armature-modeling.md
   - ../concepts/robot-link-and-rotor-inertia.md
   - ../concepts/friction-compensation.md
-  - ../entities/bam-better-actuator-models.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/flobaroid.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -121,7 +121,7 @@ Armstrong–Dupont–Canudas 1994 综述与 Elhami & Brookfield 1997 的 **顺�
 |------|-----------|--------|
 | 力矩/电流 | $B,T_c,T_{\mathrm{bias}}$ | FloBaRoID 线性回归补 $I_a$ + 连杆参数 |
 | 只有编码器 | 仅摩擦/偏置（恒速仍可做） | BAM 摆锤 / PACE 悬空 Chirp 估 $J$ + 仿真对齐 |
-| 高减速比舵机 | 同上 | [BAM](../entities/bam-better-actuator-models.md) 文档站摆锤流程 |
+| 高减速比舵机 | 同上 | [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) 文档站摆锤流程 |
 
 ## 局限与风险
 
@@ -137,7 +137,7 @@ Armstrong–Dupont–Canudas 1994 综述与 Elhami & Brookfield 1997 的 **顺�
 - [Joint Friction Models](../concepts/joint-friction-models.md) — $T_f$ 模型选型
 - [System Identification](../concepts/system-identification.md) — SysID 全景
 - [Armature Modeling](../concepts/armature-modeling.md) — $J$ 在仿真里的写法
-- [BAM](../entities/bam-better-actuator-models.md) / [FloBaRoID](../entities/flobaroid.md) — SSRM 估完摩擦后的工具链
+- [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [FloBaRoID](../entities/flobaroid.md) — SSRM 估完摩擦后的工具链
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 
 ## 参考来源

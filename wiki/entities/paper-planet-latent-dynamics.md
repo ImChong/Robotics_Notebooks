@@ -10,7 +10,7 @@ tags:
   - google
   - google-deepmind
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "1811.04551"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

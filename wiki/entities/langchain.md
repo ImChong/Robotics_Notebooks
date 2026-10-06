@@ -1,28 +1,40 @@
 ---
 type: entity
-tags: [entity, llm-agents, rag, agent-infrastructure, langchain, integrations, tool-calling]
+tags:
+- entity
+- llm-agents
+- rag
+- agent-infrastructure
+- langchain
+- integrations
+- tool-calling
+- physical-ai
+- awesome-physical-ai
+- resource
 status: complete
-updated: 2026-09-29
+updated: 2026-10-06
 code: https://github.com/langchain-ai/langchain
-summary: "LangChain（langchain-ai/langchain）是 MIT 开源的 agent 工程框架：统一模型/embedding/向量库/工具/检索器组件；复杂编排见 LangGraph，开箱 harness 见 Deep Agents，生产观测见 LangSmith。"
+summary: LangChain（langchain-ai/langchain）是 MIT 开源的 agent 工程框架：统一模型/embedding/向量库/工具/检索器组件；复杂编排见 LangGraph，开箱 harness 见 Deep Agents，生产观测见 LangSmith。
 related:
-  - ./langgraph.md
-  - ./langsmith.md
-  - ./deep-agents.md
-  - ./langchain-ai.md
-  - ../concepts/retrieval-augmented-generation.md
-  - ../concepts/model-context-protocol.md
-  - ./openclaw.md
-  - ./hermes-agent.md
-  - ./sciencediscovery.md
-  - ./easy-vibe.md
-  - ./painode-125-langchain.md
-  - ../references/llm-wiki-karpathy.md
+- ./langgraph.md
+- ./langsmith.md
+- ./deep-agents.md
+- ./langchain-ai.md
+- ../concepts/retrieval-augmented-generation.md
+- ../concepts/model-context-protocol.md
+- ./openclaw.md
+- ./hermes-agent.md
+- ./sciencediscovery.md
+- ./easy-vibe.md
+- ../references/llm-wiki-karpathy.md
+- ../entities/awesome-physical-ai-aichr.md
+- ../overview/awesome-physical-ai-technology-map.md
 sources:
-  - ../../sources/repos/langchain.md
-  - ../../sources/sites/langchain-docs.md
-  - ../../sources/sites/langchain-com-ecosystem.md
-  - ../../sources/repos/pai_awesome_resource_125_langchain.md
+- ../../sources/repos/langchain.md
+- ../../sources/sites/langchain-docs.md
+- ../../sources/sites/langchain-com-ecosystem.md
+- ../../sources/repos/pai_awesome_resource_125_langchain.md
+project_id: langchain
 ---
 
 # LangChain
@@ -43,12 +55,13 @@ sources:
 | MCP | Model Context Protocol | 工具/上下文协议；可与 agent 工具生态并列选型 |
 | OSS | Open Source Software | 核心框架 MIT 开源 |
 
+| PAI | Physical AI | 具身/物理智能策展主题 |
+
 ## 为什么重要（对本知识库读者）
 
 - **RAG 与 agent 的默认「工业胶水」之一：** [RAG 概念页](../concepts/retrieval-augmented-generation.md) 中的 retriever、document loader、chain 抽象，LangChain 提供 **现成模块 + 集成目录**，适合 **企业知识库、日志 grounding、仿真文档问答** 等 **非运动学** 层。
 - **与具身控制栈正交：** 四足/人形 **cmd_vel、策略网络、sim 物理** 仍由 RL/VLA/ROS 栈负责；LangChain 多出现在 **自然语言任务接口、安全模板检索、运维 runbook agent**（例：SafeHumanoid 式 FAISS 模板库在概念上接近 RAG，实现未必用 LC）。
 - **对照自研 agent 环：** [OpenClaw](./openclaw.md)、[ScienceDiscovery](./sciencediscovery.md) 文档明确 **不用 LangChain/LangGraph**——选型时需分清 **「集成广度」** vs **「单一运行时可控性」**。
-- **Physical AI 清单锚点：** 亦收录于 awesome-physical-ai **#125**（[painode-125-langchain](./painode-125-langchain.md) 保留清单元数据）。
 
 ## 核心结构
 
@@ -134,7 +147,13 @@ sequenceDiagram
 - [Hermes Agent](./hermes-agent.md)
 - [ScienceDiscovery](./sciencediscovery.md)
 - [Easy-Vibe](./easy-vibe.md)
-- [awesome-physical-ai #125（清单节点）](./painode-125-langchain.md)
+
+- [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
+- [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md)
+
+- [model-context-protocol](../concepts/model-context-protocol.md)
+- [llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
+- [awesome-physical-ai-aichr](../entities/awesome-physical-ai-aichr.md)
 
 ## 参考来源
 

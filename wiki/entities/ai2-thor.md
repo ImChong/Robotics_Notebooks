@@ -1,17 +1,37 @@
 ---
 type: entity
-tags: [entity, simulator, embodied-ai, interactive-3d, visual-ai, ai2]
+tags:
+- entity
+- simulator
+- embodied-ai
+- interactive-3d
+- visual-ai
+- ai2
+- paper
+- awesome-sim2real
+- longchao-sim2real
 status: complete
-updated: 2026-06-22
+updated: 2026-10-06
 related:
-  - ./habitat-sim.md
-  - ./igibson.md
-  - ./matterport3d-simulator.md
-  - ../tasks/vision-language-navigation.md
-  - ../overview/sim-platforms-decade-technology-map.md
+- ./habitat-sim.md
+- ./igibson.md
+- ./matterport3d-simulator.md
+- ../tasks/vision-language-navigation.md
+- ../overview/sim-platforms-decade-technology-map.md
+- ../entities/awesome-sim2real.md
+- ../overview/lc-awesome-sim2real-technology-map.md
+- ../concepts/sim2real.md
+- ../methods/reinforcement-learning.md
+- ../tasks/locomotion.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
-summary: "艾伦人工智能研究所 2017 年推出的交互式 3D 室内环境：高质量视觉渲染 + 细粒度物体状态交互，推动从被动视觉识别到主动具身交互的范式转变。"
+- ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
+- ../../sources/papers/lc_awesome_sim2real_1712_05474_ai2-thor-an-interactive-3d-environment-f.md
+- ../../sources/papers/lc_awesome_sim2real_catalog.md
+- ../../sources/repos/awesome-sim2real.md
+summary: 艾伦人工智能研究所 2017 年推出的交互式 3D 室内环境：高质量视觉渲染 + 细粒度物体状态交互，推动从被动视觉识别到主动具身交互的范式转变。
+project_id: ai2-thor
+arxiv: '1712.05474'
 ---
 
 # AI2-THOR
@@ -30,6 +50,11 @@ summary: "艾伦人工智能研究所 2017 年推出的交互式 3D 室内环境
 | VQA | Visual Question Answering | 视觉问答任务 |
 | IL | Imitation Learning | 从演示学习策略 |
 | RGB | Red Green Blue | 三通道彩色图像观测 |
+
+| Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
+| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
+| DR | Domain Randomization | 域随机化 |
+| FM | Foundation Model | 大模型/基础模型增强迁移 |
 
 ## 为什么重要
 
@@ -57,12 +82,27 @@ summary: "艾伦人工智能研究所 2017 年推出的交互式 3D 室内环境
 - [iGibson](./igibson.md) — 真实感场景 + 物理交互融合
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
 
+- 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
+- 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+
+- [reinforcement-learning](../methods/reinforcement-learning.md)
+- [manipulation](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
 - Kolve et al., *AI2-THOR: An Interactive 3D Environment for Visual AI* — [arXiv](https://arxiv.org/abs/1712.05474)
 
+- [`sources/papers/lc_awesome_sim2real_1712_05474_ai2-thor-an-interactive-3d-environment-f.md`](../../sources/papers/lc_awesome_sim2real_1712_05474_ai2-thor-an-interactive-3d-environment-f.md) — 本条目策展摘录
+- [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
+- [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- 论文：<https://arxiv.org/abs/1712.05474>
+
 ## 推荐继续阅读
 
 - [AI2-THOR 项目页](https://ai2thor.allenai.org/)
 - [Matterport3D Simulator](./matterport3d-simulator.md) — VLN 真实感基准姊妹线
+
+- [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
+- [原文](https://arxiv.org/abs/1712.05474)

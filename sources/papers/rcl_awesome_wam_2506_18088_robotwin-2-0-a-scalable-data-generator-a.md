@@ -15,7 +15,7 @@
 - **项目页：** <https://robotwin-platform.github.io/>
 - **子类 / 象限：** 合成数据与数据生成 · 双臂机器人数据 · 三维物体资源 · 机器人操作基准 · 鲁棒性与泛化评测 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-2506-18088-robotwin-2-0-a-scalable-data-generator-and-bench.md`](../../wiki/entities/paper-rcl-2506-18088-robotwin-2-0-a-scalable-data-generator-and-bench.md)
+- **沉淀到 wiki：** [`wiki/entities/robotwin.md`](../../wiki/entities/robotwin.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-2506-18088-robotwin-2-0-a-scalable-data-generator-and-bench.md`](../../wiki/entities/paper-rcl-2506-18088-robotwin-2-0-a-scalable-data-generator-and-bench.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/robotwin.md`](../../wiki/entities/robotwin.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

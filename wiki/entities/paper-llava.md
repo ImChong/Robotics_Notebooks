@@ -1,35 +1,42 @@
 ---
 type: entity
 tags:
-  - paper
-  - vlm
-  - vision-language
-  - vla
-  - instruction-tuning
-  - uw-madison
-  - microsoft
-  - columbia
+- paper
+- vlm
+- vision-language
+- vla
+- instruction-tuning
+- uw-madison
+- microsoft
+- columbia
+- multimodal
+- deep-learning
+- foundation-model
 status: complete
-updated: 2026-09-24
-arxiv: "2304.08485"
+updated: 2026-10-06
+arxiv: '2304.08485'
 code: https://github.com/haotian-liu/LLaVA
 related:
-  - ./llava.md
-  - ./paper-clip.md
-  - ./paper-openvla.md
-  - ../methods/vla.md
-  - ../overview/multimodal-llm-development.md
-  - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ./paper-clip.md
+- ./paper-openvla.md
+- ../methods/vla.md
+- ../overview/multimodal-llm-development.md
+- ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ../concepts/multimodality-basics.md
+- ../entities/transformer-cv-curriculum.md
+- ./fluxvla-engine.md
 sources:
-  - ../../sources/papers/llava_arxiv_2304_08485.md
-  - ../../sources/sites/llava-vl.md
-  - ../../sources/repos/haotian-liu-llava.md
-summary: "LLaVA（arXiv:2304.08485，UW–Madison / Microsoft / Columbia）：GPT-4 生成视觉指令数据 + CLIP–Vicuna 两阶段微调；开源 VLM 指令跟随基座，VLA 常见上游模板。haotian-liu/LLaVA 已开源。"
+- ../../sources/papers/llava_arxiv_2304_08485.md
+- ../../sources/sites/llava-vl.md
+- ../../sources/repos/haotian-liu-llava.md
+- ../../sources/courses/transformer_cv_applications_syllabus.md
+summary: LLaVA（arXiv:2304.08485，UW–Madison / Microsoft / Columbia）：GPT-4 生成视觉指令数据 + CLIP–Vicuna 两阶段微调；开源 VLM 指令跟随基座，VLA 常见上游模板。haotian-liu/LLaVA 已开源。
+project_id: llava
 ---
 
 # LLaVA：Visual Instruction Tuning
 
-**LLaVA**（*Visual Instruction Tuning*，[arXiv:2304.08485](https://arxiv.org/abs/2304.08485)，[项目页](https://llava-vl.github.io/)，[代码](https://github.com/haotian-liu/LLaVA)）由 **威斯康星大学麦迪逊分校 / 微软研究院 / 哥伦比亚大学** 提出：用 **language-only GPT-4** 从图文对生成多模态指令数据，将 **CLIP ViT-L/14** 经投影层接到 **Vicuna** LLM 并两阶段微调。模型实体见 [llava](./llava.md)；**本页是论文 canonical 节点**。
+**LLaVA**（*Visual Instruction Tuning*，[arXiv:2304.08485](https://arxiv.org/abs/2304.08485)，[项目页](https://llava-vl.github.io/)，[代码](https://github.com/haotian-liu/LLaVA)）由 **威斯康星大学麦迪逊分校 / 微软研究院 / 哥伦比亚大学** 提出：用 **language-only GPT-4** 从图文对生成多模态指令数据，将 **CLIP ViT-L/14** 经投影层接到 **Vicuna** LLM 并两阶段微调。模型实体见 [llava](#项目资源与工程补充)；**本页是论文 canonical 节点**。
 
 ## 一句话定义
 
@@ -130,12 +137,49 @@ sequenceDiagram
 | [OpenVLA](./paper-openvla.md) | 在 VLM 栈上接机器人动作 token |
 | [RT-2](./paper-rt-2.md) | 闭源 PaLM-E 路线，非 LLaVA 开源栈 |
 
+## 项目资源与工程补充
+
+### 核心原理
+
+**Stage1**：在 CC3M 上只更新投影矩阵，对齐 CLIP patch 特征与 LLM 词嵌入。**Stage2**：在 LLaVA-Instruct-150K 上端到端微调 LLM（视觉塔通常冻结）。推理时图像经 CLIP → 投影 → 与文本 token 拼接送入 Vicuna 自回归解码。
+
+```mermaid
+flowchart LR
+  img[图像] --> clip[CLIP ViT-L/14]
+  clip --> proj[线性投影]
+  proj --> llm[Vicuna LLM]
+  txt[用户指令] --> llm
+  llm --> out[多轮文本回复]
+  out -.-> vla[VLA 动作头 可选]
+```
+
+### 工程实践
+
+| 项 | 建议 |
+|----|------|
+| 权重 | 官方 [haotian-liu/LLaVA](https://github.com/haotian-liu/LLaVA) 或 Hugging Face 镜像 |
+| 数据 | [LLaVA-Instruct-150K](https://huggingface.co/datasets/liuhaotian/LLaVA-Instruct-150K)；课程作业可用子集 LoRA |
+| 微调 | Stage1 可跳过若用已对齐 checkpoint；机器人任务常 **冻结视觉塔 + LoRA LLM** |
+| VLA 接法 | 保留 VLM 骨干，替换输出为动作 token / flow head；见 [VLA](../methods/vla.md) |
+| 机器人 | 明确延迟：7B 级 VLM 常需云端规划 + 边缘低层控制 |
+
+### 局限与风险
+
+- **非策略模型**：默认输出文本；操作成功率取决于下游动作头与真机数据。
+- **CLIP 几何弱**：细粒度空间/接触任务建议对照 [DINOv2](./paper-dinov2.md) 或 [OpenVLA](./paper-openvla.md) 双塔方案。
+- **GPT-4 数据噪声**：自动生成指令需过滤；开源状态以 [项目页](https://llava-vl.github.io/) 为准。
+
 ## 关联页面
 
-- [LLaVA 模型实体](./llava.md)
 - [CLIP 论文实体](./paper-clip.md)
 - [VLA 方法](../methods/vla.md)
 - [多模态 LLM 发展路线](../overview/multimodal-llm-development.md)
+
+- [多模态基础](../concepts/multimodality-basics.md)
+- [FluxVLA Engine](./fluxvla-engine.md)
+
+- [vla-wm-reading-roadmap-14-papers-technology-map](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [transformer-cv-curriculum](../entities/transformer-cv-curriculum.md)
 
 ## 推荐继续阅读
 
@@ -148,3 +192,5 @@ sequenceDiagram
 - [llava_arxiv_2304_08485](../../sources/papers/llava_arxiv_2304_08485.md)
 - [llava-vl 项目页](../../sources/sites/llava-vl.md)
 - [haotian-liu-llava](../../sources/repos/haotian-liu-llava.md)
+
+- [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)

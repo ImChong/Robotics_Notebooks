@@ -518,7 +518,7 @@ sources:
 | --- | --- | --- |
 | WALL-X | VLA/操作模型 | [WALL-X](../entities/cn-os-wall-x.md) |
 | X-Tokenizer | VLA/操作模型 | [X-Tokenizer](../entities/cn-os-x-tokenizer.md) |
-| WALL-WM | 世界模型 | [WALL-WM](../entities/cn-os-wall-wm.md) |
+| WALL-WM | 世界模型 | [WALL-WM](../entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md) |
 | WALL-SS | 世界模型 | [WALL-SS](../entities/paper-wall-ss.md) |
 
 #### 蚂蚁灵波（9）
@@ -628,7 +628,7 @@ sources:
 | wujihandros2 | 工程与工具 | [wujihandros2](../entities/cn-os-wujihandros2.md) |
 | wuji-description | 本体模型资产 | [wuji-description](../entities/cn-os-wuji-description.md) |
 | mujoco-sim | 仿真环境 | [mujoco-sim](../entities/mujoco.md) |
-| isaaclab-sim | 运动RL/技能训练 | [isaaclab-sim](../entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md) |
+| isaaclab-sim | 运动RL/技能训练 | [isaaclab-sim](../entities/isaac-lab.md) |
 | wuji-retargeting | 动作重定向 | [wuji-retargeting](../entities/cn-os-wuji-retargeting.md) |
 | wuji-hand-teleop | 遥操作与数据采集 | [wuji-hand-teleop](../entities/cn-os-wuji-hand-teleop.md) |
 | wuji-mjlab | 移动操作 | [wuji-mjlab](../entities/cn-os-wuji-mjlab.md) |
@@ -667,7 +667,7 @@ sources:
 
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
-| VideoWorld | 世界模型 | [VideoWorld](../entities/cn-os-videoworld.md) |
+| VideoWorld | 世界模型 | [VideoWorld](../entities/paper-rcl-2501-09781-videoworld-exploring-knowledge-learning-from-unl.md) |
 | SimArt | 仿真环境 | [SimArt](../entities/cn-os-simart.md) |
 | GR-1 | VLA/操作模型 | [GR-1](../entities/paper-shenlan-wm-09-gr1.md) |
 | GR-MG | VLA/操作模型 | [GR-MG](../entities/cn-os-gr-mg.md) |
@@ -693,7 +693,7 @@ sources:
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
 | ABot-World | 世界模型 | [ABot-World](../entities/botworld.md) |
-| RynnVLA-002 | VLA/操作模型 | [RynnVLA-002](../entities/cn-os-rynnvla-002.md) |
+| RynnVLA-002 | VLA/操作模型 | [RynnVLA-002](../entities/paper-rcl-2511-17502-rynnvla-002-a-unified-vision-language-action-and.md) |
 | RynnBrain | 具身Agent/规划 | [RynnBrain](../entities/paper-rynnbrain-1-1.md) |
 | ABot-Manipulation | VLA/操作模型 | [ABot-Manipulation](../entities/paper-abot-m05-mobile-manipulation-wam.md) |
 | RynnEC | 具身Agent/规划 | [RynnEC](../entities/cn-os-rynnec.md) |
@@ -792,7 +792,7 @@ sources:
 | Alicia-M-SDK | SDK/驱动 | [Alicia-M-SDK](../entities/cn-os-alicia-m-sdk.md) |
 | Bessica-D-SDK | SDK/驱动 | [Bessica-D-SDK](../entities/cn-os-bessica-d-sdk.md) |
 | Gloria-M-SDK | SDK/驱动 | [Gloria-M-SDK](../entities/cn-os-gloria-m-sdk.md) |
-| Synria-Robots-Isaaclab | 仿真环境 | [Synria-Robots-Isaaclab](../entities/paper-sa-2511-04831-isaac-lab-a-gpu-accelerated-simulation-framework.md) |
+| Synria-Robots-Isaaclab | 仿真环境 | [Synria-Robots-Isaaclab](../entities/isaac-lab.md) |
 | VR-Teleoperation | 遥操作与数据采集 | [VR-Teleoperation](../entities/cn-os-teleoperation.md) |
 | Electronic-Skin-ML | SDK/驱动 | [Electronic-Skin-ML](../entities/cn-os-electronic-skin-ml.md) |
 | Open-Robot-Descriptions | 本体模型资产 | [Open-Robot-Descriptions](../entities/cn-os-open-robot-descriptions.md) |

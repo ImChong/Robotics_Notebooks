@@ -16,7 +16,7 @@ tags:
   - miaodong
   - mondo-robotics
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:

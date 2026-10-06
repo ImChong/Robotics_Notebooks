@@ -2,11 +2,11 @@
 type: overview
 tags: [overview, survey, vla, wam, locomotion, manipulation, planning, technology-map]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 related:
   - ../entities/paper-vla-adapter.md
   - ../entities/paper-fast-wam.md
-  - ../entities/openvla.md
+  - ../entities/paper-openvla.md
   - ../methods/vla.md
   - ../concepts/world-action-models.md
 sources:
@@ -69,7 +69,7 @@ flowchart TB
 
 | 项目 | 节点 | 开源 |
 |------|------|------|
-| OpenVLA | [openvla](../entities/openvla.md) | 已开源 |
+| OpenVLA | [openvla](../entities/paper-openvla.md) | 已开源 |
 | Octo | [paper-octo](../entities/paper-octo.md) | 已开源 |
 | π-0 | [paper-pi0](../entities/paper-pi0.md) | 已开源 |
 | π-0.5 | [paper-pi05-open-world-vla](../entities/paper-pi05-open-world-vla.md) | 已开源 |
@@ -161,7 +161,7 @@ flowchart TB
 
 | 场景 | 公众号建议组合 | 本库入口 |
 |------|----------------|----------|
-| 机械臂通用操作 | OpenVLA + Diffusion Policy | [openvla](../entities/openvla.md) + [Diffusion Policy](../entities/paper-diffusion-policy.md) |
+| 机械臂通用操作 | OpenVLA + Diffusion Policy | [openvla](../entities/paper-openvla.md) + [Diffusion Policy](../entities/paper-diffusion-policy.md) |
 | 人形双腿 | AMP + RMA + Humanoid-VLA | [AMP](../entities/amp-for-hardware.md) + [RMA](../entities/paper-rma-rapid-motor-adaptation.md) |
 | 长时序任务 | VLA + WAM + LLM 规划 | [Fast-WAM](../entities/paper-fast-wam.md) + [EmbodiedBrain](../entities/paper-embodiedbrain.md) |
 | 轮式家务人形 | ACE-Ego / LingBot + VLA-Adapter + Motus | 见 2026-VLA / 2026-WAM 表 |

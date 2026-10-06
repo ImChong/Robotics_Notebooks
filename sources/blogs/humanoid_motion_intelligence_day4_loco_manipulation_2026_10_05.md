@@ -37,7 +37,7 @@
 | Weave | [Weave](../../wiki/entities/paper-weave.md) | 人体示范灵巧移动操作 |
 | ForeTime-VLA | [ForeTime-VLA](../../wiki/entities/paper-foretime-vla.md) | 未来 token 蒸馏 |
 | DECOWAM | [DECOWAM](../../wiki/entities/paper-decowam.md) | 解耦世界动作模型 |
-| MobileWAM | [MobileWAM](../../wiki/entities/paper-mobilewam-mobile-manipulation-wam.md) | 移动操作世界动作模型 |
+| MobileWAM | [MobileWAM](../../wiki/entities/paper-rcl-2608-04657-mobilewam-bridging-world-action-models-to-mobile.md) | 移动操作世界动作模型 |
 | TF-ART | [TF-ART](../../wiki/entities/paper-tf-art-tactile-force-survey.md) | 力觉和触觉学习综述 |
 | FARO | [FARO](../../wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md) | 可行性约束的运动优化 |
 | SteadyTray | [SteadyTray](../../wiki/entities/paper-notebook-steadytray.md) | 托盘物体平衡 |

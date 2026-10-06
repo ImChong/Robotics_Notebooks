@@ -6,7 +6,7 @@ tags:
   - humanoid
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 code: https://github.com/YanjieZe/awesome-humanoid-robot-learning
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

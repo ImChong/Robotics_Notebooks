@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, manipulation, humanoid, world-model, video-generation, synthetic-data, inverse-dynamics, nvidia, fourier]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2505.12705"
 code: https://github.com/NVIDIA/GR00T-Dreams
 related:

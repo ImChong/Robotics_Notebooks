@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2104.11213"
 venue: "CVPR"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清单索引，细节以原文为准。"

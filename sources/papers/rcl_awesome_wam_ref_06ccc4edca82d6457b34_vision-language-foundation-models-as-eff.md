@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-06ccc4edca82d6457b34-vision-language-foundation-models-as-effective-r.md`](../../wiki/entities/paper-rcl-ref-06ccc4edca82d6457b34-vision-language-foundation-models-as-effective-r.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

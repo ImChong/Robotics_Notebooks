@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "1906.01728"
 summary: "Bayesian domain randomization approach for data-efficient sim-to-real adaptation."
 related:

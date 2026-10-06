@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, reinforcement-learning, recap, manipulation, physical-intelligence, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 title: π*₀.₆ 与 RECAP
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2511.14759"
 venue: "2025"
 related:
@@ -12,7 +12,7 @@ related:
   - ./paper-real-time-chunking.md
   - ./pi-physical-intelligence-layer.md
   - ../concepts/embodied-data-flywheel-minimal-closed-loop.md
-  - ./awesome-world-action-models-rcl.md
+  - ./paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
 sources:
   - ../../sources/papers/pistar06_arxiv_2511_14759.md

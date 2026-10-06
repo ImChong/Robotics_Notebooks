@@ -31,5 +31,5 @@
 
 ## 对 wiki 的映射
 
-- [GRID（General Robotics）](../../wiki/entities/grid-general-robotics.md)
+- [GRID（General Robotics）](../../wiki/entities/paper-grid-general-robot-intelligence-development.md)
 - [Introducing Auto Engineering for Robotics（博客归档）](../blogs/generalrobotics_auto_engineering_2026-09-09.md)

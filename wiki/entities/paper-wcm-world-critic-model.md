@@ -2,13 +2,13 @@
 type: entity
 tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2607.29613"
 code: https://github.com/sylvestf/WCM
 related:
   - ../methods/model-based-rl.md
   - ../methods/vla.md
-  - ./openvla.md
+  - ./paper-openvla.md
   - ./paper-pi05-open-world-vla.md
   - ../comparisons/online-vs-offline-rl.md
   - ../methods/generative-world-models.md
@@ -209,7 +209,7 @@ sequenceDiagram
 - [VLA 方法页](../methods/vla.md) — 被后训练的策略族
 - [基于模型的强化学习](../methods/model-based-rl.md) — 世界模型的常规用法对照
 - [生成式世界模型](../methods/generative-world-models.md) — 像素级预测路线对照
-- [OpenVLA](./openvla.md) — 自回归主干（论文用 OpenVLA-OFT）
+- [OpenVLA](paper-openvla.md) — 自回归主干（论文用 OpenVLA-OFT）
 - [π₀.₅ 开放世界 VLA](./paper-pi05-open-world-vla.md) — flow matching 主干
 - [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) — WCM 两侧都接
 - [ActFovea](./paper-actfovea.md) — 时序信息用于推理期防护的对照

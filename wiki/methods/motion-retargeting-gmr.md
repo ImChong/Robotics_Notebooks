@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-06
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -20,7 +20,7 @@ related:
   - ../entities/paper-egohtr.md
   - ../entities/generative-motion-rig.md
   - ../entities/paper-humantracker.md
-  - ../entities/core-retarget.md
+  - ../entities/paper-core.md
   - ../entities/paper-core.md
   - ../entities/paper-rmr.md
   - ../entities/paper-hoi-retarget.md
@@ -213,5 +213,5 @@ $$
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 场景对齐人演示的 Human2Robot 上游之一。
 - [HumanTracker](../entities/paper-humantracker.md) — 153 h 光学基准用 GMR 得到 29-DoF `qpos` 参考，再人工剔除漂浮/穿地。
 - [X-Morph](../entities/paper-xmorph.md) — 视频链路用 GMR 把 SMPL→G1，再跨形态到非人形腿式机器人。
-- [CoRe v0.1.0](../entities/core-retarget.md) — SOMA 输入 + 接触精炼的开源对照；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)。
+- [CoRe v0.1.0](../entities/paper-core.md) — SOMA 输入 + 接触精炼的开源对照；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)。
 - [HOI-Retarget](../entities/paper-hoi-retarget.md) — ETH RSL HOI 管线 **vendored GMR fork** 作 III-A IK，再接物体系 contact 窗口 NLP（arXiv:2609.34674，[已开源](https://github.com/shinben0327/hoi-retarget)）。

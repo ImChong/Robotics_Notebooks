@@ -10,7 +10,7 @@ tags:
   - contact-rich
   - tsinghua
 status: complete
-updated: 2026-09-23
+updated: 2026-10-06
 arxiv: "2507.09160"
 venue: "arXiv 2025"
 summary: "Tactile-VLA（arXiv:2507.09160，清华/UESTC/SJTU）：VLM token 级 cross-attn 融合 + 混合位置–力控制器 + CoT；USB/Charger 35%/90% vs π₀-base 5%/40%；擦板 CoT 域外 80% vs 0%；代码 coming soon。"

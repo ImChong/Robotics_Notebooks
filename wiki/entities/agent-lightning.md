@@ -14,7 +14,7 @@ updated: 2026-09-19
 related:
   - ./deepseek-harness.md
   - ./hermes-agent.md
-  - ./rsi-harness.md
+  - ./paper-metarsi-v1.md
   - ./karpathy-autoresearch.md
   - ../concepts/ai-auto-research.md
   - ../methods/reinforcement-learning.md
@@ -59,7 +59,7 @@ summary: "Agent Lightning（microsoft/agent-lightning，MIT，v1.0.1）是微软
 
 ## 为什么重要（对本知识库读者）
 
-- **Harness 与训练解耦：** 本库已收录 [DeepSeek Harness](./deepseek-harness.md)、[Hermes Agent](./hermes-agent.md)、[RSI-Harness](./rsi-harness.md) 等 **agent 运行时 / 实验组织** 层；Agent Lightning 解决 **下一层** — 如何把这些 harness 里真实的工具调用轨迹 **变成 RL 更新**，而不是另写一套「简化版 agent 环境」。
+- **Harness 与训练解耦：** 本库已收录 [DeepSeek Harness](./deepseek-harness.md)、[Hermes Agent](./hermes-agent.md)、[RSI-Harness](paper-metarsi-v1.md) 等 **agent 运行时 / 实验组织** 层；Agent Lightning 解决 **下一层** — 如何把这些 harness 里真实的工具调用轨迹 **变成 RL 更新**，而不是另写一套「简化版 agent 环境」。
 - **对接 autoresearch 思维：** [Karpathy autoresearch](./karpathy-autoresearch.md) 与 [AI Auto-Research](../concepts/ai-auto-research.md) 强调 **Explore→Execute→Verify**；Agent Lightning 的 Coding Agent 管线（数据清洗、reward hacking 防护、仓库测试奖励）是 **S3 代码与实验** 侧可复用的 **RL 飞轮** 参照，与机器人 sim RL 正交但共享「轨迹→策略」结构。
 - **工程可落地：** 官方给出 **单卡 A100 Calc-X Quick Start**、**K8s Job** 模式，以及 Search R1 / LLM-in-Sandbox / SWE 等多域示例；对需要 **在线 agent rollout + 异步采集** 的研究栈（对照 [reinforcement-learning](../methods/reinforcement-learning.md) 中 verl 生态条目）是直接入口。
 
@@ -153,7 +153,7 @@ sequenceDiagram
 
 - [DeepSeek Harness](./deepseek-harness.md) — 通用 **agent OS**；可经 Gateway 代理接 RL 训练环
 - [Hermes Agent](./hermes-agent.md) — 常驻 agent 运行时 + 轨迹导出；与「外置 RL Trainer」互补
-- [RSI-Harness](./rsi-harness.md) — **实验组织 Genome**；Agent Lightning 偏 **策略权重 RL**
+- [RSI-Harness](paper-metarsi-v1.md) — **实验组织 Genome**；Agent Lightning 偏 **策略权重 RL**
 - [Karpathy autoresearch](./karpathy-autoresearch.md) — 固定验证指标的 **代理 ablation 环**
 - [AI Auto-Research](../concepts/ai-auto-research.md) — S3 实验自动化生命周期坐标
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法栈；verl 生态交叉引用

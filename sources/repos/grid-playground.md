@@ -27,4 +27,4 @@
 ## 对 wiki 的映射
 
 - [paper-grid-general-robot-intelligence-development.md](../../wiki/entities/paper-grid-general-robot-intelligence-development.md)
-- [grid-general-robotics.md](../../wiki/entities/grid-general-robotics.md)
+- [grid-general-robotics.md](../../wiki/entities/paper-grid-general-robot-intelligence-development.md)

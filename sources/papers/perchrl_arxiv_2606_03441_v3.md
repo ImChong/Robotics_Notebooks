@@ -59,7 +59,7 @@ arXiv v3 元数据列出 9 位作者（相比早期版本增加 Yitao Zeng），
 ## wiki 映射
 
 - 论文实体：[paper-perchrl-2606-03441.md](../../wiki/entities/paper-perchrl-2606-03441.md)
-- 项目实体：[perchrl-project.md](../../wiki/entities/perchrl-project.md)
+- 项目实体：[perchrl-project.md](../../wiki/entities/paper-perchrl-2606-03441.md)
 - 官方项目来源：[robotics_star_perchrl.md](../sites/robotics_star_perchrl.md)
 
 ## 原始入口

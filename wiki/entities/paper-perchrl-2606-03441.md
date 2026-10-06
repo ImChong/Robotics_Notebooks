@@ -1,16 +1,24 @@
 ---
 type: entity
-tags: [paper, quadrotor, agile-perching, reinforcement-learning, vision-based-control]
+tags:
+- paper
+- quadrotor
+- agile-perching
+- reinforcement-learning
+- vision-based-control
+- project
+- star-group
 status: complete
 updated: 2026-10-06
-arxiv: "2606.03441v3"
-venue: "Submitted to CoRL 2026"
-summary: "两阶段视觉强化学习四旋翼敏捷栖停：先以动力学可行的随机平台运动做状态策略预训练，再用可见性门控观测、EKF可靠度提示和主动感知奖励微调，处理移动倾斜平台上的间歇视觉丢失。"
-related:
-  - ./perchrl-project.md
+arxiv: 2606.03441v3
+venue: Submitted to CoRL 2026
+summary: 两阶段视觉强化学习四旋翼敏捷栖停：先以动力学可行的随机平台运动做状态策略预训练，再用可见性门控观测、EKF可靠度提示和主动感知奖励微调，处理移动倾斜平台上的间歇视觉丢失。
+related: []
 sources:
-  - ../../sources/papers/perchrl_arxiv_2606_03441_v3.md
-  - ../../sources/sites/robotics_star_perchrl.md
+- ../../sources/papers/perchrl_arxiv_2606_03441_v3.md
+- ../../sources/sites/robotics_star_perchrl.md
+project_id: perchrl
+project: https://robotics-star.com/projects.html
 ---
 
 # PerchRL
@@ -27,6 +35,9 @@ sources:
 | EKF | Extended Kalman Filter | 视觉丢失期间预测平台状态 |
 | CTBR | Collective Thrust and Body Rates | 策略输出的推力与机体系角速度控制接口 |
 
+| RL | Reinforcement Learning | 感知与飞行控制策略的学习框架 |
+| CoRL | Conference on Robot Learning | 页面标注的投稿会议 |
+
 ## 论文与版本
 
 | 字段 | 内容 |
@@ -36,7 +47,7 @@ sources:
 | 版本 | arXiv v3，2026-09-19 修订；cs.RO / cs.LG |
 | 投稿状态 | STAR Group 页面标注 Submitted to CoRL 2026；不是已接收声明 |
 | 论文 | [arXiv:2606.03441v3](https://arxiv.org/abs/2606.03441v3) · [HTML](https://arxiv.org/html/2606.03441v3) · [PDF](https://arxiv.org/pdf/2606.03441v3) |
-| 项目页 | [STAR Group — PerchRL](https://robotics-star.com/projects.html)（独立归档见 [项目详情](./perchrl-project.md)） |
+| 项目页 | [STAR Group — PerchRL](https://robotics-star.com/projects.html)（独立归档见 [项目详情](#项目资源与工程补充)） |
 | 代码 | 未公开；论文写明 source code will be released |
 
 ## 问题设定与主张
@@ -70,7 +81,11 @@ flowchart LR
 
 - **可见性门控仿真观测：** 使用向下针孔相机模型判定目标是否在视野中；只在检测周期到达且目标可见时产生带噪位姿测量。噪声含各向异性、几何依赖和系统偏差。
 - **连续状态估计：** CTRV（constant turn rate and velocity）模型驱动 EKF 持续预测平台状态；观测可用时依据 Mahalanobis 距离门控更新。
-- **可见性可靠度：** 当前视觉丢失时长为 (T_t^{loss})，输入可靠度 (ho_t=exp(-lambda_ho T_t^{loss}))，可见时 (ho_t=1)。预测状态因此保持输入连续，而逐渐下降的 (ho_t) 提示策略不要无限信任 stale prediction。
+- **可见性可靠度：** 当前视觉丢失时长为 (T_t^{loss})，输入可靠度 (
+ho_t=exp(-lambda_
+ho T_t^{loss}))，可见时 (
+ho_t=1)。预测状态因此保持输入连续，而逐渐下降的 (
+ho_t) 提示策略不要无限信任 stale prediction。
 - **主动感知奖励：** 一项惩罚 EKF 平台位置估计误差并随丢失时长加强；另一项奖励相机光轴朝向目标。与状态增强联合训练，使策略自己学习何时优先重获视觉、何时趁预测可信继续追击。
 
 ## 训练、基线与消融
@@ -78,7 +93,8 @@ flowchart LR
 - PPO 基于开源 Omnidrones 工具链；论文报告 8192 个并行环境、100 Hz / 0.01 s 仿真步长、最长 500 步，训练机器为 Intel i7-14700KF + NVIDIA RTX 4080。
 - 随机化质量 ±30%、惯量 ±10%、推重比 ±15%、相机安装倾角 ±5°，并将检测频率随机化在 20–60 Hz。
 - 状态策略与 Fast-Perching（模型预测规划）、InclineLander（RL）及无 temporal augmentation 变体比较；在往复直线、跑道、8 字等结构化轨迹上，基线按轨迹专门训练至最多 40M steps。论文报告 PerchRL 在各场景成功率最高；无 temporal augmentation 的 MLP 对固定轨迹尚可，但在随机 B-spline 轨迹上训练受阻、速度上升时泛化较差。
-- 视觉策略与使用相同两阶段训练策略的 LSTM 基线比较，并消融可靠度/状态增强/主动感知机制。状态增强贡献显著；单独使用状态增强已可达有竞争力的结果；主动感知奖励进一步改善收敛和最终表现，但单独不足以稳健应对视觉丢失。移除 (ho_t) 后策略会过度信任漂移的 EKF 估计。
+- 视觉策略与使用相同两阶段训练策略的 LSTM 基线比较，并消融可靠度/状态增强/主动感知机制。状态增强贡献显著；单独使用状态增强已可达有竞争力的结果；主动感知奖励进一步改善收敛和最终表现，但单独不足以稳健应对视觉丢失。移除 (
+ho_t) 后策略会过度信任漂移的 EKF 估计。
 
 ## 真机与定量结果
 
@@ -109,22 +125,51 @@ Normal-I/Hard-I 是正文重点展示；六个场景的补充细节在论文视�
 边界与复现注意：
 
 1. 视觉策略依赖外部 AprilTag 检测，控制器本身不从 RGB 端到端学习；更换 marker / detector / 标定后仍需验证检测噪声和延迟是否落在训练分布内。
-2. EKF 的 CTRV 运动假设在急转、加减速时会失配；(ho_t) 是基于丢失时长的置信代理，不等同于经校准的协方差或真实概率。
+2. EKF 的 CTRV 运动假设在急转、加减速时会失配；(
+ho_t) 是基于丢失时长的置信代理，不等同于经校准的协方差或真实概率。
 3. 固定刚性相机与四旋翼欠驱动动力学形成 perception-control coupling。作者在结论中提出 active gimbal 联合控制作为未来方向。
 4. 真机移动平台用差速车及铁磁板/磁铁接触，报告场景与失败数有限；Hard-I / II 各 10 次，不应把结果外推成任意倾角、目标检测器或载荷设置下的普遍成功率。
 5. 仿真基于 Omnidrones；论文未公开代码、配置、权重或完整复现脚本。工具链开源不代表 PerchRL 实现已开源。
+
+## 源码运行时序图
+
+**不适用**（截至 2026-10-06，项目页未链接官方可运行代码；论文承诺发布，但公开演示视频不构成复现代码）。
 
 ## 结论
 
 PerchRL 把间歇视觉反馈显式纳入策略状态与训练目标：估计器保持输入连续，可靠度信号告诉策略预测何时变得陈旧，主动感知奖励再提供恢复视野的学习信号。仿真与真机结果支持其在本文测试平台上的可行性；Hard 场景 7/10 成功和固定相机/检测器依赖也说明它仍是针对特定视觉栖停系统的验证，而非通用无人机栖停保证。
 
+## 项目资源与工程补充
+
+### 项目身份
+
+| 字段 | 内容 |
+|---|---|
+| 项目名称 | PerchRL: Vision-Based Agile Perching |
+| 研究组 | Smart Autonomous Robotics Group（STAR Group） |
+| 页面状态 | Submitted to CoRL 2026（官网项目页） |
+| 官方入口 | [STAR Group Projects](https://robotics-star.com/projects.html) |
+| 论文入口 | [arXiv:2606.03441v3](https://arxiv.org/abs/2606.03441v3) |
+| 官方代码 | 项目页未链接代码；论文表示 source code will be released，当前按未公开记录 |
+| 视频 | [Video 1](https://www.bilibili.com/video/BV1t2j863ERi) · [Video 2](https://www.bilibili.com/video/BV12LVm6yExG) |
+
+项目页对外概括：PerchRL 用 state-based pre-training 接 vision-based fine-tuning；随机化平台轨迹和 temporal augmentation 面向不同运动泛化；visibility-aware state augmentation 与 active-perception rewards 面向有限视场中的间歇视觉丢失。官网还声称系统在多种四旋翼平台上完成了仿真与真机实时栖停。方法、消融与量化结果见本页前文。
+
+### 页面材料及解读
+
+- STAR Group 项目列表页将 PerchRL 单列为研究项目，并标注 CoRL 2026 投稿状态。
+- STAR Group Publications 页同列论文标题与作者，并公开两条视频链接；这些是项目演示入口，不是代码或可复现实验包。
+- arXiv v3 作者名单含 Yitao Zeng；项目/出版物列表的公开作者行可能滞后于 v3。以指定论文版本元数据为论文作者来源。
+- 该页面没有给出独立的项目仓库、权重下载、安装步骤、训练配置或数据集链接；因此本项目节点不提供臆造的运行命令。
+
 ## 关联页面
 
-- [PerchRL 官方项目页摘录](./perchrl-project.md)
+- [多旋翼仿真、规划与控制栈](../overview/multirotor-simulation-planning-control-stack.md) — 视觉栖停在飞行控制栈中的位置
+- [Flightmare](./flightmare.md) — 四旋翼强化学习仿真工具对照
+
 - [Omnidrones 项目 / 论文引用](https://github.com/thu-uav/OmniDrones)（PerchRL 所用工具链；非 PerchRL 代码）
 - [论文原始来源归档](../../sources/papers/perchrl_arxiv_2606_03441_v3.md)
 - [STAR Group 项目页归档](../../sources/sites/robotics_star_perchrl.md)
-
 
 ## 参考来源
 

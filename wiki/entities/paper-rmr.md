@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, rig-unification, korea-university, uiuc, naver-labs, rainbow-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 doi: "10.1109/IROS60139.2025.11246607"
 venue: "IROS 2025"
 code: https://github.com/tmjeong1103/CoRe
 related:
-  - ./core-retarget.md
+  - ./paper-core.md
   - ./paper-core.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -44,7 +44,7 @@ summary: "RMR（IROS 2025）：优化式 canonical rig 统一异构人体骨架�
 
 - **源骨架不统一是工程税：** MoCap、SMPL 系、单目估计各有拓扑；RMR 把「先统一、再映射」写成可复用两段。
 - **明确吃噪声：** 不只服务干净动捕，项目页用 RGB 视频估计演示实时闭环。
-- **解释 CoRe 的 DMR：** [CoRe 软件](./core-retarget.md) 的第二段制品来自本文，而不是另起一套几何 IK。
+- **解释 CoRe 的 DMR：** [CoRe 软件](paper-core.md) 的第二段制品来自本文，而不是另起一套几何 IK。
 
 ## 核心信息
 
@@ -53,7 +53,7 @@ summary: "RMR（IROS 2025）：优化式 canonical rig 统一异构人体骨架�
 | **机构** | 高丽大学（Korea University）；CINAMON；彩虹机器人（Rainbow Robotics）；纳沃实验室（NAVER LABS）；伊利诺伊大学厄巴纳-香槟分校（UIUC） |
 | **会议** | IROS 2025，Hangzhou，pp. 21619–21626 |
 | **评测** | 仿真 12 机；真机 AMBIDEX、THORMANG、JF2 |
-| **开源** | **无独立仓库**；可运行实现并入 [CoRe v0.1.0 DMR](./core-retarget.md) |
+| **开源** | **无独立仓库**；可运行实现并入 [CoRe v0.1.0 DMR](paper-core.md) |
 | **预印本** | 截至 2026-08-15 **无 arXiv** |
 
 ## 核心原理 / 方法栈
@@ -147,7 +147,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [CoRe 软件](./core-retarget.md) / [CoRe 论文](./paper-core.md)
+- [CoRe 软件](paper-core.md) / [CoRe 论文](./paper-core.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md) / [Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [SOMA Retargeter](./soma-retargeter.md) / [robot_retargeter](./robot-retargeter.md)

@@ -1,71 +1,92 @@
 ---
-
 type: entity
-tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
+tags:
+- entity
+- simulator
+- isaac
+- isaac-sim
+- gpu-simulation
+- reinforcement-learning
+- sim2real
+- nvidia
+- paper
+- awesome-world-models
+- sun254667-wm
 status: stable
-updated: 2026-10-01
+updated: 2026-10-06
 related:
-  - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
-  - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
-  - ./isaac-lab-default-environments.md
-  - ./isaac-gym-isaac-lab.md
-  - ./isaac-sim.md
-  - ./isaac-gym.md
-  - ../concepts/implicit-explicit-actuator-modeling.md
-  - ./robotic-world-model-eth-rsl.md
-  - ./newton-physics.md
-  - ./mujoco-warp.md
-  - ./nvidia-warp.md
-  - ./mujoco-playground.md
-  - ./mjlab.md
-  - ../overview/robot-training-stack-layers-technology-map.md
-  - ./legged-gym.md
-  - ../methods/reinforcement-learning.md
-  - ../concepts/cartpole.md
-  - ../tasks/locomotion.md
-  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
-  - ../concepts/sim2real.md
-  - ./paper-agile-humanoid-loco-manipulation.md
-  - ./htd-decoupled-wbc.md
-  - ./paper-rl-vs-gc.md
-  - ../comparisons/rl-vs-geometric-control.md
-  - ./paper-p3.md
-  - ./lw-benchhub-tour.md
-  - ./isaac-lab-arena.md
-  - ./dexbench.md
-  - ./nvidia-getting-started-isaac-lab.md
-  - ./perceptron-isaac-05.md
-  - ./rsl-rl.md
-  - ./autodl.md
-  - ./gpufree.md
-  - ./stackforce.md
-  - ./isaac-rl-two-wheel-legged-bot.md
-  - ./matpool.md
-  - ./featurize.md
-  - ./gpushare.md
-  - ./ai-galaxy.md
-  - ../comparisons/china-gpu-cloud-platforms.md
-  - ../comparisons/international-gpu-cloud-platforms.md
+- ./nvidia-isaac-lab-spot-locomotion-sim2real.md
+- ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
+- ./isaac-lab-default-environments.md
+- ./isaac-gym-isaac-lab.md
+- ./isaac-sim.md
+- ./isaac-gym.md
+- ../concepts/implicit-explicit-actuator-modeling.md
+- ./robotic-world-model-eth-rsl.md
+- ./newton-physics.md
+- ./mujoco-warp.md
+- ./nvidia-warp.md
+- ./mujoco-playground.md
+- ./mjlab.md
+- ../overview/robot-training-stack-layers-technology-map.md
+- ./legged-gym.md
+- ../methods/reinforcement-learning.md
+- ../concepts/cartpole.md
+- ../tasks/locomotion.md
+- ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+- ../concepts/sim2real.md
+- ./paper-agile-humanoid-loco-manipulation.md
+- ./paper-humanoid-touch-dream.md
+- ./paper-rl-vs-gc.md
+- ../comparisons/rl-vs-geometric-control.md
+- ./paper-p3.md
+- ./lw-benchhub-tour.md
+- ./isaac-lab-arena.md
+- ./dexbench.md
+- ./nvidia-getting-started-isaac-lab.md
+- ./perceptron-isaac-05.md
+- ./rsl-rl.md
+- ./autodl.md
+- ./gpufree.md
+- ./stackforce.md
+- ./isaac-rl-two-wheel-legged-bot.md
+- ./matpool.md
+- ./featurize.md
+- ./gpushare.md
+- ./ai-galaxy.md
+- ../comparisons/china-gpu-cloud-platforms.md
+- ../comparisons/international-gpu-cloud-platforms.md
+- ../entities/awesome-world-models.md
+- ../overview/sun-awesome-wm-technology-map.md
+- ../methods/generative-world-models.md
+- ../methods/model-based-rl.md
+- ../tasks/manipulation.md
 sources:
-  - ../../sources/repos/isaac_lab.md
-  - ../../sources/repos/isaac_lab_environments.md
-  - ../../sources/repos/isaac_sim.md
-  - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
-  - ../../sources/courses/nvidia_getting_started_isaac_lab.md
-  - ../../sources/papers/simulation_tools.md
-  - ../../sources/papers/policy_optimization.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
-  - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
-  - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
-  - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
-  - ../../sources/papers/agile_arxiv_2603_20147.md
-  - ../../sources/papers/p3_arxiv_2607_25541.md
-  - ../../sources/repos/wbc_agile.md
-  - ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
-  - ../../sources/repos/rl-vs-gc.md
-  - ../../sources/repos/isaaclab_arena.md
-  - ../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md
-summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
+- ../../sources/repos/isaac_lab.md
+- ../../sources/repos/isaac_lab_environments.md
+- ../../sources/repos/isaac_sim.md
+- ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
+- ../../sources/courses/nvidia_getting_started_isaac_lab.md
+- ../../sources/papers/simulation_tools.md
+- ../../sources/papers/policy_optimization.md
+- ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+- ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
+- ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
+- ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+- ../../sources/papers/agile_arxiv_2603_20147.md
+- ../../sources/papers/p3_arxiv_2607_25541.md
+- ../../sources/repos/wbc_agile.md
+- ../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md
+- ../../sources/repos/rl-vs-gc.md
+- ../../sources/repos/isaaclab_arena.md
+- ../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md
+- ../../sources/papers/sun_awesome_wm_2511_04831_isaac-lab-a-gpu-accelerated-simulation-f.md
+- ../../sources/papers/sun_awesome_wm_catalog.md
+- ../../sources/repos/awesome-world-models.md
+summary: NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。
+project_id: isaac-lab
+arxiv: '2511.04831'
+venue: arXiv 2025
 ---
 
 # Isaac Lab
@@ -94,6 +115,11 @@ summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac S
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 | Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
 | legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
+| WM | World Model | 环境前向预测模型 |
+| WAM | World Action Model | 世界预测与动作联合建模 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| MBRL | Model-Based RL | 基于模型的强化学习 |
 
 ## 先说结论
 
@@ -318,6 +344,9 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>
 
+- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
+- [原文](https://arxiv.org/abs/2511.04831)
+
 ## 参考来源
 
 - **ingest 档案：** [sources/repos/isaac_lab.md](../../sources/repos/isaac_lab.md)
@@ -332,6 +361,29 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - **ingest 档案：** [sources/courses/isaac_lab_implicit_explicit_actuators.md](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — Implicit / Explicit 执行器官方文档索引
 - **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
 - **ingest 档案：** [RL vs GC 论文摘录（arXiv:2506.17832）](../../sources/papers/leveling_playing_field_rl_vs_gc_arxiv_2506_17832.md) — DirectRLEnv 四旋翼跟踪 + Optuna 几何控制
+
+- [`sources/papers/sun_awesome_wm_2511_04831_isaac-lab-a-gpu-accelerated-simulation-f.md`](../../sources/papers/sun_awesome_wm_2511_04831_isaac-lab-a-gpu-accelerated-simulation-f.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
+- 论文：<https://arxiv.org/abs/2511.04831>
+
+- [isaac_lab_environments](../../sources/repos/isaac_lab_environments.md)
+
+- [simulation_tools](../../sources/papers/simulation_tools.md)
+
+- [nvidia_isaac_lab_spot_locomotion_sim2real](../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md)
+
+- [nvidia_isaac_lab_ur10e_industrial_assembly_sim2real](../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md)
+
+- [agile_arxiv_2603_20147](../../sources/papers/agile_arxiv_2603_20147.md)
+
+- [wbc_agile](../../sources/repos/wbc_agile.md)
+
+- [rl-vs-gc](../../sources/repos/rl-vs-gc.md)
+
+- [isaaclab_arena](../../sources/repos/isaaclab_arena.md)
+
+- [nvidia_isaac_lab_arena_generalist_policy_eval](../../sources/blogs/nvidia_isaac_lab_arena_generalist_policy_eval.md)
 
 ## 关联页面
 
@@ -357,7 +409,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [isaac_asimov（Asimov 1）](./isaac-asimov.md) — Menlo 官方 Isaac Lab locomotion 扩展（PPO + AMP）
 - [REFINE-DP（论文实体）](./paper-loco-manip-161-157-refine-dp.md) — Isaac Lab 上 DP 规划器与 RL loco-manip 联合微调（arXiv:2603.13707）
 - [AGILE（论文实体）](./paper-agile-humanoid-loco-manipulation.md) — Lab 之上的人形 RL 全生命周期工作流（Prepare→Deploy；arXiv:2603.20147，WBC-AGILE）
-- [HTD 解耦 WBC](./htd-decoupled-wbc.md) — HTD 开源下肢+腰控制器（Lab 2.2.0，单 GPU，G1 零样本）
+- [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — HTD 开源下肢+腰控制器（Lab 2.2.0，单 GPU，G1 零样本）
 - [RL vs GC](./paper-rl-vs-gc.md) — Lab DirectRLEnv 上对称比较 PPO 与几何控制（RSS 2025）
 - [P³](./paper-p3.md) — Lab + 定制 rsl_rl：VAE-PPO 矩匹配主训与 LSFT（G1 感知地形）
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
@@ -370,6 +422,20 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Isaac-RL-Two-wheel-Legged-Bot](./isaac-rl-two-wheel-legged-bot.md) — Flamingo 双轮足 Lab 扩展（Sim 4.5 / Lab 2.0 + CaT）
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — Lab 扩展：乐高式任务策展、GPU 并行评测、EnvHub 与社区 benchmark 统一核
 - [LW BENCHHUB TOUR](./lw-benchhub-tour.md) — Arena EnvHub + 光轮厨房 + SmolVLA 双臂闭环与数据飞轮
+
+- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
+- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [paper-chord-contact-wrench-dexterous-manipulation](../entities/paper-chord-contact-wrench-dexterous-manipulation.md)
+- [paper-humanoid-touch-dream](./paper-humanoid-touch-dream.md)
+- [rl-vs-geometric-control](../comparisons/rl-vs-geometric-control.md)
+- [autodl](./autodl.md)
+- [matpool](./matpool.md)
+- [featurize](./featurize.md)
+- [gpushare](./gpushare.md)
+- [ai-galaxy](./ai-galaxy.md)
+- [model-based-rl](../methods/model-based-rl.md)
 
 ## 一句话记忆
 

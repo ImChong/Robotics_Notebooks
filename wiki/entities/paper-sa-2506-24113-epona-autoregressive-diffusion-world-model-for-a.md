@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2506.24113"
 venue: "arXiv 2025"
 code: https://kevin-thu.github.io/Epona/

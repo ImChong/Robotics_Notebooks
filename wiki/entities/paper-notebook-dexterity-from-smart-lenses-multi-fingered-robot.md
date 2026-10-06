@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, manipulation, dexterous-manipulation, egocentric, human-video, point-cloud-policy, meta, nyu, berkeley, kinova]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2511.16661"
 code: https://github.com/facebookresearch/AINA
 related:

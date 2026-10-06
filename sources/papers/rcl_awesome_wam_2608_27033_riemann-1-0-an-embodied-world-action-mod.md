@@ -15,7 +15,7 @@
 - **项目页：** <https://riemann-dynamics.github.io/Riemann-1.0-Website>
 - **子类 / 象限：** 泛化与动作对齐 · 记忆与长时序 · 四象限外
 - **Contribution（清单）：** We introduce Riemann-1.0, a fully causal autoregressive World Action Model for embodied intelligence. Riemann-1.0 achieves state-of-the-art performance across both simulation benchmarks and real-world manipulation tasks.
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-2608-27033-riemann-1-0-an-embodied-world-action-model-for-p.md`](../../wiki/entities/paper-rcl-2608-27033-riemann-1-0-an-embodied-world-action-model-for-p.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-riemann-1.md`](../../wiki/entities/paper-riemann-1.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-2608-27033-riemann-1-0-an-embodied-world-action-model-for-p.md`](../../wiki/entities/paper-rcl-2608-27033-riemann-1-0-an-embodied-world-action-model-for-p.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-riemann-1.md`](../../wiki/entities/paper-riemann-1.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

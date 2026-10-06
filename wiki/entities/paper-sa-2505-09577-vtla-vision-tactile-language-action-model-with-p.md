@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2505.09577"
 venue: "arXiv 2025"
 summary: "Integrates tactile perception into vision-language foundation model for contact-rich manipulation challenges such as peg-in-hole insertion."

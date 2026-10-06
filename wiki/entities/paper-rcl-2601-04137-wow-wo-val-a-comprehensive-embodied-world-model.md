@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 arxiv: "2601.04137"
 venue: "2026"
 summary: "WoW-World-Eval tests whether instruction-conditioned robot videos are visually convincing, task-correct, physically plausible and usable for action extraction. Its 609-sample benchmark combines automated metrics, human j"
 related:
-  - ../entities/awesome-world-action-models-rcl.md
+  - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
@@ -40,7 +40,7 @@ WoW-World-Eval tests whether instruction-conditioned robot videos are visually c
 
 - WoW-World-Eval tests whether instruction-conditioned robot videos are visually convincing, task-correct, physically plausible and usable for action extraction. Its 609-sample benchmark combines automated metrics, human judgments and a separate GC-IDM robot-execution test. Hailuo leads the reported aggregate video sc...
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](../entities/awesome-world-action-models-rcl.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
 ## 核心信息
 
@@ -87,7 +87,7 @@ WoW-World-Eval tests whether instruction-conditioned robot videos are visually c
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](../entities/awesome-world-action-models-rcl.md)
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
 

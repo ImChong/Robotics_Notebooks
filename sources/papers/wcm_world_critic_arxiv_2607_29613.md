@@ -109,4 +109,4 @@
 
 - 新建 **`wiki/entities/paper-wcm-world-critic-model.md`**（含结构图 + 源码运行时序图 + 结论）。
 - 新建 **`sources/repos/wcm-world-critic-model.md`**、**`sources/sites/sylvestf-wcm-homepage.md`**。
-- 交叉：[`wiki/methods/model-based-rl.md`](../../wiki/methods/model-based-rl.md)、[`wiki/methods/vla.md`](../../wiki/methods/vla.md)、[`wiki/entities/openvla.md`](../../wiki/entities/openvla.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](../../wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/comparisons/online-vs-offline-rl.md`](../../wiki/comparisons/online-vs-offline-rl.md)。
+- 交叉：[`wiki/methods/model-based-rl.md`](../../wiki/methods/model-based-rl.md)、[`wiki/methods/vla.md`](../../wiki/methods/vla.md)、[`wiki/entities/paper-openvla.md`](../../wiki/entities/paper-openvla.md)、[`wiki/entities/paper-pi05-open-world-vla.md`](../../wiki/entities/paper-pi05-open-world-vla.md)、[`wiki/comparisons/online-vs-offline-rl.md`](../../wiki/comparisons/online-vs-offline-rl.md)。

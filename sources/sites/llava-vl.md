@@ -16,5 +16,5 @@ NeurIPS'23 Oral：GPT-4 辅助视觉指令数据 + CLIP–Vicuna 两阶段训练
 ## 交叉链接
 
 - [LLaVA 论文实体](../../wiki/entities/paper-llava.md)
-- [LLaVA 模型实体](../../wiki/entities/llava.md)
+- [LLaVA 模型实体](../../wiki/entities/paper-llava.md)
 - [CLIP 论文实体](../../wiki/entities/paper-clip.md)

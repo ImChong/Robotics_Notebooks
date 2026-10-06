@@ -41,7 +41,7 @@
 - **核心贡献：** 论文不是只提出一个策略网络，而是搭建了完整的人形机器人移动操作系统：RL-based lower-body controller 负责稳定下肢/躯干，VR 遥操作映射上身和手部动作，IK 与 DexPilot-style retargeting 执行末端与灵巧手目标。
 - **数据结构：** 遥操作数据同步记录头部/腕部多视角 RGB、本体感受、手部关节力、双手触觉读数和全身 action targets。每只手包含 1062 维触觉观测，覆盖 17 个空间感知区域。
 - **对 wiki 的映射：**
-  - [HTD 解耦 WBC（实体）](../../wiki/entities/htd-decoupled-wbc.md)
+  - [HTD 解耦 WBC（实体）](../../wiki/entities/paper-humanoid-touch-dream.md)
   - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)
   - [Teleoperation](../../wiki/tasks/teleoperation.md)
   - [Imitation Learning](../../wiki/methods/imitation-learning.md)

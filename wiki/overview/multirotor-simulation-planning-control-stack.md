@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-06
 related:
   - ../entities/paper-swarmnxt.md
   - ../entities/betaflight.md
@@ -265,6 +265,8 @@ flowchart TB
 - [sources/sites/arrowair-quiver.md](../../sources/sites/arrowair-quiver.md)
 
 ## 关联页面
+
+- [PerchRL：视觉敏捷栖停](../entities/paper-perchrl-2606-03441.md) — 论文、项目演示与代码开放状态统一入口；状态预训练后以可见性和可靠度提示微调视觉策略
 
 - [PX4 Autopilot](../entities/px4-autopilot.md) · [MAVSDK](../entities/mavsdk.md) · [EGO-Planner Swarm](../entities/ego-planner-swarm.md) · [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)
 - [AirSim](../entities/airsim.md) · [XTDrone](../entities/xtdrone.md) · [Flightmare](../entities/flightmare.md)

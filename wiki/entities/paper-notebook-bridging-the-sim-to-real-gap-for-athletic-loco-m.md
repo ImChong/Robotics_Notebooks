@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "2502.10894"
 related:
   - ../overview/paper-notebook-category-10-sim-to-real.md

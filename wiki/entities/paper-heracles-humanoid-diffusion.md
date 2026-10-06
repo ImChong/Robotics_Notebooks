@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, diffusion, flow-matching, recovery, middleware, x-humanoid, body-system-stack]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-06
 arxiv: "2603.27756"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md

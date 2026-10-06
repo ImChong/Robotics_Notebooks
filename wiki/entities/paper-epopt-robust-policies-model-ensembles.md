@@ -6,7 +6,7 @@ tags:
   - sim2real
   - domain-randomization
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 arxiv: "1610.01283"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

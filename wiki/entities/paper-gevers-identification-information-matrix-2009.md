@@ -6,7 +6,7 @@ tags:
   - experiment-design
   - sim2real
 status: complete
-updated: 2026-09-20
+updated: 2026-10-06
 venue: "IEEE TAC 2009"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md

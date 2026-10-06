@@ -15,7 +15,7 @@
 
 - **子类 / 象限：** 人类第一视角数据 · 多传感器与空间标注 · 基准与评测协议 · 不适用
 - **Contribution（清单）：** RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
-- **沉淀到 wiki：** [`wiki/entities/paper-rcl-ref-51f5ebd773eec33b2c6b-ego4d-around-the-world-in-3-000-hours-of-egocent.md`](../../wiki/entities/paper-rcl-ref-51f5ebd773eec33b2c6b-ego4d-around-the-world-in-3-000-hours-of-egocent.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-ego4d.md`](../../wiki/entities/paper-ego4d.md)
 
 ---
 
@@ -28,5 +28,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/paper-rcl-ref-51f5ebd773eec33b2c6b-ego4d-around-the-world-in-3-000-hours-of-egocent.md`](../../wiki/entities/paper-rcl-ref-51f5ebd773eec33b2c6b-ego4d-around-the-world-in-3-000-hours-of-egocent.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 实体页：[`wiki/entities/paper-ego4d.md`](../../wiki/entities/paper-ego4d.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

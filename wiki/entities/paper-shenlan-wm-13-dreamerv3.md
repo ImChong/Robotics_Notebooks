@@ -1,45 +1,56 @@
 ---
 type: entity
 tags:
-  - paper
-  - world-models
-  - shenlan-survey
-  - open-source
-  - google-deepmind
-  - model-based-rl
-  - latent-imagination
+- paper
+- world-models
+- shenlan-survey
+- open-source
+- google-deepmind
+- model-based-rl
+- latent-imagination
+- awesome-world-action-models-rcl
+- rcl-wam-catalog
 status: complete
-updated: 2026-09-16
-arxiv: "2301.04104"
+updated: 2026-10-06
+arxiv: '2301.04104'
 venue: Nature
 related:
-  - ../overview/world-models-15-open-source-technology-map.md
-  - ../overview/world-models-route-03-virtual-sandbox.md
-  - ../overview/world-model-physics-fidelity-outputs.md
-  - ../overview/robot-world-models-training-loop-taxonomy.md
-  - ../methods/generative-world-models.md
-  - ../concepts/world-action-models.md
-  - ../methods/model-based-rl.md
-  - ../concepts/latent-imagination.md
-  - ./open-dreamer.md
-  - ./paper-reward-free-continual-adaptation-space.md
-  - ./paper-ha-schmidhuber-world-models.md
-  - ./paper-planet-latent-dynamics.md
-  - ./paper-td-mpc2.md
-  - ./paper-unisim.md
-  - ./paper-online-mbrl-robot-control.md
-  - ./paper-lucid.md
+- ../overview/world-models-15-open-source-technology-map.md
+- ../overview/world-models-route-03-virtual-sandbox.md
+- ../overview/world-model-physics-fidelity-outputs.md
+- ../overview/robot-world-models-training-loop-taxonomy.md
+- ../methods/generative-world-models.md
+- ../concepts/world-action-models.md
+- ../methods/model-based-rl.md
+- ../concepts/latent-imagination.md
+- ./open-dreamer.md
+- ./paper-reward-free-continual-adaptation-space.md
+- ./paper-ha-schmidhuber-world-models.md
+- ./paper-planet-latent-dynamics.md
+- ./paper-td-mpc2.md
+- ./paper-unisim.md
+- ./paper-online-mbrl-robot-control.md
+- ./paper-lucid.md
+- paper-rcl-wam-robot-learning-control-survey.md
+- ../overview/rcl-awesome-wam-technology-map.md
+- ../methods/vla.md
+- ../tasks/manipulation.md
+- ../tasks/locomotion.md
 sources:
-  - ../../sources/papers/shenlan_wm_survey_13_dreamerv3.md
-  - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
-  - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
-  - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
-  - ../../sources/repos/danijar-dreamerv3.md
-  - ../../sources/repos/open-dreamer.md
-  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
-  - ../../sources/papers/lucid_arxiv_2608_07746.md
-summary: "DreamerV3（Hafner et al.，arXiv:2301.04104，Nature）：RSSM 世界模型 + 潜空间想象中的 actor-critic；单一超参掌握 150+ 任务；公开 JAX 复现 danijar/dreamerv3，后继见 Open Dreamer（Dreamer 4）。"
+- ../../sources/papers/shenlan_wm_survey_13_dreamerv3.md
+- ../../sources/papers/shenlan_world_models_15_reference_catalog.md
+- ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
+- ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
+- ../../sources/repos/danijar-dreamerv3.md
+- ../../sources/repos/open-dreamer.md
+- ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
+- ../../sources/papers/lucid_arxiv_2608_07746.md
+- ../../sources/papers/rcl_awesome_wam_ref_8fa0ebc722d8d35eaf75_mastering-diverse-control-tasks-through.md
+- ../../sources/papers/rcl_awesome_wam_catalog.md
+- ../../sources/repos/awesome-world-action-models-rcl.md
+summary: DreamerV3（Hafner et al.，arXiv:2301.04104，Nature）：RSSM 世界模型 + 潜空间想象中的 actor-critic；单一超参掌握 150+ 任务；公开 JAX 复现 danijar/dreamerv3，后继见 Open Dreamer（Dreamer 4）。
 code: https://github.com/danijar/dreamerv3
+project_id: shenlan-wm-13-dreamerv3
 ---
 
 # DreamerV3（Mastering Diverse Domains through World Models）
@@ -60,6 +71,11 @@ code: https://github.com/danijar/dreamerv3
 | ELBO | Evidence Lower Bound | 世界模型变分训练相关 |
 | SAC | Soft Actor-Critic | 常见 model-free 对照族 |
 | JAX | JAX | 公开复现实现栈 |
+
+| WAM | World Action Model | 世界预测与动作生成耦合 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
+| WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
 
@@ -215,6 +231,17 @@ sequenceDiagram
 - [World Models](./paper-ha-schmidhuber-world-models.md) · [PlaNet](./paper-planet-latent-dynamics.md) · [TD-MPC2](./paper-td-mpc2.md) · [UniSim](./paper-unisim.md)
 - [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — HEAP 仿真中相对想象 RL 的真机一阶对照
 
+- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
+- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
+- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+
+- [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)
+- [world-action-models](../concepts/world-action-models.md)
+- [paper-lucid](./paper-lucid.md)
+- [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
+- [vla](../methods/vla.md)
+- [locomotion](../tasks/locomotion.md)
+
 ## 参考来源
 
 - [DreamerV3 论文 / 深蓝策展归档](../../sources/papers/shenlan_wm_survey_13_dreamerv3.md)
@@ -225,6 +252,14 @@ sequenceDiagram
 - [微信：世界模型物理保真度策展](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)
 - [Online MBRL 论文归档（对照实验提及）](../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md)
 
+- [`sources/papers/rcl_awesome_wam_ref_8fa0ebc722d8d35eaf75_mastering-diverse-control-tasks-through.md`](../../sources/papers/rcl_awesome_wam_ref_8fa0ebc722d8d35eaf75_mastering-diverse-control-tasks-through.md) — 本条目策展摘录
+- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
+- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
+- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 论文：<https://www.nature.com/articles/s41586-025-08744-2>
+
+- [lucid_arxiv_2608_07746](../../sources/papers/lucid_arxiv_2608_07746.md)
+
 ## 推荐继续阅读
 
 - [arXiv:2301.04104](https://arxiv.org/abs/2301.04104)
@@ -233,3 +268,6 @@ sequenceDiagram
 - [Open Dreamer](./open-dreamer.md) — Dreamer 4 开源后继
 - [Online MBRL via Online Optimization](./paper-online-mbrl-robot-control.md) — 真实轨迹一阶更新对照
 - [深蓝具身智能原文](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg)
+
+- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
+- [原文](https://www.nature.com/articles/s41586-025-08744-2)

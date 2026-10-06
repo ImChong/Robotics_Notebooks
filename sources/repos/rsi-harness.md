@@ -11,7 +11,7 @@
 - **项目页：** <https://cosmosmind.ai/> · <https://www.cosmosmind.ai/research/metarsi-v1>
 - **入库日期：** 2026-09-14
 - **一句话说明：** 基于 [Pi coding agent](https://www.npmjs.com/package/@earendil-works/pi-coding-agent) 的 **Genome** 配置层：把 system prompt、tools、skills、MCP、runtime 等 12 组件收成可版本化目录；内置 `harness-rsi`（GEE 从会话史生成 Genome）与 `paperlab` 示例。
-- **沉淀到 wiki：** [`wiki/entities/rsi-harness.md`](../../wiki/entities/rsi-harness.md)、[`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)、[`wiki/entities/paper-metarsi-v1.md`](../../wiki/entities/paper-metarsi-v1.md)
 
 ---
 

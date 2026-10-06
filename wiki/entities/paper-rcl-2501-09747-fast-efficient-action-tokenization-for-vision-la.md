@@ -6,13 +6,13 @@ tags:
 - action-tokenization
 - vla
 status: complete
-updated: '2026-10-05'
+updated: 2026-10-06
 arxiv: '2501.09747'
 venue: '2025'
 code: https://huggingface.co/physical-intelligence/fast
 summary: FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列。
 related:
-- ../entities/awesome-world-action-models-rcl.md
+- paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
 - ../methods/generative-world-models.md
 - ../methods/vla.md

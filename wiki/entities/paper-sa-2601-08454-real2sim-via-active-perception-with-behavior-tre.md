@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2601.08454"
 venue: "arXiv 2026"
 summary: "Constructing physically accurate simulation environments traditionally relies on manual system identification or rigid, exhaustive exploration routines"

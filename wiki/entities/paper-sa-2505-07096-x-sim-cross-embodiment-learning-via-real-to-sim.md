@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-06
 arxiv: "2505.07096"
 venue: "arXiv 2025"
 summary: "Cross-embodiment learning via real-to-sim-to-real"

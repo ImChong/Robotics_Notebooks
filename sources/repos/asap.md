@@ -44,7 +44,7 @@ LeCAR-Lab 官方 **敏捷人形全身 Sim2Real** 代码库：基于 [HumanoidVer
 ## 对 Wiki 的映射
 
 - [paper-notebook-asap-aligning-simulation-and-real-world-physics](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
-- [paper-hrl-stack-25-asap](../../wiki/entities/paper-hrl-stack-25-asap.md)
+- [paper-hrl-stack-25-asap](../../wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md)
 - [HumanoidVerse 框架](../../wiki/entities/humanoidverse.md)
 - [residual-policy-learning](../../wiki/methods/residual-policy-learning.md)
 

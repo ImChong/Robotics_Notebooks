@@ -29,4 +29,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[`wiki/entities/paper-rcl-ref-24ca74d7b1d59b2ae206-cider-consensus-based-image-description-evaluati.md`](../../wiki/entities/paper-rcl-ref-24ca74d7b1d59b2ae206-cider-consensus-based-image-description-evaluati.md)
-- 列表实体：[`wiki/entities/awesome-world-action-models-rcl.md`](../../wiki/entities/awesome-world-action-models-rcl.md)
+- 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)

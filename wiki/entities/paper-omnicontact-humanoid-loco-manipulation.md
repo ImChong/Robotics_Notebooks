@@ -1,32 +1,54 @@
 ---
 type: entity
-tags: [paper, humanoid, loco-manipulation, reinforcement-learning, motion-tracking, contact-flow, meta-skill, sim2sim, mocap, unitree-g1, vlm, noitom, hkust, hku, whu]
+tags:
+- paper
+- humanoid
+- loco-manipulation
+- reinforcement-learning
+- motion-tracking
+- contact-flow
+- meta-skill
+- sim2sim
+- mocap
+- unitree-g1
+- vlm
+- noitom
+- hkust
+- hku
+- whu
+- repo
+- mujoco
+- omnicontact
 status: complete
-updated: 2026-09-15
-arxiv: "2606.26201"
-venue: "arXiv 2026"
+updated: 2026-10-06
+arxiv: '2606.26201'
+venue: arXiv 2026
 related:
-  - ../tasks/loco-manipulation.md
-  - ../concepts/contact-rich-manipulation.md
-  - ../concepts/whole-body-control.md
-  - ../concepts/sim2real.md
-  - ../concepts/motion-retargeting.md
-  - ../methods/amp-reward.md
-  - ../methods/vla.md
-  - ./paper-amp-survey-15-physhsi.md
-  - ./paper-hrl-stack-06-hdmi.md
-  - ./paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md
-  - ./paper-hrl-stack-05-humanx.md
-  - ./paper-hrl-stack-03-omniretarget.md
-  - ./paper-umr-unified-motion-retargeting.md
-  - ./unitree-g1.md
-  - ./omnicontact-sim2sim.md
+- ../tasks/loco-manipulation.md
+- ../concepts/contact-rich-manipulation.md
+- ../concepts/whole-body-control.md
+- ../concepts/sim2real.md
+- ../concepts/motion-retargeting.md
+- ../methods/amp-reward.md
+- ../methods/vla.md
+- ./paper-amp-survey-15-physhsi.md
+- ./paper-hrl-stack-06-hdmi.md
+- ./paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md
+- ./paper-hrl-stack-05-humanx.md
+- ./paper-hrl-stack-03-omniretarget.md
+- ./paper-umr-unified-motion-retargeting.md
+- ./unitree-g1.md
+- ./humanoid-gym.md
+- ./paper-notebook-visualmimic.md
 sources:
-  - ../../sources/papers/omnicontact_arxiv_2606_26201.md
-  - ../../sources/sites/omnicontact-project.md
-  - ../../sources/repos/omnicontact-sim2sim.md
-  - ../../sources/datasets/omnicontact-dataset.md
-summary: "OmniContact（arXiv:2606.26201，诺亦腾/HKUST/WHU/HKU）以 Contact Flow（稀疏体目标+四端接触时序）统一 CF-Track 低层 RL 与 CF-Gen 规则重规划，实现 meta-skill 链式组合、50 Hz 自主恢复与 VLM 语义任务；Carry Box 98.7%、Push-Stack 76.5%，配套 22.29 h MoCap 数据集与 MuJoCo sim2sim。"
+- ../../sources/papers/omnicontact_arxiv_2606_26201.md
+- ../../sources/sites/omnicontact-project.md
+- ../../sources/repos/omnicontact-sim2sim.md
+- ../../sources/datasets/omnicontact-dataset.md
+summary: OmniContact（arXiv:2606.26201，诺亦腾/HKUST/WHU/HKU）以 Contact Flow（稀疏体目标+四端接触时序）统一 CF-Track 低层 RL 与 CF-Gen 规则重规划，实现 meta-skill 链式组合、50 Hz 自主恢复与 VLM 语义任务；Carry Box 98.7%、Push-Stack 76.5%，配套 22.29 h MoCap 数据集与 MuJoCo sim2sim。
+project_id: omnicontact-humanoid-loco-manipulation
+code: https://github.com/Ingrid789/OmniContact_sim2sim
+project: https://omnicontact.github.io/
 ---
 
 # OmniContact（Chaining Meta-Skills via Contact Flow）
@@ -46,6 +68,9 @@ summary: "OmniContact（arXiv:2606.26201，诺亦腾/HKUST/WHU/HKU）以 Contact
 | VLM | Vision-Language Model | 高层语义任务分解为 start–goal 物体位姿 |
 | G1 | Unitree G1 Humanoid | 论文与开源栈默认 29-DoF 人形平台 |
 | NPZ | NumPy Archive | HF 数据集与 sim2sim 中的 G1 重定向轨迹格式 |
+
+| FSM | Finite State Machine | Passive→DefaultPose→LocoMode→OmniContact 状态链 |
+| ONNX | Open Neural Network Exchange | 导出的 CF-Track 策略推理格式 |
 
 ## 为什么重要
 
@@ -178,7 +203,7 @@ flowchart TB
 - **数据集**：[lightcone02/OmniContact-Dataset](https://huggingface.co/datasets/lightcone02/OmniContact-Dataset) — G1 NPZ + BVH 原始 MoCap + Viser 可视化。
 - **在线 demo**：项目页 MuJoCo WASM + ONNX policy viewer。
 
-详见实体页 [OmniContact sim2sim](./omnicontact-sim2sim.md)（仓库工具页）。
+详见实体页 [OmniContact sim2sim](#项目资源与工程补充)（仓库工具页）。
 
 ## 常见误区或局限
 
@@ -186,6 +211,39 @@ flowchart TB
 - **CF-Gen 仍为规则/heuristic**：对高度动态场景（快速踢球、复杂碰撞）规划能力有限；论文展望 **可学习 contact anchor 生成**。
 - **夹爪欠驱动**：当前硬件限制精细操作；contact flow 向 **灵巧手** 扩展是明确 future work。
 - **sim2real 叙事以仿真 benchmark 为主**：开源侧重 MuJoCo sim2sim；真机部署细节需跟踪后续发布。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant E as deploy_omnicontact/run_skill_omnicontact.py
+    participant G as CFgen / NPZmotion
+    participant T as CFtrack ONNX
+    participant M as G1 MuJoCo 环境
+    E->>G: 选择 task、goal 或 NPZ 轨迹
+    E->>T: 加载 policy/omnicontact/model/policy.onnx
+    loop sim2sim 闭环
+        M-->>G: 当前机器人与物体状态
+        G->>T: Contact Flow 参考
+        M-->>T: 本体观测
+        T->>M: 关节控制动作
+        M-->>E: 新状态与技能进度
+    end
+```
+
+直接脚本和 Xbox FSM 两条入口见 [官方 sim2sim 源码归档](../../sources/repos/omnicontact-sim2sim.md)；本图描述公开 MuJoCo 执行路径，不能据此推断完整训练或真机代码已发布。
+
+## 项目资源与工程补充
+
+### 核心能力
+
+| 路径 | 脚本 | 用途 |
+|------|------|------|
+| 脚本化 | `run_skill_omnicontact.py` | `--reference-source CFgen` 或 `NPZmotion` |
+| 交互式 | `deploy_omnicontact.py` | Xbox 手柄热切换，镜像 sim2real FSM |
+
+支持单 skill（`carrybox`、`pushbox`、`kickball`…）、链式 preset（`carry-push`、`carryheart`…）及 `data/` 下 NPZ 全轨迹回放。
 
 ## 关联页面
 
@@ -201,6 +259,12 @@ flowchart TB
 - [AMP Reward](../methods/amp-reward.md) — CF-Track 运动先验
 - [Sim2Real](../concepts/sim2real.md) — sim2sim 校验入口
 
+- [whole-body-control](../concepts/whole-body-control.md)
+- [motion-retargeting](../concepts/motion-retargeting.md)
+- [vla](../methods/vla.md)
+- [humanoid-gym](./humanoid-gym.md)
+- [visualmimic](./paper-notebook-visualmimic.md)
+
 ## 参考来源
 
 - [sources/papers/omnicontact_arxiv_2606_26201.md](../../sources/papers/omnicontact_arxiv_2606_26201.md)
@@ -208,6 +272,8 @@ flowchart TB
 - [sources/repos/omnicontact-sim2sim.md](../../sources/repos/omnicontact-sim2sim.md)
 - [sources/datasets/omnicontact-dataset.md](../../sources/datasets/omnicontact-dataset.md)
 - Yu et al., *OmniContact: Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation*, arXiv:2606.26201, 2026. <https://arxiv.org/abs/2606.26201>
+
+- <https://github.com/Ingrid789/OmniContact_sim2sim>
 
 ## 推荐继续阅读
 
