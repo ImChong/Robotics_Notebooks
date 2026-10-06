@@ -17,6 +17,16 @@ sources:
 
 **PerchRL: Vision-Based Agile Perching on Inclined Platforms under Rapid and Irregular Motion**（arXiv:2606.03441v3）研究四旋翼仅凭机载视觉，在快速、非规则运动的倾斜平台上完成敏捷接触/栖停。核心难点不是单纯估计目标，而是在视场丢失期间决定何时继续追击、何时机动以重获目标，同时不把已经漂移的状态预测当成可靠观测。
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 本文含义 |
+|---|---|---|
+| FOV | Field of View | 相机视场范围 |
+| PPO | Proximal Policy Optimization | 策略优化算法 |
+| TCN | Temporal Convolutional Network | 编码平台历史观测的时序卷积网络 |
+| EKF | Extended Kalman Filter | 视觉丢失期间预测平台状态 |
+| CTBR | Collective Thrust and Body Rates | 策略输出的推力与机体系角速度控制接口 |
+
 ## 论文与版本
 
 | 字段 | 内容 |
@@ -35,7 +45,7 @@ sources:
 
 PerchRL 的核心主张是把可见性作为控制策略显式感知的状态，而不仅是视觉检测器的前端问题：策略既能利用短时运动估计继续进场，也知道这个估计随着失去观测而逐渐不可信，并通过奖励学会兼顾平台追击与视线恢复。
 
-## 两阶段学习管线
+## 方法：两阶段学习管线
 
 ```mermaid
 flowchart LR
@@ -83,6 +93,15 @@ flowchart LR
 
 Normal-I/Hard-I 是正文重点展示；六个场景的补充细节在论文视频中。Hard 场景并非全成功，结果表把感知丢失、接触和磁吸分别统计为失败模式。
 
+## 与已有路线对比
+
+| 路线 | 处理方式 | 本文差异 |
+|---|---|---|
+| 感知 + 运动预测 + 轨迹优化 | 显式预测后优化轨迹 | PerchRL 用高频 RL policy，避免依赖高精度长时预测与频繁规划 |
+| 固定轨迹 RL | 在直线/圆等预设运动上训练 | 随机、动力学可行的 B-spline 轨迹与历史编码用于提升未见运动泛化 |
+| 仅用可见性惩罚的视觉 RL | 惩罚目标离开视野 | EKF 预测、随丢失时间衰减的可靠度和主动感知奖励联合处理缺测 |
+| Raw-image end-to-end | 策略直接消费像素 | 本文策略实际接收上游 detector 的间歇 6-DoF pose，不是像素策略 |
+
 ## 贡献与适用边界
 
 适用于：需要在移动平台上快速拦截/栖停，平台轨迹难以预先准确建模，且相机视场可能造成短时目标丢失的四旋翼任务。工程上值得借鉴的是“估计状态连续化 + 明示可靠度 + 主动感知 shaping”的组合，以及用时间历史而非固定轨迹记忆提升运动泛化。
@@ -95,9 +114,19 @@ Normal-I/Hard-I 是正文重点展示；六个场景的补充细节在论文视�
 4. 真机移动平台用差速车及铁磁板/磁铁接触，报告场景与失败数有限；Hard-I / II 各 10 次，不应把结果外推成任意倾角、目标检测器或载荷设置下的普遍成功率。
 5. 仿真基于 Omnidrones；论文未公开代码、配置、权重或完整复现脚本。工具链开源不代表 PerchRL 实现已开源。
 
-## 关联节点
+## 结论
+
+PerchRL 把间歇视觉反馈显式纳入策略状态与训练目标：估计器保持输入连续，可靠度信号告诉策略预测何时变得陈旧，主动感知奖励再提供恢复视野的学习信号。仿真与真机结果支持其在本文测试平台上的可行性；Hard 场景 7/10 成功和固定相机/检测器依赖也说明它仍是针对特定视觉栖停系统的验证，而非通用无人机栖停保证。
+
+## 关联页面
 
 - [PerchRL 官方项目页摘录](./perchrl-project.md)
 - [Omnidrones 项目 / 论文引用](https://github.com/thu-uav/OmniDrones)（PerchRL 所用工具链；非 PerchRL 代码）
 - [论文原始来源归档](../../sources/papers/perchrl_arxiv_2606_03441_v3.md)
 - [STAR Group 项目页归档](../../sources/sites/robotics_star_perchrl.md)
+
+
+## 参考来源
+
+- [论文来源归档](../../sources/papers/perchrl_arxiv_2606_03441_v3.md) — v3 正文方法、训练设置、真机表与局限摘录
+- [STAR Group 官方项目页来源](../../sources/sites/robotics_star_perchrl.md) — 项目页、投稿状态与视频链接
