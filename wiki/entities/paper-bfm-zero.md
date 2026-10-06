@@ -19,6 +19,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-tech-humanoid-control.md
+  - ../entities/paper-i-bfm.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_19_bfm_zero_a_promptable_behavioral_foundation_mode.md
@@ -154,6 +155,7 @@ sequenceDiagram
 
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
+- [I-BFM](./paper-i-bfm.md) — 把 FB 行为基础模型从人形身体运动扩展到物体与接触耦合的交互控制。
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 同框架 TLDR 姊妹线：[TeCH（RoboParty Lab）](./paper-tech-humanoid-control.md)
 - 同实验室少样本域适应：[FADA（Planner–IDM）](./paper-fada-humanoid.md)（arXiv:2606.28476）
