@@ -69,14 +69,14 @@
       "summary": "高性价比 G1 硬件 + RL 训练仓生态，再往上叠 UnifoLM 世界模型 / VLA / WLA 家族。",
       "official": "https://github.com/unitreerobotics",
       "nodes": [
-        { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA：具身推理 → 动态区域预测 → 动作专家。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla" },
-        { "date": "", "title": "G1", "track": "整机", "desc": "教育科研人形，仿真学习生态最广的本体之一。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unitree-g1", "url": "https://www.unitree.com/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "unitree_rl_gym", "track": "全身控制", "desc": "官方 RL 训练仓：Train → Play → Sim2Sim → Sim2Real。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unitree-rl-gym", "url": "https://github.com/unitreerobotics/unitree_rl_gym", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "世界模型既做交互仿真生成数据，也接动作头增强策略。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "面向通用人形操作的 VLA，训练 / 推理 / 权重开源。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "XR Teleoperate", "track": "数采", "desc": "持续维护的官方遥操作入口，与仿真和 LeRobot 数据链路衔接。", "id": "entity-xr-teleoperate", "url": "https://github.com/unitreerobotics/xr_teleoperate", "date_note": "持续维护仓库。" },
-        { "date": "", "title": "Unitree Sim IsaacLab", "track": "仿真", "desc": "官方 Isaac Lab 仿真与遥操作/策略测试接口；持续维护仓库。", "id": "entity-unitree-sim-isaaclab", "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab", "date_note": "持续维护仓库。" },
-        { "date": "", "title": "Unitree LeRobot", "track": "训练 / 部署", "desc": "将数采转换、策略训练与真机推理连接；持续维护工程入口。", "id": "entity-unitree-lerobot", "url": "https://github.com/unitreerobotics/unitree_lerobot", "date_note": "持续维护仓库。" }
+        { "date": "2023-10", "title": "unitree_rl_gym", "track": "全身控制", "desc": "2023-10-11 代码历史起点，非正式首发：官方 RL 训练、评估与部署工程入口。", "id": "entity-unitree-rl-gym", "url": "https://github.com/unitreerobotics/unitree_rl_gym", "date_note": "官方实现提交 25877c7（2023-10-11 UTC）；不推定仓库首次公开日。" },
+        { "date": "2024-05", "title": "G1", "track": "整机", "desc": "2024-05-13 产品发布。教育科研人形平台；后续量产与 EDU 规格更新另计。", "id": "entity-unitree-g1", "url": "https://www.unitree.com/operate/g1/", "date_note": "官网明确产品发布于 2024-05-13；不是软件生态首发日。" },
+        { "date": "2024-08", "title": "XR Teleoperate", "track": "数采", "desc": "2024-08-06 代码历史起点，非正式首发：XR 遥操作与数采，后续衔接仿真和 LeRobot。", "id": "entity-xr-teleoperate", "url": "https://github.com/unitreerobotics/xr_teleoperate", "date_note": "官方实现提交 b990c0e（2024-08-06 UTC）；不推定正式发布日期。" },
+        { "date": "2024-10", "title": "Unitree LeRobot", "track": "训练 / 部署", "desc": "2024-10-18 代码历史起点，非正式首发：数采转换、策略训练与真机推理。", "id": "entity-unitree-lerobot", "url": "https://github.com/unitreerobotics/unitree_lerobot", "date_note": "官方实现提交 7693322（2024-10-18 UTC）；不表示当日已具备现有全部功能。" },
+        { "date": "2025-06", "title": "Unitree Sim IsaacLab", "track": "仿真", "desc": "2025-06-24 代码历史起点，非正式首发：Isaac Lab 仿真、遥操作与策略测试接口。", "id": "entity-unitree-sim-isaaclab", "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab", "date_note": "官方实现提交 d9a48e9（2025-06-24 UTC）；不表示当日已具备现有全部功能。" },
+        { "date": "2025-09", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "2025-09-15 训练/推理代码与权重开放，09-22 补部署代码；世界模型兼顾交互仿真与策略。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action", "date_note": "README News 两次资产发布：2025-09-15 与 2025-09-22。" },
+        { "date": "2026-01", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "2026-01-29 训练/推理代码与权重开放：面向通用人形操作的 VLA。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla", "date_note": "README News 明确代码与模型权重发布于 2026-01-29。" },
+        { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA 分阶段开放：09-11 ER 权重，09-20 动作专家训练代码，09-28 WLA-Base 与微调代码。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla", "date_note": "README News：2026-09-11 / 09-20 / 09-28；首次 ER 权重开放不等于完整 WLA 资产开放。" }
       ]
     },
     {

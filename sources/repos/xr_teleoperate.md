@@ -30,3 +30,8 @@
 
 - 实体页：[`wiki/entities/xr-teleoperate.md`](../../wiki/entities/xr-teleoperate.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
+
+## 时间核对（2026-10-06）
+
+- **代码历史起点：** 2024-08-06（UTC），官方仓库提交 [`b990c0e`](https://github.com/unitreerobotics/xr_teleoperate/commit/b990c0eff38404755a1b57bce8453a499d358315) 已含 `teleop / scripts / act` 实现。
+- **时间口径：** 当前可核实的早期代码提交；不等同于正式首发、仓库首次转为公开或当前版本发布日期。仓库创建日、最近推送日与 wiki 入库日不作为首发依据。

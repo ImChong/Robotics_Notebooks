@@ -30,3 +30,8 @@
 
 - 实体页：[`wiki/entities/unitree-lerobot.md`](../../wiki/entities/unitree-lerobot.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
+
+## 时间核对（2026-10-06）
+
+- **代码历史起点：** 2024-10-18（UTC），官方仓库提交 [`7693322`](https://github.com/unitreerobotics/unitree_lerobot/commit/76933229e10efa3d47755555797e27f08495cd0a) 已含 `lerobot / unitree_utils` 实现。
+- **时间口径：** 当前可核实的早期代码提交；不等同于正式首发、仓库首次转为公开或当前版本发布日期。仓库创建日、最近推送日与 wiki 入库日不作为首发依据。

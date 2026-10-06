@@ -35,3 +35,9 @@ UnifoLM 系列 **6B 通用人形基础模型** 官方项目页：以 **UnifoLM-E
 - 代码归档：[`sources/repos/unifolm-wla.md`](../repos/unifolm-wla.md)
 - 沉淀实体：[`wiki/entities/unifolm-wla.md`](../../wiki/entities/unifolm-wla.md)
 - 同族 VLA / WMA：[`wiki/entities/unifolm-vla.md`](../../wiki/entities/unifolm-vla.md) · [`wiki/entities/unifolm-world-model-action.md`](../../wiki/entities/unifolm-world-model-action.md)
+
+## 后续源码与数据核对（2026-10-06）
+
+重新打开项目页并跟随官方 GitHub / HF 入口核查。原 2026-09-18 表保留为历史快照；当前已开放动作专家训练、微调与 LoRA 代码，WLA-1.0-Base 权重，WBT / Dex1 数据集合。官方 README 的时间分别为 09-11（ER 权重）、09-20（训练代码）、09-28（Base 与微调代码）；数据集合首发日期未确认，不附会到这三个事件中。
+
+当前为**部分开源**：列出的实现、权重和数据可用，但完整预训练池与全部任务复现边界未确认。当前模型服务为 Dex1 协议，WBT 需扩展。精确版本、入口与时间证据见 [仓库后续核对](../repos/unifolm-wla.md)。

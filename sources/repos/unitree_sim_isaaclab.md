@@ -33,3 +33,8 @@
 
 - 实体页：[`wiki/entities/unitree-sim-isaaclab.md`](../../wiki/entities/unitree-sim-isaaclab.md)
 - 组织枢纽：[`wiki/entities/unitree.md`](../../wiki/entities/unitree.md)
+
+## 时间核对（2026-10-06）
+
+- **代码历史起点：** 2025-06-24（UTC），官方仓库提交 [`d9a48e9`](https://github.com/unitreerobotics/unitree_sim_isaaclab/commit/d9a48e9abfebe86a13f8dc91ea989261960a04a5) 已含 `sim_main.py / tasks / robots` 实现。
+- **时间口径：** 当前可核实的早期代码提交；不等同于正式首发、仓库首次转为公开或当前版本发布日期。仓库创建日、最近推送日与 wiki 入库日不作为首发依据。

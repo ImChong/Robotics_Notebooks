@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-06
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -38,6 +38,7 @@ related:
   - ./paper-tango-vla.md
   - ./paper-vibe.md
 sources:
+  - ../../sources/sites/unitree-g1-official.md
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/humoslope_arxiv_2607_07830.md
@@ -68,6 +69,10 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 | LiDAR | Light Detection and Ranging | 机载 3D 激光，支撑地形感知 |
 | SD-AMP | Selective Domain AMP | 走跑起身统一策略的代表工作线 |
 | PILOT | Perceptive Loco-Manipulation | 感知移动操作 LLC 在 G1 上的验证 |
+
+## 产品发布时间
+
+官网明确 G1 于 **2024-05-13** 发布，Unitree Robotics 官方视频同日公布该产品。公司路线据此标注 2024-05；该日期不等同于后续量产版本、EDU 配置或软件工具发布时间。来源见 [G1 官方产品归档](../../sources/sites/unitree-g1-official.md)。
 
 ## 核心特性
 
@@ -167,6 +172,8 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — G1 EDU 工业保护停可行性：外部链可评、机侧反应链不可评（arXiv:2608.02809）。
 
 ## 参考来源
+
+- [G1 官方发布时间与版本边界](../../sources/sites/unitree-g1-official.md)
 
 - [RL Sim2Sim 在线演示：G1 AMP Walk/Run/Getup](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - Unitree G1 官方规格书。
