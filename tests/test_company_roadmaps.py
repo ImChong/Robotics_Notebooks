@@ -79,3 +79,12 @@ def test_hero_company_count_fallback_matches_data() -> None:
     html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     match = re.search(r'id="heroCompanyCount"[^>]*>(\d+)<', html)
     assert match and int(match.group(1)) == len(DATA["companies"])
+
+
+def test_companies_are_ordered_by_founding_year() -> None:
+    years = [company["founded_year"] for company in DATA["companies"]]
+    assert all(type(year) is int and 1900 <= year <= datetime.now().year for year in years)
+    assert years == sorted(years)
+    for company in DATA["companies"]:
+        assert company["founded_source"].startswith("https://"), company["key"]
+        assert company["founded_note"].strip(), company["key"]
