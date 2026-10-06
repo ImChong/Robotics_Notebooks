@@ -483,7 +483,7 @@
 - [Dyna-2.1（Physical Agent · Taku）](wiki/entities/dyna-2-1.md) — Dyna-2.1** 是 **Dyna Robotics**（2026-09-29 发布）对外宣称的首个可 **端到端完成长时真实工作流** 的 **physical agent** 系统：硬件为 `📅unknown` `[entity_page]`
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
-- [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是一个 **快速、轻量、可复现验证** 的机器人运动学与动 `📅unknown` `[entity_page]`
+- [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是面向控制器开发的机器人运动学与动力学库。它以 Rust  `📅unknown` `[entity_page]`
 - [Dyson CameraJet](wiki/entities/dyson-camerajet.md) — Dyson CameraJet™**（2026-09 发布，约 **$499**）是带 **100k 像素宏距口腔相机** 与 **Gap Optical Targeting™** 机器学习算法的 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
@@ -5195,7 +5195,7 @@
 
 - [三维坐标变换（视觉–机器人对齐）](wiki/formalizations/3d-coordinate-transforms-vision-robotics.md) — 一句话：** 机器人要把「相机里的一团像素」变成「机械臂能执行的位姿」，必须在 **世界、相机、成像平面、像素** 四套坐标之间做可审计的刚体与投影变换；具身时代难的不是解方程，而是 **外参、深 `📅unknown` `[formalization_page]`
 - [Adjoint Sensitivity Analysis（伴随灵敏度分析）](wiki/formalizations/adjoint-sensitivity-analysis.md) — 伴随灵敏度分析**：通过反向积分伴随方程（adjoint equation），以 $O(T)$ 代价计算长时域 OCP 目标对参数/初值/控制序列的梯度，避免有限差分的 $O(nT)$ 开销。 `📅unknown` `[formalization_page]`
-- [Articulated Body Algorithms（ABA / RNEA）](wiki/formalizations/articulated-body-algorithms.md) — 树状刚体系统** 的动力学可用 **递归牛顿–欧拉算法（RNEA）** 求逆动力学、用 **铰接体算法（ABA）** 求正向动力学。二者是 Pinocchio、RBDL、Drake 等库的默认内核 `📅unknown` `[formalization_page]`
+- [Articulated Body Algorithms（ABA / RNEA）](wiki/formalizations/articulated-body-algorithms.md) — 树状刚体系统** 的动力学可用 **递归牛顿–欧拉算法（RNEA）** 求逆动力学、用 **铰接体算法（ABA）** 求正向动力学。二者是 Pinocchio、RBDL、Drake 等库的常见内核 `📅unknown` `[formalization_page]`
 - [Behavior Cloning Loss (行为克隆损失函数)](wiki/formalizations/behavior-cloning-loss.md) — 行为克隆 (Behavior Cloning, BC)** 是模仿学习（Imitation Learning）中最简单且最广泛使用的形式。它的核心思想是：给定一个由专家（人类操作员或最优控制器）生 `📅unknown` `[formalization_page]`
 - [Bellman 方程](wiki/formalizations/bellman-equation.md) — Bellman 方程**：值函数的递归关系，揭示了"未来奖励"与"当前决策"之间的数学联系，是几乎所有强化学习算法的理论基础。 `📅unknown` `[formalization_page]`
 - [Constrained MDP (CMDP)](wiki/formalizations/cmdp.md) — 约束马尔可夫决策过程 (Constrained Markov Decision Process, CMDP)** 是一种在运筹学和强化学习中极其重要的数学形式化框架。当我们在构建真实物理世界的机器 `📅unknown` `[formalization_page]`
