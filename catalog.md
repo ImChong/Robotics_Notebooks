@@ -1703,7 +1703,7 @@
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
-- [门控残差身–手协调（arXiv:2609.18763）](wiki/entities/paper-gated-residual-body-hand-coordination.md) — 门控残差身–手协调**（*Gated Residual Body-Hand Coordination for Whole-Body Humanoid Teleoperation*，[arXiv:2 `📅unknown` `[entity_page]`
+- [Gated Residual Body–Hand Coordination for Whole-Body Humanoid Teleoperation](wiki/entities/paper-gated-residual-body-hand-coordination.md) — 中文名：** 门控残差身–手协调 `📅unknown` `[entity_page]`
 - [Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）](wiki/entities/paper-gaussian-lic2.md) — Gaussian-LIC2**（Lang et al., arXiv:2507.04004，项目页， `📅unknown` `[entity_page]`
 - [GaussianDream++](wiki/entities/paper-gaussiandream-plusplus.md) — GaussianDream++: Efficient 3D Gaussian World Modeling for Robotic Manipulation**（[arXiv:2608.25659 `📅unknown` `[entity_page]`
 - [On the identification of the inertial parameters of robots](wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md) — On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四 `📅unknown` `[entity_page]`
