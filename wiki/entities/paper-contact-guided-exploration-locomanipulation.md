@@ -2,7 +2,7 @@
 type: entity
 tags: ['paper', 'quadruped', 'loco-manipulation', 'rl', 'multi-critic', 'eth', 'nvidia']
 status: complete
-updated: 2026-09-28
+updated: 2026-10-06
 arxiv: "2608.28140"
 venue: "IEEE RA-L"
 summary: "Pisa/ETH/NVIDIA（arXiv:2608.28140，RA-L）：多 Critic PPO + 抓取算法接触候选 + 探索权重衰减；箱推/运椅>90%；ALMA 真机椅运；项目页仍无代码。"
@@ -59,6 +59,32 @@ flowchart TB
   ppo --> policy[全身 loco-manip 策略]
 ```
 
+## 训练与控制实现
+
+论文把高层操作策略与预训练低层步态策略分开：高层 actor 输出 6 维手臂目标关节角、底座平面速度 \((v_x,v_y,\omega_z)\) 和底座高度；冻结的 locomotion policy 跟踪底座命令并产生腿部目标。将底座高度纳入动作，是为了在末端接近地面时避免肩关节逼近运动学限位。
+
+- **策略观测：** 本体关节状态、重力投影、底座速度，以及底座坐标系中的物体位姿与目标误差。
+- **Critic 特权观测：** 物体线/角速度和当前采样的目标接触点。
+- **探索目标：** 椅子网格由通用 grasp proposal 算法产生 25 个候选点，每个 episode 重置时随机选一点；箱推则在可见表面均匀采样。
+- **训练：** Isaac Lab，4096 个并行环境；仿真步长 5 ms、控制步长 20 ms；RSL-RL PPO 改成多 Critic。椅子资产由 15 把 IKEA 椅和 100 把程序生成椅组成。
+- **域随机化：** 物体质量 2–4 kg、摩擦系数 0.2–1.5，底座质量 ±5 kg。
+- **权重时序：** (w_{task}=0.75) 固定；(w_{exp}) 在第 5k–10k 个训练 step 从 0.1 线性降到 0.01；(w_{reg}) 从 0.15 升到 0.24。该 schedule 在椅子任务调定后原样用于其余任务。
+
+### 训练与控制的数据流
+
+```mermaid
+flowchart TB
+  mesh["物体网格"] --> candidates["候选接触点"]
+  candidates --> critics["任务、探索、安全三组 Critic"]
+  critics --> mix["按时程合成优势"]
+  mix --> actor["LSTM 高层策略"]
+  actor --> arm["手臂目标与底座命令"]
+  arm --> loco["冻结的低层步态策略"]
+  loco --> robot["四足移动操作机器人"]
+  robot --> state["物体状态与任务反馈"]
+  state --> critics
+```
+
 ## 源码运行时序图
 
 **不适用** — 截至 **2026-09-07** 无可运行官方代码（或本文为硬件/协议类工作）。
@@ -72,12 +98,19 @@ flowchart TB
 
 ## 实验与评测
 
-| 任务 | 成功率 |
-|------|--------|
-| 箱推 / 运椅（仿真） | **>90%** |
-| ALMA 椅运（真机） | 零样本泛化 IKEA 椅；抗扰与超载 |
+| 评测 | 论文报告 | 解释 |
+|---|---:|---|
+| 仿真任务 | 箱推、椅子运输各自超过 90% 成功率；正文给出的最佳结果为 94.1% 成功率、4.4% tipover、9.2 s 完成时间 | 不把 94.1% 错写成每个任务都达到该数值 |
+| 成功定义 | 物体到目标距离 ≤0.2 m | 另统计 missed contact（物体位移 <0.2 m）、tipover（倾斜 >35°）和 timeout |
+| 多随机种子 | 5 seeds；所提方法成功率标准差 0.98%；固定权重 Multi-Critic、PPO+WS、普通 PPO 分别为 4.2%、1.2%、9.7% | 论文 Figure 5 汇总箱推与椅运；不将这些标准差混作硬件误差 |
+| 真机椅运 | 4 种未见 IKEA 家具合计 40/58 次成功（69.0%）：ADDE 27/37、SANDSBERG 8/14、VIHALS 3/3、LOVBACKEN 2/4 | ALMA 四足移动操作平台；机器人依赖机载本体感知，物体位姿由外部 motion-capture 跟踪 |
+| 负载与扰动 | 椅子总质量增至 6.5 kg 时完成运输；人推扰动后可重新接近、挂接并继续运输 | 属于定性鲁棒性测试，没有给出统一扰动成功率 |
+| 洗碗机 | 学会先拉把手、再推门板；靠近手臂关节限位 10% 区域的时间占比平均减少 59% | 定性/附加仿真任务，不应与箱推、椅运的主成功率并列 |
+
+**主要消融结论：** 无探索奖励的变体成功率为 0%；普通 PPO 在椅运上的 missed-contact 为 9.1%；在 scalar reward 上直接衰减权重后该值降至 4.0%，但训练方差较大；固定权重 Multi-Critic 容易持续追逐接触点并增加 tipover。作者的独立 value heads 与探索权重衰减共同解决“先找到接触、再撤掉探索偏置”的问题。
 
 ## 结论
+
 
 把 **接触先验** 做成 **可退火的独立 critic**，比固定 shaping 更稳地渡过探索期。
 
@@ -103,7 +136,10 @@ flowchart TB
 
 ## 局限与风险
 
-仍依赖仿真物理与抓取候选质量；长视野任务未全覆盖。
+- 真机评测仍依赖外部 motion-capture 物体位姿，尚非完全自包含的现场感知部署。
+- 仿真 94.1% 与硬件跨物体 69.0% 的落差可见 sim-to-real 与状态估计问题仍重要；论文将部分硬件失败归因于侧向接近造成的急剧 yaw 命令、里程计误差和物体倾倒。
+- 接触候选受网格与 grasp proposal 质量影响；论文自己的结果也说明候选点数量、非凸几何与可达性会改变探索效率。
+- 测试集中在箱推、椅运及洗碗机开门；作者指出还需更广泛 domain shift 测试，且固定权重 schedule 存在超参数敏感性。
 
 ## 关联页面
 
@@ -123,4 +159,6 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [https://tolomeis.github.io/contact-guided-exp/](https://tolomeis.github.io/contact-guided-exp/)
+- [arXiv 正文](https://arxiv.org/html/2608.28140v1)
+- [项目页与视频](https://tolomeis.github.io/contact-guided-exp/)
+- [项目页补充材料 PDF](https://tolomeis.github.io/contact-guided-exp/assets/RAL_Contac_guidance_Supp.pdf)
