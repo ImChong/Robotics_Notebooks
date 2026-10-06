@@ -6,7 +6,7 @@ updated: 2026-10-06
 related:
   - ./dimensionalos-dimos.md
   - ./typesafe-jev.md
-  - ../tasks/mobile-manipulation.md
+  - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/sites/showrobotics-moss.md
