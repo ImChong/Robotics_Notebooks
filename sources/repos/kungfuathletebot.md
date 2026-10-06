@@ -32,3 +32,12 @@
 - **wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md**：论文+数据集+训练范式归纳。
 - **wiki/comparisons/humanoid-reference-motion-datasets.md**：与 AMASS / PHUMA / LAFAN1 动力学对照。
 - **wiki/tasks/balance-recovery.md**：单策略 tracking+recovery 真机案例。
+
+
+## 版本核查更新（2026-10-06）
+
+- 新版论文：*KungfuAthleteBot: Learning High-Dynamic Humanoid Motion from Video with Unified Robust Recovery*, arXiv:2610.03388。它延续同一项目，故更新既有 Wiki 实体，不另建同名节点。
+- README 公开 `retarget/` 高度修正脚本及 `unitree_rl_mjlab/` 训练/回放入口；README 勾选数据、height-adjusted code、training code、FastSAC、1307 recovery checkpoint 与 real deployment。代码仓库仍有 848 样本旧版概述。
+- 当前 HF 数据卡和 README 后续统计为 992（Ground 822 / Jump 170）；新版论文附录 C 同为 992，但附录 E 与官网旧文本仍写 848。使用具体 release 文件时应检查版本。
+- 新论文称项目页给出三阶段配置、恢复 checkpoint 和 30 fps qpos；论文称资产接收后按 MIT 发布，而 HF 卡当前 license 字段为 Apache-2.0。不同资产应逐一核对授权；运动员原始视频不分发。
+- 来源互链：[2610.03388 论文](../papers/kungfuathletebot_arxiv_2610_03388.md)、[项目页](../sites/kungfuathletebot.md)、[HF 数据集](../datasets/kungfuathletebot-hf.md)、[Wiki 实体](../../wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md)。
