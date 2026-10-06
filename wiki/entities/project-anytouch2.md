@@ -27,6 +27,14 @@ sources:
 | 预训练模型 | [AnyTouch2-Model](https://huggingface.co/xxuan01/AnyTouch2-Model) | 模型访问需按模型卡说明申请/提交联系信息 |
 | ToucHD-Force | [BAAI/ToucHD-Force](https://huggingface.co/datasets/BAAI/ToucHD-Force) | 页面设有访问表单 |
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 含义 |
+|---|---|---|
+| HF | Hugging Face | 模型与数据托管平台 |
+| MAE | Masked Autoencoder | 掩码自编码器 |
+| ToucHD | Tactile Understanding through Contact Hierarchy Dataset | 动态触觉数据集 |
+
 ## 数据资产
 
 - **Sim**：1,118,896 帧；项目论文统计包含 5 类传感器、6 种原子动作及 1,043 个物体。
@@ -55,8 +63,18 @@ sequenceDiagram
   Note over E: 真机代码在 README 中仍标为待补全
 ```
 
-## 相关条目
+## 关联页面
 
 - [AnyTouch 2 论文详情](./paper-anytouch2.md)
 - [AnyTouch 前作项目](./project-anytouch.md)与[论文](./paper-anytouch.md)
 - [触觉感知主题](../concepts/tactile-sensing.md)
+
+## 参考来源
+
+- [来源归档](../../sources/papers/anytouch2_arxiv_2602_09617.md)
+- [官方项目页](https://gewu-lab.github.io/AnyTouch2/) · [代码仓库](https://github.com/GeWu-Lab/AnyTouch2) · [ToucHD 数据入口](https://huggingface.co/collections/BAAI/touchd)
+
+## 模态与重定向就绪度
+
+- **模态**：多传感器触觉视频、语义/物体配对和力信号。
+- **重定向就绪度**：表征权重和评估需遵循 Hugging Face 访问流程；真机部署代码在上游 README 中尚未完成。
