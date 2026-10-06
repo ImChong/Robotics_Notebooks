@@ -2,7 +2,7 @@
 type: entity
 tags: [framework, open-source, agent, navigation, unitree, quadruped, humanoid, mcp, middleware]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-06
 related:
   - ../concepts/ros2-basics.md
   - ../concepts/model-context-protocol.md
@@ -126,6 +126,7 @@ flowchart LR
 - [Teleoperation](../tasks/teleoperation.md) — 键盘遥操作 xArm7 等 manipulation 演示
 - [Can Jev Nav?（Nav Arena）](./dimensional-can-jev-nav-benchmark.md) — dimOS 上 Jev vs Dimcode vs Pi agent 导航基准
 - [Jev（TypeSafe）](./typesafe-jev.md) — Nav Arena 与 [NavJev](./paper-navjev-efficient-vln-jev.md) 的 System One 决策面
+- [MOSS 垃圾拾取机器人](./moss.md) — dimOS 被列为 MOSS 实机的软件栈；其自主拾取仍在开发中
 
 ## 参考来源
 
