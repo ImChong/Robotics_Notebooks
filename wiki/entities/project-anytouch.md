@@ -27,6 +27,14 @@ sources:
 | 相关开放数据 | [TacQuad on Hugging Face](https://huggingface.co/datasets/xxuan01/TacQuad) | 数据卡与下载入口 |
 | 预训练权重 | [Google Drive](https://drive.google.com/file/d/1L4jGUjIHNBMzOiD33Rv0jxWYKHBORD1R/view?usp=sharing) | 仓库 README 提供的权重入口 |
 
+## 英文缩写速查
+
+| 缩写 | 全称 | 含义 |
+|---|---|---|
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 计算平台 |
+| HF | Hugging Face | 模型与数据托管平台 |
+| TacQuad | Tactile Quadruple | 多传感器视触觉数据集 |
+
 ## 项目组成
 
 - **传感器覆盖**：GelSight Mini、DIGIT、DuraGel、Tac3D。
@@ -55,8 +63,18 @@ sequenceDiagram
 
 仓库公开程度、数据条款和权重链接可能变化；实际复现请查看上游 README 与各数据卡。TacQuad Hugging Face 页面标注 MIT 许可。论文中的机器人任务需要相应硬件与传感器，不能仅凭训练脚本复现。
 
-## 相关条目
+## 关联页面
 
 - [AnyTouch 论文详情](./paper-anytouch.md)
 - [AnyTouch 2 项目](./project-anytouch2.md) 与 [AnyTouch 2 论文](./paper-anytouch2.md)
 - [触觉感知主题](../concepts/tactile-sensing.md)
+
+## 参考来源
+
+- [来源归档](../../sources/papers/anytouch_arxiv_2502_12191.md)
+- [官方项目页](https://gewu-lab.github.io/AnyTouch/) · [代码仓库](https://github.com/GeWu-Lab/AnyTouch) · [TacQuad 数据卡](https://huggingface.co/datasets/xxuan01/TacQuad)
+
+## 模态与重定向就绪度
+
+- **模态**：视触觉图像/视频、配对文本与视觉语义。
+- **重定向就绪度**：原始代码与权重入口见 README；部署到新传感器仍需按传感器协议处理数据并评估迁移。
