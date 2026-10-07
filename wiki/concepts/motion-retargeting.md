@@ -267,6 +267,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 ---
 
 ## 关联页面
+- [FlashDexRetarget](../entities/paper-flashdexretarget.md) — 一个策略联合训练多段灵巧手—物体演示；以离策略 RL 生成物理可行的重定向轨迹
 - [具身数据采集四层术语地图](./embodied-data-collection-four-layers-taxonomy.md) — MoCap 教法层与重定向在动作标签形成中的位置
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路视角：源归一 → 骨架对齐 → IK → 物理筛选 → 配对监督
 - [KDMR](../entities/paper-kdmr.md) — GRF 多接触全身 TO
