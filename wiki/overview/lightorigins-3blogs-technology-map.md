@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, light-origins, navigation, humanoid, technology-map]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-07
 related:
   - ../queries/lightnav-0-blog-references-deep-read.md
   - ../entities/paper-tolebi.md
@@ -34,6 +34,7 @@ related:
   - ../entities/light-react.md
   - ../entities/paper-light-loco-parkour.md
 sources:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/blogs/lightorigins_light_react_2026-09-09.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
   - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
@@ -60,6 +61,10 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 ## LightNav-0 单篇深读
 
 博客 [lightnav-0](https://www.lightorigins.com/en/blog/lightnav-0) 引用项的 **三阶段管线 + 全表索引 + 读榜数字** 见 **[LightNav-0 博客引用深读](../queries/lightnav-0-blog-references-deep-read.md)**（Query 产物，2026-09-22）。
+
+## LocoFormer 归属与日期复核
+
+2026-10-07 核对官方论文与项目页：[LocoFormer](../entities/paper-locoformer.md)署名机构为 **Skild AI**，公司博客日期 **2025-09-24**、arXiv v1 提交 **2025-09-28**。下表的 2026-09 是 Light REACT 博客引用日期，不是 LocoFormer 首发日；本页仅组织亮源博客引用链，不改变被引论文的机构归属。
 
 ## 完整索引
 
@@ -111,6 +116,8 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 - [Light-Loco-Parkour](../entities/paper-light-loco-parkour.md)
 
 ## 参考来源
+
+- [Skild AI 官方日期与机构核查](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)
 
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
