@@ -10,7 +10,7 @@
 - **项目页：** <https://nv-tlabs.github.io/PixelUMM/> — [项目页归档](../sites/pixelumm-project.md)
 - **官方代码：** <https://github.com/nv-tlabs/PixelUMM> — [代码仓库归档](../repos/nv-tlabs-pixelumm.md)
 - **模型权重：** <https://huggingface.co/nvidia/PixelUMM>
-- **作者：** Cong Wei、Xuanchi Ren、Bryan Chu、Weiming Ren、Huan Ling、Jiahui Huang、Laura Leal-Taïxé、Sanja Fidler、Wenhu Chen、Zian Wang、Jay Zhangjie Wu
+- **作者：** Cong Wei、Xuanchi Ren、Bryan Chu、Weiming Ren、Huan Ling、Jiahui Huang、Laura Leal-Taixé、Sanja Fidler、Wenhu Chen、Zian Wang、Jay Zhangjie Wu
 - **机构：** NVIDIA；University of Waterloo
 - **版本：** v1，2026-09-29 提交；arXiv 预印本
 - **入库日期：** 2026-10-07
