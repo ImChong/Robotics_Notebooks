@@ -10,10 +10,12 @@ tags:
   - northwestern
   - cmu
 status: complete
-updated: 2026-09-15
+updated: 2026-10-07
 related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-roboreward.md
+  - ../entities/paper-freeform-preference-learning.md
   - ../entities/paper-prm-as-a-judge.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
@@ -25,6 +27,8 @@ sources:
   - ../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md
   - ../../sources/repos/awesome-progress-models.md
   - ../../sources/papers/topreward_arxiv_2602_19313.md
+  - ../../sources/papers/roboreward_arxiv_2601_00675.md
+  - ../../sources/papers/fpl_arxiv_2606_32027.md
 summary: "过程奖励/进度模型：在终局成功之外估计任务是否在推进、停滞或回退；用接口三维×四种构造范式×保真/鲁棒/效用评测透镜阅读该领域。"
 ---
 
@@ -100,6 +104,8 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 - [Progress Reward Survey（论文实体）](../entities/paper-progress-reward-modeling-survey.md) — 综述与 Awesome 入口
 - [TOPReward](../entities/paper-topreward.md) — 视频 VLM token 似然零样本进度；OXE / ManiRewardBench
+- [RoboReward](../entities/paper-roboreward.md) — 反事实负例、near-miss 与通用奖励模型
+- [Freeform Preference Learning](../entities/paper-freeform-preference-learning.md) — 以自然语言定义多维奖励轴
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 打进度曲线，用 OPD 评 VLA/WAM 过程（非训练奖励）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励与信用分配
 - [Imitation Learning](../methods/imitation-learning.md) — 演示时间序作弱进度
