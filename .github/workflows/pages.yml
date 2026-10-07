@@ -12,7 +12,9 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  # 最新提交优先：环境等待也会占住整条工作流，必须允许新运行取消旧运行。
+  # false 只替换 pending 运行，无法释放卡在 waiting 的旧部署。
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -60,7 +62,7 @@ jobs:
           path: 'docs'
 
   deploy:
-    # GitHub Pages 偶发长期停在 deployment_queued；放宽超时减少误杀
+    # 限制 runner 启动后的部署耗时；启动前的环境等待由上面的并发策略解除。
     timeout-minutes: 30
     environment:
       name: github-pages

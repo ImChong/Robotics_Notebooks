@@ -21,6 +21,17 @@
 
 本地 **`make ci-preflight`** 与 GitHub Actions **互补**：提交前本地预检；PR 上仍以 Actions 检查结果为准。
 
+## Pages 部署队列恢复（2026-10-07）
+
+- [x] 核查运行 `37482262614`：build 与 artifact 上传成功，deploy 无 runner、无执行步骤，停在环境 `waiting`；后续 main 推送均被同一 `pages` 并发组阻塞。
+- [x] 核查 `github-pages` 环境：允许 `main`，没有 reviewer、wait timer 或自定义审批规则；无需修改环境保护设置。
+- [x] Pages 工作流保留全局互斥，将 `cancel-in-progress` 改为 `true`，使新提交能取消卡住的旧运行，发布最新快照。
+- [x] 保留 deploy 的 30 分钟超时，但注明它不覆盖 runner 启动前的环境等待。
+
+排查时先区分 build 失败、deploy 步骤失败与无执行步骤的环境等待。新部署触发后，确认旧运行结束、最新运行完成 build / deploy；若 GitHub 的环境调度再次阻塞，可取消旧运行后重跑最新 main。等待中的运行被替换为 `cancelled` 不代表站点构建失败。
+
+并发行为依据：[GitHub Actions concurrency 文档](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)。
+
 ## 项目节点去重门禁（2026-10-06）
 
 - [x] 合并同项目论文 / 网站 / 官方源码及重复清单入口，迁移源资料映射与历史详情 ID。
