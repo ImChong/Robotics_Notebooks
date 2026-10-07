@@ -4,6 +4,7 @@ project_id: dipanbartaula-cae-physics-simulations-agent
 code: "https://github.com/DipanBartaula/CAE_Physics_Simulations_Agent"
 tags:
   - engineering-tools
+  - independent-maintainer
   - caa-cfd
   - fea
 status: complete

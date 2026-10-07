@@ -4027,6 +4027,12 @@
         "rerun",
         "rerun-io"
       ]
+    },
+    "svd-ai-lab": {
+      "label": "SVD AI 实验室（SVD AI Lab）",
+      "aliases": [
+        "svd-ai-lab"
+      ]
     }
   }
 }

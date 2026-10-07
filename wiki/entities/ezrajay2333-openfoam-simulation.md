@@ -4,6 +4,7 @@ project_id: ezrajay2333-openfoam-simulation
 code: "https://github.com/EzraJay2333/openfoam-simulation"
 tags:
   - engineering-tools
+  - independent-maintainer
   - caa-cfd
   - cfd
 status: complete

@@ -4,6 +4,7 @@ project_id: svd-ai-lab-sim-plugin-starccm
 code: "https://github.com/svd-ai-lab/sim-plugin-starccm"
 tags:
   - engineering-tools
+  - svd-ai-lab
   - caa-cfd
   - mcp
 status: complete
