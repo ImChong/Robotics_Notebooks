@@ -3,6 +3,7 @@ type: entity
 tags: [paper, world-action-model, video-generation, vla, masked-diffusion, manipulation]
 status: complete
 updated: 2026-10-07
+project_id: suave-unified-video-action
 arxiv: "2610.04009"
 summary: "SUAVE 在 8B masked-diffusion Transformer 中共享文本、视频和动作离散 token；同一模型可按推理 mask 方式作为世界模型、策略或 video-action 模型。"
 related:

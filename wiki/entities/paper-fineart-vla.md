@@ -3,6 +3,7 @@ type: entity
 tags: [paper, dataset, vla, bimanual-manipulation, subtask-planning, lerobot]
 status: complete
 updated: 2026-10-07
+project_id: fineart-vla
 arxiv: "2609.36416"
 code: https://github.com/huggingface/lerobot
 summary: "FineART 的细粒度子任务数据支持 FineART-VLA 在 π0.5/LeRobot 上预测下一子任务并生成子任务条件动作。"

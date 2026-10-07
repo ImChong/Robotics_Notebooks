@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, locomotion, loco-manipulation, heavy-payload, teacher-student]
 status: complete
 updated: 2026-10-07
+project_id: humanoid-rickshaw-pulling
 arxiv: "2610.04238"
 summary: "G1 以 50 Hz 全身策略持续双手牵引人力车；特权教师和历史条件学生组成单一策略，硬件 loaded rickshaw mass 最高 115 kg。"
 related:

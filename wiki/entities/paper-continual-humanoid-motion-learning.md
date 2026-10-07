@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, continual-learning, motion-tracking, lora, sim-to-real]
 status: complete
 updated: 2026-10-07
+project_id: continual-humanoid-motion-learning
 arxiv: "2610.04231"
 code: https://anonymous.4open.science/r/continual-humanoid-learning-35D3
 summary: "Similarity-guided LoRA-PNN 以动作相似度引导策略列继承和扩展，顺序学习六类全身动作并部署于 Unitree G1。"
