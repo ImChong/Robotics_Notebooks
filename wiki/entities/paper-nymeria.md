@@ -10,7 +10,7 @@ tags:
 - motion-language
 - mocap
 status: complete
-updated: 2026-10-06
+updated: 2026-10-07
 arxiv: '2406.09905'
 venue: ECCV 2024
 code: https://github.com/facebookresearch/nymeria_dataset
@@ -25,7 +25,7 @@ sources:
 - ../../sources/papers/nymeria_arxiv_2406_09905.md
 - ../../sources/sites/nymeria-dataset-projectaria.md
 - ../../sources/repos/nymeria_dataset.md
-summary: Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observer 同步野外 egocentric 人类 motion 与层级 motion-language；论文演示 tracking/synthesis/recognition SOTA 评测。
+summary: Nymeria（ECCV 2024，arXiv:2406.09905）：Aria+miniAria+XSens+observer 同步野外 egocentric 人类 motion 与层级 motion-language；论文演示 tracking/synthesis/recognition 上对 SOTA 基线的评测。
 project_id: nymeria
 ---
 
@@ -35,7 +35,7 @@ project_id: nymeria
 
 ## 一句话定义
 
-**第一篇系统描述「多 egocentric 设备 + 全身 GT + observer + 层级语言」野外人类 motion 超数据集的 ECCV 论文，并给出 egocentric 理解任务上的 SOTA 对照实验。**
+**第一篇系统描述「多 egocentric 设备 + 全身 GT + observer + 层级语言」野外人类 motion 超数据集的 ECCV 论文，并给出 egocentric 理解任务上对 SOTA 基线的对照实验。**
 
 ## 英文缩写速查
 
@@ -69,11 +69,11 @@ project_id: nymeria
 1. **硬件同步栈：** Aria + **miniAria** 腕带 + **XSens** + **observer** → 统一坐标 + 时间对齐。
 2. **Momentum 重定向：** 将 skeleton motion 映射到 **参数化人体模型** 便于 learning-friendly 表示。
 3. **层级语言协议：** motion narration → atomic action → activity summary，**in-context** 观看 ego+exo+motion 渲染后口述。
-4. **Benchmark 演示：** 对 **egocentric body tracking / motion synthesis / action recognition** 跑 SOTA，证明数据增益。
+4. **Benchmark 演示：** 对 **egocentric body tracking / motion synthesis / action recognition** 跑 SOTA 基线，证明数据增益。
 
 ## 实验与评测（论文级）
 
-- 论文在三大任务上 **对比 contemporary SOTA**（具体数值以 PDF Table 为准）；核心信息是 **多模态 egocentric + GT** 相对单模态的增益。
+- 论文在三大任务上 **对比发表时（2024）的 SOTA 基线**（具体数值以 PDF Table 为准）；核心信息是 **多模态 egocentric + GT** 相对单模态的增益。
 - 后续工作（EgoExoMoCap 等）常在 **Nymeria 子集** 上报告 MPJPE / recognition 指标——本页不重复搬运全部表格。
 
 ## 与其他工作对比

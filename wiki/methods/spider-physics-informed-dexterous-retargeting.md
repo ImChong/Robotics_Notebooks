@@ -5,7 +5,7 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-s
 status: complete
 code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-09-15
+updated: 2026-10-07
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -20,12 +20,14 @@ related:
   - ./regrind-retargeting-guided-rl.md
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-flashdexretarget.md
   - ../tasks/manipulation.md
   - ./imitation-learning.md
 sources:
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
   - ../../sources/sites/jc-bao-spider-project-github-io.md
   - ../../sources/papers/humanoid_pnb_spider.md
+  - ../../sources/papers/flashdexretarget_arxiv_2610_01849.md
 summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义，面向灵巧手与人形的规模化演示数据生成。"
 ---
 
@@ -156,6 +158,7 @@ sequenceDiagram
 - [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向。
 - [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL；论文以 SPIDER 为对照，四任务 residual RL 初始化 SR **0%**。
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 共享虚拟接触/VOC 叙事；CHORD 在 RL 奖励层用 wrench 空间替代位置匹配。
+- [FlashDexRetarget（多参考 RL 灵巧重定向）](../entities/paper-flashdexretarget.md) — 以 SPIDER 命名的物体级成功判据（SR_SPIDER）报告 50 动作基准；用一个共享多参考策略替代逐段优化，并另报更严格的 SR_MT。
 - [Manipulation（操作）](../tasks/manipulation.md) — 灵巧接触丰富任务的需求背景。
 
 ## 推荐继续阅读
@@ -171,4 +174,5 @@ sequenceDiagram
 - [spider_scalable_physics_informed_dexterous_retargeting（本入库摘录）](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md)
 - [jc-bao.github.io/spider-project（项目页索引）](../../sources/sites/jc-bao-spider-project-github-io.md)
 - [jc-bao/spider-project（Pages 源码仓）](../../sources/repos/jc-bao-spider-project.md)
+- [flashdexretarget_arxiv_2610_01849（FlashDexRetarget 归档）](../../sources/papers/flashdexretarget_arxiv_2610_01849.md) — 以 SPIDER 为物理采样式基线 / 成功判据参照的后续工作
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
