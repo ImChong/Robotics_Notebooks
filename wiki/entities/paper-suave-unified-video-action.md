@@ -27,6 +27,19 @@ sources:
 
 **把“说什么、未来画面怎样、机器人如何动”变成同一序列中的 token，再通过遮挡哪些 token 来选择模型要回答的问题。**
 
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| VLA | Vision-Language-Action | 将视觉和语言条件映射到机器人动作。 |
+| WAM | World Action Model | 联合建模环境未来和机器人动作的模型。 |
+| MAGViT | Masked Generative Video Transformer | SUAVE 使用的冻结视频 tokenizer。 |
+| FVD | Fréchet Video Distance | 衡量生成视频分布差异的指标。 |
+| PSNR | Peak Signal-to-Noise Ratio | 图像重建质量指标。 |
+| SSIM | Structural Similarity Index Measure | 图像结构相似度指标。 |
+| LPIPS | Learned Perceptual Image Patch Similarity | 感知图像差异指标。 |
+
 ## 方法图
 
 ```mermaid
@@ -84,7 +97,7 @@ SUAVE 从 **MMaDA-8B** 初始化，为 32 层 Transformer，增加 256 个动作
 
 实验覆盖 LIBERO、LIBERO-Plus、DOMINO 仿真，以及单臂 xArm7 实机。论文称机器人视频预训练和无动作人类视频 co-training 改善策略表现，但也说明部分 co-training 增益在统计上不可区分。
 
-## 与其他统一模型的区别
+## 与其他工作对比
 
 | 方向 | 常见设计 | SUAVE |
 |---|---|---|
