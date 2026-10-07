@@ -28,6 +28,16 @@ sources:
 
 **数据把长任务拆成有时间边界的语言子任务；模型先预测下一步做什么，再据此生成双臂动作。**
 
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| VLA | Vision-Language-Action | 根据视觉和语言条件生成机器人动作。 |
+| FAST | Frequency-space Action Sequence Tokenization | 将连续动作序列编码为离散 token 的方法。 |
+| DROID | Distributed Robot Interaction Dataset | 论文使用的多任务机器人操作数据来源之一。 |
+| π0.5 | Physical Intelligence π0.5 | FineART-VLA 中期训练所基于的机器人策略模型。 |
+
 ## 方法图
 
 ```mermaid
@@ -77,6 +87,10 @@ LeRobot 当前实现文档给出默认配方：
 | 新硬件上的未见任务 | 零样本泛化 | 只适用于论文测试协议 |
 
 LeRobot 文档给出基于 lerobot/fineart_vla_base 的训练入口、依赖安装和数据格式说明；示例采用 bfloat16、batch size 8、30,000 steps 等配置，实际复现须结合硬件与数据版本调整。
+
+## 与其他工作对比
+
+FineART 是带细粒度子任务时间标注的数据集，FineART-VLA 则是在 π0.5/LeRobot 上训练的策略。相较直接用高层任务指令生成整段动作，它显式预测下一条低层子任务，再以该子任务条件化动作生成；论文结果需区分人工逐步提供子任务与模型自主规划两种设置。
 
 ## 复现边界
 

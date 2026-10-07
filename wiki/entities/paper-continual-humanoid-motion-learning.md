@@ -30,6 +30,17 @@ sources:
 
 **每学一项新动作就增加一个策略列；旧列冻结，新列从最相似的旧动作继承，再按相似程度决定 LoRA 需要多大更新容量。**
 
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| PNN | Progressive Neural Network | 为新任务增加策略列，并通过横向连接复用旧列表示。 |
+| LoRA | Low-Rank Adaptation | 用低秩参数增量适配新任务。 |
+| DTW | Dynamic Time Warping | 对齐节奏不同的动作序列。 |
+| OT | Optimal Transport | 比较动作窗口或动作集的分布差异。 |
+| PPO | Proximal Policy Optimization | 用于优化新任务策略列的强化学习算法。 |
+
 ## 方法图
 
 ```mermaid
@@ -92,7 +103,7 @@ flowchart TB
 - **实机范围：** G1 上是动作跟踪部署，不等于开放环境自主持续学习。
 - **代码可见性：** 作者提供匿名 4open 项目入口；具体训练脚本、硬件配置和授权以该项目当前页面为准。
 
-## 与相关工作的关系
+## 与其他工作对比
 
 - [Streaming RL 持续学习分析](./paper-streaming-rl-continual-robotics.md)讨论更一般的流式更新；本文聚焦离线参考动作集的顺序扩展。
 - KungfuBot 系列训练多动作跟踪控制器；本文重点是旧技能隔离、相似度迁移与轻量新列适配。

@@ -12,7 +12,7 @@ status: complete
 updated: 2026-10-06
 arxiv: '2606.01955'
 code: https://github.com/X-Square-Robot/wall-wm
-summary: Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, achieving state-of-the-art performance in large-scale real-world generalization evaluation.
+summary: Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, reporting strong results on its large-scale real-world generalization evaluation.
 related:
 - paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
@@ -40,7 +40,7 @@ project_id: rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve
 
 ## 一句话定义
 
-Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, achieving state-of-the-art performance in large-scale real-world generalization evaluation.
+Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, reporting strong results on its large-scale real-world generalization evaluation.
 
 ## 英文缩写速查
 
@@ -58,7 +58,7 @@ Experiments show that WALL-WM generalizes broadly across language, scenes, and t
 
 ## 为什么重要
 
-- Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, achieving state-of-the-art performance in large-scale real-world generalization evaluation.
+- Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, reporting strong results on its large-scale real-world generalization evaluation.
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
@@ -77,7 +77,7 @@ Experiments show that WALL-WM generalizes broadly across language, scenes, and t
 
 ### 策展导读要点
 
-Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, achieving state-of-the-art performance in large-scale real-world generalization evaluation.
+Experiments show that WALL-WM generalizes broadly across language, scenes, and tasks, reporting strong results on its large-scale real-world generalization evaluation.
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
@@ -91,7 +91,7 @@ Experiments show that WALL-WM generalizes broadly across language, scenes, and t
 
 - 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **WAMs** 分组逐条展开。
 - 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与清单内相邻条目孰优孰劣，本页不下结论：清单中的贡献描述可能未涵盖论文版本修订细节，判断差异时应核对原文的问题设定与评测口径。
 
 ## 结论
 
