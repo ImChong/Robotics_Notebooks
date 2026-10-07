@@ -11,6 +11,7 @@
 - [x] [continual_humanoid_learning_arxiv_2610_04231.md](papers/continual_humanoid_learning_arxiv_2610_04231.md) | Similarity-guided LoRA-PNN 人形持续动作学习（arXiv:2610.04231）
 - [x] [humanoid_rickshaw_pulling_arxiv_2610_04238.md](papers/humanoid_rickshaw_pulling_arxiv_2610_04238.md) | G1 牵引 loaded rickshaw 60–115 kg（arXiv:2610.04238）
 - [x] [suave_arxiv_2610_04009.md](papers/suave_arxiv_2610_04009.md) | SUAVE 统一离散视频-语言-动作生成（arXiv:2610.04009）
+- [x] [cf_wam_arxiv_2609_34414.md](papers/cf_wam_arxiv_2609_34414.md) | CF-WAM：动态采样视觉/语义/几何/交互未来表示，并以未配对人–机器人数据学习 WAM（arXiv:2609.34414）
 - [x] [cari4d_arxiv_2512_11988.md](papers/cari4d_arxiv_2512_11988.md) | CARI4D CVPR 2026 论文摘录（arXiv:2512.11988）
 
 | 文件 | 内容 |
