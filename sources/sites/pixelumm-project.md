@@ -4,7 +4,7 @@
 - **论文：** <https://arxiv.org/abs/2609.38597>；[PDF](https://arxiv.org/pdf/2609.38597)；[HTML](https://arxiv.org/html/2609.38597)
 - **官方源码：** <https://github.com/nv-tlabs/PixelUMM> — [仓库核查](../repos/nv-tlabs-pixelumm.md)
 - **模型权重：** <https://huggingface.co/nvidia/PixelUMM>
-- **作者与机构：** Cong Wei、Xuanchi Ren、Bryan Chu、Weiming Ren、Huan Ling、Jiahui Huang、Laura Leal-Taïxé、Sanja Fidler、Wenhu Chen、Zian Wang、Jay Zhangjie Wu；NVIDIA、University of Waterloo
+- **作者与机构：** Cong Wei、Xuanchi Ren、Bryan Chu、Weiming Ren、Huan Ling、Jiahui Huang、Laura Leal-Taixé、Sanja Fidler、Wenhu Chen、Zian Wang、Jay Zhangjie Wu；NVIDIA、University of Waterloo
 - **入库日期：** 2026-10-07
 - **项目实体：** [PixelUMM](../../wiki/entities/paper-pixelumm.md)
 - **论文摘录：** [arXiv 来源归档](../papers/pixelumm_arxiv_2609_38597.md)
