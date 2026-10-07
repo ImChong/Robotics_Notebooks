@@ -55,6 +55,18 @@ STP 的“预测目标不只看表面 token，还约束内部状态轨迹”的�
 - NL-RX-SYNTH 的数据效率结论不等于真实语料、机器人视频或行动序列上的提升。
 - 本文引用的量化结果均以原论文指标和数据为准。
 
+## 与其他工作对比
+
+| 工作 | 训练/分析对象 | 与 STP 的区别 |
+|---|---|---|
+| 标准 next-token prediction | 只监督下一个 token | STP 在 NTP 之外额外约束隐藏状态轨迹 |
+| [LeJEPA](./paper-lejepa.md) | 视觉 JEPA 表征，用 SIGReg 约束 embedding 分布 | 同属 JEPA 思路；STP 把目标搬到语言模型隐藏轨迹，不需要构造多视图对 |
+| [From Tokens to Thoughts](./paper-from-tokens-to-thoughts.md) | 分析 LLM embedding 的压缩与语义保真 | 诊断性研究，不提出训练目标；STP 是训练正则 |
+
+## 结论
+
+STP 把 JEPA 式“约束表征而非只预测表面 token”的思路引入语言模型训练，并在 NL-RX-SYNTH 合成设定中报告约 16 倍数据效率。该结论依赖 Geodesic Hypothesis 与合成数据，对机器人世界模型只具概念参考价值，不能视作 latent dynamics 或规划能力的证据。
+
 ## 参考来源
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)

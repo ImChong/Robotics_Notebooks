@@ -28,7 +28,7 @@ summary: "研究 LeJEPA 何时能学习可用于规划的世界表征；在线�
 | OU | Ornstein–Uhlenbeck process | 具有均值回复特性的随机过程，论文用于表征状态转移条件 |
 | MPC | Model Predictive Control | 用动力学模型评估动作序列并滚动重规划 |
 
-## 核心结论与假设
+## 核心原理：理论假设与结论
 
 在论文分析的世界类别中，潜变量服从高斯分布并经平稳加性噪声动力学演化时，alignment + Gaussian regularization 的 LeJEPA 表征可线性恢复真实潜变量（至正交变换）。作者证明此条件下的 Gaussian 分布具有特定唯一性，并给出近似可辨识性分析，连接到 latent-space planning。
 
@@ -53,7 +53,7 @@ flowchart TB
 
 前两者是第三者的必要参考，但不自动推出普遍的机器人任务成功率。
 
-## 与相关工作的关系
+## 与相关工作的对比与关系
 
 - [LeJEPA](./paper-lejepa.md) 提出 alignment 与 SIGReg 的表征学习配方；本论文研究其何时能恢复世界结构。
 - [LeWorldModel](./paper-lewm.md) 进一步学习像素到未来 latent 的 action-conditioned dynamics。

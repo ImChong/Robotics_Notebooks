@@ -62,6 +62,18 @@ HWM 是模型预测控制和学习式状态表示结合的规划栈，不是 VLA
 
 论文的真机验证对象是 Franka，不是人形机器人。迁移到 Unitree G1 需要重新验证浮动基座、接触动力学、多关节动作空间与控制延迟，不能直接沿用机械臂成功率。
 
+## 与其他工作对比
+
+| 方案 | 规划结构 | 与 HWM 的区别 |
+|---|---|---|
+| 单层 latent MPC（如论文中的 V-JEPA 2-AC 基线） | 单一时间尺度直接优化原始动作 | 长时程、多阶段任务需要非贪心动作，论文中 Franka pick-and-place 单层为 0% |
+| [LeWorldModel](./paper-lewm.md) | action-conditioned latent dynamics | 关注学习单尺度潜动力学；HWM 在其之上增加高层 macro-action 模型生成子目标 |
+| 层级策略 / 手工子任务 | 学习或设计高层策略选择子任务 | HWM 不训练专门层级策略，两层都只用预测误差训练 world model |
+
+## 结论
+
+HWM 说明在共享视觉潜空间里叠加不同时间尺度的 world model，可以让 MPC 处理单层规划难以完成的长时程、多阶段操作：论文报告 Franka 真机 pick-and-place 从 0% 提至 60–70%，Push-T 长时域从 17% 提至 61%，并最多降低约 3 倍规划计算。结论限定在论文的机械臂与仿真设置内，迁移到人形等浮动基座平台需重新验证。
+
 ## 关联页面
 
 - [LeWorldModel](./paper-lewm.md)
