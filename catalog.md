@@ -4692,6 +4692,7 @@
 - [WinUI](wiki/entities/winui.md) — WinUI**（microsoft/microsoft-ui-xaml，文档 [Microsof `📅unknown` `[entity_page]`
 - [Wokwi](wiki/entities/wokwi.md) — Wokwi**（wokwi.com）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、ST `📅unknown` `[entity_page]`
 - [WolfieMouse](wiki/entities/wolfiemouse.md) — WolfieMouse**（kbumsik/WolfieMouse）是覆盖 **迷宫算法、STM32 底层驱动、 `📅unknown` `[entity_page]`
+- [Workhorse（人类示范驱动的人形全身移动操作）](wiki/entities/workhorse-humanoid-loco-manipulation.md) — Workhorse** 是一个从人类示范学习稳健人形全身移动操作的研究项目展示；作者称采集路线不依赖机器人遥操作或动作重定向，演示中的 Unitree G1 可自主完成带移动与物体交互的动作。 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](wiki/entities/world-labs.md) — World Labs** 在公开材料中将自身定位为 **空间智能（spatial intelligence）** 公司与 **前沿世界模型** 研发方：强调模型对三维世界的 **感知、生成、推理与 `📅unknown` `[entity_page]`
 - [WorldArena](wiki/entities/worldarena.md) — WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
