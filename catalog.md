@@ -2069,7 +2069,7 @@
 - [世界行动模型是零样本策略](wiki/entities/paper-loco-manip-161-159-n159.md) — 世界行动模型是零样本策略** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
-- [LocoFormer](wiki/entities/paper-locoformer.md) — LocoFormer**（LocoFormer: Generalist Locomotion via Long-Context Adaptation）在 [Light Origins · Ligh `📅unknown` `[entity_page]`
+- [LocoFormer](wiki/entities/paper-locoformer.md) — LocoFormer** 是 Skild AI 署名的跨本体运动控制论文；官方项目页连接公司博客。[Ligh `📅unknown` `[entity_page]`
 - [Locomotion-Grounded Humanoid Soccer：以行走为基础的多方向踢球](wiki/entities/paper-locomotion-grounded-humanoid-soccer.md) — Locomotion-Grounded Humanoid Soccer**（*Task-Gated Reinforcement Learning of a Multi-Directional Ki `📅unknown` `[entity_page]`
 - [LocoVLM](wiki/entities/paper-locovlm.md) — LocoVLM**（*Grounding Vision and Language for Adapting Versatile Legged Locomotion Policies*，[arXiv `📅unknown` `[entity_page]`
 - [LocoWM：世界模型引导的预动残差高精度行走](wiki/entities/paper-locowm.md) — LocoWM**（*High-Precision Locomotion through World-Model-Guided Residual Adaptation*，[arXiv:2609.39 `📅unknown` `[entity_page]`
