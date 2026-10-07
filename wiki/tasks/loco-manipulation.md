@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-06
+updated: 2026-10-07
 sources:
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -51,6 +51,7 @@ sources:
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
   - ../../sources/sites/symbiosis-robotics-dpc.md
+  - ../../sources/sites/workhorse.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -280,6 +281,8 @@ flowchart TD
 #### 无机器人示范 + 分层 visuomotor（Robot-Free → SKR → WBC）
 - **核心**：采集阶段用便携 VR/夹爪设备记录 **稀疏关键点 + 腕部视觉**（无需目标人形）；高层 **Diffusion Policy** 预测任务空间轨迹，经 **SKR** 保留度量几何后接 **全身 IK + WBC** 在 G1 上执行 loco-manipulation。
 - **代表作**：[BifrostUMI](../entities/paper-bifrost-umi.md) (BAAI Aether, 2026) — 杂乱桌面 pick-place 与桌下全身处置；受 [UMI](https://arxiv.org/abs/2402.10329) 启发。
+
+- **人类示范、免遥操作路线（项目演示）**：[Workhorse](../entities/workhorse-humanoid-loco-manipulation.md)（2026-10）由作者描述为直接从人类示范学习全身移动操作、不依赖遥操作或动作重定向；公开视频展示 G1 翻越行李箱、接抛掷箱子和分拣箱子。当前没有公开方法细节或量化评测，不能据演示推断其数据表示或控制架构。
 
 #### 光真实感合成演示 + VLA 微调（3DGS × 程序化 motion）
 - **核心**：用 **3DGS 背景 + mesh 前景** 合成接近真机头摄的图像，在 **MuJoCo + 低层 WBC（SONIC）** 上程序化生成 loco-manip 演示；**motion 与外观解耦** 后可 GPU 重渲染增广，再微调预训练 **VLA**（ψ0 / π0.5 / GR00T 等）。

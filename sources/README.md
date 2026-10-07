@@ -6,6 +6,9 @@
 
 ## 当前资料文件
 
+### sites/ — 项目页与官方公告归档
+- [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
+
 ### papers/ — 论文来源归档
 - [x] [fineart_arxiv_2609_36416.md](papers/fineart_arxiv_2609_36416.md) | FineART/FineART-VLA 双臂子任务数据与 LeRobot 策略（arXiv:2609.36416）
 - [x] [continual_humanoid_learning_arxiv_2610_04231.md](papers/continual_humanoid_learning_arxiv_2610_04231.md) | Similarity-guided LoRA-PNN 人形持续动作学习（arXiv:2610.04231）
