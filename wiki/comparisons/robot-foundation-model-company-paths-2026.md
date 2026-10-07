@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-07
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -91,7 +91,7 @@ flowchart TB
 | [AgiBot 智元](../../sources/sites/agibot-world.md) | ● |  |  | GO 系列、AgiBot World 数据 |
 | [Galbot 银河通用](../entities/galbot-astrabrain.md) | ● |  | ● | AstraBrain-WAM、[WBC 0.5 / Humanoid-GPT](../entities/paper-humanoid-gpt.md)、GraspVLA |
 | [Figure](../entities/figure-ai.md) |  | ● |  | Helix → [Helix 02](../entities/helix-02.md) → Helix 2.5 |
-| [Skild AI](../entities/skild-ai.md) |  | ● |  | Skild Brain |
+| [Skild AI](../entities/skild-ai.md) |  | ● | ● | Skild Brain / LocoFormer / S1 / 自博弈 |
 | [NVIDIA](../entities/isaac-gr00t.md) | ○ | ● | ● | GR00T、Cosmos、Isaac Lab、GR00T Control |
 | LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
 | Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
@@ -203,6 +203,7 @@ flowchart LR
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
 - [Skild AI 官方站归档](../../sources/sites/skild-ai.md)
+- [Skild AI 日期与归属复核](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)
 - [Delta Intelligence 官网归档与开源核查](../../sources/sites/deltai-com.md)
 - [Robbyant GitHub / HF 组织开源核查](../../sources/sites/robbyant_github.md)
 - [Reward AI 官网归档与开源核查](../../sources/sites/rewardai.md)

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -136,15 +136,78 @@
       "key": "skild",
       "name": "Skild AI",
       "founded_year": 2023,
-      "founded_source": "https://sequoiacap.com/companies/skild-ai",
-      "founded_note": "投资方确认 2023 年成立；月份未由该来源确认。",
-      "lenses": ["humanoid"],
-      "summary": "主张 omni-bodied 单一大脑（Skild Brain）控制任意本体，公开材料以方法博客为主。",
+      "founded_source": "https://www.skild.ai/blogs/announcing-our-300m-series-a",
+      "founded_note": "官方 2024-07-09 公告明确 2023 年成立；具体月份未确认，公告日不作成立日。",
+      "lenses": [
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "跨本体 Skild Brain：分层控制与视觉运动 → LocoFormer 长上下文适应 → 人视频微调与工业部署 → S1 视频 ICL → 自博弈后训练；公开结果不等于开放模型资产。",
       "official": "https://www.skild.ai/blogs",
       "nodes": [
-        { "date": "2026-08", "title": "S1", "track": "操作", "desc": "以视频为上下文的机器人 In-Context Learning。", "id": "entity-skild-s1", "url": "https://www.skild.ai/blogs/s1" },
-        { "date": "2026-09", "title": "Physical Self-Play", "track": "后训练", "desc": "S1 级模型在仿真中自博弈后训练。", "id": "entity-skild-physical-self-play", "url": "https://www.skild.ai/blogs/physical-self-play" },
-        { "date": "", "title": "Skild Brain", "track": "基础模型", "desc": "跨本体统一策略脑的公司叙事与定位。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-skild-ai", "url": "https://www.skild.ai/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
+        {
+          "date": "2025-07",
+          "title": "Skild Brain 技术介绍",
+          "track": "基础模型",
+          "desc": "2025-07-29 官方介绍低频高层操作/导航与高频低层控制；回顾的 2024 年结果不是本次发布日期。",
+          "id": "entity-skild-ai",
+          "url": "https://www.skild.ai/blogs/building-the-general-purpose-robotic-brain",
+          "date_note": "官方技术介绍事件，不推定模型最早内部完成日。"
+        },
+        {
+          "date": "2025-08",
+          "title": "Skild Brain 视觉运动控制",
+          "track": "全身控制",
+          "desc": "2025-08-06 展示图像 + 本体感知到低层电机命令的单策略；不另造产品版本号或控制频率。",
+          "id": "entity-skild-ai",
+          "url": "https://www.skild.ai/blogs/one-policy-all-scenarios",
+          "date_note": "官方能力展示日期。"
+        },
+        {
+          "date": "2025-09",
+          "title": "LocoFormer / 跨本体上下文适应",
+          "track": "全身控制",
+          "desc": "09-24 公司博客、09-28 论文 v1：程序生成形态 + 大规模 RL + 长上下文记忆；论文署名 Skild AI，复用已有论文节点。",
+          "id": "entity-paper-locoformer",
+          "url": "https://generalist-locomotion.github.io/",
+          "date_note": "2025-09-24 博客；2025-09-28 arXiv:2509.23745v1 提交，二者日期分开。"
+        },
+        {
+          "date": "2026-01",
+          "title": "看人视频学习（微调阶段）",
+          "track": "数据 / 操作",
+          "desc": "2026-01-12 官方称人视频 + 少量机器人数据微调新技能；与后续 S1 不更新权重的 ICL 区分。",
+          "id": "entity-skild-ai",
+          "url": "https://www.skild.ai/blogs/learning-by-watching",
+          "date_note": "官方博客发布日期，不作 S1 发布日。"
+        },
+        {
+          "date": "2026-03",
+          "title": "Skild Brain 工业部署合作",
+          "track": "部署",
+          "desc": "2026-03-19 ABB / UR / MiR 合作与 NVIDIA / Foxconn 双臂装配展示；是部署里程碑，非独立模型版本。",
+          "id": "entity-skild-ai",
+          "url": "https://www.skild.ai/blogs/reindustrial-revolution",
+          "date_note": "官方合作/部署公告日期，不推定所有客户量产完成。"
+        },
+        {
+          "date": "2026-08",
+          "title": "S1",
+          "track": "操作 / ICL",
+          "desc": "2026-08-18 官方博客列表日期：单条视频示范指定任务，推理不改权重；长程能力为公司内部评测。",
+          "id": "entity-skild-s1",
+          "url": "https://www.skild.ai/blogs/s1",
+          "date_note": "官方列表为 2026-08-18；正文 Citation 为 August 2026，采用显示日期而非相对时间倒推。"
+        },
+        {
+          "date": "2026-09",
+          "title": "Physical Self-Play",
+          "track": "后训练",
+          "desc": "2026-09-23 S1-class 基础模型在 Isaac Sim 中自博弈后训练，足球 Sim2Real；不推定与 S1 操作演示同一 checkpoint。",
+          "id": "entity-skild-physical-self-play",
+          "url": "https://www.skild.ai/blogs/physical-self-play",
+          "date_note": "官方正文明确 Sep 23, 2026；不是 S1 首发或独立产品型号。"
+        }
       ]
     },
     {

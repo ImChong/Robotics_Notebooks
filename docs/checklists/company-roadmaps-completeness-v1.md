@@ -68,3 +68,12 @@
 - 常规 `make ci-preflight` 仅 20 条既有 freshness 失败，相应 wiki/source 与 main 无 diff；未修改无关页面复核日期。
 - `GITHUB_ACTIONS=true make ci-preflight` 通过：零阻塞 lint、搜索回归通过、导出质量 13/13；派生产物均 gitignore。
 - `make ci-test` 全通过：486 tests、769 subtests、前端 75 tests；ruff、mypy 与 Python 依赖审计通过，覆盖率 63.70%。
+
+### Skild AI 公司路线核对（2026-10-07）
+
+- 官方博客、论文 HTML 与项目页交叉核对；成立年份采用公司公告的 2023 年，月份未确认。
+- 原 3 节点补为 7 个按公开事件排序的节点：Brain 技术介绍、视觉运动控制、LocoFormer、人视频微调、工业合作部署、S1、自博弈。共享 Brain 能力复用公司详情，不新增重复项目实体。
+- LocoFormer 论文署名机构为 Skild AI；区分 2025-09-24 公司博客、09-28 arXiv v1，Light Origins 为后续引用方。
+- S1 使用官方列表 2026-08-18；自博弈使用正文 2026-09-23。内部研发回顾不作公开首发，S1-class 足球模型不推定与操作演示同一 checkpoint。
+- 开放状态核查官方项目/博客入口；未见模型资产入口，不由 GitHub 组织仓库数推定待发布。同步 WBC 阅读视角、公司对照与日期来源归档。
+- 定向测试 18 项、前端回归 75 项通过；远端提交树与本地源文件树 SHA 一致。完整 preflight 和 Actions 结果见 [PR #2571](https://github.com/ImChong/Robotics_Notebooks/pull/2571) 验证记录；未合并。

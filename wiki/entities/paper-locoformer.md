@@ -6,16 +6,20 @@ tags:
   - transformer-xl
   - in-context-learning
   - cross-embodiment
+  - skild-ai
 status: complete
-updated: 2026-09-23
+updated: 2026-10-07
 arxiv: "2509.23745"
 related:
+  - ./skild-ai.md
+  - ./skild-s1.md
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
   - ./paper-lightnav-0.md
   - ./light-react.md
   - ./paper-light-loco-parkour.md
 sources:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/papers/locoformer_corl_2025.md
   - ../../sources/blogs/lightorigins_light_react_2026-09-09.md
 summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL 跨 episode 记忆；未见形态/电机故障下 test-time 适应。"
@@ -23,7 +27,7 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 
 # LocoFormer
 
-**LocoFormer**（LocoFormer: Generalist Locomotion via Long-Context Adaptation）在 [Light Origins · Light REACT：面向规模化部署的全身韧性智能](https://www.lightorigins.com/blog/light-react) 中被引用。
+**LocoFormer** 是 Skild AI 署名的跨本体运动控制论文；[官方项目页](https://generalist-locomotion.github.io/)连接公司博客。[Light REACT](./light-react.md)是后续引用者，不是项目归属。
 
 ## 一句话定义
 
@@ -33,11 +37,10 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| PPO | Proximal Policy Optimization | 大规模仿真强化学习 |
+| TXL | Transformer-XL | 跨片段、跨试次保留记忆 |
+| ICL | In-Context Learning | 从部署历史适应，不更新权重 |
+| OOD | Out of Distribution | 未见形态与动力学条件 |
 
 ## 为什么重要
 
@@ -50,7 +53,10 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 |----|------|
 | **类型** | paper |
 | **出处** | CoRL 2025 |
-| **开源** | **待发布** |
+| **机构 / 作者** | Skild AI / Min Liu、Deepak Pathak、Ananye Agarwal |
+| **日期** | 公司博客 2025-09-24；arXiv v1 提交 2025-09-28 |
+| **项目页** | [generalist-locomotion.github.io](https://generalist-locomotion.github.io/) |
+| **开源** | 2026-10-07 官方项目页未见代码、权重或数据下载入口；不推定待发布 |
 | **arXiv** | [2509.23745](https://arxiv.org/abs/2509.23745) |
 
 
@@ -63,7 +69,7 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 - **训练规模与设定：** 大规模 PPO + **程序生成机器人形态**，用 Transformer-XL 维持 **跨 episode** 的长上下文记忆。
 - **考的是 test-time 适应，不是训练分布内成功率：** 评测重点为 **未见形态** 与 **电机故障** 下能否在部署期内自行适应——这类指标对「训练时见过多少形态」极其敏感，读数前必须对齐形态采样范围。
 - **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各设定成功率与适应曲线 **以 [原文](https://arxiv.org/abs/2509.23745)（CoRL 2025）为准**。
-- **复现边界：** 代码 **待发布**（入库日口径），暂无法独立重跑。
+- **复现边界：** 官方项目页未见可运行资产入口（2026-10-07），暂无法独立重跑。
 
 ## 与其他工作对比
 
@@ -79,13 +85,16 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 
 ## 结论
 
-**LocoFormer 在 Light Origins 三篇 Tech Blog 引用链中承担「Light REACT 对比 Transformer 64 帧上下文时引用；Lo…」角色——部署前以 arXiv/项目页与开源状态为准。**
+**LocoFormer 是 Skild AI 的长上下文跨本体运动策略；公司路线应纳入其 2025 年运动适应阶段，部署前以官方论文/项目页与资产开放状态为准。**
 
-1. 开源：**待发布**；勿凭博客脚注臆断可复现性。
+1. 开源：官方项目页未见资产入口；勿凭博客引用臆断可复现性。
 2. 与 [Light REACT](./light-react.md) / [LightNav-0](./paper-lightnav-0.md) / [Light-Loco-Parkour](./paper-light-loco-parkour.md) 按能力轴交叉阅读。
 3. 定量指标以原文 PDF 为准；本页为博客 ingest 级摘要。
 
 ## 关联页面
+
+- [Skild AI（论文署名机构）](./skild-ai.md)
+- [S1（操作域视频上下文学习）](./skild-s1.md)
 
 - [亮源新创（Light Origins）](./light-origins.md)
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
@@ -93,6 +102,8 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 - [Light REACT](./light-react.md)
 
 ## 参考来源
+
+- [Skild AI 官方时间线核查（2026-10-07）](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)
 
 - [locoformer_corl_2025.md](../../sources/papers/locoformer_corl_2025.md)
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
