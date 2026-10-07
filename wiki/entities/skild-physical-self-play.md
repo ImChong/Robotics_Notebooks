@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, self-play, reinforcement-learning, sim2real, humanoid, soccer, skild-ai, nvidia]
 title: Skild Physical Self-Play（后训练自博弈）
 status: complete
-updated: 2026-09-24
+updated: 2026-10-07
 related:
   - ../concepts/universal-post-training-robotics.md
   - ./skild-s1.md
@@ -16,9 +16,10 @@ related:
   - ./paper-notebook-robostriker.md
   - ../concepts/bitter-lesson.md
 sources:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
   - ../../sources/sites/skild-ai.md
-summary: "Skild 2026-09-23 博客：S1 级基础模型在 Isaac Sim 中以单一 score 目标与近期自博弈后训练，涌现运球/护球/铲球，140 年仿真后 Sim2Real 人形足球；Skild Brain 的 ICL 之后阶段；确认未开源。"
+summary: "Skild 2026-09-23 博客：S1 级基础模型在 Isaac Sim 中以单一 score 目标与近期自博弈后训练，涌现运球/护球/铲球，140 年仿真后 Sim2Real 人形足球；Skild Brain 的 ICL 之后阶段；截至 2026-10-07 未见官方资产下载入口。"
 ---
 
 # Skild Physical Self-Play（后训练自博弈）
@@ -30,7 +31,7 @@ summary: "Skild 2026-09-23 博客：S1 级基础模型在 Isaac Sim 中以单一
 | **基础模型** | **S1-class** 机器人基础模型（预训练 + ICL，见 [S1](./skild-s1.md)） |
 | **发布** | 2026-09-23 |
 | **仿真** | NVIDIA **Isaac Sim** |
-| **开源** | **确认未开源**（无代码 / 权重 / 环境；`github.com/skild-ai` 仍 0 公开仓） |
+| **开源** | 截至 2026-10-07，官方博客未见代码 / 权重 / 环境下载入口 |
 
 ## 一句话定义
 
@@ -139,6 +140,8 @@ flowchart TB
 - [Bitter Lesson](../concepts/bitter-lesson.md) — 自对弈作为 scaling 范式
 
 ## 参考来源
+
+- [Skild AI 官方时间线核查（2026-10-07）](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)
 
 - [Physical Self-Play（博客归档）](../../sources/blogs/skild_physical_self_play_2026-09-23.md)
 - [Skild AI 公司站点归档](../../sources/sites/skild-ai.md)

@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, one-shot, foundation-policy, manipulation, scaling, skild-ai, nvidia]
 title: S1 机器人上下文学习（Skild）
 status: complete
-updated: 2026-09-24
+updated: 2026-10-07
 related:
   - ./skild-ai.md
   - ./skild-physical-self-play.md
@@ -19,10 +19,11 @@ related:
   - ./paper-wam-ttt-human-video-test-time-steering.md
   - ./paper-host-one-shot-human-video.md
 sources:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
   - ../../sources/sites/skild-ai.md
-summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任务的操作基础模型；宣称单条视频、无后训练即可执行最长约 10 分钟的未见任务；内部对照 100k 小时档未见任务 ICL 66% vs 语言 VLA 9%。确认未开源。"
+summary: "Skild S1（2026-08-18 博客（列表显示日期））：从预训练起用视频示范指定任务的操作基础模型；宣称单条视频、无后训练即可执行最长约 10 分钟的未见任务；内部对照 100k 小时档未见任务 ICL 66% vs 语言 VLA 9%。截至 2026-10-07 未见官方资产下载入口。"
 ---
 
 # S1：机器人 In-Context Learning（Skild）
@@ -32,8 +33,8 @@ summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任
 | **机构** | 斯齐尔德（Skild AI） |
 | **类型** | 产业官方博客（非 peer-reviewed 论文） |
 | **模型** | S1（旗舰操作基础模型；前序 LocoFormer） |
-| **发布** | 2026-08 |
-| **开源** | **确认未开源**（无公开代码 / 权重 / 数据集；2026-09-04 再核 `github.com/skild-ai` 仍 0 公开仓） |
+| **发布** | 2026-08-18（官方博客列表）；正文 Citation 为 August 2026 |
+| **开源** | 截至 2026-10-07，官方博客未见代码 / 权重 / 数据集下载入口 |
 
 ## 一句话定义
 
@@ -49,12 +50,18 @@ summary: "Skild S1（2026-08 博客）：从预训练起用视频示范指定任
 | UMI | Universal Manipulation Interface | 数据三角中「中贴近 / 中多样 / 中扩展」的采集形态 |
 | SFT | Supervised Fine-Tuning | 本篇「后训练」对照；单次 ICL ≈ 约 380 条后训练 episode |
 
+## 日期与前序边界
+
+- 官方博客列表记录 **2026-08-18**，正文引用格式仅写 **August 2026**，两者支持月份一致；采用列表显示日期。
+- Fig. 8 的 **2026-02 域内 ICL / 2026-05 翻煎饼**为内部研发回顾，不是另两个公开项目。
+- 2026-01 人视频博客仍涉及微调；本页 ICL 推理不改权重。自博弈后训练的 S1-class 模型是否与本页同一 checkpoint 未公开。
+
 ## 为什么重要
 
 - **评测轴补全：** 把 ICL 拆成 **已见 vs 未见** × **短程原子 vs 长程组合**；并点名 concurrent 工作多停在短程或 in-distribution（见 [GEN-1.5](./generalist-gen15-one-shot.md)）。
 - **预训练目的论：** 主张后训练数据够密时从零训练可追上后训练基础模型，因此预训练应服务于 **立即从示范学习**，而不是为每个任务再 SFT。
 - **部署成本叙事：** 盆栽示例从录示范到真机执行约 **11 分钟**；作者把它接到 [数据飞轮](../concepts/data-flywheel.md)——分钟级部署才能把现场交互喂回预训练。
-- **后训练衔接：** 2026-09 [Physical Self-Play](./skild-physical-self-play.md) 将 S1 定位为 **ICL 预训练之后** 的 **自博弈 RL post-training** 底座，宣称可突破人类演示上限（Isaac Sim 足球 → Sim2Real）。
+- **后训练衔接：** 2026-09 [Physical Self-Play](./skild-physical-self-play.md) 将 S1-class 模型定位为 **ICL 预训练之后** 的 **自博弈 RL post-training** 底座，宣称可突破人类演示上限（Isaac Sim 足球 → Sim2Real）。
 - **闭源边界：** 训练配方本篇明确推迟；数字全部内部基准。当产业上界叙事，不当可复现方法。
 
 ## 流程总览
@@ -158,6 +165,8 @@ flowchart TB
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot；地平线短、数字可核对
 
 ## 参考来源
+
+- [Skild AI 官方时间线核查（2026-10-07）](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)
 
 - [S1: In-Context Learning for Robotics（博客归档）](../../sources/blogs/skild_s1_in_context_learning.md)
 - [Skild AI 公司站点归档](../../sources/sites/skild-ai.md)
