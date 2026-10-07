@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-07
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
@@ -36,6 +36,7 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 |------|----------|----------|
 | 流水线 | 六阶段端到端 | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 | 方法 | SONIC / BeyondMimic | [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md) |
+| 项目 | 自演进交互动作与规划式示范生成 | [InterMimicGen](../entities/paper-intermimicgen.md)、[HumanoidMimicGen](../entities/paper-humanoidmimicgen.md) |
 | 对比 | 主流 WBT 路线 | [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) |
 | Query | 方法选型 | [Humanoid Motion Tracking Method Selection](../queries/humanoid-motion-tracking-method-selection.md) |
 | 栈 | 42 篇 RL 运动控制 | [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md) |
