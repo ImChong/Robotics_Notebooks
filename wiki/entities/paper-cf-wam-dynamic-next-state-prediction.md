@@ -129,6 +129,10 @@ flowchart LR
 - [EgoDex 人类灵巧操作数据](paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)
 - [DiT4DiT 视频–动作模型](paper-dit4dit-video-action-model.md)
 
+## 结论
+
+CF-WAM 的核心贡献是让视频专家按样本轮换 RGB、语义、几何或交互表示来描述同一未来，并与动作专家联合训练。论文报告了 RoboCasa-GR1、LIBERO-Plus 和限定真机任务上的结果；解读时应保留各自评测协议，尤其区分逐任务选择投影的 oracle 数字。论文当前未提供公开训练代码，主实验也使用较大规模的 B200 资源。
+
 ## 参考来源
 
 - [CF-WAM 论文来源归档](../../sources/papers/cf_wam_arxiv_2609_34414.md)
