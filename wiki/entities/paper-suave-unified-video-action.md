@@ -28,7 +28,7 @@ sources:
 
 ## 方法图
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   text["语言 token"] --> sequence["共享离散序列"]
   video["历史与目标视频 token"] --> sequence
@@ -40,7 +40,7 @@ flowchart TB
   model --> world["补全未来视频"]
   model --> policy["生成动作块"]
   model --> joint["联合生成 subgoal 与动作"]
-\`\`\`
+```
 
 ## 架构与训练目标
 

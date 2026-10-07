@@ -29,7 +29,7 @@ sources:
 
 ## 方法图
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   demos["双臂轨迹与任务指令"] --> labels["逐帧子任务语言标注"]
   labels --> data["FineART 数据集"]
@@ -40,7 +40,7 @@ flowchart TB
   planner --> action["子任务条件动作生成"]
   obs --> action
   action --> robot["双臂闭环执行"]
-\`\`\`
+```
 
 ## 数据：细粒度标注解决什么
 

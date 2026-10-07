@@ -31,7 +31,7 @@ sources:
 
 ## 方法图
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   motions["六类动作示范"] --> similarity["预计算动作相似度"]
   similarity --> dtw["窗口内 DTW 对齐"]
@@ -43,7 +43,7 @@ flowchart TB
   ppo --> teacher["持续学习特权教师"]
   teacher --> distill["历史条件学生蒸馏"]
   distill --> g1["MuJoCo 验证与 Unitree G1"]
-\`\`\`
+```
 
 ## 核心机制
 

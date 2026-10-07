@@ -29,7 +29,7 @@ sources:
 
 ## 方法图
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   sim["MuJoCo mjlab 并行训练"] --> teacher["特权教师 PPO"]
   teacher --> privileged["车辆状态 交互力 负载参数"]
@@ -43,7 +43,7 @@ flowchart TB
   policy --> g1["G1 双手持续握车把"]
   g1 --> feedback["本体历史反映耦合动力学"]
   feedback --> student
-\`\`\`
+```
 
 ## 机器人、车辆和策略接口
 
