@@ -628,6 +628,7 @@
 - [Hydra](wiki/entities/hydra-config.md) — Hydra](https://github.com/facebookresearch/hydra) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze `📅unknown` `[entity_page]`
 - [HyperFrames](wiki/entities/hyperframes.md) — HyperFrames**（heygen-com/hyperframes，npm `hyperframes `📅unknown` `[entity_page]`
 - [i-have-adhd](wiki/entities/i-have-adhd.md) — i-have-adhd**（ayghri/i-have-adhd）是安装到 Claude Code、Cursor  `📅unknown` `[entity_page]`
+- [UI Skills（ibelick/ui-skills）](wiki/entities/ibelick-ui-skills.md) — UI Skills** 是一个面向设计工程的策展型 Agent Skills 目录：通过站点、CLI 和 MCP，让编码代理按任务查找、筛选并读取 UI 相关的技能说明；它提供目录与内容传递，不替 `📅unknown` `[entity_page]`
 - [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
