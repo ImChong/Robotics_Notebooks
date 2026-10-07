@@ -1906,6 +1906,7 @@
 - [Enabling a Unified Cross-Domain Representation for Two-Finger Gripper Manipulation via Interaction-Centric Modeling](wiki/entities/paper-interaction-centric-gripper.md) — 交互中心表征用于缓解两指夹爪跨相机视角与夹爪域迁移的问题。 `📅unknown` `[entity_page]`
 - [InterEvolve：人形移动操作奖励程序的测试时演化](wiki/entities/paper-interevolve.md) — InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation**（[arXiv:2610.0 `📅unknown` `[entity_page]`
 - [InterMASH（arXiv:2609.18504）](wiki/entities/paper-intermash.md) — InterMASH**（*A Unified Geometric Representation for Grasp Synthesis*，[arXiv:2609.18504](https://ar `📅unknown` `[entity_page]`
+- [InterMimicGen：用自演进动作模仿扩展人形移动操作](wiki/entities/paper-intermimicgen.md) — InterMimicGen**（*Scaling Humanoid Loco-Manipulation through Self-Evolving Motion Imitation*，arXiv: `📅unknown` `[entity_page]`
 - [InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA](wiki/entities/paper-internvla-a15-unified-vla.md) — InternVLA-A1.5**（*Unifying Understanding, Latent Foresight, and Action for Compositional Generaliz `📅unknown` `[entity_page]`
 - [InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data](wiki/entities/paper-internw0-delta.md) — 视频动力学专家、动作专家、VLM语义和4D几何先验通过Mixture-of-Transformers组合，训练语料超过20,000小时。 `📅unknown` `[entity_page]`
 - [InternW0（arXiv:2609.27656）](wiki/entities/paper-internw0-physical-world-model.md) — InternW0**（*InternW0: A Foundational Physical World Model for Efficient Real-World Interactions*， `📅unknown` `[entity_page]`
