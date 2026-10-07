@@ -6,6 +6,7 @@ updated: 2026-10-05
 related:
   - ./humanoid-motion-intelligence-day3-motion-tracking-wbc.md
   - ./humanoid-motion-intelligence-day2-locomotion-motion-priors.md
+  - ./humanoid-motion-intelligence-day5-world-models-decision.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
 sources:
