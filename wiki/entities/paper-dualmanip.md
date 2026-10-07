@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-07
 project_id: dualmanip
 project: https://lichengxi1.github.io/Dualmanip
+arxiv: "2609.31112"
 related:
   - ../overview/humanoid-motion-intelligence-day5-world-models-decision.md
   - ../methods/generative-world-models.md
