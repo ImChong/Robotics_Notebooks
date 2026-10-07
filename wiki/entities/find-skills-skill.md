@@ -8,7 +8,7 @@ tags:
   - agent-infrastructure
   - vercel
 status: complete
-updated: 2026-09-30
+updated: 2026-10-07
 related:
   - ./vercel-agent-browser-skill.md
   - ./anthropic-frontend-design-skill.md
@@ -17,6 +17,7 @@ related:
   - ./skillry.md
   - ../comparisons/skillry-taste-skill-impeccable.md
   - ./mattpocock-skills.md
+  - ./ibelick-ui-skills.md
   - ./agent-skills-addyosmani.md
   - ./hermes-agent.md
   - ../references/llm-wiki-karpathy.md
@@ -45,7 +46,7 @@ summary: "find-skills 是 vercel-labs/skills CLI 内置的元技能：当用户�
 
 ## 为什么重要（对本知识库读者）
 
-- **技能生态入口：** 本站索引的 [mattpocock/skills](mattpocock-skills.md)、[Anthropic frontend-design](anthropic-frontend-design-skill.md)、[Addy Osmani Agent Skills](agent-skills-addyosmani.md) 等均经 **同一 CLI** 安装；find-skills 是官方教代理 **如何选型** 的文档。
+- **技能生态入口：** 本站索引的 [mattpocock/skills](mattpocock-skills.md)、[Anthropic frontend-design](anthropic-frontend-design-skill.md)、[Addy Osmani Agent Skills](agent-skills-addyosmani.md) 等均经 **同一 CLI** 安装；find-skills 是官方教代理 **如何选型** 的文档。对于聚焦设计工程、同时提供 CLI 与 MCP 目录的项目，可参见 [UI Skills（ibelick）](ibelick-ui-skills.md)。
 - **与 Karpathy Wiki 对照：** [LLM Wiki](../references/llm-wiki-karpathy.md) 解决 **知识编译进 wiki**；skills 解决 **工程习惯编译进 SKILL.md** — find-skills 解决 **第三层：如何发现他人已编译的技能**。
 - **维护本库时：** ingest 新工具、前端清单、浏览器验证（[agent-browser](vercel-agent-browser-skill.md)）前，可先 `npx skills find <query>` 避免重复造 skill。
 
@@ -88,6 +89,7 @@ flowchart TD
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 官方 UI 审美 skill 样本
 - [Taste Skill](taste-skill.md) / [Impeccable](impeccable.md) / [Skillry](skillry.md) — 前端交付与反 slop 选型（见 [对比](../comparisons/skillry-taste-skill-impeccable.md)）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 工程习惯技能库
+- [UI Skills（ibelick/ui-skills）](ibelick-ui-skills.md) — 设计工程技能目录，提供 CLI 与 MCP 检索
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 全 SDLC 25 技能包
 - [Hermes Agent](hermes-agent.md) — 常驻运行时与技能安装位
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 wiki 维护规范
