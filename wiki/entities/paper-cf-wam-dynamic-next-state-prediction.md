@@ -55,7 +55,7 @@ Static Multi-State 每个更新都同时保留四种预测空间；作者认为�
 
 ## 方法图
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   human["EgoDex 人类第一视角数据"] --> ee["提取双腕 EE 轨迹"]
   robot["RoboCasa-GR1 机器人轨迹"] --> action["统一为 EE + 机器人关节动作"]
@@ -70,7 +70,7 @@ flowchart LR
   mot --> future["未来视频预测"]
   mot --> chunk["16 步 × 47 维动作块"]
   chunk --> control["闭环机器人操作"]
-\`\`\`
+```
 
 ## 训练机制：变的是未来坐标，不是物理转移
 
