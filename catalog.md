@@ -1402,6 +1402,7 @@
 - [Contact-Guided Exploration 非抓取移动操作](wiki/entities/paper-contact-guided-exploration-locomanipulation.md) — Contact-Guided Exploration**（arXiv:2608.28140）由 **比萨大学、苏黎世联邦理工 `📅unknown` `[entity_page]`
 - [ContactMimic（Humanoid Object Interaction via Contact Control）](wiki/entities/paper-contactmimic.md) — ContactMimic**（arXiv:2607.08742，2026-07-09，UIUC / Saurabh Gupta 组）提出 **接触条件化 keypoint tracker**：在参 `📅unknown` `[entity_page]`
 - [ContactNets](wiki/entities/paper-contactnets-contact-dynamics.md) — ContactNets** 收录于 具身智能研究室 · 具身世界模型六路线综述 **模型构 `📅unknown` `[entity_page]`
+- [Continual Humanoid Motion Learning：让 G1 控制器持续学新动作](wiki/entities/paper-continual-humanoid-motion-learning.md) — Continual Humanoid Motion Learning*（arXiv:2610.04231）研究如何让一个全身动 `📅unknown` `[entity_page]`
 - [继续、终止还是受控跌倒：面向安全人形特技的可行性策略选择](wiki/entities/paper-continue-abort-or-fall.md) — Continue, Abort, or Fall: Viability-Aware Policy Selection for Safe Humanoid Acrobatics**（[arXiv:2 `📅unknown` `[entity_page]`
 - [Convergent Binocular Stereo（CBS）](wiki/entities/paper-convergent-binocular-stereo.md) — Convergent Binocular Stereo**（*Depth perception for humanoid robot vision*，Mingshi Chi / John K. T `📅unknown` `[entity_page]`
 - [CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）](wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — CoorDex**（arXiv:2606.23680，[项目页](https://skevinci.github.io/co `📅unknown` `[entity_page]`
@@ -1622,6 +1623,7 @@
 - [Fiatlux：G1 攀梯换灯长时程基准](wiki/entities/paper-fiatlux.md) — Fiatlux 把搬梯、上下梯、双手换灯与易碎物品处置放进同一维护任务，用十二个子任务定位失败环节；它提供评测环境，完整自主换灯仍未解决。 `📅unknown` `[entity_page]`
 - [FIERCE（arXiv:2609.18651）](wiki/entities/paper-fierce.md) — FIERCE**（*From Generalist Robot Policies to Fast Specialists via Progress–Failure Feedback*，[arXiv `📅unknown` `[entity_page]`
 - [面向安全人形全身跟踪的过滤器感知微调](wiki/entities/paper-filter-aware-fine-tuning-for.md) — Filter-Aware Fine-Tuning for Safe Humanoid Whole-Body Tracking**（[arXiv:2610.02341](https://arxiv. `📅unknown` `[entity_page]`
+- [FineART-VLA：用语言子任务组织双臂长时程操作](wiki/entities/paper-fineart-vla.md) — FineART** 同时指细粒度标注的双臂机器人轨迹数据集，以及基于该数据的 **FineART-VLA** 策略。策略不只接收一次性的高层任务指令，而是在执行中预测下一低层子任务，再以子任务为条 `📅unknown` `[entity_page]`
 - [FIRE-VLA（arXiv:2608.13395）](wiki/entities/paper-fire-vla.md) — FIRE-VLA**（arXiv:2608.13395）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
 - [FixAnything](wiki/entities/paper-fixanything.md) — FixAnything: 3D-Consistent Rendering Refinement via Video Generative Priors**（[arXiv:2608.23549](h `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
@@ -1810,6 +1812,7 @@
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`
 - [Humanoid Loco-Manipulation Survey（HMI P069）](wiki/entities/paper-humanoid-loco-manipulation-survey.md) — Humanoid Loco-Manipulation Survey**（*Humanoid Locomotion and Manipulation: Current Progress and Ch `📅unknown` `[entity_page]`
+- [Humanoid Rickshaw Pulling：用 G1 牵引重载两轮车](wiki/entities/paper-humanoid-rickshaw-pulling.md) — Humanoid Rickshaw Pulling: Whole-Body Locomotion under Coupled Wheeled Loads*（[arXiv:2610.04238](ht `📅unknown` `[entity_page]`
 - [Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams](wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) — Nadiri & Rad（Sensors 2025, 25(11):3496）** 提出面向 **人形足球机器人队** 的 **生物启发式去中心化群控框架**：在部分可观测、高动态对抗场上，用  `📅unknown` `[entity_page]`
 - [Humanoid Surgeon（In Vivo Laparoscopic Feasibility）](wiki/entities/paper-humanoid-surgeon-in-vivo-laparoscopy.md) — Humanoid Surgeon**（*In vivo feasibility study of humanoid robots in surgery*，Zekai Liang / Michael `📅unknown` `[entity_page]`
 - [Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）](wiki/entities/paper-humanoid-touch-dream.md) — Humanoid Touch Dream（HTD）**（arXiv:2604.13015，[项目页](https://hum `📅unknown` `[entity_page]`
@@ -4123,6 +4126,7 @@
 - [STRIDER（arXiv:2609.23483）](wiki/entities/paper-strider-multi-gait-loco-manip.md) — STRIDER**（*STRIDER: Stepping-Enabled Multi-Gait Hierarchical 3D Loco-Manipulation Framework for Hu `📅unknown` `[entity_page]`
 - [StrucPhysVideo（arXiv:2609.18430）](wiki/entities/paper-strucphysvideo.md) — StrucPhysVideo**（*Learning Physical Dynamics from Structured Captions and Robot Actions*，[arXiv:26 `📅unknown` `[entity_page]`
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs**（[arXiv:2608.15139](https://arx `📅unknown` `[entity_page]`
+- [SUAVE：统一视频、语言与动作的 Masked Diffusion 模型](wiki/entities/paper-suave-unified-video-action.md) — SUAVE** 展开为 *Single-vocabulary Unified Action-Video modEl*，将语言、视频帧和机器人动作表示为同一离散词表 token，再通过 masked `📅unknown` `[entity_page]`
 - [亚厘米级管道检测机器人：DEA 驱动的蠕动穿管软体机器人](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md) — A pipeline inspection robot for navigating tubular environments in the sub-centimeter scale**（Tang `📅unknown` `[entity_page]`
 - [SUPER ODOMETRY 2.0](wiki/entities/paper-super-odometry-2.md) — SUPER ODOMETRY 2.0: Resilient Odometry via Hierarchical Adaptation**（[arXiv:2608.25427](https://ar `📅unknown` `[entity_page]`
 - [SuperMap：面向语言导航的 4D 空间记忆](wiki/entities/paper-supermap.md) — SuperMap 把物体在哪里、如何变化和彼此关系写入持续更新的三维地图及时间历史，为语言导航提供外部空间记忆。 `📅unknown` `[entity_page]`
