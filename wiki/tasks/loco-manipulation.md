@@ -508,3 +508,7 @@ flowchart TD
 ## 一句话记忆
 
 > Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。
+
+## 重载牵引实例
+
+- [Humanoid Rickshaw Pulling](../entities/paper-humanoid-rickshaw-pulling.md) — Unitree G1 以单一全身策略牵引空车及 loaded rickshaw mass 最高 115 kg 的人力车（arXiv:2610.04238）。

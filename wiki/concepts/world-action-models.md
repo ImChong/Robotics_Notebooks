@@ -571,3 +571,7 @@ flowchart TB
 ## 新近统一预训练实例：UniWAM
 
 - [UniWAM](../entities/paper-uniwam-unified-world-action-model.md)（arXiv:2610.02054）将物理语言推理、未来视觉生成与动作流匹配放进一个 MoT，以 VQA、人类第一视角数据和机器人示教分别监督专家；历史动作初始化 flow matching。官方代码与 ModelScope 权重已发布，但当前 README 尚不含真机推理流程。
+
+## 新近统一视频–语言–动作实例：SUAVE
+
+- [SUAVE](../entities/paper-suave-unified-video-action.md) — 共享离散词表与 masked diffusion，将视频、语言和动作建模统一到同一架构（arXiv:2610.04009）。
