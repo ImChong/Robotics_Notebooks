@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-07
 project_id: asena-self-evolving-agents
 project: https://asena-bot.github.io/
+arxiv: "2609.39207"
 related:
   - ../overview/humanoid-motion-intelligence-day5-world-models-decision.md
   - ../methods/generative-world-models.md
