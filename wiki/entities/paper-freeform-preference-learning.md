@@ -44,7 +44,7 @@ summary: "FPL（arXiv:2606.32027 v3，Stanford）：标注者按自然语言定�
 
 | 项 | 内容 |
 |----|------|
-| 作者 / 机构 | Marcel Torne、Anubha Mahajan、Abhijnya Bhat、Chelsea Finn；Stanford University |
+| 作者 / 机构 | Marcel Torne、Anubha Mahajan、Abhijnya Bhat、Chelsea Finn；斯坦福大学（Stanford University） |
 | 论文 | [arXiv:2606.32027 v3](https://arxiv.org/abs/2606.32027) |
 | 项目页 | [FPL](https://freeform-pl.github.io/fpl.website/) |
 | 代码 | 仿真 [fpl](https://github.com/freeform-pl/fpl)；真机 [fpl_real](https://github.com/freeform-pl/fpl_real) |
@@ -59,7 +59,8 @@ summary: "FPL（arXiv:2606.32027 v3，Stanford）：标注者按自然语言定�
 
 ### 流程总览
 
-```flowchart LR
+```mermaid
+flowchart LR
   traj["机器人轨迹对"] --> annotate["自由文本偏好轴 + 逐轴比较"]
   annotate --> reward["轴条件奖励模型"]
   reward --> policy["多轴 reward-conditioned 策略"]
@@ -72,7 +73,8 @@ summary: "FPL（arXiv:2606.32027 v3，Stanford）：标注者按自然语言定�
 
 项目页同时链接仿真与真机仓库；下图概括数据—偏好—奖励—策略的运行接口。仓库中的可执行命令、机器人驱动和环境细节以对应 README 为准。
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
   autonumber
   actor Annotator as 标注者
   participant Data as 轨迹 / 偏好数据

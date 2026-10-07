@@ -5,7 +5,7 @@
 - **论文：** <https://arxiv.org/abs/2510.20328>
 - **项目页：** <https://jen-pan.github.io/memer/>
 - **代码：** <https://github.com/memer-policy/memer>（项目页 Code 链接；已公开）
-- **机构 / 发表：** Stanford University；ICLR 2026
+- **机构 / 发表：** 斯坦福大学（Stanford University）；ICLR 2026
 - **作者：** Ajay Sridhar、Jennifer Pan、Satvik Sharma、Chelsea Finn
 - **一句话说明：** 让高层 VLM 从历史经验中选择并追踪关键帧，再把这些视觉记忆转成语言子任务交给低层 VLA 执行，以支持需要数分钟记忆的长程操作。
 - **入库日期：** 2026-10-07

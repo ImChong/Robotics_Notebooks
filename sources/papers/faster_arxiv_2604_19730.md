@@ -6,7 +6,7 @@
 - **项目页：** <https://pd-perry.github.io/faster/>
 - **Robomimic 代码：** <https://github.com/alexanderswerdlow/faster>
 - **π0.5 / VLA 代码：** <https://github.com/alexanderswerdlow/faster_vla>
-- **作者 / 机构：** Perry Dong、Alexander Swerdlow、Dorsa Sadigh、Chelsea Finn；Stanford University
+- **作者 / 机构：** Perry Dong、Alexander Swerdlow、Dorsa Sadigh、Chelsea Finn；斯坦福大学（Stanford University）
 - **一句话说明：** 把扩散去噪中的候选筛选建模为 MDP，用去噪 Q 函数提前淘汰低价值动作，在减少完整去噪采样成本的同时保留 best-of-N 收益。
 - **入库日期：** 2026-10-07
 

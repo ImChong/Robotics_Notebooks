@@ -47,7 +47,7 @@ best-of-N 常用于从生成式策略的多个候选中挑选更好的动作，�
 
 | 项 | 内容 |
 |----|------|
-| 作者 / 机构 | Perry Dong、Alexander Swerdlow、Dorsa Sadigh、Chelsea Finn；Stanford University |
+| 作者 / 机构 | Perry Dong、Alexander Swerdlow、Dorsa Sadigh、Chelsea Finn；斯坦福大学（Stanford University） |
 | 论文 | [arXiv:2604.19730](https://arxiv.org/abs/2604.19730)，2026-04-21 提交 |
 | 项目页 | [FASTER](https://pd-perry.github.io/faster/) |
 | 代码 | [Robomimic](https://github.com/alexanderswerdlow/faster)；[π0.5 VLA](https://github.com/alexanderswerdlow/faster_vla) |
@@ -61,7 +61,8 @@ best-of-N 常用于从生成式策略的多个候选中挑选更好的动作，�
 
 ### 流程总览
 
-```flowchart LR
+```mermaid
+flowchart LR
   seeds["N 个噪声候选"] --> denoise["扩散去噪步骤"]
   denoise --> critic["去噪 critic / Q 函数"]
   critic --> filter["保留优选候选，丢弃其余"]
@@ -75,7 +76,8 @@ best-of-N 常用于从生成式策略的多个候选中挑选更好的动作，�
 
 FASTER 有 Robomimic 与 VLA 两个官方实现入口。[faster_vla](https://github.com/alexanderswerdlow/faster_vla) 将训练代码与 LIBERO 环境放在独立虚拟环境进程中，并通过 UNIX socket 交换动作与观测。
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
   autonumber
   actor Dev as 开发者
   participant Learner as faster_vla 训练进程

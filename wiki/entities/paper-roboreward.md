@@ -42,7 +42,7 @@ summary: "RoboReward（arXiv:2601.00675，Stanford/UC Berkeley）：用反事实
 
 | 项 | 内容 |
 |----|------|
-| 作者 / 机构 | Tony Lee、Andrew Wagenmaker、Karl Pertsch、Percy Liang、Sergey Levine、Chelsea Finn；Stanford University、UC Berkeley |
+| 作者 / 机构 | Tony Lee、Andrew Wagenmaker、Karl Pertsch、Percy Liang、Sergey Levine、Chelsea Finn；斯坦福大学（Stanford University）、加州大学伯克利分校（University of California, Berkeley） |
 | 论文 | [arXiv:2601.00675](https://arxiv.org/abs/2601.00675) |
 | 项目 / 基准 | [HELM RoboReward Bench](https://crfm.stanford.edu/helm/robo-reward-bench/) |
 | 数据 | [teetone/RoboReward](https://huggingface.co/datasets/teetone/RoboReward) |
@@ -58,7 +58,8 @@ summary: "RoboReward（arXiv:2601.00675，Stanford/UC Berkeley）：用反事实
 
 ### 流程总览
 
-```flowchart LR
+```mermaid
+flowchart LR
   corpora["OXE + RoboArena 真实轨迹"] --> aug["反事实重标注 + 时间裁剪"]
   aug --> set["成功 / 失败 / 部分进度数据"]
   set --> bench["奖励模型基准评测"]

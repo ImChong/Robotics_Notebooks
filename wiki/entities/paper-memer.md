@@ -45,7 +45,7 @@ summary: "MemER（arXiv:2510.20328，ICLR 2026，Stanford）：高层 VLM 检索
 
 | 项 | 内容 |
 |----|------|
-| 作者 / 机构 | Ajay Sridhar、Jennifer Pan、Satvik Sharma、Chelsea Finn；Stanford University |
+| 作者 / 机构 | Ajay Sridhar、Jennifer Pan、Satvik Sharma、Chelsea Finn；斯坦福大学（Stanford University） |
 | 论文 | [arXiv:2510.20328](https://arxiv.org/abs/2510.20328)，ICLR 2026 |
 | 高层策略 | 论文摘要为 Qwen2.5-VL-7B-Instruct；项目页文字为 Qwen2.5-VL-3B-Instruct，需留意版本差异 |
 | 低层策略 | π0.5 |
@@ -60,7 +60,8 @@ summary: "MemER（arXiv:2510.20328，ICLR 2026，Stanford）：高层 VLM 检索
 
 ### 流程总览
 
-```flowchart TB
+```mermaid
+flowchart TB
   task["任务指令 + 近期观测"] --> high["高层 VLM"]
   memory["已选历史关键帧"] --> high
   high -->|语言子任务| low["低层 VLA"]
@@ -76,7 +77,8 @@ summary: "MemER（arXiv:2510.20328，ICLR 2026，Stanford）：高层 VLM 检索
 
 [memer-policy/memer](https://github.com/memer-policy/memer) 是项目页公开的官方代码入口；以下按论文公开的分层推理过程归纳模块时序，具体脚本名以仓库 README 为准。
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
   autonumber
   actor Operator as 操作员
   participant High as 高层 VLM

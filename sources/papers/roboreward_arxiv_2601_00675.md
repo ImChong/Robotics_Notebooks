@@ -6,7 +6,7 @@
 - **项目 / 基准页：** <https://crfm.stanford.edu/helm/robo-reward-bench/>
 - **数据：** <https://huggingface.co/datasets/teetone/RoboReward>
 - **模型：** <https://huggingface.co/teetone/RoboReward-8B>
-- **作者 / 机构：** Tony Lee、Andrew Wagenmaker、Karl Pertsch、Percy Liang、Sergey Levine、Chelsea Finn；Stanford University、UC Berkeley
+- **作者 / 机构：** Tony Lee、Andrew Wagenmaker、Karl Pertsch、Percy Liang、Sergey Levine、Chelsea Finn；斯坦福大学（Stanford University）、加州大学伯克利分校（University of California, Berkeley）
 - **一句话说明：** 从成功占多数的机器人轨迹中构造失败与部分进度样本，建立机器人奖励数据集/基准并训练 4B/8B 视觉语言奖励模型。
 - **入库日期：** 2026-10-07
 
