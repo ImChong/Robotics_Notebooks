@@ -5,9 +5,13 @@
 
 ### Entities（实体页）
 
+- [Abaqus Agent Skills（1348109517/abaqus-agent-skills）](wiki/entities/1348109517-abaqus-agent-skills.md) — Abaqus Agent Skills（1348109517/abaqus-agent-skills）是提供约 17–19 个可复用 Abaqus 工作流技能与静态契约审计器。 `📅unknown` `[entity_page]`
 - [1X Redwood AI 控制策略](wiki/entities/1x-redwood-policy.md) — Redwood AI 是 1X 面向 EVE / NEO 的机载视觉语言动作策略，把移动、双臂操作与骨盆姿态联合预测；它与同名 World Model 是不同发布物。 `📅unknown` `[entity_page]`
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
+- [CAD Operations Skill（2836048681/cad-operations-skill）](wiki/entities/2836048681-cad-operations-skill.md) — CAD Operations Skill（2836048681/cad-operations-skill）是便携 Codex 技能面向 CAD 操作、DXF/PDF 生成，含 AutoCAD/Free `📅unknown` `[entity_page]`
 - [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
+- [COMSOL MCP（777gegewu/comsol-mcp）](wiki/entities/777gegewu-comsol-mcp.md) — COMSOL MCP（777gegewu/comsol-mcp）是非官方 COMSOL MCP 学习项目，通过 Java Shell 控制已经打开的 COMSOL Desktop GUI。 `📅unknown` `[entity_page]`
+- [Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）](wiki/entities/abhinavbwj-claude-skills-for-computational-designers.md) — Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）是面向建筑 `📅unknown` `[entity_page]`
 - [acados](wiki/entities/acados.md) — acados**](https://github.com/acados/acados) 是面向 **模型预测控制（MPC）** 与 **最优控制问题（OCP）** 的开源求解框架：用 **Rea `📅unknown` `[entity_page]`
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](wiki/entities/adams.md) — ADAMS** 是面向三维机械系统的 **多体动力学（Multibody Dynamics, MBD）** 自动建模与数值仿真程序谱系：名称与核心数值配方来自 Nicolae Orlandea 在 `📅unknown` `[entity_page]`
@@ -30,6 +34,7 @@
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA 2（增强型低成本双臂遥操作硬件）](wiki/entities/aloha-2.md) — ALOHA 2** 是 Google DeepMind **ALOHA 2 Team** 在初代 ALOHA 上的硬件迭代：面向 **机队级大规模双臂演示采数**，同时 `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
+- [STK MCP（alti3/stk-mcp）](wiki/entities/alti3-stk-mcp.md) — STK MCP（alti3/stk-mcp）是将 Ansys/AGI Systems Tool Kit 的任务工程能力暴露给 MCP 客户端，仓库含 CLI、Desktop/Engine 模式和轨道、 `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`
 - [AMASS（Archive of Motion Capture as Surface Shapes）](wiki/entities/amass.md) — AMASS** 是 MPI-IS Perceiving Systems 维护的 **人体运动元数据集**：把多份独立 **光学标记动捕** 序列转换到统一的 **SMPL**（及网格）参数化上，使 `📅unknown` `[entity_page]`
 - [AMP_for_hardware](wiki/entities/amp-for-hardware.md) — AMP_for_hardware**（<https://github.com/escontra/AMP_for_hardware>）由 Alejandro Escontrela（GitHub：`e `📅unknown` `[entity_page]`
@@ -48,6 +53,7 @@
 - [Archify](wiki/entities/archify.md) — Archify**（tt-a1i/archify，MIT）是面向 Cursor、Claude Code、Codex CLI `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Arena-Rosnav（社交导航仿真与 Benchmark）](wiki/entities/arena-rosnav.md) — Arena-Rosnav**（5.0 项目页，文档，[GitHub `📅unknown` `[entity_page]`
+- [CAD CAE Copilot（armpro24-blip/cad-cae-copilot）](wiki/entities/armpro24-blip-cad-cae-copilot.md) — CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/CAE 任务，使用 build123d 与 OpenCASCADE 创建真实可编辑 `📅unknown` `[entity_page]`
 - [Arnis](wiki/entities/arnis.md) — Arnis**（`louis-e/arnis`，Apache-2.0，~17.7k★）把 **真实世界地理** 编译进  `📅unknown` `[entity_page]`
 - [JEPA, from language models to world models（VideoDB）](wiki/entities/article-videodb-jepa-world-models.md) — VideoDB Labs 于 2026-07-07 发布的技术长文，从 next-token prediction 与 latent prediction 的差异讨论 JEPA 如何进入 VLM、VL `📅unknown` `[entity_page]`
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
@@ -104,6 +110,8 @@
 - [CAD 1000 Hours（Markov AI）](wiki/entities/cad-1000-hours-dataset.md) — CAD 1000 Hours**（[markov-ai/cad-1000-hours](https://huggingface.co/datasets/markov-ai/cad-1000-hou `📅unknown` `[entity_page]`
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
+- [CAE Agent Hub（Cai-aa/CAE-Agent-Hub）](wiki/entities/cai-aa-cae-agent-hub.md) — CAE Agent Hub（Cai-aa/CAE-Agent-Hub）是中文 CAE 代理资源仓库，把 Skill 与 MCP 执行服务分层。 `📅unknown` `[entity_page]`
+- [FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）](wiki/entities/cai-aa-freecad-automation-skill.md) — FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）是FreeCAD 自动化技能，文章列出参数化建模、装配、TechDra `📅unknown` `[entity_page]`
 - [CALVIN](wiki/entities/calvin-benchmark.md) — CALVIN](https://github.com/mees/calvin) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
 - [CanFestival](wiki/entities/canfestival.md) — CanFestival** 是面向 PC、实时工控机与微控制器的 **开源 CANopen® 协议栈**：用 ANSI-C 实现可配置为 **NMT Master 或 Slave** 的节点，并配 `📅unknown` `[entity_page]`
 - [Cangjie Skill](wiki/entities/cangjie-skill.md) — Cangjie Skill** 是 kangarooking/cangjie-skill 仓库分发 `📅unknown` `[entity_page]`
@@ -111,6 +119,7 @@
 - [carm-lerobot（CVTE CARM × LeRobot）](wiki/entities/carm-lerobot.md) — carm-lerobot**（`cvte-robotics/carm-lerobot`）把 [Le `📅unknown` `[entity_page]`
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
+- [Fluent CFD Skill（cavoiie/fluent-cfd-skill）](wiki/entities/cavoiie-fluent-cfd-skill.md) — Fluent CFD Skill（cavoiie/fluent-cfd-skill）是面向 Ansys Fluent/PyFluent 的判断与流程指导，不打包 Fluent 本体。 `📅unknown` `[entity_page]`
 - [ChangeMamba](wiki/entities/changemamba.md) — ChangeMamba 将 Mamba 用于遥感/视频变化检测，建模双时相长程依赖以突出变化区域。 `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
@@ -397,6 +406,7 @@
 - [XGripper](wiki/entities/cn-os-xgripper.md) — XGripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 数据采集夹爪 SDK `📅unknown` `[entity_page]`
 - [xMimic](wiki/entities/cn-os-xmimic.md) — xMimic** 是 北京人形机器人创新中心 公开的 **全身动作跟踪/技能训练** 开源项目：BVH动作由xGMR重定 `📅unknown` `[entity_page]`
 - [XR-1](wiki/entities/cn-os-xr-1.md) — XR-1** 是 北京人形机器人创新中心 公开的 **VLA/操作模型** 开源项目：三阶段流程先学习统一视觉—运动离散 `📅unknown` `[entity_page]`
+- [Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）](wiki/entities/codersag-mechanical-mcp.md) — Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）是通过 PyMechanical gRPC 连接 ANSYS Mechanical， `📅unknown` `[entity_page]`
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
 - [Coding Interview University](wiki/entities/coding-interview-university.md) — Coding Interview University**（[jwasham/coding-interview-university](https://github.com/jwasham/cod `📅unknown` `[entity_page]`
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
@@ -411,6 +421,7 @@
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
+- [Foam-Agent（csml-rpi/Foam-Agent）](wiki/entities/csml-rpi-foam-agent.md) — Foam-Agent（csml-rpi/Foam-Agent）是多智能体 CFD 工作流框架（文章指出发表于 CMAME），不是单个 SKILL.md。 `📅unknown` `[entity_page]`
 - [cuRobo](wiki/entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
 - [CurrentWorld-0（Current Robotics · 交互世界模拟器）](wiki/entities/current-robotics-currentworld.md) — CurrentWorld-0** 是 **现行机器人（Current Robotics）** 在 2026-08 博客发布的 **生成式交互环境**：把世界模型从「预测下一帧」做成 **inter `📅unknown` `[entity_page]`
@@ -463,6 +474,7 @@
 - [Diagram Design](wiki/entities/diagram-design.md) — Diagram Design**（cathrynlavery/diagram-design，M `📅unknown` `[entity_page]`
 - [Can Jev Nav?（Dimensional · Nav Arena）](wiki/entities/dimensional-can-jev-nav-benchmark.md) — Can Jev Nav?**（Dimensional Research，2026 `📅unknown` `[entity_page]`
 - [DimOS（Dimensional 物理空间 Agent OS）](wiki/entities/dimensionalos-dimos.md) — DimOS** 是 Dimensional 推出的 **agent-native 物理空间操作系统**：用 **Python Module + Blueprint** 把相机/LiDAR 感知、S `📅unknown` `[entity_page]`
+- [CAE Physics Simulations Agent（DipanBartaula/CAE_Physics_Simulations_Agent）](wiki/entities/dipanbartaula-cae-physics-simulations-agent.md) — CAE Physics Simulations Agent（DipanBartaula/CAE_Physics_Simulations_Agent）是使用 Julia/CUDA 脚本运行 CAE 物理 `📅unknown` `[entity_page]`
 - [Disney Holotile（全向活动地板）](wiki/entities/disney-holotile.md) — 一句话定义：** Holotile 是 Disney Research / Imagineering 的 **模块化全向地板**：用大量六边形地砖单元形成可 **被动全向行走** 与 **主动可编 `📅unknown` `[entity_page]`
 - [Disney Research LA（研究门户）](wiki/entities/disney-research-la.md) — 一句话定义：** Disney Research Los Angeles 是迪士尼面向全球研究社区的 **产业 `📅unknown` `[entity_page]`
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](wiki/entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
@@ -506,6 +518,7 @@
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
+- [OpenFOAM Simulation（EzraJay2333/openfoam-simulation）](wiki/entities/ezrajay2333-openfoam-simulation.md) — OpenFOAM Simulation（EzraJay2333/openfoam-simulation）是文章总结为 13 步从规划、建模、运行、验证到文档的流程，强调流道拓扑/形状优化的证据链。 `📅unknown` `[entity_page]`
 - [F1TENTH Gym](wiki/entities/f1tenth-gym.md) — F1TENTH Gym** 是 F1TENTH 自主竞速社区维护的 **Python Gymnasium 环境**，用简化但可调的单车动力学在 CP `📅unknown` `[entity_page]`
 - [FACET](wiki/entities/facet-impedance.md) — FACET](https://facet.pages.dev/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion- `📅unknown` `[entity_page]`
 - [fairmotion](wiki/entities/fairmotion.md) — fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运 `📅unknown` `[entity_page]`
@@ -527,6 +540,7 @@
 - [FLUX 3 Action](wiki/entities/flux-3-action.md) — FLUX 3 Action** 是 Black Forest Labs 发布的 **world action mod `📅unknown` `[entity_page]`
 - [FluxVLA Engine（arXiv:2609.17210）](wiki/entities/fluxvla-engine.md) — FluxVLA Engine**（*A One-Stop VLA Engineering Platform for Embodied Intelligence*，[arXiv:2609.17210 `📅unknown` `[entity_page]`
 - [FlyBrainLab](wiki/entities/flybrainlab.md) — FlyBrainLab** 是 Fruit Fly Brain Observatory 团队开源的 **交互计算平台**（https://github.com/FlyBrainLab/FlyBra `📅unknown` `[entity_page]`
+- [SCI Mech Fluid Polishing（FlyingAkai/sci-mech-fluid-polishing）](wiki/entities/flyingakai-sci-mech-fluid-polishing.md) — SCI Mech Fluid Polishing（FlyingAkai/sci-mech-fluid-polishing）是面向机械、流体、传热及增材制造方向的 Codex SCI 论文润色技能，范围 `📅unknown` `[entity_page]`
 - [FlyWire](wiki/entities/flywire.md) — FlyWire**（https://flywire.ai/）是 **FlyWire Consortium** 经大规模专家 proofreading 完成的 **雌性成年果蝇全脑** 连接组平台。 `📅unknown` `[entity_page]`
 - [傅利叶 GRX N1（开源人形）](wiki/entities/fourier-grx-n1.md) — Fourier GRX N1** 是傅利叶智能在 GitHub 组织 **FFTAI** 下维护的开源人形软硬件栈之一；公开资料以  `📅unknown` `[entity_page]`
 - [Foxglove](wiki/entities/foxglove-studio.md) — Foxglove](https://github.com/foxglove/studio) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
@@ -536,6 +550,7 @@
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`
 - [银河通用 AstraBrain：世界–动作与全身控制路线](wiki/entities/galbot-astrabrain.md) — AstraBrain** 把银河通用的世界–动作学习与身体执行组织成一套模型系列；研究时应分别追踪 **WAM 的数据与动作接口**、**WBC 的参考运动跟踪**。 `📅unknown` `[entity_page]`
 - [Gazebo Sim](wiki/entities/gazebo-sim.md) — Gazebo Sim](https://github.com/gazebosim/gz-sim) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
+- [AnkusDrive（gchen19/AnkusDrive）](wiki/entities/gchen19-ankusdrive.md) — AnkusDrive（gchen19/AnkusDrive）是把 FreeCAD 变成机械设计工作台，提供 CLI 和 MCP，覆盖参数化 CAD、工程图、FEM/CFD 仿真与制造检查。 `📅unknown` `[entity_page]`
 - [GE-Sim 2.0（Genie Envisioner World Simulator 2.0）](wiki/entities/ge-sim-2.md) — GE-Sim 2.0**（arXiv:2605.27491，AgiBot 等）是 **Genie Envisioner** 平台上的 **闭环视频世界模拟器**：在 [Genie Envision `📅unknown` `[entity_page]`
 - [GelSlim（薄片化视觉触觉传感器）](wiki/entities/gel-slim.md) — GelSlim** 是以 MIT 为主线的视觉触觉传感器（vision-based tactile sensor）家族，目标是把 [GelSight](../concepts/tactile-se `📅unknown` `[entity_page]`
 - [Gemini Robotics](wiki/entities/gemini-robotics.md) — Gemini Robotics** 是 Google DeepMind 面向物理交互的 Gemini 系列机器人模型族。HMI 论文/报告总索引将其收录为 **P061**（世界模型、VLA 与  `📅unknown` `[entity_page]`
@@ -554,6 +569,7 @@
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
 - [Genie Studio Agent](wiki/entities/genie-studio-agent.md) — Genie Studio Agent** 是智元在 2026-06 发布地图 中 `📅unknown` `[entity_page]`
 - [GenoView-InverseKinematics](wiki/entities/genoview-inverse-kinematics.md) — GenoView-InverseKinematics](https://github.com/orangeduck/GenoView-InverseKinematics) 是 Andrew McDo `📅unknown` `[entity_page]`
+- [HFSS MCP Server（gfgf2023/hfss-mcp-server）](wiki/entities/gfgf2023-hfss-mcp-server.md) — HFSS MCP Server（gfgf2023/hfss-mcp-server）是面向 HFSS 天线和 PCB 仿真的 MCP 服务，涉及天线几何、边界与激励、远场方向图等任务。 `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [GNM Head（GNM 生态）](wiki/entities/gnm-head.md) — GNM**（**G**enerative a**N**thropometric **M**odel，读音类比 genome）是 Google 推进的 **参数化人体统计模型生态**；截至 2026 `📅unknown` `[entity_page]`
 - [GO-2（智元执行基座）](wiki/entities/go-2.md) — GO-2**（arXiv:2601.11404，项目页：<https://libra-vla.github.io/>）是智元 `📅unknown` `[entity_page]`
@@ -586,10 +602,13 @@
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
 - [Hindsight](wiki/entities/hindsight.md) — Hindsight**（vectorize-io/hindsight，文档 [hindsight.vect `📅unknown` `[entity_page]`
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`
+- [OpenFOAM CFD Codex Skill（HNUVV/openfoam-CFD-codexskill）](wiki/entities/hnuvv-openfoam-cfd-codexskill.md) — OpenFOAM CFD Codex Skill（HNUVV/openfoam-CFD-codexskill）是文章将它作为中文 Codex Skill 入门模板。 `📅unknown` `[entity_page]`
 - [HoloAgent](wiki/entities/holoagent.md) — HoloAgent](https://github.com/HorizonRobotics/HoloAgent) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [HoloMotion（HoloMotion-1）](wiki/entities/holomotion.md) — HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时 `📅unknown` `[entity_page]`
 - [Holoscan Sensor Bridge（HSB）](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge**（产品页， `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
+- [ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）](wiki/entities/hongwenwang36-eng-ansys-workbench-mcp.md) — ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）是中文 Workbench 本地桥接项目：以 Workbench journal 和 `📅unknown` `[entity_page]`
+- [Vortex Funnel Generator（hooyao/vortex-funnel-gen）](wiki/entities/hooyao-vortex-funnel-gen.md) — Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印防咕咚涡流漏斗，贯通 CadQuery 参数建模、OpenFOAM int `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
 - [Human Atlas（3D 解剖探索器）](wiki/entities/human-atlas.md) — Human Atlas**（GitHub，[在线演示](https://human-atlas-seven.ve `📅unknown` `[entity_page]`
 - [Human Body And Accessories（人体部件与服饰分割数据集）](wiki/entities/human-body-and-accessories-dataset.md) — Human Body And Accessories** 是托管在 Ultralytics Platform 上的细粒度人体解析分割数据集：它将画面中的人体拆成脸、头发、衣物、肢体与配件等 19  `📅unknown` `[entity_page]`
@@ -653,17 +672,21 @@
 - [NVIDIA Jetson Orin NX](wiki/entities/jetson-orin-nx.md) — Jetson Orin NX** 是 NVIDIA **Jetson Orin** 产品线中的边缘 AI 模组形态，面向移动机器人机载推理：在功耗与体积约束下运行 CUDA/TensorRT 加速 `📅unknown` `[entity_page]`
 - [Linxi "Jim" Fan（范林熹）](wiki/entities/jim-fan.md) — Linxi "Jim" Fan** 是 **NVIDIA 具身智能与通才 agent** 方向的 **PI 级研究科学家**：与 Yuke Zhu 共 `📅unknown` `[entity_page]`
 - [Jumper 六足机器人与训练部署栈](wiki/entities/jumper-crab-robot.md) — Jumper** 是 KingKongRobotics 发布的仿蟹式六足机器人和配套训练工程。其主要价值是把机器人模型、并行仿真、任务奖励、策略训练、导出契约和控制器打包放进可检查的开源工作流，而 `📅unknown` `[entity_page]`
+- [Scientific Agents（K-Dense-AI/scientific-agents）](wiki/entities/k-dense-ai-scientific-agents.md) — Scientific Agents（K-Dense-AI/scientific-agents）是以 AGENTS.md 配置集合教代理按资深科学家/工程师方式思考，属于专业人设与工作规则示例，不是专用 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`
 - [KeenTools FaceBuilder for Blender](wiki/entities/keentools-facebuilder.md) — KeenTools FaceBuilder for Blender** 是 **KeenTools** 的 **Blender 插件**：从 **少量照片**（或非中性表情图像）在 DCC 内构建 `📅unknown` `[entity_page]`
 - [Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）](wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md) — Ken Goldberg**（UC Berkeley，Ambi / Jacobi Robotics 联创）2026-09-18 在 X 发布 [Goosebumps: a Paradigm Shi `📅unknown` `[entity_page]`
 - [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
 - [Kimera](wiki/entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
 - [Kimi K3](wiki/entities/kimi-k3.md) — Kimi K3** 是 月之暗面（Moonshot AI） 2026 年发布的旗舰大模型：**2.8 万亿参数** MoE（**104B** 激活 `📅unknown` `[entity_page]`
+- [Awesome AI CAE（kimimgo/awesome-ai-cae）](wiki/entities/kimimgo-awesome-ai-cae.md) — Awesome AI CAE（kimimgo/awesome-ai-cae）是收集 110 多个可供 AI 调用的 CAE 工具，横跨 CFD、FEA、SPH、DEM、网格、CAD 与可视化。 `📅unknown` `[entity_page]`
+- [viznoir（kimimgo/viznoir）](wiki/entities/kimimgo-viznoir.md) — viznoir（kimimgo/viznoir）是面向 VTK 的 22 工具可视化 MCP，可做渲染、切片、等值面、体渲染及 OpenFOAM 动画。 `📅unknown` `[entity_page]`
 - [kimodo.cpp（C++/GGML 本地运动扩散运行时）](wiki/entities/kimodo-cpp.md) — kimodo.cpp**（localai-org/kimodo.cpp）是 NVIDIA [Kimodo `📅unknown` `[entity_page]`
 - [Kimodo（可控人体与人形运动扩散）](wiki/entities/kimodo.md) — Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时**  `📅unknown` `[entity_page]`
 - [KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）](wiki/entities/kinetiq-ascend.md) — KinetIQ Ascend** 是 **Humanoid**（thehumanoid.ai）在 **KinetIQ** AI 框架上发布的  `📅unknown` `[entity_page]`
 - [Kinova Gen3](wiki/entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
 - [KITTI Stereo Benchmark](wiki/entities/kitti-stereo-benchmark.md) — KITTI** 立体评测（2012 / `📅unknown` `[entity_page]`
+- [Ansys MCP Server（多产品版）（knewnothing-git/ansys-mcp-server）](wiki/entities/knewnothing-git-ansys-mcp-server.md) — Ansys MCP Server（多产品版）（knewnothing-git/ansys-mcp-server）是与 vorobjewsen30-max 的同名项目是不同仓库。 `📅unknown` `[entity_page]`
 - [KUAVO-VLA-1.0](wiki/entities/kuavo-vla-1.md) — KUAVO-VLA-1.0** 是乐聚面向 Kuavo 人形机器人与工业操作场景发布的垂域视觉-语言-动作模型，目标是把任务指令、视觉观察和机器人动作策略连接起来。 `📅unknown` `[entity_page]`
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
@@ -672,6 +695,7 @@
 - [LangChain](wiki/entities/langchain.md) — LangChain**（GitHub: langchain-ai/langchain，[langchain `📅unknown` `[entity_page]`
 - [LangGraph](wiki/entities/langgraph.md) — LangGraph**（GitHub: langchain-ai/langgraph）是 **低层编排框架 `📅unknown` `[entity_page]`
 - [LangSmith](wiki/entities/langsmith.md) — LangSmith**（langchain.com/langsmith，控制台 [smith.langchain.co `📅unknown` `[entity_page]`
+- [Ansys AEDT MCP（LaplaceYoung/ansys-aedt-mcp）](wiki/entities/laplaceyoung-ansys-aedt-mcp.md) — Ansys AEDT MCP（LaplaceYoung/ansys-aedt-mcp）是通过 PyAEDT/MCP 自动化 Ansys Electronics Desktop，范围包括 HFSS、Ma `📅unknown` `[entity_page]`
 - [Laya-CoreML（Apple Neural Engine 运行时）](wiki/entities/laya-coreml.md) — Laya-CoreML** 指把 Laya **322M multilingual**（及英文/typed 变体）转到 **Apple Core ML** 后在设备上跑  `📅unknown` `[entity_page]`
 - [Laya-MLX（Apple Silicon MLX 运行时）](wiki/entities/laya-mlx.md) — Laya-MLX**（GitHub，[PyPI](https://pypi.org/project/laya-ml `📅unknown` `[entity_page]`
 - [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`
@@ -681,7 +705,9 @@
 - [legbot-MPC-WBC（四足 Convex MPC + WBC 参考实现）](wiki/entities/legbot-mpc-wbc.md) — legbot-MPC-WBC**（Robot-Nav/legbot-MPC-WBC，MIT）是面向  `📅unknown` `[entity_page]`
 - [legged_gym](wiki/entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [LeggedGym-Ex](wiki/entities/leggedgym-ex.md) — LeggedGym-Ex**（<https://github.com/lupinjia/LeggedGym-Ex>）在 legged_gym 范式上扩展  `📅unknown` `[entity_page]`
+- [CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）](wiki/entities/legiiiit-converge-studio-mcp.md) — CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）是将 CONVERGE Studio 工作流接入 MCP。 `📅unknown` `[entity_page]`
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
+- [Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）](wiki/entities/leisymqaz-lumerical-fdtd-mcp.md) — Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）是控制 Ansys Lumerical FDTD 的 MCP 服务。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot Humanoid](wiki/entities/lerobot-humanoid.md) — Hugging Face **LeRobot** 系开源 **12-DoF 双足** 整机：从 Onshape/BOM/3D 打印到 CAN 真机控制、MJLab 行走 RL、动力学辨识与 LeRob `📅unknown` `[entity_page]`
@@ -707,6 +733,7 @@
 - [LiveTalking（实时流式交互数字人）](wiki/entities/livetalking.md) — LiveTalking**（GitHub，项目页，[文档 `📅unknown` `[entity_page]`
 - [LLaDA2.2-flash](wiki/entities/llada2-2-flash.md) — LLaDA2.2-flash** 是 Inclusion AI（蚂蚁集团）LLaDA2 系列的 **agent-oriented `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
+- [ParaView MCP（llnl/paraview_mcp）](wiki/entities/llnl-paraview-mcp.md) — ParaView MCP（llnl/paraview_mcp）是LLNL 的多模态可视化 MCP：代理调用 ParaView 命令并观察渲染视口，形成“执行—观察—调整”反馈。 `📅unknown` `[entity_page]`
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
 - [Lot Vulture](wiki/entities/lotvulture.md) — Lot Vulture**（lotvulture/lotvulture，[lotvulture.com](h `📅unknown` `[entity_page]`
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
@@ -739,6 +766,7 @@
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
+- [FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）](wiki/entities/miaooo0000oooo-freecad-automation-skill.md) — FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）是与 Cai-aa 的同名仓库是不同实 `📅unknown` `[entity_page]`
 - [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`
 - [MIDAS Hand](wiki/entities/midas-hand.md) — MIDAS Hand**（Modular low-Impedance Direct-drive Anthropomorphic Sensing Hand）是加州大学洛杉矶分校 **Dennis H `📅unknown` `[entity_page]`
 - [Middlebury Stereo Evaluation](wiki/entities/middlebury-stereo-benchmark.md) — Middlebury Stereo** V3 评测 是立体匹配领域 **历史最久** 的公开基准之一， `📅unknown` `[entity_page]`
@@ -788,6 +816,7 @@
 - [natural-disasters（ABYSSAL）](wiki/entities/natural-disasters-abyssal.md) — natural-disasters**（品牌名 **ABYSSAL**，[`Token-Gremlin/natural-disasters`](https://github.com/Token-G `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
+- [Abaqus Agent（nellikassa566-ops/abaqus-agent）](wiki/entities/nellikassa566-ops-abaqus-agent.md) — Abaqus Agent（nellikassa566-ops/abaqus-agent）是以自然语言描述驱动 Abaqus 建模、网格、边界、提交作业和结果提取。 `📅unknown` `[entity_page]`
 - [新智具身智能（NeoteAI）](wiki/entities/neoteai.md) — 新智具身智能**（上海新智具身智能科技有限公司，NeoteAI）源自 **复旦大学可信具身智能研究院（TEAI）**，以触觉为具身原生模态，产 `📅unknown` `[entity_page]`
 - [neuPrint](wiki/entities/neuprint.md) — neuPrint** 是 HHMI Janelia 提供的 **连接组图数据库与交互查询服务**（https://neuprint.janelia.org/），支持按细胞类型、连接模式与 ROI  `📅unknown` `[entity_page]`
 - [Neuroglancer](wiki/entities/neuroglancer.md) — Neuroglancer** 是 Google 开源的 **WebGL 体数据可视化客户端**（Apache-2.0），可显示任意朝向的截面、3D mesh 与 skeleton。它 **纯前端运 `📅unknown` `[entity_page]`
@@ -857,6 +886,7 @@
 - [ORCS（Oracle Robot Control Synthesis）](wiki/entities/orcs.md) — ORCS**（*Optimize, Retarget, Control Suite*，GitHub，[HF 权重](https:/ `📅unknown` `[entity_page]`
 - [OSIRIS 全球 OSINT 情报地图](wiki/entities/osiris-global-osint.md) — OSIRIS** 是一个开源的全球 OSINT（开源情报）仪表盘：通过地图图层汇聚航班、卫星、摄像头、地震、火点、天气、地缘事件及网络威胁等公开信息。 `📅unknown` `[entity_page]`
 - [OSQP](wiki/entities/osqp.md) — OSQP](https://github.com/osqp/osqp) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-moti `📅unknown` `[entity_page]`
+- [AutoStar（Ouscar-ou/AutoStar）](wiki/entities/ouscar-ou-autostar.md) — AutoStar（Ouscar-ou/AutoStar）是针对 STAR-CCM+ 螺旋桨敞水 CFD。 `📅unknown` `[entity_page]`
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
 - [OWASP MAS（Mobile Application Security）](wiki/entities/owasp-mas.md) — OWASP Mobile Application Security (MAS)** 是 OWASP 旗舰项目，用 **MASVS**（该满足哪些控制）、**MASWE**（常见弱点是什么）和  `📅unknown` `[entity_page]`
@@ -1063,6 +1093,7 @@
 - [DeXtreme (NVIDIA)](wiki/entities/painode-330-dextremenvidia.md) — DeXtreme (NVIDIA)** 收录于 awesome-physical-ai（natnew）**第 330/384** 条，分组 **Sim-to-Real**。本页是 **清单索引 `📅unknown` `[entity_page]`
 - [Eureka (NVIDIA)](wiki/entities/painode-332-eurekanvidia.md) — Eureka (NVIDIA)** 收录于 awesome-physical-ai（natnew）**第 332/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给 `📅unknown` `[entity_page]`
 - [Genie 2 (DeepMind)](wiki/entities/painode-374-genie2deepmind.md) — Genie 2 (DeepMind)** 收录于 awesome-physical-ai（natnew）**第 374/384** 条，分组 **World Models**。本页是 **清单索引 `📅unknown` `[entity_page]`
+- [AeroDesign Skill（Pan-Chenliang/AeroDesign_skill）](wiki/entities/pan-chenliang-aerodesign-skill.md) — AeroDesign Skill（Pan-Chenliang/AeroDesign_skill）是将 Raymer《Aircraft Design: A Conceptual Approach》第六版 `📅unknown` `[entity_page]`
 - [PAN Motion Retargeting](wiki/entities/pan-motion-retargeting.md) — pan-motion-retargeting**（<https://github.com/hlcdyy/pan-motion-retargeting>）是 TVCG 2023 论文 [*Pose- `📅unknown` `[entity_page]`
 - [Argus（Pantheon）：机器人数据标注与质量审计](wiki/entities/pantheon-argus.md) — Argus** 是 Pantheon 的开源机器人数据审计流水线：联合查看录像、状态/动作及指令，输出时间轴标注、成功区间、操作失误和录制故障，帮助训练前选择或修复数据。 `📅unknown` `[entity_page]`
 - [1X World Model（1XWM / Redwood 评测引擎）](wiki/entities/paper-1xwm-redwood-world-model.md) — 1X World Model（1XWM）**（技术报告 *1X World Model: Evaluating Bits, not Atoms*；发现页挂在 [Redwood AI World M `📅unknown` `[entity_page]`
@@ -4494,6 +4525,7 @@
 - [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
 - [OM-1：通才操作策略（Reward AI）](wiki/entities/reward-ai-om1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Reward AI（机器人方向）](wiki/entities/reward-ai-robotics.md) — Reward AI**：聚焦 **人类同速灵巧操作** 的商业实体；对外叙事以 **Omnibody** 全栈为核心——可穿戴采集、统一多模态数据接口、**OM-1** 通才策略与跨工业臂/人形的 `📅unknown` `[entity_page]`
+- [FreeCAD AI Skill（reyk）（reyk/freecad-ai-skill）](wiki/entities/reyk-freecad-ai-skill.md) — FreeCAD AI Skill（reyk）（reyk/freecad-ai-skill）是以“FreeCAD AI skill”作为项目身份，是文章提到的两条 FreeCAD AI Skill 路线 `📅unknown` `[entity_page]`
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [辉羲智能（Rhino Auto）](wiki/entities/rhino-auto.md) — 辉羲智能**（rhino.auto）是专注 **车载智能计算平台** 的芯片与方案公司：2024 年世界智能网联汽车大会发布首款高阶智驾芯片 **光至 `📅unknown` `[entity_page]`
 - [Richard Sutton](wiki/entities/richard-sutton.md) — Richard S. Sutton** 是现代 **强化学习（RL）** 的奠基研究者之一：与 Andrew Barto 合著 RL 标准教材、提出 TD learning / eligibili `📅unknown` `[entity_page]`
@@ -4551,10 +4583,12 @@
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
 - [RunPod](wiki/entities/runpod.md) — RunPod**（runpod.io）提供 **GPU Pods**（Docker 容器）、**Serverless GPU** 与 **Net `📅unknown` `[entity_page]`
+- [FEP Agent Hub（S2mon123/FEP-Agent-Hub）](wiki/entities/s2mon123-fep-agent-hub.md) — FEP Agent Hub（S2mon123/FEP-Agent-Hub）是将 FreeCAD 参数化 CAD、Elmer FEM 网格/求解和 ParaView 无头后处理串成免费三件套，并以多个独 `📅unknown` `[entity_page]`
 - [Sa2VA](wiki/entities/sa2va.md) — Sa2VA**（*Marrying SAM2 with LLaVA*，arXiv:2501.04001）把 **SAM 2 `📅unknown` `[entity_page]`
 - [SAGE（Sim2Real Actuator Gap Estimator）](wiki/entities/sage-sim2real-actuator-gap-estimator.md) — SAGE** 是面向 **关节运动执行器层** 的 sim2real 度量工具链：同一组参考轨迹分别在 **Isaac Sim 仿真** 与 **真实机器人** 上执行，对齐日志格式后做 **统计 `📅unknown` `[entity_page]`
 - [SAM 3D Body（3DB）](wiki/entities/sam-3d-body.md) — SAM 3D Body（3DB）**（arXiv:2602.15989，Meta Superintelligence Labs）是 **SAM 3D** 产品线中的 **人体支路**：从 **单张 `📅unknown` `[entity_page]`
 - [SAM3DBody-cpp](wiki/entities/sam3dbody-cpp.md) — SAM3DBody-cpp**（AmmarkoV/SAM3DBody-cpp）是 [SAM 3D Body `📅unknown` `[entity_page]`
+- [FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）](wiki/entities/sandraschi-freecad-mcp.md) — FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）是通过 FastMCP 自动化 FreeCAD，支持 headless 文档/导出，并扩展 FluidX3 `📅unknown` `[entity_page]`
 - [SAPIEN (仿真引擎)](wiki/entities/sapien.md) — SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理 `📅unknown` `[entity_page]`
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
 - [sc-datav（Three.js 数据可视化大屏）](wiki/entities/sc-datav.md) — sc-datav** 是 knight-L/sc-datav（Apache-2.0，~2.3k stars）提供的  `📅unknown` `[entity_page]`
@@ -4562,6 +4596,8 @@
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
 - [ScienceDiscovery](wiki/entities/sciencediscovery.md) — ScienceDiscovery**（GitHub · [AtomGit](https:/ `📅unknown` `[entity_page]`
+- [HPC-Skills（SciMate-AI/HPC-Skills）](wiki/entities/scimate-ai-hpc-skills.md) — HPC-Skills（SciMate-AI/HPC-Skills）是覆盖 OpenFOAM、SU2、LS-DYNA、FEniCS、CalculiX、ElmerFEM、LAMMPS、GROMACS、VA `📅unknown` `[entity_page]`
+- [AnsysAgent（sduwby/AnsysAgent）](wiki/entities/sduwby-ansysagent.md) — AnsysAgent（sduwby/AnsysAgent）是不是单个 Skill 或 MCP，而是包含专业子代理和大量工具的工程助手。 `📅unknown` `[entity_page]`
 - [Seed2.0](wiki/entities/seed2-0.md) — Seed2.0**（Seed2.0 Model Card（ByteDance Seed））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [SEEM（Segment Everything Everywhere All at Once）](wiki/entities/seem.md) — SEEM** 用统一的解码接口消费 **多种提示**（点、框、涂鸦、文本、参照实体等），在一张图上做开放词汇、交互式与全景式分割。 `📅unknown` `[entity_page]`
 - [SegFormer](wiki/entities/segformer.md) — SegFormer** 结合 **分层高效 Transformer 编码器** 与 **极简 MLP 解码器**，在无pe、无重型解码头的情况下达到强语义分割精度与良好推理效率。 `📅unknown` `[entity_page]`
@@ -4570,6 +4606,7 @@
 - [Serial Studio](wiki/entities/serial-studio.md) — Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。 `📅unknown` `[entity_page]`
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
+- [FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）](wiki/entities/shanputaoye-freecad-ai-skill.md) — FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）是与 reyk 的同名项目独立。 `📅unknown` `[entity_page]`
 - [Shift（shiftapp.nyc）](wiki/entities/shift-app-nyc.md) — Shift**（<https://www.shiftapp.nyc/>）是 **MicroAGI** 推出的消费者服务：在纽约为住户提供 **免费专业保洁**，保洁员佩戴 **头载相机** 录制第 `📅unknown` `[entity_page]`
 - [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
 - [Simate（Physical AI Platform + Model + Scientist）](wiki/entities/simate.md) — Simate**（simate.ai， slogan *Intelligence, in motion*）把 Physical AI 拆成 **Plat `📅unknown` `[entity_page]`
@@ -4585,6 +4622,7 @@
 - [SMPLOlympics（仿真人形体育环境套件）](wiki/entities/smplolympics.md) — SMPLOlympics**（Luo et al., arXiv:2407.00187）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`
 - [SOEM](wiki/entities/soem.md) — SOEM（Simple Open EtherCAT Master）** 是面向实时嵌入式与通用 OS 的 **开源 EtherCAT MainDevice 库**：以 ANSI-C 实现用户态主站 `📅unknown` `[entity_page]`
 - [SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）](wiki/entities/sol-pi.md) — SoL-Pi** 是 NVIDIA NVLabs 在 **[Pi](https://github.com/earendil- `📅unknown` `[entity_page]`
+- [Claude Engineering Skills（Soljourner/claude-engineering-skills）](wiki/entities/soljourner-claude-engineering-skills.md) — Claude Engineering Skills（Soljourner/claude-engineering-skills）是面向机械与航空航天的 100 多个 Skills，重点涵盖流体物性、材料 `📅unknown` `[entity_page]`
 - [SOMA Retargeter](wiki/entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md `📅unknown` `[entity_page]`
 - [SOMA-X（统一参数化人体模型）](wiki/entities/soma-x.md) — SOMA-X**（NVlabs/SOMA-X，PyPI `py-soma-x`，[arXiv:2603.16858](htt `📅unknown` `[entity_page]`
 - [Spark（Web 3DGS 渲染器）](wiki/entities/spark-3dgs-renderer.md) — Spark** 是 World Labs 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`
@@ -4602,6 +4640,10 @@
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [SuperTuxKart](wiki/entities/supertuxkart.md) — SuperTuxKart**（项目主页，代码，[R `📅unknown` `[entity_page]`
 - [Sutton & Barto RL 教材](wiki/entities/sutton-barto-rl-book.md) — Reinforcement Learning: An Introduction**（Richard S. Sutton & Andrew G. Barto）是强化学习领域的**标准教材**：以 M `📅unknown` `[entity_page]`
+- [sim-cli（svd-ai-lab/sim-cli）](wiki/entities/svd-ai-lab-sim-cli.md) — sim-cli（svd-ai-lab/sim-cli）是不直接启动求解器，而是将既有 `.mph`、`.inp`、`.cas.h5`、`.aedt`、`.mechdb`、`.tzr` 文件解析为结构化 `📅unknown` `[entity_page]`
+- [sim-plugin-openfoam（svd-ai-lab/sim-plugin-openfoam）](wiki/entities/svd-ai-lab-sim-plugin-openfoam.md) — sim-plugin-openfoam（svd-ai-lab/sim-plugin-openfoam）是sim-cli 的 OpenFOAM 外置驱动插件，提供运行算例、检查结果和可回放 CFD 产物 `📅unknown` `[entity_page]`
+- [sim-plugin-starccm（svd-ai-lab/sim-plugin-starccm）](wiki/entities/svd-ai-lab-sim-plugin-starccm.md) — sim-plugin-starccm（svd-ai-lab/sim-plugin-starccm）是sim-cli 的 STAR-CCM+ 外置驱动，使用 Java StarMacro 通过 `sta `📅unknown` `[entity_page]`
+- [OpenFOAM Claude Suite（swtbkim/openfoam-claude-suite）](wiki/entities/swtbkim-openfoam-claude-suite.md) — OpenFOAM Claude Suite（swtbkim/openfoam-claude-suite）是拆分为 of-sim、of-post、of-doctor、of-setup：覆盖算例规划/运行 `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [An Observation on Generalization（Ilya Sutskever, 2023）](wiki/entities/talk-ilya-sutskever-observation-on-generalization.md) — An Observation on Generalization** 是 **Ilya Sutskever**（OpenAI）在 **Simons Institute**「Large Langua `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
@@ -4613,6 +4655,8 @@
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
 - [Tesla Optimus](wiki/entities/tesla-optimus.md) — Tesla Optimus** 是特斯拉的 **通用人形机器人** 项目，与 **FSD 车队视觉数据** 共享部分「真实世界人类行为」数据叙事。LeoInAI Substack（2026-09） `📅unknown` `[entity_page]`
+- [FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）](wiki/entities/tessalabs-space-freecad-mcp.md) — FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）是提供 FreeCAD 工程 MCP，包括参数扫描、绘图/渲染和可选 CAE 交接。 `📅unknown` `[entity_page]`
+- [FEMIS Skill（test1card/femis-skill）](wiki/entities/test1card-femis-skill.md) — FEMIS Skill（test1card/femis-skill）是FEM + Themis 命名的跨求解器治理层，不直接驱动求解器。 `📅unknown` `[entity_page]`
 - [Text2MuJoCo](wiki/entities/text2mujoco.md) — Text2MuJoCo**（ShawnJoeng/Text2Mujoco，MIT）是运行在 **现有编码代 `📅unknown` `[entity_page]`
 - [Three.js Game Skills](wiki/entities/threejs-game-skills.md) — Three.js Game Skills** 是 [majidmanzarpour/threejs-game-skills](https://github.com/majidmanzarpour/ `📅unknown` `[entity_page]`
 - [Tidewater](wiki/entities/tidewater.md) — Tidewater**（GitHub，[在线游玩](https://dgreenheck.github.io/ `📅unknown` `[entity_page]`
@@ -4628,6 +4672,7 @@
 - [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，保证截图中每个知识点 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
 - [TwinDEX（无本体灵巧操作共设计接口）](wiki/entities/twindex.md) — TwinDEX**（项目页，2026-09-02）由 **自变量机器人（X Square Robot）** 发布：一 `📅unknown` `[entity_page]`
+- [OpenFOAM Agent Skills（twj011/openfoam-agent-skills）](wiki/entities/twj011-openfoam-agent-skills.md) — OpenFOAM Agent Skills（twj011/openfoam-agent-skills）是作为小型 OpenFOAM Skill 集合被文章提及，与完整仿真套件或 MCP 执行服务不同， `📅unknown` `[entity_page]`
 - [Jev（TypeSafe AI · System One Model）](wiki/entities/typesafe-jev.md) — Jev** 是 TypeSafe AI 发布的首个 **System One Model**（2026-09-15 官宣早期访问）：面向 **软件自 `📅unknown` `[entity_page]`
 - [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
@@ -4661,6 +4706,7 @@
 - [URDF Files Dataset](wiki/entities/urdf-files-dataset.md) — URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset) 配套 Tola & Corke 的 RA-L 论文 *Und `📅unknown` `[entity_page]`
 - [URDF-Studio](wiki/entities/urdf-studio.md) — URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工 `📅unknown` `[entity_page]`
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
+- [FreeCAD Engineering（V0v1kkk/freecad-engineering）](wiki/entities/v0v1kkk-freecad-engineering.md) — FreeCAD Engineering（V0v1kkk/freecad-engineering）是提供可编辑、带证据的 FreeCAD 工程技能与 MCP 配置，强调每个建模步骤保留可检查依据。 `📅unknown` `[entity_page]`
 - [Valen（万澜 · Multimodal System One Decision Model）](wiki/entities/valen.md) — Valen**（GitHub，HF 组织，[P `📅unknown` `[entity_page]`
 - [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
@@ -4678,18 +4724,22 @@
 - [VLX-Seek（Om AI Lab）](wiki/entities/vlx-seek.md) — VLX-Seek**（om-ai-lab/VLX-Seek，Apache-2.0）是 **联汇科技 OmAI 实验 `📅unknown` `[entity_page]`
 - [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [VoiceStudio](wiki/entities/voicestudio.md) — VoiceStudio**（debpalash/VoiceStudio，AGPL-3.0）是面向 **全本地 `📅unknown` `[entity_page]`
+- [Ansys MCP Server（PyAnsys）（vorobjewsen30-max/ansys-mcp-server）](wiki/entities/vorobjewsen30-max-ansys-mcp-server.md) — Ansys MCP Server（PyAnsys）（vorobjewsen30-max/ansys-mcp-server）是PyAnsys 路线的 Ansys MCP 服务，文章概述约 24 个工具， `📅unknown` `[entity_page]`
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`
 - [Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond](wiki/entities/walterzhu-astra-and-beyond.md) — Walter Zhu（朱文涛，@walterzhu8）** 2026-09-16 在 X 发布的 [长文](https://x.com/walterzhu8/status/210025599936 `📅unknown` `[entity_page]`
 - [WaytoAGI（通往 AGI 之路）](wiki/entities/waytoagi.md) — WaytoAGI**（飞书知识库首页 <https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e>，官网 <https://www.w `📅unknown` `[entity_page]`
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
+- [OpenFOAM MCP Server（webworn/openfoam-mcp-server）](wiki/entities/webworn-openfoam-mcp-server.md) — OpenFOAM MCP Server（webworn/openfoam-mcp-server）是OpenFOAM 执行层 MCP 服务，突出苏格拉底式教学问答：带用户逐步搭建算例并解释边界条件选择， `📅unknown` `[entity_page]`
 - [Weights & Biases（W&B）](wiki/entities/weights-and-biases.md) — Weights & Biases**（wandb.ai）是面向 AI 研发团队的 **实验追踪与协作平台**。在机器人学习工程里，它最常承担「 `📅unknown` `[entity_page]`
 - [WHAM](wiki/entities/wham-world-human-motion.md) — WHAM](https://github.com/yohanshin/WHAM) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid `📅unknown` `[entity_page]`
 - [wheel_legged_genesis](wiki/entities/wheel-legged-genesis.md) — wheel_legged_genesis** 是社区仓库 [`Albusgive/wheel_legged_genesis`](https://github.com/Albusgive/wheel `📅unknown` `[entity_page]`
 - [Where2Place](wiki/entities/where2place.md) — Where2Place**（Where2Place：可放置空间推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](ht `📅unknown` `[entity_page]`
 - [Exploring Artificial Intelligence（William Theisen 学习枢纽）](wiki/entities/williamtheisen-ai-learning.md) — Exploring Artificial Intelligence**（ai.williamtheisen.com，Willia `📅unknown` `[entity_page]`
 - [WinUI](wiki/entities/winui.md) — WinUI**（microsoft/microsoft-ui-xaml，文档 [Microsof `📅unknown` `[entity_page]`
+- [COMSOL Multiphysics MCP（wjc9011/COMSOL_Multiphysics_MCP）](wiki/entities/wjc9011-comsol-multiphysics-mcp.md) — COMSOL Multiphysics MCP（wjc9011/COMSOL_Multiphysics_MCP）是面向 COMSOL 多物理场软件的 MCP 接口。 `📅unknown` `[entity_page]`
+- [Agentic CAE（wogokoro/Agentic-CAE）](wiki/entities/wogokoro-agentic-cae.md) — Agentic CAE（wogokoro/Agentic-CAE）是Agentic Mechanical Engineering 集合中的 CAE 项目，涵盖网格、FEA/CFD 设置、求解器运行和结 `📅unknown` `[entity_page]`
 - [Wokwi](wiki/entities/wokwi.md) — Wokwi**（wokwi.com）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、ST `📅unknown` `[entity_page]`
 - [WolfieMouse](wiki/entities/wolfiemouse.md) — WolfieMouse**（kbumsik/WolfieMouse）是覆盖 **迷宫算法、STM32 底层驱动、 `📅unknown` `[entity_page]`
 - [Workhorse（人类示范驱动的人形全身移动操作）](wiki/entities/workhorse-humanoid-loco-manipulation.md) — Workhorse** 是一个从人类示范学习稳健人形全身移动操作的研究项目展示；作者称采集路线不依赖机器人遥操作或动作重定向，演示中的 Unitree G1 可自主完成带移动与物体交互的动作。 `📅unknown` `[entity_page]`
@@ -4698,12 +4748,14 @@
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
 - [舞肌科技（上海舞肌科技有限公司）](wiki/entities/wuji-robotics.md) — 舞肌科技** 面向 **具身 AI 机器人** 提供两类常被并列讨论的硬件叙事：**关节级电机方案**（**F 系列** 内转子永磁无刷、「**Pan Motor**」品牌报道）与 **五指灵巧手 `📅unknown` `[entity_page]`
 - [WWSimBench（WuWen 仿真基准资产 · HF v0.1）](wiki/entities/wwsimbench.md) — WWSimBench**（[Hugging Face · Wuwen-AI/WWSimBench](https://huggingface.co/datasets/Wuwen-AI/WWSimBe `📅unknown` `[entity_page]`
+- [SolidWorks Automation Skill（wzyn20051216/solidworks-automation-skill）](wiki/entities/wzyn20051216-solidworks-automation-skill.md) — SolidWorks Automation Skill（wzyn20051216/solidworks-automation-skill）是桌面 CAD 自动化工具箱，将 SolidWorks 操作封 `📅unknown` `[entity_page]`
 - [X-Humanoid（北京人形机器人创新中心）](wiki/entities/x-humanoid.md) — X-Humanoid**（北京人形机器人创新中心 / Beijing Innovation Center of Humanoid Robotics）是面向人形机器人 **核心技术、产品与应用生态 `📅unknown` `[entity_page]`
 - [X-Loco](wiki/entities/x-loco-humanoid.md) — X-Loco](https://x-loco-humanoid.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/human `📅unknown` `[entity_page]`
 - [xcar-rlgpu](wiki/entities/xcar-rlgpu.md) — xcar-rlgpu** 是面向 **独立轮驱（IWD）自主漂移** 的 **GPU 加速强化学习** 框架：自研向量化环境与 **rl_games** 子模块，强调训练吞吐与 Sim2Real  `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-0](wiki/entities/xiaomi-robotics-0.md) — Xiaomi-Robotics-0** 将 **预训练 VLM（Qwen3-VL-4B-Instruct）** 与 **扩散式 Transformer 动作头（DiT）** 组合成端到端 **VL `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-1](wiki/entities/xiaomi-robotics-1.md) — Xiaomi-Robotics-1**（官网代号 **XR-1**，arXiv:2607.15330）是小米机器人实验室 2 `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-U0](wiki/entities/xiaomi-robotics-u0.md) — Xiaomi-Robotics-U0**（arXiv:2607.11643，[官网](https://robotics.xi `📅unknown` `[entity_page]`
+- [CFD SciPaper Agent（Xiuyiw/CFD-SCIPaper-Agent）](wiki/entities/xiuyiw-cfd-scipaper-agent.md) — CFD SciPaper Agent（Xiuyiw/CFD-SCIPaper-Agent）是面向 CFD 研究者的作者在环工具，把成熟计算证据整理为可辩护研究方向、可复现图表和可追溯论文文字。 `📅unknown` `[entity_page]`
 - [xpad（Linux Xbox 手柄驱动）](wiki/entities/xpad.md) — xpad**（paroj/xpad）维护主线 Linux 内核中的 **Xbox 游戏手柄 USB 驱动**，并在上游基础上合并更 `📅unknown` `[entity_page]`
 - [XPolicyLab（统一策略训推与评测适配层）](wiki/entities/xpolicylab.md) — XPolicyLab**（*A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment*，[a `📅unknown` `[entity_page]`
 - [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 用 XR 设备（Apple Vision Pro、PICO 4 Ultra Enterprise、Meta Quest 3 等）对 Unitree 人形做全身遥操 `📅unknown` `[entity_page]`
@@ -4716,6 +4768,7 @@
 - [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
+- [OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）](wiki/entities/zyzhan417-openfoam-expert-skill.md) — OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读而非自动跑算例：让代理沿 OpenFOAM 源码定位实现，分析类继承、边界条件 `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）
 
@@ -5279,6 +5332,7 @@
 - [BFM 分类 03：Intrinsic reward 预训练](wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 04：Adaptation](wiki/overview/bfm-category-04-adaptation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 05：Hierarchical control](wiki/overview/bfm-category-05-hierarchical-control.md) — 语言、VLA、扩散与规划器如何通过**层次接口**（技能 token、latent action、action chunk）调用已训练好的底层身体，并由 WBC / 技能执行器承担关节级闭环？（工程分 `📅unknown` `[overview_page]`
+- [CAE / CFD 代理工具与技能项目总览](wiki/overview/cae-cfd-agent-skills-landscape.md) — 本页将一篇 CAE/CFD 工程代理工具清单中的公开仓库拆成独立、可追溯的项目详情节点。 `📅unknown` `[overview_page]`
 - [国内具身智能开源全景（76 家 · 424 项）](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 国内具身开源已从单点仓库扩展为「整机全链路 + 模型大脑 + 灵巧手 + 大厂平台 + 产业链 SDK」五层格局；选型应先定层，再进独立实体页核对训练/部署入口。 `📅unknown` `[overview_page]`
 - [国内具身智能实验室三层地图（2026）](wiki/overview/china-embodied-ai-labs-landscape-2026.md) — 国内具身智能高校实验室可按公开产学研现状粗分为 **技术孵化层（组→公司）、深度合作层（校企联合实验室）、基础研究层（重点科研平台）**——三股力量共同构成从论文到产品、从算法到本体的转化链条；划分边 `📅unknown` `[overview_page]`
 - [CLAP / 跨本体 WM / VLA：9 篇论文的阅读坐标](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) — 具身系统正从单一动作预测走向可模拟、可流式执行、可诊断并可跨本体迁移的闭环——世界模型扩边界，VLA 修解码与安全，感知层补三维交互与参照系。 `📅unknown` `[overview_page]`
