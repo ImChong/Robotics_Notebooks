@@ -90,7 +90,7 @@ VideoWorld predicts compact multi-step dynamics codes alongside video frames, th
 
 - 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **WAMs** 分组逐条展开。
 - 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与清单内相邻条目孰优孰劣，本页不下结论：清单中的贡献描述可能未涵盖论文后续版本的修订细节，判断差异时应核对各自原文的问题设定与评测口径。
 
 ## 结论
 
