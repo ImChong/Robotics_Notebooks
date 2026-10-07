@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-07
 summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响；课程级全量节点见 Transformer 视觉应用策展。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -10,6 +10,7 @@ related:
   - ../concepts/vision-transformer.md
   - ../comparisons/cnn-vs-vit-backbones.md
   - ../methods/object-detection.md
+  - ../entities/paper-pixelumm.md
 ---
 
 # 视觉感知骨干（知识链汇总）
@@ -46,6 +47,7 @@ related:
 | 概念 | 策略侧表征 | [Visual Representation for Policy](../concepts/visual-representation-for-policy.md) |
 | 方法 | 目标检测 | [Object Detection](../methods/object-detection.md) |
 | 概念 | 生成式视觉预训练 | [Generative Vision Pretraining](../concepts/generative-vision-pretraining.md) |
+| 项目 | 像素空间图像/视频理解与生成 | [PixelUMM](../entities/paper-pixelumm.md) — 16×16 patch、4 帧 tubelet 与 MoT 共享注意力 |
 | 策展 | Transformer 视觉应用八章全量节点 | [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md) |
 | 概念 | 多头注意力 / CNN 基础 | [Multi-Head Attention](../concepts/multi-head-attention.md)、[CNN](../concepts/convolutional-neural-network.md) |
 | 总览 | 六支 AI 架构（含 CNN/ResNet/U-Net/ViT） | [AI 架构地图](./ai-architecture-map.md) |
@@ -65,6 +67,7 @@ related:
 - [Perception Backbone Selection](../queries/perception-backbone-selection.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)
 - [AI 架构地图](./ai-architecture-map.md)
+- [PixelUMM](../entities/paper-pixelumm.md) — 原始像素接口的图像/视频理解与生成模型；非机器人动作策略
 
 ## 参考来源
 
