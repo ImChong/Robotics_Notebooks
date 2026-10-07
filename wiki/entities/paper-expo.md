@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, offline-to-online-rl, diffusion-policy, value-based-rl, stanford, iclr2026]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-07
 arxiv: "2507.07986"
 venue: "ICLR 2026"
 code: https://github.com/pd-perry/EXPO
@@ -11,11 +11,13 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/policy-optimization.md
   - ./paper-expo-ft.md
+  - ./paper-faster.md
   - ./paper-real-time-expo-ft.md
   - ./paper-qwm.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/expo_arxiv_2507_07986.md
+  - ../../sources/papers/faster_arxiv_2604_19730.md
   - ../../sources/repos/expo.md
   - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
 summary: "EXPO（arXiv:2507.07986，ICLR 2026）：expressive base + 轻量 edit 的 on-the-fly Q 最大化策略，稳定微调扩散/flow 策略；开源 pd-perry/EXPO，为 EXPO-FT VLA 真机栈奠基。"
@@ -45,7 +47,7 @@ summary: "EXPO（arXiv:2507.07986，ICLR 2026）：expressive base + 轻量 edit
 
 - **扩散/flow 策略 RL 的稳定性锚点：** 直接 DDPG 式反传 Q 穿过 denoising 链 **贵且不稳**；「多采样 + Q 选最大」又 **不更新策略权重**。
 - **EXPO 折中：** edit 承担 **小步 value 优化**，base 仍用 **稳定 IL**；on-the-fly 组合保证 **策略参数可渐进改善**。
-- **系列起点：** [EXPO-FT](./paper-expo-ft.md) / [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) 把同一 **base + edit + Q** 结构接到 **π 系 VLA 真机**；[QWM](./paper-qwm.md) 等将其作为 **Q-learning 基座**。
+- **系列起点：** [FASTER](./paper-faster.md) 把去噪候选的价值筛选前移到生成过程中，构成 EXPO 系的采样效率旁支；[EXPO-FT](./paper-expo-ft.md) / [Real-Time EXPO-FT](./paper-real-time-expo-ft.md) 把同一 **base + edit + Q** 结构接到 **π 系 VLA 真机**；[QWM](./paper-qwm.md) 等将其作为 **Q-learning 基座**。
 
 ## 核心信息
 

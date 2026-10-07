@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-07
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -26,6 +26,7 @@ related:
   - ../entities/psibot-r25.md
   - ../concepts/strong-pair-data.md
   - ../entities/paper-host-one-shot-human-video.md
+  - ../entities/paper-memer.md
   - ../entities/paper-imitator-game.md
   - ../overview/hub-cross-embodiment.md
   - ../overview/realab-14-papers-technology-map-2026.md
@@ -39,6 +40,7 @@ sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/blogs/wechat_meiri_zhineng_embodied_icl_four_papers_2026-08-31.md
   - ../../sources/papers/in_context_learning_robots_arxiv_2609_36012.md
+  - ../../sources/papers/memer_arxiv_2510_20328.md
   - ../entities/paper-locoformer.md
   - ../entities/paper-in-context-learning-robots-survey.md
 summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、从上下文窗口内的示范或交互证据归纳新映射；须与「映射选择」（π0.7 metadata）、「状态记忆」（MemoryVLA 等）及 test-time training（RoboTTT）区分——只有消解映射本身不确定性的第三类才是真 ICL。"
@@ -211,7 +213,7 @@ GEN-1.5 与显式 ICL 方法的关键差异：**未把「读完示范后的表�
 
 ### 状态记忆
 
-MemoryVLA、MemER、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯子放哪了、多阶段任务进度。**形式** 可与示范轨迹同为 \((o,a)\) 序列，但读完 **不改变** 观测→动作函数，只更新状态估计。技术难点在 **选择与压缩**（关键帧、门控读取），而非归纳新任务。
+MemoryVLA、[MemER](../entities/paper-memer.md)、ContextVLA、MEM、HiMe 等解决 **部分可观测**：杯子放哪了、多阶段任务进度。**形式** 可与示范轨迹同为 \((o,a)\) 序列，但读完 **不改变** 观测→动作函数，只更新状态估计。技术难点在 **选择与压缩**（关键帧、门控读取），而非归纳新任务。
 
 ### Test-Time Training（TTT）
 
