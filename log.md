@@ -4,6 +4,12 @@
 - 开源核查：该文未列手部 CAD、仿真资产、训练代码或数据集；仅记录本文未提供复现材料。
 - 关键页：[Boston Dynamics Atlas 13-DoF 灵巧手](../wiki/entities/boston-dynamics-atlas-13dof-hand.md)；[Boston Dynamics](../wiki/entities/boston-dynamics.md)。
 
+## [2026-10-08] ingest | Exploy — 归档 RAI 官方文章、文档与源码，整理 RL 策略计算管线一体化导出及硬件接口边界
+
+- 开源核查：Exporter、C++/ROS Controller、Isaac Lab/MjLab adapter 与 MIT 许可证均可在官方仓库查看。
+- 关键边界：ONNX 输出对齐需用 evaluator 实测；传感器、驱动、总线和安全逻辑仍由机器人集成方负责；官方博客未提供统一定量 benchmark。
+- 归纳到独立实体页，并从 ONNX 格式页建立回链。
+
 ## [2026-10-08] ingest | uni-vlat | 更新已有 canonical 节点
 
 - 复核：Uni-VLaT 已在 `paper-uni-vlat.md` 有独立详情节点；不新建重复页。

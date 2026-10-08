@@ -518,6 +518,7 @@
 - [EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）](wiki/entities/euroc-mav-datasets.md) — EuRoC MAV Datasets**（*The EuRoC Micro Aerial Vehicle Datasets*，[DOI: 10.1177/0278364915620033](htt `📅unknown` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
+- [Exploy](wiki/entities/exploy.md) — Exploy**（EXport and dePLOY）是 RAI Institute 开源的强化学习部署工具：它把仿真环境的观测生成、策略网络和动作后处理编译到一个 ONNX 计算图，再由 C++ `📅2026-10-07` `[entity_page]`
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
 - [OpenFOAM Simulation（EzraJay2333/openfoam-simulation）](wiki/entities/ezrajay2333-openfoam-simulation.md) — OpenFOAM Simulation（EzraJay2333/openfoam-simulation）是文章总结为 13 步从规划、建模、运行、验证到文档的流程，强调流道拓扑/形状优化的证据链。 `📅unknown` `[entity_page]`
 - [F1TENTH Gym](wiki/entities/f1tenth-gym.md) — F1TENTH Gym** 是 F1TENTH 自主竞速社区维护的 **Python Gymnasium 环境**，用简化但可调的单车动力学在 CP `📅unknown` `[entity_page]`
