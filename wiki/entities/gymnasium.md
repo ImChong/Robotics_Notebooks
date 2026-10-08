@@ -374,6 +374,8 @@ flowchart TD
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — 物理引擎选型；Gymnasium 解决「算法怎么接环境」
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的底层 API 标准：把算法与物理仿真解耦以复现 RL 基准
 
+- [FineEnvs](./fineenvs.md) — LLM RL 环境设计、多框架适配与 rollout 配方
+
 ## 推荐继续阅读
 
 - 官方文档：[Basic Usage](https://gymnasium.farama.org/introduction/basic_usage/)
