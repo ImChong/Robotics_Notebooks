@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, gpu-simulation, reinforcement-learning, sim2real, legacy, nvidia]
 status: stable
-updated: 2026-08-28
+updated: 2026-10-08
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./isaac-gym-isaac-lab.md
@@ -15,6 +15,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
 sources:
+  - ../../sources/sites/isaac-gym-preview-history.md
   - ../../sources/repos/isaac-gym-envs.md
   - ../../sources/repos/isaac_gym.md
   - ../../sources/papers/simulation_tools.md
@@ -62,6 +63,12 @@ summary: "NVIDIA 早期 GPU 并行 RL 仿真框架（PhysX + tensor API），足
 > **理解 Isaac Gym 的历史地位，新实验优先用 [Isaac Lab](./isaac-lab.md)。**
 
 两代学习框架 + 仿真底座的整体定位，见综述页：[Isaac Gym / Isaac Sim / Isaac Lab](./isaac-gym-isaac-lab.md)。当前仿真底座见 [Isaac Sim](./isaac-sim.md)，训练主线见 [Isaac Lab](./isaac-lab.md)。
+
+## 公司路线日期口径
+
+NVIDIA 公司路线中的 **Isaac Gym Preview** 记为 **2020-10**：官方 [Preview 论坛开场帖](https://forums.developer.nvidia.com/t/welcome-to-the-isaac-gym-preview-forum/158405) 显示 **2020-10-31**，团队宣布开放端到端 GPU RL 预览供研究者试用；同帖 11-16 回复确认可注册下载。
+
+**2020-12-17** 的 [官方介绍博客](https://developer.nvidia.com/blog/introducing-isaac-gym-rl-for-robotics/) 和 **2021-08-24** 的 [论文 v1](https://arxiv.org/abs/2108.10470) 属于后续事件，不用来替代更早的 Preview 开放月份。这里记录的是独立预览版公告，不是 IsaacGymEnvs、Isaac Sim 或 Isaac Lab 的首发时间。
 
 ## 为什么它重要
 
@@ -267,6 +274,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎，这条能�
 
 ## 参考来源
 
+- [Isaac Gym Preview 日期证据](../../sources/sites/isaac-gym-preview-history.md) — 官方论坛公告、后续博客和论文日期边界
 - Makoviychuk et al., *Isaac Gym: High Performance GPU Based Physics Simulation For Robot Learning* (2021) — Isaac Gym 原论文
 - **ingest 档案：** [sources/repos/isaac_gym.md](../../sources/repos/isaac_gym.md)
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Isaac Gym 原论文摘录
