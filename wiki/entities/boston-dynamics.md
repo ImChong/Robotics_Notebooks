@@ -3,12 +3,13 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./benjamin-katz.md
   - ./mit-mini-cheetah.md
   - ./humanoid-robot.md
+  - ./boston-dynamics-atlas-13dof-hand.md
   - ./quadruped-robot.md
   - ./tesla-optimus.md
   - ../queries/humanoid-robot-data-collection-landscape.md
@@ -22,6 +23,7 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
+  - ../../sources/blogs/boston_dynamics_robot_hands_modern_ai_real_work.md
 summary: "Boston Dynamics 是全球足式机器人的领军企业，旗下的 Atlas 和 Spot 分别定义了人形与四足机器人的最高动态性能标准。其基于解析动力学的模型预测控制（MPC）与全身控制（WBC）技术栈至今仍是行业标杆。"
 ---
 
@@ -46,6 +48,10 @@ summary: "Boston Dynamics 是全球足式机器人的领军企业，旗下的 At
 Atlas 是世界上最先进的人形机器人之一，代表了双足机器人动态性能的巅峰。
 - **液压版 (Legacy Hydraulic Atlas)**：拥有 28 个液压关节。借助液压系统极高的功率密度（Power Density），它实现了跑酷、后空翻、跳跃等人类级别的灵巧和高爆发力动作。在控制层面，液压版 Atlas 采用了极其先进的 **全身控制 (Whole-Body Control, WBC)** 和 **模型预测控制 (Model Predictive Control, MPC)**。通过在极短的控制周期内求解带有接触力约束的二次规划（QP）问题，Atlas 展现出了惊人的扰动恢复能力。
 - **全电版 (All-Electric Atlas)**：2024 年，波士顿动力宣布停产液压版，转向全新的全电驱动 Atlas。全电版弃用了复杂的液压泵和管路，转向基于高转矩密度电机的设计。全电版的设计更加极简，关节的旋转范围甚至超越了人类关节的物理极限（例如大腿可以 360 度旋转），这预示着人形机器人从“证明动态能力的实验室原型”向“通用多功能工具”的商业化转型。同时，全电版更利于机器学习算法（如 RL 和 VLA）的端到端部署。
+
+### 1.1 Atlas 13-DoF 灵巧手
+
+新一代 Atlas 配套的 13 DoF 直接驱动四指手，面向精细捏取、三点抓握、物体重定位与工具操作；可回驱性和运动学/动力学/接触仿真设计见独立实体页 [Boston Dynamics Atlas 13-DoF 灵巧手](./boston-dynamics-atlas-13dof-hand.md)。
 
 ### 2. Spot (四足机器人)
 Spot 是全球最成功的商业化足式机器人，广泛应用于工业巡检、测绘和高危环境作业。
@@ -73,6 +79,7 @@ LeoInAI Substack（2026-09）将 Boston Dynamics 列为 **VR 遥操作采数** �
 在深度学习和强化学习（RL）爆发的今天，波士顿动力经典的“模型驱动（Model-based）”路线面临着数据驱动（Data-driven）路线的挑战。虽然其在人工智能（特别是大模型和模仿学习端到端控制）方面的 PR 相对低调，但其底层极其扎实的运控算法和硬件平台，仍是当前所有 RL 从业者试图超越的物理标杆。[ZEST](./paper-zest.md)（与 RAI Institute 合作，*Science Robotics* 2026）是其公开的 RL 对照：同一套极简模仿配方在全电 Atlas 上做出战术爬行/地板舞，并在仿真里对比自家全身 MPC——干净步行两者接近，多接触与脏接触标注技能则 RL 更能做完。
 
 ## 关联页面
+- [Boston Dynamics Atlas 13-DoF 灵巧手](./boston-dynamics-atlas-13dof-hand.md)
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Autonomous Spot / NeBula 探索](./paper-autonomous-spot-nebula-exploration.md)
