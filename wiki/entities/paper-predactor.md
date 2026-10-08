@@ -96,8 +96,8 @@ sequenceDiagram
   autonumber
   participant User as 用户 / 评测者
   participant DL as scripts/hf_download.py
-  participant HF as PredActor_Artifacts（Hugging Face）
-  participant CLI as predactor-eval（cond_eval:main）
+  participant HF as PredActor Artifacts HF
+  participant CLI as predactor-eval CLI
   participant Sim as MuJoCo
   participant UI as 本地浏览器 Web UI
   User->>DL: --filter checkpoints
