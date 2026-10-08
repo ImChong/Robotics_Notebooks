@@ -4,6 +4,7 @@ tags: [control, dynamics, classical-control, damping, second-order, foundational
 status: complete
 updated: 2026-09-11
 related:
+  - ../concepts/bode-plots.md
   - ./ode-solving-methods.md
   - ./eigenvalues-eigenvectors.md
   - ./lqr.md
@@ -147,6 +148,11 @@ $$M_d(\ddot x-\ddot x_d)+B_d(\dot x-\dot x_d)+K_d(x-x_d)=f_{\mathrm{ext}}$$
 | Sim2Real | 延迟/惯量/摩擦纠缠时换实验，不要只拟合一条曲线 |
 | 接触任务 | 环境越硬，末端等效刚度宜越低，避免闭环 $\zeta$ 过小致不稳定 |
 | 减震器设计 | 目标常是**临界阻尼**：无超调且最快回平衡（OpenStax §15.5） |
+
+
+## 从时域过渡到频域：Bode 图
+
+Bode 图把一阶转折频率、二阶共振和相位滞后画在频率轴上；它补充阶跃响应观察，也能协助判断关节控制环的带宽与裕度。读法、开环/闭环区别和实机边界见[独立 Bode 图节点](../concepts/bode-plots.md)。
 
 ## 局限与风险
 

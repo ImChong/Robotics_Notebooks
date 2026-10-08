@@ -4,6 +4,7 @@ tags: [control, pid, classical-control, joint-control, quadruped]
 status: complete
 updated: 2026-09-15
 related:
+  - ../concepts/bode-plots.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
   - ./model-predictive-control.md
@@ -67,6 +68,11 @@ $$
 - 增益过高：噪声放大、振荡、过热
 - 增益过低：跟踪慢、抗扰差、跌倒
 - 课程 Ch6 强调 **实机 PD 整定与安全协议** 与摩擦补偿、DR 并列
+
+
+## 频域整定：Bode 图
+
+对线性化关节或电机回路，可用 Bode 图观察目标频段的增益、相位、共振和时延，再评估调整 PID/PD 增益后的跟踪与稳定裕度。裕度应针对实际开环环路传递函数计算；最终还要通过阶跃、扰动和安全的实机负载测试验证。详见[Bode 图概念页](../concepts/bode-plots.md)。
 
 ## 主要技术路线
 
