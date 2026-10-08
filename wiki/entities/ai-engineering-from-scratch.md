@@ -137,7 +137,7 @@ python3 phases/09-reinforcement-learning/11-sim-to-real-transfer/code/main.py
 
 ## 参考来源
 
-- [FineEnvs?](../../sources/repos/ai-engineering-from-scratch.md) — 仓库结构、课程阶段和机器人相关 lesson 摘要
+- [AI Engineering from Scratch 仓库归档](../../sources/repos/ai-engineering-from-scratch.md) — 仓库结构、课程阶段和机器人相关 lesson 摘要
 - [官方网站归档](../../sources/sites/ai-engineering-from-scratch.md) — 在线课程页与 Sim-to-Real lesson 入口
 - [GitHub README](https://github.com/rohitg00/ai-engineering-from-scratch)
 - [Phase 9: Reinforcement Learning](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning)
