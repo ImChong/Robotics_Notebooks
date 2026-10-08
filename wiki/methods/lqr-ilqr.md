@@ -2,7 +2,7 @@
 type: method
 tags: [control, lqr, ilqr, optimal-control, optimization, locomotion]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
@@ -11,6 +11,7 @@ related:
   - ./model-predictive-control.md
   - ../entities/crocoddyl.md
   - ../concepts/optimal-control.md
+  - ../entities/paper-hop-horizon-optimal-trajectory-planning.md
   - ../overview/autonomous-driving-core-algorithms-series.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -80,6 +81,10 @@ iLQR 常被称为“DDP 的简化版”。
 | **计算开销** | 较低，不需要求动力学二阶导 | 较高，需要二阶导 |
 | **收敛速度** | 接近二阶收敛 | 严格二阶收敛 |
 | **复杂性** | 适合大多数机器人任务 | 适合极其精细或高度非线性的任务 |
+
+#### Horizon-Optimal DDP（HOP-DDP）
+
+传统 iLQR/DDP 通常把预测时域 T 当作固定输入；[HOP](../entities/paper-hop-horizon-optimal-trajectory-planning.md) 则同时搜索离散时域与控制序列。线性情形 HOP-LQR 将 Riccati 递归改写为 LFT 以复用价值函数；非线性 HOP-DDP 再通过扩展状态空间把时域选择融入 DDP。官方仓库提供 double integrator 与 quadrotor 教程示例，不是完整真机控制器。
 
 ---
 
