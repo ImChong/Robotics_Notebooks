@@ -27,6 +27,13 @@
 - **目标节点：** [HarnessPAI](../wiki/entities/paper-harnesspai.md)
 - **来源归档：** [论文](../sources/papers/harnesspai_arxiv_2609_29166.md)、[代码仓库](../sources/repos/harnesspai.md)、[项目页](../sources/sites/harnesspai.md)
 
+## [2026-10-08] ingest | RSS 2026 HOP：时域最优轨迹规划
+
+- 来源：RSS XXII 在线论文录、RAP Lab 官方项目页与 Python tutorial 仓库。
+- 开源结论：项目代码公开，含 HOP-LQR/HOP-DDP 的 toy-system 运行示例；仓库未见 LICENSE 文件，也没有真机接口。
+- 关键内容：整理 LFT/Riccati 的 horizon 复用、HOP-DDP 扩展、brute-force/shift-horizon 对照；区分作者测试结果与一般全局最优保证。
+- 写入：新增 HOP 论文实体与 paper/site/repo 来源档案；更新轨迹优化、LQR/iLQR 方法页建立互链。
+
 ## [2026-10-08] ingest | Bode 图概念与原始资料
 
 - 新增 Bode 图概念页，解释幅频/相频、增益与相位裕度、机器人控制应用及边界，含 Mermaid 图。
