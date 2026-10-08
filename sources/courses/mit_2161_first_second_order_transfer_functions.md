@@ -43,3 +43,7 @@ $$H(s) = \frac{K_0}{s^2 + 2\zeta\omega_n s + \omega_n^2}$$
 ## 推荐继续阅读（外部）
 
 - [MIT 2.161 OCW 课程主页](https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/)
+
+## 对应 Wiki
+
+- [Bode 图概念节点](../../wiki/concepts/bode-plots.md) — 本讲义中的频率响应与一阶/二阶曲线的图形化读法。
