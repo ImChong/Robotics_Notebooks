@@ -11,7 +11,7 @@ tags:
   - beihang
   - hku
 status: complete
-updated: 2026-09-30
+updated: 2026-10-08
 arxiv: "2609.35450"
 related:
   - ../methods/vla.md
@@ -24,12 +24,12 @@ related:
 sources:
   - ../../sources/papers/uni_vlat_arxiv_2609_35450.md
   - ../../sources/sites/uni-vlat-github-io.md
-summary: "Uni-VLaT（arXiv:2609.35450，清华等）：全身触觉通路 + 触觉锚定未来触觉/本体/视觉 latent 预测，适配 Isaac-GR00T 与 π0.5；G1 五任务均值 75% vs 无触觉 32%；截至入库日无官方代码。"
+summary: "Uni-VLaT（arXiv:2609.35450v2；清华、北航、中国传媒大学、香港大学）：通过全身触觉与触觉锚定的多模态未来预测适配预训练 VLA；G1 五任务均值 75%，官网仍标注代码即将发布。"
 ---
 
 # Uni-VLaT（arXiv:2609.35450）
 
-**Uni-VLaT**（*Whole-Body Tactile Adaptation of VLA Policies for Humanoid Loco-Manipulation*，[arXiv:2609.35450](https://arxiv.org/abs/2609.35450)，[项目页](https://uni-vlat.github.io/)）在 **预训练人形 VLA** 上增加 **分布式全身触觉** 与 **训练期多模态未来表征预测**：触觉 token 经 DiT 与视觉/语言/本体/动作交互后，作为 **物理锚** 预测未来触觉、本体与视觉 latent，部署时去掉预测头，经 **SONIC** 解码 **64-D motion token** 做全身 loco-manipulation。
+**Uni-VLaT**（*Whole-Body Tactile Adaptation of VLA Policies for Humanoid Loco-Manipulation*，[arXiv:2609.35450](https://arxiv.org/abs/2609.35450)，[项目页](https://ggkiller-air.github.io/Uni-VLaT/)）在 **预训练人形 VLA** 上增加 **分布式全身触觉** 与 **训练期多模态未来表征预测**：触觉 token 经 DiT 与视觉/语言/本体/动作交互后，作为 **物理锚** 预测未来触觉、本体与视觉 latent，部署时去掉预测头，经 **SONIC** 解码 **64-D motion token** 做全身 loco-manipulation。
 
 ## 一句话定义
 
@@ -56,11 +56,12 @@ summary: "Uni-VLaT（arXiv:2609.35450，清华等）：全身触觉通路 + 触�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 清华大学；北京航空航天大学；中国传媒大学；香港大学 等 |
-| **arXiv** | [2609.35450](https://arxiv.org/abs/2609.35450) |
-| **项目页** | <https://uni-vlat.github.io/> |
+| **机构** | 清华大学（Tsinghua）；北京航空航天大学（Beihang）；中国传媒大学（Communication University of China）；香港大学（The University of Hong Kong） |
+| **作者** | Zihao Wang、Shutong Liu、Siqi Zheng、Liu Cao、Ruoqu Chen、Rundong Liu、Yanchao Yang、Mengdi Xu |
+| **arXiv** | [2609.35450 v2](https://arxiv.org/abs/2609.35450v2)，2026-09-30 修订 |
+| **项目页** | <https://ggkiller-air.github.io/Uni-VLaT/>（原链接 <https://uni-vlat.github.io/>） |
 | **平台** | Unitree G1；SONIC Protocol v4 |
-| **开源状态** | **截至 2026-09-30 未开源**（项目页无 GitHub；Anonymous 页） |
+| **开源状态** | **截至 2026-10-08，官网标注 “Code coming soon”**，尚未给出可核实的官方代码仓库链接 |
 
 ## 流程总览
 
@@ -106,7 +107,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-30** 项目页与论文均未提供官方训练/部署仓库。
+**不适用** — 截至 **2026-10-08** 项目页仍标注 “Code coming soon”，未提供官方训练/部署仓库链接。
 
 ## 工程实践
 
@@ -148,7 +149,7 @@ flowchart TB
 
 - **传感器域：** taxel 噪声与安装 variation；跨机器人迁移未充分展开。
 - **任务覆盖：** 五类代表性 loco-manip；非通用 VLA 替换。
-- **双盲页：** 机构与代码链待论文定稿后更新 — ingest 以 arXiv + 项目页为准。
+- **版本更新：** arXiv v2 与当前项目页已列出作者及四校机构；代码状态仍待后续发布，届时应复核训练与部署入口。
 
 ## 关联页面
 
@@ -167,5 +168,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
-- [Uni-VLaT 项目页](https://uni-vlat.github.io/)
+- [Uni-VLaT 项目页](https://ggkiller-air.github.io/Uni-VLaT/)
 - [SONIC 相关 loco-manip 栈](./paper-notebook-architecture-is-all-you-need-diversity-enabled-s.md)

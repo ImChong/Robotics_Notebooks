@@ -5,18 +5,20 @@
 - **标题：** Uni-VLaT: Whole-Body Tactile Adaptation of VLA Policies for Humanoid Loco-Manipulation
 - **类型：** paper / vla / humanoid / tactile / loco-manipulation
 - **arXiv abs：** <https://arxiv.org/abs/2609.35450>
-- **PDF：** <https://arxiv.org/pdf/2609.35450>
-- **项目页：** <https://uni-vlat.github.io/> — 归档见 [`sources/sites/uni-vlat-github-io.md`](../sites/uni-vlat-github-io.md)
-- **代码：** **截至 2026-09-30 未列链接** — 项目页无 GitHub / HF；页内仍标 Anonymous Authors（双盲形态）
-- **机构：** 清华大学（Tsinghua）、北京航空航天大学（Beihang）、中国传媒大学、香港大学（HKU）等 — Zihao Wang、Mengdi Xu 等
-- **入库日期：** 2026-09-30
+- **PDF：** <https://arxiv.org/pdf/2609.35450v2>
+- **版本：** v1 于 2026-09-28 提交；v2 于 2026-09-30 修订；arXiv 当前记录列出实名作者及机构
+- **项目页：** <https://ggkiller-air.github.io/Uni-VLaT/>（用户提供的旧入口 <https://uni-vlat.github.io/>）；归档见 [`sources/sites/uni-vlat-github-io.md`](../sites/uni-vlat-github-io.md)
+- **代码：** **截至 2026-10-08 未提供官方代码仓库链接** — 当前项目页标注 “Code coming soon”
+- **作者：** Zihao Wang、Shutong Liu、Siqi Zheng、Liu Cao、Ruoqu Chen、Rundong Liu、Yanchao Yang、Mengdi Xu
+- **机构：** 清华大学（Tsinghua University）、北京航空航天大学（Beihang University）、中国传媒大学（Communication University of China）、香港大学（The University of Hong Kong）
+- **入库日期：** 2026-09-30；本次按 arXiv v2 和项目页于 2026-10-08 复核
 - **一句话说明：** 在 **冻结预训练 VLA**（Isaac-GR00T / π0.5）上增加 **全身分布式触觉通路** + **触觉锚定的多模态未来表征预测**（触觉/本体/视觉 latent）；Unitree G1 五任务均值 **75%** vs 无触觉 **32%**、仅触觉输入 **68%**。
 
 ## 相关资料（策展）
 
 | 类型 | 链接 | 说明 |
 |------|------|------|
-| 项目页 | <https://uni-vlat.github.io/> | 五任务 demo、主表、跨 backbone 与消融 |
+| 项目页 | <https://ggkiller-air.github.io/Uni-VLaT/>（arXiv v2 当前链接；原始入口 <https://uni-vlat.github.io/>） | 五任务 demo、主表、跨 backbone 与消融 |
 | 低层控制 | SONIC | 64-D motion token → 全身 joint PD；Protocol v4 |
 | 对照 | WT-UMI、HTD、TACT | 全身触觉 / 预测监督谱系 |
 
@@ -51,10 +53,10 @@
 
 ## 对 wiki 的映射
 
-- 新建：[paper-uni-vlat](../../wiki/entities/paper-uni-vlat.md)
+- 统一详情节点：[paper-uni-vlat](../../wiki/entities/paper-uni-vlat.md)（已存在，本次只更新版本、作者机构与开源状态）
 - 交叉：[vla](../../wiki/methods/vla.md)、[loco-manipulation](../../wiki/tasks/loco-manipulation.md)、[paper-loco-manip-07-wt-umi](../../wiki/entities/paper-loco-manip-07-wt-umi.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)
 
 ## 当前提炼状态
 
-- [x] arXiv + 项目页核查（无代码链）
-- [ ] 待跟进：去匿名后 GitHub / 权重发布
+- [x] arXiv v2 + 当前项目页核查
+- [ ] 待跟进：官方代码发布与部署入口
