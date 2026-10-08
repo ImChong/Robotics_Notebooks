@@ -39,6 +39,15 @@
 
 ## 验证记录
 
+### RAI Institute 公司路线增补（2026-10-08）
+
+- 公司入口扩为 18 家，RAI 按 2022 年成立插入，同步首页、路线 JSON、公司对照与官方来源索引。
+- 七个时间轴节点：六个既有项目详情（ZEST、AthenaZero、Sumo、Robot Juggling、SMPC-to-RL、Exploy）与一个新机构总览；总览有 wiki 入链及 Mermaid 研究关系图。
+- 日期使用官方公开事件：ZEST arXiv v1 的 01-30、AthenaZero 博客 04-07、Sumo arXiv v1 的 04-09、抛接演示 05-27、SMPC-to-RL arXiv v1 的 08-12、Exploy 博客 10-07；分别说明期刊/后续论文日期。
+- Sumo 当前项目页指向 rai-opensource/sumo，补 README 仿真/无界面规划入口及本地来源字段；没有运行其重型仿真或真机栈。RAI 与 Boston Dynamics 以及 RobotecAI/rai 框架分别阅读。
+- 定向路线/身份检查 19 项与前端回归 75 项通过；PR 派生文件 guard 通过，导出图谱零孤儿。完整 lint、搜索、测试及 Actions 结果记录在 PR。
+- 浏览器截图未完成：当前执行环境拒绝 Chromium 创建进程 Unix socket；不以自动化结构测试代替已完成的视觉验证。
+
 ### RoboParty 公司路线增补（2026-10-06）
 
 - 在 main 工作区完成源文件修改后切出 PR 分支，以 main 为目标提交 review。
