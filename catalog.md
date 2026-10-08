@@ -2082,6 +2082,7 @@
 - [Locomotion-Grounded Humanoid Soccer：以行走为基础的多方向踢球](wiki/entities/paper-locomotion-grounded-humanoid-soccer.md) — Locomotion-Grounded Humanoid Soccer**（*Task-Gated Reinforcement Learning of a Multi-Directional Ki `📅unknown` `[entity_page]`
 - [LocoVLM](wiki/entities/paper-locovlm.md) — LocoVLM**（*Grounding Vision and Language for Adapting Versatile Legged Locomotion Policies*，[arXiv `📅unknown` `[entity_page]`
 - [LocoWM：世界模型引导的预动残差高精度行走](wiki/entities/paper-locowm.md) — LocoWM**（*High-Precision Locomotion through World-Model-Guided Residual Adaptation*，[arXiv:2609.39 `📅unknown` `[entity_page]`
+- [Long-WAM：Scaling the Context of World-Action Models](wiki/entities/paper-long-wam-scaling-context.md) — Long-WAM**（*Long-WAM: Scaling the Context of World-Action Models*）研究因果世界–动作模型（WAM）如何利用更长的观测历史。它保持未 `📅unknown` `[entity_page]`
 - [Look Before You Leap（LBYL）](wiki/entities/paper-look-before-you-leap.md) — Look Before You Leap（LBYL）**（arXiv:2311.17842）收录于 Lumina [Embo `📅unknown` `[entity_page]`
 - [LooperMuscle：结构化 MoE 加速人形全身跟踪](wiki/entities/paper-loopermuscle.md) — LooperMuscle**（*LooperMuscle: Fast and Stable Learning of Humanoid Whole-Body Tracking via Structu `📅unknown` `[entity_page]`
 - [A Low Cost Modular Actuator for Dynamic Robots（Katz / Mini Cheetah）](wiki/entities/paper-low-cost-modular-actuator-katz.md) — Benjamin G. Katz（MIT，Sangbae Kim 指导，[S.M. thesis 2018](https://dspace.mit.edu/entities/publication `📅unknown` `[entity_page]`

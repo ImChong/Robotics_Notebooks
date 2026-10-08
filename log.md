@@ -10,6 +10,12 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | Long-WAM 长上下文世界–动作模型
+
+- 新增一个独立论文/项目节点；论文、Long-WAM 代码子目录与模型资源合并归档。
+- 标注其位于 NVlabs/LongLive monorepo 的 Long-WAM/ 子树，并链接至 WAM 概念页。
+- 归档 arXiv、官方代码和项目页，补充方法/运行 Mermaid 图及性能和复现边界。
+
 ## [2026-10-08] ingest | PredActor 评测代码与 checkpoint release 更新
 
 - 更新已有 PredActor 实体，不新建重复节点；核对官方 GitHub、Hugging Face checkpoint 仓与项目页团队入口。
