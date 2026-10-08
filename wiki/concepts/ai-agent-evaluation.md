@@ -7,10 +7,11 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-09-30
+updated: 2026-10-08
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
+  - ../entities/legoflow.md
   - ../methods/enpire.md
   - ../methods/aspire.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -47,6 +48,8 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 - **新模型 adoption：** 有 eval 的团队可在 **数天** 内完成 prompt/harness 调优；无 eval 则 **数周** 手工试探。
 - **与本库机器人线：** 仿真侧见 [仿真评测基础设施](./simulation-evaluation-infrastructure.md) 与 [hub-embodied-eval-benchmark](../overview/hub-embodied-eval-benchmark.md)；**coding agent** 测 **改训练代码/交付 artifact** 见 [RLE-Bench](../entities/rle-bench.md)；**真机 autoresearch** 的 verify 接口见 [ENPIRE](../methods/enpire.md) 与 [query](../queries/real-robot-policy-autoresearch-harness.md)——**同一「闭环判分」逻辑，不同 outcome 定义**。
 - **Hillclimb 风险：** 在 eval 上改 prompt/skills/harness 易 **过拟合**；需 train/test 拆分、禁粘贴失败 transcript 进 prompt、答案不可被模型直接读取（[claude-api build-eval/hillclimb](../entities/anthropic-claude-api-skill.md) 工作流）。
+
+- **从评测数据到训练闭环：** [LegoFlow](../entities/legoflow.md) 将 GitHub PR 筛成可执行 SWE task，生成 coding-agent 轨迹、训练模型，再把 benchmark 结果回流到下一轮采集策略；它建设的是数据工程管线，与 RLE-Bench 的机器人学习工程资格评测目标不同。
 
 ## 核心结构
 
