@@ -768,6 +768,7 @@
 - [MAVSDK](wiki/entities/mavsdk.md) — MAVSDK**（mavlink/MAVSDK）把 **MAVLink** 报文封装为可维护的 **插件式服务**，是伴机 `📅unknown` `[entity_page]`
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [MCAP](wiki/entities/mcap-log-format.md) — MCAP**（foxglove/mcap，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 `📅unknown` `[entity_page]`
+- [McByte++：无训练的长时体育多目标跟踪](wiki/entities/mcbyte-plus-plus.md) — McByte++** 是 Inria STARS 开发的体育视频多目标跟踪系统：它在 McByte 的检测跟踪框架上整合轻量掩码传播、条件相机运动补偿和在线行人再识别（Re-ID），以便球员被遮挡 `📅unknown` `[entity_page]`
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
 - [Mermaid.js（文本定义图表）](wiki/entities/mermaid-js.md) — Mermaid.js**（GitHub）是一个 MIT 开源的 JavaScript 图表库：作者用接近 Mark `📅unknown` `[entity_page]`
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
