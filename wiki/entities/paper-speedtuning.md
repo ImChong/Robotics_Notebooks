@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, lightweight-rl, manipulation, stanford]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 arxiv: "2608.09138"
 code: https://github.com/DaivdYuan/SpeedTuning
 related:
@@ -11,6 +11,7 @@ related:
   - ../methods/action-chunking.md
   - ./paper-shrimp.md
   - ./paper-v-simba.md
+  - ./paper-freespeed.md
 sources:
   - ../../sources/papers/speedtuning_arxiv_2608_09138.md
   - ../../sources/sites/speed-tuning-github-io.md
@@ -133,6 +134,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md)
 - [SHRIMP](./paper-shrimp.md) — 执行前在仿真里改计划，对照执行时改时钟
 - [V-Simba](./paper-v-simba.md) — 同批视觉/架构向 RL
+- [FreeSpeed](./paper-freespeed.md) — 冻结策略上的动作块测试时变速，与学习型速度策略对照
 - [ParcelStow](./paper-parcelstow.md) — 对照：不学倍率，只评模仿是否保留专家跨速度性能
 
 ## 参考来源
