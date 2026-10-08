@@ -2,11 +2,12 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-09
 related:
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../methods/reinforcement-learning.md
+  - ../entities/ai-engineering-from-scratch.md
   - ./whole-body-control.md
   - ./safe-real-world-rl-fine-tuning.md
   - ./motion-retargeting.md
@@ -400,6 +401,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 推荐继续阅读
 
+- [AI Engineering from Scratch](../entities/ai-engineering-from-scratch.md) — 用 GridWorld 随机化演示建立 Sim-to-Real 直觉；不是机器人硬件迁移证据
 - [World Translation](../entities/paper-world-translation.md) — 从已发生的转移反向提取不可观测动力学，再做无配对仿真–现实域翻译
 - [RL Sim2Sim 在线演示：MuJoCo WASM + ONNX](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [机器人论文阅读笔记：RAPT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_.html)
