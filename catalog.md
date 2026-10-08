@@ -573,6 +573,8 @@
 - [GenoView-InverseKinematics](wiki/entities/genoview-inverse-kinematics.md) — GenoView-InverseKinematics](https://github.com/orangeduck/GenoView-InverseKinematics) 是 Andrew McDo `📅unknown` `[entity_page]`
 - [HFSS MCP Server（gfgf2023/hfss-mcp-server）](wiki/entities/gfgf2023-hfss-mcp-server.md) — HFSS MCP Server（gfgf2023/hfss-mcp-server）是面向 HFSS 天线和 PCB 仿真的 MCP 服务，涉及天线几何、边界与激励、远场方向图等任务。 `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
+- [GitDiagram（AI 辅助代码库架构图）](wiki/entities/gitdiagram.md) — GitDiagram**（官网 · [GitHub](https://github.com/ahmedkhaleel2004/gitdiagr `📅unknown` `[entity_page]`
+- [Gitingest（仓库转 LLM 上下文）](wiki/entities/gitingest.md) — Gitingest**（官网 · GitHub）把本 `📅unknown` `[entity_page]`
 - [GNM Head（GNM 生态）](wiki/entities/gnm-head.md) — GNM**（**G**enerative a**N**thropometric **M**odel，读音类比 genome）是 Google 推进的 **参数化人体统计模型生态**；截至 2026 `📅unknown` `[entity_page]`
 - [GO-2（智元执行基座）](wiki/entities/go-2.md) — GO-2**（arXiv:2601.11404，项目页：<https://libra-vla.github.io/>）是智元 `📅unknown` `[entity_page]`
 - [Go2 Motion Imitation](wiki/entities/go2-motion-imitation.md) — Go2 Motion Imitation**（<https://github.com/TSUITUENYUE/motion-imitation>）是针对 **Unitree Go2** 的 **运 `📅unknown` `[entity_page]`
@@ -710,6 +712,7 @@
 - [LeggedGym-Ex](wiki/entities/leggedgym-ex.md) — LeggedGym-Ex**（<https://github.com/lupinjia/LeggedGym-Ex>）在 legged_gym 范式上扩展  `📅unknown` `[entity_page]`
 - [CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）](wiki/entities/legiiiit-converge-studio-mcp.md) — CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）是将 CONVERGE Studio 工作流接入 MCP。 `📅unknown` `[entity_page]`
 - [LeGO-LOAM](wiki/entities/lego-loam.md) — LeGO-LOAM** 在 LOAM 基础上增加 **地面分割与地面优化**，降低起伏地形的漂移。 `📅unknown` `[entity_page]`
+- [LegoFlow：Coding-Agent 数据工程流水线](wiki/entities/legoflow.md) — LegoFlow** 是一套用于构建和迭代软件工程 agent 数据的开源工作流：Root 协调 Curator、Tracer、Trainer 与 Evaluator，把 GitHub PR 转成 `📅unknown` `[entity_page]`
 - [Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）](wiki/entities/leisymqaz-lumerical-fdtd-mcp.md) — Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）是控制 Ansys Lumerical FDTD 的 MCP 服务。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
@@ -4542,6 +4545,7 @@
 - [Qwen-RobotWorld](wiki/entities/qwen-robot-world.md) — Qwen-RobotWorld**（深度博客 | [技术报告 PDF](https://qianwen-res `📅unknown` `[entity_page]`
 - [Qwen-VLA](wiki/entities/qwen-vla.md) — Qwen-VLA**（QwenLM/Qwen-VLA）把 **操作（manipulation）**、**视觉–语言导航（ `📅unknown` `[entity_page]`
 - [Qwen3-VL](wiki/entities/qwen3-vl.md) — Qwen3-VL**（Qwen3-VL：视觉-语言基座（LightNav-ER 初始化））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
+- [RAI Institute：全身控制、动态操作与部署研究路线](wiki/entities/rai-institute.md) — RAI Institute** 是由 Marc Raibert 领导、2022 年成立的机器人与人工智能研究机构，以学习控制、动态操作、硬件设计和物理交互研究提升机器人能力。 `📅unknown` `[entity_page]`
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [React Bits](wiki/entities/react-bits.md) — React Bits** 是面向 React 网站的可定制动效组件集合：选一个组件、复制或安装源码，再用参数调整文字、背景和交互效果。 `📅unknown` `[entity_page]`
 - [reBot-DevArm（Seeed reBot Arm B601）](wiki/entities/rebot-devarm.md) — reBot-DevArm**（商品名 **reBot Arm B601**）是 Seeed Studio 推出的 **桌面级开源六轴 `📅unknown` `[entity_page]`

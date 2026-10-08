@@ -4,6 +4,24 @@
 - 开源核查：该文未列手部 CAD、仿真资产、训练代码或数据集；仅记录本文未提供复现材料。
 - 关键页：[Boston Dynamics Atlas 13-DoF 灵巧手](../wiki/entities/boston-dynamics-atlas-13dof-hand.md)；[Boston Dynamics](../wiki/entities/boston-dynamics.md)。
 
+# [2026-10-08] ingest | LegoFlow — agent-native SWE 数据工程流水线
+
+- 意图：将 LegoFlow 项目博客、Apache-2.0 代码仓库与公开 LegoFlow-SWE 任务/轨迹数据归档到一个项目实体节点。
+- 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
+- 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
+
+## [2026-10-08] ingest | sources/sites/rai-institute.md — 新增 RAI Institute 公司路线，按 2022 年成立排序，复用六个项目详情，区分并行研究、公开事件和开放资产。
+
+## [2026-10-08] ingest | GitDiagram 仓库与在线应用
+
+- 归档 GitDiagram 源码、站点及独立实体页；记录生成、校验、Mermaid 渲染和 MCP 路径。
+- 区分模型生成的架构解释与完整静态/运行时分析，并标注私有代码信任边界。
+
+## [2026-10-08] ingest | Gitingest 仓库与在线入口
+
+- 收录 Gitingest 的仓库、托管站点与独立实体页；区分整库文本打包与 RAG 检索。
+- 关联 RAG 上下文构建，并记录本地/托管使用的代码隐私边界。
+
 ## [2026-10-08] structural | 修复 CAE/CFD 总览及 53 个项目组成的孤岛：从系统工程、仿真保真度、CAD 综述和电机设计工作流建立双向入口及代表项目链接；连通分量从 54 节点孤岛接入全图。
 
 ## [2026-10-08] ingest | BRACE | 收录力与地形感知的人形全身跟踪
