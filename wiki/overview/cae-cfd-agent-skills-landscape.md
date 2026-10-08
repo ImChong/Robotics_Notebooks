@@ -2,10 +2,12 @@
 type: overview
 tags:
   - engineering-tools
+  - skills
+  - simulation
   - cae
   - cfd
 status: complete
-updated: 2026-10-07
+updated: 2026-10-08
 summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个外部仓库都有独立详情节点，避免同名项目混在一页。"
 sources:
   - ../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md
@@ -38,6 +40,17 @@ sources:
 - **执行连接层：** MCP、CLI 或插件将代理请求传递到专业软件，受软件安装、版本及许可证约束。
 - **验证与证据层：** 网格独立性、契约、残差/守恒量检查和可复现输出，用来判断自动化步骤是否有据可查。
 - **专用工作流：** 设计优化、CAD 建模、科研写作等特定任务闭环。
+
+## 在机器人知识主线中的位置
+
+| 读者的问题 | 主干入口 | 本页工具的角色 |
+|------------|----------|----------------|
+| 怎样把代理接到工程软件，并保留可复现的执行记录？ | [系统工程知识链](./hub-systems-engineering.md) | Skill 描述步骤，MCP/CLI 提供调用接口；运行环境、权限与日志仍由工程栈负责 |
+| 自动求解出的结果是否可信？ | [仿真物理保真度知识链](./hub-physics-fidelity.md) | 检查几何、材料、网格、边界和收敛证据；CAE/CFD 分析与机器人刚体接触仿真各有适用范围 |
+| 参数化 CAD 草稿怎样走向可验收的设计？ | [前沿模型 × 3D / CAD / 机器人综述](./frontier-models-3d-cad-robotics-survey.md) | CAD 自动化生成可编辑模型，后续仍要验证公差、可制造性和物理性能 |
+| 关节电机的应力、温升和冷却怎样分析？ | [电机设计工作流](./motor-design-workflow.md) | 结构 FEA、热分析与 CFD 工具辅助设计迭代，最终与样机台架结果对照 |
+
+这些入口连接工程问题与下方 53 个项目详情。选择工具时先按问题定位软件与物理模型，再核对具体项目的执行能力。
 
 ## 工程实践
 
@@ -107,6 +120,11 @@ sources:
 此总览包含 53 个独立公开仓库节点，来源是一篇策展文章及对应的公开仓库资料，不构成工具性能排名或工程认证。文章另提到“ANSYS-automatic-wwj”，但没有可核实的 owner/仓库链接，暂不建身份未明的项目页。同名项目需按仓库 owner/repo 辨别。文章未给出完整仓库地址的少数项目，只有在公开仓库身份能核实时才映射；映射依据在详情页标注。任何 Skill/MCP 输出都需用户检查工程假设和软件许可。
 
 ## 关联页面
+
+- [系统工程知识链](./hub-systems-engineering.md) — 工程代理的环境、接口与执行记录
+- [仿真物理保真度知识链](./hub-physics-fidelity.md) — 自动仿真结果的物理验证
+- [前沿模型 × 3D / CAD / 机器人综述](./frontier-models-3d-cad-robotics-survey.md) — CAD 代理能力与工程验收边界
+- [电机设计工作流](./motor-design-workflow.md) — CAE/CFD 在机器人硬件中的应用
 
 - [OpenFOAM Claude Suite](../entities/swtbkim-openfoam-claude-suite.md) — 代表性的 OpenFOAM 分阶段工作流
 - [FEMIS Skill](../entities/test1card-femis-skill.md) — 仿真验证与证据治理

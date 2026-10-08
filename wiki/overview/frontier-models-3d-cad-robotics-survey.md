@@ -2,7 +2,7 @@
 type: overview
 tags: [survey, foundation-model, 3d-modeling, cad, robotics, agent, mcp, mit, csail, harness]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-08
 related:
   - ./hub-embodied-eval-benchmark.md
   - ./hub-state-estimation.md
@@ -145,6 +145,10 @@ flowchart TB
 - **MIT CSAIL Research Report（living survey）**，非单一 arXiv 终稿；型号名（GPT-6 Astra 等）随产业迭代 **快速过时**。
 - 本页 **不** 逐条收录 345 帖；细节与更正见 [项目页 Appendix C](https://mit-cdfg.github.io/Survey-AI-for-3D-modeling-Robotics/) 与 GitHub companion。
 - Survey **不包含** 统一训练代码；各 benchmark（RoboDojo、Parametric CAD Bench 等）复现走 **各自仓库**（见 [awesome-ai-3d-modeling-robotics](../../sources/repos/awesome-ai-3d-modeling-robotics.md) 与报告附录）。
+
+## 工程工具项目入口
+
+[CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md) 补充具体的软件接口和技能项目：参数化建模可读 [FreeCAD Automation Skill（Cai-aa）](../entities/cai-aa-freecad-automation-skill.md)，设计到分析的衔接可读 [CAD CAE Copilot](../entities/armpro24-blip-cad-cae-copilot.md)。这些节点用于定位实现与依赖，评估时仍沿用本页的 harness、可编辑性和工程验收边界。
 
 ## 关联页面
 

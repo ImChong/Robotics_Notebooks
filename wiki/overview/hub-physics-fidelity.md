@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-physics-fidelity, simulation, physics, dynamics, contact, friction, sim2real, fidelity]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层物理保真度的统一入口，串起各层对 sim2real gap 的贡献、建模成本与取舍，收纳分散的动力学/接触/摩擦/可微仿真概念页。"
 ---
 
@@ -42,6 +42,10 @@ summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚�
 | ② 动力学 | ABA/RNEA 递归算法 | [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) |
 | ③ 接触/摩擦 | 接触与关节摩擦建模 | [Contact Dynamics](../concepts/contact-dynamics.md) · [Joint Friction Models](../concepts/joint-friction-models.md) |
 | ④ 可微/补偿 | 可微仿真与摩擦补偿 | [Differentiable Simulation](../concepts/differentiable-simulation.md) · [Friction Compensation](../concepts/friction-compensation.md) |
+
+## 工程分析与自动化工具
+
+需要结构、热或流体分析时，转到 [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md)，可从 [FEMIS Skill](../entities/test1card-femis-skill.md) 查看验证证据流程、从 [ParaView MCP](../entities/llnl-paraview-mcp.md) 查看后处理反馈。CAE/CFD 的网格、材料和边界验证与本页的模型保真度问题相接；这些工具不替代用于策略训练的刚体接触仿真器。
 
 ## 与其他知识链的关系
 
