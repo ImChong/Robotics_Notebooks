@@ -27,6 +27,11 @@
 - **目标节点：** [HarnessPAI](../wiki/entities/paper-harnesspai.md)
 - **来源归档：** [论文](../sources/papers/harnesspai_arxiv_2609_29166.md)、[代码仓库](../sources/repos/harnesspai.md)、[项目页](../sources/sites/harnesspai.md)
 
+## [2026-10-09] ingest | AI Engineering from Scratch — 接入开源 AI 工程课程并梳理机器人相关入口
+
+- 核验 GitHub MIT 许可与官方课程网站，归纳强化学习、Sim-to-Real、3D 视觉和 Agent 工程相关 lesson。
+- 明确 Sim-to-Real 示例是 GridWorld 侧滑参数教学代码，不是真机机器人实验；链接至 RL 与 Sim2Real 知识页。
+
 ## [2026-10-08] ingest | FineEnvs — 收录面向 LLM agent 的可复现强化学习环境与训练配方
 
 - 核查上游公开仓库与许可：代码根目录声明 Apache-2.0；RL 环境指南内容目录单独声明 CC-BY-4.0。

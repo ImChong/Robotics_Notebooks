@@ -26,6 +26,7 @@
 - [智元灵犀 X1（Agibot 开源人形）](wiki/entities/agibot-lingxi-x1.md) — 灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **文档中心** 提供 BOM、整机图纸、装机 SO `📅unknown` `[entity_page]`
 - [AGIBOT WORLD 2026](wiki/entities/agibot-world-2026.md) — AGIBOT WORLD 2026** 是智元在 Agibot-World 生态下发布的 **真实环境机器人学习数据集**（Hugging `📅unknown` `[entity_page]`
 - [Aholo Viewer](wiki/entities/aholo-viewer.md) — Aholo Viewer**（manycoretech/aholo-viewer）是面向 **浏览器 `📅unknown` `[entity_page]`
+- [AI Engineering from Scratch（AI 工程开源课程）](wiki/entities/ai-engineering-from-scratch.md) — AI Engineering from Scratch** 是一门以可运行代码为主线的 AI 工程课程，从数学和机器学习基础逐步覆盖深度学习、强化学习、LLM、Agent、工具协议和生产系统。 `📅unknown` `[entity_page]`
 - [智星云（AI Galaxy）](wiki/entities/ai-galaxy.md) — 智星云**（ai-galaxy.cn）是上海亘聪信息科技有限公司（安诺其集团子公司）运营的 **GPU 算力服务平台**，产品线从按小时云主机延伸 `📅unknown` `[entity_page]`
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
