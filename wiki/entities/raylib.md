@@ -55,13 +55,13 @@ raylib 6.0 还加入了 CPU 软件渲染与内存帧缓冲平台。没有 GPU �
 
 ### 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   input["机器人或动画数据"] --> app["应用更新状态"]
   app --> camera["相机与调试标记"]
   camera --> raylib["Raylib 绘图模块"]
   raylib --> target["桌面窗口 / Web / 内存帧缓冲"]
-\`\`\`
+```
 
 数据源、机器人状态更新和相机交互由应用负责；Raylib 接收绘图调用并输出图像。
 
@@ -69,7 +69,7 @@ flowchart LR
 
 官方 README 的基本示例展示了典型窗口程序生命周期：
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor App as 应用
@@ -85,7 +85,7 @@ sequenceDiagram
         App->>Draw: EndDrawing()
     end
     App->>Core: CloseWindow()
-\`\`\`
+```
 
 流程对应官方基本窗口示例：初始化窗口、运行循环、提交绘制命令，再释放窗口资源。具体数据更新和控制频率由宿主应用设计。
 
