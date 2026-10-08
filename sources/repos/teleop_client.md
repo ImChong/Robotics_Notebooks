@@ -18,3 +18,9 @@
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-teleop-client.md](../../wiki/entities/cn-os-teleop-client.md)
+
+## 官方 README 补核（2026-10-08）
+
+- **README：** https://github.com/roboterax/teleop_client/blob/main/README.md
+
+README 命令序列为 `start_sdk → init_teleop → start_teleop → stop_teleop → stop_sdk`。初始化包含授权文件 `--verify`、XHAND/Lite、VR/gamepad、dummy/realsense/stereo 选择。开发环境还引用厂商 GitLab 的 `rbclient` 和 `pub_client.py`；公开仓入口不保证服务端、recording 实现和授权环境全部可公开复现。SDK README 另引用此仓构建消息定义。未确认单一首发日期，未连接真机。
