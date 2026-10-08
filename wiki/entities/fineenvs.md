@@ -3,7 +3,7 @@ type: entity
 project_id: fineenvs
 project: https://huggingface.co/FineEnvs
 code: https://github.com/adithya-s-k/FineEnvs
-tags: [software, reinforcement-learning, llm, environment-design]
+tags: [reinforcement-learning, llm, environment-design]
 status: complete
 updated: 2026-10-08
 related:
