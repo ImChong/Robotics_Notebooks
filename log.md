@@ -4,6 +4,8 @@
 - 开源核查：该文未列手部 CAD、仿真资产、训练代码或数据集；仅记录本文未提供复现材料。
 - 关键页：[Boston Dynamics Atlas 13-DoF 灵巧手](../wiki/entities/boston-dynamics-atlas-13dof-hand.md)；[Boston Dynamics](../wiki/entities/boston-dynamics.md)。
 
+## [2026-10-08] structural | 修复 CAE/CFD 总览及 53 个项目组成的孤岛：从系统工程、仿真保真度、CAD 综述和电机设计工作流建立双向入口及代表项目链接；连通分量从 54 节点孤岛接入全图。
+
 ## [2026-10-08] ingest | BRACE | 收录力与地形感知的人形全身跟踪
 
 - 资料：arXiv:2610.07052、Multiply Labs 项目页与公开网站仓 README。
