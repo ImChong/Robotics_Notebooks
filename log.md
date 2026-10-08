@@ -10,6 +10,12 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | FreeSpeed — arXiv:2610.05734
+
+- **意图：** 归档 FreeSpeed 论文与官方项目页，整理其动作块测试时速度控制方法。
+- **开放结论：** 论文、项目页已公开；项目页标注 “Code soon”，未提供可运行官方仓库，暂按代码待发布记录。
+- **关键页：** 单一论文/项目实体页 wiki/entities/paper-freespeed.md；对照已收录的 SpeedTuning。
+
 ## [2026-10-08] lint | 核查公司路线 22 个未注明日期节点：18 个补齐官方发布或版本事件月份，4 个保留空日期并说明边界；同步排序、详情来源与日期证据链接。
 
 ## [2026-10-08] ingest | Long-WAM 长上下文世界–动作模型
