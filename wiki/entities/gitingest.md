@@ -10,7 +10,7 @@ summary: "Gitingest 将本地目录或 Git 仓库筛选并串行为 prompt-frien
 related:
   - ../concepts/retrieval-augmented-generation.md
   - ../references/llm-wiki-karpathy.md
-  - ./repomix.md
+  - ./langchain.md
 sources:
   - ../../sources/repos/coderamp-labs-gitingest.md
   - ../../sources/sites/gitingest-com.md
@@ -80,7 +80,7 @@ Gitingest 提供 CLI 与 Python 包（包括异步接口），仓库 README 也�
 
 - [RAG（检索增强生成）](../concepts/retrieval-augmented-generation.md) — 区分上下文打包与检索生成链路
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 将原始来源编译成可追溯知识页
-- [Repomix](./repomix.md) — 同类代码库打包工具；比较输出格式与筛选能力
+- [LangChain](./langchain.md) — 可在下游编排模型与检索组件；与 Gitingest 的上下文导出层次不同
 
 ## 参考来源
 
