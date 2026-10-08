@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-08
 related:
   - ./model-predictive-control.md
   - ../concepts/optimal-control.md
@@ -16,6 +16,7 @@ related:
   - ../entities/paper-ahmp.md
   - ../entities/paper-prior-evolution-aerial-grasping.md
   - ../entities/paper-se3-tangent-to.md
+  - ../entities/paper-hop-horizon-optimal-trajectory-planning.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/mpc.md
@@ -97,6 +98,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [FARO（可行性感知运动优化）](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — 接触模式序列上的嵌套可行性剪枝 + 全动力学 TO
 - [AHMP](../entities/paper-ahmp.md) — CEM-MD 接触发现 + SE(3) 切空间全身 TO
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 欧拉/四元数/切空间对照；Go2 空翻开源
+- [HOP：规划时域优化的快速 DDP](../entities/paper-hop-horizon-optimal-trajectory-planning.md) — 把离散规划时域一并纳入轨迹优化；不是只为 fixed-horizon 解一个最优轨迹
 - [Model Predictive Control](./model-predictive-control.md)
 - [π MPC](./pi-mpc.md) — parallel-in-horizon ADMM NMPC 求解器（MPC-RL 批训练后端）
 - [LQR / iLQR 算法详解](./lqr-ilqr.md)
