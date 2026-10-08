@@ -327,6 +327,8 @@ flowchart LR
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — f1tenth_gym / CARLA / GPU 向量化等 **轮式极限驾驶** RL 开源入口
 - [Kamino（闭链 GPU 仿真）](../entities/paper-kamino.md) — Newton 后端；DR Legs 4096 环境批量 RL（arXiv:2603.16536）
 
+- [FineEnvs](../entities/fineenvs.md) — 面向 LLM agent 的环境设计、训练与部署配方
+
 ## 继续深挖入口
 
 如果你想沿着 RL 继续往下挖，建议从这里进入：
