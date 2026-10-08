@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: raylib
-tags: [tooling, graphics, visualization, game-development, embedded, opensource]
+tags: [tooling, graphics, visualization, game-development, embedded, opensource, independent-maintainer]
 status: complete
 updated: 2026-10-08
 project: https://www.raylib.com/
