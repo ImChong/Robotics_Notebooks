@@ -4,6 +4,12 @@
 - 开源核查：该文未列手部 CAD、仿真资产、训练代码或数据集；仅记录本文未提供复现材料。
 - 关键页：[Boston Dynamics Atlas 13-DoF 灵巧手](../wiki/entities/boston-dynamics-atlas-13dof-hand.md)；[Boston Dynamics](../wiki/entities/boston-dynamics.md)。
 
+## [2026-10-08] ingest | ACG-WAM | 收录动作条件几何监督 WAM
+
+- 资料：arXiv:2610.06965、项目页、官方训练仓与 HF checkpoint。
+- 开源结论：Apache-2.0 代码与 RoboTwin 40k 权重已公开；演示数据、teacher cache 与真机栈需分别核查。
+- 提炼：ACG-JEPA 多时域几何目标、共享视觉表征训练、部署时剥离辅助分支。
+
 ## [2026-10-08] ingest | Exploy — 归档 RAI 官方文章、文档与源码，整理 RL 策略计算管线一体化导出及硬件接口边界
 
 - 开源核查：Exporter、C++/ROS Controller、Isaac Lab/MjLab adapter 与 MIT 许可证均可在官方仓库查看。
