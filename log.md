@@ -1,3 +1,5 @@
+## [2026-10-07] lint | 全量 lint 清零：补 4 篇 paper 对比章节、复核 3 处陈旧声明、FlashDexRetarget 回链 HOI-Retarget/SPIDER；陈旧声明巡检豁免「滞后于论文最新版本 / 核对最新 LICENSE」核对提示
+
 ## [2026-10-07] ingest | ibelick-ui-skills | 收录 UI Skills 设计工程技能目录及 CLI / MCP 入口
 
 - 资料：公开仓库 https://github.com/ibelick/ui-skills 与官网 https://www.ui-skills.com/
