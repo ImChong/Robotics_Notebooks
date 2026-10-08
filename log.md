@@ -10,6 +10,8 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | NVIDIA 公司路线补充 Isaac Gym Preview 的 2020-10 时间点；核查官方论坛开放公告、后续博客与论文日期，复用既有详情并同步日期依据。
+
 ## [2026-10-08] ingest | FreeSpeed — arXiv:2610.05734
 
 - **意图：** 归档 FreeSpeed 论文与官方项目页，整理其动作块测试时速度控制方法。
