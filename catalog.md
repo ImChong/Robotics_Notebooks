@@ -329,7 +329,7 @@
 - [robot_dev_config](wiki/entities/cn-os-robot-dev-config.md) — robot_dev_config** 是 地瓜机器人 公开的 **工程与工具** 开源项目：作为TogetheROS.Bot开发入 `📅unknown` `[entity_page]`
 - [Robot_Training_Cases](wiki/entities/cn-os-robot-training-cases.md) — Robot_Training_Cases** 是 云深处科技 公开的 **运动RL/技能训练** 开源项目：并行 RL  `📅unknown` `[entity_page]`
 - [robot_urdf](wiki/entities/cn-os-robot-urdf.md) — robot_urdf** 是 高擎机电 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJ `📅unknown` `[entity_page]`
-- [robotera_vla](wiki/entities/cn-os-robotera-vla.md) — robotera_vla** 是 星动纪元 公开的 **VLA/操作模型** 开源项目：VLA/策略接入：模型输出动作块驱动本体执行 `📅unknown` `[entity_page]`
+- [M7 VLA：采集、训练与推理基线](wiki/entities/cn-os-robotera-vla.md) — 以 M7 为默认本体、π₀.₅ / openpi 为基础的示例工程，公开数据规范与训练/推理接入。 `📅unknown` `[entity_page]`
 - [RoboticArm-3DVisionGrab](wiki/entities/cn-os-roboticarm-3dvisiongrab.md) — RoboticArm-3DVisionGrab** 是 钛虎机器人 公开的 **工程与工具** 开源项目：机械臂 3D 视觉抓取示例 `📅unknown` `[entity_page]`
 - [RoboTransfer](wiki/entities/cn-os-robotransfer.md) — RoboTransfer** 是 地平线 公开的 **世界模型** 开源项目：世界模型/预测模型：按条件生成未来状态，服 `📅unknown` `[entity_page]`
 - [roh_demos](wiki/entities/cn-os-roh-demos.md) — roh_demos** 是 傲意科技 公开的 **工程与工具** 开源项目：ROHand 灵巧手演示工程 `📅unknown` `[entity_page]`
@@ -357,7 +357,7 @@
 - [SpatialLM](wiki/entities/cn-os-spatiallm.md) — SpatialLM** 是 群核科技 公开的 **世界模型** 开源项目：空间智能大模型（NeurIPS 2025） `📅unknown` `[entity_page]`
 - [Spirit-v1.5](wiki/entities/cn-os-spirit-v1-5.md) — Spirit-v1.5** 是 千寻智能 公开的 **VLA/操作模型** 开源项目：模型根据视觉、语言和机器人状态生成操 `📅unknown` `[entity_page]`
 - [TacCap-Gripper](wiki/entities/cn-os-taccap-gripper.md) — TacCap-Gripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：TacCap 多模态触觉数据 `📅unknown` `[entity_page]`
-- [teleop_client](wiki/entities/cn-os-teleop-client.md) — teleop_client** 是 星动纪元 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器 `📅unknown` `[entity_page]`
+- [teleop_client：遥操作生命周期与消息入口](wiki/entities/cn-os-teleop-client.md) — 为星动纪元遥操作接入提供命令和消息入口，依赖厂商环境与授权文件。 `📅unknown` `[entity_page]`
 - [teleoperation](wiki/entities/cn-os-teleoperation.md) — teleoperation** 是 傅利叶智能 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器人动作 `📅unknown` `[entity_page]`
 - [Ti5HandROS1SDK](wiki/entities/cn-os-ti5handros1sdk.md) — Ti5HandROS1SDK** 是 钛虎机器人 公开的 **SDK/驱动** 开源项目：钛虎五指灵巧手 ROS1 SDK `📅unknown` `[entity_page]`
 - [tron1-agent](wiki/entities/cn-os-tron1-agent.md) — tron1-agent** 是 逐际动力 公开的 **具身Agent/规划** 开源项目：具身 Agent：任务规划与技能调度 `📅unknown` `[entity_page]`
@@ -398,7 +398,7 @@
 - [X-WAM](wiki/entities/cn-os-x-wam.md) — X-WAM** 是 小米集团 公开的 **世界模型** 开源项目：模型联合学习视频世界变化与机器人动作，在共享表征中支持跨 `📅unknown` `[entity_page]`
 - [xArm-Python-SDK](wiki/entities/cn-os-xarm-python-sdk.md) — xArm-Python-SDK** 是 众为创造 公开的 **SDK/驱动** 开源项目：提供UFACTORY系列机械臂的 `📅unknown` `[entity_page]`
 - [xarm_ros2](wiki/entities/cn-os-xarm-ros2.md) — xarm_ros2** 是 众为创造 公开的 **仿真环境** 开源项目：为xArm、UFACTORY 850和Lite6 `📅unknown` `[entity_page]`
-- [xbot_sdk_api](wiki/entities/cn-os-xbot-sdk-api.md) — xbot_sdk_api** 是 星动纪元 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的统一接入层 `📅unknown` `[entity_page]`
+- [RobotEra SDK API：真机应用控制接口](wiki/entities/cn-os-xbot-sdk-api.md) — 通过 ROS 2 Python 封装初始化、状态读取、轨迹、ServoPose、手与底盘控制。 `📅unknown` `[entity_page]`
 - [xense-mcap-viewer](wiki/entities/cn-os-xense-mcap-viewer.md) — xense-mcap-viewer** 是 千觉机器人 公开的 **工程与工具** 开源项目：触觉数据 MCAP 可视 `📅unknown` `[entity_page]`
 - [xense-openpi](wiki/entities/cn-os-xense-openpi.md) — xense-openpi** 是 千觉机器人 公开的 **工程与工具** 开源项目：触觉数据接入 OpenPI（pi0 `📅unknown` `[entity_page]`
 - [xense-ros](wiki/entities/cn-os-xense-ros.md) — xense-ros** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 触觉设备 ROS 集成与示 `📅unknown` `[entity_page]`
@@ -4098,7 +4098,7 @@
 - [Shape Your Body：多具身价值梯度机器人共设计](wiki/entities/paper-shape-your-body-value-gradient-design.md) — Shape Your Body**（Bohlinger & Peters，TU Darmstadt；[项目页](https://nico-bohlinger.github.io/shape-you `📅unknown` `[entity_page]`
 - [SHELLS（分层采样多视角人头重建）](wiki/entities/paper-shells-layered-surface-sampling.md) — SHELLS**（*Semantic Head Estimation via Layered Local Sampling*；论文 *Topologically Consistent Multi- `📅unknown` `[entity_page]`
 - [TesserAct](wiki/entities/paper-shenlan-wm-01-tesseract.md) — TesserAct: Learning 4D Embodied World Models** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq. `📅unknown` `[entity_page]`
-- [Video Prediction Policy (VPP)](wiki/entities/paper-shenlan-wm-02-vpp.md) — Video Prediction Policy (VPP)** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq.com/s/KZT8sI4n7 `📅unknown` `[entity_page]`
+- [Video Prediction Policy（VPP）](wiki/entities/paper-shenlan-wm-02-vpp.md) — VPP 先将通用视频扩散模型适配到操作视频，再用模型内部的当前与预测未来表征学习隐式逆动力学，输出机器人动作。 `📅unknown` `[entity_page]`
 - [LaPA](wiki/entities/paper-shenlan-wm-03-lapa.md) — LaPA: Latent Action Pretraining from Videos** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq.c `📅unknown` `[entity_page]`
 - [villa-X](wiki/entities/paper-shenlan-wm-05-villa-x.md) — villa-X: Enhancing Latent Action Modeling in VLA** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin `📅unknown` `[entity_page]`
 - [Video Generators are Robot Policies](wiki/entities/paper-shenlan-wm-06-video-gen-robot-policies.md) — Video Generators are Robot Policies** 收录于 [深蓝具身智能 · 世界模型 15 开源项目专题](https://mp.weixin.qq.com/s/KZT `📅unknown` `[entity_page]`
@@ -4597,6 +4597,7 @@
 - [Robot Native Engine（RNE）](wiki/entities/robot-native-engine.md) — Robot Native Engine（RNE）** 是一个以 Rust 编写的机器人原生仿真引擎，将机器人、传感器、执行器、Agent 和 episode 纳入同一仿真世界，并支持固定步进、he `📅unknown` `[entity_page]`
 - [robot_retargeter](wiki/entities/robot-retargeter.md) — robot_retargeter**（<https://github.com/ccrpRepo/robot_retargeter>）是一条面向研究与工程的 **人形动作重定向工具链**：把  `📅unknown` `[entity_page]`
 - [Robot Viewer](wiki/entities/robot-viewer.md) — Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。 `📅unknown` `[entity_page]`
+- [星动纪元（ROBOTERA）：数据、大脑与人形整机路线](wiki/entities/robotera.md) — 星动纪元以数据、大脑、运控、灵巧手、人形整机组成软硬件全栈；研究入口能分别观察“预测未来怎样帮助动作”和“策略怎样部署到机器人”。 `📅unknown` `[entity_page]`
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Sapiens（ai_sapiens）](wiki/entities/robotis-ai-sapiens.md) — AI Sapiens** 是 ROBOTIS 的 **开源人形** 产品线（K1）；官方 ROS 2 软件入口为 [`ROBOTIS-GIT/ai_sapiens`](https://github `📅unknown` `[entity_page]`
 - [AI Worker × Isaac ROS cuMotion](wiki/entities/robotis-ai-worker-isaac-cumotion.md) — ROBOTIS AI Worker** 与 **NVIDIA Isaac ROS cuMotion** 的集成把 **半人形 lift + 双 7-DoF 臂** 接到 **GPU 碰撞感知运动规 `📅unknown` `[entity_page]`
