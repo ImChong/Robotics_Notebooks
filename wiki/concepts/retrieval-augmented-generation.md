@@ -2,7 +2,7 @@
 type: concept
 tags: [rag, retrieval, llm, grounding, knowledge-base, agent, vlm, nlp]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-08
 summary: "RAG（Retrieval-Augmented Generation）在生成前从外部知识库检索相关片段再条件生成，用可更新、可溯源的非参数记忆补足 LLM 参数化知识，是 agent grounding、VLM 约束与 LLM Wiki 对照范式的共同基座。"
 related:
   - ../references/llm-wiki-karpathy.md
@@ -11,6 +11,7 @@ related:
   - ../methods/vla.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/langchain.md
+  - ../entities/gitingest.md
   - ../entities/langchain.md
   - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
@@ -134,6 +135,7 @@ flowchart LR
 - [Robot-Powered Data Flywheel（Scanford）](../entities/paper-scanford-robot-powered-data-flywheel.md)
 - [数据飞轮（Data Flywheel）](./data-flywheel.md)
 - [LangChain](../entities/langchain.md)
+- [Gitingest](../entities/gitingest.md) — 把仓库内容打包为上下文；不替代检索、索引或生成
 - [Easy-Vibe（Datawhale）](../entities/easy-vibe.md) — Stage 3 / 附录 **交互式 RAG** 教程
 
 ## 参考来源
