@@ -7,10 +7,10 @@
 - **arXiv abs：** <https://arxiv.org/abs/2609.24840>
 - **PDF：** <https://arxiv.org/pdf/2609.24840>
 - **项目页：** <https://masteryip.github.io/predactor.github.io/> — 归档见 [`sources/sites/predactor-masteryip-github-io.md`](../sites/predactor-masteryip-github-io.md)
-- **代码：** **待发布** — 官方占位仓 <https://github.com/MasterYip/PredActor>（MIT；README 标 Code Coming Soon，尚无训练/部署脚本）；归档见 [`sources/repos/predactor.md`](../repos/predactor.md)
+- **代码：** **部分开放** — <https://github.com/MasterYip/PredActor> 提供带 PDP051 checkpoint 的 MuJoCo evaluator；训练/数据采集/DAgger/真机部署仍未发布；评测权重：[PredActor_Artifacts](https://huggingface.co/MasterYip/PredActor_Artifacts)，见 [`sources/repos/predactor.md`](../repos/predactor.md) 与 [`sources/repos/predactor-artifacts.md`](../repos/predactor-artifacts.md)
 - **机构：** 哈尔滨工业大学（Harbin Institute of Technology）、上海创新研究院（Shanghai Innovation Institute）、RoboParty Lab、清华大学（Tsinghua）、上海交通大学（SJTU）等
 - **入库日期：** 2026-09-24
-- **最近复核：** 2026-10-03
+- **最近复核：** 2026-10-08
 - **一句话说明：** 联合状态–动作扩散：仅用本体感知历史 + 可选任务上下文，内部预测未来状态供 CG/CFG 引导，直接输出可执行动作；G1 Jetson Orin NX 机载 50 Hz（中位 16.79 ms / p95 19.38 ms）。
 
 ## 核心摘录（面向 wiki 编译）
@@ -36,13 +36,19 @@
 - 动作库 + 自动任务标签；异步扰动 teacher rollout；DAgger 式在 learner 访问状态聚合 teacher 标签。
 - **Rolling denoising** + 计算保留优化 + 延迟补偿 → 机载实时。
 
-### 4) 开源状态（项目页 + GitHub，2026-10-03）
+### 4) 首次入库时开源状态（项目页 + GitHub，2026-10-03）
 
 | 组件 | 状态 |
 |------|------|
 | 项目页 / demo | 公开 |
 | GitHub MasterYip/PredActor | **占位**（overview + demo 链；代码/checkpoint **Coming Soon**） |
 | 权重 | **未发布** |
+
+## 最新开源状态（2026-10-08）
+
+- 官方 [MuJoCo evaluator](https://github.com/MasterYip/PredActor) 和 [PDP051 / MotionCLIP checkpoint](https://huggingface.co/MasterYip/PredActor_Artifacts) 已公开；quick evaluation 使用锁定的 Python 3.10 环境。
+- 训练、数据采集/标注、DAgger 策略精炼和硬件部署仍未发布；不能据评测包声称完整训练/真机复现已开放。
+- 项目页团队入口：[masteryip.github.io/predactor.github.io/#people](https://masteryip.github.io/predactor.github.io/#people)。
 
 ## 对 wiki 的映射
 
