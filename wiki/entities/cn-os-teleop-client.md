@@ -1,72 +1,74 @@
 ---
 type: entity
-tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+tags: [robotera, repo, china-embodied-opensource, open-source, project]
+status: complete
+updated: 2026-10-08
 related:
+  - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/teleop_client.md
-summary: "星动纪元 开源项目 teleop_client（遥操作与数据采集）：遥操作与数据采集：人体/设备输入映射为机器人动作并记录示范数据…"
+summary: "为星动纪元遥操作接入提供命令和消息入口，依赖厂商环境与授权文件。"
 institutions:
   - roboterax
+project_id: teleop-client
+code: https://github.com/roboterax/teleop_client
 ---
 
-# teleop_client
+# teleop_client：遥操作生命周期与消息入口
 
 ## 一句话定义
 
-**teleop_client** 是 [星动纪元](https://github.com/roboterax) 公开的 **遥操作与数据采集** 开源项目：遥操作与数据采集：人体/设备输入映射为机器人动作并记录示范数据
+为星动纪元遥操作接入提供命令和消息入口，依赖厂商环境与授权文件。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 真机控制与状态读取接口 |
-| RL | Reinforcement Learning | 强化学习训练与策略优化 |
-| VLA | Vision-Language-Action | 视觉–语言–动作统一策略 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
-| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+| --- | --- | --- |
+| ROS | Robot Operating System | 机器人通信与软件中间件 |
+| SDK | Software Development Kit | 对接机器人运行环境的开发工具 |
+| VLA | Vision-Language-Action | 由视觉和语言生成动作的策略 |
+| MPC | Model Predictive Control | 基于预测模型优化控制目标 |
 
 ## 为什么重要
 
-- 收录于 [国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) 的 **第一层** 分组。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 同源策展；本页为 **独立详情节点**，便于从公司清单跳到机制与入口说明。
+这一入口补足[星动纪元](./robotera.md)研究与产品之间的工程接口；读者可核对公开代码和厂商运行环境的边界，避免仅凭仓库名推断完整复现能力。
 
-## 核心原理
+## 核心结构
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 星动纪元 |
-| 类别 | 遥操作与数据采集 |
-| 官方组织 | https://github.com/roboterax |
+| 机构 | 星动纪元（ROBOTERA） |
+| --- | --- |
+| 官方仓 | [roboterax/teleop_client](https://github.com/roboterax/teleop_client) |
+
+| 阶段 | README 入口与约束 |
+| --- | --- |
+| 启动 SDK | `pub_client.py --cmd start_sdk` |
+| 初始化 | `init_teleop` 指定授权文件、XHAND/Lite、VR/gamepad 与相机类型 |
+| 接入设备 | 在设备端连接机器人网页，确认数据通道建立 |
+| 启动/收尾 | `start_teleop → stop_teleop → stop_sdk` |
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `teleop_client` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+README 的开发链还引用厂商 GitLab `rbclient` 和 `pub_client.py`。SDK 文档使用公开 `teleop_client` 仓构建 ROS 2 消息定义；读者须分别核对消息包与机器人侧遥操作服务，而不能把一个仓库视为完整系统。授权文件路径和厂商部署环境是初始化前提。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+截至 2026-10-08，公开 README 能确认生命周期和配置项，但不足以证明服务端、录像器和完整数据采集栈开放。原策展摘要提到示范采集，本页按可核实接口收窄描述；实际采集/导出契约见 M7 VLA 基线。未确认单一首发日期。
 
 ## 关联页面
 
-- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
-- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
-- [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [星动纪元](./robotera.md)
+- [M7 VLA 基线](./cn-os-robotera-vla.md)、[控制 SDK](./cn-os-xbot-sdk-api.md)
+- [VLA](../methods/vla.md)、[Humanoid-Gym](./humanoid-gym.md)
 
 ## 参考来源
 
-- [teleop_client 源码归档](../../sources/repos/teleop_client.md)（<https://github.com/roboterax/teleop_client>）
-
-- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [官方 README 补核](../../sources/repos/teleop_client.md)
+- [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 
-- [星动纪元 官方组织](https://github.com/roboterax)
+- [官方 README](https://github.com/roboterax/teleop_client/blob/main/README.md)

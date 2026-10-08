@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -309,6 +309,81 @@
         { "date": "2026-03", "title": "Fast-WAM", "track": "世界模型", "desc": "训练期视频共训、推理期跳过未来视频去噪，190 ms 延迟。", "id": "entity-paper-fast-wam", "url": "https://yuantianyuan01.github.io/FastWAM/" },
         { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" },
         { "date": "", "title": "G0 / G0Plus 历史版本", "track": "VLA", "desc": "GalaxeaVLA 历史 commit 13a16a9；详情有版本边界，不能使用当前 G0.5 命令推定兼容。", "id": "entity-paper-galaxea-g05", "url": "https://github.com/OpenGalaxea/GalaxeaVLA/tree/13a16a9", "date_note": "历史版本归档，未确认首发日期。" }
+      ]
+    },
+    {
+      "key": "robotera",
+      "name": "星动纪元 ROBOTERA",
+      "founded_year": 2023,
+      "founded_source": "https://wrc.cie.org.cn/expo/company/438.html",
+      "founded_note": "2023-08，世界机器人大会展商介绍明确到月。",
+      "lenses": [
+        "wam",
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "全栈路线：VPP 视频预测策略 + ERA-42 产品大脑 + Humanoid-Gym 人形运控，连接 L7 / M7 / XHAND 与遥操作和控制接口；研究资产与产品开放范围分别核查。",
+      "official": "https://www.robotera.com/",
+      "nodes": [
+        {
+          "date": "2024-04",
+          "title": "Humanoid-Gym",
+          "track": "人形 RL / Sim2Real",
+          "desc": "2024-04-08 论文 v1；Isaac Gym 训练、MuJoCo sim2sim、XBot-S/L 零样本迁移。论文日期不等于代码首发。",
+          "id": "entity-humanoid-gym",
+          "url": "https://sites.google.com/view/humanoid-gym/"
+        },
+        {
+          "date": "2024-12",
+          "title": "Video Prediction Policy（VPP）",
+          "track": "世界预测 / 操作策略",
+          "desc": "2024-12-19 论文 v1，ICML 2025 Spotlight 联合研究；视频预测表征接动作头，代码与部分权重/潜数据公开。",
+          "id": "entity-paper-shenlan-wm-02-vpp",
+          "url": "https://video-prediction-policy.github.io/"
+        },
+        {
+          "date": "2024-12",
+          "title": "ERA-42",
+          "track": "产品大脑 / 灵巧操作",
+          "desc": "2024-12-23 产品发布，结合 XHAND1 的多模态操作；完整模型资产未列下载，不能用 VPP 开源替代。",
+          "id": "entity-robotera",
+          "url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202412/t20241225_190563.html"
+        },
+        {
+          "date": "2025-07",
+          "title": "星动 L7",
+          "track": "整机 / 全身执行",
+          "desc": "2025-07-22 产品发布；全尺寸双足平台、55 自由度，运动与操作展示。产品事件与模型资产开放分开。",
+          "id": "entity-robotera",
+          "url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202507/t20250723_211232.html"
+        },
+        {
+          "date": "",
+          "title": "teleop_client",
+          "track": "遥操作 / 消息接口",
+          "desc": "SDK 与遥操作的生命周期命令、消息和配置；依赖厂商环境与授权文件。持续维护，首发日期未确认。",
+          "id": "entity-cn-os-teleop-client",
+          "url": "https://github.com/roboterax/teleop_client",
+          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+        },
+        {
+          "date": "",
+          "title": "xbot_sdk_api",
+          "track": "控制 SDK",
+          "desc": "ROS 2 Python 关节/轨迹、MPC 服务、手与底盘控制封装；不代表底层运控全开源。首发日期未确认。",
+          "id": "entity-cn-os-xbot-sdk-api",
+          "url": "https://github.com/roboterax/xbot_sdk_api",
+          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+        },
+        {
+          "date": "",
+          "title": "robotera_vla：M7 基线",
+          "track": "VLA / 采集与部署",
+          "desc": "M7 / π₀.₅ 示例链路，公开契约与部分训练/推理、样例资产；机器人侧 recorder/遥操作服务不在仓内。首发日期未确认。",
+          "id": "entity-cn-os-robotera-vla",
+          "url": "https://github.com/roboterax/robotera_vla",
+          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+        }
       ]
     },
     {
