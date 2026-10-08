@@ -10,6 +10,11 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | sources/repos/localai-gem-x-cpp.md — 收录 GEM-X 的 C++/GGML 本地实现
+
+- 新增独立实体，归纳仓库实现、模型资产、实时/离线流程、许可与验证范围。
+- 与上游 GEM-X、GENMO/GEM、SOMA-X 和 SONIC 建立双向关联；未将社区移植混记为新论文或机器人控制器。
+
 ## [2026-10-08] ingest | 星动纪元公司路线：核对成立、论文与产品时间，复用 VPP/Humanoid-Gym 与三项工程实体，区分研究开放和 ERA-42 产品边界
 
 ## [2026-10-08] ingest | sources/sites/rai-institute.md — 新增 RAI Institute 公司路线，按 2022 年成立排序，复用六个项目详情，区分并行研究、公开事件和开放资产。
