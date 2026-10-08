@@ -201,7 +201,7 @@ flowchart LR
 
 - [PredActor 实体](../wiki/entities/paper-predactor.md)
 - 项目页：<https://masteryip.github.io/predactor.github.io/> · 官方发布仓：<https://github.com/MasterYip/PredActor> · arXiv：<https://arxiv.org/abs/2609.24840>
-- **复现边界：** 截至 2026-10-03，官方仓 README 标注 Code Coming Soon；项目页 demo 可用于观察结果，但源码、权重与运行说明尚未发布。
+- **复现边界（2026-10-08）：** 公开仓已提供 Python 3.10 / uv 的 MuJoCo evaluation path，HF 发布 PDP051 与 G1 MotionCLIP checkpoint；训练/采集、DAgger 与真机部署仍未开放。见[实体页](../wiki/entities/paper-predactor.md)及[评测代码](https://github.com/MasterYip/PredActor)。
 
 ### 学完输出什么
 
