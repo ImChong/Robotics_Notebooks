@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./hy-motion-1.md
@@ -11,6 +11,7 @@ related:
   - ./sonic-motion-tracking.md
   - ./wilor.md
   - ../entities/sam-3d-body.md
+  - ../entities/gem-x-cpp.md
   - ../entities/protomotions.md
   - ../entities/kimodo.md
 sources:
@@ -163,11 +164,13 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 
 - **不等于实时控制器**：GENMO 输出的是人体运动序列；要在实体人形上闭环还需动力学可行的跟踪策略（如 [SONIC](./sonic-motion-tracking.md)）或经典 WBC/MPC。
 - **命名迁移**：论文使用 GENMO，仓库与权重以 **GEM** 发布，并存在 [GEM-X](https://github.com/NVlabs/GEM-X) 全身扩展；检索代码与 checkpoint 时需两者兼顾。
+- **实现边界**：社区维护的 [gem-x.cpp](../entities/gem-x-cpp.md) 是 NVIDIA GEM-X 的独立 C++/GGML 本地运行时与浏览器 demo；它不属于 GENMO/GEM 的官方实现，也不等于机器人闭环控制器。
 - **域差异**：从「生成的人体视频」估计运动时，视频生成阶段的物体幻觉、手腕方向错误等会传递到下游；[ExoActor](./exoactor.md) 详细讨论了这一类失败模式。
 - **首步预测的依赖**：dual-mode 的有效性建立在「视频条件下扩散方差极低」这一观察上；如果上游条件分布偏离这一假设（例如极抽象的语言指令直接驱动估计），估计精度会回退到生成模式的方差水平。
 
 ## 与其他页面的关系
 
+- [gem-x.cpp（GEM-X 的 GGML/C++ 本地实现）](../entities/gem-x-cpp.md)：由 LocalAI 社区维护的独立推理/演示实现，使用 NVIDIA GEM-X 权重转换；输入视频或摄像头画面，输出 SOMA-77 骨架。
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)：典型系统集成位 —— GENMO 承担「生成视频 → 全身 SMPL 序列」。
 - [SONIC（规模化运动跟踪人形控制）](./sonic-motion-tracking.md)：把 GEM/GENMO 的人体运动作为统一 token 喂入大规模跟踪策略。
 - [WiLoR（野外手部 3D 重建）](./wilor.md)：与 GENMO 拼接成「全身 SMPL + 手部姿态」的下游接口。
