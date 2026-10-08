@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-08
 summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 / 数据与服务面 / 部署与运维面 / 安全与合规五层，索引 OS、IPC、网络、数据库、缓存、消息、分布式、容器、可观测性、RTOS、DDS、边云、频率解耦、OTA 与安全状态机等站内节点。"
 ---
 
@@ -76,6 +76,10 @@ flowchart TB
 - **在调实时控制环** → [操作系统基础](../concepts/operating-system-basics.md) → [RTOS 与实时调度](../concepts/rtos-realtime-scheduling.md) → [控制/推理频率解耦](../concepts/control-inference-frequency-decoupling.md) → [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - **在搭训练与部署栈** → [容器编排与 CI/CD](../concepts/container-orchestration-cicd.md) → [可观测性](../concepts/observability-logs-metrics-tracing.md) → [模型版本管理与 OTA](../concepts/model-versioning-ota.md) → [边缘计算与云端协同](../concepts/edge-cloud-robotics.md)
 - **在做上机安全设计** → [机器人安全状态机](../concepts/robot-safety-state-machine.md) → [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) → [软件安全基础](../concepts/software-security-basics.md)
+
+## 工程软件与代理接口
+
+[CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md) 汇总工程软件的 Skill、MCP 与 CLI 项目，可从 [CAE Agent Hub](../entities/cai-aa-cae-agent-hub.md) 和 [sim-cli](../entities/svd-ai-lab-sim-cli.md) 查看资源组织与执行接口。它们服务研发阶段的建模、求解和后处理；复现环境、软件版本、权限和运行日志仍需按系统工程方式管理。
 
 ## 与其他知识链的关系
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-09-13
+updated: 2026-10-08
 related:
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/motor-torque-current-curve.md
@@ -157,6 +157,10 @@ flowchart TD
 - 含减速器、驱动器、传感器的 **整机 TN/TI** 与单电机不同。
 - 与 [电机驱动器底软通信协议](../overview/motor-drive-firmware-bus-protocols.md) 联调力矩/阻抗模式，检查延迟与饱和。
 - 减速器选型、双编标定、装配一致性与四层测试矩阵见 [自研关节模组开发流程](../concepts/joint-module-self-development-workflow.md)（本页步骤 1–7 的电机子集在此收口为「可交付模组」）。
+
+## CAE / CFD 自动化工具入口
+
+电磁、结构与热流体分析的软件接口可从 [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md) 选读：例如 [Ansys AEDT MCP](../entities/laplaceyoung-ansys-aedt-mcp.md) 的电磁软件接口、[Mechanical MCP](../entities/codersag-mechanical-mcp.md) 的结构分析接口，以及 [OpenFOAM Claude Suite](../entities/swtbkim-openfoam-claude-suite.md) 的 CFD 工作流。按本页步骤 3–6 明确工况和验收物理量，再判断工具是否支持目标软件版本及任务；自动化结果仍需与台架实测对照。
 
 ## 常见误区
 

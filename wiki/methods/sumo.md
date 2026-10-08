@@ -3,7 +3,10 @@ type: method
 title: Sumo (MPC-over-RL 层级控制)
 tags: [robot-learning, mpc, loco-manipulation, whole-body-control, spot, g1]
 summary: "Sumo 采用反向层级架构（MPC 驱动底层 RL），通过将通用策略纳入规划循环，实现腿式机器人对超限重物的零样本动态操纵。"
-updated: 2026-10-06
+updated: 2026-10-08
+sources:
+  - ../../sources/papers/sumo.md
+  - ../../sources/repos/rai-opensource-sumo.md
 ---
 
 # Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)
@@ -57,6 +60,10 @@ Sumo 的创新在于其分工明确的双层结构：
 - **处理超限载荷**：通过全身各部位（躯干、四肢）的协同接触，Sumo 能够操纵超过机械臂额定载荷的物体（例如让 Spot 扶起 15kg 的轮胎）。
 - **极简工程代价**：相比端到端 RL 需要数十个精调的 Reward 项，Sumo 只需 3-5 个简单的几何代价项即可完成任务。
 
+## 工程实践与开放范围
+
+[官方项目页](https://sumo.rai-inst.com/)已链接 [rai-opensource/sumo](https://github.com/rai-opensource/sumo)。README 提供 `pixi install` → `pixi run build` → `pixi run sumo` 仿真入口，及 `pixi run python -m sumo.run_mpc` 无界面评测/采数入口，详见[代码归档](../../sources/repos/rai-opensource-sumo.md)。本次未运行仿真；公开研究代码不等于完整真机驱动或全部论文资产开放。
+
 ## 硬件验证
 
 - **Spot (四足)**：在真实世界中完成了 8 项极具挑战性的任务，包括拖拽大型路障和堆叠重物。
@@ -77,4 +84,5 @@ Sumo 的创新在于其分工明确的双层结构：
 
 ## 参考来源
 - [Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation](../../sources/papers/sumo.md)
-- [RAI Institute Project Page](https://rai-institute.github.io/sumo/)
+- [Sumo 官方代码归档](../../sources/repos/rai-opensource-sumo.md)
+- [RAI Institute Project Page](https://sumo.rai-inst.com/)
