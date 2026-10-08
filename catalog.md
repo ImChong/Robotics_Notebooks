@@ -101,6 +101,7 @@
 - [booster_mjlab（Booster K1 × mjlab）](wiki/entities/booster-mjlab.md) — booster_mjlab** 是由 whIRLwind Amsterdam（Intelligent Robotics Lab）维护的开源项目 `📅unknown` `[entity_page]`
 - [Booster Robotics RoboCup Demo](wiki/entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 Booster Robotics 官方维护的开源项 `📅unknown` `[entity_page]`
 - [BootLoops：可核验的精确科学计算工具箱](wiki/entities/bootloops.md) — BootLoops 1.0** 是 Matthew D. Schwartz 维护、模型无关的科学计算 harness：让代理调用有文档、误差口径和验收测试的工具，生成能独立检查的计算结果。 `📅unknown` `[entity_page]`
+- [Boston Dynamics Atlas 13-DoF 灵巧手](wiki/entities/boston-dynamics-atlas-13dof-hand.md) — Boston Dynamics Atlas 13-DoF 灵巧手**是新一代 Atlas 面向实物工作的末端操作器：通过四指布局、直接驱动和可回驱交互支持捏取、三点抓握、物体重定位与工具操作，并将 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](wiki/entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](wiki/entities/botlab-motioncanvas.md) — BotLab** 是 地瓜机器人（D-Robotics） 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
 - [BotWorld（机器人资产平台）](wiki/entities/botworld.md) — BotWorld**（<https://botworld.enkeebot.com/>）是 **EnkeeBot** 运营的 **机器人资产社区与分发平台**：把 **URDF/MJCF/SDF  `📅unknown` `[entity_page]`
