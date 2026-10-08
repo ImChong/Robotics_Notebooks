@@ -18,7 +18,7 @@
 
 | 类型 | 链接 | 说明 |
 |------|------|------|
-| 项目页 | <https://uni-vlat.github.io/> | 五任务 demo、主表、跨 backbone 与消融 |
+| 项目页 | <https://ggkiller-air.github.io/Uni-VLaT/>（arXiv v2 当前链接；原始入口 <https://uni-vlat.github.io/>） | 五任务 demo、主表、跨 backbone 与消融 |
 | 低层控制 | SONIC | 64-D motion token → 全身 joint PD；Protocol v4 |
 | 对照 | WT-UMI、HTD、TACT | 全身触觉 / 预测监督谱系 |
 
