@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-08
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ./inverse-dynamics-model.md
@@ -97,6 +97,7 @@ related:
   - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../entities/awesome-world-models.md
   - ../entities/paper-cf-wam-dynamic-next-state-prediction.md
+  - ../entities/paper-long-wam-scaling-context.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
@@ -584,3 +585,8 @@ flowchart TB
 ## 动态未来状态表示实例：CF-WAM
 
 - [CF-WAM：动态下一状态预测世界–动作模型](../entities/paper-cf-wam-dynamic-next-state-prediction.md)（arXiv:2609.34414）把视觉、语义、几何和交互未来视作同一动作条件状态转移的不同投影；每个训练样本只采样一种投影，并与未配对 EgoDex 人类经验及 GR-1 机器人轨迹联合训练。
+
+
+## 长上下文因果 WAM：Long-WAM
+
+- [Long-WAM](../entities/paper-long-wam-scaling-context.md)（arXiv:2610.10528）以因果视频专家预测未来 latent，再由动作专家生成动作块；RoboCasa GR-1 报告历史从 0 秒扩至 19.2 秒时 SR 由 63.3% 升至 78.7%。代码位于 NVlabs/LongLive 的 Long-WAM/ 子目录；官方仓库说明完整 benchmark 尚未验证。
