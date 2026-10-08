@@ -4,6 +4,11 @@
 - 开源核查：该文未列手部 CAD、仿真资产、训练代码或数据集；仅记录本文未提供复现材料。
 - 关键页：[Boston Dynamics Atlas 13-DoF 灵巧手](../wiki/entities/boston-dynamics-atlas-13dof-hand.md)；[Boston Dynamics](../wiki/entities/boston-dynamics.md)。
 
+## [2026-10-08] ingest | QF3 | 收录过滤 Q 梯度的离策略 flow policy RL
+
+- 资料：arXiv:2610.08789 与项目页。
+- 提炼：记录按动作维度过滤 critic 梯度、humanoid locomotion / tracking 与 manipulation fine-tuning；官方代码入口暂未核实。
+
 ## [2026-10-08] ingest | ACG-WAM | 收录动作条件几何监督 WAM
 
 - 资料：arXiv:2610.06965、项目页、官方训练仓与 HF checkpoint。
