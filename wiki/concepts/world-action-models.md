@@ -577,6 +577,10 @@ flowchart TB
 
 - [SUAVE](../entities/paper-suave-unified-video-action.md) — 共享离散词表与 masked diffusion，将视频、语言和动作建模统一到同一架构（arXiv:2610.04009）。
 
+## 几何监督的 WAM 实例：ACG-WAM
+
+- [ACG-WAM](../entities/paper-acg-wam-geometric-latent-prediction.md)（arXiv:2610.06965）在 Motus 中以 VGGT 未来几何目标监督当前共享视觉表征，训练时结合示教动作和多时域预测，部署时移除辅助分支；RoboTwin 2.0 50-task mean SR 93.07%，官方代码与 40k checkpoint 已公开。
+
 ## 动态未来状态表示实例：CF-WAM
 
 - [CF-WAM：动态下一状态预测世界–动作模型](../entities/paper-cf-wam-dynamic-next-state-prediction.md)（arXiv:2609.34414）把视觉、语义、几何和交互未来视作同一动作条件状态转移的不同投影；每个训练样本只采样一种投影，并与未配对 EgoDex 人类经验及 GR-1 机器人轨迹联合训练。
