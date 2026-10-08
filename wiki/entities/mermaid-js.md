@@ -2,12 +2,13 @@
 type: entity
 tags: [diagramming, diagrams-as-code, visualization, javascript, svg, mermaid, open-source]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 code: https://github.com/mermaid-js/mermaid
 related:
   - ./diagram-design.md
   - ./archify.md
   - ./gitdiagram.md
+  - ./drawnix.md
 sources:
   - ../../sources/repos/mermaid-js.md
   - ../../sources/sites/mermaid-ai-open-source.md
@@ -66,6 +67,7 @@ flowchart LR
 | Mermaid 主库 | [GitHub](https://github.com/mermaid-js/mermaid) · [npm mermaid](https://www.npmjs.com/package/mermaid) | 网页或产品内渲染图表 |
 | Live Editor | [网页](https://mermaid.live/) · [源码](https://github.com/mermaid-js/mermaid-live-editor) | 快速验证语法、预览与分享 |
 | Mermaid CLI | [仓库](https://github.com/mermaid-js/mermaid-cli) · [npm 包](https://www.npmjs.com/package/@mermaid-js/mermaid-cli) | 批量渲染、CI 或文档构建 |
+| Drawnix | [项目页](./drawnix.md) · [官网](https://drawnix.com/) | 将 Mermaid 流程图定义转换为可继续编辑的白板元素 |
 | 官方文档 | [Mermaid Open Source](https://mermaid.ai/open-source/) | 查询图类型、语法、配置与集成 |
 | 集成清单 | [Community Integrations](https://mermaid.ai/open-source/ecosystem/integrations-community.html) | 检查目标应用的支持方式 |
 
@@ -89,6 +91,7 @@ flowchart LR
 - [Diagram Design](./diagram-design.md) — 可读取 Mermaid 语义并重绘为独立 HTML/SVG 工件的 Agent Skill
 - [Archify](./archify.md) — 用结构化 JSON IR 与校验器生成系统图的工具，可与 Mermaid 文本语法路线对照
 - [GitDiagram](./gitdiagram.md) — 从代码仓库证据生成可交互 Mermaid 架构图的工具
+- [Drawnix](./drawnix.md) — 将 Mermaid 流程图转换为 Plait 画布元素，便于继续进行白板式编辑
 
 ## 参考来源
 
