@@ -4,7 +4,7 @@ title: ONNX
 date: 2026-06-25
 tags: [framework, deployment, onnx, model-export, interoperability, linux-foundation]
 summary: "ONNX 是开放神经网络交换格式（IR）：用统一计算图、算子集与 .onnx 文件衔接训练框架与推理引擎，是机器人策略从 PyTorch/JAX 导出到机载 C++ 的常见中间契约。"
-updated: 2026-09-29
+updated: 2026-10-08
 ---
 
 # ONNX
@@ -79,6 +79,7 @@ flowchart LR
 - [TensorRT](./tensorrt.md)
 - [MNN](./mnn.md)
 - [PyTorch](./pytorch.md)
+- [Exploy](./exploy.md)
 - [TensorFlow](./tensorflow.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
