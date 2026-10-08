@@ -2,7 +2,10 @@
 type: entity
 tags: [paper, humanoid, diffusion-policy, onboard-control, hit, roboparty, tsinghua, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-08
+project_id: predactor
+project: https://masteryip.github.io/predactor.github.io/
+code: https://github.com/MasterYip/PredActor
 arxiv: "2609.24840"
 related:
   - ../methods/diffusion-policy.md
@@ -16,7 +19,8 @@ sources:
   - ../../sources/papers/predactor_arxiv_2609_24840.md
   - ../../sources/sites/predactor-masteryip-github-io.md
   - ../../sources/repos/predactor.md
-summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action 扩散，CG+CFG  steerable 机载 G1 50 Hz（Orin NX p50 16.79 ms）；代码待发布。"
+  - ../../sources/repos/predactor-artifacts.md
+summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action 扩散，CG+CFG steerable 机载 G1 50 Hz；官方已开放 MuJoCo 评测代码与 PDP051/MotionCLIP checkpoint，训练、数据采集和真机部署仍待发布。"
 ---
 
 # PredActor（arXiv:2609.24840）
@@ -36,6 +40,10 @@ summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action �
 | WBG | Whole-Body Guidance | 论文中对 predicted-state 目标 steering 的实现块 |
 | DAgger | Dataset Aggregation | 在 learner 访问状态聚合 teacher 标签 |
 | FK | Forward Kinematics | 观测构造中的正向运动学链 |
+| HF | Hugging Face | PredActor 公开评测 checkpoint 的托管平台 |
+| BC | Behavior Cloning | README 列为尚未发布的策略训练代码 |
+| UI | User Interface | 本地浏览器端 MuJoCo 评测界面 |
+| CPU | Central Processing Unit | 无 CUDA 时评测器回退使用的处理器 |
 
 ## 为什么重要
 
@@ -53,7 +61,7 @@ summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action �
 | 平台 | Unitree G1 + Jetson Orin NX |
 | 输入 | Proprio 历史 + 可选任务 token（文本/语义/摇杆） |
 | 输出 | 选中关节动作；未来状态 **不外发** |
-| 开源 | **待发布** — [MasterYip/PredActor](https://github.com/MasterYip/PredActor) 官方 release channel（截至 2026-10-03 仍为 Code Coming Soon） |
+| 开源 | **部分开放（2026-10-08）** — [GitHub](https://github.com/MasterYip/PredActor) 提供 PDP051 的 MuJoCo 浏览器评测入口；[Hugging Face](https://huggingface.co/MasterYip/PredActor_Artifacts) 发布 PDP051 与 G1 MotionCLIP checkpoint；训练、数据采集、DAgger 与真机部署仍未发布 |
 
 ## 流程总览
 
@@ -83,11 +91,33 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用（待发布）** — 官方仓截至 2026-09-24 无训练/部署脚本；公开后应对齐 README 中 rolling inference 与 onboard callback 路径。
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 用户 / 评测者
+  participant DL as scripts/hf_download.py
+  participant HF as PredActor_Artifacts（Hugging Face）
+  participant CLI as predactor-eval（cond_eval:main）
+  participant Sim as MuJoCo
+  participant UI as 本地浏览器 Web UI
+  User->>DL: --filter checkpoints
+  DL->>HF: 下载 PDP051 与 G1 MotionCLIP
+  HF-->>DL: 返回公开 checkpoint 文件
+  DL-->>User: 校验并写入 Artifacts/
+  User->>CLI: uv run --locked predactor-eval
+  CLI->>CLI: 加载 g1prdp_cond_diffuse 配置与 checkpoint
+  CLI->>Sim: 初始化 G1 29-DoF 仿真评测
+  CLI->>UI: 启动 127.0.0.1:8765 界面
+  User->>UI: 选择文本条件 / guidance
+  UI->>CLI: 提交本地评测命令
+  CLI->>Sim: 执行动作并推进仿真
+  Sim-->>UI: 返回状态与可视化
+```
 
+运行入口来自官方 README 的 Quick evaluation；当前公开路径只复现带 checkpoint 的 MuJoCo 评测，不包含训练、数据采集/标注、DAgger 训练或真机控制部署。
 ## 工程实践
 
-- 官方项目页链接到[MasterYip/PredActor](../../sources/repos/predactor.md)作为 release channel；该仓 README 当前仅含 overview、docs 资源与 demo 链接，训练/部署代码、checkpoint 与安装说明均待发布，暂不能据此复现论文结果。
+- 官方仓现提供 Linux 上的公开 MuJoCo 评测：Python 3.10 + uv，执行 `uv sync --locked`、`uv run --locked python scripts/hf_download.py --filter checkpoints`，再运行 `uv run --locked predactor-eval`；启动本地 Web UI（默认 `127.0.0.1:8765`），CUDA 可用时优先使用，否则回退 CPU。完整命令和环境要求见[仓库归档](../../sources/repos/predactor.md)。
 
 | 检查项 | 建议 |
 |--------|------|
@@ -105,7 +135,7 @@ flowchart LR
 | Push survival | 0.535 | vs 0.564（相近） |
 | Orin NX callback p50/p95 | 16.790 / 19.383 ms | 593/600 ≤ 20 ms |
 
-真机 demo：文本 walk/jog/squat、摇杆转向、外扰反应、语义插值（stand↔raise hand / stand↔run）。
+论文与项目页展示了 G1 真机文本控制、摇杆转向、外扰反应和语义插值；这些真机结果仍属于论文/项目演示，当前公开仓的评测入口运行在 MuJoCo，不提供真机部署工具链。
 
 ## 与其他工作对比
 
@@ -120,13 +150,20 @@ flowchart LR
 
 ## 结论
 
-**PredActor 把 joint diffusion 的「预测态引导 + 直接动作执行」落到 G1 机载 50 Hz，是 onboard generative humanoid control 的部署基准点；复现需等官方代码/权重。**
+**PredActor 把 joint diffusion 的「预测态引导 + 直接动作执行」落到 G1 机载 50 Hz；现在可用公开 checkpoint 复跑 MuJoCo 评测，但论文训练流程和真机部署仍不可复现。**
 
 1. **CG+CFG+proprio** 三件套在同一条可执行策略里闭合 — 相对 SCDP/BeyondMimic 等差异明确。
 2. **Rolling + 优化** 是 latency 主因，不是单纯减 denoise 步数。
 3. **Recovery 数据**（扰动 teacher + DAgger）与 disturbance demo 一致 — 选型时勿只看 kinematic 指标。
-4. **开源：** 占位仓已建，训练/评测/checkpoint **Coming Soon** — 入库日不可当已复现。
+4. **开源：** 已有 MuJoCo 评测代码与 PDP051、MotionCLIP checkpoint；训练数据、训练/DAgger 流程和硬件部署包仍未发布。
 5. 与 [SONIC](./../methods/sonic-motion-tracking.md) tracker 路线对照：PredActor 不走 reference tracking，而是 **端到端 joint policy**。
+
+## 局限与风险
+
+- **发布范围有限。** 当前开源内容是绑定公开 checkpoint 的 MuJoCo evaluator；没有训练数据收集与标注、行为克隆训练、DAgger 迭代或 G1 硬件部署工具。
+- **仿真评测不等于真机复现。** 软件启动与 checkpoint 可加载性不能证明新硬件上的安全性或运动质量；实际部署仍需独立的控制、安全和硬件验证。
+- **权重文件需校验来源。** PyTorch checkpoint 使用 pickle-compatible 反序列化；仅从官方仓链接的 Hugging Face 仓下载，并核对公开 SHA-256。
+- **锁定环境影响结果。** 官方环境目标为 Python 3.10；CUDA、驱动、模拟器或依赖版本变化可能改变评测结果。
 
 ## 关联页面
 
@@ -138,6 +175,9 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [PredActor 项目页团队与联系](https://masteryip.github.io/predactor.github.io/#people)
+- [PredActor GitHub 评测代码](https://github.com/MasterYip/PredActor)
+- [PredActor Hugging Face checkpoint](https://huggingface.co/MasterYip/PredActor_Artifacts)
 - [PredActor 项目页](https://masteryip.github.io/predactor.github.io/)
 - [arXiv:2609.24840](https://arxiv.org/abs/2609.24840)
 
@@ -145,4 +185,5 @@ flowchart LR
 
 - [PredActor 论文归档](../../sources/papers/predactor_arxiv_2609_24840.md)
 - [PredActor 项目页归档](../../sources/sites/predactor-masteryip-github-io.md)
-- [PredActor GitHub 占位仓](../../sources/repos/predactor.md)
+- [PredActor GitHub 评测代码归档](../../sources/repos/predactor.md)
+- [PredActor Hugging Face checkpoint 归档](../../sources/repos/predactor-artifacts.md)
