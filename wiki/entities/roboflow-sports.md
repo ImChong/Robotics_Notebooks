@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, keypoint-detection, soccer, basketball, ocr, sports-analytics, tracking, perception, roboflow, mit]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-08
 code: https://github.com/roboflow/sports
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -11,6 +11,7 @@ related:
   - ../tasks/humanoid-soccer.md
   - ./ultralytics.md
   - ./rf-detr.md
+  - ./mcbyte-plus-plus.md
   - ../methods/object-detection.md
   - ../concepts/soccer-field-simulation.md
   - ./booster-robocup-demo.md
@@ -187,6 +188,7 @@ sequenceDiagram
 - [足球视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md) — 检测→匹配→EKF；本仓为广播侧对照
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 上层任务与感知需求
 - [Ultralytics YOLO](./ultralytics.md) — demo 默认检测工程入口
+- [McByte++](./mcbyte-plus-plus.md) — 体育视频长时多目标跟踪与离场身份恢复；与本仓的通用体育 CV 积木分工不同
 - [RF-DETR](./rf-detr.md) — 同机构实时 DETR，可作 MIT/Apache 向检测替换
 - [目标检测](../methods/object-detection.md) — 检测通论
 - [足球场仿真](../concepts/soccer-field-simulation.md) — 有真值时可对照俯视误差
