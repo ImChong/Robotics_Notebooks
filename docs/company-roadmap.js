@@ -55,6 +55,7 @@
     var links = '';
     if (node.id) links += '<a class="co-node-link" href="' + esc(detailHref(node.id)) + '">本库笔记 →</a>';
     if (node.url) links += extLink(node.url, '原文 ↗', 'co-node-link');
+    if (node.date_source) links += extLink(node.date_source, '日期依据 ↗', 'co-node-link');
     return '<li class="co-node">' +
       '<span class="co-node-date' + (node.date ? '' : ' is-empty') + '">' + esc(node.date || '时间未注明') + '</span>' +
       '<span class="co-node-dot" aria-hidden="true"></span>' +
@@ -62,6 +63,7 @@
       '<div class="co-node-head"><h3 class="co-node-title">' + esc(node.title) + '</h3>' +
       '<span class="co-node-track">' + esc(node.track) + '</span></div>' +
       '<p class="co-node-desc">' + esc(node.desc) + '</p>' +
+      (node.date_note ? '<p class="co-node-desc">日期口径：' + esc(node.date_note) + '</p>' : '') +
       '<div class="co-node-links">' + links + '</div>' +
       '</div></li>';
   }

@@ -9,6 +9,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/xbot_sdk_api.md
 summary: "通过 ROS 2 Python 封装初始化、状态读取、轨迹、ServoPose、手与底盘控制。"
@@ -63,7 +64,13 @@ README 要求厂商 developer 环境，或 ROS 2 Humble + CycloneDDS；先构建
 - [M7 VLA 基线](./cn-os-robotera-vla.md)、[遥操作入口](./cn-os-teleop-client.md)
 - [VLA](../methods/vla.md)、[Humanoid-Gym](./humanoid-gym.md)
 
+## 公司路线日期口径
+
+默认分支根提交 34512a0：2026-01-17，含控制器与 Python 示例；提交时间不证明首次公开，不代表底层算法全开源。 [日期证据](https://github.com/roboterax/xbot_sdk_api/commit/34512a0338416f42024e2a7bb021b4766a545086)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [官方 README 补核](../../sources/repos/xbot_sdk_api.md)
 - [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

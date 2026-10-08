@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, open-source]
 status: complete
-updated: 2026-09-06
+updated: 2026-10-08
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-transfer.md
@@ -16,6 +16,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/mimic-video.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/cosmos-cookbook.md
   - ../../sources/repos/nvidia_cosmos_cookbook.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -116,7 +117,13 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [mimic-video](../methods/mimic-video.md)
 
+## 公司路线日期口径
+
+Transfer2.5 官方 README News：2025-10-28 加入 Cosmos Cookbook；不使用 12-01 后续介绍文章日期。 [日期证据](https://github.com/nvidia-cosmos/cosmos-transfer2.5#news)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [Cookbook 站点摘录](../../sources/sites/cosmos-cookbook.md)
 - [cosmos-cookbook 仓库](../../sources/repos/nvidia_cosmos_cookbook.md)

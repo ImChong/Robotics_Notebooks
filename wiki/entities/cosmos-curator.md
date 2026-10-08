@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, data-curation, open-source]
 status: complete
-updated: 2026-09-06
+updated: 2026-10-08
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-cookbook.md
@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/nvidia_cosmos_curator.md
   - ../../sources/sites/cosmos-curator-docs.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -153,7 +154,13 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+## 公司路线日期口径
+
+GitHub v1.0.0 Release published_at：2025-07-25（UTC）；开源工具版本事件，不代表托管云服务首发。 [日期证据](https://github.com/NVIDIA/cosmos-curator/releases/tag/v1.0.0)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [NVIDIA/cosmos-curator 仓库](../../sources/repos/nvidia_cosmos_curator.md)
 - [Cosmos Curator LHA 文档摘录](../../sources/sites/cosmos-curator-docs.md)

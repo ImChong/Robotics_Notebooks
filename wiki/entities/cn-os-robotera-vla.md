@@ -9,6 +9,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/robotera_vla.md
 summary: "以 M7 为默认本体、π₀.₅ / openpi 为基础的示例工程，公开数据规范与训练/推理接入。"
@@ -65,7 +66,13 @@ code: https://github.com/roboterax/robotera_vla
 - [控制 SDK](./cn-os-xbot-sdk-api.md)、[遥操作入口](./cn-os-teleop-client.md)
 - [VLA](../methods/vla.md)、[Humanoid-Gym](./humanoid-gym.md)
 
+## 公司路线日期口径
+
+默认分支唯一根提交 9ff7067：2026-04-17 Initial import，含采集契约与训练/推理基线；不是 ERA-42 或 π₀.₅ 首发。 [日期证据](https://github.com/roboterax/robotera_vla/commit/9ff7067fa262f055875fe8a3e56d445734a7751c)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [官方 README 补核](../../sources/repos/robotera_vla.md)
 - [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

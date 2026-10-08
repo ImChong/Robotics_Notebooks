@@ -16,6 +16,7 @@ related:
   - ./exploy.md
   - ./boston-dynamics.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/rai-institute.md
   - ../../sources/repos/rai-opensource-sumo.md
 ---
@@ -102,7 +103,13 @@ flowchart TB
 - [移动操作](../tasks/loco-manipulation.md)
 - [Exploy](./exploy.md)
 
+## 公司路线日期口径
+
+成立公告正文事件日 2022-08-12，页面栏为 08-11；均为同月。当前五方向总览不是同日发布的模型。 [日期证据](https://rai-inst.com/resources/press-release/hyundai-launches-boston-dynamics-ai-institute/)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [机构背景、研究方向与日期证据](../../sources/sites/rai-institute.md)
 - [Sumo 官方代码核查](../../sources/repos/rai-opensource-sumo.md)

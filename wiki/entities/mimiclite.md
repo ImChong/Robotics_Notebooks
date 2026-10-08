@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -15,6 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/mimiclite.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
@@ -106,7 +107,13 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - [Sim2Real](../concepts/sim2real.md)
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic 欧氏曲线投影、termination 与 FSQ 的读法
 
+## 公司路线日期口径
+
+2026-08-31 官方提交公开列出 MimicLite-PPO / MimicLite-ROA；是当前公开版本表记录，不沿用旧 Huge/Base/v1.1 或首批工具链日期。 [日期证据](https://github.com/Roboparty/MimicLite/commit/3963976de8778d9292305fc8efacbcae79ed6685)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [mimiclite.md](../../sources/repos/mimiclite.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)

@@ -9,6 +9,7 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/teleop_client.md
 summary: "为星动纪元遥操作接入提供命令和消息入口，依赖厂商环境与授权文件。"
@@ -64,7 +65,13 @@ README 的开发链还引用厂商 GitLab `rbclient` 和 `pub_client.py`。SDK �
 - [M7 VLA 基线](./cn-os-robotera-vla.md)、[控制 SDK](./cn-os-xbot-sdk-api.md)
 - [VLA](../methods/vla.md)、[Humanoid-Gym](./humanoid-gym.md)
 
+## 公司路线日期口径
+
+默认分支根提交 35aaa7b：2025-08-01，含 pub_client.py 和 ROS 接口；是含实现的历史起点，不证明首次公开或产品首发。 [日期证据](https://github.com/roboterax/teleop_client/commit/35aaa7b84c27377aac3ba46f7684cd655845d608)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [官方 README 补核](../../sources/repos/teleop_client.md)
 - [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

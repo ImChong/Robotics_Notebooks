@@ -13,7 +13,7 @@ tags:
 - awesome-world-models
 - sun254667-wm
 status: stable
-updated: 2026-10-06
+updated: 2026-10-08
 related:
 - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
 - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
@@ -62,6 +62,7 @@ related:
 - ../methods/model-based-rl.md
 - ../tasks/manipulation.md
 sources:
+- ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
 - ../../sources/repos/isaac_lab.md
 - ../../sources/repos/isaac_lab_environments.md
 - ../../sources/repos/isaac_sim.md
@@ -347,7 +348,13 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
 - [原文](https://arxiv.org/abs/2511.04831)
 
+## 公司路线日期口径
+
+2024-06-26 首个正式版本 v1.0.0；不使用继承的 Orbit 提交或 2025 年论文日期。 [日期证据](https://github.com/isaac-sim/IsaacLab/releases/tag/v1.0.0)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - **ingest 档案：** [sources/repos/isaac_lab.md](../../sources/repos/isaac_lab.md)
 - **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)

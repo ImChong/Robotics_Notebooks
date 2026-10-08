@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-08
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md
@@ -13,6 +13,7 @@ related:
   - ../queries/humanoid-robot-data-collection-landscape.md
   - ../tasks/loco-manipulation.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
   - ../../sources/papers/1x_world_model_redwood.md
@@ -71,7 +72,13 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 
+## 公司路线日期口径
+
+1X 官方公告：2024-08-30 发布 NEO Beta；是家庭双足原型事件，不是 EVE 首发或 NEO 商业交付日。 [日期证据](https://www.1x.tech/discover/announcement-1x-unveils-neo-beta-a-humanoid-robot-for-the-home)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [1X Technologies 原始资料](../../sources/repos/1x-technologies.md)
 - [1XWM 技术报告归档](../../sources/papers/1x_world_model_redwood.md)

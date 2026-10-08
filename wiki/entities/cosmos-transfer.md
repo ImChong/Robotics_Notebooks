@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, video-generation, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
@@ -17,6 +17,7 @@ related:
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/cosmos-transfer1-project.md
   - ../../sources/repos/nvidia_cosmos_transfer1.md
   - ../../sources/papers/cosmos_transfer1_arxiv_2503_14492.md
@@ -161,7 +162,13 @@ sequenceDiagram
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [Manipulation](../tasks/manipulation.md)
 
+## 公司路线日期口径
+
+Transfer1 的 arXiv:2503.14492 v1 提交于 2025-03-18；Transfer2.5 等后续版本另计。 [日期证据](https://arxiv.org/abs/2503.14492)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [Transfer1 项目页](../../sources/sites/cosmos-transfer1-project.md)
 - [cosmos-transfer1 仓库](../../sources/repos/nvidia_cosmos_transfer1.md)

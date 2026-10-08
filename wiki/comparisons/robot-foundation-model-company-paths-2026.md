@@ -16,6 +16,7 @@ related:
   - ../entities/paper-dpc.md
   - ../entities/roboparty.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
   - ../../sources/sites/rai-institute.md
   - ../../sources/sites/robot-foundation-model-company-research-2026.md
@@ -203,6 +204,8 @@ flowchart LR
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
 
 ## 参考来源
+
+- [公司路线 22 个未注明日期节点核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md) — 18 个补齐事件月份，4 个聚合入口保留空值；发布日期、版本、提交和演示口径分别说明。
 
 - [星动纪元：成立与产品日期、开放范围](../../sources/sites/robotera.md)
 - [RAI Institute 机构、日期与开放范围核查](../../sources/sites/rai-institute.md)
