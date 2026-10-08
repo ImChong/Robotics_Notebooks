@@ -27,6 +27,12 @@
 - **目标节点：** [HarnessPAI](../wiki/entities/paper-harnesspai.md)
 - **来源归档：** [论文](../sources/papers/harnesspai_arxiv_2609_29166.md)、[代码仓库](../sources/repos/harnesspai.md)、[项目页](../sources/sites/harnesspai.md)
 
+## [2026-10-09] ingest | Drawnix
+
+- **意图：** 归档用户给出的 Drawnix 开源白板仓库，并说明其在机器人研究流程图 / 思维导图中的适用边界。
+- **开源结论：** 仓库根目录声明 MIT；Web 应用源码开放。自动保存实现为浏览器 IndexedDB / LocalStorage，不能据此假定存在云同步或实时协作。
+- **关键内容：** 补充 Mermaid 转可编辑画布的源码路径、Markdown 转思维导图、图像 / JSON 导出及本地运行入口；新增独立项目知识页，并链接 Mermaid.js 节点。
+
 ## [2026-10-09] ingest | AI Engineering from Scratch — 接入开源 AI 工程课程并梳理机器人相关入口
 
 - 核验 GitHub MIT 许可与官方课程网站，归纳强化学习、Sim-to-Real、3D 视觉和 Agent 工程相关 lesson。
