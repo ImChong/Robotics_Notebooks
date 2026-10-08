@@ -10,6 +10,12 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | Raylib — C99 跨平台图形库
+
+- **意图：** 将截图中的 Raylib 作为独立工具实体收录，整理模块边界、跨平台绘制与机器人可视化用途。
+- **开放结论：** 官方仓库公开，zlib/libpng 许可；6.0 增加 CPU 软件渲染与内存帧缓冲平台。
+- **关键关联：** 与已有 GenoView-InverseKinematics 节点互链；明确 Raylib 不负责机器人动力学或物理仿真。
+
 ## [2026-10-08] ingest | NVIDIA 公司路线补充 Isaac Gym Preview 的 2020-10 时间点；核查官方论坛开放公告、后续博客与论文日期，复用既有详情并同步日期依据。
 
 ## [2026-10-08] ingest | FreeSpeed — arXiv:2610.05734
