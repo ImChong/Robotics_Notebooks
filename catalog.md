@@ -1388,6 +1388,7 @@
 - [Blind Grasp Reflex：本体感觉驱动的灵巧手抓取反射](wiki/entities/paper-blind-grasp-reflex.md) — Blind Grasp Reflex** 将手臂的全局到达与灵巧手的局部接触控制分开：手部策略只根据关节编码器历史及命令误差调整抓取，并输出抓取分数供手臂控制器决定何时继续抬升或操作。 `📅unknown` `[entity_page]`
 - [BLIP-2](wiki/entities/paper-blip2.md) — BLIP-2**（*Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language  `📅unknown` `[entity_page]`
 - [BooST：技能要同时记住「做什么」和「怎么动」](wiki/entities/paper-boost-skill-transfer.md) — BooST**（*Bridging Semantics and Motions for Efficient Skill Transfer*；[arXiv:2608.10600](https://a `📅unknown` `[entity_page]`
+- [BRACE：让全身跟踪同时适应地形与交互力](wiki/entities/paper-brace-force-terrain-whole-body-tracking.md) — BRACE**（*Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking*）不是单纯 `📅unknown` `[entity_page]`
 - [Brace Yourself（arXiv:2609.25486）](wiki/entities/paper-brace-yourself-environmental-bracing.md) — Brace Yourself**（*Brace Yourself: Task-Conditioned Environmental Bracing for Forceful Humanoid Man `📅unknown` `[entity_page]`
 - [BrickCraft-Duo（arXiv:2609.28281）](wiki/entities/paper-brickcraft-duo.md) — BrickCraft-Duo: Efficient Dual-Arm Skill Learning and Refinement for Compositional Long-Horizon As `📅unknown` `[entity_page]`
 - [BRIDGE：形态–控制共设计的开源人形平台](wiki/entities/paper-bridge-humanoid.md) — BRIDGE**（*An Open-Source Humanoid Platform via Morphology-Control Co-Design for Physical AI*，[arXi `📅unknown` `[entity_page]`
