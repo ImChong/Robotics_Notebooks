@@ -533,6 +533,7 @@
 - [Figure AI](wiki/entities/figure-ai.md) — Figure AI** 构建「全栈人形」：**Figure 系列硬件** + **Helix 系列 VLA 模型**，目标是在真实家庭与物流场景中完成语言条件下的全身操作与移动。 `📅unknown` `[entity_page]`
 - [find-skills（Vercel Labs 元技能）](wiki/entities/find-skills-skill.md) — find-skills** 位于 vercel-labs/skills 的 `skills/find-skills `📅unknown` `[entity_page]`
 - [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
+- [FineEnvs（LLM 强化学习环境与端到端配方）](wiki/entities/fineenvs.md) — FineEnvs** 是一组面向 LLM agent 的开源强化学习环境和端到端训练配方，包含任务实现、框架适配、notebook、训练脚本、评测与部署资源。 `📅unknown` `[entity_page]`
 - [fiveages-sim/robot_descriptions](wiki/entities/fiveages-sim-robot-descriptions.md) — fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions) 是 **ROS 2 desc `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
