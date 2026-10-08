@@ -8,9 +8,9 @@ tags:
 - survey-curated
 - embodied-wm-six-routes
 status: complete
-updated: 2026-10-06
+updated: 2026-10-07
 arxiv: '2608.04657'
-summary: MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
+summary: MobileWAM surpasses prior state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
 related:
 - paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
@@ -36,7 +36,7 @@ venue: curated
 
 ## 一句话定义
 
-MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
+MobileWAM surpasses prior state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
 
 ## 英文缩写速查
 
@@ -51,7 +51,7 @@ MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-H
 
 ## 为什么重要
 
-- MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
+- MobileWAM surpasses prior state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
@@ -69,7 +69,7 @@ MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-H
 
 ### 策展导读要点
 
-MobileWAM surpasses state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
+MobileWAM surpasses prior state-of-the-art mobile manipulation policies on ManiSkill-HAB and fine-tunes to a real ARX Lift2 mobile manipulator across diverse tasks with strong generalization.
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 

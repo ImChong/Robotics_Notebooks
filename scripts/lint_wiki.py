@@ -138,6 +138,11 @@ STALE_CLAIM_PRIOR_QUALIFIER_WINDOW = 12
 # 「最新」后紧跟的行内公式运行时量（如「最新 \((\mathbf{q},\mathbf{e})\)」）：与
 # 「最新状态/读数」同为运行时对象，只是把量写成符号而非名词，同样不随领域进展过时。
 STALE_CLAIM_RUNTIME_MATH_RE = re.compile(r"\s{0,2}\\\([^\n]{0,80}?\\\)")
+# 「以原文为准」式核对提示：「清单可能滞后于论文最新版本」「引用前自行核对最新
+# LICENSE」是叮嘱读者回查一手源，不是本页对领域进展的断言，不会随时间过时（上千个
+# 策展页共用前一句模板）；只认紧邻「最新」的「滞后于论文 / 核对」前缀，避免把
+# 「X 的最新版本」这类真断言一并放行。
+STALE_CLAIM_DEFER_TO_SOURCE_RE = re.compile(r"(?:滞后于论文|核对)$")
 # 命中词所在的「英文/数字/空格/连字符」连续片段，用于还原被引用的页面标题
 STALE_CLAIM_SPAN_CHAR_RE = re.compile(r"[A-Za-z0-9 -]")
 
@@ -1241,6 +1246,10 @@ def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
             if m.group(0) == "最新" and (
                 STALE_CLAIM_RUNTIME_OBJECT_RE.match(body, m.end())
                 or STALE_CLAIM_RUNTIME_MATH_RE.match(body, m.end())
+            ):
+                continue
+            if m.group(0) == "最新" and STALE_CLAIM_DEFER_TO_SOURCE_RE.search(
+                body[max(0, m.start() - 8) : m.start()]
             ):
                 continue
             if STALE_CLAIM_BASELINE_LABEL_RE.match(body, m.end()):

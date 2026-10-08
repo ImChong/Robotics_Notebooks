@@ -380,3 +380,27 @@ def test_stale_claims_is_info_only(tmp_path, monkeypatch) -> None:
     results["stale_claims"].append("wiki/concepts/old.md（含绝对化措辞「SOTA」...）")
     assert lw._failing_total(results) == 0
     assert lw._info_total(results) == 1
+
+
+def test_defer_to_source_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「清单可能滞后于论文最新版本」「核对最新 LICENSE」是回查一手源的提示，不是断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "清单 Contribution 可能滞后于论文最新版本，差异以原文为准。商用前自行核对最新 LICENSE。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
+def test_latest_version_claim_is_still_flagged(tmp_path, monkeypatch) -> None:
+    # 豁免只认「滞后于论文 / 核对」前缀：「X 的最新版本」仍是会过时的断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(wiki, "a.md", "2025-01-01", ["vla"], "π0.5 是该团队的最新版本。")
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    results = _run([claim, newer])
+    assert len(results["stale_claims"]) == 1
+    assert "最新" in results["stale_claims"][0]

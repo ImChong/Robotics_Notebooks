@@ -16,7 +16,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-10-07
 related:
 - ./dyna-2-1.md
 - ../concepts/world-action-models.md
@@ -166,7 +166,7 @@ flowchart TB
 
 ## 结论
 
-**Dyna-2 是目前最强的「百万小时人视频 × Joint WAM × 跨具身缩放」产业主张：世界建模（尤其无标签视频共训）被写成跨具身幂律的必要条件，而不是可选装饰。**
+**Dyna-2 是截至 2026-08 本库所见最激进的「百万小时人视频 × Joint WAM × 跨具身缩放」产业主张：世界建模（尤其无标签视频共训）被写成跨具身幂律的必要条件，而不是可选装饰。**
 
 - 真影响指标是 **嵌套小时梯子上的人/机离线幂律** 与 **同后训练协议下的真机归一化均值**，不是单任务 demo。
 - 与 EgoScale 对照时，关键差在 **是否做人–机对齐 mid-training** 与 **VLA vs WAM 目标**。

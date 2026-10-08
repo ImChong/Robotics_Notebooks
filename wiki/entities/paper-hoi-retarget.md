@@ -10,7 +10,7 @@ tags:
   - eth
   - unitree-g1
 status: complete
-updated: 2026-10-04
+updated: 2026-10-07
 arxiv: "2609.34674"
 related:
   - ../methods/motion-retargeting-gmr.md
@@ -21,10 +21,12 @@ related:
   - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ./unitree-g1.md
   - ./holosoma.md
+  - ./paper-flashdexretarget.md
 sources:
   - ../../sources/papers/hoi_retarget_arxiv_2609_34674.md
   - ../../sources/sites/hoi-retarget-shinben0327-github-io.md
   - ../../sources/repos/hoi-retarget.md
+  - ../../sources/papers/flashdexretarget_arxiv_2610_01849.md
 summary: "HOI-Retarget（arXiv:2609.34674，ETH RSL）：物体系接触目标 + 窗口 NLP 把人形 HOI 转为 G1/H2 参考；contact gap 0.5 cm vs OmniRetarget 18.3 cm、4.6× 更快；HF 发布 6,952 clips；GitHub BSD-3 已开源。"
 ---
 
@@ -191,12 +193,14 @@ sequenceDiagram
 - [OTRetarget](./paper-otretarget.md)
 - [DynaRetarget](./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md)
 - [Unitree G1](./unitree-g1.md)
+- [FlashDexRetarget](./paper-flashdexretarget.md) — 灵巧手侧的 HOI 重定向对照：用一个多参考 RL 策略联合学习多段手—物演示，而非逐段接触时间窗优化
 
 ## 参考来源
 
 - [hoi_retarget_arxiv_2609_34674.md](../../sources/papers/hoi_retarget_arxiv_2609_34674.md)
 - [hoi-retarget-shinben0327-github-io.md](../../sources/sites/hoi-retarget-shinben0327-github-io.md)
 - [hoi-retarget.md](../../sources/repos/hoi-retarget.md)
+- [flashdexretarget_arxiv_2610_01849.md](../../sources/papers/flashdexretarget_arxiv_2610_01849.md) — FlashDexRetarget 归档，含与本页接触中心优化的对照映射
 - [arXiv:2609.34674](https://arxiv.org/abs/2609.34674)
 
 ## 推荐继续阅读
