@@ -4,6 +4,7 @@ tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2r
 status: complete
 updated: 2026-10-08
 related:
+  - ../entities/robotera.md
   - ../entities/rai-institute.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -15,13 +16,14 @@ related:
   - ../entities/paper-dpc.md
   - ../entities/roboparty.md
 sources:
+  - ../../sources/sites/robotera.md
   - ../../sources/sites/rai-institute.md
   - ../../sources/sites/robot-foundation-model-company-research-2026.md
   - ../../sources/sites/deltai-com.md
   - ../../sources/sites/rewardai.md
   - ../../sources/sites/symbiosis-robotics-dpc.md
   - ../../sources/repos/party_os.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 18 家团队的公开技术路线与复现边界。"
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 19 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -89,6 +91,7 @@ flowchart TB
 | [Physical Intelligence](../../sources/sites/pi-website-technical-articles.md) | ● |  |  | π₀→π₀.₇、FAST、Hi Robot、KI、RTC、π*₀.₆、MEM |
 | [1X](../entities/1x-technologies.md) | ● | ● |  | [Redwood 策略](../entities/1x-redwood-policy.md)、World Model、NEO |
 | Google DeepMind | ● |  |  | Gemini Robotics |
+| [星动纪元 ROBOTERA](../entities/robotera.md) | ● | ● | ● | [VPP](../entities/paper-shenlan-wm-02-vpp.md)、ERA-42、L7 / M7 / XHAND、[Humanoid-Gym](../entities/humanoid-gym.md)、控制与数采接口 |
 | Galaxea 星海图 | ● |  |  | G0、Fast-WAM |
 | [AgiBot 智元](../../sources/sites/agibot-world.md) | ● |  |  | GO 系列、AgiBot World 数据 |
 | [Galbot 银河通用](../entities/galbot-astrabrain.md) | ● |  | ● | AstraBrain-WAM、[WBC 0.5 / Humanoid-GPT](../entities/paper-humanoid-gpt.md)、GraspVLA |
@@ -108,6 +111,8 @@ flowchart TB
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
 
 RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
+
+星动纪元的三列分别对应 VPP 视频预测表征、L7 / M7 / XHAND 与数据/控制接口、Humanoid-Gym 人形 RL；研究和产品属于不同节点，不假定一个统一模型已贯通且完整开放，见[公司与日期核查](../../sources/sites/robotera.md)。
 
 RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与仿真迁移。官网也研究物理交互基础模型；不据此将已收录项目判为通用 VLA / WAM，或视作统一人形整机产品，见[机构与路线](../entities/rai-institute.md)。
 
@@ -140,6 +145,7 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | AgiBot | ✅ | ✅ | ✅ | [Colosseo / GO-1](../entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md)、[Envisioner V1](../entities/paper-sa-2508-05635-genie-envisioner-a-unified-world-foundation-plat.md) 已有资产；不代表 GO-2、BFM-2、GE-Act 2 均完整开放 |
 | 1X | 🟡 | ❓ | 🟡 | 早期 World Model 部分资产；[Redwood 策略](../entities/1x-redwood-policy.md)官方页未列代码/权重，不能混用同名模型状态 |
 | Galaxea | ✅ | ✅ | 🟡 | [G0.5](../entities/paper-galaxea-g05.md)、[FastWAM](../entities/paper-fast-wam.md) 有代码/权重；全量预训练池与许可仍按项目核查 |
+| 星动纪元 | 🟡 | 🟡 | 🟡 | [VPP](../entities/paper-shenlan-wm-02-vpp.md) 代码/部分权重与 latent 数据；Humanoid-Gym 训练公开；M7 π₀.₅ 示例和 SDK 依赖配套服务；ERA-42 完整产品资产未列入口 |
 | LimX | 🟡 | ❓ | ❓ | FluxVLA 文档有可操作入口；COSA 以各发布页为准 |
 | Unitree | ✅ | 🟡 | 🟡 | SDK、遥操作/仿真/LeRobot、部分 UnifoLM 资产公开；模型训练与全部数据不等于完整开放 |
 | Figure | ❌ | ❌ | ❌ | [Helix / Helix 02 核查](../../sources/sites/figure-helix-models.md)：技术发布页未列模型代码、权重与数据 |
@@ -198,6 +204,7 @@ flowchart LR
 
 ## 参考来源
 
+- [星动纪元：成立与产品日期、开放范围](../../sources/sites/robotera.md)
 - [RAI Institute 机构、日期与开放范围核查](../../sources/sites/rai-institute.md)
 
 - [Galbot AstraBrain 官方补核](../../sources/sites/galbot-astrabrain.md)
@@ -205,7 +212,7 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [18 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [19 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
 - [PI 官方技术文章逐篇索引](../../sources/sites/pi-website-technical-articles.md)
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
