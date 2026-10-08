@@ -110,6 +110,77 @@
       ]
     },
     {
+      "key": "rai",
+      "name": "RAI Institute",
+      "founded_year": 2022,
+      "founded_source": "https://rai-inst.com/resources/press-release/hyundai-launches-boston-dynamics-ai-institute/",
+      "founded_note": "成立公告正文为 2022-08-12，初始名 Boston Dynamics AI Institute；按研究所成立时间排序，与 Boston Dynamics 公司分别阅读。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "Marc Raibert 领导的机器人与 AI 研究所：全身技能迁移、规划与学习结合、低惯量动态操作、真机适应与 ONNX 部署工具并行发展；开放资产逐项目核查。",
+      "official": "https://rai-inst.com/",
+      "nodes": [
+        {
+          "date": "2026-01",
+          "title": "ZEST",
+          "track": "全身技能",
+          "desc": "MoCap / 视频 / 动画经 RL 零样本迁移到 Atlas、G1、Spot；按 arXiv v1 01-30，期刊版为 08 月。",
+          "id": "entity-paper-zest",
+          "url": "https://arxiv.org/abs/2602.00401"
+        },
+        {
+          "date": "2026-04",
+          "title": "AthenaZero",
+          "track": "动态操作 / 硬件",
+          "desc": "低惯量、准直驱双臂操作平台；按 04-07 官方博客，09 月期刊论文另述；分析与部分数据公开。",
+          "id": "entity-paper-athenazero",
+          "url": "https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/"
+        },
+        {
+          "date": "2026-04",
+          "title": "Sumo",
+          "track": "全身移动操作",
+          "desc": "高层采样 MPC 驱动低层 RL；Spot 真机、G1 仿真；按 arXiv v1 04-09，现有公开仿真代码。",
+          "id": "wiki-methods-sumo",
+          "url": "https://sumo.rai-inst.com/"
+        },
+        {
+          "date": "2026-05",
+          "title": "Robot Juggling 演示",
+          "track": "真机学习",
+          "desc": "AthenaZero 机载视觉与多指手抛接，在线学习并组合花样；按 05-27 官方演示，后续论文复用同一详情。",
+          "id": "entity-paper-robot-juggling-athenazero",
+          "url": "https://rai-inst.com/resources/videos/a-new-benchmark-in-robot-juggling/"
+        },
+        {
+          "date": "2026-08",
+          "title": "SMPC-to-RL",
+          "track": "稀疏奖励 / 移动操作",
+          "desc": "SMPC 仿真采示范，再以稀疏 offline-to-online RL 接冻结低层；Spot / G1 真机；按 arXiv v1 08-12。",
+          "id": "entity-paper-smpc2rl-loco-manipulation",
+          "url": "https://pages.rai-inst.com/smpc2rl/"
+        },
+        {
+          "date": "2026-10",
+          "title": "Exploy",
+          "track": "策略部署",
+          "desc": "将观测、策略与动作处理导出为自包含 ONNX 图，接 C++ / ROS 2 控制器；代码公开，按 10-07 官方博客。",
+          "id": "entity-exploy",
+          "url": "https://rai-inst.com/resources/blog/introducing-exploy-simplifying-rl-policy-deployment-in-autonomous-robotics/"
+        },
+        {
+          "date": "",
+          "title": "RAI Institute 机构与研究路线",
+          "track": "机构 / 研究总览",
+          "desc": "研究所背景、五个方向及项目关系；与 Boston Dynamics 公司和 RobotecAI/rai 框架分开。",
+          "id": "entity-rai-institute",
+          "url": "https://rai-inst.com/research/",
+          "date_note": "持续维护的研究总览；研究所成立于 2022 年，不把本次核查日作为技术首发日。"
+        }
+      ]
+    },
+    {
       "key": "agibot",
       "name": "智元 AgiBot",
       "founded_year": 2023,
