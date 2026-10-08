@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-09
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -47,6 +47,7 @@ related:
   - ../concepts/progress-reward-modeling.md
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/skild-physical-self-play.md
+  - ../entities/ai-engineering-from-scratch.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -328,6 +329,7 @@ flowchart LR
 - [Kamino（闭链 GPU 仿真）](../entities/paper-kamino.md) — Newton 后端；DR Legs 4096 环境批量 RL（arXiv:2603.16536）
 
 - [FineEnvs](../entities/fineenvs.md) — 面向 LLM agent 的环境设计、训练与部署配方
+- [AI Engineering from Scratch](../entities/ai-engineering-from-scratch.md) — PPO 等 RL 基础与 Agent 工程的可运行课程入口
 
 ## 继续深挖入口
 
