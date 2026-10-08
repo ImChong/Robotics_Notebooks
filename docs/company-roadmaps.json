@@ -17,6 +17,7 @@
       "summary": "平台型路线：Cosmos 世界生成 + Isaac 仿真 + GR00T 人形基础模型 + 全身控制栈，多层资产分别开放。",
       "official": "https://developer.nvidia.com/blog/tag/robotics/",
       "nodes": [
+        { "date": "2020-10", "title": "Isaac Gym Preview", "track": "仿真 / RL", "desc": "官方 Preview 开放公告：PhysX GPU + PyTorch tensor API 支持端到端 GPU 强化学习；现为 legacy，后继学习框架是 Isaac Lab。", "id": "entity-isaac-gym", "url": "https://developer.nvidia.com/isaac-gym", "date_note": "官方 Preview 论坛开场帖显示 2020-10-31 并宣布开放预览；2020-12-17 介绍博客与 2021-08-24 论文 v1 是后续事件。", "date_source": "https://forums.developer.nvidia.com/t/welcome-to-the-isaac-gym-preview-forum/158405" },
         { "date": "2024-06", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架；2024-06-26 发布首个正式版本 v1.0.0。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/", "date_note": "2024-06-26 首个正式版本 v1.0.0；不使用继承的 Orbit 提交或 2025 年论文日期。", "date_source": "https://github.com/isaac-sim/IsaacLab/releases/tag/v1.0.0" },
         { "date": "2025-01", "title": "Cosmos 1.0", "track": "世界模型", "desc": "大规模视频预训练的世界基础模型平台。", "id": "entity-paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi", "url": "https://developer.nvidia.com/cosmos" },
         { "date": "2025-03", "title": "GR00T N1", "track": "VLA", "desc": "Eagle VLM + DiT 动作头，数据金字塔联合预训练。", "id": "entity-paper-hrl-stack-34-gr00t_n1", "url": "https://github.com/NVIDIA/Isaac-GR00T" },
