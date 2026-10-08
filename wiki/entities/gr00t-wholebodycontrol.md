@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-08
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
@@ -19,6 +19,7 @@ related:
   - ./paper-humanoid-touch-dream.md
   - ./isaac-teleop.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/sites/gr00t-wholebodycontrol-docs.md
   - ../../sources/repos/isaac_gr00t.md
@@ -108,7 +109,13 @@ sequenceDiagram
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
 - [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
 
+## 公司路线日期口径
+
+官方 README News：2025-11-12 Initial release；当时仅 Decoupled WBC，SONIC 与 MotionBricks 后续加入。 [日期证据](https://github.com/NVlabs/GR00T-WholeBodyControl#news)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md)
 - [sources/sites/gr00t-wholebodycontrol-docs.md](../../sources/sites/gr00t-wholebodycontrol-docs.md)

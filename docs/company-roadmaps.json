@@ -17,16 +17,16 @@
       "summary": "平台型路线：Cosmos 世界生成 + Isaac 仿真 + GR00T 人形基础模型 + 全身控制栈，多层资产分别开放。",
       "official": "https://developer.nvidia.com/blog/tag/robotics/",
       "nodes": [
+        { "date": "2024-06", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架；2024-06-26 发布首个正式版本 v1.0.0。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/", "date_note": "2024-06-26 首个正式版本 v1.0.0；不使用继承的 Orbit 提交或 2025 年论文日期。", "date_source": "https://github.com/isaac-sim/IsaacLab/releases/tag/v1.0.0" },
         { "date": "2025-01", "title": "Cosmos 1.0", "track": "世界模型", "desc": "大规模视频预训练的世界基础模型平台。", "id": "entity-paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi", "url": "https://developer.nvidia.com/cosmos" },
         { "date": "2025-03", "title": "GR00T N1", "track": "VLA", "desc": "Eagle VLM + DiT 动作头，数据金字塔联合预训练。", "id": "entity-paper-hrl-stack-34-gr00t_n1", "url": "https://github.com/NVIDIA/Isaac-GR00T" },
+        { "date": "2025-03", "title": "Cosmos Transfer", "track": "数据生成", "desc": "条件视频生成 / 场景变换；日期对应 Transfer1 论文 v1（2025-03-18），后续模型逐项核对。", "id": "entity-cosmos-transfer", "url": "https://github.com/nvidia-cosmos/cosmos-transfer1", "date_note": "Transfer1 的 arXiv:2503.14492 v1 提交于 2025-03-18；Transfer2.5 等后续版本另计。", "date_source": "https://arxiv.org/abs/2503.14492" },
         { "date": "2025-06", "title": "GR00T N1.5", "track": "VLA", "desc": "冻结 VLM 的改进版通用人形 VLA。", "id": "entity-paper-gr00t-n1-5", "url": "https://research.nvidia.com/labs/gear/gr00t-n1_5/" },
+        { "date": "2025-07", "title": "Cosmos Curator", "track": "数据", "desc": "开源视频筛选、去重与标注工具；2025-07-25 v1.0.0 Initial version，托管服务另核查。", "id": "entity-cosmos-curator", "url": "https://github.com/nvidia-cosmos/cosmos-curator", "date_note": "GitHub v1.0.0 Release published_at：2025-07-25（UTC）；开源工具版本事件，不代表托管云服务首发。", "date_source": "https://github.com/NVIDIA/cosmos-curator/releases/tag/v1.0.0" },
+        { "date": "2025-10", "title": "Cosmos Cookbook", "track": "实践", "desc": "2025-10-28 官方宣布加入 Cookbook，串联数据整理、世界生成与后训练配方；示例持续维护。", "id": "entity-cosmos-cookbook", "url": "https://github.com/nvidia-cosmos/cosmos-cookbook", "date_note": "Transfer2.5 官方 README News：2025-10-28 加入 Cosmos Cookbook；不使用 12-01 后续介绍文章日期。", "date_source": "https://github.com/nvidia-cosmos/cosmos-transfer2.5#news" },
+        { "date": "2025-11", "title": "GR00T-WholeBodyControl", "track": "全身控制", "desc": "2025-11-12 初次发布解耦 WBC；SONIC 2026-02、MotionBricks 2026-04 后续并入，当前是统一单仓。", "id": "entity-gr00t-wholebodycontrol", "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/", "date_note": "官方 README News：2025-11-12 Initial release；当时仅 Decoupled WBC，SONIC 与 MotionBricks 后续加入。", "date_source": "https://github.com/NVlabs/GR00T-WholeBodyControl#news" },
         { "date": "2026-06", "title": "Cosmos 3", "track": "世界模型", "desc": "全模态世界模型，服务数据生成与策略。", "id": "entity-cosmos-3", "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos3/" },
-        { "date": "2026-07", "title": "GR00T N1.7 工程工作流", "track": "VLA / 部署", "desc": "以 7 月官方工程文章为事件日期：LeRobot 数采、N1.7 后训练、评测和 TensorRT 部署；不视为模型首发日。", "id": "entity-isaac-gr00t", "url": "https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/" },
-        { "date": "", "title": "Isaac Lab", "track": "仿真", "desc": "GPU 并行 robot learning 框架，sim2real 主力栈。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-isaac-lab", "url": "https://isaac-sim.github.io/IsaacLab/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "GR00T-WholeBodyControl", "track": "全身控制", "desc": "解耦 WBC、SONIC 与 MotionBricks 的统一单仓。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-gr00t-wholebodycontrol", "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" },
-        { "date": "", "title": "Cosmos Curator", "track": "数据", "desc": "视频筛选、去重与标注；持续维护工具，无单一版本首发日期。", "id": "entity-cosmos-curator", "url": "https://github.com/nvidia-cosmos/cosmos-curator", "date_note": "持续维护工具入口，不以入库日充当首发日。" },
-        { "date": "", "title": "Cosmos Transfer", "track": "数据生成", "desc": "条件视频生成 / 场景变换，逐模型核对权重与许可；此处是持续维护入口。", "id": "entity-cosmos-transfer", "url": "https://github.com/nvidia-cosmos/cosmos-transfer1", "date_note": "聚合多个版本的工具入口。" },
-        { "date": "", "title": "Cosmos Cookbook", "track": "实践", "desc": "串联数据整理、世界生成与后训练配方；持续维护的工程示例。", "id": "entity-cosmos-cookbook", "url": "https://github.com/nvidia-cosmos/cosmos-cookbook", "date_note": "持续维护的示例集合。" }
+        { "date": "2026-07", "title": "GR00T N1.7 工程工作流", "track": "VLA / 部署", "desc": "以 7 月官方工程文章为事件日期：LeRobot 数采、N1.7 后训练、评测和 TensorRT 部署；不视为模型首发日。", "id": "entity-isaac-gr00t", "url": "https://developer.nvidia.com/blog/develop-humanoid-robot-policies-end-to-end-with-nvidia-isaac-gr00t/" }
       ]
     },
     {
@@ -54,9 +54,9 @@
       "summary": "轮式 EVE 到家用双足 NEO 的整机路线，叠加动作条件世界模型做评测与数据引擎。",
       "official": "https://www.1x.tech/discover/category/research",
       "nodes": [
+        { "date": "2024-08", "title": "NEO Beta（EVE → NEO）", "track": "整机", "desc": "2024-08-30 发布家庭双足原型 NEO Beta，体现 EVE → NEO 的场景转向；不是商业交付日期。", "id": "entity-1x-technologies", "url": "https://www.1x.tech/", "date_note": "1X 官方公告：2024-08-30 发布 NEO Beta；是家庭双足原型事件，不是 EVE 首发或 NEO 商业交付日。", "date_source": "https://www.1x.tech/discover/announcement-1x-unveils-neo-beta-a-humanoid-robot-for-the-home" },
         { "date": "2025-06", "title": "1X World Model", "track": "世界模型", "desc": "全身人形动作条件视频预测，用作策略评测引擎。", "id": "entity-paper-1xwm-redwood-world-model", "url": "https://www.1x.tech/discover/redwood-ai-world-model" },
-        { "date": "2025-06", "title": "Redwood AI 策略", "track": "VLA", "desc": "160M 机载策略联合移动、双臂与骨盆指令；区别于同名 World Model，未见策略资产下载。", "id": "entity-1x-redwood-policy", "url": "https://www.1x.tech/discover/redwood-ai" },
-        { "date": "", "title": "EVE → NEO", "track": "整机", "desc": "从结构化场景轮式人形转向家庭场景双足平台。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-1x-technologies", "url": "https://www.1x.tech/", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
+        { "date": "2025-06", "title": "Redwood AI 策略", "track": "VLA", "desc": "160M 机载策略联合移动、双臂与骨盆指令；区别于同名 World Model，未见策略资产下载。", "id": "entity-1x-redwood-policy", "url": "https://www.1x.tech/discover/redwood-ai" }
       ]
     },
     {
@@ -89,9 +89,9 @@
       "summary": "腿足本体与 RL 部署起家，向上做 COSA 人形大脑操作系统与 FluxVLA 工程平台。",
       "official": "https://www.limxdynamics.com/en",
       "nodes": [
+        { "date": "2024-11", "title": "TRON1 RL 部署", "track": "全身控制", "desc": "2024-11-04 官方提交已含 TRON1 三形态配置与 ONNX 策略，经 ROS 2 / 低层 SDK 部署；是代码历史证据。", "id": "entity-cn-os-tron1-rl-deploy-ros2", "url": "https://github.com/limxdynamics", "date_note": "2024-11-04 官方提交含 PF/SF/WF_TRON1A 配置与 ONNX 策略；上一条 09-20 提交无 TRON，早期 06 月是 PointFoot 前序。提交时间不证明首次公开。", "date_source": "https://github.com/limxdynamics/tron1-rl-deploy-ros2/commit/5980ee3d16d56a28d6b497cec603e6151183619a" },
         { "date": "2026-07", "title": "COSA 0.5", "track": "系统", "desc": "人形大脑操作系统，重点升级人形 VLA。", "id": "entity-limx-cosa", "url": "https://www.limxdynamics.com/en/news/BK000067" },
-        { "date": "2026-09", "title": "FluxVLA Engine", "track": "平台", "desc": "配置驱动的开源 VLA 工程平台，含 RTC 推理与真机 operator。", "id": "entity-fluxvla-engine", "url": "https://github.com/FluxVLA/FluxVLA" },
-        { "date": "", "title": "TRON1 RL 部署", "track": "全身控制", "desc": "ONNX 策略经 ROS 2 控制器与低层 SDK 上真机。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-cn-os-tron1-rl-deploy-ros2", "url": "https://github.com/limxdynamics", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
+        { "date": "2026-09", "title": "FluxVLA Engine", "track": "平台", "desc": "配置驱动的开源 VLA 工程平台，含 RTC 推理与真机 operator。", "id": "entity-fluxvla-engine", "url": "https://github.com/FluxVLA/FluxVLA" }
       ]
     },
     {
@@ -121,6 +121,16 @@
       "summary": "Marc Raibert 领导的机器人与 AI 研究所：全身技能迁移、规划与学习结合、低惯量动态操作、真机适应与 ONNX 部署工具并行发展；开放资产逐项目核查。",
       "official": "https://rai-inst.com/",
       "nodes": [
+        {
+          "date": "2022-08",
+          "title": "RAI Institute 成立与研究路线",
+          "track": "机构 / 研究总览",
+          "desc": "2022-08-12 宣布成立，初名 Boston Dynamics AI Institute；当前五方向与项目关系持续演进。",
+          "id": "entity-rai-institute",
+          "url": "https://rai-inst.com/research/",
+          "date_note": "成立公告正文事件日 2022-08-12，页面栏为 08-11；均为同月。当前五方向总览不是同日发布的模型。",
+          "date_source": "https://rai-inst.com/resources/press-release/hyundai-launches-boston-dynamics-ai-institute/"
+        },
         {
           "date": "2026-01",
           "title": "ZEST",
@@ -168,15 +178,6 @@
           "desc": "将观测、策略与动作处理导出为自包含 ONNX 图，接 C++ / ROS 2 控制器；代码公开，按 10-07 官方博客。",
           "id": "entity-exploy",
           "url": "https://rai-inst.com/resources/blog/introducing-exploy-simplifying-rl-policy-deployment-in-autonomous-robotics/"
-        },
-        {
-          "date": "",
-          "title": "RAI Institute 机构与研究路线",
-          "track": "机构 / 研究总览",
-          "desc": "研究所背景、五个方向及项目关系；与 Boston Dynamics 公司和 RobotecAI/rai 框架分开。",
-          "id": "entity-rai-institute",
-          "url": "https://rai-inst.com/research/",
-          "date_note": "持续维护的研究总览；研究所成立于 2022 年，不把本次核查日作为技术首发日。"
         }
       ]
     },
@@ -293,7 +294,7 @@
       "nodes": [
         { "date": "2025-05", "title": "GraspVLA", "track": "VLA", "desc": "合成抓取与语义联合预训练；代码、权重及 SynGrasp-1B 有公开入口。", "id": "entity-cn-os-graspvla", "url": "https://github.com/PKU-EPIC/GraspVLA" },
         { "date": "2026-06", "title": "AstraBrain-WBC 0.5 / Humanoid-GPT", "track": "全身控制", "desc": "同一发布物：大规模运动跟踪；已开放推理/部署与 checkpoint，训练和全量数据待发布。", "id": "entity-paper-humanoid-gpt", "url": "https://qizekun.github.io/Humanoid-GPT/" },
-        { "date": "", "title": "AstraBrain-WAM", "track": "世界模型", "desc": "异构数据学习与世界–动作基座；官网持续更新，未确认首发日期与完整复现资产。", "id": "entity-galbot-astrabrain", "url": "https://galbot.com/about/", "date_note": "持续更新的官方介绍，未确认单一首发日期。" }
+        { "date": "", "title": "AstraBrain-WAM", "track": "世界模型", "desc": "异构数据学习与世界–动作基座；官网持续更新，未确认首发日期与完整复现资产。", "id": "entity-galbot-astrabrain", "url": "https://galbot.com/about/", "date_note": "官方 about / 首页有模型说明但无单一首发日期；WBC 0.5、WAM-TTT 与 WRC 展示是不同事件，不借用其日期。" }
       ]
     },
     {
@@ -306,9 +307,9 @@
       "summary": "G0 系列 VLA 与 Fast-WAM：跨本体操作，推理期跳过未来视频去噪换取低延迟。",
       "official": "https://galaxea-ai.com/",
       "nodes": [
+        { "date": "2025-09", "title": "G0 / G0Plus 历史版本", "track": "VLA", "desc": "G0 权重 2025-09-09、代码 09-17；G0Plus 2026-01-04，02-12 更新。复现钉历史 revision 13a16a9。", "id": "entity-paper-galaxea-g05", "url": "https://github.com/OpenGalaxea/GalaxeaVLA/tree/13a16a9", "date_note": "固定 revision 13a16a9 的 News：G0 权重 2025-09-09、微调/推理代码 09-17；G0Plus 2026-01-04、更新 02-12。日期锚定系列 G0 起点。", "date_source": "https://github.com/OpenGalaxea/GalaxeaVLA/blob/13a16a9049aee8f1d799b56fccc0c5832a75fc2f/README.md#-news" },
         { "date": "2026-03", "title": "Fast-WAM", "track": "世界模型", "desc": "训练期视频共训、推理期跳过未来视频去噪，190 ms 延迟。", "id": "entity-paper-fast-wam", "url": "https://yuantianyuan01.github.io/FastWAM/" },
-        { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" },
-        { "date": "", "title": "G0 / G0Plus 历史版本", "track": "VLA", "desc": "GalaxeaVLA 历史 commit 13a16a9；详情有版本边界，不能使用当前 G0.5 命令推定兼容。", "id": "entity-paper-galaxea-g05", "url": "https://github.com/OpenGalaxea/GalaxeaVLA/tree/13a16a9", "date_note": "历史版本归档，未确认首发日期。" }
+        { "date": "2026-08", "title": "G0.5", "track": "VLA", "desc": "推理与动作同一自回归流；GalaxeaVLA 仓开源。", "id": "entity-paper-galaxea-g05", "url": "https://opengalaxea.github.io/G05/" }
       ]
     },
     {
@@ -358,31 +359,34 @@
           "url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202507/t20250723_211232.html"
         },
         {
-          "date": "",
+          "date": "2025-08",
           "title": "teleop_client",
           "track": "遥操作 / 消息接口",
-          "desc": "SDK 与遥操作的生命周期命令、消息和配置；依赖厂商环境与授权文件。持续维护，首发日期未确认。",
+          "desc": "2025-08-01 根提交已含遥操作客户端与 ROS 接口；依赖厂商环境和授权文件，日期是代码历史起点。",
           "id": "entity-cn-os-teleop-client",
           "url": "https://github.com/roboterax/teleop_client",
-          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+          "date_note": "默认分支根提交 35aaa7b：2025-08-01，含 pub_client.py 和 ROS 接口；是含实现的历史起点，不证明首次公开或产品首发。",
+          "date_source": "https://github.com/roboterax/teleop_client/commit/35aaa7b84c27377aac3ba46f7684cd655845d608"
         },
         {
-          "date": "",
+          "date": "2026-01",
           "title": "xbot_sdk_api",
           "track": "控制 SDK",
-          "desc": "ROS 2 Python 关节/轨迹、MPC 服务、手与底盘控制封装；不代表底层运控全开源。首发日期未确认。",
+          "desc": "2026-01-17 根提交已含 Python 控制器与示例；关节/轨迹、MPC 服务、手与底盘封装不代表底层运控全开源。",
           "id": "entity-cn-os-xbot-sdk-api",
           "url": "https://github.com/roboterax/xbot_sdk_api",
-          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+          "date_note": "默认分支根提交 34512a0：2026-01-17，含控制器与 Python 示例；提交时间不证明首次公开，不代表底层算法全开源。",
+          "date_source": "https://github.com/roboterax/xbot_sdk_api/commit/34512a0338416f42024e2a7bb021b4766a545086"
         },
         {
-          "date": "",
+          "date": "2026-04",
           "title": "robotera_vla：M7 基线",
           "track": "VLA / 采集与部署",
-          "desc": "M7 / π₀.₅ 示例链路，公开契约与部分训练/推理、样例资产；机器人侧 recorder/遥操作服务不在仓内。首发日期未确认。",
+          "desc": "2026-04-17 导入 M7 / π₀.₅ 基线、采集契约和样例；机器人侧 recorder / 遥操作服务不在仓内。",
           "id": "entity-cn-os-robotera-vla",
           "url": "https://github.com/roboterax/robotera_vla",
-          "date_note": "持续维护入口；本轮未确认单一首发日期，不以 README 修改日或入库日填补。"
+          "date_note": "默认分支唯一根提交 9ff7067：2026-04-17 Initial import，含采集契约与训练/推理基线；不是 ERA-42 或 π₀.₅ 首发。",
+          "date_source": "https://github.com/roboterax/robotera_vla/commit/9ff7067fa262f055875fe8a3e56d445734a7751c"
         }
       ]
     },
@@ -423,13 +427,13 @@
       "official": "https://www.lightorigins.com/en/blog/",
       "nodes": [
         { "date": "2026-08", "title": "LightParkour", "track": "全身控制", "desc": "Real2Sim2Real 稀疏种子扩张 + 多专家跑酷。", "id": "entity-paper-light-loco-parkour", "url": "https://www.lightorigins.com/blog/lightparkour" },
+        { "date": "2026-08", "title": "Lightbot 0：跑酷演示", "track": "整机", "desc": "2026-08-03 LightParkour 博客展示自研人形的跑酷与机载策略；是演示日期，整机首发仍未确认。", "id": "entity-lightbot-0", "url": "https://www.lightorigins.com/blog/lightparkour", "date_note": "2026-08-03 LightParkour 博客展示 Lightbot 0；日期对应这次官方硬件演示，不声称整机首次发布或上市。", "date_source": "https://www.lightorigins.com/blog/lightparkour" },
         { "date": "2026-09", "title": "LightNav-0", "track": "导航", "desc": "激发 VLM 空间智能的通用具身导航。", "id": "entity-paper-lightnav-0", "url": "https://www.lightorigins.com/en/blog/lightnav-0" },
         { "date": "2026-09", "title": "Light REACT", "track": "全身控制", "desc": "故障与扰动下的全身自适应恢复。", "id": "entity-light-react", "url": "https://www.lightorigins.com/blog/light-react" },
         { "date": "2026-09", "title": "Light-O1", "track": "基础模型", "desc": "从互联网视频恢复人类动作做预训练；推理代码与预览权重开源。", "id": "entity-light-o1", "url": "https://www.lightorigins.com/en/blog/light-o1" },
         { "date": "2026-09", "title": "LightNav-ER", "track": "具身推理", "desc": "LightNav-0 官方 9 月文章中的空间推理阶段，未确认独立模型资产发布。", "id": "entity-lightnav-er", "url": "https://www.lightorigins.com/en/blog/lightnav-0" },
-        { "date": "", "title": "Light Origins 公司与全栈", "track": "公司", "desc": "Intelligence-first 路线与模型/数据/硬件关系；公司总览，无模型发布日期。", "id": "entity-light-origins", "url": "https://www.lightorigins.com/en/about", "date_note": "公司总览。" },
-        { "date": "", "title": "Lightbot 0", "track": "整机", "desc": "自研人形是 Parkour、REACT 的硬件载体；现有资料未给确证首发日。", "id": "entity-lightbot-0", "url": "https://www.lightorigins.com/blog/lightparkour", "date_note": "硬件背景，未确认首发日期。" },
-        { "date": "", "title": "InsightBench", "track": "评测", "desc": "开源评测 split 与 Habitat-GS 场景；训练侧规模不能视为全部开放，未确认独立首发日。", "id": "entity-insight-bench", "url": "https://github.com/lightorigins/Light-INSIGHT-Bench", "date_note": "评测入口，未确认独立首发日期。" }
+        { "date": "2026-09", "title": "InsightBench", "track": "评测", "desc": "2026-09-09 v1 首次公开发布评测实现；评测 split 与场景开放不等于完整训练数据开放。", "id": "entity-insight-bench", "url": "https://github.com/lightorigins/Light-INSIGHT-Bench", "date_note": "2026-09-09 根提交明确写 INSIGHT-Bench v1: initial public release；与 09-01 LightNav-0 博客及 08 月论文分开。", "date_source": "https://github.com/lightorigins/Light-INSIGHT-Bench/commit/4cf6f94ec357c9a4b8906e81329434975b6f3f37" },
+        { "date": "", "title": "Light Origins 公司与全栈", "track": "公司", "desc": "Intelligence-first 路线与模型/数据/硬件关系；公司总览，无模型发布日期。", "id": "entity-light-origins", "url": "https://www.lightorigins.com/en/about", "date_note": "公司总览持续更新；已知成立于 2024 年底但官方未确认月份，不补造 YYYY-MM，也不借用融资或模型日期。" }
       ]
     },
     {
@@ -452,7 +456,7 @@
         { "date": "2026-07", "title": "LingBot-World 2.0", "track": "世界模型", "desc": "720p 60 fps 无界交互视界，pilot / director 双 agent。", "id": "entity-paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling", "url": "https://technology.robbyant.com/lingbot-world-v2" },
         { "date": "2026-07", "title": "LingBot-VA 2.0", "track": "世界–动作", "desc": "语义视觉–动作 tokenizer + 因果 DiT + 视频流 MoE；仅公开技术报告。", "id": "entity-robbyant", "url": "https://technology.robbyant.com/lingbot-va-v2" },
         { "date": "2026-07", "title": "LingBot-Video", "track": "视频预训练", "desc": "DiT + MoE 具身视频基础模型，reward 对齐物理合理性与任务完成度。", "id": "entity-cn-os-lingbot-video", "url": "https://technology.robbyant.com/lingbot-video" },
-        { "date": "", "title": "LingBot 全栈", "track": "公司", "desc": "Ant Group → Robbyant → LingBot：感知 → 空间 → 视频 → 世界 → 动作七条模型线。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-robbyant", "url": "https://www.robbyant.com/about-robby", "date_note": "持续维护 / 聚合入口；现有收录资料未确认单一首发日期。" }
+        { "date": "", "title": "LingBot 全栈", "track": "公司", "desc": "Ant Group → Robbyant → LingBot：感知 → 空间 → 视频 → 世界 → 动作七条模型线。 日期未确认（持续维护 / 聚合入口）。", "id": "entity-robbyant", "url": "https://www.robbyant.com/about-robby", "date_note": "公司 / 七条模型线的持续聚合入口，没有单一发布事件；各模型已有独立日期，不以公司注册或第一款模型日期替代。" }
       ]
     },
     {
@@ -482,11 +486,11 @@
         { "date": "2026-01", "title": "Roboto Origin 全栈开源", "track": "整机 / 工程", "desc": "结构、电气、固件、模型描述、训练与 ROS 2 部署；快照聚合仓导向各模块开发仓。", "id": "entity-roboto-origin", "url": "https://github.com/Roboparty/roboto_origin" },
         { "date": "2026-07", "title": "RoboParty Lab / Party OS", "track": "研发底座", "desc": "Lab 成立与首批工具链发布阶段：串联数据、运控和部署，并规划感知、全身操作与 Agent。", "id": "entity-party-os", "url": "https://github.com/Roboparty/Party_OS" },
         { "date": "2026-07", "title": "INTACT", "track": "世界模型", "desc": "Lab 联署的意图→动作 JEPA；上游已发布训练、评测和权重入口，RoboParty fork 仍为研究预览。", "id": "entity-paper-intact", "url": "https://zju3dv.github.io/INTACT-JEPA/" },
-        { "date": "", "title": "Know-How / 完整研发文档", "track": "技术知识库", "desc": "运动控制 Know-How 与整机研发文档的阅读入口；本库笔记复用技术地图，已核查目录与部分正文，新增章节未确认。", "id": "wiki-overview-roboparty-lab-party-os-technology-map", "url": "https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87", "date_note": "持续维护文档；未确认首发日期，也不以本次核查日代替章节发布日期。" },
-        { "date": "", "title": "Human-Humanoid Tools / hhtools", "track": "数据 / 重定向", "desc": "人体→人形与机器人→机器人动作迁移、数据处理和可视化；外部人体模型资产单独获取。", "id": "entity-human-humanoid-tools", "url": "https://github.com/Roboparty/human-humanoid-tools", "date_note": "持续维护工具，具体版本首发日期未确认；属于 Lab 首批工具链。" },
-        { "date": "", "title": "MimicLite", "track": "监督运动跟踪", "desc": "训练、评测、数据转换与 ONNX / G1 部署入口；当前公开 PPO / ROA 策略，组件及数据许可分别核查。", "id": "entity-mimiclite", "url": "https://github.com/Roboparty/MimicLite", "date_note": "持续维护工具；当前 PPO / ROA 发布不沿用首批工具链的性能口径或日期。" },
-        { "date": "", "title": "UFO", "track": "无监督控制", "desc": "MJLab 上的 FB / TeCH 训练、动作数据导入、tracking / goal / reward 推理及 G1 真机遥操。", "id": "entity-roboparty-ufo", "url": "https://github.com/Roboparty/UFO", "date_note": "持续维护框架，未确认当前版本首发日期；属于 Lab 首批工具链。" },
-        { "date": "", "title": "TeCH", "track": "全身控制 / 表征", "desc": "时间距离与对比表征学习的人形运控方法；实现集成在 UFO，与 FB 路线形成对照。", "id": "entity-paper-tech-humanoid-control", "url": "https://lab.roboparty.com/outputs/tech", "date_note": "官方成果入口未确认单一首发日期，不以入库日代替。" }
+        { "date": "2026-07", "title": "UFO", "track": "无监督控制", "desc": "2026-07-02 以 UFO 命名并加入 FB / TLDR 预设；MJLab 训练、tracking / goal / reward 推理及 G1 遥操。", "id": "entity-roboparty-ufo", "url": "https://github.com/Roboparty/UFO", "date_note": "2026-07-02 官方提交 Rebrand project as UFO and add FB/TLDR presets；前序 MJLab BFM-Zero 根提交为 06-30，不等于当时已发布 UFO。", "date_source": "https://github.com/Roboparty/UFO/commit/3c36e178fbb3e92adcdd76541b3cc8426fc62ea2" },
+        { "date": "2026-07", "title": "TeCH", "track": "全身控制 / 表征", "desc": "2026-07-13 UFO 将公开 TLDR 预设命名为 TeCH；时间距离与对比表征控制方法，日期对应实现事件。", "id": "entity-paper-tech-humanoid-control", "url": "https://lab.roboparty.com/outputs/tech", "date_note": "2026-07-13 UFO 官方提交将公开 TLDR preset 改名为 TeCH；是方法实现命名事件，不是论文 v1 或成果网页首发。", "date_source": "https://github.com/Roboparty/UFO/commit/e3679e3264e365a42259dc258fc191e67a6b7b46" },
+        { "date": "2026-08", "title": "MimicLite：PPO / ROA", "track": "监督运动跟踪", "desc": "2026-08-31 官方版本表改为 PPO / ROA，提供训练、评测与 ONNX / G1 部署；旧版性能与日期另计。", "id": "entity-mimiclite", "url": "https://github.com/Roboparty/MimicLite", "date_note": "2026-08-31 官方提交公开列出 MimicLite-PPO / MimicLite-ROA；是当前公开版本表记录，不沿用旧 Huge/Base/v1.1 或首批工具链日期。", "date_source": "https://github.com/Roboparty/MimicLite/commit/3963976de8778d9292305fc8efacbcae79ed6685" },
+        { "date": "2026-09", "title": "Human-Humanoid Tools / hhtools 0.1.0 Preview", "track": "数据 / 重定向", "desc": "2026-09-24 发布 0.1.0 Preview 桌面 GUI；人体→人形与机器人→机器人迁移、处理与可视化，人体模型另取。", "id": "entity-human-humanoid-tools", "url": "https://github.com/Roboparty/human-humanoid-tools", "date_note": "GitHub Release：0.1.0(beta) / HHTools 0.1.0 Preview，2026-09-24 published_at；是 GUI 预览版本，不是首批工具链首发。", "date_source": "https://github.com/Roboparty/human-humanoid-tools/releases/tag/0.1.0(beta)" },
+        { "date": "", "title": "Know-How / 完整研发文档", "track": "技术知识库", "desc": "运动控制 Know-How 与整机研发文档的阅读入口；本库笔记复用技术地图，已核查目录与部分正文，新增章节未确认。", "id": "wiki-overview-roboparty-lab-party-os-technology-map", "url": "https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87", "date_note": "飞书持续维护文档未公开可核实的首发日；Party OS 发布和第三方文章日期不等于该文档或章节首发。" }
       ]
     },
     {
@@ -516,5 +520,5 @@
       ]
     }
   ],
-  "date_policy": "日期优先对应原始技术发布；明确标注的工程文章/阶段地图按该事件月份；空日期由 date_note 说明，不用入库日代替首发日。"
+  "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。"
 }

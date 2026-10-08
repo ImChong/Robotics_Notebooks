@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-retargeting, open-source, roboparty, dataset, newton-physics, teleoperation]
 status: complete
-updated: 2026-07-30
+updated: 2026-10-08
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -12,6 +12,7 @@ related:
   - ../queries/humanoid-training-data-pipeline.md
   - ../tasks/teleoperation.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/human_humanoid_tools.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
 summary: "human-humanoid-tools（hhtools）是 RoboParty 开源的 Human-to-Humanoid 动作重定向工作台：Newton IK 与 Interaction-Mesh 双后端、约 30 秒级复杂全身 retarget、Any Motion/Any URDF/R2R 与一体化数据分析和 3D 可视化。"
@@ -113,7 +114,13 @@ summary: "human-humanoid-tools（hhtools）是 RoboParty 开源的 Human-to-Huma
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md)
 - [Teleoperation](../tasks/teleoperation.md)
 
+## 公司路线日期口径
+
+GitHub Release：0.1.0(beta) / HHTools 0.1.0 Preview，2026-09-24 published_at；是 GUI 预览版本，不是首批工具链首发。 [日期证据](https://github.com/Roboparty/human-humanoid-tools/releases/tag/0.1.0(beta))。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [human_humanoid_tools.md](../../sources/repos/human_humanoid_tools.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)

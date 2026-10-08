@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, reinforcement-learning, unsupervised-rl, bfm, behavior-foundation-model, motion-tracking, contrastive-learning, temporal-distance, whole-body-control, unitree-g1, roboparty, mjlab]
 status: complete
-updated: 2026-07-30
+updated: 2026-10-08
 venue: "2026 · RoboParty Lab"
 code: https://github.com/Roboparty/UFO
 summary: "TeCH：RoboParty Lab 基于 TLDR 对比时间距离表征的无监督人形全身控制；隐空间密集进度奖励 + off-policy 训练，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC(TER.) 且 GPU 小时降近两个数量级，真机抗扰与跌倒恢复优于监督跟踪基线。"
@@ -19,6 +19,7 @@ related:
   - ./unitree-g1.md
   - ./mjlab.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
   - ../../sources/repos/roboparty_ufo.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
@@ -174,7 +175,13 @@ flowchart TB
 - [BFM 01 Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)
 - [Unitree G1](./unitree-g1.md)
 
+## 公司路线日期口径
+
+2026-07-13 UFO 官方提交将公开 TLDR preset 改名为 TeCH；是方法实现命名事件，不是论文 v1 或成果网页首发。 [日期证据](https://github.com/Roboparty/UFO/commit/e3679e3264e365a42259dc258fc191e67a6b7b46)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)

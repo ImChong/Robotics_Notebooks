@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, unsupervised-rl, bfm, open-source, roboparty, teleoperation, mjlab]
 status: complete
-updated: 2026-08-04
+updated: 2026-10-08
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -15,6 +15,7 @@ related:
   - ./mimiclite.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/roboparty_ufo.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
@@ -106,7 +107,13 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - [Teleoperation](../tasks/teleoperation.md)
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — UFO/BFM-Zero 任务球读法
 
+## 公司路线日期口径
+
+2026-07-02 官方提交 Rebrand project as UFO and add FB/TLDR presets；前序 MJLab BFM-Zero 根提交为 06-30，不等于当时已发布 UFO。 [日期证据](https://github.com/Roboparty/UFO/commit/3c36e178fbb3e92adcdd76541b3cc8426fc62ea2)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)

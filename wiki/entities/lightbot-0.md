@@ -6,7 +6,7 @@ tags:
   - hardware
   - light-origins
 status: complete
-updated: 2026-09-21
+updated: 2026-10-08
 related:
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
@@ -14,6 +14,7 @@ related:
   - ./light-react.md
   - ./paper-light-loco-parkour.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/papers/lightbot_0_lightorigins_2026.md
   - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
 summary: "Lightbot 0：90 cm / 18.9 kg / 21 DoF QDD 人形；D435 深度 + 骨盆 IMU；Jetson Orin Nano 50 Hz 机载策略。"
@@ -67,7 +68,13 @@ summary: "Lightbot 0：90 cm / 18.9 kg / 21 DoF QDD 人形；D435 深度 + 骨�
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 
+## 公司路线日期口径
+
+2026-08-03 LightParkour 博客展示 Lightbot 0；日期对应这次官方硬件演示，不声称整机首次发布或上市。 [日期证据](https://www.lightorigins.com/blog/lightparkour)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [lightbot_0_lightorigins_2026.md](../../sources/papers/lightbot_0_lightorigins_2026.md)
 - [lightorigins_lightparkour_2026-08-03.md](../../sources/blogs/lightorigins_lightparkour_2026-08-03.md)

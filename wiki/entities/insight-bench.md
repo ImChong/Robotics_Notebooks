@@ -10,7 +10,7 @@ tags:
   - open-source
   - isaac-sim
 status: complete
-updated: 2026-09-23
+updated: 2026-10-08
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
@@ -23,6 +23,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ./isaac-lab.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/papers/insight_bench_lightorigins_2026.md
   - ../../sources/sites/light-insight-bench.md
   - ../../sources/repos/lightorigins-light-insight-bench.md
@@ -200,7 +201,13 @@ sequenceDiagram
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页横跨其 ③ 策略任务成功率层与 ④ sim↔real 校准层：Isaac Sim 真扫场景导航成功率，仿真分外推真机仍需校准
 
+## 公司路线日期口径
+
+2026-09-09 根提交明确写 INSIGHT-Bench v1: initial public release；与 09-01 LightNav-0 博客及 08 月论文分开。 [日期证据](https://github.com/lightorigins/Light-INSIGHT-Bench/commit/4cf6f94ec357c9a4b8906e81329434975b6f3f37)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [insight_bench_lightorigins_2026.md](../../sources/papers/insight_bench_lightorigins_2026.md)
 - [light-insight-bench.md](../../sources/sites/light-insight-bench.md)

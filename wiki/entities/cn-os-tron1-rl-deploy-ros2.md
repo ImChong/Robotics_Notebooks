@@ -7,7 +7,7 @@ tags:
 - sim2real
 - reinforcement-learning
 status: complete
-updated: '2026-10-05'
+updated: 2026-10-08
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -16,6 +16,7 @@ related:
 - ./limx-cosa.md
 - ../methods/reinforcement-learning.md
 sources:
+- ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
 - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 - ../../sources/repos/tron1-rl-deploy-ros2.md
 summary: TRON1 RL Deploy ROS2 用 ROS 2 控制器与 ONNX Runtime 执行训练后的运动策略，通过 robot_hw 与低层 SDK 对接仿真或 TRON1 真机。
@@ -69,7 +70,13 @@ TRON1 RL Deploy ROS2 用 ROS 2 控制器与 ONNX Runtime 执行训练后的运�
 - [COSA](./limx-cosa.md)
 - [强化学习](../methods/reinforcement-learning.md)
 
+## 公司路线日期口径
+
+2024-11-04 官方提交含 PF/SF/WF_TRON1A 配置与 ONNX 策略；上一条 09-20 提交无 TRON，早期 06 月是 PointFoot 前序。提交时间不证明首次公开。 [日期证据](https://github.com/limxdynamics/tron1-rl-deploy-ros2/commit/5980ee3d16d56a28d6b497cec603e6151183619a)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [官方部署仓库归档](../../sources/repos/tron1-rl-deploy-ros2.md)
 

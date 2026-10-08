@@ -14,7 +14,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-05
+updated: 2026-10-08
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
@@ -33,6 +33,7 @@ related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
 sources:
+  - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part2.md
   - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
   - ../../sources/sites/opengalaxea-g05.md
@@ -217,7 +218,13 @@ sequenceDiagram
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
+## 公司路线日期口径
+
+固定 revision 13a16a9 的 News：G0 权重 2025-09-09、微调/推理代码 09-17；G0Plus 2026-01-04、更新 02-12。日期锚定系列 G0 起点。 [日期证据](https://github.com/OpenGalaxea/GalaxeaVLA/blob/13a16a9049aee8f1d799b56fccc0c5832a75fc2f/README.md#-news)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。
+
 ## 参考来源
+
+- [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [galaxea_g05_arxiv_2608_11739.md](../../sources/papers/galaxea_g05_arxiv_2608_11739.md)
 - [项目页归档](../../sources/sites/opengalaxea-g05.md)
