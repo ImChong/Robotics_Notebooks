@@ -10,6 +10,12 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] ingest | Bode 图概念与原始资料
+
+- 新增 Bode 图概念页，解释幅频/相频、增益与相位裕度、机器人控制应用及边界，含 Mermaid 图。
+- 归档 Bode 1940 年期刊论文、1945 年专著书目和 MathWorks 官方文档；复用库中已存在的 MIT 2.161 Bode 讲义。
+- 将新页连入阻尼系统与 PID 控制页面；公众号只作为用户提供的主题线索，正文未读取，不据此写入技术结论。
+
 ## [2026-10-08] ingest | Raylib — C99 跨平台图形库
 
 - **意图：** 将截图中的 Raylib 作为独立工具实体收录，整理模块边界、跨平台绘制与机器人可视化用途。
