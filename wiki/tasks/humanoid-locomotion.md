@@ -90,6 +90,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - **接触辅助**：在攀爬高箱时使用手臂辅助。
 - **重心调节**：通过挥动手臂来补偿角动量。
 - **环境自适应**：利用膝盖或身体侧面在狭窄空间支撑。
+- **坡面与交互力联合跟踪：** [BRACE](../entities/paper-brace-force-terrain-whole-body-tracking.md) 将平地参考按 terrain 与 commanded wrench 适配，再以 DAgger 把施力/补偿教师蒸馏为 proprioception 驱动的全身 flow policy。
 - **坐姿推进（非常规）：** [Stay Seated](../entities/paper-stay-seated.md)（arXiv:2608.28090）在 **被动万向椅** 上学习 G1 **全向坐姿速度跟踪**，脚–地推进 + 非固定骨盆–椅接触，零样本 sim2real；走向 seated loco-manipulation 的第一步。
 
 ## 按主题索引：论文与方法
