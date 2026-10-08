@@ -2,10 +2,11 @@
 type: entity
 tags: [tooling, animation, inverse-kinematics, foot-locking, raylib, repo, opensource, independent-maintainer]
 status: complete
-updated: 2026-09-13
+updated: 2026-10-08
 related:
   - ../methods/foot-locking-ik-orangeduck.md
   - ../formalizations/inverse-kinematics.md
+  - ./raylib.md
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
 sources:
@@ -127,6 +128,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Raylib](./raylib.md) — GenoView 使用的 C 图形库，提供绘制和窗口接口
 - [足锁 IK（Orange Duck 配方）](../methods/foot-locking-ik-orangeduck.md)
 - [逆运动学](../formalizations/inverse-kinematics.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
