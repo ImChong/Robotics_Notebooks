@@ -52,5 +52,5 @@
 
 ## 对 wiki 的映射
 
-- 新建：[paper-predactor](../../wiki/entities/paper-predactor.md)
+- 复用并更新：[paper-predactor](../../wiki/entities/paper-predactor.md)
 - 交叉：[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)、[locomotion](../../wiki/tasks/locomotion.md)
