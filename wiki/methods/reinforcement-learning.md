@@ -160,6 +160,8 @@ flowchart TD
   L --> C
 ```
 
+- **离策略 flow policy：** [QF3](../entities/paper-qf3-filtered-q-gradients.md) 把 critic 的动作梯度反传给 flow policy，只更新靠近 replay action 的动作维度；论文报告从零训练的人形 locomotion / tracking 与预训练操纵微调。
+
 ### 有模型（Model-Based）
 先学习环境动态模型，再用模型做 planning。
 
