@@ -10,6 +10,8 @@
 - 开源核查：代码已开源；HF 数据可访问，dataset card 独立许可证未明确核实。
 - 关键页：[LegoFlow](../wiki/entities/legoflow.md)；[AI Agent 评测](../wiki/concepts/ai-agent-evaluation.md)。
 
+## [2026-10-08] lint | 核查公司路线 22 个未注明日期节点：18 个补齐官方发布或版本事件月份，4 个保留空日期并说明边界；同步排序、详情来源与日期证据链接。
+
 ## [2026-10-08] ingest | Long-WAM 长上下文世界–动作模型
 
 - 新增一个独立论文/项目节点；论文、Long-WAM 代码子目录与模型资源合并归档。
