@@ -11,6 +11,7 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../entities/humanoid-system-curriculum.md
+  - ../entities/awesome-open-llms.md
   - ./humanoid-algorithm-research-status.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
@@ -87,6 +88,7 @@ flowchart TB
 
 - VLN 四范式见 [开源复现策展](./vln-open-source-repro-paradigms.md)。
 - NaVid 实体页含框架与部署线索：[paper-vln-10-navid](../entities/paper-vln-10-navid.md)。
+- [Awesome Open LLMs](../entities/awesome-open-llms.md) 可用于发现和回溯开源模型发布；具体能力仍需查官方模型卡与技术报告。
 
 ### 常见坑
 
@@ -120,3 +122,4 @@ flowchart TB
 
 - [VLN 开源复现四范式](./vln-open-source-repro-paradigms.md)
 - [VLM/VLN/VLA/VLX 分类学](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- [Awesome Open LLMs](../entities/awesome-open-llms.md) — 开源模型月度发布档案
