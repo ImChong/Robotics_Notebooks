@@ -4317,6 +4317,7 @@
 - [UniTexture（arXiv:2608.13453）](wiki/entities/paper-unitexture-vla-adversarial.md) — UniTexture**（arXiv:2608.13453）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [UniWAM：统一物理理解、世界预测与动作生成](wiki/entities/paper-uniwam-unified-world-action-model.md) — UniWAM（Unified World-Action Model）** 将视觉语言理解、未来视觉生成与机器人动作生成统一在 Mixture-of-Transformers（MoT）中。它用语言形 `📅unknown` `[entity_page]`
 - [Preparing for the unknown: learning a universal policy with online system identification](wiki/entities/paper-up-osi-universal-policy-online-sysid.md) — Preparing for the unknown: learning a universal policy with online system identification (UP-OSI `📅unknown` `[entity_page]`
+- [Uranus：面向具身 AI 的下一代模拟基础设施](wiki/entities/paper-uranus.md) — Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.2481 `📅unknown` `[entity_page]`
 - [URDD（Beyond URDF: Universal Robot Description Directory）](wiki/entities/paper-urdd-universal-robot-description-directory.md) — URDD** 是 Klein-Seetharaman 与 Rakita 提出的 **机器人描述「派生层」**：保留 **URDF（等）原始规格** 的同时，把下游常算的 **结构化派生信息** 分 `📅unknown` `[entity_page]`
 - [US-VLA](wiki/entities/paper-us-vla-ultrasound.md) — US-VLA: An Ultrasound Vision-Language-Action Model for Embodied Abdominal Scanning**（arXiv:[2608.1 `📅unknown` `[entity_page]`
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`
