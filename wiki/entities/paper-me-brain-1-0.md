@@ -8,7 +8,7 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-09-25
+updated: 2026-10-09
 arxiv: "2609.24271"
 code: https://github.com/MachEmbodied/ME-Brain-1.0
 related:
@@ -24,12 +24,12 @@ sources:
   - ../../sources/sites/me-brain-1-0.md
   - ../../sources/repos/me_brain_1_0.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
-summary: "ME-Brain-1.0（arXiv:2609.24271）：可演进记忆 + 认知核 + Focus-VLWA 动作模型；经验写入外部记忆实现自我演进而不改权重；部分开源。"
+summary: "ME-Brain-1.0（arXiv:2609.24271v2，2026-09-29）：可演进记忆 + 认知核 + Focus-VLWA 动作模型；以外部记忆和技能进化闭环支持部署后持续演进；部分开源。"
 ---
 
 # ME-Brain-1.0：记忆、认知与动作的自我演进具身框架
 
-**ME-Brain-1.0**（*Memory, Cognition and Action for Evolving Embodied Intelligence*，[arXiv:2609.24271](https://arxiv.org/abs/2609.24271)，[项目页](https://machembodied.com/ME-Brain/ME-Brain-1.0.html)，[代码](https://github.com/MachEmbodied/ME-Brain-1.0)）由 **理想汽车 MachEmbodied** 提出：把 **Evolvable Memory**、**Cognitive Core** 与 **Action Model** 组成闭环——执行产生轨迹，轨迹沉淀为可检索经验，认知核在新任务中查经验、分解与重规划，动作模型在关键交互时刻生成控制，结果再写回记忆。
+**ME-Brain-1.0**（*Memory, Cognition and Action for Evolving Embodied Intelligence*，[arXiv:2609.24271v2](https://arxiv.org/abs/2609.24271v2)，[项目页](https://machembodied.com/ME-Brain/ME-Brain-1.0.html)，[代码](https://github.com/MachEmbodied/ME-Brain-1.0)）由 **理想汽车 MachEmbodied** 提出：把 **Evolvable Memory**、**Cognitive Core** 与 **Action Model** 组成闭环——执行产生轨迹，轨迹沉淀为可检索经验，认知核在新任务中查经验、分解与重规划，动作模型在关键交互时刻生成控制，结果再写回记忆。
 
 ## 一句话定义
 
@@ -76,11 +76,13 @@ flowchart LR
 
 | 设定 | 结果 | 读法 |
 |------|------|------|
-| **Piper 双臂真机** | 六项任务各 10 次，**avg 66.7%** | 叠碗 10/10；插充电器 1/10 — contact-rich 精细插入仍是短板 |
-| **Focus-VLWA / RoboMME** | 四类测试 **avg 47.88%** | 计数、物体持续性、指代、模仿 |
-| **Focus-VLWA / RoboDojo** | **16.03%** | 仿真长程与记忆相关子项仍难（可与 ME-U0 记忆维度对照） |
+| **Cognitive Core / embodied benchmark** | ME-VLM 35B-A3B **70.9**；领先最强对照 **8.2 分** | 26 项具身基准，14 项最佳或并列最佳 |
+| **Cognitive Core / agent benchmark** | ME-VLM 35B-A3B **72.5**；领先最强对照 **9.6 分** | 4B 版本平均 **63.1**，也高于该表所有对照 |
+| **Focus-VLWA / RoboMME** | **47.88%**，较 FrameSampling + Modulation 高 **3.26 个百分点** | 16 项历史依赖操作，覆盖计数、持续性、指代、模仿 |
+| **Focus-VLWA / RoboDojo** | 平均 Score **21.51**、SR **16.03%**；较 π₀.₅ 高 **10.10 分 / 9.12 个百分点** | Memory 维度 Score **25.57**、SR **24.67%**；54 配置 × 24 次，共 1,296 次仿真试验 |
+| **Piper 双臂真机 / ME-RealBench** | 六任务各 10 次；平均 SR **66.7%**、Score **69.5** | 相比 DM0.5 高 **11.7 个百分点 / 12.8 分**；叠碗 10/10，插充电器 1/10 |
 
-公众号归纳强调：**插接失败的具体故障分解论文未单列**；读真机数字应连同任务协议与硬件一并核对。
+以上均为论文 v2 报告的结果；真机 Score 为任务完成进度分，不能与成功率混为一谈。
 
 ## 与其他工作对比
 
@@ -94,7 +96,7 @@ flowchart LR
 
 **ME-Brain 1.0 把「会记住、会改计划、再动手」拆成可运维的三模块栈，用外部记忆承担演进，而不是每次任务反向传播改权重。**
 
-1. **部分开源**：Focus-VLWA 代码已释；完整框架与真机/仿真集成需跟踪 GitHub Todo。
+1. **部分开源**：Focus-VLWA 训练与推理代码已释；ME-VLM 认知核、完整 ME-Brain 框架、仿真/真机集成和预训练权重仍待发布（按 2026-10-09 仓库 README）。
 2. 真机 avg **66.7%** 说明闭环已跑通，但 **contact-rich 插入** 与 RoboDojo 低分暴露长程/精细操作上限。
 3. 认知核训练见 [ME-VLM](./paper-me-vlm.md)；勿将同一系统下的 ME-VLM 案例重复计为独立真机验证集。
 4. 与 ME-U0 分工：Brain 引 **过去经验**；U0 做 **当前理解 + 未来视觉–动作联合生成**。
@@ -116,7 +118,7 @@ sequenceDiagram
   S-->>U: RoboMME / RoboDojo 指标
 ```
 
-**完整 ME-Brain 闭环：** 截至入库日 README 声明 Framework / Simulation / Real Robot integration **未发布**；上图为 **已发布** 的 Focus-VLWA 动作模型路径。
+**完整 ME-Brain 闭环：** 截至 2026-10-09，README 已发布 Focus-VLWA 训练/推理代码；预训练权重、ME-VLM 认知核和完整框架/仿真/真机集成仍在 Todo。
 
 ## 关联页面
 
@@ -129,7 +131,8 @@ sequenceDiagram
 
 - [me_brain_1_0_arxiv_2609_24271.md](../../sources/papers/me_brain_1_0_arxiv_2609_24271.md)
 - [wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)
-- [arXiv:2609.24271](https://arxiv.org/abs/2609.24271)
+- [arXiv:2609.24271v2](https://arxiv.org/abs/2609.24271v2)
+- [v2 HTML 全文](https://arxiv.org/html/2609.24271v2)
 
 ## 推荐继续阅读
 
