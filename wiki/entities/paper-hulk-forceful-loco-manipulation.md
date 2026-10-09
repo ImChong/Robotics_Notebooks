@@ -98,7 +98,7 @@ flowchart TB
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 腿式平台边移动边操作的任务入口。
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 负载、平衡和运动控制的相关问题。
 - [Unitree G1](./unitree-g1.md) — 真机验证平台。
-- [Thor](./paper-loco-manip-04-thor.md) 与 [FALCON](./paper-loco-manip-161-109-falcon.md) — 论文对比的全身交互控制基线。
+- [Thor](./paper-hrl-stack-42-thor.md) 与 [FALCON](./paper-loco-manip-161-109-falcon.md) — 论文对比的全身交互控制基线。
 
 ## 参考来源
 
