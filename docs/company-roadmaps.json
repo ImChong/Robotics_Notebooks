@@ -617,6 +617,22 @@
         { "date": "2026-09", "title": "ME-VLM", "track": "具身 VLM", "desc": "4B / 35B-A3B 统一具身认知与 Agent 协调，作为 ME-Brain 认知核；代码与权重待发布。", "id": "entity-paper-me-vlm", "url": "https://github.com/MachEmbodied/ME-VLM" },
         { "date": "2026-09", "title": "ME-U0", "track": "理解–生成 WAM", "desc": "MoT 连接子任务理解、affordance grounding、视觉动态与连续动作生成；约 4200h 预训练。", "id": "entity-paper-me-u0", "url": "https://github.com/MachEmbodied/ME-U0" }
       ]
+    },
+    {
+      "key": "simate",
+      "name": "硅基伙伴 Simate",
+      "founded_year": 2026,
+      "founded_source": "https://eu.36kr.com/zh/p/3999916051157129",
+      "founded_note": "官网未写成立日期；量子位 2026-09-28 报道称「成立仅三个月」，约 2026-06（推测），具体日期未确认。",
+      "lenses": ["wam"],
+      "summary": "AI for Physical AI 路线：Sinfra 基础设施 + Sipai 可插拔模型框架 + AutoResearch / RoboScientist 自动化研究，首版通用物理快系统 Simate-beta 上 RoboDojo 仿真榜；技术报告、代码与权重均未发布。",
+      "official": "https://mate-robot.cn/home/",
+      "nodes": [
+        { "date": "2026-09", "title": "Simate-beta", "track": "VLA / 快系统", "desc": "首版通用物理快系统，主打 4D 物理感知与分层时序记忆；RoboDojo 仿真榜平均 33.95 / SR 27.96%，长程项最高、开放任务最弱。架构与规模未披露。", "id": "entity-simate-beta", "url": "https://robodojo-benchmark.com/leaderboard", "date_note": "RoboDojo News 2026-09-23 新增该条目；上榜当日第一，2026-09-28 被 Physical RSI 1.0 超过。", "date_source": "https://robodojo-benchmark.com/leaderboard" },
+        { "date": "2026-09", "title": "AutoResearch 内测", "track": "自动化研究", "desc": "人定假设与约束，引擎自动拆解实验、执行并回传结果；公司称 MIT、加州理工、清华、北大等研究者参与内测。", "id": "entity-simate", "url": "https://eu.36kr.com/zh/p/3999916051157129", "date_note": "量子位 2026-09-28 报道披露内测，未见官方发布日期。" },
+        { "date": "", "title": "Sinfra 平台", "track": "基础设施", "desc": "把任务定义、训练、仿真验证与真机部署串成一条可审计流程，申请制 Enterprise / Cloud 工作区。", "id": "entity-simate", "url": "https://mate-robot.cn/research/sinfra/", "date_note": "官网标注 In development，未写发布日期。" },
+        { "date": "", "title": "RoboScientist", "track": "AI 科学家", "desc": "实验画廊把 run、对比与决策整理成证据链，官网标注 Research preview。", "id": "entity-simate", "url": "https://mate-robot.cn/research/RoboScientist/gallery/", "date_note": "官网标注 Research preview，未写发布日期。" }
+      ]
     }
   ],
   "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。"
