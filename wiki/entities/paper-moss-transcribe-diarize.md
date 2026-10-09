@@ -11,7 +11,7 @@ tags:
   - open-source
   - fudan
 status: complete
-updated: 2026-09-25
+updated: 2026-10-09
 arxiv: "2601.01554"
 code: https://github.com/OpenMOSS/MOSS-Transcribe-Diarize
 related:
