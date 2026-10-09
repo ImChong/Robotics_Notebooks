@@ -3,9 +3,10 @@
 - **类型：** 多站点资料索引（官方博客、研究页与项目页）
 - **收录日期：** 2026-09-28
 - **索引补核：** 2026-10-05（新增四家公司索引，开放范围按下列项目归档的核查日期）
-- **范围：** 以公司路线现有 19 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **范围：** 以公司路线现有 21 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
 - **RAI 路线增补：** 2026-10-08，研究所背景、官方事件时间和现有控制/操作/部署项目，见 [RAI 归档](./rai-institute.md)。
 - **路线增补：** 2026-10-06，复用既有 RoboParty 归档并补核 Party OS 当前入口。
+- **车企机器人部门增补：** 2026-10-09，新增小鹏机器人与理想汽车具身团队，复用既有论文与专利归档。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -29,6 +30,8 @@
 | RAI Institute | [官网](https://rai-inst.com/)、[Research](https://rai-inst.com/research/)、[Resources](https://rai-inst.com/resources/) | ZEST、Sumo、AthenaZero、Robot Juggling、SMPC-to-RL、Exploy；[机构归档](./rai-institute.md) | Sumo / Exploy 有代码，AthenaZero 部分分析与实验数据公开；各项目训练、权重与真机栈分开核查 |
 | 萝博派对 RoboParty | [Party OS](https://github.com/Roboparty/Party_OS)、[Lab](https://lab.roboparty.com/)、[Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87) | Roboto Origin、hhtools、MimicLite、UFO / TeCH、INTACT | [Party OS 补核](../repos/party_os.md)：工具链源码与部分策略/数据公开，数据生成待发布；[Know-How](roboparty_motion_control_knowhow.md)只核查目录与部分正文；INTACT 上游已发布、组织 fork 仍为预览 |
 | 星动纪元 ROBOTERA | [官网](https://www.robotera.com/)、[VPP](https://video-prediction-policy.github.io/)、[Humanoid-Gym](https://sites.google.com/view/humanoid-gym/) | 视频预测策略、ERA-42、L7 / M7 / XHAND、运控与数采接口 | [2026-10-08 核查](./robotera.md)：VPP 代码/部分权重和 latent，Humanoid-Gym 训练框架，M7 基线与 SDK 依赖厂商服务；不代表 ERA-42 完整资产开放 |
+| 小鹏机器人 XPENG Robotics | [GitHub](https://github.com/xpeng-robotics)、[XPACE](https://xpeng-robotics.github.io/xpace/)、[AnyWorld](https://xpeng-robotics.github.io/anyworld/)、[ROVE](https://xpeng-robotics.github.io/rove/) | IRON 人形、WAM 与世界模拟器、人–人形潜动作、人机闭环后训练、长尾 WBC、全栈评测；[UniT 归档](./xpeng-robotics-unit.md)、[IRON 专利归档](../patents/xpeng_iron_patents_cn.md) | UniT 有代码与权重；XPACE / AnyWorld 项目页核查时未列代码或权重；鹏行团队 2016 年组建、2020 年获小鹏投资（[中证网 2021-09-07](https://cs.com.cn/ssgs/gsxw/202109/t20210907_6202415.html)） |
+| 理想汽车具身团队 Li Auto | [MachEmbodied GitHub](https://github.com/MachEmbodied) | ME-Brain 1.0、ME-VLM、ME-U0、ME-Dex 1.0；[四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) | GitHub 组织页未写公司名，归属依据 [ME-Dex 1.0 论文署名](https://arxiv.org/html/2609.21449)（Foundation Model, Li Auto Inc.）；2026-06 基座模型部门新增三个具身二级部门（[每日经济新闻](https://www.mrjjxw.com/articles/2026-06-01/4413821.html)） |
 
 ## 核查边界
 
