@@ -17,7 +17,7 @@
 
 - **定位：** Claude Code skills from HumanLayer；每个 skill 以独立 `plugins/<name>/` 插件发布，含 `.claude-plugin/plugin.json` 与 `skills/<name>/SKILL.md`。
 - **安装：** `npx skills add humanlayer/skills --skill SKILLNAME`，再在项目中以 `/skill-name` 调用。
-- **技能清单（2026-09-11 快照）：**
+- **技能清单（2026-10-09 快照；上游 README 当前列七项）：**
   1. **`rpi`** — portable RPI workflow，面向 Claude Code / Codex；依赖和硬件路径按插件 README 核验。
   2. **`show-me`** — 用伪代码、调用树、组件树、浅层文件树、Mermaid 或聚焦 HTML artifact 可视化当前话题，少废话。
   3. **`visual-pr`** — 为界面变更提供视觉审查工作流。
