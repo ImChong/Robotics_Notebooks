@@ -55,6 +55,8 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | sources/sites/x2robot-blog-research-index.md — 公司路线新增自变量机器人：核对官网 8 篇技术博文，补齐 WALL-WM / WALL-OSS / X-Tokenizer 详情，新建 WALL-OSS-0.5、XRZero-G0
+
 ## [2026-10-09] ingest | Cartwheel Comic 单目视频动捕模型
 
 - 收录 Cartwheel Comic 官方模型页、Comic 4.2 发布说明、API/插件状态及 Cartwhl/cartwheel-mcp 开源接入仓库。

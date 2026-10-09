@@ -380,7 +380,7 @@
 - [Walker_TienKung_DEX_URDF](wiki/entities/cn-os-walker-tienkung-dex-urdf.md) — Walker_TienKung_DEX_URDF** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（U `📅unknown` `[entity_page]`
 - [Walker_TienKung_URDF](wiki/entities/cn-os-walker-tienkung-urdf.md) — Walker_TienKung_URDF** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/ `📅unknown` `[entity_page]`
 - [WalkerS2-Model](wiki/entities/cn-os-walkers2-model.md) — WalkerS2-Model** 是 优必选 公开的 **本体模型资产** 开源项目：官方本体模型资产（URDF/MJCF/U `📅unknown` `[entity_page]`
-- [WALL-X](wiki/entities/cn-os-wall-x.md) — WALL-X** 是 自变量机器人 公开的 **VLA/操作模型** 开源项目：语言、视觉和机器人状态经过统一模型生成操作 `📅unknown` `[entity_page]`
+- [WALL-OSS 与 WALL-X（自变量具身基础模型 + 开源代码）](wiki/entities/cn-os-wall-x.md) — WALL-OSS**（*Igniting VLMs toward the Embodied Space*，[arXiv:2509.11766](https://arxiv.org/abs/2509 `📅unknown` `[entity_page]`
 - [wheel-legged](wiki/entities/cn-os-wheel-legged.md) — wheel-legged** 是 达妙科技 公开的 **工程与工具** 开源项目：提供达妙轮足机器人控制与开发资料，用于平衡、移动和执行器 `📅unknown` `[entity_page]`
 - [wheelDog_RL](wiki/entities/cn-os-wheeldog-rl.md) — wheelDog_RL** 是 仙工智能 公开的 **运动RL/技能训练** 开源项目：仙工智能公开的第一阶段轮足机器人强化 `📅unknown` `[entity_page]`
 - [Wiki-GRx-Deploy](wiki/entities/cn-os-wiki-grx-deploy.md) — Wiki-GRx-Deploy** 是 傅利叶智能 公开的 **部署运行时** 开源项目：策略部署运行时：加载训练策略、下发关节命令 `📅unknown` `[entity_page]`
@@ -396,7 +396,7 @@
 - [wuji-sdk](wiki/entities/cn-os-wuji-sdk.md) — wuji-sdk** 是 舞肌科技 公开的 **SDK/驱动** 开源项目：提供Wuji设备发现、实时数据流和记录接口， `📅unknown` `[entity_page]`
 - [wujihandpy](wiki/entities/cn-os-wujihandpy.md) — wujihandpy** 是 舞肌科技 公开的 **工程与工具** 开源项目：以C++核心和Python绑定提供Wuji `📅unknown` `[entity_page]`
 - [wujihandros2](wiki/entities/cn-os-wujihandros2.md) — wujihandros2** 是 舞肌科技 公开的 **工程与工具** 开源项目：为Wuji Hand提供ROS2状态发 `📅unknown` `[entity_page]`
-- [X-Tokenizer](wiki/entities/cn-os-x-tokenizer.md) — X-Tokenizer** 是 自变量机器人 公开的 **VLA/操作模型** 开源项目：把不同机器人或任务的连续动作编码 `📅unknown` `[entity_page]`
+- [X-Tokenizer（多模态动作分词器 / VLA 语义接口）](wiki/entities/cn-os-x-tokenizer.md) — X-Tokenizer**（*X-Tokenizer: A Multimodal Action Tokenizer for Vision-Language-Action Pretraining*， `📅unknown` `[entity_page]`
 - [x-trainer](wiki/entities/cn-os-x-trainer.md) — x-trainer** 是 越疆科技 公开的 **数据集/Benchmark** 开源项目：为X-Trainer协作机械臂 `📅unknown` `[entity_page]`
 - [X-WAM](wiki/entities/cn-os-x-wam.md) — X-WAM** 是 小米集团 公开的 **世界模型** 开源项目：模型联合学习视频世界变化与机器人动作，在共享表征中支持跨 `📅unknown` `[entity_page]`
 - [xArm-Python-SDK](wiki/entities/cn-os-xarm-python-sdk.md) — xArm-Python-SDK** 是 众为创造 公开的 **SDK/驱动** 开源项目：提供UFACTORY系列机械臂的 `📅unknown` `[entity_page]`
@@ -2930,7 +2930,7 @@
 - [DriveWAM](wiki/entities/paper-rcl-2605-28544-drivewam-video-generative-priors-enable-scalable.md) — DriveWAM: Video Generative Priors Enable Scalable World-Action Modeling for Autonomous Driving** 收 `📅unknown` `[entity_page]`
 - [Beyond Task Success](wiki/entities/paper-rcl-2606-01095-beyond-task-success-behavioral-and-representatio.md) — Beyond Task Success: Behavioral and Representational Diagnostics for WAM and VLA** 收录于 [Awesome Wo `📅unknown` `[entity_page]`
 - [ImagineUAV](wiki/entities/paper-rcl-2606-01205-imagineuav-aerial-vision-language-navigation-via.md) — ImagineUAV: Aerial Vision-Language Navigation via World-Action Modeling and Kinodynamic Planning `📅unknown` `[entity_page]`
-- [WALL-WM](wiki/entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md) — WALL-WM: Carving World Action Modeling at the Event Joints** 收录于 [Awesome World-Action Models (RCL `📅unknown` `[entity_page]`
+- [WALL-WM（以动作事件为单元的世界动作模型）](wiki/entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md) — WALL-WM**（*WALL-WM: Carving World Action Modeling at the Event Joints*，[arXiv:2606.01955](https:// `📅unknown` `[entity_page]`
 - [GeoSem-WAM](wiki/entities/paper-rcl-2606-03188-geosem-wam-geometry-and-semantic-aware-world-act.md) — GeoSem-WAM: Geometry- and Semantic-Aware World Action Models** 收录于 [Awesome World-Action Models (R `📅unknown` `[entity_page]`
 - [Unified Video-Action Joint Denoising for Dexterous Action and Data Generation](wiki/entities/paper-rcl-2606-03868-unified-video-action-joint-denoising-for-dextero.md) — Unified Video-Action Joint Denoising for Dexterous Action and Data Generation** 收录于 [Awesome World `📅unknown` `[entity_page]`
 - [WAM-Nav](wiki/entities/paper-rcl-2606-04907-wam-nav-asymmetric-latent-world-action-modeling.md) — WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
@@ -4374,6 +4374,7 @@
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
 - [WA-SpecDec（arXiv:2608.08725）](wiki/entities/paper-wa-specdec.md) — WA-SpecDec**（arXiv:2608.08725）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
+- [Wall-OSS-0.5（预训练即可上真机的 VLA）](wiki/entities/paper-wall-oss-0-5.md) — Wall-OSS-0.5**（*Wall-OSS-0.5 Technical Report*，[arXiv:2605.30877](https://arxiv.org/abs/2605.30877 `📅unknown` `[entity_page]`
 - [WALL-SS（下一尺度自回归长程世界模型）](wiki/entities/paper-wall-ss.md) — WALL-SS**（*WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*，[PDF](https:/ `📅unknown` `[entity_page]`
 - [WAM 设计要素受控实证研究](wiki/entities/paper-wam-design-empirical-study.md) — What Matters in Designing World Action Models: An Empirical Study**（Chao Tang *、Haoqing Wang * 等； `📅unknown` `[entity_page]`
 - [WAM-Diff2（arXiv:2608.01035）](wiki/entities/paper-wam-diff2.md) — WAM-Diff2**（arXiv:2608.01035）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08 `📅unknown` `[entity_page]`
@@ -4814,6 +4815,7 @@
 - [xpad（Linux Xbox 手柄驱动）](wiki/entities/xpad.md) — xpad**（paroj/xpad）维护主线 Linux 内核中的 **Xbox 游戏手柄 USB 驱动**，并在上游基础上合并更 `📅unknown` `[entity_page]`
 - [XPolicyLab（统一策略训推与评测适配层）](wiki/entities/xpolicylab.md) — XPolicyLab**（*A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment*，[a `📅unknown` `[entity_page]`
 - [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 用 XR 设备（Apple Vision Pro、PICO 4 Ultra Enterprise、Meta Quest 3 等）对 Unitree 人形做全身遥操 `📅unknown` `[entity_page]`
+- [XRZero-G0（VR 夹爪无本体采数系统）](wiki/entities/xrzero-g0.md) — XRZero-G0**（*XRZero-G0: Pushing the Frontier of Dexterous Robotic Manipulation with Interfaces, Qu `📅unknown` `[entity_page]`
 - [XTDrone](wiki/entities/xtdrone.md) — XTDrone**（robin-shaun/XTDrone）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](wiki/entities/xue-bin-peng.md) — Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与  `📅unknown` `[entity_page]`
 - [DEUX（XYZ · 半人形服务机器人）](wiki/entities/xyz-deux.md) — DEUX** 是韩国 **艾克斯怀吉（XYZ / XYZ Corp）** 于 **2026** 发布的 **半人形（semi-humanoid）双臂移动服务机器人**（产品页与 ABOUT 称  `📅unknown` `[entity_page]`
