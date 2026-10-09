@@ -2,13 +2,16 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-09
 summary: "人形 Loco-Manip 161 篇 · 05 动捕、人类视频与交互动作规划（11 篇）— 人类动作数据转成机器人可用的运动和交互先验。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
+  - ../entities/cartwheel-comic.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+  - ../../sources/sites/cartwheel-comic.md
+  - ../../sources/repos/cartwheel-mcp.md
 ---
 
 # Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划
@@ -45,6 +48,10 @@ sources:
 | 118 | 腿式机械手全身动态投掷 | [paper-loco-manip-161-118-n118](../entities/paper-loco-manip-161-118-n118.md) |
 | 119 | 迈向多样化人形乒乓球：具有预测增强的统一强化学习 | [paper-loco-manip-161-119-n119](../entities/paper-loco-manip-161-119-n119.md) |
 
+## 工程动捕工具（非论文）
+
+- [Cartwheel Comic](../entities/cartwheel-comic.md) — 单目视频人体动捕与足部接触估计；可将人类动作导出后接入动画或机器人重定向流程。官方开放的是 API/MCP 接入方式，模型本身为云端服务。
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)
@@ -54,6 +61,8 @@ sources:
 
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
+- [Cartwheel Comic 产品资料](../../sources/sites/cartwheel-comic.md)
+- [Cartwheel MCP 源码资料](../../sources/repos/cartwheel-mcp.md)
 
 ## 推荐继续阅读
 
