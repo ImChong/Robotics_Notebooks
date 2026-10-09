@@ -2,7 +2,7 @@
 type: comparison
 tags: [mujoco, isaac-lab, simulator, locomotion, sim2real, rl]
 status: complete
-updated: 2026-06-08
+updated: 2026-10-09
 summary: "MuJoCo 与 Isaac Lab 在仿真精度、并行效率、sim2real gap 方面的系统性对比，帮助选择适合 locomotion RL 项目的仿真平台。"
 sources:
   - ../../sources/papers/sim2real.md
@@ -15,6 +15,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../entities/humanoid-robot.md
   - ../entities/mujoco-mjx.md
+  - ../entities/simulately.md
 ---
 
 # MuJoCo vs Isaac Lab：仿真器选型对比
@@ -178,6 +179,7 @@ related:
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 训练流程与仿真器的关系
 - [Humanoid Robot](../entities/humanoid-robot.md) — 人形机器人仿真需求特点
 - [Simulator Selection Guide](../queries/simulator-selection-guide.md) — 含 Genesis 的三路选型详细指南
+- [Simulately（仿真器资源站）](../entities/simulately.md) — 查询跨引擎综述、snippets 与 FAQ；性能结论需回到原始测试条件复核
 
 ## 一句话记忆
 
