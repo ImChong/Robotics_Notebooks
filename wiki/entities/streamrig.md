@@ -4,6 +4,7 @@ tags: [entity, repo, robotics, visual-odometry, state-estimation, multi-camera, 
 status: complete
 updated: 2026-10-09
 project_id: streamrig
+project: https://weiyufei0217.github.io/StreamRig/
 institutions: [zju, scut]
 related:
   - ./paper-streamrig.md
