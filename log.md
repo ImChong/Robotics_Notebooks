@@ -55,6 +55,12 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | StreamRig 论文与项目分设详情并接入状态估计知识链
+
+- 新增 StreamRig 论文页与独立项目页，分别整理方法 / 评测结论和代码 / 训练 / 权重 / 许可 / 复现成本。
+- 归档 arXiv、官方项目页和代码仓库；区分论文项目页列出的四组评测与 README 当前提供的 NCLT、KITTI-360 训练评测入口。
+- 将 StreamRig 接入状态估计 hub，并记录其使用 G2G relocalization checkpoint warm-start 的方法链关系。
+
 ## [2026-10-09] ingest | Graph-MambaNav（arXiv:2608.13723v1）——归档唯一论文节点并接入 ObjectNav
 
 - 核验 arXiv v1 HTML 与作者主页；论文已接收 IEEE RA-L，计划在 ICRA 2027 展示。

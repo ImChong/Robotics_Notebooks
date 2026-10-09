@@ -4202,6 +4202,7 @@
 - [Streaming RL 分析](wiki/entities/paper-streaming-rl-continual-robotics.md) — An Analysis of Streaming Deep Reinforcement Learning for Adaptive Continual Learning in Robotics `📅unknown` `[entity_page]`
 - [Streaming-WAM](wiki/entities/paper-streaming-wam.md) — Streaming-WAM: Action-Conditioned World–Action Model for Asynchronous Robot Manipulation**（[arXiv: `📅unknown` `[entity_page]`
 - [StreamPI](wiki/entities/paper-streampi.md) — StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models**（[arXiv:2608.2 `📅unknown` `[entity_page]`
+- [StreamRig：利用相机组内几何实现流式多相机里程计](wiki/entities/paper-streamrig.md) — StreamRig: Exploiting Intra-Rig Geometry for Streaming Multi-Camera Odometry `📅unknown` `[entity_page]`
 - [STRIDER（arXiv:2609.23483）](wiki/entities/paper-strider-multi-gait-loco-manip.md) — STRIDER**（*STRIDER: Stepping-Enabled Multi-Gait Hierarchical 3D Loco-Manipulation Framework for Hu `📅unknown` `[entity_page]`
 - [StrucPhysVideo（arXiv:2609.18430）](wiki/entities/paper-strucphysvideo.md) — StrucPhysVideo**（*Learning Physical Dynamics from Structured Captions and Robot Actions*，[arXiv:26 `📅unknown` `[entity_page]`
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs**（[arXiv:2608.15139](https://arx `📅unknown` `[entity_page]`
@@ -4691,6 +4692,7 @@
 - [starter-kit-racing](wiki/entities/starter-kit-racing.md) — starter-kit-racing** 是 **mrdoob** 将 Kenney「Starter Kit Racing」从 **Godot 4.6** 移植到 **纯 JavaScript + `📅unknown` `[entity_page]`
 - [step2urdf](wiki/entities/step2urdf.md) — step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dex `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
+- [StreamRig 项目：多相机流式视觉里程计](wiki/entities/streamrig.md) — StreamRig** 是一套基于冻结多视图 3D 基础模型的因果多相机视觉里程计项目，由浙江大学与华南理工大学团队提出。项目不输出控制动作，而是从同步标定的多相机图像流估计 rig 位姿。论文方 `📅unknown` `[entity_page]`
 - [ACT-2（Sunday Robotics · Generalizing Reliability）](wiki/entities/sunday-robotics-act2.md) — ACT-2** 是 **Sunday Robotics**（2026-07 博客预览）在自研移动平台 **Memo** 上部署的 **第二代家用机器人基础模型**：在 **ACT-1**（2025 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [SuperTuxKart](wiki/entities/supertuxkart.md) — SuperTuxKart**（项目主页，代码，[R `📅unknown` `[entity_page]`
