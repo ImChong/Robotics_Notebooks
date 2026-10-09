@@ -104,7 +104,7 @@ sequenceDiagram
 - 对抓取、接触、长时任务和 OOD 场景，做物理仿真或真机对照。
 - 复现实验时分别标注公开 demo、公开权重、推理代码和不可获得的训练数据/配方，避免将“开源项目”误解为全量可复现。
 
-## 相关节点
+## 关联页面
 
 - [World Action Models（WAM）](../concepts/world-action-models.md)：任务相关的动作与未来联合建模；Uranus 与之共享动作条件预测，但本身不是生成动作的 WAM 策略。
 - [生成式世界模型](../methods/generative-world-models.md)：扩散与视频生成式环境预测。
