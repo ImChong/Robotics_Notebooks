@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-09
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-egophi.md
@@ -54,6 +54,7 @@ sources:
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/papers/robot_juggling_arxiv_2608_26800.md
   - ../../sources/papers/fa_rdp_arxiv_2607_28596.md
+  - ../../sources/papers/distributed_whole_arm_interaction_soft_robot_arxiv_2608_30773.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -142,6 +143,7 @@ sources:
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — **硬件级指–掌协同**：视触觉主动掌 + FlexiTac 指尖；反应抓取 / 手内 singulation / 1 mm peg-in-hole（arXiv:2607.15448，确认未开源）。
 - [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) — **跨模态触觉传感器选型基准**：六硬件 × 三真机任务统一 ACT；插入/重定向等接触丰富场景上 **无通用最佳传感器**。
 - [SoftVTBench](../entities/paper-softvtbench.md) — **可变形过程安全评测**：Goal vs Safety Success；FEM 特权态暴露过压「虚假成功」，触觉主要抬高 Safety。
+- [Distributed Whole-Arm Interaction](../entities/paper-distributed-whole-arm-interaction-soft-robot.md) — 软臂用嵌入式 IMU 本体感觉历史，从交互中推断物体并组织全臂包裹抓取（arXiv:2608.30773）。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
 - [Robot Juggling / AthenaZero](../entities/paper-robot-juggling-athenazero.md) — 多指 **抛/接间歇接触**；真机 **正则化记忆学习** 修正落点，**MRS** 保证连续动态动作不撞限位（arXiv:2608.26800；未开源）
 - [Project SuperDex](../entities/project-superdex.md) — Meta **接触优先物理 + Studio 资产 + Lab RL** 的灵巧操作全栈平台（已开源；Teleop 计划 Q4 2026）。
