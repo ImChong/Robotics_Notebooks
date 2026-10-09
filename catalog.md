@@ -1972,6 +1972,7 @@
 - [Language-Driven Quality-Diversity（语言驱动 QD 技能档案）](wiki/entities/paper-language-driven-robotic-qd.md) — Language-Driven QD**（*Autonomously Acquiring Robot Manipulation Skills with Language-Driven Qualit `📅unknown` `[entity_page]`
 - [Language-Tactile：语言引导跨传感器材料识别](wiki/entities/paper-language-guided-tactile.md) — Language-Tactile**（arXiv:2609.14783，[代码](https://github.com/Ma `📅unknown` `[entity_page]`
 - [Language-to-Navigation-Goals（RGB-D 语义导航）](wiki/entities/paper-language-to-navigation-goals-rgbd.md) — From Language to Navigation Goals: A Vision-Language Approach for Semantic Navigation of Mobile Ro `📅unknown` `[entity_page]`
+- [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](wiki/entities/paper-last-ai-built-by-humans-rsi.md) — 这篇论文不是一个新模型，而是用五级自治框架和 HCI 衡量 AI 改进闭环离“真正递归自改进”还有多远。 `📅unknown` `[entity_page]`
 - [LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）](wiki/entities/paper-last-hd-latent-physical-reasoning.md) — LaST-HD** 是北京大学、香港中文大学、Simplexity Robotics 与 Aether Tech 等团队的 **人手→机器人操作 VLA** 论文（arXiv:2606.23685 `📅unknown` `[entity_page]`
 - [What Matters for Latent Actions](wiki/entities/paper-latent-actions-matter.md) — What Matters for Latent Actions in Robot Learning**（[arXiv:2608.19613](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [LAWA：潜动作作未来意图](wiki/entities/paper-lawa.md) — LAWA**（*Latent Action as Intention Enables Efficient Future Imagination for World Action Models*， `📅unknown` `[entity_page]`
