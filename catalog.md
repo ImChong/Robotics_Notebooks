@@ -58,6 +58,7 @@
 - [Arnis](wiki/entities/arnis.md) — Arnis**（`louis-e/arnis`，Apache-2.0，~17.7k★）把 **真实世界地理** 编译进  `📅unknown` `[entity_page]`
 - [JEPA, from language models to world models（VideoDB）](wiki/entities/article-videodb-jepa-world-models.md) — VideoDB Labs 于 2026-07-07 发布的技术长文，从 next-token prediction 与 latent prediction 的差异讨论 JEPA 如何进入 VLM、VL `📅unknown` `[entity_page]`
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
+- [Artificial Analysis](wiki/entities/artificial-analysis.md) — Artificial Analysis** 是独立 AI 模型与推理服务评测平台，通过公开榜单、方法说明和结构化 API 汇总模型能力、定价及用户侧推理性能，帮助团队按质量、成本和响应速度选型。 `📅unknown` `[entity_page]`
 - [arXiv（arXiv.org）](wiki/entities/arxiv.md) — arXiv.org](https://arxiv.org/)** 是面向多学科的 **开放获取学术预印本档案与分发平台**。对机器人研究与本知识库而言，它是「先公开、可检索、可机器拉取」的  `📅unknown` `[entity_page]`
 - [arXivisual：arXiv 论文可视化阅读器](wiki/entities/arxivisual.md) — arXivisual**（arxivisual.org，[GitHub](https://github.com/rajshah6/arXivis `📅unknown` `[entity_page]`
 - [ASD-STE100 Skill（danyuchn）](wiki/entities/asd-ste100-skill.md) — ASD-STE100 Skill** 是一个公开的 Claude Code Skill，用于把模糊、冗长的英文改写成更清楚的受控技术英语。仓库采用 MIT 许可证，源代码、示例和规则摘要公开。 `📅unknown` `[entity_page]`
