@@ -25,6 +25,7 @@ related:
   - ../methods/imitation-learning.md
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
   - ./paper-wall-ss.md
+  - ./xrzero-g0.md
 sources:
   - ../../sources/sites/x2robot-twindex.md
 summary: "TwinDEX（自变量，2026-09-02）：三指 9 DoF（7 主动+2 被动）外骨骼与同构机械手共设计；宣称纯 robot-free 数据即可部署，采数吞吐 5.3× 真机遥操作。项目页未开源，论文待发。"
@@ -62,7 +63,7 @@ summary: "TwinDEX（自变量，2026-09-02）：三指 9 DoF（7 主动+2 被动
 - **把 embodiment gap 写成硬件约束，而不是后处理：** 无本体采数易扩展，但运动学、指尖几何、外观或时序一旦错位，接触关系在部署端会丢。[UMI](https://umi-gripper.github.io/) / [HandUMI](./handumi.md) 用夹爪几何 + 软件重定向换跨臂复用；TwinDEX 反其道，**锁死同一套运动链**，换「关节状态直接进机器人关节空间」。
 - **三指不是偷懒，是可量产的灵巧下限：** 项目页把三指定为「true dexterity 的最小可行解」——再加指会撞空间堆叠、力矩密度与可靠性。对 6/7/8 主动做同一套 primitive 基准后，**7 主动相对 6 有跃迁，相对 8 边际主要在穿戴舒适**，因此量产锁定 7+2。
 - **数字可读、但不可复现：** **5.3×** 有效采数吞吐、data-efficiency 曲线重叠、化学实验「数百条、零真机数据」。这些是选型对照坐标，不是可跑基线——**代码、数据、技术报告均未发布**。
-- **同机构不要串台：** 2026-04 的 [XRZero-G0](https://github.com/X-Square-Robot/XRZero-G0)（arXiv:2604.13001）是 **VR + 专用夹爪** 无本体采数，且混合律仍用少量真机数据；TwinDEX 页 **未链** 该仓。五指 [sdk_hand](https://github.com/X-Square-Robot/sdk_hand) 是另一产品线。
+- **同机构不要串台：** 2026-04 的 [XRZero-G0](./xrzero-g0.md)（arXiv:2604.13001，[GitHub](https://github.com/X-Square-Robot/XRZero-G0)）是 **VR + 专用夹爪** 无本体采数，且混合律仍用少量真机数据；TwinDEX 项目页 **未链** 该仓。五指 [sdk_hand](https://github.com/X-Square-Robot/sdk_hand) 是另一产品线。
 
 ## 核心原理
 
@@ -127,6 +128,7 @@ flowchart LR
 - [Imitation Learning](../methods/imitation-learning.md) — robot-free 示范的消费端
 - [Humanoid Hardware 101 · 传感与末端](../overview/humanoid-hardware-101-sensing-end-effectors.md) — 三指单位经济性
 - [WALL-SS](./paper-wall-ss.md) — 同机构世界模型；训练代码同样待发布，任务不同
+- [XRZero-G0](./xrzero-g0.md) — 同机构更早的 VR + 双夹爪无本体采数系统；10:1 配比仍需少量真机数据锚定
 
 ## 参考来源
 

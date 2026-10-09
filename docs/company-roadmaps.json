@@ -432,6 +432,26 @@
       ]
     },
     {
+      "key": "xsquare",
+      "name": "自变量机器人 X Square Robot",
+      "founded_year": 2023,
+      "founded_source": "https://x2robot.com/en/about",
+      "founded_note": "官网 About：Founded in December 2023，2023.12 完成天使轮并在深圳启动运营。",
+      "lenses": ["wam"],
+      "summary": "端到端具身基础模型路线：WALL-OSS → WALL-OSS-0.5 VLA，配 X-Tokenizer 语义动作分词、WALL-WM 事件级世界–动作模型、WALL-SS 长时程世界模型与 HOST 单视频技能习得；数据侧有 XRZero-G0 与 TwinDEX 无本体采数。WALL-OSS 系列与 X-Tokenizer 代码和权重开源，预训练数据未公开。",
+      "official": "https://x2robot.com/en/blog",
+      "nodes": [
+        { "date": "2025-09", "title": "WALL-OSS", "track": "VLA", "desc": "Qwen2.5-VL-3B 主干 + VL / Action 双 FFN，先 FAST 离散动作与具身 VQA，再 flow matching；Uni-CoT 串联指令→推理→子任务→动作。代码与权重开源。", "id": "entity-cn-os-wall-x", "url": "https://x2robot.com/research/68bc2cde8497d7f238dde690", "date_note": "官网 Research 2025-09-08；arXiv:2509.11766 v1 为 2025-09-15。", "date_source": "https://arxiv.org/abs/2509.11766" },
+        { "date": "2026-04", "title": "XRZero-G0", "track": "无本体数采", "desc": "背包 + VR 头显 + 手持夹爪的双臂无本体采数系统，采集→质检→训练→评测闭环；仅公开 3K 数据子集，代码与权重未发布。", "id": "entity-xrzero-g0", "url": "https://x2robot.com/x2go", "date_note": "arXiv:2604.13001 v1 为 2026-04-14；官网 Blog 列表日期为 2026-06-10。", "date_source": "https://arxiv.org/abs/2604.13001" },
+        { "date": "2026-05", "title": "WALL-OSS-0.5", "track": "VLA", "desc": "4B MoT VLA 单阶段 flow + RVQ 动作 token + 多模态 CE 共训，预训练后可直接真机部署；代码与权重开源。", "id": "entity-paper-wall-oss-0-5", "url": "https://x2robot.com/oss", "date_note": "官网 Research 2026-05-28；arXiv:2605.30877 v1 为 2026-05-29。", "date_source": "https://arxiv.org/abs/2605.30877" },
+        { "date": "2026-05", "title": "WALL-WM", "track": "世界–动作模型", "desc": "以动作语义事件替代定长 chunk 做视频–动作预训练，视频塔逐层驱动动作塔；代码开源，权重与数据未发布。", "id": "entity-paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve", "url": "https://x2robot.com/pages/wm", "date_note": "官网 Blog 2026-05-29；arXiv:2606.01955 v1 为 2026-06-01。", "date_source": "https://arxiv.org/abs/2606.01955" },
+        { "date": "2026-06", "title": "X-Tokenizer", "track": "动作分词", "desc": "多模态动作分词器作为 VLM 与连续控制的语义接口，首级 RVQ 学意图；推理库与权重开源，训练代码与数据未发布。", "id": "entity-cn-os-x-tokenizer", "url": "https://x2robot.com/pages/x-tokenizer", "date_note": "arXiv:2606.14752 v1 为 2026-06-07；官网 Blog 列表日期为 2026-06-30。", "date_source": "https://arxiv.org/abs/2606.14752" },
+        { "date": "2026-07", "title": "HOST", "track": "单视频技能习得", "desc": "单条人视频、不改权重习得未见操作，并保留已掌握技能；代码与权重开源。", "id": "entity-paper-host-one-shot-human-video", "url": "https://x2robot.com/pages/host", "date_note": "arXiv:2607.20033 为 2026-07 提交；官网 Blog 列表日期为 2026-08-03。", "date_source": "https://arxiv.org/abs/2607.20033" },
+        { "date": "2026-08", "title": "WALL-SS", "track": "世界模型", "desc": "下一尺度自回归长时程世界模型，600+ 组虚实闭环对照校准任务结果与策略排序；训练推理代码待发布。", "id": "entity-paper-wall-ss", "url": "https://x2robot.com/en/pages/ss", "date_note": "官网 Blog 列表日期为 2026-08-27。" },
+        { "date": "2026-09", "title": "TwinDEX", "track": "灵巧数采", "desc": "三指 9 DoF 外骨骼与同构机械手共设计，一端穿戴采数、一端部署；未开源。", "id": "entity-twindex", "url": "https://x2robot.com/en/pages/twindex", "date_note": "官网 Blog 列表日期为 2026-09-02。" }
+      ]
+    },
+    {
       "key": "pi",
       "name": "Physical Intelligence",
       "founded_year": 2024,
