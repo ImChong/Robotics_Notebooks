@@ -8,7 +8,7 @@
 - **PDF：** <https://simple-robotics.github.io/publications/otretarget/static/paper/otretarget.pdf>
 - **Hugging Face 论文索引：** <https://huggingface.co/papers/2609.36602>
 - **项目页：** <https://simple-robotics.github.io/publications/otretarget/> — 归档见 [OTRetarget 项目页](../sites/otretarget-project.md)
-- **代码：** 截至 2026-10-02 项目页的 “Code” 文本没有可点击仓库 URL；按**待发布 / 未核实可运行代码**记录。
+- **代码：** 截至 2026-10-09 项目页的 “Code” 文本没有可点击仓库 URL；按**待发布 / 未核实可运行代码**记录。
 - **数据集：** OMOMO（[官方项目页](https://lijiaman.github.io/projects/omomo/)；[官方代码与下载说明](https://github.com/lijiaman/omomo_release)）。另有 [Hugging Face 社区镜像](https://huggingface.co/datasets/snorfyang/omomo)，页面未提供 dataset card 或明确许可，不视为官方发布。
 - **作者 / 机构：** Guillaume Besset、Erwann Carn、Timothée Carecchio、Valentin Tordjman-Levavasseur、Fabian Schramm、Yann de Mont-Marin、Justin Carpentier（INRIA Willow）；Ajay Suresha Sathya（INRIA Willow / Stanford）。
 - **发表时间：** 2026-09-29（arXiv 首次发布）
@@ -40,7 +40,12 @@
 - 关联数据集：[OMOMO](../../wiki/entities/omomo-dataset.md)
 - 主题方法：[动作重定向](../../wiki/concepts/motion-retargeting.md)、[OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)、[HOI-Retarget](../../wiki/entities/paper-hoi-retarget.md)
 
-## 开源状态核查（2026-10-02）
+### 4) 动态动作范围
+
+- 论文图 1 展示三类动作：双手搬箱并放置到桌面、四足爬行且手部接触地面、带全身旋转的移动。作者将这些结果定位为参考动作重定向；真机迁移由下游强化学习全身策略完成。
+- 论文以逐帧受约束 IK 求机器人与物体姿态，并约束关节/速度与碰撞；它本身不等于动态平衡控制器。论文与项目页正文未具体描述“侧手翻接后空翻、双脚—单手—双脚支撑切换”序列，因此不把该特定动作写成论文已验证结果。
+
+## 开源状态核查（2026-10-09）
 
 - **论文与演示：** arXiv PDF 和项目页可访问。
 - **代码：** 项目页显示 “Code” 字样，但未提供可点击仓库链接；暂列待发布 / 未核实，不将其标注为开源。
