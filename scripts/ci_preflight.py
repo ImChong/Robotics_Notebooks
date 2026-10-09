@@ -92,6 +92,8 @@ def main() -> None:
     run(["python3", "scripts/export_minimal.py"], "Export wiki JSON, sitemap, and search index")
     if (REPO_ROOT / "package-lock.json").is_file():
         run(["npm", "ci"], "Install Node dependencies (ESLint)")
+        if not args.skip_quality:
+            run(["npm", "run", "lint:mermaid"], "Validate all published Mermaid diagrams")
 
     run(["python3", "scripts/generate_link_graph.py"], "Update link graph and graph-stats")
 

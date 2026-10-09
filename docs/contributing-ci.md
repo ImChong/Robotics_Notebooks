@@ -39,8 +39,11 @@ make ci-test
 | 依赖漏洞审计 | `python3 -m pip_audit -r requirements-dev.txt` | `tests.yml` |
 | 圈复杂度参考 | `make complexity`（仅输出，非硬性门禁） | — |
 | Wiki lint（轻量依赖） | `python3 scripts/lint_wiki.py` | `lint.yml` |
+| Mermaid 围栏与语法（全库，与本站同版本） | `npm run lint:mermaid`（先 `npm ci`） | `tests.yml`、`search-regression.yml` 的 preflight |
 
 说明：`make ci-preflight` 会按固定顺序再生导出 JSON 与图谱统计（均 gitignore），并执行搜索回归与 wiki lint；变更 wiki/导出链时请以此为准。
+
+Mermaid 校验覆盖 `wiki/`、`roadmap/`、`tech-map/`、`references/` 的全部 Markdown 图表，包括折叠区内图表；错误在 Actions 中标注文件和围栏行号。它验证语法与本站能识别的三反引号围栏，不替代布局检查。`docs/main.js` 的 CDN 版本与 `package.json` 的 Mermaid 精确版本必须一起更新，回归测试会检查两者一致。Tests 工作流失败会令 PR 检查变红；若需要禁止绕过失败检查合并，须在仓库分支规则中将 Tests 设为 required check。
 
 轻量 Python 工作流（`lint.yml`、`search-regression.yml`、`export.yml`、`weekly-lint.yml`）共用依赖声明文件 [`requirements-ci-lite.txt`](../requirements-ci-lite.txt)（与 `requirements-dev.txt` 区分），便于 Actions **pip 缓存**命中。
 

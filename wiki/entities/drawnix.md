@@ -48,20 +48,20 @@ summary: "Drawnix 是基于 Plait 的开源白板应用，支持思维导图、�
 
 官方 README 说明应用以 Plait 为底层绘图框架，并采用插件机制组织功能。仓库包清单还包含 @plait-board/mermaid-to-drawnix、@plait-board/markdown-to-drawnix、Plait 核心绘图包、Slate 富文本组件与 React 视图层。
 
-~~~mermaid
+```mermaid
 flowchart LR
   AUTHOR["研究者输入 Mermaid / Markdown"] --> CONVERT["对应转换插件解析"]
   CONVERT --> ELEMENTS["生成 Plait 画布元素"]
   ELEMENTS --> CANVAS["React 无限画布编辑"]
   CANVAS --> STORE["浏览器本地持久化"]
   CANVAS --> EXPORT["PNG / JPG / .drawnix JSON"]
-~~~
+```
 
 ## Mermaid 到画布的运行时序
 
 源码中的 Mermaid 对话框延迟加载转换模块，随着输入变化调用 parseMermaidToDrawnix，生成元素后由用户插入画布；画板变化回调将内容写入 localForage 配置的浏览器存储。这个序列依据 mermaid-to-drawnix.tsx 与 apps/web/src/app/app.tsx 描述。
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor Author as 研究者
@@ -81,7 +81,7 @@ sequenceDiagram
     Web->>Store: 保存画板与工具状态
     Author->>Export: 选择导出格式
     Export-->>Author: PNG / JPG / .drawnix JSON
-~~~
+```
 
 ### 本地开发入口
 

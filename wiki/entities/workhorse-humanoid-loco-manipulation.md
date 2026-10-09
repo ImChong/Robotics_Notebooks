@@ -43,7 +43,7 @@ summary: "Workhorse 用免机器人示范的五链路人体姿态同时训练视
 
 ### 两策略结构
 
-~~~mermaid
+```mermaid
 flowchart TB
   human["人类示范
 5 个 tracker + 胸前 RGB"]
@@ -64,7 +64,7 @@ flowchart TB
   tracker --> robot
   aug --> planner
   aug --> tracker
-~~~
+```
 
 - **Visual planner：** 以机器人 egocentric 图像及过去约 1 秒五链路历史为条件，预测未来 **1.16 秒**的五链路目标；flow-matching planner 以约 **5 Hz** replanning。
 - **Whole-body tracker：** 跟踪规划器输出的五链路 chunk，按时间戳读取下一段约 **0.2 秒**的目标并输出关节目标；planner 与 tracker 异步工作，已过期目标会跳过。

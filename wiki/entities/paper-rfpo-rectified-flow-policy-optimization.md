@@ -39,7 +39,7 @@ summary: "RFPO：面向具身控制的 reward-aware online reflow 与多预算�
 
 标准 flow policy 通过沿连续时间向量场积分生成动作。训练时若用较多积分步，动作质量可以较好，但实时机器人控制会付出逐步推理成本；直接把推理步数砍到 1，则会出现论文所称的 few-step discretization gap。RFPO 用在线奖励与策略动作作为监督，重整学生流轨迹，而不是直接把 64 步模型硬截成一步。
 
-~~~mermaid
+```mermaid
 flowchart TB
   gaussian["冻结的 Gaussian PPO 控制器
 提供动作与奖励参照"]
@@ -58,7 +58,7 @@ flowchart TB
   student --> regularize
   regularize --> deploy
   deploy --> eval
-~~~
+```
 
 ### 核心训练设计
 
