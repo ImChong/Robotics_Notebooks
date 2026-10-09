@@ -569,8 +569,10 @@
 - [GenCAD（Image-Conditioned CAD Program Generation）](wiki/entities/gencad.md) — GenCAD** 是 MIT **Md Ferdous Alam** 与 **Faez Ahmed** 的工作（arXiv:2409.16294，[项目页](https://gencad.gith `📅2026-05-21` `[entity_page]`
 - [GenCeption](wiki/entities/genception.md) — GenCeption**（*Video Generation Models are General-Purpose Vision Learners*，arXiv:2607.09024，**ECCV `📅unknown` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](wiki/entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
-- [Generalist AI（机器人方向）](wiki/entities/generalist-ai-robotics.md) — Generalist AI**：聚焦具身智能与通用机器人策略的商业实体；对外叙事强调 **海量人类 / 机器人交互数据** 上的预训练、规模定律验证，以及 GEN 系列（GEN-0 → GEN-1 `📅unknown` `[entity_page]`
+- [Generalist AI（机器人方向）](wiki/entities/generalist-ai-robotics.md) — Generalist AI**：2024 年成立、聚焦具身智能与通用机器人策略的商业实体（Generalist AI, Inc.，团队位于湾区与波士顿）；对外叙事强调 **海量人类 / 机器人交互 `📅unknown` `[entity_page]`
+- [GEN-0：随物理交互规模化的具身基础模型](wiki/entities/generalist-gen0.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [GEN-1 千手：跨末端执行器泛化](wiki/entities/generalist-gen1-thousand-hands.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [GEN-1：把具身基础模型扩展到 Mastery（Generalist AI）](wiki/entities/generalist-gen1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [GEN-1.5 一次示范学习（Physical Prompting）](wiki/entities/generalist-gen15-one-shot.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定](wiki/entities/generative-motion-rig.md) — Generative Motion Rig（GMR）**（*A Generative Motion Rig for Artist-Driven Motion Authoring*，SIGGRAPH `📅unknown` `[entity_page]`
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md) — Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 isaac-gym-isaac-lab 并列，作为新一代 `📅unknown` `[entity_page]`

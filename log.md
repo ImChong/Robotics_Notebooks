@@ -55,6 +55,8 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | sources/sites/generalistai-blog-index.md — 公司路线新增 Generalist AI：核对官网 10 篇博文，新建 GEN-0、GEN-1 详情并补齐公司总览
+
 ## [2026-10-09] lint | 修复近期合并的 7 个页面共 10 张 Mermaid 图（9 个非标准围栏与 1 个保留字节点 ID），增加与本站同版本的全库语法 CI 门禁和回归测试。
 
 ## [2026-10-09] ingest | Agent Lightning v1.0 发布说明与异步训练机制
