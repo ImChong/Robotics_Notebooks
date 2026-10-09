@@ -27,6 +27,8 @@
 - **目标节点：** [HarnessPAI](../wiki/entities/paper-harnesspai.md)
 - **来源归档：** [论文](../sources/papers/harnesspai_arxiv_2609_29166.md)、[代码仓库](../sources/repos/harnesspai.md)、[项目页](../sources/sites/harnesspai.md)
 
+## [2026-10-09] lint | 全量 lint：补 5 篇 paper-* 「与其他工作对比」、legoflow/gem-x-cpp 枢纽回链、复核 3 个陈旧页（sonic/wt-umi/unitree-g1）；lint 0 问题 0 信息型预警
+
 ## [2026-10-09] ingest | Drawnix
 
 - **意图：** 归档用户给出的 Drawnix 开源白板仓库，并说明其在机器人研究流程图 / 思维导图中的适用边界。
