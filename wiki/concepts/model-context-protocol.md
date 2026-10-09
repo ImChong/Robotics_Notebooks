@@ -12,6 +12,7 @@ related:
   - ../entities/dimensionalos-dimos.md
   - ../entities/3dgenstudio.md
   - ../entities/graphify.md
+  - ../entities/rea.md
   - ../entities/hermes-agent.md
   - ../entities/sciencediscovery.md
   - ../entities/unreal-mcp.md
