@@ -9,6 +9,7 @@ tags:
 status: complete
 updated: 2026-10-09
 project_id: awesome-open-llms
+institutions: [independent-maintainer]
 code: https://github.com/liucongg/awesome-open-llms
 project: https://awesome-open-llms.logcongcong.workers.dev/
 sources:
