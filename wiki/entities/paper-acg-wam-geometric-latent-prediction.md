@@ -3,7 +3,7 @@ type: entity
 project_id: acg-wam-geometric-prediction
 tags: [paper, world-action-models, wam, geometry, vla, robot-manipulation, limx]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 arxiv: "2610.06965"
 project: https://RoboOpus.github.io/ACG-WAM/
 code: https://github.com/RoboOpus/ACG-WAM
@@ -106,6 +106,16 @@ sequenceDiagram
 - **对 Motus 的差值：** Clean +4.80 个百分点，Randomized +5.66 个百分点；并非所有任务、场景都获益。
 - **真机：** TRON2 + WUJI hands 的三项操作任务平均 SR 85.00%、PCS 91.67%；每任务 20 次评估，论文说明该结果使用任务级真机微调。
 - **消融：** 论文分别检查目标构造、动作条件化和预测 horizon；多时域且动作条件化的联合目标在所列六任务消融中表现最好。
+
+## 与其他工作对比
+
+| 工作 | 几何信号怎么进入 WAM | 部署期是否保留 | 与 ACG-WAM 的差别 |
+|------|----------------------|----------------|-------------------|
+| [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) | 无显式几何目标，只靠视频预测与动作损失 | — | ACG-WAM 的骨干与直接基线；RoboTwin 2.0 上 Clean / Randomized 分别高 4.80 / 5.66 个百分点 |
+| [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md) | 训练期增设 4D 专家，同样用冻结 VGGT 监督并做动作感知时序几何蒸馏 | 否，推理移除全部 4D 组件 | 两者都是“训练期几何、部署期剥离”；MECo-WAM 加的是一路专家分支，ACG-WAM 只加 JEPA 式预测头，并把动作前缀与 horizon 作为预测条件 |
+| [JEPA-WAM](./paper-jepa-wam.md) | 共享预测器在 V-JEPA 潜空间学习视觉变化与连续动作，可接入已有 VLA | 本库页未记录 | 同属潜空间预测思路，但 JEPA-WAM 预测通用 V-JEPA 表征；ACG-WAM 的目标限定为 VGGT 几何特征，且只作为 Motus 的训练期辅助损失 |
+
+对比时要注意：上表数字来自各自论文的设定，RoboTwin 2.0 的 Clean / Randomized 协议、每任务 episode 数和是否做任务级微调需逐篇核对，不能直接横向排名。
 
 ## 工程实践与局限
 

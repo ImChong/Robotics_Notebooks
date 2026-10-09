@@ -3,7 +3,7 @@ type: entity
 project_id: qf3-filtered-q-gradients
 tags: [paper, reinforcement-learning, flow-matching, off-policy, humanoid-locomotion, motion-tracking, manipulation]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 arxiv: "2610.08789"
 project: https://qf3-rl.github.io/
 related:
@@ -73,6 +73,17 @@ flowchart TB
 - **速度：** 配合高吞吐训练配方，locomotion 与 motion tracking 的 wall-clock 训练速度相对 FPO++ 约快 10 倍；不应解读成所有任务一律 10 倍。
 - **操纵微调：** 论文在 ABC-Sim 和 Robomimic 上微调预训练 flow policies，展示从零学习与示教后改进两种用法。
 - **边界：** arXiv 目前为预印本 v1；不同任务的环境、硬件和 success 指标需要回到论文表格逐项比较。
+
+## 与其他工作对比
+
+| 工作 | 如何用 RL 改进流 / 扩散策略 | 与 QF3 的差别 |
+|------|-----------------------------|---------------|
+| FPO++（论文基线） | on-policy 流策略优化，不复用旧 replay | QF3 改为离策略 replay + critic 动作梯度；论文报告人形 locomotion / motion tracking 约 10× wall-clock 加速 |
+| [ReFORM](./paper-reform-iclr-2026.md) | 离线 RL：BC flow 刻画 support，reflected flow 在 support 内操纵噪声最大化 Q | 都在限制 Q 外推，但 ReFORM 约束噪声空间、面向离线基准；QF3 按动作维度过滤 Q 梯度、面向在线离策略训练 |
+| [SmoothRL](./paper-smoothrl.md) | 对冻结 π₀.₅ 的异步动作块用 value-gradient 在线微调，∇ₐQ 只经 execution region | 同样“只让 Q 梯度作用于可信部分”，SmoothRL 按时间区间截断，QF3 按动作维度与 replay 的距离截断 |
+| [REFINE-DP](./paper-loco-manip-161-157-refine-dp.md) | DPPO（去噪增广 MDP 上的 PPO）联合微调规划器与跟踪器 | 仍是 on-policy 路线；QF3 用离策略 critic 梯度换取样本复用率 |
+
+上表方法的任务、硬件与指标各不相同，只能比较“梯度从哪里来、在哪里被限制”这一设计维度，不能据此排名。
 
 ## 源码运行时序图
 

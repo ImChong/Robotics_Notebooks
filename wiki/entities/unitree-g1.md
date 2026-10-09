@@ -2,11 +2,12 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-09
 related:
   - ./humanoid-robot.md
   - ./rek.md
   - ./unitree.md
+  - ./paper-uni-vlat.md
   - ./unitree-unistore.md
   - ./paper-synthetic-video-humanoid-tasks.md
   - ./unitree-ros.md
@@ -160,6 +161,7 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [REK](./rek.md) — G1 VR 格斗联赛与机器人租赁品牌。
 - [QuietWalk（论文实体）](./paper-quietwalk-humanoid-locomotion.md) — G1 PINN-GRF 低噪行走（arXiv:2604.23702）。
 - [TactileStep（论文实体）](./paper-tactilestep.md) — G1 足底压力鞋垫 + 四相位触觉 RL 跑酷（CoRL 2026 Spotlight；arXiv:2609.28959；代码待发布）。
+- [Uni-VLaT（论文实体）](./paper-uni-vlat.md) — G1 全身触觉 + 触觉锚定多模态未来预测适配预训练 VLA；五任务均值 75%（arXiv:2609.35450v2；代码待发布）。
 - [ADP（论文实体）](./paper-adp.md) — G1 上动力学对抗先验抗扰 locomotion（arXiv:2607.03454；代码待发布）。
 - [CMP（论文实体）](./paper-cmp.md) — 模拟 G1 上上下文感知 AMP 适配（arXiv:2608.03234；Dribbling 294→467、达阈 10.1→2.9×10⁸；代码未开源）。
 - [HumoSlope（论文实体）](./paper-humoslope-physics-guided-slope-locomotion.md) — G1 盲穿户外草地坡至 32.1°（局部平面 ZMP + BSGA；arXiv:2607.07830；代码未开源）。

@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-10-06
+updated: 2026-10-09
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -480,4 +480,4 @@ sequenceDiagram
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — generalist 跟踪上叠高动态技能；仿真对照含 SONIC
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)
-- [PredActor](../entities/paper-predactor.md) — 把未来状态留在扩散策略内部做引导，无需独立 motion-reference tracker（与 SONIC 式 tracker 路线对照；arXiv:2609.24840）
+- [PredActor](../entities/paper-predactor.md) — 把未来状态留在扩散策略内部做引导，无需独立 motion-reference tracker（与 SONIC 式 tracker 路线对照；arXiv:2609.24840；截至 2026-10-08 仅开放 MuJoCo 评测器与 checkpoint，训练/真机部署未发布）

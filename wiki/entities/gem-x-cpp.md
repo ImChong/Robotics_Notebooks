@@ -2,13 +2,14 @@
 type: entity
 tags: [robot-perception, human-motion, pose-estimation, ggml, cpp, vulkan, nvidia, repo]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 code: https://github.com/localai-org/gem-x.cpp
 related:
   - ../methods/genmo.md
   - ./soma-x.md
   - ./soma-retargeter.md
   - ../methods/sonic-motion-tracking.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/repos/localai-gem-x-cpp.md
 summary: "LocalAI 社区维护的 NVIDIA GEM-X C++23/GGML 移植与浏览器 demo：从实时摄像头或录制视频推理 SOMA-77 全身骨架，可在 CPU 或 Vulkan 后端运行；离线视频可导出骨架动画 GLB。"
@@ -108,3 +109,4 @@ flowchart TB
 - [SOMA-X（统一参数化人体模型）](./soma-x.md)
 - [SOMA Retargeter](./soma-retargeter.md)
 - [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 单目全身姿态估计属该链 ③ 2D→3D 提升层的人体分支；输出骨架供下游重定向 / 运动跟踪（④ 消费层）使用时需另行核对帧率与延迟

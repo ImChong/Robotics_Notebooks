@@ -3,7 +3,7 @@ type: entity
 project_id: brace-force-terrain-whole-body-tracking
 tags: [paper, humanoid, whole-body-control, motion-tracking, force-control, terrain-adaptation, unitree]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 arxiv: "2610.07052"
 project: https://multiplylabs.github.io/brace/
 related:
@@ -76,6 +76,16 @@ flowchart TB
 - **任务类型：** 力施加（如推车、插入注射器、转动绞盘）与力补偿（如承载/抵抗外力），并在坡面或不平地形上继续跟踪。
 - **控制边界：** 学生部署输入为本体状态历史、运动参考、mode 和 wrench command；论文声称不需部署高度图或测得的 wrench。
 - **整体结果：** 论文摘要报告了在多种姿态下施力/补偿并处理地形的能力；正文还比较全身漂移、成功率与力矩，不把定性视频当作统一的单一成功率数字。
+
+## 与其他工作对比
+
+| 工作 | 力怎么进入策略 | 地形处理 | 与 BRACE 的差别 |
+|------|----------------|----------|-----------------|
+| [FALCON](./paper-loco-manip-161-109-falcon.md) | 下肢稳定 / 上肢末端跟踪双 agent，torque-limit-aware 3D 力课程训练 | 平地为主 | FALCON 面向 loco-manip 末端任务，不改写全身参考；BRACE 保留全身 motion tracking 接口，把 wrench 与地形写进参考变换 |
+| [GentleHumanoid](./paper-gentlehumanoid.md) | 上半身阻抗参考动力学，限制接触力（5–15 N 安全阈值） | 不是重点 | GentleHumanoid 追求“柔”（拥抱、搀扶），BRACE 追求“能出力 / 能扛力”，两者对力的目标方向相反 |
+| [Brace Yourself](./paper-brace-yourself-environmental-bracing.md) | 支撑手寻找环境支撑点，任务手操作，双 RL 同步 | 不是重点 | 名字相近但机制不同：Brace Yourself 借环境支撑增大可施力；BRACE 靠 CoM/CoP 与手部 lead 调整自身全身参考 |
+
+共同点是都在 Unitree G1 上验证力相关全身行为；差别在于 BRACE 把“地形 + wrench”放在**参考层**处理，再用双教师蒸馏到单一 flow-matching 学生，而上表三项主要在**策略/奖励层**处理力。由于 BRACE 算法代码未公开，横向复现对比暂不可做。
 
 ## 源码运行时序图
 

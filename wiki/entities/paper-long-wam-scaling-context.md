@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, wam, vla, world-models, embodied-ai, robot-manipulation, long-context, nvidia, mit, hku, ucsd]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 arxiv: "2610.10528"
 code: https://github.com/NVlabs/LongLive/tree/main/Long-WAM
 project: https://nvlabs.github.io/LongLive/Long-WAM/
@@ -87,6 +87,16 @@ flowchart TB
 | 38.4 秒历史配置 | 相较 19.2 秒结果回落 | 页面指出长窗口受较短训练轨迹和 padding 影响；不能直接推断记忆上限 |
 
 项目页还展示 G1/YAM 等真机结果。需区分真实执行任务结果与未来视频预测演示：生成的视频展示可能未来，不表示机器人已按该序列成功执行动作。
+
+## 与其他工作对比
+
+| 工作 | 怎样处理长历史 / 未来预测 | 与 Long-WAM 的差别 |
+|---|---|---|
+| [MemoryWAM](./paper-memorywam.md) | 滑窗近期帧 + 任务起点 anchor + gist token 压缩长历史，推理复杂度 O(N)→O(N/d) | MemoryWAM 主动压缩历史；Long-WAM 直接拉长因果视频专家可见的原始 latent 历史，并系统扫描 0–38.4 秒的上下文长度 |
+| [UniWAM](./paper-uniwam-unified-world-action-model.md) | 8B MoT 联合物理语义推理、未来视觉与动作生成 | 同为 MoT 式多专家；UniWAM 的重点是加入推理模态与多源预训练，Long-WAM 的重点是上下文长度这一单一变量 |
+| [Fast-WAM](./paper-fast-wam.md) | 训练期保留视频共训，推理期跳过未来视频去噪 | 两者都在推理期不解码完整未来 RGB；Fast-WAM 直接省略未来预测，Long-WAM 保留未来 latent 预测并作为动作专家输入 |
+
+阅读边界：上表各项的 RoboTwin 2.0 / LIBERO 数字来自各自论文设定，未在统一协议下复测；Long-WAM 的贡献更适合理解为“固定动作块与未来跨度、只改历史长度”的受控实验，而不是与上述方法的直接排名。
 
 ## 代码、权重与复现范围
 

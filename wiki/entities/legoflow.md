@@ -5,13 +5,14 @@ project: https://legoflow-docs.legox.net/docs
 code: https://github.com/LegoX/LegoFlow
 tags: [coding-agents, software-engineering, data-engineering, agent-trajectories, sft, evaluation, harbor, open-source]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/agent-lightning.md
   - ../entities/rle-bench.md
   - ../concepts/data-flywheel.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/legoflow_2026-09-18.md
   - ../../sources/sites/legoflow-project.md
@@ -114,6 +115,7 @@ flowchart TD
 - [Agent Lightning](./agent-lightning.md) — coding-agent rollout 与 agentic RL 训练基础设施。
 - [RLE-Bench](./rle-bench.md) — Harbor 上评测机器人学习工程 agent 的互补基准。
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据回流如何形成迭代闭环。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照阅读：LegoFlow 的 Evaluator 评测的是 coding agent 而非具身策略；其「可验证任务 + 评测反馈回流」思路可类比该链 ③ 策略任务成功率评测层，但指标不可互换。
 
 ## 参考来源
 

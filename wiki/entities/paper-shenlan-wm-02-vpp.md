@@ -2,7 +2,7 @@
 type: entity
 tags: [robotera, paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 arxiv: "2412.14803"
 venue: ICML 2025
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"
@@ -106,6 +106,16 @@ sequenceDiagram
 | 官方 README | CALVIN ABC 平均完成链长 4.33；单一策略覆盖 100+ 真机灵巧操作任务，是来源报告而非本库复测 |
 | arXiv v2 摘要 | CALVIN ABC-D 相对提升 18.6%，复杂真机灵巧操作成功率增加 31.6% |
 | 官方项目页 | CALVIN 相对提升写为 41.5%，与当前摘要的 18.6% 不同；未确认统一基线口径，不能互换 |
+
+## 与其他工作对比
+
+| 工作 | 视频预测与动作的耦合方式 | 与 VPP 的差别 |
+| --- | --- | --- |
+| [GR-1](./paper-shenlan-wm-09-gr1.md) | GPT 风格单模型端到端同时预测动作与未来图像，视频预训练后机器人微调 | GR-1 是联合自回归；VPP 是级联：先适配视频扩散模型，再读其内部预测表征学隐式逆动力学 |
+| [UVA](./paper-shenlan-wm-10-uva.md) | 视频生成与策略推理共用一个模型，联合潜表示 + 解耦解码 | UVA 让动作与视频共享潜空间并可单独解码动作；VPP 的视频模型与动作扩散头分阶段训练 |
+| [Fast-WAM](./paper-fast-wam.md) | 训练期视频共训，推理期跳过未来视频去噪 | 两者都不要求部署时生成完整未来 RGB；VPP 仍需视频模型前向提取预测表征，Fast-WAM 直接跳过未来去噪以降延迟 |
+
+VPP 在[世界动作模型](../concepts/world-action-models.md)谱系中属于“级联”路线（参见 [世界模型路线 01：级联](../overview/world-models-route-01-cascade.md)）。上表各项的 CALVIN / LIBERO 等数字来自各自论文口径，未在统一协议下复测，不做直接排名。
 
 ## 结论
 
