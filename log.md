@@ -55,6 +55,13 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | ME-Brain-1.0 arXiv v2 与仓库状态复核
+
+- **处理：** 更新现有独立节点，不另建重复论文或项目页；补充 v2 作者、日期、ME-VLM 与 Focus-VLWA 基准结果。
+- **来源：** arXiv v2（2026-09-29）及 MachEmbodied 官方 GitHub README。
+- **开源结论：** Focus-VLWA 训练/推理代码已发布；预训练权重、ME-VLM、完整框架和仿真/真机集成仍列于 Todo。
+- **文件：** `wiki/entities/paper-me-brain-1-0.md`、`sources/papers/me_brain_1_0_arxiv_2609_24271.md`、`sources/repos/me_brain_1_0.md`
+
 ## [2026-10-09] ingest | OTRetarget 动态动作证据与控制边界
 
 - 补充 `sources/papers/otretarget_arxiv_2609_36602.md`、`sources/sites/otretarget-project.md` 和现有实体页 `wiki/entities/paper-otretarget.md`。
