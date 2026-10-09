@@ -11,12 +11,13 @@ tags:
   - open-source
   - fudan
 status: complete
-updated: 2026-09-25
+updated: 2026-10-09
 arxiv: "2601.01554"
 code: https://github.com/OpenMOSS/MOSS-Transcribe-Diarize
 related:
   - ../methods/humanoid-voice-interaction.md
   - ./paper-xiaomi-cocktailasr-1.md
+  - ./microsoft-vibevoice.md
   - ./paper-daily-omni.md
   - ../concepts/world-action-models.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -196,6 +197,8 @@ SATS（转写 + 说话人 + 时间戳）可以由 **几段拼**，也可以 **�
 - **非具身动作指标：** 高 SATS 分数不保证 downstream 指令跟随或 VLN 成功率。
 
 ## 关联页面
+
+- [Microsoft VibeVoice](microsoft-vibevoice.md) — 同为长音频转写/说话人归因路线，提供 7B ASR 与独立 streaming checkpoint
 
 - [人形智能语音交互](../methods/humanoid-voice-interaction.md) — ASR→NLU 闭环中的 ASR/分离上游
 - [Xiaomi-CocktailASR-1](./paper-xiaomi-cocktailasr-1.md) — 有 ref 时的 TS-ASR + 拒识（与 SATS 互补）
