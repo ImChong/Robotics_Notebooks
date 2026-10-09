@@ -76,6 +76,7 @@
 - [Awesome Egocentric Vision（sun254667 精选集）](wiki/entities/awesome-egocentric-vision.md) — Awesome Egocentric Vision**（GitHub：[`sun254667/awesome-egocentric-vision`](https://github.com/sun2 `📅unknown` `[entity_page]`
 - [awesome-legged-locomotion-learning](wiki/entities/awesome-legged-locomotion-learning.md) — gaiyi7788/awesome-legged-locomotion-learning`](https://github.com/gaiyi7788/awesome-legged-locomot `📅unknown` `[entity_page]`
 - [Awesome-Legged-Robot-Learning（ClearLab @ SUSTech）](wiki/entities/awesome-legged-robot-learning-clearlab.md) — clearlab-sustech/Awesome-Legged-Robot-Learning`](https://github.com/clearlab-sustech/Awesome-Legge `📅unknown` `[entity_page]`
+- [Awesome Open LLMs：中文开源模型月度追踪档案](wiki/entities/awesome-open-llms.md) — Awesome Open LLMs** 是「刘聪 NLP」整理维护的开源模型发布档案。项目把模型名称、发布日期、发布机构、参数规模、能力方向、技术特点与截图按年月组织，当前 README 覆盖  `📅unknown` `[entity_page]`
 - [awesome-physical-ai（aichr）](wiki/entities/awesome-physical-ai-aichr.md) — aichr/awesome-physical-ai`](https://github.com/aichr/awesome-physical-ai) 是 **aichr** 组织维护的 Physic `📅unknown` `[entity_page]`
 - [awesome-physical-ai（natnew）](wiki/entities/awesome-physical-ai-natnew.md) — natnew/awesome-physical-ai`](https://github.com/natnew/awesome-physical-ai) 是一份 **工程导向** 的 Physica `📅unknown` `[entity_page]`
 - [Awesome-Real2Sim2Real（sun254667 精选集）](wiki/entities/awesome-real2sim2real.md) — Awesome-Real2Sim2Real**（GitHub：[`sun254667/Awesome-Real2Sim2Real`](https://github.com/sun254667/Aw `📅unknown` `[entity_page]`
@@ -4661,6 +4662,7 @@
 - [Simate（Physical AI Platform + Model + Scientist）](wiki/entities/simate.md) — Simate**（simate.ai， slogan *Intelligence, in motion*）把 Physical AI 拆成 **Plat `📅unknown` `[entity_page]`
 - [SimpleFOC（Arduino-FOC 生态）](wiki/entities/simplefoc.md) — SimpleFOC** 指围绕 Arduino-FOC 库形成的开源项目：跨 MCU 的 **磁场定向控制 `📅unknown` `[entity_page]`
 - [SimToolReal](wiki/entities/simtoolreal.md) — SimToolReal](https://github.com/tylerlum/simtoolreal) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXi `📅unknown` `[entity_page]`
+- [simulately](wiki/entities/simulately.md) — 一句话定义：** Simulately 是面向机器人学习研究的开源仿真器资源站，集中整理物理仿真器概览与比较、开发片段、相关工作及工具资料。 `📅unknown` `[entity_page]`
 - [Skild AI](wiki/entities/skild-ai.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Skild Physical Self-Play（后训练自博弈）](wiki/entities/skild-physical-self-play.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [S1：机器人 In-Context Learning（Skild）](wiki/entities/skild-s1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
