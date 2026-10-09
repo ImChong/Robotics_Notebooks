@@ -521,6 +521,28 @@
       ]
     },
     {
+      "key": "generalist",
+      "name": "Generalist AI",
+      "founded_year": 2024,
+      "founded_source": "https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/",
+      "founded_note": "官网 About 未写成立日期；TechCrunch 报道 2024 年由前 Google DeepMind 研究员 Pete Florence、Andy Zeng 与前 Boston Dynamics 工程师 Andrew Barry 创立，月份未确认。",
+      "lenses": ["wam"],
+      "summary": "从零训练的具身基础模型路线：GEN-0 在 27 万+ 小时真实交互数据上报告预训练 scaling，GEN-1 以 >50 万小时人类可穿戴数据、每任务约 1 小时机器人数据宣称 99% 可靠性，再到多末端「千手」与 GEN-1.5 one-shot 物理提示；全部闭源，数字均为自报。",
+      "official": "https://generalistai.com/blog",
+      "nodes": [
+        { "date": "2025-06", "title": "Research Preview", "track": "首次公开", "desc": "单一端到端网络从像素直出 100 Hz 动作，演示紧固件分拣、折盒装链锁、回收螺丝、拆分乐高；宣称跨 Flexiv 7-DoF 与 UR5 迁移，未给成功率。", "id": "entity-generalist-ai-robotics", "url": "https://generalistai.com/blog/research-preview", "date_note": "官网博文 2025-06-17；未写模型名。" },
+        { "date": "2025-09", "title": "The Robots Build Now, Too", "track": "评测", "desc": "内部 one-shot 乐高装配评测：人搭三块 2×4 积木，机器人端到端复刻，无任务专用工程；未给成功率。", "id": "entity-generalist-ai-robotics", "url": "https://generalistai.com/blog/the-robots-build-now-too", "date_note": "官网博文 2025-09-24。" },
+        { "date": "2025-11", "title": "GEN-0", "track": "基础模型", "desc": "27 万+ 小时真实操作数据预训练（每周 +1 万小时）；自报 7B 附近出现迁移相变、预训练数据量与下游误差呈幂律，提出 Harmonic Reasoning 边想边做。", "id": "entity-generalist-gen0", "url": "https://generalistai.com/blog/gen-0", "date_note": "官网博文 2025-11-04；无 arXiv 论文。" },
+        { "date": "2026-01", "title": "Physical Commonsense", "track": "观点", "desc": "把微修正、恢复与闭环触觉直觉称为机器人「暗物质」，主张靠低延迟、顺手的数据采集与规模化涌现。", "id": "entity-physical-commonsense-generalist", "url": "https://generalistai.com/blog/physical-commonsense", "date_note": "官网博文 2026-01-29。" },
+        { "date": "2026-03", "title": "GTC 现场演示", "track": "部署", "desc": "GEN-0 在 GTC Universal Robots 展台全天现场装箱演示；全新 UR7e + MiR 平台数天内适配，未用展厅数据。", "id": "entity-generalist-gen0", "url": "https://generalistai.com/blog/the-real-breakthrough-behind-our-gtc-demo", "date_note": "官网博文 2026-03-24。" },
+        { "date": "2026-04", "title": "GEN-1", "track": "基础模型", "desc": ">50 万小时人类可穿戴数据预训练、不含机器人数据，每任务约 1 小时机器人数据；自报三项灵巧任务平均 99%（GEN-0 微调 64%），折盒约 2.8× 提速。", "id": "entity-generalist-gen1", "url": "https://generalistai.com/blog/gen-1", "date_note": "官网博文 2026-04-02；无技术报告。" },
+        { "date": "2026-04", "title": "Beyond World Models & VLAs", "track": "观点", "desc": "说明 GEN-1 约 99% 参数从零训练，不归类为 VLA 或世界模型，视觉语言预训练被视为过渡手段。", "id": "entity-generalist-gen1", "url": "https://generalistai.com/blog/beyond-world-models", "date_note": "官网博文 2026-04-07。" },
+        { "date": "2026-06", "title": "4 亿美元融资", "track": "公司", "desc": "官方宣布新融资 4 亿美元、累计超 5 亿美元，Radical Ventures 领投，NVIDIA 等老股东跟投。", "id": "entity-generalist-ai-robotics", "url": "https://generalistai.com/blog/accelerating-the-next-phase-of-physical-ai", "date_note": "官网博文 2026-06-04；估值与轮次名称来自媒体报道，非官方。" },
+        { "date": "2026-07", "title": "千手：多末端执行器", "track": "跨具身", "desc": "GEN-1 跨约 9000 种末端变体与 >50 万小时交互预训练，主张手可变、物理不变，演示任务中途换手。", "id": "entity-generalist-gen1-thousand-hands", "url": "https://generalistai.com/blog/towards-machines-with-a-thousand-hands", "date_note": "官网博文 2026-07-23。" },
+        { "date": "2026-08", "title": "GEN-1.5", "track": "基础模型", "desc": "持续预训练后涌现 physical prompting：3–12 秒单次示范无梯度约 59% 成功率，10 步微调约 83%（自报）。", "id": "entity-generalist-gen15-one-shot", "url": "https://generalistai.com/blog/gen-1.5", "date_note": "官网博文 2026-08-19。" }
+      ]
+    },
+    {
       "key": "rewardai",
       "name": "励元智能 Reward AI",
       "founded_year": 2025,

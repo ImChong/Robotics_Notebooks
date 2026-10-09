@@ -18,6 +18,7 @@ related:
   - ../overview/xpeng-iron-54-patents-technology-map.md
   - ../overview/li-auto-machembodied-4-papers-technology-map.md
   - ../entities/xiaomi-robotics-1.md
+  - ../entities/generalist-ai-robotics.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
@@ -29,7 +30,7 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 23 家团队的公开技术路线与复现边界。"
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 24 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -116,13 +117,14 @@ flowchart TB
 | [XPENG Robotics 小鹏机器人](../overview/xpeng-iron-54-patents-technology-map.md) | ● | ● | ● | [XPACE](../entities/paper-xpace.md)、[AnyWorld](../entities/paper-anyworld.md)、[UniT](../entities/paper-unit-unified-physical-language.md)、[ROVE](../entities/paper-rove-humanoid-vla-intervention.md)、[IronMind](../entities/paper-ironmind.md)、IRON 专利、[DeepInsight](../entities/deepinsight.md)、[Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)、[R2S-EGO](../entities/paper-r2s-ego.md) |
 | [Xiaomi Robotics 小米机器人](../entities/xiaomi-robotics-1.md) | ● |  |  | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)、[Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)、[U0](../entities/xiaomi-robotics-u0.md)、[UCAG-P](../entities/paper-ucag-p.md)、[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)、[ViTacPhys](../entities/paper-vitacphys.md) |
 | [X Square Robot 自变量机器人](../entities/cn-os-wall-x.md) | ● |  |  | [WALL-OSS](../entities/cn-os-wall-x.md) → [WALL-OSS-0.5](../entities/paper-wall-oss-0-5.md)、[X-Tokenizer](../entities/cn-os-x-tokenizer.md)、[WALL-WM](../entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md)、[WALL-SS](../entities/paper-wall-ss.md)、[HOST](../entities/paper-host-one-shot-human-video.md)；数采 [XRZero-G0](../entities/xrzero-g0.md)、[TwinDEX](../entities/twindex.md) |
+| [Generalist AI](../entities/generalist-ai-robotics.md) | ● |  |  | [GEN-0](../entities/generalist-gen0.md) → [GEN-1](../entities/generalist-gen1.md) → [千手](../entities/generalist-gen1-thousand-hands.md) → [GEN-1.5](../entities/generalist-gen15-one-shot.md)、[物理常识](../entities/physical-commonsense-generalist.md) |
 | [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
 
 RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
-小鹏机器人的三列分别对应 XPACE / AnyWorld / UniT / ROVE / IronMind 的世界–动作与 VLA 研究、IRON 整机专利与 S2/S1/S0 统一评测、Athena-WBC 长尾全身控制与 R2S-EGO Real2Sim；均为独立论文，不假定已集成为同一产品栈。自变量机器人只归入 ①：官网 8 篇技术博文以 VLA、动作分词与世界模型为主；XRZero-G0 / TwinDEX 属数据采集设备，Quanta 系列整机在本库暂无详情，不据此填 ② / ③（[官网列表核查](../../sources/sites/x2robot-blog-research-index.md)）。小米机器人只归入 ①：已收录作品集中在 VLA、世界基础模型与视触觉灵巧操作；CyberDog / CyberOne 整机在本库暂无独立详情，不据此填 ② / ③。理想汽车只归入 ①：四篇 MachEmbodied 论文覆盖记忆、认知、理解–生成与触觉 WAM，已归档材料未见人形整机或全身控制发布；ME-Dex 1.0 论文署名为 "Foundation Model, Li Auto Inc."，见[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)。
+小鹏机器人的三列分别对应 XPACE / AnyWorld / UniT / ROVE / IronMind 的世界–动作与 VLA 研究、IRON 整机专利与 S2/S1/S0 统一评测、Athena-WBC 长尾全身控制与 R2S-EGO Real2Sim；均为独立论文，不假定已集成为同一产品栈。Generalist AI 只归入 ①：官网 10 篇博文围绕从零训练的具身基础模型（GEN 系列）、预训练 scaling 与跨末端泛化；公开材料未发布整机或独立全身控制，数字均为公司自报（[博文索引](../../sources/sites/generalistai-blog-index.md)）。自变量机器人只归入 ①：官网 8 篇技术博文以 VLA、动作分词与世界模型为主；XRZero-G0 / TwinDEX 属数据采集设备，Quanta 系列整机在本库暂无详情，不据此填 ② / ③（[官网列表核查](../../sources/sites/x2robot-blog-research-index.md)）。小米机器人只归入 ①：已收录作品集中在 VLA、世界基础模型与视触觉灵巧操作；CyberDog / CyberOne 整机在本库暂无独立详情，不据此填 ② / ③。理想汽车只归入 ①：四篇 MachEmbodied 论文覆盖记忆、认知、理解–生成与触觉 WAM，已归档材料未见人形整机或全身控制发布；ME-Dex 1.0 论文署名为 "Foundation Model, Li Auto Inc."，见[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)。
 
 星动纪元的三列分别对应 VPP 视频预测表征、L7 / M7 / XHAND 与数据/控制接口、Humanoid-Gym 人形 RL；研究和产品属于不同节点，不假定一个统一模型已贯通且完整开放，见[公司与日期核查](../../sources/sites/robotera.md)。
 
@@ -172,6 +174,7 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | XPENG Robotics | 🟡 | 🟡 | ❓ | [UniT](../entities/paper-unit-unified-physical-language.md) 代码与 VLA-UniT 权重开源；XPACE、AnyWorld、R2S-EGO 核查时未开源，IronMind 开放状态未核验 |
 | Xiaomi Robotics | ✅ | ✅ | 🟡 | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) 权重、推理与后训练管线（2026-04-27）公开；XR-1 / U0 有官方仓；TacRefineNet、ViTacPhys、UCAG-P 代码待发布 |
 | X Square Robot | ✅ | ✅ | 🟡 | [WALL-X](https://github.com/X-Square-Robot/wall-x) 有 WALL-OSS / 0.5 代码与权重，X-Tokenizer 推理库与权重、HOST 代码与权重公开；WALL-WM 仅代码；WALL-SS、TwinDEX 未开源；数据仅 XRZero-G0-3K 子集 |
+| Generalist AI | ❌ | ❌ | ❌ | [GEN-0](../entities/generalist-gen0.md) / [GEN-1](../entities/generalist-gen1.md) 博文未列代码、权重与数据；无技术报告，仅合作方早期访问 |
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
@@ -230,7 +233,7 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [23 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [24 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
 - [小鹏机器人 UniT 项目归档](../../sources/sites/xpeng-robotics-unit.md)
 - [理想 MachEmbodied 四篇盘点](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)

@@ -3,11 +3,12 @@
 - **类型：** 多站点资料索引（官方博客、研究页与项目页）
 - **收录日期：** 2026-09-28
 - **索引补核：** 2026-10-05（新增四家公司索引，开放范围按下列项目归档的核查日期）
-- **范围：** 以公司路线现有 23 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **范围：** 以公司路线现有 24 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
 - **RAI 路线增补：** 2026-10-08，研究所背景、官方事件时间和现有控制/操作/部署项目，见 [RAI 归档](./rai-institute.md)。
 - **路线增补：** 2026-10-06，复用既有 RoboParty 归档并补核 Party OS 当前入口。
 - **车企机器人部门增补：** 2026-10-09，新增小鹏机器人、小米机器人与理想汽车具身团队，复用既有论文与专利归档。
 - **自变量机器人增补：** 2026-10-09，核对官网 Blog / Research 共 8 篇，补齐 WALL-WM、WALL-OSS、X-Tokenizer 详情并新建 WALL-OSS-0.5、XRZero-G0，见 [列表核查](./x2robot-blog-research-index.md)。
+- **Generalist AI 增补：** 2026-10-09，核对官网 Blog 10 篇，新建 GEN-0、GEN-1 详情并在公司总览补齐其余短文，见 [博文索引](./generalistai-blog-index.md)。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -34,6 +35,7 @@
 | 小鹏机器人 XPENG Robotics | [GitHub](https://github.com/xpeng-robotics)、[XPACE](https://xpeng-robotics.github.io/xpace/)、[AnyWorld](https://xpeng-robotics.github.io/anyworld/)、[ROVE](https://xpeng-robotics.github.io/rove/) | IRON 人形、WAM 与世界模拟器、人–人形潜动作、人机闭环后训练、长尾 WBC、全栈评测；[UniT 归档](./xpeng-robotics-unit.md)、[IRON 专利归档](../patents/xpeng_iron_patents_cn.md) | UniT 有代码与权重；XPACE / AnyWorld 项目页核查时未列代码或权重；鹏行团队 2016 年组建、2020 年获小鹏投资（[中证网 2021-09-07](https://cs.com.cn/ssgs/gsxw/202109/t20210907_6202415.html)） |
 | 小米机器人 Xiaomi Robotics | [官网 Research](https://robotics.xiaomi.com/)（[4 篇对照](./xiaomi-robotics-website.md)）、[GitHub](https://github.com/XiaomiRobotics)、[Hugging Face](https://huggingface.co/XiaomiRobotics) | Xiaomi-Robotics-0 / 1 / U0、视触觉灵巧抓取、跨本体几何接口 | XR-0 权重与推理公开；TacRefineNet、ViTacPhys、UCAG-P 核查时代码待发布；2021-08-10 官宣成立小米机器人实验室（[澎湃新闻](https://www.thepaper.cn/newsDetail_forward_13994915)） |
 | 自变量机器人 X Square Robot | [Blog](https://x2robot.com/en/blog)、[Research](https://x2robot.com/en/research)、[GitHub](https://github.com/X-Square-Robot)、[Hugging Face](https://huggingface.co/x-square-robot) | WALL-OSS / 0.5、X-Tokenizer、WALL-WM、WALL-SS、HOST、XRZero-G0、TwinDEX；[8 篇官网博文对照](./x2robot-blog-research-index.md) | WALL-OSS 系列、X-Tokenizer、HOST 有代码与权重；WALL-WM 仅代码；WALL-SS、TwinDEX 未开源；成立于 2023-12（[官网 About](https://x2robot.com/en/about)） |
+| Generalist AI | [Blog](https://generalistai.com/blog) | GEN-0、GEN-1、GEN-1.5、多末端「千手」、物理常识、GTC 演示；[10 篇博文对照](./generalistai-blog-index.md) | 博文未列代码、权重与数据，仅合作方早期访问；成立年份 2024 来自 [TechCrunch](https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/)，官网 About 未写 |
 | 理想汽车具身团队 Li Auto | [MachEmbodied GitHub](https://github.com/MachEmbodied) | ME-Brain 1.0、ME-VLM、ME-U0、ME-Dex 1.0；[四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) | GitHub 组织页未写公司名，归属依据 [ME-Dex 1.0 论文署名](https://arxiv.org/html/2609.21449)（Foundation Model, Li Auto Inc.）；2026-06 基座模型部门新增三个具身二级部门（[每日经济新闻](https://www.mrjjxw.com/articles/2026-06-01/4413821.html)） |
 
 ## 核查边界
