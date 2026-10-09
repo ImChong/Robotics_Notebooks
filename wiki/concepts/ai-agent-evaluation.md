@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -21,6 +21,7 @@ related:
 sources:
   - ../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md
   - ../../sources/blogs/claude_dev_automating_eval_hillclimbing_2026-09-28.md
+  - ../../sources/sites/artificial-analysis.md
 summary: "AI agent 评测把「输入→多轮工具与环境→终态 outcome」变成可重复试验：组合 code/model/human grader，区分能力 eval 与回归 eval，并警惕 harness 泄漏、grader 错误与 hillclimb 过拟合。"
 ---
 
@@ -141,6 +142,7 @@ flowchart TD
 ## 与其他页面的关系
 
 - [anthropic-claude-api-skill](../entities/anthropic-claude-api-skill.md) — `build-eval` / `hillclimb` 工具化  
+- [Artificial Analysis](../entities/artificial-analysis.md) — 通用模型与推理服务商的能力、价格和速度对比，可用于候选模型初筛；不替代 agent harness 的任务级评测。  
 - [RLE-Bench](../entities/rle-bench.md) — 机器人学习向 coding agent eval  
 - [PPTBench](../entities/paper-pptbench.md) — 科学流程图→可编辑 PPTX 的视觉 coding 重建榜（arXiv:2609.29718）  
 - [Agentic Coding 软件工程基础](./agentic-coding-software-fundamentals.md) — eval 不替代 SE 取舍  
@@ -153,5 +155,6 @@ flowchart TD
 
 ## 参考来源
 
+- [Artificial Analysis 平台归档](../../sources/sites/artificial-analysis.md)
 - [Demystifying evals 归档](../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md)
 - [Eval 自动化与 hillclimb 归档](../../sources/blogs/claude_dev_automating_eval_hillclimbing_2026-09-28.md)
