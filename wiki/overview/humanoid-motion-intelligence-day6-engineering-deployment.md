@@ -60,7 +60,8 @@ flowchart LR
 | Online Sim-to-Real Adaptation via Closed-Loop System Modeling | [独立详情](../entities/paper-online-sim2real-closed-loop-modeling.md) | closed-loop online system modeling |
 | CoPRE | [独立详情](../entities/paper-copre-proprioceptive-contact.md) | proprioceptive contact detection |
 | TAPESIM | [独立详情](../entities/paper-tapesim.md) | efficient adhesive-tape simulation |
-| X2Real | [独立详情](../entities/paper-x2real.md) | sim-to-real generalist-policy benchmark |
+| X2Real 论文 | [独立详情](../entities/paper-x2real.md) | sim-to-real generalist-policy benchmark |
+| X2Real 项目 | [独立详情](../entities/x2real-project.md) | benchmark architecture, assets and reproducibility status |
 | MotionForge | [独立详情](../entities/paper-motionforge.md) | dynamic-object task and data generation |
 | The Cartesian Hand | [独立详情](../entities/paper-cartesian-hand-linear-fingers.md) | in-hand manipulation with linear fingers |
 | H2RBench | [独立详情](../entities/paper-h2rbench.md) | human-to-robot transfer benchmark |
