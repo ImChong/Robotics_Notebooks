@@ -415,6 +415,19 @@
         "lightwheelai"
       ]
     },
+    "wuxi-university": {
+      "label": "无锡学院（Wuxi University）",
+      "aliases": [
+        "wuxi-university"
+      ]
+    },
+    "nanjing-university-of-posts-and-telecommunications": {
+      "label": "南京邮电大学（Nanjing University of Posts and Telecommunications）",
+      "aliases": [
+        "njupt",
+        "nanjing-university-of-posts-and-telecommunications"
+      ]
+    },
     "arxiv": {
       "label": "学术预印本档案（arXiv）",
       "aliases": [
