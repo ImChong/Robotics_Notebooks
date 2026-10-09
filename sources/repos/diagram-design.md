@@ -11,9 +11,20 @@
 - **许可：** MIT
 - **版本（入库时）：** v2.5.10（README / gallery；GitHub API `updated_at` 2026-09-08）
 - **入库日期：** 2026-09-08
-- **一句话说明：** 39 种 editorial 图表类型的 Agent Skill：自包含 HTML + SVG，无阴影、无「Mermaid slop」；可从网站 onboarding 品牌色，并把 draw.io / Mermaid 源 **重绘** 为同一设计系统下的交付物（HTML / SVG / PNG）。
+- **一句话说明：** 42/44 种（仓库简介 / 当前 Skill 口径不同）editorial 图表类型的 Agent Skill：自包含 HTML + SVG，无阴影、无「Mermaid slop」；可从网站 onboarding 品牌色，并把 draw.io / Mermaid 源 **重绘** 为同一设计系统下的交付物（HTML / SVG / PNG）。
 - **开源状态：** **已开源** — MIT；`skills/diagram-design/` 为共享 Skill 根；本地 gallery `skills/diagram-design/assets/index.html` 可直接浏览器打开，无构建步骤。
 - **沉淀到 wiki：** 是 → [`wiki/entities/diagram-design.md`](../../wiki/entities/diagram-design.md)
+
+## 当前上游核对（2026-10-09）
+
+| 字段 | 当前核对结果 |
+|------|--------------|
+| GitHub API 总热度 | **46,434 stars / 2,952 forks**（2026-10-09 快照；会变化） |
+| 今日新增 stars | 用户提供约 **+227**；仓库 API 不返回单日增量，本次未核实，故不列为已验证数据 |
+| 图表类型数 | 仓库简介写 **42 diagram types**；当前 `skills/diagram-design/SKILL.md` v2.6 写 **44 visual types**。上游表述不一致，需随版本复核 |
+| 兼容工具 | Claude Code、Codex、GitHub Copilot、Factory Droid、Pi（README / 仓库简介） |
+| 可重绘输入 | `.drawio`、Mermaid、`.excalidraw`；未在当前上游文档中找到 PlantUML 导入支持 |
+| 最新版本信息 | 当前 Skill frontmatter 为 **v2.6**；上游 main 最近发布提交将插件 manifests 更新至 **2.6.68**（2026-10-08） |
 
 ## 仓库概况（2026-09-08 GitHub API / README）
 
@@ -30,7 +41,7 @@
 ## 为何值得保留
 
 - **本站 wiki 用 Mermaid 表达知识结构，对外沟通常需 editorial 级静态图。** 本 Skill 把「架构 / 时序 / 数据流 / 象限 / 飞轮 / Sankey / Wardley …」编译成 **可直接截图或导出 PNG/SVG 的自包含 HTML**，与页内 Mermaid 分工清晰。
-- **与 Archify / Draw.io Scientific Illustrator 形成三角对照：** [Archify](../../wiki/entities/archify.md) 偏 **类型化 JSON IR + Node 校验** 的系统图；[Draw.io Scientific Illustrator](../../wiki/entities/drawio-scientific-illustrator.md) 偏 **Codex MCP 可见步进 `.drawio`**；本仓偏 **editorial 设计系统 + 39 种版式 + draw.io/Mermaid 重绘**。
+- **与 Archify / Draw.io Scientific Illustrator 形成三角对照：** [Archify](../../wiki/entities/archify.md) 偏 **类型化 JSON IR + Node 校验** 的系统图；[Draw.io Scientific Illustrator](../../wiki/entities/drawio-scientific-illustrator.md) 偏 **Codex MCP 可见步进 `.drawio`**；本仓偏 **editorial 设计系统 + 多种版式 + draw.io/Mermaid/Excalidraw 重绘**。
 - **多 harness 安装面完整：** Claude Code / Codex / Factory Droid / Pi / Kiro / OpenCode 等均有文档路径；含 `/import-drawio`、`/import-mermaid`、`/export-diagram`、品牌 `/profile` 与 `/doctor` 运维模板。
 - **语义模式与可选动效：** `semantic-patterns.md` 把队列、策略 trace、信任边界等行为与 **最近邻视觉类型** 解耦；`animation.md` 提供可访问的 `reveal` / `step` / `loop`，默认仍为 **无脚本静态 HTML**。
 
