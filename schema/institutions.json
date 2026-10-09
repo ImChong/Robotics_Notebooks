@@ -4033,6 +4033,13 @@
       "aliases": [
         "svd-ai-lab"
       ]
+    },
+    "roboverse-org": {
+      "label": "机器人仿真研究组织（RoboVerse Organization）",
+      "aliases": [
+        "roboverse-org",
+        "roboversorg"
+      ]
     }
   }
 }
