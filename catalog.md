@@ -1861,6 +1861,7 @@
 - [HSImul3R：物理在环的 simulation-ready 人–场景交互重建](wiki/entities/paper-hsimul3r.md) — HSImul3R**（*Physics-in-the-Loop Reconstruction of Simulation-Ready Human–Scene Interactions*，arXiv `📅unknown` `[entity_page]`
 - [HTD-Refine：对齐高阶时序动力学的单目人体运动恢复](wiki/entities/paper-htd-refine-monocular-hmr.md) — HTD-Refine**（arXiv:2605.26879，CVPR 2026 Oral Award Candidate，浙大 / Ant / UT Austin）研究 **单目 world-gr `📅unknown` `[entity_page]`
 - [HUI360：社交机器人要先预测人会不会靠近](wiki/entities/paper-hui360.md) — HUI360**（*A 360° Egocentric Dataset and Baselines for Human-Robot Interaction Anticipation*；[arXiv `📅unknown` `[entity_page]`
+- [HULK：重载人形机器人的全身移动操作](wiki/entities/paper-hulk-forceful-loco-manipulation.md) — HULK**（*Learning Whole-Body Forceful Loco-Manipulation for Humanoids*，[arXiv:2610.08970](https://a `📅unknown` `[entity_page]`
 - [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Align `📅unknown` `[entity_page]`
 - [HumanCLAW：VLM 能否通过身体行动？](wiki/entities/paper-humanclaw.md) — HumanCLAW**（*Can Vision-Language Models Act Through a Body?*，[arXiv:2607.27180](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Humanoid Badminton：从有限人类动作学习动态球拍技能](wiki/entities/paper-humanoid-badminton-dynamic-racket-skills.md) — Humanoid Badminton**（*Learning Dynamic Racket Skills from Limited Human Motion Data*，[arXiv:2609.3 `📅unknown` `[entity_page]`
@@ -3151,6 +3152,7 @@
 - [ReViV](wiki/entities/paper-reviv4d.md) — ReViV**（*Reconstructing the Viewer and the View in 4D from Monocular Egocentric Video*，[ECCV 2026 `📅unknown` `[entity_page]`
 - [无奖励持续适应：太空机器人的潜奖励景观](wiki/entities/paper-reward-free-continual-adaptation-space.md) — Reward-Free Continual Adaptation for Resilient Space Robots**（[arXiv:2608.23452](https://arxiv.org `📅unknown` `[entity_page]`
 - [Residual Force Control（RFC，NeurIPS 2020）](wiki/entities/paper-rfc-residual-force-control.md) — Residual Force Control for Agile Human Behavior Imitation and Extended Motion Synthesis**（Ye Yuan、 `📅unknown` `[entity_page]`
+- [RFPO：把具身 Flow policy 压到单步推理](wiki/entities/paper-rfpo-rectified-flow-policy-optimization.md) — RFPO**（*Rectified Flow Policy Optimization for Embodied Control*，[arXiv:2610.10453](https://arxiv. `📅unknown` `[entity_page]`
 - [Rho：面向高效适应的 VLA 基础模型](wiki/entities/paper-rho.md) — Rho: A Foundation for Efficiently Adaptable VLA Models**（[arXiv:2609.38164](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
 - [Riemann-1.0（全因果自回归 World Action Model）](wiki/entities/paper-riemann-1.md) — Riemann-1.0**（*Riemann-1.0: An Embodied World Action Model for Physical AI*，黎曼动力技术报告，[项目页](https:/ `📅unknown` `[entity_page]`
@@ -4787,7 +4789,7 @@
 - [Agentic CAE（wogokoro/Agentic-CAE）](wiki/entities/wogokoro-agentic-cae.md) — Agentic CAE（wogokoro/Agentic-CAE）是Agentic Mechanical Engineering 集合中的 CAE 项目，涵盖网格、FEA/CFD 设置、求解器运行和结 `📅unknown` `[entity_page]`
 - [Wokwi](wiki/entities/wokwi.md) — Wokwi**（wokwi.com）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、ST `📅unknown` `[entity_page]`
 - [WolfieMouse](wiki/entities/wolfiemouse.md) — WolfieMouse**（kbumsik/WolfieMouse）是覆盖 **迷宫算法、STM32 底层驱动、 `📅unknown` `[entity_page]`
-- [Workhorse（人类示范驱动的人形全身移动操作）](wiki/entities/workhorse-humanoid-loco-manipulation.md) — Workhorse** 是一个从人类示范学习稳健人形全身移动操作的研究项目展示；作者称采集路线不依赖机器人遥操作或动作重定向，演示中的 Unitree G1 可自主完成带移动与物体交互的动作。 `📅unknown` `[entity_page]`
+- [Workhorse：从人类数据学习稳健全身移动操作](wiki/entities/workhorse-humanoid-loco-manipulation.md) — Workhorse**（*Learning Robust Whole-Body Humanoid Loco-Manipulation from Human Data*，[arXiv:2610.09 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](wiki/entities/world-labs.md) — World Labs** 在公开材料中将自身定位为 **空间智能（spatial intelligence）** 公司与 **前沿世界模型** 研发方：强调模型对三维世界的 **感知、生成、推理与 `📅unknown` `[entity_page]`
 - [WorldArena](wiki/entities/worldarena.md) — WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
