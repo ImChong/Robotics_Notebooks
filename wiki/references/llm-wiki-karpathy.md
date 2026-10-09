@@ -4,6 +4,7 @@ tags: [methodology, llm, wiki, karpathy, knowledge-base]
 status: active
 sources:
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
+  - ../../sources/blogs/rohitg00_llm_wiki_v2_gist.md
   - ../../sources/sites/karpathy-ai.md
 related:
   - ../concepts/retrieval-augmented-generation.md
@@ -19,8 +20,8 @@ related:
   - ../overview/karpathy-asd-ste100-llm-outputs.md
   - ../concepts/asd-ste100.md
   - ../entities/asd-ste100-skill.md
-summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-10-03
+summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，rohitg00 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
+updated: 2026-10-09
 ---
 
 # LLM Wiki
@@ -35,12 +36,15 @@ updated: 2026-10-03
 | RAG | Retrieval-Augmented Generation | 查询时检索片段再生成；详见 [RAG 概念页](../concepts/retrieval-augmented-generation.md)；本模式强调 **预编译 wiki** 优于纯 RAG |
 | BM25 | Best Matching 25 | 经典稀疏检索；Gist 推荐 qmd 等 hybrid BM25/vector 检索 wiki |
 | MCP | Model Context Protocol | 代理工具协议；qmd 等可提供 MCP 供 LLM 原生搜索 wiki |
+| RRF | Reciprocal Rank Fusion | 按多个排序列表的名次融合检索结果；v2 建议融合 BM25、向量与图检索 |
+| PII | Personally Identifiable Information | 个人可识别信息；v2 建议在入库时过滤敏感内容 |
 
 > Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13 · 仓库归档: [sources/blogs/karpathy_llm_wiki_gist.md](../../sources/blogs/karpathy_llm_wiki_gist.md)
 
 ## 参考来源
 
 - [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
+- [LLM Wiki v2 Gist 原始资料](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md)
 - [Andrej Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)
 - [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — Original Gist
 - [Robotics_Notebooks Methodology](../../AGENTS.md) — How this project applies the pattern
@@ -117,6 +121,47 @@ The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, cu
 ## Note
 
 This document is intentionally abstract. It describes the idea, not a specific implementation. The exact directory structure, the schema conventions, the page formats, the tooling — all of that will depend on your domain, your preferences, and your LLM of choice. Everything mentioned above is optional and modular — pick what's useful, ignore what isn't. For example: your sources might be text-only, so you don't need image handling at all. Your wiki might be small enough that the index file is all you need, no search engine required. You might not care about slide decks and just want markdown pages. You might want a completely different set of output formats. The right way to use this is to share it with your LLM agent and work together to instantiate a version that fits your needs. The document's only job is to communicate the pattern. Your LLM can figure out the rest.
+
+## LLM Wiki v2：面向规模与生命周期的扩展
+
+[rohitg00 的 LLM Wiki v2 Gist](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) 以 Karpathy 的基础模式为起点，讨论知识库面对长周期、多用户和更多资料后可添加哪些能力。它提出方向与设计选项，不是某套端到端实现的效果保证。
+
+| 维度 | 基础模式 | v2 提出的扩展 |
+|------|----------|---------------|
+| 知识状态 | 来源与页面交叉引用 | 记录证据与核验时间；显式 supersession；按需做保留/降权 |
+| 信息结构 | Markdown 页面 + wikilinks | 带类型实体和具名关系的知识图谱 |
+| 检索 | index 或单一搜索 | BM25 + 向量 + 图遍历，建议以 RRF 融合 |
+| 维护 | 人工触发 ingest / query / lint | 来源、会话、查询、写入和定时任务驱动的 hooks |
+| 质量 | 周期性检查 | 质量门、断链修复、矛盾候选与 self-healing |
+| 协作治理 | 单用户 / 单代理 | 多代理同步、私有/共享范围、审计和敏感信息过滤 |
+
+### 扩展的数据流
+
+```mermaid
+flowchart LR
+  S[Sources 与会话记录] --> I[Ingest / Crystallize]
+  I --> W[Wiki 页面与证据]
+  I --> G[类型化实体图谱]
+  W --> R[BM25 + 向量检索]
+  G --> R
+  R --> F[RRF 融合与关系遍历]
+  F --> A[带引用的回答]
+  A --> C[人工策展 / 可选回写]
+  C --> W
+  W --> L[Supersession / 保留策略 / Lint]
+```
+
+### 与本仓库实现的关系
+
+Robotics_Notebooks 已有 `sources/`、`wiki/`、`schema/`、独立的 ingest/query/lint 规范和基于 wiki 内链生成的知识图。v2 可作为检视后续扩展的清单；当前页面目录结构与链接图并不等同于 Gist 提议的事实级 typed graph、BM25/vector/graph 三路 RRF 检索或 confidence lifecycle，这些扩展不应被误写成已部署能力。
+
+### 采用时的边界
+
+- **置信分数可能制造精确感。** 只有评分能追到具体来源、核验时间和矛盾记录时才有意义；否则展示证据链往往比单个小数更可审查。
+- **遗忘与保留策略风险不同。** 旧知识可能仍是重要历史；优先显式标记替代关系和检索降权，避免不可逆删除。
+- **图谱与混合检索需要评测。** 实体/关系抽取会引入错误边，三路搜索也增加工程成本；应测召回、排序质量、延迟和维护成本。
+- **自动写入必须有治理。** 多代理同步、PII 过滤、自动矛盾解决与批量修复需要权限、审计、人工复核和回滚边界。
+- **规模阈值不是硬定律。** Gist 中的文档数经验是作者的启发式判断，不应直接当成通用迁移门槛。
 
 ## 关联页面
 
