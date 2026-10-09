@@ -20,7 +20,7 @@ related:
   - ../overview/karpathy-asd-ste100-llm-outputs.md
   - ../concepts/asd-ste100.md
   - ../entities/asd-ste100-skill.md
-summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，Rohit Gupta 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
+summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，rohitg00 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
 updated: 2026-10-09
 ---
 
@@ -124,7 +124,7 @@ This document is intentionally abstract. It describes the idea, not a specific i
 
 ## LLM Wiki v2：面向规模与生命周期的扩展
 
-[Rohit Gupta 的 LLM Wiki v2 Gist](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) 以 Karpathy 的基础模式为起点，讨论知识库面对长周期、多用户和更多资料后可添加哪些能力。它提出方向与设计选项，不是某套端到端实现的效果保证。
+[rohitg00 的 LLM Wiki v2 Gist](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) 以 Karpathy 的基础模式为起点，讨论知识库面对长周期、多用户和更多资料后可添加哪些能力。它提出方向与设计选项，不是某套端到端实现的效果保证。
 
 | 维度 | 基础模式 | v2 提出的扩展 |
 |------|----------|---------------|
