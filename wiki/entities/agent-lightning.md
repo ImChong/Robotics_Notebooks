@@ -10,7 +10,7 @@ tags:
   - open-source
 status: complete
 date: 2026-09-19
-updated: 2026-09-19
+updated: 2026-10-09
 related:
   - ./deepseek-harness.md
   - ./hermes-agent.md
@@ -22,8 +22,9 @@ related:
 sources:
   - ../../sources/repos/agent_lightning.md
   - ../../sources/sites/agent-lightning-microsoft-research.md
+  - ../../sources/sites/agent-lightning-v1-0-release-blog.md
   - ../../sources/papers/agent_lightning_v1_technical_report.md
-summary: "Agent Lightning（microsoft/agent-lightning，MIT，v1.0.1）是微软开源的轻量 agentic RL 栈：API Gateway 代理 OpenAI 兼容请求以零改动接入真实 agent harness，Rollout Controller 在本地或 Kubernetes 跑 rollout，Trainer 用 verl + vLLM 聚合轨迹并更新策略；Coding Agent 示例在 6K 样本上将 SWE-bench Verified 从 41.8% 提到 56.4%。"
+summary: "Agent Lightning（microsoft/agent-lightning，MIT，v1.0.1）是微软开源的 Harnessed Agentic RL 栈：真实 agent harness 经 API Gateway 接入，Controller 在本地或 Kubernetes 执行 rollout，Trainer 用 verl + vLLM 汇总轨迹并更新策略；v1.0 还支持共置异步 rollout 与训练。Coding Agent 示例以约 6K 样本将 SWE-bench Verified Pass@1 从 41.8% 提升到 56.4%。"
 ---
 
 # Agent Lightning（Microsoft）
@@ -97,6 +98,48 @@ flowchart TB
   DS --> T
 ```
 
+### 从真实 harness 轨迹到训练样本
+
+真实 harness 自己管理工具调用、上下文压缩和环境循环，训练端看到的是一串模型请求 / 响应，而不一定是单条连续 token 序列。官方 v1.0 文档把正确聚合视为训练算法的一部分：
+
+- **Trajectory 模式（默认）：** 仅当后续请求的 token 前缀与前一轮 prompt + response 精确连续时才合并；轮间新增的工具观察可作为上下文保留并从 policy loss 中 mask。长度超限可能导致样本丢弃或截断。
+- **Transition 模式：** 每次模型调用单独成为一个训练样本，不跨轮合并。
+- **Rollout 级 advantage 与 per-rollout mean loss：** 一个 rollout 可被切成数量不等的样本；按 rollout 计算优势、按 rollout 归一化损失，可避免交互较多的轨迹仅因样本更多而获得额外权重。
+- **调度：** rollout 的完成时间与最终样本数事先不确定，trainer 需要把可变 rollout 工作负载映射到固定的 GPU / 并行配置。
+
+### 共置异步训练（Collocated Async RL）
+
+当 rollout 耗时不均时，同步训练要等最慢一组；完全分离式异步通常又需要独立的 rollout GPU 池。Agent Lightning 的共置异步模式让 rollout 推理与策略更新共用 GPU，并以已完成的 prompt group 形成更新批次：
+
+1. Trainer 维持最多 `async_train_batch_size` 个活动 prompt groups，Controller 在本地进程或 K8s Job 启动 agent。
+2. 达到 `data.train_batch_size` 个完成组后开始更新；尚未完成的组结转到下一轮，GRPO/RLOO 同一组中的兄弟 rollout 不拆开。
+3. 更新前 Gateway 暂停新模型请求并等待在途请求完成；模型更新结束后恢复推理。Agent 使用可重试的 OpenAI / HTTP 客户端处理暂停窗口。
+4. 异步旧策略 rollout 可能发生 policy staleness；官方文档建议配置 verl token-level importance sampling correction，并给出 clipping threshold 2 的起点。
+
+文档建议 `async_train_batch_size > train_batch_size`，可先从约 2 倍开始，再依据 agent rollout 时长、CPU / 内存压力和 carry-over 指标调整。微软 2026-10-07 发布说明在其测试中报告相较同步 RL 约 **2 倍端到端加速**，且 GPU 数少于传统独立 GPU 池的异步方案；此为特定实验报告，不是普遍性能承诺。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Trainer as Trainer（verl）
+  participant Controller as Rollout Controller
+  participant Agent as 真实 Agent harness
+  participant Gateway as API Gateway
+  participant GPUs as 共用 GPU 池
+  Trainer->>Controller: 创建 prompt groups
+  Controller->>Agent: 本地进程或 K8s Job rollout
+  Agent->>Gateway: OpenAI 兼容模型请求
+  Gateway-->>Agent: 推理响应
+  Gateway->>Trainer: 请求轨迹与 rollout 事件
+  Note over Trainer,Controller: 完成组进入更新批次；未完成组结转
+  Trainer->>Gateway: 暂停新请求
+  Gateway->>Gateway: 排空在途请求
+  Trainer->>GPUs: 更新模型策略
+  Trainer->>Gateway: 恢复推理请求
+```
+
+这一路径说明了「异步」并非让模型更新与在途推理无协调地并发：Gateway 的 pause / drain 边界用于管理共享 GPU 上的权重更新。
+
 ### 源码运行时序图
 
 典型 **本地 Calc-X** 路径（`examples/calc_x/run_local.sh`）：
@@ -141,6 +184,8 @@ sequenceDiagram
 | **Coding Agent** | `examples/swe_smith` + 公开数据清洗与 anti–reward-hacking 脚本；Qwen3.5-9B SWE-bench Verified **+14.6 pp** |
 | **观测** | Quick Start 示例可接 W&B；Gateway / Controller 配置见文档 20–30 章 |
 
+v1.0 文档的关键入口： [Basics](https://microsoft.github.io/agent-lightning/stable/05-basics/)（组件与 rollout）、[Trainer Configuration](https://microsoft.github.io/agent-lightning/stable/20-trainer-configuration/)（样本聚合与优化配置）、[Asynchronous Training](https://microsoft.github.io/agent-lightning/stable/35-asynchronous-training/)（共置异步）、[Coding Agent](https://microsoft.github.io/agent-lightning/stable/75-example-coding-agent/)（SWE-smith 端到端训练）。
+
 ## 局限与风险
 
 - **GPU 依赖重：** 轻量的是 **编排代码**，策略推理与 GRPO 仍依赖 **verl + vLLM + GPU**；非「CPU 即可训 agent」。
@@ -162,11 +207,16 @@ sequenceDiagram
 
 - [Agent Lightning 仓库源归档（本站）](../../sources/repos/agent_lightning.md)
 - [Microsoft Research 项目页源归档（本站）](../../sources/sites/agent-lightning-microsoft-research.md)
+- [Agent Lightning v1.0 发布说明源归档（本站）](../../sources/sites/agent-lightning-v1-0-release-blog.md)
 - [v1.0 技术报告源归档（本站）](../../sources/papers/agent_lightning_v1_technical_report.md)
 - [microsoft/agent-lightning（GitHub）](https://github.com/microsoft/agent-lightning)
 
 ## 推荐继续阅读
 
 - [Agent Lightning v1.0 文档 — Quick Start](https://microsoft.github.io/agent-lightning/stable/01-quick-start/) — 单卡 A100 Calc-X 端到端
+- [Basics](https://microsoft.github.io/agent-lightning/stable/05-basics/) — Gateway / Controller / Trainer 与 rollout 状态
+- [Trainer Configuration](https://microsoft.github.io/agent-lightning/stable/20-trainer-configuration/) — 数据处理、样本合并和 rollout 级优化
+- [Asynchronous Training](https://microsoft.github.io/agent-lightning/stable/35-asynchronous-training/) — 共置异步批次、carry-over 与 staleness correction
+- [Coding Agent 示例](https://microsoft.github.io/agent-lightning/stable/75-example-coding-agent/) — SWE-smith 编码 agent 训练
 - [Agent Lightning v1.0: Towards Harnessed Agentic RL（arXiv:2608.17528）](https://arxiv.org/abs/2608.17528) — 架构与 benchmark 细节
 - [No More Retokenization Drift（vLLM 博客）](https://blog.vllm.ai/2025/10/22/agent-lightning.html) — Gateway 返回 token id 的工程动机
