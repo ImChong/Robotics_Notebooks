@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, objectnav, navigation, graph-mamba, mamba, ssm, llm, wxu, njupt]
+tags: [paper, objectnav, navigation, graph-mamba, mamba, ssm, llm, wuxi-university, njupt]
 status: complete
 updated: 2026-10-09
 topic: [navigation]
