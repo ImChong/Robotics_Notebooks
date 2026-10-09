@@ -61,8 +61,8 @@ summary: "humanlayer/skills 是 HumanLayer 公开的 Claude Code 技能插件集
 | **Loop 脚手架** | `build-iterated-agentic-loop`：生成 repo-local skill、GHA workflow、`agent-memory`、references 模板。 |
 | **Loop 设计器** | `design-control-loop`：访谈式定义 set point / sensor / controller / actuator，强调本地先行。 |
 | **沟通/教学** | `show-me`：伪代码、调用树、组件树、浅文件树、Mermaid 或 HTML artifact。 |
-| **便携迭代** | `rpi`：可移植的 Raspberry Pi agent workflow；使用场景以该插件 README 为准。 |
-| **审查** | `visual-pr`：PR 视觉审查工作流，重点为 UI 变更提供可审阅截图/视觉反馈。 |
+| **分阶段交付** | `rpi`：Research, Design, and Implement；按用户明确调用的阶段推进研究、设计与实施。 |
+| **PR 描述** | `visual-pr`：按模板撰写 PR 背景、变更轮廓与审阅者需注意事项。 |
 
 ### 流程总览（agentic control loop）
 
