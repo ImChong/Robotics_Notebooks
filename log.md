@@ -62,6 +62,8 @@ op: ingest
 
 将 arXiv:2608.30773 纳入软体机器人与接触丰富操作知识脉络，整理其“交互获取信息”的方法主张、循环策略及两阶段 Sim2Real。当前提交资料未提供官方代码入口，页面明确标注复现边界，并与接触丰富操作概念页建立回链。
 
+## [2026-10-09] ingest | sources/blogs/simate_beta_robodojo_2026-09.md — 公司路线新增 Simate（硅基伙伴）：新建 Simate-beta 详情，补公司背景与 RoboDojo 成绩
+
 ## [2026-10-09] ingest | The Last AI Built by Humans — 收录 RSI 五级自治与 HCI 框架
 
 - 归档 arXiv 论文、项目页及 CC0 文献清单；核查未见论文专属可运行实现。
