@@ -10,6 +10,7 @@ tags:
   - skolkovo
 status: complete
 updated: 2026-10-09
+project_id: autodidactwam
 arxiv: "2610.08119"
 related:
   - ./cosmos-3.md
