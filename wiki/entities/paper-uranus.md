@@ -110,6 +110,7 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)：扩散与视频生成式环境预测。
 - [Isaac Lab](./isaac-lab.md)：显式机器人仿真与学习框架。
 - [Newton Physics](./newton-physics.md)：机器人/物理仿真工具链。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：Uranus 作为策略闭环评测环境时，对应其中「世界模型预测保真度评测」层，需要用真机或物理仿真抽样复核。
 
 ## 参考来源
 

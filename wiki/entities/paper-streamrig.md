@@ -27,6 +27,18 @@ summary: "StreamRig以冻结多视图3D基础模型联合编码同步标定相�
 机构：浙江大学、华南理工大学  
 论文：arXiv:2609.40244，2026-09-30 提交。作者主页标注 ICRA 2027 under review（尚非录用论文）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| VO | Visual Odometry | 从图像序列估计相机 / 机器人相对运动 |
+| KV cache | Key-Value cache | CausalBridge 缓存历史注意力键值，实现流式推理 |
+| ATE | Absolute Trajectory Error | 完整序列 SE(3) 对齐后的绝对轨迹误差 |
+| SE(3) | Special Euclidean group in 3D | 三维刚体位姿（旋转 + 平移） |
+| IMU | Inertial Measurement Unit | 惯性测量单元；StreamRig 公开方法未做 IMU 融合 |
+| G2G | Group-to-Group | 跨相机组重定位模型，提供 warm-start 权重 |
+| CC BY-NC | Creative Commons Attribution-NonCommercial | 非商业署名许可，StreamRig 代码采用 4.0 版本 |
+
 ## 一句话理解
 
 把同一时刻多台**已同步、已标定**相机的图像当作一个整体来理解；先用冻结的 3D 多视图基础模型提取几何，再用轻量因果模块从连续相机组估计机器人位姿。
@@ -121,6 +133,20 @@ sequenceDiagram
 - 公开摘要主要报告与被测模型的相对比较；不能推导出在任意机器人、镜头布局或计算设备上都占优。
 - 大型冻结前端、特征缓存和重定位预训练增加复现门槛；这不是轻量单目 VO 替换件。
 - 对控制系统而言，估计漂移指标不等于闭环行走稳定性；需要接入具体机器人后评估时延、失效检测与恢复逻辑。
+
+## 与其他工作对比
+
+| 工作 | 关系 | 关键区别 |
+|---|---|---|
+| [G2G](./paper-g2g.md) | 同组前作；StreamRig 用其重定位 checkpoint warm-start | G2G 回归两组图像间的相对 6-DoF 位姿（跨序列重定位）；StreamRig 增加因果缓存与周期重锚，变成在线流式里程计 |
+| [ORB-SLAM3](./orb-slam3.md) | 都可从相机流估计位姿 | ORB-SLAM3 是基于特征点的几何 SLAM，支持 IMU 融合与回环 / 多地图；StreamRig 是学习式多相机里程计，无回环与 IMU 融合，依赖大型冻结前端 |
+| 逐帧单目在线 3D 模型 | 同样利用基础模型做在线几何 | 单目流程逐相机处理，浪费 rig 内固定几何；StreamRig 每个时刻联合编码整个标定相机组 |
+
+视觉 / 激光 / 惯性里程计的系统级选型见 [LiDAR SLAM、LIO 与 VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)；StreamRig 更适合作为其中视觉前端的研究候选，而非完整状态估计器。
+
+## 结论
+
+StreamRig 说明冻结的多视图 3D 基础模型可以通过轻量的 rig 压缩、因果缓存和周期重锚变成流式多相机里程计：74.6M 可训练参数、仅用相对位姿监督，在 NCLT 与 KITTI-360 上给出可复现的公开结果，并在自采人形机器人数据上做了零样本验证。代价是依赖精确同步与标定、复现需要数百 GiB 特征缓存，且代码为 CC BY-NC 非商业许可。对人形机器人，它是视觉状态估计前端的研究候选；接入控制闭环前仍需补齐 IMU 融合、失效检测与延迟评估。
 
 ## 关联页面
 

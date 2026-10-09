@@ -204,6 +204,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # clip：正文里既指 CLIP 视觉-语言模型，又指力矩「限幅」动词（torque clip），
     # 两义被小写 slug 合并，非单一可成页概念，作停用词不再误报为「缺独立页」。
     "clip",
+    # meta：命中处分属四种不相干的含义——公司名（paper-sam3 的 **Meta**、Meta Quest
+    # 组织标签 `meta`）、技能清单的分组名（superpowers / agent-skills 的 **Meta** 技能域）、
+    # 元数据字段（paper-lt-mem 的 **Meta** 动态性元数据、LeRobot 数据集的 `meta` 目录），
+    # 被小写 slug 合并，非单一可成页概念；与 clip 同类多义停用词。
+    "meta",
     # arxiv：预印本托管/出版平台（基础设施），非机器人概念/方法/形式化，
     # 不应建独立 concepts/methods 页；与 http/https/main 同类基础设施停用词。
     "arxiv",

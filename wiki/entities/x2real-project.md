@@ -20,6 +20,16 @@ summary: "X2Real是自变量机器人提出的通才操作策略仿真评测项�
 
 **X2Real** 是 X Square Robot（自变量机器人）提出的通才机器人操作策略评测项目。它希望让仿真中的策略比较更接近真实机器人表现，并通过可扩展任务和清晰的数据划分降低评测偏差。项目关联论文见 [X2Real 论文详情](./paper-x2real.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| X2Real | eXtensive simulation benchmark for real-world generalist policies | 项目名；通才操作策略仿真评测基准 |
+| Sim2Real | Simulation-to-Real | 仿真评测结果与真机表现的对应关系 |
+| DSL | Domain-Specific Language | Mana 物理任务描述语言的类别 |
+| HF | Hugging Face | x2real-assets 静态资产的托管平台 |
+| API | Application Programming Interface | 图示不代表已核实的项目接口 |
+
 ## 项目定位
 
 X2Real 是**评测基准与仿真生态**，不是一个可直接部署到机器人上的策略模型。论文将其建立在 NVIDIA Isaac Lab-Arena 上，围绕三项目标组织：
@@ -91,6 +101,7 @@ sequenceDiagram
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — 论文摘要所述仿真基座
 - [Sim2Real](../concepts/sim2real.md) — 仿真评测与真机表现的关系
 - [机器人操作](../tasks/manipulation.md) — 任务领域
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — X2Real 对应其中「策略任务成功率评测」与「sim↔real 评测 gap 校准」层
 
 ## 参考来源
 
