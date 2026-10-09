@@ -10,7 +10,7 @@ repo: "https://github.com/AIGeeksGroup/RFPO"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../tasks/loco-manipulation.md
-  - ../methods/flow-matching.md
+  - ../concepts/flow-matching-embodied-policy.md
 sources:
   - ../../sources/papers/rfpo_arxiv_2610_10453.md
   - ../../sources/repos/rfpo.md
