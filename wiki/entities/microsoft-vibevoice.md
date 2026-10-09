@@ -3,7 +3,8 @@ type: entity
 project_id: microsoft-vibevoice
 project: https://microsoft.github.io/VibeVoice
 code: https://github.com/microsoft/VibeVoice
-papers: ["2601.18184", "2609.02812"]
+arxiv: "2601.18184"
+papers: ["2609.02812"]
 tags:
   - microsoft
   - speech
@@ -20,6 +21,8 @@ related:
 sources:
   - ../../sources/repos/microsoft-vibevoice.md
   - ../../sources/sites/vibevoice-asr-huggingface.md
+  - ../../sources/papers/vibevoice_asr_arxiv_2601_18184.md
+  - ../../sources/papers/vibevoice_asr_streaming_arxiv_2609_02812.md
 summary: "Microsoft VibeVoice 是开源语音模型系列；VibeVoice-ASR 7B 将长音频转写、说话人归因与时间戳联合输出，支持自定义热词和 50+ 语言；独立的 Streaming checkpoint 面向逐块实时转写。"
 ---
 
@@ -108,7 +111,9 @@ sequenceDiagram
 
 - [Microsoft VibeVoice 仓库归档](../../sources/repos/microsoft-vibevoice.md)
 - [VibeVoice-ASR 项目页与模型卡归档](../../sources/sites/vibevoice-asr-huggingface.md)
+- [VibeVoice-ASR 技术报告归档](../../sources/papers/vibevoice_asr_arxiv_2601_18184.md)
 - [VibeVoice-ASR 技术报告 arXiv:2601.18184](https://arxiv.org/abs/2601.18184)
+- [VibeVoice-ASR-Streaming 技术报告归档](../../sources/papers/vibevoice_asr_streaming_arxiv_2609_02812.md)
 - [VibeVoice-ASR-Streaming 技术报告 arXiv:2609.02812](https://arxiv.org/abs/2609.02812)
 
 ## 推荐继续阅读
