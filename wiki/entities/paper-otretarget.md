@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, human-object-interaction, unitree-g1]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-09
 arxiv: "2609.36602"
 related:
   - ./paper-hrl-stack-03-omniretarget.md
@@ -59,6 +59,13 @@ flowchart TD
 ## 实验与评测
 
 官方项目页报告 OMOMO 接触 Jaccard **87%**、深度误差 **8.7 mm**；OmniRetarget 对照为 **28%** 和 **29.3 mm**。G1 真机展示搬箱，接触几何指标不等同于长期策略成功率。
+
+
+## 动态动作与控制边界
+
+论文图 1 展示的动作包括四足爬行（手部触地）和带全身旋转的移动；这说明接触目标可覆盖足部之外的身体部位。论文没有明确报告侧手翻接后空翻及双脚、单手之间的连续支撑切换，因此该具体序列不列为已验证结果。
+
+OTRetarget 输出的是逐帧受约束 IK 参考，真机执行依赖在仿真中训练的下游全身跟踪策略。接触保真是重定向目标，不代表该求解器本身进行动态平衡或接触力控制。
 
 ## 与其他工作对比
 
