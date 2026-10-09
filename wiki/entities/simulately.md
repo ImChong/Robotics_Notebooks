@@ -1,6 +1,7 @@
 ---
 type: entity
-tags: [software, simulation, simulator, robotics, robot-learning, documentation]
+tags: [software, simulation, simulator, robotics, robot-learning, documentation, roboversorg]
+institutions: [roboversorg]
 status: complete
 updated: 2026-10-09
 project_id: simulately
@@ -27,6 +28,14 @@ sources:
 | API | Application Programming Interface | 仿真器或工具包提供给程序调用的接口 |
 | MDX | Markdown for the JSX ecosystem | Docusaurus 用于混排 Markdown 与组件的文档格式 |
 | GPU | Graphics Processing Unit | 并行仿真和渲染常用的计算设备 |
+
+## 基本信息
+
+| 项目 | 内容 |
+|------|------|
+| 维护组织 | RoboVerse 组织（RoboVerseOrg，GitHub 仓库所有者） |
+| 项目性质 | 仿真器知识与资源网站 |
+| 网站 / 源码 | [simulately.wiki](https://simulately.wiki/) / [RoboVerseOrg/Simulately](https://github.com/RoboVerseOrg/Simulately) |
 
 ## 为什么重要
 
