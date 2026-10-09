@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - control-theory
 status: complete
-updated: 2026-09-11
+updated: 2026-10-09
 related:
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
@@ -23,12 +23,13 @@ related:
   - ../../AGENTS.md
 sources:
   - ../../sources/repos/humanlayer-skills.md
+  - ../../sources/blogs/humanlayer-show-me-skill.md
 summary: "humanlayer/skills 是 HumanLayer 公开的 Claude Code 技能插件集：用 <important if> 提升 harness 指令遵从、React 类型收窄与可视化讲解，并把控制论的 sensor–controller–actuator 隐喻落成可本地运行、GitHub Actions 调度的迭代代理维护环。"
 ---
 
 # HumanLayer Skills
 
-**HumanLayer Skills** 是 [humanlayer/skills](https://github.com/humanlayer/skills) 仓库及其 Claude Code marketplace 分发形态的总称：把 HumanLayer 团队在 **harness 指令工程** 与 **迭代式 coding-agent 自动化** 上的实践拆成五个可按需安装的 `SKILL.md` 插件，通过 `npx skills add humanlayer/skills --skill <name>` 装入目标仓库。
+**HumanLayer Skills** 是 [humanlayer/skills](https://github.com/humanlayer/skills) 仓库及其 Claude Code marketplace 分发形态的总称：把 HumanLayer 团队在 **harness 指令工程** 与 **迭代式 coding-agent 自动化** 上的实践拆成可按需安装的 `SKILL.md` 技能（截至 2026-10-09 README 列出七项），通过 `npx skills add humanlayer/skills --skill <name>` 装入目标仓库；当前清单会随上游演进。
 
 ## 一句话定义
 
@@ -60,6 +61,8 @@ summary: "humanlayer/skills 是 HumanLayer 公开的 Claude Code 技能插件集
 | **Loop 脚手架** | `build-iterated-agentic-loop`：生成 repo-local skill、GHA workflow、`agent-memory`、references 模板。 |
 | **Loop 设计器** | `design-control-loop`：访谈式定义 set point / sensor / controller / actuator，强调本地先行。 |
 | **沟通/教学** | `show-me`：伪代码、调用树、组件树、浅文件树、Mermaid 或 HTML artifact。 |
+| **便携迭代** | `rpi`：可移植的 Raspberry Pi agent workflow；使用场景以该插件 README 为准。 |
+| **审查** | `visual-pr`：PR 视觉审查工作流，重点为 UI 变更提供可审阅截图/视觉反馈。 |
 
 ### 流程总览（agentic control loop）
 
@@ -90,10 +93,15 @@ flowchart TD
 - **误区：stars 高 = 适合机器人仿真栈开箱即用。** 技能正文与示例偏 **Web/TS 工程** 与 **GHA**；迁移到 Isaac / MuJoCo / ROS 时需重写 sensor（如 `make lint`、仿真回归）与 validation 命令。
 - **误区：可替代本仓库 `schema/ingest-workflow.md`。** ingest/query/lint 与 `make ci-preflight` **无等价 skill**；最多用 control-loop 思维 **外包** 派生文件同步或断链修复，不能省略 wiki 健康检查。
 - **误区：与 [Superpowers](superpowers-obra.md) 重复。** Superpowers 管 **单次功能交付**；HumanLayer 管 **持续托管维护环**；可叠加（Superpowers 做特性，control-loop 做存量卫生）。
-- **局限：** 五插件体量小、迭代快；`CodeLayer` 为 HumanLayer 自家轻量 harness，非本仓库默认栈；英文为主。
+- **局限：** 七项技能（2026-10-09 README 快照）体量不一且迭代快；`CodeLayer` 为 HumanLayer 自家轻量 harness，非本仓库默认栈；英文为主。
+
+## show-me：把解释转成图示
+
+HumanLayer 的 [配套文章](../../sources/blogs/humanlayer-show-me-skill.md) 说明，`show-me` 的关键不是固定采用一种画法，而是先识别读者要理解的关系，再选择简短、聚焦的表示：调用顺序用栈/序列图，组件或目录关系用树，布局/交互概念可用 HTML mockup。它可输出静态 Mermaid，也可生成 HTML artifact；图表应服务解释，不应成为装饰。它属于提示型 Skill，不能代替实际运行与视觉/无障碍验收。
 
 ## 关联页面
 
+- [Emil Kowalski Skills](emil-kowalski-skills.md) — 另一组设计工程/前端 Agent Skills
 - [Superpowers（obra）](superpowers-obra.md) — 重流程 **单次交付** 技能库（worktree、子代理、TDD）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量日常工程技能（grill、CONTEXT.md、TDD）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 skills 自举
