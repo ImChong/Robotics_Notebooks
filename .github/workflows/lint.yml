@@ -42,7 +42,8 @@ jobs:
         env:
           PROJECT_NODE_BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || 'HEAD' }}
         run: |
-          if [[ "$PROJECT_NODE_BASE" =~ ^0+$ ]]; then
+          # 新分支的 before 为全零；force-push 后旧 before 提交不可达，均回退到 main
+          if [[ "$PROJECT_NODE_BASE" =~ ^0+$ ]] || ! git cat-file -e "${PROJECT_NODE_BASE}^{commit}" 2>/dev/null; then
             PROJECT_NODE_BASE=origin/main
           fi
           python3 scripts/check_project_nodes.py --base "$PROJECT_NODE_BASE"
