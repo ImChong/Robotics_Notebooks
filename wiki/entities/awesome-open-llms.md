@@ -132,8 +132,8 @@ Awesome Open LLMs 的强项是**发布信息组织和初筛**：月度归档、�
 
 ## 关联页面
 
-- [开源 LLM 与基础模型](../concepts/open-source-llms.md) — 模型目录所涵盖对象的技术背景
-- [机器人学习评测](../concepts/robot-learning-evaluation.md) — 为什么信息收录与统一评测应分开看
+- [开源 LLM 与基础模型](../concepts/llm-robotics-control-interfaces.md) — 模型目录所涵盖对象的技术背景
+- [机器人学习评测](../concepts/ai-agent-evaluation.md) — 为什么信息收录与统一评测应分开看
 - [来源归档](../../sources/repos/liucongg_awesome_open_llms.md) — README、实现和范围记录
 
 ## 参考链接
