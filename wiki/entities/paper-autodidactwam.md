@@ -30,6 +30,17 @@ summary: "AutodidactWAM（arXiv:2610.08119）：从 Cosmos 3 Nano 自生成视�
 
 **把生成视频变成动作侧的自监督信号：冻结视频生成路径，用视觉手姿重建与差分 IK 从视频提取候选动作，再以 DPO、SFT 和 DTW 轨迹锚定校正原生动作分支。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| WAM | World Action Model | 联合世界预测与机器人动作生成的模型 |
+| IK | Inverse Kinematics | 将目标手部位姿转换为机器人关节运动 |
+| DPO | Direct Preference Optimization | 利用动作候选偏好对进行策略后训练 |
+| SFT | Supervised Fine-Tuning | 以恢复轨迹作为监督的微调 |
+| DTW | Dynamic Time Warping | 对齐预测与参考 Cartesian 轨迹的时间序列距离 |
+| LoRA | Low-Rank Adaptation | 低秩参数适配，用于初始 embodiment adaptation / 动作路径微调 |
+
 ## 基本信息
 
 | 项目 | 内容 |
@@ -118,6 +129,16 @@ sequenceDiagram
 - **评测范围窄。** 单任务、单一 G1 右臂 / 手配置、一个训练对象；跨任务、跨 embodiment 与更广物体族尚未验证。
 - **工程前提不可忽略。** 初始 embodiment adaptation 使用遥操作数据；节省的是后续任务专属采集，而非所有人类数据。
 - **开源状态：** 论文记录未附项目页或代码链接，复现以论文所述配置为限。
+
+## 结论
+
+AutodidactWAM 提供了一种值得继续验证的监督构造方式：让生成视频成为动作学习的中间介质，再通过真机任务衡量动作是否真正可执行。当前证据来自单任务、小样本、单臂 G1 pilot；提取器重放不能替代策略指标，初始 embodiment adaptation 仍需要遥操作数据，因此不应将结果外推为通用 humanoid 操纵能力。
+
+## 参考来源
+
+- [AutodidactWAM（arXiv:2610.08119）](https://arxiv.org/abs/2610.08119) — 论文摘要、方法、实验与局限。
+- [arXiv HTML 全文](https://arxiv.org/html/2610.08119) — 完整正文与表格。
+- [来源归档](../../sources/papers/autodidactwam_arxiv_2610_08119.md) — 结构化摘录与指标口径。
 
 ## 关联页面
 
