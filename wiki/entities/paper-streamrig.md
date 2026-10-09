@@ -3,6 +3,7 @@ type: entity
 tags: [paper, robotics, visual-odometry, state-estimation, multi-camera, foundation-model, zju, scut]
 status: complete
 updated: 2026-10-09
+project_id: streamrig-paper
 arxiv: "2609.40244"
 venue: arXiv preprint; ICRA 2027 under review
 institutions: [zju, scut]
