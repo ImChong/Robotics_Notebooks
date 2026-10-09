@@ -47,9 +47,9 @@ ObjectNav 的目标物体在单帧里可能看不到。仅识别“现在看见�
 ```mermaid
 flowchart TB
   rgb["目标类别 + 当前 RGB"] --> perception["ResNet-18 全局视觉 + DETR 对象检测"]
-  prior["离线 LLM 关系亲和矩阵"] --> graph["局部 GINE + 目标排序 Graph-Mamba"]
-  perception --> graph
-  graph --> memory["逐物体 FIFO 历史 + 时间 Mamba"]
+  prior["离线 LLM 关系亲和矩阵"] --> spatialGraph["局部 GINE + 目标排序 Graph-Mamba"]
+  perception --> spatialGraph
+  spatialGraph --> memory["逐物体 FIFO 历史 + 时间 Mamba"]
   memory --> fusion["目标查询注意力 + 视觉/动作融合"]
   perception --> fusion
   fusion --> policy["LSTM + A3C 策略"]

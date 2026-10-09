@@ -2313,7 +2313,8 @@
   // Mermaid，无公式、无图表的页面同样要下载。改为渲染正文时按内容注入，
   // integrity / crossorigin 与原静态标签保持一致。
   var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
-  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+  // Keep this exact version in sync with package.json and the Mermaid CI parser.
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.5/dist/mermaid.min.js';
   var _externalAssetPromises = {};
 
   /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */

@@ -5,7 +5,7 @@ project: https://huggingface.co/FineEnvs
 code: https://github.com/adithya-s-k/FineEnvs
 tags: [reinforcement-learning, llm, environment-design]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 related:
   - ../methods/reinforcement-learning.md
   - ../concepts/rl-runner.md
@@ -42,7 +42,7 @@ FineEnvs 针对 LLM 强化学习的一项工程瓶颈：环境设计、奖励、
 
 环境作者先把任务拆成任务数据、动作工具、观测、执行后端、持久状态、奖励和终止条件，再按部署和训练需求选择框架。一个项目可包含多个环境适配器；同一环境逻辑通过不同 harness 运行时，需特别检查工具语义、状态隔离和奖励时机是否保持一致。
 
-~~~mermaid
+```mermaid
 flowchart TD
   design["定义任务、动作、观测、奖励与终止条件"]
   core["实现任务逻辑与状态"]
@@ -52,7 +52,7 @@ flowchart TD
   train["策略训练与 held-out evaluation"]
   publish["部署环境并发布模型、数据和结果"]
   design --> core --> adapters --> rollout --> grade --> train --> publish
-~~~
+```
 
 ### 典型项目实例
 
@@ -65,7 +65,7 @@ flowchart TD
 
 下面对齐仓库中 Wordle + Verifiers 的示例入口：rollout.py 驱动多轮模型工具调用；WordleToolkit 管理游戏状态并反馈奖励。它适合验证环境闭环，运行时需要模型服务令牌。
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor User as 运行者
@@ -84,7 +84,7 @@ sequenceDiagram
         Toolkit-->>Rollout: 返回工具结果
     end
     Rollout-->>User: 输出轨迹与最终 reward
-~~~
+```
 
 最小运行入口（依赖仓库根目录配置 HF_TOKEN）：
 

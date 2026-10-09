@@ -41,7 +41,7 @@ summary: "AI Engineering from Scratch 是从数学、ML、RL 到 LLM Agent 和�
 
 README 采用“先理解，再从头构建，再使用生产库，最后交付可复用产物”的组织方式。单节课按 Motto、Problem、Concept、Build It、Use It、Ship It 六个步骤展开；学习者被要求运行 lesson 命令、留存输出证据，并能够解释结果后再推进。
 
-~~~mermaid
+```mermaid
 flowchart TD
   foundation["数学与工具基础"]
   ml["机器学习、深度学习与视觉 / NLP"]
@@ -55,7 +55,7 @@ flowchart TD
   rl --> llm
   llm --> agents
   agents --> production
-~~~
+```
 
 ### 对机器人学习路线的映射
 
@@ -71,7 +71,7 @@ flowchart TD
 
 配套源码位于 Phase 9 的 Sim-to-Real lesson。代码用 5×5 GridWorld 的侧滑概率模拟环境差异，分别训练固定参数策略与每回合随机化 slip 的 Q-learning 策略，再评估不同测试 slip 下的回报。
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor Learner as 学习者
@@ -95,7 +95,7 @@ sequenceDiagram
     end
     Script->>Eval: 测试 slip=0.0 至 0.7
     Eval-->>Learner: 打印两种策略的平均回报
-~~~
+```
 
 本地运行命令（在仓库根目录）：
 

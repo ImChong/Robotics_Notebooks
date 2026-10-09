@@ -16,7 +16,7 @@ assert.ok(mathStart >= 0 && mathEnd > mathStart, 'math renderer is located');
 const KATEX_CSS = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css';
 const KATEX_JS = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js';
 const KATEX_AUTO = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js';
-const MERMAID_JS = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+const MERMAID_JS = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.5/dist/mermaid.min.js';
 const flush = () => new Promise(setImmediate);
 
 function harness(options = {}) {

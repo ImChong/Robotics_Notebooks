@@ -129,7 +129,9 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - **不要让 Wiki Lint 变红** — 新建页之前检索 frontmatter `arxiv:`，命中已有页（含 `paper-rcl-*` 索引）就升级该页；新页必须有至少一条 **wiki 内链** 指入；正文避免 [canonical-facts.json](canonical-facts.json) 的否定模式与页内术语出现在同一行。这三项会失败 GitHub **Wiki Lint**。细则见步骤 8 表格。本地大量「sources 比 wiki 新」在 Actions 上不检查。
 - **源码运行时序图（`wiki/entities/paper-*.md` 且有可运行官方代码时必做）** — 步骤 2.5 判定为 **已开源**，或 **部分开源且仓库内存在可辨识的训练 / 推理 / 部署入口**（脚本、CLI、`train.py` / `eval.py`、README 运行步骤等）时，在升格后的论文实体页增加 `## 源码运行时序图` 节（建议放在「流程总览」或「核心原理」之后、「工程实践」之前）。用 ```mermaid 的 `sequenceDiagram` 描绘 **运行时** 模块交互（数据加载 → 训练 / 推理 → 仿真或真机 IO），节点名应对齐 `sources/repos/` 中的目录或 README 入口；推荐 `autonumber`，并在图下用 1–2 句点明关键复现路径。若仅有占位 README、权重未发布或无可运行实现，仍保留该节或于「工程实践」表中写明 `源码运行时序图 | **不适用**（原因）`，勿静默省略。
 - **Mermaid 流程图（推荐，管线类资料建议必做）** — 若资料的主贡献是**多阶段数据流、训练流水线或闭环系统**（例如「采集 → 重定向 → 仿真修正 → 策略训练」），在升格后的 wiki 页中增加一节（如「流程总览」），用 ```mermaid 代码块绘制**一张主干流程图**：节点对应模块边界，边对应数据/监督信号流向；子细节可用文字分节或第二张图，避免单图过度拥挤。渲染侧以 GitHub / 站点 Mermaid 为准，避免使用非标准语法。
-  - 生成后检查代码围栏是否为标准三反引号；不要遗留 `§§§mermaid` 这类模板占位符，否则图会变成普通正文。Wiki Lint 会将未转换的占位围栏计为失败；图表语法与布局仍须在目标渲染器中验证。
+  - 生成后检查代码围栏是否为标准三反引号；不要使用 `~~~mermaid` 或遗留 `§§§mermaid` 这类模板占位符，否则本站会将图显示为普通正文。
+  - **Mermaid CI 门禁**：`npm ci && npm run lint:mermaid` 全量检查 `wiki/`、`roadmap/`、`tech-map/`、`references/` 中的图（包括 `<details>` 内图表），与本站锁定同一 Mermaid 版本。保留字节点 ID（例如 `graph`）、未加引号的括号、无效时序语法、空图、未闭合围栏、非标准围栏与占位符都会阻塞 CI；报错定位到文件和围栏行号。节点 ID 使用普通标识符，含标点的标签使用双引号。
+  - `make ci-preflight`、`make ci-test` 和 GitHub **Tests / Validate all published Mermaid diagrams** 均执行此门禁；单页调试可用 `node scripts/check_mermaid.cjs wiki/entities/<page>.md`。此检查验证围栏与语法；图表布局与可读性仍须在目标渲染器中验证。
 - 必要时更新 `index.md`
 
 > **为什么要在 wiki 页面内标注来源**：git 记录文件变更时间线，`log.md` 可选记录操作意图，但页面本身也应能追溯知识来源，

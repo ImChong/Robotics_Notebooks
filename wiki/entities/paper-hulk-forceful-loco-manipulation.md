@@ -39,7 +39,7 @@ summary: "HULK 用载荷感知 centroidal MPC 为腕力 / 抱持两类教师策�
 
 ## 方法总览
 
-~~~mermaid
+```mermaid
 flowchart TB
   loaded["载荷条件与接触几何"]
   mpc["Centroidal dynamics + MPC
@@ -60,7 +60,7 @@ flowchart TB
   forceTeacher --> student
   graspTeacher --> student
   student --> g1
-~~~
+```
 
 - **MPC reward guidance：** 基于 centroidal model 预测加载动力学，生成 CoM、骨盆姿态与接触力参照，引导 RL 策略学习状态与交互力响应。MPC 是训练指导器，不是被部署的高层 planner。
 - **Wrist-force teacher：** 学习在腕部持续受力时跟踪上肢姿势并保持平衡；论文专项抗推实验报告最高 130 N。

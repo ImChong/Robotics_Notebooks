@@ -60,6 +60,9 @@ jobs:
       - name: ESLint docs/main.js
         run: npm run lint:js
 
+      - name: Validate all published Mermaid diagrams
+        run: npm run lint:mermaid
+
       - name: Frontend reliability behavior tests
         run: npm run test:frontend
 
