@@ -18,9 +18,9 @@
 - **定位：** Claude Code skills from HumanLayer；每个 skill 以独立 `plugins/<name>/` 插件发布，含 `.claude-plugin/plugin.json` 与 `skills/<name>/SKILL.md`。
 - **安装：** `npx skills add humanlayer/skills --skill SKILLNAME`，再在项目中以 `/skill-name` 调用。
 - **技能清单（2026-10-09 快照；上游 README 当前列七项）：**
-  1. **`rpi`** — portable RPI workflow，面向 Claude Code / Codex；依赖和硬件路径按插件 README 核验。
+  1. **`rpi`** — “Research, Design, and Implement”：按用户指定阶段研究变更、讨论设计并实施；技能说明明确要求按调用名触发。
   2. **`show-me`** — 用伪代码、调用树、组件树、浅层文件树、Mermaid 或聚焦 HTML artifact 可视化当前话题，少废话。
-  3. **`visual-pr`** — 为界面变更提供视觉审查工作流。
+  3. **`visual-pr`** — “Describe a Pull Request”：按照模板写出简洁 PR 描述，并用结构视图帮助审阅。
   4. **`improve-claude-md`** — 用 `<important if="condition">` 包裹条件相关段落，对抗 Claude Code 对 CLAUDE.md「可能不相关」的系统提醒导致的指令忽略。
   5. **`narrow-react-prop-types`** — 将 React 组件 prop 类型收窄到真实代码路径（排除 Storybook / mock-only 状态）；附带参考型 iterated agentic loop（GHA + agent-memory + PR 标签限流）。
   6. **`build-iterated-agentic-loop`** — 通用脚手架：为目标任务生成 repo-local `SKILL.md`、`.github/workflows/agent-*.yml`、`.github/agent-memory/*.md` 与 references；支持 Claude Code / Codex / OpenCode / CodeLayer 等 headless agent。
