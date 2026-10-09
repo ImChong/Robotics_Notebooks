@@ -11,6 +11,8 @@
   - 初版：<https://arxiv.org/abs/2508.03680>（Train ANY AI Agents with RL）
 - **许可：** MIT
 - **入库日期：** 2026-09-19
+- **v1.0 发布说明：** <https://www.microsoft.com/en-us/research/blog/agent-lightning-v1-0-a-3500-line-lightweight-agentic-rl-framework-for-training-agents-with-real-harnesses/>（2026-10-07）
+- **复核日期：** 2026-10-09
 - **一句话说明：** 约 3,500 行 Python 的 **agentic RL 基础设施**：通过 OpenAI 兼容 **API Gateway 代理** 捕获真实 agent harness 的交互轨迹，用 **verl + vLLM** 做策略更新；支持本地 Controller 与 **Kubernetes Job** rollout。
 - **沉淀到 wiki：** 是 → [`wiki/entities/agent-lightning.md`](../../wiki/entities/agent-lightning.md)
 
@@ -68,7 +70,24 @@
 - **Coding Agent**：6K 样本端到端 Qwen3.5-9B，SWE-bench Verified **41.8% → 56.4%**（+14.6 pp），含数据清洗与 reward hacking 防护脚本
 - 另报 Search R1、LLM-in-Sandbox 等域上纯 RL 提升（见 benchmark 图）
 
+## v1.0 发布说明与官方文档复核（2026-10-09）
+
+微软研究院 10 月 7 日发布说明将 v1.0 明确表述为 **Harnessed Agentic RL**：训练期间仍由真实 harness 管理上下文、工具和环境交互；模型请求通过 OpenAI 兼容 Gateway 代理，rollout 由 Controller 以本地进程或 Kubernetes Job 执行，Trainer 基于 verl 汇总样本并更新策略。
+
+该发布说明强调，harness 观察到的是多次 LLM request-response，而不是天然连续的一条 token trajectory，因此训练需处理 retokenization / sample merging、rollout 级 advantage、rollout 级损失归一化和固定 GPU 资源下的可变工作量调度。
+
+**Collocated Async RL** 允许 rollout 与更新共用 GPU 池：达到更新批次后暂停 Gateway 新请求并排空在途请求，再更新模型、恢复推理；未完成的 prompt group 继续结转。官方文档建议保持完整的 GRPO/RLOO 同组 rollout；异步旧策略数据可启用 verl token-level importance sampling correction（推荐 clipping threshold 2）。微软博客在其实验中报告约 2x 对同步 RL 的端到端加速，不能泛化为不同模型、集群和任务的固定性能保证。
+
+### v1.0 官方文档入口
+
+- [Quick Start](https://microsoft.github.io/agent-lightning/stable/01-quick-start/)：单机本地 Calc-X 跑通路径；示例需 GPU 训练栈。
+- [Basics](https://microsoft.github.io/agent-lightning/stable/05-basics/)：rollout 状态、Gateway 代理、Controller 和 Trainer。
+- [Trainer Configuration](https://microsoft.github.io/agent-lightning/stable/20-trainer-configuration/)：JSON-like 数据输入、trajectory / transition 聚合和 rollout 级优化配置。
+- [Asynchronous Training](https://microsoft.github.io/agent-lightning/stable/35-asynchronous-training/)：异步组批、carry-over、Gateway drain、监控与 staleness correction。
+- [Coding Agent](https://microsoft.github.io/agent-lightning/stable/75-example-coding-agent/)：SWE-smith 任务数据、Kubernetes Job 和 server → controller → trainer 启动顺序。
+
 ## 对 wiki 的映射
+
 
 - 实体页：[wiki/entities/agent-lightning.md](../../wiki/entities/agent-lightning.md)
 - 项目页归档：[sources/sites/agent-lightning-microsoft-research.md](../sites/agent-lightning-microsoft-research.md)
