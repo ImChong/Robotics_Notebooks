@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ./inverse-dynamics-model.md
@@ -41,6 +41,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/paper-autodidactwam.md
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-thaw-vla.md
   - ../entities/paper-dualwam.md
@@ -517,6 +518,7 @@ flowchart TB
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - [Zero-WAM](../entities/paper-zero-wam.md) — 人类视频 in-context 任务规格；RoboTwin 未见 46.95%；真机放置/长程/插入 53.3/33.3/16.7%；代码待发布
 - [HOST](../entities/paper-host-one-shot-human-video.md) — 自接地：先预测机器人未来观测再出动作；单视频 one-shot；代码+权重已开（arXiv:2607.20033）
+- [AutodidactWAM（生成视频到机器人动作的跨模态自蒸馏）](../entities/paper-autodidactwam.md) — 从 WAM 自生成视频恢复手部伪动作，再以 DPO+SFT+DTW 微调 G1 动作侧；初始 embodiment adaptation 仍使用遥操作数据，真机结论限于小样本单任务 pilot。
 - [HiFi-UMI](../entities/paper-hifi-umi.md) — UMI-only 后训练覆盖 VLA/WAM（LingBot-VA）骨干；2000 h 公开数据
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧键鼠/轨迹，动作条件世界模型预训练语料
 
