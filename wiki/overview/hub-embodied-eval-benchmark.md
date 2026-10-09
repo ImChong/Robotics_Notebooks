@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-09
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -37,6 +37,7 @@ related:
   - ../entities/paper-libero-recover.md
   - ../entities/rle-bench.md
   - ../entities/paper-karma-hand-metric.md
+  - ../entities/artificial-analysis.md
   - ./frontier-models-3d-cad-robotics-survey.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -94,6 +95,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - **补一条贯通的评测选型视角**：仓库已有各评测基准的实体页，但缺「从认知到真机逐层测什么、各基准边界与取舍」的统一决策入口。
 - **暴露评测层间取舍矛盾**：仿真基准易复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 下游策略收益、MLLM 认知评分 ≠ 可执行动作能力——这些矛盾只有并置在一条链上才看得清（详见事实库对应矛盾检测规则）。
 - **与选型闭环同向**：选出一类具身大模型后，唯有可信评测才能证明其收益，评测选型是模型选型的验收环节。
+
+**通用模型榜单与具身基准的边界：** [Artificial Analysis](../entities/artificial-analysis.md) 可用于比较大模型能力、推理服务速度与价格，适合具身系统的上游模型初筛；它不测机器人任务成功率、接触安全或 sim-to-real 泛化，因此应与下列具身专用评测分层使用。
 
 ## 四层评测选型闭环
 
