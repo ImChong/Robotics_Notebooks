@@ -91,7 +91,7 @@ flowchart TB
 
 - [人形 locomotion](../tasks/humanoid-locomotion.md) — 具身运动控制任务入口。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — RFPO 论文同时报告 manipulation 实验。
-- [Flow Matching](../methods/flow-matching.md) — 连续流生成及其数值积分背景。
+- [Flow Matching](../concepts/flow-matching-embodied-policy.md) — 连续流生成及其数值积分背景。
 
 ## 参考来源
 
