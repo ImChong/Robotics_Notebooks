@@ -52,6 +52,9 @@ sources:
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
   - ../../sources/sites/symbiosis-robotics-dpc.md
   - ../../sources/sites/workhorse.md
+  - ../../sources/papers/workhorse_arxiv_2610_09117.md
+  - ../../sources/papers/rfpo_arxiv_2610_10453.md
+  - ../../sources/papers/hulk_arxiv_2610_08970.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -516,3 +519,8 @@ flowchart TD
 
 - [Humanoid Rickshaw Pulling](../entities/paper-humanoid-rickshaw-pulling.md) — Unitree G1 以单一全身策略牵引空车及 loaded rickshaw mass 最高 115 kg 的人力车（arXiv:2610.04238）。
 - [HULK](../entities/paper-hulk-forceful-loco-manipulation.md) — 载荷感知 MPC + 双 teacher 蒸馏；G1 推 / 拉手推车最高 300 kg，并评测负重行走及躯干抱持（arXiv:2610.08970；官方仓库尚未核实）。
+
+
+## 低延迟生成式控制
+
+- [RFPO](../entities/paper-rfpo-rectified-flow-policy-optimization.md) — 以 reward-aware online reflow 与多预算蒸馏把具身 flow policy 推理缩短为单步 Euler 更新；论文报告 Go2 单步保留 98.5% 的 64 步 reward（arXiv:2610.10453）。
