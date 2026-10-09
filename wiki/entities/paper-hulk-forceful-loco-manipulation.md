@@ -10,7 +10,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-locomotion.md
   - ./unitree-g1.md
-  - ./paper-loco-manip-04-thor.md
+  - ./paper-hrl-stack-42-thor.md
   - ./paper-loco-manip-161-109-falcon.md
 sources:
   - ../../sources/papers/hulk_arxiv_2610_08970.md
