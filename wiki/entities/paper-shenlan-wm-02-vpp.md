@@ -117,6 +117,8 @@ sequenceDiagram
 
 VPP 在[世界动作模型](../concepts/world-action-models.md)谱系中属于“级联”路线（参见 [世界模型路线 01：级联](../overview/world-models-route-01-cascade.md)）。上表各项的 CALVIN / LIBERO 等数字来自各自论文口径，未在统一协议下复测，不做直接排名。
 
+同一路线的后续工作 [Video Prediction Policy 2（VPP2）](./video-prediction-policy-2.md) 将“视频先验→动作学习”推进为 **event-level 视频预训练 → 固定时域单步视觉规划器 → MoT 动作专家**，并报告 LIBERO-OOD / PRO、RoboDojo 与 ALOHA 结果。它延续预测视觉指导动作的思路，但训练阶段、动作专家和评测组合不同；不要把两篇论文的成绩视为同协议直接排名。
+
 ## 结论
 
 **VPP 的可操作价值是将预测视觉表征接入动作学习，并提供分阶段复现入口。**
