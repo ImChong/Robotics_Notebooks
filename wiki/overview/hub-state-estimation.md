@@ -11,6 +11,8 @@ related:
   - ../entities/paper-wid3r.md
   - ../entities/paper-d4rt.md
   - ../entities/paper-track4world.md
+  - ../entities/paper-streamrig.md
+  - ../entities/streamrig.md
   - ../methods/lingbot-map.md
   - ../queries/slam-second-spring-embodied.md
 ---
@@ -71,6 +73,8 @@ related:
 - [LingBot-Map](../methods/lingbot-map.md) — 流式前馈 3D 重建（在线几何对照）
 - [D4RT（统一动态 4D 查询重建）](../entities/paper-d4rt.md) — 深度/相机/动态 3D 跟踪统一前馈；确认未开源（CVPR 2026）
 - [Track4World（世界系全像素稠密 3D 跟踪）](../entities/paper-track4world.md) — VGGT 式表示 + 2D-to-3D correlation；ECCV 2026；代码与 HF 权重已开源
+- [StreamRig 论文](../entities/paper-streamrig.md) — 冻结多视图 3D 前端 + 因果缓存的多相机流式里程计；ZJH 人形机器人仿真到真机零样本评测
+- [StreamRig 项目](../entities/streamrig.md) — 训练 / 评测代码、NCLT 与 KITTI-360 权重、CC BY-NC 4.0 许可与复现资源
 - [VGGT 几何状态综述（2026）](./vggt-geometric-state-survey.md) — Z<sub>geo</sub>/R<sub>geo</sub> 十类 taxonomy（142 篇）+ 71 数据集评测矩阵；companion 已开源
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
