@@ -2,10 +2,11 @@
 type: task
 tags: [task, objectnav, zero-shot, navigation, embodied-ai, open-vocabulary, habitat, vln]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-09
 related:
   - ./vision-language-navigation.md
   - ../entities/paper-travexplorer.md
+  - ../entities/paper-sa-2608-13723-graph-mambanav.md
   - ../entities/paper-zonda.md
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-sam3.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/travexplorer_arxiv_2605_19958.md
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/rpv_semnav_arxiv_2607_25448.md
+  - ../../sources/papers/graph_mambanav_arxiv_2608_13723.md
 summary: "零样本目标导航（ZSON / ObjectNav）：在未见环境中按开放词汇物体目标探索并到达，无需该目标类别的导航微调；常见 Habitat 评测与四足/轮腿真机部署。"
 ---
 
@@ -85,6 +87,8 @@ flowchart TB
 | 仿真 | [Habitat](../entities/habitat-sim.md) HM3D/MP3D |
 | 训练-free 语义 frontier | [RPV-SemNav](../entities/paper-rpv-semnav.md)（room-mediated RPV + geodesic value map） |
 | 真机 | 四足 Go2、轮腿双足等 + MPPI/局部规划 |
+
+- **图关系 + 长时序方法：** [Graph-MambaNav](../entities/paper-sa-2608-13723-graph-mambanav.md) 在 ObjectNav 对象图里用目标关系先验控制 Graph-Mamba 扫描顺序，并以逐物体 Mamba 记忆补长程上下文；AI2-THOR / RoboTHOR 有仿真评测，但真机证据目前是轮式底盘找书演示。
 
 ## 工程实践
 
