@@ -55,6 +55,12 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | Cartwheel Comic 单目视频动捕模型
+
+- 收录 Cartwheel Comic 官方模型页、Comic 4.2 发布说明、API/插件状态及 Cartwhl/cartwheel-mcp 开源接入仓库。
+- 建立单一实体节点，说明脚部物理发布声明与历史 EMDB 指标口径不同，并区分云端模型和 MIT MCP 客户端。
+- 记录 Unreal Engine 5.6 插件可用；Maya、Unity、Blender 官方插件仍显示 Notify me；添加到动捕与人类视频分类页。
+
 ## [2026-10-09] ingest | X2Real 论文与项目拆分归档并校正评测指标
 
 - 复核已有 paper-x2real 节点，保留原独立论文页并修正误写的 0.74：arXiv 摘要报告的是仿真与真机评测结果 0.84 线性相关。
