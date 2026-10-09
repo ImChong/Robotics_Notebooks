@@ -169,7 +169,7 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | Symbiosis Robotics | ❌ | ❌ | ❌ | [DPC 项目页](https://symbiosis-robotics.com/research/dpc/en/) 未列 GitHub / HF / 数据集 / arXiv，仅联系邮箱（[核查](../../sources/sites/symbiosis-robotics-dpc.md)） |
 | RAI Institute | 🟡 | ❓ | 🟡 | [Sumo](../methods/sumo.md) / [Exploy](../entities/exploy.md) 有代码；AthenaZero 部分分析与实验数据公开；其他研究栈按[各项目核查](../../sources/sites/rai-institute.md)读取 |
 | XPENG Robotics | 🟡 | 🟡 | ❓ | [UniT](../entities/paper-unit-unified-physical-language.md) 代码与 VLA-UniT 权重开源；XPACE、AnyWorld、R2S-EGO 核查时未开源，IronMind 开放状态未核验 |
-| Xiaomi Robotics | ✅ | ✅ | 🟡 | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) 权重、推理与后训练管线公开；XR-1 / U0 有官方仓；TacRefineNet、ViTacPhys、UCAG-P 代码待发布 |
+| Xiaomi Robotics | ✅ | ✅ | 🟡 | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) 权重、推理与后训练管线（2026-04-27）公开；XR-1 / U0 有官方仓；TacRefineNet、ViTacPhys、UCAG-P 代码待发布 |
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
