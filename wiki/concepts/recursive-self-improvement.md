@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-09
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-rsi-survey-2607-07663.md
+  - ../entities/paper-last-ai-built-by-humans-rsi.md
   - ../entities/paper-neohorse-1.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
@@ -144,6 +145,7 @@ flowchart LR
 - [SoL-Pi](../entities/sol-pi.md) — 「先让 harness 更省再 scale RSI」的工业实例；efficiency for efficiency 愿景
 - [Awesome RSI](../entities/awesome-rsi.md) — agent 层 RSI 方法/基准策展（artifact × mode 索引）
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 1,250 篇机制 taxonomy + 验证层级 + 开源语料
+- [The Last AI Built by Humans（2609.11873）](../entities/paper-last-ai-built-by-humans-rsi.md) — 五级自治与 HCI；是证据框架，不代表递归闭环已实现
 - [Dream-RSI（2609.14858）](../entities/paper-dream-rsi.md) — discovery history 作 exact replay「世界」；exploration 层 dreaming RSI + evolving worlds pool
 - [Axis 可组合能力库（Grounded RSI）](../entities/axis-composable-capability-library.md) — 真机 rollout 共训后继策略的产业实验摘要
 - [NeoHorse-1（2609.08183）](../entities/paper-neohorse-1.md) — 文本 agent routing harness 上的 evaluation–selection–update 原型（权重开源，训练 flywheel 未公开）
@@ -151,6 +153,9 @@ flowchart LR
 ## 参考来源
 
 - [RSI Survey 论文归档（arXiv:2607.07663）](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
+- [The Last AI Built by Humans 论文归档（arXiv:2609.11873）](../../sources/papers/last_ai_built_by_humans_2609_11873.md)
+- [Theseus Lab 项目页归档](../../sources/sites/last-ai-built-by-humans-rsi.md)
+- [官方 Awesome RSI 清单归档](../../sources/repos/theseus-labs-awesome-rsi.md)
 - [Datawhale RSI 科普综述（2026-09-19）](../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md)
 - [When AI builds itself（Anthropic Institute 归档）](../../sources/sites/anthropic-recursive-self-improvement.md)
 - [AI Auto-Research 综述策展](../../sources/papers/ai_auto_research_survey_2605_18661.md)
