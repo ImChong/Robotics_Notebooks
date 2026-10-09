@@ -55,6 +55,12 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | Graph-MambaNav（arXiv:2608.13723v1）——归档唯一论文节点并接入 ObjectNav
+
+- 核验 arXiv v1 HTML 与作者主页；论文已接收 IEEE RA-L，计划在 ICRA 2027 展示。
+- 归纳目标条件图扫描、逐物体时间 Mamba、AI2-THOR/RoboTHOR 评测与单场景轮式机器人演示；官方入口未提供代码仓库链接。
+- 更新 ObjectNav 任务页交叉引用，并登记无锡学院、南京邮电大学机构标签。
+
 ## [2026-10-09] ingest | sources/sites/x2robot-blog-research-index.md — 公司路线新增自变量机器人：核对官网 8 篇技术博文，补齐 WALL-WM / WALL-OSS / X-Tokenizer 详情，新建 WALL-OSS-0.5、XRZero-G0
 
 ## [2026-10-09] ingest | Cartwheel Comic 单目视频动捕模型
