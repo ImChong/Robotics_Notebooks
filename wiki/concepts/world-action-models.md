@@ -99,6 +99,7 @@ related:
   - ../entities/awesome-world-models.md
   - ../entities/paper-cf-wam-dynamic-next-state-prediction.md
   - ../entities/paper-long-wam-scaling-context.md
+  - ../entities/paper-uranus.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
@@ -592,3 +593,8 @@ flowchart TB
 ## 长上下文因果 WAM：Long-WAM
 
 - [Long-WAM](../entities/paper-long-wam-scaling-context.md)（arXiv:2610.10528）以因果视频专家预测未来 latent，再由动作专家生成动作块；RoboCasa GR-1 报告历史从 0 秒扩至 19.2 秒时 SR 由 63.3% 升至 78.7%。代码位于 NVlabs/LongLive 的 Long-WAM/ 子目录；官方仓库说明完整 benchmark 尚未验证。
+
+
+## 动作条件视觉模拟器：Uranus
+
+- [Uranus](../entities/paper-uranus.md)（arXiv:2609.24815）由外部策略提供 qpos，模型生成同步多视角视觉后果；它与 WAM 一样使用动作条件预测，但不生成动作，因此作为「世界模型/模拟器」边界案例，而非完整 WAM 策略。
