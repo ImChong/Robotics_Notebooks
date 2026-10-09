@@ -1,94 +1,104 @@
 ---
 type: entity
-tags:
-  - project
-  - humanoid
-  - loco-manipulation
-  - human-demonstrations
-  - imitation-learning
-  - unitree-g1
-status: draft
-updated: 2026-10-07
+tags: [project, paper, humanoid, loco-manipulation, human-demonstrations, imitation-learning, flow-matching, unitree-g1]
+status: complete
+updated: 2026-10-09
 project_id: workhorse-humanoid-loco-manipulation
-project: "https://x.com/qiayuanliao"
+arxiv: "2610.09117"
+project: "https://hybridrobotics.github.io/workhorse/"
 related:
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
 sources:
+  - ../../sources/papers/workhorse_arxiv_2610_09117.md
   - ../../sources/sites/workhorse.md
-summary: "Workhorse 是从人类示范学习全身人形移动操作的项目演示；作者称其不依赖机器人遥操作或动作重定向，并展示 G1 自主完成翻越行李箱、接抛掷箱子和分拣箱子。方法、数据与量化评测尚未公开。"
+summary: "Workhorse 用免机器人示范的五链路人体姿态同时训练视觉 flow-matching planner 与 RL 全身 tracker；G1 真机完成箱子分拣、接物和行李箱交互；仿真 box sorting 成功率 77%，40 N·s 推扰时 64%；代码未发布。"
 ---
 
-# Workhorse（人类示范驱动的人形全身移动操作）
+# Workhorse：从人类数据学习稳健全身移动操作
 
-## 一句话定义
+**Workhorse**（*Learning Robust Whole-Body Humanoid Loco-Manipulation from Human Data*，[arXiv:2610.09117](https://arxiv.org/abs/2610.09117)，[项目页](https://hybridrobotics.github.io/workhorse/)）的关键选择是让人体动作成为机器人学习的接口，而不是先把人体动作 retarget 成机器人关节轨迹。相同的人类五链路示范分别训练视觉 planner 和 RL whole-body tracker，再用相互模拟部署误差的数据增强缩小二者之间的能力差距。
 
-**Workhorse** 是一个从人类示范学习稳健人形全身移动操作的研究项目展示；作者称采集路线不依赖机器人遥操作或动作重定向，演示中的 Unitree G1 可自主完成带移动与物体交互的动作。
+## 一句话理解
+
+**人体示范直接定义躯干、双腕、双脚目标；视觉策略规划这些目标，强化学习全身跟踪器把目标转成 G1 关节控制。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| G1 | Unitree G1 Humanoid Robot | 演示中出现的人形机器人平台；本文不假设其具体硬件配置 |
-| Loco-Manip | Loco-Manipulation | 行走、平衡与物体操作耦合的全身任务 |
-| IL | Imitation Learning | 从示范数据学习策略的上位范式；项目具体算法尚未披露 |
-| WBC | Whole-Body Control | 相关任务通常需要的全身协调问题；不是已确认的 Workhorse 实现细节 |
+|---|---|---|
+| Loco-Manip | Loco-Manipulation | 行走和物体交互耦合的全身任务 |
+| RGB | Red-Green-Blue | 视觉 planner 使用的 egocentric 图像 |
+| RL | Reinforcement Learning | 训练跟踪五链路动作目标的全身控制策略 |
+| WBC | Whole-Body Control | 由整身协调跟踪 link targets 的控制问题 |
+| Hz | Hertz | planner 约 5 Hz replanning；底层 tracker 按近期目标 chunk 控制 |
 
-## 为什么重要
+## 数据与方法
 
-人形全身移动操作示范通常需要昂贵且难扩展的机器人遥操作、动作捕捉或精细重定向流程。Workhorse 的公开定位是直接利用人类示范，并以无需遥操作的 G1 自主演示展示移动、平衡与操作动作的统一性。如果后续论文披露可复现的数据表示与控制方法，这将为扩大人形移动操作数据来源提供有价值的案例。
+### 人类数据采集
 
-## 核心原理与已知信息
+一名示范者佩戴 **5 个 tracker**（胸部、双手、双脚）并使用胸前相机记录动作。捕捉频率约 **60 Hz**；作者报告采集箱子分拣数据约 2.2 小时、行李箱任务约 1.2 小时、接物任务约 13 分钟。人体动作以五个刚体链路姿态表达：torso、left wrist、right wrist、left foot、right foot。机器人不需要动作捕捉式关节重定向；通过固定 per-link offset 把人体目标放到机器人可跟踪的几何关系上。
 
-截至 2026-10-07，公开材料只足以确认项目目标和演示内容，不能复原算法流水线：
+### 两策略结构
 
-1. **数据来源方向：** 作者称从人类示范学习，不依赖机器人遥操作或动作重定向；采集设备、坐标系、人体/物体追踪方法与数据规模未说明。
-2. **学习目标：** 面向稳健的全身 humanoid loco-manipulation；表示形式、策略结构、训练算法及奖励/监督目标未公布。
-3. **部署演示：** 作者称 G1 演示为实时、全自主；画面呈现翻越/推倒行李箱、接住抛掷箱子，以及用手和踢击分拣箱子等行为。
+~~~mermaid
+flowchart TB
+  human["人类示范
+5 个 tracker + 胸前 RGB"]
+  poses["五链路 pose 序列
+躯干 / 双腕 / 双脚"]
+  planner["视觉 planner
+图像 + 目标历史 → 未来目标 chunk"]
+  tracker["RL whole-body tracker
+五链路目标 → 关节 setpoint"]
+  robot["Unitree G1
+移动、接触与物体操作"]
+  aug["交叉策略增广
+模拟 planner / tracker 部署误差"]
+  human --> poses
+  poses --> planner
+  poses --> tracker
+  planner --> tracker
+  tracker --> robot
+  aug --> planner
+  aug --> tracker
+~~~
 
-因此，当前应把 Workhorse 视为**已公开演示的研究项目**，而不是已能从论文或代码复现的完整方法。
+- **Visual planner：** 以机器人 egocentric 图像及过去约 1 秒五链路历史为条件，预测未来 **1.16 秒**的五链路目标；flow-matching planner 以约 **5 Hz** replanning。
+- **Whole-body tracker：** 跟踪规划器输出的五链路 chunk，按时间戳读取下一段约 **0.2 秒**的目标并输出关节目标；planner 与 tracker 异步工作，已过期目标会跳过。
+- **不做关节 retargeting：** 两个策略在同一人体姿态记录上分别训练，不先合成机器人关节轨迹标签。人体 link 的参考位置由固定 per-link offset 适配机器人。
+- **跨策略误差增强：** tracker 训练期间随机加入最多约 10 cm 水平和 10° yaw 的漂移，模拟规划目标误差；planner 训练则扰动历史并将人从图像分割 / inpaint 后渲染机器人，以适应估计与 tracker 可实现范围不一致。
 
-## 实验与演示
+## 实验与结果
 
-作者公开的演示包含多种高动态全身交互：G1 与行李箱接触、接住人类抛出的箱子，并用手或脚移动箱子。项目帖子强调单次连续演示、实时运行与自主执行。现有材料没有给出成功率、试验次数、基线对照、扰动范围或失败案例，故“robust”目前是项目标题/定位，不能当作已有定量结论。
+| 评测 | 论文报告 | 口径 |
+|---|---:|---|
+| G1 真机箱子分拣 | 自主完成 | 机器人用手放置箱子，并用脚把箱子踢入底层架 |
+| G1 真机接物 | 自主接住抛掷箱子 | 真实机器人演示 |
+| G1 行李箱交互 | 推动 14 kg 行李箱、将其翻倒并攀上 0.39 m 行李箱 | 真实机器人演示 |
+| 模拟演示室分拣 | 77% success | 仿真 episode 成功率 |
+| 模拟 + 扰动 | 64% success | 施加 40 N·s 推扰 |
+| H2 模拟分拣 | 83% success | 同一示范重新训练；无推扰 |
 
-## 工程实践与开放状态
+## 代码与复现边界
 
-| 项目 | 截至 2026-10-07 的状态 |
-|------|------------------------|
-| 论文或预印本 | 在已检查的作者公告入口中未找到论文链接；标题见演示画面署名 |
-| 独立项目主页 | 未找到可核验的独立主页 |
-| 官方代码与数据 | 公告/截图没有链接到代码仓库或数据集；开放状态**未核实** |
-| 可复现路径 | 暂无公开训练、推理或部署入口；源码运行时序图不适用 |
-
-读者若要复现，应等待项目方发布论文、项目主页或源码，并优先确认数据采集方式、人体到机器人动作映射、训练与真机闭环接口、以及量化鲁棒性协议。
+官网称 code 尚未发布，且未找到可核验的官方 GitHub 仓库。论文的定量成功率来自模拟复刻演示室；真机条目是任务演示，不与仿真成功率混为一谈。论文指出流程需 tracker 数据采集、同步、图像处理与人体 link frame 设定。
 
 ## 与相关工作的区别
 
-Workhorse 的定位是**人类示范进入策略学习**，强调避开机器人遥操作与重定向；本知识库中的 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 则公开了具体的 egocentric 视频、跨具身动作空间和实时世界–动作建模路线。两者目前只能在数据入口和任务目标层面并列，Workhorse 的算法类别尚不能确定，也不能仅凭“human data”将其归为 WAM 或 VLA。
-
-## 局限与风险
-
-- 目前证据来自作者公告和项目演示截图，而非可检查的论文、数据集或代码。
-- 标题中的“robust”尚无公开量化标准、基线或统计协议支撑。
-- “无需遥操作/重定向”不等于数据采集无需设备、标注或人体动作估计；具体采集成本仍未知。
-- 单个公开视频不能说明任务成功率、跨物体泛化、长时程稳定性或安全边界。
-- 代码与数据开放状态暂记为**未核实**；后续若出现官方入口，应更新此页与来源归档。
+- 与 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 相比，Workhorse 的 planner 显式从 egocentric 图像规划未来 link targets，底层再由 RL tracker 执行；不能只因使用 flow matching 就把它等同于世界–动作模型。
+- 相较机器人遥操作示范，Workhorse 将采集入口前移到人体 tracker 数据，但依然需要时间同步与机器人几何偏移设定。
 
 ## 关联页面
 
-- [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动操作任务与数据入口分类。
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 人形移动操作任务入口。
 - [Teleoperation](../tasks/teleoperation.md) — 对照机器人遥操作数据采集路线。
-- [Unitree G1](./unitree-g1.md) — 演示中出现的平台。
-- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 已公开方法细节的人类数据驱动人形移动操作研究，作为可比阅读而非同项目节点。
+- [Unitree G1](./unitree-g1.md) — G1 真机实验平台。
+- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 可比的人类 / 视觉驱动移动操作路线。
 
 ## 参考来源
 
-- [Workhorse 项目公告与演示来源归档](../../sources/sites/workhorse.md)
-
-## 推荐继续阅读
-
-- [MotionWAM 项目与论文归档](../../sources/papers/motionwam_arxiv_2606_09215.md) — 了解另一条公开了数据与方法细节的人形移动操作路线。
-- [作者发布入口：Qiayuan Liao](https://x.com/qiayuanliao)
+- [论文归档](../../sources/papers/workhorse_arxiv_2610_09117.md)
+- [项目页归档](../../sources/sites/workhorse.md)
