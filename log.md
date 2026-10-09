@@ -55,6 +55,12 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | OTRetarget 动态动作证据与控制边界
+
+- 补充 `sources/papers/otretarget_arxiv_2609_36602.md`、`sources/sites/otretarget-project.md` 和现有实体页 `wiki/entities/paper-otretarget.md`。
+- 论文图 1 可核实的动态例子是四足爬行中的手部触地、带全身旋转的移动；将具体侧手翻接后空翻支撑切换标为未由论文确认。
+- 明确逐帧 IK 生成重定向参考，真机跟踪由下游强化学习策略承担；代码链接复查仍未发现可运行仓库。
+
 ## [2026-10-09] lint | 全量 lint：补 5 篇 paper-* 「与其他工作对比」、legoflow/gem-x-cpp 枢纽回链、复核 3 个陈旧页（sonic/wt-umi/unitree-g1）；lint 0 问题 0 信息型预警
 
 ## [2026-10-09] ingest | Drawnix
