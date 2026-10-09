@@ -27,6 +27,34 @@
 - **目标节点：** [HarnessPAI](../wiki/entities/paper-harnesspai.md)
 - **来源归档：** [论文](../sources/papers/harnesspai_arxiv_2609_29166.md)、[代码仓库](../sources/repos/harnesspai.md)、[项目页](../sources/sites/harnesspai.md)
 
+# Ingest 日志片段
+
+- **日期：** 2026-10-09
+- **意图：** 根据截图入库 Emil Kowalski 的设计工程 Agent Skills。
+- **开源结论：** 上游公开仓库与 MIT License 已核查；本次归档固定到 2026-10-02 的 README/commit 快照。
+- **关键页：** `wiki/entities/emil-kowalski-skills.md`；补充 Agent Skills 发现页的反向链接。
+
+# Ingest 日志片段
+
+- **日期：** 2026-10-09
+- **意图：** 根据截图更新 HumanLayer `show-me` Skill 的已有知识节点。
+- **开源结论：** `humanlayer/skills` 已有入库节点，本次补入官方博客并刷新 README 技能清单快照，避免重复建实体。
+- **关键页：** `wiki/entities/humanlayer-skills.md`；新增博客来源归档。
+
+# Ingest 日志片段
+
+- **日期：** 2026-10-09
+- **意图：** 根据截图入库 Microsoft VibeVoice-ASR 与相关开源模型系列。
+- **开源结论：** 主仓 MIT；VibeVoice-ASR 模型卡亦标 MIT；权重与代码分开核验。
+- **关键页：** `wiki/entities/microsoft-vibevoice.md`；连接到长音频说话人归因转写与人形语音交互。
+
+# Ingest 日志片段
+
+- **日期：** 2026-10-09
+- **意图：** 将 rohitg00 的 LLM Wiki v2 Gist 作为 Karpathy LLM Wiki 的扩展来源写回现有方法页。
+- **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
+- **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
+
 ## [2026-10-09] lint | 全量 lint：补 5 篇 paper-* 「与其他工作对比」、legoflow/gem-x-cpp 枢纽回链、复核 3 个陈旧页（sonic/wt-umi/unitree-g1）；lint 0 问题 0 信息型预警
 
 ## [2026-10-09] ingest | Drawnix
