@@ -55,6 +55,12 @@
 - **版本/许可：** 页面显示 7 次修订，最近活跃于 2026-10-08；未发现明确许可证，按公开文章/idea file 归档，不标注开源代码。
 - **关键页：** 更新 `wiki/references/llm-wiki-karpathy.md`，新增 v2 来源摘录。
 
+## [2026-10-09] ingest | Agent Lightning v1.0 发布说明与异步训练机制
+
+- 复用已有 Agent Lightning 主实体与 v1.0 技术报告，不创建重复项目节点。
+- 新增 Microsoft Research 发布说明来源归档，补充共置异步 RL、rollout 样本聚合与 Coding Agent 运行文档。
+- 官方代码为 MIT 开源；训练仍依赖 verl / vLLM GPU 栈。
+
 ## [2026-10-09] ingest | StreamRig 论文与项目分设详情并接入状态估计知识链
 
 - 新增 StreamRig 论文页与独立项目页，分别整理方法 / 评测结论和代码 / 训练 / 权重 / 许可 / 复现成本。
