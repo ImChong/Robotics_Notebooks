@@ -28,16 +28,23 @@ related:
 sources:
   - ../../sources/repos/diagram-design.md
   - ../../sources/sites/diagram-design-cathrynlavery-github-io.md
-summary: "Diagram Design（cathrynlavery/diagram-design）是面向 Claude Code、Codex、Pi 等的 Agent Skill：39 种 editorial 图表类型输出自包含 HTML/SVG，支持网站品牌 onboarding，并把 draw.io / Mermaid 源重绘为同一设计系统下的 HTML/SVG/PNG——默认无脚本、无 Mermaid slop。"
+summary: "Diagram Design（cathrynlavery/diagram-design）是面向 Claude Code、Codex、GitHub Copilot、Factory Droid、Pi 等 AI 编程工具的开源 Agent Skill：生成自包含 HTML + 内联 SVG editorial 图表；GitHub 仓库描述列 42 种，当前 SKILL.md v2.6 列 44 种，计数存在上游版本差异。"
 ---
 
 # Diagram Design
 
-**Diagram Design**（[cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)，MIT）是面向 **Claude Code、Codex、Factory Droid、Pi** 等 harness 的 **Agent Skill + marketplace 插件**：代理按 **39 种 editorial 版式**（架构、时序、象限、飞轮、Sankey、Wardley、kanban、UML class 等）生成 **自包含 HTML + 内联 SVG**，并可从 **draw.io / Mermaid** 源 **重绘** 为同一设计系统下的交付物。项目 gallery：[cathrynlavery.github.io/diagram-design](https://cathrynlavery.github.io/diagram-design/)。
+**Diagram Design**（[cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)，MIT）是面向 **Claude Code、Codex、GitHub Copilot、Factory Droid、Pi** 等 AI 编程工具的 **Agent Skill + marketplace 插件**：代理按 editorial 设计规范生成 **自包含 HTML + 内联 SVG**，并可从 **draw.io / Mermaid / Excalidraw** 源语义重绘。项目 gallery：[cathrynlavery.github.io/diagram-design](https://cathrynlavery.github.io/diagram-design/)。仓库描述标注 **42 种**图表类型，而当前 `SKILL.md` v2.6 自称 **44 种**；数量以具体版本为准。
 
 ## 一句话定义
 
-用 **Agent Skill + 固定 editorial 设计系统** 把系统说明、决策逻辑或已有 draw.io/Mermaid 草图编译成 **可直接截图、导出 PNG/SVG、可品牌化的静态图**——默认 **无构建、无脚本、无通用圆角 Mermaid 审美**，而不是可编辑 CAD 或 JSON 校验器。
+用 **Agent Skill + editorial 设计系统** 把系统说明、决策逻辑或已有 draw.io/Mermaid/Excalidraw 草图编译成 **可直接截图、导出 PNG/SVG、可品牌化的静态图**——默认 **无构建、无脚本**，而不是可编辑 CAD 或 JSON 校验器。
+
+## 当前上游状态（2026-10-09）
+
+- GitHub API 快照：**46,434 stars / 2,952 forks**；这是当时总数。仓库 API 不提供“今日新增 227 星”的单日增量字段，因此不把该数当作已核实事实。
+- 图表数量存在上游版本差异：仓库简介写 **42 diagram types**；当前 `skills/diagram-design/SKILL.md` v2.6 写 **44 visual types**。旧版资料曾记为 39，不能沿用为当前数量。
+- 兼容面：官方仓库简介 / README 包括 **Claude Code、Codex、GitHub Copilot、Factory Droid、Pi**。
+- 输入重绘：README / Skill 明确列出 **draw.io、Mermaid、Excalidraw**。在当前上游文档中未找到 PlantUML 导入支持，因此暂不记为已支持。
 
 ## 英文缩写速查
 
@@ -63,8 +70,8 @@ summary: "Diagram Design（cathrynlavery/diagram-design）是面向 Claude Code�
 
 | 层次 | 内容 |
 |------|------|
-| **Skill 根** | `skills/diagram-design/`：`SKILL.md`、`references/*`（39 类型 spec、style-guide、import/export、semantic-patterns、animation） |
-| **视觉类型（39）** | 每种有 minimal light / dark / full-editorial；模板见 `assets/template*.html` |
+| **Skill 根** | `skills/diagram-design/`：`SKILL.md`、`references/*`（类型 spec、style-guide、import/export、semantic-patterns、animation；数量随版本变化） |
+| **视觉类型** | 每种有 minimal light / dark / full-editorial；模板见 `assets/template*.html` |
 | **语义模式（8）** | 行为优先：fan-in 队列、策略 trace、secure paved road 等 → 映射 **最近邻视觉类型**，不膨胀类型计数 |
 | **品牌** | onboarding 抓站点 CSS → `style-guide.md` token；多项目用 `~/.diagram-design/profiles/` + `.diagram-design` marker |
 | **Import** | `/import-drawio`、`/import-mermaid`：四旋钮 + fidelity ledger |
@@ -76,7 +83,7 @@ summary: "Diagram Design（cathrynlavery/diagram-design）是面向 Claude Code�
 ```mermaid
 flowchart TD
   A[自然语言需求或 draw.io/Mermaid 源] --> B{路由}
-  B -->|新建| C[选 39 类型之一 + semantic pattern]
+  B -->|新建| C[按 visual-type guide 选类型 + semantic pattern]
   B -->|重绘| D[import-drawio / import-mermaid\n四旋钮 + ledger]
   C --> E[读 style-guide.md\n必要时 onboarding 品牌]
   D --> E
@@ -127,6 +134,7 @@ sequenceDiagram
 |----|------|
 | **Claude Code** | `/plugin marketplace add cathrynlavery/diagram-design` → `/plugin install diagram-design@diagram-design`；启用 marketplace auto-update |
 | **Codex** | `codex plugin marketplace add cathrynlavery/diagram-design` → `codex plugin add diagram-design@diagram-design` |
+| **GitHub Copilot** | `copilot plugin marketplace add cathrynlavery/diagram-design`；README 另列 workspace/user skill 安装路径 |
 | **Pi** | `pi install https://github.com/cathrynlavery/diagram-design`；`/reload`；显式 `/skill:diagram-design` |
 | **Cursor 可编辑** | 克隆仓 → `ln -s ~/code/diagram-design/skills/diagram-design ~/.cursor/skills/diagram-design` |
 | **品牌** | `onboard diagram-design to https://yoursite.com` 或编辑 `style-guide.md`；多品牌用 profile + `.diagram-design` marker |
@@ -145,7 +153,7 @@ sequenceDiagram
 
 | 方案 | 产物 | 代理接口 | 强项 |
 |------|------|----------|------|
-| **Diagram Design** | 自包含 HTML/SVG/PNG | Agent Skill（多 marketplace） | 39 editorial 类型、品牌 onboarding、draw.io/Mermaid 重绘 |
+| **Diagram Design** | 自包含 HTML/SVG/PNG | Agent Skill（多 marketplace） | editorial 类型、品牌 onboarding、draw.io/Mermaid 重绘 |
 | [Archify](./archify.md) | HTML + 导出图 | Skill + Node CLI | JSON 校验、Architecture Delta、五类系统图 |
 | [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) | 可编辑 `.drawio` | Codex Skill + MCP | 可见步进、科研插图 |
 | [Next AI Draw.io](./next-ai-draw-io.md) | `.drawio` XML + 导出 | Web 聊天 / MCP npm | 聊天迭代、云架构图 |
@@ -174,7 +182,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [Diagram Design gallery](https://cathrynlavery.github.io/diagram-design/) — 39 类型 light/dark/editorial 预览
+- [Diagram Design gallery](https://cathrynlavery.github.io/diagram-design/) — 图表类型 light/dark/editorial 预览
 - [docs/cookbook.md](https://github.com/cathrynlavery/diagram-design/blob/main/docs/cookbook.md) — onboarding、import/export、Windows junction 等配方
 - [semantic-patterns.md](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/references/semantic-patterns.md) — 八类行为模式路由
 - [Agent Skills](https://agentskills.io/) — `SKILL.md` 约定
