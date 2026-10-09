@@ -13,7 +13,7 @@
 
 ## 仓库作用
 
-此仓库将 Cartwheel 的公开 API 包装为供 MCP 客户端使用的本地 stdio 服务。README 包含 Comic 视频动捕调用 __BT__generate_motion_from_video__BT__，可捕获 1–4 位人物及可选面部动作；还提供生成/编辑动作、角色创建、场景管理、导出和运动分析工具。视频任务异步运行，客户端需要提交任务并轮询批次结果。
+此仓库将 Cartwheel 的公开 API 包装为供 MCP 客户端使用的本地 stdio 服务。README 包含 Comic 视频动捕调用 `generate_motion_from_video`，可捕获 1–4 位人物及可选面部动作；还提供生成/编辑动作、角色创建、场景管理、导出和运动分析工具。视频任务异步运行，客户端需要提交任务并轮询批次结果。
 
 ## 快速接入
 
@@ -25,7 +25,7 @@ cd cartwheel-mcp
 npm ci
 ```
 
-配置 MCP 客户端启动 __BT__node /absolute/path/to/cartwheel-mcp/src/index.mjs__BT__，并通过环境变量提供 __BT__CARTWHEEL_API_KEY__BT__。Blender 只在需要运行示例渲染时才是依赖；MCP 服务本身不要求安装 Blender。
+配置 MCP 客户端启动 `node /absolute/path/to/cartwheel-mcp/src/index.mjs`，并通过环境变量提供 `CARTWHEEL_API_KEY`。Blender 只在需要运行示例渲染时才是依赖；MCP 服务本身不要求安装 Blender。
 
 ## Comic 视频动捕路径
 
