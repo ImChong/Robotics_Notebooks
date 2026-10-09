@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -78,6 +78,27 @@
         { "date": "2025-09", "title": "UnifoLM-WMA-0", "track": "世界模型", "desc": "2025-09-15 训练/推理代码与权重开放，09-22 补部署代码；世界模型兼顾交互仿真与策略。", "id": "entity-unifolm-world-model-action", "url": "https://github.com/unitreerobotics/unifolm-world-model-action", "date_note": "README News 两次资产发布：2025-09-15 与 2025-09-22。" },
         { "date": "2026-01", "title": "UnifoLM-VLA-0", "track": "VLA", "desc": "2026-01-29 训练/推理代码与权重开放：面向通用人形操作的 VLA。", "id": "entity-unifolm-vla", "url": "https://github.com/unitreerobotics/unifolm-vla", "date_note": "README News 明确代码与模型权重发布于 2026-01-29。" },
         { "date": "2026-09", "title": "UnifoLM-WLA-1.0", "track": "基础模型", "desc": "6B 人形 WLA 分阶段开放：09-11 ER 权重，09-20 动作专家训练代码，09-28 WLA-Base 与微调代码。", "id": "entity-unifolm-wla", "url": "https://github.com/unitreerobotics/unifolm-wla", "date_note": "README News：2026-09-11 / 09-20 / 09-28；首次 ER 权重开放不等于完整 WLA 资产开放。" }
+      ]
+    },
+    {
+      "key": "xpeng",
+      "name": "小鹏机器人 XPENG Robotics",
+      "founded_year": 2016,
+      "founded_source": "https://cs.com.cn/ssgs/gsxw/202109/t20210907_6202415.html",
+      "founded_note": "鹏行智能团队 2016 年在深圳组建，2020 年获何小鹏及小鹏汽车投资，2021-09-07 作为小鹏生态企业公布；与当前 IRON 人形研发组织的沿革未逐项核实。",
+      "lenses": ["wam", "humanoid", "wbc"],
+      "summary": "车企人形全栈：IRON 整机与专利布局，人–人形共享潜动作与相机坐标预训练，WAM + 世界模拟器，人机闭环 RL 后训练，System 0 长尾 WBC 与 S2/S1/S0 统一评测；UniT 开源，其余多数未开源。",
+      "official": "https://github.com/xpeng-robotics",
+      "nodes": [
+        { "date": "2026-04", "title": "UniT", "track": "潜动作 / VLA", "desc": "视觉锚定三分支交叉重构，学人–人形共享离散潜动作；VLA-UniT 代码与权重开源。", "id": "entity-paper-unit-unified-physical-language", "url": "https://xpeng-robotics.github.io/unit/" },
+        { "date": "2026-06", "title": "ROVE", "track": "VLA 后训练", "desc": "人形 VLA 部署后人机闭环 RL：全身 MoCap 干预把轨迹分为 rollout / adaptation / recovery，以 OVE 状态价值 critic 提取 advantage-conditioned 策略。", "id": "entity-paper-rove-humanoid-vla-intervention", "url": "https://xpeng-robotics.github.io/rove/" },
+        { "date": "2026-06", "title": "DeepInsight", "track": "评测", "desc": "Physical AI 全栈统一评测：单一 runtime 贯通 System 2 基础模型、System 1 视运动策略与 System 0 全身控制。", "id": "entity-deepinsight", "url": "https://arxiv.org/abs/2606.17574" },
+        { "date": "2026-07", "title": "Athena-WBC", "track": "全身控制", "desc": "针对大规模人形 tracking 的长尾残余失败，用能力对齐的 dynamic / balance 特权专家 + 按动作路由 DAgger 蒸馏 + RL 微调，在 80 kg 自研人形上验证。", "id": "entity-paper-athena-wbc-humanoid-longtail", "url": "https://arxiv.org/abs/2607.04837" },
+        { "date": "2026-08", "title": "R2S-EGO", "track": "Real2Sim", "desc": "稀疏捕获 Real-to-Sim 双代理细化：机器人代理定行为范围，几何代理供结构条件与碰撞面；未开源。", "id": "entity-paper-r2s-ego", "url": "https://arxiv.org/abs/2608.06827" },
+        { "date": "2026-08", "title": "AnyWorld", "track": "世界模型", "desc": "动作–相机–具身因子化 egocentric 扩散世界模型，无配对数据把人类交互重组合成 IRON 等本体视频；未开源。", "id": "entity-paper-anyworld", "url": "https://xpeng-robotics.github.io/anyworld/" },
+        { "date": "2026-09", "title": "XPACE", "track": "WAM", "desc": "共享视频骨干统一 WAM 与世界模拟器，5000h 异构经验联合训练，仿真合成 recovery 做闭环 DAgger；IRON 真机评测，未开源。", "id": "entity-paper-xpace", "url": "https://xpeng-robotics.github.io/xpace/" },
+        { "date": "2026-09", "title": "IronMind", "track": "灵巧操作预训练", "desc": "在相机坐标中对齐人类与机器人动作，对超过一万小时异构数据做质量加权预训练。", "id": "entity-paper-ironmind", "url": "https://xpeng-robotics.github.io/ironmind/" },
+        { "date": "", "title": "IRON 54 项专利", "track": "整机", "desc": "头颈臂、灵巧手、腿腰动力、双足步态与全身具身五组 CN 专利阅读地图。", "id": "wiki-overview-xpeng-iron-54-patents-technology-map", "url": "https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg", "date_note": "54 项专利申请 / 公开日期跨多年，属聚合入口，不设单一日期；不代表 IRON 首发日。" }
       ]
     },
     {
@@ -518,6 +539,22 @@
       "official": "https://symbiosis-robotics.com/research/dpc/en/",
       "nodes": [
         { "date": "2026-08", "title": "DPC", "track": "直接感知控制", "desc": "去掉中间运动接口 Zt（以冻结 SONIC 为靶），Symbiotic Attention 耦合感知与控制；仅定性真机演示，无成功率表。", "id": "entity-paper-dpc", "url": "https://symbiosis-robotics.com/research/dpc/en/" }
+      ]
+    },
+    {
+      "key": "liauto",
+      "name": "理想汽车具身智能 Li Auto",
+      "founded_year": 2026,
+      "founded_source": "https://www.mrjjxw.com/articles/2026-06-01/4413821.html",
+      "founded_note": "理想汽车 2015 年成立；2026-02 媒体报道其按 AI 公司重组为算力和数据、基座模型、软件本体、硬件本体等团队，2026-06 基座模型部门新增具身工程 / 具身交互 / 具身行为三个二级部门。此处按具身组织调整年份排序，具体成立日未确认。",
+      "lenses": ["wam"],
+      "summary": "基座模型团队以 MachEmbodied 品牌发布四层具身基座：可演进记忆 + 认知核 + 动作模型、统一具身 VLM、理解–生成 MoT WAM、触觉 WAM；U0 已开源，ME-Dex 推理 runtime 开源，Brain 部分开源，VLM 待发布。",
+      "official": "https://github.com/MachEmbodied",
+      "nodes": [
+        { "date": "2026-09", "title": "ME-Dex 1.0", "track": "触觉 WAM", "desc": "三专家 MoT 联合预测未来视频 / 触觉 / 动作，统一异构触觉编码；推理 runtime 开源。", "id": "entity-paper-me-dex-1-0", "url": "https://github.com/MachEmbodied/ME-Dex-1.0", "date_note": "arXiv v1 提交于 2026-09-18；论文署名 Foundation Model, Li Auto Inc.。", "date_source": "https://arxiv.org/abs/2609.21449" },
+        { "date": "2026-09", "title": "ME-Brain 1.0", "track": "记忆 + 认知 + 动作", "desc": "可演进外部记忆 + 认知核 + Focus-VLWA 动作模型，经验写入记忆实现自我演进而不改权重；部分开源。", "id": "entity-paper-me-brain-1-0", "url": "https://github.com/MachEmbodied/ME-Brain-1.0" },
+        { "date": "2026-09", "title": "ME-VLM", "track": "具身 VLM", "desc": "4B / 35B-A3B 统一具身认知与 Agent 协调，作为 ME-Brain 认知核；代码与权重待发布。", "id": "entity-paper-me-vlm", "url": "https://github.com/MachEmbodied/ME-VLM" },
+        { "date": "2026-09", "title": "ME-U0", "track": "理解–生成 WAM", "desc": "MoT 连接子任务理解、affordance grounding、视觉动态与连续动作生成；约 4200h 预训练。", "id": "entity-paper-me-u0", "url": "https://github.com/MachEmbodied/ME-U0" }
       ]
     }
   ],

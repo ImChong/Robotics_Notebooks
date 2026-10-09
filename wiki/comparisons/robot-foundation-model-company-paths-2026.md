@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-09
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -15,6 +15,8 @@ related:
   - ../entities/reward-ai-robotics.md
   - ../entities/paper-dpc.md
   - ../entities/roboparty.md
+  - ../overview/xpeng-iron-54-patents-technology-map.md
+  - ../overview/li-auto-machembodied-4-papers-technology-map.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
@@ -24,7 +26,9 @@ sources:
   - ../../sources/sites/rewardai.md
   - ../../sources/sites/symbiosis-robotics-dpc.md
   - ../../sources/repos/party_os.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 19 家团队的公开技术路线与复现边界。"
+  - ../../sources/sites/xpeng-robotics-unit.md
+  - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 21 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -46,7 +50,7 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 ## 30 秒读懂
 
 - **三种视角对应机器人栈的三层**：上层“看懂世界、生成动作”（VLA / WAM），中层“大小脑怎么接”（整机接口），下层“身体怎么稳稳做出来”（WBC、仿真迁移）。见下方分层图。
-- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree、德塔智能在矩阵里都横跨两列以上。
+- **公司不是互斥赛道**：1X、NVIDIA、Galbot、LimX、Unitree、德塔智能、小鹏机器人在矩阵里都横跨两列以上。
 - **“有模型名” ≠ “能复现”**：开放程度差异很大，从“代码 + 权重”到“只有博客叙述”都有；复现前逐项核对代码、权重、数据、真机接口。
 - **不能排名**：各家任务、本体、频率、测评环境不同，本页只做路线对照，不是基准测试。
 
@@ -108,10 +112,14 @@ flowchart TB
 | [Symbiosis Robotics](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
 | [RAI Institute](../entities/rai-institute.md) |  |  | ● | [ZEST](../entities/paper-zest.md)、[Sumo](../methods/sumo.md)、[AthenaZero](../entities/paper-athenazero.md)、Robot Juggling、SMPC-to-RL、[Exploy](../entities/exploy.md) |
 | [RoboParty 萝博派对](../entities/roboparty.md) | ○ | ● | ● | [Roboto Origin](../entities/roboto-origin.md)、Party OS、hhtools、MimicLite、UFO / TeCH、INTACT |
+| [XPENG Robotics 小鹏机器人](../overview/xpeng-iron-54-patents-technology-map.md) | ● | ● | ● | [XPACE](../entities/paper-xpace.md)、[AnyWorld](../entities/paper-anyworld.md)、[UniT](../entities/paper-unit-unified-physical-language.md)、[ROVE](../entities/paper-rove-humanoid-vla-intervention.md)、[IronMind](../entities/paper-ironmind.md)、IRON 专利、[DeepInsight](../entities/deepinsight.md)、[Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)、[R2S-EGO](../entities/paper-r2s-ego.md) |
+| [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
 
 RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
+
+小鹏机器人的三列分别对应 XPACE / AnyWorld / UniT / ROVE / IronMind 的世界–动作与 VLA 研究、IRON 整机专利与 S2/S1/S0 统一评测、Athena-WBC 长尾全身控制与 R2S-EGO Real2Sim；均为独立论文，不假定已集成为同一产品栈。理想汽车只归入 ①：四篇 MachEmbodied 论文覆盖记忆、认知、理解–生成与触觉 WAM，已归档材料未见人形整机或全身控制发布；ME-Dex 1.0 论文署名为 "Foundation Model, Li Auto Inc."，见[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)。
 
 星动纪元的三列分别对应 VPP 视频预测表征、L7 / M7 / XHAND 与数据/控制接口、Humanoid-Gym 人形 RL；研究和产品属于不同节点，不假定一个统一模型已贯通且完整开放，见[公司与日期核查](../../sources/sites/robotera.md)。
 
@@ -158,6 +166,8 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | Reward AI | ❌ | ❌ | ❌ | [OM-1 博客](https://www.rewardai.com/blog/OM-1/) 未列 GitHub / HF / 数据下载；前序 DexCap 代码与数据开源，但非同一发布物（[核查](../../sources/sites/rewardai.md)） |
 | Symbiosis Robotics | ❌ | ❌ | ❌ | [DPC 项目页](https://symbiosis-robotics.com/research/dpc/en/) 未列 GitHub / HF / 数据集 / arXiv，仅联系邮箱（[核查](../../sources/sites/symbiosis-robotics-dpc.md)） |
 | RAI Institute | 🟡 | ❓ | 🟡 | [Sumo](../methods/sumo.md) / [Exploy](../entities/exploy.md) 有代码；AthenaZero 部分分析与实验数据公开；其他研究栈按[各项目核查](../../sources/sites/rai-institute.md)读取 |
+| XPENG Robotics | 🟡 | 🟡 | ❓ | [UniT](../entities/paper-unit-unified-physical-language.md) 代码与 VLA-UniT 权重开源；XPACE、AnyWorld、R2S-EGO 核查时未开源，IronMind 开放状态未核验 |
+| Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
@@ -215,8 +225,10 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [19 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [21 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
+- [小鹏机器人 UniT 项目归档](../../sources/sites/xpeng-robotics-unit.md)
+- [理想 MachEmbodied 四篇盘点](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)
 - [PI 官方技术文章逐篇索引](../../sources/sites/pi-website-technical-articles.md)
 - [1X World Model / Redwood 项目归档](../../sources/sites/1x-world-model-redwood.md)
 - [Light-O1 项目页及开源核查](../../sources/sites/light-o1.md)
