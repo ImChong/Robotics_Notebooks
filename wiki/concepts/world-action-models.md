@@ -41,6 +41,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-egowam-egocentric-human-wam-co-training.md
+  - ../entities/paper-autodidactwam.md
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../entities/paper-thaw-vla.md
   - ../entities/paper-dualwam.md
