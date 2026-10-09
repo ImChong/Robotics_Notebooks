@@ -102,6 +102,25 @@
       ]
     },
     {
+      "key": "xiaomi",
+      "name": "小米机器人 Xiaomi Robotics",
+      "founded_year": 2021,
+      "founded_source": "https://www.thepaper.cn/newsDetail_forward_13994915",
+      "founded_note": "2021-08-10 雷军年度演讲上官宣成立小米机器人实验室并发布 CyberDog；2022-08 发布 CyberOne 人形。整机产品本页暂无独立详情节点。",
+      "lenses": ["wam"],
+      "summary": "从 CyberDog / CyberOne 整机起步，研究重心转向操作基础模型：开源 VLA Xiaomi-Robotics-0、UMI 无本体预训练的 Xiaomi-Robotics-1、自回归世界基础模型 U0，辅以视触觉灵巧抓取与跨本体几何接口；触觉与 UCAG-P 代码待发布。",
+      "official": "https://github.com/XiaomiRobotics",
+      "nodes": [
+        { "date": "2025-09", "title": "TacRefineNet", "track": "触觉抓取", "desc": "Siamese 多指触觉策略对当前 / 目标触觉图与关节配置回归腕部增量，做目标条件抓取精调；GitHub 空仓，待发布。", "id": "entity-paper-tacrefinenet-tactile-grasp-refinement", "url": "https://arxiv.org/abs/2509.25746" },
+        { "date": "2026-02", "title": "Xiaomi-Robotics-0", "track": "VLA", "desc": "约 4.7B 开源 VLA：Qwen3-VL-4B 骨干 + DiT flow matching 动作块，面向实时异步执行；权重、推理与后训练管线公开。", "id": "entity-xiaomi-robotics-0", "url": "https://github.com/XiaomiRobotics/Xiaomi-Robotics-0", "date_note": "官网 Research 列表与论文 v1 均为 2026-02-12。", "date_source": "https://arxiv.org/abs/2602.12684" },
+        { "date": "2026-04", "title": "XR-0 后训练管线开源", "track": "后训练", "desc": "开源真机后训练代码与样例数据；20 小时数据后训练耳机入盒，官网演示连续放好三副无失败。同一模型的代码补发，非新模型。", "id": "entity-xiaomi-robotics-0", "url": "https://github.com/XiaomiRobotics/Xiaomi-Robotics-0/tree/main/xr0", "date_note": "官网 Research 列表与 README News 均为 2026-04-27。", "date_source": "https://github.com/XiaomiRobotics/Xiaomi-Robotics-0" },
+        { "date": "2026-07", "title": "Xiaomi-Robotics-U0", "track": "世界模型", "desc": "38B 自回归世界基础模型：基于 EMU3.5 统一图像生成、多视角具身场景生成与可控具身迁移，用于数据增广。", "id": "entity-xiaomi-robotics-u0", "url": "https://github.com/XiaomiRobotics/Xiaomi-Robotics-U0", "date_note": "官网 Research 列表为 2026-07-15。" },
+        { "date": "2026-07", "title": "Xiaomi-Robotics-1", "track": "VLA", "desc": ">100k h UMI 无本体预训练 + 约 10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B / 5.1B / 10.5B）。", "id": "entity-xiaomi-robotics-1", "url": "https://github.com/XiaomiRobotics/Xiaomi-Robotics-1", "date_note": "官网 Research 列表为 2026-07-16。" },
+        { "date": "2026-08", "title": "ViTacPhys", "track": "视触觉灵巧操作", "desc": "人体视触觉抓取示范在线预测质量 / 刚度 / 摩擦，人→机迁移后条件化 ACT 灵巧手策略；代码与数据 Coming Soon。", "id": "entity-paper-vitacphys", "url": "https://vitacphys.github.io/ViTacPhys/" },
+        { "date": "2026-08", "title": "UCAG-P", "track": "跨本体接口", "desc": "小米具身智能 × 澳门大学：共享相机系腕 / 抓取锚点几何 + 几何条件翻译器，单 checkpoint 跨 LIBERO / RoboTwin / RoboCasa；代码待发布。", "id": "entity-paper-ucag-p", "url": "https://public-bots.github.io/UCAG-P" }
+      ]
+    },
+    {
       "key": "limx",
       "name": "逐际动力 LimX",
       "founded_year": 2022,
