@@ -101,7 +101,6 @@ HumanLayer 的 [配套文章](../../sources/blogs/humanlayer-show-me-skill.md) �
 
 ## 关联页面
 
-- [Emil Kowalski Skills](emil-kowalski-skills.md) — 另一组设计工程/前端 Agent Skills
 - [Superpowers（obra）](superpowers-obra.md) — 重流程 **单次交付** 技能库（worktree、子代理、TDD）
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量日常工程技能（grill、CONTEXT.md、TDD）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 skills 自举
