@@ -3,7 +3,6 @@ type: entity
 tags: [entity, robotics, robot-learning, benchmark, simulation, manipulation, sim2real, x-square-robot]
 status: complete
 updated: 2026-10-09
-project_id: x2real
 institutions: [x-square-robot]
 related:
   - ./paper-x2real.md
