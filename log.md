@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | AlphaZero（Science 2018）
+
+- 目的：整理多棋类自我对弈强化学习的一手论文与官方棋谱入口。
+- 开源核查：论文与部分棋谱可公开；未找到官方训练/推理源码或权重。
+- 关键入口：独立实体页连接强化学习历史、Runner、自我对弈与既有 MuZero 节点。
+
 ## [2026-10-10] ingest | AlphaGo Zero（Nature 2017）
 
 - 目的：收录从规则和自我对弈开始的围棋强化学习工作。
