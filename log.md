@@ -73,6 +73,13 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | OccPlanner（arXiv:2608.14160 v2）
+
+- 新增独立论文实体页与 arXiv 来源归档；L3ROcc 作为同一论文内的数据监督流程，不拆分重复节点。
+- 更新导航纵深路线 Stage 3，建立详情页入链。
+- 仅按 v2（2026-09-17）记录仿真与 Go2 闭环结果；官方代码、权重、数据链接未能从一手资料核实，明确保留该边界。
+- 使用标准三反引号 Mermaid 方法流程图；源码运行时序图注明不适用原因。
+
 ## [2026-10-10] ingest | MotionSpaceFlow（MSFlow，arXiv:2609.34190）
 
 - 归档论文、官方项目页、LY Corporation 临时开源代码仓与 Hugging Face 权重，并新建单一项目详情节点。
