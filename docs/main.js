@@ -6342,6 +6342,13 @@
   // 搜索索引预取钩子：搜索模块初始化后替换；供入口卡 pointerdown / idle 调用
   var prefetchWikiSearchIndex = function () {};
 
+  // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
+  function syncHomeLinksScrollbar(links) {
+    links.style.removeProperty('--links-sb');
+    if (!links.classList.contains('is-expanded')) return;
+    links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+  }
+
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
     var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
@@ -6352,6 +6359,7 @@
     routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 ' + routeLinks.querySelectorAll('a').length + ' 条纵深路线 ↓';
     if (routeLinks) {
       routeLinks.classList.toggle('is-expanded', !!expanded);
+      syncHomeLinksScrollbar(routeLinks);
     }
   }
 
@@ -6621,6 +6629,7 @@
         }
         companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         companyLinks.classList.toggle('is-expanded', expanded);
+        syncHomeLinksScrollbar(companyLinks);
         companyToggle.textContent = expanded
           ? '收起公司列表 ↑'
           : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';

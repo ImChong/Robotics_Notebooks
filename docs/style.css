@@ -1388,12 +1388,18 @@ button.home-wiki-heatmap-cell.is-active {
   opacity: .75;
   white-space: normal;
 }
-/* 展开态限高 360px（桌面约 5.5 行按钮，半截行提示可滑动），其余在卡内上下滚动，不把首页拉长 */
+/* 展开态限高 360px（桌面约 5.5 行按钮，半截行提示可滑动），其余在卡内上下滚动，不把首页拉长。
+   滚动条 + 6px 间距用负右外边距挪进卡片 20px 右内边距，胶囊宽度/位置与折叠态一致，展开/收起不跳动；
+   --links-sb 是 main.js 实测的滚动条宽度（overlay 滚动条为 0）。
+   行高固定取内容高：卡片高度动画期间列表被压成定高，auto 行会退到按钮 min-height（54px），
+   动画结束恢复 55px，各行逐行下移造成跳动 */
 .home-entry-route-links.is-expanded {
+  grid-auto-rows: max-content;
   max-height: 360px;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 6px;
+  margin-right: calc(-6px - var(--links-sb, 0px));
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
 }
