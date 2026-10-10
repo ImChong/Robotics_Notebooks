@@ -102,6 +102,8 @@ flowchart TB
 
 ## 关联页面
 
+- [AlphaZero](../entities/paper-alphazero.md) — 规则驱动的多棋类 self-play 与 MCTS 实例
+
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 方法总览
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 一手教材与章节映射
 - [Richard Sutton](../entities/richard-sutton.md) — TD / Options / GVF 提出者
