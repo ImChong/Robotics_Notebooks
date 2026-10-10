@@ -4,7 +4,7 @@ tags: [paper, google-deepmind, alphago, deep-rl, mcts, go]
 status: complete
 updated: 2026-10-10
 project_id: alphago
-papers: ["doi:10.1038/nature16961"]
+doi: "10.1038/nature16961"
 project: https://deepmind.google/blog/innovations-of-alphago/
 related:
   - ../concepts/deep-rl-game-milestones.md
