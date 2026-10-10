@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | OpenSCAD 参数化脚本 CAD 工具
+
+- 意图：归档 OpenSCAD 官方网站、文档与源码，建立独立软件实体页。
+- 工程定位：保留脚本参数化、CSG、CLI 网格输出等能力，同时明确其与 B-rep/STEP CAD 及 URDF/MJCF 的边界。
+- 互链：连接 Text-to-CAD、FreeCAD 与 URDF 页面。
+
 ## [2026-10-10] ingest | The Coding Train、p5.js 与 ml5.js
 
 - 意图：归档三项相互关联但职责不同的创意编程与浏览器机器学习资源，供机器人可视化、交互原型和教学演示参考。

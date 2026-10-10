@@ -908,6 +908,7 @@
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
 - [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
+- [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
