@@ -194,6 +194,8 @@ flowchart TD
 
 ## 关联页面
 
+- [AlphaGo Zero](../entities/paper-alphago-zero.md) — 围棋规则驱动的纯自博弈训练实例
+
 - [具身 RL 最小闭环](./embodied-rl-minimal-closed-loop.md) — 环境侧 `S–A–R–P` 循环；本页是其外包编排
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 算法与范式总览
 - [PPO](../methods/ppo.md) / [GAE](../methods/gae.md) — On-policy Runner 的默认宿主
