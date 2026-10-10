@@ -2,13 +2,14 @@
 type: concept
 tags: [data, machine-learning, manipulation, teleoperation, simulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-10
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../tasks/manipulation.md
   - ../queries/demo-data-collection-guide.md
   - ../methods/behavior-cloning.md
   - ../entities/humannet.md
+  - ./swinging-door-trending-compression.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humannet.md
@@ -44,7 +45,7 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 ## 核心清洗流程
 
 ### 1. 时序对齐 (Temporal Alignment)
-利用 NTP 同步或硬件触发信号，确保 RGB 图像、深度图、关节编码器、触觉信号在同一时间轴上。对于变延迟信号，常使用线性插值（Linear Interpolation）将其重新采样到固定的控制频率（如 50Hz）。
+利用 NTP 同步或硬件触发信号，确保 RGB 图像、深度图、关节编码器、触觉信号在同一时间轴上。对于变延迟信号，常使用线性插值（Linear Interpolation）将其重新采样到固定的控制频率（如 50Hz）。长期存储的遥测副本可另用 [Swinging Door Trending](./swinging-door-trending-compression.md) 做有损压缩；这属于归档压缩而非数据清洗，压缩前仍应完成时间对齐与语义校验，并为训练、故障分析和接触事件保留足够原始数据。
 
 ### 2. 异常轨迹过滤 (Outlier Detection)
 - **物理校验**：剔除违反关节限位（Joint Limits）、最大角速度或产生瞬间巨大接触力的轨迹。
