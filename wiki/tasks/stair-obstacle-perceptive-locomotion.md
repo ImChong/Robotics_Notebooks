@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-10
 related:
   - ../entities/paper-dawn.md
   - ../entities/paper-cref.md
@@ -176,7 +176,7 @@ flowchart TB
 
 | 平台 | 感知 | 页面 | 要点 |
 |------|------|------|------|
-| 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略 |
+| 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略；官方代码、五组训练示例与 D435i 学生 ONNX 已公开，见该节点复现边界 |
 | 人形 PM-01 | **头部固态 LiDAR（原始栅格）** | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) | AME-2+GRU 直接吃 E1R 稀疏回波；分阶段多教师蒸馏；猴架全序列真机 **14/15**、荡杆 0.5 m/s；截至 2026-09-04 未开源 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
 | 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
@@ -257,6 +257,7 @@ flowchart TB
 
 ## 参考来源
 
+- [PHP 官方实现与发布资产核查](../../sources/repos/php_parkour.md) — 2026-10-10 更新开源与示例复现边界
 - [DAWN 论文摘录](../../sources/papers/dawn_arxiv_2609_29092.md)
 
 - [FastStair 论文摘录（arXiv:2601.10365）](../../sources/papers/faststair_arxiv_2601_10365.md)
