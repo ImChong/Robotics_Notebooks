@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/ai-architecture-map.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-pi0.md
   - ../entities/paper-dexholdem.md
   - ../entities/paper-tempo.md
+  - ../entities/paper-tempo-dynamic-manipulation.md
   - ../entities/paper-autointervene.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../concepts/humanoid-policy-network-architecture.md
@@ -756,3 +757,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 新近双臂长时程实例：FineART-VLA
 
 - [FineART-VLA](../entities/paper-fineart-vla.md) — FineART 细粒度语言子任务标注支持下一子任务规划与子任务条件双臂动作生成（arXiv:2609.36416）。
+
+
+## 动态操作的时间上下文：TEMPO
+
+- [TEMPO: Learning Temporal Context for Dynamic Robot Manipulation](../entities/paper-tempo-dynamic-manipulation.md) — 给单帧 VLA 补充场景运动 token 与本体感知动作历史；分别处理移动目标运动歧义和多阶段任务状态混淆。与 RTC/VLASH 异步推理互补，重点不在单纯降低策略延迟。

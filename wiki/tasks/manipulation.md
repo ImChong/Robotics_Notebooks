@@ -2,9 +2,10 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-06
+updated: 2026-10-10
 related:
   - ../entities/paper-imitator-game.md
+  - ../entities/paper-tempo-dynamic-manipulation.md
   - ../entities/paper-flatlab.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
@@ -520,6 +521,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
+- [TEMPO 动态操作](../entities/paper-tempo-dynamic-manipulation.md) — 用视觉运动与动作历史增强动态目标跟踪和多阶段操作。
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
