@@ -73,6 +73,15 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | Physical AI 云工具链、世界模型与视觉触觉数据
+
+- 复核了 5 个入口：VPP2 已有独立详情页、arXiv/项目页/代码归档与 Mermaid 图，沿用现有条目，不重复创建。
+- 新增 4 个独立详情页：AWS Physical AI Toolchain、Odyssey-3、RoboRender、TouchScale；各自维护唯一 `project_id` 与独立来源链接。
+- 新增来源归档：AWS 官方仓库、Odyssey 官方发布页、RoboRender 论文与项目页、TouchScale 论文与 Hugging Face 数据卡。
+- 每个新详情页包含一句话定义、缩写表、方法/架构说明、Mermaid 流程图、适用边界和来源。
+- TouchScale 单独区分论文所述 500 小时全量与当前已公开的 100 小时，并记录数据许可及访问条件。
+- 未修改 Actions、workflow、目录索引或派生文件。
+
 ## [2026-10-10] ingest | Swinging Door Trending 原始资料与机器人遥测应用
 
 - 新增概念页：`wiki/concepts/swinging-door-trending-compression.md`，介绍 Swinging Door Trending（SDT）的误差走廊、在线折线压缩过程、参数影响、重建误差与机器人遥测应用边界。
