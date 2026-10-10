@@ -702,6 +702,22 @@
         { "date": "2026-09", "title": "CausalWM", "track": "因果世界模型", "desc": "先预测光流与点图、再生成未来视频的具身世界模型，三阶段训练；TriWorldBench 66.04 排名第一（2026-09-11 快照，自报）。推理代码与门控权重开源。", "id": "entity-paper-causalwm", "url": "https://aetherlabs.ai/articles/causalwm-causal-chain-of-thought-reasoning-for-embodied-world-model.html", "date_note": "arXiv:2609.23184 v1 与官网博客均为 2026-09-19。", "date_source": "https://arxiv.org/abs/2609.23184" },
         { "date": "2026-10", "title": "CRIS-0", "track": "真机系统", "desc": "因果驱动的机器人智能体 + 因果世界模型：以显式因果变量追踪任务阶段，验证每一步并在扰动后重试、回退或修改工具；官方文章仅给演示视频，2 秒重规划、0.2 秒急停等数字来自通稿与媒体（自报），未开源。", "id": "entity-aether-cris-0", "url": "https://aetherlabs.ai/articles/real-world-autonomous-robotic-system-with-causality-driven-agent-and-world-model.html", "date_note": "官网博客与新闻均为 2026-10-08。" }
       ]
+    },
+    {
+      "key": "archon",
+      "name": "源策未来 Archon Robotics",
+      "founded_year": 2026,
+      "founded_source": "https://www.36kr.com/p/3868055841641476",
+      "founded_note": "官网未写成立日期；硬氪、投中网 2026-06-29 报道称 2026 年 4 月成立，研发总部位于上海徐汇漕河泾。创始人李弘扬（港大 OpenDriveLab）。",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "人形基础模型（HFM）路线：提出「全身智能」预训练栈（任务语义 S2 / 原生人形模型 S1 / 动作生成与行为基础模型 S0.5 / 全身跟踪控制 S0），以大规模人体全身数据预训练、少量真机数据后训练；公司 GitHub / HF 组织尚无公开仓库，署名含公司的论文代码在 OpenDriveLab 下。",
+      "official": "https://www.archon.tech/blog/whole-body-intelligence",
+      "nodes": [
+        { "date": "2026-06", "title": "RoboNaldo", "track": "全身运控", "desc": "动作引导的课程强化学习做人形射门，G1 真草地部署；训练与部署代码在 OpenDriveLab 组织下开源。署名含源策未来。", "id": "entity-paper-robonaldo-humanoid-soccer-shooting", "url": "https://opendrivelab.com/RoboNaldo/", "date_note": "arXiv:2606.11092 v1 为 2026-06-09。", "date_source": "https://arxiv.org/abs/2606.11092" },
+        { "date": "2026-06", "title": "种子轮融资", "track": "公司", "desc": "媒体报道完成数亿元种子轮，真格、高榕、IDG、五源、戈壁与港大联名基金、奇绩创坛、上海创智学院参投；领投方与估值未披露。", "id": "entity-archon-robotics", "url": "https://www.36kr.com/p/3868055841641476", "date_note": "硬氪、投中网 2026-06-29 报道；非公司官方发布。" },
+        { "date": "2026-07", "title": "Whole-Body Intelligence", "track": "人形基础模型", "desc": "官网首篇博客：提出 S2 / S1 / S0.5 / S0 四层栈与「人类数据给规模、机器人数据给落地、失败数据教恢复」的预训练路线；只有演示视频，无论文、代码或数字。", "id": "entity-archon-whole-body-intelligence", "url": "https://www.archon.tech/blog/whole-body-intelligence", "date_note": "官网博客 2026-07-13。" },
+        { "date": "2026-09", "title": "EgoHumanoid-V2", "track": "人到人形迁移", "desc": "把人类第一视角的协调全身技能迁移到人形做移动操作；项目页代码标注即将发布。署名含 Archon Robotics。", "id": "entity-paper-egohumanoid-v2", "url": "https://arxiv.org/abs/2609.37181", "date_note": "arXiv:2609.37181 v1 为 2026-09-29。", "date_source": "https://arxiv.org/abs/2609.37181" }
+      ]
     }
   ],
   "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。"

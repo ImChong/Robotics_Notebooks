@@ -30,7 +30,7 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 28 家团队的公开技术路线与复现边界。"
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 29 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -122,13 +122,14 @@ flowchart TB
 | [Aether AI](../entities/aether-ai.md) | ● | ● |  | [CausalWM](../entities/paper-causalwm.md)、[CD-LAM](../entities/paper-cd-lam.md)、[RSIAgent](../entities/aether-rsiagent.md)、[CRIS-0](../entities/aether-cris-0.md) |
 | [光轮智能 Lightwheel](../entities/lightwheel.md) |  | ○ | ● | [SimReady](../entities/lightwheel-simready.md) / [SimReadyGen](../entities/lightwheel-simreadygen.md)、[RoboFinals](../entities/lightwheel-robofinals.md)、[LW-BenchHub](../entities/cn-os-lw-benchhub.md)、[EgoSuite](../entities/lightwheel-egosuite.md) |
 | [西湖机器人 Westlake Robotics](../entities/westlake-robotics.md) | ○ | ● | ● | [GAE](../entities/paper-gae-general-action-expert.md)、[TITAN O1](../entities/westlake-titan-o1.md)、[傲天 U1](../entities/westlake-aotian-u1.md)、LM-VLM |
+| [源策未来 Archon Robotics](../entities/archon-robotics.md) | ○ | ● | ● | [Whole-Body Intelligence](../entities/archon-whole-body-intelligence.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
 | [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
 
 RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
-小鹏机器人的三列分别对应 XPACE / AnyWorld / UniT / ROVE / IronMind 的世界–动作与 VLA 研究、IRON 整机专利与 S2/S1/S0 统一评测、Athena-WBC 长尾全身控制与 R2S-EGO Real2Sim；均为独立论文，不假定已集成为同一产品栈。西湖机器人的 ② 对应 TITAN O1 / 傲天 U1 整机与「大脑 + 小脑」分层，③ 对应 GAE 实时全身遥操作与运控，○ 对应只在官网露出名称与演示的 LM-VLM 大脑；创始人王东林所在西湖大学 MiLAB 的论文不计为公司成果（[官网归档](../../sources/sites/wlrobo-com.md)）。光轮智能不训练自有基础模型：③ 的 ● 对应 SimReady 物理资产、RoboFinals / LW-BenchHub 仿真评测与 Newton / Isaac Lab-Arena 合作，○ 对应 GR00T N1 人形进汽车产线等部署案例；EgoSuite 人类数据服务于各家 ① 的训练（[博客索引](../../sources/sites/lightwheel-blog-index.md)）。Aether AI 的 ● 对应 CausalWM / CD-LAM 等因果世界模型与潜动作研究，② 对应 CRIS-0「因果智能体 + 世界模型 + 工具接口」的真机系统；CRIS-0 的世界模型是否就是 CausalWM，官方文章未写明。博客上的 TC-WM、Geometry of Contact、SCAR 论文署名为 UCSD 等，不算公司论文（[博客索引](../../sources/sites/aetherlabs-blog-index.md)）。Simate 只归入 ①：唯一模型 Simate-beta 是 RoboDojo 上标为 VLA 的快系统策略，其余为平台与自动化研究工具；名次与成绩以 RoboDojo 仿真榜日期为准，媒体材料多为公司披露。Generalist AI 只归入 ①：官网 10 篇博文围绕从零训练的具身基础模型（GEN 系列）、预训练 scaling 与跨末端泛化；公开材料未发布整机或独立全身控制，数字均为公司自报（[博文索引](../../sources/sites/generalistai-blog-index.md)）。自变量机器人只归入 ①：官网 8 篇技术博文以 VLA、动作分词与世界模型为主；XRZero-G0 / TwinDEX 属数据采集设备，Quanta 系列整机在本库暂无详情，不据此填 ② / ③（[官网列表核查](../../sources/sites/x2robot-blog-research-index.md)）。小米机器人只归入 ①：已收录作品集中在 VLA、世界基础模型与视触觉灵巧操作；CyberDog / CyberOne 整机在本库暂无独立详情，不据此填 ② / ③。理想汽车只归入 ①：四篇 MachEmbodied 论文覆盖记忆、认知、理解–生成与触觉 WAM，已归档材料未见人形整机或全身控制发布；ME-Dex 1.0 论文署名为 "Foundation Model, Li Auto Inc."，见[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)。
+小鹏机器人的三列分别对应 XPACE / AnyWorld / UniT / ROVE / IronMind 的世界–动作与 VLA 研究、IRON 整机专利与 S2/S1/S0 统一评测、Athena-WBC 长尾全身控制与 R2S-EGO Real2Sim；均为独立论文，不假定已集成为同一产品栈。源策未来的 ② 对应「全身智能」栈里的原生人形模型 S1，③ 对应 S0.5 / S0 动作生成与全身控制及 RoboNaldo、EgoHumanoid-V2，○ 对应 S2 任务语义层；目前只有路线博客与两篇署名论文，无公司自有模型发布（[官网归档](../../sources/sites/archon-tech.md)）。西湖机器人的 ② 对应 TITAN O1 / 傲天 U1 整机与「大脑 + 小脑」分层，③ 对应 GAE 实时全身遥操作与运控，○ 对应只在官网露出名称与演示的 LM-VLM 大脑；创始人王东林所在西湖大学 MiLAB 的论文不计为公司成果（[官网归档](../../sources/sites/wlrobo-com.md)）。光轮智能不训练自有基础模型：③ 的 ● 对应 SimReady 物理资产、RoboFinals / LW-BenchHub 仿真评测与 Newton / Isaac Lab-Arena 合作，○ 对应 GR00T N1 人形进汽车产线等部署案例；EgoSuite 人类数据服务于各家 ① 的训练（[博客索引](../../sources/sites/lightwheel-blog-index.md)）。Aether AI 的 ● 对应 CausalWM / CD-LAM 等因果世界模型与潜动作研究，② 对应 CRIS-0「因果智能体 + 世界模型 + 工具接口」的真机系统；CRIS-0 的世界模型是否就是 CausalWM，官方文章未写明。博客上的 TC-WM、Geometry of Contact、SCAR 论文署名为 UCSD 等，不算公司论文（[博客索引](../../sources/sites/aetherlabs-blog-index.md)）。Simate 只归入 ①：唯一模型 Simate-beta 是 RoboDojo 上标为 VLA 的快系统策略，其余为平台与自动化研究工具；名次与成绩以 RoboDojo 仿真榜日期为准，媒体材料多为公司披露。Generalist AI 只归入 ①：官网 10 篇博文围绕从零训练的具身基础模型（GEN 系列）、预训练 scaling 与跨末端泛化；公开材料未发布整机或独立全身控制，数字均为公司自报（[博文索引](../../sources/sites/generalistai-blog-index.md)）。自变量机器人只归入 ①：官网 8 篇技术博文以 VLA、动作分词与世界模型为主；XRZero-G0 / TwinDEX 属数据采集设备，Quanta 系列整机在本库暂无详情，不据此填 ② / ③（[官网列表核查](../../sources/sites/x2robot-blog-research-index.md)）。小米机器人只归入 ①：已收录作品集中在 VLA、世界基础模型与视触觉灵巧操作；CyberDog / CyberOne 整机在本库暂无独立详情，不据此填 ② / ③。理想汽车只归入 ①：四篇 MachEmbodied 论文覆盖记忆、认知、理解–生成与触觉 WAM，已归档材料未见人形整机或全身控制发布；ME-Dex 1.0 论文署名为 "Foundation Model, Li Auto Inc."，见[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)。
 
 星动纪元的三列分别对应 VPP 视频预测表征、L7 / M7 / XHAND 与数据/控制接口、Humanoid-Gym 人形 RL；研究和产品属于不同节点，不假定一个统一模型已贯通且完整开放，见[公司与日期核查](../../sources/sites/robotera.md)。
 
@@ -183,6 +184,7 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | Aether AI | 🟡 | 🟡 | ❌ | [CausalWM](../entities/paper-causalwm.md) 推理代码与门控权重、[CD-LAM](../entities/paper-cd-lam.md) 代码与 2B 权重、[RSIAgent](../entities/aether-rsiagent.md) 代码公开；训练代码、数据与 [CRIS-0](../entities/aether-cris-0.md) 未公开 |
 | 光轮智能 | 🟡 | ❌ | 🟡 | [LW-BenchHub](../entities/cn-os-lw-benchhub.md)、LeIsaac、AutoDataGen、EgoSuite DevKit 开源（Apache-2.0）；部分 SimReady / YCB 资产 CC BY-NC；[EgoSuite-Open100K](../entities/egosuite-open100k.md) 部分数据门控开放；完整资产库、RoboFinals 平台为商业产品 |
 | 西湖机器人 | ❌ | ❌ | ❌ | [GAE](../entities/paper-gae-general-action-expert.md) 为付费闭源软件（V1.2.0，加密狗授权，仅宇树本体包），论文无代码；GitHub 仅有客户端 API 文档仓 |
+| 源策未来 | 🟡 | ❌ | ❌ | 公司 GitHub / HF 组织尚无公开仓库；[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) 代码在 OpenDriveLab 组织下开源，EgoHumanoid-V2 代码待发布 |
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
@@ -241,7 +243,7 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [28 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [29 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
 - [小鹏机器人 UniT 项目归档](../../sources/sites/xpeng-robotics-unit.md)
 - [理想 MachEmbodied 四篇盘点](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)

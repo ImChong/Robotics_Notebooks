@@ -235,6 +235,7 @@ sequenceDiagram
 - [Unitree G1](./unitree-g1.md) — 硬件与足球技能研究平台。
 - [Learning Soccer Skills（PAiD 论文实体）](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md) — 同主题并发对照。
 - [Reward Design](../concepts/reward-design.md) · [Sim2Real](../concepts/sim2real.md)
+- [源策未来（Archon Robotics）](./archon-robotics.md) — 署名单位之一；公司页列出其署名论文与 WBI 路线。
 
 ## 参考来源
 
