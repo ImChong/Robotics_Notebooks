@@ -1388,6 +1388,15 @@ button.home-wiki-heatmap-cell.is-active {
   opacity: .75;
   white-space: normal;
 }
+/* 展开态限高 360px（桌面约 5.5 行按钮，半截行提示可滑动），其余在卡内上下滚动，不把首页拉长 */
+.home-entry-route-links.is-expanded {
+  max-height: 360px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
 /* 折叠态的路线按钮必须真正隐藏（btn-secondary 的 display 会覆盖 UA 的 [hidden] 样式） */
 .home-entry-route-links a[hidden] { display: none; }
 /* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观 */

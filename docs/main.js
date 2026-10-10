@@ -6620,6 +6620,7 @@
           extras[cti].hidden = !expanded;
         }
         companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        companyLinks.classList.toggle('is-expanded', expanded);
         companyToggle.textContent = expanded
           ? '收起公司列表 ↑'
           : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
