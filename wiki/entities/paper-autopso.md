@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, pso, evolutionary-computing, neuroevolution, sustech]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-10
 arxiv: "2608.07539"
 code: https://github.com/EMI-Group/AutoPSO
 related:
+  - ../methods/particle-swarm-optimization.md
   - ../methods/reinforcement-learning.md
   - ../overview/contact-predict-adapt-10-papers-technology-map.md
   - ./paper-nav-ps-balance.md
@@ -120,6 +121,7 @@ CEC2022 对六种经典 PSO，20D 每 run 120s、31 次平均。论文另报神�
 
 ## 关联页面
 
+- [PSO（粒子群优化）](../methods/particle-swarm-optimization.md) — 从 pbest / 邻域记忆到惯性、收缩因子与 SPSO 标准基线；先读基础，再看双层设计
 - [强化学习](../methods/reinforcement-learning.md)
 - [接触–预测–适应 10 篇技术地图](../overview/contact-predict-adapt-10-papers-technology-map.md)
 - [接近–安全跟随](./paper-nav-ps-balance.md)
