@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-10
 related:
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../entities/paper-humoslope-physics-guided-slope-locomotion.md
   - ../entities/paper-gaitspan-humanoid-locomotion-walking-running.md
+  - ../entities/paper-humble-human-motion-driven-behavior.md
   - ../entities/paper-roller-skating-amp-humanoid-passive-wheels.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
@@ -196,3 +197,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 ## 持续动作学习实例
 
 - [Continual Humanoid Motion Learning](../entities/paper-continual-humanoid-motion-learning.md) — similarity-guided LoRA-PNN 按动作相似度扩展 G1 全身动作策略，并以旧列冻结降低遗忘（arXiv:2610.04231）。
+
+## 人体步态先验与可转向策略
+
+- [HuMBLE：人体动作驱动的具身 locomotion](../entities/paper-humble-human-motion-driven-behavior.md) — 人体动捕→全身 teacher 蒸馏→参考模仿 + 指令跟踪双任务 PPO；在 Atlas R1/D1 与 Unitree G1 验证（arXiv:2610.10489）。

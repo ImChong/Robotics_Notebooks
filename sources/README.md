@@ -10,6 +10,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [humble_arxiv_2610_10489.md](papers/humble_arxiv_2610_10489.md) | HuMBLE：人体动作先验蒸馏 + 双任务 RL 人形步态控制（arXiv:2610.10489；Atlas R1/D1、Unitree G1；G1 数据计划发布）
 - [x] [fineart_arxiv_2609_36416.md](papers/fineart_arxiv_2609_36416.md) | FineART/FineART-VLA 双臂子任务数据与 LeRobot 策略（arXiv:2609.36416）
 - [x] [continual_humanoid_learning_arxiv_2610_04231.md](papers/continual_humanoid_learning_arxiv_2610_04231.md) | Similarity-guided LoRA-PNN 人形持续动作学习（arXiv:2610.04231）
 - [x] [humanoid_rickshaw_pulling_arxiv_2610_04238.md](papers/humanoid_rickshaw_pulling_arxiv_2610_04238.md) | G1 牵引 loaded rickshaw 60–115 kg（arXiv:2610.04238）
