@@ -97,6 +97,7 @@ flowchart LR
 - [【9.28–10.2 前沿论文动态】人形/四足49篇](../overview/frontier-humanoid-quadruped-2026-09-28-10-02.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Loco-manipulation](../tasks/loco-manipulation.md)
+- [源策未来（Archon Robotics）](./archon-robotics.md) — 署名单位之一（Modi Shi、Shijia Peng、陈立、李天羽）
 
 ## 参考来源
 

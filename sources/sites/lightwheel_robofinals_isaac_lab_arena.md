@@ -4,7 +4,7 @@
 
 - **标题：** Behind RoboFinals: NVIDIA Isaac Lab – Arena and Lightwheel BenchHub
 - **类型：** site（厂商技术解读）
-- **来源：** 光轮科技（Lightwheel）
+- **来源：** 光轮智能（Lightwheel）
 - **链接：** https://lightwheel.ai/media/robofinals-isaac-lab
 - **入库日期：** 2026-09-14
 - **一句话说明：** RoboFinals 双层基础设施：**NVIDIA Isaac Lab-Arena**（Scene/Embodiment/Task 解耦的开源评测框架，光轮×NVIDIA 联合开发）+ **Lightwheel BenchHub**（大规模 benchmark 托管与执行层，基于 Arena）。

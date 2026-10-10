@@ -4,7 +4,7 @@
 
 - **标题：** The First Newton-Native Benchmark: Running the Full Evaluation Stack on Newton
 - **类型：** site（厂商媒体发布）
-- **来源：** 光轮科技（Lightwheel）
+- **来源：** 光轮智能（Lightwheel）
 - **链接：** https://lightwheel.ai/media/lightwheel-launches-robofinals-full-stack-robot-evaluation-benchmark-newton
 - **入库日期：** 2026-09-14
 - **一句话说明：** RoboFinals 在开源 Isaac Lab-Arena 上跑通 **Newton 全栈评测**：资产/求解器/机器人/遥操作数据/训练与评测均在 Newton 原生构建；首发 **22** 个家庭/医院/工厂接触丰富任务；光轮任 Newton TSC 成员并主导可变形求解器。

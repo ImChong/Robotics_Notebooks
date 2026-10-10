@@ -121,6 +121,24 @@
       ]
     },
     {
+      "key": "westlake",
+      "name": "西湖机器人 Westlake Robotics",
+      "founded_year": 2021,
+      "founded_source": "https://pitchhub.36kr.com/project/1817515762730889",
+      "founded_note": "工商登记 2021-06-08（36氪项目库）；实际业务约始于 2023-12（投资界 2025-01 报道，官网 2025-06 时间线称「一年半的快速发展」）。西湖大学王东林团队创办。",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "「大脑 + 小脑」路线：GAE 通用动作专家做实时全身遥操作与运控（「一脑多形」），LM-VLM 多模态运动操作模型做大脑；整机有 TITAN O1 人形与傲天 U1 四足。GAE 以付费闭源软件发布（V1.2.0，目前仅支持宇树本体），论文无代码。",
+      "official": "https://www.wlrobo.com/",
+      "nodes": [
+        { "date": "2025-03", "title": "人形全身运动大模型", "track": "全身运控", "desc": "官网时间线称发布「国际上第一个人形机器人全身运动大模型」（自报），未见对应论文或技术报告。", "id": "entity-westlake-robotics", "url": "https://www.wlrobo.com/module4", "date_note": "官网「关于我们」时间线 2025-03-10。" },
+        { "date": "2025-09", "title": "GAE 身外化身系统", "track": "全身遥操作", "desc": "通用动作专家 GAE 首发：动捕 / VR 输入实时驱动人形全身，宣称一脑多形；以付费软件 + 加密狗授权发布。", "id": "entity-paper-gae-general-action-expert", "url": "https://www.wlrobo.com/GAEDownload", "date_note": "官网时间线 2025-09-29 发布；V1.2.0 下载版文件日期为 2026-06。" },
+        { "date": "2025-10", "title": "傲天 U1 四足", "track": "整机", "desc": "15.7 kg 四足机器人，进入杭州社区养老等场景（媒体报道）；官网无发布日期。", "id": "entity-westlake-aotian-u1", "url": "https://www.wlrobo.com/module3", "date_note": "最早点名报道为 2025-10-14（养老场景）；非官方发布日。" },
+        { "date": "2026-03", "title": "TITAN O1 人形", "track": "整机", "desc": "自研关节模组的人形本体，34 kg、29–69 自由度（自报），搭载 GAE；WAIC 2026 展出。", "id": "entity-westlake-titan-o1", "url": "https://www.wlrobo.com/module2", "date_note": "AIBase 报道 2026-03-23 发布，新华社 / TechNode 2026-03-24 报道。" },
+        { "date": "2026-09", "title": "A1 轮融资", "track": "公司", "desc": "媒体报道完成数亿元 A1 轮；2026 年 2–9 月连续多轮，累计超 5 亿元（媒体口径，未披露估值）。", "id": "entity-westlake-robotics", "url": "https://www.wlrobo.com/module4", "date_note": "瑞财经、潮新闻 2026-09-11 报道；非公司官方发布。" },
+        { "date": "2026-09", "title": "GAE 论文", "track": "全身遥操作", "desc": "arXiv 技术论文：万小时人类动作、特权生成器 + 可部署执行器两阶段训练，延迟条件预判实现 G1 / O1 实时全身遥操作；代码未公开。", "id": "entity-paper-gae-general-action-expert", "url": "https://arxiv.org/abs/2609.34233", "date_note": "arXiv:2609.34233 v1 为 2026-09-28。", "date_source": "https://arxiv.org/abs/2609.34233" }
+      ]
+    },
+    {
       "key": "limx",
       "name": "逐际动力 LimX",
       "founded_year": 2022,
@@ -452,6 +470,35 @@
       ]
     },
     {
+      "key": "lightwheel",
+      "name": "光轮智能 Lightwheel",
+      "founded_year": 2023,
+      "founded_source": "https://lightwheel.ai/media/lightwheel-manus-partnership",
+      "founded_note": "公司新闻稿写明 2023 年成立、总部位于加州圣克拉拉；工商信息（界面新闻 2026-03 引天眼查）为 2023-01-16。",
+      "lenses": ["wbc"],
+      "summary": "物理 AI 的仿真与数据基础设施：SimReady 物理精确资产与生成服务、RoboFinals / LW-BenchHub 仿真评测、EgoSuite 人类第一视角数据，并与 NVIDIA Isaac Lab-Arena、Newton 深度合作；BenchHub、LeIsaac 等工具开源，资产库与评测平台为商业产品。",
+      "official": "https://lightwheel.ai/blogs",
+      "nodes": [
+        { "date": "2024-10", "title": "NI Connect 2024 主题演讲", "track": "观点", "desc": "创始人谢晨谈合成数据在 AI 时代的作用；官网博客列出的最早条目。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/blogs", "date_note": "官网博客列表 2024-10-15，指向 YouTube 演讲视频。" },
+        { "date": "2025-05", "title": "GR00T N1 人形进汽车产线", "track": "部署", "desc": "光轮用仿真数据把 GR00T N1 人形部署到汽车产线；NVIDIA 同期新闻稿把光轮列为 GR00T 早期采用者。客户与数据比例均为公司自述。", "id": "entity-lightwheel", "url": "https://www.linkedin.com/pulse/from-sim-factory-how-lightwheel-deployed-gr00t-n1-humanoids-ryycc", "date_note": "LinkedIn 文章 2025-05-19；NVIDIA 新闻稿 2025-05-18。" },
+        { "date": "2025-09", "title": "Newton 地形资产", "track": "仿真资产", "desc": "为 Newton 的 MPM 求解器制作沙、土、雪等颗粒地形资产，展示平地训练的足式策略在其上失效。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/lightwheel-newton", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-09", "title": "USD Search 资产检索", "track": "仿真资产", "desc": "以 NVIDIA USD Search API 支撑约 2000 个 SimReady 资产的文本 / 图像检索。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/lightwheel-usd-blog-CoRL", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-09", "title": "一套骨架三个基准", "track": "评测", "desc": "把 YCB、LIBERO（130 任务）、RoboCasa（138 任务）迁入 Isaac Lab-Arena 统一骨架，形成 LW-BenchHub 的任务基础。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/lightwheel-benchmark-anouncement", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-10", "title": "SimReady 初创优惠", "track": "商业", "desc": "面向初创与 NVIDIA Inception 成员的 SimReady 资产折扣，资产库 2000+ 个 USD 资产（自报）。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/simready-announces-special-pricing", "date_note": "官网博客 2025-10-23。" },
+        { "date": "2025-12", "title": "RoboFinals", "track": "评测", "desc": "面向前沿 VLA / 通才模型的工业级仿真评测平台，首发 RoboFinals-100。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/robofinals", "date_note": "官网博客 2025-12-04（文章指向产品页）。" },
+        { "date": "2025-12", "title": "EgoSuite", "track": "人类数据", "desc": "第一视角人类数据方案：头戴设备、外骨骼与夹爪采集，3D 手姿 / 全身姿态与帧级语义标注；以商业数据服务为主。", "id": "entity-lightwheel-egosuite", "url": "https://lightwheel.ai/egosuite", "date_note": "官网博客 2025-12-04（文章指向产品页）。" },
+        { "date": "2026-01", "title": "Behind RoboFinals", "track": "评测", "desc": "说明 RoboFinals 底层的 Isaac Lab-Arena 与 LW-BenchHub：268 个开源任务、8 类机器人（自报）。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/robofinals-isaac-lab", "date_note": "官网博客 2026-01-05。" },
+        { "date": "2026-02", "title": "Arena GPU 并行评测研究", "track": "评测", "desc": "Isaac Lab-Arena 并行评测相对 MuJoCo 顺序评测最高 13.5× 提速（4096 环境，自报）。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/il-arena-benchmark-study", "date_note": "官网博客 2026-02-04。" },
+        { "date": "2026-03", "title": "SimReady 物理数据基础设施", "track": "仿真资产", "desc": "SimReady 升级为「测量 → 求解 → 生成」的物理数据管线，测量摩擦、刚度、接触等参数，并与 NVIDIA Newton 合作。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/simready", "date_note": "官网博客 2026-03-16。" },
+        { "date": "2026-03", "title": "RoboFinals 工业基准", "track": "评测", "desc": "RoboFinals 工业场景评测与早期采用者（Qwen、Fourier 等）案例。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/media/robofinals-industrial-benchmark", "date_note": "官网博客 2026-03-16。" },
+        { "date": "2026-04", "title": "工业 AI 方案", "track": "工业", "desc": "汉诺威展发布的工业机器人方案（04-15）与和 NVIDIA 合作的「专才 → 通才-专才」机器人文章（04-20）。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/media/hannover-industrial-ai-solution", "date_note": "官网博客 2026-04-15 与 2026-04-20 两篇。" },
+        { "date": "2026-05", "title": "一季度 1 亿美元订单", "track": "公司", "desc": "新闻稿称 2026 年一季度订单约 1 亿美元，覆盖全部产品线（自报）。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/media/q1-orders-physical-ai", "date_note": "官网新闻稿 2026-05-06。" },
+        { "date": "2026-07", "title": "SimReadyGen", "track": "仿真资产生成", "desc": "按文本提示生成 SimReady USD 资产的付费服务，基于 NVIDIA 开源 USD Content Agents；无论文与代码。", "id": "entity-lightwheel-simreadygen", "url": "https://lightwheel.ai/media/simreadygen", "date_note": "官网博客 2026-07-20。" },
+        { "date": "2026-08", "title": "首个 Newton 原生基准", "track": "评测", "desc": "RoboFinals 全评测栈跑在 Newton 上，首批 22 个家庭、医院、工厂任务。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/media/lightwheel-launches-robofinals-full-stack-robot-evaluation-benchmark-newton", "date_note": "官网博客 2026-08-18。" },
+        { "date": "2026-08", "title": "EgoSuite-Open100K", "track": "人类数据", "desc": "与 Hugging Face 合作开放第一视角人类数据，规划 10 万小时，首批 1 万小时。", "id": "entity-egosuite-open100k", "url": "https://lightwheel.ai/media/egosuite-open100k", "date_note": "官网博客 2026-08-21；HF 博客 2026-08-26。" }
+      ]
+    },
+    {
       "key": "pi",
       "name": "Physical Intelligence",
       "founded_year": 2024,
@@ -632,6 +679,44 @@
         { "date": "2026-09", "title": "AutoResearch 内测", "track": "自动化研究", "desc": "人定假设与约束，引擎自动拆解实验、执行并回传结果；公司称 MIT、加州理工、清华、北大等研究者参与内测。", "id": "entity-simate", "url": "https://eu.36kr.com/zh/p/3999916051157129", "date_note": "量子位 2026-09-28 报道披露内测，未见官方发布日期。" },
         { "date": "", "title": "Sinfra 平台", "track": "基础设施", "desc": "把任务定义、训练、仿真验证与真机部署串成一条可审计流程，申请制 Enterprise / Cloud 工作区。", "id": "entity-simate", "url": "https://mate-robot.cn/research/sinfra/", "date_note": "官网标注 In development，未写发布日期。" },
         { "date": "", "title": "RoboScientist", "track": "AI 科学家", "desc": "实验画廊把 run、对比与决策整理成证据链，官网标注 Research preview。", "id": "entity-simate", "url": "https://mate-robot.cn/research/RoboScientist/gallery/", "date_note": "官网标注 Research preview，未写发布日期。" }
+      ]
+    },
+    {
+      "key": "aether",
+      "name": "Aether AI",
+      "founded_year": 2026,
+      "founded_source": "https://sdbj.com/technology/aether-taking-ai-to-its-next-logical-step/",
+      "founded_note": "官网未写成立日期；San Diego Business Journal（2026-07-06）称创始人黄碧薇（UCSD 助理教授）「今年春天」创办，月份未确认。",
+      "lenses": ["wam", "humanoid"],
+      "summary": "因果智能路线：以因果世界模型为核心，配因果驱动的智能体做规划、归因与记忆；先后发布 RSIAgent、CausalWM，并在 CRIS-0 中把智能体与世界模型合成真机系统。RSIAgent 与 CausalWM 推理代码开源，CRIS-0 未开源、数字均为自报。",
+      "official": "https://aetherlabs.ai/blog.html",
+      "nodes": [
+        { "date": "2026-05", "title": "SCAR", "track": "潜动作", "desc": "从视频帧对学连续潜动作接口并去除外观与本体身份信息，让视频世界模型跨机械臂迁移；论文署名 UCSD / KTH，由 Aether 博客解读，未开源。", "id": "entity-paper-scar-continuous-action", "url": "https://aetherlabs.ai/articles/scar-self-supervised-continuous-action-representation-learning.html", "date_note": "arXiv:2605.16412 v1 为 2026-05-13；Aether 博客 2026-08-09。", "date_source": "https://arxiv.org/abs/2605.16412" },
+        { "date": "2026-05", "title": "因果智能路线三文", "track": "观点", "desc": "《Causality and the Next AI Paradigm》《Building the Causal Brain of World Agent》《Learning Causal World Models》：预测结构 ≠ 因果结构，主张以因果世界模型 + 记忆 + 模块化能力构建智能体。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/articles/causality-and-the-next-ai-paradigm.html", "date_note": "官网博客三篇同为 2026-05-17。" },
+        { "date": "2026-05", "title": "Causal Copilot", "track": "因果分析智能体", "desc": "端到端因果分析智能体：因果发现、效应估计、反事实与稳健性检查并输出可查报告；面向表格与时序数据，非机器人控制器。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/articles/causal-copilot-toward-ai-that-discovers-before-it-acts.html", "date_note": "官网博客 2026-05-17；对应论文 arXiv:2504.13263（2025-04，早于公司成立）。" },
+        { "date": "2026-05", "title": "TC-WM", "track": "世界模型表征", "desc": "冻结 DINOv2 特征经单个线性投影压成任务相关的紧凑状态，在该空间规划；论文署名 UCSD，代码开源。", "id": "entity-paper-task-centric-world-models", "url": "https://aetherlabs.ai/articles/task-centric-world-models.html", "date_note": "arXiv:2605.25620 v1 为 2026-05-25；Aether 博客 2026-07-09。", "date_source": "https://arxiv.org/abs/2605.25620" },
+        { "date": "2026-06", "title": "2000 万美元种子轮", "track": "公司", "desc": "官网宣布 2000 万美元种子轮，用于因果世界模型研发与物理 AI 初期商用；投资方名单来自公司通稿，官网文章未列。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/news/aether-ai-raises-20m-seed-round.html", "date_note": "官网新闻列表 2026-06-17，正文写 6 月 16 日。" },
+        { "date": "2026-06", "title": "The Geometry of Contact", "track": "接触操作 RL", "desc": "对比式目标条件 RL 的可达性在接触处断裂，IWR 加大接触附近未来状态的采样；真机空气曲棍球 5/20 → 12/20（自报）。论文署名 UCSD / UT Austin。", "id": "entity-paper-geometry-of-contact", "url": "https://aetherlabs.ai/articles/the-geometry-of-contact.html", "date_note": "arXiv:2606.11525 为 2026-06 提交；Aether 博客 2026-07-16。", "date_source": "https://arxiv.org/abs/2606.11525" },
+        { "date": "2026-07", "title": "CD-LAM", "track": "潜动作 / 世界模型", "desc": "给潜动作模型去除背景与相机运动偏置，世界模型动作跟随误差降约 30%，机器人动作后训练步数约少一个数量级（自报）；代码与 2B 权重开源。", "id": "entity-paper-cd-lam", "url": "https://aetherlabs.ai/articles/cd-lam-causal-debiasing-for-embodied-world-models.html", "date_note": "arXiv:2607.09185；Aether 博客 2026-07-27。", "date_source": "https://arxiv.org/abs/2607.09185" },
+        { "date": "2026-09", "title": "RSIAgent", "track": "因果智能体", "desc": "不更新模型参数，靠自主探索、验证与记忆在新软件环境中自我改进；OSWorld 2.0 78.98%（自报）。只在软件环境评测，代码开源。", "id": "entity-aether-rsiagent", "url": "https://aetherlabs.ai/articles/rsiagent-autonomous-exploration-for-recursive-self-improvement.html", "date_note": "arXiv:2609.15364 v1 为 2026-09-14；官网博客 2026-09-15。", "date_source": "https://arxiv.org/abs/2609.15364" },
+        { "date": "2026-09", "title": "CausalWM", "track": "因果世界模型", "desc": "先预测光流与点图、再生成未来视频的具身世界模型，三阶段训练；TriWorldBench 66.04 排名第一（2026-09-11 快照，自报）。推理代码与门控权重开源。", "id": "entity-paper-causalwm", "url": "https://aetherlabs.ai/articles/causalwm-causal-chain-of-thought-reasoning-for-embodied-world-model.html", "date_note": "arXiv:2609.23184 v1 与官网博客均为 2026-09-19。", "date_source": "https://arxiv.org/abs/2609.23184" },
+        { "date": "2026-10", "title": "CRIS-0", "track": "真机系统", "desc": "因果驱动的机器人智能体 + 因果世界模型：以显式因果变量追踪任务阶段，验证每一步并在扰动后重试、回退或修改工具；官方文章仅给演示视频，2 秒重规划、0.2 秒急停等数字来自通稿与媒体（自报），未开源。", "id": "entity-aether-cris-0", "url": "https://aetherlabs.ai/articles/real-world-autonomous-robotic-system-with-causality-driven-agent-and-world-model.html", "date_note": "官网博客与新闻均为 2026-10-08。" }
+      ]
+    },
+    {
+      "key": "archon",
+      "name": "源策未来 Archon Robotics",
+      "founded_year": 2026,
+      "founded_source": "https://www.36kr.com/p/3868055841641476",
+      "founded_note": "官网未写成立日期；硬氪、投中网 2026-06-29 报道称 2026 年 4 月成立，研发总部位于上海徐汇漕河泾。创始人李弘扬（港大 OpenDriveLab）。",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "人形基础模型（HFM）路线：提出「全身智能」预训练栈（任务语义 S2 / 原生人形模型 S1 / 动作生成与行为基础模型 S0.5 / 全身跟踪控制 S0），以大规模人体全身数据预训练、少量真机数据后训练；公司 GitHub / HF 组织尚无公开仓库，署名含公司的论文代码在 OpenDriveLab 下。",
+      "official": "https://www.archon.tech/blog/whole-body-intelligence",
+      "nodes": [
+        { "date": "2026-06", "title": "RoboNaldo", "track": "全身运控", "desc": "动作引导的课程强化学习做人形射门，G1 真草地部署；训练与部署代码在 OpenDriveLab 组织下开源。署名含源策未来。", "id": "entity-paper-robonaldo-humanoid-soccer-shooting", "url": "https://opendrivelab.com/RoboNaldo/", "date_note": "arXiv:2606.11092 v1 为 2026-06-09。", "date_source": "https://arxiv.org/abs/2606.11092" },
+        { "date": "2026-06", "title": "种子轮融资", "track": "公司", "desc": "媒体报道完成数亿元种子轮，真格、高榕、IDG、五源、戈壁与港大联名基金、奇绩创坛、上海创智学院参投；领投方与估值未披露。", "id": "entity-archon-robotics", "url": "https://www.36kr.com/p/3868055841641476", "date_note": "硬氪、投中网 2026-06-29 报道；非公司官方发布。" },
+        { "date": "2026-07", "title": "Whole-Body Intelligence", "track": "人形基础模型", "desc": "官网首篇博客：提出 S2 / S1 / S0.5 / S0 四层栈与「人类数据给规模、机器人数据给落地、失败数据教恢复」的预训练路线；只有演示视频，无论文、代码或数字。", "id": "entity-archon-whole-body-intelligence", "url": "https://www.archon.tech/blog/whole-body-intelligence", "date_note": "官网博客 2026-07-13。" },
+        { "date": "2026-09", "title": "EgoHumanoid-V2", "track": "人到人形迁移", "desc": "把人类第一视角的协调全身技能迁移到人形做移动操作；项目页代码标注即将发布。署名含 Archon Robotics。", "id": "entity-paper-egohumanoid-v2", "url": "https://arxiv.org/abs/2609.37181", "date_note": "arXiv:2609.37181 v1 为 2026-09-29。", "date_source": "https://arxiv.org/abs/2609.37181" }
       ]
     }
   ],

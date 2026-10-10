@@ -4,7 +4,7 @@
 
 - **标题：** RoboFinals Industrial Benchmark — How Early Adopters Are Scaling Model Evaluation for Physical AI
 - **类型：** site（厂商媒体 / 技术叙事）
-- **来源：** 光轮科技（Lightwheel）
+- **来源：** 光轮智能（Lightwheel）
 - **链接：** https://lightwheel.ai/media/robofinals-industrial-benchmark
 - **主发布页：** https://lightwheel.ai/robofinals
 - **入库日期：** 2026-09-06

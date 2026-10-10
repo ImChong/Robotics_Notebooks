@@ -493,6 +493,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
 - [CLAP](../entities/paper-clap-cross-embodiment.md) — **跨本体** LAM→EE 课程 + 开源 G1/YAM 适配权重（arXiv:2608.27406）。
+- [CD-LAM](../entities/paper-cd-lam.md) — **LAM 因果去偏**：零动作 / 目标动作干预测试 + FDCE，相对 DreamDojo 后训练约 3k 步追平 50k 步（arXiv:2607.09185；代码与 2B 权重已开源）。
 - [WALL-SS](../entities/paper-wall-ss.md) — **下一尺度自回归** 长程 WM：60 s 流式 + 虚实成功率校准 \(r=0.93\)（训练代码待发布）。
 - [Rofacto](../entities/paper-rofacto.md) — **名义轨迹 + URDF 渲染** 动作接口；相对向量条件提升场景响应（arXiv:2607.22535）。
 - [RoboInter1.5 / RoboInter-World](../entities/paper-robointer-1-5.md) — **IR 控制视频** 条件世界模型 + VLA 套件（arXiv:2607.18709）。

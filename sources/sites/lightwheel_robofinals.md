@@ -4,7 +4,7 @@
 
 - **标题：** Lightwheel Unveils RoboFinals
 - **类型：** site（厂商产品发布 / benchmark 平台）
-- **来源：** 光轮科技（Lightwheel）
+- **来源：** 光轮智能（Lightwheel）
 - **链接：** https://lightwheel.ai/robofinals
 - **机构站：** https://lightwheel.ai/
 - **发布日期：** 2025-12-04

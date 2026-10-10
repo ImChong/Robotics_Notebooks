@@ -409,7 +409,7 @@
       ]
     },
     "lightwheel": {
-      "label": "光轮科技（Lightwheel）",
+      "label": "光轮智能（Lightwheel）",
       "aliases": [
         "lightwheel",
         "lightwheelai"
@@ -1439,6 +1439,13 @@
         "generalist-ai"
       ]
     },
+    "aether-ai": {
+      "label": "以太智能（Aether AI）",
+      "aliases": [
+        "aether-ai",
+        "aetherlabs"
+      ]
+    },
     "skild-ai": {
       "label": "斯齐尔德（Skild AI）",
       "aliases": [
@@ -2450,6 +2457,13 @@
         "westlake",
         "westlake-university",
         "westlake-scitrain"
+      ]
+    },
+    "westlake-robotics": {
+      "label": "西湖机器人（Westlake Robotics）",
+      "aliases": [
+        "westlake-robotics",
+        "wlrobo"
       ]
     },
     "peng-cheng-lab": {

@@ -5,7 +5,7 @@
 - **标题：** EgoStandard
 - **类型：** dataset / huggingface-bucket
 - **链接：** <https://huggingface.co/datasets/LightwheelAI/EgoStandard>
-- **机构：** 光轮科技（LightwheelAI）
+- **机构：** 光轮智能（LightwheelAI）
 - **所属集合：** [EgoSuite-Open100K](../sites/hf-egosuite-open100k-collection.md)
 - **入库日期：** 2026-09-14
 - **一句话说明：** EgoSuite-Open100K 的 **90,000 h 头戴视角主线**：同步 3D 手部姿态，body 子集加全身姿态；数据经 `LightwheelAI/EgoStandard` Bucket 分发，LeRobot v3 与 MCAP 为同一 episode 双格式。

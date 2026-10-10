@@ -2,9 +2,10 @@
 type: entity
 tags: [dataset, egocentric, egocentric-video, manipulation, huggingface, lerobot, mcap, vla, imitation-learning, lightwheel, open-source, physical-ai]
 status: complete
-updated: 2026-09-14
+updated: 2026-10-10
 date: 2026-08-26
 related:
+  - ./lightwheel-egosuite.md
   - ./cn-os-lw-egosuite-devkit.md
   - ./paper-ego4d.md
   - ./egoworld-100w.md
@@ -17,6 +18,7 @@ related:
   - ../concepts/embodied-scaling-laws.md
 sources:
   - ../../sources/blogs/hf_lightwheel_egosuite_open100k.md
+  - ../../sources/blogs/lightwheel_egosuite.md
   - ../../sources/sites/egosuite-open100k-lightwheel.md
   - ../../sources/sites/hf-egosuite-open100k-collection.md
   - ../../sources/datasets/lightwheel-egostandard.md
@@ -29,7 +31,7 @@ institutions:
 
 # EgoSuite-Open100K
 
-**EgoSuite-Open100K** 是 [光轮智能（Lightwheel）](https://lightwheel.ai/) 与 [Hugging Face](https://huggingface.co/LightwheelAI) 联合发布的 **开放 egocentric 人类活动** 数据基础设施：全量规划 **100,000 小时**、**15,000+** 任务与场景，**首批 10,000 小时** 已在 Hub 上线（2026-08-26 blog）。官方入口：[项目页](https://egosuite100k.lightwheel.ai)、[HF Collection](https://huggingface.co/collections/LightwheelAI/egosuite-open100k)。
+**EgoSuite-Open100K** 是 [光轮智能（Lightwheel）](https://lightwheel.ai/) 与 [Hugging Face](https://huggingface.co/LightwheelAI) 联合发布的 **开放 egocentric 人类活动** 数据基础设施：全量规划 **100,000 小时**、**15,000+** 任务与场景，**首批 10,000 小时** 已在 Hub 上线（光轮官方博客 2026-08-21 发布，HF blog 版 2026-08-26）。它是光轮商业数据产品线 [EgoSuite](./lightwheel-egosuite.md)（2025-12 发布）的开放层。官方入口：[项目页](https://egosuite100k.lightwheel.ai)、[HF Collection](https://huggingface.co/collections/LightwheelAI/egosuite-open100k)。
 
 ## 一句话定义
 
@@ -50,7 +52,7 @@ institutions:
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 光轮科技（Lightwheel） |
+| **机构** | 光轮智能（Lightwheel） |
 | **全量规划** | 100,000 h · 15,000+ 任务 · 15,000+ 场景 |
 | **已发布** | 10,000 h（截至 2026-08-26；余量渐进发布） |
 | **环境** | 7 大类 / 128 场景类型 / 18 任务类别 |
@@ -78,7 +80,7 @@ institutions:
 
 ### 采集与覆盖
 
-全球分布式采集者 + 标准化连续流程；跟踪采集者地理分布、场景库与任务分配，避免「十万小时但只有几个厨房」。
+全球分布式采集者（官方博客自报「数万人」规模）+ 标准化连续流程；跟踪采集者地理分布、场景库与任务分配，避免「十万小时但只有几个厨房」。
 
 环境示例：家庭、酒店、零售、体育、物流、办公、工业；任务涵盖装配安装、烹饪、库存、工具使用、维修维护、打包等日常与专业劳动。
 
@@ -86,7 +88,7 @@ institutions:
 
 1. **手部 3D 姿态** — 针对小目标、快速运动、遮挡优化。
 2. **身体 3D 姿态**（`*-Body` Sub-SKU）— 把手臂动作锚定到任务与环境。
-3. **事件级语义**（部分子集）— 标注「发生了什么」，非仅运动学轨迹。
+3. **事件级语义**（部分子集）— 标注「发生了什么」，非仅运动学轨迹；官方博客称其为 **免费附加（complimentary add-on）**，手姿与身姿才是主要交付。
 
 ### 数据分发
 
@@ -140,6 +142,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Lightwheel EgoSuite](./lightwheel-egosuite.md) — 母产品线：商业 egocentric 数据方案（采集设备、全球运营、标注平台）
 - [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md) — 官方 MCAP 工具链
 - [Ego4D](./paper-ego4d.md) — 经典大规模 egocentric 日常语料对照
 - [EgoScale](../methods/egoscale.md) — 人视频规模 ↔ VLA 性能实证
@@ -152,6 +155,7 @@ flowchart TB
 ## 参考来源
 
 - [HF Blog：EgoSuite-Open100K 官方介绍](../../sources/blogs/hf_lightwheel_egosuite_open100k.md)
+- [光轮官方博客 EgoSuite / EgoSuite-Open100K 归档](../../sources/blogs/lightwheel_egosuite.md)（含 2026-08-21 官方 Open100K 博客 <https://lightwheel.ai/media/egosuite-open100k>）
 - [项目页归档](../../sources/sites/egosuite-open100k-lightwheel.md)
 - [HF Collection 归档](../../sources/sites/hf-egosuite-open100k-collection.md)
 - [EgoStandard 数据卡](../../sources/datasets/lightwheel-egostandard.md)

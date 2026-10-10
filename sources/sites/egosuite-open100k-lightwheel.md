@@ -4,7 +4,7 @@
 
 - **标题：** EgoSuite-Open100K
 - **类型：** site / project-landing
-- **机构：** 光轮科技（Lightwheel）
+- **机构：** 光轮智能（Lightwheel）
 - **链接：** <https://egosuite-oepn-100k-test.lightwheel.ai/>（用户提供的测试域名；HF blog 亦引用 <https://egosuite100k.lightwheel.ai>）
 - **入库日期：** 2026-09-14
 - **一句话说明：** 光轮智能与 Hugging Face 联合发布的 **10 万小时级** 开放 egocentric 人类活动数据集门户；首批 **1 万小时** 已在 Hub 上线，含统计、子集导航与下载入口。
