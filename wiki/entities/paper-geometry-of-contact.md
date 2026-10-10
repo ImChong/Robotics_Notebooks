@@ -36,7 +36,6 @@ sources:
   - ../../sources/papers/iwr_contrastive_interaction_arxiv_2606_11525.md
 summary: "IWR（arXiv:2606.11525，UCSD/UT Austin，CoRL 2026；Aether AI 博客 2026-07-16 解读 The Geometry of Contact）：把操作建模为分段光滑马尔可夫过程，指出接触让对比 RL 的可达性表示出现仿射折痕且误差向后传播；IWR 只改正样本未来的采样权重、在接触附近加密，仿真操作平均自报 +19.8%，真实 UR 臂 air hockey 零样本迁移 5/20→12/20；截至 2026-10-10 未列代码。"
 institutions:
-  - aether-ai
   - ucsd
   - ut-austin
 ---

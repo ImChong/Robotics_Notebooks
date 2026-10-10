@@ -7,6 +7,10 @@ summary: "Aether AI（2026 年春成立，San Diego）由 UCSD 助理教授黄�
 updated: 2026-10-10
 institutions: [aether-ai]
 related:
+  - ./paper-task-centric-world-models.md
+  - ./paper-geometry-of-contact.md
+  - ./paper-cd-lam.md
+  - ./paper-scar-continuous-action.md
   - ./aether-cris-0.md
   - ./paper-causalwm.md
   - ./aether-rsiagent.md
@@ -86,10 +90,10 @@ arXiv 2503.18945 *Aether: Geometric-Aware Unified World Modeling*（署名 Aethe
 | 2026-05-17 | Blog 03 | [Building the Causal Brain of World Agent](https://aetherlabs.ai/articles/building-the-causal-brain-of-world-agent.html) | 记忆 + 世界模型 + 模块化 + 因果 = World Agent 的因果大脑 | 本页「奠基四篇博文」 |
 | 2026-05-17 | Blog 04 | [Learning Causal World Models](https://aetherlabs.ai/articles/learning-causal-world-models.html) | 闭环配方：因果引导探索 → 统一潜动作 → 因果校验器 → 控制 | 本页「奠基四篇博文」 |
 | 2026-06-17 | News | [$20M Seed Round](https://aetherlabs.ai/news/aether-ai-raises-20m-seed-round.html) | 种子轮 2000 万美元；首攻 Physical AI | 本页「2026-06 种子轮」 |
-| 2026-07-09 | Blog 05 | [Task-Centric World Models from Visual Foundations](https://aetherlabs.ai/articles/task-centric-world-models.html) | 单个线性投影从冻结视觉基础模型中取紧凑任务状态 | 见下方链接（待补） |
-| 2026-07-16 | Blog 06 | [The Geometry of Contact](https://aetherlabs.ai/articles/the-geometry-of-contact.html) | Interaction-Weighted Resampling；真机空气曲棍球 5/20 → 12/20 | 见下方链接（待补） |
-| 2026-07-27 | Blog 07 | [CD-LAM](https://aetherlabs.ai/articles/cd-lam-causal-debiasing-for-embodied-world-models.html) | 潜动作空间因果去偏；动作跟随误差降 30% 以上，后训练少 10 倍 | 见下方链接（待补） |
-| 2026-08-09 | Blog 08 | [SCAR](https://aetherlabs.ai/articles/scar-self-supervised-continuous-action-representation-learning.html) | 从视觉转移学统一潜动作接口，跨本体迁移 | 见下方链接（待补） |
+| 2026-07-09 | Blog 05 | [Task-Centric World Models from Visual Foundations](https://aetherlabs.ai/articles/task-centric-world-models.html) | 单个线性投影从冻结视觉基础模型中取紧凑任务状态 | [TC-WM](./paper-task-centric-world-models.md) |
+| 2026-07-16 | Blog 06 | [The Geometry of Contact](https://aetherlabs.ai/articles/the-geometry-of-contact.html) | Interaction-Weighted Resampling；真机空气曲棍球 5/20 → 12/20 | [Geometry of Contact（IWR）](./paper-geometry-of-contact.md) |
+| 2026-07-27 | Blog 07 | [CD-LAM](https://aetherlabs.ai/articles/cd-lam-causal-debiasing-for-embodied-world-models.html) | 潜动作空间因果去偏；动作跟随误差降 30% 以上，后训练少 10 倍 | [CD-LAM](./paper-cd-lam.md) |
+| 2026-08-09 | Blog 08 | [SCAR](https://aetherlabs.ai/articles/scar-self-supervised-continuous-action-representation-learning.html) | 从视觉转移学统一潜动作接口，跨本体迁移 | [SCAR](./paper-scar-continuous-action.md) |
 | 2026-09-15 | Blog 09 | [RSIAgent](https://aetherlabs.ai/articles/rsiagent-autonomous-exploration-for-recursive-self-improvement.html) | 不更新参数的探索式自我改进；OSWorld 2.0 78.98% | [RSIAgent](./aether-rsiagent.md) |
 | 2026-09-19 | Blog 10 + News | [CausalWM](https://aetherlabs.ai/articles/causalwm-causal-chain-of-thought-reasoning-for-embodied-world-model.html) | 先预测运动与几何再生成视频；TriWorldBench 66.04 第一 | [CausalWM](./paper-causalwm.md) |
 | 2026-10-08 | Blog 11 + News | [CRIS-0](https://aetherlabs.ai/articles/real-world-autonomous-robotic-system-with-causality-driven-agent-and-world-model.html) | 因果引导机器人智能体 + 因果世界模型；扰动恢复、长程无干预 | [CRIS-0](./aether-cris-0.md) |

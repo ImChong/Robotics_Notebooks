@@ -3,13 +3,14 @@
 - **类型：** 多站点资料索引（官方博客、研究页与项目页）
 - **收录日期：** 2026-09-28
 - **索引补核：** 2026-10-05（新增四家公司索引，开放范围按下列项目归档的核查日期）
-- **范围：** 以公司路线现有 25 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **范围：** 以公司路线现有 26 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
 - **RAI 路线增补：** 2026-10-08，研究所背景、官方事件时间和现有控制/操作/部署项目，见 [RAI 归档](./rai-institute.md)。
 - **路线增补：** 2026-10-06，复用既有 RoboParty 归档并补核 Party OS 当前入口。
 - **车企机器人部门增补：** 2026-10-09，新增小鹏机器人、小米机器人与理想汽车具身团队，复用既有论文与专利归档。
 - **自变量机器人增补：** 2026-10-09，核对官网 Blog / Research 共 8 篇，补齐 WALL-WM、WALL-OSS、X-Tokenizer 详情并新建 WALL-OSS-0.5、XRZero-G0，见 [列表核查](./x2robot-blog-research-index.md)。
 - **Generalist AI 增补：** 2026-10-09，核对官网 Blog 10 篇，新建 GEN-0、GEN-1 详情并在公司总览补齐其余短文，见 [博文索引](./generalistai-blog-index.md)。
 - **Simate 增补：** 2026-10-09，官网（simate.ai / mate-robot.cn）无博客与带日期的技术发布；按 RoboDojo 榜单与媒体报道补 Simate-beta 详情，见 [归档](../blogs/simate_beta_robodojo_2026-09.md)。
+- **Aether AI 增补：** 2026-10-10，核对官网 Blog 11 篇与 News 3 条，新建公司总览、CRIS-0、CausalWM、RSIAgent、CD-LAM、TC-WM、Geometry of Contact、SCAR 详情，见 [博客索引](./aetherlabs-blog-index.md)。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -38,6 +39,7 @@
 | 自变量机器人 X Square Robot | [Blog](https://x2robot.com/en/blog)、[Research](https://x2robot.com/en/research)、[GitHub](https://github.com/X-Square-Robot)、[Hugging Face](https://huggingface.co/x-square-robot) | WALL-OSS / 0.5、X-Tokenizer、WALL-WM、WALL-SS、HOST、XRZero-G0、TwinDEX；[8 篇官网博文对照](./x2robot-blog-research-index.md) | WALL-OSS 系列、X-Tokenizer、HOST 有代码与权重；WALL-WM 仅代码；WALL-SS、TwinDEX 未开源；成立于 2023-12（[官网 About](https://x2robot.com/en/about)） |
 | Generalist AI | [Blog](https://generalistai.com/blog) | GEN-0、GEN-1、GEN-1.5、多末端「千手」、物理常识、GTC 演示；[10 篇博文对照](./generalistai-blog-index.md) | 博文未列代码、权重与数据，仅合作方早期访问；成立年份 2024 来自 [TechCrunch](https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/)，官网 About 未写 |
 | 硅基伙伴 Simate | [官网](https://simate.ai/)（国内 [mate-robot.cn](https://mate-robot.cn/home/)）、[Sinfra](https://mate-robot.cn/research/sinfra/)、[Sipai](https://mate-robot.cn/research/sipai/) | Simate-beta、AutoResearch、RoboScientist；[官网归档](./simate-ai.md) | 平台与模型未开源、无技术报告；Simate-beta 成绩来自 [RoboDojo 榜单](https://robodojo-benchmark.com/leaderboard)，公司背景来自媒体报道（[归档](../blogs/simate_beta_robodojo_2026-09.md)） |
+| Aether AI | [Blog](https://aetherlabs.ai/blog.html)、[News](https://aetherlabs.ai/news.html)、[GitHub](https://github.com/AetherLabsAI) | 因果世界模型、因果智能体、CRIS-0 真机系统；[11 篇博客 + 3 条新闻对照](./aetherlabs-blog-index.md) | CausalWM 推理代码与门控权重、CD-LAM 代码与 2B 权重、RSIAgent 代码公开；CRIS-0 未开源，其数字来自通稿与媒体 |
 | 理想汽车具身团队 Li Auto | [MachEmbodied GitHub](https://github.com/MachEmbodied) | ME-Brain 1.0、ME-VLM、ME-U0、ME-Dex 1.0；[四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) | GitHub 组织页未写公司名，归属依据 [ME-Dex 1.0 论文署名](https://arxiv.org/html/2609.21449)（Foundation Model, Li Auto Inc.）；2026-06 基座模型部门新增三个具身二级部门（[每日经济新闻](https://www.mrjjxw.com/articles/2026-06-01/4413821.html)） |
 
 ## 核查边界

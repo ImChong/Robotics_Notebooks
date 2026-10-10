@@ -633,6 +633,28 @@
         { "date": "", "title": "Sinfra 平台", "track": "基础设施", "desc": "把任务定义、训练、仿真验证与真机部署串成一条可审计流程，申请制 Enterprise / Cloud 工作区。", "id": "entity-simate", "url": "https://mate-robot.cn/research/sinfra/", "date_note": "官网标注 In development，未写发布日期。" },
         { "date": "", "title": "RoboScientist", "track": "AI 科学家", "desc": "实验画廊把 run、对比与决策整理成证据链，官网标注 Research preview。", "id": "entity-simate", "url": "https://mate-robot.cn/research/RoboScientist/gallery/", "date_note": "官网标注 Research preview，未写发布日期。" }
       ]
+    },
+    {
+      "key": "aether",
+      "name": "Aether AI",
+      "founded_year": 2026,
+      "founded_source": "https://sdbj.com/technology/aether-taking-ai-to-its-next-logical-step/",
+      "founded_note": "官网未写成立日期；San Diego Business Journal（2026-07-06）称创始人黄碧薇（UCSD 助理教授）「今年春天」创办，月份未确认。",
+      "lenses": ["wam", "humanoid"],
+      "summary": "因果智能路线：以因果世界模型为核心，配因果驱动的智能体做规划、归因与记忆；先后发布 RSIAgent、CausalWM，并在 CRIS-0 中把智能体与世界模型合成真机系统。RSIAgent 与 CausalWM 推理代码开源，CRIS-0 未开源、数字均为自报。",
+      "official": "https://aetherlabs.ai/blog.html",
+      "nodes": [
+        { "date": "2026-05", "title": "SCAR", "track": "潜动作", "desc": "从视频帧对学连续潜动作接口并去除外观与本体身份信息，让视频世界模型跨机械臂迁移；论文署名 UCSD / KTH，由 Aether 博客解读，未开源。", "id": "entity-paper-scar-continuous-action", "url": "https://aetherlabs.ai/articles/scar-self-supervised-continuous-action-representation-learning.html", "date_note": "arXiv:2605.16412 v1 为 2026-05-13；Aether 博客 2026-08-09。", "date_source": "https://arxiv.org/abs/2605.16412" },
+        { "date": "2026-05", "title": "因果智能路线三文", "track": "观点", "desc": "《Causality and the Next AI Paradigm》《Building the Causal Brain of World Agent》《Learning Causal World Models》：预测结构 ≠ 因果结构，主张以因果世界模型 + 记忆 + 模块化能力构建智能体。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/articles/causality-and-the-next-ai-paradigm.html", "date_note": "官网博客三篇同为 2026-05-17。" },
+        { "date": "2026-05", "title": "Causal Copilot", "track": "因果分析智能体", "desc": "端到端因果分析智能体：因果发现、效应估计、反事实与稳健性检查并输出可查报告；面向表格与时序数据，非机器人控制器。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/articles/causal-copilot-toward-ai-that-discovers-before-it-acts.html", "date_note": "官网博客 2026-05-17；对应论文 arXiv:2504.13263（2025-04，早于公司成立）。" },
+        { "date": "2026-05", "title": "TC-WM", "track": "世界模型表征", "desc": "冻结 DINOv2 特征经单个线性投影压成任务相关的紧凑状态，在该空间规划；论文署名 UCSD，代码开源。", "id": "entity-paper-task-centric-world-models", "url": "https://aetherlabs.ai/articles/task-centric-world-models.html", "date_note": "arXiv:2605.25620 v1 为 2026-05-25；Aether 博客 2026-07-09。", "date_source": "https://arxiv.org/abs/2605.25620" },
+        { "date": "2026-06", "title": "2000 万美元种子轮", "track": "公司", "desc": "官网宣布 2000 万美元种子轮，用于因果世界模型研发与物理 AI 初期商用；投资方名单来自公司通稿，官网文章未列。", "id": "entity-aether-ai", "url": "https://aetherlabs.ai/news/aether-ai-raises-20m-seed-round.html", "date_note": "官网新闻列表 2026-06-17，正文写 6 月 16 日。" },
+        { "date": "2026-06", "title": "The Geometry of Contact", "track": "接触操作 RL", "desc": "对比式目标条件 RL 的可达性在接触处断裂，IWR 加大接触附近未来状态的采样；真机空气曲棍球 5/20 → 12/20（自报）。论文署名 UCSD / UT Austin。", "id": "entity-paper-geometry-of-contact", "url": "https://aetherlabs.ai/articles/the-geometry-of-contact.html", "date_note": "arXiv:2606.11525 为 2026-06 提交；Aether 博客 2026-07-16。", "date_source": "https://arxiv.org/abs/2606.11525" },
+        { "date": "2026-07", "title": "CD-LAM", "track": "潜动作 / 世界模型", "desc": "给潜动作模型去除背景与相机运动偏置，世界模型动作跟随误差降约 30%，机器人动作后训练步数约少一个数量级（自报）；代码与 2B 权重开源。", "id": "entity-paper-cd-lam", "url": "https://aetherlabs.ai/articles/cd-lam-causal-debiasing-for-embodied-world-models.html", "date_note": "arXiv:2607.09185；Aether 博客 2026-07-27。", "date_source": "https://arxiv.org/abs/2607.09185" },
+        { "date": "2026-09", "title": "RSIAgent", "track": "因果智能体", "desc": "不更新模型参数，靠自主探索、验证与记忆在新软件环境中自我改进；OSWorld 2.0 78.98%（自报）。只在软件环境评测，代码开源。", "id": "entity-aether-rsiagent", "url": "https://aetherlabs.ai/articles/rsiagent-autonomous-exploration-for-recursive-self-improvement.html", "date_note": "arXiv:2609.15364 v1 为 2026-09-14；官网博客 2026-09-15。", "date_source": "https://arxiv.org/abs/2609.15364" },
+        { "date": "2026-09", "title": "CausalWM", "track": "因果世界模型", "desc": "先预测光流与点图、再生成未来视频的具身世界模型，三阶段训练；TriWorldBench 66.04 排名第一（2026-09-11 快照，自报）。推理代码与门控权重开源。", "id": "entity-paper-causalwm", "url": "https://aetherlabs.ai/articles/causalwm-causal-chain-of-thought-reasoning-for-embodied-world-model.html", "date_note": "arXiv:2609.23184 v1 与官网博客均为 2026-09-19。", "date_source": "https://arxiv.org/abs/2609.23184" },
+        { "date": "2026-10", "title": "CRIS-0", "track": "真机系统", "desc": "因果驱动的机器人智能体 + 因果世界模型：以显式因果变量追踪任务阶段，验证每一步并在扰动后重试、回退或修改工具；官方文章仅给演示视频，2 秒重规划、0.2 秒急停等数字来自通稿与媒体（自报），未开源。", "id": "entity-aether-cris-0", "url": "https://aetherlabs.ai/articles/real-world-autonomous-robotic-system-with-causality-driven-agent-and-world-model.html", "date_note": "官网博客与新闻均为 2026-10-08。" }
+      ]
     }
   ],
   "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。"

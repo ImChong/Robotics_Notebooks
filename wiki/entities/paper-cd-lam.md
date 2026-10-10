@@ -247,6 +247,7 @@ sequenceDiagram
 - [What Matters for Latent Actions](./paper-latent-actions-matter.md) — LAM 设计空间实证研究
 - [SCAR](./paper-scar-continuous-action.md) — 同团队：跨本体潜动作表示
 - [TC-WM](./paper-task-centric-world-models.md) — 同团队：任务中心世界模型状态
+- [IWR（The Geometry of Contact）](./paper-geometry-of-contact.md) — 博客原文「Related」指向的同团队接触操作对比 RL 工作
 - [LAPA](./paper-shenlan-wm-03-lapa.md) · [Genie](./paper-sa-2402-15391-genie-generative-interactive-environments.md) — 早期潜动作路线
 - [SAM 3](./paper-sam3.md) — 前景分割来源
 - [AgiBot World](./paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md) · [EgoDex](./paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 训练与评测数据

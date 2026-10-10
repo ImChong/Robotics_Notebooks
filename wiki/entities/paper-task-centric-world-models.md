@@ -36,7 +36,6 @@ sources:
   - ../../sources/papers/tc_wm_arxiv_2605_25620.md
 summary: "TC-WM（arXiv:2605.25620，UCSD Fu/Feng/Hansen/Huang；Aether AI 博客 2026-07-09 解读）：冻结 DINOv2 嵌入经单个线性投影压成紧凑潜变量，一段用 InfoNCE 对齐本体感觉、线性解码器重建嵌入防塌缩，在该空间学动力学并用 CEM/LDP 规划；9 个离线视觉控制任务上自报潜空间 rollout 误差几乎全部最低，且是唯一在每个 Robomimic 操作任务上都超过 DINO-WM 的方法；代码 MIT 已开源，checkpoint 待发布。"
 institutions:
-  - aether-ai
   - ucsd
 ---
 
@@ -209,6 +208,7 @@ sequenceDiagram
 - [DINO-WM](./paper-sa-2411-04983-dino-wm-world-models-on-pre-trained-visual-featu.md) — 主要对比基线：在冻结 DINOv2 特征上直接学动力学
 - [SCAR](./paper-scar-continuous-action.md) — 同团队：从视觉转移学跨本体潜动作
 - [CD-LAM](./paper-cd-lam.md) — Aether AI：潜动作因果去偏
+- [IWR（The Geometry of Contact）](./paper-geometry-of-contact.md) — 同团队：接触感知的对比 RL 表征
 - [Cosmos 3](./cosmos-3.md) — TC-Cosmos3 所用的视频基础模型家族
 - [Robomimic](./robomimic.md) — Lift / Can / Square 操作任务来源
 - [Model-Based RL](../methods/model-based-rl.md)
