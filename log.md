@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | OCLO 无人体动作数据移动操作
+
+- 意图：收录 arXiv:2610.05678，记录在线姿态补全与全身顺应控制的任务证据。
+- 开源结论：论文列出官方项目页；当前环境无法读取页面，代码/数据状态待核实，未创建未经证实的仓库入口。
+- 关键页：建立 OCLO 独立论文实体，并从 Loco-Manipulation 任务页建立入链。
+
 ## [2026-10-10] ingest | ResGAC：GAC + 残差 RL 的人形末端跟踪
 
 - 归档 arXiv:2610.09479 与项目页；截至核查日，项目代码尚未公开。
