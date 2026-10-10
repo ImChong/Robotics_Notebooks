@@ -4,7 +4,7 @@ tags: [paper, google-deepmind, alphago-zero, deep-rl, self-play, mcts, go]
 status: complete
 updated: 2026-10-10
 project_id: alphago-zero
-papers: ["doi:10.1038/nature24270"]
+doi: "10.1038/nature24270"
 project: https://deepmind.google/blog/alphago-zero-starting-from-scratch/
 related:
   - ../concepts/rl-runner.md
