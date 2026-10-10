@@ -146,6 +146,15 @@ sequenceDiagram
 
 以上均为论文报告的实验结果，不等价于跨数据集、跨表示的同协议统一排名。
 
+## 与其他工作对比
+
+| 对比对象 | 生成变量 / 条件 | 与 MSFlow 的关键差异 |
+|----------|------------------|----------------------|
+| 压缩 latent 的文本动作模型（含 [ReMoMask-2](./paper-remomask-2.md) 这类在量化潜空间检索/生成的路线） | 学习式编码器压缩后的 latent / token，再由解码器还原 | MSFlow 不经动作 encoder/decoder、不做时间下采样，可直接访问单帧单关节；代价是全分辨率 token 序列更长 |
+| CMDM / MoMask++（论文基线） | 论文表内同协议对照 | HumanML3D 上 MSFlow XYZ 的 FID 0.038 低于 CMDM 的 0.078；SnapMoGen 上 R-Precision 更高，但 FID 16.342 不如 CMDM（14.451）和 MoMask++（15.061） |
+| [UniMate](./paper-unimate.md) | flow matching + rigged 资产，面向任意骨骼拓扑 | 同为文本驱动 flow-matching；UniMate 解决跨拓扑泛化，MSFlow 聚焦固定 SMPL 类骨架上的表示感知噪声路径与推理期坐标约束 |
+| [扩散式动作生成总览](../methods/diffusion-motion-generation.md) | 扩散 / 流匹配家族 | MSFlow 的差异点在于按表示选择源噪声尺度 `s` 与 causal / bidirectional mask，而非新的采样框架 |
+
 ## 工程实践与开放范围
 
 | 资源 | 状态 |

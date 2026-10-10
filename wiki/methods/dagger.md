@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-09-30
+updated: 2026-10-10
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -98,7 +98,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - 可以把高性能教师控制器、MPC 或人类设计的参考轨迹当专家
 - 更常见的变体是 teacher-student 蒸馏，而非完全照搬原始 DAgger 形式
 - **多专家蒸馏总览：** [Multi-Expert Distillation](./multi-expert-distillation.md) — 分地形/分技能 RL 专家 → DAgger 聚合 → 可选 RLFT（[Parkour in the Wild](../entities/paper-parkour-in-the-wild.md) 等）
-- **[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)**：高动态跑酷学生策略用 **DAgger + PPO** 混合损失；纯 DAgger 对攀爬/翻越不足，需 success-driven RL 项
+- **[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)**：高动态跑酷学生策略用 **DAgger + PPO** 混合损失；纯 DAgger 对攀爬/翻越不足，需 success-driven RL 项；官方代码、动作数据库与学生 ONNX 已于 2026-10 发布（教师 checkpoint 需自训，见[实现归档](../../sources/repos/php_parkour.md)）
 - **[LightLP](../entities/paper-light-loco-parkour.md)**：多专家 **DAgger** 合成无技能标签 height-scan 学生，再深度 GRU 蒸馏 + PPO fine-tune；转移组用稀疏 RL 补 loco↔技能切换
 - **[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)**：分地形高程 **专家** 以 **DAgger 动作回归** 蒸馏为 **多视角深度** 统一下身策略；辅以 DFSV/RSM 处理多向与非对称感知
 - **[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)**：多几何攀爬 **专家** 以 **DAgger + PPO + KL** 蒸馏为 **深度 visuomotor** 统一策略；纯 DAgger 在梯子真机仅 **2/10**，RL 项关键

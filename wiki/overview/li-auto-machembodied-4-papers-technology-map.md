@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-model, li-auto, technology-map]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-10
 related:
   - ../entities/paper-me-brain-1-0.md
   - ../entities/paper-me-vlm.md
@@ -67,7 +67,7 @@ flowchart TB
 
 ## 读法提示
 
-- **真机数字**：Brain Piper avg **66.7%**（叠碗 vs 插充电器对比）与 ME-VLM **无大样本真机 SR** 不可混加；U0 / ME-Dex 真机以定性为主。
+- **真机数字**：Brain Piper avg **66.7%** SR / **69.5** Score（arXiv v2 复核；叠碗 vs 插充电器对比；RoboDojo 为 21.51 Score / 16.03% SR）与 ME-VLM **无大样本真机 SR** 不可混加；U0 / ME-Dex 真机以定性为主。
 - **开源梯度**：U0 **已开源**；Brain / ME-Dex **部分**；ME-VLM **待发布** 权重与推理。
 - **记忆分工**：Brain 显式长程记忆 vs U0 RoboDojo 记忆维 **~7%** — 选型时先问任务是否需要 **跨 episode 经验库**。
 

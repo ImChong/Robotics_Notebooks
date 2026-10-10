@@ -6,6 +6,8 @@ updated: 2026-10-10
 related:
   - ../methods/particle-swarm-optimization.md
   - ../methods/cma-es.md
+  - ../methods/genetic-algorithm.md
+  - ../methods/genetic-programming.md
   - ../methods/lqr-ilqr.md
   - ../methods/quasi-newton-bfgs.md
   - ../methods/l-bfgs.md
@@ -15,6 +17,8 @@ related:
   - ./optimization-software-selection.md
 sources:
   - ../../sources/papers/pso_foundations_1995_2012.md
+  - ../../sources/papers/genetic_algorithms_foundations.md
+  - ../../sources/papers/genetic_programming_foundations.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "机器人数值优化方法选型：按问题结构（含时序动力学 / 一般 NLP / 约束处理 / 非凸几何）在 LQR·iLQR、拟牛顿 BFGS、罚/障碍/增广拉格朗日、凸松弛四类算法间分层组合。"
 ---
@@ -79,6 +83,15 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 
 上述四层主要利用目标、梯度或动力学结构；若只能调用仿真器获得分数，可将 [PSO（粒子群优化）](../methods/particle-swarm-optimization.md) 与 [CMA-ES](../methods/cma-es.md) 作为离线黑箱基线。PSO 维护粒子历史最好记忆，CMA-ES 维护高斯搜索分布；两者不替代硬约束处理，也不提供任意目标的全局最优保证。比较时统一评价预算、随机条件与可行性规则，而不是只比较迭代次数。
 
+若决策变量是离散 / 组合编码（落脚序列、步态相位排列、机构拓扑选项），优先把 [遗传算法（GA）](../methods/genetic-algorithm.md) 作为外层搜索：编码决定合法性，适应度需同时记录稳定、力矩与能耗约束；连续且变量相关时再与 CMA-ES 对比。若要搜索的是**程序或表达式结构**本身（符号回归出的控制律、反应式规则），用 [遗传编程（GP）](../methods/genetic-programming.md)，并以独立验证场景防止表达式膨胀与过拟合。两者同样是离线、低频的外层搜索，不替代上面四层的结构利用型求解器或高频闭环控制。
+
+| 黑箱分支 | 搜索对象 | 何时优先 |
+|----------|----------|----------|
+| [PSO](../methods/particle-swarm-optimization.md) | 连续向量（粒子 + 历史最好） | 低维连续参数的简单基线 |
+| [CMA-ES](../methods/cma-es.md) | 连续向量上的高斯分布（协方差 + 步长） | 连续、变量强相关的控制器 / 轨迹参数 |
+| [GA](../methods/genetic-algorithm.md) | 显式编码的参数、排列或组合解 | 离散 / 组合结构或自定义表示 |
+| [GP](../methods/genetic-programming.md) | 可执行程序树 / 表达式 | 需要发现公式、规则或控制律结构 |
+
 ## 常见误区
 
 - **把四类当成「四选一」**：它们在不同层（重构 / 约束处理 / 下降 / 结构利用），实际是叠加的。
@@ -94,9 +107,13 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - [凸松弛](../methods/convex-relaxation-robotics.md) — 非凸问题的可解近似与全局下界
 - [优化软件选型](./optimization-software-selection.md) — 选定算法后选求解器/框架
 - [MPC 求解器选型](./mpc-solver-selection.md) — 凸 MPC / WBC 的 QP 求解器专项
+- [遗传算法（GA）](../methods/genetic-algorithm.md) — 离散 / 组合编码的黑箱外层搜索
+- [遗传编程（GP）](../methods/genetic-programming.md) — 演化程序 / 表达式结构的黑箱搜索
 
 ## 参考来源
 
 - [PSO 原始研究与标准报告](../../sources/papers/pso_foundations_1995_2012.md) — 黑箱粒子群分支与稳定 / 全局最优的区别
+- [遗传算法基础来源](../../sources/papers/genetic_algorithms_foundations.md) — GA 编码、选择、交叉与变异的黑箱外层搜索
+- [遗传编程基础来源](../../sources/papers/genetic_programming_foundations.md) — GP 程序树搜索与表达式膨胀风险
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 数值优化基础课程（约束化、拟牛顿、最优控制、凸松弛各章）
 - Crocoddyl / cuRobo 官方文档（iLQR/DDP 与 GPU L-BFGS 工程实现）

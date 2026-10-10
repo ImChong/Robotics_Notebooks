@@ -9,6 +9,7 @@ project: https://resgac.github.io/ResGAC-website/
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/residual-policy-learning.md
+  - ../methods/sonic-motion-tracking.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ./unitree-g1.md
 sources:
@@ -62,6 +63,17 @@ flowchart LR
 | 行走静态手保持 | H0 roll 传递比 0.790（无 H0 为 0.958）；z MAE 12.6 mm（无 H0 为 22.5 mm） | pitch 传递未改善（0.964 vs 0.954） |
 
 这些结果来自特定硬件、轨迹与标记系统，不应外推为所有动态接触任务的成功率。插孔仅 20 次，且依赖 OptiTrack 注册；评测也未证明可完全抵消身体运动。
+
+## 与其他工作对比
+
+| 对比对象 | 控制分工 | 论文中的相对表现 / 差异 |
+|----------|----------|--------------------------|
+| E2E RL（端到端强化学习） | 策略直接输出全部关节目标，无几何控制先验 | 移动基座世界系跟踪 30 mm / 13.75°，ResGAC 为 8.8 mm / 2.69°；缺少名义 SE(3) 反馈时末端精度明显下降 |
+| GAC + decoupled RL | GAC 负责手臂、RL 单独负责下肢，二者解耦 | 四种留出站立轨迹上不及 ResGAC；对照提示手臂残差与腿/腰协调在同一策略中联合学习更有利 |
+| [SONIC](../methods/sonic-motion-tracking.md)（v1.1） | 通用全身动作跟踪器，以参考动作而非末端位姿误差为目标 | 插孔 10/20（50%），ResGAC 为 18/20（90%）；在该 25 mm 销 / 35 mm 孔设定下末端精度不及专门的 SE(3) 跟踪 |
+| [残差策略学习](../methods/residual-policy-learning.md) 一般范式 | 名义控制器 + 有界残差 | ResGAC 的区别在于残差只加在手臂，腿/腰由策略直接输出，并以 H0 坐标系减弱躯干姿态扰动 |
+
+相对最佳基线，论文报告站立留出轨迹的位置误差降低约 54–67%、方向误差约 72%；以上均为作者在 G1 真机与 OptiTrack 注册条件下的对照。
 
 ## 结论
 

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-10
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -235,6 +235,7 @@ flowchart LR
 - **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。
 - **vs 深度学习**：现代机器人 RL 通常用 [深度学习基础](../concepts/deep-learning-foundations.md) 中的神经网络做策略/价值函数逼近。
 - **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
+- **vs 树搜索 / 规划**：棋类里 RL 常与搜索耦合——[AlphaGo](../entities/paper-alphago.md) 用监督预训练 + 自我对弈 RL 训练策略/价值网络并由 MCTS 选步，[AlphaGo Zero](../entities/paper-alphago-zero.md) 去掉人类棋谱做纯自我对弈；脉络见 [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)。
 - **残差式用法**：已有控制器/先验打底时，RL 只学补偿量 $a=a_{\text{base}}+\Delta a$，样本效率与安全性同时改善。见 [Residual Policy Learning](./residual-policy-learning.md) 及谱系论文（[Residual RL](../entities/paper-residual-rl-robot-control.md)、[RPL](../entities/paper-residual-policy-learning.md)、[ResMimic](../entities/paper-resmimic.md)、[RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)）。
 
 ## 参考来源
@@ -245,6 +246,7 @@ flowchart LR
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 自适应跟踪容差课程 + 非对称 actor-critic（[PBHC](../../sources/repos/pbhc.md)）
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — RL 标准教材，MDP 框架基础（[一手资料](../../sources/sites/incompleteideas-net-rich-sutton.md)）
 - [强化学习史（§1.6）](../concepts/reinforcement-learning-history.md) — 试错 / DP / TD 三线汇合；[sources 归档](../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md)
+- [sources/papers/alphago-nature-2016.md](../../sources/papers/alphago-nature-2016.md) — AlphaGo（Nature 2016）：策略/价值网络 + 自我对弈 RL + MCTS 一手资料
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与 incompleteideas.net 一手资料索引
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
