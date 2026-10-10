@@ -73,6 +73,11 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | ResGAC：GAC + 残差 RL 的人形末端跟踪
+
+- 归档 arXiv:2610.09479 与项目页；截至核查日，项目代码尚未公开。
+- 新建论文实体，并接入 loco-manipulation 与 residual policy learning 知识图。
+
 ## [2026-10-10] ingest | OccPlanner（arXiv:2608.14160 v2）
 
 - 新增独立论文实体页与 arXiv 来源归档；L3ROcc 作为同一论文内的数据监督流程，不拆分重复节点。
