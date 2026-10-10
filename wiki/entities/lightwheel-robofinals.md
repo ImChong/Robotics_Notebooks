@@ -41,7 +41,7 @@ institutions:
 
 # Lightwheel RoboFinals
 
-**Lightwheel RoboFinals** 是光轮科技（Lightwheel）发布的 **工业级仿真评测平台**，面向已超越学术 benchmark 的 **VLA / 通才机器人基础模型**。**2025-12-04** 发布，长期目标是 **RoboFinals-100**（100 任务、SimReady 资产、跨家庭/工厂/零售）；**2026-08-18** 发布自称业界首个 **Newton-native 全栈评测 benchmark**——资产、求解器、机器人、遥操作数据、训练与评测均在 [Newton](./newton-physics.md) 上原生构建并端到端验证，首发 **22** 个家庭/医院/工厂接触丰富任务。评测执行层仍经 **NVIDIA Isaac Lab-Arena** + **BenchHub**（开源实现见 [LW-BenchHub](./cn-os-lw-benchhub.md)），并可通过 **NVIDIA OSMO** 与云 GPU 大规模并行 rollout。平台为 **商业服务（Coming soon）**；开源底座为 [Isaac Lab-Arena](https://github.com/isaac-sim/IsaacLab-Arena)、LW-BenchHub 与 AutoDataGen。公司背景见 [光轮智能](./lightwheel.md)。
+**Lightwheel RoboFinals** 是光轮智能（Lightwheel）发布的 **工业级仿真评测平台**，面向已超越学术 benchmark 的 **VLA / 通才机器人基础模型**。**2025-12-04** 发布，长期目标是 **RoboFinals-100**（100 任务、SimReady 资产、跨家庭/工厂/零售）；**2026-08-18** 发布自称业界首个 **Newton-native 全栈评测 benchmark**——资产、求解器、机器人、遥操作数据、训练与评测均在 [Newton](./newton-physics.md) 上原生构建并端到端验证，首发 **22** 个家庭/医院/工厂接触丰富任务。评测执行层仍经 **NVIDIA Isaac Lab-Arena** + **BenchHub**（开源实现见 [LW-BenchHub](./cn-os-lw-benchhub.md)），并可通过 **NVIDIA OSMO** 与云 GPU 大规模并行 rollout。平台为 **商业服务（Coming soon）**；开源底座为 [Isaac Lab-Arena](https://github.com/isaac-sim/IsaacLab-Arena)、LW-BenchHub 与 AutoDataGen。公司背景见 [光轮智能](./lightwheel.md)。
 
 ## 一句话定义
 

@@ -5,7 +5,7 @@
 - **标题：** EgoSuite-Open100K（Hugging Face Collection）
 - **类型：** site / huggingface-collection
 - **URL：** <https://huggingface.co/collections/LightwheelAI/egosuite-open100k>
-- **机构：** 光轮科技（LightwheelAI）
+- **机构：** 光轮智能（LightwheelAI）
 - **入库日期：** 2026-09-14
 - **集合更新：** 约 2026-08（API 显示 25 days ago，相对入库日）
 - **一句话说明：** 光轮智能 **最大规模全标注开放 egocentric 人类数据** 官方索引：规划 100k h，首批 10k h，含 EgoStandard / EgoPro / EgoDemo 三条 HF 数据集入口。

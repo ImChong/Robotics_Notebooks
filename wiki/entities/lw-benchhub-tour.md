@@ -60,7 +60,7 @@ summary: "LW BENCHHUB TOUR 把 SmolVLA 接到光轮 LW-BenchHub 的双臂 Piper 
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | 探索仓为个人；物理底座为 **光轮科技（Lightwheel）**；仿真/Arena 为 **英伟达（NVIDIA）**；策略与评测 CLI 为 **拥抱脸（Hugging Face）** |
+| 机构 | 探索仓为个人；物理底座为 **光轮智能（Lightwheel）**；仿真/Arena 为 **英伟达（NVIDIA）**；策略与评测 CLI 为 **拥抱脸（Hugging Face）** |
 | 许可 | Tour 与官方 LW-BenchHub 均为 Apache-2.0 |
 | 开源 | **已开源、可运行**（脚本 + GitHub Wiki）；依赖 Isaac Sim 5.1 与大显存 GPU |
 | 策略 | `LightwheelAI/smolvla-double-piper-pnp`（~0.5B） |

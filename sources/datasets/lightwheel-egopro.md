@@ -5,7 +5,7 @@
 - **标题：** EgoPro
 - **类型：** dataset / huggingface-bucket
 - **链接：** <https://huggingface.co/datasets/LightwheelAI/EgoPro>
-- **机构：** 光轮科技（LightwheelAI）
+- **机构：** 光轮智能（LightwheelAI）
 - **所属集合：** [EgoSuite-Open100K](../sites/hf-egosuite-open100k-collection.md)
 - **入库日期：** 2026-09-14
 - **一句话说明：** EgoSuite-Open100K 的 **10,000 h 头戴+腕部主线**：同步头/腕视频与 3D 手部姿态，body 子集加全身；针对接触、抓取、手部出框等头戴视角盲区补强。

@@ -5,7 +5,7 @@
 - **标题：** LW-BenchHub
 - **类型：** repo
 - **链接：** https://github.com/LightwheelAI/LW-BenchHub
-- **机构：** 光轮科技（Lightwheel）
+- **机构：** 光轮智能（Lightwheel）
 - **许可：** Apache-2.0（README 徽章与 LICENSE 声明；GitHub API `license` 字段为空，以仓内文件为准）
 - **Stars：** ~192（2026-08-17）
 - **文档：** https://docs.lightwheel.net/lw_benchhub

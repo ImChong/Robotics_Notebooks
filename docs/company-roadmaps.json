@@ -452,6 +452,35 @@
       ]
     },
     {
+      "key": "lightwheel",
+      "name": "光轮智能 Lightwheel",
+      "founded_year": 2023,
+      "founded_source": "https://lightwheel.ai/media/lightwheel-manus-partnership",
+      "founded_note": "公司新闻稿写明 2023 年成立、总部位于加州圣克拉拉；工商信息（界面新闻 2026-03 引天眼查）为 2023-01-16。",
+      "lenses": ["wbc"],
+      "summary": "物理 AI 的仿真与数据基础设施：SimReady 物理精确资产与生成服务、RoboFinals / LW-BenchHub 仿真评测、EgoSuite 人类第一视角数据，并与 NVIDIA Isaac Lab-Arena、Newton 深度合作；BenchHub、LeIsaac 等工具开源，资产库与评测平台为商业产品。",
+      "official": "https://lightwheel.ai/blogs",
+      "nodes": [
+        { "date": "2024-10", "title": "NI Connect 2024 主题演讲", "track": "观点", "desc": "创始人谢晨谈合成数据在 AI 时代的作用；官网博客列出的最早条目。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/blogs", "date_note": "官网博客列表 2024-10-15，指向 YouTube 演讲视频。" },
+        { "date": "2025-05", "title": "GR00T N1 人形进汽车产线", "track": "部署", "desc": "光轮用仿真数据把 GR00T N1 人形部署到汽车产线；NVIDIA 同期新闻稿把光轮列为 GR00T 早期采用者。客户与数据比例均为公司自述。", "id": "entity-lightwheel", "url": "https://www.linkedin.com/pulse/from-sim-factory-how-lightwheel-deployed-gr00t-n1-humanoids-ryycc", "date_note": "LinkedIn 文章 2025-05-19；NVIDIA 新闻稿 2025-05-18。" },
+        { "date": "2025-09", "title": "Newton 地形资产", "track": "仿真资产", "desc": "为 Newton 的 MPM 求解器制作沙、土、雪等颗粒地形资产，展示平地训练的足式策略在其上失效。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/lightwheel-newton", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-09", "title": "USD Search 资产检索", "track": "仿真资产", "desc": "以 NVIDIA USD Search API 支撑约 2000 个 SimReady 资产的文本 / 图像检索。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/lightwheel-usd-blog-CoRL", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-09", "title": "一套骨架三个基准", "track": "评测", "desc": "把 YCB、LIBERO（130 任务）、RoboCasa（138 任务）迁入 Isaac Lab-Arena 统一骨架，形成 LW-BenchHub 的任务基础。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/lightwheel-benchmark-anouncement", "date_note": "官网博客 2025-09-29。" },
+        { "date": "2025-10", "title": "SimReady 初创优惠", "track": "商业", "desc": "面向初创与 NVIDIA Inception 成员的 SimReady 资产折扣，资产库 2000+ 个 USD 资产（自报）。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/simready-announces-special-pricing", "date_note": "官网博客 2025-10-23。" },
+        { "date": "2025-12", "title": "RoboFinals", "track": "评测", "desc": "面向前沿 VLA / 通才模型的工业级仿真评测平台，首发 RoboFinals-100。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/robofinals", "date_note": "官网博客 2025-12-04（文章指向产品页）。" },
+        { "date": "2025-12", "title": "EgoSuite", "track": "人类数据", "desc": "第一视角人类数据方案：头戴设备、外骨骼与夹爪采集，3D 手姿 / 全身姿态与帧级语义标注；以商业数据服务为主。", "id": "entity-lightwheel-egosuite", "url": "https://lightwheel.ai/egosuite", "date_note": "官网博客 2025-12-04（文章指向产品页）。" },
+        { "date": "2026-01", "title": "Behind RoboFinals", "track": "评测", "desc": "说明 RoboFinals 底层的 Isaac Lab-Arena 与 LW-BenchHub：268 个开源任务、8 类机器人（自报）。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/robofinals-isaac-lab", "date_note": "官网博客 2026-01-05。" },
+        { "date": "2026-02", "title": "Arena GPU 并行评测研究", "track": "评测", "desc": "Isaac Lab-Arena 并行评测相对 MuJoCo 顺序评测最高 13.5× 提速（4096 环境，自报）。", "id": "entity-cn-os-lw-benchhub", "url": "https://lightwheel.ai/media/il-arena-benchmark-study", "date_note": "官网博客 2026-02-04。" },
+        { "date": "2026-03", "title": "SimReady 物理数据基础设施", "track": "仿真资产", "desc": "SimReady 升级为「测量 → 求解 → 生成」的物理数据管线，测量摩擦、刚度、接触等参数，并与 NVIDIA Newton 合作。", "id": "entity-lightwheel-simready", "url": "https://lightwheel.ai/media/simready", "date_note": "官网博客 2026-03-16。" },
+        { "date": "2026-03", "title": "RoboFinals 工业基准", "track": "评测", "desc": "RoboFinals 工业场景评测与早期采用者（Qwen、Fourier 等）案例。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/media/robofinals-industrial-benchmark", "date_note": "官网博客 2026-03-16。" },
+        { "date": "2026-04", "title": "工业 AI 方案", "track": "工业", "desc": "汉诺威展发布的工业机器人方案（04-15）与和 NVIDIA 合作的「专才 → 通才-专才」机器人文章（04-20）。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/media/hannover-industrial-ai-solution", "date_note": "官网博客 2026-04-15 与 2026-04-20 两篇。" },
+        { "date": "2026-05", "title": "一季度 1 亿美元订单", "track": "公司", "desc": "新闻稿称 2026 年一季度订单约 1 亿美元，覆盖全部产品线（自报）。", "id": "entity-lightwheel", "url": "https://lightwheel.ai/media/q1-orders-physical-ai", "date_note": "官网新闻稿 2026-05-06。" },
+        { "date": "2026-07", "title": "SimReadyGen", "track": "仿真资产生成", "desc": "按文本提示生成 SimReady USD 资产的付费服务，基于 NVIDIA 开源 USD Content Agents；无论文与代码。", "id": "entity-lightwheel-simreadygen", "url": "https://lightwheel.ai/media/simreadygen", "date_note": "官网博客 2026-07-20。" },
+        { "date": "2026-08", "title": "首个 Newton 原生基准", "track": "评测", "desc": "RoboFinals 全评测栈跑在 Newton 上，首批 22 个家庭、医院、工厂任务。", "id": "entity-lightwheel-robofinals", "url": "https://lightwheel.ai/media/lightwheel-launches-robofinals-full-stack-robot-evaluation-benchmark-newton", "date_note": "官网博客 2026-08-18。" },
+        { "date": "2026-08", "title": "EgoSuite-Open100K", "track": "人类数据", "desc": "与 Hugging Face 合作开放第一视角人类数据，规划 10 万小时，首批 1 万小时。", "id": "entity-egosuite-open100k", "url": "https://lightwheel.ai/media/egosuite-open100k", "date_note": "官网博客 2026-08-21；HF 博客 2026-08-26。" }
+      ]
+    },
+    {
       "key": "pi",
       "name": "Physical Intelligence",
       "founded_year": 2024,
