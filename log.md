@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | AlphaStar（Nature 2019 + AlphaStar Unplugged 研究工具）
+
+- 目的：将 Grandmaster 论文、DeepMind 官方资料、PySC2 与后续 AlphaStar 代码发布放在同一项目脉络中。
+- 开源核查：部分开源——公开通用架构、离线 BC 工具和环境；README 明确没有发布 online RL training code。
+- 关键入口：AlphaStar 独立实体页，连接 self-play 机器人案例与 RL 方法页。
+
 ## [2026-10-10] ingest | AlphaZero（Science 2018）
 
 - 目的：整理多棋类自我对弈强化学习的一手论文与官方棋谱入口。

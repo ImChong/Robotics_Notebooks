@@ -1176,6 +1176,7 @@
 - [AlloEgo-VLM：消歧自我中心与环境中心参照系](wiki/entities/paper-alloego-vlm.md) — AlloEgo-VLM**（*AlloEgo-VLM: Disambiguating Allocentric and Egocentric Reference Frames in Vision-L `📅unknown` `[entity_page]`
 - [AlphaGo Zero：从规则开始的纯自我对弈](wiki/entities/paper-alphago-zero.md) — 一句话定义：** AlphaGo Zero 以围棋规则为唯一先验，通过自我对弈训练策略/价值网络，并让 MCTS 在搜索时使用它们的输出。 `📅unknown` `[entity_page]`
 - [AlphaGo：深度策略/价值网络与树搜索](wiki/entities/paper-alphago.md) — 一句话定义：** AlphaGo 是一个围棋系统，用策略网络缩小搜索范围、用价值网络估计局面，再以蒙特卡洛树搜索（MCTS）挑选落子。 `📅unknown` `[entity_page]`
+- [AlphaStar：联赛式多智能体强化学习](wiki/entities/paper-alphastar.md) — 一句话定义：** AlphaStar 是一个以人类回放作行为先验、再通过 League 中多种对手训练的 StarCraft II 智能体。 `📅unknown` `[entity_page]`
 - [AlphaZero：跨棋类的自我对弈强化学习](wiki/entities/paper-alphazero.md) — 一句话定义：** AlphaZero 是用同一套策略/价值网络与 MCTS、自我对弈闭环，在多种棋类中从规则而非人类棋谱学习的系统。 `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — AME**（*Attention-Based Map Encoding for Learning Generalized Legged Locomotion*，[Science Robotics  `📅unknown` `[entity_page]`
 - [AMP Locomotion（HMI P023）](wiki/entities/paper-amp-locomotion-quadruped-rewards.md) — AMP Locomotion**（*Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions*，20 `📅unknown` `[entity_page]`
