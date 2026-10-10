@@ -15,7 +15,7 @@ tags:
   - sysu
   - tsinghua
 status: complete
-updated: 2026-09-28
+updated: 2026-10-10
 arxiv: "2607.28560"
 code: https://github.com/InternRobotics/NavDP/tree/main/baselines/x-navdp
 related:
@@ -25,6 +25,7 @@ related:
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
   - ./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md
   - ./paper-roamflow.md
+  - ./paper-occplanner-2608-14160.md
   - ../methods/diffusion-policy.md
   - ./unitree-g1.md
 sources:
@@ -166,6 +167,7 @@ X-NavDP 表明：**导航扩散策略的后训练应优先选 stable 的 reweigh
 - [NavDP（PNB）](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)
 - [NoMaD（PNB）](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md)
 - [RoamFlow](./paper-roamflow.md)
+- [OccPlanner](./paper-occplanner-2608-14160.md) — 用目标接地和局部占据条件化 PixelGoal 扩散规划；与本页的 NavDP RL 后训练形成对照。
 - [depth-navigation](../../roadmap/depth-navigation.md)
 - [diffusion-policy](../methods/diffusion-policy.md)
 - [unitree-g1](./unitree-g1.md)
