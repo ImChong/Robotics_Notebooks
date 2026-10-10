@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-10
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
+  - ../entities/paper-coap-embodied-turing-machines.md
   - ../entities/robolab.md
   - ../entities/libero-benchmark.md
   - ../entities/robocasa.md
@@ -48,6 +49,7 @@ sources:
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
+  - ../../sources/papers/coap_embodied_turing_machines_arxiv_2610_12369.md
   - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
@@ -91,6 +93,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | gap | Sim-to-Real Evaluation Gap | 仿真评测结论外推真机的偏差 |
 
 ## 为什么重要
+
+- **策略成功率层案例：** [COAP](../entities/paper-coap-embodied-turing-machines.md) 在 RoboDojo 42 个双臂仿真任务上报告 70.24% 成功率；它是作者报告的仿真结果，不是官方 verified 榜单成绩，且论文未提供 COAP 可运行代码入口。
 
 - **补一条贯通的评测选型视角**：仓库已有各评测基准的实体页，但缺「从认知到真机逐层测什么、各基准边界与取舍」的统一决策入口。
 - **暴露评测层间取舍矛盾**：仿真基准易复现 vs 真机代表性、任务成功率 vs 过程/中间指标、世界模型视频质量 ≠ 下游策略收益、MLLM 认知评分 ≠ 可执行动作能力——这些矛盾只有并置在一条链上才看得清（详见事实库对应矛盾检测规则）。
@@ -158,6 +162,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [WorldEcho / WorldSync](../entities/paper-worldecho-worldsync.md) — off-expert 动作跟随（视觉门控 + \(\mathrm{SE}(3)\) NDTW；② 层）
 - [GigaWorld-1 策略评估](../entities/paper-gigaworld-1-policy-evaluation.md)
 - [RoboDojo](../entities/robodojo.md)
+- [COAP：具身图灵机与代码策略](../entities/paper-coap-embodied-turing-machines.md) — 显式代码策略；RoboDojo 42 项双臂仿真报告 70.24%，不代表真机结果。
 - [前沿模型 × 3D/CAD/机器人 Living Survey（MIT CDFG）](./frontier-models-3d-cad-robotics-survey.md) — 345 帖 horizon scan：harness 归因、RoboDojo progress、演示 vs 可复现代码 Tier
 - [RoboLab](../entities/robolab.md) — 120 任务高保真 sim 榜
 - [Manda 开源策略横评](../entities/manda-robotics-open-policy-evaluation.md) — RoboLab-120 五策略 6k episode 行为审计（2026-09）
