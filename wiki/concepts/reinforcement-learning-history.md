@@ -2,7 +2,7 @@
 type: concept
 tags: [reinforcement-learning, history, theory, education]
 status: complete
-updated: 2026-08-30
+updated: 2026-10-10
 related:
   - ../methods/reinforcement-learning.md
   - ../entities/sutton-barto-rl-book.md
@@ -11,9 +11,13 @@ related:
   - ../formalizations/bellman-equation.md
   - ./cartpole.md
   - ./deep-rl-game-milestones.md
+  - ../methods/genetic-algorithm.md
+  - ../methods/genetic-programming.md
 sources:
   - ../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
+  - ../../sources/papers/genetic_algorithms_foundations.md
+  - ../../sources/papers/genetic_programming_foundations.md
 summary: "现代强化学习由试错学习、最优控制/动态规划、时序差分三条研究脉络在 1980 年代末汇合而成；读懂谱系有助于区分 RL 与监督学习及 model-based 控制。"
 ---
 
@@ -31,13 +35,15 @@ summary: "现代强化学习由试错学习、最优控制/动态规划、时序
 | DP | Dynamic Programming | Bellman 方程求解最优控制 / MDP 的经典方法 |
 | MDP | Markov Decision Process | 离散随机最优控制的标准形式化 |
 | TD | Temporal-Difference Learning | 用连续时刻估计之差驱动的 bootstrapping 学习 |
-| GA | Genetic Algorithm | Holland 分类器系统中的演化表示组件（本身非 RL） |
+| GA | Genetic Algorithm | 基于种群适应度与遗传算子的黑箱搜索；不是 RL |
+| GP | Genetic Programming | 在语法限定的程序空间中演化程序/表达式；不是 RL |
 
 ## 为什么重要
 
 - **定位本库 RL 页的理论来源**：读 [Reinforcement Learning](../methods/reinforcement-learning.md)、[MDP](../formalizations/mdp.md)、[Bellman Equation](../formalizations/bellman-equation.md) 时，知道符号与算法从 Bellman–Howard DP 线而来，而 **Actor–Critic / Q-learning** 来自试错 + TD 汇合。
 - **避免概念混淆**：1960s 许多「奖惩网络」实为监督学习；现代教材把 **selectional（试选）+ associative（情境绑定）** 当作试错学习的试金石。
 - **机器人读者的最短史学路径**：1983 杆平衡 Actor–Critic → 1989 Q-learning → 1992 TD-Gammon → 当代 PPO/深度 RL；[Cartpole](../concepts/cartpole.md) 与 [深度 RL 游戏里程碑](./deep-rl-game-milestones.md) 均可挂在此时间线上。
+- **区分进化搜索和 RL**：[遗传算法](../methods/genetic-algorithm.md)与[遗传编程](../methods/genetic-programming.md)也会用适应度筛选候选，但通常按整条候选方案做群体式搜索；RL 则学习状态条件的策略并利用序贯状态转移。
 
 ## 三条主线
 
@@ -108,6 +114,7 @@ flowchart TB
 - [MDP](../formalizations/mdp.md) — Howard 策略迭代的现代形式
 - [Cartpole](../concepts/cartpole.md) — 1983 Actor–Critic 实验原点
 - [深度 RL 游戏里程碑](./deep-rl-game-milestones.md) — Q-learning 之后的深度 RL 叙事
+- [遗传算法](../methods/genetic-algorithm.md) 与 [遗传编程](../methods/genetic-programming.md) — 进化搜索与 RL 的边界
 
 ## 参考来源
 
