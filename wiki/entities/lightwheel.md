@@ -248,6 +248,7 @@ GitHub 组织列表页与 org API 在本环境不可读（403），下表由各�
 - [Isaac GR00T](./isaac-gr00t.md) · [GR00T N1.5](./paper-gr00t-n1-5.md)
 - [NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — RoboFinals / BenchHub 在评测选型中的位置
 - [具身数据采集五条路线](../queries/embodied-data-collection-five-routes-landscape.md)
 
 ## 参考来源
