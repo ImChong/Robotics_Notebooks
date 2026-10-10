@@ -38,7 +38,7 @@
 - 推理逐变量去噪：先光流（运动）→ 固定后作为上下文生成 XYZ 点图（几何）→ 再生成未来 RGB。语言条件经 cross-attention，动作条件（CD-LAM 32 维潜动作）经 AdaLN。
 - 中训时每次更新均匀抽一个阶段作为目标，前序变量作为干净上下文；光流用 SEA-RAFT 提取，深度与内参用 VGGT-Omega-1B-512 估计后转成归一化 XYZ 点图，离线经 VAE 编码缓存。
 
-**对 wiki 的映射：** [paper-causalwm](../../wiki/entities/paper-causalwm.md) 方法节；[生成式世界模型](../../wiki/methods/generative-world-models.md)
+**对 wiki 的映射：** [paper-causalwm](../../wiki/entities/paper-causalwm.md) 方法节
 
 ### 2. 数据与训练
 
@@ -59,7 +59,7 @@
 - **案例**：bottle-to-drawer、取瓶、关抽屉三例对比 Wan2.2-A14B 与 LingBot-Video（定性）。
 - 报告**没有**同骨干「无 CoT 直接预测」的消融。
 
-**对 wiki 的映射：** [paper-causalwm](../../wiki/entities/paper-causalwm.md) 实验与评测节；[TriWorldBench](../../wiki/entities/paper-triworldbench.md)；[PAI-Bench](../../wiki/entities/paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md)
+**对 wiki 的映射：** [paper-causalwm](../../wiki/entities/paper-causalwm.md) 实验与评测节（基准背景见 wiki 的 TriWorldBench 与 PAI-Bench 页）
 
 ### 4. 局限（作者自述）
 
