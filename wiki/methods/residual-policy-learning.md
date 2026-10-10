@@ -17,7 +17,7 @@ sources:
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/papers/refine_dp_arxiv_2603_13707.md
   - ../../sources/papers/robotdancing_arxiv_2509_20717.md
-summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、十篇代表论文谱系与选型建议。"
+summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、代表论文谱系与选型建议。"
 ---
 
 # Residual Policy Learning（残差策略学习）
