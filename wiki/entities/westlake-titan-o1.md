@@ -121,6 +121,7 @@ flowchart LR
 - [GAE：General Action Expert（论文）](./paper-gae-general-action-expert.md)
 - [傲天U1 四足机器人](./westlake-aotian-u1.md)
 - [Unitree G1](./unitree-g1.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 读 TO 系列关节模组参数时的选型框架
 - [遥操作](../tasks/teleoperation.md) · [人形运动](../tasks/humanoid-locomotion.md) · [运动重定向](../concepts/motion-retargeting.md)
 
 ## 参考来源

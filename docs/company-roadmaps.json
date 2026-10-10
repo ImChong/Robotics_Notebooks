@@ -121,6 +121,24 @@
       ]
     },
     {
+      "key": "westlake",
+      "name": "西湖机器人 Westlake Robotics",
+      "founded_year": 2021,
+      "founded_source": "https://pitchhub.36kr.com/project/1817515762730889",
+      "founded_note": "工商登记 2021-06-08（36氪项目库）；实际业务约始于 2023-12（投资界 2025-01 报道，官网 2025-06 时间线称「一年半的快速发展」）。西湖大学王东林团队创办。",
+      "lenses": ["humanoid", "wbc"],
+      "summary": "「大脑 + 小脑」路线：GAE 通用动作专家做实时全身遥操作与运控（「一脑多形」），LM-VLM 多模态运动操作模型做大脑；整机有 TITAN O1 人形与傲天 U1 四足。GAE 以付费闭源软件发布（V1.2.0，目前仅支持宇树本体），论文无代码。",
+      "official": "https://www.wlrobo.com/",
+      "nodes": [
+        { "date": "2025-03", "title": "人形全身运动大模型", "track": "全身运控", "desc": "官网时间线称发布「国际上第一个人形机器人全身运动大模型」（自报），未见对应论文或技术报告。", "id": "entity-westlake-robotics", "url": "https://www.wlrobo.com/module4", "date_note": "官网「关于我们」时间线 2025-03-10。" },
+        { "date": "2025-09", "title": "GAE 身外化身系统", "track": "全身遥操作", "desc": "通用动作专家 GAE 首发：动捕 / VR 输入实时驱动人形全身，宣称一脑多形；以付费软件 + 加密狗授权发布。", "id": "entity-paper-gae-general-action-expert", "url": "https://www.wlrobo.com/GAEDownload", "date_note": "官网时间线 2025-09-29 发布；V1.2.0 下载版文件日期为 2026-06。" },
+        { "date": "2025-10", "title": "傲天 U1 四足", "track": "整机", "desc": "15.7 kg 四足机器人，进入杭州社区养老等场景（媒体报道）；官网无发布日期。", "id": "entity-westlake-aotian-u1", "url": "https://www.wlrobo.com/module3", "date_note": "最早点名报道为 2025-10-14（养老场景）；非官方发布日。" },
+        { "date": "2026-03", "title": "TITAN O1 人形", "track": "整机", "desc": "自研关节模组的人形本体，34 kg、29–69 自由度（自报），搭载 GAE；WAIC 2026 展出。", "id": "entity-westlake-titan-o1", "url": "https://www.wlrobo.com/module2", "date_note": "AIBase 报道 2026-03-23 发布，新华社 / TechNode 2026-03-24 报道。" },
+        { "date": "2026-09", "title": "A1 轮融资", "track": "公司", "desc": "媒体报道完成数亿元 A1 轮；2026 年 2–9 月连续多轮，累计超 5 亿元（媒体口径，未披露估值）。", "id": "entity-westlake-robotics", "url": "https://www.wlrobo.com/module4", "date_note": "瑞财经、潮新闻 2026-09-11 报道；非公司官方发布。" },
+        { "date": "2026-09", "title": "GAE 论文", "track": "全身遥操作", "desc": "arXiv 技术论文：万小时人类动作、特权生成器 + 可部署执行器两阶段训练，延迟条件预判实现 G1 / O1 实时全身遥操作；代码未公开。", "id": "entity-paper-gae-general-action-expert", "url": "https://arxiv.org/abs/2609.34233", "date_note": "arXiv:2609.34233 v1 为 2026-09-28。", "date_source": "https://arxiv.org/abs/2609.34233" }
+      ]
+    },
+    {
       "key": "limx",
       "name": "逐际动力 LimX",
       "founded_year": 2022,
