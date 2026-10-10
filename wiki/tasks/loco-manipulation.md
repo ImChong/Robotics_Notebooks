@@ -56,6 +56,7 @@ sources:
   - ../../sources/papers/workhorse_arxiv_2610_09117.md
   - ../../sources/papers/rfpo_arxiv_2610_10453.md
   - ../../sources/papers/hulk_arxiv_2610_08970.md
+  - ../../sources/papers/oclo_arxiv_2610_05678.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -108,6 +109,8 @@ flowchart TD
   L --> C
   M --> C --> O
 ```
+
+- **近期无示范姿态补全路线：** [OCLO](../entities/paper-oclo-online-posture-compliant-loco-manipulation.md)（UCSD / Yonsei，arXiv:2610.05678）以双末端目标为接口，解析可达性先验在线补骨盆/躯干姿态，并用弹簧-阻尼参考偏移学习全身顺应；其“dataset-free”指不使用人体动作数据，而非免除策略训练。代码/数据状态待项目页核实。
 
 ## 核心挑战
 
