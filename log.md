@@ -73,6 +73,8 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | sources/papers/pso_foundations_1995_2012.md — 收录 PSO 奠基论文、惯性权重与收缩理论，核查作者来源 SPSO-2011 源码，新增方法节点及算法/源码 Mermaid 并连接 AutoPSO、CMA-ES 与优化选型
+
 ## [2026-10-10] ingest | AlphaStar（Nature 2019 + AlphaStar Unplugged 研究工具）
 
 - 目的：将 Grandmaster 论文、DeepMind 官方资料、PySC2 与后续 AlphaStar 代码发布放在同一项目脉络中。

@@ -5221,6 +5221,7 @@
 - [目标检测（Object Detection）](wiki/methods/object-detection.md) — 目标检测**在给定图像中同时回答 **「有什么物体」** 与 **「在哪里（边界框）」**；在机器人中它为 **抓取、导航、人机交互** 提供 **物体级语义与几何锚点**。 `📅unknown` `[method_page]`
 - [Octo（开源 Generalist Policy）](wiki/methods/octo-model.md) — Octo**（arXiv:2405.12213，[代码](https://github.com/octo-models/oc `📅unknown` `[method_page]`
 - [PAiD Framework](wiki/methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
+- [Particle Swarm Optimization（粒子群优化，PSO）](wiki/methods/particle-swarm-optimization.md) — PSO 用一群候选参数“各自试、记住最好结果、参考同伴继续移动”，只需目标函数评分，不需要目标梯度。** 粒子的位置是待优化的参数向量，不是必须真实移动的机器人；速度是参数空间的位移。 `📅unknown` `[method_page]`
 - [Pelican-Unified 1.0（统一具身智能 UEI）](wiki/methods/pelican-unified-1.md) — Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，与 Wan 系扩散 UFG 耦合，使未来视频与动作块在同一去噪轨迹中联合生成。 `📅2026-05-16` `[method_page]`
 - [Penalty / Barrier / Augmented Lagrangian（罚函数、障碍法与增广拉格朗日）](wiki/methods/penalty-barrier-augmented-lagrangian.md) — 序列无约束化**（课程 3.4）：通过罚项或障碍项把约束「推入」目标，反复求解无约束/简单约束子问题。**PHR 增广拉格朗日**（Powell–Hestenes–Rockafellar）在对偶空 `📅unknown` `[method_page]`
 - [π MPC（Parallel-in-horizon、Construction-free NMPC）](wiki/methods/pi-mpc.md) — π MPC**（*π MPC: A Parallel-in-horizon and Construction-free NMPC Solver*，arXiv:2601.14414，JHU · Ts `📅unknown` `[method_page]`
