@@ -62,6 +62,25 @@ op: ingest
 
 将 arXiv:2608.30773 纳入软体机器人与接触丰富操作知识脉络，整理其“交互获取信息”的方法主张、循环策略及两阶段 Sim2Real。当前提交资料未提供官方代码入口，页面明确标注复现边界，并与接触丰富操作概念页建立回链。
 
+# HuMBLE ingest
+
+- **日期：** 2026-10-10
+- **论文：** [HuMBLE: Human Motion-Driven Behavior Learning for Embodied Locomotion](https://arxiv.org/abs/2610.10489)
+- **类型：** arXiv 论文 / 人形机器人 locomotion 方法
+- **来源记录：** `sources/papers/humble_arxiv_2610_10489.md`
+- **实体页：** `wiki/entities/paper-humble-human-motion-driven-behavior.md`
+- **摘要：** 以人体步态 retarget 动捕训练全身参考 teacher，蒸馏为 SE(2) 速度指令 + proprioception 策略，再以参考模仿和目标跟踪双任务 PPO 微调；在 Atlas R1/D1 与 Unitree G1 验证。
+- **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
+- **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
+
+## [2026-10-10] ingest | Swinging Door Trending 原始资料与机器人遥测应用
+
+- 新增概念页：`wiki/concepts/swinging-door-trending-compression.md`，介绍 Swinging Door Trending（SDT）的误差走廊、在线折线压缩过程、参数影响、重建误差与机器人遥测应用边界。
+- 新增资料归档：Bristol 的 US4669097A 专利、1990 年会议论文书目记录、AVEVA PI 官方压缩文档与官方演讲材料，以及一个 MIT 许可的社区 Python 参考实现。
+- 资料边界：1990 年 Bristol 论文目前归档的是可核验的书目记录，未找到可公开访问的原文全文；社区实现仅作可读代码示例，不代表 Bristol 或 AVEVA 官方实现。
+- 更新可观测性和具身数据清洗页面，建立相关概念链接，并说明有损遥测压缩应用于非实时归档副本，不能替代数据清洗或原始安全/诊断记录。
+- 未修改 Actions、workflow 或派生文件。
+
 ## [2026-10-10] ingest | COAP 论文与 RoboDojo 评测关联
 
 - 归档 arXiv:2610.12369，新增 COAP 独立论文实体；区分离线 coding-agent 开发与运行时纯代码控制。
