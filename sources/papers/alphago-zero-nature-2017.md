@@ -19,4 +19,4 @@
 
 - [AlphaGo Zero 实体页](../../wiki/entities/paper-alphago-zero.md)
 - [强化学习 Runner 与自博弈](../../wiki/concepts/rl-runner.md)
-- [AlphaGo（2016）](../../wiki/entities/paper-alphago.md)
+- [深度强化学习游戏里程碑](../../wiki/concepts/deep-rl-game-milestones.md)
