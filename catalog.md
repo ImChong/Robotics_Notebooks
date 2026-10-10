@@ -4075,6 +4075,7 @@
 - [SAI：序贯非对称模仿学习耦合双机策略](wiki/entities/paper-sai-sequential-asymmetric-imitation.md) — SAI**（*Sequential Asymmetric Imitation for Learning Coupled Robot Policies*，[arXiv:2606.16490](htt `📅unknown` `[entity_page]`
 - [SAIGEN：材料合成自动化平台](wiki/entities/paper-saigen.md) — SAIGEN**（arXiv:2609.14928，[代码](https://github.com/YusukeHashim `📅unknown` `[entity_page]`
 - [SALT（arXiv:2608.10484）](wiki/entities/paper-salt-vla-action-language-alignment.md) — SALT**（*Lost in Reconstruction: Aligning Action Representations with Language in Vision-Language-A `📅unknown` `[entity_page]`
+- [SAM-V：几何感知的多视角 Segment Anything](wiki/entities/paper-sam-v.md) — SAM-V 把多视角几何信息放进 SAM 的图像与提示特征，在一次前向推理中让多帧对同一物体保持一致分割。 `📅unknown` `[entity_page]`
 - [SAM 2：图像与视频中的 Segment Anything](wiki/entities/paper-sam2.md) — SAM 2**（*Segment Anything Model 2*；论文 *SAM 2: Segment Anything in Images and Videos*，[arXiv:2408.0 `📅unknown` `[entity_page]`
 - [SAM 3：Segment Anything with Concepts](wiki/entities/paper-sam3.md) — SAM 3**（*Segment Anything Model 3*；论文 *SAM 3: Segment Anything with Concepts*，[arXiv:2511.16719](h `📅unknown` `[entity_page]`
 - [Sample, Simulate, Select（S³，arXiv:2609.26420）](wiki/entities/paper-sample-simulate-select.md) — Sample, Simulate, Select（S³）**（*Physics-in-the-Loop Text-to-Motion for Humanoids Without Training `📅unknown` `[entity_page]`

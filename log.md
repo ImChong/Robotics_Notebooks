@@ -62,6 +62,11 @@ op: ingest
 
 将 arXiv:2608.30773 纳入软体机器人与接触丰富操作知识脉络，整理其“交互获取信息”的方法主张、循环策略及两阶段 Sim2Real。当前提交资料未提供官方代码入口，页面明确标注复现边界，并与接触丰富操作概念页建立回链。
 
+## [2026-10-10] ingest | SAM-V — 收录多视角几何感知分割项目
+
+- 归档 arXiv 论文、代码仓库、checkpoint 与许可边界；区分 Apache-2.0 源码、CC BY-NC 权重和 VGGT 研究许可。
+- 新增 SAM-V 实体页与训练/推理流程图，并从 SAM 与 VGGT 相关页面补入反向链接。
+
 ## [2026-10-09] lint | 全量 lint 清零：补缩写速查/对比/结论/评测枢纽回链，复核 π0 陈旧页，meta 加入缺页概念停用词
 
 ## [2026-10-09] ingest | sources/blogs/simate_beta_robodojo_2026-09.md — 公司路线新增 Simate（硅基伙伴）：新建 Simate-beta 详情，补公司背景与 RoboDojo 成绩
