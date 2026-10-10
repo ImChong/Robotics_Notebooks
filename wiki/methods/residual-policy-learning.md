@@ -13,6 +13,7 @@ related:
   - ../entities/paper-loco-manip-161-157-refine-dp.md
   - ../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md
 sources:
+  - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/papers/refine_dp_arxiv_2603_13707.md
   - ../../sources/papers/robotdancing_arxiv_2509_20717.md
