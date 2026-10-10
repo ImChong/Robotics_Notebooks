@@ -2,10 +2,11 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-10
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
+  - ../methods/genetic-algorithm.md
   - ../entities/paper-legged-robots-advances-challenges.md
   - ../entities/paper-humanoidvln.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
@@ -86,6 +87,8 @@ sources:
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/genetic_algorithms_foundations.md
+  - ../../sources/papers/evolutionary_optimization_foundations.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
@@ -232,6 +235,7 @@ flowchart TD
 
 | 目标 | 优先路线 | 关键验证 |
 |------|----------|----------|
+| 离线优化低维步态/轨迹参数 | [遗传算法（GA）](../methods/genetic-algorithm.md) 或 CMA-ES / DE；如 [坡面双足 GA 案例](../entities/paper-ga-biped-slope-gait.md) | 多种子与未见地形、约束违反率、仿真到真机偏差；离线搜索不等同闭环策略学习 |
 | 做可解释、约束清晰的研究 baseline | LIP/ZMP 或 MPC + WBC | 轨迹跟踪误差、摩擦锥、力矩限幅是否满足 |
 | 快速得到四足/人形平地移动策略 | PPO/BRRL + PD action interface | 随机扰动、不同速度命令、不同摩擦地面上的成功率 |
 | 追求人形动作自然性 | IL/AMP/Selective AMP + RL fine-tuning | 与示范动作相似度、能耗、摔倒率 |
@@ -392,6 +396,7 @@ flowchart TD
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MoRE：复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md) — 深度相机 + 多判别器先验 + gait command 切换
+- [遗传算法（GA）](../methods/genetic-algorithm.md) — 离线步态参数搜索，与在线 RL 策略互补
 - [MPC](../methods/model-predictive-control.md)
 - [磁驱动双稳态软跳跃机器人](../entities/paper-bistable-soft-jumper-magnetic.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
