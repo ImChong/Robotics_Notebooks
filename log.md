@@ -73,6 +73,16 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | H-JEPA 分层视觉规划世界模型
+
+- 根据截图确认项目为 **H-JEPA: End-to-End Learning of Hierarchical World Models for Visual Planning**，论文 arXiv:2610.06805，官方项目页与代码仓库已核实。
+- 新增独立详情节点，覆盖分层 action-conditioned JEPA 训练、SIGReg/IDM、top-down 子目标规划、模拟环境与 DROID 离线结果，并加入 Mermaid 流程图。
+- 新增论文、官方 GitHub 仓库、项目主页三份来源档案。
+- 与 HWM（arXiv:2604.03208）建立方法对照；明确 DROID 的 Fréchet fidelity 是离线路径指标，不是真机闭环成功率。
+- 明确区分另一篇使用相同缩写 H-JEPA 的 Hamiltonian JEPA（arXiv:2609.33497），避免重复或混淆。
+- 关联 Model-Based RL、LeWM、HWM 与 WAM 概念页。
+- 未修改 Actions、workflow、或派生文件。
+
 ## [2026-10-10] ingest | sources/sites/archon-tech.md — 公司路线新增源策未来（Archon Robotics）：新建公司总览与 Whole-Body Intelligence 博文详情，关联 RoboNaldo、EgoHumanoid-V2
 
 ## [2026-10-10] ingest | sources/sites/wlrobo-com.md — 公司路线新增西湖机器人：新建公司总览、TITAN O1、傲天 U1 详情，GAE 补官方下载版与开放状态
