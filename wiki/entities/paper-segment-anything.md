@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-10
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
@@ -10,6 +10,7 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-sam2.md
   - ./paper-sam3.md
+  - ./paper-sam-v.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
   - ./ovo-semantic-mapping.md
   - ./dualmap.md
@@ -154,6 +155,7 @@ sequenceDiagram
 | 对照 | 差异读法 |
 |------|----------|
 | [SAM 2](./paper-sam2.md) | 统一图像+视频；Hiera + memory；图像上更快更准 |
+| [SAM-V](./paper-sam-v.md) | 复用 SAM mask decoder，将 VGGT 几何与提示融合以获得跨视角一致的实例 mask；不是时序传播
 | [OVO](./ovo-semantic-mapping.md) / [OV-SAM3D](./ov-sam3d.md) | 下游消费 SAM(2) mask 做开放词汇 3D |
 | [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) | 消费多视角 SAM 掩码，但先重分级再蒸到 3DGS，不把 whole/part/subpart 直接当 3D 层 |
 | [LightSplat](./paper-lightsplat.md) | 多视角 SAM + CLIP → 2-byte 索引注入 3DGS 簇；training-free、秒级 FD |
@@ -172,6 +174,7 @@ sequenceDiagram
 
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（可提示分割，掩码强但缺类别语义）
 - [SAM 2](./paper-sam2.md) — 图像+视频统一继任
+- [SAM-V](./paper-sam-v.md) — 将 SAM 提示分割能力与 VGGT 多视角几何结合
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 四足 2D→3D 选型
 - [OVO](./ovo-semantic-mapping.md) / [DualMap](./dualmap.md) / [OV-SAM3D](./ov-sam3d.md) — 语义建图消费方
 - [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：重分级 SAM 粒度后做开放词汇层级理解
