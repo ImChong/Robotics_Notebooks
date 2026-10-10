@@ -76,6 +76,8 @@ HWM 说明在共享视觉潜空间里叠加不同时间尺度的 world model，�
 
 ## 关联页面
 
+- [H-JEPA（arXiv:2610.06805）](./paper-h-jepa-visual-planning.md) — 对照共享潜空间的 HWM 与逐层学习独立潜表示的层级规划
+
 - [LeWorldModel](./paper-lewm.md)
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md)
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)
