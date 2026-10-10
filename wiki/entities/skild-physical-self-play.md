@@ -128,6 +128,8 @@ flowchart TB
 
 ## 关联页面
 
+- [AlphaStar](./paper-alphastar.md) — 游戏 League 训练的先例；公开代码范围仅覆盖部分架构与离线 RL
+
 - [Universal Post-Training for Robotics](../concepts/universal-post-training-robotics.md) — 真机 value-RL 配方 vs 仿真自博弈两条 post-training 路线
 - [Skild AI（公司）](./skild-ai.md)
 - [S1：机器人 In-Context Learning](./skild-s1.md) — 预训练 / ICL 前一阶段
