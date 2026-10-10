@@ -40,5 +40,4 @@ README 链接到 Hugging Face：<https://huggingface.co/feixue22/StreamRig>，�
 
 - [StreamRig 论文题录与摘要](../papers/streamrig_arxiv_2609_40244.md)
 - [StreamRig 官方项目页](../sites/streamrig-weiyufei0217-github-io.md)
-- [论文详情](../../wiki/entities/paper-streamrig.md)
-- [项目详情](../../wiki/entities/streamrig.md)
+- [StreamRig 论文 + 项目唯一节点](../../wiki/entities/streamrig.md)
