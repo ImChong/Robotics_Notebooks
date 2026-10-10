@@ -1174,6 +1174,7 @@
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
 - [AlloEgo-VLM：消歧自我中心与环境中心参照系](wiki/entities/paper-alloego-vlm.md) — AlloEgo-VLM**（*AlloEgo-VLM: Disambiguating Allocentric and Egocentric Reference Frames in Vision-L `📅unknown` `[entity_page]`
+- [AlphaGo：深度策略/价值网络与树搜索](wiki/entities/paper-alphago.md) — 一句话定义：** AlphaGo 是一个围棋系统，用策略网络缩小搜索范围、用价值网络估计局面，再以蒙特卡洛树搜索（MCTS）挑选落子。 `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — AME**（*Attention-Based Map Encoding for Learning Generalized Legged Locomotion*，[Science Robotics  `📅unknown` `[entity_page]`
 - [AMP Locomotion（HMI P023）](wiki/entities/paper-amp-locomotion-quadruped-rewards.md) — AMP Locomotion**（*Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions*，20 `📅unknown` `[entity_page]`
 - [AMP：对抗运动先验与风格化物理角色控制](wiki/entities/paper-amp-survey-01-amp.md) — AMP**（*Adversarial Motion Priors for Stylized Physics-Based Character Control*，SIGGRAPH 2021）由 Xue `📅unknown` `[entity_page]`
