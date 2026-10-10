@@ -2205,6 +2205,7 @@
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco**（*Motion Discovery for Extreme Humanoid Loco-Manipulation*，arXiv:2606.06139，TUM · NYU `📅unknown` `[entity_page]`
 - [MotionForge: A Data Generation Pipeline and Large-Scale Benchmark for Long-Horizon Manipulation of Dynamic Objects with Domain Shifts](wiki/entities/paper-motionforge.md) — MotionForge生成动态物体长程操作任务，改变速度、物体、背景和光照以测域偏移。 `📅unknown` `[entity_page]`
 - [MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌](wiki/entities/paper-motionjepa.md) — MotionJEPA**（*Preventing Temporal Feature Collapse by Capturing Visual Changes in Latent Space*，[a `📅unknown` `[entity_page]`
+- [MotionSpaceFlow：在原始动作空间直接做流匹配](wiki/entities/paper-motionspaceflow.md) — MotionSpaceFlow**（MSFlow，*Representation-Aware Flow Matching in Direct Motion Space*，[arXiv:2609.3 `📅unknown` `[entity_page]`
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM**（*Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation*，arXi `📅unknown` `[entity_page]`
 - [Motubrain（世界动作模型 · arXiv:2604.27792）](wiki/entities/paper-motubrain.md) — Motubrain**（*An Advanced World Action Model for Robot Control*，[arXiv:2604.27792](https://arxiv.or `📅unknown` `[entity_page]`
 - [Motus2（自进化通用世界模型 · arXiv:2608.30237）](wiki/entities/paper-motus2.md) — Motus2**（*A Self-Evolving General World Model for Dexterous Manipulation*，[arXiv:2608.30237](https `📅unknown` `[entity_page]`

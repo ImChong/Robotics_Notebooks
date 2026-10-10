@@ -73,6 +73,11 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | MotionSpaceFlow（MSFlow，arXiv:2609.34190）
+
+- 归档论文、官方项目页、LY Corporation 临时开源代码仓与 Hugging Face 权重，并新建单一项目详情节点。
+- 补入 diffusion-motion-generation 方法页和动作生成纵深路线；论文比较区分 263D / XYZ 结果，注明 SnapMoGen FID 并非最优及人体动作到机器人部署的边界。
+
 ## [2026-10-10] ingest | sources/repos/php_parkour.md — 核实 PHP 官方开源，更新既有实体与项目页归档，补齐训练/ONNX Sim2Sim 时序与五组数据复现边界
 
 ## [2026-10-10] ingest | H-JEPA 分层视觉规划世界模型
