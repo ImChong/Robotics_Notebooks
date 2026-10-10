@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -27,12 +27,13 @@ related:
 sources:
   - ../../sources/papers/php_parkour_arxiv_2602_15827.md
   - ../../sources/sites/php-parkour-github-io.md
+  - ../../sources/repos/amazon-far-php-parkour.md
   - ../../sources/papers/humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "PHP（arXiv:2602.15827）用 motion matching 将 OmniRetarget 原子跑酷技能与 locomotion 合成为长程参考，再以 DAgger+PPO 蒸馏为单一深度学生策略，使 Unitree G1 仅凭机载深度与 2D 速度指令完成 1.25 m 攀墙与多障碍长程跑酷。"
+summary: "PHP（arXiv:2602.15827）用 motion matching 将 OmniRetarget 原子跑酷技能与 locomotion 合成为长程参考，再以 DAgger+PPO 蒸馏为单一深度学生策略，使 Unitree G1 仅凭机载深度与 2D 速度指令完成 1.25 m 攀墙与多障碍长程跑酷；官方已开源训练、motion matching 与 MuJoCo sim2sim 代码，并发布示例数据和学生 ONNX。"
 ---
 
 # Perceptive Humanoid Parkour（PHP）
@@ -125,7 +126,7 @@ flowchart TB
 | 机构 | Amazon FAR；UC Berkeley；CMU；Stanford |
 | 平台 | Unitree G1（1.3 m，29 DoF） |
 | 并行规模 | 16 384 env；CNN+MLP；20K iter（专家/学生各） |
-| 演示 | [主页](https://php-parkour.github.io/) · [浏览器 MuJoCo demo](https://php-parkour.github.io/index-mobile.html) |
+| 演示 | [主页](https://php-parkour.github.io/) · [浏览器 MuJoCo demo](https://php-parkour.github.io/demo.html) · [官方代码](https://github.com/amazon-far/php_parkour) |
 
 ## 实验与评测
 
@@ -141,7 +142,7 @@ flowchart TB
 2. **Motion matching 只做离线参考** — 模板 `Locomotion → Skill → Locomotion` 密化入技能前步态/接近分布；部署时 matching **不在线计算**，闭环由深度学生完成。
 3. **纯 DAgger 不够** — 攀爬/翻越依赖短时大扭矩；对称但「过高/过低」的根轨迹在模仿损失下等价，故需混合 \(\lambda_{\mathrm{PPO}} L_{\mathrm{PPO}}+\lambda_D L_D\) 线性课程。
 4. **专家 vs 学生观测差** — 专家用特权 height scan + 全局根纠 drift；学生用 WARP 深度；学生阶段关闭专家 adaptive sampling、改均匀技能采样，终止阈值 **0.5 m→1 m** 缓解左右对称。
-5. **与 OmniRetarget 分工** — [2509.26633](./paper-hrl-stack-03-omniretarget.md) 是交互保留重定向数据层；PHP（2602.15827）是感知策略与技能链；代码截至核查日未发布。
+5. **与 OmniRetarget 分工** — [2509.26633](./paper-hrl-stack-03-omniretarget.md) 是交互保留重定向数据层；PHP（2602.15827）是感知策略与技能链。PHP 官方实现已于本次核查前公开，训练、数据生成和 MuJoCo sim2sim 可复现入口见下方源码归档。
 
 ## 与其他工作对比
 
@@ -157,14 +158,38 @@ flowchart TB
 - **以为 motion matching 在线运行：** 本文用于**离线**参考合成；实机闭环由**深度策略**完成，matching 不在部署时计算。
 - **以为纯 DAgger 即可：** 论文明确指出高动态技能需要 **PPO 辅助**，否则对称但「过高/过低」的根轨迹在模仿损失下等价。
 
-## 开源状态（项目页核查，2026-07-20）
+## 开源状态（官方源码核查，2026-10-10）
 
 | 资源 | 状态 |
 |------|------|
 | 项目页 | <https://php-parkour.github.io/> |
-| 浏览器 demo | <https://php-parkour.github.io/index-mobile.html>（MuJoCo 全浏览器交互，**非**训练源码） |
-| 代码 | **未发布**（页面按钮 *Code (Coming Soon)*） |
-| 源码运行时序图 | **不适用**（无官方可运行仓）；上游重定向可复用已开源的 [holosoma / OmniRetarget](./paper-hrl-stack-03-omniretarget.md) |
+| 浏览器 demo | <https://php-parkour.github.io/demo.html>（浏览器内 MuJoCo 交互演示，不等于本地训练环境） |
+| 官方代码 | [amazon-far/php_parkour](https://github.com/amazon-far/php_parkour)，Apache-2.0；含 motion matching、G1 teacher/student 训练与评估、ONNX 导出、MuJoCo sim2sim 启动脚本 |
+| 公开数据 / 权重 | 可下载 motion/terrain 示例数据和学生 depth_backbone.onnx + student.onnx；**不含**原始 .pt teacher/student checkpoint |
+| 环境边界 | motion matching 指南不需要 IsaacSim；训练/评估要求 Linux/NVIDIA + IsaacSim；sim2sim 运行于 MuJoCo 与仓库固定版本的 Holosoma，不要把浏览器 demo 当作实机部署入口 |
+
+## 源码运行时序图
+
+\`\`\`mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant D as motion_matching 与 assets 下载
+  participant T as wbt_training / IsaacSim
+  participant S as run_php_sim.sh / MuJoCo
+  participant P as run_php_inference.sh / ONNX 策略
+  U->>D: 生成 motion-terrain 数据或下载示例包
+  D-->>U: motion / terrain 数据集
+  U->>T: 训练 motion-tracking teachers
+  T->>T: DAgger + RL 蒸馏 depth student
+  T-->>U: 导出 depth_backbone.onnx + student.onnx
+  U->>S: 启动 G1 MuJoCo 仿真与深度相机
+  S-->>P: 通过共享内存提供深度帧
+  U->>P: 加载 ONNX 双模型并启动策略
+  P-->>S: 通过 Holosoma 本地接口输出关节目标
+\`\`\`
+
+复现路径：先按 motion_matching/README.md 生成或用 wbt_training/README.md 下载数据，再用 wbt_training/training_runs/ 训练/蒸馏；已发布 ONNX 可直接配合仓库根目录 run_php_sim.sh 与 run_php_inference.sh 在 MuJoCo 中做 sim2sim。
 
 ## 与其他页面的关系
 
@@ -182,6 +207,7 @@ flowchart TB
 
 - [php_parkour_arxiv_2602_15827.md](../../sources/papers/php_parkour_arxiv_2602_15827.md) — 论文摘要与方法摘录（主归档）
 - [php-parkour-github-io.md](../../sources/sites/php-parkour-github-io.md) — 项目页与浏览器 demo
+- [amazon-far-php-parkour.md](../../sources/repos/amazon-far-php-parkour.md) — Apache-2.0 官方实现、公开资产与运行入口
 - [humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md](../../sources/papers/humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md) — 42 篇栈策展摘录
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
 
@@ -189,6 +215,8 @@ flowchart TB
 
 - [RL Sim2Sim 在线演示：G1 Perceptive Parkour](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [机器人论文阅读笔记：Perceptive Humanoid Parkour](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching.html)
+- [官方代码与复现说明](https://github.com/amazon-far/php_parkour)
+- [浏览器交互 demo](https://php-parkour.github.io/demo.html)
 - 论文 PDF：<https://php-parkour.github.io/static/images/paper.pdf>
 - arXiv：<https://arxiv.org/abs/2602.15827>
 - 上游重定向：<https://arxiv.org/abs/2509.26633>（OmniRetarget）
