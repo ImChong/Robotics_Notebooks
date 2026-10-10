@@ -2,8 +2,9 @@
 type: method
 tags: [optimization, black-box-optimization, evolution-strategy, sim2real, system-identification, actuator]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 related:
+  - ./particle-swarm-optimization.md
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
   - ./actuator-network.md
@@ -90,6 +91,7 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 
 ## 关联页面
 
+- [PSO（粒子群优化）](./particle-swarm-optimization.md) — 同为无梯度黑箱搜索，但 PSO 更新个体记忆与位移，CMA-ES 更新高斯分布 / 协方差；按相同评价预算比较
 - [Sim2Real](../concepts/sim2real.md) — CMA-ES 标定是缩小 sim2real 差距的一条主线
 - [系统辨识](../concepts/system-identification.md) — CMA-ES 是其黑箱参数辨识的常用优化器
 - [关节执行器参数辨识](./joint-actuator-parameter-identification.md) — 何时用 CMA-ES、何时用线性回归

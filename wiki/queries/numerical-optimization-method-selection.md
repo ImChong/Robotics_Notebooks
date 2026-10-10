@@ -2,8 +2,10 @@
 type: query
 tags: [optimization, trajectory-optimization, optimal-control, constrained-optimization, method-selection]
 status: complete
-updated: 2026-06-24
+updated: 2026-10-10
 related:
+  - ../methods/particle-swarm-optimization.md
+  - ../methods/cma-es.md
   - ../methods/lqr-ilqr.md
   - ../methods/quasi-newton-bfgs.md
   - ../methods/l-bfgs.md
@@ -12,6 +14,7 @@ related:
   - ../methods/convex-relaxation-robotics.md
   - ./optimization-software-selection.md
 sources:
+  - ../../sources/papers/pso_foundations_1995_2012.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "机器人数值优化方法选型：按问题结构（含时序动力学 / 一般 NLP / 约束处理 / 非凸几何）在 LQR·iLQR、拟牛顿 BFGS、罚/障碍/增广拉格朗日、凸松弛四类算法间分层组合。"
 ---
@@ -72,6 +75,10 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - **位姿/配准类感知**：[凸松弛](../methods/convex-relaxation-robotics.md) 求全局下界 → GNC 抗外点 → 局部 [拟牛顿](../methods/quasi-newton-bfgs.md) 精修。
 - **离线全身 TrajOpt**：[iLQR/DDP](../methods/lqr-ilqr.md) 主循环 + 障碍/AL 处理接触与限位。
 
+## 补充：没有可靠梯度时的黑箱分支
+
+上述四层主要利用目标、梯度或动力学结构；若只能调用仿真器获得分数，可将 [PSO（粒子群优化）](../methods/particle-swarm-optimization.md) 与 [CMA-ES](../methods/cma-es.md) 作为离线黑箱基线。PSO 维护粒子历史最好记忆，CMA-ES 维护高斯搜索分布；两者不替代硬约束处理，也不提供任意目标的全局最优保证。比较时统一评价预算、随机条件与可行性规则，而不是只比较迭代次数。
+
 ## 常见误区
 
 - **把四类当成「四选一」**：它们在不同层（重构 / 约束处理 / 下降 / 结构利用），实际是叠加的。
@@ -90,5 +97,6 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 
 ## 参考来源
 
+- [PSO 原始研究与标准报告](../../sources/papers/pso_foundations_1995_2012.md) — 黑箱粒子群分支与稳定 / 全局最优的区别
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 数值优化基础课程（约束化、拟牛顿、最优控制、凸松弛各章）
 - Crocoddyl / cuRobo 官方文档（iLQR/DDP 与 GPU L-BFGS 工程实现）
