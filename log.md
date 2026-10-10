@@ -73,6 +73,11 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | 遗传算法与遗传编程一手资料及机器人应用
+
+- 归档 Holland、Goldberg、Koza、Hansen/Ostermeier 与 Storn/Price 的原著和论文。
+- 新增 GA、GP 方法页，补充 CMA-ES / DE 对照，并链接现有双足 GA 步态案例。
+
 ## [2026-10-10] ingest | OpenSCAD 参数化脚本 CAD 工具
 
 - 意图：归档 OpenSCAD 官方网站、文档与源码，建立独立软件实体页。

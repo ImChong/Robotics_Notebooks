@@ -5169,6 +5169,8 @@
 - [Gaussian Process Control（高斯过程控制）](wiki/methods/gaussian-process-control.md) — GP 控制：用高斯过程建立概率动力学模型，预测下一状态并给出不确定度，支持安全约束下的决策。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](wiki/methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](wiki/methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
+- [遗传算法（Genetic Algorithm, GA）](wiki/methods/genetic-algorithm.md) — 遗传算法**是一种群体式黑箱优化：将候选解编码成染色体，以适应度评价后反复选择、交叉和变异，逐代寻找更好的候选。 `📅unknown` `[method_page]`
+- [遗传编程（Genetic Programming, GP）](wiki/methods/genetic-programming.md) — 遗传编程**是将程序表示为可执行个体并通过适应度、选择、交叉和变异逐代演化的自动程序搜索方法；搜索对象是程序结构，而不只是固定维度参数。 `📅unknown` `[method_page]`
 - [GENMO（统一人体运动估计与生成）](wiki/methods/genmo.md) — GENMO**（*A GENeralist Model for Human MOtion*，NVIDIA Research，**ICCV 2025 Highlight**；代码与权重发布后更名为  `📅unknown` `[method_page]`
 - [GentleHumanoid（上半身柔顺全身运动跟踪）](wiki/methods/gentlehumanoid-motion-tracking.md) — GentleHumanoid**（Stanford 等，arXiv:2511.04679，[项目页](https://gen `📅unknown` `[method_page]`
 - [Grasp Pose Estimation（抓取位姿估计）](wiki/methods/grasp-pose-estimation.md) — 抓取位姿估计 (Grasp Pose Estimation)** 解决「相机看到一堆物体，应该把夹爪放在哪、怎么转、张多大」这一感知子问题：把 **RGBD / 深度 / 点云** 观测映射为一组 `📅unknown` `[method_page]`
