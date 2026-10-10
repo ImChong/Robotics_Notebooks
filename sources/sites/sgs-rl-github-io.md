@@ -2,6 +2,7 @@
 
 - **项目页：** https://sgs-rl.github.io/
 - **论文：** [A Balanced Data Diet: Addressing the Exploration Bottleneck in Mega-Scale RL for Robot Control](https://arxiv.org/abs/2610.12465)（arXiv:2610.12465）
+- **论文归档：** [arXiv v1 摘录](../papers/sgs_arxiv_2610_12465.md)
 - **作者：** Octi Zhang、Mateo Guaman Castro、Patrick Yin、Ignacio Dagnino、Abhishek Gupta、Rosario Scalise、Byron Boots
 - **机构：** University of Washington；NVIDIA（作者脚注）
 - **代码：** 官网当前为 “Code (coming soon)”，暂无可验证的 GitHub 仓库链接；截至 2026-10-10 未开源可运行实现。
