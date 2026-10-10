@@ -1439,6 +1439,13 @@
         "generalist-ai"
       ]
     },
+    "aether-ai": {
+      "label": "以太智能（Aether AI）",
+      "aliases": [
+        "aether-ai",
+        "aetherlabs"
+      ]
+    },
     "skild-ai": {
       "label": "斯齐尔德（Skild AI）",
       "aliases": [
