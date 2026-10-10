@@ -73,6 +73,8 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | sources/repos/php_parkour.md — 核实 PHP 官方开源，更新既有实体与项目页归档，补齐训练/ONNX Sim2Sim 时序与五组数据复现边界
+
 ## [2026-10-10] ingest | H-JEPA 分层视觉规划世界模型
 
 - 根据截图确认项目为 **H-JEPA: End-to-End Learning of Hierarchical World Models for Visual Planning**，论文 arXiv:2610.06805，官方项目页与代码仓库已核实。
