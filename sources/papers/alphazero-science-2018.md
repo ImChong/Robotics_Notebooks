@@ -19,4 +19,4 @@
 
 - [AlphaZero 实体页](../../wiki/entities/paper-alphazero.md)
 - [强化学习历史](../../wiki/concepts/reinforcement-learning-history.md)
-- [AlphaGo Zero](../../wiki/entities/paper-alphago-zero.md)
+- [强化学习历史](../../wiki/concepts/reinforcement-learning-history.md)
