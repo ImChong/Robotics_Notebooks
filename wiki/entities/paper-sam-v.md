@@ -51,7 +51,7 @@ SAM-V 将 SAM ViT-H 的逐帧图像特征与 VGGT 的多视角几何特征结合
 
 ## 流程总览
 
-~~~mermaid
+```mermaid
 flowchart LR
   I["N 张同场景 RGB 帧"] --> S["SAM 图像编码"]
   I --> V["VGGT 多视角几何编码"]
@@ -61,7 +61,7 @@ flowchart LR
   V --> F
   F --> D
   D --> O["按视角输出同一实例 masks"]
-~~~
+```
 
 ## Every-object 推理
 
@@ -72,14 +72,14 @@ flowchart LR
 3. 将一组点及其帧索引与全部场景帧送入 SAM-V，生成多视角候选实例 mask。
 4. 对候选执行 mask-overlap NMS，合并同一实体的重复预测。
 
-~~~mermaid
+```mermaid
 flowchart LR
   A["逐帧 SAM proposals"] --> B["proposal 内采样点组"]
   B --> C["SAM-V 跨视角解码"]
   C --> D["多视角候选实例 masks"]
   D --> E["overlap NMS 去重"]
   E --> F["场景实例输出"]
-~~~
+```
 
 因此，“every-object”并非零提示直接预测：它先由逐帧 SAM proposals 自动生成点提示，再调用同一个跨视角模型。
 
@@ -96,7 +96,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-~~~mermaid
+```mermaid
 sequenceDiagram
   autonumber
   actor User as 用户或上游程序
@@ -116,7 +116,7 @@ sequenceDiagram
   Decoder-->>Model: 每一帧的目标 mask 与置信度
   Model-->>Web: masks、scores、logits
   Web-->>User: 可视化跨视角分割结果
-~~~
+```
 
 上图对应 README 的浏览器 demo 和 SamVGGT 模型路径。训练路径使用 training/trainer.py；every-object 模式在模型外层增加 SAM proposals、masks/prompt_sampling.py 与 overlap NMS。
 
