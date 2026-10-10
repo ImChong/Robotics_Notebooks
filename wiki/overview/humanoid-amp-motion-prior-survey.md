@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 related:
   - ./mimic-control-evolution-lineage.md
   - ./humanoid-rl-motion-control-body-system-stack.md
@@ -15,6 +15,7 @@ related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ../entities/paper-cmp.md
+  - ../entities/paper-humble-human-motion-driven-behavior.md
   - ../methods/imitation-learning.md
   - ../entities/project-instinct.md
   - ../tasks/humanoid-locomotion.md
@@ -186,6 +187,10 @@ flowchart TB
 - [AMP_mjlab](../entities/amp-mjlab.md)、[Kimodo](../entities/kimodo.md)、[MimicKit](../entities/mimickit.md)、[ProtoMotions](../entities/protomotions.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)、[loco-manipulation](../tasks/loco-manipulation.md)
 - [Project Instinct](../entities/project-instinct.md) — Deep Parkour / Embrace Collisions 生态
+
+## 相邻路线：人体步态蒸馏（非 AMP）
+
+- [HuMBLE：人体动作驱动的具身 locomotion](../entities/paper-humble-human-motion-driven-behavior.md) — 用 teacher–student 蒸馏及 reference-guided / goal-conditioned 双任务 PPO 学习可转向人体风格步态；这条路线不使用 AMP 判别器，不应并入 AMP 方法本身。
 
 ## 参考来源
 
