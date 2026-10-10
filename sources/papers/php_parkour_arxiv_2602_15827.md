@@ -7,11 +7,13 @@
 - **类型：** paper / humanoid perceptive locomotion + skill chaining
 - **arXiv：** <https://arxiv.org/abs/2602.15827>（HTML：<https://arxiv.org/html/2602.15827v1>）
 - **PDF（官方）：** <https://php-parkour.github.io/static/images/paper.pdf>
-- **项目页：** <https://php-parkour.github.io/>（浏览器 MuJoCo 演示：<https://php-parkour.github.io/index-mobile.html>）
+- **项目页：** <https://php-parkour.github.io/>（浏览器 MuJoCo 演示：<https://php-parkour.github.io/demo.html>）
+- **代码：** <https://github.com/amazon-far/php_parkour>（2026-10-10 核查已开源，详见[实现归档](../repos/php_parkour.md)）
 - **会议：** RSS 2026（OpenReview：<https://openreview.net/forum?id=WzPoEM3McY>）
 - **作者：** Zhen Wu*, Xiaoyu Huang*, Lujie Yang*, Yuanhang Zhang, Xi Chen, Pieter Abbeel†, Rocky Duan†, Angjoo Kanazawa†, Carmelo Sferrazza†, Guanya Shi†, C. Karen Liu†（* equal；† Amazon FAR co-lead）
 - **机构：** Amazon FAR、UC Berkeley、CMU、Stanford University
 - **入库日期：** 2026-05-31
+- **开放状态更新：** 2026-10-10；代码、动作数据库、五组训练示例和学生 ONNX 已发布。论文完整实验与发布示例不可混作同一复现范围；教师 checkpoint 需自行训练。
 - **一句话说明：** 用 **motion matching** 把稀缺的人类跑酷原子技能与 locomotion 合成为长程运动学参考，再训练多技能 **motion-tracking 专家** 并 **DAgger + PPO** 蒸馏为单一 **深度图学生策略**，在 **Unitree G1** 上仅凭机载深度与离散 2D 速度指令自主完成越障、攀爬、翻越与滚落等长程跑酷。
 
 ## 摘要级要点
@@ -51,5 +53,6 @@
 
 ## 关联原始资料
 
+- 官方代码与复现边界：[`sources/repos/php_parkour.md`](../repos/php_parkour.md)
 - 项目页归档：[`sources/sites/php-parkour-github-io.md`](../sites/php-parkour-github-io.md)
 - 42 篇栈策展（保留）：[`humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md`](humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md)
