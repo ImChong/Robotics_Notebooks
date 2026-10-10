@@ -144,7 +144,7 @@ flowchart LR
 
 ### 推荐读什么
 - [分层四足导航栈](../wiki/concepts/hierarchical-quadruped-navigation-stack.md) 与 [HiPAN](../wiki/methods/hipan.md)
-- [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) 与 [NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md)
+- [NoMaD](../wiki/entities/paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md)、[NavDP](../wiki/entities/paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) 与 [OccPlanner](../wiki/entities/paper-occplanner-2608-14160.md) — 从目标条件扩散策略到占据条件 PixelGoal 规划
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md) — 人形导航深读锚点
 - [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
