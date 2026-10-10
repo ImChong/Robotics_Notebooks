@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 related:
 - ./physical-rsi.md
 - ./paper-gpt-6-astra-embodied-policy.md
@@ -32,6 +32,7 @@ related:
 - ./paper-prm-as-a-judge.md
 - ./xiaomi-robotics-1.md
 - ./paper-robodawn.md
+- ./paper-coap-embodied-turing-machines.md
 - ./simate.md
 - ./isaac-gym-isaac-lab.md
 - paper-rcl-wam-robot-learning-control-survey.md
@@ -40,6 +41,7 @@ related:
 - ../tasks/locomotion.md
 sources:
 - ../../sources/papers/robodojo_arxiv_2607_04434.md
+- ../../sources/papers/coap_embodied_turing_machines_arxiv_2610_12369.md
 - ../../sources/sites/robodojo-benchmark.md
 - ../../sources/repos/robodojo.md
 - ../../sources/repos/xpolicylab.md
@@ -80,6 +82,8 @@ venue: '2026'
 | WM | World Model | 环境前向预测模型 |
 
 ## 为什么重要
+
+- **策略案例而非基准本体：** [COAP](./paper-coap-embodied-turing-machines.md) 在 RoboDojo 42 个双臂仿真任务上报告 70.24% 成功率，并称测试运行时无需模型调用；这是论文作者报告的仿真策略结果，不是 RoboDojo 官方 verified 榜单成绩，也不表示 COAP 策略代码已公开。
 
 - **补「只 sim 或只 real」的评测断层：** 仿真吞吐高但缺物理部署压力；真机代表性强但贵且难复现。RoboDojo 强制同一策略栈跨两侧报告，对齐 [sim↔real 评测 gap](../concepts/sim-vs-real-eval-gap.md) 校准需求。
 - **能力维而非换皮任务：** 五维（泛化 / 记忆 / 精度 / 长程 / 开放词汇）刻意拉开难度，暴露简单基准掩盖的失败模式。
@@ -208,6 +212,8 @@ sequenceDiagram
 - **与认知基准不可混比：** [RoboBench](./robo-bench.md) 高分不蕴含 RoboDojo 高成功率。
 
 ## 关联页面
+
+- [COAP：具身图灵机与代码策略](./paper-coap-embodied-turing-machines.md) — RoboDojo 42 项双臂仿真任务上的论文报告；策略源码截至 2026-10-10 未提供公开入口。
 
 - [XPolicyLab](./xpolicylab.md) — 策略适配、O(N+M) 契约与上榜开源口（arXiv:2608.09892）
 - [VLA](../methods/vla.md) — 通用操纵策略方法总览
