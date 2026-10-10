@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-10
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -71,7 +71,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 | 技能解码后的原子动作 | ReSkill | 分层：高层选技能、低层残差细修 |
 | 人的输入通道 | RSA | base 是人，残差是辅助 |
 
-## 主要技术路线：十篇代表论文谱系
+## 主要技术路线：代表论文谱系
 
 | 论文 | 年份/出处 | Base 部分 | 残差输出 | 真机 | 开源 |
 |------|-----------|-----------|----------|------|------|
@@ -85,6 +85,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 | [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)（Li et al.） | 2025 | Conditional Motion Generator | 关节目标修正（PPO） | G1 走跑 2.5 m/s | 未开源 |
 | [ResMimic](../entities/paper-resmimic.md)（Zhao et al.） | 2025 | GMT 通用跟踪策略 | 全身动作修正（PPO） | G1 搬运 4.5–5.5 kg | 已开源 |
 | [RobotDancing](../entities/paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md)（Sun et al.） | 2025/2026（RA-L） | Retarget 参考轨迹（选择性 DoF） | 髋/膝 pitch 残差目标（PPO） | G1 长时程舞蹈 21/24 | 未开源 |
+| [ResGAC](../entities/paper-resgac-precise-se3-end-effector-tracking.md)（Seo et al.） | 2026（arXiv:2610.09479） | 几何导纳控制（GAC） | 手臂有界残差 + 腿/腰关节目标（FastSAC） | G1 双手跟踪、插孔 18/20 | 暂无公开代码 |
 | [ResSafe](../entities/paper-ressafe.md)（Qu et al.） | 2026 | 名义参考 / 任务策略 | 安全修正（残差 RL） | G1 极端平衡+载荷 | 待发布 |
 
 **推荐阅读顺序**：1 → 2 建立基础思想；3 理解动作模仿中的动力学失配补偿；4 理解真实腿足机器人控制器打底；8 → 9 对应现代 G1 人形形态；10 看「长参考 + 选择性残差」在舞蹈追踪上的工程配方。
