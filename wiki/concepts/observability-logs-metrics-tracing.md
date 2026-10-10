@@ -2,14 +2,16 @@
 type: concept
 tags: [systems-engineering, observability, logging, metrics, tracing, opentelemetry]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-10
 related:
   - ./container-orchestration-cicd.md
   - ./operating-system-basics.md
   - ../formalizations/control-loop-latency-modeling.md
+  - ./swinging-door-trending-compression.md
   - ../overview/hub-systems-engineering.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
+  - ../../sources/sites/aveva_pi_swinging_door_compression.md
 summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTelemetry 三支柱；运控环路用周期/抖动直方图，避免同步埋点拖垮实时性。"
 ---
 
@@ -49,6 +51,7 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 3. 云服务跟 RED；节点跟 USE。
 4. 告警基于 SLO，而非「有 error log 就叫人」。
 5. **队级/地理大屏（可选前端层）：** Metrics 聚合后可在浏览器用 Three.js + 图表库做运营视图；参考样板 [sc-datav](../entities/sc-datav.md)（静态 demo，需自接 API/OTel 查询，非内置后端）。
+6. **历史遥测压缩：** 若需长期归档，可在非实时的存储副本上使用 [Swinging Door Trending](./swinging-door-trending-compression.md) 这类有误差界的有损压缩；保留原始控制、安全和故障诊断数据，避免在硬实时环中同步压缩或写盘。
 
 ## 局限与风险
 
@@ -65,6 +68,7 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 ## 参考来源
 
 - [部署可观测安全一手资料](../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md)
+- [AVEVA PI 的 Swinging Door 压缩资料](../../sources/sites/aveva_pi_swinging_door_compression.md)
 
 ## 推荐继续阅读
 
