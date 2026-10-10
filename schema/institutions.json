@@ -2459,6 +2459,13 @@
         "westlake-scitrain"
       ]
     },
+    "westlake-robotics": {
+      "label": "西湖机器人（Westlake Robotics）",
+      "aliases": [
+        "westlake-robotics",
+        "wlrobo"
+      ]
+    },
     "peng-cheng-lab": {
       "label": "鹏城实验室（Peng Cheng Laboratory）",
       "aliases": [
