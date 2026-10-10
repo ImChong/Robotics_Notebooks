@@ -57,7 +57,7 @@ summary: "MotionSpaceFlow（MSFlow，LY Corporation，arXiv:2609.34190）：不�
 | 任务 | 文本→人体动作；推理期关节/帧空间约束 |
 | 表示 | HumanML3D 增量 263D；全局 XYZ 66D；扩展实验含 MotionStreamer 272D 与 SnapMoGen 296D |
 | 主干 | 68M 参数、8 个 RA-MMDiT blocks、宽度 512；冻结 DistilBERT 文本特征 + flow-time-aware Token Refiner |
-| 采样 | 高斯源尺度 (s=5)，50 步 flow；Heun 积分并在末端做 Euler 更新 |
+| 采样 | 高斯源尺度 `s=5`，50 步 flow；Heun 积分并在末端做 Euler 更新 |
 | 官方开放材料 | [代码](https://github.com/lycorp-jp/MSFlow)、[预训练权重](https://huggingface.co/ly-corporation/MSFlow)、[项目页](https://yu1ut.com/MSFlow-HP/) |
 
 ## 流程总览
@@ -83,17 +83,17 @@ flowchart LR
 
 ### 1. 直接在动作空间生成
 
-设干净动作序列为 (x_1)，随机高斯源为 (x_0=sepsilon)，中间路径为：
+设干净动作序列为 `x₁`，随机高斯源为 `x₀ = sε`，中间路径为：
 
 [
-x_t=(1-t)x_0+t x_1,quad epsilonsimmathcal{N}(0,I)
+`xₜ = (1−t)x₀ + t x₁`，其中 `ε ~ N(0, I)`。
 ]
 
 网络预测干净动作 (hat{x}_1=f_	heta(x_t,t,c))，再由当前状态和预测端点计算速度，沿 ODE 积分到终点。直接生成消除了“生成 latent → 通过固定 decoder 重建”的限制；论文也明确指出，这并不代表直接生成在所有情形都必然优于 latent 模型。
 
 ### 2. 源噪声尺度需要按表示选择
 
-直接运动表示在不同维度和时间位置上的方差各异。论文推导各方向信噪比与中间协方差，发现增大源尺度 (s) 会让信号更晚出现，同时改善中间分布的条件数。主模型选择 (s=5)。这是作用在 flow path 的训练/推理参数，不等同于只在推理时调节的 temperature。
+直接运动表示在不同维度和时间位置上的方差各异。论文推导各方向信噪比与中间协方差，发现增大源尺度 `s` 会让信号更晚出现，同时改善中间分布的条件数。主模型选择 `s=5`。这是作用在 flow path 的训练/推理参数，不等同于只在推理时调节的 temperature。
 
 ### 3. Attention mask 随时间语义变化
 

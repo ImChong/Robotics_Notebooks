@@ -20,8 +20,8 @@
 常见文本到动作模型先把动作压入学习得到的 latent，再从 latent 解码回动作；压缩与解码会限制帧和关节的直接访问。MotionSpaceFlow（MSFlow）直接把原始连续动作张量作为流匹配变量，保持原始时间分辨率，并设计适配不同运动表示的噪声路径和时序注意力。
 
 1. **两类表示。** HumanML3D 的 263D 表示包含根部速度等增量量，累积后得到全局轨迹；全局 XYZ 变体每帧使用 22 个关节的绝对三维坐标，共 66D，便于直接设定空间约束。
-2. **Representation-aware noise scaling。** 初始噪声为标准差为 (s) 的高斯张量；论文分析 (s) 如何影响信号沿 flow path 出现的时间与中间分布条件数，主模型使用 (s=5)。
-3. **Clean-motion prediction。** RA-MMDiT 预测干净终点动作 (hat{x}_1)，再换算成 flow velocity；对 (1-t) 的分母做下限裁剪以处理终点附近的数值不稳定。
+2. **Representation-aware noise scaling。** 初始噪声为标准差为 `s` 的高斯张量；论文分析 `s` 如何影响信号沿 flow path 出现的时间与中间分布条件数，主模型使用 `s=5`。
+3. **Clean-motion prediction。** RA-MMDiT 预测干净终点动作 `x̂₁`，再换算成 flow velocity；对分母 `1−t` 做下限裁剪以处理终点附近的数值不稳定。
 4. **RA-MMDiT。** 68M 参数、8 个 512 维 block；冻结 DistilBERT 输出词级文本特征，经 flow-time-aware Token Refiner 对齐到模型宽度。联合注意力让每帧动作特征读取相关词语。
 5. **注意力匹配表示。** 对帧间增量的 263D 表示使用 causal mask；对全局 XYZ 位置使用 bidirectional mask，利用前后帧上下文保持整段骨架的一致性。
 6. **推理期空间控制。** XYZ 模型通过 projection sampling 在推理时固定任意关节、帧和坐标轴；控制坐标没有进入训练目标，因此属于无需控制条件训练的推理期控制。
