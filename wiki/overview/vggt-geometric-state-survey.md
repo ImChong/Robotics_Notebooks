@@ -157,6 +157,7 @@ flowchart TB
 - [Glob3R](../entities/paper-glob3r.md)、[Wid3R](../entities/paper-wid3r.md)
 - [VGGT-World](../entities/paper-sa-2603-12655-vggt-world-transforming-vggt-into-an-autoregress.md)
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — VGGT-Omega 工程复用例
+- [SAM-V](../entities/paper-sam-v.md) — VGGT 几何特征与 SAM 提示融合，实现跨视角实例分割
 
 ## 参考来源
 
