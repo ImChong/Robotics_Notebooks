@@ -16,6 +16,16 @@
 
 - **已开源**：公开仓库（以 README 与 release 为准）。
 
+## README / 包核查（2026-10-10）
+
+- **README：** `raw.githubusercontent.com/LightwheelAI/LW-Egosuite-DevKit/main/README.md` 可读（200）；GitHub API 经代理 403。
+- **许可：** Apache-2.0（Copyright 2026 Lightwheel Team）。
+- **PyPI：** `lw-egosuite-devkit`，0.1.2（2026-03-03）→ 1.0.2（2026-08-06）。
+- **功能：** `lw-egosuite convert`（原始 MCAP → `_vis.mcap`，骨架/轨迹/语义叠加）、LW-VIZ（<https://foxviz.lightwheel.net/>）可视化、`lw-egosuite export-video`（MP4 导出）、Python `iter_messages` / `iter_video_frames`。
+- **数据文档：** <https://docs.lightwheel.net/egocentric_data/>（MCAP topic 与 LeRobot v3 导出规范）。
+- **母产品：** [Lightwheel EgoSuite 归档](../blogs/lightwheel_egosuite.md)
+
 ## 对 wiki 的映射
 
 - [wiki/entities/cn-os-lw-egosuite-devkit.md](../../wiki/entities/cn-os-lw-egosuite-devkit.md)
+- [wiki/entities/lightwheel-egosuite.md](../../wiki/entities/lightwheel-egosuite.md)

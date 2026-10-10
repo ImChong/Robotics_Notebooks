@@ -13,7 +13,7 @@
 - **入库日期：** 2026-08-17
 - **一句话说明：** 光轮在 Isaac Lab-Arena 上的具身仿真评测底座：多本体厨房任务、遥操作采数、RL/IL 与 EnvHub 策略评测。
 - **交叉归档：** [LW BENCHHUB TOUR](lw_benchhub_tour.md)、[Lightwheel Platform](../sites/lightwheel-platform.md)
-- **沉淀到 wiki：** 本条不单独升格；工程闭环见 [lw-benchhub-tour](../../wiki/entities/lw-benchhub-tour.md)
+- **沉淀到 wiki：** 主节点 [cn-os-lw-benchhub](../../wiki/entities/cn-os-lw-benchhub.md)（2026-10-10 升格）；工程闭环见 [lw-benchhub-tour](../../wiki/entities/lw-benchhub-tour.md)
 
 ---
 
