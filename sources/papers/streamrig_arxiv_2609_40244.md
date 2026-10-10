@@ -5,8 +5,8 @@
 - **项目页：** <https://weiyufei0217.github.io/StreamRig/>
 - **代码：** <https://github.com/WeiYuFei0217/StreamRig>
 - **提交日期：** 2026-09-30（arXiv v1）
-- **作者：** Yufei Wei, Shuhao Ye, Qi Wang, Xin Zheng, Qing Huang, Rong Xiong, Yue Wang
-- **机构：** 浙江大学；华南理工大学（按项目页作者上标）
+- **作者：** Yufei Wei（魏雨飞，一作）, Shuhao Ye, Qi Wang, Xin Zheng, Qing Huang, Rong Xiong, Yue Wang（通讯作者）
+- **机构：** 浙江大学、华南理工大学（按论文作者单位标注）
 - **投稿状态：** 项目作者主页列为 ICRA 2027 under review；arXiv 预印本不等于会议录用
 - **一句话说明：** 冻结多视图 3D 基础模型来联合感知同步标定相机组，再用轻量因果时序模块压缩历史并估计相机组在线位姿。
 
@@ -27,5 +27,4 @@ StreamRig 面向移动机器人和车辆的同步多相机 rig。冻结前端把
 
 - [StreamRig 项目与论文页归档](../sites/streamrig-weiyufei0217-github-io.md)
 - [StreamRig 官方代码仓库归档](../repos/streamrig.md)
-- [StreamRig 论文详情](../../wiki/entities/paper-streamrig.md)
-- [StreamRig 项目详情](../../wiki/entities/streamrig.md)
+- [StreamRig 论文 + 项目唯一节点](../../wiki/entities/streamrig.md)
