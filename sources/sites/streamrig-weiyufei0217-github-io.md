@@ -21,5 +21,4 @@
 
 - [StreamRig 论文题录与摘要](../papers/streamrig_arxiv_2609_40244.md)
 - [StreamRig 官方仓库与复现入口](../repos/streamrig.md)
-- [论文详情](../../wiki/entities/paper-streamrig.md)
-- [项目详情](../../wiki/entities/streamrig.md)
+- [StreamRig 论文 + 项目唯一节点](../../wiki/entities/streamrig.md)
