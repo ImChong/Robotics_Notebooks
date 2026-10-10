@@ -5,7 +5,7 @@ status: complete
 updated: 2026-10-10
 project_id: alphazero
 arxiv: "1712.01815"
-papers: ["doi:10.1126/science.aar6404"]
+doi: "10.1126/science.aar6404"
 project: https://deepmind.google/blog/alphazero-shedding-new-light-on-chess-shogi-and-go/
 related:
   - ../concepts/reinforcement-learning-history.md
