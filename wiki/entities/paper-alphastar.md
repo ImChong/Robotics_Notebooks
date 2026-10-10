@@ -4,7 +4,7 @@ tags: [paper, google-deepmind, alphastar, deep-rl, multi-agent, starcraft]
 status: complete
 updated: 2026-10-10
 project_id: alphastar
-papers: ["doi:10.1038/s41586-019-1724-z", "openreview:Np8Pumfoty"]
+doi: "10.1038/s41586-019-1724-z"
 project: https://deepmind.google/blog/alphastar-grandmaster-level-in-starcraft-ii-using-multi-agent-reinforcement-learning/
 code: https://github.com/google-deepmind/alphastar
 related:
