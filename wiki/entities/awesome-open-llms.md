@@ -25,6 +25,15 @@ summary: "Awesome Open LLMs 是中文开源模型月度追踪档案：以 Markdo
 
 **一个由 Markdown 驱动的中文开源模型发布目录：适合发现和回溯模型，不替代官方模型卡、论文或标准化评测。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| LLM | Large Language Model | 项目追踪的开源大语言模型 |
+| NLP | Natural Language Processing | 维护者署名「刘聪 NLP」中的自然语言处理 |
+| API | Application Programming Interface | 模型服务接口；可用性可能随时间变化 |
+| PR | Pull Request | 向仓库提交新模型或更正的贡献方式 |
+
 ## 基本信息
 
 | 项目 | 内容 |

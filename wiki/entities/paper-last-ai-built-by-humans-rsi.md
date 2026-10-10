@@ -123,6 +123,7 @@ flowchart LR
 - [RSI Survey（2607.07663）](./paper-rsi-survey-2607-07663.md) — 文献 taxonomy 与验证层级
 - [RRSI（2609.24972）](./paper-rrsi-2609-24972.md) — 可运行的有界 harness 自演化路线
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 对照本论文五级自治框架
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照 HCI 跨基准归一化：具身侧如何在可复现性、真实代表性与成本之间选评测基准
 
 ## 参考来源
 

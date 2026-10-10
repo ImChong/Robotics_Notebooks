@@ -87,6 +87,21 @@ flowchart TB
 - 官方仓库含有实验代码，但未提供 deployment packages；复现实机延迟与真机部署仍需额外系统集成。
 - 论文对四个本体报告的性能接近是该实验集合上的结论，不能推断任意任务、噪声和硬件都保持相同比例。
 
+## 与其他工作对比
+
+| 对照对象 | RFPO 的处理 | 区别 |
+|---|---|---|
+| 64 步 flow policy 基线 | 作为质量参照 | 基线动作质量好但需多步 ODE 积分；RFPO 单次 Euler 更新保留 Go2 上 98.5% reward |
+| 直接截断推理步数 | 论文所称 few-step discretization gap 的来源 | 截断不改变向量场；RFPO 用 reward-aware online reflow 让学生流轨迹更直、适合少步积分 |
+| 冻结 Gaussian PPO 控制器 | 作为动作监督与回报 teacher | PPO 控制器单步即可出动作，但不具备 flow 策略的多模态动作表达；RFPO 用它监督多预算蒸馏 |
+| [Consistency Models](./paper-rcl-ref-041a05059886890708fc-consistency-models.md) 等少步生成方法 | 同属把多步生成压到少步 | 通用少步生成以样本分布一致为目标；RFPO 在具身控制中以在线回报为对齐信号 |
+
+流匹配具身策略的背景与工程实例见 [Flow Matching 具身策略](../concepts/flow-matching-embodied-policy.md)。
+
+## 结论
+
+RFPO 把 flow policy 的推理成本问题转成训练期的蒸馏问题：在线回报驱动 reflow、多预算动作蒸馏和自适应计算正则，让部署时只需一次 Euler 更新。论文在 Go2、Spot、H1、G1 上报告单步回报与 64 步相差不超过 2.4%，Go2 推理延迟降约 54.9×。这些结论限于论文的平台与协议；官方仓库只覆盖 Go2/G1 的 Isaac Lab 实验且不含部署包，真机低延迟部署仍需自行集成。
+
 ## 关联页面
 
 - [人形 locomotion](../tasks/humanoid-locomotion.md) — 具身运动控制任务入口。

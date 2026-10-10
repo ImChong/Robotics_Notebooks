@@ -93,6 +93,20 @@ flowchart TB
 - 论文指出 centroidal 预测不显式验证关节层面的可执行性；抓取获取、重新抓握和快速接触转换不在已展示能力范围内。
 - CP-CBF 属训练时的近似引导，部署时移除，不提供 runtime safety guarantee。
 
+## 与其他工作对比
+
+| 工作 | 共同点 | 关键区别 |
+|---|---|---|
+| [Thor](./paper-hrl-stack-42-thor.md) | Unitree G1 上的强接触全身反应 RL | Thor 以 force-adaptive torso-tilt reward 与解耦架构应对外力；HULK 用载荷感知 centroidal MPC 生成训练奖励参照，并覆盖抱持负载行走 |
+| [FALCON](./paper-loco-manip-161-109-falcon.md) | 人形 forceful loco-manipulation | FALCON 拆成上下肢双 agent 与力课程；HULK 训练腕力 / 抱持两类教师后蒸馏成单一全身策略 |
+| [Centroidal NMPC + WBC](../methods/centroidal-nmpc-wbc-stack.md) | 都用质心动力学预测 | 经典栈在运行时执行 MPC 并由 WBC 跟踪；HULK 只在训练期用 MPC 指导 RL，部署的是学习策略 |
+
+多教师蒸馏成单一部署策略的通用做法见 [Multi-Expert Distillation](../methods/multi-expert-distillation.md)。
+
+## 结论
+
+HULK 把载荷动力学预测作为 RL 的训练期指导，而不是部署期规划器：MPC 奖励参照加 CP-CBF 平衡引导训练两类专家，再蒸馏成一个 G1 全身策略，真机完成 150 kg 推车（5/6）与多种抱持负载行走。结果说明「模型预测指导 + 学习策略」能让人形在持续受力下保持平衡；但抓握获取、重新抓握与快速接触切换不在验证范围内，CP-CBF 部署时移除也不提供运行时安全保证，且官方代码尚未核实公开。
+
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 腿式平台边移动边操作的任务入口。

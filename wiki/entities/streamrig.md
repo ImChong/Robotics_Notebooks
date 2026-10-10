@@ -23,6 +23,18 @@ summary: "StreamRig开源仓库提供多相机流式里程计训练、评测和�
 
 **StreamRig** 是一套基于冻结多视图 3D 基础模型的因果多相机视觉里程计项目，由浙江大学与华南理工大学团队提出。项目不输出控制动作，而是从同步标定的多相机图像流估计 rig 位姿。论文方法与实验解读见[独立论文详情](./paper-streamrig.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| VO | Visual Odometry | 项目输出的多相机视觉里程计 |
+| KV cache | Key-Value cache | CausalBridge 维护的因果历史缓存 |
+| ATE | Absolute Trajectory Error | 完整序列 SE(3) 对齐后的绝对轨迹误差 |
+| SE(3) | Special Euclidean group in 3D | 三维刚体位姿（旋转 + 平移） |
+| G2G | Group-to-Group | 跨相机组重定位模型，提供训练 warm-start 权重 |
+| IMU | Inertial Measurement Unit | 惯性测量单元；仓库不提供 IMU 融合 |
+| CC BY-NC | Creative Commons Attribution-NonCommercial | 主仓库采用的 4.0 非商业许可 |
+
 ## 项目资源
 
 | 资源 | 入口 | 当前核实内容 |

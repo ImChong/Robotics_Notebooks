@@ -130,6 +130,16 @@ sequenceDiagram
 - **工程前提不可忽略。** 初始 embodiment adaptation 使用遥操作数据；节省的是后续任务专属采集，而非所有人类数据。
 - **开源状态：** 论文记录未附项目页或代码链接，复现以论文所述配置为限。
 
+## 与其他工作对比
+
+| 工作 | 共同点 | 关键区别 |
+|---|---|---|
+| [DreamGen](./paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) | 用视频世界模型生成的合成视频作为动作学习数据 | DreamGen 从生成视频提取「神经轨迹」训练下游策略；AutodidactWAM 把提取动作回灌到同一 WAM 的动作路径，做跨模态自蒸馏 |
+| [S-VAM](./paper-rcl-2603-16195-s-vam-shortcut-video-action-model-by-self-distil.md) | 都属于视频—动作模型的自蒸馏 | 按题目，S-VAM 以自蒸馏学习 shortcut 式少步生成（细节以原文为准）；AutodidactWAM 关注视频与动作模态的一致性，以真机抓放结果检验 |
+| [Cosmos 3](./cosmos-3.md) 原生动作 | 同一基座模型 | 原生动作在 Oreo 完整任务上为 0%；DPO + SFT + DTW 后训练提升到 20%，说明视觉合理不等于动作可执行 |
+
+更宽的范式背景见 [World Action Models](../concepts/world-action-models.md)。
+
 ## 结论
 
 AutodidactWAM 提供了一种值得继续验证的监督构造方式：让生成视频成为动作学习的中间介质，再通过真机任务衡量动作是否真正可执行。当前证据来自单任务、小样本、单臂 G1 pilot；提取器重放不能替代策略指标，初始 embodiment adaptation 仍需要遥操作数据，因此不应将结果外推为通用 humanoid 操纵能力。

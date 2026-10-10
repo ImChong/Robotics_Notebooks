@@ -25,6 +25,16 @@ summary: "X2Real基于Isaac Lab-Arena，提出面向通才操作策略的仿真�
 **项目团队：** X Square Robot（自变量机器人；arXiv 摘要页未提供作者逐人机构映射）  
 **作者：** Lian Ruan, Jade Yang, Sherphylan Gao, Felix Gao, Kyson Liang, Galen Liu, Ligo Wu, Lane Jin, Guu Gu, Bevan Xie, Cloud Yan, Zongzi Yuan, Kino Luo, Emma Chen, Shuwen Chen, Yang Ping, Miles Guo, Rain Sun, Kayden Zhang, Alex Du, Ruihai Wu, Liang Hao, Zhaoshuo Li, Roy Gan, Hao Wang, Qian Wang.
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 本文含义 |
+|---|---|---|
+| X2Real | eXtensive simulation benchmark for real-world generalist policies | 本文提出的通才操作策略仿真评测基准 |
+| Sim2Real | Simulation-to-Real | 仿真评测结果与真实机器人表现之间的对应 / 迁移 |
+| DSL | Domain-Specific Language | Mana 是面向物理任务设计的领域专用语言 |
+| HF | Hugging Face | 公开静态仿真资产集的托管平台 |
+| API | Application Programming Interface | 本页图示不代表已核实的具体接口 |
+
 ## 一句话概括
 
 X2Real 针对通才机器人操作策略评测中的仿真—真机差距、任务覆盖不足和训练 / 测试不公平，构建一个基于 NVIDIA Isaac Lab-Arena 的可扩展仿真基准。
@@ -112,6 +122,20 @@ sequenceDiagram
 - 44 项任务的数量本身不能替代对能力维度、长程阶段和测试分布的审查。
 - 多轴域随机化和训练 / 评测分离能降低某些评测偏差，但并不自动证明所有任务都没有泄漏或过拟合。
 - 项目公开资产包不是完整 benchmark 代码；目前不能仅凭该 HF 仓库确认任务定义、控制逻辑和策略权重均已开放。
+
+## 与其他工作对比
+
+| 工作 | 共同点 | 关键区别 |
+|---|---|---|
+| [Isaac Lab-Arena](./isaac-lab-arena.md) | X2Real 直接构建于其上 | Arena 是通用的场景 / 本体 / 任务运行时组装与评测扩展；X2Real 是在其上定义的具体任务套件，并附带视觉 / 物理校准与仿真—真机相关性验证 |
+| [LIBERO](./libero-benchmark.md) | 都以固定任务套件评测操作策略 | LIBERO 侧重终身学习与分布偏移；X2Real 把仿真分数能否预测真机表现（0.84 线性相关）作为基准可信度的核心证据 |
+| [RoboTwin-Phys](./paper-robotwin-phys.md) | 都关注物理差异如何影响策略评测 | RoboTwin-Phys 连续采样物理参数来测鲁棒性；X2Real 先校准贴近真机，再用多轴域随机化与训练 / 评测隔离控制公平性 |
+
+放在[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)中看，X2Real 属于「策略任务成功率评测」与「sim↔real 评测 gap 校准」两层的交界：它既给出任务套件，也给出仿真分数与真机分数的关联证据。仿真评测在可复现性与真实代表性之间的取舍见 [Sim vs Real 评测落差](../concepts/sim-vs-real-eval-gap.md)。
+
+## 结论
+
+X2Real 的贡献在于把「仿真分数是否代表真机能力」写进基准设计目标：校准保真度、44 项长程任务覆盖 10 类能力、训练 / 评测严格分离，并以 0.84 的仿真—真机线性相关作为证据。该相关性是论文实验范围内的总体主张；公开资源目前只有静态仿真资产，GitHub 仓库访问返回 404、数据集许可证仍为 TODO。现阶段更适合作为仿真评测设计的参考，完整复现与横向引用需等代码和实验细节公开后再核对。
 
 ## 关联页面
 
