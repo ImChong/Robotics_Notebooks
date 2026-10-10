@@ -14,7 +14,6 @@ related:
   - ./paper-unisim-slam.md
   - ./paper-glob3r.md
   - ./paper-vgg-ttt.md
-  - ./paper-streamrig.md
   - ./streamrig.md
 sources:
   - ../../sources/papers/g2g_arxiv_2606_08284.md
@@ -199,4 +198,4 @@ sequenceDiagram
 
 ## 后续工作：StreamRig 流式多相机里程计
 
-StreamRig 的官方训练配置使用 G2G relocalization checkpoint 作为 warm-start：G2G 提供 group relocalization 能力，StreamRig 再把它用于因果、多相机 rig 的在线里程计。两者是前后衔接的独立工作，详见 [StreamRig 论文](./paper-streamrig.md) 与 [StreamRig 项目](./streamrig.md)。
+StreamRig 的官方训练配置使用 G2G relocalization checkpoint 作为 warm-start：G2G 提供 group relocalization 能力，StreamRig 再把它用于因果、多相机 rig 的在线里程计。两者是前后衔接的独立工作，详见统一的 [StreamRig 论文与项目节点](./streamrig.md)。
