@@ -7,7 +7,8 @@
 - **类型：** paper / humanoid perceptive locomotion + skill chaining
 - **arXiv：** <https://arxiv.org/abs/2602.15827>（HTML：<https://arxiv.org/html/2602.15827v1>）
 - **PDF（官方）：** <https://php-parkour.github.io/static/images/paper.pdf>
-- **项目页：** <https://php-parkour.github.io/>（浏览器 MuJoCo 演示：<https://php-parkour.github.io/index-mobile.html>）
+- **项目页：** <https://php-parkour.github.io/>（浏览器 MuJoCo 演示：<https://php-parkour.github.io/demo.html>）
+- **官方源码（2026-10-10 核验）：** <https://github.com/amazon-far/php_parkour>（Apache-2.0；motion matching、训练 / 评估、ONNX 导出与 MuJoCo sim2sim；详见 [`amazon-far-php-parkour.md`](../repos/amazon-far-php-parkour.md)）
 - **会议：** RSS 2026（OpenReview：<https://openreview.net/forum?id=WzPoEM3McY>）
 - **作者：** Zhen Wu*, Xiaoyu Huang*, Lujie Yang*, Yuanhang Zhang, Xi Chen, Pieter Abbeel†, Rocky Duan†, Angjoo Kanazawa†, Carmelo Sferrazza†, Guanya Shi†, C. Karen Liu†（* equal；† Amazon FAR co-lead）
 - **机构：** Amazon FAR、UC Berkeley、CMU、Stanford University
@@ -52,4 +53,5 @@
 ## 关联原始资料
 
 - 项目页归档：[`sources/sites/php-parkour-github-io.md`](../sites/php-parkour-github-io.md)
+- 官方代码归档：[`sources/repos/amazon-far-php-parkour.md`](../repos/amazon-far-php-parkour.md)
 - 42 篇栈策展（保留）：[`humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md`](humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md)
