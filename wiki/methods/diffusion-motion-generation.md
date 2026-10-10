@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-09-17
+updated: 2026-10-10
 related:
   - ../entities/kimodo.md
   - ../entities/kimodo-cpp.md
@@ -11,6 +11,7 @@ related:
   - ../entities/generative-motion-rig.md
   - ../entities/paper-scheduled-inpainting-gme.md
   - ../entities/paper-muninn-trajectory-diffusion-acceleration.md
+  - ../entities/paper-motionspaceflow.md
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
   - ../entities/paper-diffsheg.md
@@ -152,6 +153,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [DiffSHEG](../entities/paper-diffsheg.md) — 语音→3D 表情+手势联合扩散（数字人资产；非机器人策略）
 - [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md) — RL + CVAE 潜空间，室内人–场景交互运动合成（非扩散）
 - [HY-Motion 1.0](./hy-motion-1.md) — 十亿级 DiT+流匹配的人体文本→运动开源系列（腾讯混元）
+- [MotionSpaceFlow](../entities/paper-motionspaceflow.md) — 直接在连续 motion space 上进行 representation-aware flow matching；支持全帧/关节推理期约束
 - [DART（DartControl）](./dart-control.md) — 自回归原语潜扩散 + 在线文本与空间控制（ICLR 2025，ETH）
 - [Kimodo（实体页）](../entities/kimodo.md) — 文本 + 运动学约束的人形/人体运动扩散官方实现
 - [kimodo.cpp](../entities/kimodo-cpp.md) — Kimodo 的 C++/GGML 本地运行时（CPU/Vulkan；约束未移植）

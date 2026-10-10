@@ -110,6 +110,7 @@ flowchart LR
 
 ### 推荐读什么
 - [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)、[GENMO](../wiki/methods/genmo.md)、[Kimodo](../wiki/entities/kimodo.md) — 规模化三线
+- [MotionSpaceFlow](../wiki/entities/paper-motionspaceflow.md) — 无动作编解码器的全分辨率 motion-space flow matching；HumanML3D / SnapMoGen 上验证文本生成与零样本关节/帧约束
 - [ARDY](../wiki/entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
 - [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 谱系主入口
 - [Guided Motion Diffusion](../wiki/entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) 与 [OmniControl](../wiki/entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) — 可控生成机制
