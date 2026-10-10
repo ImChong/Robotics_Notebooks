@@ -14,6 +14,7 @@ tags:
 status: complete
 updated: 2026-10-10
 arxiv: "2610.06805"
+project_id: hjepa-visual-planning-arxiv-2610-06805
 project: https://h-jepa.com/
 code: https://github.com/kevinghst/H-JEPA
 related:
