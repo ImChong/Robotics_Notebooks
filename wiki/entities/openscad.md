@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [software, cad, parametric-modeling, constructive-solid-geometry, 3d-printing, open-source]
+tags: [software, cad, parametric-modeling, constructive-solid-geometry, 3d-printing, open-source, openscad]
 status: complete
 updated: 2026-10-10
 project_id: openscad-parametric-cad

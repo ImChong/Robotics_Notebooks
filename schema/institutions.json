@@ -643,6 +643,12 @@
         "farama-foundation"
       ]
     },
+    "openscad": {
+      "label": "开源参数化 CAD 项目（OpenSCAD）",
+      "aliases": [
+        "openscad"
+      ]
+    },
     "freecad": {
       "label": "自由 CAD 项目（FreeCAD）",
       "aliases": [
