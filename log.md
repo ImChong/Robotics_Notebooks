@@ -73,6 +73,14 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | sources/sites/archon-tech.md — 公司路线新增源策未来（Archon Robotics）：新建公司总览与 Whole-Body Intelligence 博文详情，关联 RoboNaldo、EgoHumanoid-V2
+
+## [2026-10-10] ingest | sources/sites/wlrobo-com.md — 公司路线新增西湖机器人：新建公司总览、TITAN O1、傲天 U1 详情，GAE 补官方下载版与开放状态
+
+## [2026-10-10] ingest | sources/sites/lightwheel-blog-index.md — 公司路线新增光轮智能：官网 18 篇博客与新闻稿全部对应详情，新建 4 页、补全 RoboFinals / LW-BenchHub / EgoSuite DevKit / SimReady 资产页
+
+## [2026-10-10] ingest | sources/sites/aetherlabs-blog-index.md — 公司路线新增 Aether AI：CRIS-0 等官网 11 篇博客与 3 条新闻全部对应详情，新建 8 个页面
+
 ## [2026-10-10] ingest | Physical AI 云工具链、世界模型与视觉触觉数据
 
 - 复核了 5 个入口：VPP2 已有独立详情页、arXiv/项目页/代码归档与 Mermaid 图，沿用现有条目，不重复创建。

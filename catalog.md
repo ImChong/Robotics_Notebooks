@@ -16,6 +16,9 @@
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](wiki/entities/adams.md) — ADAMS** 是面向三维机械系统的 **多体动力学（Multibody Dynamics, MBD）** 自动建模与数值仿真程序谱系：名称与核心数值配方来自 Nicolae Orlandea 在 `📅unknown` `[entity_page]`
 - [AERIS-10（PLFM_RADAR）](wiki/entities/aeris-10-plfm-radar.md) — AERIS-10** 是 GitHub 上高关注度的 **开源脉冲线性调频（PLFM）相控阵雷达** 全栈：从原理图、PCB、FPGA 固件到 Python 可视化一应俱全，适合研究 **波束赋形 `📅unknown` `[entity_page]`
+- [Aether AI（因果世界模型）](wiki/entities/aether-ai.md) — Aether AI**：2026 年春在 San Diego 成立的 AI 公司，创始人是 UCSD 助理教授 **黄碧薇（Biwei Huang）**，出自 CMU 因果发现学派。公司主张  `📅unknown` `[entity_page]`
+- [CRIS-0：因果驱动的真实世界机器人智能系统（Aether AI）](wiki/entities/aether-cris-0.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [RSIAgent：新环境中的自主探索式递归自改进](wiki/entities/aether-rsiagent.md) — RSIAgent**（*Autonomous Exploration for Recursive Self-Improvement in New Environments*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [Agent Lightning（Microsoft）](wiki/entities/agent-lightning.md) — Agent Lightning**（microsoft/agent-lightning）是微软研究院 `📅2026-09-19` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [Agent Skills（Addy Osmani）](wiki/entities/agent-skills-addyosmani.md) — Agent Skills** 是 addyosmani/agent-skills 仓库及其 [skill `📅unknown` `[entity_page]`
@@ -52,6 +55,8 @@
 - [AprilTag（视觉 fiducial 与检测库）](wiki/entities/april-tag.md) — AprilTag** 是一类为**机器人、相机标定与 AR** 设计的**视觉基准标记（visual fiducial）**系统：标记可用普通打印机制作，软件从图像中恢复每个标记的 **ID**  `📅unknown` `[entity_page]`
 - [APXInf（VLA 端侧推理引擎）](wiki/entities/apxinf.md) — APXInf**（`RLinf/APXinf-robo`，引擎核心 [`infinigence/ApxInf`](h `📅unknown` `[entity_page]`
 - [Archify](wiki/entities/archify.md) — Archify**（tt-a1i/archify，MIT）是面向 Cursor、Claude Code、Codex CLI `📅unknown` `[entity_page]`
+- [源策未来（Archon Robotics）](wiki/entities/archon-robotics.md) — 源策未来（Archon Robotics，官网 archon.tech）** 是 2026 年 4 月成立（媒体口径）、研发总部在上海的人形机器人基础模型公司，由香港大学助理教授、OpenDriv `📅unknown` `[entity_page]`
+- [全身智能 WBI：Archon 的人形基础模型预训练路线](wiki/entities/archon-whole-body-intelligence.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Arena-Rosnav（社交导航仿真与 Benchmark）](wiki/entities/arena-rosnav.md) — Arena-Rosnav**（5.0 项目页，文档，[GitHub `📅unknown` `[entity_page]`
 - [CAD CAE Copilot（armpro24-blip/cad-cae-copilot）](wiki/entities/armpro24-blip-cad-cae-copilot.md) — CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/CAE 任务，使用 build123d 与 OpenCASCADE 创建真实可编辑 `📅unknown` `[entity_page]`
@@ -254,7 +259,7 @@
 - [Leju-GMR](wiki/entities/cn-os-leju-gmr.md) — Leju-GMR** 是 乐聚机器人 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为目标本体训 `📅unknown` `[entity_page]`
 - [LejuLab-Deploy](wiki/entities/cn-os-lejulab-deploy.md) — LejuLab-Deploy** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：策略部署运行时：加载训练策略、 `📅unknown` `[entity_page]`
 - [LejuLab-Train](wiki/entities/cn-os-lejulab-train.md) — LejuLab-Train** 是 乐聚机器人 公开的 **运动RL/技能训练** 开源项目：并行 RL 运动训练框架（含仿真 `📅unknown` `[entity_page]`
-- [Lightwheel-simready-asset](wiki/entities/cn-os-lightwheel-simready-asset.md) — Lightwheel-simready-asset** 是 光轮智能 公开的 **本体模型资产** 开源项目：提供机器人训练和 `📅unknown` `[entity_page]`
+- [Lightwheel-simready-asset](wiki/entities/cn-os-lightwheel-simready-asset.md) — Lightwheel-simready-asset** 是 光轮智能 在 GitHub 公开的 **免费 SimReady 资产包（v1，2025）**：25 `📅unknown` `[entity_page]`
 - [Lightwheel-YCB](wiki/entities/cn-os-lightwheel-ycb.md) — Lightwheel-YCB** 是 光轮智能 公开的 **仿真环境** 开源项目：提供刚体、关节体和柔性物体的仿真就绪YCB `📅unknown` `[entity_page]`
 - [limxsdk-lowlevel](wiki/entities/cn-os-limxsdk-lowlevel.md) — limxsdk-lowlevel** 是 逐际动力 公开的 **SDK/驱动** 开源项目：官方 SDK：真机控制与状态读取的 `📅unknown` `[entity_page]`
 - [LingBot-Depth：深度补全与修复](wiki/entities/cn-os-lingbot-depth.md) — LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含噪或稀疏传感器深度补全为稠密深度和点云，属于感知层而非动作策略。 `📅unknown` `[entity_page]`
@@ -270,8 +275,8 @@
 - [LoongForge](wiki/entities/cn-os-loongforge.md) — LoongForge** 是 百度智能云百舸 开源的 **多模态大模型与具身模型训练框架**：在 patch 版 [Megatr `📅unknown` `[entity_page]`
 - [LoongMarathonNav](wiki/entities/cn-os-loongmarathonnav.md) — LoongMarathonNav** 是 上海人形机器人创新中心 公开的 **工程与工具** 开源项目：融合RTK、惯导、视觉和激光 `📅unknown` `[entity_page]`
 - [lumos_sdk](wiki/entities/cn-os-lumos-sdk.md) — lumos_sdk** 是 鹿明机器人 公开的 **SDK/驱动** 开源项目：提供鹿明机器人C++集成接口，使状态、设备与控制功 `📅unknown` `[entity_page]`
-- [LW-BenchHub](wiki/entities/cn-os-lw-benchhub.md) — LW-BenchHub** 是 光轮智能 公开的 **评测** 开源项目：基于Isaac Lab Arena统一任务、机器人和 `📅unknown` `[entity_page]`
-- [LW-Egosuite-DevKit](wiki/entities/cn-os-lw-egosuite-devkit.md) — LW-Egosuite-DevKit** 是 光轮智能 公开的 **MCAP 工具链**：转换并可视化 [EgoSuite-O `📅unknown` `[entity_page]`
+- [LW-BenchHub（Lightwheel BenchHub）](wiki/entities/cn-os-lw-benchhub.md) — LW-BenchHub**（LightwheelAI/LW-BenchHub）是 [光轮智能](./l `📅unknown` `[entity_page]`
+- [LW-Egosuite-DevKit](wiki/entities/cn-os-lw-egosuite-devkit.md) — LW-Egosuite-DevKit** 是 光轮智能 为其 egocentric 人类数据产品 [EgoSuite](./lightwheel-egosui `📅unknown` `[entity_page]`
 - [magicbot-gen1_pi0_demo](wiki/entities/cn-os-magicbot-gen1-pi0-demo.md) — magicbot-gen1_pi0_demo** 是 魔法原子 公开的 **VLA/操作模型** 开源项目：展示pi0 `📅unknown` `[entity_page]`
 - [magicbot-mimic](wiki/entities/cn-os-magicbot-mimic.md) — magicbot-mimic** 是 魔法原子 公开的 **全身动作跟踪/技能训练** 开源项目：面向MagicBot `📅unknown` `[entity_page]`
 - [magiclab_deploy](wiki/entities/cn-os-magiclab-deploy.md) — magiclab_deploy** 是 魔法原子 公开的 **运动RL/技能训练** 开源项目：提供魔法原子运动策略的 `📅unknown` `[entity_page]`
@@ -738,7 +743,11 @@
 - [Light REACT](wiki/entities/light-react.md) — Light REACT**（**REsilient humAnoid ConTrol**，亮源新创 **2026-09-09** [Tech Blog](https://www.lightorig `📅unknown` `[entity_page]`
 - [Lightbot 0](wiki/entities/lightbot-0.md) — Lightbot 0**（Lightbot 0：亮源新创自研人形平台）在 [Light Origins · LightParkour：通过 Real2Sim2Real 拓展人形机器人的跑酷技能 `📅unknown` `[entity_page]`
 - [LightNav-ER](wiki/entities/lightnav-er.md) — LightNav-ER**（LightNav-ER：具身推理中期训练模型）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](h `📅unknown` `[entity_page]`
-- [Lightwheel RoboFinals](wiki/entities/lightwheel-robofinals.md) — Lightwheel RoboFinals** 是光轮科技（Lightwheel）发布的 **工业级仿真评测平台**，面向已超越学术 benchmark 的 **VLA / 通才机器人基础模型 `📅unknown` `[entity_page]`
+- [Lightwheel EgoSuite](wiki/entities/lightwheel-egosuite.md) — EgoSuite** 是 光轮智能（Lightwheel） 于 **2025-12-04** 以官方博客「Lightwheel Introduces EgoS `📅2025-12-04` `[entity_page]`
+- [Lightwheel RoboFinals](wiki/entities/lightwheel-robofinals.md) — Lightwheel RoboFinals** 是光轮智能（Lightwheel）发布的 **工业级仿真评测平台**，面向已超越学术 benchmark 的 **VLA / 通才机器人基础模型 `📅unknown` `[entity_page]`
+- [Lightwheel SimReady（光轮 SimReady 资产体系）](wiki/entities/lightwheel-simready.md) — Lightwheel SimReady** 是 光轮智能（Lightwheel）的 **物理准确 OpenUSD 仿真资产体系**：对外是 **SimRead `📅unknown` `[entity_page]`
+- [Lightwheel SimReadyGen](wiki/entities/lightwheel-simreadygen.md) — SimReadyGen**（"Agentic Simulation Generation for Physical AI"）是 光轮智能 于 **2026-0 `📅unknown` `[entity_page]`
+- [Lightwheel（光轮智能）](wiki/entities/lightwheel.md) — Lightwheel（光轮智能）**：2023 年成立的 **Physical AI 数据与仿真基础设施公司**，不造机器人本体，而是卖「物理准确的仿真资产 + 仿真 / 人类示范数据 + 仿真评 `📅unknown` `[entity_page]`
 - [LimX COSA（人形大脑操作系统）](wiki/entities/limx-cosa.md) — LimX COSA**（**C**ognitive **OS** of **A**gents）是 **逐际动力（LimX Dynamics）** 面向全尺寸人形的 **物理世界原生 Agent 操 `📅unknown` `[entity_page]`
 - [线性代数学习策展（机器人 L0）](wiki/entities/linear-algebra-curriculum.md) — 一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 Georgia Tech ILA、[Axl `📅unknown` `[entity_page]`
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
@@ -1426,7 +1435,9 @@
 - [Learning Locomotion Skills for Cassie: Iterative Design and Sim-to-Real](wiki/entities/paper-cassie-iterative-locomotion-sim2real.md) — 一句话定义**：把 Cassie 行走 RL 从「一次性写 reward」还原成 **多轮迭代**：反复调整 **奖励、观测与动作语义**，并用 **DASS 等机制** 在奖励重写时复用旧策略数 `📅unknown` `[entity_page]`
 - [CAST](wiki/entities/paper-cast-mbrl.md) — CAST**（*Alternating State-Value Targets and Expanded Policy Gradients for Model-Based Reinforcemen `📅unknown` `[entity_page]`
 - [CausalVAE：latent 世界模型的可插拔因果结构模块](wiki/entities/paper-causalvae-world-models.md) — CausalVAE as a Plug-in for World Models**（arXiv:2604.07712，ECC `📅unknown` `[entity_page]`
+- [CausalWM（因果思维链具身世界模型）](wiki/entities/paper-causalwm.md) — CausalWM**（*CausalWM: Causal Chain-of-Thought Reasoning for Embodied World Model*，[arXiv:2609.2318 `📅unknown` `[entity_page]`
 - [Causeway: Restoring Task Accessibility for Instruction Switching in VLA Policies](wiki/entities/paper-causeway.md) — Causeway恢复VLA执行中途切换指令时的任务可达性。 `📅unknown` `[entity_page]`
+- [CD-LAM（因果去偏潜动作模型）](wiki/entities/paper-cd-lam.md) — CD-LAM**（Causally Debiased Latent Action Model；论文 *Causally Debiased Latent Action Model for Embod `📅unknown` `[entity_page]`
 - [CEER2：方向可调的人形末端与根部柔顺](wiki/entities/paper-ceer2-directional-compliance.md) — CEER2 在固定全身跟踪策略上叠加分层控制，分别调节末端方向柔顺性和根部顺应行为。 `📅unknown` `[entity_page]`
 - [CF-WAM：动态重想世界–动作模型的下一状态](wiki/entities/paper-cf-wam-dynamic-next-state-prediction.md) — From World Models to World Action Models: Rethinking Next-State Prediction**（arXiv:2609.34414）提出  `📅unknown` `[entity_page]`
 - [CFM 多任务蒸馏（arXiv:2609.28107）](wiki/entities/paper-cfm-multitask-distillation.md) — CFM 多任务蒸馏**（*Distillation for Efficient Multitask Manipulation Policies via Conditional Flow Match `📅unknown` `[entity_page]`
@@ -1761,6 +1772,7 @@
 - [GenTrack：机器人原生运动生成与零样本跟踪的物理对齐](wiki/entities/paper-gentrack.md) — GenTrack**（*Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking `📅unknown` `[entity_page]`
 - [Geo-VLA](wiki/entities/paper-geo-vla.md) — Geo-VLA: Geometry-Aware Vision-Language-Action Planning via Internalization of Map Semantics**（arX `📅unknown` `[entity_page]`
 - [Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）](wiki/entities/paper-geometry-aware-4d-video-generation.md) — Geometry-Aware 4D Video Generation for Robot Manipulation**（Zeyi Liu, Shuang Li, Eric Cousineau, S `📅unknown` `[entity_page]`
+- [IWR：接触的几何（从零学物体操作的对比强化学习）](wiki/entities/paper-geometry-of-contact.md) — IWR**（Interaction-Weighted Resampling；论文 *Learning Object Manipulation from Scratch via Contrastiv `📅unknown` `[entity_page]`
 - [GeoVLA：为 VLA 补全 3D 几何表示](wiki/entities/paper-geovla.md) — GeoVLA**（*Empowering 3D Representations in Vision-Language-Action Models*，[arXiv:2508.09071](https `📅unknown` `[entity_page]`
 - [GestAdapt：Workspace-Conditioned Co-Speech Gesture Generation for Humanoid Robots](wiki/entities/paper-gestadapt.md) — GestAdapt** 在语音驱动手势时加入机器人双腕工作空间条件，避免生成动作与桌面、墙面或机器人可达范围冲突。 `📅unknown` `[entity_page]`
 - [Identification and the information matrix: how to get just sufficiently rich?](wiki/entities/paper-gevers-identification-information-matrix-2009.md) — Identification and the information matrix: how to get just sufficiently rich?**（IEEE TAC 2009）收录于  `📅unknown` `[entity_page]`
@@ -4094,6 +4106,7 @@
 - [Scaling Laws for Neural Language Models](wiki/entities/paper-scaling-laws-neural-language-models.md) — Scaling Laws for Neural Language Models**（Kaplan et al.，[arXiv:2001.08361](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [Scan2Mesh：From Unstructured Range Scans to 3D Meshes（CVPR 2019）](wiki/entities/paper-scan2mesh-cvpr2019-dai.md) — Scan2Mesh**（arXiv:1811.10464，[CVPR 2019 PDF](https://openacces `📅unknown` `[entity_page]`
 - [Robot-Powered Data Flywheel（RPDF）](wiki/entities/paper-scanford-robot-powered-data-flywheel.md) — Robot-Powered Data Flywheel**（*Deploying Robots in the Wild for Continual Data Collection and Foun `📅unknown` `[entity_page]`
+- [SCAR（自监督连续动作表示：跨本体统一潜动作接口）](wiki/entities/paper-scar-continuous-action.md) — SCAR**（*SCAR: Self-Supervised Continuous Action Representation Learning*，[arXiv:2605.16412](https: `📅unknown` `[entity_page]`
 - [SceneAgent（3D 捕获 → 预测物理仿真环境与策略训练）](wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — SceneAgent**（*3D Capture-Derived Scenes with Predictive Physics for Policy Evaluation and Training `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
@@ -4243,6 +4256,7 @@
 - [TAPESIM: Efficient Simulation of Adhesive Tape Dispensing for Robotic Manipulation](wiki/entities/paper-tapesim.md) — TAPESIM为机器人胶带分配任务提供高效的混合刚柔仿真。 `📅unknown` `[entity_page]`
 - [TAPVid-MV：多视角 3D 任意点跟踪基准](wiki/entities/paper-tapvid-mv.md) — TAPVid-MV**（*A Benchmark for Tracking Any Point in 3D Across Multiple Views*，[arXiv:2609.01899](ht `📅unknown` `[entity_page]`
 - [TARCAT](wiki/entities/paper-tarcat.md) — A Taxonomy of Construction Task Activities for Robot Workers**（[arXiv:2608.25395](https://arxiv.or `📅unknown` `[entity_page]`
+- [TC-WM（任务中心世界模型：从视觉基础表征里抽出控制状态）](wiki/entities/paper-task-centric-world-models.md) — TC-WM**（*Back to Parsimonious Latents: Learning Task-Centric World Models from Visual Foundations `📅unknown` `[entity_page]`
 - [τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型](wiki/entities/paper-tau0-vla.md) — τ₀-VLA**（*a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation*，[ar `📅unknown` `[entity_page]`
 - [TCAM（arXiv:2608.10718）](wiki/entities/paper-tcam-deformable-manipulation-wbcd.md) — TCAM**（*TCAM for Autonomous Deformable Manipulation: The RMC2 Champion System for WBCD 2026 Track  `📅unknown` `[entity_page]`
 - [TD-MPC2（Scalable, Robust World Models for Continuous Control）](wiki/entities/paper-td-mpc2.md) — TD-MPC2**（arXiv:2310.16828，ICLR 2024 Spotlight，Nicklas Hansen、 `📅unknown` `[entity_page]`
@@ -4805,6 +4819,9 @@
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [OpenFOAM MCP Server（webworn/openfoam-mcp-server）](wiki/entities/webworn-openfoam-mcp-server.md) — OpenFOAM MCP Server（webworn/openfoam-mcp-server）是OpenFOAM 执行层 MCP 服务，突出苏格拉底式教学问答：带用户逐步搭建算例并解释边界条件选择， `📅unknown` `[entity_page]`
 - [Weights & Biases（W&B）](wiki/entities/weights-and-biases.md) — Weights & Biases**（wandb.ai）是面向 AI 研发团队的 **实验追踪与协作平台**。在机器人学习工程里，它最常承担「 `📅unknown` `[entity_page]`
+- [傲天U1（西湖机器人四足）](wiki/entities/westlake-aotian-u1.md) — 傲天U1** 是 西湖机器人 的四足机器狗产品（官网口号「智形合一 进化无界」），面向校园 / 园区的多楼层导航递送、巡检与社区养老服务；是公司 `📅unknown` `[entity_page]`
+- [西湖机器人（Westlake Robotics）](wiki/entities/westlake-robotics.md) — 西湖机器人**（西湖机器人科技（杭州）有限公司，官网 wlrobo.com）是西湖大学王东林团队（机器智能实验室 MiLAB）的产业化公司，自称「机器人大脑公司」：用 **「大脑」多模态运动操作模 `📅unknown` `[entity_page]`
+- [TITAN O1（西湖机器人人形）](wiki/entities/westlake-titan-o1.md) — TITAN O1** 是 西湖机器人 2026-03-23 发布的首款全栈自研人形机器人（媒体亦称 **泰坦 o1**、**西湖 o1**，GA `📅unknown` `[entity_page]`
 - [WHAM](wiki/entities/wham-world-human-motion.md) — WHAM](https://github.com/yohanshin/WHAM) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid `📅unknown` `[entity_page]`
 - [wheel_legged_genesis](wiki/entities/wheel-legged-genesis.md) — wheel_legged_genesis** 是社区仓库 [`Albusgive/wheel_legged_genesis`](https://github.com/Albusgive/wheel `📅unknown` `[entity_page]`
 - [Where2Place](wiki/entities/where2place.md) — Where2Place**（Where2Place：可放置空间推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](ht `📅unknown` `[entity_page]`
