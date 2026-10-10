@@ -2,7 +2,7 @@
 type: concept
 tags: [deep-rl, dqn, alphago, history, discrete-actions]
 status: complete
-updated: 2026-05-10
+updated: 2026-10-10
 summary: "DQN 与 AlphaGo 等里程碑证明了端到端深度强化学习在高维观测下的普适性，是后来「能否把同类范式搬到真实机器人」讨论的共同起点。"
 related:
   - ../methods/reinforcement-learning.md
@@ -32,12 +32,13 @@ sources:
 | 工作 | 引用 |
 |------|------|
 | DQN | Mnih et al., *Playing Atari with Deep Reinforcement Learning*, https://arxiv.org/abs/1312.5602 |
-| AlphaGo（家族入口） | DeepMind 介绍页：https://www.deepmind.com/research/alphago-zero-learning-from-scratch |
+| AlphaGo（2016） | [AlphaGo 实体页](../entities/paper-alphago.md)：策略/价值网络 + MCTS；[Nature 原文](https://doi.org/10.1038/nature16961) |
 
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [QT-Opt](../methods/qt-opt.md)
+- [AlphaGo（2016）](../entities/paper-alphago.md) — 原始围棋系统的论文、方法、结果与官方开源边界
 
 ## 参考来源
 
