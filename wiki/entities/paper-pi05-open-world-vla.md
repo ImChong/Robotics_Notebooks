@@ -9,12 +9,13 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
 venue: HMI curated · 2025
 summary: π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。
 related:
+- ./paper-activescale.md
 - ../methods/π0-policy.md
 - ../methods/pi07-policy.md
 - ../methods/vla.md
@@ -173,6 +174,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [ActiveScale](./paper-activescale.md) — 在 π0.5 上加历史与位姿监督相机 token，联合学习视角及操作，不是此基座默认能力
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [Knowledge Insulation（知识隔离）](./paper-knowledge-insulation.md) — 解释 π₀.₅ 异构 co-training 中 FAST 监督与连续动作专家的梯度隔离
