@@ -18,6 +18,7 @@ related:
   - ../entities/multi-agent-cad.md
   - ../entities/cad-1000-hours-dataset.md
   - ../entities/freecad-mcp.md
+  - ../entities/openscad.md
   - ./sim2real.md
 sources:
   - ../../sources/sites/text-to-cad-tools.md
@@ -116,9 +117,9 @@ Autodesk 产品线正在把 **AI** 深度嵌入 **Fusion / Maya / Flow** 等工�
 
 许多工程师在真实项目里采用的 **脚本化参数 CAD** 路线：
 
-**自然语言 → LLM 生成 OpenSCAD / 类似 DSL → 本地或 CI 中生成几何 → 导出 STEP/STL**。
+**自然语言 → LLM 生成 OpenSCAD / 类似 DSL → 本地或 CI 中生成几何 → 导出 STL/3MF 等网格**；若下游需要 STEP/B-rep，应进入 [FreeCAD](../entities/freecad.md) 等具备 B-rep 工作流的 CAD 工具转换或重建。
 
-- **优点**：**参数化极强**；**Git / 代码审查**友好；特别适合 **机器人支架、孔位阵列、模块化件**；LLM 对「写程序」往往比对「直接猜 B-rep 拓扑」更稳定。
+- **优点**：**参数化极强**；**Git / 代码审查**友好；特别适合 **机器人支架、孔位阵列、模块化件**；LLM 对「写程序」往往比对「直接猜 B-rep 拓扑」更稳定。参见 [OpenSCAD 独立工具页](../entities/openscad.md)，注意它的网格导出不等同于可编辑 STEP/B-rep。
 - **同类 Python 栈**：[CadQuery](https://cadquery.readthedocs.io/)、[Build123d](https://build123d.readthedocs.io/)（均常见基于 OCCT 的 B-rep 与 STEP 导出，以各自文档为准）。
 
 ### 5. CadQuery + AI Agent（学术与开源热点）

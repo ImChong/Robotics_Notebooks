@@ -10,6 +10,7 @@ related:
   - ./urdf-studio.md
   - ./cad-skills.md
   - ./freecad-mcp.md
+  - ./openscad.md
   - ./moveit2.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/text-to-cad.md
@@ -100,6 +101,7 @@ flowchart LR
 - [step2urdf（STEP→URDF 浏览器转换）](./step2urdf.md)
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
+- [OpenSCAD（脚本化参数 CAD）](./openscad.md)
 - [FreeCAD MCP（MCP 驱动桌面 CAD）](./freecad-mcp.md)
 - [MoveIt 2（ROS 2 运动规划）](./moveit2.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
