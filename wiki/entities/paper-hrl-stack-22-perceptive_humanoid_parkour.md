@@ -170,14 +170,14 @@ flowchart TB
 
 ## 源码运行时序图
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
   autonumber
   participant U as 使用者
-  participant D as motion_matching 与 assets 下载
-  participant T as wbt_training / IsaacSim
-  participant S as run_php_sim.sh / MuJoCo
-  participant P as run_php_inference.sh / ONNX 策略
+  participant D as 数据生成与下载
+  participant T as IsaacSim 训练
+  participant S as MuJoCo 仿真
+  participant P as ONNX 策略
   U->>D: 生成 motion-terrain 数据或下载示例包
   D-->>U: motion / terrain 数据集
   U->>T: 训练 motion-tracking teachers
@@ -187,7 +187,7 @@ sequenceDiagram
   S-->>P: 通过共享内存提供深度帧
   U->>P: 加载 ONNX 双模型并启动策略
   P-->>S: 通过 Holosoma 本地接口输出关节目标
-\`\`\`
+```
 
 复现路径：先按 motion_matching/README.md 生成或用 wbt_training/README.md 下载数据，再用 wbt_training/training_runs/ 训练/蒸馏；已发布 ONNX 可直接配合仓库根目录 run_php_sim.sh 与 run_php_inference.sh 在 MuJoCo 中做 sim2sim。
 
