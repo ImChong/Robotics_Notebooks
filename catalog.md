@@ -815,6 +815,7 @@
 - [mjlab_playground（mjlab 任务集合）](wiki/entities/mjlab-playground.md) — mjlab_playground** 是 mjlab 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
 - [mjlab (轻量 GPU 加速 RL 框架)](wiki/entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 [**MuJoCo War `📅unknown` `[entity_page]`
 - [mjswan](wiki/entities/mjswan.md) — mjswan**（GitHub，在线 Demo） `📅unknown` `[entity_page]`
+- [ml5.js](wiki/entities/ml5js.md) — ml5.js** 是让创意编码者在浏览器中体验机器学习的 JavaScript 库，以易上手的 API、模型示例和教学资源，将部分预训练模型及神经网络能力带入网页草图。 `📅unknown` `[entity_page]`
 - [MLflow](wiki/entities/mlflow.md) — MLflow](https://github.com/mlflow/mlflow) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoi `📅unknown` `[entity_page]`
 - [MNN](wiki/entities/mnn.md) — MNN**（**Mobile Neural Network**）是由 **阿里巴巴** 开源并长期维护的 **高效轻量深度学习推理引擎**。它在阿里系 30+ 应用、70+ 场景中承担 on-de `📅2026-06-25` `[entity_page]`
 - [MobileGym（移动 GUI Agent 可验证仿真与基准）](wiki/entities/mobilegym.md) — MobileGym**（arXiv:2605.26114，官网，[代码](https://github.com/Purewhiter/mobile `📅unknown` `[entity_page]`
@@ -920,6 +921,7 @@
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
 - [OWASP MAS（Mobile Application Security）](wiki/entities/owasp-mas.md) — OWASP Mobile Application Security (MAS)** 是 OWASP 旗舰项目，用 **MASVS**（该满足哪些控制）、**MASWE**（常见弱点是什么）和  `📅unknown` `[entity_page]`
+- [p5.js](wiki/entities/p5js.md) — p5.js** 是 Processing 生态中的浏览器端创意编程库，让 JavaScript 草图通过逐帧绘制、输入事件和图形 API 构成交互式网页作品。 `📅unknown` `[entity_page]`
 - [2025 GS Paper List](wiki/entities/painode-001-2025gspaperlist.md) — 2025 GS Paper List** 收录于 awesome-physical-ai（aichr）**第 001/384** 条，分组 **3D Computer Vision**。本页是  `📅unknown` `[entity_page]`
 - [Awesome 3D Gaussian Splatting](wiki/entities/painode-002-awesome3dgaussiansplatting.md) — Awesome 3D Gaussian Splatting** 收录于 awesome-physical-ai（aichr）**第 002/384** 条，分组 **3D Computer Vis `📅unknown` `[entity_page]`
 - [Depth Anything](wiki/entities/painode-003-depthanything.md) — Depth Anything** 收录于 awesome-physical-ai（aichr）**第 003/384** 条，分组 **3D Computer Vision**。本页是 **清单索 `📅unknown` `[entity_page]`
@@ -4753,6 +4755,7 @@
 - [FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）](wiki/entities/tessalabs-space-freecad-mcp.md) — FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）是提供 FreeCAD 工程 MCP，包括参数扫描、绘图/渲染和可选 CAE 交接。 `📅unknown` `[entity_page]`
 - [FEMIS Skill（test1card/femis-skill）](wiki/entities/test1card-femis-skill.md) — FEMIS Skill（test1card/femis-skill）是FEM + Themis 命名的跨求解器治理层，不直接驱动求解器。 `📅unknown` `[entity_page]`
 - [Text2MuJoCo](wiki/entities/text2mujoco.md) — Text2MuJoCo**（ShawnJoeng/Text2Mujoco，MIT）是运行在 **现有编码代 `📅unknown` `[entity_page]`
+- [The Coding Train](wiki/entities/the-coding-train.md) — The Coding Train** 是面向初学者与好奇学习者的创意编程社区，由 Daniel Shiffman 于 2015 年发起；以系列课程、Coding Challenges 和直播教授编 `📅unknown` `[entity_page]`
 - [Three.js Game Skills](wiki/entities/threejs-game-skills.md) — Three.js Game Skills** 是 [majidmanzarpour/threejs-game-skills](https://github.com/majidmanzarpour/ `📅unknown` `[entity_page]`
 - [Tidewater](wiki/entities/tidewater.md) — Tidewater**（GitHub，[在线游玩](https://dgreenheck.github.io/ `📅unknown` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`

@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | The Coding Train、p5.js 与 ml5.js
+
+- 意图：归档三项相互关联但职责不同的创意编程与浏览器机器学习资源，供机器人可视化、交互原型和教学演示参考。
+- 开源结论：p5.js 官方代码仓采用 LGPL-2.1；The Coding Train 网站代码仓采用 MIT；ml5.js 官网宣称开源并链接实现仓，代码仓 SPDX 许可状态待以仓库许可文件复核。
+- 关键页：建立三个独立项目实体，分别对应教学社区、创意编程库与浏览器机器学习库；互相链接并注明非实时机器人控制栈。
+
 ## [2026-10-10] ingest | sources/papers/pso_foundations_1995_2012.md — 收录 PSO 奠基论文、惯性权重与收缩理论，核查作者来源 SPSO-2011 源码，新增方法节点及算法/源码 Mermaid 并连接 AutoPSO、CMA-ES 与优化选型
 
 ## [2026-10-10] ingest | AlphaStar（Nature 2019 + AlphaStar Unplugged 研究工具）
