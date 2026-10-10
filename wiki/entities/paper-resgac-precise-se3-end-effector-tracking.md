@@ -33,14 +33,14 @@ summary: "ResGAC 将几何导纳控制（GAC）的 SE(3) 末端跟踪先验与�
 
 ## 方法：名义几何控制 + 有界残差 + 全身协调
 
-~~~mermaid
+```mermaid
 flowchart LR
   target["双手 SE(3) 目标"] --> gac["GAC：位姿误差 → 名义手臂关节目标"]
   gac --> residual["残差 RL：修正手臂 + 输出腿/腰目标"]
   state["本体状态、手部误差、机身 twist、步态相位"] --> residual
   residual --> joints["29 DoF 关节位置目标"]
   joints --> robot["Unitree G1：移动、平衡与手部跟踪"]
-~~~
+```
 
 - **GAC 名义动作：**由浮动基座下的几何位姿误差反馈产生手臂目标，使用阻尼伪逆与零空间项处理运动学映射。
 - **残差策略：**手臂目标上叠加受限残差；腿/腰 15 个关节目标由策略直接输出。G1 共 29 DoF，其中手臂 14 DoF。
