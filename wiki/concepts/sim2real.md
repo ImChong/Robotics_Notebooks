@@ -307,6 +307,9 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 关联页面
 
+  - [AWS Physical AI Toolchain](../entities/aws-physical-ai-toolchain.md) — 云端仿真、合成数据、训练与 HIL/Sim2Real 部署参考架构
+  - [RoboRender](../entities/robo-render.md) — 将模拟视频转为保留几何与运动标签的真实感图像，用于仿真数据到真实视觉的迁移
+
 - [Cosmos Transfer](../entities/cosmos-transfer.md) — 多控视频翻译：仿真/真机 → 照片级合成数据（Transfer1 / 2.5；配方见 [Cookbook](../entities/cosmos-cookbook.md)）
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷四世界模型 / Sim2Real 面试速查（DR、蒸馏、仿真栈）
 - [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库逐次下注收窄 anytime-valid 真机证书（arXiv:2608.21572；已开源）

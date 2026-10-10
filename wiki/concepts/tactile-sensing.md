@@ -92,6 +92,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
+
+  - [TouchScale](../entities/touchscale.md) — 同步头戴/腕部 RGB 与双手触觉手套的人手视触觉数据集
 - [AnyTouch（论文）](../entities/paper-anytouch.md) 与 [项目](../entities/paper-anytouch.md) — TacQuad 与静态–动态跨传感器表示
 - [AnyTouch 2（论文）](../entities/paper-anytouch2.md) 与 [项目](../entities/paper-anytouch2.md) — ToucHD 与动态触觉/力表征
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 触觉是四层闭环链 **① 接触感知/估计层** 的关键模态
