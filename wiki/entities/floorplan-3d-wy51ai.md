@@ -4,6 +4,9 @@ project_id: floorplan-3d-wy51ai
 tags: [floorplan, interior-design, 2d-editor, threejs, svg, browser-app, visualization]
 status: complete
 updated: 2026-10-10
+related:
+  - ./sc-datav.md
+  - ./threejs-game-skills.md
 code: https://github.com/wy51ai/floorplan-3d
 project: https://wy51ai.github.io/floorplan-3d/
 summary: "纯前端户型装修设计工具：在 2D 平面图中布置家具、测量与拆改墙体，实时同步到 Three.js 3D 场景；含漫游、面积/材料估算、PNG 与 JSON 导出，可在线直接体验。"
@@ -11,7 +14,26 @@ summary: "纯前端户型装修设计工具：在 2D 平面图中布置家具、
 
 # floorplan-3d：浏览器里的 2D/3D 户型装修设计器
 
-**floorplan-3d** 是一个无需构建步骤的纯前端户型设计应用。用户在二维平面图中布置家具、调整尺寸、测量或拆改墙体，并可切换到同步的 Three.js 三维场景进行查看与漫游。它是可交互的户型设计器，不是自动识别任意上传户型图的 AI 建模工具。
+## 一句话定义
+
+**floorplan-3d** 是无需构建步骤的纯前端户型设计器：用户在 2D 平面图里布置家具、测量或拆改墙体，并在同步的 Three.js 场景中查看与漫游；它不是自动识别任意上传户型图的 AI 建模工具。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| HTML | HyperText Markup Language | 项目以单个 HTML 文件直接运行 |
+| CSS | Cascading Style Sheets | 页面与编辑器样式 |
+| SVG | Scalable Vector Graphics | 2D 户型平面图的绘制格式 |
+| CDN | Content Delivery Network | Three.js 首次加载所需的外部资源分发方式 |
+| JSON | JavaScript Object Notation | 方案导入/导出格式 |
+| Three.js | — | 浏览器中的 3D 图形库 |
+
+## 为什么重要
+
+- **即时试用：** 在线打开即可编辑，无需先安装前端框架或构建环境。
+- **同一方案双视图：** 2D 布置与 3D 场景同步，便于从平面布局和空间效果两侧检查方案。
+- **边界明确：** 内置户型可直接体验；自定义几何需编辑源码数据，不应误认为图像识别/AI 自动建模。
 
 ## 项目信息
 
@@ -62,6 +84,11 @@ flowchart TB
 | `Shift + F` | 全屏 |
 | `Esc` | 取消当前操作 |
 | 漫游：`WASD` / 方向键、`Shift`、`E` | 移动 / 快走 / 开关门 |
+
+## 关联页面
+
+- [sc-datav](./sc-datav.md) — 同属浏览器 Three.js 可视化项目；它做数据大屏，本项目侧重户型编辑与空间漫游。
+- [Three.js Game Skills](./threejs-game-skills.md) — Three.js/WebGL 浏览器交互应用的开发与验证技能参考。
 
 ## 参考来源
 
