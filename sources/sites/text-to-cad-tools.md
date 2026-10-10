@@ -57,7 +57,7 @@
 
 ## 参数化脚本 CAD（LLM 友好、机器人夹具常用）
 
-- **OpenSCAD（程序化 CSG）**：<https://openscad.org/>
+- **OpenSCAD（程序化 CSG）**：<https://openscad.org/> · [官方源码](https://github.com/openscad/openscad) · [本库工具实体页](../../wiki/entities/openscad.md) · [源码归档](../repos/openscad.md)
 - **CadQuery（Python → OCCT B-rep，STEP 等）**：<https://cadquery.readthedocs.io/> · 仓库：<https://github.com/cadquery/cadquery>
 - **Build123d（Python B-rep 框架）**：<https://build123d.readthedocs.io/> · 仓库：<https://github.com/gumyr/build123d>
 
@@ -103,7 +103,7 @@
 - KCL 文档：<https://docs.zoo.dev/docs/kcl>
 - Adam 官网：<https://www.adamcad.com/> · Fusion 扩展：<https://fusion.adam.new/install>
 - Autodesk Fusion 总览：<https://www.autodesk.com/products/fusion-360/overview> · Generative Design：<https://www.autodesk.com/solutions/generative-design>
-- OpenSCAD：<https://openscad.org/> · CadQuery：<https://cadquery.readthedocs.io/> · Build123d：<https://build123d.readthedocs.io/>
+- OpenSCAD：<https://openscad.org/> · <https://github.com/openscad/openscad> · [wiki 实体](../../wiki/entities/openscad.md) · CadQuery：<https://cadquery.readthedocs.io/> · Build123d：<https://build123d.readthedocs.io/>
 - Maket.ai：<https://www.maket.ai/>
 - GrandpaCAD：<https://grandpacad.com/>
 - PartWork AI：<https://partwork.ai/>
