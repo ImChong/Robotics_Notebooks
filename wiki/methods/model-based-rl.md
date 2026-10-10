@@ -321,6 +321,8 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 
 ## 推荐继续阅读
 
+- [H-JEPA 分层视觉规划世界模型](../entities/paper-h-jepa-visual-planning.md) — 独立潜空间的 action-conditioned JEPA 与由粗到细的视觉规划
+
 - [DreamerV3 论文（arXiv:2301.04104）](https://arxiv.org/abs/2301.04104) — RSSM + 潜空间想象的完整算法与 150+ 任务证据
 - [danijar/dreamerv3 官方实现](https://github.com/danijar/dreamerv3) — 想读代码先看这份 JAX 参考
 - [TD-MPC2 项目页](https://www.tdmpc2.com) — 潜空间 MPC + TD 价值的交互式结果与 [代码](https://github.com/nicklashansen/tdmpc2)
