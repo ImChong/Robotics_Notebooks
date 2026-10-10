@@ -178,6 +178,7 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 - [FlashSAC（快速稳定 SAC）](./flashsac.md)
 - [SAC（软演员-评论家）](./sac.md)
 - [GAE（广义优势估计）](./gae.md)
+- [SGS：成功引导采样（大规模 PPO 的任务配置自适应采样）](../entities/paper-sgs-2610-12465.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)
 - [PPO vs SAC for Robots（选型 Query）](../queries/ppo-vs-sac-for-robots.md)
 - [Locomotion（任务）](../tasks/locomotion.md)
