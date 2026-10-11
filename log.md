@@ -95,6 +95,13 @@ op: ingest
 
 接入 MemCompiler，归档论文、项目页和官方代码入口，提炼逐步状态条件编译、Brief State 与 Soft-Mem 双通道方法，并与现有具身记忆/部署期适应节点互链。论文称代码与数据可用；README 有 ALFWorld、ScienceWorld 运行入口，复现仍依赖外部环境数据、模型/API 配置。Zetta 与 Zeva 的 arXiv 节点已存在主库，未重复创建。
 
+## [2026-10-11] ingest | Hugging Face 本周论文 5 篇（独立实体）
+
+- 来源：图片列出的 2026-10-05 至 10-11 榜单；逐篇核对 arXiv。
+- 入库：RealCompanion、Cross-Tokenizer OPD、Kandinsky 6.0 Video、UltraText Bench、Self-Retrospection Distillation，各建独立来源与 wiki 实体。
+- 开源：Kandinsky 6.0 Video 和 UltraText Bench 有官方代码/项目归档；另三篇在所查 arXiv 页面未找到可核实运行仓库。
+- 注：Self-Retrospection Distillation 与已收录 State–Readout Decoupling 虽同缩写，按不同 arXiv 身份分开记录。
+
 ## [2026-10-11] ingest | RFPO 一手资料复核 — 补齐官方项目页归档、源码运行时序与身份字段
 
 - **去重：** 复用已有 arXiv:2610.10453 实体；未新增重复项目节点。

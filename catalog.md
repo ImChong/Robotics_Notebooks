@@ -1499,6 +1499,7 @@
 - [CPS4All：无障碍与能力增强的赛博物理系统工作坊](wiki/entities/paper-cps4all.md) — CPS4All**（*Cyber-Physical Systems for Accessibility and Ability Augmentation: Bridging Diverse Com `📅unknown` `[entity_page]`
 - [CReF：交叉模态与循环融合的深度条件人形行走](wiki/entities/paper-cref.md) — CReF**（*Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion*，浙江大学 / 山东大学，ar `📅unknown` `[entity_page]`
 - [CRISP（arXiv:2609.21761）](wiki/entities/paper-crisp.md) — CRISP**（*CRISP: Contact-Rich Robotic Simulation Platform with Extensive Geometries and Contact Sol `📅unknown` `[entity_page]`
+- [Cross-Tokenizer OPD：从对齐覆盖转向监督可靠性](wiki/entities/paper-cross-tokenizer-opd.md) — 这项工作指出，跨 tokenizer 的同策略蒸馏应优先保障严格对齐位置上的监督质量，而不是为了全覆盖引入可能冲突的训练信号。 `📅unknown` `[entity_page]`
 - [Cross-View Action Consistency（arXiv:2608.06965）](wiki/entities/paper-cross-view-action-consistency-vla.md) — Cross-View Action Consistency**（arXiv:2608.06965）收录于 [多模空间 · 一 `📅unknown` `[entity_page]`
 - [CrossBFM：跨人形本体蒸馏共享行为空间](wiki/entities/paper-crossbfm-shared-latent-behavior.md) — CrossBFM**（*Distilling a Shared Latent Behavior Space Across Humanoid Embodiments*，[arXiv:2609.380 `📅unknown` `[entity_page]`
 - [CrossSafe](wiki/entities/paper-crosssafe.md) — CrossSafe**（*Towards Cross-Embodiment Latent Safety Filters*，[arXiv:2609.28984](https://arxiv.org/ `📅unknown` `[entity_page]`
@@ -1977,6 +1978,7 @@
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
 - [Kairos（原生世界–动作模型栈 · kairos-agi）](wiki/entities/paper-kairos-native-world-model-stack.md) — Kairos**（*Kairos: A Regret-Aware Native World-Action Model Stack for Physical AI*，[arXiv:2606.1653 `📅unknown` `[entity_page]`
 - [Kamino（GPU 闭链约束多体仿真）](wiki/entities/paper-kamino.md) — Kamino** 是 Disney Research 与 NVIDIA 提出的 **GPU 原生物理求解器**（arXiv [2603.16536](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
+- [Kandinsky 6.0 Video：同步生成视频与音频](wiki/entities/paper-kandinsky-6-video.md) — Kandinsky 6.0 Video 是一组双流扩散基础模型，以跨模态注意力连接视频与音频生成，支持文本或图像条件的同步音视频片段。 `📅unknown` `[entity_page]`
 - [KaRMA：机器人手精细操作运动学指标](wiki/entities/paper-karma-hand-metric.md) — KaRMA**（*A Kinematic Metric for Fine Manipulation Ability in Robotic Hands*，[arXiv:2605.15548](htt `📅unknown` `[entity_page]`
 - [KDMR（Kinodynamic Motion Retargeting）](wiki/entities/paper-kdmr.md) — KDMR**（*Kinodynamic Motion Retargeting for Humanoid Locomotion via Multi-Contact Whole-Body Trajec `📅unknown` `[entity_page]`
 - [KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) — KEMO**（arXiv:2606.23589，项目页， `📅unknown` `[entity_page]`
@@ -3164,6 +3166,7 @@
 - [真机双臂灵巧抓取：单视角也要协作接触](wiki/entities/paper-real-bi-dex-grasp.md) — 真机双臂灵巧抓取**（*Real-World Cooperative Bimanual Dexterous Grasp of Large Objects from Single-View Obse `📅unknown` `[entity_page]`
 - [Real-Time Chunking：边执行边补下一段动作](wiki/entities/paper-real-time-chunking.md) — Real-Time Chunking（RTC）**（*Real-Time Execution of Action Chunking Flow Policies*，[arXiv:2506.07339 `📅unknown` `[entity_page]`
 - [Real-Time EXPO-FT：实时残差 RL 修正 VLA](wiki/entities/paper-real-time-expo-ft.md) — Real-Time EXPO-FT**（*Reinforcement Learning for Real-Time Vision-Language-Action Policies*，[arXiv: `📅unknown` `[entity_page]`
+- [RealCompanion：真实纵向对话中的用户理解基准](wiki/entities/paper-realcompanion.md) — RealCompanion 是真实人-AI companion 长周期对话基准，检验模型能否理解用户、判断何时需要历史记忆，并让回答由消息证据支撑。 `📅unknown` `[entity_page]`
 - [REALM（Last-3-Meter VLN · 实例级接地）](wiki/entities/paper-realm-last-3-meter-vln-grounding.md) — REALM**（*From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation*，arXiv: `📅unknown` `[entity_page]`
 - [Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations（arXiv:2609.20477）](wiki/entities/paper-rebarsim.md) — Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations**（*Application to Reb `📅unknown` `[entity_page]`
 - [RECAL（arXiv:2609.16405）](wiki/entities/paper-recal-collision-aware-wbc.md) — RECAL**（*Collision-Aware Humanoid Whole-Body Control under Imperfect Tracking Targets*，[arXiv:2609 `📅unknown` `[entity_page]`
@@ -4141,6 +4144,7 @@
 - [SeeQ（arXiv:2609.22085）](wiki/entities/paper-seeq.md) — SeeQ**（*SeeQ: Training Generalist Value Functions for Long-Horizon Robotic Manipulation*，[arXiv:26 `📅unknown` `[entity_page]`
 - [Segment Anything（SAM）](wiki/entities/paper-segment-anything.md) — SAM**（*Segment Anything Model*；论文 *Segment Anything*，[arXiv:2304.02643](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`
 - [Self-Adaptive VLA（部署期硬件漂移自适应）](wiki/entities/paper-self-adaptive-vla.md) — Self-Adaptive VLA**（*Self-Adaptive VLA for Robust Robot Deployment*，[arXiv:2609.30092](https://arx `📅unknown` `[entity_page]`
+- [Self-Retrospection Distillation：将事后经验蒸馏为事前预见](wiki/entities/paper-self-retrospection-distillation.md) — SRD 把完成轨迹中揭示的知识和陷阱蒸馏回同一策略，使策略训练时学会预测需求，而非推理时额外运行反思模型。 `📅unknown` `[entity_page]`
 - [Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放](wiki/entities/paper-self-supervised-control.md) — Self-Demonstrated Generative Control**（*Fine-Tuning VLAs with Self-Demonstrated Generative Control `📅unknown` `[entity_page]`
 - [语义音频驱动人形全身控制（Lab-RoCoCo）](wiki/entities/paper-semantic-audio-wbc-humanoid.md) — Semantic Audio-driven Understanding for Dynamic Humanoid Whole Body Control**（Sapienza / UNINT，arX `📅unknown` `[entity_page]`
 - [Semantic Tube Prediction（STP）](wiki/entities/paper-semantic-tube-prediction.md) — Semantic Tube Prediction: Beating LLM Data Efficiency with JEPA**（arXiv:2602.22617）由 Hai Huang、Yan `📅unknown` `[entity_page]`
@@ -4334,6 +4338,7 @@
 - [UCAG-P：相机系动作几何预训练](wiki/entities/paper-ucag-p.md) — UCAG-P**（*One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for He `📅unknown` `[entity_page]`
 - [ULOHA（arXiv:2609.19200）](wiki/entities/paper-uloha.md) — ULOHA**（*An Underwater Bimanual Robot System for Robot Learning*，[arXiv:2609.19200](https://arxiv. `📅unknown` `[entity_page]`
 - [Ultra-Fusion（韧性多传感器融合 SLAM）](wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — Ultra-Fusion**（Tian et al., arXiv:2606.21223，项目页， `📅unknown` `[entity_page]`
+- [UltraText Bench：图像生成中的双语视觉文本评测](wiki/entities/paper-ultratext-bench.md) — UltraText Bench 测试模型能否在整张图中准确呈现中英文密集文本，而不是只生成漂亮但内容错误的标题。 `📅unknown` `[entity_page]`
 - [UMA（多级表面对齐超精细人体 Avatar）](wiki/entities/paper-uma.md) — UMA**（*Ultra-detailed Human Avatars via Multi-level Surface Alignment*，[arXiv:2506.01802](https:// `📅unknown` `[entity_page]`
 - [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2 `📅unknown` `[entity_page]`
 - [In-the-Wild Compliant Manipulation with UMI-FT（arXiv:2601.09988）](wiki/entities/paper-umi-ft.md) — In-the-Wild Compliant Manipulation with UMI-FT**（Hojung Choi, Yifan Hou, Chuer Pan, Seongheon Hong `📅unknown` `[entity_page]`
