@@ -101,6 +101,8 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] lint | 全量 wiki lint：修复 4 条信息型预警（TEMPO 对比区块、BenchHub 时效措辞、RealCompanion/UltraText-Bench 回链评测基准枢纽）
+
 ## [2026-10-11] ingest | wheresryan22/anatomy — 收录把技术原理转成交互式等轴测机械插图的 Claude Skill
 
 - 归档官方项目页与 MIT 仓库，补充生成流程和几何审计方式。
