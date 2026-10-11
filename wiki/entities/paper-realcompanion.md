@@ -78,6 +78,7 @@ flowchart TB
 
 - [Self-Retrospection Distillation](./paper-self-retrospection-distillation.md) — 从交互轨迹训练事前预测
 - [WorldScape Policy](./paper-worldscape-policy-2.md) — 带长短期记忆的视频世界模型策略
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属①认知层评测：长期对话中的用户建模与记忆，不等于具身任务执行能力
 
 ## 参考来源
 
