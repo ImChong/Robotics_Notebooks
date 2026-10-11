@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, lifelong-scene-understanding, spatio-temporal-memory, slam, vqa, iros-2026]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-11
 arxiv: "2608.19059"
 related:
   - ./paper-spatial-memory-agent.md
@@ -15,12 +15,12 @@ sources:
   - ../../sources/sites/lt-mem-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
   - ../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md
-summary: "LT-Mem（arXiv:2608.19059，IROS 2026 最佳论文，DGIST）：波动性感知 Live/Delta/Meta 三层记忆 + 多会话 SLAM；LT-VQA 时间问答；令牌消耗低约 16×。数据集可下，代码 TBD。"
+summary: "LT-Mem（arXiv:2608.19059，IROS 2026 Best Paper Award 获奖论文，DGIST）：波动性感知 Live/Delta/Meta 三层记忆 + 多会话 SLAM；LT-VQA 时间问答；令牌消耗低约 16×。数据集可下，代码 TBD。"
 ---
 
 # LT-Mem：波动性感知的终身场景记忆
 
-**LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19059](https://arxiv.org/abs/2608.19059)，[项目页](https://lt-mem.github.io/)，**IROS 2026 最佳论文**）由 **DGIST** 提出：长期运行的服务机器人反复进入 **变化环境** 时，单纯覆盖旧地图会丢失对象历史，逐次快照又难维持跨会话身份。
+**LT-Mem**（*Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding*；[arXiv:2608.19059](https://arxiv.org/abs/2608.19059)，[项目页](https://lt-mem.github.io/)，**IROS 2026 Best Paper Award 获奖论文**）由 **DGIST** 提出：长期运行的服务机器人反复进入 **变化环境** 时，单纯覆盖旧地图会丢失对象历史，逐次快照又难维持跨会话身份。
 
 ## 一句话定义
 
@@ -47,6 +47,7 @@ summary: "LT-Mem（arXiv:2608.19059，IROS 2026 最佳论文，DGIST）：波动
 | 项 | 内容 |
 |----|------|
 | **机构** | DGIST（Robotics and Mechatronics Engineering） |
+| **奖项** | IROS 2026 Best Paper Award（1 / 1,933 篇论文）；APRL 官方新闻与论文列表已更新为获奖，项目页仍显示 finalist |
 | **感知** | 多会话 **MASt3R-SLAM** + 实例 3D 分割 |
 | **推理** | 波动性条件时序推理 + 确定性证据评分 |
 | **公开状态** | [LT-VQA 数据集](https://drive.google.com/drive/folders/1rrwXxJDqJO9P9-wf_-JENX6FP1v9AThC) 可下载；方法代码未提供（项目页标注 **Code TBD**） |
@@ -90,9 +91,20 @@ flowchart TB
 
 ## 实验与评测
 
-- **LT-VQA：** 3 环境、30 会话、80 QA；含持久身份标注。
-- **相对 VLM-Batch 基线：** 全面更优，令牌 **低约一个数量级**。
-- **消融：** 波动性更新 vs  naive 覆盖/快照（见论文）。
+- **LT-VQA：** 3 个环境、30 个会话、80 组 QA；Lab-S 与 Lab-L 用于对象历史跟踪，Parking Lot 用于空间统计/停车占用问题。
+
+| 方法 | Event F1 ↑ | QA-Event ↑ | QA-Freq ↑ | Tokens ↓ |
+|---|---:|---:|---:|---:|
+| Geometric Only | 0.630 | — | — | — |
+| Text-Batch | 0.460 | 0.300 | 0.267 | 1,992K |
+| VLM-Batch | 0.790 | 0.680 | 0.333 | 7,152K |
+| STAR | 0.420 | 0.460 | — | 55,622K |
+| LT-Mem (Qwen2.5-3B) | 0.885 | 0.800 | 0.567 | 431K |
+| LT-Mem (Gemini 2.5 Pro) | **0.910** | **0.820** | **0.600** | **438K** |
+
+在 Lab-S + Lab-L 的 LT-VQA 结果中，Gemini 2.5 Pro 版本相对 VLM-Batch 达到约 **16.3×** 的 token 减少（7,152K / 438K），同时三项指标更高；Qwen2.5-3B 版本也高于所列基线。论文的消融分析将主要收益归因于结构化记忆设计，而非单纯扩大推理模型。
+
+- **消融：** 对照波动性感知更新与覆盖、累积等基线，检验各记忆机制贡献（见论文）。
 
 ## 结论
 
