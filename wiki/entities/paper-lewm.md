@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, mila, nyu, brown, samsung, ami-labs]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-11
 arxiv: "2603.19312"
 venue: "arXiv 2026"
 code: https://github.com/lucas-maes/le-wm
@@ -13,6 +13,7 @@ related:
   - ./paper-lejepa.md
   - ./paper-lpwm.md
   - ./paper-levjepa.md
+  - ./paper-ad-e2e-jepa.md
   - ./paper-intact.md
   - ./paper-vjepa2.md
   - ../methods/generative-world-models.md
@@ -138,6 +139,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [AD-E2E-JEPA](./paper-ad-e2e-jepa.md) — 自动驾驶目标条件规划：冻结 DINOv3 并以 SIGReg projector 压缩 patch 表征，与 LeWM 像素端到端路线互补。
 - [MotionJEPA](./paper-motionjepa.md) — DISReg 防时间坍塌与 distractor 规划
 - [Traj-LeWM](./paper-traj-lewm.md) — 潜轨迹代价扩展
 - [State–Readout Decoupling](./paper-state-readout-decoupling.md) — rollout 解耦
