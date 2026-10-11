@@ -1,6 +1,6 @@
 # Long-WAM 官方项目页
 
-> 来源归档（site；核对 NVIDIA 官方 Long-WAM 页面；2026-10-08）
+> 来源归档（site；核对 NVIDIA 官方 Long-WAM 页面；2026-10-11）
 
 - **官网：** <https://nvlabs.github.io/LongLive/Long-WAM/>
 - **论文：** <https://arxiv.org/abs/2610.10528>
@@ -27,3 +27,15 @@
 - [Long-WAM 独立详情节点](../../wiki/entities/paper-long-wam-scaling-context.md)
 - [论文来源归档](../papers/long-wam-arxiv-2610-10528.md)
 - [官方代码归档](../repos/nvlabs-longlive-long-wam.md)
+
+## 页面新增内容核查（2026-10-11）
+
+本次复核时，官网新增了规划器组合和更完整的真机结果展示：
+
+- **RoboCasa365 + GPT-6 Astra：** 官网报告 Long-WAM 单独成功率 31.4%，组合 GPT-6 Astra 后为 54.4%；未见组合从 6.1% 升至 35.0%。官网称两侧使用同一 Long-WAM checkpoint，增益来自规划器负责任务分解、失败恢复与动作纠正，Long-WAM 仍负责执行带历史记忆的动作块。
+- **动态移动杯抓取（Unitree G1）：** 官网报告目标移动速度 3.0 / 4.5 / 6.0 / 7.5 cm/s 时成功率分别为 100 / 100 / 95 / 90%（各 20 次试验）；两个对比基线在 6.0 和 7.5 cm/s 下均未成功。
+- **动态杯叠放：** Long-WAM 19/20，两个基线各 0/20。
+- **长时任务（YAM）：** 官网展示超过 40 秒任务，三任务均值 81.7%，每任务 20 次试验。
+- **未来预测视频边界：** 页面明确标记为 generated 的片段是模型预测，不是机器人执行 rollout；结果整理时需与真机/仿真运行分开。
+
+以上均为项目团队官网报告，不是独立复现实验。组合系统成绩不能直接归因于 Long-WAM 单体策略。
