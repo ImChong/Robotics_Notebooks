@@ -1151,7 +1151,7 @@
 - [Action Upcycling（arXiv:2609.34911）](wiki/entities/paper-action-upcycling.md) — Action Upcycling**（*Don't Throw Away the Tail: Action Upcycling for Policy Acceleration*，成均馆大学 / K `📅unknown` `[entity_page]`
 - [One Demo Is Worth a Thousand Trajectories（arXiv:2606.19586）](wiki/entities/paper-action-view-augmentation.md) — One Demo Is Worth a Thousand Trajectories**（Chuer Pan, Litian Liang, Dominik Bauer, Eric Cousineau `📅unknown` `[entity_page]`
 - [ActiveFly-Bench（arXiv:2607.10180）](wiki/entities/paper-activefly-bench.md) — ActiveFly-Bench**（arXiv:2607.10180）收录于 [多模空间 · 一周 VLA 研究趋势简析（2 `📅unknown` `[entity_page]`
-- [ActiveScale（arXiv:2609.18514）](wiki/entities/paper-activescale.md) — ActiveScale**（*Scaling Active Perception for Robots across Model, Data, and Hardware*，[arXiv:2609. `📅unknown` `[entity_page]`
+- [ActiveScale: Scaling Active Perception for Robots across Model, Data, and Hardware（跨模型、数据与硬件扩展机器人主动感知）](wiki/entities/paper-activescale.md) — ActiveScale 让机器人一边操作、一边主动改变相机位置找目标：用历史画面与受相机位姿监督的 token，把“看哪里”纳入 VLA 动作学习。** 它不是给固定相机多装一个检测器，也不是仅凭 `📅unknown` `[entity_page]`
 - [执行器约束 RL 高速四足奔跑（MOR）](wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — Actuator-Constrained Reinforcement Learning for High-Speed Quadrupedal Locomotion**（Shin / Song /  `📅unknown` `[entity_page]`
 - [Actuator Dynamics Curricula（arXiv:2609.09492）](wiki/entities/paper-actuator-dynamics-curricula-legged-rl.md) — Actuator Dynamics Curricula**（*Actuator Dynamics Curricula for Narrow-Viability Tasks in Legged Ro `📅unknown` `[entity_page]`
 - [AdaHVLA](wiki/entities/paper-adahvla.md) — AdaHVLA**（*Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution*，[arXiv:2609.29204 `📅unknown` `[entity_page]`

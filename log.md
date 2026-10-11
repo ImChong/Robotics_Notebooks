@@ -73,6 +73,8 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+## [2026-10-10] ingest | sources/papers/activescale_arxiv_2609_18514.md — 复用ActiveScale节点，核查官方代码、六组权重及任务数据目录；补齐机制、消融和两张Mermaid图，纠正吞吐与遥操作边界
+
 ## [2026-10-10] ingest | 遗传算法与遗传编程一手资料及机器人应用
 
 - 归档 Holland、Goldberg、Koza、Hansen/Ostermeier 与 Storn/Price 的原著和论文。
