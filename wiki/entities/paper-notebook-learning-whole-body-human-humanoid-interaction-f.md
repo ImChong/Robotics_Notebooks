@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-10-11
 arxiv: "2601.09518"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - paper-codance.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-whole-body-human-humanoid-interaction-f.md
 summary: "让人形机器人与人发生物理交互是关键前沿，但人-人形交互（HHoI）数据极度稀缺。借用海量人-人交互（HHI）数据是可扩展替代，但作者发现：标准重定向会破坏交互中最关键的「接触」。为此提出 PAIR（Physics-Aware Interaction Retargeting）——一个以接触为中心的两阶段管线，跨形态差异保住接触语义，生成物理一致的 HHoI 数据。但高质量数据又暴露第二个失败：常规模仿学习只照搬轨迹、缺乏交互理解。于是再提出 D-STAR（Decoupled Spatio-Temporal Action Reasoner）——一个分层策略，把「何时动」与「何处动」解耦：相位注意力（Phase Attention）管时间、多尺度空间模块管空间，二者由扩散头融合，产出同步的全身行为而非简单模仿。解耦让模型学到鲁棒的时间相位而不被空间噪声干扰，带来响应式、同步的协作。仿真中显著优于基线，构成「从 HHI 数据学复杂全身交互」的完整有效流水线。"
@@ -82,6 +83,7 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 人类舞蹈视频与机器人顺应跟随的实机路线：[CoDance](paper-codance.md)（arXiv:2610.05324）；两者都从人类动作出发，但 CoDance 关注外力下的双手接触顺应。
 
 ## 参考来源
 
