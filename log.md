@@ -91,6 +91,8 @@ op: ingest
 - **去重：** Long-WAM 已有 canonical 节点，本次不新建实体。
 - **日期：** 2026-10-11
 
+## [2026-10-11] ingest | Agnes Harness — 收录开源 FDE agent runtime，区分其同名 MHS 设备协议与 Anthropic/HHMI 标准，并核查 pre-alpha 安全边界
+
 ## [2026-10-11] structural | roadmap 巡检：将 10-09 以来新增的 18 个知识节点补入 9 条纵深路线（loco-manipulation / contact / RSI / WAM / eval / VLA / RL-loco / sim2real / real2sim）
 
 ## [2026-10-10] lint | 全量 wiki lint：修复 12 个陈旧页面、方法落地/论文元数据/三段式/结论/陈旧声明/评测枢纽回链 11 条信息型预警，lint 归零

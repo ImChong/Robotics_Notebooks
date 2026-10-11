@@ -28,6 +28,7 @@
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
 - [智元灵犀 X1（Agibot 开源人形）](wiki/entities/agibot-lingxi-x1.md) — 灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **文档中心** 提供 BOM、整机图纸、装机 SO `📅unknown` `[entity_page]`
 - [AGIBOT WORLD 2026](wiki/entities/agibot-world-2026.md) — AGIBOT WORLD 2026** 是智元在 Agibot-World 生态下发布的 **真实环境机器人学习数据集**（Hugging `📅unknown` `[entity_page]`
+- [Agnes Harness（AGH）](wiki/entities/agnes-harness.md) — Agnes Harness（AGH）** 是面向 Forward Deployed Engineering（FDE）的可插拔 agent runtime：把模型调用、工具、任务状态、跨端会话、人工 `📅2026-10-11` `[entity_page]`
 - [Aholo Viewer](wiki/entities/aholo-viewer.md) — Aholo Viewer**（manycoretech/aholo-viewer）是面向 **浏览器 `📅unknown` `[entity_page]`
 - [AI Engineering from Scratch（AI 工程开源课程）](wiki/entities/ai-engineering-from-scratch.md) — AI Engineering from Scratch** 是一门以可运行代码为主线的 AI 工程课程，从数学和机器学习基础逐步覆盖深度学习、强化学习、LLM、Agent、工具协议和生产系统。 `📅unknown` `[entity_page]`
 - [智星云（AI Galaxy）](wiki/entities/ai-galaxy.md) — 智星云**（ai-galaxy.cn）是上海亘聪信息科技有限公司（安诺其集团子公司）运营的 **GPU 算力服务平台**，产品线从按小时云主机延伸 `📅unknown` `[entity_page]`
