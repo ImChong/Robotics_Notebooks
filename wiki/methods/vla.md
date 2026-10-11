@@ -570,6 +570,11 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — Green for Go：冻结导航 VLA 绿/红视觉接地（arXiv:2607.05122）
 - [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
 
+
+### 人类数据驱动的人形控制
+
+- [VioLA：从人类数据学习人形通用控制](../entities/paper-viola-human-data-control.md) — human/robot 共享动作潜空间，预测身体与手部潜变量并由冻结控制器执行。
+
 ## 关联页面
 
 - [Discrete Forcing](../entities/paper-discrete-forcing.md) — 以离散 token 先定动作结构、再用连续 flow refinement 输出高精度动作；LIBERO 上两次 action-expert 前向达到 97.6%。
