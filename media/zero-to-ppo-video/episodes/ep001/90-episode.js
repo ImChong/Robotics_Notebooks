@@ -32,9 +32,9 @@
   window.EpisodeVideo = {
     ep: '001',                      // 只用于文件名；画面和封面上都不出现集数
     badge: '第一季',
-    title: '机器人在干嘛',
+    title: '四步循环',
     name: '感知 → 规划 → 控制 → 执行',
-    pitch: '拆开任何机器人，都在跑同一个四步圈',
+    pitch: '从扫地机到人形机器人，拆开全是这一套',
     meta: '<b>主路线入门：机器人技术栈全景</b><br>Robotics Notebooks · 不用数学 · 不用代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：四步各用本色（感知 good、规划 violet、控制 accent、执行 warn）
