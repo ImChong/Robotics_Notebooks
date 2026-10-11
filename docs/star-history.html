@@ -29,6 +29,8 @@
     .trend-legend[hidden] { display: none; }
     .trend-legend li { display: flex; align-items: center; gap: 6px; min-width: 0; }
     .trend-legend i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+    /* 公司时间线的公司名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
+    #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -240,6 +242,7 @@
                 (byDate[n.date] || (byDate[n.date] = [])).push(n.title + '（' + n.track + '）');
               });
               return {
+                key: company.key,
                 name: company.name,
                 points: Object.keys(byDate).sort().map(function (d) { return { date: d, items: byDate[d] }; })
               };
@@ -378,13 +381,17 @@
       }
 
       // 公司路线甘特图：横线连起首末节点，点为当月节点（同月多个则放大，悬停列出标题与方向）。
-      // 窄屏隐藏纵轴标签，把公司名放到各自横线上方，让时间轴占满整宽
+      // 窄屏隐藏纵轴标签，把公司名放到各自横线上方，让时间轴占满整宽；
+      // 点击节点或公司名跳到对应的公司路线页 company.html?id=<key>
+      function companyLink(r) {
+        return '<a href="company.html?id=' + encodeURIComponent(r.key) + '" target="_self">' + r.name + '</a>';
+      }
       function drawGantt(view, s, text, muted, grid, accent, bg) {
         var narrow = narrowMq.matches;
         var names = s.rows.map(function (r) { return r.name; });
         var span = { type: 'scatter', mode: 'lines', x: [], y: [], hoverinfo: 'skip', opacity: 0.35,
           line: { color: accent, width: narrow ? 4 : 6 } };
-        var dots = { type: 'scatter', mode: 'markers', x: [], y: [], text: [],
+        var dots = { type: 'scatter', mode: 'markers', x: [], y: [], text: [], customdata: [],
           marker: { color: accent, size: [], line: { color: bg, width: 1 } },
           hovertemplate: '%{text}<extra></extra>' };
         s.rows.forEach(function (r) {
@@ -394,6 +401,7 @@
           p.forEach(function (pt) {
             dots.x.push(pt.date);
             dots.y.push(r.name);
+            dots.customdata.push(r.key);
             dots.marker.size.push(Math.min(9 + 2 * (pt.items.length - 1), 15));
             dots.text.push('<b>' + r.name + '</b> · ' + pt.date + '<br>' + pt.items.join('<br>'));
           });
@@ -415,17 +423,31 @@
           },
           // 显式反向范围：首家公司在上，且不按点的大小额外留白
           yaxis: { type: 'category', categoryarray: names, range: [names.length - 0.5, top], automargin: true,
+            tickvals: names, ticktext: s.rows.map(companyLink),
             ticksuffix: ' ', showticklabels: !narrow, gridcolor: grid, fixedrange: true },
-          annotations: narrow ? names.map(function (name) {
-            return { xref: 'paper', x: 0, y: name, xanchor: 'left', yanchor: 'bottom', yshift: 8,
-              showarrow: false, text: name, font: { color: muted, size: 11 } };
+          annotations: narrow ? s.rows.map(function (r) {
+            return { xref: 'paper', x: 0, y: r.name, xanchor: 'left', yanchor: 'bottom', yshift: 8,
+              showarrow: false, text: companyLink(r), font: { color: muted, size: 11 } };
           }) : [],
           showlegend: false, hovermode: 'closest', hoverlabel: { align: 'left' },
           dragmode: false
         }, { responsive: true, displaylogo: false, displayModeBar: false });
         legend.hidden = true;
         status.textContent = view.label + '：' + s.total;
-        return plotted;
+        return plotted.then(function (gd) {
+          // react 复用同一个图表元素，先清掉旧监听；切到其他视图后点击不再跳转
+          gd.removeAllListeners('plotly_click');
+          gd.removeAllListeners('plotly_hover');
+          gd.removeAllListeners('plotly_unhover');
+          var drag = function () { return gd.querySelector('.nsewdrag'); };
+          gd.on('plotly_click', function (ev) {
+            var key = current && current.kind === 'gantt' && ev.points[0] && ev.points[0].customdata;
+            if (key) window.location.href = 'company.html?id=' + encodeURIComponent(key);
+          });
+          gd.on('plotly_hover', function () { if (drag()) drag().style.cursor = 'pointer'; });
+          gd.on('plotly_unhover', function () { if (drag()) drag().style.cursor = ''; });
+          return gd;
+        });
       }
 
       VIEWS.forEach(function (v) {
