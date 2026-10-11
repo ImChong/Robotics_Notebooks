@@ -2,8 +2,9 @@
 type: concept
 tags: [mcp, protocol, llm-agents, lab-automation, hardware, anthropic, hhmi-janelia, safety]
 status: complete
-updated: 2026-08-28
+updated: 2026-10-11
 related:
+  - ../entities/agnes-harness.md
   - ./model-context-protocol.md
   - ./llm-robotics-control-interfaces.md
   - ./safety-filter.md
@@ -15,6 +16,7 @@ sources:
   - ../../sources/sites/anthropic-model-hardware-standard.md
   - ../../sources/sites/modelhardwarestandard-com.md
   - ../../sources/sites/anthropic-model-context-protocol.md
+  - ../../sources/repos/agnes-harness.md
 summary: "Model Hardware Standard（MHS）是 Anthropic 与 HHMI Janelia 提出的、让 AI agent 安全操作可编程物理设备的共享驱动规范：read/write 原语、可发现设备、自然语言特性标签，经 MCP / CLI / API 三条通路编排。2026-08 起研究预览，宣称将开源，入库日无公开仓。"
 ---
 
@@ -111,12 +113,14 @@ HHMI Janelia 的 Arco Bast 先做 **共享内存字典**，让异厂商激光、
 - [Safety Filter](./safety-filter.md) — 物理副作用的最后一层约束
 - [远程过程调用](./remote-procedure-call.md) — 驱动之下仍是读写作 RPC
 - [Manipulation](../tasks/manipulation.md) — 实验室臂编排 vs 学习式抓取
+- [Agnes Harness](../entities/agnes-harness.md) — 自有设备协议也命名为 Model Hardware Standard（MHS）；与本页 Anthropic / HHMI 标准相互独立
 
 ## 参考来源
 
 - [Previewing the Model Hardware Standard（Anthropic 公告归档）](../../sources/sites/anthropic-model-hardware-standard.md)
 - [modelhardwarestandard.com 项目页归档](../../sources/sites/modelhardwarestandard-com.md)
 - [Introducing MCP（对照）](../../sources/sites/anthropic-model-context-protocol.md)
+- [Agnes Harness 仓库与 README 摘录](../../sources/repos/agnes-harness.md) — 用于消歧同名协议
 
 ## 推荐继续阅读
 
