@@ -84,6 +84,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   background: var(--demo-surface); border: 2px solid var(--demo-border); font-size: 42px; line-height: 1.5; }
 .pt .n { font-weight: 900; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
 .pt b { color: var(--hi); }
+.pt > div:not([class]) { white-space: pre-line; }
 .pt .wait { margin-top: 14px; height: 10px; border-radius: 5px; background: var(--demo-grid); overflow: hidden; }
 .pt .wait b { display: block; height: 100%; width: 0; background: var(--demo-warn); }
 </style>
@@ -350,8 +351,10 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     while (idx > 0 && String(segs[idx - 1].scene) === key) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
     while (idx < segs.length - 1 && String(segs[idx + 1].scene) === key) last = segs[++idx];
-    // hold just before `to`, so the cue / element that starts at `to` waits for the next line
-    var local = t - first.t0, st = s.from + Math.min(Math.max(t - s.t0 - s.lead, 0), Math.max(s.to - s.from - 1e-3, 0));
+    // 这句念多久，[from, to] 就拉伸成多久（配音比分镜短则 1 倍速）；停在 to 之前一刻，让从 to 开始的要点等下一句
+    var local = t - first.t0, span = Math.max(s.to - s.from, s.alen || 0);
+    var st = s.from + (s.to - s.from) * clamp((t - s.t0 - s.lead) / (span || 1), 0, 1);
+    st = Math.min(st, Math.max(s.to - 1e-3, s.from));
     var sc = get(key);
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
     sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));

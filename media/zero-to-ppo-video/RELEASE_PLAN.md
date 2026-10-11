@@ -1,12 +1,13 @@
-# 视频发布清单：零基础到 PPO
+# 视频发布清单：从头学人形机器人算法 · 零基础篇
 
-按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-11 尚未发布；下一集为 001。
+按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-11 尚未发布；下一集为 001。
 
-- 🆕：还没有视频，要新做（目前全部是 🆕）
+- 🎬 `<ep>`：本目录已有分镜与旁白源稿（`episodes/<ep>`），成片用 `render.mjs` 渲染（见 [README](README.md)）
+- 🆕：还没有视频，要新做
 - `[x]` 只表示已经发布
 - 每行破折号后先写「只讲」什么，再写排序依据：`§L1.2` 等指主路线章节；标〔取舍〕的是拆分或排序判断，路线原文没这么写
 - 「素材 cNN」指 [路线讲解长视频](../roadmap-motion-control-video/README.md) 的讲解稿 `chapters/NN-*.txt` 里可复用的幻灯片（引号内为标题原文），`svg/` 为同目录示意图；单集要在此基础上展开，不是直接剪长视频
-- 标题格式（建议，可改）：「零基础到 PPO 系列 (0NN)：<本集主题>」
+- 标题格式：「从头学人形机器人算法 · 零基础篇 (0NN)：<本集主题>」
 
 ## 每集一个主题
 

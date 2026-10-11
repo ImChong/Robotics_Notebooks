@@ -19,11 +19,11 @@
 
 | 路径 | 内容 |
 |------|------|
-| `episodes/<ep>.js` | 一集的分镜：`window.EpisodeVideo`（集数、季、角标、问句、一句话、主图 `hero`、各幕 `scenes`、片尾 `outro`） |
+| `episodes/<ep>/*.js` | 一集的分镜，按文件名顺序加载：共用部件 → 片头主图 → 各幕 → 最后一个文件组装 `window.EpisodeVideo`（集数、季、角标、问句、一句话、主图 `hero`、各幕 `scenes`、片尾 `outro`）。短的一集也可以只写一个 `episodes/<ep>.js` |
 | `episodes/<ep>.py` | 旁白：`SCRIPT`（每句绑定一幕的分镜时间 `[from, to]`）与 `DISPLAY`（字幕换写法） |
 | `stage.html` | 1080×1920 舞台：片头、分镜、片尾、封面版式，安全区 330–1440 |
-| `build.py` | 旁白 → edge-tts 逐句配音 → `out/<ep>/timeline.json` + `narration.wav` |
-| `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面 |
+| `build.py` | 旁白 → edge-tts 逐句配音 → `out/<ep>/timeline.json` + `narration.wav`。每句记下配音实长，舞台按它把这句的分镜区间等比拉伸，画面事件跟着念到的词走 |
+| `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面，`scene` 模式不用配音单看某一幕 |
 | `check_layout.mjs` | 逐帧检查：块不重叠、不压字幕、都在安全区；封面检查 3:4 置顶裁剪 |
 | `vendor/` | 论文系列的分镜工具库 `kit.js` 与样式 `paper-demos.css`（取自 `f7a5b14`，未改动） |
 
@@ -33,6 +33,7 @@
 cd media/zero-to-ppo-video
 npm install
 pip3 install edge-tts imageio-ffmpeg
+node render.mjs ep001 scene 3 0,5,12   # 做分镜时：不配音，单看第 3 幕这几个分镜时刻
 python3 build.py ep001                 # 旁白 TTS -> out/ep001/timeline.json + narration.wav
 node render.mjs ep001 stills 5,40,90   # 先抽几帧看排版
 node check_layout.mjs ep001            # 输出 no overlap 才算过

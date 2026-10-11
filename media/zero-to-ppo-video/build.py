@@ -123,7 +123,8 @@ async def main():
             alen = len(audio) / 2 / SR
         lead = LEAD if scene != prev_scene else 0.0
         dur = max(b - a, lead + alen + GAP)
-        segs.append({"scene": scene, "t0": round(t, 3), "t1": round(t + dur, 3), "from": a, "to": b, "lead": lead})
+        # alen：这句配音的实际长度。舞台按它把 [from, to] 等比拉伸，画面事件跟着念到的词走（论文系列是 1 倍速播完再停在 to）
+        segs.append({"scene": scene, "t0": round(t, 3), "t1": round(t + dur, 3), "from": a, "to": b, "lead": lead, "alen": round(alen, 3)})
         pad = int(round((t + lead) * SR)) - len(pcm) // 2
         pcm += b"\x00\x00" * max(pad, 0) + audio
         for off, d, s in sents:
