@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-10
 related:
   - ../formalizations/generative-foundations.md
   - ../overview/ai-architecture-map.md
@@ -16,12 +16,14 @@ related:
   - ../entities/paper-transformer-transformer.md
   - ../entities/paper-diffsheg.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
+  - ../entities/paper-adversarial-training-pixel-diffusion.md
   - ../entities/comfyui.md
 sources:
   - ../../sources/papers/ho_ddpm_arxiv_2006_11239.md
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
   - ../../sources/blogs/wechat_human_five_diffusion_model_intro.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
+  - ../../sources/papers/adversarial_training_pixel_diffusion_arxiv_2609_38170.md
 summary: "扩散模型通过固定前向加噪与可学习逆向降噪，把高难度一次性生成拆解为稳定的多步监督子任务；是 Diffusion Policy、运动扩散与世界模型等机器人生成式路线的共同底座。"
 ---
 
@@ -151,6 +153,7 @@ flowchart LR
 - [Transformer Transformer](../entities/paper-transformer-transformer.md) — DiT 扩散完整机体 + Dynamics Self-Guidance
 - [Importance Sampling + PCA（商业 AV；DiFS）](../entities/paper-importance-sampling-pca-av-failures.md)
 - [ComfyUI](../entities/comfyui.md) — 节点图式扩散/视频/3D 推理引擎；实验室常用可版本化工作流宿主
+- [像素扩散的对抗训练](../entities/paper-adversarial-training-pixel-diffusion.md) — 用时间步门控的 GAN 后训练修补像素扩散的高频统计
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow 作为连续控制动作头的讲者坐标（Simons 2026）
 
 ## 参考来源
@@ -159,6 +162,7 @@ flowchart LR
 - [DiT（arXiv:2212.09748）](../../sources/papers/peebles_dit_arxiv_2212_09748.md)
 - [wechat_human_five_diffusion_model_intro.md](../../sources/blogs/wechat_human_five_diffusion_model_intro.md) — human five 微信公众号《Diffusion Model入门》（<https://mp.weixin.qq.com/s/P4SxYSBnxDjX5De1jxMxfA>）
 - [sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine @ Simons：扩散/flow 改造连续动作策略（官方 abstract）
+- [像素扩散的对抗训练（arXiv:2609.38170）](../../sources/papers/adversarial_training_pixel_diffusion_arxiv_2609_38170.md)
 
 ## 推荐继续阅读
 
