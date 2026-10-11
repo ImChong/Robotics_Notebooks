@@ -12,7 +12,7 @@ tags:
   - project
   - x-square-robot
 status: complete
-updated: 2026-10-09
+updated: 2026-10-10
 project_id: wall-oss
 arxiv: "2509.11766"
 code: https://github.com/X-Square-Robot/wall-x
@@ -248,7 +248,7 @@ sequenceDiagram
 
 - **自建评测**：六个真机任务和具身 VQA 基准都没有公开，任务进度评分细则由训练方制定（执行由第三方盲测）。
 - **口径不一**：数据规模（「超过 1 万小时」和「数万小时」两种写法）、Collect-Waste 演示条数（900 和 1000 两种写法）在同一篇论文里前后不一致。
-- **一代权重已非 main 默认**：直接 `pip install -e .` 最新版去加载 `wall-oss-flow` 可能对不上配置，要按 README 回退提交。
+- **一代权重已非 main 默认**：直接用 main 分支 HEAD `pip install -e .` 去加载 `wall-oss-flow` 可能对不上配置，要按 README 回退提交。
 - **许可边界**：仓库是 Apache-2.0，但 HF 权重卡没有 license 元数据，只能推定沿用仓库许可（**推测**），商用前须向官方确认。
 - **数据不可复现**：自采语料和自动生成的具身 VQA 没有公开，第三方只能微调，不能复现预训练。
 - **策展快照**：本页最初来自公众号开源清单（2026-09-06），2026-10-09 按论文、README 和 HF 重写；仓库后续更名或归档时需重新核实。

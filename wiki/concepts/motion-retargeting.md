@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-10-06
+updated: 2026-10-10
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -175,7 +175,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 3. 接触保真度（Contact Consistency）
 - 重定向时需要保留"哪只脚在地面"的接触相位
 - 否则物理仿真下机器人会穿地或飞起
-- 人–物交互还需保留手与物体的接触：[OTRetarget](../entities/paper-otretarget.md) 用表面 proximity triple + 熵正则 OT 建立人体部位–机器人连杆对应，再联合求解机器人关节与物体位姿，使物体轨迹适配目标机器人身材（OMOMO 上交互 Jaccard 87%，OmniRetarget 28%）
+- 人–物交互还需保留手与物体的接触：[OTRetarget](../entities/paper-otretarget.md) 用表面 proximity triple + 熵正则 OT 建立人体部位–机器人连杆对应，再联合求解机器人关节与物体位姿，使物体轨迹适配目标机器人身材（OMOMO 上交互 Jaccard 87%，OmniRetarget 28%）；它是逐帧受约束 IK 的运动学重定向（含搬箱、四足爬行、全身旋转移动），不等于动态平衡控制器，真机迁移交由下游 RL 全身策略
 
 ### 4. 关节限制满足
 人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化

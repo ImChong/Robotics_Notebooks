@@ -3,7 +3,7 @@ type: entity
 title: OMOMO（人–物交互动捕数据集）
 tags: [dataset, mocap, human-object-interaction, manipulation, smpl-h, stanford, siggraph-asia-2023]
 summary: "Stanford SIGGRAPH Asia 2023 人–物交互数据集：15 物体、约 10 h 全身操纵 MoCap（物体运动 + SMPL-H 人体），常被 OmniRetarget / ResMimic 等用作 G1 loco-manipulation 重定向源。"
-updated: 2026-10-02
+updated: 2026-10-10
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -72,7 +72,7 @@ flowchart LR
 
 - **下游重定向集**：[OmniRetarget 数据集](./omniretarget-dataset.md)（G1，`robot-object/` 来自 OMOMO）
 - **重定向方法**：[OmniRetarget](./paper-hrl-stack-03-omniretarget.md)、[GMR](../methods/motion-retargeting-gmr.md)
-- **OT 表面对应重定向**：[OTRetarget](./paper-otretarget.md)（arXiv:2609.36602）— 在 OMOMO 上报告机器人–物体交互 Jaccard **87%**、深度误差 **8.7 mm**（OmniRetarget 对照 28% / 29.3 mm）；代码待发布
+- **OT 表面对应重定向**：[OTRetarget](./paper-otretarget.md)（arXiv:2609.36602）— 在 OMOMO 上报告机器人–物体交互 Jaccard **87%**、深度误差 **8.7 mm**（OmniRetarget 对照 28% / 29.3 mm）；属逐帧受约束 IK 的参考动作重定向，真机由下游 RL 全身策略执行；代码截至 2026-10-09 仍待发布
 - **对照阅读**：[humanoid-reference-motion-datasets 对比](../comparisons/humanoid-reference-motion-datasets.md)
 
 ## 参考来源

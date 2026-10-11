@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, recursive-self-improvement, llm-agents, ai-auto-research, self-evaluation, governance, literature-review]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-10
 arxiv: "2607.07663"
 code: https://github.com/deepgrounding/recursive-self-improvement
 related:
@@ -188,6 +188,8 @@ sequenceDiagram
 | 核心贡献 | 验证层级 + evaluator 单列 | 人机共治 + 阶段成熟度 | 可筛选方法/基准索引 |
 | 开源 | 语料 + 脚本 | Awesome 列表 + 站点 | 静态站 + README |
 
+与 [The Last AI Built by Humans（2609.11873）](./paper-last-ai-built-by-humans-rsi.md) 互补：本文给机制 taxonomy 与验证层级；后者提出五级改进自治框架与 Headroom-Closed Index（HCI），用于判定系统是否从执行改进走向递归元改进，属概念框架、无可运行实现。
+
 ## 结论
 
 **「Self-improvement」在 2026 文献里主要是可评测、human-on-the-loop 的有界 refinement；开放式 RSI 仍被 grounding、collapse 与算力约束；全场瓶颈在 evaluator 设计，而治理级测量几乎空白。**
@@ -205,6 +207,7 @@ sequenceDiagram
 - [递归自改进（概念）](../concepts/recursive-self-improvement.md)
 - [RSI 四层标准与五次推进](../queries/rsi-four-tier-five-pushes.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
+- [The Last AI Built by Humans（2609.11873）](./paper-last-ai-built-by-humans-rsi.md) — 五级改进自治 + HCI 判别框架
 - [Awesome RSI](./awesome-rsi.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [Dream-RSI（2609.14858）](./paper-dream-rsi.md) · [karpathy/autoresearch](./karpathy-autoresearch.md)
 
 ## 参考来源

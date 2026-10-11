@@ -10,7 +10,7 @@ tags:
   - eth
   - unitree-g1
 status: complete
-updated: 2026-10-07
+updated: 2026-10-10
 arxiv: "2609.34674"
 related:
   - ../methods/motion-retargeting-gmr.md
@@ -166,7 +166,7 @@ sequenceDiagram
 | 动力学 | kinematic only | kinematic | kinematic | **动力学可行** |
 | 开源 | GitHub + HF 数据 | holosoma + HF | 社区 GMR | Atari sbto |
 
-同属 OMOMO/G1 接触保真路线的 [OTRetarget](./paper-otretarget.md)（arXiv:2609.36602）改用 **熵正则 OT 表面对应 + 机器人与物体位姿联合 IK**，报告交互 Jaccard 87% / 深度误差 8.7 mm；与本文 contact-point gap 指标口径不同，不能直接横比，且其代码待发布。
+同属 OMOMO/G1 接触保真路线的 [OTRetarget](./paper-otretarget.md)（arXiv:2609.36602）改用 **熵正则 OT 表面对应 + 机器人与物体位姿联合 IK**，报告交互 Jaccard 87% / 深度误差 8.7 mm；与本文 contact-point gap 指标口径不同，不能直接横比；OTRetarget 只产出逐帧受约束 IK 的参考动作（真机由下游 RL 策略执行），代码截至 2026-10-09 仍待发布。
 
 ## 结论
 

@@ -2,13 +2,14 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-10
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-qwen-audio-agent.md
   - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-xiaomi-cocktailasr-1.md
+  - ../entities/microsoft-vibevoice.md
   - ../entities/paper-vln-10-navid.md
   - ../concepts/ros2-basics.md
   - ../entities/unitree-g1.md
@@ -18,6 +19,7 @@ related:
   - ../entities/voicestudio.md
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/papers/vibevoice_asr_arxiv_2601_18184.md
 summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可打断闭环；课程 8.2，与 VLN/NaVid 组合完成语音导航实践。"
 ---
 
@@ -93,7 +95,7 @@ flowchart LR
 
 | 模块 | 可选实现 |
 |------|----------|
-| ASR | Whisper / 云 API；多说话人 **全场** 可用 [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md)（SATS）；**只听示教者/操作者**（有 ref 声纹）可用 [Xiaomi-CocktailASR-1](../entities/paper-xiaomi-cocktailasr-1.md)（TS-ASR + 拒识） |
+| ASR | Whisper / 云 API；多说话人 **全场** 可用 [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md)（SATS）；**只听示教者/操作者**（有 ref 声纹）可用 [Xiaomi-CocktailASR-1](../entities/paper-xiaomi-cocktailasr-1.md)（TS-ASR + 拒识）；**长时会议/示教录音**（≤60 min 单次、联合转写 + 说话人 + 时间戳，MIT）可用 [Microsoft VibeVoice-ASR](../entities/microsoft-vibevoice.md)，偏离线整理而非 <1 s 短指令 |
 | NLU | 正则槽位 或 小 LLM |
 | TTS | 本地 eng/中文 TTS（如 Piper）；多引擎试验与 MCP 可对照 [VoiceStudio](../entities/voicestudio.md) |
 | 总线 | ROS 2 action / 宇树 SDK 服务 |
@@ -138,6 +140,7 @@ flowchart LR
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
+- [VibeVoice-ASR 技术报告归档](../../sources/papers/vibevoice_asr_arxiv_2601_18184.md) — 长音频联合转写 / 说话人 / 时间戳的 ASR 选项
 
 ## 推荐继续阅读
 

@@ -12,6 +12,7 @@ related:
   - ../overview/vggt-geometric-state-survey.md
   - ./paper-sam2.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/sam_v_arxiv_2609_25490.md
   - ../../sources/repos/sam-v.md
@@ -175,6 +176,7 @@ ScanNet++ 上，相比 PanSt3R，论文报告 SAM-V 提高 **5.7 个 T-mIoU 点*
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — 多视角几何主干的背景与应用分类
 - [SAM 2](./paper-sam2.md) — 视频时序记忆路线，与 SAM-V 的显式多视角几何路线互补
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — SAM-V 属于多视角分割/场景理解前端
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 读 SAM-V 的 Hypersim / IGGT 指标时，用于区分感知前端评测与下游策略任务成功率
 
 ## 参考来源
 

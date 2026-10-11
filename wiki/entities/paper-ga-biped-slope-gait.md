@@ -6,15 +6,17 @@ tags:
   - locomotion
   - zmp
 status: complete
-updated: 2026-09-20
+updated: 2026-10-10
 arxiv: "2609.20570"
 related:
   - ../formalizations/zmp-lip.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
+  - ../methods/genetic-algorithm.md
 sources:
   - ../../sources/papers/ga-biped-slope-gait_arxiv_2609_20570.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md
+  - ../../sources/papers/genetic_algorithms_foundations.md
 summary: "GA 坡面双足（arXiv:2609.20570）：8-DoF 运动学 + Newton–Euler 动力学；GA 优化三项轨迹参数 + ZMP 惩罚；最快 0.5 s 步周期、最高 22.5° 坡面仿真稳定。"
 ---
 
@@ -60,6 +62,7 @@ summary: "GA 坡面双足（arXiv:2609.20570）：8-DoF 运动学 + Newton–Eul
 | 维度 | 读法 |
 |------|------|
 | **同周对照** | 见对应 [周更盘点](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md) 映射表，勿跨任务直接比 SR |
+| **方法定位** | 离线低维轨迹参数的 [遗传算法](../methods/genetic-algorithm.md) 外层搜索 + ZMP 惩罚筛选，不等价于用 GA 学高频闭环策略 |
 | **开源状态** | **待发布** — 部署前以项目页/arXiv 为准 |
 
 ## 结论
@@ -75,11 +78,13 @@ summary: "GA 坡面双足（arXiv:2609.20570）：8-DoF 运动学 + Newton–Eul
 - [zmp-lip](../formalizations/zmp-lip.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 - [locomotion](../tasks/locomotion.md)
+- [遗传算法（GA）](../methods/genetic-algorithm.md) — 编码、选择、交叉与变异的方法总览
 
 ## 参考来源
 
 - [ga-biped-slope-gait_arxiv_2609_20570.md](../../sources/papers/ga-biped-slope-gait_arxiv_2609_20570.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
+- [genetic_algorithms_foundations.md](../../sources/papers/genetic_algorithms_foundations.md) — GA 一手资料与「离线轨迹参数优化 ≠ GA 学闭环策略」边界
 - [arXiv:2609.20570](https://arxiv.org/abs/2609.20570)
 
 ## 推荐继续阅读
