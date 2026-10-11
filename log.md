@@ -91,6 +91,8 @@ op: ingest
 - **去重：** Long-WAM 已有 canonical 节点，本次不新建实体。
 - **日期：** 2026-10-11
 
+## [2026-10-10] ingest | arXiv:2609.38170 像素扩散对抗后训练 — 新增论文实体与来源档案，更新 Diffusion Model 交叉链接
+
 ## [2026-10-11] ingest | Agnes Harness — 收录开源 FDE agent runtime，区分其同名 MHS 设备协议与 Anthropic/HHMI 标准，并核查 pre-alpha 安全边界
 
 ## [2026-10-11] structural | roadmap 巡检：将 10-09 以来新增的 18 个知识节点补入 9 条纵深路线（loco-manipulation / contact / RSI / WAM / eval / VLA / RL-loco / sim2real / real2sim）
