@@ -116,3 +116,12 @@
 - 深化 VPP 与三项工程详情；区分 VPP 联合研究、ERA-42 产品、M7 π₀.₅ 示例，保留项目页和 arXiv CALVIN 指标差异；SDK 与遥操作依赖厂商服务/授权环境。
 - 验收：Python 全量 500 项、前端 75 项通过；`GITHUB_ACTIONS=true make ci-preflight` 按线上规则跳过 freshness，lint 零阻塞、搜索回归和导出 13/13 通过。初次浅克隆导致活动数据 guard 失败，补齐完整 git 历史后重跑通过。
 - Chromium 下载为损坏压缩包，未生成浏览器截图；未重跑模型训练或真机实验。仅提交源文件与日志碎片，PR Actions 结果见 PR。
+
+### 遗漏节点全面核查（2026-10-11）
+
+- 范围：当前 29 家公司的路线时间线，对照仓库 wiki / sources 中的官方来源与官网博客、仓库、arXiv 列表；5 路只读核查共提出 99 项候选，收入 56 项（总节点 189 → 245）。
+- 收录标准：公司自己的机器人技术产出（模型、论文、基准、仿真、整机开源、官方工程仓），页面通过 `test_company_roadmaps.py` 约束，日期可单独确认；论文用 arXiv v1 日期（入选项已用 arXiv API 复核），代码仓取默认分支根提交并在 `date_note` 标明不证明首发，无日期留空。
+- 新增：NVIDIA 20、Galbot 8、Google DeepMind 6、AgiBot 3、Robotera 2、Galaxea 3、Unitree 2、RAI 2、Limx 2、XPENG 1、Xiaomi 1、1X 1、Figure 1、Physical Intelligence 1、X Square 1、Lightwheel 1、Simate 1。
+- 未收入：智驾 / 通用视觉论文（XPENG 6 项）、联合署名或第三方牵头（GroundingPI、τ₀-VLA、EffVLA、FastStair、HEFT、FoldNet++、PASSAGE、Open X-Embodiment）、合作新闻稿与融资类（Lightwheel 合作稿、PeritasAI）、低置信或日期靠推断（LeIsaac、AimRT、CTS、RT-1 / DreamerV3 / dm_control、各 SDK 仓）、`sources/repos/unitree.md` 已限定范围的 SDK / 仿真桥仓（unitree_sdk2 / mujoco / ros2）。
+- 无 wiki 页面的官方发布不新建页面，留作后续入库：Figure 03、1X NEO 发布、LimX Oli、XPENG Fe0 / Si0 / Capek 0.5、Delta D1 等。
+- 待核对：AgiBot `GO-2` 节点日期 2026-01 取自 arXiv:2601.11404，而 wiki 页写 2026-06 发布，日期口径未统一，本次未改。

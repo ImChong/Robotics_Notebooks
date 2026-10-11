@@ -69,23 +69,23 @@ test('company data loads on demand and repeated views share the graph and compan
 
 test('company timeline groups dated nodes by month and skips undated nodes and empty companies', async () => {
   const { requests, views } = loadViews(graph, [
-    { name: '公司乙', nodes: [
+    { key: 'yi', name: '公司乙', nodes: [
       { date: '2026-03', title: 'B2', track: 'VLA' },
       { date: '', title: '无日期', track: '仿真' },
       { date: '2025-01', title: 'B1', track: '世界模型' },
       { date: '2026-03', title: 'B3', track: '全身控制' },
     ] },
-    { name: '公司甲', nodes: [{ date: '2024-10', title: 'A1', track: 'VLA' }] },
-    { name: '空公司', nodes: [{ date: '', title: '无日期', track: '数据' }] },
+    { key: 'jia', name: '公司甲', nodes: [{ date: '2024-10', title: 'A1', track: 'VLA' }] },
+    { key: 'kong', name: '空公司', nodes: [{ date: '', title: '无日期', track: '数据' }] },
   ]);
   const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'company-timeline').load()));
   assert.ok(!requests.includes('exports/link-graph.json'));
   assert.deepEqual(result.rows, [
-    { name: '公司乙', points: [
+    { key: 'yi', name: '公司乙', points: [
       { date: '2025-01', items: ['B1（世界模型）'] },
       { date: '2026-03', items: ['B2（VLA）', 'B3（全身控制）'] },
     ] },
-    { name: '公司甲', points: [{ date: '2024-10', items: ['A1（VLA）'] }] },
+    { key: 'jia', name: '公司甲', points: [{ date: '2024-10', items: ['A1（VLA）'] }] },
   ]);
   assert.equal(result.first, '2024-10');
   assert.equal(result.last, '2026-03');
