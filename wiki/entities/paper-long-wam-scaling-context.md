@@ -47,7 +47,8 @@ sources:
 | MoT | Mixture-of-Transformers | 多个模态专家通过注意力接口交换上下文的架构 |
 | IDM | Inverse Dynamics Model | 从状态变化估计动作监督或动作条件的逆动力学模型 |
 | SR | Success Rate | 成功率，需结合具体 benchmark 协议解释 |
-| KV cache | Key-Value cache | Transformer 历史注意力键值缓存 |\n| GPT | Generative Pre-trained Transformer | 此处指承担高层规划、恢复和纠正的 GPT-6 Astra agent |
+| KV cache | Key-Value cache | Transformer 历史注意力键值缓存 |
+| GPT | Generative Pre-trained Transformer | 此处指承担高层规划、恢复和纠正的 GPT-6 Astra agent |
 
 ## 方法：记住过去、预测未来、生成动作
 
