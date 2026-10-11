@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, spatial-intelligence, memory-agent, frozen-vlm, procedure-memory]
 status: complete
-updated: 2026-10-02
+updated: 2026-10-11
 arxiv: "2608.12743"
 related:
   - ../methods/vla.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ./paper-seeker.md
+  - ./paper-memcompiler-state-conditioned-memory.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/spatial_memory_agent_arxiv_2608_12743.md
@@ -92,13 +93,14 @@ flowchart TB
 
 ## 与其他工作对比
 
-相对后训练 spatial VLM：本文 **零参数更新**。相对外部 3D 工具链：本文 **推理时不调深度/重建专家**。相对 [LT-Mem](./paper-lt-mem.md)：LT-Mem 依赖多会话 SLAM + 实例分割维护对象级 3D 跨会话记忆，评测用其公开的 LT-VQA 数据集（方法代码 TBD）；本文面向单次推理的空间问答，不处理跨会话身份与环境变化。
+相对 [MemCompiler](./paper-memcompiler-state-conditioned-memory.md)：SMA 的核心是 verifier 筛选和可靠性排序空间 lesson；MemCompiler 学习每个执行步如何按 Brief State 编译跨回合经验，并提供 Soft-Mem。相对后训练 spatial VLM：本文 **零参数更新**。相对外部 3D 工具链：本文 **推理时不调深度/重建专家**。相对 [LT-Mem](./paper-lt-mem.md)：LT-Mem 依赖多会话 SLAM + 实例分割维护对象级 3D 跨会话记忆，评测用其公开的 LT-VQA 数据集（方法代码 TBD）；本文面向单次推理的空间问答，不处理跨会话身份与环境变化。
 
 ## 关联页面
 
 - [世界模型与真实执行 10 篇技术地图](../overview/world-model-exec-10-papers-technology-map.md)
 - [VLA](../methods/vla.md)
 - [Seeker](./paper-seeker.md)
+- [MemCompiler](./paper-memcompiler-state-conditioned-memory.md) — 状态条件记忆编译与 Soft-Mem
 - [具身基础模型分类](../queries/embodied-fm-taxonomy-loop.md)
 
 ## 参考来源

@@ -7,12 +7,14 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [memcompiler.md](sites/memcompiler.md) | MemCompiler 状态条件记忆编译项目页（arXiv:2605.07594；代码公开，模型条目无 model card）
 - [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
 - [x] [dreamtrue-project-page.md](sites/dreamtrue-project-page.md) | DreamTrue 项目页（arXiv:2610.12468；部分开源）
 - [x] [sgs-rl-github-io.md](sites/sgs-rl-github-io.md) | SGS：Success-Guided Sampling 官方项目页（CoRL 2026；代码 coming soon）
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
 - [x] [viola_arxiv_2610_12435.md](papers/viola_arxiv_2610_12435.md) | VioLA 人类数据驱动人形通用控制
 - [x] [dreamtrue_arxiv_2610_12468.md](papers/dreamtrue_arxiv_2610_12468.md) | DreamTrue 动作保真机器人世界模型
 - [x] [sgs_arxiv_2610_12465.md](papers/sgs_arxiv_2610_12465.md) | SGS / A Balanced Data Diet（arXiv:2610.12465；CoRL 2026；官网尚未发布代码）
@@ -168,6 +170,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [air-embodied-brain-memcompiler.md](repos/air-embodied-brain-memcompiler.md) | MemCompiler 官方实现：ALFWorld / ScienceWorld Manager–Executor 运行与评测入口
 - [x] [nvlabs-cari4d.md](repos/nvlabs-cari4d.md) | NVlabs/CARI4D 研究代码、训练与数据准备入口
 | 文件 | 内容 |
 |------|------|
