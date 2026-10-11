@@ -1,4 +1,3 @@
-
 ---
 type: entity
 tags: [vln, navigation, embodied-ai, egocentric-video, instruction-generation, pku]

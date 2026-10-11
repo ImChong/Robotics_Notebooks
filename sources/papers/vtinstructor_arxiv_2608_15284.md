@@ -1,4 +1,3 @@
-
 # VTInstructor（arXiv:2608.15284）
 
 > 来源归档（paper）
