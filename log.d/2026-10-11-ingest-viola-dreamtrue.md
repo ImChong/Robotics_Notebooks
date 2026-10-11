@@ -1,0 +1,5 @@
+- **操作：** ingest
+- **意图：** 收录人类数据驱动人形控制与动作保真机器人世界模型，并核对相关项目的代码/数据开放状态。
+- **开源结论：** VioLA 论文承诺后续发布代码与 checkpoint，尚未核实可访问入口；DreamTrue 官方仓库已开放 calibration、wmvideo、reward 组件及部分数据，完整数据待发布。SGS（arXiv:2610.12465）已在 main 有完整实体，本次复用既有节点、不重复建页。
+- **关键知识节点：** VioLA 人形控制实体、DreamTrue 世界模型实体；补入 VLA、人形 locomotion、WAM、manipulation 的关联入口。
+- **日期：** 2026-10-11
