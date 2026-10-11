@@ -132,5 +132,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [arXiv HTML 全文与附录](https://arxiv.org/html/2609.38170v1) — 训练细节、消融及评测定义
-- [DeCo: Frequency-Decoupled Pixel Diffusion for End-to-End Image Generation](https://arxiv.org/abs/2509.23951) — 论文采用的像素扩散基座之一
+- [DeCo: Frequency-Decoupled Pixel Diffusion for End-to-End Image Generation](https://arxiv.org/abs/2511.19365) — 论文采用的像素扩散基座之一
 - [PixelGen: Improving Pixel Diffusion with Perceptual Supervision](https://arxiv.org/abs/2602.02493) — 另一项基座及感知损失对照
