@@ -5012,6 +5012,7 @@
 - [LLM 机器人控制接口](wiki/concepts/llm-robotics-control-interfaces.md) — LLM 机器人控制接口**指把通用语言模型接到机器人时，模型完成同一任务的方式：从逐步输出力矩，到写 Python 控制器、训 RL 策略，再到向预训练步态/VLA 发高层命令——**接口抽象层级 `📅unknown` `[wiki_page]`
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [Mamba](wiki/concepts/mamba.md) — Mamba**：在 SSM 上加入 **选择性**——离散化参数随当前输入变化——并用硬件感知的 **并行扫描** 训练，推理时只更新常 `📅unknown` `[wiki_page]`
+- [Math 2.0：AI 时代的数学研究范式](wiki/concepts/math-2-0.md) — Math 2.0** 是 Terence Tao 对 AI 时代数学研究的愿景：从证明稀缺的传统假设转向管理证明丰裕，借 AI 扩展数学共同体的理解、协作与现实影响，而不把自动解题本身当作终点。 `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
 - [Micromouse](wiki/concepts/micromouse.md) — Micromouse** 是要求 **完全自主** 的小型差速（或同类）机器人在 **事先未知的网格迷宫** 中探索建图，并在后续跑次中以 **最短时间** 抵达中心目标区的经典机器人竞赛——现代 `📅unknown` `[wiki_page]`
 - [MoE（Mixture-of-Experts，混合专家）](wiki/concepts/mixture-of-experts.md) — MoE**：在一层里放多个 **专家**（通常是 MLP），由 **门控** 为每个 token/样本算出稀疏权重，只运行被选中的专家并把输出加权求和。 `📅unknown` `[wiki_page]`

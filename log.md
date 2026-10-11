@@ -101,6 +101,11 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] ingest | Tao 的 Math 2.0 讲稿 — 梳理 AI 时代的数学研究目标、共同体与解释价值
+
+- 将讲稿与作者配套说明作为一手来源，区分原文主张与机器人领域映射。
+- 补充 Math 2.0 知识页，并连接 The Bitter Lesson 方法论页。
+
 ## [2026-10-11] ingest | OpenLET LET-HumanMotion-Roban2 — 收录申请制动作数据、LejuBFM 运控部署与 Roban 全身 VLA 教程，注明数据规模与模态待核验
 
 ## [2026-10-11] ingest | Hugging Face 本周论文 5 篇（独立实体）
