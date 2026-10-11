@@ -148,6 +148,7 @@ flowchart LR
 - [LadderMan](../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 真机用 VFM 深度替代重度 depth randomization
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 合成深度预训练 + 深度噪声增强的零样本导航
 - [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) · [OASIS](../wiki/entities/paper-loco-manip-04-oasis.md) — 3DGS / 路径追踪视觉 DR 合成数据
+- [RoboRender](../wiki/entities/robo-render.md) — 把模拟器轨迹转成更真实多样的机器人 RGB 视频并保留几何/动作标注，缩小视觉 gap
 
 ### 学完输出什么
 - 一份"状态策略 → 视觉策略"的迁移决策记录（随机化 / 蒸馏 / VFM 三选或组合）

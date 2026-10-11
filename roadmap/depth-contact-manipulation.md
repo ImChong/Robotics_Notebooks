@@ -125,6 +125,8 @@ flowchart LR
 - [REGRIND](../wiki/methods/regrind-retargeting-guided-rl.md) — 单次人手–物体动捕重定向 + 残差 RL 跟踪物体关键点，零样本部署 LEAP/WUJI 完成剪刀、螺丝刀等 contact-rich 工具操作
 - [ADEPT](../wiki/entities/paper-adept-dexterity.md)（NVIDIA/密歇根）— 16 primitive reposing RL 预训练 + BC/critic-warmup/conservative PPO 后训练 + 两阶段 vision distill；Kuka–Allegro 与 Flexiv–Sharpa zero-shot 真机，触觉 8/10 vs 纯视觉 3/10；代码 Coming soon
 - [Blind Grasp Reflex](../wiki/entities/paper-blind-grasp-reflex.md) — 臂部到达与手部接触控制解耦：20-DoF 手策略仅用关节位置/命令误差历史做本体感觉抓取并输出抓取分数；仿真含 92% 动态抓取，官方代码待发布
+- [Distributed Whole-Arm Interaction（软臂全臂接触）](../wiki/entities/paper-distributed-whole-arm-interaction-soft-robot.md) — 嵌入式 IMU 本体感觉历史驱动循环 RL，混合刚柔机械臂盲式全臂接触
+- [TouchScale](../wiki/entities/touchscale.md) — 统一穿戴式采集的人类视觉-触觉交互数据集（论文约 500 h，HF 当前发布 100 h）
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 
 ### 推荐做什么

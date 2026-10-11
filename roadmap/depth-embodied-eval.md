@@ -116,6 +116,7 @@ flowchart LR
 - [WorldEcho / WorldSync](../wiki/entities/paper-worldecho-worldsync.md) — 视觉门控 + \(\mathrm{SE}(3)\) NDTW 专测 off-expert 动作跟随
 - [WorldScore](../wiki/entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成的 Ctrl/Quality/Dynamics 统一榜（相邻轴，**不要**用来代替操纵保真）
 - [HarnessEval-W](../wiki/entities/paper-harnesseval-w.md) — 交互式世界模型 agentic 评测：干预/持久证据树，Intentional 排序与人类 ρ=0.93
+- [Uranus](../wiki/entities/paper-uranus.md) — 动作条件多视角视频模拟器：外部策略给 qpos、模型自回归预测视觉后果，用于具身策略闭环评估
 - [SC3-Eval](../wiki/entities/paper-sc3-eval.md) — 反向用法：把自一致视频生成本身当真机 VLA 策略评估器，闭环 Pearson 0.929
 - [如何评测具身世界模型（综述式追问）](../wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md)
 

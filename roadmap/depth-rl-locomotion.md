@@ -115,6 +115,8 @@ flowchart LR
 - [Query：locomotion reward 设计指南](../wiki/queries/locomotion-reward-design-guide.md)
 - [Query：Humanoid RL Cookbook](../wiki/queries/humanoid-rl-cookbook.md) — 观测/动作空间、超参与训练技巧速查
 - [FDDC](../wiki/entities/paper-fddc.md) — 把 capture point 改写成支撑足相对、机载可重构的动态 CoM 观测直接进 actor，配人体科学奖励（MoS/TTB/踝→膝 rate）；单腿平衡基准 Perfect 95.6%，八个通用 SOTA（含 SONIC）均 0%，去掉动态 CoM 观测掉 40 pt；G1 无蒸馏部署，宣称开源但入库日无 URL
+- [SGS（Success-Guided Sampling）](../wiki/entities/paper-sgs-2610-12465.md) — PPO 外层按配置近期成功率自适应 reset 采样，聚焦策略能力前沿（四足多地形）
+- [HuMBLE](../wiki/entities/paper-humble-human-motion-driven-behavior.md) — 人体步态蒸馏为本体感知 + SE(2) 速度指令策略，再双任务 RL 扩展全向可控；Atlas / G1 验证
 
 ### 学完输出什么
 - 一个能在平地上稳定行走的人形 RL 策略（仿真内）

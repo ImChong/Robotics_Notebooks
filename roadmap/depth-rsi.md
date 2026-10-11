@@ -58,6 +58,7 @@ flowchart LR
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
 - [Awesome RSI](../wiki/entities/awesome-rsi.md) — 50+ 方法 / 29 基准按 **artifact × mode** 策展，是查证归类的索引入口
 - [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 研究全生命周期自动化：与 RSI 相邻但不同的问题设定
+- [The Last AI Built by Humans（五级改进自治 + HCI）](../wiki/entities/paper-last-ai-built-by-humans-rsi.md) — arXiv:2609.11873，用 Headroom-Closed Index 判定系统是否从执行改进走向递归元改进（概念框架）
 
 ### 学完输出什么
 - 一张 artifact × 层级对照表，新论文拿来能一句话归格
@@ -187,6 +188,7 @@ flowchart LR
 - [RRSI](../wiki/entities/paper-rrsi-2609-24972.md) — 通过 proposal 与 selection 正则化，降低 harness 搜索对演化基准的过拟合
 - [SoL-Pi](../wiki/entities/sol-pi.md) — auto-research 环筛效率扩展；先把 harness 做省再谈 scale
 - [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods)（外链）— 按 artifact 筛选同类工作
+- [COAP（Embodied Turing Machines）](../wiki/entities/paper-coap-embodied-turing-machines.md) — 机器人策略写成显式维护环境状态的可读程序，coding agent 仅离线迭代代码、运行时不调用 VLM/VLA
 
 ### 学完输出什么
 - 一条带门控与成本栏的 harness 进化流水线

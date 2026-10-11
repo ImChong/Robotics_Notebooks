@@ -119,6 +119,7 @@ flowchart LR
 - [SimFoundry（模块化 Real2Sim 场景生成）](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — Extraction/Generation/Augmentation 三阶段，物性与关节化的完整工程参考
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) — 接触引导遮挡补全 + RL 物理一致性闭环
 - [PhysX-Omni](../wiki/entities/physx-omni.md) · [Articraft](../wiki/entities/articraft.md) — sim-ready 资产的生成式与 agentic 程序化两条路线
+- [光轮 SimReady](../wiki/entities/lightwheel-simready.md) — OpenUSD 物理准确仿真资产体系与资产库（自报 2,000+ 件，部分 CC BY-NC 开源）
 - [接触操作纵深](depth-contact-manipulation.md) — "接触可信"判据的任务侧邻接路线
 
 ### 学完输出什么

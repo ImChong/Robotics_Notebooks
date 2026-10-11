@@ -90,6 +90,10 @@ flowchart LR
 - [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md) — 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
 - [ODEWorld](../wiki/entities/paper-odeworld.md) — PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌；LIBERO 长程视频 PSNR 19.46，AgileX+X-VLA 55%→80%；推理与权重已开源
 - [Hydra-0](../wiki/entities/paper-hydra-0.md) — 用图像平面稀疏 action flow 作跨具身 WM 条件，robot EPE −90.4%、RoboLab 开环 r=0.96；2,202 h 训练；确认未开源
+- [CausalWM](../wiki/entities/paper-causalwm.md) — Aether AI 具身世界模型：按「光流 → XYZ 点图 → 未来 RGB」显式因果链生成
+- [TC-WM（任务中心世界模型）](../wiki/entities/paper-task-centric-world-models.md) — 冻结 DINOv2 嵌入线性压成紧凑潜变量，面向任务相关而非像素重建
+- [CD-LAM](../wiki/entities/paper-cd-lam.md) · [SCAR](../wiki/entities/paper-scar-continuous-action.md) — 潜动作模型去混杂 / 把动作作为视觉变化的独立因子，缓解世界模型「逼真但不听动作」
+- [H-JEPA 视觉规划](../wiki/entities/paper-h-jepa-visual-planning.md) — 多时间尺度 action-conditioned JEPA 潜空间 + 由高层子目标到低层动作的分层规划
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
