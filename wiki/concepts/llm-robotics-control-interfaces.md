@@ -2,8 +2,9 @@
 type: concept
 tags: [llm-agents, control-interface, vla, locomotion, manipulation, anthropic, safety, sim2real]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-11
 related:
+  - ../entities/agnes-harness.md
   - ../entities/anthropic-embody.md
   - ./model-hardware-standard.md
   - ./control-inference-frequency-decoupling.md
@@ -114,6 +115,7 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 - [Embody 评测套件](../entities/anthropic-embody.md) — 本页所编译的评测床与开源状态
 - [Muse Gadgets 边缘设备 SDK](../entities/muse-gadgets.md) — 语音助手通过本地设备命令 / API 触达实体外设的案例
 - [Model Hardware Standard](./model-hardware-standard.md) — 把 agent 接到真实仪器的驱动标准（研究预览）
+- [Agnes Harness](../entities/agnes-harness.md) — FDE agent runtime 与高层设备集成；不承担实时运动控制或设备急停
 - [VLA](../methods/vla.md) — 高层操作接口里被监督的预训练策略
 - [Foundation Policy](./foundation-policy.md) — 为何部署系统会提供预训练控制器
 - [ASPIRE](../methods/aspire.md) — code-as-policy 持续学习；与 Embody「写控制器」接口同族、多技能复利
