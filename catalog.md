@@ -2159,6 +2159,7 @@
 - [ME-VLM：统一具身认知与 Agent 协调的 VLM](wiki/entities/paper-me-vlm.md) — ME-VLM**（*A Unified VLM for Embodied Cognition and Agent Coordination*，[arXiv:2609.24526](https:// `📅unknown` `[entity_page]`
 - [机械智能信息论（arXiv:2609.19588）](wiki/entities/paper-mechanical-intelligence-info-theory.md) — 机械智能信息论**（*Quantifying Mechanical Intelligence in Legged Robots with Information Theory*，[arXiv:26 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
+- [MemCompiler：具身智能体的状态条件记忆编译](wiki/entities/paper-memcompiler-state-conditioned-memory.md) — MemCompiler**（*Compile, Don't Inject — State-Conditioned Memory for Embodied Agents*，[arXiv:2605.0 `📅unknown` `[entity_page]`
 - [MemER：用经验检索扩展机器人控制记忆](wiki/entities/paper-memer.md) — MemER**（*Scaling Up Memory for Robotic Control via Experience Retrieval*）是 Stanford 团队提出的分层机器人策略：高 `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
 - [MemoryWAM（arXiv:2606.20562）](wiki/entities/paper-memorywam.md) — MemoryWAM**（*MemoryWAM: Efficient World Action Modeling with Persistent Memory*，[arXiv:2606.20562 `📅unknown` `[entity_page]`
