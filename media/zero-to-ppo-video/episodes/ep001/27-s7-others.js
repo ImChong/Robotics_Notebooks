@@ -1,6 +1,6 @@
 // 001 第 7 幕：换台机器人，还是这四步。不画四步条，换新布局：
 // 左侧大面板是扫地机（俯视）遇到拖鞋：感知（保险杠闪 + 三道弧扩散）→ 规划（紫色虚线从拖鞋上方绕过）→
-// 控制（左轮短条、右轮长条）→ 执行（沿紫线绕过去，车身随切线转、轮子条纹滚动），四行步骤标签逐句出现；
+// 控制（左右轮速度条：往左拐右轮快、往右拐左轮快）→ 执行（沿紫线绕过去，车身随切线转、轮子条纹滚动），四行步骤标签逐句出现；
 // 右侧三张小卡（机械臂 / 自动驾驶汽车 / 人形）按念到的名字弹出，每张卡带一个迷你四步环；
 // 15.6「全是」起，三张卡的四个点和左面板四行标签一起按真实时间 t 轮流点亮。
 (function () {
@@ -94,7 +94,7 @@
       { at: 11.5, s: '机械臂、汽车、人形：都是同一个四步循环' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('换台机器人还是这四步：扫地机用传感器看到拖鞋、决定从上方绕开、算出左轮慢右轮快、轮子转起来绕了过去；机械臂、自动驾驶汽车、人形机器人拆开看也都在转同一个四步圈');
+      var s = K.sceneSvg('换台机器人还是这四步：扫地机用传感器看到拖鞋、决定从上方绕开、算出左右轮各转多快、轮子转起来绕了过去；机械臂、自动驾驶汽车、人形机器人拆开看也都在转同一个四步圈');
 
       /* ── 左侧大面板：扫地机 ── */
       var left = E.el('g', {}, s);
@@ -151,7 +151,7 @@
       /* ── 右侧三张小卡 ── */
       var cards = [0, 1, 2].map(function (i) { return card(s, i); });
 
-      var wheelOff = [0, 0];
+      var wheelOff = [0, 0], wheelLen = [WHEEL_L, WHEEL_R], lastT = null;
       var cyc0 = null;                                    // st 越过 15.6 那一刻的真实时间 t（轮流点亮从「感知」开始）
 
       return {
@@ -180,18 +180,30 @@
           /* 6.1 规划：紫色虚线画出（0.9 s） */
           E.drawOn(plan, fade(st, 6.1, 0.9));
 
-          /* 7.0 控制：左轮短条、右轮长条长出来 */
+          /* 9.6–11.4 执行：沿路线开过去，车身随切线转 */
+          var uu = K.ease(K.seg(st, MOVE0, MOVE1)), m = track(uu);
+          /* 轮速跟着实际转弯方向走（差速转向）：往左拐（航向角减小）右轮快，往右拐左轮快，直行一样快。
+             开动前显示规划好的第一段（先往左绕：左轮慢右轮快）；停下后保持最后的值 */
+          var moving = st > MOVE0 && st < MOVE1;
+          if (moving) {
+            var dAng = track(Math.min(1, uu + 0.01)).ang - m.ang;
+            var k = Math.max(-1, Math.min(1, dAng / 1.0));
+            wheelLen = [58 + 22 * k, 58 - 22 * k];
+          } else if (st <= MOVE0) wheelLen = [WHEEL_L, WHEEL_R];
+
+          /* 7.0 控制：左右轮速度条长出来 */
           var pb = fade(st, 7.0, 0.5);
-          barL.setAttribute('width', (WHEEL_L * pb).toFixed(2));
-          barR.setAttribute('width', (WHEEL_R * pb).toFixed(2));
+          barL.setAttribute('width', (wheelLen[0] * pb).toFixed(2));
+          barR.setAttribute('width', (wheelLen[1] * pb).toFixed(2));
           E.op(barL, pb > 0 ? 1 : 0); E.op(barR, pb > 0 ? 1 : 0);
           rise(lblL, fade(st, 7.0, 0.3)); rise(lblR, fade(st, 7.0, 0.3));
 
-          /* 9.6–11.4 执行：沿路线开过去，车身随切线转；行驶中轮子条纹按 t 滚动（右轮快、左轮慢，与速度条一致） */
-          var m = track(K.ease(K.seg(st, MOVE0, MOVE1)));
           bot.setAttribute('transform', 'translate(' + m.x.toFixed(2) + ' ' + m.y.toFixed(2) + ') rotate(' + m.ang.toFixed(2) + ')');
-          var moving = st > MOVE0 && st < MOVE1;
-          if (moving) wheelOff = [t * 60 * WHEEL_L / WHEEL_R, t * 60];   // 停下后条纹停在最后的位置
+          // 行驶中轮子条纹按各自轮速累加滚动（与速度条一致）；停下后条纹停在最后的位置
+          if (moving && lastT !== null && t > lastT) {
+            wheelOff = [wheelOff[0] + (t - lastT) * 60 * wheelLen[0] / 80, wheelOff[1] + (t - lastT) * 60 * wheelLen[1] / 80];
+          }
+          lastT = moving ? t : null;
           placeStripes(wheels[0], wheelOff[0]);
           placeStripes(wheels[1], wheelOff[1]);
 

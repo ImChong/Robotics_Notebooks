@@ -119,7 +119,9 @@
       var bar = E.stepBar(s);
 
       /* ── 收尾：灰字 + 总结卡 ── */
-      var more = halo(E.txt(s, 214, 226, '有的还配：测距雷达、脚底测力', 18, E.MUT, 'start'));
+      var more = halo(E.txt(s, 214, 226, '有的还配：激光雷达、脚底测力', 18, E.MUT, 'start'));
+      // 边走边建图、定位自己也算感知（路线 §L7.1 把 SLAM 归在感知层）；规划只拿这张地图找路
+      var slam = halo(E.txt(s, 214, 250, '边走边建图定位，行话 SLAM', 18, E.MUT, 'start'));
       var card = E.el('g', {}, s);
       var cardRect = K.paint(E.el('rect', { x: 480, y: 250, width: 220, height: 86, rx: 12, 'stroke-width': 2.5 }, card), E.S1, E.GOOD);
       var checks = [E.check(card, 500, 269, 18, E.GOOD), E.check(card, 500, 305, 18, E.GOOD)];
@@ -218,7 +220,7 @@
           ear.style.fontWeight = ep > 0 ? 700 : '';
 
           /* 25.7：灰字；27.7：总结卡弹出、两个勾画出；29.2：描边闪一次 */
-          E.op(more, fade(st, 25.7, 0.5));
+          E.op(more, fade(st, 25.7, 0.5)); E.op(slam, fade(st, 25.7, 0.5));
           E.pop(card, 590, 293, fade(st, 27.7, 0.35), 0.85);
           E.drawOn(checks[0], K.seg(st, 27.85, 28.15));
           E.drawOn(checks[1], K.seg(st, 28.0, 28.3));

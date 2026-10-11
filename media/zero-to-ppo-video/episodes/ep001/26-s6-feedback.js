@@ -105,7 +105,7 @@
 
       /* ── 文字 ── */
       var newRead = E.txt(s, 210, 176, '新读数', 20, E.GOOD);
-      var note = E.txt(s, 24, 90, '四步轮流亮：示意，不是真实速度', 18, E.MUT, 'start');
+      var note = E.txt(s, 24, 90, '示意：真机上四步同时跑，快慢不同', 18, E.MUT, 'start');
       var ffG = E.el('g', {}, s);
       E.txt(ffG, 24, 116, '快进', 18, E.MUT, 'start');
       K.paint(E.el('path', { d: 'M 66 102 L 77 109 L 66 116 Z M 78 102 L 89 109 L 78 116 Z' }, ffG), E.MUT);
