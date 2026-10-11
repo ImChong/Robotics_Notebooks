@@ -11,7 +11,7 @@ tags:
   - open-source
   - hri
 status: complete
-updated: 2026-09-30
+updated: 2026-10-11
 related:
   - ../methods/humanoid-voice-interaction.md
   - ../queries/humanoid-voice-interaction-pipeline.md
@@ -25,7 +25,7 @@ summary: "VoiceStudio（debpalash）：全本地语音克隆/TTS/转写/配音 E
 
 # VoiceStudio
 
-**VoiceStudio**（[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)，AGPL-3.0）是面向 **全本地、多语言语音工作流** 的开源桌面应用：语音克隆、Voice Design、视频配音、听写、转写与有声书批量生产等，并宣称支持 **646 种语言**（以各引擎实际能力为准）。默认 TTS 引擎为 **k2-fsa/OmniVoice** 路线；转写默认 **WhisperX**，可在同一 UI 内切换 CosyVoice、IndexTTS、MOSS-TTS、GPT-SoVITS、sherpa-onnx 等 **TTS/ASR 插件**。除人工操作外，还提供 **Local API** 与 **MCP Server**，便于在 Claude Code、Cursor 等 Agent 里做「本机语音 I/O」而不默认上云。
+**VoiceStudio**（[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)，AGPL-3.0）是面向 **全本地、多语言语音工作流** 的开源桌面应用：语音克隆、Voice Design、视频配音、听写、转写与有声书批量生产等。上游展示了以 **3 秒参考音频做零样本克隆**，并支持视频 **转写 → 翻译 → 重新配音 → 导出 MP4**；其 **646 种语言**口径对应 OmniVoice 引擎，实际覆盖与效果取决于引擎和语言。默认 TTS 引擎为 **k2-fsa/OmniVoice** 路线；转写默认 **WhisperX**，可在同一 UI 内切换 CosyVoice、IndexTTS、MOSS-TTS、GPT-SoVITS、sherpa-onnx 等 **TTS/ASR 插件**。除人工操作外，还提供 **Local API** 与 **MCP Server**，便于在 Claude Code、Cursor 等 Agent 里做「本机语音 I/O」而不默认上云。
 
 与本库 **人形 HRI** 主线的关系：VoiceStudio **不是** 机器人中间件，而是 **开发/运维机上的语音能力聚合器**——可快速试验克隆音色、测首包 TTS 延迟、或把 Whisper 系转写接到 LLM；真机闭环仍须把音频 I/O 接到 [人形智能语音交互](../methods/humanoid-voice-interaction.md) 的状态机（唤醒 → ASR → LLM → 技能/VLN → TTS + **barge-in**），并经 [G1 软件栈](./unitree-g1-software-stack.md) / ROS 2 等 **动作 API** 落地。
 
@@ -85,8 +85,9 @@ flowchart LR
 
 1. **桌面壳 + Python 后端：** 开发路径为 `bun install` → `bun run setup:api` → `bun run dev`；发行版通过 [voicestudio.sh/install](https://voicestudio.sh/install) 或 GitHub Releases 安装。
 2. **引擎插件化：** 功能与引擎列表见上游 `docs/feature-catalog.md`；GPU 自动探测，硬件不足时仍可跑部分 CPU 引擎（延迟上升）。
-3. **Local-first：** 默认数据与推理在本机；可选远程 worker；用量分析需用户同意。
-4. **对外集成：** HTTP Local API 与 MCP 供自动化；与机器人栈组合时，通常由 **中间服务** 把 API 输出接到 ROS 2 topic/action 或厂商 SDK，而非 Electron UI 直接控臂。
+3. **克隆与配音路径：** 3 秒参考音频即可尝试零样本音色克隆；视频配音串联转写、翻译、合成与时间对齐后导出 MP4。短参考音频免去为每位说话人单独训练，但克隆表现仍受录音干净程度、引擎和语言影响。
+4. **Local-first：** 默认数据与推理在本机；可选远程 worker；用量分析需用户同意。
+5. **对外集成：** HTTP Local API 与 MCP 供自动化；与机器人栈组合时，通常由 **中间服务** 把 API 输出接到 ROS 2 topic/action 或厂商 SDK，而非 Electron UI 直接控臂。
 
 ## 源码运行时序图
 
