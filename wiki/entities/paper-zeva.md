@@ -9,7 +9,7 @@ tags:
   - manipulation
   - tsinghua
 status: complete
-updated: 2026-09-29
+updated: 2026-10-11
 arxiv: "2608.30880"
 code: https://github.com/air-embodied-brain/Zeva
 related:
@@ -19,6 +19,7 @@ related:
   - ../overview/open-source-system-loop-7-papers-technology-map.md
   - ./paper-zetta.md
   - ./paper-zeva-ego.md
+  - ./paper-memcompiler-state-conditioned-memory.md
 sources:
   - ../../sources/papers/zeva_arxiv_2608_30880.md
   - ../../sources/blogs/wechat_embodied_station_7_papers_open_source_system_loop_2026-09-01.md
@@ -144,6 +145,7 @@ sequenceDiagram
 - [Motus2](./paper-motus2.md) — 同批次世界模型自进化对照
 - [Zetta ζ](./paper-zetta.md) — 同组织：代码 critic/recovery 闭环 harness（arXiv:2608.16590）
 - [Zeva-Ego](./paper-zeva-ego.md) — 同族 ICCL + **egocentric mid-training**（arXiv:2609.24411）
+- [MemCompiler](./paper-memcompiler-state-conditioned-memory.md) — 按 Brief State 编译记忆的执行期交付路线
 
 ## 推荐继续阅读
 
