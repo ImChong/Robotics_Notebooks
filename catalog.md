@@ -1583,6 +1583,7 @@
 - [Dreaming the Sound of Contact（arXiv:2609.19137）](wiki/entities/paper-dreaming-sound-of-contact.md) — Dreaming the Sound of Contact**（*Dreaming the Sound of Contact: Leveraging Video and Audio Generat `📅unknown` `[entity_page]`
 - [DreamMimic：世界模型辅助的视觉全身 Mimic](wiki/entities/paper-dreammimic.md) — DreamMimic**（*Learning Visuomotor Whole-Body Loco-Manipulation via World Model*，[arXiv:2608.22278 `📅unknown` `[entity_page]`
 - [DreamSteer（Latent World Model Steering for VLA · arXiv:2607.02865）](wiki/entities/paper-dreamsteer-vla-deployment-steering.md) — DreamSteer**（*DreamSteer: Latent World Models can steer VLA Policies during deployment without any `📅unknown` `[entity_page]`
+- [DreamTrue：动作保真的机器人世界模型](wiki/entities/paper-dreamtrue-action-faithful-world-model.md) — DreamTrue** 是面向机器人交互视频预测的世界模型框架：校准动作条件与视频运动的一致性，以反事实后训练扩展少见交互，再用具身视频奖励模型引导生成结果趋向物理合理。 `📅unknown` `[entity_page]`
 - [DreamWAM（Beyond RGB Future Prediction · arXiv:2608.04996）](wiki/entities/paper-dreamwam.md) — DreamWAM**（*DreamWAM: Beyond RGB Future Prediction for World Action Models*，[arXiv:2608.04996](htt `📅unknown` `[entity_page]`
 - [DreamWaQ：从本体历史学习鲁棒四足行走](wiki/entities/paper-dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination via Deep Rein `📅unknown` `[entity_page]`
 - [DreamX-Phi：好看的未来不等于听动作的未来](wiki/entities/paper-dreamx-phi.md) — DreamX-Phi 1.0**（*Action-Conditioned Video World Model for Robotic Manipulation*；[arXiv:2608.13489 `📅unknown` `[entity_page]`
@@ -4374,6 +4375,7 @@
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
 - [Vidu S2：实时交互、可编辑与空间视频生成](wiki/entities/paper-vidu-s2.md) — Vidu S2**（Zhang et al., arXiv:2609.11638，[项目页 / Demo](https:// `📅unknown` `[entity_page]`
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
+- [VioLA：从人类数据学习人形通用控制](wiki/entities/paper-viola-human-data-control.md) — VioLA** 将人类动作数据转成机器人可执行的身体与手部运动潜变量，以预训练控制器作为动作解码器，降低通用策略对机器人关节级示范的依赖。 `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
 - [VisForce：视觉对齐当前力与目标力](wiki/entities/paper-visforce-force-grounding.md) — VisForce 把当前指尖力和子任务目标力渲染至对应视觉图像，再用目标条件策略生成力感知操作动作。 `📅unknown` `[entity_page]`
 - [Visible-Reachable Workspace（arXiv:2609.08905）](wiki/entities/paper-visible-reachable-workspace-humanoid-design.md) — Visible-Reachable Workspace**（*Visible-Reachable Workspace for Perception-Aware Humanoid Design*， `📅unknown` `[entity_page]`

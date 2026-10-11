@@ -79,6 +79,12 @@ op: ingest
 - **开源结论：** 官方代码仓库提供数据预处理、微调和服务入口；README 仍将训练数据、检查点与 YAM 部署列为 TODO，论文发布的 TEMPO-Bench 下载入口尚未从 README 核实。
 - **关键节点：** 独立记录 TEMPO 动态操作论文实体，链接 VLA 与 Manipulation；明确与另一篇同名 TEMPO（arXiv:2608.07314）区分。
 
+- **操作：** ingest
+- **意图：** 收录人类数据驱动人形控制与动作保真机器人世界模型，并核对相关项目的代码/数据开放状态。
+- **开源结论：** VioLA 论文承诺后续发布代码与 checkpoint，尚未核实可访问入口；DreamTrue 官方仓库已开放 calibration、wmvideo、reward 组件及部分数据，完整数据待发布。SGS（arXiv:2610.12465）已在 main 有完整实体，本次复用既有节点、不重复建页。
+- **关键知识节点：** VioLA 人形控制实体、DreamTrue 世界模型实体；补入 VLA、人形 locomotion、WAM、manipulation 的关联入口。
+- **日期：** 2026-10-11
+
 ## [2026-10-11] structural | roadmap 巡检：将 10-09 以来新增的 18 个知识节点补入 9 条纵深路线（loco-manipulation / contact / RSI / WAM / eval / VLA / RL-loco / sim2real / real2sim）
 
 ## [2026-10-10] lint | 全量 wiki lint：修复 12 个陈旧页面、方法落地/论文元数据/三段式/结论/陈旧声明/评测枢纽回链 11 条信息型预警，lint 归零
