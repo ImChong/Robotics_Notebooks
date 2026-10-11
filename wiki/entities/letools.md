@@ -12,7 +12,7 @@ tags:
   - open-source
   - ros
 status: complete
-updated: 2026-08-17
+updated: 2026-10-11
 related:
   - ./leju-robotics.md
   - ./openlet.md
@@ -128,6 +128,10 @@ python3 apps/test_upper_init/run_behavior_tree_json.py \
 
 [KUAVO-VLA-1.0](./kuavo-vla-1.md) 是乐聚面向 Kuavo 与工业操作场景发布的垂域模型；它的模型权重与配套数据通过 OpenLET 申请审核。下面的 LeTools-Learning 通用 rosbag→LeRobot→训练/部署工具链是相关工程入口，不能据此推断模型权重许可。
 
+### Roban 全身 VLA 分支
+
+官方 [Roban Wholebody VLA 教程](../../sources/sites/letools-roban-wholebody-vla.md)描述了独立于通用 Kuavo 双臂流程的全身链路：rosbag 转 LeRobot v3，OpenPI / GR00T N1.7 / LingBot-VLA v2 训练，再通过 CycloneDDS + HEFT 在 Roban 真机推理。示例为 23D state、32D action、头部相机，训练和控制按 50 Hz。与 [OpenLET LET-HumanMotion-Roban2](./openlet-humanmotion-roban2.md) 相关，但教程没有证明该数据包能直接由其 rosbag 转换器读取，使用前需核验 schema 和版本。
+
 推荐环境：Ubuntu 20.04、Python 3.12、ROS Noetic、CUDA、`conda` 环境名 `letools`、`bash setup_env.sh`。
 
 | 步骤 | 入口 |
@@ -184,6 +188,7 @@ sequenceDiagram
 
 - [乐聚机器人](./leju-robotics.md) — 硬件与运营方
 - [OpenLET](./openlet.md) — 真机数据社区；本栈是训练/技能落地
+- [LET-HumanMotion-Roban2](./openlet-humanmotion-roban2.md) — Roban 全身动作集及全身 VLA 数据适配边界
 - [LET-Base-Dataset](./let-base-dataset.md) — 大规模 Kuavo 操作 rosbag
 - [ICRA 2026 REAL-I](./icra-2026-real-i.md) — 赛事仿真包
 - [LeRobot](./lerobot.md) — 数据集格式与策略库
@@ -199,6 +204,7 @@ sequenceDiagram
 - [letools-docs.md](../../sources/sites/letools-docs.md) — 文档双栏与 menu.json
 - [letools-learning.md](../../sources/repos/letools-learning.md) — Learning 仓
 - [letools_opensource.md](../../sources/repos/letools_opensource.md) — Skills 仓与 `skills/README.md`
+- [letools-roban-wholebody-vla.md](../../sources/sites/letools-roban-wholebody-vla.md) — Roban 全身 VLA 训练与推理官方教程
 
 ## 推荐继续阅读
 
