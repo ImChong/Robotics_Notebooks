@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, humanoid, leju, open-source, openatom, manipulation, loco-manipulation]
 status: complete
-updated: 2026-08-17
+updated: 2026-10-11
 related:
   - ./leju-robotics.md
   - ./letools.md
@@ -16,6 +16,7 @@ related:
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./waytoagi.md
   - ./lumina-embodied.md
+  - ./openlet-humanmotion-roban2.md
 sources:
   - ../../sources/sites/openlet-openatom.md
   - ../../sources/repos/openlet-let-base-dataset.md
@@ -97,12 +98,14 @@ flowchart LR
 - **误区：OpenLET = 只有 Base 一个仓库。** 运控与灵巧手子集技能分布与传感器模态不同，选型需读各 README。
 - **误区：下载即可喂给任意 VLA 预训练。** 多数仓库面向 **LeRobot v2/v3 IL 后训练**；与 [LingBot-VLA](./lingbot-vla.md) 等 **自定义 robot config** 仍需特征映射与 norm stats。
 - **局限：** 采集本体以 **Kuavo** 为主，跨 [Unitree G1](./unitree-g1.md) 等平台需重定向或再采集；子集许可与署名要求以 AtomGit 为准。
+- **另一个机型与数据入口：** [LET-HumanMotion-Roban2](./openlet-humanmotion-roban2.md) 面向 Roban 2.2，官方说明为申请制、120 fps、已重定向；它不同于 LET-Base/Dex/Body 系列，公开页面暂未列精确条数。不要将社区首页总时长或 Kuavo 数据包规模套用到该数据集。
 
 ## 关联页面
 
 - [乐聚机器人](./leju-robotics.md) — 硬件本体与运营方
 - [LeTools](./letools.md) — 官方 Learning / Skills 栈（相对 AtomGit 范例仓）
 - [LET-Base-Dataset](./let-base-dataset.md) — HF 数据卡与 rosbag 计数
+- [LET-HumanMotion-Roban2](./openlet-humanmotion-roban2.md) — Roban 小脑动作集、申请入口与部署路径
 - [ICRA 2026 REAL-I](./icra-2026-real-i.md) — 竞赛仿真包
 - [LeRobot](./lerobot.md) — 数据格式与训练框架
 - [HumanNet](./humannet.md) — 另一「大规模小时」但偏 **人视频** 的预训练来源对照
@@ -121,3 +124,5 @@ flowchart LR
 
 - [openlet-openatom.md](../../sources/sites/openlet-openatom.md) — 社区栏目与仓库索引
 - [openlet-let-base-dataset.md](../../sources/repos/openlet-let-base-dataset.md) — 旗舰 Base 子集归档
+- [openlet-humanmotion-roban2.md](../../sources/datasets/openlet-humanmotion-roban2.md) — Roban 小脑动作集与申请边界
+- [lejubfm-openlet-docs.md](../../sources/sites/lejubfm-openlet-docs.md) — LejuBFM 数据与运控文档
