@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-10-10
 related:
+  - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-tempo-dynamic-manipulation.md
   - ../entities/paper-flatlab.md
