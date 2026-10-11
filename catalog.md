@@ -905,6 +905,7 @@
 - [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
 - [openJiuwen（开放九问）](wiki/entities/openjiuwen.md) — openJiuwen**（openjiuwen.com，GitHub org [openJiuwen-ai](https://githu `📅unknown` `[entity_page]`
 - [OpenLess](wiki/entities/openless.md) — OpenLess**（openless.top，[GitHub: Open-Less/openless](https://github.com/O `📅unknown` `[entity_page]`
+- [OpenLET LET-HumanMotion-Roban2](wiki/entities/openlet-humanmotion-roban2.md) — LET-HumanMotion-Roban2** 是乐聚与青瞳视觉联合打造、面向鲁班人形运控训练和评测的全身动作数据集。官方公开说明给出五类动作、Roban 机型重定向与 120 fps 重采样； `📅unknown` `[entity_page]`
 - [OpenLET 具身智能开源数据集社区](wiki/entities/openlet.md) — OpenLET**（<https://openlet.openatom.tech/>）是由 **开放原子开源基金会** 孵化、**乐聚机器人**牵头运营的 **具身智能真机数据枢纽**：遵循开放协 `📅unknown` `[entity_page]`
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`

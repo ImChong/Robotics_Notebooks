@@ -101,6 +101,8 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] ingest | OpenLET LET-HumanMotion-Roban2 — 收录申请制动作数据、LejuBFM 运控部署与 Roban 全身 VLA 教程，注明数据规模与模态待核验
+
 ## [2026-10-11] ingest | Hugging Face 本周论文 5 篇（独立实体）
 
 - 来源：图片列出的 2026-10-05 至 10-11 榜单；逐篇核对 arXiv。
