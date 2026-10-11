@@ -13,7 +13,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ./habitat-sim.md
   - ./paper-crosstracer.md
-  - ./paper-navila-legged-robot-vision-language-action-model.md
+  - ./paper-abot-n1.md
 sources:
   - ../../sources/papers/vtinstructor_arxiv_2608_15284.md
   - ../../sources/sites/vtinstructor.md
@@ -105,7 +105,7 @@ sequenceDiagram
 | 下游 follower 效用 | 冻结 CorrectNav 在 R2R-CE Val Unseen 上 SR 为 63.3%，高于最强竞争指令来源 14.7 个百分点；项目页列人工指令 SR 61.6% | 比单纯文本分数更接近导航效用，但仍是基准结果 |
 | 指令数据增强 | 增加生成指令后，R2R-CE 与 RxR-CE 下游 SR 均约 +3 个百分点 | 需结合数据配比和相同训练/评测协议理解 |
 
-### 与其他工作对比
+## 与其他工作对比
 
 | 路线 | 路径结构如何进入模型 | 侧重点 |
 |---|---|---|
