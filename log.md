@@ -101,6 +101,11 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] ingest | Math To Manim — 归档开源生成管线并关联 Manim
+
+- 上游公开源码与 MIT 许可证；当前主线使用 Astra 分阶段生成、Manim 渲染和证据审阅。
+- 将其作为 Manim 之上的独立教学内容管线记录；注明模型调用、渲染依赖及非仿真/非形式证明边界。
+
 ## [2026-10-11] lint | 全量 wiki lint：修复 4 条信息型预警（TEMPO 对比区块、BenchHub 时效措辞、RealCompanion/UltraText-Bench 回链评测基准枢纽）
 
 ## [2026-10-11] ingest | wheresryan22/anatomy — 收录把技术原理转成交互式等轴测机械插图的 Claude Skill
