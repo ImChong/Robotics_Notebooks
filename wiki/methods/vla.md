@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-10
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
+  - ../entities/paper-viola-human-data-control.md
   - ../overview/ai-architecture-map.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
@@ -568,6 +569,11 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/papers/fsd_vln_arxiv_2607_08359.md](../../sources/papers/fsd_vln_arxiv_2607_08359.md) — FSD-VLN：空中长程 VLN 快慢双系统（arXiv:2607.08359）
 - [sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md](../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md) — Green for Go：冻结导航 VLA 绿/红视觉接地（arXiv:2607.05122）
 - [sources/papers/crosstracer_arxiv_2608_06688.md](../../sources/papers/crosstracer_arxiv_2608_06688.md) — CrossTracer：像素轨迹残差跨本体导航（arXiv:2608.06688）
+
+
+### 人类数据驱动的人形控制
+
+- [VioLA：从人类数据学习人形通用控制](../entities/paper-viola-human-data-control.md) — human/robot 共享动作潜空间，预测身体与手部潜变量并由冻结控制器执行。
 
 ## 关联页面
 

@@ -7,10 +7,14 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
+- [x] [dreamtrue-project-page.md](sites/dreamtrue-project-page.md) | DreamTrue 项目页（arXiv:2610.12468；部分开源）
 - [x] [sgs-rl-github-io.md](sites/sgs-rl-github-io.md) | SGS：Success-Guided Sampling 官方项目页（CoRL 2026；代码 coming soon）
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [viola_arxiv_2610_12435.md](papers/viola_arxiv_2610_12435.md) | VioLA 人类数据驱动人形通用控制
+- [x] [dreamtrue_arxiv_2610_12468.md](papers/dreamtrue_arxiv_2610_12468.md) | DreamTrue 动作保真机器人世界模型
 - [x] [sgs_arxiv_2610_12465.md](papers/sgs_arxiv_2610_12465.md) | SGS / A Balanced Data Diet（arXiv:2610.12465；CoRL 2026；官网尚未发布代码）
 - [x] [humble_arxiv_2610_10489.md](papers/humble_arxiv_2610_10489.md) | HuMBLE：人体动作先验蒸馏 + 双任务 RL 人形步态控制（arXiv:2610.10489；Atlas R1/D1、Unitree G1；G1 数据计划发布）
 - [x] [fineart_arxiv_2609_36416.md](papers/fineart_arxiv_2609_36416.md) | FineART/FineART-VLA 双臂子任务数据与 LeRobot 策略（arXiv:2609.36416）
