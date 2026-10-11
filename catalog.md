@@ -4418,6 +4418,7 @@
 - [vS-Graphs（视觉 SLAM + 3D 场景图）](wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md) — vS-Graphs**（Tourani et al., arXiv:2503.01783，IEEE RA-L 2026，[代 `📅unknown` `[entity_page]`
 - [VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) — VT-WAM**（*VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation*，[arXiv:2607.025 `📅unknown` `[entity_page]`
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
+- [VTInstructor: Visual Trajectory Prompting for Navigation Instruction Generation in Continuous Environments](wiki/entities/paper-vtinstructor.md) — 一句话定义：** VTInstructor 是面向连续环境视觉–语言导航（VLN）的指令生成框架；它将路线几何显式绘制回第一人称关键帧，让视觉语言模型据此生成自然语言指路。 `📅unknown` `[entity_page]`
 - [WA-SpecDec（arXiv:2608.08725）](wiki/entities/paper-wa-specdec.md) — WA-SpecDec**（arXiv:2608.08725）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
 - [Wall-OSS-0.5（预训练即可上真机的 VLA）](wiki/entities/paper-wall-oss-0-5.md) — Wall-OSS-0.5**（*Wall-OSS-0.5 Technical Report*，[arXiv:2605.30877](https://arxiv.org/abs/2605.30877 `📅unknown` `[entity_page]`
