@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-10
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
+  - ../entities/paper-viola-human-data-control.md
   - ../overview/ai-architecture-map.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
