@@ -1,0 +1,5 @@
+- **操作：** ingest（既有实体增量更新）
+- **意图：** 根据 NVIDIA Long-WAM 项目页新增的 RoboCasa365 agent 组合与真机结果更新来源归档和既有论文实体。
+- **更新：** 记录 GPT-6 Astra + Long-WAM 的 50-task RoboCasa365 结果，并补充 G1 移动杯抓取、YAM 长时任务报告；明确组合系统与 Long-WAM 单体结果的归属边界。
+- **去重：** Long-WAM 已有 canonical 节点，本次不新建实体。
+- **日期：** 2026-10-11
