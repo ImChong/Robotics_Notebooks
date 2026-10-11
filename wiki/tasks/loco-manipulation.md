@@ -57,6 +57,11 @@ sources:
   - ../../sources/papers/rfpo_arxiv_2610_10453.md
   - ../../sources/papers/hulk_arxiv_2610_08970.md
   - ../../sources/papers/oclo_arxiv_2610_05678.md
+  - ../../sources/papers/roboduet_arxiv_2403_17367.md
+  - ../../sources/sites/roboduet.md
+  - ../../sources/repos/roboduet.md
+  - ../../sources/repos/roboduet_deployment.md
+
 ---
 
 # Loco-Manipulation (移动操作)
@@ -149,6 +154,7 @@ flowchart TD
 - **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。
 - **LLC (底层控制)**：WBC + MPC 负责全身执行。
 - **代表作**：Humanoid Hanoi (2026), HiWET (2026)。
+- **双策略协作全身控制（RoboDuet，2025）**：四足平台挂载 ARX5 机械臂，以独立的 locomotion policy 与 arm policy 协作；先训练稳健盲行走，再联合训练移动操作。loco policy 会根据 arm policy 的指令调整动作。论文报告 Go1+ARX5 训练策略零样本迁移到 Go2+ARX5，并在较难移动操作任务上比 AFB+ID 基线高 23% 成功率。详见 [RoboDuet 项目实体](../entities/paper-roboduet-loco-manipulation.md)。
 
 #### 反向层级架构 (MPC-over-RL)
 - **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。
