@@ -37,7 +37,7 @@
     cues: [
       { at: 0, s: '四个盒子，每个都是一门大学问' },
       { at: 3, s: '本系列只钻第三盒：**控制**' },
-      { at: 5.6, s: '控制 =「要去哪儿」→「每个关节这一刻怎么出力」' },
+      { at: 5.6, s: '控制：「要去哪儿」→「每个关节怎么出力」' },
       { at: 11.3, s: '另外三盒：只在和控制打交道时顺带讲到' }
     ],
     build: function (K) {
@@ -72,7 +72,7 @@
 
       /* ── 文字：主战场 · 底部一行（两段同一个 text，整行居中在 400） · 顺带讲到 ── */
       var star = E.txt(s, CX, 92, '★ 本系列主战场', 22, E.ACC, 'middle', 700);
-      var bottom = E.txt(s, 400, 366, '', 20, E.VIOLET);
+      var bottom = E.txt(s, 400, 366, '', 22, E.VIOLET);   // 规格 20px；这是全幕的结论句，按约定「重点字 22–30」放到 22
       var goal = E.el('tspan', {}, bottom);
       goal.textContent = '「要去哪儿」';
       var how = E.el('tspan', {}, bottom);
@@ -80,7 +80,7 @@
       how.style.fill = E.ACC;
       var tags = [0, 1, 3].map(function (i) {
         var cx = boxes[i].cx;
-        var tg = E.tag(s, cx - 44, 80, 88, 24, '顺带讲到', E.MUT, { size: 18, ink: E.MUT, sw: 1.5 });
+        var tg = E.tag(s, cx - 52, 80, 104, 24, '顺带讲到', E.MUT, { size: 18, ink: E.MUT, sw: 1.5 });   // 宽 104：字宽 72，两端各留 16
         return { g: tg.g, cx: cx };
       });
 

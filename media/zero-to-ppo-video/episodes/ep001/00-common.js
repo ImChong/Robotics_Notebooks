@@ -176,7 +176,7 @@
   /* ── 侧视人形机器人（朝 +x），本地坐标里髋在 (0, 302)，脚底在 y = 388，头顶约 y = 190。
      place({ x, rot, pivot, scale, dy })：先在本地绕 pivot（本地坐标）转 rot 度、以脚底 (0,388) 为心缩放，再平移到 x。
      legs(near, far)：两条腿 [髋角, 膝角]（度，0 = 竖直向下，正值朝 +x，膝角也是全局角）；arm([肩, 肘])。
-     walk(ph)：kit 的 poseWalk 步态；ph = 已走距离 / 90，脚不打滑。
+     walk(ph)：kit 的 poseWalk 步态；腿长 42 + 42、髋摆 ±22°，一个周期约走 4·84·sin22° ≈ 126，ph = 已走距离 / 126 时脚不打滑。
      pts()：近腿髋 / 膝 / 踝与摄像头、小盒子的本地坐标（加上 x 就是画面坐标，未计旋转缩放）。 ── */
   E.robot = function (parent, X) {
     var outer = el('g', {}, parent), g = el('g', {}, outer);
@@ -188,13 +188,13 @@
     var farThigh = line(7, E.INK2, far), farShin = line(7, E.INK2, far), farFoot = line(4, E.INK2, far);
     var torso = el('rect', { x: -15, y: 228, width: 30, height: 72, rx: 8, 'stroke-width': 3 }, g);
     K.paint(torso, E.S2, E.INK);
-    var imu = K.paint(el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, g), E.MUT);
     var neck = line(4, E.INK); put(neck, [0, 222], [0, 228]);
     var head = el('circle', { cx: 0, cy: 206, r: 16, 'stroke-width': 3 }, g);
     K.paint(head, E.S2, E.INK);
     var cam = K.paint(el('rect', { x: 5, y: 199, width: 12, height: 8, rx: 2 }, g), E.INK2);
     var thigh = line(8, E.INK), shin = line(8, E.INK), foot = line(4, E.INK);
     var upper = line(6, E.INK), fore = line(6, E.INK);
+    var imu = K.paint(el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, g), E.MUT);  // 画在手臂之后，不被挡住
     var hipDot = K.paint(el('circle', { r: 5 }, g), E.INK), kneeDot = K.paint(el('circle', { r: 5 }, g), E.INK), ankleDot = K.paint(el('circle', { r: 5 }, g), E.INK);
     var P = { hip: [0, 302], knee: [0, 344], ankle: [0, 386], cam: [11, 203], imu: [0, 255], shoulder: [0, 238] };
     var legA = [4, 0], legB = [-4, 0], armA = [8, 4];
@@ -230,11 +230,12 @@
       pts: function () { return P; },
       // 近腿描边换色（如执行时变 warn）；dash 为虚线；c 为空恢复 ink
       legStyle: function (c, dash, opacity) {
-        [thigh, shin, foot].forEach(function (l) { l.style.stroke = c || E.INK; l.setAttribute('stroke-dasharray', dash || ''); });
+        // 虚线时用平头线帽，否则圆头会把空隙填满、看起来还是实线
+        [thigh, shin, foot].forEach(function (l) { l.style.stroke = c || E.INK; l.setAttribute('stroke-dasharray', dash || ''); l.setAttribute('stroke-linecap', dash ? 'butt' : 'round'); });
         [hipDot, kneeDot, ankleDot].forEach(function (d) { d.style.fill = c || E.INK; });
         var o = opacity === undefined ? 1 : opacity;
         [thigh, shin, foot, hipDot, kneeDot, ankleDot].forEach(function (n) { op(n, o); });
-        far.querySelectorAll('line').forEach(function (l) { l.setAttribute('stroke-dasharray', dash || ''); });
+        far.querySelectorAll('line').forEach(function (l) { l.setAttribute('stroke-dasharray', dash || ''); l.setAttribute('stroke-linecap', dash ? 'butt' : 'round'); });
         op(far, 0.5 * o);
       }
     };
@@ -276,8 +277,8 @@
       // 在路线 u 处放一个小脚印（左右交替偏 side·5px），返回椭圆
       footprint: function (u, side, color, rx) {
         var p = at(u), q = at(Math.min(1, u + 0.01)), ang = Math.atan2(q[1] - p[1], q[0] - p[0]);
-        var e = el('ellipse', { cx: (p[0] - side * 5 * Math.sin(ang)).toFixed(1), cy: (p[1] + side * 5 * Math.cos(ang)).toFixed(1), rx: rx || 4.5, ry: 2.5,
-          transform: 'rotate(' + (ang * 180 / Math.PI).toFixed(1) + ' ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ')' }, prints);
+        var cx = (p[0] - side * 5 * Math.sin(ang)).toFixed(1), cy = (p[1] + side * 5 * Math.cos(ang)).toFixed(1);  // 绕脚印自己的中心转
+        var e = el('ellipse', { cx: cx, cy: cy, rx: rx || 4.5, ry: 2.5, transform: 'rotate(' + (ang * 180 / Math.PI).toFixed(1) + ' ' + cx + ' ' + cy + ')' }, prints);
         K.paint(e, color || E.VIOLET);
         return e;
       }

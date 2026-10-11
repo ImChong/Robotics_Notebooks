@@ -12,6 +12,11 @@
   var WALK0 = 16.6, WALK1 = 19.4, RAMP = 0.35;         // 走路：起步 / 停步各加减速 0.35 s
   var BLINK = 0.6;                                     // 轮流亮：每个盒子 0.6 s（真实时间 t）
   var TAU = Math.PI * 2;
+  // 步长：E.robot 腿长 42 + 42，poseWalk 髋角 ±22°，支撑脚相对髋每半周期后移 2·84·sin22° ≈ 63px，
+  // 一个周期 ≈ 126px 时支撑脚净位移为 0（00-common.js 注释里的「/ 90」会让支撑脚每步往后滑约 18px）
+  var STRIDE = 4 * 84 * Math.sin(22 * Math.PI / 180);
+  // 小地图以右上角 (780, 70) 为心缩到 0.9：面板底边 196 → 183，机器人站直时头顶 ≈ 188.5，走到右半边不再顶住面板
+  var MAP_S = 0.9;
 
   function mix(c, p, base) {
     return p <= 0 ? base : p >= 1 ? c : 'color-mix(in srgb, ' + c + ' ' + (p * 100).toFixed(1) + '%, ' + base + ')';
@@ -50,10 +55,10 @@
   function depth(x) {
     return x <= 300 || x >= 530 ? 0 : x < 330 ? K.ease((x - 300) / 30) : x <= 500 ? 1 : 1 - K.ease((x - 500) / 30);
   }
-  // 步态相位 = ∫ dX / (90·缩放)：缩小时步子也小，脚不打滑。逐像素累加成表
+  // 步态相位 = ∫ dX / (STRIDE·缩放)：缩小时步子也小，脚不打滑。逐像素累加成表
   var PH = (function () {
     var a = [0];
-    for (var i = 1; i <= D; i++) a.push(a[i - 1] + 1 / (90 * (1 - 0.1 * depth(X0 + i - 0.5))));
+    for (var i = 1; i <= D; i++) a.push(a[i - 1] + 1 / (STRIDE * (1 - 0.1 * depth(X0 + i - 0.5))));
     return a;
   })();
   function phase(d) { var i = Math.min(D - 1, Math.floor(d)), k = d - i; return PH[i] + (PH[i + 1] - PH[i]) * k; }
@@ -63,7 +68,7 @@
     dur: 25.8,
     cues: [
       { at: 0, s: '动作改变了位置和姿势 → 传感器再测 → 回到感知' },
-      { at: 7.8, s: '踩偏、身子一歪？下一圈感知发现，命令跟着调整' },
+      { at: 7.8, s: '身子一歪？下一圈感知发现，命令跟着调整' },
       { at: 16.5, s: '一圈接一圈：绕过纸箱，走到门口' },
       { at: 20.4, s: '执行绕回感知的这条线叫「**反馈**」：有了它才成圈' }
     ],
@@ -80,6 +85,10 @@
       var mapG = E.el('g', {}, s);
       var mm = E.miniMap(mapG);
       mm.setReveal(650);
+      E.scaleAt(mm.g, 780, 70, MAP_S);
+      // 缩小后字号补回来，成片里仍是 18px
+      [mm.title, mm.doorLabel].forEach(function (n) { n.setAttribute('font-size', (18 / MAP_S).toFixed(1)); });
+      mm.title.setAttribute('y', 94);   // 字大了一号，基线下移 2px，上下离面板边和网格一样远
       var prints = null;   // 脚印要沿路线量长度：draw 里挂到页面后再建
 
       var bot = E.robot(s, X0);

@@ -33,6 +33,10 @@
     return 'M ' + p0[0].toFixed(2) + ' ' + p0[1].toFixed(2) + ' A ' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 0 ' +
       p1[0].toFixed(2) + ' ' + p1[1].toFixed(2);
   }
+  // 同一段弧连回圆心的扇形（量角器的样子：一边贴着肢体，一边是扫动的指针）
+  function wedgeD(c, r, a0, a1) {
+    return 'M ' + c[0].toFixed(2) + ' ' + c[1].toFixed(2) + ' L ' + arcD(c, r, a0, a1).slice(2) + ' Z';
+  }
   // 一次性闪 n 下（每下 per 秒），返回 0…1；其余时刻 0
   function flash(st, a, n, per) {
     var u = (st - a) / per;
@@ -77,14 +81,17 @@
       var robot = E.robot(s, X);
       var P = robot.pts();
       var arcG = E.el('g', {}, robot.body);
-      robot.body.insertBefore(arcG, robot.hipDot);
+      robot.body.insertBefore(arcG, robot.thigh);   // 垫在腿下面：扇形贴着肢体，腿线压住起始边
       var joints = [
         { dot: robot.hipDot, c: P.hip.slice(), a0: 4, at: 20.3 },
         { dot: robot.kneeDot, c: P.knee.slice(), a0: 0, at: 20.7 },
         { dot: robot.ankleDot, c: P.ankle.slice(), a0: 90, at: 21.1 }
       ];
+      // r14 的弧在屏幕上只有十几像素：底下垫一块半透明扇形，读起来才像「量角度」
       joints.forEach(function (j) {
-        j.arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, arcG), null, E.GOOD);
+        j.wedge = K.paint(E.el('path', { 'stroke-width': 2, 'stroke-linejoin': 'round' }, arcG), E.GOOD, E.GOOD);
+        j.wedge.style.fillOpacity = 0.4;
+        j.arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, arcG), null, E.GOOD);
       });
       // 近侧上臂正好压在小盒子上：亮起时在手臂上面再画一个同位置的小盒子
       var imuHi = K.paint(E.el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, robot.body), E.GOOD);
@@ -112,7 +119,7 @@
       var bar = E.stepBar(s);
 
       /* ── 收尾：灰字 + 总结卡 ── */
-      var more = halo(E.txt(s, 204, 226, '有的还配：测距雷达、脚底测力', 18, E.MUT, 'start'));
+      var more = halo(E.txt(s, 214, 226, '有的还配：测距雷达、脚底测力', 18, E.MUT, 'start'));
       var card = E.el('g', {}, s);
       var cardRect = K.paint(E.el('rect', { x: 480, y: 250, width: 220, height: 86, rx: 12, 'stroke-width': 2.5 }, card), E.S1, E.GOOD);
       var checks = [E.check(card, 500, 269, 18, E.GOOD), E.check(card, 500, 305, 18, E.GOOD)];
@@ -189,8 +196,12 @@
             scaleOr(j.dot, j.c[0], j.c[1], 1 + 0.5 * bump(st, j.at, 0.35));
             var grow = fade(st, j.at, 0.4);
             var span = grow * (20 + 50 * (0.5 - 0.5 * Math.cos(TAU * t / 1.8 + 2.1 * k)));
-            if (span > 0.5) j.arc.setAttribute('d', arcD(j.c, 14, j.a0, j.a0 + span));
+            if (span > 0.5) {
+              j.arc.setAttribute('d', arcD(j.c, 14, j.a0, j.a0 + span));
+              j.wedge.setAttribute('d', wedgeD(j.c, 14, j.a0, j.a0 + span));
+            }
             E.op(j.arc, span > 0.5 ? 1 : 0);
+            E.op(j.wedge, span > 0.5 ? 1 : 0);
           });
 
           /* 标签：弹出，引线从标签画到部件；25.7 一起降到 0.4 */

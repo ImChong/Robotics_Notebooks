@@ -1,10 +1,11 @@
 // 片头主图（800×420，片头与封面共用）：四台长相天差地别的机器人依次弹出 → 共用括号 → 下面一排四个「?」盒子
-// → 反馈虚线把四个盒子连成一个圈，光点绕圈 → 「拆开给你看」时四个「?」依次放大。
+// → 反馈虚线把四个盒子连成一个圈，光点绕圈（走进盒子时由盒子亮边接力）→ 「拆开给你看」时四个「?」依次放大。
 // 封面静帧（still）：「?」换成 感知 / 规划 / 控制 / 执行，控制盒标「★ 本系列主战场」，弧下文字改成反馈的意思，不画光点。
 (function () {
   var E = window.EP001, K = E.K;
   var BOX_X = [24, 220, 416, 612], BOX_W = 164, MID_Y = 263;
-  var LOOP = [[106, 263], [694, 263], [694, 344], [106, 344], [106, 263]];
+  // 光点路线同规格（顺时针，经过四个盒子中心），起点挪到反馈虚线的起点 (694,308)：6.8 虚线刚画完，光点顺着它接着跑
+  var LOOP = [[694, 308], [694, 344], [106, 344], [106, 263], [694, 263], [694, 308]];
   var TAU = Math.PI * 2;
 
   function line(parent, d) {
@@ -33,14 +34,6 @@
     });
     var vac = bots[0].r, arm = bots[1].r, car = bots[2].r, hum = bots[3].r;
 
-    // 盒子一排（故意不对准上面的机器人）：「?」与封面用的步骤名叠在同一格，按 still 切换。
-    // 框（g）和字（tg）分两层、同步弹出：光点画在两层之间，绕圈经过盒子中心时从「?」后面穿过，不把字盖住
-    var boxes = BOX_X.map(function (x, i) {
-      var g = E.el('g', {}, s);
-      var rect = E.el('rect', { x: x, y: 218, width: BOX_W, height: 90, rx: 16, 'stroke-width': 2 }, g);
-      K.paint(rect, E.S2, E.BORDER);
-      return { g: g, rect: rect, x: x, cx: x + 82 };
-    });
     // 盒间箭头：第 i 支跟着第 i+1 个盒子出现
     var links = [0, 1, 2].map(function (i) {
       return E.arrow(s, [[BOX_X[i] + BOX_W + 4, MID_Y], [BOX_X[i + 1] - 4, MID_Y]], E.INK2, 3, { head: 10 });
@@ -51,11 +44,20 @@
     // 规格写 y=376；下移 6，光点（r9 + 青光）沿下沿走过时和字之间留出空隙
     var caption = E.txt(s, 400, 382, '', 20, E.INK2);
 
-    // 光点：白（--text）+ 青光
+    // 光点：白（--text）+ 青光。画在盒子下面：走进盒子就被盒子盖住、改由那个盒子亮边，
+    // 不会从「?」字上穿过去（叠在字前 / 字后都像穿模）
     var dot = K.paint(E.el('circle', { r: 9 }, s), E.INK);
     dot.style.filter = 'drop-shadow(0 0 6px ' + E.ACC + ') drop-shadow(0 0 12px ' + E.ACC + ')';
 
-    // 盒中字（在光点上面一层）。封面步骤名基线取 266、「★」行取 295（规格 258 / 290）：
+    // 盒子一排（故意不对准上面的机器人）：「?」与封面用的步骤名叠在同一格，按 still 切换
+    var boxes = BOX_X.map(function (x, i) {
+      var g = E.el('g', {}, s);
+      var rect = E.el('rect', { x: x, y: 218, width: BOX_W, height: 90, rx: 16, 'stroke-width': 2 }, g);
+      K.paint(rect, E.S2, E.BORDER);
+      return { g: g, rect: rect, x: x, cx: x + 82 };
+    });
+
+    // 盒中字。封面步骤名基线取 266、「★」行取 295（规格 258 / 290）：
     // 258 时四个名字都贴在盒子上半部，没有「★」行的三个盒子下半截空着；下移后单行、两行都接近居中，四个名字仍同一基线
     boxes.forEach(function (b, i) {
       b.tg = E.el('g', {}, s);
@@ -86,11 +88,22 @@
         var pb = E.fade(t, 3.6, 0.5);
         brace.forEach(function (p) { E.drawOn(p, pb); });
 
+        var pd = still ? 0 : E.fade(t, 6.8, 0.3);
+        var at = K.pointOn(LOOP, (((rt - 6.8) / 4) % 1 + 1) % 1);
+        dot.setAttribute('cx', at[0].toFixed(1));
+        dot.setAttribute('cy', at[1].toFixed(1));
+        E.op(dot, pd);
+
         boxes.forEach(function (b, i) {
           var p = E.fade(t, 4.9 + 0.2 * i, 0.3);
           E.pop(b.g, b.cx, MID_Y, p);
           E.pop(b.tg, b.cx, MID_Y, p);
           if (i) E.op(links[i - 1].g, p);
+          // 光点走进这个盒子（被盒子盖住）时，盒子亮边 + 青光：k 从光点边缘碰到盒边起 0 → 1
+          var depth = Math.min(at[0] - b.x, b.x + BOX_W - at[0], at[1] - 218, 308 - at[1]);
+          var k = pd * E.clamp((depth + 9) / 24, 0, 1);
+          K.paint(b.rect, null, k > 0 ? E.tint(E.INK, Math.round(85 * k), E.BORDER) : E.BORDER);
+          b.rect.style.filter = k > 0 ? 'drop-shadow(0 0 10px ' + E.tint(E.ACC, Math.round(80 * k), 'transparent') + ')' : '';
           // 「拆开给你看」：四个「?」依次 1 → 1.15 → 1。规格写 9.7–10.5，但配音里那里还在念「就把这个圈」，
           // 「拆开给你看」实际在分镜 10.37–11.06，所以整体挪到 10.35–11.15
           var u = K.seg(t, 10.35 + 0.15 * i, 10.7 + 0.15 * i);
@@ -106,12 +119,6 @@
         E.op(fb.head, K.seg(pf, 0.9, 1));
         caption.textContent = still ? '反馈：动完再看一眼，循环往复' : '一圈一圈，循环往复';
         E.op(caption, E.fade(t, 6.6, 0.4));
-
-        var pd = still ? 0 : E.fade(t, 6.8, 0.3);
-        var at = K.pointOn(LOOP, (((rt - 6.8) / 4) % 1 + 1) % 1);
-        dot.setAttribute('cx', at[0].toFixed(1));
-        dot.setAttribute('cy', at[1].toFixed(1));
-        E.op(dot, pd);
       }
     };
   };

@@ -114,7 +114,12 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     if (parent) parent.appendChild(n);
     return n;
   }
-  function richInto(node, str) { node.textContent = ''; K.rich(node, str); }
+  /* 加粗字默认琥珀色；一集可以用 E.boldColors 按词指定颜色（如四步各用本色），免得「感知」被涂成「执行」的颜色 */
+  function richInto(node, str) {
+    node.textContent = ''; K.rich(node, str);
+    var map = window.EpisodeVideo && window.EpisodeVideo.boldColors;
+    if (map) node.querySelectorAll('b, strong').forEach(function (b) { if (map[b.textContent]) b.style.color = map[b.textContent]; });
+  }
   function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
   function fadeUp(node, t, a, d) {
     var p = K.ease(clamp((t - a) / (d || 0.6), 0, 1));
@@ -182,7 +187,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
         if (!fitted && root.isConnected) { fitLine(q, 72, 52, 960); fitLine(p, 38, 28, 960); fitted = true; }
         stack([ep, q, p, hb.box], [18, 10, 40], SAFE_TOP, CONTENT_BOTTOM);
         fadeUp(ep, t, at.ep); fadeUp(q, t, at.question); fadeUp(p, t, at.pitch); fadeUp(hb.box, t, at.hero);
-        hb.hero.draw(Math.max(0, st - at.hero));
+        hb.hero.draw(Math.max(0, st - at.hero), false, Math.max(0, t - at.hero));  // 第三个参数是真实时间，循环动作用它
       }
     };
   }

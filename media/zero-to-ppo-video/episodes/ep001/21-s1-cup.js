@@ -4,12 +4,16 @@
 (function () {
   var E = window.EP001, K = E.K;
 
-  /* 手的路线 P：M244,333 C250,120 340,110 358,224（u 为贝塞尔参数，规格里的校对点也按它算） */
-  var P_D = 'M244,333 C250,120 340,110 358,224';
+  /* 手的路线 P：起点（手下垂）、终点（把手）同规格，控制点从规格的 C250,120 340,110 压低到 C250,200 345,135。
+     规格那条线中段离肩太近（u≈0.3 时只有 48），肘朝上的解会让上臂甩过头顶再落回（上臂角 12°→165°→99°，
+     u=0.5 时肘在 (253,83)，比头顶还高，整条上臂从脸上扫过）。压低后：手在花瓶上方 y≈183–190 绕过去，
+     上臂角 12°→136°→99°，肘最高 (289,104)，离头 ≥ 32、离花瓶 ≥ 10、手指离花瓶 / 桌面 ≥ 6，不穿模。
+     校对点：u=0 手 (244,333) 肘 (248,248)；u=0.5 手 (298,195) 肘 (295,110)；u=1 手 (358,224) 肘 (314,151)。 */
+  var P_D = 'M244,333 C250,200 345,135 358,224';
   function bez(u) {
     var a = 1 - u;
-    return [a * a * a * 244 + 3 * a * a * u * 250 + 3 * a * u * u * 340 + u * u * u * 358,
-      a * a * a * 333 + 3 * a * a * u * 120 + 3 * a * u * u * 110 + u * u * u * 224];
+    return [a * a * a * 244 + 3 * a * a * u * 250 + 3 * a * u * u * 345 + u * u * u * 358,
+      a * a * a * 333 + 3 * a * a * u * 200 + 3 * a * u * u * 135 + u * u * u * 224];
   }
   /* 两连杆（上臂、前臂各 85）、肘朝上：肩 S = (230,165)，给手 H 解肘 */
   var SH = [230, 165], LIMB = 85;
@@ -58,7 +62,7 @@
       K.paint(E.el('path', { d: 'M366,214 C352,214 352,236 366,236', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, cupG), null, E.INK2);
 
       /* ── ② 紫色路线 P（压在识别框和人之下：标签描了底色，手臂从上面伸过去） ── */
-      var route = E.curveArrow(world, P_D, E.VIOLET, 3, Math.atan2(224 - 110, 358 - 340) * 180 / Math.PI, { dash: '8 6', head: 13 });
+      var route = E.curveArrow(world, P_D, E.VIOLET, 3, Math.atan2(224 - 135, 358 - 345) * 180 / Math.PI, { dash: '8 6', head: 13 });
 
       /* ── ① 视线 + 识别框（压在布景上、人之下） ── */
       var sightG = E.el('g', {}, world);
@@ -71,12 +75,14 @@
         var g = E.el('g', {}, world);
         var r = E.el('rect', { x: x, y: y, width: w, height: h, rx: 6, fill: 'none', 'stroke-width': 2.5 }, g);
         K.paint(r, null, E.GOOD);
-        halo(E.txt(g, lx, ly, name, 20, E.GOOD, 'middle', 700));
-        return g;
+        var label = E.txt(g, lx, ly, name, 20, E.GOOD, 'middle', 700);
+        halo(label);
+        return { g: g, label: label };
       }
       var cupBox = idBox(346, 196, 58, 62, 375, 188, '杯子');
-      // 「花瓶」比规格的 x=326 左移 7px：路线 P 在 y≈175–196 经过 x≈342–351，原位置会压到「瓶」字右上角
-      var vaseBox = idBox(309, 200, 34, 52, 319, 192, '花瓶');
+      // 「花瓶」从规格的 (326,192) 抬到 (328,164)：路线 P 在 x≈306–348 处 y≈183–190 从花瓶上方经过，原位置正好被它穿过；
+      // 再往左就压到看杯子的那条视线
+      var vaseBox = idBox(309, 200, 34, 52, 328, 164, '花瓶');
 
       /* ── 人：侧身朝右 ── */
       var farArm = E.el('path', { d: 'M230,165 L224,245 L222,320', fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, world);
@@ -161,10 +167,13 @@
           E.drawOn(sight[0], K.seg(st, 3.0, 3.4));
           E.drawOn(sight[1], K.seg(st, 3.4, 3.8));
           E.op(sightG, (1 - 0.7 * fade(st, 7.4, 0.4)) * (1 - annoOut));
-          E.pop(cupBox, 375, 222, fade(st, 4.5, 0.3), 0.9);
-          E.op(cupBox, fade(st, 4.5, 0.3) * annoDim * (1 - annoOut));
-          E.pop(vaseBox, 326, 222, fade(st, 6.9, 0.3), 0.9);
-          E.op(vaseBox, fade(st, 6.9, 0.3) * annoDim * (1 - annoOut));
+          E.pop(cupBox.g, 375, 222, fade(st, 4.5, 0.3), 0.9);
+          E.op(cupBox.g, fade(st, 4.5, 0.3) * annoDim * (1 - annoOut));
+          E.pop(vaseBox.g, 326, 222, fade(st, 6.9, 0.3), 0.9);
+          E.op(vaseBox.g, fade(st, 6.9, 0.3) * annoDim * (1 - annoOut));
+          // 18.9 手开始伸：两个名字先淡掉（框留着到 20.6），免得前臂从「花瓶」两个字上扫过
+          var labelOut = 1 - fade(st, 18.9, 0.3);
+          E.op(cupBox.label, labelOut); E.op(vaseBox.label, labelOut);
 
           /* ② 思考泡 7.4 弹出、16.7 淡出；路线 9.6–11.0 画出，16.7 降到 0.5 */
           var bp = fade(st, 7.4, 0.35);
@@ -206,10 +215,11 @@
           E.op(back.head, bk >= 0.97 ? 1 : 0);
           E.op(backLabel, fade(st, 21.5, 0.4));
 
-          /* 起名字：四个盒子依次弹出，箭头跟着后一个盒子，26.9 反馈虚线画出 */
+          /* 起名字：四个盒子依次弹出，箭头跟着后一个盒子；反馈虚线规格写 26.9 起画，这里提前到 26.75–27.0 画完：
+             最后一句配音 5.088 s 拉满 [24.1, 27.1]，幕尾只留 0.3 s 就交叉淡出，按 26.9–27.05 画完后全亮只剩约 0.08 s */
           boxes.forEach(function (g, i) { E.pop(g, BX[i] + 85, 208, fade(st, NAME_AT[i], 0.3), 0.85); });
           links.forEach(function (a, i) { E.op(a.g, fade(st, NAME_AT[i + 1], 0.3)); });
-          var fp = K.seg(st, 26.9, 27.05);
+          var fp = K.seg(st, 26.75, 27.0);
           E.drawOn(fb.line, fp);
           E.op(fb.head, fp >= 0.97 ? 1 : 0);
         }

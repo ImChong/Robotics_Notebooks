@@ -37,6 +37,9 @@
     pitch: '拆开任何机器人，都在跑同一个四步圈',
     footer: '从零基础讲起，一路接上《从头学人形机器人算法》',
     introAt: { ep: 0.1, question: 0.3, pitch: 0.6, hero: 0 },
+    // 划重点 / 片尾里的加粗词：四步各用本色（感知 good、规划 violet、控制 accent、执行 warn）
+    boldColors: { '感知': 'var(--demo-good)', '规划': 'var(--violet)', '控制': 'var(--demo-accent)', '执行': 'var(--demo-warn)',
+      '反馈': 'var(--text)', 'C': 'var(--demo-accent)' },
     introDur: 11.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,

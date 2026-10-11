@@ -41,6 +41,7 @@ RATE = "+6%"
 SR = 24000
 LEAD = 0.45   # silence before the first line of each scene (scene fades in)
 GAP = 0.30    # breath after every line
+END_HOLD = 0.5  # 每幕最后一句再多停一会儿：舞台转场淡出要 0.3 s，收尾画面得先看清
 
 
 def display(s):
@@ -122,7 +123,8 @@ async def main():
             audio = to_wav(mp3, wav)
             alen = len(audio) / 2 / SR
         lead = LEAD if scene != prev_scene else 0.0
-        dur = max(b - a, lead + alen + GAP)
+        last = i == len(SCRIPT) - 1 or SCRIPT[i + 1][0] != scene
+        dur = max(b - a, lead + alen + GAP + (END_HOLD if last else 0))
         # alen：这句配音的实际长度。舞台按它把 [from, to] 等比拉伸，画面事件跟着念到的词走（论文系列是 1 倍速播完再停在 to）
         segs.append({"scene": scene, "t0": round(t, 3), "t1": round(t + dur, 3), "from": a, "to": b, "lead": lead, "alen": round(alen, 3)})
         pad = int(round((t + lead) * SR)) - len(pcm) // 2

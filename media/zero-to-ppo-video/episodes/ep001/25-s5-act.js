@@ -10,7 +10,10 @@
   var MOTOR = [270, 195], PINION = [310, 195], GEAR = [350, 195];
   var CMD = [[505, 52], [505, 200], [300, 300], [113, 344]];    // 命令走的三次贝塞尔：控制盒底 → 膝盖
   var TRIP = 1.2, TRIP0 = 0.6, TRIPS = 3;                       // 每趟 1.2 s，0.6 起共 3 趟，到达 1.8 / 3.0 / 4.2
-  var MOTOR_RPS = 2;                                            // 电机每秒 2 圈（真实时间 t）
+  // 电机每秒 1.5 圈（真实时间 t）。规格写 2 圈，但成片 30 fps 下小齿轮每帧转 24°，超过半个齿距 22.5°，齿线看起来倒着转；
+  // 1.5 圈时小齿轮每帧 18°、大齿轮每帧 8°（半齿距 10°），转向都看得清
+  var MOTOR_RPS = 1.5;
+  var GEAR_RATIO = 8 / 18;                                      // 大齿轮转速 = 小齿轮 × 齿数比（规格 12/28 ≈ 0.429，差 3.7%），齿才始终交错、不打架
 
   /* 走一步（16.6–18.5）。腿长 42 + 42；站姿 [4°, 0°] 的踝在 y = 302 + 84·cos4°，把这个高度当作「踩在地上」 */
   var S4 = Math.sin(4 * R), GA = 302 + 84 * Math.cos(4 * R);
@@ -128,7 +131,11 @@
         return { l: line(s, E.WARN, 3), b: h[0], d: h[1] };
       });
 
-      /* ── 命令小圆点 + 「命令」 ── */
+      /* ── 命令走的路线（淡虚线，第一趟小圆点边走边画出来）+ 小圆点 + 「命令」 ── */
+      var routeG = E.el('g', {}, s);
+      var route = E.el('path', { d: 'M ' + CMD[0].join(' ') + ' C ' + CMD.slice(1).map(function (p) { return p.join(' '); }).join(' '),
+        fill: 'none', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-dasharray': '4 6' }, routeG);
+      K.paint(route, null, E.ACC);
       var dot = K.paint(E.el('circle', { cx: CMD[0][0], cy: CMD[0][1], r: 5 }, s), E.ACC);
       E.glow(dot, E.ACC, true);
       var cmdLabel = E.txt(s, 517, 108, '命令', 18, E.ACC, 'start');
@@ -148,10 +155,11 @@
         put(line(spokes, E.WARN, 3), MOTOR, [MOTOR[0] + 20 * Math.cos(a), MOTOR[1] + 20 * Math.sin(a)]);
       }
       K.paint(E.el('circle', { cx: MOTOR[0], cy: MOTOR[1], r: 4 }, mag), E.WARN);
-      var motorName = E.txt(mag, 270, 245, '电机', 18, E.INK);
+      // 「电机」「减速器」从规格 y=245 下移到 250：大齿轮齿尖低到 y=228，245 时字顶几乎贴着齿
+      var motorName = E.txt(mag, 270, 250, '电机', 18, E.INK);
       // 减速器：小齿轮（和电机同速）+ 大齿轮（反向，转速 × 12/28）。大齿轮齿线错开半格，起始时和小齿轮的齿交错
       var big = gear(mag, GEAR, 28, 18, 3), small = gear(mag, PINION, 12, 8, 1);
-      var gearName = E.txt(mag, 350, 245, '减速器', 18, E.INK);
+      var gearName = E.txt(mag, 350, 250, '减速器', 18, E.INK);
       // 圆外下方的两行
       var fastTxt = E.txt(s, 270, 322, '快 · 劲小', 18, E.INK);
       var slowTxt = E.txt(s, 370, 322, '慢 · 劲大', 18, E.WARN);
@@ -186,6 +194,8 @@
             E.op(dot, Math.min(1, u / 0.06, (1 - u) / 0.04));
           } else E.op(dot, 0);
           E.op(cmdLabel, E.win(st, TRIP0, TRIP0 + TRIP * TRIPS, 0.3));
+          E.drawOn(route, E.clamp((st - TRIP0) / TRIP, 0, 1));
+          E.op(routeG, 0.5 * (1 - fade(st, TRIP0 + TRIP * TRIPS, 0.3)));
           var kf = 0;
           for (var i = 1; i <= TRIPS; i++) kf = Math.max(kf, bump(st, TRIP0 + TRIP * i, 0.45));
 
@@ -204,11 +214,11 @@
           if (ms > 0.001) { scaleOr(mag, KNEE[0], KNEE[1], ms); E.op(mag, Math.min(1, grow * 3) * (1 - shrink)); }
           else { E.scaleAt(mag, KNEE[0], KNEE[1], 0.001); E.op(mag, 0); }
           E.op(magTitle, fade(st, 4.7, 0.3));
-          // 电机和小齿轮每秒 2 圈（顺时针），大齿轮反向、× 12/28；大齿轮多转半个齿距（10°）让齿交错
+          // 电机和小齿轮同速（顺时针），大齿轮反向、× 齿数比；大齿轮多转半个齿距（10°）让齿交错
           var deg = 360 * MOTOR_RPS * t;
           spokes.setAttribute('transform', 'rotate(' + (deg % 360).toFixed(2) + ' ' + MOTOR[0] + ' ' + MOTOR[1] + ')');
           small.spin(deg);
-          big.spin(10 - deg * 12 / 28);
+          big.spin(10 - deg * GEAR_RATIO);
           // 6.7「电机」；8.8 齿轮 + 「减速器」
           rise(motorName, fade(st, 6.7, 0.3));
           var gp = fade(st, 8.8, 0.4);

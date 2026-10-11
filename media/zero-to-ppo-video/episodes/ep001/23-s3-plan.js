@@ -28,6 +28,8 @@
   }
   // 填充脚印跟着脉冲微微胀大（只胀不缩，免得比后面的小脚印还小）
   function breathe(t, k) { return 1 + (0.1 + 0.15 * k) * (0.5 - 0.5 * Math.cos(2 * Math.PI * t / PULSE)); }
+  // 16.0 加强时光晕随 k 渐亮（E.glow 只有开 / 关，会在 k 过 0.5 时跳一下）
+  function softGlow(node, k) { node.style.filter = k > 0.01 ? 'drop-shadow(0 0 ' + (6 * k).toFixed(2) + 'px ' + E.VIOLET + ')' : ''; }
 
   E.scenes[2] = {
     title: '第二步：规划',
@@ -103,7 +105,8 @@
 
           /* 0.3–0.8 小地图滑入；3.0–8.0 扫描线 442 → 650，迷雾跟着散开 */
           var mp = fade(st, 0.3, 0.5);
-          mapG.setAttribute('transform', 'translate(' + (40 * (1 - mp)).toFixed(2) + ' 0)');
+          // 滑入前（完全透明）留在原位：fitStory 会把透明但右移 40 的面板也算进取景范围，白白缩小整幕
+          mapG.setAttribute('transform', 'translate(' + (mp > 0 ? 40 * (1 - mp) : 0).toFixed(2) + ' 0)');
           E.op(mapG, mp);
           var rx = 442 + 208 * K.seg(st, 3.0, 8.0);
           mm.setReveal(rx);
@@ -142,20 +145,21 @@
             f.e.setAttribute('rx', (f.rx * sc).toFixed(2));
             f.e.setAttribute('ry', (2.5 * sc).toFixed(2));
             E.op(f.e, p);
-            if (f.ring) { ring(f.ring, 6, 2.5, [6, 3.5], t, k, p); E.glow(f.e, E.VIOLET, k > 0.5); }
+            if (f.ring) { ring(f.ring, 6, 2.5, [6, 3.5], t, k, p); softGlow(f.e, k); }
           });
           var sp = fade(st, 14.1, 0.3), sb = breathe(t, k) * (0.6 + 0.4 * sp);
           stepFoot.setAttribute('rx', (16 * sb).toFixed(2));
           stepFoot.setAttribute('ry', (4 * sb).toFixed(2));
           E.op(stepFoot, sp);
           ring(stepRing, 16, 4, [14, 5], t, k, sp);
-          E.glow(stepFoot, E.VIOLET, k > 0.5);
+          softGlow(stepFoot, k);
           E.op(stepLabel, fade(st, 14.1, 0.4));
 
           /* 19.3 腿变虚线、降到 0.4；髋膝踝旁冒「?」；旁注 */
           var lp = fade(st, 19.3, 0.3);
           if (st >= 19.3) {
-            bot.legStyle(null, '5 4', 1 - 0.6 * lp);
+            // 虚线空隙 0 → 4 跟着淡出一起长出来，不在 19.3 一下子从实线跳成虚线
+            bot.legStyle(null, '5 ' + (4 * lp).toFixed(2), 1 - 0.6 * lp);
             // 粗线配圆头时 5 4 的虚线会被线帽填满、看着还是实线：虚线期间改平头
             bot.body.querySelectorAll('line').forEach(function (l) {
               if (l.getAttribute('stroke-dasharray')) l.setAttribute('stroke-linecap', 'butt');

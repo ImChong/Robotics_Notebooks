@@ -6,11 +6,13 @@
   var E = window.EP001, K = E.K;
   var RAD = Math.PI / 180, TAU = Math.PI * 2;
 
-  /* 腿：髋 (150,110) → 膝 (134,227) → 踝 (150,338) → 脚尖 (204,344)；按角度驱动，段长固定 */
+  /* 腿：髋 (150,110) → 膝 (166,227) → 踝 (150,338) → 脚尖 (204,344)；按角度驱动，段长固定。
+     规格写的膝 (134,227) 在髋—踝连线后方，脚尖朝 +x 时是反关节（像鸟腿），和 S2/S3 机器人膝盖朝前不一致；
+     这里镜像到 (166,227)，段长不变 */
   var HIP = [150, 110];
   var THIGH = Math.hypot(16, 117), SHIN = Math.hypot(16, 111), FOOT = Math.hypot(54, 6);
-  var A_THIGH = Math.atan2(-16, 117) / RAD;           // 大腿全局角（0 = 竖直向下，正值朝 +x）
-  var A_KNEE = Math.atan2(16, 111) / RAD - A_THIGH;   // 小腿相对大腿的角
+  var A_THIGH = Math.atan2(16, 117) / RAD;            // 大腿全局角（0 = 竖直向下，正值朝 +x）
+  var A_KNEE = Math.atan2(-16, 111) / RAD - A_THIGH;  // 小腿相对大腿的角
   var A_FOOT = Math.atan2(6, 54) / RAD;               // 脚相对水平往下（顺时针）的角
   // 关节名在关节圆左侧（右对齐），跟着关节走。「髋」比规格 (112,115) 低 7px：推的箭头 y = 93 从它头顶擦过，原位会压字
   var LABEL_OFF = [[-38, 12], [-38, 5], [-38, 5]];
@@ -50,8 +52,15 @@
     return lvl(i, n - 1, amp) + (lvl(i, n, amp) - lvl(i, n - 1, amp)) * K.ease(u - n);
   }
 
+  // 髋→踝方向角（度，0 = 竖直向下）。膝角变 dKnee 时整条腿绕髋补转回原方向，踝几乎不动（髋踝距离只变 ≤ 2px），
+  // 膝在原地屈伸；不补的话踝会左右滑 ±12px，鼓包出来以后就是脚在地上打滑
+  function ankleDir(dKnee) {
+    var a1 = A_THIGH * RAD, a2 = (A_THIGH + A_KNEE + dKnee) * RAD;
+    return Math.atan2(THIGH * Math.sin(a1) + SHIN * Math.sin(a2), THIGH * Math.cos(a1) + SHIN * Math.cos(a2)) / RAD;
+  }
   function legPts(sway, dKnee, tilt) {
-    var a1 = (A_THIGH + sway) * RAD, a2 = (A_THIGH + sway + A_KNEE + dKnee) * RAD, f = (A_FOOT + tilt) * RAD;
+    var base = A_THIGH + sway + ankleDir(0) - ankleDir(dKnee);
+    var a1 = base * RAD, a2 = (base + A_KNEE + dKnee) * RAD, f = (A_FOOT + tilt) * RAD;
     var knee = [HIP[0] + THIGH * Math.sin(a1), HIP[1] + THIGH * Math.cos(a1)];
     var ankle = [knee[0] + SHIN * Math.sin(a2), knee[1] + SHIN * Math.cos(a2)];
     return { hip: HIP, knee: knee, ankle: ankle, toe: [ankle[0] + FOOT * Math.cos(f), ankle[1] + FOOT * Math.sin(f)] };
@@ -64,7 +73,7 @@
       { at: 0, s: '★ 第三步 **控制**：本系列的主战场' },
       { at: 2.4, s: '导航说「右转」是规划；方向盘打多少、油门踩多深是控制' },
       { at: 9.8, s: '机器人：规划只交来一句「下一脚踩那儿」' },
-      { at: 13.9, s: '控制：翻译成每个关节这一毫秒出多少力、转多少角度' },
+      { at: 13.9, s: '控制：算出每个关节这一毫秒的力和角度' },
       { at: 21.7, s: '被推、踩到不平 → 马上重新算，一刻不停' },
       { at: 26.7, s: '常见做法：每秒算约一千次，甚至更多（主路线 L4.0）' }
     ],
@@ -107,6 +116,9 @@
       var brace = K.paint(E.el('path', { d: 'M 418 316 V 324 H 690 V 316', fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, drive), null, E.ACC);
       var isCtrl = E.txt(drive, 554, 350, '= 控制', 22, E.ACC, 'middle', 700);
 
+      /* ── 脚下不平（先建，压在腿下面）：规格 M100,370 Q150,354 210,370 整体上移 8px，让鼓包顶贴住脚底，不然脚悬在包上方约 12px ── */
+      var bump = K.paint(E.el('path', { d: 'M 100 362 Q 150 346 210 362', fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, s), null, E.BAD);
+
       /* ── 腿部特写（左） ── */
       var leg = E.el('g', {}, s);
       K.paint(E.el('rect', { x: 120, y: 84, width: 60, height: 18, rx: 6, 'stroke-width': 3 }, leg), E.S2, E.INK2);
@@ -147,13 +159,12 @@
         return { g: g, fan: fan, fill: fill, needle: needle, y: y, at: row.at };
       });
 
-      /* ── 干扰：推一下（bad 粗箭头）+ 脚下不平 ── */
+      /* ── 干扰：推一下（bad 粗箭头）+「不平」标字（鼓包在腿前面建） ── */
       var push = E.el('g', {}, s);
       var pushLine = line(push, E.BAD, 7);
       var pushHead = K.paint(E.el('path', { d: 'M 0 0 L -18 -9 L -18 9 Z' }, push), E.BAD);
       var pushLabel = E.txt(s, 66, 82, '推一下', 20, E.BAD);
-      var bump = K.paint(E.el('path', { d: 'M 100 370 Q 150 354 210 370', fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, s), null, E.BAD);
-      var bumpLabel = E.txt(s, 240, 372, '不平', 20, E.BAD);
+      var bumpLabel = E.txt(s, 240, 364, '不平', 20, E.BAD);
 
       /* ── 有多快：秒表 + 每秒约 1000 次 ── */
       var watch = E.el('g', {}, s);
@@ -162,7 +173,8 @@
       var hand = line(watch, E.ACC, 3);
       put(hand, [300, 340], [300, 326]);
       K.paint(E.el('circle', { cx: 300, cy: 340, r: 2.5 }, watch), E.ACC);
-      var oneSec = E.txt(s, 300, 378, '1 秒', 18, E.INK2);
+      // 「1 秒」用 accent，和秒表归成一组；用 ink2 时和同一水平线上的灰色「出处：…」连成一句
+      var oneSec = E.txt(s, 300, 378, '1 秒', 18, E.ACC);
       var rate = E.txt(s, 335, 348, '每秒约 1000 次', 28, E.ACC, 'start', 700);
       var source = E.txt(s, 335, 380, '出处：主路线 L4.0 方法谱系表', 18, E.MUT, 'start');
       var more = E.txt(s, 545, 348, '甚至更多', 22, E.ACC, 'start');
@@ -176,13 +188,13 @@
           bar.set(['done', 'done', 'cur', 'off'], t);
           E.pop(bar.star, 566, 33, fade(st, 0.3, 0.35), 0.3);
 
-          /* 0.2 开场两行字弹出；2.4 淡出 */
+          /* 0.2 开场两行字弹出；2.4 淡出（0.25 s，大字「控制」和方向盘位置重叠，不交叉叠化） */
           var op0 = fade(st, 0.2, 0.4);
           E.pop(open, 400, 245, op0, 0.85);
-          E.op(open, Math.min(op0, 1 - fade(st, 2.4, 0.3)));
+          E.op(open, Math.min(op0, 1 - fade(st, 2.4, 0.25)));
 
-          /* 开车类比：2.45 淡入（灰），9.8 整体淡出 */
-          E.op(drive, Math.min(fade(st, 2.45, 0.45), 1 - fade(st, 9.8, 0.3)));
+          /* 开车类比：2.6 开场字基本淡完后淡入（灰），9.8 整体淡出 */
+          E.op(drive, Math.min(fade(st, 2.6, 0.4), 1 - fade(st, 9.8, 0.3)));
           // 3.9 导航胶囊；5.4「= 规划」
           E.pop(nav, 210, 119, fade(st, 3.9, 0.35), 0.8);
           E.op(isPlan, fade(st, 5.4, 0.35));

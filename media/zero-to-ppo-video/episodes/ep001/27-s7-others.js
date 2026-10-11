@@ -78,8 +78,8 @@
     K.paint(E.el('rect', { x: 420, y: y, width: 360, height: 112, rx: 12, 'stroke-width': 2 }, g), E.S1, E.BORDER);
     var icon = i === 0 ? E.arm(g, 470, y + 100, 0.48) : i === 1 ? E.car(g, 472, y + 92, 0.5) : E.humanoid(g, 470, y + 102, 0.72);
     E.txt(g, 530, y + 44, CARD_NAME[i], 22, E.INK, 'start', 700);
-    var back = E.el('path', { d: 'M 698 ' + (y + 94) + ' Q 623 ' + (y + 108) + ' 548 ' + (y + 94), fill: 'none', 'stroke-width': 2, 'stroke-dasharray': '5 4', 'stroke-linecap': 'round' }, g);
-    K.paint(back, null, E.MUT);
+    // 回头虚线带箭头（与四步条的反馈线一样），看得出「执行完又回到感知」；末端切线方向 (548−623, 94−108)
+    E.curveArrow(g, 'M 698 ' + (y + 94) + ' Q 623 ' + (y + 108) + ' 548 ' + (y + 94), E.MUT, 2, Math.atan2(-14, -75) / R, { dash: '5 4', head: 8 });
     for (var k = 0; k < 3; k++) E.arrow(g, [[DOT_X[k] + 14, y + 82], [DOT_X[k + 1] - 14, y + 82]], E.INK2, 2, { head: 8 });
     var dots = E.STEPS.map(function (st, k) { return K.paint(E.el('circle', { cx: DOT_X[k], cy: y + 82, r: 10 }, g), st.color); });
     return { g: g, icon: icon, dots: dots, cx: 600, cy: y + 56 };
@@ -91,7 +91,7 @@
     cues: [
       { at: 0, s: '换台机器人，还是这四步' },
       { at: 2.4, s: '扫地机：看到拖鞋 → 决定绕开 → 算两轮各转多快 → 轮子转' },
-      { at: 11.5, s: '机械臂、自动驾驶、人形……拆开都是同一个四步循环' }
+      { at: 11.5, s: '机械臂、汽车、人形：都是同一个四步循环' }
     ],
     build: function (K) {
       var s = K.sceneSvg('换台机器人还是这四步：扫地机用传感器看到拖鞋、决定从上方绕开、算出左轮慢右轮快、轮子转起来绕了过去；机械臂、自动驾驶汽车、人形机器人拆开看也都在转同一个四步圈');
