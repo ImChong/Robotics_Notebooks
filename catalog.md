@@ -3220,6 +3220,7 @@
 - [RoboDawn（arXiv:2609.22966）](wiki/entities/paper-robodawn.md) — RoboDawn**（*Transferring the Intelligence of VLMs to Robotic Control*，[arXiv:2609.22966](https://a `📅unknown` `[entity_page]`
 - [RoboDreamer（arXiv:2609.07096）](wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — RoboDreamer**（*RoboDreamer: Anticipatory Humanoid Locomotion with Predictive State-Space Models*， `📅unknown` `[entity_page]`
 - [RoboDrop（arXiv:2609.10021）](wiki/entities/paper-robodrop-vla-post-training.md) — RoboDrop**（*RoboDrop: Curating VLA Post-Training Data via Local Gradient Compatibility*，[arXiv:260 `📅unknown` `[entity_page]`
+- [RoboDuet：四足机器人协作式全身移动操作](wiki/entities/paper-roboduet-loco-manipulation.md) — 一句话定义：** RoboDuet 是面向“腿式移动底盘 + 机械臂”的双策略强化学习框架，让 locomotion policy 与 arm policy 协作完成边走边操作，而不是把两者作为互 `📅unknown` `[entity_page]`
 - [RoboEdit：人类视频转机器人经验](wiki/entities/paper-roboedit.md) — RoboEdit**（*Turning Human Manipulation Videos into Scalable Robot Experience*；[arXiv:2608.18948](h `📅unknown` `[entity_page]`
 - [RoboFoundry（System-as-Policy · arXiv:2609.32862）](wiki/entities/paper-robofoundry.md) — RoboFoundry**（*RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents*，[arXiv:2 `📅unknown` `[entity_page]`
 - [RoboGauge：MoE 四足运动与 Sim-to-Real 可预测性](wiki/entities/paper-robogauge-moe-quadruped-locomotion.md) — Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion**（RSS 2026， `📅unknown` `[entity_page]`
