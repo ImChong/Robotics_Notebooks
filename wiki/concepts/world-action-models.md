@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-09
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
+  - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ./inverse-dynamics-model.md
   - ../entities/paper-vgi-white-paper.md
   - ../entities/paper-lawa.md
@@ -446,6 +447,11 @@ flowchart TB
 - [具身智能之心 · WAM 训练策略导读（2026-09-25）](../../sources/blogs/wechat_embodied_heart_rcl_wam_survey_2026-09-25.md)
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
 - [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
+
+
+### 动作条件视频世界模型
+
+- [DreamTrue：动作保真的机器人世界模型](../entities/paper-dreamtrue-action-faithful-world-model.md) — 用图像空间动作几何校准、反事实后训练和具身视频奖励改善动作—视频一致性。
 
 ## 关联页面
 

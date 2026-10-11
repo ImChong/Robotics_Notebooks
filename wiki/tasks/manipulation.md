@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-10-10
 related:
+  - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-tempo-dynamic-manipulation.md
   - ../entities/paper-flatlab.md
@@ -512,6 +513,11 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Locomotion](./locomotion.md)：loco-manipulation 是两者的结合
 - [Loco-Manipulation](./loco-manipulation.md)：边走边操作，manipulation 的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
+
+
+### 世界模型与动作后果建模
+
+- [DreamTrue：动作保真的机器人世界模型](../entities/paper-dreamtrue-action-faithful-world-model.md) — 研究机器人操作视频的动作保真预测及反事实交互后训练。
 
 ## 关联页面
 
