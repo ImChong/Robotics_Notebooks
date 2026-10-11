@@ -126,6 +126,7 @@ flowchart LR
 - [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
 - [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md) — 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
 - [Indi](../wiki/entities/paper-indi.md) — 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
+- [TEMPO](../wiki/entities/paper-tempo-dynamic-manipulation.md) — 为单帧 VLA 补充视觉运动摘要与动作历史，缓解动态目标运动歧义与多阶段状态混淆（双臂动态操作）
 
 ### 学完输出什么
 - 能画出典型 VLA 的三段式结构（视觉编码 → 语义 backbone → 动作专家）并说清各家差异
