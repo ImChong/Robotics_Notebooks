@@ -17,7 +17,7 @@
 | # | 论文 | arXiv | 开源结论 | wiki |
 |---|------|-------|----------|------|
 | 01 | RecMorph | [2609.18359](https://arxiv.org/abs/2609.18359) | **已开源** | [paper-recmorph](../../wiki/entities/paper-recmorph.md)（**复用**） |
-| 02 | ActiveScale | [2609.18514](https://arxiv.org/abs/2609.18514) | **待发布** | [paper-activescale](../../wiki/entities/paper-activescale.md) |
+| 02 | ActiveScale | [2609.18514](https://arxiv.org/abs/2609.18514) | **代码/权重已发布；任务数据目录可获取（2026-10-10 [官方重查](../sites/activescale.md)）** | [paper-activescale](../../wiki/entities/paper-activescale.md) |
 | 03 | Real-Time EXPO-FT | [2609.18207](https://arxiv.org/abs/2609.18207) | **待发布** | [paper-real-time-expo-ft](../../wiki/entities/paper-real-time-expo-ft.md)（**复用**） |
 | 04 | FIERCE | [2609.18651](https://arxiv.org/abs/2609.18651) | **部分开源** | [paper-fierce](../../wiki/entities/paper-fierce.md) |
 | 05 | DeformSmith | [2609.18620](https://arxiv.org/abs/2609.18620) | **待发布** | [paper-deformsmith](../../wiki/entities/paper-deformsmith.md) |

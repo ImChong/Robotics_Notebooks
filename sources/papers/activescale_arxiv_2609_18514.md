@@ -1,27 +1,25 @@
-# ActiveScale（arXiv:2609.18514）
+# ActiveScale: Scaling Active Perception for Robots across Model, Data, and Hardware
 
-> 来源归档（paper）
+> 一手论文归档；仅保存书目与归纳，不转存全文。
 
-- **标题：** ActiveScale: Scaling Active Perception for Robots across Model, Data, and Hardware
 - **类型：** paper
+- **作者：** Shuai Zhou、Kaisheng Pang、Wenxuan Song、Wenjie Zhang、Xinhu Zheng、Haoang Li
+- **机构：** 卡内基梅隆大学机器人研究所；香港科技大学（广州）
 - **arXiv：** <https://arxiv.org/abs/2609.18514>
-- **PDF：** <https://arxiv.org/pdf/2609.18514>
-- **项目页：** <http://active-scale.github.io/>
-- **入库日期：** 2026-09-17
-- **一句话说明：** 在 π₀.5 上叠加历史帧 + 相机 pose token 监督的主动感知 VLA；1000 小时人机 mid-training + AMP 移动操作平台；五类真机任务 mean SR 30%→70%。
+- **版本：** v2，2026-09-19；初版 2026-09-16
+- **全文：** <https://arxiv.org/html/2609.18514v2>；<https://arxiv.org/pdf/2609.18514v2>
+- **项目页：** <https://active-scale.github.io/>；[归档](../sites/activescale.md)
+- **代码：** <https://github.com/ShuaiZhou302/ActiveScale>；[归档](../repos/activescale.md)
+- **初次入库：** 2026-09-17；**重新核查：** 2026-10-10
+- **一句话说明：** π0.5 联合学习相机与操作；几何监督历史 token、人机中训与 AMP 三臂平台配合。
 
-## 开源状态
+## 核心摘录与映射
 
-- **待发布**（步骤 2.5 核查，2026-09-17）：项目页未列 GitHub / 权重链接。
+1. **§III-B：** Cobot-Magic 加相机臂，Quest 2 控视角/双臂/夹爪/底座；23D 位姿夹爪表示与另存底座速度。映射：[ActiveScale](../../wiki/entities/paper-activescale.md) 动作边界。
+2. **§III-C：** 四帧间隔 16，9D 相机辅助目标与因果历史；推理不运行相机头。映射：同页机制/流程图。
+3. **§III-D：** 人机 1:1 中训再任务适配，坐标与 mask 分来源；v2 列 EgoLive/EgoVerse，当前网页还列 EgoSuite，非相同口径。映射：同页数据与源码集成。
+4. **§IV：** 五任务各 150 示范/20 rollout；完整方案 SR 30%→70%、TP 41.6%→78.4%。264.5 Hz 是吞吐、执行 30 Hz；移动展示是遥操作。映射：同页评测与[技术地图](../../wiki/overview/perception-action-transfer-9-papers-technology-map.md)。
 
-## 核心摘录
+## 核查边界
 
-1. **模型：** 当前帧 + 间隔 16 帧采样的历史帧；每帧 camera token + 9D 相机头监督平移/旋转/FOV；推理时移除相机头。
-2. **数据：** 1000 小时 egocentric + 机器人 mid-training（EgoLive/EgoVerse/EgoSuite + AgiBot World/RoboCOIN/AMP）。
-3. **硬件 AMP：** AgileX Cobot-Magic 扩展第三臂作主动相机 + 双臂 + 移动底座；Quest 2 单操作员遥操作。
-4. **评测：** 五类任务各 150 demo、20 rollouts；mean SR 30.0%→70.0%，mean TP 41.6%→78.4%；50 动作块 RTX 4090 264.5 Hz。
-
-**对 wiki 的映射**
-
-- [paper-activescale](../../wiki/entities/paper-activescale.md)
-- [9 篇技术地图](../../wiki/overview/perception-action-transfer-9-papers-technology-map.md)
+已读 v2 HTML 方法与实验，未重做训练。原 2026-09-17 判待发布；2026-10-10 官方页已有代码/权重/数据入口，见配套归档。任务数据目录不证明完整中训语料已释放。

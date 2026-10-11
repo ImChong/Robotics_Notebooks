@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, active-perception, cross-embodiment, sim2real, technology-map]
 status: complete
-updated: 2026-09-17
+updated: 2026-10-10
 related:
   - ../entities/paper-recmorph.md
   - ../entities/paper-activescale.md
@@ -16,6 +16,7 @@ related:
   - ../methods/vla.md
   - ../queries/cross-embodiment-transfer-strategy.md
 sources:
+  - ../../sources/sites/activescale.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md
   - ../../sources/raw/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md
 summary: "具身智能小站 2026-09-17 九篇盘点：跨形态控制、主动感知、实时 VLA、专才 RL、可变形/功能保持数据、跨手抓取、湿实验 agent 与物理视频 WM 四条阅读线。"
@@ -81,7 +82,7 @@ flowchart TB
 
 | # | 论文 | 开源（入库日） | 详情 |
 |---|------|----------------|------|
-| 02 | ActiveScale | **待发布** | [paper-activescale](../entities/paper-activescale.md) |
+| 02 | ActiveScale | **代码/权重已发布；任务数据目录可获取（2026-10-10 重查）** | [paper-activescale](../entities/paper-activescale.md) |
 | 03 | Real-Time EXPO-FT | **待发布** | [paper-real-time-expo-ft](../entities/paper-real-time-expo-ft.md) |
 | 04 | FIERCE | **部分开源** | [paper-fierce](../entities/paper-fierce.md) |
 

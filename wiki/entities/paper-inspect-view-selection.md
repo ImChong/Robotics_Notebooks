@@ -6,7 +6,7 @@ tags:
   - manipulation
   - vla
 status: complete
-updated: 2026-09-18
+updated: 2026-10-10
 arxiv: "2609.20615"
 code: https://github.com/Kratos-Wen/INSPECT
 related:
@@ -82,7 +82,7 @@ sequenceDiagram
 
 | 对照 | 差异读法 |
 |------|----------|
-| [ActiveScale](./paper-activescale.md) | 同为主动感知，**监督来源不同**：ActiveScale 在机器人自身数据上扩规模，INSPECT 把监督借自智能眼镜助手的问答/证据确认。前者瓶颈在采数据，后者瓶颈在两种任务分布是否真对齐 |
+| [ActiveScale](./paper-activescale.md) | 同为主动感知，**监督接口不同**：ActiveScale 用人类第一视角与机器人示范中训，再任务适配，联合学习相机与操作；INSPECT 借问答/证据确认监督选视角。前者不是仅机器人自身数据 |
 | [CoRef-GS](./paper-coref-gs.md) | 同批次里「视野不够」的另一解：CoRef-GS 合并多机器人已有视角，INSPECT 让单体主动去换。动作预算 vs 通信预算 |
 | **测试时看遍候选图像的选视角做法**（本文要避开的默认做法） | 同为选视角，差别在**推理时要不要先把候选都看一遍**：INSPECT 用 claim-indexed 监督把选择能力训进模型，测试时不看候选图像，省的是候选渲染/拍摄的那一轮开销 |
 | [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | 该页给感知栈分层；INSPECT 落在「视角选择」这一层，上游标定与分割质量不由它负责 |
