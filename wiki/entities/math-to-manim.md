@@ -3,7 +3,7 @@ type: entity
 project_id: math-to-manim
 project: https://github.com/HarleyCoops/Math-To-Manim
 code: https://github.com/HarleyCoops/Math-To-Manim
-tags: [software, agents, animation, mathematics, education, manim, open-source]
+tags: [software, agents, animation, mathematics, education, manim, open-source, independent-maintainer]
 status: complete
 updated: 2026-10-11
 related:
