@@ -101,6 +101,12 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] ingest | wheresryan22/anatomy — 收录把技术原理转成交互式等轴测机械插图的 Claude Skill
+
+- 归档官方项目页与 MIT 仓库，补充生成流程和几何审计方式。
+- 明确 SVG/HTML 解释图、WebGL 与 beta 3D 动作的能力边界；它不替代制造级 CAD 或机器人仿真模型。
+- 在文字生成 CAD 与 3D 网格工作台知识页增加交叉引用。
+
 ## [2026-10-11] ingest | LT-Mem 官方奖项与量化结果更新
 
 - 核对 LT-Mem 项目页、论文与 APRL 官方新闻/论文列表；项目页仍显示 finalist，实验室公告已更新为 IROS 2026 Best Paper Award Winner。
