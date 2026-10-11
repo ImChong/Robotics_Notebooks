@@ -147,7 +147,7 @@ sequenceDiagram
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 任务、数据集与路线谱系。
 - [Habitat-Sim](./habitat-sim.md) — VLN-CE 常见连续环境仿真基础。
 - [CrossTracer](./paper-crosstracer.md) — 通过空间航点支持跨本体导航的另一条路线。
-- [NaVILA](./paper-navila-legged-robot-vision-language-action-model.md) — 腿式机器人 VLA 导航。
+- [ABot-N1](./paper-abot-n1.md) — 慢快双系统的多任务导航基座。
 
 ## 参考来源
 
