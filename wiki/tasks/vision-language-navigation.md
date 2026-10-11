@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-10-06
+updated: 2026-10-11
 status: complete
 related:
+  - ../entities/paper-vtinstructor.md
   - ../entities/paper-abot-n1.md
   - ../entities/paper-roamflow.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -112,6 +113,8 @@ sources:
 | 监督 | 专家轨迹模仿、强化学习、或从网页视频重建的伪轨迹 + VLM 生成指令 |
 
 **分布差异**：仿真中最短路径、朝前行走居多；真实 Room-tour 视频存在停顿、回头与冗余旋转，直接用作监督需要 **轨迹清洗与动作离散化**（SceneVerse++ 论文中描述了面向 R2R 的三阶段管线）。
+
+- **连续轨迹生成指令：** [VTInstructor](../entities/paper-vtinstructor.md) 将第一人称 RGB 轨迹压缩为导航关键帧，再叠加路径、转向与终点提示，针对连续环境中路线结构不再由离散视点图显式提供的 speaker 问题；生成结果还经冻结 follower 检验下游效用。
 
 ### 空中 / UAV 子域
 
