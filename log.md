@@ -73,6 +73,12 @@ op: ingest
 - **状态核查：** 论文与补充材料公开；未找到作者公开代码/权重入口。G1 数据被描述为将发布，Atlas 数据因专有属性不公开。
 - **交叉链接：** `wiki/tasks/humanoid-locomotion.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
 
+# [2026-10-10] ingest | TEMPO 动态操作
+
+- **意图：** 归档 arXiv:2609.16864、项目页与官方源码，将这项以时间上下文提升动态操作 VLA 的工作接入知识图谱。
+- **开源结论：** 官方代码仓库提供数据预处理、微调和服务入口；README 仍将训练数据、检查点与 YAM 部署列为 TODO，论文发布的 TEMPO-Bench 下载入口尚未从 README 核实。
+- **关键节点：** 独立记录 TEMPO 动态操作论文实体，链接 VLA 与 Manipulation；明确与另一篇同名 TEMPO（arXiv:2608.07314）区分。
+
 ## [2026-10-10] ingest | sources/papers/activescale_arxiv_2609_18514.md — 复用ActiveScale节点，核查官方代码、六组权重及任务数据目录；补齐机制、消融和两张Mermaid图，纠正吞吐与遥操作边界
 
 ## [2026-10-10] ingest | 遗传算法与遗传编程一手资料及机器人应用
