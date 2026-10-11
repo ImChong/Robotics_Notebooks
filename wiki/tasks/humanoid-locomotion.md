@@ -4,6 +4,7 @@ tags: [humanoid, locomotion, whole-body-control]
 status: complete
 updated: 2026-10-10
 related:
+  - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cref.md
