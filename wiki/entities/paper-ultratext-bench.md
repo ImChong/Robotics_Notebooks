@@ -108,6 +108,7 @@ Q-Judger 可能存在读取和 rubric 偏差；人工评测参与者为 10 人�
 
 - [Kandinsky 6.0 Video](./paper-kandinsky-6-video.md) — 多模态生成模型
 - [扩散模型](../concepts/diffusion-model.md) — 图像生成基础
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 视觉文本生成评测可作①认知层/生成质量的参照，不直接衡量机器人任务成功率
 
 ## 参考来源
 
