@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: dreamtrue-action-faithful-robot-world-model
- tags: [paper, world-model, video-prediction, counterfactual-learning, reward-model, manipulation]
+tags: [paper, world-model, video-prediction, counterfactual-learning, reward-model, manipulation]
 status: complete
 updated: 2026-10-11
 arxiv: "2610.12468"
