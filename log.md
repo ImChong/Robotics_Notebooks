@@ -85,6 +85,12 @@ op: ingest
 - **关键知识节点：** VioLA 人形控制实体、DreamTrue 世界模型实体；补入 VLA、人形 locomotion、WAM、manipulation 的关联入口。
 - **日期：** 2026-10-11
 
+- **操作：** ingest（既有实体增量更新）
+- **意图：** 根据 NVIDIA Long-WAM 项目页新增的 RoboCasa365 agent 组合与真机结果更新来源归档和既有论文实体。
+- **更新：** 记录 GPT-6 Astra + Long-WAM 的 50-task RoboCasa365 结果，并补充 G1 移动杯抓取、YAM 长时任务报告；明确组合系统与 Long-WAM 单体结果的归属边界。
+- **去重：** Long-WAM 已有 canonical 节点，本次不新建实体。
+- **日期：** 2026-10-11
+
 ## [2026-10-11] structural | roadmap 巡检：将 10-09 以来新增的 18 个知识节点补入 9 条纵深路线（loco-manipulation / contact / RSI / WAM / eval / VLA / RL-loco / sim2real / real2sim）
 
 ## [2026-10-10] lint | 全量 wiki lint：修复 12 个陈旧页面、方法落地/论文元数据/三段式/结论/陈旧声明/评测枢纽回链 11 条信息型预警，lint 归零
