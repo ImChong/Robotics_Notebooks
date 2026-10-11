@@ -5,7 +5,7 @@
 // 这条线叫「反馈」：虚线加粗、光点从执行流向感知，四个盒子一起亮。
 (function () {
   var E = window.EP001, K = E.K;
-  var X0 = 150, X1 = 690;                              // 站位；走到门口
+  var X0 = 150, X1 = 672;                              // 站位；走到门口（停在门前，摄像头不碰门框）
   var TOE = [18, 388];                                 // 前脚尖（本地坐标）= 画面 (168, 388)，前倾支点
   var FB = [[700, 52], [700, 62], [115, 62], [115, 54]];   // 四步条反馈虚线（执行 → 感知）
   var STEP_U = 45 / 580, FOOT_U0 = 0.117;              // S3 的 6 个小脚印
@@ -16,7 +16,6 @@
   // 一个周期 ≈ 126px 时支撑脚净位移为 0（00-common.js 注释里的「/ 90」会让支撑脚每步往后滑约 18px）
   var STRIDE = 4 * 84 * Math.sin(22 * Math.PI / 180);
   // 小地图以右上角 (780, 70) 为心缩到 0.9：面板底边 196 → 183，机器人站直时头顶 ≈ 188.5，走到右半边不再顶住面板
-  var MAP_S = 0.9;
 
   function mix(c, p, base) {
     return p <= 0 ? base : p >= 1 ? c : 'color-mix(in srgb, ' + c + ' ' + (p * 100).toFixed(1) + '%, ' + base + ')';
@@ -51,14 +50,11 @@
     if (tau > T - RAMP) return D - 0.5 * ACC * (T - tau) * (T - tau);
     return 0.5 * VMAX * RAMP + VMAX * (tau - RAMP);
   }
-  // 绕到纸箱后面：X 300→330 缩到 0.9、上移 10px，330–500 保持，500→530 恢复
-  function depth(x) {
-    return x <= 300 || x >= 530 ? 0 : x < 330 ? K.ease((x - 300) / 30) : x <= 500 ? 1 : 1 - K.ease((x - 500) / 30);
-  }
-  // 步态相位 = ∫ dX / (STRIDE·缩放)：缩小时步子也小，脚不打滑。逐像素累加成表
+  // 从纸箱后面走过：机器人始终踩在地面上、大小不变，纸箱画在它前面挡住腿（以前缩小上移会让脚悬空，违反物理）
+  // 步态相位 = ∫ dX / STRIDE：脚不打滑。逐像素累加成表
   var PH = (function () {
     var a = [0];
-    for (var i = 1; i <= D; i++) a.push(a[i - 1] + 1 / (STRIDE * (1 - 0.1 * depth(X0 + i - 0.5))));
+    for (var i = 1; i <= D; i++) a.push(a[i - 1] + 1 / STRIDE);
     return a;
   })();
   function phase(d) { var i = Math.min(D - 1, Math.floor(d)), k = d - i; return PH[i] + (PH[i + 1] - PH[i]) * k; }
@@ -85,10 +81,7 @@
       var mapG = E.el('g', {}, s);
       var mm = E.miniMap(mapG);
       mm.setReveal(650);
-      E.scaleAt(mm.g, 780, 70, MAP_S);
-      // 缩小后字号补回来，成片里仍是 18px
-      [mm.title, mm.doorLabel].forEach(function (n) { n.setAttribute('font-size', (18 / MAP_S).toFixed(1)); });
-      mm.title.setAttribute('y', 94);   // 字大了一号，基线下移 2px，上下离面板边和网格一样远
+      // 地图的位置和缩放由 E.miniMap 统一定（放在门左边，右缘 700）
       var prints = null;   // 脚印要沿路线量长度：draw 里挂到页面后再建
 
       var bot = E.robot(s, X0);
@@ -114,9 +107,9 @@
       E.txt(okG, 262, 190, '扶正了', 20, E.GOOD);
       var okCheck = E.check(okG, 298, 176, 18, E.GOOD);
       var arrG = E.el('g', {}, s);
-      // 「到了 ✓」整体居中在门上（比「门口」略偏右 4px，给停在门前的机器人的头让一点）
-      E.txt(arrG, 735, 230, '到了', 20, E.ACC);
-      var arrCheck = E.check(arrG, 759, 216, 16, E.ACC, 3);
+      // 「到了 ✓」接替门上方的「门口」（门顶 y 148）
+      E.txt(arrG, 735, 138, '到了', 20, E.ACC);
+      var arrCheck = E.check(arrG, 759, 124, 16, E.ACC, 3);
       var fbWord = E.txt(s, 408, 90, '反馈', 24, E.INK, 'middle', 700);
 
       // 四步条盒子：k = 0 为「已讲过」，k = 1 为「当前步」样式；so 为描边不透明度
@@ -171,10 +164,10 @@
           E.glow(fbDot, E.INK, true);
           E.pop(fbWord, 408, 82, fade(st, 22.8, 0.35), 0.8);
 
-          /* ── 机器人：9.5 绕前脚尖前倾 10°（0.6 s），13.2–14.0 回正；16.6–19.4 走到 X=690 ── */
-          var d = walked(st), X = X0 + d, dz = depth(X);
+          /* ── 机器人：9.5 绕前脚尖前倾 10°（0.6 s），13.2–14.0 回正；16.6–19.4 走到 X=672 ── */
+          var d = walked(st), X = X0 + d;
           var lean = 10 * fade(st, 9.5, 0.6) * (1 - fade(st, 13.2, 0.8));
-          bot.place({ x: X, rot: lean, pivot: TOE, scale: 1 - 0.1 * dz, dy: -10 * dz });
+          bot.place({ x: X, rot: lean, pivot: TOE, scale: 1, dy: 0 });
           var w = Math.min(fade(st, WALK0, 0.25), 1 - fade(st, WALK1 - 0.25, 0.25));
           if (w > 0) {
             var g = K.poseWalk(phase(d));
@@ -208,7 +201,7 @@
             prints = [];
             for (var j = 0; j < 6; j++) prints.push(footprint(mm, FOOT_U0 + j * STEP_U, j % 2 ? -1 : 1, j ? 4.5 : 6, j ? E.VIOLET : E.WARN));
           }
-          var mp = mm.dot((X - 110) / 580);
+          var mp = mm.dot((X - 110) / (X1 - 110));   // 走到门前时白点正好到地图上的门
           // 迷雾不退回：开场已散到 650，白点 + 90 超过 650 后才跟着往右散
           mm.setReveal(Math.max(650, Math.min(768, mp[0] + 90)));
 

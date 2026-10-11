@@ -12,8 +12,8 @@
   // 规格是 M190,180 C232,180 248,124 300,124 S348,160 356,180：按它走，0.8 倍的机身（半径 37）+ 两侧轮子（伸到 42）
   // 上坡时右轮蹭到拖鞋左上角、下坡起机身压住拖鞋右半（终点 (356,180) 时压进 13px）——拖鞋右端 x≈330 到面板右缘 400
   // 只有 70px，放不下直径 77 的机身，回不到 y=180。改为：早点抬头、峰顶抬到 y=108、停在拖鞋右上方 (350,128)，
-  // 全程离拖鞋 ≥ 4px，机身不出面板。
-  var PLAN = [[[190, 180], [214, 180], [248, 108], [300, 108]], [[300, 108], [352, 108], [342, 112], [350, 128]]];
+  // 全程离拖鞋 ≥ 4px，机身不出面板。第二段的控制点让航向一路往右拐到 60°（不在终点前回勾）。
+  var PLAN = [[[190, 180], [214, 180], [248, 108], [300, 108]], [[300, 108], [326, 108], [342, 114.1], [350, 128]]];
   var MOVE0 = 9.6, MOVE1 = 11.4;
   var ROW_Y = [296, 326, 356, 386], ROW_AT = [3.5, 6.1, 7.0, 9.6];
   var ROWS = ['感知：看到拖鞋', '规划：决定绕开', '控制：算两个轮子各转多快', '执行：轮子转起来'];
@@ -21,7 +21,16 @@
   var CARD_NAME = ['机械臂', '自动驾驶汽车', '人形机器人'];
   var DOT_X = [548, 598, 648, 698];
   var CYC = 15.6, SLOT = 0.5;                             // 轮流点亮：每个点 0.5 s
-  var WHEEL_L = 36, WHEEL_R = 80;                         // 左右轮速度条长度（也是条纹滚动的速度比）
+  // 行驶进度：0.25 s 加速、匀速、0.25 s 减速（梯形速度），车身和轮子同起同停
+  var RAMP = 0.25 / (MOVE1 - MOVE0), VMAX = 1 / (1 - RAMP);
+  function prog(s) {
+    if (s <= 0) return 0;
+    if (s >= 1) return 1;
+    if (s < RAMP) return VMAX * s * s / (2 * RAMP);
+    if (s > 1 - RAMP) return 1 - VMAX * (1 - s) * (1 - s) / (2 * RAMP);
+    return VMAX * (s - RAMP / 2);
+  }
+  function speed(s) { return s <= 0 || s >= 1 ? 0 : Math.min(1, s / RAMP, (1 - s) / RAMP); }
 
   function mix(c, p, base) {
     return p <= 0 ? base : p >= 1 ? c : 'color-mix(in srgb, ' + c + ' ' + (p * 100).toFixed(1) + '%, ' + base + ')';
@@ -76,7 +85,7 @@
   function card(s, i) {
     var y = CARD_Y[i], g = E.el('g', {}, s);
     K.paint(E.el('rect', { x: 420, y: y, width: 360, height: 112, rx: 12, 'stroke-width': 2 }, g), E.S1, E.BORDER);
-    var icon = i === 0 ? E.arm(g, 470, y + 100, 0.48) : i === 1 ? E.car(g, 472, y + 92, 0.5) : E.humanoid(g, 470, y + 102, 0.72);
+    var icon = i === 0 ? E.arm(g, 470, y + 100, 0.48) : i === 1 ? E.car(g, 472, y + 92, 0.55) : E.humanoid(g, 470, y + 102, 0.62);
     E.txt(g, 530, y + 44, CARD_NAME[i], 22, E.INK, 'start', 700);
     // 回头虚线带箭头（与四步条的反馈线一样），看得出「执行完又回到感知」；末端切线方向 (548−623, 94−108)
     E.curveArrow(g, 'M 698 ' + (y + 94) + ' Q 623 ' + (y + 108) + ' 548 ' + (y + 94), E.MUT, 2, Math.atan2(-14, -75) / R, { dash: '5 4', head: 8 });
@@ -151,7 +160,6 @@
       /* ── 右侧三张小卡 ── */
       var cards = [0, 1, 2].map(function (i) { return card(s, i); });
 
-      var wheelOff = [0, 0], wheelLen = [WHEEL_L, WHEEL_R], lastT = null;
       var cyc0 = null;                                    // st 越过 15.6 那一刻的真实时间 t（轮流点亮从「感知」开始）
 
       return {
@@ -181,15 +189,16 @@
           E.drawOn(plan, fade(st, 6.1, 0.9));
 
           /* 9.6–11.4 执行：沿路线开过去，车身随切线转 */
-          var uu = K.ease(K.seg(st, MOVE0, MOVE1)), m = track(uu);
+          var sm = K.seg(st, MOVE0, MOVE1), uu = prog(sm), m = track(uu);
           /* 轮速跟着实际转弯方向走（差速转向）：往左拐（航向角减小）右轮快，往右拐左轮快，直行一样快。
-             开动前显示规划好的第一段（先往左绕：左轮慢右轮快）；停下后保持最后的值 */
-          var moving = st > MOVE0 && st < MOVE1;
-          if (moving) {
-            var dAng = track(Math.min(1, uu + 0.01)).ang - m.ang;
-            var k = Math.max(-1, Math.min(1, dAng / 1.0));
-            wheelLen = [58 + 22 * k, 58 - 22 * k];
-          } else if (st <= MOVE0) wheelLen = [WHEEL_L, WHEEL_R];
+             航向变化取前后各 3% 路程，免得一两个取样点的抖动把条推满。开动前是第一段的命令（先直行：一样快）；
+             减速时速度条跟着车速一起降到 0，车停下那一刻条也是 0 */
+          function lens(u) {
+            var k = Math.max(-1, Math.min(1, (track(Math.min(1, u + 0.03)).ang - track(Math.max(0, u - 0.03)).ang) / 20));
+            return [58 + 22 * k, 58 - 22 * k];
+          }
+          var wheelLen = st <= MOVE0 ? lens(0) : st >= MOVE1 ? [0, 0]
+            : lens(uu).map(function (v) { return v * (sm > 0.5 ? speed(sm) : 1); });
 
           /* 7.0 控制：左右轮速度条长出来 */
           var pb = fade(st, 7.0, 0.5);
@@ -199,19 +208,20 @@
           rise(lblL, fade(st, 7.0, 0.3)); rise(lblR, fade(st, 7.0, 0.3));
 
           bot.setAttribute('transform', 'translate(' + m.x.toFixed(2) + ' ' + m.y.toFixed(2) + ') rotate(' + m.ang.toFixed(2) + ')');
-          // 行驶中轮子条纹按各自轮速累加滚动（与速度条一致）；停下后条纹停在最后的位置
-          if (moving && lastT !== null && t > lastT) {
-            wheelOff = [wheelOff[0] + (t - lastT) * 60 * wheelLen[0] / 80, wheelOff[1] + (t - lastT) * 60 * wheelLen[1] / 80];
+          // 轮子条纹 = 各轮实际转过的量：轮速 × 车速从开动积到现在（只由 st 决定）；车停下条纹就停
+          var wheelOff = [0, 0], DT = 1 / 60;
+          for (var q = MOVE0 + DT / 2; q < Math.min(st, MOVE1); q += DT) {
+            var sq = K.seg(q, MOVE0, MOVE1), lq = lens(prog(sq)), vq = speed(sq) * DT * 0.75;
+            wheelOff[0] += lq[0] * vq; wheelOff[1] += lq[1] * vq;
           }
-          lastT = moving ? t : null;
           placeStripes(wheels[0], wheelOff[0]);
           placeStripes(wheels[1], wheelOff[1]);
 
           /* 右侧小卡按念到的名字弹出；图标的循环动作用 t */
           cards.forEach(function (c, i) { E.pop(c.g, c.cx, c.cy, fade(st, CARD_AT[i], 0.4), 0.9); });
           cards[0].icon.set(20 + 8 * Math.sin(2 * Math.PI * t / 2.4), 60);
-          cards[1].icon.spin(t);
-          cards[2].icon.walk((t / 1.1) % 1);
+          cards[1].icon.spin(0.125);   // 车停在卡片里：轮子不转
+          cards[2].icon.idle(t);       // 站着轻晃，不原地迈步
 
           /* 15.6 起：三张卡的四个点 + 左面板四行标签一起轮流点亮（每个 0.5 s，按 t） */
           if (st < CYC) cyc0 = null; else if (cyc0 === null) cyc0 = t - (st - CYC);

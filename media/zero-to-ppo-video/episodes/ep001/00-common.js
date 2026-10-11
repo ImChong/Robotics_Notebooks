@@ -155,16 +155,17 @@
     };
   };
 
-  /* ── 客厅：地面 + 门 + 纸箱。纸箱单独一组（box），需要遮住机器人时把它 appendChild 到最后 ── */
+  /* ── 客厅：地面 + 门（顶 y 148、中心 (741,268)、标签 (741,138)）+ 纸箱。纸箱单独一组（box），需要遮住机器人时把它 appendChild 到最后 ── */
   E.room = function (parent) {
     var back = el('g', {}, parent);
     var floor = el('line', { x1: 20, y1: 388, x2: 780, y2: 388, 'stroke-width': 3 }, back);
     K.paint(floor, null, E.BORDER);
     for (var x = 40; x <= 760; x += 60) K.paint(el('line', { x1: x, y1: 390, x2: x, y2: 398, 'stroke-width': 2 }, back), null, E.GRID);
-    var door = el('rect', { x: 712, y: 240, width: 58, height: 148, rx: 4, 'stroke-width': 2.5 }, back);
+    // 门高 240，约为机器人身高（≈ 199）的 1.2 倍：1.7 m 的机器人配 2 m 的门，比例才对
+    var door = el('rect', { x: 712, y: 148, width: 58, height: 240, rx: 4, 'stroke-width': 2.5 }, back);
     K.paint(door, E.S2, E.INK2);
-    var knob = K.paint(el('circle', { cx: 760, cy: 318, r: 4 }, back), E.INK2);
-    var doorLabel = txt(back, 741, 230, '门口', 20, E.INK2);
+    var knob = K.paint(el('circle', { cx: 760, cy: 272, r: 4 }, back), E.INK2);
+    var doorLabel = txt(back, 741, 138, '门口', 20, E.INK2);
     var boxG = el('g', {}, parent);
     var box = el('rect', { x: 380, y: 342, width: 66, height: 46, rx: 3, 'stroke-width': 3 }, boxG);
     K.paint(box, E.S2, E.MUT);
@@ -244,6 +245,7 @@
   /* ── 俯视小地图（S3、S6）：面板 + 网格 + 迷雾 + 机器人白点 + 纸箱 + 门 + 绕行路线 + 脚印。
      setReveal(x)：迷雾只盖 x 右边；at(u)：路线上比例 u 处的点（u = (侧视 X − 110) / 580）；
      dot(u)：白点放到路线上 u；路线 route 是 path，可配合 E.drawOn 画出。 ── */
+  E.MAP_K = 320 / 350;   // 小地图缩放（见 E.miniMap 末尾）
   E.miniMap = function (parent) {
     var g = el('g', {}, parent);
     var panel = el('rect', { x: 430, y: 70, width: 350, height: 126, rx: 12, 'stroke-width': 2 }, g);
@@ -269,6 +271,10 @@
       var p = route.getPointAtLength(clamp(u, 0, 1) * route.__L);
       return [p.x, p.y];
     }
+    // 整张地图放在门的左边：面板 (430,70,350,126) 映射到 (380,70,320,115)，右缘 700，不压门（门在 712–770、顶 148）；
+    // 机器人走到地图下面时头顶 ≈ 188，面板底 185。里面的字按缩放补大，成片里仍不小于 18
+    g.setAttribute('transform', 'translate(380 70) scale(' + E.MAP_K + ') translate(-430 -70)');
+    [title, doorLabel].forEach(function (n) { n.setAttribute('font-size', 20); });
     return {
       g: g, panel: panel, title: title, grid: grid, box: box, fog: fog, door: door, doorLabel: doorLabel,
       route: route, prints: prints, dotEl: dotEl, at: at,
@@ -321,7 +327,7 @@
     set(25, 60);
     return { g: g, set: set };
   };
-  // 自动驾驶汽车（侧视）：车身 + 车窗 + 两个轮子 + 车顶传感器；spin(t) 转动轮辐（t 秒转 t 圈）
+  // 自动驾驶汽车（侧视）：车身 + 车窗 + 两个轮子 + 车顶传感器；spin(圈数) 转动轮辐——只在车真的往前走时按走过的距离转，停着的车别转轮子
   E.car = function (parent, x, y, s, color) {
     var g = holder(parent, x, y, s), c = color || E.INK2;
     K.paint(el('path', { d: 'M -78 -16 L -78 -40 L -48 -44 L -26 -70 L 30 -70 L 54 -44 L 78 -38 L 78 -16 Z', 'stroke-width': 4, 'stroke-linejoin': 'round' }, g), E.S2, c);
@@ -344,8 +350,13 @@
     var g = holder(parent, x, y, s);
     var f = K.stickFigure(color || E.INK2, 6, false, 0.55);
     g.appendChild(f.el);
-    function stand() { f.pose(0, -48, { lean: 0, armA: [8, 4], armB: [-8, -4], legA: [4, 0], legB: [-4, 0] }); }
+    function stand() { f.pose(0, -48, { lean: 0, armA: [14, 8], armB: [-14, -8], legA: [8, 2], legB: [-8, -2] }); }   // 双脚略分开，不然像一根杆
     stand();
-    return { g: g, walk: function (ph) { f.pose(0, -48, K.poseWalk(ph)); }, stand: stand };
+    // idle(t)：站着轻轻晃（重心微移、手臂小幅摆）。图标不往前走，就不要用 walk，原地迈步看起来像在跑步机上
+    function idle(t) {
+      var w = Math.sin(2 * Math.PI * t / 3.2);
+      f.pose(0, -48, { lean: 1.5 * w, armA: [14 + 4 * w, 8 + 6 * w], armB: [-14 + 4 * w, -8 + 6 * w], legA: [8, 2], legB: [-8, -2] });
+    }
+    return { g: g, walk: function (ph) { f.pose(0, -48, K.poseWalk(ph)); }, stand: stand, idle: idle };
   };
 })();

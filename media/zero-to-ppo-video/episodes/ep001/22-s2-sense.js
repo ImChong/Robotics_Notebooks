@@ -64,17 +64,25 @@
       var room = E.room(s);
       var doorFx = E.el('g', {}, s);
       s.insertBefore(doorFx, room.boxG);
-      var pulse = K.paint(E.el('circle', { cx: 741, cy: 314, r: 30, fill: 'none', 'stroke-width': 3 }, doorFx), null, E.ACC);
+      var pulse = K.paint(E.el('circle', { cx: 741, cy: 268, r: 30, fill: 'none', 'stroke-width': 3 }, doorFx), null, E.ACC);
       var pole = line(doorFx, E.ACC, 3);
-      var flag = K.paint(E.el('path', { d: 'M 770 212 L 790 219 L 770 226 Z' }, doorFx), E.ACC);
+      var flag = K.paint(E.el('path', { d: 'M 770 120 L 790 127 L 770 134 Z' }, doorFx), E.ACC);
       var boxName = halo(E.txt(s, 413, 412, '纸箱', 18, E.INK2));
 
-      /* ── 视线锥：外层跟着身子绕脚底晃，内层绕摄像头 ±3° 摆；裁在地面以上，摆动时不钻到地下 ── */
-      var clip = E.el('clipPath', { id: 'ep001-s2-cone-clip' }, E.el('defs', {}, s));
+      /* ── 视线锥：从摄像头 (127,203) 发出的扇形（向下 12°–42°，半径 360），越远越淡，远端是圆弧不是硬切边；
+         摄像头装在头上，锥只跟着身子绕脚底晃，自己不摆。裁在地面以上 ── */
+      var defs = E.el('defs', {}, s);
+      var clip = E.el('clipPath', { id: 'ep001-s2-cone-clip' }, defs);
       E.el('rect', { x: 0, y: 0, width: 800, height: 389 }, clip);
+      var grad = E.el('radialGradient', { id: 'ep001-s2-cone-grad', gradientUnits: 'userSpaceOnUse', cx: 127, cy: 203, r: 360 }, defs);
+      [[0, 0.34], [0.55, 0.16], [1, 0]].forEach(function (g) {
+        var st = E.el('stop', { offset: g[0] }, grad); st.style.stopColor = 'var(--demo-good)'; st.style.stopOpacity = g[1];
+      });
       var coneClip = E.el('g', { 'clip-path': 'url(#ep001-s2-cone-clip)' }, s);
       var coneOuter = E.el('g', {}, coneClip), coneG = E.el('g', {}, coneOuter);
-      var cone = K.paint(E.el('polygon', { points: '127,203 470,300 470,392' }, coneG), E.GOOD);
+      var R0 = 360, A0 = 12 * Math.PI / 180, A1 = 42 * Math.PI / 180;
+      var cone = E.el('path', { d: 'M127,203 L' + (127 + R0 * Math.cos(A0)).toFixed(1) + ',' + (203 + R0 * Math.sin(A0)).toFixed(1) +
+        ' A' + R0 + ',' + R0 + ' 0 0 1 ' + (127 + R0 * Math.cos(A1)).toFixed(1) + ',' + (203 + R0 * Math.sin(A1)).toFixed(1) + ' Z', fill: 'url(#ep001-s2-cone-grad)' }, coneG);
       var seen = E.txt(s, 413, 330, '前方：纸箱', 20, E.GOOD);
 
       /* ── 机器人；角度弧、IMU 高亮、IMU 波纹挂在它的身体组里（本地坐标，髋在 (0,302)） ── */
@@ -145,9 +153,9 @@
 
           /* 1.9：门右上插旗；门中心脉冲圈按 t 每 1.5 s 一次，到 7.1 */
           var pp = fade(st, 1.9, 0.25);
-          put(pole, [770, 240], [770, 240 - 28 * pp]);
+          put(pole, [770, 148], [770, 148 - 28 * pp]);
           E.op(pole, pp > 0 ? 1 : 0);
-          E.pop(flag, 770, 219, fade(st, 2.1, 0.25), 0.3);
+          E.pop(flag, 770, 127, fade(st, 2.1, 0.25), 0.3);
           var env = E.win(st, 1.9, 6.8, 0.3), ph = ((t / 1.5) % 1 + 1) % 1;
           pulse.setAttribute('r', (30 + 30 * ph).toFixed(2));
           E.op(pulse, env * (1 - ph));
@@ -163,15 +171,15 @@
           var su = K.seg(st, 15.2, 16.8), rot = su > 0 && su < 1 ? -3 * Math.sin(TAU * su) : 0;
           robot.place({ rot: rot });
 
-          /* 11.2：摄像头变 good，视线锥从摄像头长出来，按 t 摆 ±3°；25.7 降到 0.08 */
+          /* 11.2：摄像头变 good，视线锥从摄像头展开；25.7 变淡 */
           var pc = fade(st, 11.2, 0.4), dim = fade(st, 25.7, 0.4);
           var cp = fade(st, 11.2, 0.25);
           robot.cam.style.fill = mix(E.GOOD, cp, E.INK2);
           E.glow(robot.cam, E.GOOD, cp > 0.5);
           coneOuter.setAttribute('transform', rot ? 'rotate(' + rot.toFixed(3) + ' ' + FOOT[0] + ' ' + FOOT[1] + ')' : '');
-          var sw = 3 * Math.sin(TAU * t / 2.4), cs = 0.3 + 0.7 * pc;
-          coneG.setAttribute('transform', 'rotate(' + sw.toFixed(3) + ' 127 203) translate(127 203) scale(' + cs.toFixed(4) + ') translate(-127 -203)');
-          E.op(cone, pc * (0.15 - 0.07 * dim));
+          var cs = 0.3 + 0.7 * pc;   // 打开时从摄像头展开一次，之后不动
+          coneG.setAttribute('transform', 'translate(127 203) scale(' + cs.toFixed(4) + ') translate(-127 -203)');
+          E.op(cone, pc * (1 - 0.55 * dim));
 
           /* 13.2：箱上「前方：纸箱」 */
           var sp = fade(st, 13.2, 0.35);

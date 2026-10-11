@@ -4,23 +4,22 @@
 (function () {
   var E = window.EP001, K = E.K;
 
-  /* 手的路线 P：起点（手下垂）、终点（把手）同规格，控制点从规格的 C250,120 340,110 压低到 C250,200 345,135。
-     规格那条线中段离肩太近（u≈0.3 时只有 48），肘朝上的解会让上臂甩过头顶再落回（上臂角 12°→165°→99°，
-     u=0.5 时肘在 (253,83)，比头顶还高，整条上臂从脸上扫过）。压低后：手在花瓶上方 y≈183–190 绕过去，
-     上臂角 12°→136°→99°，肘最高 (289,104)，离头 ≥ 32、离花瓶 ≥ 10、手指离花瓶 / 桌面 ≥ 6，不穿模。
-     校对点：u=0 手 (244,333) 肘 (248,248)；u=0.5 手 (298,195) 肘 (295,110)；u=1 手 (358,224) 肘 (314,151)。 */
-  var P_D = 'M244,333 C250,200 345,135 358,224';
+  /* 人体比例（身高 H = 292：头顶 96 到地面 388）：肩高约 0.81H（y 152），胯高约 0.5H（y 243），
+     上臂 60、前臂 56、手指 12，肩到指尖约 0.44H。台面按厨房台面高（约 0.5H，台面 y 241），杯子放在手够得着的地方。
+     手的路线 P：从自然下垂（236,266）抬过矮花瓶（顶 y 212）上方，落到杯子把手（314,208）。
+     解肘用「肘朝下」（正常的屈肘）：全程前臂相对上臂只往上折、不反关节；前臂和手离花瓶顶最近约 5px，不穿模。
+     校对点：u=0 手 (236,266) 肘 (223,212)；u=0.6 手 (279,190) 肘 (228,212)；u=1 手 (314,208) 肘 (258,205)。 */
+  var P_D = 'M236,266 C246,188 290,170 314,208';
   function bez(u) {
     var a = 1 - u;
-    return [a * a * a * 244 + 3 * a * a * u * 250 + 3 * a * u * u * 345 + u * u * u * 358,
-      a * a * a * 333 + 3 * a * a * u * 200 + 3 * a * u * u * 135 + u * u * u * 224];
+    return [a * a * a * 236 + 3 * a * a * u * 246 + 3 * a * u * u * 290 + u * u * u * 314,
+      a * a * a * 266 + 3 * a * a * u * 188 + 3 * a * u * u * 170 + u * u * u * 208];
   }
-  /* 两连杆（上臂、前臂各 85）、肘朝上：肩 S = (230,165)，给手 H 解肘 */
-  var SH = [230, 165], LIMB = 85;
+  var SH = [230, 152], UPPER = 60, FORE = 56;
   function elbowOf(H) {
-    var dx = H[0] - SH[0], dy = H[1] - SH[1], d = Math.hypot(dx, dy);
-    var at = Math.atan2(dx, dy), al = Math.acos(Math.min(1, d / (2 * LIMB)));
-    return [SH[0] + LIMB * Math.sin(at + al), SH[1] + LIMB * Math.cos(at + al)];
+    var dx = H[0] - SH[0], dy = H[1] - SH[1], d = Math.min(Math.hypot(dx, dy), UPPER + FORE - 1e-6);
+    var at = Math.atan2(dx, dy), al = Math.acos(Math.max(-1, Math.min(1, (UPPER * UPPER + d * d - FORE * FORE) / (2 * UPPER * d))));
+    return [SH[0] + UPPER * Math.sin(at - al), SH[1] + UPPER * Math.cos(at - al)];
   }
   function line(parent, x1, y1, x2, y2, color, w) {
     var l = E.el('line', { x1: x1, y1: y1, x2: x2, y2: y2, 'stroke-width': w, 'stroke-linecap': 'round' }, parent);
@@ -53,20 +52,21 @@
 
       /* ── 布景 ── */
       line(world, 40, 388, 760, 388, E.BORDER, 3);
-      line(world, 305, 260, 305, 388, E.BORDER, 3);
-      line(world, 605, 260, 605, 388, E.BORDER, 3);
-      K.paint(E.el('rect', { x: 290, y: 250, width: 330, height: 10, 'stroke-width': 2 }, world), E.S2, E.BORDER);
-      K.paint(E.el('rect', { x: 315, y: 208, width: 22, height: 42, rx: 8, 'stroke-width': 2.5 }, world), E.S2, E.INK2);
+      line(world, 277, 251, 277, 388, E.BORDER, 3);
+      line(world, 585, 251, 585, 388, E.BORDER, 3);
+      K.paint(E.el('rect', { x: 262, y: 241, width: 338, height: 10, 'stroke-width': 2 }, world), E.S2, E.BORDER);
+      // 矮花瓶：瓶身 + 细瓶口，顶在 y 212
+      K.paint(E.el('path', { d: 'M276,212 L286,212 L286,218 C296,222 296,240 290,241 L272,241 C266,240 266,222 276,218 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, world), E.S2, E.INK2);
       var cupG = E.el('g', {}, world);
-      K.paint(E.el('rect', { x: 366, y: 205, width: 30, height: 45, rx: 4, 'stroke-width': 2.5 }, cupG), E.S2, E.INK2);
-      K.paint(E.el('path', { d: 'M366,214 C352,214 352,236 366,236', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, cupG), null, E.INK2);
+      K.paint(E.el('rect', { x: 322, y: 193, width: 30, height: 48, rx: 4, 'stroke-width': 2.5 }, cupG), E.S2, E.INK2);
+      K.paint(E.el('path', { d: 'M322,198 C309,198 309,220 322,220', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, cupG), null, E.INK2);
 
       /* ── ② 紫色路线 P（压在识别框和人之下：标签描了底色，手臂从上面伸过去） ── */
-      var route = E.curveArrow(world, P_D, E.VIOLET, 3, Math.atan2(224 - 135, 358 - 345) * 180 / Math.PI, { dash: '8 6', head: 13 });
+      var route = E.curveArrow(world, P_D, E.VIOLET, 3, Math.atan2(208 - 170, 314 - 290) * 180 / Math.PI, { dash: '8 6', head: 13 });
 
       /* ── ① 视线 + 识别框（压在布景上、人之下） ── */
       var sightG = E.el('g', {}, world);
-      var sight = [[381, 226], [326, 226]].map(function (p) {
+      var sight = [[337, 214], [281, 226]].map(function (p) {
         var l = E.el('path', { d: 'M243,114 L' + p[0] + ',' + p[1], fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round', 'stroke-dasharray': '6 5' }, sightG);
         K.paint(l, null, E.GOOD);
         return l;
@@ -79,18 +79,20 @@
         halo(label);
         return { g: g, label: label };
       }
-      var cupBox = idBox(346, 196, 58, 62, 375, 188, '杯子');
+      // 标签放在不挡路线的地方：杯子标在右边，花瓶标在台面下方
+      var cupBox = idBox(304, 185, 54, 62, 388, 222, '杯子');
+      cupBox.label.setAttribute('text-anchor', 'start');
       // 「花瓶」从规格的 (326,192) 抬到 (328,164)：路线 P 在 x≈306–348 处 y≈183–190 从花瓶上方经过，原位置正好被它穿过；
       // 再往左就压到看杯子的那条视线
-      var vaseBox = idBox(309, 200, 34, 52, 328, 164, '花瓶');
+      var vaseBox = idBox(264, 205, 34, 40, 304, 278, '花瓶');
 
       /* ── 人：侧身朝右 ── */
-      var farArm = E.el('path', { d: 'M230,165 L224,245 L222,320', fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, world);
+      var farArm = E.el('path', { d: 'M230,152 L226,212 L224,266', fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, world);
       K.paint(farArm, null, E.INK); E.op(farArm, 0.5);
-      line(world, 230, 282, 212, 388, E.INK, 5);
-      line(world, 230, 282, 248, 388, E.INK, 5);
-      line(world, 230, 142, 230, 282, E.INK, 5);
-      K.paint(E.el('circle', { cx: 230, cy: 118, r: 24, 'stroke-width': 4 }, world), E.S2, E.INK);
+      line(world, 230, 243, 212, 388, E.INK, 5);
+      line(world, 230, 243, 248, 388, E.INK, 5);
+      line(world, 230, 140, 230, 243, E.INK, 5);
+      K.paint(E.el('circle', { cx: 230, cy: 118, r: 22, 'stroke-width': 4 }, world), E.S2, E.INK);
       var eye = K.paint(E.el('circle', { cx: 241, cy: 114, r: 3.5 }, world), E.INK);
       var armG = E.el('g', {}, world);
       var upper = line(armG, 0, 0, 0, 0, E.INK, 6), fore = line(armG, 0, 0, 0, 0, E.INK, 6);
@@ -118,8 +120,8 @@
       var rings = [0, 1, 2].map(function () { return K.paint(E.el('circle', { r: 9, fill: 'none', 'stroke-width': 3 }, world), null, E.ACC); });
 
       /* ── 再看一眼：杯子 → 眼睛 ── */
-      var back = E.curveArrow(world, 'M381,198 C385,100 300,70 254,108', E.INK, 2.5, Math.atan2(108 - 70, 254 - 300) * 180 / Math.PI, { dash: '6 5', head: 11 });
-      var backLabel = E.txt(world, 450, 128, '又看到新位置', 18, E.INK);
+      var back = E.curveArrow(world, 'M337,182 C345,110 292,82 252,106', E.INK, 2.5, Math.atan2(106 - 82, 252 - 292) * 180 / Math.PI, { dash: '6 5', head: 11 });
+      var backLabel = E.txt(world, 430, 128, '又看到新位置', 18, E.INK);
       halo(backLabel);
 
       /* ── 起名字：四个盒子 + 箭头 + 反馈虚线 ── */
@@ -148,7 +150,7 @@
           H = [H[0], H[1] - lift];
           var El = elbowOf(H);
           put(upper, SH, El); put(fore, El, H);
-          var f = [(H[0] - El[0]) / LIMB, (H[1] - El[1]) / LIMB], n = [-f[1], f[0]];
+          var f = [(H[0] - El[0]) / FORE, (H[1] - El[1]) / FORE], n = [-f[1], f[0]];
           var gap = 7 - 6.2 * fade(st, 20.4, 0.2);
           [-1, 1].forEach(function (k, i) {
             put(fingers[i], [H[0] + n[0] * 3 * k, H[1] + n[1] * 3 * k], [H[0] + f[0] * 12 + n[0] * gap * k, H[1] + f[1] * 12 + n[1] * gap * k]);
@@ -167,9 +169,9 @@
           E.drawOn(sight[0], K.seg(st, 3.0, 3.4));
           E.drawOn(sight[1], K.seg(st, 3.4, 3.8));
           E.op(sightG, (1 - 0.7 * fade(st, 7.4, 0.4)) * (1 - annoOut));
-          E.pop(cupBox.g, 375, 222, fade(st, 4.5, 0.3), 0.9);
+          E.pop(cupBox.g, 331, 216, fade(st, 4.5, 0.3), 0.9);
           E.op(cupBox.g, fade(st, 4.5, 0.3) * annoDim * (1 - annoOut));
-          E.pop(vaseBox.g, 326, 222, fade(st, 6.9, 0.3), 0.9);
+          E.pop(vaseBox.g, 281, 225, fade(st, 6.9, 0.3), 0.9);
           E.op(vaseBox.g, fade(st, 6.9, 0.3) * annoDim * (1 - annoOut));
           // 18.9 手开始伸：两个名字先淡掉（框留着到 20.6），免得前臂从「花瓶」两个字上扫过
           var labelOut = 1 - fade(st, 18.9, 0.3);

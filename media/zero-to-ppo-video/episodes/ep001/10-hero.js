@@ -24,8 +24,8 @@
     var bots = [
       { x: 160, at: 0.1, name: '扫地机', c: [160, 100], make: function (g) { return E.vacuum(g, 160, 100, 0.8); } },
       { x: 320, at: 0.7, name: '机械臂', c: [335, 117], make: function (g) { return E.arm(g, 320, 150, 0.7); } },
-      { x: 480, at: 1.3, name: '自动驾驶汽车', c: [480, 120], make: function (g) { return E.car(g, 480, 150, 0.7); } },
-      { x: 640, at: 2.15, name: '人形机器人', c: [640, 96], make: function (g) { return E.humanoid(g, 640, 150, 0.95); } }
+      { x: 480, at: 1.3, name: '自动驾驶汽车', c: [480, 120], make: function (g) { return E.car(g, 480, 150, 0.8); } },
+      { x: 640, at: 2.15, name: '人形机器人', c: [640, 104], make: function (g) { return E.humanoid(g, 640, 150, 0.8); } }
     ];
     bots.forEach(function (b) {
       b.g = E.el('g', {}, s);
@@ -82,8 +82,8 @@
         var dx = still ? 0 : 12 * Math.sin(TAU * rt / 2);
         vac.g.setAttribute('transform', 'translate(' + (160 + dx).toFixed(2) + ' 100) scale(0.8)');
         arm.set(25 + (still ? 0 : 10 * Math.sin(TAU * rt / 2.4)), 60);
-        car.spin(still ? 0.125 : rt);
-        hum.walk(still ? 0.25 : (rt / 1.1) % 1);
+        car.spin(0.125);                                   // 车停着：轮子不转
+        if (still) hum.stand(); else hum.idle(rt);          // 站着轻晃，不原地迈步
 
         var pb = E.fade(t, 3.6, 0.5);
         brace.forEach(function (p) { E.drawOn(p, pb); });

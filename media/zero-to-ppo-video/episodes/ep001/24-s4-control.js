@@ -121,7 +121,8 @@
 
       /* ── 腿部特写（左） ── */
       var leg = E.el('g', {}, s);
-      K.paint(E.el('rect', { x: 120, y: 84, width: 60, height: 18, rx: 6, 'stroke-width': 3 }, leg), E.S2, E.INK2);
+      var torsoG = E.el('g', {}, leg);   // 被推时跟着腿绕踝转
+      K.paint(E.el('rect', { x: 120, y: 84, width: 60, height: 18, rx: 6, 'stroke-width': 3 }, torsoG), E.S2, E.INK2);
       var thigh = line(leg, E.INK2, 12), shin = line(leg, E.INK2, 12), foot = line(leg, E.INK2, 10);
       var joints = [14, 14, 12].map(function (r) {
         return K.paint(E.el('circle', { r: r, 'stroke-width': 3 }, leg), E.S2, E.INK2);
@@ -247,11 +248,18 @@
           });
 
           /* 腿：膝角跟着「膝」行轻微变化 ±6°（28.9 后横条每 0.04 s 跳，膝仍按 0.1 s 的节奏跟，免得整条腿高频抖）；
-             被推后绕髋晃 ±8°（1.2 s 内衰减）；踩到不平脚倾斜 6° */
+             被推后脚踩住不动，整个身子（躯干 + 大腿 + 小腿）像倒立摆一样绕踝晃 ±4°，1.2 s 内衰减——
+             以前是绕髋晃，脚会在地上来回滑 30 多像素，违反物理；踩到不平脚倾斜 6° */
           var dKnee = on ? 6 * E.clamp((levelSmooth(1, t, 0.1, amp) - 0.6) / 0.2, -1, 1) : 0;
           var tau = st - HIT, sway = 0;
-          if (tau > 0 && tau < 1.2) sway = E.clamp(-8 * Math.pow(1 - tau / 1.2, 2) / 0.81 * Math.sin(TAU * tau / 0.48), -8, 8);
-          var P = legPts(sway, dKnee, 6 * fade(st, BUMP, 0.3));
+          if (tau > 0 && tau < 1.2) sway = 4 * Math.pow(1 - tau / 1.2, 2) * Math.sin(TAU * tau / 0.6);
+          var P = legPts(0, dKnee, 6 * fade(st, BUMP, 0.3));
+          if (sway) {
+            var sr = sway * RAD, cs = Math.cos(sr), sn = Math.sin(sr);
+            var turn = function (q) { var dx = q[0] - P.ankle[0], dy = q[1] - P.ankle[1]; return [P.ankle[0] + dx * cs - dy * sn, P.ankle[1] + dx * sn + dy * cs]; };
+            P.hip = turn(P.hip); P.knee = turn(P.knee);
+          }
+          torsoG.setAttribute('transform', sway ? 'rotate(' + sway.toFixed(3) + ' ' + P.ankle[0].toFixed(1) + ' ' + P.ankle[1].toFixed(1) + ')' : '');
           put(thigh, P.hip, P.knee); put(shin, P.knee, P.ankle); put(foot, P.ankle, P.toe);
           [P.hip, P.knee, P.ankle].forEach(function (c, i) {
             joints[i].setAttribute('cx', c[0].toFixed(1)); joints[i].setAttribute('cy', c[1].toFixed(1));

@@ -30,13 +30,13 @@
   }
 
   window.EpisodeVideo = {
-    ep: '001',
-    season: 1,
-    badge: 'L−1 · 第 1 季',
-    question: '机器人到底在干嘛？',
+    ep: '001',                      // 只用于文件名；画面和封面上都不出现集数
+    badge: '第一季',
+    title: '机器人在干嘛',
+    name: '感知 → 规划 → 控制 → 执行',
     pitch: '拆开任何机器人，都在跑同一个四步圈',
-    footer: '从零基础讲起，一路接上论文精读系列',
-    introAt: { ep: 0.1, question: 0.3, pitch: 0.6, hero: 0 },
+    meta: '<b>主路线入门：机器人技术栈全景</b><br>Robotics Notebooks · 不用数学 · 不用代码',
+    introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：四步各用本色（感知 good、规划 violet、控制 accent、执行 warn）
     boldColors: { '感知': 'var(--demo-good)', '规划': 'var(--violet)', '控制': 'var(--demo-accent)', '执行': 'var(--demo-warn)',
       '反馈': 'var(--text)', 'C': 'var(--demo-accent)' },

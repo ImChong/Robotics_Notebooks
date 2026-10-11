@@ -81,9 +81,9 @@
       // 脚印（路线上、白点下）：draw 里第一次挂到页面后再建，路线长度要量
       var prints = null;
       // 文字在最上层
-      var here = E.txt(mm.g, 466, 186, '我在这', 18, E.INK);
-      var unseen = E.txt(mm.g, 709, 150, '还没看到', 18, E.MUT);
-      var slam = E.txt(mapG, 440, 216, '地图由感知交来', 18, E.MUT, 'start');
+      var here = E.txt(mm.g, 466, 186, '我在这', 20, E.INK);   // 地图整体缩到 0.91，字补到 20
+      var unseen = E.txt(mm.g, 709, 150, '还没看到', 20, E.MUT);
+      var slam = E.txt(mapG, 382, 208, '地图由感知交来', 18, E.MUT, 'start');
 
       function makePrints() {
         prints = [];

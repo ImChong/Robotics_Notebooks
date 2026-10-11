@@ -9,34 +9,24 @@
 <link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/900.css">
 <link rel="stylesheet" href="vendor/paper-demos.css">
 <style>
-/* 和论文精读系列（灰黑底 + 蓝 #569cd6）区分：沿用本仓库路线长视频的深海蓝 + 青 / 绿
-   （media/roadmap-motion-control-video/style.css）。版式与安全区沿用论文系列的竖屏舞台。 */
+/* 配色与论文精读系列（视频号 / 小红书上的《从头学人形机器人算法》）统一：灰黑底 + 蓝 #569cd6，
+   四步颜色取自同一套配色（绿 #4ec9a4、紫 #c586c0、蓝、琥珀 #d7a75f）。区分只靠细节：角标「零基础篇」和要点框用绿色。 */
 :root, [data-theme="dark"] {
-  --bg: #0a1622; --text: #e8f3fa; --text-secondary: #8eb1c5;
-  --demo-surface: #0f2231; --demo-surface-2: #132b3e; --demo-border: #24506b;
-  --demo-accent: #00d4ff; --demo-good: #2ee6b8; --demo-warn: #ffbf47; --demo-bad: #ff6b6b;
-  --demo-muted: #6f93a8; --demo-grid: #1d3a4f; --violet: #b99bff;
-  --hi: #ffbf47;
+  --bg: #16161a; --text: #e6e6e6; --text-secondary: #a8a8a8;
+  --demo-surface: #1f1f24; --demo-surface-2: #2a2a30; --demo-border: #3a3a42;
+  --demo-accent: #569cd6; --demo-good: #4ec9a4; --demo-warn: #d7a75f; --demo-bad: #e06c75;
+  --demo-muted: #8a8a8a; --demo-grid: #37373a; --violet: #c586c0;
+  --hi: #ffd166;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--text);
   font-family: 'Noto Sans SC', 'WenQuanYi Zen Hei', sans-serif; }
 #app { position: relative; width: 1080px; height: 1920px; overflow: hidden;
-  background:
-    radial-gradient(900px 700px at 90% 8%, rgba(0, 212, 255, 0.12), transparent 60%),
-    radial-gradient(800px 700px at 0% 70%, rgba(46, 230, 184, 0.07), transparent 60%),
-    var(--bg); }
+  background: radial-gradient(1200px 700px at 50% 30%, #1f2330 0%, var(--bg) 70%); }
 .brand { position: absolute; top: 70px; left: 60px; right: 60px; display: flex; justify-content: space-between;
   align-items: center; font-size: 30px; color: var(--text-secondary); }
 .brand b { color: var(--demo-good); font-weight: 900; }
-.pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; color: var(--demo-accent); }
-/* 全系列进度：六季，当前季发亮。在安全区之上，属于装饰，分享页裁掉也不影响理解 */
-.season { position: absolute; top: 140px; left: 60px; right: 60px; display: flex; gap: 10px; }
-.season div { flex: 1; text-align: center; font-size: 22px; color: #5f8296; white-space: nowrap; }
-.season div i { display: block; height: 8px; border-radius: 4px; background: var(--demo-grid); margin-bottom: 8px; }
-.season div.done i { background: rgba(46, 230, 184, .55); }
-.season div.cur { color: var(--demo-accent); font-weight: 700; }
-.season div.cur i { background: var(--demo-accent); box-shadow: 0 0 14px rgba(0, 212, 255, .6); }
+.pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; }
 
 /* ── scene chrome ── */
 #scene { position: absolute; inset: 0; }
@@ -64,7 +54,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .demo-x-svg text.demo-x-bad { fill: var(--demo-bad); }
 .demo-x-svg text.demo-x-warn { fill: var(--demo-warn); }
 .cue { position: absolute; top: 1026px; left: 60px; right: 60px; min-height: 200px;
-  border-left: 10px solid var(--demo-good); background: rgba(46, 230, 184, .07);
+  border-left: 10px solid var(--demo-good); background: rgba(78, 201, 164, .08);
   border-radius: 0 20px 20px 0; padding: 24px 36px; font-size: 40px; line-height: 1.5; }
 .cue .tag { font-size: 26px; color: var(--demo-good); font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; }
 .cue b { color: var(--hi); font-weight: 700; }
@@ -75,11 +65,17 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 
 /* ── intro / cover / outro cards ── */
 .card { position: absolute; inset: 0; }
-.epno { position: absolute; left: 0; right: 0; text-align: center; font-size: 170px; font-weight: 900; line-height: 1;
-  letter-spacing: 10px; color: var(--demo-accent); text-shadow: 0 0 40px rgba(0, 212, 255, .35); }
-.question { position: absolute; left: 0; right: 0; text-align: center; font-size: 72px; font-weight: 900; line-height: 1.3; white-space: nowrap; }
-.pitch { position: absolute; left: 0; right: 0; text-align: center; font-size: 38px; line-height: 1.4; color: var(--text-secondary); white-space: nowrap; }
-.footer { position: absolute; left: 60px; right: 60px; text-align: center; font-size: 34px; line-height: 1.4; color: var(--demo-good); font-weight: 700; white-space: nowrap; }
+.big { position: absolute; left: 0; right: 0; text-align: center; }
+.big .t { font-weight: 900; color: var(--demo-accent); line-height: 1.08; white-space: nowrap; }
+.big .zh { font-weight: 900; line-height: 1.25; white-space: nowrap; }
+.big .pitch { color: var(--text-secondary); margin-top: 8px; white-space: nowrap; }
+.meta { position: absolute; left: 90px; right: 90px; border: 2px solid var(--demo-border); border-radius: 24px;
+  background: var(--demo-surface); padding: 34px 40px; font-size: 34px; line-height: 1.7; color: var(--text-secondary); }
+.meta b { color: var(--text); }
+.toc { position: absolute; left: 90px; right: 90px; font-size: 40px; line-height: 1.9; }
+.toc div { white-space: nowrap; }
+.toc span { color: var(--demo-accent); font-weight: 900; margin-right: 20px; font-family: 'DejaVu Sans', sans-serif; }
+.footer { position: absolute; left: 60px; right: 60px; text-align: center; font-size: 34px; line-height: 1.4; color: var(--text-secondary); }
 .pt { position: absolute; left: 70px; right: 70px; border-radius: 24px; padding: 24px 36px;
   background: var(--demo-surface); border: 2px solid var(--demo-border); font-size: 42px; line-height: 1.5; }
 .pt .n { font-weight: 900; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
@@ -92,7 +88,6 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 <body>
 <div id="app">
   <div class="brand"><span><b>零基础篇</b> · 从头学人形机器人算法</span><span class="pill" id="badge"></span></div>
-  <div class="season" id="season"></div>
   <div id="scene"></div>
   <div class="sub" id="sub"></div>
 </div>
@@ -105,7 +100,6 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   var K = window.PaperDemoKit, E = window.EpisodeVideo;
   var TL = null, built = {}, current = null, lastSub = null;
   var N = E.scenes.length;
-  var SEASONS = ['全景与数学', '机器人学', '动力学', '控制基础', '人形控制', '强化学习'];
 
   function h(tag, cls, parent, html) {
     var n = document.createElement(tag);
@@ -138,12 +132,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
   }
 
-  document.getElementById('badge').textContent = E.badge;
-  var seasonEl = document.getElementById('season');
-  SEASONS.forEach(function (name, k) {
-    var d = h('div', k + 1 < E.season ? 'done' : k + 1 === E.season ? 'cur' : '', seasonEl);
-    h('i', '', d); h('span', '', d, name);
-  });
+  document.getElementById('badge').textContent = E.badge;  // 只写第几季，不写集数和路线层级
 
   /* 纵向排版：按各块实际高度自上而下排，块间距 gaps[k]，整组在 [top, bottom] 里垂直居中；
      放不下就等比压缩间距（不压内容）。挂到 DOM 之后才量得到高度，所以在 draw 里调。 */
@@ -170,52 +159,78 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     return { box: box, hero: hero };
   }
 
-  /* ── intro：大集数 + 问句标题 + 一句话 + 主图（封面 cover() 在同一组块上按封面版式重排） ── */
+  /* 大标题 + 中文名 + 一句话（片头和封面同一套块，和论文系列「英文缩写 + 中文名 + 一句话」同款） */
+  function titleBlocks(root) {
+    var a = h('div', 'big', root, '<div class="t"></div>');
+    a.firstChild.textContent = E.title;
+    var b = h('div', 'big', root, '<div class="zh"></div><div class="pitch"></div>');
+    richInto(b.children[0], E.name); richInto(b.children[1], E.pitch);
+    return { a: a, b: b, t: a.firstChild, zh: b.children[0], pitch: b.children[1] };
+  }
+
+  /* ── intro：标题块 + 主图（旁白念到哪台机器人，主图里就弹出哪台） ── */
   function buildIntro() {
     var root = h('div', 'card');
-    var ep = h('div', 'epno', root, E.ep);
-    var q = h('div', 'question', root); richInto(q, E.question);
-    var p = h('div', 'pitch', root); richInto(p, E.pitch);
+    var T = titleBlocks(root);
     var hb = heroBox(root, 470);
-    var foot = h('div', 'footer', root, E.footer || '');
-    foot.style.display = 'none';  // 只在封面上出现
-    var at = E.introAt || { ep: 0.1, question: 0.6, pitch: 1.2, hero: 1.8 };
+    var at = E.introAt || { title: 0.1, name: 0.5, hero: 0 };
     var fitted = false;
     return {
-      root: root, blocks: { ep: ep, q: q, p: p, hero: hb, foot: foot },
+      root: root,
       draw: function (st, t) {
-        if (!fitted && root.isConnected) { fitLine(q, 72, 52, 960); fitLine(p, 38, 28, 960); fitted = true; }
-        stack([ep, q, p, hb.box], [18, 10, 40], SAFE_TOP, CONTENT_BOTTOM);
-        fadeUp(ep, t, at.ep); fadeUp(q, t, at.question); fadeUp(p, t, at.pitch); fadeUp(hb.box, t, at.hero);
+        if (!fitted && root.isConnected) {
+          T.t.style.letterSpacing = '8px'; fitLine(T.t, 150, 90, 960);
+          fitLine(T.zh, 56, 40, 960); fitLine(T.pitch, 34, 26, 960);
+          fitted = true;
+        }
+        stack([T.a, T.b, hb.box], [24, 40], SAFE_TOP, CONTENT_BOTTOM);
+        fadeUp(T.a, t, at.title); fadeUp(T.b, t, at.name); fadeUp(hb.box, t, at.hero);
         hb.hero.draw(Math.max(0, st - at.hero), false, Math.max(0, t - at.hero));  // 第三个参数是真实时间，循环动作用它
       }
     };
   }
 
-  /* 视频号「设置封面」按 3:4 置顶裁剪（只留 y 0–1440）：最后一行字底不过 COVER_INK_BOTTOM（离裁剪线 35px）。
-     固定版式：集数 240px 从 230 起，问句 84px，一句话 40px，主图 520 高，底部一行系列衔接语；
-     每块排在上一块底下，内容比设计高就往下推，字底超线先缩主图。 */
+  /* ── 封面（render.mjs cover）：沿用论文系列的封面版式 ——
+     整张 1080×1920、不缩放；大标题在 190–440 一带垂直居中（比宽 980 宽就等比缩小）；中文名 70px + 一句话 40px 从 470 起；
+     信息框从 680 起（34px）；目录紧跟信息框（40px，行距随条数收紧，≤5 条 1.9、6 条 1.75、7 条 1.55、8 条及以上 1.5 / 38px）。
+     每块排在上一块底下，内容比设计高就往下推；视频号「设置封面」按 3:4 置顶裁剪（只留 y 0–1440），
+     目录最后一行字底不过 COVER_INK_BOTTOM（离裁剪线 35px），超了先收行距、再缩字号。封面上不出现集数和路线层级。 */
   var COVER_INK_BOTTOM = 1405;
-  function cover(intro) {
-    var b = intro.blocks;
-    [b.ep, b.q, b.p, b.hero.box, b.foot].forEach(shown);
-    b.foot.style.display = '';
-    b.ep.style.fontSize = '240px'; b.ep.style.letterSpacing = '16px';
-    fitLine(b.q, 84, 60, 960); fitLine(b.p, 40, 30, 960); fitLine(b.foot, 34, 26, 960);
-    var range = document.createRange();
-    function place(heroH) {
-      b.hero.box.style.height = heroH + 'px';
-      b.hero.hero.el.style.height = (heroH - 20) + 'px';
-      b.ep.style.top = '230px';
-      b.q.style.top = Math.max(500, b.ep.offsetTop + b.ep.offsetHeight + 24) + 'px';
-      b.p.style.top = (b.q.offsetTop + b.q.offsetHeight + 12) + 'px';
-      b.hero.box.style.top = (b.p.offsetTop + b.p.offsetHeight + 40) + 'px';
-      b.foot.style.top = (b.hero.box.offsetTop + heroH + 36) + 'px';
-      range.selectNodeContents(b.foot);
-      return range.getBoundingClientRect().bottom;
-    }
-    for (var hh = 540; place(hh) > COVER_INK_BOTTOM && hh > 380; hh -= 10) {}
-    b.hero.hero.draw(1e3, true);
+  function buildCover() {
+    var root = h('div', 'card');
+    var T = titleBlocks(root);
+    var m = h('div', 'meta', root, E.meta || '');
+    var toc = h('div', 'toc', root);
+    (E.toc || E.scenes.map(function (sc) { return sc.title; })).forEach(function (row) {
+      var d = h('div', '', toc); h('span', '', d, '▸'); richInto(h('em', '', d), row); d.lastChild.style.fontStyle = 'normal';
+    });
+    var laid = false;
+    return {
+      root: root,
+      draw: function () {
+        if (laid || !root.isConnected) return;
+        laid = true;
+        var range = document.createRange();
+        function width(n) { range.selectNodeContents(n); return range.getBoundingClientRect().width; }
+        var size = 250;
+        T.t.style.cssText += ';font-size:250px;letter-spacing:16px;line-height:1';
+        if (width(T.t) > 980) { T.t.style.letterSpacing = '6px'; size = Math.min(250, Math.floor(250 * 980 / width(T.t))); T.t.style.fontSize = size + 'px'; }
+        T.a.style.top = (190 + Math.round((250 - size) / 2)) + 'px';
+        fitLine(T.zh, 70, 52, 980); fitLine(T.pitch, 40, 30, 980);
+        T.pitch.style.marginTop = '18px';
+        T.b.style.top = Math.max(470, T.a.offsetTop + T.a.offsetHeight + 30) + 'px';
+        m.style.top = Math.max(680, T.b.offsetTop + T.b.offsetHeight + 36) + 'px';
+        var rows = toc.children.length;
+        toc.style.fontSize = (rows >= 8 ? 38 : 40) + 'px';
+        toc.style.lineHeight = rows <= 5 ? '1.9' : rows === 6 ? '1.75' : rows === 7 ? '1.55' : '1.5';
+        toc.style.top = (m.offsetTop + m.offsetHeight + 24) + 'px';
+        function inkBottom() { range.selectNodeContents(toc.lastElementChild); return range.getBoundingClientRect().bottom; }
+        for (var lh = parseFloat(toc.style.lineHeight), fs = parseFloat(toc.style.fontSize); inkBottom() > COVER_INK_BOTTOM && fs >= 32;) {
+          if (lh > 1.35) lh -= 0.05; else fs -= 2;
+          toc.style.lineHeight = lh.toFixed(2); toc.style.fontSize = fs + 'px';
+        }
+      }
+    };
   }
 
   /* ── storyboard scene ── */
@@ -223,7 +238,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     var sc = E.scenes[i];
     var root = h('div', 'card');
     var head = h('div', 'head', root);
-    h('div', 'act', head, E.ep + ' · 第 ' + (i + 1) + ' / ' + N + ' 幕');
+    h('div', 'act', head, '第 ' + (i + 1) + ' / ' + N + ' 幕');
     var titleEl = h('div', 'title', head);
     richInto(titleEl, sc.title);
     /* 一行放不下的分镜标题按估算宽度缩字号（汉字约 1em，其余约 0.55em） */
@@ -329,7 +344,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   }
 
   function get(key) {
-    if (!built[key]) built[key] = key === 'intro' ? buildIntro() : key === 'outro' ? buildOutro() : buildStory(+key);
+    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'outro' ? buildOutro() : buildStory(+key);
     return built[key];
   }
 
@@ -352,10 +367,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     var segs = TL.segments, s = segs[segs.length - 1];
     for (var i = 0; i < segs.length; i++) if (t < segs[i].t1) { s = segs[i]; break; }
     var key = String(s.scene);
+    if (window.__cover) key = 'cover';  // 封面用自己的版式（render.mjs cover 设 __cover）
     var first = s, idx = segs.indexOf(s);
-    while (idx > 0 && String(segs[idx - 1].scene) === key) first = segs[--idx];
+    while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
-    while (idx < segs.length - 1 && String(segs[idx + 1].scene) === key) last = segs[++idx];
+    while (idx < segs.length - 1 && String(segs[idx + 1].scene) === String(s.scene)) last = segs[++idx];
     // 这句念多久，[from, to] 就拉伸成多久（配音比分镜短则 1 倍速）；停在 to 之前一刻，让从 to 开始的要点等下一句
     var local = t - first.t0, span = Math.max(s.to - s.from, s.alen || 0);
     var st = s.from + (s.to - s.from) * clamp((t - s.t0 - s.lead) / (span || 1), 0, 1);
@@ -363,7 +379,6 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     var sc = get(key);
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
     sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));
-    if (window.__cover && key === 'intro') cover(sc);
     // cross-fade at scene edges
     var fin = clamp(local / 0.35, 0, 1), fout = clamp((last.t1 - t) / 0.3, 0, 1);
     sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, t > TL.total - 1 ? 1 : fout);
