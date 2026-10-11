@@ -448,6 +448,11 @@ flowchart TB
 - [sources/repos/awesome-world-models.md](../../sources/repos/awesome-world-models.md) — Awesome World Models 全谱策展（含 WAM/VLA 分册）
 - [sources/sites/rekacs2-10k.md](../../sources/sites/rekacs2-10k.md)
 
+
+### 动作条件视频世界模型
+
+- [DreamTrue：动作保真的机器人世界模型](../entities/paper-dreamtrue-action-faithful-world-model.md) — 用图像空间动作几何校准、反事实后训练和具身视频奖励改善动作—视频一致性。
+
 ## 关联页面
 
   - [Odyssey-3](../entities/odyssey-3.md) — 交互式视频世界模型；机器人动作执行依赖独立策略/动作解码器
