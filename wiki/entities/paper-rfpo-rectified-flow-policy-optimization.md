@@ -1,11 +1,13 @@
 ---
 type: entity
-tags: [paper, project, humanoid, locomotion, flow-matching, reinforcement-learning, policy-distillation, unitree-go2, unitree-g1]
+tags: [paper, project, humanoid, locomotion, flow-matching, reinforcement-learning, policy-distillation, unitree-go2, unitree-g1, pku]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-11
 project_id: rfpo-rectified-flow-policy-optimization
 arxiv: "2610.10453"
 project: "https://aigeeksgroup.github.io/RFPO/"
+code: "https://github.com/AIGeeksGroup/RFPO"
+institutions: [pku]
 repo: "https://github.com/AIGeeksGroup/RFPO"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -13,6 +15,7 @@ related:
   - ../concepts/flow-matching-embodied-policy.md
 sources:
   - ../../sources/papers/rfpo_arxiv_2610_10453.md
+  - ../../sources/sites/rfpo-project.md
   - ../../sources/repos/rfpo.md
 summary: "RFPO：面向具身控制的 reward-aware online reflow 与多预算蒸馏，把 64 步 flow policy 压到单次 Euler 推理；论文报告 Go2 单步保留 98.5% reward、推理延迟 4.39 ms→0.08 ms；官方仓库主要含 Go2/G1 Isaac Lab 实验，未含部署包。"
 ---
@@ -20,6 +23,13 @@ summary: "RFPO：面向具身控制的 reward-aware online reflow 与多预算�
 # RFPO：把具身 Flow policy 压到单步推理
 
 **RFPO**（*Rectified Flow Policy Optimization for Embodied Control*，[arXiv:2610.10453](https://arxiv.org/abs/2610.10453)，[项目页](https://aigeeksgroup.github.io/RFPO/)，[GitHub](https://github.com/AIGeeksGroup/RFPO)）研究如何在不明显损失控制回报的情况下，把需要多步积分的 flow policy 变成单步控制器。论文不是泛化地“减少采样步数”，而是通过 reward-aware online reflow 与多预算动作蒸馏，显式训练一个能在不同积分预算下工作的学生策略。
+
+## 论文信息
+
+- **作者：** Ting Huang、Lisiyu Pan、Haoyu Wang、Zeyu Zhang、Siyuan Qian、Yanjun Li、Yandong Guo、Boxin Shi、Hao Tang。
+- **机构：** 北京大学计算机学院（School of Computer Science, Peking University）；AI² Robotics。
+- **来源与日期：** arXiv 预印本，提交于 2026-10-07（arXiv:2610.10453）。
+- **平台：** Unitree Go2、Boston Dynamics Spot、Unitree H1、Unitree G1（29 DoF）。
 
 ## 一句话理解
 
@@ -67,7 +77,7 @@ flowchart TB
 3. **自适应计算正则：** 将推理预算与动作质量一并纳入优化，鼓励策略在降低计算量时仍保持有用控制输出。
 4. **单步部署：** 训练完成后只需一次 Euler 更新生成动作，不再执行 64 次积分。
 
-## 结果
+## 实验与评测
 
 - **评测平台：** 论文覆盖 Unitree Go2、Spot、H1、G1 的控制评估；报告在不同初始噪声和积分预算下的回报。
 - **Go2 单步结果：** 单步策略保留 64 步基线 **98.5%** 的 reward。
@@ -79,6 +89,36 @@ flowchart TB
 ## 代码与复现状态
 
 官方 [GitHub 仓库](https://github.com/AIGeeksGroup/RFPO)提供 Isaac Lab locomotion 与 manipulation 实验代码；README 将其描述为 FPO++ 实验代码，含 Go2/G1 方法实现。仓库文档给出 submodule 初始化、环境安装、训练和不同 Euler 步数评估的入口。**论文覆盖 Spot/H1 的结果不等于仓库已提供这些本体的实现；README 明确说明部署包未包含。**因此，本页把代码定位为训练 / 仿真复现实验，而非可直接刷入机器人运行的完整部署栈。
+
+## 源码运行时序图
+
+以下时序对应官方仓库公开的 Isaac Lab 实验路径；它展示训练与离线评测入口，不代表仓库含有可直接部署的机器人端软件包。
+
+```mermaid
+sequenceDiagram
+    actor Researcher as 研究者
+    participant Setup as isaaclab_experiments 环境
+    participant Train as scripts/train.py
+    participant Sim as Isaac Lab 仿真环境
+    participant Teacher as 冻结 Gaussian PPO 控制器
+    participant Student as RFPO flow 学生策略
+    participant Eval as eval_sampling_steps.py
+    Researcher->>Setup: 初始化 submodule 并安装实验环境
+    Researcher->>Train: 指定任务配置与 teacher checkpoint
+    Train->>Sim: 创建并行 locomotion / manipulation 环境
+    Train->>Teacher: 加载冻结控制器作为动作监督
+    loop 在线策略优化
+        Sim-->>Student: 观测与 rollout 状态
+        Student->>Sim: 按多个 Euler 预算生成动作
+        Sim-->>Train: reward 与轨迹反馈
+        Train->>Student: online reflow、动作监督与优化更新
+    end
+    Train-->>Researcher: 保存学生策略 checkpoint
+    Researcher->>Eval: 加载 checkpoint 并选择采样步数
+    Eval->>Sim: 运行不同预算的控制评测
+    Sim-->>Eval: 返回任务回报与统计
+    Eval-->>Researcher: 汇总 64 至 1 步的结果
+```
 
 ## 局限与阅读边界
 
@@ -111,4 +151,11 @@ RFPO 把 flow policy 的推理成本问题转成训练期的蒸馏问题：在�
 ## 参考来源
 
 - [RFPO 论文归档](../../sources/papers/rfpo_arxiv_2610_10453.md)
+- [RFPO 官方项目页归档](../../sources/sites/rfpo-project.md)
 - [RFPO 官方代码归档](../../sources/repos/rfpo.md)
+
+## 推荐继续阅读
+
+- [RFPO 官方项目页](https://aigeeksgroup.github.io/RFPO/) — 查看方法图示与 Go2/G1 真机演示。
+- [Flow Matching 具身策略](../concepts/flow-matching-embodied-policy.md) — 补充 flow policy 的建模与数值积分背景。
+- [官方代码仓库](https://github.com/AIGeeksGroup/RFPO) — 查看 Isaac Lab 训练与采样步数评估入口。
