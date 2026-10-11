@@ -101,6 +101,11 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] ingest | LT-Mem 官方奖项与量化结果更新
+
+- 核对 LT-Mem 项目页、论文与 APRL 官方新闻/论文列表；项目页仍显示 finalist，实验室公告已更新为 IROS 2026 Best Paper Award Winner。
+- 更新既有 LT-Mem 独立节点及来源档案，补充 LT-VQA 量化表和代码仍为 TBD 的核查状态。
+
 ## [2026-10-11] ingest | wiki/entities/voicestudio.md — 补充 VoiceStudio 短音频克隆与视频配音流程
 
 - 复核官方 README：补充 3 秒参考音频零样本克隆与视频转写、翻译、合成、时间对齐后导出 MP4 的流程。
