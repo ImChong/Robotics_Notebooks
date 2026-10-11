@@ -7,7 +7,7 @@
 - **克隆**：`https://github.com/HarleyCoops/Math-To-Manim.git`
 - **入库日期**：2026-10-11
 - **一句话说明：** 开源数学动画创作与审查管线：把自然语言问题编排为教学简报、数学推导、分镜和 Manim 场景，再进行源码检查、实际渲染和画面审阅。
-- **开放状态：** 已开源；官方 GitHub 仓库公开包含源码与安装说明，许可证为 MIT。该项目没有单独的官网入口时，以仓库 README 为项目主页。
+- **开放状态：** 已开源；官方 GitHub 仓库公开包含源码与安装说明，许可证为 MIT。该仓库 README 是主要项目说明与安装入口。
 - **沉淀到 wiki：** 是 → [Math To Manim 实体页](../../wiki/entities/math-to-manim.md)；底层渲染引擎见 [Manim](../../wiki/entities/manim.md)。
 
 ## 仓库概况（2026-10-11 README / pyproject.toml）
