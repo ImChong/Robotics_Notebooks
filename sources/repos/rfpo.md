@@ -3,6 +3,8 @@
 - **仓库：** https://github.com/AIGeeksGroup/RFPO
 - **项目页：** https://aigeeksgroup.github.io/RFPO/
 - **对应论文：** https://arxiv.org/abs/2610.10453
+- **论文归档：** [sources/papers/rfpo_arxiv_2610_10453.md](../papers/rfpo_arxiv_2610_10453.md)
+- **项目页归档：** [sources/sites/rfpo-project.md](../sites/rfpo-project.md)
 - **仓库 README 项目名：** rfpo_new_method / FPO++ experiment code
 - **核对日期：** 2026-10-09
 
