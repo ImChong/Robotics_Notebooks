@@ -177,6 +177,11 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [ParkourFormer（arXiv:2605.25782）](../../sources/papers/parkourformer_arxiv_2605_25782.md) — query 历史 + 未来两步 AMP 监督；G1 九类地形单策略 93.85%。
 - [TRAMP（IEEE RA-L 2026）](../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md) — 单阶段深度 + 层次特征/MoE + 平地/楼梯地形相关 AMP；SJTU 人形真机坡/楼梯/高台/沟与户外；代码未开源。
 
+
+### 人类动作数据驱动的通用控制
+
+- [VioLA：从人类数据学习人形通用控制](../entities/paper-viola-human-data-control.md) — 以共享运动潜空间复用人类动作数据，并报告 G1 真机移动与操作结果。
+
 ## 关联页面
 
 - [Locomotion](./locomotion.md)
