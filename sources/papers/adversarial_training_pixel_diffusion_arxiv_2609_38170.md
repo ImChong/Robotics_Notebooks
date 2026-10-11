@@ -46,3 +46,4 @@
 
 - 论文 HTML（作者机构、方法、完整实验与附录）：<https://arxiv.org/html/2609.38170v1>
 - 第一作者主页（论文列表与项目资源链接核查）：<https://linxin0.github.io/>
+- DeCo 基座论文：<https://arxiv.org/abs/2511.19365>
