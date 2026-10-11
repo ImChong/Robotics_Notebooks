@@ -81,18 +81,24 @@ sequenceDiagram
     participant Run as mjlab.scripts.run
     participant Task as tasks.codancing
     participant RL as third_party/rsl_rl
-    participant Export as ONNX 检查点
-    participant Deploy as simple_deploy.codance
-    participant V as Vicon 与 Unitree SDK
+    participant C as 检查点与 ONNX
     U->>Run: train --config decoupled.yaml
     Run->>Task: 构造 G1 环境与观测/奖励
     Task->>RL: PPO rollout 与更新
     RL-->>Run: 保存策略检查点
-    Run-->>Export: 导出策略 ONNX
-    U->>Deploy: 运行 codance --onnx
-    Deploy->>Export: 读取策略及观测元数据
-    Deploy->>V: 读取舞伴 Vicon 与机器人状态
-    Deploy->>V: 发送关节目标
+    Run-->>C: 导出策略 ONNX
+```
+
+部署时序：
+
+```mermaid
+sequenceDiagram
+    participant O as 操作者
+    participant D as simple_deploy.codance
+    participant V as Vicon 与 Unitree SDK
+    O->>D: 启动 ONNX runner
+    D->>V: 读取舞伴与机器人状态
+    D->>V: 发送关节目标
 ```
 
 时序对应仓库 README 的训练命令和 simple_deploy 文档：训练通过 mjlab 脚本入口进入 codancing 任务与 vendored rsl_rl；部署由 ONNX 运行器连接 Vicon 与 Unitree SDK。具体传感器与操作者安全步骤以 [部署说明](../../sources/repos/codance.md) 为准。
@@ -112,7 +118,7 @@ CoDance 与从人-人视频学习人-人形协作的方法同属“借用人类�
 
 ## 结论
 
-**一句话总判：** CoDance 证明一段人类舞蹈视频可以作为人形持续接触互动的运动学起点，但真实贡献在于用受力条件化的参考增强把“跟动作”推进到“接触时会让步”。**
+**一句话总判：** CoDance 证明一段人类舞蹈视频可以作为人形持续接触互动的运动学起点，但真实贡献在于用受力条件化的参考增强把“跟动作”推进到“接触时会让步”。
 
 1. 复现顺序建议先用已发布数据与检查点跑评测，再运行 datagen 配方，最后才考虑重新训练；完整训练成本显著高于单次评测。
 2. 要验证顺应泛化，应单独改变外力时序、大小与方向，并报告腕位移/力误差，而不只观察舞蹈视频。
