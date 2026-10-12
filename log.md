@@ -101,6 +101,13 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+# 2026-10-12 — Ingest Draft
+
+- 新增 [Draft 项目实体](../wiki/entities/paper-draft-parametric-robot-design.md)：记录参数规格到 MJCF 的编译链、数据拟合与 twin 验证、统一 RL 课程实验、开源代码入口和适用边界。
+- 新增论文摘录与源码归档：[论文](../sources/papers/draft_arxiv_2609_38405.md)、[官方仓库](../sources/repos/draft.md)。
+- 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
+- Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
+
 ## [2026-10-11] structural | roadmap 巡检补入 RoboDuet / VioLA / CoDance / DreamTrue / AD-E2E-JEPA / VTInstructor / OpenLET-Roban2
 
 ## [2026-10-11] ingest | Math To Manim — 归档开源生成管线并关联 Manim
