@@ -92,6 +92,12 @@ Draft 把可参数化、带初步工程约束的机器人规格连接到可运�
 - 若要自动搜索形态，需在 Draft 之上另接优化器，并明确制造与控制目标。
 - 想做 RL 复现需准备 CUDA 环境、训练算力和可选依赖；仅读取/生成 MJCF 可从基础安装开始。
 
+## 关联页面
+
+- [MuJoCo（物理引擎）](./mujoco.md) — Draft 的 MJCF 输出与仿真环境。
+- [Shape Your Body](./paper-shape-your-body-value-gradient-design.md) — 与自动形态搜索路线对照。
+- [强化学习](../methods/reinforcement-learning.md) — Draft 论文中的 PPO 评估流程。
+
 ## 流程图
 
 ```mermaid
