@@ -177,6 +177,7 @@ DexJoCo（Panda–Allegro，仿真），rand-obj，每任务每种子 50 episode
 - [VLA](../methods/vla.md)
 - [π0.5 开放世界 VLA](./paper-pi05-open-world-vla.md)
 - [世界-动作模型](../concepts/world-action-models.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属方法而非基准，其 DexJoCo 灵巧/双臂成功率对比落在③策略任务成功率层，且仅仿真、未经④层真机校准
 
 ## 参考来源
 

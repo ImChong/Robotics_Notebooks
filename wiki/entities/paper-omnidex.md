@@ -133,6 +133,7 @@ flowchart TB
 - [操作任务](../tasks/manipulation.md)
 - [抓取位姿估计](../methods/grasp-pose-estimation.md)
 - [Shadow Hand](./shadow-hand.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页提供③层灵巧抓取评测数据：杂乱场景 Shadow Hand 抓取真值与 SR_scene 指标，测单次抓取而非长时序任务
 
 ## 参考来源
 

@@ -127,6 +127,7 @@ flowchart TB
 - [检索增强生成（RAG）](../concepts/retrieval-augmented-generation.md)
 - [LoRA](../concepts/lora.md)
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是文本生成式检索基准，不属四层具身评测中任何一层，仅作「领域内检索指标≠具身能力」的对照
 
 ## 参考来源
 

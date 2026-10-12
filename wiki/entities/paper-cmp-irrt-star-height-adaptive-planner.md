@@ -163,6 +163,7 @@ sequenceDiagram
 - [Mamba](../concepts/mamba.md)
 - [落脚点规划](../concepts/footstep-planning.md)
 - [Unitree](./unitree.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ①→③→④ 链路：只有俯视 RGB 时用 Depth Anything V2 补深度、YOLOv11 出障碍框，提升为地面相对高度后供 IRRT* 规划消费
 
 ## 参考来源
 

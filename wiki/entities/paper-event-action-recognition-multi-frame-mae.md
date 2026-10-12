@@ -126,6 +126,7 @@ Top-1（%），LP / FT，数据集 THU-EACT-50 CHL 与 DailyDVS-200：
 - [Vision Transformer](../concepts/vision-transformer.md)
 - [微扫视启发的事件相机](./paper-microsaccade-inspired-event-camera.md)
 - [骨架动作识别](../methods/skeleton-action-recognition.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属其 ① 传感模态与 ② 识别模型选型的旁支：事件相机多帧表示 + MAE 预训练 ViT 做动作识别，只到识别层、不涉及下游控制消费
 
 ## 参考来源
 

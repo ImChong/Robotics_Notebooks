@@ -125,6 +125,7 @@ flowchart LR
 - [操作任务](../tasks/manipulation.md)
 - [VLA 方法](../methods/vla.md)
 - [OpenVLA](./paper-openvla.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③层的补充维度：固定 VLA 命令流回放比较底层控制器的 jerk 与跟踪误差，测运动质量而非任务成功率
 
 ## 参考来源
 

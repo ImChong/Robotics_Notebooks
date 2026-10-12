@@ -163,6 +163,8 @@ L3 且扰动 1.5× 时 Ours 为 22.7% SR / 56.7% 进度。
 - [视觉语言导航](../tasks/vision-language-navigation.md)
 - [阶梯/障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Teacher-Student DAgger 训练](../methods/teacher-student-dagger-training.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ② 表征与 ④ 下游消费层：冻结 DINOv2-S 语义分支补高程图看不到的危险（手机、水/油渍），并用单目位姿估计补偿速度指令执行偏差
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 Isaac Sim 几何不可见危险 + 扰动基准属③层（人形运动/导航 SR、HCR、Safe SR），导航仅仿真、G1 真机每条件 5 次，④层外推证据有限
 
 ## 参考来源
 

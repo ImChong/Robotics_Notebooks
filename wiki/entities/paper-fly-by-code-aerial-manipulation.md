@@ -135,6 +135,7 @@ flowchart TB
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Isaac Lab](./isaac-lab.md)
 - [先验演化空中抓取](./paper-prior-evolution-aerial-grasping.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ④ 下游策略消费层：载荷限制机载相机视野，View 诊断主动换视角补感知证据，真机失败仍含基篮位置感知误差与腕部相机遮挡
 
 ## 参考来源
 

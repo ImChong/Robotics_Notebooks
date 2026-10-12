@@ -146,6 +146,7 @@ flowchart LR
 - [地形适应](../concepts/terrain-adaptation.md)
 - [四足机器人](../entities/quadruped-robot.md)
 - [Unitree](../entities/unitree.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③层真机实测基线：瓦屋面坡度下 Go2 滑移、临界角与起身成功率，直接给真机数据、无需④层外推
 
 ## 参考来源
 

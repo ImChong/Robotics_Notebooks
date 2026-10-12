@@ -150,6 +150,7 @@ flowchart LR
 - [六类空间表征](../concepts/embodied-perception-six-spatial-representations.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Genesis 仿真器](./genesis-sim.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页介于①认知层与③任务成功率层：隔离比较 LLM 智能体的记忆模态，以仿真任务成功率而非 QA 分衡量
 
 ## 参考来源
 

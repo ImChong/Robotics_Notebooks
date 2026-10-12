@@ -168,6 +168,7 @@ sequenceDiagram
 - [操作任务](../tasks/manipulation.md)
 - [双臂操作](../tasks/bimanual-manipulation.md)
 - [移动操作与行走操作](../tasks/loco-manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③策略任务成功率层：人形全身家庭操作仿真基准，同协议横比模仿学习、VLA 与编码智能体
 
 ## 参考来源
 
