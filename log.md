@@ -101,6 +101,8 @@ date: 2026-10-11
 ---
 RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
 
+## [2026-10-11] structural | roadmap 巡检补入 RoboDuet / VioLA / CoDance / DreamTrue / AD-E2E-JEPA / VTInstructor / OpenLET-Roban2
+
 ## [2026-10-11] ingest | Math To Manim — 归档开源生成管线并关联 Manim
 
 - 上游公开源码与 MIT 许可证；当前主线使用 Astra 分阶段生成、Manim 渲染和证据审阅。
