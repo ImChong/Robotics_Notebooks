@@ -2169,6 +2169,7 @@
 - [ME-VLM：统一具身认知与 Agent 协调的 VLM](wiki/entities/paper-me-vlm.md) — ME-VLM**（*A Unified VLM for Embodied Cognition and Agent Coordination*，[arXiv:2609.24526](https:// `📅unknown` `[entity_page]`
 - [机械智能信息论（arXiv:2609.19588）](wiki/entities/paper-mechanical-intelligence-info-theory.md) — 机械智能信息论**（*Quantifying Mechanical Intelligence in Legged Robots with Information Theory*，[arXiv:26 `📅unknown` `[entity_page]`
 - [MECo-WAM（Multi-Expert Co-Training World Action Model · arXiv:2607.05468）](wiki/entities/paper-meco-wam-4d-geometry-cotraining.md) — MECo-WAM**（*Learning 4D Geometric Priors for Inference-Efficient World Action Models*，[arXiv:2607. `📅unknown` `[entity_page]`
+- [MEgoVista: Multi-view Ego-aware Motion Estimation for Metric 4D Hands and Head in the Wild（真实场景中公制四维手部与头部运动的多视角自我感知估计）](wiki/entities/paper-megovista.md) — 把佩戴者的多视角头戴录制变成同一重力对齐世界坐标中的双手和头部轨迹，为人类操作示范提供公制标注。** 4D 指三维运动随时间演化，不是机器人控制维度；“一次录制”包含多个同步相机，不是单目手机视频 `📅2026-09-15` `[entity_page]`
 - [MemCompiler：具身智能体的状态条件记忆编译](wiki/entities/paper-memcompiler-state-conditioned-memory.md) — MemCompiler**（*Compile, Don't Inject — State-Conditioned Memory for Embodied Agents*，[arXiv:2605.0 `📅unknown` `[entity_page]`
 - [MemER：用经验检索扩展机器人控制记忆](wiki/entities/paper-memer.md) — MemER**（*Scaling Up Memory for Robotic Control via Experience Retrieval*）是 Stanford 团队提出的分层机器人策略：高 `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
