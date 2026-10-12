@@ -102,17 +102,17 @@ sequenceDiagram
     participant Env as train/env_setup.sh
     participant Router as SGLang Router + NGINX
     participant Train as train/train_4b.sh
-    participant Loop as scripts/parser_agent_loop.py
+    participant AgentLoop as scripts/parser_agent_loop.py
     participant Sub as scripts/subagent.py
     participant Eval as eval/eval_hqa.sh
     Dev->>Env: 配置 CUDA_HOME 并安装依赖
     Dev->>Router: 启动冻结子智能体服务
     Dev->>Train: 启动全异步 RL
-    Train->>Loop: rollout 工作进程生成轨迹
-    Loop->>Sub: 广播查询到各 chunk
-    Sub-->>Loop: JSON 证据或弃权
-    Loop-->>Train: 轨迹与 exact-match 奖励
-    Train->>Loop: 每 4 步同步参数
+    Train->>AgentLoop: rollout 工作进程生成轨迹
+    AgentLoop->>Sub: 广播查询到各 chunk
+    Sub-->>AgentLoop: JSON 证据或弃权
+    AgentLoop-->>Train: 轨迹与 exact-match 奖励
+    Train->>AgentLoop: 每 4 步同步参数
     Dev->>Eval: MODEL_PATH 指向检查点
     Eval->>Router: 调用子智能体读 chunk
 ```
