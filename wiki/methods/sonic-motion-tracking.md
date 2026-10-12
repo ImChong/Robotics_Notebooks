@@ -456,6 +456,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [MimicX](../entities/paper-mimicx.md) — 用策略执行反馈精炼视频动作跟踪监督与 reset curriculum。
+
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层：技能编译器 / 运动底座 / 感知任务环
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic/FSQ 在任务球上的曲线投影与 OOD 读法
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #17/42）
