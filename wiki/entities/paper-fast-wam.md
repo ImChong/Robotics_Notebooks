@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-10-06
+updated: 2026-10-12
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -111,6 +111,8 @@ sequenceDiagram
 3. 部署前核对硬件栈与评测协议，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [DiffWAM](./paper-diffwam.md) — 首帧几何条件下直接读出 UAV 相机轨迹；FastDreamer 区分模型推理与异步飞行交接。
 
 - [world-action-models](../concepts/world-action-models.md)
 - [paper-memorywam](./paper-memorywam.md)
