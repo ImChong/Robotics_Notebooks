@@ -23,7 +23,7 @@ summary: "PriMoRetarget（arXiv:2610.12642，FieldAI/SFU）：用词典序优先
 
 # PriMoRetarget：用优先级层级保住关键接触的人形动作重定向
 
-**PriMoRetarget**（*Humanoid Motion Transfer Through Prioritized Motion Retargeting*，[arXiv:2610.12642](https://arxiv.org/abs/2610.12642)，[项目页](https://nickioan.github.io/primoretarget-page/)）由 **FieldAI 与 Simon Fraser University（Xue Bin Peng 组）** 提出：重定向目标之间不再靠权重折中，而是按「脚位置 → 接触保持 → 其余姿态/交互」分级，低优先级更新必须落在高优先级目标的零空间内。
+**PriMoRetarget**（*Humanoid Motion Transfer Through Prioritized Motion Retargeting*，[arXiv:2610.12642](https://arxiv.org/abs/2610.12642)，[项目页](https://nickioan.github.io/primoretarget-page/)）作者来自 **Simon Fraser University、FieldAI、NVIDIA 与 Alberta Machine Intelligence Institute（Amii）**；Nicholas Ioannidis 与 Dun Yang 为共同第一作者，均属 Simon Fraser University。方法将重定向目标按「脚位置 → 接触保持 → 其余姿态/交互」分级，低优先级更新必须落在高优先级目标的零空间内。
 
 ## 一句话定义
 

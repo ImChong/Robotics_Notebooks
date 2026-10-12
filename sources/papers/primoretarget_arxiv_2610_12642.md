@@ -4,7 +4,7 @@
 
 - **题目：** PriMoRetarget: Humanoid Motion Transfer Through Prioritized Motion Retargeting
 - **作者：** Nicholas Ioannidis, Dun Yang, Max Smith, Tue Vu, Ziyu Zhang, Shayegan Omidshafiei, Xue Bin Peng
-- **单位：** FieldAI（前五位与 Omidshafiei）；Simon Fraser University（Ziyu Zhang、Xue Bin Peng；Peng 另列 NVIDIA 与 Alberta Machine Intelligence Institute）
+- **单位：** Simon Fraser University（Nicholas Ioannidis、Dun Yang〔共同第一作者〕、Ziyu Zhang、Xue Bin Peng）；FieldAI（Max Smith、Tue Vu、Shayegan Omidshafiei）；Xue Bin Peng 另列 NVIDIA 与 Alberta Machine Intelligence Institute（Amii）
 - **预印本：** https://arxiv.org/abs/2610.12642
 - **HTML：** https://arxiv.org/html/2610.12642v1
 - **版本：** v1，2026-10-08，cs.RO / cs.GR
