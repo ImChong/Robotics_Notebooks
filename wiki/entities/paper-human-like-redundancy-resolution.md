@@ -4,7 +4,6 @@ project_id: human-like-redundancy-resolution
 tags: [paper, teleoperation, humanoid, bimanual-manipulation, inverse-kinematics, redundancy-resolution, tongji, jaka]
 status: complete
 updated: 2026-10-12
-paper: "https://github.com/chaotan2003/human-like-redundancy/blob/main/paper.pdf"
 project: "https://chaotan2003.github.io/human-like-redundancy/"
 code: "https://github.com/IAIE-PhysicalAI/Bimanual-Teleoperation"
 related:
