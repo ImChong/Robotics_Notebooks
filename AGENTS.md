@@ -130,6 +130,20 @@
 - Codex CLI 可用示例：`codex mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest`
 - 用途：打开本地页面、检查 console/network、模拟点击/键盘交互、截图或验证图谱节点状态。
 
+### 飞书公开文档抓取
+
+ingest `*.feishu.cn/wiki|docx` 文档时，`WebFetch` 会被 302 到登录页；用浏览器打开「互联网公开」文档虽然能进访客视图，但正文是**虚拟滚动**（只有当前可见的块在 DOM 里），一次性读取只能拿到左侧目录或开头几段。用脚本边滚边按 `data-block-id` 累积文本：
+
+```bash
+pip install playwright   # 只需 Python 包；浏览器用云容器预装的 Chromium（/opt/pw-browsers），勿 playwright install
+python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --links -o /tmp/feishu-doc.txt
+```
+
+- `--links` 在文末附「正文超链接」（文字 → 地址），可取到各论文 / 原帖链接（链接里常带 arXiv 编号）。
+- 输出是纯文本，不含图片与表格结构；实测（2026-10-12，WaytoAGI 周报页）70 个块、约 6000 字符，到底即止。
+- 只适用于「互联网公开」文档；需要登录或无权限会停在登录页，脚本以退出码 2 报错。页面结构改版时，容器选择器 `.page-block-children` 可能失效（**未做长期稳定性验证**）。
+- 飞书文档多为转载：归档到 `sources/` 时保留原文链接与版权声明，只提炼条目线索，不整篇转存。
+
 ### LLM Wiki Ops 规范（必须遵守）
 
 本知识库采用 **Karpathy LLM Wiki 模式**：LLM 是维护者，人类是 curator。
