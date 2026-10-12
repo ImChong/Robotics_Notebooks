@@ -2028,6 +2028,7 @@
 - [IROS 2026：VC 电机模式切换动态人形甩臂](wiki/entities/paper-iros26-vc-motor-dynamic-arm-swing.md) — Dynamic Humanoid Arm-Swing Motion via Trajectory Optimization Leveraging Speed–Torque Mode Switchi `📅unknown` `[entity_page]`
 - [IRWOZ 2.0：工业机器人对话数据集](wiki/entities/paper-irwoz-2.md) — IRWOZ 2.0**（*A Large Language Model-driven Dialogue Dataset for Industrial Robot Conversations*，[a `📅unknown` `[entity_page]`
 - [JAMB（arXiv:2609.25322）](wiki/entities/paper-jamb-bimanual-diffusion.md) — JAMB**（*JAMB: Joint Action-Motion Diffusion for Bimanual Manipulation*，[arXiv:2609.25322](https:// `📅unknown` `[entity_page]`
+- [JEPA-Anything（跨世界预测模型）](wiki/entities/paper-jepa-anything.md) — JEPA-Anything 以 **Orthogonal Predictive Factorization（OPF）** 组织跨领域 JEPA：把未来潜在目标拆成互补因素、分别预测后重组为共享预测表示 `📅unknown` `[entity_page]`
 - [JEPA Policy：扩散-free 的动作与未来表征联合模仿学习](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（*Diffusion-Free Imitation Learning via Paired Action and Future Representation Predi `📅unknown` `[entity_page]`
 - [JEPA-WAM（arXiv:2608.09381）](wiki/entities/paper-jepa-wam.md) — JEPA-WAM**（arXiv:2608.09381）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
 - [JEPLO（arXiv:2609.15770）](wiki/entities/paper-jeplo.md) — JEPLO**（*JEPLO: Joint-Embedding Predictive Learning for LiDAR-Based Legged Locomotion*，[arXiv:2609 `📅unknown` `[entity_page]`
@@ -3362,6 +3363,7 @@
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Am `📅unknown` `[entity_page]`
 - [RPV-SemNav（arXiv:2607.25448）](wiki/entities/paper-rpv-semnav.md) — RPV-SemNav**（*Room-Mediated Co-occurrence for Zero-Shot Object-Centric Semantic Navigation via Fro `📅unknown` `[entity_page]`
 - [RRSI：正则化的 Agent Harness 递归自我改进](wiki/entities/paper-rrsi-2609-24972.md) — RRSI**（arXiv:2609.24972v2）由 Google Cloud AI Research 等提出，研究如 `📅unknown` `[entity_page]`
+- [RSI-Anything（世界模型辅助的递归自我改进）](wiki/entities/paper-rsi-anything.md) — RSI-Anything 是一个以预测式世界模型辅助候选筛选、策略学习和受控模型适配的跨任务迭代改进框架；它把“自我改进”落在可评估、可回滚的组件闭环，而不是宣称系统已自主设计并部署全新后继模型。 `📅unknown` `[entity_page]`
 - [RSI Survey（2607.07663）：从有界 Self-Refinement 到自主研究闭环](wiki/entities/paper-rsi-survey-2607-07663.md) — Recursive Self-Improvement in AI**（Chen, Wang & Qu；[arXiv:2607.07663](https://arxiv.org/abs/2607.0 `📅unknown` `[entity_page]`
 - [RT-1：规模化真机控制的 Robotics Transformer](wiki/entities/paper-rt-1.md) — RT-1**（*RT-1: Robotics Transformer for Real-World Control at Scale*，[arXiv:2212.06817](https://arx `📅unknown` `[entity_page]`
 - [RT-2：用 VLM 把网页知识迁到机器人控制](wiki/entities/paper-rt-2.md) — RT-2**（*RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*，[arXiv:2307 `📅unknown` `[entity_page]`
@@ -4690,6 +4692,7 @@
 - [PCB Motor（PCB 定子轴向磁通电机）](wiki/entities/pcb-motor.md) — PCB Motor**（ziteh/pcb-motor）是 **PCB 定子** 的轴向磁通 PMSM/BLDC 开源硬 `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
 - [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
+- [PhAI Labs（科学 AI 研究机构）](wiki/entities/phai-labs.md) — PhAI Labs 是以模型和数据基础设施推动科学发现为公开定位的研究机构，发布 JEPA-Anything、RSI-Anything、ScienceBuddy、ScienceIDE 等研究项目。 `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [Physical Commonsense（Generalist 产业观点）](wiki/entities/physical-commonsense-generalist.md) — The Dark Matter of Robotics: Physical Commonsense**（Andy Zeng & Generalist Team，[2026-01-29](https `📅unknown` `[entity_page]`
