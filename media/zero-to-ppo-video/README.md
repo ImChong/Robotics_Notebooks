@@ -44,4 +44,5 @@ node check_layout.mjs ep001 cover
 
 - Chromium：设置 `CHROME=/path/to/chrome`，否则用 playwright-core 默认路径。
 - 走 TLS 代理时设置 `SSL_CERT_FILE`，`build.py` 会让 edge-tts 用这份 CA。
+- 2026-10 起旧合成地址 `speech.platform.bing.com` 回 403，PyPI 上的 edge-tts 7.2.8 合成不了；新版发布前先装 [rany2/edge-tts#491](https://github.com/rany2/edge-tts/pull/491)（改走 `api.msedgeservices.com`）：`pip3 install "git+https://github.com/rany2/edge-tts@refs/pull/491/head"`。
 - 成片、封面、配音都在 `out/`，不入库。
