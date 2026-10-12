@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-10-06
+updated: 2026-10-12
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -228,6 +228,8 @@ flowchart TD
 - Peng et al., *AMP: Adversarial Motion Priors* (SIGGRAPH 2021) — 重定向产物在 RL 风格先验中的下游用途
 
 ## 关联页面
+
+- [MEgoVista](../entities/paper-megovista.md) — 已标定多视角录制的公制双手/头部离线重建；重定向前分别审核局部姿态、绝对位置、尺度及观测覆盖率。
 
 - [Motion Retargeting（动作重定向）](./motion-retargeting.md) — 概念页：单次映射的定义与分类
 - [Whole-Body Tracking Pipeline（全身运动跟踪流水线）](./whole-body-tracking-pipeline.md) — **下游消费方**：把本流水线的参考产物训成可在真机上执行的全身跟踪策略
