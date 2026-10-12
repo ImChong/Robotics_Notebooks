@@ -108,6 +108,12 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | CADCraft：原生 Rust CAD 与 MCP 自动化入口
+
+- 收录 CADCraft 官方代码与产品页，沉淀可运行 CAD 应用实体，并记录 DXF / DWG 读写边界与版本显示差异。
+- 与 CAD Skills 建立入链，区分 CAD 应用本体与 Agent 技能工具链。
+- 核查项目为 MIT OR Apache-2.0 开源，GUI / CLI / MCP / WASM 共用 Rust 绘图引擎。
+
 ## [2026-10-12] ingest | RSI-Anything 与 JEPA-Anything 论文、代码和 PhAI Labs 官网
 
 - 分别建立 RSI-Anything 与 JEPA-Anything 论文实体，归档论文、官方代码仓及项目页；新增 PhAI Labs 机构节点和机构标签。

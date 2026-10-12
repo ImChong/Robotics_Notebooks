@@ -122,6 +122,7 @@
 - [BrowserSkill（腾讯 · 浏览器 Agent 桥）](wiki/entities/browserskill.md) — BrowserSkill**（Tencent/BrowserSkill，MIT）让 **Cursor、Clau `📅unknown` `[entity_page]`
 - [CAD 1000 Hours（Markov AI）](wiki/entities/cad-1000-hours-dataset.md) — CAD 1000 Hours**（[markov-ai/cad-1000-hours](https://huggingface.co/datasets/markov-ai/cad-1000-hou `📅unknown` `[entity_page]`
 - [CAD Skills](wiki/entities/cad-skills.md) — CAD Skills** 是 earthtojake/text-to-cad 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
+- [CADCraft：可由 Agent 驱动的原生开源 CAD](wiki/entities/cadcraft.md) — CADCraft**（官方项目页，[GitHub](https://github.com/storytold/ca `📅unknown` `[entity_page]`
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
 - [CAE Agent Hub（Cai-aa/CAE-Agent-Hub）](wiki/entities/cai-aa-cae-agent-hub.md) — CAE Agent Hub（Cai-aa/CAE-Agent-Hub）是中文 CAE 代理资源仓库，把 Skill 与 MCP 执行服务分层。 `📅unknown` `[entity_page]`
 - [FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）](wiki/entities/cai-aa-freecad-automation-skill.md) — FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）是FreeCAD 自动化技能，文章列出参数化建模、装配、TechDra `📅unknown` `[entity_page]`
