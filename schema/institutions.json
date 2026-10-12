@@ -4073,6 +4073,12 @@
         "roboverse-org",
         "roboversorg"
       ]
+    },
+    "mujocolab": {
+      "label": "开源仿真工具社区（MujocoLab）",
+      "aliases": [
+        "mujocolab"
+      ]
     }
   }
 }
