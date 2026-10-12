@@ -3,8 +3,11 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-10-06
+updated: 2026-10-12
 sources:
+  - ../../sources/papers/human-like-redundancy-resolution.md
+  - ../../sources/sites/human-like-redundancy.md
+  - ../../sources/repos/bimanual-teleoperation.md
   - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -385,3 +388,8 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [ALOHA 项目主页](https://mobile-aloha.github.io/) — Stanford 双臂遥操作系统
 - [OmniH2O 论文](https://arxiv.org/abs/2406.08858) — 人形全身遥操作
 - [ACT 论文](https://arxiv.org/abs/2304.13705) — 遥操作数据 + 动作块学习
+
+
+### 双臂类人冗余解析
+
+[Human-Like Redundancy Resolution](../entities/paper-human-like-redundancy-resolution.md) 以肩—腕几何生成腕目标，并将自适应肘部偏好投影到腕任务零空间；注意公开运行示例是 JAKA K1 + Viser 可视化栈，不含真机输出路径。
