@@ -7,7 +7,7 @@
 - **官方仓库：** https://github.com/mujocolab/mjviser
 - **关联项目：** [MuJoCo](https://github.com/google-deepmind/mujoco)、[Viser](https://github.com/viser-project/viser)、[mjlab](https://github.com/mujocolab/mjlab)
 - **许可证：** Apache-2.0
-- **核查版本：** 0.0.14（读取仓库 `pyproject.toml)，2026-10-12）
+- **核查版本：** 0.0.14（读取仓库 `pyproject.toml`，2026-10-12）
 - **入库日期：** 2026-10-12
 - **一句话说明：** 将 MuJoCo 模型与状态接入 Viser，提供浏览器里的实时 3D 场景、仿真控制和状态检查；它是查看器，不是训练框架或物理引擎。
 - **沉淀到 wiki：** 是 → [`wiki/entities/mjviser.md`](../../wiki/entities/mjviser.md)
@@ -73,7 +73,7 @@ flowchart LR
 
 mjlab 的训练环境可使用 mjviser 作为可视化工具。mjlab 侧通过 `MjlabViserScene` 扩展 `ViserMujocoScene`，补充训练/仿真相关的调试可视化与 MuJoCo Warp 适配。训练任务、策略更新和大规模并行 rollout 属于 mjlab；通用场景查看、交互控件和网页呈现由 mjviser/Viser 提供。
 
-这也解释了 Draft 仓库依赖的区别：其 `editor` 可选依赖使用 Viser，`figures` 可选依赖列出 mjviser 以渲染展示图，`rl` 可选依赖才包含 mjlab。看到白底网页 3D 视图时，更准确的归类是 Viser/mjviser 可视化界面，而不是 mjlab 本身。
+Draft 仓库依赖分组区分了不同用途：浏览器参数编辑器的 `editor` extra 使用 Viser；`figures` extra 显式包含 mjviser 用于渲染论文展示图；`rl` extra 包含 mjlab 用于训练。若指论文中的静态白底渲染图，仓库依赖线索指向 mjviser；若指交互式参数编辑器，则它直接使用 Viser。二者都不应笼统称为“mjlab 渲染器”。
 
 ---
 
