@@ -23,6 +23,7 @@ related:
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-humanoidvln.md
   - ../entities/paper-crosstracer.md
+  - ../entities/paper-wild-nav-longtail.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
@@ -246,6 +247,7 @@ sources:
 - [CrossTracer](../entities/paper-crosstracer.md) — 像素轨迹残差做跨本体导航；NaviTrace；待核实开源
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；待开源
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal 导航（对照；未开源）
+- [WILD-Nav / WILD-LongTail](../entities/paper-wild-nav-longtail.md) — 从野外视频训练城市 point-goal VLA，并将稀有度和模型失败分开诊断；截至 2026-10-12 未找到官方代码或数据入口
 - [S²-VLA（驾驶双流 VLA）](../entities/paper-s-squared-vla.md) — NAVSIM 端到端规划；与 VLN / RobotNav 驾驶 mode 对照
 - [Qwen-RobotNav](../entities/qwen-robot-nav.md) — 统一 VLN / ObjNav / 跟踪 / NAVSIM 的导航基座
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA / Spot 例行找人（对照仿真 EQA）
