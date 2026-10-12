@@ -27,7 +27,7 @@ VLA 主要依据当前观测输出动作，缺少对「动作之后环境会怎�
 
 ## 论文报告的结果
 
-- **RoboTwin 2.0（Easy / Hard）：** PLaW-VLA 平均 85.6 / 83.2；π0.5 82.7 / 76.8；X-VLA 72.9 / 72.8；π0 65.9 / 58.4。Hard Horizon III：82.4 / 79.2 对 π0.5 78.6 / 67.4 中的 Hard 列，即 +11.8 个百分点（79.2 对 67.4）。逐任务 Hard：36 个提升、4 个持平、10 个下降。
+- **RoboTwin 2.0（Easy / Hard）：** PLaW-VLA 平均 85.6 / 83.2；π0.5 82.7 / 76.8；X-VLA 72.9 / 72.8；π0 65.9 / 58.4。Horizon III（Easy / Hard）：PLaW-VLA 82.4 / 79.2，π0.5 78.6 / 67.4，Hard 上 +11.8 个百分点。逐任务 Hard：36 个提升、4 个持平、10 个下降。
 - **LIBERO：** 平均 97.4（Spatial 98.9 / Object 99.0 / Goal 97.1 / Long 94.6），π0.5 96.9，VLA-JEPA 97.2，OpenVLA-OFT 97.1；VLA-JEPA 在 Goal 与 Long 上更高。
 - **LIBERO-Plus 零样本：** 平均 72.7（Robot 73.5 / Layout 89.9 / Light 93.1 / Background 93.6 / Language 75.7 / Noise 55.2 / Camera 41.5）；OpenVLA-OFT 69.6、π0-FAST 61.6、π0 53.6。
 - **消融（LIBERO / LIBERO-Plus）：** 完整 97.40/72.70；去 Stage I 96.28/69.05；去世界模型 96.05/65.49；去预测损失 96.30/67.56；去未来条件 96.85/69.81；Cosmos VAE 替代 V-JEPA 2 为 96.65/70.93；去 Stage II 95.65/66.03；去 I+II 94.05/60.80。推理期屏蔽未来状态：全屏蔽 93.05，屏蔽远期 95.45，屏蔽近期 95.80（LIBERO）。

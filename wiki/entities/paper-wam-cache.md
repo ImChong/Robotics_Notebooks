@@ -113,7 +113,7 @@ flowchart TB
 
 | 对照 | 差异读法 |
 |------|----------|
-| [Fast-WAM](./paper-fast-wam.md) | 被加速的基座；Fast-WAM 本身通过去掉测试时视频想象降低延迟，WAM-Cache 在其保留的 prefill 上再省算力 |
+| [Fast-WAM](./paper-fast-wam.md) | 被加速的基座；测试时只编码当前观测、每块一次视频 DiT prefill，WAM-Cache 在这次 prefill 上再省算力 |
 | VLA-Cache / FastV / ToMe / Eventful Transformer | 论文中的同 FLOPs 免训练基线，按视觉相似度或 token 重要性裁剪，在 WAM 上显著更差 |
 | [CF-WAM](./paper-cf-wam-dynamic-next-state-prediction.md) | 关注未来表示的选择而非推理成本，二者正交 |
 

@@ -23,7 +23,7 @@ summary: "SkillWeave 按交互类型混用遥操作（到达/搬运）与动觉�
 
 # SkillWeave
 
-**SkillWeave**（arXiv:2610.12046，CMU / Keio / UC Berkeley / Bosch 等，Jeffrey Ichnowski 为通讯端作者之一）把长程灵巧操作拆为子技能，按交互类型选择示范方式：粗略到达和搬运用遥操作，接触密集的灵巧动作用动觉示教；再用**物体掩码条件扩散策略**处理动觉画面里的示教者，用**后继感知终端引导**让前驱策略的终点落进后继策略见过的起始状态。
+**SkillWeave**（arXiv:2610.12046，CMU / Keio / UC Berkeley / Bosch 等，作者含 Jeffrey Ichnowski、Jonathan Francis 等）把长程灵巧操作拆为子技能，按交互类型选择示范方式：粗略到达和搬运用遥操作，接触密集的灵巧动作用动觉示教；再用**物体掩码条件扩散策略**处理动觉画面里的示教者，用**后继感知终端引导**让前驱策略的终点落进后继策略见过的起始状态。
 
 ## 英文缩写速查
 
