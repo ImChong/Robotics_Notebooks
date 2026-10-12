@@ -4,7 +4,6 @@ project_id: world-model-consultation-study
 tags: [paper, world-model, model-based, planning, navigation, manipulation, simulation]
 status: complete
 updated: 2026-10-12
-paper: "https://github.com/VasPug/robot-world-model-study-/blob/main/paper.pdf"
 project: "https://github.com/VasPug/robot-world-model-study-"
 code: "https://github.com/VasPug/robot-world-model-study-"
 related:
