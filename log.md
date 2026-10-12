@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | CLOTHO（TOG/SIGGRAPH Asia 2026）：归档 DOI 与项目页，整理松散惯性服装 IMU canonicalization 方法、跨服装评测与待核实开源状态。
+
 ## [2026-10-12] ingest | sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md — 具身智能小站 34 篇盘点：34/34 新建独立论文详情节点（逐篇读 arXiv 摘要/HTML 并核查项目页/仓库），汇总页 embodied-station-34-papers-spatial-grounding-technology-map；公众号抓取用 scripts/fetch_wechat_article.py。
 
 ## [2026-10-12] ingest | sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md 与 frontier_manipulation_2026_10_05_10_09.md — 10.5-10.9 两篇周报共 73 篇不同论文：新建 60 个独立论文详情节点（逐篇读 arXiv 摘要/HTML 并核查项目页开源状态），13 个已有节点补链；5 篇在两期重复；另新增 scripts/fetch_wechat_article.py 作为公众号抓取兜底。
