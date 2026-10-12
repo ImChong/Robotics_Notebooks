@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-12
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -12,6 +12,7 @@ related:
   - ../queries/robot-policy-debug-playbook.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+  - ../entities/paper-csf-contextual-safety-filter.md
   - ../entities/paper-fail-passive-gap.md
   - ./llm-robotics-control-interfaces.md
   - ./model-hardware-standard.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
+  - ../../sources/papers/csf_contextual_safety_filtering_arxiv_2610_12467.md
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/sites/anthropic-model-hardware-standard.md
@@ -76,6 +78,8 @@ $$
 $$
 
 这种形式的优点是：改动最小、实时可解、可给出安全集不变性的理论保证。
+
+**生成式动作实例：** [CSF](../entities/paper-csf-contextual-safety-filter.md) 在 sampler 的动作估计空间里用语义 CBF-QP 过滤，并由场景门控决定规则是否激活；它与本页直接修改控制输入、约束几何安全集的实现互补。
 
 ### 2. 几何 / 规则式过滤
 
