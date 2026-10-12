@@ -1569,6 +1569,7 @@
 - [Diffusion Policy：用去噪生成动作序列](wiki/entities/paper-diffusion-policy.md) — Diffusion Policy**（*Visuomotor Policy Learning via Action Diffusion*，[arXiv:2303.04137](https://ar `📅unknown` `[entity_page]`
 - [Diffusion-VLA](wiki/entities/paper-diffusion-vla.md) — Diffusion-VLA**（arXiv:2412.03293）收录于 Lumina [Embodied-AI-Guide `📅unknown` `[entity_page]`
 - [DiffusionDrive（DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving · arXiv:2411.15139）](wiki/entities/paper-diffusiondrive.md) — DiffusionDrive**（*DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving*，[24 `📅unknown` `[entity_page]`
+- [DiffWAM: A Fast and Efficient Navigation World Action Model（快速高效的导航世界–动作模型）](wiki/entities/paper-diffwam.md) — 从视频模型的早期未来表示直接预测相机运动，省掉在线未来视频渲染和多帧重建，再由规划与飞控将候选轨迹变成可执行飞行。** 本页以 arXiv:2609.39763v1 的具体方法章节和表格为准，项目 `📅2026-09-30` `[entity_page]`
 - [Real-World Humanoid Locomotion with Reinforcement Learning（Digit）](wiki/entities/paper-digit-humanoid-locomotion-rl.md) — 一句话定义**：在 Agility Digit 全尺寸人形上，用 **大规模并行仿真 + 域随机化** 训练 **因果 Transformer**，从本体感觉与动作历史自回归预测下一步关节指令，经 `📅unknown` `[entity_page]`
 - [DigitCode：按解剖单元做手部动作符号化](wiki/entities/paper-digitcode.md) — DigitCode**（*Symbolic Tokenization of Hand Motion by Anatomical Units*；[arXiv:2608.03127](https:// `📅unknown` `[entity_page]`
 - [DIMOS：室内 3D 场景中的多样人体运动合成](wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — DIMOS**（*Synthesizing Diverse Human Motions in 3D Indoor Scenes*，arXiv:2305.12411，ICCV 2023，[项目页 `📅unknown` `[entity_page]`
