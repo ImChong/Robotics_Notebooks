@@ -4464,6 +4464,7 @@
 - [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[arXiv:2608. `📅unknown` `[entity_page]`
 - [Wid3R：相机模型条件化的宽视场 3D 重建](wiki/entities/paper-wid3r.md) — Wid3R**（*Wide Field-of-View 3D Reconstruction via Camera Model Conditioning*，arXiv:[2602.05321](ht `📅unknown` `[entity_page]`
 - [WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）](wiki/entities/paper-wikiskill.md) — WikiSkill**（*Compiling Agent Experience into Persistent Knowledge for Skill Evolution*，[arXiv:2608 `📅unknown` `[entity_page]`
+- [WILD-Nav：野外视频驱动的城市导航与长尾诊断](wiki/entities/paper-wild-nav-longtail.md) — WILD-Nav**（论文 *Exposing the Long-tail in Embodied Urban Navigation via Scalable Learning from In-t `📅unknown` `[entity_page]`
 - [World In Your Hands（WIYH）：野外人类中心操作开源生态](wiki/entities/paper-wiyh.md) — World In Your Hands（WIYH）**（*A Large-Scale and Open-Source Ecosystem for Learning Human-Centric Ma `📅unknown` `[entity_page]`
 - [WLA³（arXiv:2609.15870）](wiki/entities/paper-wla3.md) — WLA³**（*WLA^3: World Latent Action Modeling for Semantics, Dynamics, and Kinematics*，[arXiv:2609.1 `📅unknown` `[entity_page]`
 - [Compositional CL WM Benchmark（arXiv:2609.22055）](wiki/entities/paper-wm-compositional-cl-benchmark.md) — Compositional CL WM Benchmark**（*Benchmarking World Models for Continual Learning on Compositional `📅unknown` `[entity_page]`
