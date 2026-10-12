@@ -7,7 +7,6 @@ related:
   - ./mujoco.md
   - ./mujoco-warp.md
   - ./mjlab.md
-  - ./draft.md
 sources:
   - ../../sources/repos/mjviser.md
 summary: "mjviser 是基于 Viser 的 MuJoCo 浏览器查看器：把 MjModel/MjData 呈现为交互式 3D 场景；mjlab 可用它观察仿真，但 mjviser 不承担 RL 训练。"
