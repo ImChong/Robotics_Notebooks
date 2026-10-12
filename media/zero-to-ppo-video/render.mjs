@@ -15,7 +15,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = execFileSync('python3', ['-c', 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())']).toString().trim();
 const [name, mode, arg] = process.argv.slice(2);
 const OUT = path.join(HERE, 'out', name);
-const PARTS = 1;   // video 默认分几段并行（见 README）
+const PARTS = 3;   // video 默认分几段并行：4 核机器上实测 1/2/3/4 段 = 530/392/360/342 s，3 段以后几乎不再变快（见 README）
 // a cover needs no narration: without build.py's timeline, fake a 30 s intro so every block has faded in
 const tlPath = path.join(OUT, 'timeline.json');
 let tl = mode === 'scene' ? null : fs.existsSync(tlPath) ? JSON.parse(fs.readFileSync(tlPath, 'utf8'))

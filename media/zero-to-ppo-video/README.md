@@ -37,7 +37,7 @@ node render.mjs ep001 scene 3 0,5,12   # 做分镜时：不配音，单看第 3 
 python3 build.py ep001                 # 旁白 TTS -> out/ep001/timeline.json + narration.wav
 node render.mjs ep001 stills 5,40,90   # 先抽几帧看排版
 node check_layout.mjs ep001            # 输出 no overlap 才算过
-node render.mjs ep001 video 30         # -> out/ep001/ep001_video.mp4
+node render.mjs ep001 video 30         # -> out/ep001/ep001_video.mp4（默认 3 段并行，第 4 个参数可改段数，1 = 一口气渲染）
 node render.mjs ep001 cover            # -> out/ep001/cover.png
 node check_layout.mjs ep001 cover
 ```
@@ -45,4 +45,5 @@ node check_layout.mjs ep001 cover
 - Chromium：设置 `CHROME=/path/to/chrome`，否则用 playwright-core 默认路径。
 - 走 TLS 代理时设置 `SSL_CERT_FILE`，`build.py` 会让 edge-tts 用这份 CA。
 - 2026-10 起旧合成地址 `speech.platform.bing.com` 回 403，PyPI 上的 edge-tts 7.2.8 合成不了；新版发布前先装 [rany2/edge-tts#491](https://github.com/rany2/edge-tts/pull/491)（改走 `api.msedgeservices.com`）：`pip3 install "git+https://github.com/rany2/edge-tts@refs/pull/491/head"`。
+- 分段并行只在换幕处切（一幕里有的动画记着前面几帧），各段各开一个页面、各编一段无声视频，最后拼接再配旁白。001 全片（9356 帧）在 4 核机器上实测：1 / 2 / 3 / 4 段 = 530 / 392 / 360 / 342 s，逐帧和一口气渲染的版本比 PSNR 都 ≥ 50 dB。核数多的机器可以多分几段，最多到幕数。
 - 成片、封面、配音都在 `out/`，不入库。
