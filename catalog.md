@@ -1179,6 +1179,7 @@
 - [空中-水中两栖搭便车机器人：仿印鱼吸盘+被动变形桨](wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md) — Aerial-aquatic robots capable of crossing the air-water boundary and hitchhiking on surfaces**（Don `📅unknown` `[entity_page]`
 - [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [AFCE：让 VLA 预测「动作将产生的效果」而不只是动作](wiki/entities/paper-afce-action-future-coupled-effect-vla.md) — AFCE**（*Action–Future Coupled Effect Learning*；论文 *Beyond Actions: Learning Future Operation Targe `📅unknown` `[entity_page]`
+- [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AgentSTAR（单目视频 Agentic 形状跟踪与重建）](wiki/entities/paper-agenticstar.md) — AgentSTAR**（*Agentic Shape Tracking and Reconstruction from Monocular Videos*，[arXiv:2609.24487](h `📅unknown` `[entity_page]`

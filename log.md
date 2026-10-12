@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | sources/papers/agentgarten_arxiv_2610_12374.md — 收录显式 code worlds、神经渲染器、playbook 学习轮次及部分开源边界，并连接生成式世界模型与 Code-as-World
+
 ## [2026-10-12] ingest | sources/papers/csf_contextual_safety_filtering_arxiv_2610_12467.md — CSF 论文、项目页与 Apache-2.0 仓库归档；新增 G1 场景语义安全过滤实体并关联 CBF / Safety Filter。
 
 - 核心结论：冻结文本动作生成器，以场景门控、生成器自身安全/危险参考和采样内 CBF-QP 调整动作；执行中场景变化时改写未执行轨迹。
