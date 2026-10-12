@@ -84,11 +84,10 @@ sequenceDiagram
     participant Test as 对账锚点测试
     Eng->>Docs: 以自然语言修改文档
     Orc->>Docs: 读取依赖并拓扑排序
-    loop 每篇文档
-        Orc->>Agent: 分配文档与上游产物
-        Agent->>Test: 生成实现与测试
-        Test-->>Agent: 失败则进入修复
-    end
+    Orc->>Agent: 分配单篇文档与上游产物
+    Agent->>Test: 生成实现与测试
+    Test-->>Agent: 失败则进入修复
+    Note over Orc,Test: 对每篇文档重复
     Orc-->>Eng: 日志（卡点 / bug）用于改文档
 ```
 

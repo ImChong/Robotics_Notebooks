@@ -32,7 +32,7 @@ summary: "PARSER（arXiv:2609.06702，CUHK）：并行冻结子智能体读 chun
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| PARSER | Parallel Read, Serial/Scatter Reasoning（题名写作 ParSer，全称论文未展开，此处仅为代称） | 本文方法名 |
+| PARSER | （原文未展开全称；HTML 页写作 ParSer） | 本文方法名 |
 | GRPO | Group Relative Policy Optimization | 主导智能体的 RL 算法，见 [GRPO](../methods/grpo.md) |
 | RL | Reinforcement Learning | 仅训练主导智能体 |
 | QA | Question Answering | 评测任务，多跳 HotpotQA / 2Wiki |
