@@ -4,7 +4,6 @@ project_id: vadar
 tags: [paper, reinforcement-learning, hierarchical-reinforcement-learning, goal-conditioned, long-horizon, cmu]
 status: complete
 updated: 2026-10-12
-paper: "https://shashwatsaxena13.github.io/vadar-site/assets/vadar-paper.pdf"
 project: "https://shashwatsaxena13.github.io/vadar-site/"
 related:
   - ../methods/hierarchical-reinforcement-learning.md
