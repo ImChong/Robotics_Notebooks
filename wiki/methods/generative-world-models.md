@@ -15,6 +15,8 @@ related:
   - ../entities/paper-sc3-eval.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../entities/paper-jepa-anything.md
+  - ../entities/paper-rsi-anything.md
   - ../entities/paper-cap-perception-blind-humanoid.md
   - ../entities/paper-wm-loco.md
   - ../entities/paper-locowm.md
@@ -515,6 +517,9 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [ActEffect](../entities/paper-phi-wm-acteffect.md) — 训练时后果反馈，部署卸 WM（光象技术报告；未开源）
 
 ### 非像素表征路线（JEPA / 轨迹 / ODE）
+
+- [JEPA-Anything](../entities/paper-jepa-anything.md) — OPF 将潜在目标拆为互补因子并分路预测，覆盖七类领域；其 GitHub 提供核心与任务脚手架，不等于论文全域训练复现。它预测潜在表示，不是像素视频渲染器。
+- [RSI-Anything](../entities/paper-rsi-anything.md) — 以 JEPA-Anything 为基础，将预测用于候选策略/工作流筛选，再由任务评估决定学习和保留；是独立系统项目，不是 JEPA-Anything 的同一实现。
 
 - [WCM](../entities/paper-wcm-world-critic-model.md) — JEPA 隐空间预测路线：不生成像素，只用预测目标监督 critic 表征（靠 SIGReg 防坍塌）
 - [LeJEPA](../entities/paper-lejepa.md) — SIGReg 图像配方；后续规划/视频 JEPA 的防坍塌起点
