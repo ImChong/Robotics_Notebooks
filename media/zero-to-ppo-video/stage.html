@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="vendor/paper-demos.css">
 <style>
 /* 配色与论文精读系列（视频号 / 小红书上的《从头学人形机器人算法》）统一：灰黑底 + 蓝 #569cd6，
-   四步颜色取自同一套配色（绿 #4ec9a4、紫 #c586c0、蓝、琥珀 #d7a75f）。区分只靠细节：角标「零基础篇」和要点框用绿色。 */
+   四步颜色取自同一套配色（绿 #4ec9a4、紫 #c586c0、蓝、琥珀 #d7a75f）。本系列标识色是亮黄 --hi #ffd166：
+   封面 / 片头大标题、角标「零基础篇」色块、目录符号（论文系列这三处是蓝、绿字、蓝），缩略图一排里一眼能分开。 */
 :root, [data-theme="dark"] {
   --bg: #16161a; --text: #e6e6e6; --text-secondary: #a8a8a8;
   --demo-surface: #1f1f24; --demo-surface-2: #2a2a30; --demo-border: #3a3a42;
@@ -25,7 +26,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   background: radial-gradient(1200px 700px at 50% 30%, #1f2330 0%, var(--bg) 70%); }
 .brand { position: absolute; top: 70px; left: 60px; right: 60px; display: flex; justify-content: space-between;
   align-items: center; font-size: 30px; color: var(--text-secondary); }
-.brand b { color: var(--demo-good); font-weight: 900; }
+.brand b { background: var(--hi); color: var(--bg); font-weight: 900; padding: 4px 16px; border-radius: 10px; }
 .pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; }
 
 /* ── scene chrome ── */
@@ -66,7 +67,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 /* ── intro / cover / outro cards ── */
 .card { position: absolute; inset: 0; }
 .big { position: absolute; left: 0; right: 0; text-align: center; }
-.big .t { font-weight: 900; color: var(--demo-accent); line-height: 1.08; white-space: nowrap; }
+.big .t { font-weight: 900; color: var(--hi); line-height: 1.08; white-space: nowrap; }
 .big .zh { font-weight: 900; line-height: 1.25; white-space: nowrap; }
 .big .pitch { color: var(--text-secondary); margin-top: 8px; white-space: nowrap; }
 .meta { position: absolute; left: 90px; right: 90px; border: 2px solid var(--demo-border); border-radius: 24px;
@@ -74,7 +75,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .meta b { color: var(--text); }
 .toc { position: absolute; left: 90px; right: 90px; font-size: 40px; line-height: 1.9; }
 .toc div { white-space: nowrap; }
-.toc span { color: var(--demo-accent); font-weight: 900; margin-right: 20px; font-family: 'DejaVu Sans', sans-serif; }
+.toc span { color: var(--hi); font-weight: 900; margin-right: 20px; font-family: 'DejaVu Sans', sans-serif; }
 .footer { position: absolute; left: 60px; right: 60px; text-align: center; font-size: 34px; line-height: 1.4; color: var(--text-secondary); }
 .pt { position: absolute; left: 70px; right: 70px; border-radius: 24px; padding: 24px 36px;
   background: var(--demo-surface); border: 2px solid var(--demo-border); font-size: 42px; line-height: 1.5; }
