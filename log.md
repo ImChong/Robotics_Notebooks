@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md — WaytoAGI 飞书周报（转载 DAIR.AI）10 篇论文：新建 9 个独立详情节点、复用 1 个已有节点（递归自我改进综述）；偏 LLM 智能体而非机器人，各节点写明与机器人学习的关系；飞书正文用 scripts/fetch_feishu_doc.py 获取。
+
 ## [2026-10-12] ingest | CLOTHO（TOG/SIGGRAPH Asia 2026）：归档 DOI 与项目页，整理松散惯性服装 IMU canonicalization 方法、跨服装评测与待核实开源状态。
 
 ## [2026-10-12] ingest | sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md — 具身智能小站 34 篇盘点：34/34 新建独立论文详情节点（逐篇读 arXiv 摘要/HTML 并核查项目页/仓库），汇总页 embodied-station-34-papers-spatial-grounding-technology-map；公众号抓取用 scripts/fetch_wechat_article.py。
