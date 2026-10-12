@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-10-09
+updated: 2026-10-12
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-gentrack.md
   - ../entities/paper-humantracker.md
+  - ../entities/paper-mimicx.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
   - ../entities/paper-dpc.md
