@@ -4884,6 +4884,7 @@
 - [X-Humanoid（北京人形机器人创新中心）](wiki/entities/x-humanoid.md) — X-Humanoid**（北京人形机器人创新中心 / Beijing Innovation Center of Humanoid Robotics）是面向人形机器人 **核心技术、产品与应用生态 `📅unknown` `[entity_page]`
 - [X-Loco](wiki/entities/x-loco-humanoid.md) — X-Loco](https://x-loco-humanoid.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/human `📅unknown` `[entity_page]`
 - [X2Real 项目：通才机器人操作策略仿真基准](wiki/entities/x2real-project.md) — X2Real** 是 X Square Robot（自变量机器人）提出的通才机器人操作策略评测项目。它希望让仿真中的策略比较更接近真实机器人表现，并通过可扩展任务和清晰的数据划分降低评测偏差。项目 `📅unknown` `[entity_page]`
+- [Xbotics 具身智能教程（21 讲）](wiki/entities/xbotics-embodied-ai-handbook.md) — 一句话：** [Xbotics-Embodied-AI-Handbook](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied `📅unknown` `[entity_page]`
 - [xcar-rlgpu](wiki/entities/xcar-rlgpu.md) — xcar-rlgpu** 是面向 **独立轮驱（IWD）自主漂移** 的 **GPU 加速强化学习** 框架：自研向量化环境与 **rl_games** 子模块，强调训练吞吐与 Sim2Real  `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-0](wiki/entities/xiaomi-robotics-0.md) — Xiaomi-Robotics-0** 将 **预训练 VLM（Qwen3-VL-4B-Instruct）** 与 **扩散式 Transformer 动作头（DiT）** 组合成端到端 **VL `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-1](wiki/entities/xiaomi-robotics-1.md) — Xiaomi-Robotics-1**（官网代号 **XR-1**，arXiv:2607.15330）是小米机器人实验室 2 `📅unknown` `[entity_page]`
