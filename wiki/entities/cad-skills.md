@@ -3,7 +3,7 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-09-07
+updated: 2026-10-12
 related:
   - ../concepts/text-to-cad.md
   - ./multi-agent-cad.md
@@ -15,6 +15,7 @@ related:
   - ./drawio-scientific-illustrator.md
   - ./cad-1000-hours-dataset.md
   - ./freecad-mcp.md
+  - ./cadcraft.md
   - ./mattpocock-skills.md
   - ./sensenova-skills.md
 sources:
@@ -106,6 +107,7 @@ flowchart TB
 - [img2threejs](./img2threejs.md) — 图像→程序化 Three.js Agent Skill；WebGL 代码资产，非 STEP/URDF
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — 图像→可编辑 draw.io 科研插图（Codex Skill + MCP）；示意图交付，非 CAD/URDF
 - [FreeCAD MCP](./freecad-mcp.md) — 桌面 FreeCAD 的 MCP 桥；与本库 **build123d skill** 路线互补
+- [CADCraft](./cadcraft.md) — Rust 原生 CAD 应用，GUI / CLI / MCP / WASM 共用绘图引擎；与本页“技能规约 + build123d CLI”形成应用本体与 Agent 技能层对照
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码 Agent Skills 对照
 - [Sim2Real](../concepts/sim2real.md) — CAD/URDF 与仿真/真机几何一致性
 
