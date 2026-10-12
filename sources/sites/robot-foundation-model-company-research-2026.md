@@ -3,7 +3,7 @@
 - **类型：** 多站点资料索引（官方博客、研究页与项目页）
 - **收录日期：** 2026-09-28
 - **索引补核：** 2026-10-05（新增四家公司索引，开放范围按下列项目归档的核查日期）
-- **范围：** 以公司路线现有 29 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
+- **范围：** 以公司路线现有 30 家公司名单为范围，归档可追踪的官方技术入口；具体模型和版本以原文为准。
 - **RAI 路线增补：** 2026-10-08，研究所背景、官方事件时间和现有控制/操作/部署项目，见 [RAI 归档](./rai-institute.md)。
 - **路线增补：** 2026-10-06，复用既有 RoboParty 归档并补核 Party OS 当前入口。
 - **车企机器人部门增补：** 2026-10-09，新增小鹏机器人、小米机器人与理想汽车具身团队，复用既有论文与专利归档。
@@ -14,6 +14,7 @@
 - **光轮智能增补：** 2026-10-10，核对官网 Blog 18 篇与新闻稿 5 条，新建公司总览、SimReady、SimReadyGen、EgoSuite 详情，补全 RoboFinals 与 LW-BenchHub，见 [博客索引](./lightwheel-blog-index.md)。
 - **西湖机器人增补：** 2026-10-10，官网（wlrobo.com）无博客，按「关于我们」时间线、产品模块与媒体报道建立路线；新建公司总览、TITAN O1、傲天 U1 详情，更新 GAE 开放状态，见 [官网归档](./wlrobo-com.md)。
 - **源策未来增补：** 2026-10-10，官网博客仅 1 篇（Whole-Body Intelligence，2026-07-13），另按 arXiv 署名核查出 RoboNaldo、EgoHumanoid-V2 两篇；新建公司总览与博文详情，见 [官网归档](./archon-tech.md)。
+- **智在无界增补：** 2026-10-12，核对 Research 站 26 条研究（arXiv v1 逐条对日期）、GitHub 组织与 HF 资产；新建公司总览，其余节点复用既有详情，见 [Research 站核查](./research-beingbeyond-com.md)。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -46,6 +47,7 @@
 | 光轮智能 Lightwheel | [Blogs](https://lightwheel.ai/blogs)、[GitHub](https://github.com/LightwheelAI)、[Hugging Face](https://huggingface.co/LightwheelAI) | SimReady 资产、RoboFinals / LW-BenchHub 评测、EgoSuite 人类数据；[18 篇博客 + 新闻稿对照](./lightwheel-blog-index.md) | BenchHub、LeIsaac、AutoDataGen、EgoSuite DevKit 开源；部分资产 CC BY-NC；RoboFinals 与完整资产库为商业产品；成立于 2023（[公司新闻稿](https://lightwheel.ai/media/lightwheel-manus-partnership)） |
 | 西湖机器人 Westlake Robotics | [官网](https://www.wlrobo.com/)、[GAE 下载](https://www.wlrobo.com/GAEDownload) | GAE 通用动作专家、LM-VLM、TITAN O1 人形、傲天 U1 四足；[官网归档](./wlrobo-com.md)、[媒体归档](../blogs/westlake_robotics_press.md) | GAE 为付费闭源软件，论文无代码；工商登记 2021-06-08，实际运营约始于 2023-12 |
 | 源策未来 Archon Robotics | [官网](https://www.archon.tech/)、[Blog](https://www.archon.tech/blog/whole-body-intelligence) | 全身智能人形基础模型路线、RoboNaldo、EgoHumanoid-V2；[官网归档](./archon-tech.md)、[媒体归档](../blogs/archon_robotics_press.md) | 公司 GitHub / HF 无公开仓库；RoboNaldo 代码在 OpenDriveLab 下；2026-04 成立（媒体口径） |
+| 智在无界 BeingBeyond | [Research](https://research.beingbeyond.com/)、[官网](https://beingbeyond.com)、[GitHub](https://github.com/BeingBeyond)、[Hugging Face](https://huggingface.co/BeingBeyond) | Being-H 灵巧操作 VLA → 潜空间 / 触觉 WAM、Being-M 动作生成 → 人形 WAM、BumbleBee / FAST 全身控制；[Research 站核查](./research-beingbeyond-com.md) | 27 个公开仓库；Being-H0 / H0.5 / TTP 权重在 HF；Being-M0.7、Being-H0.8 只有技术报告；2025-01 成立（[凤凰网转硬氪](https://tech.ifeng.com/c/8kApGyTicks)，媒体口径） |
 | 理想汽车具身团队 Li Auto | [MachEmbodied GitHub](https://github.com/MachEmbodied) | ME-Brain 1.0、ME-VLM、ME-U0、ME-Dex 1.0；[四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) | GitHub 组织页未写公司名，归属依据 [ME-Dex 1.0 论文署名](https://arxiv.org/html/2609.21449)（Foundation Model, Li Auto Inc.）；2026-06 基座模型部门新增三个具身二级部门（[每日经济新闻](https://www.mrjjxw.com/articles/2026-06-01/4413821.html)） |
 
 ## 核查边界
