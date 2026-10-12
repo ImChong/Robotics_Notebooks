@@ -10,12 +10,13 @@ tags:
   - mirros
   - open-source
 status: complete
-updated: 2026-09-24
+updated: 2026-10-12
 arxiv: "2608.27549"
 venue: "Preprint, 2026"
 code: https://github.com/MirroS-Lab/Code-as-World
 related:
   - ../methods/generative-world-models.md
+  - ./paper-agentgarten.md
   - ../methods/vla.md
   - ../concepts/video-as-simulation.md
   - ./paper-sa-2411-08027-llmphy-complex-physical-reasoning-using-large-la.md
@@ -150,6 +151,7 @@ sequenceDiagram
 | 典型失效 | agent 提出的代码错了会污染监督 | 链式推理断裂 | latent 与真实物理量脱钩 |
 
 - **与像素世界模型是互补而非竞争：** 本文强项是 **定量、可编辑的机制表示**，不是高保真自由形态视频 rollout；要评视频保真度应走 [Generative World Models](../methods/generative-world-models.md) 与 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 ② 层，两者指标不可互换。
+- **与同团队的 [AgentGarten](./paper-agentgarten.md)：** 两者都把可执行世界与视觉生成分开思考；AgentGarten 侧重让仿真状态驱动神经 renderer，并研究 agent 在交互后累积 playbook，本文则从语言/视频发现代码化物理世界并训练 VLM 做定量物理推理。
 - **与 [WorldBench](./paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md) 的关系：** 后者是诊断式物理基准（出题方），本文是解题方 + 训练数据生成方；读 QuantiPhy 分数时不要当成 WorldBench 上的结论。
 - **横比的硬边界：** 4B/9B/27B 的 MRA **50.6 / 55.4 / 58.6** 是同一评测协议下的 scaling 证据；与其他工作横比前需确认 QuantiPhy 划分与 evaluator 版本一致，且 **MRA 提升是否迁移到真机/VLA 闭环仍未验证**。
 
@@ -169,6 +171,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [VLA](../methods/vla.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
+- [AgentGarten](./paper-agentgarten.md)
 - [LLMPhy](./paper-sa-2411-08027-llmphy-complex-physical-reasoning-using-large-la.md)
 - [WorldBench](./paper-sa-2601-21282-worldbench-disambiguating-physics-for-diagnostic.md)
 - [LaST-HD](./paper-last-hd-latent-physical-reasoning.md)

@@ -443,6 +443,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 可执行代码世界与 test-time Q 搜索（2026 样本）
 
+- **[AgentGarten](../entities/paper-agentgarten.md)**（arXiv:2610.12374，MirroS / 清华 / 北大）：把 **显式仿真状态与规则** 留在 code world，引擎导出 depth / normal 条件，再由共享神经 renderer 生成 agent 视觉；预训练 agent 每轮复盘并传递 playbook，hide-and-seek 展示 shelter / ramp 分别在第 4 / 10 轮出现。单 H100 renderer 稳态报告 36.5 FPS；当前开源仓只含 renderer，world runtime 与 playbook loop 待发布。与像素 WM 隐式承担状态的路线相比，它明确切开 **状态转移** 与 **视觉生成**。
 - **[Code-as-World](../entities/paper-code-as-world.md)**（arXiv:2608.27549，MirroS）：把物理组成、动力学与渲染写成 **可执行代码**，经 **agentic propose–execute–render–verify** 发现环从语言/视频恢复世界；**Code-as-World-VL** 在 **QuantiPhy** 上 SOTA，GitHub 已开源推理/eval。与像素 rollout WM 互补：强项是 **定量、可编辑** 机制表示。
 - **[QWM](../entities/paper-qwm.md)**（arXiv:2608.17163，Stanford/PKU）：学习到的 WM 用于 **Q-learning 上的 test-time 树搜索** 选动作，**不在 imagined rollout 上训练** policy/critic；Robomimic + LIBERO 样本效率显著提升，官方代码 **待发布**。
 
