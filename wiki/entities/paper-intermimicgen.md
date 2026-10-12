@@ -11,9 +11,13 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../overview/hub-wbt.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+  - ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/intermimicgen_arxiv_2610_06850.md
   - ../../sources/sites/intermimicgen.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+  - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 summary: "InterMimicGen（arXiv:2610.06850，UIUC/NVIDIA）将 InterAct 与 HiPHI 人体–物体交互重定向到 6 种机器人配置，以物理 PPO 跟踪器验证并自演进动作；五轮把验证集扩展到种子的约 142–151 倍，覆盖范围仍围绕已有任务语义。"
 ---
 
@@ -150,6 +154,8 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义、全身移动与操作耦合
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 参考重定向到物理跟踪的常见阶段
 - [全身运动跟踪 WBT 知识链](../overview/hub-wbt.md) — 数据、跟踪训练与真机部署入口
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
 
 ## 参考来源
 
@@ -157,6 +163,8 @@ flowchart TD
 - [官方项目页归档](../../sources/sites/intermimicgen.md)
 - [arXiv:2610.06850](https://arxiv.org/abs/2610.06850)
 - [InterMimicGen 项目页](https://sirui-xu.github.io/InterMimicGen/)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
 
 ## 推荐继续阅读
 

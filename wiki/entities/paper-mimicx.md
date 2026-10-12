@@ -13,10 +13,12 @@ related:
   - ../concepts/whole-body-control.md
   - ../entities/gvhmr.md
   - ../entities/unitree-g1.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/mimicx_arxiv_2610_09055.md
   - ../../sources/sites/mimicx-nebulis-lab.md
   - ../../sources/repos/mimicx.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "MimicX（arXiv:2610.09055）：从视频重建并重定向人形动作后，诊断策略 rollout 的失败时段与身体误差，联合调整 tracking objective 和 reset curriculum，继续训练并以重复执行守卫决定是否保留。G1 29-DoF、MuJoCo/MjLab 四任务，任务平均 body error 降低 25.7%、Robust Execution Horizon 提升 255.6%；官方代码 Apache-2.0 已公开，但原始视频及若干上游权重和第三方动作素材不随包发布。"
 ---
 
@@ -175,6 +177,7 @@ sequenceDiagram
 - [全身控制](../concepts/whole-body-control.md)
 - [GVHMR 人体动作重建](../entities/gvhmr.md)
 - [Unitree G1](../entities/unitree-g1.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 推荐继续阅读
 
@@ -190,3 +193,5 @@ sequenceDiagram
 - [MimicX 论文归档](../../sources/papers/mimicx_arxiv_2610_09055.md)
 - [MimicX 项目页归档](../../sources/sites/mimicx-nebulis-lab.md)
 - [MimicX 官方代码仓归档](../../sources/repos/mimicx.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+

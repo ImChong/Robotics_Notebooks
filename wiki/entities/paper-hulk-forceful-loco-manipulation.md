@@ -12,9 +12,13 @@ related:
   - ./unitree-g1.md
   - ./paper-hrl-stack-42-thor.md
   - ./paper-loco-manip-161-109-falcon.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+  - ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/hulk_arxiv_2610_08970.md
   - ../../sources/sites/hulk-forceful-wbc.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+  - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 summary: "HULK 用载荷感知 centroidal MPC 为腕力 / 抱持两类教师策略提供奖励指导，以 CP-CBF 改善训练期平衡，再蒸馏为 G1 单策略；真机覆盖推拉车、负重行走与躯干抱持。"
 ---
 
@@ -113,8 +117,13 @@ HULK 把载荷动力学预测作为 RL 的训练期指导，而不是部署期�
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 负载、平衡和运动控制的相关问题。
 - [Unitree G1](./unitree-g1.md) — 真机验证平台。
 - [Thor](./paper-hrl-stack-42-thor.md) 与 [FALCON](./paper-loco-manip-161-109-falcon.md) — 论文对比的全身交互控制基线。
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - [HULK 论文归档](../../sources/papers/hulk_arxiv_2610_08970.md)
 - [HULK 项目页归档](../../sources/sites/hulk-forceful-wbc.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
+

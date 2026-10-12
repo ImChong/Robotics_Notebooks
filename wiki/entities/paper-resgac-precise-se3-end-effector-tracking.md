@@ -12,9 +12,11 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ./unitree-g1.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/sites/resgac-project-page.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "ResGAC 将几何导纳控制（GAC）的 SE(3) 末端跟踪先验与残差强化学习结合，在 Unitree G1 上协调手臂、腿和腰；站立插孔成功率 90%，移动基座 MAE 为 8.8 mm / 2.69°。截至 2026-10-10 未发现公开代码。"
 ---
 
@@ -92,11 +94,13 @@ flowchart LR
 - [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Unitree G1](./unitree-g1.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - Seo et al., [Precise SE(3) End-Effector Tracking in Whole-Body Humanoid Control](https://arxiv.org/abs/2610.09479), arXiv:2610.09479, 2026.
 - [ResGAC project page](https://resgac.github.io/ResGAC-website/) and [supplementary details](https://resgac.github.io/ResGAC-website/details.html), accessed 2026-10-10.
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 推荐继续阅读
 

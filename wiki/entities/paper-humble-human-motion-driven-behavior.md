@@ -11,8 +11,10 @@ related:
   - ./paper-gaitspan-humanoid-locomotion-walking-running.md
   - ./paper-cref.md
   - ./paper-evolution-humanoid-locomotion-control.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/humble_arxiv_2610_10489.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "HuMBLE 先将人体步态蒸馏成本体感知 + SE(2) 速度指令策略，再用参考跟踪与目标指令双任务 RL 扩展全向可控性；已在 Atlas R1/D1 和 Unitree G1 验证。"
 ---
 
@@ -132,6 +134,7 @@ Atlas R1 的大部分命令区域中，跟踪误差与不使用人体先验的 T
 - [人形 AMP 与运动先验综述](../overview/humanoid-amp-motion-prior-survey.md)
 - [GaitSpan：从走路到跑步的技能生长](./paper-gaitspan-humanoid-locomotion-walking-running.md)
 - [CReF：深度条件人形行走](./paper-cref.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 参考来源
 
@@ -139,6 +142,7 @@ Atlas R1 的大部分命令区域中，跟踪误差与不使用人体先验的 T
 - [论文摘要 / 版本记录](https://arxiv.org/abs/2610.10489)
 - [论文 HTML 全文与补充材料](https://arxiv.org/html/2610.10489v1)
 - [论文 PDF](https://arxiv.org/pdf/2610.10489)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 推荐继续阅读
 

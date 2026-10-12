@@ -230,6 +230,19 @@ python3 main.py "https://mp.weixin.qq.com/s/<ARTICLE_ID>" -o /tmp/wx-out -v
 
 产物为带 YAML frontmatter（title/author/date/source）的干净 Markdown，落 `<output>/<标题>/<标题>.md`。**这些工具不在 update script 里**（Camoufox 体积大、拉取有网络风险），依赖快照持久化；若快照缺失才需按上述来源重装。遇 CAPTCHA/空正文多为限流，等几分钟重试或加 `--no-headless`。
 
+#### 兜底：预装工具缺失时（Claude Code 云容器等）
+
+Claude Code 云容器**没有**上述预装，且网络策略对 `github.com/.../archive/*.zip`、`api.github.com`（Camoufox 浏览器下载）返回 403，`agent-reach` 与 Camoufox 都装不上。`WebFetch` 和 Jina Reader 只会拿到「当前环境异常」验证页。此时直接用容器自带 Chromium（`/opt/pw-browsers`，勿 `playwright install`）+ 微信内置浏览器 UA（`MicroMessenger`）即可读到正文（2026-10-12 实测，两篇公众号周报均成功）：
+
+```bash
+pip install playwright   # 只需 Python 包；浏览器用预装的 Chromium，脚本自动探测
+python3 scripts/fetch_wechat_article.py "https://mp.weixin.qq.com/s/<ARTICLE_ID>" -o /tmp/wx-article.txt
+```
+
+- 输出是页面纯文本（标题、作者、日期、正文），不下载图片、不转 Markdown；周报类文章的条目格式为 `N. 英文标题 / 中文标题 / 机构 / 论文链接 / 解决的问题 / 创新点`，可再用脚本解析。
+- 脚本检测到验证页会以退出码 2 报错。**为何换 UA 就能过，未经验证**（推测是微信对「微信内置浏览器」放行）；若以后失效，按上节「遇 CAPTCHA」处理，或让用户在本机用 `wechat-article-for-ai --no-headless` 手动验证后交付 Markdown。
+- 只抓取用户明确提供的文章链接；控制频率，勿批量爬取。
+
 ### Cursor Cloud Agent：PR 与验证截图
 
 Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**：默认包含 **静态站点 `docs/detail.html?id=…` 上与本次改动对应的详情页**（本地 `cd docs && python3 -m http.server` 后 headless 截图；合并后可选附 Pages 线上 URL 截图）。可用 HTML `<img alt="..." src="<绝对路径>" />` 引用 `.cursor-artifacts/screenshots/` 等本地生成文件。详细步骤见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。
