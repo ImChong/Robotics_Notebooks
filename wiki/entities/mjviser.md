@@ -2,7 +2,7 @@
 type: entity
 project_id: mjviser
 code: https://github.com/mujocolab/mjviser
-tags: [repo, mujoco, visualization, viewer, viser, mjcf, simulation, mjlab]
+tags: [mujocolab, repo, mujoco, visualization, viewer, viser, mjcf, simulation, mjlab]
 status: complete
 updated: 2026-10-12
 related:
@@ -17,6 +17,19 @@ summary: "mjviser 是基于 Viser 的 MuJoCo 浏览器查看器：把 MjModel/Mj
 # mjviser：MuJoCo 的浏览器 3D 查看器
 
 **mjviser** 是 mujocolab 开源的 MuJoCo 查看器，基于 [Viser](https://github.com/viser-project/viser) 提供浏览器端 3D 场景。它把 MuJoCo 的 `MjModel` 与 `MjData` 接入网页可视化，并提供仿真控制、关节/执行器检查、相机跟踪、关键帧与接触/力显示。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MJCF | MuJoCo XML Format | MuJoCo 的模型描述格式 |
+| CLI | Command-Line Interface | 从终端启动查看器的接口 |
+| API | Application Programming Interface | 将查看器接入 Python 仿真代码的接口 |
+| RL | Reinforcement Learning | mjlab 所组织的策略学习任务 |
+
+## 工具定位
+
+所属维护社区：**MujocoLab（mujocolab）**，以官方 GitHub 仓库所有者标识为准。
 
 快速区分：
 
@@ -92,3 +105,8 @@ mjviser 仓库声明 **Apache-2.0** 许可证。它主要是 beta 阶段的 MuJo
 - [mjlab](./mjlab.md)
 - [Draft: 参数化机器人设计探索](https://github.com/davidhnguyen2000/draft)
 - [来源归档](../../sources/repos/mjviser.md)
+
+## 关联页面
+
+- [MuJoCo](./mujoco.md) — 物理仿真引擎
+- [mjlab](./mjlab.md) — 训练环境与查看器集成
