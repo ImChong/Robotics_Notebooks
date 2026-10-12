@@ -13,6 +13,7 @@ status: complete
 updated: 2026-10-06
 related:
 - ../overview/sim-platforms-decade-technology-map.md
+- ./paper-draft-parametric-robot-design.md
 - ./mujoco-wasm.md
 - ./mujoco-mjx.md
 - ./mujoco-warp.md
@@ -111,6 +112,7 @@ venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。Python 侧按名加载 Menagerie 镜像模块，见 [robot_descriptions.py](./robot-descriptions-py.md) 的 `*_mj_description`；与 Awesome / ROS 2 仓的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。若需从 **自然语言** 快速生成 **可验证** 的 micro-scene 包（spec + MJCF + 交互 API + smoke test），见 Agent Skill [Text2MuJoCo](./text2mujoco.md)。
 
 ## 关联页面
+- [Draft：参数化机器人设计探索工具](./paper-draft-parametric-robot-design.md) — 参数化规格编译为 MJCF，并用 MuJoCo/mjlab 评测设计取舍。
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](./adams.md) — 工业 MBD 程序谱系原点（Orlandea 1973/1977）；与开源 RL 引擎分工不同
 - [MuJoCo WASM（浏览器绑定）](./mujoco-wasm.md) — 官方 `@mujoco/mujoco` 与社区 demo（zalo/mujoco_wasm）生态
 - [MuJoCo Playground](./mujoco-playground.md) — MJX 上的任务入口层，强调 time-to-robot 与 sim2real 短链路
