@@ -4,7 +4,7 @@
 
 - **标题：** DemoHLM
 - **类型：** repo
-- **机构：** 超越智能（BeingBeyond）、北京大学（PKU）
+- **机构：** 智在无界（BeingBeyond）、北京大学（PKU）
 - **链接：** <https://github.com/BeingBeyond/DemoHLM>
 - **论文：** <https://arxiv.org/abs/2510.11258>
 - **项目页：** <https://beingbeyond.github.io/DemoHLM/>

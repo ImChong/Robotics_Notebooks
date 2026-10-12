@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/being-m0.md
 summary: "智在无界 开源项目 Being-M0（动作重定向）：动作重定向：人体/MoCap 动作映射为目标本体训练参考…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # Being-M0

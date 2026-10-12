@@ -1174,7 +1174,8 @@
     "beingbeyond": {
       "label": "智在无界（BeingBeyond）",
       "aliases": [
-        "beingbeyond"
+        "beingbeyond",
+        "zhizaiwujie"
       ]
     },
     "tju": {
@@ -3654,13 +3655,6 @@
       "aliases": [
         "agilex",
         "agilex-robotics"
-      ]
-    },
-    "agilex-ai": {
-      "label": "智在无界（AgileX AI）",
-      "aliases": [
-        "agilex-ai",
-        "zhizaiwujie"
       ]
     },
     "alphasquare": {

@@ -85,7 +85,10 @@
 
 仓库存在不等于训练代码、权重与数据完整开放；复现前逐仓核对 README。
 
-## 本库既有标注与官网不一致处
+## 本库既有标注更正（2026-10-12）
 
-- 本轮已改：`schema/institutions.json` 中 `beingbeyond` 标签由「超越智能（BeingBeyond）」改为「智在无界（BeingBeyond）」，依据官网页脚「北京智在无界科技有限公司」。
-- 未改：`wiki/entities/cn-os-*` 中 12 个 BeingBeyond 仓库页的 `institutions` 写作 `agilex-ai`（标签「智在无界（AgileX AI）」，英文名与官网不符）；[Being-M0.7 论文归档](../papers/being_m07.md) 与 DemoHLM 相关页正文仍写「超越智能」。
+依据官网页脚「北京智在无界科技有限公司」与英文名 BeingBeyond：
+
+- `schema/institutions.json`：`beingbeyond` 标签由「超越智能（BeingBeyond）」改为「智在无界（BeingBeyond）」；删除无其他引用的 `agilex-ai`（「智在无界（AgileX AI）」），其别名 `zhizaiwujie` 并入 `beingbeyond`。
+- `wiki/entities/cn-os-*` 中 12 个 BeingBeyond 仓库页的 `institutions` 由 `agilex-ai` 改为 `beingbeyond`；生成脚本 `scripts/patch_cn_os_institutions.py` 的「智在无界」映射同步改为 `beingbeyond`。
+- DemoHLM 详情与 3 个来源归档、[Being-M0.7 论文归档](../papers/being_m07.md) 中的「超越智能」改为「智在无界」。

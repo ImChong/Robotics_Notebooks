@@ -158,7 +158,7 @@ H0.8 项目页写明沿用 H0.7 的先验–后验结构、以 TopoHand 替代 H
 - **学术与公司边界：** 2024 年论文早于公司成立；arXiv 作者单位本页未逐篇核对，只按官网收录归入公司路线。
 - **旗舰未开源：** Being-M0.7、Being-H0.8 只有技术报告与演示，数据规模与成功率为自报。
 - **详情页深浅不一：** 多个本库详情（`cn-os-*`）是开源清单的模板页，机制与实验尚未深读。
-- **机构标签遗留：** `cn-os-*` 仓库页的 `institutions` 仍为 `agilex-ai`，见 [核查记录](../../sources/sites/research-beingbeyond-com.md)。
+- **机构名称曾混用：** 本库旧页曾写作「超越智能」或「AgileX AI」，2026-10-12 已按官网统一为「智在无界（BeingBeyond）」，见 [核查记录](../../sources/sites/research-beingbeyond-com.md)。
 
 ## 关联页面
 

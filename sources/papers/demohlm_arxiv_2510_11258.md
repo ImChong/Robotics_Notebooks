@@ -9,7 +9,7 @@
 - **PDF：** <https://arxiv.org/pdf/2510.11258>
 - **项目页：** <https://beingbeyond.github.io/DemoHLM/>
 - **代码：** <https://github.com/BeingBeyond/DemoHLM>（截至 2026-09-20 仅 README + 项目站镜像，**无可运行训练/推理脚本**）
-- **机构：** 北京大学（PKU）、超越智能（BeingBeyond）；通讯作者 Zongqing Lu
+- **机构：** 北京大学（PKU）、智在无界（BeingBeyond）；通讯作者 Zongqing Lu
 - **作者：** Yuhui Fu*、Feiyang Xie*、Chaoyi Xu、Jing Xiong、Haoqi Yuan、Zongqing Lu §（* 共一）
 - **发表：** arXiv 预印本 2025-10-11；IEEE RA-L 2026-02-19（DOI: 10.1109/LRA.2026.3666395）
 - **硬件：** Unitree G1 + 2-DoF 主动颈 + Intel RealSense D435 RGB-D；部分任务换 3D 打印平行夹爪

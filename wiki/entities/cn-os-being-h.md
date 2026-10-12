@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/being-h.md
 summary: "智在无界 开源项目 Being-H（数据集/Benchmark）：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # Being-H
