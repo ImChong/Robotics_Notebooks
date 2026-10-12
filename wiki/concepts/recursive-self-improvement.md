@@ -23,6 +23,7 @@ related:
   - ../entities/paper-rsi-survey-2607-07663.md
   - ../entities/paper-last-ai-built-by-humans-rsi.md
   - ../entities/paper-neohorse-1.md
+  - ../entities/paper-rsi-anything.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -113,6 +114,10 @@ flowchart LR
 
 这使 RRSI 落在**有界 harness RSI**：被优化的是脚手架，底座模型保持冻结。项目页报告演化集与未见基准都有平均提升，同时策略 token 成本低于无正则化搜索；这说明迁移与成本可以同时作为 accept 条件，不等于模型权重本身变强。官方 [Google Research 仓库](../../sources/repos/rrsi.md)包含可运行搜索框架与三类 benchmark adapter；复现仍需要配置模型服务、各 benchmark 的独立运行环境与评测凭证。
 
+### 预测式世界模型辅助的任务级 RSI：RSI-Anything
+
+[RSI-Anything](../entities/paper-rsi-anything.md) 将 **Propose → Predict → Select → Evaluate → Learn → Retain** 用于代码修复、GUI 与科学任务：世界模型先预测候选后果，真实任务评估再为策略/工作流更新提供反馈，按需适配的模型组件需通过兼容性检查。其 CodeContests 消融在近似预算下由静态候选选择 26.3% 提升至预测选择 29.2%，再到模型适配后的 31.2%。这属于**有界任务闭环**：优化对象可只是 policy/workflow，且多轮联合改进仍待验证；它不构成系统已自主设计、训练并部署完整后继模型的证据。实现和实验边界见[官方仓库归档](../../sources/repos/rsi-anything.md)。
+
 ## 工程实践
 
 对 **机器人研究自动化**（本库真正能用的一层）：
@@ -149,6 +154,7 @@ flowchart LR
 - [Dream-RSI（2609.14858）](../entities/paper-dream-rsi.md) — discovery history 作 exact replay「世界」；exploration 层 dreaming RSI + evolving worlds pool
 - [Axis 可组合能力库（Grounded RSI）](../entities/axis-composable-capability-library.md) — 真机 rollout 共训后继策略的产业实验摘要
 - [NeoHorse-1（2609.08183）](../entities/paper-neohorse-1.md) — 文本 agent routing harness 上的 evaluation–selection–update 原型（权重开源，训练 flywheel 未公开）
+- [RSI-Anything（2610.13912）](../entities/paper-rsi-anything.md) — 世界模型预测参与候选筛选、任务反馈更新及组件兼容检查的跨任务闭环
 
 ## 参考来源
 
@@ -161,6 +167,7 @@ flowchart LR
 - [AI Auto-Research 综述策展](../../sources/papers/ai_auto_research_survey_2605_18661.md)
 - [Awesome RSI 仓库归档](../../sources/repos/awesome-rsi.md)
 - [Awesome RSI 站点归档](../../sources/sites/awesome-rsi-github-io.md)
+- [RSI-Anything 技术报告归档](../../sources/papers/rsi_anything_arxiv_2610_13912.md)
 
 ## 推荐继续阅读
 
