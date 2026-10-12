@@ -92,3 +92,4 @@
 - `schema/institutions.json`：`beingbeyond` 标签由「超越智能（BeingBeyond）」改为「智在无界（BeingBeyond）」；删除无其他引用的 `agilex-ai`（「智在无界（AgileX AI）」），其别名 `zhizaiwujie` 并入 `beingbeyond`。
 - `wiki/entities/cn-os-*` 中 12 个 BeingBeyond 仓库页的 `institutions` 由 `agilex-ai` 改为 `beingbeyond`；生成脚本 `scripts/patch_cn_os_institutions.py` 的「智在无界」映射同步改为 `beingbeyond`。
 - DemoHLM 详情与 3 个来源归档、[Being-M0.7 论文归档](../papers/being_m07.md) 中的「超越智能」改为「智在无界」。
+- Being-H 仓库分类由「数据集/Benchmark」（国内开源全景原清单）改为「VLA/操作模型」：GitHub 描述为 Human-centric embodied foundation model family，Research 站 Being-H0.5 / H0.7 的代码链接均指向该仓库；同步仓库页、来源归档、424 覆盖索引与映射 JSON，原文归档不改。

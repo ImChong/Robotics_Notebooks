@@ -3,7 +3,7 @@ title: 国内具身开源全景 424 项 · 阅读导航
 type: query
 status: complete
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-10-12
 summary: "具身智能研究室「76 家机构 · 424 个开源项目」全景清单的站内阅读导航：每个项目对应站内哪一页、按机构与方向怎么找。"
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
@@ -444,7 +444,7 @@ sources:
 
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
-| Being-H | 数据集/Benchmark | [Being-H](../entities/cn-os-being-h.md) |
+| Being-H | VLA/操作模型 | [Being-H](../entities/cn-os-being-h.md) |
 | Being-H0 | VLA/操作模型 | [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) |
 | Being-M0 | 动作重定向 | [Being-M0](../entities/cn-os-being-m0.md) |
 | Being-M0.5 | 动作重定向 | [Being-M0.5](../entities/paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) |
