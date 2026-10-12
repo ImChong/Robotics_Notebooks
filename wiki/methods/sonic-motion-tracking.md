@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-10-09
+updated: 2026-10-12
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-humanoid-gpt.md
   - ../entities/paper-gentrack.md
   - ../entities/paper-humantracker.md
+  - ../entities/paper-mimicx.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
   - ../entities/paper-dpc.md
@@ -454,6 +455,8 @@ sequenceDiagram
 - arXiv 摘要与版本页 — <https://arxiv.org/abs/2511.07820>（v3，2026-05-21；作者名单、规模量级与统一潜表征叙述；正文写明 Code is available at GR00T-WholeBodyControl）
 
 ## 关联页面
+
+- [MimicX](../entities/paper-mimicx.md) — 用策略执行反馈精炼视频动作跟踪监督与 reset curriculum。
 
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — SciRob 同期三层：技能编译器 / 运动底座 / 感知任务环
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Mimic/FSQ 在任务球上的曲线投影与 OOD 读法
