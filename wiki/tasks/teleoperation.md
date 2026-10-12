@@ -3,8 +3,11 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-10-06
+updated: 2026-10-12
 sources:
+  - ../../sources/papers/human-like-redundancy-resolution.md
+  - ../../sources/sites/human-like-redundancy.md
+  - ../../sources/repos/bimanual-teleoperation.md
   - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
@@ -163,7 +166,7 @@ sources:
 | [HEFT](../entities/paper-heft.md)（清华 / RobotEra 2026） | Unitree G1 + **L7**（175 cm 全尺寸） | **VR 全身参考**（部署吃 raw 流） | PMG 配对 VR + SEED 等 | **PMG** 噪声 VR 跟踪 + **WPC** 窗化双手负载；L7 **24 kg** 重载遥操作 + 高动态跟踪 |
 | **[Teleopit](../entities/paper-teleopit.md)**（西湖 / 上海创智 2026） | Unitree G1 | **PICO VR** 身体+手+头 | 公开 mocap 子集 + 自采 PICO；**96** 条瓶放置演示 | **全身跟踪 + 连续跨手重定向 + 主动视觉**；History/rewind；五仓开源；ACT/GR00T **90%/95%** |
 | [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（Mondo / HKUST 2026） | Unitree G1 | **PICO VR 三点追踪** + SMPL→G1 重定向 | 九项全身 loco-manip | Stage 3 **200 episodes/任务** 全身遥操作演示，供 **WAM** 微调 |
-| [Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)（BeingBeyond 2026） | Unitree G1 | **PICO VR** 头显 + 手柄 + 踝 tracker；XRoboToolkit→SMPL→**SONIC** | 四项全身 loco-manip 后训练 | **>1 万 h** 人数据预训练 **latent video-motion 先验** 后接地 |
+| [Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)（BeingBeyond 2026） | Unitree G1 | **PICO VR** 头显 + 手柄 + 踝 tracker；XRoboToolkit→SMPL→**SONIC** | 新版三任务全身 loco-manip 中训练与后训练 | **>1 万 h** 人数据预训练 **latent video-motion 先验** 后接地 |
 | [ω-0](../entities/paper-omega-0.md)（NTU / PKU / BAAI / HKUST-GZ 2026） | Unitree G1 + Inspire | **Pico VR** 头显 + 足 tracker + 手持扳机；ZED Mini ego + 房间 ZED depth；**SONIC** 遥操作策略 | ω-HOME **40.3 h / 24 任务** | 潜空间 foresight Joint WAM；评测 11 任务 Omni **SR 81.8%**；代码/数据 WIP |
 | **[Immersive Social VR+LLM](../entities/paper-immersive-social-vr-llm-humanoids.md)**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源** |
 | **[NEXUS](../entities/nexus-humanoid.md)**（SJTU，Research Preview 2026） | （待论文） | Live human motion | — | **感知型 foundation policy** + **跨域全身遥操作** + **地形感知**（预览楼梯 sim/real）；Paper/Code **Coming Soon** |
@@ -385,3 +388,8 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [ALOHA 项目主页](https://mobile-aloha.github.io/) — Stanford 双臂遥操作系统
 - [OmniH2O 论文](https://arxiv.org/abs/2406.08858) — 人形全身遥操作
 - [ACT 论文](https://arxiv.org/abs/2304.13705) — 遥操作数据 + 动作块学习
+
+
+### 双臂类人冗余解析
+
+[Human-Like Redundancy Resolution](../entities/paper-human-like-redundancy-resolution.md) 以肩—腕几何生成腕目标，并将自适应肘部偏好投影到腕任务零空间；注意公开运行示例是 JAKA K1 + Viser 可视化栈，不含真机输出路径。

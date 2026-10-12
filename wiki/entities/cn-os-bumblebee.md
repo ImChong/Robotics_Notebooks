@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/bumblebee.md
 summary: "智在无界 开源项目 BumbleBee（全身动作跟踪/技能训练）：全身动作跟踪策略（带仿真/真机验证）…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # BumbleBee

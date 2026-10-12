@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-12
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
@@ -20,6 +20,8 @@ related:
   - ../entities/paper-lucid.md
   - ../entities/paper-motus2.md
 sources:
+  - ../../sources/papers/world-model-consultation-study.md
+  - ../../sources/repos/robot-world-model-study.md
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/sutton_one_step_trap.md
@@ -331,3 +333,8 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 ## 一句话记忆
 
 > Model-Based RL 用"学习的世界模型"代替部分真实交互，通过在想象中规划和练习大幅提升样本效率——代价是模型精度的上限和更高的实现复杂度。
+
+
+## 世界模型是否值得在线咨询？
+
+[World Model Consultation Study](../entities/paper-world-model-consultation-study.md) 在模拟导航与 Push-T 中直接比较未来状态预测和同候选动作评分：部分导航条件受益，但 Push-T 未显示预测器稳定胜过评分器。它强调把收益、任务条件与推理代价一起评测，结论目前限于模拟。

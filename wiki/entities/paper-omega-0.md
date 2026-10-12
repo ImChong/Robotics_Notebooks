@@ -14,7 +14,7 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-10-06
+updated: 2026-10-12
 github: "https://github.com/gentlefress/Omega-0"
 dataset: "https://huggingface.co/datasets/keycharon/omega-HOME"
 arxiv: "2608.06375"
@@ -168,10 +168,10 @@ flowchart TB
 
 | 维度 | ω-0 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | [Being-M0.7](./paper-being-m07-humanoid-latent-wam.md) | Fast-WAM / DiT4DiT |
 |------|-----|------------------------------------------------------------------|--------------------------------------------------------|--------------------|
-| 世界信号 | 未来观测 **embedding** | Video DiT 单次前向隐状态 | DINO latent + 紧凑 motion 先验 | 训练期视频 / 双 DiT 视频特征 |
+| 世界信号 | 未来观测 **embedding** | Video DiT 单次前向隐状态 | DINO latent + motion 训练先验；新版部署仅视觉上下文 | 训练期视频 / 双 DiT 视频特征 |
 | 结构 | Joint query + action DiT | Joint 双 DiT | **Cascaded** prior → action expert | 臂心或非统一全身 |
-| 动作空间 | SONIC 全身 latent | SONIC 统一 token | SONIC + action chunk | 多偏操作或部分全身 |
-| 任务焦点 | 家务并发 loco-manip（11 项） | 九项全身 loco-manip 实时 | 四项真机定量 | 操作榜或 G1 部分全身 |
+| 动作空间 | SONIC 全身 latent | SONIC 统一 token | 64D SONIC token + 2D 手部开合 chunk | 多偏操作或部分全身 |
+| 任务焦点 | 家务并发 loco-manip（11 项） | 九项全身 loco-manip 实时 | 新版三项真机 + 六项 SIMPLE | 操作榜或 G1 部分全身 |
 | 开源 | WIP | 未开源 | 项目页/PDF | DiT4DiT 已开源 |
 
 ## 局限与风险

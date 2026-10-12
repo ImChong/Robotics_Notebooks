@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-12
 related:
   - ./humanoid-motion-control-30-papers-technology-map.md
   - ../entities/paper-hrl-stack-35-dreamdojo.md
@@ -25,6 +25,7 @@ related:
   - ../methods/neural-motion-retargeting-nmr.md
   - ../entities/paper-extreme-rgmt.md
   - ../entities/paper-yahmp.md
+  - ../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-doorman-opening-sim2real-door.md
   - ../entities/paper-viral-humanoid-visual-sim2real.md
@@ -91,7 +92,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | **1. 数据** | 人类动作 / 视频 / 遥操作 → 机器人可执行参考 | [GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) | OmniRetarget, GenMimic, HumanX, HDMI, H2O, OmniH2O, TWIST, TWIST2 |
 | **2. 参考 / 跟踪控制** | 参考动作进入物理仿真、稳定跟踪、在线修正 | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) | OmniTrack, Motion Gen+Tracking, Heracles |
 | **3. 控制（通用 tracker / 身体基础模型）** | 多动作跟踪、抗扰、负载适应、恢复；身体级 foundation model | [SONIC](../methods/sonic-motion-tracking.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md)、[Extreme-RGMT](../entities/paper-extreme-rgmt.md)、[YAHMP](../entities/paper-yahmp.md)、[RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[OmniXtreme](../entities/paper-hrl-stack-16-omnixtreme.md) | HALO, PvP, Adaptive Humanoid Control |
-| **4. 感知（视觉闭环）** | RGB / 深度进入动作闭环、sim-to-real | [VIRAL 论文](../entities/paper-viral-humanoid-visual-sim2real.md)、[DoorMan 论文](../entities/paper-doorman-opening-sim2real-door.md) | PHP, Deep Whole-body Parkour, Hiking in the Wild, ASAP, 视觉足球 |
+| **4. 感知（视觉闭环）** | RGB / 深度进入动作闭环、sim-to-real | [VIRAL 论文](../entities/paper-viral-humanoid-visual-sim2real.md)、[DoorMan 论文](../entities/paper-doorman-opening-sim2real-door.md)、[Reflex](../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md) | PHP, Deep Whole-body Parkour, Hiking in the Wild, ASAP, 视觉足球 |
 | **5. 接触 / 柔顺** | 力 / 柔顺 / 对象动力学进入控制；接触安全 | [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) | CHIP, HAIC, Thor |
 | **6. 安全 / 失败恢复** | 跌倒、异常姿态恢复、冲击力管理 | — | SafeFall（强相关：[balance-recovery](../tasks/balance-recovery.md)） |
 | **7. 任务接口 / VLA 调用** | 身体能力封装成 skill token / latent action / action chunk，供语言或 VLA 调用 | [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)、[ULTRA Survey](../tasks/ultra-survey.md)、[DAJI 预期关节意图](../entities/paper-daji-anticipatory-joint-intent.md) | SENTINEL, WholeBodyVLA, MetaWorld, BFM-Zero |
@@ -112,7 +113,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - **训练模块视角**（MDP → Actor-Critic → PPO → 奖励 → 蒸馏）见 [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md)，与本页「能力层栈」正交。
 - 单篇方法的方法学细节在 `wiki/methods/`（[DeepMimic](../methods/deepmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) 等）；跟踪局限与超越路径见 [Jason Peng 灵活运动技能学习](./jason-peng-flexible-motion-skill-learning.md)。
 - 任务侧的统一控制讨论见 [ULTRA Survey](../tasks/ultra-survey.md)（统一多模态全身 loco-manipulation 控制器）。
-- 单篇论文页：[DoorMan](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md)、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等。
+- 单篇论文页：[DoorMan](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md)、[Reflex](../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md)（RGB-D 时序恢复接球动力学状态）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等。
 
 ## 关联页面
 

@@ -7,6 +7,7 @@ updated: 2026-09-21
 related:
   - ./mujoco.md
   - ./mujoco-warp.md
+  - ./mjviser.md
   - ./nvidia-warp.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -32,6 +33,7 @@ related:
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/repos/mjlab.md
+  - ../../sources/repos/mjviser.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU 加速物理）融合，是一个不依赖 Isaac Sim 的轻量 RL 框架，也是 AMP_mjlab 和 unitree_rl_mjlab 的底层依赖。"
 ---
@@ -106,6 +108,7 @@ mjlab 架构
 
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 [MuJoCo Warp](./mujoco-warp.md)）
 - [MuJoCo Warp](./mujoco-warp.md) — 实际 GPU 刚体后端；PGS/PLUGIN 缺口与 AD 未通见该页
+- [mjviser](./mjviser.md) — 基于 Viser 的 MuJoCo 浏览器查看器；负责可视化与交互，不是训练框架
 - [NVIDIA Warp](./nvidia-warp.md) — MJWarp 的 JIT 计算层
 - [Newton Physics](./newton-physics.md) — 同生态的底层多求解器引擎（非 RL 框架封装）
 - [Isaac Lab](./isaac-lab.md) — API 设计来源；底层依赖 [Isaac Sim](./isaac-sim.md)
@@ -130,4 +133,5 @@ mjlab 架构
 - [sources/repos/mjlab.md](../../sources/repos/mjlab.md)
 - [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 - [mujocolab/mjlab GitHub Repo](https://github.com/mujocolab/mjlab)
+- [mjviser 来源归档](../../sources/repos/mjviser.md)
 - Zakka et al. (2026), arXiv:2601.22074

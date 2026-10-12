@@ -43,7 +43,7 @@ COMPANY_INST: dict[str, str] = {
     "千寻智能": "spirit-ai",
     "自变量机器人": "x-square-robot",
     "它石智航": "tars-robotics",
-    "智在无界": "agilex-ai",
+    "智在无界": "beingbeyond",
     "智平方": "alphasquare",
     "智澄AI": "zhicheng-ai",
     "生数科技": "shengshu",

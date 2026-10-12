@@ -11,8 +11,12 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-09-15
-venue: "BeingBeyond Technical Report 2026"
+updated: 2026-10-12
+date: 2026-10-08
+project_id: being-m07
+project: https://research.beingbeyond.com/being-m07
+arxiv: "2610.11283"
+venue: "arXiv 2026; BeingBeyond Technical Report 2026"
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../concepts/world-action-models.md
@@ -27,134 +31,218 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-omega-0.md
   - ./unitree-g1.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/being_m07.md
-summary: "Being-M0.7（BeingBeyond, 2026-07）：人形 loco-manipulation 潜空间 WAM——>1 万小时人中心 video/motion 混合预训练学 DINO 视觉 latent 与紧凑全身 motion 先验，future-conditioned action expert 在 G1 VR 遥操作数据上接地；真机四任务定量 7/15 vs GR00T-N1.6 2/15、Ψ0 3/15。"
+  - ../../sources/sites/being-m07.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+summary: "Being-M0.7：混合人数据预训练、机器人中训练、冻结先验的门控动作后训练；部署仅生成视觉未来并缓存上下文。SIMPLE 128/180，真机 13/15 与 GR00T-N1.6 并列；arXiv 2610.11283 更新取代旧报告评测口径。"
 ---
 
-# Being-M0.7（人形潜空间 World–Action Model）
-
-**Being-M0.7**（*Being-M0.7: A Latent World-Action Model for Humanoid Robots*，BeingBeyond Technical Report，2026-07-14）提出：可扩展人形 loco-manipulation 不应只依赖昂贵机器人示范或反应式动作模仿，而应先在大规模 **人中心混合模态** 数据上学 **video-motion 先验**，再用 **future-conditioned action expert** 将其接地为具身相关全身命令。先验在 **DINO 视觉 latent** 与 **紧凑全身 motion** 上联合预测未来，motion 充当 **粗粒度动作级计划**；轻量专家结合预测未来上下文与当前观测输出 **低层 action chunk**，形成完整 **世界–动作模型**。
+# Being-M0.7: A Latent World-Action Model for Humanoid Robots（人形机器人潜空间世界–动作模型）
 
 ## 一句话定义
 
-**用人数据预训练 latent video-motion 先验，再用单向 action expert 在少量 G1 全身演示上接地**——把像素级世界建模换成 **DINO 语义 latent + 头根紧凑 motion**，以 **低频计划 / 高频 chunk 控制** 闭环人形 loco-manipulation。
+**先用人类视频与运动学数据学会预测，再适配机器人视角，最后训练动作专家把预测转成全身控制命令。** 本页以 2026-10-08 的 [arXiv v1](https://arxiv.org/abs/2610.11283) 为方法和评测依据；官方项目页仍标注 2026-07-14，不能将两个版本的结果混用。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WAM | World Action Model | 联合环境演化预测与可执行控制的具身策略 |
-| MoT | Mixture of Transformers | 模态专属计算 + 共享跨模态注意力 |
-| G1 | Unitree G1 Humanoid | 本文真机与后训练平台 |
-| VR | Virtual Reality | PICO 全身遥操作采集 |
-| RGB | Red-Green-Blue | 头部 D435i egocentric 输入 |
-| SMPL | Skinned Multi-Person Linear Model | VR 流估计的人体姿态中间表示 |
+| WAM | World-Action Model | 用未来预测辅助动作生成的模型 |
+| MoT | Mixture of Transformers | 模态分别计算，注意力交换视觉与运动信息 |
+| FM | Flow Matching | 学习将噪声变成未来状态或动作的流场 |
+| FK | Forward Kinematics | 从机器人关节状态计算身体点的位置 |
+| KV | Key / Value | 动作专家复用的预测上下文缓存 |
+| VR | Virtual Reality | 机器人全身示范的采集接口 |
+| SMPL | Skinned Multi-Person Linear Model | 遥操作中间人体姿态表示 |
+| DoF | Degrees of Freedom | 机器人自由度 |
 
 ## 为什么重要
 
-- **Cascaded WAM 的人形实例：** 显式分解 $P(Z_Q,M_Q\mid\cdot)\cdot P(a_q\mid Z_Q,M_Q,O_q,\cdot)$，先验负责 **场景演化 + 全身意图**，专家负责 **高频可执行命令**——与 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 的 **Joint 双 DiT** 形成 2026 人形 WAM **「人先验 + 后接地」vs「视频–动作联合端到端」** 对照轴。
-- **缓解数据与算力双瓶颈：** **>10,000 h** 原始混合模态（三监督流：配对 / 仅视频 / 仅动作）把可用监督从「仅配对千小时级」扩到万小时级；**DINO latent** 避免像素重建，把容量集中在语义布局与场景演化。
-- **统一人–机 motion 接口：** **head-root** 紧凑表示（头、双手、双脚）既可来自人动作也可经 **FK** 来自机器人轨迹，后训练除 action 标签外还提供 **vision + motion** 监督，推理时还有 **motion 级反馈路径**。
-- **BeingBeyond 谱系延伸：** 与 [Being-H0.7](../methods/being-h07.md)（操作向潜空间 WAM + latent queries）同机构；M0.7 把同一「**不滚像素、用未来结构**」动机推到 **全身 loco-manipulation** 与 **SONIC/G1** 栈。
+它把“人体运动不是机器人命令”拆成三个可检查的学习阶段。运动数据提供结构化监督；机器人中训练处理人机视角及身体动力学差异；动作后训练负责可执行命令。预测先验与动作专家单向连接，能分别核查预测质量与动作接地。
 
-## 核心方法与结构
+**关键版本更正：** 新版在动作后训练与部署关闭显式 motion 预测，仅将未来视觉 hidden states 提供给动作专家。人数据学到的运动知识仍影响视觉表示，但部署并不要求先生成一段人体 motion，再直接交给 SONIC。
 
-| 模块 | 作用 |
-|------|------|
-| **DINO 视觉编码** | 冻结 DINO 将帧映射为 $Z$；预测 **未来 image latent** 而非像素 |
-| **紧凑 motion 表示** | head-root 规范化的头/双手/双脚向量 $M$；粗粒度全身计划 |
-| **Video-Motion MoT prior** | 模态专属 LN/投影/FFN + **共享注意力**；DistilBERT 语言条件；**chunk 并行 flow matching** 去噪未来 |
-| **Future-conditioned action expert** | 独立 flow Transformer；**单向**读取 prior 多层 $H^\theta(\tau)$ + 当前 $O_q$；输出 **action chunk** |
-| **推理调度** | prior **周期性**刷新未来 video-motion 计划并缓存 KV；expert **高频**复用缓存 + 实时 $O_{cur}$ 更新 chunk |
+## 核心信息
 
-### 流程总览
+| 项目 | 核验内容 |
+|------|----------|
+| 机构 | 超越智能（BeingBeyond） |
+| 发布时间 | 项目页 2026-07-14；arXiv v1 首次提交 2026-10-08 |
+| 论文 | arXiv:2610.11283；沿用已有实体 ID，未新建重复节点 |
+| 预训练数据 | 过滤和切片前超过 10,000 小时；配对视频–运动、仅视频、仅运动三流 |
+| 真机 | Unitree G1、Linker Hand O6、头部 RealSense D435i；外部 RTX 4090 策略工作站 |
+| 开放状态 | 论文和演示公开；截至 2026-10-12 未在项目页找到 M0.7 专属代码、权重或处理后训练集入口 |
+
+## 方法：三阶段与梯度边界
+
+| 阶段 | 数据 / 目标 | 更新参数 | 应核查什么 |
+|------|-------------|----------|-------------|
+| Pre-training | 人中心三流；可用模态的视觉/运动 FM 损失，运动还加几何约束 | Video-Motion prior | 单模态样本不等于补齐另一模态；缺失 token 被屏蔽 |
+| Robot mid-training | 机器人视频、语言与 22D motion；视觉与可用运动预测 | Prior | 将人先验适配到机器人场景和身体变化 |
+| Action post-training | 同一机器人轨迹中的当前图像、本体状态、示范 action chunk | Action expert 及观测/上下文投影；prior 冻结 | 动作损失不回传 prior；上下文来自 prior 自身采样 |
+
+DINO 与 DistilBERT 在三阶段均冻结。MoT 保留视觉/运动各自的投影、归一化及 FFN，通过共享注意力联合建模。未来 token 并行去噪；历史 token 不访问未来，防止监督泄漏。
+
+动作专家先处理当前观测与动作 token，再以动作 token 为 query 读取 prior 的未来视觉 hidden states。token-wise gate 决定注入多少预测 residual；本体 token 通过局部 self-attention 起作用，不直接查询世界上下文。该 gate 控制信息注入量，不是已经验证的模型置信度或安全保证。
+
+### 训练流程图
 
 ```mermaid
 flowchart TB
-  subgraph pretrain [人中心预训练]
-    DVM[配对 video-motion]
-    DV[仅 egocentric 视频]
-    DM[仅人动作]
-    DVM --> MOT[Video-Motion MoT\nflow matching]
-    DV --> MOT
-    DM --> MOT
-    MOT --> ZM["未来 DINO latent Z_Q\n+ 紧凑 motion M_Q"]
-  end
-  subgraph post [机器人后训练 / 推理]
-    ZM --> AE[Future-conditioned\nAction Expert]
-    Oq[当前观测 O_q\nRGB + 本体 + 进度] --> AE
-    AE --> AC[可执行 action chunk]
-    AC --> G1[Unitree G1 + SONIC 低层]
-  end
+  pair["视频与运动配对"] --> pre["人数据预训练 MoT"]
+  video["仅视频"] --> pre
+  motion["仅运动"] --> pre
+  pre --> mid["机器人中训练：适配 prior"]
+  robot["G1 遥操作轨迹"] --> mid
+  mid --> frozen["冻结 prior：生成视觉未来"]
+  frozen --> cache["未来视觉 hidden states"]
+  robot --> expert["门控动作专家后训练"]
+  cache --> expert
+  expert --> commands["可执行 action chunk"]
 ```
 
-### 与 MotionWAM / Being-H0.7 的分界
+## 表示、参数与控制接口
 
-| 维度 | Being-M0.7 | MotionWAM | Being-H0.7 |
-|------|------------|-----------|------------|
-| **WAM 族** | Cascaded（先验 → expert） | Joint（Video+Motion 双 DiT） | 潜空间策略内未来对齐 |
-| **视觉接口** | DINO latent | Cosmos Video DiT latent | 紧凑未来嵌入 + latent queries |
-| **动作接口** | 粗 motion + robot chunk | SONIC 统一 motion token | 直接 action chunk |
-| **人数据角色** | **主预训练监督** | Stage 1–2 egocentric 视频 | 20 万 h 人视频 + 机演示 |
-| **真机平台** | G1 + Linker O6 + VR 遥操作 | G1 + ALOHA2 + PICO VR | 多平台含 G1 |
+| 接口 | 具体含义 |
+|------|----------|
+| 22D motion | 头根平移 3D、连续旋转 6D、初始头高 1D、双手双脚局部位置 12D；用于预训练/中训练 |
+| 63D 本体观测 | roll/pitch、角速度、关节位置与速度；另输入当前单帧 RGB |
+| 66D 真机动作 | 64D SONIC universal control token + 左右手各 1D 开合；不是 66 个关节目标 |
+| Prior | 30 层、宽度 768、24 个注意力头；视觉/运动 FFN expansion 分别为 6/2 |
+| Action expert | 30 层、宽度 1024、32 个注意力头；每三层连接一次 prior（3、6、…、30） |
+| 归一化 | 本体和动作按机器人训练集逐通道标准化，执行前还原控制单位 |
 
-## 实验要点
+22D motion 用头为根连接人和机器人，而不要求二者有相同关节角。机器人中训练读取预处理 motion；部署设 `use_robot_motion=false`，运动 slot 仍可能经过共享前向计算，但输出被丢弃，不能理解成已裁掉全部运动分支算力。
 
-| 轴 | 报告口径（以技术报告为准） |
-|----|---------------------------|
-| **平台** | Unitree G1；双 7-DoF 臂 + Linker Hand O6；头部 D435i；策略 **RTX 4090**；ZMQ 闭环 |
-| **采集** | PICO VR + 踝 tracker + 手柄；XRoboToolkit→SMPL；**SONIC** 50 Hz 全身跟踪 |
-| **任务** | Mirror Toy Grasping、Water-Tank Fish Scooping、Tabletop Organization、Obstacle-Avoidance Basket Carrying |
-| **定量** | Mirror+Fish 共 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**；Mirror **4/10** vs 基线 **1/10**；Fish **3/5** vs **1/5** / **2/5** |
-| **预训练规模** | 原始 **>10,226 h** 混合模态（8+ 数据集 + 内部数据） |
+### 部署频率与 action chunk
+
+| 时间量 | 新版附录设定 | 正确读法 |
+|--------|--------------|----------|
+| 预测帧间距 | 5 Hz | 未来视觉状态间隔 0.2 秒；不是 prior 实际重新调用频率 |
+| Prior 窗口 | 1 帧已观测 + 24 帧未来 | 未来范围 4.8 秒；缓存耗尽前刷新，未给统一固定刷新 Hz |
+| Action chunk | 30 条命令 | 50 Hz 执行时覆盖 0.6 秒 |
+| 动作专家查询 | 约 1.67 Hz | 执行完整 chunk 后再取当前观测查询；不是每 20 ms 重新跑专家 |
+| 命令执行 | 50 Hz | 每 20 ms 执行一条控制命令 |
+| FM 采样 | 后训练 prior 3 步；部署 prior / expert 各 10 步 | 训练上下文采样与部署去噪步数不同 |
+
+这些是命令时间跨度对应的名义调度；去噪计算耗时另计，论文未将其等同于端到端实时吞吐。
+
+缓存只包含未来视觉 token，排除 prior 的历史输入 token；当前观测另走专家输入。执行计数器用于窗口进度管理，配置关闭额外 execution-progress policy token。
+
+### 论文描述的部署时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Obs as RGB 与本体观测
+  participant Prior as 冻结视觉 prior
+  participant Expert as 门控动作专家
+  participant Ctrl as SONIC 与手部控制
+  participant G1 as Unitree G1
+  Obs->>Prior: 最近图像与指令
+  Prior->>Prior: 10 步生成视觉未来并缓存 KV
+  loop 当前预测窗口内
+    Obs->>Expert: 最新 RGB 与 63D 本体状态
+    Prior-->>Expert: 各去噪步对应的未来视觉 KV
+    Expert->>Expert: 10 步生成 30 条 66D 命令
+    Expert->>Ctrl: 还原单位后的 action chunk
+    loop 30 条命令
+      Ctrl->>G1: 50 Hz 命令执行
+    end
+    G1-->>Obs: 下一次查询所需状态
+  end
+  Obs->>Prior: 缓存耗尽前刷新窗口
+```
+
+图依据论文 §7.4–7.5，是系统行为说明，不是已公开源码的调用图。
+
+## 源码运行时序图
+
+**不适用。** 截至核查日项目页 GitHub 按钮指向 BeingBeyond 组织，未提供 M0.7 可运行训练/推理仓库。组织中其他 Being-H、Being-M0.5 项目不能作为 M0.7 的实现替代；不虚构 `train.py`、安装命令或 checkpoint 路径。
+
+## 实验与评测
+
+### 新版结果（arXiv v1 Tables 1–3）
+
+| 方法 | SIMPLE 成功数 / 180 | 真机 W2F / 5 | W2M / 5 | W2D / 5 | 真机合计 / 15 |
+|------|-------------------|-------------|---------|---------|----------------|
+| GR00T-N1.6 | 61 | 3 | 5 | 5 | 13 |
+| Ψ0 | 116 | 0 | 1 | 2 | 3 |
+| π0.5 | 95 | 2 | 2 | 3 | 7 |
+| Being-M0.7 | 128 | 3 | 5 | 5 | 13 |
+
+SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模型总成功率 71.1%，为比较方法中的最高合计，但并非逐任务都第一。真机三任务分别是走到水箱捞鱼、走到镜面抓隐藏玩偶、走到桌边抓可见玩偶；每任务五次、单次限时 30 秒、人工判定成功。Being-M0.7 真机合计与 GR00T-N1.6 **并列 13/15**，不能写成显著超越。
+
+| SIMPLE 消融 | 成功数 / 180 | 相对完整模型说明 |
+|-------------|--------------|------------------|
+| 完整模型 | 128 | 基准 |
+| 去掉人数据预训练 | 88 | 总成功数下降 40 |
+| 去掉机器人中训练 | 107 | 总成功数下降 21 |
+| 上游替换为语言上下文 | 105 | 当前图像与本体仍在；不是无视觉策略 |
+
+消融支持三个组件对合计结果的贡献，但语言上下文在 XMoveBendPick 上反而更好。不能把 aggregate 增益等同于每个场景必然获益，也不能把三次消融当成门控机制的独立消融。
+
+### 版本边界
+
+旧档案曾记录镜面与捞鱼两类设置的 7/15，以及四项演示任务。新版增加 SIMPLE 和三项完整真机任务，评测协议及基线结果发生变化；两组结果不构成同协议性能趋势。本页替换旧结论，旧来源摘要仍在归档中明确标记为历史版本。
+
+## 与相关路线对比
+
+| 路线 | 本页关注的区别 | 继续阅读 |
+|------|----------------|----------|
+| Being-M0.7 | 人视频–motion 先验 → 机器人适配 → 冻结视觉预测上下文与动作专家 | 当前节点 |
+| MotionWAM | 视频预测表示与人形动作生成的另一系统设计；数据与协议不同，避免直接横比成功率 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) |
+| Being-H0.7 | 同机构操作方向；latent queries 与未来表示对齐，不能将 H 系代码默认为 M 系实现 | [Being-H0.7](../methods/being-h07.md) |
+| SONIC | 接收动作接口并执行全身运动，属于控制层；50 Hz 执行不等于上层专家查询频率 | [SONIC](../methods/sonic-motion-tracking.md) |
 
 ## 结论
 
-**用人数据预训练 latent video-motion 先验，再用 future-conditioned action expert 在少量 G1 演示上接地，形成级联人形 loco-manipulation WAM。**
+**Being-M0.7 将人类运动监督转移到视觉预测表示，再经机器人适配和门控动作专家接地；新版证据支持仿真合计领先和真机并列基线。**
 
-1. **Cascaded 分解计划与控制** — 先验预测未来 DINO latent 与紧凑 motion；expert 单向读取 prior 多层特征与当前观测，输出可执行 action chunk。
-2. **万小时人中心数据破瓶颈** — 原始 >10,226 h 混合模态（配对 / 仅视频 / 仅动作）扩展监督；DINO latent 避免像素重建。
-3. **head-root motion 统一人–机接口** — 头 / 双手 / 双脚既可来自人动作，也可经 FK 来自机器人轨迹；推理另有 motion 级反馈路径。
-4. **真机相对反应式基线领先** — Mirror+Fish 共 7/15，对照 GR00T-N1.6 2/15、Ψ0 3/15。
-5. **与 MotionWAM / ω-0 对照选型** — 本文是「人先验 + 后接地」Cascaded；MotionWAM 是 Joint 视频–动作端到端；[ω-0](./paper-omega-0.md) 是 Joint **潜空间 foresight** + SONIC latent（家务 11 任务），同属「不滚像素」阵营但结构不同。
+1. 将三阶段及参数冻结边界分开记录，动作后训练不再更新 prior。
+2. 22D motion 是训练监督，66D action 才是本文真机控制接口。
+3. 5 Hz 预测帧间距、1.67 Hz 查询、50 Hz 执行对应不同环节。
+4. 未来 KV 缓存提供可复用上下文，专家仍读取当前观测；完整 chunk 内不代表每步重新推理。
+5. 复现需等待明确的源码、权重和数据入口；论文附录能指导架构审查，不能代替实现。
 
-## 常见误区或局限
+## 局限与工程判断
 
-- **误区：** 把 Being-M0.7 等同于 Being-H0.7 的「换名」；M0.7 是 **video-motion MoT 先验 + 独立 action expert** 的 **人形全身** 技术报告，训练目标与架构与 H 系 latent queries 不同。
-- **误区：** 「latent」等于没有世界模型；本文仍 **显式预测未来视觉 latent 与 motion**，只是不做像素 rollout。
-- **局限：** 真机定量任务数与试验规模仍有限；后训练数据依赖 **VR 全身遥操作**；技术报告未给出与 MotionWAM 同规模的九任务成功率表；分布偏移与跨场景鲁棒性待后续工作。
+- 超过一万小时指过滤前原始语料，含内部与商业获得数据，不是可直接下载的一万小时公开训练集。
+- 真机每任务仅五次，不提供长期稳健性或统计显著领先的充分证据；长时程任务仍未建立结论。
+- 作者指出 SONIC 末端跟踪精度限制了示范采集；上层预测改善不能消除底层误差。
+- 模型在外部 RTX 4090 工作站运行，不能据此推出 Jetson 板载延迟或部署吞吐。
+- 项目介绍与 arXiv 方法描述存在版本差异；工程选型以明确版本附录为准。
 
-## 与其他页面的关系
+## 开源状态与许可核查
 
-- [World Action Models](../concepts/world-action-models.md) — **Cascaded** 族人形 loco-manip 实例
-- [Loco-Manipulation](../tasks/loco-manipulation.md) — 评测语境与全身协调挑战
-- [Being-H0.7](../methods/being-h07.md) — 同机构潜空间 WAM 操作线
-- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — Joint 实时人形 WAM 对照
-- [ω-0](./paper-omega-0.md) — Joint 潜空间 foresight + SONIC 家务并发 loco-manip 对照
-- [Teleoperation](../tasks/teleoperation.md) — VR 全身数据采集栈
-
-## 推荐继续阅读
-
-- 项目页与 PDF：[Being-M0.7](https://research.beingbeyond.com/being-m07) · [PDF](https://research.beingbeyond.com/being-m07/being-m07.pdf)
-- 同机构前序：[Being-H0.7 项目页](https://research.beingbeyond.com/being-h07)（arXiv:2605.00078）
-
-## 参考来源
-
-- [sources/papers/being_m07.md](../../sources/papers/being_m07.md) — 原文归档与摘录对应位置
-- [Being-M0.7 项目页](https://research.beingbeyond.com/being-m07) — Overview、数据配方与演示视频
-- Yue, J., et al. (2026). *Being-M0.7: A Latent World-Action Model for Humanoid Robots.* BeingBeyond Technical Report.
+截至 **2026-10-12**，核对[项目页](https://research.beingbeyond.com/being-m07)、[组织仓库列表](https://github.com/orgs/BeingBeyond/repositories)及项目名检索：论文/演示公开，未找到 M0.7 专属训练代码、推理代码、权重或处理后语料入口。该结论是“未发现可获取入口”，不推断作者一定不发布。arXiv 论文许可不等于代码或训练数据许可，原始数据集需各自核对。
 
 ## 关联页面
 
-- [World Action Models（WAM）](../concepts/world-action-models.md)
-- [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md)
-- [Being-H0.7（潜空间世界–动作模型）](../methods/being-h07.md)
-- [MotionWAM（实时人形 WAM）](./paper-motionwam-humanoid-loco-manipulation-wam.md)
-- [ω-0（潜空间 foresight · 并发家务 loco-manip）](./paper-omega-0.md)
-- [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
-- [Teleoperation（遥操作）](../tasks/teleoperation.md)
-- [Unitree G1](./unitree-g1.md)
-- [Action Chunking](../methods/action-chunking.md)
-- [Generative World Models](../methods/generative-world-models.md)
+- [世界–动作模型](../concepts/world-action-models.md)
+- [移动操作](../tasks/loco-manipulation.md)
+- [遥操作](../tasks/teleoperation.md)
+- [Being-H0.7](../methods/being-h07.md)
+- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [ω-0](./paper-omega-0.md)
+- [SONIC](../methods/sonic-motion-tracking.md)
+- [动作分块](../methods/action-chunking.md)
+- [G1](./unitree-g1.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
+
+## 推荐继续阅读
+
+- [新版论文全文](https://arxiv.org/html/2610.11283v1) — §3、Tables 1–5、§7.4–7.5
+- [官方项目页](https://research.beingbeyond.com/being-m07)
+- [官方项目 PDF](https://research.beingbeyond.com/being-m07/being-m07.pdf) — 标注版本后再比较
+
+## 参考来源
+
+- [论文来源归档](../../sources/papers/being_m07.md) — 新版摘要及历史版本边界
+- [项目页与开放状态归档](../../sources/sites/being-m07.md)
+- [Being-M0.7 arXiv v1](https://arxiv.org/abs/2610.11283)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+

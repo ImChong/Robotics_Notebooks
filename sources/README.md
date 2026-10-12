@@ -170,6 +170,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [mjviser.md](repos/mjviser.md) | mujocolab/mjviser：基于 Viser 的 MuJoCo 浏览器查看器；与 mjlab（训练）分层区分（Apache-2.0）
 - [x] [air-embodied-brain-memcompiler.md](repos/air-embodied-brain-memcompiler.md) | MemCompiler 官方实现：ALFWorld / ScienceWorld Manager–Executor 运行与评测入口
 - [x] [nvlabs-cari4d.md](repos/nvlabs-cari4d.md) | NVlabs/CARI4D 研究代码、训练与数据准备入口
 | 文件 | 内容 |

@@ -130,6 +130,20 @@
 - Codex CLI 可用示例：`codex mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest`
 - 用途：打开本地页面、检查 console/network、模拟点击/键盘交互、截图或验证图谱节点状态。
 
+### 飞书公开文档抓取
+
+ingest `*.feishu.cn/wiki|docx` 文档时，`WebFetch` 会被 302 到登录页；用浏览器打开「互联网公开」文档虽然能进访客视图，但正文是**虚拟滚动**（只有当前可见的块在 DOM 里），一次性读取只能拿到左侧目录或开头几段。用脚本边滚边按 `data-block-id` 累积文本：
+
+```bash
+pip install playwright   # 只需 Python 包；浏览器用云容器预装的 Chromium（/opt/pw-browsers），勿 playwright install
+python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --links -o /tmp/feishu-doc.txt
+```
+
+- `--links` 在文末附「正文超链接」（文字 → 地址），可取到各论文 / 原帖链接（链接里常带 arXiv 编号）。
+- 输出是纯文本，不含图片与表格结构；实测（2026-10-12，WaytoAGI 周报页）70 个块、约 6000 字符，到底即止。
+- 只适用于「互联网公开」文档；需要登录或无权限会停在登录页，脚本以退出码 2 报错。页面结构改版时，容器选择器 `.page-block-children` 可能失效（**未做长期稳定性验证**）。
+- 飞书文档多为转载：归档到 `sources/` 时保留原文链接与版权声明，只提炼条目线索，不整篇转存。
+
 ### LLM Wiki Ops 规范（必须遵守）
 
 本知识库采用 **Karpathy LLM Wiki 模式**：LLM 是维护者，人类是 curator。
@@ -229,6 +243,19 @@ python3 main.py "https://mp.weixin.qq.com/s/<ARTICLE_ID>" -o /tmp/wx-out -v
 ```
 
 产物为带 YAML frontmatter（title/author/date/source）的干净 Markdown，落 `<output>/<标题>/<标题>.md`。**这些工具不在 update script 里**（Camoufox 体积大、拉取有网络风险），依赖快照持久化；若快照缺失才需按上述来源重装。遇 CAPTCHA/空正文多为限流，等几分钟重试或加 `--no-headless`。
+
+#### 兜底：预装工具缺失时（Claude Code 云容器等）
+
+Claude Code 云容器**没有**上述预装，且网络策略对 `github.com/.../archive/*.zip`、`api.github.com`（Camoufox 浏览器下载）返回 403，`agent-reach` 与 Camoufox 都装不上。`WebFetch` 和 Jina Reader 只会拿到「当前环境异常」验证页。此时直接用容器自带 Chromium（`/opt/pw-browsers`，勿 `playwright install`）+ 微信内置浏览器 UA（`MicroMessenger`）即可读到正文（2026-10-12 实测，两篇公众号周报均成功）：
+
+```bash
+pip install playwright   # 只需 Python 包；浏览器用预装的 Chromium，脚本自动探测
+python3 scripts/fetch_wechat_article.py "https://mp.weixin.qq.com/s/<ARTICLE_ID>" -o /tmp/wx-article.txt
+```
+
+- 输出是页面纯文本（标题、作者、日期、正文），不下载图片、不转 Markdown；周报类文章的条目格式为 `N. 英文标题 / 中文标题 / 机构 / 论文链接 / 解决的问题 / 创新点`，可再用脚本解析。
+- 脚本检测到验证页会以退出码 2 报错。**为何换 UA 就能过，未经验证**（推测是微信对「微信内置浏览器」放行）；若以后失效，按上节「遇 CAPTCHA」处理，或让用户在本机用 `wechat-article-for-ai --no-headless` 手动验证后交付 Markdown。
+- 只抓取用户明确提供的文章链接；控制频率，勿批量爬取。
 
 ### Cursor Cloud Agent：PR 与验证截图
 

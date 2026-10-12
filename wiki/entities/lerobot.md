@@ -32,6 +32,7 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ./isaac-teleop.md
   - ./lerobot-humanoid.md
+  - ./xbotics-embodied-ai-handbook.md
 sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/sites/lerobot-envhub-docs.md
@@ -203,6 +204,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 
 ## 关联页面
 
+- [Xbotics 具身智能教程（21 讲）](./xbotics-embodied-ai-handbook.md) — 以 LeRobot 为主线的中文实践课（采集 / ACT / SmolVLA 微调 / 真机部署）
 - [LeRobot EnvHub](../concepts/lerobot-envhub.md) — Hub 仿真环境的加载契约与安全注意
 - [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md) — 数据集目录布局、流式与 v2.1 迁移
 - [HDF5 vs MCAP vs LeRobot](../comparisons/hdf5-mcap-lerobot-data-formats.md) — 采数/日志/训练格式三角

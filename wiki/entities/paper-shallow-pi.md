@@ -7,7 +7,7 @@ tags:
   - edge-deployment
   - iros-2026
 status: complete
-updated: 2026-09-25
+updated: 2026-10-12
 arxiv: "2601.20262"
 code: https://icsl-jeon.github.io/shallow-pi/
 related:

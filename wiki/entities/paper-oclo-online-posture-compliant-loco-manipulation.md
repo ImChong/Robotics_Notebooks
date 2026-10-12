@@ -11,9 +11,11 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ./paper-sonic-transfer.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/oclo_arxiv_2610_05678.md
   - ../../sources/sites/oclo-humanoid.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 ---
 
 # Dataset-Free Compliant Humanoid Loco-Manipulation with Dynamic Online Posture（OCLO）
@@ -107,12 +109,14 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 行走与操作耦合任务总览。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 解释多身体部位如何共同满足目标与平衡约束。
 - [SONIC-Transfer](./paper-sonic-transfer.md) — 预训练 SONIC 控制器相关工作。
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - [论文归档：arXiv:2610.05678](../../sources/papers/oclo_arxiv_2610_05678.md)
 - [官方项目页归档](../../sources/sites/oclo-humanoid.md)
 - [arXiv 原文](https://arxiv.org/abs/2610.05678)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 推荐继续阅读
 

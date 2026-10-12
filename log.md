@@ -95,6 +95,123 @@ op: ingest
 
 接入 MemCompiler，归档论文、项目页和官方代码入口，提炼逐步状态条件编译、Brief State 与 Soft-Mem 双通道方法，并与现有具身记忆/部署期适应节点互链。论文称代码与数据可用；README 有 ALFWorld、ScienceWorld 运行入口，复现仍依赖外部环境数据、模型/API 配置。Zetta 与 Zeva 的 arXiv 节点已存在主库，未重复创建。
 
+---
+op: ingest
+date: 2026-10-11
+---
+RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论文、项目页、训练实现和真机部署代码；训练与部署仓库均开放，后者覆盖 Go1/Go2 + ARX5。
+
+# 2026-10-12 — Ingest Draft
+
+- 新增 [Draft 项目实体](../wiki/entities/paper-draft-parametric-robot-design.md)：记录参数规格到 MJCF 的编译链、数据拟合与 twin 验证、统一 RL 课程实验、开源代码入口和适用边界。
+- 新增论文摘录与源码归档：[论文](../sources/papers/draft_arxiv_2609_38405.md)、[官方仓库](../sources/repos/draft.md)。
+- 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
+- Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
+
+## [2026-10-12] ingest | EgoHumanoid-V2：核对论文全文、项目页与部分开放源码，补全现有实体及移动操作路线交叉链接
+
+## [2026-10-12] ingest | sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md — WaytoAGI 飞书周报（转载 DAIR.AI）10 篇论文：新建 9 个独立详情节点、复用 1 个已有节点（递归自我改进综述）；偏 LLM 智能体而非机器人，各节点写明与机器人学习的关系；飞书正文用 scripts/fetch_feishu_doc.py 获取。
+
+## [2026-10-12] ingest | CLOTHO（TOG/SIGGRAPH Asia 2026）：归档 DOI 与项目页，整理松散惯性服装 IMU canonicalization 方法、跨服装评测与待核实开源状态。
+
+## [2026-10-12] ingest | sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md — 具身智能小站 34 篇盘点：34/34 新建独立论文详情节点（逐篇读 arXiv 摘要/HTML 并核查项目页/仓库），汇总页 embodied-station-34-papers-spatial-grounding-technology-map；公众号抓取用 scripts/fetch_wechat_article.py。
+
+## [2026-10-12] ingest | sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md 与 frontier_manipulation_2026_10_05_10_09.md — 10.5-10.9 两篇周报共 73 篇不同论文：新建 60 个独立论文详情节点（逐篇读 arXiv 摘要/HTML 并核查项目页开源状态），13 个已有节点补链；5 篇在两期重复；另新增 scripts/fetch_wechat_article.py 作为公众号抓取兜底。
+
+## [2026-10-12] ingest | DiffWAM 导航预测表示接地
+
+收录 DiffWAM 统一论文实体和官方资源归档，整理早期预测表示、Grid-Motion、Latent2Pose、同 rollout 几何蒸馏与 FastDreamer 异步交接。区分标准/Flash 计算预算、候选轨迹与安全控制、端点 SR 与真机完成、archived Thor 延迟与当前解码器；记录项目页差异及未发现公开实现的边界。补流程与系统时序 Mermaid，从 Fast-WAM 建立入链。
+
+## [2026-10-12] ingest | DiscoRL：核查 Nature 论文、官方项目页及 JAX 源码，补充双层优化、运行时序与机器人迁移边界
+
+## [2026-10-12] ingest | sources/repos/xbotics-embodied-ai-handbook.md — Xbotics 21 讲实践教程：新建课程实体页并接入 LeRobot；项目页无，代码同仓 MIT，L1-16 较完整、L17/18/21 占位
+
+## [2026-10-12] ingest | sources/sites/research-beingbeyond-com.md — 公司路线新增智在无界 BeingBeyond（26 节点，新建公司总览）
+
+## [2026-10-12] ingest | MEgoVista 公制手头重建
+
+收录 MEgoVista 统一论文节点，整理三鱼眼基线尺度、佩戴者手归属、离线整段优化与独立动捕审核。强调对齐后 4.29 mm 指标、野外定性演示和在线吞吐边界；硬件官网未发现专属代码/权重/评测数据入口，不虚构运行脚本。补充 Mermaid 并连接重定向知识链。
+
+## [2026-10-12] ingest | Being-M0.7 新版复核
+
+更新已有 Being-M0.7 节点，补入 arXiv:2610.11283 三阶段训练、门控视觉上下文、22D/63D/66D 接口与部署时序。区分 7 月项目介绍与 10 月论文，修正旧真机领先结论及 50 Hz 专家推理误读。论文和演示公开，未发现项目专属代码/权重/处理后语料入口；同步 WAM 路线与交叉页，未新增重复实体。
+
+## [2026-10-12] ingest | Reflex：视觉驱动人形接球与代码待发布状态
+
+- 收录官方论文、项目页和代码仓来源；统一编译到一个项目实体，保留仿真与真机指标边界。
+- 三阶段方法以特权状态控制、延迟状态推断和 RGB-D 时序 grounding 逐层接入；官方仓当前未发布可运行训练 / 评测 / 真机代码。
+- 从人形 RL 身体系统栈的视觉闭环层加入入链。
+
+## [2026-10-12] ingest | World Model Consultation Study | 世界模型与直接评分对照
+
+- Q: 世界模型在什么任务条件下值得参与控制决策？
+- A: 预测式控制在部分导航条件中有优势，但 Push-T 中固定容量/视野的预测器未稳定胜过直接评分器；证据限于模拟。
+- 写回：新增论文与代码归档、实体节点，并链接至 Model-Based RL 方法页。
+
+## [2026-10-12] ingest | Human-Like Redundancy Resolution | 双臂遥操作冗余解析
+
+- Q: 如何在双臂遥操作中保留腕部任务优先级并获得更类人的肘姿态？
+- A: 自适应肘偏好通过层级速度 IK 的腕任务零空间起作用；公开演示仓面向 JAKA K1 + Viser，无仿真后端或硬件输出链路。
+- 写回：新增论文、项目页、代码归档和实体节点，并链接至 Teleoperation 任务页。
+
+## [2026-10-12] ingest | VaDar | 长时程 RL 价值分解
+
+- Q: 如何保留子目标监督，同时避免策略只追逐当前阶段？
+- A: VaDar 用共享 critic 分别建模各子目标价值，并以未来阶段价值训练部署时不显式接收子目标的策略；官方页面未提供算法实现仓。
+- 写回：新增论文与项目页来源归档、实体节点及 HRL 入口链接。
+
+## [2026-10-11] structural | roadmap 巡检补入 RoboDuet / VioLA / CoDance / DreamTrue / AD-E2E-JEPA / VTInstructor / OpenLET-Roban2
+
+## [2026-10-11] ingest | Math To Manim — 归档开源生成管线并关联 Manim
+
+- 上游公开源码与 MIT 许可证；当前主线使用 Astra 分阶段生成、Manim 渲染和证据审阅。
+- 将其作为 Manim 之上的独立教学内容管线记录；注明模型调用、渲染依赖及非仿真/非形式证明边界。
+
+## [2026-10-11] lint | 全量 wiki lint：修复 4 条信息型预警（TEMPO 对比区块、BenchHub 时效措辞、RealCompanion/UltraText-Bench 回链评测基准枢纽）
+
+## [2026-10-11] ingest | wheresryan22/anatomy — 收录把技术原理转成交互式等轴测机械插图的 Claude Skill
+
+- 归档官方项目页与 MIT 仓库，补充生成流程和几何审计方式。
+- 明确 SVG/HTML 解释图、WebGL 与 beta 3D 动作的能力边界；它不替代制造级 CAD 或机器人仿真模型。
+- 在文字生成 CAD 与 3D 网格工作台知识页增加交叉引用。
+
+## [2026-10-11] ingest | LT-Mem 官方奖项与量化结果更新
+
+- 核对 LT-Mem 项目页、论文与 APRL 官方新闻/论文列表；项目页仍显示 finalist，实验室公告已更新为 IROS 2026 Best Paper Award Winner。
+- 更新既有 LT-Mem 独立节点及来源档案，补充 LT-VQA 量化表和代码仍为 TBD 的核查状态。
+
+## [2026-10-11] ingest | wiki/entities/voicestudio.md — 补充 VoiceStudio 短音频克隆与视频配音流程
+
+- 复核官方 README：补充 3 秒参考音频零样本克隆与视频转写、翻译、合成、时间对齐后导出 MP4 的流程。
+- 明确 646 种语言是 OmniVoice 引擎口径，实际覆盖与效果因引擎和语言而异；沿用现有实体节点，避免重复收录。
+
+## [2026-10-11] ingest | CoDance | 单视频到人形双手顺应舞伴交互
+
+- 意图：收录 CoDance 论文及其官方项目页、代码实现和数据下载入口，集中到一个项目实体节点。
+- 开源结论：训练、评测、顺应增强与 G1 部署代码已公开，数据集和检查点由官方 README 指向 Hugging Face；根项目 Apache-2.0，但第三方组件另有许可。
+- 关键页：[CoDance 实体](../wiki/entities/paper-codance.md)；论文、项目页和仓库来源分别归档，关联人-人示范的人形交互论文页。
+
+## [2026-10-11] ingest | AD-E2E-JEPA | JEPA 自动驾驶世界模型论文与官方仓库
+
+- 意图：将 arXiv:2609.34085 与作者指定 GitHub 归并为一个项目实体，并连接 JEPA 世界模型与端到端驾驶主题。
+- 开源结论：论文称 source code available；但官方仓库截至 2026-10-11 仅有 README 与示意图，README 预计 2026-10-19 前发布源码，当前不可复现。
+- 方法与评测：归档 DINOv3、SIGReg 压缩投影、NAVSIMv2 目标条件零样本规划，并区分 256 与 8192 候选的性能/时延工作点。
+- 关联：建立论文、仓库来源归档与唯一实体页，并从 LeWM 页面添加反向链接。
+
+## [2026-10-11] ingest | Tao 的 Math 2.0 讲稿 — 梳理 AI 时代的数学研究目标、共同体与解释价值
+
+- 将讲稿与作者配套说明作为一手来源，区分原文主张与机器人领域映射。
+- 补充 Math 2.0 知识页，并连接 The Bitter Lesson 方法论页。
+
+## [2026-10-11] ingest | OpenLET LET-HumanMotion-Roban2 — 收录申请制动作数据、LejuBFM 运控部署与 Roban 全身 VLA 教程，注明数据规模与模态待核验
+
+## [2026-10-11] ingest | Hugging Face 本周论文 5 篇（独立实体）
+
+- 来源：图片列出的 2026-10-05 至 10-11 榜单；逐篇核对 arXiv。
+- 入库：RealCompanion、Cross-Tokenizer OPD、Kandinsky 6.0 Video、UltraText Bench、Self-Retrospection Distillation，各建独立来源与 wiki 实体。
+- 开源：Kandinsky 6.0 Video 和 UltraText Bench 有官方代码/项目归档；另三篇在所查 arXiv 页面未找到可核实运行仓库。
+- 注：Self-Retrospection Distillation 与已收录 State–Readout Decoupling 虽同缩写，按不同 arXiv 身份分开记录。
+
 ## [2026-10-11] ingest | RFPO 一手资料复核 — 补齐官方项目页归档、源码运行时序与身份字段
 
 - **去重：** 复用已有 arXiv:2610.10453 实体；未新增重复项目节点。

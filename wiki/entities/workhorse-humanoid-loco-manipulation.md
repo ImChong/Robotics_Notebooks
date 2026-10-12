@@ -11,9 +11,13 @@ related:
   - ../tasks/teleoperation.md
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+  - ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/workhorse_arxiv_2610_09117.md
   - ../../sources/sites/workhorse.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+  - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 summary: "Workhorse 用免机器人示范的五链路人体姿态同时训练视觉 flow-matching planner 与 RL 全身 tracker；G1 真机完成箱子分拣、接物和行李箱交互；仿真 box sorting 成功率 77%，40 N·s 推扰时 64%；代码未发布。"
 ---
 
@@ -97,8 +101,13 @@ flowchart TB
 - [Teleoperation](../tasks/teleoperation.md) — 对照机器人遥操作数据采集路线。
 - [Unitree G1](./unitree-g1.md) — G1 真机实验平台。
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 可比的人类 / 视觉驱动移动操作路线。
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - [论文归档](../../sources/papers/workhorse_arxiv_2610_09117.md)
 - [项目页归档](../../sources/sites/workhorse.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
+

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-12
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -239,6 +239,7 @@ flowchart LR
 - **残差式用法**：已有控制器/先验打底时，RL 只学补偿量 $a=a_{\text{base}}+\Delta a$，样本效率与安全性同时改善。见 [Residual Policy Learning](./residual-policy-learning.md) 及谱系论文（[Residual RL](../entities/paper-residual-rl-robot-control.md)、[RPL](../entities/paper-residual-policy-learning.md)、[ResMimic](../entities/paper-resmimic.md)、[RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md)）。
 
 ## 参考来源
+- [DiscoRL Nature 2025](../../sources/papers/discorl_nature_2025.md) — 自动发现学习规则的双层优化与跨环境证据
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — MDP → 策略梯度 → GAE → PPO 的运控教学链
 - [sources/personal/rl_runner_types.md](../../sources/personal/rl_runner_types.md) — Runner 类型谱系（On-policy / Off-policy / 蒸馏 / 评测）
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
@@ -323,6 +324,7 @@ flowchart LR
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 仿真里把 $S,A,R,P$ 跑通再上学習算法
 - [人形 RL 策略训练五模块](../overview/humanoid-rl-policy-training-five-modules.md) — MDP → Actor-Critic → PPO → 奖励 → 蒸馏的运控训练闭环
 - [PPO](./ppo.md) — 大规模并行运控的默认 on-policy 算法
+- [DiscoRL：发现最先进的强化学习算法](../entities/paper-discorl.md) — 学习更新规则而非现成动作策略；游戏基准与机器人迁移边界见统一论文节点
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 - [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
 - [HydroGym（论文实体）](../entities/paper-hydrogym.md) — *Nature* 2026 流控 RL 基准平台；Gymnasium 接口 + 通道→翼型零样本迁移（arXiv:2512.17534，已开源）

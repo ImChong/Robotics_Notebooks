@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, reinforcement-learning, methodology, ai-history]
 status: complete
-updated: 2026-08-26
+updated: 2026-10-11
 related:
   - ../entities/richard-sutton.md
   - ../concepts/embodied-scaling-laws.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/data-flywheel.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../entities/paper-from-agi-to-asi.md
+  - ../concepts/math-2-0.md
 sources:
   - ../../sources/blogs/sutton_bitter_lesson.md
   - ../../sources/sites/incompleteideas-net-rich-sutton.md
@@ -85,6 +86,7 @@ flowchart LR
 - [Data Flywheel](./data-flywheel.md)
 - [From AGI to ASI](../entities/paper-from-agi-to-asi.md) — 宏观算力 scaling 对照
 - [BC Mysteries](./behavioral-cloning-mysteries.md) — 无限数据 BC 下特征缩放仍改成功率
+- [Math 2.0](./math-2-0.md) — AI 规模化能力增长之外，还需设计健康的研究目标与共同体
 
 ## 参考来源
 

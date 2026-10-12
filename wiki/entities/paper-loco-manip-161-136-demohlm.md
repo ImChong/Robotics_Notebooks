@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, sim2real, unitree-g1, pku, beingbeyond, loco-manip-161-survey]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-12
 arxiv: "2510.11258"
 venue: "arXiv preprint; IEEE RA-L 2026-02-19"
 code: https://github.com/BeingBeyond/DemoHLM
@@ -24,7 +24,7 @@ summary: "DemoHLM（arXiv:2510.11258，PKU/BeingBeyond）：仿真单条 VR 示�
 
 # DemoHLM：一条仿真示范通吃十项人形 Loco-Manipulation
 
-**DemoHLM**（*From One Demonstration to Generalizable Humanoid Loco-Manipulation*；[arXiv:2510.11258](https://arxiv.org/abs/2510.11258)，[项目页](https://beingbeyond.github.io/DemoHLM/)）由 **北京大学** 与 **超越智能（BeingBeyond）** 提出：在 **IsaacGym 仿真** 中仅采集 **每条任务 1 条 VR 遥操作示范**，通过 **MimicGen 式物体/本体坐标系轨迹重放** 与 **AMO 式 RL 全身控制器**，自动合成 **数百–数千** 条成功轨迹，再经 **行为克隆** 学习 **闭环视觉操纵策略**，并在 **Unitree G1** 上 **zero-shot** 验证 **10 项 loco-manipulation** 的空间泛化。
+**DemoHLM**（*From One Demonstration to Generalizable Humanoid Loco-Manipulation*；[arXiv:2510.11258](https://arxiv.org/abs/2510.11258)，[项目页](https://beingbeyond.github.io/DemoHLM/)）由 **北京大学** 与 **智在无界（BeingBeyond）** 提出：在 **IsaacGym 仿真** 中仅采集 **每条任务 1 条 VR 遥操作示范**，通过 **MimicGen 式物体/本体坐标系轨迹重放** 与 **AMO 式 RL 全身控制器**，自动合成 **数百–数千** 条成功轨迹，再经 **行为克隆** 学习 **闭环视觉操纵策略**，并在 **Unitree G1** 上 **zero-shot** 验证 **10 项 loco-manipulation** 的空间泛化。
 
 本页同时是 [人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **#136/161**（08 硬件平台、感知配置与部署扩展）的 **arXiv 深读升格**。
 
@@ -54,7 +54,7 @@ summary: "DemoHLM（arXiv:2510.11258，PKU/BeingBeyond）：仿真单条 VR 示�
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 北京大学（PKU）；超越智能（BeingBeyond） |
+| **机构** | 北京大学（PKU）；智在无界（BeingBeyond） |
 | **作者** | Yuhui Fu*、Feiyang Xie*、Chaoyi Xu、Jing Xiong、Haoqi Yuan、Zongqing Lu § |
 | **发表** | arXiv:2510.11258（2025-10-11）；IEEE RA-L（2026-02-19） |
 | **平台** | 仿真 Unitree G1（IsaacGym + SAPIEN/PartNet 资产）；真机 G1 + 2-DoF 颈 + D435 |

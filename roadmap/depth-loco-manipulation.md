@@ -149,6 +149,7 @@ flowchart LR
 - [FetchMan](../wiki/entities/paper-fetchman.md) — MolmoSpaces 15 万场景脚本演示 → BC → Flow-GRPO 突破 BC 天花板；G1 真机 loco-manip 零样本 73.3%；GitHub 占位仓（2026-09-01 前补代码）
 - [OCLO](../wiki/entities/paper-oclo-online-posture-compliant-loco-manipulation.md) — 不用人体动作数据：从双末端目标在线生成骨盆/躯干姿态，并以力反馈参考偏移实现全身顺应
 - [ResGAC](../wiki/entities/paper-resgac-precise-se3-end-effector-tracking.md) — 几何导纳控制（GAC）的 SE(3) 末端跟踪先验 + 残差 RL，G1 上协调手臂/腿/腰；站立插孔成功率 90%
+- [RoboDuet](../wiki/entities/paper-roboduet-loco-manipulation.md) — locomotion 与 arm 两个协作策略控制带臂四足，移动中追踪末端 6D 位姿，并验证跨相近四足平台零样本迁移
 
 ### 学完输出什么
 - 一个能在仿真里完成"走近 + 全身接触搬运"的技能策略
@@ -182,6 +183,7 @@ flowchart LR
 - [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md) — 十类能力形成顺序全景
 - [RoboReact](../wiki/entities/paper-roboreact.md) — 单帧 egocentric RGB-D + 语言生成人类交互视频并编译成物体中心关键帧技能，测试时去掉 VLM 靠再接地 + HOMIE 执行；G1 长程双臂操作四任务均值 SR 81.3%
 - [HAF](../wiki/entities/paper-haf-humanoid-vla-adaptation.md) — 三阶段层次 action flow + DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工全身 loco-manipulation；均分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）
+- [VioLA](../wiki/entities/paper-viola-human-data-control.md) — 配对 human/robot 动作编码器建共享潜空间，策略预测身体与手部运动潜变量、冻结控制器执行（G1 locomotion 100%、manipulation 88.6%）
 
 ### 学完输出什么
 - 能画出"分层 / 生成式 / VLA / WAM"四条路线的架构对比图

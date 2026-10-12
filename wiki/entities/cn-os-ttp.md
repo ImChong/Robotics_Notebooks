@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/ttp.md
 summary: "智在无界 开源项目 TTP（数据集/Benchmark）：数据采集/转换工具：同步记录并可转入 LeRobot/RLDS 训练栈…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # TTP

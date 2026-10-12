@@ -207,7 +207,7 @@ sequenceDiagram
 
 | 项 | 状态 |
 |----|------|
-| 代码 | **已开源**；README 与源文件头声明 Apache 2.0，仓库根目录 **无独立 LICENSE 文件**；最新提交 2026-05-18 |
+| 代码 | **已开源**；README 与源文件头声明 Apache 2.0，仓库根目录 **无独立 LICENSE 文件**；核查时最近一次提交为 2026-05-18 |
 | 任务套件 | 268 任务代码在仓内（`lightwheel_libero_tasks` 5 个子套件 + `lightwheel_robocasa_tasks` single/multi stage） |
 | 场景资产 | 经 Lightwheel SDK 远程拉取；离线全量获取方式 **未核实** |
 | 示范数据 | **已发布**（HF） |

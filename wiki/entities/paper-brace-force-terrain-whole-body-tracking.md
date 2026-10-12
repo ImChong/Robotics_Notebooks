@@ -11,10 +11,12 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../concepts/terrain-adaptation.md
   - ../methods/imitation-learning.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/brace_arxiv_2610_07052.md
   - ../../sources/sites/brace-project.md
   - ../../sources/repos/brace-project-site.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "BRACE 将平地人体参考先按地形与命令手部 wrench 做解析适配，再将力施加/补偿双教师用 DAgger 蒸馏为仅依赖本体感知的 flow-matching 全身跟踪学生。"
 ---
 
@@ -114,12 +116,14 @@ flowchart TB
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 地形与全身移动基准
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 机器人对地形变化的动作适配
 - [Imitation Learning](../methods/imitation-learning.md) — DAgger 教师—学生蒸馏背景
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - [BRACE 论文摘录](../../sources/papers/brace_arxiv_2610_07052.md)
 - [BRACE 项目页归档](../../sources/sites/brace-project.md)
 - [项目页仓库档案（非算法实现）](../../sources/repos/brace-project-site.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 推荐继续阅读
 

@@ -3,13 +3,14 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-09-18
+updated: 2026-10-11
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
   - ../entities/articraft.md
   - ../entities/img2threejs.md
   - ../entities/3dgenstudio.md
+  - ../entities/anatomy-skill.md
   - ../entities/comfyui.md
   - ../entities/gencad.md
   - ../entities/gencad-3d.md
@@ -27,6 +28,8 @@ sources:
   - ../../sources/repos/img2threejs.md
   - ../../sources/repos/freecad-mcp.md
   - ../../sources/repos/3dgenstudio.md
+  - ../../sources/repos/anatomy.md
+  - ../../sources/sites/anatomy.md
   - ../../sources/sites/3dgenstudio-com.md
   - ../../sources/repos/comfyui.md
   - ../../sources/papers/gencad_arxiv_2409_16294.md
@@ -81,6 +84,8 @@ summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概�
 | 可编辑性 | 强调尺寸、约束与工程修改 | 多为网格编辑 / 重拓扑 |
 | 与 CNC / 公差分析 | 厂商或脚本栈常以此为主叙事 | 通常较弱或非目标 |
 | 与游戏 / 渲染 | 可选 | 主战场 |
+
+**说明性机械插图不等于 Text-to-CAD：** [Anatomy](../entities/anatomy-skill.md) 会把技术原理转成可交互的等轴测 SVG/HTML 图，能用机械外观解释运动关系，但它不生成制造级 STEP/B-rep、工程图或机器人仿真模型。它更适合科普与文档表达。
 
 ## 代表工具谱系（简评）
 

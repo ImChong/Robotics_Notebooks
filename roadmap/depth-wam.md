@@ -94,6 +94,8 @@ flowchart LR
 - [TC-WM（任务中心世界模型）](../wiki/entities/paper-task-centric-world-models.md) — 冻结 DINOv2 嵌入线性压成紧凑潜变量，面向任务相关而非像素重建
 - [CD-LAM](../wiki/entities/paper-cd-lam.md) · [SCAR](../wiki/entities/paper-scar-continuous-action.md) — 潜动作模型去混杂 / 把动作作为视觉变化的独立因子，缓解世界模型「逼真但不听动作」
 - [H-JEPA 视觉规划](../wiki/entities/paper-h-jepa-visual-planning.md) — 多时间尺度 action-conditioned JEPA 潜空间 + 由高层子目标到低层动作的分层规划
+- [DreamTrue](../wiki/entities/paper-dreamtrue-action-faithful-world-model.md) — 离线几何校准对齐图像空间动作条件，反事实后训练扩大交互覆盖，具身视频奖励模型做 RL 后训练
+- [AD-E2E-JEPA](../wiki/entities/paper-ad-e2e-jepa.md) — 动作条件 JEPA 世界模型（冻结 DINOv3 + SIGReg 投影器），无策略训练的目标条件规划（端到端自动驾驶，对照人形/操作 WM）
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
@@ -121,7 +123,7 @@ flowchart LR
 ### 推荐读什么
 - [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
-- [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，G1 真机 loco-manipulation 显著超 GR00T-N1.6
+- [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，三阶段训练与门控视觉预测上下文；新版 SIMPLE 合计最高，G1 真机与 GR00T-N1.6 并列
 - [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
 - [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码待发布
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) — 与 Joint / 部署横切对照
