@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, world-action-model, distillation, edge-deployment, libero, cosmos-policy, flow-matching, manipulation]
+tags: [paper, world-action-model, distillation, edge-deployment, libero, cosmos-policy, flow-matching, manipulation, ml-collective]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13740"

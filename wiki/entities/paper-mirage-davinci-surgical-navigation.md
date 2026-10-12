@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, surgical-robotics, da-vinci, navigation, augmented-reality, stereo-vision, ultrasound, preclinical]
+tags: [paper, surgical-robotics, da-vinci, navigation, augmented-reality, stereo-vision, ultrasound, preclinical, dartmouth]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12780"

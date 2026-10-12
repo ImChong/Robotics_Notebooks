@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, quadruped, mpc, whole-body-control, disturbance-estimation, magnetic-field, mujoco, unitree-go2, tum]
+tags: [paper, quadruped, mpc, whole-body-control, disturbance-estimation, magnetic-field, mujoco, unitree-go2, tum, cern]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.08653"

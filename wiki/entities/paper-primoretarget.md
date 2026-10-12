@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, motion-retargeting, prioritized-optimization, unitree-g1, interaction, sfu, nvidia]
+tags: [paper, humanoid, motion-retargeting, prioritized-optimization, unitree-g1, interaction, sfu, nvidia, fieldai]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12642"

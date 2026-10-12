@@ -1,7 +1,8 @@
 ---
+
 type: entity
 project_id: maniunit
-tags: [paper, manipulation, dataset, benchmark, long-horizon, skill-learning, vla, behavior-1k]
+tags: [paper, manipulation, dataset, benchmark, long-horizon, skill-learning, vla, behavior-1k, njust, intellifusion, npu]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12089"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, navigation, tactile-sensing, active-perception, state-estimation, particle-filter, whole-body-control, unitree-g1, georgia-tech]
+tags: [paper, humanoid, navigation, tactile-sensing, active-perception, state-estimation, particle-filter, whole-body-control, unitree-g1, georgia-tech, harvey-mudd]
 status: complete
 updated: 2026-10-12
 project_id: tapnav-humanoid-tactile-navigation

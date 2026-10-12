@@ -1,4 +1,5 @@
 ---
+
 type: entity
 project_id: plaw-vla
 tags:
@@ -36,6 +37,8 @@ sources:
   - ../../sources/repos/plaw_vla.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 summary: "PLaW-VLA（arXiv:2610.12285, CoRL 2026）：在冻结 V-JEPA 2 潜空间并行预测未来状态的三专家 MoT VLA（π0.5 + 约 0.9B），RoboTwin Hard 比 π0.5 高 11.8 点、LIBERO-Plus 零样本 72.7，推理延迟约为 Motus 的 1/19；代码 Apache-2.0 已开源，官方预训练权重待发布。"
+tags: [paper, vla, world-model, latent-world-model, jepa, manipulation, mixture-of-transformers, open-source, corl-2026, astribot, hitsz, polyu, u-tokyo, jilin-university]
+
 ---
 
 # PLaW-VLA：预测式潜在世界建模的 VLA 策略

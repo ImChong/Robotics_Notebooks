@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, quadruped, nonprehensile-manipulation, trajectory-optimization, mpc, whole-body-control, payload-transport, tum, mbzuai]
+tags: [paper, quadruped, nonprehensile-manipulation, trajectory-optimization, mpc, whole-body-control, payload-transport, tum, mbzuai, tampere, naples-federico-ii]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.07245"

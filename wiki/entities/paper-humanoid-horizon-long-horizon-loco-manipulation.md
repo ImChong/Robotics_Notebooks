@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, loco-manipulation, rl, long-horizon, dagger, vla, amp, university-of-manchester, ustc, x-humanoid]
+tags: [paper, humanoid, loco-manipulation, rl, long-horizon, dagger, vla, amp, university-of-manchester, ustc, x-humanoid, warwick, newcastle]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.08320"

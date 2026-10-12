@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, quadruped, uav, localization, apriltag, active-perception, boston-dynamics-spot, crazyflie, heterogeneous-robots]
+tags: [paper, quadruped, uav, localization, apriltag, active-perception, boston-dynamics-spot, crazyflie, heterogeneous-robots, itu-copenhagen, novo-nordisk]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.06215"

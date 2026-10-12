@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, vla, lightweight-vla, optical-flow, future-prediction, flow-matching, internvl, manipulation, bimanual, meta-world, robotwin, sjtu, zju]
+tags: [paper, vla, lightweight-vla, optical-flow, future-prediction, flow-matching, internvl, manipulation, bimanual, meta-world, robotwin, sjtu, zju, uestc]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12936"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, world-action-model, action-chunking, flow-matching, libero, robotwin, manipulation, hkust-gz]
+tags: [paper, world-action-model, action-chunking, flow-matching, libero, robotwin, manipulation, hkust-gz, leapmotor]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12886"

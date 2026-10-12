@@ -1,7 +1,8 @@
 ---
+
 type: entity
 project_id: hrl-underactuated-biped-collision-free
-tags: [paper, locomotion, reinforcement-learning, hierarchical-rl, sac, biped, obstacle-avoidance, navigation, pybullet, simulation-only]
+tags: [paper, locomotion, reinforcement-learning, hierarchical-rl, sac, biped, obstacle-avoidance, navigation, pybullet, simulation-only, iit-mandi]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.05855"

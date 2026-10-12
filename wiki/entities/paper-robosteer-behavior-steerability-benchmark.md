@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, benchmark, behavior-foundation-model, steerability, evaluation, unitree-g1, zju, unitree, nus]
+tags: [paper, humanoid, benchmark, behavior-foundation-model, steerability, evaluation, unitree-g1, zju, unitree, nus, csu]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.10198"

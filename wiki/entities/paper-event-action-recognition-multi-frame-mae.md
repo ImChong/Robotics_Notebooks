@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, event-camera, action-recognition, masked-autoencoder, vision-transformer, self-supervised, perception]
+tags: [paper, event-camera, action-recognition, masked-autoencoder, vision-transformer, self-supervised, perception, foi]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13856"

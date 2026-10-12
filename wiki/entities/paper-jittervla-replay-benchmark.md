@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, benchmark, vla, motion-quality, jerk, controller, human-robot-interaction, ur3, safety]
+tags: [paper, benchmark, vla, motion-quality, jerk, controller, human-robot-interaction, ur3, safety, skoltech]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13628"

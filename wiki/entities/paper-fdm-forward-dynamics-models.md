@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, vla, world-action-model, video-generation, flow-matching, libero, robotwin, bimanual, fudan, shanghai-innovation-institute, imperial-college]
+tags: [paper, vla, world-action-model, video-generation, flow-matching, libero, robotwin, bimanual, fudan, shanghai-innovation-institute, imperial-college, surrey]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13117"

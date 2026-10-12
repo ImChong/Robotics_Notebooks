@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, loco-manipulation, flow-matching, online-estimation, replanning, cart-pushing, mjlab, northwestern]
+tags: [paper, humanoid, loco-manipulation, flow-matching, online-estimation, replanning, cart-pushing, mjlab, northwestern, multiply-labs]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13087"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, marl, swarm-robotics, reproducibility, research-infrastructure, argos, rllib, open-source]
+tags: [paper, marl, swarm-robotics, reproducibility, research-infrastructure, argos, rllib, open-source, southampton, lubeck, h-brs]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13772"

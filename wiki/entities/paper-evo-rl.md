@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, reinforcement-learning, real-world-rl, human-in-the-loop, vla, value-function, dataset, sjtu]
+tags: [paper, reinforcement-learning, real-world-rl, human-in-the-loop, vla, value-function, dataset, sjtu, csu, scnu, boden-ai]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13345"

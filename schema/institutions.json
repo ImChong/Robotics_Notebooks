@@ -4073,6 +4073,254 @@
       "aliases": [
         "mujocolab"
       ]
+    },
+    "iit-mandi": {
+      "label": "印度理工学院曼迪分校（IIT Mandi）",
+      "aliases": [
+        "iit-mandi"
+      ]
+    },
+    "uaeu": {
+      "label": "阿联酋大学（UAEU）",
+      "aliases": [
+        "uaeu"
+      ]
+    },
+    "unifi": {
+      "label": "佛罗伦萨大学（University of Florence）",
+      "aliases": [
+        "unifi",
+        "university-of-florence"
+      ]
+    },
+    "unimore": {
+      "label": "摩德纳和雷焦艾米利亚大学（UNIMORE）",
+      "aliases": [
+        "unimore"
+      ]
+    },
+    "gachon": {
+      "label": "嘉泉大学（Gachon University）",
+      "aliases": [
+        "gachon"
+      ]
+    },
+    "csu": {
+      "label": "中南大学（Central South University）",
+      "aliases": [
+        "csu",
+        "central-south-university"
+      ]
+    },
+    "warwick": {
+      "label": "华威大学（University of Warwick）",
+      "aliases": [
+        "warwick"
+      ]
+    },
+    "newcastle": {
+      "label": "纽卡斯尔大学（Newcastle University）",
+      "aliases": [
+        "newcastle"
+      ]
+    },
+    "harvey-mudd": {
+      "label": "哈维穆德学院（Harvey Mudd College）",
+      "aliases": [
+        "harvey-mudd",
+        "hmc"
+      ]
+    },
+    "itu-copenhagen": {
+      "label": "哥本哈根信息技术大学（IT University of Copenhagen）",
+      "aliases": [
+        "itu-copenhagen"
+      ]
+    },
+    "novo-nordisk": {
+      "label": "诺和诺德（Novo Nordisk）",
+      "aliases": [
+        "novo-nordisk"
+      ]
+    },
+    "cern": {
+      "label": "欧洲核子研究中心（CERN）",
+      "aliases": [
+        "cern"
+      ]
+    },
+    "tampere": {
+      "label": "坦佩雷大学（Tampere University）",
+      "aliases": [
+        "tampere"
+      ]
+    },
+    "naples-federico-ii": {
+      "label": "那不勒斯费德里科二世大学（University of Naples Federico II）",
+      "aliases": [
+        "naples-federico-ii",
+        "unina"
+      ]
+    },
+    "itmo": {
+      "label": "圣彼得堡信息技术机械与光学大学（ITMO University）",
+      "aliases": [
+        "itmo"
+      ]
+    },
+    "jilin-university": {
+      "label": "吉林大学（Jilin University）",
+      "aliases": [
+        "jilin-university",
+        "jlu"
+      ]
+    },
+    "foshan-university": {
+      "label": "佛山大学（Foshan University）",
+      "aliases": [
+        "foshan-university"
+      ]
+    },
+    "njust": {
+      "label": "南京理工大学（NJUST）",
+      "aliases": [
+        "njust"
+      ]
+    },
+    "hfut": {
+      "label": "合肥工业大学（HFUT）",
+      "aliases": [
+        "hfut"
+      ]
+    },
+    "china-unicom": {
+      "label": "中国联通（China Unicom）",
+      "aliases": [
+        "china-unicom"
+      ]
+    },
+    "wuhan-textile": {
+      "label": "武汉纺织大学（Wuhan Textile University）",
+      "aliases": [
+        "wuhan-textile"
+      ]
+    },
+    "waterloo": {
+      "label": "滑铁卢大学（University of Waterloo）",
+      "aliases": [
+        "waterloo",
+        "uwaterloo"
+      ]
+    },
+    "dartmouth": {
+      "label": "达特茅斯学院（Dartmouth College）",
+      "aliases": [
+        "dartmouth"
+      ]
+    },
+    "foi": {
+      "label": "瑞典国防研究局（FOI）",
+      "aliases": [
+        "foi"
+      ]
+    },
+    "leapmotor": {
+      "label": "零跑汽车（Leapmotor）",
+      "aliases": [
+        "leapmotor"
+      ]
+    },
+    "scnu": {
+      "label": "华南师范大学（South China Normal University）",
+      "aliases": [
+        "scnu"
+      ]
+    },
+    "uva-virginia": {
+      "label": "弗吉尼亚大学（University of Virginia）",
+      "aliases": [
+        "uva-virginia",
+        "university-of-virginia"
+      ]
+    },
+    "surrey": {
+      "label": "萨里大学（University of Surrey）",
+      "aliases": [
+        "surrey"
+      ]
+    },
+    "skoltech": {
+      "label": "斯科尔科沃科学技术研究院（Skoltech）",
+      "aliases": [
+        "skoltech"
+      ]
+    },
+    "kyung-hee": {
+      "label": "庆熙大学（Kyung Hee University）",
+      "aliases": [
+        "kyung-hee"
+      ]
+    },
+    "southampton": {
+      "label": "南安普顿大学（University of Southampton）",
+      "aliases": [
+        "southampton"
+      ]
+    },
+    "lubeck": {
+      "label": "吕贝克大学（University of Lübeck）",
+      "aliases": [
+        "lubeck",
+        "luebeck"
+      ]
+    },
+    "h-brs": {
+      "label": "波恩-莱茵-锡格应用科学大学（Bonn-Rhein-Sieg University of Applied Sciences）",
+      "aliases": [
+        "h-brs"
+      ]
+    },
+    "intellifusion": {
+      "label": "云天励飞（Intellifusion）",
+      "aliases": [
+        "intellifusion"
+      ]
+    },
+    "yinwang": {
+      "label": "引望（Yinwang Intelligent Technology）",
+      "aliases": [
+        "yinwang"
+      ]
+    },
+    "fieldai": {
+      "label": "菲尔德人工智能（FieldAI）",
+      "aliases": [
+        "fieldai"
+      ]
+    },
+    "multiply-labs": {
+      "label": "倍增实验室（Multiply Labs）",
+      "aliases": [
+        "multiply-labs"
+      ]
+    },
+    "ml-collective": {
+      "label": "机器学习集体（ML Collective）",
+      "aliases": [
+        "ml-collective"
+      ]
+    },
+    "boden-ai": {
+      "label": "博登人工智能（Boden AI）",
+      "aliases": [
+        "boden-ai"
+      ]
+    },
+    "airoa": {
+      "label": "人工智能机器人协会（AIRoA）",
+      "aliases": [
+        "airoa"
+      ]
     }
   }
 }

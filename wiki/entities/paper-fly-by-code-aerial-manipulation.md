@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, aerial-manipulation, uav, coding-agent, llm-agent, active-perception, isaac-lab, sim2real, snu, cmu, umd]
+tags: [paper, aerial-manipulation, uav, coding-agent, llm-agent, active-perception, isaac-lab, sim2real, snu, cmu, umd, kyung-hee]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12549"

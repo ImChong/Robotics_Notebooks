@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -22,6 +23,8 @@ sources:
   - ../../sources/papers/autodidactwam_arxiv_2610_08119.md
   - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "AutodidactWAM（arXiv:2610.08119）：从 Cosmos 3 Nano 自生成视频恢复 G1 手部伪动作，以冻结视频路径、DPO+SFT+DTW 微调动作侧；单任务小样本真机 pilot 显示收益但泛化有限。"
+tags: [paper, world-action-model, humanoid, video-generation, self-distillation, manipulation, skolkovo, skoltech]
+
 ---
 
 # AutodidactWAM：从生成视频到机器人动作的跨模态自蒸馏

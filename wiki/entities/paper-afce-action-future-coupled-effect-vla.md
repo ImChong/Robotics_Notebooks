@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, vla, dexterous-manipulation, bimanual, flow-matching, pi05, benchmark, sysu]
+tags: [paper, vla, dexterous-manipulation, bimanual, flow-matching, pi05, benchmark, sysu, yinwang]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13212"

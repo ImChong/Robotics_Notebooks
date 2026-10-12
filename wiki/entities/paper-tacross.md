@@ -1,7 +1,8 @@
 ---
+
 type: entity
 project_id: tacross
-tags: [paper, manipulation, tactile, dexterous-hand, data-collection, human-demonstration, hku, cuhk-sz, ouc, whu]
+tags: [paper, manipulation, tactile, dexterous-hand, data-collection, human-demonstration, hku, cuhk-sz, ouc, whu, wuhan-textile]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.11945"

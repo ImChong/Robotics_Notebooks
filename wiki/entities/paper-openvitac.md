@@ -1,7 +1,8 @@
 ---
+
 type: entity
 project_id: openvitac
-tags: [paper, manipulation, tactile, visuo-tactile, vla, benchmark, sim2real, fudan, nus, neoteai]
+tags: [paper, manipulation, tactile, visuo-tactile, vla, benchmark, sim2real, fudan, nus, neoteai, hfut, china-unicom]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.10384"

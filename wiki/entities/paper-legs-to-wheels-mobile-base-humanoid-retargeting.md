@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, motion-retargeting, wheeled-humanoid, mobile-manipulation, robotis]
+tags: [paper, humanoid, motion-retargeting, wheeled-humanoid, mobile-manipulation, robotis, gachon]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.08381"

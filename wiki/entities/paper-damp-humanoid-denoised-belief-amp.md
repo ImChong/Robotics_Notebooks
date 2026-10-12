@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, locomotion, rl, amp, adversarial-motion-prior, sim2real, blind-locomotion, privileged-training, recurrent-policy]
+tags: [paper, humanoid, locomotion, rl, amp, adversarial-motion-prior, sim2real, blind-locomotion, privileged-training, recurrent-policy, sdu]
 status: complete
 updated: 2026-10-12
 project_id: damp-humanoid-denoised-belief-amp

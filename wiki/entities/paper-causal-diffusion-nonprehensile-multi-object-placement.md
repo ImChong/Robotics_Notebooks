@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, mobile-robot, non-prehensile, pushing, diffusion, trajectory-planning, guidance, turtlebot]
+tags: [paper, mobile-robot, non-prehensile, pushing, diffusion, trajectory-planning, guidance, turtlebot, waterloo]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.12684"

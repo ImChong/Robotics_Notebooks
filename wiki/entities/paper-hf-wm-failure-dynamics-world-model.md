@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, world-model, video-generation, failure-dynamics, grpo, human-video, pointflow, policy-evaluation, zju, ustc, casia, zhongguancun-academy]
+tags: [paper, world-model, video-generation, failure-dynamics, grpo, human-video, pointflow, policy-evaluation, zju, ustc, casia, zhongguancun-academy, ningbo-eastern]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13522"

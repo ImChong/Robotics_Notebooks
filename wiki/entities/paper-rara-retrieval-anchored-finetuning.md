@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, manipulation, vla, diffusion-policy, fine-tuning, representation-learning, retrieval, generalization, robotwin, robocasa, franka]
+tags: [paper, manipulation, vla, diffusion-policy, fine-tuning, representation-learning, retrieval, generalization, robotwin, robocasa, franka, uva-virginia]
 status: complete
 updated: 2026-10-12
 arxiv: "2610.13578"
