@@ -94,6 +94,8 @@ flowchart LR
 - [TC-WM（任务中心世界模型）](../wiki/entities/paper-task-centric-world-models.md) — 冻结 DINOv2 嵌入线性压成紧凑潜变量，面向任务相关而非像素重建
 - [CD-LAM](../wiki/entities/paper-cd-lam.md) · [SCAR](../wiki/entities/paper-scar-continuous-action.md) — 潜动作模型去混杂 / 把动作作为视觉变化的独立因子，缓解世界模型「逼真但不听动作」
 - [H-JEPA 视觉规划](../wiki/entities/paper-h-jepa-visual-planning.md) — 多时间尺度 action-conditioned JEPA 潜空间 + 由高层子目标到低层动作的分层规划
+- [DreamTrue](../wiki/entities/paper-dreamtrue-action-faithful-world-model.md) — 离线几何校准对齐图像空间动作条件，反事实后训练扩大交互覆盖，具身视频奖励模型做 RL 后训练
+- [AD-E2E-JEPA](../wiki/entities/paper-ad-e2e-jepa.md) — 动作条件 JEPA 世界模型（冻结 DINOv3 + SIGReg 投影器），无策略训练的目标条件规划（端到端自动驾驶，对照人形/操作 WM）
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
