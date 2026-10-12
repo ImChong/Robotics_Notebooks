@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -10,16 +10,16 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/being-h.md
-summary: "智在无界 开源项目 Being-H（数据集/Benchmark）：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。…"
+summary: "智在无界 开源项目 Being-H（VLA/操作模型）：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # Being-H
 
 ## 一句话定义
 
-**Being-H** 是 [智在无界](https://github.com/BeingBeyond) 公开的 **数据集/Benchmark** 开源项目：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。
+**Being-H** 是 [智在无界](https://github.com/BeingBeyond) 公开的 **VLA/操作模型** 开源项目：从大规模第一视角人类操作视频学习手部动作和任务结构，再通过目标机器人数据适配到灵巧手操作；仓库连接非本体预训练、动作表示和真机后训练。
 
 ## 英文缩写速查
 
@@ -41,7 +41,7 @@ institutions:
 | 字段 | 内容 |
 |------|------|
 | 机构 | 智在无界 |
-| 类别 | 数据集/Benchmark |
+| 类别 | VLA/操作模型（原清单归为「数据集/Benchmark」；仓库描述为 Human-centric embodied foundation model family，官网 Being-H0.5 / H0.7 均指向此仓库，2026-10-12 核对） |
 | 官方组织 | https://github.com/BeingBeyond |
 
 ## 工程实践

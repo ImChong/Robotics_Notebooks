@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/being-vl-0_5.md
 summary: "智在无界 开源项目 Being-VL-0.5（世界模型）：世界模型/预测模型：按条件生成未来状态，服务训练与评测…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # Being-VL-0.5

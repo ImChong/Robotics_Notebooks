@@ -5,7 +5,7 @@
 - **标题：** DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation
 - **类型：** site
 - **链接：** <https://beingbeyond.github.io/DemoHLM/>
-- **机构：** 北京大学（PKU）、超越智能（BeingBeyond）
+- **机构：** 北京大学（PKU）、智在无界（BeingBeyond）
 - **论文：** <https://arxiv.org/abs/2510.11258>
 - **代码：** <https://github.com/BeingBeyond/DemoHLM>
 - **入库日期：** 2026-09-20

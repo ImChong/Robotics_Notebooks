@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-09-06
+updated: 2026-10-12
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
@@ -12,7 +12,7 @@ sources:
   - ../../sources/repos/rethink_vla.md
 summary: "智在无界 开源项目 Rethink_VLA（VLA/操作模型）：VLA/策略接入：模型输出动作块驱动本体执行…"
 institutions:
-  - agilex-ai
+  - beingbeyond
 ---
 
 # Rethink_VLA

@@ -11,7 +11,7 @@
 - **核查更新：** 2026-10-12；[项目页开放核查](../sites/being-m07.md)
 - **PDF：** <https://research.beingbeyond.com/being-m07/being-m07.pdf>
 - **作者：** Yue Junpeng, Li Boyuan, Wang Yuxuan, Wang Zepeng, Fu Yuhui, Xie Feiyang, Zhang Yu, Zhang Jing, Wang Jiangxing, Lu Zongqing 等（BeingBeyond Team）
-- **机构：** 超越智能（BeingBeyond）
+- **机构：** 智在无界（BeingBeyond）
 - **入库日期：** 2026-07-15
 - **一句话说明：** 面向 **人形 loco-manipulation** 的 **潜空间 World–Action Model**：在 **>1 万小时** 人中心混合模态数据（egocentric 视频 / 视频–动作对 / 纯动作）上，用 **video-motion MoT + flow matching** 学 **DINO 视觉 latent + 紧凑全身 motion** 联合先验，再以 **future-conditioned action expert** 在少量 **宇树 G1** VR 全身遥操作轨迹上接地为可执行命令；推理上 **低频刷新世界计划、高频复用 prior KV cache** 输出 action chunk。
 

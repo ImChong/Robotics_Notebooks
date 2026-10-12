@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-12
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -19,6 +19,7 @@ related:
   - ../overview/li-auto-machembodied-4-papers-technology-map.md
   - ../entities/xiaomi-robotics-1.md
   - ../entities/generalist-ai-robotics.md
+  - ../entities/beingbeyond.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
@@ -30,7 +31,8 @@ sources:
   - ../../sources/repos/party_os.md
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 29 家团队的公开技术路线与复现边界。"
+  - ../../sources/sites/research-beingbeyond-com.md
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 30 家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -114,6 +116,7 @@ flowchart TB
 | [Symbiosis Robotics](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
 | [RAI Institute](../entities/rai-institute.md) |  |  | ● | [ZEST](../entities/paper-zest.md)、[Sumo](../methods/sumo.md)、[AthenaZero](../entities/paper-athenazero.md)、Robot Juggling、SMPC-to-RL、[Exploy](../entities/exploy.md) |
 | [RoboParty 萝博派对](../entities/roboparty.md) | ○ | ● | ● | [Roboto Origin](../entities/roboto-origin.md)、Party OS、hhtools、MimicLite、UFO / TeCH、INTACT |
+| [BeingBeyond 智在无界](../entities/beingbeyond.md) | ● |  | ● | [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) → [H0.5](../entities/cn-os-being-h.md) → [H0.7](../methods/being-h07.md) → H0.8、[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)、[BumbleBee](../entities/paper-notebook-from-experts-to-a-generalist.md)、[FAST](../entities/cn-os-fast.md)、[DemoHLM](../entities/paper-loco-manip-161-136-demohlm.md) |
 | [XPENG Robotics 小鹏机器人](../overview/xpeng-iron-54-patents-technology-map.md) | ● | ● | ● | [XPACE](../entities/paper-xpace.md)、[AnyWorld](../entities/paper-anyworld.md)、[UniT](../entities/paper-unit-unified-physical-language.md)、[ROVE](../entities/paper-rove-humanoid-vla-intervention.md)、[IronMind](../entities/paper-ironmind.md)、IRON 专利、[DeepInsight](../entities/deepinsight.md)、[Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)、[R2S-EGO](../entities/paper-r2s-ego.md) |
 | [Xiaomi Robotics 小米机器人](../entities/xiaomi-robotics-1.md) | ● |  |  | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)、[Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)、[U0](../entities/xiaomi-robotics-u0.md)、[UCAG-P](../entities/paper-ucag-p.md)、[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)、[ViTacPhys](../entities/paper-vitacphys.md) |
 | [X Square Robot 自变量机器人](../entities/cn-os-wall-x.md) | ● |  |  | [WALL-OSS](../entities/cn-os-wall-x.md) → [WALL-OSS-0.5](../entities/paper-wall-oss-0-5.md)、[X-Tokenizer](../entities/cn-os-x-tokenizer.md)、[WALL-WM](../entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md)、[WALL-SS](../entities/paper-wall-ss.md)、[HOST](../entities/paper-host-one-shot-human-video.md)；数采 [XRZero-G0](../entities/xrzero-g0.md)、[TwinDEX](../entities/twindex.md) |
@@ -126,6 +129,8 @@ flowchart TB
 | [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
+
+智在无界（BeingBeyond）的 ① 对应 Being-H 灵巧操作线（H0 人类视频 VLA → H0.5 统一动作空间 → H0.7 潜空间 WAM → H0.8 触觉 WAM）与 VIPA-VLA、JALA 等 VLA 预训练研究，③ 对应 BumbleBee / FAST / RLPF 全身控制、DemoHLM 与 Being-M0.7 人形移动操作；官网有 D1 桌面灵巧臂与 U1 数采设备，但未发布人形整机，② 留空。2024 年的 Being-M0 / Being-VL-0 早于公司成立，按官网 Research 页收录（[Research 站核查](../../sources/sites/research-beingbeyond-com.md)）。
 
 RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界模型研究；工程重心是整机与运控基础设施。hhtools 动作准备之后，MimicLite 监督跟踪与 UFO 无监督运控是并行分支；VLA / Agent 仍按官方路线规划读取，见[技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
@@ -186,6 +191,7 @@ RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与
 | 西湖机器人 | ❌ | ❌ | ❌ | [GAE](../entities/paper-gae-general-action-expert.md) 为付费闭源软件（V1.2.0，加密狗授权，仅宇树本体包），论文无代码；GitHub 仅有客户端 API 文档仓 |
 | 源策未来 | 🟡 | ❌ | ❌ | 公司 GitHub / HF 组织尚无公开仓库；[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) 代码在 OpenDriveLab 组织下开源，EgoHumanoid-V2 代码待发布 |
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
+| 智在无界 BeingBeyond | ✅ | 🟡 | 🟡 | [GitHub](https://github.com/BeingBeyond) 27 个公开仓库；HF 有 Being-H0（1B / 8B / 14B）、Being-H05-2B、TTP 权重与部分数据集；Being-M0.7、Being-H0.8 项目页未列代码与权重（[核查](../../sources/sites/research-beingbeyond-com.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
@@ -243,8 +249,9 @@ flowchart LR
 - [1X Redwood 策略补核](../../sources/sites/1x-redwood-policy.md)
 - [Gemini Robotics 1.5 发布](../../sources/sites/gemini-robotics-15.md)
 
-- [29 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
+- [30 家公司官方技术入口与开放程度索引](../../sources/sites/robot-foundation-model-company-research-2026.md)
 - [RoboParty Party OS 技术入口补核](../../sources/repos/party_os.md)
+- [智在无界 Research 站核查](../../sources/sites/research-beingbeyond-com.md)
 - [小鹏机器人 UniT 项目归档](../../sources/sites/xpeng-robotics-unit.md)
 - [理想 MachEmbodied 四篇盘点](../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)
 - [PI 官方技术文章逐篇索引](../../sources/sites/pi-website-technical-articles.md)
