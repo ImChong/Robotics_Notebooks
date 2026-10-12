@@ -6,7 +6,7 @@ tags:
   - hierarchical
   - long-horizon
 status: complete
-updated: 2026-09-15
+updated: 2026-10-12
 summary: "移动-抓取-放置等长流程任务的层次化 RL。"
 related:
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
   - ../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md
 sources:
+  - ../../sources/papers/vadar.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/aware_arxiv_2604_23761.md
 ---
@@ -82,3 +83,8 @@ HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓�
 - 深蓝具身智能原文：<https://mp.weixin.qq.com/s/Kp12BMBiC7YiIiDPi_P8-g>
 - [AWARE 论文](https://arxiv.org/abs/2604.23761) — 速度指令层 + 离散专家路由
 
+
+
+## 长时程隐式目标价值
+
+[VaDar](../entities/paper-vadar.md) 将有序子目标保留为共享 critic 中的独立价值分量，再用未来阶段价值训练部署时不显式接收子目标的策略；可与显式高层技能/目标选择路线对照阅读。
