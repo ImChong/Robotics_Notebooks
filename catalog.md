@@ -1672,7 +1672,7 @@
 - [Ego-Exo4D-HM](wiki/entities/paper-egoexo4d-hm.md) — Ego-Exo4D Human Meshes Dataset: 4D Human Motion Reconstruction for Ego-Exo Captures**（Maddukuri &  `📅unknown` `[entity_page]`
 - [EgoExoMoCap](wiki/entities/paper-egoexomocap.md) — EgoExoMoCap: Distributed Ego-Exo Human Motion Capture**（Jiang et al., ECCV 2026 Spotlight）提出一种**分布 `📅unknown` `[entity_page]`
 - [EgoHTR：第一视角粗糙地形人–场景 4D 演示](wiki/entities/paper-egohtr.md) — EgoHTR**（*EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal*，arXiv:[2607.13472](http `📅unknown` `[entity_page]`
-- [EgoHumanoid-V2：移动操作协调全身技能的人到人形迁移](wiki/entities/paper-egohumanoid-v2.md) — EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation `📅unknown` `[entity_page]`
+- [EgoHumanoid-V2：从第一视角人体示范迁移协调全身移动操作](wiki/entities/paper-egohumanoid-v2.md) — EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation `📅unknown` `[entity_page]`
 - [EgoLAP：用语言动作推理从第一视角人类数据学机器人](wiki/entities/paper-egolap-egocentric-language-action-reasoning.md) — EgoLAP**（arXiv:2610.08726，项目页）认为 `📅unknown` `[entity_page]`
 - [EgoPHI：从 ego 视觉估计 3D 手–物接触与力](wiki/entities/paper-egophi.md) — EgoPHI**（*Estimating 3D Hand-Object Contact and Force from Egocentric Vision*，[arXiv:2608.13014](h `📅unknown` `[entity_page]`
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`

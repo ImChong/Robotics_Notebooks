@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | EgoHumanoid-V2：核对论文全文、项目页与部分开放源码，补全现有实体及移动操作路线交叉链接
+
 ## [2026-10-12] ingest | sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md — WaytoAGI 飞书周报（转载 DAIR.AI）10 篇论文：新建 9 个独立详情节点、复用 1 个已有节点（递归自我改进综述）；偏 LLM 智能体而非机器人，各节点写明与机器人学习的关系；飞书正文用 scripts/fetch_feishu_doc.py 获取。
 
 ## [2026-10-12] ingest | CLOTHO（TOG/SIGGRAPH Asia 2026）：归档 DOI 与项目页，整理松散惯性服装 IMU canonicalization 方法、跨服装评测与待核实开源状态。
