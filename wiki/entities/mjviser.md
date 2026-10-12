@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: mjviser
+code: https://github.com/mujocolab/mjviser
 tags: [repo, mujoco, visualization, viewer, viser, mjcf, simulation, mjlab]
 status: complete
 updated: 2026-10-12
