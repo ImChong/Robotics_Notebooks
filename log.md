@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | sources/sites/research-beingbeyond-com.md — 公司路线新增智在无界 BeingBeyond（26 节点，新建公司总览）
+
 ## [2026-10-12] ingest | MEgoVista 公制手头重建
 
 收录 MEgoVista 统一论文节点，整理三鱼眼基线尺度、佩戴者手归属、离线整段优化与独立动捕审核。强调对齐后 4.29 mm 指标、野外定性演示和在线吞吐边界；硬件官网未发现专属代码/权重/评测数据入口，不虚构运行脚本。补充 Mermaid 并连接重定向知识链。

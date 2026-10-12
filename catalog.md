@@ -103,6 +103,7 @@
 - [Berkeley Autonomous Race Car（BARC）](wiki/entities/barc.md) — BARC**（Berkeley Autonomous Race Car）是 **UC Berkeley** 的 **1/10 尺度自主赛车** 开源研究与教学平台，涵盖机械/电气 CAD、ROS  `📅unknown` `[entity_page]`
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`
 - [BEHAVIOR-1K](wiki/entities/behavior-1k.md) — BEHAVIOR-1K** 是斯坦福大学等机构 2023 年发布的 **千项日常活动具身 AI 基准**，在 NVIDIA Omniverse 上构建高逼真物理与视觉环境。 `📅unknown` `[entity_page]`
+- [智在无界（BeingBeyond）](wiki/entities/beingbeyond.md) — 智在无界（BeingBeyond，北京智在无界科技有限公司）** 是 2025 年在北京成立的具身基础模型公司，创始人是北京大学计算机学院副教授 **卢宗青**。公司主张从 **大规模第一视角人类 `📅unknown` `[entity_page]`
 - [Benjamin Katz（Ben Katz）](wiki/entities/benjamin-katz.md) — Benjamin Katz** 是 **MIT Mini Cheetah** 的主设计者与早期交付工程师：把 hobby BLDC + 定制驱动做成可背驱模块化执行器与整机平台，并以 [Robot `📅unknown` `[entity_page]`
 - [Berkeley Humanoid Lite（BHL）](wiki/entities/berkeley-humanoid-lite.md) — Berkeley Humanoid Lite** 是 **UC Berkeley Hybrid Robotics** 的 **轻量人形** 开源方案：门户 **[lite.berkeley-hum `📅unknown` `[entity_page]`
 - [Betaflight](wiki/entities/betaflight.md) — Betaflight**（betaflight/betaflight）是面向 **FPV 手飞、竞速与自由式 `📅unknown` `[entity_page]`
@@ -172,7 +173,7 @@
 - [atom-locomotion-deploy](wiki/entities/cn-os-atom-locomotion-deploy.md) — atom-locomotion-deploy** 是 越疆科技 公开的 **仿真环境** 开源项目：把ATOM运动策略接入 `📅unknown` `[entity_page]`
 - [atom-locomotion-training](wiki/entities/cn-os-atom-locomotion-training.md) — atom-locomotion-training** 是 越疆科技 公开的 **运动RL/技能训练** 开源项目：提供AT `📅unknown` `[entity_page]`
 - [aubo_robot](wiki/entities/cn-os-aubo-robot.md) — aubo_robot** 是 遨博智能 公开的 **工程与工具** 开源项目：为AUBO协作机器人提供ROS工业包、机器人描述、驱动 `📅unknown` `[entity_page]`
-- [Being-H](wiki/entities/cn-os-being-h.md) — Being-H** 是 智在无界 公开的 **数据集/Benchmark** 开源项目：从大规模第一视角人类操作视频学习手部动作 `📅unknown` `[entity_page]`
+- [Being-H](wiki/entities/cn-os-being-h.md) — Being-H** 是 智在无界 公开的 **VLA/操作模型** 开源项目：从大规模第一视角人类操作视频学习手部动作和任务结构 `📅unknown` `[entity_page]`
 - [Being-M0](wiki/entities/cn-os-being-m0.md) — Being-M0** 是 智在无界 公开的 **动作重定向** 开源项目：动作重定向：人体/MoCap 动作映射为目标本体训练参 `📅unknown` `[entity_page]`
 - [Being-VL-0.5](wiki/entities/cn-os-being-vl-0-5.md) — Being-VL-0.5** 是 智在无界 公开的 **世界模型** 开源项目：世界模型/预测模型：按条件生成未来状态，服务训练 `📅unknown` `[entity_page]`
 - [Bessica-D-SDK](wiki/entities/cn-os-bessica-d-sdk.md) — Bessica-D-SDK** 是 玄雅科技 公开的 **SDK/驱动** 开源项目：Bessica-D 机械臂 SDK `📅unknown` `[entity_page]`
