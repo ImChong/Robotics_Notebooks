@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-12
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -316,7 +316,7 @@ flowchart TB
 
 数据从哪来、按什么顺序喂、失败轨迹怎么用，是这一组的主轴；几条产业结论彼此并不一致，注意对照阅读。
 
-**文献实例（Cascaded 族 + latent video-motion 先验 · 人形 loco-manip）**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) 在 **>1 万小时** 人中心混合模态（配对 video–motion / 仅视频 / 仅动作）上预训练 **DINO 视觉 latent + head-root 紧凑 motion** 的 **video-motion MoT** 先验，再以 **future-conditioned action expert** 在 **G1 VR 全身遥操作** 轨迹上接地；推理 **低频刷新 prior 计划、高频复用 KV cache** 输出 action chunk，真机四任务定量 **7/15** vs GR00T-N1.6 **2/15**、Ψ0 **3/15**（BeingBeyond Technical Report，2026-07-14）。与 [Being-H0.7](../methods/being-h07.md) 同族「潜空间 WAM」，M0.7 显式面向 **全身 loco-manipulation** 与 **SONIC** 栈。
+**文献实例（Cascaded 人形 latent WAM）**：[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md) 的新版（arXiv:2610.11283，2026-10-08）使用人视频–motion 混合预训练、机器人中训练和冻结 prior 的门控动作后训练。部署关闭显式 motion 预测，缓存未来视觉 hidden states；当前图像与本体状态另送专家。SIMPLE 合计 128/180；三项真机合计 13/15，与 GR00T-N1.6 并列。5 Hz 是预测帧间距，专家查询约 1.67 Hz，命令执行为 50 Hz；旧报告 7/15 不沿用为当前结论。
 
 **产业实例（脑 + 学习式全身控制器 · MoT WAM · 闭源）**：[Δ₀](../entities/delta-0-humanoid-foundation-model.md)（Delta Intelligence，2026-09 博客）把 **潜空间 world–action MoT**（vision-language / DINO 未来视觉 / 全身 motion 四模式训练）与 **69-DoF delta-action whole-body controller** 作为 **同尺度 co-design**；**>1 万 h** 配对 egocentric 人数据预训练 brain，**real-to-sim-to-real** 重建场景做 checkpoint 对比，真机 **value + HIL** RL 报告洗碗机 OOD **4/20→13/20**；**无公开代码/论文**——与 M0.7 对照时读 **「controller 为一等公民 + 跨 embodiment 180 维动作空间」** 差异，勿把 leaderboard 基线代码当成 Δ₀ 发布物。
 
