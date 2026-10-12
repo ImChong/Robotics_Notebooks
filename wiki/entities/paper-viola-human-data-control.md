@@ -12,9 +12,11 @@ related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/loco-manipulation.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/viola_arxiv_2610_12435.md
   - ../../sources/sites/viola-project.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "VioLA 用配对 human/robot 动作编码器构建共享潜空间，由策略预测身体与手部运动潜变量、冻结控制器执行；报告 G1 locomotion 100%、manipulation 88.6%。"
 ---
 
@@ -92,9 +94,12 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md)
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)
 - [人形机器人移动](../tasks/humanoid-locomotion.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 参考来源
 
 - [论文摘录](../../sources/papers/viola_arxiv_2610_12435.md)
 - [项目页核查](../../sources/sites/viola-project.md)
 - [arXiv](https://arxiv.org/abs/2610.12435)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+

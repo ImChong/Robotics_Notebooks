@@ -19,9 +19,13 @@ related:
 - ./paper-bfm-zero.md
 - ./paper-omnicontact-humanoid-loco-manipulation.md
 - ../concepts/behavior-foundation-model.md
+- ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+- ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
 - ../../sources/papers/i_bfm_arxiv_2610_06129.md
 - ../../sources/sites/i-bfm-project-page.md
+- ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+- ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 summary: I-BFM 将人形本体、物体动力学与手–物接触共同编码进 forward–backward 行为空间，以奖励推断 latent 指令调用同一策略；LOGO 同时条件化近端交互意图与远端目标。G1 仿真评测覆盖搬运/推/踢与扰动恢复，项目页另提供定性真机视频和 MuJoCo 交互演示。
 project_id: i-bfm
 project: https://iamhardworking.github.io/I-BFM/
@@ -213,6 +217,8 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 - [BFM-Zero](./paper-bfm-zero.md) — 身体优先的 FB 行为基础模型
 - [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 接触流条件化交互与技能链
 - [行为基础模型概念](../concepts/behavior-foundation-model.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
 
 ## 参考来源
 
@@ -221,3 +227,6 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 - [arXiv 摘要页](https://arxiv.org/abs/2610.06129)
 - [arXiv PDF](https://arxiv.org/pdf/2610.06129)
 - [官方 I-BFM 项目页](https://iamhardworking.github.io/I-BFM/)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
+

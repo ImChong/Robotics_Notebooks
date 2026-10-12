@@ -17,8 +17,10 @@ related:
   - ../concepts/world-action-models.md
   - ../tasks/manipulation.md
   - ../concepts/sim2real.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/autodidactwam_arxiv_2610_08119.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "AutodidactWAM（arXiv:2610.08119）：从 Cosmos 3 Nano 自生成视频恢复 G1 手部伪动作，以冻结视频路径、DPO+SFT+DTW 微调动作侧；单任务小样本真机 pilot 显示收益但泛化有限。"
 ---
 
@@ -149,6 +151,7 @@ AutodidactWAM 提供了一种值得继续验证的监督构造方式：让生成
 - [AutodidactWAM（arXiv:2610.08119）](https://arxiv.org/abs/2610.08119) — 论文摘要、方法、实验与局限。
 - [arXiv HTML 全文](https://arxiv.org/html/2610.08119) — 完整正文与表格。
 - [来源归档](../../sources/papers/autodidactwam_arxiv_2610_08119.md) — 结构化摘录与指标口径。
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 关联页面
 
@@ -157,6 +160,7 @@ AutodidactWAM 提供了一种值得继续验证的监督构造方式：让生成
 - [Manipulation](../tasks/manipulation.md) — 真机桌面交互任务
 - [Sim2Real](../concepts/sim2real.md) — 闭环真实机器人验证
 - [来源归档](../../sources/papers/autodidactwam_arxiv_2610_08119.md) — 论文细节、指标与方法记录
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 推荐继续阅读
 

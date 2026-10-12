@@ -31,10 +31,12 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-omega-0.md
   - ./unitree-g1.md
+  - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/being_m07.md
   - ../../sources/sites/being-m07.md
+  - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "Being-M0.7：混合人数据预训练、机器人中训练、冻结先验的门控动作后训练；部署仅生成视觉未来并缓存上下文。SIMPLE 128/180，真机 13/15 与 GR00T-N1.6 并列；arXiv 2610.11283 更新取代旧报告评测口径。"
 ---
 
@@ -229,6 +231,7 @@ SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模�
 - [SONIC](../methods/sonic-motion-tracking.md)
 - [动作分块](../methods/action-chunking.md)
 - [G1](./unitree-g1.md)
+- [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 
 ## 推荐继续阅读
 
@@ -241,3 +244,5 @@ SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模�
 - [论文来源归档](../../sources/papers/being_m07.md) — 新版摘要及历史版本边界
 - [项目页与开放状态归档](../../sources/sites/being-m07.md)
 - [Being-M0.7 arXiv v1](https://arxiv.org/abs/2610.11283)
+- [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
+

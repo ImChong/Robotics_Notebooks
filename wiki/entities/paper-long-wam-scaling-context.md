@@ -16,10 +16,12 @@ related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ./paper-uniwam-unified-world-action-model.md
+  - ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
   - ../../sources/papers/long-wam-arxiv-2610-10528.md
   - ../../sources/repos/nvlabs-longlive-long-wam.md
   - ../../sources/sites/long-wam-project-page.md
+  - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 ---
 
 # Long-WAM：Scaling the Context of World-Action Models
@@ -134,6 +136,7 @@ flowchart TB
 - [论文来源归档](../../sources/papers/long-wam-arxiv-2610-10528.md)
 - [代码来源归档](../../sources/repos/nvlabs-longlive-long-wam.md)
 - [项目页归档](../../sources/sites/long-wam-project-page.md)
+- [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
 
 ## 结论
 
@@ -167,3 +170,5 @@ sequenceDiagram
 - [代码与复现文档](https://github.com/NVlabs/LongLive/tree/main/Long-WAM)
 - [Hugging Face 检查点集合](https://huggingface.co/collections/Efficient-Large-Model/long-wam)
 - [GR-1 检查点示例卡](https://huggingface.co/Efficient-Large-Model/Long-WAM-RoboCasa-GR1-4.8s)
+- [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
+
