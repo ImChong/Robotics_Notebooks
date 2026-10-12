@@ -73,7 +73,7 @@ Viewer(model, data).run()
 | mjlab | RL 训练框架 | 管理环境、任务和策略训练；可扩展 mjviser 做调试 |
 | Draft | 参数化机器人模型生成 | 从参数与运动学树生成仿真就绪的 MuJoCo MJCF |
 
-Draft 官方仓库的依赖分组也能看出分工：`editor` 使用 Viser，`figures` 依赖中包含 mjviser，`rl` 才包含 mjlab。因此，Draft 展示的机器人白底 3D 视图应理解为 Viser/mjviser 这类查看器生成的可视化，而不是“mjlab 渲染器”。
+Draft 官方仓库的依赖分组区分了两条可视化路径：浏览器参数编辑器的 `editor` extra 使用 Viser；`figures` extra 显式包含 mjviser 用于渲染论文展示图；`rl` extra 包含 mjlab 用于训练。若所指是论文中的静态白底渲染图，仓库依赖线索指向 mjviser；若所指是交互式参数编辑器，则直接使用 Viser。二者都不应笼统称为“mjlab 渲染器”。
 
 ## 许可与边界
 
