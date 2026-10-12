@@ -3,7 +3,7 @@ title: Model-Based vs Model-Free RL 对比
 type: comparison
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-10-12
 summary: 从样本效率、渐近性能、工程复杂度、鲁棒性等多维度对比 Model-Based 和 Model-Free RL，给出机器人场景下的选型建议。
 ---
 
@@ -38,16 +38,11 @@ summary: 从样本效率、渐近性能、工程复杂度、鲁棒性等多维�
 
 ### 样本效率（关键指标）
 
-在连续控制 benchmark（HalfCheetah-v3, Humanoid-v3）：
+复核日期：2026-10-12。现有来源归档未提供 SAC、MBPO、DreamerV3 与 PPO 在同一任务、奖励尺度及训练预算下的统一对照，因此移除原先「达到 5000 奖励所需步数」的量级表；不能把不同 benchmark 的数字拼接成性能排名。
 
-| 算法 | 类型 | 达到 5000 奖励所需步数 |
-|------|------|---------------------|
-| SAC | MF | ~1M steps |
-| MBPO | MB | ~100K steps（10x 提升） |
-| DreamerV3 | MB | ~500K steps（视任务） |
-| PPO | MF | ~2M steps |
-
-> 注：这是量级估计，实际值因任务而异
+- **MBPO**：用短模型 rollout 补充真实经验，改善样本效率；收益取决于模型误差与任务。
+- **DreamerV3**：在潜空间想象中优化策略；其跨任务结果不能直接换算成上述统一奖励门槛。
+- **SAC / PPO**：直接从环境交互学习；与模型方法比较时须统一环境、交互预算、评测种子和指标。
 
 ### 真实机器人
 
