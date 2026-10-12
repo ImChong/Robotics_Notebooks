@@ -108,6 +108,8 @@ RoboDuet（RA-L 2025，arXiv:2403.17367）新增独立项目实体并归档论�
 - 与 MuJoCo/MJCF 及自动形态搜索路线建立交叉引用。
 - Wiki Lint 暴露一篇超过 180 天未复核的 RL 方法对比页；复核并修正其绝对化比较及不可横向比较的固定步数示例，使质量检查不被仓库级陈旧提醒阻塞。\n- 未修改 Actions/workflows、catalog、log 汇总或生成文件。
 
+## [2026-10-12] ingest | DiscoRL：核查 Nature 论文、官方项目页及 JAX 源码，补充双层优化、运行时序与机器人迁移边界
+
 ## [2026-10-12] ingest | sources/repos/xbotics-embodied-ai-handbook.md — Xbotics 21 讲实践教程：新建课程实体页并接入 LeRobot；项目页无，代码同仓 MIT，L1-16 较完整、L17/18/21 占位
 
 ## [2026-10-12] ingest | sources/sites/research-beingbeyond-com.md — 公司路线新增智在无界 BeingBeyond（26 节点，新建公司总览）
