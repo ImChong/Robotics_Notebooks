@@ -3,7 +3,7 @@ type: entity
 tags: [company, archon-robotics, whole-body-intelligence, humanoid-foundation-model, humanoid, loco-manipulation, behavior-foundation-model, whole-body-control, human-centric-data, pretraining, technical-blog]
 status: complete
 title: 全身智能 WBI：Archon 的人形基础模型预训练路线（技术博文）
-updated: 2026-10-10
+updated: 2026-10-12
 institutions: [archon-robotics]
 related:
   - ./archon-robotics.md
@@ -27,6 +27,7 @@ sources:
   - ../../sources/blogs/archon_whole_body_intelligence.md
   - ../../sources/sites/archon-tech.md
   - ../../sources/blogs/archon_robotics_press.md
+  - ../../sources/repos/egohumanoid-v2.md
 summary: "源策未来（Archon Robotics）2026-07-13 官方博文提出「全身智能（WBI）」：把人形基础模型拆成 S2 任务语义 / S1 原生人形模型 / S0.5 运动生成+BFM / S0 全身跟踪控制四层，用以人为中心的全身数据做异构预训练、真机数据做后训练，并主张按迁移、恢复与适配成本而非演示视频衡量进展。纯愿景 / 路线文：无论文、无代码、无实验数字。"
 ---
 
@@ -151,7 +152,7 @@ flowchart TB
 |------|------|
 | 设计自己的人形分层栈 | 可按 S2 / S1 / S0.5 / S0 先写清每层的输入输出接口，再决定哪些层用学习、哪些用规则；对照 [Helix 02](./helix-02.md) 的 S2 / S1 / S0 与 [Flexion Reflect v1.0](./flexion-reflect-v1.md) 的 mission controller + 运动层 + Reflex |
 | 选 S0 / S0.5 组件 | S0 可从开源跟踪器起步（[SONIC](../methods/sonic-motion-tracking.md)、[AMS](../methods/ams.md)）；S0.5 参考 [BFM 概念页](../concepts/behavior-foundation-model.md) 中闭环 BFM 与运动生成路线 |
-| 用人类数据 | 先读同一实验室的 [EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md) 与公司署名的 [EgoHumanoid-V2](./paper-egohumanoid-v2.md)，后者在四个真机任务上用对齐后的人类数据训练 VLA，零样本迁移（论文自报） |
+| 用人类数据 | 先读同一实验室的 [EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md) 与公司署名的 [EgoHumanoid-V2](./paper-egohumanoid-v2.md)：后者报告四个 G1 真机任务上用对齐后的人类数据训练任务专属 VLA；OpenDriveLab 官方仓库目前只部分开源动作对齐链路，完整训练与部署代码待发布（以 2026-10-12 核查为准） |
 | 搭评测 | 直接用 §09 的 7 个问题做表头，记录每个新任务所需真机数据量与换硬件后的适配时长 |
 | 复现 WBI 本身 | **不适用**：没有论文、代码、权重、数据或模型规格；只能复现思路 |
 

@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-10
+updated: 2026-10-12
 sources:
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
@@ -295,6 +295,8 @@ flowchart TD
 - **核心**：采集阶段用便携 VR/夹爪设备记录 **稀疏关键点 + 腕部视觉**（无需目标人形）；高层 **Diffusion Policy** 预测任务空间轨迹，经 **SKR** 保留度量几何后接 **全身 IK + WBC** 在 G1 上执行 loco-manipulation。
 - **代表作**：[BifrostUMI](../entities/paper-bifrost-umi.md) (BAAI Aether, 2026) — 杂乱桌面 pick-place 与桌下全身处置；受 [UMI](https://arxiv.org/abs/2402.10329) 启发。
 
+- **协调全身人到人形迁移**：[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md)（arXiv:2609.37181）把 GoPro 第一视角和 PICO 动捕送入 SONIC 全身控制器，离线经 IK 修正与执行响应精炼后训练 π₀.₅ VLA；四项 G1 真机任务的 200 条/任务均分为 51.67%。动作对齐已开源，视觉、策略训练与部署流水线仍待发布。
+
 - **人类示范、免遥操作路线**：[Workhorse](../entities/workhorse-humanoid-loco-manipulation.md)（arXiv:2610.09117，2026-10）用五链路人体 tracker 数据分别训练视觉 flow-matching planner 与 RL 全身 tracker；G1 真机演示分拣、接物与行李箱交互。仿真分拣成功率 77%，40 N·s 推扰下 64%；官方代码尚未发布。
 
 #### 光真实感合成演示 + VLA 微调（3DGS × 程序化 motion）
@@ -429,6 +431,7 @@ flowchart TD
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成
 - [Video2DoorTraversal（论文实体）](../entities/paper-video2door-traversal.md) — 单 RGB 视频 DoorTwin + ArticuACT；轮足 A2-W 推门穿越 96.57%（arXiv:2608.20251；代码待发布）
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 + 扩散高层 + SKR + G1 WBC（arXiv:2605.03452）
+- [EgoHumanoid-V2（论文实体）](../entities/paper-egohumanoid-v2.md) — 第一视角人类数据经 SONIC 执行器感知动作对齐，迁移协调全身 G1 移动操作（arXiv:2609.37181）
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 合成演示 + VLA 微调，无遥操作 loco-manip 数据工厂（arXiv:2606.01458）
 - [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 仿真 VR teleop + 视觉域随机化 + Flow Matching 层级策略，纯仿真数据零样本 G1（arXiv:2606.08548）
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
