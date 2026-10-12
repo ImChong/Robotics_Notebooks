@@ -12,10 +12,12 @@ related:
   - ./paper-rrsi-2609-24972.md
   - ../queries/rsi-four-tier-five-pushes.md
   - ./awesome-rsi.md
+  - ../overview/waytoagi-top-ai-papers-2026-09-07-09-13-technology-map.md
 sources:
   - ../../sources/papers/last_ai_built_by_humans_2609_11873.md
   - ../../sources/sites/last-ai-built-by-humans-rsi.md
   - ../../sources/repos/theseus-labs-awesome-rsi.md
+  - ../../sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md
 summary: "arXiv:2609.11873（v3，2026-09-22）提出五级改进自治框架与 Headroom-Closed Index（HCI），用来判定系统是否从执行改进走向递归元改进；属于概念框架与异质证据综合，未发布可运行的论文实现。"
 ---
 
@@ -124,6 +126,7 @@ flowchart LR
 - [RRSI（2609.24972）](./paper-rrsi-2609-24972.md) — 可运行的有界 harness 自演化路线
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 对照本论文五级自治框架
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照 HCI 跨基准归一化：具身侧如何在可复现性、真实代表性与成本之间选评测基准
+- [9.7—9.13｜本周顶级 AI 论文（WaytoAGI · DAIR.AI 转载）](../overview/waytoagi-top-ai-papers-2026-09-07-09-13-technology-map.md)
 
 ## 参考来源
 
@@ -132,6 +135,7 @@ flowchart LR
 - [官方 Awesome RSI 仓库归档](../../sources/repos/theseus-labs-awesome-rsi.md)
 - [arXiv 摘要与版本记录](https://arxiv.org/abs/2609.11873)
 - [论文 PDF（v3）](https://arxiv.org/pdf/2609.11873)
+- [9.7—9.13｜本周顶级 AI 论文（WaytoAGI · DAIR.AI 转载） 来源归档](../../sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md)
 
 ## 推荐继续阅读
 
