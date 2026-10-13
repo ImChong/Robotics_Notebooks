@@ -172,6 +172,14 @@ type: ingest
 - 更新：GVHMR 实体关联该视频/照片到 Mixamo 的工程化下游。
 - 一手来源：<https://github.com/MaxLiu22/Motion2MixamoRig>；上游模型信息见 <https://github.com/zju3dv/GVHMR>。
 
+# Ingest: EGalahad sim2real stack and leaderboard
+
+- 日期：2026-10-13
+- 新增：sim2real deployment/runtime 与 Motion Tracking Leaderboard 总览；补齐 SONIC 与 GRIT v0.0.1 项目实体。
+- 映射：15 个 leaderboard policy rows → 10 个唯一项目家族节点。版本变体共用项目实体，不重复建页。
+- 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
+- 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
+
 ## [2026-10-13] ingest | viola | VioLA：人类数据驱动通用人形控制
 
 - 论文：arXiv:2610.12435；官方项目页核查代码仍为 coming soon。
