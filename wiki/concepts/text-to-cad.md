@@ -20,6 +20,7 @@ related:
   - ../entities/cad-1000-hours-dataset.md
   - ../entities/freecad-mcp.md
   - ../entities/openscad.md
+  - ../entities/nvidia-usd-brep-smlib.md
   - ./sim2real.md
 sources:
   - ../../sources/sites/text-to-cad-tools.md
@@ -225,6 +226,8 @@ flowchart LR
 - **误区**：用对话 CAD **替代**设计评审。早期工具更应嵌入 **PR 式审图 + 测量 + 试制** 而不是替代 sign-off。
 
 ## 关联页面
+
+- [NVIDIA USD BRep / SMLib](../entities/nvidia-usd-brep-smlib.md) — 可嵌入的 NURBS B-rep 内核与 OpenUSD/网格互操作实现。
 
 - [URDF-Studio](../entities/urdf-studio.md) — Web 端机器人描述与 BOM 工作流，可与 CAD 出口衔接。
 - [Articraft](../entities/articraft.md) — 可关节 3D 资产的 agentic 生成与验证回路（与 STEP/B-rep 主战场相邻、目标侧重仿真交互）。
