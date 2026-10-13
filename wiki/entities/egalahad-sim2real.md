@@ -118,4 +118,5 @@ Manipulation-48 仍是 humanoid reference-motion tracking 集，不测抓取/插
 
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [Processor-in-the-loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 该 leaderboard 属于"sim↔real 评测 gap 校准"层：同一 MuJoCo evaluator 统一口径，但不等于真机成功率
 - 榜单政策节点见上表；来源归档见 [仓库](../../sources/repos/egalahad-sim2real.md)、[文档](../../sources/sites/egalahad-sim2real-docs.md)、[排行榜与协议](../../sources/sites/egalahad-sim2real-leaderboard.md)。

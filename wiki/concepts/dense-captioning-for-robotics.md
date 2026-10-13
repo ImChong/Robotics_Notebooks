@@ -83,6 +83,7 @@ flowchart LR
 - [具身数据采集四层术语地图](./embodied-data-collection-four-layers-taxonomy.md) — 区分原始视频、标注与可训练轨迹。
 - [EgoVerse](../entities/paper-egoverse.md) — 第一视角人类数据资源与机器人学习语境。
 - [模仿学习](../methods/imitation-learning.md) — 语义标签转化为策略监督还需动作对齐。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 字幕准确率属于"具身大脑 / MLLM 认知评测"层，需与策略成功率评测分开解读。
 
 ## 参考来源
 

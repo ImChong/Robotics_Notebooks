@@ -108,13 +108,13 @@ flowchart TB
 
 真机评测使用 Unitree G1，拾取使用 Dex3-1 手。**21/30** 次发球成功（70%）、桌面拾取 **10/10**（100%）、桌下拾取 **7/10**（70%）、双手搬箱 **6/10**（60%）。爬梯没有真机成功结果：盲跟踪策略会绊倒，尽管参考轨迹平滑。所谓 zero-shot sim-to-real 仅指训练未使用真机数据；不是纯视觉零样本部署——策略用本体感知和 projected gravity 跟踪，外部 motion-capture 系统仍提供球/物体的全局位置以更新接触条件。
 
-### 与相邻路线的区别
+## 与其他工作对比
 
 | 路线 | 重点 | VICAR 的差别 |
 |---|---|---|
-| PHC / GMR | 人体姿态到机器人姿态重定向 | VICAR 显式保留全局任务接触位姿、速度和障碍间隙 |
-| VideoMimic | 视频恢复人体与环境，生成 contextual humanoid skills | VICAR 将稀疏接触 anchor 放入重定向优化，并支持运行时改变接触位置 |
-| OmniRetarget | interaction mesh 与硬关节/速度/碰撞/支撑约束 | VICAR 用世界系接触 pose penalty 和速度保持处理某些需要指定接触目标的任务 |
+| [PHC](./phc.md) / [GMR](../methods/motion-retargeting-gmr.md) | 人体姿态到机器人姿态重定向 | VICAR 显式保留全局任务接触位姿、速度和障碍间隙 |
+| [VideoMimic](./videomimic.md) | 视频恢复人体与环境，生成 contextual humanoid skills | VICAR 将稀疏接触 anchor 放入重定向优化，并支持运行时改变接触位置 |
+| OmniRetarget（[公开数据集](./omniretarget-dataset.md)） | interaction mesh 与硬关节/速度/碰撞/支撑约束 | VICAR 用世界系接触 pose penalty 和速度保持处理某些需要指定接触目标的任务 |
 | VICAR | 视频 → 接触/速度保持重定向 → contact-conditioned generator → tracking policy | 提升主要出现在桌面拾取与仿真爬梯等障碍/接触敏感场景，而非所有任务均胜出 |
 
 ## 复现与开源边界

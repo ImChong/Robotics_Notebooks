@@ -2,11 +2,12 @@
 type: concept
 tags: [evaluation, benchmark, sim2real, simulation, embodied-ai, reproducibility, world-model]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-13
 summary: "仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势，为何以牺牲真实接触、感知噪声、长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查。"
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
+  - ../../sources/papers/fidelity_gap_arxiv_2610_12464.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -47,7 +48,7 @@ related:
 | 干净观测（无标定误差、无遮挡噪声） | 真实感知链路的时延、抖动、缺失与错配 |
 | 可自动打分（成功判据程序化） | 真实「做成」的语义模糊与人工判定成分 |
 
-核心结论：**仿真评测越靠左列的优势极致，它的分数就越是「在一个被简化过的世界里」得到的**——[RoboBench](../entities/robo-bench.md) 之所以要专门验证「认知分与下游 VLA 成功率相关」、[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 之所以强调「长时序动作忠实比短时视觉逼真更决定评估质量」，本质上都是在为「上层易测代理指标能否外推到真机结果」这件事补证据。
+核心结论：**仿真评测越靠左列的优势极致，它的分数就越是「在一个被简化过的世界里」得到的**——[RoboBench](../entities/robo-bench.md) 之所以要专门验证「认知分与下游 VLA 成功率相关」、[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 之所以强调「长时序动作忠实比短时视觉逼真更决定评估质量」，本质上都是在为「上层易测代理指标能否外推到真机结果」这件事补证据。[Fidelity Gap](../entities/paper-fidelity-gap-egocentric-video.md) 给出了同一方向的量化反例：在 LPIPS 等感知质量基本持平时，视频世界模型对被操作物体的结构忠实度（SCS）仍明显落后于手部，30,000 小时数据也未追平；用作仿真任务判定器时，成功判定一致率只有 0.67（改进后 0.81）——视觉指标好看不等于评估结论可信。
 
 ## 把 gap 讲成「评测结论能否外推」的物理根因
 
@@ -86,9 +87,11 @@ related:
 - [分布外（OOD）泛化与 OOD 指标怎么读](./out-of-distribution-generalization.md) — 本页「加入 OOD 测试集」那一条的展开：OOD 相对谁、为何跨论文不可横比
 - [物理保真度 sim2real gap](../concepts/physics-fidelity-sim2real-gap.md) — 接触/物理层面 gap 的物理根因
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — 「动作忠实 > 视觉逼真」是评测代表性的直接证据
+- [Fidelity Gap](../entities/paper-fidelity-gap-egocentric-video.md) — 手部像了、物体交互没跟上：世界模型当评估器时需单独度量交互保真度
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — WM 世界模型家族被当作策略评估器时，这条评测 gap 是其「世界模型推演层」选型可信度的前提
 
 ## 参考来源
 
 - [wechat_embodied_ai_lab_robot_training_stack_layers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — 训练栈分层视角下「仿真作可扩展闭环评测、real-to-sim 相关性」的论述
 - [robo_bench_arxiv_2510_17801.md](../../sources/papers/robo_bench_arxiv_2510_17801.md) — RoboBench 对「认知代理指标↔下游真机成功率相关」的专门验证，佐证上层易测指标外推需证据
+- [fidelity_gap_arxiv_2610_12464.md](../../sources/papers/fidelity_gap_arxiv_2610_12464.md) — 视频世界模型「主体动作 vs 物体交互」保真度分离测量与成功判定一致率

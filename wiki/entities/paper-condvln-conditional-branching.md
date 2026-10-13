@@ -133,6 +133,16 @@ flowchart TB
 - **oracle 信息泄漏：** oracle 分支选择使用生成时条件真值，不承担在线视觉感知和不确定性处理。
 - **代码与数据可用性待确认：** 项目页提供匿名镜像链接，但当前尚不能确认实际文件、授权条款或长期可用性。
 
+## 与其他工作对比
+
+| 工作 | 关联与区别 |
+|------|------|
+| [R2R](./paper-vln-01-r2r.md) | R2R 给出逐步路径指令与离散导航图上的 SR / SPL；CondVLN 指令带 if / otherwise 分支，必须先判定场景条件再导航 |
+| [VLN-CE](./paper-vln-02-vln-ce.md) | CondVLN 沿用 VLN-CE 兼容的连续环境接口，新增的是条件分支指令和 BSA / CSR 计分，而非新的仿真器 |
+| [REVERIE](./paper-vln-03-reverie.md) | REVERIE 考察高层指令下的远程物体定位；CondVLN 考察的是条件是否成立与分支选择，目标物体只是分支内的子目标 |
+| [NaVid](./paper-vln-10-navid.md) / [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) | 二者是被评测的 VLN agent 类型；CondVLN 不提供新策略，只诊断这类模型在条件推理上的缺口 |
+| [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) | CondVLN 属于"策略任务成功率"层的诊断型基准：用过程指标（BSA）补足仅看结果（SR）带来的误判 |
+
 ## 结论
 
 **CondVLN 的贡献是把条件分支从 VLN 指令里的隐含要求，变成可控生成、可验证真值、可单独计分的评测轴；它诊断的是“是否按对条件走”，而不是提供新的通用导航策略。**
@@ -148,6 +158,7 @@ flowchart TB
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md)
 - [Vision-Language-Action Models](../methods/vla.md)
 - [Zero-Shot Object Navigation](../tasks/zero-shot-object-navigation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 推荐继续阅读
 

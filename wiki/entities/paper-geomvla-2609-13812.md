@@ -81,6 +81,16 @@ flowchart LR
 - **源码运行时序图：** **不适用**（当前未核实存在可运行的官方模型仓库/入口）。
 - **论文边界：** 作者将规模化机器人预训练、跨本体数据和显式语言推理列为未覆盖或后续方向；该方法更准确地说是几何一致的视觉运动表征来辅助动作，而非通用 3D 规划器。
 
+## 与其他工作对比
+
+| 工作 | 关联与区别 |
+|------|------|
+| [π0.5](./paper-pi05-open-world-vla.md) | 2D 图像 token + 大规模机器人预训练路线；GeomVLA 在 RoboTwin2 上报告小幅领先（78.6% vs 75.9% Easy），且不依赖额外机器人动作预训练，但需多视角深度与相机标定 |
+| FLOWER / X-VLA | CALVIN ABC-D 上的论文对照（4.480 / 4.430）；同为 flow / 扩散式动作生成，差别在 GeomVLA 把特征与运动中间量放到机器人基座 3D 坐标系 |
+| [DP3](./painode-209-3ddiffusionpolicydp3.md) | 同样以 3D 点云条件化扩散策略；DP3 不含语言 VLM 语义与未来场景运动 token，GeomVLA 把二者统一进几何一致的条件路径 |
+| [World Action Models](../concepts/world-action-models.md) | WAM 通常预测未来视频或 latent；GeomVLA 预测的是 3D 场景点轨迹，仅作动作条件，不做像素级未来生成 |
+| [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) | GeomVLA 把"深度 + 标定 → 3D 特征"内嵌进策略，感知栈的标定与深度质量直接成为策略性能的上游约束 |
+
 ## 结论
 
 **GeomVLA 的主要价值是把 VLA 从 2D 语义特征到动作的映射，改造成在机器人中心 3D 空间中由场景运动表征贯通的路径；当前证据显示这种几何一致性在所测基准和真机配置下有帮助。**
@@ -102,6 +112,8 @@ flowchart LR
 - [3D 空间视觉问答](../concepts/3d-spatial-vqa.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [Diffusion Policy 与流式动作生成](../methods/diffusion-policy.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+- [CALVIN](./calvin-benchmark.md) / [RoboTwin](./robotwin.md)
 
 ## 推荐继续阅读
 
