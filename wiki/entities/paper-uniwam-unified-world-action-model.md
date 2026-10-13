@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, world-action-models, wam, vla, embodied-ai, robot-manipulation, multimodal-pretraining]
+tags: [paper, world-action-models, wam, vla, embodied-ai, robot-manipulation, multimodal-pretraining, hkust-gz, cmu, pku, sjtu, baai]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-13
 arxiv: "2610.02054"
 summary: "UniWAM 将物理语义推理、未来视觉生成和动作生成放进 8B MoT 联合架构，以人类第一视角、机器人示教和 VQA 三类数据协同预训练，并用动作历史初始化流匹配。"
 related:
@@ -23,7 +23,7 @@ sources:
 
 - **论文：** [arXiv:2610.02054](https://arxiv.org/abs/2610.02054) · [HTML v1](https://arxiv.org/html/2610.02054v1) · [PDF](https://arxiv.org/pdf/2610.02054)
 - **项目页：** [uniwam.github.io](https://uniwam.github.io/)
-- **官方代码：** [UniWAM/UniWAM](https://github.com/UniWAM/UniWAM)（Apache-2.0）
+- **官方代码：** [UniWAM/UniWAM](https://github.com/UniWAM/UniWAM)（Apache-2.0；用户提交的 `UniWAMModelScope` 地址返回 404，见来源核查）
 - **模型权重：** [ModelScope UniWAM collection](https://www.modelscope.cn/collections/Kosmos524/UniWAM)
 - **作者：** Jiayi Chen, Wenxuan Song, Jingbo Wang, Shuai Zhou, Xicheng Gong, Zehua Fan, Ziyang Zhou, Junwu E, Haodong Yan, Fuhao Li, Qize Yu, Xu Huang, Pengwei Wang, Wen Chen, Shunbo Zhou, Haoang Li
 - **机构：** The Hong Kong University of Science and Technology (Guangzhou)、OLA Dimensions、Carnegie Mellon University、Peking University、Shanghai Jiao Tong University、Beijing Academy of Artificial Intelligence
@@ -91,6 +91,30 @@ flowchart TB
 - **机器人数据：** 表 1 小计约 4,958 小时，覆盖 AgiBotWorld、Bridge、DROID、Fractal、RoboCOIN、InterData-A1；监督推理、世界生成和动作专家。
 - **物理语言：** 用自然语言描述局部操作动作，作为跨人类与机器人数据的语义接口；EgoANT 管线为 EgoDex 长视频切分原子操作并产生分段描述。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Data as data/robotwin2 converter
+  participant Train as scripts/train_lap.sh
+  participant MoT as models and train
+  participant Checkpoint as ModelScope checkpoint
+  participant Policy as inference/robotwin/uniwam
+  participant Sim as RoboTwin evaluator
+  Data->>Train: cleaned trajectories and config
+  Train->>MoT: load UniWAM-base + Qwen3-VL + Wan2.2
+  MoT->>MoT: joint physical-language, video-flow, action-flow training
+  MoT-->>Checkpoint: export checkpoint and config.json
+  Checkpoint->>Policy: load pytorch_model + history-flow metadata
+  Sim->>Policy: observation, proprioception, instruction
+  Policy->>Policy: denoise future video and action chunk
+  Policy-->>Sim: action chunk
+  Sim-->>Policy: executed qpos history and next observation
+```
+
+该图对应仓库 README 中的 RoboTwin 转换 → `scripts/train_lap.sh` 训练 → checkpoint 导出 → `inference/robotwin/uniwam` 部署评测路径。LIBERO 是另一套单独的数据转换、训练和评估入口；仓库未提供真实机器人 inference 路径。
+
 ## 后训练：提高鲁棒性并减少动作去噪步数
 
 ### 未来视觉噪声增强
@@ -145,6 +169,7 @@ flowchart TB
 - [机器人操作](../tasks/manipulation.md) — 操作任务与评测背景。
 - [论文来源归档](../../sources/papers/uniwam_arxiv_2610_02054.md)
 - [官方代码归档](../../sources/repos/uniwam.md)
+- [官方项目页与开放范围核查](../../sources/sites/uniwam.md)
 
 ## 结论
 
