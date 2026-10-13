@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-10-13
 related:
+  - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-tempo-dynamic-manipulation.md
@@ -529,6 +530,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
+- [SimVLA](../entities/paper-simvla-zero-shot-mobile-manipulation.md) — 纯仿真数据训练、真实家庭零样本迁移的移动操作策略。
 - [TEMPO 动态操作](../entities/paper-tempo-dynamic-manipulation.md) — 用视觉运动与动作历史增强动态目标跟踪和多阶段操作。
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
