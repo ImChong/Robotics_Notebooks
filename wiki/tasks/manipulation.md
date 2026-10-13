@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-10
+updated: 2026-10-13
 related:
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
@@ -31,6 +31,7 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-agentic-real2sim.md
+  - ../entities/paper-splat2act-personalized-vla.md
   - ../entities/paper-lucida-r2s.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
