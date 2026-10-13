@@ -2,7 +2,7 @@
 type: concept
 tags: [data-collection, supervision, behavior-cloning, rollout, intervention, ego, reward-learning]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-13
 related:
   - ./embodied-data-flywheel-minimal-closed-loop.md
   - ./embodied-data-collection-four-layers-taxonomy.md
@@ -11,6 +11,7 @@ related:
   - ../methods/inverse-reinforcement-learning.md
   - ../overview/embodied-data-collection-to-flywheel-album.md
   - ../tasks/teleoperation.md
+  - ./dense-captioning-for-robotics.md
 sources:
   - ../../sources/blogs/wechat_jushen_qianyan_robot_data_supervision_types_2026-09-14.md
 summary: "具身数据不是同质大池：成功示范、rollout+结果、人工接管、Ego RGB/Ego+轨迹、偏好比较分别回答动作/好坏/恢复/表征/排序等不同训练问题。"
@@ -70,6 +71,8 @@ summary: "具身数据不是同质大池：成功示范、rollout+结果、人�
 | Ego RGB | 连续画面 | R3M 类表征预训练 |
 | Ego + 3D 手/设备 | Project Aria 等 | EgoMimic 类对齐后动作学习 |
 | 已对齐 robot 接口 | 经 IK/重定向 | 与 teleop demo 同等动作监督 |
+
+第一视角视频的**密集动作字幕**可以补充步骤语义和对象/手信息，但依然不是机器人动作轨迹；任务定义与当前标注误差实证见[面向机器人的密集视频字幕](./dense-captioning-for-robotics.md)。
 
 字段应区分三者，勿统称「人类视频示范」。
 
