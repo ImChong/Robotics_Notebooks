@@ -7,6 +7,7 @@ project_id: grit-deploy-onboard-g1
 code: https://github.com/KurokoWeidong/GRIT_Deploy_Onboard_G1
 summary: "Unitree G1 机载 C++ 部署栈：集成 GRIT 全身遥操作跟踪、AMP locomotion 与 NPZ 轨迹播放。"
 related:
+  - ./grit.md
   - ./axellwppr-motion-tracking.md
   - ../tasks/locomotion.md
   - ../tasks/teleoperation.md
@@ -65,6 +66,8 @@ VR 输入先经 PC Server 重定向后进入 G1；速度命令和 NPZ 轨迹则�
 - **代码与模型：** 项目代码按 MIT 开源；README 指出 WBC ONNX 来自 GRIT_teleop_deploy，AMP locomotion ONNX 来自 wbc_fsm。README 声明已确认两个模型随项目分发的许可，但其许可与依赖版本仍应按上游逐项核对。训练实现或训练数据不应视为本仓库内容。
 
 ## 与相邻项目的区别
+
+排行榜中的 **GRIT v0.0.1** 策略由 [GRIT 项目节点](./grit.md) 独立记录，来源仓库为 mrzuang/GRIT_teleop_deploy；本页描述的 KurokoWeidong/GRIT_Deploy_Onboard_G1 是另一套机载集成仓库，两者不合并。
 
 [Axellwppr/motion_tracking](./axellwppr-motion-tracking.md) 是本项目所参考的 sim2real 桥接 / VR 重定向代码来源之一；该知识库中的 HEFT 页面聚焦训练、评测和导出。GRIT_Deploy_Onboard_G1 则聚焦 G1 机载集成、模式切换和具体策略部署。两者有关联但不是同一仓库，也不可互相代替其训练或部署入口。
 

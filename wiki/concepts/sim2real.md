@@ -4,6 +4,7 @@ tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
 updated: 2026-10-09
 related:
+  - ../entities/sim2real.md
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../methods/reinforcement-learning.md
