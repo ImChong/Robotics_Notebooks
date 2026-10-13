@@ -1,13 +1,27 @@
-// 公司技术路线子页 company.html?id=<key>：数据来自 company-roadmaps.json（手工维护，节点 id 由
-// tests/test_company_roadmaps.py 校验存在于站内）。顶部视角筛选 + 公司切换，下方为该公司的
-// 纵向时间轴；每个节点给「本库笔记」与「原文」两个出口，页脚提供上一家 / 下一家。
+// 公司 / 实验室技术路线子页 company.html?id=<key>、lab.html?id=<key>：数据来自 company-roadmaps.json /
+// lab-roadmaps.json（手工维护，节点 id 由 tests/test_company_roadmaps.py、tests/test_lab_roadmaps.py
+// 校验存在于站内）。顶部视角筛选 + 机构切换，下方为该机构的纵向时间轴；每个节点给「本库笔记」与
+// 「原文」两个出口，页脚提供上一个 / 下一个。
 (function () {
   'use strict';
 
-  var mount = document.getElementById('companyRoadmapPage');
+  var KINDS = {
+    companyRoadmapPage: {
+      data: 'company-roadmaps.json', list: 'companies', page: 'company.html', noun: '公司',
+      pager: '上一家 / 下一家', comparisonLabel: '三视角对照与阅读顺序', fallbackLabel: '公司技术路线对照',
+      comparisonId: 'wiki-comparisons-robot-foundation-model-company-paths-2026'
+    },
+    labRoadmapPage: {
+      data: 'lab-roadmaps.json', list: 'labs', page: 'lab.html', noun: '实验室',
+      pager: '上一个 / 下一个', comparisonLabel: '海外具身实验室地图', fallbackLabel: '海外具身实验室地图',
+      comparisonId: 'wiki-overview-overseas-embodied-ai-labs-landscape-2026'
+    }
+  };
+  var mount = document.getElementById('companyRoadmapPage') || document.getElementById('labRoadmapPage');
   if (!mount) return;
 
-  var COMPARISON_ID = 'wiki-comparisons-robot-foundation-model-company-paths-2026';
+  var KIND = KINDS[mount.id];
+  var COMPARISON_ID = KIND.comparisonId;
 
   function esc(value) {
     return String(value == null ? '' : value)
@@ -22,7 +36,7 @@
   }
 
   function companyHref(key) {
-    return 'company.html?id=' + encodeURIComponent(key);
+    return KIND.page + '?id=' + encodeURIComponent(key);
   }
 
   function extLink(url, text, cls) {
@@ -36,19 +50,26 @@
   }
 
   function renderSwitcher(companies, lenses, current) {
+    var nav = '<nav class="co-tabs" aria-label="切换' + KIND.noun + '">';
+    // 只有一个视角时筛选没有意义，省掉筛选条
+    if (Object.keys(lenses).length < 2) {
+      return nav + companies.map(function (c) { return renderChip(c, current); }).join('') + '</nav>';
+    }
     var lensButtons = ['<button type="button" class="home-hub-tab is-active" data-lens="" aria-pressed="true">全部</button>'];
     Object.keys(lenses).forEach(function (key) {
       lensButtons.push('<button type="button" class="home-hub-tab" data-lens="' + esc(key) +
         '" aria-pressed="false">' + esc(lenses[key]) + '</button>');
     });
-    var chips = companies.map(function (c) {
-      var on = current && c.key === current.key;
-      return '<a class="co-tab' + (on ? ' is-active' : '') + '" href="' + esc(companyHref(c.key)) +
-        '" data-lenses="' + esc((c.lenses || []).join(' ')) + '"' + (on ? ' aria-current="page"' : '') + '>' +
-        esc(c.name) + '<span class="co-tab-count">' + (c.nodes || []).length + '</span></a>';
-    });
-    return '<div class="co-lens-filter" role="group" aria-label="按阅读视角筛选公司">' + lensButtons.join('') + '</div>' +
-      '<nav class="co-tabs" aria-label="切换公司">' + chips.join('') + '</nav>';
+    var chips = companies.map(function (c) { return renderChip(c, current); });
+    return '<div class="co-lens-filter" role="group" aria-label="按阅读视角筛选' + KIND.noun + '">' + lensButtons.join('') + '</div>' +
+      nav + chips.join('') + '</nav>';
+  }
+
+  function renderChip(c, current) {
+    var on = current && c.key === current.key;
+    return '<a class="co-tab' + (on ? ' is-active' : '') + '" href="' + esc(companyHref(c.key)) +
+      '" data-lenses="' + esc((c.lenses || []).join(' ')) + '"' + (on ? ' aria-current="page"' : '') + '>' +
+      esc(c.name) + '<span class="co-tab-count">' + (c.nodes || []).length + '</span></a>';
   }
 
   function renderNode(node) {
@@ -101,9 +122,9 @@
   function renderPager(companies, index) {
     var prev = companies[(index - 1 + companies.length) % companies.length];
     var next = companies[(index + 1) % companies.length];
-    return '<nav class="co-pager" aria-label="上一家 / 下一家">' +
+    return '<nav class="co-pager" aria-label="' + KIND.pager + '">' +
       '<a href="' + esc(companyHref(prev.key)) + '">← ' + esc(prev.name) + '</a>' +
-      '<a href="' + esc(detailHref(COMPARISON_ID)) + '">三视角对照与阅读顺序</a>' +
+      '<a href="' + esc(detailHref(COMPARISON_ID)) + '">' + KIND.comparisonLabel + '</a>' +
       '<a href="' + esc(companyHref(next.key)) + '">' + esc(next.name) + ' →</a>' +
       '</nav>';
   }
@@ -129,11 +150,11 @@
   }
 
   function render(data) {
-    var companies = Array.isArray(data && data.companies) ? data.companies : [];
+    var companies = Array.isArray(data && data[KIND.list]) ? data[KIND.list] : [];
     var lenses = (data && data.lenses) || {};
     mount.classList.remove('data-loading');
     if (!companies.length) {
-      mount.innerHTML = '<p class="data-meta">暂无公司路线数据。</p>';
+      mount.innerHTML = '<p class="data-meta">暂无' + KIND.noun + '路线数据。</p>';
       return;
     }
     var key = new URLSearchParams(window.location.search).get('id') || companies[0].key;
@@ -144,13 +165,13 @@
     var company = index >= 0 ? companies[index] : null;
     var body = company
       ? renderCompany(company, lenses) + renderPager(companies, index)
-      : '<p class="data-meta">未找到公司「' + esc(key) + '」，请从上方选择。</p>';
+      : '<p class="data-meta">未找到' + KIND.noun + '「' + esc(key) + '」，请从上方选择。</p>';
     mount.innerHTML = renderSwitcher(companies, lenses, company) + body;
     if (company) {
       document.title = company.name + ' 技术路线 | Robotics Notebooks';
     }
     bindLensFilter();
-    // 窄屏公司条横向滚动时，把当前公司滚进可视区（.co-tabs 为 relative，offsetLeft 相对它）
+    // 窄屏机构条横向滚动时，把当前机构滚进可视区（.co-tabs 为 relative，offsetLeft 相对它）
     var active = mount.querySelector('.co-tab.is-active');
     var bar = mount.querySelector('.co-tabs');
     if (active && bar && bar.scrollWidth > bar.clientWidth) {
@@ -158,7 +179,7 @@
     }
   }
 
-  fetch('company-roadmaps.json')
+  fetch(KIND.data)
     .then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
@@ -167,7 +188,7 @@
     .catch(function (err) {
       console.warn('[company-roadmap] 加载失败', err);
       mount.classList.remove('data-loading');
-      mount.innerHTML = '<p class="data-meta">公司路线数据加载失败，可先看 <a href="' +
-        esc(detailHref(COMPARISON_ID)) + '">公司技术路线对照</a>。</p>';
+      mount.innerHTML = '<p class="data-meta">' + KIND.noun + '路线数据加载失败，可先看 <a href="' +
+        esc(detailHref(COMPARISON_ID)) + '">' + KIND.fallbackLabel + '</a>。</p>';
     });
 })();

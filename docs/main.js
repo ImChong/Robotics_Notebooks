@@ -383,16 +383,19 @@
     var mainEl = document.getElementById('heroMainRouteCount');
     var depthEl = document.getElementById('heroDepthRouteCount');
     var companyEl = document.getElementById('heroCompanyCount');
-    if (!nodeEl && !edgeEl && !mainEl && !depthEl && !companyEl) return;
+    var labEl = document.getElementById('heroLabCount');
+    if (!nodeEl && !edgeEl && !mainEl && !depthEl && !companyEl && !labEl) return;
 
     var homeDepthLinks = document.querySelectorAll('#homeRouteLinks a');
     var homeCompanyLinks = document.querySelectorAll('#homeCompanyLinks a');
+    var homeLabLinks = document.querySelectorAll('#homeLabLinks a');
     heroStatsCountUpFallbacks = {
       nodes: readHeroStatFallback(nodeEl, 0),
       edges: readHeroStatFallback(edgeEl, 0),
       main: readHeroStatFallback(mainEl, 1),
       depth: homeDepthLinks.length || readHeroStatFallback(depthEl, 23),
-      company: homeCompanyLinks.length || readHeroStatFallback(companyEl, 12)
+      company: homeCompanyLinks.length || readHeroStatFallback(companyEl, 12),
+      lab: homeLabLinks.length || readHeroStatFallback(labEl, 2)
     };
 
     if (!getHeroStatsCountUpEnabled()) {
@@ -401,6 +404,7 @@
       setHeroStatStatic(mainEl, heroStatsCountUpFallbacks.main);
       setHeroStatStatic(depthEl, heroStatsCountUpFallbacks.depth);
       setHeroStatStatic(companyEl, heroStatsCountUpFallbacks.company);
+      setHeroStatStatic(labEl, heroStatsCountUpFallbacks.lab);
       return;
     }
 
@@ -410,6 +414,7 @@
     if (mainEl) heroStatsAnimators.main = animateCountUp(mainEl, heroStatsCountUpFallbacks.main);
     if (depthEl) heroStatsAnimators.depth = animateCountUp(depthEl, heroStatsCountUpFallbacks.depth);
     if (companyEl) heroStatsAnimators.company = animateCountUp(companyEl, heroStatsCountUpFallbacks.company);
+    if (labEl) heroStatsAnimators.lab = animateCountUp(labEl, heroStatsCountUpFallbacks.lab);
   }
 
   function renderHomeStats(graphStats) {
@@ -418,9 +423,10 @@
     var heroMainRouteCount = document.getElementById('heroMainRouteCount');
     var heroDepthRouteCount = document.getElementById('heroDepthRouteCount');
     var heroCompanyCount = document.getElementById('heroCompanyCount');
+    var heroLabCount = document.getElementById('heroLabCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
     if (!heroNodeCount && !heroEdgeCount && !wikiSearchSubtitle && !heroMainRouteCount && !heroDepthRouteCount &&
-      !heroCompanyCount) {
+      !heroCompanyCount && !heroLabCount) {
       return;
     }
 
@@ -462,6 +468,10 @@
     if (heroCompanyCount) {
       var companyTarget = fallbacks ? fallbacks.company : parseHeroStatNumber(heroCompanyCount, 12);
       if (play || fallbacks) applyStat(heroCompanyCount, 'company', companyTarget);
+    }
+    if (heroLabCount) {
+      var labTarget = fallbacks ? fallbacks.lab : parseHeroStatNumber(heroLabCount, 2);
+      if (play || fallbacks) applyStat(heroLabCount, 'lab', labTarget);
     }
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
@@ -6328,6 +6338,8 @@
   var moreRoutesCard = document.getElementById('home-more-routes');
   var companyCount = document.getElementById('heroCompanyCount');
   var companyRoutesCard = document.getElementById('home-company-routes');
+  var labCount = document.getElementById('heroLabCount');
+  var labRoutesCard = document.getElementById('home-lab-routes');
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
   // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
@@ -6839,6 +6851,16 @@
     });
   }
 
+  // Hero「实验室路线」数字：滚到「实验室路线」卡中心描边一圈（暂无折叠按钮，不高亮文案）
+  if (labCount && labRoutesCard) {
+    labCount.addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollEntryCardToCenter(labRoutesCard, '#home-lab-routes', function () {
+        playCardBorderTrace(labRoutesCard);
+      });
+    });
+  }
+
   // 入口卡「项目查询 / 知识图谱」：区块顶对齐（同旧锚点），模块描边特效保持；项目查询额外聚焦搜索框
   var searchInput = document.getElementById('wikiSearchInput');
   var homeTraceTriggers = document.querySelectorAll('[data-trace-target]');
@@ -6889,6 +6911,10 @@
   } else if (window.location.hash === '#home-company-routes' && companyRoutesCard) {
     scrollEntryCardToCenter(companyRoutesCard, null, function () {
       playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
+    });
+  } else if (window.location.hash === '#home-lab-routes' && labRoutesCard) {
+    scrollEntryCardToCenter(labRoutesCard, null, function () {
+      playCardBorderTrace(labRoutesCard);
     });
   } else if (window.location.hash === '#wiki-search') {
     var searchSection = document.getElementById('wiki-search');
