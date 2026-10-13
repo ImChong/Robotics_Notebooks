@@ -15,6 +15,7 @@ related:
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/paper-taco-tactile-sensor-benchmark.md
+  - ../entities/paper-eflesh-magnetic-tactile-sensor.md
   - ../entities/paper-softvtbench.md
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
   - ../../sources/papers/vtap_gripper_arxiv_2607_15448.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
+  - ../../sources/papers/eflesh_arxiv_2506_09994.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/repos/awesome-touch.md
@@ -80,6 +82,10 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **优点**：测量极其精准，带宽极高（可达 1000Hz+），是工业阻抗控制（Impedance Control）的标配。
 - **缺点**：只能提供一个合力/合力矩点，无法提供接触面上的空间分布信息。
 
+## 磁触觉实例：eFlesh
+
+[eFlesh](../entities/paper-eflesh-magnetic-tactile-sensor.md) 用 cut-cell 3D 打印微结构固定磁铁，以分离式 Hall 磁力计读取形变信号；可估计接触点与法向/剪切力、检测滑移，也可作为视触觉策略输入。它补充了视觉触觉、电阻阵列等路线，代价是要处理磁串扰、样件标定与结构刚度权衡。
+
 ## 在机器人学习中的应用
 
 在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：
@@ -105,6 +111,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 纯触觉抓取精修 / 外在灵巧伺服
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 指尖 FlexiTac 阵列 + 掌上光学视触主动掌
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务真机 ACT 对比；无通用最佳模态
+- [eFlesh（可定制磁触觉皮肤）](../entities/paper-eflesh-magnetic-tactile-sensor.md) — cut-cell 打印结构 + 磁铁 + Hall 磁力计，兼顾力估计与滑移检测
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
@@ -123,6 +130,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 压阻多指触觉抓取精修
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP FlexiTac 指尖 + 视触觉主动掌
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO 跨模态触觉传感器真机 IL 基准
+- [sources/papers/eflesh_arxiv_2506_09994.md](../../sources/papers/eflesh_arxiv_2506_09994.md) — eFlesh 磁触觉皮肤与 cut-cell 设计工具
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统
 - [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
