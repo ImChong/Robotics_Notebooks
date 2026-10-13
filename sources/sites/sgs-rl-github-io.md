@@ -5,7 +5,8 @@
 - **论文归档：** [arXiv v1 摘录](../papers/sgs_arxiv_2610_12465.md)
 - **作者：** Octi Zhang、Mateo Guaman Castro、Patrick Yin、Ignacio Dagnino、Abhishek Gupta、Rosario Scalise、Byron Boots
 - **机构：** University of Washington；NVIDIA（作者脚注）
-- **代码：** 官网当前为 “Code (coming soon)”，暂无可验证的 GitHub 仓库链接；截至 2026-10-10 未开源可运行实现。
+- **代码：** 官网当前为 “Code (coming soon)”，暂无可验证的 GitHub 仓库链接；截至 2026-10-13 未开源可运行实现。
+- **核查更新：** 2026-10-13（以论文 HTML 正文补充 UR5e 夹爪与控制方式）
 - **入库日期：** 2026-10-10
 
 ## 项目页内容摘录
@@ -13,6 +14,10 @@
 SGS（Success-Guided Sampling）通过追踪策略在任务配置上的近期成功率，以自适应权重选择训练 episode 的 reset 配置。目标不是均匀消耗 rollout 在已掌握或当前无法企及的设置，而是聚焦策略能力前沿。核心策略优化仍为标准 PPO，采样器位于 PPO 外层。
 
 项目页将 task configuration 定义为初始状态 $s_0$、目标 $g$、环境 $e$ 的三元组。locomotion 覆盖 ANYmal C/D 与复杂地形；manipulation 覆盖 UR5e / Franka 的精细装配。页面展示仿真训练后转为 RGB policy，并在 UR5e 真机执行 assembly 的 zero-shot transfer。所有演示视频页面标注为 1× 速度。
+
+## 机器人平台补充
+
+论文 HTML 正文附录 C.1 指明：UR5e 配 Robotiq 2F-85 夹爪，使用操作空间控制；Franka 使用平行夹爪与关节位置控制。UR5e 相机包括第三人称与腕部视角。详见 [论文正文](https://arxiv.org/html/2610.12465v1)。
 
 ## 公开结果摘录
 
