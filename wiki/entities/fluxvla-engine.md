@@ -16,7 +16,7 @@ tags:
   - manipulation
   - humanoid
 status: complete
-updated: 2026-10-06
+updated: 2026-10-13
 arxiv: "2609.17210"
 code: https://github.com/FluxVLA/FluxVLA
 related:
