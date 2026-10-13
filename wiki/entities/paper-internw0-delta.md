@@ -26,11 +26,11 @@ summary: "InternW0-Δ 以稀疏观测记忆、冻结VLM语义、未来监督的C
 
 **InternW0-Δ**（arXiv: [2609.31394](https://arxiv.org/abs/2609.31394)，Shanghai AI Laboratory / InternRobotics）把视频生成预训练中的时间动力学迁移到机器人动作生成。它不要求推理时先生成一段未来视频再交给规划器：视频专家从观测中提取上下文，动作专家借助 **Causal Imprint（因果印记）**读取“接下来场景可能如何变化”的训练所得表征，并直接生成机器人动作块。
 
-## 一句话概括
+## 一句话定义
 
 > 以 Wan2.2-TI2V-5B 视频专家 + ActionDiT 动作专家构成定向 Mixture-of-Transformers；通过稀疏记忆保持长短时上下文、冻结 VLM 将任务语言落到当前场景、未来特征监督教会 Causal Imprint 表达可预测变化，再用 Track4World 的离线几何/运动特征蒸馏视频表征。训练统一 80D 机器人状态/动作槽位，执行端缓存视觉 K/V、只对 32 步动作 chunk 做 flow matching 推理。
 
-## 缩写与名词
+## 英文缩写速查
 
 | 名称 | 含义 | 在本工作中的作用 |
 |---|---|---|
@@ -43,7 +43,13 @@ summary: "InternW0-Δ 以稀疏观测记忆、冻结VLM语义、未来监督的C
 | Ego2Robot | — | 将第一人称人类视频合成为机器人动作/视频训练样本的流程 |
 | 4D distillation | 时空表征蒸馏 | 将 Track4World 几何、运动教师特征蒸馏进视频专家 |
 
-## 模型结构与信息流
+## 为什么重要
+
+InternW0-Δ 的关键设计是让视频预测带来的时间与几何知识改善动作决策，同时把推理成本限制在动作生成路径。它用训练期未来监督学习因果表征，不把未来视频生成放进在线控制循环。
+
+## 方法总览
+
+### 模型结构与信息流
 
 ### 1. 异构观测与任务语义
 
@@ -182,6 +188,19 @@ sequenceDiagram
 
 预训练收益的对照在 AC-One 两项任务、每个条件各 20 次试验：烤面包从 **4/20（20%）到 19/20（95%）**；Luminol 反应从 **0/20 到 19/20（95%）**。饮水任务部署时还能适应与示范不同的杯中目标水位，不过论文对这部分是定性展示，不应外推为任意物体/场景鲁棒性。
 
+## 与其他工作对比
+
+| 路线 | 主要设计 | 与 InternW0-Δ 的关系 |
+|---|---|---|
+| [OpenWAM](./paper-openwam.md) | 开放的 WAM 训练与基准路线 | 同为 WAM 对照；论文在 RoboTwin Clean2Random 报告 71.9%，OpenWAM-α 为 48.7% |
+| [Long-WAM](./paper-long-wam-scaling-context.md) | 扩展 WAM 的长上下文能力 | Long-WAM 聚焦上下文扩展；InternW0-Δ 聚焦 future-supervised CI、跨源数据和部署路径 |
+| [4D-WAM](./paper-4d-wam.md) | 将时空几何/运动知识用于 WAM | 都使用 4D 先验；InternW0-Δ 通过 Track4World 教师做训练期蒸馏，推理时移除教师分支 |
+| 未来视频规划型 WAM | 推理时显式生成未来视频再规划 | InternW0-Δ 训练视频目标但推理只去噪动作 chunk，避免未来视频 rollout |
+
+## 结论
+
+InternW0-Δ 的贡献不只是把视频 backbone 接到动作头上，而是以 CI 将未来监督变成当前可用的动作相关表征，再用稀疏记忆、VLM 语义、4D 蒸馏和 80D mask 接口支撑异构预训练与跨平台适配。论文提供了多项仿真和四种真机平台证据；复现评估仍要区分已发布代码、尚待发布的权重，以及受许可约束的数据。
+
 ## 局限与证据边界
 
 - **异构动作并未消除适配成本：** 80D 带 mask 的统一布局让预训练共享成为可能，但每类原生控制信号仍需 adapter；四种真机分别做 post-training。
@@ -208,7 +227,7 @@ sequenceDiagram
 - [Long-WAM](./paper-long-wam-scaling-context.md) — WAM 长上下文扩展对照。
 - [4D-WAM](./paper-4d-wam.md) — 时空几何表征与动作模型相关路线。
 
-## 一手来源
+## 参考来源
 
 - [论文归档](../../sources/papers/internw0_delta_arxiv_2609_31394.md)
 - [官方项目页归档](../../sources/sites/internw0-delta.md)
