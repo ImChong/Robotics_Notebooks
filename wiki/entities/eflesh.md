@@ -23,6 +23,21 @@ sources:
 
 [eFlesh](https://e-flesh.com/)（NYU；[论文](https://arxiv.org/abs/2506.09994)，[代码](https://github.com/notvenky/eFlesh)）是一种低成本软触觉传感器：将磁体嵌入柔性 TPU 微结构，外力造成磁体相对磁力计位移，学习模型再从磁信号估计接触位置、力与滑移。参数化微结构使传感器既能适配不同外形，也能调节机械顺应性和传感响应。
 
+## 一句话定义
+
+> eFlesh = 可打印 TPU 微结构中的磁体发生形变，由磁力计读数和学习模型估计接触位置、力与滑移。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| TPU | Thermoplastic Polyurethane | 构成柔性触觉皮肤的可打印弹性材料 |
+| CAD | Computer-Aided Design | 用于设计参数化微结构的计算机辅助设计 |
+| STL | Stereolithography | 常见三维网格文件格式，CAD-to-eFlesh 可作为输入 |
+| OBJ | Wavefront OBJ | 常见三维网格文件格式，也可用于生成传感器结构 |
+| USB | Universal Serial Bus | 论文中的精细操作任务之一 |
+| NYU | New York University | 论文团队所属机构缩写 |
+
 ## 系统链路
 
 ```mermaid
@@ -41,6 +56,13 @@ flowchart LR
 ## 制造与复现
 
 基本硬件由家用 3D 打印的 TPU 结构、嵌入式永磁体和磁力计板组成。CAD-to-eFlesh 工具从凸形 OBJ/STL 生成传感器结构；仓库还提供微结构生成、标定/数据及滑移与操作实验代码。克隆时需递归获取子模块并检查每个依赖、模型及数据的许可；低成本硬件不代表免标定或跨装置零样本通用。
+
+## 参考来源
+
+- [eFlesh 论文归档](../../sources/papers/eflesh_arxiv_2506_09994.md)
+- [eFlesh 官方仓库归档](../../sources/repos/eflesh.md)
+- [eFlesh 官方项目页归档](../../sources/sites/eflesh-project.md)
+- [论文](https://arxiv.org/abs/2506.09994)、[官方仓库](https://github.com/notvenky/eFlesh)、[项目页](https://e-flesh.com/)
 
 ## 关联
 
