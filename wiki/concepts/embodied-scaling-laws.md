@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-13
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -13,6 +13,7 @@ related:
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/dyna-2.md
   - ../entities/light-o1.md
+  - ../entities/naturewill-natura-1.md
   - ../entities/paper-scaling-laws-neural-language-models.md
   - ../entities/paper-nymeria.md
   - ../entities/perceptron-isaac-05.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/perceptron_isaac_05.md
+  - ../../sources/sites/naturewill-natura-1.md
 summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）、Dyna-2（1M h 人→机跨具身）与 Perceptron Isaac 0.5（1M h 视频置换 teleop）等案例。"
 ---
 
@@ -62,6 +64,7 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 8. **预训练时长与适应成本（产业案例）**：[GEN-1.5](../entities/generalist-gen15-one-shot.md) 在 **8+ 月** 持续预训练后报告 **无显式 ICL 训练** 的 one-shot physical prompting 与 **1–10 梯度步** 适应；作者主张更多预训练使新任务适应趋近「可忽略」——**闭源自报**，与 EgoScale / Dyna-2 的指标域不同。
 9. **ICL vs 语言 prompt（产业案例）**：[S1](../entities/skild-s1.md) 在同一数据/架构/算力下把预训练从 1k 推到 **100k 小时**：已见任务小数据语言 VLA 更好，未见任务上 ICL **66%** vs 语言 **9%**（约 7×）。读法是 **任务指定通道** 改变 scaling 斜率，不是另一条参数幂律；**闭源自报**。
 10. **人类动作 pretraining → 跨本体适配（案例）**：[Light-O1](../entities/light-o1.md) 将 **internet human video** 预训练 token 预算 D 扩至 **120B（≈10 万动作小时）**，在 [Nymeria](../entities/paper-nymeria.md) / HIW-500 / LightBot 上报告 held-out **next-action loss** 与 **开环 MPJPE** 呈 **$L(D)=L_0+\alpha D^{-\eta}$** 幂律——协议对齐 [Kaplan LM scaling](../entities/paper-scaling-laws-neural-language-models.md)；**Preview 已开源**，完整 loco-manip 权重未公开。
+11. **百万小时人类经验 + 灵巧手后训练（闭源预览）**：[Natura-1](../entities/naturewill-natura-1.md) 报告 50B MoE 在 1M 小时第一人称经验上预训练，并用有限真机数据适配 20-DoF 手；从约 44k 到 1M 小时的 teacher-forced 预测误差下降，**不应等同于任务成功率 scaling**。项目页未公开代码、权重或数据；跨硬件基线也非严格同构。
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
@@ -94,6 +97,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [Kaplan Scaling Laws](../entities/paper-scaling-laws-neural-language-models.md) — LM 幂律方法论原典
 - [Nymeria Dataset](../entities/paper-nymeria.md) — egocentric 人类 motion scaling 探针
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（210×；权重入库日未齐）
+- [Natura-1（Nature Will）](../entities/naturewill-natura-1.md) — 百万小时人类经验与灵巧手后训练的闭源研究预览
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
 - [GEN-1.5 一次示范学习](../entities/generalist-gen15-one-shot.md) — 预训练规模与 one-shot / 极少步适应
 - [S1（Skild）](../entities/skild-s1.md) — ICL vs 语言条件 VLA 的未见任务 scaling 分叉
@@ -113,3 +117,4 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [S1 博客归档](../../sources/blogs/skild_s1_in_context_learning.md) — ICL vs 语言 prompt 的内部 scaling 对照
 - [GEN-1 千手博客归档](../../sources/blogs/generalist_thousand_hands.md) — 多末端多样性 scaling 产业样本
 - [Isaac 0.5 博客归档](../../sources/blogs/perceptron_isaac_05.md) — 无动作视频小时置换 teleop 的开源对照
+- [Natura-1 官方项目页归档](../../sources/sites/naturewill-natura-1.md) — 百万小时人类经验与灵巧手后训练的厂商研究预览
