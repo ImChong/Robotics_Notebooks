@@ -26,6 +26,7 @@ related:
   - ./paper-luna-universal-3d-human-animation.md
   - ./paper-face-anything-4d-face-reconstruction.md
   - ./paper-4danyone.md
+  - ./motion2mixamorig.md
   - ./paper-luna-universal-3d-human-animation.md
 sources:
   - ../../sources/papers/gvhmr_arxiv_2409_06662.md
@@ -54,7 +55,7 @@ sources:
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（16/64）：**视频动作恢复到重力对齐世界坐标**。
 - **重定向不是第一步**：现场只有手机视频时，必须先有 GVHMR（或 [TRAM](paper-tram-global-human-motion.md) 等同类 HMR）才能把像素变成 **带世界坐标的 SMPL 序列**，再交给 [GMR](../methods/motion-retargeting-gmr.md) 等几何重定向（见 [humanoid-training-data-pipeline](../queries/humanoid-training-data-pipeline.md)）。
 - **坐标设计直击长视频痛点：** world 系定义随序列变化而歧义；GV 系 **每帧由重力+视线唯一确定**，天然对齐重力，避免沿重力方向的漂移累积。
-- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。若目标是 **临床级运动学/动力学**（OpenSim 力矩、GRF）而非机器人 SMPL 重定向，见 [OpenCap Monocular](./paper-opencap-monocular.md)。同组更早的 [EasyMocap](./easymocap.md) 覆盖 **标定多视角 / 镜面 / Neural Body**，不替代本页的单目世界轨迹。
+- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。若目标是 **临床级运动学/动力学**（OpenSim 力矩、GRF）而非机器人 SMPL 重定向，见 [OpenCap Monocular](./paper-opencap-monocular.md)。[Motion2MixamoRig](./motion2mixamorig.md) 将人体动作恢复与 Mixamo rig/GLB 导出封装为可用工具（依赖 GVHMR 等权重）；同组更早的 [EasyMocap](./easymocap.md) 覆盖 **标定多视角 / 镜面 / Neural Body**，不替代本页的单目世界轨迹。
 
 ## 流程总览
 
