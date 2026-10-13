@@ -145,6 +145,9 @@ type: ingest
 - **操作：** ingest
 - **说明：** 归档 Axis Robotics Platform 官方技术报告，补充既有 Axis Robotics 实体的跨仿真器数据链路、LIBERO 轨迹清洗验证和部分开源边界。
 
+- **操作：** ingest
+- **说明：** 入库 WING（arXiv:2610.03607），整理交互中心潜动作、低频 DCT 引导、仿真/真机评测和代码待发布状态，并关联 WAM 知识页。
+
 ## [2026-10-13] ingest | sources/repos/pentagi.md — 收录多智能体安全测试平台并记录授权范围、容器隔离与外部服务边界
 
 ## [2026-10-13] ingest | SDD / TDD / BDD / ATDD — 补齐方法定义并说明分层组合关系
