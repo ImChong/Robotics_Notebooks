@@ -42,7 +42,7 @@ summary: "AgentGarten（arXiv:2610.12374，MirroS/清华/北大）：仿真器�
 - **统一不同的世界外观。** 各 world 只需向共同接口导出结构化几何条件，多个仿真器/游戏引擎可复用同一个神经 renderer。
 - **把语言经验接到交互循环。** playbook 是显式、可检查、可传承的策略经验载体；实验演示预训练 agent 能将关于遮挡、搬运和坡道的先验落到视觉闭环动作中。
 
-## 核心架构
+## 核心架构与方法
 
 ### 世界状态和视觉观察
 
@@ -149,6 +149,16 @@ AgentGarten 的贡献是让显式代码世界、共享神经渲染和跨轮文�
 - 与 OpenAI 2019 自博弈对比具有启发性，但不支持训练效率倍数或“从零习得物理”的结论。
 - H100 36.5 FPS 是 renderer 稳态吞吐，完整 agent 闭环延迟尚未由该数字覆盖。
 - 官方代码目前只公开 renderer 子系统，完整 code-world practice 环境仍待发布。
+
+## 与其他工作对比
+
+| 对照 | 世界状态由谁维护 | 视觉观察来源 | 策略/经验如何改进 | 与 AgentGarten 的差异 |
+|---|---|---|---|---|
+| **AgentGarten** | simulator / game engine 中的显式代码与规则 | 共享几何条件神经渲染器（深度/法线 + 外观 + 历史） | 预训练 agent 每轮复盘，写入可继承文本 playbook | — |
+| [Code-as-World](./paper-code-as-world.md) | 可执行代码表示物理世界 | 代码世界执行后渲染，用于 propose–execute–render–verify 验证假设 | verified worlds 监督 VLM（Code-as-World-VL）做定量物理推理 | 同为 MirroS 可执行世界路线；Code-as-World 面向物理推理监督，AgentGarten 面向 agent 在视觉闭环中交互与经验传承 |
+| [HarnessEval-W](./paper-harnesseval-w.md) | 被评测的交互式视觉世界模型 | 世界模型生成视频 | 不训练 agent；用 LLM harness 对世界模型做可审计评测 | 一个评测视觉世界，一个用视觉世界训练/演示 agent |
+| OpenAI 2019 hide-and-seek 自博弈 | 物理仿真器 | 仿真器状态观测 | 随机初始化策略 + PPO 自博弈（约 2500 万 / 1 亿 episode 出现 shelter / ramp） | 协议、观察模态与计数单位均不同，仅作定性历史参照（见上文实验节） |
+| [Video-as-Simulation](../concepts/video-as-simulation.md) 类纯生成世界 | 由视频生成模型隐式承担 | 生成视频 | 视具体方法而定 | AgentGarten 把状态转移留在引擎，renderer 只生成观察，避免生成模型同时隐式记忆动力学 |
 
 ## 关联页面
 

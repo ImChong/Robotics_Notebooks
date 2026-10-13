@@ -162,6 +162,16 @@ sequenceDiagram
 - 可分离的 root channels 会被排除，因此当前实现重点纠正动作姿态，不负责规划远离受保护实体的路线。
 - 公开代码提供浏览器 demo；仓库 quick start 与论文真机部署链不同，G1 复现还依赖感知、SONIC 权重与控制接口。
 
+## 与其他工作对比
+
+| 对照 | 安全约束作用在哪里 | 约束表达什么 | 与 CSF 的差异 |
+|---|---|---|---|
+| **CSF** | 冻结文本动作生成器的每个采样步 + 执行期安全盾 | 场景语义：同一动作在受保护实体前是否允许 | — |
+| 提示词检查 | 生成前的语言指令 | 文本是否违规 | 看不到场景；误导性提示（如“目标是柱子”但场景里有人）可能漏过 |
+| 经典 [Safety Filter](../concepts/safety-filter.md) / [CBF-QP](../concepts/control-barrier-function.md) | 高层策略与低层控制之间的控制输入/状态 | 关节限位、碰撞距离、速度上限等几何/物理约束 | CSF 沿用“最小修改投影回安全集”的思路，但把安全集定义在由危险/安全参考动作张成的语义 margin 上，不直接对应几何避碰 |
+| [PAC-MAN](./paper-pac-man-perceptive-cbf-rl.md) | 训练期把全身 CBF 写进 RL 奖励 | 球与身体的几何避碰 | 同组 CBF 路线；PAC-MAN 训练出躲避策略，CSF 不训练任何模型、只在推理期过滤 |
+| [Safe-Stop](./paper-safe-stop-humanoid.md) | 急停时的 learned stop policy + damping fallback | 当前状态能否安全停下（reach-avoid） | Safe-Stop 处理“停下”本身的可行性；CSF 处理“这个动作该不该在此场景执行”，并改写剩余参考而非急停 |
+
 ## 关联页面
 
 - [Safety Filter（安全过滤器）](../concepts/safety-filter.md)

@@ -121,6 +121,7 @@ flowchart TB
 - [操作任务](../tasks/manipulation.md)
 - [MolmoAct2](./paper-molmoact2.md)
 - [LIBERO 基准](./libero-benchmark.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③策略任务成功率层：SO-101 真机上用留出组合与直接点名对照，把操作能力与空间指令理解分开归因
 
 ## 参考来源
 

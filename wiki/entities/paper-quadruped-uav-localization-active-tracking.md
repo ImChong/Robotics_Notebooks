@@ -118,6 +118,7 @@ flowchart LR
 - [Locomotion 任务页](../tasks/locomotion.md)
 - [状态估计](../concepts/state-estimation.md)
 - [Crazyflie Firmware](./crazyflie-firmware.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ① 标定与 ④ 消费层：臂端相机检测 AprilTag 得外部位姿喂给只带 IMU 的无人机，静止对齐与主动跟踪决定定位误差
 
 ## 参考来源
 

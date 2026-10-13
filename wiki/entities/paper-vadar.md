@@ -5,6 +5,7 @@ tags: [paper, reinforcement-learning, hierarchical-reinforcement-learning, goal-
 status: complete
 updated: 2026-10-12
 project: "https://shashwatsaxena13.github.io/vadar-site/"
+venue: "preprint（项目页 PDF；归档未见 arXiv 编号）"
 related:
   - ../methods/hierarchical-reinforcement-learning.md
   - ../methods/reinforcement-learning.md
@@ -65,6 +66,18 @@ flowchart TD
 - 价值分解提供阶段级诊断信号；共享表征避免为每个子目标完全独立训练 critic。
 - 部署简化依赖训练任务中的目标顺序与分段信号，不能据此假设开放词汇任务也无需高层状态管理。
 - 精确收益仍须以论文实验表核实；项目页展示不足以支撑未报告的数字比较。
+
+## 与其他工作对比
+
+| 路线 | 训练期如何使用子目标 | 部署时是否需要显式子目标 | 与 VaDar 的差异 |
+|------|----------------------|--------------------------|-----------------|
+| **VaDar** | 每个子目标一个价值分量、共享 critic 表征；聚合未来子目标价值训练策略 | 否（goal-agnostic 策略） | — |
+| 只按当前子目标训练 | 仅用当前阶段奖励/价值 | 视实现而定 | 易短视：阶段内更快完成，可能让后续阶段更难；VaDar 把未来阶段价值注入当前动作的更新 |
+| 显式目标条件策略 | 以子目标作为策略输入 | 是，部署时需跟踪并提供当前目标 | VaDar 保留阶段监督，但去掉部署期的目标输入与跟踪 |
+| [分层强化学习](../methods/hierarchical-reinforcement-learning.md)（上层选 option，下层执行） | 上层 $\pi_{high}(o\mid s)$ 选择选项/子目标 | 是，需要运行高层选择器 | VaDar 不在部署时额外运行高层目标选择器，层级信息只存在于训练期 critic |
+| 单一标量 critic | 所有阶段压成一个价值 | 否 | VaDar 保留子目标级分量，提供阶段级诊断信号 |
+
+以上为机制层面的对照；论文主表的基线与定量差距本库尚未核对（见上文实验节），不在此给出数值。
 
 ## 关联页面
 

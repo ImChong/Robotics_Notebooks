@@ -241,6 +241,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 「Plan → Generate → **Validate**」），是命令/阶段 token，非机器人概念/方法/
     # 形式化，不应建独立页；与 train / eval / play / stop 同类命令名停用词。
     "validate",
+    # export：各页正文里的 `export` 均为工具页的 CLI 子命令名（Ultralytics
+    # `train` → `val` → `export` 导出 TensorRT/ONNX、Codex Security 的 `export`
+    # SARIF、MARGoS 的 `export` / `import`、draw.io 插件的导出步骤），是命令 token，
+    # 非机器人概念/方法/形式化，不应建独立页；与 train / validate / eval 同类命令名停用词。
+    "export",
     # uv：各页正文里的 `uv` 均为 Astral 的 Python 包管理器命令（`uv run` /
     # `uv sync` / `uv pip install`，复现路径工具链引用），是打包/环境基础设施，
     # 非机器人概念/方法/形式化，不应建独立页；与 arxiv/license/md 同类基础设施停用词。
@@ -556,6 +561,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # onpolicyrunner（rsl_rl 的 Runner 类名）同类「具体实现的函数/类名」token，
     # 不单建概念页。
     "computegeneralizedgravity",
+    # actor：Actor–Critic 的策略网络半边，与 critic 同理不单独成页——机制已由
+    # methods/reinforcement-learning.md 的「Actor-Critic」专节定义，非对称 Actor
+    # 归 concepts/privileged-training.md、想象轨迹里的 Actor 归
+    # concepts/latent-imagination.md；paper-stay-seated / paper-damp-* 命中处是
+    # Actor 观测/网络结构表行标签，methods/aspire.md 的 **Actor** 则是 coding agent
+    # 角色名，属另一义。与 critic 同类「已有归属、slug 与页面 stem 不同名」。
+    "actor",
     # critic：Actor–Critic 的价值网络半边，不单独成页——机制已由
     # methods/reinforcement-learning.md 的「Actor-Critic」专节（策略网络 + 价值网络
     # 信息流）定义，非对称变体归 concepts/privileged-training.md 的「Asymmetric

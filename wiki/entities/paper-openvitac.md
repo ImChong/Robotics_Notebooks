@@ -128,6 +128,7 @@ VLA：π0.5、StarVLA-Qwen3、InternVLA-A1.5、XVLA、Lingbot-VLA-2、Xiaomi-Rob
 - [触觉感知概念](../concepts/tactile-sensing.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)
 - [VLA 方法页](../methods/vla.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③策略任务成功率层并兼顾④：仿真与配对真机任务同协议评测视触觉表征与融合方式
 
 ## 参考来源
 

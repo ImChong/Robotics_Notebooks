@@ -133,6 +133,7 @@ flowchart LR
 - [Loco-manipulation 任务页](../tasks/loco-manipulation.md)
 - [MaskedMimic](./paper-bfm-17-maskedmimic.md)
 - [Unitree G1](./unitree-g1.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ① 传感与 ④ 下游消费层：Student 直接吃深度 96×64 与 LiDAR 16×180 低分辨率输入，不经显式检测/语义建图即驱动交互控制
 
 ## 参考来源
 

@@ -110,6 +110,17 @@ RSI-Anything 的主要贡献是把世界模型预测接入一个具有评估和�
 - 用于部署前应验证模型预测校准、组件兼容性、回退策略及每个任务适配器的开放程度。
 - 将其归入递归改进的工程案例，而不视为已实现完全自主后继模型研发。
 
+## 与其他工作对比
+
+| 对照 | 改进什么 | 预测/选择信号 | 与 RSI-Anything 的差异 |
+|------|----------|----------------|------------------------|
+| **RSI-Anything** | 策略 / 工作流，按需适配世界模型 | JEPA 式世界模型预测 + 真实任务评估 + 兼容性检查 | — |
+| 静态候选选择（CodeContests 消融基线） | 不更新 | 无世界模型预测 | 同预算下 26.3% → 加预测选择 29.2% → 再加世界模型适配 31.2% |
+| RLAnything（OSWorld 对照） | — | — | 论文报告 RSI-Anything 相对其 +5.5%（相对增幅，非百分点）；本库暂无该工作独立页面 |
+| Bayesian Optimization（反应优化对照） | 实验参数 | 代理模型 + 采集函数 | 40 次实验平均最佳产率 96.15% vs 82.16%，仅限报告的反应范围与预算 |
+| [JEPA-Anything](./paper-jepa-anything.md) | 预测表征本身 | OPF 潜在预测 | 提供世界模型基础；RSI-Anything 把预测接到 propose–predict–select–evaluate 改进环 |
+| [递归自我改进](../concepts/recursive-self-improvement.md) 强定义 | 系统自主设计、训练并部署后继模型 | — | RSI-Anything 是任务适配、可回滚的组件闭环，尚未达到强定义 |
+
 ## 关联页面
 
 - [JEPA-Anything](./paper-jepa-anything.md) — RSI-Anything 的预测模型基础，方法与系统是两个独立项目。

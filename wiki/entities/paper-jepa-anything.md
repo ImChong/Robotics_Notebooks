@@ -107,6 +107,17 @@ JEPA-Anything 的核心价值是提出可复用的潜在预测因子化结构并
 - 仓库结构示例适合启动适配，不应作为论文性能复现证据。
 - 与后续 RSI-Anything 的关系是方法基础与系统应用，不是同一个项目或代码仓。
 
+## 与其他工作对比
+
+| 工作 | 预测/学习目标 | 覆盖领域 | 与 JEPA-Anything 的差异 |
+|------|----------------|----------|--------------------------|
+| **JEPA-Anything** | 把未来潜在目标做 OPF 互补因子分解、分路预测再重组 | 视觉、生物、临床、控制、分子、物理场、天气七类 | — |
+| 匹配的单潜在 JEPA 基线（论文对照；仓库含 EMA 基线实现） | 单个潜在向量承担全部动力学因素 | 同任务 | 论文称在十项动力学任务上 OPF 各项指标优于此基线；OPF 针对的正是单向量多因素纠缠 |
+| [LeJEPA](./paper-lejepa.md) / [LeVJEPA](./paper-levjepa.md) | 各向同性高斯 + SIGReg 约束 embedding，去掉 EMA teacher | 图像 / 视频表征 | 关注表征学习的防坍塌与训练简化；JEPA-Anything 关注预测目标的因子化结构与跨科学域迁移 |
+| [ForeDrive](./paper-foredrive.md)、[WCM](./paper-wcm-world-critic-model.md) | JEPA 式未来潜变量服务规划 / critic | 自动驾驶、VLA RL | 面向单一具身决策任务；JEPA-Anything 是跨领域预测结构，不直接给出机器人动作接口 |
+| 像素视频生成世界模型（见 [生成式世界模型](../methods/generative-world-models.md)） | 逐帧生成未来像素 | 主要为视觉 | JEPA-Anything 只在表征空间预测，不渲染视频 rollout |
+| [RSI-Anything](./paper-rsi-anything.md) | 用预测结果筛选候选、驱动迭代改进 | 代码、GUI、实验室规划等 | 以本页模型为基础的独立系统项目，不是同一代码仓 |
+
 ## 关联页面
 
 - [RSI-Anything](./paper-rsi-anything.md) — 在其基础上把预测用于候选筛选和迭代改进。

@@ -168,6 +168,7 @@ sequenceDiagram
 - [状态估计](../concepts/state-estimation.md)
 - [全身控制](../concepts/whole-body-control.md)
 - [Unitree G1](./unitree-g1.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页是其反例对照：不依赖相机/LiDAR，用触觉接触作定位观测替代 ① 视觉传感层，适合视觉不可用时的导航
 
 ## 参考来源
 

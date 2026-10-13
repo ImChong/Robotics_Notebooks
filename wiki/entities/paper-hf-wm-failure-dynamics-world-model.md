@@ -121,6 +121,7 @@ flowchart TB
 - [世界-动作模型](../concepts/world-action-models.md)
 - [Cosmos 3](./cosmos-3.md)
 - [GRPO](../methods/grpo.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属②世界模型预测保真度层：动作条件 WM 学失败动力学并充当策略评估器，以 RoboArena 策略成功率相关性而非单看 FVD 证明可用
 
 ## 参考来源
 

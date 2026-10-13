@@ -88,6 +88,7 @@ Clothilde、Isaac Lab（PhysX）、Genesis（PBD）、Newton（VBD），各用 9
 | 项目页 | [cloth-var.github.io](https://cloth-var.github.io)，归档见 [cloth-var-project.md](../../sources/sites/cloth-var-project.md) |
 | 数据开放 | 部分：仅 1 个样例回合（CC BY 4.0，13 MB 核心包），完整 269 回合承诺发布但截至 2026-10-12 未提供 |
 | 代码 | 无分析代码仓库 |
+| 重定向就绪度 / 训练输入 | 动作侧是双 Franka Research 3 本体的遥操作（任务 1、2、4）或关节空间脚本（任务 3）轨迹，样例核心包含机器人日志、动捕、仿真孪生与标定参数，可在同平台重放而无需人体重定向；但每个配置是同一轨迹重复 10 次，属于变异性测量与仿真器标定数据，而非多样化示范，不宜直接当作策略训练集；换其他本体需重新适配轨迹 |
 
 ## 实验与评测
 
@@ -128,6 +129,7 @@ Clothilde、Isaac Lab（PhysX）、Genesis（PBD）、Newton（VBD），各用 9
 - [Manipulation 周报汇总（2026-10-05 至 10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [操作任务](../tasks/manipulation.md)、[双臂操作](../tasks/bimanual-manipulation.md)
 - [模仿学习](../methods/imitation-learning.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属④ sim↔real 校准层：同一轨迹的真机布料终态离散度远超机器人重复性，四个布料仿真器复现不了幅度与排序（测离散度而非任务成功率）
 
 ## 参考来源
 

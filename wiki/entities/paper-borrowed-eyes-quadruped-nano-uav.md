@@ -134,6 +134,7 @@ flowchart LR
 - [模型预测控制](../methods/model-predictive-control.md)
 - [Crazyflie 固件](./crazyflie-firmware.md)
 - [Boston Dynamics](./boston-dynamics.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页横跨其 ② 2D 检测/分割与 ③ 2D→3D 提升层：YOLO11-seg 掩码配最近深度带得到无人机 3D 位置，远距/视线丢失时深度与检测失效需靠 IMU 兜底
 
 ## 参考来源
 

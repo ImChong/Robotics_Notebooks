@@ -142,6 +142,7 @@ flowchart LR
 - [行为基础模型概念页](../concepts/behavior-foundation-model.md)
 - [BFM-Zero](./paper-bfm-zero.md)
 - [GMR 重定向](../methods/motion-retargeting-gmr.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③层在行为基础模型上的展开：按条件/约束/组合三层测 BFM 可操控性，区分「被引导」与仅「生成合理动作」
 
 ## 参考来源
 

@@ -118,6 +118,7 @@ flowchart LR
 - [FARM 失败读出](./paper-farm-failure-readout.md)
 - [Foresight 失败监控](./paper-foresight-action-conditioned-failure-monitoring.md)
 - [ALOHA](./aloha.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ② 检测/分割层的下游用法：首帧 Qwen3-VL-8B 检测 + SAM2 跟踪构建物体中心图做失败检测，遮挡会破坏图且只建质心、缺朝向
 
 ## 参考来源
 

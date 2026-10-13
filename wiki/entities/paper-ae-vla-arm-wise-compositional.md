@@ -104,6 +104,7 @@ flowchart LR
 - [双臂操作任务页](../tasks/bimanual-manipulation.md)
 - [LoRA 概念页](../concepts/lora.md)
 - [CoRE：协作角色专家](./paper-core-collaboration-role-experts.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 ACG-Bench 属③策略任务成功率层：以 CCSR 衡量双臂按臂重组技能的未见组合泛化，是跨组合分档而非单任务均值
 
 ## 参考来源
 
