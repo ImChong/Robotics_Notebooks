@@ -26,6 +26,8 @@ sources:
   - ../../sources/sites/egalahad-sim2real-leaderboard.md
 ---
 
+# sim2real：G1 部署运行时与跨代码库跟踪评测
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -34,8 +36,6 @@ sources:
 | ONNX | Open Neural Network Exchange | 策略模型交换格式 |
 | G1 | Unitree G1 | 本仓库主要支持的人形机器人平台 |
 | XR | Extended Reality | Pico/XR 动作输入与遥操作工具链 |
-
-# sim2real：G1 部署运行时与跨代码库跟踪评测
 
 [EGalahad/sim2real](https://github.com/EGalahad/sim2real) 是一个轻量、模块化的人形控制部署栈，覆盖外部策略适配、ONNX 推理、MuJoCo sim2sim 跟踪、遥操作与 Unitree G1 真机 I/O。它是一套工程 runtime，不是一篇提出新学习算法的论文。
 
