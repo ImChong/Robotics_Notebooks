@@ -8,6 +8,7 @@ arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
 related:
+  - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../methods/sonic-motion-tracking.md

@@ -4,6 +4,7 @@ tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, o
 status: complete
 updated: 2026-10-08
 related:
+  - ./egalahad-sim2real.md
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ../methods/sonic-motion-tracking.md

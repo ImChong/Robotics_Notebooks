@@ -7,6 +7,8 @@ project_id: grit-deploy-onboard-g1
 code: https://github.com/KurokoWeidong/GRIT_Deploy_Onboard_G1
 summary: "Unitree G1 机载 C++ 部署栈：集成 GRIT 全身遥操作跟踪、AMP locomotion 与 NPZ 轨迹播放。"
 related:
+  - ./grit-v0-0-1.md
+  - ./egalahad-sim2real.md
   - ./axellwppr-motion-tracking.md
   - ../tasks/locomotion.md
   - ../tasks/teleoperation.md
