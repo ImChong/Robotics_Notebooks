@@ -135,6 +135,12 @@ type: ingest
 - 记录脚本分层、地图/地形/影像候选核验、官方示例的精度边界，以及隐私/用途限制。
 - 未修改 catalog.md、log.md 或导出文件；本次仅核读官方仓库文档，未本地运行定位流程。
 
+## [2026-10-13] ingest | SDD / TDD / BDD / ATDD — 补齐方法定义并说明分层组合关系
+
+- 归档 GitHub Spec Kit、SDD 预印本、Kent Beck 对 canonical TDD 的说明、Dan North 的 BDD 原文，以及 Cucumber / Agile Alliance 实践文档。
+- 区分外层规格追溯、跨角色行为/验收共识、开发者组件级测试反馈环；附机器人仿真/HIL/真机验证读法。
+- 已存在的 SDD 课程与 TDD skill 保留为工具/实践节点，不重复建项目页。
+
 ## [2026-10-13] ingest | GenIA — 归档论文、项目页与官方代码，并整理测试时输入对齐和开源复现边界
 
 - 官方项目页确认 GenIA 在冻结 SAM 3D 先验上做推理时对齐；动态版本依赖 ActionMesh。

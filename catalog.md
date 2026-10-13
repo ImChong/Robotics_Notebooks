@@ -5035,6 +5035,7 @@
 - [Autoencoder / VAE（自编码器与变分自编码器）](wiki/concepts/autoencoder.md) — 自编码器（AE）**：编码器把输入压到低维码，解码器重建输入，用重建损失训练。**VAE** 把码换成分布 \(q_\phi(z|x)\)，用 ELBO 同时做重建与先验对齐，从而能从先验采样新样 `📅unknown` `[wiki_page]`
 - [反向传播算法 (Backpropagation)](wiki/concepts/backpropagation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Bayesian Belief Analysis（贝叶斯信念分析）](wiki/concepts/bayesian-belief-analysis.md) — 贝叶斯信念分析**：在 **部分可观测** 或 **模型不确定** 的序贯决策中，用 **概率分布 $b_t$** 表示对隐状态（或参数）的信念，并按 **Bayes 规则** 随观测递推更新，再 `📅unknown` `[wiki_page]`
+- [行为驱动与验收测试驱动开发（BDD / ATDD）](wiki/concepts/behavior-and-acceptance-driven-development.md) — 行为驱动开发（Behavior-Driven Development, BDD）** 通过共享领域语言和具体例子，让业务、产品与技术团队对系统行为形成共同理解；**验收测试驱动开发（Accepta `📅unknown` `[wiki_page]`
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
 - [行为树 × VLA 编排](wiki/concepts/behavior-tree-vla-orchestration.md) — 行为树（Behaviour Tree, BT）与 VLA 结合**：把 **宏任务流程**（加载策略、复位姿态、移动底盘、循环 pick-and-place）交给 **可组合、可恢复** 的行为树 `📅unknown` `[wiki_page]`
 - [Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）](wiki/concepts/behavioral-cloning-mysteries.md) — Behavioral Cloning Mysteries**：在统计性质接近人类演示（窄分布、时间强相关、平滑随机）的数据上训 BC 时，会出现标准 D4RL/OGBench 看不到的四条现象—— `📅unknown` `[wiki_page]`
@@ -5215,6 +5216,7 @@
 - [足球场仿真环境](wiki/concepts/soccer-field-simulation.md) — 足球场仿真环境**是按比赛或教学规格搭建的 **场地几何 + 球/门实体 + 传感器与光照模型**，使人形在无真机场地时也能迭代感知与决策——课程第 6.3 节。 `📅unknown` `[wiki_page]`
 - [Software-in-the-Loop（SIL，软件在环）](wiki/concepts/software-in-the-loop.md) — Software-in-the-Loop（SIL）** 指在 **仿真中的虚拟机器人 + 虚拟环境** 上运行并验证机器人软件，使开发早期 **不必依赖物理硬件** 即可做场景覆盖、回归测试与 A `📅unknown` `[wiki_page]`
 - [软件安全基础（认证 / 授权 / 密钥 / 供应链）](wiki/concepts/software-security-basics.md) — 软件安全基础** 区分「你是谁 / 你能做什么 / 密钥如何保管 / 构建链是否可信」——覆盖遥操作、OTA、模型仓库与 CI 制品。 `📅unknown` `[wiki_page]`
+- [规格驱动开发（SDD）](wiki/concepts/specification-driven-development.md) — 规格驱动开发（Specification-Driven Development, SDD）** 是将可审阅、可追溯的规格作为需求理解与实现之间的持久契约，并用规格引导计划、代码生成/修改和验证的开 `📅unknown` `[wiki_page]`
 - [SRBD + 凸 MPC + WBC](wiki/concepts/srbd-convex-mpc-wbc.md) — 飞书 Know-How 条目 **「单刚体动力学模型 + 凸模型预测控制 + WBC」** 指：用 **SRBD（Single Rigid Body Dynamics）** 近似整机质心运动，在  `📅unknown` `[wiki_page]`
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [状态空间模型（SSM）](wiki/concepts/state-space-model-ssm.md) — SSM（State Space Model）** 用隐状态 $h_t$ 与输入 $x_t$ 的线性（或输入依赖的选择性）递推生成输出，可在频域/卷积视图与递推视图间转换；**Mamba** 为其选 `📅unknown` `[wiki_page]`
@@ -5225,6 +5227,7 @@
 - [TCN（Temporal Convolutional Network，时间卷积网络）](wiki/concepts/temporal-convolutional-network.md) — TCN**：在时间轴上使用 **因果卷积**（不看未来）、**膨胀卷积**（指数扩大感受野）和 **残差块** 的一维卷积网，把序列建模写成可并行的 CNN。 `📅unknown` `[wiki_page]`
 - [Terrain Adaptation（地形适应）](wiki/concepts/terrain-adaptation.md) — Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。 `📅unknown` `[wiki_page]`
 - [地形 Latent 表征（Terrain Latent Representation）](wiki/concepts/terrain-latent-representation.md) — 地形 Latent 表征**：在感知足式/人形 locomotion 中，把深度图或高度图经 Encoder 映射为 **低维向量**（如 64–256 维），供策略网络消费。该向量常被称为  `📅unknown` `[wiki_page]`
+- [测试驱动开发（TDD）](wiki/concepts/test-driven-development.md) — 测试驱动开发（Test-Driven Development, TDD）** 是一种开发者工作流：先用一个自动化测试表达当前要实现的行为，让它失败，再写刚好让它通过的最小生产代码，之后整理设计并继 `📅unknown` `[wiki_page]`
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md) — 文字生成 CAD** 指用**自然语言提示**或**对话式代理**，自动生成或迭代**可编辑的 CAD 几何**（常见为 **B-rep** 实体），并通常导出 **STEP**、**STL**、 `📅2026-05-14` `[wiki_page]`
 - [力矩源抽象 Gap（理想力矩源 ↔ 真实执行器）](wiki/concepts/torque-source-abstraction-gap.md) — RL/MPC 策略在仿真里几乎都默认一个隐含抽象：**执行器是一个理想力矩源**——策略下发的期望力矩 $\tau_{des}$ 会被瞬时、无损、无偏地施加到关节上，即 $\tau_{out}=\ta `📅unknown` `[wiki_page]`
 - [Transformer](wiki/concepts/transformer.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
@@ -5558,6 +5561,7 @@
 - [机器人运控开发板选型（按策略网络模型）](wiki/comparisons/robot-policy-deployment-dev-board-selection.md) — 先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`
+- [SDD、TDD、BDD 与 ATDD：外层规格和内层反馈如何组合](wiki/comparisons/sdd-tdd-bdd-development-methods.md) — SDD（规格驱动）、TDD（测试驱动）、BDD（行为驱动）和 ATDD（验收测试驱动）解决的是不同层次的问题：SDD 让规格跨计划与实现保持可追溯，BDD / ATDD 让跨角色对行为和完成条件达 `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
 - [Sim2Real 方法横向对比](wiki/comparisons/sim2real-approaches.md) — Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fi `📅unknown` `[comparison_page]`
 - [Sim2Real 四条路线：可辨识性视角](wiki/comparisons/sim2real-four-routes-identifiability.md) — 仿真里优化 $J_{\mathrm{sim}}(\pi)$，真机却要 $J_{\mathrm{real}}(\pi)$ 高——**系统辨识、域随机化、在线适应、残差学习**出自不同传统，却都在回答同一 `📅unknown` `[comparison_page]`
