@@ -158,6 +158,13 @@ type: ingest
 - 资料核验：2026-10-13。
 - 未修改 Actions/工作流配置、生成目录或 catalog/export 文件。
 
+# Ingest: eFlesh
+
+- 日期：2026-10-13
+- 新增：[eFlesh](../wiki/entities/eflesh.md)；论文、仓库及项目页来源归档。
+- 更新：触觉感知概念页链接该磁性软触觉皮肤。
+- 一手来源：<https://arxiv.org/abs/2506.09994>、<https://github.com/notvenky/eFlesh>、<https://e-flesh.com/>。
+
 ## [2026-10-13] ingest | viola | VioLA：人类数据驱动通用人形控制
 
 - 论文：arXiv:2610.12435；官方项目页核查代码仍为 coming soon。

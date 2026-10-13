@@ -511,6 +511,7 @@
 - [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
 - [ECC（Everything Claude Code）](wiki/entities/ecc.md) — ECC**（affaan-m/ECC，ecc.tools）是把 **编码 Agent `📅unknown` `[entity_page]`
+- [eFlesh：可定制磁性触觉皮肤](wiki/entities/eflesh.md) — eFlesh](https://e-flesh.com/)（NYU；论文，[代码](https://github.com/no `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`
 - [EgoSuite-Open100K](wiki/entities/egosuite-open100k.md) — EgoSuite-Open100K** 是 光轮智能（Lightwheel） 与 [Hugging Face](https://huggingf `📅2026-08-26` `[entity_page]`
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
