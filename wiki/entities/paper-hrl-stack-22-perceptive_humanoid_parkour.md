@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, berkeley, cmu, stanford, body-system-stack]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-13
 project_id: perceptive-humanoid-parkour
 project: https://php-parkour.github.io/
 code: https://github.com/amazon-far/php_parkour
@@ -27,8 +27,10 @@ related:
   - ./unitree-g1.md
   - ./paper-agile-perceptive-traversal-sparse-3d.md
   - ./paper-echo-in-the-steps.md
+  - ./parkour-mjlab.md
 sources:
   - ../../sources/repos/php_parkour.md
+  - ../../sources/repos/parkour_mjlab.md
   - ../../sources/papers/php_parkour_arxiv_2602_15827.md
   - ../../sources/sites/php-parkour-github-io.md
   - ../../sources/papers/humanoid_rl_stack_22_perceptive_humanoid_parkour_chaining_dynamic_hum.md
@@ -176,6 +178,12 @@ flowchart TB
 | 依赖 | 锁定 `thirdparty/holosoma`，训练使用 IsaacSim 5.1；部署使用 Holosoma 的 MuJoCo / inference 环境 |
 
 历史核查 2026-07-20 的 *Coming Soon* 已被当前发布替代。源码依据为 PHP `554edcc`、Holosoma gitlink `4a0bf04`，完整快照与文档入口见[仓库归档](../../sources/repos/php_parkour.md)。
+
+## 社区版 MJLab 跑酷实现
+
+[Parkour MJLab](./parkour-mjlab.md) 是另一份基于 MJLab 的社区 RL 代码库，README 实现了 G1 的 PHP teacher/student 训练与 MuJoCo Sim2Sim，并同时包含 Go2 PIE、AMP + Parkour 和 G1 Stair 等任务。它感谢并引用 PHP 官方项目，属于独立实现，不是 Amazon FAR 的官方代码或论文实验快照。
+
+其 PHP 训练入口将 locomotion、low-step、high-step、low-climb、high-climb 拆为五类 teacher，再用五个 teacher checkpoint 训练 student；student 可在 MuJoCo 三障碍场景回放并导出 ONNX。README 中的迭代数和 `model_23000.pt` 是命令示例，不能据此认定仓库提供已训练权重。截图评论称作者已上传模型，但截图未显示可下载地址；核查时 GitHub Releases 为空，故权重可获取性仍待确认。该仓库未声明许可证，代码公开可见不等于已授予再利用许可。
 
 ## 源码运行时序图
 
