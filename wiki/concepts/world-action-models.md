@@ -100,9 +100,11 @@ related:
   - ../entities/awesome-world-models.md
   - ../entities/paper-cf-wam-dynamic-next-state-prediction.md
   - ../entities/paper-long-wam-scaling-context.md
+  - ../entities/paper-internw0-delta.md
   - ../entities/paper-uranus.md
   - ../entities/paper-wing-world-action-spectral-guidance.md
 sources:
+  - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
