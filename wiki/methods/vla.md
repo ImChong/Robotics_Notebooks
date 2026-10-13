@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-13
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../entities/paper-viola-human-data-control.md
@@ -167,8 +167,11 @@ related:
   - ../entities/paper-gap-graph-as-policy.md
   - ../concepts/variational-automation.md
   - ../entities/paper-discrete-forcing.md
+  - ../entities/paper-geomvla-2609-13812.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
 sources:
+  - ../../sources/papers/geomvla_arxiv_2609_13812.md
+  - ../../sources/sites/geomvla-project-page.md
   - ../../sources/papers/simvla_arxiv_2610_11248.md
   - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
@@ -262,6 +265,8 @@ VLA 可以看成机器人版的多模态 foundation model：输入“看到了�
 ### VLM 上游：CLIP → LLaVA
 
 多数开源 VLA 并非从零训练多模态骨干，而是沿 **[CLIP](../entities/paper-clip.md) 对比对齐 → [LLaVA](../entities/paper-llava.md) 视觉指令微调 → 动作解码头** 三跳演进：CLIP 提供开放词汇视觉语义，LLaVA 提供多轮指令接口与可复现训练栈（冻结 CLIP + 投影 + LLM），VLA 再在机器人轨迹上替换/追加连续或离散动作输出。纵深阅读顺序见 [多模态 LLM 发展路线](../overview/multimodal-llm-development.md) 与 [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) 对齐基座段。
+
+**三维几何一致路线：** [GeomVLA](../entities/paper-geomvla-2609-13812.md)（CMU/NVIDIA，arXiv:2609.13812）把多视角 VLM 特征提升到机器人基座坐标系，以任务条件的未来场景运动 token 几何感知地引导 flow 动作头；CALVIN ABC-D 4.624，2D 版本 4.437。其结果适合作为「3D 几何如何贯通感知到动作」的实例，真机复现则需重视标定与多视角配置；项目页所链模型仓库截至 2026-10-13 返回 404。
 
 ## 主要技术路线
 
