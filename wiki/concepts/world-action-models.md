@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-13
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -101,6 +101,7 @@ related:
   - ../entities/paper-cf-wam-dynamic-next-state-prediction.md
   - ../entities/paper-long-wam-scaling-context.md
   - ../entities/paper-uranus.md
+  - ../entities/paper-wing-world-action-spectral-guidance.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
@@ -234,6 +235,10 @@ flowchart LR
   E["具身轨迹"] --> FT
   FT --> R["真机闭环校验"]
 ```
+
+### Ego-video spectral guidance
+
+[WING（arXiv:2610.03607）](../entities/paper-wing-world-action-spectral-guidance.md) 展示了一条由人类第一人称视频迁移到机器人 WAM 的路线：先通过运动路由与 teacher–student 蒸馏降低潜动作对观察者相机运动的敏感性，再用 DCT 低频系数作为动作生成条件。其关键判断是跨具身可迁移结构未必等于逐帧相同的完整动作序列；人机节奏不一致时，可把慢变化潜结构当辅助引导，同时仍由机器人示范监督可执行动作。论文报告了仿真与四项双臂真机任务，但代码目前待发布。
 
 ### Cascaded WAM
 
