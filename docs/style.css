@@ -1368,6 +1368,9 @@ button.home-wiki-heatmap-cell.is-active {
   .home-org-panels { display: grid; }
   .home-org-panels > .home-org-panel { grid-area: 1 / 1; align-self: start; }
   .home-org-panels > .home-org-panel[hidden] { display: flex; visibility: hidden; }
+  /* 按钮与链接带 transition: all，visibility 也跟着过渡：隐藏方向拖到 0.3s 末才隐藏（旧面板按钮叠在新面板上），
+     显示方向首帧仍不可见（两面板同时空一帧）。面板内只过渡悬停用到的属性，切换在同一帧完成 */
+  .home-org-panels .home-org-panel * { transition-property: background-color, color, opacity; }
 }
 .home-entry-route-links {
   display: grid;
