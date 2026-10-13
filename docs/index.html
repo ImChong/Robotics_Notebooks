@@ -290,7 +290,10 @@
         <!-- 社区标签：首页只放一个下拉选具体社区（20 个胶囊会把 Top 10 挤到第二屏）；完整胶囊在 hubs.html -->
         <div id="homeHubCommunityBar" class="home-hub-community-bar" hidden>
           <label for="homeHubCommunitySelect" data-home-copy>选择社区</label>
-          <select id="homeHubCommunitySelect" class="home-hub-select"></select>
+          <span class="home-hub-select-wrap">
+            <select id="homeHubCommunitySelect" class="home-hub-select"></select>
+            <svg class="home-hub-select-arrow" viewBox="0 0 10 6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
         <div id="homeHubPanelCommunity" class="home-hub-panel" aria-live="polite" hidden></div>
         <p class="home-hub-more"><a id="homeHubMoreLink" href="hubs.html" data-home-copy>查看完整榜单</a></p>
