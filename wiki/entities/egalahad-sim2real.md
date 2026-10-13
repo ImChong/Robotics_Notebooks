@@ -26,6 +26,15 @@ sources:
   - ../../sources/sites/egalahad-sim2real-leaderboard.md
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| sim2real | Simulation to Real | 将仿真策略迁移到真机运行 |
+| ONNX | Open Neural Network Exchange | 策略模型交换格式 |
+| G1 | Unitree G1 | 本仓库主要支持的人形机器人平台 |
+| XR | Extended Reality | Pico/XR 动作输入与遥操作工具链 |
+
 # sim2real：G1 部署运行时与跨代码库跟踪评测
 
 [EGalahad/sim2real](https://github.com/EGalahad/sim2real) 是一个轻量、模块化的人形控制部署栈，覆盖外部策略适配、ONNX 推理、MuJoCo sim2sim 跟踪、遥操作与 Unitree G1 真机 I/O。它是一套工程 runtime，不是一篇提出新学习算法的论文。
@@ -98,6 +107,12 @@ Manipulation-48 仍是 humanoid reference-motion tracking 集，不测抓取/插
 - 大型 checkpoints 与 third-party runtime artifacts 从项目提供的共享资源下载，不在 git 主仓库中完整分发。
 - 迁移策略要核对 observation/history、joint ordering、PD gains、action scale；单独拿到 ONNX 不等于部署适配完成。
 - [官方项目文档](https://egalahad.github.io/sim2real/)、[Leaderboard](https://egalahad.github.io/sim2real/leaderboard/) 与 [复现实验教程](https://egalahad.github.io/sim2real/tutorials/cross-codebase-evaluation/) 是此栈的主要使用入口。
+
+## 参考来源
+
+- [仓库归档](../../sources/repos/egalahad-sim2real.md)
+- [官方文档归档](../../sources/sites/egalahad-sim2real-docs.md)
+- [排行榜和评测协议归档](../../sources/sites/egalahad-sim2real-leaderboard.md)
 
 ## 关联页面
 

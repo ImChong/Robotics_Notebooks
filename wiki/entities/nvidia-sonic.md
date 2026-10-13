@@ -5,7 +5,6 @@ status: complete
 updated: 2026-10-13
 project_id: nvidia-sonic-humanoid-wbc-2026
 doi: "10.1126/scirobotics.aed4592"
-arxiv: "2511.07820"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
 project: https://nvlabs.github.io/GEAR-SONIC/
 summary: "SONIC 是 NVIDIA 的可规模扩展人形全身动作跟踪控制策略，通过扩大网络、动作数据与训练计算，统一支持运动跟踪、交互式规划、遥操作及 VLA 接口。"
@@ -21,6 +20,15 @@ sources:
 ---
 
 # SONIC：大规模自然人形全身控制
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| WBC | Whole-Body Control | 人形全身协调控制 |
+| mocap | Motion Capture | 训练动作来源 |
+| VLA | Vision-Language-Action | 视觉语言条件的动作策略接口 |
+| GPU | Graphics Processing Unit | 训练计算资源计量单位 |
 
 **SONIC**（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）是 NVIDIA 提出的人形全身动作跟踪策略。项目将 motion tracking 视为一种可规模扩展的训练任务，借助动作捕捉数据提供稠密监督，从而建立自然的人体动作先验，而不需要为每个行为单独手工设计奖励。
 
@@ -45,8 +53,13 @@ sim2real 的榜单包含 **SONIC、SONIC-Low-Latency 与 SONIC-v1.1** 三个策�
 
 本页对应 NVIDIA 的 GEAR-SONIC (*Supersizing Motion Tracking...*)。不要与 [SONIC-Transfer](./paper-sonic-transfer.md) 混淆；后者是不同的跨形态迁移工作。
 
-## 来源
+## 参考来源
 
 - [Science Robotics 论文](../../sources/papers/sonic_science_robotics_aed4592.md)
 - [官方项目页](../../sources/sites/sonic-gear-project.md)
 - 代码与文档入口：[NVlabs/GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)。
+## 关联页面
+
+- [SONIC motion tracking 方法](../methods/sonic-motion-tracking.md) — 相关方法节点；论文 arXiv ID 仅在该节点登记。
+- [SONIC-Transfer](./paper-sonic-transfer.md) — 不同的跨形态迁移工作。
+- [sim2real leaderboard 映射](./egalahad-sim2real.md) — SONIC 三个运行配置共用本项目实体。
