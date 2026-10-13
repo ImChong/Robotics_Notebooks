@@ -27,6 +27,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
   - ./paper-vtap-gripper.md
+  - ./paper-eflesh-magnetic-tactile-sensor.md
   - ./paper-taco-tactile-wm-vla-posttrain.md
   - ./paper-softvtbench.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
@@ -191,6 +192,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md) / [Imitation Learning](../methods/imitation-learning.md)
 - [触觉知识链](../overview/hub-tactile.md)
 - [VTAP Gripper](./paper-vtap-gripper.md) — 同用 FlexiTac
+- [eFlesh（可定制磁触觉皮肤）](./paper-eflesh-magnetic-tactile-sensor.md) — 本基准中约 $35 的磁传感器；论文单独报告其设计与表征
 - [TACO（触觉 WM · 消歧）](./paper-taco-tactile-wm-vla-posttrain.md)
 - [SoftVTBench](./paper-softvtbench.md) — 可变形 Goal/Safety；互补「怎么测安全」而非「选哪种传感器」
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) / [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md)
