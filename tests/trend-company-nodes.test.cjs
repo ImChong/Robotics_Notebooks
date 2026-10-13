@@ -6,6 +6,7 @@ const vm = require('node:vm');
 
 const source = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
+const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
 const loaders = source.slice(source.indexOf('      function getJSON('), source.indexOf('      var touch ='));
 
 function loadViews(graph, companies, labs = []) {
@@ -26,6 +27,7 @@ function loadViews(graph, companies, labs = []) {
   });
   context.window = context;
   vm.runInContext(tooltip, context);
+  vm.runInContext(depthFilters, context);
   vm.runInContext(loaders, context);
   return { requests, views: context.VIEWS };
 }
@@ -43,12 +45,13 @@ const graph = {
 
 test('company counts join detail IDs, deduplicate within a company, and retain shared nodes', async () => {
   const { views } = loadViews(graph, [
-    { name: '公司乙', nodes: [{ id: 'entity-a' }, { id: 'entity-a' }, { id: 'entity-b' }, { id: 'missing' }] },
-    { name: '公司甲', nodes: [{ id: 'entity-a' }] },
-    { name: '空公司', nodes: [] },
+    { key: 'yi', name: '公司乙', nodes: [{ id: 'entity-a' }, { id: 'entity-a' }, { id: 'entity-b' }, { id: 'missing' }] },
+    { key: 'jia', name: '公司甲', nodes: [{ id: 'entity-a' }] },
+    { key: 'kong', name: '空公司', nodes: [] },
   ]);
   const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'company-nodes').load()));
   assert.deepEqual(result.cats, ['公司乙', '公司甲', '空公司']);
+  assert.deepEqual(result.links, ['company.html?id=yi', 'company.html?id=jia', 'company.html?id=kong']);
   assert.deepEqual(result.series.map((s) => s.values), [[1, 1, 0], [1, 0, 0]]);
   assert.ok(result.series.every((s) => s.name && /^#[0-9a-f]{6}$/i.test(s.color)));
   assert.match(result.total, /3 家公司，合计 3 节点次/);
@@ -121,4 +124,39 @@ test('combined timeline interleaves companies and labs by founding year, compani
   assert.equal(result.first, '2016-10');
   assert.equal(result.last, '2026-01');
   assert.match(result.total, /^2 家公司、2 个实验室，4 个已注明日期的节点/);
+});
+
+test('lab node counts link each bar back to its lab page', async () => {
+  const { requests, views } = loadViews(graph, [], [
+    { key: 'eth-rsl', name: '实验室甲', founded_year: 2015, nodes: [{ id: 'entity-a' }, { id: 'entity-b' }] },
+  ]);
+  const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'lab-nodes').load()));
+  assert.ok(!requests.includes('company-roadmaps.json'));
+  assert.deepEqual(result.cats, ['实验室甲']);
+  assert.deepEqual(result.links, ['lab.html?id=eth-rsl']);
+  assert.match(result.total, /^1 个实验室，合计 2 节点次/);
+});
+
+test('combined node counts interleave companies and labs by founding year and mark each kind', async () => {
+  const { views } = loadViews(graph, [
+    { key: 'old', name: '老公司', founded_year: 1993, nodes: [{ id: 'entity-a' }] },
+    { key: 'new', name: '新公司', founded_year: 2022, nodes: [{ id: 'entity-b' }] },
+  ], [
+    { key: 'lab-a', name: '实验室甲', founded_year: 2015, nodes: [{ id: 'entity-a' }] },
+    { key: 'lab-b', name: '实验室乙', founded_year: 2022, nodes: [] },
+  ]);
+  const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'org-nodes').load()));
+  assert.deepEqual(result.cats, ['老公司', '实验室甲', '新公司', '实验室乙']);
+  assert.deepEqual(result.kinds, ['company', 'lab', 'company', 'lab']);
+  assert.deepEqual(result.links, ['company.html?id=old', 'lab.html?id=lab-a', 'company.html?id=new', 'lab.html?id=lab-b']);
+  assert.equal(result.marked, true);
+  assert.match(result.total, /^2 家公司、2 个实验室，合计 3 节点次（.*名称前 ● 为公司、◆ 为实验室）$/);
+});
+
+test('depth node counts link each depth to its roadmap page', async () => {
+  const { views } = loadViews(graph, []);
+  const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'depth-nodes').load()));
+  assert.equal(result.links.length, result.cats.length);
+  assert.equal(result.links[0], 'roadmap.html?id=roadmap-motion-control');
+  assert.ok(result.links.slice(1).every((href) => /^roadmap\.html\?id=roadmap-depth-[a-z0-9-]+$/.test(href)), result.links.join(','));
 });
