@@ -43,7 +43,9 @@
     '预览 2D / 3D 切换': 'Switch preview between 2D and 3D',
     '打开完整图谱 →': 'Open the full graph →',
     '互链枢纽 · Top 10': 'Most connected · Top 10',
-    '切换全站 / 论文互链枢纽': 'Switch between all pages and papers',
+    '切换全站 / 论文 / 社区互链枢纽': 'Switch between all pages, papers and communities',
+    '社区': 'Communities', '选择社区': 'Choose a community',
+    '该社区暂无互链统计。': 'No connection statistics for this community yet.',
     '全站': 'All pages', '论文': 'Papers',
     '按站内互链总数（无向度数）排序，从与其他条目连接最多的核心页开始探索。': 'Ranked by total connections. Start with the pages that connect to the most other entries.',
     '正在加载互链统计…': 'Loading connection statistics…',
@@ -90,7 +92,7 @@
     '#homeRouteToggle', '#homeCompanyToggle', '#wikiCommunityFilter option[value=""]',
     '#homeLatestWikiModule > .data-meta', '#homeLatestWikiModule .home-latest-more a',
     '#homeLatestWikiModule .updates-badge', '.home-latest-row-type',
-    '#homeHubPanelAll > .data-meta', '#homeHubPanelPaper > .data-meta',
+    '#homeHubPanelAll > .data-meta', '#homeHubPanelPaper > .data-meta', '#homeHubPanelCommunity > .data-meta',
     '.home-hub-row-degree', '.home-hub-row-type', '#wikiSearchResults > p',
     '#wikiSearchResults > div > p', '#wikiSearchResults > div > ul > li',
     '#wikiSearchResults > div a', '#wikiSearchResults .search-retry',
@@ -172,7 +174,7 @@
   });
   function observeMounts() {
     ['homeRouteToggle', 'homeCompanyToggle', 'wikiCommunityFilter', 'wikiSearchResults',
-      'homeLatestWikiModule', 'homeHubPanelAll', 'homeHubPanelPaper',
+      'homeLatestWikiModule', 'homeHubPanelAll', 'homeHubPanelPaper', 'homeHubPanelCommunity',
       'mini-graph-stats', 'mini-graph-tooltip', 'mini-graph-3d', 'sponsorDialog'
     ].forEach(function (id) {
       var el = document.getElementById(id);

@@ -276,9 +276,10 @@
       <div class="container">
         <div class="home-hub-head">
           <h2 class="section-title" id="home-hub-heading" data-home-copy>互链枢纽 · Top 10</h2>
-          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽" data-home-copy>
+          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文 / 社区互链枢纽" data-home-copy>
             <button type="button" id="homeHubTabAll" class="home-hub-tab is-active" aria-pressed="true" data-home-copy>全站</button>
             <button type="button" id="homeHubTabPaper" class="home-hub-tab" aria-pressed="false" data-home-copy>论文</button>
+            <button type="button" id="homeHubTabCommunity" class="home-hub-tab" aria-pressed="false" hidden data-home-copy>社区</button>
           </div>
         </div>
         <p class="section-subtitle" data-home-copy>按站内互链总数（无向度数）排序，从与其他条目连接最多的核心页开始探索。</p>
@@ -286,7 +287,13 @@
           <p class="data-meta" data-home-copy>正在加载互链统计…</p>
         </div>
         <div id="homeHubPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
-        <p class="home-hub-more"><a href="hubs.html" data-home-copy>查看完整榜单</a></p>
+        <!-- 社区标签：首页只放一个下拉选具体社区（20 个胶囊会把 Top 10 挤到第二屏）；完整胶囊在 hubs.html -->
+        <div id="homeHubCommunityBar" class="home-hub-community-bar" hidden>
+          <label for="homeHubCommunitySelect" data-home-copy>选择社区</label>
+          <select id="homeHubCommunitySelect" class="home-hub-select"></select>
+        </div>
+        <div id="homeHubPanelCommunity" class="home-hub-panel" aria-live="polite" hidden></div>
+        <p class="home-hub-more"><a id="homeHubMoreLink" href="hubs.html" data-home-copy>查看完整榜单</a></p>
       </div>
     </section>
   </main>

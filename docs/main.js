@@ -720,23 +720,66 @@
   function renderHomeHubs(homeStats) {
     var panelAll = document.getElementById('homeHubPanelAll');
     var panelPaper = document.getElementById('homeHubPanelPaper');
+    var panelCommunity = document.getElementById('homeHubPanelCommunity');
     if (!panelAll && !panelPaper) return;
     renderHomeHubList(panelAll, homeStats && homeStats.top_hubs, '暂无互链统计数据。');
     renderHomeHubList(panelPaper, homeStats && homeStats.top_paper_hubs, '暂无论文互链统计数据。');
 
     var tabAll = document.getElementById('homeHubTabAll');
     var tabPaper = document.getElementById('homeHubTabPaper');
+    var tabCommunity = document.getElementById('homeHubTabCommunity');
+    var communityBar = document.getElementById('homeHubCommunityBar');
+    var communitySelect = document.getElementById('homeHubCommunitySelect');
+    var moreLink = document.getElementById('homeHubMoreLink');
     if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
-    function activateHubTab(showPaper) {
-      tabAll.classList.toggle('is-active', !showPaper);
-      tabPaper.classList.toggle('is-active', showPaper);
-      tabAll.setAttribute('aria-pressed', String(!showPaper));
-      tabPaper.setAttribute('aria-pressed', String(showPaper));
-      panelAll.hidden = showPaper;
-      panelPaper.hidden = !showPaper;
+    // 社区标签：各社区前 10（top_community_hubs，按规模降序）；旧缓存的 home-stats 没有该字段时不显示标签
+    var communities = Array.isArray(homeStats && homeStats.top_community_hubs) ? homeStats.top_community_hubs : [];
+    var hasCommunities = !!(communities.length && tabCommunity && panelCommunity && communityBar && communitySelect);
+    var activeTab = 'all';
+
+    function currentCommunity() {
+      return communities[communitySelect.selectedIndex] || communities[0];
     }
-    tabAll.addEventListener('click', function () { activateHubTab(false); });
-    tabPaper.addEventListener('click', function () { activateHubTab(true); });
+    function renderCommunityHubs() {
+      renderHomeHubList(panelCommunity, currentCommunity().hubs, '该社区暂无互链统计。');
+    }
+    // 「查看完整榜单」跟随当前标签，进入 hubs.html 的同一份榜单
+    function syncMoreLink() {
+      if (!moreLink) return;
+      var href = 'hubs.html';
+      if (activeTab === 'paper') href = 'hubs.html?tab=paper';
+      if (activeTab === 'community' && hasCommunities) {
+        href = 'hubs.html?community=' + encodeURIComponent(currentCommunity().id);
+      }
+      moreLink.setAttribute('href', href);
+    }
+    function activateHubTab(tab) {
+      activeTab = tab;
+      [[tabAll, panelAll, 'all'], [tabPaper, panelPaper, 'paper'], [tabCommunity, panelCommunity, 'community']]
+        .forEach(function (t) {
+          if (!t[0] || !t[1]) return;
+          var on = t[2] === tab;
+          t[0].classList.toggle('is-active', on);
+          t[0].setAttribute('aria-pressed', String(on));
+          t[1].hidden = !on;
+        });
+      if (communityBar) communityBar.hidden = tab !== 'community';
+      syncMoreLink();
+    }
+    if (hasCommunities) {
+      communitySelect.innerHTML = communities.map(function (c) {
+        return '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.label) + ' · ' + escapeHtml(String(c.size)) + '</option>';
+      }).join('');
+      renderCommunityHubs();
+      tabCommunity.hidden = false;
+      tabCommunity.addEventListener('click', function () { activateHubTab('community'); });
+      communitySelect.addEventListener('change', function () {
+        renderCommunityHubs();
+        syncMoreLink();
+      });
+    }
+    tabAll.addEventListener('click', function () { activateHubTab('all'); });
+    tabPaper.addEventListener('click', function () { activateHubTab('paper'); });
   }
 
   // 完整互链榜单页 hubs.html：数据来自 hub-rankings.json（全站 / 论文全量排序）

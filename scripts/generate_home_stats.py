@@ -64,6 +64,30 @@ def hub_entries(graph_stats: dict[str, Any], key: str) -> list[dict[str, Any]]:
     return out
 
 
+def community_hub_entries(graph_stats: dict[str, Any]) -> list[dict[str, Any]]:
+    """首页互链枢纽「社区」标签：各社区前 10，社区名取短名；行内同属该社区，去掉逐行社区标签。"""
+    groups = graph_stats.get("top_community_hubs")
+    if not isinstance(groups, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for group in groups:
+        if not isinstance(group, dict) or not group.get("id"):
+            continue
+        hubs = hub_entries({"hubs": group.get("hubs")}, "hubs")
+        for hub in hubs:
+            hub.pop("community_label", None)
+        if hubs:
+            out.append(
+                {
+                    "id": str(group["id"]),
+                    "label": community_short_label(str(group.get("label") or group["id"])),
+                    "size": int(group.get("size") or 0),
+                    "hubs": hubs,
+                }
+            )
+    return out
+
+
 def build_payload(
     graph_stats: dict[str, Any],
     coverage: dict[str, int],
@@ -93,6 +117,9 @@ def build_payload(
     top_paper_hubs = hub_entries(graph_stats, "top_paper_hubs")
     if top_paper_hubs:
         payload["top_paper_hubs"] = top_paper_hubs
+    top_community_hubs = community_hub_entries(graph_stats)
+    if top_community_hubs:
+        payload["top_community_hubs"] = top_community_hubs
     return payload
 
 

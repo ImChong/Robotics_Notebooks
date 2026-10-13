@@ -791,6 +791,27 @@ a.hero-stat-num:focus-visible {
   white-space: nowrap;
   justify-self: end;
 }
+/* 「社区」标签下的社区下拉：与标签同一视觉语言（胶囊描边、小号字），只在社区标签下出现 */
+.home-hub-community-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-size: .82rem;
+}
+.home-hub-community-bar[hidden] { display: none; }
+.home-hub-select {
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
 /* 仅首页这个入口居中：左对齐时会被左下角的 .home-nav-fab 浮动按钮压住（移动端尤其
    明显）。hubs.html 复用了 .home-hub-more，但那页没有该浮动按钮，保持左对齐。 */
@@ -855,6 +876,9 @@ a.hero-stat-num:focus-visible {
 .hubs-meta { margin: 0 0 16px; }
 .hubs-list-actions { padding-left: 0; padding-right: 0; }
 @media (max-width: 860px) {
+  /* 窄屏标签换到标题下一行：标题与标签贴近成组，标签与副标题拉开（原先标签紧贴副标题） */
+  #home-hub-section .home-hub-head { margin-bottom: 12px; }
+  #home-hub-section .home-hub-head .section-title { margin-bottom: 0; }
   /* 窄屏：每条记录固定三段式——元信息行（排名/类型 + 右端互链数）、标题行（链接末尾⭐️）、附注行（仅社区标签） */
   .home-hub-list {
     display: flex;

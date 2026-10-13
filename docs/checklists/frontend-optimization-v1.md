@@ -14,6 +14,7 @@
 - [x] 首页公司 / 实验室切换修复（2026-10-13）：按钮与链接的 `transition: all` 连 visibility 一起过渡，切换时旧面板按钮拖到 0.3s 末才隐藏、新面板首帧不可见，表现为停在公司路线再闪到实验室；面板内只过渡悬停用到的 background-color / color / opacity，逐帧采样确认每帧只显示一个面板。公司列表展开时切到实验室（按钮、Hero 数字或 `#home-lab-routes`）会自动收起，卡片随同一次高度动画回到折叠高度。
 - [x] 增长趋势页「实验室节点数」「公司 + 实验室节点数」（2026-10-13）：与公司节点数同口径（机构内按知识节点 ID 去重、按主社区堆叠着色）；合并视图与合并时间线同序（按成立年份交错），名称前 ● 公司 / ◆ 实验室（标记着色，同时间线配色）。公司 / 实验室 / 合并节点数点击条形或名称跳到对应 `company.html` / `lab.html`，纵深节点数跳到对应 `roadmap.html?id=roadmap-depth-*`（主路线跳 `roadmap-motion-control`）；条形图按行数定高，行少时不留空白；支持 `?view=lab-nodes` / `?view=org-nodes` 直达。
 - [x] 互链榜单页「社区」榜单（2026-10-13）：`hubs.html` 在全站 / 论文之外加「社区」标签，下方一行社区胶囊（名称 + 节点数，按规模降序）选具体社区，榜单按 `community_label` 从全站榜单筛出、沿用互链度降序与「再展开 30 个 / 展开全部」；`hub-rankings.json` 新增 `communities`（id / label / size，不含空的 other）。地址栏同步 `?community=<id>` / `?tab=paper`，未知 id 回落到最大社区；增长趋势页「社区节点数」点击条形或名称跳到对应社区榜单。
+- [x] 首页「互链枢纽 · Top 10」社区标签（2026-10-13）：全站 / 论文之外加「社区」，标签下一行下拉选具体社区（首页不放 20 个胶囊，避免把 Top 10 挤到第二屏；完整胶囊在 hubs.html）；社区列表去掉逐行社区标签，窄屏每条少一行。数据为 `home-stats.json.top_community_hubs`（20 社区 × 前 10，gzip 后约 +7.6KB），旧缓存缺该字段时不显示社区标签。「查看完整榜单」跟随当前标签跳 `hubs.html` / `?tab=paper` / `?community=<id>`；窄屏标签与标题成组、与副标题拉开 12px。
 
 - [x] **重构英雄区 (Hero Section)**：
     - [x] 压缩文字：将目前的 4 段文字（Kicker, Title, Subtitle, Desc）精简为 1 行核心标语 + 1 行副标题。

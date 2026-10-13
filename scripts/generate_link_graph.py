@@ -1697,6 +1697,28 @@ def _compute_graph_stats(
         paper_nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"]))
     )
     paper_hub_list = [_hub_entry(node) for node in ranked_papers[:10]]
+    # 社区按规模降序（不含空的 other）；首页「社区」标签取各社区前 10，与全站榜单同序
+    ranked_communities = [
+        meta
+        for meta in sorted(
+            community_meta.values(), key=lambda item: (-int(item["size"]), str(item["id"]))
+        )
+        if meta["id"] != OTHER_COMMUNITY_ID and int(meta["size"]) > 0
+    ]
+    community_top_nodes: dict[str, list[dict[str, Any]]] = {}
+    for node in ranked_all:
+        members = community_top_nodes.setdefault(str(node.get("community") or ""), [])
+        if len(members) < 10:
+            members.append(node)
+    community_hub_list = [
+        {
+            "id": meta["id"],
+            "label": meta["label"],
+            "size": int(meta["size"]),
+            "hubs": [_hub_entry(node) for node in community_top_nodes.get(meta["id"], [])],
+        }
+        for meta in ranked_communities
+    ]
     # 完整榜单供 hubs.html；graph-stats 仍只保留 Top-10 以控制入库体积
     stats_hub_rankings = {
         "all": [_hub_entry(node) for node in ranked_all],
@@ -1704,10 +1726,7 @@ def _compute_graph_stats(
         # 社区榜单：hubs.html?community=<id> 按 community_label 从 all 中筛出；按规模降序
         "communities": [
             {"id": meta["id"], "label": meta["label"], "size": int(meta["size"])}
-            for meta in sorted(
-                community_meta.values(), key=lambda item: (-int(item["size"]), str(item["id"]))
-            )
-            if meta["id"] != OTHER_COMMUNITY_ID and int(meta["size"]) > 0
+            for meta in ranked_communities
         ],
     }
 
@@ -1767,6 +1786,7 @@ def _compute_graph_stats(
         "community_count": len(communities),
         "top_hubs": hub_list,
         "top_paper_hubs": paper_hub_list,
+        "top_community_hubs": community_hub_list,
         "orphan_nodes": orphans,
         "type_distribution": dict(sorted(type_dist.items(), key=lambda x: x[1], reverse=True)),
         "community_distribution": community_dist,
