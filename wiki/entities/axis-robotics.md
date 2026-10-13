@@ -26,6 +26,10 @@ summary: "Axis Robotics（AXIS ROBOTICS）：Physical AI 数据基础设施，�
 
 **Axis Robotics** 是面向 **Physical AI** 的可复用数据基础设施公司（[官网](https://axisrobotics.ai/)）。其平台用浏览器仿真遥操作降低演示采集门槛，再连接 GPU 仿真、轨迹清洗、策略训练与 Sim2Real 评估。官方[平台技术报告](https://techreport.axisrobotics.ai/)详细描述跨仿真器、跨机器的基础设施设计；[AXIS-V1 数据引擎](https://axisaiorg.github.io/AXIS-V1/)及 AxisAIOrg 开源模块是相关技术线上的其他产物。
 
+## 一句话定义
+
+**把「浏览器演示采集 → 统一轨迹 → GPU 仿真增广与清洗 → 下游训练评测」串成跨设备的机器人数据工作流，并以部署反馈驱动后续数据迭代。**
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -35,10 +39,6 @@ summary: "Axis Robotics（AXIS ROBOTICS）：Physical AI 数据基础设施，�
 | WASM | WebAssembly | 浏览器端运行 MuJoCo 仿真的技术 |
 | Sim2Real | Simulation to Reality | 仿真训练或验证向真实机器人迁移 |
 | LIBERO | Language Instructed Benchmark for Everyday Robot Operation | 报告轨迹清洗验证所用的操作任务基准 |
-
-## 一句话定义
-
-**把「浏览器演示采集 → 统一轨迹 → GPU 仿真增广与清洗 → 下游训练评测」串成跨设备的机器人数据工作流，并以部署反馈驱动后续数据迭代。**
 
 ## 为什么重要
 
