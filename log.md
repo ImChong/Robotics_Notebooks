@@ -125,6 +125,16 @@ type: ingest
 - 与 VisualMimic、动作重定向流水线、接触丰富操作等知识节点交叉链接。
 - 仅新增与更新知识/来源源文件；未改 Actions/workflows 或生成文件。
 
+---
+date: 2026-10-13
+type: ingest
+---
+
+- Ingest: geo-sleuth（Oldcircle/geo-sleuth），开源跨 Agent 照片地理定位 skill。
+- 新增 wiki 实体与仓库来源归档；补入 OSIRIS 与 LAYS 节点的反向链接。
+- 记录脚本分层、地图/地形/影像候选核验、官方示例的精度边界，以及隐私/用途限制。
+- 未修改 catalog.md、log.md 或导出文件；本次仅核读官方仓库文档，未本地运行定位流程。
+
 ## [2026-10-13] ingest | GenIA — 归档论文、项目页与官方代码，并整理测试时输入对齐和开源复现边界
 
 - 官方项目页确认 GenIA 在冻结 SAM 3D 先验上做推理时对齐；动态版本依赖 ActionMesh。

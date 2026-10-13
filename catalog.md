@@ -592,6 +592,7 @@
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
 - [Genie Studio Agent](wiki/entities/genie-studio-agent.md) — Genie Studio Agent** 是智元在 2026-06 发布地图 中 `📅unknown` `[entity_page]`
 - [GenoView-InverseKinematics](wiki/entities/genoview-inverse-kinematics.md) — GenoView-InverseKinematics](https://github.com/orangeduck/GenoView-InverseKinematics) 是 Andrew McDo `📅unknown` `[entity_page]`
+- [geo-sleuth：可核验的照片地理定位 Agent Skill](wiki/entities/geo-sleuth.md) — 一句话定义：** geo-sleuth 把照片地理定位拆成“代理提出/判断假设，脚本采集线索、枚举候选、计算几何并排序”的工作流，要求结论能够回指实际运行的命令和产物，而不是凭模型印象猜地点。 `📅unknown` `[entity_page]`
 - [HFSS MCP Server（gfgf2023/hfss-mcp-server）](wiki/entities/gfgf2023-hfss-mcp-server.md) — HFSS MCP Server（gfgf2023/hfss-mcp-server）是面向 HFSS 天线和 PCB 仿真的 MCP 服务，涉及天线几何、边界与激励、远场方向图等任务。 `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [GitDiagram（AI 辅助代码库架构图）](wiki/entities/gitdiagram.md) — GitDiagram**（官网 · [GitHub](https://github.com/ahmedkhaleel2004/gitdiagr `📅unknown` `[entity_page]`
