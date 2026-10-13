@@ -1352,6 +1352,8 @@ button.home-wiki-heatmap-cell.is-active {
 }
 /* 公司 / 实验室路线同卡：切换按钮占标签胶囊的位置，面板内沿用卡片的纵向间距 */
 .home-org-tabs { align-self: flex-start; }
+/* 按钮行高对齐「更多路线」的标签胶囊，两卡标题与按钮同一基线 */
+.home-org-tabs .home-hub-tab { line-height: 1.3; }
 .home-org-panel { display: flex; flex-direction: column; gap: 10px; }
 .home-org-panel[hidden] { display: none; }
 /* 桌面：「更多路线」与「公司路线」两张通栏卡改为左右并排（6 列网格：上排 3×2、下排 2×3）。
@@ -1360,7 +1362,12 @@ button.home-wiki-heatmap-cell.is-active {
   .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .home-entry-grid > .home-entry-card { grid-column: span 2; }
   .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
-  .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 54px; }
+  /* 与带英文副行的按钮同高（约 55px），无副行的按钮行（如 NVIDIA）不会让该卡矮 1px */
+  .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 55px; }
+  /* 公司 / 实验室面板叠放：隐藏面板仍占位（不可见、不可聚焦），切换时卡片高度不变 */
+  .home-org-panels { display: grid; }
+  .home-org-panels > .home-org-panel { grid-area: 1 / 1; align-self: start; }
+  .home-org-panels > .home-org-panel[hidden] { display: flex; visibility: hidden; }
 }
 .home-entry-route-links {
   display: grid;
@@ -1395,8 +1402,8 @@ button.home-wiki-heatmap-cell.is-active {
 /* 展开态限高 360px（桌面约 5.5 行按钮，半截行提示可滑动），其余在卡内上下滚动，不把首页拉长。
    滚动条 + 6px 间距用负右外边距挪进卡片 20px 右内边距，胶囊宽度/位置与折叠态一致，展开/收起不跳动；
    --links-sb 是 main.js 实测的滚动条宽度（overlay 滚动条为 0）。
-   行高固定取内容高：卡片高度动画期间列表被压成定高，auto 行会退到按钮 min-height（54px），
-   动画结束恢复 55px，各行逐行下移造成跳动 */
+   行高固定取内容高：卡片高度动画期间列表被压成定高，auto 行会退到按钮 min-height（55px），
+   动画结束恢复内容高（约 55.02px），各行逐行下移造成跳动 */
 .home-entry-route-links.is-expanded {
   grid-auto-rows: max-content;
   max-height: 360px;
