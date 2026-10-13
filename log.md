@@ -142,6 +142,9 @@ type: ingest
 - 明确公开仓库边界：仿真/数据工作流可用，训练 recipe、SimDeploy 训练适配器与 checkpoint 未包含。
 - 关联 VLA、manipulation、loco-manipulation 导航。
 
+- **操作：** ingest
+- **说明：** 归档 Axis Robotics Platform 官方技术报告，补充既有 Axis Robotics 实体的跨仿真器数据链路、LIBERO 轨迹清洗验证和部分开源边界。
+
 ## [2026-10-13] ingest | sources/repos/pentagi.md — 收录多智能体安全测试平台并记录授权范围、容器隔离与外部服务边界
 
 ## [2026-10-13] ingest | SDD / TDD / BDD / ATDD — 补齐方法定义并说明分层组合关系

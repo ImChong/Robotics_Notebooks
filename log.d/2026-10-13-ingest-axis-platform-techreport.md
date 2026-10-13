@@ -1,2 +1,0 @@
-- **操作：** ingest
-- **说明：** 归档 Axis Robotics Platform 官方技术报告，补充既有 Axis Robotics 实体的跨仿真器数据链路、LIBERO 轨迹清洗验证和部分开源边界。
