@@ -4516,7 +4516,7 @@
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
 - [Vidu S2：实时交互、可编辑与空间视频生成](wiki/entities/paper-vidu-s2.md) — Vidu S2**（Zhang et al., arXiv:2609.11638，[项目页 / Demo](https:// `📅unknown` `[entity_page]`
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
-- [VioLA：从人类数据学习人形通用控制](wiki/entities/paper-viola-human-data-control.md) — VioLA** 将人类动作数据转成机器人可执行的身体与手部运动潜变量，以预训练控制器作为动作解码器，降低通用策略对机器人关节级示范的依赖。 `📅unknown` `[entity_page]`
+- [VioLA：从人类数据学习人形通用控制](wiki/entities/paper-viola-human-data-control.md) — 一句话定义：** VioLA 不让通用策略直接输出高维关节命令，而是预测与冻结机器人控制器对齐的身体和手部动作潜变量；人类动作因此可以直接构成策略的动作标签。 `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
 - [VisForce：视觉对齐当前力与目标力](wiki/entities/paper-visforce-force-grounding.md) — VisForce 把当前指尖力和子任务目标力渲染至对应视觉图像，再用目标条件策略生成力感知操作动作。 `📅unknown` `[entity_page]`
 - [Visible-Reachable Workspace（arXiv:2609.08905）](wiki/entities/paper-visible-reachable-workspace-humanoid-design.md) — Visible-Reachable Workspace**（*Visible-Reachable Workspace for Perception-Aware Humanoid Design*， `📅unknown` `[entity_page]`
