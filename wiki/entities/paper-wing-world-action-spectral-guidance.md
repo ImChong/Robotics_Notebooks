@@ -56,7 +56,7 @@ summary: "WING（香港科技大学，arXiv:2610.03607）：从第一人称视�
 ## 方法流程
 
 ```mermaid
-flowchart LR
+flowchart TB
   ego["第一人称人类视频"] --> tracks["点跟踪与手物区域"]
   tracks --> motion["全局相机 warp 与局部交互残差"]
   motion --> teacher["运动路由 teacher"]
