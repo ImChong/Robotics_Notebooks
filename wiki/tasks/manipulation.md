@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-10
+updated: 2026-10-13
 related:
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
@@ -31,6 +31,7 @@ related:
   - ../entities/paper-simfoundry-real2sim-scene-generation.md
   - ../entities/paper-arcadia.md
   - ../entities/paper-agentic-real2sim.md
+  - ../entities/paper-splat2act-personalized-vla.md
   - ../entities/paper-lucida-r2s.md
   - ../entities/paper-robointer-1-5.md
   - ../entities/paper-fabrivla.md
@@ -459,6 +460,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 - [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 全屋 sim-ready furnished 3D 与 **>15 manipulable objects/scene** 的场景级生成（arXiv:2606.06390）
 - [SimFoundry](../entities/paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + object/scene/task cousins；real-to-sim 评测与 sim-to-real 训练（arXiv:2606.28276）
+- [Splat2Act](../entities/paper-splat2act-personalized-vla.md) — 用场景扫描、仿真 oracle 演示和两阶段微调个性化操作策略（arXiv:2610.13945）
 - [Arcadia](../entities/paper-arcadia.md) — 操作与 VLN 共享骨干 + Sim-from-Real；LIBERO 消融 87.2%、G1+Dex-3 27/100（arXiv:2512.00076；部分开源）
 - [Agentic Real2Sim](../entities/paper-agentic-real2sim.md) — VLM agent 编排 DROID→MuJoCo episode twin（arXiv:2607.19190，代码待开放）
 - [SceneAgent](../entities/paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 → 预测物理 USD + digital sisters + demonstration factory（Harvard，代码待发布）
