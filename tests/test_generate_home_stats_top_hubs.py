@@ -89,6 +89,54 @@ class HubEntriesTest(unittest.TestCase):
         payload = ghs.build_payload({}, coverage)
         self.assertNotIn("top_hubs", payload)
         self.assertNotIn("top_paper_hubs", payload)
+        self.assertNotIn("top_community_hubs", payload)
+
+    def test_community_hubs_use_short_names_and_drop_row_community(self) -> None:
+        """首页「社区」标签：社区名取短名，行内同属该社区不再逐行带 community_label；空社区跳过。"""
+        stats = {
+            "top_community_hubs": [
+                {
+                    "id": "community-vla",
+                    "label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区",
+                    "size": 459,
+                    "hubs": [
+                        {
+                            "id": "wiki/methods/vla.md",
+                            "detail_id": "wiki-methods-vla",
+                            "label": "VLA",
+                            "type": "method",
+                            "degree": 216,
+                            "has_repo": True,
+                            "community_label": "视觉-语言-动作（Vision-Language-Action, VLA） 社区",
+                        }
+                    ],
+                },
+                {"id": "community-empty", "label": "空（Empty） 社区", "size": 0, "hubs": []},
+                {"label": "缺 id 社区", "hubs": []},
+            ]
+        }
+        result = ghs.community_hub_entries(stats)
+        self.assertEqual(
+            result,
+            [
+                {
+                    "id": "community-vla",
+                    "label": "视觉-语言-动作",
+                    "size": 459,
+                    "hubs": [
+                        {
+                            "detail_id": "wiki-methods-vla",
+                            "label": "VLA",
+                            "type": "method",
+                            "degree": 216,
+                            "has_repo": True,
+                        }
+                    ],
+                }
+            ],
+        )
+        coverage = {"covered": 1, "total": 2, "percent": 50}
+        self.assertEqual(ghs.build_payload(stats, coverage)["top_community_hubs"], result)
 
 
 if __name__ == "__main__":

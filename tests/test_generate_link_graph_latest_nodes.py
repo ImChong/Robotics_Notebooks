@@ -242,6 +242,16 @@ class PaperHubStatsTest(unittest.TestCase):
         for community in listed:
             members = [h for h in rankings["all"] if h.get("community_label") == community["label"]]
             self.assertEqual(len(members), community["size"], community["id"])
+        # 首页「社区」标签：与社区榜单同序，各取前 10，且就是该社区在全站榜单中的前 10
+        top = stats["top_community_hubs"]
+        self.assertEqual([c["id"] for c in top], [c["id"] for c in listed])
+        for group, community in zip(top, listed, strict=True):
+            members = [h for h in rankings["all"] if h.get("community_label") == community["label"]]
+            self.assertEqual(
+                [h["detail_id"] for h in group["hubs"]],
+                [h["detail_id"] for h in members[:10]],
+                group["id"],
+            )
 
 
 class RoadmapGraphNodesTest(unittest.TestCase):
