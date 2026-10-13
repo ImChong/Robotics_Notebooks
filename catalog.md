@@ -3343,6 +3343,7 @@
 - [Robot Parkour Learning（HMI P130）](wiki/entities/paper-robot-parkour-learning.md) — Robot Parkour Learning**（*Robot Parkour Learning*，2023，[arXiv:2309.05665](https://arxiv.org/abs/23 `📅unknown` `[entity_page]`
 - [Robot-WATCHDOG：用对象关系图检测操作失败](wiki/entities/paper-robot-watchdog-object-graph-failure-detection.md) — Robot-WATCHDOG**（*failure detection through object-centric graph representation*，[arXiv:2610.13403 `📅unknown` `[entity_page]`
 - [DiT-Block Policy：机器人扩散 Transformer 的「配方」](wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md) — The Ingredients for Robotic Diffusion Transformers**（[arXiv:2410.10088](https://arxiv.org/abs/2410 `📅unknown` `[entity_page]`
+- [Robotic Servo Tracking of Moving Targets with Dynamic Imitation Constraints](wiki/entities/paper-robotic-servo-dynamic-imitation.md) — 一句话定义：** 把示教轨迹变成在线可变形的动态约束轨迹（DCT），跟随移动目标时调整时间进度与路径形状，并自适应选取下一跟踪点，闭环生成机械臂速度指令。 `📅unknown` `[entity_page]`
 - [RoboTok：互联网规模人类示范检索引擎](wiki/entities/paper-robotok.md) — RoboTok**（*An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulat `📅unknown` `[entity_page]`
 - [RoboTTT（Test-Time-Training Robot Policies）](wiki/entities/paper-robottt-test-time-training-vla-context.md) — RoboTTT**（*Context Scaling for Robot Policies*，[arXiv:2607.15275](https://arxiv.org/abs/2607.15275 `📅unknown` `[entity_page]`
 - [RoboTwin-Phys（arXiv:2609.26292）](wiki/entities/paper-robotwin-phys.md) — RoboTwin-Phys**（*Do WAMs and VLAs Understand the Physical World?*，[arXiv:2609.26292](https://arxiv `📅unknown` `[entity_page]`
