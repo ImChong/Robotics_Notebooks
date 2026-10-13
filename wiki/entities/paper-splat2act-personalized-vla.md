@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, vla, manipulation, 3dgs, real2sim2real, scene-personalization, stretch-3]
+tags: [paper, vla, manipulation, 3dgs, real2sim2real, scene-personalization, stretch-3, georgia-tech, waymo, toyota-research]
 status: complete
 updated: 2026-10-13
 arxiv: "2610.13945"
