@@ -1,6 +1,6 @@
 # UniWAM: Unified World-Action Model
 
-> 来源归档（paper；核对 arXiv HTML v1、项目页与官方代码仓库；2026-10-06）
+> 来源归档（paper；核对 arXiv HTML v1、项目页与官方代码仓库；更新核查：2026-10-13）
 
 - **arXiv：** <https://arxiv.org/abs/2610.02054> · [HTML v1](https://arxiv.org/html/2610.02054v1) · [PDF](https://arxiv.org/pdf/2610.02054)
 - **项目页：** <https://uniwam.github.io/>
@@ -21,6 +21,12 @@
 6. **仿真结果。** 报告 LIBERO 平均 SR 99.2%；LIBERO-Plus overall 92.6%；RoboTwin 2.0 Clean2Clean 75.14%、Clean2Rand 68.32%。Clean2Rand 是域随机化条件，不能与 clean 设置混称。
 7. **真机结果。** 双 AgileX Piper、腕部相机与第三视角相机；四项真实指令任务平均 SR 67.5%、IFR 82.5%。桌面整理长程任务平均进度 5.0/6；这些是论文自有实验协议，不是公开推理代码已经覆盖的场景。
 8. **公开代码范围。** GitHub 提供 RoboTwin 与 LIBERO 代码、模型和 checkpoint 指引；README 明确 Bridge/DROID/Fractal 和 real-world inference 不属于当前 release。RoboTwin 后训练约 8×H100、10 小时；这不是完整预训练成本估计。
+
+## 本次入口校验（2026-10-13）
+
+- 用户提供的 `https://github.com/UniWAM/UniWAMModelScope` 返回 GitHub 404；arXiv HTML 元数据与项目页的 Code 按钮均指向可访问的官方实现仓库 [`UniWAM/UniWAM`](https://github.com/UniWAM/UniWAM)，以此作为代码入口。
+- 官方 README 将 ModelScope / Hugging Face 集合中列出的模型区分为 `UniWAM-base`（混合机器人、人类与 VQA 数据预训练）和 `UniWAM-robotwin-clean`（RoboTwin 2.0 clean 子集后训练）。集合入口已由 README 核对；本次没有独立读取 ModelScope 的模型文件清单与权重许可。
+- README 已给出 RoboTwin 与 LIBERO 的后训练/评估文档；同时明确 Bridge、DROID、Fractal 与真实机器人推理不在当前 release 内。
 
 ## Wiki 映射
 
