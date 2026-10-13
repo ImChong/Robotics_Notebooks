@@ -57,15 +57,15 @@ summary: "CondVLN（arXiv:2608.17318）是一个场景图接地的条件分支 V
 flowchart TB
   scenes["AI2-THOR / MP3D / Gibson / ReplicaCAD"]
   hierarchy["统一房间-对象层级"]
-  graph["场景图：几何方向与语义谓词"]
+  relations["场景图：几何方向与语义谓词"]
   synth["条件指令合成：if / nested / chain"]
   episodes["VLN-CE episodes：起点、目标、路径"]
   agents["现有 VLN agents"]
   metrics["SR / SPL + BSA / CSR"]
   oracle["场景图真值分支 selector"]
   linear["oracle 改写成线性指令"]
-  scenes --> hierarchy --> graph --> synth --> episodes --> agents --> metrics
-  graph --> oracle --> linear --> agents
+  scenes --> hierarchy --> relations --> synth --> episodes --> agents --> metrics
+  relations --> oracle --> linear --> agents
 ```
 
 生成阶段把四类来源的场景标注统一成房间与对象，再把对象关系转换为可验证条件和目标；评测阶段既观察现成 agent 对条件句的表现，也用场景图真值构造 oracle 分支选择对照。
