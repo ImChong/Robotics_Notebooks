@@ -40,6 +40,11 @@ flowchart LR
 ```
 
 README 将训练与数据生成明确列为仓库外部范围。硬件路径要求 G1 专用网络接口；PICO 路径需 XRoboToolkit、低延迟 Wi-Fi。上线前应先用 MuJoCo 验证 policy contract 和控制配置。它与本库中另一个 [GRIT Deploy Onboard G1](./grit-deploy-onboard-g1.md) 部署仓库分开记录，避免混淆代码来源。该策略出现在 [sim2real leaderboard](./egalahad-sim2real.md) 的 MotionDecode 评测中。
+## 参考来源
+
+- [GRIT v0.0.1 部署仓库归档](../../sources/repos/grit-v0-0-1-deployment.md)
+- [官方 GRIT v0.0.1 仓库](https://github.com/mrzuang/GRIT_teleop_deploy)
+
 ## 关联页面
 
 - [GRIT Deploy Onboard G1](./grit-deploy-onboard-g1.md) — 另一套部署实现，仓库来源不同。
