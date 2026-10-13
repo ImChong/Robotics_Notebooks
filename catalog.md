@@ -1845,6 +1845,7 @@
 - [Geo-VLA](wiki/entities/paper-geo-vla.md) — Geo-VLA: Geometry-Aware Vision-Language-Action Planning via Internalization of Map Semantics**（arX `📅unknown` `[entity_page]`
 - [Geometry-Aware 4D Video Generation for Robot Manipulation（arXiv:2507.01099）](wiki/entities/paper-geometry-aware-4d-video-generation.md) — Geometry-Aware 4D Video Generation for Robot Manipulation**（Zeyi Liu, Shuang Li, Eric Cousineau, S `📅unknown` `[entity_page]`
 - [IWR：接触的几何（从零学物体操作的对比强化学习）](wiki/entities/paper-geometry-of-contact.md) — IWR**（Interaction-Weighted Resampling；论文 *Learning Object Manipulation from Scratch via Contrastiv `📅unknown` `[entity_page]`
+- [GeomVLA：在统一三维场景、运动与动作](wiki/entities/paper-geomvla-2609-13812.md) — GeomVLA**（*Unifying Scene, Motion, and Action in 3D*，[arXiv:2609.13812](https://arxiv.org/abs/2609 `📅unknown` `[entity_page]`
 - [GeoVLA：为 VLA 补全 3D 几何表示](wiki/entities/paper-geovla.md) — GeoVLA**（*Empowering 3D Representations in Vision-Language-Action Models*，[arXiv:2508.09071](https `📅unknown` `[entity_page]`
 - [GestAdapt：Workspace-Conditioned Co-Speech Gesture Generation for Humanoid Robots](wiki/entities/paper-gestadapt.md) — GestAdapt** 在语音驱动手势时加入机器人双腕工作空间条件，避免生成动作与桌面、墙面或机器人可达范围冲突。 `📅unknown` `[entity_page]`
 - [Identification and the information matrix: how to get just sufficiently rich?](wiki/entities/paper-gevers-identification-information-matrix-2009.md) — Identification and the information matrix: how to get just sufficiently rich?**（IEEE TAC 2009）收录于  `📅unknown` `[entity_page]`
