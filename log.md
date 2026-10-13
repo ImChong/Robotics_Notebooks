@@ -148,6 +148,16 @@ type: ingest
 - **操作：** ingest
 - **说明：** 入库 WING（arXiv:2610.03607），整理交互中心潜动作、低频 DCT 引导、仿真/真机评测和代码待发布状态，并关联 WAM 知识页。
 
+# InternW0-Δ 入库记录
+
+- 日期：2026-10-13
+- 唯一实体：`wiki/entities/paper-internw0-delta.md`（沿用已有实体，未重复建节点）
+- 一手来源：arXiv:2609.31394v1、官方项目页、官方 GitHub 仓库。
+- 本次更新：重写浅层旧条目，补方法结构、训练期未来监督与推理边界、数据口径、仿真和真机结果、开源状态、限制及 Mermaid 训练/推理图；新增论文/项目页/仓库归档；连接 WAM 概念页。
+- 状态校正：官方代码仓已发布训练、评测和部署代码（MIT）；权重仍未见发布并标记 forthcoming；处理数据受原始来源许可制约。
+- 资料核验：2026-10-13。
+- 未修改 Actions/工作流配置、生成目录或 catalog/export 文件。
+
 ## [2026-10-13] ingest | sources/sites/naturewill-natura-1.md — 归档 Nature Will 灵巧手基础模型研究预览，区分闭源数据规模主张与可复现证据
 
 ## [2026-10-13] ingest | grit-deploy-onboard-g1 | G1 机载部署项目
