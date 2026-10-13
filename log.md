@@ -180,6 +180,10 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-13] ingest | EGalahad sim2real 文档、排行榜与 GRIT 策略节点
+
+核实文档站、评测协议与官方代码开放边界；将 15 个榜单策略条目映射到 10 个独立项目详情，补齐 GRIT 策略节点并与另一 GRIT 机载集成仓库区分。
+
 ## [2026-10-13] ingest | viola | VioLA：人类数据驱动通用人形控制
 
 - 论文：arXiv:2610.12435；官方项目页核查代码仍为 coming soon。
