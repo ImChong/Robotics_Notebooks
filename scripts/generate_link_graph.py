@@ -1701,6 +1701,14 @@ def _compute_graph_stats(
     stats_hub_rankings = {
         "all": [_hub_entry(node) for node in ranked_all],
         "paper": [_hub_entry(node) for node in ranked_papers],
+        # 社区榜单：hubs.html?community=<id> 按 community_label 从 all 中筛出；按规模降序
+        "communities": [
+            {"id": meta["id"], "label": meta["label"], "size": int(meta["size"])}
+            for meta in sorted(
+                community_meta.values(), key=lambda item: (-int(item["size"]), str(item["id"]))
+            )
+            if meta["id"] != OTHER_COMMUNITY_ID and int(meta["size"]) > 0
+        ],
     }
 
     orphans = [
@@ -1853,6 +1861,7 @@ def main() -> None:
         "edge_count": stats["edge_count"],
         "all": hub_rankings["all"],
         "paper": hub_rankings["paper"],
+        "communities": hub_rankings["communities"],
     }
     HUB_RANKINGS_PATH.write_text(
         json.dumps(hub_rankings_payload, ensure_ascii=False, separators=(",", ":")),

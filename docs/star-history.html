@@ -223,6 +223,8 @@
               return {
                 // 与纵深节点数一致：显示「中文（English）」，仅去掉末尾「社区」
                 cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
+                // 点击跳到互链榜单页的对应社区榜单
+                links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
                 series: [{
                   values: list.map(function (c) { return c.size; }),
                   color: list.map(function (c) { return color[c.id]; })

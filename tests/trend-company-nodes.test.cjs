@@ -160,3 +160,10 @@ test('depth node counts link each depth to its roadmap page', async () => {
   assert.equal(result.links[0], 'roadmap.html?id=roadmap-motion-control');
   assert.ok(result.links.slice(1).every((href) => /^roadmap\.html\?id=roadmap-depth-[a-z0-9-]+$/.test(href)), result.links.join(','));
 });
+
+test('community node counts link each community to its hubs ranking', async () => {
+  const { views } = loadViews(graph, []);
+  const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'communities').load()));
+  assert.deepEqual(result.cats, ['视觉动作（VLA）', '控制（Control）']);
+  assert.deepEqual(result.links, ['hubs.html?community=vla', 'hubs.html?community=control']);
+});

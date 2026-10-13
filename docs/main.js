@@ -744,16 +744,34 @@
   function renderHubsPage(rankings) {
     var panelAll = document.getElementById('hubsPanelAll');
     var panelPaper = document.getElementById('hubsPanelPaper');
+    var panelCommunity = document.getElementById('hubsPanelCommunity');
+    var picker = document.getElementById('hubsCommunityPicker');
     if (!panelAll && !panelPaper) return;
     var HUBS_WINDOW = 30;
     var HUBS_STEP = 30;
     var allHubs = Array.isArray(rankings && rankings.all) ? rankings.all : [];
     var paperHubs = Array.isArray(rankings && rankings.paper) ? rankings.paper : [];
+    // 社区榜单：按 community_label 从全站榜单筛出，沿用全站的互链度降序；社区按规模降序
+    var communities = Array.isArray(rankings && rankings.communities) ? rankings.communities : [];
+    var activeCommunity = null;
+    var communityHubs = [];
     var state = {
       all: { limit: HUBS_WINDOW, showAll: false },
-      paper: { limit: HUBS_WINDOW, showAll: false }
+      paper: { limit: HUBS_WINDOW, showAll: false },
+      community: { limit: HUBS_WINDOW, showAll: false }
     };
-    var showingPaper = false;
+    var activeTab = 'all';
+
+    function listFor(tab) {
+      if (tab === 'paper') return paperHubs;
+      if (tab === 'community') return communityHubs;
+      return allHubs;
+    }
+
+    // 「视觉-语言-动作（Vision-Language-Action, VLA） 社区」→「视觉-语言-动作」
+    function shortCommunityLabel(label) {
+      return String(label || '').replace(/\s*社区\s*$/, '').replace(/（[^（）]*）$/, '');
+    }
 
     function visibleSlice(list, st) {
       if (!list.length) return [];
@@ -793,14 +811,17 @@
     function updateHubsMeta() {
       var meta = document.getElementById('hubsMeta');
       if (!meta) return;
-      var activeList = showingPaper ? paperHubs : allHubs;
-      var activeState = showingPaper ? state.paper : state.all;
+      var activeList = listFor(activeTab);
+      var activeState = state[activeTab];
       var visibleCount = visibleSlice(activeList, activeState).length;
       var parts = [];
       if (allHubs.length) parts.push('全站 ' + allHubs.length + ' 个节点');
       if (paperHubs.length) parts.push('论文 ' + paperHubs.length + ' 篇');
       if (rankings && rankings.edge_count != null) {
         parts.push(String(rankings.edge_count) + ' 条互链');
+      }
+      if (activeTab === 'community' && activeCommunity) {
+        parts.push(shortCommunityLabel(activeCommunity.label) + '社区 ' + communityHubs.length + ' 个节点');
       }
       if (activeList.length) {
         if (activeState.showAll || visibleCount >= activeList.length) {
@@ -823,6 +844,8 @@
     function refreshHubsPanels() {
       renderPanel(panelAll, allHubs, state.all, '暂无互链统计数据。');
       renderPanel(panelPaper, paperHubs, state.paper, '暂无论文互链统计数据。');
+      renderPanel(panelCommunity, communityHubs, state.community,
+        communities.length ? '该社区暂无节点。' : '暂无社区榜单数据。');
       updateHubsMeta();
     }
 
@@ -830,25 +853,90 @@
 
     var tabAll = document.getElementById('hubsTabAll');
     var tabPaper = document.getElementById('hubsTabPaper');
+    var tabCommunity = document.getElementById('hubsTabCommunity');
     if (!tabAll || !tabPaper || !panelAll || !panelPaper) return;
 
-    function activateHubsTab(showPaper) {
-      showingPaper = showPaper;
-      tabAll.classList.toggle('is-active', !showPaper);
-      tabPaper.classList.toggle('is-active', showPaper);
-      tabAll.setAttribute('aria-pressed', String(!showPaper));
-      tabPaper.setAttribute('aria-pressed', String(showPaper));
-      panelAll.hidden = showPaper;
-      panelPaper.hidden = !showPaper;
-      updateHubsMeta();
+    // 地址栏同步当前榜单（?tab=paper / ?community=<id>），可分享、可从增长趋势页直达
+    function syncHubsUrl() {
+      var query = '';
+      if (activeTab === 'paper') query = '?tab=paper';
+      if (activeTab === 'community' && activeCommunity) query = '?community=' + encodeURIComponent(activeCommunity.id);
+      try {
+        window.history.replaceState(null, '', window.location.pathname + query + window.location.hash);
+      } catch { /* file:// 等环境不支持时忽略 */ }
     }
-    tabAll.addEventListener('click', function () { activateHubsTab(false); });
-    tabPaper.addEventListener('click', function () { activateHubsTab(true); });
+
+    function renderCommunityPicker() {
+      if (!picker) return;
+      picker.innerHTML = communities.map(function (c) {
+        var on = !!activeCommunity && c.id === activeCommunity.id;
+        return '<button type="button" class="co-tab' + (on ? ' is-active' : '') + '" data-community="' +
+          escapeHtml(c.id) + '" aria-pressed="' + on + '" title="' + escapeHtml(c.label) + '">' +
+          escapeHtml(shortCommunityLabel(c.label)) + '<span class="co-tab-count">' + c.size + '</span></button>';
+      }).join('');
+      centerActiveCommunityChip();
+    }
+
+    // 窄屏选择条横向滚动时，把当前社区滚进可视区（同公司路线页的切换条）；选择条隐藏时宽度为 0，显示后再调
+    function centerActiveCommunityChip() {
+      var active = picker && !picker.hidden && picker.querySelector('.co-tab.is-active');
+      if (active && picker.scrollWidth > picker.clientWidth) {
+        picker.scrollLeft = active.offsetLeft - (picker.clientWidth - active.offsetWidth) / 2;
+      }
+    }
+
+    // 未知 id 时回落到规模最大的社区
+    function selectCommunity(id) {
+      activeCommunity = communities.filter(function (c) { return c.id === id; })[0] || communities[0] || null;
+      communityHubs = activeCommunity
+        ? allHubs.filter(function (h) { return h.community_label === activeCommunity.label; })
+        : [];
+      state.community.limit = HUBS_WINDOW;
+      state.community.showAll = false;
+      renderCommunityPicker();
+      refreshHubsPanels();
+      syncHubsUrl();
+    }
+
+    function activateHubsTab(tab) {
+      activeTab = tab;
+      [[tabAll, panelAll, 'all'], [tabPaper, panelPaper, 'paper'], [tabCommunity, panelCommunity, 'community']]
+        .forEach(function (t) {
+          if (!t[0] || !t[1]) return;
+          var on = t[2] === tab;
+          t[0].classList.toggle('is-active', on);
+          t[0].setAttribute('aria-pressed', String(on));
+          t[1].hidden = !on;
+        });
+      if (picker) picker.hidden = tab !== 'community';
+      if (tab === 'community' && !activeCommunity) selectCommunity(null);
+      if (tab === 'community') centerActiveCommunityChip();
+      updateHubsMeta();
+      syncHubsUrl();
+    }
+    tabAll.addEventListener('click', function () { activateHubsTab('all'); });
+    tabPaper.addEventListener('click', function () { activateHubsTab('paper'); });
+    if (tabCommunity && panelCommunity) {
+      tabCommunity.addEventListener('click', function () { activateHubsTab('community'); });
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    if (params.has('community') && tabCommunity && panelCommunity) {
+      selectCommunity(params.get('community'));
+      activateHubsTab('community');
+    } else if (params.get('tab') === 'paper') {
+      activateHubsTab('paper');
+    }
 
     var hubsSection = document.getElementById('hubs-section');
     if (!hubsSection) return;
     hubsSection.addEventListener('click', function (ev) {
-      var activeState = showingPaper ? state.paper : state.all;
+      var communityBtn = ev.target.closest('button[data-community]');
+      if (communityBtn) {
+        selectCommunity(communityBtn.getAttribute('data-community'));
+        return;
+      }
+      var activeState = state[activeTab];
       var moreBtn = ev.target.closest('button.hubs-list-more');
       if (moreBtn) {
         if (!activeState.showAll) activeState.limit += HUBS_STEP;
