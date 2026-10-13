@@ -2,11 +2,12 @@
 type: entity
 tags: [repo, humanoid, motion-tracking, teleoperation, mjlab, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-13
 summary: "Axellwppr/motion_tracking：HEFT 官方 mjlab 训练栈，支持 G1/L7 全身跟踪、PMG 配对数据、WPC 负载课程与 sim2real 检查点部署。"
 related:
   - ./paper-heft.md
   - ./paper-twist2.md
+  - ./grit-deploy-onboard-g1.md
   - ../methods/sonic-motion-tracking.md
   - ../tasks/teleoperation.md
 sources:
@@ -49,6 +50,7 @@ sources:
 
 - 方法背景：[paper-heft.md](./paper-heft.md)
 - 跟踪基线：[paper-twist2.md](./paper-twist2.md)、[sonic-motion-tracking.md](../methods/sonic-motion-tracking.md)
+- 部署集成示例：[GRIT Deploy Onboard G1](./grit-deploy-onboard-g1.md) — 更聚焦 G1 机载模式集成与策略运行，不替代 HEFT 训练 / 导出链路。
 - 任务：[teleoperation.md](../tasks/teleoperation.md)
 
 ## 参考来源
