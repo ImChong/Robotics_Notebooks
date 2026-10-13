@@ -165,6 +165,13 @@ type: ingest
 - 更新：触觉感知概念页链接该磁性软触觉皮肤。
 - 一手来源：<https://arxiv.org/abs/2506.09994>、<https://github.com/notvenky/eFlesh>、<https://e-flesh.com/>。
 
+# Ingest: Motion2MixamoRig
+
+- 日期：2026-10-13
+- 新增：[Motion2MixamoRig](../wiki/entities/motion2mixamorig.md)；[来源归档](../sources/repos/motion2mixamorig.md)
+- 更新：GVHMR 实体关联该视频/照片到 Mixamo 的工程化下游。
+- 一手来源：<https://github.com/MaxLiu22/Motion2MixamoRig>；上游模型信息见 <https://github.com/zju3dv/GVHMR>。
+
 ## [2026-10-13] ingest | viola | VioLA：人类数据驱动通用人形控制
 
 - 论文：arXiv:2610.12435；官方项目页核查代码仍为 coming soon。
