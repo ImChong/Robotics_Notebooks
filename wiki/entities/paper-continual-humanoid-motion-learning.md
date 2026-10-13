@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, continual-learning, motion-tracking, lora, sim-to-real]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-13
 project_id: continual-humanoid-motion-learning
 arxiv: "2610.04231"
 code: https://anonymous.4open.science/r/continual-humanoid-learning-35D3
@@ -14,6 +14,7 @@ related:
   - ../tasks/humanoid-locomotion.md
 sources:
   - ../../sources/papers/continual_humanoid_learning_arxiv_2610_04231.md
+  - ../../sources/repos/continual-humanoid-learning.md
 ---
 
 # Continual Humanoid Motion Learning：让 G1 控制器持续学新动作
@@ -125,3 +126,10 @@ flowchart TB
 - [arXiv 论文](https://arxiv.org/abs/2610.04231)
 - [arXiv HTML v1](https://arxiv.org/html/2610.04231v1)
 - [匿名代码与配置](https://anonymous.4open.science/r/continual-humanoid-learning-35D3)
+- [代码入口归档](../../sources/repos/continual-humanoid-learning.md) — 记录可访问性与复现信息边界
+
+## 推荐继续阅读
+
+- [人形策略观测输入](../concepts/humanoid-policy-observation-inputs.md)
+- [Streaming RL 持续学习分析](./paper-streaming-rl-continual-robotics.md)
+- [人形 locomotion 任务](../tasks/humanoid-locomotion.md)
