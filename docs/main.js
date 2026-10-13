@@ -6346,6 +6346,8 @@
   var orgPanelLab = document.getElementById('home-lab-routes');
   function showHomeOrgTab(showLab) {
     if (!orgTabCompany || !orgTabLab || !orgPanelCompany || !orgPanelLab) return;
+    // 公司列表展开时切到实验室：先收起，卡片回到折叠高度，不卡在展开态
+    if (showLab) setHomeCompaniesExpanded(false);
     orgTabCompany.classList.toggle('is-active', !showLab);
     orgTabLab.classList.toggle('is-active', showLab);
     orgTabCompany.setAttribute('aria-pressed', String(!showLab));
@@ -6353,9 +6355,13 @@
     orgPanelCompany.hidden = showLab;
     orgPanelLab.hidden = !showLab;
   }
+  // 点按钮切换：收起公司列表时卡片高度随同一次动画回落（高度不变时不动画）
+  function switchHomeOrgTab(showLab) {
+    animateHomeLinksToggle(companyRoutesCard, function () { showHomeOrgTab(showLab); }, false, []);
+  }
   if (orgTabCompany && orgTabLab) {
-    orgTabCompany.addEventListener('click', function () { showHomeOrgTab(false); });
-    orgTabLab.addEventListener('click', function () { showHomeOrgTab(true); });
+    orgTabCompany.addEventListener('click', function () { switchHomeOrgTab(false); });
+    orgTabLab.addEventListener('click', function () { switchHomeOrgTab(true); });
   }
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
@@ -6648,21 +6654,25 @@
   // 首页「公司路线」卡：同样默认露出前 4 家，其余由展开按钮控制
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
+  function setHomeCompaniesExpanded(expanded) {
+    if (!companyToggle || !companyLinks) return;
+    var extras = companyLinks.querySelectorAll('[data-company-extra]');
+    for (var cti = 0; cti < extras.length; cti++) {
+      extras[cti].hidden = !expanded;
+    }
+    companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    companyLinks.classList.toggle('is-expanded', expanded);
+    syncHomeLinksScrollbar(companyLinks);
+    companyToggle.textContent = expanded
+      ? '收起公司列表 ↑'
+      : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
+  }
   if (companyToggle && companyLinks) {
     companyToggle.addEventListener('click', function () {
       var expanded = companyToggle.getAttribute('aria-expanded') !== 'true';
-      var extras = companyLinks.querySelectorAll('[data-company-extra]');
       animateHomeLinksToggle(companyRoutesCard, function () {
-        for (var cti = 0; cti < extras.length; cti++) {
-          extras[cti].hidden = !expanded;
-        }
-        companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        companyLinks.classList.toggle('is-expanded', expanded);
-        syncHomeLinksScrollbar(companyLinks);
-        companyToggle.textContent = expanded
-          ? '收起公司列表 ↑'
-          : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
-      }, expanded, extras);
+        setHomeCompaniesExpanded(expanded);
+      }, expanded, companyLinks.querySelectorAll('[data-company-extra]'));
     });
   }
 
