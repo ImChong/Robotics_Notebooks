@@ -102,3 +102,10 @@ sequenceDiagram
 - [论文来源摘录](../../sources/papers/simvla_arxiv_2610_11248.md)
 - [项目主页归档](../../sources/sites/simvla-project.md)
 - [代码仓库归档](../../sources/repos/simvla.md)
+
+
+## 参考来源
+
+- [arXiv 论文（2610.11248）](https://arxiv.org/abs/2610.11248) — 摘要、方法、评测与局限。
+- [官方项目主页](https://kyounginbaik.github.io/simvla/) — 场景、任务、真机演示与数据入口。
+- [官方 GitHub 仓库](https://github.com/kyounginbaik/SimVLA) — 安装、仿真与数据工作流及复现边界。
