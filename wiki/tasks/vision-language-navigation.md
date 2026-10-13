@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-10-12
+updated: 2026-10-13
 status: complete
 related:
   - ../entities/paper-vtinstructor.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-humanoidvln.md
   - ../entities/paper-crosstracer.md
   - ../entities/paper-wild-nav-longtail.md
+  - ../entities/paper-condvln-conditional-branching.md
   - ../entities/paper-sru-spatially-enhanced-recurrent-memory.md
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
@@ -248,6 +249,7 @@ sources:
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；待开源
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal 导航（对照；未开源）
 - [WILD-Nav / WILD-LongTail](../entities/paper-wild-nav-longtail.md) — 从野外视频训练城市 point-goal VLA，并将稀有度和模型失败分开诊断；截至 2026-10-12 未找到官方代码或数据入口
+- [CondVLN](../entities/paper-condvln-conditional-branching.md) — 条件分支 VLN 诊断基准；以 BSA / CSR 区分分支选择与执行，项目页提供匿名代码/数据入口（内容待核验）
 - [S²-VLA（驾驶双流 VLA）](../entities/paper-s-squared-vla.md) — NAVSIM 端到端规划；与 VLN / RobotNav 驾驶 mode 对照
 - [Qwen-RobotNav](../entities/qwen-robot-nav.md) — 统一 VLN / ObjNav / 跟踪 / NAVSIM 的导航基座
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA / Spot 例行找人（对照仿真 EQA）
