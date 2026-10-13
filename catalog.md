@@ -4293,6 +4293,7 @@
 - [simple-evrgb-cal：无运动的事件—RGB 标定](wiki/entities/paper-simple-evrgb-cal.md) — Simplified Cross-Modal Calibration for Heterogeneous Event-RGB Stereo Systems**（[arXiv:2608.22965 `📅unknown` `[entity_page]`
 - [SimpleMemVLA（Native-Video Memory for VLA）](wiki/entities/paper-simplememvla.md) — SimpleMemVLA**（arXiv:2609.05533，[OpenBMB/SimpleMemVLA](https:/ `📅unknown` `[entity_page]`
 - [SIMPLER：仿真里评真实数据训练的 manipulation 策略](wiki/entities/paper-simplerenv-real2sim-eval.md) — SIMPLER**（*Evaluating Real-World Robot Manipulation Policies in Simulation*，[arXiv:2405.05941](htt `📅unknown` `[entity_page]`
+- [SimVLA：从仿真到真实家庭的移动操作 VLA](wiki/entities/paper-simvla-zero-shot-mobile-manipulation.md) — SimVLA**（Zero-Shot Sim-to-Real VLA Learning for Mobile Manipulation）提出完全依靠仿真监督训练移动操作视觉-语言-动作策略，并直接 `📅unknown` `[entity_page]`
 - [Situation-Aware Dual Cobots（arXiv:2609.26083）](wiki/entities/paper-situation-aware-dual-cobots.md) — Situation-Aware Dual Cobots**（*Situation Aware Locomotion for Dual Mobile Cobots in Shared Environ `📅unknown` `[entity_page]`
 - [Situation-aware Frontier：四足搜救的局势感知前沿排序](wiki/entities/paper-situation-aware-frontier-quadruped-sar.md) — Situation Aware Frontier Prioritization**（arXiv:2608.02571，[代码 `📅unknown` `[entity_page]`
 - [SkeleWAM：用稀疏 3D 骨架做 World-Action Modeling](wiki/entities/paper-skelewam-efficient-manipulation.md) — SkeleWAM**（*Skeleton World-Action Modeling for Efficient Robotic Manipulation*，[arXiv:2610.02120 `📅unknown` `[entity_page]`
@@ -4697,6 +4698,7 @@
 - [小鹏 IRON · 正面显示与顶部声源定位的头部结构（CN224702057U）](wiki/entities/patent-xpeng-cn224702057u-head-display-mic-array.md) — 专利 **CN224702057U**（*正面显示与顶部声源定位的头部结构*，小鹏机器人 / IRON 相关布局，2026-09-01）公开 **本体·头颈·机械臂** 方向的结构或控制方案 — 编译 `📅unknown` `[entity_page]`
 - [Paxini（帕西尼感知科技）](wiki/entities/paxini.md) — Paxini**（帕西尼感知科技，深圳）以 **高精度触觉传感** 为核心，构建「传感器–灵巧手–人形」产品矩阵，并运营 **Human-Centered 全模态实景数据采集工厂**（天津、武汉等 `📅unknown` `[entity_page]`
 - [PCB Motor（PCB 定子轴向磁通电机）](wiki/entities/pcb-motor.md) — PCB Motor**（ziteh/pcb-motor）是 **PCB 定子** 的轴向磁通 PMSM/BLDC 开源硬 `📅unknown` `[entity_page]`
+- [PentAGI（VXControl）](wiki/entities/pentagi.md) — PentAGI**（Penetration Testing Artificial General Intelligence）是面向安全工程师与研究者的自托管多智能体安全评估平台：用户给出评估目标， `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
 - [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
 - [PhAI Labs（科学 AI 研究机构）](wiki/entities/phai-labs.md) — PhAI Labs 是以模型和数据基础设施推动科学发现为公开定位的研究机构，发布 JEPA-Anything、RSI-Anything、ScienceBuddy、ScienceIDE 等研究项目。 `📅unknown` `[entity_page]`

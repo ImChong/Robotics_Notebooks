@@ -135,6 +135,15 @@ type: ingest
 - 记录脚本分层、地图/地形/影像候选核验、官方示例的精度边界，以及隐私/用途限制。
 - 未修改 catalog.md、log.md 或导出文件；本次仅核读官方仓库文档，未本地运行定位流程。
 
+# 2026-10-13 — SimVLA ingest
+
+- 新增 SimVLA 论文实体与论文、项目主页、代码仓库来源归档。
+- 记录 SimAction/SimVQA 预训练、SimDeploy rollout 后训练、数据规模与真机零样本评测。
+- 明确公开仓库边界：仿真/数据工作流可用，训练 recipe、SimDeploy 训练适配器与 checkpoint 未包含。
+- 关联 VLA、manipulation、loco-manipulation 导航。
+
+## [2026-10-13] ingest | sources/repos/pentagi.md — 收录多智能体安全测试平台并记录授权范围、容器隔离与外部服务边界
+
 ## [2026-10-13] ingest | SDD / TDD / BDD / ATDD — 补齐方法定义并说明分层组合关系
 
 - 归档 GitHub Spec Kit、SDD 预印本、Kent Beck 对 canonical TDD 的说明、Dan North 的 BDD 原文，以及 Cucumber / Agile Alliance 实践文档。
