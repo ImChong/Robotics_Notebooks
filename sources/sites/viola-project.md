@@ -22,5 +22,5 @@
 
 ## 对 Wiki 的映射
 
-- [paper-viola.md](../../wiki/entities/paper-viola.md) — 方法、实验、局限及复现状态。
+- [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md) — 方法、实验、局限及复现状态。
 - [viola_arxiv_2610_12435.md](../papers/viola_arxiv_2610_12435.md) — 论文摘录与数据口径。

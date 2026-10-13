@@ -12,7 +12,7 @@
 - **机构：** Vesoma、ETH Zürich、Max Planck Institute for Intelligent Systems（MPI-IS）、University of Tübingen、ELLIS Institute
 - **平台：** Unitree G1；手部模块覆盖 Inspire 与 Dex3 解码器
 - **入库日期：** 2026-10-13
-- **一句话说明：** 用冻结的人体/机器人共用动作编码器，将大规模带标注的人类动作变成与机器人控制器同空间的 body/hand latent 监督，让通用策略预测动作潜变量，再由冻结解码器转成关节命令。
+- **一句话说明：** 用冻结的人体/机器人共用动作编码器，将带标注的人类动作变成与机器人控制器同空间的 body/hand latent 监督，让通用策略预测动作潜变量，再由冻结解码器转成关节命令。
 
 ## 核心摘录（面向 Wiki 编译）
 
@@ -20,7 +20,7 @@
 
 VioLA 的动作不是关节角，而是拼接后的 128 维动作潜变量：64 维 body latent + 64 维 hand latent。人体与机器人各有配对编码器，将两种来源的身体 / 手部运动映射到对应的共享潜空间；与之配对的机器人 body controller 和 hand decoder 将策略输出解码为关节命令。编码器和解码器预训练后冻结，通用策略训练阶段只更新策略本身。body 侧继承 SONIC 的运动编码器与控制器，hand 模块单独预训练。
 
-**对 Wiki 的映射：** [paper-viola.md](../../wiki/entities/paper-viola.md)「核心机制」；[SONIC](../../wiki/methods/sonic-motion-tracking.md) 的潜变量控制接口。
+**对 Wiki 的映射：** [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md)「核心机制」；[SONIC](../../wiki/methods/sonic-motion-tracking.md) 的潜变量控制接口。
 
 ### 2. 人类视频如何成为机器人策略标签
 
@@ -28,7 +28,7 @@ VioLA 的动作不是关节角，而是拼接后的 128 维动作潜变量：64 
 
 训练池共 31,988 个 episode、140,572,312 帧（约 780.96 小时），其中 93.2% 为人类记录。作者估算其训练 schedule 下人类数据约占训练样本 exposure 的 80%；“93.2% 帧数”不等于每个训练阶段都按此比例采样。
 
-**对 Wiki 的映射：** [paper-viola.md](../../wiki/entities/paper-viola.md)「训练数据与标签构造」；[human-data supervision 概念关联](../../wiki/concepts/imitation-learning.md)。
+**对 Wiki 的映射：** [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md)「训练数据与标签构造」。
 
 ### 3. 真机表现与证据边界
 
@@ -36,7 +36,7 @@ VioLA 的动作不是关节角，而是拼接后的 128 维动作潜变量：64 
 
 论文所称 **zero-shot** 指评测任务无需任务专属微调；任务家族仍出现在训练中，评测 episode、实验室环境与物体实例被留出。当前实验仅覆盖一台 G1 与有限试次，不能外推成跨机器人、任意新任务的零样本泛化结论。
 
-**对 Wiki 的映射：** [paper-viola.md](../../wiki/entities/paper-viola.md)「实验结果」「结论」与「局限与风险」。
+**对 Wiki 的映射：** [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md)「实验结果」「结论」与「局限与风险」。
 
 ## 归档说明
 
