@@ -101,6 +101,14 @@ flowchart LR
 
 论文的 62.5% 是目标场景聚合评测，63.9% 则来自固定的 12 项真机任务子集；两者分母与协议不同。项目页还指出，在未见实验室承载面上的成功率明显下降。因此结果支持的是**已扫描场景内的个性化迁移**，不能解读为任意未见家具都能直接泛化。长时程移动操作仍是后续方向。
 
+## 与其他工作对比
+
+| 对照 | 差异读法 |
+|------|----------|
+| [Embodied MM Grounding（3DGS）](./paper-embodied-multimodal-grounding-3dgs-mobile-manipulation.md) | 同样利用场景级 3DGS；该工作侧重语义定位与移动操作，Splat2Act 把重建场景用于仿真任务构造和策略个性化。 |
+| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | 都从真实环境建立可用仿真；Splat2Act 聚焦楼宇级拾取、承载面发现和 π₀.₅ 两阶段微调。 |
+| [PRISM Real2Sim2Real](./paper-prism-real2sim2real.md) | PRISM 以生成视频合成动态人–物交互并训练人形全身策略；Splat2Act 用场景扫描与几何 oracle 自动生成移动操作拾取演示。 |
+
 ## 结论
 
 **Splat2Act 将场景数字化、自动生成仿真拾取示范和 VLA 个性化串成闭环；它减少真实演示采集，但当前验证主要支持已扫描场景内的拾取。**
