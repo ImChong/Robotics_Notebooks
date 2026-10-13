@@ -51,6 +51,7 @@ related:
   - ../entities/ardy.md
   - ./gentlehumanoid-motion-tracking.md
   - ../entities/paper-extreme-rgmt.md
+  - ../entities/paper-viola-human-data-control.md
   - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
