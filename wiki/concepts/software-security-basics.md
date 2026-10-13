@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, security, authn, authz, secrets, supply-chain]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-13
 related:
   - ./model-versioning-ota.md
   - ./container-orchestration-cicd.md
@@ -11,11 +11,13 @@ related:
   - ../entities/codex-security.md
   - ../entities/cloudflare-security-audit-skill.md
   - ../entities/owasp-mas.md
+  - ../entities/pentagi.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
   - ../../sources/repos/codex-security.md
   - ../../sources/sites/openai-codex-security-docs.md
   - ../../sources/sites/owasp-mas.md
+  - ../../sources/repos/pentagi.md
 summary: "软件安全基础（身份认证、授权、密钥管理、供应链安全）：机器人云边通道与制品发布的最小安全基线。"
 ---
 
@@ -57,6 +59,7 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - 与 [OTA](./model-versioning-ota.md) 联动：验签失败 → 拒绝更新并告警。
 - **移动 companion App：** 云边 AuthN/TLS 在本页；**iOS/Android 客户端**（本地凭证、证书钉扎、逆向韧性）对照 [OWASP MAS](../entities/owasp-mas.md)（MASVS / MASTG），与 OWASP ASVS 分工互补。
 - **Agent 驱动 AppSec（可选增强）：** 对遥操作网关 / OTA 服务 / 训练 farm API 等代码面，可用 [Codex Security](../entities/codex-security.md) 做 PR `--diff` 扫描与 SARIF 导出；深度审计可叠加 [Cloudflare Security Audit Skill](../entities/cloudflare-security-audit-skill.md)（覆盖率 ledger + 对抗验证 + `findings.json`）；与依赖锁定、SBOM、镜像签名叠用，勿替代 AuthN/AuthZ/KMS 基线。
+- **授权范围渗透测试：** 对机器人外围 Web/API 服务，可将 [PentAGI](../entities/pentagi.md) 作为自托管多 agent 测试工具选项；必须由资产所有者明确授权、先在隔离靶场验证，并审查 Docker、网络与第三方模型边界。
 
 ## 局限与风险
 
@@ -71,6 +74,7 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - [Codex Security](../entities/codex-security.md)
 - [Cloudflare Security Audit Skill](../entities/cloudflare-security-audit-skill.md)
 - [OWASP MAS（移动 App 安全标准）](../entities/owasp-mas.md)
+- [PentAGI（自托管多智能体渗透测试）](../entities/pentagi.md)
 
 ## 参考来源
 
@@ -78,6 +82,7 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 - [Codex Security 仓库归档](../../sources/repos/codex-security.md)
 - [Codex Security 官方文档归档](../../sources/sites/openai-codex-security-docs.md)
 - [OWASP MAS 门户归档](../../sources/sites/owasp-mas.md)
+- [PentAGI 官方仓库归档](../../sources/repos/pentagi.md)
 
 ## 推荐继续阅读
 
