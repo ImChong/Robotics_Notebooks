@@ -3870,6 +3870,10 @@ button.home-wiki-heatmap-cell.is-active {
 .co-tab.is-active { border-color: var(--accent); background: var(--quote-bg); font-weight: 600; }
 .co-tab[hidden] { display: none; }
 .co-tab-count { font-size: .72rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+/* 互链榜单页的社区选择条复用公司切换胶囊；按钮需继承字体并显示手型 */
+.hubs-community-picker { margin: 4px 0 16px; }
+.hubs-community-picker[hidden] { display: none; }
+.hubs-community-picker .co-tab { font-family: inherit; cursor: pointer; }
 .co-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius);

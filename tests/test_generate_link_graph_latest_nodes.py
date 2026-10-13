@@ -228,6 +228,21 @@ class PaperHubStatsTest(unittest.TestCase):
             [h["detail_id"] for h in stats["top_paper_hubs"]],
         )
 
+    def test_hub_rankings_communities_match_labels_in_all(self) -> None:
+        """社区榜单：hubs.html 按 community_label 从 all 筛出，各社区条数须等于其规模。"""
+        nodes, edges = glg._build_graph_data()
+        communities, community_meta = glg.assign_communities(nodes, edges)
+        stats = glg._compute_graph_stats(nodes, edges, communities, community_meta)
+        rankings = stats["_hub_rankings"]
+        listed = rankings["communities"]
+        self.assertTrue(listed)
+        self.assertNotIn(glg.OTHER_COMMUNITY_ID, [c["id"] for c in listed])
+        sizes = [c["size"] for c in listed]
+        self.assertEqual(sizes, sorted(sizes, reverse=True))
+        for community in listed:
+            members = [h for h in rankings["all"] if h.get("community_label") == community["label"]]
+            self.assertEqual(len(members), community["size"], community["id"])
+
 
 class RoadmapGraphNodesTest(unittest.TestCase):
     """roadmap/ 页面应作为 roadmap_page 节点进入 link-graph。"""

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="Robotics Notebooks 互链枢纽完整榜单 - 按站内互链总数（无向度数）排序的全站与论文核心页。" />
+  <meta name="description" content="Robotics Notebooks 互链枢纽完整榜单 - 按站内互链总数（无向度数）排序的全站、论文与各社区核心页。" />
   <title>互链枢纽完整榜单 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <script src="theme-init.js"></script>
@@ -33,9 +33,10 @@
       <div class="container">
         <div class="home-hub-head">
           <h1 class="section-title" id="hubs-heading">互链枢纽完整榜单</h1>
-          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文互链枢纽">
+          <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文 / 社区互链枢纽">
             <button type="button" id="hubsTabAll" class="home-hub-tab is-active" aria-pressed="true">全站</button>
             <button type="button" id="hubsTabPaper" class="home-hub-tab" aria-pressed="false">论文</button>
+            <button type="button" id="hubsTabCommunity" class="home-hub-tab" aria-pressed="false">社区</button>
           </div>
         </div>
         <p class="section-subtitle">按站内互链总数（无向度数）排序。默认展示前 30 名，可继续展开或查看全部。</p>
@@ -44,6 +45,9 @@
           <p class="data-meta">正在加载互链统计…</p>
         </div>
         <div id="hubsPanelPaper" class="home-hub-panel" aria-live="polite" hidden></div>
+        <!-- 社区榜单：先选「社区」标签，再在下方选具体社区；?community=<id> 直达 -->
+        <nav id="hubsCommunityPicker" class="co-tabs hubs-community-picker" aria-label="选择社区" hidden></nav>
+        <div id="hubsPanelCommunity" class="home-hub-panel" aria-live="polite" hidden></div>
         <p class="home-hub-more"><a href="graph.html">在知识图谱中查看全站结构 →</a></p>
       </div>
     </section>

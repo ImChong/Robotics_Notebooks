@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司的节点数分布，以及公司 / 实验室技术路线时间线。" />
+  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司 / 实验室的节点数分布与技术路线时间线。" />
   <title>增长趋势 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
@@ -59,7 +59,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司节点数按公司技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
@@ -138,9 +138,9 @@
       // 时间线的两类机构：点击跳回各自路线页；配色为分类色板第 1 / 2 槽（蓝 / 橙），
       // 已按站点浅色 #ffffff、深色 #191919 底色校验色觉区分与对比度
       var ORG_KINDS = {
-        company: { label: '公司', unit: '家', page: 'company.html', symbol: 'circle',
+        company: { label: '公司', unit: '家', page: 'company.html', symbol: 'circle', glyph: '●',
           color: { light: '#2a78d6', dark: '#3987e5' } },
-        lab: { label: '实验室', unit: '个', page: 'lab.html', symbol: 'diamond',
+        lab: { label: '实验室', unit: '个', page: 'lab.html', symbol: 'diamond', glyph: '◆',
           color: { light: '#eb6834', dark: '#d95926' } }
       };
 
@@ -223,6 +223,8 @@
               return {
                 // 与纵深节点数一致：显示「中文（English）」，仅去掉末尾「社区」
                 cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
+                // 点击跳到互链榜单页的对应社区榜单
+                links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
                 series: [{
                   values: list.map(function (c) { return c.size; }),
                   color: list.map(function (c) { return color[c.id]; })
@@ -254,42 +256,77 @@
                 });
               return {
                 cats: D.DEPTH_ORDER.map(function (k) { return D.DEPTH_META[k].label; }),
+                // 点击跳到该纵深的路线页：roadmap/depth-x.md → roadmap.html?id=roadmap-depth-x
+                links: D.DEPTH_ORDER.map(function (k) {
+                  return 'roadmap.html?id=roadmap-' + D.depthHubPath(k).replace(/^roadmap\//, '').replace(/\.md$/, '');
+                }),
                 series: series,
                 total: D.DEPTH_ORDER.length + ' 条纵深，合计 ' + sum + ' 节点次（一个节点可属多条纵深）'
               };
             });
           } }
       ];
+      // 公司 / 实验室节点数：顺序与首页一致；同一机构内按知识节点 ID 去重，跨机构分别计数。
+      // 条形按节点主社区堆叠着色，点击条形或名称跳到该机构的路线页
+      function orgNodeCounts(g, orgs) {
+        var nodes = new Map(g.nodes.map(function (n) { return [n.detail_id, n]; }));
+        var count = {};
+        var sum = 0;
+        orgs.forEach(function (org, i) {
+          var seen = new Set();
+          (org.nodes || []).forEach(function (entry) {
+            var n = nodes.get(entry.id);
+            if (!n || seen.has(n.id)) return;
+            seen.add(n.id);
+            var values = count[n.community] || (count[n.community] = orgs.map(function () { return 0; }));
+            values[i] += 1;
+            sum += 1;
+          });
+        });
+        var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
+        return {
+          cats: orgs.map(function (org) { return org.name; }),
+          links: orgs.map(function (org) { return ORG_KINDS[org.kind].page + '?id=' + encodeURIComponent(org.key); }),
+          kinds: orgs.map(function (org) { return org.kind; }),
+          series: RNGraphTooltip.getSortedCommunities(g.communities)
+            .filter(function (c) { return count[c.id]; })
+            .map(function (c) {
+              return { name: RNGraphTooltip.shortenCommunityLabel(c.label), values: count[c.id], color: color[c.id] };
+            }),
+          sum: sum
+        };
+      }
+      function withKind(orgs, kind) {
+        return (orgs || []).map(function (org) { return Object.assign({ kind: kind }, org); });
+      }
       VIEWS.push({ id: 'company-nodes', label: '公司节点数', unit: '节点', kind: 'category',
         load: function () {
           return Promise.all([linkGraph(), companyRoadmaps()]).then(function (data) {
-            var g = data[0];
-            var companies = data[1].companies || [];
-            var nodes = new Map(g.nodes.map(function (n) { return [n.detail_id, n]; }));
-            var count = {};
-            var sum = 0;
-            // 公司顺序与首页一致；同一公司内按知识节点 ID 去重，跨公司分别计数。
-            companies.forEach(function (company, i) {
-              var seen = new Set();
-              (company.nodes || []).forEach(function (entry) {
-                var n = nodes.get(entry.id);
-                if (!n || seen.has(n.id)) return;
-                seen.add(n.id);
-                var values = count[n.community] || (count[n.community] = companies.map(function () { return 0; }));
-                values[i] += 1;
-                sum += 1;
-              });
-            });
-            var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
-            return {
-              cats: companies.map(function (company) { return company.name; }),
-              series: RNGraphTooltip.getSortedCommunities(g.communities)
-                .filter(function (c) { return count[c.id]; })
-                .map(function (c) {
-                  return { name: RNGraphTooltip.shortenCommunityLabel(c.label), values: count[c.id], color: color[c.id] };
-                }),
-              total: companies.length + ' 家公司，合计 ' + sum + ' 节点次（公司内去重，一个节点可属多家公司）'
-            };
+            var s = orgNodeCounts(data[0], withKind(data[1].companies, 'company'));
+            s.total = s.cats.length + ' 家公司，合计 ' + s.sum + ' 节点次（公司内去重，一个节点可属多家公司）';
+            return s;
+          });
+        } });
+      VIEWS.push({ id: 'lab-nodes', label: '实验室节点数', unit: '节点', kind: 'category',
+        load: function () {
+          return Promise.all([linkGraph(), labRoadmaps()]).then(function (data) {
+            var s = orgNodeCounts(data[0], withKind(data[1].labs, 'lab'));
+            s.total = s.cats.length + ' 个实验室，合计 ' + s.sum + ' 节点次（实验室内去重，一个节点可属多个实验室）';
+            return s;
+          });
+        } });
+      // 公司与实验室合并：与合并时间线同序（按成立年份交错，同年公司在前），名称前用 ● / ◆ 区分两类机构
+      VIEWS.push({ id: 'org-nodes', label: '公司 + 实验室节点数', unit: '节点', kind: 'category',
+        load: function () {
+          return Promise.all([linkGraph(), companyRoadmaps(), labRoadmaps()]).then(function (data) {
+            var orgs = withKind(data[1].companies, 'company').concat(withKind(data[2].labs, 'lab'));
+            orgs.sort(function (a, b) { return a.founded_year - b.founded_year; });
+            var s = orgNodeCounts(data[0], orgs);
+            var companies = s.kinds.filter(function (k) { return k === 'company'; }).length;
+            s.marked = true;
+            s.total = companies + ' 家公司、' + (orgs.length - companies) + ' 个实验室，合计 ' + s.sum +
+              ' 节点次（机构内去重，一个节点可属多个机构；名称前 ● 为公司、◆ 为实验室）';
+            return s;
           });
         } });
       // 路线甘特图：每个机构一行（顺序同首页，按成立年份），同月节点合并为一个点
@@ -352,8 +389,8 @@
         var accent = css.getPropertyValue('--accent').trim();
         rangeBar.hidden = true;
         ganttRange = null;
-        // 甘特图高度按行数计算；行少时（如实验室时间线）不再被 460px 最小高度撑出空白
-        document.getElementById('trend-chart').style.minHeight = view.kind === 'gantt' ? '0' : '460px';
+        // 甘特图与条形图高度按行数计算；行少时（如实验室时间线 / 节点数）不再被 460px 最小高度撑出空白
+        document.getElementById('trend-chart').style.minHeight = view.kind === 'gantt' || view.kind === 'category' ? '0' : '460px';
         if (view.kind === 'category') return drawCategory(view, s, text, muted, grid);
         if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, css.getPropertyValue('--bg').trim());
         legend.hidden = true;
@@ -414,6 +451,13 @@
           return '<li><i style="background:' + t.color + '"></i>' + t.name + '</li>';
         }).join('') : '';
         legend.hidden = !stacked;
+        // 有链接时名称做成文本链接；合并视图名称前加类别标记（● 公司 / ◆ 实验室，标记着色、名称保持链接色）
+        var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        var ticktext = s.links ? labels.map(function (l, i) {
+          var k = s.marked && ORG_KINDS[s.kinds[i]];
+          return (k ? '<span style="color:' + k.color[theme] + '">' + k.glyph + '</span> ' : '') +
+            '<a href="' + s.links[i] + '" target="_self">' + l + '</a>';
+        }) : undefined;
         var height = labels.length * (narrow ? 26 : 24) + 50;
         var max = Math.max.apply(null, [1].concat(totals));
         var plotted = Plotly.react('trend-chart', traces, {
@@ -421,7 +465,8 @@
           font: { color: text, size: narrow ? 11 : 12 }, height: height,
           margin: { t: 10, r: 12, b: 30, l: 10 },
           xaxis: { gridcolor: grid, rangemode: 'tozero', range: [0, max * 1.12], fixedrange: true },
-          yaxis: { type: 'category', autorange: 'reversed', automargin: true, ticksuffix: ' ', fixedrange: true },
+          yaxis: { type: 'category', autorange: 'reversed', automargin: true, ticksuffix: ' ', fixedrange: true,
+            tickvals: ticktext && labels, ticktext: ticktext },
           annotations: totals.map(function (v, i) {
             return { x: v, y: labels[i], text: String(v), xanchor: 'left', xshift: 4,
               showarrow: false, font: { color: muted, size: narrow ? 10 : 11 } };
@@ -431,7 +476,10 @@
           dragmode: false
         }, { responsive: true, displaylogo: false, displayModeBar: false });
         status.textContent = view.label + '：' + s.total;
-        return plotted;
+        return plotted.then(function (gd) {
+          bindChartLinks(gd, view, s.links ? function (pt) { return s.links[pt.pointIndex]; } : null);
+          return gd;
+        });
       }
 
       // 'YYYY-MM' 前后平移若干月，给时间轴两端留白
@@ -571,25 +619,31 @@
         legend.hidden = !mixed;
         status.textContent = view.label + '：' + s.total;
         return plotted.then(function (gd) {
-          // react 复用同一个图表元素，先清掉旧监听；切到其他视图后点击不再跳转
-          gd.removeAllListeners('plotly_click');
-          gd.removeAllListeners('plotly_hover');
-          gd.removeAllListeners('plotly_unhover');
           gd.removeAllListeners('plotly_relayout');
           // 手动拖滑条后范围不再对应任何快捷按钮
           gd.on('plotly_relayout', function (ev) {
             if (applyingRange || !ganttRange) return;
             if (ev['xaxis.range'] || ev['xaxis.range[0]'] !== undefined) markRange(null);
           });
-          var drag = function () { return gd.querySelector('.nsewdrag'); };
-          gd.on('plotly_click', function (ev) {
-            var href = current && current.kind === 'gantt' && ev.points[0] && ev.points[0].customdata;
-            if (href) window.location.href = href;
-          });
-          gd.on('plotly_hover', function () { if (drag()) drag().style.cursor = 'pointer'; });
-          gd.on('plotly_unhover', function () { if (drag()) drag().style.cursor = ''; });
+          bindChartLinks(gd, view, function (pt) { return pt.customdata; });
           return gd;
         });
+      }
+
+      // 点击条形 / 节点跳到对应页面（hrefOf 为空则不跳转）。react 复用同一个图表元素，
+      // 先清掉旧监听；只响应绘制它的视图，切到其他视图后点击不再跳转
+      function bindChartLinks(gd, view, hrefOf) {
+        gd.removeAllListeners('plotly_click');
+        gd.removeAllListeners('plotly_hover');
+        gd.removeAllListeners('plotly_unhover');
+        if (!hrefOf) return;
+        var drag = function () { return gd.querySelector('.nsewdrag'); };
+        gd.on('plotly_click', function (ev) {
+          var href = current === view && ev.points[0] && hrefOf(ev.points[0]);
+          if (href) window.location.href = href;
+        });
+        gd.on('plotly_hover', function () { if (drag()) drag().style.cursor = 'pointer'; });
+        gd.on('plotly_unhover', function () { if (drag()) drag().style.cursor = ''; });
       }
 
       VIEWS.forEach(function (v) {
