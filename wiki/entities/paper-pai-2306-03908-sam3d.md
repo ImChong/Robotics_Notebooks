@@ -10,6 +10,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+  - ./paper-genia-arxiv-2610-12388.md
 sources:
   - ../../sources/papers/pai_awesome_2306_03908_sam-3d.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -69,6 +70,10 @@ Segment Anything in 3D scenes.
 - 本页 **不做** 与具体基线的逐项数值对比，只给出清单坐标。
 - 与站内 **深度论文实体** 的分界：深度页承载机构、实验表与源码运行时序；本页只承载清单导读锚点。同一 arXiv 若已存在深度页，应以深度页为准。
 - 两份同名清单可能对同一工作给出不同链接（项目页 / arXiv / GitHub）；以本页主链接与技术地图为准。
+
+## 后续生成式重建
+
+- [GenIA](./paper-genia-arxiv-2610-12388.md) 以冻结的 SAM 3D 先验为基础，在测试时加入几何、可见性和渲染约束，将单图生成式重建扩展到多视图与动态输入；它是 SAM 3D 先验的输入对齐扩展，不是本策展条目的同名论文。
 
 ## 结论
 
