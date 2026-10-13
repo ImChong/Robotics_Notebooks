@@ -4333,6 +4333,7 @@
 - [SpecVLA（arXiv:2608.15636）](wiki/entities/paper-specvla.md) — SpecVLA**（*Algorithm-Architecture Co-Design for Efficient VLA Inference via Speculative Inference  `📅unknown` `[entity_page]`
 - [SpeedTuning：给冻结模仿策略加一层速度倍率](wiki/entities/paper-speedtuning.md) — SpeedTuning**（*Speeding Up Policy Execution with Lightweight Reinforcement Learning*；[arXiv:2608.0 `📅unknown` `[entity_page]`
 - [Spiderbot（arXiv:2609.26989）](wiki/entities/paper-spiderbot-hexapod-open-source.md) — Spiderbot**（*Spiderbot: An Open-Source Energy-Efficient Hexapod with Passive Gravity Compensation `📅unknown` `[entity_page]`
+- [Splat2Act：从场景扫描到个性化 VLA 操作](wiki/entities/paper-splat2act-personalized-vla.md) — Splat2Act**（*Splat2Act: From Captured Scenes to Personalized VLA Manipulation*，[arXiv:2610.13945 `📅unknown` `[entity_page]`
 - [SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting](wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md) — SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting**（[arX `📅unknown` `[entity_page]`
 - [SPLC（社交偏好学习的人群机器人导航）](wiki/entities/paper-splc.md) — SPLC**（*Social Preference Learning for Crowd Robot Navigation*，[arXiv:2607.01925](https://arxiv.or `📅unknown` `[entity_page]`
 - [SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md) — SplitAdapter** 是 Samsung Future Robot AI Group 的人形 **负载感知 loco-manipulation 适配** 论文（arXiv:2606.032 `📅unknown` `[entity_page]`
