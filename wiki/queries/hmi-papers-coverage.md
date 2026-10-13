@@ -3,7 +3,7 @@ title: HMI 论文总索引 · 阅读导航
 type: query
 status: complete
 created: 2026-07-31
-updated: 2026-10-03
+updated: 2026-10-13
 summary: 具身智能研究室论文总索引（P001–P191）的站内阅读导航：每条论文对应站内哪一页、按主题怎么串着读。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -282,6 +282,12 @@ sources:
 | [P048](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P048.md) | SIMPLE | [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) |
 | [P146](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P146.md) | PACE | [PACE](../entities/paper-pace-sim2real-legged-robots.md) |
 | [P161](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P161.md) | HumanoidVLN | [HumanoidVLN](../entities/paper-humanoidvln.md) |
+
+## 新增论文（P191 快照之后）
+
+本页上游编号表仍是 2026-09-10 的 P001–P191 快照；以下是之后单独 ingest 的相关论文，不计入该快照条目数：
+
+- [Continual Humanoid Motion Learning](../entities/paper-continual-humanoid-motion-learning.md) — arXiv:2610.04231，持续人形动作学习、相似度引导 LoRA-PNN。
 
 ## 局限与风险
 
