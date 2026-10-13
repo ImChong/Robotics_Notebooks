@@ -3,6 +3,7 @@ type: entity
 tags: [paper, repo, tactile-sensing, magnetic-tactile, visuo-tactile, manipulation, nyu]
 status: complete
 updated: 2026-10-13
+project_id: eflesh
 arxiv: "2506.09994"
 code: https://github.com/notvenky/eFlesh
 project: https://e-flesh.com/
@@ -24,14 +25,14 @@ sources:
 
 ## 系统链路
 
-~~~mermaid
+```mermaid
 flowchart LR
   A[外力接触] --> B[TPU 微结构形变]
   B --> C[磁体相对位移]
   C --> D[磁力计读数]
   D --> E[学习式接触 / 力 / 滑移估计]
   F[可调 CAD 微结构] --> B
-~~~
+```
 
 ## 关键结果与边界
 
