@@ -167,7 +167,9 @@ related:
   - ../entities/paper-gap-graph-as-policy.md
   - ../concepts/variational-automation.md
   - ../entities/paper-discrete-forcing.md
+  - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
 sources:
+  - ../../sources/papers/simvla_arxiv_2610_11248.md
   - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/blogs/wechat_pinkrobot_vla_evolution_hierarchical_2026-09-17.md
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -246,6 +248,10 @@ VLA 可以看成机器人版的多模态 foundation model：输入“看到了�
 | SFT | Supervised Fine-Tuning | 将通用 VLM 适配到特定机器人任务与数据分布 |
 | VAM | Video-Action Model | 先预测视频潜动力学再解码动作，如 mimic-video |
 | UEI | Unified Embodied Intelligence | 同一扩散骨干联合生成视频与动作块的统一架构 |
+
+### 纯仿真数据的移动操作 VLA：SimVLA
+
+[SimVLA](../entities/paper-simvla-zero-shot-mobile-manipulation.md) 把程序化厨房仿真用于 VLA 的两阶段学习：SimAction + SimVQA 预训练，SimDeploy rollout 后训练，并在 Anubis 上做真实家庭零样本迁移。论文报告 54.4% 跨场景平均任务进度；官方仓库开放仿真与数据工作流，但未包含完整训练 recipe 和 checkpoint，适合与真机示范 VLA 的数据路径对照。
 
 ## 为什么重要
 
