@@ -16,6 +16,7 @@ arxiv: "2601.15284"
 venue: "ECCV 2026"
 code: https://github.com/miccooper9/egowm
 related:
+  - ./paper-fidelity-gap-egocentric-video.md
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md
   - ../methods/generative-world-models.md
@@ -145,6 +146,7 @@ sequenceDiagram
 
 | 工作 | 相对 EgoWM |
 |------|------------|
+| [Fidelity Gap](./paper-fidelity-gap-egocentric-video.md) | 系统量化主体运动与物体交互忠实度的规模差异，指出单靠视频/模型扩展难弥合差距 |
 | [1XWM](./paper-1xwm-redwood-world-model.md) | 同为动作条件视频；1XWM 加成功价值头做评测 |
 | [UniT](./paper-unit-unified-physical-language.md) | UniT 学共享动作语言；EgoWM 学像素未来 |
 | NWM 等导航 WM | EgoWM 强调互联网先验改装与 SCS |
@@ -154,6 +156,7 @@ sequenceDiagram
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [1XWM](./paper-1xwm-redwood-world-model.md)
+- [Fidelity Gap](./paper-fidelity-gap-egocentric-video.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 
 ## 参考来源
