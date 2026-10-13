@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司的节点数分布与公司技术路线时间线。" />
+  <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司的节点数分布，以及公司 / 实验室技术路线时间线。" />
   <title>增长趋势 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
@@ -29,7 +29,11 @@
     .trend-legend[hidden] { display: none; }
     .trend-legend li { display: flex; align-items: center; gap: 6px; min-width: 0; }
     .trend-legend i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
-    /* 公司时间线的公司名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
+    /* 时间线跨度过长时的快捷范围按钮：一行置于图上方，提示文字跟在按钮后 */
+    .trend-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 8px; }
+    .trend-range[hidden] { display: none; }
+    .trend-range-hint { color: var(--text-muted); font-size: .8rem; margin-left: 4px; }
+    /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
   </style>
 </head>
@@ -55,9 +59,10 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司节点数按公司技术路线收录统计；公司时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司节点数按公司技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
+        <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
         <div id="trend-chart" style="width:100%;min-height:460px"></div>
         <div class="updates-timeline-actions" role="group" aria-label="增长趋势导航">
           <div class="updates-timeline-actions-start">
@@ -80,6 +85,7 @@
       var tabs = document.getElementById('trend-tabs');
       var status = document.getElementById('trend-status');
       var legend = document.getElementById('trend-legend');
+      var rangeBar = document.getElementById('trend-range');
 
       function getJSON(url) {
         return fetch(url).then(function (r) {
@@ -123,6 +129,64 @@
       var companyRoadmapsPromise = null;
       function companyRoadmaps() {
         return companyRoadmapsPromise || (companyRoadmapsPromise = getJSON('company-roadmaps.json'));
+      }
+      var labRoadmapsPromise = null;
+      function labRoadmaps() {
+        return labRoadmapsPromise || (labRoadmapsPromise = getJSON('lab-roadmaps.json'));
+      }
+
+      // 时间线的两类机构：点击跳回各自路线页；配色为分类色板第 1 / 2 槽（蓝 / 橙），
+      // 已按站点浅色 #ffffff、深色 #191919 底色校验色觉区分与对比度
+      var ORG_KINDS = {
+        company: { label: '公司', unit: '家', page: 'company.html', symbol: 'circle',
+          color: { light: '#2a78d6', dark: '#3987e5' } },
+        lab: { label: '实验室', unit: '个', page: 'lab.html', symbol: 'diamond',
+          color: { light: '#eb6834', dark: '#d95926' } }
+      };
+
+      // 每个机构一行；同月节点合并为一个点，未注明日期的节点只计数不绘制
+      function ganttRows(orgs, kind) {
+        return (orgs || []).map(function (org) {
+          var byDate = {};
+          var undated = 0;
+          (org.nodes || []).forEach(function (n) {
+            if (!n.date) { undated += 1; return; }
+            (byDate[n.date] || (byDate[n.date] = [])).push(n.title + '（' + n.track + '）');
+          });
+          return {
+            key: org.key,
+            name: org.name,
+            kind: kind,
+            year: org.founded_year,
+            href: ORG_KINDS[kind].page + '?id=' + encodeURIComponent(org.key),
+            undated: undated,
+            points: Object.keys(byDate).sort().map(function (d) { return { date: d, items: byDate[d] }; })
+          };
+        });
+      }
+      function ganttData(allRows) {
+        var dated = 0;
+        var undated = 0;
+        var orgCount = {};
+        allRows.forEach(function (r) {
+          undated += r.undated;
+          r.points.forEach(function (p) { dated += p.items.length; });
+        });
+        var rows = allRows.filter(function (r) { return r.points.length; });
+        rows.forEach(function (r) { orgCount[r.kind] = (orgCount[r.kind] || 0) + 1; });
+        var dates = rows.map(function (r) { return r.points[0].date; })
+          .concat(rows.map(function (r) { return r.points[r.points.length - 1].date; })).sort();
+        var orgs = Object.keys(ORG_KINDS).filter(function (k) { return orgCount[k]; }).map(function (k) {
+          return orgCount[k] + ' ' + ORG_KINDS[k].unit + ORG_KINDS[k].label;
+        });
+        return {
+          rows: rows,
+          first: dates[0],
+          last: dates[dates.length - 1],
+          total: orgs.join('、') + '，' + dated + ' 个已注明日期的节点'
+            + (dates.length ? '（' + dates[0] + ' → ' + dates[dates.length - 1] + '）' : '')
+            + (undated ? '；另有 ' + undated + ' 个未注明日期的节点未绘制' : '')
+        };
       }
 
       function depthDaily() {
@@ -228,35 +292,26 @@
             };
           });
         } });
-      // 公司路线甘特图：每家公司一行（顺序同首页），同月节点合并为一个点；未注明日期的节点不绘制
+      // 路线甘特图：每个机构一行（顺序同首页，按成立年份），同月节点合并为一个点
       VIEWS.push({ id: 'company-timeline', label: '公司时间线', unit: '节点', kind: 'gantt',
         load: function () {
           return companyRoadmaps().then(function (data) {
-            var dated = 0;
-            var undated = 0;
-            var rows = (data.companies || []).map(function (company) {
-              var byDate = {};
-              (company.nodes || []).forEach(function (n) {
-                if (!n.date) { undated += 1; return; }
-                dated += 1;
-                (byDate[n.date] || (byDate[n.date] = [])).push(n.title + '（' + n.track + '）');
-              });
-              return {
-                key: company.key,
-                name: company.name,
-                points: Object.keys(byDate).sort().map(function (d) { return { date: d, items: byDate[d] }; })
-              };
-            }).filter(function (r) { return r.points.length; });
-            var dates = rows.map(function (r) { return r.points[0].date; })
-              .concat(rows.map(function (r) { return r.points[r.points.length - 1].date; })).sort();
-            return {
-              rows: rows,
-              first: dates[0],
-              last: dates[dates.length - 1],
-              total: rows.length + ' 家公司，' + dated + ' 个已注明日期的节点'
-                + (dates.length ? '（' + dates[0] + ' → ' + dates[dates.length - 1] + '）' : '')
-                + (undated ? '；另有 ' + undated + ' 个未注明日期的节点未绘制' : '')
-            };
+            return ganttData(ganttRows(data.companies, 'company'));
+          });
+        } });
+      VIEWS.push({ id: 'lab-timeline', label: '实验室时间线', unit: '节点', kind: 'gantt',
+        load: function () {
+          return labRoadmaps().then(function (data) {
+            return ganttData(ganttRows(data.labs, 'lab'));
+          });
+        } });
+      // 公司与实验室合并：按成立年份交错排列（同年公司在前），用颜色和点形区分两类机构
+      VIEWS.push({ id: 'org-timeline', label: '公司 + 实验室时间线', unit: '节点', kind: 'gantt',
+        load: function () {
+          return Promise.all([companyRoadmaps(), labRoadmaps()]).then(function (data) {
+            var rows = ganttRows(data[0].companies, 'company').concat(ganttRows(data[1].labs, 'lab'));
+            rows.sort(function (a, b) { return a.year - b.year; });
+            return ganttData(rows);
           });
         } });
       // 暂时隐藏的视图（纵深数趋势 / 每日纵深数）
@@ -295,8 +350,12 @@
         var muted = css.getPropertyValue('--text-muted').trim();
         var grid = css.getPropertyValue('--border').trim();
         var accent = css.getPropertyValue('--accent').trim();
+        rangeBar.hidden = true;
+        ganttRange = null;
+        // 甘特图高度按行数计算；行少时（如实验室时间线）不再被 460px 最小高度撑出空白
+        document.getElementById('trend-chart').style.minHeight = view.kind === 'gantt' ? '0' : '460px';
         if (view.kind === 'category') return drawCategory(view, s, text, muted, grid);
-        if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, accent, css.getPropertyValue('--bg').trim());
+        if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, css.getPropertyValue('--bg').trim());
         legend.hidden = true;
         var trace = view.kind === 'bar'
           ? { type: 'bar', marker: { color: accent }, width: 0.8 * 86400000 } // 日期不连续时固定为 0.8 天宽
@@ -379,43 +438,114 @@
       function shiftMonth(ym, k) {
         return new Date(Date.UTC(+ym.slice(0, 4), +ym.slice(5, 7) - 1 + k, 1)).toISOString().slice(0, 7);
       }
-
-      // 公司路线甘特图：横线连起首末节点，点为当月节点（同月多个则放大，悬停列出标题与方向）。
-      // 窄屏隐藏纵轴标签，把公司名放到各自横线上方，让时间轴占满整宽；
-      // 点击节点或公司名跳到对应的公司路线页 company.html?id=<key>
-      function companyLink(r) {
-        return '<a href="company.html?id=' + encodeURIComponent(r.key) + '" target="_self">' + r.name + '</a>';
+      function monthsBetween(a, b) {
+        return (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7));
       }
-      function drawGantt(view, s, text, muted, grid, accent, bg) {
+
+      // 甘特图时间窗：每月宽度低于该值时节点（直径 9–15px）会互相压住，改为默认只看近几年，
+      // 底部范围滑条左右平移 / 拖两端缩放，上方快捷按钮切换范围（触屏不开拖拽，靠滑条与按钮）
+      var GANTT_MIN_PX_PER_MONTH = 8;
+      var GANTT_WINDOWS = [
+        { years: 2, label: '近 2 年' }, { years: 3, label: '近 3 年' },
+        { years: 5, label: '近 5 年' }, { years: 0, label: '全部' }
+      ];
+      var ganttYears = 3;
+      var ganttRange = null; // 当前甘特图的 年数 → 范围 映射；非时间窗视图为 null
+      var applyingRange = false;
+      function markRange(years) {
+        Array.prototype.forEach.call(rangeBar.querySelectorAll('button'), function (b) {
+          var on = years !== null && +b.getAttribute('data-years') === years;
+          b.className = 'home-hub-tab' + (on ? ' is-active' : '');
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+      rangeBar.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-years]');
+        if (!b || !ganttRange) return;
+        ganttYears = +b.getAttribute('data-years');
+        markRange(ganttYears);
+        var range = ganttRange(ganttYears);
+        var job = drawing.then(function () {
+          applyingRange = true;
+          return Plotly.relayout('trend-chart', { 'xaxis.range': range });
+        }).then(function () { applyingRange = false; }, function () { applyingRange = false; });
+        drawing = job;
+      });
+
+      // 路线甘特图：横线连起首末节点，点为当月节点（同月多个则放大，悬停列出标题与方向）。
+      // 窄屏隐藏纵轴标签，把机构名放到各自横线上方，让时间轴占满整宽；
+      // 点击节点或机构名跳到对应的路线页 company.html?id=<key> / lab.html?id=<key>
+      function orgLink(r) {
+        return '<a href="' + r.href + '" target="_self">' + r.name + '</a>';
+      }
+      function drawGantt(view, s, text, muted, grid, bg) {
         var narrow = narrowMq.matches;
+        var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         var names = s.rows.map(function (r) { return r.name; });
-        var span = { type: 'scatter', mode: 'lines', x: [], y: [], hoverinfo: 'skip', opacity: 0.35,
-          line: { color: accent, width: narrow ? 4 : 6 } };
+        var kinds = Object.keys(ORG_KINDS).filter(function (k) {
+          return s.rows.some(function (r) { return r.kind === k; });
+        });
+        var mixed = kinds.length > 1;
+        // 横线按机构类别各一条 trace（单条 trace 只能有一种线色）
+        var spans = kinds.map(function (k) {
+          return { type: 'scatter', mode: 'lines', x: [], y: [], hoverinfo: 'skip', opacity: 0.35,
+            line: { color: ORG_KINDS[k].color[theme], width: narrow ? 4 : 6 } };
+        });
         var dots = { type: 'scatter', mode: 'markers', x: [], y: [], text: [], customdata: [],
-          marker: { color: accent, size: [], line: { color: bg, width: 1 } },
+          marker: { color: [], symbol: [], size: [], line: { color: bg, width: 1 } },
           hovertemplate: '%{text}<extra></extra>' };
         s.rows.forEach(function (r) {
           var p = r.points;
+          var k = ORG_KINDS[r.kind];
+          var span = spans[kinds.indexOf(r.kind)];
           span.x.push(p[0].date, p[p.length - 1].date, null);
           span.y.push(r.name, r.name, null);
           p.forEach(function (pt) {
             dots.x.push(pt.date);
             dots.y.push(r.name);
-            dots.customdata.push(r.key);
+            dots.customdata.push(r.href);
+            dots.marker.color.push(k.color[theme]);
+            dots.marker.symbol.push(k.symbol);
             dots.marker.size.push(Math.min(9 + 2 * (pt.items.length - 1), 15));
-            dots.text.push('<b>' + r.name + '</b> · ' + pt.date + '<br>' + pt.items.join('<br>'));
+            dots.text.push('<b>' + r.name + '</b>' + (mixed ? '（' + k.label + '）' : '') + ' · ' + pt.date +
+              '<br>' + pt.items.join('<br>'));
           });
         });
         var rowH = narrow ? 44 : 28;
         // 窄屏首行公司名在横线上方，顶部多留 0.3 行，避免与时间轴刻度相撞
         var top = narrow ? -0.8 : -0.5;
-        var plotted = Plotly.react('trend-chart', s.rows.length ? [span, dots] : [], {
+        var full = s.first ? [shiftMonth(s.first, -1), shiftMonth(s.last, 1)] : null;
+        // 桌面纵轴机构名约占图宽 1/4；窄屏名称在横线上方，时间轴占满整宽
+        var plotW = document.getElementById('trend-chart').clientWidth * (narrow ? 1 : 0.75);
+        var windowed = !!full && plotW / monthsBetween(full[0], full[1]) < GANTT_MIN_PX_PER_MONTH;
+        var sliderH = 36;
+        // 带滑条时绘图区不低于 72px：低于 Plotly 约 64px 的下限时它会压缩边距，滑条被挤出图底
+        var plotH = Math.max((names.length - 0.5 - top) * rowH, windowed ? 72 : 0);
+        if (windowed) {
+          ganttRange = function (years) {
+            if (!years) return full;
+            var start = shiftMonth(full[1], -12 * years);
+            return [start > full[0] ? start : full[0], full[1]];
+          };
+          rangeBar.innerHTML = GANTT_WINDOWS.map(function (w) {
+            return '<button type="button" data-years="' + w.years + '">' + w.label + '</button>';
+          }).join('') + '<span class="trend-range-hint">' +
+            (touch ? '拖动底部滑条两端选择时间范围' : '拖动底部滑条左右平移，拖两端缩放') + '</span>';
+          markRange(ganttYears);
+          rangeBar.hidden = false;
+        }
+        var plotted = Plotly.react('trend-chart', s.rows.length ? spans.concat([dots]) : [], {
           paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-          font: { color: text, size: narrow ? 11 : 12 }, height: (names.length - 0.5 - top) * rowH + 40,
+          font: { color: text, size: narrow ? 11 : 12 },
+          // 滑条下方 Plotly 另留约 20–40px（小图更多），一并预留
+          height: plotH + 40 + (windowed ? sliderH + 44 : 0),
           margin: { t: 30, r: 12, b: 10, l: 10 },
           xaxis: {
             type: 'date', side: 'top', gridcolor: grid, fixedrange: true,
-            range: s.first ? [shiftMonth(s.first, -1), shiftMonth(s.last, 1)] : undefined,
+            range: windowed ? ganttRange(ganttYears) : full || undefined,
+            rangeslider: windowed
+              ? { visible: true, range: full, thickness: sliderH / plotH, bordercolor: grid, borderwidth: 1, bgcolor: 'rgba(0,0,0,0)' }
+              : { visible: false },
             tickformatstops: [
               { dtickrange: [null, 'M6'], value: '%Y-%m' },
               { dtickrange: ['M12', null], value: '%Y' }
@@ -423,26 +553,38 @@
           },
           // 显式反向范围：首家公司在上，且不按点的大小额外留白
           yaxis: { type: 'category', categoryarray: names, range: [names.length - 0.5, top], automargin: true,
-            tickvals: names, ticktext: s.rows.map(companyLink),
+            tickvals: names, ticktext: s.rows.map(orgLink),
             ticksuffix: ' ', showticklabels: !narrow, gridcolor: grid, fixedrange: true },
           annotations: narrow ? s.rows.map(function (r) {
             return { xref: 'paper', x: 0, y: r.name, xanchor: 'left', yanchor: 'bottom', yshift: 8,
-              showarrow: false, text: companyLink(r), font: { color: muted, size: 11 } };
+              showarrow: false, text: orgLink(r), font: { color: muted, size: 11 } };
           }) : [],
           showlegend: false, hovermode: 'closest', hoverlabel: { align: 'left' },
           dragmode: false
         }, { responsive: true, displaylogo: false, displayModeBar: false });
-        legend.hidden = true;
+        // 两类机构同图时给出图例（色块 + 点形），身份不只靠颜色
+        legend.innerHTML = mixed ? kinds.map(function (k) {
+          return '<li><i style="background:' + ORG_KINDS[k].color[theme] +
+            (ORG_KINDS[k].symbol === 'diamond' ? ';transform:rotate(45deg) scale(.85)' : ';border-radius:50%') +
+            '"></i>' + ORG_KINDS[k].label + '</li>';
+        }).join('') : '';
+        legend.hidden = !mixed;
         status.textContent = view.label + '：' + s.total;
         return plotted.then(function (gd) {
           // react 复用同一个图表元素，先清掉旧监听；切到其他视图后点击不再跳转
           gd.removeAllListeners('plotly_click');
           gd.removeAllListeners('plotly_hover');
           gd.removeAllListeners('plotly_unhover');
+          gd.removeAllListeners('plotly_relayout');
+          // 手动拖滑条后范围不再对应任何快捷按钮
+          gd.on('plotly_relayout', function (ev) {
+            if (applyingRange || !ganttRange) return;
+            if (ev['xaxis.range'] || ev['xaxis.range[0]'] !== undefined) markRange(null);
+          });
           var drag = function () { return gd.querySelector('.nsewdrag'); };
           gd.on('plotly_click', function (ev) {
-            var key = current && current.kind === 'gantt' && ev.points[0] && ev.points[0].customdata;
-            if (key) window.location.href = 'company.html?id=' + encodeURIComponent(key);
+            var href = current && current.kind === 'gantt' && ev.points[0] && ev.points[0].customdata;
+            if (href) window.location.href = href;
           });
           gd.on('plotly_hover', function () { if (drag()) drag().style.cursor = 'pointer'; });
           gd.on('plotly_unhover', function () { if (drag()) drag().style.cursor = ''; });
@@ -463,7 +605,7 @@
         var theme = document.documentElement.getAttribute('data-theme');
         if (current && records.some(function (r) { return r.oldValue !== theme; })) render(current);
       }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'], attributeOldValue: true });
-      // 跨过窄屏断点时切换长 / 短标签（甘特图切换公司名位置）
+      // 跨过窄屏断点时切换长 / 短标签（甘特图切换机构名位置）
       narrowMq.addEventListener('change', function () {
         if (current && (current.kind === 'category' || current.kind === 'gantt')) render(current);
       });
