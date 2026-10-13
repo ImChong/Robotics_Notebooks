@@ -10,7 +10,7 @@ code: https://github.com/nasa-jpl/nebula2-wildos
 venue: "IEEE Transactions on Field Robotics (T-FR), accepted"
 related:
   - ../tasks/zero-shot-object-navigation.md
-  - ./paper-green-for-go-vla-grounding.md
+  - ./paper-travexplorer.md
   - ./robot-lab.md
 sources:
   - ../../sources/papers/wildos_arxiv_2602_19308.md
@@ -50,9 +50,9 @@ summary: "WildOS（arXiv:2602.19308，NASA JPL / ETH Zurich RSL）：将 ExploRF
 flowchart LR
   query["语言目标"] --> visual["ExploRFM 视觉语义评分"]
   camera["RGB 图像"] --> visual
-  geometry["深度几何与里程计"] --> graph["稀疏导航图和几何 frontier"]
+  geometry["深度几何与里程计"] --> navgraph["稀疏导航图和几何 frontier"]
   visual --> score["frontier 可通行性与目标相似度"]
-  graph --> score
+  navgraph --> score
   score --> goal["粒子滤波式远处目标定位"]
   goal --> planner["图级分层规划"]
   score --> planner
@@ -144,14 +144,14 @@ sequenceDiagram
 | 工作 | 关联与区别 |
 |------|------|
 | [零样本目标导航](../tasks/zero-shot-object-navigation.md) | WildOS 是户外长程场景下的稀疏图 + 视觉 frontier 系统 |
-| [Green for Go, Red for No](./paper-green-for-go-vla-grounding.md) | 都用视觉基础模型支持导航决策；WildOS 评分图节点与目标位置 |
+| [TravExplorer](./paper-travexplorer.md) | 都利用语义线索指导导航；WildOS 面向户外开放词汇目标搜索，TravExplorer 侧重可通行性探索 |
 | [Robot Lab](./robot-lab.md) | 共享 ETH Zurich RSL 生态，任务与系统不同 |
 | [视觉–语言导航](../tasks/vision-language-navigation.md) | WildOS 用语言指定物体目标；VLN 通常跟随逐步路径指令 |
 
 ## 关联页面
 
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
-- [Green for Go, Red for No](./paper-green-for-go-vla-grounding.md)
+- [TravExplorer](./paper-travexplorer.md)
 - [Robot Lab](./robot-lab.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
 
