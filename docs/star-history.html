@@ -29,6 +29,10 @@
     .trend-legend[hidden] { display: none; }
     .trend-legend li { display: flex; align-items: center; gap: 6px; min-width: 0; }
     .trend-legend i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+    /* 时间线跨度过长时的快捷范围按钮：一行置于图上方，提示文字跟在按钮后 */
+    .trend-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 8px; }
+    .trend-range[hidden] { display: none; }
+    .trend-range-hint { color: var(--text-muted); font-size: .8rem; margin-left: 4px; }
     /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
   </style>
@@ -58,6 +62,7 @@
         <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司节点数按公司技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
+        <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
         <div id="trend-chart" style="width:100%;min-height:460px"></div>
         <div class="updates-timeline-actions" role="group" aria-label="增长趋势导航">
           <div class="updates-timeline-actions-start">
@@ -80,6 +85,7 @@
       var tabs = document.getElementById('trend-tabs');
       var status = document.getElementById('trend-status');
       var legend = document.getElementById('trend-legend');
+      var rangeBar = document.getElementById('trend-range');
 
       function getJSON(url) {
         return fetch(url).then(function (r) {
@@ -344,6 +350,8 @@
         var muted = css.getPropertyValue('--text-muted').trim();
         var grid = css.getPropertyValue('--border').trim();
         var accent = css.getPropertyValue('--accent').trim();
+        rangeBar.hidden = true;
+        ganttRange = null;
         // 甘特图高度按行数计算；行少时（如实验室时间线）不再被 460px 最小高度撑出空白
         document.getElementById('trend-chart').style.minHeight = view.kind === 'gantt' ? '0' : '460px';
         if (view.kind === 'category') return drawCategory(view, s, text, muted, grid);
@@ -430,6 +438,39 @@
       function shiftMonth(ym, k) {
         return new Date(Date.UTC(+ym.slice(0, 4), +ym.slice(5, 7) - 1 + k, 1)).toISOString().slice(0, 7);
       }
+      function monthsBetween(a, b) {
+        return (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7));
+      }
+
+      // 甘特图时间窗：每月宽度低于该值时节点（直径 9–15px）会互相压住，改为默认只看近几年，
+      // 底部范围滑条左右平移 / 拖两端缩放，上方快捷按钮切换范围（触屏不开拖拽，靠滑条与按钮）
+      var GANTT_MIN_PX_PER_MONTH = 8;
+      var GANTT_WINDOWS = [
+        { years: 2, label: '近 2 年' }, { years: 3, label: '近 3 年' },
+        { years: 5, label: '近 5 年' }, { years: 0, label: '全部' }
+      ];
+      var ganttYears = 3;
+      var ganttRange = null; // 当前甘特图的 年数 → 范围 映射；非时间窗视图为 null
+      var applyingRange = false;
+      function markRange(years) {
+        Array.prototype.forEach.call(rangeBar.querySelectorAll('button'), function (b) {
+          var on = years !== null && +b.getAttribute('data-years') === years;
+          b.className = 'home-hub-tab' + (on ? ' is-active' : '');
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+      rangeBar.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-years]');
+        if (!b || !ganttRange) return;
+        ganttYears = +b.getAttribute('data-years');
+        markRange(ganttYears);
+        var range = ganttRange(ganttYears);
+        var job = drawing.then(function () {
+          applyingRange = true;
+          return Plotly.relayout('trend-chart', { 'xaxis.range': range });
+        }).then(function () { applyingRange = false; }, function () { applyingRange = false; });
+        drawing = job;
+      });
 
       // 路线甘特图：横线连起首末节点，点为当月节点（同月多个则放大，悬停列出标题与方向）。
       // 窄屏隐藏纵轴标签，把机构名放到各自横线上方，让时间轴占满整宽；
@@ -473,13 +514,38 @@
         var rowH = narrow ? 44 : 28;
         // 窄屏首行公司名在横线上方，顶部多留 0.3 行，避免与时间轴刻度相撞
         var top = narrow ? -0.8 : -0.5;
+        var full = s.first ? [shiftMonth(s.first, -1), shiftMonth(s.last, 1)] : null;
+        // 桌面纵轴机构名约占图宽 1/4；窄屏名称在横线上方，时间轴占满整宽
+        var plotW = document.getElementById('trend-chart').clientWidth * (narrow ? 1 : 0.75);
+        var windowed = !!full && plotW / monthsBetween(full[0], full[1]) < GANTT_MIN_PX_PER_MONTH;
+        var sliderH = 36;
+        // 带滑条时绘图区不低于 72px：低于 Plotly 约 64px 的下限时它会压缩边距，滑条被挤出图底
+        var plotH = Math.max((names.length - 0.5 - top) * rowH, windowed ? 72 : 0);
+        if (windowed) {
+          ganttRange = function (years) {
+            if (!years) return full;
+            var start = shiftMonth(full[1], -12 * years);
+            return [start > full[0] ? start : full[0], full[1]];
+          };
+          rangeBar.innerHTML = GANTT_WINDOWS.map(function (w) {
+            return '<button type="button" data-years="' + w.years + '">' + w.label + '</button>';
+          }).join('') + '<span class="trend-range-hint">' +
+            (touch ? '拖动底部滑条两端选择时间范围' : '拖动底部滑条左右平移，拖两端缩放') + '</span>';
+          markRange(ganttYears);
+          rangeBar.hidden = false;
+        }
         var plotted = Plotly.react('trend-chart', s.rows.length ? spans.concat([dots]) : [], {
           paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-          font: { color: text, size: narrow ? 11 : 12 }, height: (names.length - 0.5 - top) * rowH + 40,
+          font: { color: text, size: narrow ? 11 : 12 },
+          // 滑条下方 Plotly 另留约 20–40px（小图更多），一并预留
+          height: plotH + 40 + (windowed ? sliderH + 44 : 0),
           margin: { t: 30, r: 12, b: 10, l: 10 },
           xaxis: {
             type: 'date', side: 'top', gridcolor: grid, fixedrange: true,
-            range: s.first ? [shiftMonth(s.first, -1), shiftMonth(s.last, 1)] : undefined,
+            range: windowed ? ganttRange(ganttYears) : full || undefined,
+            rangeslider: windowed
+              ? { visible: true, range: full, thickness: sliderH / plotH, bordercolor: grid, borderwidth: 1, bgcolor: 'rgba(0,0,0,0)' }
+              : { visible: false },
             tickformatstops: [
               { dtickrange: [null, 'M6'], value: '%Y-%m' },
               { dtickrange: ['M12', null], value: '%Y' }
@@ -509,6 +575,12 @@
           gd.removeAllListeners('plotly_click');
           gd.removeAllListeners('plotly_hover');
           gd.removeAllListeners('plotly_unhover');
+          gd.removeAllListeners('plotly_relayout');
+          // 手动拖滑条后范围不再对应任何快捷按钮
+          gd.on('plotly_relayout', function (ev) {
+            if (applyingRange || !ganttRange) return;
+            if (ev['xaxis.range'] || ev['xaxis.range[0]'] !== undefined) markRange(null);
+          });
           var drag = function () { return gd.querySelector('.nsewdrag'); };
           gd.on('plotly_click', function (ev) {
             var href = current && current.kind === 'gantt' && ev.points[0] && ev.points[0].customdata;
