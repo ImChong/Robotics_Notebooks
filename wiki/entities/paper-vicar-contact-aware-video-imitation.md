@@ -41,7 +41,6 @@ summary: "VICAR 从第三人称视频恢复人体动作与任务相关场景几�
 | RL | Reinforcement Learning | 通过与环境交互优化动作策略 |
 | Isaac Lab | Isaac Lab | 论文采用的机器人仿真与学习环境 |
 | MoCap | Motion Capture | 运动捕捉；部署时用于提供全局球/物体状态 |
-| LOO | Leave-One-Out | 不适用于本文；此处不作为核心评测方法 |
 
 ## 研究问题与定位
 
