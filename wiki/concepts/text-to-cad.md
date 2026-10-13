@@ -20,6 +20,7 @@ related:
   - ../entities/cad-1000-hours-dataset.md
   - ../entities/freecad-mcp.md
   - ../entities/openscad.md
+  - ../entities/nvidia-usd-brep-smlib.md
   - ./sim2real.md
 sources:
   - ../../sources/sites/text-to-cad-tools.md
