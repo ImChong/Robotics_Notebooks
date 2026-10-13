@@ -3,6 +3,7 @@ type: entity
 tags: [repo, motion-retargeting, human-motion, monocular-video, mixamo, blender, glb, gvhmr]
 status: complete
 updated: 2026-10-13
+project_id: motion2mixamorig
 code: https://github.com/MaxLiu22/Motion2MixamoRig
 summary: "Motion2MixamoRig 将单人视频或照片中的动作恢复并重定向到 Mixamo 角色，提供 CLI、Blender 扩展与蒙皮 GLB 导出。"
 related:
@@ -20,14 +21,14 @@ sources:
 
 ## 流程与接口
 
-~~~mermaid
+```mermaid
 flowchart LR
   A[视频 / 照片] --> B[人体动作恢复]
   B --> C[骨架序列]
   C --> D[Mixamo 重定向]
   E[Mixamo 目标 FBX] --> D
   D --> F[GLB / 预览视频]
-~~~
+```
 
 仓库提供 m2mr doctor、m2mr run 和 Blender 4.2+ 扩展。CLI 支持视频、静态图片、角色 rig 和 skeleton 复用参数；推理后可保留 skeleton，以便换角色时避免重复提取动作。项目 README 指出需要下载 GVHMR 等模型权重，故不应将整个流水线简化为“仅运行 GVHMR”。
 
