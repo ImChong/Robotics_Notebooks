@@ -12,7 +12,9 @@ from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((REPO_ROOT / "docs" / "lab-roadmaps.json").read_text(encoding="utf-8"))
-COMPANY_DATA = json.loads((REPO_ROOT / "docs" / "company-roadmaps.json").read_text(encoding="utf-8"))
+COMPANY_DATA = json.loads(
+    (REPO_ROOT / "docs" / "company-roadmaps.json").read_text(encoding="utf-8")
+)
 
 
 def _site_pages() -> dict[str, Path]:
