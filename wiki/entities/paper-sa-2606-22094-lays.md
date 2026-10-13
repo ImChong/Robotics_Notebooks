@@ -10,6 +10,7 @@ related:
   - ../methods/visual-line-matching-localization.md
   - ../methods/lidar-odometry-fusion.md
   - ../methods/lingbot-map.md
+  - ./geo-sleuth.md
 sources:
   - ../../sources/papers/lays_cross_view_yaw_arxiv_2606_22094.md
   - ../../sources/sites/lays-project.md
