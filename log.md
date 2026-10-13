@@ -118,6 +118,19 @@ type: ingest
 - 核对 Kinova/RealSense 真机结果、理论假设与代码开放状态；截至入库日未找到官方可运行代码入口。
 - 未更新 catalog.md、log.md 或导出文件。
 
+# 2026-10-13 — Ingest VICAR
+
+- 新增 [VICAR 实体](../wiki/entities/paper-vicar-contact-aware-video-imitation.md)：总结视频/场景恢复、接触与速度保持的两阶段重定向、movable-contact generator、PPO 训练、仿真/真机结果与边界。
+- 归档 [arXiv 论文](../sources/papers/vicar_arxiv_2610_13079.md)、[官方项目页](../sources/sites/vicar.md) 和 [官方仓库](../sources/repos/vicar.md)。
+- 与 VisualMimic、动作重定向流水线、接触丰富操作等知识节点交叉链接。
+- 仅新增与更新知识/来源源文件；未改 Actions/workflows 或生成文件。
+
+## [2026-10-13] ingest | GenIA — 归档论文、项目页与官方代码，并整理测试时输入对齐和开源复现边界
+
+- 官方项目页确认 GenIA 在冻结 SAM 3D 先验上做推理时对齐；动态版本依赖 ActionMesh。
+- 官方仓库已开放，安装要求 CUDA 12.8 / NVIDIA GPU，SAM 3D Objects 权重需先接受许可。
+- 单独对比生成式补全、输入可见区域指标和每场景推理成本，关联 SAM 3D 策展入口。
+
 ## [2026-10-12] lint | 全量 wiki lint：清零 39 条信息型预警（25 页回链评测基准/感知栈枢纽、8 页补论文三段式、3 页补数据集维度、VaDar 补 venue、Actor/export 归入缺页概念停用表）
 
 ## [2026-10-12] ingest | CADCraft：原生 Rust CAD 与 MCP 自动化入口
