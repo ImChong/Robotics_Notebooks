@@ -2,10 +2,11 @@
 type: entity
 tags: [osint, geospatial, visualization, dashboard, repo]
 status: complete
-updated: 2026-10-04
+updated: 2026-10-13
 institutions: [independent-maintainer]
 related:
   - ../overview/navigation-slam-autonomy-stack.md
+  - ./geo-sleuth.md
   - ./cmu-mscv-semantic-3d-mapping.md
   - ../concepts/embodied-perception-six-spatial-representations.md
 sources:
@@ -83,6 +84,7 @@ flowchart LR
 
 - **多源数据不等于统一真值：** feed 的坐标、时延、覆盖率和定义可能不一致；仪表盘中的计数或标记应回查上游说明。
 - **“实时”需要逐层核验：** README 与 API 文档对海事层的表述有差异；卫星位置由 TLE 推算，多个环境图层则是事件/热点。
+- **照片地理定位是另一类工具：** [geo-sleuth](./geo-sleuth.md) 从单张照片组织可核验候选和地图/影像证据；它不等于 OSIRIS 的多源地图仪表盘，也不是机器人 SLAM。
 - **情报与机器人地图不可互换：** OSIRIS 不提供 SLAM 里程计、机器人本体位姿或可直接用于 Nav2 的代价地图。机器人空间表征边界可参见[具身感知的六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)。
 - **隐私和安全：** 上游提供方可能接收查询内容；主动扫描涉及目标系统，应核对授权与本地法规。
 
