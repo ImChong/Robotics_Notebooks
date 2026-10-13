@@ -801,16 +801,39 @@ a.hero-stat-num:focus-visible {
   font-size: .82rem;
 }
 .home-hub-community-bar[hidden] { display: none; }
-.home-hub-select {
+/* 去掉原生箭头，改用自绘箭头放在胶囊右端半圆的圆心（距右缘 = 高度 / 2）；右内边距留出整个半圆 */
+.home-hub-select-wrap {
+  --select-h: 28px;
+  position: relative;
+  display: inline-flex;
   min-width: 0;
   max-width: 100%;
-  padding: 4px 12px;
+}
+.home-hub-select {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  height: var(--select-h);
+  padding: 0 var(--select-h) 0 12px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: var(--bg);
   color: var(--text);
   font: inherit;
+  line-height: normal;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.home-hub-select-arrow {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--select-h) / 2 - 5px);
+  width: 10px;
+  height: 6px;
+  margin-top: -3px;
+  color: var(--text-muted);
+  pointer-events: none;
 }
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
 /* 仅首页这个入口居中：左对齐时会被左下角的 .home-nav-fab 浮动按钮压住（移动端尤其
