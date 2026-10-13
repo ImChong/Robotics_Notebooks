@@ -5,6 +5,7 @@ status: complete
 arxiv: "2605.15336"
 updated: 2026-10-06
 related:
+  - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../methods/sonic-motion-tracking.md

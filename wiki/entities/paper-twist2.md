@@ -8,6 +8,7 @@ venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
 summary: "TWIST2：便携可扩展全身人形数据采集系统——2-DoF 颈 egocentric 感知、PICO 全身遥操作、RL 低层跟踪 + 扩散高层 visuomotor 自主；全栈开源与社区数据集。"
 related:
+  - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md

@@ -20,6 +20,7 @@ venue: "arXiv"
 code: https://github.com/Axellwppr/motion_tracking
 summary: "HEFT：PMG 从嘈杂 VR 跟踪人类意图 + WPC 窗化双手负载课程，在 G1 与全尺寸 L7（175 cm/65 kg）上实现 24 kg 级重载全身遥操作与高动态跟踪；训练/检查点开源。"
 related:
+  - ./egalahad-sim2real.md
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md

@@ -4,6 +4,7 @@ tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
 updated: 2026-10-09
 related:
+  - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
   - ../methods/reinforcement-learning.md
@@ -90,6 +91,9 @@ related:
   - ../entities/cosmos-cookbook.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 sources:
+  - ../../sources/repos/egalahad-sim2real.md
+  - ../../sources/sites/egalahad-sim2real-docs.md
+  - ../../sources/sites/egalahad-sim2real-leaderboard.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
   - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
@@ -157,6 +161,10 @@ flowchart TD
   R -.-> A
   A --> T --> G --> M --> P --> V --> D --> O
 ```
+
+## 部署运行时与跨代码库评测实例
+
+[EGalahad/sim2real](../entities/egalahad-sim2real.md) 是一套面向 Unitree G1 的工程化 sim2sim/sim2real 栈：策略推理 runtime 与 MuJoCo 或真机 I/O backend 解耦，并配套 Pico/XR 动作输入和跨代码库动作跟踪 leaderboard。排行榜将 15 个版本条目映射为 10 个唯一项目节点；详细数据集、评测口径与节点映射见 [项目页](../entities/egalahad-sim2real.md)。迁移外部 ONNX 策略仍要验证 observation/history、关节顺序、增益与动作缩放，不能把“模型可加载”当成已完成真机迁移。
 
 ## 核心问题：Domain Gap
 

@@ -6,6 +6,7 @@ updated: 2026-09-15
 arxiv: "2607.15163"
 venue: "arXiv 2026"
 related:
+  - ./egalahad-sim2real.md
   - ../concepts/behavior-foundation-model.md
   - ../concepts/whole-body-control.md
   - ../concepts/humanoid-policy-network-architecture.md

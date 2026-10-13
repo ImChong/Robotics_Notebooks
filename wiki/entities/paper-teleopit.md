@@ -21,6 +21,7 @@ venue: "arXiv"
 code: https://github.com/BotRunner64/Teleopit
 summary: "Teleopit：PICO VR 统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉；History Encoder 与 failure-aware rewind 提升 live VR 跟踪；五仓开源；96 条演示上 ACT/GR00T 达 90%/95% SR。"
 related:
+  - ./egalahad-sim2real.md
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md

@@ -10,6 +10,7 @@ venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
 summary: "BFM-Zero：latent prompt 统一目标姿态、奖励优化、恢复与少样本适配；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系属 Forward-backward 表征。"
 related:
+  - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-05-promptable-control.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
