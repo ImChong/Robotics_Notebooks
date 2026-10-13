@@ -6339,7 +6339,24 @@
   var companyCount = document.getElementById('heroCompanyCount');
   var companyRoutesCard = document.getElementById('home-company-routes');
   var labCount = document.getElementById('heroLabCount');
-  var labRoutesCard = document.getElementById('home-lab-routes');
+  // 公司 / 实验室路线同卡：按钮切换两个面板（同互链枢纽的全站 / 论文切换）
+  var orgTabCompany = document.getElementById('homeOrgTabCompany');
+  var orgTabLab = document.getElementById('homeOrgTabLab');
+  var orgPanelCompany = document.getElementById('homeOrgPanelCompany');
+  var orgPanelLab = document.getElementById('home-lab-routes');
+  function showHomeOrgTab(showLab) {
+    if (!orgTabCompany || !orgTabLab || !orgPanelCompany || !orgPanelLab) return;
+    orgTabCompany.classList.toggle('is-active', !showLab);
+    orgTabLab.classList.toggle('is-active', showLab);
+    orgTabCompany.setAttribute('aria-pressed', String(!showLab));
+    orgTabLab.setAttribute('aria-pressed', String(showLab));
+    orgPanelCompany.hidden = showLab;
+    orgPanelLab.hidden = !showLab;
+  }
+  if (orgTabCompany && orgTabLab) {
+    orgTabCompany.addEventListener('click', function () { showHomeOrgTab(false); });
+    orgTabLab.addEventListener('click', function () { showHomeOrgTab(true); });
+  }
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
   // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
@@ -6841,22 +6858,24 @@
     });
   }
 
-  // Hero「公司路线」数字：同纵深路线——滚到「公司路线」卡中心描边一圈（不展开），随后高亮展开按钮
+  // Hero「公司路线」数字：同纵深路线——切到公司面板，滚到卡片中心描边一圈（不展开），随后高亮展开按钮
   if (companyCount && companyRoutesCard) {
     companyCount.addEventListener('click', function (event) {
       event.preventDefault();
+      showHomeOrgTab(false);
       scrollEntryCardToCenter(companyRoutesCard, '#home-company-routes', function () {
         playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
       });
     });
   }
 
-  // Hero「实验室路线」数字：滚到「实验室路线」卡中心描边一圈（暂无折叠按钮，不高亮文案）
-  if (labCount && labRoutesCard) {
+  // Hero「实验室路线」数字：切到实验室面板，滚到同一张卡中心描边一圈（暂无折叠按钮，不高亮文案）
+  if (labCount && companyRoutesCard) {
     labCount.addEventListener('click', function (event) {
       event.preventDefault();
-      scrollEntryCardToCenter(labRoutesCard, '#home-lab-routes', function () {
-        playCardBorderTrace(labRoutesCard);
+      showHomeOrgTab(true);
+      scrollEntryCardToCenter(companyRoutesCard, '#home-lab-routes', function () {
+        playCardBorderTrace(companyRoutesCard);
       });
     });
   }
@@ -6912,9 +6931,10 @@
     scrollEntryCardToCenter(companyRoutesCard, null, function () {
       playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
     });
-  } else if (window.location.hash === '#home-lab-routes' && labRoutesCard) {
-    scrollEntryCardToCenter(labRoutesCard, null, function () {
-      playCardBorderTrace(labRoutesCard);
+  } else if (window.location.hash === '#home-lab-routes' && companyRoutesCard) {
+    showHomeOrgTab(true);
+    scrollEntryCardToCenter(companyRoutesCard, null, function () {
+      playCardBorderTrace(companyRoutesCard);
     });
   } else if (window.location.hash === '#wiki-search') {
     var searchSection = document.getElementById('wiki-search');

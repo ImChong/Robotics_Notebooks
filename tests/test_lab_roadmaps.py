@@ -75,7 +75,7 @@ def test_home_entry_links_match_data_order() -> None:
     card = html[start : html.index("</div>", start)]
     keys = re.findall(r'<a [^>]*href="lab\.html\?id=([^"]+)"', card)
     assert keys == [lab["key"] for lab in DATA["labs"]]
-    # 首页实验室卡尚无折叠按钮；超过 4 个时需按公司卡加 data-lab-extra + 展开按钮
+    # 实验室与公司同卡、按钮切换，尚无折叠按钮；超过 4 个时拆成独立卡片并加 data-lab-extra + 展开按钮
     assert len(keys) <= 4
 
 

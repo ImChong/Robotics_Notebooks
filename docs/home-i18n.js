@@ -21,6 +21,7 @@
     '定位到更多路线入口卡': 'Jump to more roadmaps',
     '定位到公司路线入口卡': 'Jump to company roadmaps',
     '定位到实验室路线入口卡': 'Jump to lab roadmaps',
+    '切换公司 / 实验室路线': 'Switch between company and lab roadmaps',
     '入口': 'Starting points', '从零开始': 'Getting started',
     '建立运动控制全局认识': 'Build an overview of motion control',
     '一条主线打通具身智能全栈': 'One roadmap through the full embodied AI stack',

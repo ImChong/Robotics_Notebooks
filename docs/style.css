@@ -1350,14 +1350,16 @@ button.home-wiki-heatmap-cell.is-active {
   grid-column: 1 / -1;
   min-height: 0;
 }
-/* 桌面（6 列网格）：上排 3 张入口卡各占 2 列；「更多路线」通栏独占一排；
-   「公司路线」与「实验室路线」左右并排各占 3 列。
-   顶对齐：任一卡展开后另一张不被拉高留白；按钮统一最小高度 */
+/* 公司 / 实验室路线同卡：切换按钮占标签胶囊的位置，面板内沿用卡片的纵向间距 */
+.home-org-tabs { align-self: flex-start; }
+.home-org-panel { display: flex; flex-direction: column; gap: 10px; }
+.home-org-panel[hidden] { display: none; }
+/* 桌面：「更多路线」与「公司路线」两张通栏卡改为左右并排（6 列网格：上排 3×2、下排 2×3）。
+   顶对齐：任一卡展开后另一张不被拉高留白；按钮统一最小高度，折叠态两卡底边齐平 */
 @media (min-width: 861px) {
   .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .home-entry-grid > .home-entry-card { grid-column: span 2; }
   .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
-  .home-entry-grid > .home-entry-card-wide { grid-column: 1 / -1; }
   .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 54px; }
 }
 .home-entry-route-links {
