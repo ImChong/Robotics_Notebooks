@@ -23,6 +23,7 @@
 
 - [UniWAM 独立详情节点](../../wiki/entities/paper-uniwam-unified-world-action-model.md)
 - [论文来源归档](../papers/uniwam_arxiv_2610_02054.md)
+- [官方项目页核查](../sites/uniwam.md)
 
 
 ## 本次核查补充
