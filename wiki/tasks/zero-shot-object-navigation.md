@@ -2,7 +2,7 @@
 type: task
 tags: [task, objectnav, zero-shot, navigation, embodied-ai, open-vocabulary, habitat, vln]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-13
 related:
   - ./vision-language-navigation.md
   - ../entities/paper-travexplorer.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-dart-sam3-realtime.md
   - ../entities/paper-blip2.md
   - ../entities/paper-rpv-semnav.md
+  - ../entities/paper-wildos-open-vocabulary-object-search.md
   - ../entities/habitat-sim.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
@@ -86,6 +87,7 @@ flowchart TB
 | 跨楼层 | [TravExplorer](../entities/paper-travexplorer.md) 可通行 3D；[ZONDA](../entities/paper-zonda.md) 高度差启发式 |
 | 仿真 | [Habitat](../entities/habitat-sim.md) HM3D/MP3D |
 | 训练-free 语义 frontier | [RPV-SemNav](../entities/paper-rpv-semnav.md)（room-mediated RPV + geodesic value map） |
+| 户外长程搜索 | [WildOS](../entities/paper-wildos-open-vocabulary-object-search.md)：用视觉 frontier / 可通行性评分稀疏几何图，并融合多视角线索定位远处目标 |
 | 真机 | 四足 Go2、轮腿双足等 + MPPI/局部规划 |
 
 - **图关系 + 长时序方法：** [Graph-MambaNav](../entities/paper-sa-2608-13723-graph-mambanav.md) 在 ObjectNav 对象图里用目标关系先验控制 Graph-Mamba 扫描顺序，并以逐物体 Mamba 记忆补长程上下文；AI2-THOR / RoboTHOR 有仿真评测，但真机证据目前是轮式底盘找书演示。
@@ -117,6 +119,7 @@ flowchart TB
 - [TravExplorer](../entities/paper-travexplorer.md)
 - [ZONDA](../entities/paper-zonda.md)
 - [Uni-LaViRA](../entities/paper-uni-lavira.md)
+- [WildOS：户外开放词汇目标搜索](../entities/paper-wildos-open-vocabulary-object-search.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 
 ## 参考来源
