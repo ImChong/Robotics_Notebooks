@@ -23,6 +23,7 @@ related:
   - ../entities/paper-anytouch.md
   - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
+  - ../entities/eflesh.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -35,6 +36,9 @@ sources:
   - ../../sources/papers/tactilestep_arxiv_2609_28959.md
   - ../../sources/papers/anytouch_arxiv_2502_12191.md
   - ../../sources/papers/anytouch2_arxiv_2602_09617.md
+  - ../../sources/papers/eflesh_arxiv_2506_09994.md
+  - ../../sources/repos/eflesh.md
+  - ../../sources/sites/eflesh-project.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
@@ -80,6 +84,10 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **优点**：测量极其精准，带宽极高（可达 1000Hz+），是工业阻抗控制（Impedance Control）的标配。
 - **缺点**：只能提供一个合力/合力矩点，无法提供接触面上的空间分布信息。
 
+## 磁性微结构触觉实例：eFlesh
+
+[eFlesh](../entities/eflesh.md) 将磁体嵌入可打印 TPU 微结构，以磁力计读数估计接触位置、法向/剪切力和滑移。它代表一种不同于相机式 GelSight/DIGIT 与电阻阵列的磁性软触觉路线：机械结构本身决定可调的顺应性与灵敏度。论文和项目页报告亚毫米接触定位与精细操作结果，但仍需逐个传感器标定。
+
 ## 在机器人学习中的应用
 
 在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：
@@ -92,6 +100,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
+
+- [eFlesh（磁性触觉皮肤）](../entities/eflesh.md) — 可调 TPU 微结构 + 磁体/磁力计，学习估计接触力与滑移。
 
   - [TouchScale](../entities/touchscale.md) — 同步头戴/腕部 RGB 与双手触觉手套的人手视触觉数据集
 - [AnyTouch（论文）](../entities/paper-anytouch.md) 与 [项目](../entities/paper-anytouch.md) — TacQuad 与静态–动态跨传感器表示
