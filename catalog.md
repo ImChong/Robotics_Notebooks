@@ -852,6 +852,7 @@
 - [Muse Gadgets](wiki/entities/muse-gadgets.md) — Muse Gadgets** 是 Meta Muse 助手的开源设备扩展：用 ESP32 固件或 Linux SDK，把屏幕、按钮、音频、传感器和本地服务接入 Muse。 `📅unknown` `[entity_page]`
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [natural-disasters（ABYSSAL）](wiki/entities/natural-disasters-abyssal.md) — natural-disasters**（品牌名 **ABYSSAL**，[`Token-Gremlin/natural-disasters`](https://github.com/Token-G `📅unknown` `[entity_page]`
+- [Natura-1（Nature Will）](wiki/entities/naturewill-natura-1.md) — Natura-1** 是 Nature Will 宣布的物理世界基础模型：先从大规模人类第一人称操作视频学习，再用有限真实机器人数据适配到双臂灵巧操作，目标是让同一策略根据语言指令操纵多自由度手部 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
 - [Abaqus Agent（nellikassa566-ops/abaqus-agent）](wiki/entities/nellikassa566-ops-abaqus-agent.md) — Abaqus Agent（nellikassa566-ops/abaqus-agent）是以自然语言描述驱动 Abaqus 建模、网格、边界、提交作业和结果提取。 `📅unknown` `[entity_page]`

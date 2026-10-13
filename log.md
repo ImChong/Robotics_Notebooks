@@ -148,6 +148,8 @@ type: ingest
 - **操作：** ingest
 - **说明：** 入库 WING（arXiv:2610.03607），整理交互中心潜动作、低频 DCT 引导、仿真/真机评测和代码待发布状态，并关联 WAM 知识页。
 
+## [2026-10-13] ingest | sources/sites/naturewill-natura-1.md — 归档 Nature Will 灵巧手基础模型研究预览，区分闭源数据规模主张与可复现证据
+
 ## [2026-10-13] ingest | grit-deploy-onboard-g1 | G1 机载部署项目
 
 - 来源：截图中项目链接 https://github.com/KurokoWeidong/GRIT_Deploy_Onboard_G1
