@@ -7,6 +7,131 @@
   "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。",
   "labs": [
     {
+      "key": "eth-rsl",
+      "name": "ETH Zurich RSL",
+      "founded_year": 2015,
+      "founded_source": "https://brancoweissfellowship.org/alumni/hutter/",
+      "founded_note": "官网未写成立年；Hutter 履历列 Robotic Systems Lab 助理教授 2015-10 起（此前 2013–2015 为 ASL 组长），按该教席起点计；ETH 理事会 2015-09 任命见 Netzwoche 2015-09-29 报道。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "Marco Hutter 领导的 ETH 足式机器人实验室：以 ANYmal 为载体，从执行器网络 sim2real、特权教师–学生、GPU 大规模并行训练（legged_gym / RSL-RL）走到感知跑酷、注意力地图编码与人形全身运动；工具链开源，代表作训练代码多未公开。",
+      "official": "https://rsl.ethz.ch/",
+      "nodes": [
+        {
+          "date": "2016-10",
+          "title": "ANYmal",
+          "track": "平台 / 硬件",
+          "desc": "SEA 力控四足平台，后由衍生公司 ANYbotics 商业化；此后 RSL 学习式运动工作的主要真机载体。",
+          "id": "entity-anymal",
+          "url": "https://doi.org/10.1109/IROS.2016.7758092",
+          "date_note": "按 IROS 2016 系统论文（会期 2016-10-09~14，Daejeon）；ANYbotics 公司化与 ANYmal C/D 等后续型号另计，更早演示视频未逐一核查。"
+        },
+        {
+          "date": "2019-01",
+          "title": "ActuatorNet / 敏捷动态技能",
+          "track": "Sim2Real",
+          "desc": "MLP 执行器网络拟合真实 SEA 动力学并接入仿真训练，ANYmal 零样本上真机：速度跟踪、高速奔跑与倒地自起；Science Robotics。",
+          "id": "wiki-methods-actuator-network",
+          "url": "https://arxiv.org/abs/1901.08652",
+          "date_note": "Science Robotics 2019-01 发表，arXiv:1901.08652 v1 为 2019-01-24，同月；详情挂执行器网络方法页。"
+        },
+        {
+          "date": "2020-10",
+          "title": "Challenging Terrain",
+          "track": "教师–学生 / 本体感知",
+          "desc": "特权教师 + 本体历史学生 + 自适应地形课程，ANYmal 仅靠本体感觉零样本穿越泥、雪、碎石与流水；Science Robotics。",
+          "id": "entity-paper-notebook-learning-quadrupedal-locomotion-over-challenging",
+          "url": "https://arxiv.org/abs/2010.11251",
+          "date_note": "arXiv:2010.11251 v1 与 Science Robotics 在线发表同为 2020-10-21。"
+        },
+        {
+          "date": "2021-09",
+          "title": "legged_gym / Walk in Minutes",
+          "track": "仿真 / 并行 RL",
+          "desc": "Isaac Gym 上千并行环境 + 游戏式地形课程，平地约 4 分钟、粗糙地形约 20 分钟训出 ANYmal 策略；legged_gym 成为足式 RL 常用模板。",
+          "id": "entity-legged-gym",
+          "url": "https://arxiv.org/abs/2109.11978",
+          "date_note": "论文 arXiv:2109.11978 v1 为 2021-09-24（CoRL 2021）；legged_gym 仓 initial open-source commit 为 2021-10-26，晚一个月。",
+          "date_source": "https://github.com/leggedrobotics/legged_gym/commit/ae614c029977157123225f538ecdd3f873e54bd4"
+        },
+        {
+          "date": "2021-10",
+          "title": "RSL-RL",
+          "track": "RL 库",
+          "desc": "GPU 优先的 PPO / 教师–学生蒸馏库，随 legged_gym 开源，后成 Isaac Lab 等框架的默认 RL 后端之一，现与 NVIDIA 共同维护。",
+          "id": "entity-rsl-rl",
+          "url": "https://github.com/leggedrobotics/rsl_rl",
+          "date_note": "仓库 initial open-source commit 为 2021-10-27；库论文 arXiv:2509.10771 v1 为 2025-09-13，属后续说明，不作节点日期。",
+          "date_source": "https://github.com/leggedrobotics/rsl_rl/commit/ff9e971c979a1cf42cd984cf6e0f50922229cb9c"
+        },
+        {
+          "date": "2022-01",
+          "title": "Perceptive Locomotion in the Wild",
+          "track": "感知运动",
+          "desc": "循环 Belief Encoder 融合带噪高程图与本体历史，外感知失效时退回本体反馈；ANYmal 野外徒步验证；Science Robotics。",
+          "id": "entity-paper-robust-perceptive-locomotion-wild",
+          "url": "https://arxiv.org/abs/2201.08117",
+          "date_note": "arXiv:2201.08117 v1 为 2022-01-20，Science Robotics 同月发表。"
+        },
+        {
+          "date": "2023-06",
+          "title": "ANYmal Parkour",
+          "track": "感知跑酷 / 分层技能",
+          "desc": "学习式 3D 感知 + 五技能低层库 + 能力感知高层导航，ANYmal D 连续爬升、跨沟、钻洞，最高约 2 m/s；仅图表数据公开。",
+          "id": "entity-paper-notebook-anymal-parkour-robust-perceptive-locomotion",
+          "url": "https://arxiv.org/abs/2306.14874",
+          "date_note": "arXiv:2306.14874 v1 为 2023-06-26；Science Robotics 2024 正式发表另计。"
+        },
+        {
+          "date": "2025-05",
+          "title": "Coordinated Badminton",
+          "track": "全身移动操作",
+          "desc": "ANYmal-D + DynaArm 统一 RL 全身 visuomotor 策略，感知噪声模型对齐 sim–real 并涌现主动感知，仅凭机载感知与人对打；代码未开源。",
+          "id": "entity-paper-coordinated-badminton-skills-anymal",
+          "url": "https://arxiv.org/abs/2505.22974",
+          "date_note": "Science Robotics 2025-05-28 在线发表，arXiv:2505.22974 v1 为 05-29，同月。",
+          "date_source": "https://doi.org/10.1126/scirobotics.adu3922"
+        },
+        {
+          "date": "2025-06",
+          "title": "AME",
+          "track": "感知运动 / 地图编码",
+          "desc": "本体条件多头注意力编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上泛化到稀疏地形，落脚注意力可解释；与 Disney Research 合作，官方无训练代码。",
+          "id": "entity-paper-ame-attention-based-map-encoding",
+          "url": "https://arxiv.org/abs/2506.09588",
+          "date_note": "arXiv:2506.09588 v1 为 2025-06-11；Science Robotics 2025-08-27 发表另计。"
+        },
+        {
+          "date": "2026-01",
+          "title": "AME-2",
+          "track": "感知运动 / 敏捷泛化",
+          "desc": "全局 + 局部注意力地图编码、带不确定性的神经高程映射与教师–学生 RL，ANYmal-D 与 TRON1 兼顾跑酷级敏捷与未见地形泛化；官方训练代码未发布。",
+          "id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
+          "url": "https://arxiv.org/abs/2601.08485",
+          "date_note": "arXiv:2601.08485 v1 为 2026-01-13。"
+        },
+        {
+          "date": "2026-04",
+          "title": "Whole-Body Humanoid Locomotion",
+          "track": "人形全身 / 感知运动",
+          "desc": "地形条件扩散生成器在线出全身参考，DeepMimic 式 RL 跟踪器执行并闭环微调；G1 机载感知完成箱攀、跨栏与楼梯；与 SFU Peng 组合作。",
+          "id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
+          "url": "https://arxiv.org/abs/2604.17335",
+          "date_note": "arXiv:2604.17335 v1 为 2026-04-19。"
+        },
+        {
+          "date": "2026-08",
+          "title": "Agile Perceptive Traversal",
+          "track": "人形跑酷 / 稀疏结构",
+          "desc": "PM-01 头部固态 LiDAR 原始回波 + AME-2 编码 + GRU，分阶段多教师蒸馏，机载完成跳上猴架、荡杆、跳下全序列（真机 14/15，自报）；未开源。",
+          "id": "entity-paper-agile-perceptive-traversal-sparse-3d",
+          "url": "https://arxiv.org/abs/2608.29769",
+          "date_note": "arXiv:2608.29769 v1 为 2026-08-30。"
+        }
+      ]
+    },
+    {
       "key": "rai",
       "name": "RAI Institute",
       "founded_year": 2022,
