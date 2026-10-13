@@ -1,12 +1,14 @@
-# 视频发布清单：零基础到 PPO
+# 视频发布清单：从头学人形机器人算法 · 零基础篇
 
-按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-11 尚未发布；下一集为 001。
+按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-11 尚未发布；下一集为 001。
 
-- 🆕：还没有视频，要新做（目前全部是 🆕）
+- 🎬 `<ep>`：本目录已有分镜与旁白源稿（`episodes/<ep>`），成片用 `render.mjs` 渲染（见 [README](README.md)）
+- 🆕：还没有视频，要新做
 - `[x]` 只表示已经发布
 - 每行破折号后先写「只讲」什么，再写排序依据：`§L1.2` 等指主路线章节；标〔取舍〕的是拆分或排序判断，路线原文没这么写
 - 「素材 cNN」指 [路线讲解长视频](../roadmap-motion-control-video/README.md) 的讲解稿 `chapters/NN-*.txt` 里可复用的幻灯片（引号内为标题原文），`svg/` 为同目录示意图；单集要在此基础上展开，不是直接剪长视频
-- 标题格式（建议，可改）：「零基础到 PPO 系列 (0NN)：<本集主题>」
+- 标题格式：「从头学人形机器人算法 · 零基础篇 (0NN)：<本集主题>」
+- 每集下面两行是封面文案（版式同论文精读系列，001 为样板）：「封面」＝ **大标题**（亮黄，只用汉字、2–6 字，英文缩写和公式放副标题）｜副标题｜一句话；「信息框」＝ 加粗第一行（本季短名：小节名）／第二行（Robotics Notebooks · 知识门槛 · 代码门槛，知识门槛引用前面的集时写那集的大标题）。右上角胶囊写所在季，目录在做分镜时按各幕标题生成。封面上不写集数和路线层级；60 个大标题互不重复，各行都在舞台字体下实测为单行
 
 ## 每集一个主题
 
@@ -16,87 +18,207 @@
 
 ## 第一季 · 全景与数学打底（L−1、L0）
 
-- [ ] 001 [机器人在干嘛：感知 → 规划 → 控制 → 执行](../../roadmap/motion-control.md#l1-序言机器人技术栈全景--怎么读这条路线) 🆕 — 只讲四步循环，以及本系列只钻「控制」这一盒；§L−1「30 秒看懂"一台机器人在干嘛"」。素材 c02「任何机器人都在循环跑同一个 4 步」、`svg/loop4.svg`
+- [ ] 001 [四步循环：感知 → 规划 → 控制 → 执行](../../roadmap/motion-control.md#l1-序言机器人技术栈全景--怎么读这条路线) 🎬 `ep001` — 只讲四步循环，以及本系列只钻「控制」这一盒；§L−1「30 秒看懂"一台机器人在干嘛"」。素材 c02「任何机器人都在循环跑同一个 4 步」、`svg/loop4.svg`。〔取舍〕§L−1 没有自测题，片尾用自编小题；§L−1 把 SLAM 放在规划盒、§L7.1 放在感知层，片中按 §L7.1：感知负责建图定位，规划只拿地图找路
+  - 封面：**四步循环** ｜ 感知 → 规划 → 控制 → 执行 ｜ 从扫地机到人形机器人，拆开全是这一套
+  - 信息框：主路线入门：机器人技术栈全景 ／ Robotics Notebooks · 不用数学 · 不用代码
 - [ ] 002 [为什么从人形 / 双足学起](../../wiki/entities/humanoid-robot.md) 🆕 — 只讲人形的四个难点：高自由度、浮动基、接触切换、强不稳定；§L−1「为什么以"人形 / 双足"为主载体」。素材 c02「为什么以人形 / 双足为主载体」
+  - 封面：**人形难点** ｜ 多关节、浮动基、换脚、易倒 ｜ 把它控好，换到机械臂、四足几乎都更简单
+  - 信息框：主路线入门：为什么以人形为主载体 ／ Robotics Notebooks · 不用数学 · 不用代码
 - [ ] 003 [向量与矩阵：机器人里的线性代数](../../wiki/entities/linear-algebra-curriculum.md) 🆕 — 只讲向量、矩阵乘法在描述位置和变换时的含义；§L0 核心问题「线性代数在机器人里到底怎么用」
+  - 封面：**向量与矩阵** ｜ 位置是向量，变换是矩阵 ｜ 位置、朝向、速度、力，后面全用它们来写
+  - 信息框：数学打底：机器人里的线性代数 ／ Robotics Notebooks · 高中数学 · 不用代码
 - [ ] 004 用 Python / NumPy 写第一段矩阵代码 🆕 — 只讲把 003 的运算写成 NumPy 代码并跑通；§L0 前置知识「会写 Python」、学完输出「能用 NumPy 写简单矩阵运算」。〔取舍〕先讲概念再上代码
+  - 封面：**矩阵代码** ｜ 用 NumPy 跑通矩阵乘法 ｜ 纸上算的变换，交给电脑一行算完
+  - 信息框：数学打底：编程基础 ／ Robotics Notebooks · 懂向量与矩阵 · 要写代码
 - [ ] 005 [旋转矩阵：为什么旋转不能直接相加](../../wiki/comparisons/so3-rotation-representations.md) 🆕 — 只讲旋转矩阵的两条性质（正交、行列式为 1），以及逐元素相加 / 插值会跳出 SO(3)；§L0 自测题 1。素材 c03「旋转矩阵为什么不能直接相加 / 插值」、`svg/so3manifold.svg`
+  - 封面：**旋转矩阵** ｜ SO(3)：正交、行列式为 1 ｜ 两个朝向取个中间值，为什么不能直接平均
+  - 信息框：数学打底：旋转与 SO(3) ／ Robotics Notebooks · 用到矩阵乘法 · 不用代码
 - [ ] 006 [欧拉角、四元数、旋转矩阵：三种表示怎么选](../../wiki/comparisons/so3-rotation-representations.md) 🆕 — 只讲三种表示的取舍（万向锁、双重覆盖、冗余）；§L0 自测题 3、推荐读「旋转表示方法对比」。素材 c03「旋转怎么表示：三种方案的取舍」
+  - 封面：**旋转表示** ｜ 欧拉角、四元数、旋转矩阵 ｜ 各有各的坑，看完知道什么时候用哪种
+  - 信息框：数学打底：旋转表示方法对比 ／ Robotics Notebooks · 懂旋转矩阵 · 不用代码
 - [ ] 007 [齐次变换与 SE(3)：位姿 = 朝向 + 位置](../../wiki/formalizations/se3-representation.md) 🆕 — 只讲 (R, p) 怎么拼成 4×4 矩阵，点和方向向量的变换有什么不同；§L0 自测题 2。素材 c03「位姿 = 朝向 R + 位置 p」、`svg/se3.svg`
+  - 封面：**齐次变换** ｜ 朝向 + 位置 → 4×4 矩阵 ｜ 点要平移、方向不用：推导不出错的前提
+  - 信息框：数学打底：位姿与 SE(3) ／ Robotics Notebooks · 懂旋转矩阵 · 不用代码
 - [ ] 008 [优化的直觉：变量、目标、约束](../../wiki/entities/numerical-optimization-curriculum.md) 🆕 — 只讲「找让代价最小的变量」这一个框架，为第四季的 LQR / QP / MPC 和第六季的梯度更新铺垫；§L0 核心问题「优化问题的直觉是什么」。素材 c03「优化直觉 + 这一层要做出什么」
+  - 封面：**优化问题** ｜ 变量、目标、约束 ｜ 在限制下找最好的解，机器人里到处都是
+  - 信息框：数学打底：优化问题的直觉 ／ Robotics Notebooks · 高中数学 · 不用代码
 
 ## 第二季 · 机器人学骨架（L1）
 
 §L1 原文建议分三步走：L1.1 SE(3) 与刚体变换 → L1.2 FK / IK → L1.3 雅可比。005–007 已讲旋转和齐次变换，这一季从 twist 接着讲。
 
 - [ ] 009 [Twist 与螺旋轴：用一个六维量描述刚体速度](../../wiki/formalizations/spatial-twist-wrench-poe.md) 🆕 — 只讲 twist 和 screw axis；§L1.1、Modern Robotics Ch 3。素材 c04「三步走，外加三个六维量」
+  - 封面：**运动旋量** ｜ Twist：角速度 + 线速度 ｜ 任何刚体速度，都能看成绕一根轴边转边移
+  - 信息框：机器人学骨架：刚体变换 ／ Robotics Notebooks · 懂齐次变换 · 不用代码
 - [ ] 010 [矩阵指数：从螺旋运动到位姿](../../wiki/formalizations/lie-group-rigid-body-motions.md) 🆕 — 只讲 exp 怎样把「绕螺旋轴转多少」变成一个 SE(3) 位姿；§L1.1「矩阵指数 / PoE」、§L0 自测题 3
+  - 封面：**矩阵指数** ｜ exp：螺旋运动 → 位姿 ｜ 绕哪根轴、转了多少，一步算出停在哪、朝哪
+  - 信息框：机器人学骨架：刚体变换 ／ Robotics Notebooks · 懂运动旋量 · 不用代码
 - [ ] 011 [正运动学：用 PoE 从关节角算末端位姿](../../wiki/formalizations/forward-kinematics.md) 🆕 — 只讲指数积公式把每个关节连乘起来，手算一个 2–3 自由度机械臂；§L1.2、推荐做什么「手写 `FKinSpace`」。素材 c04「正运动学：指数积公式 PoE」、`svg/poe.svg`
+  - 封面：**正运动学** ｜ PoE：关节角 → 末端位姿 ｜ 每个关节一个指数，连乘起来就是末端位姿
+  - 信息框：机器人学骨架：正逆运动学 ／ Robotics Notebooks · 懂矩阵指数 · 要写代码
 - [ ] 012 [逆运动学：已知末端反求关节角](../../wiki/formalizations/inverse-kinematics.md) 🆕 — 只讲 IK 为什么会多解或无解（肘上 / 肘下）；§L1.2、自测题 2。素材 c04「逆运动学：解往往不唯一」、`svg/ik_elbow.svg`
+  - 封面：**逆运动学** ｜ 末端位姿 → 关节角 ｜ 够不着就无解，够得着往往不止一解
+  - 信息框：机器人学骨架：正逆运动学 ／ Robotics Notebooks · 懂正运动学 · 不用代码
 - [ ] 013 [雅可比矩阵：关节速度 → 末端速度](../../wiki/formalizations/robot-jacobian.md) 🆕 — 只讲雅可比是速度的线性映射；§L1.3。素材 c04「雅可比：速度的线性映射，力的对偶映射」前半（力的对偶留到 019）
+  - 封面：**雅可比矩阵** ｜ 关节速度 → 末端速度 ｜ 关节转多快，末端走多快，乘一下就知道
+  - 信息框：机器人学骨架：雅可比与速度运动学 ／ Robotics Notebooks · 懂正运动学 · 要写代码
 - [ ] 014 [Space Jacobian 与 Body Jacobian](../../wiki/formalizations/robot-jacobian.md) 🆕 — 只讲两种雅可比的坐标系差别和伴随变换换算；§L1.3、自测题 1
+  - 封面：**两种雅可比** ｜ Space ↔ Body：伴随变换 ｜ 目标写在哪个坐标系，就用对应的那个
+  - 信息框：机器人学骨架：雅可比与速度运动学 ／ Robotics Notebooks · 懂雅可比矩阵 · 不用代码
 - [ ] 015 [用 Pinocchio 加载 URDF，跑出 FK 与雅可比](../../wiki/entities/pinocchio.md) 🆕 — 只讲 [URDF](../../wiki/concepts/urdf-robot-description.md) 描述了什么，以及用 Pinocchio 算出的结果和 011、013 手写结果对齐；§L1 推荐做什么、学完输出「能自己建模一个简单机器人」
+  - 封面：**机器人建模** ｜ Pinocchio 加载 URDF ｜ 让软件算位姿和雅可比，再和手写结果逐项对账
+  - 信息框：机器人学骨架：动手实践 ／ Robotics Notebooks · 懂雅可比矩阵 · 要写代码
 
 ## 第三季 · 动力学与刚体建模（L2）
 
 - [ ] 016 [动力学方程：力矩怎么变成加速度](../../roadmap/motion-control.md#l2-动力学与刚体建模) 🆕 — 只讲 $M(q)\ddot q + C(q,\dot q)\dot q + g(q) = \tau$ 三项各自的物理意义；§L2.1、自测题 1。素材 c05「一行方程：固定基开链动力学」
+  - 封面：**动力学方程** ｜ 力矩怎么变成加速度 ｜ 惯性、科氏与离心、重力，三项各管一件事
+  - 信息框：动力学建模：固定基开链动力学 ／ Robotics Notebooks · 用到导数 · 不用代码
 - [ ] 017 [RNEA / CRBA / ABA：三个动力学算法各求什么](../../wiki/entities/pinocchio.md) 🆕 — 只讲三个算法的输入输出和计算复杂度；§L2.1、自测题 4。素材 c05「三个递归算法：RNEA / CRBA / ABA」
+  - 封面：**正逆动力学** ｜ RNEA、CRBA、ABA ｜ 实时控制要力矩，仿真要加速度，各有专用算法
+  - 信息框：动力学建模：固定基开链动力学 ／ Robotics Notebooks · 懂动力学方程 · 不用代码
 - [ ] 018 [重力补偿：让机械臂悬停](../../wiki/concepts/gravity-compensation.md) 🆕 — 只讲 $g(q)=\mathrm{RNEA}(q,0,0)$ 的控制用法；§L2 推荐读「Gravity Compensation」。〔取舍〕放在 RNEA 之后，当作第一个动力学应用
+  - 封面：**重力补偿** ｜ g(q) = RNEA(q, 0, 0) ｜ 算准该出多少力矩，手一松它就停在半空
+  - 信息框：动力学建模：固定基开链动力学 ／ Robotics Notebooks · 懂正逆动力学 · 不用代码
 - [ ] 019 [力旋量与雅可比转置：末端力 → 关节力矩](../../wiki/formalizations/spatial-twist-wrench-poe.md) 🆕 — 只讲 wrench 和 $\tau = J^\top F$（虚功原理）；§L2 核心问题「wrench、Jacobian transpose、虚功原理…」、Modern Robotics Ch 5。素材 c04「雅可比：速度的线性映射，力的对偶映射」后半
+  - 封面：**雅可比转置** ｜ 末端力 → 关节力矩 ｜ 管速度的那个矩阵，翻过来就能管力
+  - 信息框：动力学建模：静力学与虚功原理 ／ Robotics Notebooks · 懂雅可比矩阵 · 不用代码
 - [ ] 020 [浮动基：人形的身体也是自由变量](../../wiki/concepts/floating-base-dynamics.md) 🆕 — 只讲状态为什么要加上 base 位姿和速度；§L2.2、自测题 2。素材 c05「浮动基：身体本身也是自由变量」
+  - 封面：**浮动基** ｜ 人形的身体也是自由变量 ｜ 机械臂焊在地上，人形没有，于是多出六个自由度
+  - 信息框：动力学建模：浮动基与接触动力学 ／ Robotics Notebooks · 懂动力学方程 · 不用代码
 - [ ] 021 [接触与摩擦锥：脚能对地面用多大的力](../../wiki/formalizations/contact-wrench-cone.md) 🆕 — 只讲接触力受摩擦锥约束，以及接触力怎样经 $J_c^\top$ 变成关节力矩；§L2.2、自测题 3。素材 c05「接触：力怎么变成力矩，又受什么限制」、`svg/friction_cone.svg`
+  - 封面：**摩擦锥** ｜ 脚能对地面用多大的力 ｜ 脚只能推地、不能拉地，斜着推太狠就打滑
+  - 信息框：动力学建模：浮动基与接触动力学 ／ Robotics Notebooks · 懂雅可比转置 · 不用代码
 - [ ] 022 [关节摩擦：库仑、粘滞与 Stribeck](../../wiki/concepts/joint-friction-models.md) 🆕 — 只讲关节摩擦模型；§L2「Physical AI 视角补充」第 1 条。素材 c05「Physical AI 视角：网络控制的不是理想刚体」
+  - 封面：**关节摩擦** ｜ 库仑、粘滞、Stribeck ｜ 电机发出的力矩，有一截半路被吃掉了
+  - 信息框：动力学建模：摩擦、执行器与状态估计 ／ Robotics Notebooks · 懂动力学方程 · 不用代码
 - [ ] 023 [执行器：真实电机有饱和、带宽和延迟](../../wiki/concepts/implicit-explicit-actuator-modeling.md) 🆕 — 只讲执行器的非理想性，以及仿真里怎么建模；§L2「Physical AI 视角补充」第 2 条
+  - 封面：**执行器** ｜ 饱和、带宽、延迟 ｜ 仿真里的电机太理想，真机差在哪、模型怎么补
+  - 信息框：动力学建模：摩擦、执行器与状态估计 ／ Robotics Notebooks · 懂动力学方程 · 不用代码
 - [ ] 024 [状态估计：机器人怎么知道自己的姿态和速度](../../wiki/concepts/state-estimation.md) 🆕 — 只讲 IMU 与编码器融合估计浮动基状态；§L2「Physical AI 视角补充」第 3 条。〔取舍〕022–024 原文是一节里的三条，按一集一主题拆成三集
+  - 封面：**状态估计** ｜ IMU + 编码器 → 姿态与速度 ｜ 躯干走多快没法直接量，只能靠几路传感器拼出来
+  - 信息框：动力学建模：摩擦、执行器与状态估计 ／ Robotics Notebooks · 懂浮动基 · 不用代码
 
 ## 第四季 · 控制基础与最优化（L3）
 
 〔取舍〕§L3 核心问题把 PID / LQR / MPC 并列；这里先讲反馈（025–029），再讲最优化（030–034）。
 
 - [ ] 025 [PID：最经典的反馈控制](../../wiki/methods/pid-control.md) 🆕 — 只讲 P、I、D 三项各管什么；§L3 核心问题、L4.0 方法谱系表 PID 行
+  - 封面：**反馈控制** ｜ PID：比例、积分、微分 ｜ 从定速巡航到机器人关节，到处都有它
+  - 信息框：控制基础：反馈控制 ／ Robotics Notebooks · 用到微积分 · 不用代码
 - [ ] 026 [轨迹生成：三次 / 五次时间缩放](../../wiki/entities/modern-robotics-book.md) 🆕 — 只讲怎样生成起止平滑的参考轨迹；§L3 推荐做什么「复现 Modern Robotics Ch 9 的三次/五次时间缩放轨迹」
+  - 封面：**轨迹生成** ｜ 三次 / 五次时间缩放 ｜ 让机械臂起步不猛冲、到站不急刹
+  - 信息框：控制基础：轨迹生成 ／ Robotics Notebooks · 用到多项式 · 不用代码
 - [ ] 027 [计算力矩控制：用动力学模型抵消非线性](../../wiki/methods/computed-torque-control.md) 🆕 — 只讲 computed torque = 动力学前馈 + PD 反馈；§L3 推荐做什么「加 PD / computed torque tracking」。素材 c06「反馈控制：PD 与计算力矩」
+  - 封面：**计算力矩控制** ｜ 动力学前馈 + PD 反馈 ｜ 模型算准了，反馈只需要收拾剩下的误差
+  - 信息框：控制基础：反馈控制 ／ Robotics Notebooks · 懂动力学方程 · 不用代码
 - [ ] 028 [阻抗控制与导纳控制](../../wiki/concepts/impedance-control.md) 🆕 — 只讲「运动进、力出」和「力进、运动出」的区别；§L3 自测题 4，另见[导纳控制](../../wiki/methods/admittance-control.md)。素材 c06「和环境接触：阻抗 vs 导纳」
+  - 封面：**阻抗与导纳** ｜ 运动 → 力，还是力 → 运动 ｜ 人形的腿用哪个、工业装配用哪个，看完分得清
+  - 信息框：控制基础：反馈控制 ／ Robotics Notebooks · 懂弹簧与阻尼 · 不用代码
 - [ ] 029 [关节 PD 与 MIT 模式：Policy ≠ 底层控制器](../../roadmap/motion-control.md#policy-vs-low-level-controller) 🆕 — 只讲 $\tau = K_p(q_{des}-q) + K_d(\dot q_{des}-\dot q) + \tau_{ff}$，以及策略出 $q_{des}$、底层 PD 闭环的分工；§L3「Policy ≠ 底层控制器」、Physical AI Core Path 第 2 步。素材 c06「Policy ≠ 底层控制器」「五种控制模式与第一类 sim2real 坑」。〔取舍〕放在阻抗控制之后，因为 MIT 模式的 PD 就是关节级阻抗；第六季 PPO 的动作空间沿用这一集
+  - 封面：**底层控制器** ｜ 关节 PD 与 MIT 模式 ｜ 策略给出目标角度，力矩由驱动器闭环算出
+  - 信息框：控制基础：从目标角度到电机力矩 ／ Robotics Notebooks · 懂阻抗与导纳 · 不用代码
 - [ ] 030 [最优控制：把「控制得好」写成代价函数](../../wiki/concepts/optimal-control.md) 🆕 — 只讲状态、输入、代价、动力学约束组成的最优控制问题（OCP）；§L3 核心问题「最优控制的核心思想是什么」。素材 c10「共同的数学外壳：最优控制问题 OCP」
+  - 封面：**最优控制** ｜ 状态、输入、代价、约束 ｜ 偏离目标、费力都扣分，挑扣分最少的一串动作
+  - 信息框：控制基础：最优化 ／ Robotics Notebooks · 懂优化问题 · 不用代码
 - [ ] 031 [LQR：倒立摆的最优反馈](../../wiki/formalizations/lqr.md) 🆕 — 只讲 LQR 求出 $u=-Kx$ 并稳住倒立摆；§L3 推荐做什么「用 Python 写一个倒立摆的 LQR 控制器」。素材 c06「最优控制：LQR 与 MPC」前半
+  - 封面：**线性二次调节** ｜ LQR：u = -Kx ｜ 算出一个增益矩阵，倒立摆就立住了
+  - 信息框：控制基础：最优化 ／ Robotics Notebooks · 懂最优控制 · 要写代码
 - [ ] 032 [二次规划 QP：为什么控制里到处是凸 QP](../../wiki/formalizations/quadratic-programming.md) 🆕 — 只讲 QP 的形式和凸性判断，用 OSQP 跑一个小例子；§L3 推荐做什么「用 qpOASES 或 OSQP 跑一个简单 QP」、自测题 2。素材 c06「QP：为什么控制里到处都是凸二次规划」
+  - 封面：**二次规划** ｜ QP：目标二次、约束线性 ｜ 凸的解得快、不卡壳，所以控制里处处用它
+  - 信息框：控制基础：最优化 ／ Robotics Notebooks · 用到矩阵乘法 · 要写代码
 - [ ] 033 [MPC：滚动时域的在线优化](../../wiki/methods/model-predictive-control.md) 🆕 — 只讲「预测一段、只执行第一步、再重算」，以及它和 LQR 何时等价；§L3 推荐做什么「理解 MPC 的滚动时域思想」、自测题 1。素材 c06「最优控制：LQR 与 MPC」后半、`svg/mpc_horizon.svg`
+  - 封面：**模型预测控制** ｜ MPC：滚动时域的在线优化 ｜ 往前看一段、只走一步、走完再重算
+  - 信息框：控制基础：最优化 ／ Robotics Notebooks · 懂线性二次调节 · 不用代码
 - [ ] 034 [任务优先级：HQP 与零空间投影](../../wiki/concepts/hqp.md) 🆕 — 只讲低优先级任务怎样只在高优先级任务的零空间里动；§L3 自测题 3，另见[零空间控制](../../wiki/concepts/null-space-control.md)。素材 c06「HQP：用零空间实现任务优先级」
+  - 封面：**任务优先级** ｜ HQP 与零空间投影 ｜ 平衡和挥手冲突时，挥手只在不碍事的方向动
+  - 信息框：控制基础：最优化 ／ Robotics Notebooks · 懂雅可比矩阵 · 不用代码
 
 ## 第五季 · 人形运动控制主干（L4）
 
 - [ ] 035 [人形控制的方法链：模型从粗到细，控制从慢到快](../../roadmap/motion-control.md#l4-人形运动控制主干) 🆕 — 只讲 L4.0 的两条轴（模型粒度、控制频率），给 036–044 一张地图；§L4.0。素材 c07「两条轴，把 L1–L3 串成 L4 的方法链」「方法谱系（上）：model-based 从粗到细、从慢到快」
+  - 封面：**分层控制** ｜ 模型从粗到细，控制从慢到快 ｜ 从倒立摆到关节力矩，先看清它们怎么串起来
+  - 信息框：人形运动控制：方法链总览 ／ Robotics Notebooks · 不用推公式 · 不用代码
 - [ ] 036 [线性倒立摆 LIP：把人形看成一根会走的杆](../../wiki/concepts/lip-zmp.md) 🆕 — 只讲 LIP 的三个假设和线性方程；§L4.1、自测题 1。素材 c08「线性倒立摆：三个假设，一个线性方程」、`svg/lip_pendulum.svg`
+  - 封面：**线性倒立摆** ｜ LIP：三个假设 + 一个方程 ｜ 把二十多个关节的人形，先看成一根会走的杆
+  - 信息框：人形运动控制：线性倒立摆与零力矩点 ／ Robotics Notebooks · 高中物理 · 不用代码
 - [ ] 037 [ZMP 与支撑多边形：不摔倒的判据](../../wiki/formalizations/zmp-lip.md) 🆕 — 只讲 ZMP 留在支撑多边形内意味着什么；§L4.1、自测题 2。素材 c08「ZMP 与支撑多边形：经典的平衡判据」、`svg/support_polygon.svg`
+  - 封面：**零力矩点** ｜ ZMP 留在支撑多边形内 ｜ 走路会不会翻倒，经典判据就看脚底
+  - 信息框：人形运动控制：线性倒立摆与零力矩点 ／ Robotics Notebooks · 懂力矩 · 不用代码
 - [ ] 038 [用 ZMP 参考生成质心轨迹](../../wiki/concepts/lip-zmp.md) 🆕 — 只讲落脚点 → ZMP 参考 → 质心轨迹的步态生成；§L4.1 推荐做什么、推荐读 Kajita 等的 ZMP 预观控制论文。素材 c08「怎么用它生成步态：从 ZMP 参考到质心轨迹」
+  - 封面：**步态生成** ｜ 落脚点 → ZMP → 质心轨迹 ｜ 先定好往哪踩，再倒推身体该怎么移
+  - 信息框：人形运动控制：线性倒立摆与零力矩点 ／ Robotics Notebooks · 懂零力矩点 · 不用代码
 - [ ] 039 [捕获点 / DCM：已经在倒，下一步踩哪](../../wiki/concepts/capture-point-dcm.md) 🆕 — 只讲 DCM 怎样决定落脚点；§L4.1、自测题 3。素材 c08「DCM / 捕获点：已经在倒，下一步踩哪？」、`svg/dcm.svg`
+  - 封面：**捕获点** ｜ DCM：已经在倒，下一步踩哪 ｜ 被推了一把，算出往哪迈一步能站稳
+  - 信息框：人形运动控制：线性倒立摆与零力矩点 ／ Robotics Notebooks · 懂线性倒立摆 · 不用代码
 - [ ] 040 [质心动力学：挥手扭腰也算进平衡](../../wiki/concepts/centroidal-dynamics.md) 🆕 — 只讲 6D 质心动量、质心动量矩阵和「模型降阶」；§L4.2。素材 c09 三页、`svg/centroidal.svg`
+  - 封面：**质心动力学** ｜ 全身 → 六维质心动量 ｜ 倒立摆忽略的挥手扭腰，这里也算进平衡
+  - 信息框：人形运动控制：质心动力学 ／ Robotics Notebooks · 懂动量与角动量 · 不用代码
 - [ ] 041 [轨迹优化：离线算出一整段动作](../../wiki/methods/trajectory-optimization.md) 🆕 — 只讲 TrajOpt 和 MPC 的区别（离线一次 vs 在线滚动）；§L4.3、自测题 2。素材 c10「TrajOpt vs MPC：离线一次，还是在线滚动」
+  - 封面：**轨迹优化** ｜ TrajOpt：离线一次算整段 ｜ 和模型预测控制比：一次算完，还是边走边算
+  - 信息框：人形运动控制：轨迹优化与模型预测控制 ／ Robotics Notebooks · 懂模型预测控制 · 不用代码
 - [ ] 042 [质心 MPC：在线规划质心轨迹与接触力](../../wiki/methods/model-predictive-control.md) 🆕 — 只讲把 040 的质心模型放进 033 的 MPC，以及接触切换怎么处理；§L4.3、自测题 3。素材 c10「凸 MPC vs 非线性 MPC，接触切换怎么处理」「MPC 步态发抖：由外到内的排查顺序」
+  - 封面：**质心预测控制** ｜ MPC：质心轨迹 + 接触力 ｜ 边走边重算：身体往哪走，每只脚使多大劲
+  - 信息框：人形运动控制：轨迹优化与模型预测控制 ／ Robotics Notebooks · 懂质心动力学 · 不用代码
 - [ ] 043 [全身控制 WBC：把任务分配到每个关节](../../wiki/concepts/whole-body-control.md) 🆕 — 只讲 WBC 在分层里的位置：接住 MPC 的参考，每个周期分配关节力矩；§L4.4 场景隐喻与「上一层的局限」。〔取舍〕先讲 WBC 是什么，再讲它的一种实现 TSID
+  - 封面：**全身控制** ｜ WBC：把任务分到每个关节 ｜ 二十多个关节谁先动、谁让位，它来拍板
+  - 信息框：人形运动控制：逆动力学与全身控制 ／ Robotics Notebooks · 懂质心预测控制 · 不用代码
 - [ ] 044 [TSID：把全身控制写成一个 QP](../../wiki/formalizations/tsid-formulation.md) 🆕 — 只讲 TSID 的决策变量、等式 / 不等式约束和任务代价；§L4.4、自测题 1–2。素材 c11「TSID：把全身控制写成一个 QP」「冲突时听谁的：优先级与阻抗」「L4 收束：一条完整的方法链」
+  - 封面：**全身二次规划** ｜ TSID：任务空间逆动力学 ｜ 不打滑、不超限、跟上目标，全写进一道优化题
+  - 信息框：人形运动控制：逆动力学与全身控制 ／ Robotics Notebooks · 懂二次规划 · 不用代码
 
 ## 第六季 · 强化学习：从 MDP 到 PPO（L5.0、L5.1）
 
 主线按 §L5.1「RL 主干概念链」：MDP → 价值函数 → 策略梯度 → Actor-Critic → GAE → PPO。
 
 - [ ] 045 [为什么需要强化学习：从「算出来」到「试出来」](../../wiki/comparisons/wbc-vs-rl.md) 🆕 — 只讲传统控制在哪里吃力，以及 RL 是能力扩展层、不是替代；§L5 开头、§L5.1「上一层的局限」。素材 c12「三条心法：RL / IL 是能力扩展层」
+  - 封面：**强化学习** ｜ 算出来 → 试出来 ｜ 不是取代传统控制，而是补上它吃力的地方
+  - 信息框：强化学习：开篇 ／ Robotics Notebooks · 不用数学 · 不用代码
 - [ ] 046 [策略 π(a|s)：智能体、环境与奖励](../../wiki/concepts/embodied-rl-minimal-closed-loop.md) 🆕 — 只讲岔路口比喻，以及离散动作和连续动作的区别；§L5.0「策略直觉（岔路口比喻）」
+  - 封面：**策略** ｜ π(a|s)：看状态，选动作 ｜ 没人给标准答案，只靠奖励一点点试出来
+  - 信息框：强化学习：从路牌到最小闭环 ／ Robotics Notebooks · 用到概率 · 不用代码
 - [ ] 047 [MDP 五元组：S、A、R、P、γ](../../wiki/formalizations/mdp.md) 🆕 — 只讲五元组和折扣因子 γ；§L5.0「MDP 与 POMDP」表。素材 c12「MDP 五元组，以及真机上的 POMDP」前半
+  - 封面：**五元组** ｜ MDP：S、A、R、P、γ ｜ 把强化学习任务说清楚，先填好这张表
+  - 信息框：强化学习：从路牌到最小闭环 ／ Robotics Notebooks · 用到概率 · 不用代码
 - [ ] 048 [POMDP：真机看不到全部状态](../../wiki/formalizations/pomdp.md) 🆕 — 只讲部分可观测，以及为什么要用观测历史；§L5.0、§L5.1 推荐读「POMDP — 真机部署前必读」。素材同上后半
+  - 封面：**部分可观测** ｜ POMDP：真机看不到全部状态 ｜ 只看当前一帧不够，得把过去几帧一起喂给策略
+  - 信息框：强化学习：从路牌到最小闭环 ／ Robotics Notebooks · 懂五元组 · 不用代码
 - [ ] 049 [具身 RL 最小闭环：在 PyBullet 里手写 S、A、R、P](../../wiki/entities/pybullet.md) 🆕 — 只讲 KUKA 臂定点任务里五元组怎样对应代码和 `stepSimulation`，先不接 RL；§L5.0 最小闭环实验第 1 步，详见[具身 RL 最小闭环](../../wiki/concepts/embodied-rl-minimal-closed-loop.md)
+  - 封面：**最小闭环** ｜ PyBullet 手写 S、A、R、P ｜ 先不碰学习算法，把仿真器和五元组对上号
+  - 信息框：强化学习：从路牌到最小闭环 ／ Robotics Notebooks · 懂五元组 · 要写代码
 - [ ] 050 [奖励设计：机器人会钻奖励的空子](../../wiki/concepts/reward-design.md) 🆕 — 只讲 reward shaping 和奖励投机（「小跳着前进」）；§L5.1 推荐做什么「理解 reward shaping…」、自测题 3。素材 c12「奖励投机：机器人学会了"小跳着前进"」。〔取舍〕原文这道题在 PPO 之后；这里提前到 049 之后，因为手写 R 时就会遇到
+  - 封面：**奖励设计** ｜ 奖励塑形与奖励投机 ｜ 想让它走路，它却小跳着前进
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂五元组 · 不用代码
 - [ ] 051 [价值函数 V(s) 与 Q(s,a)](../../wiki/formalizations/bellman-equation.md) 🆕 — 只讲 V 和 Q 各自估计什么（长期折扣回报）；§L5.1 概念链第 2 环。素材 c12「RL 主干概念链：从价值到 Actor-Critic」
+  - 封面：**价值函数** ｜ V(s) 与 Q(s,a)：长期回报 ｜ 不只看这一步得几分，还看往后一共能拿多少
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂五元组 · 不用代码
 - [ ] 052 [策略梯度：沿着回报变大的方向改策略](../../wiki/methods/policy-optimization.md) 🆕 — 只讲 $\nabla \log \pi \cdot$ Advantage 的直觉；§L5.1 概念链第 3 环。素材同上
+  - 封面：**策略梯度** ｜ ∇log π × 优势 ｜ 比平均好的动作，下次多选一点
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 用到导数 · 不用代码
 - [ ] 053 [Actor-Critic：一个出动作，一个打分](../../wiki/methods/reinforcement-learning.md) 🆕 — 只讲 actor 和 critic 的分工；§L5.1 概念链第 4 环。素材同上
+  - 封面：**演员评论家** ｜ Actor 行动，Critic 打分 ｜ 策略梯度配上价值函数，训练没那么抖
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂策略梯度 · 不用代码
 - [ ] 054 [TD 误差：用下一步的估值修正这一步](../../wiki/formalizations/bellman-equation.md) 🆕 — 只讲 $\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)$；§L5.1「PPO 一次迭代里要真正看懂的 8 个概念」第 3 个。素材 c12「TD 误差与 GAE：偏差和方差之间的旋钮」前半。〔取舍〕概念链没把 TD 误差单列，按「8 个概念」的顺序放在 GAE 前
+  - 封面：**时序差分** ｜ δ = r + γV(s′) − V(s) ｜ 不用等一局打完，走一步就能修正估值
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂价值函数 · 不用代码
 - [ ] 055 [GAE：在偏差和方差之间调一个旋钮](../../wiki/methods/gae.md) 🆕 — 只讲 λ 加权的 TD 误差怎样得到优势 $\hat A_t$；§L5.1 概念链第 5 环、[GAE 论文（arXiv:1506.02438）](https://arxiv.org/abs/1506.02438)。素材同上后半
+  - 封面：**广义优势估计** ｜ GAE：用 λ 调偏差与方差 ｜ 只看一步太偏、看到底太抖，取个中间
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂时序差分 · 不用代码
 - [ ] 056 [信赖域：策略一步不能迈太大](../../wiki/methods/policy-optimization.md) 🆕 — 只讲为什么策略更新幅度要受限（TRPO 的思想）；§L5.0「策略单次迭代不能跳变太大」、§L5.1 缩写表「TRPO：PPO 的前身思想」。〔取舍〕原文没有单列 TRPO，加这一集是为了让 057 的 clip 有来由
+  - 封面：**信赖域** ｜ TRPO：策略一步不能迈太大 ｜ 一次改太猛，已经练好的动作可能一下全崩
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂策略梯度 · 不用代码
 - [ ] 057 [PPO 的核心：重要性比与 clip](../../wiki/methods/ppo.md) 🆕 — 只讲 $r_t = \pi_\theta/\pi_{old}$ 和 $\mathrm{clip}(r_t, 1-\epsilon, 1+\epsilon)$，以及 ε 太大 / 太小的后果；§L5.1 自测题 1、[PPO 论文（arXiv:1707.06347）](https://arxiv.org/abs/1707.06347)。素材 c12「PPO：裁剪让每次更新只走一小步」、`svg/ppo_clip.svg`
+  - 封面：**近端策略优化** ｜ PPO：重要性比与裁剪 ｜ 人形训练主流算法，核心是一个比值加一把剪刀
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂信赖域 · 不用代码
 - [ ] 058 [PPO 的一次完整迭代](../../wiki/methods/ppo.md) 🆕 — 只讲并行 rollout → GAE → 多 epoch minibatch 更新这一圈，对照 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) 代码；§L5.1「8 个概念」整条链。素材 c12「一次 PPO 迭代，以及为什么人形 RL 主流用 PPO」前半
+  - 封面：**训练循环** ｜ 采样 → 算优势 → 多轮更新 ｜ 把轨迹、优势、裁剪串成一圈，对照开源代码看
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂近端策略优化 · 要读代码
 - [ ] 059 [动手：在 CartPole 上训练 PPO](../../wiki/concepts/cartpole.md) 🆕 — 只讲用 Gymnasium `CartPole-v1` 跑通 PPO 并读训练曲线；§L5.0 最小闭环实验第 2 步、§L5.1 推荐做什么
+  - 封面：**倒立摆小车** ｜ CartPole-v1 上跑通 PPO ｜ 亲手跑一次训练，学着读回报曲线
+  - 信息框：强化学习：从路牌到最小闭环 ／ Robotics Notebooks · 懂训练循环 · 要写代码
 - [ ] 060 [PPO vs SAC：为什么人形 RL 主流用 PPO](../../wiki/comparisons/ppo-vs-sac.md) 🆕 — 只讲 on-policy 和 off-policy 的样本效率差别，以及大规模并行仿真为什么偏向 PPO；§L5.0「PPO vs SAC 具身分工」、§L5.1 自测题 2。素材 c12「一次 PPO 迭代，以及为什么人形 RL 主流用 PPO」后半。系列收尾，片尾预告 §L5.2「把 PPO 用到人形行走」
+  - 封面：**样本效率** ｜ 同策略 PPO vs 异策略 SAC ｜ SAC 更省数据，人形训练却多用 PPO
+  - 信息框：强化学习：基础 ／ Robotics Notebooks · 懂训练循环 · 不用代码
 
 ## 扩展规则
 

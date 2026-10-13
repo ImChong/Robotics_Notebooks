@@ -1,0 +1,663 @@
+/* ===== Interactive paper demos =====
+ *
+ * Loaded only on paper pages whose front matter declares `demos:` (see
+ * _layouts/paper.html). The markup is built at runtime by
+ * assets/js/demos/<name>.js, because scripts/sanitize_paper_html.py strips
+ * everything but a plain <div> from #paper-body — a note may only ship the
+ * placeholder `<div class="paper-demo" data-demo="..."></div>`.
+ */
+
+:root,
+[data-theme="dark"] {
+  --demo-surface: #212124;
+  --demo-surface-2: #2a2a2e;
+  --demo-border: #3c3c3c;
+  --demo-accent: #569cd6;
+  --demo-good: #4ec9a4;
+  --demo-bad: #e06c75;
+  --demo-warn: #d7a75f;
+  --demo-muted: #8a8a8a;
+  --demo-grid: #37373a;
+}
+
+[data-theme="light"] {
+  --demo-surface: #fbfbfa;
+  --demo-surface-2: #f2f2f0;
+  --demo-border: #e0e0e0;
+  --demo-accent: #1f6feb;
+  --demo-good: #17795e;
+  --demo-bad: #c0392b;
+  --demo-warn: #9a6b10;
+  --demo-muted: #6b6b6b;
+  --demo-grid: #e6e6e4;
+}
+
+.paper-demo {
+  margin: 2rem 0;
+}
+
+.paper-demo .demo-fallback {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.demo-card {
+  border: 1px solid var(--demo-border);
+  border-radius: 10px;
+  background: var(--demo-surface);
+  padding: 1.1rem 1.2rem 1.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
+    'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-head {
+  margin-bottom: 0.9rem;
+}
+
+.demo-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--demo-accent);
+  color: var(--demo-accent);
+  vertical-align: 0.15em;
+  margin-right: 0.5rem;
+}
+
+.demo-card .demo-title {
+  display: inline;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.demo-card .demo-sub {
+  margin: 0.45rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+/* ── recorded explainer video (K.video) ──────────────────────────────── */
+/* The videos are 9:16 portrait: cap the width so the player never grows
+   taller than a laptop screen, and centre it in the card. */
+.demo-video video {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #000;
+}
+
+.demo-video-actions {
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+a.demo-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* ── controls ─────────────────────────────────────────────────────────── */
+.demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--demo-border);
+  border-radius: 8px;
+  background: var(--demo-surface-2);
+  margin-bottom: 0.9rem;
+}
+
+.demo-control {
+  flex: 1 1 210px;
+  min-width: 0;
+}
+
+.demo-control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.demo-control-value {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  color: var(--text);
+  font-size: 0.84rem;
+}
+
+.demo-card input[type="range"] {
+  width: 100%;
+  accent-color: var(--demo-accent);
+  margin: 0;
+  height: 1.4rem;
+  cursor: pointer;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.demo-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--demo-border);
+  background: var(--demo-surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.demo-btn:hover {
+  border-color: var(--demo-accent);
+  color: var(--demo-accent);
+}
+
+.demo-btn.is-active {
+  border-color: var(--demo-accent);
+  background: var(--demo-accent);
+  color: #fff;
+}
+
+.demo-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.demo-toggle input {
+  accent-color: var(--demo-accent);
+  cursor: pointer;
+}
+
+/* ── canvas stage ─────────────────────────────────────────────────────── */
+.demo-stage {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.demo-stage canvas {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  touch-action: pan-y;
+}
+
+.demo-stage-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.demo-stage-grid > .demo-stage {
+  flex: 1 1 300px;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.demo-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.7rem;
+}
+
+.demo-legend > span::before {
+  content: '';
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.2rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: 0.15em;
+  background: currentColor;
+}
+
+/* ── readouts ─────────────────────────────────────────────────────────── */
+.demo-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-stat {
+  flex: 1 1 120px;
+  min-width: 0;
+  border: 1px solid var(--demo-border);
+  border-radius: 7px;
+  background: var(--demo-surface-2);
+  padding: 0.45rem 0.6rem;
+}
+
+.demo-stat-k {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.demo-stat-v {
+  display: block;
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.98rem;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.demo-stat-v.is-good { color: var(--demo-good); }
+.demo-stat-v.is-bad { color: var(--demo-bad); }
+.demo-stat-v.is-warn { color: var(--demo-warn); }
+.demo-stat-v.is-accent { color: var(--demo-accent); }
+
+.demo-verdict {
+  border-left: 3px solid var(--demo-accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--demo-surface-2);
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.demo-verdict.is-frozen { border-left-color: var(--demo-warn); }
+.demo-verdict.is-learning { border-left-color: var(--demo-good); }
+
+.demo-note {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--demo-border);
+  padding-top: 0.7rem;
+}
+
+.demo-note p { margin: 0 0 0.35rem; }
+.demo-note p:last-child { margin-bottom: 0; }
+.demo-note b { color: var(--text); }
+
+/* ── data table (GAE steps) ───────────────────────────────────────────── */
+.demo-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 0.8rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.demo-card table.demo-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 360px;
+  font-size: 0.82rem;
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.demo-card table.demo-table th,
+.demo-card table.demo-table td {
+  border: 1px solid var(--demo-border);
+  padding: 0.3rem 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.demo-card table.demo-table th {
+  background: var(--demo-surface-2);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.demo-card table.demo-table td.is-good { color: var(--demo-good); }
+.demo-card table.demo-table td.is-bad { color: var(--demo-bad); }
+.demo-card table.demo-table td.is-warn { color: var(--demo-warn); }
+
+.demo-card table.demo-table .demo-tex .katex {
+  font-size: 0.95em;
+}
+
+.demo-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.demo-stepper button {
+  font: inherit;
+  font-size: 0.78rem;
+  line-height: 1;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--demo-border);
+  background: var(--demo-surface);
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+}
+
+.demo-stepper button:hover {
+  border-color: var(--demo-accent);
+  color: var(--demo-accent);
+}
+
+.demo-stepper .demo-stepper-v {
+  min-width: 2.6rem;
+  display: inline-block;
+}
+
+/* ===== demo-x-*: the narrated storyboard animations (K.explainer) =====
+ * Built by K.explainer in assets/js/demos/kit.js; colors come from the --demo-*
+ * tokens above, so the storyboard follows the site theme switch. */
+
+.demo-x-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+}
+
+.demo-x-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  border: 1px solid var(--demo-border);
+  border-radius: 999px;
+  background: var(--demo-surface-2);
+  color: var(--text-secondary);
+  padding: 0.22rem 0.7rem 0.28rem;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.demo-x-chip:hover {
+  border-color: var(--demo-accent);
+  color: var(--text);
+}
+
+.demo-x-chip[aria-current="true"] {
+  border-color: var(--demo-accent);
+  background: var(--demo-surface);
+  color: var(--text);
+}
+
+.demo-x-chip-n {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--demo-muted);
+}
+
+.demo-x-chip[aria-current="true"] .demo-x-chip-n {
+  color: var(--demo-accent);
+}
+
+.demo-x-frame {
+  border: 1px solid var(--demo-border);
+  border-radius: 8px;
+  background: var(--demo-surface);
+  overflow: hidden;
+}
+
+.demo-x-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border-bottom: 1px solid var(--demo-border);
+  background: var(--demo-surface-2);
+}
+
+.demo-x-no {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--demo-accent);
+}
+
+.demo-x-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.demo-x-clock {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--demo-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The storyboard is drawn on a fixed 800×420 grid; below ~600px it scrolls
+   sideways inside its own box instead of shrinking the labels to nothing. */
+.demo-x-scroll {
+  overflow-x: auto;
+}
+
+.demo-x-stage {
+  min-width: 600px;
+}
+
+.demo-x-scene[hidden] {
+  display: none;
+}
+
+.demo-x-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Default ink only: :where() keeps this at element specificity, so a tone
+   class on the <text> (.demo-x-bad …) still wins. */
+:where(.demo-x-svg) text {
+  fill: var(--text);
+}
+
+.demo-x-mono {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* SVG text takes `fill`, the HTML inside a <foreignObject> takes `color`, and
+   K.svgMath puts a formula in a foreignObject — so every tone class sets both
+   and a label and a formula can share one class name. */
+.demo-x-mut { fill: var(--demo-muted); color: var(--demo-muted); }
+.demo-x-ink2 { fill: var(--text-secondary); color: var(--text-secondary); }
+.demo-x-acc { fill: var(--demo-accent); color: var(--demo-accent); }
+.demo-x-good { fill: var(--demo-good); color: var(--demo-good); }
+.demo-x-bad { fill: var(--demo-bad); color: var(--demo-bad); }
+.demo-x-warn { fill: var(--demo-warn); color: var(--demo-warn); }
+
+/* ===== `inline code` in demo strings (K.rich) ===== */
+
+/* Inline code in any demo string (titles, cues, verdicts, notes): identifiers
+   like `awrWeights()` or `disc_reward_weight: 1.0` read as code, matching the
+   note body's inline code without inheriting .paper-body's own <code> rule. */
+.demo-card code.demo-code {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--demo-surface-2);
+  border: 1px solid var(--demo-border);
+  border-radius: 3px;
+  padding: 0.05em 0.35em;
+  /* Long identifiers wrap instead of pushing the card wider on a phone. */
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.demo-card b code.demo-code { color: var(--text); }
+
+/* ===== $LaTeX$ formulas (K.tex / K.svgMath, rendered by KaTeX) ===== */
+
+/* Inline, in the HTML parts of a demo: card title, cue track, footnotes. */
+.demo-tex {
+  /* KaTeX sets its own font; keep it from inflating the line it sits on. */
+  font-size: 1em;
+}
+
+.demo-tex .katex {
+  font-size: 1.05em;
+}
+
+/* On a storyboard: svgMath sizes the <foreignObject> generously and aligns
+   the formula inside it, so only the formula itself may be hit-testable — an
+   invisible box must not swallow clicks on the scene underneath. */
+.demo-x-fo {
+  overflow: visible;
+  pointer-events: none;
+  /* The default ink lives here, not on .demo-x-tex, so a tone class on the
+     box itself (.demo-x-acc …) still wins. */
+  color: var(--text);
+}
+
+.demo-x-tex {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1.1;
+  white-space: nowrap;
+  /* Only reached when KaTeX could not render (blocked CDN): the formula falls
+     back to plain text, on the same monospace stack as the labels near it. */
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.demo-x-tex .katex {
+  font-size: 1em;
+  pointer-events: auto;
+}
+
+/* svgRich: the prose around the `$…$` runs is an ordinary label, so it keeps
+   the scene's font (or .demo-x-mono) instead of the fallback stack above. */
+.demo-x-rich:not(.demo-x-mono) {
+  font-family: inherit;
+}
+
+.demo-x-band {
+  fill: var(--demo-accent);
+  fill-opacity: 0.1;
+  stroke: var(--demo-accent);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.demo-x-band-fill {
+  fill: var(--demo-accent);
+  fill-opacity: 0.1;
+}
+
+.demo-x-freeze-box {
+  fill: var(--demo-bad);
+  fill-opacity: 0.12;
+  stroke: var(--demo-bad);
+  stroke-width: 1;
+}
+
+.demo-x-track {
+  height: 3px;
+  background: var(--demo-grid);
+}
+
+.demo-x-track-fill {
+  height: 100%;
+  width: 0;
+  background: var(--demo-accent);
+}
+
+.demo-x-cues {
+  border-top: 1px solid var(--demo-border);
+  padding: 0.6rem 0.75rem 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-height: 7.5em;
+}
+
+.demo-x-cue {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--demo-muted);
+  opacity: 0.35;
+  transition: opacity 0.35s ease;
+}
+
+.demo-x-cue.is-on {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+.demo-x-cue b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-x-cue {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .demo-card {
+    padding: 0.85rem 0.7rem 0.9rem;
+    font-size: 0.88rem;
+  }
+
+  .demo-controls {
+    gap: 0.6rem;
+    padding: 0.6rem;
+  }
+
+  .demo-control {
+    flex: 1 1 100%;
+  }
+
+  .demo-stat {
+    flex: 1 1 45%;
+  }
+
+  .demo-x-chip {
+    font-size: 0.74rem;
+  }
+
+  .demo-x-cues {
+    min-height: 9em;
+  }
+}
+
+/* Cosmos: compact, responsive charts inside the shared paper-demo cards. */
+.cosmos-bars { display: grid; gap: .55rem; padding: 1rem; }
+.cosmos-category { display: block; width: 100%; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--text); font: inherit; text-align: left; cursor: pointer; padding: .25rem .45rem; }
+.cosmos-category:hover, .cosmos-category:focus-visible, .cosmos-category.is-selected { border-color: var(--demo-accent); background: var(--demo-surface-2); }
+.cosmos-category:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 1px; }
+.cosmos-bar-row { display: grid; grid-template-columns: minmax(7.5rem, 11rem) minmax(2rem, 1fr) 4.2rem; gap: .75rem; align-items: center; font-size: .86rem; }
+.cosmos-bar-label { overflow-wrap: anywhere; }
+.cosmos-bar-track { height: 1rem; background: var(--demo-surface-2); border: 1px solid var(--demo-border); border-radius: 999px; overflow: hidden; }
+.cosmos-bar-fill { height: 100%; border-radius: 999px; transition: width .2s ease; }
+.cosmos-bar-value { font-variant-numeric: tabular-nums; text-align: right; }
+.cosmos-selection { margin: .2rem 1rem 1rem; color: var(--text); min-height: 1.4rem; }
+@media (max-width: 600px) {
+  .cosmos-bars { padding: .75rem .4rem; }
+  .cosmos-bar-row { grid-template-columns: minmax(5.6rem, 8rem) minmax(2rem, 1fr) 3.9rem; gap: .35rem; font-size: .78rem; }
+}

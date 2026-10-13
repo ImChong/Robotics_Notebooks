@@ -1,0 +1,6 @@
+# 依赖与中间产物不入库：配音、渲染帧、成片与封面都在 out/
+node_modules/
+package-lock.json
+out/
+stage.*.built.html
+__pycache__/

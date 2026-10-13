@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>零基础篇视频舞台</title>
+<link rel="stylesheet" href="node_modules/katex/dist/katex.min.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/900.css">
+<link rel="stylesheet" href="vendor/paper-demos.css">
+<style>
+/* 配色与论文精读系列（视频号 / 小红书上的《从头学人形机器人算法》）统一：灰黑底 + 蓝 #569cd6，
+   四步颜色取自同一套配色（绿 #4ec9a4、紫 #c586c0、蓝、琥珀 #d7a75f）。本系列标识色是亮黄 --hi #ffd166：
+   封面 / 片头大标题、角标「零基础篇」色块、目录符号（论文系列这三处是蓝、绿字、蓝），缩略图一排里一眼能分开；
+   片中的幕号和「划重点」框也用它（绿色留给「感知」这一步）。 */
+:root, [data-theme="dark"] {
+  --bg: #16161a; --text: #e6e6e6; --text-secondary: #a8a8a8;
+  --demo-surface: #1f1f24; --demo-surface-2: #2a2a30; --demo-border: #3a3a42;
+  --demo-accent: #569cd6; --demo-good: #4ec9a4; --demo-warn: #d7a75f; --demo-bad: #e06c75;
+  --demo-muted: #8a8a8a; --demo-grid: #37373a; --violet: #c586c0;
+  --hi: #ffd166;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--text);
+  font-family: 'Noto Sans SC', 'WenQuanYi Zen Hei', sans-serif; }
+#app { position: relative; width: 1080px; height: 1920px; overflow: hidden;
+  background: radial-gradient(1200px 700px at 50% 30%, #1f2330 0%, var(--bg) 70%); }
+.brand { position: absolute; top: 70px; left: 60px; right: 60px; display: flex; justify-content: space-between;
+  align-items: center; font-size: 30px; color: var(--text-secondary); }
+.brand b { background: var(--hi); color: var(--bg); font-weight: 900; padding: 4px 16px; border-radius: 10px; }
+.pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; }
+
+/* ── scene chrome ── */
+#scene { position: absolute; inset: 0; }
+/* 视频号 / 公众号视频的安全区：9:16 画面在分享页、主页会被裁成居中的 6:7（y 330–1590），
+   播放页底部还压着作者、标题、转赞评与浮评。关键内容一律放在 330–1440 之内。 */
+.head { position: absolute; top: 330px; left: 60px; right: 60px; }
+.act { font-size: 30px; color: var(--hi); font-weight: 700; letter-spacing: 2px; }
+.title { font-size: 60px; font-weight: 900; line-height: 1.22; margin-top: 8px; }
+.title .katex { font-size: 1em; }
+.prog { position: absolute; top: 482px; left: 60px; right: 60px; display: flex; gap: 12px; }
+.prog i { flex: 1; height: 8px; border-radius: 4px; background: var(--demo-grid); overflow: hidden; }
+.prog i b { display: block; height: 100%; width: 0; background: var(--demo-accent); }
+.stage, .hero { position: absolute; left: 58px; width: 964px;
+  background: var(--demo-surface); border-radius: 24px; border: 2px solid var(--demo-border); overflow: hidden; }
+.stage { top: 504px; height: 508px; }
+/* the svg's viewBox is zoomed to what each scene draws (fitStory); the 12 px inset keeps it ≥ 72 px from the
+   frame edge, clear of the ~47 px 视频号 trims off each side when it fills a taller phone */
+.stage > svg { position: absolute; left: 12px; top: 10px; width: 936px; height: 484px; }
+.hero > svg { position: absolute; left: 12px; top: 10px; width: 936px; }
+.stage .demo-x-svg text, .hero .demo-x-svg text { font-family: 'Noto Sans SC', sans-serif; }
+.demo-x-svg text.demo-x-mut { fill: var(--demo-muted); }
+.demo-x-svg text.demo-x-ink2 { fill: var(--text-secondary); }
+.demo-x-svg text.demo-x-acc { fill: var(--demo-accent); }
+.demo-x-svg text.demo-x-good { fill: var(--demo-good); }
+.demo-x-svg text.demo-x-bad { fill: var(--demo-bad); }
+.demo-x-svg text.demo-x-warn { fill: var(--demo-warn); }
+.cue { position: absolute; top: 1026px; left: 60px; right: 60px; min-height: 200px;
+  border-left: 10px solid var(--hi); background: rgba(255, 209, 102, .07);
+  border-radius: 0 20px 20px 0; padding: 24px 36px; font-size: 40px; line-height: 1.5; }
+.cue .tag { font-size: 26px; color: var(--hi); font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; }
+.cue b { color: var(--hi); font-weight: 700; }
+.cue .katex { font-size: 1.02em; }
+.sub { position: absolute; top: 1318px; left: 50px; right: 50px; text-align: center;
+  font-size: 52px; font-weight: 900; line-height: 1.3; color: #fff;
+  text-shadow: 0 3px 0 #000, 0 0 18px rgba(0,0,0,.85); }
+
+/* ── intro / cover / outro cards ── */
+.card { position: absolute; inset: 0; }
+.big { position: absolute; left: 0; right: 0; text-align: center; }
+.big .t { font-weight: 900; color: var(--hi); line-height: 1.08; white-space: nowrap; }
+.big .zh { font-weight: 900; line-height: 1.25; white-space: nowrap; }
+.big .pitch { color: var(--text-secondary); margin-top: 8px; white-space: nowrap; }
+.meta { position: absolute; left: 90px; right: 90px; border: 2px solid var(--demo-border); border-radius: 24px;
+  background: var(--demo-surface); padding: 34px 40px; font-size: 34px; line-height: 1.7; color: var(--text-secondary); }
+.meta b { color: var(--text); }
+.toc { position: absolute; left: 90px; right: 90px; font-size: 40px; line-height: 1.9; }
+.toc div { white-space: nowrap; }
+.toc span { color: var(--hi); font-weight: 900; margin-right: 20px; font-family: 'DejaVu Sans', sans-serif; }
+.footer { position: absolute; left: 60px; right: 60px; text-align: center; font-size: 34px; line-height: 1.4; color: var(--text-secondary); }
+.pt { position: absolute; left: 70px; right: 70px; border-radius: 24px; padding: 24px 36px;
+  background: var(--demo-surface); border: 2px solid var(--demo-border); font-size: 42px; line-height: 1.5; }
+.pt .n { font-weight: 900; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
+.pt b { color: var(--hi); }
+.pt > div:not([class]) { white-space: pre-line; }
+.pt .wait { margin-top: 14px; height: 10px; border-radius: 5px; background: var(--demo-grid); overflow: hidden; }
+.pt .wait b { display: block; height: 100%; width: 0; background: var(--demo-warn); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="brand"><span><b>零基础篇</b> · 机器人学习</span><span class="pill" id="badge"></span></div>
+  <div id="scene"></div>
+  <div class="sub" id="sub"></div>
+</div>
+
+<script src="node_modules/katex/dist/katex.min.js"></script>
+<script src="vendor/kit.js"></script>
+<script src="episodes/EPISODE.js"></script>
+<script>
+(function () {
+  var K = window.PaperDemoKit, E = window.EpisodeVideo;
+  var TL = null, built = {}, current = null, lastSub = null;
+  var N = E.scenes.length;
+
+  function h(tag, cls, parent, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html !== undefined) n.innerHTML = html;
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  /* 加粗字默认琥珀色；一集可以用 E.boldColors 按词指定颜色（如四步各用本色），免得「感知」被涂成「执行」的颜色 */
+  function richInto(node, str) {
+    node.textContent = ''; K.rich(node, str);
+    var map = window.EpisodeVideo && window.EpisodeVideo.boldColors;
+    if (map) node.querySelectorAll('b, strong').forEach(function (b) { if (map[b.textContent]) b.style.color = map[b.textContent]; });
+  }
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function fadeUp(node, t, a, d) {
+    var p = K.ease(clamp((t - a) / (d || 0.6), 0, 1));
+    node.style.opacity = p;
+    node.style.transform = 'translateY(' + ((1 - p) * 40).toFixed(1) + 'px)';
+  }
+  function shown(node) { node.style.opacity = 1; node.style.transform = 'none'; }
+  /* 一行放下：比 maxW 宽就逐级缩字号（不折行），最小到 minFs */
+  function fitLine(node, fs, minFs, maxW) {
+    var range = document.createRange();
+    node.style.fontSize = fs + 'px';
+    for (; fs > minFs; fs -= 2) {
+      range.selectNodeContents(node);
+      if (range.getBoundingClientRect().width <= maxW) break;
+      node.style.fontSize = (fs - 2) + 'px';
+    }
+  }
+
+  document.getElementById('badge').textContent = E.badge;  // 只写第几季，不写集数和路线层级
+
+  /* 纵向排版：按各块实际高度自上而下排，块间距 gaps[k]，整组在 [top, bottom] 里垂直居中；
+     放不下就等比压缩间距（不压内容）。挂到 DOM 之后才量得到高度，所以在 draw 里调。 */
+  function stack(els, gaps, top, bottom) {
+    var hs = els.map(function (e) { return e.offsetHeight; });
+    if (!hs.every(function (x) { return x > 0; })) return false;
+    var body = hs.reduce(function (a, b) { return a + b; }, 0);
+    var gap = gaps.reduce(function (a, b) { return a + b; }, 0);
+    var room = bottom - top, k = Math.min(1, Math.max(0, (room - body) / gap));
+    var y = top + Math.max(0, (room - body - gap * k) / 2);
+    els.forEach(function (e, i) { if (i) y += gaps[i - 1] * k; e.style.top = Math.round(y) + 'px'; y += hs[i]; });
+    return true;
+  }
+  /* 片头 / 片尾在视频里要让出字幕（top 1318px） */
+  var CONTENT_BOTTOM = 1300, SAFE_TOP = 330;
+
+  /* 主图：每集一张 800×420 的 svg（E.hero），片头和封面共用 */
+  function heroBox(parent, height) {
+    var box = h('div', 'hero', parent);
+    box.style.height = height + 'px';
+    var hero = E.hero(K);
+    hero.el.style.height = (height - 20) + 'px';
+    box.appendChild(hero.el);
+    return { box: box, hero: hero };
+  }
+
+  /* 大标题 + 中文名 + 一句话（片头和封面同一套块，和论文系列「英文缩写 + 中文名 + 一句话」同款） */
+  function titleBlocks(root) {
+    var a = h('div', 'big', root, '<div class="t"></div>');
+    a.firstChild.textContent = E.title;
+    var b = h('div', 'big', root, '<div class="zh"></div><div class="pitch"></div>');
+    richInto(b.children[0], E.name); richInto(b.children[1], E.pitch);
+    return { a: a, b: b, t: a.firstChild, zh: b.children[0], pitch: b.children[1] };
+  }
+
+  /* ── intro：标题块 + 主图（旁白念到哪台机器人，主图里就弹出哪台） ── */
+  function buildIntro() {
+    var root = h('div', 'card');
+    var T = titleBlocks(root);
+    var hb = heroBox(root, 470);
+    var at = E.introAt || { title: 0.1, name: 0.5, hero: 0 };
+    var fitted = false;
+    return {
+      root: root,
+      draw: function (st, t) {
+        if (!fitted && root.isConnected) {
+          T.t.style.letterSpacing = '8px'; fitLine(T.t, 150, 90, 960);
+          fitLine(T.zh, 56, 40, 960); fitLine(T.pitch, 34, 26, 960);
+          fitted = true;
+        }
+        stack([T.a, T.b, hb.box], [24, 40], SAFE_TOP, CONTENT_BOTTOM);
+        fadeUp(T.a, t, at.title); fadeUp(T.b, t, at.name); fadeUp(hb.box, t, at.hero);
+        hb.hero.draw(Math.max(0, st - at.hero), false, Math.max(0, t - at.hero));  // 第三个参数是真实时间，循环动作用它
+      }
+    };
+  }
+
+  /* ── 封面（render.mjs cover）：沿用论文系列的封面版式 ——
+     整张 1080×1920、不缩放；大标题在 190–440 一带垂直居中（比宽 980 宽就等比缩小）；中文名 70px + 一句话 40px 从 470 起；
+     信息框从 680 起（34px）；目录紧跟信息框（40px，行距随条数收紧，≤5 条 1.9、6 条 1.75、7 条 1.55、8 条及以上 1.5 / 38px）。
+     每块排在上一块底下，内容比设计高就往下推；视频号「设置封面」按 3:4 置顶裁剪（只留 y 0–1440），
+     目录最后一行字底不过 COVER_INK_BOTTOM（离裁剪线 35px），超了先收行距、再缩字号。封面上不出现集数和路线层级。 */
+  var COVER_INK_BOTTOM = 1405;
+  function buildCover() {
+    var root = h('div', 'card');
+    var T = titleBlocks(root);
+    var m = h('div', 'meta', root, E.meta || '');
+    var toc = h('div', 'toc', root);
+    (E.toc || E.scenes.map(function (sc) { return sc.title; })).forEach(function (row) {
+      var d = h('div', '', toc); h('span', '', d, '▸'); richInto(h('em', '', d), row); d.lastChild.style.fontStyle = 'normal';
+    });
+    var laid = false;
+    return {
+      root: root,
+      draw: function () {
+        if (laid || !root.isConnected) return;
+        laid = true;
+        var range = document.createRange();
+        function width(n) { range.selectNodeContents(n); return range.getBoundingClientRect().width; }
+        var size = 250;
+        T.t.style.cssText += ';font-size:250px;letter-spacing:16px;line-height:1';
+        if (width(T.t) > 980) { T.t.style.letterSpacing = '6px'; size = Math.min(250, Math.floor(250 * 980 / width(T.t))); T.t.style.fontSize = size + 'px'; }
+        T.a.style.top = (190 + Math.round((250 - size) / 2)) + 'px';
+        fitLine(T.zh, 70, 52, 980); fitLine(T.pitch, 40, 30, 980);
+        T.pitch.style.marginTop = '18px';
+        T.b.style.top = Math.max(470, T.a.offsetTop + T.a.offsetHeight + 30) + 'px';
+        m.style.top = Math.max(680, T.b.offsetTop + T.b.offsetHeight + 36) + 'px';
+        var rows = toc.children.length;
+        toc.style.fontSize = (rows >= 8 ? 38 : 40) + 'px';
+        toc.style.lineHeight = rows <= 5 ? '1.9' : rows === 6 ? '1.75' : rows === 7 ? '1.55' : '1.5';
+        toc.style.top = (m.offsetTop + m.offsetHeight + 24) + 'px';
+        function inkBottom() { range.selectNodeContents(toc.lastElementChild); return range.getBoundingClientRect().bottom; }
+        for (var lh = parseFloat(toc.style.lineHeight), fs = parseFloat(toc.style.fontSize); inkBottom() > COVER_INK_BOTTOM && fs >= 32;) {
+          if (lh > 1.35) lh -= 0.05; else fs -= 2;
+          toc.style.lineHeight = lh.toFixed(2); toc.style.fontSize = fs + 'px';
+        }
+      }
+    };
+  }
+
+  /* ── storyboard scene ── */
+  function buildStory(i) {
+    var sc = E.scenes[i];
+    var root = h('div', 'card');
+    var head = h('div', 'head', root);
+    h('div', 'act', head, '第 ' + (i + 1) + ' / ' + N + ' 幕');
+    var titleEl = h('div', 'title', head);
+    richInto(titleEl, sc.title);
+    /* 一行放不下的分镜标题按估算宽度缩字号（汉字约 1em，其余约 0.55em） */
+    var est = 0;
+    for (var c = 0; c < sc.title.length; c++) est += /[⺀-￯]/.test(sc.title[c]) ? 1 : 0.55;
+    if (est * 60 > 960) titleEl.style.fontSize = Math.floor(960 / est) + 'px';
+    var prog = h('div', 'prog', root), bars = [];
+    for (var k = 0; k < N; k++) bars.push(h('b', '', h('i', '', prog)));
+    var stage = h('div', 'stage', root);
+    var story = sc.build(K);
+    stage.appendChild(story.el);
+    var cue = h('div', 'cue', root);
+    h('div', 'tag', cue, '划重点');
+    var cueText = h('div', '', cue), cueIdx = -1;
+    return {
+      root: root, spec: sc, story: story,
+      /* `st` 是分镜时间（旁白念完前画面停在 to 之前），`t` 是这一幕的真实时间，循环动作用它继续动 */
+      draw: function (st, t, seg) {
+        story.draw(st, t);
+        var j = 0;
+        sc.cues.forEach(function (c, n) { if (st >= c.at - 1e-6) j = n; });
+        if (j !== cueIdx) {
+          cueIdx = j; richInto(cueText, sc.cues[j].s);
+          /* 要点太长时逐级缩字号，框底不越过字幕（top 1318px） */
+          for (var fs = 40; fs >= 30; fs -= 2) {
+            cue.style.fontSize = fs + 'px';
+            if (cue.offsetTop + cue.offsetHeight <= 1304) break;
+          }
+        }
+        for (var k = 0; k < N; k++) bars[k].style.width = (k < i ? 100 : k > i ? 0 : 100 * seg) + '%';
+      }
+    };
+  }
+
+  /* 分镜画在 800×420 的网格上，常有留白；把 viewBox 缩到这一幕实际画到的范围（在整幕里采样，动的东西也算），
+     让舞台尽量放大。永远不缩小到原网格之外。（与论文系列 stage.html 相同） */
+  function fitStory(sc) {
+    var svg = sc.story.el, vb = svg.viewBox.baseVal;
+    var full = { x: vb.x, y: vb.y, w: vb.width, h: vb.height };
+    var W = 936, H = 484;
+    svg.style.width = full.w + 'px'; svg.style.height = full.h + 'px';
+    var box = null;
+    function add(r, o) {
+      if (!(r.width > 0 || r.height > 0)) return;
+      var x0 = r.left - o.left + full.x, y0 = r.top - o.top + full.y, x1 = x0 + r.width, y1 = y0 + r.height;
+      box = box ? { x0: Math.min(box.x0, x0), y0: Math.min(box.y0, y0), x1: Math.max(box.x1, x1), y1: Math.max(box.y1, y1) }
+        : { x0: x0, y0: y0, x1: x1, y1: y1 };
+    }
+    var times = [];
+    for (var k = 0; k <= 30; k++) times.push(sc.spec.dur * k / 30);
+    sc.spec.cues.forEach(function (c) { times.push(c.at); });
+    times.forEach(function (tt) {
+      sc.story.draw(tt, tt);
+      var o = svg.getBoundingClientRect();
+      svg.querySelectorAll('rect, circle, ellipse, line, path, polyline, polygon, text').forEach(function (n) {
+        if (!n.closest('defs, marker')) add(n.getBoundingClientRect(), o);
+      });
+      svg.querySelectorAll('foreignObject').forEach(function (fo) {
+        var walk = document.createTreeWalker(fo, NodeFilter.SHOW_TEXT), range = document.createRange();
+        for (var n = walk.nextNode(); n; n = walk.nextNode()) {
+          if (!n.nodeValue.trim() || n.parentElement.closest('.katex-mathml')) continue;
+          range.selectNodeContents(n);
+          Array.prototype.forEach.call(range.getClientRects(), function (r) { add(r, o); });
+        }
+      });
+    });
+    if (!box) box = { x0: full.x, y0: full.y, x1: full.x + full.w, y1: full.y + full.h };
+    var PAD = 8;
+    var x0 = Math.max(full.x, box.x0 - PAD), y0 = Math.max(full.y, box.y0 - PAD);
+    var x1 = Math.min(full.x + full.w, box.x1 + PAD), y1 = Math.min(full.y + full.h, box.y1 + PAD);
+    svg.setAttribute('viewBox', [x0, y0, x1 - x0, y1 - y0].map(function (v) { return v.toFixed(1); }).join(' '));
+    svg.style.width = W + 'px'; svg.style.height = H + 'px';
+    return { zoom: Math.min(W / (x1 - x0), H / (y1 - y0)), viewBox: svg.getAttribute('viewBox') };
+  }
+
+  /* ── outro：自测题 → 想一想（进度条倒数）→ 揭晓答案 → 下一集预告 → 系列衔接语 ── */
+  function buildOutro() {
+    var O = E.outro, root = h('div', 'card');
+    var quiz = h('div', 'pt', root);
+    h('div', 'n', quiz, '自测题').style.color = 'var(--demo-warn)';
+    richInto(h('div', '', quiz), O.quiz.q);
+    var wait = h('div', 'wait', quiz), waitBar = h('b', '', wait);
+    var ans = h('div', 'pt', root);
+    h('div', 'n', ans, '答案').style.color = 'var(--demo-good)';
+    richInto(h('div', '', ans), O.quiz.a);
+    var next = h('div', 'pt', root);
+    next.style.borderColor = 'var(--demo-accent)';
+    h('div', 'n', next, '下一集 · ' + O.next.ep).style.color = 'var(--demo-accent)';
+    richInto(h('div', '', next), O.next.q);
+    var end = h('div', 'footer', root); richInto(end, O.end.s);
+    end.style.whiteSpace = 'normal';
+    return {
+      root: root,
+      draw: function (st, t) {
+        stack([quiz, ans, next, end], [26, 26, 30], SAFE_TOP, CONTENT_BOTTOM);
+        fadeUp(quiz, st, 0.1);
+        waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
+        fadeUp(ans, st, O.quiz.revealAt);
+        fadeUp(next, st, O.next.at);
+        fadeUp(end, st, O.end.at);
+      }
+    };
+  }
+
+  function get(key) {
+    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'outro' ? buildOutro() : buildStory(+key);
+    return built[key];
+  }
+
+  var sceneHost = document.getElementById('scene'), subEl = document.getElementById('sub');
+
+  window.setup = function (tl) { TL = tl; };
+
+  // after fonts / KaTeX have loaded: fit every storyboard scene once (render.mjs calls this)
+  window.fitStages = function () {
+    var out = [];
+    for (var i = 0; i < N; i++) {
+      var sc = get(String(i));
+      sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc;
+      out.push(fitStory(sc));
+    }
+    return out;
+  };
+
+  window.renderAt = function (t) {
+    var segs = TL.segments, s = segs[segs.length - 1];
+    for (var i = 0; i < segs.length; i++) if (t < segs[i].t1) { s = segs[i]; break; }
+    var key = String(s.scene);
+    if (window.__cover) key = 'cover';  // 封面用自己的版式（render.mjs cover 设 __cover）
+    var first = s, idx = segs.indexOf(s);
+    while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
+    var last = s; idx = segs.indexOf(s);
+    while (idx < segs.length - 1 && String(segs[idx + 1].scene) === String(s.scene)) last = segs[++idx];
+    // 这句念多久，[from, to] 就拉伸成多久（配音比分镜短则 1 倍速）；停在 to 之前一刻，让从 to 开始的要点等下一句
+    var local = t - first.t0, span = Math.max(s.to - s.from, s.alen || 0);
+    var st = s.from + (s.to - s.from) * clamp((t - s.t0 - s.lead) / (span || 1), 0, 1);
+    st = Math.min(st, Math.max(s.to - 1e-3, s.from));
+    var sc = get(key);
+    if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
+    sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));
+    // cross-fade at scene edges
+    var fin = clamp(local / 0.35, 0, 1), fout = clamp((last.t1 - t) / 0.3, 0, 1);
+    sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, t > TL.total - 1 ? 1 : fout);
+
+    var sub = '';
+    for (var k = 0; k < TL.subs.length; k++) {
+      var x = TL.subs[k];
+      if (t >= x.t0 && t < x.t1 + 0.15) { sub = x.text; }
+    }
+    if (window.__cover) sub = '';
+    if (sub !== lastSub) {
+      subEl.textContent = sub; lastSub = sub;
+      /* 一行放不下就缩字号，两行也不越过安全区底线 */
+      for (var fs = 52; fs >= 40; fs -= 4) {
+        subEl.style.fontSize = fs + 'px';
+        if (subEl.offsetTop + subEl.offsetHeight <= 1440) break;
+      }
+    }
+  };
+})();
+</script>
+</body>
+</html>
