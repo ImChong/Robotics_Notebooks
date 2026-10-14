@@ -17,6 +17,8 @@ function element() {
     querySelectorAll() { return []; }, focus() {}, scrollIntoView() {},
   };
 }
+// fetchIndex 默认同时服务轻量索引（search-index-lite.json）与全文索引（search-index.json）；
+// 需要区分两层时传 options.fetchFull
 function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes: [] }), options = {}) {
   const timers = new Map();
   const idleCallbacks = [];
@@ -33,8 +35,10 @@ function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes
     },
     setTimeout(fn, delay) { timers.set(++timerId, { fn, delay }); return timerId; },
     clearTimeout(id) { timers.delete(id); },
-    fetch(url, options) {
-      return url === 'search-index.json' ? fetchIndex(options) : fetchCommunity(options);
+    fetch(url, fetchOptions) {
+      if (url === 'search-index-lite.json') return fetchIndex(fetchOptions);
+      if (url === 'search-index.json') return (options.fetchFull || fetchIndex)(fetchOptions);
+      return fetchCommunity(fetchOptions);
     },
     escapeHtml: (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;'),
     isRoadmapPageId: () => false, wikiTypeLabel: () => '概念',

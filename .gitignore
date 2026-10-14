@@ -21,6 +21,7 @@ exports/search-cache.json
 # 部署时生成的站点数据（pages.yml 构建步骤现场生成，不入库；
 # 本地预览静态站前先 `make export graph` 生成一次，约 40 秒）
 docs/search-index.json
+docs/search-index-lite.json
 docs/sitemap.xml
 docs/exports/index-v1.json
 docs/exports/site-data-v1.json
