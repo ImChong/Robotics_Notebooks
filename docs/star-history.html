@@ -556,7 +556,7 @@
             dots.marker.symbol.push(k.symbol);
             dots.marker.size.push(Math.min(9 + 2 * (pt.items.length - 1), 15));
             dots.text.push('<b>' + r.name + '</b>' + (mixed ? '（' + k.label + '）' : '') + ' · ' + pt.date +
-              '<br>' + pt.items.join('<br>'));
+              '<br>' + pt.items.join('<br>') + (touch ? '<br><i>再点一次该节点进入' + k.label + '路线 →</i>' : ''));
           });
         });
         var rowH = narrow ? 44 : 28;
@@ -631,19 +631,41 @@
       }
 
       // 点击条形 / 节点跳到对应页面（hrefOf 为空则不跳转）。react 复用同一个图表元素，
-      // 先清掉旧监听；只响应绘制它的视图，切到其他视图后点击不再跳转
+      // 先清掉旧监听；只响应绘制它的视图，切到其他视图后点击不再跳转。
+      // 触屏甘特图：节点小而密，第一次轻点只弹出悬停提示，再点同一节点才跳转，避免误触。
+      // Plotly 一次轻点会先按 touchstart、再按浏览器模拟的 mousedown 各派发一次 click，后者忽略
       function bindChartLinks(gd, view, hrefOf) {
         gd.removeAllListeners('plotly_click');
         gd.removeAllListeners('plotly_hover');
         gd.removeAllListeners('plotly_unhover');
         if (!hrefOf) return;
         var drag = function () { return gd.querySelector('.nsewdrag'); };
+        var armed = null; // 已轻点一次、等待再点跳转的节点
+        var lastTouch = 0;
         gd.on('plotly_click', function (ev) {
-          var href = current === view && ev.points[0] && hrefOf(ev.points[0]);
-          if (href) window.location.href = href;
+          var pt = ev.points[0];
+          var href = current === view && pt && hrefOf(pt);
+          if (!href) return;
+          if (touch && view.kind === 'gantt') {
+            var type = ev.event && ev.event.type;
+            if (type === 'touchstart') lastTouch = Date.now();
+            else if (type === 'mousedown' && Date.now() - lastTouch < 1000) return;
+            if (!armed || armed.curveNumber !== pt.curveNumber || armed.pointNumber !== pt.pointIndex) {
+              armed = { curveNumber: pt.curveNumber, pointNumber: pt.pointIndex };
+              Plotly.Fx.hover(gd, [armed]);
+              return;
+            }
+          }
+          window.location.href = href;
         });
         gd.on('plotly_hover', function () { if (drag()) drag().style.cursor = 'pointer'; });
-        gd.on('plotly_unhover', function () { if (drag()) drag().style.cursor = ''; });
+        gd.on('plotly_unhover', function () {
+          if (drag()) drag().style.cursor = '';
+          if (!armed) return;
+          // 同一次轻点里的模拟鼠标事件会立刻收起提示，补回；之后再收起（点了空白处）则取消待跳转
+          if (Date.now() - lastTouch < 1000) Plotly.Fx.hover(gd, [armed]);
+          else armed = null;
+        });
       }
 
       VIEWS.forEach(function (v) {
