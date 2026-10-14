@@ -42,3 +42,7 @@
 
 - [x] 项目页、Blog、GitHub README 核查（2026-09-08）
 - [x] wiki 映射：`wiki/entities/litereality-agent.md`
+
+## 后续进展（2026-10-15 核对）
+
+本文件记录 2026-09-08 的项目博客快照；后续公开信息已更新：2026-09-12 起项目 README 标注整房间可导出 MuJoCo 场景及 URDF / MJCF，2026-10-01 发布 arXiv 论文。当前代码、交互查看器及扫描 App 入口见 [项目页来源](../sites/litereality-agent-github-io.md)、[代码来源](../repos/litereality-litereality-agent.md) 和 [论文归档](../papers/litereality_agent_2610_01863.md)。
