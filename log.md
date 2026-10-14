@@ -180,6 +180,10 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-13] ingest | Parkour MJLab：PHP 社区实现与 G1 / Go2 跑酷训练
+
+核对 yhx1203/parkour_mjlab 的训练、回放与 MuJoCo Sim2Sim 入口，并与 PHP 官方仓库区分；归档其未声明许可证及截图提及权重但下载位置未核实的边界。
+
 ## [2026-10-13] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（5947 节点）
 
 - **触发：** 用户要求更新首页 GIF
