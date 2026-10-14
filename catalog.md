@@ -78,6 +78,7 @@
 - [Atom01 Firmware](wiki/entities/atom01-firmware.md) — atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。 `📅unknown` `[entity_page]`
 - [Atom01 Hardware](wiki/entities/atom01-hardware.md) — Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。 `📅unknown` `[entity_page]`
 - [Atom01 Train](wiki/entities/atom01-train.md) — atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。 `📅unknown` `[entity_page]`
+- [Atomic Machines Matter Compiler](wiki/entities/atomic-machines-matter-compiler.md) — Matter Compiler** 是 Atomic Machines 宣称的 AI 原生微型机器制造系统：它把设备设计转换为可执行的制造步骤，制造后测量实体结果，并将反馈用于后续迭代。公司公布的 `📅unknown` `[entity_page]`
 - [AutoDL](wiki/entities/autodl.md) — AutoDL**（autodl.com）是国内 **GPU 算力租赁与炼丹** 平台：用 Docker 容器把物理机的 1–N 块 GPU 租 `📅unknown` `[entity_page]`
 - [autonomy_stack_go2](wiki/entities/autonomy-stack-go2.md) — autonomy_stack_go2**（[jizhang-cmu/autonomy_stack_go2](https://github.com/jizhang-cmu/autonomy_stac `📅unknown` `[entity_page]`
 - [Autoware](wiki/entities/autoware.md) — Autoware**（autowarefoundation/autoware）由 Autowar `📅unknown` `[entity_page]`

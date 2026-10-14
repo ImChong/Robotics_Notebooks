@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | Atomic Machines / Matter Compiler — 归档官方制造系统资料、伯克利研讨会摘要与 PrimeSwitch 证据边界
+
 ## [2026-10-14] ingest | LiteNWM arXiv:2610.12368 — latent multi-horizon visual navigation evaluator; no official project/code link found; added paper source and entity plus generative-world-models cross-reference.
 
 ## [2026-10-13] ingest | Physical Intelligence Pi API beta — 归档官方服务公告与申请页，整理托管微调/推理工作流和公开状态；独立实体链接到 π₀ / π₀.₅
