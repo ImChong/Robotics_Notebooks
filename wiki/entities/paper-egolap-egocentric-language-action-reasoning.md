@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, manipulation, bimanual, egocentric, human-video, cross-embodiment, language-action, reasoning, pretraining, princeton]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.08726"
 project_id: egolap
 project: https://ego-lap.github.io/
@@ -15,10 +15,12 @@ related:
   - ./droid-policy-learning.md
   - ./paper-egowam-egocentric-human-wam-co-training.md
   - ./paper-lambda0-egocentric-human-pretraining.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
   - ../../sources/papers/egolap_arxiv_2610_08726.md
   - ../../sources/sites/ego_lap_github_io.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "EgoLAP（arXiv:2610.08726）：把人手与机器人末端的一秒运动统一写成量化语言动作，并用 Gemini 生成的运动级推理作 action CoT，在 PaliGemma-2B+300M 流匹配动作专家上联合预训练人类与机器人数据；零样本双臂 YAM 真机 80.1% 任务进度（对 EgoFAST 35.2%），代码与权重截至 2026-10-12 未发布。"
 ---
 

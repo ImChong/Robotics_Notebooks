@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-retargeting, imitation-learning, data-generation, sim2real, uiuc, nvidia, unitree-g1, booster-k1, dexmate]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-14
 project_id: intermimicgen
 project: https://sirui-xu.github.io/InterMimicGen/
 arxiv: "2610.06850"
@@ -13,11 +13,13 @@ related:
   - ../overview/hub-wbt.md
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
   - ../overview/frontier-manipulation-2026-10-05-10-09.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/intermimicgen_arxiv_2610_06850.md
   - ../../sources/sites/intermimicgen.md
   - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "InterMimicGen（arXiv:2610.06850，UIUC/NVIDIA）将 InterAct 与 HiPHI 人体–物体交互重定向到 6 种机器人配置，以物理 PPO 跟踪器验证并自演进动作；五轮把验证集扩展到种子的约 142–151 倍，覆盖范围仍围绕已有任务语义。"
 ---
 

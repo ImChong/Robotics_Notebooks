@@ -3,7 +3,7 @@ type: entity
 project_id: freespeed
 tags: [paper, manipulation, action-chunking, speed-control, imitation-learning, control]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-14
 arxiv: "2610.05734"
 project: https://yuxuanhu9.github.io/FreeSpeed/
 related:
@@ -11,10 +11,12 @@ related:
   - ../entities/paper-speedtuning.md
   - ../methods/diffusion-policy.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/freespeed_arxiv_2610_05734.md
   - ../../sources/sites/freespeed_project_page.md
   - ../../sources/repos/freespeed.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "FreeSpeed 在冻结的生成式策略上推理时重采样动作块，并用方向不一致度限制速度缩放，以保住抓取和放置阶段的成功率。"
 ---
 
