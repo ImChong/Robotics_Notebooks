@@ -180,6 +180,17 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | LiteReality-Agent arXiv:2610.01863 — 更新既有项目实体并补全论文、交互查看器、仿真导出和开源状态
+
+- 复用现有 LiteReality-Agent 实体，未创建重复节点。
+- 论文报告 10 个室内场景、620 个采集视角，并明确几何/感知指标不等于真实物理属性验证。
+- 官方仓库为 Apache-2.0；LiteReality Scanner App Store 免费提供。
+
+## [2026-10-14] ingest | sources/papers/qwen_drive_1_0_arxiv_2609_00111.md — 收录 Qwen-Drive-1.0 论文、官方文章和代码，补充端到端自动驾驶地图
+
+- 核查结论：权重及推理 / 评测源码公开；训练代码未随当前官方仓库发布。
+- 主要观察：共享 VLM、BEV 感知与 flow-matching 规划统一在一个驾驶模型中；评测按各自协议解读。
+
 ## [2026-10-14] structural | 首页各社区互链 Top-10 节点读者化：清理 ingest/独立节点/升格/图谱 hub 等维护者口径（wiki 约 170 页 + 4 个生成器同步），摘要与首段改为读者视角
 
 ## [2026-10-14] ingest | sources/papers/ha_liu_2015_multiple_contact_humanoid_fall_planning.md — 归档 IROS 2015 多接触跌倒规划；官方页未列可运行源码，补充 Balance Recovery 关联

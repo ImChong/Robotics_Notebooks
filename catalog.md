@@ -770,7 +770,7 @@
 - [LingBot-World](wiki/entities/lingbot-world.md) — robbyant/lingbot-world**](https://github.com/robbyant/lingbot-world)（蚂蚁 **Robbyant / 灵波**）是 **开源世 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
-- [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[Blog/PDF](https: `📅unknown` `[entity_page]`
+- [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[论文 arXiv:2610.01863](https://arxi `📅unknown` `[entity_page]`
 - [LiveTalking（实时流式交互数字人）](wiki/entities/livetalking.md) — LiveTalking**（GitHub，项目页，[文档 `📅unknown` `[entity_page]`
 - [LLaDA2.2-flash](wiki/entities/llada2-2-flash.md) — LLaDA2.2-flash** 是 Inclusion AI（蚂蚁集团）LLaDA2 系列的 **agent-oriented `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
@@ -2954,6 +2954,7 @@
 - [QUEEN（arXiv:2610.03695）](wiki/entities/paper-queen-chess-language-model-explanations.md) — QUEEN**（*Language Models that Play Chess and Explain Their Moves*，[arXiv:2610.03695](https://arxiv `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
 - [Qwen-Audio-Agent：全双工语音与异步任务怎么同时跑？](wiki/entities/paper-qwen-audio-agent.md) — Qwen-Audio-Agent**（*Qwen-Audio-Agent Technical Report*，[arXiv:2609.25195](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
+- [Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型](wiki/entities/paper-qwen-drive-1-0.md) — 一句话定义：** Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。 `📅unknown` `[entity_page]`
 - [QWM（Q-Learning With World Models）](wiki/entities/paper-qwm.md) — QWM**（*Q-Learning With World Models*，arXiv:2608.17163，[项目页](ht `📅unknown` `[entity_page]`
 - [R2RI：机器人间交互的多视角事件与 RGB 数据集](wiki/entities/paper-r2ri-robot-interaction-dataset.md) — R2RI**（arXiv:2610.07117，Magrini 等，意大利多所大学）是论文称之为 **首个面向机器人间交互（ `📅unknown` `[entity_page]`
 - [R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化](wiki/entities/paper-r2s-ego.md) — R2S-EGO**（*Dual-Proxy Refinement for Sparse-Capture Real-to-Sim*，[arXiv:2608.06827](https://arxiv. `📅unknown` `[entity_page]`
