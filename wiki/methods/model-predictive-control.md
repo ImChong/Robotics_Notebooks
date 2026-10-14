@@ -272,6 +272,8 @@ print("apply control:", u.ravel())
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — F1/10 **LearningMPC** 与 **drift-mpc-ackermann** 等非线性/学习 MPC 真机栈
 - [mpc_python](../entities/mpc-python.md) — **CVXPY 迭代线性化 MPC** 路径跟踪 + MuJoCo/MuSHR demo（MIT，~520★；教学向 QP 闭环）
 
+- [DSLC：隐蔽执行器攻击下的多机器人安全学习控制](../entities/paper-dslc-multirobot-secure-control.md) — 将分布式 MPC 扩展为面向隐蔽执行器攻击的对抗式闭环策略学习。
+
 ## 推荐继续阅读
 
 - [CMU Optimal Control 2025（课程归档）](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — Lecture 10: Convex Model-Predictive Control
