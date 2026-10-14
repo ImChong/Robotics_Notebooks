@@ -1,111 +1,143 @@
 ---
 type: entity
-tags: [paper, manipulation, vla]
+project_id: groundingpi
+tags: [paper, manipulation, visual-grounding, vla, physical-intelligence]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-14
 arxiv: "2609.39601"
+project: "https://groundingpi.github.io/"
+code: "https://github.com/groundingpi/GroundingPI"
 related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/frontier-manipulation-2026-09-28-10-02.md
 sources:
+  - ../../sources/papers/groundingpi_arxiv_2609_39601.md
+  - ../../sources/sites/groundingpi-github-io.md
+  - ../../sources/repos/groundingpi.md
   - ../../sources/blogs/frontier_manipulation_2026_09_28_10_02.md
-summary: "GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocabulary 中的坐标 token，通过 multimodal/spatial pretraining、SFT 和 GRPO 训练。在 34 个 Groundin"
+summary: "GroundingPI 是一个 4B grounding foundation model，将点与边界框编码为共享词表中的量化坐标 token；论文研究专门的多模态/空间预训练如何迁移到机器人操作和自动驾驶感知。"
 ---
 
-# GroundingPI：基于视觉基元的物理智能 Grounding 基础模型 机 构： XPeng Inc. 、 Peking University 、 The University of Hong Kong 、 UC Berkeley 、 Princeton University、NUS、Tsinghua University、HKUST (GZ) 等
-
-**GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives**（[arXiv:2609.39601](https://arxiv.org/abs/2609.39601)）聚焦一个机器人学习/控制缺口：VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在哪里”，还要准确定位很小的操作区域、接 触位置以及拥挤场景中的目标，并满足闭环控制的实时要求。
+# GroundingPI：基于视觉基元的物理智能 Grounding 基础模型
 
 ## 一句话定义
 
-GroundingPI：基于视觉基元的物理智能 Grounding 基础模型 机 构： XPeng Inc. 、 Peking University 、 The University of Hong Kong 、 UC Berkeley 、 Princeton University、NUS、Tsinghua University、HKUST (GZ) 等是一项针对「VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在」提出的研究；其贡献应理解为一条方法或评测线索，具体实现细节以论文原文为准。
+GroundingPI 是一个 4B 视觉 grounding 基础模型，以共享词表中的离散坐标 token 表示点和边界框，并将专门的感知能力迁移到机器人操作与自动驾驶视觉任务。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉、语言与动作联合建模的策略接口 |
-| WAM | World-Action Model | 将世界状态预测与动作建模结合的模型 |
-| RL | Reinforcement Learning | 通过环境回报优化控制策略 |
-| OOD | Out-of-Distribution | 训练分布之外的测试条件 |
-| VLM | Vision-Language Model | 联合处理图像与语言的模型 |
+| VLA | Vision-Language-Action | GroundingPI 被研究为 VLA 视觉骨干的候选来源。 |
+| WAM | World-Action Model | 论文讨论的另一类具身模型，其感知也依赖视觉骨干。 |
+| VLM | Vision-Language Model | GroundingPI 的视觉与语言建模接口。 |
+| GRPO | Group Relative Policy Optimization | 论文用于强化学习后训练的优化方法。 |
+| OOD | Out-of-Distribution | 论文用于评估分布外场景迁移的设置。 |
 
 ## 为什么重要
 
-- **问题定位：** VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在哪里”，还要准确定位很小的操作区域、接 触位置以及拥挤场景中的目标，并满足闭环控制的实时要求
-- **方法侧重点：** GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocabulary 中的坐标 token，通过 multimodal/spatial pretraining、SFT 和 GRPO 训练。在 34 个 Grounding Benchmark 上平均达到 73.68%。作为机器人视觉 Backbone 接入 RoboTwin 2.0 后，在四种 OOD 条件下均超过论文比较的主流 Backbone，最大相对提升 24.8%；在 RoboCasa-GR1 上只使用 50% demonstration，即超过部分使用 75% demonstration 的视觉 Backbone。它 体现的是另一条 VLA 路线：先把操作所需的精确物理 Grounding 做强，再接 Action Policy。
-- **阅读边界：** 这条工作适合与相关任务/算法并读；文章摘要不足以证明方法能直接迁移到另一机器人或应用场景。
+机器人策略不仅要识别目标类别，还要在拥挤场景或小目标条件下定位任务相关对象、操作点与空间范围。GroundingPI 将 grounding 作为可专门训练的感知能力，并验证该视觉表示对机器人操作和自动驾驶下游任务的价值，构成“先增强感知、再接动作策略”的研究路线。
 
 ## 方法栈与流程总览
 
+GroundingPI 将点与框序列化为共享词表中的量化坐标 token。论文摘要把训练概括为多模态和空间预训练、监督微调、GRPO 强化学习后训练；官方模型实现使用 MoonViT-V2（Kimi K3）视觉编码器、可学习多模态投影器与 Qwen3-4B 语言骨干。
+
 ```mermaid
 flowchart LR
-  P["问题：VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在哪里”"] --> M["机制：GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box "] --> E["结果：原文评测需核验"]
+  D["公开数据集 + 专用数据引擎"] --> P["多模态与空间预训练"]
+  P --> S["监督微调"]
+  S --> R["GRPO 强化学习后训练"]
+  R --> M["GroundingPI 4B grounding 模型"]
+  M --> T["接入下游视觉任务与动作策略"]
 ```
 
-此图只归纳文章摘要中明确给出的「问题—方法」关系，不替代论文方法图或实际运行时序。
-
-## 方法
-
-文章归纳的关键机制是：GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocabulary 中的坐标 token，通过 multimodal/spatial pretraining、SFT 和 GRPO 训练。在 34 个 Grounding Benchmark 上平均达到 73.68%。作为机器人视觉 Backbone 接入 RoboTwin 2.0 后，在四种 OOD 条件下均超过论文比较的主流 Backbone，最大相对提升 24.8%；在 RoboCasa-GR1 上只使用 50% demonstration，即超过部分使用 75% demonstration 的视觉 Backbone。它 体现的是另一条 VLA 路线：先把操作所需的精确物理 Grounding 做强，再接 Action Policy。
-
-**输入与输出。** 文章所述输入包括任务相关的视觉、本体状态、动作示范或控制指令，取决于原文具体设定；输出是论文提出的策略、表示、评测协议或控制机制。由于附件未给出完整实验协议，实际 observation/action 定义与控制频率应从论文方法节核查。
+GAM 协议把坐标量化到 0–999 的整数网格：点输出为 `(x, y)`，边界框输出为 `(x1, y1, x2, y2)`，缺失目标可表示为 `None`。部署时应使用配套 tokenizer、processor 和 chat template，以保持空间 token 边界与坐标解析一致。
 
 ## 实验与评测
 
-- **附件提供的证据：** GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocabulary 中的坐标 token，通过 multimodal/spatial pretraining、SFT 和 GRPO 训练。在 34 个 Grounding Benchmark 上平均达到 73.68%。作为机器人视觉 Backbone 接入 RoboTwin 2.0 后，在四种 OOD 条件下均超过论文比较的主流 Backbone，最大相对提升 24.8%；在 RoboCasa-GR1 上只使用 50% demonstration，即超过部分使用 75% demonstration 的视觉 Backbone。它 体现的是另一条 VLA 路线：先把操作所需的精确物理 Grounding 做强，再接 Action Policy。
-- **复核要点：** 先确认论文中的机器人/仿真器、训练数据与 baseline，再将成功率或误差等数字按相同任务协议比较。
-- **定量结果：** 若附件段落未明确报告数值，不在此补造；点击 arXiv 原文查看完整表格与消融。
+论文摘要报告与 44 个基线在 34 个 grounding benchmark 上进行比较，覆盖 11 类感知能力；GroundingPI 平均得分为 73.68%，高于论文中更大规模的 GPT-6 Astra 基线（71.54%）。下游实验的主要结果如下：
 
-## 源码运行时序图
+| 任务 / 基准 | 论文报告 |
+|------|------|
+| RoboTwin 2.0 | 四种 OOD 设置均超过论文比较的主流视觉骨干；相对最强骨干最高提升 24.8%。 |
+| RoboCasa-GR1 | 使用 50% demonstrations 训练的设置超过部分使用 75% demonstrations 的视觉骨干基线。 |
+| nuScenes | 作为视觉骨干时，平均开环 L2 误差为 0.296 m。 |
 
-**源码运行时序图不适用。** 本次综述 PDF 未附该论文的官方项目页或代码仓库链接，当前无法核验可运行训练/推理入口；这不等于判定其未开源。
-
-## 工程实践
-
-| 环节 | 复现时需要核对 |
-|------|----------------|
-| 观测与动作 | 传感器、状态维度、动作表示及控制频率是否与目标机器人一致 |
-| 训练/推理 | 是否需要仿真、预训练模型、额外传感器或在线优化器 |
-| 评测 | 场景划分、baseline、失败定义与真实机器人验证条件 |
-| 源码/项目资源 | 综述未附官方项目页或运行仓库，开源状态未核验。 |
+这些数字沿用论文摘要的报告口径；复现或比较时应回到原文表格核对任务划分、指标定义和对应 baseline。
 
 ## 结论
 
-**一句话总判：** GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocabulary 中的坐标 token，通过 multimodal/spatial pretraining、SFT 和 GRPO 训练。在 34 个 Grounding Benchmark 上平均达到 73.68%。作为机器人视觉 Backbone 接入 RoboTwin 2.0 后，在四种 OOD 条件下均超过论文比较的主流 Backbone，最大相对提升 24.8%；在 RoboCasa-GR1 上只使用 50% demonstration，即超过部分使用 75% demonstration 的视觉 Backbone。它 体现的是另一条 VLA 路线：先把操作所需的精确物理 Grounding 做强，再接 Action Policy。从文章摘要能确认研究动机与方法主线，但性能与可复现边界需要以原文核实。
+**一句话总判：** GroundingPI 的核心价值是把点与框 grounding 做成可迁移的感知基础能力，现有证据支持其作为视觉骨干，而不是一个独立的机器人动作策略。
 
-1. **先核对问题设定。** 确认其观测、机器人本体与动作接口是否匹配目标应用。
-2. **把方法拆成可验证模块。** 逐一查明表示、策略、控制器或数据处理的作用，避免只按论文命名判断。
-3. **复现优先看消融与失败条件。** 检查增益来自关键模块还是数据规模、额外传感器或更宽松的评测设置。
-4. **不要把文章摘要当成开源状态证明。** 当前详情只记录文章所载信息；代码与数据状态未在本次资料中核验。
+1. **先看 grounding 指标。** 73.68% 是 34 项 benchmark 的平均结果，不等价于单一机器人任务成功率。
+2. **按下游任务读迁移增益。** RoboTwin 2.0、RoboCasa-GR1 与 nuScenes 结果各自采用不同协议，不能跨任务横向比较。
+3. **拆分感知和控制。** 实际动作仍由下游策略产生；不要把视觉 checkpoint 直接当作机器人可执行策略。
+4. **核查权重许可。** 原始代码声明 Apache 2.0，但组合模型含 Kimi K3 派生材料及其他第三方组件。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 用户程序
+  participant Client as grounding_pi 客户端
+  participant Server as vLLM 服务与模型适配器
+  participant Model as GroundingPI 模型
+  User->>Client: 图像路径 + grounding 指令
+  Client->>Server: OpenAI-compatible 图文请求
+  Server->>Model: tokenizer / processor 编码后推理
+  Model-->>Server: 点或框坐标 token
+  Server-->>Client: 结构化生成结果
+  Client-->>User: 坐标结果与可视化
+```
+
+推理复现入口是下载 Hugging Face checkpoint、按仓库指南启动服务，再使用客户端或 `examples/predict.py` 发起图文请求。该图描述仓库提供的 grounding 推理接口，不代表下游机器人控制执行闭环。
+
+## 工程实践
+
+| 环节 | 已核验信息 | 复现时的注意点 |
+|------|------------|----------------|
+| 模型输入输出 | 单张图像 + 文本任务指令；点、框使用 0–999 坐标网格 | 坐标解析需使用模型 tokenizer、processor 与 chat template |
+| 推理 | vLLM Transformers backend 为默认服务，另有 Transformers 参考服务 | README 目标环境为 Linux x86_64 / Python 3.12，并要求预置兼容 Torch 和 vLLM 0.18.x 的加速器运行时 |
+| 评测 | 官方仓库包含 34 benchmark 的评估入口 | 完整评测需要另行准备数据、路径配置和运行环境 |
+| 训练 | 提供模型训练代码与配置 | 数据缓存、manifest 和兼容训练运行时需自行准备；仓库默认训练配方指向对应 PPU 环境 |
+| 下游策略 | 提供 StarVLA / OpenWAM 的骨干比较与策略工作流 | 需独立配置策略模型和 checkpoint；公开 grounding 权重不是直接动作策略 |
+| 开源状态 | 项目页链接到代码；仓库及 Hugging Face 均可访问 | Apache 2.0 只覆盖项目自有贡献；Kimi K3 与第三方组件条件仍适用 |
 
 ## 局限与风险
 
-- 当前总结来自两篇综述 PDF，未对每篇原文逐项复核；实验数字、模型版本和技术细节应以 arXiv 页面/正文为准。
-- 综述没有提供本条论文的项目页或代码仓库链接，因此不推断「已开源」或「未开源」，也不绘制源码运行时序图。
-- 若方法依赖专用传感器、动作先验、预训练 checkpoint 或定制低层控制器，迁移成本需单独评估。
+- 摘要的聚合成绩不能替代逐 benchmark 的指标、统计方差和失败案例；具体比较需要核对论文及补充材料。
+- 视觉 grounding 的下游增益依赖所接策略、数据、仿真器和评测协议，不直接保证目标机器人上的真实控制收益。
+- 官方仓库提供的动作策略集成属于骨干比较/训练工作流；直接部署仍需独立策略训练、运行时适配和安全验证。
+- 模型包中含上游 Kimi K3 及其他第三方组件，权重许可与代码许可证应分别审阅。
 
 ## 与其他工作对比
 
-| 维度 | 本工作 | 阅读时对照 |
-|------|---------|-------------|
-| 研究缺口 | VLA 和 WAM 大多直接继承通用 VLM 或视频生成模型的视觉 Backbone，但机器人操作 对 Grounding 的要求比普通视觉问答高得多：不仅要知道“杯子在哪里”，还要准确定位很小的操作 | 相关任务页中常用方法的输入与输出 |
-| 方法主线 | GroundingPI 没有直接继续扩大 VLA，而是专门训练一个 4B Grounding Foundation Model， 把 point 和 bounding box 都量化成共享 vocab | 直接策略、模型/规划或学习式控制基线 |
-| 证据边界 | 综述提要；以原文评测表和消融为准 | 相同机器人、相同场景、相同成功标准 |
+| 维度 | GroundingPI | 一般 VLA / WAM |
+|------|-------------|----------------|
+| 主要输出 | 视觉 grounding 的点、框及相关空间 token | 通常进一步输出机器人动作或动作序列 |
+| 优化重点 | 密集、精确、可迁移的感知能力 | 任务执行与感知—动作联合建模 |
+| 组合方式 | 作为视觉骨干接入下游策略 | 可在系统内联合处理感知与动作 |
+| 工程边界 | 单独 checkpoint 不直接闭环控制 | 需依赖相应机器人接口与控制栈 |
 
 ## 关联页面
 
-- [【9.28–10.2 前沿论文动态】Manipulation](../overview/frontier-manipulation-2026-09-28-10-02.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Vision-Language-Action](../methods/vla.md)
+- [【9.28–10.2 前沿论文动态】Manipulation](../overview/frontier-manipulation-2026-09-28-10-02.md)
 
 ## 参考来源
 
-- [【9.28–10.2 前沿论文动态】Manipulation 综述条目](../../sources/blogs/frontier_manipulation_2026_09_28_10_02.md)
+- [论文原文归档](../../sources/papers/groundingpi_arxiv_2609_39601.md)
+- [官方项目页核查](../../sources/sites/groundingpi-github-io.md)
+- [官方仓库复现入口](../../sources/repos/groundingpi.md)
 - [arXiv:2609.39601](https://arxiv.org/abs/2609.39601)
+- [Hugging Face 论文页](https://huggingface.co/papers/2609.39601)
 
 ## 推荐继续阅读
 
-- [arXiv 原文](https://arxiv.org/abs/2609.39601)
-- [Manipulation任务页](../tasks/manipulation.md)
+- [GroundingPI 项目主页](https://groundingpi.github.io/)
+- [GitHub 代码与复现指南](https://github.com/groundingpi/GroundingPI)
+- [Hugging Face 权重](https://huggingface.co/GroundingPI/GroundingPI)
+- [Hugging Face 论文页](https://huggingface.co/papers/2609.39601)
