@@ -3,7 +3,7 @@
 type: entity
 tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-14
 related:
   - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
   - ./benjamin-katz.md
@@ -78,7 +78,10 @@ LeoInAI Substack（2026-09）将 Boston Dynamics 列为 **VR 遥操作采数** �
 
 在深度学习和强化学习（RL）爆发的今天，波士顿动力经典的“模型驱动（Model-based）”路线面临着数据驱动（Data-driven）路线的挑战。虽然其在人工智能（特别是大模型和模仿学习端到端控制）方面的 PR 相对低调，但其底层极其扎实的运控算法和硬件平台，仍是当前所有 RL 从业者试图超越的物理标杆。[ZEST](./paper-zest.md)（与 RAI Institute 合作，*Science Robotics* 2026）是其公开的 RL 对照：同一套极简模仿配方在全电 Atlas 上做出战术爬行/地板舞，并在仿真里对比自家全身 MPC——干净步行两者接近，多接触与脏接触标注技能则 RL 更能做完。
 
+Dynamic Creatures 是 Boston Dynamics 的官方酒店与娱乐合作伙伴，正在开发面向游客互动的角色机器人；其 Hugo 原型与 SnowJay 平台资料见[独立实体页](./dynamic-creatures-hugo.md)。这类角色机器人属于合作伙伴的产品路线，不应与 Boston Dynamics 自有 Spot / Atlas 机型混为一谈。
+
 ## 关联页面
+- [Dynamic Creatures Hugo 与 SnowJay](./dynamic-creatures-hugo.md)
 - [Boston Dynamics Atlas 13-DoF 灵巧手](./boston-dynamics-atlas-13dof-hand.md)
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
