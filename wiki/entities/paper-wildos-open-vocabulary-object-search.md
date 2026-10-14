@@ -154,6 +154,7 @@ sequenceDiagram
 - [TravExplorer](./paper-travexplorer.md)
 - [Robot Lab](./robot-lab.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 开放词汇检测 / 语义分割在户外目标搜索中的选型位置
 
 ## 参考来源
 
