@@ -99,6 +99,7 @@ sequenceDiagram
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [imitation-learning](../methods/imitation-learning.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ③ 策略任务成功率层：用有序成功率与交接成功率拆解长程失败，避免均值成功率掩盖子任务交接问题
 
 ## 参考来源
 

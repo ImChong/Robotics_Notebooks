@@ -28,6 +28,14 @@ summary: "SAIL Research Lab 的 Physical RSI 是一份具身系统递归自我�
 | 许可 | MIT（仓库）；引用论文与第三方材料各循其许可 |
 | 核查日期 | 2026-10-14 |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RSI | Recursive Self-Improvement | 递归自我改进：改进会因果性地改变后续改进机制 |
+| SAIL | SAIL Research Lab | 本研究地图的维护方 |
+| MIT | MIT License | 仓库采用的开源许可证 |
+
 ## 核心边界
 
 项目强调，不应把所有部署后适应都称作递归自我改进：收集更多数据、修复一次失败或微调策略，若没有保留的变化进入未来改进机制，仍只是适应。其框架把执行系统 \(M=(\Theta,H)\)（模型与 harness）与改进过程 \(\Phi=(Adapt,Train,Ver)\) 分开，并要求区分“任务表现变好”与“产生未来更新的过程变好”。
@@ -67,6 +75,7 @@ L5 的表述强调验证和控制变量；仅仅换了程序或得到一次更�
 - [RoboDojo](./robodojo.md) — 项目地图中的机器人操作评测基准。
 - [HarnessPAI](./paper-harnesspai.md) 与 [Harness VLA](./paper-harness-vla.md) — 相关 harness 研究。
 - [RSI 四 tier 五 pushes](../queries/rsi-four-tier-five-pushes.md) — RSI 分类与选型框架。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 研究地图中的验证与评测、基准与平台主题可按该链的四层评测选型归位
 
 ## 同名项目消歧
 

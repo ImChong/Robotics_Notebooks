@@ -100,6 +100,7 @@ sequenceDiagram
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [paper-video2world-coding-agents-benchmark](./paper-video2world-coding-agents-benchmark.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ② 世界模型 / 物理推演保真度一侧：评的是从视频恢复物理规律与可运行仿真代码，而非策略成功率
 
 ## 参考来源
 

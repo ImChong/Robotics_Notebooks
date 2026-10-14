@@ -125,12 +125,23 @@ scripts/demo.py 依次运行 VQA、直接规划、带理由规划；scripts/run_
 
 **局限：** 权重与推理脚本不能代替训练复现；闭环指标来自特定仿真协议，不能直接代表真实道路安全。多任务结果应按数据和评测协议分别复核。
 
+## 与其他工作对比
+
+| 工作 | VLM 角色 | 空间表征 | 轨迹输出 | 开放状态 |
+|------|----------|----------|----------|----------|
+| Qwen-Drive-1.0 | Qwen3.5-4B 共享表征，保留问答能力 | 外接 BEV 感知头输出可检查 3D 结果 | flow-matching 规划专家直接生成 5 秒轨迹 | 推理/评测代码与权重公开，训练代码未发布 |
+| [S²-VLA](./paper-s-squared-vla.md) | 语义流，与空间流并行解耦 | 独立空间流缓解 spatial representation collapse | Dual-Stream Planning Adapter 融合后输出 | 截至入库日未开源 |
+| [BIRDriver](./paper-birdriver.md) | Qwen2.5VL-3B 读单帧 BEV | BEV 作为 VLM 输入 | 输出 ≤3 个相对 key points，再由 PLUTO 规划器出轨迹 | 截至 2026-09-20 代码未发布 |
+
+三者的分歧在 3D 结构放在哪里、轨迹由谁生成：Qwen-Drive 让 BEV 成为可检查输出并由专用规划专家出轨迹；BIRDriver 让 BEV 成为输入并把精细规划交给经典规划器；S²-VLA 则在表征层拆分语义与空间。NAVSIM PDMS 数字需在相同 SFT / RL 设置下对照。
+
 ## 关联页面
 
 - [端到端自动驾驶：十大前沿算法技术地图](../overview/e2e-autonomous-driving-top10-algorithms.md) — 放入既有方法谱系
 - [视觉–语言–动作（VLA）](../methods/vla.md) — VLM 与动作 / 轨迹输出接口
 - [S²-VLA](./paper-s-squared-vla.md) — 驾驶 VLA 与 NAVSIM 对照
 - [BIRDriver](./paper-birdriver.md) — BEV 输入与高层规划接口对照
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — Qwen-Drive 的 BEV 感知头对应 ③ 2D→3D 提升层，其输出再由规划专家在 ④ 层消费
 
 ## 参考来源
 

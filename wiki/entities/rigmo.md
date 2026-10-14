@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, generative-animation, auto-rigging, mesh-sequence, gaussian-bones, vae, dit, snap, uiuc, ucsc, cmu, ntu, cvpr]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-14
 venue: arXiv 2026 (CVPR 2026 per GitHub README)
 arxiv: "2601.06378"
 related:
@@ -154,6 +154,7 @@ sequenceDiagram
 - [Kimodo](./kimodo.md) — 大规模动捕上的可控运动扩散
 - [Blender](./blender.md) — DCC 资产层；RigMo 输出可进入 DCC/仿真资产链
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 角色资产 vs 物理可控边界
+- [GaussiAnimate](./paper-gaussianimate.md) — 同为 4D 序列 → 可驱动绑定：GaussiAnimate 以 MCS 骨架 + 自由形态 bones 分层，并用非参数 PartMM 驱动新动作；RigMo 则无标注学习 Gaussian bones 与潜空间运动生成
 
 ## 参考来源
 

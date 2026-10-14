@@ -145,6 +145,7 @@ sequenceDiagram
 - [FSD-VLN](./paper-fsd-vln.md)
 - [ActiveFly-Bench](./paper-activefly-bench.md)
 - [VLN 开源复现范式](../overview/vln-open-source-repro-paradigms.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SatNav 是 UAV-VLN 数据/基准，可按其 ③ 任务成功率层与 ④ 卫星→真实观测迁移层理解评测口径
 
 ## 参考来源
 

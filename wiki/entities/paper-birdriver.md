@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, motion-planning, end-to-end, vlm, bev, nuplan, long-tail, iclr2026, tsinghua, huawei, ucas, casia]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-14
 venue: "ICLR 2026"
 openreview: TuU95FWkyH
 related:
@@ -163,6 +163,7 @@ flowchart TB
 - E2E 技术地图：[e2e-autonomous-driving-top10-algorithms.md](../overview/e2e-autonomous-driving-top10-algorithms.md)（VLM 解耦/CoT 姊妹线）
 - 模块化 AD 专辑：[autonomous-driving-core-algorithms-series.md](../overview/autonomous-driving-core-algorithms-series.md)
 - VLM 方法背景：[vla.md](../methods/vla.md)
+- Qwen-Drive 对照：[paper-qwen-drive-1-0.md](./paper-qwen-drive-1-0.md)（BEV 作为外接感知头输出，规划专家直接生成轨迹，而非 VLM 输出 key points 再交 PLUTO）
 
 ## 参考来源
 

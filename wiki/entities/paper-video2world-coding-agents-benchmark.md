@@ -100,6 +100,7 @@ sequenceDiagram
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [paper-physimcode-physics-video-to-code](./paper-physimcode-physics-video-to-code.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ② 预测保真度层的「视频→仿真」变体：几何、动力学与任务完成分开评，视觉还原好不蕴含交互可靠
 
 ## 参考来源
 
