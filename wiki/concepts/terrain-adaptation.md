@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-09-18
+updated: 2026-10-14
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-egohtr.md
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
+  - ../entities/paper-terrain-aware-ugv-dem-local-planning.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
@@ -44,6 +45,7 @@ sources:
   - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
   - ../../sources/papers/humoslope_arxiv_2607_07830.md
+  - ../../sources/papers/terrain_aware_ugv_navigation_arxiv_2608_17038.md
   - ../../sources/papers/legged_load_adapt_arxiv_2507_07825.md
 ---
 
@@ -186,6 +188,7 @@ sources:
 - [HumoSlope](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — 无在线外感知的连续陡坡适应：局部平面 ZMP + 生物力学门控
 - [CReF](../entities/paper-cref.md) — 前向深度不经高程图的单阶段适应 + 足端可支撑落脚奖励
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 高程图失效时切盲策略做缺口/动态障碍恢复，而不是把噪声硬塞进单策略
+- [DEM + LiDAR UGV 导航论文](../entities/paper-terrain-aware-ugv-dem-local-planning.md) — 轮式 UGV 的区域级坡度规划与近场感知案例，仿真证据边界见实体页
 
 ## 推荐继续阅读
 
