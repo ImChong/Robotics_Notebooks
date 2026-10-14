@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, rl, long-horizon, dagger, vla, amp, university-of-manchester, ustc, x-humanoid, warwick, newcastle]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.08320"
 project_id: humanoid-horizon-long-horizon-loco-manipulation
 project: https://haozhuo-zhang.github.io/Humanoid-Horizon-project-page/
@@ -15,10 +15,12 @@ related:
   - ../methods/dagger.md
   - ../methods/teacher-student-dagger-training.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/humanoid_horizon_arxiv_2610_08320.md
   - ../../sources/sites/humanoid_horizon_project.md
   - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "Humanoid Horizon（arXiv:2610.08320）：曼彻斯特大学/中科大/X-Humanoid 等用并行阶段流、动态起始与奖励门控训练多物体搬运单策略，LHM-Humanoid 两物体 SuccAll 80.4%（LHM-Humanoid 71.1%），五物体 60.2%（18.1%）；DAgger 蒸馏出 RGB/深度+语言 Student；项目页无代码。"
 ---
 

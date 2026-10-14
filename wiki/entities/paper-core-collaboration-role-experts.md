@@ -3,7 +3,7 @@ type: entity
 project_id: core-collaboration-role-experts
 tags: [paper, manipulation, multi-robot, mixture-of-experts, decentralized, imitation-learning, usyd, pair-lab]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.07752"
 project: https://aus.bot/research/core/
 venue: "arXiv 2026"
@@ -15,10 +15,12 @@ related:
   - ../concepts/mixture-of-experts.md
   - ./paper-chorus.md
   - ./paper-ae-vla-arm-wise-compositional.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/core_collab_role_experts_arxiv_2610_07752.md
   - ../../sources/sites/core-collab-role-experts-project.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 ---
 
 # CoRE（Collaboration-Role Experts）

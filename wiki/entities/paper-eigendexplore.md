@@ -3,7 +3,7 @@ type: entity
 project_id: eigendexplore
 tags: [paper, dexterous-manipulation, rl, exploration, human-prior, ppo, sim2real, stanford]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.07681"
 code: https://github.com/hgupt3/eigendexplore
 project: https://eigendexplore.github.io/
@@ -19,11 +19,13 @@ related:
   - ../tasks/manipulation.md
   - ./paper-dexmachina.md
   - ./egosuite-open100k.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/eigendexplore_arxiv_2610_07681.md
   - ../../sources/sites/eigendexplore-project.md
   - ../../sources/repos/eigendexplore.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 ---
 
 # EigenDEXplore

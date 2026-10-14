@@ -3,7 +3,7 @@ type: entity
 project_id: qf3-filtered-q-gradients
 tags: [paper, reinforcement-learning, flow-matching, off-policy, humanoid-locomotion, motion-tracking, manipulation]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-14
 arxiv: "2610.08789"
 project: https://qf3-rl.github.io/
 related:
@@ -11,9 +11,11 @@ related:
   - ../methods/vla.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/qf3_arxiv_2610_08789.md
   - ../../sources/sites/qf3-project.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "QF3 是在线离策略流策略强化学习算法：把 critic 的动作梯度反传进 flow policy，但只更新与 replay action 足够接近的动作维度，以降低不可靠梯度造成的策略漂移。"
 ---
 

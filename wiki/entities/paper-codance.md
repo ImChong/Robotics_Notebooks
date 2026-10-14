@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, duke, humanoid, locomotion, imitation-learning, physical-interaction, compliance]
 status: complete
-updated: 2026-10-11
+updated: 2026-10-14
 project_id: codance
 arxiv: "2610.05324"
 project: https://generalroboticslab.com/CoDance
@@ -11,10 +11,12 @@ related:
   - ../entities/paper-notebook-learning-whole-body-human-humanoid-interaction-f.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../methods/imitation-learning.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/codance_arxiv_2610_05324.md
   - ../../sources/sites/codance-generalroboticslab.md
   - ../../sources/repos/codance.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "CoDance 从一段双人舞视频构造双手受力感知训练片段，以多连杆顺应增强和强化学习训练策略，使 Unitree G1 在跟随舞伴的同时对接触力作出让步；论文报告仿真顺应性和双手持续接触真机演示。"
 ---
 

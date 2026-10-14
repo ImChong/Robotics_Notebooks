@@ -12,7 +12,7 @@ tags:
   - open-source
   - stanford
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.07922"
 project: https://openwam.stanford.edu
 code: https://github.com/OpenWAM/OpenWAM
@@ -24,11 +24,13 @@ related:
   - ./paper-openwam.md
   - ./paper-fast-wam.md
   - ./libero-benchmark.md
+  - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/papers/openwam_composable_arxiv_2610_07922.md
   - ../../sources/sites/openwam-stanford.md
   - ../../sources/repos/openwam_stanford.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
+  - ../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md
 summary: "OpenWAM（Stanford, arXiv:2610.07922）：Wan2.2-5B + >10k 小时机器人视频因果预训练，MoT 接动作专家，同一底座支持 Joint/VTA/ATV/解耦四种生成程序及可复用 IDM/FDM；LIBERO 均值 98.6、LIBERO-Long 68.4→97.8、反事实数据使局部 IDM 迁移 21.5→84.5。"
 ---
 
