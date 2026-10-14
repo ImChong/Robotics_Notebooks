@@ -33,7 +33,12 @@ def test_pack_activity_days_compact_round_trips_every_reference() -> None:
                     "has_repo": True,
                     "community_label": "控制 社区",
                 },
-                {"detail_id": "wiki-concepts-b", "label": "B", "type": "concept", "path": "wiki/concepts/b.md"},
+                {
+                    "detail_id": "wiki-concepts-b",
+                    "label": "B",
+                    "type": "concept",
+                    "path": "wiki/concepts/b.md",
+                },
             ],
         },
         {
@@ -71,7 +76,17 @@ def test_pack_activity_days_compact_round_trips_every_reference() -> None:
 
     # 与 docs/main.js expandWikiActivity 相同的还原规则
     restored = [
-        {**day, "nodes": [{"detail_id": ref[0], **node_index[ref[0]], **({"action": ref[1]} if len(ref) > 1 else {})} for ref in day["nodes"]]}
+        {
+            **day,
+            "nodes": [
+                {
+                    "detail_id": ref[0],
+                    **node_index[ref[0]],
+                    **({"action": ref[1]} if len(ref) > 1 else {}),
+                }
+                for ref in day["nodes"]
+            ],
+        }
         for day in packed
     ]
     assert restored == days

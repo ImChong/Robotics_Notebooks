@@ -28,8 +28,12 @@ def payload():
                     "summary": "策略摘要",
                     "content_markdown": "# π0\n\n公式 $x$\n```mermaid\ngraph TD\nA-->B\n```",
                     "related": ["wiki/concepts/vla.md"],
-                    "source_links": [{"url": "https://arxiv.org/abs/2410.24164", "label": "π0 论文"}],
-                    "paper_notebook_links": [{"url": "https://example.org/pi0.html", "label": "笔记"}],
+                    "source_links": [
+                        {"url": "https://arxiv.org/abs/2410.24164", "label": "π0 论文"}
+                    ],
+                    "paper_notebook_links": [
+                        {"url": "https://example.org/pi0.html", "label": "笔记"}
+                    ],
                 },
                 "roadmap-motion-control": {
                     "id": "roadmap-motion-control",
@@ -61,7 +65,12 @@ def test_split_round_trip_preserves_unicode_empty_body_routes_and_aliases(tmp_pa
     assert body["source_links"][0]["url"] == "https://arxiv.org/abs/2410.24164"
     assert body["paper_notebook_links"][0]["label"] == "笔记"
     assert "paper_notebook_links" not in json.loads(
-        (source / catalog["pages"]["detail_pages"]["roadmap-motion-control"]["content_url"].removeprefix("exports/")).read_text()
+        (
+            source
+            / catalog["pages"]["detail_pages"]["roadmap-motion-control"][
+                "content_url"
+            ].removeprefix("exports/")
+        ).read_text()
     ), "条目没有的字段正文里也不出现"
 
 
