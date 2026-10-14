@@ -5,7 +5,7 @@ title: Gemini Robotics
 status: complete
 arxiv: "2503.20020"
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈的机器人模型族；Gemini Robotics 2（2026-07）把 VLA 推进到全身人形控制，并配套公开预览的 ER 2 agent 与端侧 On-Device 2。"
-updated: 2026-10-06
+updated: 2026-10-14
 related:
   - ./paper-roborefer.md
   - ./robospatial.md
@@ -18,12 +18,14 @@ related:
   - ../overview/hub-cross-embodiment.md
   - ../methods/robotics-transformer-rt-series.md
   - ./paper-palm-e-embodied-language-model.md
+  - ./gemini-4-argon.md
   - ./perceptron-egocentric.md
   - ../queries/hmi-papers-coverage.md
   - ../queries/embodied-six-routes-holes.md
 sources:
   - ../../sources/papers/gemini_robotics_arxiv_2503_20020.md
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
+  - ../../sources/blogs/gemini_4_argon_robotics.md
   - ../../sources/sites/gemini-robotics.md
   - ../../sources/repos/google-gemini-robotics-samples.md
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
@@ -175,6 +177,8 @@ sequenceDiagram
 | 2025-09-25 | Robotics 1.5 / ER 1.5 | ER 调工具并规划，VLA 执行且加入行动前推理、跨本体迁移；ER 提供 API，VLA 面向选定合作伙伴 |
 | 2026-07-30 | Robotics 2 / ER 2 / On-Device 2 | 本页主要叙述的全身控制、具身 agent 与端侧模型 |
 
+2026-10-13 的 Google Developers 博客另介绍了通用物理推理模型 **Gemini 4 Argon** 在机器人开发中的用法。本文将其作为相邻模型单独整理在 [Gemini 4 Argon](./gemini-4-argon.md)，不把它并入 Gemini Robotics 2 的版本能力。来源：[Gemini 4 Argon for Robotics](../../sources/blogs/gemini_4_argon_robotics.md)。
+
 **API 可用与开源权重是不同状态**。1.5 的技术说明来自[官方版本发布归档](../../sources/sites/gemini-robotics-15.md)，不把 2 的接口和实验回写为 2025 首版能力。
 
 ## 关联页面
@@ -201,6 +205,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [Gemini 4 Argon for Robotics](https://developers.googleblog.com/gemini-4-argon-for-robotics/) — 通用物理推理模型在机器人研发工作流中的示例
 - [Gemini Robotics 2 发布博客](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/)
 - [Introducing Gemini Robotics ER 2（开发者博文）](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/)
 - [Gemini Robotics 产品页](https://deepmind.google/models/gemini-robotics/)
