@@ -3221,15 +3221,18 @@
 
     /* ── 加载数据 ──
        仅首屏阻塞 link-graph.json（含 summary）。
-       侧栏元数据（tags / related / source_links / paper_notebook_links）懒加载，
-       用无正文的 site-catalog-v1.json（同内容 5.79 MB）而不是含 content_markdown 的
-       index-v1.json（29.83 MB）：正文由详情页按页取，侧栏用不到（编号 3）。 */
+       侧栏元数据（tags 等）懒加载，用无正文的 site-catalog-v1.json 而不是含 content_markdown 的
+       index-v1.json：正文由详情页按页取，侧栏用不到（编号 3）。
+       related / source_links / paper_notebook_links 也不在目录里（目录瘦身），
+       选中节点时按需取该页的正文 JSON（loadSidebarItemLinks）。 */
     let graphData;
     let indexItems = [];
     try {
       graphData = await fetchJsonWithProgress('exports/link-graph.json', frac => {
         setLoadingProgress(5 + frac * 73);   // 下载阶段（首屏主要耗时）：5% → 78%
       });
+      // 边是节点下标对，还原成 {source, target}（main.js 的共享还原逻辑）
+      if (window.RNExportFormats) graphData = window.RNExportFormats.expandLinkGraph(graphData);
     } catch (e) {
       const countEl = document.getElementById('graph-node-count');
       if (countEl) {
@@ -3242,7 +3245,11 @@
     setLoadingProgress(80);   // 数据解析完成，进入构图渲染
     fetch('exports/site-catalog-v1.json')
       .then(r => r.json())
-      .then(d => { indexItems = Object.values((d.pages && d.pages.detail_pages) || {}); })
+      .then(d => {
+        // 目录条目不带 id，由键还原
+        indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
+          .map(([id, it]) => Object.assign({ id }, it));
+      })
       .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
     initCommunityMapsFromGraph();
@@ -6174,7 +6181,68 @@
       applyFilters();            // 内部切回 filter 上色模式
     }
 
+    /* related / source_links / paper_notebook_links 不随目录下发：选中节点时按需取该页正文 JSON
+       （约 10 KB，同一页只取一次），取回后若侧栏仍停在该节点就补渲染这两块。 */
+    let sidebarNodeId = null;
+    const sidebarItemLinkRequests = new Map();
+    function loadSidebarItemLinks(item, nodeId) {
+      if (!item || item.related !== undefined) return;
+      if (!/^exports\/page-content\/[a-f0-9]{64}\.json$/.test(item.content_url || '')) return;
+      let pending = sidebarItemLinkRequests.get(item.id);
+      if (!pending) {
+        pending = fetch(item.content_url)
+          .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(body => {
+            item.related = Array.isArray(body.related) ? body.related : [];
+            item.source_links = Array.isArray(body.source_links) ? body.source_links : [];
+            if (Array.isArray(body.paper_notebook_links)) item.paper_notebook_links = body.paper_notebook_links;
+            return true;
+          })
+          .catch(() => { sidebarItemLinkRequests.delete(item.id); return false; });
+        sidebarItemLinkRequests.set(item.id, pending);
+      }
+      pending.then(loaded => { if (loaded && sidebarNodeId === nodeId) renderSidebarItemLinks(item); });
+    }
+
+    function renderSidebarItemLinks(item) {
+      // related from index
+      const related = item?.related || [];
+      if (related.length) {
+        // ⚡ Bolt Optimization: Replace .slice().map().join('') with string concatenation in for loop
+        // Expected impact: Eliminates intermediate arrays and closure allocation.
+        const limit = Math.min(related.length, 8);
+        let relHtml = '';
+        for (let i = 0; i < limit; i++) {
+          const r = related[i];
+          const relNode = nodes.find(nd => nd.id === r);
+          const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
+          const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
+          relHtml += `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
+        }
+        sbRelList.innerHTML = relHtml;
+        sbRelSec.hidden = false;
+      } else {
+        sbRelSec.hidden = true;
+      }
+
+      const paperLinks = collectPaperNotebookLinks(item);
+      if (paperLinks.length) {
+        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+        // Expected impact: Eliminates closure creation and array allocation when generating paper links HTML.
+        let paperHtml = '';
+        for (let i = 0; i < paperLinks.length; i++) {
+          const link = paperLinks[i];
+          paperHtml += `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`;
+        }
+        sbPaperList.innerHTML = paperHtml;
+        sbPaperSec.hidden = false;
+      } else {
+        sbPaperSec.hidden = true;
+      }
+    }
+
     function openSidebar(d) {
+      sidebarNodeId = d.id;
       const { direct } = applyNodeNeighborHighlight(d);
 
       hideTooltip();
@@ -6243,40 +6311,8 @@
         sbNeighborsSec.hidden = true;
       }
 
-      // related from index
-      const related = item?.related || [];
-      if (related.length) {
-        // ⚡ Bolt Optimization: Replace .slice().map().join('') with string concatenation in for loop
-        // Expected impact: Eliminates intermediate arrays and closure allocation.
-        const limit = Math.min(related.length, 8);
-        let relHtml = '';
-        for (let i = 0; i < limit; i++) {
-          const r = related[i];
-          const relNode = nodes.find(nd => nd.id === r);
-          const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
-          const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
-          relHtml += `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
-        }
-        sbRelList.innerHTML = relHtml;
-        sbRelSec.hidden = false;
-      } else {
-        sbRelSec.hidden = true;
-      }
-
-      const paperLinks = collectPaperNotebookLinks(item);
-      if (paperLinks.length) {
-        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-        // Expected impact: Eliminates closure creation and array allocation when generating paper links HTML.
-        let paperHtml = '';
-        for (let i = 0; i < paperLinks.length; i++) {
-          const link = paperLinks[i];
-          paperHtml += `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`;
-        }
-        sbPaperList.innerHTML = paperHtml;
-        sbPaperSec.hidden = false;
-      } else {
-        sbPaperSec.hidden = true;
-      }
+      renderSidebarItemLinks(item);
+      loadSidebarItemLinks(item, d.id);
 
       sbOpenLink.href = detailUrl;
 
@@ -6285,6 +6321,7 @@
       scheduleSidebarViewportSync();
     }
     function closeSidebar() {
+      sidebarNodeId = null;
       const wasOpen = sidebar.classList.contains('open');
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');

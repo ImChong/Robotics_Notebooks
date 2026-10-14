@@ -1109,6 +1109,13 @@ def load_page_aliases(detail_pages: Dict[str, Dict]) -> Dict[str, str]:
     return aliases
 
 
+# 只有当前页本身用得到、又占目录体积大头的字段随正文 JSON 下发（source_links 3.3 MB、
+# related 1.4 MB）；目录只留列表 / 预览 / 推荐要用的元数据，id 由目录键还原。
+# 前端：docs/main.js loadSitePageData 读正文时并回，图谱侧栏选中节点时按需取。
+BODY_ONLY_FIELDS = ("related", "source_links", "paper_notebook_links")
+CATALOG_DROPPED_FIELDS = ("id", "content_markdown", *BODY_ONLY_FIELDS)
+
+
 def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
     """Publish metadata and immutable bodies while keeping the full v1 export.
 
@@ -1120,16 +1127,20 @@ def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
     body_dir.mkdir(parents=True, exist_ok=True)
     expected = set()
     for page_id, entry in site_payload["pages"]["detail_pages"].items():
-        body = json.dumps(
-            {"version": "v1", "id": page_id, "content_markdown": entry["content_markdown"]},
-            ensure_ascii=False,
-            separators=(",", ":"),
-        ).encode("utf-8")
+        body_payload: dict[str, Any] = {
+            "version": "v1",
+            "id": page_id,
+            "content_markdown": entry["content_markdown"],
+        }
+        for key in BODY_ONLY_FIELDS:
+            if key in entry:
+                body_payload[key] = entry[key]
+        body = json.dumps(body_payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         filename = f"{hashlib.sha256(body).hexdigest()}.json"
         expected.add(filename)
         (body_dir / filename).write_bytes(body)
         detail_pages[page_id] = {
-            key: value for key, value in entry.items() if key != "content_markdown"
+            key: value for key, value in entry.items() if key not in CATALOG_DROPPED_FIELDS
         }
         detail_pages[page_id]["content_url"] = f"exports/page-content/{filename}"
     catalog = {

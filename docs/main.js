@@ -609,6 +609,32 @@
     return compactItems;
   }
 
+  // wiki-activity.json 紧凑格式（scripts/generate_link_graph.py 写出）：node_index 存每个节点一份
+  // 元数据，days[].nodes 只存 [detail_id, action]；这里还原成每条引用自带元数据的原结构。
+  // 旧格式（nodes 为对象数组）原样返回。
+  function expandWikiActivity(data) {
+    if (!data || !data.node_index || !Array.isArray(data.days)) return data;
+    var index = data.node_index;
+    var days = data.days;
+    for (var di = 0; di < days.length; di++) {
+      var refs = days[di] && days[di].nodes;
+      if (!Array.isArray(refs) || !refs.length || !Array.isArray(refs[0])) continue;
+      var nodes = [];
+      for (var ri = 0; ri < refs.length; ri++) {
+        var ref = refs[ri];
+        var node = { detail_id: ref[0] };
+        var meta = index[ref[0]];
+        for (var key in meta) {
+          if (Object.prototype.hasOwnProperty.call(meta, key)) node[key] = meta[key];
+        }
+        if (ref[1]) node.action = ref[1];
+        nodes.push(node);
+      }
+      days[di].nodes = nodes;
+    }
+    return data;
+  }
+
   function renderUpdatesItemSuffix(meta) {
     return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
   }
@@ -4283,6 +4309,26 @@
   // 不能就地写 x/y/vx/vy 等模拟状态。
   var _linkGraphData = null;
   var _linkGraphPromise = null;
+
+  // link-graph.json 的边是节点下标对 [i, j]（scripts/generate_link_graph.py 写出，
+  // 比重复两个完整路径小 10 倍）；读入后还原成 {source, target}，各消费方不感知格式。
+  // 旧格式（对象边）原样返回，兼容尚未刷新的缓存与测试夹具。
+  function expandLinkGraph(data) {
+    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.edges)) return data;
+    var edges = data.edges;
+    if (!edges.length || !Array.isArray(edges[0])) return data;
+    var ids = data.nodes.map(function (n) { return n ? n.id : undefined; });
+    var out = [];
+    for (var i = 0; i < edges.length; i++) {
+      var source = ids[edges[i][0]];
+      var target = ids[edges[i][1]];
+      if (source === undefined || target === undefined) continue;
+      out.push({ source: source, target: target });
+    }
+    data.edges = out;
+    return data;
+  }
+
   function ensureLinkGraphData() {
     if (_linkGraphData) return Promise.resolve(_linkGraphData);
     if (_linkGraphPromise) return _linkGraphPromise;
@@ -4292,9 +4338,9 @@
         return r.json();
       })
       .then(function (data) {
-        _linkGraphData = data;
+        _linkGraphData = expandLinkGraph(data);
         _linkGraphPromise = null;
-        return data;
+        return _linkGraphData;
       })
       .catch(function (error) {
         _linkGraphPromise = null;
@@ -4349,6 +4395,8 @@
   // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。
   if (typeof window !== 'undefined') {
     window.RNLinkGraph = { ensure: ensureLinkGraphData };
+    // graph.html / star-history.html 自行 fetch 时也用同一套还原逻辑
+    window.RNExportFormats = { expandLinkGraph: expandLinkGraph, expandWikiActivity: expandWikiActivity };
   }
 
   // 与 scripts/utils/community_labels.community_short_label 对齐：
@@ -6330,6 +6378,20 @@
   var pageDataRequests = new Map();
   var loadedPageCatalog = null;
   var PAGE_CATALOG_URL = 'exports/site-catalog-v1.json';
+  // 目录瘦身（scripts/export_minimal.py write_page_exports）：条目不再重复写 id（由键还原），
+  // related / source_links / paper_notebook_links 只随当前页的正文 JSON 下发，读正文时并回条目。
+  var BODY_ONLY_FIELDS = ['related', 'source_links', 'paper_notebook_links'];
+
+  function hydrateCatalogIds(catalog) {
+    var detailPages = catalog && catalog.pages && catalog.pages.detail_pages;
+    if (!detailPages) return catalog;
+    for (var id in detailPages) {
+      if (!Object.prototype.hasOwnProperty.call(detailPages, id)) continue;
+      var entry = detailPages[id];
+      if (entry && typeof entry === 'object' && !entry.id) entry.id = id;
+    }
+    return catalog;
+  }
 
   function requestPageJson(url, validate) {
     if (pageDataRequests.has(url)) return pageDataRequests.get(url);
@@ -6374,6 +6436,7 @@
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
     }).then(function (catalog) {
+      hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
       var page = requestedContentPage(catalog, kind, requestedId);
       if (!page || (kind === 'detail' && page.type === 'roadmap_page')) return catalog;
@@ -6386,7 +6449,12 @@
       }).then(function (body) {
         // Do not hydrate the shared catalog: previews and other entries stay metadata-only.
         var detailPages = Object.assign({}, catalog.pages.detail_pages);
-        detailPages[page.id] = Object.assign({}, page, { content_markdown: body.content_markdown });
+        var hydratedPage = Object.assign({}, page, { content_markdown: body.content_markdown });
+        for (var bi = 0; bi < BODY_ONLY_FIELDS.length; bi++) {
+          var bodyField = BODY_ONLY_FIELDS[bi];
+          if (Object.prototype.hasOwnProperty.call(body, bodyField)) hydratedPage[bodyField] = body[bodyField];
+        }
+        detailPages[page.id] = hydratedPage;
         return Object.assign({}, catalog, { pages: Object.assign({}, catalog.pages, { detail_pages: detailPages }) });
       }).catch(function (error) {
         // A deployment may replace the catalog between the two requests. Refresh once.
@@ -6501,6 +6569,7 @@
           if (!response.ok) throw new Error('HTTP ' + response.status);
           return response.json();
         })
+        .then(expandWikiActivity)
         .catch(function (error) {
           console.warn('Wiki activity sync failed:', error);
           return null;
