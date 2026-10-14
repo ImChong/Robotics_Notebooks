@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | arXiv:2608.17038 — 收录 DEM 全局 A* 与 LiDAR 局部修正的 UGV 导航论文，注明仅 Gazebo 仿真与未发现公开代码
+
 ## [2026-10-14] ingest | Chronos Policy — 刷新项目页论文入口与当前代码开放状态
 
 ## [2026-10-14] ingest | sources/blogs/anthropic_redesigning_source_control_2026-10-13.md — 归档 Anthropic Scion 内部版本控制案例，并补充 agentic coding 软件工程基础设施瓶颈
