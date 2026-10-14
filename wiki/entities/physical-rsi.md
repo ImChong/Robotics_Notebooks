@@ -4,6 +4,7 @@ tags: [harness, rsi, agent, physical-ai, robodojo, vla, hku, kinetix-ai, ai-mmla
 status: complete
 updated: 2026-09-28
 related:
+  - ./physical-rsi-research-map.md
   - ./robodojo.md
   - ./xpolicylab.md
   - ./paper-harnesspai.md
@@ -177,3 +178,8 @@ flowchart TB
 - [RoboDojo 文档](https://robodojo-benchmark.com/doc/) — 五维任务定义与 eval 接入
 - [Kinetix AI](https://www.kinetixai.tech/) — 页内合作方与硬件/模型叙事
 - [RoboDojo Leaderboard](https://robodojo-benchmark.com/leaderboard) — 最新 Overall 与 verified 条目
+
+
+## 同名项目消歧
+
+本页记录香港大学 MMLab × Kinetix AI 的 **Physical RSI 1.0** 具体系统；另有一份同名的 [SAIL Research Lab Physical RSI 研究地图](./physical-rsi-research-map.md)，是递归改进领域的文献目录和分类框架，两者不是同一项目。
