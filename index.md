@@ -129,6 +129,7 @@
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md)（编码代理可组合技能 + TDD / worktree / 子代理交付；与 LLM Wiki 规约对照）
 - [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md)（轻量可组合工程技能：grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装）
 - [HumanLayer Skills](wiki/entities/humanlayer-skills.md)（Claude Code 技能：`<important if>` harness、控制论式 agentic loop、GHA 迭代维护）
+- [Logo Design Skill](wiki/entities/logo-design-skill.md)（跨代理 Logo 设计流程：brief、SVG 构造、尺寸测试与用户选向检查点）
 - [Cloudflare Security Audit Skill](wiki/entities/cloudflare-security-audit-skill.md)（六阶段 agent 安全审计：coverage ledger + 对抗验证 + findings.json）
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md)（Agent Skills 办公技能库：信息图/PPT/Excel/深度研究；Hermes/OpenClaw + SenseNova API）
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md)（常驻自主代理：网关 + 记忆/技能闭环 + 多沙箱 + cron/子代理；MIT）
