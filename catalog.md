@@ -4301,6 +4301,7 @@
 - [Same Action, Different Outcome](wiki/entities/paper-same-action-different-outcome-cloth.md) — Same Action, Different Outcome**（arXiv:2610.10801，西班牙 IRI CSIC-UPC）是一项**测量研究**而非新算法：让两台 Franka 在四个 `📅unknown` `[entity_page]`
 - [Sample, Simulate, Select（S³，arXiv:2609.26420）](wiki/entities/paper-sample-simulate-select.md) — Sample, Simulate, Select（S³）**（*Physics-in-the-Loop Text-to-Motion for Humanoids Without Training `📅unknown` `[entity_page]`
 - [SAP-Nav：开词汇导航要主动补空间证据](wiki/entities/paper-sap-nav.md) — SAP-Nav**（*Spatial Semantic Representation Meets Active Perception for Hierarchical Open-Vocabular `📅unknown` `[entity_page]`
+- [SatNav（arXiv:2609.31507）](wiki/entities/paper-satnav.md) — 一句话定义：** SatNav 是一套以高分辨率卫星影像构造城市尺度长程 UAV 视觉–语言导航任务与评测的平台；它用卫星图局部裁剪近似 UAV 下视 RGB 观测，把地理空间路线、语言指令、记忆 `📅unknown` `[entity_page]`
 - [SAVLA（arXiv:2609.16641）](wiki/entities/paper-savla.md) — SAVLA**（*SAVLA: Symmetry-Aware Vision-Language-Action Models for Robotic Manipulation*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [SayCan（Do As I Can）](wiki/entities/paper-saycan.md) — SayCan（Do As I Can）**（arXiv:2204.01691，[代码](https://github.com `📅unknown` `[entity_page]`
 - [SayPlan](wiki/entities/paper-sayplan-llm-scene-graph-planning.md) — SayPlan** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主导型 `📅unknown` `[entity_page]`
