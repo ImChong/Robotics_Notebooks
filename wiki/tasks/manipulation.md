@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-13
+updated: 2026-10-14
 related:
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -305,6 +305,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；真机双臂 UR5e 约 40%→近 100%（arXiv:2608.23831；确认未开源）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL；S1 投掷/笔帽/开箱 250 ep 后 94%/83%/90%（arXiv:2608.29768；项目页已上线、仍未开源）
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；RoboCasa few-shot 65.6% / full 80.8%（arXiv:2608.24882；代码待发布）
+- [AXIS-Bench](../entities/paper-axis-bench-quality-aware-vla-pretraining.md) — 固定预算比较示范质量加权、过滤与条件化；代码/数据待发布（arXiv:2610.18869）
 - [Indi](../entities/paper-indi.md) — VLA 行为意图蒸馏（arXiv:2608.23478；未开源）
 - [ROS2SmolVLA](../entities/paper-ros2smolvla.md) — ROS 2 本地 SmolVLA × UR10e（arXiv:2608.23320；已开源）
 - [Dexmal DM0.5（OpenDM）](../entities/dexmal-dm05.md) — 开放世界 VLA；开源 DM05 权重与 LIBERO/RobotWin/Table30 评测栈
@@ -345,6 +346,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区 VLA / 灵巧手多基准排行榜
 
 ### 世界模型与视频–动作模型（WAM / VAM）
+
+- [LoopWAM](../entities/paper-loopwam.md) — 用成功、次优和失败部署 rollout 闭环改进 WAM；三轮 RoboChallenge 部署训练成功率提升 19.7 个百分点（arXiv:2610.18873）
 
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 5B 统一视频–动作世界模型与测试时后果评估
 - [Dexmal DW05（OpenDW）](../entities/dexmal-dw05.md) — Wan+MoT 联合视频/动作/价值；开源 Base 与 RoboTwin SFT 权重
