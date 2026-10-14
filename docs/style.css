@@ -1403,14 +1403,14 @@ button.home-wiki-heatmap-cell.is-active {
 .home-org-tabs .home-hub-tab { line-height: 1.3; }
 .home-org-panel { display: flex; flex-direction: column; gap: 10px; }
 .home-org-panel[hidden] { display: none; }
+/* 按钮与带英文副行的同高（约 55px）：无副行的按钮（如 NVIDIA）在移动端不被压扁，桌面折叠态两卡底边齐平 */
+.home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 55px; }
 /* 桌面：「更多路线」与「公司路线」两张通栏卡改为左右并排（6 列网格：上排 3×2、下排 2×3）。
    顶对齐：任一卡展开后另一张不被拉高留白；按钮统一最小高度，折叠态两卡底边齐平 */
 @media (min-width: 861px) {
   .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .home-entry-grid > .home-entry-card { grid-column: span 2; }
   .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
-  /* 与带英文副行的按钮同高（约 55px），无副行的按钮行（如 NVIDIA）不会让该卡矮 1px */
-  .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 55px; }
   /* 公司 / 实验室面板叠放：隐藏面板仍占位（不可见、不可聚焦），切换时卡片高度不变 */
   .home-org-panels { display: grid; }
   .home-org-panels > .home-org-panel { grid-area: 1 / 1; align-self: start; }
