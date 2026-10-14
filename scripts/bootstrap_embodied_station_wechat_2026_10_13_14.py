@@ -12,11 +12,12 @@ from __future__ import annotations
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TODAY = date.today().isoformat()
 
-ARTICLES = {
+ARTICLES: dict[str, dict[str, Any]] = {
     "a1": {
         "key": "41_papers_streamingwam_2026-10-14",
         "title": "机器人动作为什么总在换块时卡顿？｜附代码与项目入口",
@@ -2264,7 +2265,7 @@ def main() -> None:
                 encoding="utf-8",
             )
         (ROOT / "sources/blogs" / blog_name(a)).write_text(_blog(a), encoding="utf-8")
-        (ROOT / "wiki/overview" / A["map"]).write_text(_map(a), encoding="utf-8")
+        (ROOT / "wiki/overview" / str(A["map"])).write_text(_map(a), encoding="utf-8")
     for p in PAPERS:
         (ROOT / "sources/papers" / _ax_file(p)).write_text(_paper_source(p), encoding="utf-8")
         (ROOT / "wiki/entities" / f"paper-{p['slug']}.md").write_text(_entity(p), encoding="utf-8")
