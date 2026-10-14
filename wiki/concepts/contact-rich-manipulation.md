@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-14
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-egophi.md
@@ -40,6 +40,8 @@ related:
   - ../comparisons/anygrasp-vs-graspnet.md
   - ./visuo-tactile-fusion.md
   - ../methods/tactile-impedance-control.md
+  - ../entities/paper-ila-interaction-latents-as-actions.md
+  - ../entities/paper-accrue-continual-off-policy-rl.md
 sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
@@ -64,6 +66,8 @@ sources:
 ## 一句话定义
 
 这类任务的难点不是“让手碰到物体”，而是“碰到以后如何稳定地利用接触”。
+
+近期可对照两类学习路线：[ILA](../entities/paper-ila-interaction-latents-as-actions.md) 将接触与施力演化编码为动作潜变量；[ACCRUE](../entities/paper-accrue-continual-off-policy-rl.md) 则研究接触丰富装配任务序列中的持续离策略学习。
 
 ## 英文缩写速查
 
