@@ -14,6 +14,7 @@ related:
   - ../entities/paper-motionspaceflow.md
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
+  - ../entities/paper-partigen.md
   - ../entities/paper-diffsheg.md
   - ../entities/paper-mmhu.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
@@ -51,6 +52,10 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 文本→机器人原生生成 + GMT 闭环（PhyGile，arXiv:2603.19305）
 
 [PhyGile](../entities/paper-phygile.md) 针对 **人体 text-to-motion 重定向** 的物理不可行问题：用 **TP-MoE 条件扩散** 在 **262D 机器人骨骼空间** 从文本直接生成运动，以 **physics-derived prefix** 引导推理续写，并经 **预训练 GMT** 验证、**闭环仿真精炼** 与 prefix 阶段 **GMT 微调** 闭合生成–执行环。真机展示 breakdance、侧手翻、高踢与空中旋跳等 **高动态全身** 动作。与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同属语言驱动人形生成，但 PhyGile 强调 **robot-native 空间** 与 **跟踪器共训** 而非人体先验 retarget。
+
+## 部位感知共享表征与动作终止预测（PartiGen，arXiv:2610.13373）
+
+[PartiGen](../entities/paper-partigen.md) 沿语言条件人形生成路线，采取与 PhyGile 不同的重定向设定：在 HumanML3D→G1 的表示上，用固定解剖掩码对各身体部位的关节特征分别做注意力，再融合为一个共享全身潜变量；FK 监督约束运动学一致性，逐帧 EOS 在候选动作完整生成后选取结束帧。其生成参考由冻结 GRIT 跟踪器执行，不能与生成—控制联合训练路线混为一谈。论文报告 G1 基准 segment FID 3.165、时长 MAE 3.080 帧；真机测试经过仿真筛查和人工挑选，且截至 2026-10-14 未提供官方可运行代码。
 
 ## 语义对齐连续 latent + AR flow（MoLingo，CVPR 2026）
 
@@ -137,6 +142,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [sources/papers/dart_control_arxiv_2410_05260.md](../../sources/papers/dart_control_arxiv_2410_05260.md) — DART / DartControl（ICLR 2025，arXiv:2410.05260）：自回归运动原语潜扩散 + 在线文本流与潜空间空间控制。
 - [sources/repos/zilize-awesome-text-to-motion.md](../../sources/repos/zilize-awesome-text-to-motion.md) — Zilize 维护的文本驱动人体运动生成综述/数据集/模型精选与交互式项目页索引。
 - [PhyGile（arXiv:2603.19305）](../../sources/papers/phygile_arxiv_2603_19305.md) — physics-prefix 引导的 262D 机器人原生扩散 + GMT 闭环（真机高动态）
+- [PartiGen 论文来源归档](../../sources/papers/partigen_arxiv_2610_13373.md) — 部位感知共享表示、时长预测与 G1 跟踪评测
 - [MoLingo（arXiv:2512.13840）](../../sources/papers/molingo_arxiv_2512_13840.md) — 语义对齐连续 latent + 掩码自回归 rectified flow（CVPR 2026；G1+PHC 演示）
 - [DiffSHEG（arXiv:2401.04747）](../../sources/papers/diffsheg_arxiv_2401_04747.md) — 语音驱动整体 3D 表情+手势联合扩散；UniEG + FOPPAS 实时任意长采样（CVPR 2024）
 - [Diffusion Policy](./diffusion-policy.md) — 扩散策略在操作任务中的应用。
@@ -149,6 +155,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 控制环内生成式中间件（flow matching + tracking）
 - [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 全身 plan + CLF-RL 跟踪；AWR 微调生成器（Caltech G1 真机；代码待发布）
 - [PhyGile](../entities/paper-phygile.md) — 文本→262D robot-native 扩散 + GMT 生成–跟踪闭环
+- [PartiGen](../entities/paper-partigen.md) — 解剖部位注意力 + 共享全身潜变量 + 帧级动作终止预测
 - [MoLingo](../entities/paper-molingo.md) — 语义对齐连续 latent + AR flow 人体 T2M；retarget→PHC→G1
 - [DiffSHEG](../entities/paper-diffsheg.md) — 语音→3D 表情+手势联合扩散（数字人资产；非机器人策略）
 - [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md) — RL + CVAE 潜空间，室内人–场景交互运动合成（非扩散）

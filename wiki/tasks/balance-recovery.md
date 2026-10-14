@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-14
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-adp.md
@@ -126,6 +126,8 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 
 主动利用环境接触（扶墙、蹲低、扶地）避免摔倒。常见于人类本能反应，机器人实现较难。
 
+当直立恢复不可行时，接触也可以被规划成一串减损动作，而不只是临时支撑：Ha 与 Liu 将跌倒过程拆成倒立摆子问题，用动态规划选择接触序列，并在仿真与 BioloidGP 上验证（[论文实体页](../entities/paper-ha-liu-multiple-contact-fall-planning.md)）。这条路线关注的是如何安全地耗散跌倒动量，与推扰后重新站稳的平衡恢复目标有所区别。
+
 ---
 
 ## 典型方法路线
@@ -204,6 +206,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - **ingest 档案：** [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学对抗先验，四向推扰相对 AMP 缩短恢复时间
 - **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 预防式单腿站住（非迈步恢复）；八个通用 SOTA Perfect 0/90
 - **ingest 档案：** [Fail-Passive Gap（arXiv:2608.02809）](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 保护停必须落在可捕获域内；过猛急停本身是危害
+- **ingest 档案：** [Ha & Liu 多接触跌倒规划（IROS 2015）](../../sources/papers/ha_liu_2015_multiple_contact_humanoid_fall_planning.md) — 倒立摆链 + 动态规划规划跌倒接触序列；仿真与 BioloidGP 实机摘要证据
 
 ---
 
@@ -218,6 +221,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[G1 Compliant-Surface Stand-Up](../entities/paper-g1-compliant-surface-standup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、软地参考引导仿真起身、tracking∪recovery 武术
 - [FDDC](../entities/paper-fddc.md) — **预防**失稳的单腿站住（Perfect hold），对照本节「迈步/hop 恢复」的 Marginal 读法
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业保护停是受约束的恢复（单支撑先落步），不是切电
+- [Ha & Liu 多接触跌倒规划（IROS 2015）](../entities/paper-ha-liu-multiple-contact-fall-planning.md) — 不可避免跌倒时，以接触顺序逐步耗散动量
 
 ## 一句话记忆
 
