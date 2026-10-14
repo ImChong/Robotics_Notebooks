@@ -33,9 +33,10 @@ test('search timeout aborts loading and permits a new attempt', async () => {
 });
 
 test('community timeout does not block search permanently and can retry', async () => {
+  // 共享的 link-graph 请求不可中止：首轮一直挂起，30s 后搜索照常出结果，下一次调用再等新一轮
   let attempts = 0;
-  const h = searchHarness(async () => response(indexData), ({ signal }) => ++attempts === 1
-    ? new Promise((_, reject) => signal.addEventListener('abort', () => reject(new Error('timeout'))))
+  const h = searchHarness(async () => response(indexData), () => ++attempts === 1
+    ? new Promise(() => {})
     : Promise.resolve(response({ nodes: [{ id: 'wiki/ppo.md', community: 'control' }] })));
   h.searchInput.value = 'PPO'; h.triggerSearch();
   await flush();

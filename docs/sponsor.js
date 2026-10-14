@@ -6,6 +6,10 @@
   var assetBase = script.src.replace(/[^/]*$/, '');
 
   function openDialog(dialog) {
+    var qr = dialog.querySelector('.sponsor-qr');
+    if (qr && !qr.getAttribute('src') && qr.getAttribute('data-src')) {
+      qr.setAttribute('src', qr.getAttribute('data-src'));
+    }
     dialog.hidden = false;
     document.body.classList.add('sponsor-dialog-open');
     var closeBtn = dialog.querySelector('.sponsor-dialog-close');
@@ -49,7 +53,8 @@
           '<p class="sponsor-dialog-hint">微信扫一扫，赞助支持作者 ☕</p>' +
         '</div>' +
         '<div class="sponsor-dialog-body">' +
-          '<img class="sponsor-qr" src="' + assetBase + 'sponsor/wechat-pay.png" alt="微信收款码" width="260" height="352" />' +
+          // 二维码 206 KB，弹窗默认隐藏：点开时再赋 src，不随每个页面首屏下载
+          '<img class="sponsor-qr" data-src="' + assetBase + 'sponsor/wechat-pay.png" alt="微信收款码" width="260" height="352" />' +
         '</div>' +
         '<div class="sponsor-dialog-actions">' +
           '<button type="button" class="btn-secondary sponsor-dialog-close" data-sponsor-close>关闭</button>' +

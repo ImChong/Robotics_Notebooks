@@ -122,7 +122,8 @@ def main() -> None:
         )
 
     # 4. docs/exports/ 与 exports/ 关键文件同步
-    key_files = ["link-graph.json", "graph-stats.json", "site-data-v1.json"]
+    #    站点只镜像 site-catalog-v1.json + page-content/；index-v1 / site-data-v1 不再进 docs/
+    key_files = ["link-graph.json", "graph-stats.json", "site-catalog-v1.json"]
     for fname in key_files:
         src = EXPORTS / fname
         dst = DOCS_EXPORTS / fname
