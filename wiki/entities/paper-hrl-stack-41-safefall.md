@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bigai, sdu, tsinghua]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-14
 venue: curated
 summary: "SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。"
 related:
@@ -11,11 +11,13 @@ related:
   - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ./paper-humanoid-multiple-contact-fall-planning.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/papers/multiple_contact_planning_humanoid_falls_ha_liu_2015.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
@@ -92,6 +94,7 @@ SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免�
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
+- 解析式多接触规划前序工作：[Multiple Contact Planning for Minimizing Damage of Humanoid Falls](./paper-humanoid-multiple-contact-fall-planning.md) — 接触图 + 倒立摆抽象 + 动态规划，优化峰值垂直冲量。
 - 原始 source：[humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md](../../sources/papers/humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md)
 
 ## 参考来源
