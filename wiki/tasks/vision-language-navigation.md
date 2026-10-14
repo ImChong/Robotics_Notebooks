@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-10-13
+updated: 2026-10-14
 status: complete
 related:
   - ../entities/paper-vtinstructor.md
@@ -49,6 +49,7 @@ related:
   - ../entities/paper-refertrack.md
   - ../entities/paper-navverse.md
   - ../entities/paper-supernav-agentic-navigation.md
+  - ../entities/paper-satnav.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -124,6 +125,8 @@ sources:
 - **连续轨迹生成指令：** [VTInstructor](../entities/paper-vtinstructor.md) 将第一人称 RGB 轨迹压缩为导航关键帧，再叠加路径、转向与终点提示，针对连续环境中路线结构不再由离散视点图显式提供的 speaker 问题；生成结果还经冻结 follower 检验下游效用。
 
 ### 空中 / UAV 子域
+
+- **卫星图长程城市导航基准：** [SatNav](../entities/paper-satnav.md)（arXiv:2609.31507）用 18 城市 59 场景的卫星图构造 118,494 条长程 UAV-VLN episode，拆分 Boundary、Landmark、Route 三类任务，并以 SwiftVLN 消融历史采样、空间提示与记忆压缩；它还报告卫星训练策略借助轻量视觉适配器迁移到真实 UAV 观测。相对 [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 等策略架构工作，SatNav 的核心是可规模化的城市尺度评测平台；GeoTIFF 场景需申请，episode 数据与代码已公开。
 
 - **设定差异：** [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 等 **空中 VLN** 工作在 **连续 3D 航点** 与 **大视角 egocentric 变化** 下闭环执行语言指令；相对 Matterport 离散转向，更强调 **因果记忆、短视界世界预测与真机迁移**。
 - **范式对照：** 地面开源栈见 [四范式复现路径](../overview/vln-open-source-repro-paradigms.md)；空中路线可将 **自回归 World Action Model**、**导航 VLA** 与 **快慢双系统** 对照阅读（[WAM 概念页](../concepts/world-action-models.md)）。
