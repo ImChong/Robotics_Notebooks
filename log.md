@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | 具身智能小站 2026-10-13（34 篇）与 2026-10-14（41 篇）两期公众号盘点：用 fetch_wechat_article.py 抓正文，75 篇论文全部建立独立详情节点（新建 66、复用 9 个已有 arXiv 节点），每篇经 git ls-remote / 项目页核查开源结论；新增两张阅读坐标地图（embodied-station-2026-10-13/14），注册 University of Almería 机构。关键页：paper-streamingwam、paper-mulligan-performance-guided-data-collection、paper-freebar-barrier-guidance-async-vla。
+
 ## [2026-10-14] ingest | Ha & Liu 2015 多接触跌倒规划全文归档
 
 - 阅读 Internet Archive 保存的 7 页作者版 PDF，记录方法、仿真与实机指标及限制。
