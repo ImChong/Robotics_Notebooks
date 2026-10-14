@@ -2114,6 +2114,7 @@
 - [The Linear Representation Hypothesis for Vision-Language-Action Models](wiki/entities/paper-linear-representation-vla.md) — 该工作检验VLA潜在表示是否存在可线性操控的任务变量。 `📅unknown` `[entity_page]`
 - [LingBot-Map：流式 3D 重建几何上下文 Transformer](wiki/entities/paper-lingbot-map.md) — LingBot-Map**（*LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction*，arXiv: `📅unknown` `[entity_page]`
 - [LIT（arXiv:2609.12641）](wiki/entities/paper-lit-latent-interface-training.md) — LIT**（[Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics F `📅unknown` `[entity_page]`
+- [LiteNWM：用潜空间未来筛选视觉导航轨迹](wiki/entities/paper-litenwm-efficient-latent-world-model-navigation.md) — LiteNWM**（*LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild*，[arXi `📅unknown` `[entity_page]`
 - [LiveCook：流式多模态烹饪指导与 LiveMamba](wiki/entities/paper-livecook.md) — LiveCook**（*Can Multi-Modal LLMs Provide Live Step-by-Step Task Guidance?*，[arXiv:2511.21998](http `📅unknown` `[entity_page]`
 - [LLA-MPPI：用 GPU 并行仿真做腿式全身控制的在线自适应](wiki/entities/paper-lla-mppi-legged-adaptive-wbc.md) — LLA-MPPI**（Look-Back, Look-Ahead MPPI；arXiv:2610.10465，[项目页](h `📅unknown` `[entity_page]`
 - [LLaVA：Visual Instruction Tuning](wiki/entities/paper-llava.md) — LLaVA**（*Visual Instruction Tuning*，arXiv:2304.08485，[项目页](htt `📅unknown` `[entity_page]`
@@ -4720,6 +4721,7 @@
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [Physical Commonsense（Generalist 产业观点）](wiki/entities/physical-commonsense-generalist.md) — The Dark Matter of Robotics: Physical Commonsense**（Andy Zeng & Generalist Team，[2026-01-29](https `📅unknown` `[entity_page]`
+- [Physical Intelligence Pi API beta](wiki/entities/physical-intelligence-pi-api.md) — Pi API 是 Physical Intelligence 面向机器人开发者开放 beta 的托管服务：上传机器人数据，在云端基础设施上微调策略，再通过 hosted gateway 为机器人提供模 `📅unknown` `[entity_page]`
 - [Physical RSI 1.0（Recursive Self-Harness）](wiki/entities/physical-rsi.md) — Physical RSI 1.0**（*Recursive Self-Harness for Scaling Embodied Skills*，[项目页](https://mmlab.hk/res `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [The Physical Intelligence Layer：伙伴现场里的模型层](wiki/entities/pi-physical-intelligence-layer.md) — 2026-02-24 的博客 The Physical Intelligence Layer 不发布新模型。Physica `📅unknown` `[entity_page]`
