@@ -139,6 +139,7 @@ flowchart TB
 | 仿真–真机 gap？ | [sim-vs-real-eval-gap](../concepts/sim-vs-real-eval-gap.md) |
 | MCP 在 agent 中的角色（非 CAD 专论）？ | [Open Code Review](../entities/open-code-review.md) |
 | 几何状态 / 重建 survey 对照？ | [VGGT 几何状态综述](./vggt-geometric-state-survey.md) |
+| AI 是否已能从设计直接制造微型硬件？ | [Atomic Machines Matter Compiler](../entities/atomic-machines-matter-compiler.md) |
 
 ## 局限
 
