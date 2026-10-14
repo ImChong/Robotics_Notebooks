@@ -17,7 +17,7 @@ sources:
 
 # 运动小脑分类 A：走路底座
 
-> **图谱分类节点**：对应 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) 的 **A 走路底座** 分组；总地图见 [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) 的 **A 走路底座** 分组；总地图见 [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)。
 
 ## 英文缩写速查
 

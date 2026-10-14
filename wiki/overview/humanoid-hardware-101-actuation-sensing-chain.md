@@ -23,7 +23,7 @@ sources:
 
 # Humanoid Hardware 101 · 02：传动与感知链
 
-> **图谱分类节点**：**电机、减速器、编码器** 三章合并；关节「转什么、减多少、知在哪」的部件层，集成见 [04 集成执行器](./humanoid-hardware-101-integrated-actuators.md)。
+> **分类页**：**电机、减速器、编码器** 三章合并；关节「转什么、减多少、知在哪」的部件层，集成见 [04 集成执行器](./humanoid-hardware-101-integrated-actuators.md)。
 
 ## 英文缩写速查
 

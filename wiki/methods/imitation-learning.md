@@ -316,13 +316,13 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术参考与 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
-- [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — 混合局部/全局跟踪 + 段级奖励的单策略多技能模仿（[ingest](../../sources/papers/kungfubot2_vms_icra2026.md)）
+- [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — 混合局部/全局跟踪 + 段级奖励的单策略多技能模仿（[来源笔记](../../sources/papers/kungfubot2_vms_icra2026.md)）
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作
-- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要
-- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
+- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion 来源摘要
+- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 来源摘要
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频与 VLA 受控预训练叙事
-- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
+- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 来源摘要
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真 VR 灵巧手预训练 + 真机 BC 微调
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照（arXiv:2512.15692）摘录
 - [sources/papers/egoscale_arxiv_2602_16710.md](../../sources/papers/egoscale_arxiv_2602_16710.md) — EgoScale：人视频规模预训练 VLA + 对齐 mid-training（arXiv:2602.16710）摘录
@@ -333,7 +333,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 - [sources/papers/instantmimic_arxiv_2609_09821.md](../../sources/papers/instantmimic_arxiv_2609_09821.md) — InstantMimic：GPU-native 物理技能训练系统（arXiv:2609.09821）
 - [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
 - [sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md](../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md) — TacO：统一 ACT 跨模态触觉真机 IL 基准
-- [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
+- [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) 来源摘要
 - [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md) — HoloMotion-1：野外视频重建 + MoCap 混合语料，稀疏 MoE Transformer + 序列级 PPO 的零样本全身跟踪
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料

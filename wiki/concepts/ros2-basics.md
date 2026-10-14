@@ -52,7 +52,7 @@ summary: "ROS 2 是机器人系统集成的事实标准中间件栈：节点图 
 
 - **事实标准集成层**：Nav2、MoveIt 2、ros2_control、Autoware、Isaac ROS、厂商 `*_ros2` 包等以上层生态几乎都以 ROS 2 为胶水。
 - **去中心化通信**：相对 ROS 1 取消 Master，默认经 DDS 发现与分发，更适合多机与长期运行。
-- **与运控分层**：在本仓库主线中，ROS 2 通常承担 **10–100 Hz 感知/规划**；**500–1000 Hz 关节闭环** 更常走 [LCM](./lcm-basics.md) / 共享内存 / EtherCAT——见 [选型对比](../comparisons/ros2-vs-lcm.md)。
+- **与运控分层**：在本站主线中，ROS 2 通常承担 **10–100 Hz 感知/规划**；**500–1000 Hz 关节闭环** 更常走 [LCM](./lcm-basics.md) / 共享内存 / EtherCAT——见 [选型对比](../comparisons/ros2-vs-lcm.md)。
 
 ## 核心原理
 

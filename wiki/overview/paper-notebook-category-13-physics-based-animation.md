@@ -58,9 +58,8 @@ summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[Jason Peng：面向通用人形控制的合成运动数据](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md)、[SkillMimic](../../sources/repos/skillmimic.md)、[AdaptNet：物理角色控制的策略自适应](../../sources/papers/humanoid_pnb_adaptnet-policy-adaptation-for-physics-based-cha.md)
+- 本类论文来源笔记（节选）：[Jason Peng：面向通用人形控制的合成运动数据](../../sources/courses/jason_peng_synthetic_motion_humanoid_youtube.md)、[SkillMimic](../../sources/repos/skillmimic.md)、[AdaptNet：物理角色控制的策略自适应](../../sources/papers/humanoid_pnb_adaptnet-policy-adaptation-for-physics-based-cha.md)
 
 ## 推荐继续阅读
 

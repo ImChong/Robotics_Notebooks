@@ -103,11 +103,11 @@ flowchart TB
 | **众擎** | 年度 demo：多动作拼接、长时程、倒地起身、抗扰 | 文内视为「运控基座需求侧验证」，**不写成已官方冠名 BFM** |
 | **学术索引** | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) + [综述 arXiv:2506.20487](https://arxiv.org/abs/2506.20487) | 公众号 41 篇编号不变；awesome 列表 2026-07 已增至 **42 篇**（+Any2Any） |
 
-## 五类问题分类节点（图谱 hub）
+## 五类问题分类（各组一页）
 
-> 每组对应一个独立 `wiki/overview/bfm-category-*` 页面，作为图谱中的**分类枢纽**；组内论文实体经 `[text](../overview/...)` 与本页互链。
+> 每组各有一页分类汇总，点进去可看该组论文的站内页与原文入口。
 
-| 组 | 分类节点 | 篇数 |
+| 组 | 分类页 | 篇数 |
 |----|----------|------|
 | 01 Forward-backward 表征 | [Forward-backward 表征](./bfm-category-01-forward-backward-representation.md) | 6 |
 | 02 Goal-conditioned 学习 | [Goal-conditioned 学习](./bfm-category-02-goal-conditioned-learning.md) | 19 |
@@ -117,7 +117,7 @@ flowchart TB
 
 ## 原始资料索引（42 论文 + 10 数据集）
 
-- **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项对应独立 `sources/papers/bfm_awesome_<slug>.md`（策展摘录 + 公众号导读要点，非 PDF 全文）。文件名保留「41」为历史批次；2026-07 awesome 列表已 **42 篇**。
+- **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项各有一份来源笔记（策展摘录 + 公众号导读要点，非 PDF 全文）。文件名保留「41」为历史批次；2026-07 awesome 列表已 **42 篇**。
 - **Wiki 实体：** 每篇/每项均有站内详情页，见下节 [Wiki 实体索引](#wiki-实体索引站内详情页)；图谱与搜索已收录。
 - **编译导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **深读已有：** #13 → [bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)；AMASS → [amass-dataset.md](../../sources/sites/amass-dataset.md)

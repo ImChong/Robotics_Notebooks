@@ -34,7 +34,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/repos/robot-descriptions-py.md
-summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + 191 篇论文解读 + 586 个开源项目主表 + 40 个数据集 + 176 家公司主表；与本库微信策展同源，作外部总入口而非镜像。"
+summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + 191 篇论文解读 + 586 个开源项目主表 + 40 个数据集 + 176 家公司主表；与站内收录的微信策展同源，作外部总入口而非镜像。"
 ---
 
 # Humanoid Motion Intelligence（人形机器人运动智能知识库）
@@ -51,7 +51,7 @@ summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：�
 
 ## 一句话定义
 
-面向人形运动智能的 **结构化外部策展仓**（六条研发路线 + 论文/开源/数据集三索引），与本库已 ingest 的公众号长文同源，适合当持续更新入口，而不是再抄一遍列表。
+面向人形运动智能的 **结构化外部策展仓**（六条研发路线 + 论文/开源/数据集三索引），与站内已收录的公众号长文同源，适合当持续更新入口，而不是再抄一遍列表。
 
 ## 英文缩写速查
 
@@ -68,10 +68,10 @@ summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：�
 
 ## 为什么重要
 
-- **把微信长文落成可克隆仓库**：本库已大量 ingest「具身智能研究室」综述（[42 篇身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)、[64 篇运动小脑](../overview/humanoid-motion-cerebellum-technology-map.md)、[30 篇运动控制六线](../overview/humanoid-motion-control-30-papers-technology-map.md) 等）；该仓是同一策展逻辑的 **GitHub 主站**，便于 Agent 全目录检索与人类对照更新。
+- **把微信长文落成可克隆仓库**：站内已收录大量「具身智能研究室」综述（[42 篇身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)、[64 篇运动小脑](../overview/humanoid-motion-cerebellum-technology-map.md)、[30 篇运动控制六线](../overview/humanoid-motion-control-30-papers-technology-map.md) 等）；该仓是同一策展逻辑的 **GitHub 主站**，便于 Agent 全目录检索与人类对照更新。
 - **按最终解决的问题分类**：AMP / Mimic / Diffusion / Transformer 只作方法标签；主轴是「数据 → 身体能力 → 物理交互 → 上层调用 → 部署」。
 - **开源、数据与产业旁路齐全**：论文表标注开源程度；另有数据集 `Dxxx`、按公司拆开的官方开源、招聘快照——使用前必须回一手来源核时效。
-- **规模在扩，不要整仓镜像**：2026-07 入库时约 145 篇 / 166 项；本次复核已到 **191 / 586**。本库只交叉引用 + 导读挂接，不复制上游表格。
+- **规模在扩，不要整仓镜像**：2026-07 收录时约 145 篇 / 166 项；2026-09 复核已到 **191 / 586**。站内只做交叉引用与导读，不复制上游表格。
 
 ## 核心结构
 
@@ -153,7 +153,7 @@ flowchart TB
 - [HMI 论文总索引 · 阅读导航](../queries/hmi-papers-coverage.md) — 总索引接到本库详情页（P146–P191 为本次增量挂接）
 - [HMI 开源项目主表 · 阅读导航](../queries/hmi-opensource-projects-coverage.md) — 166 项快照导读；上游现 586 项
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 2026-09-06 公众号五层机构清单
-- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 逐条独立实体节点导读
+- [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 424 项逐条可点开的阅读导航
 - [开源运动控制项目结构化摘要](../queries/open-source-motion-control-projects.md) — 本库另一条开源项目方法地图
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [运动控制主路线](../../roadmap/motion-control.md)

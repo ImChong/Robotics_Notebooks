@@ -19,7 +19,7 @@ related:
 sources:
   - ../../sources/repos/awesome-egocentric-vision.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
-summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与具身 AI 的论文/数据集/工具精选集；站内已节点化为技术地图 + paper-sa 详情页。"
+summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与具身 AI 的论文/数据集/工具精选集；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
 # Awesome Egocentric Vision（sun254667 精选集）
@@ -46,11 +46,11 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 - **与站内 Ego 地图互补**：[Ego 9 篇技术地图](../overview/ego-9-papers-technology-map.md) 给四类问题坐标；本清单给 **全谱近期文献与数据集表**。
 - **交叉世界模型与操作**：§2.7 Ego-VLA、§2.8 Ego WM 可挂到 [VLA](../methods/vla.md) 与 [Awesome World Models](./awesome-world-models.md)。
 
-## 站内节点化
+## 站内怎么读
 
 - **技术地图：** [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
-- **目录 source：** [sun_awesome_ego_catalog.md](../../sources/papers/sun_awesome_ego_catalog.md)
-- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- **清单目录：** [sun_awesome_ego_catalog.md](../../sources/papers/sun_awesome_ego_catalog.md)
+- 清单里的论文若站内已有深读页，会直接指向那一页。
 
 ## 核心结构（怎么读）
 
@@ -69,7 +69,7 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 
 ## 关联页面
 
-- [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) — 清单论文 → 独立详情节点
+- [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) — 清单论文逐条可点开
 - [Ego 技术地图：9 篇论文的四类问题视角](../overview/ego-9-papers-technology-map.md)
 - [Ego 分类 01–04](../overview/ego-category-01-data-collection.md) — 采集 / 人→机 / WM / Ego+Exo
 - [Ego4D](./paper-ego4d.md) — 大规模第一人称数据集锚点

@@ -68,9 +68,9 @@ flowchart TB
   G2 --> POL
 ```
 
-## 四组分类节点（图谱 hub）
+## 四组分类（各组一页）
 
-| 组 | 分类节点 | 篇数 | 核心问题 |
+| 组 | 分类页 | 篇数 | 核心问题 |
 |----|----------|------|----------|
 | 01 | [数据规模化](./tro-manip-category-01-data-scaling.md) | 1 | 任务/本体/演示者三维多样性如何影响 scaling？ |
 | 02 | [三维与手物表征](./tro-manip-category-02-representation.md) | 2 | SE(3) 等变与手物几何如何提升 OOD 泛化？ |

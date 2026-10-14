@@ -17,7 +17,7 @@ sources:
 
 # Actuator 102 · 01：负载与质量螺旋
 
-> **图谱分类节点**：**I 行走难题** + **II 质量惩罚螺旋**；总地图见 [Humanoid 执行器 102](./humanoid-actuator-102-technology-map.md)。
+> **分类页**：**I 行走难题** + **II 质量惩罚螺旋**；总地图见 [Humanoid 执行器 102](./humanoid-actuator-102-technology-map.md)。
 
 ## 英文缩写速查
 

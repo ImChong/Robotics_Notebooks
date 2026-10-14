@@ -8,7 +8,7 @@ tags:
   - cfd
 status: complete
 updated: 2026-10-08
-summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个外部仓库都有独立详情节点，避免同名项目混在一页。"
+summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个仓库各有一页，同名项目分开介绍。"
 sources:
   - ../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md
 ---
@@ -17,7 +17,7 @@ sources:
 
 ## 一句话定义
 
-本页将一篇 CAE/CFD 工程代理工具清单中的公开仓库拆成独立、可追溯的项目详情节点。
+本页把一篇 CAE/CFD 工程代理工具清单里的公开仓库逐个拆开介绍，每个仓库各有一页可点开。
 
 ## 英文缩写速查
 
@@ -30,7 +30,7 @@ sources:
 
 ## 为什么重要
 
-工程代理项目常把技能说明、工具连接、求解器执行和结果审核混在一起。按仓库建立独立节点，可以分别追踪它提供的是流程指导、执行接口还是软件编排；同名仓库也不会因名称相同而丢失身份差异。
+工程代理项目常把技能说明、工具连接、求解器执行和结果审核混在一起。按仓库分开看，可以分清它提供的是流程指导、执行接口还是软件编排；同名仓库也不会混在一起。
 
 ## 核心结构
 
@@ -58,7 +58,7 @@ sources:
 
 ## 项目详情节点
 
-| 类别 | 独立详情节点 | 官方仓库 |
+| 类别 | 站内页 | 官方仓库 |
 |------|--------------|----------|
 | 目录与工具发现 | [Awesome AI CAE](../entities/kimimgo-awesome-ai-cae.md) | [kimimgo/awesome-ai-cae](https://github.com/kimimgo/awesome-ai-cae) |
 | 目录与工具发现 | [HPC-Skills](../entities/scimate-ai-hpc-skills.md) | [SciMate-AI/HPC-Skills](https://github.com/SciMate-AI/HPC-Skills) |

@@ -22,7 +22,7 @@ related:
 sources:
   - ../../sources/repos/awesome-world-models.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
-summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VLA、Model-Based RL、具身/驾驶/GUI 应用与仿真平台的学习友好型 World Model 策展清单；站内已节点化为技术地图 + paper-sa 详情页。"
+summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VLA、Model-Based RL、具身/驾驶/GUI 应用与仿真平台的学习友好型 World Model 策展清单；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
 # Awesome World Models（sun254667 精选集）
@@ -49,13 +49,13 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 - **与站内 taxonomy 对齐**：§6 WAM & VLA、§7 MBRL、§8.1 Robotics 可直接挂到 [WAM](../concepts/world-action-models.md)、[生成式 WM](../methods/generative-world-models.md)、[机器人 WM 训练闭环](../overview/robot-world-models-training-loop-taxonomy.md)。
 - **姊妹清单互补**：同维护者的 [Egocentric](./awesome-egocentric-vision.md) / [Touch](./awesome-touch.md) / [Real2Sim2Real](./awesome-real2sim2real.md) 分别补第一人称、触觉与迁移闭环横切面。
 
-## 站内节点化
+## 站内怎么读
 
-清单内可解析论文条目已映射为独立详情节点，见：
+清单里的论文已拆成站内可点开的一页，入口：
 
 - **技术地图（全部分组表）：** [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- **目录 source：** [sun_awesome_wm_catalog.md](../../sources/papers/sun_awesome_wm_catalog.md)
-- **命名：** 新建清单索引页为 `wiki/entities/paper-sa-*`；若库内已有同 arXiv 的 `paper-*` canonical 页则复用。
+- **清单目录：** [sun_awesome_wm_catalog.md](../../sources/papers/sun_awesome_wm_catalog.md)
+- 清单里的论文若站内已有深读页，会直接指向那一页。
 
 ## 核心结构（怎么读）
 
@@ -76,7 +76,7 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 ## 关联页面
 
 - [VLA / 世界模型 14 篇阅读路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — LaDi-WM / RISE / PointWorld 已从清单索引升级为独立深读页
-- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 清单论文 → 独立详情节点
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 清单论文逐条可点开
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 联合世界–动作范式
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 / 视频世界模型方法页
 - [Model-Based RL](../methods/model-based-rl.md) — 清单 §7 经典与连续控制对照

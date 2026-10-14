@@ -52,7 +52,7 @@ summary: "依据具身智能研究室 2026-06 运动小脑长文，把 64 篇人
 ## 为什么单独做这张地图
 
 - [身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) 回答「humanoid RL 系统在搭什么」；[BFM 41 篇](./bfm-41-papers-technology-map.md) 回答「运控基座如何被上层调用」；本页回答 **「动作小脑这条横切面 2026 如何把 64 篇工作串起来」**。
-- **节点复用、避免重复：** 与姊妹篇重叠的论文 **链接到既有** `paper-hrl-stack-*`、`paper-loco-manip-*`、`paper-amp-survey-*`、`paper-bfm-*` 等实体；仅 15 篇尚无索引的工作使用 `paper-motion-cerebellum-*`（见 [catalog](../../sources/papers/motion_cerebellum_64_catalog.md)）。
+- **与姊妹篇共享页面：** 与姊妹篇重叠的论文直接指向已有的那一页；其余 15 篇在本专题下各有一页（总表见 [catalog](../../sources/papers/motion_cerebellum_64_catalog.md)）。
 
 ## 流程总览：动作小脑在栈中的位置
 
@@ -86,9 +86,9 @@ flowchart TB
   H --> I
 ```
 
-## 九组分类节点（图谱 hub）
+## 九组分类（各组一页）
 
-| 组 | 分类节点 | 篇数 | 核心问题 |
+| 组 | 分类页 | 篇数 | 核心问题 |
 |----|----------|------|----------|
 | A | [走路底座](./motion-cerebellum-category-01-locomotion-base.md) | 10 | 没有稳定步态、地形适配与高动态，后面跟踪与 loco-manip 都是空中楼阁 |
 | B | [动作模仿源流](./motion-cerebellum-category-02-motion-imitation.md) | 5 | 从「照着做」到「补着做」：参考动作 + 先验 + 遮蔽补全 |

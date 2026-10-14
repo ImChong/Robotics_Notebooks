@@ -1048,15 +1048,13 @@ sources:
 
 
 def update_hubs(rows: list[dict[str, Any]]) -> None:
-    new_count = sum(1 for r in rows if r.get("created"))
-    reused = len(rows) - new_count
     both = sum(1 for r in rows if len(r["lists"]) > 1)
     block = f"""
-## 子节点覆盖（2026-09-20 纵深）
+## 清单条目覆盖（2026-09-20）
 
-去重后 **{len(rows)}** 条独立详情节点（新建 {new_count}，复用 {reused}；两清单同时出现 {both}）。
+两份清单合并去重后共 **{len(rows)}** 条，每条各有一页可点开（两清单同时出现 {both} 条）。
 
-完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+完整条目表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
 
 """
     natnew = ROOT / NATNEW_ENTITY
@@ -1068,7 +1066,7 @@ def update_hubs(rows: list[dict[str, Any]]) -> None:
             "  - ../overview/awesome-physical-ai-technology-map.md\n  - ./lerobot.md\n",
             1,
         )
-    if "子节点覆盖" not in text:
+    if "清单条目覆盖" not in text:
         text = text.replace("## 核心结构", block + "## 核心结构", 1)
     natnew.write_text(text, encoding="utf-8")
 
@@ -1081,7 +1079,7 @@ def update_hubs(rows: list[dict[str, Any]]) -> None:
             "  - ../overview/awesome-physical-ai-technology-map.md\n  - ./lerobot.md\n",
             1,
         )
-    if "子节点覆盖" not in text:
+    if "清单条目覆盖" not in text:
         text = text.replace("## 核心结构", block + "## 核心结构", 1)
     aichr.write_text(text, encoding="utf-8")
 
@@ -1095,7 +1093,7 @@ def update_hubs(rows: list[dict[str, Any]]) -> None:
             "  - ../queries/embodied-fm-taxonomy-loop.md\n",
             1,
         )
-    if "子节点覆盖" not in text:
+    if "清单条目覆盖" not in text:
         text = text.replace("## 怎么选", block + "## 怎么选", 1)
     cmp_p.write_text(text, encoding="utf-8")
 

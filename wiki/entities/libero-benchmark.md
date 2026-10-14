@@ -55,7 +55,7 @@ venue: NeurIPS 2023 Datasets and Benchmarks Track
 
 # LIBERO
 
-[LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 的「工程与实机部署」分组，是本库为该入口建立的独立详情节点。
+[LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 的「工程与实机部署」分组；本页是它在站内的详情页。
 
 ## 一句话定义
 
@@ -80,7 +80,7 @@ venue: NeurIPS 2023 Datasets and Benchmarks Track
 
 - **主表工程定位清晰**：该条目被放在「工程与实机部署」下，说明它服务的是这条人形运动智能问题链上的具体环节，而不是泛泛的链接收藏。
 - **可对照开源边界**：主表已概括其可复现范围（训练/推理/部署或仅方法页）；选型时应先读本页「开源状态」，再回官方 README / 项目页核对许可证与平台支持。
-- **便于知识库交叉引用**：独立节点让路线图、对比页与 ingest 日志可以稳定链接，避免只在策展列表里「点名」却无法下钻。
+- **可从多处直达**：路线图与对比页提到 LIBERO 时都指向本页，不再只在策展列表里「点名」却无法下钻。
 
 ## 核心原理
 
@@ -141,7 +141,7 @@ flowchart LR
 
 ## 局限与风险
 
-- **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做知识库节点与导航。
+- **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做站内导航。
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 

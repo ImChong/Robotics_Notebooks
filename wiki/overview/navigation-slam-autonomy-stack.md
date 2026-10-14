@@ -209,7 +209,7 @@ flowchart TB
 - **车规大算力 SoC（对照）：** 乘用车域控除 x86/Jetson 外，亦有 **>500 TOPS** 级 **ASIL-D** 芯片路线（如 [辉羲智能光至 R1](../entities/rhino-auto.md) 的 **RINA 无图城区方案** 叙事）；与 ROS 2 移动栈接口层不同，但同属 **感知–规划边缘算力** 选型语境。
 - **[cuVSLAM](../entities/paper-cuvslam.md)**（arXiv:2506.04359）：NVIDIA **CUDA VSLAM 库**（1–32 相机、PyCuVSLAM wheel）；ROS 2 封装见 **[Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md)**，建图侧 **[nvblox](../entities/isaac-ros-nvblox.md)** 与 Nav2 **3D costmap** 衔接。
 
-### 与本仓库其它主线
+### 与本站其它主线
 
 | 子系统 | 本页栈 | 腿式/人形主线 |
 |--------|--------|----------------|

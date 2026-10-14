@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 04：生成式运动、语言控制与轨迹规划
 
-> **图谱分类节点**：**04 生成式运动、语言控制与轨迹规划**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**04 生成式运动、语言控制与轨迹规划**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

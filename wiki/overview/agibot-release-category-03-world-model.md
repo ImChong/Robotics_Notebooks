@@ -16,7 +16,7 @@ sources:
 
 # 智元发布分类 03：世界模型
 
-> **图谱分类节点**：**03 世界模型**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
+> **分类页**：**03 世界模型**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
 
 ## 英文缩写速查
 

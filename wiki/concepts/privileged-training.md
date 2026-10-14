@@ -258,7 +258,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 非对称 AC vs Teacher-Student：特权只改善训练信号
 - [感知 Locomotion 表征与蒸馏本质 FAQ（维护者整理）](../../sources/personal/perceptive_locomotion_representation_essence.md)
-- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
+- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — 来源笔记（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现；实体页 [paper-rma-rapid-motor-adaptation](../entities/paper-rma-rapid-motor-adaptation.md)
 - Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展

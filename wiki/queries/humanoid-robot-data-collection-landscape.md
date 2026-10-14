@@ -3,7 +3,7 @@ type: query
 tags: [data-collection, humanoid, teleoperation, investment, physical-ai]
 status: complete
 updated: 2026-09-20
-summary: "Query：综合 LeoInAI Substack（2026-09-06）与 Scanford 论文，梳理人形/机器人训练数据采集六条范式及独立实体索引。"
+summary: "Query：综合 LeoInAI Substack（2026-09-06）与 Scanford 论文，梳理人形/机器人训练数据采集六条范式；提到的项目/论文各有一页。"
 related:
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
   - ../entities/scanford.md
@@ -23,7 +23,7 @@ sources:
 
 # Query：人形机器人数据采集产业地图
 
-机器人训练数据 **不能** 像 LLM 那样纯爬文本：需要 **速度、姿态、力触、egocentric 视觉、接触滑移** 等物理量。LeoInAI Substack（2026-09-06）把当前赛道拆成多条并行范式；本页为 **独立实体索引**（每个项目/论文一条详情页，避免在本页重复技术细节）。
+机器人训练数据 **不能** 像 LLM 那样纯爬文本：需要 **速度、姿态、力触、egocentric 视觉、接触滑移** 等物理量。LeoInAI Substack（2026-09-06）把当前赛道拆成多条并行范式；本页是 **阅读导航**（每个项目/论文各有一页，技术细节在各自页面）。
 
 ## 英文缩写速查
 

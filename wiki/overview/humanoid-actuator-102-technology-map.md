@@ -78,9 +78,9 @@ flowchart LR
   A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7 --> A8
 ```
 
-## 八类分类节点（图谱 hub）
+## 八类分类（各组一页）
 
-| 组 | 分类节点 | 公众号章节 |
+| 组 | 分类页 | 公众号章节 |
 |----|----------|------------|
 | 01 负载与质量螺旋 | [负载与质量螺旋](./humanoid-actuator-102-load-and-mass-spiral.md) | I–II |
 | 02 分离架构 | [旋转-直线分离架构](./humanoid-actuator-102-split-architecture.md) | III |

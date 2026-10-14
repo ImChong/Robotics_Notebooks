@@ -19,7 +19,7 @@ sources:
 
 # Humanoid Hardware 101 · 01：机身与材料
 
-> **图谱分类节点**：对应 [human five · Hardware 101](https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ) **机身骨架** 章；总地图见 [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)。
+> **分类页**：对应 [human five · Hardware 101](https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ) **机身骨架** 章；总地图见 [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)。
 
 ## 英文缩写速查
 

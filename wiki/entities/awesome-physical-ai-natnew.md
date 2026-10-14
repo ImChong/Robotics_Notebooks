@@ -44,11 +44,11 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 - **与 aichr 同名仓对照：** 见 [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)。
 
 
-## 子节点覆盖（2026-09-20 纵深）
+## 清单条目覆盖（2026-09-20）
 
-去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+两份清单合并去重后共 **384** 条，每条各有一页可点开（两清单同时出现 33 条）。
 
-完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+完整条目表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
 
 ## 核心结构
 

@@ -163,7 +163,7 @@ sources:
 
 # {cat["title"]}
 
-> **图谱分类节点**：对应 [具身智能研究室 · BFM 41 篇专题]({WECHAT_URL}) 与 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 的 **{label}** 分组；本页汇集该组 **{len(papers)} 篇** 论文的站内实体与 source 索引。总地图见 [BFM 技术地图](./bfm-41-papers-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · BFM 41 篇专题]({WECHAT_URL}) 与 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 的 **{label}** 分组；本页汇集该组 **{len(papers)} 篇** 论文的站内实体与 source 索引。总地图见 [BFM 技术地图](./bfm-41-papers-technology-map.md)。
 
 ## 核心问题（公众号分类）
 
@@ -242,11 +242,11 @@ def patch_paper_entity_related(p: dict, cat: dict) -> bool:
 def category_hub_section() -> str:
     lines = [
         "",
-        "## 五类问题分类节点（图谱 hub）",
+        "## 五类问题分类（各组一页）",
         "",
-        "> 每组对应一个独立 `wiki/overview/bfm-category-*` 页面，作为图谱中的**分类枢纽**；组内论文实体经 `[text](../overview/...)` 与本页互链。",
+        "> 每组各有一页分类汇总，点进去可看该组论文的站内页与原文入口。",
         "",
-        "| 组 | 分类节点 | 篇数 |",
+        "| 组 | 分类页 | 篇数 |",
         "|----|----------|------|",
     ]
     by_group: dict[str, list[dict]] = defaultdict(list)
@@ -267,9 +267,9 @@ def patch_tech_map() -> bool:
         return False
     text = TECH_MAP.read_text(encoding="utf-8")
     section = category_hub_section()
-    if "## 五类问题分类节点（图谱 hub）" in text:
+    if "## 五类问题分类（各组一页）" in text:
         text = re.sub(
-            r"\n## 五类问题分类节点（图谱 hub）[\s\S]*?(?=\n## 原始资料索引|\n## Wiki 实体索引|\n## 五组论文地图|\Z)",
+            r"\n## 五类问题分类（各组一页）[\s\S]*?(?=\n## 原始资料索引|\n## Wiki 实体索引|\n## 五组论文地图|\Z)",
             "\n" + section.strip() + "\n",
             text,
             count=1,

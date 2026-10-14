@@ -17,7 +17,7 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
-summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责组织具身世界模型：模型构建、规划、想象学习、行动耦合、策略评估与上下文记忆；文内点名工作均有独立 paper 节点。"
+summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责组织具身世界模型：模型构建、规划、想象学习、行动耦合、策略评估与上下文记忆；文内点名的工作各有一页可点开。"
 ---
 
 # 具身世界模型六路线技术地图
@@ -41,7 +41,7 @@ summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责�
 ## 为什么单独做这张地图
 
 - 与 [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)（2026-07 横切面）和 [训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md) **互补**：本页覆盖 **六路线全史脉络 + 2026-08 判断**。
-- **节点独立、避免重复：** 文内点名 **56** 篇均在 `wiki/entities/` 有 **唯一详情节点**（复用既有 canonical 页，缺失者新建索引页）。
+- **逐篇可点开：** 文内点名的 **56** 篇各有一页，可从本页直接进入；站内已有深读页的直接指向那一页。
 
 ## 流程总览
 

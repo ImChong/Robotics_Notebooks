@@ -62,11 +62,11 @@ flowchart LR
   C1 --> C2 --> C3 --> C4 --> C5 --> C67 --> C8
 ```
 
-## 章节 ↔ 本库节点完整映射
+## 章节 ↔ 站内页完整映射
 
 ### 第 1 章 发展现状与课程介绍
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 1.1 | 人形发展历史 | [人形机器人发展历史](../overview/humanoid-robot-history.md) |
 | 1.2 | 算法研究现状 | [人形算法研究现状](../overview/humanoid-algorithm-research-status.md) |
@@ -77,7 +77,7 @@ flowchart LR
 
 ### 第 2 章 强化学习行走控制
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 2.1 | 双足行走理论 | [LIP/ZMP](../concepts/lip-zmp.md) |
 | 2.2 | RL 与 PPO | [PPO](../methods/ppo.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) |
@@ -87,7 +87,7 @@ flowchart LR
 
 ### 第 3 章 Lidar 建图与定位
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 3.1 | 方案与硬件 | [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md) |
 | 3.2 | 激光建图 | [slam_toolbox](./slam-toolbox.md)、[FAST-LIO](./fast-lio.md) |
@@ -97,7 +97,7 @@ flowchart LR
 
 ### 第 4 章 全局规划与局部避障
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 4.1 | 动态障碍剔除与 2D 地图 | [动态障碍物滤波](../concepts/dynamic-obstacle-filtering.md) |
 | 4.2 | A* 全局规划 | [A*](../methods/a-star.md) |
@@ -107,7 +107,7 @@ flowchart LR
 
 ### 第 5 章 TARE / FAR 自主探索
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 5.1 | 自主探索任务 | [自主探索](../tasks/autonomous-exploration.md) |
 | 5.2 | TarePlanner | [TARE Planner](./tare-planner.md) |
@@ -116,7 +116,7 @@ flowchart LR
 
 ### 第 6 章 RealSense 感知
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 6.1 | RealSense | [Intel RealSense](./intel-realsense.md) |
 | 6.2 | YOLO 系列 | [目标检测](../methods/object-detection.md)、[YOLO v1 论文](./paper-yolo-unified-realtime-detection.md) |
@@ -126,7 +126,7 @@ flowchart LR
 
 ### 第 7 章 RoboCup 仿真足球
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 7.1 | 感知后处理与坐标变换 | [感知后处理与坐标变换](../concepts/perception-coordinate-postprocessing.md) |
 | 7.2 | 线匹配视觉定位 | [线匹配视觉定位](../methods/visual-line-matching-localization.md) |
@@ -135,7 +135,7 @@ flowchart LR
 
 ### 第 8 章 大模型赋能
 
-| 节 | 主题 | 独立节点 |
+| 节 | 主题 | 站内页 |
 |----|------|----------|
 | 8.1 | 大模型赋能方法 | [大模型赋能人形](../overview/large-model-empowered-humanoids.md) |
 | 8.2 | 智能语音交互 | [人形语音交互](../methods/humanoid-voice-interaction.md) |

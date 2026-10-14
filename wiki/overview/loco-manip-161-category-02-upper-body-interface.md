@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 02：上半身中心控制与移动操作接口
 
-> **图谱分类节点**：**02 上半身中心控制与移动操作接口**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**02 上半身中心控制与移动操作接口**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

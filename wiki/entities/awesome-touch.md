@@ -19,7 +19,7 @@ related:
 sources:
   - ../../sources/repos/awesome-touch.md
   - ../../sources/papers/sun_awesome_touch_catalog.md
-summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集；站内已节点化为技术地图 + paper-sa 详情页。"
+summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
 # Awesome Touch（sun254667 精选集）
@@ -46,11 +46,11 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 - **与站内触觉链对齐**：可挂到 [触觉知识链](../overview/hub-tactile.md)、[Tactile Sensing](../concepts/tactile-sensing.md)、[Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md)。
 - **挑战表述可操作**：README 归纳 Tactile Pollution、Modality Collapse、数据稀缺等，适合作为选型时的风险清单。
 
-## 站内节点化
+## 站内怎么读
 
 - **技术地图：** [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
-- **目录 source：** [sun_awesome_touch_catalog.md](../../sources/papers/sun_awesome_touch_catalog.md)
-- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- **清单目录：** [sun_awesome_touch_catalog.md](../../sources/papers/sun_awesome_touch_catalog.md)
+- 清单里的论文若站内已有深读页，会直接指向那一页。
 
 ## 核心结构（怎么读）
 
@@ -70,7 +70,7 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 
 ## 关联页面
 
-- [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) — 清单论文 → 独立详情节点
+- [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) — 清单论文逐条可点开
 - [触觉与力觉（知识链汇总）](../overview/hub-tactile.md)
 - [Tactile Sensing](../concepts/tactile-sensing.md) / [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)

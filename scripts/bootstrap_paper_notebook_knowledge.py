@@ -545,7 +545,7 @@ summary: "{title_short}：Robot Learning Paper Notebooks 深读笔记索引实�
 ## 为什么重要
 
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
+- 深读笔记提供比摘要更贴近实现的阅读路径，适合作为深读起点。
 
 ## 核心信息
 
@@ -656,7 +656,6 @@ def render_category_page(
             "## 参考来源",
             "",
             f"- [Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html)",
-            "- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)",
             "",
             "## 推荐继续阅读",
             "",

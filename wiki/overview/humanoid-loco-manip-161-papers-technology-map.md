@@ -51,7 +51,7 @@ summary: "依据具身智能研究室 2026-06 长文，把 161 篇人形移动�
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) 任务页覆盖方法与案例；本页聚焦 **2026-06 161 篇全景策展** 的 **十类横切面**。
 - 与 [运动小脑 64 篇](./humanoid-motion-cerebellum-technology-map.md) 分工：运动小脑偏 **运控/跟踪/小脑接口**；本页覆盖 **移动操作全谱**（含 VLA、WM、硬件、ego）。
-- **独立节点：** **161/161** 各建 [`paper-loco-manip-161-{NNN}-*`](../../wiki/entities/) 策展实体；与姊妹篇重叠的论文在 `related` 中 **交叉链既有深读页**，但本 survey 的图谱节点以 `paper-loco-manip-161-*` 为准。全量索引见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)。
+- **逐篇可点开：** 161 篇各有一页；与姊妹篇重叠的论文，页内会链到已有的深读页。全量索引见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)。
 
 ## 流程总览：十类能力形成顺序
 
@@ -82,9 +82,9 @@ flowchart TB
   C8 --> C9 --> C10 --> DEPLOY
 ```
 
-## 十组分类节点（图谱 hub）
+## 十组分类（各组一页）
 
-| 组 | 分类节点 | 篇数 | 核心问题 |
+| 组 | 分类页 | 篇数 | 核心问题 |
 |----|----------|------|----------|
 | 01 | [运控基座与通用全身跟踪](./loco-manip-161-category-01-motion-base-wbt.md) | 31 | **底层身体控制、运动跟踪、抗扰动与通用动作执行** |
 | 02 | [上半身中心控制与移动操作接口](./loco-manip-161-category-02-upper-body-interface.md) | 24 | **手臂、躯干、根部和末端执行器之间的协同控制** |

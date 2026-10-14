@@ -25,7 +25,7 @@ sources:
 
 # Ego 分类 02：人→机器人
 
-> **图谱分类节点**：**02 人→机器人**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
+> **分类页**：**02 人→机器人**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
 ## 英文缩写速查
 

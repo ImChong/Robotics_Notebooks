@@ -16,7 +16,7 @@ sources:
 
 # Loco-Manip 接触分类 02：接触怎么进入策略
 
-> **图谱分类节点**：对应 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiRNaw) 的 **02 接触表示** 段；总地图见 [接触五段链路技术地图](./loco-manip-contact-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiRNaw) 的 **02 接触表示** 段；总地图见 [接触五段链路技术地图](./loco-manip-contact-technology-map.md)。
 
 ## 英文缩写速查
 

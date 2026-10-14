@@ -38,7 +38,7 @@ sources:
   - ../../sources/blogs/lightorigins_light_react_2026-09-09.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
   - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
-summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light REACT）引用链独立节点索引。"
+summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light REACT）引用的论文/基准/硬件各有一页，按博客分组可逐条点开。"
 ---
 
 # 亮源新创三篇 Tech Blog：引用阅读坐标
@@ -47,7 +47,7 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 
 ## 一句话观点
 
-**亮源新创公开的三段范式——预训练（Light-O1）→ 对齐（LightNav-0）→ 部署（Light REACT）——在跑酷线（LightParkour）上还有并行的全身感知运动蒸馏轴；读博客时要把「引用论文/基准/硬件」拆成独立节点，避免混在机构页里。**
+**亮源新创公开的三段范式——预训练（Light-O1）→ 对齐（LightNav-0）→ 部署（Light REACT）——在跑酷线（LightParkour）上还有并行的全身感知运动蒸馏轴；读博客时把「引用论文/基准/硬件」分开看，三类各有一页，不与机构页混在一起。**
 
 ## 英文缩写速查
 

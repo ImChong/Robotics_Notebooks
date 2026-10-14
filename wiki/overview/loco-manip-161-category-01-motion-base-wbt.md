@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 01：运控基座与通用全身跟踪
 
-> **图谱分类节点**：**01 运控基座与通用全身跟踪**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**01 运控基座与通用全身跟踪**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

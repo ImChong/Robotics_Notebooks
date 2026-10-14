@@ -75,7 +75,7 @@ flowchart TB
   L7 --> L8
 ```
 
-| 序 | 体系 | 代表算法 | 独立节点 |
+| 序 | 体系 | 代表算法 | 站内页 |
 |----|------|----------|----------|
 | 1 | [经典线性反馈](../overview/robot-control-paradigm-classical-linear-feedback.md) | [PID](../methods/pid-control.md)、[LQR](../methods/lqr-ilqr.md)、[极点配置](../methods/pole-placement-control.md) | ✓ |
 | 2 | [非线性动力学控制](../overview/robot-control-paradigm-model-based-nonlinear-dynamics.md) | [CTC](../methods/computed-torque-control.md)、[IDC](../methods/inverse-dynamics-control.md)、[反馈线性化](../methods/feedback-linearization-control.md) | ✓ |

@@ -16,7 +16,7 @@ sources:
   - ../../sources/repos/awesome-sim2real.md
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/papers/lc_awesome_sim2real_survey_2502_13187.md
-summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分类的 RL Sim2Real 论文策展库，配套 arXiv:2502.13187v3 综述；站内已节点化为技术地图 + paper-as 详情页。"
+summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分类的 RL Sim2Real 论文策展库，配套 arXiv:2502.13187v3 综述；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
 # AwesomeSim2Real（LongchaoDa）
@@ -41,14 +41,14 @@ summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分�
 
 - **与综述一体：** 列表结构与 [2502.13187 综述](./paper-survey-sim2real-rl-foundation-models.md) 章节对齐，读 taxonomy 可直接跳到代表论文。
 - **跨域广：** 除机器人外含交通、推荐等，避免 Sim2Real 知识仅绑死在 manipulation/loco。
-- **可贡献更新：** README 欢迎 issue 补充新文；站内 catalog 可通过脚本重生成。
+- **可贡献更新：** README 欢迎 issue 补充新文。
 - **与 sun254667 Real2Sim2Real 互补：** 后者偏 Real2Sim2Real 闭环与 3DGS；本列表偏 **RL + MDP 要素** 分类。
 
-## 站内节点化
+## 站内怎么读
 
 - **技术地图：** [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
-- **目录 source：** [lc_awesome_sim2real_catalog.md](../../sources/papers/lc_awesome_sim2real_catalog.md)
-- 新建清单索引页 `paper-as-*`；已有同 arXiv canonical `paper-*` 则复用（避免重复节点）。
+- **清单目录：** [lc_awesome_sim2real_catalog.md](../../sources/papers/lc_awesome_sim2real_catalog.md)
+- 清单里的论文若站内已有深读页，会直接指向那一页。
 
 ## 核心结构（怎么读）
 
@@ -62,13 +62,13 @@ summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分�
 
 ## 局限与使用注意
 
-- **索引级节点为主：** 大部分 `paper-as-*` 为策展摘录；主线论文应升格深度页（如 [PACE](./paper-pace-sim2real-legged-robots.md)）。
+- **多为清单摘要：** 大部分条目只给清单坐标与原文入口；要深读建议直接从原文或已有深读页入手（如 [PACE](./paper-pace-sim2real-legged-robots.md)）。
 - **非工程 Runbook：** 部署清单见 [Sim2Real Checklist](../queries/sim2real-checklist.md)。
 - **开源逐条核：** GitHub badge 仅覆盖部分条目；复现前打开论文项目页。
 
 ## 关联页面
 
-- [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) — 清单论文 → 独立详情节点
+- [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) — 清单论文逐条可点开
 - [Sim2Real RL 综述（2502.13187）](./paper-survey-sim2real-rl-foundation-models.md)
 - [Sim2Real Hub](../overview/hub-sim2real.md) / [Sim2Real 概念](../concepts/sim2real.md)
 - [Sim2Real 四条路线](../comparisons/sim2real-four-routes-identifiability.md)

@@ -20,7 +20,7 @@ sources:
 
 # VLN 分类 01：数据集与仿真平台
 
-> **图谱分类节点**：对应 [深蓝具身智能 · VLN 10 项代表性研究](https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ) 的 **01 数据集与仿真平台** 分组；总地图见 [VLN 10 篇技术地图](./vln-10-papers-technology-map.md)。
+> **分类页**：对应 [深蓝具身智能 · VLN 10 项代表性研究](https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ) 的 **01 数据集与仿真平台** 分组；总地图见 [VLN 10 篇技术地图](./vln-10-papers-technology-map.md)。
 
 ## 英文缩写速查
 

@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 06：特殊任务、接触规划与视觉闭环
 
-> **图谱分类节点**：**06 特殊任务、接触规划与视觉闭环**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**06 特殊任务、接触规划与视觉闭环**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

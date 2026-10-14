@@ -178,8 +178,8 @@ flowchart TD
 - [PHUMA 仓库归档](../../sources/repos/phuma.md)
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
 - [GRAIL 数据集 Hugging Face 归档](../../sources/sites/grail-locomanipulation-huggingface.md)
-- [KungFuAthleteBot 论文 ingest](../../sources/papers/kung_fu_athlete_bot.md)
-- [EgoHTR 论文 ingest](../../sources/papers/egohtr_arxiv_2607_13472.md)
+- [KungFuAthleteBot 论文来源笔记](../../sources/papers/kung_fu_athlete_bot.md)
+- [EgoHTR 论文来源笔记](../../sources/papers/egohtr_arxiv_2607_13472.md)
 - [EgoHTR 数据集 HF 归档](../../sources/sites/egohtr-dataset-huggingface.md)
 - [Exercises Dataset 仓库归档](../../sources/repos/exercises-dataset.md) — 健身动作目录（非 MoCap）对照
 - [HumanTracker 论文摘录](../../sources/papers/humantracker_arxiv_2608_13555.md) — 153 h 四族评测集（数据待发布）
