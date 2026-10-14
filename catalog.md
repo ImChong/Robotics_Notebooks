@@ -1869,6 +1869,7 @@
 - [Gated Residual Body–Hand Coordination for Whole-Body Humanoid Teleoperation](wiki/entities/paper-gated-residual-body-hand-coordination.md) — 中文名：** 门控残差身–手协调 `📅unknown` `[entity_page]`
 - [Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）](wiki/entities/paper-gaussian-lic2.md) — Gaussian-LIC2**（Lang et al., arXiv:2507.04004，项目页， `📅unknown` `[entity_page]`
 - [GaussianDream++](wiki/entities/paper-gaussiandream-plusplus.md) — GaussianDream++: Efficient 3D Gaussian World Modeling for Robotic Manipulation**（[arXiv:2608.25659 `📅unknown` `[entity_page]`
+- [GaussiAnimate：从 4D 角色序列自动构建可驱动绑定](wiki/entities/paper-gaussianimate.md) — GaussiAnimate**（*Reconstruct and Rig Animatable Categories with Level of Dynamics*，arXiv:2604.0854 `📅unknown` `[entity_page]`
 - [On the identification of the inertial parameters of robots](wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md) — On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四 `📅unknown` `[entity_page]`
 - [GE-Act 2.0：世界–动作模型预训练与规模扩展](wiki/entities/paper-ge-act-2.md) — GE-Act 2.0**（*GE-Act 2.0: Pretraining and Scaling a World-Action Model for Robotic Manipulation*，全 `📅unknown` `[entity_page]`
 - [Generate, Track, Improve（GTI）](wiki/entities/paper-generate-track-improve.md) — Generate, Track, Improve**（*Perceptive Multi-Skill Humanoid Locomotion with RL-Fine-Tuned Motion G `📅unknown` `[entity_page]`
@@ -5016,7 +5017,7 @@
 - [TNT（Transformer-in-Transformer）](wiki/entities/tnt.md) — TNT** 把每个图像块进一步拆成 **pixel-level token**，用内层 Transformer 建模块内结构，外层 Transformer 建模块间关系，形成「Transforme `📅unknown` `[entity_page]`
 - [TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning](wiki/entities/touchscale.md) — TouchScale** 是一个把头戴 RGB-D、双腕 RGB 和双手全掌触觉数据同步记录的人类接触丰富交互数据集，用于视觉-触觉学习和机器人操作研究。 `📅unknown` `[entity_page]`
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`
-- [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，保证截图中每个知识点 `📅unknown` `[entity_page]`
+- [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，截图中的每个知识点都 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
 - [TwinDEX（无本体灵巧操作共设计接口）](wiki/entities/twindex.md) — TwinDEX**（项目页，2026-09-02）由 **自变量机器人（X Square Robot）** 发布：一 `📅unknown` `[entity_page]`
 - [OpenFOAM Agent Skills（twj011/openfoam-agent-skills）](wiki/entities/twj011-openfoam-agent-skills.md) — OpenFOAM Agent Skills（twj011/openfoam-agent-skills）是作为小型 OpenFOAM Skill 集合被文章提及，与完整仿真套件或 MCP 执行服务不同， `📅unknown` `[entity_page]`
@@ -5616,7 +5617,7 @@
 
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](wiki/comparisons/anygrasp-vs-graspnet.md) — 背景**：在「点云 / RGBD → 6-DoF 抓取候选」这条链路上，最常被同时提及的是 **GraspNet 家族**（GraspNet-1Billion / Contact-GraspNet `📅unknown` `[comparison_page]`
-- [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库时须按 **org 前缀** 区分，避免链错或重复节点。 `📅unknown` `[comparison_page]`
+- [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引用时按 **org 前缀** 区分，别混成一个。 `📅unknown` `[comparison_page]`
 - [CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）](wiki/comparisons/can-vs-ethercat-joint-bus.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [国内 GPU 云平台选型（机器人学习与仿真）](wiki/comparisons/china-gpu-cloud-platforms.md) — 本地工作站不足以支撑 Isaac Lab、mjlab 或多卡 [PPO](../methods/reinforcement-learning.m `📅unknown` `[comparison_page]`
 - [CLF vs CBF：稳定性与安全性的对偶工具](wiki/comparisons/clf-vs-cbf.md) —  工具 | 全称 | 核心角色  `📅unknown` `[comparison_page]`
@@ -5697,8 +5698,8 @@
 - [BFM 分类 03：Intrinsic reward 预训练](wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 04：Adaptation](wiki/overview/bfm-category-04-adaptation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 05：Hierarchical control](wiki/overview/bfm-category-05-hierarchical-control.md) — 语言、VLA、扩散与规划器如何通过**层次接口**（技能 token、latent action、action chunk）调用已训练好的底层身体，并由 WBC / 技能执行器承担关节级闭环？（工程分 `📅unknown` `[overview_page]`
-- [CAE / CFD 代理工具与技能项目总览](wiki/overview/cae-cfd-agent-skills-landscape.md) — 本页将一篇 CAE/CFD 工程代理工具清单中的公开仓库拆成独立、可追溯的项目详情节点。 `📅unknown` `[overview_page]`
-- [国内具身智能开源全景（76 家 · 424 项）](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 国内具身开源已从单点仓库扩展为「整机全链路 + 模型大脑 + 灵巧手 + 大厂平台 + 产业链 SDK」五层格局；选型应先定层，再进独立实体页核对训练/部署入口。 `📅unknown` `[overview_page]`
+- [CAE / CFD 代理工具与技能项目总览](wiki/overview/cae-cfd-agent-skills-landscape.md) — 本页把一篇 CAE/CFD 工程代理工具清单里的公开仓库逐个拆开介绍，每个仓库各有一页可点开。 `📅unknown` `[overview_page]`
+- [国内具身智能开源全景（76 家 · 424 项）](wiki/overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 国内具身开源已从单点仓库扩展为「整机全链路 + 模型大脑 + 灵巧手 + 大厂平台 + 产业链 SDK」五层格局；选型应先定层，再点进各项目页核对训练/部署入口。 `📅unknown` `[overview_page]`
 - [国内具身智能实验室三层地图（2026）](wiki/overview/china-embodied-ai-labs-landscape-2026.md) — 国内具身智能高校实验室可按公开产学研现状粗分为 **技术孵化层（组→公司）、深度合作层（校企联合实验室）、基础研究层（重点科研平台）**——三股力量共同构成从论文到产品、从算法到本体的转化链条；划分边 `📅unknown` `[overview_page]`
 - [CLAP / 跨本体 WM / VLA：9 篇论文的阅读坐标](wiki/overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) — 具身系统正从单一动作预测走向可模拟、可流式执行、可诊断并可跨本体迁移的闭环——世界模型扩边界，VLA 修解码与安全，感知层补三维交互与参照系。 `📅unknown` `[overview_page]`
 - [协作数据、评测与世界模型：12 篇论文阅读坐标](wiki/overview/collab-wm-12-papers-technology-map.md) — 「协作数据贵」与「世界模型是否可信」是同一部署问题的两面：前者问数据从哪来，后者问预测能否支撑决策——本期 12 篇分别给出评测协议、虚拟协作采集、三视角一致性基准与重建到仿真路径。 `📅unknown` `[overview_page]`
@@ -5738,7 +5739,7 @@
 - [具身世界模型六路线技术地图](wiki/overview/embodied-wm-six-routes-technology-map.md) — 世界模型的关键不在网络新旧，而在 **预测被用在哪里、是否改善真实行动**——从动力学预测到世界基础模型，六条路线可并行存在。 `📅unknown` `[overview_page]`
 - [Sim2Real 四条路线：44 篇参考文献阅读坐标](wiki/overview/freedof-sim2real-44-papers-technology-map.md) — Sim2Real 选型先看「参数能否辨识、剩余误差如何处理」，再按 SysID → 窄 DR → 残差/适应 分层组合；44 篇文献是四条立场在工程上的证据链，而非时间线摘要堆叠。 `📅unknown` `[overview_page]`
 - [【9.28–10.2 前沿论文动态】人形/四足49篇](wiki/overview/frontier-humanoid-quadruped-2026-09-28-10-02.md) — 这份人形/四足清单覆盖身体—手部预训练、人体示范重定向、动作先验、地形感知、全身安全、工具使用、多机器人协作，以及四足探索与颗粒地形运动。文章标题写「49篇」，正文实际列出 53 条 arXiv 论文 `📅unknown` `[overview_page]`
-- [【10.5-10.9前沿论文动态】人形/四足44篇](wiki/overview/frontier-humanoid-quadruped-2026-10-05-10-09.md) — 这份清单覆盖人形动态移动操作与柔顺控制、遥操作与人体数据重定向、人形世界–动作模型与触觉导航，以及四足载荷运输、空地协同、能耗步态、月面与屋顶地形和轮足竞速。共 44 条论文条目，每条对应一个独立详情 `📅unknown` `[overview_page]`
+- [【10.5-10.9前沿论文动态】人形/四足44篇](wiki/overview/frontier-humanoid-quadruped-2026-10-05-10-09.md) — 这份清单覆盖人形动态移动操作与柔顺控制、遥操作与人体数据重定向、人形世界–动作模型与触觉导航，以及四足载荷运输、空地协同、能耗步态、月面与屋顶地形和轮足竞速。共 44 条论文条目，每条各有一页可点开； `📅unknown` `[overview_page]`
 - [【9.28–10.2 前沿论文动态】Manipulation](wiki/overview/frontier-manipulation-2026-09-28-10-02.md) — 这篇综述把操作研究从可适应 VLA、动态闭环控制与精确 grounding，延伸到世界模型指导的数据采集、触觉探索、人形移动操作记忆与成功—安全联合评测。 `📅unknown` `[overview_page]`
 - [【10.5-10.9前沿论文动态】Manipulation34篇](wiki/overview/frontier-manipulation-2026-10-05-10-09.md) — 这份清单覆盖 VLA 与世界–动作模型（WAM）的加速与可组合化、强化学习后训练、生成式动作策略、双臂与灵巧操作、可变形物体、人形上半身操作、长程推理规划，以及触觉与跨本体数据集和硬件。共 34 条论 `📅unknown` `[overview_page]`
 - [前沿模型 × 3D / CAD / 机器人（MIT CDFG Living Survey）](wiki/overview/frontier-models-3d-cad-robotics-survey.md) — 公开 frontier 多模态模型（未任务微调、以 agent 形式接工具）已能产出工程师可编辑的 3D/CAD 草稿，并在仿真里离线合成可部署控制器；但 benchmark 数字几乎总是「模型  `📅unknown` `[overview_page]`

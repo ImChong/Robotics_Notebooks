@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] structural | 首页各社区互链 Top-10 节点读者化：清理 ingest/独立节点/升格/图谱 hub 等维护者口径（wiki 约 170 页 + 4 个生成器同步），摘要与首段改为读者视角
+
 ## [2026-10-14] ingest | sources/papers/ha_liu_2015_multiple_contact_humanoid_fall_planning.md — 归档 IROS 2015 多接触跌倒规划；官方页未列可运行源码，补充 Balance Recovery 关联
 
 ## [2026-10-14] ingest | sources/papers/loopwam_arxiv_2610_18873.md、ila_arxiv_2610_18855.md、axis_bench_arxiv_2610_18869.md、accrue_arxiv_2610_18596.md — 新增 4 篇论文知识节点与项目页/代码开放核查；Splat2Act 已在 main 收录
