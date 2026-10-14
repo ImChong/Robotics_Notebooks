@@ -90,6 +90,19 @@ def main() -> None:
     else:
         results.append(check("search-index.json 存在", False, "文件缺失"))
         results.append(check("search-index.json 非空", False, "文件缺失"))
+    # 1b. 轻量索引与全文索引文档数一致（首页搜索默认只加载轻量索引）
+    lite = DOCS / "search-index-lite.json"
+    if lite.exists() and si.exists():
+        lite_count = len(json.loads(lite.read_text(encoding="utf-8")).get("docs", []))
+        results.append(
+            check(
+                "search-index-lite.json 与全文索引文档数一致",
+                lite_count == doc_count,
+                f"lite={lite_count} full={doc_count}",
+            )
+        )
+    else:
+        results.append(check("search-index-lite.json 存在", False, "文件缺失"))
 
     # 2. index-v1.json 存在且文档数合理
     iv1 = EXPORTS / "index-v1.json"

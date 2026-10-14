@@ -7203,8 +7203,10 @@
   if (searchInput && searchResults) {
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
-    var _searchIndex = null;
+    var _searchIndex = null;           // 轻量索引（标题 / 摘要 / 标签 / 别名）
     var _searchIndexPromise = null;
+    var _fullSearchIndex = null;       // 全文索引（含正文 token），用户点「搜索全文」后才加载
+    var _fullSearchIndexPromise = null;
     var _searchGeneration = 0;
 
     var _communityByPath = null;
@@ -7270,16 +7272,30 @@
       return _communityByPathPromise;
     }
 
-    function ensureSearchIndex() {
-      if (_searchIndex) return Promise.resolve(_searchIndex);
-      if (_searchIndexPromise) return _searchIndexPromise;
+    // 两层索引（编号 9，scripts/build_search_index.py）：轻量索引约 0.9 MB gzip，聚焦搜索框就加载；
+    // 全文索引约 26 MB gzip，只在用户点「搜索全文」后加载，之后的搜索都用它。
+    var SEARCH_INDEX_LITE_URL = 'search-index-lite.json';
+    var SEARCH_INDEX_FULL_URL = 'search-index.json';
+
+    function fetchSearchIndexFile(url) {
       var controller = new AbortController();
       var timeout = setTimeout(function () { controller.abort(); }, 30000);
-      _searchIndexPromise = fetch('search-index.json', { signal: controller.signal })
+      return fetch(url, { signal: controller.signal })
         .then(function(r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
         })
+        .finally(function () {
+          clearTimeout(timeout);
+        });
+    }
+
+    /** 当前可用的索引：全文索引已加载就用它，否则加载并返回轻量索引。 */
+    function ensureSearchIndex() {
+      if (_fullSearchIndex) return Promise.resolve(_fullSearchIndex);
+      if (_searchIndex) return Promise.resolve(_searchIndex);
+      if (_searchIndexPromise) return _searchIndexPromise;
+      _searchIndexPromise = fetchSearchIndexFile(SEARCH_INDEX_LITE_URL)
         .then(function(data) {
           _searchIndex = data;
           return data;
@@ -7287,11 +7303,37 @@
         .catch(function(error) {
           _searchIndexPromise = null;
           throw error;
-        })
-        .finally(function () {
-          clearTimeout(timeout);
         });
       return _searchIndexPromise;
+    }
+
+    function ensureFullSearchIndex() {
+      if (_fullSearchIndex) return Promise.resolve(_fullSearchIndex);
+      if (_fullSearchIndexPromise) return _fullSearchIndexPromise;
+      _fullSearchIndexPromise = fetchSearchIndexFile(SEARCH_INDEX_FULL_URL)
+        .then(function(data) {
+          _fullSearchIndex = data;
+          return data;
+        })
+        .catch(function(error) {
+          _fullSearchIndexPromise = null;
+          throw error;
+        });
+      return _fullSearchIndexPromise;
+    }
+
+    function searchIndexIsLite(indexData) {
+      return !!(indexData && indexData.meta && indexData.meta.tier === 'lite');
+    }
+
+    function fullSearchIndexSizeHint(indexData) {
+      var bytes = indexData && indexData.meta && indexData.meta.full_index_gzip_bytes;
+      return bytes ? '首次需下载约 ' + Math.max(1, Math.round(bytes / 1048576)) + ' MB' : '首次下载较大';
+    }
+
+    function fullTextSearchButtonHtml(indexData) {
+      return '<button type="button" class="btn-secondary search-full-text">搜索全文</button>'
+        + '<span class="data-meta" style="margin-left:6px">' + fullSearchIndexSizeHint(indexData) + '</span>';
     }
 
     // 仅由搜索意图触发（入口卡 hover/pointerdown、搜索框 focus、#wiki-search 深链）：
@@ -7353,9 +7395,11 @@
       }
     }
 
-    function renderNoResults(q) {
+    function renderNoResults(q, liteIndexData) {
       searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
-        + '<p>未找到 <strong>' + escapeHtml(q) + '</strong> 的匹配结果。</p>'
+        + '<p>未找到 <strong>' + escapeHtml(q) + '</strong> 的匹配结果'
+        + (liteIndexData ? '（只搜了标题、摘要、标签与别名）' : '') + '。</p>'
+        + (liteIndexData ? '<p style="margin:.4rem 0">' + fullTextSearchButtonHtml(liteIndexData) + '</p>' : '')
         + '<ul style="margin:.5rem 0;padding-left:1.2rem;font-size:.85rem">'
         + '<li>尝试更短的关键词，或英文原文</li>'
         + '<li>命令行搜索：<code>python3 scripts/search_wiki.py "' + escapeHtml(q) + '"</code></li>'
@@ -7506,7 +7550,7 @@
       searchResults.innerHTML = html;
     }
 
-    function bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1) {
+    function bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1) {
       var score = 0;
       var dl = doc.dl || 1;
       var docTokens = doc.tokens || {};
@@ -7520,10 +7564,26 @@
         var token = queryTokens[i];
         var tf = docTokens[token] || 0;
         if (!tf) continue;
-        var idf = idfMap[token] || 0;
+        var idf = idfOf(token);
         score += idf * (tf * k1_plus_1) / (tf + k1_lenNorm);
       }
       return score;
+    }
+
+    /** idf 取值：旧索引直接带 idf；新索引只带 df（整数），按 BM25 公式现算并缓存。 */
+    function makeIdfLookup(indexData) {
+      var idfMap = indexData && indexData.idf;
+      if (idfMap) return function (token) { return idfMap[token] || 0; };
+      var dfMap = (indexData && indexData.df) || {};
+      var total = (indexData && indexData.meta && indexData.meta.N) || ((indexData && indexData.docs) || []).length || 1;
+      var cache = {};
+      return function (token) {
+        if (Object.prototype.hasOwnProperty.call(cache, token)) return cache[token];
+        var df = dfMap[token] || 0;
+        var idf = df ? Math.log(1 + (total - df + 0.5) / (df + 0.5)) : 0;
+        cache[token] = idf;
+        return idf;
+      };
     }
 
     function substringScore(doc, queryTokens) {
@@ -7627,8 +7687,9 @@
           var avgdl = meta.avgdl || 1;
           var k1 = meta.k1 || 1.5;
           var b = meta.b || 0.75;
-          var idfMap = (indexData && indexData.idf) ? indexData.idf : {};
+          var idfOf = makeIdfLookup(indexData);
           var k1_plus_1 = k1 + 1;
+          var liteIndexData = searchIndexIsLite(indexData) ? indexData : null;
 
           // ⚡ Bolt Optimization: Single-pass search filtering
           // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
@@ -7654,7 +7715,7 @@
 
               partial = substringScore(doc, queryTokens);
               if (!hasTokens && partial === 0) continue;
-              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1);
+              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1);
             }
 
             matched.push({
@@ -7679,10 +7740,15 @@
               searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
                 + '<p>当前筛选条件下暂无索引条目，或数据仍在加载。</p></div>';
             } else {
-              renderNoResults(q);
+              renderNoResults(q, liteIndexData);
             }
           } else {
             renderCards(matched, queryTokens);
+            // 轻量索引只覆盖标题 / 摘要 / 标签 / 别名：有结果也提示可继续搜正文
+            if (liteIndexData && queryTokens.length) {
+              searchResults.innerHTML += '<p class="data-meta search-scope-note" style="grid-column:1/-1;margin-top:.5rem">'
+                + '只搜了标题、摘要、标签与别名 · ' + fullTextSearchButtonHtml(liteIndexData) + '</p>';
+            }
           }
         })
         .catch(function() {
@@ -7755,6 +7821,22 @@
     searchResults.addEventListener('click', function(e) {
       if (e.target.closest('.search-retry')) {
         triggerSearch();
+        return;
+      }
+      if (e.target.closest('.search-full-text')) {
+        var fullGeneration = ++_searchGeneration;
+        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载全文索引中（首次较慢）…</p>';
+        ensureFullSearchIndex()
+          .then(function () {
+            if (fullGeneration !== _searchGeneration) return;
+            triggerSearch();
+          })
+          .catch(function () {
+            if (fullGeneration !== _searchGeneration) return;
+            searchResults.innerHTML = '<div role="status" style="color:var(--text-muted);grid-column:1/-1">'
+              + '<p>全文索引暂时无法加载，请检查网络后重试。</p>'
+              + '<button type="button" class="search-full-text">重试搜索全文</button></div>';
+          });
         return;
       }
       var graphBtn = e.target.closest('.js-graph-btn');
