@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, imitation-learning, diffusion-policy, rope, asynchronous-inference, latency, multisensory, stanford]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-14
 arxiv: "2610.13929"
 project_id: chronos-policy-physical-time
 project: https://changhaowang.github.io/chronospolicy/
@@ -18,7 +18,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md
   - ../../sources/papers/chronos_policy_arxiv_2610_13929.md
   - ../../sources/sites/chronospolicy-github-io.md
-summary: "Chronos Policy（arXiv:2610.13929，Stanford）：把观测采集时刻与动作执行时刻作为条件，用时间感知 RoPE 让注意力读取物理时间差，再配时序随机化训练；Conveyor 0–200 ms 推理延迟下成功率 76.4%（Diffusion Policy 1.8%），三项真机任务各扰动条件下得分最高；代码截至 2026-10-12 未发布。"
+summary: "Chronos Policy（arXiv:2610.13929，Stanford）：把观测采集时刻与动作执行时刻作为条件，用时间感知 RoPE 让注意力读取物理时间差，再配时序随机化训练；Conveyor 0–200 ms 推理延迟下成功率 76.4%（Diffusion Policy 1.8%），三项真机任务各扰动条件下得分最高；代码截至 2026-10-14 未发布。"
 ---
 
 # Chronos Policy：在物理时间上学习机器人策略
@@ -70,14 +70,14 @@ flowchart LR
 
 ## 源码运行时序图
 
-不适用：截至 2026-10-12 官方未发布代码（项目页 Code 标 “Coming soon”，论文未给仓库），无可对齐的目录与脚本。
+不适用：截至 2026-10-14 官方未发布代码（项目页 Code 标 “Coming soon”，论文未给仓库），无可对齐的目录与脚本。
 
 ## 工程实践
 
 - **自己落地时的读法（推测）：** 若已有扩散策略，改动集中在三处：给每个 token 保留时间戳、把位置编码换成按时间戳的 RoPE、训练数据管线加入速率/延迟随机化；不必改网络主体。
 - **随机化要配时间戳：** 论文消融显示仅随机化会引入跨传感器歧义（Pivoting 上 DP 名义成功率 61.6%→29.8%）。
 - **延迟估计：** 真机以已完成请求估计 d_t；动作需按“是否已过期”裁剪。
-- **开源状态：** 截至 2026-10-12 无代码、无数据、无权重；项目页自身仍标 Paper “Coming soon”（与 arXiv 已上线不一致）。
+- **开源状态（2026-10-14 核查）：** 项目页已提供 arXiv 论文链接；Code 与 Twitter 仍标 “Coming soon”。截至核查日无官方代码、数据或权重链接。
 
 ## 实验与评测
 
@@ -102,7 +102,7 @@ flowchart LR
 - 动作间隔固定，可变控制频率与时间缩放留待后续工作。
 - 真机每场景仅 10–20 次试验，部分仿真条件标准差很大。
 - 真机评分含半分，不可与二值成功率混比。
-- 代码/数据未发布，项目页标 “Coming soon”（截至 2026-10-12）。
+- 代码/数据未发布（截至 2026-10-14）；项目页现已链接论文，代码仍标 “Coming soon”。
 
 ## 与其他工作对比
 
