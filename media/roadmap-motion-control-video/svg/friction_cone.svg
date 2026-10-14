@@ -16,5 +16,5 @@
 <path d="M380,440 L650,300" stroke="#ff6b6b" stroke-width="6" fill="none" marker-end="url(#fa)"/>
 <text class="lb" x="560" y="270" fill="#ff6b6b">锥外：打滑</text>
 </g>
-<text class="sm" x="60" y="525" fill="#a9c9da">法向力 f_n ≥ 0（只能推、不能拉地面）；切向 |f_t| ≤ μ f_n</text>
+<text class="sm" x="60" y="525" fill="#a9c9da">法向 f_n ≥ 0（只推不拉）；切向 |f_t| ≤ μ f_n</text>
 </svg>

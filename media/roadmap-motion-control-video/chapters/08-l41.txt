@@ -3,7 +3,7 @@
 ## slide: stage=chap
 ::chap L4.1 | LIP / ZMP | 双足机器人怎么在地上走而不倒？ | 线性倒立摆 · ZMP · 支撑多边形 · 捕获点 / DCM
 ---
-0| L4.1，LIP 和 ZMP。隐喻是走钢丝：身体的重心必须始终处在脚下不大的支撑面附近，才不会摔倒。LIP 和 ZMP，就是把这件事数学化。
+0| L4.1，LIP 和 ZMP。隐喻是走钢丝：身体的重心必须始终{处|楚}在脚下不大的支撑面附近，才不会摔倒。LIP 和 ZMP，就是把这件事数学化。
 
 ## slide: title=线性倒立摆：三个假设，一个线性方程; src=roadmap/motion-control.md §L4.1 自测题 · wiki/formalizations/zmp-lip.md · wiki/concepts/lip-zmp.md
 <div class='cols w46'>
@@ -44,7 +44,7 @@
 <div class='n' data-s='1'><b>① 落脚点序列</b>足步规划</div><div class='ar'>→</div>
 <div class='n' data-s='1'><b>② ZMP 参考轨迹</b>单支撑待在脚内<br>换脚时平滑移动</div><div class='ar'>→</div>
 <div class='n' data-s='2'><b>③ 由 LIP 反求 CoM 轨迹</b>预览控制：提前看未来</div><div class='ar'>→</div>
-<div class='n' data-s='3'><b>④ 下层执行</b>MPC / WBC / 逆动力学</div>
+<div class='n' data-s='3'><b>④ 下层执行</b>IK / WBC / 逆动力学</div>
 </div>
 <div class='gridcards g2' style='margin-top:36px'>
 <div class='card' data-s='2'><h3>为什么要“预览”</h3><p>倒立摆不稳定：质心必须<span class='a'>提前</span>朝下一只脚运动，所以要用未来一段 ZMP 参考来算当前的质心运动（Kajita 2003）</p></div>
@@ -54,7 +54,7 @@
 0| 那怎么用它生成步态？经典链路分四步。
 1| 先规划落脚点序列，再根据脚印排出一条 ZMP 参考轨迹：单脚支撑时，ZMP 待在支撑脚里；换脚时，平滑地移到下一只脚。
 2| 然后根据 LIP 动力学，反求出能实现这条 ZMP 轨迹的质心轨迹。因为倒立摆是不稳定的，质心必须提前朝下一只脚运动，所以 Kajita 用“预览控制”：提前看未来一段 ZMP 参考，来计算当前的质心运动。
-3| 最后，质心轨迹和脚的轨迹交给下层的 MPC、全身控制或逆动力学去执行。更现代的做法，是把同一个方程写进线性 MPC，把“ZMP 在支撑多边形内”写成 QP 的不等式约束。
+3| 最后，质心轨迹和脚的轨迹交给下层的逆运动学、全身控制或逆动力学去执行。更现代的做法，是把同一个方程写进线性 MPC，把“ZMP 在支撑多边形内”写成 QP 的不等式约束。
 
 ## slide: title=DCM / 捕获点：已经在倒，下一步踩哪？; src=roadmap/motion-control.md §L4.1 自测题 · wiki/concepts/capture-point-dcm.md
 <div class='cols w46'>

@@ -17,6 +17,6 @@
 <text class="sm" x="590" y="592" fill="#b99bff" text-anchor="middle">一步踩到 ξ → 质心渐近停住</text>
 </g>
 <g data-s="3">
-<text class="sm" x="30" y="44" fill="#ffbf47">发散模态：ξ̇ = ω (ξ − x_zmp)</text>
+<text class="sm" x="30" y="44" fill="#ffbf47">发散模态：dξ/dt = ω (ξ − x_zmp)</text>
 </g>
 </svg>

@@ -24,7 +24,17 @@
 ---
 0| 第 0 步时念的一句旁白（同时是字幕）
 1| 第 1 步时念的旁白……
+2| 每读{一行|一航}都要查    ← {字幕写法|念法}：字幕显示「一行」，配音念「一航」
 ```
+
+## 读音与字幕（改稿时注意）
+
+做法参考 [Robot_Learning_Paper_Notebooks 的论文视频](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/tree/main/scripts/paper_video)：拿不准的字，用同一整句分别合成原字和各读音的同音字，按词边界截出那个词，比 log-mel DTW，离谁近就是念成了谁。
+
+- 整句里会读错的多音字，用 `{原字|同音字}` 只改配音：「每一行」会念成 xíng（写 `{一行|一航}`），「重规划」「概率调高」念成 zhòng / diào（写 `{重|虫}`、`{调|条}`），「当成」念成 dāng（写 `{当|荡}`）。DTW 分不出来的（如「重定向」）也直接写同音字。
+- 能拼成英文单词的缩写会被当单词念（LIP 念成 lip、GAE、PoE、ABA、CoP、AMP 等），在 `build.py` 的 `PRON` 里改成逐字母；EtherCAT 写成 Ethercat，免得 CAT 被逐字母念。
+- 字幕不在英文词、数字中间断行，也尽量不把「Isaac Sim」「ONNX Runtime」这类多词英文名拆到两行。
+- 编码按 BT.709 矩阵转换并写明色彩标记（未标注时多数播放器按 BT.709 解释高清视频，按 BT.601 编出来的青色会偏）；时长按总帧数截断，音画等长。
 
 ## 复现
 
@@ -37,4 +47,5 @@ CHROME_PATH=/path/to/chrome python3 build.py all   # 产物在 out/
 
 - 配音用 [edge-tts](https://github.com/rany2/edge-tts)（微软在线 TTS，需联网），默认 `VOICE=zh-CN-YunxiNeural`、`RATE=+6%`；经 TLS 代理访问时设 `TTS_CA_BUNDLE=<证书链路径>`。
 - 配音与帧按内容哈希缓存在 `cache/`，改稿后只重做变动部分；`python3 build.py all c08` 只出某一章。
+- 改稿后先出片段给人看：`python3 build.py clip c08-042,c08-044:1+2 clip-c08` 只出这几张幻灯片（`:1+2` 表示只要该页第 1、2 句旁白），每张一个章节标记。
 - 路线原文更新后，改对应的 `chapters/*.txt` 再重跑即可。

@@ -23,19 +23,19 @@
 <div class='cols'>
 <div class='col'>
 <div class='card' data-s='0'><h3>传统 policy</h3><p>observation → 一个动作 \(a_t\)</p></div>
-<div class='card' data-s='0'><h3>现代 VLA 动作头</h3><p>image + language + state → \(a_t, a_{t+1}, \dots, a_{t+H}\)（ACT）</p></div>
+<div class='card' data-s='0'><h3>现代动作头（ACT / VLA）</h3><p>图像 + 状态（VLA 再加语言）→ \(a_t, a_{t+1}, \dots, a_{t+H-1}\)</p></div>
 </div>
 <div class='col'>
 <div class='card good' data-s='1'><h3>好处 ①</h3><p>整段时序一致：减少逐步抖动；决策次数变少，也减轻 BC 的复合误差</p></div>
 <div class='card good' data-s='2'><h3>好处 ②</h3><p>推理可以比控制慢：等待下一次推理时，低层继续执行已有 chunk</p></div>
-<div class='card warn' data-s='3'><h3>代价</h3><p>chunk 内开环，对突发扰动反应慢 → temporal ensembling（重叠 chunk 加权平均）或 Real-Time Chunking</p></div>
+<div class='card warn' data-s='3'><h3>代价</h3><p>chunk 内开环，对突发扰动反应慢 → temporal ensembling（每步重推理、重叠预测加权平均）或 Real-Time Chunking（边执行边生成下一块）</p></div>
 </div>
 </div>
 ---
 0| 解决办法之一是动作块，action chunk：一次输出未来 H 步的动作序列，而不是一个动作。代表作是 ACT。
 1| 它有两个好处。第一，整段动作时序一致，减少了逐步的抖动；决策的次数变少了，也减轻了行为克隆的复合误差。
 2| 第二，推理可以比控制慢：在等待下一次推理的时候，低层控制器可以继续执行已经生成的动作块。
-3| 代价是：动作块内部是开环执行的，对突发扰动反应变慢。所以需要时间集成，也就是把重叠的多个动作块做加权平均；或者用 Real-Time Chunking 这类在执行中平滑衔接的策略。
+3| 代价是：动作块内部是开环执行的，对突发扰动反应变慢。补救一是时间集成：每步都重新推理，把重叠动作块对同一时刻的预测加权平均，但这又要求每步都推理；二是 Real-Time Chunking：边执行当前块，边生成下一块，平滑衔接。
 
 ## slide: tag=L9; title=Diffusion Policy：从噪声里“去噪”出一段动作; src=roadmap/motion-control.md §L9 · wiki/methods/diffusion-policy.md · arXiv:2303.04137
 <div class='flow' style='justify-content:center'>
@@ -84,7 +84,7 @@
 </div>
 </div>
 ---
-0| DiT，扩散 Transformer，把去噪网络从 U-Net 换成了 Transformer。在机器人里，Transformer 的 token，就是动作块里的各个时间步。
+0| DiT，扩散 Transformer，把去噪网络从 U-Net，一种先压缩再还原、带跳连的卷积网络，换成了 Transformer。在机器人里，Transformer 的 token，就是动作块里的各个时间步。
 1| 观测和语言条件怎么注入？常见三种方式：交叉注意力，让动作 token 作为查询，去读观测 token；AdaLN，用条件向量去调制层归一化的尺度和偏移，这是 DiT 原论文的做法；或者直接把条件 token 拼进序列，做自注意力。
 2| 这样，动作头就能直接接上 L8 的视觉语言模型 token。
 3| Action Expert，动作专家，是 π0 里的叫法：在视觉语言模型之外，单独一套较小的 Transformer 权重，专门处理状态和带噪声的动作 token，用流匹配生成动作块。GR00T N1 的 DiT 动作头，扮演的是同一个角色。
