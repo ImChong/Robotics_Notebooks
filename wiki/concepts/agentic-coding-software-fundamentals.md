@@ -8,8 +8,8 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-01
-summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身。吴恩达 AI Engineering Skills Map 把软件基础拆成全栈、数据、架构、安全可靠、生产运维五项。"
+updated: 2026-10-14
+summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
   - ../entities/archify.md
@@ -31,6 +31,7 @@ related:
   - ../entities/nvidia-open-agent-safety-platform.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
+  - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
 ---
 
 # Agentic Coding 时代的软件工程基础
@@ -107,6 +108,14 @@ flowchart TD
 2. **用评测闭环代替语感。** 与 [autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) 一致：没有自动 verify，agent 只能 vibe。软件侧对应单测/集成/负载；真机侧对应 reset + 自动判分。
 3. **架构按阶段换，不按潮流换。** 原型简单、生产加可观测与降级、规模化再动数据分片与服务边界。让 agent 「按大厂模板生成」往往跳阶段。
 
+### Agent 吞吐上升后，开发基础设施会成为瓶颈
+
+Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公司报告每日合并量在 2026 年 5 月至 9 月从约 2,500 增至超过 30,000，主分支历史接近 100 GB、CI 每天约 2,500 万次 checkout。团队发现瓶颈逐渐从写代码转向源码控制、构建和 CI。
+
+其内部版本控制系统 Scion 将服务器设为权威端，以增量 changeset 和内容寻址对象保存变更，另建 blame、路径历史等派生索引；客户端按需取稀疏文件，缓存分层提供对象，并通过 API 回答 diff、merge base 等元数据问题。Anthropic 报告 checkout 快约两个数量级、镜像基础设施 CPU 与内存需求下降 200 倍、CI 释放约 25% CPU 容量。数据属于单家公司内部工作负载报告，不能直接外推到普通团队。
+
+对机器人团队更可迁移的做法是先量化 coding agent 带来的提交频率、全量/稀疏 checkout 成本、CI 排队时间和评审吞吐，再决定优化点。Scion 本身未开源，Anthropic 也明确不建议把它视为通用 Git 替代品；它依赖定制的代码评审、代码搜索和 CI 配套系统。详细设计与边界见 [Anthropic 的 Scion 工程文章](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)。
+
 ## 局限与风险
 
 - **误区：会用 Cursor / Claude Code = 具备软件工程基础。** 工具降低的是击键成本；取舍识别仍是人的技能。吴恩达原文把「语法记忆」标为过时，把「软件如何工作」标为拉开差距的部分。
@@ -134,6 +143,7 @@ flowchart TD
 ## 参考来源
 
 - [Andrew Ng，AI Engineering Skills Map: Software engineering fundamentals（本站归档）](../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md)
+- [Anthropic，Redesigning source control at Anthropic（本站归档）](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)
 - 触发推文：<https://x.com/andrewyng/status/2093388974194872781>
 - X Article：<https://x.com/i/article/2093384274372419585>
 - *The Batch* 同文：<https://www.deeplearning.ai/the-batch/the-ai-engineering-skills-map-in-detail-software-engineering-fundamentals>
