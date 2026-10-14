@@ -3,12 +3,13 @@ type: entity
 tags: [company, vla, deployment, manipulation, physical-intelligence]
 title: The Physical Intelligence Layer
 status: complete
-updated: 2026-09-28
+updated: 2026-10-14
 related:
   - ../methods/π0-policy.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ../methods/pi07-policy.md
+  - ./physical-intelligence-pi-api.md
 sources:
   - ../../sources/blogs/pi_physical_intelligence_layer_2026-02-24.md
   - ../../sources/sites/pi-website-technical-articles.md
@@ -67,6 +68,7 @@ Ultra 写美国客户仓库的订单打包。一段连续镜头标注自主率 *
 - [π₀.₅](./paper-pi05-open-world-vla.md)
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [π₀.₇](../methods/pi07-policy.md)
+- [Pi API beta](./physical-intelligence-pi-api.md) — 将 Physical Intelligence 的模型层以托管微调与推理服务开放给机器人开发团队。
 
 ## 参考来源
 
