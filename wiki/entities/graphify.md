@@ -20,6 +20,7 @@ related:
   - ./archify.md
   - ../references/llm-wiki-karpathy.md
   - ./understand-anything.md
+  - ./codegraph.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -92,6 +93,7 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久策展 wiki** 范式；与本页 **自动构图** 对照
 - [Superpowers（obra）](superpowers-obra.md) — **交付流程** Agent Skills；与本页 **代码库理解** 技能互补
 - [Agent Reach](agent-reach.md) — **外网读搜** 脚手架；与本页 **本地/仓库内** 多模态图互补
+- [CodeGraph](./codegraph.md) — coding-agent 代码图基础设施，重点是静态代码关系、MCP 查询和自动同步。
 - [Caveman](caveman.md) — **输出 token** 压缩；与本页 **输入侧少读文件** 形成省钱三角
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时；上游支持 `graphify install --platform hermes`
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量工程技能库；同属 **skills 文件化** 生态
