@@ -2,7 +2,7 @@
 type: entity
 tags: [foundation-policy, embodied-data, dexterous-manipulation, imitation-learning, scaling-laws]
 status: active
-updated: 2026-10-13
+updated: 2026-10-14
 project_id: naturewill-natura-1
 project: https://www.naturewill.com/blog/natura-1
 related:
@@ -12,9 +12,12 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/egoscale.md
   - ./dyna-2.md
+  - ./cn-os-wuji-description.md
+  - ./cn-os-wuji-hand-teleop.md
+  - ./cn-os-wujihandpy.md
 sources:
   - ../../sources/sites/naturewill-natura-1.md
-summary: "Nature Will 将 Natura-1 描述为从百万小时级第一人称人类操作经验预训练、再经少量真机数据适配的 50B MoE 物理世界模型，面向 20-DoF 灵巧手；官方公开研究预览，未提供代码、权重或数据下载。"
+summary: "Nature Will 将 Natura-1 描述为从百万小时级第一人称人类操作经验预训练、再经少量真机数据适配的 50B MoE 物理世界模型；本次演示由舞肌科技提供 Wuji Hand 2 灵巧硬件支持，模型代码、权重和训练数据未公开。"
 ---
 
 # Natura-1（Nature Will）
@@ -62,6 +65,12 @@ flowchart LR
 
 官方称 Natura-1 为 500 亿参数 MoE，联合视觉世界建模与动作生成，输入语言和视觉，在 20-DoF 双臂灵巧手平台运行。文章描述的内部实现包括分布式训练引擎、定制 attention kernel，以及推理侧 Rust 编排器和融合 CUDA kernel；作者报告真机观测到动作维持在 100 ms 闭环预算内。由于没有公开代码、配置或模型权重，这些是项目方披露的系统概况，不是可直接复现的部署配方。
 
+### 硬件协作与部署边界
+
+Nature Will 展示平台包括 ROKAE AR5 双臂与 Wuji 灵巧手。根据本次补充的项目信息，舞肌科技提供 Wuji Hand 2 灵巧操作硬件，支持 Natura-1 本次训练与任务部署。这说明项目将通用物理 AI 模型与外部灵巧手硬件结合展示，但不代表模型、训练数据或软硬件栈已开放。
+
+舞肌科技当前的 [Wuji Hand 2 官方手册](https://docs.wuji.tech/docs/zh/wuji-hand/latest/overview/)描述了 20 个主动自由度，并注明页面对应 2.2 Beta 样机；该页面没有确认 Natura-1 演示所用硬件的确切批次、固件或 SDK 版本。舞肌公开的 [Wuji Description](../entities/cn-os-wuji-description.md)、[Wuji Hand 遥操作](../entities/cn-os-wuji-hand-teleop.md)和 [wujihandpy SDK](../entities/cn-os-wujihandpy.md)可作为一般仿真与集成资料，但没有证据表明 Nature Will 本次训练或部署使用了这些公开仓库。
+
 ## 评测读法
 
 官方文章描述了 12 个灵巧操作能力维度、数分钟级多阶段任务和未见自然语言指令测试；平台包括 ROKAE AR5 双臂搭配 Wuji 灵巧手，以及 ARX AC One 双臂夹爪。文章称部分长时序任务使用额外后训练，其余演示共享同一组权重，因此阅读视频时要区分基座结果与额外调优结果。
@@ -100,6 +109,7 @@ flowchart LR
 ## 参考来源
 
 - [Natura-1 官方研究预览归档](../../sources/sites/naturewill-natura-1.md)
+- [舞肌科技 Wuji Hand 2 官方产品手册](https://docs.wuji.tech/docs/zh/wuji-hand/latest/overview/)
 
 ## 推荐继续阅读
 
