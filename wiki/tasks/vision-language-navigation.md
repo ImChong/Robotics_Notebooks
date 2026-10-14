@@ -48,6 +48,7 @@ related:
   - ../entities/qwen-robot-nav.md
   - ../entities/paper-refertrack.md
   - ../entities/paper-navverse.md
+  - ../entities/paper-supernav-agentic-navigation.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
@@ -68,6 +69,9 @@ sources:
   - ../../sources/papers/crosstracer_arxiv_2608_06688.md
   - ../../sources/papers/abot_n1_arxiv_2607_10383.md
   - ../../sources/papers/spark_vln_arxiv_2607_16806.md
+  - ../../sources/papers/supernav_arxiv_2610_12126.md
+  - ../../sources/sites/zju3dv-supernav.md
+  - ../../sources/repos/zju3dv-supernav-code.md
 ---
 
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
@@ -95,6 +99,7 @@ sources:
 
 - **与坐标目标无地图循环导航的对照**：[SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025）用 **相对目标向量 + 单目前向深度 + SRU 隐式空间记忆** 做 **50–120 m 级** 无地图 RL 导航（非语言、非 image-goal），真机 **B2W 零样本**；部署移植见 [SRU-Odin](../entities/sru-odin.md)。与 VLN 共享「部分可观测 + 长程」难点，但 **监督与目标接口** 完全不同，不宜混用 R2R 等语言基准。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。端到端驾驶专用 VLA 对照见 [S²-VLA](../entities/paper-s-squared-vla.md)（语义∥空间双流规划，NAVSIM 纯 SFT）。
+- **预训练 MLLM 的导航 harness**：[SuperNav](../entities/paper-supernav-agentic-navigation.md)（arXiv:2610.12126）用视觉点目标、可互换运动后端、工具与 Skills 支持单物体 / 有序多物体 / 需求驱动导航；高层“已完成”声明与 benchmark 成功判定分开核验。
 - **具身视觉跟踪（EVT）专用 referring**：[ReferTrack](../entities/paper-refertrack.md)（arXiv:2607.20061）把「语言指定行人跟随」拆成索引 bbox Refer-CoT + TVBI 历史几何，再解码航点；EVT-Bench 单前视 STT/DT/AT 上相对 TrackVLA++ 大幅抬升，Go2/G1 真机定性——与通才 RobotNav 的 tracking mode 同榜不同协议，宜分开读。
 - **人中心例行记忆 EQA**：[HUMEMBR](../entities/paper-humembr.md)（arXiv:2606.30404）在办公室 Spot 上并行构建 **身份感知多日记忆** 与 LLM 工具检索，服务 PersonEQA 与「找某人」导航——相对 R2R 式路径指令，主轴是 **人例行预测** 而非地标语言接地。
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
