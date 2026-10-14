@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | DSLC 多机器人隐蔽执行器攻击下的分布式安全学习控制
+
+- 收录 arXiv:2609.06896 与 IEEE Transactions on Robotics Early Access 论文；归纳 attacker–actor–critic + DMPC 方法、1000 机器人仿真、轮式机器人实测及适用边界。
+- 截至入库日未找到作者项目页或公开代码仓库，标注为待复核，而非假定已可复现。
+
 ## [2026-10-14] ingest | arXiv:2608.17038 — 收录 DEM 全局 A* 与 LiDAR 局部修正的 UGV 导航论文，注明仅 Gazebo 仿真与未发现公开代码
 
 ## [2026-10-14] ingest | Chronos Policy — 刷新项目页论文入口与当前代码开放状态

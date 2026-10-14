@@ -1645,6 +1645,7 @@
 - [DriveVLM（DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models · arXiv:2402.12289）](wiki/entities/paper-drivevlm.md) — DriveVLM**（*DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models*，[240 `📅unknown` `[entity_page]`
 - [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](wiki/entities/paper-dsdyn-vla.md) — DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness,  `📅unknown` `[entity_page]`
+- [DSLC：隐蔽执行器攻击下的多机器人安全学习控制](wiki/entities/paper-dslc-multirobot-secure-control.md) — Distributed Secure Learning Control（DSLC）** 将分布式模型预测控制与对抗式策略学习结合，在多机器人系统中同时优化攻击者和防御者策略，以应对隐蔽执行器攻击。 `📅unknown` `[entity_page]`
 - [DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）](wiki/entities/paper-dswam-dual-system-wam.md) — DSWAM**（*DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation*， `📅unknown` `[entity_page]`
 - [双凸轮共享气弹簧人形并联弹性踝](wiki/entities/paper-dual-cam-parallel-elastic-ankle.md) — Dual-Cam PEA Ankle**（arXiv:2608.30832）由 **意大利技术研究院（IIT）HHCM**  `📅unknown` `[entity_page]`
 - [Dual-Head Coordination](wiki/entities/paper-dual-head-coordination.md) — Making two action heads agree: coordination mechanisms and a runtime collapse certificate for flow `📅unknown` `[entity_page]`
