@@ -29,7 +29,7 @@ git push -u origin <branch-name>
 
 ### 4.1 站点详情页（wiki / entity 正文）
 
-知识页、实体页在站点上由 **`docs/detail.html`** 渲染，数据来自 `docs/exports/site-data-v1.json`。该文件与 `docs/search-index.json`、`docs/sitemap.xml`、`link-graph.json` 等大体积站点数据**不入库**（Pages 部署时现场生成），本地截图前必须先生成，并确保与当前分支一致。
+知识页、实体页在站点上由 **`docs/detail.html`** 渲染，数据来自 `docs/exports/site-catalog-v1.json`（页面元数据）与 `docs/exports/page-content/`（按页正文）。这些文件与 `docs/search-index.json`、`docs/sitemap.xml`、`link-graph.json` 等大体积站点数据**不入库**（Pages 部署时现场生成），本地截图前必须先生成，并确保与当前分支一致。
 
 1. **生成站点数据并启动本地静态服务**（在仓库根目录）  
    ```bash
@@ -38,7 +38,7 @@ git push -u origin <branch-name>
    ```
 2. **构造 URL**  
    - 形式：`http://127.0.0.1:8765/detail.html?id=<detail-page-id>`  
-   - **`<detail-page-id>`** 与导出一致：可查 `docs/sitemap.xml` 中的 `detail.html?id=...`，或在 `site-data-v1.json` 的 `pages.detail_pages` 下找键名（例：`wiki-concepts-humanoid-parallel-joint-kinematics`）。  
+   - **`<detail-page-id>`** 与导出一致：可查 `docs/sitemap.xml` 中的 `detail.html?id=...`，或在 `docs/exports/site-catalog-v1.json` 的 `pages.detail_pages` 下找键名（例：`wiki-concepts-humanoid-parallel-joint-kinematics`）。  
 3. **Headless Chrome 截图**（推荐：仓库脚本，避免进程挂死）  
    ```bash
    ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking

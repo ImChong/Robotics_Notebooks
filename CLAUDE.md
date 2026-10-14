@@ -92,7 +92,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
    # 截局部（如 detail-sources 区块）：
    ./scripts/screenshot_site_detail.sh wiki-entities-paper-... out.png detail-sources
    ```
-   - `<page-id>` 可在 `docs/sitemap.xml` 或 `docs/exports/site-data-v1.json` 的 `pages.detail_pages` 找到。
+   - `<page-id>` 可在 `docs/sitemap.xml` 或 `docs/exports/site-catalog-v1.json` 的 `pages.detail_pages` 找到。
    - Cloud 环境没有 Chrome 时先 `sudo -n apt-get install -y -f` 装齐依赖，或按 [cloud-agent-pr-workflow.md §4.4](docs/checklists/cloud-agent-pr-workflow.md) 用 Playwright 兜底。
 3. **嵌入 PR 描述**：在「验证截图」小节用 HTML 引用绝对路径，路径默认落 `.cursor-artifacts/screenshots/`（已被 `.gitignore` 屏蔽，不要提交进 git 历史）。
    ```html

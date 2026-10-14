@@ -107,6 +107,78 @@ test('a failed component load degrades quietly and is retried on the next render
   assert.equal(retried.runs.length, 1);
 });
 
+// 视口外的图先不画：滚近（IntersectionObserver 触发）才渲染，且每批最多 3 张
+function lazyHarness(positions) {
+  const h = harness();
+  const observed = [];
+  let callback = null;
+  h.context.IntersectionObserver = class {
+    constructor(cb) { callback = cb; }
+    observe(node) { observed.push(node); }
+    unobserve(node) { const i = observed.indexOf(node); if (i >= 0) observed.splice(i, 1); }
+  };
+  h.context.window.innerHeight = 900;
+  h.context.window.setTimeout = (fn) => setImmediate(fn);
+  h.context.WeakMap = WeakMap;
+  const nodes = positions.map((top) => ({
+    ...mermaidNode(),
+    getBoundingClientRect: () => ({ top, bottom: top + 200, width: 600, height: 200 }),
+  }));
+  const container = withDiagram(null);
+  container.querySelectorAll = (selector) => (selector === '.mermaid' ? nodes : []);
+  const fire = (targets) => callback(targets.map((target) => ({ target, isIntersecting: true })));
+  return { h, nodes, container, observed, fire };
+}
+
+test('diagrams far below the viewport wait until they scroll near', async () => {
+  const { h, nodes, container, observed, fire } = lazyHarness([100, 400, 3000, 6000]);
+  await h.context.renderDetailMermaid(container);
+  await flush();
+  assert.equal(h.runs.length, 1);
+  // runs 里的数组来自 vm 作用域（另一 realm），逐项比较引用
+  assert.deepEqual([...h.runs[0].nodes], [nodes[0], nodes[1]], 'only the two near-viewport diagrams render at once');
+  assert.deepEqual(observed, [nodes[2], nodes[3]], 'the far ones are observed instead');
+  fire([nodes[2]]);
+  await flush();
+  assert.equal(h.runs.length, 2);
+  assert.deepEqual([...h.runs[1].nodes], [nodes[2]]);
+  assert.deepEqual(observed, [nodes[3]], 'a rendered diagram is no longer observed');
+});
+
+test('a collapsed (display:none) diagram is deferred, not rendered blind', async () => {
+  const { h, nodes, container, observed } = lazyHarness([0]);
+  nodes[0].getBoundingClientRect = () => ({ top: 0, bottom: 0, width: 0, height: 0 });
+  await h.context.renderDetailMermaid(container);
+  await flush();
+  assert.equal(h.runs.length, 0);
+  assert.deepEqual(observed, [nodes[0]]);
+});
+
+test('many diagrams scrolling into view at once render in batches of three', async () => {
+  const { h, container, fire, nodes } = lazyHarness([5000, 5300, 5600, 5900, 6200]);
+  await h.context.renderDetailMermaid(container);
+  await flush();
+  assert.equal(h.runs.length, 0, 'nothing is near the viewport yet');
+  fire(nodes);
+  for (let i = 0; i < 6; i++) await flush();
+  assert.equal(h.runs.length, 2);
+  assert.equal(h.runs[0].nodes.length, 3);
+  assert.equal(h.runs[1].nodes.length, 2);
+});
+
+test('without IntersectionObserver every diagram still renders immediately', async () => {
+  const h = harness();
+  const nodes = [0, 5000].map((top) => ({
+    ...mermaidNode(),
+    getBoundingClientRect: () => ({ top, bottom: top + 200, width: 600, height: 200 }),
+  }));
+  const container = withDiagram(null);
+  container.querySelectorAll = (selector) => (selector === '.mermaid' ? nodes : []);
+  await h.context.renderDetailMermaid(container);
+  assert.equal(h.runs.length, 1);
+  assert.deepEqual([...h.runs[0].nodes], nodes);
+});
+
 test('the page shells no longer ship KaTeX or Mermaid unconditionally', () => {
   for (const page of ['../docs/detail.html', '../docs/roadmap.html']) {
     const html = readFileSync(resolve(__dirname, page), 'utf8');

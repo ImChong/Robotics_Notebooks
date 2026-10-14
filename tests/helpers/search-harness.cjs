@@ -28,6 +28,8 @@ function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes
     window: {
       location: { hash: options.hash || '', search: options.search || '' },
       requestIdleCallback(fn) { idleCallbacks.push(fn); },
+      // 社区下拉经 main.js 的共享 link-graph 加载器取数（与首页 mini-graph 同一份）
+      RNLinkGraph: { ensure: () => fetchCommunity().then((r) => r.json()) },
     },
     setTimeout(fn, delay) { timers.set(++timerId, { fn, delay }); return timerId; },
     clearTimeout(id) { timers.delete(id); },

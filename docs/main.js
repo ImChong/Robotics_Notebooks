@@ -2520,12 +2520,111 @@
     return text.indexOf('$$') >= 0 || text.indexOf('\\[') >= 0 || text.indexOf('\\(') >= 0;
   }
 
+  // ── Mermaid 按视口分批渲染 ──
+  // 运动控制路线一页 33 张图，打开时一次全画会把主线程卡住数秒（弱机 20 秒以上）。
+  // 改为：视口附近的立即画；其余（含默认收起章节里的）滚近或展开时再画，每批最多几张。
+  // 不支持 IntersectionObserver 的环境退回原来的全量渲染。
+  var MERMAID_LAZY_MARGIN_PX = 800;
+  var MERMAID_LAZY_BATCH_SIZE = 3;
+  var _mermaidLazyObserver = null;
+  var _mermaidLazyContainerOf = typeof WeakMap === 'function' ? new WeakMap() : null;
+  // 正在渲染中的节点：章节展开的 toggle 补渲染与滚近触发可能同时到达，同一节点不并发跑两次 mermaid.run
+  var _mermaidRendering = typeof WeakSet === 'function' ? new WeakSet() : null;
+
+  function mermaidNodeRendering(node) {
+    return !!(_mermaidRendering && _mermaidRendering.has(node));
+  }
+
+  function mermaidLazySupported() {
+    return typeof IntersectionObserver === 'function' && !!_mermaidLazyContainerOf;
+  }
+
+  /** 节点是否在视口上下 MERMAID_LAZY_MARGIN_PX 内；无盒子（display:none）视为不在。 */
+  function mermaidNodeNearViewport(node) {
+    if (!node || typeof node.getBoundingClientRect !== 'function') return true;
+    var rect = node.getBoundingClientRect();
+    if (!rect.width && !rect.height) return false;
+    var viewportHeight = (typeof window !== 'undefined' && window.innerHeight) || 800;
+    return rect.bottom >= -MERMAID_LAZY_MARGIN_PX && rect.top <= viewportHeight + MERMAID_LAZY_MARGIN_PX;
+  }
+
+  function mermaidLazyObserver() {
+    if (_mermaidLazyObserver) return _mermaidLazyObserver;
+    _mermaidLazyObserver = new IntersectionObserver(function (entries) {
+      var byContainer = [];
+      for (var i = 0; i < entries.length; i++) {
+        var entry = entries[i];
+        if (!entry.isIntersecting) continue;
+        _mermaidLazyObserver.unobserve(entry.target);
+        var container = _mermaidLazyContainerOf.get(entry.target);
+        if (!container || mermaidNodeRendering(entry.target)) continue;
+        var group = null;
+        for (var gi = 0; gi < byContainer.length; gi++) {
+          if (byContainer[gi].container === container) { group = byContainer[gi]; break; }
+        }
+        if (!group) {
+          group = { container: container, nodes: [] };
+          byContainer.push(group);
+        }
+        group.nodes.push(entry.target);
+      }
+      for (var ci = 0; ci < byContainer.length; ci++) {
+        renderMermaidNodesInBatches(byContainer[ci].container, byContainer[ci].nodes);
+      }
+    }, { rootMargin: MERMAID_LAZY_MARGIN_PX + 'px 0px' });
+    return _mermaidLazyObserver;
+  }
+
+  /** 一次滚近多张图时分批画，批与批之间让出主线程。 */
+  function renderMermaidNodesInBatches(container, nodes) {
+    var queue = nodes.slice();
+    function next() {
+      if (!queue.length) return Promise.resolve();
+      var batch = queue.splice(0, MERMAID_LAZY_BATCH_SIZE);
+      return renderMermaidNodes(container, batch).then(function () {
+        if (!queue.length) return undefined;
+        return new Promise(function (resolve) { window.setTimeout(resolve, 0); }).then(next);
+      });
+    }
+    return next();
+  }
+
   function renderDetailMermaid(container) {
     if (!container) return Promise.resolve();
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return Promise.resolve();
+    if (!mermaidLazySupported()) return renderMermaidNodes(container, nodes);
+    var observer = mermaidLazyObserver();
+    var immediate = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      if (mermaidNodeRendering(node)) continue;
+      // 同一节点只归最近一次调用的容器管；重复 observe 同一目标是空操作
+      _mermaidLazyContainerOf.set(node, container);
+      if (mermaidNodeNearViewport(node)) {
+        observer.unobserve(node);
+        immediate.push(node);
+      } else {
+        observer.observe(node);
+      }
+    }
+    if (!immediate.length) return Promise.resolve();
+    return renderMermaidNodes(container, immediate);
+  }
+
+  /** 实际渲染：加载组件、恢复源码、mermaid.run，再补做标签溢出修正与放大绑定。 */
+  function renderMermaidNodes(container, nodes) {
+    if (!nodes.length) return Promise.resolve();
+    for (var ui = 0; ui < nodes.length; ui++) {
+      if (_mermaidLazyObserver) _mermaidLazyObserver.unobserve(nodes[ui]);
+      if (_mermaidRendering) _mermaidRendering.add(nodes[ui]);
+    }
+    function markDone() {
+      if (!_mermaidRendering) return;
+      for (var di = 0; di < nodes.length; di++) _mermaidRendering.delete(nodes[di]);
+    }
     return ensureMermaidLoaded().then(function () {
-      if (typeof window.mermaid === 'undefined') return;
+      if (typeof window.mermaid === 'undefined') { markDone(); return; }
       nodes.forEach(function (node) {
         var saved = node.getAttribute('data-mermaid-source');
         if (saved === null) {
@@ -2538,11 +2637,13 @@
       });
       initializeMermaidRenderer(getMermaidFontSizePx());
       return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+        markDone();
         patchMermaidSvgLabelOverflow(container);
         enhanceMermaidZoomTargets(container);
         bindMermaidZoom(container);
       });
     }).catch(function (error) {
+      markDone();
       console.warn('Mermaid 组件加载失败：', error);
     });
   }
@@ -4148,22 +4249,24 @@
   var _detailCommunityIndex = null;
   var _detailCommunityIndexPromise = null;
 
-  function buildHubRankingsIndex(rankings) {
+  // 开源标记与节点类型直接取 link-graph.json 的节点（与 hub-rankings.json 同一生成脚本、同一口径），
+  // 详情页不必再为这两个字段多下载 2.7 MB 的全站榜单。
+  function buildNodeAttributeIndex(nodes) {
     var pathToHasRepo = new Map();
     var detailIdToHasRepo = new Map();
     var pathToNodeType = new Map();
     var detailIdToNodeType = new Map();
-    var all = rankings && Array.isArray(rankings.all) ? rankings.all : [];
-    for (var hi = 0; hi < all.length; hi++) {
-      var hub = all[hi];
-      if (!hub) continue;
-      if (hub.id) {
-        if (hub.has_repo) pathToHasRepo.set(hub.id, true);
-        if (hub.type) pathToNodeType.set(hub.id, hub.type);
+    var list = Array.isArray(nodes) ? nodes : [];
+    for (var ni = 0; ni < list.length; ni++) {
+      var node = list[ni];
+      if (!node) continue;
+      if (node.id) {
+        if (node.has_repo) pathToHasRepo.set(node.id, true);
+        if (node.type) pathToNodeType.set(node.id, node.type);
       }
-      if (hub.detail_id) {
-        if (hub.has_repo) detailIdToHasRepo.set(hub.detail_id, true);
-        if (hub.type) detailIdToNodeType.set(hub.detail_id, hub.type);
+      if (node.detail_id) {
+        if (node.has_repo) detailIdToHasRepo.set(node.detail_id, true);
+        if (node.type) detailIdToNodeType.set(node.detail_id, node.type);
       }
     }
     return {
@@ -4203,15 +4306,7 @@
   function ensureDetailCommunityIndex() {
     if (_detailCommunityIndex) return Promise.resolve(_detailCommunityIndex);
     if (_detailCommunityIndexPromise) return _detailCommunityIndexPromise;
-    _detailCommunityIndexPromise = Promise.all([
-      ensureLinkGraphData(),
-      fetch('exports/hub-rankings.json').then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      }).catch(function () { return { all: [] }; })
-    ]).then(function (res) {
-      var data = res[0];
-      var rankings = res[1];
+    _detailCommunityIndexPromise = ensureLinkGraphData().then(function (data) {
       var pathToCommunity = new Map();
       var nodes = data && data.nodes ? data.nodes : [];
       for (var ni = 0; ni < nodes.length; ni++) {
@@ -4226,14 +4321,14 @@
         var c = communities[ci];
         if (c && c.id) communityLabel[c.id] = c.label || c.id;
       }
-      var hubIndex = buildHubRankingsIndex(rankings);
+      var attrIndex = buildNodeAttributeIndex(nodes);
       _detailCommunityIndex = {
         pathToCommunity: pathToCommunity,
         communityLabel: communityLabel,
-        pathToHasRepo: hubIndex.pathToHasRepo,
-        detailIdToHasRepo: hubIndex.detailIdToHasRepo,
-        pathToNodeType: hubIndex.pathToNodeType,
-        detailIdToNodeType: hubIndex.detailIdToNodeType
+        pathToHasRepo: attrIndex.pathToHasRepo,
+        detailIdToHasRepo: attrIndex.detailIdToHasRepo,
+        pathToNodeType: attrIndex.pathToNodeType,
+        detailIdToNodeType: attrIndex.detailIdToNodeType
       };
       return _detailCommunityIndex;
     }).catch(function () {
@@ -4248,6 +4343,12 @@
       return _detailCommunityIndex;
     });
     return _detailCommunityIndexPromise;
+  }
+
+  // 首页 mini-graph.js 与搜索区的社区下拉原先各自 fetch 一份 link-graph.json，
+  // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。
+  if (typeof window !== 'undefined') {
+    window.RNLinkGraph = { ensure: ensureLinkGraphData };
   }
 
   // 与 scripts/utils/community_labels.community_short_label 对齐：
@@ -7139,14 +7240,15 @@
     function ensureCommunityByPath() {
       if (_communityByPath) return Promise.resolve(_communityByPath);
       if (_communityByPathPromise) return _communityByPathPromise;
-      var controller = new AbortController();
-      var timeout = setTimeout(function () { controller.abort(); }, 30000);
-      _communityByPathPromise = fetch('exports/link-graph.json', { signal: controller.signal })
-        .then(function(r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.json();
-        })
+      // 复用全站共享的 link-graph 加载器（首页 mini-graph 同一份数据，只请求一次）。
+      // 共享请求不可中止，这里只限定本次等待：超时先按无社区信息出结果，下次搜索再等一次
+      var timeout;
+      var waitCap = new Promise(function (resolve) {
+        timeout = setTimeout(function () { resolve(null); }, 30000);
+      });
+      _communityByPathPromise = Promise.race([window.RNLinkGraph.ensure(), waitCap])
         .then(function(data) {
+          if (!data) throw new Error('link-graph timeout');
           var m = new Map();
           var nodes = data.nodes || [];
           for (var ni = 0; ni < nodes.length; ni++) {

@@ -49,5 +49,15 @@ test('a failed load is not cached and the next reader retries', async () => {
 
 test('detail modules keep no private graph fetch of their own', () => {
   const sites = source.split("fetch('exports/link-graph.json'").length - 1;
-  assert.equal(sites, 2, '只剩共享加载器与搜索块自带超时/取消的社区索引');
+  assert.equal(sites, 1, '只剩共享加载器；搜索社区下拉与 mini-graph.js 都经 window.RNLinkGraph 复用');
+  assert.ok(source.includes('window.RNLinkGraph = { ensure: ensureLinkGraphData };'), '共享加载器对 mini-graph.js 可见');
+  const miniGraph = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
+  assert.ok(miniGraph.includes('window.RNLinkGraph.ensure()'), 'mini-graph.js 优先复用共享加载器');
+});
+
+test('detail pages no longer download hub-rankings.json for has_repo / type', () => {
+  const start = source.indexOf('  function ensureDetailCommunityIndex(');
+  const end = source.indexOf('  function shortenCommunityLabel(');
+  assert.ok(start >= 0 && end > start);
+  assert.ok(!source.slice(start, end).includes('hub-rankings.json'), '两个字段改从 link-graph 节点取');
 });

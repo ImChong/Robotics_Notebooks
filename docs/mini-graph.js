@@ -128,7 +128,12 @@
 
   var TABLEAU10 = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac'];
 
-  fetch('exports/link-graph.json').then(function(r){ return r.json(); }).then(function(gd) {
+  // 与 main.js 搜索区的社区下拉共用同一份 link-graph.json（原先各自 fetch，首页一次加载请求两遍 9 MB）；
+  // 共享数据只读，下面只复制出预览子图再交给力模拟
+  var graphDataPromise = (window.RNLinkGraph && typeof window.RNLinkGraph.ensure === 'function')
+    ? window.RNLinkGraph.ensure()
+    : fetch('exports/link-graph.json').then(function(r){ return r.json(); });
+  graphDataPromise.then(function(gd) {
     var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
     var communityFill = {};
     var communityLabelMap = {};

@@ -19,8 +19,10 @@ from utils.wiki_cache import wiki_stem_to_path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
 SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
-DOCS_OUTPUT = ROOT / "docs" / "exports" / "index-v1.json"
-DOCS_SITE_OUTPUT = ROOT / "docs" / "exports" / "site-data-v1.json"
+# 站点只读 site-catalog-v1.json + page-content/，index-v1 / site-data-v1（各约 45 MB，带正文）
+# 只留在 exports/ 供脚本与测试使用，不再镜像进 docs/ 随 Pages 部署
+DOCS_EXPORT_DIR = ROOT / "docs" / "exports"
+LEGACY_DOCS_MIRRORS = ("index-v1.json", "site-data-v1.json")
 SITEMAP_OUTPUT = ROOT / "docs" / "sitemap.xml"
 BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
 SCHEMA_DIR = ROOT / "schema"
@@ -1213,10 +1215,11 @@ def main() -> None:
 
     write_json(OUTPUT, payload)
     write_json(SITE_OUTPUT, site_payload)
-    write_json(DOCS_OUTPUT, payload)
-    write_json(DOCS_SITE_OUTPUT, site_payload)
     write_page_exports(site_payload, OUTPUT.parent)
-    write_page_exports(site_payload, DOCS_OUTPUT.parent)
+    write_page_exports(site_payload, DOCS_EXPORT_DIR)
+    # 本地旧产物清掉，预览目录与线上一致
+    for legacy in LEGACY_DOCS_MIRRORS:
+        (DOCS_EXPORT_DIR / legacy).unlink(missing_ok=True)
 
     sitemap_content = generate_sitemap(items, BASE_URL)
     SITEMAP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
@@ -1226,7 +1229,7 @@ def main() -> None:
 
     print(f"Wrote {OUTPUT} with {len(items)} items")
     print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
-    print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
+    print(f"Mirrored site catalog and page bodies to {DOCS_EXPORT_DIR}")
     print(
         f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page', 'entity_page'})} wiki/entity URLs"
     )
