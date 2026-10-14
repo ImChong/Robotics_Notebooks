@@ -4,6 +4,7 @@ tags: [paper, navigation, vln, objectnav, pointnav, agentic, embodied-ai, mobile
 status: complete
 updated: 2026-10-14
 arxiv: "2610.12126"
+project_id: supernav-agentic-navigation-any-task-any-scene
 project: https://zju3dv.github.io/SuperNav/
 related:
   - ../tasks/vision-language-navigation.md
