@@ -9,7 +9,7 @@ tags:
   - diffusion
   - shenlan
 status: complete
-updated: 2026-09-27
+updated: 2026-10-14
 related:
   - ./autonomous-driving-core-algorithms-series.md
   - ../methods/generative-world-models.md
@@ -21,10 +21,12 @@ related:
   - ../entities/paper-diffusiondrive.md
   - ../entities/paper-birdriver.md
   - ../entities/paper-mm-future.md
+  - ../entities/paper-qwen-drive-1-0.md
   - ../entities/paper-rise-adaptive-imagination-wam.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/papers/mm_future_arxiv_2609_20377.md
+  - ../../sources/papers/qwen_drive_1_0_arxiv_2609_00111.md
 summary: "深蓝AI《端到端自动驾驶：十大前沿算法盘点》技术地图：UniAD→VAD→DriveVLM→EMMA→GAIA-1→SparseDrive→Senna→MomAD→DriveTransformer→DiffusionDrive；每篇独立完整实体页。"
 ---
 
@@ -88,6 +90,10 @@ flowchart TB
 | 自适应想象调度 | [RISE（酷哇）](../entities/paper-rise-adaptive-imagination-wam.md) | v1 **91.5 PDMS** / v2 **90.8 EPDMS** | 部分开源 |
 | 多模态 joint WAM | [MM-Future](../entities/paper-mm-future.md) | v1 **94.0 PDMS** / v2 **91.5 EPDMS** | **待发布** |
 
+## 共享驾驶 VLM 延伸（论文与代码已公开）
+
+[Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md) 把 Qwen3.5-4B 的共享视觉语言表征接到 BEV 3D 感知和 flow-matching 轨迹规划，覆盖驾驶问答、感知与运动规划。它与上表按单一路线归类的 Top 10 并不完全同轴，可作为后续“统一驾驶 VLM”节点；推理 / 评测实现与权重可获取，训练代码未随官方仓库发布。NAVSIM、Waymo 与 PhysicalAI 分属不同协议，数值应按各指标单独解读。
+
 ## 与模块化专辑的关系
 
 | 专辑 | 焦点 | 入口 |
@@ -105,6 +111,7 @@ flowchart TB
 6. **要并行扩展** → [DriveTransformer](../entities/paper-drivetransformer.md)
 7. **要多模态实时生成规划** → [DiffusionDrive](../entities/paper-diffusiondrive.md)
 8. **要 joint WAM + 多假设 scene–action 对（NAVSIM）** → [MM-Future](../entities/paper-mm-future.md)（对照 [RISE](../entities/paper-rise-adaptive-imagination-wam.md) 的想象调度）
+9. **要共享 VLM + 显式 BEV 感知 + 轨迹生成** → [Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md)（权重、推理 / 评测代码已公开；训练代码未随仓库发布）
 
 ## 关联页面
 
@@ -124,6 +131,7 @@ flowchart TB
 - [S²-VLA](../entities/paper-s-squared-vla.md)
 - [M⁴World](../entities/paper-m4world.md)
 - [MMHU](../entities/paper-mmhu.md) — 驾驶人本 Behavior VQA / 运动基准（VLM 零样本仍难）
+- [Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md) — 共享 VLM、BEV 感知与规划专家
 
 ## 参考来源
 
