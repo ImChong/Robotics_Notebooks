@@ -443,7 +443,8 @@
           return {
             type: 'bar', orientation: 'h', name: t.name,
             y: labels, x: t.values, customdata: s.cats, marker: { color: t.color },
-            hovertemplate: '%{customdata}<br>' + (t.name ? t.name + '：' : '') + '%{x} ' + view.unit + '<extra></extra>'
+            hovertemplate: '%{customdata}<br>' + (t.name ? t.name + '：' : '') + '%{x} ' + view.unit +
+              (touch && s.links ? '<br><i>再点一次该条形跳转 →</i>' : '') + '<extra></extra>'
           };
         });
         // 社区配色图例用 HTML 网格：Plotly 图例在长纵轴标签旁换行不可控
@@ -632,7 +633,7 @@
 
       // 点击条形 / 节点跳到对应页面（hrefOf 为空则不跳转）。react 复用同一个图表元素，
       // 先清掉旧监听；只响应绘制它的视图，切到其他视图后点击不再跳转。
-      // 触屏甘特图：节点小而密，第一次轻点只弹出悬停提示，再点同一节点才跳转，避免误触。
+      // 触屏：第一次轻点只弹出悬停提示，再点同一节点 / 条形才跳转，避免看数据时误触跳走。
       // Plotly 一次轻点会先按 touchstart、再按浏览器模拟的 mousedown 各派发一次 click，后者忽略
       function bindChartLinks(gd, view, hrefOf) {
         gd.removeAllListeners('plotly_click');
@@ -646,15 +647,20 @@
           var pt = ev.points[0];
           var href = current === view && pt && hrefOf(pt);
           if (!href) return;
-          if (touch && view.kind === 'gantt') {
+          if (touch) {
             var type = ev.event && ev.event.type;
             if (type === 'touchstart') lastTouch = Date.now();
             else if (type === 'mousedown' && Date.now() - lastTouch < 1000) return;
-            if (!armed || armed.curveNumber !== pt.curveNumber || armed.pointNumber !== pt.pointIndex) {
-              armed = { curveNumber: pt.curveNumber, pointNumber: pt.pointIndex };
+            // 甘特图同一机构的各节点内容不同，须点同一节点；堆叠条形同一条上任意一段都算
+            var same = armed && (view.kind === 'gantt'
+              ? armed.curveNumber === pt.curveNumber && armed.pointNumber === pt.pointIndex
+              : armed.href === href);
+            if (!same) {
+              armed = { curveNumber: pt.curveNumber, pointNumber: pt.pointIndex, href: href };
               Plotly.Fx.hover(gd, [armed]);
               return;
             }
+            armed = null; // 返回键从往返缓存恢复本页时，不能一点就跳
           }
           window.location.href = href;
         });
