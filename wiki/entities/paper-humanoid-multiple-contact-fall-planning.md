@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: humanoid-multiple-contact-fall-planning
-paper: https://doi.org/10.1109/IROS.2015.7353756
+doi: 10.1109/IROS.2015.7353756
 tags: [paper, humanoid, fall-safety, contact-planning, trajectory-optimization]
 status: complete
 updated: 2026-10-14
