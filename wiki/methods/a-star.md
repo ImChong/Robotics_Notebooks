@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, search, navigation, graph-search, mobile-robot]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-14
 related:
   - ./dwa.md
   - ./smooth-navigation-path-generation.md
@@ -139,6 +139,7 @@ flowchart TB
 - [导航规划方法对比：全局·局部·平滑](../comparisons/mobile-robot-navigation-planning-methods.md) — 本页是其全局搜索层，含与 DWA/平滑的分层选型
 - [Micromouse](../concepts/micromouse.md) — 迷宫格图上 Flood Fill / A\* 族的竞赛压缩场景
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 开销地理学习 costmap 后仍用 A\* 做公里级越野 LRP
+- [Terrain-Aware UGV DEM + LiDAR 路径规划](../entities/paper-terrain-aware-ugv-dem-local-planning.md) — 用 SRTM DEM/A\* 提供大范围路线，再用 LiDAR 处理源地图分辨率以下的局部避障与修正。
 
 ## 参考来源
 
