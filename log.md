@@ -180,6 +180,13 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-13] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（5947 节点）
+
+- **触发：** 用户要求更新首页 GIF
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（82 frames / 1.99 MB；图谱 **5947** 节点 / **51954** 边）
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-10-13] ingest | sources/papers/geomvla_arxiv_2609_13812.md — GeomVLA论文/项目页、3D几何一致VLA方法、基准与开源链接核查；建立实体页并关联VLA总览
 
 ## [2026-10-13] ingest | EGalahad sim2real 文档、排行榜与 GRIT 策略节点
