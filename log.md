@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | CodeGraph — 归档官方仓库与项目页，整理本地静态代码图、MCP 查询、增量同步及对机器人软件仓库的适用边界
+
 ## [2026-10-14] ingest | DSLC 多机器人隐蔽执行器攻击下的分布式安全学习控制
 
 - 收录 arXiv:2609.06896 与 IEEE Transactions on Robotics Early Access 论文；归纳 attacker–actor–critic + DMPC 方法、1000 机器人仿真、轮式机器人实测及适用边界。
