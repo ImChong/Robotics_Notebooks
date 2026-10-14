@@ -6378,6 +6378,20 @@
   var pageDataRequests = new Map();
   var loadedPageCatalog = null;
   var PAGE_CATALOG_URL = 'exports/site-catalog-v1.json';
+  // 目录瘦身（scripts/export_minimal.py write_page_exports）：条目不再重复写 id（由键还原），
+  // related / source_links / paper_notebook_links 只随当前页的正文 JSON 下发，读正文时并回条目。
+  var BODY_ONLY_FIELDS = ['related', 'source_links', 'paper_notebook_links'];
+
+  function hydrateCatalogIds(catalog) {
+    var detailPages = catalog && catalog.pages && catalog.pages.detail_pages;
+    if (!detailPages) return catalog;
+    for (var id in detailPages) {
+      if (!Object.prototype.hasOwnProperty.call(detailPages, id)) continue;
+      var entry = detailPages[id];
+      if (entry && typeof entry === 'object' && !entry.id) entry.id = id;
+    }
+    return catalog;
+  }
 
   function requestPageJson(url, validate) {
     if (pageDataRequests.has(url)) return pageDataRequests.get(url);
@@ -6422,6 +6436,7 @@
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
     }).then(function (catalog) {
+      hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
       var page = requestedContentPage(catalog, kind, requestedId);
       if (!page || (kind === 'detail' && page.type === 'roadmap_page')) return catalog;
@@ -6434,7 +6449,12 @@
       }).then(function (body) {
         // Do not hydrate the shared catalog: previews and other entries stay metadata-only.
         var detailPages = Object.assign({}, catalog.pages.detail_pages);
-        detailPages[page.id] = Object.assign({}, page, { content_markdown: body.content_markdown });
+        var hydratedPage = Object.assign({}, page, { content_markdown: body.content_markdown });
+        for (var bi = 0; bi < BODY_ONLY_FIELDS.length; bi++) {
+          var bodyField = BODY_ONLY_FIELDS[bi];
+          if (Object.prototype.hasOwnProperty.call(body, bodyField)) hydratedPage[bodyField] = body[bodyField];
+        }
+        detailPages[page.id] = hydratedPage;
         return Object.assign({}, catalog, { pages: Object.assign({}, catalog.pages, { detail_pages: detailPages }) });
       }).catch(function (error) {
         // A deployment may replace the catalog between the two requests. Refresh once.

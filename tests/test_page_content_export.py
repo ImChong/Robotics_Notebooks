@@ -27,6 +27,9 @@ def payload():
                     "path": "wiki/methods/π0-policy.md",
                     "summary": "策略摘要",
                     "content_markdown": "# π0\n\n公式 $x$\n```mermaid\ngraph TD\nA-->B\n```",
+                    "related": ["wiki/concepts/vla.md"],
+                    "source_links": [{"url": "https://arxiv.org/abs/2410.24164", "label": "π0 论文"}],
+                    "paper_notebook_links": [{"url": "https://example.org/pi0.html", "label": "笔记"}],
                 },
                 "roadmap-motion-control": {
                     "id": "roadmap-motion-control",
@@ -49,6 +52,17 @@ def test_split_round_trip_preserves_unicode_empty_body_routes_and_aliases(tmp_pa
     catalog = json.loads((source / "site-catalog-v1.json").read_text())
     assert "content_markdown" not in json.dumps(catalog)
     assert catalog["pages"]["page_aliases"] == payload["pages"]["page_aliases"]
+    # 目录只留元数据：id 由键还原，related / source_links / paper_notebook_links 随正文下发
+    slim = catalog["pages"]["detail_pages"]["wiki-methods-π0-policy"]
+    assert set(slim) == {"title", "path", "summary", "content_url"}
+    body = json.loads((source / slim["content_url"].removeprefix("exports/")).read_text())
+    assert body["id"] == "wiki-methods-π0-policy"
+    assert body["related"] == ["wiki/concepts/vla.md"]
+    assert body["source_links"][0]["url"] == "https://arxiv.org/abs/2410.24164"
+    assert body["paper_notebook_links"][0]["label"] == "笔记"
+    assert "paper_notebook_links" not in json.loads(
+        (source / catalog["pages"]["detail_pages"]["roadmap-motion-control"]["content_url"].removeprefix("exports/")).read_text()
+    ), "条目没有的字段正文里也不出现"
 
 
 def test_hashes_are_stable_and_rebuild_prunes_only_generated_bodies(tmp_path, payload):

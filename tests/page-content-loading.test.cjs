@@ -154,6 +154,22 @@ test('real page startup offers retry/source and renders after the retry button i
   assert.equal(h.renders[0].pages.detail_pages['entity-demo'].content_markdown, body().content_markdown);
 });
 
+test('slim catalog: ids come from keys and body-only link fields are merged into the loaded page', async () => {
+  const slimCatalog = catalog();
+  const entry = slimCatalog.pages.detail_pages['entity-demo'];
+  delete entry.id;
+  const bodyWithLinks = { ...body(), related: ['wiki/concepts/x.md'], source_links: [{ url: 'https://a.example', label: 'A' }] };
+  const h = harness(async (url) => response(url === catalogUrl ? slimCatalog : bodyWithLinks));
+  const data = await h.load('detail', 'entity-demo');
+  const page = data.pages.detail_pages['entity-demo'];
+  assert.equal(page.id, 'entity-demo');
+  assert.deepEqual(JSON.parse(JSON.stringify(page.related)), ['wiki/concepts/x.md']);
+  assert.equal(page.source_links[0].url, 'https://a.example');
+  assert.equal(page.paper_notebook_links, undefined, 'a field absent from the body stays absent');
+  assert.equal(h.context.loadedPageCatalog.pages.detail_pages['entity-demo'].id, 'entity-demo', 'catalog entries get their id for list/preview code paths');
+  assert.equal(h.context.loadedPageCatalog.pages.detail_pages['entity-demo'].related, undefined, 'the shared catalog stays metadata-only');
+});
+
 function installRouting(context) {
   vm.runInContext(source.slice(source.indexOf('  function detailHref('), source.indexOf('  function latestNodeHref(')), context);
   vm.runInContext(source.slice(source.indexOf('  function moduleHref('), source.indexOf('  function unescapeMarkdownEscapes(')), context);

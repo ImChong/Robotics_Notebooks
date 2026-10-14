@@ -12,6 +12,8 @@ import re
 import sys
 from pathlib import Path
 
+from export_minimal import BODY_ONLY_FIELDS, CATALOG_DROPPED_FIELDS
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EXPORTS = REPO_ROOT / "exports"
 DOCS_EXPORTS = REPO_ROOT / "docs" / "exports"
@@ -55,10 +57,15 @@ def validate_page_exports(source_dir: Path, mirror_dir: Path) -> int:
             body.get("version") != "v1"
             or body.get("id") != page_id
             or not isinstance(body.get("content_markdown"), str)
-            or "content_markdown" in page
+            or any(key in page for key in CATALOG_DROPPED_FIELDS)
         ):
             raise ValueError(f"{page_id}: 正文字段契约不正确")
+        # 目录键 + 正文 JSON 携带的字段合起来必须能无损还原完整条目
+        page["id"] = page_id
         page["content_markdown"] = body["content_markdown"]
+        for key in BODY_ONLY_FIELDS:
+            if key in body:
+                page[key] = body[key]
         expected_files.add(filename)
     if catalog != original:
         raise ValueError("拆分后不能无损重建完整站点数据")
