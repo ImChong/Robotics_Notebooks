@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: ethercat-virtual-slave-sim
-tags: [ethercat, fieldbus, open-source, sim, embedded, realtime]
+tags: [ethercat, fieldbus, open-source, sim, embedded, realtime, independent-maintainer]
 status: draft
 updated: 2026-10-14
 related:
