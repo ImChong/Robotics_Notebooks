@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-10-14
+updated: 2026-10-15
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -38,6 +38,7 @@ related:
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
   - ../entities/paper-kiwi-kinematic-interface-wild.md
+  - ../entities/paper-gaussianimate.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
@@ -52,6 +53,8 @@ sources:
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/htd_refine_arxiv_2605_26879.md
   - ../../sources/papers/dirtymocap_arxiv_2609_19927.md
+  - ../../sources/papers/gaussianimate_arxiv_2604_08547.md
+  - ../../sources/sites/gaussianimate.md
 ---
 
 # Motion Retargeting Pipeline（动作重定向流水线）
@@ -132,6 +135,7 @@ flowchart TD
 - **2D→3D 关键点提升（非 SMPL）：** **[FMPose3D](../entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)** 用 **Flow Matching** 从 2D 关节生成 **3D 关键点多假设** 再 RPEA 聚合；**已集成 DeepLabCut** 动物管线，适合「DLC 2D → 稀疏 3D 骨架 → IK/重定向」链路，推理比扩散 lifter 快一个数量级，但需自行映射到机器人骨架拓扑。
 - **生物力学单目源（非默认）：** [OpenCap Monocular](../entities/paper-opencap-monocular.md) 输出 OpenSim `.trc`/`.mot` 与关节力矩/GRF，面向临床动力学；接入机器人栈前需骨架映射与坐标对齐，通常不如 GVHMR→GMR 直接。
 - **无序稀疏 marker 重建**：[DirtyMoCap](../entities/paper-dirtymocap-robust-motion-capture.md) 在原始光学动捕进入骨架映射前，将布局未知、噪声和缺失的 marker 转为固定身体代理锚点并拟合 SMPL-H；它处理的是上游人体重建，不直接输出机器人动作，也暂未提供可运行代码。
+- **4D 角色资产前处理（图形学相邻方向）：** [GaussiAnimate](../entities/paper-gaussianimate.md) 从重建后的 4DGS / 网格序列提取 Skelebones 并用 PartMM 驱动新动作；它产出的是可驱动角色资产，不是机器人关节轨迹，进入本管线仍需完成重定向与物理筛选。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 
 ### 2. 骨架拓扑与 DoF 映射（Skeleton Mapping）
