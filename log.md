@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | sources/blogs/anthropic_redesigning_source_control_2026-10-13.md — 归档 Anthropic Scion 内部版本控制案例，并补充 agentic coding 软件工程基础设施瓶颈
+
 ## [2026-10-13] lint | 全量 lint 清零：10 页补「与其他工作对比」/「结论」与知识链枢纽回链（13 条信息型预警）；6 个 stale 页复核（sim-vs-real-eval-gap 补 Fidelity Gap 证据，FluxVLA 引用页仅作者单位变更，更新 updated）
 
 ## [2026-10-14] ingest | Atomic Machines / Matter Compiler — 归档官方制造系统资料、伯克利研讨会摘要与 PrimeSwitch 证据边界
