@@ -61,11 +61,18 @@ L5 的表述强调验证和控制变量；仅仅换了程序或得到一次更�
 - README 称其与一篇 accompanying paper 对齐，但当前入口没有直接给出可辨识的论文标题或 PDF；此处仅收录可核查的仓库与目录，不另外虚构论文实体。
 - 需要判断单项方法是否真正实现递归改进时，应回到原论文检查物理反馈、更新保留与继承、验证器独立性、跨任务评估和资源预算等证据。
 
+## 关联页面
+
+- [Physical RSI 1.0（HKU MMLab × Kinetix AI）](./physical-rsi.md) — 同名但不同项目的具体系统。
+- [RoboDojo](./robodojo.md) — 项目地图中的机器人操作评测基准。
+- [HarnessPAI](./paper-harnesspai.md) 与 [Harness VLA](./paper-harness-vla.md) — 相关 harness 研究。
+- [RSI 四 tier 五 pushes](../queries/rsi-four-tier-five-pushes.md) — RSI 分类与选型框架。
+
 ## 同名项目消歧
 
 本页对应 **SAIL Research Lab 的研究地图仓库**。香港大学 MMLab × Kinetix AI 的 [Physical RSI 1.0](./physical-rsi.md) 是另一具体系统与项目页，名称相似但主体、材料和主张均不同；不可将两者的论文、榜单成绩或开源状态混为一谈。
 
-## 来源
+## 参考来源
 
 - [SAIL Physical RSI 项目归档](../../sources/sites/sail-physical-rsi-research-map.md)
 - [项目 README](https://github.com/SAIL-Research-Lab/Physical-RSI#readme)
