@@ -429,6 +429,7 @@
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
 - [COMPASS](wiki/entities/compass.md) — COMPASS**（*Cross-embOdiment Mobility Policy via ResiduAl RL and Skill Synthesis*，[arXiv:2502.16372 `📅unknown` `[entity_page]`
 - [ControlIt!（Whole-Body Operational Space Control 软件框架）](wiki/entities/controlit.md) — ControlIt!**（*A Software Framework for Whole-Body Operational Space Control*；[arXiv:1506.01075](ht `📅unknown` `[entity_page]`
+- [OpenMuse（CopilotKit）](wiki/entities/copilotkit-openmuse.md) — OpenMuse** 是 CopilotKit 开源的跨端个人代理应用：用户给出目标后，系统可以规划并执行多步工作，展示进度、请求补充输入或审阅行动，并返回可检查的结果。 `📅unknown` `[entity_page]`
 - [CoppeliaSim](wiki/entities/coppeliasim.md) — CoppeliaSim](https://github.com/CoppeliaRobotics/coppeliaSimLib) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](wiki/entities/cosmos-3.md) — Cosmos 3**（2026-06，arXiv:2606.02800，[项目页](https://research.nvi `📅unknown` `[entity_page]`
 - [Cosmos Cookbook（WFM 配方站）](wiki/entities/cosmos-cookbook.md) — Cosmos Cookbook**（文档站，[GitHub](https `📅unknown` `[entity_page]`
@@ -1888,7 +1889,7 @@
 - [GR00T Drifting Action Head：单步 VLA 速度–成功率审计](wiki/entities/paper-groot-drifting-action-head.md) — One-Step Drifting Action Heads for GR00T N1.7**（[arXiv:2609.18108](https://arxiv.org/abs/2609.1810 `📅unknown` `[entity_page]`
 - [Grounded Action Model（GAM）：3D Grounding 作为机器人基础](wiki/entities/paper-grounded-action-model-3d-grounding.md) — Grounded Action Model（GAM）**（*Grounded Action Model: 3D Grounding as a Foundation for Robotics*，[a `📅unknown` `[entity_page]`
 - [Grounded-Dreamer：带物理验证的世界模型合成示范](wiki/entities/paper-grounded-dreamer.md) — Grounded-Dreamer**（arXiv:2610.13164，[项目页](https://fffstrong.gi `📅unknown` `[entity_page]`
-- [GroundingPI：基于视觉基元的物理智能 Grounding 基础模型 机 构： XPeng Inc. 、 Peking University 、 The University of Hong Kong 、 UC Berkeley 、 Princeton University、NUS、Tsinghua University、HKUST (GZ) 等](wiki/entities/paper-groundingpi.md) — GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives**（ `📅unknown` `[entity_page]`
+- [GroundingPI：基于视觉基元的物理智能 Grounding 基础模型](wiki/entities/paper-groundingpi.md) — GroundingPI 是一个 4B 视觉 grounding 基础模型，以共享词表中的离散坐标 token 表示点和边界框，并将专门的感知能力迁移到机器人操作与自动驾驶视觉任务。 `📅unknown` `[entity_page]`
 - [GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来](wiki/entities/paper-gsr-paravla.md) — Grounded Semantic Re-binding（GSR）**（arXiv:2608.02497，[代码](http `📅unknown` `[entity_page]`
 - [GTA-2（arXiv:2609.09808）](wiki/entities/paper-gta-2.md) — GTA-2**（[GTA-2: A Multi-VLM Framework for Synthesizing Robot Manipulation Skills via Grounded Task `📅unknown` `[entity_page]`
 - [GVLA：夹爪感知的视觉–语言–动作模型](wiki/entities/paper-gvla-gripper-aware-vla.md) — GVLA**（*Gripper-aware Vision Language Action Models*，[arXiv:2608.24603](https://arxiv.org/abs/2608 `📅unknown` `[entity_page]`

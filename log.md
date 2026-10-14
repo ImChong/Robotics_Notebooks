@@ -180,6 +180,17 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | GroundingPI — 从论文、项目页和官方仓库整理视觉 grounding 能力与复现边界
+
+- 核验官方项目公开了 grounding 模型权重、推理/训练/评测代码；权重是视觉 grounding checkpoint，不是直接执行机器人动作的通用策略。
+- 详情页采用官方 README 中的 Hugging Face 模型路径，并补入 arXiv 与 Hugging Face 论文页面。
+
+## [2026-10-14] ingest | OpenMuse — 归档 MIT 公开源码，并整理其任务代理架构与机器人上层应用边界
+
+- 开源结论：GitHub 源码已公开，MIT；项目 README 标注 Alpha。
+- 关键页：sources/repos/copilotkit-openmuse.md、wiki/entities/copilotkit-openmuse.md；在 Hermes Agent 节点增加关联入口。
+- 机器人关联：可参考高层任务代理、浏览器/文件工具与行动审阅；项目不提供 ROS、感知或实时控制。
+
 ## [2026-10-14] ingest | Natura-1 与舞肌 Wuji Hand 2 硬件协作补充
 
 - 更新既有 Natura-1 来源归档与实体页，不新建重复项目节点。
