@@ -180,6 +180,17 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | Natura-1 与舞肌 Wuji Hand 2 硬件协作补充
+
+- 更新既有 Natura-1 来源归档与实体页，不新建重复项目节点。
+- 记录舞肌科技提供灵巧手硬件支持训练与部署，并链接官方产品手册；明确该硬件合作不代表 Natura-1 模型、权重、训练数据或部署代码开放。
+- Wuji Description、遥操作和 SDK 页面仅作为舞肌公开硬件生态参考，未将其误认作 Natura-1 已确认使用的软件栈。
+
+## [2026-10-14] ingest | DirtyMoCap — 无序光学 marker 到 SMPL-H 的鲁棒重建
+
+- 收录 arXiv:2609.19927 及 SIGGRAPH Asia 2026 官方项目页信息，梳理代理锚点、滑窗跟踪、可微 Gauss–Newton 和评测边界。
+- 官方仓库目前仍为待发布占位、HKMALA-Motion 数据 Coming soon；已在归档和实体页注明不可复现/下载状态，并接入动作重定向知识链。
+
 ## [2026-10-14] ingest | CodeGraph — 归档官方仓库与项目页，整理本地静态代码图、MCP 查询、增量同步及对机器人软件仓库的适用边界
 
 ## [2026-10-14] ingest | DSLC 多机器人隐蔽执行器攻击下的分布式安全学习控制
