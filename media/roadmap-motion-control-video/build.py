@@ -398,9 +398,10 @@ def assemble(total, segs, audio_parts, chaps, subs, name):
         m += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={round(st * 1000 / FPS)}", f"END={round(en * 1000 / FPS)}", f"title={nm}"]
     meta.write_text("\n".join(m) + "\n", encoding="utf-8")
     mp4 = OUT / f"{name}.mp4"
+    # 帧率用 fps 滤镜而非输出端 -r（ffmpeg 7 下 -r 与 -t 同用会丢掉末尾一段画面）；按 BT.709 转换并写明色彩标记
     cmd = [ffmpeg_exe(), "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", str(wav),
            "-i", str(meta), "-map", "0:v", "-map", "1:a", "-map_metadata", "2", "-map_chapters", "2",
-           "-r", str(FPS), "-vf", "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
+           "-vf", f"fps={FPS},scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
            "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "22",
            "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv",
            "-g", str(FPS * 60), "-c:a", "aac", "-b:a", "48k", "-ac", "1",
