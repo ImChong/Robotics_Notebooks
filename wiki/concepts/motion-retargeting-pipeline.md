@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-10-12
+updated: 2026-10-14
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-pear-pixel-aligned-expressive-hmr.md
   - ../entities/paper-opencap-monocular.md
   - ../entities/paper-mamma-markerless-motion-capture.md
+  - ../entities/paper-dirtymocap-robust-motion-capture.md
   - ../entities/easymocap.md
   - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../entities/paper-beyondretarget-monocular-humanoid.md
@@ -50,6 +51,7 @@ sources:
   - ../../sources/papers/rmr_iros_2025.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/htd_refine_arxiv_2605_26879.md
+  - ../../sources/papers/dirtymocap_arxiv_2609_19927.md
 ---
 
 # Motion Retargeting Pipeline（动作重定向流水线）
@@ -129,6 +131,7 @@ flowchart TD
 - **绕过显式 SMPL 中间态（端到端）**：[BeyondRetarget](../entities/paper-beyondretarget-monocular-humanoid.md) 从单目 RGB 直接学 **robot-oriented 共享 motion 特征** 再 **多机 decode + contact refine**，推理期不经过「GVHMR/WHAM → GMR/NMR」两阶段；与上图 **A3→N→T→…** 经典链路并列，而非替换 MoCap 清洗段。
 - **2D→3D 关键点提升（非 SMPL）：** **[FMPose3D](../entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md)** 用 **Flow Matching** 从 2D 关节生成 **3D 关键点多假设** 再 RPEA 聚合；**已集成 DeepLabCut** 动物管线，适合「DLC 2D → 稀疏 3D 骨架 → IK/重定向」链路，推理比扩散 lifter 快一个数量级，但需自行映射到机器人骨架拓扑。
 - **生物力学单目源（非默认）：** [OpenCap Monocular](../entities/paper-opencap-monocular.md) 输出 OpenSim `.trc`/`.mot` 与关节力矩/GRF，面向临床动力学；接入机器人栈前需骨架映射与坐标对齐，通常不如 GVHMR→GMR 直接。
+- **无序稀疏 marker 重建**：[DirtyMoCap](../entities/paper-dirtymocap-robust-motion-capture.md) 在原始光学动捕进入骨架映射前，将布局未知、噪声和缺失的 marker 转为固定身体代理锚点并拟合 SMPL-H；它处理的是上游人体重建，不直接输出机器人动作，也暂未提供可运行代码。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 
 ### 2. 骨架拓扑与 DoF 映射（Skeleton Mapping）
