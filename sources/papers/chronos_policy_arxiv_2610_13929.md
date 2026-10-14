@@ -10,8 +10,9 @@
 - **HTML：** https://arxiv.org/html/2610.13929v1
 - **版本：** v1，2026-10，cs.RO
 - **项目页：** https://changhaowang.github.io/chronospolicy/（归档见 [chronospolicy-github-io.md](../sites/chronospolicy-github-io.md)）
-- **代码：** 截至 2026-10-12 未发布（项目页 Code 标 “Coming soon”，论文未给仓库）
+- **代码：** 截至 2026-10-14 未发布（项目页 Code 标 “Coming soon”，论文未给仓库）
 - **入库日期：** 2026-10-12
+- **最近核查日期：** 2026-10-14（项目页现已链接 arXiv；代码仍未发布）
 - **读取范围：** arXiv HTML 正文与表格（经 WebFetch 抽取）；附录细节未逐页核对。
 
 ## 论文要解决的问题
@@ -38,7 +39,7 @@
 
 ## 复现与解释边界
 
-- 代码、权重、数据均未发布；论文与项目页互相矛盾之处：项目页仍标 Paper “Coming soon”，而 arXiv 已有 v1。
+- 截至 2026-10-14，代码、权重、数据均未发布；项目页已由 Paper “Coming soon” 更新为 arXiv 链接。
 - 固定动作频率假设仍在；可变控制频率为后续工作。真机试验次数少，部分仿真标准差大。
 - 真机评分含半分，不能与二值成功率直接比较。
 
