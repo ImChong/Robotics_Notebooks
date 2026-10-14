@@ -18,20 +18,20 @@
 <path d="M154,207 L213,221 L247,230 L287,231 L335,261 L375,300 L437,311 L488,344 L531,347 L568,374 L620,391 L667,409 L713,424" stroke="#b99bff" stroke-width="2.5" fill="none" opacity="0.75"/>
 <text class="sm" x="250" y="585" fill="#b99bff">扩散：多步随机去噪，路径弯曲</text></g>
 <g data-s="3">
-<path d="M124,438 L710,110" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M78,409 L707,374" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M60,134 L768,98" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M123,153 L710,110" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M146,193 L673,137" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M154,207 L728,161" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M103,252 L746,163" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M112,265 L695,169" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
 <path d="M108,271 L685,203" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M205,317 L665,464" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M118,380 L728,161" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M171,297 L731,456" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M146,193 L746,163" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M103,252 L705,422" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M60,134 L695,169" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M47,274 L700,472" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M112,265 L673,137" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M123,153 L696,377" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M116,326 L768,98" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
-<path d="M154,207 L713,424" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M47,274 L707,374" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M171,297 L696,377" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M205,317 L705,422" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M116,326 L713,424" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M118,380 L731,456" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M78,409 L665,464" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
+<path d="M124,438 L700,472" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.9"/>
 <text class="sm" x="250" y="545" fill="#00d4ff">流匹配：学速度场，路径接近直线 → 少步积分</text></g>
 <circle cx="124" cy="438" r="7" fill="#a9c9da"/>
 <circle cx="78" cy="409" r="7" fill="#a9c9da"/>

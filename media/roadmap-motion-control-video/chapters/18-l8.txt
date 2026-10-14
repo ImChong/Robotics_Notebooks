@@ -13,7 +13,7 @@
 <div class='card' data-s='3'><h3>机器人状态 → 嵌入</h3><p>小 MLP / 线性层投影到同一维度；无空间 patch 结构，维度低、频率高，常作动作头的直接条件</p></div>
 </div>
 <div class='flow' data-s='4' style='justify-content:center;margin-top:40px'>
-<div class='n'><b>所有 token</b>同一维度的序列</div><div class='ar'>→</div>
+<div class='n'><b>所有 token</b>同一维度 + 位置编码</div><div class='ar'>→</div>
 <div class='n'><b>Transformer</b>Self / Cross-Attention · MLP · Residual</div><div class='ar'>→</div>
 <div class='n'><b>上下文表征</b>→ L9 动作头</div>
 </div>
@@ -21,8 +21,8 @@
 0| 第一步，任何输入都先变成一串向量，也就是 token。
 1| 图像被切成一个个小块，比如十六乘十六像素的 patch，每一块经过线性投影，变成一个视觉 token。这就是 Vision Transformer，ViT 的做法。
 2| 语言被切成子词，每个子词查表，得到一个文本 token。
-3| 机器人状态，比如关节角和 IMU，通常用一个小的 MLP 或线性层，投影成和其它 token 同样维度的嵌入。它没有空间上的 patch 结构，维度低、频率高，常常作为动作头的直接条件输入。
-4| 所有 token 进入同一个 Transformer，输出融合了上下文的表征，交给下一层的动作头。
+3| 机器人状态，比如关节角和 IMU，通常用一个小的多层感知机 MLP 或线性层，投影成和其它 token 同样维度的嵌入。它没有空间上的 patch 结构，维度低、频率高，常常作为动作头的直接条件输入。
+4| 所有 token 再加上位置编码，告诉网络它在图里、句子里或时间上的位置，因为注意力本身不分先后；然后进入同一个 Transformer，输出融合了上下文的表征，交给下一层的动作头。
 
 ## slide: tag=L8; title=注意力：用 Q 去匹配 K，按匹配度加权 V; src=roadmap/motion-control.md §L8 自测题 · wiki/concepts/transformer.md · arXiv:1706.03762
 <div class='cols w46'>
@@ -37,7 +37,7 @@
 0| Transformer 的核心是注意力。每个 token 通过三个线性投影，得到三个向量：查询 Q、键 K、值 V。
 1| 用 Q 去和所有的 K 做点积，得到相关度分数；除以根号 d k，再做 softmax，变成一组加起来等于一的权重；最后按这组权重，对所有的 V 做加权平均。
 2| 所以，注意力矩阵的第 i 行，就是第 i 个 token 对所有 token 的关注权重。左图里的数字只是示意。
-3| 为什么要除以根号 d k？因为点积的方差会随着维度 d k 增长；不缩放的话，softmax 很容易饱和成接近独热的分布，梯度变得很小，训练就不稳定。
+3| 为什么要除以根号 d k？因为点积的方差会随着维度 d k 增长；不缩放的话，softmax 很容易饱和成接近独热的分布，几乎所有权重都压到一个 token 上，梯度变得很小，训练就不稳定。
 
 ## slide: tag=L8; title=自注意力 vs 交叉注意力，以及 Transformer block; src=roadmap/motion-control.md §L8 自测题 · wiki/concepts/multi-head-attention.md · wiki/formalizations/cross-modal-attention.md
 <div class='cols'>
@@ -49,8 +49,8 @@
 <div class='col'>
 <div class='card' data-s='2'><h3>Multi-Head</h3><p>多组 QKV 并行，各自关注不同关系后拼接</p></div>
 <div class='flow v' data-s='3' style='gap:6px'>
-<div class='n' style='width:640px'><b>x → LayerNorm → Multi-Head Attention</b></div><div class='ar'>↓ + x（残差）</div>
-<div class='n' style='width:640px'><b>LayerNorm → MLP</b>逐 token 前馈</div><div class='ar'>↓ + x（残差）</div>
+<div class='n' style='width:640px'><b>x → LayerNorm → Multi-Head Attention</b></div><div class='ar'>↓ + x（残差）= h</div>
+<div class='n' style='width:640px'><b>LayerNorm → MLP</b>逐 token 前馈</div><div class='ar'>↓ + h（残差）</div>
 </div>
 <div class='card' data-s='4'><h3>VLM</h3><p>视觉编码器 token 接入语言模型——VLA 的“理解”骨干（π0 用 PaliGemma）</p></div>
 </div>
@@ -59,7 +59,7 @@
 0| 注意力有两种用法。自注意力：Q、K、V 都来自同一个序列，序列内部的 token 互相看。交叉注意力：Q 来自一个序列，比如带噪声的动作 token；K 和 V 来自另一个序列，比如视觉语言模型输出的 token。
 1| VLA 的动作头，为什么常用交叉注意力去读视觉语言模型？因为这样，动作生成网络可以保持较小、单独以高频运行，同时按需去“查询”语义和视觉信息。
 2| 多头注意力，是多组 QKV 并行，各自关注不同的关系，最后拼接起来。
-3| 一个 Transformer block 的结构是：层归一化、多头注意力、残差相加；再层归一化、MLP、残差相加。很多个 block 堆叠起来，就是 Transformer。
+3| 一个 Transformer block 的结构是：先层归一化，把每个 token 的数值拉回统一尺度，再做多头注意力，然后残差相加，也就是把输入原样加回输出；再层归一化、MLP、残差相加。很多个 block 堆叠起来，就是 Transformer。
 4| 视觉语言模型 VLM，就是把视觉编码器的 token 接入语言模型。它是 VLA 负责“理解”的骨干，比如 π0 用的 PaliGemma。
 
 ## slide: tag=L8; title=L8 要做出什么; src=roadmap/motion-control.md §L8 · 学完输出什么 / 推荐读什么
@@ -68,5 +68,6 @@
 <div class='card' data-s='1'><h3>只读这些</h3><ul class='b sm'><li>Attention Is All You Need（arXiv:1706.03762）</li><li>ViT：An Image is Worth 16x16 Words（arXiv:2010.11929）</li><li>PaliGemma（π0 的 VLM 骨干）</li></ul></div>
 </div>
 ---
-0| L8 的输出标准：能用三十行以内的 NumPy 或 PyTorch 手写单头注意力，并解释注意力矩阵每一行的含义；能画出图像、语言、状态变成 token、再进入 Transformer 的数据流，说清每种 token 从哪来。
-1| 路线强调不要求读完整篇论文，只需要真正理解这些结构。权威来源是：Attention Is All You Need、ViT 的原论文，以及 π0 的视觉语言骨干 PaliGemma。
+0| L8 的输出标准：能用三十{行|航}以内的 NumPy 或 PyTorch 手写单头注意力，并解释注意力矩阵每{一行|一航}的含义；能画出图像、语言、状态变成 token、再进入 Transformer 的数据流，说清每种 token 从哪来。
+1| 路线强调不要求读完整篇论文，只需要真正理解这些结构。
+1| 权威来源是：Attention Is All You Need、ViT 的原论文，以及 π0 的视觉语言骨干 PaliGemma。

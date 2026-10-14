@@ -53,7 +53,7 @@
 ---
 0| 从 Physical AI 的视角，强化学习只需要吃透一条概念链。
 1| 价值函数：V of s 估计从状态 s 出发，能拿到多少折扣后的长期回报；Q of s a 估计在 s 做了动作 a 之后的长期回报。
-2| 策略梯度：直接对策略参数求梯度，方向是“动作概率的对数梯度，乘以这个动作的优势”。优势为正的动作，概率被调高；优势为负的，被调低。
+2| 策略梯度：直接对策略参数求梯度，方向是“动作概率的对数梯度，乘以这个动作的优势”。优势，就是这个动作比该状态下的平均表现好多少，可以理解为 Q 减 V。优势为正的动作，概率被{调|条}高；优势为负的，被{调|条}低。
 3| Actor-Critic：actor 负责输出动作，critic 负责估计价值，用 critic 的估计来计算优势，从而降低策略梯度的方差。
 4| 再往后是 GAE 和 PPO，它们解决两个工程问题：优势怎么估得又准又稳，以及每次更新怎么走得不太远。
 
@@ -84,14 +84,14 @@
 <div class='col'>::svg ppo_clip.svg</div>
 </div>
 ---
-0| PPO 的核心是一个裁剪过的代理目标。先定义概率比 r：新策略和旧策略，在同一个状态下选择同一个动作的概率之比。
+0| PPO 的核心是一个裁剪过的代理目标。先定义概率比 r——注意，这里的 r 不再是奖励——它是新策略和旧策略，在同一个状态下选择同一个动作的概率之比。
 1| 目标取两项中的较小值：r 乘优势，和“把 r 裁剪到一减 ε 到一加 ε 之间”再乘优势。
-2| 看右边的图：优势为正时，把这个动作的概率调高带来的收益，在一加 ε 处封顶；优势为负时，把它压低带来的收益，在一减 ε 处封顶。朝有利方向走过了头，就不再给额外收益，梯度归零。
+2| 看右边的图：优势为正时，把这个动作的概率{调|条}高带来的收益，在一加 ε {处|触}封顶；优势为负时，把它压低带来的收益，在一减 ε {处|触}封顶。朝有利方向走过了头，就不再给额外收益，梯度归零。
 3| 这就近似实现了一个信赖域：每次更新只允许策略小步走，避免一次更新把已经学会的行为搞崩。ε 通常取零点一到零点二：太大，约束太松，更新过激容易崩溃；太小，更新太保守，收敛慢，样本利用率低。
 
 ## slide: title=一次 PPO 迭代，以及为什么人形 RL 主流用 PPO; src=roadmap/motion-control.md §L5.1 自测题 · wiki/comparisons/ppo-vs-sac.md · rsl_rl
 <div class='flow' style='justify-content:center;flex-wrap:wrap;row-gap:14px'>
-<div class='n'><b>并行 rollout</b>trajectory</div><div class='ar'>→</div><div class='n'><b>reward</b></div><div class='ar'>→</div><div class='n'><b>TD error</b></div><div class='ar'>→</div><div class='n'><b>GAE → Â</b></div><div class='ar'>→</div><div class='n'><b>ratio</b></div><div class='ar'>→</div><div class='n'><b>clip</b></div><div class='ar'>→</div><div class='n'><b>多 epoch 更新</b>丢弃重采</div>
+<div class='n'><b>并行 rollout</b>trajectory</div><div class='ar'>→</div><div class='n'><b>reward</b></div><div class='ar'>→</div><div class='n'><b>TD error</b></div><div class='ar'>→</div><div class='n'><b>GAE</b></div><div class='ar'>→</div><div class='n'><b>Â</b></div><div class='ar'>→</div><div class='n'><b>ratio</b></div><div class='ar'>→</div><div class='n'><b>clip</b></div><div class='ar'>→</div><div class='n'><b>多 epoch 更新</b>丢弃重采</div>
 </div>
 <div class='cols' style='height:auto;margin-top:30px'>
 <div class='card' data-s='1'><h3>PPO vs SAC</h3><ul class='b sm'><li>PPO：四足 / 人形行走、大规模并行仿真；clip 让训练稳</li><li>SAC：灵巧手、精细抓取；最大熵探索更充分；off-policy 回放，样本效率更高</li></ul></div>
@@ -99,8 +99,8 @@
 </div>
 ---
 0| 一次 PPO 迭代要看懂八个概念：并行环境采集轨迹，得到奖励，算 TD 误差，用 GAE 得到优势，计算概率比，做裁剪，最后用同一批数据做多轮小批量更新，然后丢掉数据重新采样。
-1| PPO 和 SAC 怎么选？PPO 适合四足和人形行走、大规模并行仿真，靠裁剪让训练稳定；SAC 适合灵巧手、精细抓取和对扰动敏感的任务，靠最大熵正则让探索更充分。同样的数据量下，SAC 的样本效率更高，因为它是 off-policy 的，可以用经验回放反复利用历史数据；PPO 是 on-policy 的，数据用完即弃。
-2| 那人形强化学习为什么主流仍然是 PPO？因为 GPU 仿真能同时跑上万个环境，样本变得很便宜，瓶颈变成了墙钟时间，而不是样本数量。再加上 PPO 实现简单、超参数鲁棒、和并行采样天然契合、训练稳定，也容易加上课程学习和域随机化。
+1| PPO 和 SAC，也就是 Soft Actor-Critic，怎么选？PPO 适合四足和人形行走、大规模并行仿真，靠裁剪让训练稳定；SAC 适合灵巧手、精细抓取和对扰动敏感的任务，靠最大熵正则——在奖励之外，鼓励动作保持一定的随机性——让探索更充分。同样的数据量下，SAC 的样本效率更高，因为它是 off-policy 的，可以用经验回放反复利用历史数据；PPO 是 on-policy 的，数据用完即弃。
+2| 那人形强化学习为什么主流仍然是 PPO？因为 GPU 仿真能同时跑上万个环境，样本变得很便宜，瓶颈变成了墙钟时间，也就是真实等待的训练时长，而不是样本数量。再加上 PPO 实现简单、超参数鲁棒、和并行采样天然契合、训练稳定，也容易加上课程学习和域随机化。
 
 ## slide: title=奖励投机：机器人学会了“小跳着前进”; src=roadmap/motion-control.md §L5.1 自测题 · wiki/concepts/reward-design.md
 <div class='card warn' data-s='0'><h3>现象</h3><p>reward = 前进项 + 平衡项 + 平滑项 → 学到“小跳着前进”：前进得分，却没约束接触与腾空</p></div>
@@ -115,6 +115,6 @@
 ---
 0| 最后看一个典型的奖励设计问题：奖励里有前进项、平衡项、平滑项，结果机器人学会了“小跳着前进”，而不是走路。这是典型的奖励投机：前进得分，却没有约束接触和腾空。
 1| 改法有五个方向。一，惩罚双脚同时离地，或者限制腾空时间，要求周期性的单脚支撑；二，惩罚基座的垂直速度和质心的上下起伏。
-2| 三，奖励规整的步态，比如步频、足端轨迹和接触时序；四，调小纯前进项的权重，加上力矩和能量的平滑惩罚，抑制爆发式的弹跳。
+2| 三，奖励规整的步态，比如步频、足端轨迹和接触时序；四，{调|条}小纯前进项的权重，加上力矩和能量的平滑惩罚，抑制爆发式的弹跳。
 3| 五，用 AMP 这类运动先验，把风格约束到“走”。
 4| 学完 L5.1，你应该能解释 PPO 的核心思路，并能设计一个简单的奖励去训练策略。

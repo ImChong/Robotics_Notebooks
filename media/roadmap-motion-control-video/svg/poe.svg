@@ -12,12 +12,12 @@
 <text class="sm" x="40" y="450" fill="#a9c9da">每个关节的螺旋轴 S（零位时）+ 末端零位位姿 M</text>
 </g>
 <g data-s="2">
-<path d="M85,330 L262,205 L468,236 L600,110" stroke="#00d4ff" stroke-width="14" stroke-linecap="round" fill="none"/>
+<path d="M85,330 L262,205 L480,238 L625,100" stroke="#00d4ff" stroke-width="14" stroke-linecap="round" fill="none"/>
 <circle cx="85" cy="330" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
 <circle cx="262" cy="205" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
-<circle cx="468" cy="236" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
-<rect x="585" y="95" width="30" height="30" fill="none" stroke="#ffbf47" stroke-width="4" transform="rotate(-44 600 110)"/>
-<text class="lb" x="630" y="100" fill="#ffbf47">T(θ)</text>
+<circle cx="480" cy="238" r="16" fill="#0a1622" stroke="#eaf6ff" stroke-width="4"/>
+<rect x="610" y="85" width="30" height="30" fill="none" stroke="#ffbf47" stroke-width="4" transform="rotate(-44 625 100)"/>
+<text class="lb" x="655" y="90" fill="#ffbf47">T(θ)</text>
 <text class="sm" x="120" y="150" fill="#a9c9da">依次“绕自己的轴转 θᵢ”</text>
 </g>
 </svg>

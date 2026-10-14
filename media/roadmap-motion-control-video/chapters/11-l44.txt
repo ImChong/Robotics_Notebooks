@@ -15,12 +15,12 @@
 </div>
 <div class='col'>
 <div class='card' data-s='3'><h3>不等式</h3><p>摩擦锥；力矩 / 位置 / 速度限位；（可选）ZMP 在支撑多边形内</p></div>
-<div class='eq' data-s='4'><div class='sm m'>目标：各任务加权跟踪误差 + 正则</div>$$\min\ \sum_k w_k \big\| J_k\ddot q + \dot J_k \dot q - \ddot x_k^{*} \big\|^2 + \lambda \|\tau\|^2$$</div>
+<div class='eq' data-s='4'><div class='sm m'>目标：各任务加权跟踪误差 + 正则</div>$$\min\ \sum_k w_k \big\| J_k\ddot q + \dot J_k \dot q - \ddot x_k^{*} \big\|^2 + \lambda_\tau \|\tau\|^2 + \lambda_f \|f\|^2$$</div>
 <div class='eq' data-s='5'><div class='sm m'>期望任务加速度（PD 形式）</div>$$\ddot x^{*} = \ddot x_{ref} + K_p (x_{ref} - x) + K_d (\dot x_{ref} - \dot x)$$</div>
 </div>
 </div>
 ---
-0| TSID 把全身控制写成一个二次规划。决策变量有三组：关节加速度、接触力、关节力矩。
+0| TSID，任务空间逆动力学：先定好各个任务想要的加速度，再反解出关节力矩。它把全身控制写成一个二次规划，决策变量有三组：关节加速度、接触力、关节力矩。
 1| 等式约束第一条：浮动基动力学一致，也就是 L2 的那个方程，保证解出来的加速度、力和力矩在物理上是自洽的。
 2| 等式约束第二条：刚性接触的零加速度，支撑脚接触点的加速度为零，也就是不滑、不穿地。
 3| 不等式约束：接触力在摩擦锥内；关节力矩、位置、速度不超限；有时还加上 ZMP 在支撑多边形内。

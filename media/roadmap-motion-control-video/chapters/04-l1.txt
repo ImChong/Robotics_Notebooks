@@ -6,7 +6,7 @@
 0| L1，机器人学骨架。这是所有后续内容的基座，跳过的话，后面一定会回来补。
 0| 隐喻是：看着关节角的变化，能不能马上脑补出末端走出的轨迹？L1 教的就是这个翻译器：关节空间和任务空间之间的互相翻译。
 
-## slide: tag=L1; title=三步走，外加三个六维量; src=roadmap/motion-control.md §L1 · 这一层建议分三步走 / 英文缩写速查（L1）
+## slide: tag=L1; title=三步走，外加几个六维量; src=roadmap/motion-control.md §L1 · 这一层建议分三步走 / 英文缩写速查（L1）
 <div class='cols'>
 <div class='col'>
 <div class='card' data-s='1'><h3>L1.1 SE(3)、旋转与刚体变换</h3><p>旋转矩阵、齐次变换、twist / 螺旋轴、矩阵指数——后面所有内容的字母表</p></div>
@@ -14,7 +14,7 @@
 <div class='card' data-s='3'><h3>L1.3 雅可比与速度运动学</h3><p>关节速度 ↔ 末端速度；L4 任务空间控制的入门钥匙</p></div>
 </div>
 <div class='col'>
-<div class='card gold' data-s='4'><h3>三个六维量</h3>
+<div class='card gold' data-s='4'><h3>三个六维量 + 一个变换</h3>
 <ul class='b sm'>
 <li><span class='a'>Twist</span>：空间速度 = 角速度 + 线速度</li>
 <li><span class='a'>Screw</span>：螺旋轴，“绕一根轴转、同时沿轴移动”</li>
@@ -48,7 +48,7 @@
 1| Modern Robotics 推荐用指数积公式，也叫 PoE。只需要两样东西：每个关节在零位时的螺旋轴 S，和末端在零位时的位姿 M。
 2| 然后从基座往外，每个关节贡献一个矩阵指数，意思是“绕自己的螺旋轴转过 θ”，依次连乘，最后乘上零位位姿 M，就得到当前的末端位姿。
 3| 和传统的 D-H 参数相比，PoE 不需要在每个连杆上摆坐标系，几何含义清楚；而且天然用 twist 和 screw 表达，和速度运动学、力、动力学是同一套语言。
-4| 这就是为什么 Pinocchio、TSID 这些工具都建立在 twist 和 SE(3) 上：PoE 能无缝接上它们。而 D-H 对零位和坐标选择很敏感，对树形结构和浮动基也不友好。
+4| Pinocchio、TSID 这些工具本身就用 twist、wrench 和 SE(3) 来组织速度、力和动力学计算，所以用 PoE 建模，能无缝接上它们。而 D-H 对零位和坐标选择很敏感，对树形结构和浮动基也不友好。
 
 ## slide: tag=L1.2; title=逆运动学：解往往不唯一; src=roadmap/motion-control.md §L1 自测题 · wiki/formalizations/inverse-kinematics.md
 <div class='cols w46'>
@@ -63,7 +63,7 @@
 0| 逆运动学反过来：给定末端目标，反推关节角。难点在于解往往不唯一。
 1| 以带球形手腕的六自由度机械臂为例，最多有八组解，来自三个二选一：肩朝前还是朝后、肘朝上还是朝下、手腕翻不翻转，二的三次方等于八。一般非球腕的六自由度臂，最多可以有十六组。
 2| 所谓“肘上”和“肘下”，来自求肘关节角时方程的正负两个解：同一个末端位置，肘可以向上拱，也可以向下拱。
-3| 工程里更常用数值解法：算出当前末端与目标之间的误差，用雅可比的伪逆换算成关节角的修正量，反复迭代直到收敛。靠近奇异位形时，要用阻尼最小二乘，避免伪逆数值爆炸；用上一拍的解做初值，收敛会快得多。
+3| 工程里更常用数值解法：算出当前末端与目标之间的误差，用雅可比的伪逆——非方阵也能用的“近似逆”——换算成关节角的修正量，反复迭代直到收敛。靠近奇异位形，也就是手臂快伸直、某个方向动不了的时候，要用阻尼最小二乘给伪逆加一点阻尼，避免数值爆炸；用上一拍的解做初值，收敛会快得多。
 
 ## slide: tag=L1.3; title=雅可比：速度的线性映射，力的对偶映射; src=roadmap/motion-control.md §L1 自测题 · wiki/formalizations/robot-jacobian.md
 <div class='cols'>
@@ -75,19 +75,19 @@
 <div class='col'>
 <div class='card' data-s='2'><h3>两种写法</h3>
 <ul class='b sm'>
-<li><span class='k'>\(J_s\)</span>：末端速度在<b>固定基坐标系</b>下表达</li>
-<li><span class='k'>\(J_b\)</span>：末端速度在<b>末端体坐标系</b>下表达</li>
+<li><span class='k'>\(J_s\)</span>：twist 在<b>固定基坐标系</b>下表达（线速度是与基座原点重合那一点的速度）</li>
+<li><span class='k'>\(J_b\)</span>：twist 在<b>末端体坐标系</b>下表达</li>
 </ul></div>
-<div class='card gold' data-s='4'><h3>怎么选</h3><p>目标定义在哪个坐标系就用哪个：世界系目标用 \(J_s\)；视觉伺服、末端力控常用 \(J_b\)</p></div>
+<div class='card gold' data-s='4'><h3>怎么选</h3><p>目标定义在哪个坐标系就用哪个：世界系目标用 \(J_s\)；视觉伺服、末端力控常用 \(J_b\)。跟踪世界系里的<b>末端点位置</b>，常把 \(J_b\) 旋到世界朝向（Pinocchio 的 LOCAL_WORLD_ALIGNED）</p></div>
 <div class='card' data-s='5'><p>PoE 下，\(J_s\) 的第 i 列 = 经前 i−1 个关节变换后的螺旋轴 \(\mathcal S_i\)</p></div>
 </div>
 </div>
 ---
-0| 第三步是雅可比矩阵。它是一个线性映射：关节速度乘以雅可比，就得到末端的 twist。
+0| 第三步是雅可比矩阵。它是一个线性映射：雅可比乘以关节速度，就得到末端的 twist。
 1| 它还有一个对偶用法：末端要施加一个 wrench，所需的关节力矩，等于雅可比的转置乘以这个 wrench。这个关系在 L2、L4 会反复用到。
-2| 雅可比有两种写法：space 雅可比，在固定基坐标系里表达末端速度；body 雅可比，在末端自己的坐标系里表达。
+2| 雅可比有两种写法：space 雅可比，在固定基坐标系里表达 twist；body 雅可比，在末端自己的坐标系里表达。注意，space twist 的线速度，是“此刻与基座原点{重|虫}合的那一点”的速度，不是末端点的速度。
 3| 两者之间差一个六乘六的伴随变换：body 雅可比，等于伴随矩阵乘以 space 雅可比。
-4| 目标定义在哪个坐标系，就用对应的雅可比：世界系下的目标用 space 雅可比；视觉伺服、末端力控这类以末端为参照的任务，常用 body 雅可比。
+4| 目标定义在哪个坐标系，就用对应的雅可比：世界系下的目标用 space 雅可比；视觉伺服、末端力控这类以末端为参照的任务，常用 body 雅可比。如果要跟踪世界系里的末端点位置，常把 body 雅可比旋到世界朝向来用，Pinocchio 里叫 LOCAL_WORLD_ALIGNED。
 5| 另外，在 PoE 下，space 雅可比的每一列，恰好就是经过前面关节变换之后的螺旋轴。这也是 PoE 和速度运动学天然统一的原因。
 
 ## slide: tag=L1; title=L1 要做出什么; src=roadmap/motion-control.md §L1 · 推荐做什么 / 学完输出什么

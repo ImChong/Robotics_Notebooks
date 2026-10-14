@@ -5,6 +5,7 @@
   python3 build.py tts        # 只生成/补齐配音
   python3 build.py render     # 只渲染帧
   python3 build.py all [章节id前缀]  # 全流程，输出 out/ 下的 mp4 / srt / 章节表 / 讲解稿
+  python3 build.py clip c08-042,c08-044:1+2 [名字]  # 只出这几张幻灯片（:1+2 只要第 1、2 句旁白），改稿后先给人看的片段
 """
 import asyncio
 import hashlib
@@ -99,7 +100,8 @@ def parse():
                 m = re.match(r"^(\d+)\|\s*(.+)$", line.strip())
                 if not m:
                     sys.exit(f"{f.name}:{n} 无法解析的字幕行：{line}")
-                cur["cues"].append({"step": int(m.group(1)), "text": m.group(2).strip()})
+                t = m.group(2).strip()
+                cur["cues"].append({"step": int(m.group(1)), "text": SPEAK_RE.sub(r"\1", t), "speak": SPEAK_RE.sub(r"\2", t)})
     for i, s in enumerate(slides):
         s["idx"] = i
         s["id"] = f"{s['chapter']}-{i:03d}"
@@ -110,6 +112,8 @@ def parse():
 
 
 # ---------------------------------------------------------------- 发音替换（只影响配音，不影响字幕）
+# 旁白里写 {一行|一航}：字幕显示「一行」，配音念「一航」。用于整句里会读错的多音字（同句合成 + log-mel DTW 核对过）
+SPEAK_RE = re.compile(r"\{([^{}|]+)\|([^{}]+)\}")
 PRON = [
     (r"π0\.5|π₀\.₅|π₀\.5", "派零点五"), (r"π0\.7|π₀\.₇", "派零点七"), (r"π0|π₀", "派零"), (r"π", "派"),
     (r"GR00T", "Groot"), (r"L−1|L-1", "L负一"), (r"SE\(3\)", "SE3"), (r"SO\(3\)", "SO3"), (r"so\(3\)", "so3"),
@@ -118,7 +122,7 @@ PRON = [
     (r"→", "到"), (r"≈", "约"), (r"×", "乘"), (r"±", "正负"), (r"——", "，"), (r"…", "，"),
     (r"DAgger", "Dagger"), (r"\bViT\b", "V I T"), (r"IsaacLab", "Isaac Lab"), (r"\bTSID\b", "T S I D"),
     (r"\bCoM\b", "质心"), (r"\bDOF\b|\bDoF\b", "自由度"), (r"\bKp\b", "K p"), (r"\bKd\b", "K d"),
-    (r"ros2_control", "ros2 control"), (r"PREEMPT_RT", "PREEMPT RT"), (r"EtherCAT", "Ether CAT"),
+    (r"ros2_control", "ros2 control"), (r"PREEMPT_RT", "PREEMPT RT"), (r"EtherCAT", "Ethercat"),
     (r"TensorRT", "Tensor RT"), (r"legged_gym", "legged gym"), (r"rsl_rl", "rsl rl"), (r"_", " "),
     (r"MoCap", "动捕"), (r"\bSysID\b", "Sys ID"), (r"\bWFM\b", "W F M"), (r"\bDiT\b", "D I T"),
     (r"\bMLP\b", "M L P"), (r"\bQKV\b", "Q K V"), (r"「|」|『|』", ""), (r"\bvs\.?\b", "对比"),
@@ -126,6 +130,9 @@ PRON = [
     (r"LeRobot", "Le Robot"), (r"LAFAN1", "LAFAN 1"), (r"Push-T", "Push T"), (r"x86", "x八六"), (r"iLQR", "i L Q R"),
     (r"ε", "epsilon"), (r"γ", "gamma"), (r"λ", "lambda"), (r"ω", "omega"), (r"θ", "theta"), (r"τ", "tau"),
     (r"δ", "delta"), (r"Δ", "delta"), (r"ξ", "ksi"),
+    # 能拼成英文单词的缩写会被当单词念（LIP 念成 lip、GAE 近似 gay），逐字母写
+    (r"\bLIP\b", "L I P"), (r"\bGAE\b", "G A E"), (r"\bPoE\b", "P O E"), (r"\bABA\b", "A B A"), (r"\bCoP\b", "C O P"),
+    (r"\bASE\b", "A S E"), (r"\bAMP\b", "A M P"), (r"\bPID\b", "P I D"), (r"\bPOMDP\b", "P O M D P"), (r"\bSAC\b", "S A C"),
 ]
 
 
@@ -169,7 +176,7 @@ def run_tts(slides):
     todo = {}
     for s in slides:
         for c in s["cues"]:
-            c["say"] = tts_text(c["text"])
+            c["say"] = tts_text(c["speak"])
             p = tts_path(c["say"])
             c["mp3"] = p
             if not p.exists():
@@ -219,7 +226,7 @@ def boundaries(t):
     return out
 
 
-def two_lines(t):
+def two_lines(t, keep_names=True):
     if w(t) <= SUB_W:
         return t
     bset = boundaries(t)
@@ -231,6 +238,8 @@ def two_lines(t):
         if right[0] in BREAK_AFTER or t[i - 1] in "“（《「":
             continue
         if re.match(r"[A-Za-z0-9.]", t[i - 1]) and re.match(r"[A-Za-z0-9.]", t[i]):
+            continue
+        if keep_names and re.search(r"[A-Za-z0-9] ?$", left) and re.match(r" ?[A-Za-z0-9]", right) and " " in t[i - 1:i + 1]:
             continue
         score = abs(w(left) - w(right)) * 0.5
         if t[i - 1] in BREAK_AFTER:
@@ -244,6 +253,8 @@ def two_lines(t):
         if score < best_score:
             best, best_score = i, score
     if best is None:
+        if keep_names:  # 英文名太长、两行放不下时，才允许在词间空格处断开
+            return two_lines(t, keep_names=False)
         best = len(t) // 2
     return t[:best].rstrip() + "\n" + t[best:].lstrip()
 
@@ -389,9 +400,11 @@ def assemble(total, segs, audio_parts, chaps, subs, name):
     mp4 = OUT / f"{name}.mp4"
     cmd = [ffmpeg_exe(), "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", str(wav),
            "-i", str(meta), "-map", "0:v", "-map", "1:a", "-map_metadata", "2", "-map_chapters", "2",
-           "-r", str(FPS), "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "22",
-           "-pix_fmt", "yuv420p", "-g", str(FPS * 60), "-c:a", "aac", "-b:a", "48k", "-ac", "1",
-           "-movflags", "+faststart", "-shortest", str(mp4)]
+           "-r", str(FPS), "-vf", "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
+           "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "22",
+           "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv",
+           "-g", str(FPS * 60), "-c:a", "aac", "-b:a", "48k", "-ac", "1",
+           "-movflags", "+faststart", "-t", f"{total / FPS:.3f}", str(mp4)]
     subprocess.run(cmd, check=True)
     # 字幕与章节表
     srt = []
@@ -421,6 +434,23 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "all"
     only = sys.argv[2] if len(sys.argv) > 2 else ""
     chapters, slides = parse()
+    if cmd == "clip":  # 只出指定的几张幻灯片（可只取其中几句），按原顺序拼成一个片段，每张一个章节标记
+        want = dict((x.split(":") + [""])[:2] for x in only.split(","))
+        picked = []
+        for s in slides:
+            if s["id"] not in want:
+                continue
+            if want[s["id"]]:
+                keep = {int(k) for k in want[s["id"]].split("+")}
+                s = dict(s, cues=[c for i, c in enumerate(s["cues"]) if i in keep])
+            picked.append(s)
+        slides = picked
+        chapters = [{"id": s["id"], "name": f"{s['id']} {s.get('title') or s['chapter']}", "slides": [s]} for s in slides]
+        run_tts(slides)
+        total, segs, audio_parts, chaps, subs = timeline(chapters, slides)
+        render(slides)
+        assemble(total, segs, audio_parts, chaps, subs, sys.argv[3] if len(sys.argv) > 3 else "clip")
+        return
     if only:
         chapters = [c for c in chapters if c["id"].startswith(only)]
         slides = [s for c in chapters for s in c["slides"]]

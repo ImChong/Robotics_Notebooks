@@ -7,8 +7,8 @@
 <path d="M40,200 C120,190 200,170 300,160" stroke="#8eb1c5" stroke-width="5" fill="none"/>
 <circle cx="300" cy="160" r="10" fill="#eaf6ff"/>
 <path d="M300,160 C400,140 520,130 780,150" stroke="#00d4ff" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
-<rect x="300" y="238" width="60" height="18" fill="#ffbf47"/>
-<text class="sm" x="372" y="256" fill="#ffbf47">只执行第一步</text>
+<g data-s="3"><rect x="300" y="238" width="60" height="18" fill="#ffbf47"/>
+<text class="sm" x="372" y="256" fill="#ffbf47">只执行第一步</text></g>
 </g>
 <g data-s="3">
 <text class="lb" x="10" y="330" fill="#eaf6ff">时刻 k+1</text>

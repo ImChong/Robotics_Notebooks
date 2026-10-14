@@ -30,13 +30,13 @@
 <path class="ln" d="M540,394 V430"/>
 <rect class="bx" x="330" y="432" width="420" height="60" rx="12"/><text class="tx" x="540" y="462">Action chunk  a_t … a_t+H</text>
 <path class="ln" d="M540,492 V514 H118 V540"/>
-<rect class="bx" x="10" y="542" width="216" height="74" rx="12"/><text class="tx" x="118" y="566">低层策略 / WBC</text><text class="ts" x="118" y="596">200–1000 Hz</text>
+<rect class="bx" x="10" y="542" width="216" height="74" rx="12"/><text class="tx" x="118" y="566">低层策略 / WBC</text><text class="ts" x="118" y="596">50 Hz – 1 kHz</text>
 <path class="ln" d="M226,579 H246"/>
 <rect class="bx" x="248" y="542" width="196" height="74" rx="12"/><text class="tx" x="346" y="566">q_target</text><text class="ts" x="346" y="596">/ τ_ff</text>
 <path class="ln" d="M444,579 H464"/>
-<rect class="bx" x="466" y="542" width="196" height="74" rx="12"/><text class="tx" x="564" y="566">PD / 阻抗</text><text class="ts" x="564" y="596">驱动器内闭环</text>
+<rect class="bx" x="466" y="542" width="196" height="74" rx="12"/><text class="tx" x="564" y="566">CAN /</text><text class="tx" x="564" y="596">EtherCAT</text>
 <path class="ln" d="M662,579 H682"/>
-<rect class="bx" x="684" y="542" width="180" height="74" rx="12"/><text class="tx" x="774" y="566">CAN /</text><text class="tx" x="774" y="596">EtherCAT</text>
+<rect class="bx" x="684" y="542" width="180" height="74" rx="12"/><text class="tx" x="774" y="566">PD / 阻抗</text><text class="ts" x="774" y="596">驱动器内闭环</text>
 <path class="ln" d="M864,579 H884"/>
 <rect class="bx" x="886" y="542" width="184" height="74" rx="12"/><text class="tx" x="978" y="566">电流环</text><text class="ts" x="978" y="596">→ motor torque</text>
 </g>

@@ -68,6 +68,11 @@ window.setFrame = function (f) {
     el.classList.toggle("hid", k > f.step);
     el.classList.toggle("now", k === f.step && f.step > 0);
   }
+  // 没标步数的箭头跟着它指向的框一起出现，避免框还没出来箭头先悬空
+  for (const el of c.querySelectorAll(".ar:not([data-s])")) {
+    const n = el.nextElementSibling;
+    el.classList.toggle("hid", !!(n && n.classList.contains("hid")));
+  }
   for (const el of c.querySelectorAll("[data-h]")) {
     const ks = el.dataset.h.split(",").map(x => parseInt(x, 10));
     el.classList.toggle("now", ks.includes(f.step));
