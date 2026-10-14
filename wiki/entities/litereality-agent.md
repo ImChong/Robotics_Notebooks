@@ -1,8 +1,11 @@
 ---
 type: entity
-tags: [generative-ai, real2sim, 3d-reconstruction, indoor-scene, llm-agents, cambridge, articulated-bodies]
+tags: [generative-ai, real2sim, 3d-reconstruction, indoor-scene, llm-agents, cambridge, imperial-college, articulated-bodies]
 status: complete
-updated: 2026-09-08
+updated: 2026-10-15
+project_id: litereality-agent
+arxiv: "2610.01863"
+project: https://litereality.github.io/agent/
 code: https://github.com/LiteReality/LiteReality-Agent
 related:
   - ./articraft.md
@@ -13,19 +16,20 @@ related:
   - ./3dgenstudio.md
   - ./img2threejs.md
 sources:
+  - ../../sources/papers/litereality_agent_2610_01863.md
   - ../../sources/blogs/litereality_agent_post_2026.md
   - ../../sources/sites/litereality-agent-github-io.md
   - ../../sources/repos/litereality-litereality-agent.md
-summary: "LiteReality-Agent：iOS LiDAR 扫描 → 确定性 scene init（TRELLIS/Articraft 式程序化分支）→ agent 编辑 Room.py 的 realism authoring + QC 门控；输出可交互 GLB/Blend；GitHub+App 已开源，整房间仍非 simulation-ready。"
+summary: "LiteReality-Agent 将 iOS RGB-D 房间扫描转成可交互、带物理属性并可导入 MuJoCo 的场景：布局修复与物体重建后，coding agent 在 Room.py 中执行 observe-edit-verify，并经几何/支撑检查后导出仿真格式。"
 ---
 
 # LiteReality-Agent
 
-**LiteReality-Agent**（[项目页](https://litereality.github.io/Litereality-agent-site/)，[Blog/PDF](https://litereality.github.io/Litereality-agent-site/litereality-agent-post/)，[GitHub](https://github.com/LiteReality/LiteReality-Agent)）由 **Huang, Zhening** 等（含 **剑桥大学** Joan Lasenby、Shangzhe Wu）发布：把 **iOS LiDAR 房间扫描** 变成 **可编辑、可articulate、graphics-ready** 的室内 3D 场景。相对 2025 手工拼接的 [LiteReality（arXiv:2507.02861）](https://arxiv.org/abs/2507.02861)，本版用 **coding agent** 接管 realism authoring：几何与材质集中在 **单一 `Room.py`（Blender Python）** 中迭代，而非检索固定资产库。
+**LiteReality-Agent**（[项目页](https://litereality.github.io/agent/)，[论文 arXiv:2610.01863](https://arxiv.org/abs/2610.01863)，[GitHub](https://github.com/LiteReality/LiteReality-Agent)）由剑桥大学、帝国理工学院及独立研究者共同完成。它把 iOS RGB-D 房间扫描变成可编辑的室内场景：coding agent 在 `Room.py` 中迭代几何与材质，并通过几何、支撑关系和物理属性检查后导出 MuJoCo 等仿真格式。相较原版 LiteReality（arXiv:2507.02861）的确定性检索与组装流程，Agent 版增加了可调用工具的 observe-edit-verify 编排。
 
 ## 一句话定义
 
-**Scan → seed room（确定性）→ agent 对照真实照片改 `Room.py`（agentic）→ QC 门 → 可漫游可编辑的交互室内场景。**
+**RGB-D scan → layout repair 与物体重建 → agent 对照扫描证据编辑 `Room.py` → 几何/支撑 QC → 可交互场景与 MuJoCo、URDF、MJCF 导出。**
 
 ## 英文缩写速查
 
@@ -41,9 +45,9 @@ summary: "LiteReality-Agent：iOS LiDAR 扫描 → 确定性 scene init（TRELLI
 
 ## 为什么重要
 
-- **端到端开源工具链：** [LiteReality Scanner（App Store）](https://apps.apple.com/gb/app/litereality/id6774158260) + **Agent 仓库** + [example-scans](https://github.com/LiteReality/example-scans)，填补「扫房间→可交互 3D」的公开全栈空白。
+- **端到端开源工具链：** [LiteReality Scanner（App Store，免费）](https://apps.apple.com/gb/app/litereality/id6774158260) + [Agent 仓库（Apache-2.0）](https://github.com/LiteReality/LiteReality-Agent) + [example-scans](https://github.com/LiteReality/example-scans)，覆盖采集、重建和仿真导出。
 - **Agent + 受限工作区：** 与 [Articraft](./articraft.md) 同谱——**单文件 `Room.py` + 任务专用工具 + harness/QC**；物体 init 阶段直接 **改编 Articraft + Blender Python**。
-- **机器人 / sim 动机：** 博客明确讨论 **scan→interactive→（工程后）sim-ready** 以适配长期驻留环境；当前 **整房间仍非 simulator-ready**，但 procedural 物体分支继承 Articraft 的 **articulation + QC** 进展。
+- **面向机器人仿真：** 论文展示 MuJoCo 场景导出、摇晃测试与 Franka 抓取示例；每个物体带质量、惯量、碰撞几何和关节。但论文也指出这些检查不能替代真实物理参数的 ground-truth 验证。
 - **Intrinsics 副产品：**  authored 场景可 **精确渲染** segmentation / depth / normal / albedo（非估计）。
 
 ## 核心结构
@@ -54,9 +58,9 @@ summary: "LiteReality-Agent：iOS LiDAR 扫描 → 确定性 scene init（TRELLI
 | **Scene init（确定性）** | 按 RoomPlan 位姿组装；每物体 **TRELLIS** 或 **程序化（Articraft 改编）** 分支 |
 | **Authoring（agentic）** | Claude/Codex 驱动；编辑 `Room.py`；工具：`select_view`、`render_and_compare`、`grid`、`critic`、`fetch_materials` |
 | **QC gate** | 碰撞、几何、材质、关节等 **确定性检查** + 固定 checklist model pass |
-| **输出** | `room_preview/Room.glb`、`Room.blend`；浏览器 `litereality view` |
-| **算力** | Modal 托管 TRELLIS/GroundingDINO（推荐）或本地 ≥24GB GPU |
-| **开源** | **已开源** CLI + Modal 脚本；TR PDF 已挂页，README 仍标 coming soon |
+| **输出** | `Room.glb` / `Room.blend`；MuJoCo 场景及 URDF / MJCF；浏览器交互查看器 |
+| **算力** | 官方 README 推荐 Modal 托管 TRELLIS / GroundingDINO，或 Linux 本地 ≥24GB GPU |
+| **开源** | **已开源** CLI 与部署代码（Apache-2.0）；LiteReality Scanner 在 App Store 免费提供 |
 
 ### 流程总览
 
@@ -69,8 +73,18 @@ flowchart TB
   loop --> tools[render_and_compare / grid / critic…]
   tools --> loop
   loop --> qc[QC gate]
-  qc --> out[Room.glb / Room.blend / 浏览器 viewer]
+  qc --> out[Room.glb / Room.blend]
+  out --> sim[MuJoCo / URDF / MJCF]
+  out --> viewer[交互式 3D 查看器]
 ```
+
+## 论文与评测
+
+论文将室内重建表述为 coding task：coding agent 收集扫描证据，调用专用工具并迭代编辑可执行的 Room.py。系统先修正布局，再按对象复杂度选择程序化生成或 TRELLIS.2 重建，最后以 render-and-compare、尺寸测量、碰撞与支撑检查验证结果。
+
+- 在 **10 个室内场景、620 个采集视角**上测试；LiteReality-Agent 的 SSIM、PSNR、RMSE、LPIPS 均优于论文比较方法。其深度 MAE 为 **10.50 cm**，家具底部近接触 **86/86**，检测到的家具表面相交对为 **0**。
+- 人工感知评分中，布局 / 物体相似度 / 整体相似度均值分别为 **4.60 / 4.58 / 4.54（满分 5）**；人工样本为 13 份提交、65 次场景评价。
+- 作者说明几何指标只覆盖特定物理合理性维度，并不证明完整物理有效性；物理属性缺少 ground-truth 验证。视觉指标基于采集视角，不是 held-out novel-view 测试，感知评价样本也较小。
 
 ## 源码运行时序图
 
@@ -83,6 +97,7 @@ sequenceDiagram
     participant Agent as Claude/Codex agent
     participant Blender as Blender 5.x
     participant QC as QC checks
+    participant Sim as MuJoCo exporter
     User->>CLI: uv run litereality run scans/<scan>
     CLI->>Init: 确定性 seed room
     Init->>Blender: 物体 TRELLIS / 程序化
@@ -92,8 +107,11 @@ sequenceDiagram
         Agent->>Agent: render_and_compare / critic
     end
     Agent->>QC: 碰撞/材质/关节检查
-    QC-->>User: room_preview/Room.glb
-    User->>CLI: litereality view run/<scan>
+    QC-->>CLI: 几何、支撑关系与导出检查
+    User->>CLI: uv run litereality stage simulate run/<scan>
+    CLI->>Sim: 导出物体质量/惯量/碰撞体/关节
+    Sim-->>User: MuJoCo scene.xml / URDF / MJCF
+    User->>CLI: uv run litereality view run/<scan>
 ```
 
 ## 工程实践
@@ -104,14 +122,15 @@ sequenceDiagram
 | 一次性 | `uv run litereality setup` 部署 TRELLIS/DINO |
 | 冒烟 | `SANITY_DEEP=1 uv run python sanity.py` |
 | 无扫描 | `git clone LiteReality/example-scans` |
-| 分阶段 | `--through seed` 仅 init；`stage author` 仅 authoring |
-| 误用 | 不要把 GLB 直接当 **MuJoCo/Isaac sim-ready**；需额外物理字段与布局验证 |
+| 分阶段 | `uv run litereality run scans/<scan> --through seed` 仅 init；`uv run litereality stage author run/<scan> --force --polish --live` 执行 authoring |
+| 仿真导出 | `uv run litereality stage simulate run/<scan>` 导出 MuJoCo 场景；README 说明还可导出 URDF / MJCF |
+| 误用 | 仿真可导入不等于真实物理已验证；物理属性估计与几何 QC 不能替代 ground-truth 动力学验证 |
 
 ## 常见误区或局限
 
-- **误区：** 「可交互 = 可仿真」——作者明确 **整房间 simulation-ready 仍需大量工程**。
+- **误区：** 将“simulation-ready”理解成已验证真实动力学。当前版本可导出 MuJoCo、URDF、MJCF，但论文没有对所有物理属性进行 ground-truth 验证。
 - **误区：** 与 [Articraft](./articraft.md) 重复——Articraft 是 **单物体 agent 资产**；LiteReality-Agent 是 **房间级 scan→scene** 管线，init 阶段 **调用改编 Articraft**。
-- **局限：** 当前验证以 **≤50 m² 单房间** 为主；多房间/大尺度未充分 stress-test。
+- **局限：** 评测覆盖 10 个室内场景和 620 个采集视角；论文没有报告 held-out novel-view 泛化。人工评价样本较小，不能据此断言所有户型和物体类别都稳定。
 - **局限：** 依赖 **外部 agent CLI + 图像 API + GPU 服务**；成本与稳定性需自行核算。
 
 ## 与其他工作对比
@@ -134,13 +153,15 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [LiteReality-Agent 项目页](https://litereality.github.io/Litereality-agent-site/)
-- [官方 Blog / PDF](https://litereality.github.io/Litereality-agent-site/litereality-agent-post/)
+- [论文：LiteReality-Agent（arXiv:2610.01863）](https://arxiv.org/abs/2610.01863)
+- [交互式 3D 查看器](https://litereality.github.io/agent/vr/index.html)
+- [项目主页与演示](https://litereality.github.io/agent/)
 - [LiteReality/LiteReality-Agent](https://github.com/LiteReality/LiteReality-Agent)
 - [LiteReality（arXiv:2507.02861）](https://arxiv.org/abs/2507.02861) — 前代手工管线
 
 ## 参考来源
 
+- [LiteReality-Agent 论文（arXiv:2610.01863）](../../sources/papers/litereality_agent_2610_01863.md)
 - [LiteReality-Agent 官方博客（2026）](../../sources/blogs/litereality_agent_post_2026.md)
 - [LiteReality-Agent 项目页](../../sources/sites/litereality-agent-github-io.md)
 - [LiteReality/LiteReality-Agent](../../sources/repos/litereality-litereality-agent.md)
