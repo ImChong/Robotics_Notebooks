@@ -180,6 +180,12 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-14] ingest | Dynamic Creatures Hugo — 收录 Hugo 原型与 SnowJay 官方资料
+
+- 归档官方 LinkedIn 公告、SnowJay 平台页与公司新闻页；官方披露 43 个执行器及目标访客场景。
+- 官方入口未列公开代码或数据集；页面注明 Hugo 实时情境理解与响应仍在开发，避免把平台级能力误写成已验证的本体能力。
+- 新增统一项目实体并关联 Boston Dynamics 页面。
+
 ## [2026-10-14] ingest | Gemini 4 Argon 机器人官方博客
 
 - 归档 Google Developers 官方博客，并建立独立实体页，避免与 Gemini Robotics 2 混为一个模型版本。

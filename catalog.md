@@ -504,6 +504,7 @@
 - [DVID](wiki/entities/dvid.md) — DVID**（*Distributed, Versioned, Image-oriented Dataservice*）是 HHMI Janelia FlyEM 团队开发的 **大尺度科学数据版本 `📅unknown` `[entity_page]`
 - [Dyna-2.1（Physical Agent · Taku）](wiki/entities/dyna-2-1.md) — Dyna-2.1** 是 **Dyna Robotics**（2026-09-29 发布）对外宣称的首个可 **端到端完成长时真实工作流** 的 **physical agent** 系统：硬件为 `📅unknown` `[entity_page]`
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
+- [Dynamic Creatures：Hugo 与 SnowJay](wiki/entities/dynamic-creatures-hugo.md) — Hugo** 是 Dynamic Creatures 公布的首款“活体角色机器人”原型：以拟人化角色设计结合移动机器人能力，计划在主题公园、度假村、赌场与零售环境中与访客进行面对面互动；其机器人软 `📅unknown` `[entity_page]`
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是面向控制器开发的机器人运动学与动力学库。它以 Rust  `📅unknown` `[entity_page]`
 - [Dyson CameraJet](wiki/entities/dyson-camerajet.md) — Dyson CameraJet™**（2026-09 发布，约 **$499**）是带 **100k 像素宏距口腔相机** 与 **Gap Optical Targeting™** 机器学习算法的 `📅unknown` `[entity_page]`
