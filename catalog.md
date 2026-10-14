@@ -4734,6 +4734,7 @@
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
 - [Physical Commonsense（Generalist 产业观点）](wiki/entities/physical-commonsense-generalist.md) — The Dark Matter of Robotics: Physical Commonsense**（Andy Zeng & Generalist Team，[2026-01-29](https `📅unknown` `[entity_page]`
 - [Physical Intelligence Pi API beta](wiki/entities/physical-intelligence-pi-api.md) — Pi API 是 Physical Intelligence 面向机器人开发者开放 beta 的托管服务：上传机器人数据，在云端基础设施上微调策略，再通过 hosted gateway 为机器人提供模 `📅unknown` `[entity_page]`
+- [Physical RSI Research Map（SAIL Research Lab）](wiki/entities/physical-rsi-research-map.md) — Physical RSI — Physical Recursive Self-Improvement** 是 SAIL-Research-Lab 维护的具身递归改进研究地图。项目将自己定位为遵循配 `📅unknown` `[entity_page]`
 - [Physical RSI 1.0（Recursive Self-Harness）](wiki/entities/physical-rsi.md) — Physical RSI 1.0**（*Recursive Self-Harness for Scaling Embodied Skills*，[项目页](https://mmlab.hk/res `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [The Physical Intelligence Layer：伙伴现场里的模型层](wiki/entities/pi-physical-intelligence-layer.md) — 2026-02-24 的博客 The Physical Intelligence Layer 不发布新模型。Physica `📅unknown` `[entity_page]`
