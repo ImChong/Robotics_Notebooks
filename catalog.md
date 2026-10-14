@@ -2853,6 +2853,7 @@
 - [PARSER：并行阅读、深度推理的长上下文智能体](wiki/entities/paper-parser-parallel-read-deep-reason.md) — PARSER**（*PARSER: Read in Parallel, Reason in Depth for Long-Context LLM Agents*，[arXiv:2609.06702 `📅unknown` `[entity_page]`
 - [PartialBiGrasp：残缺观测下的双臂抓取局部几何补全](wiki/entities/paper-partialbigrasp.md) — PartialBiGrasp**（*Inferring Hidden Local Geometry for Bimanual Grasping from Partial Views*；[arXiv `📅unknown` `[entity_page]`
 - [ParticleSplat（arXiv:2609.19463）](wiki/entities/paper-particlesplat.md) — ParticleSplat**（*Self-supervised Object-centric Latent Particle Splatting*，[arXiv:2609.19463](http `📅unknown` `[entity_page]`
+- [PartiGen：部位感知的语言条件人形运动生成](wiki/entities/paper-partigen.md) — PartiGen**（*Part-Aware Representations for Language-Conditioned Humanoid Motion Generation*，[arXiv `📅unknown` `[entity_page]`
 - [PARTS（arXiv:2609.21788）](wiki/entities/paper-parts.md) — PARTS**（*From Pretraining to Proficiency: Real-World Subtask RL for Long-Horizon Manipulation with `📅unknown` `[entity_page]`
 - [PASSAGE：场景对齐的人形感知 clutter 穿越](wiki/entities/paper-passage.md) — PASSAGE**（*Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered En `📅unknown` `[entity_page]`
 - [受被动动态行走启发的节能人形运动动力学引导](wiki/entities/paper-passive-dynamic-walking-inspired-dynamics.md) — Passive-Dynamic-Walking-Inspired Dynamics Guidance for Energy- Efficient Humanoid Locomotion**（[ar `📅unknown` `[entity_page]`
