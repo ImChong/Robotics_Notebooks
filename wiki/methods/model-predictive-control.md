@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-09-17
+updated: 2026-10-14
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -130,6 +130,10 @@ IsaacGym /机器人领域常见。
 处理模型不确定性和外界干扰。
 
 加入随机约束或者 robustness budget。
+
+### 5. 学习式候选轨迹评估（相关方向：LiteNWM）
+
+[LiteNWM](../entities/paper-litenwm-efficient-latent-world-model-navigation.md) 也采用“预测短期后果 → 选择轨迹 → 执行一段 → 重新规划”的滚动闭环，但它保留冻结导航策略给出的候选集，再用学习到的潜空间世界模型和评分器重排序；它不是经典的显式动力学 MPC，也不通过求解 OCP 从头优化控制序列。两者相通的是 receding-horizon 的反复更新机制，分野在候选如何产生、如何评估。
 
 ## 在人形机器人中的典型应用
 
