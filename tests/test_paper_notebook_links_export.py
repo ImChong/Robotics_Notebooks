@@ -48,7 +48,8 @@ class PaperNotebookLinksExportTests(unittest.TestCase):
         self.assertIn("paper_notebook_links", item)
         self.assertEqual(len(item["paper_notebook_links"]), 1)
 
-    def catalog_entry_for(self, item: dict) -> dict:
+    def catalog_entry_for(self, item: dict) -> tuple[dict, dict]:
+        """返回 (目录条目, 该页正文 JSON)。"""
         # 单页样本不含 schema/page-aliases.json 的重定向目标，别名校验与本用例无关
         with mock.patch("export_minimal.load_page_aliases", return_value={}):
             payload = build_site_data([item])
@@ -56,17 +57,25 @@ class PaperNotebookLinksExportTests(unittest.TestCase):
             out = Path(tmp)
             write_page_exports(payload, out)
             catalog = json.loads((out / "site-catalog-v1.json").read_text(encoding="utf-8"))
-        return catalog["pages"]["detail_pages"][item["id"]]
+            entry = catalog["pages"]["detail_pages"][item["id"]]
+            body_path = out / entry["content_url"].removeprefix("exports/")
+            body = json.loads(body_path.read_text(encoding="utf-8"))
+        return entry, body
 
-    def test_body_free_catalog_keeps_every_graph_sidebar_field(self) -> None:
-        """图谱侧栏改读无正文目录（编号 3），标题/标签/关系/来源必须仍在目录里。"""
+    def test_body_free_catalog_keeps_sidebar_fields_and_ships_links_with_the_body(self) -> None:
+        """图谱侧栏读无正文目录（编号 3）取标题 / 标签；关系 / 来源 / 论文笔记随该页正文 JSON
+        下发（目录瘦身），侧栏选中节点时按需取。"""
         item = build_item(ZEROWBC)
         attach_paper_notebook_links([item])
-        entry = self.catalog_entry_for(item)
+        entry, body = self.catalog_entry_for(item)
         self.assertNotIn("content_markdown", entry)
-        for field in ("title", "tags", "related", "source_links", "paper_notebook_links"):
+        for field in ("title", "tags", "content_url"):
             self.assertIn(field, entry)
-        self.assertEqual(entry["paper_notebook_links"], item["paper_notebook_links"])
+        for field in ("related", "source_links", "paper_notebook_links"):
+            self.assertNotIn(field, entry)
+            self.assertIn(field, body)
+        self.assertEqual(body["paper_notebook_links"], item["paper_notebook_links"])
+        self.assertEqual(body["source_links"], item["source_links"])
 
     def test_links_found_only_in_the_body_still_ship_without_the_body(self) -> None:
         """正文里的行内笔记链接由导出期扫描，无正文的消费端不能因此丢链接。"""
@@ -87,9 +96,10 @@ class PaperNotebookLinksExportTests(unittest.TestCase):
         }
         attach_paper_notebook_links([item], {})
         self.assertEqual([link["url"] for link in item["paper_notebook_links"]], [url])
-        entry = self.catalog_entry_for(item)
+        entry, body = self.catalog_entry_for(item)
         self.assertNotIn("content_markdown", entry)
-        self.assertEqual([link["url"] for link in entry["paper_notebook_links"]], [url])
+        # 导出期算好的链接作为正文 JSON 的独立字段下发，消费端无需扫描 content_markdown
+        self.assertEqual([link["url"] for link in body["paper_notebook_links"]], [url])
 
 
 if __name__ == "__main__":
