@@ -29,6 +29,7 @@ related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/nvidia-openshell.md
   - ../entities/nvidia-open-agent-safety-platform.md
+  - ../entities/codegraph.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
@@ -134,6 +135,7 @@ Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公
 - [Birdview](../entities/birdview.md) — 改码前先 map 仓库模块与计划 scope；不替代 diff 或架构判断本身
 - [Superpowers（obra）](../entities/superpowers-obra.md) — brainstorm → worktree → TDD → 评审的代理交付管线
 - [NVIDIA OpenShell](../entities/nvidia-openshell.md) — 带外沙箱与 YAML 策略；与 prompt 级「安全可靠」互补
+- [CodeGraph](../entities/codegraph.md) — 通过本地代码关系图向 coding agent 提供符号上下文与变更影响线索；静态图不能替代测试与运行时核验
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 有 agent 仍要先做 reset/verify 环境工程
 - [ENPIRE](../methods/enpire.md) — coding agent 真机策略自改进；核心贡献是环境接口不是模型
 - [AI Auto-Research](./ai-auto-research.md) — 研究全生命周期自动化；SWE 能力与科研能力不等价
