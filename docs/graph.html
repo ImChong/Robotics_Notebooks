@@ -3230,6 +3230,8 @@
       graphData = await fetchJsonWithProgress('exports/link-graph.json', frac => {
         setLoadingProgress(5 + frac * 73);   // 下载阶段（首屏主要耗时）：5% → 78%
       });
+      // 边是节点下标对，还原成 {source, target}（main.js 的共享还原逻辑）
+      if (window.RNExportFormats) graphData = window.RNExportFormats.expandLinkGraph(graphData);
     } catch (e) {
       const countEl = document.getElementById('graph-node-count');
       if (countEl) {

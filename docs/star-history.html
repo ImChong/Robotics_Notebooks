@@ -111,7 +111,14 @@
         return { x: d.counts.map(function (c) { return c[0]; }), y: d.counts.map(function (c) { return c[1]; }) };
       });
 
+      // link-graph / wiki-activity 是紧凑格式，用 main.js 的共享还原逻辑展开（见 expandLinkGraph / expandWikiActivity）
+      function expandExport(kind, data) {
+        var formats = window.RNExportFormats;
+        return formats && typeof formats[kind] === 'function' ? formats[kind](data) : data;
+      }
+
       var addedNodes = getJSON('exports/wiki-activity.json').then(function (a) {
+        a = expandExport('expandWikiActivity', a);
         var out = [];
         a.days.forEach(function (d) {
           d.nodes.forEach(function (n) {
@@ -124,7 +131,9 @@
       // 社区 / 纵深 / 公司节点数：取当前知识图谱快照（仅在切到对应视图时加载）
       var linkGraphPromise = null;
       function linkGraph() {
-        return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json'));
+        return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json').then(function (g) {
+          return expandExport('expandLinkGraph', g);
+        }));
       }
       var companyRoadmapsPromise = null;
       function companyRoadmaps() {

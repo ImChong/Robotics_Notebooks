@@ -25,10 +25,16 @@ git 不可用（浅克隆）时回退 log.md；再无命中则回退 frontmatter
         "has_repo": true
       }
     ],
-    "edges": [{"source": "wiki/methods/mpc.md", "target": "wiki/concepts/wbc.md"}],
+    "edge_format": "index",
+    "edges": [[0, 17]],
     "communities": [{"id": "community-model-based-control", "label": "...", "size": 12}],
     "institutions": [{"id": "nvidia", "label": "英伟达（NVIDIA）", "size": 22}]
   }
+
+边以 nodes 下标对写出（5.2 万条边由重复两个完整路径的 6.2 MB 降到约 0.6 MB），
+前端加载器（docs/main.js 的 expandLinkGraph）读入后还原成 {"source", "target"}；
+wiki-activity.json 同理：node_index 存每个节点一份元数据，days[].nodes 只存 [detail_id, action]
+（docs/main.js 的 expandWikiActivity 还原）。
 
 用法：
   python3 scripts/generate_link_graph.py
@@ -42,6 +48,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
@@ -1652,6 +1659,47 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
     return nodes, edges
 
 
+def pack_edges_as_indices(
+    nodes: list[dict[str, Any]], edges: list[dict[str, str]]
+) -> list[list[int]]:
+    """边 {source, target} → [源下标, 目标下标]（按 nodes 顺序）。端点不在 nodes 里的边丢弃并告警。"""
+    index = {str(node["id"]): i for i, node in enumerate(nodes)}
+    packed: list[list[int]] = []
+    dropped = 0
+    for edge in edges:
+        src = index.get(str(edge["source"]))
+        dst = index.get(str(edge["target"]))
+        if src is None or dst is None:
+            dropped += 1
+            continue
+        packed.append([src, dst])
+    if dropped:
+        print(f"⚠️  {dropped} 条边的端点不在节点表中，已丢弃", file=sys.stderr)
+    return packed
+
+
+def pack_activity_days_compact(
+    days: list[dict[str, Any]],
+) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """wiki-activity 紧凑格式：节点元数据只存一份，每日只存 [detail_id, action]。
+
+    同一节点在各日的 label / type / path / has_repo / community_label 相同（均取自当前节点），
+    3.4 万条引用重复这些字段占了文件的大头。没有 action 的引用写成 [detail_id]。
+    """
+    node_index: dict[str, dict[str, Any]] = {}
+    packed_days: list[dict[str, Any]] = []
+    for day in days:
+        refs: list[list[str]] = []
+        for node in day.get("nodes", []):
+            detail_id = str(node["detail_id"])
+            meta = {k: v for k, v in node.items() if k not in ("detail_id", "action")}
+            node_index.setdefault(detail_id, meta)
+            action = node.get("action")
+            refs.append([detail_id, action] if action else [detail_id])
+        packed_days.append({**day, "nodes": refs})
+    return node_index, packed_days
+
+
 def _compute_graph_stats(
     nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
@@ -1851,7 +1899,8 @@ def main() -> None:
 
     graph = {
         "nodes": nodes,
-        "edges": edges,
+        "edge_format": "index",
+        "edges": pack_edges_as_indices(nodes, edges),
         "communities": communities,
         "institutions": institutions,
     }
@@ -1894,10 +1943,13 @@ def main() -> None:
 
     activity_days = wiki_activity(nodes, community_labels=_community_label_map(community_meta))
     activity_source = "git" if collect_wiki_git_history().touches_by_date else "log.md"
+    activity_node_index, activity_days_compact = pack_activity_days_compact(activity_days)
     activity = {
         "generated_at": stats["generated_at"],
         "source": activity_source,
-        "days": activity_days,
+        "format": "compact-v1",
+        "node_index": activity_node_index,
+        "days": activity_days_compact,
     }
     ACTIVITY_PATH.write_text(
         json.dumps(activity, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"

@@ -609,6 +609,32 @@
     return compactItems;
   }
 
+  // wiki-activity.json 紧凑格式（scripts/generate_link_graph.py 写出）：node_index 存每个节点一份
+  // 元数据，days[].nodes 只存 [detail_id, action]；这里还原成每条引用自带元数据的原结构。
+  // 旧格式（nodes 为对象数组）原样返回。
+  function expandWikiActivity(data) {
+    if (!data || !data.node_index || !Array.isArray(data.days)) return data;
+    var index = data.node_index;
+    var days = data.days;
+    for (var di = 0; di < days.length; di++) {
+      var refs = days[di] && days[di].nodes;
+      if (!Array.isArray(refs) || !refs.length || !Array.isArray(refs[0])) continue;
+      var nodes = [];
+      for (var ri = 0; ri < refs.length; ri++) {
+        var ref = refs[ri];
+        var node = { detail_id: ref[0] };
+        var meta = index[ref[0]];
+        for (var key in meta) {
+          if (Object.prototype.hasOwnProperty.call(meta, key)) node[key] = meta[key];
+        }
+        if (ref[1]) node.action = ref[1];
+        nodes.push(node);
+      }
+      days[di].nodes = nodes;
+    }
+    return data;
+  }
+
   function renderUpdatesItemSuffix(meta) {
     return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
   }
@@ -4283,6 +4309,26 @@
   // 不能就地写 x/y/vx/vy 等模拟状态。
   var _linkGraphData = null;
   var _linkGraphPromise = null;
+
+  // link-graph.json 的边是节点下标对 [i, j]（scripts/generate_link_graph.py 写出，
+  // 比重复两个完整路径小 10 倍）；读入后还原成 {source, target}，各消费方不感知格式。
+  // 旧格式（对象边）原样返回，兼容尚未刷新的缓存与测试夹具。
+  function expandLinkGraph(data) {
+    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.edges)) return data;
+    var edges = data.edges;
+    if (!edges.length || !Array.isArray(edges[0])) return data;
+    var ids = data.nodes.map(function (n) { return n ? n.id : undefined; });
+    var out = [];
+    for (var i = 0; i < edges.length; i++) {
+      var source = ids[edges[i][0]];
+      var target = ids[edges[i][1]];
+      if (source === undefined || target === undefined) continue;
+      out.push({ source: source, target: target });
+    }
+    data.edges = out;
+    return data;
+  }
+
   function ensureLinkGraphData() {
     if (_linkGraphData) return Promise.resolve(_linkGraphData);
     if (_linkGraphPromise) return _linkGraphPromise;
@@ -4292,9 +4338,9 @@
         return r.json();
       })
       .then(function (data) {
-        _linkGraphData = data;
+        _linkGraphData = expandLinkGraph(data);
         _linkGraphPromise = null;
-        return data;
+        return _linkGraphData;
       })
       .catch(function (error) {
         _linkGraphPromise = null;
@@ -4349,6 +4395,8 @@
   // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。
   if (typeof window !== 'undefined') {
     window.RNLinkGraph = { ensure: ensureLinkGraphData };
+    // graph.html / star-history.html 自行 fetch 时也用同一套还原逻辑
+    window.RNExportFormats = { expandLinkGraph: expandLinkGraph, expandWikiActivity: expandWikiActivity };
   }
 
   // 与 scripts/utils/community_labels.community_short_label 对齐：
@@ -6501,6 +6549,7 @@
           if (!response.ok) throw new Error('HTTP ' + response.status);
           return response.json();
         })
+        .then(expandWikiActivity)
         .catch(function (error) {
           console.warn('Wiki activity sync failed:', error);
           return null;

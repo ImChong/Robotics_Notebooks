@@ -132,7 +132,9 @@
   // 共享数据只读，下面只复制出预览子图再交给力模拟
   var graphDataPromise = (window.RNLinkGraph && typeof window.RNLinkGraph.ensure === 'function')
     ? window.RNLinkGraph.ensure()
-    : fetch('exports/link-graph.json').then(function(r){ return r.json(); });
+    : fetch('exports/link-graph.json').then(function(r){ return r.json(); }).then(function (gd) {
+        return window.RNExportFormats ? window.RNExportFormats.expandLinkGraph(gd) : gd;
+      });
   graphDataPromise.then(function(gd) {
     var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
     var communityFill = {};
