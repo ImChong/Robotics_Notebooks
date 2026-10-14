@@ -61,6 +61,7 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 - [CAN 总线（经典）](./can-bus-protocol.md)
 - [CAN FD](./can-fd.md)
 - [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)
+- [EtherCAT 开源库大全（微信策展）](../overview/ethercat-opensource-libs-wechat.md)
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](../comparisons/ethercat-vs-ethernet-ip.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)

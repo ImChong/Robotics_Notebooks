@@ -15,6 +15,7 @@ related:
 sources:
   - ../../sources/repos/soem.md
   - ../../sources/sites/openethercatsociety-github-io.md
+  - ../../sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md
 summary: "SOEM（Simple Open EtherCAT Master）是 OpenEtherCATsociety / RT-Labs 维护的用户态、轻量 EtherCAT 主站 C 库（GPLv3 + 商业双许可）；适合科研原型与嵌入式 MainDevice，与 IgH 内核主站形成选型对照。"
 ---
 
@@ -136,11 +137,13 @@ sequenceDiagram
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 - [CanFestival](./canfestival.md) — CAN 侧 CANopen 栈对照
+- [EtherCAT 开源库大全（微信策展）](../overview/ethercat-opensource-libs-wechat.md) — 主站/从站/绑定/CiA402 全景及 [IgH](./igh-ethercat-master.md)、[SOES](./soes.md)、[pysoem](./pysoem.md) 等节点
 
 ## 参考来源
 
 - [sources/repos/soem.md](../../sources/repos/soem.md)
 - [sources/sites/openethercatsociety-github-io.md](../../sources/sites/openethercatsociety-github-io.md)
+- [sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md](../../sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md)
 - 代码：<https://github.com/OpenEtherCATsociety/SOEM>
 - 项目页：<https://openethercatsociety.github.io/>
 
