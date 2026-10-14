@@ -15,7 +15,7 @@ sources:
 
 # 智元发布分类 01：数据入口
 
-> **图谱分类节点**：对应 [具身智能研究室 · 智元 2026-06 发布解读](https://mp.weixin.qq.com/s/QWj7F2vhhRrRpX41SaNyaA) 的 **01 数据入口**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · 智元 2026-06 发布解读](https://mp.weixin.qq.com/s/QWj7F2vhhRrRpX41SaNyaA) 的 **01 数据入口**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
 
 ## 英文缩写速查
 

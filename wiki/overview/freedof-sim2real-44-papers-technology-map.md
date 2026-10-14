@@ -13,12 +13,12 @@ related:
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/papers/freedof_sim2real_44_catalog.md
-summary: "自由度FreeDof 四条 Sim2Real 路线梳理：44 篇参考文献独立节点索引（22 新建 + 22 复用）。"
+summary: "自由度FreeDof 四条 Sim2Real 路线梳理：44 篇参考文献按章节各有一页，可逐篇点开。"
 ---
 
 # Sim2Real 四条路线：44 篇参考文献阅读坐标
 
-> **本页定位**：为 [自由度FreeDof · 从域随机化到残差学习](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg) 文末 **44 篇参考文献** 提供按章节组织的独立详情节点索引。
+> **本页定位**：为 [自由度FreeDof · 从域随机化到残差学习](https://mp.weixin.qq.com/s/K_6MibGXWwh9OL9eSZxOMg) 文末 **44 篇参考文献** 提供按章节组织的阅读坐标，44 篇各有一页可点开。
 
 ## 一句话观点
 
@@ -37,7 +37,7 @@ summary: "自由度FreeDof 四条 Sim2Real 路线梳理：44 篇参考文献独�
 ## 为什么单独做这张地图
 
 - 原文按 **可辨识性** 串联系统辨识、DR、在线适应、残差学习，参考文献跨四十年与多子领域。
-- **44/44 独立节点**：**22 新建** + **22 复用** 已有 canonical 页；**0 重复 arXiv 节点**。
+- **44 篇逐篇可点开**：每篇各有一页；站内已有深读页的直接指向那一页。
 - 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 配合：对比页讲立场与组合，本页讲 **逐篇入口**。
 
 ## 流程总览

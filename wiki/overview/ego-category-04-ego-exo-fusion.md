@@ -18,7 +18,7 @@ sources:
 
 # Ego 分类 04：Ego+Exo 融合
 
-> **图谱分类节点**：**04 Ego+Exo**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
+> **分类页**：**04 Ego+Exo**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
 ## 英文缩写速查
 

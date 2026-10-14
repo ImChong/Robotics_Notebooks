@@ -23,7 +23,7 @@ sources:
 
 # 世界模型路线 02：联合架构
 
-> **图谱分类节点**：**02 联合架构**；总地图见 [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)。
+> **分类页**：**02 联合架构**；总地图见 [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)。
 
 ## 英文缩写速查
 

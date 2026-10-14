@@ -242,7 +242,7 @@ flowchart LR
 - [DiscoRL Nature 2025](../../sources/papers/discorl_nature_2025.md) — 自动发现学习规则的双层优化与跨环境证据
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — MDP → 策略梯度 → GAE → PPO 的运控教学链
 - [sources/personal/rl_runner_types.md](../../sources/personal/rl_runner_types.md) — Runner 类型谱系（On-policy / Off-policy / 蒸馏 / 评测）
-- [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
+- [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）来源笔记
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 自适应跟踪容差课程 + 非对称 actor-critic（[PBHC](../../sources/repos/pbhc.md)）
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — RL 标准教材，MDP 框架基础（[一手资料](../../sources/sites/incompleteideas-net-rich-sutton.md)）
@@ -251,12 +251,12 @@ flowchart LR
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与 incompleteideas.net 一手资料索引
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
-- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案
-- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
-- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）ingest 摘要
-- [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS：环境感知 VLM 奖励合成 + 人形地形 RL（arXiv:2512.16446）ingest 摘要
+- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）来源笔记
+- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL 来源摘要（AMP/ASE 等）
+- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）来源摘要
+- [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS：环境感知 VLM 奖励合成 + 人形地形 RL（arXiv:2512.16446）来源摘要
 - [sources/repos/boyu_ai_hands_on_rl.md](../../sources/repos/boyu_ai_hands_on_rl.md) — 《动手学强化学习》开源教材与代码（PPO/SAC 等中文实践入口）
-- [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
+- [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）来源笔记
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT 预训练 + PPO 残差后训练的人形 loco-manipulation（arXiv:2510.05070）
 - [sources/personal/residual-policy-reading-list.md](../../sources/personal/residual-policy-reading-list.md) — Residual Policy / Residual RL 九篇论文精读清单（残差谱系编译来源）

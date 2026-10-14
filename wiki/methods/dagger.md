@@ -123,7 +123,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 
 ## 参考来源
 
-- [ross_dagger_aistats_2011.md](../../sources/papers/ross_dagger_aistats_2011.md) — Ross et al. DAgger 原论文 ingest 档案（PMLR AISTATS 2011）
+- [ross_dagger_aistats_2011.md](../../sources/papers/ross_dagger_aistats_2011.md) — Ross et al. DAgger 原论文 来源笔记（PMLR AISTATS 2011）
 - [paper-ross-dagger.md](../entities/paper-ross-dagger.md) — 论文实体页
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — IL 路线合集摘要
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文

@@ -398,7 +398,7 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 ## 参考来源
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 经典论文与教材一手索引
-- [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — ingest 档案（Bloesch 2013 / Hartley InEKF 2020 / Teng 2021）
+- [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — 来源笔记（Bloesch 2013 / Hartley InEKF 2020 / Teng 2021）
 - [sources/papers/lingbot_map_arxiv_2604_14141.md](../../sources/papers/lingbot_map_arxiv_2604_14141.md) — LingBot-Map 流式 GCA
 - [sources/papers/glob3r_arxiv_2607_09225.md](../../sources/papers/glob3r_arxiv_2607_09225.md) — Glob3R 全局 SfM + 3D 基础模型
 - [sources/papers/slamformer_infinity_arxiv_2608_03429.md](../../sources/papers/slamformer_infinity_arxiv_2608_03429.md) — SLAMFormer-∞ 无界 dense mono SLAM

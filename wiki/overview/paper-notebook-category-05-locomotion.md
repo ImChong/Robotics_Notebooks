@@ -89,7 +89,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [RoboMirror](../entities/paper-notebook-robomirror-understand-before-you-imitate-for-vid.md) — 待深读
 - [Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL](../entities/paper-notebook-robust-humanoid-walking-on-compliant-and-uneven.md) — 待深读
 - [Robust and Versatile Bipedal Jumping Control through Reinforcement Learning](../entities/paper-notebook-robust-and-versatile-bipedal-jumping-control-thr.md) — 待深读
-- [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 残差策略的 G1 自然走跑（arXiv:2509.20696；2026-07-28 升格完整实体页）
+- [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — CMG 运动先验 + 残差策略的 G1 自然走跑（arXiv:2509.20696；2026-07-28 已有完整详情页）
 - [SHIELD](../entities/paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md) — 待深读
 - [SKATER](../entities/paper-notebook-skater-synthesized-kinematics-for-advanced-trave.md) — 待深读
 - [Scalable and General Whole-Body Control for Cross-Humanoid Locomotion](../concepts/whole-body-control.md) — 见 wiki 实体页
@@ -102,7 +102,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [TD-GRPC](../entities/paper-notebook-td-grpc-temporal-difference-learning-with-group.md) — 待深读
 - [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-robogauge-moe-quadruped-locomotion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
 - [Traversing Narrow Paths](../entities/paper-notebook-traversing-narrow-paths-a-two-stage-rl-framework.md) — 待深读
-- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — ICRA 2026 视觉/盲策略复合运动；G1/H1 感知缺失下缺口与动态障碍（arXiv:2502.14814；2026-08-28 升格完整实体页）
+- [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — ICRA 2026 视觉/盲策略复合运动；G1/H1 感知缺失下缺口与动态障碍（arXiv:2502.14814；2026-08-28 已有完整详情页）
 - [VideoMimic](../entities/videomimic.md) — 见 wiki 实体页
 - [Walk the PLANC](../entities/paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)
 - [Whole-body Humanoid Robot Locomotion with Human Reference](../entities/paper-notebook-whole-body-humanoid-robot-locomotion-with-human.md) — 待深读
@@ -115,9 +115,8 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[AME：面向泛化腿足运动的注意力地图编码（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md)、[人形 AMP 运动先验：19 篇论文 source 索引](../../sources/papers/humanoid_amp_survey_19_catalog.md)、[Humanoid Motion Intelligence](../../sources/repos/humanoid-motion-intelligence.md)
+- 本类论文来源笔记（节选）：[AME：面向泛化腿足运动的注意力地图编码（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md)、[人形 AMP 运动先验：19 篇论文 source 索引](../../sources/papers/humanoid_amp_survey_19_catalog.md)、[Humanoid Motion Intelligence](../../sources/repos/humanoid-motion-intelligence.md)
 
 ## 推荐继续阅读
 

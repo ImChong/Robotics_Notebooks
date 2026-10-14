@@ -142,7 +142,7 @@ BC 的监督目标只在专家诱导的状态分布 \(d_{\pi^*}\) 上取期望�
 
 ## 参考来源
 
-- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / BC / ACT / Diffusion Policy 的 ingest 档案
+- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / BC / ACT / Diffusion Policy 的 来源笔记
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 生成式模仿学习如何扩展传统 BC
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — chunk / delay 对 BC 复合误差与部署协议的机制分析
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真预训练后的真机 BC 微调对照

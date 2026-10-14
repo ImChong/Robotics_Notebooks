@@ -17,7 +17,7 @@ sources:
 
 # 智元发布分类 02：仿真训练与评测
 
-> **图谱分类节点**：**02 仿真训练与评测**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
+> **分类页**：**02 仿真训练与评测**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
 
 ## 英文缩写速查
 

@@ -77,9 +77,9 @@ flowchart TB
   G4 --> ROBOT
 ```
 
-## 四类问题分类节点（图谱 hub）
+## 四类问题分类（各组一页）
 
-| 组 | 分类节点 | 篇数 |
+| 组 | 分类页 | 篇数 |
 |----|----------|------|
 | 01 数据采集 | [数据采集](./ego-category-01-data-collection.md) | 2 |
 | 02 人→机器人 | [人→机器人](./ego-category-02-human-to-robot.md) | 3 |

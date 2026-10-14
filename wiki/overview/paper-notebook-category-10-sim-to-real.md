@@ -41,9 +41,8 @@ summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[SPI-Active（LeCAR-Lab）](../../sources/repos/spi-active.md)、[HALO：可微仿真闭合重载人形敏捷动作 sim2real 差距](../../sources/papers/humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md)、[DiffCoTune：跨域机器人控制的可微协同调参](../../sources/papers/humanoid_pnb_diffcotune.md)
+- 本类论文来源笔记（节选）：[SPI-Active（LeCAR-Lab）](../../sources/repos/spi-active.md)、[HALO：可微仿真闭合重载人形敏捷动作 sim2real 差距](../../sources/papers/humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md)、[DiffCoTune：跨域机器人控制的可微协同调参](../../sources/papers/humanoid_pnb_diffcotune.md)
 
 ## 推荐继续阅读
 

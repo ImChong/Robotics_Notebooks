@@ -334,7 +334,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 
 ## 参考来源
 
-- [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
+- [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — 来源笔记（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
 - [sources/papers/urdf_link_inertia_real_robot_check.md](../../sources/papers/urdf_link_inertia_real_robot_check.md) — URDF `<inertial>` 与真机对照的规范 / 物理一致性 / Atkeson 回归
 - [sources/blogs/wechat_freedof_sim2real_dynamics_identification.md](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与分级实验设计
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — SysID 作为 Sim2Real 起点、勿在默认 URDF 上盲目扩 DR

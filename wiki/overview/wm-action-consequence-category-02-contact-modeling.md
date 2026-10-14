@@ -14,7 +14,7 @@ sources:
 
 # 世界模型动作后果分类 02：接触状态建模
 
-> **图谱分类节点**：对应 [具身智能研究室 · 世界模型动作后果专题](https://mp.weixin.qq.com/s/a5ZDDv70CLDfY98mfviWuA) 的 **02 接触状态建模** 段；总地图见 [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · 世界模型动作后果专题](https://mp.weixin.qq.com/s/a5ZDDv70CLDfY98mfviWuA) 的 **02 接触状态建模** 段；总地图见 [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)。
 
 ## 英文缩写速查
 

@@ -148,7 +148,7 @@ flowchart TB
 - [具身智能研究室 · BFM 41 篇纵深（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
-- [BFM 论文 ingest（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)
+- [BFM 论文来源笔记（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md) — 任务空间表征对照（知乎专栏）
 
 ## 推荐继续阅读

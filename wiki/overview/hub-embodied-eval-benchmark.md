@@ -75,7 +75,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 # 具身评测基准选型闭环（知识链汇总）
 
-> **知识链定位**：本页是「MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」四层具身评测基准的统一入口，把近周密集 ingest 的 RoboBench / ESI-Bench / Daily-Omni / EWMBench / GigaWorld-1 等评测基准从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)」的评测姊妹篇——前者回答「选哪一类具身大模型」，本知识链回答「怎么评测/证明它」。
+> **知识链定位**：本页是「MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」四层具身评测基准的统一入口，把近期收录的 RoboBench / ESI-Bench / Daily-Omni / EWMBench / GigaWorld-1 等评测基准从分散的实体页收拢为一条可导航的选型链。它是「[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)」的评测姊妹篇——前者回答「选哪一类具身大模型」，本知识链回答「怎么评测/证明它」。
 
 ## 一句话定义
 

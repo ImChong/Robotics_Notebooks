@@ -226,7 +226,7 @@ flowchart TB
 
 #### 推荐浏览路径
 
-1. 站内 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — **564** 条逐篇独立 detail 节点（arXiv 去重链 canonical 页）
+1. 站内 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) — **564** 条逐篇可点开（同一 arXiv 只有一页）
 2. [Research map](https://rcl-robotics.github.io/Awesome-World-Action-Models/map/) — 视觉化类别与架构
 3. [Paper library](https://rcl-robotics.github.io/Awesome-World-Action-Models/papers/) — 多维筛选
 4. [Reading reports](https://rcl-robotics.github.io/Awesome-World-Action-Models/reports/) — 单篇 evidence 解读

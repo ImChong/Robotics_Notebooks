@@ -54,7 +54,7 @@ project_id: pi05-open-world-vla
 
 # π0.5（HMI P059）
 
-**π0.5**（*π0.5: A Vision-Language-Action Model with Open-World Generalization*，2025，[arXiv:2504.16054](https://arxiv.org/abs/2504.16054)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P059**，主分类为 **世界模型、VLA与Agent**。官方资料：[项目页](https://www.pi.website/blog/pi05) · [论文 PDF](https://www.pi.website/download/pi05.pdf) · [openpi 代码仓](https://github.com/Physical-Intelligence/openpi)。本页为本库独立详情节点（编译自原论文、官方项目页与代码仓，并参考 HMI 策展解读，非原文镜像）。
+**π0.5**（*π0.5: A Vision-Language-Action Model with Open-World Generalization*，2025，[arXiv:2504.16054](https://arxiv.org/abs/2504.16054)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P059**，主分类为 **世界模型、VLA与Agent**。官方资料：[项目页](https://www.pi.website/blog/pi05) · [论文 PDF](https://www.pi.website/download/pi05.pdf) · [openpi 代码仓](https://github.com/Physical-Intelligence/openpi)。本页编译自原论文、官方项目页与代码仓，并参考 HMI 策展解读，非原文镜像。
 
 ## 一句话定义
 
@@ -76,7 +76,7 @@ project_id: pi05-open-world-vla
 ## 为什么重要
 
 - Flow matching很适合精细连续控制，但不方便与文本、网页问答和只有语义标注的数据用同一个自回归目标混合。π0.5先用FAST将连续动作压缩成离散token，与多本体轨迹、高层语义预测和web数据共同预训练。这个阶段的目标不是达到最精细的底层控制，而是建立场景、任务、本体和动作语义之间的广泛对应。
-- 在 HMI 六条技术路线中属于 **世界模型、VLA与Agent**，补齐「总索引有条目、本库无下钻页」的缺口。
+- 在 HMI 六条技术路线中属于 **世界模型、VLA与Agent**，是这条路线下可直接下钻的一页。
 - 与相邻方法对照时，优先看问题设定与接口，而不是只记算法名。
 
 ## 核心信息
@@ -149,11 +149,11 @@ sequenceDiagram
 
 ## 结论
 
-**π0.5 应作为 HMI「世界模型、VLA与Agent」线上的独立知识节点阅读：先抓住其真正改变的问题接口，再决定是否进入复现或对比实验。**
+**π0.5 应作为 HMI「世界模型、VLA与Agent」线上的独立一页来读：先抓住其真正改变的问题接口，再决定是否进入复现或对比实验。**
 
 - 核心贡献是问题表达或管线接口，而不只是单一网络结构名。
 - 开源状态：部分开源（openpi；完整数据与训练管线未全部公开）。
-- 与本库已有相邻页交叉阅读，避免重复造页。
+- 可与站内相邻页交叉阅读。
 - 数值、消融与许可以一手来源为准；本页是编译索引。
 - openpi 已发布可运行训练/推理代码及部分 checkpoint；完整预训练数据与完整训练数据配方仍未全部公开。
 

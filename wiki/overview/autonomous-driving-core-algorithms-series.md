@@ -34,12 +34,12 @@ sources:
   - ../../sources/papers/m4world_arxiv_2607_14005.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
-summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5/5 篇正文已入库；端到端续篇见十大算法地图。"
+summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D 检测→规划控制→SLAM/高精地图→跟踪与轨迹预测；5 篇正文已全部收录；端到端续篇见十大算法地图。"
 ---
 
 # 《自动驾驶核心算法盘点》专栏技术地图
 
-> **本页定位**：为深蓝AI 微信公众号 [**《自动驾驶核心算法盘点》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212) 专辑提供 **父节点阅读坐标**；提炼模块边界与经典算法锚点，不复述公式推导。截至 2026-07-21 **已入库正文 5/5 篇**。
+> **本页定位**：为深蓝AI 微信公众号 [**《自动驾驶核心算法盘点》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212) 专辑提供 **父节点阅读坐标**；提炼模块边界与经典算法锚点，不复述公式推导。截至 2026-07-21 **5 篇正文已全部收录**。
 
 ## 一句话观点
 
@@ -87,7 +87,7 @@ flowchart TB
 | 04 | SLAM 与高精地图 | [source](../../sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md) | [导航·SLAM 栈](./navigation-slam-autonomy-stack.md)、[LIO-SAM](../entities/lio-sam.md)、[ORB-SLAM3](../entities/orb-slam3.md) | 视觉/激光/紧耦合与在线向量地图如何演进？ |
 | 05 | 跟踪与轨迹预测 | [source](../../sources/blogs/wechat_shenlan_ai_ad_tracking_prediction.md) | [Kalman](../formalizations/kalman-filter.md)、检测方法页 | 如何从帧级框走到连续实体与多模态未来？ |
 
-## 已入库篇：算法速查
+## 各篇算法速查
 
 ### 01 — 2D 目标检测
 
@@ -163,7 +163,7 @@ flowchart TB
 ## 局限与风险
 
 - 微信策展体例：引用量、SOTA、FPS、「量产最广」等数字会过时；以论文与官方仓库为准。
-- 专辑偏经典模块化栈；端到端驾驶的系统盘点已升格为独立地图：[端到端自动驾驶十大前沿算法](./e2e-autonomous-driving-top10-algorithms.md)（UniAD→DiffusionDrive，十篇完整实体）。驾驶 VLA 对照：[S²-VLA](../entities/paper-s-squared-vla.md)、[X-Foresight](../entities/paper-x-foresight.md)。
+- 专辑偏经典模块化栈；端到端驾驶的系统盘点另有独立地图：[端到端自动驾驶十大前沿算法](./e2e-autonomous-driving-top10-algorithms.md)（UniAD→DiffusionDrive，十篇完整实体）。驾驶 VLA 对照：[S²-VLA](../entities/paper-s-squared-vla.md)、[X-Foresight](../entities/paper-x-foresight.md)。
 - 第 1–2 篇经 **短链** 补抓；长链若再遇 CAPTCHA，以 short_url 与 raw 归档为准。
 
 ## 关联页面

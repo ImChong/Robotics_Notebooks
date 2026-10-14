@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 10：从人类第一视角视频学习
 
-> **图谱分类节点**：**10 从人类第一视角视频学习**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**10 从人类第一视角视频学习**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

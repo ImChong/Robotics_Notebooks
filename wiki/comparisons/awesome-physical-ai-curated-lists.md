@@ -20,7 +20,7 @@ summary: "同名 GitHub 仓 natnew vs aichr 的 Physical AI 策展清单选型�
 
 # Physical AI 策展清单：natnew vs aichr
 
-GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库时须按 **org 前缀** 区分，避免链错或重复节点。
+GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引用时按 **org 前缀** 区分，别混成一个。
 
 ## 一句话定义
 
@@ -51,11 +51,11 @@ GitHub 上存在两个均名为 **awesome-physical-ai** 的独立仓库，入库
 | 自动化 | issue triage workflow | 标准 CONTRIBUTING |
 
 
-## 子节点覆盖（2026-09-20 纵深）
+## 清单条目覆盖（2026-09-20）
 
-去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+两份清单合并去重后共 **384** 条，每条各有一页可点开（两清单同时出现 33 条）。
 
-完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+完整条目表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
 
 ## 怎么选
 

@@ -249,7 +249,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ## 参考来源
 
-### ingest 档案（sources/ 归档）
+### 来源笔记（sources/ 归档）
 
 - [sources/papers/nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md)、[sources/sites/aus-bot-nestdex.md](../../sources/sites/aus-bot-nestdex.md) — NestDex：内层手技能 copilot 采数 + 独立外层 visuomotor（arXiv:2608.13362；未开源）
 - [sources/papers/spd_corl_2026.md](../../sources/papers/spd_corl_2026.md)、[sources/sites/spd-bot.md](../../sources/sites/spd-bot.md) — SPD：仿真 VR 灵巧手预训练 75 h + 真机 1–2 h 微调（CoRL 2026；代码数据待发布）

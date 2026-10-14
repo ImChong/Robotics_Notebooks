@@ -234,7 +234,7 @@ flowchart TD
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身智能发布归档
 - [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md) — BFM 综述 taxonomy（arXiv:2506.20487）
 - [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md) — awesome-bfm-papers 精选列表
-- [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM (arXiv:2509.13780) ingest 摘要
+- [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM (arXiv:2509.13780) 来源摘要
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 论文与博客归档（2026）
 - [imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/star_vla.md](../../sources/papers/star_vla.md)

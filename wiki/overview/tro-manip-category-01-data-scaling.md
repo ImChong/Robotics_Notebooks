@@ -16,7 +16,7 @@ sources:
 
 # T-RO 分类 01：数据规模化
 
-> **图谱分类节点**：对应 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3kr9iQjhRRuXQ) 的 **01 数据规模化** 分组；总地图见 [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)。
+> **分类页**：对应 [深蓝具身智能 · T-RO 2026 操作学习精选](https://mp.weixin.qq.com/s/nswA-jCGC3kr9iQjhRRuXQ) 的 **01 数据规模化** 分组；总地图见 [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)。
 
 ## 英文缩写速查
 

@@ -11,12 +11,12 @@ related:
 sources:
   - ../../sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md
   - ../../sources/patents/xpeng_iron_patents_cn.md
-summary: "小鹏 IRON 54 项 CN 专利阅读地图：本体头颈臂、灵巧手、腿腰动力、双足步态、全身具身；54/54 独立实体节点。"
+summary: "小鹏 IRON 54 项 CN 专利阅读地图：本体头颈臂、灵巧手、腿腰动力、双足步态、全身具身；54 项专利各有一页，可逐项点开。"
 ---
 
 # 小鹏 IRON · 54 项专利技术地图
 
-> **本页定位**：[AI工业 · 54 项专利拆解](https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg) 的 **54/54 独立节点索引** — 每项专利一个 [`wiki/entities/patent-xpeng-cn*`](../entities/) 详情页，**不合并、不重复 arXiv/论文节点**。
+> **本页定位**：[AI工业 · 54 项专利拆解](https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg) 的阅读地图 — 54 项专利各有一页，可逐项点开；专利页与论文页分开，便于按专利号核对。
 
 ## 一句话观点
 
@@ -34,7 +34,7 @@ summary: "小鹏 IRON 54 项 CN 专利阅读地图：本体头颈臂、灵巧手
 ## 为什么单独做这张地图
 
 - 一文 **54 件 CN 专利**，跨度覆盖 **硬件 + 步态 + 具身软件**。
-- **54/54 独立节点**：每项 [`patent-xpeng-cn*`](../entities/) 唯一对应一件专利号。
+- **54 项各有一页**：每页对应一件专利号，可按专利号核对。
 - 与 [XPACE](../entities/paper-xpace.md)、[ROVE](../entities/paper-rove-humanoid-vla-intervention.md) 等 **论文实体互补** — 专利侧看 **机构与控制权利要求布局**。
 
 ## 流程总览

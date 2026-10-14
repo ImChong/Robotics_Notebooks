@@ -83,7 +83,7 @@ flowchart LR
 - 搭一个最小采集台账：每条 episode 记录操作者、场景、本体、失败原因，为 Stage 2 的过滤留下依据
 
 ### 推荐读什么
-- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式与独立实体索引，本阶段的全景页
+- [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式，提到的项目/论文各有一页；本阶段的全景页
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态

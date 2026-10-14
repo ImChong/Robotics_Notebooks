@@ -85,7 +85,7 @@ sources:
 
 二者关系：loco-manipulation 可视为 mobile manipulation 在腿式平台上的特化——移动能力从"底盘导航"换成"动态行走"后，问题重心从任务规划下沉到全身动力学协调。
 
-**本知识库约定**：
+**本页约定**：
 - 中文"移动操作"作为 **Loco-Manipulation** 的译名与统称使用；本页以腿式（人形）loco-manipulation 为主线。
 - 少量轮式 / 移动底座工作（[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md)、[FastGrasp](../entities/paper-fastgrasp-mobile-dexterous-grasping.md)、[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) 等）按学术定义属 mobile manipulation，因方法论相通收录进本页对应技术路线（ABot-M0.5 在[世界–动作模型](#世界-动作模型-用未来预测驱动全身动作)组，FastGrasp / 3D-IC 在[轮式 / 移动底座对照](#轮式-移动底座对照-学术定义属-mobile-manipulation)组），小节内已标注"轮式 / 移动底座"；实体层用 `mobile-manipulation` tag 区分。
 - 系统学习路径见 [Loco-Manipulation 纵深路线](../../roadmap/depth-loco-manipulation.md)。
@@ -444,7 +444,7 @@ flowchart TD
 
 ### 策展地图与技术全景
 
-成批 ingest 的入口页，适合做面上的补漏。
+成批收录论文的入口页，适合做面上的补漏。
 
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) — 2026-06 长文：十类能力形成顺序（94+ 篇已挂接既有实体）

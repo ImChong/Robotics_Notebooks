@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 07：数据采集与遥操作系统
 
-> **图谱分类节点**：**07 数据采集与遥操作系统**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**07 数据采集与遥操作系统**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

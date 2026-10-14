@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作
 
-> **图谱分类节点**：**03 视觉感知驱动的人形移动操作**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **分类页**：**03 视觉感知驱动的人形移动操作**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 

@@ -82,9 +82,9 @@ flowchart TB
   BFM & AG --> ST --> DEPLOY
 ```
 
-## 六组分类节点（图谱 hub）
+## 六组分类（各组一页）
 
-| 组 | 分类节点 | 项目 | 核心问题 |
+| 组 | 分类页 | 项目 | 核心问题 |
 |----|----------|------|----------|
 | 01 | [数据入口](./agibot-release-category-01-data-entry.md) | AGIBOT WORLD 2026 | **数据离真实部署有多近？** |
 | 02 | [仿真训练与评测](./agibot-release-category-02-sim-training-eval.md) | Genie Sim 3.0 | **场景生成能否进入训练–评测–微调闭环？** |

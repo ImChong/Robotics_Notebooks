@@ -70,9 +70,8 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[ToddlerBot](../../sources/papers/loco_manip_161_survey_141_toddlerbot.md)、[CYJ Hand-0：21 自由度 SMA-电机混合驱动灵巧手](../../sources/papers/humanoid_pnb_a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md)、[Parallel_Ankle_Joint](../../sources/repos/parallel_ankle_joint.md)
+- 本类论文来源笔记（节选）：[ToddlerBot](../../sources/papers/loco_manip_161_survey_141_toddlerbot.md)、[CYJ Hand-0：21 自由度 SMA-电机混合驱动灵巧手](../../sources/papers/humanoid_pnb_a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md)、[Parallel_Ankle_Joint](../../sources/repos/parallel_ankle_joint.md)
 
 ## 推荐继续阅读
 

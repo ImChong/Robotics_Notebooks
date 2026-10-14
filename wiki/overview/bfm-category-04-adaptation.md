@@ -26,7 +26,7 @@ sources:
 
 # BFM 分类 04：Adaptation
 
-> **图谱分类节点**：对应 [具身智能研究室 · BFM 41 篇专题](https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g) 与 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 的 **04 Adaptation** 分组；本页汇集该组 **4 篇** 论文的站内实体与 source 索引（awesome 列表 2026-07 增至 42 篇，本组新增 Any2Any）。总地图见 [BFM 技术地图](./bfm-41-papers-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · BFM 41 篇专题](https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g) 与 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 的 **04 Adaptation** 分组；本页汇集该组 **4 篇** 论文的站内实体与 source 索引（awesome 列表 2026-07 增至 42 篇，本组新增 Any2Any）。总地图见 [BFM 技术地图](./bfm-41-papers-technology-map.md)。
 
 ## 英文缩写速查
 

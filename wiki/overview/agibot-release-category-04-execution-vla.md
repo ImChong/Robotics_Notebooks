@@ -16,7 +16,7 @@ sources:
 
 # 智元发布分类 04：语义执行基座
 
-> **图谱分类节点**：**04 语义到动作执行**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
+> **分类页**：**04 语义到动作执行**；总地图见 [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)。
 
 ## 英文缩写速查
 

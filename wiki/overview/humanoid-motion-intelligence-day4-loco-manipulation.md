@@ -16,7 +16,7 @@ summary: "Day 4 独立导读：按全身协调、接触柔顺和物体任务闭�
 
 # 具身智能从入门到精通 Day 4：移动操作
 
-> **文章节点**：Yuanxq（具身智能研究室）[原文](https://mp.weixin.qq.com/s/UeBpHKuQDRnXG9lAnoH6AA)的站内导读。各论文/项目有各自的独立详情入口。
+> **文章导读**：Yuanxq（具身智能研究室）[原文](https://mp.weixin.qq.com/s/UeBpHKuQDRnXG9lAnoH6AA)的站内导读。各论文/项目有各自的独立详情入口。
 
 ## 一句话观点
 

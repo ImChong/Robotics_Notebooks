@@ -284,7 +284,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — IsaacGym→MuJoCo→G1 高动态 WBT sim2real（[PBHC](../../sources/repos/pbhc.md)）
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
-- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
+- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF 来源摘要
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真遥操作预训练 + 真机微调（非零样本）
 - [Robot Juggling 论文归档](../../sources/papers/robot_juggling_arxiv_2608_26800.md) — 不完美先验 + 真机记忆学习（非 zero-shot）
 - [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
@@ -300,7 +300,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — NVIDIA SO-101 动手课：DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照与 VLA workflow
 - **ingest 档案：** [sources/courses/nvidia_getting_started_isaac_lab.md](../../sources/courses/nvidia_getting_started_isaac_lab.md) — Isaac Lab 入门课模块 4：reality gap 三源与三类桥接
 - **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
-- [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
+- [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）来源摘录
 - **ingest 档案：** [sources/repos/awesome-real2sim2real.md](../../sources/repos/awesome-real2sim2real.md) — Awesome-Real2Sim2Real 迁移闭环策展清单
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：>1m/s 敏捷动作的额外 DR + 零样本 sim2real 完成 5m×5m 障碍课
 - **ingest 档案：** [sources/papers/slowrl_arxiv_2603_17092.md](../../sources/papers/slowrl_arxiv_2603_17092.md) — SLowRL：LoRA + Recovery 安全真机微调（Go2）

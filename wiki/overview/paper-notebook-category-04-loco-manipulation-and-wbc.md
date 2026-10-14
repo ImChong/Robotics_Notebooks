@@ -25,7 +25,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [A Behavior Architecture for Fast Humanoid Robot Door Traversals](../entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md) — 待深读
 - [A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot](../entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md) — 待深读
 - [AMO](../entities/paper-loco-manip-161-135-amo.md) — 见 wiki 实体页
-- [AdaMimic](../entities/paper-adamimic.md) — ICRA 2026 Oral；单 clip 自适应全身跟踪（已 ingest）
+- [AdaMimic](../entities/paper-adamimic.md) — ICRA 2026 Oral；单 clip 自适应全身跟踪
 - [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — 见 wiki 实体页
 - [Agility Meets Stability](../entities/agibot-bfm-2.md) — 见 wiki 实体页
 - [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md) — 见 wiki 实体页
@@ -144,7 +144,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [TextOp](../methods/genmo.md) — 见 wiki 实体页
 - [Thor](../entities/paper-hrl-stack-42-thor.md) — 见 wiki 实体页
 - [λ₀ / HumanVerse-500](../entities/paper-lambda0-egocentric-human-pretraining.md) — 第一视角全身人类数据预训练的人形 VLA
-- [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](../entities/paper-adamimic.md) — 见 [AdaMimic](../entities/paper-adamimic.md)（ICRA 2026 Oral，已 ingest）
+- [Towards Adaptable Humanoid Control via Adaptive Motion Tracking](../entities/paper-adamimic.md) — 见 [AdaMimic](../entities/paper-adamimic.md)（ICRA 2026 Oral）
 - [Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning](../entities/paper-adaptive-humanoid-control.md) — 见 wiki 实体页
 - [Towards Versatile Humanoid Table Tennis](../entities/paper-notebook-towards-versatile-humanoid-table-tennis.md) — 待深读
 - [TrajBooster](../entities/paper-loco-manip-161-080-trajbooster.md) — 见 wiki 实体页
@@ -174,9 +174,8 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[161 篇论文看人形移动操作技术版图](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[Loco-Manip 接触、力控与 VLA 梳理](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- 本类论文来源笔记（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[161 篇论文看人形移动操作技术版图](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[Loco-Manip 接触、力控与 VLA 梳理](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
 
 ## 推荐继续阅读
 

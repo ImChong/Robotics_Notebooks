@@ -27,7 +27,7 @@ sources:
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
-summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim → Real2Sim2Real 闭环组织的迁移论文精选集；站内已节点化为技术地图 + paper-sa 详情页。"
+summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim → Real2Sim2Real 闭环组织的迁移论文精选集；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
 # Awesome-Real2Sim2Real（sun254667 精选集）
@@ -54,17 +54,17 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - **与站内选型页对齐**：[Sim2Real](../concepts/sim2real.md)、[残差适配 vs Real2Sim vs 真机 RL](../comparisons/sim2real-vs-real2sim-fine-tuning.md)、[CRISP](../methods/crisp-real2sim.md) 可直接对照清单分节。
 - **覆盖基础模型增强迁移**：Cosmos / 生成式 3D 世界等与 [Awesome World Models](./awesome-world-models.md) 交叉。
 
-## 站内节点化
+## 站内怎么读
 
 - **技术地图：** [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
-- **目录 source：** [sun_awesome_r2s2r_catalog.md](../../sources/papers/sun_awesome_r2s2r_catalog.md)
-- 新建清单索引页 `paper-sa-*`；已有同 arXiv canonical `paper-*` 则复用。
+- **清单目录：** [sun_awesome_r2s2r_catalog.md](../../sources/papers/sun_awesome_r2s2r_catalog.md)
+- 清单里的论文若站内已有深读页，会直接指向那一页。
 
 ## 核心结构（怎么读）
 
 | 区块 | 内容侧重 |
 |------|----------|
-| Surveys | MDP 视角 Sim2Real taxonomy、物理仿真器角色；**063** [Reality Gap 综述（Annual Review 2026）](./paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md) 已深读节点化 |
+| Surveys | MDP 视角 Sim2Real taxonomy、物理仿真器角色；**063** [Reality Gap 综述（Annual Review 2026）](./paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md) 已有深读页 |
 | Sim-to-Real | RL 迁移 / 零样本 / DR·适配 / 基础模型增强 |
 | Real-to-Sim | 视频重建（含 CRISP）/ 操作与交互场景 |
 | Real2Sim2Real | 3DGS 框架与仿真管线闭环；avatar 阴影见 [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) |
@@ -72,13 +72,13 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 
 ## 局限与使用注意
 
-- **新建清单、星标仍低**：结构完整但条目密度会快速变化；入库后宜定期对照 upstream。
+- **新建清单、星标仍低**：结构完整但条目密度会快速变化；阅读时宜对照 upstream 最新版本。
 - **非工程 Runbook**：部署清单仍以站内 [Sim2Real Checklist](../queries/sim2real-checklist.md) / [闭环误差分层](../queries/sim2real-closed-loop-engineering.md) 为准。
 - **开源状态逐条核**：论文宣称 code 不等于项目页已挂链接。
 
 ## 关联页面
 
-- [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) — 清单论文 → 独立详情节点
+- [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) — 清单论文逐条可点开
 - [Sim2Real（知识链汇总）](../overview/hub-sim2real.md) / [Sim2Real（概念）](../concepts/sim2real.md)
 - [Sim2Real Approaches](../comparisons/sim2real-approaches.md)
 - [Sim2Real 残差适配 vs Real2Sim vs 真机 RL](../comparisons/sim2real-vs-real2sim-fine-tuning.md)

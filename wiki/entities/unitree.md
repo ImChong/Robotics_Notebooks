@@ -10,7 +10,7 @@ sources:
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/unitree_slam.md
-summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓有详情 wiki 节点（SDK2/ROS/RL/遥操作/UnifoLM 等），周边仓合并或仅 sources 归档以避免 stub 与重复节点。"
+summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓（SDK2/ROS/RL/遥操作/UnifoLM 等）各有站内详情页，周边仓只保留来源归档。"
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
@@ -172,7 +172,7 @@ Unitree 现在已经明显不只是四足公司。
 
 #### 3.1 官方 GitHub 组织（unitreerobotics）
 
-组织级归档见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。截至 **2026-07-24** 组织约 **52** 个公开仓。wiki 侧只为**研究主线与可合并产品线**建立有详情的独立节点；周边/重复仓保留 `sources/repos/` 归档并在下表列出，**不**再生成空 stub，以免图谱重复。
+组织级归档见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。截至 **2026-07-24** 组织约 **52** 个公开仓。站内只为**研究主线与可合并产品线**写有详情的页面；周边/重复仓只保留来源归档并在下表列出。
 
 按研究用途可压缩为五条主线（代表仓均已独立成页）：
 
@@ -231,16 +231,16 @@ flowchart TB
 
 模型资产注意：GitHub [unitree_model](./unitree-model.md) 已标注 **deprecated**，后续 USD 更新以 Hugging Face [`unitreerobotics/unitree_model`](https://huggingface.co/datasets/unitreerobotics/unitree_model) 为准。
 
-##### wiki 独立节点（有详情）与归档策略
+##### 哪些仓有站内详情页
 
-**A. 已升格详情页（优先阅读）**
+**A. 有站内详情页（优先阅读）**
 
-| 主线 | wiki 节点 | 覆盖的上游仓 |
+| 主线 | 站内页 | 覆盖的上游仓 |
 |------|-----------|--------------|
 | 底层 SDK | [unitree_sdk2](./unitree-sdk2.md) | `unitree_sdk2` + `unitree_sdk2_python`；周边 `unitree_dds_wrapper` / `unitree_actuator_sdk` 仅 sources |
 | 旧代 SDK | [unitree_legged_sdk](./unitree-legged-sdk.md) | `unitree_legged_sdk` |
 | ROS 2 | [unitree_ros2](./unitree-ros2.md) | `unitree_ros2`（**v0.3.0**：G1 双臂 / Dex3 / 手部 msg 对齐 SDK2）；`unitree_ros2_to_real`（Go1 遗产）仅 sources 脚注 |
-| ROS1 | [unitree_ros](./unitree-ros.md) | `unitree_ros` + `unitree_ros_to_real`（同页，不拆第二节点） |
+| ROS1 | [unitree_ros](./unitree-ros.md) | `unitree_ros` + `unitree_ros_to_real`（同一页） |
 | 仿真 | [unitree_mujoco](./unitree-mujoco.md)、[unitree_guide](./unitree-guide.md)、[unitree_model](./unitree-model.md) | 对应同名仓（model 为 deprecated→HF 指针） |
 | RL | [unitree_rl_gym](./unitree-rl-gym.md)、[unitree_rl_lab](./unitree-rl-lab.md)、[unitree_rl_mjlab](./unitree-rl-mjlab.md) | 三选一后端 |
 | 遥操作 / IL | [xr_teleoperate](./xr-teleoperate.md)、[unitree_sim_isaaclab](./unitree-sim-isaaclab.md)、[unitree_lerobot](./unitree-lerobot.md) | XR 周边 `televuer`/`teleimager`/`kinect_teleoperate` 并入 XR 页 sources |

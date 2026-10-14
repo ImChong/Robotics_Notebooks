@@ -32,7 +32,7 @@ sources:
 ## 为什么重要
 
 - **目录 → 正文。** 上游擅长按问题地图策展；本库负责可交叉引用的机制/工程深读。
-- **禁止重复节点。** 同一论文若已有 `paper-*` / `methods/*` 详情页，导读只挂接，不另建平行实体。
+- **同一论文只有一页。** 已有详情页的论文，导读直接指向那一页。
 - **与开源主表互补。** 代码入口见 [开源项目主表导读](./hmi-opensource-projects-coverage.md)；本页覆盖论文解读 ID（P001–P191）。
 
 ## 核心原理
@@ -49,7 +49,7 @@ sources:
 |------|------|
 | 上游论文条目（2026-09-10） | **191**（`P001`–`P191`） |
 | 已接到本库详情 | **184**（P001–P145 全覆盖 + P146–P191 中 39 条复用已有页） |
-| 待补独立详情 | **7**：P155 StableMimic、P167 VITRA、P169 Phantom、P171 DexMV、P175 DexNDM、P184 VINE、P185 ALOE — 先读上游 `Pxxx`，不新建平行实体 |
+| 待补独立详情 | **7**：P155 StableMimic、P167 VITRA、P169 Phantom、P171 DexMV、P175 DexNDM、P184 VINE、P185 ALOE — 站内暂无详情页，先读上游 `Pxxx` |
 | 2026-07-31 快照 | 当时 145/145；本次只增量挂接，不重做旧表 |
 
 ## 工程实践
@@ -57,7 +57,7 @@ sources:
 | 场景 | 做法 |
 |------|------|
 | 对照上游一篇论文 | 先点本页左侧 `Pxxx` 读策展摘要，再点右侧本库详情看机制/评测/开源边界 |
-| 发现待补行 | 不要在本库另造同名实体；需要深读时对那一篇单独 ingest |
+| 发现待补行 | 站内暂无详情页，先读上游解读；补上后会在本页更新 |
 | 查代码 | 论文开源标注以 arXiv / 项目页为准，仓库入口见 [开源主表导读](./hmi-opensource-projects-coverage.md) |
 
 ## 导读总表（按上游分组）
@@ -285,14 +285,14 @@ sources:
 
 ## 新增论文（P191 快照之后）
 
-本页上游编号表仍是 2026-09-10 的 P001–P191 快照；以下是之后单独 ingest 的相关论文，不计入该快照条目数：
+本页上游编号表仍是 2026-09-10 的 P001–P191 快照；以下是之后站内新增的相关论文，不计入该快照条目数：
 
 - [Continual Humanoid Motion Learning](../entities/paper-continual-humanoid-motion-learning.md) — arXiv:2610.04231，持续人形动作学习、相似度引导 LoRA-PNN。
 
 ## 局限与风险
 
 - **导读是快照，不是镜像。** 上游会继续加 `Pxxx`；本页以 2026-09-10 的 191 条为准，新增条目先读上游总索引。
-- **7 条待补**不另建平行实体：StableMimic / VITRA / Phantom / DexMV / DexNDM / VINE / ALOE。需要深读时再单独 ingest。
+- **7 条暂无站内详情页**：StableMimic / VITRA / Phantom / DexMV / DexNDM / VINE / ALOE，先读上游解读。
 - **同主题共用一页**（如 RGMT 挂 Any2Track、GEN-0 挂 Generalist AI、Matrix-Game 3.5 挂 3.x 策展）时，先看该页开头说明再分支。
 
 ## 关联页面

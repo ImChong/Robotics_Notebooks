@@ -41,11 +41,11 @@ summary: "aichr 组织维护的 Physical AI 策展清单：VLA、3D 视觉、仿
 - **CC0 列表：** 鼓励 fork/重组；与 natnew MIT 仓许可证不同，引用时注意 **条目上游 License**。
 
 
-## 子节点覆盖（2026-09-20 纵深）
+## 清单条目覆盖（2026-09-20）
 
-去重后 **384** 条独立详情节点（新建 241，复用 143；两清单同时出现 33）。
+两份清单合并去重后共 **384** 条，每条各有一页可点开（两清单同时出现 33 条）。
 
-完整子节点表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
+完整条目表见 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)；并集目录见 [awesome-physical-ai-union-catalog.md](../../sources/repos/awesome-physical-ai-union-catalog.md)。
 
 ## 核心结构
 

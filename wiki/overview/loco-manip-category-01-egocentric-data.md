@@ -17,7 +17,7 @@ sources:
 
 # Loco-Manip 分类 01：第一视角数据
 
-> **图谱分类节点**：对应 [具身智能研究室 · Loco-Manip 8 篇周报](https://mp.weixin.qq.com/s/Ez87ljBYmCyIpLKjMjEyaQ) 的 **01 第一视角数据** 分组；总地图见 [Loco-Manip 8 篇技术地图](./loco-manip-8-papers-technology-map.md)。
+> **分类页**：对应 [具身智能研究室 · Loco-Manip 8 篇周报](https://mp.weixin.qq.com/s/Ez87ljBYmCyIpLKjMjEyaQ) 的 **01 第一视角数据** 分组；总地图见 [Loco-Manip 8 篇技术地图](./loco-manip-8-papers-technology-map.md)。
 
 ## 英文缩写速查
 

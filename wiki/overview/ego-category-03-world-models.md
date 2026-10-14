@@ -21,7 +21,7 @@ sources:
 
 # Ego 分类 03：世界模型
 
-> **图谱分类节点**：**03 世界模型**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
+> **分类页**：**03 世界模型**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
 ## 英文缩写速查
 

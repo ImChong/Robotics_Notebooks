@@ -50,9 +50,8 @@ summary: "Paper Notebooks 分类 08：导航（19 篇深读笔记索引）。"
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- [schema/paper-notebook-index.json](../../schema/paper-notebook-index.json)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
-- 本类论文 ingest 归档（节选）：[EgoNav：从人类数据学习人形导航](../../sources/papers/humanoid_pnb_egonav.md)、[ARMOR：人形避障与运动规划的第一人称感知](../../sources/papers/humanoid_pnb_armor-egocentric-perception-for-humanoid-robot-c.md)、[Gallant](../../sources/papers/loco_manip_161_survey_137_gallant.md)
+- 本类论文来源笔记（节选）：[EgoNav：从人类数据学习人形导航](../../sources/papers/humanoid_pnb_egonav.md)、[ARMOR：人形避障与运动规划的第一人称感知](../../sources/papers/humanoid_pnb_armor-egocentric-perception-for-humanoid-robot-c.md)、[Gallant](../../sources/papers/loco_manip_161_survey_137_gallant.md)
 
 ## 推荐继续阅读
 

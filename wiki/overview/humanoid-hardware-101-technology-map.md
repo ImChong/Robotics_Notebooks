@@ -85,9 +85,9 @@ flowchart TB
   EC -.->|约束设计| ACT
 ```
 
-## 七类子系统分类节点（图谱 hub）
+## 七类子系统分类（各组一页）
 
-| 组 | 分类节点 | 公众号章节 |
+| 组 | 分类页 | 公众号章节 |
 |----|----------|------------|
 | 01 机身与材料 | [机身与材料](./humanoid-hardware-101-chassis-materials.md) | 机身骨架 |
 | 02 传动与感知链 | [传动与感知链](./humanoid-hardware-101-actuation-sensing-chain.md) | 电机、减速器、编码器 |
