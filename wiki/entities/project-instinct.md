@@ -4,7 +4,7 @@ type: entity
 tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program, shanghai-pil, tsinghua]
 status: complete
 date: 2026-05-12
-updated: 2026-09-15
+updated: 2026-10-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-amp-survey-19-embrace_collisions.md
@@ -67,8 +67,10 @@ summary: "Project Instinct 是清华 IIIS 与上海期智等团队公开的人�
 | 子课题 | 公开主张（压缩） | 公开标识 |
 |--------|------------------|----------|
 | **Embrace Collisions** | 离散高层指令 + 实时低层全身控制；GPU 仿真里承受 **随机全身接触** 与 **大基座转动**，走向可部署接触无关动作 | CoRL 2025；arXiv:2502.01465 |
-| **Deep Whole-Body Parkour** | 把 **外感受** 并入 **全身动作跟踪**，在起伏地形上做 **腾跃、翻滚** 等多接触动态技能；单策略跨动作与地形特征 | arXiv:2601.07701（页面写 In Submission） |
-| **Hiking in the Wild** | **单阶段 RL**：原始深度 + 本体 → 关节动作；引入 **边沿检测 + 足端体积点** 与 **平坦块采样** 以兼顾安全与训练稳定性；强调 **无外部状态估计** 的野外徒步 | arXiv:2601.07718；宣称开源训推代码 |
+| **Deep Whole-Body Parkour** | 把 **外感受** 并入 **全身动作跟踪**，在起伏地形上做 **腾跃、翻滚** 等多接触动态技能；单策略跨动作与地形特征 | arXiv:2601.07701；官方子页链接 shadowing task 代码、运动参考与检查点 |
+| **Hiking in the Wild** | **单阶段 RL**：原始深度 + 本体 → 关节动作；引入 **边沿检测 + 足端体积点** 与 **平坦块采样** 以兼顾安全与训练稳定性；强调 **无外部状态估计** 的野外徒步 | CoRL 2026；arXiv:2601.07718；官网链接训练/部署代码及数据模型 |
+
+**代码状态（官网复核：2026-10-15）**：Deep Whole-body Parkour 子页已链接 [InstinctLab shadowing task](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/shadowing/README.md) 与 G1 29-DoF 运动参考/模型下载；Hiking 子页已标注 CoRL 2026，并链接 [InstinctLab parkour task](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/README.md) 及数据/模型下载。Embrace Collisions 子页目前仍将代码标为 **Coming Soon**。具体依赖、运行命令与许可应以各官方仓库为准。
 
 ## 流程总览
 
