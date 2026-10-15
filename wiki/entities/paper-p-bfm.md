@@ -29,7 +29,19 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 
 **FB latent 表达“想做什么”，深度感知策略负责“怎样在当前地形做到”，ERI 再为根运动补上朝向与水平速度约束。**
 
-## 核心设计
+## 方法
+
+## 英文缩写速查
+
+| 缩写 | 全称 | 含义 |
+|---|---|---|
+| BFM | Behavioral Foundation Model | 行为基础模型，跨任务复用全身行为先验 |
+| FB | Forward–Backward Representation | 前向–后向表征，用共享 latent 表示行为意图 |
+| ERI | Explicit Root Instructions | 显式根指令，以朝向和水平速度约束全局根运动 |
+| RL | Reinforcement Learning | 强化学习 |
+| LaFAN | Learn to Act from Animation | 人体动作数据集，本文提供平地运动提示 |
+| SOMA | Style-based Online Motion Adaptation | 论文用于未见动作评测的动作集合 |
+
 
 | 模块 | 输入/职责 | 关键点 |
 |---|---|---|
@@ -46,7 +58,7 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 - **视觉：** 50 Hz 控制，深度帧历史经 CNN + GRU 编码；仿真随机化相机外参和短时延。
 - **真机：** Unitree G1 + RealSense D435i；策略冻结后使用板载深度零样本迁移。训练时的特权地形/速度输入不进入部署策略。
 
-## 结果怎么读
+## 评测结果
 
 论文在见过的 LaFAN 动作及 994 段未见 SOMA 动作上比较 P-BFM、UFO、PMT。P-BFM 在表格中呈现较低的关节位置误差、足滑和较高的扰动恢复率；但 seen-motion 对比中 PMT 只有其唯一公开参考轨迹，而 P-BFM/UFO 使用 40 段 LaFAN，不能把该组直接当作严格同覆盖对照。真实机器人演示涵盖遥操作、动作跟踪、目标姿态到达、奖励推断以及推搡/踢击后的地形感知恢复。
 
@@ -55,6 +67,19 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 - 官方 GitHub 仓库存在，但 README 截至 2026-10-15 明确说明 main 分支的项目代码尚未上传；pages 分支用于网站、论文与演示资产。论文与网页可用于方法核对，不能据此声称已有可复现训练代码。
 - 论文承认行为泛化仍受训练动作先验和探索地形范围限制；更广泛的动作数据与更复杂的全身接触是后续方向。
 - P-BFM 的核心不是“任何地形都复刻原动作”，而是在保持任务/动作意图的同时，允许接触、步态和姿态根据地形重组。
+
+## 与其他工作对比
+
+| 工作 | 关系与区别 |
+|---|---|
+| [BFM-Zero](./paper-bfm-zero.md) | 同样使用 FB 表征和无监督 RL；P-BFM 的增量是把深度感知地形适配与 ERI 根运动指令纳入同一策略。 |
+| [UFO](https://github.com/Roboparty/UFO) | P-BFM 以 UFO 等 FB 人形策略为近邻基线，增加环境深度感知和根运动监督；论文报告的对比需结合其动作覆盖设置阅读。 |
+| [PMT](../entities/paper-perceptive-bfm.md) | 两者都研究感知条件的人形运动，但 P-BFM 依赖在线无监督 RL 学地形适应，不靠离线合成地形参考；论文说明 PMT 在见过动作比较中只提供一条参考轨迹。 |
+| [I-BFM](./paper-i-bfm.md) | I-BFM 聚焦人与物体交互及接触动力学；P-BFM 聚焦地形约束下的全身行为和全局根运动。 |
+
+## 结论
+
+P-BFM 的核心贡献是将 BFM 的共享行为意图与地形感知执行解耦，并用 ERI 修补 FB 无监督学习对精确全局位移约束较弱的问题。论文给出仿真与 G1 真机上的多接口验证；但训练动作先验和地形覆盖仍限制泛化，且官方仓库尚无可运行项目代码，复现入口暂不完整。
 
 ## 关联页面
 
@@ -65,7 +90,7 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [BFM 纵深路线](../../roadmap/depth-bfm.md)
 
-## 来源
+## 参考来源
 
 - [论文来源归档](../../sources/papers/p_bfm_arxiv_2610_15833.md)
 - [项目页与代码开放状态](../../sources/sites/p-bfm-project-page.md)
