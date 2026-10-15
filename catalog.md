@@ -103,6 +103,7 @@
 - [Axis Robotics（AXIS ROBOTICS）](wiki/entities/axis-robotics.md) — Axis Robotics** 是面向 **Physical AI** 的可复用数据基础设施公司（官网）。其平台用浏览器仿真遥操作降低演示采 `📅unknown` `[entity_page]`
 - [Berkeley Autonomous Race Car（BARC）](wiki/entities/barc.md) — BARC**（Berkeley Autonomous Race Car）是 **UC Berkeley** 的 **1/10 尺度自主赛车** 开源研究与教学平台，涵盖机械/电气 CAD、ROS  `📅unknown` `[entity_page]`
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`
+- [Beckhoff SSC (EtherCAT Slave Stack Code)](wiki/entities/beckhoff-ssc.md) — 倍福官方 EtherCAT 从站栈源码，ETG 会员免费获取，不在公开 GitHub 仓库发布。（分类：EtherCAT 从站协议栈；语言/形态：C（官方从站栈源码）） `📅unknown` `[entity_page]`
 - [BEHAVIOR-1K](wiki/entities/behavior-1k.md) — BEHAVIOR-1K** 是斯坦福大学等机构 2023 年发布的 **千项日常活动具身 AI 基准**，在 NVIDIA Omniverse 上构建高逼真物理与视觉环境。 `📅unknown` `[entity_page]`
 - [智在无界（BeingBeyond）](wiki/entities/beingbeyond.md) — 智在无界（BeingBeyond，北京智在无界科技有限公司）** 是 2025 年在北京成立的具身基础模型公司，创始人是北京大学计算机学院副教授 **卢宗青**。公司主张从 **大规模第一视角人类 `📅unknown` `[entity_page]`
 - [Benjamin Katz（Ben Katz）](wiki/entities/benjamin-katz.md) — Benjamin Katz** 是 **MIT Mini Cheetah** 的主设计者与早期交付工程师：把 hobby BLDC + 定制驱动做成可背驱模块化执行器与整机平台，并以 [Robot `📅unknown` `[entity_page]`
@@ -137,6 +138,7 @@
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [Fluent CFD Skill（cavoiie/fluent-cfd-skill）](wiki/entities/cavoiie-fluent-cfd-skill.md) — Fluent CFD Skill（cavoiie/fluent-cfd-skill）是面向 Ansys Fluent/PyFluent 的判断与流程指导，不打包 Fluent 本体。 `📅unknown` `[entity_page]`
 - [ChangeMamba](wiki/entities/changemamba.md) — ChangeMamba 将 Mamba 用于遥感/视频变化检测，建模双时相长程依赖以突出变化区域。 `📅unknown` `[entity_page]`
+- [CherryECAT](wiki/entities/cherryecat.md) — 面向 MCU + RTOS 裁剪的轻量 EtherCAT 主站，文章称基于 IgH 改造。（分类：EtherCAT 主站；语言/形态：C，基于 IgH 改造） `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
 - [Claude-shaped science：适配 AI 能力的科研选题](wiki/entities/claude-shaped-science.md) — Claude-shaped science** 是 Matthew Schwartz 在 Anthropic 发布的科研实践文章，主张先匹配代理的计算优势，再由人确定值得研究的问题；不是一项机器人 `📅unknown` `[entity_page]`
@@ -514,6 +516,7 @@
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
+- [ecat_servo](wiki/entities/ecat-servo.md) — 实现 CiA402 伺服状态机的 EtherCAT 伺服配套库。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：C（CiA402 伺服状态机）） `📅unknown` `[entity_page]`
 - [ECC（Everything Claude Code）](wiki/entities/ecc.md) — ECC**（affaan-m/ECC，ecc.tools）是把 **编码 Agent `📅unknown` `[entity_page]`
 - [eFlesh：可定制磁性触觉皮肤](wiki/entities/eflesh.md) — eFlesh](https://e-flesh.com/)（NYU；论文，[代码](https://github.com/no `📅unknown` `[entity_page]`
 - [sim2real：G1 部署运行时与跨代码库跟踪评测](wiki/entities/egalahad-sim2real.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
@@ -537,6 +540,8 @@
 - [ERQA](wiki/entities/erqa.md) — ERQA**（ERQA：具身推理问答基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](https://www.light `📅unknown` `[entity_page]`
 - [ESI-Bench（具身空间智能基准）](wiki/entities/esi-bench.md) — ESI-Bench**（*Embodied Spatial Intelligence Benchmark*，arXiv:2605.18746，[项目页](https://esi-bench.git `📅unknown` `[entity_page]`
 - [ETH3D Two-View Stereo Benchmark](wiki/entities/eth3d-stereo-benchmark.md) — ETH3D** 两视图立体评测 提供高分辨率 **室内/室外** 校正双目对，以 **EPE**（end `📅unknown` `[entity_page]`
+- [EtherCAT 虚拟从站仿真（EtherCAT Master Sim / ethercat-master-sim）](wiki/entities/ethercat-virtual-slave-sim.md) — 文章「仿真/调试工具」栏的两条同类条目：无需真实硬件、在 PC 上调试主站代码的虚拟从站。（分类：EtherCAT 仿真/调试；语言/形态：软件虚拟从站） `📅unknown` `[entity_page]`
+- [EtherCrab](wiki/entities/ethercrab.md) — 纯 Rust 实现的 EtherCAT 主站，面向 Rust 嵌入式开发。（分类：EtherCAT 主站；语言/形态：Rust） `📅unknown` `[entity_page]`
 - [EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）](wiki/entities/euroc-mav-datasets.md) — EuRoC MAV Datasets**（*The EuRoC Micro Aerial Vehicle Datasets*，[DOI: 10.1177/0278364915620033](htt `📅unknown` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
@@ -665,6 +670,7 @@
 - [i-have-adhd](wiki/entities/i-have-adhd.md) — i-have-adhd**（ayghri/i-have-adhd）是安装到 Claude Code、Cursor  `📅unknown` `[entity_page]`
 - [UI Skills（ibelick/ui-skills）](wiki/entities/ibelick-ui-skills.md) — UI Skills** 是一个面向设计工程的策展型 Agent Skills 目录：通过站点、CLI 和 MCP，让编码代理按任务查找、筛选并读取 UI 相关的技能说明；它提供目录与内容传递，不替 `📅unknown` `[entity_page]`
 - [ICRA 2026 REAL-I Challenge](wiki/entities/icra-2026-real-i.md) — REAL-I**（1st Real-World Embodied-AI Learning Challenge）是 **ICRA 2026** 上由 **乐聚** 主办的工业具身赛：提供 **真机评 `📅unknown` `[entity_page]`
+- [IgH EtherCAT Master (EtherLab)](wiki/entities/igh-ethercat-master.md) — 以 Linux 内核模块形式实现的开源 EtherCAT 主站，文章将其定位为「高性能硬实时」首选。（分类：EtherCAT 主站；语言/形态：C，Linux 内核模块） `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
 - [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
@@ -713,6 +719,7 @@
 - [KeenTools FaceBuilder for Blender](wiki/entities/keentools-facebuilder.md) — KeenTools FaceBuilder for Blender** 是 **KeenTools** 的 **Blender 插件**：从 **少量照片**（或非中性表情图像）在 DCC 内构建 `📅unknown` `[entity_page]`
 - [Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）](wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md) — Ken Goldberg**（UC Berkeley，Ambi / Jacobi Robotics 联创）2026-09-18 在 X 发布 [Goosebumps: a Paradigm Shi `📅unknown` `[entity_page]`
 - [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
+- [KickCAT](wiki/entities/kickcat.md) — C++ 面向对象的 EtherCAT 主站库，自带软件模拟从站，适合上位机开发调试。（分类：EtherCAT 主站；语言/形态：C++） `📅unknown` `[entity_page]`
 - [Kimera](wiki/entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
 - [Kimi K3](wiki/entities/kimi-k3.md) — Kimi K3** 是 月之暗面（Moonshot AI） 2026 年发布的旗舰大模型：**2.8 万亿参数** MoE（**104B** 激活 `📅unknown` `[entity_page]`
 - [Awesome AI CAE（kimimgo/awesome-ai-cae）](wiki/entities/kimimgo-awesome-ai-cae.md) — Awesome AI CAE（kimimgo/awesome-ai-cae）是收集 110 多个可供 AI 调用的 CAE 工具，横跨 CFD、FEA、SPH、DEM、网格、CAD 与可视化。 `📅unknown` `[entity_page]`
@@ -752,6 +759,7 @@
 - [LET-Base-Dataset](wiki/entities/let-base-dataset.md) — LET-Base-Dataset**（HF [`LejuRobotics/LET-Base-Dataset`](https://huggingface.co/datasets/LejuRoboti `📅unknown` `[entity_page]`
 - [LeTools](wiki/entities/letools.md) — LeTools**（<https://www.letools.lejurobot.com/>）是乐聚为 **Kuavo 全尺寸人形** 提供的 **采集–训练–部署软件层**：产品站把「All I `📅unknown` `[entity_page]`
 - [LIBERO](wiki/entities/libero-benchmark.md) — LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
+- [libethercat（DLR）](wiki/entities/libethercat-dlr.md) — 德国宇航中心（DLR）的 EtherCAT C 库，文章称用于空间机电控制、偏科研。（分类：EtherCAT 主站；语言/形态：C 库） `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
 - [Light-O1](wiki/entities/light-o1.md) — Light-O1**（*Scaling Whole-Body Intelligence with Human Action Pretraining*，亮源新创 **2026-09-21** [Te `📅unknown` `[entity_page]`
 - [亮源新创（Light Origins）](wiki/entities/light-origins.md) — 亮源新创（Light Origins）** 是面向 **Physical AI / 通用具身智能** 的人工智能公司（[About 页](https://www.lightorigins.com/ `📅unknown` `[entity_page]`
@@ -930,6 +938,7 @@
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
 - [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
 - [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
+- [OpenSML](wiki/entities/opensml.md) — 适配 CiA402 的轻量 SoftMotion 运动控制库，提供点位与插补。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：SoftMotion 轻量运动控制库） `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
@@ -4836,6 +4845,7 @@
 - [PyBullet](wiki/entities/pybullet.md) — PyBullet** 把 **Bullet3** C++ 物理 SDK 封装为 **Python API `📅unknown` `[entity_page]`
 - [pygeartrain（摆线/行星齿廓与传动比工具）](wiki/entities/pygeartrain.md) — pygeartrain**（CKraft11/pygeartrain）是面向 **齿轮系运动学与齿廓导出**  `📅unknown` `[entity_page]`
 - [PYLEECAN（径向磁通电机开源设计框架）](wiki/entities/pyleecan.md) — PYLEECAN**（Eomys/pyleecan，[pyleecan.org](https://www.pyleecan `📅unknown` `[entity_page]`
+- [pysoem](wiki/entities/pysoem.md) — SOEM 的 Python 绑定，用于快速脚本化调试 EtherCAT 网络。（分类：EtherCAT 语言绑定/封装；语言/形态：Python（绑定 SOEM）） `📅unknown` `[entity_page]`
 - [PythonRobotics](wiki/entities/python-robotics.md) — PythonRobotics**（AtsushiSakai/PythonRobotics）是 G `📅unknown` `[entity_page]`
 - [PyTorch](wiki/entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
 - [qm_control（四足机械臂 OCS2 MPC + WBC）](wiki/entities/qm-control.md) — qm_control**（skywoodsz/qm_control，BSD-3-Clause）是面向 **四足 `📅unknown` `[entity_page]`
@@ -4921,6 +4931,7 @@
 - [RoboTwin 2.0](wiki/entities/robotwin.md) — RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 SAPIEN (仿真引擎) 仿真引擎之上，旨在解决具身智能（Em `📅unknown` `[entity_page]`
 - [Rokoko](wiki/entities/rokoko.md) — Rokoko** 长期服务于 **3D 动画与影视动捕** 市场，近年将同一套 **人体运动采集** 能力 pivot 到 **人形机器人 / 物理 AI** 数据赛道——代表「已有垂直硬件公司横 `📅unknown` `[entity_page]`
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
+- [ROS2-ethercat](wiki/entities/ros2-ethercat.md) — 文章列出的 ROS 2 封装 EtherCAT 主站（SOEM / IgH）用于机器人关节控制的方案线索。（分类：EtherCAT 语言绑定/封装；语言/形态：ROS 2 封装（SOEM / IgH） `📅unknown` `[entity_page]`
 - [RosClaw](wiki/entities/rosclaw.md) — RosClaw**（GitHub: PlaiPin/rosclaw）把 [OpenClaw](./openclaw.md `📅unknown` `[entity_page]`
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
 - [RSL-RL](wiki/entities/rsl-rl.md) — RSL-RL**（leggedrobotics/rsl_rl，论文 [arXiv:2509.10771](h `📅unknown` `[entity_page]`
@@ -4966,7 +4977,9 @@
 - [SLAM Toolbox](wiki/entities/slam-toolbox.md) — SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。 `📅unknown` `[entity_page]`
 - [senlanke/mimic：G1 上的 SMP / CMoE / AME 移植](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（SMP 同系 [SUZ-tsinghua/smp](https://github.com `📅unknown` `[entity_page]`
 - [SMPLOlympics（仿真人形体育环境套件）](wiki/entities/smplolympics.md) — SMPLOlympics**（Luo et al., arXiv:2407.00187）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`
+- [soem-qt](wiki/entities/soem-qt.md) — 文章列出的 Qt C++ 封装 SOEM 的上位机库，便于 Qt 项目直接调用。（分类：EtherCAT 语言绑定/封装；语言/形态：C++/Qt（封装 SOEM）） `📅unknown` `[entity_page]`
 - [SOEM](wiki/entities/soem.md) — SOEM（Simple Open EtherCAT Master）** 是面向实时嵌入式与通用 OS 的 **开源 EtherCAT MainDevice 库**：以 ANSI-C 实现用户态主站 `📅unknown` `[entity_page]`
+- [SOES (Simple Open EtherCAT Slave)](wiki/entities/soes.md) — 与 SOEM 同组织的轻量开源 EtherCAT 从站协议栈，用于自制从站（传感器、IO 板）。（分类：EtherCAT 从站协议栈；语言/形态：C） `📅unknown` `[entity_page]`
 - [SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）](wiki/entities/sol-pi.md) — SoL-Pi** 是 NVIDIA NVLabs 在 **[Pi](https://github.com/earendil- `📅unknown` `[entity_page]`
 - [Claude Engineering Skills（Soljourner/claude-engineering-skills）](wiki/entities/soljourner-claude-engineering-skills.md) — Claude Engineering Skills（Soljourner/claude-engineering-skills）是面向机械与航空航天的 100 多个 Skills，重点涵盖流体物性、材料 `📅unknown` `[entity_page]`
 - [SOMA Retargeter](wiki/entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md `📅unknown` `[entity_page]`
@@ -5738,6 +5751,7 @@
 - [具身世界模型六路线 · 趋势与判断](wiki/overview/embodied-wm-route-outlook.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [具身世界模型六路线 · 规划主导型](wiki/overview/embodied-wm-route-planning.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [具身世界模型六路线技术地图](wiki/overview/embodied-wm-six-routes-technology-map.md) — 世界模型的关键不在网络新旧，而在 **预测被用在哪里、是否改善真实行动**——从动力学预测到世界基础模型，六条路线可并行存在。 `📅unknown` `[overview_page]`
+- [EtherCAT 开源库大全（微信策展）— 索引](wiki/overview/ethercat-opensource-libs-wechat.md) — 把 微信文章 中的 EtherCAT 开源库拆成独立、不重复的 wiki 详情节点，并整理文章 `📅unknown` `[overview_page]`
 - [Sim2Real 四条路线：44 篇参考文献阅读坐标](wiki/overview/freedof-sim2real-44-papers-technology-map.md) — Sim2Real 选型先看「参数能否辨识、剩余误差如何处理」，再按 SysID → 窄 DR → 残差/适应 分层组合；44 篇文献是四条立场在工程上的证据链，而非时间线摘要堆叠。 `📅unknown` `[overview_page]`
 - [【9.28–10.2 前沿论文动态】人形/四足49篇](wiki/overview/frontier-humanoid-quadruped-2026-09-28-10-02.md) — 这份人形/四足清单覆盖身体—手部预训练、人体示范重定向、动作先验、地形感知、全身安全、工具使用、多机器人协作，以及四足探索与颗粒地形运动。文章标题写「49篇」，正文实际列出 53 条 arXiv 论文 `📅unknown` `[overview_page]`
 - [【10.5-10.9前沿论文动态】人形/四足44篇](wiki/overview/frontier-humanoid-quadruped-2026-10-05-10-09.md) — 这份清单覆盖人形动态移动操作与柔顺控制、遥操作与人体数据重定向、人形世界–动作模型与触觉导航，以及四足载荷运输、空地协同、能耗步态、月面与屋顶地形和轮足竞速。共 44 条论文条目，每条各有一页可点开； `📅unknown` `[overview_page]`
