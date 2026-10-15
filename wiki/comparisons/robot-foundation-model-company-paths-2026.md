@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-15
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -21,6 +21,7 @@ related:
   - ../entities/generalist-ai-robotics.md
   - ../entities/beingbeyond.md
 sources:
+  - ../../sources/sites/amazon-far.md
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
   - ../../sources/sites/rai-institute.md
@@ -32,7 +33,7 @@ sources:
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
   - ../../sources/sites/research-beingbeyond-com.md
-summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照 30 家团队的公开技术路线与复现边界。"
+summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照多家团队的公开技术路线与复现边界。"
 ---
 
 # 机器人基础模型与通用人形：公司技术路线对照（2026）
@@ -107,6 +108,7 @@ flowchart TB
 | [Figure](../entities/figure-ai.md) |  | ● |  | Helix → [Helix 02](../entities/helix-02.md) → Helix 2.5 |
 | [Skild AI](../entities/skild-ai.md) |  | ● | ● | Skild Brain / LocoFormer / S1 / 自博弈 |
 | [NVIDIA](../entities/isaac-gr00t.md) | ○ | ● | ● | GR00T、Cosmos、Isaac Lab、GR00T Control |
+| [Amazon FAR](../../sources/sites/amazon-far.md) | ○ | ● | ● | [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)、[ResMimic](../entities/paper-resmimic.md)、[TWIST2](../entities/paper-twist2.md)、[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[holosoma](../entities/holosoma.md) |
 | LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
 | Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
 | [Light Origins 亮源新创](../entities/light-o1.md) | ○ |  | ● | Light-O1、REACT、Parkour、Nav |
@@ -139,6 +141,8 @@ RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界�
 星动纪元的三列分别对应 VPP 视频预测表征、L7 / M7 / XHAND 与数据/控制接口、Humanoid-Gym 人形 RL；研究和产品属于不同节点，不假定一个统一模型已贯通且完整开放，见[公司与日期核查](../../sources/sites/robotera.md)。
 
 RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与仿真迁移。官网也研究物理交互基础模型；不据此将已收录项目判为通用 VLA / WAM，或视作统一人形整机产品，见[机构与路线](../entities/rai-institute.md)。
+
+Amazon FAR 是 Amazon 内部的 Frontier AI & Robotics 研究与工程团队；按企业团队收录到公司路线。当前代表作品重点是全身数据、遥操作与感知控制，基础模型方向见官方招聘说明；不据此认定已公开统一 WAM 或完整人形产品。2024 年仅用作团队扩充事件的排序锚点，确切成立日未确认，见[官方来源核查](../../sources/sites/amazon-far.md)。
 
 ## 三种视角各自追问什么
 
@@ -238,6 +242,8 @@ flowchart LR
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
 
 ## 参考来源
+
+- [Amazon FAR：团队性质、官方入口与技术路线核查](../../sources/sites/amazon-far.md)
 
 - [公司路线 22 个未注明日期节点核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md) — 18 个补齐事件月份，4 个聚合入口保留空值；发布日期、版本、提交和演示口径分别说明。
 
