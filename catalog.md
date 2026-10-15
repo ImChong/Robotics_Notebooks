@@ -1739,6 +1739,7 @@
 - [ElastiQP（arXiv:2609.19080）](wiki/entities/paper-elastiqp.md) — ElastiQP**（*ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control*，[arXiv:2609.1908 `📅unknown` `[entity_page]`
 - [基础模型时代具身操作综述（Planning & Learning）](wiki/entities/paper-embodied-manipulation-foundation-models-survey.md) — Embodied Robot Manipulation in the Era of Foundation Models: Planning and Learning Perspectives**（ `📅unknown` `[entity_page]`
 - [Embodied MM Grounding（3DGS）（arXiv:2608.10756）](wiki/entities/paper-embodied-multimodal-grounding-3dgs-mobile-manipulation.md) — Embodied MM Grounding（3DGS）**（*Embodied Multimodal Grounding for Open-Vocabulary Mobile Manipulati `📅unknown` `[entity_page]`
+- [Embodied-Navigator：用像素目标、选择性推理与记忆做导航](wiki/entities/paper-embodied-navigator-tamp-nav.md) — Embodied-Navigator**（方法名 **TAMP-Nav**；arXiv:2608.17512，[项目页](h `📅unknown` `[entity_page]`
 - [Embodied World Model Survey（HMI P072）](wiki/entities/paper-embodied-world-model-survey.md) — Embodied World Model Survey**（*A Comprehensive Survey on World Models for Embodied AI*，2025，[arXiv `📅unknown` `[entity_page]`
 - [EmbodiedBrain（arXiv:2510.20578）](wiki/entities/paper-embodiedbrain.md) — EmbodiedBrain**（*EmbodiedBrain: Expanding Performance Boundaries of Task Planning for Embodied Int `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
