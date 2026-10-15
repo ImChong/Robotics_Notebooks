@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-15
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -163,6 +163,8 @@ sources:
 ## 一句话定义
 
 让模型在生成动作时 **必须依托对未来世界的显式前向预测**，且该预测与动作在结构与训练目标上 **耦合**，而不是事后外挂仿真或辅助分支。
+
+近期跨本体实例：[GreenWAM](../entities/paper-greenwam.md) 将 20 类机器人映射到 79 个共享关节槽位，并联合训练世界预测与策略生成。
 
 ## 英文缩写速查
 

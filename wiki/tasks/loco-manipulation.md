@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-12
+updated: 2026-10-15
 sources:
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
@@ -84,6 +84,8 @@ sources:
 | 所属社区 | 具身智能 / 导航规划 | 腿足运动控制 / RL / WBC |
 
 二者关系：loco-manipulation 可视为 mobile manipulation 在腿式平台上的特化——移动能力从"底盘导航"换成"动态行走"后，问题重心从任务规划下沉到全身动力学协调。
+
+轮式移动操作的系统级实例见 [BEHAVIOR Robot Suite](../entities/behavior-robot-suite.md)：JoyLo 提供全身遥操作数据入口，WB-VIMA 学习底盘、躯干和双臂的协同动作。
 
 **本页约定**：
 - 中文"移动操作"作为 **Loco-Manipulation** 的译名与统称使用；本页以腿式（人形）loco-manipulation 为主线。
