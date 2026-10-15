@@ -28,11 +28,11 @@ summary: "PICES（arXiv:2610.19656）：训练免费的 VLA 推理加速，单�
 | PICES | Perturbation-Informed Chunk and Execution Horizon Selection | 本文方法：扰动感知的动作块与执行长度联合选择 |
 | Horizon | Execution Horizon | 每次策略调用后实际执行的动作步数，本文的核心自由度 |
 | RMSE | Root Mean Square Error | 论文用来比较名义 chunk 与参考动作偏差的指标 |
-| AAC | Adaptive Action Chunking | 文中对比的既有自适应分块加速方法之一 |
+| AAC | 全称未核实 | 文中对比的既有分块加速方法之一（缩写沿用论文）|
 
 ## 为什么重要
 
-- **推理延迟限制了执行频率：** 动作专家每次调用都要多步去噪，边缘设备（如 Jetson）上延迟可达数百毫秒。
+- **推理延迟限制了执行频率：** 动作专家每次调用都要多步去噪，论文在 Jetson 上测得的单次调用延迟处于百毫秒量级。
 - **固定 horizon 很粗糙：** 长 horizon 摊薄成本，却减少了中途修正的机会；短 horizon 则多次调用、成本高。
 - **训练免费：** 方法只在推理时改变采样与选择规则，可以叠加到已有 VLA 检查点上。
 
@@ -93,7 +93,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | PICES | 固定执行 horizon | 其他自适应分块（如 AAC、AutoHorizon） |
+| 维度 | PICES | 固定执行 horizon | 其他分块加速方法（如 AAC、AutoHorizon） |
 |------|-------|------------------|----------------------------------------|
 | 是否需要训练 | 否 | 否 | 视方法而定 |
 | horizon 选择依据 | 扰动敏感度，逐候选 | 固定常数 | 各方法自有规则 |
@@ -124,4 +124,4 @@ flowchart TB
 ## 推荐继续阅读
 
 - [arXiv:2610.19656](https://arxiv.org/abs/2610.19656) — 完整论文，含 Jetson 延迟分析与附录
-- [Action chunking 相关综述（OpenVLA 论文）](https://arxiv.org/abs/2406.09246) — 动作分块 VLA 的代表性工作背景
+- [OpenVLA（arXiv:2406.09246）](https://arxiv.org/abs/2406.09246) — 本文引用的 VLA 代表性工作，可作为背景阅读

@@ -8,7 +8,6 @@ arxiv: "2610.20579"
 project: https://www.archon.tech/research/PingpongDuo
 related:
   - ./archon-robotics.md
-  - ./paper-notebook-towards-versatile-humanoid-table-tennis.md
   - ./paper-sony-ai-ace-table-tennis.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ../queries/table-tennis-hierarchical-skill-learning-guide.md
@@ -113,7 +112,7 @@ flowchart TB
 
 | 对照 | 差异读法 |
 |------|----------|
-| [HITTER / SMASH（论文基线）](./paper-notebook-towards-versatile-humanoid-table-tennis.md) | 单人乒乓球为主；本文扩展到双人站位协同，基线为作者改编复现 |
+| HITTER [4] / SMASH [9]（论文基线，本站暂无独立页） | 单人击球为主；本文扩展到双人站位协同，基线由作者改编复现 |
 | [Sony AI ACE 乒乓](./paper-sony-ai-ace-table-tennis.md) | 面向竞技对打的感知-控制系统；本文侧重双机协同安全 |
 | [乒乓球分层技能学习](../methods/table-tennis-strategy-skill-learning.md) | 仿真体育动画中的技能层与策略层；本文是真机双人版的分层设计 |
 | [人形多机协同](../concepts/humanoid-multi-robot-coordination.md) | 多机角色与编队的一般框架；本文给出乒乓球场景的风险过滤实例 |
@@ -131,7 +130,6 @@ flowchart TB
 - [乒乓球分层技能学习方法](../methods/table-tennis-strategy-skill-learning.md) — 技能层与策略层的分层思路
 - [人形多机协同](../concepts/humanoid-multi-robot-coordination.md) — 多机角色与安全过滤的上位框架
 - [Sim2Real](../concepts/sim2real.md) — 标定仿真器与真机部署的通用问题
-- [人形乒乓球通用策略（notebook）](./paper-notebook-towards-versatile-humanoid-table-tennis.md) — 单人乒乓球对照
 
 ## 参考来源
 

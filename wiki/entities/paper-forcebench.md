@@ -16,7 +16,7 @@ related:
 sources:
   - ../../sources/papers/forcebench_arxiv_2610_19604.md
   - ../../sources/raw/wechat_embodied_station_robot_31_papers_2026-10-15.md
-summary: "ForceBench（arXiv:2610.19604）：在统一 VLA 骨干下比较六维腕力七种接入设计的仿真基准（8 任务、1600 示范）；Prompt Fusion 仿真与真机均最稳，时序设计利于物性推断、伤装配；项目页截至 2026-10-15 未发布代码。"
+summary: "ForceBench（arXiv:2610.19604）：在统一 VLA 骨干下比较六维腕力七种接入设计的仿真基准（8 任务、1600 示范）；Prompt Fusion 仿真均值最高且三类任务都提升，时序设计利于物性推断但不利于装配；项目页截至 2026-10-15 未发布代码。"
 ---
 
 # ForceBench：机器人操作中的力集成基准
