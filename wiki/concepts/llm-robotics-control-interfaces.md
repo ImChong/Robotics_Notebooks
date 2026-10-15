@@ -17,6 +17,7 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
   - ../entities/libero-benchmark.md
+  - ../entities/paper-codeactionbench.md
   - ../entities/unitree-g1.md
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/embodied-fm-taxonomy-loop.md
