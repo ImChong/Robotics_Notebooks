@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, vla, action-representation, discrete-tokens, flow-matching, classifier-free-guidance, imitation-learning, robocasa, libero, cmu, amazon-far]
+tags: [paper, vla, action-representation, discrete-tokens, flow-matching, classifier-free-guidance, imitation-learning, robocasa, libero, cmu, amazon]
 status: complete
 updated: 2026-10-15
 project_id: discrete-actions-continuous-control
