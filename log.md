@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | sources/sites/project_instinct.md — 复核 Project Instinct 官网页面状态与训练/部署代码入口并更新统一实体
+
 ## [2026-10-15] ingest | sources/papers/umv_arxiv_2602_22118.md — 归档 UMV 系统设计、状态估计与约束强化学习控制
 
 ## [2026-10-15] ingest | LCMS2Yield — 归档论文、官方代码与数据，记录开源边界和研究方法
