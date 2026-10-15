@@ -1,6 +1,7 @@
 ---
 type: entity
-tags: [software, 3d-printing, slicer, gcode, manufacturing, open-source, ultimaker-cura]
+tags: [software, 3d-printing, slicer, gcode, manufacturing, open-source, ultimaker-cura, ultimaker]
+institutions: [ultimaker]
 status: complete
 updated: 2026-10-15
 project_id: ultimaker-cura
