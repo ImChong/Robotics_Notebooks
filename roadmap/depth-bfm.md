@@ -191,7 +191,8 @@ flowchart LR
 
 **方向 A：感知增强**
 - 让 BFM 带上环境感知，从"闭眼跟踪"走向"看着环境协调全身"
-- 关键词：[Perceptive BFM](../wiki/entities/paper-perceptive-bfm.md)、[感知越障纵深路线](depth-perceptive-locomotion.md)
+- 关键词：[Perceptive BFM](../wiki/entities/paper-perceptive-bfm.md)、[P-BFM](../wiki/entities/paper-p-bfm.md)、[感知越障纵深路线](depth-perceptive-locomotion.md)
+- [P-BFM](../wiki/entities/paper-p-bfm.md)：用 FB latent 表达地形无关意图、用深度感知策略适配执行，并以 ERI 补充全局朝向/速度指令
 
 **方向 B：RL 微调与自改进**
 - 用 RL / 真机数据闭环继续改进预训练行为先验
