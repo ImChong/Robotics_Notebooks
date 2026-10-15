@@ -8,7 +8,7 @@ tags:
   - world-labs
   - shanghai-ai-lab
 status: complete
-updated: 2026-10-05
+updated: 2026-10-15
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
   - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
@@ -25,12 +25,16 @@ related:
   - ../overview/gwm-closed-loop-5-papers-technology-map.md
   - ../entities/paper-gwm-first-principles.md
   - ../entities/paper-foredrive.md
+  - ../entities/paper-worldline-action-driven-visual-simulation.md
 sources:
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
   - ../../sources/blogs/worldlabs_marble_world_model.md
   - ../../sources/papers/foredrive_arxiv_2609_26299.md
+  - ../../sources/papers/worldline_arxiv_2609_38059.md
+  - ../../sources/sites/worldline-project.md
+  - ../../sources/repos/worldline.md
 ---
 
 # 世界模型功能分类（Renderer / Simulator / Planner）
@@ -96,6 +100,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 - 预训练视频 Renderer 被当成 **joint world-and-action** 骨干（Renderer → Planner）。
 - [Marble](../entities/marble-world-model.md) 同一模型出 splat 与 collider（Renderer → Simulator）；collider 仍不是完整学习动力学。
+- [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) 展示另一种边界：输入相机观测与动作，输出未来视频，并把预测用于候选动作评估；按功能属于动作条件的 **Simulator**（服务外部策略的 rollout），但输出仍是像素，尚不提供可查询物理状态或实时接触求解。
 - 逻辑终点：一个基础模型按下游消费者切换输出模态。张力是数据不均（视频多、可执行 3D 与机器人轨迹少）以及「好看」与「可规划」互相牺牲。
 
 ### 第二轴：功能 × 架构（定义文补充）
@@ -103,6 +108,8 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 加了表征轴：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
 
 驾驶侧样本：[ForeDrive](../entities/paper-foredrive.md) 落在 **latent-space × Planner** 格子——JEPA 式预测器只在表征空间预测多时域未来（不吐像素，故不是 Renderer），预测结果经 stop-gradient 喂给 DiT 轨迹规划器；规划梯度只塑造共享编码器、不改写预测器。它说明「预测得准」与「对规划有用」是两个合同，功能标签要按下游消费者判。
+
+[WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) 可作 observation-level、动作条件的 Simulator 样本：它生成视频 rollout 供外部 VLM / 策略评估，但不会直接输出动作，因此不等同 WAM / Planner。
 
 ## 工程实践
 
@@ -136,6 +143,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 - [VLA](../methods/vla.md) / [Model-Based RL](../methods/model-based-rl.md) — Planner 的两条实现传统
 - [Cosmos 3](../entities/cosmos-3.md) — 同骨干切换 Renderer / Simulator / Policy 配置
 - [ForeDrive](../entities/paper-foredrive.md) — 自动驾驶 latent-space Planner 样本：潜在未来服务轨迹规划而非视频生成
+- [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) — 图像空间动作接地的跨本体视频 Simulator 样本
 
 ## 参考来源
 

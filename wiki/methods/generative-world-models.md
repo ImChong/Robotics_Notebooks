@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-15
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -94,6 +94,7 @@ related:
   - ./dwm.md
   - ./mimic-video.md
   - ../entities/paper-levjepa.md
+  - ../entities/paper-worldline-action-driven-visual-simulation.md
 sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -135,6 +136,9 @@ sources:
   - ../../sources/sites/abot-world.md
   - ../../sources/blogs/allenai_molmo_motion.md
   - ../../sources/repos/open-dreamer.md
+  - ../../sources/papers/worldline_arxiv_2609_38059.md
+  - ../../sources/sites/worldline-project.md
+  - ../../sources/repos/worldline.md
 summary: "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
 ---
 
@@ -165,7 +169,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 | 你的问题 | 去哪一节 | 代表条目 |
 |----------|----------|----------|
 | 想找现成底座 / 开源骨干 | [平台与视频骨干](#平台与视频骨干-从哪起步) | Cosmos 3、Wan、Kairos、Xiaomi-U0、Open Dreamer |
-| 想让世界模型听懂动作指令 | [动作条件与接口](#动作条件与接口-怎么把动作喂进去) | Hydra-0、OSCAR、Masked Visual Actions、Ctrl-World |
+| 想让世界模型听懂动作指令 | [动作条件与接口](#动作条件与接口-怎么把动作喂进去) | Hydra-0、WorldLine、OSCAR、Masked Visual Actions、Ctrl-World |
 | 想把世界模型装进策略里 | [WAM 与潜空间](#wam-与潜空间-把世界模型装进策略) | Being-H0.7、MotionWAM、OpenWAM、τ₀-WM |
 | 想用它评策略 / 校准虚实 | [评测沙盒与虚实校准](#评测沙盒与虚实校准) | SC3-Eval、WorldEcho / WorldSync、WALL-SS |
 | 担心画面好看但物理不对 | [物理与几何一致性](#物理与几何一致性) | PhysisForcing、ODEWorld、PhysMani |
@@ -258,6 +262,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### Action flow 跨具身 WM + RoboLab 开环评估（示例：Hydra-0）
 
 [Hydra-0](../entities/paper-hydra-0.md)（arXiv:2608.18077，NVIDIA 等）用 **action flow**（相机平面稀疏轨迹+可见性）替代 native 关节/6D 命令，在 **Cosmos 2.5 / Wan2.2** 上 mid-train **2,202 h** 多具身视频；相对 Cosmos 2.5 baseline **robot EPE −90.4%**、**object EPE −60.2%**；RoboLab 五策略开环 replay 与参考成功率 **Pearson r=0.96**；并演示 **object-flow→robot motion→action readout** 逆向控制 POC。截至入库日 **确认未开源**。
+
+### 无动作视频预训练 + 图像空间动作接地（示例：WorldLine）
+
+[WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md)（arXiv:2609.38059，香港科技大学等）先用 **10,000+ 小时无动作标注机器人视频**学习动态，再把超过 **2,000 小时、10+ 本体**的控制投影为相机空间 action maps，蒸馏成四步因果 rollout。其用法是**策略外的动作结果预测器**：RoboTwin / AgiBot 成功分类准确率 74%，在不做 RoboTwin 训练或适配时用 rollout 对候选排序，最高提升 21.4 个百分点。它把「跨本体动作表示」与「扩展动态数据」拆开；官方仓目前无训练/推理代码，且 129 帧需 21 秒，定位为离线或慢速评估，不是实时仿真器。
 
 ### 骨架条件跨具身 WM + 虚拟策略评估（示例：OSCAR）
 
@@ -495,6 +503,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [DriftWorld](../entities/paper-driftworld.md) — **1-step drifting** 动作条件 WM：推理时搜索 + 离线评估（arXiv:2607.15065）。
 - [Masked Visual Actions](../entities/paper-masked-visual-actions.md) — **像素掩码轨迹** 统一前向/逆向；RoboCasa 策略评估 **r=0.982**（arXiv:2607.19343）。
 - [Ctrl-World](../entities/paper-ctrl-world.md) — **多视角** 可控 WM：VLA 闭环评估 + 合成 SFT（ICLR 2026）。
+- [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) — 无动作视频动态预训练 + 图像空间跨本体动作接地；因果四步 rollout 用于策略评估与候选选择，训练/推理代码未公开。
 - [CLAP](../entities/paper-clap-cross-embodiment.md) — **跨本体** LAM→EE 课程 + 开源 G1/YAM 适配权重（arXiv:2608.27406）。
 - [CD-LAM](../entities/paper-cd-lam.md) — **LAM 因果去偏**：零动作 / 目标动作干预测试 + FDCE，相对 DreamDojo 后训练约 3k 步追平 50k 步（arXiv:2607.09185；代码与 2B 权重已开源）。
 - [WALL-SS](../entities/paper-wall-ss.md) — **下一尺度自回归** 长程 WM：60 s 流式 + 虚实成功率校准 \(r=0.93\)（训练代码待发布）。
@@ -607,6 +616,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Zhao, B., et al. (2026). *X-Mind: Efficient Visual Chain-of-Thought via Predictive World Model for End-to-End Driving* — 见 [sources/papers/x_mind_arxiv_2606_28758.md](../../sources/papers/x_mind_arxiv_2606_28758.md)。
 - Zayer, H., et al. (2026). *Masked Visual Actions* — 见 [sources/papers/masked_visual_actions_arxiv_2607_19343.md](../../sources/papers/masked_visual_actions_arxiv_2607_19343.md)。
 - Guo, Y., et al. (2026). *Ctrl-World* — 见 [sources/papers/ctrl_world_arxiv_2510_10125.md](../../sources/papers/ctrl_world_arxiv_2510_10125.md)。
+- Zheng, S., et al. (2026). *WorldLine: Action-Driven Visual Simulation for Robotic Manipulation* — 见 [论文归档](../../sources/papers/worldline_arxiv_2609_38059.md)、[项目页](../../sources/sites/worldline-project.md) 与 [仓库](../../sources/repos/worldline.md)。
 - X Square Robot Team (2026). *WALL-SS* — 见 [sources/papers/wall_ss_x_square_2026.md](../../sources/papers/wall_ss_x_square_2026.md)。
 - Current Robotics Team (2026). *CurrentWorld-0* — 见 [sources/blogs/current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)。
 - Liu, D., Niu, H., et al. (2026). *ODEWorld* — 见 [sources/papers/odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md)。
