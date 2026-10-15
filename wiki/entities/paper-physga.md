@@ -29,9 +29,7 @@ summary: "PhySGA（arXiv:2610.20560）：清华×浙大的物理空间智能体 
 | PhySGA | Physics-Space Grounded Agentic Framework | 本文框架：在物理空间中落地的智能体式组合 |
 | VLM | Vision-Language Model | 文中对比的直接使用大模型预测坐标的路线 |
 | Isaac Sim | NVIDIA Isaac Sim | 论文的物理仿真环境，用于执行与检验组合结果 |
-| SGA | Self-Evolving Skill Library（技能库缩写沿用项目命名） | 从历史试错中沉淀可复用技能的模块 |
-
-> 注：上表 SGA 为便于阅读的简称，论文正文以 *Self-Evolving Skill Library* 为准。
+| Router | Action Router | 把智能体语义目标映射为可执行物理原语的模块 |
 
 ## 为什么重要
 

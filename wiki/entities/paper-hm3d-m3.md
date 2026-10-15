@@ -31,8 +31,8 @@ summary: "HM3D-M3（arXiv:2610.20121）：多智能体、多模态（ON/TN/IIN�
 | TN | Text-described Navigation | 目标以一个实例的文字描述给出 |
 | IIN | Instance Image Navigation | 目标以一个实例的参考图像给出 |
 | SR | Success Rate | 目标级成功率：回合内被找到目标的平均比例 |
-| SPL | Success weighted by Path Length | 本文用 makespan 归一化的团队路径效率指标 |
-| LaViRA-M3 | LaViRA for Multi-agent, Multi-modal, Multi-object | 文中训练免费的 VLM 团队基线，本文提出 |
+| SPL | Success weighted by Path Length | 本文为 makespan 归一化的团队版本，衡量团队路径效率 |
+| LaViRA-M3 | （论文命名，未展开） | 文中训练免费的 VLM 团队基线，本文提出 |
 
 ## 为什么重要
 
