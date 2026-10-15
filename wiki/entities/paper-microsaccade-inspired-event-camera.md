@@ -10,7 +10,7 @@ tags:
   - science-robotics
   - zju
 status: complete
-updated: 2026-09-15
+updated: 2026-10-15
 doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"
@@ -20,6 +20,7 @@ related:
   - ./paper-simple-evrgb-cal.md
   - ./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
   - ../concepts/sim2real.md
+  - ./paper-fast-feature-field-f3.md
 sources:
   - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
   - ../../sources/papers/microsaccade_inspired_event_camera_scirobotics_2024.md
@@ -148,6 +149,8 @@ sequenceDiagram
 - [SSLA-Det](./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md) — 空间稀疏线性注意力异步事件检测（Gen1 / N-Caltech101）
 - [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 无运动事件—RGB 外参标定（显示器调制 ChArUco）
 - [Sim2Real（仿真到真实迁移概念）](../concepts/sim2real.md)
+
+- [Fast Feature Field (F³)](./paper-fast-feature-field-f3.md) — 复用预测性事件特征的机器人感知表示
 
 ## 参考来源
 
