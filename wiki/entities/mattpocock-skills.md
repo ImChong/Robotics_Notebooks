@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-15
 related:
   - ./find-skills-skill.md
   - ./vercel-agent-browser-skill.md
@@ -32,6 +32,7 @@ related:
   - ./sensenova-skills.md
   - ./humanlayer-skills.md
   - ./cad-skills.md
+  - ./logo-design-skill.md
   - ./gsap-skills.md
   - ./video-shotcraft.md
   - ./agent-reach.md
@@ -113,6 +114,7 @@ flowchart TD
 - [SenseNova-Skills](sensenova-skills.md) — **办公产出** 向 Agent Skills（与本文 **编码工程** 技能互补）
 - [HumanLayer Skills](humanlayer-skills.md) — **迭代代理维护环** 与控制论式 loop 设计（`<important if>`、GHA 调度）
 - [CAD Skills](cad-skills.md) — **硬件/CAD/URDF** 垂直 Agent Skills（build123d STEP-first 与制造链）
+- [Logo Design Skill](logo-design-skill.md) — 品牌视觉设计方向的专用 Agent Skill，补充通用编码技能目录
 - [GSAP AI Skills](gsap-skills.md) — **Web 动效 / GSAP** 官方垂直 Agent Skills（timeline、ScrollTrigger、React cleanup）
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（镜头配方卡 + Ink Press 模板）
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
