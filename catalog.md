@@ -5077,6 +5077,7 @@
 - [Jev（TypeSafe AI · System One Model）](wiki/entities/typesafe-jev.md) — Jev** 是 TypeSafe AI 发布的首个 **System One Model**（2026-09-15 官宣早期访问）：面向 **软件自 `📅unknown` `[entity_page]`
 - [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
+- [Ultimaker Cura（3D 打印切片软件）](wiki/entities/ultimaker-cura.md) — 一句话定义**：Ultimaker Cura 是开源桌面切片软件，将三维模型按指定打印机、材料和参数规划为逐层打印路径，并输出 G-code。 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
 - [Understand Anything（Egonex）](wiki/entities/understand-anything.md) — Understand Anything**（[Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anyt `📅unknown` `[entity_page]`
 - [UnifoLM-VLA-0（unifolm-vla）](wiki/entities/unifolm-vla.md) — UnifoLM-VLA-0** 是 UnifoLM 系列中的 **Vision–Language–Action** 大模型，强调在机器人操作数据上的持续预训练，使模型从视觉–语言理解走向带物理常识 `📅unknown` `[entity_page]`

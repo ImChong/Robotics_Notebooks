@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | sources/repos/ultimaker-cura.md — 归档 Cura 切片工作流并连接 CAD 与增材制造知识页
+
+- 官方 README 确认其为模型切片应用，列出数百项设置与社区打印配置；主程序许可为 LGPL-3.0。
+- 记录打印机、材料与参数的适用边界，并区分独立 CuraEngine 仓库的 AGPL-3.0 许可。
+
 ## [2026-10-15] ingest | PAMI：部位锚定的人-物交互动作生成
 
 - 收录 arXiv:2609.38466、项目页和官方仓库，整理部位锚点、逐帧轨迹融合与接触精修方法。
