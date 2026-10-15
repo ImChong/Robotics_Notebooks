@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-15
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -46,6 +46,7 @@ related:
   - ../entities/isaac-rl-two-wheel-legged-bot.md
   - ../entities/paper-mujica-wheel-legged-multi-skill.md
   - ../entities/paper-aware-wheeled-legged-reflexive-evasion.md
+  - ../entities/paper-umv-ultra-mobility-vehicle.md
   - ../entities/quadruped-robot.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../entities/anthropic-embody.md
@@ -179,6 +180,7 @@ flowchart TD
 - **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 - **轮足高动态反射避障：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 **M20** 上用分层 RL + 双专家硬切换做快速障碍反射规避（导航全向 / 高动态逃逸），Isaac Lab 与真机抛箱/棍戳/脚踢验证。
 - **轮腿双足开源训练栈：** [轮腿双足](../concepts/wheel-legged-biped.md) 汇总 TITA / Flamingo / CJ-003；官方 Gym 入口 [tita_rl](../entities/tita-rl.md)，Lab 扩展 [lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md)，Genesis 入口 [wheel_legged_genesis](../entities/wheel-legged-genesis.md)。
+- **单轨自行车的动态越障：** [UMV](../entities/paper-umv-ultra-mobility-vehicle.md) 以可动高位质量与约束 PPO 学习 track-stand、后轮兔子跳、越障跳跃和前空翻，可对照多轨轮腿构型理解动态稳定策略。
 
 ### 5. 状态估计与延迟
 足式机器人在接触切换时很难直接观测机身速度和足端滑移；IMU、编码器、足端接触和视觉地形之间还存在时间同步与延迟问题。状态估计偏一点，控制器可能表现为“突然踢地”“脚底打滑”或“落脚点漂移”。
