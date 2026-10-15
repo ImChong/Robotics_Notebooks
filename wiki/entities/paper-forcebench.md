@@ -13,6 +13,7 @@ related:
   - ../concepts/hybrid-force-position-control.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/forcebench_arxiv_2610_19604.md
   - ../../sources/raw/wechat_embodied_station_robot_31_papers_2026-10-15.md
@@ -127,6 +128,7 @@ flowchart LR
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [力控基础](../concepts/force-control-basics.md)
 - [操作任务](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归入其 ③ 策略任务成功率评测层（力接入设计对照）；仿真 + 真机双报也可作 ④ sim↔real 校准的小样本参考
 
 ## 参考来源
 

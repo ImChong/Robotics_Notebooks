@@ -66,11 +66,11 @@ Anchor-Trajectory Memory（AT-Mem）以关键节点作为长程记忆锚点，�
 
 数值仅按论文对应的验证集、轨迹子集和硬件设置解读。跨基准的 SR、SPL 或推理耗时不宜直接横向比较。
 
-## 和相邻方向的关系
+## 与其他工作对比
 
 - [SuperNav](./paper-supernav-agentic-navigation.md) 同样用视觉点目标连接高层模型与移动执行，但重点是预训练 MLLM 的 agent harness、工具与 Skills；TAMP-Nav 的重点是对导航策略进行训练，并结合选择性 CoT、锚点记忆和双层 GRPO。
-- [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) 汇总任务定义、数据集与相关方法。
-- [VLA 方法页](../methods/vla.md) 介绍更一般的视觉–语言–动作模型。
+- **DualVLN / StreamVLN：** 论文对比的平均交互长度约 30 次 / 轨迹，TAMP-Nav 约 9 次（仅为论文报告口径，未与相同硬件下的端到端耗时逐项对齐）。
+- **密集 CoT 变体：** SR 66.8% 略高于选择性 CoT 的 66.2%，但推理比率为 100% 对 26.3%；TAMP-Nav 的取舍是以极小 SR 代价换推理开销。
 
 ## 开源与复现状态
 
@@ -79,6 +79,12 @@ Anchor-Trajectory Memory（AT-Mem）以关键节点作为长程记忆锚点，�
 ## 结论
 
 **TAMP-Nav 把导航 VLM 的动作接口、推理时机和轨迹记忆共同纳入优化。**它的可借鉴点是二维像素目标降低高层动作表示难度，关键节点推理和记忆锚点控制长程上下文，而双层 GRPO 对局部执行过程提供更密集反馈。
+
+## 关联页面
+
+- [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 任务定义、数据集与相关方法
+- [VLA 方法页](../methods/vla.md) — 更一般的视觉–语言–动作模型
+- [SuperNav](./paper-supernav-agentic-navigation.md) — 同用视觉点目标的 agentic 导航 harness
 
 ## 参考来源
 
