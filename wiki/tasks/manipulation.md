@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-14
+updated: 2026-10-15
 related:
+  - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ../entities/paper-imitator-game.md
@@ -238,6 +239,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - **Psi-R2.5**（PsiBot 博客，2026-09）：**[强 pair data](../concepts/strong-pair-data.md)** + **Psi-W0 转换器** 对齐人–机 dynamic；QwenVL3.5-4B + Wan2.2-IT2V-5B 双层栈；ICL 与 HIL 后训练 **~99%** 3C 装配（自报）；**未开源**；入口见 [Psi-R2.5](../entities/psibot-r25.md)
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
+- **[EgoExplorer](../entities/paper-egoexplorer-vision-motion-touch-dataset.md)**（arXiv:2610.18872）：5 个 inside-out tracker + 头戴相机采集人类移动操作；C³ 从稀疏锚点重建全身动作，手指动作与可选 WUJI 区域触觉同步；2,715 段 / 100 h，触觉仅覆盖 WUJI 子集。
 - **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；无官方代码 URL
 
 #### 触觉与力反馈
