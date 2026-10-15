@@ -1,0 +1,71 @@
+---
+type: entity
+tags: [paper, humanoid, behavioral-foundation-model, perceptive-control, unsupervised-rl, forward-backward, terrain-adaptation, roboparty]
+status: complete
+updated: 2026-10-15
+arxiv: "2610.15833"
+venue: "2026 · arXiv preprint"
+project_id: p-bfm
+project: https://roboparty.github.io/P-BFM/
+code: https://github.com/Roboparty/P-BFM
+related:
+  - ../concepts/behavior-foundation-model.md
+  - ./paper-bfm-zero.md
+  - ./paper-perceptive-bfm.md
+  - ./paper-i-bfm.md
+  - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../../roadmap/depth-bfm.md
+sources:
+  - ../../sources/papers/p_bfm_arxiv_2610_15833.md
+  - ../../sources/sites/p-bfm-project-page.md
+summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度感知策略在线学习地形适配；ERI 将目标朝向和水平速度作为全局根运动指令。一个冻结策略零样本迁移至 Unitree G1，覆盖跟踪、目标到达、奖励推断、遥操作与扰动恢复；官方模型代码尚未上传。"
+---
+
+# P-BFM：感知行为基础模型的人形控制
+
+**P-BFM**（*Perceptive Behavioral Foundation Models for Humanoid Control via Unsupervised Reinforcement Learning*，[arXiv:2610.15833](https://arxiv.org/abs/2610.15833)，[项目页](https://roboparty.github.io/P-BFM/)）由上海理工大学、清华大学、RoboPartyLab、浙江大学和哈尔滨工业大学团队提出。它希望让同一个行为意图在不同地形中诱发不同但合适的全身动作，而不是要求机器人照搬平地参考动作。
+
+## 一句话定义
+
+**FB latent 表达“想做什么”，深度感知策略负责“怎样在当前地形做到”，ERI 再为根运动补上朝向与水平速度约束。**
+
+## 核心设计
+
+| 模块 | 输入/职责 | 关键点 |
+|---|---|---|
+| 地形无关意图空间 | motion reference、target state、reward function → behavioral latent | Forward–Backward 表征；后向表征不输入地形或全局指令，使同一身体状态/奖励对应同一意图 |
+| 感知执行策略 | 本体状态历史、深度视觉特征、intent latent | 在线仿真交互学习抬脚、步幅、姿态、落脚点和接触随地形变化 |
+| Explicit Root Instructions（ERI） | 目标 heading 与 planar velocity | 独立提供全局移动方向和速度，减少 heading drift、障碍前原地踏步；局部垂向/全身动作仍可适应地形 |
+| 多接口推理 | 参考动作、目标姿态、奖励、遥操作目标 | 一个冻结策略支持 tracking、goal reaching、reward inference、teleoperation 与恢复 |
+
+## 训练与部署
+
+- **仿真：** Unitree G1 + MJLab；192M 环境步；8×NVIDIA H200 约 10 小时。
+- **行为先验：** 40 段平地 LaFAN 序列作为行为提示和条件判别器正样本；不提供 terrain-specific motion demonstrations。
+- **地形：** 平地、粗糙地面、上下楼梯、平台、倒金字塔斜坡和箱体障碍等七类。
+- **视觉：** 50 Hz 控制，深度帧历史经 CNN + GRU 编码；仿真随机化相机外参和短时延。
+- **真机：** Unitree G1 + RealSense D435i；策略冻结后使用板载深度零样本迁移。训练时的特权地形/速度输入不进入部署策略。
+
+## 结果怎么读
+
+论文在见过的 LaFAN 动作及 994 段未见 SOMA 动作上比较 P-BFM、UFO、PMT。P-BFM 在表格中呈现较低的关节位置误差、足滑和较高的扰动恢复率；但 seen-motion 对比中 PMT 只有其唯一公开参考轨迹，而 P-BFM/UFO 使用 40 段 LaFAN，不能把该组直接当作严格同覆盖对照。真实机器人演示涵盖遥操作、动作跟踪、目标姿态到达、奖励推断以及推搡/踢击后的地形感知恢复。
+
+## 复现与边界
+
+- 官方 GitHub 仓库存在，但 README 截至 2026-10-15 明确说明 main 分支的项目代码尚未上传；pages 分支用于网站、论文与演示资产。论文与网页可用于方法核对，不能据此声称已有可复现训练代码。
+- 论文承认行为泛化仍受训练动作先验和探索地形范围限制；更广泛的动作数据与更复杂的全身接触是后续方向。
+- P-BFM 的核心不是“任何地形都复刻原动作”，而是在保持任务/动作意图的同时，允许接触、步态和姿态根据地形重组。
+
+## 关联页面
+
+- [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)
+- [BFM-Zero](./paper-bfm-zero.md) — FB + 无监督 RL 的近邻路线
+- [Perceptive BFM](./paper-perceptive-bfm.md) — 地形感知参考运动跟踪的另一种设计
+- [I-BFM](./paper-i-bfm.md) — 将对象动力学与手–物接触纳入行为 latent
+- [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [BFM 纵深路线](../../roadmap/depth-bfm.md)
+
+## 来源
+
+- [论文来源归档](../../sources/papers/p_bfm_arxiv_2610_15833.md)
+- [项目页与代码开放状态](../../sources/sites/p-bfm-project-page.md)
