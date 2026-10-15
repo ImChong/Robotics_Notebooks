@@ -1732,6 +1732,7 @@
 - [EgoAlign：把第一视角人类示范变成可执行的人形移动操作监督](wiki/entities/paper-egoalign.md) — EgoAlign**（*EgoAlign: Bridging the Human-Humanoid Gap for Long-Range Loco-Manipulation*，arXiv:2609 `📅unknown` `[entity_page]`
 - [Ego-Exo4D-HM](wiki/entities/paper-egoexo4d-hm.md) — Ego-Exo4D Human Meshes Dataset: 4D Human Motion Reconstruction for Ego-Exo Captures**（Maddukuri &  `📅unknown` `[entity_page]`
 - [EgoExoMoCap](wiki/entities/paper-egoexomocap.md) — EgoExoMoCap: Distributed Ego-Exo Human Motion Capture**（Jiang et al., ECCV 2026 Spotlight）提出一种**分布 `📅unknown` `[entity_page]`
+- [EgoExplorer：无基站可穿戴采集人类移动操作的视觉–动作–触觉数据集](wiki/entities/paper-egoexplorer-vision-motion-touch-dataset.md) — EgoExplorer**（*A Vision-Motion-Touch Observatory for Human Loco-Manipulation*，[arXiv:2610.18872](h `📅unknown` `[entity_page]`
 - [EgoHTR：第一视角粗糙地形人–场景 4D 演示](wiki/entities/paper-egohtr.md) — EgoHTR**（*EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal*，arXiv:[2607.13472](http `📅unknown` `[entity_page]`
 - [EgoHumanoid-V2：从第一视角人体示范迁移协调全身移动操作](wiki/entities/paper-egohumanoid-v2.md) — EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation `📅unknown` `[entity_page]`
 - [EgoLAP：用语言动作推理从第一视角人类数据学机器人](wiki/entities/paper-egolap-egocentric-language-action-reasoning.md) — EgoLAP**（arXiv:2610.08726，项目页）认为 `📅unknown` `[entity_page]`
@@ -2877,6 +2878,7 @@
 - [ABot-AgentOS](wiki/entities/paper-pai-2607-10350-abotagentos.md) — ABot-AgentOS** 收录于 awesome-physical-ai（natnew）**第 255/384** 条，分组 **Production Patterns / Reference `📅unknown` `[entity_page]`
 - [PAKT（arXiv:2609.25630）](wiki/entities/paper-pakt.md) — PAKT**（*PAKT: Physically-Aligned Kinesthetic Teaching for Reinforcement Learning*，[arXiv:2609.2563 `📅unknown` `[entity_page]`
 - [PaLM-E（HMI P053）](wiki/entities/paper-palm-e-embodied-language-model.md) — PaLM-E**（*PaLM-E: An Embodied Multimodal Language Model*，2023，[arXiv:2303.03378](https://arxiv.org `📅unknown` `[entity_page]`
+- [PAMI：部位锚定的人-物交互动作生成](wiki/entities/paper-pami-part-anchored-motion.md) — PAMI**（*Part Anchored Motion for Text to Human-Object Interaction Generation*，Li 等，2026，arXiv:[260 `📅unknown` `[entity_page]`
 - [PAMoR](wiki/entities/paper-pamor.md) — PAMoR**（*Parameterized Affective Motion Generation in Real Time for Humanoid Robots*，[arXiv:2608.2 `📅unknown` `[entity_page]`
 - [PAMORT：用多目标强化学习运输未固定的堆叠载荷](wiki/entities/paper-pamort-stacked-payload-quadruped-morl.md) — PAMORT**（论文 *Transporting Unsecured Stacked Payloads with a Quadrupedal Robot via Multi-Objective  `📅unknown` `[entity_page]`
 - [PanoGS-SLAM（Panoramic 3D Gaussian Splatting SLAM）](wiki/entities/paper-panogs-slam.md) — PanoGS-SLAM**（*Panoramic 3D Gaussian Splatting SLAM*，[arXiv:2609.17387](https://arxiv.org/abs/2609 `📅unknown` `[entity_page]`

@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | PAMI：部位锚定的人-物交互动作生成
+
+- 收录 arXiv:2609.38466、项目页和官方仓库，整理部位锚点、逐帧轨迹融合与接触精修方法。
+- InterAct 接触召回据论文报告较此前最佳方法高 14.5%；官方实现与权重截至入库日仍待发布。
+
 ## [2026-10-15] ingest | 31 篇论文逐篇建立独立 paper-* 详情节点与 sources/papers 归档（2026-10-15），并新增索引页 embodied-papers-2026-10-15-31-digest-map
 
 ## [2026-10-15] ingest | 归档微信公众号 31 篇具身论文速览（2026-10-15）：sources/blogs 摘要 + sources/raw 原文；未升格 wiki 实体
