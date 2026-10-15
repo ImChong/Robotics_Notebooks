@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | beltromatti/get-it — 归档本地优先的文档学习应用，补记模型数据流、分数边界与官网版本提示差异
+
 ## [2026-10-14] lint | 全量 lint 清零：6 条陈旧页面 + 17 条信息型预警全部修复（补回链/缩写速查/对比与结论段/venue 键），并为 floorplan-3d 补 sources 归档使覆盖率达 6009/6009
 
 ## [2026-10-15] ingest | sources/repos/motiontemplates-385712.md — 归档 .motion 开源视频模板与项目页；项目页当前 404，暂不升格为机器人 wiki 节点
