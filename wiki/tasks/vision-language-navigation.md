@@ -49,6 +49,7 @@ related:
   - ../entities/paper-refertrack.md
   - ../entities/paper-navverse.md
   - ../entities/paper-supernav-agentic-navigation.md
+  - ../entities/paper-embodied-navigator-tamp-nav.md
   - ../entities/paper-satnav.md
   - locomotion.md
 sources:
@@ -71,6 +72,7 @@ sources:
   - ../../sources/papers/abot_n1_arxiv_2607_10383.md
   - ../../sources/papers/spark_vln_arxiv_2607_16806.md
   - ../../sources/papers/supernav_arxiv_2610_12126.md
+  - ../../sources/papers/embodied_navigator_arxiv_2608_17512.md
   - ../../sources/sites/zju3dv-supernav.md
   - ../../sources/repos/zju3dv-supernav-code.md
 ---
@@ -100,6 +102,8 @@ sources:
 
 - **与坐标目标无地图循环导航的对照**：[SRU](../entities/paper-sru-spatially-enhanced-recurrent-memory.md)（IJRR 2025）用 **相对目标向量 + 单目前向深度 + SRU 隐式空间记忆** 做 **50–120 m 级** 无地图 RL 导航（非语言、非 image-goal），真机 **B2W 零样本**；部署移植见 [SRU-Odin](../entities/sru-odin.md)。与 VLN 共享「部分可观测 + 长程」难点，但 **监督与目标接口** 完全不同，不宜混用 R2R 等语言基准。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。端到端驾驶专用 VLA 对照见 [S²-VLA](../entities/paper-s-squared-vla.md)（语义∥空间双流规划，NAVSIM 纯 SFT）。
+
+- **像素动作、按需推理与长程记忆的 VLN 策略**：[Embodied-Navigator / TAMP-Nav](../entities/paper-embodied-navigator-tamp-nav.md)（arXiv:2608.17512）以二维像素点经深度投影至 SLAM waypoint，使用选择性 CoT、Anchor-Trajectory Memory / STI 与双层 GRPO；R2R-CE Val-Unseen SR 66.2%，训练 90k 条轨迹。
 - **预训练 MLLM 的导航 harness**：[SuperNav](../entities/paper-supernav-agentic-navigation.md)（arXiv:2610.12126）用视觉点目标、可互换运动后端、工具与 Skills 支持单物体 / 有序多物体 / 需求驱动导航；高层“已完成”声明与 benchmark 成功判定分开核验。
 - **具身视觉跟踪（EVT）专用 referring**：[ReferTrack](../entities/paper-refertrack.md)（arXiv:2607.20061）把「语言指定行人跟随」拆成索引 bbox Refer-CoT + TVBI 历史几何，再解码航点；EVT-Bench 单前视 STT/DT/AT 上相对 TrackVLA++ 大幅抬升，Go2/G1 真机定性——与通才 RobotNav 的 tracking mode 同榜不同协议，宜分开读。
 - **人中心例行记忆 EQA**：[HUMEMBR](../entities/paper-humembr.md)（arXiv:2606.30404）在办公室 Spot 上并行构建 **身份感知多日记忆** 与 LLM 工具检索，服务 PersonEQA 与「找某人」导航——相对 R2R 式路径指令，主轴是 **人例行预测** 而非地标语言接地。
