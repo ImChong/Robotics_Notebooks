@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-16] ingest | OpenCut：归档官网与主仓库，区分可用 classic 版和重写中的 Rust 多端版
+
+- 官方 README 确认 opencut.app 当前运行 classic 版本，主仓库的 Rust 核心与插件、MCP 等能力仍处于重写路线图。
+- 仅收录 sources 资料；该通用视频编辑工具不升格为机器人知识 wiki 节点。
+
 ## [2026-10-15] ingest | OpenViking — 收录火山引擎开源上下文数据库
 
 - 官方仓库和项目页均已核查，代码公开，许可证为 AGPL-3.0。
