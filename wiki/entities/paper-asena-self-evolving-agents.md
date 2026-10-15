@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, robotics, robot-learning]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-15
 project_id: asena-self-evolving-agents
 project: https://asena-bot.github.io/
 arxiv: "2609.39207"
 related:
   - ../overview/humanoid-motion-intelligence-day5-world-models-decision.md
   - ../methods/generative-world-models.md
+  - ./paper-embodied-evo-coding-agent.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md
 summary: "ASENA将环境交互反馈纳入具身导航代理的持续行为改进。"
@@ -66,6 +67,7 @@ ASENA将环境交互反馈纳入具身导航代理的持续行为改进。 评�
 
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [EmbodiedEvo](./paper-embodied-evo-coding-agent.md) — 将交互经验沉淀为 Skills / Lessons，跨场景交给新 agent 复用。
 
 ## 参考来源
 
