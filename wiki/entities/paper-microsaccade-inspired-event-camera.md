@@ -10,7 +10,7 @@ tags:
   - science-robotics
   - zju
 status: complete
-updated: 2026-09-15
+updated: 2026-10-15
 doi: "10.1126/scirobotics.adj8124"
 arxiv: "2405.17769"
 venue: "Science Robotics 2024"
@@ -20,6 +20,7 @@ related:
   - ./paper-simple-evrgb-cal.md
   - ./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md
   - ../concepts/sim2real.md
+  - ./paper-fast-feature-field-f3.md
 sources:
   - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
   - ../../sources/papers/microsaccade_inspired_event_camera_scirobotics_2024.md
