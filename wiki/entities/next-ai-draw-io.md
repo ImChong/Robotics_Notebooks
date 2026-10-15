@@ -62,7 +62,7 @@ flowchart LR
   B --> C[draw.io XML]
   C --> D[react-drawio<br/>浏览器画布]
   D --> E[版本历史 / 导出<br/>.drawio PNG SVG]
-  A -->|MCP stdio| F[@next-ai-drawio/mcp-server]
+  A -->|MCP stdio| F["@next-ai-drawio/mcp-server"]
   F --> G[嵌入 HTTP :6002]
   G --> D
 ```
