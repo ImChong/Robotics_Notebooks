@@ -2,7 +2,7 @@
 type: entity
 tags: [roboparty, humanoid, open-source, hardware, infrastructure]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-15
 related:
   - ./roboto-origin.md
   - ./party-os.md
@@ -26,6 +26,7 @@ sources:
   - ../../sources/repos/roboparty-intact-jepa.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/repos/roboparty_train.md
+  - ../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md
   - ../../sources/repos/roboparty_deploy.md
 summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
@@ -111,6 +112,15 @@ flowchart TB
 | 上层扩展 | Perception / Manipulation / Agent | 官方规划涉及 HSI / HOI、VLA、World Model 和 Agent + Skills；尚不能视为完整系统交付 |
 
 网站入口：[RoboParty 公司路线](../../docs/company.html?id=roboparty)；详细阅读坐标继续使用[现有技术地图](../overview/roboparty-lab-party-os-technology-map.md)。核查依据见 [Party OS 来源补核](../../sources/repos/party_os.md)。
+
+## RP1 开源进度（截至 2026-10-15）
+
+RoboParty 的 GitHub 组织入口为 [github.com/Roboparty](https://github.com/Roboparty)。当前应区分已公开的 **RPO（Roboto Origin）** 与后续 **RP1**：RPO 的完整项目已开放；RP1 的硬件文件、固件、仿真模型和训练工具按路线图分批发布。**RP1 不应记作已经全栈开源**，新仓库和模块以 [GitHub 组织页](https://github.com/Roboparty)及[公司官网](https://roboparty.com/)后续公告为准。记录依据与复核入口见 [RP1 开源进度来源归档](../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md)。
+
+| 项目 | 当前开源状态 | 后续核查入口 |
+|------|--------------|--------------|
+| RPO / Roboto Origin | 完整项目已开放；详见 [Roboto Origin 来源归档](../../sources/repos/roboto_origin.md) | [代码组织](https://github.com/Roboparty) · [官方文档](https://roboparty.com/roboto_origin/doc) |
+| RP1 | 硬件文件、固件、仿真模型、训练工具按路线图分批发布；各模块开放状态可能不同 | [GitHub 组织](https://github.com/Roboparty) · [RoboParty 官网](https://roboparty.com/) |
 
 ## 常见误区 / 局限
 
