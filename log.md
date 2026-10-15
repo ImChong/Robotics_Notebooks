@@ -180,6 +180,10 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | sources/repos/motiontemplates-385712.md — 归档 .motion 开源视频模板与项目页；项目页当前 404，暂不升格为机器人 wiki 节点
+
+## [2026-10-15] ingest | sources/repos/kaankiziltug-logo-design-skill.md — 收录跨代理 Logo 设计 Agent Skill，并记录第三方 SVG 商标许可边界
+
 ## [2026-10-14] ingest | sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md — EtherCAT 开源库清单，14 个独立节点（13 新 + SOEM）；无法访问文中仓库，开源状态均标未核查
 
 ## [2026-10-15] ingest | LiteReality-Agent arXiv:2610.01863 — 更新既有项目实体并补全论文、交互查看器、仿真导出和开源状态
