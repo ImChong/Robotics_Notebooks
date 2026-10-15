@@ -1537,6 +1537,7 @@
 - [COAP：具身图灵机与代码策略](wiki/entities/paper-coap-embodied-turing-machines.md) — COAP（Code-Only-as-Policy）** 将策略表示为执行状态测量、任务逻辑与动作选择的可读程序，并将 coding agent 的代码改进环限定在离线开发阶段；部署运行时由固定代码 `📅unknown` `[entity_page]`
 - [CoDance: Learning Reactive and Compliant Human-Humanoid Interaction from Video](wiki/entities/paper-codance.md) — CoDance 用单段双人舞视频生成机器人参考动作与舞伴运动，再把结构化双手外力注入多连杆顺应增强，以训练能跟随人并对接触作出响应的人形策略。 `📅unknown` `[entity_page]`
 - [Code-as-World（Executable World Representations for Physical Reasoning）](wiki/entities/paper-code-as-world.md) — Code-as-World**（*Code as Worlds: Agentic Discovery of Executable World Representations for Physica `📅unknown` `[entity_page]`
+- [CodeActionBench](wiki/entities/paper-codeactionbench.md) — CodeActionBench 是一个面向具身操作的 agentic Code-as-Policy 基准：它测量通用多模态 agent 能否从 RGB 观察出发，构造、执行并修订可运行的机器人策略代码 `📅unknown` `[entity_page]`
 - [Codebook Agent：多智能体拓扑的摊销式设计](wiki/entities/paper-codebook-agent-topology-design.md) — Codebook Agent**（论文 *Codebook Agent: Amortized Topology Design for LLM Multi-Agent Systems*，[arXiv `📅unknown` `[entity_page]`
 - [CogACT](wiki/entities/paper-cogact.md) — CogACT**（arXiv:2411.19650，[代码](https://github.com/microsoft/Co `📅unknown` `[entity_page]`
 - [CoHuB：多个人形机器人协作仿真基准](wiki/entities/paper-cohub.md) — CoHuB: A Simulation Benchmark for Multi-Humanoid Collaboration**（[arXiv:2609.34782](https://arxiv. `📅unknown` `[entity_page]`

@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | CodeActionBench — 归档论文、项目页与官方代码，并建立统一基准实体节点
+
+- 开源结论：MIT 代码已公开；完整轨迹、观察图像与视频数据集仍待发布。
+- 关键页：单一论文实体整理任务边界、agent 工具闭环、隐藏 verifier、评测读法与复现限制。
+
 ## [2026-10-15] ingest | sources/repos/ultimaker-cura.md — 归档 Cura 切片工作流并连接 CAD 与增材制造知识页
 
 - 官方 README 确认其为模型切片应用，列出数百项设置与社区打印配置；主程序许可为 LGPL-3.0。
