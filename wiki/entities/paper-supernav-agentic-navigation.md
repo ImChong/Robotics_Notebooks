@@ -27,6 +27,19 @@ summary: "SuperNav（arXiv:2610.12126）给预训练 MLLM 配置 agent harness�
 
 **MLLM 决定“该看哪里、接下来去哪里、是否完成”，harness 维护任务与上下文，执行器负责把图像上的目标点变成运动。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MLLM | Multimodal Large Language Model | 多模态大语言模型；本系统的高层决策器 |
+| RGB | Red-Green-Blue | 彩色图像观测；Agent 每轮接收四向 RGB |
+| PointNav | Point-goal Navigation | 点目标导航；此处目标是图像上的归一化像素点 |
+| VLN | Vision-Language Navigation | 视觉–语言导航任务族 |
+| SR | Success Rate | 成功率 |
+| SPL | Success weighted by Path Length | 按路径长度加权的成功率 |
+| HM3D | Habitat-Matterport 3D | Habitat 室内场景数据集 |
+| OVON | Open-Vocabulary Object Navigation | 开放词汇物体导航基准 |
+
 ## 核心术语
 
 | 术语 | 含义 |
@@ -38,7 +51,7 @@ summary: "SuperNav（arXiv:2610.12126）给预训练 MLLM 配置 agent harness�
 | Learned Executor | 根据目标点和近期 RGB 历史预测局部位移增量与停止信号 |
 | SR / SPL | 成功率 / 按路径长度加权的成功率 |
 
-## 系统结构
+## 方法：系统结构
 
 ### 1. Agent loop：维持长程任务状态
 
@@ -83,6 +96,26 @@ Agent 接收用户请求与四向 RGB 图像后，MLLM 反复选择观测、转�
 - **运动后端可替换**：几何规划更依赖深度/地图等几何输入；学习执行器更依赖训练数据与权重，二者不应被误认为同一控制器。
 - **结果有跨任务证据，但边界需按基准读**：单物体、多物体、需求驱动及 HM3D 类别导航协议不同；SR 不宜混成一个总体指标。
 - **真机演示与复现入口分开**：页面有 Go2 演示，代码仓库仍标注真机部署待发布。
+
+## 与其他工作对比
+
+| 工作 | 高层决策 | 是否导航专用训练 | 动作接口 | 与 SuperNav 的差异 |
+|------|----------|------------------|----------|--------------------|
+| SuperNav | 预训练 MLLM + agent harness | 否（不微调 MLLM） | 图像上的视觉目标点 → 可替换执行器 | — |
+| [Qwen-RobotNav](./qwen-robot-nav.md) | 导航专用 Qwen3-VL 模型 | 是（15.6M 样本单权重） | 任务模式 + 可控观测参数 | 把多任务能力训进权重；SuperNav 把能力放在 Tools / Skills / 任务记录上 |
+| [Uni-LaViRA](./paper-uni-lavira.md) | MLLM 分层翻译 | 否（training-free） | Language→Vision→Robot 三层翻译 | 同属免训练路线；Uni-LaViRA 强调多本体真机，SuperNav 强调长程 agent loop 与执行反馈 |
+| [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) | 世界动作模型 | 是 | 目标图像条件下直接输出 action chunk | 端到端学习控制；SuperNav 的 Learned Executor 只负责短程到点 |
+
+对比的关键轴是「导航能力在模型权重里还是在 harness 里」：SuperNav 的结果说明后者能覆盖多类任务，但其成功率仍受 MLLM 选点、终止判断与执行器可达性共同限制。
+
+## 结论
+
+**SuperNav 的主要贡献是证明：不做导航专用微调，仅靠 agent harness、视觉点接口与可替换执行器，也能让通用 MLLM 完成多类具身导航任务。**
+
+- 复用时优先迁移的是接口设计：视觉目标点 + 执行反馈 + 结构化任务进度，而不是某个具体模型。
+- 各基准协议与成功阈值不同，SR / SPL 只能在同一基准行内比较；有序多物体任务 SR 34% 说明长程状态跟踪仍是瓶颈。
+- 几何执行器与学习执行器依赖的输入和权重不同，复现时要分别准备深度/定位或 Learned Executor 权重。
+- 截至 2026-10-14 仿真评测栈已开源，Unitree Go2 真机部署与 AI2-THOR 需求驱动数据仍待发布。
 
 ## Mermaid：从任务请求到闭环导航
 

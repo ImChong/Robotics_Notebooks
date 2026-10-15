@@ -98,6 +98,7 @@ sequenceDiagram
 - [stereo-matching-foundation-models](../methods/stereo-matching-foundation-models.md)
 - [lidar-sensing](../concepts/lidar-sensing.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — TartanMatch 位于 ① 传感与标定层：跨 RGB / 事件 / 热成像 / 深度 / LiDAR 的稠密对应，为多模态标定与融合提供匹配
 
 ## 参考来源
 

@@ -3,10 +3,12 @@ type: entity
 project_id: floorplan-3d-wy51ai
 tags: [floorplan, interior-design, 2d-editor, threejs, svg, browser-app, visualization]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-14
 related:
   - ./sc-datav.md
   - ./threejs-game-skills.md
+sources:
+  - ../../sources/repos/wy51ai-floorplan-3d.md
 code: https://github.com/wy51ai/floorplan-3d
 project: https://wy51ai.github.io/floorplan-3d/
 summary: "纯前端户型装修设计工具：在 2D 平面图中布置家具、测量与拆改墙体，实时同步到 Three.js 3D 场景；含漫游、面积/材料估算、PNG 与 JSON 导出，可在线直接体验。"
@@ -92,6 +94,7 @@ flowchart TB
 
 ## 参考来源
 
+- [floorplan-3d 仓库归档](../../sources/repos/wy51ai-floorplan-3d.md)
 - [项目 README](https://github.com/wy51ai/floorplan-3d/blob/master/README.md)
 - [源码入口 `index.html`](https://github.com/wy51ai/floorplan-3d/blob/master/index.html)
 - [MIT License](https://github.com/wy51ai/floorplan-3d/blob/master/LICENSE)

@@ -10,7 +10,7 @@ tags:
   - dual-stream
   - whut
 status: complete
-updated: 2026-09-21
+updated: 2026-10-14
 arxiv: "2607.13926"
 related:
   - ../methods/vla.md
@@ -201,6 +201,7 @@ flowchart TB
 - [Qwen-RobotNav](./qwen-robot-nav.md) — 亦报告 NAVSIM PDMS 的导航基座（任务 mode 含驾驶）
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — VLN / 导航与驾驶评测分界
 - [五大具身模型分类](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — VLM→VLA 能力边界
+- [Qwen-Drive-1.0](./paper-qwen-drive-1-0.md) — 同报 NAVSIM PDMS 的驾驶 VLM：共享表征 + 外接 BEV 头 / 规划专家，对照 S²-VLA 的语义∥空间双流解耦
 
 ## 参考来源
 

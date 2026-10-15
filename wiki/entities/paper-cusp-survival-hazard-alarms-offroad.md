@@ -79,6 +79,7 @@ summary: "CUSP（arXiv:2610.07882）：把人类感知危险时刻与实际接�
 - [safety-filter](../concepts/safety-filter.md)
 - [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — CUSP 位于 ④ 下游策略消费层：把感知到的危险累积为生存风险告警，评测关注误报率而非检测 mAP
 
 ## 参考来源
 

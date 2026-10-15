@@ -100,6 +100,7 @@ sequenceDiagram
 - [sim-vs-real-eval-gap](../concepts/sim-vs-real-eval-gap.md)
 - [roboarena](../methods/roboarena.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ③ 策略任务成功率 / ④ sim↔real 校准层：用序贯检验分配真机试验，以有限预算给出可控错误率的策略排名
 
 ## 参考来源
 

@@ -2,6 +2,7 @@
 type: entity
 project_id: humanoid-multiple-contact-fall-planning
 doi: 10.1109/IROS.2015.7353756
+venue: IROS 2015
 tags: [paper, humanoid, fall-safety, contact-planning, trajectory-optimization]
 status: complete
 updated: 2026-10-14
@@ -139,6 +140,16 @@ flowchart TB
 - BioloidGP 与 Atlas 仿真显示了接触从迈步、膝手支撑到滚翻的自适应变化；不同初始状态的改善幅度差异很大，不能只引用最好的一行。
 - 方法计算耗时 1–10 秒且只建模平面运动，适合作为离线规划思路或预计算策略基础，不是现成实时保护控制器。
 - 全文和视频可直接查看，但作者项目页没有公开代码；想复现需自行实现抽象模型、查表筛选、动态规划及全身姿态跟踪。
+
+## 与其他工作对比
+
+| 工作 | 方法形态 | 处理阶段 | 实时性 | 验证平台 |
+|------|----------|----------|--------|----------|
+| 本文（Ha & Liu 2015） | 低维抽象模型 + 接触图 + 动态规划，min-max 峰值冲量 | 已不可避免跌倒后的多接触序列 | 离线，每次 1–10 秒 | BioloidGP / Atlas 仿真，BioloidGP 实机 |
+| [SafeFall](./paper-hrl-stack-41-safefall.md) | 学习式保护控制，检测不可避免跌倒后触发 | 跌倒检测 + 保护动作 | 在线策略推理 | 现代人形平台 |
+| [Unified Fall-Safety Policy](./paper-notebook-unified-humanoid-fall-safety-policy-from-a-few-d.md) | 稀疏示范 + RL + 扩散式安全反应记忆 | 防摔、减损与起身统一为一个策略 | 在线策略推理 | 仿真 + Unitree G1 |
+
+本文的优势是损伤目标与接触可行性都显式可解释；学习式工作则覆盖实时反应与摔后恢复，但通常不再给出这样可审计的接触序列优化目标。
 
 ## 关联页面
 
