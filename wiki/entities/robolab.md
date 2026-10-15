@@ -174,6 +174,8 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
+- [Astranomy：GPT-6 Astra 原生机器人策略研究](./astranomy.md) — RoboLab-120 上的一项通用模型策略研究。
+
 - [RoboDojo](./robodojo.md) — 另一套 sim+real 通用操纵评测与公益榜。
 - [π0.5](./paper-pi05-open-world-vla.md) — 榜单核心 VLA 基线之一。
 - [Hydra-0](./paper-hydra-0.md) — 用 RoboLab 开环评估 WM 预测质量。
