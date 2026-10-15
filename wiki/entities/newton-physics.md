@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-15
 related:
   - ./paper-dat-divide-and-truncate.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md
@@ -25,6 +25,7 @@ related:
   - ../concepts/sim2real.md
   - ./omnisim.md
   - ./nvidia-gtc.md
+  - ./robosimstudio.md
 sources:
   - ../../sources/repos/newton-physics.md
   - ../../sources/sites/newton-solvers-catalog.md
@@ -187,6 +188,7 @@ flowchart LR
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [OmniSim](./omnisim.md) — Newton 唯一后端的代理原生仿真器
+- [RoboSimStudio](./robosimstudio.md) — 基于 Newton、面向机器人操作任务 Real2Sim 的交互式 Agentic Robotics 工具包
 
 ## 参考来源
 
@@ -203,6 +205,7 @@ flowchart LR
 - [RoboFinals Newton-native 媒体文](../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md)
 - [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Newton 作为唯一后端的仿真器案例
 - [human five · Humanoid Skills（ROBOTIS K1 Newton 案例）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
+- [RoboSimStudio 仓库归档](../../sources/repos/robosimstudio.md)
 
 ## 推荐继续阅读
 
