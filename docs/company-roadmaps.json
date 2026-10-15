@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-15",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -582,6 +582,90 @@
         { "date": "2026-04", "title": "Beyond World Models & VLAs", "track": "观点", "desc": "说明 GEN-1 约 99% 参数从零训练，不归类为 VLA 或世界模型，视觉语言预训练被视为过渡手段。", "id": "entity-generalist-gen1", "url": "https://generalistai.com/blog/beyond-world-models", "date_note": "官网博文 2026-04-07。" },
         { "date": "2026-07", "title": "千手：多末端执行器", "track": "跨具身", "desc": "GEN-1 跨约 9000 种末端变体与 >50 万小时交互预训练，主张手可变、物理不变，演示任务中途换手。", "id": "entity-generalist-gen1-thousand-hands", "url": "https://generalistai.com/blog/towards-machines-with-a-thousand-hands", "date_note": "官网博文 2026-07-23。" },
         { "date": "2026-08", "title": "GEN-1.5", "track": "基础模型", "desc": "持续预训练后涌现 physical prompting：3–12 秒单次示范无梯度约 59% 成功率，10 步微调约 83%（自报）。", "id": "entity-generalist-gen15-one-shot", "url": "https://generalistai.com/blog/gen-1.5", "date_note": "官网博文 2026-08-19。" }
+      ]
+    },
+    {
+      "key": "amazon-far",
+      "name": "亚马逊 Amazon FAR",
+      "founded_year": 2024,
+      "founded_source": "https://www.aboutamazon.com/news/company-news/amazon-covariant-ai-robots",
+      "founded_note": "按 2024 年 Amazon 引入 Covariant 创始人与部分研究工程团队、扩充湾区 AI 与机器人团队的事件年份排序。该公告未给出 FAR 名称的确切成立日；FAR 是 Amazon 内部研究团队，此年份不代表独立公司成立。",
+      "lenses": [
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "Amazon 内部的 Frontier AI & Robotics 研究与工程团队：交互保留重定向与数据生成 → 全身跟踪 / 残差操作 → 便携遥操作数采 → 深度感知行走、跑酷与攀梯；holosoma 提供训练与部署框架，开放范围按各项目核查。",
+      "official": "https://github.com/amazon-far",
+      "nodes": [
+        {
+          "date": "2025-09",
+          "title": "OmniRetarget",
+          "track": "重定向 / 数据生成",
+          "desc": "用交互网格保留人体、物体与地形关系，生成并增广可跟踪的全身参考；实现并入 holosoma，部分重定向轨迹公开。",
+          "id": "entity-paper-hrl-stack-03-omniretarget",
+          "url": "https://omniretarget.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2509.26633"
+        },
+        {
+          "date": "2025-10",
+          "title": "ResMimic",
+          "track": "全身操作 / 残差学习",
+          "desc": "复用通用运动跟踪先验，以任务残差、接触奖励与虚拟力课程学习全身搬运；官方代码入口见详情。",
+          "id": "entity-paper-resmimic",
+          "url": "https://resmimic.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2510.05070"
+        },
+        {
+          "date": "2025-11",
+          "title": "TWIST2",
+          "track": "遥操作 / 数据采集",
+          "desc": "便携 VR 全身遥操作、两自由度颈增广与分层 visuomotor 学习；公开训练部署代码、控制器与硬件设计。",
+          "id": "entity-paper-twist2",
+          "url": "https://yanjieze.com/projects/TWIST2/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2511.02832"
+        },
+        {
+          "date": "2026-02",
+          "title": "RPL",
+          "track": "感知行走",
+          "desc": "多地形专家蒸馏为多视角深度策略，支持 G1 双向行走与负载扰动；开放状态沿用详情页注明日期的核查。",
+          "id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
+          "url": "https://rpl-humanoid.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2602.03002"
+        },
+        {
+          "date": "2026-02",
+          "title": "Perceptive Humanoid Parkour",
+          "track": "感知跑酷",
+          "desc": "运动匹配合成长程技能链，再经专家训练与 DAgger / PPO 蒸馏为机载深度策略；已归档官方代码、动作库与学生 ONNX。",
+          "id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+          "url": "https://php-parkour.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2602.15827"
+        },
+        {
+          "date": "2026-06",
+          "title": "LadderMan",
+          "track": "攀梯 / 全身操作",
+          "desc": "混合运动跟踪与 DAgger / RL 蒸馏实现深度感知攀梯，双智能体分工支持梯顶稳定遥操作；开放范围见详情。",
+          "id": "entity-paper-ladderman-humanoid-perceptive-ladder-climbing",
+          "url": "https://ladderman-robot.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2606.05873"
+        },
+        {
+          "date": "",
+          "title": "holosoma",
+          "track": "训练 / 推理框架",
+          "desc": "人形 locomotion、全身运动跟踪与 OmniRetarget 重定向统一框架，支持多仿真后端与 G1 / T1 部署。",
+          "id": "entity-holosoma",
+          "url": "https://github.com/amazon-far/holosoma",
+          "date_note": "持续维护的框架聚合入口；未核实首次公开月份，不使用论文或入库日期代替。"
+        }
       ]
     },
     {
