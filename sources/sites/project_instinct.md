@@ -1,7 +1,7 @@
 # Project Instinct（清华 IIIS / 上海期智研究院）
 
 - **类型**：研究项目站群 / 原始摘录（官网子页 + 公开预印本入口）
-- **收录日期**：2026-05-12
+- **收录日期**：2026-05-12；官网复核：2026-10-15
 - **主站**：<https://project-instinct.github.io/>
 
 ## 一句话
@@ -15,15 +15,17 @@
 
 ## 主站摘录（一级叙事）
 
-来源：<https://project-instinct.github.io/>（2026-05-12 抓取）
+来源：<https://project-instinct.github.io/>（初次抓取 2026-05-12；2026-10-15 复核官网及子页链接）
 
 - 标题口径：**Instinct-Level intelligences for whole-body control**。
 - 摘要口径：提出覆盖 **算法、环境、数据集整理与部署** 的统一框架，目标为 **人形机器人上的本能级（Instinct-Level）智能**。
 - 列出的研究子项（页面小节标题级）：
   - **Embrace Collisions** — Humanoid Shadowing for Deployable Contact-Agnostics Motions（CoRL 2025）
-  - **Deep Whole-Body Parkour**（In Submission）
-  - **Hiking in the Wild** — Scalable Perceptive Parkour Framework for Humanoids（In Submission）
+  - **Deep Whole-Body Parkour**（主站未列发表状态；子页提供代码、运动参考与检查点）
+  - **Hiking in the Wild** — Scalable Perceptive Parkour Framework for Humanoids（主站仍显示 In Submission；子页现标注 CoRL 2026）
 - 站点还强调：**机载深度**、**位置自校正**、**从跟踪策略蒸馏下游用例** 等展示块（以页面视频/小标题为准，本库不转存媒体）。
+- **2026-10-15 状态复核**：Hiking 子页已标为 **CoRL 2026**，并在官方页面公开训练代码、部署代码及数据/模型下载入口。Deep Whole-body Parkour 子页公开了 shadowing task 代码和 G1 29-DoF torso-base 运动参考/模型检查点下载入口。Embrace Collisions 子页的代码链接仍标注 **Coming Soon**，不应视为已发布。
+- **源码链接（官网逐项核对）**：Deep Whole-body Parkour → [InstinctLab shadowing task README](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/shadowing/README.md)；Hiking in the Wild → [InstinctLab parkour task README](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/README.md)。相关完整生态仓库见 [InstinctLab](https://github.com/project-instinct/instinctlab)、[instinct_rl](https://github.com/project-instinct/instinct_rl)、[instinct_onboard](https://github.com/project-instinct/instinct_onboard)。
 
 ## 子页 1：Embrace Collisions
 
@@ -42,6 +44,7 @@
 
 - **作者**：Ziwen Zhuang, Shaoting Zhu, Mengjie Zhao, Hang Zhao（单位标注：清华 IIIS、上海期智）。
 - **核心主张**：现有路线二分——**感知 locomotion** 擅地形但多限于 **足式步态**；**通用动作跟踪** 能复现复杂技能但常 **忽视环境可通行性**。本文将 **外感受** 并入 **全身动作跟踪闭环**，在 **非平坦地面** 上完成 **腾跃、侧滚翻** 等高动态 **多接触** 行为；用 **单一策略** 跨 **多种动作与多种地形特征** 训练，强调 **把感知接入控制回路** 的收益。
+- **开放状态（2026-10-15 官网核对）**：子页直接链接到 InstinctLab 的 `shadowing` task README，提供训练/播放命令；并提供 G1 29-DoF torso-base 运动参考和模型检查点下载入口。代码与运行说明见 [shadowing task](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/shadowing/README.md)，数据和模型由官网 Google Drive 链接提供。
 - **预印本**：arXiv:2601.07701 — <https://arxiv.org/abs/2601.07701>（页面内 BibTeX 与站点一致）。
 
 ## 子页 3：Hiking in the Wild
@@ -54,6 +57,7 @@
   - **落脚点安全**：可扩展 **Terrain Edge Detection** + **Foot Volume Points**，抑制 **边沿灾难性打滑**。
   - **Flat Patch Sampling**：通过 **可行导航目标采样** 缓解 **奖励投机（reward hacking）**。
 - **学习范式**：**单阶段强化学习**，**原始深度 + 本体** 直接映射到 **关节动作**，**不依赖外部状态估计**；宣称野外 **全尺寸人形** 上复杂地形 **最高约 2.5 m/s**，并 **开源训练与部署代码**（以仓库 README 为准）。
+- **发表与开放状态（2026-10-15 官网核对）**：页面标注 **CoRL 2026**；代码链接指向 InstinctLab `parkour` task README，提供训练、播放及 ONNX 导出命令；另有数据与模型下载入口。参见 [parkour task](https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/README.md)。
 - **预印本**：arXiv:2601.07718 — <https://arxiv.org/abs/2601.07718>（页面 BibTeX 一致）。
 
 ## 对 wiki 的映射
@@ -66,3 +70,4 @@
 - Embrace Collisions：<https://project-instinct.github.io/embrace-collisions/> · arXiv:2502.01465：<https://arxiv.org/abs/2502.01465>
 - Deep Whole-Body Parkour：<https://project-instinct.github.io/deep-whole-body-parkour/> · arXiv:2601.07701：<https://arxiv.org/abs/2601.07701>
 - Hiking in the Wild：<https://project-instinct.github.io/hiking-in-the-wild/> · arXiv:2601.07718：<https://arxiv.org/abs/2601.07718>
+- 官方源码入口：<https://github.com/project-instinct/InstinctLab>（Deep Whole-body Parkour 的 `shadowing` task 与 Hiking 的 `parkour` task）；Embrace Collisions 子页当前仍写明代码即将发布。
