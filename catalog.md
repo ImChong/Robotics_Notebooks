@@ -1537,6 +1537,7 @@
 - [COAP：具身图灵机与代码策略](wiki/entities/paper-coap-embodied-turing-machines.md) — COAP（Code-Only-as-Policy）** 将策略表示为执行状态测量、任务逻辑与动作选择的可读程序，并将 coding agent 的代码改进环限定在离线开发阶段；部署运行时由固定代码 `📅unknown` `[entity_page]`
 - [CoDance: Learning Reactive and Compliant Human-Humanoid Interaction from Video](wiki/entities/paper-codance.md) — CoDance 用单段双人舞视频生成机器人参考动作与舞伴运动，再把结构化双手外力注入多连杆顺应增强，以训练能跟随人并对接触作出响应的人形策略。 `📅unknown` `[entity_page]`
 - [Code-as-World（Executable World Representations for Physical Reasoning）](wiki/entities/paper-code-as-world.md) — Code-as-World**（*Code as Worlds: Agentic Discovery of Executable World Representations for Physica `📅unknown` `[entity_page]`
+- [CodeActionBench](wiki/entities/paper-codeactionbench.md) — CodeActionBench 是一个面向具身操作的 agentic Code-as-Policy 基准：它测量通用多模态 agent 能否从 RGB 观察出发，构造、执行并修订可运行的机器人策略代码 `📅unknown` `[entity_page]`
 - [Codebook Agent：多智能体拓扑的摊销式设计](wiki/entities/paper-codebook-agent-topology-design.md) — Codebook Agent**（论文 *Codebook Agent: Amortized Topology Design for LLM Multi-Agent Systems*，[arXiv `📅unknown` `[entity_page]`
 - [CogACT](wiki/entities/paper-cogact.md) — CogACT**（arXiv:2411.19650，[代码](https://github.com/microsoft/Co `📅unknown` `[entity_page]`
 - [CoHuB：多个人形机器人协作仿真基准](wiki/entities/paper-cohub.md) — CoHuB: A Simulation Benchmark for Multi-Humanoid Collaboration**（[arXiv:2609.34782](https://arxiv. `📅unknown` `[entity_page]`
@@ -1746,6 +1747,7 @@
 - [EGR：面向鲁棒 VLA 的证据门控正则](wiki/entities/paper-egr.md) — EGR**（*Evidence-Gated Regularization*；*Sensing Which Modality Matters*，[arXiv:2609.03142](https:// `📅unknown` `[entity_page]`
 - [EigenDEXplore](wiki/entities/paper-eigendexplore.md) — EigenDEXplore**（*Structured Exploration for Dexterous Manipulation with Human Priors*，arXiv:2610.0 `📅unknown` `[entity_page]`
 - [ElastiQP（arXiv:2609.19080）](wiki/entities/paper-elastiqp.md) — ElastiQP**（*ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control*，[arXiv:2609.1908 `📅unknown` `[entity_page]`
+- [EmbodiedEvo：让 coding agent 把具身交互经验变成可复用程序](wiki/entities/paper-embodied-evo-coding-agent.md) — EmbodiedEvo**（*Self-Evolving Coding Agent For Physical Intelligence*，[arXiv:2610.18867](https://ar `📅unknown` `[entity_page]`
 - [基础模型时代具身操作综述（Planning & Learning）](wiki/entities/paper-embodied-manipulation-foundation-models-survey.md) — Embodied Robot Manipulation in the Era of Foundation Models: Planning and Learning Perspectives**（ `📅unknown` `[entity_page]`
 - [Embodied MM Grounding（3DGS）（arXiv:2608.10756）](wiki/entities/paper-embodied-multimodal-grounding-3dgs-mobile-manipulation.md) — Embodied MM Grounding（3DGS）**（*Embodied Multimodal Grounding for Open-Vocabulary Mobile Manipulati `📅unknown` `[entity_page]`
 - [Embodied-Navigator：用像素目标、选择性推理与记忆做导航](wiki/entities/paper-embodied-navigator-tamp-nav.md) — Embodied-Navigator**（方法名 **TAMP-Nav**；arXiv:2608.17512，[项目页](h `📅unknown` `[entity_page]`

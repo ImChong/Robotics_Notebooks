@@ -2,7 +2,7 @@
 type: concept
 tags: [llm-agents, control-interface, vla, locomotion, manipulation, anthropic, safety, sim2real]
 status: complete
-updated: 2026-10-11
+updated: 2026-10-15
 related:
   - ../entities/agnes-harness.md
   - ../entities/anthropic-embody.md
@@ -17,6 +17,7 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
   - ../entities/libero-benchmark.md
+  - ../entities/paper-codeactionbench.md
   - ../entities/unitree-g1.md
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -111,6 +112,8 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 - **评测代码入库日未公开。** 分数不可本地重跑；以研究文与日后 `safety-research/embody` 为准。
 
 ## 关联页面
+
+- [CodeActionBench](../entities/paper-codeactionbench.md) — 以代码生成、执行反馈和隐藏 verifier 评测 agentic 操作策略。
 
 - [Embody 评测套件](../entities/anthropic-embody.md) — 本页所编译的评测床与开源状态
 - [Muse Gadgets 边缘设备 SDK](../entities/muse-gadgets.md) — 语音助手通过本地设备命令 / API 触达实体外设的案例
