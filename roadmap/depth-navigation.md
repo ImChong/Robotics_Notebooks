@@ -189,6 +189,7 @@ flowchart LR
 - [HumanoidVLN](../wiki/entities/paper-humanoidvln.md) — Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
 - [NavVerse](../wiki/entities/paper-navverse.md) — UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
 - [VTInstructor](../wiki/entities/paper-vtinstructor.md) — 第一视角轨迹压缩为导航关键帧并注入路径/转向/终点提示，生成 VLN 指令并以冻结 follower 验证下游效果
+- [Embodied-Navigator / TAMP-Nav](../wiki/entities/paper-embodied-navigator-tamp-nav.md) — 像素到三维 waypoint + 选择性 CoT / 锚点记忆 + 双层 GRPO 的 VLN 策略
 
 ### 学完输出什么
 - 一次标准 VLN 基准上的复现与评测记录
