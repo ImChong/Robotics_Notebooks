@@ -140,4 +140,4 @@ flowchart TB
 ## 推荐继续阅读
 
 - [MetaGenSim 项目页](https://meta-gensim.github.io/) — 方法概览与视频（未提供代码）
-- [MimicGen](https://arxiv.org/abs/2310.17596) — 论文用于生成仿真演示的数据生成系统（外部参考，论文引用）
+- MimicGen — 论文用于生成仿真演示的数据生成系统（论文参考文献 [9]；本页未核实其 arXiv 编号，请以论文参考文献为准）
