@@ -144,6 +144,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - 中间层做插值、限幅和安全过滤
 - 低层控制器按高频消耗 chunk
 
+[RoboPrompt](../entities/paper-roboprompt.md) 把动作块用作人机协同接口：用户在图像上给出点、轨迹或粗略方向，Evo-1 生成动作草案，再由 diffusion / flow-matching 策略细化。
 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) 把 **异步 chunk** 推进一步：在 **推理耗时 Δtinf** 内仍执行当前 chunk 的未消费步，并对下一 chunk 用 **已提交动作前缀** 条件化；训练侧用 **Λ 形注意力、前缀随机遮蔽与损失重加权** 减轻「模型抄前缀、弱化视觉反馈」的捷径行为（细节以论文为准）。
 
 ### 3. 接触丰富任务
