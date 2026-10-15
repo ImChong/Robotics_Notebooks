@@ -2161,6 +2161,7 @@
 - [What Matters for Latent Actions](wiki/entities/paper-latent-actions-matter.md) — What Matters for Latent Actions in Robot Learning**（[arXiv:2608.19613](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [LAWA：潜动作作未来意图](wiki/entities/paper-lawa.md) — LAWA**（*Latent Action as Intention Enables Efficient Future Imagination for World Action Models*， `📅unknown` `[entity_page]`
 - [LaWAM：LeRobot 原生潜空间 World Action Model](wiki/entities/paper-lawam.md) — LaWAM**（*Latent World Action Models for Efficient Dynamics-Aware Robot Policies*，[arXiv:2606.15768 `📅unknown` `[entity_page]`
+- [AI 预测 UV 校正因子与无标准品反应定量](wiki/entities/paper-lcms2yield.md) — lcms2yield** 将分子结构到全光谱 UV 校正因子（CF）的预测，与液相色谱-紫外（LC-UV）测量结合，用于没有目标物纯标准品时估计浓度和反应产率。 `📅unknown` `[entity_page]`
 - [LD4WAM：跨本体运动对齐潜动力学 WAM](wiki/entities/paper-ld4wam.md) — LD4WAM**（*Learning Latent Dynamics from Human Videos for World Action Models*，[arXiv:2608.22403](h `📅unknown` `[entity_page]`
 - [Contact models in robotics: a comparative analysis](wiki/entities/paper-le-lidec-contact-models-comparative-analysis.md) — Contact models in robotics: a comparative analysis**（[arXiv:2304.06372](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`
 - [LEAP（四足主动感知）（arXiv:2609.17628）](wiki/entities/paper-leap-quadruped-active-perception.md) — LEAP（四足主动感知）**（*LEAP: Learning Emergent Active Perception for Quadruped Navigation*，[arXiv:2609.17 `📅unknown` `[entity_page]`
@@ -4609,6 +4610,7 @@
 - [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2 `📅unknown` `[entity_page]`
 - [In-the-Wild Compliant Manipulation with UMI-FT（arXiv:2601.09988）](wiki/entities/paper-umi-ft.md) — In-the-Wild Compliant Manipulation with UMI-FT**（Hojung Choi, Yifan Hou, Chuer Pan, Seongheon Hong `📅unknown` `[entity_page]`
 - [UMR：学习点云对应的统一人形重定向](wiki/entities/paper-umr-unified-motion-retargeting.md) — UMR**（*Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*，[arXiv:26 `📅unknown` `[entity_page]`
+- [UMV：用自行车底盘做动态平衡、跳跃与翻转](wiki/entities/paper-umv-ultra-mobility-vehicle.md) — Ultra Mobility Vehicle（UMV）** 是 RAI Institute 的单轨自行车机器人：它把自行车的高速、低能耗移动与一个可大幅移动的高位质量机构结合，靠质心和角动量调节实 `📅unknown` `[entity_page]`
 - [水下四足姿态控制（arXiv:2609.09217）](wiki/entities/paper-underwater-quadruped-attitude-control.md) — 水下四足姿态控制**（[Design and Attitude Control of an Underwater Quadruped Robot](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译](wiki/entities/paper-uni-lavira.md) — Uni-LaViRA**（*Language-Vision-Robot Actions Translation for Unified Embodied Navigation*，arXiv:[26 `📅unknown` `[entity_page]`
 - [Uni-VLaT（arXiv:2609.35450）](wiki/entities/paper-uni-vlat.md) — Uni-VLaT**（*Whole-Body Tactile Adaptation of VLA Policies for Humanoid Loco-Manipulation*，[arXiv:2 `📅unknown` `[entity_page]`

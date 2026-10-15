@@ -180,6 +180,13 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | sources/papers/umv_arxiv_2602_22118.md — 归档 UMV 系统设计、状态估计与约束强化学习控制
+
+## [2026-10-15] ingest | LCMS2Yield — 归档论文、官方代码与数据，记录开源边界和研究方法
+
+- 论文与源码统一汇入一个 wiki 实体页，区分论文报告的定量框架与仓库公开的 SMILES→CF 预测入口。
+- 官方仓库公开 Apache-2.0 代码及多组数据；此工作面向分析化学与高通量实验，可作为自动化实验系统的分析组件线索。
+
 ## [2026-10-15] ingest | Fast Feature Field (F³) 事件预测表示
 
 - 收录 Science Robotics 期刊版论文及 arXiv 预印本，论文、项目页和官方实现合并为单一实体节点。
