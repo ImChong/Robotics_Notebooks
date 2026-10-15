@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, ros2, isaac-lab, roboparty]
 status: complete
-updated: 2026-07-14
+updated: 2026-10-15
 related:
   - ./roboparty.md
   - ./party-os.md
@@ -28,6 +28,7 @@ sources:
   - ../../sources/repos/atom01_train.md
   - ../../sources/repos/atom01_description.md
   - ../../sources/repos/atom01_firmware.md
+  - ../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md
 summary: "Roboto Origin（萝博头原型机 / RPO）是 RoboParty 发布的开源人形机器人基线：聚合 rpo_* / roboparty_* 子仓库，提供从硬件到训练再到部署的可复现工程路径（约 1.25 m、23 DOF）。"
 ---
 
@@ -78,9 +79,9 @@ Roboto Origin 的仓库体系可理解为「多段流水线 + 聚合快照」：
 
 > 官方 `roboto_origin` 为 **snapshot aggregation only**；模块级贡献应进入上表各子仓库。2026 README_cn 已将对外主名从 Atom01 统一为 RPO 系列，快照内可能保留兼容路径。
 
-### 与 Party OS 的演进关系（2026-07）
+### 与 Party OS / RP1 的演进关系（2026-10）
 
-Roboto Origin 解决「**开源一台人形**」；[RoboParty Lab / Party OS](./party-os.md) 进一步沉淀 **训练、控制与数据工具链基础设施**（[MimicLite](./mimiclite.md)、[UFO](./roboparty-ufo.md)、[hhtools](./human-humanoid-tools.md)）。详见 [技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
+Roboto Origin（RPO）是目前已开放的完整项目，解决「**开源一台人形**」；[RoboParty Lab / Party OS](./party-os.md) 进一步沉淀 **训练、控制与数据工具链基础设施**（[MimicLite](./mimiclite.md)、[UFO](./roboparty-ufo.md)、[hhtools](./human-humanoid-tools.md)）。RP1 是后续项目，其硬件文件、固件、仿真模型和训练工具按路线图分批发布，不能把 RPO 的完整开放状态直接套用到 RP1。最新进展以 [RoboParty GitHub 组织](https://github.com/Roboparty)和[官网](https://roboparty.com/)为准；见[开源进度来源归档](../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md)。详见 [技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
 ## 常见误区 / 局限
 
