@@ -319,6 +319,13 @@
         "ultralytics-yolo"
       ]
     },
+    "ultimaker": {
+      "label": "荷兰 Ultimaker 公司（Ultimaker B.V.）",
+      "aliases": [
+        "ultimaker",
+        "ultimaker-bv"
+      ]
+    },
     "roboflow": {
       "label": "罗博福流（Roboflow）",
       "aliases": [

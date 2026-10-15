@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, parametric-modeling, constructive-solid-geometry, 3d-printing, open-source, openscad]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-15
 project_id: openscad-parametric-cad
 project: https://openscad.org/
 code: https://github.com/openscad/openscad
@@ -10,6 +10,7 @@ summary: "OpenSCAD 以可读脚本而非鼠标式特征树描述参数化 2D/3D 
 related:
   - ../concepts/text-to-cad.md
   - ./freecad.md
+  - ./ultimaker-cura.md
   - ../concepts/urdf-robot-description.md
 sources:
   - ../../sources/sites/openscad.md
@@ -68,12 +69,13 @@ flowchart TD
 | 参数化支架/外壳 | 暴露尺寸变量，以 module 复用安装孔和重复结构 | 参数组合需加范围检查，避免薄壁、重叠面或退化几何 |
 | 版本控制 | 把 .scad 与依赖库一起提交，固定外部模块版本 | 用 Git diff 审查参数与结构变化 |
 | 批量生成 | 用 CLI 注入参数并按文件名导出 | 用当前版本 --help 核实导出选项；CI 中显式检查进程返回码与文件存在性 |
-| 3D 打印 | 完整渲染后导出 STL/3MF 并用切片器验证 | 检查封闭性、薄壁、孔径补偿和单位 |
+| 3D 打印 | 完整渲染后导出 STL/3MF 并用切片器（如 [Ultimaker Cura](./ultimaker-cura.md)）验证 | 检查封闭性、薄壁、孔径补偿和单位 |
 | 机器人仿真 | 导出简化网格作为视觉或碰撞几何，再配置 URDF/MJCF | 不能把网格导出等同于完整机器人描述或动力学辨识 |
 
 ## 与其他工具的边界
 
 - [FreeCAD](./freecad.md) 提供参数化 B-rep、草图约束与装配/工程工作台；适合需要 STEP、装配关系和制造工程细节的任务。OpenSCAD 的脚本几何可先生成概念件，但进入 STEP/B-rep 链路时要在支持实体转换的工具中验证或重建。
+- [Ultimaker Cura](./ultimaker-cura.md) 位于建模之后的切片环节：读取模型与打印机/材料配置，规划逐层路径并导出 G-code；它不会替代上游 CAD 建模。
 - [文字生成 CAD](../concepts/text-to-cad.md) 中 OpenSCAD 属于“LLM 生成脚本，再执行并检查”的路线，与直接生成网格或 B-rep 的模型服务不同。
 - [URDF（机器人描述格式）](../concepts/urdf-robot-description.md) 负责关节、连杆和惯性等机器人结构语义；OpenSCAD 只产几何，二者位于不同层。
 
@@ -89,6 +91,7 @@ flowchart TD
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 脚本生成与制造向 CAD 的工具谱系。
 - [FreeCAD](./freecad.md) — 对比 B-rep、STEP、装配与工程化工作流。
+- [Ultimaker Cura](./ultimaker-cura.md) — 把导出的网格交给切片器，生成目标打印机的 G-code。
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md) — 几何进入机器人描述后的关节与惯性语义。
 
 ## 参考来源
