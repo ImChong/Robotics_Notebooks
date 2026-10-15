@@ -28,7 +28,7 @@ summary: "Embodied-Navigator（TAMP-Nav，arXiv:2608.17512）：VLM 选二维像
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| TAMP-Nav | Think, Align, Memorize, and Point for Navigation | 论文提出的统一 VLN 框架 |
+| TAMP-Nav | TAMP-Nav | 论文提出的统一 VLN 框架 |
 | CoT | Chain-of-Thought | 逐步推理；该方法选择性触发 |
 | STI | Space-Time Indicator | 以轻量时空标记压缩冗余轨迹历史 |
 | GRPO | Group Relative Policy Optimization | 论文双层策略优化所用算法 |
