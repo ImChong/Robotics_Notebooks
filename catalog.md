@@ -106,6 +106,7 @@
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`
 - [Beckhoff SSC (EtherCAT Slave Stack Code)](wiki/entities/beckhoff-ssc.md) — 倍福官方 EtherCAT 从站栈源码，ETG 会员免费获取，不在公开 GitHub 仓库发布。（分类：EtherCAT 从站协议栈；语言/形态：C（官方从站栈源码）） `📅unknown` `[entity_page]`
 - [BEHAVIOR-1K](wiki/entities/behavior-1k.md) — BEHAVIOR-1K** 是斯坦福大学等机构 2023 年发布的 **千项日常活动具身 AI 基准**，在 NVIDIA Omniverse 上构建高逼真物理与视觉环境。 `📅unknown` `[entity_page]`
+- [BEHAVIOR Robot Suite (BRS)](wiki/entities/behavior-robot-suite.md) — BRS 是一个面向家庭长时程移动操作的开源系统套件：用 JoyLo 采集全身示范，再以 WB-VIMA 学习协调轮式底盘、躯干与双臂的视觉动作策略。 `📅unknown` `[entity_page]`
 - [智在无界（BeingBeyond）](wiki/entities/beingbeyond.md) — 智在无界（BeingBeyond，北京智在无界科技有限公司）** 是 2025 年在北京成立的具身基础模型公司，创始人是北京大学计算机学院副教授 **卢宗青**。公司主张从 **大规模第一视角人类 `📅unknown` `[entity_page]`
 - [Benjamin Katz（Ben Katz）](wiki/entities/benjamin-katz.md) — Benjamin Katz** 是 **MIT Mini Cheetah** 的主设计者与早期交付工程师：把 hobby BLDC + 定制驱动做成可背驱模块化执行器与整机平台，并以 [Robot `📅unknown` `[entity_page]`
 - [Berkeley Humanoid Lite（BHL）](wiki/entities/berkeley-humanoid-lite.md) — Berkeley Humanoid Lite** 是 **UC Berkeley Hybrid Robotics** 的 **轻量人形** 开源方案：门户 **[lite.berkeley-hum `📅unknown` `[entity_page]`
@@ -1940,6 +1941,7 @@
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
+- [GreenWAM: A World Foundation Model for Robotics](wiki/entities/paper-greenwam.md) — GreenWAM 是一个把动作条件世界预测与机器人策略生成放在同一模型中、并以共享解剖关节空间覆盖 20 类机器人本体的 world-action foundation model。 `📅unknown` `[entity_page]`
 - [GRID（General Robot Intelligence Development）](wiki/entities/paper-grid-general-robot-intelligence-development.md) — GRID**（*GRID: A Platform for General Robot Intelligence Development*，Vemprala / Chen / Shukla / Na `📅unknown` `[entity_page]`
 - [GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap](wiki/entities/paper-grip.md) — GRIP**（*Ground Reaction Inertial Poser*；arXiv:2603.16233，CVPR  `📅unknown` `[entity_page]`
 - [Gripper MagBot（arXiv:2609.12883）](wiki/entities/paper-gripper-magbot.md) — Gripper MagBot**（[From Transportation to Manipulation: Enabling Grasping in Magnetic Robotics](htt `📅unknown` `[entity_page]`

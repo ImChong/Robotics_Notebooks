@@ -180,6 +180,10 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | GreenWAM 与 BEHAVIOR Robot Suite：核查官方页面、代码与数据
+
+将 GreenWAM 和 BRS 各自整理为单一项目实体，并记录官方开放资源与复现依赖。GreenWAM 提供四个 benchmark checkpoint 与评测代码；BRS 公开算法、硬件控制和数据入口。Pi API beta 已有来源页和 wiki 实体，核对后复用原记录，未建重复节点。
+
 ## [2026-10-15] ingest | EmbodiedEvo：核实项目页、论文与公开代码
 
 将论文、项目页和官方代码归档为同一实体节点。项目页与 arXiv HTML v2 已核对；代码公开，README 说明复现依赖单独配置 RoboDojo / Isaac Sim 资产、GPU 和模型凭据，且项目级许可证尚未选择。评测来自 RoboDojo-Sim，精细接触操作仍是主要短板。
