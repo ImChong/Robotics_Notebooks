@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-09-27
+updated: 2026-10-15
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -10,6 +10,7 @@ related:
   - ../entities/paper-bfm-survey-tpami-2025.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-perceptive-bfm.md
+  - ../entities/paper-p-bfm.md
   - ../entities/paper-reactivebfm.md
   - ../entities/paper-scaling-bfm-humanoid.md
   - ../methods/sonic-motion-tracking.md
@@ -22,6 +23,8 @@ related:
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
+  - ../../sources/papers/p_bfm_arxiv_2610_15833.md
+  - ../../sources/sites/p-bfm-project-page.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
@@ -142,6 +145,8 @@ flowchart TB
 - [BFM 分类 03：Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)
 - [BFM 分类 04：Adaptation](../overview/bfm-category-04-adaptation.md)
 - [BFM 分类 05：Hierarchical control](../overview/bfm-category-05-hierarchical-control.md) — awesome 列表 + 公众号五类问题导读
+
+- [P-BFM](../entities/paper-p-bfm.md) — FB 意图空间 + 深度感知地形适配，ERI 显式约束根运动
 
 ## 参考来源
 
