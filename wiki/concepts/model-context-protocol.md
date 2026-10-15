@@ -2,7 +2,7 @@
 type: concept
 tags: [mcp, llm-agents, protocol, anthropic, json-rpc, tooling, agent-host, open-source]
 status: complete
-updated: 2026-09-04
+updated: 2026-10-15
 related:
   - ./model-hardware-standard.md
   - ./llm-robotics-control-interfaces.md
@@ -15,6 +15,7 @@ related:
   - ../entities/rea.md
   - ../entities/hermes-agent.md
   - ../entities/sciencediscovery.md
+  - ../entities/paper-paper2agent.md
   - ../entities/unreal-mcp.md
   - ../entities/omnisim.md
   - ../entities/unreal-engine-5.md
@@ -24,6 +25,8 @@ sources:
   - ../../sources/sites/anthropic-model-context-protocol.md
   - ../../sources/sites/modelcontextprotocol-io.md
   - ../../sources/repos/modelcontextprotocol.md
+  - ../../sources/papers/paper2agent_nature_2026.md
+  - ../../sources/repos/paper2agent.md
   - ../../sources/sites/unreal-mcp-in-unreal-editor.md
   - ../../sources/sites/anthropic-model-hardware-standard.md
 summary: "Model Context Protocol（MCP）是连接 AI 应用与外部数据/工具的开放标准：Host 经 Client 用 JSON-RPC 对接 Server；官方传输为 stdio 与 Streamable HTTP；Server 暴露 Tools / Resources / Prompts。2024-11 Anthropic 开源，规范与文档以 modelcontextprotocol.io 与 schema 版本目录为真源。"
@@ -141,6 +144,7 @@ flowchart TB
 - **许可过渡：** 规范仓正从 MIT 过渡到 Apache-2.0；再分发时核对当前 LICENSE 文本。
 
 ## 关联页面
+- [Paper2Agent](../entities/paper-paper2agent.md) — 将论文方法与研究资源生成可验证的 MCP Tools、Resources 与 Prompts。
 
 - [Model Hardware Standard](./model-hardware-standard.md) — 物理设备驱动标准；可经 MCP 访问，但不等于 MCP
 - [远程过程调用（RPC）](./remote-procedure-call.md) — JSON-RPC / gRPC 概念下层
