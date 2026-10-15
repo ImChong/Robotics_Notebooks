@@ -150,6 +150,8 @@ sequenceDiagram
 - [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 无运动事件—RGB 外参标定（显示器调制 ChArUco）
 - [Sim2Real（仿真到真实迁移概念）](../concepts/sim2real.md)
 
+- [Fast Feature Field (F³)](./paper-fast-feature-field-f3.md) — 复用预测性事件特征的机器人感知表示
+
 ## 参考来源
 
 - [深蓝AI：近五年 Science Robotics 中国顶尖高校盘点](../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md)
