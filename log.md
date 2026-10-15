@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | sources/papers/worldline_arxiv_2609_38059.md — 归档动作驱动视觉仿真论文、项目页和无可运行代码仓；补充生成式世界模型与功能分类交叉链接
+
 ## [2026-10-15] ingest | GreenWAM 与 BEHAVIOR Robot Suite：核查官方页面、代码与数据
 
 将 GreenWAM 和 BRS 各自整理为单一项目实体，并记录官方开放资源与复现依赖。GreenWAM 提供四个 benchmark checkpoint 与评测代码；BRS 公开算法、硬件控制和数据入口。Pi API beta 已有来源页和 wiki 实体，核对后复用原记录，未建重复节点。
