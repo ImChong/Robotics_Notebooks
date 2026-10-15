@@ -10,11 +10,12 @@ tags:
   - frontend
   - agent-infrastructure
 status: complete
-updated: 2026-09-07
+updated: 2026-10-15
 related:
   - ./img2threejs.md
   - ./gsap-skills.md
   - ./image-blaster.md
+  - ./get-it-study-companion.md
   - ./cad-skills.md
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
@@ -151,6 +152,7 @@ sequenceDiagram
 - [GSAP Skills](./gsap-skills.md) — **DOM/SVG Web 动效** 官方 Agent Skills
 - [CAD Skills](./cad-skills.md) — **STEP/URDF 制造** Agent Skills
 - [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill
+- [Get It. Study Companion](./get-it-study-companion.md) — 文档概念图与 Three.js 学习可视化；目标是复习学习，不是游戏创作
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
 - [sc-datav](./sc-datav.md) — **Three.js + ECharts 地理大屏**（运营视图，非游戏循环）
