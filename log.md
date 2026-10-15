@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] structural | 将 Amazon FAR 作为 Amazon 内部研究团队加入公司路线，复用七个已有项目节点并说明排序年份依据
+
 ## [2026-10-15] ingest | Virtual Humans：归档图宾根大学数字人体课程与公开讲义，注明课程专属开源工具箱尚未核实
 
 ## [2026-10-15] ingest | Paper2Agent：归档 Nature 论文、官网与 MIT 仓库，编译论文到 MCP 工具的验证流程和局限
