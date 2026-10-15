@@ -2,7 +2,7 @@
 type: concept
 tags: [wheel-legged, biped, locomotion, hybrid, two-wheel, tita, flamingo]
 status: complete
-updated: 2026-08-28
+updated: 2026-10-15
 related:
   - ./wheel-legged-quadruped.md
   - ../tasks/hybrid-locomotion.md
