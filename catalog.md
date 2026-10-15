@@ -3457,6 +3457,7 @@
 - [RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）](wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md) — RoboNaldo**（*Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum R `📅unknown` `[entity_page]`
 - [RoboPace](wiki/entities/paper-robopace.md) — RoboPace**（arXiv:2610.09696，Shirasaka / Ohkawa / … / Ota）是一个**在线接触感知重定时层**：保持 VLA 输出动作块的几何路径不变，只改变 `📅unknown` `[entity_page]`
 - [RoboPoint：空间 affordance 的 keypoint VLM](wiki/entities/paper-robopoint.md) — RoboPoint**（*A Vision-Language Model for Spatial Affordance Prediction for Robotics*，[arXiv:2406.1 `📅unknown` `[entity_page]`
+- [RoboPrompt: Intuitive Robot Policy Steering with Sparse Human Input](wiki/entities/paper-roboprompt.md) — RoboPrompt**（arXiv:2610.10534，上海交通大学、上海创智学院与诺玛矩阵）让用户在相机图像上给出点、 `📅unknown` `[entity_page]`
 - [RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能](wiki/entities/paper-roboreact.md) — RoboReact**（*Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-B `📅unknown` `[entity_page]`
 - [RoboRecover](wiki/entities/paper-roborecover.md) — RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations**（[arXiv:2609.28952](ht `📅unknown` `[entity_page]`
 - [RoboRefer：机器人空间指代与推理](wiki/entities/paper-roborefer.md) — RoboRefer**（*Towards Spatial Referring with Reasoning in Vision-Language Models for Robotics*，[arX `📅unknown` `[entity_page]`
