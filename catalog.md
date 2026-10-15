@@ -944,6 +944,7 @@
 - [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
 - [OpenSML](wiki/entities/opensml.md) — 适配 CiA402 的轻量 SoftMotion 运动控制库，提供点位与插补。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：SoftMotion 轻量运动控制库） `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
+- [OpenViking 上下文数据库](wiki/entities/openviking-context-database.md) — OpenViking 是面向 AI Agent 的开源上下文数据库，将知识资源、用户记忆和技能统一组织为可浏览、可检索的 viking:// 虚拟文件系统。 `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
 - [OpenVSLAM](wiki/entities/openvslam.md) — OpenVSLAM** 强调 **模块可替换** 的视觉 SLAM 框架（特征、回环、优化器可插拔）。 `📅unknown` `[entity_page]`
 - [OpenXR](wiki/entities/openxr.md) — OpenXR** 是 Khronos Group 维护的 **免版税、跨平台 XR（AR/VR）开放标准**：用一套 C AP `📅unknown` `[entity_page]`

@@ -180,6 +180,11 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | OpenViking — 收录火山引擎开源上下文数据库
+
+- 官方仓库和项目页均已核查，代码公开，许可证为 AGPL-3.0。
+- 建立 repo/site 来源归档与统一实体节点；将其定位为 Agent 上下文基础设施，不误列为机器人策略或数据集。
+
 ## [2026-10-15] structural | roadmap/motion-control.md — 主路线讲解视频重渲：讲稿勘误、读音与字幕修正、BT.709 编码，时长 1:39:40，更新章节时间点
 
 ## [2026-10-15] structural | 将 Amazon FAR 作为 Amazon 内部研究团队加入公司路线，复用七个已有项目节点并说明排序年份依据
