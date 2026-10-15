@@ -180,6 +180,10 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | 31 篇论文逐篇建立独立 paper-* 详情节点与 sources/papers 归档（2026-10-15），并新增索引页 embodied-papers-2026-10-15-31-digest-map
+
+## [2026-10-15] ingest | 归档微信公众号 31 篇具身论文速览（2026-10-15）：sources/blogs 摘要 + sources/raw 原文；未升格 wiki 实体
+
 ## [2026-10-15] ingest | beltromatti/get-it — 归档本地优先的文档学习应用，补记模型数据流、分数边界与官网版本提示差异
 
 ## [2026-10-14] lint | 全量 lint 清零：6 条陈旧页面 + 17 条信息型预警全部修复（补回链/缩写速查/对比与结论段/venue 键），并为 floorplan-3d 补 sources 归档使覆盖率达 6009/6009
