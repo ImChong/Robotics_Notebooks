@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-15
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读笔记索引）。"
@@ -55,6 +55,7 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读
 - [MANIKIN](../entities/paper-notebook-manikin-biomechanically-accurate-neural-inverse.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MANIKIN__Biomechanically_Accurate_Neural_Inverse_Kinematics_for_Human_Motion_Estimation/MANIKIN__Biomechanically_Accurate_Neural_Inverse_Kinematics_for_Human_Motion_Estimation.html)
 - [OmniControl](../entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) — 本库详细页（姊妹 Paper Notebooks 深读待撰写）
 - [PICO](../entities/paper-notebook-pico-reconstructing-3d-people-in-contact-with-ob.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html)
+- [PAMI](../entities/paper-pami-part-anchored-motion.md) — 文本条件全身人-物交互生成，以部位锚点协同预测物体轨迹（arXiv:2609.38466）
 - [PRIMAL](../entities/paper-notebook-primal-physically-reactive-and-interactive-motor.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html)
 - [PhysDiff](../entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model/PhysDiff__Physics-Guided_Human_Motion_Diffusion_Model.html)
 - [Predictive Sampling](../entities/paper-notebook-predictive-sampling-real-time-behaviour-synthesi.md) — 待深读
