@@ -21,11 +21,20 @@ summary: "EgoExplorer（arXiv:2610.18872）：5 个 inside-out tracker + 头戴�
 
 # EgoExplorer：无基站可穿戴采集人类移动操作的视觉–动作–触觉数据集
 
-**EgoExplorer**（*A Vision-Motion-Touch Observatory for Human Loco-Manipulation In Situ*，[arXiv:2610.18872](https://arxiv.org/abs/2610.18872)，[项目页](https://internrobotics.github.io/egoexplorer.github.io/)）由上海人工智能实验室、浙江大学与上海交通大学团队提出。它关注的是人走动、调整姿态并同时使用双手操作的 **loco-manipulation**，用一套可穿戴设备在未布置外部基站的真实环境里同步记录多种信号。
+**EgoExplorer**（*A Vision-Motion-Touch Observatory for Human Loco-Manipulation*，[arXiv:2610.18872](https://arxiv.org/abs/2610.18872)，[项目页](https://internrobotics.github.io/egoexplorer.github.io/)）由上海人工智能实验室、浙江大学与上海交通大学团队提出。它关注的是人走动、调整姿态并同时使用双手操作的 **loco-manipulation**，用一套可穿戴设备在未布置外部基站的真实环境里同步记录多种信号。
 
 ## 一句话定义
 
 **用第一视角视频、稀疏身体追踪、手指动作和可选触觉共同记录人类“边走边操作”，再以 C³ 从稀疏 tracker 锚点补全并约束全身动作。**
+
+## 英文缩写速查
+
+| 缩写 | 含义 |
+|------|------|
+| C³ | Calibrate–Complete–Constrain，个体标定、姿态补全与几何约束组成的重建流程 |
+| POV | Point of view，第一视角 |
+| VIVE | HTC 的 VIVE 品牌追踪器；本文使用 Ultimate Tracker 的 inside-out 跟踪 |
+| WUJI | 论文中提供手指动作与区域触觉信号的手套方案 |
 
 ## 数据规模与传感器
 
@@ -67,7 +76,7 @@ summary: "EgoExplorer（arXiv:2610.18872）：5 个 inside-out tracker + 头戴�
 
 **EgoExplorer 的核心价值是把可移动的人类移动操作示范做成多模态同步记录，而不是只采一段手部视频或孤立的身体轨迹。**阅读和使用时要同时记住两个边界：全身动作由稀疏 tracker 经模型重建；区域触觉仅在 WUJI 手套子集中出现。
 
-## 相关页面
+## 关联页面
 
 - [人形机器人数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — 无机器人可穿戴采集路线
 - [Manipulation 任务](../tasks/manipulation.md) — 人类示范与移动操作
