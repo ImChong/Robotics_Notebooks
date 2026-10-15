@@ -186,6 +186,7 @@ sequenceDiagram
 - [Differentiable Simulation（可微仿真）](../concepts/differentiable-simulation.md) — Differometor 与机器人可微刚体仿真的共性与差异
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 序贯设计决策的一种探索范式
 - [HydroGym](./paper-hydrogym.md) — 另一 Nature 2026 物理域 RL 基准，可对照「平台化 benchmark」叙事
+- [lcms2yield：AI 预测 UV 校正因子与无标准品反应定量](./paper-lcms2yield.md) — 将预测与实验信号结合用于高通量化学分析
 - [Gymnasium](./gymnasium.md) — RL 环境 API；Learn2Design 非 Gym 环境，但共享基准文化
 - [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本文案例属 **科学仪器设计** 基准，与具身 VLA 基准正交但可借鉴「隐藏测试集 + 算法提交」协议
 
