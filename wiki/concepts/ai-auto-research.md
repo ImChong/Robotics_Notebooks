@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-15
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ./retrieval-augmented-generation.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-scientisttwo.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/agent-lightning.md
+  - ../entities/paper-paper2agent.md
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
@@ -35,6 +36,8 @@ sources:
   - ../../sources/sites/openjiuwen-com.md
   - ../../sources/papers/scientisttwo_arxiv_2609_19644.md
   - ../../sources/sites/scientist-two-github-io.md
+  - ../../sources/papers/paper2agent_nature_2026.md
+  - ../../sources/repos/paper2agent.md
 ---
 
 # AI Auto-Research（学术研究自动化）
@@ -168,6 +171,7 @@ flowchart LR
 - [openJiuwen 官网归档](../../sources/sites/openjiuwen-com.md)
 
 ## 关联页面
+- [Paper2Agent](../entities/paper-paper2agent.md) — 将论文与代码方法封装为经过运行验证的 MCP 工具和 paper skill。
 
 - [Claude-shaped science](../entities/claude-shaped-science.md) — 适配模型能力的科研选题与专家判断。
 - [BootLoops](../entities/bootloops.md) — 精确计算工具与独立验证门禁，固定版本核查开放边界。
