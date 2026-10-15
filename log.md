@@ -180,6 +180,12 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] ingest | Fast Feature Field (F³) 事件预测表示
+
+- 收录 Science Robotics 期刊版论文及 arXiv 预印本，论文、项目页和官方实现合并为单一实体节点。
+- 项目页核查确认代码已开放，含预训练推理、训练入口、下游任务与 AOTI 导出；数据集需单独配置。
+- 整理事件预测表示、多任务评测及表示计算频率与下游任务频率的区别。
+
 ## [2026-10-15] ingest | sources/papers/worldline_arxiv_2609_38059.md — 归档动作驱动视觉仿真论文、项目页和无可运行代码仓；补充生成式世界模型与功能分类交叉链接
 
 ## [2026-10-15] ingest | GreenWAM 与 BEHAVIOR Robot Suite：核查官方页面、代码与数据
