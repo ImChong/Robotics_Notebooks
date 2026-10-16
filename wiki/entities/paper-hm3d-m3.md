@@ -13,6 +13,7 @@ related:
   - ./paper-uni-lavira.md
   - ./paper-hm3d-ovon.md
   - ./habitat-sim.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/humanoid-multi-robot-coordination.md
 sources:
   - ../../sources/papers/hm3d_m3_arxiv_2610_20121.md
@@ -153,6 +154,7 @@ sequenceDiagram
 - [Uni-LaViRA](./paper-uni-lavira.md) — 本文 LaViRA-M3 基线的前序工作
 - [HM3D-OVON](./paper-hm3d-ovon.md) — 同一 HM3D 场景资源的开放词汇导航基准
 - [Habitat 仿真](./habitat-sim.md) — 论文所用的仿真平台
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归入其 ③ 策略任务成功率评测层：多智能体、多目标导航任务的成功率与效率评测
 - [多机器人协作（人形）](../concepts/humanoid-multi-robot-coordination.md) — 多机器人协作的通用问题背景
 
 ## 参考来源
