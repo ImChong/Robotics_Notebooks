@@ -189,6 +189,11 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-16] ingest | Open-BENI — 归档 BENI 训练、恢复与浏览器仿真项目
+
+- 官方仓库包含 BENI 机器人模型、训练源码、策略文件及 MuJoCo + ONNX 浏览器游戏；MIT 许可。Hugging Face Space 为在线部署。
+- 归档项目页与代码仓库，并整理 wiki 实体，关联 mjlab、PPO 与 locomotion 学习路径。
+
 ## [2026-10-16] ingest | RoboHarn-Evo | 记录可演化物理知识操作框架
 
 - **意图：** 收录 arXiv:2609.37583 及其项目页和官方实现，作为长时程机器人操作中“从交互经验更新外置知识”的案例。
