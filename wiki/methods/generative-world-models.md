@@ -353,7 +353,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 配对真机执行的动作条件世界模型基准（WorldOracle）
 
-[WorldOracle](../entities/paper-worldoracle.md) 将预测视频与同一起始观测、同一条低层动作轨迹下的配对真机执行比较，覆盖成功与失败、长程多段 episode 和多视角数据。它从物理状态正确性、交互空间对齐、关键交互区域保真度及多视角动作一致性拆分误差，并报告单视角 / 多视角汇总分。相对 EWMBench 的生成质量评测，WorldOracle 更直接地回答「给定动作后，预测是否复现真实执行结果」；评测代码已公开。
+[WorldOracle](../entities/paper-worldoracle.md) 将预测视频与同一起始观测、同一条低层动作轨迹下的配对真机执行比较，覆盖成功与失败、长程多段 episode 和多视角数据。它从物理状态正确性、交互空间对齐、关键交互区域保真度及多视角动作一致性拆分误差，并报告单视角 / 多视角汇总分。相对 EWMBench 的生成质量评测，WorldOracle 更直接地回答「给定动作后，预测是否复现真实执行结果」；评测代码已公开。 共享多模态世界预测与策略推理路线可参见 [Thinker-WM](../entities/paper-thinker-wm-unified-world-model.md)。
 
 ### 自一致视频策略评估器（示例：SC3-Eval）
 
