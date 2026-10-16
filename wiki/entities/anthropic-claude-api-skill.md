@@ -9,7 +9,7 @@ tags:
   - evaluation
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-16
 related:
   - ./anthropic-frontend-design-skill.md
   - ./agent-skills-addyosmani.md
@@ -21,6 +21,7 @@ related:
   - ../methods/enpire.md
   - ../methods/aspire.md
   - ./remotion.md
+  - ./claude-for-legal.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/anthropics-claude-api-skill.md
@@ -53,6 +54,7 @@ summary: "anthropics/skills 的 claude-api 是 Anthropic 官方 Claude API 技�
 - **与 embodied / coding benchmark 互补：** [RLE-Bench](rle-bench.md) 测 **机器人学习工程师式全栈**；本技能偏 **Claude 应用与 skills 文档质量**——二者共用「harness + hidden test + 读 transcript」思维，但任务域不同。
 - **与 ENPIRE / ASPIRE 的 harness 层：** [ENPIRE](../methods/enpire.md)、[ASPIRE](../methods/aspire.md) 依赖 frontier coding agent；迁移 Opus、调 effort、清 prompt ritual 直接影响 **token 成本与 pass@k**，本技能 **`prompt-audit` / `cost-optimize`** 是平台侧对照。
 - **技能生态位：** 相对 [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) 的 **全 SDLC 25 技能** 与 [mattpocock/skills](mattpocock-skills.md) 的 **工程习惯片**，claude-api 是 **Anthropic 官方 API + 平台运维** 专用包，宜与 SDLC 技能 **叠加** 而非互替。
+- **Anthropic 垂直工作流对照：** [Claude for Legal](./claude-for-legal.md) 将同一类可复用技能思路用于法律领域，把团队规则写入 practice profile，并组合插件、工具连接与代理工作流。
 
 ## 核心结构
 
