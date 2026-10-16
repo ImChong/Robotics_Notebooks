@@ -180,6 +180,13 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+# Ingest — Test-Time Compute for Humanoid Behavior Foundation Models
+
+- **日期：** 2026-10-16
+- **意图：** 收录 TTCO 论文、官方项目页与运行代码；在 BFM 适应分类中加入测试时命令优化路线。
+- **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
+- **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
+
 ## [2026-10-16] ingest | RoboSimStudio 多物理与真机案例
 
 - 更新既有项目、仓库与论文来源，并补充 wiki 实体页；没有创建重复节点。

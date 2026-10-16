@@ -4601,7 +4601,7 @@
 - [G3M](wiki/entities/paper-tro-manip-04-g3m.md) — G3M**（*Learning From Videos Through Graph-to-Graphs Generative Modeling for Robotic Manipulation*） `📅unknown` `[entity_page]`
 - [DGM Robot Learning Survey](wiki/entities/paper-tro-manip-05-dgm-robot-learning-survey.md) — A Survey on Deep Generative Models for Robot Learning From Multimodal Demonstrations** 收录于 [深蓝具身智能 `📅unknown` `[entity_page]`
 - [TSIL（Temporal Self-Imitation Learning）](wiki/entities/paper-tsil-temporal-self-imitation-learning.md) — TSIL**（*Temporal Self-Imitation Learning*，Jia & Chen，Duke / General Robotics Lab，arXiv:[2606.19752 `📅unknown` `[entity_page]`
-- [TTCO（arXiv:2610.14896）](wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md) — TTCO**（*Test-Time Compute for Humanoid Behavior Foundation Models*，[arXiv:2610.14896](https://arxi `📅unknown` `[entity_page]`
+- [TTCO（Test-Time Compute for Humanoid Behavior Foundation Models）](wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md) — Test-Time Command Optimization（TTCO）** 在测试时通过闭环仿真优化冻结人形行为基础模型（BFM）的输入 motion command，缩小目标动作与实际执行之间 `📅unknown` `[entity_page]`
 - [TTT-RM（arXiv:2610.04701）](wiki/entities/paper-ttt-rm-residual-memory.md) — TTT-RM**（*Test-Time Training as Residual Memory for Robot Policies*，[arXiv:2610.04701](https://arx `📅unknown` `[entity_page]`
 - [TuringViT（Making SOTA Vision Transformers Accessible to All）](wiki/entities/paper-turingvit.md) — TuringViT**（arXiv:2606.24253）由小鹏（XPeng）提出：面向 VLM/VLA 时代的 **可定制 SOTA 视 `📅unknown` `[entity_page]`
 - [TWIST](wiki/entities/paper-twist.md) — TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。 `📅unknown` `[entity_page]`
