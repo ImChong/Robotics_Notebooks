@@ -24,6 +24,9 @@ related:
   - ./sharpa-robotics.md
   - ./paper-tacbpm.md
   - ./paper-galatea.md
+  - ./paper-uvta-human-tactile-dexterous-manipulation.md
+  - ./paper-do-as-i-do.md
+  - ./paper-tacmap.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./franka-research-3.md
   - ./isaac-lab.md
@@ -67,7 +70,7 @@ summary: "Dex-X（arXiv:2609.07747，清华 IIIS / Sharpa 等）从单目 RGB �
 
 - **补的是“视频缺力”这一环。** 文章转述：视频记录手怎么动，不记录用了多大力，而拧瓶盖、插接头这类任务的成败取决于接触之后的几毫米运动。互联网上体量最大的人类视频恰好没有触觉，Dex-X 回答“没有触觉的视频还能不能教出触觉策略”。
 - **用仿真当“触觉补全引擎”。** 视频里不可见的手-物交互力学，由碰撞体与接触动力学在仿真里生成并作为监督；这比从像素里“猜”力更可控，也让教师能拿特权状态训练。
-- **数据来源最便宜。** 不需要机器人在场，也不需要触觉手套；对照 UVTA（arXiv 2609.34182，用触觉动捕手套真采人类触觉演示），Dex-X 的触觉是仿真自洽的接触力，而不是测量值。
+- **数据来源最便宜。** 不需要机器人在场，也不需要触觉手套；对照 [UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md)（arXiv 2609.34182，用触觉动捕手套真采人类触觉演示），Dex-X 的触觉是仿真自洽的接触力，而不是测量值。
 - **在 Sharpa 叙事里的位置。** 文章把 Dex-X 同时放进“主线一：击穿具身鸿沟”和“主线二：运动 / 交互解耦”，并称之为**点云接口**：上层用重建的运动参考，底层靠触觉点云处理接触。
 
 ## 流程总览
@@ -191,7 +194,8 @@ sequenceDiagram
 | 工作 | 人类数据形态 | 触觉从哪来 | 运动与交互的接口 |
 |------|--------------|------------|------------------|
 | **Dex-X** | 单目 RGB 视频 | 仿真接触补全（标量指尖力） | 点云：视频重建作参考，仿真 RL 教师 + 点云学生 |
-| UVTA（arXiv 2609.34182） | 触觉动捕手套真采示范 + 少量机器人遥操作 | 真实指尖 FSR | 联合训练扩散策略并预测未来触觉 |
+| [UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md)（arXiv 2609.34182） | 触觉动捕手套真采示范 + 少量机器人遥操作 | 真实指尖 FSR | 联合训练扩散策略并预测未来触觉 |
+| [Do as I Do](./paper-do-as-i-do.md) | 日常人类单目视频（UC Berkeley） | 未涉及（据其页摘要） | 重建 4D 手-物交互后做采样式优化重定向；文章归为同一“自上而下”路线 |
 | [GALATEA](./paper-galatea.md) | 扩散模型生成的视频 | 文章未提触觉，用接触与抬升奖励 | 跟踪式 RL 把视频计划落成仿真控制器，再蒸馏单一控制器（文章转述） |
 | [TacBPM](./paper-tacbpm.md) | 无，仿真专家 | 真实触觉作条件 | 隐空间：冻结先验 + 残差隐动作 |
 | [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) | 机器人侧 100 小时触觉同步遥操作（文章转述） | 真实触觉 | 变频率专家：约 20 Hz 触觉专家实时修正（文章转述） |
@@ -233,6 +237,9 @@ sequenceDiagram
 - [Sharpa Robotics（夏帕机器人）](./sharpa-robotics.md) — 本文所属的公司学术线与 System 0/1/2 叙事
 - [TacBPM](./paper-tacbpm.md) — 同一叙事里的“隐空间接口”，对照点云接口
 - [GALATEA](./paper-galatea.md) — 同属“视频 → 仿真 RL → 蒸馏”，但视频来自生成模型
+- [UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md) — 同属主线一：用真实人类触觉示范而非仿真补全
+- [Do as I Do](./paper-do-as-i-do.md) — 同样从单目人类视频出发的自上而下重定向路线
+- [Tacmap](./paper-tacmap.md) — Sharpa 线上把仿真与真实触觉统一到同一几何表示的工作，对照本文标量力的仿真触觉
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — Sharpa Wave 上的触觉真机数据路线
 - [Manipulation](../tasks/manipulation.md) / [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 任务背景（含双手交接与开盖）
 - [DAgger](../methods/dagger.md) / [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md) / [PPO](../methods/ppo.md) — 教师与学生训练配方

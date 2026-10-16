@@ -68,8 +68,6 @@
 
 - [DexEMG 论文实体](../../wiki/entities/paper-dexemg.md)
 - [夏帕机器人（Sharpa Robotics）](../../wiki/entities/sharpa-robotics.md)
-- [Teleoperation（遥操作任务页）](../../wiki/tasks/teleoperation.md)
-- [数据手套 vs 视觉遥操作](../../wiki/comparisons/data-gloves-vs-vision-teleop.md)
 
 ## 参考来源（原始）
 

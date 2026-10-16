@@ -26,6 +26,8 @@ related:
   - ./paper-teledexter.md
   - ./paper-artmanip.md
   - ./simtoolreal.md
+  - ./paper-play2perfect.md
+  - ./paper-tacmap.md
 sources:
   - ../../sources/papers/tacbpm_arxiv_2609_18174.md
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
@@ -172,7 +174,8 @@ flowchart LR
 | [ArtManip](./paper-artmanip.md) | 无（单策略） | 特权教师 + 历史潜表示学生 | 已开源 |
 
 - 与 [WM-Craftnet](./paper-wm-craftnet.md) 同为 Sharpa 手内重定向方向：后者用世界模型给 PPO 提供上下文，TacBPM 用行为先验约束探索。
-- 文章把 Stanford 团队的 [SimToolReal](./simtoolreal.md) 与 Play2Perfect 归为与这条自下而上路线呼应的工作，TacBPM 的特点是显式把触觉放进先验。
+- 文章把 Stanford 团队的 [SimToolReal](./simtoolreal.md) 与 [Play2Perfect](./paper-play2perfect.md) 归为与这条自下而上路线呼应的工作，TacBPM 的特点是显式把触觉放进先验。
+- 与 [Tacmap](./paper-tacmap.md) 互补：Tacmap 把仿真与真实触觉统一到同一几何表示，TacBPM 的先验依赖接触幅值与 3D 接触位置；论文是否采用 Tacmap 表示，本页未核实。
 
 ## 结论
 
@@ -208,6 +211,8 @@ flowchart LR
 - [Dex-X](./paper-dex-x.md) — “点云接口”对照
 - [MoDE-VLA](./paper-sa-2603-08122-mode-vla-mixture-of-dexterous-experts-vla.md) — “踏板接口”对照
 - [TeleDexter](./paper-teledexter.md) / [ArtManip](./paper-artmanip.md) / [WM-Craftnet](./paper-wm-craftnet.md) / [SimToolReal](./simtoolreal.md) — 同平台的手内操作与低层控制工作
+- [Play2Perfect](./paper-play2perfect.md) — 文章中与自下而上路线呼应的仿真预训练工作
+- [Tacmap](./paper-tacmap.md) — 仿真与真实触觉的统一几何表示
 - [In-hand Reorientation](../methods/in-hand-reorientation.md) — 手内重定向方法谱系
 - [多专家蒸馏](../methods/multi-expert-distillation.md) / [残差策略学习](../methods/residual-policy-learning.md) / [DAgger](../methods/dagger.md) / [PPO](../methods/ppo.md) / [强化学习](../methods/reinforcement-learning.md) — 方法背景
 - [Manipulation](../tasks/manipulation.md) — 任务背景
