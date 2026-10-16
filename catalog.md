@@ -1632,6 +1632,8 @@
 - [DepthWorld（arXiv:2610.08780）](wiki/entities/paper-depthworld-3d-world-model.md) — DepthWorld**（*DepthWorld: 3D World Model for Robot Manipulation*，[arXiv:2610.08780](https://arxiv. `📅unknown` `[entity_page]`
 - [Designing physics experiments with artificial intelligence](wiki/entities/paper-designing-physics-experiments-with-ai.md) — Designing physics experiments with artificial intelligence**（Klimesch 等，*Nature* 2026 **Review**，D `📅unknown` `[entity_page]`
 - [DeWorldSG（深度感知 3D 语义场景图 · 世界模型先验）](wiki/entities/paper-deworldsg.md) — DeWorldSG**（*Depth-Aware 3D Semantic Scene Graph Generation via World-Model Priors*，[arXiv:2607.00 `📅unknown` `[entity_page]`
+- [Dex-X：从单目人类视频经仿真补全触觉，学习视触觉灵巧操作](wiki/entities/paper-dex-x.md) — Dex-X**（*Dex-X: Learning Visual-Tactile Dexterous Manipulation From Human Videos with Simulated In `📅unknown` `[entity_page]`
+- [DexEMG：用前臂肌电驱动灵巧手的轻量遥操作](wiki/entities/paper-dexemg.md) — DexEMG**（*DexEMG: Towards Dexterous Teleoperation System via EMG2Pose Generalization*，[arXiv:2603. `📅unknown` `[entity_page]`
 - [DexHoldem：德州扑克桌面上的灵巧具身基准](wiki/entities/paper-dexholdem.md) — DexHoldem**（*Playing Texas Hold'em with Dexterous Embodied System*，[arXiv:2605.18727](https://arxi `📅unknown` `[entity_page]`
 - [DexMachina（arXiv:2505.24853）](wiki/entities/paper-dexmachina.md) — DexMachina**（Mandi Zhao, Yifan Hou, Dieter Fox, Yashraj Narang, Ajay Mandlekar, Shuran Song；Stanfo `📅unknown` `[entity_page]`
 - [DexMV：Imitation Learning for Dexterous Manipulation from Human Videos](wiki/entities/paper-dexmv.md) — DexMV** 将人手操作视频转成机器人灵巧手示范，让操作策略先学会有意义的抓取与操作过程，再用任务奖励改进。 `📅unknown` `[entity_page]`
@@ -1667,6 +1669,7 @@
 - [Dita：可扩展的扩散 Transformer 通才 VLA](wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md) — Dita**（*Dita: Scaling Diffusion Transformer for Generalist Vision-Language-Action Policy*，[arXiv:2 `📅unknown` `[entity_page]`
 - [DiTaR（arXiv:2610.14159）](wiki/entities/paper-ditar-task-relevant-latent-dynamics-reward.md) — DiTaR**（*Disentangling Task-Relevant Latent Dynamics for Reward Modeling*，[arXiv:2610.14159](https `📅unknown` `[entity_page]`
 - [DLSRL（arXiv:2609.11270）](wiki/entities/paper-dlsrl.md) — DLSRL**（[Beyond Noise Steering: Dual-Latent Space Reinforcement Learning for Generative Robot Poli `📅unknown` `[entity_page]`
+- [Do as I Do：从日常人类视频生成灵巧操作数据](wiki/entities/paper-do-as-i-do.md) — Do as I Do**（*Do as I Do: Dexterous Manipulation Data from Everyday Human Videos*，[arXiv:2606.1933 `📅unknown` `[entity_page]`
 - [DODGER：动态障碍中的安全引导导航](wiki/entities/paper-dodger-dynamic-obstacle-navigation.md) — DODGER**（*Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles*，[arXi `📅unknown` `[entity_page]`
 - [DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）](wiki/entities/paper-doorman-opening-sim2real-door.md) — DoorMan** 是 NVIDIA GEAR 等团队的人形 **视觉 loco-manipulation** 论文（arXiv:2512.01061，CVPR 2026）：策略 **完全在仿真中 `📅unknown` `[entity_page]`
 - [DPC：Direct Perception Control（直接感知控制）](wiki/entities/paper-dpc.md) — DPC**（*Direct Perception Control Model*，项目页，[规范 `📅unknown` `[entity_page]`
@@ -1878,6 +1881,7 @@
 - [From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning](wiki/entities/paper-from-tokens-to-thoughts.md) — From Tokens to Thoughts**（arXiv:2505.17117）由 Chen Shani、Liron Soffer、Dan Jurafsky、Yann LeCun、Ravid `📅unknown` `[entity_page]`
 - [Coherent4D / HIGFlow](wiki/entities/paper-from-where-to-how.md) — Coherent4D / HIGFlow**（*Continuous 4D Interaction Forecasting from Egocentric Video*，[arXiv:2609.0 `📅unknown` `[entity_page]`
 - [FSD-VLN（空中长程 VLN · 快慢双系统）](wiki/entities/paper-fsd-vln.md) — FSD-VLN**（*Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*，[arX `📅unknown` `[entity_page]`
+- [FTP-1：跨触觉传感器的通用基础触觉策略](wiki/entities/paper-ftp-1.md) — FTP-1**（*FTP-1: A Generalist Foundation Tactile Policy Across Tactile Sensors for Contact-Rich Man `📅unknown` `[entity_page]`
 - [Functional-SLAM（在线功能场景图 SLAM）](wiki/entities/paper-functional-slam.md) — Functional-SLAM**（*Interaction-Aware Mapping with Online Functional Scene Graphs*，[arXiv:2609.0749 `📅unknown` `[entity_page]`
 - [FutureRTC（Anticipatory-Conditioned Chunking · arXiv:2607.24008）](wiki/entities/paper-futurertc.md) — FutureRTC**（*Real-Time Robot Execution with Anticipatory-Conditioned Action Chunking*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [FWBC-VLA：无传感器接触感知的全身补偿](wiki/entities/paper-fwbc-vla.md) — FWBC-VLA**（*Force-Aware Whole-Body Compensation for Contact-Rich Loco-Manipulation*，[arXiv:2609.03 `📅unknown` `[entity_page]`
@@ -2958,6 +2962,7 @@
 - [PLANTORV（arXiv:2609.28184）](wiki/entities/paper-plantorv.md) — VLMs Can Describe, But Not Measure: Object-Centric Scene Understanding for Robotic Manipulation**（ `📅unknown` `[entity_page]`
 - [PLAT（arXiv:2609.25754）](wiki/entities/paper-plat-sparse-keyframe-tracking.md) — PLAT**（*PLAT: Sparse Timed Keyframe Motion Tracking for Humanoid Control via Privileged Latent Tra `📅unknown` `[entity_page]`
 - [PLaW-VLA：预测式潜在世界建模的 VLA 策略](wiki/entities/paper-plaw-vla-predictive-latent-world-model-vla.md) — PLaW-VLA** 在 π0.5 式 VLA 上增加一个从零训练的「潜在世界模型专家」，在冻结 V-JEPA 2 的表征空间里一次并行预测 K 个未来潜变量，再让动作专家以观测、语义与预测的未来 `📅unknown` `[entity_page]`
+- [Play2Perfect：灵巧「玩耍」预训练如何成就精密装配](wiki/entities/paper-play2perfect.md) — Play2Perfect**（*Play2Perfect: What Matters in Dexterous Play Pretraining for Precise Assembly?*，[a `📅unknown` `[entity_page]`
 - [PlayWorld](wiki/entities/paper-playworld-autonomous-play-data.md) — PlayWorld** 收录于 具身智能研究室 · 具身世界模型六路线综述 **趋势与判断 `📅unknown` `[entity_page]`
 - [Point It, Strike It](wiki/entities/paper-point-it-strike-it.md) — Point It, Strike It**（arXiv:2610.09573，CMU 机器人研究所等）研究**单次挥绳击打**：给定绳端目标 3D 位置与到达方向，机械臂一次开环挥动。系统由四部分 `📅unknown` `[entity_page]`
 - [Point2Pose](wiki/entities/paper-point2pose.md) — Point2Pose**（*Occlusion-Recovering 6D Pose Tracking and 3D Reconstruction for Multiple Unknown Obj `📅unknown` `[entity_page]`
@@ -4045,7 +4050,7 @@
 - [WebWorld](wiki/entities/paper-sa-2602-14721-webworld-a-large-scale-world-model-for-web-agent.md) — WebWorld: A Large-Scale World Model for Web Agent Training** 收录于 [Awesome World Models](https://gi `📅unknown` `[entity_page]`
 - [Computer-Using World Model (CUWM)](wiki/entities/paper-sa-2602-15003-computer-using-world-model-cuwm.md) — Computer-Using World Model (CUWM)** 收录于 [Awesome World Models](https://github.com/sun254667/awesom `📅unknown` `[entity_page]`
 - [Egocentric Bias in Vision-Language Models](wiki/entities/paper-sa-2602-15892-egocentric-bias-in-vision-language-models.md) — Egocentric Bias in Vision-Language Models** 收录于 [Awesome Egocentric Vision](https://github.com/sun `📅unknown` `[entity_page]`
-- [EgoScale](wiki/entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) — EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data** 收录于 [Awesome Egocent `📅unknown` `[entity_page]`
+- [EgoScale：用两万小时第一人称人视频缩放灵巧操作](wiki/entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) — EgoScale**（*EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data*，[arXiv:26 `📅unknown` `[entity_page]`
 - [FRAPPE](wiki/entities/paper-sa-2602-17259-frappe-infusing-world-modeling-into-generalist-p.md) — FRAPPE: Infusing World Modeling into Generalist Policies via Multiple Future Representation Alignm `📅unknown` `[entity_page]`
 - [EgoPush](wiki/entities/paper-sa-2602-18071-egopush-learning-end-to-end-egocentric-multi-obj.md) — EgoPush: Learning End-to-End Egocentric Multi-Object Rearrangement for Mobile Robots** 收录于 [Awesom `📅unknown` `[entity_page]`
 - [Solaris](wiki/entities/paper-sa-2602-22208-solaris-building-a-multiplayer-video-world-model.md) — Solaris: Building a Multiplayer Video World Model in Minecraft** 收录于 [Awesome World Models](https: `📅unknown` `[entity_page]`
@@ -4066,7 +4071,7 @@
 - [WorldCache](wiki/entities/paper-sa-2603-06331-worldcache-accelerating-world-models-for-free-vi.md) — WorldCache: Accelerating World Models for Free via Heterogeneous Token Caching** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
 - [What if? Emulative Simulation with World Models for Situated Reasoning (Wande...](wiki/entities/paper-sa-2603-06445-what-if-emulative-simulation-with-world-models-f.md) — What if? Emulative Simulation with World Models for Situated Reasoning (WanderDream)** 收录于 [Awesom `📅unknown` `[entity_page]`
 - [EgoReasoner](wiki/entities/paper-sa-2603-06561-egoreasoner-learning-egocentric-4d-reasoning-via.md) — EgoReasoner: Learning Egocentric 4D Reasoning via Task-Adaptive Structured Thinking** 收录于 [Awesome `📅unknown` `[entity_page]`
-- [MoDE-VLA](wiki/entities/paper-sa-2603-08122-mode-vla-mixture-of-dexterous-experts-vla.md) — MoDE-VLA: Mixture-of-Dexterous-Experts VLA** 收录于 [Awesome Touch](https://github.com/sun254667/awes `📅unknown` `[entity_page]`
+- [MoDE-VLA 与 IMCopilot](wiki/entities/paper-sa-2603-08122-mode-vla-mixture-of-dexterous-experts-vla.md) — MoDE-VLA**（Mixture-of-Dexterous-Experts VLA）扩展预训练 π₀，使力觉和触觉经专属专家路径修正手臂与手部动作；配套的 **IMCopilot**（In-h `📅unknown` `[entity_page]`
 - [EXPLORE-Bench](wiki/entities/paper-sa-2603-09731-explore-bench-egocentric-scene-prediction-with-l.md) — EXPLORE-Bench: Egocentric Scene Prediction with Long-Horizon Reasoning** 收录于 [Awesome Egocentric V `📅unknown` `[entity_page]`
 - [ENIGMA-360](wiki/entities/paper-sa-2603-09741-enigma-360-an-ego-exo-dataset-for-human-behavior.md) — ENIGMA-360: An Ego-Exo Dataset for Human Behavior Understanding in Industrial Scenarios** 收录于 [Awe `📅unknown` `[entity_page]`
 - [InSpatio-WorldFM](wiki/entities/paper-sa-2603-11911-inspatio-worldfm-an-open-source-real-time-genera.md) — InSpatio-WorldFM: An Open-Source Real-Time Generative Frame Model** 收录于 [Awesome World Models](htt `📅unknown` `[entity_page]`
@@ -4360,6 +4365,7 @@
 - [Same Action, Different Outcome](wiki/entities/paper-same-action-different-outcome-cloth.md) — Same Action, Different Outcome**（arXiv:2610.10801，西班牙 IRI CSIC-UPC）是一项**测量研究**而非新算法：让两台 Franka 在四个 `📅unknown` `[entity_page]`
 - [Sample, Simulate, Select（S³，arXiv:2609.26420）](wiki/entities/paper-sample-simulate-select.md) — Sample, Simulate, Select（S³）**（*Physics-in-the-Loop Text-to-Motion for Humanoids Without Training `📅unknown` `[entity_page]`
 - [SAP-Nav：开词汇导航要主动补空间证据](wiki/entities/paper-sap-nav.md) — SAP-Nav**（*Spatial Semantic Representation Meets Active Perception for Hierarchical Open-Vocabular `📅unknown` `[entity_page]`
+- [SaTA：空间锚定的触觉感知](wiki/entities/paper-sata.md) — SaTA**（*Spatially-anchored Tactile Awareness for Robust Dexterous Manipulation*，[arXiv:2510.14647 `📅unknown` `[entity_page]`
 - [SatNav（arXiv:2609.31507）](wiki/entities/paper-satnav.md) — 一句话定义：** SatNav 是一套以高分辨率卫星影像构造城市尺度长程 UAV 视觉–语言导航任务与评测的平台；它用卫星图局部裁剪近似 UAV 下视 RGB 观测，把地理空间路线、语言指令、记忆 `📅unknown` `[entity_page]`
 - [SAVLA（arXiv:2609.16641）](wiki/entities/paper-savla.md) — SAVLA**（*SAVLA: Symmetry-Aware Vision-Language-Action Models for Robotic Manipulation*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [SayCan（Do As I Can）](wiki/entities/paper-saycan.md) — SayCan（Do As I Can）**（arXiv:2204.01691，[代码](https://github.com `📅unknown` `[entity_page]`
@@ -4524,8 +4530,10 @@
 - [SwingBot（arXiv:2609.10283）](wiki/entities/paper-swingbot.md) — SwingBot**（[SwingBot: Learning Whole-Body Brachiation for Humanoid Robots](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [Learning Diverse Humanoid Tasks via Synthetic Video Scenarios](wiki/entities/paper-synthetic-video-humanoid-tasks.md) — Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data**（国立成功大学 NCK `📅unknown` `[entity_page]`
 - [T²Mem：面向机器人的测试时记忆学习](wiki/entities/paper-t2mem.md) — T²Mem: Learning Test-Time Memory for Robotics**（[arXiv:2609.36720](https://arxiv.org/abs/2609.3672 `📅unknown` `[entity_page]`
+- [TacBPM：触觉条件的行为先验，用于灵巧手内重定向](wiki/entities/paper-tacbpm.md) — TacBPM**（*TacBPM: A Tactile-conditioned Behavior Prior Model for Dexterous Reorientation*，[arXiv:2 `📅unknown` `[entity_page]`
 - [TacClaw-Infinity：面向灵巧操作的大规模视触觉语言动作数据集](wiki/entities/paper-tacclaw-infinity.md) — TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结 `📅unknown` `[entity_page]`
 - [TACET：面向四足机器人的情境适配声学—社会导航](wiki/entities/paper-tacet.md) — TACET: Context-Appropriate Acoustic-Social Navigation for Quadrupeds**（[arXiv:2610.03828](https:// `📅unknown` `[entity_page]`
+- [Tacmap：几何一致的穿透深度图触觉仿真](wiki/entities/paper-tacmap.md) — Tacmap**（*Tacmap: Bridging the Tactile Sim-to-Real Gap via Geometry-Consistent Penetration Depth M `📅unknown` `[entity_page]`
 - [TacO（触觉传感器操作基准 · arXiv:2605.21976）](wiki/entities/paper-taco-tactile-sensor-benchmark.md) — TacO**（*TacO: Benchmarking Tactile Sensors for Object Manipulation*，[arXiv:2605.21976](https://arx `📅unknown` `[entity_page]`
 - [TACO（TActile World Model as a Self-COrrector · arXiv:2607.02840）](wiki/entities/paper-taco-tactile-wm-vla-posttrain.md) — TACO**（*TACO: TActile World Model as a Self-COrrector for Scalable VLA Post-Training*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [TacPAC：触觉预测驱动的 WAM 实时动作修正](wiki/entities/paper-tacpac.md) — TacPAC**（*Tactile Prediction and Real-Time Action Correction in World-Action Models for Contact-Ri `📅unknown` `[entity_page]`
@@ -5025,6 +5033,7 @@
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）](wiki/entities/shanputaoye-freecad-ai-skill.md) — FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）是与 reyk 的同名项目独立。 `📅unknown` `[entity_page]`
+- [夏帕机器人（Sharpa Robotics）](wiki/entities/sharpa-robotics.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Shift（shiftapp.nyc）](wiki/entities/shift-app-nyc.md) — Shift**（<https://www.shiftapp.nyc/>）是 **MicroAGI** 推出的消费者服务：在纽约为住户提供 **免费专业保洁**，保洁员佩戴 **头载相机** 录制第 `📅unknown` `[entity_page]`
 - [SIDA（Social Media Image Detection Assistant）](wiki/entities/sida.md) — SIDA** 是面向社交媒体图像的 **伪造检测 + 篡改定位 + 文字解释** 多模态助手：在 VLM 词表中引入特殊 token，同时输出真伪类别、篡改掩码与判定理由。 `📅unknown` `[entity_page]`
 - [Simate-beta（Simate 首版通用物理快系统）](wiki/entities/simate-beta.md) — Simate-beta** 是 Simate（硅基伙伴，Silicon Mate）在成立约三个月后发布的第一款模型，2026-09-23 提交至 [RoboDojo `📅unknown` `[entity_page]`
