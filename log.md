@@ -187,6 +187,16 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | Kinematic Vision AI 高尔夫挥杆分析工具
+
+- 收录公开仓库 `anhtranp/golf`：浏览器内 MediaPipe 姿态跟踪与 Gemini 运动学反馈演示。
+- README 声称 MIT，但仓库缺 LICENSE 文件；PGA 基准与杆速指标未见公开验证来源，来源页已标出边界。
+
+## [2026-10-16] ingest | 深辰凯动 AI 羽毛球机器人官方资料
+
+- 归档官方产品页、公司纪录介绍与 Guinness World Records 条目，确认 1,452 次纪录及公开技术资料边界。
+- 新建项目实体，并与人形羽毛球研究节点建立对照链接；官方页面未列代码、数据或模型权重。
+
 ## [2026-10-16] ingest | RoboSimStudio 多物理与真机案例
 
 - 更新既有项目、仓库与论文来源，并补充 wiki 实体页；没有创建重复节点。

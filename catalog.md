@@ -5003,6 +5003,7 @@
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
 - [ScienceDiscovery](wiki/entities/sciencediscovery.md) — ScienceDiscovery**（GitHub · [AtomGit](https:/ `📅unknown` `[entity_page]`
 - [HPC-Skills（SciMate-AI/HPC-Skills）](wiki/entities/scimate-ai-hpc-skills.md) — HPC-Skills（SciMate-AI/HPC-Skills）是覆盖 OpenFOAM、SU2、LS-DYNA、FEniCS、CalculiX、ElmerFEM、LAMMPS、GROMACS、VA `📅unknown` `[entity_page]`
+- [深辰凯动 AI 羽毛球机器人（XA1）](wiki/entities/sckd-xa1-badminton-robot.md) — 深辰凯动 AI 羽毛球机器人**是面向羽毛球对打与陪练场景的移动机器人产品。Guinness World Records 记载，名为 **XA1** 的机器人于 2025 年 12 月 22 日在 `📅unknown` `[entity_page]`
 - [AnsysAgent（sduwby/AnsysAgent）](wiki/entities/sduwby-ansysagent.md) — AnsysAgent（sduwby/AnsysAgent）是不是单个 Skill 或 MCP，而是包含专业子代理和大量工具的工程助手。 `📅unknown` `[entity_page]`
 - [Seed2.0](wiki/entities/seed2-0.md) — Seed2.0**（Seed2.0 Model Card（ByteDance Seed））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [SEEM（Segment Everything Everywhere All at Once）](wiki/entities/seem.md) — SEEM** 用统一的解码接口消费 **多种提示**（点、框、涂鸦、文本、参照实体等），在一张图上做开放词汇、交互式与全景式分割。 `📅unknown` `[entity_page]`
