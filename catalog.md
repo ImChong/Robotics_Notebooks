@@ -1211,6 +1211,7 @@
 - [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [AFCE：让 VLA 预测「动作将产生的效果」而不只是动作](wiki/entities/paper-afce-action-future-coupled-effect-vla.md) — AFCE**（*Action–Future Coupled Effect Learning*；论文 *Beyond Actions: Learning Future Operation Targe `📅unknown` `[entity_page]`
 - [AffordCraft（arXiv:2610.06643）](wiki/entities/paper-affordcraft-task-ready-simulation-assets.md) — AffordCraft**（*AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Imag `📅unknown` `[entity_page]`
+- [Agent-Friendly by Design：用 SQL 引擎比较 MoonBit 与 Rust](wiki/entities/paper-agent-friendly-by-design.md) — Agent-Friendly by Design: An Empirical Comparison of MoonBit and Rust in AI-Driven Software Constr `📅unknown` `[entity_page]`
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`

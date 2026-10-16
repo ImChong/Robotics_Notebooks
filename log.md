@@ -187,6 +187,12 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | minisql-moonbit-vs-rust | 比较 AI agent 使用 MoonBit 与 Rust 的实际成本
+
+- 意图：记录 Agent-Friendly by Design 预印本、实验设计与可复核的逐试验数据。
+- 开源结论：官方仓库公开源码、harness、测试、运行资料与结果；复跑需要 Claude Code / 模型访问，根目录未见 LICENSE。
+- 关键页：[MoonBit/Rust 实验实体](../wiki/entities/paper-agent-friendly-by-design.md)、[Agentic Coding 软件工程基础](../wiki/concepts/agentic-coding-software-fundamentals.md)。
+
 ## [2026-10-16] ingest | GroundAnything — 并行扩散视觉 grounding
 
 - 归档论文、官方项目页与 GitHub 仓库，并核实 DLM、自回归 VLM 权重及代码已公开。
