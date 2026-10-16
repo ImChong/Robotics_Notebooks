@@ -15,7 +15,7 @@ arxiv: "2608.10232"
 code: "https://github.com/Bariona/FACT"
 related:
   - ../concepts/world-action-models.md
--  - ./paper-fact-egoforce-human-dexterity.md
+  - ./paper-fact-egoforce-human-dexterity.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
