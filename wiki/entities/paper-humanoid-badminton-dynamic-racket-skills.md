@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid, badminton, reinforcement-learning, hierarchical-control, motion-prior, sim2real, tsinghua, cuhk, zju, deepcybo, embodied-ai-lab]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-16
 arxiv: "2609.31840"
 related:
   - ./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
   - ../tasks/humanoid-locomotion.md
+  - ./sckd-xa1-badminton-robot.md
 sources:
   - ../../sources/papers/humanoid-badminton-dynamic-racket-skills-arxiv-2609-31840.md
   - ../../sources/sites/humanoid-badminton-dynamic-racket-skills.md
@@ -115,6 +116,8 @@ flowchart TB
 - **开源材料有限：** 截至 2026-10-05，项目页未提供可运行代码、权重或数据入口，暂不能独立复现实验流程。
 
 ## 关联页面
+
+- [深辰凯动 AI 羽毛球机器人（XA1）](./sckd-xa1-badminton-robot.md) — 商业系统与连续回球纪录案例；公开技术细节有限。
 
 - [Humanoid Whole-Body Badminton：无人类动作先验的退火 RL](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)
 - [LHBS：人形拟人羽毛球技能学习](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)
