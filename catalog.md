@@ -4761,6 +4761,7 @@
 - [World Translation：反向动力学提取的 Sim2Real 域翻译](wiki/entities/paper-world-translation.md) — World Translation** 从观测到的状态转移反向抽取隐含动力学，再以无配对域翻译在仿真与现实间保留动力学内容、迁移域风格。 `📅unknown` `[entity_page]`
 - [WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）](wiki/entities/paper-worldecho-worldsync.md) — WorldEcho / WorldSync**（*Do Robotic World Models Really Follow Actions?*，[arXiv:2608.24885](https: `📅unknown` `[entity_page]`
 - [WorldLine：动作驱动的机器人操纵视觉仿真](wiki/entities/paper-worldline-action-driven-visual-simulation.md) — WorldLine**（*Action-Driven Visual Simulation for Robotic Manipulation*，arXiv:2609.38059）是一种动作条件视频模 `📅unknown` `[entity_page]`
+- [WorldOracle（动作条件世界模型真机执行基准）](wiki/entities/paper-worldoracle.md) — WorldOracle 把预测 rollout 与相同初始观测、相同低层动作序列下的配对真机执行对齐，判断模型是否复现真实物理后果与任务状态转移。 `📅unknown` `[entity_page]`
 - [WorldRoamBench：交互世界模型长程稳定性开放基准](wiki/entities/paper-worldroambench.md) — WorldRoamBench**（*An Open-World Benchmark for Long-Horizon Stability of Interactive World Models*； `📅unknown` `[entity_page]`
 - [Worldscape-MoE（Unified Mixture-of-Experts World Model · arXiv:2607.03964）](wiki/entities/paper-worldscape-moe-heterogeneous-action.md) — Worldscape-MoE**（*Worldscape-MoE: A Unified Mixture-of-Experts World Model for Scalable Heterogene `📅unknown` `[entity_page]`
 - [WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）](wiki/entities/paper-worldscape-policy-2.md) — WorldScape Policy 2.0**（*Empowering Steerable World Action Modeling with Reasoning-Augmented Memor `📅unknown` `[entity_page]`
