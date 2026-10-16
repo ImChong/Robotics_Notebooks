@@ -6,7 +6,6 @@ status: complete
 updated: 2026-10-16
 project: https://github.com/bobzhang/minisql-moonbit-vs-rust
 code: https://github.com/bobzhang/minisql-moonbit-vs-rust
-paper: https://github.com/bobzhang/minisql-moonbit-vs-rust/blob/main/paper/moonbit-agent-friendly.pdf
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/ai-agent-evaluation.md
