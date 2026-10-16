@@ -168,6 +168,8 @@ sources:
 
 近期跨本体实例：[GreenWAM](../entities/paper-greenwam.md) 将 20 类机器人映射到 79 个共享关节槽位，并联合训练世界预测与策略生成。
 
+多模态世界预测实例：[Thinker-WM](../entities/paper-thinker-wm-unified-world-model.md) 将 RGB、度量深度与机器人动作纳入统一动态表征。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
