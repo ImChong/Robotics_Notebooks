@@ -1388,7 +1388,7 @@
 - [Local Policies Enable Zero-shot Long-horizon Manipulation](wiki/entities/paper-as-2410-22332-local-policies-enable-zero-shot-long-horizon-man.md) — Local Policies Enable Zero-shot Long-horizon Manipulation** 收录于 [AwesomeSim2Real](https://github.c `📅unknown` `[entity_page]`
 - [InfiniteWorld](wiki/entities/paper-as-2412-05789-infiniteworld-a-unified-scalable-simulation-fram.md) — InfiniteWorld: A Unified Scalable Simulation Framework for General Visual-Language Robot Interacti `📅unknown` `[entity_page]`
 - [Synthetic Vision](wiki/entities/paper-as-2412-08619-synthetic-vision-training-vision-language-models.md) — Synthetic Vision: Training Vision-Language Models to Understand Physics** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
-- [ASENA: Self-evolving Agents for Embodied Navigation](wiki/entities/paper-asena-self-evolving-agents.md) — ASENA将环境交互反馈纳入具身导航代理的持续行为改进。 `📅unknown` `[entity_page]`
+- [ASENA：让具身 Agent 编写、验证并复用机器人程序](wiki/entities/paper-asena-self-evolving-agents.md) — ASENA 把 coding agent 接入人形机器人的观测、计算、运动执行和任务记录。Agent 可编写并调整程序，把导航、抓取、全身动作和用户交互组合为长程任务；安全校验与操作者批准约束真机执行 `📅unknown` `[entity_page]`
 - [单手双件装配（arXiv:2609.10137）](wiki/entities/paper-assembling-two-parts-in-one-hand.md) — 单手双件装配**（Assembling Two Parts in One Hand）来自 [具身智能小站 11 篇盘点](. `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [aSSMPy：软体机器人姿态 aSSM-MPC](wiki/entities/paper-assmpy-soft-robot-orientation.md) — aSSMPy**（arXiv:2609.14376，[代码](https://github.com/karakaron/aS `📅unknown` `[entity_page]`

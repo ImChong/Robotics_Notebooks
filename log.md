@@ -180,6 +180,12 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-16] ingest | ASENA arXiv:2609.39207 v2 论文核验与详情页深化
+
+- 复用已有 ASENA 实体，不重复建节点；归档 v2 论文与 NVIDIA GEAR 官方项目页。
+- 补充 coding-agent robot harness、ASENA-VLN、工作区演进、仿真 / 真机评测和安全边界。
+- 官方项目页未列训练 / 推理代码、权重或数据下载入口；没有确认到可运行官方实现。
+
 ## [2026-10-15] lint | 全量 wiki lint：修复 10 条信息型预警（paper 三段式×5、dataset 重定向就绪度×1、评测基准枢纽回链×3、DMP 缺 queries 落地×1），复跑 0 问题 0 预警
 
 ## [2026-10-16] ingest | OpenCut：归档官网与主仓库，区分可用 classic 版和重写中的 Rust 多端版
