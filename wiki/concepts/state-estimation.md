@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-16
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-glob3r.md
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-d4rt.md
+  - ../entities/paper-trackeverything.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
   - ../entities/paper-p3.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/sure_map_arxiv_2609_15795.md
   - ../../sources/papers/glob3r_arxiv_2607_09225.md
   - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
+  - ../../sources/papers/trackeverything_arxiv_2609_30222.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
 ---
@@ -243,11 +245,15 @@ $$
 
 [Track4World](../entities/paper-track4world.md)（arXiv:2603.02573，ECCV 2026，HKUST × 腾讯 ARC）在 **VGGT 风格 ViT 全局场景表示** 上用 **2D-to-3D correlation** 前馈估计 **世界坐标系下每个像素的稠密 3D 轨迹**，并同时输出 2D/3D 联合流。相对首帧稀疏跟踪或优化式稠密跟踪，它把 **holistic world-centric 3D tracking** 写成单次推理；Kubric/KITTI 流估计与 TAPVid-3D 跟踪达 **SOTA 级**，README 还提供与 **OpenD4RT** 的 WorldTrack 公平对比。**代码与 HF 权重已开源**（Tencent Green License），与 D4RT 的「查询式 4D、未开源」形成可复现对照。
 
-### 13. 统一 Sim(3) 前馈 SLAM（UniSim-SLAM）
+### 13. 长时全可见点 3D 跟踪（TrackEverything）
+
+[TrackEverything](../entities/paper-trackeverything.md)（arXiv:2609.30222，CMU × Meta）将视频逐窗反投影到世界系持久点云，以端点细化器先预测窗末位置与静/动类别，再为动态点细化轨迹；窗口交界处对同一空间体素做去重，避免重复观测按帧累积。作者报告可在 **40 GB 显存内处理 1000+ 帧**，TAPVid-3D 短片上优于开放源码的 all-frame dense 3D 基线；需注意它依赖外部深度/位姿，错误的窗口边界合并可能不可逆，且官方代码截至 2026-10-16 尚未发布。与 Track4World 的前馈全像素对应相比，TrackEverything 的重点是**跨窗口持久化和长视频去重**。
+
+### 14. 统一 Sim(3) 前馈 SLAM（UniSim-SLAM）
 
 [UniSim-SLAM](../entities/paper-unisim-slam.md)（arXiv:2608.01706，ECCV 2026，UNIST Vision3D Lab）把 **两视图关键帧跟踪** 与 **周期多视图子图精炼** 写成 **互补 Sim(3) 约束**：在帧级关键帧位姿 \(\{T_i\}\) 与子图位姿 \(\{S_m\}\) 上构建 **view–view / view–submap / submap–submap** 三层边，并用深度统计锚定尺度。相对孤立的两视图图优化（ViSTA-SLAM）或纯子图对齐（VGGT-SLAM），它在 **无标定 RGB** 的 TUM RGB-D / 7-Scenes 上报告 SOTA 轨迹（平均 ATE 相对先前最佳降 **38.5% / 45.9%**），且默认 VGGT 前端 **197 ms** 仍优于纯多视图 SLAM 的延迟。注意：官方 GitHub 截至入库日仅为占位仓（`coming soon`），工程复现需等代码发布。
 
-### 14. 组间相对位姿（G2G）
+### 15. 组间相对位姿（G2G）
 
 [G2G](../entities/paper-g2g.md)（arXiv:2606.08284，浙江大学等）在 **冻结 MapAnything** 上仅用 **32M** 跨组模块估计 **两组多视图图像之间的相对 6-DoF 位姿**，统一 **跨序列重定位** 与 **多相机 rig 里程计**；假设每组 **intra-group geometry** 已由 VO / 标定给出。相对 flatten 全部视图的多视图基线，它在 **低 FoV overlap**（NCLT median **0.24**）区间退化更缓；**代码与十组权重已开源**（CC BY-NC 4.0），适合多会话地图对齐与 rig 轨迹拼接，而非替代 full SLAM 前端。
 
