@@ -187,6 +187,8 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | sources/sites/rhoda-ai.md — 归档 Rhoda AI 官网研究页/新闻稿/团队页（3 篇研究博文：DVA、网络视频预训练 scaling、触觉+DVA）；确认未开源；新增公司入口与 3 个研究节点并加入公司路线
+
 ## [2026-10-16] ingest | SolidCraft — 收录浏览器端参数化 CAD 工具
 
 项目页与公开源码已核实并互链。新增 SolidCraft 来源归档与工具实体页，并从 FreeCAD、OpenSCAD 页增加 CAD 工具对照入口；官方项目当前标注为 early，曲面、工程图、CAM 与仿真仍在规划。

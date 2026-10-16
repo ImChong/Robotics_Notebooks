@@ -4931,6 +4931,10 @@
 - [FreeCAD AI Skill（reyk）（reyk/freecad-ai-skill）](wiki/entities/reyk-freecad-ai-skill.md) — FreeCAD AI Skill（reyk）（reyk/freecad-ai-skill）是以“FreeCAD AI skill”作为项目身份，是文章提到的两条 FreeCAD AI Skill 路线 `📅unknown` `[entity_page]`
 - [RF-DETR（Roboflow Detection Transformer）](wiki/entities/rf-detr.md) — RF-DETR** 是 Roboflow 与 CMU 联合提出的 **实时 closed-vocabulary 检测 Transformer**（ICLR 2026，[arXiv:2511.095 `📅unknown` `[entity_page]`
 - [辉羲智能（Rhino Auto）](wiki/entities/rhino-auto.md) — 辉羲智能**（rhino.auto）是专注 **车载智能计算平台** 的芯片与方案公司：2024 年世界智能网联汽车大会发布首款高阶智驾芯片 **光至 `📅unknown` `[entity_page]`
+- [Rhoda AI（机器人基础模型公司）](wiki/entities/rhoda-ai.md) — Rhoda AI**：位于美国加州 Palo Alto 的商业公司，把机器人策略重述为**视频生成**——先在数亿条互联网视频上预训练因果视频模型，再用少量机器人数据后训练，并用逆动力学模型把预测 `📅unknown` `[entity_page]`
+- [Rhoda DVA：因果视频模型作机器人策略](wiki/entities/rhoda-direct-video-action.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [Rhoda：触觉传感器 + 多模态 DVA](wiki/entities/rhoda-dva-tactile-sensing.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [Rhoda：网络视频预训练的真机 scaling 研究](wiki/entities/rhoda-scaling-web-video-pretraining.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Richard Sutton](wiki/entities/richard-sutton.md) — Richard S. Sutton** 是现代 **强化学习（RL）** 的奠基研究者之一：与 Andrew Barto 合著 RL 标准教材、提出 TD learning / eligibili `📅unknown` `[entity_page]`
 - [RigMo：统一 Rig 与 Motion 的生成式动画](wiki/entities/rigmo.md) — RigMo**（*Unifying Rig and Motion Learning for Generative Animation*，arXiv:2601.06378；GitHub 标注 CVP `📅unknown` `[entity_page]`
 - [rl_games](wiki/entities/rl-games.md) — rl_games](https://github.com/Denys88/rl_games) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
