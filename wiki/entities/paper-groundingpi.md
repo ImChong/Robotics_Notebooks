@@ -3,11 +3,12 @@ type: entity
 project_id: groundingpi
 tags: [paper, manipulation, visual-grounding, vla, physical-intelligence]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-16
 arxiv: "2609.39601"
 project: "https://groundingpi.github.io/"
 code: "https://github.com/groundingpi/GroundingPI"
 related:
+  - ./paper-groundanything.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/frontier-manipulation-2026-09-28-10-02.md
@@ -123,6 +124,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [GroundAnything：以并行解码实现精确视觉 Grounding](./paper-groundanything.md) — 同一作者团队的并行扩散 grounding 工作，论文与仓库均独立。
 - [Manipulation](../tasks/manipulation.md)
 - [Vision-Language-Action](../methods/vla.md)
 - [【9.28–10.2 前沿论文动态】Manipulation](../overview/frontier-manipulation-2026-09-28-10-02.md)
