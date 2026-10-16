@@ -12,7 +12,7 @@ related:
   - ./paper-embodied-evo-coding-agent.md
 sources:
   - ../../sources/papers/asena_arxiv_2609_39207.md
-  - ../../sources/sites/asena-bot-github-io.md
+  - ../../sources/sites/asena-nvidia-gear.md
   - ../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md
 summary: "ASENA让 coding agent 通过受监督 robot harness 编程、检查并迭代人形机器人任务；固定模型权重下，经验沉淀在可执行工作区，ASENA-VLN 是可选的单目导航工具。"
 ---
@@ -117,7 +117,7 @@ ASENA-VLN 基于 Qwen3-VL-4B-Instruct，读取最多 8 帧前向 RGB 历史与�
 ## 参考来源
 
 - [ASENA 论文 v2 摘录](../../sources/papers/asena_arxiv_2609_39207.md)
-- [NVIDIA GEAR ASENA 项目页核查](../../sources/sites/asena-bot-github-io.md)
+- [NVIDIA GEAR ASENA 项目页核查](../../sources/sites/asena-nvidia-gear.md)
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 
 ## 推荐继续阅读
