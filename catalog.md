@@ -1555,6 +1555,7 @@
 - [ConfAL-WM](wiki/entities/paper-confal-wm.md) — ConfAL-WM: Confidence-Guided Active Learning for Action-Conditioned World Models**（[arXiv:2608.255 `📅unknown` `[entity_page]`
 - [接触约束人形下肢关节零位标定](wiki/entities/paper-contact-constrained-joint-offset-calibration.md) — Contact-Constrained Joint-Offset Calibration**（[arXiv:2609.02306](https://arxiv.org/abs/2609.02306 `📅unknown` `[entity_page]`
 - [Contact-Guided Exploration 非抓取移动操作](wiki/entities/paper-contact-guided-exploration-locomanipulation.md) — Contact-Guided Exploration**（arXiv:2608.28140）由 **比萨大学、苏黎世联邦理工 `📅unknown` `[entity_page]`
+- [Contact-UAN（G1 执行器残差 Sim2Real）](wiki/entities/paper-contact-uan.md) — Contact-UAN**（*Unsupervised Actuator Networks as a Residual World Model for Humanoid Control*，[arX `📅unknown` `[entity_page]`
 - [ContactMimic（Humanoid Object Interaction via Contact Control）](wiki/entities/paper-contactmimic.md) — ContactMimic**（arXiv:2607.08742，2026-07-09，UIUC / Saurabh Gupta 组）提出 **接触条件化 keypoint tracker**：在参 `📅unknown` `[entity_page]`
 - [ContactNets](wiki/entities/paper-contactnets-contact-dynamics.md) — ContactNets** 收录于 具身智能研究室 · 具身世界模型六路线综述 **模型构 `📅unknown` `[entity_page]`
 - [Continual Humanoid Motion Learning：让 G1 控制器持续学新动作](wiki/entities/paper-continual-humanoid-motion-learning.md) — Continual Humanoid Motion Learning*（arXiv:2610.04231）研究如何让一个全身动 `📅unknown` `[entity_page]`
@@ -2152,7 +2153,7 @@
 - [LAC-WM：基于潜在动作的跨本体机器人基础世界模型](wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md) — LAC-WM** 是一个以「学习得到的共享潜在动作」为条件的机器人世界模型：逆动力学模型从相邻帧中抽出连续潜在动作，前向动力学模型据此预测下一帧特征，使人手、双臂人形与单臂 Franka 的数据落 `📅unknown` `[entity_page]`
 - [LAC：人形全身线角柔顺](wiki/entities/paper-lac.md) — LAC**（*Linear and Angular Compliance for Humanoid Whole-body Control*，[arXiv:2608.25405](https://a `📅unknown` `[entity_page]`
 - [LadderMan：人形感知梯子攀爬与梯上操作](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — LadderMan**（*Learning Humanoid Perceptive Ladder Climbing*，Amazon FAR 等，arXiv:[2606.05873](https:/ `📅unknown` `[entity_page]`
-- [λ₀ / HumanVerse-500](wiki/entities/paper-lambda0-egocentric-human-pretraining.md) — λ₀**（*Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pret `📅unknown` `[entity_page]`
+- [λ₀ / HumanVerse-500 / OpenLambda](wiki/entities/paper-lambda0-egocentric-human-pretraining.md) — λ₀**（早期报告 arXiv:2610.00438，后续技术报告 [arXiv:2610.18950](https://a `📅unknown` `[entity_page]`
 - [LAMDA：把 VLM 语言原型蒸馏进车端标志识别](wiki/entities/paper-lamda-tsr.md) — LAMDA**（*Language-Anchored Model for Direction Alignment*；[arXiv:2608.08815](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [Language-Driven Quality-Diversity（语言驱动 QD 技能档案）](wiki/entities/paper-language-driven-robotic-qd.md) — Language-Driven QD**（*Autonomously Acquiring Robot Manipulation Skills with Language-Driven Qualit `📅unknown` `[entity_page]`
 - [Language-Tactile：语言引导跨传感器材料识别](wiki/entities/paper-language-guided-tactile.md) — Language-Tactile**（arXiv:2609.14783，[代码](https://github.com/Ma `📅unknown` `[entity_page]`
