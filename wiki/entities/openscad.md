@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, parametric-modeling, constructive-solid-geometry, 3d-printing, open-source, openscad]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-16
 project_id: openscad-parametric-cad
 project: https://openscad.org/
 code: https://github.com/openscad/openscad
@@ -10,6 +10,7 @@ summary: "OpenSCAD 以可读脚本而非鼠标式特征树描述参数化 2D/3D 
 related:
   - ../concepts/text-to-cad.md
   - ./freecad.md
+  - ./solidcraft.md
   - ./ultimaker-cura.md
   - ../concepts/urdf-robot-description.md
 sources:
@@ -74,7 +75,8 @@ flowchart TD
 
 ## 与其他工具的边界
 
-- [FreeCAD](./freecad.md) 提供参数化 B-rep、草图约束与装配/工程工作台；适合需要 STEP、装配关系和制造工程细节的任务。OpenSCAD 的脚本几何可先生成概念件，但进入 STEP/B-rep 链路时要在支持实体转换的工具中验证或重建。
+- [FreeCAD](./freecad.md) 提供参数化 B-rep、草图约束与装配/工程工作台；适合需要 STEP、装配关系和制造工程细节的任务。
+- [SolidCraft](./solidcraft.md) 同样采用草图约束与特征时间线，但提供 Rust 桌面/浏览器应用、CLI 与 MCP 接口；项目仍处于早期阶段，功能范围以官方路线图为准。OpenSCAD 的脚本几何可先生成概念件，但进入 STEP/B-rep 链路时要在支持实体转换的工具中验证或重建。
 - [Ultimaker Cura](./ultimaker-cura.md) 位于建模之后的切片环节：读取模型与打印机/材料配置，规划逐层路径并导出 G-code；它不会替代上游 CAD 建模。
 - [文字生成 CAD](../concepts/text-to-cad.md) 中 OpenSCAD 属于“LLM 生成脚本，再执行并检查”的路线，与直接生成网格或 B-rep 的模型服务不同。
 - [URDF（机器人描述格式）](../concepts/urdf-robot-description.md) 负责关节、连杆和惯性等机器人结构语义；OpenSCAD 只产几何，二者位于不同层。
