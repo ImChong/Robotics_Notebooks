@@ -62,4 +62,3 @@
 
 - [TacBPM 论文实体](../../wiki/entities/paper-tacbpm.md)
 - [Sharpa Robotics](../../wiki/entities/sharpa-robotics.md)
-- [手内重定向](../../wiki/methods/in-hand-reorientation.md)
