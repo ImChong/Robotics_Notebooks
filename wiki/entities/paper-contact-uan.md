@@ -19,7 +19,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/physics-fidelity-sim2real-gap.md
   - ../concepts/contact-rich-manipulation.md
-  - ../concepts/actuator-network.md
+  - ../concepts/implicit-explicit-actuator-modeling.md
   - ../entities/unitree-g1.md
 sources:
   - ../../sources/papers/contact_uan_arxiv_2610_18991.md
@@ -107,7 +107,7 @@ sequenceDiagram
 | 域随机化 | 参数分布覆盖 | 无需真机残差模型 | 随机范围扩大可能使策略保守 |
 | Contact-UAN | 真机 rollout 的执行器命令残差 | 保留物理仿真先验；训练后跨任务复用 | 需要目标机器人的数据与接触一致重放 |
 
-Contact-UAN 对 [执行器网络](../concepts/actuator-network.md) 与 [Sim2Real](../concepts/sim2real.md) 提供一种结合路径：先用真机数据对齐难建模的执行器通道，再在修正仿真中训练策略。
+Contact-UAN 对 [执行器网络](../concepts/implicit-explicit-actuator-modeling.md) 与 [Sim2Real](../concepts/sim2real.md) 提供一种结合路径：先用真机数据对齐难建模的执行器通道，再在修正仿真中训练策略。
 
 ## 结论
 
@@ -131,7 +131,7 @@ Contact-UAN 对 [执行器网络](../concepts/actuator-network.md) 与 [Sim2Real
 - [Sim2Real](../concepts/sim2real.md)
 - [Physics Fidelity 与 Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
-- [Actuator Network](../concepts/actuator-network.md)
+- [隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Unitree G1](./unitree-g1.md)
 
 ## 参考来源
