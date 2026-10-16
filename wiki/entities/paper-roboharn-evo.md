@@ -40,7 +40,7 @@ summary: "RoboHarn-Evo（arXiv:2609.37583，中国人民大学 / 清华大学 / 
 | VLM | Vision-Language Model | 接收视觉与语言信息、为机器人提供高层推理的模型 |
 | VLA | Vision-Language-Action | 将视觉语言输入映射到机器人动作的策略形式 |
 | RMBench | Robot Manipulation Benchmark | 评估操作任务、知识使用与跨回合改进的基准 |
-| LIBERO-PRO | LIBERO-Physical-Robustness-Observations | 仓库中的相关 benchmark 适配应用；具体定义以官方文档为准 |
+| LIBERO-PRO | 项目 benchmark 名称（README 未展开缩写） | RoboHarn-Evo 仓库中的 benchmark 集成，含多组 suite 与任务定义 |
 
 ## 核心信息
 
