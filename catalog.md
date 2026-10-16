@@ -1799,6 +1799,7 @@
 - [FabriVLA：轻量 VLA 与精确多任务操作](wiki/entities/paper-fabrivla.md) — FabriVLA**（*A Lightweight Vision-Language-Action Model for Precise Multi-Task Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [Face Anything](wiki/entities/paper-face-anything-4d-face-reconstruction.md) — Face Anything**（*4D Face Reconstruction from Any Image Sequence*，arXiv:2604.19702，[项目页](https://ko `📅unknown` `[entity_page]`
 - [Facet-0：接触丰富精密装配基础模型](wiki/entities/paper-facet-0.md) — Facet-0**（*A Robotic Foundation Model for Contact-Rich Precise Manipulation*，[arXiv:2609.01596](ht `📅unknown` `[entity_page]`
+- [FACT（EgoForce · 力–动作联合精修，arXiv:2610.19155）](wiki/entities/paper-fact-egoforce-human-dexterity.md) — FACT**（*A Multimodal Force–Action–Track Foundation Model for Human-to-Robot Dexterity*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [FACT（Failure-Aware Causal Training · arXiv:2608.10232）](wiki/entities/paper-fact.md) — FACT**（*FACT: Failure-Aware Causal Training for World-Action Models*，[arXiv:2608.10232](https://ar `📅unknown` `[entity_page]`
 - [FADA（Few-Shot Domain Adaptation via Dynamics Alignment）](wiki/entities/paper-fada-humanoid.md) — FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FA `📅unknown` `[entity_page]`
 - [Fail-Passive Gap：工业人形功能安全的认证缺口](wiki/entities/paper-fail-passive-gap.md) — Toward Certified Functional Safety for Industrial Humanoid Robots**（Caiwu Ding、Tao Cui、Lingyun Wan `📅unknown` `[entity_page]`
