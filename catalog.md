@@ -4720,6 +4720,7 @@
 - [NaVid](wiki/entities/paper-vln-10-navid.md) — NaVid** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 10/10 `📅unknown` `[entity_page]`
 - [VoxPoser](wiki/entities/paper-voxposer.md) — VoxPoser**（arXiv:2307.05973，[代码](https://github.com/huangwl18/ `📅unknown` `[entity_page]`
 - [vS-Graphs（视觉 SLAM + 3D 场景图）](wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md) — vS-Graphs**（Tourani et al., arXiv:2503.01783，IEEE RA-L 2026，[代 `📅unknown` `[entity_page]`
+- [VT-Bridge：用轻量残差适配把预训练 VLA 接入触觉](wiki/entities/paper-vt-bridge.md) — VT-Bridge**（*Bridging Pretrained Foundation VLAs to VTLAs via Lightweight Residual Adaptation*，[ar `📅unknown` `[entity_page]`
 - [VT-WAM（Visual-Tactile World Action Model · arXiv:2607.02503）](wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) — VT-WAM**（*VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation*，[arXiv:2607.025 `📅unknown` `[entity_page]`
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
 - [VTInstructor: Visual Trajectory Prompting for Navigation Instruction Generation in Continuous Environments](wiki/entities/paper-vtinstructor.md) — 一句话定义：** VTInstructor 是面向连续环境视觉–语言导航（VLN）的指令生成框架；它将路线几何显式绘制回第一人称关键帧，让视觉语言模型据此生成自然语言指路。 `📅unknown` `[entity_page]`

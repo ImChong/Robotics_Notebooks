@@ -189,6 +189,12 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-16] ingest | vt-bridge | 预训练 VLA 的触觉残差适配
+
+- 意图：整理 VT-Bridge 的方法结构、真机结果与复现入口，补充视触觉残差适应路线。
+- 开源结论：项目页 GitHub 仅为静态网站源码；研究训练/推理代码与权重无公开链接，Code 按钮标为 “Coming soon”。
+- 关键页：新增论文来源、项目页/源码归档与 VT-Bridge wiki 实体；更新视触觉融合概念页建立入口。
+
 ## [2026-10-16] ingest | Open-BENI — 归档 BENI 训练、恢复与浏览器仿真项目
 
 - 官方仓库包含 BENI 机器人模型、训练源码、策略文件及 MuJoCo + ONNX 浏览器游戏；MIT 许可。Hugging Face Space 为在线部署。
