@@ -180,6 +180,8 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+## [2026-10-15] lint | 全量 wiki lint：修复 10 条信息型预警（paper 三段式×5、dataset 重定向就绪度×1、评测基准枢纽回链×3、DMP 缺 queries 落地×1），复跑 0 问题 0 预警
+
 ## [2026-10-16] ingest | OpenCut：归档官网与主仓库，区分可用 classic 版和重写中的 Rust 多端版
 
 - 官方 README 确认 opencut.app 当前运行 classic 版本，主仓库的 Rust 核心与插件、MCP 等能力仍处于重写路线图。
