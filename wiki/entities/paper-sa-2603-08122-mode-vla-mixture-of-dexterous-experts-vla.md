@@ -60,7 +60,7 @@ VLA 在低自由度夹爪抓放之外，还需要处理双手协调、手内物�
 ## 流程总览
 
 ```mermaid
-flowchart LR
+flowchart TB
   teleop["外骨骼遥操作<br/>双臂与双手动作"]
   feedback["VR 力觉叠加<br/>指尖振动反馈"]
   copilot["IMCopilot<br/>RL 抓持 / 手内旋转"]
