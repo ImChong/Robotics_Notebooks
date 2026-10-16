@@ -1,9 +1,10 @@
 ---
 type: entity
 project_id: open-beni
+institutions: [mondo-robotics]
 project: https://huggingface.co/spaces/mondo-robotics/open-beni
 code: https://github.com/Mondo-Robotics/open-beni
-tags: [repo, humanoid, wheeled-legged, reinforcement-learning, mjlab, mujoco, locomotion, recovery, jumping]
+tags: [repo, mondo-robotics, humanoid, wheeled-legged, reinforcement-learning, mjlab, mujoco, locomotion, recovery, jumping]
 status: complete
 updated: 2026-10-16
 related:
@@ -19,7 +20,7 @@ summary: "Open-BENI 是 BENI 轮式双足机器人的开源强化学习与仿真
 
 # Open-BENI（BENI 轮式双足机器人训练与仿真）
 
-**Open-BENI** 是一个围绕 BENI 轮式双足机器人的开源项目：用 mjlab 和 MuJoCo Warp 训练速度跟踪、跌倒恢复与跳跃策略，并提供 Viser 回放、ONNX/MNN 导出和浏览器端 MuJoCo + ONNX 游戏。
+**Open-BENI** 由摩多机器人（Mondo Robotics）发布，是一个围绕 BENI 轮式双足机器人的开源项目：用 mjlab 和 MuJoCo Warp 训练速度跟踪、跌倒恢复与跳跃策略，并提供 Viser 回放、ONNX/MNN 导出和浏览器端 MuJoCo + ONNX 游戏。
 
 ## 英文缩写速查
 
