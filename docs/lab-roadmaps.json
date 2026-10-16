@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-16",
   "comparison_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
   "lenses": {
     "wbc": "强全身控制"
@@ -218,6 +218,110 @@
           "id": "entity-paper-humble-human-motion-driven-behavior",
           "url": "https://arxiv.org/abs/2610.10489",
           "date_note": "arXiv:2610.10489 v1 为 2026-10-07（UTC）；论文称 G1 数据将发布，入库时不视为已发布。"
+        }
+      ]
+    },
+    {
+      "key": "lecar",
+      "name": "CMU LeCAR Lab",
+      "founded_year": 2023,
+      "founded_source": "https://www.ece.cmu.edu/directory/bios/shi-guanya.html",
+      "founded_note": "官网未写成立年；CMU 教师简介写明 Guanya Shi 于 2023 年秋加入 CMU 机器人所并领导 LeCAR，个人主页同写 2023-09 加入 CMU，按其加入年份计（实验室具体成立日未核查）。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "Guanya Shi 领导的 CMU 机器人所 LeCAR（Learning and Control for Agile Robotics）实验室：从人形全身遥操作与模仿（H2O / OmniH2O），到顺序接触、力自适应与人–物交互，再到 sim2real 动力学对齐 / 系统辨识与行为基础模型（ASAP / SPI-Active / BFM-Zero）；多数项目公开代码。官网另列 ABS、UMI-on-Air、Neural-Fly 等，本库暂无对应详情页，未入节点。",
+      "official": "https://lecar-lab.github.io/",
+      "nodes": [
+        {
+          "date": "2024-03",
+          "title": "H2O",
+          "track": "遥操作 / 全身模仿",
+          "desc": "实时人形全身遥操作（Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation）；本库详情为 human2humanoid 开源栈页，含 AMASS→机器人重定向脚本，同系 OmniH2O / ASAP。",
+          "id": "entity-human2humanoid",
+          "url": "https://arxiv.org/abs/2403.04436",
+          "date_note": "arXiv:2403.04436 v1 为 2024-03-07；IROS 2024 见实验室发表页（自报 Oral），晚于 v1。"
+        },
+        {
+          "date": "2024-06",
+          "title": "WoCoCo",
+          "track": "顺序接触 / 全身控制",
+          "desc": "顺序接触下的人形全身控制：clap dance、跑酷跳、双向悬崖穿越、anywhere-to-anywhere loco-manip 与多端接触推球；CoRL 2024 Oral；官方 legged_gym / RSL-RL 示例已开源。",
+          "id": "entity-paper-loco-manip-161-116-wococo",
+          "url": "https://arxiv.org/abs/2406.06005",
+          "date_note": "arXiv:2406.06005 v1 为 2024-06-10；CoRL 2024 见实验室发表页。"
+        },
+        {
+          "date": "2024-06",
+          "title": "OmniH2O",
+          "track": "遥操作 / 通用身体接口",
+          "desc": "把 kinematic pose 立成通用身体接口：VR、RGB 摄像头、语言指令与 GPT-4o / diffusion policy 等多种输入驱动同一底层全身控制器；本库页为策展编译，量化指标以原文为准。",
+          "id": "entity-paper-hrl-stack-08-omnih2o",
+          "url": "https://arxiv.org/abs/2406.08858",
+          "date_note": "arXiv:2406.08858 v1 为 2024-06-13；CoRL 2024 见实验室发表页。"
+        },
+        {
+          "date": "2025-02",
+          "title": "ASAP",
+          "track": "Sim2Real / 动力学对齐",
+          "desc": "真机 rollout 训练 delta action 模型对齐 sim–real 动力学，冻结后回灌仿真微调动作跟踪策略，部署时去掉 delta；与 NVIDIA 合作，MIT 代码基于 HumanoidVerse，含数据集、重定向、sim2sim 与 G1 sim2real；RSS 2025。",
+          "id": "entity-paper-notebook-asap-aligning-simulation-and-real-world-physics",
+          "url": "https://arxiv.org/abs/2502.01143",
+          "date_note": "arXiv:2502.01143 v1 为 2025-02-03；RSS 2025 见实验室发表页。"
+        },
+        {
+          "date": "2025-05",
+          "title": "FALCON",
+          "track": "力自适应 / 移动操作",
+          "desc": "下肢稳定与上肢末端跟踪 / 力补偿双 agent，配 torque-limit-aware 三维力课程；真机覆盖载荷运输、拉车、开门；MIT 代码含 IsaacGym 训练、sim2sim、sim2real；L4DC 2026 Oral。",
+          "id": "entity-paper-loco-manip-161-109-falcon",
+          "url": "https://arxiv.org/abs/2505.06776",
+          "date_note": "arXiv:2505.06776 v1 为 2025-05-10（UTC）；L4DC 2026 Oral 见实验室发表页，晚于 v1。"
+        },
+        {
+          "date": "2025-05",
+          "title": "SPI-Active",
+          "track": "系统辨识 / Sim2Real",
+          "desc": "GPU 并行采样式系统辨识 + 以 FIM 为目标的主动探索，辨识 Go2 质量 / 惯量与电机模型；高精度技能零样本迁移较基线提升 42–63%（本库页转述自报）；CoRL 2025 Oral；官方仓部分开源。",
+          "id": "entity-paper-notebook-sampling-based-system-identification-with-active",
+          "url": "https://arxiv.org/abs/2505.14266",
+          "date_note": "arXiv:2505.14266 v1 为 2025-05-20；CoRL 2025 见实验室发表页。"
+        },
+        {
+          "date": "2025-09",
+          "title": "HDMI",
+          "track": "人形–物体交互 / 视频模仿",
+          "desc": "从单目 RGB 人类交互视频抽取人体、物体轨迹与接触点，重定向后以 robot-object co-tracking RL 训练 G1；真机 67 次连续双向开门穿越与 6 类真实 loco-manip 任务（自报）；官方 IsaacLab 训练代码已开放。",
+          "id": "entity-paper-hrl-stack-06-hdmi",
+          "url": "https://arxiv.org/abs/2509.16757",
+          "date_note": "arXiv:2509.16757 v1 为 2025-09-20（UTC）。"
+        },
+        {
+          "date": "2025-11",
+          "title": "BFM-Zero",
+          "track": "行为基础模型 / 无监督 RL",
+          "desc": "以 latent prompt 统一目标姿态、奖励优化、恢复与少样本适配，属 Forward-backward 表征路线；官方代码与项目页已公开；实验室发表页标 ICLR 2026。",
+          "id": "entity-paper-bfm-zero",
+          "url": "https://arxiv.org/abs/2511.04131",
+          "date_note": "arXiv:2511.04131 v1 为 2025-11-06（UTC）；ICLR 2026 见实验室发表页。"
+        },
+        {
+          "date": "2026-02",
+          "title": "PHP Parkour",
+          "track": "感知跑酷 / 技能拼接",
+          "desc": "motion matching 把原子跑酷技能与行走拼成长程参考，DAgger + PPO 蒸馏为单一深度学生策略；G1 仅凭机载深度与 2D 速度指令完成 1.25 m 攀墙与多障碍长程跑酷；RSS 2026。",
+          "id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+          "url": "https://arxiv.org/abs/2602.15827",
+          "date_note": "arXiv:2602.15827 v1 为 2026-02-17（UTC）；多机构合作（本库页标签含 Amazon FAR、Berkeley、CMU、Stanford），列于 LeCAR 官网项目区，不等于仅由 LeCAR 完成。"
+        },
+        {
+          "date": "2026-06",
+          "title": "FADA",
+          "track": "少样本域适应 / Sim2Real",
+          "desc": "三阶段 Planner–IDM：仿真 oracle + DAgger 蒸馏，部署时冻结 planner，仅用约 2 分钟目标域 rollout 的观测–动作对做 LoRA 微调 IDM；G1 / T1 真机高精度全身任务成功率 20%→90%（自报）；实验室发表页标 CoRL 2026。",
+          "id": "entity-paper-fada-humanoid",
+          "url": "https://arxiv.org/abs/2606.28476",
+          "date_note": "arXiv:2606.28476 v1 为 2026-06-26（UTC）；CoRL 2026 见实验室发表页，发表页未列 arXiv 链接。"
         }
       ]
     }
