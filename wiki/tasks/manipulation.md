@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-15
+updated: 2026-10-16
 related:
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
