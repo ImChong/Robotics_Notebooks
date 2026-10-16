@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [software, cad, parametric-modeling, rust, open-source, mechanical-design, 3d-printing]
+tags: [software, cad, parametric-modeling, rust, open-source, mechanical-design, 3d-printing, independent-maintainer]
 status: complete
 updated: 2026-10-16
 project_id: solidcraft-parametric-cad
