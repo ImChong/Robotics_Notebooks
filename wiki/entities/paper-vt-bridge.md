@@ -52,7 +52,7 @@ sources:
 | 论文 / 日期 | arXiv:2609.22606，2026-09-18 |
 | 作者 / 机构 | Yansong Wu、Tuo Yang、Rongping Zhao、Lingyun Chen、Xiao Chen、Junnan Li、Fan Wu、Alois Knoll；慕尼黑工业大学，Lingyun Chen 另署 Mohamed bin Zayed University of Artificial Intelligence，Fan Wu 署 Shanghai University |
 | 主干 | π₀、π₀.₅、SmolVLA |
-| 机器人 / 传感 | Franka Emika Panda；Intel RealSense D435i 相机；Cartesian 动作配末端外力，关节动作配外部关节力矩 |
+| 机器人 / 传感 | Franka Emika Panda；两台 Intel RealSense D435i 相机；Cartesian 动作配末端外力，关节动作配外部关节力矩 |
 | 数据与模型 | 每任务最多 50 条视触觉遥操作示范；残差适配器 0.98M 参数 |
 | 运行频率 | 论文设置 30 Hz 演示采样与动作执行；action chunk horizon 50，力历史窗口 50 |
 | 计算 | VLA LoRA 微调约 8 小时（4×A100）；残差头约 30 分钟（RTX 3090）；adapter 推理约 0.7 ms（项目页报告） |
@@ -72,7 +72,7 @@ flowchart TB
   demos["视触觉遥操作示范"]
   finetune["LoRA 微调 VLA"]
   freeze["冻结微调后的 VLA"]
-  targets["对齐 action chunk 与力历史<br/>构造期望命令残差目标"]
+  targets["对齐 action chunk 与力历史，构造期望命令残差目标"]
   adapter["训练 0.98M 残差适配器"]
   chunk["VLA 低频生成 action chunk"]
   feedback["最新外力 / 关节力矩（30 Hz）"]
