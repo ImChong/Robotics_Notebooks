@@ -189,6 +189,12 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-16] ingest | RoboHarn-Evo | 记录可演化物理知识操作框架
+
+- **意图：** 收录 arXiv:2609.37583 及其项目页和官方实现，作为长时程机器人操作中“从交互经验更新外置知识”的案例。
+- **开源结论：** 项目页链接的官方仓库含 Python agent、RMBench / LIBERO-PRO 应用与运行脚本，Apache-2.0；模拟器、模型与许可资产另行配置。
+- **关键页面：** 统一实体页讲解 HPK 双层知识、内外循环、不同评测协议与代码复现入口；并链接 VLA 和 manipulation 页面。
+
 ## [2026-10-16] ingest | Humanoid Rickshaw Pulling 来源档案与实体页更新至 arXiv v2
 
 - 核对 arXiv v2 的机构、版本与当前公开入口；论文仍未列独立代码仓库。
