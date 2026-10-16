@@ -65,7 +65,8 @@ summary: "λ₀ / HumanVerse-500（arXiv:2610.00438、2610.18950）以 500 小�
 | **人类数据** | HumanVerse-500：500 小时、32,993 episodes、827 类任务、约 8,700 万 pose 帧 |
 | **机器人平台** | Unitree G1；论文称头部使用 GoPro HERO13 |
 | **评测** | SIMPLE 仿真与 4 项真机 loco-manipulation 任务 |
-| **公开状态（2026-10-03）** | 初版提交时 arXiv 未列项目页、代码、权重或数据链接 |\n| **公开状态（2026-10-16）** | OpenLambda 部分开源：训练/推理代码与 Stage II checkpoint 可用；HumanVerse 数据及完整 Stage III / 真机流程待发布 |
+| **公开状态（2026-10-03）** | 初版提交时 arXiv 未列项目页、代码、权重或数据链接 |
+| **公开状态（2026-10-16）** | OpenLambda 部分开源：训练/推理代码与 Stage II checkpoint 可用；HumanVerse 数据及完整 Stage III / 真机流程待发布 |
 
 ## 三阶段训练流程
 
