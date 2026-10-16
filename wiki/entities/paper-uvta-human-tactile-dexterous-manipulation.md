@@ -13,6 +13,7 @@ institutions: [sjtu, bigai, sharpa-robotics, bit]
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
+  - ../entities/paper-thinker-wm-unified-world-model.md
   - ../concepts/contact-rich-manipulation.md
   - ../tasks/manipulation.md
   - ../methods/imitation-learning.md
@@ -146,6 +147,10 @@ sequenceDiagram
 - **数据重且部署需工程适配：** 数据集约 482 GB；代码未提供目标平台的完整 RobotEnv、厂商 SDK 和机械臂运动学，部署并非下载后即能直接运行。
 - **跨本体映射有损：** 人手和 Wave 触觉均压缩成四区×五指区域量，局部接触细节会被丢弃。
 - **复现依赖时间同步与标定：** 人手与机器人触觉分别做基线校正和归一化；需保持一致的观测时间对齐和传感器标定。
+
+## 对比：触觉未来监督与多模态世界模型
+
+[Thinker-WM](./paper-thinker-wm-unified-world-model.md) 将 RGB、度量深度与机器人动作放入共享动态表征，并覆盖多种世界预测、动作生成与策略推理任务；UVTA 的研究范围更窄，重点是双手灵巧操作中的接触状态，把未来指尖触觉轨迹作为动作策略的辅助监督。前者扩大统一世界模型的模态与任务覆盖，后者针对视觉容易漏掉的局部接触物理提供直接触觉目标，两者互补，指标不宜横向直接比较。
 
 ## 结论
 
