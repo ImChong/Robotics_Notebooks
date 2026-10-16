@@ -21,6 +21,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../entities/unitree-g1.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/contact_uan_arxiv_2610_18991.md
   - ../../sources/sites/contact-uan-csail-mit-edu.md
@@ -133,6 +134,7 @@ Contact-UAN 对 [执行器网络](../concepts/implicit-explicit-actuator-modelin
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
 - [Unitree G1](./unitree-g1.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Contact-UAN 属其 ③ 执行器建模与辨识层：用少量真机行走数据学执行器残差模型，替代逐关节摩擦/延迟手工辨识。
 
 ## 参考来源
 

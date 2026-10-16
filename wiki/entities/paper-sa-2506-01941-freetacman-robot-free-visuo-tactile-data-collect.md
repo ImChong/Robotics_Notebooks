@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: "2506.01941"
 venue: "arXiv 2025"
 summary: "Human-centric, robot-free data collection system leveraging dexterity and force feedback of human motion; comprises 10k demonstration trajectories across 50 tasks."
@@ -13,6 +13,7 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+  - ./paper-fomi.md
 sources:
   - ../../sources/papers/sun_awesome_touch_2506_01941_freetacman-robot-free-visuo-tactile-data.md
   - ../../sources/papers/sun_awesome_touch_catalog.md
@@ -89,6 +90,7 @@ Human-centric, robot-free data collection system leveraging dexterity and force 
 - 列表实体：[Awesome Touch](../entities/awesome-touch.md)
 - 技术地图：[Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md)
 - 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- [FOMI](./paper-fomi.md) — 无机器人数据采集的力反馈路线：机械传力而非视触觉传感
 
 ## 参考来源
 

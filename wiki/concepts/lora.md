@@ -2,7 +2,7 @@
 type: concept
 tags: [fine-tuning, parameter-efficient, adaptation, peft]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 related:
   - ../methods/vla.md
   - ../methods/mimic-video.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-m4world.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/rldx-1.md
+  - ../entities/paper-morphact.md
 sources:
   - ../../sources/notes/lora.md
 summary: "LoRA（低秩适配）冻结预训练权重，只训练一对低秩矩阵 B、A，用 W₀x + BAx 以极小参数量微调大模型；在本库多为 VLA/世界模型做动力学敏感模块的低成本适配。"
@@ -86,6 +87,7 @@ $$
 - [M4World](../entities/paper-m4world.md)
 - [WAM-TTT](../entities/paper-wam-ttt-human-video-test-time-steering.md)
 - [RLDX-1](../entities/rldx-1.md)
+- [MorphAct](../entities/paper-morphact.md) — 按情境为共享 VLA 生成低秩参数更新，视觉语言与动作两侧耦合训练
 
 ## 推荐继续阅读
 

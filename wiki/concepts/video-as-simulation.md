@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-16
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
@@ -36,6 +36,7 @@ related:
   - ../entities/paper-abot-world-0.md
   - ../entities/paper-roboreact.md
   - ../entities/cosmos-transfer.md
+  - ../entities/paper-kinogen.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
@@ -178,6 +179,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型跨 chunk 加速（arXiv:2604.20289）。
 - [M⁴World](../entities/paper-m4world.md) — 多视角多模态驾驶 WM：物体外观控制 + 分钟级流式（arXiv:2607.14005；未开源）。
 - [ABot-World-0](../entities/paper-abot-world-0.md) — 单卡桌面键盘交互视频世界模型（arXiv:2607.19191；部分开源）。
+- [KinoGen](../entities/paper-kinogen.md) — 生成视频经模型拟合转为可执行的构型空间参考，关键帧可编辑
 
 ## 参考来源
 - Fei-Fei Li / World Labs (2026). *A Functional Taxonomy of World Models* — 见 [worldlabs_functional_taxonomy_world_models.md](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)。

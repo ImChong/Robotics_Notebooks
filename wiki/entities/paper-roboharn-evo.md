@@ -21,6 +21,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-harness-vla.md
   - ./paper-robo-harness.md
+  - ./paper-asena-self-evolving-agents.md
 sources:
   - ../../sources/papers/roboharn_evo_arxiv_2609_37583.md
   - ../../sources/sites/roboharn-evo-project.md
@@ -128,6 +129,20 @@ sequenceDiagram
 
 仓库 README 暴露 RMBench 与 LIBERO-PRO 两套 benchmark runner，以及模型服务脚本；图概括其运行边界，具体服务调用与知识更新由配置决定。首次复现可先用 runner 的 list / dry-run 参数检查任务和配置，再准备模型服务与 benchmark 资源。
 
+## 与其他工作对比
+
+| 维度 | RoboHarn-Evo（本文） | [Harness VLA](./paper-harness-vla.md) | [RoboHarness](./paper-robo-harness.md) | [ASENA](./paper-asena-self-evolving-agents.md) |
+|------|------|------|------|------|
+| 冻结什么 | 基础 VLM + 低层执行器 | VLA（作可重试接触原语） | 各异构策略（VLA / RL / TAMP） | 模型与控制器权重 |
+| 演化的对象 | 双层 HPK（Task / Action Knowledge） | Task / Global Memory（参考种子蒸馏后重绑定） | 技能路由与记忆辅助技能 | coding agent 的可执行工作区（程序 + 笔记） |
+| 知识来源 | 跨 episode 物理交互反馈，含纠错与停用 | 参考种子演示 | 技能执行结果与能力边界 | MCAP 回放后的程序修复 |
+| 代表基准 | RMBench、LIBERO-PRO、RoboDojo 迁移、真机 | LIBERO-Pro、RoboCasa365、RoboTwin | LIBERO-LoHo | 仿真重复任务 + Unitree G1 演示 |
+
+- **相对 Harness VLA：** 二者都把记忆放在冻结策略之外；RoboHarn-Evo 强调**持续交互中的知识修订**（错误条目修复 / 停用、有效知识保留率），Harness VLA 更侧重从参考种子蒸馏后对扰动场景重绑定。
+- **相对 RoboHarness：** RoboHarness 的核心是在异构技能间做能力边界感知路由；RoboHarn-Evo 不调度多种策略，而是给同一套执行栈补「物理效果」层知识。
+- **相对 ASENA：** ASENA 演化的是可执行程序，RoboHarn-Evo 演化的是结构化知识条目；前者更依赖 coding agent 与安全检查，后者更依赖检索粒度设计。
+- 各文基准与 agent 模型不同，表中成功率不可横向比较。
+
 ## 工程实践
 
 - **代码可得性：** 官方仓库已开源（Apache-2.0），实现与运行脚本分别见[repo 归档](../../sources/repos/roboharn-evo.md)。
@@ -157,6 +172,7 @@ sequenceDiagram
 - [机器人操作任务](../tasks/manipulation.md)
 - [Harness VLA](./paper-harness-vla.md)
 - [RoboHarness](./paper-robo-harness.md)
+- [ASENA](./paper-asena-self-evolving-agents.md) — 冻结权重、演化可执行工作区的另一条自演化路线
 
 ## 推荐继续阅读
 
