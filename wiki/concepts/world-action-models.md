@@ -105,6 +105,7 @@ related:
   - ../entities/paper-internw0-delta.md
   - ../entities/paper-uranus.md
   - ../entities/paper-wing-world-action-spectral-guidance.md
+  - ../entities/paper-thinker-wm-unified-world-model.md
 sources:
   - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -166,6 +167,8 @@ sources:
 让模型在生成动作时 **必须依托对未来世界的显式前向预测**，且该预测与动作在结构与训练目标上 **耦合**，而不是事后外挂仿真或辅助分支。
 
 近期跨本体实例：[GreenWAM](../entities/paper-greenwam.md) 将 20 类机器人映射到 79 个共享关节槽位，并联合训练世界预测与策略生成。
+
+多模态世界预测实例：[Thinker-WM](../entities/paper-thinker-wm-unified-world-model.md) 将 RGB、度量深度与机器人动作纳入统一动态表征。
 
 ## 英文缩写速查
 
