@@ -6969,6 +6969,7 @@
       : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
   }
   if (companyToggle && companyLinks) {
+    setHomeCompaniesExpanded(false);
     companyToggle.addEventListener('click', function () {
       var expanded = companyToggle.getAttribute('aria-expanded') !== 'true';
       animateHomeLinksToggle(companyRoutesCard, function () {

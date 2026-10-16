@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -665,6 +665,47 @@
           "id": "entity-holosoma",
           "url": "https://github.com/amazon-far/holosoma",
           "date_note": "持续维护的框架聚合入口；未核实首次公开月份，不使用论文或入库日期代替。"
+        }
+      ]
+    },
+    {
+      "key": "rhoda",
+      "name": "Rhoda AI",
+      "founded_year": 2024,
+      "founded_source": "https://www.rhoda.ai/news/press-release",
+      "founded_note": "官网与新闻稿均未写成立日期；2026-03-10 新闻稿称公开亮相前已隐身 18 个月，据此倒推约为 2024 年下半年（推测），按 2024 年排序，月份未确认。",
+      "lenses": [
+        "wam"
+      ],
+      "summary": "闭源的视频预测控制路线：互联网规模视频预训练 + 少量机器人数据后训练，逆动力学模型把预测画面转成动作（DVA）；3 篇研究博文依次给出数据效率、真机 scaling 与触觉扩展，无代码 / 权重，数字均为自报。",
+      "official": "https://www.rhoda.ai/research",
+      "nodes": [
+        {
+          "date": "2026-03",
+          "title": "DVA / FutureVision",
+          "track": "视频动作策略",
+          "desc": "把策略重述为因果视频生成，逆动力学模型转动作并闭环运行；自报约 10–20 小时机器人数据学会长程任务（连续 1.5 小时 / 160 分钟），无成功率与基线对比。",
+          "id": "entity-rhoda-direct-video-action",
+          "url": "https://www.rhoda.ai/research/direct-video-action",
+          "date_note": "官网博文与结束隐身新闻稿同为 2026-03-10。"
+        },
+        {
+          "date": "2026-09",
+          "title": "网络视频预训练 scaling",
+          "track": "Scaling",
+          "desc": "同一拆包任务上只改模型规模与预训练算力：XS→L 的 100 秒内完成率 3.7%→84.7%；预训练质量指标 DINO FD 与任务表现同序；单任务单本体（自报）。",
+          "id": "entity-rhoda-scaling-web-video-pretraining",
+          "url": "https://www.rhoda.ai/research/scaling-web-video-pretraining",
+          "date_note": "官网新闻页标注 2026-09-10。"
+        },
+        {
+          "date": "2026-10",
+          "title": "触觉传感器 + 多模态 DVA",
+          "track": "触觉",
+          "desc": "薄型触觉传感器（羽毛轻触响应几毫牛，量程超 40 N）接入 DVA，预测未来触觉视频；遮挡相机的盲操作取回纹理球，无成功率与试验次数（自报）。",
+          "id": "entity-rhoda-dva-tactile-sensing",
+          "url": "https://www.rhoda.ai/research/giving-robots-a-sense-of-touch",
+          "date_note": "官网研究页只写 Oct 13；年份据文末引用块与页脚 © 2026 判定。"
         }
       ]
     },
