@@ -187,6 +187,10 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | SolidCraft — 收录浏览器端参数化 CAD 工具
+
+项目页与公开源码已核实并互链。新增 SolidCraft 来源归档与工具实体页，并从 FreeCAD、OpenSCAD 页增加 CAD 工具对照入口；官方项目当前标注为 early，曲面、工程图、CAM 与仿真仍在规划。
+
 ## [2026-10-16] ingest | Kinematic Vision AI 高尔夫挥杆分析工具
 
 - 收录公开仓库 `anhtranp/golf`：浏览器内 MediaPipe 姿态跟踪与 Gemini 运动学反馈演示。

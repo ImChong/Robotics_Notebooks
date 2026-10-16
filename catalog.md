@@ -5033,6 +5033,7 @@
 - [SOEM](wiki/entities/soem.md) — SOEM（Simple Open EtherCAT Master）** 是面向实时嵌入式与通用 OS 的 **开源 EtherCAT MainDevice 库**：以 ANSI-C 实现用户态主站 `📅unknown` `[entity_page]`
 - [SOES (Simple Open EtherCAT Slave)](wiki/entities/soes.md) — 与 SOEM 同组织的轻量开源 EtherCAT 从站协议栈，用于自制从站（传感器、IO 板）。（分类：EtherCAT 从站协议栈；语言/形态：C） `📅unknown` `[entity_page]`
 - [SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）](wiki/entities/sol-pi.md) — SoL-Pi** 是 NVIDIA NVLabs 在 **[Pi](https://github.com/earendil- `📅unknown` `[entity_page]`
+- [SolidCraft（Rust 参数化 CAD）](wiki/entities/solidcraft.md) — 一句话定义**：SolidCraft 是一款用 Rust 构建的开源参数化 3D CAD，用户可绘制并约束草图、添加实体特征，再通过修改尺寸驱动时间线重建模型。 `📅unknown` `[entity_page]`
 - [Claude Engineering Skills（Soljourner/claude-engineering-skills）](wiki/entities/soljourner-claude-engineering-skills.md) — Claude Engineering Skills（Soljourner/claude-engineering-skills）是面向机械与航空航天的 100 多个 Skills，重点涵盖流体物性、材料 `📅unknown` `[entity_page]`
 - [SOMA Retargeter](wiki/entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md `📅unknown` `[entity_page]`
 - [SOMA-X（统一参数化人体模型）](wiki/entities/soma-x.md) — SOMA-X**（NVlabs/SOMA-X，PyPI `py-soma-x`，[arXiv:2603.16858](htt `📅unknown` `[entity_page]`
