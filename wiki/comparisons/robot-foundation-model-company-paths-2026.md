@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-16
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -20,7 +20,9 @@ related:
   - ../entities/xiaomi-robotics-1.md
   - ../entities/generalist-ai-robotics.md
   - ../entities/beingbeyond.md
+  - ../entities/rhoda-ai.md
 sources:
+  - ../../sources/sites/rhoda-ai.md
   - ../../sources/sites/amazon-far.md
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/robotera.md
@@ -123,6 +125,7 @@ flowchart TB
 | [Xiaomi Robotics 小米机器人](../entities/xiaomi-robotics-1.md) | ● |  |  | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md)、[Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md)、[U0](../entities/xiaomi-robotics-u0.md)、[UCAG-P](../entities/paper-ucag-p.md)、[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)、[ViTacPhys](../entities/paper-vitacphys.md) |
 | [X Square Robot 自变量机器人](../entities/cn-os-wall-x.md) | ● |  |  | [WALL-OSS](../entities/cn-os-wall-x.md) → [WALL-OSS-0.5](../entities/paper-wall-oss-0-5.md)、[X-Tokenizer](../entities/cn-os-x-tokenizer.md)、[WALL-WM](../entities/paper-rcl-2606-01955-wall-wm-carving-world-action-modeling-at-the-eve.md)、[WALL-SS](../entities/paper-wall-ss.md)、[HOST](../entities/paper-host-one-shot-human-video.md)；数采 [XRZero-G0](../entities/xrzero-g0.md)、[TwinDEX](../entities/twindex.md) |
 | [Generalist AI](../entities/generalist-ai-robotics.md) | ● |  |  | [GEN-0](../entities/generalist-gen0.md) → [GEN-1](../entities/generalist-gen1.md) → [千手](../entities/generalist-gen1-thousand-hands.md) → [GEN-1.5](../entities/generalist-gen15-one-shot.md)、[物理常识](../entities/physical-commonsense-generalist.md) |
+| [Rhoda AI](../entities/rhoda-ai.md) | ● |  |  | [DVA](../entities/rhoda-direct-video-action.md) → [网络视频预训练 scaling](../entities/rhoda-scaling-web-video-pretraining.md) → [触觉 + DVA](../entities/rhoda-dva-tactile-sensing.md) |
 | [Simate 硅基伙伴](../entities/simate.md) | ● |  |  | [Simate-beta](../entities/simate-beta.md)、Sinfra / Sipai / AutoResearch / RoboScientist |
 | [Aether AI](../entities/aether-ai.md) | ● | ● |  | [CausalWM](../entities/paper-causalwm.md)、[CD-LAM](../entities/paper-cd-lam.md)、[RSIAgent](../entities/aether-rsiagent.md)、[CRIS-0](../entities/aether-cris-0.md) |
 | [光轮智能 Lightwheel](../entities/lightwheel.md) |  | ○ | ● | [SimReady](../entities/lightwheel-simready.md) / [SimReadyGen](../entities/lightwheel-simreadygen.md)、[RoboFinals](../entities/lightwheel-robofinals.md)、[LW-BenchHub](../entities/cn-os-lw-benchhub.md)、[EgoSuite](../entities/lightwheel-egosuite.md) |
@@ -143,6 +146,8 @@ RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界�
 RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与仿真迁移。官网也研究物理交互基础模型；不据此将已收录项目判为通用 VLA / WAM，或视作统一人形整机产品，见[机构与路线](../entities/rai-institute.md)。
 
 Amazon FAR 是 Amazon 内部的 Frontier AI & Robotics 研究与工程团队；按企业团队收录到公司路线。当前代表作品重点是全身数据、遥操作与感知控制，基础模型方向见官方招聘说明；不据此认定已公开统一 WAM 或完整人形产品。2024 年仅用作团队扩充事件的排序锚点，确切成立日未确认，见[官方来源核查](../../sources/sites/amazon-far.md)。
+
+Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频预训练 + 逆动力学模型把预测画面转成动作」的闭环视频预测控制（DVA），依次给出数据效率、真机 scaling 与触觉扩展；公开材料未发布整机或独立全身控制，不据此填 ② / ③。成立时间官方未写，只在新闻稿称公开亮相前隐身 18 个月，2024 年仅为排序锚点；4.5 亿美元 A 轮为公司公告，17 亿美元估值只见媒体标题；数字均为公司自报（[官网归档](../../sources/sites/rhoda-ai.md)）。
 
 ## 三种视角各自追问什么
 
@@ -189,6 +194,7 @@ Amazon FAR 是 Amazon 内部的 Frontier AI & Robotics 研究与工程团队；�
 | Xiaomi Robotics | ✅ | ✅ | 🟡 | [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) 权重、推理与后训练管线（2026-04-27）公开；XR-1 / U0 有官方仓；TacRefineNet、ViTacPhys、UCAG-P 代码待发布 |
 | X Square Robot | ✅ | ✅ | 🟡 | [WALL-X](https://github.com/X-Square-Robot/wall-x) 有 WALL-OSS / 0.5 代码与权重，X-Tokenizer 推理库与权重、HOST 代码与权重公开；WALL-WM 仅代码；WALL-SS、TwinDEX 未开源；数据仅 XRZero-G0-3K 子集 |
 | Generalist AI | ❌ | ❌ | ❌ | [GEN-0](../entities/generalist-gen0.md) / [GEN-1](../entities/generalist-gen1.md) 博文未列代码、权重与数据；无技术报告，仅合作方早期访问 |
+| Rhoda AI | ❌ | ❌ | ❌ | [DVA](../entities/rhoda-direct-video-action.md) / [scaling](../entities/rhoda-scaling-web-video-pretraining.md) / [触觉](../entities/rhoda-dva-tactile-sensing.md) 三篇官网博文及研究页、新闻稿均未列 GitHub / HF / arXiv 与数据（[核查](../../sources/sites/rhoda-ai.md)）；参数量、训练数据规模也未公开 |
 | Simate | ❌ | ❌ | ❌ | [Simate-beta](../entities/simate-beta.md) 无技术报告、代码与权重；Sinfra / AutoResearch 为申请制内测，公司称将分阶段开源 |
 | Aether AI | 🟡 | 🟡 | ❌ | [CausalWM](../entities/paper-causalwm.md) 推理代码与门控权重、[CD-LAM](../entities/paper-cd-lam.md) 代码与 2B 权重、[RSIAgent](../entities/aether-rsiagent.md) 代码公开；训练代码、数据与 [CRIS-0](../entities/aether-cris-0.md) 未公开 |
 | 光轮智能 | 🟡 | ❌ | 🟡 | [LW-BenchHub](../entities/cn-os-lw-benchhub.md)、LeIsaac、AutoDataGen、EgoSuite DevKit 开源（Apache-2.0）；部分 SimReady / YCB 资产 CC BY-NC；[EgoSuite-Open100K](../entities/egosuite-open100k.md) 部分数据门控开放；完整资产库、RoboFinals 平台为商业产品 |
@@ -244,6 +250,8 @@ flowchart LR
 ## 参考来源
 
 - [Amazon FAR：团队性质、官方入口与技术路线核查](../../sources/sites/amazon-far.md)
+
+- [Rhoda AI 官网研究页、新闻稿与团队页核查（2026-10-16）](../../sources/sites/rhoda-ai.md)
 
 - [公司路线 22 个未注明日期节点核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md) — 18 个补齐事件月份，4 个聚合入口保留空值；发布日期、版本、提交和演示口径分别说明。
 

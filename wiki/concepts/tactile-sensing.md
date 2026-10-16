@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 related:
+  - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md
