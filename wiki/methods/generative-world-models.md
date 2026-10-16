@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-16
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -350,6 +350,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 跨本体交互模拟器 + Human-in-the-World-Model（示例：CurrentWorld-0）
 
 [CurrentWorld-0](../entities/current-robotics-currentworld.md)（Current Robotics，2026-08 博客）把 WM 定义为 **interactive world simulator**：不统一低层动作空间，按本体保留动作子空间，联合训练人形（BrainCo / Wuji / 夹爪）、移动双臂与桌面双臂；同步预测头戴/腕部/第三人称，并联合力/触觉。产品用法是 **评测层**（自称与真机成功率强相关、保持排名）加上 **失败态保存/回滚/分支的人类接管后训练**（π0 / π0.5 / DP）。相对 Ctrl-World，它把多视角接口扩到跨本体 + 力触觉，并把纠正做成环境内遥操作，而不是只筛成功轨迹做 SFT。**确认未开源**；定量图为官方自报，独立复现前不作硬基准。
+
+### 配对真机执行的动作条件世界模型基准（WorldOracle）
+
+[WorldOracle](../entities/paper-worldoracle.md) 将预测视频与同一起始观测、同一条低层动作轨迹下的配对真机执行比较，覆盖成功与失败、长程多段 episode 和多视角数据。它从物理状态正确性、交互空间对齐、关键交互区域保真度及多视角动作一致性拆分误差，并报告单视角 / 多视角汇总分。相对 EWMBench 的生成质量评测，WorldOracle 更直接地回答「给定动作后，预测是否复现真实执行结果」；评测代码已公开。
 
 ### 自一致视频策略评估器（示例：SC3-Eval）
 
