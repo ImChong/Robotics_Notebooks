@@ -56,7 +56,7 @@ summary: "TTCO 在闭环仿真中为冻结的人形 BFM 搜索更合适的 motio
 | **方法** | 冻结 BFM，在模型与机器人动力学闭环仿真中采样优化输入命令 |
 | **代码** | [Gamma-Robot/bfm_ttc](../../sources/repos/bfm_ttc.md)；主代码 Apache-2.0，SPIDER sampler 有独立上游许可 |
 | **数据 / 权重** | 项目页无独立权重或数据下载入口；仓库运行需准备 HEFT-PMG checkpoint、G1 资产与评测动作 |
-| **项目页** | [bfmttc.github.io](../../sources/sites/bfmttc-github-io.md) |
+| **项目页** | [bfmttc.github.io](../../sources/sites/ttco-test-time-compute-humanoid-bfm.md) |
 
 ## 为什么重要
 
@@ -169,8 +169,8 @@ sequenceDiagram
 
 ## 参考来源
 
-- [论文来源笔记](../../sources/papers/test_time_compute_humanoid_bfm_arxiv_2610_14896.md)
-- [官方项目页归档](../../sources/sites/bfmttc-github-io.md)
+- [论文来源笔记](../../sources/papers/ttco_test_time_compute_humanoid_bfm_arxiv_2610_14896.md)
+- [官方项目页归档](../../sources/sites/ttco-test-time-compute-humanoid-bfm.md)
 - [官方源码归档](../../sources/repos/bfm_ttc.md)
 - arXiv 摘要：[Test-Time Compute for Humanoid Behavior Foundation Models](https://arxiv.org/abs/2610.14896)
 
