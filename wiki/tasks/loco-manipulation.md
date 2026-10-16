@@ -3,8 +3,10 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-15
+updated: 2026-10-17
 sources:
+  - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
+  - ../../sources/sites/wholebodydex-project.md
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -130,6 +132,8 @@ flowchart TD
 
 ### 2. 接触丰富与多约束
 涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。
+
+**全身接触重定位实例：** [Whole-Body Dexterity](../entities/paper-whole-body-dexterity.md) 将手臂和躯干用作物体支撑面，通过学习接触区域之间的转换，在 Unitree G1 上完成箱体腋下夹持、搬运和放置。
 
 ### 3. 高动态与精细度平衡
 在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。产业侧 [Skild Physical Self-Play](../entities/skild-physical-self-play.md) 以 **Isaac Sim 人形足球自博弈** 演示 **score-only RL** 涌现运球/铲球并 Sim2Real（闭源、无公开 benchmark）。
