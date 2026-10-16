@@ -10,7 +10,7 @@ related:
   - ./mjlab.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
-  - ./balance-recovery.md
+  - ../tasks/balance-recovery.md
 sources:
   - ../../sources/sites/open-beni.md
   - ../../sources/repos/mondo-robotics-open-beni.md
@@ -80,7 +80,7 @@ uv run python -m beni_rl.train Beni-Jump-Flat \
 - [mjlab](./mjlab.md) — Open-BENI 使用的训练仿真框架
 - [强化学习](../methods/reinforcement-learning.md) — PPO 策略训练的基础方法
 - [Locomotion](../tasks/locomotion.md) — 速度跟踪等移动任务
-- [Balance Recovery](./balance-recovery.md) — 与跌倒恢复行为相关的任务知识
+- [Balance Recovery](../tasks/balance-recovery.md) — 与跌倒恢复行为相关的任务知识
 
 ## 参考来源
 
