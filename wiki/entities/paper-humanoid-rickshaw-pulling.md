@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, loco-manipulation, heavy-payload, teacher-student]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-16
 project_id: humanoid-rickshaw-pulling
 arxiv: "2610.04238"
 summary: "G1 以 50 Hz 全身策略持续双手牵引人力车；特权教师和历史条件学生组成单一策略，硬件 loaded rickshaw mass 最高 115 kg。"
@@ -18,7 +18,7 @@ sources:
 
 *Humanoid Rickshaw Pulling: Whole-Body Locomotion under Coupled Wheeled Loads*（[arXiv:2610.04238](https://arxiv.org/abs/2610.04238)）把持续双手接触、平衡和车辆运动控制合成一个耦合全身控制问题。Unitree G1 通过定制手部末端执行器握住车把，让被动两轮车承重，并以腿部推进、车把反作用力转向。
 
-- **论文：** [arXiv 摘要](https://arxiv.org/abs/2610.04238) · [HTML v1](https://arxiv.org/html/2610.04238v1) · [PDF](https://arxiv.org/pdf/2610.04238)
+- **论文：** [arXiv 摘要](https://arxiv.org/abs/2610.04238) · [HTML v2](https://arxiv.org/html/2610.04238v2) · [PDF](https://arxiv.org/pdf/2610.04238)
 - **视频：** [论文演示](https://youtu.be/eqnAlQLjZF8)
 - **作者：** Yangzhi Yang、Xiansheng Lin、Zhaoming Xie、Xiaobin Xiong
 - **机构：** Legged AI Lab、Shanghai Innovation Institute
@@ -103,7 +103,7 @@ latent 预测和教师真值并不完全一致。作者解冻动作头，再用 
 - **任务前提：** 实验从双手已握稳把手开始，抓握获取和失手恢复是作者列出的后续方向。
 - **场景范围：** 论文未构成自主导航、避障与任意地形运输系统。
 - **观测边界：** 教师使用的 privileged state 只在仿真训练；部署学生以本体历史隐式推断。
-- **代码状态：** 截至所引用的 arXiv v1 未附专属代码仓库；若后续有发布需重新核实授权、仿真资产与配置。
+- **代码状态：** 截至 arXiv v2（2026-10-07）未附专属代码仓库；若后续有发布需重新核实授权、仿真资产与配置。
 
 ## 关联页面
 
@@ -119,5 +119,5 @@ latent 预测和教师真值并不完全一致。作者解冻动作头，再用 
 ## 参考来源
 
 - [arXiv 论文](https://arxiv.org/abs/2610.04238)
-- [arXiv HTML v1](https://arxiv.org/html/2610.04238v1)
+- [arXiv HTML v2](https://arxiv.org/html/2610.04238v2)
 - [实验视频](https://youtu.be/eqnAlQLjZF8)
