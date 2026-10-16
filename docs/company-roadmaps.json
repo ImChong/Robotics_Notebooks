@@ -710,6 +710,174 @@
       ]
     },
     {
+      "key": "sharpa",
+      "name": "夏帕机器人 Sharpa Robotics",
+      "founded_year": 2024,
+      "founded_source": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/",
+      "founded_note": "2025-12-16 PR Newswire 新闻稿写明 Founded in 2024，总部新加坡；具体月份未核实。",
+      "lenses": ["wam"],
+      "summary": "以 22 DoF 触觉灵巧手 SharpaWave 为平台的灵巧操作公司：学术线以「人类数据 → 接触 → 跨本体触觉表征」三条主线推进，用 System 0/1/2 分层把接触交给高频触觉底层；2025-12 量产、2026 年起推出整机与触觉手套。",
+      "official": "https://www.sharpa.com/",
+      "nodes": [
+        {
+          "date": "2025-10",
+          "title": "SaTA 空间锚定触觉",
+          "track": "触觉 / 空间锚定",
+          "desc": "把触觉特征经正运动学锚定到手部运动学坐标系，策略无需物体模型即可推断物体几何；文章称 USB-C 插接等亚毫米任务成功率最高提升约 30 个百分点（自报）。",
+          "id": "entity-paper-sata",
+          "url": "https://arxiv.org/abs/2510.14647",
+          "date_note": "arXiv:2510.14647 v1 为 2025-10-16。"
+        },
+        {
+          "date": "2025-12",
+          "title": "SharpaWave 量产",
+          "track": "平台 / 硬件",
+          "desc": "22 DoF、指尖触觉阵列的 SharpaWave 灵巧手宣布量产；公司自述 2024 年成立、总部新加坡。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/",
+          "date_note": "PR Newswire 新闻稿 dateline 2025-12-16（经 Utusan 转载）。",
+          "date_source": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/"
+        },
+        {
+          "date": "2026-02",
+          "title": "Tacmap",
+          "track": "触觉 / Sim2Real",
+          "desc": "用穿透深度图统一仿真与真实触觉的几何表示，使仅在仿真中训练的手内旋转策略零样本迁移到真机（文章称与英伟达合作）。",
+          "id": "entity-paper-tacmap",
+          "url": "https://arxiv.org/abs/2602.21625",
+          "date_note": "arXiv:2602.21625 v1 为 2026-02-25。"
+        },
+        {
+          "date": "2026-02",
+          "title": "EgoScale",
+          "track": "人视频 / 规模化",
+          "desc": "用约 2 万小时第一视角人类视频预训练灵巧 VLA，再以少量人机对齐数据中期训练；在 Sharpa Wave 上平均成功率相对无预训练基线提升 54%（文章转述）。",
+          "id": "entity-paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div",
+          "url": "https://arxiv.org/abs/2602.16710",
+          "date_note": "arXiv:2602.16710 v1 为 2026-02-18。"
+        },
+        {
+          "date": "2026-02",
+          "title": "SimToolReal",
+          "track": "工具 / Sim2Real",
+          "desc": "程序化随机化工具几何与动力学，训练物体中心策略，KUKA 臂加 22 DoF 手零样本完成多类工具任务（文章称 RSS 2026）。",
+          "id": "entity-simtoolreal",
+          "url": "https://arxiv.org/abs/2602.16863",
+          "date_note": "arXiv:2602.16863 v1 为 2026-02-18。"
+        },
+        {
+          "date": "2026-03",
+          "title": "DexEMG",
+          "track": "遥操作 / 肌电",
+          "desc": "用前臂表面肌电推断手部姿态并实时重定向到 22 DoF Sharpa Wave，不依赖摄像头，手指被遮挡时仍可遥操作（文章转述）。",
+          "id": "entity-paper-dexemg",
+          "url": "https://arxiv.org/abs/2603.05861",
+          "date_note": "arXiv:2603.05861 v1 为 2026-03-06。"
+        },
+        {
+          "date": "2026-03",
+          "title": "MoDE-VLA",
+          "track": "VLA / 灵巧手",
+          "desc": "RL 训练的手内技能 IMCopilot 与力、触觉专家通路接入 VLA；削苹果等四任务平均成功率由基线 15% 提升到 34%（文章转述，自报）。",
+          "id": "entity-paper-sa-2603-08122-mode-vla-mixture-of-dexterous-experts-vla",
+          "url": "https://arxiv.org/abs/2603.08122",
+          "date_note": "arXiv:2603.08122 v1 为 2026-03-09。"
+        },
+        {
+          "date": "2026-06",
+          "title": "FTP-1",
+          "track": "触觉基础策略",
+          "desc": "跨 21 种触觉传感器的统一隐空间与 Transformer，约 3000 小时数据预训练；在两种未见传感器配置上成功率提升 31%（文章转述，自报）。",
+          "id": "entity-paper-ftp-1",
+          "url": "https://arxiv.org/abs/2606.13102",
+          "date_note": "arXiv:2606.13102 v1 为 2026-06-11。"
+        },
+        {
+          "date": "2026-06",
+          "title": "T-Rex",
+          "track": "触觉 / 数据",
+          "desc": "100 小时触觉同步遥操作 play 数据，变频率 MoT 与触觉 VQ-VAE，覆盖 12 项双手触觉反应任务（文章称基于 Sharpa Wave）。",
+          "id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
+          "url": "https://arxiv.org/abs/2606.17055",
+          "date_note": "arXiv:2606.17055 v1 为 2026-06-15；文章未给编号，按标题与数据规模对应。"
+        },
+        {
+          "date": "2026-06",
+          "title": "Do as I Do",
+          "track": "视频 → 灵巧数据",
+          "desc": "从日常人类视频重建手–物交互并重定向为灵巧手动作；文章称 655 条野外视频重建、Sharpa Wave 上 10 项真机任务（文章转述）。",
+          "id": "entity-paper-do-as-i-do",
+          "url": "https://arxiv.org/abs/2606.19333",
+          "date_note": "arXiv:2606.19333 v1 为 2026-06-17。"
+        },
+        {
+          "date": "2026-06",
+          "title": "Play2Perfect",
+          "track": "预训练 / 精密装配",
+          "desc": "灵巧手先做任务无关的自由玩耍预训练，再微调到精密装配；文章称 0.5 mm 间隙插入成功率 60%，样本效率约为从零训练的 33 倍（文章转述，自报）。",
+          "id": "entity-paper-play2perfect",
+          "url": "https://arxiv.org/abs/2606.26428",
+          "date_note": "arXiv:2606.26428 v1 为 2026-06-24。"
+        },
+        {
+          "date": "2026-08",
+          "title": "Dairy Queen 机器人餐厅",
+          "track": "真实部署",
+          "desc": "与 Dairy Queen 合作的机器人餐厅在上海吴江路开业，机器人需独立完成 55 步从点单到交付的流程（文章称）。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ",
+          "date_note": "文章称 2026-08-29 开业；文章据报道称其中 98% 的步骤涉及触觉。",
+          "date_source": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ"
+        },
+        {
+          "date": "2026-09",
+          "title": "D01 / W02 / AE01 发布",
+          "track": "硬件发布",
+          "desc": "发布 D01 整机、W02 灵巧手与 AE01 触觉反馈数据手套；AE01 为 22 自由度外骨骼手套，指尖提供振动触觉反馈，面向遥操作与数据采集。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ",
+          "date_note": "文章称于今年 9 月底的 IROS 2026 上发布；日期只到月份。",
+          "date_source": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ"
+        },
+        {
+          "date": "2026-09",
+          "title": "Dex-X",
+          "track": "视频 → 仿真 → 策略",
+          "desc": "单目 RGB 人类视频重建手–物轨迹，仿真中由物理引擎补全触觉，蒸馏为点云与触觉的学生策略；文章称真机方块抓取成功率 93%（自报）。",
+          "id": "entity-paper-dex-x",
+          "url": "https://arxiv.org/abs/2609.07747",
+          "date_note": "arXiv:2609.07747 v1 为 2026-09-07。"
+        },
+        {
+          "date": "2026-09",
+          "title": "GALATEA",
+          "track": "视频规划 → 控制",
+          "desc": "用扩散视频模型生成手–物交互，经双目深度与接触感知优化提取 3D 运动，再在仿真中跟踪为单一控制器；文章称从 2500 段生成视频中筛出约 2000 条轨迹。",
+          "id": "entity-paper-galatea",
+          "url": "https://arxiv.org/abs/2609.10050",
+          "date_note": "arXiv:2609.10050 v1 为 2026-09-09。"
+        },
+        {
+          "date": "2026-09",
+          "title": "TacBPM",
+          "track": "触觉 / 行为先验",
+          "desc": "8 个球体尺寸的专家蒸馏为触觉条件的隐空间先验，下游冻结先验只学残差动作；文章称复杂物体多任务中 PPO 成功率 1%，TacBPM 为 70%（文章转述，自报）。",
+          "id": "entity-paper-tacbpm",
+          "url": "https://arxiv.org/abs/2609.18174",
+          "date_note": "arXiv:2609.18174 v1 为 2026-09-16。"
+        },
+        {
+          "date": "2026-09",
+          "title": "UVTA",
+          "track": "人类演示 / 视触觉",
+          "desc": "人类演示与少量机器人遥操作联合训练视觉–触觉–动作模型，同时预测动作与触觉；文章称五任务平均成功率 70%（T-Rex 为 29%），人类演示从 0 增至 1000 条时三任务平均成功率由 0% 升至 84%（自报）。",
+          "id": "entity-paper-uvta-human-tactile-dexterous-manipulation",
+          "url": "https://arxiv.org/abs/2609.34182",
+          "date_note": "arXiv:2609.34182 v1 为 2026-09-28。"
+        }
+      ]
+    },
+    {
       "key": "rewardai",
       "name": "励元智能 Reward AI",
       "founded_year": 2025,
