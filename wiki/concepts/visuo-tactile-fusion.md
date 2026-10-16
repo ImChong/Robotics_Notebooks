@@ -19,6 +19,7 @@ related:
   - ../comparisons/anygrasp-vs-graspnet.md
   - ../methods/tactile-impedance-control.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
+  - ../entities/paper-vt-bridge.md
   - ../entities/paper-omnitactune-tactile-residual-adaptation.md
   - ../entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md
   - ../entities/paper-vtap-gripper.md
@@ -139,6 +140,8 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 ### 4. 残差适应 (Residual Adaptation)
 
 不把触觉写进同一个策略网络，而是 **冻结视觉基策略**，另训 **轻量触觉残差** 在真机上线修正接触段。代表：[OmniTacTune](../entities/paper-omnitactune-tactile-residual-adaptation.md)（arXiv:2607.03723）用 **40–80 min 真机 RL** 把 Flow/ACT/DP/π₀.₅ 等基策略从 **5–40% 拉到 85–100%**，且 **无需离线触觉演示**。
+
+- [VT-Bridge](../entities/paper-vt-bridge.md) 提供一条离线监督的补充路线：先 LoRA 微调 VLA，再冻结主干，用每任务最多 50 条视触觉示范训练 **0.98M 参数残差头**；按 30 Hz 用最新力反馈修正 action chunk，三种主干、四项 Panda 真机任务均值 **11.7%→62.9%**。与 OmniTacTune 的真机 RL 残差相比，它依赖离线示范；研究代码尚未公开。
 
 - **接口设计：** 残差 actor 只读 **物体关键点子目标、基策略 action chunk、触觉与本体**，不依赖基策略内部隐状态——因此同一残差头可挂多种 IL/VLA 架构。
 - **与端到端融合的分工：** 视觉策略继续吃规模化人视频/遥操数据；触觉只在 **接触丰富最后一公里** 通过试错学习，避开「触觉数据永远追不上视觉规模」的困境。
