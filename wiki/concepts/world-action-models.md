@@ -105,6 +105,7 @@ related:
   - ../entities/paper-internw0-delta.md
   - ../entities/paper-uranus.md
   - ../entities/paper-wing-world-action-spectral-guidance.md
+  - ../entities/paper-thinker-wm-unified-world-model.md
 sources:
   - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
   - ../../sources/papers/world_action_models_survey_2605.md
