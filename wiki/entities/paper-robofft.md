@@ -17,7 +17,7 @@ code: https://github.com/shshsunny/RoboFFT
 related:
   - ../methods/diffusion-policy.md
   - ../methods/ppo.md
-  - ../methods/flow-matching.md
+  - ../concepts/flow-matching-embodied-policy.md
 sources:
   - ../../sources/papers/robofft_arxiv_2609_32236.md
   - ../../sources/sites/robofft.md
@@ -122,7 +122,7 @@ sequenceDiagram
 
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [PPO](../methods/ppo.md)
-- [Flow Matching](../methods/flow-matching.md)
+- [Flow Matching](../concepts/flow-matching-embodied-policy.md)
 
 ## 参考来源
 
