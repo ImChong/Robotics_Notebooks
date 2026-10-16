@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, badminton, reinforcement-learning, hierarchical-control, motion-prior, sim2real, tsinghua, cuhk, zju, deepcybo, embodied-ai-lab]
 status: complete
-updated: 2026-10-05
+updated: 2026-10-16
 arxiv: "2609.31840"
 related:
   - ./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
