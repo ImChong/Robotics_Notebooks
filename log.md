@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-16] structural | docs/lab-roadmaps.json 新增 CMU LeCAR Lab 实验室路线（10 个节点，成立年份按 Guanya Shi 2023 秋加入 CMU RI 计），首页实验室路线入口与计数同步
+
 ## [2026-10-16] ingest | MoDE-VLA 与 IMCopilot 论文及项目页核查
 
 - 来源：arXiv:2603.08122 与官方项目页。
