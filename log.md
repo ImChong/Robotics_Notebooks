@@ -187,6 +187,11 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | 收录 VLA 神经表征几何论文（arXiv:2610.20840）
+
+- 新增 `sources/papers/vla_neural_geometry_arxiv_2610_20840.md`，记录论文问题、方法、摘要中的几何发现与 steering 结论。
+- 截至入库日，arXiv 条目和作者主页未列项目页或代码仓库；七类概念清单及详细实验设置待精读正文补齐。
+
 ## [2026-10-16] ingest | HumanoidTTT：入口证书驱动的人形完整动作复用
 
 - 收录北京大学 HumanoidTTT 论文、项目页与官方代码；代码和初始策略权重公开，应用运行时仍需接入 OMG、HoloMotion、动作资产及执行验证循环，仓库根目录未见许可文件。
