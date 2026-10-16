@@ -4643,6 +4643,7 @@
 - [Uranus：面向具身 AI 的下一代模拟基础设施](wiki/entities/paper-uranus.md) — Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.2481 `📅unknown` `[entity_page]`
 - [URDD（Beyond URDF: Universal Robot Description Directory）](wiki/entities/paper-urdd-universal-robot-description-directory.md) — URDD** 是 Klein-Seetharaman 与 Rakita 提出的 **机器人描述「派生层」**：保留 **URDF（等）原始规格** 的同时，把下游常算的 **结构化派生信息** 分 `📅unknown` `[entity_page]`
 - [US-VLA](wiki/entities/paper-us-vla-ultrasound.md) — US-VLA: An Ultrasound Vision-Language-Action Model for Embodied Abdominal Scanning**（arXiv:[2608.1 `📅unknown` `[entity_page]`
+- [UVTA：跨本体视触觉动作建模](wiki/entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 一句话定义：** UVTA 用可穿戴人类触觉示范学习跨本体接触表征，并与机器人遥操作数据联合预测未来动作和触觉轨迹；部署时仅执行机器人动作。 `📅unknown` `[entity_page]`
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`
 - [VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）](wiki/entities/paper-vad-vectorized-scene.md) — VAD**（*VAD: Vectorized Scene Representation for Efficient Autonomous Driving*，[2303.12077](https:/ `📅unknown` `[entity_page]`
 - [VaDar：隐式目标条件化的价值分解](wiki/entities/paper-vadar.md) — VaDar**（*Implicit Goal Conditioning via Value Disaggregation*）把长时程任务的子目标序列转成可分别监督的价值分量；共享 critic 学 `📅unknown` `[entity_page]`

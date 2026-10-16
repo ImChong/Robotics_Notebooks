@@ -187,6 +187,8 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
+
 ## [2026-10-16] ingest | WorldOracle — 归档论文、项目页和评测代码，补充动作条件世界模型的配对真机评测入口
 
 - **开源结论：** 项目页链接官方评测代码（Apache-2.0）与 Hugging Face 数据入口；README 提供评测脚本和运行说明。
