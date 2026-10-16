@@ -3,16 +3,19 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-10-08
+updated: 2026-10-16
 related:
   - ../overview/ai-architecture-map.md
   - ../concepts/diffusion-transformer.md
   - ../concepts/diffusion-model.md
   - ../entities/paper-scaledp-scaling-diffusion-transformer-policy.md
   - ../entities/paper-robotic-dit-ingredients-dit-block-policy.md
+  - ../entities/paper-robofft.md
 ---
 
 # Diffusion Policy
+
+在线强化学习微调生成式动作策略的实例见 [RoboFFT](../entities/paper-robofft.md)：它复用扩散去噪目标估计 PPO 所需的替代策略比率。
 
 **Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。
 
