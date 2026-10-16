@@ -187,6 +187,11 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | HumanoidTTT：入口证书驱动的人形完整动作复用
+
+- 收录北京大学 HumanoidTTT 论文、项目页与官方代码；代码和初始策略权重公开，应用运行时仍需接入 OMG、HoloMotion、动作资产及执行验证循环，仓库根目录未见许可文件。
+- Wiki 记录 200 个测试入口 0 次不安全接受、固定高复用请求轨迹端到端 16.4 倍加速，并注明证书冻结与测试范围等边界。
+
 ## [2026-10-16] ingest | minisql-moonbit-vs-rust | 比较 AI agent 使用 MoonBit 与 Rust 的实际成本
 
 - 意图：记录 Agent-Friendly by Design 预印本、实验设计与可复核的逐试验数据。

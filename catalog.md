@@ -2063,6 +2063,7 @@
 - [HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）](wiki/entities/paper-humanoidarena.md) — HumanoidArena** 是香港科技大学（广州）、北京工业大学、哈尔滨工业大学（深圳）、深圳北理莫斯科大学与京东探索研究院等团队的 **仿真优先人形全身学习基准**（arXiv:2606.1 `📅unknown` `[entity_page]`
 - [HumanoidMimicGen](wiki/entities/paper-humanoidmimicgen.md) — HumanoidMimicGen** 是 NVIDIA 与 UT Austin 团队的 **人形 loco-manipulation 合成示范生成** 论文（arXiv:2605.27724，Op `📅unknown` `[entity_page]`
 - [HumanoidToolBench：从工具选择到移动执行的人形工具使用基准](wiki/entities/paper-humanoidtoolbench.md) — HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution**（[arXiv:2610 `📅unknown` `[entity_page]`
+- [HumanoidTTT：让人形机器人复用完整动作](wiki/entities/paper-humanoidttt.md) — HumanoidTTT**（arXiv:2610.00198）面向重复出现的人形动作请求：系统只在当前机器人入口状态通过该完整动作的适用性认证时才重放已验证动作，并在存储容量受限时学习保留哪些动作 `📅unknown` `[entity_page]`
 - [HumanoidUMI](wiki/entities/paper-humanoidumi.md) — HumanoidUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation**（arXiv:2606. `📅unknown` `[entity_page]`
 - [HumanoidVLN：跨人形本体的物理接地 VLN 仿真与基准](wiki/entities/paper-humanoidvln.md) — HumanoidVLN**（*A Physics-Grounded Simulator and Benchmark for Vision-Language Navigation Across Di `📅unknown` `[entity_page]`
 - [HumanTracker（Comprehensive and Human-Aligned Motion Tracking Benchmark）](wiki/entities/paper-humantracker.md) — HumanTracker**（*Towards Comprehensive and Human-Aligned Motion Tracking Benchmark*，南开大学、清华大学、银河通用、 `📅unknown` `[entity_page]`
