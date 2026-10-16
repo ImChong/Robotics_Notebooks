@@ -1950,6 +1950,7 @@
 - [GRIP：稀疏 IMU + 鞋垫压力的物理仿真人体 MoCap](wiki/entities/paper-grip.md) — GRIP**（*Ground Reaction Inertial Poser*；arXiv:2603.16233，CVPR  `📅unknown` `[entity_page]`
 - [Gripper MagBot（arXiv:2609.12883）](wiki/entities/paper-gripper-magbot.md) — Gripper MagBot**（[From Transportation to Manipulation: Enabling Grasping in Magnetic Robotics](htt `📅unknown` `[entity_page]`
 - [GR00T Drifting Action Head：单步 VLA 速度–成功率审计](wiki/entities/paper-groot-drifting-action-head.md) — One-Step Drifting Action Heads for GR00T N1.7**（[arXiv:2609.18108](https://arxiv.org/abs/2609.1810 `📅unknown` `[entity_page]`
+- [GroundAnything：以并行解码实现精确视觉 Grounding](wiki/entities/paper-groundanything.md) — GroundAnything 是一个 4B 视觉 grounding 基础模型，通过双向扩散的分块去噪并行生成空间预测，并提供自回归 GroundAnything-VLM 作为另一条推理路径。 `📅unknown` `[entity_page]`
 - [Grounded Action Model（GAM）：3D Grounding 作为机器人基础](wiki/entities/paper-grounded-action-model-3d-grounding.md) — Grounded Action Model（GAM）**（*Grounded Action Model: 3D Grounding as a Foundation for Robotics*，[a `📅unknown` `[entity_page]`
 - [Grounded-Dreamer：带物理验证的世界模型合成示范](wiki/entities/paper-grounded-dreamer.md) — Grounded-Dreamer**（arXiv:2610.13164，[项目页](https://fffstrong.gi `📅unknown` `[entity_page]`
 - [GroundingPI：基于视觉基元的物理智能 Grounding 基础模型](wiki/entities/paper-groundingpi.md) — GroundingPI 是一个 4B 视觉 grounding 基础模型，以共享词表中的离散坐标 token 表示点和边界框，并将专门的感知能力迁移到机器人操作与自动驾驶视觉任务。 `📅unknown` `[entity_page]`

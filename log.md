@@ -187,6 +187,12 @@ type: ingest
 - **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
 - **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
 
+## [2026-10-16] ingest | GroundAnything — 并行扩散视觉 grounding
+
+- 归档论文、官方项目页与 GitHub 仓库，并核实 DLM、自回归 VLM 权重及代码已公开。
+- 新建 GroundAnything 实体页，记录解码策略、benchmark 结果、推理入口和部署边界。
+- 与 GroundingPI（arXiv:2609.39601）明确区分并互链；二者共享作者团队，但项目入口与研究重点不同。
+
 ## [2026-10-16] ingest | sources/sites/rhoda-ai.md — 归档 Rhoda AI 官网研究页/新闻稿/团队页（3 篇研究博文：DVA、网络视频预训练 scaling、触觉+DVA）；确认未开源；新增公司入口与 3 个研究节点并加入公司路线
 
 ## [2026-10-16] ingest | SolidCraft — 收录浏览器端参数化 CAD 工具
