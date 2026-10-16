@@ -60,7 +60,7 @@ WorldOracle-SV 对前三项等权平均；WorldOracle-MV 对四项等权平均�
 
 ## 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   A["配对真机数据\n初始观测 + 低层轨迹 + 真实未来"] --> B["inference package\n起点与动作"]
   B --> C["动作条件世界模型\n生成未来帧"]
@@ -68,7 +68,7 @@ flowchart LR
   A --> D
   D --> E["PSC / ISA / KIAF / MVAC"]
   E --> F["WorldOracle-SV / MV"]
-\`\`\`
+```
 
 ## 实验与评测
 
@@ -86,7 +86,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
   autonumber
   participant M as World model
@@ -100,7 +100,7 @@ sequenceDiagram
   E->>S: Run the four metric dimensions
   S-->>E: Return per-episode scores
   E-->>M: Save results and aggregate metrics
-\`\`\`
+```
 
 该执行路径对应官方仓库的数据包、预测目录、evaluate.py 和评测模块；大规模提交可用 tools/evaluate_submission.py 管理并发与断点续跑。
 
