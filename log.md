@@ -195,6 +195,12 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | sources/repos/awesome-embodied-self-improvement.md — 归档机器人 / Physical AI 部署后自我改进清单，并将 L1–L4 可执行能力判据接入 RSI 概念页
+
+- **范围：** 45 项具身自改进工作、3 个 benchmark、4 篇综述；区分 episode 内反馈、持久能力优化、技能扩张和改进机制演化。
+- **开源判断：** 清单仓库 MIT、内容开放；它是文献导航，不是机器人自改进运行时；逐篇代码状态需另行核验。
+- **关键页：** 更新递归自改进概念与通用 Awesome RSI 的机器人读者入口。
+
 ## [2026-10-17] ingest | RoboJuDo / FRoM-W1
 
 - 归档 RoboJuDo 官方部署仓库与 FRoM-W1 官方项目页，核对代码、论文、数据开放状态及策略发布边界。
