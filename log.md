@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-17] ingest | 收录 KODA、T2-z 与 VLA 因果分析论文和官方实现
+
 ## [2026-10-17] ingest | Agentic Design Patterns — 归档出版社书目与 GitHub 配套材料，标注书籍版权及仓库许可核查边界，并关联 agent 评测与 coding-agent 工程知识页
 
 ## [2026-10-17] ingest | Whole-Body Dexterity — 收录论文与项目页，补充全身接触重定位知识节点
