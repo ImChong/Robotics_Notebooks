@@ -1618,6 +1618,7 @@
 - [DASH：面向串联机械臂与人形机器人的达芬奇器械适配器](wiki/entities/paper-dash-da-vinci-adapter.md) — DASH**（*A da Vinci Adapter for Serial-link and Humanoid Robots as an Accessible Platform for Surgi `📅unknown` `[entity_page]`
 - [DASH：分歧自适应的 OPSD 监督视界](wiki/entities/paper-dash-opsd.md) — DASH**（*Divergence-Adaptive Supervision Horizons*；[arXiv:2608.06243](https://arxiv.org/abs/2608.06 `📅unknown` `[entity_page]`
 - [DAT：Divide and Truncate 多物理无穿透接触](wiki/entities/paper-dat-divide-and-truncate.md) — Divide and Truncate（DAT）**（*A Penetration and Inversion Free Framework for Coupled Multi-physics S `📅unknown` `[entity_page]`
+- [DA-AO：外骨骼辅助中的步态相位估计](wiki/entities/paper-data-augmented-adaptive-oscillators.md) — Data-Augmented Adaptive Oscillators（DA-AO）** 是一套面向外骨骼辅助行走的步态相位估计框架。公开摘要将其描述为：由感知模块判断运动模式，再为自适应振荡器检 `📅unknown` `[entity_page]`
 - [Data Pyramid for Embodied Manipulation（具身数据金字塔综述）](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — Data Pyramid for Embodied Manipulation**（arXiv:2607.24744，2026 `📅unknown` `[entity_page]`
 - [DATAFARM（arXiv:2609.12316）](wiki/entities/paper-datafarm.md) — DATAFARM**（[DATAFARM: Distribution-Aligned Task and Motion Planning for Fine-Tuning Vision-Languag `📅unknown` `[entity_page]`
 - [DAVIS（深度-only 主动视觉人形足球）](wiki/entities/paper-davis-humanoid-soccer.md) — DAVIS: A Depth-Only End-to-End Active-Vision Framework for Humanoid Soccer Skills**（Jiakang Jin 等， `📅unknown` `[entity_page]`

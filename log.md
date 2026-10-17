@@ -195,6 +195,11 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | 收录 DA-AO 外骨骼步态相位估计论文
+
+- 归档 T-RO 论文 DOI 与摘要级方法、跨地形实验指标。
+- 建立 DA-AO 实体页并关联步态生成与运动控制；全文细节和代码状态待核验。
+
 ## [2026-10-17] ingest | WorldScape R²SI — 记录技能修订与 WSP 更新的报道型系统节点
 
 - 新增 R²SI wiki 实体页与媒体报道、Manifold AI 官网、RoboDojo 官方榜单核查归档。
