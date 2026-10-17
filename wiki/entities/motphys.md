@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [company, motphys, simulation, physics-engine, robot-learning, infrastructure, mjcf]
-title: Motphys（谋先飞 / 莫特菲斯）
+title: Motphys（谋先飞）
 status: complete
 updated: 2026-10-17
 institutions: [motphys]
@@ -17,7 +17,7 @@ sources:
   - ../../sources/repos/motphys-motrix.md
 ---
 
-# Motphys（谋先飞 / 莫特菲斯）
+# Motphys（谋先飞）
 
 ## 一句话定义
 

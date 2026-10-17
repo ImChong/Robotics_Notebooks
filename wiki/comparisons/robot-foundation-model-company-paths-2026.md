@@ -130,7 +130,7 @@ flowchart TB
 | [Rhoda AI](../entities/rhoda-ai.md) | ● |  |  | [DVA](../entities/rhoda-direct-video-action.md) → [网络视频预训练 scaling](../entities/rhoda-scaling-web-video-pretraining.md) → [触觉 + DVA](../entities/rhoda-dva-tactile-sensing.md) |
 | [Simate 硅基伙伴](../entities/simate.md) | ● |  |  | [Simate-beta](../entities/simate-beta.md)、Sinfra / Sipai / AutoResearch / RoboScientist |
 | [Aether AI](../entities/aether-ai.md) | ● | ● |  | [CausalWM](../entities/paper-causalwm.md)、[CD-LAM](../entities/paper-cd-lam.md)、[RSIAgent](../entities/aether-rsiagent.md)、[CRIS-0](../entities/aether-cris-0.md) |
-| [Motphys 莫特菲斯](../entities/motphys.md) |  |  | ○ | [MotrixSim / MotrixLab](../entities/motrix.md)、[GS-Playground](../entities/gs-playground.md)、[UniLab](../entities/unilab.md) |
+| [Motphys 谋先飞](../entities/motphys.md) |  |  | ○ | [MotrixSim / MotrixLab](../entities/motrix.md)、[GS-Playground](../entities/gs-playground.md)、[UniLab](../entities/unilab.md) |
 | [光轮智能 Lightwheel](../entities/lightwheel.md) |  | ○ | ● | [SimReady](../entities/lightwheel-simready.md) / [SimReadyGen](../entities/lightwheel-simreadygen.md)、[RoboFinals](../entities/lightwheel-robofinals.md)、[LW-BenchHub](../entities/cn-os-lw-benchhub.md)、[EgoSuite](../entities/lightwheel-egosuite.md) |
 | [西湖机器人 Westlake Robotics](../entities/westlake-robotics.md) | ○ | ● | ● | [GAE](../entities/paper-gae-general-action-expert.md)、[TITAN O1](../entities/westlake-titan-o1.md)、[傲天 U1](../entities/westlake-aotian-u1.md)、LM-VLM |
 | [源策未来 Archon Robotics](../entities/archon-robotics.md) | ○ | ● | ● | [Whole-Body Intelligence](../entities/archon-whole-body-intelligence.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
