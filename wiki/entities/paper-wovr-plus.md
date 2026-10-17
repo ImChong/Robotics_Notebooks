@@ -81,6 +81,20 @@ flowchart TB
 
 **不适用**：截至 2026-10-17 项目页与论文可见内容均无官方仓库。训练基础设施提及 RLinf（见 [RLinf-VLA](paper-rlinf-vla.md)），但 WoVR+ 本身代码未发布。
 
+## 与其他工作对比
+
+| 维度 | WoVR+（本文） | [WoVR](./paper-rcl-2602-13977-wovr-world-models-as-reliable-simulators-for-pos.md)（前作） | [Ctrl-World](./paper-ctrl-world.md) | [RLinf-VLA](./paper-rlinf-vla.md) |
+|------|------|------|------|------|
+| 角色 | 世界模型当模拟器，对 π0.5 做 GRPO | 世界模型当模拟器做策略后训练 | 多视角动作条件 WM，用于策略评估与合成轨迹 SFT | 统一 VLA + RL 训练平台（仿真环境） |
+| 视角 / 接口 | 多视角 + 本体感觉对齐，动作图条件 | 3 视角（本文对照设置） | 第三人称 + 腕部视角，帧级动作条件 + 位姿记忆 | 依接入的仿真器 |
+| 策略改进方式 | 想象中 RL（GRPO + 块级 Flow-SDE），阶段局部训练 | 想象中 RL | 想象中搜成功轨迹后 SFT | 仿真中直接 RL |
+| 本文对照的 FVD | 62.16 | 109.33 | 229.83 | 不适用 |
+
+- **相对 WoVR：** WoVR+ 把接口扩展到多视角 + 本体感觉并加入阶段局部训练，面向长程任务；同一设置下 FVD 由 109.33 降到 62.16。
+- **相对 Ctrl-World：** 同为多视角动作条件 WM，Ctrl-World 侧重 policy-in-the-loop 评估与合成数据 SFT，WoVR+ 直接在想象 rollout 上做 RL 更新；FVD 对比为 WoVR+ 论文自报。
+- **相对 RLinf-VLA：** WoVR+ 的 RL 基础设施基于 RLinf，差别在于把仿真器换成世界模型；本文 RoboTwin 上收敛的直接 RL 仍高于想象训练，世界模型的价值在于节省真机交互。
+- 除 FVD 外各文任务与评测不同，成功率不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
