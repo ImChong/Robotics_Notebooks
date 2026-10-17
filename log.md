@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-16] lint | 全量 wiki lint（full git history）：修复 25 个陈旧页（ppo 补 RoboFFT、π0-policy 复核 kai0，另 23 页补新 paper 实体回链）与 10 条信息型预警（paper 三段式/结论/缩写速查、评测与执行器枢纽回链）
+
 ## [2026-10-17] ingest | 收录 KODA、T2-z 与 VLA 因果分析论文和官方实现
 
 ## [2026-10-17] ingest | Agentic Design Patterns — 归档出版社书目与 GitHub 配套材料，标注书籍版权及仓库许可核查边界，并关联 agent 评测与 coding-agent 工程知识页
