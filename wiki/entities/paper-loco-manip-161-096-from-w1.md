@@ -108,7 +108,7 @@ sequenceDiagram
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 行走与全身动作控制的任务背景
 - [Unitree G1](./unitree-g1.md) — FRoM-W1 的实体机器人评估平台
-- [人形全身运动跟踪](./humanoid-general-motion-tracking.md) — 低层策略跟踪问题
+- [人形运动跟踪与全身控制](../overview/humanoid-motion-intelligence-day3-motion-tracking-wbc.md) — 低层策略跟踪问题
 - [ProtoMotions](./protomotions.md) — RoboJuDo 集成的另一套人形跟踪器
 
 ## 参考来源
