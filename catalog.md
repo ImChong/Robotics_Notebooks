@@ -1643,6 +1643,7 @@
 - [Depth-Wise Probing Driving VLA（arXiv:2608.07361）](wiki/entities/paper-depth-wise-probing-driving-vla.md) — Depth-Wise Probing Driving VLA**（arXiv:2608.07361）收录于 [多模空间 ·  `📅unknown` `[entity_page]`
 - [DepthWorld（arXiv:2610.08780）](wiki/entities/paper-depthworld-3d-world-model.md) — DepthWorld**（*DepthWorld: 3D World Model for Robot Manipulation*，[arXiv:2610.08780](https://arxiv. `📅unknown` `[entity_page]`
 - [Designing physics experiments with artificial intelligence](wiki/entities/paper-designing-physics-experiments-with-ai.md) — Designing physics experiments with artificial intelligence**（Klimesch 等，*Nature* 2026 **Review**，D `📅unknown` `[entity_page]`
+- [DevGRU：深度引导的碰撞感知视觉导航](wiki/entities/paper-devgru.md) — DevGRU**（*Depth-guided Visual Navigation using a Collision-aware Recurrent Model*，[arXiv:2608.1847 `📅unknown` `[entity_page]`
 - [DeWorldSG（深度感知 3D 语义场景图 · 世界模型先验）](wiki/entities/paper-deworldsg.md) — DeWorldSG**（*Depth-Aware 3D Semantic Scene Graph Generation via World-Model Priors*，[arXiv:2607.00 `📅unknown` `[entity_page]`
 - [Dex-X：从单目人类视频经仿真补全触觉，学习视触觉灵巧操作](wiki/entities/paper-dex-x.md) — Dex-X**（*Dex-X: Learning Visual-Tactile Dexterous Manipulation From Human Videos with Simulated In `📅unknown` `[entity_page]`
 - [DexEMG：用前臂肌电驱动灵巧手的轻量遥操作](wiki/entities/paper-dexemg.md) — DexEMG**（*DexEMG: Towards Dexterous Teleoperation System via EMG2Pose Generalization*，[arXiv:2603. `📅unknown` `[entity_page]`
