@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-17] ingest | Intern-Decision（arXiv:2610.22131）— 归档论文、项目页与代码；记录权重与训练数据的开放边界
+
 ## [2026-10-16] ingest | vt-bridge | 预训练 VLA 的触觉残差适配
 
 - 意图：整理 VT-Bridge 的方法结构、真机结果与复现入口，补充视触觉残差适应路线。
