@@ -759,6 +759,7 @@
 - [LegoFlow：Coding-Agent 数据工程流水线](wiki/entities/legoflow.md) — LegoFlow** 是一套用于构建和迭代软件工程 agent 数据的开源工作流：Root 协调 Curator、Tracer、Trainer 与 Evaluator，把 GitHub PR 转成 `📅unknown` `[entity_page]`
 - [Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）](wiki/entities/leisymqaz-lumerical-fdtd-mcp.md) — Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）是控制 Ansys Lumerical FDTD 的 MCP 服务。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
+- [LejuBFM 通用小脑运控基座模型](wiki/entities/lejubfm-bfm.md) — LejuBFM** 是乐聚面向人形机器人全身运动控制发布的模型与配套开发流程；当前公开文档聚焦于用配套模型追踪离线动作轨迹，并通过仿真验证后在 Roban 2.2 真机播放。 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot Humanoid](wiki/entities/lerobot-humanoid.md) — Hugging Face **LeRobot** 系开源 **12-DoF 双足** 整机：从 Onshape/BOM/3D 打印到 CAN 真机控制、MJLab 行走 RL、动力学辨识与 LeRob `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署 `📅unknown` `[entity_page]`
