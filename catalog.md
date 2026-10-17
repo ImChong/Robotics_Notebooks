@@ -2285,7 +2285,7 @@
 - [通过触摸梦学习多样化人形操作](wiki/entities/paper-loco-manip-161-092-n092.md) — 通过触摸梦学习多样化人形操作**（*Learning Versatile Humanoid Manipulation with Touch Dreaming*）收录于 [具身智能研究室 · 人形  `📅unknown` `[entity_page]`
 - [DreamControl](wiki/entities/paper-loco-manip-161-093-dreamcontrol.md) — DreamControl** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [EMOTION](wiki/entities/paper-loco-manip-161-094-emotion.md) — EMOTION** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
-- [FRoM-W1](wiki/entities/paper-loco-manip-161-096-from-w1.md) — FRoM-W1** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A `📅unknown` `[entity_page]`
+- [FRoM-W1](wiki/entities/paper-loco-manip-161-096-from-w1.md) — FRoM-W1: Towards General Humanoid Whole-Body Control with Language Instructions**（arXiv:2601.12799 `📅unknown` `[entity_page]`
 - [Harmon：语言驱动的人形全身 motion 生成](wiki/entities/paper-loco-manip-161-097-harmon.md) — Harmon**（*Whole-Body Motion Generation of Humanoid Robots from Language Descriptions*，[arXiv:2410. `📅unknown` `[entity_page]`
 - [Robot Motion Diffusion Model](wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) — Robot Motion Diffusion Model** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pA `📅unknown` `[entity_page]`
 - [SafeFlow](wiki/entities/paper-loco-manip-161-104-safeflow.md) — SafeFlow**（arXiv:2603.23983，[项目页](https://hanbyelcho.info/safe `📅unknown` `[entity_page]`

@@ -195,6 +195,11 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | RoboJuDo / FRoM-W1
+
+- 归档 RoboJuDo 官方部署仓库与 FRoM-W1 官方项目页，核对代码、论文、数据开放状态及策略发布边界。
+- 更新既有 FRoM-W1 实体，按单一项目节点收录 RoboJuDo 部署流程；记录 RoboJuDo LICENSE 与 README 许可链接标签不一致，供复用前核查。
+
 ## [2026-10-17] ingest | 归档 Alex Wa 的前沿模型训练方法综述，保留其训练流水线与后训练参考；暂不单独升格为 wiki
 
 - 来源：`sources/blogs/alex_wa_frontier_model_training_methodologies_2026-01-31.md`
