@@ -14,7 +14,7 @@ related:
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
-  - ./humanoid-general-motion-tracking.md
+  - ../overview/humanoid-motion-intelligence-day3-motion-tracking-wbc.md
   - ./protomotions.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_096_from-w1.md
@@ -36,8 +36,6 @@ FRoM-W1 把「语言指令 → 人体全身动作 → 机器人关节动作 → 
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| H-GPT | Humanoid GPT | 从语言指令生成多样化人体全身动作的模块 |
-| H-ACT | Humanoid Action Control | 将人体动作重定向到机器人并训练跟踪策略的模块 |
 | WBC | Whole-Body Control | 协调机器人全身关节实现动作目标 |
 | RL | Reinforcement Learning | H-ACT 用于仿真中的运动跟踪策略训练与微调 |
 | SMPL-X | Skinned Multi-Person Linear Model eXtended | 人体姿态与手部动作表征，重定向流程使用的表示之一 |
