@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -166,6 +166,47 @@
         { "date": "2025-10", "title": "傲天 U1 四足", "track": "整机", "desc": "15.7 kg 四足机器人，进入杭州社区养老等场景（媒体报道）；官网无发布日期。", "id": "entity-westlake-aotian-u1", "url": "https://www.wlrobo.com/module3", "date_note": "最早点名报道为 2025-10-14（养老场景）；非官方发布日。" },
         { "date": "2026-03", "title": "TITAN O1 人形", "track": "整机", "desc": "自研关节模组的人形本体，34 kg、29–69 自由度（自报），搭载 GAE；WAIC 2026 展出。", "id": "entity-westlake-titan-o1", "url": "https://www.wlrobo.com/module2", "date_note": "AIBase 报道 2026-03-23 发布，新华社 / TechNode 2026-03-24 报道。" },
         { "date": "2026-09", "title": "GAE 论文", "track": "全身遥操作", "desc": "arXiv 技术论文：万小时人类动作、特权生成器 + 可部署执行器两阶段训练，延迟条件预判实现 G1 / O1 实时全身遥操作；代码未公开。", "id": "entity-paper-gae-general-action-expert", "url": "https://arxiv.org/abs/2609.34233", "date_note": "arXiv:2609.34233 v1 为 2026-09-28。", "date_source": "https://arxiv.org/abs/2609.34233" }
+      ]
+    },
+    {
+      "key": "motphys",
+      "name": "莫特菲斯 Motphys",
+      "founded_year": 2021,
+      "founded_source": "https://www.motphys.com/zh/about/",
+      "founded_note": "关于页只写「自 2021 年起专注自研实时物理引擎」，未写成立年份；2021 年为排序锚点（推测），不等于工商注册日期。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "仿真与训练基础设施路线：自研实时物理引擎 MotrixSim + MotrixLab 训练框架 + 数据 / 资产工具链，不训练机器人基础模型；公开研究为与高校联合的 GS-Playground 与 UniLab，官网未说明开源范围与许可证。",
+      "official": "https://www.motphys.com/zh/",
+      "nodes": [
+        {
+          "date": "2025-09",
+          "title": "MotrixSim / MotrixLab",
+          "track": "仿真 / 训练",
+          "desc": "Rust 实现、兼容 MJCF 的多体动力学引擎，配套 SKRL / RSL-RL / FastSAC 训练框架与浏览器 Web Viewer；版本日志此后逐月加入 IK、macOS、Web 平台、3DGS 混合渲染等。",
+          "id": "entity-motrix",
+          "url": "https://www.motphys.com/zh/release-notes/",
+          "date_note": "官网版本日志最早列出 v0.2.0（2025-09）；不证明 MotrixSim 首发，页面只写年月。"
+        },
+        {
+          "date": "2026-04",
+          "title": "GS-Playground",
+          "track": "仿真 / 视觉",
+          "desc": "以 3D 高斯泼溅为渲染核心的高吞吐照片级仿真器；官网研究页转述渲染约 10,000 FPS、零样本视觉抓取成功率约 90%（论文自报），十余家机构联合署名，入选 RSS 2026。",
+          "id": "entity-gs-playground",
+          "url": "https://arxiv.org/abs/2604.25459",
+          "date_note": "官网研究页标 2026.04，arXiv 编号 2604.25459 同月；联合署名，不当作 Motphys 单独成果。"
+        },
+        {
+          "date": "2026-05",
+          "title": "UniLab",
+          "track": "训练系统",
+          "desc": "CPU 并行物理仿真 + GPU 策略学习的异构 RL 架构，MotrixSim 作后端之一；论文自报端到端训练提速 3–10 倍；清华 × Motphys 等 21 家机构联合。",
+          "id": "entity-unilab",
+          "url": "https://arxiv.org/abs/2605.30313",
+          "date_note": "官网研究页标 2026.05，arXiv 编号 2605.30313 同月；联合署名。"
+        }
       ]
     },
     {
