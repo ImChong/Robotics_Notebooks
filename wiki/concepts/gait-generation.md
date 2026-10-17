@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, gait, CPG, rhythm, legged-robots, mpc]
 status: stable
-updated: 2026-09-29
+updated: 2026-10-18
 summary: "Gait Generation 研究步态时序和足端节律如何组织，是 locomotion 高层模式设计的重要模块。"
 ---
 
@@ -92,6 +92,12 @@ RL 策略通常不显式区分步态生成和策略执行——步态由奖励�
 - **接触奖励**：对期望接触模式给正奖励（legged_gym 里的 `feet_air_time` 奖励）
 - **节律惩罚**：对非规律步态给负奖励
 - **命令条件化**（Walk These Ways）：速度命令 → 策略自动选择对应步态
+
+---
+
+## 外骨骼中的人体步态相位估计
+
+腿式机器人的步态生成安排机器人自身的支撑/摆动时序；外骨骼中的人体步态相位估计则为助力时机提供周期状态信号，两者相关但不是同一个控制模块。针对地形变化的模式条件化振荡器案例见 [DA-AO：外骨骼辅助中的步态相位估计](../entities/paper-data-augmented-adaptive-oscillators.md)。
 
 ---
 
