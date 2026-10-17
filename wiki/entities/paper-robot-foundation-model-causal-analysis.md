@@ -70,6 +70,20 @@ sequenceDiagram
 - 真机：作者报告同一筛选思路可用于 π₀.₅ 真机部署。
 - 读法：计算量下降与成功率保持是模型/任务特定结果；不是对任意连接稀疏化方案的保证。
 
+## 与其他工作对比
+
+| 维度 | VLA 因果分析（本文） | [Depth-Wise Probing Driving VLA](./paper-depth-wise-probing-driving-vla.md) | [VLA Depth Decodability](./paper-vla-action-post-training-depth-decodability.md) | [Beyond Task Success](./paper-rcl-2606-01095-beyond-task-success-behavioral-and-representatio.md) |
+|------|------|------|------|------|
+| 诊断工具 | activation patching（因果干预） | 逐层探针 | 逐层探针 + 移除相关写入 | 行为 rollout 分析 + SAE 特征分析 |
+| 分析对象 | π₀.₅、MolmoAct2、MolmoBot 的 VLM→AE 条件连接 | 智驾 VLA 规划 token | VLM→VLA 动作后训练后的深度信息 | WAM 与 VLA |
+| 落地用途 | 裁剪条件连接：MolmoBot 3/36，FLOPs 最多 −33% | 学习式早读与剪层提速 | 修回被削弱的深度信息 | 模型无关的对比诊断 |
+| 评测 | 3,000 仿真 episode + π₀.₅ 真机部署 | Bench2Drive | 本库页未列 | 本库页未列 |
+
+- **相对 Depth-Wise Probing：** 两者都落到「减层 / 减连接提速」，但探针只说明信息可解码，patching 测的是对动作的因果影响；对象也从智驾换成操作 VLA。
+- **相对 VLA Depth Decodability：** 那篇用逐层诊断定位并修复后训练造成的信息损失，本文用因果诊断定位可裁掉的冗余连接。
+- **相对 Beyond Task Success：** 后者是比较 WAM 与 VLA 的诊断框架，不给出架构裁剪建议。
+- 后三页为索引级摘要，未核对原文实验表，数字不可横比。
+
 ## 结论
 
 **VLA 的条件信息对动作的因果作用集中在少数中后层连接，识别这条窄接口可在特定模型中换得明显计算节省而几乎不损失成功率。**

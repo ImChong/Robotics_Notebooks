@@ -78,6 +78,20 @@ flowchart TB
 
 **不适用**：2026-10-17 核查项目页与论文均未提供官方代码或数据链接，无可对齐的训练 / 推理入口，故不绘制运行时序图。
 
+## 与其他工作对比
+
+| 维度 | MEND（本文） | [Diffusion Policy](../methods/diffusion-policy.md) | [NoMaD](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) | [路径规划五范式](../comparisons/robot-path-planning-five-paradigms-taxonomy.md) |
+|------|------|------|------|------|
+| 生成 / 求解对象 | 离散联合动作序列（UAV 任务访问 + UGV 路径 + 充电会合） | 单机器人连续动作序列 | 单机器人导航动作（action diffusion） | 图搜索、采样、势场、MPC、RL 等路线分类 |
+| 「掩码」含义 | 掩码扩散的 token 掩码，按熵最低优先解掩码 | 无 | attention goal mask，切换 ImageGoal 与无目标探索 | 不适用 |
+| 硬约束处理 | 推理期 FOL 可行性指示函数把不可行动作概率置零 | 无显式逻辑约束 | 本库页未述 | 搜索 / 优化类可在求解中直接编码约束 |
+| 机队 | UAV + UGV 异构多机 | 单机 | 单机策略（训练数据来自多种机器人） | 按技术路线划分，不限机队 |
+
+- **相对 Diffusion Policy：** 同属生成式，但 MEND 在离散符号动作空间做掩码扩散，并把约束放在采样分布上；Diffusion Policy 生成连续控制动作，不带逻辑可行性过滤。
+- **相对 NoMaD：** 两者都用 mask，但 NoMaD 的 mask 是目标条件开关，MEND 的 mask 是生成过程本身的 token 掩码，机制不同。
+- **相对经典规划范式：** MEND 以 MIP 生成专家数据并作真值，报告 1.9%–5.95% 的质量差距换 14.5–472 倍加速，可读作学习式近似优化求解器。
+- 各文任务与指标完全不同，数字不可横比。
+
 ## 工程实践
 
 | 项 | 说明 |

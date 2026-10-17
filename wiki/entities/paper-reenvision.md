@@ -78,6 +78,19 @@ flowchart TB
 
 **不适用**：截至 2026-10-17 无官方仓库，论文仅承诺录用后公开，故无法对齐真实入口。
 
+## 与其他工作对比
+
+| 维度 | ReEnvision（本文） | [DeFI](../methods/defi-decoupled-dynamics-vla.md) | [Diffusion Policy](../methods/diffusion-policy.md) | [Receding horizon 执行](../concepts/receding-horizon-policy-execution.md) |
+|------|------|------|------|------|
+| 定位 | 执行期修复层：缓存动作块内选择性修复，严重偏离才整体重规划 | 策略学习：前向 / 逆动力学预训练 + 扩散适配器 | 扩散生成动作序列的策略 | 预测序列、执行前缀、用新观测重规划 |
+| 偏离处理 | RSSM 信念修订 + TCN 影响模型定位受影响动作 | 本库页未涉执行期修复 | 按固定前缀节奏重规划 | 固定节奏重规划或重叠融合 |
+| CALVIN ABC→D（ReEnvision 论文表） | 5 步 86.6%，平均长度 4.62 | 81.2%，4.51 | — | — |
+| 真机（ReEnvision 论文，ARX X5） | 平均 82.8% | — | 68.8% | — |
+
+- **相对 DeFI：** 论文摘录将 DeFI 列为骨干对照（L-CALVIN 10 步 44%）；ReEnvision 是执行期的修复机制，DeFI 是策略学习方法，二者回答的问题不同。
+- **相对 Diffusion Policy / receding horizon：** 后者按固定前缀长度整体重规划；ReEnvision 只改受影响动作，消融中整段后缀重生成 4.50 低于选择性修复 4.65。
+- 表中数字均取自 ReEnvision 论文；DeFI、Diffusion Policy 原文口径未逐条核对。
+
 ## 工程实践
 
 | 项 | 建议 |

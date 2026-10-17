@@ -73,6 +73,19 @@ flowchart TB
 
 **不适用**：截至 2026-10-17 项目页仅 "Code coming soon"，无可运行的官方实现。
 
+## 与其他工作对比
+
+| 维度 | RoboFQE（本文） | [Ctrl-World](./paper-ctrl-world.md) | [WorldGym](./paper-shenlan-wm-15-worldgym.md) | [SimplerEnv](./paper-simplerenv-real2sim-eval.md) |
+|------|------|------|------|------|
+| 评估方式 | 离线轨迹上拟合 Q（FQE），不做 rollout | 动作条件多视角视频 WM 中想象 rollout | WM 中 MC 模拟 | 对齐控制与视觉后的物理仿真 rollout |
+| 成功信号 | 终端成功标注器（可用 VLM 替代真值） | 本库页未述 | VLM 奖励 | 仿真内任务判定 |
+| 长 horizon 误差来源 | 不随 rollout 步数累积（论文主张），依赖数据覆盖 | 自回归生成，用位姿记忆稳住长时 rollout | 自回归 WM 生成 | 不涉及生成误差，受 sim–real gap 影响 |
+| SO-101 真机（RoboFQE 论文） | ARE 7.5%，r=+0.90 | ARE 10.3%，r=+0.49 | ARE 17.8%，r=+0.44 | 未在该文评测 |
+
+- **相对 Ctrl-World / WorldGym：** 二者都靠生成未来帧来评估，RoboFQE 只学一个 Q 函数，因而在 LIBERO-Long 上 ARE 5.63% 对世界模型 54–69%；代价是对离线数据覆盖与成功标注器误差敏感。
+- **相对 SimplerEnv：** SimplerEnv 仍需在仿真中跑新 rollout，换取物理一致性；RoboFQE 不需要仿真器，但只能评估离线数据覆盖到的状态分布。
+- 真机行数字来自 RoboFQE 论文同一设定；各文自报的相关性结果口径不同，不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -119,6 +132,7 @@ flowchart TB
 
 - [sim-vs-real 评测差距](../concepts/sim-vs-real-eval-gap.md) — 评估可信度语境
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 对照：rollout 式评估
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — RoboFQE 以离线价值估计替代部分 rollout，处在任务成功率层与 sim↔real 校准层之间
 - [在线与离线 RL](../comparisons/online-vs-offline-rl.md) — 离线价值学习背景
 - [LIBERO 基准](libero-benchmark.md) — 主要实验场
 - [CALVIN 基准](calvin-benchmark.md) — 长链任务

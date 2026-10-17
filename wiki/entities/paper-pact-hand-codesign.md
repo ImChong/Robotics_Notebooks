@@ -78,6 +78,19 @@ flowchart TB
 
 **不适用**：无官方代码，项目页的软件与 CAD 均为 "upon publication"（2026-10-17）。下表只给出论文的遥操作数据通路，非仓库时序：单 RGB 相机 + WiLoR 手姿估计（约 23 Hz）→ PACT 重定向器 → 手舵机；UR5e 臂由 GELLO 主手驱动。
 
+## 与其他工作对比
+
+| 维度 | PACT（本文） | [DexCap](./paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md) | [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) | [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) |
+|------|------|------|------|------|
+| 优化对象 | 手的几何参数 + 重定向器权重与阻尼，联合优化 | 固定 LEAP Hand，重定向不改硬件 | 固定灵巧手上的重定向参考 | 固定本体上的重定向轨迹 |
+| 对应目标 | 全指关键点（MCP / PIP / DIP / 指尖） | 指尖 IK | 手–物 interaction mesh 拓扑 | 动力学可行 + 接触意图保留 |
+| 是否用物体 / 物理 | 运动学 + 制造约束，不做物理仿真 | 点云 Diffusion Policy 学策略 | 距离加权 Laplacian + PPO 残差跟踪 | 并行物理仿真中的采样式轨迹优化 |
+| 开放状态 | CAD 与软件待发表后发布 | MIT 代码 + HF 数据 | 见该页 | 见该页 |
+
+- **相对 DexCap：** DexCap 在 LEAP Hand 上做指尖 IK；PACT 以 LEAP Hand 经同一 IK 管线为基线，全关键点 RMSE 12.82 对 3.90 mm，仅指尖消融为 23.66 mm，说明只对齐指尖会牺牲其余关节（DexCap 本身未在 PACT 中评测）。
+- **相对 TopoRetarget / SPIDER：** 二者在给定的手上改进重定向（接触拓扑 / 物理可行性）；PACT 改的是手本身，属于互补的上游环节。
+- 各文任务与指标不同，除 PACT 论文内的 LEAP 基线外不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

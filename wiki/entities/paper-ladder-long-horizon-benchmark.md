@@ -73,6 +73,19 @@ flowchart TB
 
 **不适用**：项目页列出的 GitHub 仓库在 2026-10-17 核查时返回 404，无法确认可运行入口，不对其目录结构做推断。
 
+## 与其他工作对比
+
+| 维度 | LADDER（本文） | [SimplerEnv](./paper-simplerenv-real2sim-eval.md) | [RoboLab](./robolab.md) | [BATON](./paper-baton-long-horizon-manipulation.md) |
+|------|------|------|------|------|
+| 定位 | 长程基准：同一环境内子目标数 1–10 作唯一变量 | real-to-sim 评测，验证仿真与真机分数相关 | Isaac Lab 高保真评测，RoboLab-120 任务库 | 长程方法：冻结 VLA + LLM 规划 + transition-aware 记忆 |
+| 任务长度 | 1–10 子目标，145 任务 | 本库页未强调长程 | 平均 2.02 子任务 / 任务 | RoboMemArena 长程记忆任务 |
+| 本体 | WidowX、Franka | Google Robot、Bridge WidowX | 默认 DROID 形态单臂 Franka | 本库页未列 |
+| sim–real 证据 | 两种本体上仿真与真机系统排序一致（系统数少） | 约 1500 episode paired eval，Pearson 强相关 | 与 RoboArena 真机排名 Spearman ρ=0.94 | 不适用（方法论文） |
+
+- **相对 SimplerEnv / RoboLab：** LADDER 的 SimplerEnv-Long、RoboLab-Long 套件从命名看对应这两个评测环境的长程版本；后两者主要回答「仿真能否代理真机排序」，LADDER 回答「horizon 增长时成功率掉多快、瓶颈在规划还是执行」。
+- **相对 BATON：** BATON 是靠编排与记忆提升长程成功率的方法；LADDER 的结果（低层 85.4% → 0%，编排后最高约 62%）提示这类编排方法的上限受低层执行制约，可作其评测场。
+- 各基准的任务集、本体与成功判定不同，数字不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -111,6 +124,7 @@ flowchart TB
 
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 基准构建背景
 - [sim-vs-real 评测差距](../concepts/sim-vs-real-eval-gap.md) — 仿真与真机排序一致性
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — LADDER 属「策略任务成功率」层的长程基准，其 sim↔real 排序证据对应第四层校准
 - [分层 RL](../methods/hierarchical-reinforcement-learning.md) — 编排与低层分工
 - [VLA](../methods/vla.md) — 低层学习策略所属范式
 - [BATON 长程操作](paper-baton-long-horizon-manipulation.md) — 另一条长程操作工作
