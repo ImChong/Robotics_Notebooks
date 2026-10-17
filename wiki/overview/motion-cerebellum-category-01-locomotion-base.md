@@ -49,6 +49,7 @@ sources:
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)
+- [LejuBFM 通用小脑运控基座](../entities/lejubfm-bfm.md) — 乐聚公开的 Roban 2.2 动作跟踪部署基座
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 
 ## 参考来源
