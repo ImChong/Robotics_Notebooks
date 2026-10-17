@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-17] ingest | sources/blogs/wechat_embodied_station_robot_36_papers_2026-10-17.md — 具身智能小站 36 篇论文逐篇建独立详情节点（30 新建、6 沿用），含开源核查与技术地图索引
+
 ## [2026-10-17] ingest | SANDO 动态未知环境安全规划
 
 - 归档 arXiv v3、作者项目页与 MIT ACL 官方代码；代码已开源，README 提供 ROS 2 Humble 仿真 / 硬件入口，并依赖 Gurobi WLS Academic license。
