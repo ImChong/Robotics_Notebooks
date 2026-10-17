@@ -142,6 +142,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Answer with HTML](./answer-me-with-html.md) — Markdown 草稿到可离线阅读的单页解释页
+
 - [Superpowers（obra）](superpowers-obra.md) — 子代理 + worktree + 强制 TDD 管线
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量 grill/TDD/CONTEXT 组合
 - [Open Code Review（Alibaba OCR）](open-code-review.md) — diff 级评审 CLI
