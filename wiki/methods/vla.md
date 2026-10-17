@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-17
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../entities/paper-viola-human-data-control.md
@@ -591,6 +591,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Discrete Forcing](../entities/paper-discrete-forcing.md) — 以离散 token 先定动作结构、再用连续 flow refinement 输出高精度动作；LIBERO 上两次 action-expert 前向达到 97.6%。
 - [AI 架构地图](../overview/ai-architecture-map.md) — VLA 在六支函数族中的决策层位置
 - [2026-10-15 具身新论文 31 篇技术地图索引](../overview/embodied-papers-2026-10-15-31-digest-map.md) — 其中多篇 VLA 适配、恢复与加速论文的入口
+- [2026-10-17 具身新论文 36 篇技术地图索引](../overview/embodied-papers-2026-10-17-36-digest-map.md) — 纠错学习、WAM、接触操作与导航等 36 篇论文的独立详情入口
 - [人形认知可靠性鸿沟](../concepts/humanoid-cognitive-reliability-gap.md) — VLA 已会抓 vs 仍缺情境常识、长时记忆与「暂停优先」
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) — VLA 常居「大脑层」；与 MPC/WBC、反射安全链的分工
 - [NeuroVLA](../entities/paper-neurovla.md) — 皮层–小脑–脊髓式脑启发 VLA（AlphaBrain 开源）
