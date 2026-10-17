@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-17
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
@@ -110,6 +110,7 @@ flowchart TB
 
 - [VLA](../methods/vla.md)
 - [EgoScale](../methods/egoscale.md) — 人视频规模化的另一条对齐路径
+- [KODA](./paper-koda-egocentric-vla.md) — 跨控制器对齐人类第一视角示范的人形 VLA 数据
 - [WiLoR](../methods/wilor.md) — Path B 手估计
 - [RoboTwin 2.0](./robotwin.md) — 解耦评测宿主
 - [EgoVerse](./paper-egoverse.md) — 954 h 源之一
