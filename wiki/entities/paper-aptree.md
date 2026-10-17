@@ -100,6 +100,20 @@ sequenceDiagram
 - **复现路径（README）：** 先把 `enhsp.jar` 放入 `APTreeExecutionEngine/python_service/`，再 `docker build` 与 `docker run`，或 `docker compose up --build`。
 - 仓库自带 `DemonstratorFinal.bt` 与 `DemonstratorFaults.json`（用途为推测：演示模型与注入故障，未核实）。
 
+## 与其他工作对比
+
+| 维度 | APTree（本文） | [LLM+P](./paper-llm-p.md) | [硬件感知 LLM-VLM 规划](./paper-hardware-aware-llm-vlm-zero-shot-task-planning.md) | [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) |
+|------|------|------|------|------|
+| 任务模型来源 | 实践者用领域 DSL 编写，设计期做类型 / 结构 / 逻辑校验 | LLM 把任务写成 PDDL 问题 | LLM 输出符号任务，VLM 确认语义 | 人工编排 BT 任务图（XML / 可视化） |
+| 求解 / 执行核心 | 运行时组合 ENHSP、Metric-FF、LAMA-First 三个符号规划器 | 经典 PDDL 符号规划器 | 确定性模块处理坐标、抓取、碰撞与可达性 | VLA 在推理相位内输出连续动作 chunk |
+| 行为树角色 | 扩展 BT 元模型承载模块化计划，出错只替换受影响模块 | 不涉及 | 不涉及 | BT 负责策略加载 / 暂停 / 复位等宏流程 |
+| 验证场景 | 建筑预制展亭案例，1,149 个动作节点 | 原文 PDDL 任务（本库为索引级页） | Isaac Sim FR3 数字孪生 | 部署编排模式，非单篇评测 |
+
+- **相对 LLM+P：** 二者都把求解交给符号规划器保证可行性，但 LLM+P 由 LLM 写 PDDL，APTree 由人写 DSL 并在设计期校验，且多规划器分层调用。
+- **相对硬件感知 LLM-VLM 规划：** 后者用语言 / 视觉模型做零样本任务分解，APTree 不含学习组件，靠领域建模换取可校验性与局部重规划。
+- **相对行为树 × VLA 编排：** 同样用 BT 做执行骨架，但 BT×VLA 的叶子是学习式连续技能，APTree 的子树来自符号规划器且可在运行时局部重生成。
+- 各文场景与指标不同（APTree 报节点变化率与错误检出率），数字不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

@@ -83,6 +83,20 @@ flowchart TB
 
 **不适用**：截至 2026-10-17 项目页写 "Code coming soon"，论文与页面均无仓库链接，没有可对齐的运行入口。
 
+## 与其他工作对比
+
+| 维度 | D3WM（本文） | [IRASim](./paper-irasim.md) | [iVideoGPT](./paper-sa-2405-15223-ivideogpt-interactive-videogpts-are-scalable-wor.md) | [WorldGym](./paper-shenlan-wm-15-worldgym.md) |
+|------|------|------|------|------|
+| 生成方式 | 确定性 Transformer 出均值帧 + 方差图，方差门控 ControlNet 扩散 | DiT 潜空间扩散 + 帧级动作条件 | 交互式 VideoGPT（自回归） | 世界模型作策略评估环境，VLM 奖励 + MC 模拟 |
+| 确定 / 随机内容处理 | 显式学逐像素不确定性，只在不确定区域采样 | 统一由扩散生成 | 本库页未展开 | 不涉及 |
+| 下游用途 | 候选动作排序、冻结策略一致性、PushT 规划 | 策略评估、模型规划、可控合成 | 本文 Real PushT 基线 | 策略排名评估 |
+| 开源 | 代码 coming soon | Apache-2.0 已开源含数据 / checkpoints | 本库页未展开 | 已开源（本库归类） |
+
+- **相对 IRASim：** IRASim 用帧级动作条件端到端扩散生成；D3WM 把确定部分锚定在回归预测上，候选验证 K=32 的 MSE（.022 对 .030）更优，但冻结 Octo 策略一致性 ADE 不及 IRASim（1.063 对 0.846）。
+- **相对 iVideoGPT：** 在本文 Real PushT 设置下 D3WM 的 ADE 为 12.864，iVideoGPT 为 45.134。
+- **相对 WorldGym：** 本文在候选选择任务中把 WorldGym 作为基线（K=32 MSE .063），WorldGym 本身定位是策略评估靶场而非帧预测模型。
+- 上述数字均来自 D3WM 论文的同一设置；IRASim 论文自报的 Push-T IoU 等指标口径不同，不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

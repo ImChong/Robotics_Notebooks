@@ -103,6 +103,20 @@ sequenceDiagram
 - **复现路径：** `pip install torch` → `pip install -e .`（Python 3.10+）→ 按 README 调用上述接口；策略检查点需用户自备路径 `policy.pt`。
 - 训练 / 部署流水线、Isaac Lab 环境与奖励配置未发布，无法复现论文主结果。
 
+## 与其他工作对比
+
+| 维度 | GLST（本文） | [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md) | [HUMEMBR](./paper-humembr.md) | [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) |
+|------|------|------|------|------|
+| 记忆形式 | 全局 / 局部空间 + 长 / 短期时间四块分解 | 在 LSTM/GRU 上加空间变换项的统一循环记忆 | 人中心长时程记忆 + LLM 工具检索 | 依具体模块而定 |
+| 任务 | 在线链式目标（目标可重定向 / 新增） | 无地图长程点目标导航 | PersonEQA 与 Spot 例行条件导航 | VLN → 导航 → RL 运动 → PD 的分层系统 |
+| 观测 / 记忆内容 | 局部高度图 + 可见性掩码 + 位姿 | 单目前向深度 | 多日人员例行记录（caption），身份感知 | — |
+| 真机 | Spot + Jetson Thor，36 次 86.1% | B2W 零样本跨办公室 / 森林 | Spot + GraphNav 路点导航 | 课程集成范例 RoamerX + MATRiX |
+
+- **相对 SRU：** SRU 用一个增强的循环单元承担全部记忆，GLST 认为统一记忆会在探索与回访间冲突而将其拆分；在本文设置下 GLST 以约一半参数（5.69M 对 11.8M）取得 SR 79.2% 对 64.2%。
+- **相对 HUMEMBR：** 二者都在 Spot 上处理长时程记忆，但 HUMEMBR 是语义记忆 + LLM 检索，GLST 是 RL 策略内部的几何 / 时间潜在记忆。
+- **相对分层四足导航栈：** GLST 同样只输出机体系速度指令并依赖冻结低层控制器，属于该栈中的导航层。
+- SRU 原文的 +23.5% 与本文表中 SRU 数字来自不同任务设置，不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

@@ -98,6 +98,20 @@ sequenceDiagram
 
 这些数字不是同一个 benchmark 的综合结论：准确率、请求延迟、分布校准和外部模型交接各有独立样本与定义。速度对比也只对应论文固定的请求形态和 RTX 4090 测量条件。
 
+## 与其他工作对比
+
+| 维度 | Intern-Decision（本文） | [Jev](../entities/typesafe-jev.md) | [Valen](../entities/valen.md) | [SayCan](../methods/saycan.md) |
+|------|------|------|------|------|
+| 决策形式 | JSON 骨架中的 `<decision>` 标记，一次因果前向输出 choice / score / noul 及概率 | schema 约束的类型安全多字段决策 + 校准概率，并行采样 | Choice / Noul / Score 概率输出 | LLM 生成子任务候选，价值函数估计可行性 |
+| 模型与输入 | 微调 Qwen3.5 语言主干（0.8B / 2B / 4B），冻结视觉塔；文本 + 可选图片 | 早期访问 API，非结构化 state 输入 | Qwen3.5-2B + 共享决策头；文本 / 图 / 视频 | 语言模型 + 机器人技能价值函数 |
+| 开放程度 | 代码 Apache-2.0，权重单独发布，训练数据未公开 | SDK / Skills MIT 开源，权重未公开 | 代码、权重、100k 数据已开源 | 本库页为方法页 |
+| 机器人定位 | 上层有限候选选择 / 状态判断，不输出连续动作 | 毫秒级条件分支、路由与 guardrail | 本库页以 Sokoban 单步等决策任务评测 | 直接用于机器人技能选择 |
+
+- **相对 Jev：** 二者输出形态相同（typed 决策 + 概率），本文以 Jev v1.13.0 为主要对照：七项准确率 90.02% 对 88.74%，固定请求延迟 44.16 ms 对 109.70 ms，但 Intern-Decision 提供可自托管权重。
+- **相对 Valen：** 同样基于 Qwen3.5 的开源多模态 System One 路线；Intern-Decision 的区别在于把多个字段嵌进 JSON 骨架、用掩码式自回归目标在一次前向中联合评分。
+- **相对 SayCan：** SayCan 用可行性价值函数把候选落地到机器人技能，Intern-Decision 只给出候选概率，落地与安全需外部模块承担。
+- 与 Jev 的数字来自本文各自独立的协议（准确率套件、RTX 4090 单次请求、96 条校准 pilot）；Valen 的 Sokoban 结果为其自报口径，不可横比。
+
 ## 工程实践
 
 - **接口与后端：** 仓库提供 Hugging Face 原生推理和 XTuner 后端、训练脚本、benchmark scoring、温度校准与浏览器 demo。
@@ -126,6 +140,7 @@ sequenceDiagram
 ## 关联页面
 
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 将决策模块放入完整任务、环境终态与 grader 的评测闭环。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 决策模块的 choice/score 准确率属「具身大脑认知」层，须再接任务成功率层验证闭环效果。
 - [多模态基础](../concepts/multimodality-basics.md) — 视觉与语言输入的建模背景。
 - [视觉-语言-动作模型（VLA）](../methods/vla.md) — 对照直接生成机器人动作的策略路线。
 

@@ -83,6 +83,20 @@ flowchart LR
 
 **不适用**：截至 2026-10-17 仓库仅含 README、`docs/` 下论文 PDF 与示意图，无评测或智能体代码，没有可对齐的运行入口。待代码发布后补此节。
 
+## 与其他工作对比
+
+| 维度 | I2O2I-Nav（本文） | [HM3D-OVON](./paper-hm3d-ovon.md) | [VLN-CE](./paper-vln-02-vln-ce.md) | [LightNav-0](./paper-lightnav-0.md) |
+|------|------|------|------|------|
+| 类型 | 基准 + 协调层智能体（MODULAR-Agent） | 开放词汇目标导航设定 | 连续环境 VLN 基准 | 单一导航策略（VLM 空间意图 + 动作 tokenizer） |
+| 任务跨度 | 室内 → 室外 → 室内 → 找物四阶段，阶段按真实终点接续 | 单阶段室内找物 | 单段指令跟随 | 在 10 个导航仿真上评测 |
+| 场景 / 仿真 | 20 个真实复合场景，3DGS + Isaac Sim 运动学智能体 | HM3D 室内场景 | Habitat 连续 3D 环境 | 2K+ 场景数据，跨本体零样本真机 |
+| 主要指标 | FSR / CSR / 条件完成率 C_k | 成功率等单阶段指标 | 单阶段导航指标 | 单目成功率 |
+
+- **相对 HM3D-OVON：** OVON 只是 I2O2I-Nav 的最后一个阶段；本文显示即便有智能体协调，进入建筑后的 OVON 条件成功率仍仅约 21%。
+- **相对 VLN-CE：** 二者都在连续空间评测，但 VLN-CE 测单段指令跟随，I2O2I-Nav 不重置仿真器、把上一阶段误差带入下一阶段。
+- **相对 LightNav-0：** LightNav-0 是被比较的冻结策略之一，I2O2I-Nav 不训练新策略，而是比较协调层的完成验证、交接与恢复逻辑。
+- 各基准场景、阶段定义与成功判定不同，单阶段成功率与本文 FSR 不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -119,6 +133,7 @@ flowchart LR
 
 - [视觉语言导航（VLN）](../tasks/vision-language-navigation.md) — 指令驱动导航的任务背景
 - [零样本物体导航](../tasks/zero-shot-object-navigation.md) — 与 OVON 阶段相关
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — I2O2I-Nav 属「策略任务成功率」层的长程复合基准；阶段接续让单阶段成功率无法直接外推到全任务
 - [Isaac Sim](isaac-sim.md) — 评测所用仿真平台
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — 分层协调的工程对照
 
