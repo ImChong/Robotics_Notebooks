@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-17
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -21,7 +21,9 @@ related:
   - ../entities/generalist-ai-robotics.md
   - ../entities/beingbeyond.md
   - ../entities/rhoda-ai.md
+  - ../entities/motphys.md
 sources:
+  - ../../sources/sites/motphys.md
   - ../../sources/sites/rhoda-ai.md
   - ../../sources/sites/amazon-far.md
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
@@ -128,6 +130,7 @@ flowchart TB
 | [Rhoda AI](../entities/rhoda-ai.md) | ● |  |  | [DVA](../entities/rhoda-direct-video-action.md) → [网络视频预训练 scaling](../entities/rhoda-scaling-web-video-pretraining.md) → [触觉 + DVA](../entities/rhoda-dva-tactile-sensing.md) |
 | [Simate 硅基伙伴](../entities/simate.md) | ● |  |  | [Simate-beta](../entities/simate-beta.md)、Sinfra / Sipai / AutoResearch / RoboScientist |
 | [Aether AI](../entities/aether-ai.md) | ● | ● |  | [CausalWM](../entities/paper-causalwm.md)、[CD-LAM](../entities/paper-cd-lam.md)、[RSIAgent](../entities/aether-rsiagent.md)、[CRIS-0](../entities/aether-cris-0.md) |
+| [Motphys 谋先飞](../entities/motphys.md) |  |  | ○ | [MotrixSim / MotrixLab](../entities/motrix.md)、[GS-Playground](../entities/gs-playground.md)、[UniLab](../entities/unilab.md) |
 | [光轮智能 Lightwheel](../entities/lightwheel.md) |  | ○ | ● | [SimReady](../entities/lightwheel-simready.md) / [SimReadyGen](../entities/lightwheel-simreadygen.md)、[RoboFinals](../entities/lightwheel-robofinals.md)、[LW-BenchHub](../entities/cn-os-lw-benchhub.md)、[EgoSuite](../entities/lightwheel-egosuite.md) |
 | [西湖机器人 Westlake Robotics](../entities/westlake-robotics.md) | ○ | ● | ● | [GAE](../entities/paper-gae-general-action-expert.md)、[TITAN O1](../entities/westlake-titan-o1.md)、[傲天 U1](../entities/westlake-aotian-u1.md)、LM-VLM |
 | [源策未来 Archon Robotics](../entities/archon-robotics.md) | ○ | ● | ● | [Whole-Body Intelligence](../entities/archon-whole-body-intelligence.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
@@ -146,6 +149,8 @@ RoboParty 的 ○ 对应 Lab 联署 [INTACT](../entities/paper-intact.md)世界�
 RAI Institute 是研究机构，本轮主视角为全身技能、动态操作与仿真迁移。官网也研究物理交互基础模型；不据此将已收录项目判为通用 VLA / WAM，或视作统一人形整机产品，见[机构与路线](../entities/rai-institute.md)。
 
 Amazon FAR 是 Amazon 内部的 Frontier AI & Robotics 研究与工程团队；按企业团队收录到公司路线。当前代表作品重点是全身数据、遥操作与感知控制，基础模型方向见官方招聘说明；不据此认定已公开统一 WAM 或完整人形产品。2024 年仅用作团队扩充事件的排序锚点，确切成立日未确认，见[官方来源核查](../../sources/sites/amazon-far.md)。
+
+Motphys 是仿真与训练基础设施公司，不训练机器人基础模型，三列均不填 ●：③ 记 ○ 仅表示其仿真引擎与训练框架服务于全身控制 RL 训练。成立时间取 36氪报道的 2020 年 10 月（官网关于页只写「自 2021 年起」）；GS-Playground 与 UniLab 为多机构联合署名，不算公司单独成果（[官网归档](../../sources/sites/motphys.md)）。
 
 Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频预训练 + 逆动力学模型把预测画面转成动作」的闭环视频预测控制（DVA），依次给出数据效率、真机 scaling 与触觉扩展；公开材料未发布整机或独立全身控制，不据此填 ② / ③。成立时间官方未写，只在新闻稿称公开亮相前隐身 18 个月，2024 年仅为排序锚点；4.5 亿美元 A 轮为公司公告，17 亿美元估值只见媒体标题；数字均为公司自报（[官网归档](../../sources/sites/rhoda-ai.md)）。
 
@@ -197,6 +202,7 @@ Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频�
 | Rhoda AI | ❌ | ❌ | ❌ | [DVA](../entities/rhoda-direct-video-action.md) / [scaling](../entities/rhoda-scaling-web-video-pretraining.md) / [触觉](../entities/rhoda-dva-tactile-sensing.md) 三篇官网博文及研究页、新闻稿均未列 GitHub / HF / arXiv 与数据（[核查](../../sources/sites/rhoda-ai.md)）；参数量、训练数据规模也未公开 |
 | Simate | ❌ | ❌ | ❌ | [Simate-beta](../entities/simate-beta.md) 无技术报告、代码与权重；Sinfra / AutoResearch 为申请制内测，公司称将分阶段开源 |
 | Aether AI | 🟡 | 🟡 | ❌ | [CausalWM](../entities/paper-causalwm.md) 推理代码与门控权重、[CD-LAM](../entities/paper-cd-lam.md) 代码与 2B 权重、[RSIAgent](../entities/aether-rsiagent.md) 代码公开；训练代码、数据与 [CRIS-0](../entities/aether-cris-0.md) 未公开 |
+| Motphys | ❌ | ❌ | ❓ | 官网只给 [GitHub 组织](https://github.com/Motphys)链接，未说明开源项目与许可证；MotrixLab 仓库已归档，MotrixSim 核心引擎开放状态未确认；GS-Playground / UniLab 为多机构联合论文（[核查](../../sources/sites/motphys.md)） |
 | 光轮智能 | 🟡 | ❌ | 🟡 | [LW-BenchHub](../entities/cn-os-lw-benchhub.md)、LeIsaac、AutoDataGen、EgoSuite DevKit 开源（Apache-2.0）；部分 SimReady / YCB 资产 CC BY-NC；[EgoSuite-Open100K](../entities/egosuite-open100k.md) 部分数据门控开放；完整资产库、RoboFinals 平台为商业产品 |
 | 西湖机器人 | ❌ | ❌ | ❌ | [GAE](../entities/paper-gae-general-action-expert.md) 为付费闭源软件（V1.2.0，加密狗授权，仅宇树本体包），论文无代码；GitHub 仅有客户端 API 文档仓 |
 | 源策未来 | 🟡 | ❌ | ❌ | 公司 GitHub / HF 组织尚无公开仓库；[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) 代码在 OpenDriveLab 组织下开源，EgoHumanoid-V2 代码待发布 |

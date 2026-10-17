@@ -9,6 +9,9 @@ related:
   - ./botworld.md
   - ./pollen-microduck.md
   - ../tasks/microduck-ball-balance.md
+sources:
+  - ../../sources/repos/motphys-motrix.md
+  - ../../sources/sites/motphys.md
 ---
 
 # Motrix (Motphys 机器人仿真与训练平台)
