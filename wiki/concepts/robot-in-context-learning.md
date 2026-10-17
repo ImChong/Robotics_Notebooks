@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-17
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md
@@ -257,6 +257,7 @@ MemoryVLA、[MemER](../entities/paper-memer.md)、ContextVLA、MEM、HiMe 等解
 - [LocoFormer（待深读）](../entities/paper-locoformer.md) — Skild 系跨 episode TXL 运动适应；S1 的技术前序
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 选型链在 VLA 层给出 I/O 边界与时延约束；ICL 是同一层的 **部署期适应旋钮**，长上下文直接吃掉该链关心的每步推理预算
 - [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 示范抽象越高越易归纳，但接触力信息正是这条链所需；ICL 上下文用关键点/图节点表示时，力与接触细节被丢在这里
+- [CTP](../entities/paper-ctp.md) — 单条示范的运动与接触编码为有序提示 token、冻结策略参数，在线用接触反馈检索；接触丰富任务上的示范条件化路线
 
 ## 推荐继续阅读
 

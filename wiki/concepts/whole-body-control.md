@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-17
 related:
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
@@ -219,6 +219,7 @@ print("joint acceleration command:", qdd_star)
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无 F/T 残差力同时条件化 VLA 与轮足底盘补偿（arXiv:2609.03889；未开源）
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — generalist→specialist→DAgger 迭代蒸馏 + 统一速度/高度/pitch 指令，单策略跨 H1/G1/T1/N1/Adam（ICRA 2026；未开源）
 - [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；公开 MuJoCo 评测代码与 checkpoint，训练/真机部署未开放）
+- [TRACE（人形跨形态迁移）](../entities/paper-trace-humanoid-transfer.md) — 预训练全身控制器（SONIC）跨本体迁移的低成本路线：G1→H2，PHUMA 运动成功率 96.08%（作者报告）
 
 ## 继续深挖入口
 

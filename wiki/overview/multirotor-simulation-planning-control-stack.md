@@ -2,7 +2,7 @@
 type: overview
 tags: [uav, multirotor, px4, simulation, planning, swarm, mavlink, reinforcement-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-17
 related:
   - ../entities/paper-swarmnxt.md
   - ../entities/betaflight.md
@@ -282,6 +282,7 @@ flowchart TB
 - [野外微型飞行机器人蜂群](../entities/paper-swarm-micro-flying-robots-in-the-wild.md)
 - [SwarmNxt（开源软硬件蜂群平台）](../entities/paper-swarmnxt.md)
 - [EuRoC MAV 数据集](../entities/euroc-mav-datasets.md)
+- [SANDO](../entities/paper-sando.md) — 动态未知环境的四旋翼规划：时空安全飞行走廊 + 硬约束 MIQP；形式保证依赖有界障碍运动等假设
 
 
 ## 推荐继续阅读

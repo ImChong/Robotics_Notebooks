@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-17
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ./retrieval-augmented-generation.md
@@ -188,6 +188,7 @@ flowchart LR
 - [World Action Models（WAM）](./world-action-models.md)
 - [递归自改进](./recursive-self-improvement.md)
 - [schema/ingest-workflow.md](../../schema/ingest-workflow.md)
+- [SEAR](../entities/paper-sear.md) — 用对照组检验 LLM 智能体在机器人上是真学习还是多试几次，覆盖写控制代码 / 实时决策 / 微调 VLA 三种模式
 
 ## 推荐继续阅读
 
