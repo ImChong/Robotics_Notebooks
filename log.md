@@ -195,6 +195,11 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | 归档 Alex Wa 的前沿模型训练方法综述，保留其训练流水线与后训练参考；暂不单独升格为 wiki
+
+- 来源：`sources/blogs/alex_wa_frontier_model_training_methodologies_2026-01-31.md`
+- 处理：归纳架构、稳定性、数据配比、预训练与后训练要点；说明向机器人基础模型迁移时仍需验证具身数据和闭环部署约束。
+
 ## [2026-10-17] ingest | Claude Code 团队代码评审：补充 Agentic Coding 软件工程页
 
 - 归档 Anthropic 工程博客，提炼 PR 前验证、AI 与安全评审、风险分级人工审批、渐进发布和评审收敛机制。
