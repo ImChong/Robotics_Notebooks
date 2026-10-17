@@ -195,6 +195,12 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | WorldScape R²SI — 记录技能修订与 WSP 更新的报道型系统节点
+
+- 新增 R²SI wiki 实体页与媒体报道、Manifold AI 官网、RoboDojo 官方榜单核查归档。
+- 将案例互链到 WorldScape Policy 2.0、RoboDojo 与 RSI 纵深路线。
+- 开放状态：未找到 R²SI 独立论文、代码或权重；RoboDojo 第一名及步数结果按报道口径记录，未独立核实。
+
 ## [2026-10-17] ingest | sources/repos/awesome-embodied-self-improvement.md — 归档机器人 / Physical AI 部署后自我改进清单，并将 L1–L4 可执行能力判据接入 RSI 概念页
 
 - **范围：** 45 项具身自改进工作、3 个 benchmark、4 篇综述；区分 episode 内反馈、持久能力优化、技能扩张和改进机制演化。
