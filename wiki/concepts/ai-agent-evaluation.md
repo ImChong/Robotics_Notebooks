@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-10-09
+updated: 2026-10-17
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -16,6 +16,7 @@ related:
   - ../methods/aspire.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../entities/agentic-design-patterns.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 sources:
@@ -92,6 +93,7 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 | Conversational | 状态检查 + 轮数 + LLM rubric；常需 **用户模拟** | τ-Bench、τ2-Bench |
 | Research | Groundedness、coverage、来源质量 | BrowseComp 类；开放合成需专家校准 |
 | Computer use | 终态 URL/文件/OS artifact | WebArena、OSWorld；DOM vs 截图 tradeoff |
+| 结构化决策 | 候选标签 / 动作的概率与终态任务分数 | [Intern-Decision](../entities/paper-intern-decision.md) 将有限候选决策压成一次前向的字段概率；它是决策组件，不替代完整 agent harness |
 
 ### 非确定性指标
 
@@ -146,6 +148,7 @@ flowchart TD
 - [RLE-Bench](../entities/rle-bench.md) — 机器人学习向 coding agent eval  
 - [PPTBench](../entities/paper-pptbench.md) — 科学流程图→可编辑 PPTX 的视觉 coding 重建榜（arXiv:2609.29718）  
 - [Agentic Coding 软件工程基础](./agentic-coding-software-fundamentals.md) — eval 不替代 SE 取舍  
+- [Agentic Design Patterns](../entities/agentic-design-patterns.md) — 书中评测与监控模式需落实到 task、grader 和真实 outcome
 
 ## 推荐继续阅读
 
