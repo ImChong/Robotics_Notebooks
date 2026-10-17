@@ -16,6 +16,7 @@ related:
   - ../methods/aspire.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../entities/agentic-design-patterns.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 sources:
@@ -147,6 +148,7 @@ flowchart TD
 - [RLE-Bench](../entities/rle-bench.md) — 机器人学习向 coding agent eval  
 - [PPTBench](../entities/paper-pptbench.md) — 科学流程图→可编辑 PPTX 的视觉 coding 重建榜（arXiv:2609.29718）  
 - [Agentic Coding 软件工程基础](./agentic-coding-software-fundamentals.md) — eval 不替代 SE 取舍  
+- [Agentic Design Patterns](../entities/agentic-design-patterns.md) — 书中评测与监控模式需落实到 task、grader 和真实 outcome
 
 ## 推荐继续阅读
 

@@ -31,6 +31,7 @@ related:
   - ../entities/nvidia-open-agent-safety-platform.md
   - ../entities/codegraph.md
   - ../entities/paper-agent-friendly-by-design.md
+  - ../entities/agentic-design-patterns.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
@@ -139,6 +140,7 @@ Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公
 - [Archify](../entities/archify.md) — 把已决定的服务边界 / 数据流画成可校验 HTML；不替代本页的架构取舍
 - [Birdview](../entities/birdview.md) — 改码前先 map 仓库模块与计划 scope；不替代 diff 或架构判断本身
 - [Superpowers（obra）](../entities/superpowers-obra.md) — brainstorm → worktree → TDD → 评审的代理交付管线
+- [Agentic Design Patterns](../entities/agentic-design-patterns.md) — 通用 agent 模式目录及 coding agents 附录；不是软件工程验证的替代品
 - [NVIDIA OpenShell](../entities/nvidia-openshell.md) — 带外沙箱与 YAML 策略；与 prompt 级「安全可靠」互补
 - [CodeGraph](../entities/codegraph.md) — 通过本地代码关系图向 coding agent 提供符号上下文与变更影响线索；静态图不能替代测试与运行时核验
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 有 agent 仍要先做 reset/verify 环境工程
