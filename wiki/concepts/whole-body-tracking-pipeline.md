@@ -20,7 +20,7 @@ related:
   - ../entities/paper-gmt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
-  - ../entities/paper-trace-cross-embodiment-bfm.md
+  - ../entities/paper-trace-humanoid-transfer.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-omg-omni-modal-humanoid-control.md
@@ -43,7 +43,7 @@ sources:
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
-  - ../../sources/papers/trace_arxiv_2610_17999.md
+  - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md
