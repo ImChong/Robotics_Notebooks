@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab, zju]
 status: complete
-updated: 2026-09-25
+updated: 2026-10-17
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -12,6 +12,7 @@ related:
   - ./airsim.md
   - ./paper-mighty-hermite-spline-trajectory-planning.md
   - ./paper-flap-fov-active-perception-3d-navigation.md
+  - ./paper-sando.md
 sources:
   - ../../sources/repos/ego_planner_swarm.md
 summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器：ESDF 地图 + B-spline 优化，输出可对接 PX4 Offboard 的位置/速度设定点。"
@@ -52,6 +53,7 @@ summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器�
 - **局限：极端动态障碍** — 需额外安全层（限速、禁飞区、人工接管）。
 - **对照：[MIGHTY](./paper-mighty-hermite-spline-trajectory-planning.md)** — 同层软约束 UAV 规划器，用 **Hermite 联合时空优化** 在论文 benchmark 中报告更短飞行/求解时间；EGO 优势在 **ROS 1/2 生态与 swarm 扩展**。
 - **对照：[FLAP](./paper-flap-fov-active-perception-3d-navigation.md)** — 同机构（ZJU）**无先验地图** 路线，把 **FOV 主动感知** 嵌入 MINCO 轨迹优化；EGO 不显式优化传感器可见性，FLAP 侧重窄 FOV 与竖向机动安全。
+- **对照：[SANDO](./paper-sando.md)** — 显式追踪动态障碍并以 STSFC + 硬约束 MIQP 做连续时间避碰分析；EGO 的核心路线仍是 ESDF + B-spline 快速局部规划。两者的安全保证和评测场景不能仅凭成功率横比。
 
 ## 参考来源
 
@@ -65,9 +67,9 @@ summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器�
 - [MAVSDK](./mavsdk.md)
 - [MIGHTY（Hermite 样条规划 · RA-L 2026）](./paper-mighty-hermite-spline-trajectory-planning.md)
 - [FLAP（FOV 主动感知 · 无先验地图 3D 导航）](./paper-flap-fov-active-perception-3d-navigation.md)
+- [SANDO](./paper-sando.md) — 动态未知环境下的时空安全走廊规划
 - [野外微型飞行机器人蜂群（Science Robotics 2022）](./paper-swarm-micro-flying-robots-in-the-wild.md)
 - [EuRoC MAV 数据集](./euroc-mav-datasets.md)
-
 
 ## 推荐继续阅读
 
