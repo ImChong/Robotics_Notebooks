@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-14
+updated: 2026-10-17
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
@@ -35,6 +35,7 @@ related:
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
+  - ../../sources/blogs/anthropic_claude_code_review_2026-10-15.md
   - ../../sources/papers/agent_friendly_by_design_moonbit_rust_2026.md
 ---
 
@@ -121,6 +122,14 @@ Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公
 对机器人团队更可迁移的做法是先量化 coding agent 带来的提交频率、全量/稀疏 checkout 成本、CI 排队时间和评审吞吐，再决定优化点。Scion 本身未开源，Anthropic 也明确不建议把它视为通用 Git 替代品；它依赖定制的代码评审、代码搜索和 CI 配套系统。详细设计与边界见 [Anthropic 的 Scion 工程文章](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)。
 
 
+### Agent 吞吐上升后，代码评审也要分层
+
+Anthropic 的 Claude Code 团队把审查目标定义为：降低每项变更消耗的人工时间，同时不提高回滚或事故率。其流程将检查分布在 PR 前后：作者先让 agent 运行测试、构建或界面核验，并请独立上下文检查 diff；PR 上再进行 AI 缺陷审查、安全检查和常规 CI。重复出现的问题沉淀为仓库评审说明或 lint 规则。
+
+人工审批随变更风险调整：低风险文档改动在自动检查通过后可不要求额外审批；普通改动由一人审批；高风险代码由两人审批，CI 等敏感路径始终保留人工把关。合并队列会针对合入 main 后的状态重跑检查，功能开关和分阶段发布则缩小问题影响范围。事故和回滚案例进入 reviewer 评测集；审查轮次设上限，后续聚焦新增 diff，以减少重复发现旧问题造成的返工。
+
+团队报告称，2026 年 6 月至 9 月合并 PR 数量超过翻倍，需要回滚的 PR 占比下降超过 40%。这些数据来自 Anthropic 自身代码库，不能直接外推；尤其涉及真机安全或高风险基础设施时，审批和验证门槛应由实际失效成本决定。方法细节见 [Claude Code 团队的代码评审文章](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)。
+
 - **经验数据补充：** [Agent-Friendly by Design](../entities/paper-agent-friendly-by-design.md) 用相同规格与隐藏测试比较 Claude Opus 5.5 写 MoonBit 和 Rust：成本接近、MoonBit 输出源码 token 少约 12%，但编译失败率更高。小样本结果说明语言熟悉度、primer 和测试反馈都应纳入 agent 编程评测；不能据此给编程语言作普遍排名。
 
 ## 局限与风险
@@ -153,6 +162,7 @@ Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公
 
 - [Andrew Ng，AI Engineering Skills Map: Software engineering fundamentals（本站归档）](../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md)
 - [Anthropic，Redesigning source control at Anthropic（本站归档）](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)
+- [Anthropic，How the Claude Code team does code review（本站归档）](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)
 - 触发推文：<https://x.com/andrewyng/status/2093388974194872781>
 - X Article：<https://x.com/i/article/2093384274372419585>
 - *The Batch* 同文：<https://www.deeplearning.ai/the-batch/the-ai-engineering-skills-map-in-detail-software-engineering-fundamentals>
