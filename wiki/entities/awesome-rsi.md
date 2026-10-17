@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, recursive-self-improvement, llm-agents, agent-harness, self-evolution, benchmarks]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-17
 related:
   - ../queries/rsi-four-tier-five-pushes.md
   - ../concepts/recursive-self-improvement.md
@@ -18,6 +18,7 @@ related:
 sources:
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
+  - ../../sources/repos/awesome-embodied-self-improvement.md
 summary: "Prism-Shadow 维护的 Awesome RSI：按 RSI artifact（改什么）与 RSI mode（在线/离线评测）策展 50+ 方法、29 基准与 2 系统；双语静态站支持多维筛选与引用图谱，是 agent 层自进化文献的主索引入口。"
 ---
 
@@ -86,7 +87,7 @@ flowchart LR
 - **清单滞后**：awesome 依赖社区 PR；以 arXiv / 官方仓为准。
 - **非可运行栈**：无统一训练代码；各条目开源状态需 **逐条** 核项目页（见 [sources/repos/awesome-rsi.md](../../sources/repos/awesome-rsi.md) 步骤 2.5）。
 - **与「完全 RSI」保持距离**：多数条目是 **部分 artifact 自更新** 或 **长程经验改进**，不等同于 Anthropic 文内的「自主设计后继模型」。
-- **机器人读者**：清单主体为 **软件 agent**；具身相关条目稀疏 — 真机闭环仍看 [真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md)。
+- **机器人读者**：本清单主体为 **软件 agent**；具身专门索引见 [Awesome Embodied Self-Improvement](../../sources/repos/awesome-embodied-self-improvement.md)，按 L1–L4 与可执行动作集增量评估机器人 / Physical AI 的部署后自我改进。真机闭环工程前提仍看 [真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md)。
 
 ## 关联页面
 
@@ -100,6 +101,7 @@ flowchart LR
 
 - [sources/repos/awesome-rsi.md](../../sources/repos/awesome-rsi.md)
 - [sources/sites/awesome-rsi-github-io.md](../../sources/sites/awesome-rsi-github-io.md)
+- [sources/repos/awesome-embodied-self-improvement.md](../../sources/repos/awesome-embodied-self-improvement.md)
 
 ## 推荐继续阅读
 
