@@ -2,6 +2,8 @@
 
 **摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权重 → 打分器与验证锚 → harness → 研究过程——串起 Reflexion / STaR / CAI / DGM / SEAL 这条主线与 ASPIRE、ENPIRE、Motus2、LWD 这条具身对照线，最后收在 ignition 门槛、证据分级与人侧选题瓶颈，按 Stage 0–5 组织；本路线是 [运动控制主路线](motion-control.md) 的一条分支，与 [具身数据纵深](depth-embodied-data.md)（把数据飞轮做成供给管线）构成"改数据 / 改改进机制本身"的姊妹路线。
 
+**具身案例补充：** [WorldScape R²SI](../wiki/entities/manifold-worldscape-r2si.md) 报道展示内层执行 Agent 与外层改进 Agent 的 Skill / WSP 更新闭环；RoboDojo 排名和实验数字尚无独立核实，详见实体页。
+
 ## 路线一览
 
 ```mermaid
