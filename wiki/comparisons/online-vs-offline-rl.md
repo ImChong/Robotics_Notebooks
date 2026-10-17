@@ -2,7 +2,7 @@
 type: comparison
 tags: [rl, offline-rl, online-rl, data-efficiency, distribution-shift, locomotion]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-17
 related:
   - ../methods/intentional-updates-streaming-rl.md
   - ../concepts/rl-runner.md
@@ -185,6 +185,7 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 - [Sim2Real](../concepts/sim2real.md) — Online RL 依赖仿真；Offline RL 可缓解仿真依赖
 - [RL vs IL](./rl-vs-il.md) — 三角关系：Online RL / Offline RL / IL 的数据与监督信号对比
 - [LWD](../methods/lwd.md) — 车队级 offline-to-online RL 后训练框架的代表
+- [robomimic](../entities/robomimic.md) — 固定示范数据上的离线 RL 与 BC 对照框架；其研究提醒验证损失不能代替策略回放，检查点选择应结合环境执行评估
 - [ROVE（人形 VLA 干预后训练）](../entities/paper-rove-humanoid-vla-intervention.md) — 次优全身 MoCap 接管轨迹的 OVE + advantage conditioning
 - [HIL-HARC（真机在线 RL）](../entities/paper-hil-harc.md) — RLPD + CTDE/HRA；大随机下相对 HIL-SERL 抬升成功率
 - [RLinf-USER（真机在线系统）](../entities/paper-rlinf-user.md) — HAL + 全异步 pipeline + 持久 buffer；RSS 2026；开源于 RLinf/RLinf（arXiv:2602.07837）
