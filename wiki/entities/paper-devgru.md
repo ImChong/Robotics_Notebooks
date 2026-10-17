@@ -161,3 +161,17 @@ sequenceDiagram
   ROS->>ROS: Track waypoint and advance topology
   ROS->>Policy: Next observation
 ```
+
+## 关联页面
+
+- [导航论文归档](../overview/paper-notebook-category-08-navigation.md) — 导航方向的论文索引
+- [NoMaD](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md) — RGB 视觉导航与拓扑记忆基线
+- [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — RGB-D 候选轨迹和仿真到真机导航对照
+- [导航与 SLAM 自主系统栈](../overview/navigation-slam-autonomy-stack.md) — 导航模块的系统级上下游关系
+
+## 参考来源
+
+- [DevGRU 论文归档](../../sources/papers/devgru.md)
+- [DevGRU 官方项目页](../../sources/sites/devgru.md)
+- [DevGRU 官方代码仓库](../../sources/repos/devgru.md)
+- 论文：<https://arxiv.org/abs/2608.18470>
