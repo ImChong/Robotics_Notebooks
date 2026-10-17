@@ -189,6 +189,8 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+## [2026-10-17] ingest | sources/sites/motphys.md — 归档 Motphys 官网首页/关于/研究/版本日志；新增公司入口并加入公司路线（复用 Motrix / GS-Playground / UniLab 三节点）
+
 ## [2026-10-16] lint | 全量 wiki lint（full git history）：修复 25 个陈旧页（ppo 补 RoboFFT、π0-policy 复核 kai0，另 23 页补新 paper 实体回链）与 10 条信息型预警（paper 三段式/结论/缩写速查、评测与执行器枢纽回链）
 
 ## [2026-10-17] ingest | 收录 KODA、T2-z 与 VLA 因果分析论文和官方实现

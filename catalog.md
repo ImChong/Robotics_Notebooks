@@ -862,6 +862,7 @@
 - [motion_imitation（四足模仿动物）](wiki/entities/motion-imitation-quadruped.md) — motion_imitation**（<https://github.com/erwincoumans/motion_imitation>）是 Xue Bin Peng 等论文 [*Learnin `📅unknown` `[entity_page]`
 - [Motion2MixamoRig](wiki/entities/motion2mixamorig.md) — Motion2MixamoRig](https://github.com/MaxLiu22/Motion2MixamoRig) 是一套开源“视频/照片→Mixamo动画”工具：给定单人全身视频或静态 `📅unknown` `[entity_page]`
 - [MotionCode™](wiki/entities/motioncode.md) — MotionCode**（官网 motioncode.ai）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
+- [Motphys（谋先飞）](wiki/entities/motphys.md) — Motphys**（法人主体北京谋先飞技术有限公司）是具身智能**仿真与训练基础设施**公司：自研实时物理引擎 **MotrixSim**，上接训练框架 **MotrixLab**、数据合成  `📅unknown` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](wiki/entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
 - [MoveIt 2](wiki/entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
 - [mpc_python](wiki/entities/mpc-python.md) — mpc_python**（mcarfagno/mpc_python）是一个 **MIT** 开源教学仓库：用  `📅unknown` `[entity_page]`
