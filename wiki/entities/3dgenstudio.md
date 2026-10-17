@@ -13,7 +13,7 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-09-15
+updated: 2026-10-17
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
@@ -24,6 +24,7 @@ related:
   - ./cad-skills.md
   - ./paper-physforge-physics-grounded-3d-assets.md
   - ./paper-embodiedgen-v2-sim-ready-world-engine.md
+  - ./infinigen.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/sites/3dgenstudio-com.md
@@ -154,6 +155,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Infinigen V2](./infinigen.md) — 程序化生成整套室内外场景和合成数据，与本页的 AI 网格生成工作台互补。
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造向 B-rep/STEP 主线；本页属「网格资产」对照分支。
 - [ComfyUI](./comfyui.md) — 本工作室的 **节点生成运行时**（GPL 核心仓 Comfy-Org/ComfyUI）；工作室是编排层。
 - [Blender](./blender.md) — 全流程 DCC；常作本工作室导出后的精修宿主。
