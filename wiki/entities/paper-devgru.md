@@ -101,6 +101,7 @@ flowchart LR
   robot --> depth
   robot --> pose
   controller --> topo
+```
 
 ## 实验与评测
 
@@ -159,3 +160,4 @@ sequenceDiagram
   Policy->>ROS: Collision-aware waypoints and subgoal correction
   ROS->>ROS: Track waypoint and advance topology
   ROS->>Policy: Next observation
+```
