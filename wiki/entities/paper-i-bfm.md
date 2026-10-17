@@ -12,7 +12,7 @@ tags:
 - project
 - mujoco-demo
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: '2610.06129'
 venue: 2026 · arXiv preprint
 related:
@@ -20,6 +20,7 @@ related:
 - ./paper-omnicontact-humanoid-loco-manipulation.md
 - ../concepts/behavior-foundation-model.md
 - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+- ./paper-p-bfm.md
 - ../overview/frontier-manipulation-2026-10-05-10-09.md
 sources:
 - ../../sources/papers/i_bfm_arxiv_2610_06129.md
@@ -219,6 +220,7 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 - [行为基础模型概念](../concepts/behavior-foundation-model.md)
 - [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [【10.5-10.9前沿论文动态】Manipulation34篇](../overview/frontier-manipulation-2026-10-05-10-09.md)
+- [P-BFM](./paper-p-bfm.md) — I-BFM 把对象动力学 / 接触引入行为空间，P-BFM 聚焦地形适应与全局根运动指令
 
 ## 参考来源
 

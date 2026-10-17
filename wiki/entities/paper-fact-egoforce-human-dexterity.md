@@ -18,6 +18,8 @@ project: "https://fact-1-0.github.io/"
 related:
   - ./paper-fact.md
   - ./paper-vt-wam-visuotactile-contact-rich.md
+  - ./paper-trex-tactile-reactive-dexterous-manipulation.md
+  - ./paper-pi05-open-world-vla.md
   - ../methods/vla.md
 sources:
   - ../../sources/papers/fact_egoforce_arxiv_2610_19155.md
@@ -104,6 +106,19 @@ sequenceDiagram
 - 移除视觉轨迹预测后，精细运动任务也有下降，例如实验室移液从 40% 降至 20%。
 - 移除人类预训练力监督后，打开试管盖由 80% 降至 0%，旋钮误差由 6.4 μL 增至 20.5 μL。
 
+## 与其他工作对比
+
+| 维度 | FACT（本文） | [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) | [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) | [π₀.₅](./paper-pi05-open-world-vla.md) |
+|------|------|------|------|------|
+| 触觉角色 | 当前力作观测 + **未来指尖力**作联合去噪目标 | 时空触觉 VQ-VAE 作反应式输入 | 联合预测未来触觉形变 | 不使用触觉 |
+| 预训练数据轴 | ~2,000 h 人类触觉示范 + 100 h 机器人遥操作 | ~100 h 机器人触觉 play 数据 | 机器人视触觉数据 | 异构机器人 + 网络数据协同训练 |
+| 动作生成 | 视频 DiT 粗规划（含点轨迹）→ 力–动作精修 | 变频率 MoT | 统一流匹配（视觉 / 触觉 / 动作） | flow-matching 动作专家 |
+| 本文评测中的位置 | 主方法 | 主基线（十项任务最高 +60 pp） | 未在本文对比 | VLA 基线 |
+
+- **相对 T-Rex：** 二者都把触觉接入灵巧双臂策略；差别在 FACT 把数据轴扩到人类示范，并让未来力预测参与动作精修，而非只用历史触觉做反应。
+- **相对 VT-WAM：** 同为「预测接触后果」思路，VT-WAM 预测视觉触觉形变，FACT 预测指尖力；两者评测平台与任务不同，不可直接比成功率。
+- **相对 π₀.₅：** 无触觉的通用 VLA 在移液、开盖等力敏感任务上接近 0%，说明这些任务的瓶颈在接触感知而非语义泛化。
+
 ## 源码运行时序图
 
 **不适用：** 截至 2026-10-16，论文页未列公开源码，项目页正文未能核实，目前没有可确认的运行入口。
@@ -130,6 +145,8 @@ sequenceDiagram
 
 - [FACT（Failure-Aware Causal Training）](./paper-fact.md) — 同缩写、不同论文；以失败轨迹训练世界–动作模型。
 - [VT-WAM（视觉–触觉–动作模型）](./paper-vt-wam-visuotactile-contact-rich.md) — 对照接触信号如何进入动作策略。
+- [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — 本文主基线：机器人触觉 play 数据 + 触觉 VQ-VAE 的反应式灵巧策略。
+- [π₀.₅](./paper-pi05-open-world-vla.md) — 本文无触觉 VLA 基线。
 - [VLA](../methods/vla.md) — 视觉语言与机器人动作策略背景。
 
 ## 参考来源

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-16
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/foundation-policy.md
   - ../entities/nvidia-omniverse.md
   - ./diffusion-policy.md
+  - ../entities/paper-objdream.md
 summary: "StarVLA 是具身智能领域的极简基准模型，证明了强 VLM 底座（如 Qwen3-VL）配合简单 MLP 动作头即可实现最先进的控制性能。"
 ---
 
@@ -99,3 +100,4 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 -   [THAW-VLA](../entities/paper-thaw-vla.md) — 在 StarVLA QwenGR00T 0.8B 上离线蒸馏 Cosmos3-Nano 特征；LIBERO 97.9%（arXiv:2609.24682；已开源）
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念
 -   [Diffusion Policy](./diffusion-policy.md) — 另一种主流的生成式动作头路线
+- [ObjDream](../entities/paper-objdream.md) — 物体中心 VLA：时空物体槽分离身份与状态，身份引导路由 VLM 注意力

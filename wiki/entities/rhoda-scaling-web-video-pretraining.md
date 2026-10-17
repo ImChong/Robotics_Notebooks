@@ -13,6 +13,7 @@ related:
   - ../concepts/world-action-models.md
   - ./generalist-gen0.md
   - ./dyna-2.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/rhoda-ai.md
 ---
@@ -116,6 +117,7 @@ sources:
 - [世界动作模型](../concepts/world-action-models.md)
 - [GEN-0](./generalist-gen0.md) — 以真实交互数据为轴的 scaling 叙事
 - [Dyna-2](./dyna-2.md) — 以人视频为预训练轴的闭源 WAM
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 scaling 曲线属其 ③ 策略任务成功率评测层，且为博客自报的真机内部评测：复用结论前先按 ④ sim↔real / 可复现性层校准。
 
 ## 参考来源
 

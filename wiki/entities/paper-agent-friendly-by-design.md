@@ -10,6 +10,7 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/ai-agent-evaluation.md
   - ./paper-frognano-4b-coding-agent.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/agent_friendly_by_design_moonbit_rust_2026.md
   - ../../sources/repos/minisql-moonbit-vs-rust.md
@@ -144,6 +145,7 @@ sequenceDiagram
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md) — 设计任务、隐藏样例和解释指标的基础框架。
 - [FrogNano：用在线任务合成训练 4B 编码智能体](./paper-frognano-4b-coding-agent.md) — 训练小模型编码智能体的另一种研究问题。
 - [EmbodiedEvo](./paper-embodied-evo-coding-agent.md) — coding agent 在具身仿真里跨场景复用经验；任务领域与本实验不同。
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 对照：本页评的是纯软件 coding agent（编译失败率 / token / 成本），不进入具身四层评测；借鉴点仅在「固定 harness + 多次试验」的可复现性读法。
 
 ## 参考来源
 

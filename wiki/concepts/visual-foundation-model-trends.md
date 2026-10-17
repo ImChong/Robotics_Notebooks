@@ -8,7 +8,7 @@ tags:
   - computer-vision
   - trends
 status: complete
-updated: 2026-08-12
+updated: 2026-10-16
 summary: "视觉基础模型五大趋势：单模态→多模态、小模型→基础模型、专用→通用、闭集→开集、纯感知→感知+推理；指导机器人感知栈演进判断。"
 related:
   - ./generative-vision-pretraining.md
@@ -17,6 +17,7 @@ related:
   - ../overview/multimodal-llm-development.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-groundanything.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -76,6 +77,7 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 闭集→开集、纯感知→感知+推理两条趋势，正是①VLM 层向②/③层递进的前提
+- [GroundAnything](../entities/paper-groundanything.md) — 4B 视觉 grounding 模型：分块扩散 + 熵引导并行解码提升定位效率
 
 ## 参考来源
 

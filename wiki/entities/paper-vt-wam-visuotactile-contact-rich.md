@@ -8,7 +8,7 @@ tags:
   - flow-matching
   - manipulation
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: "2607.02503"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-vitacworld.md
   - ../entities/paper-physcore.md
   - ../entities/neoteai.md
+  - ./paper-fact-egoforce-human-dexterity.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
@@ -149,6 +150,7 @@ flowchart TB
 - [ViTacWorld](./paper-vitacworld.md) — 视触觉 WM 作 dream 数据生成器/评估器（非联合出动作）
 - [PhysCoRe](./paper-physcore.md) — 可变形物理混合对照（MPM，非触觉）
 - [VLA](../methods/vla.md) — OmniVTLA 等 tactile VLA 基线
+- [FACT（EgoForce）](./paper-fact-egoforce-human-dexterity.md) — 同样预测接触后果，但预测的是未来指尖力，并以约 2,000 h 人类触觉示范预训练
 
 ## 推荐继续阅读
 

@@ -32,6 +32,16 @@ summary: "Thinker-WM（arXiv:2610.18447）以共享 Unified Dynamics Transformer
 
 **把 RGB、度量深度与机器人动作放进共享动态表征，并用同一参数化覆盖世界预测、动作建模与策略推理。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WM | World Model | 预测未来世界观测的生成模型；本页指 Thinker-WM 本身 |
+| WAM | World Action Model | 世界预测与动作生成联合建模的模型族 |
+| RGB | Red-Green-Blue | 彩色视频观测模态 |
+| HF | Hugging Face | 官方模型权重发布入口 |
+| CC BY-NC-SA | Creative Commons Attribution-NonCommercial-ShareAlike | 代码仓库标注的非商用署名-相同方式共享许可证 |
+
 ## 核心机制
 
 论文提出 Unified Dynamics Transformer（统一动态 Transformer）作为共享中间骨干：各模态经专属编码器进入共享表征，在动态表征中共同演化，再由专属解码器生成不同模态。由此把外观、几何和动作联系起来，同时保留其输出结构差异。
@@ -47,7 +57,7 @@ summary: "Thinker-WM（arXiv:2610.18447）以共享 Unified Dynamics Transformer
 
 论文还使用轻量 motion probe 测试冻结视觉表征中是否可恢复运动信息。
 
-## 数据与论文报告
+## 数据与评测结果（论文自报）
 
 - 训练数据规模：约 **20K 小时第一视角视频、10K 小时真机数据、1K 小时仿真数据**，其中约 **4K 小时真机数据含对齐深度监督**（论文摘要口径）。
 - 作者报告模型在 **EWMBench、WorldOlympiad、WorldArena** 三个具身世界模型评测上排名第一。
@@ -60,11 +70,21 @@ summary: "Thinker-WM（arXiv:2610.18447）以共享 Unified Dynamics Transformer
 - **训练复现：** 不应从推理仓库推断完整训练代码或训练数据已公开。
 - **权重：** Hugging Face 官方入口由发布方链接；仓库 README 的下载说明仍留有占位符，权重内容、可下载性和许可需查看模型卡与文件列表。
 
-## 与相近工作的区别
+## 与相近工作对比
 
 - 与单一视频世界模型相比，Thinker-WM 将度量深度和机器人动作纳入共享动态表示及生成任务。
 - 与 World Action Model（WAM）相关：WAM 通常突出动作条件下的世界预测或世界-动作联合生成；Thinker-WM 论文进一步把深度几何预测和多种模态输入/输出任务放在统一模型中。比较时应以各自任务协议为准。
 - 同方向可对照 [DepthWorld](./paper-depthworld-3d-world-model.md)：后者聚焦机器人操作中的几何一致性与深度世界预测。
+
+## 结论
+
+**Thinker-WM 的主张是「RGB + 度量深度 + 动作」可共享一套动态表征，并用同一组参数覆盖六类视频-动作任务；目前可用的是推理代码与论文自报排名，训练侧复现边界尚不清楚。**
+
+1. 架构要点是「模态专属编解码 + 共享 Unified Dynamics Transformer」，与只在像素空间建模的视频世界模型相比，把深度几何与动作作为一等输出。
+2. 三项具身世界模型基准（EWMBench / WorldOlympiad / WorldArena）第一为论文摘要口径；引用前须核对榜单版本、任务子集与指标。
+3. 训练语料约 31K 小时（第一视角视频 20K + 真机 10K + 仿真 1K），其中仅约 4K 小时真机带深度监督；README 口径与论文不完全一致，以论文为准。
+4. 开源仅覆盖推理（六种模式，CC BY-NC-SA 4.0 非商用），不能据此推断训练代码或数据已公开；权重下载以 HF 模型卡为准。
+5. 选型上可作为 WAM 路线中「多任务统一参数化」的代表；若关注操作中的几何一致性，可与 DepthWorld 对照阅读。
 
 ## 关联页面
 

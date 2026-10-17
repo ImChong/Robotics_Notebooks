@@ -4,7 +4,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
@@ -22,6 +22,7 @@ related:
   - ../entities/paper-tech-humanoid-control.md
   - ../entities/paper-i-bfm.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
+  - ./paper-p-bfm.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_19_bfm_zero_a_promptable_behavioral_foundation_mode.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -164,6 +165,7 @@ sequenceDiagram
 - Real2Sim 适配器语境：[Agentic Real2Sim](./paper-agentic-real2sim.md) — 人形适配器引用 BFM-Zero 风格运动上下文（arXiv:2607.19190）
 - 本体多项式条件插件：[PRISM](./paper-prism.md) — 对 `history_actor` 做因式分解多项式交互，降低跟踪 EMD（arXiv:2607.23473）
 - 任务空间坐标对照：[FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 拟人子流形 + 防坍缩 + off-policy \(Z\) 采样的统一读法
+- [P-BFM](./paper-p-bfm.md) — 同属 FB + 无监督 RL 路线，扩展到深度感知地形适应与全局根运动指令（ERI）
 
 ## 参考来源
 

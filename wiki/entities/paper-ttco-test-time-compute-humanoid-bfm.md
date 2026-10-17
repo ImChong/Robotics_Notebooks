@@ -23,6 +23,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./dataset-bfm-humanoid-x.md
+  - ../methods/mppi.md
   - ../overview/embodied-station-2026-10-14-41-papers-technology-map.md
 sources:
   - ../../sources/papers/ttco_test_time_compute_humanoid_bfm_arxiv_2610_14896.md
@@ -142,6 +143,18 @@ sequenceDiagram
 
 论文分析候选数与测试时预算之间的性能变化，并拟合 surrogate cost model 来近似计算最优预算分配。项目页报告其展示配置下平均 cost regret 为 **4.02%**，预算从 K=256 增至 K=8192 时 cost 降低 **58.0%**；这些指标服务于优化器预算设计，不是硬件任务成功率。
 
+## 与其他工作对比
+
+| 路线 | 改什么 | 代价 | 与 TTCO 的关系 |
+|------|--------|------|----------------|
+| 直接下发参考 motion（论文基线） | 不改 | 无额外计算 | TTCO 在同一冻结 BFM 上把仿真全局位置误差降 79–84% |
+| 微调 / 重训 BFM | 底层模型权重 | 需训练数据与算力，可能影响已有能力 | TTCO 冻结权重，只在输入命令侧搜索；二者可叠加 |
+| 动作空间采样 MPC（如 [MPPI](../methods/mppi.md)） | 关节级动作序列 | 每步在线采样 | TTCO 同样是「采样 + 闭环仿真评分 + 滚动执行」，但搜索空间是 BFM 的 motion command，底层仍由 BFM 输出动作 |
+| [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 等高层策略 | 学习生成 BFM 命令的策略 | 需要命令标签示范 | TTCO 的离线重标注可为这类高层策略提供 BFM 专属命令标签 |
+
+- 评测对象是三个 BFM（HEFT / SONIC / TWIST2）在同一 AMASS 集上的输入侧改进，不是 BFM 之间的优劣排名。
+- 真机部分仅比较标签来源（原始命令 / TTCO 命令 / 机器人状态），并非与其他测试时方法的对比。
+
 ## 结论
 
 **TTCO 的核心价值是以并行仿真和采样计算换取更可靠的冻结 BFM 命令执行，并把原本缺少控制器专属动作命令的机器人轨迹转成可学习标签。**
@@ -166,6 +179,7 @@ sequenceDiagram
 - [SONIC motion tracking](../methods/sonic-motion-tracking.md) — 论文评估的一个 BFM
 - [Humanoid-X](./dataset-bfm-humanoid-x.md) — 与全身行为数据训练相关
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 基础模型驱动的全身 loco-manipulation 对照
+- [MPPI](../methods/mppi.md) — 同属采样式滚动优化，但在动作空间而非 BFM 命令空间搜索
 
 ## 参考来源
 
