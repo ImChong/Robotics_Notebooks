@@ -16,6 +16,7 @@ status: complete
 updated: 2026-10-06
 arxiv: "2607.18840"
 related:
+  - ./manifold-worldscape-r2si.md
   - ../concepts/world-action-models.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ./paper-worldscape-moe-heterogeneous-action.md
@@ -280,6 +281,10 @@ sequenceDiagram
 - [WorldScape Policy 2.0 项目页](https://manifoldai-research.github.io/WorldScape-Policy/)
 - [RoboTwin 2.0（ICML 2026）](https://icml.cc/virtual/2026/poster/62192) — 主评测基准与域随机化协议
 - [Wan: Open and advanced large-scale video generative models（arXiv:2503.20314）](https://arxiv.org/abs/2503.20314) — DiT 骨干来源
+
+## 相关系统：WorldScape R²SI
+
+- [WorldScape R²SI](./manifold-worldscape-r2si.md) — 报道描述的外层 Agent 可修订 Skill，并在部分任务中更新 WSP；R²SI 不是本论文提出的贡献。
 
 ## 参考来源
 
