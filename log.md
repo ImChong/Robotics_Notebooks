@@ -195,6 +195,11 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] ingest | Claude Code 团队代码评审：补充 Agentic Coding 软件工程页
+
+- 归档 Anthropic 工程博客，提炼 PR 前验证、AI 与安全评审、风险分级人工审批、渐进发布和评审收敛机制。
+- 更新既有 Agentic Coding 知识页；文章报告的回滚率变化属于 Anthropic 内部结果，已标明外推边界。
+
 ## [2026-10-17] ingest | RAX 在线探索机器人 agent
 
 - 核对官方项目页、论文 PDF 与代码仓；代码已公开，仓库以分支提供仿真、Franka 和 Rainbow RB-Y1 实现，根目录许可证待核实。
