@@ -29,7 +29,7 @@ TRACE 将 Unitree G1 上的 SONIC 迁移至 Unitree H2，使用 1000 万动作�
 
 ## 对 wiki 的映射
 
-- 主实体：[TRACE 跨具身人形控制迁移](../../wiki/entities/paper-trace-cross-embodiment-bfm.md)
+- 主实体：[TRACE 跨具身人形控制迁移](../../wiki/entities/paper-trace-humanoid-transfer.md)
 - 对照：[SONIC-Transfer](../../wiki/entities/paper-sonic-transfer.md)、[Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)
 - 方法上下文：[SONIC motion tracking](../../wiki/methods/sonic-motion-tracking.md)、[Whole-Body Tracking Pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md)、[跨具身策略迁移选型指南](../../wiki/queries/cross-embodiment-transfer-strategy.md)
 
