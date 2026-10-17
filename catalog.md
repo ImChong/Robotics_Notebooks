@@ -4634,6 +4634,7 @@
 - [Towards Agentic Robots：模型、数据、环境与编排的综述](wiki/entities/paper-towards-agentic-robots-survey.md) — 一句话定义：** 一篇综述，把基础模型驱动的机器人执行从任务专用策略扩展到"代理式"协同，并按模型、数据、环境与编排（harness）四个领域组织相关文献。 `📅unknown` `[entity_page]`
 - [TRABot：说、演、动](wiki/entities/paper-trabot-talk-render-act.md) — TRABot（Talk, Render, Act）**（arXiv:2610.06153，Jiang 等）是一个让 **Un `📅unknown` `[entity_page]`
 - [TRACE：轨迹路由因果记忆](wiki/entities/paper-trace-causal-memory.md) — TRACE**（*Trajectory-Routed Causal Memory for Delayed-Evidence Visuomotor Imitation*，[arXiv:2606.14 `📅unknown` `[entity_page]`
+- [TRACE：跨具身人形控制迁移](wiki/entities/paper-trace-cross-embodiment-bfm.md) — TRACE（*Efficient Transfer Learning for Neural Whole-Body Control Across Humanoid Embodiments*）将 Unit `📅unknown` `[entity_page]`
 - [TRACE：把现成的全身控制器搬到另一台人形上](wiki/entities/paper-trace-humanoid-transfer.md) — TRACE 保留预训练全身控制器（SONIC）的运动表征，只对目标人形重调反馈控制：先用运动学先验与动力学对齐把新本体"接"进旧网络，再用编码器蒸馏加低秩 RL 的两阶段课程，在小规模筛选运动集上 `📅unknown` `[entity_page]`
 - [跟踪并完成：从单段失败人体视频学习人形技能](wiki/entities/paper-track-and-complete.md) — Track-and-Complete: Learning Humanoid Skills from a Single Failed Human Video**（[arXiv:2609.36924 `📅unknown` `[entity_page]`
 - [Track4World：前馈世界系全像素稠密 3D 跟踪](wiki/entities/paper-track4world.md) — Track4World**（*Feedforward World-centric Dense 3D Tracking of All Pixels*，[arXiv:2603.02573](https `📅unknown` `[entity_page]`
@@ -4971,6 +4972,7 @@
 - [Qwen3-VL](wiki/entities/qwen3-vl.md) — Qwen3-VL**（Qwen3-VL：视觉-语言基座（LightNav-ER 初始化））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [RAI Institute：全身控制、动态操作与部署研究路线](wiki/entities/rai-institute.md) — RAI Institute** 是由 Marc Raibert 领导、2022 年成立的机器人与人工智能研究机构，以学习控制、动态操作、硬件设计和物理交互研究提升机器人能力。 `📅unknown` `[entity_page]`
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
+- [RAX：把机器人在线探索编译成可复用程序](wiki/entities/rax-scaling-online-exploration.md) — RAX**（论文 PDF、[项目页](https://robot-agent-exploration. `📅unknown` `[entity_page]`
 - [Raylib：轻量的跨平台图形与游戏编程库](wiki/entities/raylib.md) — Raylib** 是以 C API 为中心的跨平台图形库，用一组清晰的模块提供窗口、输入、2D/3D 绘制、模型、文字、音频和数学功能；它适合自己写可视化程序，不附带场景编辑器或完整游戏制作工作流 `📅unknown` `[entity_page]`
 - [REA（Reverse Engineer Anything）](wiki/entities/rea.md) — REA 是面向编码代理的软件逆向调查层：通过 **MCP Server 与 CLI** 调用本机分析器或受控观测流程，返回带证据的程序结构/行为发现，供代理解释、追问并辅助重建功能。 `📅unknown` `[entity_page]`
 - [React Bits](wiki/entities/react-bits.md) — React Bits** 是面向 React 网站的可定制动效组件集合：选一个组件、复制或安装源码，再用参数调整文字、背景和交互效果。 `📅unknown` `[entity_page]`

@@ -189,6 +189,17 @@ type: ingest
 
 2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
 
+# Ingest: TRACE 跨具身人形控制迁移
+
+- **意图：** 收录 TRACE（arXiv:2610.17999），归纳其将 SONIC 从 Unitree G1 迁移到 H2 的预对齐、动作筛选、蒸馏和低秩强化学习流程。
+- **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
+- **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
+
+## [2026-10-17] ingest | RAX 在线探索机器人 agent
+
+- 核对官方项目页、论文 PDF 与代码仓；代码已公开，仓库以分支提供仿真、Franka 和 Rainbow RB-Y1 实现，根目录许可证待核实。
+- 建立统一 RAX wiki 实体，整理冻结 coding agent、在线探索、程序编译、技能复用和评测口径，并链接 ASENA / EmbodiedEvo 相关路线。
+
 ## [2026-10-17] ingest | sources/blogs/wechat_embodied_station_robot_36_papers_2026-10-17.md — 具身智能小站 36 篇论文逐篇建独立详情节点（30 新建、6 沿用），含开源核查与技术地图索引
 
 ## [2026-10-17] ingest | SANDO 动态未知环境安全规划
