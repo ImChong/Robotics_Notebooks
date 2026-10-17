@@ -48,6 +48,7 @@
 - [AMP-RSL-RL](wiki/entities/amp-rsl-rl.md) — AMP-RSL-RL**（<https://github.com/gbionics/amp-rsl-rl>）由 **Istituto Italiano di Tecnologia (IIT)**（ `📅unknown` `[entity_page]`
 - [Anatomy](wiki/entities/anatomy-skill.md) — Anatomy 是 Claude Code 的 Agent Skill：把技术原理或机器描述转成细节丰富、带运动与读数的等轴测机械插图，核心产物为 SVG / HTML，也支持 React、Web `📅unknown` `[entity_page]`
 - [Andrej Karpathy](wiki/entities/andrej-karpathy.md) — Andrej Karpathy** 是连接 **深度学习教育、大规模视觉系统与 LLM 时代知识工程** 的关键人物：从 Stanford CS231n 与 micrograd 把神经网络讲清楚， `📅unknown` `[entity_page]`
+- [Answer with HTML（一页能读的答案）](wiki/entities/answer-me-with-html.md) — Answer with HTML** 是一个面向编码代理的开源 Skill：模型用 Markdown 写答案内容，随包 CLI 自动生成包含布局、样式和图表的单页 HTML。 `📅unknown` `[entity_page]`
 - [claude-api（Anthropic 官方 Skill）](wiki/entities/anthropic-claude-api-skill.md) — claude-api** 是 anthropics/skills 仓库中面向 **Claude Platform 应 `📅unknown` `[entity_page]`
 - [Embody（Anthropic）](wiki/entities/anthropic-embody.md) — Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模 `📅unknown` `[entity_page]`
 - [frontend-design（Anthropic 官方 Skill）](wiki/entities/anthropic-frontend-design-skill.md) — frontend-design** 是 anthropics/skills 中 `skills/frontend-d `📅unknown` `[entity_page]`
