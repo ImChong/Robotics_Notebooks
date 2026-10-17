@@ -34,7 +34,7 @@
 ## 参考链接
 
 - [SmolLM3 技术报告](https://huggingface.co/blog/smollm3)
-- [Intellect 3 技术报告](https://arxiv.org/abs/2512.04047)
+- [Intellect 3 技术报告](https://arxiv.org/abs/2512.16144)
 - [Hermes 4](https://arxiv.org/abs/2508.18255)
 - [gpt-oss-120b](https://arxiv.org/abs/2508.10925)
 - [Kimi K2](https://arxiv.org/abs/2507.20534)
