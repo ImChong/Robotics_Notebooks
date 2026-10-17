@@ -12,6 +12,11 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/lora.md
   - ../entities/dataset-bfm-phuma.md
+  - ../queries/cross-embodiment-transfer-strategy.md
+  - ../concepts/whole-body-tracking-pipeline.md
+  - ../methods/sonic-motion-tracking.md
+  - ./paper-sonic-transfer.md
+  - ./paper-any2any-cross-embodiment-wbt.md
 sources:
   - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
   - ../../sources/sites/trace-humanoid-transfer-project.md

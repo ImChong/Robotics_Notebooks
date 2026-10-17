@@ -15,7 +15,7 @@ sources:
   - ../../sources/papers/transformer_transformer_arxiv_2607_25798.md
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
-  - ../../sources/papers/trace_arxiv_2610_17999.md
+  - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
   - ../../sources/papers/eagle_wbc_arxiv_2602_02960.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
@@ -25,7 +25,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
-  - ../entities/paper-trace-cross-embodiment-bfm.md
+  - ../entities/paper-trace-humanoid-transfer.md
   - ../entities/paper-emergent-transfer-cross-config.md
   - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
   - ../entities/generalist-gen1-thousand-hands.md
@@ -111,7 +111,7 @@ flowchart TD
 
 ## 分路径选型说明
 
-**近期迁移案例：** [TRACE](../entities/paper-trace-cross-embodiment-bfm.md) 把 G1 上的 SONIC 迁到 H2，结合运动学/动力学预对齐、紧凑动作集、表征蒸馏与低秩强化学习；可与 Any2Any、SONIC-Transfer 对照其适配边界与成本口径。
+**近期迁移案例：** [TRACE](../entities/paper-trace-humanoid-transfer.md) 把 G1 上的 SONIC 迁到 H2，结合运动学/动力学预对齐、紧凑动作集、表征蒸馏与低秩强化学习；可与 Any2Any、SONIC-Transfer 对照其适配边界与成本口径。
 
 ### 1. 单具身重训 + 重定向迁移：最稳的基线
 
