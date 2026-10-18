@@ -2,14 +2,16 @@
 type: entity
 tags: [paper, robotics, robot-learning]
 status: complete
-updated: 2026-10-07
+updated: 2026-10-18
 project_id: h2rbench
 arxiv: "2609.24778"
 related:
   - ../overview/humanoid-motion-intelligence-day6-engineering-deployment.md
   - ../concepts/sim2real.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "H2RBench把人类视频到机器人操作的迁移放进统一real-to-sim评测协议。"
 ---
 

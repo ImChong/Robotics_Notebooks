@@ -3,7 +3,7 @@ type: entity
 project_id: uranus
 tags: [paper, d-robotics, world-models, simulation, video-diffusion, multi-view, embodied-ai, policy-evaluation]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-18
 arxiv: "2609.24815"
 code: "https://github.com/D-Robotics-AI-Lab/Uranus-OSS"
 related:
@@ -12,10 +12,12 @@ related:
   - ./isaac-lab.md
   - ./newton-physics.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/papers/uranus_arxiv_2609_24815.md
   - ../../sources/sites/d-robotics-uranus.md
   - ../../sources/repos/uranus-oss.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "Uranus（arXiv:2609.24815，地瓜机器人）：面向具身策略闭环评估的动作条件多视角视频模拟器；外部策略提供 qpos，Uranus 自回归预测视觉后果，公开推理代码、demo 数据与模型权重。"
 ---
 
