@@ -2,7 +2,7 @@
 type: entity
 tags: [software, motor, fem, femm, open-source, simulation, magnetics, electrostatics, heat-flow, meeker]
 status: complete
-updated: 2026-07-25
+updated: 2026-10-18
 related:
   - ./femm-foc-simulation.md
   - ./pyleecan.md
@@ -114,6 +114,8 @@ sequenceDiagram
 - **不能替代** Motor-CAD 热地图或 Maxwell 产业工作流；连续功率仍看热与台架（见 [电机设计流程](../overview/motor-design-workflow.md)）。
 
 ## 关联页面
+
+- [openCFS](./opencfs.md)：有限元多物理场与耦合求解候选，含跨平台安装和数据处理资料。
 
 - [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md) · [Ironless QDD](./ironless-qdd-actuator.md) · [ACMOP](./acmop.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
