@@ -110,6 +110,7 @@ flowchart LR
 
 ### 推荐读什么
 - [HY-Motion 1.0](../wiki/methods/hy-motion-1.md)、[GENMO](../wiki/methods/genmo.md)、[Kimodo](../wiki/entities/kimodo.md) — 规模化三线
+- [Cartwheel Swing Choreo](../wiki/entities/cartwheel-swing-choreo.md) — Swing Choreo 是 Cartwheel 的商用文本到人体动作生成模型，擅长按顺序生成复合动作、手指和面部表现及多人互动；可经 Performance Generation/API 用于动画工作流，模型权重与推理实现未公开。
 - [MotionSpaceFlow](../wiki/entities/paper-motionspaceflow.md) — 无动作编解码器的全分辨率 motion-space flow matching；HumanML3D / SnapMoGen 上验证文本生成与零样本关节/帧约束
 - [ARDY](../wiki/entities/ardy.md) — 交互式自回归扩散 + 长时域约束（SIGGRAPH 2026）
 - [HY-Motion vs GENMO vs Kimodo 选型对比](../wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 谱系主入口
