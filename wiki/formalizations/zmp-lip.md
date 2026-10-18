@@ -2,7 +2,7 @@
 type: formalization
 tags: [locomotion, control, dynamics, humanoid, math]
 status: complete
-updated: 2026-04-20
+updated: 2026-10-18
 related:
   - ../concepts/lip-zmp.md
   - ../concepts/centroidal-dynamics.md
@@ -34,7 +34,7 @@ summary: "ZMP + LIP（Linear Inverted Pendulum）模型通过简化质心高度�
 
 1. **质心高度恒定**：质心（CoM）在 $z$ 方向上的位置固定为 $z_c$。
 2. **忽略角动量**：忽略由于躯干摆动产生的角动量变化 $\dot{L}_G \approx 0$。
-3. **单支撑脚点接触**：假设支撑脚为理想点接触或刚性平面接触。
+3. **共面支撑**：接触位于同一水平面，接触力满足单边接触与摩擦约束；点足的支撑区域退化为点，平足及双支撑可以形成有限支撑多边形。
 
 ## LIP 动力学方程
 
@@ -55,23 +55,23 @@ $$
 
 ## ZMP 稳定性条件
 
-ZMP 是地面对机器人反作用力合力作用点。机器人保持动态平衡的**充分必要条件**（在 LIP 假设下）是：
+ZMP 是支撑平面上接触合力矩的水平分量为零的点；在平面接触且合力法向分量非零时，它与整体压力中心对应。在共面、单边接触的简化模型下，接触可行性要求：
 
 $$
 \mathbf{p}_{zmp} \in \mathcal{S}_{support\_polygon}
 $$
 
-即 ZMP 必须落在支撑多边形（Support Polygon）内。如果 ZMP 移动到边缘，系统将面临翻倒。
+即 ZMP 位于支撑多边形（Support Polygon）内。该瞬时条件不能单独保证长期稳定或可停止；还需考虑质心速度、摩擦、执行器能力及未来落脚点。ZMP 接近边缘意味着接触力矩裕量减小。
 
 ## 捕获点（Capture Point, CP）
 
-基于 LIP 方程，可以导出**捕获点（Capture Point）**。CP 是机器人必须跨步才能停止的位置：
+基于 LIP 方程，可以导出**捕获点（Capture Point）**。在固定高度 LIP 模型中，CP 是选择为恒定 ZMP 后可使质心渐近停止的位置：
 
 $$
 \mathbf{\xi} = \mathbf{x} + \frac{1}{\omega} \dot{\mathbf{x}}
 $$
 
-当 CP 位于支撑多边形外时，机器人如果不跨步，即使 ZMP 落在支撑区内也无法最终停止，必然会跌倒。
+在固定支撑、固定高度且忽略角动量变化的 LIP 假设下，CP 位于支撑多边形外意味着仅调整当前支撑区域内的 ZMP 无法实现不跨步捕获；需要改变支撑或采用模型之外的平衡机制，不能直接推断真实机器人必然跌倒。
 
 ## 在控制中的应用
 
