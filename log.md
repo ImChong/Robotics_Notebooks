@@ -202,6 +202,8 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-18] ingest | 归档 Alex Wang 联想记忆教程与公开实验代码，补充 Transformer 的参数/上下文记忆区别及容量假设边界
+
 ## [2026-10-18] ingest | REK Simulator 与 iOS TestFlight
 
 - 归档 REK 官方模拟器页与 Steam 产品页，更新既有 REK 实体节点。
