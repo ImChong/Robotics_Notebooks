@@ -7,9 +7,9 @@ project_id: rigid-soft-hybrid-link-humanoid
 arxiv: "2610.15073"
 papers: ["10.1109/IROS58592.2024.10801838"]
 related:
-  - ../../wiki/concepts/whole-body-control.md
-  - ../../wiki/concepts/impedance-control.md
-  - ../../wiki/tasks/humanoid-locomotion.md
+  - ../concepts/whole-body-control.md
+  - ../concepts/impedance-control.md
+  - ../tasks/humanoid-locomotion.md
 sources:
   - ../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md
 summary: "东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。"
