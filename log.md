@@ -202,6 +202,11 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-18] ingest | OpenAI GPT-6 软件维护实践入库
+
+- 归档 GPT-6 Astra / GPT-6.1 Sol 在代码清理、过期实验审查与 CI 优化中的证据驱动工作流。
+- 将成本/发现数与 CI 时延数据作为 OpenAI 内部案例补充到 agentic coding 概念页，并明确机器人场景属于方法映射。
+
 ## [2026-10-18] ingest | sources/papers/theophys_eval_arxiv_2610_16733.md — 归档自主理论物理 agent 基准与评测边界
 
 ## [2026-10-18] ingest | 收录 arXiv:2610.15073 刚-软混合链路人形机器人论文
