@@ -70,11 +70,17 @@
 - **对 wiki 的映射：**
   - [ASPIRE](../../wiki/methods/aspire.md) — 常见误区与局限节。
 
+## 代码发布后续核查（2026-10-18）
+
+- 官方项目页现关联 arXiv:2607.00272 与代码仓库；仓库发布 v1.0，并新增真机魔方在线学习、桌面整理跨具身演示及更广泛的评测摘要。
+- 代码入口：<https://github.com/NVlabs/ASPIRE>；独立归档见 [sources/repos/nvlabs-aspire.md](../repos/nvlabs-aspire.md)。
+- README 报告 80 个 LIBERO-Pro Goal / Object / Spatial / Long 任务上 99% 成功率，并覆盖部分 Robosuite、BEHAVIOR-1K；此发布摘要与本文引用的原论文评测协议分开记录。
+
 ## 当前提炼状态
 
 - [x] 三组件系统、执行引擎 trace、技能库、进化搜索、主基准结果、零样本迁移、真机跨具身与局限已摘录到可维护粒度
-- [ ] arXiv 号确认后补充 HTML/PDF 锚点
-- [ ] 官方代码发布后应单独 `sources/repos/` 索引并回链
+- [x] arXiv:2607.00272 已由项目页与论文页确认
+- [x] 官方代码仓库已发布并独立归档，已回链项目页与 wiki
 
 ## 对 wiki 的映射（汇总）
 
