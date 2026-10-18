@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-18
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:
@@ -23,6 +23,7 @@ related:
 sources:
   - ../../sources/papers/aspire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-aspire.md
+  - ../../sources/repos/nvlabs-aspire.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
 ---
 
@@ -134,6 +135,14 @@ flowchart TB
 - **仅执行引擎：** LIBERO-Pro 宏平均 **14% → 62%**（最大单项增益）。
 - **+进化搜索：** 在剩余难例上进一步提升；前几轮迭代收益最陡。
 
+## 官方代码与 2026-10 v1.0 更新
+
+官方仓库已开放 ASPIRE v1.0（Apache-2.0 项目材料；第三方依赖仍遵循各自许可）。README 报告其在 80 个 LIBERO-Pro Goal / Object / Spatial / Long 任务上达到 99% 成功率，并覆盖部分 Robosuite 与 BEHAVIOR-1K 任务；这是仓库发布说明的结果，评测范围与下方论文主表不同，不能视作全套任务均为 99%。
+
+官方还展示了两类新案例：用 GPT-6 Astra 在真机上在线学习魔方转动技能，以及从 Claude Opus 4.6 仿真程序迁移到 GPT-5.5 真机 YAM 的长时程桌面整理。后一案例迁移的是技能指导，机器人、API 与程序仍需在真机侧验证。
+
+复现入口见 [ASPIRE 官方仓库归档](../../sources/repos/nvlabs-aspire.md)。仿真 Quick Start 需要 CUDA、uv 和 gated SAM3 权重的 Hugging Face token。仓库明确警告：agent 生成的 Python 有完整导入权限，模拟运行也不是安全沙箱；应在隔离主机运行，并禁止仿真 agent 访问真实硬件。真机实验须按独立操作规程并由操作员授权。
+
 ## 与 ENPIRE 的分工（GEAR 内对照）
 
 | 维度 | **ASPIRE** | **ENPIRE** |
@@ -181,6 +190,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [ASPIRE 官方仓库](../../sources/repos/nvlabs-aspire.md) — 源码、Quick Start 与安全说明
 - ASPIRE 官方项目页：<https://research.nvidia.com/labs/gear/aspire/>
 - 论文 PDF：<https://research.nvidia.com/labs/gear/aspire/assets/Aspire.pdf>
 - [ENPIRE](./enpire.md) — 真机策略自改进束具（EN–PI–R–E）
