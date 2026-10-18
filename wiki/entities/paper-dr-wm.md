@@ -60,7 +60,7 @@ summary: "DR-WM（arXiv:2610.17630；云深处科技等）：以真实机器人�
 
 ## 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   OBS["初始图像、机器人状态与地形"]
   PHY["PhyMap：几何对齐的空间物理先验"]
@@ -72,7 +72,7 @@ flowchart LR
   OBS --> PHY --> CAL --> SIM --> VID --> UPD
   UPD --> SIM
   SIM --> VLM
-\`\`\`
+```
 
 ## 评测要点
 
