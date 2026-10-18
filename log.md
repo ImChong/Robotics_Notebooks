@@ -202,6 +202,8 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-18] ingest | sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md — 具身智能小站 10-18 期 26 篇：新建 19 + 复用 7 个独立论文节点，阅读坐标 embodied-station-2026-10-18-26-papers-technology-map；开源结论 16 已开源 / 3 待发布 / 7 项目页未列 GitHub
+
 ## [2026-10-18] ingest | 归档 Alex Wang 联想记忆教程与公开实验代码，补充 Transformer 的参数/上下文记忆区别及容量假设边界
 
 ## [2026-10-18] ingest | REK Simulator 与 iOS TestFlight
