@@ -5,15 +5,17 @@ tags:
   - humanoid
   - locomotion
 status: complete
-updated: 2026-10-03
+updated: 2026-10-18
 arxiv: "2609.24552"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/papers/smoothness-constraint-locomotion_arxiv_2609_24552.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "DeCap 平滑约束（arXiv:2609.24552）：DeCap：上下半身分别设物理运动约束，有界屏障惩罚接近边界前介入；可跨地形迁移。"
 ---
 
