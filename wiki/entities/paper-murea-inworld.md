@@ -2,7 +2,6 @@
 type: entity
 project_id: murea-inworld
 project: https://murea.ai/
-paper: https://murea.ai/page/paper/InWorld-technical-report.pdf
 code: https://github.com/Murea-Labs/InWorld
 tags:
   - world-models
