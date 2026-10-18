@@ -6,7 +6,7 @@ tags:
 - world-action-model
 - vla
 status: complete
-updated: '2026-10-05'
+updated: '2026-10-17'
 arxiv: '2601.21998'
 venue: arXiv 2026
 code: https://github.com/Robbyant/lingbot-va
@@ -108,6 +108,7 @@ sequenceDiagram
 - [Robbyant 家族与 VA 2.0](./robbyant.md)
 - [LingBot-VLA](./lingbot-vla.md)
 - [世界模型](../methods/generative-world-models.md)
+- [R²-WAM](./paper-r2-wam.md) — 让 WAM 自身重生成旧任务 rollout 作回放以缓解持续学习遗忘；作者指出遗忘集中在逆动力学部分
 
 ## 参考来源
 

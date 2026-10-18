@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-17
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -310,6 +310,7 @@ flowchart TD
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md)（直线执行器 + 闭链连杆与行走动态、能耗叙事）
 - [膝/腿主承力链为何通常避开谐波](../concepts/humanoid-knee-harmonic-drive-limits.md)（冲击谱载与主力流布置；与臂部精密谐波选型对照）
 - [State Estimation](../concepts/state-estimation.md)
+- [DA-AO（外骨骼步态相位估计）](../entities/paper-data-augmented-adaptive-oscillators.md) — 运动模式识别选择自适应振荡器参数，跨平地/坡道/楼梯估计步态相位（IEEE T-RO 2026）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）

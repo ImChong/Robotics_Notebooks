@@ -154,6 +154,7 @@ sequenceDiagram
 ## 关联页面
 
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 语义地图的上位概念
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — CoSMO 位于「2D→3D 提升与语义建图」层：开放词汇标签经 conformal 校准后才交给下游避障消费
 - [零样本物体导航](../tasks/zero-shot-object-navigation.md) — 评测任务族
 - [Safety filter](../concepts/safety-filter.md) — 安全约束的另一条路线
 - [Habitat-Sim](../entities/habitat-sim.md) — 仿真评测平台

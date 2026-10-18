@@ -78,6 +78,20 @@ flowchart TB
 
 **不适用**：仓库已发布，但抓取的 README 未显示安装 / 运行命令，入口脚本无法辨识（`scripts/`、`pyproject.toml` 内容未读，2026-10-17 核查）。待入口确认后按 `embodied_agent/` 与 `policy/modified_pi05/` 补图。
 
+## 与其他工作对比
+
+| 维度 | Orchestra（本文） | [Harness VLA](./paper-harness-vla.md) | [BATON](./paper-baton-long-horizon-manipulation.md) | [行为树 + VLA 编排](../concepts/behavior-tree-vla-orchestration.md) |
+|------|------|------|------|------|
+| 编排器 | LLM 规划智能体 + 空间落地（MolmoPoint + SAM3） | 记忆增强 agentic planner | LLM 子任务规划 + 子任务探索 | 行为树 |
+| 动作策略 | 改造 π0.5（6 帧窗口、时间注意力） | 冻结 VLA 作可重试接触原语 + 解析原语 | 冻结 VLA，不更新参数 | VLA 负责语言条件连续操作 chunk |
+| 子任务切换依据 | 独立 Gemma-300M 进度评估器 | 本库页未述 | transition-aware 记忆 | BT 节点的执行结构 |
+| 主评测 | RMBench、RMBench-Compose、4 个真机任务 | LIBERO-Pro、RoboCasa365、RoboTwin | RoboMemArena | 概念页，无统一评测 |
+
+- **相对 Harness VLA：** Orchestra 论文把 HarnessVLA 列为基线（RMBench 68.22% 对 26.78%，RMBench-Compose ASL 7.35 对 2.986）；基线具体配置以 Orchestra 原文为准。
+- **相对 BATON：** BATON 冻结 VLA、只在 agent 与记忆层适配；Orchestra 改造并训练 π0.5，同时外置进度判定。
+- **相对行为树编排：** BT 方案的任务结构由行为树显式定义；Orchestra 的子任务序列由规划智能体从多模态指令生成，切换由学习型评估器决定。
+- 各文基准不同，只有 Orchestra 原文中的 HarnessVLA 数字同口径。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -115,6 +129,7 @@ flowchart TB
 
 - [VLA](../methods/vla.md) — 动作生成骨干（π0.5）
 - [行为树 + VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 同属任务编排与 VLA 解耦的思路
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Orchestra 在 RMBench 等长程基准上报告成功率，读数前先按任务成功率层核对协议与 episode 数
 - [SAM 3](../entities/paper-sam3.md) — 空间落地所用分割模型
 - [操作任务](../tasks/manipulation.md)
 

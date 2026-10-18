@@ -85,6 +85,20 @@ flowchart TB
 
 **不适用**：官方仓库截至 2026-10-17 无代码（仅 README、LICENSE、assets），无可对齐的训练或评测入口；代码发布后再补。
 
+## 与其他工作对比
+
+| 维度 | SEAR（本文） | [ASENA](./paper-asena-self-evolving-agents.md) | [Agentic Coding Agent](./paper-agentic-coding-manipulation.md) |
+|------|------|------|------|
+| 定位 | 框架 + 基准：检验"自进化"是否真学习 | 人形机器人上的自进化 coding agent 系统 | 本地 coding agent 写/调试代码控制机械臂 |
+| 改进方式 | 三种模式：CaP 写代码、AaP 实时行动、auto-research 微调 VLA | 固定权重，经验沉淀为可执行工作区（程序与笔记） | 固定原语 + Skills 文档，agent 写脚本执行 |
+| 对照设计 | 同预算 best-of-3 重启、无库 Vanilla、重复运行 | 工作区多轮演进，重复相同任务集，未见同等对照组 | 页面未述对照组 |
+| 规模 | 330 仿真 + 5 真机任务，7 个模型 | R2R/RxR/EQA 仿真 + G1 四个定性演示 | UR3e 9 个玩具任务、45 次试验 |
+| 开源 | 仓库仅占位 | 页面未注明 | 未开源 |
+
+- **相对 ASENA：** ASENA 报告工作区演进后重复任务成功率上升，但评测重复相同任务集；SEAR 正是要把这类收益与"多试几次 / 熟悉任务"拆开，可视为对此类声明的检验工具。
+- **相对 Agentic Coding Agent：** 后者是单模型、单平台的 code-as-policy 演示；SEAR 在同一任务集上横向比较多模型与三种改进模式，并给出 T1–T5 泛化层级。
+- 各文任务、平台与模型不同，成功率数字不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -127,6 +141,7 @@ flowchart TB
 - [AI 自动科研](../concepts/ai-auto-research.md) — 智能体自主做研究循环的总体框架
 - [递归自改进](../concepts/recursive-self-improvement.md) — 自进化声明的上位概念
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 对照组设计思路的相关讨论
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SEAR 的对照组思路对应「策略任务成功率」层：区分真学习与多试几次，再谈 sim↔real 校准
 - [LIBERO 基准](../entities/libero-benchmark.md) — 论文用到的仿真基准之一
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 模型写代码控制机器人的接口层
 

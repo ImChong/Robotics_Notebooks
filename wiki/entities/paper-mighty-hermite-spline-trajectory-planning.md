@@ -11,7 +11,7 @@ tags:
   - ros2
   - mit-acl
 status: complete
-updated: 2026-09-15
+updated: 2026-10-17
 arxiv: "2511.10822"
 venue: IEEE RA-L 2026
 code: https://github.com/mit-acl/mighty
@@ -115,6 +115,7 @@ flowchart LR
 - [EGO-Planner Swarm](./ego-planner-swarm.md) — 同赛道 B-spline 软约束基线与工程对照
 - [PX4 Autopilot](./px4-autopilot.md) · [MAVSDK](./mavsdk.md) — 常见执行层
 - [Flightmare](./flightmare.md) — 敏捷飞行仿真前端（感知—规划闭环验证）
+- [SANDO](./paper-sando.md) — 同为 MIT ACL 四旋翼规划；以时空安全走廊 + 硬约束 MIQP 处理动态未知障碍，与 MIGHTY 的样条优化路线对照
 
 ## 方法栈
 

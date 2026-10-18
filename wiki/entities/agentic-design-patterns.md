@@ -75,6 +75,7 @@ Antonio Gullí 的 *Agentic Design Patterns: A Hands-On Guide to Building Intell
 ## 关联页面
 
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 将模式放进可复现 task、grader 与环境终态的评测闭环。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 书中评测章节落到具身 agent 时，按认知 / 世界模型 / 任务成功率 / sim↔real 四层选基准。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 对照附录中的 coding agent 内容，理解工具之外仍需保留的架构、安全与运维判断。
 - [多模态基础](../concepts/multimodality-basics.md) — 阅读书中 GUI 与现实环境 agent 示例的输入模态背景。
 

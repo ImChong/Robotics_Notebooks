@@ -99,6 +99,20 @@ sequenceDiagram
 - **复现表格：** `scripts/run_matrix.py` 的 `run` / `table` 子命令；`tools/verify_release.py` 对照论文数值校验发布物。
 - README 称默认设置下约 100 s（CPU）/ 约 3 s（RTX 4090）；PyTorch 需自行安装。
 
+## 与其他工作对比
+
+| 维度 | Cepheid（本文） | [cRVAE 可变形操作](./paper-crvae-deformable-manipulation-partial-obs.md) | [ClothTransformer](./paper-clothtransformer-unified-latent-cloth-simulation.md) | [运动重定向](../concepts/motion-retargeting.md) |
+|------|------|------|------|------|
+| 输入 → 输出 | 稀疏顶点位移 → 稠密网格运动补全 | 少量 corner nodes → 绳 / 布全形状 | 布料网格当前状态 → 下一帧（自回归仿真） | 源形态运动 → 目标形态运动 |
+| 先验形式 | 谐波延拓基底 + 流匹配无量纲残差 + 单独幅值估计 | 条件循环 VAE | 潜空间 Transformer，可微 CCD 训练 | 依赖跨形态对应关系 |
+| 跨几何族 | 统一模型覆盖 DT4D / AMASS / Franka，并在布料、腿式留出族上检验 | 面向绳 / 布等可变形物体 | 单模型覆盖人体着装、抓布、刚体碰撞三类布料场景 | 依具体方法而定 |
+| 机器人闭环 | 仅 Isaac Lab 软棒抓取定性演示，无定量误差 | 驱动 MPC，含 Go2 协作避绳实验 | 定位为仿真器，非控制闭环 | 常用于人形动作数据生成 |
+
+- **相对 cRVAE：** 二者都从稀疏观测推全形状，但 cRVAE 针对具体可变形物体并接入 MPC 控制，Cepheid 追求跨几何族通用的补全先验，机器人部分只是定性检验。
+- **相对 ClothTransformer：** ClothTransformer 学的是布料动力学的时序推进，Cepheid 不预测未来，而是在同一时刻由部分观测补全运动。
+- **相对运动重定向：** 重定向需要跨形态对应，Cepheid 明确不需要骨架、配准或跨网格对应。
+- 各文数据集与误差指标不同（Cepheid 报相对误差，ClothTransformer 报 MVE），数字不可横比。
+
 ## 工程实践
 
 | 项 | 说明 |

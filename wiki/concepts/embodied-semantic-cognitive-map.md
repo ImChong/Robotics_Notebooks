@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, semantic-mapping, embodied-ai, cognition, open-vocabulary, navigation, habitat, vln]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-17
 related:
   - ./vision-language-feature-fusion.md
   - ./2d-to-3d-semantic-lifting-gap.md
@@ -87,6 +87,7 @@ flowchart TB
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
 - [TravExplorer](../entities/paper-travexplorer.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
+- [CoSMO](../entities/paper-cosmo.md) — 把 VLM 语义标签经 conformal 校准为带覆盖保证的标签集合，再按类别膨胀障碍物，语义地图直接服务安全避障
 
 ## 参考来源
 

@@ -79,6 +79,20 @@ flowchart TB
 
 **不适用**：截至 2026-10-17 项目页只写 "Code coming soon"，无可运行的官方代码，无法对齐真实入口；上方流程图依据论文 HTML 描述。
 
+## 与其他工作对比
+
+| 维度 | ForceWAM（本文） | [ForceVLA](./paper-forcevla.md) | [ImplicitRDP](./paper-implicitrdp-visual-force-diffusion-policy.md) | [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) |
+|------|------|------|------|------|
+| 范式 | 世界模型预测视频 + 力矩未来，IDM 转成动作 | VLA（π₀）上加力觉模态 | 端到端视觉–力扩散策略 | 微调 Cosmos-Predict2 视频模型做控制与规划 |
+| 力觉的角色 | 既是预测的"未来"，又是执行时 IDM 的实时反馈 | 6 轴 wrench 经 FVLMoE 作为 VLM 后的一等输入 | 慢快 token 处理异步力观测，VRR 辅助监督 | 本库页未述力觉通道 |
+| 是否用 play 数据 | play 只喂 IDM，0→200 条单调提升 | 本库页未述 | 本文实验中 + play 反而掉点 | 本文实验中 + play 反而掉点 |
+| 开源 | Code coming soon | 代码待发布 | 本库页未述 | 本库页未述 |
+
+- **相对 ForceVLA：** ForceVLA 把力当作 VLA 的输入模态，ForceWAM 把力当作需要预测与对齐的目标未来；本文四任务上 ForceVLA 为 15–60%，ForceWAM 为 85–95%。
+- **相对 ImplicitRDP：** 二者都处理慢视觉 / 快力觉的时间尺度差，但 ImplicitRDP 在单一策略内做，ForceWAM 把未来生成与动作响应拆成两个模型并分别配数据。
+- **相对 Cosmos Policy：** 二者都从 Cosmos 视频基础模型出发，本文实验显示 Cosmos Policy 直接并入 play 会掉点（如 Hanoi 60→40），而 ForceWAM 只让 IDM 吃 play 数据。
+- 基线数字均为本文 4 任务、每格 20 次真机试验的同一设置；ForceVLA 自报的五任务 60.5% 为其自身任务集，不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

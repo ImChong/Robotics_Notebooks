@@ -86,6 +86,19 @@ flowchart TB
 
 **不适用**：官方代码仅为匿名评审仓库，2026-10-17 抓取不到文件树与入口，无法对齐真实模块；公开发布后补充。
 
+## 与其他工作对比
+
+| 维度 | MIND（本文） | [ConceptGraphs](./paper-conceptgraphs-open-vocabulary-3d-scene.md) | [SayPlan](./paper-sayplan-llm-scene-graph-planning.md) |
+|------|------|------|------|
+| 关注环节 | 指令条件下房间资格判断的增量维护 | 构建开放词汇 3D 对象图 | 在大型场景图上检索任务子图并做 LLM 规划 |
+| 输入前提 | 已填充的语义地图 + 受限状态词表 | 观测 + VLM 语义 | 已建好的场景图 |
+| 环境变化 | 依赖集合与事件足迹求交，只刷新受影响房间 | 本库页未述 | 本库页未述 |
+| 语言模型角色 | 每条指令一次依赖编译 + 语义评估器 | VLM 提供开放词汇语义 | 规划 + 符号约束检查 |
+
+- **相对 ConceptGraphs：** ConceptGraphs 负责把场景建成可查询的开放词汇表示；MIND 假设这类语义地图已存在，只解决「事件后哪些缓存判断需要重算」。
+- **相对 SayPlan：** SayPlan 的贡献在把大场景图折叠进 LLM 上下文做规划；MIND 不做规划，贡献是在决策与全量重算一致的前提下减少评估调用（ProcTHOR 30.6 → 11.2）。
+- 上位概念见 [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)；另两页为索引级摘要，无可横比数字。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -126,6 +139,7 @@ flowchart TB
 ## 关联页面
 
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — MIND 维护的房间级语义状态的上位概念
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — MIND 的增量语义状态属「2D→3D 提升与语义建图」层，再交给 LLM 规划消费
 - [零样本物体导航](../tasks/zero-shot-object-navigation.md) — 语义目标选择的任务语境
 - [AI2-THOR](ai2-thor.md) — 闭环评测仿真器
 - [Unitree G1](unitree-g1.md) — 硬件验证平台

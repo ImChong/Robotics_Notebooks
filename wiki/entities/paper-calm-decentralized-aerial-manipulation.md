@@ -80,6 +80,20 @@ flowchart TB
 
 **不适用**：2026-10-17 项目页链接的仓库 404，无法核对训练 / 推理入口；论文只说明构建在 Aerial Manipulation Lab 的公开 MARL 协同空中操作代码之上，未给 CALM 自身代码的发布声明。
 
+## 与其他工作对比
+
+| 维度 | CALM（本文） | [Fly-by-Code](./paper-fly-by-code-aerial-manipulation.md) | [保平坦性编队残差学习](./paper-flatness-preserving-quadrotor-formation.md) | [CTDE vs 去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) |
+|------|------|------|------|------|
+| 问题 | 3 架带臂 UAV 共搬篮筐并跟踪移动目标 | 单台空中机械臂的长程操作任务 | 多旋翼紧密编队飞行 | 多智能体 RL 训练范式选型 |
+| 控制 / 决策方式 | 参数共享 MAPPO 策略 + ESO + 质量估计 + 偏航前馈 | 编码智能体写任务程序，并写 View / Probe 诊断程序修订 | 学习残差 + 反馈线性化与前馈，5 ms 控制周期 | 集中训练分散执行 vs 完全去中心化 |
+| 学习成分 | 端到端 RL 策略，critic 训练期用特权风 / 质心信息 | 不训练策略，依赖 LLM 编码与执行反馈 | 仅学习气动残差，控制律为模型基 | — |
+| 实机 | 无，仅 Isaac Lab 仿真 | 仿真程序免改迁移真机 | 有飞行数据（约 28 s） | — |
+
+- **相对 Fly-by-Code：** 二者都在 Isaac Lab 做空中操作，但 Fly-by-Code 解决任务级程序与失败诊断，CALM 解决多机共载的连续低层控制。
+- **相对保平坦性编队残差学习：** 后者保留模型基控制、只学干扰残差并有实机数据；CALM 让策略直接输出加速度 / 姿态率 / 关节目标，且尚无实机。
+- **相对 CTDE vs 去中心化 MARL：** CALM 属 CTDE（训练期特权 critic、执行期本机观测），但执行时仍依赖团队总线共享目标与质量标量，并非完全去中心化。
+- 各文任务与指标不同，数字不可横比；CALM 的 7.68 对 10.95 cm 仅与同平台臂式 Dec-MARL 可比。
+
 ## 工程实践
 
 | 项 | 说明 |

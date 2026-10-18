@@ -93,6 +93,20 @@ sequenceDiagram
 - **复现路径（README）：** conda `environment.yaml` 或 uv + `requirements.txt` → 下载数据 → `main.py` 训基线 GCFBC / `main_gen.py` 训 MCHC → `hyperparameters.sh` 列出 GCFBC、MC、TD2、MCHC、Dyn-Aug 命令；种子 0、1、2。
 - 视觉实验另训图像编码器，操作实验另训动作先验（README）。
 
+## 与其他工作对比
+
+| 维度 | TD-Aug（本文） | [HER](../methods/her.md) | [行为克隆](../methods/behavior-cloning.md)（GCFBC 基线） | [离线 RL](../comparisons/online-vs-offline-rl.md)（HIQL / QRL 等） |
+|------|------|------|------|------|
+| 目标来源 | GHM 采样的想象可达目标 + 真实未来状态混合 | 把轨迹实际到达的状态重标为目标 | 仅数据轨迹中的真实未来状态 | 价值函数学习目标条件价值 |
+| 能否跨轨迹拼接 | 能，GHM 经 TD 自举把不同轨迹接起来 | 只在单条轨迹内重标 | 弱（pointmaze-giant 为 0%） | 能，依靠价值传播 |
+| 训练流程 | 保持标准 BC，只增广目标分布 | 依附 RL 的经验回放 | 监督学习 | 需训练价值 / Q 函数 |
+| 本文报告结果 | pointmaze 平均 79，视觉 antmaze 56 | 未在本文直接对比 | pointmaze 平均 31 | pointmaze QRL 58、HIQL 30；视觉 antmaze HIQL 69 |
+
+- **相对 HER：** HER 式重标只用"同一轨迹里真实到达的状态"，本文的 MC-Aug 对照接近这一思路（pointmaze 平均 37）；TD-Aug 用 GHM 自举想象跨轨迹可达状态，才拿到拼接收益。
+- **相对行为克隆：** TD-Aug 不改 BC 的损失与架构，只换目标分布，理论上 α = 1 时等价于价值加权回归的一步策略改进。
+- **相对离线 RL：** 在状态迷宫上 TD-Aug 超过 QRL / HIQL，但在视觉 antmaze 上仍落后 HIQL，说明数据层增广尚未全面取代价值型方法。
+- 上表数字均为本文在 OGBench 同一设置下的报告；与其他论文结果不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

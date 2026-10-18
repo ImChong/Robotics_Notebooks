@@ -117,6 +117,20 @@ sequenceDiagram
 - 最坏可达集膨胀能提供保守安全边界，但密集场景会压缩可行空间。
 - 官方代码要求 Ubuntu 22.04 与 ROS 2 Humble；Docker 说明需要 Gurobi WLS Academic license。复现前应核对优化器许可、传感器和飞控接口。
 
+## 与其他工作对比
+
+| 维度 | SANDO（本文） | [MIGHTY](./paper-mighty-hermite-spline-trajectory-planning.md) | [EGO-Planner Swarm](./ego-planner-swarm.md) |
+|------|------|------|------|
+| 碰撞约束 | 时空安全走廊内的硬约束 MIQP | ESDF 软惩罚（单次 NLP） | ESDF 相关障碍项的 B-spline 优化（软约束路线） |
+| 动态障碍 | AEKF 跟踪预测，按时间层最坏可达集膨胀 | 页面未将动态障碍预测作为重点 | 页面未将动态障碍预测作为重点 |
+| 轨迹表示 | 分段轨迹 + 多面体分配（混合整数） | 五次 Hermite 样条，联合优化段时长 | 均匀 B-spline |
+| 安全表述 | 有界假设下的连续时间避碰定理 | 无硬约束保证 | 无硬约束保证 |
+| 机构 / 生态 | MIT ACL，ROS 2 Humble，需 Gurobi | MIT ACL，ROS 2 Humble | ZJU FAST Lab，含多机扩展 |
+
+- **相对 MIGHTY：** 同实验室的两条路线：MIGHTY 以软约束换求解速度和飞行时间，SANDO 以 MIQP 硬约束和时空走廊换带前提的安全保证，代价是需商业求解器且密集场景可能过保守。
+- **相对 EGO-Planner Swarm：** EGO 是成熟的软约束局部规划与多机工程基线；SANDO 显式建模动态障碍未来运动，面向单机动态未知环境。
+- 各文仿真基准、硬件与指标不同，数字不可横比；SANDO 的形式保证也不应与另两者的经验结果直接等价比较。
+
 ## 结论
 
 **SANDO 的关键价值是把动态障碍预测转成时空分层的硬安全走廊，再由降维 MIQP 求解器快速生成局部轨迹；其安全性应按定理前提和实际感知 / 跟踪误差一起解读。**

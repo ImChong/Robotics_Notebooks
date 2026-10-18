@@ -3,7 +3,7 @@ type: entity
 project_id: embodied-evo-coding-agent
 tags: [paper, robotics, coding-agent, agentic, memory, self-improvement, physical-ai, simulation, tsinghua, arxiv]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-17
 arxiv: "2610.18867"
 project: https://lab.einsia.ai/embodiedevo/
 code: https://github.com/Einsia/EmbodiedEvo
@@ -135,6 +135,7 @@ sequenceDiagram
 ## 关联页面
 - [RoboHarness](./paper-robo-harness.md) — 编排异构机器人策略，侧重能力路由与交接。
 - [ASENA](./paper-asena-self-evolving-agents.md) — 使用环境反馈改进具身导航 agent，任务和经验表示不同。
+- [RAX](./rax-scaling-online-exploration.md) — 冻结 coding agent 经机器人 API 在线探索，再把成功经验编译成可复用的感知—规划—控制程序。
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 具身 agent 的任务分解与执行编排。
 
 ## 参考来源

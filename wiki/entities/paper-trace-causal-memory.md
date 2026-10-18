@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, memory, visuomotor, act, diffusion-policy, long-horizon, zeno-ai, zju, zjut, usyd]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-17
 arxiv: "2606.14551"
 related:
   - ../methods/imitation-learning.md
@@ -163,6 +163,7 @@ sequenceDiagram
 - [Imitation Learning](../methods/imitation-learning.md)
 - [SAI](./paper-sai-sequential-asymmetric-imitation.md)
 - [Zeno-1](./paper-zeno-1-collaborative-intelligence.md)
+- [TRACE（人形跨形态迁移）](./paper-trace-humanoid-transfer.md) — 同缩写不同论文：把 SONIC 全身控制器从 G1 迁移到 H2，勿与本页因果记忆工作混淆
 
 ## 参考来源
 

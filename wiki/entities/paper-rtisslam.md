@@ -100,6 +100,20 @@ sequenceDiagram
 - **复现路径（README）：** `python3 tools/setup_linux.py` 安装 → `python -m pytest tests/` 冒烟 → `tools/demo.py --world office`（需 `data/demo/runs/<world>/map.npz`）；论文复现为 `scripts/gen_drive.py`、`run_final.py`、`paper_figures.py`。
 - **真机：** `ros2 launch rtisslam_bringup real.launch.py mode:=mapping|localization`；论文未报告真机实验。
 
+## 与其他工作对比
+
+| 维度 | RTISSLAM（本文） | [slam_toolbox](./slam-toolbox.md) | [ORB-SLAM3](./orb-slam3.md) | [RAGNAROK](./paper-ragnarok-radar-visual-kinematic-inertial-slam.md) |
+|------|------|------|------|------|
+| 主传感器 | 空气中 3D 成像声呐（仅水平面） | 2D 激光雷达 | 单目/双目/RGB-D（+IMU） | 雷达 + 视觉 + 腿式运动学 + IMU |
+| 后端 | BatSLAM 2.0 鲁棒位姿图（iSAM2 + Huber） | Karto 位姿图 + lifelong 地图序列化 | 视觉特征 BA + 多地图 Atlas | B 样条本体骨干 + 多因子自适应加权 |
+| 地图表示 | 关键帧证据挂靠节点的占据栅格，只负责渲染 | 2D 占据栅格，参与扫描匹配 | 稀疏特征点地图 | 未作为重点（关注轨迹） |
+| 验证 | 仅仿真（三种镜面墙世界） | 成熟 ROS 2 工程栈 | 公开数据集与大量实测 | Spot 真机室外 |
+
+- **相对 slam_toolbox：** 论文把它直接跑在同一声呐数据上作为基线（默认 23.1–35.5 m ATE），说明激光式扫描匹配假设在声呐稀疏、镜面回波下失效；但该基线本为激光设计，对比并不公平。
+- **相对 ORB-SLAM3：** 二者都依赖回环修正漂移，但 RTISSLAM 的回环来自声学能量图描述子 + 序列验证，面向相机失效的黑暗、烟尘场景。
+- **相对 RAGNAROK：** 同属"非视觉传感器补位退化环境"的思路，RAGNAROK 多传感器紧耦合且有真机，RTISSLAM 坚持单一声呐且仅仿真。
+- 各文传感器、场景与指标不同，数字不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |

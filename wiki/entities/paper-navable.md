@@ -75,6 +75,19 @@ flowchart TB
 
 **不适用**：论文称管线与 Isaac Sim 扩展发布在 HF 数据集地址，但 2026-10-17 抓取的页面未显示文件列表，无法对齐真实入口（未核实）。
 
+## 与其他工作对比
+
+| 维度 | NavAble（本文） | [Segment Anything](./paper-segment-anything.md) | [SAM 3](./paper-sam3.md) |
+|------|------|------|------|
+| 目标 | 11 类盲人导航关键物体的语义分割数据与合成管线 | 类别无关的可提示分割基础模型 | 统一图像 / 视频可提示概念分割（PCS） |
+| 数据规模 | 约 41.5K 真实图像 + 452K 合成帧 | SA-1B（11M 图像 / 1.1B mask） | 本库页未列 |
+| 主要产出 | 数据集（HF，cc-by-4.0）+ 合成管线，微调 SAN、Mask2Former 等 | 模型 + 数据集，Apache-2.0 推理仓 | 模型 + facebook/sam3.1 checkpoint |
+| 在本文中的角色 | — | 管线以 SAM2.1 做物体分割标注 | 本文未直接评测 |
+
+- **相对 Segment Anything：** SAM 系列提供通用 mask 能力，并在 NavAble 管线中被当作标注工具；NavAble 补的是按钮、扶手等罕见且安全攸关类别的语义标签与视角覆盖。
+- **相对 SAM 3：** SAM 3 走开放词汇概念提示路线；NavAble 中开放词汇模型 SAN 零样本仅 14.94 mIoU，说明这类长尾无障碍类别仍需领域数据微调（该结论不针对 SAM 3 本身）。
+- 各文任务与测试集不同，mIoU 不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -84,6 +97,7 @@ flowchart TB
 | 评测 | 用地点分离的真实测试集；闸机类无真实实例，需排除出均值 |
 | 部署前 | 先在目标平台第一视角上做小规模评测，再决定是否加合成 |
 | 管线复用 | 资产需 SAM 3D 重建并导出 USD，摆放与轨迹录制仍需人工 |
+| 重定向就绪度 | 数据为 2D 图像 + 像素级掩码，可直接作分割训练输入；跨平台迁移靠视角而非形态重定向，手杖 / Go2 第一视角的出分布 mIoU 明显偏低，部署前须在目标平台视角补采或微调 |
 
 ## 实验与评测
 
@@ -111,6 +125,7 @@ flowchart TB
 ## 关联页面
 
 - [图像分割分类](../concepts/image-segmentation-taxonomy.md) — 语义 / 实例分割背景
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — NavAble 填的是「2D 检测/分割选型」层的数据缺口；手杖 / Go2 出分布结果提示须在目标平台视角上复核
 - [SAM 3](../entities/paper-sam3.md) — 同系列分割基础模型（管线使用 SAM2.1 与 SAM 3D Objects）
 - [Isaac Sim](../entities/isaac-sim.md) — 合成帧渲染平台
 - [Sim2Real](../concepts/sim2real.md) — 合成到真实的迁移问题

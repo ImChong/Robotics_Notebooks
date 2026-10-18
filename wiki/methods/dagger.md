@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-10-10
+updated: 2026-10-17
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -156,6 +156,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - [DAgger 原论文（Ross et al., 2011）](../entities/paper-ross-dagger.md) — 理论锚点与 no-regret reduction
 - [ULTRA：统一多模态 loco-manipulation 控制](../tasks/ultra-survey.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)
+- [PACER](../entities/paper-pacer.md) — 不改数据聚合流程，只用过程证据给自身 rollout 与人工纠正的动作块重加权损失；DAgger 式纠正数据的加权变体
 
 ## 推荐继续阅读
 

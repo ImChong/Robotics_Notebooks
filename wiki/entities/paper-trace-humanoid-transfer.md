@@ -106,6 +106,20 @@ sequenceDiagram
 - **复现路径（README）：** 克隆含子模块 → `python3 tools/validation/verify_release.py` → 按 `docs/DEPLOYMENT.md` 安装并构建控制器 → 跑 Sim2Sim；真机用 Sim2Real，遥操作用 PICO + XRoboToolkit。
 - 本次仅读取仓库页面，未克隆或运行。
 
+## 与其他工作对比
+
+| 维度 | TRACE（本文） | [SONIC-Transfer](./paper-sonic-transfer.md) | [Any2Any](./paper-any2any-cross-embodiment-wbt.md) |
+|------|------|------|------|
+| 源 → 目标 | SONIC：Unitree G1 → Unitree H2 | GEAR-SONIC：G1 → AgiBot X2 Ultra | 单源 WBT 专家（含 Gear-SONIC）→ LimX Oli / Luna 等 |
+| 对齐方式 | 线性运动学先验投影 + PD 按惯量缩放 + 编码器蒸馏 | 闭式 per-joint affine codec（sidecar 表） | 运动学对齐 |
+| 可训范围 | 参考编码器、控制解码器与 critic 上的 LoRA（r=32），两阶段 PPO 课程 | 只训动力学解码器 LoRA（约 0.25% 参数），其余冻结 | 动力学敏感模块上的 LoRA 后训练 |
+| 报告算力 | 约 8 GPU 小时 | 约 135 GPU 小时（约平台 2%） | 约 1% 全量训练成本 |
+| 真机 | H2 遥操作 + GR00T-N1.7 VLA 后训练 | 选中检查点真机验证 ongoing | 真机验证 |
+
+- **相对 SONIC-Transfer：** 两者都冻结 SONIC 表征、只训 LoRA；SONIC-Transfer 把可训范围压到动力学解码器并用闭式表对齐，TRACE 额外做编码器蒸馏与两阶段课程，并以 H2 真机下游 VLA 任务验证。
+- **相对 Any2Any：** 同为"运动学对齐 + LoRA 后训练"的 WBT 跨本体迁移；TRACE 给出逐组件消融（去掉预适配降至 87.29%），并强调数据筛选与课程设计。
+- 三者源/目标本体、评测运动集与算力口径不同（GPU 型号与是否含预训练均不一致），数字不可横比。
+
 ## 工程实践
 
 | 项 | 建议 |
