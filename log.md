@@ -202,6 +202,8 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-18] ingest | sources/papers/theophys_eval_arxiv_2610_16733.md — 归档自主理论物理 agent 基准与评测边界
+
 ## [2026-10-18] ingest | 收录 arXiv:2610.15073 刚-软混合链路人形机器人论文
 - 新增论文来源归档与单一论文实体页，保留仿真与真机实验的证据边界。
 - 更新 Whole-Body Control 页的反向引用。
