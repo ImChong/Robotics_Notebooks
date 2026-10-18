@@ -7,13 +7,11 @@ arxiv: "2609.33325"
 code: https://github.com/PSRben/VisionHOPE
 tags:
   - vision-backbone
-  - nested-learning
   - computer-vision
   - deep-learning
 related:
   - ../concepts/vision-backbones.md
   - ../concepts/vision-transformer.md
-  - ../concepts/nested-learning.md
 sources:
   - ../../sources/papers/visionhope_arxiv_2609_33325.md
   - ../../sources/sites/visionhope-huggingface.md
@@ -31,7 +29,6 @@ VisionHOPE 是一种基于 Nested Learning 的通用视觉骨干：图像上下�
 
 | 缩写 | 英文全称 | 简要说明 |
 | --- | --- | --- |
-| HOPE | Hierarchical Optimization for Persistent Evolution | 论文项目名中的缩写；本工作将其用于视觉骨干 |
 | NL | Nested Learning | 让不同更新频率的记忆/优化过程嵌套协同的学习视角 |
 | SRNL | Self-Referential Nested Learning | VisionHOPE 实现所用的自指嵌套学习构造 |
 | ViT | Vision Transformer | 以图像 token 全局交互建模的常见视觉骨干 |
