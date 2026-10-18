@@ -195,6 +195,19 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+---
+date: 2026-10-18
+op: ingest
+---
+
+将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
+
+## [2026-10-18] ingest | REK Simulator 与 iOS TestFlight
+
+- 归档 REK 官方模拟器页与 Steam 产品页，更新既有 REK 实体节点。
+- 官方称模拟器使用与真实机器人相同 AI，并将模拟赛与线下 pilot 资格连接；更新记录镜像提到 iPhone/iPad TestFlight，标注日期为 10 月 9 日。
+- 尚无一手依据确认 10 月 17 日首发或完整 AI 在手机本地运行。
+
 ## [2026-10-17] lint | 全量 wiki lint（full git history）：修复 20 个陈旧页（locomotion→DA-AO、NavDP→DevGRU、EmbodiedEvo→RAX、IL/RL/online-vs-offline-rl→robomimic，另 14 页补 CoSMO/CTP/ForceWAM/PACER/R²-WAM/RoboFQE/SANDO/SEAR/TRACE 回链）与 45 条信息型预警（29 篇 paper 补「与其他工作对比」、评测/感知栈枢纽回链 10 页、DA-AO venue、NavAble 重定向就绪度、VT-Bridge 措辞、缺页概念停用词 beta/choice/pip）
 
 ## [2026-10-17] ingest | 收录 DA-AO 外骨骼步态相位估计论文
