@@ -635,3 +635,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。
 - ForeDrive（2026）— [arXiv v2](https://arxiv.org/html/2609.26299v2)；来源摘录：[foredrive_arxiv_2609_26299.md](../../sources/papers/foredrive_arxiv_2609_26299.md)。
+
+## 交互式视听生成案例
+
+- [Murea-InWorld](../entities/paper-murea-inworld.md)：显式世界状态 Agent 规划用户动作，再调用视听生成服务产出并回看视频片段；其代码开放范围与机器人适用边界见实体页。
