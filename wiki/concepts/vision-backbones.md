@@ -7,7 +7,7 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-10-01
+updated: 2026-10-18
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/ai-architecture-map.md
@@ -23,6 +23,7 @@ related:
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/vision-banana.md
   - ../entities/paper-turingvit.md
+  - ../entities/paper-visionhope.md
 sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
