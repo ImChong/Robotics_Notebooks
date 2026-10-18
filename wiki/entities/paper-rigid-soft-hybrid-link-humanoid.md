@@ -5,7 +5,6 @@ status: complete
 updated: 2026-10-18
 project_id: rigid-soft-hybrid-link-humanoid
 arxiv: "2610.15073"
-papers: ["10.1109/IROS58592.2024.10801838"]
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/impedance-control.md
