@@ -523,6 +523,7 @@
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
 - [ecat_servo](wiki/entities/ecat-servo.md) — 实现 CiA402 伺服状态机的 EtherCAT 伺服配套库。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：C（CiA402 伺服状态机）） `📅unknown` `[entity_page]`
 - [ECC（Everything Claude Code）](wiki/entities/ecc.md) — ECC**（affaan-m/ECC，ecc.tools）是把 **编码 Agent `📅unknown` `[entity_page]`
+- [EdenLive：面向交互世界的实时生成渲染](wiki/entities/edenlive.md) — EdenLive** 是一个生成式渲染器：上游游戏引擎、coding agent 或其他程序维护世界状态、规则和动作，并提供参考视频；EdenLive 根据参考视频、目标首帧和文本提示输出更高细节 `📅unknown` `[entity_page]`
 - [eFlesh：可定制磁性触觉皮肤](wiki/entities/eflesh.md) — eFlesh](https://e-flesh.com/)（NYU；论文，[代码](https://github.com/no `📅unknown` `[entity_page]`
 - [sim2real：G1 部署运行时与跨代码库跟踪评测](wiki/entities/egalahad-sim2real.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
 - [EGO-Planner Swarm](wiki/entities/ego-planner-swarm.md) — EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-s `📅unknown` `[entity_page]`

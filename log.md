@@ -202,6 +202,12 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-18] ingest | EdenLive 官方资料、代码、权重均可用
+
+- 归档项目页、技术报告入口、官方仓库与公开权重；代码和模型权重已开放。
+- 归纳实时生成渲染的系统分工，记录 RTX 5090 约 24.7 FPS 的测量边界及 FLUX 工作台许可范围。
+- 新增项目实体，并从生成式世界模型方法页建立交叉引用。
+
 ## [2026-10-18] ingest | sources/sites/opencfs.md — 收录 openCFS 官方站点、源码与配套论文；核实 MIT 开源状态，建立统一多物理场仿真实体并关联 FEMM。
 
 ## [2026-10-18] ingest | sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md — 具身智能小站 10-18 期 26 篇：新建 19 + 复用 7 个独立论文节点，阅读坐标 embodied-station-2026-10-18-26-papers-technology-map；开源结论 16 已开源 / 3 待发布 / 7 项目页未列 GitHub
