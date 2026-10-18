@@ -2,7 +2,7 @@
 type: formalization
 tags: [dynamics, contact, physics, control, math]
 status: complete
-updated: 2026-04-20
+updated: 2026-10-18
 related:
   - ../concepts/contact-dynamics.md
   - ../concepts/centroidal-dynamics.md
@@ -39,7 +39,7 @@ $$
 
 其中：
 - $\mu$ 是静摩擦系数。
-- $\mathbf{f}_n = (\mathbf{f} \cdot \mathbf{n}) \mathbf{n}$ 是正向分量。
+- $\mathbf{n}$ 是指向机器人一侧的单位接触法向；$f_n = \mathbf{f} \cdot \mathbf{n}$ 是标量法向力，$\mathbf{f}_n = f_n\mathbf{n}$ 是法向力向量。
 - $\mathbf{f}_t = \mathbf{f} - \mathbf{f}_n$ 是切向分量。
 
 这个不等式在三维空间中定义了一个以 $\mathbf{n}$ 为中心轴、顶角为 $2\arctan(\mu)$ 的**圆锥体**。这就是“摩擦锥”名称的由来。
@@ -66,7 +66,9 @@ $$
 |f_x| \leq \frac{\mu}{\sqrt{2}} f_z, \quad |f_y| \leq \frac{\mu}{\sqrt{2}} f_z, \quad f_z \geq 0
 $$
 
-这可以展开为 4-5 个线性不等式：
+上述 $\mu/\sqrt{2}$ 写法是保守的内接近似；若直接使用 $|f_x|, |f_y| \leq \mu f_z$，则是外接近似，其角点可能超出原始圆锥。需要保证不滑动时应采用内接近似并保留摩擦裕量。
+
+这可以展开为 5 个线性不等式；其中 $f_{min} \geq 0$ 是激活接触时选定的最小法向力，摆动足需停用该接触约束：
 1. $f_z \geq f_{min}$
 2. $f_x - \frac{\mu}{\sqrt{2}} f_z \leq 0$
 3. $-f_x - \frac{\mu}{\sqrt{2}} f_z \leq 0$
