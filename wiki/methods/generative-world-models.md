@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-18
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -92,6 +92,7 @@ related:
   - ../entities/paper-puffin-world.md
   - ../entities/open-dreamer.md
   - ./dwm.md
+  - ../entities/edenlive.md
   - ./mimic-video.md
   - ../entities/paper-levjepa.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
