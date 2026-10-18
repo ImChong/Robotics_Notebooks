@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-18
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -92,6 +92,7 @@ related:
   - ../entities/paper-puffin-world.md
   - ../entities/open-dreamer.md
   - ./dwm.md
+  - ../entities/edenlive.md
   - ./mimic-video.md
   - ../entities/paper-levjepa.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
@@ -471,6 +472,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 足式控制与 MBRL 文献里也会出现 *Robotic World Model* 指 **学习的前向动力学 + 想象 rollout**（例如 ETH RSL 的 **RWM / RWM-U**：集成 RNN 预测 **状态与特权量**，而非扩散视频）。这与本页以 **像素 / Token 视频** 为中心的生成式世界模型 **共享「预测未来」动机**，但 **观测空间、训练目标与评测口径** 不同；工程入口与双仓分工见 [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)。
 
 ## 关联页面
+
+- [EdenLive](../entities/edenlive.md) — 将上游状态演化与实时生成式视觉渲染分离，并提供具身视角转换用途。
 
 按同一套分类归组，便于顺着某一类继续读。
 
