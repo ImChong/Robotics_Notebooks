@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../concepts/latent-imagination.md
+  - ./cosmos-3.md
 sources:
   - ../../sources/sites/murea-inworld.md
   - ../../sources/repos/murea-inworld.md
@@ -66,6 +67,36 @@ flowchart LR
 
 以上实现与性能信息来自仓库 README 和部署文档入口；本页未独立运行代码或复现报告评测。
 
+## 实验与评测
+
+以下数字摘自官方技术报告 §5（作者自报，未独立复核）：
+
+| 基准 | 被测模型 | 主要结果 | 读法 |
+|------|----------|----------|------|
+| WBench Full-289（289 例 / 1,058 轮交互） | Murea-Pro（50 步、1344×768） | Overall **81.13**，高于对比中最高的 Kling 3.0（79.42）；Interaction 82.60 vs 73.08、Physical 74.42 vs 69.19 | 优势集中在指令执行与物理/因果一致性；Setting、Consistency 分别比 Kling 3.0 低 4.48 / 1.70 分 |
+| OpenS2V-Eval Open-Domain | Murea-Fast（8 步） | Total **64.98**，高于所评开源 R2V 基线（Bernini +1.77、MiniMax-H3 +3.97）；Seedance 2.0 为 67.13 | Seedance 2.0 有 32 例拒答；在 148 个共有样例上 Murea-Fast 66.11 vs 67.13 |
+| OS2V-Pro（报告自建扩展评测） | Murea-Fast | 聚合 **69.9**，接近 Kling V3 Omni（70.1） | 参考保真度与片内身份一致性是最强分项；评测由作者团队定义 |
+| 生成延迟 | Murea-Fast | 5.04 秒片段在 8×H20 上 43.7 秒（MiniMax-H3 494.2 秒、Bernini 527.5 秒） | 各系统部署配置不同，只能视为所测部署的对比 |
+
+报告 §6 自述的主要短板是 **导航、长程规划与场景设定一致性**（导航为任务级最低分项）。
+
+## 与其他工作对比
+
+| 对照对象 | 共同点 | 与 Murea-InWorld 的区别 |
+|----------|--------|--------------------------|
+| [生成式世界模型](../methods/generative-world-models.md)（一般路线） | 以生成模型预测后续观测 | InWorld 把世界状态放在生成器之外，由 Murea-Mind 显式维护与校验，而非全部隐含在视频潜变量中 |
+| [Cosmos 3](./cosmos-3.md) | 都覆盖视频与音频生成，WBench 表中 Cosmos3-Super / Nano 是对比基线 | Cosmos 3 面向 Physical AI，含动作与正逆动力学接口；InWorld 面向互动故事，没有机器人动作接口 |
+| [视频作为仿真](../concepts/video-as-simulation.md) | 用生成视频承担 rollout | InWorld 的“动作”是用户的文字指令，评测关注指令执行与视觉一致性，不涉及机器人控制闭环 |
+
+## 结论
+
+**Murea-InWorld 的主要价值是“显式状态 Agent + 视听生成器”的分工设计，以及作者报告中交互指令执行分数的提升；它是生成式互动环境的参考，不是机器人策略或物理仿真器。**
+
+1. **架构要点：** Murea-Mind 在生成器外维护角色、物体、地点与叙事状态，再用生成帧回写，形成状态—动作—观测闭环。
+2. **评测读法：** WBench 上的领先主要来自 Interaction 与 Physical 两项，Setting 和 Consistency 仍落后于部分商用系统。
+3. **开放范围：** Murea-Mind 与 Murea-Fast 推理代码、Murea-Fast 权重可用；WBench 成绩对应的 Murea-Pro 未确认开放，复现报告最高分需另行核实。
+4. **机器人研究外推：** 缺少动作接口与物理一致性保证，只适合作为长时交互、状态记忆与视频 rollout 接口设计的参考。
+
 ## 源码运行时序图
 
 ```mermaid
@@ -99,6 +130,7 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 - [视频作为仿真](../concepts/video-as-simulation.md)
 - [Latent Imagination](../concepts/latent-imagination.md)
+- [Cosmos 3](./cosmos-3.md) — WBench 对比基线所属的 Physical AI 世界模型家族
 
 ## 参考来源
 

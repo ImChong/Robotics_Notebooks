@@ -18,6 +18,18 @@
 
 项目主页和报告链接由官方 GitHub README 列出；当前抓取渠道未能读取 murea.ai 正文，故不将项目页上未核实的内容作为依据。
 
+## 技术报告评测摘录（2026-10-18 复核）
+
+- **链接：** 技术报告 PDF §5–§6（Table 1–3）
+- **摘录要点：**
+  - WBench Full-289（289 例、1,058 轮交互）：Murea-Pro Overall 81.13，高于对比中的 Kling 3.0（79.42）；优势集中在 Interaction（82.60 vs 73.08）与 Physical（74.42 vs 69.19），Setting / Consistency 低于 Kling 3.0。
+  - OpenS2V-Eval：Murea-Fast Total 64.98，高于所评开源基线 Bernini（63.21）与 MiniMax-H3（61.01）；Seedance 2.0 为 67.13 但有 32 例拒答，148 个共有样例上为 66.11 vs 67.13。
+  - OS2V-Pro（报告自建扩展评测）：Murea-Fast 聚合 69.9，Kling V3 Omni 70.1。
+  - 延迟：8 步 Murea-Fast 在 8×H20 上生成 5.04 秒片段 43.7 秒。
+  - §6 自述短板：导航、长程规划与场景设定一致性。
+- **对 wiki 的映射：**
+  - [Murea-InWorld 实体页](../../wiki/entities/paper-murea-inworld.md) — 「实验与评测」「结论」节。
+
 ## 对 wiki 的映射
 
 - [Murea-InWorld 实体页](../../wiki/entities/paper-murea-inworld.md)
@@ -27,4 +39,5 @@
 ## 当前提炼状态
 
 - [x] 官方仓库 README、LICENSE 和 Hugging Face 权重链接核查
-- [ ] 项目主页及技术报告正文待直接复核
+- [x] 技术报告正文评测部分已直接复核
+- [ ] 项目主页正文待直接复核

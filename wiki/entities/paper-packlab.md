@@ -94,6 +94,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：按难度分级评测装箱任务中的物体与落点选择
 
 ## 参考来源
 
