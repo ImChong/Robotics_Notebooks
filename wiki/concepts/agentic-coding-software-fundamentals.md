@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-17
+updated: 2026-10-18
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
@@ -36,6 +36,7 @@ sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
   - ../../sources/blogs/anthropic_claude_code_review_2026-10-15.md
+  - ../../sources/blogs/openai_gpt6_software_maintenance_2026-10-14.md
   - ../../sources/papers/agent_friendly_by_design_moonbit_rust_2026.md
 ---
 
@@ -132,6 +133,15 @@ Anthropic 的 Claude Code 团队把审查目标定义为：降低每项变更消
 
 - **经验数据补充：** [Agent-Friendly by Design](../entities/paper-agent-friendly-by-design.md) 用相同规格与隐藏测试比较 Claude Opus 5.5 写 MoonBit 和 Rust：成本接近、MoonBit 输出源码 token 少约 12%，但编译失败率更高。小样本结果说明语言熟悉度、primer 和测试反馈都应纳入 agent 编程评测；不能据此给编程语言作普遍排名。
 
+
+### Agent 维护遗留代码与实验：先找证据，再交给人审
+
+OpenAI Core Experimentation 报告了另一类 coding-agent 工作流：GPT-6 Astra 可从代码、历史 PR、配置、讨论记录与生产 profile 汇总证据，协助清理死代码和过期实验；后续用 GPT-6.1 Sol 比较发现数与 API 成本。其内部案例还包括用 CI 历史排序优化机会、修复 flaky tests。细节与原始数据见 [OpenAI 工程博客归档](../../sources/blogs/openai_gpt6_software_maintenance_2026-10-14.md)。
+
+对机器人仓库可迁移的部分是**候选发现 + 证据审查 + 小 PR + 回归**：检查旧实验开关、过期 checkpoint / launch 参数或慢测试时，要求 agent 列出所有引用、配置状态、运行证据、预期收益与不确定项；再由维护者确认仿真/部署行为未变。急停、降级、回滚与事故恢复逻辑可能是刻意少触发的保护路径，不能按普通死代码处理。此机器人映射是基于文章的工程推论；OpenAI 原文讲的是其软件服务。
+
+文中的量化数据属于特定内部仓库和工作负载：GPT-6.1 Sol Ultra 在该次实验里以约 14% API 成本得到 Astra Ultra 92% 的发现数；约 30 个 CI 优化 PR 后，中位耗时由约 10 分钟降至 4.5 分钟。它们适合作为「对照发现率、成本和回归质量」的例子，不构成其他团队可直接复现的收益承诺。文章建议从单个小维护任务开始，review 结果后再逐步扩大范围。
+
 ## 局限与风险
 
 - **误区：会用 Cursor / Claude Code = 具备软件工程基础。** 工具降低的是击键成本；取舍识别仍是人的技能。吴恩达原文把「语法记忆」标为过时，把「软件如何工作」标为拉开差距的部分。
@@ -163,6 +173,7 @@ Anthropic 的 Claude Code 团队把审查目标定义为：降低每项变更消
 - [Andrew Ng，AI Engineering Skills Map: Software engineering fundamentals（本站归档）](../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md)
 - [Anthropic，Redesigning source control at Anthropic（本站归档）](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)
 - [Anthropic，How the Claude Code team does code review（本站归档）](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)
+- [OpenAI，Maintaining software with the GPT-6 family（本站归档）](../../sources/blogs/openai_gpt6_software_maintenance_2026-10-14.md)
 - 触发推文：<https://x.com/andrewyng/status/2093388974194872781>
 - X Article：<https://x.com/i/article/2093384274372419585>
 - *The Batch* 同文：<https://www.deeplearning.ai/the-batch/the-ai-engineering-skills-map-in-detail-software-engineering-fundamentals>
