@@ -3486,6 +3486,7 @@
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问 `📅unknown` `[entity_page]`
 - [Riemann-1.0（全因果自回归 World Action Model）](wiki/entities/paper-riemann-1.md) — Riemann-1.0**（*Riemann-1.0: An Embodied World Action Model for Physical AI*，黎曼动力技术报告，[项目页](https:/ `📅unknown` `[entity_page]`
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
+- [刚-软混合链路人形机器人建模与控制](wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 论文** *Modeling and Control of a Rigid-soft Hybrid-link Humanoid Robot*（[arXiv:2610.15073](https:// `📅unknown` `[entity_page]`
 - [RISE：驾驶 WAM 的自适应想象调度](wiki/entities/paper-rise-adaptive-imagination-wam.md) — RISE**（*Refining Imagination through SElective Rollout*；论文 *RISE: Adaptive Imagination for World A `📅unknown` `[entity_page]`
 - [海上异构任务分配 RL（arXiv:2610.15237）](wiki/entities/paper-rl-heterogeneous-task-allocation-spatio-temporal.md) — 海上异构任务分配 RL**（*Reinforcement Learning Based Heterogeneous Task Allocation Under Spatio-Temporal En `📅unknown` `[entity_page]`
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
