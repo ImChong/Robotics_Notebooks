@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-10-14
+updated: 2026-10-18
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -21,6 +21,7 @@ related:
   - ../entities/roboto-origin.md
   - ../entities/robot-motion-keyframe-editors.md
   - ../entities/generative-motion-rig.md
+  - ../entities/cartwheel-swing-choreo.md
   - ../entities/rigmo.md
   - ../entities/paper-scail-2.md
   - ../entities/paper-nap-control.md
@@ -42,6 +43,7 @@ sources:
   - ../../sources/papers/rigmo_arxiv_2601_06378.md
   - ../../sources/sites/disney-research-la.md
   - ../../sources/sites/disney-research-la-holotile.md
+  - ../../sources/sites/cartwheel-swing.md
 summary: "Character Animation vs Robotics：澄清「角色化人形（character humanoid）」与「研究/工业型人形」在目标函数、机构约束、表演意图与物理可控性之间的张力——以 Disney Olaf / DeepMimic-AMP-ASE 谱系 / BotLab MotionCanvas / Roboto Origin 等案例为切片。"
 ---
 
@@ -81,6 +83,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - **研究型开源人形**（[Roboto Origin](../entities/roboto-origin.md)、[Asimov v1](../entities/asimov-v1.md)、[Unitree G1](../entities/unitree-g1.md) 等）：复现性、可拓展性与控制基线一等公民；
 - **图形学起源的角色方法**（[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)）：本来面向**物理仿真角色**，后被搬到真实人形 RL；
 - **工具链层**（[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)）：把动画社区的「节点图 / 关键帧」语言塞进策略调试与示教后处理。
+- **文本到角色动作产品**（[Swing Choreo](../entities/cartwheel-swing-choreo.md)）：从复合文本指令生成角色表演和多人动作，适合动画预演与内容制作；若用于机器人示教，还需骨架重定向和物理可行性验证，不能直接当作控制策略。
 
 读者在跨页跳转时最容易把「角色动画语言」和「机器人控制语言」当成同一回事，本页给出**一组明确的张力维度与案例切片**，帮助选型与阅读时立刻定位上下文。
 
