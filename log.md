@@ -195,6 +195,8 @@ type: ingest
 - **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
 - **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
 
+## [2026-10-17] lint | 全量 wiki lint（full git history）：修复 20 个陈旧页（locomotion→DA-AO、NavDP→DevGRU、EmbodiedEvo→RAX、IL/RL/online-vs-offline-rl→robomimic，另 14 页补 CoSMO/CTP/ForceWAM/PACER/R²-WAM/RoboFQE/SANDO/SEAR/TRACE 回链）与 45 条信息型预警（29 篇 paper 补「与其他工作对比」、评测/感知栈枢纽回链 10 页、DA-AO venue、NavAble 重定向就绪度、VT-Bridge 措辞、缺页概念停用词 beta/choice/pip）
+
 ## [2026-10-17] ingest | 收录 DA-AO 外骨骼步态相位估计论文
 
 - 归档 T-RO 论文 DOI 与摘要级方法、跨地形实验指标。
