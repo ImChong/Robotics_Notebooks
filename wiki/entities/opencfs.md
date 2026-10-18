@@ -3,7 +3,7 @@ type: entity
 project_id: opencfs
 project: https://opencfs.org/
 code: https://gitlab.com/openCFS/cfs
-tags: [software, fem, simulation, multiphysics, open-source]
+tags: [software, fem, simulation, multiphysics, open-source, fau]
 status: complete
 updated: 2026-10-18
 related:
@@ -36,6 +36,10 @@ summary: "openCFS：采用 MIT 许可的有限元多物理场仿真工具，覆�
 机器人部件分析可能同时涉及电磁力、结构振动与温升。openCFS 提供多场和耦合求解入口，值得在需要场级仿真时评估；是否适合某一关节或传感器仍需用实际模型验证。
 
 ## 核心原理
+
+| 核心信息 | 说明 |
+|------|------|
+| 维护组织 | openCFS 软件促进协会（奥地利维也纳）；官网列出的社区包含埃尔朗根-纽伦堡大学（FAU Erlangen-Nürnberg）、TU Wien、TU Graz 等高校研究人员，非单一高校独占项目 |
 
 输入包括网格、材料、边界条件与 XML 问题配置；以有限元离散物理 PDE，并按指定分析类型求解，输出场量与后处理结果。
 
