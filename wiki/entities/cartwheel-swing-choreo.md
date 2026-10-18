@@ -25,7 +25,7 @@ summary: "Swing Choreo 是 Cartwheel 的商用文本到人体动作生成模型�
 |------|----------|----------|
 | DCC | Digital Content Creation | Maya、Blender 等数字内容创作工具 |
 | FBX | Filmbox | 角色骨架与动画交换格式 |
-| GLTF | Graphics Language Transmission Format | 常用于实时渲染和三维内容交换的格式 |
+| GLTF | GL Transmission Format | 常用于实时渲染和三维内容交换的格式 |
 | USD | Universal Scene Description | 三维场景与动画交换格式 |
 | BVH | Biovision Hierarchy | 骨架层级与动作数据格式 |
 
