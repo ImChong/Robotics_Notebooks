@@ -2,7 +2,7 @@
 type: query
 tags: [mpc, control, optimization, tuning, locomotion]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../methods/model-predictive-control.md
   - ../methods/trajectory-optimization.md

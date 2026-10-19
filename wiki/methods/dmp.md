@@ -2,7 +2,7 @@
 type: method
 tags: [control, manipulation, primitives, imitation-learning]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ./imitation-learning.md
   - ./behavior-cloning.md

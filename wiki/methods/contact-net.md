@@ -2,7 +2,7 @@
 type: method
 tags: [perception, contact, deep-learning, point-cloud]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/contact-estimation.md
