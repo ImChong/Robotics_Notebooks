@@ -24,6 +24,7 @@ related:
   - ../references/llm-wiki-karpathy.md
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
+  - ../entities/paper-recursive-game-creator.md
   - ../entities/course-spec-driven-development-coding-agents.md
   - ../concepts/ai-agent-evaluation.md
   - ../entities/anthropic-claude-api-skill.md
@@ -61,6 +62,7 @@ sources:
 
 ## 为什么重要（对本知识库读者）
 
+- **把代码生成接到可执行体验评估。** [Recursive Game Creator](../entities/paper-recursive-game-creator.md) 用复用策略收集游戏轨迹，再让 Reviewer 据此推进下一轮修改；它展示了 agent 交付后的评估闭环，也清楚限定在游戏软件场景。
 - **本库已有「agent 怎么干活」的页，缺「人还该懂什么」。** [mattpocock/skills](../entities/mattpocock-skills.md) 与 [Superpowers](../entities/superpowers-obra.md) 给的是 **技能文件与流程契约**；[Open Code Review](../entities/open-code-review.md) 把 **diff 级评审** 工程化为可审计 CLI；本页给的是 **判断框架**：没有取舍语言，那些 skill 只会加快产出坏架构。
 - **真机 / 仿真闭环同构。** [ENPIRE](../methods/enpire.md) 与 [autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) 反复强调：有 coding agent **不能**跳过环境工程。吴恩达把同一句话写到通用软件：有 agent **不能**跳过对 latency、可靠性、数据生命周期的理解。
 - **数据是难改的地基，也是模型的上下文。** 机器人侧的轨迹集、回放缓冲、[数据飞轮](./data-flywheel.md) 一旦 schema 选错，后续策略与评测都在错误上下文上训练——对应原文「AI doesn’t know what it doesn’t know」。
