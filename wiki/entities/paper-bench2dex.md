@@ -10,7 +10,7 @@ tags:
   - fudan
   - hku
 status: complete
-updated: 2026-09-20
+updated: 2026-10-19
 arxiv: "2609.15726"
 code: https://github.com/Bench2Dex/Bench2Dex
 related:
@@ -153,3 +153,8 @@ sequenceDiagram
 
 - [Bench2Dex Documentation](https://bench2dex.github.io/doc/)
 - [arXiv PDF](https://arxiv.org/pdf/2609.15726)
+
+
+## 关联的任务迁移基准
+
+- [Evo-DexBench](./paper-evo-dexbench.md)：补充相关任务间功能性交互迁移评测；与本页的跨手型视觉—触觉双臂评测问题互补。
