@@ -202,6 +202,10 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-19] lint | 修复 Wiki Lint「可能过期」12 页（updated 2026-04-21 满 180 天）：仅刷新 updated 日期，未做内容复核
+
+## [2026-10-18] structural | roadmap 巡检补入 28 个新知识节点中的 23 个（VLA/WAM/遥操作/重定向/接触操作/评测/动作生成/架构/硬件/电机/数据 11 条纵深路线）；HiRE、Visuomotor Pruning、DA-AO、26 篇技术地图暂无合适阶段未收
+
 ## [2026-10-18] lint | 全量 lint 修复：4 个陈旧页 review、paper-* 三段式/结论补齐、评测基准枢纽回链、RAX 陈旧声明改写
 
 ## [2026-10-18] ingest | OpenAI GPT-6 软件维护实践入库
