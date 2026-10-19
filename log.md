@@ -211,6 +211,8 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | 补充 MAMMA 官方新闻稿：奖项候选、iPhone 多视角、精度与工作流耗时口径
+
 ## [2026-10-19] ingest | Commander–Executor 协作操作 — 归档 arXiv:2610.14911；仿真人形角色方法，代码待发布。
 
 ## [2026-10-19] ingest | 收录 Tidy Design 开源产品画布及 MCP 设计协作工作流
