@@ -8,6 +8,7 @@ project: https://trackers.roboflow.com/latest/
 code: https://github.com/roboflow/trackers
 related:
   - ../methods/object-detection.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./trackerlab.md
   - ./mcbyte-plus-plus.md
   - ./roboflow-sports.md
@@ -86,6 +87,7 @@ flowchart LR
 ## 关联页面
 
 - [目标检测（方法）](../methods/object-detection.md) — tracking-by-detection 的上游检测环节
+- [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 在感知系统选型中定位检测与跟踪模块
 - [TrackerLab](./trackerlab.md) — 多目标跟踪方法与评测入口
 - [McByte++](./mcbyte-plus-plus.md) — 面向体育视频长时身份恢复的独立实现
 - [Roboflow Sports](./roboflow-sports.md) — Roboflow 的体育视觉工具与示例
