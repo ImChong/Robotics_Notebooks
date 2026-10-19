@@ -1721,6 +1721,7 @@
 - [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](wiki/entities/paper-dsdyn-vla.md) — DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness,  `📅unknown` `[entity_page]`
 - [DSLC：隐蔽执行器攻击下的多机器人安全学习控制](wiki/entities/paper-dslc-multirobot-secure-control.md) — Distributed Secure Learning Control（DSLC）** 将分布式模型预测控制与对抗式策略学习结合，在多机器人系统中同时优化攻击者和防御者策略，以应对隐蔽执行器攻击。 `📅unknown` `[entity_page]`
+- [DSP：从有监督玩耍中学习灵巧操作](wiki/entities/paper-dsp-supervised-play.md) — DSP 将机器人灵巧操作的数据获取本身变成可学习的玩耍策略：人类短时示范启动策略，机器人再自主收集数据并用世界模型规划。 `📅unknown` `[entity_page]`
 - [DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）](wiki/entities/paper-dswam-dual-system-wam.md) — DSWAM**（*DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation*， `📅unknown` `[entity_page]`
 - [双凸轮共享气弹簧人形并联弹性踝](wiki/entities/paper-dual-cam-parallel-elastic-ankle.md) — Dual-Cam PEA Ankle**（arXiv:2608.30832）由 **意大利技术研究院（IIT）HHCM**  `📅unknown` `[entity_page]`
 - [Dual-Head Coordination](wiki/entities/paper-dual-head-coordination.md) — Making two action heads agree: coordination mechanisms and a runtime collapse certificate for flow `📅unknown` `[entity_page]`
@@ -1840,6 +1841,7 @@
 - [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`
 - [Fast Feature Field (F³)：面向机器人感知的事件预测表示](wiki/entities/paper-fast-feature-field-f3.md) — Fast Feature Field (F³)**（Richeek Das、Kostas Daniilidis、Pratik Chaudhari，宾夕法尼亚大学 GRASP Laboratory； `📅unknown` `[entity_page]`
 - [Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](wiki/entities/paper-fast-plans-faithful-actions.md) — 该工作研究高层路点如何被低层动作专家忠实执行。 `📅unknown` `[entity_page]`
+- [Fast-VLA：每个操作回合只思考一次](wiki/entities/paper-fast-vla-once-per-episode.md) — Fast-VLA 将慢速任务理解放在 episode 开始时运行一次，之后由轻量 actor 用当前观测查询固定 KV 任务记忆并持续输出动作块。 `📅unknown` `[entity_page]`
 - [Fast-WAM（arXiv:2603.16666）](wiki/entities/paper-fast-wam.md) — Fast-WAM**（*Fast-WAM: Do World Action Models Need Test-time Future Imagination?*，[arXiv:2603.16666 `📅unknown` `[entity_page]`
 - [FASTER：用价值引导采样加速强化学习](wiki/entities/paper-faster.md) — FASTER**（*Value-Guided Sampling for Fast RL*）由 Stanford 团队提出，目标是在扩散策略的多候选去噪阶段提前识别低价值动作，从而降低 best-o `📅unknown` `[entity_page]`
 - [FastGrasp：移动操作器上的学习式全身快速灵巧抓取](wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — FastGrasp**（*Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Mani `📅unknown` `[entity_page]`
@@ -2229,6 +2231,7 @@
 - [LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）](wiki/entities/paper-levjepa.md) — LeVJEPA**（*LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics*，[arXiv:2608.273 `📅unknown` `[entity_page]`
 - [LeWAM：用同一个潜在模型执行与规划](wiki/entities/paper-lewam.md) — LeWAM**（*End-to-End World and Action Modeling with JEPAs*，[arXiv:2610.12818](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）](wiki/entities/paper-lewm.md) — LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXi `📅unknown` `[entity_page]`
+- [LIBERO-PeRM：个性化机器人操作基准](wiki/entities/paper-libero-perm-personalized-manipulation.md) — LIBERO-PeRM 将用户偏好作为任务执行条件，在受控的 LIBERO 场景中评测策略是否既完成任务、又按用户要求的方式完成。 `📅unknown` `[entity_page]`
 - [LIBERO-Recover：机器人失败恢复基准](wiki/entities/paper-libero-recover.md) — LIBERO-Recover**（*Beyond Task Success Towards Failure Recovery in Robotic Manipulation Models*，[ar `📅unknown` `[entity_page]`
 - [LIBERO-VIFO](wiki/entities/paper-libero-vifo.md) — LIBERO-VIFO: Benchmarking the Capability and Safety of Visual Cue Following in Vision-Language-Act `📅unknown` `[entity_page]`
 - [LIBERO-VPro（arXiv:2609.24350）](wiki/entities/paper-libero-vpro.md) — LIBERO-VPro**（*LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Model `📅unknown` `[entity_page]`
@@ -3462,6 +3465,7 @@
 - [ReflexVLA：动态任务低延迟 VLA](wiki/entities/paper-reflexvla.md) — ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Criti `📅unknown` `[entity_page]`
 - [ReForce](wiki/entities/paper-reforce.md) — ReForce: Learning Force-aware Retargeting for Dexterous Manipulation**（[arXiv:2608.15560](https:// `📅unknown` `[entity_page]`
 - [ReFORM：Support 约束的 Reflected Flow Offline RL](wiki/entities/paper-reform-iclr-2026.md) — ReFORM**（*Reflected Flows for On-support Offline RL via Noise Manipulation*，**ICLR 2026**，[OpenRev `📅unknown` `[entity_page]`
+- [REKI：在 VLA 中注册近期知识](wiki/entities/paper-reki-vla-register-memory.md) — REKI 在 VLA 动作专家中加入少量 register tokens，将每帧视觉语言表征缓存进 expert KV cache，让动作策略低成本读取近期历史。 `📅unknown` `[entity_page]`
 - [RelateAnything：实时开放词汇关系预测](wiki/entities/paper-relateanything.md) — RelateAnything**（*Real-Time Open-Vocabulary Relation Prediction From Any Inputs*，[arXiv:2609.12552 `📅unknown` `[entity_page]`
 - [REMAC（Masked Action Chunking · arXiv:2601.20130）](wiki/entities/paper-remac.md) — REMAC**（*Real-Time Robot Execution with Masked Action Chunking*，[arXiv:2601.20130](https://arxiv.o `📅unknown` `[entity_page]`
 - [Remember Smarter（RS）（arXiv:2608.15269）](wiki/entities/paper-remember-smarter-vla-memory.md) — Remember Smarter（RS）**（*Remember Smarter: Visual History Compressor and Hyperbolic Experience Spac `📅unknown` `[entity_page]`
@@ -4526,6 +4530,7 @@
 - [Sony AI Ace：自主竞技乒乓球机器人](wiki/entities/paper-sony-ai-ace-table-tennis.md) — Ace**（Nature 2026，Sony AI / Sony Research；[项目页](http `📅unknown` `[entity_page]`
 - [Spa-Bench：真机上检验 VLA 的空间落地](wiki/entities/paper-spa-bench-spatial-grounding-vla.md) — Spa-Bench**（arXiv:2610.12696，[项目页](https://justintiensmith.git `📅unknown` `[entity_page]`
 - [Space Mining with Robotics：太空采矿机器人综述](wiki/entities/paper-space-mining-with-robotics.md) — Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction**（[arXiv:2608.21358 `📅unknown` `[entity_page]`
+- [Spark-0：规模化空间对齐触觉预训练](wiki/entities/paper-spark-0-spatial-tactile-pretraining.md) — Spark-0 将触觉同时用作视觉空间接触监督和动作专家输入，让策略在预训练阶段学习接触位置、在部署时按需使用触觉。 `📅unknown` `[entity_page]`
 - [SPARK（Skeleton-Parameter Aligned Retargeting）](wiki/entities/paper-spark-skeleton-aligned-retargeting.md) — SPARK**（*Skeleton-Parameter Aligned Retargeting on Humanoid Robots with Kinodynamic Trajectory Opt `📅unknown` `[entity_page]`
 - [SPARK-VLN（动态社会视觉–语言导航）](wiki/entities/paper-spark-vln.md) — SPARK-VLN**（*Token-Wise Latent Streaming from Slow Reasoners to Fast Planners for Dynamic Vision L `📅unknown` `[entity_page]`
 - [SparkVLA](wiki/entities/paper-sparkvla.md) — SparkVLA: Stop-Aware Hierarchical VLA with Adaptive Action Chunking for Long-Horizon Manipulation `📅unknown` `[entity_page]`
@@ -4722,6 +4727,7 @@
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`
 - [VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）](wiki/entities/paper-vad-vectorized-scene.md) — VAD**（*VAD: Vectorized Scene Representation for Efficient Autonomous Driving*，[2303.12077](https:/ `📅unknown` `[entity_page]`
 - [VaDar：隐式目标条件化的价值分解](wiki/entities/paper-vadar.md) — VaDar**（*Implicit Goal Conditioning via Value Disaggregation*）把长时程任务的子目标序列转成可分别监督的价值分量；共享 critic 学 `📅unknown` `[entity_page]`
+- [VaM：把价值预测用作机器人策略的记忆](wiki/entities/paper-vam-value-as-memory.md) — Value as Memory (VaM) 将近期价值预测作为任务进度记忆提供给动作策略，并用在线机器人经验持续更新动作与价值模型。 `📅unknown` `[entity_page]`
 - [VANE（arXiv:2608.09448）](wiki/entities/paper-vane.md) — VANE**（arXiv:2608.09448）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–0 `📅unknown` `[entity_page]`
 - [VAP-TAMP（VLM-based Active Perception TAMP）](wiki/entities/paper-vap-tamp.md) — Robot Planning and Situation Handling with Active Perception**（[arXiv:2604.26988](https://arxiv.or `📅unknown` `[entity_page]`
 - [ε4P（arXiv:2609.26672）](wiki/entities/paper-varepsilon4p.md) — ε4P**（*Imperfection for Precision: Upcycling Imperfect Data for High-Precision Robotic Manipulatio `📅unknown` `[entity_page]`
