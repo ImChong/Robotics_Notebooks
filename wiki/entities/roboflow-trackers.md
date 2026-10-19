@@ -99,5 +99,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [官方 Quickstart 与算法对比](https://trackers.roboflow.com/latest/)
-- [官方跟踪指南](https://trackers.roboflow.com/latest/guides/track/)
-- [官方安装指南](https://trackers.roboflow.com/latest/guides/install/)
+- [官方跟踪指南](https://trackers.roboflow.com/latest/learn/track/)
+- [官方安装指南](https://trackers.roboflow.com/latest/learn/install/)
