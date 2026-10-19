@@ -22,6 +22,7 @@ related:
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-locovlm.md
+  - ../entities/ora-open-robot-use-agents.md
 sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/repos/safety-research-embody.md
@@ -128,6 +129,8 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 - [Locomotion](../tasks/locomotion.md) · [Manipulation](../tasks/manipulation.md) · [LIBERO](../entities/libero-benchmark.md)
 - [接触力旋量闭环](../queries/contact-wrench-closed-loop.md) — 直接力矩失败时，接触力信息本就不在 LLM 逐步输出里
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLM 当监督者 vs VLA 当执行器的分层选型
+
+- [ORA: Open Robot-Use Agents](../entities/ora-open-robot-use-agents.md) — 逐工具调用的 robot-use agent 与受监督动作闭环。
 
 ## 参考来源
 
