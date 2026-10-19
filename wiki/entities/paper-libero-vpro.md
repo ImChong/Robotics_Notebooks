@@ -79,6 +79,7 @@ summary: "LIBERO-VPro（arXiv:2609.24350）：在执行时扰动视觉证据（�
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [libero-benchmark](./libero-benchmark.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：在 LIBERO 闭环执行中扰动视觉证据，检验 VLA 成功率的视觉鲁棒性
 
 ## 参考来源
 
