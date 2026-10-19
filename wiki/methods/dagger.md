@@ -94,6 +94,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - 收集“快要失败但尚未完全失败”的纠偏数据
 - 比纯 BC 更适合插拔、接触、双手协调等长时序任务
 - **[Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)**：SO-ARM101 双臂叠衣竞赛中，`record_real_dagger.py` 在自主 rollout 失败处 `SPACE` 接管，并把 `task_is_policy` 标签写回 LeRobot 数据集；仿真侧另有失败态 `dagger_collect.py`
+- **[I3L](../entities/paper-i3l.md)**：部署时通过 JoyLo+ 按需接管并收集纠正帧，以 HG-DAgger 迭代更新全身移动操作策略。
 
 ### locomotion / whole-body 任务
 - 可以把高性能教师控制器、MPC 或人类设计的参考轨迹当专家
