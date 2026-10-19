@@ -4,6 +4,7 @@
 
 - **URL：** <https://mamma.is.tue.mpg.de/>
 - **对应论文：** [MAMMA: Markerless Accurate Multi-person Motion Acquisition](https://arxiv.org/abs/2506.13040)（CVPR 2026 Oral）
+- **补充新闻稿：** <https://www.mpg.de/27039732/avatars-without-marker-suits-using-only-smartphone-cameras>（Max Planck Society，2026-10-15）
 - **机构：** Max Planck Institute for Intelligent Systems, Tübingen / Carnegie Mellon University
 - **入库日期：** 2026-06-09
 - **一句话说明：** 官方落地页：MammaNet 架构、MAMMASyn 合成数据、跨视角匹配、接触优化、定量/定性对比、Vicon 对标与 iPhone 野外 demo。
@@ -20,6 +21,13 @@
 - **野外：** 4 台 iPhone 室内/室外恢复人体运动。
 - **数据集入口：** 注册账号后下载；含 dance、multi-person、iPhone、eval、synthetic。
 - **BibTeX：** `@inproceedings{cuevas2026mamma, ... CVPR 2026}`
+
+## 官方新闻稿补充（2026-10-15）
+
+- 项目页标注 MAMMA 为 **CVPR 2026 Oral** 和 **Award Candidate（Top ~1.75%）**。
+- MPI 新闻稿称，MAMMA 与 marker-and-suit 系统的动作精度差异不到 1 mm，并且处理整套数据的速度接近传统系统所需**人工工作流的 3 倍**。这里的速度是端到端人工工作流对比，不是神经网络单帧推理速度。
+- 该新闻稿说明，标准手机相机（包括一组 iPhone）可作为多视角采集设备；系统仍依赖多机位视频与相机标定，重点支持最多两人的近距离接触交互。
+- **指标口径：** 新闻稿的“<1 mm”是媒体概括；论文对 37 个 held-out markers 与 MoSh++ 流程的误差差异报告约 **1.6 mm**。两者来自不同表述，知识页保留论文数值作为可复核评测口径。
 
 ## 对 wiki 的映射
 
