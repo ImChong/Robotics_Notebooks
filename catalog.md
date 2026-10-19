@@ -2874,6 +2874,7 @@
 - [OmniTacTune：视觉策略的触觉残差真机适应](wiki/entities/paper-omnitactune-tactile-residual-adaptation.md) — OmniTacTune**（*Policy-Agnostic Real-World RL for Tactile Residual Adaptation of Visual Policies*，U `📅unknown` `[entity_page]`
 - [One Filter to Deploy Them All：OCR 四足安全导航](wiki/entities/paper-one-filter-ocr-quadruped-navigation.md) — One Filter to Deploy Them All**（IEEE TRO, Vol. 42, pp. 545–560, 2026）提出 **Observation-Conditioned  `📅unknown` `[entity_page]`
 - [OnEvoMemory（arXiv:2608.08749）](wiki/entities/paper-onevomemory.md) — OnEvoMemory**（arXiv:2608.08749）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026. `📅unknown` `[entity_page]`
+- [OneWM：世界预测与动作生成的因果协同训练](wiki/entities/paper-onewm-unified-causal-training.md) — OneWM** 在共享的因果视频—动作架构中同时学习“给定动作后世界如何变化”与“根据当前观测生成动作”，用三种动作条件化方式检验两类监督能否互相促进。 `📅unknown` `[entity_page]`
 - [Online MBRL via Online Optimization（真机在线模型基强化学习）](wiki/entities/paper-online-mbrl-robot-control.md) — Efficient Model-Based Reinforcement Learning for Robot Control via Online Optimization**（[arXiv:25 `📅unknown` `[entity_page]`
 - [在线闭环 Sim2Real（arXiv:2609.28878）](wiki/entities/paper-online-sim2real-closed-loop-modeling.md) — 在线闭环 Sim2Real**（*Online Sim-to-Real Adaptation via Closed-Loop System Modeling*，[arXiv:2609.28878 `📅unknown` `[entity_page]`
 - [OnOff：可微物理笔刷打通在线轨迹与离线手写](wiki/entities/paper-onoff-handwriting.md) — OnOff**（*Bridging Online and Offline Handwriting via Differentiable Physical Rendering*；[arXiv:260 `📅unknown` `[entity_page]`
