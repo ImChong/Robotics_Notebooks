@@ -2123,6 +2123,7 @@
 - [I-BFM: Reward-Conditioned Robust Humanoid Interaction via Unsupervised Reinforcement Learning](wiki/entities/paper-i-bfm.md) — 作者：** Ziqi Han、Yitang Li、Junhan Sun、Fanrong Dong、Yaojie Shen、Lei Ye、Zetong Jing、Yongqi Zhang、Yimin `📅unknown` `[entity_page]`
 - [I2O2I-Nav：把导航拆成阶段再接起来的长程基准](wiki/entities/paper-i2o2i-nav.md) — I2O2I-Nav 是一个"室内出门 → 室外行进 → 进入另一栋楼 → 找物体"的长程导航基准，每一阶段都从上一阶段实际到达的位置开始；配套的 MODULAR-Agent 用 VLM 协调冻结的 `📅unknown` `[entity_page]`
 - [i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）](wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — i3dGS**（Meuleman et al., arXiv:2607.14481，项目页，[代码](htt `📅unknown` `[entity_page]`
+- [I3L：机器人犯错后，怎样用纠正数据提升全身移动操作](wiki/entities/paper-i3l.md) — I3L**（*Iterative Interactive Imitation Learning for Whole-Body Mobile Manipulation*，arXiv:2610.177 `📅unknown` `[entity_page]`
 - [ICI-VLA（时空对齐 In-Context 模仿 · VLA）](wiki/entities/paper-ici-vla-spatiotemporal-icl.md) — ICI-VLA**（*In-Context Imitation with Spatiotemporally Aligned Demonstrations for Vision-Language-A `📅unknown` `[entity_page]`
 - [iCrowdNav（意图感知场景表征的视觉人群导航）](wiki/entities/paper-icrowdnav.md) — iCrowdNav**（*Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations `📅unknown` `[entity_page]`
 - [iFlax（Imperative neuro-symbolic Flax）](wiki/entities/paper-iflax.md) — Neuro-Symbolic Learning for Long-Horizon Task Planning Under Complex Logical Constraints**（[arXiv: `📅unknown` `[entity_page]`
