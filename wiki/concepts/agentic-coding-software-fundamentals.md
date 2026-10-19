@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-18
+updated: 2026-10-19
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
@@ -32,6 +32,7 @@ related:
   - ../entities/codegraph.md
   - ../entities/paper-agent-friendly-by-design.md
   - ../entities/agentic-design-patterns.md
+  - ../entities/tidy-design.md
 sources:
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
@@ -160,6 +161,7 @@ OpenAI Core Experimentation 报告了另一类 coding-agent 工作流：GPT-6 As
 - [Birdview](../entities/birdview.md) — 改码前先 map 仓库模块与计划 scope；不替代 diff 或架构判断本身
 - [Superpowers（obra）](../entities/superpowers-obra.md) — brainstorm → worktree → TDD → 评审的代理交付管线
 - [Agentic Design Patterns](../entities/agentic-design-patterns.md) — 通用 agent 模式目录及 coding agents 附录；不是软件工程验证的替代品
+- [Tidy Design](../entities/tidy-design.md) — 将可编辑设计画布接入 coding agent 的 MCP 工作流
 - [NVIDIA OpenShell](../entities/nvidia-openshell.md) — 带外沙箱与 YAML 策略；与 prompt 级「安全可靠」互补
 - [CodeGraph](../entities/codegraph.md) — 通过本地代码关系图向 coding agent 提供符号上下文与变更影响线索；静态图不能替代测试与运行时核验
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 有 agent 仍要先做 reset/verify 环境工程

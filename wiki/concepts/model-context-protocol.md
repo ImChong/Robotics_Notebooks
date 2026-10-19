@@ -2,7 +2,7 @@
 type: concept
 tags: [mcp, llm-agents, protocol, anthropic, json-rpc, tooling, agent-host, open-source]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-19
 related:
   - ./model-hardware-standard.md
   - ./llm-robotics-control-interfaces.md
@@ -11,6 +11,7 @@ related:
   - ../entities/drawio-scientific-illustrator.md
   - ../entities/dimensionalos-dimos.md
   - ../entities/3dgenstudio.md
+  - ../entities/tidy-design.md
   - ../entities/graphify.md
   - ../entities/rea.md
   - ../entities/hermes-agent.md
@@ -51,7 +52,7 @@ summary: "Model Context Protocol（MCP）是连接 AI 应用与外部数据/工�
 
 ## 为什么重要
 
-1. **机器人维护与工程代理的公共接口：** 本库多条「代理驱动专业软件」链路——[FreeCAD MCP](../entities/freecad-mcp.md)、[Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md)、[DimOS](../entities/dimensionalos-dimos.md)、[3D Gen Studio](../entities/3dgenstudio.md)、[Graphify](../entities/graphify.md)——都建立在 MCP Tools 之上；协议层不清会导致传输/安全误判。
+1. **机器人维护与工程代理的公共接口：** 本库多条「代理驱动专业软件」链路——[FreeCAD MCP](../entities/freecad-mcp.md)、[Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md)、[DimOS](../entities/dimensionalos-dimos.md)、[3D Gen Studio](../entities/3dgenstudio.md)、[Tidy Design](../entities/tidy-design.md)、[Graphify](../entities/graphify.md)——都建立在 MCP Tools 之上；协议层不清会导致传输/安全误判。
 2. **仿真与编辑器宿主正在原生接入：** [Unreal MCP](../entities/unreal-mcp.md)（UE 5.8 Experimental）、[Unity](../entities/unity-engine.md) AI/MCP 方向，把「场景搭建 / 资产巡检」交给同一套 Host（Claude Code、Cursor 等）。
 3. **一次实现、多 Host 复用：** Intro 明确 Claude、ChatGPT、VS Code、Cursor 等广泛支持——机器人工具桥不必为每个 IDE 重写私有插件协议。
 4. **与 RPC 概念衔接：** MCP 数据层就是 JSON-RPC；但产品语义是 **LLM 工具上下文**，不是运控周期的实时 RPC。对照见 [远程过程调用](./remote-procedure-call.md)。
@@ -152,6 +153,7 @@ flowchart TB
 - [Draw.io Scientific Illustrator](../entities/drawio-scientific-illustrator.md) — 科研插图 MCP（桌面 live）
 - [Next AI Draw.io](../entities/next-ai-draw-io.md) — Web 聊天 + npm MCP 浏览器预览
 - [DimOS](../entities/dimensionalos-dimos.md) — 机器人 skills 的 MCP 暴露
+- [Tidy Design](../entities/tidy-design.md) — 设计师、工程师与 agent 共用的画布，通过 MCP 读写可编辑设计。
 - [3D Gen Studio](../entities/3dgenstudio.md) · [Graphify](../entities/graphify.md) · [Hermes Agent](../entities/hermes-agent.md)
 - [ScienceDiscovery](../entities/sciencediscovery.md) — 科学 MCP：Node 治理 broker + 延迟披露工具 + CAS 审计
 - [Unreal MCP](../entities/unreal-mcp.md) — UE 编辑器内嵌官方 MCP server
