@@ -796,6 +796,7 @@
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
 - [Logo Design Skill](wiki/entities/logo-design-skill.md) — Logo Design Skill** 是一个跨 Claude、Gemini CLI、Codex 等支持 Agent Skills 的 Logo 设计技能：它把品牌发现、概念发散、SVG 构造与实 `📅unknown` `[entity_page]`
 - [Lot Vulture](wiki/entities/lotvulture.md) — Lot Vulture**（lotvulture/lotvulture，[lotvulture.com](h `📅unknown` `[entity_page]`
+- [Low Cost Mocap](wiki/entities/low-cost-mocap.md) — Low Cost Mocap** 是 Joshua Bird 开源的室内光学动捕系统：多台改装 PS3 Eye 相机跟踪无人机上的红外 LED，通过多视角几何获得房间坐标中的目标位置，并经 ESP `📅unknown` `[entity_page]`
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
 - [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
 - [LW BENCHHUB TOUR](wiki/entities/lw-benchhub-tour.md) — LW BENCHHUB TOUR**（[GimpelZhang/lw_benchhub_tour](https://github.com/GimpelZhang/lw_benchhub_tour `📅unknown` `[entity_page]`

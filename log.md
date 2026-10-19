@@ -202,6 +202,8 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+- 2026-10-19 | ingest | Joshua Bird 的 Low Cost Mocap 项目：确认 MIT 开源仓库含相机处理、ESP32 固件和 3D 文件；补充项目来源与动捕实体页，区分约 20 美元相机系统与约 50 美元无人机成本。
+
 ## [2026-10-19] ingest | 收录 Tidy Design 开源产品画布及 MCP 设计协作工作流
 
 - 官方 GitHub 仓库标注 Apache-2.0，README 确认 agent 可经 MCP 读取、创建和编辑可编辑设计，并支持自托管。
