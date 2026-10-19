@@ -35,8 +35,8 @@ Roboflow Trackers 是 Python 多目标跟踪库，提供 SORT、ByteTrack、OC-S
 
 - [GitHub 仓库与 README](https://github.com/roboflow/trackers)
 - [官方文档：Quickstart 与算法对比](https://trackers.roboflow.com/latest/)
-- [安装指南](https://trackers.roboflow.com/latest/guides/install/)
-- [跟踪指南](https://trackers.roboflow.com/latest/guides/track/)
+- [安装指南](https://trackers.roboflow.com/latest/learn/install/)
+- [跟踪指南](https://trackers.roboflow.com/latest/learn/track/)
 - [Apache-2.0 LICENSE](https://github.com/roboflow/trackers/blob/develop/LICENSE)
 
 ## 对 wiki 的映射
