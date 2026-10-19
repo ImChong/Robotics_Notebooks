@@ -150,6 +150,8 @@ flowchart LR
 - [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md) — 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
 - [Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
 - [SoftVTBench](../wiki/entities/paper-softvtbench.md) — 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压
+- [LIBERO-VPro](../wiki/entities/paper-libero-vpro.md) — 在执行时扰动视觉证据（缺失、延迟、多视角矛盾、场景变化），做 LIBERO 上的闭环视觉鲁棒性基准。
+- [PackLab](../wiki/entities/paper-packlab.md) — 把仿真平台、专用多模态模型和分难度评测连在一起，让模型随箱内状态更新选择物体与落点。
 - [ReflexVLA / ReflexBench](../wiki/entities/paper-reflexvla.md) — 延迟感知的动态任务评测
 - [DexBench](../wiki/entities/dexbench.md) — 工业灵巧规格（OSC 六轴 / 18 任务），主张 breakdown curve 而非单一 SR；注意其评测仓仍标 coming soon，是**规格页而非可跑仿真榜**
 - [ManiSkill-HAB](../wiki/entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) · [Mimicking-Bench](../wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) — 低层操作 / 人形模仿套件

@@ -2,7 +2,7 @@
 type: formalization
 tags: [rl, safety, control, optimization, math]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../concepts/safety-filter.md
   - ../methods/reinforcement-learning.md
