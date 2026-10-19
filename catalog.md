@@ -1563,6 +1563,7 @@
 - [CoHuB：多个人形机器人协作仿真基准](wiki/entities/paper-cohub.md) — CoHuB: A Simulation Benchmark for Multi-Humanoid Collaboration**（[arXiv:2609.34782](https://arxiv. `📅unknown` `[entity_page]`
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2 `📅unknown` `[entity_page]`
 - [多操作员多机器人遥操作界面（arXiv:2610.15001）](wiki/entities/paper-collaborative-teleoperation-multi-operator-multi-robot.md) — 多操作员多机器人遥操作界面**（*Design and Evaluation of a Collaborative Teleoperation Interface for Multi-Operat `📅unknown` `[entity_page]`
+- [Commander–Executor：多角色协作操作的规划与策略迁移](wiki/entities/paper-commander-executor-coordination.md) — 一句话定义：** 该方法把长程协作操作拆成「Commander 规划共享物体轨迹与角色线索」和「Executor 用共享物理策略完成仿真人形角色交互」两层。 `📅unknown` `[entity_page]`
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav**（*Robots Ask the Way: Communication-Enabled Social Navigation*，[arXiv:2607.01044](https:/ `📅unknown` `[entity_page]`
 - [Compact Visuotactile WM（arXiv:2609.09597）](wiki/entities/paper-compact-visuotactile-wm-lifting.md) — Compact Visuotactile WM**（*Compact Visuotactile World Models for Lifting: Prediction, Reward Align `📅unknown` `[entity_page]`
 - [CompliantWBC：重型人形的全身柔顺](wiki/entities/paper-compliantwbc-heavy-humanoid.md) — CompliantWBC 估计外力 latent，并以有界阻抗目标残差调节冻结的全身策略，实现多身体接触位置的柔顺响应。 `📅unknown` `[entity_page]`
