@@ -10,7 +10,7 @@ tags:
   - fudan
   - hku
 status: complete
-updated: 2026-09-20
+updated: 2026-10-19
 arxiv: "2609.15726"
 code: https://github.com/Bench2Dex/Bench2Dex
 related:
