@@ -204,6 +204,13 @@ op: ingest
 
 - 2026-10-19 | ingest | Joshua Bird 的 Low Cost Mocap 项目：确认 MIT 开源仓库含相机处理、ESP32 固件和 3D 文件；补充项目来源与动捕实体页，区分约 20 美元相机系统与约 50 美元无人机成本。
 
+# 2026-10-19 ORA ingest
+
+- **Op：** ingest
+- **意图：** 收录 ORA 官方博客及其 robot-use agent harness，沉淀方法、仿真结果与部署边界。
+- **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
+- **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
+
 ## [2026-10-19] ingest | Commander–Executor 协作操作 — 归档 arXiv:2610.14911；仿真人形角色方法，代码待发布。
 
 ## [2026-10-19] ingest | 收录 Tidy Design 开源产品画布及 MCP 设计协作工作流
