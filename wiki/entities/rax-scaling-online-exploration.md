@@ -14,7 +14,7 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-10-17
+updated: 2026-10-18
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
 related:
@@ -40,7 +40,6 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 | MCP | Model Context Protocol | agent 与机器人服务交换工具调用的接口之一。 |
 | LLM | Large Language Model | coding agent 使用的冻结语言模型；论文方法不在线更新其权重。 |
 | API | Application Programming Interface | 新机器人接入 RAX 的感知、规划与控制接口边界。 |
-| SOTA | State of the Art | 论文比较仿真基线时使用的当前最佳方法简称。 |
 
 ## 核心信息
 
@@ -85,7 +84,7 @@ flowchart TB
 
 | 评测口径 | 项目页报告 | 解读 |
 | --- | --- | --- |
-| 未见仿真场景 | 探索预算从 4 增至 128 episode 时，平均成功率 25%→79%；先前最佳 SOTA 为 41.2%。 | 反映探索量与 held-out 场景泛化的关系。 |
+| 未见仿真场景 | 探索预算从 4 增至 128 episode 时，平均成功率 25%→79%；项目页对比中的此前最佳基线为 41.2%。 | 反映探索量与 held-out 场景泛化的关系。 |
 | 仿真基线对比 | 相对顶级 baseline 平均高 37.4%。 | 这是跨仿真任务的汇总，不能视作每个任务均提升同一幅度。 |
 | 编译执行耗时 | Air fryer：72 分钟→18 秒（241×）；Bandu tower：17 分钟→10 秒（103×）。 | 比较 agent 完成任务与编译程序执行；不是控制环频率或端到端系统加速指标。 |
 | 真机任务 | 项目页报告记忆依赖、关节结构、高精度、可变形物体和长时程移动操作任务。 | 证明任务覆盖面；不替代多场景成功率与运行可靠性统计。 |
