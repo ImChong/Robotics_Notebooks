@@ -7,11 +7,25 @@ tags:
   - robot-manipulation
   - dataset
   - sim2real
+  - texas-am
+  - google-deepmind
+  - cmu
+  - stanford
+  - yale
+  - microsoft
+  - nvidia
+  - meta
+  - uw
+  - northwestern
+  - sony
+  - georgia-tech
+  - berkeley
 status: complete
-updated: 2026-10-10
+updated: 2026-10-19
 project_id: touchscale-visual-tactile-dataset
 arxiv: "2610.10288"
 project: https://touch-scale.github.io/
+code: https://github.com/phai-lab/touchscale
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
@@ -20,7 +34,9 @@ related:
 sources:
   - ../../sources/papers/touchscale_arxiv_2610_10288.md
   - ../../sources/datasets/touchscale_huggingface.md
-summary: "TouchScale 是统一穿戴式采集流程下的人类视觉-触觉交互数据集，论文描述全量约 500 小时；截至 2026-10-10，Hugging Face 当前发布 100 小时。"
+  - ../../sources/sites/touch-scale-github-io.md
+  - ../../sources/repos/phai-lab-touchscale.md
+summary: "TouchScale 是统一穿戴式采集流程下的人类视觉-触觉交互数据集；论文描述全量约 500 小时，截至 2026-10-19 数据卡托管 100 小时，代码已公开。"
 ---
 
 # TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning
@@ -47,7 +63,9 @@ summary: "TouchScale 是统一穿戴式采集流程下的人类视觉-触觉交�
 
 论文描述的 full TouchScale 包含约 500 小时、约 87,000 episodes、约 2,000 个任务描述和 1,500+ 个物体。采集覆盖日常活动及结构化操作任务；每只手套有 880 个 taxels，记录手指和掌心的法向压力信号。统一的设备与时间同步流程使多个传感流能按 episode 对齐。
 
-当前公开仓库的范围与论文全量不同：截至 2026-10-10，Hugging Face 数据卡显示已发布 100 小时、15,324 episodes、929 个任务描述、22 种场景和 905+ 个物体；全量 500 小时仍标记为计划在 2026 年 11 月前发布。下载数据文件需要同意分享联系信息。
+当前公开仓库的范围与论文全量不同：截至 2026-10-19，Hugging Face 数据卡显示已发布 100 小时、15,324 episodes、929 个任务描述、22 种场景和 905+ 个物体；全量 500 小时仍标记为计划在 2026 年 11 月前发布。下载数据文件需要同意分享联系信息。
+
+论文列出的作者机构包括：得克萨斯农工大学、Google DeepMind、CMU、斯坦福大学、耶鲁大学、微软、Overfit Lab、NVIDIA、利物浦大学、Meta、华盛顿大学、西北大学、索尼、佐治亚理工学院和加州大学伯克利分校。
 
 ## 从人类触觉到机器人策略
 
@@ -60,6 +78,12 @@ summary: "TouchScale 是统一穿戴式采集流程下的人类视觉-触觉交�
 - **策略 mid-training：** 四个任务平均真实机器人成功率比较是 22.5% 与 57.5%，属于论文设定的 mid-training 和机器人后训练流程。
 
 因此，摘要中“0.134 到 0.383”的简写不是同规模数据对照；做技术比较时应引用论文中匹配规模的具体实验表格。
+
+## 官方代码与开放范围
+
+TouchScale 官方代码仓库公开了数据质量检查流程，以及 N0-VTLA 的视触觉 mid-training 和机器人 post-training 入口。README 提供 `train_stage1.sh` 和 `scripts/posttrain.sh` 的运行说明；训练依赖相应数据、归一化文件与模型权重。
+
+代码仓库主体采用 MIT License，但 `n0-vtla/` 派生部分沿用 CC BY-SA 4.0，N0-VTLA 权重受 Gemma Terms of Use 约束。数据集另采用 CC-BY-NC-4.0，且访问文件前需同意分享联系信息。代码、权重与数据许可应分别核对；公开代码不代表数据已全量发布或可商业使用。
 
 ## 数据示意
 
@@ -92,6 +116,13 @@ flowchart LR
 
 - [TouchScale 论文归档](../../sources/papers/touchscale_arxiv_2610_10288.md)
 - [TouchScale 数据集发布归档](../../sources/datasets/touchscale_huggingface.md)
+- [TouchScale 项目页核查](../../sources/sites/touch-scale-github-io.md)
+- [TouchScale 官方代码归档](../../sources/repos/phai-lab-touchscale.md)
 - [arXiv:2610.10288 v2](https://arxiv.org/abs/2610.10288)
 - [Hugging Face 数据集卡](https://huggingface.co/datasets/2077AIDataFoundation/TouchScale)
 - [项目主页](https://touch-scale.github.io/)
+
+## 推荐继续阅读
+
+- [TouchScale 官方代码仓库](https://github.com/phai-lab/touchscale)
+- [TouchScale Hugging Face 数据集卡](https://huggingface.co/datasets/2077AIDataFoundation/TouchScale)
