@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-18
+updated: 2026-10-19
 related:
+  - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -548,6 +549,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 - [Blind Grasp Reflex](../entities/paper-blind-grasp-reflex.md) — 将手臂到达与只依赖本体感觉的灵巧手抓取分开
+- [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
 
 ## 参考来源
 
