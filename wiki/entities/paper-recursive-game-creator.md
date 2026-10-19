@@ -33,6 +33,8 @@ sources:
 | LLM | Large Language Model | Designer、Builder、Reviewer 等角色可调用的语言模型 |
 | API | Application Programming Interface | Player 用于读取游戏状态并提交动作的程序接口 |
 | A/B | A/B comparison | Reviewer 对匿名候选版本与保留版本做偏好比较 |
+| L1 | Source-level checks | GameASG-Bench 的源码静态检查 |
+| L2 | Runtime checks | GameASG-Bench 的浏览器运行时检查 |
 
 ## 为什么重要
 
