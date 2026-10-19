@@ -24,6 +24,7 @@ related:
   - ../references/llm-wiki-karpathy.md
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
+  - ../entities/paper-recursive-game-creator.md
   - ../entities/course-spec-driven-development-coding-agents.md
   - ../concepts/ai-agent-evaluation.md
   - ../entities/anthropic-claude-api-skill.md
