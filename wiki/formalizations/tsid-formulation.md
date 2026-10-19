@@ -2,7 +2,7 @@
 type: formalization
 tags: [control, whole-body-control, math, optimization, dynamics]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/floating-base-dynamics.md

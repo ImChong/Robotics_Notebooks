@@ -80,6 +80,7 @@ flowchart LR
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) — 本阶段主线知识页
 - [人形并联/连杆关节运动学](../wiki/concepts/humanoid-parallel-joint-kinematics.md) 与 [人形腿部行星滚柱丝杠直线驱动](../wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF + EHA/电机分工的布置实例
+- [刚-软混合链路人形](../wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。
 - [Actuator 102 · 02：旋转-直线分离架构](../wiki/overview/humanoid-actuator-102-split-architecture.md)
 - [人形膝/腿主承力链为何通常避开谐波减速器](../wiki/concepts/humanoid-knee-harmonic-drive-limits.md) — 膝/踝主承力关节优先解决冲击载荷谱、柔轮疲劳寿命、动态刚度与远端惯量，PRS 直线 / 摆线 RV / 低减速比 QDD 三条常见替代路线对照
 - [LIP/ZMP](../wiki/concepts/lip-zmp.md) 与 [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md) — 布局参数在控制里以什么形式出现

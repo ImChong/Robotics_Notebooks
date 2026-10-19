@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sparse-reward, manipulation, goal-conditioned]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ./reinforcement-learning.md
   - ../concepts/reward-design.md
