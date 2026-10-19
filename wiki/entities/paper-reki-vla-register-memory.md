@@ -89,6 +89,17 @@ sequenceDiagram
 - 寄存器仅保留压缩后的近期表征，不保证任意长时记忆或可解释的事件存储。
 - 使用项目结果前应确认模型 checkpoint、机器人平台和 benchmark 版本匹配。
 
+## 与其他工作对比
+
+| 工作 | 历史信息存放位置 | 刷新方式 | 与 REKI 的差异 |
+|------|------------------|----------|----------------|
+| 单帧 VLA（如 [π0](./paper-pi0.md)） | 不保留历史 | — | REKI 在同类 VLM + flow-matching 动作专家结构上补近期上下文 |
+| [Fast-VLA](./paper-fast-vla-once-per-episode.md) | 冻结 VLM 生成的固定 KV 任务记忆 | 每回合一次 | Fast-VLA 省去逐步 VLM 调用；REKI 每帧写入寄存器，保留回合内变化 |
+| [VaM](./paper-vam-value-as-memory.md) | 价值预测历史经 GRU 编码为 token | 异步逐步 | VaM 记忆任务进度标量；REKI 记忆压缩视觉语言表征 |
+| [GMP](./paper-gated-memory-policy.md) | 学习型门控 + cross-attention 记忆 | 门控决定是否写入 | GMP 面向非马尔可夫任务的显式门控；REKI 用固定数量寄存器、额外开销低于动作块预测的 1% |
+
+REKI 与 Fast-VLA 都报告 LIBERO-Plus 与 RoboTwin 结果，但模型规模、预训练数据与评测设置不同，不能直接按成功率排序。
+
 ## 结论
 
 **REKI 以 action expert 内的紧凑寄存器缓存近期 VLM 表征，在保持短期闭环上下文的同时控制了额外推理成本。**

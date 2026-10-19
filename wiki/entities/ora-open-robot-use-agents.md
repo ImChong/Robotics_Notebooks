@@ -105,6 +105,7 @@ sequenceDiagram
 - [ASPIRE](../methods/aspire.md) — coding agent 调试并积累机器人技能程序。
 - [LIBERO benchmark](../entities/libero-benchmark.md) — ORA 使用的操作评测环境之一。
 - [HoloAgent](../entities/holoagent.md) — 语言任务、记忆和工具驱动的机器人 agent 系统。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ORA 的 RoboTwin / LIBERO-Pro 成功率属其 ③ 策略任务成功率层；跨工作协议不齐时不可直接比榜，仿真结论外推真机需过 ④ 层校准。
 
 ## 参考来源
 
