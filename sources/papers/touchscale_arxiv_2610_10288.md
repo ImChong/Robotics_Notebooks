@@ -7,9 +7,10 @@
 - **版本/日期：** v1 于 2026-10-07 提交；v2 于 2026-10-08 修订
 - **作者：** Dayou Li、Hao Wang、Qianqian Yang、Zihao Zhu、Haoquan Fang、Ziyao Zeng、Yan Han、Zihan Wang、Yan Wang、Baoru Huang、Dilin Wang、Kenji Shimada、Yiyue Luo、Manling Li、Teresa Lv、Mustafa Mukadam、Rakesh Ranjan、Ruohan Zhang、Qi He、Changliu Liu、Xu Chen、Marco Pavone、Bangya Liu、Jiachen Li、Masayoshi Tomizuka、Zhiwen Fan
 - **项目页：** <https://touch-scale.github.io/>
+- **代码：** <https://github.com/phai-lab/touchscale>
 - **数据集：** <https://huggingface.co/datasets/2077AIDataFoundation/TouchScale>
 - **作者机构：** Texas A&M University、Google DeepMind、CMU、Stanford University、Yale University、Microsoft、Overfit Lab、NVIDIA、University of Liverpool、Meta、University of Washington、Northwestern University、Sony、Georgia Tech、UC Berkeley（论文 v2 所列）
-- **核查日期：** 2026-10-10
+- **核查日期：** 2026-10-19
 - **沉淀到 wiki：** [TouchScale](../../wiki/entities/touchscale.md)
 
 ## 论文贡献
@@ -27,5 +28,6 @@ TouchScale 是一个统一可穿戴采集流程下的人类视觉-触觉交互�
 - [arXiv v2 摘要与版本记录](https://arxiv.org/abs/2610.10288)
 - [arXiv HTML v2](https://arxiv.org/html/2610.10288v2)
 - [论文 PDF](https://arxiv.org/pdf/2610.10288)
+- [官方项目页归档](../sites/touch-scale-github-io.md)
+- [官方代码归档](../repos/phai-lab-touchscale.md)
 - [TouchScale 数据集归档](../datasets/touchscale_huggingface.md)
-- [官方项目主页](https://touch-scale.github.io/)
