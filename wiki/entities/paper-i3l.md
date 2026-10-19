@@ -66,7 +66,7 @@ R1 Pro 上，握把触摸或 JoyCon 输入会协调接管双臂、躯干、移�
 
 ### 多轮纠正学习闭环
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   demos["初始专家演示 D0"]
   policy["训练并部署策略 πr"]
@@ -76,7 +76,7 @@ flowchart TB
   update["重训策略 πr+1"]
   demos --> policy --> rollout --> corrections --> aggregate --> update
   update --> rollout
-\`\`\`
+```
 
 每一轮的数据由初始演示和历轮主动纠正构成；HG-DAgger 选择接管帧进入训练集，更新后的策略再接受下一轮部署测试。
 
