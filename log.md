@@ -202,6 +202,12 @@ op: ingest
 
 将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
 
+## [2026-10-19] ingest | 收录 Tidy Design 开源产品画布及 MCP 设计协作工作流
+
+- 官方 GitHub 仓库标注 Apache-2.0，README 确认 agent 可经 MCP 读取、创建和编辑可编辑设计，并支持自托管。
+- 官网入口由官方 README 确认；官网页面本次未能直接读取，因此功能总结以仓库 README 为准。
+- 新增项目实体并关联 MCP 与 coding agent 知识页；机器人面板用途注明为工程推论，未表述成已验证集成。
+
 ## [2026-10-19] ingest | sources/papers/onewm_arxiv_2610_21095.md — 归档 OneWM 论文、项目页和代码，并提炼因果联合训练与互惠评测结果
 
 ## [2026-10-19] ingest | sources/papers/*_2610_22*.md — 收录六篇具身机器人论文，并核查项目页、代码开放状态和评测边界；T2-z 已在 main 完整归档

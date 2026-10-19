@@ -5178,6 +5178,7 @@
 - [The Coding Train](wiki/entities/the-coding-train.md) — The Coding Train** 是面向初学者与好奇学习者的创意编程社区，由 Daniel Shiffman 于 2015 年发起；以系列课程、Coding Challenges 和直播教授编 `📅unknown` `[entity_page]`
 - [Three.js Game Skills](wiki/entities/threejs-game-skills.md) — Three.js Game Skills** 是 [majidmanzarpour/threejs-game-skills](https://github.com/majidmanzarpour/ `📅unknown` `[entity_page]`
 - [Tidewater](wiki/entities/tidewater.md) — Tidewater**（GitHub，[在线游玩](https://dgreenheck.github.io/ `📅unknown` `[entity_page]`
+- [Tidy Design：面向智能体的可编辑产品画布](wiki/entities/tidy-design.md) — Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直接编辑界面，兼容 MCP 的 agent 可读取、创建和修改设计，团队能在同一工作区协作。 `📅unknown` `[entity_page]`
 - [TidyBot2](wiki/entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](wiki/entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心（X-Humanoid）**推动的开源人形母平台：云端文档总览、[官网开源页 `📅unknown` `[entity_page]`
 - [TienKung-Lab](wiki/entities/tienkung-lab.md) — Open-X-Humanoid/TienKung-Lab**](https://github.com/Open-X-Humanoid/TienKung-Lab) 是 **北京人形机器人创新中心（ `📅unknown` `[entity_page]`
