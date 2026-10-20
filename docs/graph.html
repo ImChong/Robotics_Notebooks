@@ -4533,9 +4533,9 @@
         n.vy = 0;
       }
       // 分片 warmup 期间浏览器能出帧，若此时把「重铺后挤成一团」的状态画出来，
-      // 用户会先看到一坨再跳到展开态。故只有同步路径（首屏）才预先落 DOM，
-      // 分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
-      if (!opts.async) syncGraphDomFromSimulation();
+      // 用户会先看到一坨再跳到展开态。故只有未重铺（首屏叶序种子）时才预先落 DOM，
+      // 刷新布局的分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
+      if (!opts.reseed) syncGraphDomFromSimulation();
 
       const startVisiblePhase = () => {
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
@@ -4546,9 +4546,9 @@
         // 叶序种子半径随规模增长（6k 节点 ≈ 790px），手机上几十秒内只看到被裁掉的中心。
         // 首屏走同步路径时本函数仍在初始化脚本中段执行（isMobile 等常量尚未定义），
         // 故推迟到下一帧再 fit；刷新布局的分片路径可直接 fit。
-        if (opts.async) fitToScreen({ duration: 0 });
-        else requestAnimationFrame(() => { if (!is3DView()) whenGraphViewportReady(() => fitToScreen({ duration: 0 })); });
+        whenGraphViewportReady(() => fitToScreen({ duration: 0 }));
         simulation.restart();
+        if (opts.onVisible) opts.onVisible();
       };
 
       if (FORCE_WARMUP_TICKS <= 0) {
@@ -4568,6 +4568,7 @@
             simulation.tick();
             i += 1;
           } while (i < FORCE_WARMUP_TICKS && performance.now() - sliceStart < FORCE_WARMUP_SLICE_MS);
+          if (opts.onProgress) opts.onProgress(i, FORCE_WARMUP_TICKS);
           if (i < FORCE_WARMUP_TICKS) {
             requestAnimationFrame(step);
             return;
@@ -4608,10 +4609,15 @@
       finishSimulationLoad();
     });
 
-    // 首屏：种子就位后直接开场（约 2–3s 内完成一次回弹并落稳）。
+    // 首屏：种子就位后开场。warmup 同样走按帧预算的分片：同步跑 20 tick 在 6k 节点全图上
+    // 是一个 3 s（手机 4× 节流下 ≈14 s）的长任务，遮罩停在 96% 且页面完全无响应。
+    // 分片期间 loading 遮罩保持可见，由 onVisible 回调在开场时收掉。
     setLoadingProgress(96);
-    runStabilizedLayout2D();
-    whenGraphViewportReady(() => finishGraphRenderLoad());
+    runStabilizedLayout2D({
+      async: true,
+      onProgress: (done, total) => setLoadingProgress(96 + 3 * (done / total)),
+      onVisible: () => whenGraphViewportReady(() => finishGraphRenderLoad()),
+    });
 
     setTimeout(() => {
       if (simulation.alpha() > 0.01) return;
