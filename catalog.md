@@ -3123,6 +3123,7 @@
 - [Qwen-Audio-Agent：全双工语音与异步任务怎么同时跑？](wiki/entities/paper-qwen-audio-agent.md) — Qwen-Audio-Agent**（*Qwen-Audio-Agent Technical Report*，[arXiv:2609.25195](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型](wiki/entities/paper-qwen-drive-1-0.md) — 一句话定义：** Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。 `📅unknown` `[entity_page]`
 - [QWM（Q-Learning With World Models）](wiki/entities/paper-qwm.md) — QWM**（*Q-Learning With World Models*，arXiv:2608.17163，[项目页](ht `📅unknown` `[entity_page]`
+- [R²-WAM：世界动作模型需要什么视觉表征？](wiki/entities/paper-r2-wam-visual-representations.md) — R²-WAM** 对 WAM 的视觉输入做受控比较：固定训练设置，分别改变预训练视觉表征、特征集成机制和多源组合，研究这些选择如何影响机器人操作策略。 `📅unknown` `[entity_page]`
 - [R²-WAM：让世界动作模型靠整流后的自生成回放不忘旧任务](wiki/entities/paper-r2-wam.md) — R²-WAM 让世界动作模型（WAM）凭任务指令重新生成旧任务的 rollout 作为回放数据，并先做两步整流：用 VLM 评估器在任务完成处截断，再用光流一致性过滤动作与观测不一致的样本，从而在 `📅unknown` `[entity_page]`
 - [R2RI：机器人间交互的多视角事件与 RGB 数据集](wiki/entities/paper-r2ri-robot-interaction-dataset.md) — R2RI**（arXiv:2610.07117，Magrini 等，意大利多所大学）是论文称之为 **首个面向机器人间交互（ `📅unknown` `[entity_page]`
 - [R2S-EGO：稀疏捕获 Real-to-Sim 的双代理 Ego 细化](wiki/entities/paper-r2s-ego.md) — R2S-EGO**（*Dual-Proxy Refinement for Sparse-Capture Real-to-Sim*，[arXiv:2608.06827](https://arxiv. `📅unknown` `[entity_page]`
