@@ -219,3 +219,34 @@
 - **P1「移动端默认子图」必须同时做 3D 的真子集 `syncFilters`**，否则手机进 3D 后收益归零。
 - **B6 的修法升级**：不是只把 `cooldownTime` 放开，而是「按设备缩放 `d3AlphaDecay` + 解耦 tick 与帧（G5-3D）」。
 - 对抗验证只覆盖了 F01–F10；§3 中标 [agent 实测] 的缩放 / 平移 / 栅格化数字（标签 `display:none` 230–540 ms、命中测试 34–62 ms、Commit 768 ms）仍是单 agent 结论，实施前先用 `measure_graph_perf.cjs` 的扩展 profile 复测。
+
+---
+
+## 7. 实施进度（2026-10-20，同一 PR 内逐项提交）
+
+每项一个 commit，均在本机 headless Chromium（4 核 → 低端档）复测；绝对毫秒偏悲观，看相对变化。
+
+| 项 | 状态 | 实测（改前 → 改后） |
+|---|---|---|
+| B3 时序 `t.name` 抛错 | 已修 | pageerror 5 → 0，播放中相机跟随（k 跟到 2.2） |
+| B8 / B21 磁吸 Y 兜底、健康度分支 | 已修 | 按健康度聚类生效 |
+| B2 / B16 `end` 一次性 fit、warmup 后先 fit、3D 下不 restart | 已修 | 放大拖拽后视口保持 k=1.447（改前跳回 0.18） |
+| 首屏 warmup 分片 | 已做 | 加载期最长长任务 4,306 → 1,421 ms |
+| 点击不加热、首次拖动才加热 | 已做 | 点击后 alpha 不变；拖拽 alpha 0.056、节点随手移动 |
+| alphaMin / theta / 碰撞力门控 + LOW_END_DEVICE | 已做 | 力 tick p50 147 → 111 ms，首屏落稳 53 → 28 s，`verify_graph_refresh_layout` 首次 ok |
+| B1 / B4 3D 连线 NaN、hover 不再整图 digest | 已修 | 材质 NaN 53,740 → 0；hover 延迟 digest 3.3–3.7 s → 无；同步 99–121 → 117–176 ms |
+| B5 首次进 3D 1 次 graphData、连线记录复用 | 已做 | 点击 → 53k 连线 38 → 25–27 s（软件 GL） |
+| B6 / B7 / B15 冷却分档、tick 计数取景、死守卫、hidden 守卫 | 已修 | 切回 2D 后隐藏 3D 帧计数不再增长 |
+| 3D 像素比 / MSAA 分档 | 已做 | DPR 2：低端 1× 无 MSAA；高端 1.5× |
+| 3D 渲染环空闲暂停 | 已做 | 引擎停机后帧计数 96 → 96，滚轮唤醒，阻尼结束再停 |
+| 3D 连线排除 raycast、指针拾取按输入开关 | 已做 | 53,740 条全在 layer 1，draw calls 不变；悬停命中 97 → 20 s（软件 GL） |
+| 2D 标签 `display:none` | 已做 | 12 步滚轮 >100 ms 帧 12 → 2，最长帧 879 → 118 ms |
+| 平移时节点层 `pointer-events:none` | **已放弃** | trace：HitTest 592 → 480 ms，但 UpdateLayoutTree 64 → 280 ms（继承属性引发 25k 元素重算），净负 |
+| hover 离开不整跑 applyFilters、邻接表 | 已做 | mouseleave 110 → 31 ms（筛选态 90 → 26） |
+| B9 侧栏 id 索引、装饰排序 | 已修 | 枢纽开侧栏 3,953 → 57 ms |
+| 目录按需加载、datalist 懒建 | 已做 | 首屏不再请求 3.9 MB 目录；开侧栏 0.9 s 内补齐 |
+| preload 数据、SW 延后、流式解析 | 已做 | 数据请求 234 → 29 ms 起步；首屏就绪 5.7–8.7 → 4.4 s |
+| B17 / B19 / B20 / 时序暂停冷却 | 已修 | 清除全部回到 6,216；暂停 0.8 s 后 alphaTarget 0；3D 高亮跨视图同步 |
+| B22 / B23 触屏轻触、3D 幽灵 hover | 已修 | 轻触一次钉住，空白处轻触关闭；旋转后 node_dimmed 0 |
+
+未做（待后续）：全局 CSS transition / `backdrop-filter` / 组级 opacity（F40 / F41 / F50）、3D 材质缓存与几何精简（F52 / F53）、进度条分母（B10）、DPR 变化重绘（B12）、WebGL 上下文丢失（B13）、移动端视口（B24 / B25）；P1 的移动端默认子图（含 3D 真子集）、导出期预计算布局、数据瘦身；P2 的 G5 / G6。
