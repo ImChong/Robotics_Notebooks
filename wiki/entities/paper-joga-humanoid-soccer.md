@@ -15,7 +15,6 @@ sources:
 summary: "Joga 将主动视觉、球检测误差建模、全身执行器对齐和技能衔接结合，在 Unitree G1 上实现敏捷运球、接球、传球和射门。"
 project_id: joga-humanoid-soccer
 project: https://joga.csail.mit.edu/
-paper: https://joga.csail.mit.edu/static/joga.pdf
 ---
 
 # Joga：带主动视觉的人形足球技能学习
