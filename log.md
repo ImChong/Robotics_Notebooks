@@ -211,6 +211,8 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | 归档 Haoyang Weng 的可 steer 物理交互札记并补充 VLA/S0 接口分析
+
 ## [2026-10-20] ingest | ACE-Brain-0.6 媒体披露归档，并更新 ACE-Brain 统一实体页的版本与开源状态
 
 ## [2026-10-20] ingest | sources/papers/fcts_failure_guided_curriculum_tree_search_arxiv_2610_22619.md + sources/papers/replanmem_vla_arxiv_2610_22556.md + RAX skills/data — FCTS、RAX 在线探索与 RePlanMem 视觉记忆资料归档
