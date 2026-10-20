@@ -13,7 +13,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/r2_wam_visual_representations_arxiv_2610_13024.md
-  - ../../sources/sites/r2-wam-project.md
+  - ../../sources/sites/r2-wam-visual-representations-project.md
 summary: "R²-WAM 在统一训练设置下比较 13 种视觉表征与 5 种集成机制，发现强通用表征和通道维联合预测是更可靠的起点；多源组合须按任务增量筛选。"
 ---
 
