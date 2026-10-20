@@ -211,6 +211,8 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | MemT-1.0 — 归档原生记忆模型论文、官方项目与实现，并整理参数化记忆评测边界及软件 / 权重许可范围。
+
 ## [2026-10-20] ingest | OptiSight：语义推理与几何控制的具身导航
 
 - 收录 arXiv:2608.23354 与 CSIC-UPC 官方技术报告记录 IRI-TR-26-02。
