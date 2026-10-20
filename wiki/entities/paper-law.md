@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ./paper-fast-wam.md
-  - ./paper-openwam-alpha.md
+  - ./paper-openwam.md
 sources:
   - ../../sources/papers/law_arxiv_2610_23334.md
   - ../../sources/sites/law.md
@@ -114,7 +114,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-- [FastWAM](./paper-fast-wam.md) / [OpenWAM-α](./paper-openwam-alpha.md)：LAW 在 WAM 后端外增加语义子任务规划、候选动作价值融合与阶段完成检测；论文报告用 OpenWAM 后端进一步提高 RoboTwin 均值。
+- [FastWAM](./paper-fast-wam.md) / [OpenWAM-α](./paper-openwam.md)：LAW 在 WAM 后端外增加语义子任务规划、候选动作价值融合与阶段完成检测；论文报告用 OpenWAM 后端进一步提高 RoboTwin 均值。
 - [World Action Models（WAM）](../concepts/world-action-models.md)：WAM 说明动作与世界预测如何耦合，LAW 进一步处理长任务中的计划推进和执行状态核验。
 - [VLA](../methods/vla.md)：LAW 将 VLM 推理和 WAM 动作生成拆成不同角色与调用节奏，并以阶段状态形成闭环；它不是单次文本到动作映射。
 
@@ -140,7 +140,7 @@ sequenceDiagram
 - [World Action Models（WAM）](../concepts/world-action-models.md) — WAM 的定义与研究实例
 - [视觉-语言-动作模型（VLA）](../methods/vla.md) — 视觉语言条件策略
 - [机器人操作](../tasks/manipulation.md) — 操作任务与评测
-- [FastWAM](./paper-fast-wam.md) · [OpenWAM-α](./paper-openwam-alpha.md) — LAW 使用的 WAM 后端
+- [FastWAM](./paper-fast-wam.md) · [OpenWAM-α](./paper-openwam.md) — LAW 使用的 WAM 后端
 
 ## 参考来源
 
