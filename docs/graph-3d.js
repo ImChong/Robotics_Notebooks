@@ -1084,18 +1084,26 @@
       return sharedSphereGeometry;
     }
 
+    // 节点材质按「颜色|不透明度（取两位小数）」共享：此前 6,216 个节点各持一份 MeshLambertMaterial，
+    // 每个 draw call 都要重传材质 uniform，hover / 侧栏淡化时还逐节点 color.set 重新解析颜色串。
+    // 全图只有社区色 × 几档淡化系数这几十种组合。
+    var nodeMaterialCache = new Map();
+    function nodeMaterialFor(colorStr, opacity) {
+      var q = Math.round(opacity * 100) / 100;
+      var key = colorStr + '|' + q;
+      var mat = nodeMaterialCache.get(key);
+      if (mat) return mat;
+      mat = new bundledThree.MeshLambertMaterial({ color: colorStr, transparent: q < 0.999, opacity: q });
+      nodeMaterialCache.set(key, mat);
+      return mat;
+    }
+
     function createNodeMesh(d) {
       if (!bundledThree) return null;
       // 应用 pop-in 系数，避免新激活节点出现的首帧以全尺寸闪一下。
       var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
-      var opacity = nodeOpacityFor(d);
       var geometry = ensureSharedSphereGeometry(bundledThree);
-      var MaterialCtor = bundledThree.MeshLambertMaterial;
-      var material = new MaterialCtor({
-        color: getNodeColor(d),
-        transparent: opacity < 0.999,
-        opacity: opacity,
-      });
+      var material = nodeMaterialFor(getNodeColor(d), nodeOpacityFor(d));
       var mesh = new bundledThree.Mesh(geometry, material);
       mesh.scale.set(radius, radius, radius);
       mesh.userData.nodeId = d.id;
@@ -1117,9 +1125,8 @@
         var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
         var opacity = nodeOpacityFor(d);
         obj.scale.set(radius, radius, radius);
-        obj.material.color.set(getNodeColor(d));
-        obj.material.opacity = opacity;
-        obj.material.transparent = opacity < 0.999;
+        var mat = nodeMaterialFor(getNodeColor(d), opacity);
+        if (obj.material !== mat) obj.material = mat;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
       }
     }
@@ -2102,11 +2109,13 @@
         if (!scene) return null;
         var meshes = 0, lines = 0, labels = 0;
         var nodeMeshes = 0, dimmed = 0, bright = 0;
+        var nodeMaterials = new Set();
         scene.traverse(function (obj) {
           if (obj.isMesh) {
             meshes += 1;
             if (obj.userData && obj.userData.nodeId && obj.material) {
               nodeMeshes += 1;
+              nodeMaterials.add(obj.material);
               if (obj.material.opacity < 0.5) dimmed += 1; else bright += 1;
             }
           } else if (obj.isLine || obj.isLineSegments) lines += 1;
@@ -2115,6 +2124,7 @@
         return {
           scene_meshes: meshes, scene_lines: lines, label_elements: labels,
           node_meshes: nodeMeshes, node_dimmed: dimmed, node_bright: bright,
+          node_materials: nodeMaterials.size,
         };
       },
 
