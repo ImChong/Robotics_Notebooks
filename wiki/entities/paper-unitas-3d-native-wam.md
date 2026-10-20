@@ -102,7 +102,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-不适用：官方仓库 [DexForce/UNITAS](https://github.com/DexForce/UNITAS) 截至 2026-10-12 只有 README、`assets/overview.png` 与 `.gitignore`（2 次提交），没有训练/推理脚本，故无法对齐真实目录画时序图。
+官方仓库 [DexForce/UNITAS](https://github.com/DexForce/UNITAS) 已发布推理与评测代码。README 提供场景流推理脚本 `src/unitas/scene_flow/inference.py`，并用 `visualize.py` 在 Viser 中交互查看预测轨迹；训练代码与数据集仍未发布。
 
 ## 工程实践
 
