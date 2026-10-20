@@ -37,6 +37,8 @@ sources:
 |------|------|
 | 机构 | ETH Zurich、Max Planck Institute for Intelligent Systems |
 | 时间 | 2022-04（CVPR 2023） |
+| 许可证 | 文章未注明，以官方页为准 |
+| 重定向就绪度 | 未评估：需按目标机器人形态核对动作与观测空间 |
 | 规模 | 210 万帧视频 |
 | 标注 | 三维手部与物体网格；动态接触信息 |
 | 模型 | MANO 与 SMPL-X 标注 |

@@ -37,6 +37,8 @@ sources:
 |------|------|
 | 机构 | Carnegie Mellon University（RoboTouch 实验室） |
 | 时间 | 2021-09（随 ShapeMap 3-D，ICRA 2022） |
+| 许可证 | 文章未注明，以官方页为准 |
+| 重定向就绪度 | 未评估：需按目标机器人形态核对动作与观测空间 |
 | 传感器 | GelSight 触觉传感器与 Azure Kinect RGB-D 相机 |
 | 数据 | 仿真与真实交互各一套 |
 | 方法 | 高斯过程（GP）空间因子图 |
