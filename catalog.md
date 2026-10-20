@@ -1191,7 +1191,7 @@
 - [ABot-Recon：局部上下文长视频流式 3D 重建](wiki/entities/paper-abot-recon.md) — ABot-Recon**（*Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction*，[arXiv:2608.2 `📅unknown` `[entity_page]`
 - [ABot-World-0（单卡桌面无限交互世界 Rollout）](wiki/entities/paper-abot-world-0.md) — ABot-World-0**（*ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU*，[arXiv:2 `📅unknown` `[entity_page]`
 - [ACCRUE：机器人基础模型的持续离策略强化学习](wiki/entities/paper-accrue-continual-off-policy-rl.md) — ACCRUE**（*Continual Off-Policy Reinforcement Learning for Robot Foundation Models*，arXiv:2610.1859 `📅unknown` `[entity_page]`
-- [ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
+- [ACE-Brain：统一具身基础模型（ACE-Brain-0.5 / ACE-Brain-0.6）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
 - [ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎](wiki/entities/paper-ace-data-0.md) — ACE-Data-0**（*Human-Centric Ambient Capture as Embodied Data Engine*，[arXiv:2607.28625](https://ar `📅unknown` `[entity_page]`
 - [ACG-WAM：用几何后果监督世界动作模型](wiki/entities/paper-acg-wam-geometric-latent-prediction.md) — ACG-WAM**（*World-Action Modeling via Action-Conditioned Geometric Latent Prediction*）给世界动作模型增加一个训练 `📅unknown` `[entity_page]`
 - [Validating robotics simulators on real-world impacts](wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md) — Validating robotics simulators on real-world impacts**（[arXiv:2110.00541](https://arxiv.org/abs/21 `📅unknown` `[entity_page]`
@@ -4809,6 +4809,7 @@
 - [VTAP Gripper（视触觉主动掌夹爪）](wiki/entities/paper-vtap-gripper.md) — VTAP Gripper**（*Synergizing Fingertip Sensing and a Visuo-Tactile Active Palm for Dexterous In-Han `📅unknown` `[entity_page]`
 - [VTInstructor: Visual Trajectory Prompting for Navigation Instruction Generation in Continuous Environments](wiki/entities/paper-vtinstructor.md) — 一句话定义：** VTInstructor 是面向连续环境视觉–语言导航（VLN）的指令生成框架；它将路线几何显式绘制回第一人称关键帧，让视觉语言模型据此生成自然语言指路。 `📅unknown` `[entity_page]`
 - [WA-SpecDec（arXiv:2608.08725）](wiki/entities/paper-wa-specdec.md) — WA-SpecDec**（arXiv:2608.08725）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
+- [Walk Like This：示例驱动的风格化人形行走](wiki/entities/paper-walk-like-this-stylized-locomotion.md) — 一句话定义：** Walk Like This 将任意时长的动作示例编码为风格条件，用自回归扩散生成可由 joystick 控速的运动参考，再由强化学习跟踪策略转成物理可执行动作；论文在 Unit `📅unknown` `[entity_page]`
 - [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](wiki/entities/paper-walk-these-ways-quadruped-mob.md) — 一句话定义**：学习 **单一条件策略** \(\pi(a|c,b)\)：在 **同一平坦训练分布** 上，用少量 **行为参数 \(b\)** 切换步态族（频率、摆腿高度、躯干姿态等），从而在  `📅unknown` `[entity_page]`
 - [Walking on Roofs：商用四足能在屋顶上干活吗](wiki/entities/paper-walking-on-roofs-quadruped-go2.md) — Walking on Roofs**（arXiv:2610.12272，Bjoern-Felix Dettmar 与 Arn `📅unknown` `[entity_page]`
 - [Wall-OSS-0.5（预训练即可上真机的 VLA）](wiki/entities/paper-wall-oss-0-5.md) — Wall-OSS-0.5**（*Wall-OSS-0.5 Technical Report*，[arXiv:2605.30877](https://arxiv.org/abs/2605.30877 `📅unknown` `[entity_page]`
