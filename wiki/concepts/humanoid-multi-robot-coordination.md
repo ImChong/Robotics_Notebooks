@@ -111,6 +111,7 @@ flowchart LR
 - [MARL](../methods/marl.md) — 学习式多体协调
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md) — 工程化分层状态机 + 技能库范例
 - [CHORUS](../entities/paper-chorus.md) — 移动操作臂 **零通信** 去中心化 VLA 协作（共享 π₀.₅ 权重 + 身份 prompt；与足球群控场景不同但同属多机协调谱系）
+- [UniUni](../entities/unitree-uniuni.md) — 宇树面向编队演出的图形化轨迹与动作时间线工具；偏预编排执行，不公开底层同步/定位实现
 - [PingpongDuo](../entities/paper-pingpongduo.md) — 双人形乒乓球双打：风险过滤站位实现高动态多机协同
 
 ## 参考来源
