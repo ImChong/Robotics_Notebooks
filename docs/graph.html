@@ -3795,6 +3795,9 @@
       edgeCanvas.width = cw;
       edgeCanvas.height = ch;
       edgeCanvasDpr = dpr;
+      // 改 width/height 会清空位图；只有像素比变了（拖到另一块屏、改系统缩放）时视口尺寸不变，
+      // runGraphViewportResize 会提前返回不重绘，这里自己补一帧
+      scheduleEdgeDraw();
     }
 
     /* ── 2D 边层配色、粗细与墨量预算 ──────────────────────────
@@ -6169,6 +6172,18 @@
       });
     }
     window.addEventListener('resize', onGraphViewportResize);
+    // 像素比变化（跨屏拖动 / 系统缩放）不一定触发 resize：用 resolution 媒体查询监听，每次变化后重新挂
+    (function watchDevicePixelRatio() {
+      if (!window.matchMedia) return;
+      const mq = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
+      const onChange = () => {
+        mq.removeEventListener ? mq.removeEventListener('change', onChange) : mq.removeListener(onChange);
+        onGraphViewportResize();
+        watchDevicePixelRatio();
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    })();
     window.addEventListener('orientationchange', onGraphViewportResize);
     window.addEventListener('pageshow', onGraphViewportResize);
     document.addEventListener('visibilitychange', () => {
