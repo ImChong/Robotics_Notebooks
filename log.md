@@ -211,6 +211,12 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | OptiSight：语义推理与几何控制的具身导航
+
+- 收录 arXiv:2608.23354 与 CSIC-UPC 官方技术报告记录 IRI-TR-26-02。
+- 作者代码仓库公开；地图和模型权重需另行准备，汇总成功率由人工统计且暂无自动评测脚本。
+- 关联视觉–语言导航与视觉伺服，归档论文、官方记录和仓库来源。
+
 ## [2026-10-20] ingest | 三项论文/项目收录：Rubik Skills、Blind Precise Assembly/mjfit、ActiveAlign；补充三篇实体页及互链，记录公开实现边界
 
 ## [2026-10-20] ingest | sources/sites/unitree-uniuni.md — 归档宇树 UniUni 桌面集群编舞系统，新增实体页并关联人形多机协调；闭源软件
