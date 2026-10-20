@@ -2881,7 +2881,10 @@
     }
 
     /** 进入 3D 的统一入口：先确保库就位，再走原同步切换；2D 不受影响。 */
+    // 视图请求序号：3D 库异步加载期间用户又点了 2D，加载完成后的回调不得再切回 3D
+    let spatialRequestSeq = 0;
     function requestSpatialViewMode(mode, opts) {
+      const seq = ++spatialRequestSeq;
       if (mode !== '3d') {
         setSpatialViewMode(mode, opts);
         return Promise.resolve();
@@ -2904,6 +2907,7 @@
             viewMode3dBtn.disabled = false;
             viewMode3dBtn.removeAttribute('aria-busy');
           }
+          if (seq !== spatialRequestSeq) return;   // 期间用户已改主意（点了 2D）
           // 库缺失时这里会命中既有失败路径：恢复 2D + 提示，不另写一套降级。
           setSpatialViewMode('3d', opts);
         });
@@ -2933,7 +2937,11 @@
           if (!graph3dView) throw new Error('3D view unavailable');
           graph3dView.show();
           graph3dView.syncFilters();
-          if (isMobile && pinnedNode) applyNodeNeighborHighlight(pinnedNode);
+          // 3D 侧自持 sidebarNodeId：进入时按当前侧栏 / 固定卡片状态重放或清除，
+          // 否则「3D 选中 → 2D 关侧栏 → 回 3D」会停在全图淡化且 hover 失效的陈旧高亮
+          const focusNodeForView = sidebarNode || (isMobile ? pinnedNode : null);
+          if (focusNodeForView) applyNodeNeighborHighlight(focusNodeForView);
+          else graph3dView.clearSidebarHighlight();
         } catch (err) {
           console.warn('3D view unavailable; restoring 2D:', err);
           initializationFailed = true;
@@ -5278,6 +5286,15 @@
       topDegreeIds = null;
       initDegreeTopSlider();
       resetRecencyTopFilter();
+      // 图例聚焦（社区 / 类型 / 开源 / 健康度，含 ?community= 入口）与搜索词也是筛选条件
+      // （hasActiveGraphFilter 计入），此前不清 → 图仍淡化、子图仍生效而徽标显示无筛选
+      focusedCommunityId = null;
+      focusedType = null;
+      focusedOpensource = null;
+      focusedHealth = null;
+      searchQuery = '';
+      if (searchInputEl) searchInputEl.value = '';
+      renderLegend();
       renderFilterPanel();
       renderInstitutionFilterSection();
       setActiveTopic('all');
@@ -5289,7 +5306,9 @@
       const count = activeFilters.size + activeInstitutions.size
         + (topDegreeIds ? 1 : 0)
         + (topRecencyIds ? 1 : 0)
-        + (currentDepth && currentDepth !== 'all' ? 1 : 0);
+        + (currentDepth && currentDepth !== 'all' ? 1 : 0)
+        + ((focusedCommunityId || focusedType || focusedOpensource || focusedHealth !== null) ? 1 : 0)
+        + (searchQuery ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -5734,10 +5753,15 @@
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
+    let timelinePauseCoolTimer = 0;
     function stopTimelineTimer() {
       if (timelineAnimTimer) {
         clearInterval(timelineAnimTimer);
         timelineAnimTimer = null;
+      }
+      if (timelinePauseCoolTimer) {
+        clearTimeout(timelinePauseCoolTimer);
+        timelinePauseCoolTimer = 0;
       }
       timelinePlaying = false;
       svg.interrupt('tlfit');
@@ -5766,9 +5790,14 @@
 
     function pauseTimelinePlayback() {
       stopTimelineTimer();
-      // 仅停计时器：力导向继续演化（alphaTarget>0）。退出时序绝不能走这条路径，
-      // 否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      // 仅停计时器：先让刚显现的一批节点继续落位（alphaTarget>0），800 ms 后再放下加热目标
+      // 自然冷却——此前暂停期间永远 alphaTarget(0.3)，暂停在末尾时等于全图每帧 tick 直到退出。
+      // 退出时序绝不能走这条路径，否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
       simulation.alphaTarget(0.3).restart();
+      timelinePauseCoolTimer = setTimeout(() => {
+        timelinePauseCoolTimer = 0;
+        if (timelineAnimating && !timelinePlaying) simulation.alphaTarget(0);
+      }, 800);
       updateTimelineControls();
     }
 
@@ -6231,7 +6260,7 @@
     }
 
     if (viewMode2dBtn) {
-      viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
+      viewMode2dBtn.addEventListener('click', () => requestSpatialViewMode('2d'));
     }
     if (viewMode3dBtn) {
       viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
