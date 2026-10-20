@@ -222,7 +222,7 @@
 
 ---
 
-## 7. 实施进度（2026-10-20，同一 PR 内逐项提交）
+## 7. 实施进度（2026-10-20，同一 PR 内逐项提交，已完成 28 项、放弃 1 项）
 
 每项一个 commit，均在本机 headless Chromium（4 核 → 低端档）复测；绝对毫秒偏悲观，看相对变化。
 
@@ -248,5 +248,14 @@
 | preload 数据、SW 延后、流式解析 | 已做 | 数据请求 234 → 29 ms 起步；首屏就绪 5.7–8.7 → 4.4 s |
 | B17 / B19 / B20 / 时序暂停冷却 | 已修 | 清除全部回到 6,216；暂停 0.8 s 后 alphaTarget 0；3D 高亮跨视图同步 |
 | B22 / B23 触屏轻触、3D 幽灵 hover | 已修 | 轻触一次钉住，空白处轻触关闭；旋转后 node_dimmed 0 |
+| F40 全局 CSS transition | 已做 | Top-N 滑块切换后最长帧 399–429 → 265–309 ms |
+| F53 连线 3 棱柱、低端球 8×6 | 已做 | 三角形 2.63 M → 1.14 M；53k 连线建场景 25–27 → 13 s |
+| B13 WebGL 上下文丢失 | 已修 | 丢失不恢复 → 回退 2D 并提示；1 s 内恢复 → 继续 3D |
+| B12 像素比变化边层重绘 | 已修 | DSF 1→2 后边层墨迹采样 0 → 9,457（resolution 媒体查询路径 headless 无法触发，未验） |
+| B10 进度条分母 | 已修 | graph-stats.json 记 `link_graph_bytes`；gzip 下到 78% 的时刻 440 ms（停住）→ 1,080 ms（随下载线性） |
+| F41 `backdrop-filter` | 已做 | 5 处直接删、2 处仅精确指针启用、图例关闭态 visibility:hidden；平移 >50 ms 帧 13/11 → 4/6 |
+| F50 组级 opacity | 已做 | 侧栏淡化改写 circle fill/stroke-opacity；平移 RasterTask 1,061/1,103 → 842/816 ms |
+| F52 3D 节点材质共享 | 已做 | 材质 6,216 → 17（淡化时 50）；openSidebar 同步 88 → 67 ms |
+| B24 / B25 触屏视口 | 已修 | 只改高度不再 refit（k 0.1913 保持，改前回 0.0804）；`interactive-widget=resizes-visual`、`viewport-fit=cover` + safe-area |
 
-未做（待后续）：全局 CSS transition / `backdrop-filter` / 组级 opacity（F40 / F41 / F50）、3D 材质缓存与几何精简（F52 / F53）、进度条分母（B10）、DPR 变化重绘（B12）、WebGL 上下文丢失（B13）、移动端视口（B24 / B25）；P1 的移动端默认子图（含 3D 真子集）、导出期预计算布局、数据瘦身；P2 的 G5 / G6。
+未做（待后续）：P1 的移动端默认子图（含 3D 真子集）、导出期预计算布局、数据瘦身；P2 的 G5 / G6。
