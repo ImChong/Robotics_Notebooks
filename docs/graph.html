@@ -4158,18 +4158,29 @@
       .attr('class', 'node-g')
       .style('cursor', 'pointer')
       .call(d3.drag()
+        // 点击 / 轻触也会先触发 'start'：此前在 start 就 alphaTarget(0.2).restart()，
+        // 一次点击 = 约 55 个全图 tick（手机上 20 s 以上的卡顿）且什么都没拖。
+        // 改为首次真正移动时才加热（与 graph-3d.js 的 nodeDragReheated 同法），
+        // clickDistance 让轻微抖动仍算点击。
+        .clickDistance(4)
         .on('start', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0.2).restart();
+          d.__dragReheated = false;
           d.fx = d.x; d.fy = d.y;
         })
         .on('drag', (ev, d) => {
           if (is3DView()) return;
+          if (!d.__dragReheated) {
+            // 'drag' 事件里 ev.active 已含当前手势（恒 ≥1），不能再用 !ev.active 判断
+            d.__dragReheated = true;
+            simulation.alphaTarget(0.2).restart();
+          }
           d.fx = ev.x; d.fy = ev.y;
         })
         .on('end', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0);
+          if (d.__dragReheated && !ev.active) simulation.alphaTarget(0);
+          d.__dragReheated = false;
           d.fx = null; d.fy = null;
         })
       );
