@@ -1612,9 +1612,22 @@
       // rendererConfig 透传给内部 three.js WebGLRenderer：powerPreference='high-performance'
       // 提示浏览器/驱动在双显卡设备（典型为带集显+独显的笔记本）上优先选用独立 GPU。
       // 仅为性能提示——单 GPU 设备无效果，浏览器亦可忽略，不影响渲染正确性。
+      // 低端：关 MSAA（填充率是移动 GPU 最弱项）、不透明上下文（背景本就是纯色，省一次页面合成混合）
       graph = window.ForceGraph3D({
-        rendererConfig: { powerPreference: 'high-performance' },
+        rendererConfig: {
+          powerPreference: 'high-performance',
+          antialias: !isLowEnd(),
+          alpha: false,
+        },
       })(container);
+      // 库默认 setPixelRatio(min(2, DPR))：DPR 3 手机按 2× 渲染 = 4 倍像素。
+      // 按档位封顶：低端 1×，其余 1.5×（2.6M 三角形的细圆柱在 1.5× 已无可见差别）。
+      try {
+        var renderer = typeof graph.renderer === 'function' ? graph.renderer() : null;
+        if (renderer && typeof renderer.setPixelRatio === 'function') {
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowEnd() ? 1 : 1.5));
+        }
+      } catch (_e) { /* 渲染器未就绪时沿用库默认 */ }
       graph.pauseAnimation();
       bindGraphInstance();
       pendingFirstShowKick = true;
@@ -1963,6 +1976,8 @@
           textures: r.info.memory.textures,
           programs: r.info.programs ? r.info.programs.length : null,
           pixel_ratio: typeof r.getPixelRatio === 'function' ? r.getPixelRatio() : null,
+          context: (typeof r.getContextAttributes === 'function') ? r.getContextAttributes() : null,
+          drawing_buffer: r.domElement ? [r.domElement.width, r.domElement.height] : null,
         };
       },
 
