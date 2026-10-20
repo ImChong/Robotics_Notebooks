@@ -2755,7 +2755,7 @@
         container: graphCanvas3d,
         nodes,
         edges,
-        resolveSourceNode: (id) => nodes.find(n => n.id === id),
+        resolveSourceNode: (id) => nodeById2D.get(id),
         getNodeColor: nodeColor,
         getNodeDim: recencyDimOf,
         getNodeRadius: scaledRadius,
@@ -3085,7 +3085,7 @@
     // baseRadius∈[4,30] 对应约 [6,18]px（6px 为下限，防止低度数节点标签过小）
     function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
     function toDetailId(path) {
-      const item = indexItems && indexItems.find(it => it.path === path || it.id === path);
+      const item = indexItemByKey.get(path);
       return item?.id || path.replace(/\//g, '-').replace('.md', '');
     }
     function pageUrlForNode(d) {
@@ -3096,7 +3096,7 @@
       return 'detail.html?id=' + encodeURIComponent(detailId);
     }
     function pageUrlForPath(path, nodeHint) {
-      const n = nodeHint || nodes.find(nd => nd.id === path);
+      const n = nodeHint || nodeById2D.get(path);
       if (n) return pageUrlForNode(n);
       const detailId = toDetailId(path);
       if (String(path).startsWith('roadmap/')) {
@@ -3111,8 +3111,8 @@
     function findFocusNode(focusId) {
       if (!focusId) return null;
       const decoded = decodeURIComponent(focusId);
-      return nodes.find(n => n.id === focusId || n.id === decoded
-        || n.detail_id === focusId || n.detail_id === decoded) || null;
+      return nodeById2D.get(focusId) || nodeById2D.get(decoded)
+        || nodes.find(n => n.detail_id === focusId || n.detail_id === decoded) || null;
     }
     function renderLegend() {
       const rows = [];
@@ -3282,6 +3282,11 @@
         // 目录条目不带 id，由键还原
         indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
           .map(([id, it]) => Object.assign({ id }, it));
+        indexItemByKey = new Map();
+        for (const it of indexItems) {
+          if (it.path) indexItemByKey.set(it.path, it);
+          indexItemByKey.set(it.id, it);
+        }
       })
       .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
@@ -3302,6 +3307,11 @@
       _info: { title: n.label || n.id, summary: n.summary || '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+    // id → 节点 / 目录条目的索引：侧栏、?focus、3D 回查此前都是 nodes.find / indexItems.find 线性扫描，
+    // 枢纽节点开侧栏时排序比较函数里每次两趟 O(N) 扫描
+    const nodeById2D = new Map(nodes.map(n => [n.id, n]));
+    const zhCollator = new Intl.Collator('zh-CN');
+    let indexItemByKey = new Map();
     // 邻接表：边在页面生命周期内不变，建一次；hover / 侧栏邻居此前每次都全量扫 5 万多条边
     const adjacency2D = new Map();
     for (const e of edges) {
@@ -6325,8 +6335,8 @@
         let relHtml = '';
         for (let i = 0; i < limit; i++) {
           const r = related[i];
-          const relNode = nodes.find(nd => nd.id === r);
-          const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
+          const relNode = nodeById2D.get(r);
+          const relItem = indexItemByKey.get(r) || indexItemByKey.get(toDetailId(r));
           const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
           relHtml += `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
         }
@@ -6388,7 +6398,7 @@
       }
 
       // tags from index
-      const item = indexItems.find(it => it.path === d.id);
+      const item = indexItemByKey.get(d.id);
       const tags = item?.tags || [];
       // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
       // Expected impact: Eliminates closure creation and array allocation when generating tag HTML.
@@ -6399,21 +6409,16 @@
       sbTags.innerHTML = tagsHtml;
 
       // 1-hop graph neighbors (full list)
-      const neighborIds = Array.from(direct).sort((a, b) => {
-        const na = nodes.find(n => n.id === a);
-        const nb = nodes.find(n => n.id === b);
-        return String(na?.label || na?._info?.title || a)
-          .localeCompare(String(nb?.label || nb?._info?.title || b), 'zh-CN');
-      });
-      if (neighborIds.length) {
-        if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborIds.length + ')';
-        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-        // Expected impact: Eliminates closure creation and array allocation when generating neighbors HTML.
+      // 先装饰再排序：标签只取一次，比较用共享的 Collator（此前比较函数里每次两趟 nodes.find）
+      const neighborEntries = Array.from(direct, id => {
+        const n = nodeById2D.get(id);
+        return { id, n, label: String(n?.label || n?._info?.title || id.split('/').pop().replace('.md', '')) };
+      }).sort((a, b) => zhCollator.compare(a.label, b.label));
+      if (neighborEntries.length) {
+        if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborEntries.length + ')';
         let neighborsHtml = '';
-        for (let i = 0; i < neighborIds.length; i++) {
-          const id = neighborIds[i];
-          const n = nodes.find(nd => nd.id === id);
-          const label = n?.label || n?._info?.title || id.split('/').pop().replace('.md', '');
+        for (let i = 0; i < neighborEntries.length; i++) {
+          const { id, n, label } = neighborEntries[i];
           neighborsHtml += `<li><a href="${escapeHtml(pageUrlForNode(n || { id }))}">${escapeHtml(label)}</a></li>`;
         }
         sbNeighborsList.innerHTML = neighborsHtml;
@@ -6643,6 +6648,8 @@
         ? { w: edgeCanvas.width, h: edgeCanvas.height, dpr: edgeCanvasDpr }
         : null),
       applyFilters: () => applyFilters(),
+      // 侧栏打开耗时测量（非业务 UI）
+      openSidebarById: (id) => { const n = nodeById2D.get(id); if (n) openSidebar(n); return !!n; },
       // G2 回归：浮窗里的「显示节点名称」开关已隐藏，验证标签路径需从此处驱动
       setShowNodeLabels: (on) => setShowNodeLabels(on),
       // G2 基线测量：取度数最高的若干节点 id，供 3D 悬停刷新计时使用
