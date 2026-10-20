@@ -7,9 +7,10 @@
 - **作者：** Runhan Huang、Xiangcheng Zhang、Haoyu Chen、Yitong Li、Yen-Jen Wang、Bohan Lyu、Haotian Ye、Chuye Hong、Yixuan Wang、Chloe Su、Haoyu Xiong、Yangzhen Wu、Enze Xie、Travis Manderson、Stefano Ermon、Pieter Abbeel、Antonio Torralba、Dawn Song、Weirui Ye、Yilun Du
 - **机构：** Harvard University、NVIDIA、UC Berkeley、MIT、Stanford University
 - **论文：** <https://robot-agent-exploration.com/rax.pdf>
+- **arXiv：** <https://arxiv.org/abs/2610.22496>
 - **项目页：** <https://robot-agent-exploration.com/> — [项目页归档](../sites/rax-project.md)
 - **代码：** <https://github.com/robot-agent-exploration/rax> — [仓库归档](../repos/rax.md)
-- **入库日期：** 2026-10-17
+- **入库日期：** 2026-10-17；关联 arXiv 编号补录：2026-10-20
 
 ## 核心内容
 

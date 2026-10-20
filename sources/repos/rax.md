@@ -8,6 +8,8 @@
 - **默认分支：** main（项目与分支索引；各实现位于下列分支）
 - **配套论文：** [RAX（官方 PDF）](../papers/rax_scaling_online_exploration.md)
 - **项目页：** <https://robot-agent-exploration.com/> — [项目页归档](../sites/rax-project.md)
+- **技能库：** <https://github.com/robot-agent-exploration/skills-lib> — [技能库归档](skills-lib.md)
+- **Session logs：** <https://huggingface.co/datasets/robot-agent-exploration/robot-session-logs> — [数据集归档](../datasets/rax-robot-session-logs.md)
 - **许可证：** README 称 open-source；根目录未见 LICENSE，具体许可待核实
 - **入库日期：** 2026-10-17
 
@@ -31,7 +33,8 @@ RAX 提供统一的 coding-agent 探索与技能沉淀流程；根分支是索�
 | **公开可见** | 是；主分支 README 与上述实现分支可访问。 |
 | **主要组件** | coding agent、MCP / Bash / Python 工具接口、机器人服务与各本体 backend；agent 在工作区保存 TASK.md、AGENTS.md、技能、记忆及编译程序。 |
 | **运行闭环** | 探索时逐步调用观测与控制工具；总结成功序列并编译为 controller 程序；仿真在 held-out layouts 测试，真机由操作者复位后运行程序。 |
-| **持续技能资产** | companion skills-lib 按机器人本体分支保存技能；README 称技能包含前提、检查、失败模式与运行记录，连续两次无人值守成功后标为 verified。 |
+| **持续技能资产** | companion [skills-lib](skills-lib.md) 按机器人本体分支保存技能；README 称技能包含前提、检查、失败模式与运行记录，连续两次无人值守成功后标为 verified。 |
+| **会话数据** | [Hugging Face session logs](../datasets/rax-robot-session-logs.md) 收录 5 段 Franka 与 7 段 RB-Y1 真机操作会话；数据卡标注 CC BY 4.0，并包含文本、机器人状态与部分相机录制。 |
 | **许可证** | 根目录未见 LICENSE，许可条款需进一步核实。 |
 | **安全边界** | README 描述真机通过单独 robot service 发命令，agent 沙箱仅能通过 MCP 工具访问；物理急停与厂商控制器限值仍保留。 |
 
@@ -46,4 +49,5 @@ RAX 提供统一的 coding-agent 探索与技能沉淀流程；根分支是索�
 - 论文：[sources/papers/rax_scaling_online_exploration.md](../papers/rax_scaling_online_exploration.md)
 - 项目页：[sources/sites/rax-project.md](../sites/rax-project.md)
 - 技能库：[robot-agent-exploration/skills-lib](https://github.com/robot-agent-exploration/skills-lib)
+- 数据集：[RAX robot session logs](../datasets/rax-robot-session-logs.md)
 - wiki：[wiki/entities/rax-scaling-online-exploration.md](../../wiki/entities/rax-scaling-online-exploration.md)

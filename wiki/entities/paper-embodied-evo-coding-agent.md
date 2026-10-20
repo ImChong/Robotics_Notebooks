@@ -3,7 +3,7 @@ type: entity
 project_id: embodied-evo-coding-agent
 tags: [paper, robotics, coding-agent, agentic, memory, self-improvement, physical-ai, simulation, tsinghua, arxiv]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-20
 arxiv: "2610.18867"
 project: https://lab.einsia.ai/embodiedevo/
 code: https://github.com/Einsia/EmbodiedEvo
