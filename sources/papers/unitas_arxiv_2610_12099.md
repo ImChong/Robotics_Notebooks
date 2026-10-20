@@ -8,7 +8,7 @@
 - **预印本：** https://arxiv.org/abs/2610.12099 （v1，2026-10-08，cs.RO；27 页、11 图、13 表，Under review）
 - **HTML：** https://arxiv.org/html/2610.12099v1
 - **项目页：** https://unitas-wam.github.io （见 [unitas-project.md](../sites/unitas-project.md)）
-- **代码：** https://github.com/DexForce/UNITAS （截至 2026-10-12 仅 README 与概览图，权重/训练代码/数据均标注 Coming soon）
+- **代码：** https://github.com/DexForce/UNITAS （2026-10-20 核验：已发布推理与评测代码、模型权重及安装/评测说明；训练代码与训练数据集仍未发布；Apache-2.0）
 
 ## 论文要解决的问题
 
@@ -40,7 +40,7 @@
 ## 复现与解释边界
 
 - 论文无独立局限节；结论提到更长交互预测与更广真机部署为未来工作。场景预测推理需要当前 3D 查询坐标（来自深度或外部几何）。真机评测只有两个任务。
-- 官方仓库目前只有 README 与概览图，没有可运行代码、权重或数据；复现需自行实现，预训练算力为 64 张 DCU 量级。
+- 官方仓库现已提供推理与评测代码、模型权重、安装说明及基准评测指南；训练代码和训练数据集仍未发布。完整复现仍受限于数据与训练流程未公开，论文报告预训练使用 64 张 BW1000_H DCU。
 - 本归档数字取自 arXiv HTML 前 100K 字符的抽取，末段（约 17K 字符）未读。
 
 ## Robotics_Notebooks 映射
