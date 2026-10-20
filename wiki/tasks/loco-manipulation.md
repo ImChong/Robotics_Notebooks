@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-17
+updated: 2026-10-20
 sources:
   - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
   - ../../sources/sites/wholebodydex-project.md
@@ -543,3 +543,7 @@ flowchart TD
 ## 低延迟生成式控制
 
 - [RFPO](../entities/paper-rfpo-rectified-flow-policy-optimization.md) — 以 reward-aware online reflow 与多预算蒸馏把具身 flow policy 推理缩短为单步 Euler 更新；论文报告 Go2 单步保留 98.5% 的 64 步 reward（arXiv:2610.10453）。
+
+## 四足长时程操作实例
+
+- [Rubik Skills](../entities/paper-rubik-skills.md) — ANYmal-D 将多视角魔方感知、技能规划与足端转层串成长时程自主操作。
