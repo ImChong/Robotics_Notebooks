@@ -459,7 +459,11 @@
 - [Cycloidal Quasi-Direct Drive Actuator（Jeong 双摆线 QDD）](wiki/entities/cycloidal-quasi-direct-drive-actuator.md) — Cycloidal Quasi-Direct Drive Actuator**（[JeongSeoJin/quasi-direct-drive-actuator](https://github.c `📅unknown` `[entity_page]`
 - [Cyclone DDS（Eclipse）](wiki/entities/cyclone-dds.md) — Cyclone DDS** 是 Eclipse IoT 下的开源 **OMG DDS** 实现（C 核心 + 独立 C++/Python 绑定）：强调低延迟与可互操作 RTPS，是 ROS 2  `📅unknown` `[entity_page]`
 - [Darwin Skill（达尔文.skill）](wiki/entities/darwin-skill.md) — Darwin Skill** 是 alchaincyf/darwin-skill 仓库分发的 **元 s `📅unknown` `[entity_page]`
+- [ABC-130K](wiki/entities/dataset-abc-130k.md) — ABC-130K**：迄今声称最大的开源双臂遥操作数据集之一，同时附带仿真与真机评测数据。 `📅unknown` `[entity_page]`
 - [ADE20K](wiki/entities/dataset-ade20k.md) — ADE20K**：场景解析与语义分割常用集：百余至千余场景类别（版本相关），SETR/SegFormer 等分割 Transformer 的标准评测之一。 `📅unknown` `[entity_page]`
+- [AIST Bimanual Manipulation Dataset](wiki/entities/dataset-aist-bimanual-manipulation.md) — AIST Bimanual Manipulation Dataset**：日本 AIST 用开源 ALOHA 双臂系统采集的多任务双臂示范数据。 `📅unknown` `[entity_page]`
+- [ARCTIC](wiki/entities/dataset-arctic.md) — ARCTIC**：记录双手开合剪刀、笔记本等铰接物体的三维手-物交互数据集。 `📅unknown` `[entity_page]`
+- [ARIO（All Robots In One）](wiki/entities/dataset-ario.md) — ARIO**：既是统一具身数据组织标准，也是按该标准汇集的大规模多机器人数据集。 `📅unknown` `[entity_page]`
 - [BABEL（BFM 行为数据）](wiki/entities/dataset-bfm-babel.md) — BABEL** 列入 awesome-bfm-papers 数据集表（2021 · C `📅unknown` `[entity_page]`
 - [HumanML3D（BFM 行为数据）](wiki/entities/dataset-bfm-humanml3d.md) — HumanML3D** 列入 awesome-bfm-papers 数据集表（2022 `📅unknown` `[entity_page]`
 - [Humanoid-X（BFM 行为数据）](wiki/entities/dataset-bfm-humanoid-x.md) — Humanoid-X** 列入 awesome-bfm-papers 数据集表（202 `📅unknown` `[entity_page]`
@@ -472,16 +476,56 @@
 - [CIFAR-10 / CIFAR-100](wiki/entities/dataset-cifar.md) — CIFAR-10 / CIFAR-100**：32×32 彩色小图分类基准（10/100 类）；验证 CNN/ViT 小模型与正则技巧的常用中小规模集。 `📅unknown` `[entity_page]`
 - [Cityscapes](wiki/entities/dataset-cityscapes.md) — Cityscapes**：城市场景语义/实例分割基准（车载视角）；自动驾驶与户外移动机器人视觉评测常用。 `📅unknown` `[entity_page]`
 - [MS COCO](wiki/entities/dataset-coco.md) — MS COCO**：目标检测/实例分割/关键点主流基准：约 20 万图、80 物类；mAP 与机器人检测迁移评测的事实标准之一。 `📅unknown` `[entity_page]`
+- [CVDN（Cooperative Vision-and-Dialog Navigation）](wiki/entities/dataset-cvdn.md) — CVDN**：导航者向知道最短路径的“先知”提问、由其回答的人类对话导航数据集。 `📅unknown` `[entity_page]`
+- [DexYCB](wiki/entities/dataset-dexycb.md) — DexYCB**：记录人手从桌面抓取 20 种 YCB 物体过程的手-物交互数据集。 `📅unknown` `[entity_page]`
+- [Ego-Exo4D](wiki/entities/dataset-ego-exo4d.md) — Ego-Exo4D**：同步采集第一视角与多台第三视角视频的技能型活动数据集。 `📅unknown` `[entity_page]`
+- [EmbodiedScan](wiki/entities/dataset-embodiedscan.md) — EmbodiedScan**：面向具身智能的第一视角多模态三维感知数据集与基准。 `📅unknown` `[entity_page]`
+- [Embody 3D](wiki/entities/dataset-embody-3d.md) — Embody 3D**：包含单人动作与多人社交互动的大规模三维动作数据集。 `📅unknown` `[entity_page]`
+- [FastUMI / FastUMI-100K](wiki/entities/dataset-fastumi.md) — FastUMI**：可复用的手持式人类示范采集接口及其配套真实示范数据集（FastUMI-Data / FastUMI-100K）。 `📅unknown` `[entity_page]`
 - [Flickr30K Entities](wiki/entities/dataset-flickr30k-entities.md) — Flickr30K Entities**：Flickr30K 的短语级图文对齐扩展：把描述中的实体短语与图像区域框关联，服务定位/接地评测。 `📅unknown` `[entity_page]`
 - [FORM-HOI：多视角人–物交互数据集](wiki/entities/dataset-form-hoi.md) — 全称：** Foundry for Reconstruction from Multiview Human-Object Interaction `📅unknown` `[entity_page]`
+- [Fourier ActionNet Dataset](wiki/entities/dataset-fourier-actionnet.md) — Fourier ActionNet**：面向人形灵巧双臂操作的第一视角遥操作数据集，覆盖 GR1-T1、GR1-T2、GR2 三款人形机器人。 `📅unknown` `[entity_page]`
+- [Galaxea Open-World Dataset](wiki/entities/dataset-galaxea-open-world.md) — Galaxea Open-World Dataset**：同一本体（R1 Lite）在真实住宅、餐饮、零售、办公等场景采集的双臂移动操作数据集。 `📅unknown` `[entity_page]`
+- [Gibson Environment Dataset](wiki/entities/dataset-gibson-environment.md) — Gibson**：以真实室内空间重建为基础的具身智能仿真环境与数据库。 `📅unknown` `[entity_page]`
+- [GRAB](wiki/entities/dataset-grab.md) — GRAB**：提出“全身抓取”概念并采集身体整体参与抓取的三维形状与姿态序列。 `📅unknown` `[entity_page]`
+- [H2O Dataset（2 Hands and Objects）](wiki/entities/dataset-h2o.md) — H2O**：首个借助双手姿态研究第一视角动作的基准数据集。 `📅unknown` `[entity_page]`
+- [HABIT](wiki/entities/dataset-habit.md) — HABIT**：面向人机共处环境的机器人操作数据集，按人与机器人的三种关系组织任务。 `📅unknown` `[entity_page]`
+- [HM3D（Habitat-Matterport 3D）](wiki/entities/dataset-hm3d.md) — HM3D**：由真实建筑扫描重建、可直接在 Habitat 模拟器中使用的大规模三维室内场景集合。 `📅unknown` `[entity_page]`
+- [HO-3D（含 H2O-3D、HO-3D v3）](wiki/entities/dataset-ho-3d.md) — HO-3D**：真实手-物遮挡场景下的三维手部姿态与物体 6D 位姿联合标注数据集。 `📅unknown` `[entity_page]`
+- [HOI4D](wiki/entities/dataset-hoi4d.md) — HOI4D**：在 610 个室内房间中与 16 类物体交互采集的大规模四维第一视角数据集。 `📅unknown` `[entity_page]`
+- [HoloAssist](wiki/entities/dataset-holoassist.md) — HoloAssist**：执行者佩戴混合现实头显完成实物任务、指导者实时口头指导的第一视角交互数据集。 `📅unknown` `[entity_page]`
+- [HOT3D](wiki/entities/dataset-hot3d.md) — HOT3D**：面向第一视角三维手部与物体追踪的公开数据集。 `📅unknown` `[entity_page]`
+- [HSSD / HSSD-200](wiki/entities/dataset-hssd.md) — HSSD**：按真实住宅布局搭建的高质量合成室内场景数据集。 `📅unknown` `[entity_page]`
+- [Hy-Embodied-0.5-VLA-Data](wiki/entities/dataset-hy-embodied-0-5-vla-data.md) — Hy-Embodied-0.5-VLA-Data**：面向 VLA 预训练的双臂操作数据集，随 HyVLA-0.5 技术报告发布。 `📅unknown` `[entity_page]`
 - [ImageNet / ImageNet-21K](wiki/entities/dataset-imagenet.md) — ImageNet** 是以 **WordNet synset** 为骨架、人工质控的 **层次化大规模图像库**；**ILSVRC** 取其子集形成 **1000 类、百万级** 分类/检测/定位 `📅unknown` `[entity_page]`
+- [InternData-A1](wiki/entities/dataset-internData-a1.md) — InternData-A1**：用自动化、解耦的组合式仿真流程生成的合成操作数据，面向通用策略预训练。 `📅unknown` `[entity_page]`
 - [JFT-300M](wiki/entities/dataset-jft-300m.md) — JFT-300M**：Google 内部约 3 亿图的大规模弱标签分类数据；支撑 ViT 等大模型数据规模论证，外部通常不可直接下载。 `📅unknown` `[entity_page]`
 - [Mapillary Vistas](wiki/entities/dataset-mapillary.md) — Mapillary Vistas**：街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。 `📅unknown` `[entity_page]`
 - [MNIST](wiki/entities/dataset-mnist.md) — MNIST**：手写数字分类小规模基准：6 万训练/1 万测试灰度 28×28；教学与算法冒烟测试常用，非现代机器人感知主基准。 `📅unknown` `[entity_page]`
+- [MolmoBot-Data](wiki/entities/dataset-molmobot-data.md) — MolmoBot-Data**：在 MolmoSpaces 仿真住宅中程序化生成的铰接物体操作与抓取放置专家轨迹。 `📅unknown` `[entity_page]`
+- [OakInk / OakInk2](wiki/entities/dataset-oakink.md) — OakInk**：由物体可供性知识库 Oak 与交互知识库 Ink 组成的手-物交互数据集；OakInk2 扩展到复杂双手日常任务。 `📅unknown` `[entity_page]`
+- [ObjectFolder 2.0（仿真数据）](wiki/entities/dataset-objectfolder-2-0.md) — ObjectFolder 2.0**：以隐式神经表示描述物体视觉、声音与触觉的大规模多感官仿真数据集。 `📅unknown` `[entity_page]`
+- [ObjectFolder Real](wiki/entities/dataset-objectfolder-real.md) — ObjectFolder Real**：真实物体版的多感官数据集，配套 ObjectFolder Benchmark 的 10 项任务。 `📅unknown` `[entity_page]`
 - [Objects365](wiki/entities/dataset-objects365.md) — Objects365**：超大规模目标检测数据集（365 类、逾百万图像），常用作比 COCO 更强的检测预训练源，再向下游迁移。 `📅unknown` `[entity_page]`
+- [OpenTouch](wiki/entities/dataset-opentouch.md) — OpenTouch**：同步第一视角视频、全手触觉与手部姿态轨迹的野外数据集。 `📅unknown` `[entity_page]`
+- [PartNet-Mobility（SAPIEN）](wiki/entities/dataset-partnet-mobility.md) — PartNet-Mobility**：随 SAPIEN 模拟器发布的可动关节物体模型集合，可直接用于物理仿真。 `📅unknown` `[entity_page]`
 - [PASCAL VOC](wiki/entities/dataset-pascal-voc.md) — PASCAL VOC**：早期语义/目标检测标准集（20 类）；教学与历史对照常用，检测/分割评测的主战场此后转向 COCO/ADE20K。 `📅unknown` `[entity_page]`
+- [ProcTHOR-10K](wiki/entities/dataset-procthor-10k.md) — ProcTHOR-10K**：由 ProcTHOR 框架按需采样生成的 1 万个可交互虚拟房屋。 `📅unknown` `[entity_page]`
+- [RCT（Robotic Contact Tactile）](wiki/entities/dataset-rct-robotic-contact-tactile.md) — RCT**：机器人采集的触觉、视觉与语言数据集，支持按材料、类别、传感器做留出评测。 `📅unknown` `[entity_page]`
+- [ReplicaCAD](wiki/entities/dataset-replicacad.md) — ReplicaCAD**：对 Replica 中 FRL 公寓的美术重建，可在 Habitat 中进行物理交互的资产集合。 `📅unknown` `[entity_page]`
+- [RoboCOIN](wiki/entities/dataset-robocoin.md) — RoboCOIN**：覆盖 15 种双臂、半人形与人形本体的大规模多本体示范数据集，并配套数据处理流程。 `📅unknown` `[entity_page]`
+- [RoboVerse Data](wiki/entities/dataset-roboverse-data.md) — RoboVerse Data**：RoboVerse 平台的统一格式仿真数据，由仿真平台、合成数据集和统一基准三部分组成。 `📅unknown` `[entity_page]`
+- [ScanNet](wiki/entities/dataset-scannet.md) — ScanNet**：由自研 RGB-D 采集系统重建、众包标注的室内三维场景数据集。 `📅unknown` `[entity_page]`
+- [SOON（FAO 数据集）](wiki/entities/dataset-soon.md) — SOON**：只依据目标物体及周边环境描述、从任意起点寻找目标的导航任务，配套 FAO 数据集。 `📅unknown` `[entity_page]`
+- [Touch and Go](wiki/entities/dataset-touch-and-go.md) — Touch and Go**：在野外场景采集的成对视觉与触觉数据集，附材质类别与触碰起始时刻标注。 `📅unknown` `[entity_page]`
+- [Touch in the Wild](wiki/entities/dataset-touch-in-the-wild.md) — Touch in the Wild**：在多种室内外环境中用便携触觉夹爪同步采集的视觉与触觉示范数据集。 `📅unknown` `[entity_page]`
+- [Touch100k](wiki/entities/dataset-touch100k.md) — Touch100k**：基于已有视觉触觉数据、经生成与校正得到的触觉语言视觉配对数据集。 `📅unknown` `[entity_page]`
+- [UnifoLM-WBT Dataset](wiki/entities/dataset-unifolm-wbt.md) — UnifoLM-WBT Dataset**：面向人形机器人全身移动操作的开源数据合集，由 Hugging Face 上的多个子数据集组成。 `📅unknown` `[entity_page]`
 - [VaTeX](wiki/entities/dataset-vatex.md) — VaTeX**：大规模多语言视频–文本数据集，用于视频描述与跨语言检索，服务多模态时序对齐研究。 `📅unknown` `[entity_page]`
+- [VisGel](wiki/entities/dataset-visgel.md) — VisGel**：机械臂装配 GelSight 与网络摄像头采集的视觉-触觉跨模态数据集。 `📅unknown` `[entity_page]`
 - [WIT](wiki/entities/dataset-wit.md) — WIT**：Wikipedia-based Image Text：维基图文对的超大规模多语言图文数据集，服务 CLIP 类对比学习与检索。 `📅unknown` `[entity_page]`
+- [YCB-Sight](wiki/entities/dataset-ycb-sight.md) — YCB-Sight**：包含 GelSight 触觉与 RGB-D 相机的 YCB 物体视觉触觉数据集。 `📅unknown` `[entity_page]`
+- [YCB-Slide](wiki/entities/dataset-ycb-slide.md) — YCB-Slide**：视觉触觉传感器在标准 YCB 物体表面滑动交互的数据集，附真值网格与高度图。 `📅unknown` `[entity_page]`
 - [DBHL窄地形全身运动](wiki/entities/dbhl-whole-body-loco.md) — DBHL窄地形全身运动](https://whole-body-loco.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [DDR](wiki/entities/ddr-direct-dynamics-retargeting.md) — DDR](https://arxiv.org/abs/2605.23762) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
@@ -5902,6 +5946,7 @@
 - [具身智能十三篇：生成式控制、遗忘与安全更新](wiki/overview/embodied-13-papers-technology-map.md) — 生成式先验、示范预算、后训练诊断与人形安全更新应分开优化——ForgetMimic 的「会忘记」与 NowWAM 的「不必预测未来」是同一时代的两种控制接口问题。 `📅unknown` `[overview_page]`
 - [Embodied-AI-Guide 微信专辑 — 五篇策展索引](wiki/overview/embodied-ai-guide-wechat-album-curator.md) — 本页把 Lumina **Embodied-AI-Guide** 配套的微信专辑（5 篇入门/综述）拆成**可点 `📅unknown` `[overview_page]`
 - [具身数据从采集到飞轮（系列地图）](wiki/overview/embodied-data-collection-to-flywheel-album.md) — 本系列** 用四步把具身数据讲清楚：先拆采集术语（四层地图），再排数据配方（五层金字塔），然后定义飞轮最短闭环（避免空转），最后按监督信号分流（示范/失败/接管/Ego 各教什么）。 `📅unknown` `[overview_page]`
+- [具身智能数据集全景（85 项去重映射）](wiki/overview/embodied-dataset-panorama-2026-10.md) — 按数据形态与用途，把 85 个公开具身数据集及集合分为真实机器人、仿真与合成、人类示范与第一视角、导航与三维场景、灵巧手与抓取、触觉与多模态六组，并**每个数据集对应唯一 wiki 节点**。 `📅unknown` `[overview_page]`
 - [具身智能前沿算法：六路线阅读坐标](wiki/overview/embodied-frontier-algorithms-technology-map.md) — 2026 具身算法的主线是「VLA 基座 + WAM 长程 + 足式/触觉/规划模块化」——选型应先定路线再定仓库，勿被公众号错误 arXiv 编号带偏。 `📅unknown` `[overview_page]`
 - [具身智能 Infra 2026：闭环比单点模型更拉开差距](wiki/overview/embodied-infra-2026-panorama.md) — 模型像发动机；Infra 决定燃料、监控、上线测试和可追溯维修要几天还是几分钟。 `📅unknown` `[overview_page]`
 - [2026-10-15 具身新论文 31 篇：技术地图索引](wiki/overview/embodied-papers-2026-10-15-31-digest-map.md) — 把公众号单日汇总的 31 篇具身智能论文，按「VLA 适配与恢复 / 人形与移动操作 / 灵巧与接触 / 数据与仿真 / 导航与空间 / 基础表示与综述」归类，每篇一个独立详情节点。 `📅unknown` `[overview_page]`
