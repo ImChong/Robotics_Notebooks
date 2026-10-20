@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, ace-robotics, embodied-foundation-model, vla, qwen, spatial-grounding, navigation, manipulation, progress-estimation, ssr, foundation-policy, flow-matching]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-20
+project_id: ace-brain
 arxiv: "2607.04426"
 code: https://github.com/ACE-BRAIN-Team/ACE-Brain-0.5
 related:
@@ -21,12 +22,21 @@ sources:
   - ../../sources/papers/ace_brain_0_5_arxiv_2607_04426.md
   - ../../sources/sites/ace-brain-0-5-github-io.md
   - ../../sources/repos/ace-brain-0-5.md
-summary: "ACE-Brain-0.5（大晓 Ace Robotics，arXiv:2607.04426）：Qwen3-VL 8B 统一具身脑，覆盖感知–规划–导航/操作–进度估计闭环；SSR+（含 Reactivate）合并异构接口；LIBERO 98.2%、SimplerEnv-Bridge VLA 82.3%、RBM VOC 强；HF 权重已开源，训练栈未见。"
+  - ../../sources/sites/ace-brain-0-6-launch-2026-10-19.md
+summary: "ACE-Brain（大晓 Ace Robotics）：0.5 为 Qwen3-VL 8B 统一具身脑（arXiv:2607.04426）；0.6 聚焦 grounding，媒体转述称基于 Qwen3.5-9B 和约百万条空间锚定数据；0.6 技术报告、代码与权重尚未公开。"
 ---
 
-# ACE-Brain-0.5：统一具身基础模型（Physical Agentic AI）
+# ACE-Brain：统一具身基础模型（ACE-Brain-0.5 / ACE-Brain-0.6）
 
 **ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426](https://arxiv.org/abs/2607.04426)，[项目页](https://ace-brain-team.github.io/ACE-Brain-0.5/)，**ACE-Brain Team / 大晓机器人（Ace Robotics）**）在前作 **ACE-Brain-0** 的空间智能脚手架上，把机器人认知收成五耦合功能——**空间感知、决策规划、具身交互、自监控、自改进**——并用单一 **Qwen3-VL 8B** mixture-of-transformer 骨干直接实例化前四者（grounding / 3D·自我中心空间推理 / 子目标分解 / 导航与操作动作 / 进度估计）；训练用 **SSR+**（Scaffold–Specialize–Reconcile + **Reactivate**）缓解异构接口干扰；自改进更新外部执行状态而非每步重训。跨十五余基准：相对 0 代 **18** 项空间榜中 **14** 项提升，导航/操作有竞争力，进度估计 ID/OOD 均强。
+
+## 版本更新：ACE-Brain-0.6（2026-10-19）
+
+大晓机器人发布 ACE-Brain-0.6，将重点放在视觉空间 **Grounding**（目标识别、空间定位、交互区域判断）。媒体报道转述团队披露，该版本基于 **Qwen3.5-9B** 监督微调，使用约 **100 万条**空间锚定训练样本；八项 Grounding 评测中六项超过 GPT-6 Astra，七项公开基准平均 **74.53**（Astra：**73.68**），自建 RobotGrounding 得分 **94.13**（Astra：**91.10**）。这些数字尚无公开技术报告或独立复现，本页按团队披露记录。
+
+从版本定位看，0.6 发布信息强调空间锚定与数据规模化；0.5 技术报告则覆盖感知、规划、交互、自监控和自改进的统一闭环。当前没有足够公开技术材料证明 0.6 延续或改变了 0.5 的训练架构，故不推断其完整能力范围或训练配方。
+
+**开放状态：** 截至 2026-10-19，官方公开页面未见 0.6 的论文、独立项目页、代码或权重链接。详见[发布信息归档](../../sources/sites/ace-brain-0-6-launch-2026-10-19.md)。
 
 ## 一句话定义
 
