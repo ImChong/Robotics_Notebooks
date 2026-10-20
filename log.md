@@ -211,6 +211,12 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | 收录 DeepSeek 推理与协议适配仓库
+
+- 归档 DeepInfer 与 deepseek-recipe 官方仓库及 README。
+- 两者源码均公开；许可证分别为 Apache-2.0 与 MIT。
+- 记录机器人落地边界：DeepInfer 支持的硬件偏向数据中心加速器；deepseek-recipe 负责协议与提示词适配，不含模型推理及机器人控制。
+
 ## [2026-10-20] ingest | R²-WAM 视觉表征实证
 
 - 收录 arXiv:2610.13024 论文摘录与项目页核查，并新增单一 WAM 论文实体。
