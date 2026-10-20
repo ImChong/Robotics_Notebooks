@@ -58,6 +58,7 @@ related:
   - ../entities/paper-lawam.md
   - ../entities/paper-openwam.md
   - ../entities/paper-wam-design-empirical-study.md
+  - ../entities/paper-r2-wam-visual-representations.md
   - ../entities/paper-ge-act-2.md
   - ../overview/glancewam-vla-crew-10-papers-technology-map.md
   - ../entities/paper-egoverse.md
@@ -159,6 +160,8 @@ sources:
   - ../../sources/papers/uniwam_arxiv_2610_02054.md
   - ../../sources/repos/uniwam.md
   - ../../sources/papers/onewm_arxiv_2610_21095.md
+  - ../../sources/papers/r2_wam_visual_representations_arxiv_2610_13024.md
+  - ../../sources/sites/r2-wam-visual-representations-project.md
 ---
 
 # World Action Models（WAM，世界–动作模型）
@@ -224,6 +227,8 @@ sources:
 形成 **Q1–Q4** 四象限（站点可交互筛选）。**Joint training alone 不决定 One Model**；部分 IDM 推理时不显式滚完整未来。选型时可用 RCL 象限对照下文 Cascaded/Joint 实例。
 
 **受控设计实证（三星等，arXiv:2609.24048）**：[WAM 设计要素受控实证](../entities/paper-wam-design-empirical-study.md) 在 **固定 Fast-WAM / LDA-1B 骨干** 下分别扫 **6 种视频–动作因果、8 种潜空间表征、4 种训练目标**，给出三条可操作的分布依赖规律：**(1)** 生成未来主要通过 **时间组织** 而非精确像素内容影响动作，且 **因果视频生成** 比严格 token 时序隔离更关键；**(2)** **inter-frame latent 偏 ID、framewise 偏 OOD**，预编码跨帧关系在 shift 下更脆；**(3)** **ID 上 BC-only 仍强**，**OOD 上 BC+VG 分阶段**（先 80% 稳表征再引入 dynamics）最优。读具体系统论文前可先对照该页三轴 checklist。
+
+**视觉表征的受控比较**：[R²-WAM（arXiv:2610.13024）](../entities/paper-r2-wam-visual-representations.md) 在固定训练设置下比较 13 种视觉表征、5 种集成机制与多源组合；结果支持先选强通用表征和有效的联合预测机制，再根据新增任务信息决定是否组合更多来源。它补充了 [WAM 设计要素受控实证](../entities/paper-wam-design-empirical-study.md) 对视频–动作因果、潜空间与训练目标的分析。
 
 **control utility 准则**（RCL 强调）：动作接地、时空一致、闭环改进、实时预算 — 避免只用视觉保真评价 WAM。
 
