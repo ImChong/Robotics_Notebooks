@@ -2957,7 +2957,10 @@
         catch (err) { console.warn('3D view cleanup failed:', err); }
         graphCanvas3d.hidden = true;
         graph3dHoverNode = null;
-        hideTooltip();
+        // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
+        // 下一次点同一节点会被当成「再次点击 → 关闭」
+        if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
+        else hideTooltip();
         svg.style('display', 'block');
         if (edgeCanvas) edgeCanvas.style.display = 'block';
         syncGraphDomFromSimulation();
@@ -4965,6 +4968,9 @@
 
     node
       .on('mouseenter', (ev, d) => {
+        // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
+        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏只走 click → presentNodeDetail。
+        if (isMobile) return;
         if (timelineAnimating) {
           if (!timelineRevealedIds.has(d.id)) return;
           if (sidebarFocusIds) {
@@ -5000,12 +5006,14 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
+        if (isMobile) return;
         // 移动端固定卡片后，mousemove 不移动 tooltip
         if (!isMobile || !pinnedNode) {
           moveTooltip(ev);
         }
       })
       .on('mouseleave', () => {
+        if (isMobile) return;
         if (timelineAnimating) {
           if (sidebarFocusIds) {
             if (!isMobile || !pinnedNode) hideTooltip();

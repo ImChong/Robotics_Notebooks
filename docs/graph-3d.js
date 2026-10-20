@@ -1608,15 +1608,20 @@
       window.setTimeout(runFit, 60000);
     }
 
+    // 最近一次输入的指针类型：触屏抬指后库仍会按最后位置 raycast 并发 hover，须忽略
+    var lastPointerType = 'mouse';
     function onContainerPointerMove(ev) {
       lastPointer.clientX = ev.clientX;
       lastPointer.clientY = ev.clientY;
+      if (ev.pointerType) lastPointerType = ev.pointerType;
       lastInputAt = performance.now();
       wakeRender();   // hover 检测靠渲染环里的 raycast，指针一动就得先把环唤醒
       armPointerInteraction(ev && ev.pointerType === 'touch' ? 1200 : POINTER_IDLE_DISABLE_MS);
       if (onPointerMove) onPointerMove(ev);
     }
     function onContainerInput(ev) {
+      if (ev && ev.type === 'touchstart') lastPointerType = 'touch';
+      else if (ev && ev.pointerType) lastPointerType = ev.pointerType;
       lastInputAt = performance.now();
       wakeRender();
       armPointerInteraction(ev && (ev.type === 'touchstart' || ev.pointerType === 'touch') ? 1200 : POINTER_IDLE_DISABLE_MS);
@@ -1712,7 +1717,8 @@
         })
         .onNodeHover(function (node) {
           // 侧栏/触屏选中态由 sidebarNodeId 驱动；旋转视角时 hover 会短暂落空，不能覆盖持久高亮。
-          if (!sidebarNodeId) setHoverNode(node ? node.id : null);
+          // 触屏没有 hover：旋转 / 平移抬指后落在节点上会被库当成悬停，整图淡化直到下次点击
+          if (!sidebarNodeId && lastPointerType !== 'touch') setHoverNode(node ? node.id : null);
           var src = node ? (resolveSourceNode(node.id) || node) : null;
           if (onNodeHover) onNodeHover(src, lastPointer);
         })
