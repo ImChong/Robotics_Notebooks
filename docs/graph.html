@@ -3678,9 +3678,15 @@
        状态在此处声明（measureGraphViewport 早于绘制函数被调用，需避开 TDZ）。 */
     const edgeCanvas = document.getElementById('graph-edge-canvas');
     const edgeCtx = edgeCanvas ? edgeCanvas.getContext('2d') : null;
-    // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：
-    // 4 核及以下（多为集显/移动端）按 1 倍像素比绘制，其余封顶 2 倍。
-    const EDGE_CANVAS_MAX_DPR = (navigator.hardwareConcurrency || 8) <= 4 ? 1 : 2;
+    /* ── 低端设备判定（统一口径）──
+       触屏（hover:none + pointer:coarse）、≤4 逻辑核、≤4 GB 内存任一命中即按低端处理。
+       此前只看 hardwareConcurrency：iOS 不暴露或报 6 核、安卓中端报 8 核，手机全被当成高端。 */
+    const COARSE_POINTER = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const LOW_END_DEVICE = COARSE_POINTER
+      || (navigator.hardwareConcurrency || 8) <= 4
+      || (navigator.deviceMemory || 8) <= 4;
+    // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：低端按 1 倍像素比，其余封顶 2 倍。
+    const EDGE_CANVAS_MAX_DPR = LOW_END_DEVICE ? 1 : 2;
     let edgeCanvasDpr = 1;
     let edgeTransform = d3.zoomIdentity;
     // 上色模式与原先四处 link.attr(...) 分支一一对应：
@@ -4015,6 +4021,14 @@
     const FORCE_ALPHA_DECAY = 0.04;
     const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
     const FORCE_COLLIDE_STRENGTH = 0.45;
+    // 冷却阈值：d3 默认 0.001 时全图 170 tick 里最后 ~57 tick 位移已 <10 px（亚像素），
+    // 白付三分之一的力计算；抬到 0.005（低端 0.01）只砍不可见的尾段，展开/回弹不变。
+    const FORCE_ALPHA_MIN = LOW_END_DEVICE ? 0.01 : 0.005;
+    // Barnes–Hut 近似阈值：斥力占全图 tick 六成，theta 0.9 → 1.2 省约 20%，1.5 省约 35%；
+    // 视觉布局不需要 0.9 的精度。
+    const FORCE_THETA = LOW_END_DEVICE ? 1.5 : 1.2;
+    // 碰撞力占 tick 约三成：爆炸期（alpha>0.3）每 tick 位移几十 px，解重叠是白做；低端再隔 tick 跑。
+    const FORCE_COLLIDE_SKIP_ALPHA = 0.3;
     const FORCE_WARMUP_TICKS = 20;
     // warmup 分片按时间预算让出主线程：全图单 tick 已远超一帧（G0 实测 ≈46ms），
     // 固定 tick 数分片仍会攒出长任务。每片至少跑 1 tick 保证推进，故单片可能超预算。
@@ -4082,17 +4096,28 @@
     seedNodePositionsPhyllotaxis(nodes);
 
     /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
+    const collideForce = d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH);
+    let collideTickNo = 0;
+    const gatedCollide = (alpha) => {
+      collideTickNo += 1;
+      if (alpha > FORCE_COLLIDE_SKIP_ALPHA) return;
+      if (LOW_END_DEVICE && (collideTickNo & 1)) return;
+      collideForce(alpha);
+    };
+    gatedCollide.initialize = (...args) => collideForce.initialize(...args);
+
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
       // 不设 distanceMax：硬截断会让越过阈值的节点瞬间失/得全部斥力，
       // 与连线/向心力形成来回拉扯的极限环（3D 视图同样不截断）。
-      .force('charge', d3.forceManyBody().strength(chargeStrength))
+      .force('charge', d3.forceManyBody().strength(chargeStrength).theta(FORCE_THETA))
       .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH))
+      .force('collision', gatedCollide)
       .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
       .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
       .velocityDecay(FORCE_VELOCITY_DECAY)
       .alphaDecay(FORCE_ALPHA_DECAY)
+      .alphaMin(FORCE_ALPHA_MIN)
       .stop();
 
     function pauseSimulation2D() {
