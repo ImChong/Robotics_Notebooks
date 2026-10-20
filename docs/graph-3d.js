@@ -879,8 +879,9 @@
         return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.88 : 0.06;
       }
       if (hoverNodeId) {
+        // 非邻接连线保持常态值（不再整体从 0.06 变 0.1）：hover 只需改邻接连线，O(度) 而非 O(E)
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.68 : 0.1;
+        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return 0.68;
       }
       if (!filtered) return 0.06;
       if (!visible.has(s) || !visible.has(t)) return 0.03;
@@ -924,6 +925,103 @@
         if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 8;
       }
       return base;
+    }
+
+    /* ── 连线材质 ──
+       3d-force-graph 1.80.0 的 linkOpacity 是标量：此前传函数，库内 `linkOpacity * colorAlpha`
+       算成 NaN → 全部连线 transparent:false / opacity:NaN，开「显示连线」后整图一片白线。
+       另外任何访问器 setter（linkColor / linkOpacity / linkVisibility / linkWidth）都会触发整图
+       digest，linkWidth 还会拆掉并重建全部 53k 连线对象（hover 一次 3 s 以上）。
+       改法：把「颜色 × 不透明度」预先混进不透明的场景底色（背景是纯色，视觉上与 alpha 叠加
+       等价，且不进透明队列、不逐帧排序），材质按颜色串共享；hover / 侧栏只给颜色变了的连线
+       换材质，不再碰任何 setter。 */
+    var LINK_BASE_OPACITY = 0.06;   // linkOpacityFor 的常态值；rgba 底色的 alpha 以此为基准缩放
+    var linkMaterialCache = new Map();
+    var linkMaterialCtor = null;
+    // 「颜色串|不透明度」→ 混合后 hex 的备忘：全图 53k 连线只会出现几种组合，避免逐线正则解析
+    var linkDisplayColorMemo = new Map();
+
+    function parseCssColor(str) {
+      var m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(str || '');
+      if (m) {
+        var h = m[1].length === 3 ? m[1].replace(/./g, function (c) { return c + c; }) : m[1];
+        var n = parseInt(h, 16);
+        return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1];
+      }
+      m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/i.exec(str || '');
+      if (m) return [+m[1], +m[2], +m[3], m[4] == null ? 1 : +m[4]];
+      return [255, 255, 255, 1];
+    }
+
+    function toHex(r, g, b) {
+      var n = (Math.round(r) << 16) | (Math.round(g) << 8) | Math.round(b);
+      return '#' + ('000000' + n.toString(16)).slice(-6);
+    }
+
+    /** 连线最终显示色：底色（可带 alpha）按 linkOpacityFor 缩放后与场景背景混合为不透明色。 */
+    function linkDisplayColor(l) {
+      var colorStr = linkColorFor(l);
+      var op = linkOpacityFor(l);
+      var key = colorStr + '|' + op;
+      var hex = linkDisplayColorMemo.get(key);
+      if (hex) return hex;
+      var c = parseCssColor(colorStr);
+      // 高亮色为不透明 hex 时直接用 op；rgba 底色自带的 alpha 按 op/常态值 等比缩放
+      var alpha = c[3] < 1 ? c[3] * (op / LINK_BASE_OPACITY) : op;
+      alpha = Math.max(0, Math.min(1, alpha));
+      var bg = parseCssColor(backgroundColor());
+      hex = toHex(bg[0] + (c[0] - bg[0]) * alpha, bg[1] + (c[1] - bg[1]) * alpha, bg[2] + (c[2] - bg[2]) * alpha);
+      linkDisplayColorMemo.set(key, hex);
+      return hex;
+    }
+
+    function linkMaterialFor(colorHex, sampleMaterial) {
+      var mat = linkMaterialCache.get(colorHex);
+      if (mat) return mat;
+      if (!linkMaterialCtor) linkMaterialCtor = sampleMaterial && sampleMaterial.constructor;
+      if (!linkMaterialCtor) return null;
+      mat = new linkMaterialCtor({ color: colorHex });
+      linkMaterialCache.set(colorHex, mat);
+      return mat;
+    }
+
+    // 按端点索引当前 graphData 的连线（随 links 数组身份重建），供 hover 增量换材质
+    var linkIndexSource = null;
+    var linkIndexMap = null;
+    function linksTouching(nodeId) {
+      if (!graph || !nodeId) return [];
+      var links = (graph.graphData() || {}).links || [];
+      if (linkIndexSource !== links) {
+        linkIndexSource = links;
+        linkIndexMap = new Map();
+        for (var i = 0; i < links.length; i++) {
+          var l = links[i];
+          var a = edgeEndpointId(l.source);
+          var b = edgeEndpointId(l.target);
+          if (!linkIndexMap.has(a)) linkIndexMap.set(a, []);
+          if (!linkIndexMap.has(b)) linkIndexMap.set(b, []);
+          linkIndexMap.get(a).push(l);
+          if (b !== a) linkIndexMap.get(b).push(l);
+        }
+      }
+      return linkIndexMap.get(nodeId) || [];
+    }
+
+    // 逐连线换材质：只对颜色变了的连线写 material，常态下 O(E) 比较、几乎不分配。
+    function updateLinkMaterials(subset) {
+      if (!graph) return;
+      var links = subset || ((graph.graphData() || {}).links || []);
+      for (var i = 0; i < links.length; i++) {
+        var l = links[i];
+        var mesh = resolveLinkCylinderMesh(l.__lineObj);
+        if (!mesh || !mesh.material) continue;
+        var want = linkDisplayColor(l);
+        if (mesh.userData.rnColor === want) continue;
+        var mat = linkMaterialFor(want, mesh.material);
+        if (!mat) continue;
+        mesh.material = mat;
+        mesh.userData.rnColor = want;
+      }
     }
 
     function sphereRadiusFor(d) {
@@ -1003,6 +1101,7 @@
       return false;
     }
 
+    // 外观刷新（hover / 侧栏 / 主题）：只直接改已有对象，不调用任何库 setter。
     function refreshAppearance() {
       if (!customMeshesInstalled) {
         // nodeOpacity 是标量配置：传函数会算出 NaN 不透明度让默认球体全透明。
@@ -1012,15 +1111,31 @@
           .nodeVal(nodeValFor)
           .nodeOpacity(1);
       }
+      updateNodeMeshes();
+      updateLinkMaterials();
+      syncLabels();
+    }
+
+    // hover 专用：节点全量（O(N)，逐节点淡化本就需要）+ 只换前后两个焦点节点的邻接连线材质
+    function setHoverNode(nextId) {
+      var prevId = hoverNodeId;
+      hoverNodeId = nextId || null;
+      if (prevId === hoverNodeId) return;
+      updateNodeMeshes();
+      if (prevId) updateLinkMaterials(linksTouching(prevId));
+      if (hoverNodeId) updateLinkMaterials(linksTouching(hoverNodeId));
+      syncLabels();
+      // 关闭「显示连线」时只画焦点连线：焦点变化即可见集合变化
+      if (!areEdgesVisible()) refreshVisibility();
+    }
+
+    // 可见集合变化（筛选 / 显示连线开关 / 关连线时的焦点连线）才需要库 digest 增删对象；
+    // 访问器本身读闭包状态，重新 set 只是为了触发 digest。刻意不碰 linkWidth。
+    function refreshVisibility() {
+      if (!graph) return;
       graph
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
-        .linkColor(function (l) { return linkColorFor(l); })
-        // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
-        .linkWidth(linkBaseWidth)
-        .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
-      updateNodeMeshes();
-      syncLabels();
     }
 
     // pop-in 期间逐帧刷新节点 mesh 缩放，让「激活」放大过程平滑（由 3d-force-graph 的渲染环负责出图）。
@@ -1426,11 +1541,12 @@
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
-        .linkColor(function (l) { return linkColorFor(l); })
+        // 颜色已混入底色（见 linkDisplayColor），库按颜色串缓存共享材质；linkOpacity 为标量
+        .linkColor(linkDisplayColor)
+        .linkOpacity(1)
         // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
         .linkWidth(linkBaseWidth)
         .linkPositionUpdate(linkScaleUpdate)
-        .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); })
         .enableNodeDrag(true)
         .onNodeDrag(function () {
@@ -1452,16 +1568,12 @@
         })
         .onNodeHover(function (node) {
           // 侧栏/触屏选中态由 sidebarNodeId 驱动；旋转视角时 hover 会短暂落空，不能覆盖持久高亮。
-          if (!sidebarNodeId) {
-            hoverNodeId = node ? node.id : null;
-            refreshAppearance();
-          }
+          if (!sidebarNodeId) setHoverNode(node ? node.id : null);
           var src = node ? (resolveSourceNode(node.id) || node) : null;
           if (onNodeHover) onNodeHover(src, lastPointer);
         })
         .onBackgroundClick(function () {
-          hoverNodeId = null;
-          refreshAppearance();
+          setHoverNode(null);
           if (opts.onBackgroundClick) opts.onBackgroundClick();
         });
       var chargeForce = graph.d3Force('charge');
@@ -1563,6 +1675,7 @@
 
       syncFilters: function () {
         refreshAppearance();
+        refreshVisibility();
       },
 
       syncLabels: function () {
@@ -1645,6 +1758,8 @@
 
       refreshColors: function () {
         graph.backgroundColor(backgroundColor());
+        linkMaterialCache.clear();   // 混色依赖背景色，换主题后全部重算
+        linkDisplayColorMemo.clear();
         refreshAppearance();
         syncLabels();
       },
@@ -1740,6 +1855,7 @@
         sidebarSecondary = secondary || new Set();
         hoverNodeId = null;
         refreshAppearance();
+        if (!areEdgesVisible()) refreshVisibility();
       },
 
       clearSidebarHighlight: function () {
@@ -1747,13 +1863,13 @@
         sidebarDirect = new Set();
         sidebarSecondary = new Set();
         refreshAppearance();
+        if (!areEdgesVisible()) refreshVisibility();
       },
 
       // G2 基线测量：分离悬停刷新 / 标签同步 / 场景对象数（非业务 UI）
       measureHover: function (nodeId) {
         var t = performance.now();
-        hoverNodeId = nodeId || null;
-        refreshAppearance();
+        setHoverNode(nodeId || null);
         return +(performance.now() - t).toFixed(2);
       },
 
@@ -1791,6 +1907,24 @@
           scene_meshes: meshes, scene_lines: lines, label_elements: labels,
           node_meshes: nodeMeshes, node_dimmed: dimmed, node_bright: bright,
         };
+      },
+
+      // 连线材质体检（非业务 UI）：此前 linkOpacity 传函数导致全部材质 opacity 为 NaN
+      getLinkMaterialStats: function () {
+        if (!graph || typeof graph.graphData !== 'function') return null;
+        var links = (graph.graphData() || {}).links || [];
+        var total = 0, nan = 0, transparent = 0, colors = {}, sample = null;
+        for (var i = 0; i < links.length; i++) {
+          var mesh = resolveLinkCylinderMesh(links[i].__lineObj);
+          if (!mesh || !mesh.material) continue;
+          total += 1;
+          if (!isFinite(mesh.material.opacity)) nan += 1;
+          if (mesh.material.transparent) transparent += 1;
+          var hex = mesh.material.color ? mesh.material.color.getHexString() : '';
+          colors[hex] = (colors[hex] || 0) + 1;
+          if (!sample) sample = { color: hex, opacity: mesh.material.opacity, transparent: mesh.material.transparent };
+        }
+        return { total: total, nan_opacity: nan, transparent: transparent, colors: colors, sample: sample };
       },
 
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
