@@ -1914,6 +1914,8 @@ def main() -> None:
         f"→ {OUT_PATH.relative_to(REPO_ROOT)}"
     )
 
+    # 图谱页加载进度条的分母：gzip 下发时 Content-Length 是压缩后字节数，页面流里数到的是原始字节数
+    stats["link_graph_bytes"] = OUT_PATH.stat().st_size
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

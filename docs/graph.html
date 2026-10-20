@@ -3260,10 +3260,13 @@
     }
 
     /* 流式读取以反映真实下载进度；无法读取流或缺少 Content-Length 时退化为一次性解析。 */
-    async function fetchJsonWithProgress(url, onProgress) {
+    async function fetchJsonWithProgress(url, onProgress, rawBytesPromise) {
       const resp = await fetch(url);
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const total = Number(resp.headers.get('Content-Length')) || 0;
+      // 流里数到的是解压后的字节数；响应被 gzip 时 Content-Length 是压缩后的，不能当分母
+      //（线上 1.07 MB gz / 4.14 MB 原始：下到 26% 进度条就封顶 78% 停住），改用导出期记下的原始字节数
+      let total = Number(resp.headers.get('Content-Length')) || 0;
+      if (resp.headers.get('Content-Encoding')) total = Number(await rawBytesPromise) || 0;
       if (!resp.body || !total || typeof TransformStream === 'undefined') return resp.json();
       // 只在流上计数，解码与解析交给原生 Response.json()：此前手工拼 Uint8Array + TextDecoder
       // 再 JSON.parse，4 MB 的载荷多拷贝三遍
@@ -3289,9 +3292,14 @@
     let graphData;
     let indexItems = [];
     try {
+      // graph-stats.json 很小且与 link-graph 同批生成，并行取其 link_graph_bytes 作进度条分母；拿不到就不显示下载进度
+      const linkGraphBytes = fetch('exports/graph-stats.json')
+        .then(r => (r.ok ? r.json() : null))
+        .then(stats => (stats && stats.link_graph_bytes) || 0)
+        .catch(() => 0);
       graphData = await fetchJsonWithProgress('exports/link-graph.json', frac => {
         setLoadingProgress(5 + frac * 73);   // 下载阶段（首屏主要耗时）：5% → 78%
-      });
+      }, linkGraphBytes);
       // 边是节点下标对，还原成 {source, target}（main.js 的共享还原逻辑）
       if (window.RNExportFormats) graphData = window.RNExportFormats.expandLinkGraph(graphData);
     } catch (e) {
