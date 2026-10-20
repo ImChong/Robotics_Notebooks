@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-19
 related:
   - ../entities/kimodo.md
   - ../entities/kimodo-cpp.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-scheduled-inpainting-gme.md
   - ../entities/paper-muninn-trajectory-diffusion-acceleration.md
   - ../entities/paper-motionspaceflow.md
+  - ../entities/paper-walk-like-this-stylized-locomotion.md
   - ../entities/paper-molingo.md
   - ../entities/paper-phygile.md
   - ../entities/paper-partigen.md
@@ -69,6 +70,8 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 
 [RigMo](../entities/rigmo.md)（arXiv:2601.06378）从 **无标注变形 mesh 序列** 联合发现 **Gaussian bones + SE(3) 运动**（RigMo-VAE），再在结构感知 **motion latent** 上接 **Motion-DiT** 做稀疏帧补全——与假定预定义骨架的人体扩散（Kimodo/ARDY）正交，强调 **可动画资产** 而非交互文本控制。制片侧对照：[Disney Generative Motion Rig](../entities/generative-motion-rig.md)（SIGGRAPH Talks 2026）把通用 betweener 嵌进 **Blender 插件**，用稀疏关键帧 / NMC / 噪声做 generative keyframing（插件未开源）；[Scheduled Inpainting / GME](../entities/paper-scheduled-inpainting-gme.md)（arXiv:2607.29133）则给出 **training-free 推理编辑**——用 schedule + 时空 mask 在预训练 IBMM/SF-control 上 **保留并改写已有 MoCap**（延长/拼接/合成，亦未开源）。
 
+[Walk Like This](../entities/paper-walk-like-this-stylized-locomotion.md) 把**任意示例动作**编码为风格条件，交给自回归扩散模型生成由速度指令约束的运动参考，再由 PPO tracker 跟踪到 G1。它展示生成模型可承担「风格化参考生成」，而低层 RL 负责物理可执行性；attention bias 可调风格强度，但会增加足滑。
+
 ## Omni-modal 人形运动生成（OMG，清华 MARS Lab）
 
 [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) 将 **OMG-DiT** 扩散 Transformer 作为 **generator 层**，把 **语言 / 音频 / 人体参考 / 运动历史及零样本组合** 实时转为 **Unitree G1** 可跟踪全身轨迹，再由 [HoloMotion](../entities/holomotion.md) tracker 执行；配套 **OMG-Data**（约 1174.66 h，sim-in-the-loop 过滤）与 **50M–1B** scaling。与 ETH G1 的 **地形条件规划**、Heracles 的 **recovery 中间件** 对照，OMG 强调 **多模态控制接口 + foundation 行为** 与 **运行时 modality switching**。
@@ -124,6 +127,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 离线 RL 与构型空间 **轨迹扩散规划器**（如 [Diffuser](https://github.com/jannerm/diffuser)）与上文 **运动生成** 共享「逐步 denoiser」瓶颈。[Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) 提供 **免训练包装层**：probe 稳定性 + 采样器灵敏度 + conformal 预算，在 D4RL / MPD / EDMP 上最高约 **4.6×** 墙钟加速且可证相对全量教师的轨迹偏离界；与 ETH G1 式 **训练期少步/闭环微调** 正交，可叠在已有教师上。
 
 ## 参考来源
+- [Walk Like This（CoRL 2026）](../../sources/papers/walk_like_this_corl2026.md) — 示例动作风格条件与物理跟踪。
 - [机器人论文阅读笔记：Learned Motion Matching](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Learned_Motion_Matching/Learned_Motion_Matching.html)
 - [OMG 项目页与仓库](../../sources/sites/omg-tsinghua-mars-lab-github-io.md) — 清华 MARS Lab omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker）
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — 状态条件 flow matching 中间件 + 闭环 tracker（真机恢复）
