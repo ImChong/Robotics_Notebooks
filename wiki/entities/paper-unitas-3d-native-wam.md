@@ -3,7 +3,7 @@ type: entity
 project_id: unitas-3d-native-wam
 tags: [paper, wam, world-model, manipulation, vla, 3d, scene-flow, cuhk-sz, dexforce, sysu, scut]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-20
 arxiv: "2610.12099"
 code: https://github.com/DexForce/UNITAS
 project: https://unitas-wam.github.io
