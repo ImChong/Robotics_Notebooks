@@ -25,7 +25,6 @@ summary: "Dream-1 是 Dream Labs 面向双臂平行夹爪机器人的 World Acti
 | WAM | World Action Model | Dream-1 所属的世界预测与动作生成模型路线 |
 | API | Application Programming Interface | 用户通过网络客户端提交观测并请求机器人动作的服务接口 |
 | IK | Inverse Kinematics | 将末端目标转换为关节运动的逆运动学求解器，影响跨本体控制效果 |
-| YAM | Yet Another Manipulator | 官方仿真零样本对比中采用的参考机器人 |
 
 ## 为什么重要
 
