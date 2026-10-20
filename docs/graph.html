@@ -52,7 +52,6 @@
       gap: 10px;
       padding: 8px 20px;
       background: rgba(13, 17, 23, 0.92);
-      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
       flex-wrap: wrap;
     }
@@ -241,7 +240,6 @@
       border-radius: 10px;
       border: 1px solid rgba(91,156,246, 0.28);
       background: rgba(13, 17, 23, 0.88);
-      backdrop-filter: blur(8px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       pointer-events: auto;
     }
@@ -567,7 +565,6 @@
       line-height: 1;
       cursor: pointer;
       box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-      backdrop-filter: blur(8px);
       transition: transform .15s, border-color .15s, box-shadow .15s, opacity .15s;
     }
     #graph-legend-fab:hover,
@@ -600,7 +597,6 @@
       background: rgba(13,17,23,0.88);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
-      backdrop-filter: blur(6px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.45);
       overflow-y: auto;
       overflow-x: hidden;
@@ -608,12 +604,23 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
       transform: translateX(calc(-100% - 28px));
-      transition: transform .28s cubic-bezier(.4,0,.2,1);
+      /* 关闭态滑出屏外后 visibility:hidden，不再参与合成；打开时立即可见，关闭时等滑出动画结束 */
+      visibility: hidden;
+      transition: transform .28s cubic-bezier(.4,0,.2,1), visibility 0s linear .28s;
       pointer-events: none;
     }
     #graph-legend.graph-legend-open {
       transform: translateX(0);
+      visibility: visible;
+      transition: transform .28s cubic-bezier(.4,0,.2,1), visibility 0s;
       pointer-events: auto;
+    }
+    /* backdrop-filter 每帧都要对下层画布重采样模糊，触屏 / 低端设备上整帧变贵：
+       背景 alpha ≥ 0.92 的面板（工具栏、图例按钮、物理 / 筛选面板、侧栏）直接不用，
+       半透明较明显的两处只在精确指针设备上启用 */
+    @media (hover: hover) and (pointer: fine) {
+      .depth-intro-banner { backdrop-filter: blur(8px); }
+      #graph-legend { backdrop-filter: blur(6px); }
     }
     #graph-legend::-webkit-scrollbar {
       width: 6px;
@@ -1145,7 +1152,6 @@
       background: rgba(13,17,23,0.96);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      backdrop-filter: blur(14px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
@@ -1427,7 +1433,6 @@
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      backdrop-filter: blur(14px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
@@ -1758,7 +1763,6 @@
       z-index: 60;
       background: rgba(13, 17, 23, 0.97);
       border-left: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(16px);
       overflow-y: auto;
       transition: right .22s cubic-bezier(.4,0,.2,1);
       padding: 0;
