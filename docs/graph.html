@@ -5867,8 +5867,9 @@
         svg.call(zoom.transform, transform);
         return;
       }
-      let t = svg.transition();
-      if (transitionOpts && transitionOpts.name) t = t.name(transitionOpts.name);
+      // d3 v7 的 transition 没有 .name()：命名过渡要在创建时传名
+      // （selection.transition(name)），否则 fitToTimelineNodes 每次跟随相机都会抛错。
+      let t = svg.transition(transitionOpts && transitionOpts.name ? transitionOpts.name : undefined);
       t = t.duration(dur);
       if (ease) t = t.ease(ease);
       t.call(zoom.transform, transform);

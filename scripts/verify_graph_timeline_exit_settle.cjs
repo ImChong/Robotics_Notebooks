@@ -22,6 +22,9 @@ const path = require('path');
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 900 });
     await page.setCacheEnabled(false);
+    // 时序播放期间不得有未捕获异常（曾因 d3 transition 误用 .name() 每次跟随相机都抛错）
+    const pageErrors = [];
+    page.on('pageerror', (e) => pageErrors.push(String(e && e.message)));
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
     await page.waitForFunction(() => {
       const loading = document.getElementById('graph-loading');
@@ -131,6 +134,10 @@ const path = require('path');
     }
     if (lateMeanSpeed > 0.05) {
       throw new Error('nodes still moving after exit+blank (should be frozen): ' + lateMeanSpeed);
+    }
+
+    if (pageErrors.length) {
+      throw new Error('uncaught page errors during timeline playback: ' + pageErrors.slice(0, 3).join(' | '));
     }
 
     console.log('OK: timeline exit + blank click stays settled (no self-oscillation)');
