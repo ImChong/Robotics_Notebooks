@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-10
+updated: 2026-10-20
 related:
 - ./physical-rsi.md
 - ./paper-gpt-6-astra-embodied-policy.md

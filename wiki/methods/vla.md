@@ -783,3 +783,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 动态操作的时间上下文：TEMPO
 
 - [TEMPO: Learning Temporal Context for Dynamic Robot Manipulation](../entities/paper-tempo-dynamic-manipulation.md) — 给单帧 VLA 补充场景运动 token 与本体感知动作历史；分别处理移动目标运动歧义和多阶段任务状态混淆。与 RTC/VLASH 异步推理互补，重点不在单纯降低策略延迟。
+
+## 主动视角后的状态对齐
+
+- [ActiveAlign](../entities/paper-activealign.md) — 用主动相机轨迹终点续接示范并微调 VLA，处理“视角更好但首帧分布改变”的操作性能下降。

@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-20
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-egophi.md
@@ -213,3 +213,7 @@ sources:
 - Posa et al., *Trajectory Optimization with Discontinuous Contact Dynamics*
 - 接触隐式优化 / 阻抗控制综述
 - [Query：做机器人操作用模仿学习还是 RL？](../queries/il-for-manipulation.md)
+
+## 本体感知盲装配实例
+
+- [Blind Precise Assembly](../entities/paper-blind-proprioceptive-assembly.md) — 仅用关节状态与动作历史完成多样零件精密装配；`mjfit` 为训练提供带真实间隙的 MuJoCo 几何。
