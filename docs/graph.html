@@ -2613,6 +2613,12 @@
     let showEdges = false;
     let labelsSettled2D = false;
     let userZoomed2D = false;
+    // 仅由用户手势（滚轮 / 拖拽 / 捏合，ev.sourceEvent 非空）置真；程序化 fit 不算。
+    // 用于决定力模拟落稳时是否还要自动 fit：用户已经自己取景就不再抢视口。
+    let userGestureZoom2D = false;
+    // 力模拟 'end' 只在首屏与「刷新布局」之后各自动 fit 一次；拖拽 / 滑块 / 切视图引起的
+    // 重新加热落稳后不再 fit（此前每次 end 都 fitToScreen，把用户缩放吃掉）。
+    let pendingAutoFit2D = false;
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
     const checkShowEdgesEl = document.getElementById('check-show-edges');
@@ -3986,6 +3992,7 @@
         edgeTransform = ev.transform;
         scheduleEdgeDraw();
         userZoomed2D = true;
+        if (ev.sourceEvent) userGestureZoom2D = true;
         sync2DNodeLabels();
       });
     svg.call(zoom);
@@ -4089,6 +4096,8 @@
       .stop();
 
     function pauseSimulation2D() {
+      // 作废仍在分片中的 warmup：否则切到 3D 后剩余分片跑完会在后台 restart 隐藏的 2D 全图模拟
+      warmupToken += 1;
       simulation.stop();
       simulation.alphaTarget(0);
     }
@@ -4502,6 +4511,9 @@
     function finishSimulationLoad() {
       labelsSettled2D = true;
       sync2DNodeLabels();
+      if (!pendingAutoFit2D) return;
+      pendingAutoFit2D = false;
+      if (userGestureZoom2D) return;
       whenGraphViewportReady(() => fitToScreen());
     }
 
@@ -4511,6 +4523,8 @@
       const opts = options || {};
       // 新一轮布局作废上一轮尚未跑完的分片（连点「刷新布局」不叠加 warmup）
       const myToken = ++warmupToken;
+      pendingAutoFit2D = true;
+      userGestureZoom2D = false;
       if (opts.reseed) randomizeNodePositions();
       simulation.stop();
       simulation.alphaTarget(0);
@@ -4527,6 +4541,13 @@
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
         // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
         syncGraphDomFromSimulation();
+        if (is3DView()) return;
+        // 先把展开起点框进视口再开场：此前首屏在 end 之前没有任何 fit，
+        // 叶序种子半径随规模增长（6k 节点 ≈ 790px），手机上几十秒内只看到被裁掉的中心。
+        // 首屏走同步路径时本函数仍在初始化脚本中段执行（isMobile 等常量尚未定义），
+        // 故推迟到下一帧再 fit；刷新布局的分片路径可直接 fit。
+        if (opts.async) fitToScreen({ duration: 0 });
+        else requestAnimationFrame(() => { if (!is3DView()) whenGraphViewportReady(() => fitToScreen({ duration: 0 })); });
         simulation.restart();
       };
 
@@ -4583,7 +4604,7 @@
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
-      if (timelineAnimating) return;   // 时序动画期间不触发整图标签渐显 / 自适应
+      if (timelineAnimating || is3DView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
 
@@ -5898,12 +5919,12 @@
     }
 
     /* ── 适配屏幕到所有节点 ── */
-    function fitToScreen() {
+    function fitToScreen(transitionOpts) {
       const transform = computeGraphFitTransform(nodes, {
         minScale: GRAPH_ZOOM_MIN,
         maxScale: GRAPH_ZOOM_MAX,
       });
-      applyGraphFitTransform(transform);
+      applyGraphFitTransform(transform, transitionOpts);
     }
 
     /** 视口尺寸变化后只平移画布变换，让图保持在可视区中央。
