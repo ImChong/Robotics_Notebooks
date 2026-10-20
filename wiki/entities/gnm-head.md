@@ -6,6 +6,7 @@ updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md
+  - ./hfhpe.md
   - ./paper-face-anything-4d-face-reconstruction.md
   - ./paper-shells-layered-surface-sampling.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -34,7 +35,7 @@ summary: "GNM Head 是 Google GNM 生态首期开源的高保真参数化 3D 头
 - **头脸几何的「生成式基因组」：** 相比仅外表面 SMPL-X/FLAME 拼装，GNM Head 强调 **统计形状空间 + 内部解剖** 与 **语义可控采样**（如按 "happy" 表情或人口统计属性生成身份），适合 avatar、数字人、AR/VR 与 **机器人社交头** 原型。
 - **多框架后端：** 同一套 v3.0 资产可在 **NumPy / JAX / PyTorch / TensorFlow** 下加载，降低与现有训练栈（扩散、NeRF、单目重建）的胶水成本。
 - **开放许可与可复现资产：** 模型 `.npz`、纹理与语义采样器 `.h5` 随仓发布，CI 覆盖 Linux / macOS / Windows；与「仅论文描述、权重申请制」的 HMR 模型形成对照。
-- **与机器人感知链路的潜在接口：** 单目脸/头重建（如 [FaceAnything](../entities/paper-face-anything-4d-face-reconstruction.md)）或 telepresence 头可输出 GNM 参数，再驱动显示头或简化 rig；全身侧仍常用 [SAM 3D Body](./sam-3d-body.md) 等 HMR，二者粒度不同。
+- **与机器人感知链路的潜在接口：** 单目脸/头重建（如 [FaceAnything](../entities/paper-face-anything-4d-face-reconstruction.md)）或 telepresence 头可输出 GNM 参数，再驱动显示头或简化 rig；全身侧仍常用 [SAM 3D Body](./sam-3d-body.md) 等 HMR，二者粒度不同。若只需从图像估计头部朝向，可把 [HFHPE](./hfhpe.md) 作为轻量上游角度估计器；它输出 yaw/pitch/roll，不生成 3D 头网格或 GNM 参数。
 
 ## 核心结构
 
@@ -78,6 +79,7 @@ flowchart LR
 ## 关联页面
 
 - [SAM 3D Body](./sam-3d-body.md) — 全身 MHR 网格恢复，与头脸专用 3DMM 互补
+- [HFHPE](./hfhpe.md) — 从头部图像 crop 估计全角 yaw/pitch/roll；与 GNM 的参数化网格生成分工不同
 - [FaceAnything（4D 脸重建）](./paper-face-anything-4d-face-reconstruction.md) — 单目视频 4D 脸管线，上游可用 MediaPipe 等采样
 - [SHELLS](./paper-shells-layered-surface-sampling.md) — 多视角前馈注册稠密语义网格；论文展示可作快速建 3DMM 的上游
 - [WiLoR](../methods/wilor.md) — 手部精细 MANO 估计，与头脸模型常并联
