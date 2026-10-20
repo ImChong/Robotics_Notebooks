@@ -3,7 +3,7 @@ type: entity
 project_id: koda-egocentric-humanoid-vla
 tags: [paper, humanoid, vla, locomotion, manipulation, sjtu, zju, teleai]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-20
 arxiv: "2610.21152"
 project: https://koda-humanoid.github.io/koda/
 code: https://github.com/Gamma-Robot/KODA
@@ -15,7 +15,7 @@ sources:
   - ../../sources/papers/koda_arxiv_2610_21152.md
   - ../../sources/sites/koda-humanoid.md
   - ../../sources/repos/gamma-robot-koda.md
-summary: "KODA（arXiv:2610.21152）：把人类第一视角演示整理成可跨控制器重生成监督的机器人视角、全身状态与动作数据；完整代码与数据仍分阶段开放。"
+summary: "KODA（arXiv:2610.21152）：将人类第一视角演示转为跨控制器可复用的人形 VLA 训练记录；官方现已开放运动学与机器人视角生成管线及少量样例，动作标签和训练仍待发布。"
 ---
 
 # KODA：从人类第一视角演示生成控制器对齐的人形 VLA 数据
@@ -66,7 +66,25 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用（截至 2026-10-17）**：官方仓库公开的是分阶段项目说明，README 中核心转换模块仍在进行或计划开发，且无安装与运行步骤，尚无可辨识的完整运行入口。下面是论文方法的数据流，不能当作现有代码执行图。
+官方仓库现提供可运行的运动学与机载视角生成流程。README 给出 `koda run` 入口，以及独立的 `convert`、`track`、`view-change` 子命令；该公开 CLI 在视角合成后结束，不含动作标签生成或策略训练。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 用户
+  participant CLI as KODA CLI
+  participant HF as Hugging Face assets
+  participant Pipe as convert / track / view-change
+  User->>CLI: assets download / verify
+  CLI->>HF: 获取公开样例与模型资产
+  HF-->>CLI: MCAP 与 tracking checkpoint
+  User->>CLI: koda run --input ... --output ...
+  CLI->>Pipe: 依次执行转换、跟踪、视角合成
+  Pipe-->>CLI: RGB-D / 手部观测、G1-Dex3 运动学、合成视频
+  CLI-->>User: pipeline_result.json 与 run_manifest.json
+```
+
+数据准备之外，安装流程为 `uv sync --extra cuda`。M3 控制器动作标签与数据导出、M5 VLA 训练不在当前运行入口中。
 
 ## 与其他工作对比
 
@@ -75,7 +93,7 @@ flowchart LR
 | 人类数据形态 | 第一视角视频 → 与控制器解耦的 canonical motion record | Aria 第一视角视频 + 3D 手部轨迹 | 500 小时第一视角人类移动操作数据，恢复身体与手部运动 |
 | 如何变成机器人监督 | 按目标控制器重生成机器人视角观测、全身状态与动作，再与匹配真机示范共训 | 与机器人遥操数据共训模仿学习 | 三阶段训练：互动预训练 → 全身协调 → 机器人与任务适配 |
 | 视角差处理 | 显式合成运动对齐的机器人视角（重投影、渲染、遮挡修复） | 本库页未述显式视角合成 | 本库页未述显式视角合成 |
-| 平台与开放 | Unitree G1，SONIC / HEFT 两种控制器；代码分阶段开放 | 本库页为策展摘要，细节以原文为准 | Unitree G1；OpenLambda 部分开源（代码 + Stage II checkpoint） |
+| 平台与开放 | Unitree G1，SONIC / HEFT 两种控制器；运动学与视频管线已发布，控制器对齐与训练仍待发布 | 本库页为策展摘要，细节以原文为准 | Unitree G1；OpenLambda 部分开源（代码 + Stage II checkpoint） |
 
 - **相对 EgoMimic：** EgoMimic 把人类手部轨迹直接与机器人遥操数据共训；KODA 先把人类演示转成机器人机载视角与目标控制器下的全身状态—动作标签，再共训。
 - **相对 λ₀：** λ₀ 用大规模人类全身数据做分阶段预训练再适配机器人；KODA 的复用单元是 canonical motion，换控制器时重新做命令优化生成动作标签。
@@ -92,7 +110,7 @@ flowchart LR
 1. 复用对象是 canonical motion 与任务上下文；控制器特定的动作标签仍需单独优化生成。
 2. 机器人视角观测要与生成运动同步，单独做视频视角转换不能提供状态—动作监督。
 3. 论文在固定机器人数据量的条件下报告显著增益；需按控制器、任务和“未覆盖条件”定义解读。
-4. 完整复现目前受限于分阶段代码与数据发布，项目仓库不等于可运行实现。
+4. 当前已有可运行的运动学与视角合成实现；论文所述控制器对齐数据和 VLA 训练链路仍未完整开放。
 
 ## 关联页面
 
