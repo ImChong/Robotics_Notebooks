@@ -4332,13 +4332,26 @@
   function ensureLinkGraphData() {
     if (_linkGraphData) return Promise.resolve(_linkGraphData);
     if (_linkGraphPromise) return _linkGraphPromise;
-    _linkGraphPromise = fetch('exports/link-graph.json')
-      .then(function (r) {
+    // 摘要拆在 link-graph-summaries.json（按 nodes 顺序的字符串数组）并行取回后合回 node.summary，
+    // 各消费方（详情页知识地图浮窗、首页预览图）口径不变；取不到则摘要为空
+    _linkGraphPromise = Promise.all([
+      fetch('exports/link-graph.json').then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      })
-      .then(function (data) {
-        _linkGraphData = expandLinkGraph(data);
+      }),
+      fetch('exports/link-graph-summaries.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; }),
+    ])
+      .then(function (results) {
+        var data = expandLinkGraph(results[0]);
+        var summaries = results[1];
+        if (data && Array.isArray(data.nodes) && Array.isArray(summaries) && summaries.length === data.nodes.length) {
+          for (var i = 0; i < data.nodes.length; i++) {
+            if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
+          }
+        }
+        _linkGraphData = data;
         _linkGraphPromise = null;
         return _linkGraphData;
       })

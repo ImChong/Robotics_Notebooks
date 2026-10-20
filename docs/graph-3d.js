@@ -48,7 +48,7 @@
 
   function cloneNodeFor3D(source) {
     var copy = Object.assign({}, source);
-    if (source._info) copy._info = Object.assign({}, source._info);
+    // _info 与 2D 节点共享同一对象：摘要懒加载补入后 3D 浮窗同样可见
     copy.x = source.x != null ? source.x : (Math.random() - 0.5) * 80;
     copy.y = source.y != null ? source.y : (Math.random() - 0.5) * 80;
     copy.z = source.z != null ? source.z : (Math.random() - 0.5) * 80;

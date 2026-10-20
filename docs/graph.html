@@ -3358,6 +3358,24 @@
     }));
     // graphData 是本页独享的一份（expandLinkGraph 已返回新对象），无需再逐条拷贝 53k 条边
     const edges = graphData.edges;
+    /* 摘要不随拓扑下发（link-graph-summaries.json，按 nodes 顺序的字符串数组）：它占 link-graph gzip
+       的 53%，首屏构图用不到。浮窗 / 侧栏首次需要时再取（非低端空闲预取），取回后补渲染正在显示的
+       浮窗 / 侧栏。3D 节点副本与 2D 共享同一个 _info 对象，补上的摘要两边都可见。 */
+    let summariesPromise = null;
+    function ensureSummaries() {
+      if (summariesPromise) return summariesPromise;
+      summariesPromise = fetch('exports/link-graph-summaries.json')
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(list => {
+          if (!Array.isArray(list) || list.length !== nodes.length) return false;
+          for (let i = 0; i < nodes.length; i++) nodes[i]._info.summary = list[i] || '';
+          if (tooltipNode && !tooltip.classList.contains('hidden')) refreshTooltipContent();
+          if (sidebarNode) renderSidebarSummary(sidebarNode);
+          return true;
+        })
+        .catch(() => { summariesPromise = null; return false; });   // 浮窗 / 侧栏暂无摘要，下次再试
+      return summariesPromise;
+    }
     // id → 节点 / 目录条目的索引：侧栏、?focus、3D 回查此前都是 nodes.find / indexItems.find 线性扫描，
     // 枢纽节点开侧栏时排序比较函数里每次两趟 O(N) 扫描
     const nodeById2D = new Map(nodes.map(n => [n.id, n]));
@@ -4637,7 +4655,7 @@
       labelsSettled2D = true;
       sync2DNodeLabels();
       if (!LOW_END_DEVICE && !(navigator.connection && navigator.connection.saveData)) {
-        runWhenIdle(() => ensureCatalog(), 3000);
+        runWhenIdle(() => { ensureSummaries(); ensureCatalog(); }, 3000);
       }
       if (!pendingAutoFit2D) return;
       pendingAutoFit2D = false;
@@ -4804,10 +4822,16 @@
       return '';
     }
 
+    let tooltipNode = null;
+    function refreshTooltipContent() {
+      tooltip.innerHTML = tooltipHtml(tooltipNode);
+      window.RNGraphTooltip?.renderMath?.(tooltip);
+    }
     function showTooltip(ev, d) {
       if (!d) return;
-      tooltip.innerHTML = tooltipHtml(d);
-      window.RNGraphTooltip?.renderMath?.(tooltip);
+      tooltipNode = d;
+      ensureSummaries();
+      refreshTooltipContent();
       tooltip.classList.remove('hidden');
       // 清理可能残留的 left/top/width，确保重新计算尺寸
       tooltip.style.left = '';
@@ -4835,6 +4859,7 @@
     }
 
     function hideTooltip() {
+      tooltipNode = null;
       tooltip.classList.add('hidden');
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
@@ -6472,16 +6497,28 @@
       }
     }
 
+    function renderSidebarSummary(d) {
+      const raw = d._info.summary || '';
+      const summary = window.RNGraphTooltip?.formatTooltipSummary
+        ? window.RNGraphTooltip.formatTooltipSummary(raw, 150)
+        : raw.slice(0, 150) + (raw.length > 150 ? '…' : '');
+      if (summary) {
+        sbSummary.hidden = false;
+        sbSummary.textContent = summary;
+      } else {
+        sbSummary.hidden = true;
+        sbSummary.textContent = '';
+      }
+    }
+
     function openSidebar(d) {
       sidebarNodeId = d.id;
       const { direct } = applyNodeNeighborHighlight(d);
 
       hideTooltip();
+      ensureSummaries();
       const info = d._info;
       const detailUrl = pageUrlForNode(d);
-      const summary = window.RNGraphTooltip?.formatTooltipSummary
-        ? window.RNGraphTooltip.formatTooltipSummary(info.summary || '', 150)
-        : (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
 
       const communityLabel = communityLabelMap.get(d.community);
       const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
@@ -6499,13 +6536,7 @@
         }
       }
       sbTitle.textContent = info.title || d.label;
-      if (summary) {
-        sbSummary.hidden = false;
-        sbSummary.textContent = summary;
-      } else {
-        sbSummary.hidden = true;
-        sbSummary.textContent = '';
-      }
+      renderSidebarSummary(d);
 
       renderSidebarCatalogParts(d);
 
