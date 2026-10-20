@@ -3000,14 +3000,34 @@
       return k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0;
     }
 
+    /* 标签隐藏用 display:none 而非 opacity:0：6k 个 <text> 即便全透明，祖先 <g> 的 scale 一变
+       （滚轮 / 捏合 / fit 过渡的每一帧）浏览器都要重排全部文本度量，实测每步 230–540 ms；
+       display:none 的文本不参与布局。全隐藏态只写一次，避免每个 zoom 事件 6k 次样式写入。 */
+    let labelsAllHidden = false;
+    let lastLabelSyncK = null;
     function sync2DNodeLabels() {
       if (!label) return;
       if (!showNodeLabels || timelineAnimating || !labelsSettled2D) {
-        label.style('opacity', 0);
+        if (!labelsAllHidden) {
+          label.style('display', 'none').style('opacity', 0);
+          labelsAllHidden = true;
+        }
+        lastLabelSyncK = null;
         return;
       }
+      labelsAllHidden = false;
       const k = d3.zoomTransform(svg.node()).k;
-      label.style('opacity', d => computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d));
+      lastLabelSyncK = k;
+      label.each(function (d) {
+        const op = computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d);
+        if (op > 0.02) {
+          if (this.style.display === 'none') this.style.display = '';
+          this.style.opacity = String(op);
+        } else if (this.style.display !== 'none') {
+          this.style.display = 'none';
+          this.style.opacity = '0';
+        }
+      });
     }
 
     function setShowNodeLabels(on) {
@@ -4000,7 +4020,8 @@
         scheduleEdgeDraw();
         userZoomed2D = true;
         if (ev.sourceEvent) userGestureZoom2D = true;
-        sync2DNodeLabels();
+        // 标签可见性只随缩放比例变，纯平移不重算；全隐藏态下 sync 本身也只写一次
+        if (lastLabelSyncK === null || ev.transform.k !== lastLabelSyncK) sync2DNodeLabels();
       });
     svg.call(zoom);
 
@@ -4240,6 +4261,7 @@
       .attr('font-size', d => scaledFontSize(d) + 'px')
       .attr('fill', labelFill())
       .attr('pointer-events', 'none')
+      .style('display', 'none')
       .style('opacity', 0);
 
     /* ── 社区聚类中心漂浮标签层（2D，置于节点层之上）── */
@@ -4628,7 +4650,7 @@
       }
       labelsSettled2D = false;
       userZoomed2D = false;
-      label.style('opacity', 0);
+      sync2DNodeLabels();   // labelsSettled2D 已复位 → 走全隐藏分支（display:none）
       updateGraphViewport();
       // 刷新布局：warmup 走按帧预算的分片，避免一次点击攒出秒级长任务（G0 实测最长 1.33s）。
       runStabilizedLayout2D({ reseed: true, async: true });
