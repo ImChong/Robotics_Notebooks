@@ -10,10 +10,11 @@ tags:
   - northwestern
   - cmu
 status: complete
-updated: 2026-10-07
+updated: 2026-10-20
 related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/paper-topreward.md
+  - ../entities/paper-robovalue-benchmark.md
   - ../entities/paper-roboreward.md
   - ../entities/paper-freeform-preference-learning.md
   - ../entities/paper-prm-as-a-judge.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md
   - ../../sources/repos/awesome-progress-models.md
   - ../../sources/papers/topreward_arxiv_2602_19313.md
+  - ../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md
   - ../../sources/papers/roboreward_arxiv_2601_00675.md
   - ../../sources/papers/fpl_arxiv_2606_32027.md
 summary: "过程奖励/进度模型：在终局成功之外估计任务是否在推进、停滞或回退；用接口三维×四种构造范式×保真/鲁棒/效用评测透镜阅读该领域。"
@@ -79,7 +81,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 ### 评测透镜（分清主张）
 
-1. **进度保真** — 标定、时间一致性、相对序、目标接地、可否拒答。
+1. **进度保真** — 标定、时间一致性、相对序、目标接地、可否拒答；[RoboValue](../entities/paper-robovalue-benchmark.md) 将任务状态、时间进度、失败恢复与价值一致性放入统一仿真-真实评测。
 2. **鲁棒/泛化** — 未见任务、视角、跨 embodiment、非单调执行。
 3. **下游效用** — 在线 RL、离线重标、检索重排、规划——**效用成功 ≠ 保真**。
 
@@ -104,6 +106,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 
 - [Progress Reward Survey（论文实体）](../entities/paper-progress-reward-modeling-survey.md) — 综述与 Awesome 入口
 - [TOPReward](../entities/paper-topreward.md) — 视频 VLM token 似然零样本进度；OXE / ManiRewardBench
+- [RoboValue](../entities/paper-robovalue-benchmark.md) — 统一评测价值模型的任务接地、历史进度、失败恢复与价值一致性
 - [RoboReward](../entities/paper-roboreward.md) — 反事实负例、near-miss 与通用奖励模型
 - [Freeform Preference Learning](../entities/paper-freeform-preference-learning.md) — 以自然语言定义多维奖励轴
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 打进度曲线，用 OPD 评 VLA/WAM 过程（非训练奖励）
@@ -120,6 +123,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [综述论文归档](../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)
 - [Awesome-Progress-Models](../../sources/repos/awesome-progress-models.md)
 - [TOPReward 论文归档](../../sources/papers/topreward_arxiv_2602_19313.md)
+- [RoboValue 论文归档](../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md)
 - [PRM-as-a-Judge 论文归档](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md)
 
 ## 推荐继续阅读
@@ -127,4 +131,5 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [arXiv:2607.21655](https://arxiv.org/abs/2607.21655) — 综述全文
 - [Awesome-Progress-Models](https://github.com/sterzhang/Awesome-Progress-Models) — 可点击论文画廊
 - [TOPReward 项目页](https://topreward.github.io/webpage/) — 冻结 VLM token 似然进度实例
+- [RoboValue 项目页](https://robovalue-benchmark.github.io/) — 四维价值模型评测与 leaderboard
 - [PRM-as-a-Judge 项目页](https://prm-as-a-judge.github.io/) — 进度曲线作过程评测套件
