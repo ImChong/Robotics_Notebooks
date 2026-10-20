@@ -211,6 +211,8 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | sources/papers/fcts_failure_guided_curriculum_tree_search_arxiv_2610_22619.md + sources/papers/replanmem_vla_arxiv_2610_22556.md + RAX skills/data — FCTS、RAX 在线探索与 RePlanMem 视觉记忆资料归档
+
 ## [2026-10-19] lint | 全量 wiki lint：补齐 7 个 paper 实体「与其他工作对比」区块（LIBERO-PeRM 另将「基准设计」改为「方法与基准设计」），3 个 benchmark/evaluation 页回链评测基准选型闭环枢纽；信息型预警 10 → 0
 
 ## [2026-10-20] ingest | 补充 MAMMA 官方新闻稿：奖项候选、iPhone 多视角、精度与工作流耗时口径
