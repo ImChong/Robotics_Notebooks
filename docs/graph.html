@@ -3414,11 +3414,25 @@
       });
     })();
 
+    /* ── 低端设备判定（统一口径）──
+       触屏（hover:none + pointer:coarse）、≤4 逻辑核、≤4 GB 内存任一命中即按低端处理。
+       此前只看 hardwareConcurrency：iOS 不暴露或报 6 核、安卓中端报 8 核，手机全被当成高端。 */
+    const COARSE_POINTER = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const LOW_END_DEVICE = COARSE_POINTER
+      || (navigator.hardwareConcurrency || 8) <= 4
+      || (navigator.deviceMemory || 8) <= 4;
+
+    /* 当前可见节点 ID 集合（供 hover 检查筛选状态用；首屏按触屏默认 Top N 建子图时已要用到） */
+    const visibleNodeIds = new Set();
+
     /* ── 连接数 Top N 筛选（滑动条）── */
     const totalNodeCount = nodes.length;
     const degreeTopMin = Math.min(10, totalNodeCount);
-    let topDegreeLimit = totalNodeCount;
-    let topDegreeIds = null;
+    // 触屏设备默认只跑连接数 Top N 子图：全图 6k 节点在手机上 1 tick ≈ 760 ms（4× 节流实测），
+    // 子图成本按比例缩减；筛选面板可改回「全部」
+    const MOBILE_DEFAULT_TOP_N = 500;
+    let topDegreeLimit = COARSE_POINTER ? Math.min(MOBILE_DEFAULT_TOP_N, totalNodeCount) : totalNodeCount;
+    let topDegreeIds = computeTopDegreeIds(topDegreeLimit);
 
     function computeTopDegreeIds(limit) {
       if (limit >= totalNodeCount) return null;
@@ -3776,13 +3790,6 @@
        状态在此处声明（measureGraphViewport 早于绘制函数被调用，需避开 TDZ）。 */
     const edgeCanvas = document.getElementById('graph-edge-canvas');
     const edgeCtx = edgeCanvas ? edgeCanvas.getContext('2d') : null;
-    /* ── 低端设备判定（统一口径）──
-       触屏（hover:none + pointer:coarse）、≤4 逻辑核、≤4 GB 内存任一命中即按低端处理。
-       此前只看 hardwareConcurrency：iOS 不暴露或报 6 核、安卓中端报 8 核，手机全被当成高端。 */
-    const COARSE_POINTER = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    const LOW_END_DEVICE = COARSE_POINTER
-      || (navigator.hardwareConcurrency || 8) <= 4
-      || (navigator.deviceMemory || 8) <= 4;
     // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：低端按 1 倍像素比，其余封顶 2 倍。
     const EDGE_CANVAS_MAX_DPR = LOW_END_DEVICE ? 1 : 2;
     let edgeCanvasDpr = 1;
@@ -4755,6 +4762,11 @@
     // 是一个 3 s（手机 4× 节流下 ≈14 s）的长任务，遮罩停在 96% 且页面完全无响应。
     // 分片期间 loading 遮罩保持可见，由 onVisible 回调在开场时收掉。
     setLoadingProgress(96);
+    // 触屏默认 Top N：先按筛选建力模拟子图，首屏 warmup 只跑子集
+    if (hasActiveGraphFilter()) {
+      applyFilters();
+      updateFilterCount();
+    }
     runStabilizedLayout2D({
       async: true,
       onProgress: (done, total) => setLoadingProgress(96 + 3 * (done / total)),
@@ -5087,7 +5099,7 @@
       document.getElementById('graph-node-count').textContent =
         `${visible} / ${nodes.length} 节点 · ${edges.length} 边`;
     }
-    updateCount(nodes.length);
+    updateCount(hasActiveGraphFilter() ? visibleNodeIds.size : nodes.length);   // 触屏默认 Top N 已先筛过
 
     /* ── 点击背景：关闭面板 ── */
     document.addEventListener('click', ev => {
@@ -5401,9 +5413,6 @@
         setActiveTopic(btn.getAttribute('data-depth'));
       });
     }
-
-    /* 当前可见节点 ID 集合（供 hover 检查筛选状态用） */
-    const visibleNodeIds = new Set();
 
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;

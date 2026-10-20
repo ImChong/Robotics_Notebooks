@@ -792,6 +792,43 @@
       return linkRecords;
     }
 
+    // 筛选在 3D 改为真子集：此前只用 nodeVisibility / linkVisibility 隐藏，力模拟仍跑全部节点、
+    // 场景仍留 6 万对象，移动端默认 Top N 在 3D 侧收益为零。节点 / 连线记录对象身份不变，
+    // 库按身份 diff，留下的节点位置不丢。
+    function filteredGraphData() {
+      if (!hasActiveFilter() || timelineActive()) return { nodes: nodes3d, links: getLinkRecords() };
+      var visible = getVisibleNodeIds();
+      return {
+        nodes: nodes3d.filter(function (n) { return visible.has(n.id); }),
+        links: getLinkRecords().filter(function (l) {
+          return visible.has(l.source.id) && visible.has(l.target.id);
+        }),
+      };
+    }
+
+    // 滑块拖动时 syncFilters 每帧触发，graphData 重建按 300 ms 合并；成员未变则不重建
+    var subsetRebuildTimer = null;
+    function scheduleSubsetRebuild() {
+      if (subsetRebuildTimer) clearTimeout(subsetRebuildTimer);
+      subsetRebuildTimer = setTimeout(function () {
+        subsetRebuildTimer = null;
+        if (!graph || container.hidden || timelineActive()) return;
+        var next = filteredGraphData();
+        var cur = (graph.graphData() || {}).nodes || [];
+        if (cur.length === next.nodes.length) {
+          var curIds = new Set(cur.map(function (n) { return n.id; }));
+          var same = next.nodes.every(function (n) { return curIds.has(n.id); });
+          if (same) return;
+        }
+        graph.graphData(next);
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          reheatAfterGraphData();
+          syncLabels();
+        });
+      }, 300);
+    }
+
     function buildLinks() {
       return edges
         .map(function (e) {
@@ -1842,7 +1879,7 @@
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
         pauseRenderLoop();
-        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
+        graph.graphData(filteredGraphData());
         afterGraphDataApplied(function () {
           if (!graph) return;
           reheatAfterGraphData();
@@ -1889,6 +1926,7 @@
       syncFilters: function () {
         refreshAppearance();
         refreshVisibility();
+        scheduleSubsetRebuild();
       },
 
       syncLabels: function () {
@@ -1964,7 +2002,7 @@
           timelineSnapshot = null;
         }
         if (!graph) return;
-        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
+        graph.graphData(filteredGraphData());
         refreshAppearance();
         reheatAfterGraphData();
         markLabelsLayoutReady();
@@ -2001,7 +2039,7 @@
         nodes3d = sourceNodes.map(cloneNodeFor3D);
         rebuildNodeIndex();
         linkRecords = null;   // 节点对象换了，连线记录里被库解析成对象的 source/target 也要重建
-        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
+        graph.graphData(filteredGraphData());
         this.updateForces();
       },
 
