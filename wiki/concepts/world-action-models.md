@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-19
+updated: 2026-10-20
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/rhoda-ai.md
@@ -36,6 +36,7 @@ related:
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
   - ../entities/paper-4d-wam.md
   - ../entities/paper-sg-wam-semantic-guidance.md
+  - ../entities/paper-law.md
   - ../entities/paper-dit4dit-video-action-model.md
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-omega-0.md
@@ -624,3 +625,8 @@ flowchart TB
 ## 动作条件视觉模拟器：Uranus
 
 - [Uranus](../entities/paper-uranus.md)（arXiv:2609.24815）由外部策略提供 qpos，模型生成同步多视角视觉后果；它与 WAM 一样使用动作条件预测，但不生成动作，因此作为「世界模型/模拟器」边界案例，而非完整 WAM 策略。
+
+
+## 长时程进度闭环：LAW
+
+- [LAW](../entities/paper-law.md)（arXiv:2610.23334）以语义子任务进度连接 VLM 规划与 WAM 候选动作：状态专家异步判断阶段完成，价值专家按当前目标排序、融合候选。官方模型与训练数据已公开；全量训练/评测要求 4 节点 × 8 GPU。
