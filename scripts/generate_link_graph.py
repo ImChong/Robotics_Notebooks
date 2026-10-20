@@ -1946,7 +1946,9 @@ def main() -> None:
     SUMMARIES_PATH.write_text(
         json.dumps(summaries, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
-    print(f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}")
+    print(
+        f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}"
+    )
     layout = precompute_graph_layout(OUT_PATH)
     if layout is not None:
         graph["layout"] = layout
