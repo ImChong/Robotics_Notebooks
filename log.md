@@ -211,6 +211,17 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+- **2026-10-20** — **ingest**：新增 Embodiment-Aware Inference-Time Search 论文来源与实体页，整理冻结 ReMoGen 的候选搜索、G1 可行性评测及代码核验边界，并关联动作重定向概念页。
+
+## [2026-10-20] ingest | 收录 CrossFly 空中移动交互基准（arXiv:2610.18381）
+
+- 归档论文与项目页，覆盖异构环境中的长程飞行、IRR 交互就绪度指标及 CrossFly-Agent。
+- 项目页提供 ModelScope 数据集；代码标注 “Code soon”，当前未列公开仓库。
+
+## [2026-10-20] ingest | HFHPE — 归档 MIT 头部姿态估计代码与权重，记录姿态网络与检测器的延迟边界。
+
+## [2026-10-20] ingest | 深蓝具身智能「LeCun 2026 JEPA 11 项研究」：新建 6 个项目详情节点（Causal-JEPA、Value-Guided JEPA 规划、Music-JEPA、Rectified LpJEPA、SkyJEPA、TDV）；LeWM / LeVJEPA / When Does LeJEPA / LpWM / Patch Policy 复用既有节点。
+
 ## [2026-10-20] ingest | 收录 DeepSeek 推理与协议适配仓库
 
 - 归档 DeepInfer 与 deepseek-recipe 官方仓库及 README。
