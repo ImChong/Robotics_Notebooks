@@ -1076,7 +1076,8 @@
     function ensureSharedSphereGeometry(T) {
       if (!sharedSphereGeometry) {
         // 单位球 + mesh.scale：1336 节点共享一份几何体，避免逐节点 new SphereGeometry 阻塞主线程。
-        sharedSphereGeometry = new T.SphereGeometry(1, 12, 10);
+        // 取景后节点球在屏上只有 2–8 px：低端用 8×6（80 三角）代替 12×10（216 三角）看不出差别
+        sharedSphereGeometry = isLowEnd() ? new T.SphereGeometry(1, 8, 6) : new T.SphereGeometry(1, 12, 10);
       }
       return sharedSphereGeometry;
     }
@@ -1686,6 +1687,9 @@
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)
+        // 连线圆柱默认 6 棱 + 封顶 = 24 三角 / 条，投影后不足 1 px；3 棱柱 12 三角视觉一致，
+        // 全图 53,740 条少约 64 万三角形
+        .linkResolution(3)
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
