@@ -9,7 +9,7 @@ tags:
   - reinforcement-learning
   - tsinghua
 status: complete
-updated: 2026-10-11
+updated: 2026-10-20
 project_id: memcompiler-state-conditioned-memory
 arxiv: "2605.07594"
 project: https://air-embodied-brain.github.io/MemCompiler/
@@ -20,6 +20,7 @@ related:
   - ./paper-spatial-memory-agent.md
   - ./paper-zeva.md
   - ./paper-zetta.md
+  - ./paper-memt-1-0-memory-native-evolution.md
 sources:
   - ../../sources/papers/memcompiler_arxiv_2605_07594.md
   - ../../sources/sites/memcompiler.md
@@ -185,6 +186,8 @@ sequenceDiagram
 - [Spatial Memory Agent](./paper-spatial-memory-agent.md) — 经验证的空间过程记忆
 - [Zeva](./paper-zeva.md) — 自身交互因果记忆与部署期学习
 - [Zetta ζ](./paper-zetta.md) — 代码 critic/recovery 的具身 harness
+
+- [MemT-1.0：面向原生记忆演化的记忆基础模型](./paper-memt-1-0-memory-native-evolution.md) — 对照内部记忆状态与逐步编译外部经验。
 
 ## 参考来源
 
