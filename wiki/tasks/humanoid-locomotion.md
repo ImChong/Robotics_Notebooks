@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-19
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../entities/paper-humoslope-physics-guided-slope-locomotion.md
   - ../entities/paper-gaitspan-humanoid-locomotion-walking-running.md
+  - ../entities/paper-walk-like-this-stylized-locomotion.md
   - ../entities/paper-humble-human-motion-driven-behavior.md
   - ../entities/paper-roller-skating-amp-humanoid-passive-wheels.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
@@ -132,6 +133,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 ### 运动先验与生成式控制
 
+- [Walk Like This](../entities/paper-walk-like-this-stylized-locomotion.md) — 示例动作编码风格 + 自回归扩散生成 + PPO 跟踪；Unitree G1 / Jetson Thor 实时演示（CoRL 2026；未见可运行代码）
 - [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
 - [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 生成 + CLF-RL 跟踪 + AWR 微调生成器；G1 户外走跑跳箱/楼梯（arXiv:2609.31577；代码待发布）
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
@@ -160,6 +162,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
 
 ## 参考来源
+- [Walk Like This（CoRL 2026）](../../sources/papers/walk_like_this_corl2026.md) — 示例条件风格化 locomotion 与 G1 实机追踪。
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 - [SPRINT: Efficient Spectral Priors for Humanoid Athletic Sprints](../../sources/papers/sprint_arxiv_2605_28549.md) — 5 条参考 + 频谱先验 + 残差 RL，G1 真机冲刺 6 m/s。
 - [SSR: Scaling Surefooted and Symmetric Humanoid Traversal to the Open World](../../sources/papers/ssr_arxiv_2605_30770.md) — 第一视角深度单阶段 PPO + 想象落脚点，AgiBot X2 户外 1.3 km 长程。
