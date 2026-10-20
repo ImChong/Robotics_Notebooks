@@ -2214,6 +2214,7 @@
 - [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](wiki/entities/paper-last-ai-built-by-humans-rsi.md) — 这篇论文不是一个新模型，而是用五级自治框架和 HCI 衡量 AI 改进闭环离“真正递归自改进”还有多远。 `📅unknown` `[entity_page]`
 - [LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）](wiki/entities/paper-last-hd-latent-physical-reasoning.md) — LaST-HD** 是北京大学、香港中文大学、Simplexity Robotics 与 Aether Tech 等团队的 **人手→机器人操作 VLA** 论文（arXiv:2606.23685 `📅unknown` `[entity_page]`
 - [What Matters for Latent Actions](wiki/entities/paper-latent-actions-matter.md) — What Matters for Latent Actions in Robot Learning**（[arXiv:2608.19613](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
+- [LAW：以语义子任务进度统一语言、动作与世界建模](wiki/entities/paper-law.md) — LAW**（*Unifying Language, Action, and World Modeling for Agentic Physical Intelligence*，[arXiv:261 `📅unknown` `[entity_page]`
 - [LAWA：潜动作作未来意图](wiki/entities/paper-lawa.md) — LAWA**（*Latent Action as Intention Enables Efficient Future Imagination for World Action Models*， `📅unknown` `[entity_page]`
 - [LaWAM：LeRobot 原生潜空间 World Action Model](wiki/entities/paper-lawam.md) — LaWAM**（*Latent World Action Models for Efficient Dynamics-Aware Robot Policies*，[arXiv:2606.15768 `📅unknown` `[entity_page]`
 - [AI 预测 UV 校正因子与无标准品反应定量](wiki/entities/paper-lcms2yield.md) — lcms2yield** 将分子结构到全光谱 UV 校正因子（CF）的预测，与液相色谱-紫外（LC-UV）测量结合，用于没有目标物纯标准品时估计浓度和反应产率。 `📅unknown` `[entity_page]`
