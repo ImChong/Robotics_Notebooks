@@ -4,13 +4,16 @@
 - **仓库：** <https://github.com/Gamma-Robot/KODA>
 - **项目页：** <https://koda-humanoid.github.io/koda/>
 - **论文：** [arXiv:2610.21152](https://arxiv.org/abs/2610.21152)
-- **许可：** 仓库 README 表示许可信息将随代码发布；当前未声明
-- **源码状态：** 部分公开；M1/M2 进行中，M3–M5 计划中（核验日期：2026-10-17）
+- **样例与检查点：** <https://huggingface.co/datasets/TeleEmbodied/koda-assets>
+- **许可：** README 说明集成代码与 vendored upstream components 各自保留许可；未声明统一的项目级许可，MANO、机器人网格和模型检查点可能另有条款
+- **源码状态：** 部分公开；M1/M2 可运行，M4 部分数据公开，M3/M5 计划中（核验日期：2026-10-20）
 - **知识节点：** [KODA](../../wiki/entities/paper-koda-egocentric-vla.md)
 
-## 仓库内容与边界
+## 仓库内容与运行入口
 
-仓库目前公开项目说明、分阶段开放计划和克隆入口，但没有安装及运行步骤。README 将全身动作生成与机器人机载视角生成标为进行中；控制命令生成、完整 VLA 数据集及训练/模型细节仍列为计划。因此仓库可用于跟踪项目进度，现阶段不可视为已发布完整实现或数据。
+当前实现覆盖 RGB-D/MCAP 转换、手部估计与重定向、接触感知手部细化、采样式命令优化跟踪、手臂细化，以及同步的机器人机载视角合成。README 提供 `uv sync --extra cuda` 安装流程；`uv run koda run` 依次运行 `convert`、`track`、`view-change`，可输出处理后的观测、G1 与 Dex3 运动学和合成机载视频。`koda assets download/verify` 管理公开资产。
+
+Hugging Face 数据集目前含两个示例 MCAP 和微调的 ScaleBFM tracking checkpoint。M3 控制器动作标签、motion-token 编码与控制器对齐数据导出，M5 VLA 训练配置与模型细节不在当前发布中；这不是完整论文管线的可复现实现。
 
 ## 关联资料
 
