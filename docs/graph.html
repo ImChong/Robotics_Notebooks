@@ -3302,6 +3302,16 @@
       _info: { title: n.label || n.id, summary: n.summary || '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+    // 邻接表：边在页面生命周期内不变，建一次；hover / 侧栏邻居此前每次都全量扫 5 万多条边
+    const adjacency2D = new Map();
+    for (const e of edges) {
+      const a = typeof e.source === 'object' ? e.source.id : e.source;
+      const b = typeof e.target === 'object' ? e.target.id : e.target;
+      if (!adjacency2D.has(a)) adjacency2D.set(a, new Set());
+      if (!adjacency2D.has(b)) adjacency2D.set(b, new Set());
+      adjacency2D.get(a).add(b);
+      adjacency2D.get(b).add(a);
+    }
 
     /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（git 最近触达日 activity），
        把归一化时间 t∈[0,1]（0=最旧，1=最新）经指数曲线
@@ -4864,12 +4874,8 @@
     function buildNeighborSet(d) {
       neighborSet.clear();
       neighborSet.add(d.id);
-      for (const e of edges) {
-        const srcId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tgtId = typeof e.target === 'object' ? e.target.id : e.target;
-        if (srcId === d.id) neighborSet.add(tgtId);
-        if (tgtId === d.id) neighborSet.add(srcId);
-      }
+      const adj = adjacency2D.get(d.id);
+      if (adj) adj.forEach(id => neighborSet.add(id));
     }
 
     function hasActiveGraphFilter() {
@@ -4932,13 +4938,16 @@
 
         buildNeighborSet(d);
         const hasFilter = hasActiveGraphFilter();
-        node.select('.node-circle').attr('fill-opacity', n => {
+        // 用缓存的子元素直写属性（此前每个节点两次 querySelector + d3 属性访问器）
+        node.each(function (n) {
+          const parts = nodePartsOf(this);
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
-          if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
-          return (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
+          const fo = (hasFilter && !visibleNodeIds.has(n.id))
+            ? 0.06
+            : (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
+          parts.circle.setAttribute('fill-opacity', fo);
+          parts.glow.setAttribute('fill-opacity', n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
         });
-        node.select('.node-glow').attr('fill-opacity', n =>
-          n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
         setEdgePaintMode('hover', d.id, nodeColor(d));
         showTooltip(ev, d);
       })
@@ -4965,8 +4974,7 @@
           return;
         }
 
-        node.select('.node-glow').attr('fill-opacity', 0);
-        applyFilters();
+        restoreFilterAppearance();
         // 移动端固定卡片后，mouseleave 不隐藏 tooltip
         if (!isMobile || !pinnedNode) {
           hideTooltip();
@@ -5343,6 +5351,35 @@
           || d.id.toLowerCase().includes(searchQuery);
     }
 
+    function nodePartsOf(el) {
+      let parts = el.__nodeParts;
+      if (!parts) {
+        parts = el.__nodeParts = {
+          glow: el.querySelector('.node-glow'),
+          circle: el.querySelector('.node-circle'),
+          label: el.querySelector('.node-label'),
+        };
+      }
+      return parts;
+    }
+
+    /** 按 applyFilters 缓存的筛选结果恢复节点外观（hover 离开 / 取消侧栏聚焦）。
+     *  此前这两处都整跑一遍 applyFilters：6 个谓词 × 6k 节点、标签与社区标签同步、
+     *  筛选态下还重建力模拟子图（实测 56–87 ms），扫过密集区每个节点都付一次。 */
+    function restoreFilterAppearance() {
+      const hasFilter = hasActiveGraphFilter();
+      node.each(function (d) {
+        const parts = nodePartsOf(this);
+        const ok = d.__filterOk !== false;
+        const hub = !!d.__filterHub;
+        const dim = recencyDimOf(d);
+        this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
+        parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
+        parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
+      });
+      setEdgePaintMode('filter');
+    }
+
     function applyFilters() {
       if (timelineAnimating) return;
       const hasFilter = hasActiveGraphFilter();
@@ -5358,20 +5395,16 @@
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         const hub = isCurrentTopicHub(d);
+        // 缓存筛选结果：hover 离开 / 取消侧栏聚焦只需按它恢复外观，不必重跑筛选与子图重建
+        d.__filterOk = ok;
+        d.__filterHub = hub;
         this.classList.toggle('node-depth-hub', hub);
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
         this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         this.style.pointerEvents = hasFilter && !ok ? 'none' : '';
 
-        let parts = this.__nodeParts;
-        if (!parts) {
-          parts = this.__nodeParts = {
-            glow: this.querySelector('.node-glow'),
-            circle: this.querySelector('.node-circle'),
-            label: this.querySelector('.node-label'),
-          };
-        }
+        const parts = nodePartsOf(this);
         const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
         const dim = recencyDimOf(d);
         parts.glow.setAttribute('r', hubR + 8);
@@ -6211,26 +6244,13 @@
       const fallbackTimer = setTimeout(finish, SIDEBAR_TRANSITION_MS + 40);
     }
 
-    function edgeNodeIds(e) {
-      return {
-        sourceId: typeof e.source === 'object' ? e.source.id : e.source,
-        targetId: typeof e.target === 'object' ? e.target.id : e.target,
-      };
-    }
-
     /** 侧栏/3D 选中高亮：当前节点的一跳与二跳邻居集合 */
     function buildSidebarNeighborSets(d) {
-      const direct = new Set();
+      const direct = new Set(adjacency2D.get(d.id) || []);
       const secondary = new Set();
-      edges.forEach(e => {
-        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-        if (sId === d.id) direct.add(tId);
-        if (tId === d.id) direct.add(sId);
-      });
-      edges.forEach(e => {
-        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-        if (direct.has(sId) && tId !== d.id) secondary.add(tId);
-        if (direct.has(tId) && sId !== d.id) secondary.add(sId);
+      direct.forEach(id => {
+        const adj = adjacency2D.get(id);
+        if (adj) adj.forEach(other => { if (other !== d.id) secondary.add(other); });
       });
       return { direct, secondary };
     }
@@ -6269,9 +6289,7 @@
         updateTimelineLinks();   // 切回 timeline 上色模式
         return;
       }
-      node.select('.node-glow').attr('fill-opacity', 0);
-      node.style('opacity', null);
-      applyFilters();            // 内部切回 filter 上色模式
+      restoreFilterAppearance();   // 内部切回 filter 上色模式；不重跑筛选、不重建子图
     }
 
     /* related / source_links / paper_notebook_links 不随目录下发：选中节点时按需取该页正文 JSON
