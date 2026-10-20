@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-10-19
+updated: 2026-10-20
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../entities/paper-viola-human-data-control.md
@@ -700,6 +700,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [FM-VLA（力觉长程记忆）](../entities/paper-fm-vla.md) — Force-VAE 压缩 wrench 历史注入 π₀.₅；接触计数任务平均 83.3%、+3.3 ms（arXiv:2607.18231）
 - [KEMO（事件关键帧视觉记忆）](../entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 运动学峰 + DINOv2 去重选帧插拔 π₀.₅（arXiv:2606.23589）
 - [EventVLA（视觉证据记忆）](../entities/paper-eventvla-visual-evidence-memory.md) — 前瞻 KEM + 原始关键帧缓冲；RoboTwin-MeM（arXiv:2606.20092）
+- [RePlanMem-VLA](../entities/paper-replanmem-vla.md) — 利用相邻重规划在重叠动作上的分歧，触发有界视觉关键帧记忆（arXiv:2610.22556）。
 - [Chronos（全历史 SSM + 二阶动作桥）](../entities/paper-chronos.md) — 紧凑非马尔可夫策略；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [SimpleMemVLA（原生视频上下文记忆）](../entities/paper-simplememvla.md) — Qwen3.5 时间戳视频 + sub-task 条件 DiT；四套记忆基准 SOTA、LIBERO 97.5（arXiv:2609.05533，[已开源](https://github.com/OpenBMB/SimpleMemVLA)）
 - [BridgeVLA++（3D heatmap + 时空记忆）](../entities/paper-bridgevla-plusplus.md) — 𝒯/𝒮 记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）

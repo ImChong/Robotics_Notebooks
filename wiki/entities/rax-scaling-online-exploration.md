@@ -14,7 +14,8 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-10-18
+updated: 2026-10-20
+arxiv: "2610.22496"
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
 related:
@@ -25,6 +26,8 @@ sources:
   - ../../sources/papers/rax_scaling_online_exploration.md
   - ../../sources/sites/rax-project.md
   - ../../sources/repos/rax.md
+  - ../../sources/repos/skills-lib.md
+  - ../../sources/datasets/rax-robot-session-logs.md
 summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器人 API 在线探索，并把成功经验编译成可复用的感知—规划—控制程序；官方仓库提供仿真、Franka 与 Rainbow RB-Y1 实现分支。"
 ---
 
@@ -45,11 +48,11 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 
 | 字段 | 内容 |
 | --- | --- |
-| **论文** | [Scaling Online Exploration for Robot Agents](https://robot-agent-exploration.com/rax.pdf)；项目页未给 arXiv 编号。 |
+| **论文** | [Scaling Online Exploration for Robot Agents](https://arxiv.org/abs/2610.22496)；项目站同时提供 [PDF](https://robot-agent-exploration.com/rax.pdf)。 |
 | **机构** | 哈佛大学、NVIDIA、加州大学伯克利分校、麻省理工、斯坦福大学。 |
 | **代码 / 许可** | [robot-agent-exploration/rax](https://github.com/robot-agent-exploration/rax)；仓库 README 称 open-source，根目录许可证待核实。 |
 | **实现形态** | 主分支为索引；RoboDojo / BEHAVIOR-1K 仿真、Franka FR3 和 Rainbow RB-Y1 位于独立分支。 |
-| **经验载体** | agent 工作区中的任务说明、记忆、技能及编译后的控制程序；模型保持冻结。 |
+| **经验载体** | agent 工作区中的任务说明、记忆、技能及编译后的控制程序；模型保持冻结。真机技能按本体保存在 [skills-lib](../../sources/repos/skills-lib.md)，并可参考 [公开 session logs](../../sources/datasets/rax-robot-session-logs.md)。 |
 
 ## 为什么重要
 
@@ -96,6 +99,7 @@ flowchart TB
 - **许可证未确认：** 项目页和仓库 README 称其为 open-source framework，但本次检查未在根目录定位许可证文件；商业或再分发使用前应核实具体许可。
 - **泛化结论需对应任务集：** 扩大探索后未见仿真场景成绩提升，不等于任何新本体、新任务或真实环境都会自动泛化。
 - **技能复用需保留证据：** 使用已有技能时应检查前提与验证记录；相同技能名称不保证其对新环境、物体或硬件配置仍适用。
+- **日志再利用需审查内容：** 数据集含操作者指令、agent transcript、机器人状态和相机片段；数据卡标注 CC BY 4.0，公开署名并不免除对个人信息及第三方内容的检查。
 
 ## 源码运行时序图
 
@@ -150,6 +154,8 @@ RAX、ASENA 与 EmbodiedEvo 都将经验保留在权重之外，但机器人接�
 - [RAX 官方论文摘录](../../sources/papers/rax_scaling_online_exploration.md)
 - [RAX 官方项目页核查](../../sources/sites/rax-project.md)
 - [RAX 官方代码仓核查](../../sources/repos/rax.md)
+- [RAX Skill Library](../../sources/repos/skills-lib.md)
+- [RAX robot session logs 数据集](../../sources/datasets/rax-robot-session-logs.md)
 
 ## 关联页面
 

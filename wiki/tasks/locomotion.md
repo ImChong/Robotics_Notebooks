@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-20
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -350,6 +350,7 @@ flowchart TD
 - [Vision Locomotion（CoRL 2022 ego-depth 四足）](../entities/paper-vision-locomotion-egocentric.md) — arXiv:2211.07638（Best Systems；A1 单 D435，scandots→深度 DAgger，无高程图）
 - [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) — arXiv:2309.14341（ICRA 2024；scandots + 航向双重蒸馏 → 单目深度，Go1）
 - [SWAP（对称等变世界模型四足跑酷）](../entities/paper-swap-parkour.md) — arXiv:2606.19928（SE-RSSM + 等变 Actor-Critic 端到端；Apollo 2.13 m 远跳 / 1.63 m 攀台）
+- [FCTS（失败引导地形课程树搜索）](../entities/paper-fcts-failure-guided-curriculum.md) — arXiv:2610.22619；用局部穿越失败生成后续地形并以 MCTS 搜索课程分支，项目页未列公开代码。
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Learning to Adapt（Nature MI 2025 四足 bio-inspired 多步态）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) — πG/BGS/πL 分层 DRL，盲零样本复杂地形（RaiSim / ihcr）
 - [FLEXOR（Science Advances 2026 动态脊-腿协同）](../entities/paper-flexor-dynamic-spine-leg-synergy.md) — 北理工微小型四足；双关节耦合脊柱 + 相位协同；相对同规格单关节脊柱速度 +31.6%、CoT −32.2%（确认未开源）

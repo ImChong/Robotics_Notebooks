@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, robot-learning, nvidia, ucsd]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-20
 project_id: asena-self-evolving-agents
 project: https://research.nvidia.com/labs/gear/asena/
 arxiv: "2609.39207"
