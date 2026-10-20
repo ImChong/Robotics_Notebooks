@@ -222,7 +222,7 @@
 
 ---
 
-## 7. 实施进度（2026-10-20，同一 PR 内逐项提交，已完成 28 项、放弃 1 项）
+## 7. 实施进度（2026-10-20，同一 PR 内逐项提交，已完成 31 项、放弃 1 项）
 
 每项一个 commit，均在本机 headless Chromium（4 核 → 低端档）复测；绝对毫秒偏悲观，看相对变化。
 
@@ -257,5 +257,8 @@
 | F50 组级 opacity | 已做 | 侧栏淡化改写 circle fill/stroke-opacity；平移 RasterTask 1,061/1,103 → 842/816 ms |
 | F52 3D 节点材质共享 | 已做 | 材质 6,216 → 17（淡化时 50）；openSidebar 同步 88 → 67 ms |
 | B24 / B25 触屏视口 | 已修 | 只改高度不再 refit（k 0.1913 保持，改前回 0.0804）；`interactive-widget=resizes-visual`、`viewport-fit=cover` + safe-area |
+| P1 触屏默认 Top 500 + 3D 真子集 | 已做 | 触屏仿真首屏就绪 2,651 → 1,782 ms、落稳 10,342 → 1,550 ms；力模拟 / 3D graphData 6,216 → 500 节点，清除筛选回全图 |
+| P1 导出期预计算布局 | 已做 | `graph-force-params.js` 共用力参数；Node 预计算 130 tick 7.5 s，+27 KB gz；桌面低端档首屏 2,911 → 1,769 ms、落稳 8,772 → 1,694 ms |
+| P1 数据瘦身（摘要拆出、删 recency） | 已做 | link-graph.json gzip 1,079 → 503 KB；摘要 536 KB gz 浮窗 / 侧栏首次需要时再取（非低端空闲预取） |
 
-未做（待后续）：P1 的移动端默认子图（含 3D 真子集）、导出期预计算布局、数据瘦身；P2 的 G5 / G6。
+未做（待后续）：`detail_id` 可由 `id` 推导（gzip −3.9%，需前端 path→id 等价实现）；P2 的 G5（力模拟进 Worker）/ G6（3D 合批）。
