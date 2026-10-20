@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-20",
   "comparison_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
   "lenses": {
     "wbc": "强全身控制"
@@ -322,6 +322,101 @@
           "id": "entity-paper-fada-humanoid",
           "url": "https://arxiv.org/abs/2606.28476",
           "date_note": "arXiv:2606.28476 v1 为 2026-06-26（UTC）；CoRL 2026 见实验室发表页，发表页未列 arXiv 链接。"
+        }
+      ]
+    },
+    {
+      "key": "teleai",
+      "name": "中国电信人工智能研究院（TeleAI）",
+      "founded_year": 2024,
+      "founded_source": "https://cn.chinadaily.com.cn/a/202407/08/WS668b91f6a3107cd55d26a5e3.html",
+      "founded_note": "官网未写成立年；中国日报网报道 TeleAI 于 2024-07-05 在 WAIC 2024 正式揭牌，李学龙任院长。工商注册约 2024-05 仅见二手资料（百科/招聘页），未核查，按揭牌年计。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "中国电信 CTO 李学龙牵头的 AI 研究院，具身智能是其「智能光电」方向之一。本库收录其人形 G1 全身控制工作：从上下半身对抗（ALMI）、动作跟踪（KungfuBot 系列）、地形自适应（AHC）到文本驱动（TextOp）、仿真遥操作数据（OASIS）；多数项目开源。仓库另有 KineBench、GR-BC 等操作向 TeleAI 论文，不属全身控制镜头，未入节点。",
+      "official": "https://www.teleai.com.cn/",
+      "nodes": [
+        {
+          "date": "2025-04",
+          "title": "ALMI",
+          "track": "上下半身对抗 / 全身控制",
+          "desc": "下半身 locomotion 与上半身 mimic 两策略互相对抗迭代训练，逼近纳什均衡，并发布 ALMI-X 数据集；NeurIPS 2025。",
+          "id": "entity-paper-amp-survey-07-adversarial_locomotion_and_motion_im",
+          "url": "https://arxiv.org/abs/2504.14305",
+          "date_note": "按 arXiv:2504.14305 编号月份（v1 提交月）；会议收录见详情页"
+        },
+        {
+          "date": "2025-06",
+          "title": "MoRE",
+          "track": "步态切换 / 残差专家",
+          "desc": "深度相机 base locomotion + latent residual MoE 与多判别器 AMP，在复杂地形按 gait command 切换 Walk-Run / High-Knees / Squat；G1 真机部署。",
+          "id": "entity-paper-amp-survey-08-more",
+          "url": "https://arxiv.org/abs/2506.08840",
+          "date_note": "按 arXiv:2506.08840 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2025-06",
+          "title": "KungfuBot / PBHC",
+          "track": "动作跟踪 / 高动态技能",
+          "desc": "多阶段 SMPL 动作处理 + 双层优化自适应跟踪容差课程，G1 真机复现武术与舞蹈；官方实现 PBHC 开源；NeurIPS 2025。",
+          "id": "entity-paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont",
+          "url": "https://arxiv.org/abs/2506.12851",
+          "date_note": "按 arXiv:2506.12851 编号月份（v1 提交月）；PBHC 仓库提交时间另计，不作节点日期"
+        },
+        {
+          "date": "2025-09",
+          "title": "KungfuBot2 / VMS",
+          "track": "通用动作跟踪",
+          "desc": "混合局部–全局跟踪 + 正交混合专家 OMoE + 段级奖励，单策略掌握多样动态技能并保持分钟级长序列稳定；ICRA 2026。",
+          "id": "entity-paper-notebook-kungfubot-2",
+          "url": "https://arxiv.org/abs/2509.16638",
+          "date_note": "按 arXiv:2509.16638 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2025-11",
+          "title": "AHC",
+          "track": "地形自适应 / MoE 蒸馏",
+          "desc": "起身/行走专精策略 → MoE 蒸馏统一策略 → PCGrad 多任务微调，得到地形自适应 G1 控制器；AAAI 2026 Oral。",
+          "id": "entity-paper-adaptive-humanoid-control",
+          "url": "https://arxiv.org/abs/2511.06371",
+          "date_note": "按 arXiv:2511.06371 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2026-02",
+          "title": "HUSKY",
+          "track": "物理感知 / 人形滑板",
+          "desc": "倾角–转向耦合建模 + 推地相 AMP + 轨迹引导相位切换，G1 真机室内外稳定滑行；RSS 2026。",
+          "id": "entity-paper-amp-survey-14-husky",
+          "url": "https://arxiv.org/abs/2602.03205",
+          "date_note": "按 arXiv:2602.03205 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2026-02",
+          "title": "PAiD 足球",
+          "track": "感知 / 足球技能",
+          "desc": "运动跟踪 → 轻量感知融合 → 物理对齐 Sim2Real 三阶段，G1 仿真静球 SR 91.3%、滚动拦截 71.9%（自报）；开源 TeleHuman/HumanoidSoccer。",
+          "id": "entity-paper-notebook-learning-soccer-skills-for-humanoid-robots",
+          "url": "https://arxiv.org/abs/2602.05310",
+          "date_note": "按 arXiv:2602.05310 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2026-02",
+          "title": "TextOp",
+          "track": "文本驱动 / 流式全身控制",
+          "desc": "高层自回归运动扩散 + 低层 Isaac Lab RL 跟踪，流式文本驱动 G1 全身运动，真机交互延迟约 0.73 s（自报）；GitHub 开源。",
+          "id": "entity-paper-loco-manip-161-022-textop",
+          "url": "https://arxiv.org/abs/2602.07439",
+          "date_note": "按 arXiv:2602.07439 编号月份（v1 提交月）"
+        },
+        {
+          "date": "2026-06",
+          "title": "OASIS",
+          "track": "仿真遥操作 / 数据扩增",
+          "desc": "从真实图建仿真场景，VR 仿真 teleop 录状态并离线域随机化扩增，训练层级策略；G1 零样本部署（自报）。",
+          "id": "entity-paper-loco-manip-04-oasis",
+          "url": "https://arxiv.org/abs/2606.08548",
+          "date_note": "按 arXiv:2606.08548 编号月份（v1 提交月）"
         }
       ]
     }
