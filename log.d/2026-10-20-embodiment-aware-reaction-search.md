@@ -1,0 +1,1 @@
+- **2026-10-20** — **ingest**：新增 Embodiment-Aware Inference-Time Search 论文来源与实体页，整理冻结 ReMoGen 的候选搜索、G1 可行性评测及代码核验边界，并关联动作重定向概念页。
