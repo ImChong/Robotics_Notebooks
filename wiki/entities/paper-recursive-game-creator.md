@@ -134,6 +134,7 @@ RGC 把代码生成后的游戏体验纳入闭环；它不是通用 coding agent
 - [Three.js Game Skills](./threejs-game-skills.md) — coding agent 构建、测试和交付浏览器游戏。
 - [Aether RSIAgent](./aether-rsiagent.md) — 另一种将执行反馈用于 coding agent 改进的研究。
 - [开源游戏源码索引](./open-source-games.md) — 对照开源游戏源码与代理开发 harness 的边界。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照边界：RGC 的 GameCraft-Bench / GameASG-Bench 评测游戏软件，不属该闭环四层中任何一层，分数不能外推为具身能力。
 
 ## 参考来源
 

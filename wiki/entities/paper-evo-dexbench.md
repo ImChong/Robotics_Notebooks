@@ -120,6 +120,7 @@ sequenceDiagram
 - [灵巧操作任务](../tasks/manipulation.md)
 - [Bench2Dex](./paper-bench2dex.md)
 - [HandEdit](./paper-handedit.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Evo-DexBench 属其 ③ 策略任务成功率层（灵巧相关任务迁移）；SR 与 StageScore 并报，避免只看终局成功率。
 
 ## 参考来源
 
