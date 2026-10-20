@@ -2141,6 +2141,7 @@
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
+  <script src="graph-force-params.js"></script>
   <script src="graph-3d.js"></script>
   <script src="depth-filters.js"></script>
   <script>
@@ -4125,11 +4126,9 @@
     // 1) 叶序铺开（避免中心 80px 小团炸成多轮震荡）；
     // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
     // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，之后不再二次加热。
-    const FORCE_CENTER_STRENGTH = 0.05;
-    const FORCE_VELOCITY_DECAY = 0.54;
-    const FORCE_ALPHA_DECAY = 0.04;
-    const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
-    const FORCE_COLLIDE_STRENGTH = 0.45;
+    // 力参数与装配在 graph-force-params.js：与导出期预计算布局（scripts/precompute_graph_layout.cjs）
+    // 共用一份，避免两边漂移
+    const FORCE_CENTER_STRENGTH = window.RNGraphForce.PARAMS.CENTER_STRENGTH;
     // 冷却阈值：d3 默认 0.001 时全图 170 tick 里最后 ~57 tick 位移已 <10 px（亚像素），
     // 白付三分之一的力计算；抬到 0.005（低端 0.01）只砍不可见的尾段，展开/回弹不变。
     const FORCE_ALPHA_MIN = LOW_END_DEVICE ? 0.01 : 0.005;
@@ -4143,26 +4142,12 @@
     // 固定 tick 数分片仍会攒出长任务。每片至少跑 1 tick 保证推进，故单片可能超预算。
     // 基线见 docs/checklists/graph-perf-baseline-g0.md。
     const FORCE_WARMUP_SLICE_MS = 16;
+    // 预计算布局已在平衡态：首屏只以低 alpha 轻量落稳（吸收视口中心 / 触屏子图与全图的差异），不跑 warmup
+    const FORCE_PRECOMPUTED_ALPHA = 0.03;
     let warmupToken = 0;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
-      const list = targetNodes || nodes;
-      const cx = W / 2;
-      const cy = H / 2;
-      // 略紧于完全舒展叶序，给首帧可见扩张动能，但仍远宽于旧 80px 小团。
-      const initialRadius = 10;
-      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-      for (let i = 0; i < list.length; i++) {
-        const n = list[i];
-        n.fx = null;
-        n.fy = null;
-        n.vx = 0;
-        n.vy = 0;
-        const r = initialRadius * Math.sqrt(0.5 + i);
-        const a = i * goldenAngle;
-        n.x = cx + r * Math.cos(a);
-        n.y = cy + r * Math.sin(a);
-      }
+      window.RNGraphForce.seedPhyllotaxis(targetNodes || nodes, W / 2, H / 2);
     }
 
     /** 「刷新布局」：真随机重铺（与 3D resetNodePositionsInPlace 同尺度）。
@@ -4187,13 +4172,6 @@
       }
     }
 
-    function linkStrengthFor(link) {
-      const s = typeof link.source === 'object' ? link.source.id : link.source;
-      const t = typeof link.target === 'object' ? link.target.id : link.target;
-      const deg = Math.min(degreeMap[s] || 1, degreeMap[t] || 1);
-      return FORCE_LINK_STRENGTH / Math.max(1, Math.sqrt(deg));
-    }
-
     function applyCenterGravity2D() {
       // 类似 Obsidian「Center force」：弱向心位置力抑制整图漂移/晃动；
       // forceCenter 只平移质心，本身不提供阻尼。
@@ -4203,9 +4181,23 @@
 
     // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
     seedNodePositionsPhyllotaxis(nodes);
+    // 导出期预计算布局（link-graph.json 的 layout：按 nodes 顺序、相对画布中心的整数坐标）：
+    // 首屏直接从平衡态开始，手机上不再跑几十秒的 warmup / 收敛；缺失或长度不符则回退叶序 + warmup
+    const precomputedLayout = (Array.isArray(graphData.layout) && graphData.layout.length === nodes.length)
+      ? graphData.layout : null;
+    if (precomputedLayout) {
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x = W / 2 + precomputedLayout[i][0];
+        nodes[i].y = H / 2 + precomputedLayout[i][1];
+      }
+    }
 
     /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
-    const collideForce = d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH);
+    const simulation = window.RNGraphForce.buildSimulation(d3, nodes, edges, {
+      degreeMap, radiusOf: scaledRadius, cx: W / 2, cy: H / 2,
+      theta: FORCE_THETA, alphaMin: FORCE_ALPHA_MIN, chargeStrength,
+    });
+    const collideForce = simulation.force('collision');
     let collideTickNo = 0;
     const gatedCollide = (alpha) => {
       collideTickNo += 1;
@@ -4214,20 +4206,7 @@
       collideForce(alpha);
     };
     gatedCollide.initialize = (...args) => collideForce.initialize(...args);
-
-    const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
-      // 不设 distanceMax：硬截断会让越过阈值的节点瞬间失/得全部斥力，
-      // 与连线/向心力形成来回拉扯的极限环（3D 视图同样不截断）。
-      .force('charge', d3.forceManyBody().strength(chargeStrength).theta(FORCE_THETA))
-      .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('collision', gatedCollide)
-      .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
-      .velocityDecay(FORCE_VELOCITY_DECAY)
-      .alphaDecay(FORCE_ALPHA_DECAY)
-      .alphaMin(FORCE_ALPHA_MIN)
-      .stop();
+    simulation.force('collision', gatedCollide);
 
     function pauseSimulation2D() {
       // 作废仍在分片中的 warmup：否则切到 3D 后剩余分片跑完会在后台 restart 隐藏的 2D 全图模拟
@@ -4700,9 +4679,12 @@
         simulation.restart();
       };
 
-      if (FORCE_WARMUP_TICKS <= 0) {
-        simulation.alpha(1);
-        startVisiblePhase();
+      if (FORCE_WARMUP_TICKS <= 0 || opts.precomputed) {
+        simulation.alpha(opts.precomputed ? FORCE_PRECOMPUTED_ALPHA : 1);
+        // 首屏是在顶层脚本里同步调到这里的：开场（fit 等）要等整段脚本的声明跑完，
+        // 与分片 warmup 一样放到下一帧
+        if (opts.async) requestAnimationFrame(() => { if (myToken === warmupToken) startVisiblePhase(); });
+        else startVisiblePhase();
         return;
       }
 
@@ -4769,6 +4751,7 @@
     }
     runStabilizedLayout2D({
       async: true,
+      precomputed: !!precomputedLayout,
       onProgress: (done, total) => setLoadingProgress(96 + 3 * (done / total)),
       onVisible: () => whenGraphViewportReady(() => finishGraphRenderLoad()),
     });
