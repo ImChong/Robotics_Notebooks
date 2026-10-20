@@ -5200,6 +5200,7 @@
 - [S1：机器人 In-Context Learning（Skild）](wiki/entities/skild-s1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Skillry](wiki/entities/skillry.md) — Skillry**（skillry.dev）是 **交付物导向的 Agent Skill 市场**： curated 工作流帮助 Claude Cod `📅unknown` `[entity_page]`
 - [skrl](wiki/entities/skrl.md) — skrl](https://github.com/Toni-SM/skrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-m `📅unknown` `[entity_page]`
+- [SKY-001（Skyfall AI 工程世界模型）](wiki/entities/sky-001-engineering-world-model.md) — SKY-001** 是 Skyfall AI 面向工程设计发布的空间世界模型研究预览。它先把设计目标分解为层级结构，再为各个部分生成构造状态序列；官方演示覆盖从图像到 CAD 部件装配，以及从建筑 `📅unknown` `[entity_page]`
 - [SLAM Toolbox](wiki/entities/slam-toolbox.md) — SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。 `📅unknown` `[entity_page]`
 - [senlanke/mimic：G1 上的 SMP / CMoE / AME 移植](wiki/entities/smp-g1-mjlab.md) — senlanke/mimic](https://github.com/senlanke/mimic)**（SMP 同系 [SUZ-tsinghua/smp](https://github.com `📅unknown` `[entity_page]`
 - [SMPLOlympics（仿真人形体育环境套件）](wiki/entities/smplolympics.md) — SMPLOlympics**（Luo et al., arXiv:2407.00187）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`

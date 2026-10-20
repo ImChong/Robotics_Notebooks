@@ -219,6 +219,17 @@ op: ingest
 - **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
 - **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
 
+## [2026-10-20] ingest | SKY-001 工程世界模型（官方博客与产品页）
+
+- 归档 Skyfall AI 官方博客与产品页，并新增 SKY-001 实体页。
+- 记录发布方披露的 CAD/BIM 流程和基准结果；标明缺少公开复现代码及官方页面未列源码/权重入口。
+
+## [2026-10-20] ingest | 收录 Reason Network 编码代理协作通信引擎
+
+- 新增 `sources/repos/reason-network.md`，记录官方仓库与产品页、点对点通信和 MCP 协作能力。
+- 核实开源边界：通信引擎采用 MIT OR Apache-2.0；Reason CLI 免费但不开源。
+- 作为开发代理协作工具归档，暂不新建机器人知识实体页。
+
 ## [2026-10-20] ingest | 收录 AutonomousVehicleControlBeginnersGuide 自动驾驶控制学习仓库
 
 - 新增 `sources/repos/autonomous-vehicle-control-beginners-guide.md`，记录官方仓库、MIT 许可、Python 环境和算法示例范围。
