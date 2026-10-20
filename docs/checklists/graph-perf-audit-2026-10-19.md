@@ -4,7 +4,7 @@
 目标：`docs/graph.html` + `docs/graph-3d.js` 在**低配电脑浏览器（集显、2–4 核）与手机**上流畅渲染 2D / 3D 图谱。
 本页是**审查结论与分批方案**，不含实现；G0–G4 已完成的项（见 [G0 基线](graph-perf-baseline-g0.md)、[G2/G3](graph-perf-g2-g3.md)、[G4](graph-perf-g4.md)）不重复，G2 实测否定的「细线 `linkWidth→0`」不再提。
 
-状态：**v1** —— 五个审查视角（2D 力模拟、2D 渲染、3D 场景、3D 库 API、加载）与实测已完成；交互事件、移动端 CSS、Bug 专项三个视角及逐条对抗验证仍在进行，结论若有变化在本页追加「v2 修订」小节。
+状态：**v2**（2026-10-20，见 §6）—— v1 五个审查视角（2D 力模拟、2D 渲染、3D 场景、3D 库 API、加载）与实测已完成；v2 补齐交互事件、移动端 CSS、Bug 专项三个视角，并对 F01–F10 做了 3 路对抗验证（§6）。
 
 证据等级：
 - **[实测]** 本次在 headless Chromium 141（4 核 Xeon 2.8 GHz，软件光栅 SwiftShader）测得；CPU / 主线程数字可信，GPU 帧率不可外推。
@@ -162,3 +162,60 @@
 
 - 交互事件、移动端 CSS（`backdrop-filter` 等 10 处）、Bug 专项三个审查视角与逐条对抗验证仍在进行；本页 [agent 实测] 条目是单 agent 结论，§2 B1–B10 与 §3 标 [代码确认] 的项已逐条核对源码。
 - 2D 平移 / 缩放的栅格化数字来自软件光栅，真机 GPU 下的绝对值会小很多，但「每手势全量重绘 + DPR 2×」的结构不变。
+
+---
+
+## 6. v2 修订（2026-10-20）：补跑视角与对抗验证
+
+补跑了交互事件、移动端 CSS、Bug 专项三个视角；全部发现去重后共 **64 条**（22 Bug / 42 perf）。对抗验证（每条 3 个独立反驳者：代码追踪 / 收益 / 回归风险）只完成了 F01–F10 这 10 条，**全部成立**，修正意见已并入下文；其余 54 条未经第二方验证，其中标 [代码确认] 的为本人逐行核对，其余为单 agent 结论。
+
+### 6.1 对 v1 的修正（来自对抗验证）
+
+| v1 项 | 修正 |
+|---|---|
+| B2（`end` 必 fit） | 一次性标志还须盖住 4589 的 2.2 s 兜底定时器；3D→2D 路径（2934-2936）直接同步 `fitToScreen()` 且**不重置** `userZoomed2D`，需显式处理。 |
+| B6（`cooldownTime` 15 s） | **单独设 `cooldownTime(Infinity)` 不改善流畅度**：只是把 15 s 未收敛冻结换成 ~270 帧「每帧 1 tick、2–4 fps」（慢设备上 60–110 s 抖动）。必须配合按设备缩放的 `d3AlphaDecay`（plan.md 允许「更快冷却作为测量后的补充调参」）或 G5-3D 解耦 tick 与帧。 |
+| B1（NaN 不透明度） | 补充：因 `NaN !== NaN`，库每次刷新连线都走 `material.dispose()` + 重新赋材质，现状额外付费；改 rgba 方案后 `getNodeColor` 的高亮色（hex、alpha 1）需显式带 alpha。 |
+| P0「点击不 reheat」 | 懒 reheat 本身是 S 且无风险；agent 顺带提的「拖拽时只模拟 1 跳子图」是独立的较大改动，不并入。 |
+| B3 | `svg.interrupt('tlfit')` 实际在 5578 / 5669；修好后每 650 ms 一次 500 ms 缩放过渡会在弱设备上每帧触发边层重绘 + 标签同步，与 F24 联动。 |
+
+### 6.2 新增 Bug（v1 未列）
+
+| # | 现象 | 位置 | 证据 | 修法 |
+|---|---|---|---|---|
+| B15 | **3D 渲染环可在 2D 视图下被唤醒**：`show()` 排队的 `afterGraphDataApplied`（最多 240 帧轮询）/ `scheduleCustomMeshInstall`（90 帧）回调最终调 `resumeRenderLoop()`，它只查 `graph` 与 `renderer()`，不查 `container.hidden`。慢设备上首次进 3D 的几秒内点回 2D，之后隐藏的 3D 继续跑 ~270 tick 力模拟 + 每帧渲染 6 万对象 | `graph-3d.js:1094-1115, 1134-1139, 1380-1399, 1510-1548` | [代码确认] + 3 路验证成立 | `resumeRenderLoop` / `reheatAfterGraphData` 开头加 `if (!graph \|\| container.hidden) return;`；show/hide 维护代数计数，回调带代数、过期即丢 |
+| B16 | **「刷新布局」后切 3D**：分片 warmup 的 rAF 循环只认 `warmupToken`，`pauseSimulation2D` 不 bump，余下分片跑完后 `startVisiblePhase()` 在 3D 下 `simulation.restart()`，隐藏的全图 2D 模拟与 3D 初始化抢 CPU 10–30 s，冷却后 `end` 还会动 3D 相机（与 B11 同根） | `graph.html:4085-4088, 4537-4551, 4520-4525, 4579` | [代码确认] + 3 路验证成立 | `pauseSimulation2D` 里 `warmupToken++`；`startVisiblePhase` 在 `is3DView()` 时不 restart；`end` 处理器在 3D 下直接返回 |
+| B17 | **视图切换竞态**：3D 库异步加载期间点「2D」被 `mode === spatialViewMode` 早退忽略，加载完成后的 `then()` 仍切到 3D；已保存 3D 偏好的自动切换还带 `force:true`，直接覆盖用户刚点的 2D | `graph.html:2863-2894, 4328-4339, 6068` | [代码确认] + 3 路验证成立 | 请求序号：`requestSpatialViewMode` 每次自增，`then()` 里序号不符即放弃并恢复按钮；2D 点击也 bump 序号 |
+| B18 | **`?focus=<id>` 飞行被打断**（桌面）：`flyToFocus` 起 700 ms 缩放过渡后立刻 `openSidebar` → 220 ms 后 `recenterAfterViewportChange` 调 `zoom.transform`，d3 内部 `interrupt()` 掐断飞行；焦点节点停在屏外直到力模拟结束（实测 9.5 s 后仍在 y=−421）。另：`end.focus` 与 1400 ms 定时器各触发一次，飞行每次都跑两遍 | `graph.html:6449-6467, 6098-6112, 5905-5914` | [agent 实测] + 3 路验证成立 | 先开侧栏，在 `scheduleSidebarViewportSync` 的 finish 回调里再起飞行（用侧栏后的 W 算目标）；`end.focus` 跑过后清掉定时器 |
+| B19 | **「清除全部」不清图例聚焦与搜索**：`focusedCommunityId/Type/Opensource/Health` 与 `searchQuery` 不重置，而 `hasActiveGraphFilter()` 包含它们 → 图仍淡化、子图仍生效、灰节点 `pointer-events:none`；徽标计数也不含这几项 | `graph.html:5133-5145, 5148-5160, 4783-4788` | [agent 实测] + 3 路验证成立 | 复用 `setColorMode`（4461-4471）里已有的清零块；`updateFilterCount` 改由 `hasActiveGraphFilter()` 派生 |
+| B20 | **3D 侧栏高亮跨视图泄漏**：`applyNodeNeighborHighlight / clearNodeNeighborHighlight` 只在 `is3DView()` 时同步给 3D，但 graph-3d 自持 `sidebarNodeId`；3D 选中 → 切 2D 关侧栏 → 切回 3D：全图仍淡化、hover 被 `if (!sidebarNodeId)` 挡死 | `graph.html:6161-6163, 6172`；`graph-3d.js:817-821, 1455-1458` | [代码确认] | 去掉 `is3DView()` 门，只要 `graph3dView` 存在就同步；进 3D 时按当前侧栏状态重放高亮 |
+| B21 | 磁吸模式无 `health` 分支：按健康度上色时仍按类型聚类（2D/3D 同） | `graph.html:2715-2724` | [代码确认] | 补 `health` 的 key 与 categories |
+| B22 | **移动端 2D 轻触节点「先显后隐」**：触屏派发的兼容鼠标事件先触发 `mouseenter → showTooltip`，`isMobile` 分支在那里就把 `pinnedNode = d`，随后 `click` 看到 `pinnedNode === d` 即关闭；第二次点才生效。3D→2D 的 `hideTooltip()` 也不清 `pinnedNode` | `graph.html:4821-4855, 4640-4652, 6380-6393, 2931` | [代码确认]，中置信度（依赖浏览器兼容事件行为，未真机验证） | `showTooltip` 不再设 `pinnedNode`，只在 click 路径设；`isMobile` 时 mouseenter/mousemove/mouseleave 直接返回；切 2D 时清 `pinnedNode` |
+| B23 | **3D 触屏手势后出现「幽灵 hover」**：库在 pointerup 后不清 `pointerPos`，每 50 ms 的 raycast 以抬指位置命中节点 → `onNodeHover` 不分指针类型就 `refreshAppearance()`，全图淡化直到下次点击；每次轻触还付两次全量刷新 | `graph-3d.js:1453-1460, 1369-1375`；`graph.html:2795-2808` | [代码确认] vendor 指针逻辑，中置信度 | 把 `isMobile` / `pointerType` 传进 `RNGraph3D.create`，触屏下 `onNodeHover` 不改 hover 态；可扩展 `verify_graph_3d_touch_highlight.cjs` 断言手势后 `node_dimmed === 0` |
+| B24 | 触屏上任何**高度**变化（键盘弹出等）都走 `fitToScreen()` 而非 recenter，丢掉用户缩放 | `graph.html:5934-5949, 5957-5967` | [代码确认]，低置信度（键盘行为因浏览器而异） | 移动端只在宽度变化 / `orientationchange` 时 refit；搜索框聚焦期间忽略；viewport meta 可加 `interactive-widget=resizes-visual` |
+| B25 | iOS PWA（manifest `standalone`）下无 `viewport-fit=cover` 与 `env(safe-area-inset-*)`，底部 FAB / 提示 / 固定浮窗落在 Home 指示条手势区 | `graph.html:5, 549-556, 670-673, 830-836, 4647-4650` | [代码确认]，影响范围推测 | 加 `viewport-fit=cover`，底部偏移改 `calc(16px + env(safe-area-inset-bottom))` |
+
+### 6.3 新增性能项
+
+| 项 | 位置 | 要点 | 证据 |
+|---|---|---|---|
+| **3D 筛选只改外观**：Top N / 社区筛选在 3D 仍模拟 6,216 节点 / 53,740 边、保留 6 万场景对象；只有时序模式有真子集路径 | `graph-3d.js:836-840, 1565-1567, 1612` | **P1「移动端默认子图」在 3D 侧收益为零，除非 `syncFilters` 改成按子集重建 `graphData`**（复用时序子集机制；库按对象身份保留留下的节点，位置不丢） | [代码确认] |
+| 2D 边层在 Top-N 态仍每 tick 遍历并描全部 53,740 条边，而被冻结端点的边坐标不变 | `graph.html:3800-3875, 4490-4492` | 拆 `activeEdges / frozenEdges`，冻结暗批画到离屏 canvas，仅筛选 / 主题 / 缩放变化时重绘，每 tick 只描活跃边 | [代码确认] + G4 §4（Top 300 的 drawEdges 8.9 ms > 全图 6.1 ms） |
+| 全局 CSS transition：`.node-circle { transition: r .15s, fill-opacity .15s }`、`.node-label { transition: opacity .15s }` 作用于全部节点，任何批量写属性（滑块、hover、轻触、缩放）都重启 ~7,900 个 CSS 动画 | `graph.html:846-847` | 删全局规则，只给被交互节点加过渡 | [代码确认] |
+| 7 处 `backdrop-filter`（工具栏、图例 FAB 常驻、图例抽屉关闭态只是平移出屏仍参与合成、物理 / 筛选面板、侧栏） | `graph.html:53, 242, 568, 601, 1145, 1427, 1758` | 背景 alpha ≥ 0.92 的直接删（无视觉差）；其余只在 `(hover:hover) and (pointer:fine)` 或高档位启用；抽屉关闭后 `visibility:hidden` | [代码确认]；GPU 开销量级 [推测] |
+| 2D 时序播放：14 ms `setInterval` 每步 `nodes.filter` + `edges.filter`（53,740）+ `simulation.nodes()` 全量力重初始化，`revealTimelineNode` 还用 `node.filter` O(N) 找元素（`d.__el` 已存在） | `graph.html:5431-5433, 5506-5518, 5546-5574, 5588-5600` | 增量维护成员数组（用已有 `timelineIncident`），`d3.select(d.__el)`，改 rAF + 时间预算驱动 | [代码确认]；headless 4 s 只显现 72/6216 |
+| 每个节点一个 `.node-glow` 圆（6,216 个，只有 hover/pinned/hub 时非零） + 同步建 6,216 个 `<option>` | `graph.html:4162-4167, 3642-3651` | 单个共享 glow 元素随 hover 移动；datalist 懒建 | [代码确认] |
+| SVG `filter: drop-shadow` 在每 tick 重绘的层里：社区标签胶囊（每 tick 21 次离屏模糊）、`.node-depth-hub` | `graph.html:852-854, 288-292` | 用几何体（第二个低 alpha 矩形 / 描边）替代 filter | [代码确认] |
+| `pointerdown` / `visualViewport.scroll` 每次都强制回流 + 重写 svg 尺寸 + 重建 center/x/y 力，再判断尺寸是否变化 | `graph.html:5929-5949, 3941-3955` | 先只读算出 W/H，不变即返回；fit 去抖 150 ms | [代码确认] |
+| 3D tooltip：`mousemove` 与 `pointermove` 都注册 → 每次移动两次 `innerHTML` 重建 + KaTeX 扫描 + 强制布局 | `graph.html:2810-2819, 4637-4665`；`graph-3d.js:1369-1375` | 同一节点只 `moveTooltip`；只注册 `pointermove`；缓存 offsetWidth/Height | [代码确认] |
+| Service Worker：缓存名按部署日轮换、`activate` 清掉包括不变的 vendor 在内的全部旧缓存；`link-graph.json` 走 stale-while-revalidate，每次访问后台整份重下并写缓存，与首屏建图抢带宽 | `sw.js:2, 54-64, 92-113` | vendor 单独缓存桶不随版本清；大导出按哈希 / 时间条件再验证，且推迟到首屏完成后 | [代码确认] |
+| `main.js`（345 KB / 90 KB gz）整份进图谱页只为 2 个小 helper | `graph.html:2126-2128`；`main.js:4316-4330` | 拆 `rn-core.js`（与 v1「加载」表的 defer 项合并） | [代码确认] |
+| 3D 视图在 2D 期间全量常驻（WebGL 上下文 + 6 万 mesh + 标签 DOM），`destroy()` 从未被调用；主题切换在 3D 隐藏时也全量 `refreshColors()` | `graph-3d.js:1544-1548, 1811-1832`；`graph.html:2739-2742, 5980-5987` | 触屏 / `deviceMemory ≤ 4` 时 hide 即丢连线对象（`graphData({links:[]})`），show 时按缓存的 link 记录重建（依赖 B5 的「link 数组只建一次」）；`refreshColors` 加 hidden 守卫 | [代码确认]；内存量级 [推测] |
+| 3D 节点标签 div 各带 `will-change: transform`（每个标签一层）+ opacity 过渡；目前开关不在 DOM 里，为潜在问题 | `graph.html:411-423` | `will-change` 移到容器；重新启用时低档位限制渲染数量 | [代码确认] |
+| `#graph-canvas` 无 `touch-action` 规则（只有 `#graph-canvas-3d` 有），页面原生双击缩放 / 捏合可能与 d3-zoom 并行 | `graph.html` CSS 397 附近 | 加一行 `touch-action: none` | [代码确认]，真机行为 [推测] |
+
+### 6.4 本页结论的修订
+
+- **P1「移动端默认子图」必须同时做 3D 的真子集 `syncFilters`**，否则手机进 3D 后收益归零。
+- **B6 的修法升级**：不是只把 `cooldownTime` 放开，而是「按设备缩放 `d3AlphaDecay` + 解耦 tick 与帧（G5-3D）」。
+- 对抗验证只覆盖了 F01–F10；§3 中标 [agent 实测] 的缩放 / 平移 / 栅格化数字（标签 `display:none` 230–540 ms、命中测试 34–62 ms、Commit 768 ms）仍是单 agent 结论，实施前先用 `measure_graph_perf.cjs` 的扩展 profile 复测。
