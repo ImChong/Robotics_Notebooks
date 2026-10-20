@@ -2712,15 +2712,21 @@
       }
     }
 
+    function healthClusterKey(d) {
+      return String(d.health_score != null ? Math.min(d.health_score, 3) : 0);
+    }
     function colorModeClusterKey(d) {
       if (colorMode === 'community') return d.community || '';
       if (colorMode === 'opensource') return nodeOpensourceKey(d);
+      // 与 nodeColor 的分支对齐：按健康度上色时磁吸也按健康度聚类，而不是回落到类型
+      if (colorMode === 'health') return healthClusterKey(d);
       return d.type || '';
     }
     function colorModeClusterCategories() {
       if (colorMode === 'community') return Array.from(communityLabelMap.keys());
       if (colorMode === 'opensource') return ['open', 'closed'];
-      return Array.from(new Set(nodes.map(n => n.type)));
+      if (colorMode === 'health') return ['0', '1', '2', '3'];
+      return Array.from(new Set(nodes.map(n => n.type || '')));
     }
 
     function getMagneticConfig3D() {
@@ -4115,12 +4121,12 @@
         });
 
         const getTargetX = d => {
-          const key = colorModeClusterKey(d);
-          return centers[key]?.x || W/2;
+          const c = centers[colorModeClusterKey(d)];
+          return c ? c.x : W / 2;
         };
         const getTargetY = d => {
-          const key = colorModeClusterKey(d);
-          return centers[key]?.y || W/2;
+          const c = centers[colorModeClusterKey(d)];
+          return c ? c.y : H / 2;   // 此前误写为 W/2，兜底点落在画布外
         };
 
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
