@@ -177,6 +177,8 @@
     var getLinkColor = opts.getLinkColor || function () { return 'rgba(255,255,255,0.07)'; };
     var getLinkWidth = opts.getLinkWidth || function () { return 1; };
     var isDark = opts.isDark || function () { return true; };
+    // 低端设备（触屏 / ≤4 核 / ≤4 GB）：由 graph.html 的 LOW_END_DEVICE 注入，用于冷却节奏与渲染档位
+    var isLowEnd = opts.isLowEnd || function () { return false; };
     var onNodeClick = opts.onNodeClick;
     var onNodeHover = opts.onNodeHover;
     var onPointerMove = opts.onPointerMove;
@@ -273,6 +275,10 @@
     var meshInstallScheduled = false;
     var pendingFirstShowKick = false;
     var initialFitDone = false;
+    // 引擎 tick 计数（每次 graphData / reheat 后由库从 alpha=1 重新衰减，这里只用于首次取景与标签就绪）
+    var engineTicks = 0;
+    var INITIAL_FIT_TICKS = 60;
+    var initialFitRunner = null;
     // 拖拽手势期间是否已 reheat：见 bindGraphInstance 里 onNodeDrag 注释。
     var nodeDragReheated = false;
     // 时序激活动画：null = 关闭（正常渲染）；Set = 「已激活」节点集合（= 进入力模拟的子集）。
@@ -508,6 +514,10 @@
       if (labelTickBound || !graph) return;
       labelTickBound = true;
       graph.onEngineTick(function () {
+        engineTicks += 1;
+        // 慢设备上引擎每帧只跑 1 tick，等 alpha 自然衰减到阈值可能要一两分钟；
+        // 跑够 INITIAL_FIT_TICKS 时布局骨架已成型，先取景，不等停机。
+        if (!initialFitDone && engineTicks >= INITIAL_FIT_TICKS && initialFitRunner) initialFitRunner();
         // 力引擎推进时节点世界坐标在变 → 质心缓存失效
         invalidateCommunityCentroids3D();
         syncCommunityLabelPositions();
@@ -567,7 +577,9 @@
 
     function maybeMarkLabelsLayoutReady() {
       if (labelsLayoutReady || !graph) return;
-      if (typeof graph.d3Alpha === 'function' && graph.d3Alpha() > 0.02) return;
+      // ForceGraph3D 1.80.0 不透出 d3Alpha()，此前的守卫是死代码（第一 tick 就标就绪）；
+      // 改用引擎 tick 计数：跑够初始取景所需 tick 数或引擎已停机才算布局就绪。
+      if (!initialFitDone && engineTicks < INITIAL_FIT_TICKS) return;
       markLabelsLayoutReady();
     }
 
@@ -1211,12 +1223,13 @@
     function pauseRenderLoop() {
       if (!graph) return;
       if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
     }
 
     var resumeDeferrals = 0;
     function resumeRenderLoop() {
-      if (!graph) return;
+      // show() 排队的回调（afterGraphDataApplied / 自定义 mesh 安装）可能在用户已切回 2D 后才到达，
+      // 此前没有 hidden 守卫 → 隐藏的 3D 继续跑整轮力模拟并每帧渲染 6 万对象
+      if (!graph || container.hidden) return;
       // 3d-force-graph 在 kapsule 的防抖 digest 里才创建 WebGL renderer 并由 init 自启渲染环。
       // 主线程繁忙时本函数（经 afterGraphDataApplied 调度）可能早于该 digest 跑完，
       // 此刻 renderer 尚未就绪；若仍 resumeAnimation，会让库内部 _animationCycle 在对象未就绪时
@@ -1256,8 +1269,7 @@
 
   /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
     function reheatAfterGraphData() {
-      if (!graph) return;
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+      if (!graph || container.hidden) return;
       if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
       resumeRenderLoop();
     }
@@ -1482,12 +1494,12 @@
           syncCommunityLabelPositions();
         }, Math.max(0, duration) + 60);
       }
+      initialFitRunner = runFit;
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
       }
-      // 自然收敛约需 ~270 tick（≈4.5s），兜底超时放宽到 9s，让 onEngineStop（布局收敛完成）
-      // 成为主触发，避免兜底在收敛中途抢先适配。
-      window.setTimeout(runFit, 9000);
+      // 主触发：onEngineTick 计数到 INITIAL_FIT_TICKS 或 onEngineStop；兜底只防引擎根本没跑起来。
+      window.setTimeout(runFit, 60000);
     }
 
     function onContainerPointerMove(ev) {
@@ -1540,8 +1552,12 @@
         // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
-        .d3AlphaDecay(0.025)
-        .d3AlphaMin(0.001)
+        // 库默认 cooldownTime=15 s：慢设备每帧 1 tick，15 s 只够几十 tick，alpha≈0.3 就停机、
+        // 相机 fit 到未收敛布局。改为只由 alpha 阈值停机，冷却节奏按设备档位缩放
+        // （低端 decay 0.05 / alphaMin 0.01 ≈ 92 tick；桌面 0.025 / 0.005 ≈ 212 tick）。
+        .cooldownTime(Infinity)
+        .d3AlphaDecay(isLowEnd() ? 0.05 : 0.025)
+        .d3AlphaMin(isLowEnd() ? 0.01 : 0.005)
         .d3VelocityDecay(0.4)
         .nodeId('id')
         .nodeRelSize(1)
@@ -1778,7 +1794,6 @@
         afterGraphDataApplied(function () {
           if (!graph) return;
           // 力参数变化后重跑一轮自然收敛（alpha=1→0），而非把 alphaTarget 钉在 0.22。
-          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
           if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
         });
       },
@@ -1939,6 +1954,7 @@
         var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;
         if (!r || !r.info) return null;
         return {
+          frame: r.info.render.frame,
           draw_calls: r.info.render.calls,
           triangles: r.info.render.triangles,
           lines: r.info.render.lines,
