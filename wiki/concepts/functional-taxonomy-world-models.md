@@ -100,6 +100,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 - 预训练视频 Renderer 被当成 **joint world-and-action** 骨干（Renderer → Planner）。
 - [Marble](../entities/marble-world-model.md) 同一模型出 splat 与 collider（Renderer → Simulator）；collider 仍不是完整学习动力学。
+- [SKY-001](../entities/sky-001-engineering-world-model.md) 是相邻的工程设计世界模型：生成层级设计与构造序列，不直接输出 POMDP 闭环中的观测、可计算状态或 agent 动作，因此不等同于 Renderer / Simulator / Planner 实例。
 - [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) 展示另一种边界：输入相机观测与动作，输出未来视频，并把预测用于候选动作评估；按功能属于动作条件的 **Simulator**（服务外部策略的 rollout），但输出仍是像素，尚不提供可查询物理状态或实时接触求解。
 - 逻辑终点：一个基础模型按下游消费者切换输出模态。张力是数据不均（视频多、可执行 3D 与机器人轨迹少）以及「好看」与「可规划」互相牺牲。
 
