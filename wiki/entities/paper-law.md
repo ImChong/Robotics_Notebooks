@@ -56,14 +56,14 @@ WAM 的 MoTE 结构让视频与动作 token 先交换信息，再经模态专属
 
 ### 流程总览
 
-`mermaid
+```mermaid
 flowchart LR
   instr["指令与观察"] --> plan["VLM 规划当前子任务"]
   plan --> wam["WAM 生成动作候选块"]
   wam --> score["Value 专家排序并融合"]
   score --> exec["执行动作前缀并异步检查"]
   exec -->|未完成：继续 / 完成：推进| plan
-`
+```
 
 评估异步运行，因此阶段检查无需阻塞每个动作块。论文称并行状态评估提高推理吞吐；这一系统设计适合需要显式阶段边界的长时程任务。
 
@@ -71,7 +71,7 @@ flowchart LR
 
 官方仓库 scripts/run.py 提供检查点推理/评估入口；FastWAM 可直接运行评估，OpenWAM 支持独立 WAM server 与 RoboTwin client。下图概括部署时各模块的职责，不代表所有子进程的精确线程调度。
 
-`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor User as 指令输入
@@ -91,7 +91,7 @@ sequenceDiagram
         VLM-->>Runner: 继续 / 完成状态
     end
     Runner->>VLM: 完成后重规划剩余任务
-`
+```
 
 ## 工程实践
 
