@@ -4577,14 +4577,14 @@
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
         // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
         syncGraphDomFromSimulation();
+        // 首屏收遮罩 / 进入已保存的 3D 偏好都挂在这里，必须先于 3D 早退执行（?view=3d 直开时
+        // is3DView() 已为真，否则遮罩永不消失）
+        if (opts.onVisible) opts.onVisible();
         if (is3DView()) return;
         // 先把展开起点框进视口再开场：此前首屏在 end 之前没有任何 fit，
         // 叶序种子半径随规模增长（6k 节点 ≈ 790px），手机上几十秒内只看到被裁掉的中心。
-        // 首屏走同步路径时本函数仍在初始化脚本中段执行（isMobile 等常量尚未定义），
-        // 故推迟到下一帧再 fit；刷新布局的分片路径可直接 fit。
         whenGraphViewportReady(() => fitToScreen({ duration: 0 }));
         simulation.restart();
-        if (opts.onVisible) opts.onVisible();
       };
 
       if (FORCE_WARMUP_TICKS <= 0) {

@@ -752,6 +752,14 @@
       syncCommunityLabelPositions();
     }
 
+    // 连线记录只建一次并在每次 graphData 复用：库的数据映射按对象身份 diff，
+    // 每次传新对象会把 53k 连线对象全部拆掉重建（首次进入曾因此重建 3 次）。
+    var linkRecords = null;
+    function getLinkRecords() {
+      if (!linkRecords) linkRecords = buildLinks();
+      return linkRecords;
+    }
+
     function buildLinks() {
       return edges
         .map(function (e) {
@@ -1157,10 +1165,11 @@
       bundledThree = captureBundledThree(graph);
       if (!bundledThree) return false;
       ensureSharedSphereGeometry(bundledThree);
+      // nodeThreeObject setter 本身即触发节点对象重建（库内 nodeDataMapper.clear()），
+      // 无需再 graphData（那会连带重建全部连线并把 alpha 重置为 1）。
       graph
         .nodeThreeObject(function (d) { return createNodeMesh(d); })
         .nodeThreeObjectExtend(false);
-      graph.graphData({ nodes: nodes3d, links: buildLinks() });
       ensureSceneLights(graph.scene(), bundledThree);
       customMeshesInstalled = true;
       refreshAppearance();
@@ -1606,13 +1615,10 @@
       window.setTimeout(function () {
         if (!graph || container.hidden) return;
         syncViewport();
-        pauseRenderLoop();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        // 只做尺寸抖动：恢复空白的本质是 drawing buffer 重建 + 合成层重绘，
+        // 此前这里还重跑一次 graphData（第三次全量重建连线），对恢复无帮助。
         afterGraphDataApplied(function () {
-          if (!graph) return;
-          reheatAfterGraphData();
-          // 渲染环恢复后再强制一次尺寸重建：仅重跑 graphData 不动 drawing buffer，
-          // 无法恢复新建渲染器首帧偶发的整屏空白；显式抖动尺寸才能强制重建+重绘。
+          if (!graph || container.hidden) return;
           forceRendererResize();
         });
       }, 250);
@@ -1630,7 +1636,7 @@
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
         pauseRenderLoop();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
         afterGraphDataApplied(function () {
           if (!graph) return;
           reheatAfterGraphData();
@@ -1750,7 +1756,7 @@
           timelineSnapshot = null;
         }
         if (!graph) return;
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
         refreshAppearance();
         reheatAfterGraphData();
         markLabelsLayoutReady();
@@ -1786,7 +1792,8 @@
         }
         nodes3d = sourceNodes.map(cloneNodeFor3D);
         rebuildNodeIndex();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        linkRecords = null;   // 节点对象换了，连线记录里被库解析成对象的 source/target 也要重建
+        graph.graphData({ nodes: nodes3d, links: getLinkRecords() });
         this.updateForces();
       },
 
