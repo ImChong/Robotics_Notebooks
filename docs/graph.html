@@ -845,8 +845,9 @@
     .graph-hint[hidden] { display: none !important; }
 
     /* ── SVG 节点动画 ── */
-    .node-circle { transition: r .15s, fill-opacity .15s; }
-    .node-label { transition: opacity .15s; }
+    /* 不再给全部 6k 个节点圆 / 标签挂 CSS transition：筛选滑块、hover、轻触、缩放等任何批量写
+       fill-opacity / r / opacity 都会同时启动上万个动画并整树重算样式；被交互的单个节点的动效
+       由 d3 transition 按需做（时序显现等已如此） */
 
     /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
        2D 字号 8–28px；3D 另用 8–16px（排除「其他」兜底社区），此处仅作 2D 兜底 */
