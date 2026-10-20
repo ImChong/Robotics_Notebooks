@@ -2221,6 +2221,7 @@
 - [JEPA-WAM（arXiv:2608.09381）](wiki/entities/paper-jepa-wam.md) — JEPA-WAM**（arXiv:2608.09381）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
 - [JEPLO（arXiv:2609.15770）](wiki/entities/paper-jeplo.md) — JEPLO**（*JEPLO: Joint-Embedding Predictive Learning for LiDAR-Based Legged Locomotion*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [JitterVLA：VLA 人机操作的运动质量回放基准](wiki/entities/paper-jittervla-replay-benchmark.md) — JitterVLA**（arXiv:2610.13628，[项目页](https://faithogunwoye.githu `📅unknown` `[entity_page]`
+- [Joga：带主动视觉的人形足球技能学习](wiki/entities/paper-joga-humanoid-soccer.md) — Joga（Joint Optimization of Gaze and Action，视线与动作联合优化）** 是 MIT Improbable AI Lab 的全栈人形足球系统：Unitree  `📅unknown` `[entity_page]`
 - [JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作](wiki/entities/paper-joyai-ra-05.md) — JoyAI-RA 0.5**（*Scaling Robot Manipulation Learning via Dual Action Alignment*，[arXiv:2608.05674 `📅unknown` `[entity_page]`
 - [Sim2Real predictivity: does evaluation in simulation predict real-world performance?](wiki/entities/paper-kadian-sim2real-predictivity.md) — Sim2Real predictivity: does evaluation in simulation predict real-world performance?**（RA-L 2020）收 `📅unknown` `[entity_page]`
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
@@ -5274,6 +5275,7 @@
 - [unitree_sdk2（含 Python 绑定）](wiki/entities/unitree-sdk2.md) — unitree_sdk2** 是 Unitree 面向 Go2 / B2 / H1 / G1 等新机型的 **SDK v2（C++，CycloneDDS）**；官方同步维护 **unitree_s `📅unknown` `[entity_page]`
 - [unitree_sim_isaaclab](wiki/entities/unitree-sim-isaaclab.md) — unitree_sim_isaaclab** 基于 Isaac Lab，为 Unitree **G1 / H1-2**（夹爪、Dex3、Inspire 等执行器组合）提供多任务仿真，服务数据采集、 `📅unknown` `[entity_page]`
 - [UniStore（宇树应用平台）](wiki/entities/unitree-unistore.md) — UniStore**（<https://unistore.unitree.com/>）是宇树科技推出的 **机器人任务与动作应用商店**。用户无需手写底层控制代码，即可像安装手机 App 一样，从 `📅unknown` `[entity_page]`
+- [UniUni（宇树智能集群控制系统）](wiki/entities/unitree-uniuni.md) — UniUni** 是宇树科技面向多机器人编队与舞台演出的桌面应用，官网提供 Windows x64 与 Apple Silicon macOS 下载。它把轨迹设计、机器人定位、动作编排和现场监控放 `📅unknown` `[entity_page]`
 - [Unitree](wiki/entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 - [Unity Engine（Unity Technologies 实时 3D 引擎）](wiki/entities/unity-engine.md) — Unity** 是 **Unity Technologies** 的 **实时 3D 创作与运行时平台**，以 **Unity Editor**、**C# / .NET 脚本** 与 **Pack `📅unknown` `[entity_page]`
 - [Unreal Engine 5（Epic 实时 3D 引擎）](wiki/entities/unreal-engine-5.md) — Unreal Engine 5（UE5）** 是 **Epic Games** 的 **下一代实时 3D 创作与运行时平台**，面向游戏、影视、建筑、汽车与 **仿真 / 数字孪生** 等行业。在 `📅unknown` `[entity_page]`
