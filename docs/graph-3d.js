@@ -1129,6 +1129,7 @@
     function linkScaleUpdate(obj, _coords, link) {
       var mesh = resolveLinkCylinderMesh(obj);
       if (!mesh) return false;
+      if (!obj.userData.rnLayerSet) markLinkObjectLayer(obj);
       var mult = 1;
       if (sidebarNodeId || hoverNodeId) {
         var base = linkBaseWidth();
@@ -1176,6 +1177,7 @@
       graph
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
+      afterGraphDataApplied(function () {});   // digest 落地后给新建的连线对象标层
       wakeRender();
     }
 
@@ -1239,6 +1241,42 @@
         }
       }
       window.requestAnimationFrame(tryInstall);
+    }
+
+    /* ── 拾取范围与节奏 ──
+       库在渲染环里每 50 ms 对整个场景递归 raycast（开连线时 6 万对象，指针不动也跑），
+       而本页没有任何连线的 hover / click 行为。连线对象放到 LINK_LAYER：库的 Raycaster 只查
+       默认层（0），相机另开该层所以照常渲染。再把库的指针拾取只在「最近有输入」时打开。 */
+    var LINK_LAYER = 1;
+    function markLinkObjectLayer(obj) {
+      if (!obj || obj.userData.rnLayerSet) return;
+      if (typeof obj.traverse === 'function') obj.traverse(function (o) { if (o.layers) o.layers.set(LINK_LAYER); });
+      else if (obj.layers) obj.layers.set(LINK_LAYER);
+      obj.userData.rnLayerSet = true;
+    }
+    // 全量补标：连线对象由库在防抖 digest 里异步创建，时机不可靠，digest 后延迟扫两次兜底；
+    // 常规路径由 linkScaleUpdate（库每次摆放连线都会回调）顺手标层，零额外遍历。
+    function markLinkLayers() {
+      if (!graph) return;
+      var links = (graph.graphData() || {}).links || [];
+      for (var i = 0; i < links.length; i++) markLinkObjectLayer(links[i].__lineObj);
+    }
+    function scheduleLinkLayerMarking() {
+      window.setTimeout(markLinkLayers, 300);
+      window.setTimeout(markLinkLayers, 2000);
+    }
+
+    var POINTER_IDLE_DISABLE_MS = 1000;
+    var pointerInteractionTimer = 0;
+    /** 最近有输入时才让库做 hover raycast；holdMs 后自动关闭（触屏给更长的保持期以保证轻触能命中） */
+    function armPointerInteraction(holdMs) {
+      if (!graph || typeof graph.enablePointerInteraction !== 'function') return;
+      if (!graph.enablePointerInteraction()) graph.enablePointerInteraction(true);
+      if (pointerInteractionTimer) window.clearTimeout(pointerInteractionTimer);
+      pointerInteractionTimer = window.setTimeout(function () {
+        pointerInteractionTimer = 0;
+        if (graph && typeof graph.enablePointerInteraction === 'function') graph.enablePointerInteraction(false);
+      }, holdMs || POINTER_IDLE_DISABLE_MS);
     }
 
     /* ── 渲染环空闲暂停 ──
@@ -1575,9 +1613,14 @@
       lastPointer.clientY = ev.clientY;
       lastInputAt = performance.now();
       wakeRender();   // hover 检测靠渲染环里的 raycast，指针一动就得先把环唤醒
+      armPointerInteraction(ev && ev.pointerType === 'touch' ? 1200 : POINTER_IDLE_DISABLE_MS);
       if (onPointerMove) onPointerMove(ev);
     }
-    function onContainerInput() { lastInputAt = performance.now(); wakeRender(); }
+    function onContainerInput(ev) {
+      lastInputAt = performance.now();
+      wakeRender();
+      armPointerInteraction(ev && (ev.type === 'touchstart' || ev.pointerType === 'touch') ? 1200 : POINTER_IDLE_DISABLE_MS);
+    }
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
     container.addEventListener('pointerdown', onContainerInput, { passive: true });
@@ -1604,6 +1647,8 @@
           else fn();
           return;
         }
+        markLinkLayers();
+        scheduleLinkLayerMarking();
         fn();
       }
       window.requestAnimationFrame(wait);
@@ -1681,6 +1726,8 @@
         engineStopListeners.forEach(function (fn) { fn(); });
         scheduleIdlePause();
       });
+      var cam = (typeof graph.camera === 'function') ? graph.camera() : null;
+      if (cam && cam.layers) cam.layers.enable(LINK_LAYER);
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
     }
@@ -1739,6 +1786,7 @@
         showLabelLayer();
         syncPositionsFromSource();
         ensureGraph();
+        armPointerInteraction();   // 需在 ensureGraph 之后：无输入时保持期一过即关闭库的拾取
         buildLabelEls();
         bindLabelTick();
         syncViewport();
@@ -2028,11 +2076,23 @@
         };
       },
 
+      // 验证用：节点屏幕坐标与库指针拾取开关状态（非业务 UI）
+      getNodeScreenPos: function (id) {
+        var n = nodeById.get(id);
+        if (!graph || !n || n.x == null) return null;
+        var c = graph.graph2ScreenCoords(n.x, n.y, n.z != null ? n.z : 0);
+        var rect = container.getBoundingClientRect();
+        return c ? { x: c.x + rect.left, y: c.y + rect.top } : null;
+      },
+      isPointerInteractionEnabled: function () {
+        return !!(graph && typeof graph.enablePointerInteraction === 'function' && graph.enablePointerInteraction());
+      },
+
       // 连线材质体检（非业务 UI）：此前 linkOpacity 传函数导致全部材质 opacity 为 NaN
       getLinkMaterialStats: function () {
         if (!graph || typeof graph.graphData !== 'function') return null;
         var links = (graph.graphData() || {}).links || [];
-        var total = 0, nan = 0, transparent = 0, colors = {}, sample = null;
+        var total = 0, nan = 0, transparent = 0, colors = {}, sample = null, onLinkLayer = 0;
         for (var i = 0; i < links.length; i++) {
           var mesh = resolveLinkCylinderMesh(links[i].__lineObj);
           if (!mesh || !mesh.material) continue;
@@ -2041,9 +2101,10 @@
           if (mesh.material.transparent) transparent += 1;
           var hex = mesh.material.color ? mesh.material.color.getHexString() : '';
           colors[hex] = (colors[hex] || 0) + 1;
+          if (mesh.layers && mesh.layers.mask === (1 << LINK_LAYER)) onLinkLayer += 1;
           if (!sample) sample = { color: hex, opacity: mesh.material.opacity, transparent: mesh.material.transparent };
         }
-        return { total: total, nan_opacity: nan, transparent: transparent, colors: colors, sample: sample };
+        return { total: total, nan_opacity: nan, transparent: transparent, colors: colors, sample: sample, on_link_layer: onLinkLayer };
       },
 
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
@@ -2072,6 +2133,7 @@
         container.removeEventListener('wheel', onContainerInput);
         container.removeEventListener('touchstart', onContainerInput);
         if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
+        if (pointerInteractionTimer) { window.clearTimeout(pointerInteractionTimer); pointerInteractionTimer = 0; }
         window.removeEventListener('error', reviveRenderLoopOnError);
         if (fitLabelZoomUnlockTimer) {
           window.clearTimeout(fitLabelZoomUnlockTimer);
