@@ -219,6 +219,11 @@ op: ingest
 - **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
 - **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
 
+## [2026-10-20] ingest | KODA 官方代码与资产分阶段发布更新
+
+- 复核官方仓库并更新论文、项目页、代码仓库来源与 KODA 实体页：M1/M2 运动学和机器人机载视角管线已有安装与 CLI；M4 部分开放示例 MCAP 和 tracking checkpoint。
+- 记录 M3 控制器动作标签/对齐数据导出与 M5 策略训练仍待发布，说明当前代码可运行范围和第三方资产许可边界。
+
 ## [2026-10-20] ingest | 收录 CrossFly 空中移动交互基准（arXiv:2610.18381）
 
 - 归档论文与项目页，覆盖异构环境中的长程飞行、IRR 交互就绪度指标及 CrossFly-Agent。
