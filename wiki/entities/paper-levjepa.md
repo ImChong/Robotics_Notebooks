@@ -206,6 +206,7 @@ sequenceDiagram
 - [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 同一作者族的动作条件规划 WM
 - [V-JEPA 2](./paper-vjepa2.md) — 同数据重训的主对照；AC 规划是本文没有的下一阶段
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 用显式 dense loss 换 patch 结构；本文声称结构可涌现
+- [TDV](./paper-tdv.md) — 同为视频自监督，但去掉全部视觉归纳偏置，仅用时序因果
 - [WCM](./paper-wcm-world-critic-model.md) — 同一套 LeJEPA / SIGReg，落在 VLA critic
 - [INTACT](./paper-intact.md) — JEPA 控制接口；本文只做表征
 - [ODEWorld](./paper-odeworld.md) — 连续时间 latent 动力学对照

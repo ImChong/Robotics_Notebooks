@@ -127,6 +127,8 @@ sequenceDiagram
 - [LeWM](./paper-lewm.md)
 - [LeJEPA](./paper-lejepa.md)
 - [LeVJEPA](./paper-levjepa.md)
+- [Rectified LpJEPA](./paper-rectified-lpjepa.md) — 稀疏非负表示的分布匹配前序
+- [SkyJEPA](./paper-skyjepa.md) — 同为 JEPA 潜空间世界模型，面向四旋翼实机控制
 - [INTACT](./paper-intact.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [潜空间想象](../concepts/latent-imagination.md)

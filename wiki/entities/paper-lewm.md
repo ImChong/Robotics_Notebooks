@@ -147,6 +147,7 @@ sequenceDiagram
 - [LeJEPA](./paper-lejepa.md)
 - [LpWM](./paper-lpwm.md)
 - [LeVJEPA](./paper-levjepa.md)
+- [Music-JEPA](./paper-music-jepa.md) — 同一 JEPA 框架迁移到音频动作条件动力学
 - [INTACT](./paper-intact.md)
 - [潜空间想象](../concepts/latent-imagination.md)
 - [生成式世界模型](../methods/generative-world-models.md)
