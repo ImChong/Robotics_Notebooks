@@ -2,7 +2,7 @@
 type: entity
 project_id: dreamlabs-dream-1
 project: https://dreamlabs.ai/research/dream-1
-tags: [robot-learning, wam, manipulation, api]
+tags: [robot-learning, wam, manipulation, api, dream-labs]
 status: complete
 updated: 2026-10-20
 related:
@@ -25,6 +25,15 @@ summary: "Dream-1 是 Dream Labs 面向双臂平行夹爪机器人的 World Acti
 | WAM | World Action Model | Dream-1 所属的世界预测与动作生成模型路线 |
 | API | Application Programming Interface | 用户通过网络客户端提交观测并请求机器人动作的服务接口 |
 | IK | Inverse Kinematics | 将末端目标转换为关节运动的逆运动学求解器，影响跨本体控制效果 |
+
+## 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 梦想实验室（Dream Labs） |
+| 项目主页 | <https://dreamlabs.ai/research/dream-1> |
+| 服务形式 | 公共 API（research beta） |
+| 官方开源代码 / 权重 | 项目页未列出 |
 
 ## 为什么重要
 
