@@ -7,8 +7,8 @@
 - **URL：** <https://unitas-wam.github.io>
 - **论文：** <https://arxiv.org/abs/2610.12099>
 - **代码：** <https://github.com/DexForce/UNITAS>
-- **入库日期：** 2026-10-12
-- **一句话说明：** 官方项目页，展示策略模式、世界模型模式、架构与基准结果，附 3D 场景交互浏览；单位为香港中文大学（深圳）、DexForce、佛山大学、中山大学、华南理工大学。
+- **入库日期：** 2026-10-12（项目页初次收录）；**本次核验：** 2026-10-20
+- **一句话说明：** 官方项目页展示策略模式、世界模型模式、架构、基准结果，并提供可旋转视角、拖动时间轴的 3D 场景预测浏览；作者单位为香港中文大学（深圳）、DexForce、佛山大学、中山大学、华南理工大学。
 
 ## 页面结构（维护索引）
 
@@ -19,7 +19,9 @@
 | 架构 | 世界对齐 3D 位置编码、单 token 轨迹 tokenizer、场景流与机器人动作的耦合专家 |
 | 结果 | LIBERO 99.8%、LIBERO-Plus 89.1%、RoboTwin Randomized 93.04%、VLABench 56.2%；1.7B 参数 |
 
-## 开源核查（2026-10-12）
+## 官方资源与开源核查（2026-10-20）
 
-- 项目页链接了 GitHub 仓库，但模型 checkpoint 标注 “Coming soon”。
-- 仓库 DexForce/UNITAS 仅含 README、assets/overview.png、.gitignore（2 次提交），无安装/运行说明、无权重、无许可证；训练代码与数据集在发布计划中未勾选。结论：待发布（占位仓库）。
+- 官方项目页当前提供交互式 3D 预测浏览：可旋转视角并沿时间轴查看 action flow / scene flow；这不是把生成视频转换为交互式 3D 场景。
+- 官方 GitHub README 已有安装步骤、场景流推理与 Viser 可视化示例，以及 LIBERO、LIBERO-Plus、RoboTwin、VLABench 评测指南；仓库含 `src/unitas`、`evaluation`、`docs` 等目录，许可为 Apache-2.0。
+- 官方 README 将模型检查点与推理/评测代码标为已发布；训练代码和训练数据集仍标注未发布。模型权重托管于 Hugging Face：<https://huggingface.co/RobbinWang123/Unitas>。
+- README 同时链接作者维护的项目报告页：<https://dexforce.com/technical-report/#/unitas-wam>。
