@@ -40,6 +40,7 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 
 ## 关联页面
 
+- [具身智能数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md) — 按形态分组的数据集入口与节点映射
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
 - [Octo Model](../methods/octo-model.md)
 - [Foundation Policy](./foundation-policy.md)
