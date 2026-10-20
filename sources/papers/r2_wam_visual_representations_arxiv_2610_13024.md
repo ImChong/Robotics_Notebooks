@@ -11,6 +11,7 @@
 - **项目页：** <https://kailiu18.github.io/R-2WAM.github.io/>
 - **提交日期：** 2026-10-09
 - **一句话说明：** 在统一的 WAM 训练协议下受控比较视觉表征、特征集成机制与组合方式，给出 R²-WAM 表征配方。
+- **项目页归档：** [R²-WAM 项目页核查](../sites/r2-wam-visual-representations-project.md)
 - **对 wiki 的映射：** [R²-WAM](../../wiki/entities/paper-r2-wam-visual-representations.md)
 
 ## 核心摘录
