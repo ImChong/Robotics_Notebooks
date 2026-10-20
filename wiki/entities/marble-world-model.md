@@ -151,6 +151,8 @@ GA 博客把 Marble 写成：把手头模态 **抬成完整 3D 世界**，并随
 
 ## 关联页面
 
+- [Viggle JST-2（Joint Space-and-Time 世界模型）](./viggle-jst-2.md) — 共享 3D 表示生成场景、角色与动作的闭源服务；需与 Marble 区分用途和开放状态
+
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — Marble 被写成仿真方向的第一章
 - [世界模型定义与路线图](./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 3D/structured 格；collider ≠ 学习动力学
 - [World Labs](./world-labs.md) — 公司与 Atlas / Spark 总览
