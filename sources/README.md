@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [crossfly-project.md](sites/crossfly-project.md) | CrossFly 异构环境空中移动基准项目页（数据集已列于 ModelScope；代码 soon）
 - [x] [memcompiler.md](sites/memcompiler.md) | MemCompiler 状态条件记忆编译项目页（arXiv:2605.07594；代码公开，模型条目无 model card）
 - [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
 - [x] [dreamtrue-project-page.md](sites/dreamtrue-project-page.md) | DreamTrue 项目页（arXiv:2610.12468；部分开源）
@@ -14,6 +15,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [crossfly_arxiv_2610_18381.md](papers/crossfly_arxiv_2610_18381.md) | CrossFly：长程异构环境空中移动与交互就绪度基准（arXiv:2610.18381）
 - [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
 - [x] [viola_arxiv_2610_12435.md](papers/viola_arxiv_2610_12435.md) | VioLA 人类数据驱动人形通用控制
 - [x] [dreamtrue_arxiv_2610_12468.md](papers/dreamtrue_arxiv_2610_12468.md) | DreamTrue 动作保真机器人世界模型
