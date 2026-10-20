@@ -515,6 +515,8 @@
       labelTickBound = true;
       graph.onEngineTick(function () {
         engineTicks += 1;
+        engineRunning = true;
+        if (idlePaused) wakeRender();
         // 慢设备上引擎每帧只跑 1 tick，等 alpha 自然衰减到阈值可能要一两分钟；
         // 跑够 INITIAL_FIT_TICKS 时布局骨架已成型，先取景，不等停机。
         if (!initialFitDone && engineTicks >= INITIAL_FIT_TICKS && initialFitRunner) initialFitRunner();
@@ -546,6 +548,21 @@
       cameraLabelSyncBound = true;
       controls.addEventListener('change', function () {
         if (container.hidden) return;
+        var cam = (typeof graph.camera === 'function') ? graph.camera() : null;
+        var moved = true;
+        if (cam && cam.position) {
+          var pp = cam.position;
+          if (lastChangeCamPos) {
+            var ddx = pp.x - lastChangeCamPos.x;
+            var ddy = pp.y - lastChangeCamPos.y;
+            var ddz = pp.z - lastChangeCamPos.z;
+            moved = (ddx * ddx + ddy * ddy + ddz * ddz) > CAMERA_CHANGE_WAKE_DIST2;
+            lastChangeCamPos.x = pp.x; lastChangeCamPos.y = pp.y; lastChangeCamPos.z = pp.z;
+          } else {
+            lastChangeCamPos = { x: pp.x, y: pp.y, z: pp.z };
+          }
+        }
+        if (moved || performance.now() - lastInputAt < INPUT_RECENT_MS) wakeRender(250);
         if (cameraLabelSyncRaf) return;
         cameraLabelSyncRaf = window.requestAnimationFrame(function () {
           cameraLabelSyncRaf = 0;
@@ -726,6 +743,7 @@
         y: ty + (cam3d.position.y - ty) * s,
         z: tz + (cam3d.position.z - tz) * s,
       };
+      wakeRender((durationMs == null ? 0 : durationMs) + 200);
       graph.cameraPosition(next, { x: tx, y: ty, z: tz }, durationMs == null ? 0 : durationMs);
       return true;
     }
@@ -1134,6 +1152,7 @@
       updateNodeMeshes();
       updateLinkMaterials();
       syncLabels();
+      wakeRender();
     }
 
     // hover 专用：节点全量（O(N)，逐节点淡化本就需要）+ 只换前后两个焦点节点的邻接连线材质
@@ -1145,6 +1164,7 @@
       if (prevId) updateLinkMaterials(linksTouching(prevId));
       if (hoverNodeId) updateLinkMaterials(linksTouching(hoverNodeId));
       syncLabels();
+      wakeRender();
       // 关闭「显示连线」时只画焦点连线：焦点变化即可见集合变化
       if (!areEdgesVisible()) refreshVisibility();
     }
@@ -1156,6 +1176,7 @@
       graph
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
+      wakeRender();
     }
 
     // pop-in 期间逐帧刷新节点 mesh 缩放，让「激活」放大过程平滑（由 3d-force-graph 的渲染环负责出图）。
@@ -1220,8 +1241,54 @@
       window.requestAnimationFrame(tryInstall);
     }
 
+    /* ── 渲染环空闲暂停 ──
+       3d-force-graph 的 _animationCycle 无条件 rAF：引擎停机、相机静止时每帧仍重算 6 万对象矩阵、
+       做视锥剔除、提交 6k–60k 次 draw call，并每 50 ms raycast 整个场景。这里在
+       「引擎已停 + 无相机变化 / 指针 / 飞行动画」持续 IDLE_PAUSE_MS 后 pauseAnimation()，
+       任何输入、reheat、外观变化或相机飞行都先 wakeRender() 再生效。 */
+    var IDLE_PAUSE_MS = 600;
+    var idlePauseTimer = 0;
+    var idlePaused = false;
+    var engineRunning = false;
+    var renderHoldUntil = 0;
+    var engineStopListeners = [];
+    var lastInputAt = 0;
+    var lastChangeCamPos = null;
+    // TrackballControls 的阻尼尾巴会以亚像素位移持续派发 change；只有位移可见或刚有输入才唤醒
+    var CAMERA_CHANGE_WAKE_DIST2 = 0.01;
+    var INPUT_RECENT_MS = 1500;
+
+    function scheduleIdlePause() {
+      if (idlePauseTimer) window.clearTimeout(idlePauseTimer);
+      var wait = Math.max(IDLE_PAUSE_MS, renderHoldUntil - performance.now() + 50);
+      idlePauseTimer = window.setTimeout(tryIdlePause, wait);
+    }
+
+    function tryIdlePause() {
+      idlePauseTimer = 0;
+      if (!graph || container.hidden || idlePaused) return;
+      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null) {
+        scheduleIdlePause();
+        return;
+      }
+      idlePaused = true;
+      if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
+    }
+
+    /** 唤醒渲染环；holdMs > 0 表示至少持续渲染这么久（相机飞行等）。 */
+    function wakeRender(holdMs) {
+      if (!graph || container.hidden) return;
+      if (holdMs) renderHoldUntil = Math.max(renderHoldUntil, performance.now() + holdMs);
+      if (idlePaused) {
+        idlePaused = false;
+        resumeRenderLoop();
+      }
+      scheduleIdlePause();
+    }
+
     function pauseRenderLoop() {
       if (!graph) return;
+      if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
       if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
     }
 
@@ -1246,6 +1313,8 @@
       try {
         if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
         resumeDeferrals = 0;
+        idlePaused = false;
+        scheduleIdlePause();
       } catch (_resumeErr) {
         if (resumeDeferrals++ < 180) window.requestAnimationFrame(resumeRenderLoop);
       }
@@ -1437,6 +1506,7 @@
       var durationMs = duration == null ? 650 : duration;
       // 起飞前锁定胶囊为落稳尺寸，并把基线设为目标距离（避免飞行中途 scale 闪烁）
       beginFitLabelZoomLock(dist, durationMs);
+      wakeRender(durationMs + 200);
       graph.cameraPosition(
         { x: cx + (dx / len) * dist, y: cy + (dy / len) * dist, z: cz + (dz / len) * dist },
         lookAt,
@@ -1495,9 +1565,7 @@
         }, Math.max(0, duration) + 60);
       }
       initialFitRunner = runFit;
-      if (typeof graph.onEngineStop === 'function') {
-        graph.onEngineStop(function () { runFit(); });
-      }
+      engineStopListeners.push(runFit);
       // 主触发：onEngineTick 计数到 INITIAL_FIT_TICKS 或 onEngineStop；兜底只防引擎根本没跑起来。
       window.setTimeout(runFit, 60000);
     }
@@ -1505,10 +1573,16 @@
     function onContainerPointerMove(ev) {
       lastPointer.clientX = ev.clientX;
       lastPointer.clientY = ev.clientY;
+      lastInputAt = performance.now();
+      wakeRender();   // hover 检测靠渲染环里的 raycast，指针一动就得先把环唤醒
       if (onPointerMove) onPointerMove(ev);
     }
+    function onContainerInput() { lastInputAt = performance.now(); wakeRender(); }
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
+    container.addEventListener('pointerdown', onContainerInput, { passive: true });
+    container.addEventListener('wheel', onContainerInput, { passive: true });
+    container.addEventListener('touchstart', onContainerInput, { passive: true });
     window.addEventListener('error', reviveRenderLoopOnError);
 
     var graph = null;
@@ -1601,6 +1675,12 @@
           setHoverNode(null);
           if (opts.onBackgroundClick) opts.onBackgroundClick();
         });
+      // 唯一的 onEngineStop 处理器（kapsule 属性只能挂一个）：先跑监听者，再开始空闲计时
+      graph.onEngineStop(function () {
+        engineRunning = false;
+        engineStopListeners.forEach(function (fn) { fn(); });
+        scheduleIdlePause();
+      });
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
     }
@@ -1704,6 +1784,7 @@
 
       resize: function () {
         if (container.hidden) return;
+        wakeRender();
         syncViewport();
         syncLabels();
       },
@@ -1759,6 +1840,7 @@
         timelineCount = count;
         graph.graphData({ nodes: timelineOrder.slice(0, count), links: buildTimelineLinks() });
         ensureTimelinePopRunning();
+        wakeRender();
       },
 
       // 相机适配到「已激活」子集（生长时随之缩放，类似 2D fitToTimelineNodes）。
@@ -1808,6 +1890,7 @@
           if (!graph) return;
           // 力参数变化后重跑一轮自然收敛（alpha=1→0），而非把 alphaTarget 钉在 0.22。
           if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+          wakeRender();
         });
       },
 
@@ -1840,6 +1923,7 @@
         if (!n3 || n3.x == null) return;
         var z = n3.z != null ? n3.z : 0;
         var dist = Math.max(180, sphereRadiusFor(n3) * 16);
+        wakeRender((ms == null ? 700 : ms) + 200);
         graph.cameraPosition(
           { x: n3.x, y: n3.y, z: z + dist },
           n3,
@@ -1984,6 +2068,10 @@
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
+        container.removeEventListener('pointerdown', onContainerInput);
+        container.removeEventListener('wheel', onContainerInput);
+        container.removeEventListener('touchstart', onContainerInput);
+        if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
         window.removeEventListener('error', reviveRenderLoopOnError);
         if (fitLabelZoomUnlockTimer) {
           window.clearTimeout(fitLabelZoomUnlockTimer);
