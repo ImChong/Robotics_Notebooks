@@ -7,11 +7,11 @@
 - **链接：** https://github.com/Duisterhof/pointzero
 - **arXiv：** <https://arxiv.org/abs/2609.19142>
 - **项目页：** https://pointzero-wm.github.io/
-- **入库日期：** 2026-09-20（初稿）；2026-09-21（README 再核）
+- **入库日期：** 2026-09-20（初稿）；2026-09-21（README 再核）；2026-10-20（状态复核）
 - **一句话说明：** 官方 GitHub 占位仓库；README 声明 code release coming soon，尚无训练/推理脚本入口。
 - **沉淀到 wiki：** [`wiki/entities/paper-pointzero.md`](../../wiki/entities/paper-pointzero.md)
 
-## 开源状态（步骤 2.5，2026-09-21）
+## 开源状态（步骤 2.5，2026-10-20 复核）
 
 - **待发布**：仓库已公开，README 仅含 teaser 与链接，正文写 *「This repository will host the PointZero code. Release coming soon.»*
 - **尚无** 可辨识的 `train.py` / `eval.py` / 权重 release；复现需等待官方发布或对照论文自行实现。

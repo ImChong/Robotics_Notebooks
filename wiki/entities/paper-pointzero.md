@@ -11,9 +11,9 @@ tags:
   - columbia
   - nvidia
 status: complete
-updated: 2026-09-21
+updated: 2026-10-20
 arxiv: "2609.19142"
-venue: "Preprint, 2026"
+venue: "NeurIPS 2026"
 code: https://github.com/Duisterhof/pointzero
 related:
   - ../methods/generative-world-models.md
@@ -39,6 +39,8 @@ summary: "PointZero（arXiv:2609.19142，CMU/Columbia/NVIDIA）：以 RGB-D + �
 ## 一句话定义
 
 **用 RGB-D + 稀疏 3D 点轨迹补全学 robot-free 3D 动力学先验，再后训练到末端位姿条件预测与 IL action head，在 PGND 与 7 任务操作基准上显著优于同架构从零训练与 DP3 等基线。**
+
+> **边界说明：**「无需机器人数据」指预训练阶段不使用机器人动作标签；下游模仿学习仍使用每任务 20 条动作标注示范和 100 条无动作视频，不能概括为全流程零机器人数据。
 
 ## 英文缩写速查
 
