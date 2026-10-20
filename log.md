@@ -213,6 +213,12 @@ op: ingest
 
 - **2026-10-20** — **ingest**：新增 Embodiment-Aware Inference-Time Search 论文来源与实体页，整理冻结 ReMoGen 的候选搜索、G1 可行性评测及代码核验边界，并关联动作重定向概念页。
 
+# [2026-10-20] ingest | PointZero NeurIPS 2026 状态更新
+
+- **意图：** 复核已收录的 PointZero 官方项目页与代码仓库，补充发表信息并厘清 robot-free 仅指预训练阶段。
+- **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
+- **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
+
 ## [2026-10-20] ingest | 收录 CrossFly 空中移动交互基准（arXiv:2610.18381）
 
 - 归档论文与项目页，覆盖异构环境中的长程飞行、IRR 交互就绪度指标及 CrossFly-Agent。
