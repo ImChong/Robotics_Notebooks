@@ -3276,19 +3276,28 @@
       return;
     }
     setLoadingProgress(80);   // 数据解析完成，进入构图渲染
-    fetch('exports/site-catalog-v1.json')
-      .then(r => r.json())
-      .then(d => {
-        // 目录条目不带 id，由键还原
-        indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
-          .map(([id, it]) => Object.assign({ id }, it));
-        indexItemByKey = new Map();
-        for (const it of indexItems) {
-          if (it.path) indexItemByKey.set(it.path, it);
-          indexItemByKey.set(it.id, it);
-        }
-      })
-      .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
+    /* 侧栏目录（site-catalog-v1.json，3.9 MB 原始 / 1.2 MB gz）只服务侧栏的 tags / related，
+       此前在建图期并行下载并在主线程解析，与 link-graph 抢带宽、与 warmup 抢主线程。
+       改为首次打开侧栏时按需取（单例 Promise）；非低端设备在首次落稳后空闲预取。 */
+    let catalogPromise = null;
+    function ensureCatalog() {
+      if (catalogPromise) return catalogPromise;
+      catalogPromise = fetch('exports/site-catalog-v1.json')
+        .then(r => r.json())
+        .then(d => {
+          // 目录条目不带 id，由键还原
+          indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
+            .map(([id, it]) => Object.assign({ id }, it));
+          indexItemByKey = new Map();
+          for (const it of indexItems) {
+            if (it.path) indexItemByKey.set(it.path, it);
+            indexItemByKey.set(it.id, it);
+          }
+          return true;
+        })
+        .catch(() => { catalogPromise = null; return false; });   // 侧栏 tags / related 退化为空，下次再试
+      return catalogPromise;
+    }
 
     initCommunityMapsFromGraph();
     initInstitutionMapsFromGraph();
@@ -3692,16 +3701,23 @@
     }
 
     /* ── 初始化搜索自动联想 ── */
+    // 6k 个 <option> 延后到首次聚焦搜索框再建：此前在首绘路径里同步解析 ~300 KB HTML
     const searchList = document.getElementById('graph-search-list');
-    if (searchList) {
-      // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during auto-complete list generation, reducing GC pauses on large graphs.
+    const searchInputEl = document.getElementById('graph-search');
+    let searchListBuilt = false;
+    function buildSearchDatalist() {
+      if (searchListBuilt || !searchList) return;
+      searchListBuilt = true;
       let searchOptionsHtml = '';
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         searchOptionsHtml += '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>';
       }
       searchList.innerHTML = searchOptionsHtml;
+    }
+    if (searchInputEl) {
+      searchInputEl.addEventListener('focus', buildSearchDatalist, { once: true });
+      searchInputEl.addEventListener('pointerdown', buildSearchDatalist, { once: true, passive: true });
     }
 
     /* ── SVG 尺寸（移动端首屏 clientHeight 可能为 0，需延后 fit）── */
@@ -4590,6 +4606,9 @@
     function finishSimulationLoad() {
       labelsSettled2D = true;
       sync2DNodeLabels();
+      if (!LOW_END_DEVICE && !(navigator.connection && navigator.connection.saveData)) {
+        (window.requestIdleCallback || window.setTimeout)(() => ensureCatalog(), 1000);
+      }
       if (!pendingAutoFit2D) return;
       pendingAutoFit2D = false;
       if (userGestureZoom2D) return;
@@ -6397,16 +6416,7 @@
         sbSummary.textContent = '';
       }
 
-      // tags from index
-      const item = indexItemByKey.get(d.id);
-      const tags = item?.tags || [];
-      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-      // Expected impact: Eliminates closure creation and array allocation when generating tag HTML.
-      let tagsHtml = '';
-      for (let i = 0; i < tags.length; i++) {
-        tagsHtml += `<span class="sb-tag">${escapeHtml(tags[i])}</span>`;
-      }
-      sbTags.innerHTML = tagsHtml;
+      renderSidebarCatalogParts(d);
 
       // 1-hop graph neighbors (full list)
       // 先装饰再排序：标签只取一次，比较用共享的 Collator（此前比较函数里每次两趟 nodes.find）
@@ -6427,14 +6437,28 @@
         sbNeighborsSec.hidden = true;
       }
 
-      renderSidebarItemLinks(item);
-      loadSidebarItemLinks(item, d.id);
-
       sbOpenLink.href = detailUrl;
 
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
       scheduleSidebarViewportSync();
+      // 目录尚未到达：先按空目录渲染，取回后若侧栏仍停在该节点再补 tags / related
+      if (!indexItems.length) {
+        ensureCatalog().then(ok => { if (ok && sidebarNodeId === d.id) renderSidebarCatalogParts(d); });
+      }
+    }
+
+    /** 侧栏里依赖目录（site-catalog）的部分：tags、related / 来源链接 */
+    function renderSidebarCatalogParts(d) {
+      const item = indexItemByKey.get(d.id);
+      const tags = item?.tags || [];
+      let tagsHtml = '';
+      for (let i = 0; i < tags.length; i++) {
+        tagsHtml += `<span class="sb-tag">${escapeHtml(tags[i])}</span>`;
+      }
+      sbTags.innerHTML = tagsHtml;
+      renderSidebarItemLinks(item);
+      loadSidebarItemLinks(item, d.id);
     }
     function closeSidebar() {
       sidebarNodeId = null;
