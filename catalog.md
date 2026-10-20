@@ -507,6 +507,7 @@
 - [Drake (机器人工具箱)](wiki/entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [Draw.io Scientific Illustrator](wiki/entities/drawio-scientific-illustrator.md) — Draw.io Scientific Illustrator**（[icebird1998/drawio-scientific-illustrator](https://github.com/ic `📅unknown` `[entity_page]`
 - [Drawnix（开源一体化白板）](wiki/entities/drawnix.md) — Drawnix** 是一个基于 Plait 插件框架的开源白板应用：用户可在同一无限画布上制作思维导图、流程图和自由绘图，并把 Mermaid / Markdown 内容转换为可编辑的画布元素。 `📅unknown` `[entity_page]`
+- [Dream-1](wiki/entities/dreamlabs-dream-1.md) — Dream-1 是 Dream Labs 提供的 World Action Model API，目标是让双臂平行夹爪机器人通过公共 API 尝试执行未见任务，而无需先为新机器人单独训练模型。 `📅unknown` `[entity_page]`
 - [DreamWaQ++（障碍感知四足多模态强化学习）](wiki/entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., arXiv:2409.19709，**IEEE T-RO 20 `📅unknown` `[entity_page]`
 - [drift_drl（High-speed Autonomous Drifting with DRL）](wiki/entities/drift-drl.md) — drift_drl** 是 Cai 等提出的 **高速自主漂移深度强化学习** 方法与官方实现（*IEEE RA-L & ICRA 2020*），在 **CARLA 0.9.5 定制仿真** 上训 `📅unknown` `[entity_page]`
 - [drive-game（Nürburgring Drive）](wiki/entities/drive-game.md) — drive-game** 是面向 **纽博格林** 等真实赛道的 **浏览器/Android 第一人称驾驶模拟器**：**Three.js** 渲染叠在自研 **240 Hz** 车辆物理之上，赛 `📅unknown` `[entity_page]`
