@@ -3049,7 +3049,7 @@
       const k = d3.zoomTransform(svg.node()).k;
       lastLabelSyncK = k;
       label.each(function (d) {
-        const op = computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d);
+        const op = computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d) * sidebarDimFactorOf(d);
         if (op > 0.02) {
           if (this.style.display === 'none') this.style.display = '';
           this.style.opacity = String(op);
@@ -4943,6 +4943,13 @@
     const neighborSet = new Set();
     // 选中态（侧边栏打开）下允许悬停浮窗的节点：选中节点 + 直连邻居；非选中态为 null
     let sidebarFocusIds = null;
+    let sidebarSecondaryIds = null;
+    /** 侧栏聚焦时的淡化系数：选中节点与直连邻居 1、二跳 0.4、其余 0.05；未聚焦为 1 */
+    function sidebarDimFactorOf(n) {
+      if (!sidebarFocusIds) return 1;
+      if (sidebarFocusIds.has(n.id)) return 1;
+      return sidebarSecondaryIds && sidebarSecondaryIds.has(n.id) ? 0.4 : 0.05;
+    }
 
     function buildNeighborSet(d) {
       neighborSet.clear();
@@ -5462,9 +5469,10 @@
         const ok = d.__filterOk !== false;
         const hub = !!d.__filterHub;
         const dim = recencyDimOf(d);
-        this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
+        this.style.opacity = '';
         parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
         parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
+        parts.circle.setAttribute('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * dim : 0.05);
       });
       setEdgePaintMode('filter');
     }
@@ -5488,8 +5496,9 @@
         d.__filterOk = ok;
         d.__filterHub = hub;
         this.classList.toggle('node-depth-hub', hub);
-        // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
-        this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
+        // 不再用 <g> 组级 opacity 淡化：每个半透明组各成一个合成层，平移时多约两成栅格。
+        // 淡化全交给下面 circle / glow 的 fill-opacity、stroke-opacity；写空值清掉时序模式留下的残留
+        this.style.opacity = '';
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         this.style.pointerEvents = hasFilter && !ok ? 'none' : '';
 
@@ -6372,13 +6381,16 @@
       sidebarFocusIds = new Set([d.id, ...direct]);
       sidebarNode = d;
 
+      sidebarSecondaryIds = secondary;
+
       const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
+      // 非邻居淡化写在 circle 的 fill / stroke-opacity 上，而不是 <g> 组级 opacity（见 applyFilters）
+      const dimFactor = n => tlShown(n.id) ? sidebarDimFactorOf(n) * recencyDimOf(n) : 0;
       node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 * recencyDimOf(n) : 0);
-      node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? recencyDimOf(n) : 0);
-      node.style('opacity', n => {
-        if (!tlShown(n.id)) return 0;
-        return ((n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05)) * recencyDimOf(n);
-      });
+      node.select('.node-circle')
+        .attr('fill-opacity', dimFactor)
+        .attr('stroke-opacity', n => 0.35 * dimFactor(n));
+      sync2DNodeLabels();
       // 时序模式下未显现的边由边层绘制时跳过（判据同 tlShown）
       setEdgePaintMode('sidebar', d.id, nodeColor(d));
 
@@ -6391,6 +6403,7 @@
     function clearNodeNeighborHighlight(options) {
       const opts = options || {};
       sidebarFocusIds = null;
+      sidebarSecondaryIds = null;
       sidebarNode = null;
       if (!opts.keepPinned) pinnedNode = null;
       if (graph3dView && is3DView()) graph3dView.clearSidebarHighlight();
@@ -6401,6 +6414,7 @@
         return;
       }
       restoreFilterAppearance();   // 内部切回 filter 上色模式；不重跑筛选、不重建子图
+      sync2DNodeLabels();          // 标签淡化系数随聚焦态变
     }
 
     /* related / source_links / paper_notebook_links 不随目录下发：选中节点时按需取该页正文 JSON
