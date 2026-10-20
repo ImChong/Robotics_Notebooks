@@ -13,6 +13,7 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md
 ---
@@ -69,6 +70,7 @@ sources:
 - [embodied-scaling-laws](../concepts/embodied-scaling-laws.md)
 - [vla](../methods/vla.md)
 - [imitation-learning](../methods/imitation-learning.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 
