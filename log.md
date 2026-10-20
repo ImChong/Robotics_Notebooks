@@ -211,6 +211,8 @@ op: ingest
 - **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
 - **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
 
+## [2026-10-20] ingest | 三项论文/项目收录：Rubik Skills、Blind Precise Assembly/mjfit、ActiveAlign；补充三篇实体页及互链，记录公开实现边界
+
 ## [2026-10-20] ingest | sources/sites/unitree-uniuni.md — 归档宇树 UniUni 桌面集群编舞系统，新增实体页并关联人形多机协调；闭源软件
 
 ## [2026-10-20] ingest | 公众号综述「全球85个具身智能数据集全景」：新增44个数据集节点（dataset-*），复用41个已有节点，总览页 embodied-dataset-panorama-2026-10 给出逐项去重映射
