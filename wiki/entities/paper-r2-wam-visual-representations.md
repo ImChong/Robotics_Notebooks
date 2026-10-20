@@ -94,7 +94,7 @@ R²-WAM 是一项受控实证研究及其实例化配方，用来回答 WAM 应�
 ## 参考来源
 
 - [论文摘录](../../sources/papers/r2_wam_visual_representations_arxiv_2610_13024.md)
-- [项目页核查](../../sources/sites/r2-wam-project.md)
+- [项目页核查](../../sources/sites/r2-wam-visual-representations-project.md)
 
 ## 推荐继续阅读
 
