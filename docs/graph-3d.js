@@ -182,6 +182,8 @@
     var onNodeClick = opts.onNodeClick;
     var onNodeHover = opts.onNodeHover;
     var onPointerMove = opts.onPointerMove;
+    // WebGL 上下文丢失且未能恢复时通知宿主（graph.html 据此回退 2D）
+    var onContextLost = opts.onContextLost;
     var getVisibleNodeIds = opts.getVisibleNodeIds || function () { return new Set(); };
     var hasActiveFilter = opts.hasActiveFilter || function () { return false; };
     var edgeHighlightsWithNode = opts.edgeHighlightsWithNode;
@@ -1244,6 +1246,35 @@
       window.requestAnimationFrame(tryInstall);
     }
 
+    /* ── WebGL 上下文丢失 ──
+       手机（尤其 iOS Safari）在内存压力下会丢掉上下文；three 自身只在 restored 时重建 GL 状态，
+       若浏览器不再恢复，库的渲染环会对着死上下文空转、画面黑屏且无提示。这里：丢失即暂停渲染环，
+       CONTEXT_RESTORE_GRACE_MS 内恢复则刷新外观继续，否则通知宿主回退 2D。 */
+    var CONTEXT_RESTORE_GRACE_MS = 3000;
+    var contextLostTimer = 0;
+    var contextLost = false;
+    function bindContextLossHandlers(canvasEl) {
+      canvasEl.addEventListener('webglcontextlost', function (ev) {
+        ev.preventDefault();   // 允许浏览器随后派发 webglcontextrestored
+        contextLost = true;
+        pauseRenderLoop();
+        if (contextLostTimer) window.clearTimeout(contextLostTimer);
+        contextLostTimer = window.setTimeout(function () {
+          contextLostTimer = 0;
+          if (!contextLost) return;
+          if (onContextLost) onContextLost();
+        }, CONTEXT_RESTORE_GRACE_MS);
+      });
+      canvasEl.addEventListener('webglcontextrestored', function () {
+        contextLost = false;
+        if (contextLostTimer) { window.clearTimeout(contextLostTimer); contextLostTimer = 0; }
+        if (!graph || container.hidden) return;
+        refreshAppearance();
+        resumeRenderLoop();
+        forceRendererResize();
+      });
+    }
+
     /* ── 拾取范围与节奏 ──
        库在渲染环里每 50 ms 对整个场景递归 raycast（开连线时 6 万对象，指针不动也跑），
        而本页没有任何连线的 hover / click 行为。连线对象放到 LINK_LAYER：库的 Raycaster 只查
@@ -1764,6 +1795,7 @@
         if (renderer && typeof renderer.setPixelRatio === 'function') {
           renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowEnd() ? 1 : 1.5));
         }
+        if (renderer && renderer.domElement) bindContextLossHandlers(renderer.domElement);
       } catch (_e) { /* 渲染器未就绪时沿用库默认 */ }
       graph.pauseAnimation();
       bindGraphInstance();
@@ -2086,6 +2118,16 @@
         };
       },
 
+      // 验证用：模拟 WebGL 上下文丢失（restoreAfterMs > 0 则随后恢复）
+      simulateContextLoss: function (restoreAfterMs) {
+        var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;
+        var gl = r && typeof r.getContext === 'function' ? r.getContext() : null;
+        var ext = gl && gl.getExtension('WEBGL_lose_context');
+        if (!ext) return false;
+        ext.loseContext();
+        if (restoreAfterMs > 0) window.setTimeout(function () { ext.restoreContext(); }, restoreAfterMs);
+        return true;
+      },
       // 验证用：节点屏幕坐标与库指针拾取开关状态（非业务 UI）
       getNodeScreenPos: function (id) {
         var n = nodeById.get(id);

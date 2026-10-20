@@ -2848,6 +2848,12 @@
           hideTooltip();
           closeSidebar();
         },
+        onContextLost: () => {
+          // WebGL 上下文丢失且 3 s 内未恢复：回退 2D 并提示，而不是停在黑屏
+          if (!is3DView()) return;
+          setSpatialViewMode('2d');
+          window.alert('3D 渲染上下文已丢失（通常是设备内存不足），已恢复 2D 视图。');
+        },
       });
         // 供验证脚本程序化 dolly / 读取 zoom scale（非业务 UI）
         window.__RN_GRAPH3D_VIEW__ = graph3dView;
