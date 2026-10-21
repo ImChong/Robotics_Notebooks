@@ -4662,6 +4662,7 @@
 - [SurgCast（arXiv:2610.15645）](wiki/entities/paper-surgcast-surgical-world-model-skeletons.md) — SurgCast**（*SurgCast: Action-Conditioned Future Skeletons for Controllable Surgical World Models*， `📅unknown` `[entity_page]`
 - [SurgLAT：腹腔镜要跟的是意图轨迹，不是器械中心](wiki/entities/paper-surglat.md) — SurgLAT**（*Surgical Latent Attention Tracking*；[arXiv:2608.07876](https://arxiv.org/abs/2608.07876 `📅unknown` `[entity_page]`
 - [Sim2Real RL 综述（2502.13187）](wiki/entities/paper-survey-sim2real-rl-foundation-models.md) — A Survey of Sim-to-Real Methods in RL: Progress, Prospects and Challenges with Foundation Models `📅unknown` `[entity_page]`
+- [SWAP：测试时可控的人形全身避障](wiki/entities/paper-swap-humanoid-collision-avoidance.md) — SWAP**（*Steerable Whole-body Avoidance Policy*， [arXiv:2610.25711](https://arxiv.org/abs/2610.2571 `📅unknown` `[entity_page]`
 - [SWAP：对称等变世界模型四足跑酷](wiki/entities/paper-swap-parkour.md) — SWAP**（*Symmetric Equivariant World-Model for Agile Robot Parkour*，Lan et al., [arXiv:2606.19928 `📅unknown` `[entity_page]`
 - [野外微型飞行机器人蜂群（Swarm of Micro Flying Robots in the Wild）](wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) — Swarm of micro flying robots in the wild**（Xin Zhou、Xiangyong Wen、Zhepei Wang 等，ZJU FAST-Lab，Chao  `📅unknown` `[entity_page]`
 - [SwarmNxt（开源软硬件敏捷空中蜂群平台）](wiki/entities/paper-swarmnxt.md) — SwarmNxt**（*Open-source Software-Hardware Platform for Fast and Agile Aerial Swarms*，Toumieh、Mistr `📅unknown` `[entity_page]`
