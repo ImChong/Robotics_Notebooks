@@ -525,7 +525,6 @@
         // 力引擎推进时节点世界坐标在变 → 质心缓存失效
         invalidateCommunityCentroids3D();
         syncCommunityLabelPositions();
-        if (opts.onPositionsChange) opts.onPositionsChange();
         if (!areNodeLabelsVisible()) return;
         maybeMarkLabelsLayoutReady();
         syncLabelPositions();
@@ -571,7 +570,6 @@
           cameraLabelSyncRaf = 0;
           if (!graph || container.hidden) return;
           syncCommunityLabelPositions();
-          if (opts.onPositionsChange) opts.onPositionsChange();
           if (areNodeLabelsVisible()) syncLabelPositions();
         });
       });
@@ -784,7 +782,6 @@
       syncLabelPositions();
       syncLabelStyles();
       syncCommunityLabelPositions();
-      if (opts.onPositionsChange) opts.onPositionsChange();
     }
 
     // 连线记录只建一次并在每次 graphData 复用：库的数据映射按对象身份 diff，
@@ -1154,10 +1151,58 @@
     // 逐节点外观。此前用 scene.traverse 遍历整棵场景树（节点 + 每条边各一个对象，
     // 全图约 3.8 万个），其中绝大多数是连线 mesh，白跑一遍判断。改为直接遍历数据侧的
     // nodes3d 并取库绑定的 __threeObj，工作量降到节点数量级。
+    // 选中路线时对应 roadmap 节点闪烁：节点本身不变，外包一层闪烁的半透明球（对应 2D 的 .node-glow）。
+    // 光晕是节点 mesh 的子对象，随位置与缩放走；材质独立持有，不碰共享材质缓存。
+    var hubBlinkItems = [];
+    var hubBlinkRaf = 0;
+    var hubBlinkReduced = window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+    function removeHubHalos() {
+      hubBlinkItems.forEach(function (item) {
+        if (item.halo.parent) item.halo.parent.remove(item.halo);
+        item.halo.material.dispose();
+      });
+      hubBlinkItems = [];
+    }
+    function attachHubHalo(d, obj) {
+      var material = new bundledThree.MeshLambertMaterial({
+        color: getNodeColor(d), transparent: true, opacity: 0.45, depthWrite: false,
+      });
+      if (material.emissive) material.emissive.set(getNodeColor(d));
+      var halo = new bundledThree.Mesh(ensureSharedSphereGeometry(bundledThree), material);
+      halo.scale.set(1.9, 1.9, 1.9);   // 相对节点球半径的倍数（子对象继承节点缩放）
+      halo.raycast = function () {};   // 不抢节点的悬停 / 点击
+      obj.add(halo);
+      hubBlinkItems.push({ d: d, halo: halo });
+    }
+    function hubBlinkTick(now) {
+      hubBlinkRaf = 0;
+      if (!hubBlinkItems.length || container.hidden || hubBlinkReduced.matches) return;
+      // 与 2D 同为 1.2s 周期，透明度在 0.08 ~ 0.45 间余弦起伏
+      var phase = 0.5 + 0.5 * Math.cos((now / 1200) * 2 * Math.PI);
+      for (var i = 0; i < hubBlinkItems.length; i++) {
+        var item = hubBlinkItems[i];
+        // 库重建节点对象后旧 mesh 会脱离场景，每帧按数据侧重新挂接
+        var obj = item.d.__threeObj;
+        if (!obj || !obj.isMesh) continue;
+        if (item.halo.parent !== obj) obj.add(item.halo);
+        item.halo.visible = obj.visible;
+        item.halo.material.opacity = 0.08 + 0.37 * phase;
+      }
+      hubBlinkRaf = window.requestAnimationFrame(hubBlinkTick);
+    }
+    function syncHubBlink() {
+      if (hubBlinkItems.length && !hubBlinkRaf && !hubBlinkReduced.matches) {
+        hubBlinkRaf = window.requestAnimationFrame(hubBlinkTick);
+        wakeRender();
+      }
+    }
+
     function updateNodeMeshes() {
       if (!graph || !bundledThree) return;
       var data = graph.graphData();
       var list = (data && data.nodes) || nodes3d;
+      removeHubHalos();
       for (var i = 0; i < list.length; i++) {
         var d = list[i];
         var obj = d && d.__threeObj;
@@ -1168,7 +1213,9 @@
         var mat = nodeMaterialFor(getNodeColor(d), opacity);
         if (obj.material !== mat) obj.material = mat;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
+        if (obj.visible && isNodeLabelHub(d)) attachHubHalo(d, obj);
       }
+      syncHubBlink();
     }
 
     // 连线加粗：linkWidth 访问器只在「创建连线几何」时把半径烘进圆柱，事后改它不会重建已渲染
@@ -1384,7 +1431,7 @@
     function tryIdlePause() {
       idlePauseTimer = 0;
       if (!graph || container.hidden || idlePaused) return;
-      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null) {
+      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null || hubBlinkRaf) {
         scheduleIdlePause();
         return;
       }
@@ -1870,18 +1917,6 @@
     }
 
     return {
-      // 路线叙事层使用同一相机投影；不向 3D 力模拟添加虚构知识边。
-      projectNode: function (id) {
-        var n = nodeById.get(id);
-        if (!graph || container.hidden || !n || n.x == null) return null;
-        var camera = graph.camera();
-        var z = n.z || 0;
-        var forward = camera.getWorldDirection(camera.position.clone());
-        var dot = (n.x - camera.position.x) * forward.x
-          + (n.y - camera.position.y) * forward.y + (z - camera.position.z) * forward.z;
-        if (dot <= 0) return null;
-        return graph.graph2ScreenCoords(n.x, n.y, z);
-      },
       show: function () {
         container.hidden = false;
         showLabelLayer();

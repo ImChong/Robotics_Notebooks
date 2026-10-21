@@ -290,6 +290,20 @@
       stroke-opacity: 0.85 !important;
       filter: drop-shadow(0 0 6px rgba(91,156,246, 0.45));
     }
+    /* 选中路线时，对应 roadmap 节点闪烁：光晕与外发光同频脉动，减少动态效果下保持静态高亮 */
+    @keyframes depth-hub-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+    @keyframes depth-hub-halo {
+      0%, 100% { filter: drop-shadow(0 0 6px rgba(91,156,246, 0.45)); }
+      50% { filter: drop-shadow(0 0 14px rgba(91,156,246, 0.95)); }
+    }
+    .node-depth-hub .node-glow { animation: depth-hub-blink 1.2s ease-in-out infinite; }
+    .node-depth-hub .node-circle { animation: depth-hub-halo 1.2s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .node-depth-hub .node-glow, .node-depth-hub .node-circle { animation: none; }
+    }
     .node-depth-hub .node-label {
       font-weight: 700;
       fill: rgba(255, 255, 255, 0.92) !important;
@@ -402,28 +416,6 @@
     }
     #graph-canvas-3d[hidden] { display: none !important; }
     #graph-canvas-3d .scene-nav-info { display: none !important; }
-    #graph-route-trace {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 3;
-      --route-trace-color: var(--accent, #5b9cf6);
-      --route-trace-glint: #d8e8fd;
-      --route-trace-glint: color-mix(in srgb, var(--accent, #5b9cf6) 24%, white);
-    }
-    [data-theme="light"] #graph-route-trace {
-      --route-trace-glint: var(--accent-hover, #1a5bb8);
-    }
-    [data-theme="light"] #graph-route-trace .route-trace-core { stroke-opacity: 0.8; }
-    .route-trace-halo { filter: blur(1.5px); }
-    .route-trace-flow { animation: route-trace-flow 1.8s linear infinite; }
-    @keyframes route-trace-flow { to { stroke-dashoffset: -30; } }
-    #graph-route-trace.route-trace-reduced .route-trace-flow { display: none; animation: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .route-trace-flow { display: none; animation: none; }
-    }
     .graph-3d-labels {
       position: absolute;
       inset: 0;
@@ -445,6 +437,10 @@
     }
     .graph-3d-label.is-depth-hub {
       font-weight: 700;
+      animation: depth-hub-blink 1.2s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .graph-3d-label.is-depth-hub { animation: none; }
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
        字号/内边距由 graph-3d.js 按社区节点数 × 画布短边比例缩放（约 7–22px），此处仅作兜底 */
@@ -1939,7 +1935,6 @@
     <canvas id="graph-edge-canvas" aria-hidden="true"></canvas>
     <svg id="graph-canvas"></svg>
     <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
-    <svg id="graph-route-trace" aria-hidden="true" style="display:none"></svg>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
     <div id="depth-intro-banner" class="depth-intro-banner" hidden>
       <div class="depth-intro-head">
@@ -2167,7 +2162,6 @@
   <script src="graph-force-params.js"></script>
   <script src="graph-3d.js"></script>
   <script src="depth-filters.js"></script>
-  <script src="graph-route-trace.js"></script>
   <script>
   (async function () {
     /* ── 颜色 & 类型标签 ── */
@@ -2598,8 +2592,6 @@
     const DEPTH_FILTERS = window.RNDepthFilters.DEPTH_FILTERS;
     const DEPTH_META = window.RNDepthFilters.DEPTH_META;
     let currentDepth = 'all';
-    let routeTrace = null;
-    let routeNodeIds = new Set();
     const topicIntroBanner = document.getElementById('depth-intro-banner');
     const topicIntroBadge = document.getElementById('depth-intro-badge');
     const topicIntroText = document.getElementById('depth-intro-text');
@@ -2636,7 +2628,7 @@
     }
 
     function nodeMatchesDepth(d) {
-      return routeNodeIds.has(d.id) || window.RNDepthFilters.matches(d, currentDepth);
+      return window.RNDepthFilters.matches(d, currentDepth);
     }
 
     /* ── 可变物理参数 ── */
@@ -2796,7 +2788,6 @@
         nodes,
         edges,
         resolveSourceNode: (id) => nodeById2D.get(id),
-        onPositionsChange: () => { if (routeTrace && is3DView()) routeTrace.render(); },
         getNodeColor: nodeColor,
         getNodeDim: recencyDimOf,
         getNodeRadius: scaledRadius,
@@ -3014,7 +3005,6 @@
       syncTimeline3DState();
       syncMagneticCheckbox();
       updateForces();
-      if (routeTrace) routeTrace.render();
       if (initializationFailed) {
         window.alert('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
       }
@@ -4152,7 +4142,6 @@
         // 边层不在 SVG 里，缩放/平移需要同一变换并重绘（按帧合并，避免一次手势多次重绘）
         edgeTransform = ev.transform;
         scheduleEdgeDraw();
-        if (routeTrace) routeTrace.render();
         userZoomed2D = true;
         if (ev.sourceEvent) userGestureZoom2D = true;
         // 标签可见性只随缩放比例变，纯平移不重算；全隐藏态下 sync 本身也只写一次
@@ -4678,7 +4667,6 @@
       // 一端被筛掉的边会留在旧坐标上，这里改为始终跟随两端当前位置。
       drawEdges();
       updateCommunityLabels();
-      if (routeTrace) routeTrace.render();
     }
 
     function finishSimulationLoad() {
@@ -5426,22 +5414,8 @@
       }).join(''));
     }
     renderDepthChips();
-    routeTrace = window.RNGraphRouteTrace.create({
-      svg: document.getElementById('graph-route-trace'),
-      isActive: () => currentDepth !== 'all' && !timelineAnimating,
-      isVisible: id => visibleNodeIds.has(id),
-      project: id => {
-        if (is3DView()) return graph3dView?.projectNode(id);
-        const n = nodeById2D.get(id);
-        return n ? { x: n.x * edgeTransform.k + edgeTransform.x,
-          y: n.y * edgeTransform.k + edgeTransform.y } : null;
-      },
-    });
     function setActiveTopic(topic) {
       currentDepth = topic || 'all';
-      const hub = nodeById2D.get(DEPTH_META[currentDepth]?.wikiPath);
-      const order = currentDepth === 'all' ? [] : (hub?.route_order || []);
-      routeNodeIds = new Set(order);
       let activeBtn = null;
       if (topicChipsEl) {
         topicChipsEl.querySelectorAll('.filter-depth-chip').forEach(btn => {
@@ -5454,7 +5428,6 @@
       updateTopicIntroBanner();
       applyFilters();
       updateFilterCount();
-      routeTrace.setRoute(order);
       if (currentDepth !== 'all') fitToVisibleNodes();
       else fitToScreen();
     }
@@ -5584,7 +5557,6 @@
       syncFilterSimulation(hasFilter);
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
-      if (routeTrace) routeTrace.render();
       if (searchQuery) flyToVisible();
     }
 
@@ -5918,7 +5890,6 @@
 
       timelineAnimating = true;
       timelineIdx = 0;
-      if (routeTrace) routeTrace.render();
       timelineLastFit = 0;
       timelineRevealedIds.clear();
 
@@ -6003,7 +5974,6 @@
 
       timeline3D = true;
       timelineAnimating = true;
-      if (routeTrace) routeTrace.render();
       timelineIdx = 0;
       timelineLastFit = 0;
 
@@ -6183,8 +6153,7 @@
         {
           pad: isMobile ? 56 : 140,
           minSpan: isMobile ? 120 : 200,
-          // 路线可能跨越多个远距离社区，允许缩小到全图下限，避免路径端点被裁掉。
-          minScale: isMobile || currentDepth !== 'all' ? GRAPH_ZOOM_MIN : 0.4,
+          minScale: isMobile ? GRAPH_ZOOM_MIN : 0.4,
         }
       );
       applyGraphFitTransform(transform);
@@ -6837,7 +6806,6 @@
       syncCommunityLabels: () => updateCommunityLabels(),
       // G4：边改 canvas 后 DOM 侧只剩节点，边的成本在此单独计时
       drawEdges: () => drawEdges(),
-      routeTraceState: () => routeTrace.getState(),
       edgeDrawnCount: () => edgeDrawnCount,
       edgePaintMode: () => edgePaintMode,
       edgeCanvasSize: () => (edgeCanvas
