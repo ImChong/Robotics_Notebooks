@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, course, video, nvidia, gtc, physical-ai, robotics, humanoid, conference]
 status: complete
-updated: 2026-09-06
+updated: 2026-10-21
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-cosmos.md
@@ -14,9 +14,10 @@ related:
   - ./isaac-sim.md
 sources:
   - ../../sources/sites/nvidia-gtc.md
+  - ../../sources/blogs/nvidia_gtc_berlin_2026_live_updates.md
   - ../../sources/courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md
   - ../../sources/courses/nvidia_gtc_2025_humanoid_developer_day.md
-summary: "NVIDIA GTC 是官方 AI 大会与 On-Demand 回放门户；机器人线含 GTC 2025 Physical AI/Robotics 播放列表（13 场）与 Humanoid Developer Day（6 场），覆盖 Cosmos、GR00T、Newton、工业数字孪生与通才人形愿景。"
+summary: "NVIDIA GTC 是官方 AI 大会与 On-Demand 回放门户；机器人线含 GTC 2025 Physical AI/Robotics 播放列表与 Humanoid Developer Day，并收录 GTC Berlin 2026 Agile ONE SN、Microduck 仿真训练和工厂数字孪生案例。"
 ---
 
 # NVIDIA GTC（机器人 / Physical AI 一手资料）
@@ -43,6 +44,18 @@ summary: "NVIDIA GTC 是官方 AI 大会与 On-Demand 回放门户；机器人�
 - **一手发布与路线：** GTC 2025 **Humanoid Developer Day** 集中发布 **Isaac GR00T 四部分架构**、**MuJoCo-Warp + Newton** 合作叙事；Physical AI/Robotics 播放列表由 **Ming-Yu Liu** 主讲 **Cosmos WFM**（[S72431](https://www.nvidia.com/en-us/on-demand/session/gtc25-s72431/)）。
 - **生态案例密度高：** 工业数字孪生圆桌含 Agility、Intrinsic、Foxconn；通才人形圆桌含 1X、Boston Dynamics、Skild AI——适合选型时对照 [Isaac GR00T](./isaac-gr00t.md)、[Newton](./newton-physics.md)、[Cosmos](./nvidia-cosmos.md)。
 - **与 resources 播放列表衔接：** [Robotics Fundamentals 播放列表](../../sources/sites/nvidia-robotics-fundamentals-playlist.md) 中多条 GTC 片段（如 *Physical AI for the Real World* → [S81479](https://www.nvidia.com/en-us/on-demand/session/gtc26-s81479/)）可回溯到本页索引。
+
+## GTC Berlin 2026（2026-10-20—22）
+
+GTC Berlin 的官方新闻动态汇总见[来源归档](../../sources/blogs/nvidia_gtc_berlin_2026_live_updates.md)。活动报道聚焦 Physical AI 产品路线与工业应用：
+
+| 主题 | 官方动态 | 阅读关联 |
+|------|----------|----------|
+| 参考人形 | 主题演讲介绍基于 Isaac GR00T 的 31-DoF Agile ONE SN，称计划于 2027 年推出；同时展示 Capture → 仿真训练 → 云端训练 → 实机评估的 Microduck 工作流 | [Isaac GR00T](./isaac-gr00t.md)、[Isaac Lab](./isaac-lab.md)、[Isaac Sim](./isaac-sim.md) |
+| 抓取工作坊 | Build-a-Claw 活动以开放模型和 NVIDIA 平台搭建机器人夹爪，报道展示通过失败调整抓取的过程 | [NVIDIA GTC Berlin 汇总](../../sources/blogs/nvidia_gtc_berlin_2026_live_updates.md) |
+| 工厂数字孪生 | 西门子在数字孪生中测试工厂计划变更；工业案例也介绍移动机器人 / 人形机器人物流仿真和 Cosmos 合成缺陷图像 | [NVIDIA Omniverse](./nvidia-omniverse.md)、[NVIDIA Cosmos](./nvidia-cosmos.md) |
+
+以上为厂商与合作方新闻及演示摘要，不能替代可复现实验、独立评测或产品代码的开放状态核查。
 
 ## 核心结构
 
