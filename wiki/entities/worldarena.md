@@ -1,141 +1,113 @@
 ---
 type: entity
-tags:
-- vla
-- world-model
-- imitation-learning
-- hmi-opensource-table
-- repo
-- tsinghua
-- paper
-- awesome-world-models
-- sun254667-wm
-status: draft
-updated: 2026-10-06
-summary: WorldArena：十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。
-related:
-- ../methods/vla.md
-- ../methods/imitation-learning.md
-- ../entities/humanoid-motion-intelligence.md
-- ../queries/hmi-opensource-projects-coverage.md
-- ../entities/awesome-world-models.md
-- ../overview/sun-awesome-wm-technology-map.md
-- ../methods/generative-world-models.md
-- ../methods/model-based-rl.md
-- ../tasks/manipulation.md
-- ../tasks/locomotion.md
-sources:
-- ../../sources/repos/worldarena.md
-- ../../sources/repos/humanoid-motion-intelligence.md
-- ../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md
-- ../../sources/papers/sun_awesome_wm_catalog.md
-- ../../sources/repos/awesome-world-models.md
+tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, tsinghua]
+status: complete
+updated: 2026-10-16
+summary: "WorldArena 1.0 以 16 项视频感知指标评估具身世界模型的生成质量，并延伸到数据引擎、策略评估和动作规划；Track 1 专测视频质量，Track 2 专测功能效用。"
 project_id: worldarena
 arxiv: '2602.08971'
-venue: arXiv 2025
+project: https://world-arena.ai/
+code: https://github.com/tsinghua-fib-lab/WorldArena
+related:
+  - ../methods/generative-world-models.md
+  - ../methods/model-based-rl.md
+  - ../tasks/manipulation.md
+  - ./ewmbench.md
+  - ./worldolympiad.md
+  - ./awesome-world-models.md
+  - ./humanoid-motion-intelligence.md
+sources:
+  - ../../sources/repos/worldarena.md
+  - ../../sources/sites/worldarena.md
+  - ../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md
 ---
 
-# WorldArena
-
-[WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md) 的「世界模型、VLA与Agent」分组，是本库为该入口建立的独立详情节点。
+# WorldArena（具身世界模型评测）
 
 ## 一句话定义
 
-十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。
+WorldArena 是具身世界模型统一评测套件：WorldArena 1.0 的 Track 1 测生成视频质量，Track 2 测模型作为数据引擎、策略评估器和动作规划器的功能价值，并以 EWMScore 汇总多维表现。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLA | Vision-Language-Action | 视觉语言条件动作策略 |
-| IL | Imitation Learning | 从示范学习控制 |
-| WM | World Model | 预测未来观测/状态的模型 |
-| BC | Behavior Cloning | 监督式模仿基线 |
-
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| EWM | Embodied World Model | 面向具身任务的环境状态/未来预测模型 |
+| EWMScore | Embodied World Model Score | WorldArena 汇总多项归一化指标的综合分 |
+| IDM | Inverse Dynamics Model | 从状态变化估计动作的模型；用于动作规划评测 |
+| OOD | Out-of-Distribution | 与训练分布不同的评测样本 |
 
 ## 为什么重要
 
-- **主表工程定位清晰**：该条目被放在「世界模型、VLA与Agent」下，说明它服务的是这条人形运动智能问题链上的具体环节，而不是泛泛的链接收藏。
-- **可对照开源边界**：主表已概括其可复现范围（训练/推理/部署或仅方法页）；选型时应先读本页「开源状态」，再回官方 README / 项目页核对许可证与平台支持。
-- **便于知识库交叉引用**：独立节点让路线图、对比页与 ingest 日志可以稳定链接，避免只在策展列表里「点名」却无法下钻。
+- **画面逼真不等于策略有用。** WorldArena 将视频感知质量与下游功能评测放在同一套框架里，能暴露感知指标和实际任务效用之间的落差。
+- **Track 1 可定位生成视频的具体失效类型。** 六个维度覆盖外观、运动、跨帧内容保持、物理交互、3D几何和指令/动作可控性。
+- **Track 2 提供功能侧验证。** 它分别检查合成数据是否能提升策略、世界模型能否对策略排序、以及是否能支持动作规划；这些结果不应被 Track 1 的视频质量分替代。
 
-## 核心原理
+## 核心结构
 
-### 在技术路线中的位置
+### WorldArena 1.0 两条赛道
 
-| 字段 | 内容 |
+| 赛道 | 测什么 | 公开评测方式 |
+|------|--------|--------------|
+| **Track 1：Video Quality** | 生成视频的视觉/运动质量、场景一致、物理合理、3D准确和可控性 | 提供首帧与文本指令或动作序列，生成对应视频，再运行官方指标管线；官方指南要求 24 fps，文本驱动固定 121 帧，分辨率建议至少 640×480 |
+| **Track 2：Functional Performance** | 世界模型对策略学习和决策的效用 | Data Engine、Policy Evaluator；论文和项目页还描述 Action Planner 评测 |
+
+Track 1 的 16 项基础指标归为六个维度：
+
+| 维度 | 指标 |
 |------|------|
-| 主表分组 | 世界模型、VLA与Agent |
-| 官方入口 | https://github.com/tsinghua-fib-lab/WorldArena |
-| 开源状态（据主表） | 已开源（以官方仓库 README 为准） |
+| 视觉质量 | Image Quality、Aesthetic Quality、JEPA Similarity |
+| 运动质量 | Dynamic Degree、Flow Score、Motion Smoothness |
+| 内容一致性 | Subject Consistency、Background Consistency、Photometric Consistency |
+| 物理遵循 | Interaction Quality、Trajectory Accuracy |
+| 3D 准确性 | Depth Accuracy、Perspectivity |
+| 可控性 | Instruction Following、Semantic Alignment、Action Following |
 
-主表给出的技术定位可压缩为：
+**EWMScore** 是 16 个归一化基础指标缩放到 0–100 后的算术平均。读分时仍需查看分项：单一总分会掩盖视频外观、动作遵循和空间稳定性的不同强弱。
 
-> 十六项感知指标与功能任务把“视频生成更像”拆成可测能力，2.0又跨RoboTwin、LIBERO和真实ALOHA检查这些指标能否转化为策略收益。把新模型接入数据引擎、策略排序和动作规划三条路径，可以检验视觉质量是否真正转成控制收益。
-
-阅读时建议抓住三点：**(1) 输入是什么数据或观测；(2) 输出是参考轨迹、策略、数据还是中间件能力；(3) 公开材料能否支撑训练/部署复现。**
-
-### 流程直觉（对照主表叙事）
+### Track 1 复现流程
 
 ```mermaid
 flowchart LR
-  A["上游数据 / 观测 / 配置"] --> B["WorldArena"]
-  B --> C["下游策略 / 部署 / 评测"]
+  D[官方测试集与首帧] --> C[指令或动作条件生成]
+  C --> V[对齐帧率与视频长度]
+  V --> M[16项视频质量指标]
+  M --> S[维度分数与EWMScore]
 ```
 
-具体模块边界以官方文档为准；本页不替代 README。
+官方测试集基于 RoboTwin 2.0 Clean-50 配置。评测指南要求使用公布的测试集；文本驱动视频为 121 帧，动作驱动视频需与动作轨迹长度对齐。Challenge 1.0 已结束，官方评测资源已公开，可按仓库指南本地评测。
 
 ## 工程实践
 
-1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。
-2. **对齐本体与接口**：人形项目需核对关节顺序、控制频率、观测契约与仿真后端（Isaac / MuJoCo 等）是否与本机栈一致。
-3. **按主表定位做消融**：主表强调的可分拆实验切口（例如只换重定向约束、只换部署层）应优先验证，避免一上来全链路重训。
-4. **记录开源边界**：若仅有权重、Sim2Sim 或说明文档，不要假设训练管线可复现。
-
-| 检查项 | 建议 |
-|--------|------|
-| 许可与星标时效 | 以官方仓库页面为准 |
-| 支持机器人 / 仿真 | 读 assets 与 task 配置 |
-| 真机入口 | 查找 SDK、ROS、ONNX/JIT 导出说明 |
+1. **先明确赛道。** 比较视频生成质量时按 Track 1 准备首帧、文本指令/动作和生成视频；验证对策略的价值时按 Track 2 准备对应模型适配器与 rollout 环境。
+2. **按官方协议对齐输入输出。** Track 1 使用 24 fps；文本驱动固定 121 帧；动作驱动输出长度与给定轨迹一致。分辨率至少建议 640×480。
+3. **保留分项结果。** 报告 EWMScore 时，同时列出六维指标，尤其是物理遵循、3D准确性和动作可控性。
+4. **谨慎横向比较。** WorldArena、[EWMBench](./ewmbench.md) 和 [WorldOlympiad](./worldolympiad.md) 的数据、任务和裁判协议不同，不能直接用综合分高低给模型排通用名次。
 
 ## 局限与风险
 
-- **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做知识库节点与导航。
-- **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
-- **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
+- WorldArena 1.0 Track 1 基于 RoboTwin 仿真操作视频；成绩不能直接代表开放场景、真实相机或真机任务表现。
+- EWMScore 汇总感知指标，不能取代策略闭环成功率、真机迁移或安全评测。
+- **WorldArena 2.0 是扩展版**，增加触觉等模态、交互式 RL 环境和真实机器人平台；不要把 2.0 榜单与 1.0 Track 1 结果当成同一协议。
+- Challenge 1.0 提交已截止；本地复现以 GitHub 指南与当前公开测试资源为准。
 
 ## 关联页面
 
-- [vla](../methods/vla.md)
-- [imitation-learning](../methods/imitation-learning.md)
-- [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
-- [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
-
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
-
-- [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
-- [model-based-rl](../methods/model-based-rl.md)
-- [locomotion](../tasks/locomotion.md)
+- [EWMBench](./ewmbench.md) — 聚焦机器人操作视频的场景、运动与语义质量。
+- [WorldOlympiad](./worldolympiad.md) — 对长视频世界模型诊断物理、3D几何与长程交互。
+- [生成式世界模型](../methods/generative-world-models.md) — 视频预测与生成模型的技术背景。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 从预测保真度到功能效用的基准选型。
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 所在研究路线索引。
 
 ## 参考来源
 
-- [WorldArena 来源归档](../../sources/repos/worldarena.md)
-- [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
-- [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
-
-- [`sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md`](../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.08971>
+- [WorldArena 官方论文与项目页](../../sources/sites/worldarena.md)
+- [WorldArena 官方代码与 Track 1 评测指南](../../sources/repos/worldarena.md)
+- [WorldArena 论文摘录](../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md)
+- Shang et al., [WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models](https://arxiv.org/abs/2602.08971)
 
 ## 推荐继续阅读
 
-- [官方入口](https://github.com/tsinghua-fib-lab/WorldArena)
-- [Humanoid Motion Intelligence 知识库实体页](./humanoid-motion-intelligence.md)
-
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.08971)
+- [Track 1 指标实现与评测要求](https://github.com/tsinghua-fib-lab/WorldArena/tree/main/video_quality)
+- [WorldArena 1.0 官方评测指南](https://github.com/tsinghua-fib-lab/WorldArena/blob/main/assets/README_submission.md)
+- [WorldArena 官方项目页](https://world-arena.ai/)

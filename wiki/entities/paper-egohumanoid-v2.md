@@ -172,6 +172,7 @@ sequenceDiagram
 |------|----------------|--------------------|----------|
 | [EgoHumanoid（V1）](./paper-loco-manip-161-060-egohumanoid.md) | 第一视角人体示范 | 原版重点是解耦控制下的野外移动操作迁移 | V2 明确把问题推进到协调全身控制 |
 | **EgoHumanoid-V2** | 第一视角 RGB + PICO 动捕；H/K/D 对齐，π₀.₅ 按任务后训练 | 手臂、躯干、腿共同参与，涵盖手脚接触 | 四项 G1 任务；策略训练/部署代码部分待发布 |
+| [λ₀ / OpenLambda](./paper-lambda0-egocentric-human-pretraining.md) | HumanVerse-500 全身人体数据；机器人对齐后分三阶段训练 | 以人体全身数据扩展 G1 移动操作策略，并通过机器人数据后训练 | Stage II 权重可用；全量数据与完整 Stage III 流程未开放 |
 | [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) | UMI 双夹爪 + 头戴相机/动捕 | 以稀疏头手目标、主动凝视和全身控制处理人类示范迁移 | 任务接口、传感器和低层控制组合不同；不把两者分数直接横比 |
 | [BifrostUMI](./paper-bifrost-umi.md) | Pico + UMI 夹爪 | 人体全身采集并用稀疏关键参考衔接策略与 WBC | 关注数据采集和接口桥接，与 V2 的执行器感知离线精炼侧重点不同 |
 

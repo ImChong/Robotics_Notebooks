@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-18
+updated: 2026-10-21
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -283,6 +283,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 跨本体课程视频 WM + 开源 G1 权重（示例：CLAP）
 
 [CLAP](../entities/paper-clap-cross-embodiment.md)（arXiv:2608.27406，Princeton）同样从 **SVD** 做动作条件视频，但先用 **32-D 潜动作** 吃 OXE + EgoDex，再换成 **7-D 绝对末端** 做零样本规划。相对 Ctrl-World 的 DROID 单本体 + 合成 SFT，CLAP 强调 **跨本体先验可迁移**：同容量追上 DROID SOTA，后训练超过从零单本体，并发布 **`adapt-g1`（26-D）** 与双臂 YAM 权重。推理时对 \(\pi_{0.5}\) / MolmoAct-2 做交叉策略规划，也可用 DSRL 在想象里微调扩散策略。**已开源**（MIT + HF）。
+
+### 跨本体运动–操作 WM + 人类第一视角预训练（示例：Ropedia W0）
+
+[Ropedia W0](../entities/paper-ropedia-w0.md)（arXiv:2610.26855，2026-10-19）把人类第一视角数据与机器人数据放入共享运动学表示：相机位姿编码移动、投影骨架编码操作。论文报告数据规模为约 10,000 小时人类数据与 3,000 小时机器人数据；官方仓库已公开推理代码，更多 checkpoint、Xp-Teleop 数据与后训练代码仍在待发布列表中（以源档案核查为准）。
 
 ### 中间表示条件可控推演（示例：RoboInter-World）
 

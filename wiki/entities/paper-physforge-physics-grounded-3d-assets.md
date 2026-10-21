@@ -11,7 +11,7 @@ tags:
   - dataset
   - articulated-objects
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md
@@ -20,6 +20,7 @@ related:
   - ./robotwin.md
   - ./sapien.md
   - ./paper-diffgi.md
+  - ./paper-gator.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/physforge_arxiv_2605_05163.md
@@ -100,6 +101,7 @@ flowchart LR
 - [DiffGI](./paper-diffgi.md) — **薄壳 / UV geometry image** 生成对照（偏表面边界，而非关节物理蓝图）。
 - [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 潜空间减法式部件生成**；纹理部件分解但不带关节/物理字段。
 - [RADmesh](./paper-radmesh.md) — **文本引导 remesh-aware 网格形变**；适合给已有 mesh 长部件，再接入 sim-ready 管线。
+- [GATOR](./paper-gator.md) — 从多视图场景图像重建有纹理、保留场景位姿的物体；与 PhysForge 的单视图可关节资产生成目标互补。
 
 ## 方法栈
 

@@ -2,11 +2,13 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-16
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
+  - ../../sources/papers/worldolympiad_arxiv_2606_11129.md
+  - ../../sources/sites/worldarena.md
   - ../../sources/papers/worldscore_arxiv_2504_00983.md
   - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
@@ -38,6 +40,8 @@ related:
   - ../entities/esi-bench.md
   - ../entities/paper-daily-omni.md
   - ../entities/ewmbench.md
+  - ../entities/worldarena.md
+  - ../entities/worldolympiad.md
   - ../entities/paper-worldscore.md
   - ../entities/paper-harnesseval-w.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
@@ -83,7 +87,7 @@ related:
 | 层 | 测什么 | 代表性基准 | 主指标 | 这一层评测最容易骗人的地方 |
 |----|--------|-----------|--------|--------------------------|
 | ① 具身大脑/MLLM 认知 | System 2 高层认知：意图理解、场景感知、规划、affordance、失败诊断；另含 **日常音视频时序对齐** | [RoboBench](../entities/robo-bench.md)、[ESI-Bench](../entities/esi-bench.md)、[Daily-Omni](../entities/paper-daily-omni.md) | QA 正确率 / 认知维度分 / AV Align | 认知评分高 ≠ 能下发可执行动作；AV 高分 ≠ 操纵 affordance |
-| ② 世界模型预测保真度 | 给定动作，模型能否忠实推演未来帧/物理状态 | [EWMBench](../entities/ewmbench.md)、[GigaWorld-1 / WMBench](../entities/paper-gigaworld-1-policy-evaluation.md)；开放域多场景另见 [WorldScore](../entities/paper-worldscore.md)；交互干预/持久另见 [HarnessEval-W](../entities/paper-harnesseval-w.md)；**off-expert 动作跟随**另见 [WorldEcho](../entities/paper-worldecho-worldsync.md) | 场景守恒 / 轨迹一致 / 语义对齐；（WorldScore：相机可控 / 质量 / 动态；HarnessEval-W：Observation / Transition / Persistence + 证据树；WorldEcho：视觉门控 + \(\mathrm{SE}(3)\) NDTW） | 短时视觉逼真 ≠ 长时序动作忠实 ≠ 下游策略收益；WorldScore 高分 ≠ 操纵保真；HarnessEval Overall 高 ≠ 末端轨迹对；**专家回放好看 ≠ off-expert 仍跟命令** |
+| ② 世界模型预测保真度 | 给定动作，模型能否忠实推演未来帧/物理状态 | [EWMBench](../entities/ewmbench.md)、[WorldArena](../entities/worldarena.md)、[WorldOlympiad](../entities/worldolympiad.md)、[GigaWorld-1 / WMBench](../entities/paper-gigaworld-1-policy-evaluation.md)；开放域多场景另见 [WorldScore](../entities/paper-worldscore.md)；交互干预/持久另见 [HarnessEval-W](../entities/paper-harnesseval-w.md)；**off-expert 动作跟随**另见 [WorldEcho](../entities/paper-worldecho-worldsync.md) | 场景守恒 / 轨迹一致 / 语义对齐；WorldArena Track 1 测视频质量、Track 2 测功能效用；WorldOlympiad 测物理 / 3D / 长程交互；WorldScore、HarnessEval-W、WorldEcho 分别覆盖相机可控生成、交互干预/持久、off-expert 动作跟随 | 短时视觉逼真 ≠ 长时序动作忠实 ≠ 下游策略收益；WorldArena EWMScore ≠ 真机策略能力；WorldOlympiad 长视频诊断 ≠ 闭环策略成功；**专家回放好看 ≠ off-expert 仍跟命令** |
 | ③ 策略任务成功率 | 策略在任务上真做成没有 | [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md)、[Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md)、[Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md)；桌面 VLA 相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)；**接触安全**另见 [SoftVTBench](../entities/paper-softvtbench.md)；**过程评测**见 [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)；**延迟感知动态任务**见 [ReflexVLA / ReflexBench](../entities/paper-reflexvla.md)；**工业灵巧规格**见 [DexBench](../entities/dexbench.md)（18 任务 / OSC，官方评测仓待发布）；**多指 dexterity 四层归因 + DexNex 16 原子任务**见 [HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)（规范站已公开、无官方仿真仓）；**真机扑克灵巧**见 [DexHoldem](../entities/paper-dexholdem.md)（SPSR / 感知 exact match）；**意图级模仿**见 [Imitator Game](../entities/paper-imitator-game.md)（L0–L3，目标等价而非轨迹相似） | 任务成功率 / 敏捷分；软体另报 Safety Success；过程侧报 OPD；DexBench 主张 breakdown curve 而非单一 SR；HAND 另报 system/hand/component 分层指标与任务完成时间；DexHoldem 另报 SPSR 与场面保持；Imitator Game 另报 L3 / unseen 零样本 | 成功率均值掩盖长尾失败；魔法抓取虚高；跨基准直接比榜；**只报 Goal 掩盖过压**；**SR 与进度曲线排名不一致**；**把 DexBench 规范页当成可跑仿真榜**；**把 HAND 16 任务时间与 DexVerse 仿真 SR 横比**；**把 DexHoldem TCR 当成场面仍可继续**；**只报 L0 seen 掩盖 L3 功能替代崩溃** |
 | ④ sim↔real 评测 gap 校准 | 仿真评测结论能否外推到真机 | [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) + real-to-sim 相关性 | sim↔real 排名相关性 | 仿真可复现 ≠ 真机代表性；评测集与训练分布重叠 |
 
@@ -126,7 +130,7 @@ flowchart TD
 
 当团队用世界模型做前瞻推演或当策略评估器时，必须先评测 **WM 本身预测得准不准**，否则「用一个不忠实的 WM 去评策略」会双重放大误差：
 
-- **测什么**：给定初始帧 + 指令（及可选动作序列），模型自回归续写未来帧，评测其**场景守恒、末端轨迹正确性、语义/逻辑对齐**（[EWMBench](../entities/ewmbench.md) 在 Agibot-World 子集上统一初始化后三轴打分）。若评的是开放域 **3D/4D/视频多场景世界生成**（显式相机轨迹、跨场景一致性），改用 [WorldScore](../entities/paper-worldscore.md) 的 Ctrl/Quality/Dynamics。若评的是 **交互式世界是否执行指定干预、长程是否持久**（探索/意图/物理转移 + drift/revisit/offscreen），改用 [HarnessEval-W](../entities/paper-harnesseval-w.md) 的案例路由技能与证据树——**不要**用 WorldScore 代替操纵保真，**不要**用 EWMBench 代替相机可控世界生成，也**不要**用 HarnessEval Overall 代替末端轨迹。若评的是 **off-expert 数值动作是否被忠实执行**（视觉仍有效 + \(\mathrm{SE}(3)\) 末端对齐），改用 [WorldEcho](../entities/paper-worldecho-worldsync.md)——**不要**用专家回放分数代替策略改进时会遇到的动作分布。
+- **测什么**：给定初始帧 + 指令（及可选动作序列），模型自回归续写未来帧，评测其**场景守恒、末端轨迹正确性、语义/逻辑对齐**（[EWMBench](../entities/ewmbench.md)）；用 [WorldArena](../entities/worldarena.md) 区分 Track 1 视频质量与 Track 2 功能效用；用 [WorldOlympiad](../entities/worldolympiad.md) 检查长视频的物理规律、3D几何和跨片段交互。三者评测域与评分协议不同，分数不可直接比较。若评的是开放域 **3D/4D/视频多场景世界生成**（显式相机轨迹、跨场景一致性），改用 [WorldScore](../entities/paper-worldscore.md) 的 Ctrl/Quality/Dynamics。若评的是 **交互式世界是否执行指定干预、长程是否持久**（探索/意图/物理转移 + drift/revisit/offscreen），改用 [HarnessEval-W](../entities/paper-harnesseval-w.md) 的案例路由技能与证据树——**不要**用 WorldScore 代替操纵保真，**不要**用 EWMBench 代替相机可控世界生成，也**不要**用 HarnessEval Overall 代替末端轨迹。若评的是 **off-expert 数值动作是否被忠实执行**（视觉仍有效 + \(\mathrm{SE}(3)\) 末端对齐），改用 [WorldEcho](../entities/paper-worldecho-worldsync.md)——**不要**用专家回放分数代替策略改进时会遇到的动作分布。
 - **过程 vs 结果的关键结论**：[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 在 WMBench 上用 7 类视频 WM × 4 种动作编码 × 32.4 万+ rollout 实证——**长时序动作忠实一致性比短时视觉逼真更决定 evaluator 质量**。这直接推翻了「视频看起来越真、当评估器越好」的直觉。
 - **典型误判**：① 用短时视觉逼真度（FVD 类）代表长时序动作忠实度；② 把 WM 的视频质量当成下游策略收益——视频质量是**过程/中间指标**，策略成功率才是**结果指标**，二者不可互相替代；③ 把 WorldScore Static 高分当成具身操纵可用；④ 把 HarnessEval-W Overall（I2V 族常领先）当成操纵保真或策略收益；⑤ 只在专家演示上评 AC-WM，掩盖 off-expert 的视觉崩或动作无视。
 
@@ -188,6 +192,8 @@ flowchart TD
 
 ## 参考来源
 
+- [worldolympiad_arxiv_2606_11129.md](../../sources/papers/worldolympiad_arxiv_2606_11129.md) — WorldOlympiad 长视频物理、3D 与交互诊断
+- [worldarena.md](../../sources/sites/worldarena.md) — WorldArena 官网与 Track 1/2 定位
 - [robo_bench_arxiv_2510_17801.md](../../sources/papers/robo_bench_arxiv_2510_17801.md) — RoboBench，①层 MLLM 具身大脑五维认知评测与「认知分↔下游成功率相关」实证
 - [ewmbench.md](../../sources/papers/ewmbench.md) — EWMBench，②层具身世界模型视频生成三轴评测
 - [worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md) — WorldScore，②层相邻：开放域多场景世界生成统一评测
@@ -214,6 +220,8 @@ flowchart TD
 - [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — ①层主动探索式空间智能评测
 - [Daily-Omni（日常 AV 时序对齐）](../entities/paper-daily-omni.md) — ①层音视频跨模态时序对齐诊断
 - [EWMBench（具身世界模型生成评测）](../entities/ewmbench.md) — ②层世界模型预测保真度评测
+- [WorldArena](../entities/worldarena.md) — Track 1 视频质量与 Track 2 功能效用
+- [WorldOlympiad](../entities/worldolympiad.md) — 长视频物理、几何与交互诊断
 - [WorldScore](../entities/paper-worldscore.md) — ②层相邻：3D/4D/视频多场景世界生成统一榜
 - [HarnessEval-W](../entities/paper-harnesseval-w.md) — ②层相邻：交互式世界 agentic 评测（干预/持久证据树）
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — ②层「动作忠实 > 视觉逼真」策略评估器

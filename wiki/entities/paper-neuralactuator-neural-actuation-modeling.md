@@ -136,6 +136,7 @@ flowchart TB
 | **[BAM](./paper-bam-extended-friction-servo-actuators.md)** | 摆锤 **CMA-ES** 摩擦参数 | 无 | 高（M1–M6 解析） |
 | **[Current as Touch](./paper-current-as-touch-proprioceptive-contact.md)** | 演示学 **CRP** | 电流→柔顺 **位置** | 中（接口层） |
 | **[SAGE](./sage-sim2real-actuator-gap-estimator.md)** | sim/real 成对重放 | 无 | 中（gap 度量） |
+| **[Contact-UAN](./paper-contact-uan.md)** | 接触一致重放的 G1 本体轨迹 | 通过关节目标残差改善力/冲击迁移 | 中；需自采真机数据，估计器仅离线使用 |
 
 ## 常见误区或局限
 

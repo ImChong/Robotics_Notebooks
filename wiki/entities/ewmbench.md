@@ -12,6 +12,8 @@ related:
   - ./paper-wem-world-ego-modeling.md
   - ./ge-sim-2.md
   - ./paper-worldscore.md
+  - ./worldarena.md
+  - ./worldolympiad.md
   - ./paper-harnesseval-w.md
   - ./paper-worldoracle.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -43,6 +45,7 @@ summary: "EWMBench 是面向具身世界模型（EWM）视频生成的公开基�
 ## 为什么重要
 
 - **问题对准「通用视频指标 ≠ 具身可用」**：VBench 等基准难以单独暴露 **静态场景漂移、末端时序错乱、指令步骤缺失** 等操纵任务失效模式；EWMBench 显式把这些维度拆开报告（论文 Table 1 与 §4.1–4.3）。开放域 **多场景 + 相机布局** 世界生成请改看 [WorldScore](./paper-worldscore.md)（ICCV 2025），二者轴线不同。
+- **与新一代长视频基准互补**：[WorldArena](./worldarena.md) 把视频感知质量与功能效用放进统一评测；[WorldOlympiad](./worldolympiad.md) 关注物理、3D 几何和跨片段交互。EWMBench 的重心仍是机器人操纵任务的场景、末端轨迹和语义一致性；三者任务集与评分不可直接横比。
 - **与生成式世界模型路线直接对齐**：当研究把扩散式视频模型当作 [生成式世界模型](../methods/generative-world-models.md) 或 [视频即仿真](../concepts/video-as-simulation.md) 的像素接口时，需要一个 **可复现、与真机数据同源** 的坐标系；EWMBench 的数据子集直接构建于 **Agibot-World** 开源操纵数据。论文局限中提到的 **导航与移动操作** 扩展，在 [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) 中已有 **BEHAVIOR-1K 混合长程** 对照基准。
 - **工程可落地**：官方仓库提供 **目录约定、`config.yaml`、预处理脚本与依赖版本**，降低「论文指标无法复现」的摩擦（细节以 README 为准）。
 
