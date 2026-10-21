@@ -496,6 +496,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ### 综述与技术地图
 
+- [senlanke 操作方向 33 篇索引（2026-10-12–16）](../overview/senlanke-manipulation-10-12-16-33-papers-technology-map.md) — 本期操作方向 33 篇论文，每篇一页
 - [senlanke 周更论文索引（2026-09-21–25）](../overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 当周操作方向 15 篇论文，每篇一页
 - [senlanke 周更论文索引（2026-09-14–18）](../overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 当周操作方向 14 篇论文，每篇一页
 - [T-RO 2026 操作学习 5 篇技术地图](../overview/tro-manip-5-papers-technology-map.md) — 数据 scaling / SE(3) 等变 / DexRep / G3M 视频预训练 / 生成模型综述（深蓝具身智能策展）
