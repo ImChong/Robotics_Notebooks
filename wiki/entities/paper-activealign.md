@@ -10,6 +10,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ../entities/paper-notebook-emergent-active-perception-and-dexterity-of-simu.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/activealign_arxiv_2610_23378.md
 summary: "ActiveAlign 通过闭环对齐主动视角轨迹终点与既有示范，并用成功续接片段微调 VLA；在 40 个 LIBERO 任务上 π₀/π₀.₅ 成功率分别为 70.7%/72.7%，实物遮挡测试由 35/90 提升到 83/90。"
@@ -97,6 +98,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md) — 操作任务与基准语境
 - [Embodied perception：六类空间表示](../concepts/embodied-perception-six-spatial-representations.md) — 主动视觉和空间观测
 - [Emergent Active Perception and Dexterity](../entities/paper-notebook-emergent-active-perception-and-dexterity-of-simu.md) — 主动感知与操作能力的相关研究
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: method
 tags: [perception, control, visual-servoing, manipulation, camera]
 status: complete
-updated: 2026-10-13
+updated: 2026-10-20
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/tactile-sensing.md
@@ -11,10 +11,12 @@ related:
   - ../formalizations/behavior-cloning-loss.md
   - ../entities/paper-tacrefinenet-tactile-grasp-refinement.md
   - ../entities/paper-robotic-servo-dynamic-imitation.md
+  - ../entities/paper-optisight-embodied-navigation.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
   - ../../sources/papers/robotic_servo_tracking_arxiv_2609_14589.md
+  - ../../sources/papers/optisight_arxiv_2608_23354.md
 summary: "视觉伺服（Visual Servoing）将相机图像特征的误差直接反馈到机器人运动控制器中，形成闭环视觉控制，有效克服了传统“查表式”抓取的开环误差。"
 ---
 
@@ -65,12 +67,14 @@ summary: "视觉伺服（Visual Servoing）将相机图像特征的误差直接�
 2. **密集监督 (Dense Supervision)**：视觉伺服的算法（已知图像雅可比）可以直接作为模仿学习（Imitation Learning）的自动数据采集器，廉价生成海量精准的专家演示轨迹。
 3. **触觉对偶 (Tactile Servoing)**：当指尖遮挡或边缘几何让视觉失效时，可用当前/目标触觉图代替图像特征——[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) 即把 IBVS 式「特征误差 → 增量运动」落到多指压阻触觉上。
 4. **轨迹级动态约束**：对移动目标，单靠即时特征误差可能产生迟滞或振荡；[Robotic Servo Tracking with Dynamic Imitation Constraints](../entities/paper-robotic-servo-dynamic-imitation.md) 在线变形示教轨迹并自适应选择跟踪点，把路径先验纳入闭环。
+5. **语义推理 + 几何伺服导航**：[OptiSight](../entities/paper-optisight-embodied-navigation.md) 只在关键决策点调用 VLM 解释目标，连续移动交给 Grounded-SAM 定位 + 相机投影几何的确定性视觉伺服，避免让大模型持续承担低层运动控制（AI Habitat 仿真验证）。
 
 ## 关联页面
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — PBVS 与标定中常用的 6D 位姿观测源
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 触觉伺服抓取精修
 - [动态模仿约束移动目标跟踪（论文实体）](../entities/paper-robotic-servo-dynamic-imitation.md) — 示教轨迹级视觉伺服
+- [OptiSight（论文实体）](../entities/paper-optisight-embodied-navigation.md) — VLM 语义推理 + 视觉伺服的具身导航
 - [Manipulation 任务](../tasks/manipulation.md)
 - [State Estimation](../concepts/state-estimation.md)
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
@@ -79,3 +83,4 @@ summary: "视觉伺服（Visual Servoing）将相机图像特征的误差直接�
 - Chaumette, F., & Hutchinson, S. (2006). *Visual servo control. I. Basic approaches*. IEEE Robotics & Automation Magazine.
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 触觉伺服对偶案例
+- [sources/papers/optisight_arxiv_2608_23354.md](../../sources/papers/optisight_arxiv_2608_23354.md) — OptiSight 语义推理与几何伺服分工

@@ -10,6 +10,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../methods/visual-servoing.md
   - ./paper-embodied-navigator-tamp-nav.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/optisight_arxiv_2608_23354.md
   - ../../sources/sites/optisight-iri-tr-26-02.md
@@ -102,6 +103,7 @@ sequenceDiagram
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 导航任务定义及相关范式
 - [视觉伺服控制](../methods/visual-servoing.md) — 图像反馈驱动连续运动控制的基础方法
 - [Embodied-Navigator / TAMP-Nav](./paper-embodied-navigator-tamp-nav.md) — 以像素目标、SLAM 与策略优化构建的 VLN 路线
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

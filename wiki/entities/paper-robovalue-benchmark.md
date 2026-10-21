@@ -24,6 +24,7 @@ related:
   - ./paper-topreward.md
   - ./paper-roboreward.md
   - ./paper-prm-as-a-judge.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md
   - ../../sources/sites/robovalue-benchmark.md
@@ -137,6 +138,7 @@ sequenceDiagram
 - [RoboReward](./paper-roboreward.md) — 视觉过程奖励学习
 - [PRM-as-a-Judge](./paper-prm-as-a-judge.md) — 冻结 PRM 的过程评测
 - [机器人操作](../tasks/manipulation.md) — 操作任务与机器人案例
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 
