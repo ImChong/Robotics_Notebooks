@@ -226,6 +226,16 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-16] ingest | sources/repos/anthropics-claude-for-legal.md — 归档官方法律工作流插件仓库并整理 Claude for Legal 的模块化 agent 配置、开源状态与适用边界
+
+## [2026-10-16] ingest | sources/papers/trackeverything_arxiv_2609_30222.md — 归档论文、项目页与占位仓，新增实体页并关联状态估计；官方代码待发布
+
+## [2026-10-16] ingest | sources/papers/gator_arxiv_2610_11215.md — 收录 GATOR 论文与官方项目页，整理图像重建、agent 精修及代码待发布状态
+
+## [2026-10-16] ingest | WorldOlympiad、WorldArena 1.0 Track-1 与 EWMBench 三项具身世界模型基准归档和选型页更新
+
+## [2026-10-16] ingest | 归档 Contact-UAN 执行器残差 Sim2Real 与 λ₀ 全身人体数据 VLA；核查官方代码、模型与数据开放边界
+
 ## [2026-10-21] ingest | sources/papers/fiber_arxiv_2610_24675.md — 补充 FIBER 真机分任务成功率（6/10、4/10、2/10）与仿真分任务口径；核查「可控导航」：论文与项目页仅有 waypoint steering 定性演示，无导航基准，已在实体页标注边界
 
 ## [2026-10-21] ingest | sources/repos/jj-vcs-jujutsu.md — 收录 Jujutsu 版本控制工具及其 Git 互通、change 工作流与适用边界

@@ -148,6 +148,7 @@
 - [CherryECAT](wiki/entities/cherryecat.md) — 面向 MCU + RTOS 裁剪的轻量 EtherCAT 主站，文章称基于 IgH 改造。（分类：EtherCAT 主站；语言/形态：C，基于 IgH 改造） `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
+- [Claude for Legal](wiki/entities/claude-for-legal.md) — Claude for Legal** 是 Anthropic 为法律工作流提供的一组开源 Claude 插件与参考配置，覆盖法律团队常见的领域流程，并允许团队围绕自身 playbook 配置工作方 `📅unknown` `[entity_page]`
 - [Claude-shaped science：适配 AI 能力的科研选题](wiki/entities/claude-shaped-science.md) — Claude-shaped science** 是 Matthew Schwartz 在 Anthropic 发布的科研实践文章，主张先匹配代理的计算优势，再由人确定值得研究的问题；不是一项机器人 `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
 - [CLI-Anything（HKUDS）](wiki/entities/cli-anything.md) — CLI-Anything**（HKUDS/CLI-Anything，Apache-2.0）是香港大学 HKUDS  `📅unknown` `[entity_page]`
@@ -1994,6 +1995,7 @@
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
 - [Gated Residual Body–Hand Coordination for Whole-Body Humanoid Teleoperation](wiki/entities/paper-gated-residual-body-hand-coordination.md) — 中文名：** 门控残差身–手协调 `📅unknown` `[entity_page]`
+- [GATOR：从随手拍图像重建仿真场景中的 3D 物体](wiki/entities/paper-gator.md) — GATOR**（*Generative and Agentic 3D Object Reconstruction From Casual Images*，[arXiv:2610.11215](ht `📅unknown` `[entity_page]`
 - [Gaussian Is Enough（arXiv:2609.27070）](wiki/entities/paper-gaussian-is-enough-flow-matching-priors.md) — Gaussian Is Enough**（*The Gaussian Is Enough: Flow-Matching Priors Do Not Help When Fine-Tuning La `📅unknown` `[entity_page]`
 - [Gaussian-LIC2（LiDAR-Inertial-Camera 3DGS-SLAM）](wiki/entities/paper-gaussian-lic2.md) — Gaussian-LIC2**（Lang et al., arXiv:2507.04004，项目页， `📅unknown` `[entity_page]`
 - [GaussianDream++](wiki/entities/paper-gaussiandream-plusplus.md) — GaussianDream++: Efficient 3D Gaussian World Modeling for Robotic Manipulation**（[arXiv:2608.25659 `📅unknown` `[entity_page]`
@@ -4750,6 +4752,7 @@
 - [TRACE：把现成的全身控制器搬到另一台人形上](wiki/entities/paper-trace-humanoid-transfer.md) — TRACE 保留预训练全身控制器（SONIC）的运动表征，只对目标人形重调反馈控制：先用运动学先验与动力学对齐把新本体"接"进旧网络，再用编码器蒸馏加低秩 RL 的两阶段课程，在小规模筛选运动集上 `📅unknown` `[entity_page]`
 - [跟踪并完成：从单段失败人体视频学习人形技能](wiki/entities/paper-track-and-complete.md) — Track-and-Complete: Learning Humanoid Skills from a Single Failed Human Video**（[arXiv:2609.36924 `📅unknown` `[entity_page]`
 - [Track4World：前馈世界系全像素稠密 3D 跟踪](wiki/entities/paper-track4world.md) — Track4World**（*Feedforward World-centric Dense 3D Tracking of All Pixels*，[arXiv:2603.02573](https `📅unknown` `[entity_page]`
+- [TrackEverything（Long-Horizon Dense 3D Point Tracking）](wiki/entities/paper-trackeverything.md) — TrackEverything**（[*Long Horizon Dense Tracking via De-Duplicating 3D Scene Representations*](http `📅unknown` `[entity_page]`
 - [TrackVLA](wiki/entities/paper-trackvla.md) — TrackVLA**（TrackVLA: Embodied Visual Tracking in the Wild）在 [Light Origins · LightNav-0：以规模化 Real2 `📅unknown` `[entity_page]`
 - [TrAct：用视觉轨迹桥接机器人控制与视觉预测](wiki/entities/paper-tract.md) — TrAct**（*Bridging Robot Control and Visual Prediction with Visual Tracks*，[arXiv:2608.24101](https `📅unknown` `[entity_page]`
 - [Training-Time RTC（训练期动作前缀条件化 · arXiv:2512.05964）](wiki/entities/paper-training-time-real-time-chunking.md) — Training-Time Action Conditioning for Efficient Real-Time Chunking**（[arXiv:2512.05964](https://ar `📅unknown` `[entity_page]`
@@ -5356,7 +5359,8 @@
 - [WolfieMouse](wiki/entities/wolfiemouse.md) — WolfieMouse**（kbumsik/WolfieMouse）是覆盖 **迷宫算法、STM32 底层驱动、 `📅unknown` `[entity_page]`
 - [Workhorse：从人类数据学习稳健全身移动操作](wiki/entities/workhorse-humanoid-loco-manipulation.md) — Workhorse**（*Learning Robust Whole-Body Humanoid Loco-Manipulation from Human Data*，[arXiv:2610.09 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](wiki/entities/world-labs.md) — World Labs** 在公开材料中将自身定位为 **空间智能（spatial intelligence）** 公司与 **前沿世界模型** 研发方：强调模型对三维世界的 **感知、生成、推理与 `📅unknown` `[entity_page]`
-- [WorldArena](wiki/entities/worldarena.md) — WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
+- [WorldArena（具身世界模型评测）](wiki/entities/worldarena.md) — WorldArena 是具身世界模型统一评测套件：WorldArena 1.0 的 Track 1 测生成视频质量，Track 2 测模型作为数据引擎、策略评估器和动作规划器的功能价值，并以 EWMS `📅unknown` `[entity_page]`
+- [WorldOlympiad（视频世界模型三项赛）](wiki/entities/worldolympiad.md) — WorldOlympiad 是面向长视频生成式世界模型的诊断基准：除视频观感外，分别检查生成内容是否遵循物理规律、维持连贯的 3D 世界结构，以及在长时序中执行并延续交互指令。 `📅unknown` `[entity_page]`
 - [wtfOS](wiki/entities/wtfos.md) — wtfOS**（fpv-wtf/wtfos）是在 [margerine](https://github.com/fpv-wt `📅unknown` `[entity_page]`
 - [舞肌科技（上海舞肌科技有限公司）](wiki/entities/wuji-robotics.md) — 舞肌科技** 面向 **具身 AI 机器人** 提供两类常被并列讨论的硬件叙事：**关节级电机方案**（**F 系列** 内转子永磁无刷、「**Pan Motor**」品牌报道）与 **五指灵巧手 `📅unknown` `[entity_page]`
 - [WWSimBench（WuWen 仿真基准资产 · HF v0.1）](wiki/entities/wwsimbench.md) — WWSimBench**（[Hugging Face · Wuwen-AI/WWSimBench](https://huggingface.co/datasets/Wuwen-AI/WWSimBe `📅unknown` `[entity_page]`
