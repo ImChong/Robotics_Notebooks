@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, berkeley, cmu, stanford, body-system-stack]
 status: complete
-updated: 2026-10-13
+updated: 2026-10-21
 project_id: perceptive-humanoid-parkour
 project: https://php-parkour.github.io/
 code: https://github.com/amazon-far/php_parkour
