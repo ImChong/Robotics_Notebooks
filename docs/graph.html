@@ -284,6 +284,58 @@
       text-decoration: none;
     }
     .depth-intro-link:hover { color: #7ab3ff; text-decoration: underline; }
+    /* 路线步进器：按正文顺序逐步定位节点（替代已撤销的连线动效） */
+    .depth-intro-steps {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 8px;
+      font-size: .74rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .depth-intro-step-btn {
+      flex: 0 0 auto;
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      border: 1px solid rgba(91,156,246, 0.35);
+      background: rgba(91,156,246, 0.12);
+      color: #7ab3ff;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .depth-intro-step-btn:hover:not(:disabled) { background: rgba(91,156,246, 0.28); }
+    .depth-intro-step-btn:disabled { opacity: .35; cursor: default; }
+    .depth-intro-step-label {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .depth-intro-step-label b { color: #7ab3ff; font-weight: 700; }
+    /* 路线序号徽标：挂在节点 <g> 上，随节点坐标与缩放走；顺序信息落在节点本身，不新增连线 */
+    .node-route-badge { pointer-events: none; }
+    .node-route-badge circle {
+      fill: #5b9cf6;
+      stroke: rgba(13, 17, 23, 0.9);
+      stroke-width: 1.2px;
+    }
+    .node-route-badge text {
+      fill: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    .node-route-badge.is-done circle { fill: rgba(122, 139, 160, 0.9); }
+    .node-route-badge.is-todo { opacity: .45; }
+    .node-route-badge.is-current circle {
+      fill: #ffb547;
+      filter: drop-shadow(0 0 6px rgba(255, 181, 71, 0.9));
+    }
+    .node-route-badge.is-current text { fill: #1a1a1a; }
+    /* 缩得太小时徽标不可读：只保留当前步 */
+    .route-badges-far .node-route-badge:not(.is-current) { display: none; }
     .node-depth-hub .node-glow { fill-opacity: 0.28 !important; }
     .node-depth-hub .node-circle {
       stroke-width: 2.5px !important;
@@ -442,6 +494,35 @@
     @media (prefers-reduced-motion: reduce) {
       .graph-3d-label.is-depth-hub { animation: none; }
     }
+    /* 3D 路线序号徽标（HTML overlay，对齐 2D .node-route-badge；由 graph-3d.js 投影定位） */
+    .graph-3d-route-badge {
+      position: absolute;
+      left: 0; top: 0;
+      min-width: 14px; height: 14px;
+      padding: 0 3px;
+      box-sizing: border-box;
+      border-radius: 7px;
+      border: 1.2px solid rgba(13, 17, 23, 0.9);
+      background: #5b9cf6;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 11.5px;
+      text-align: center;
+      white-space: nowrap;
+      will-change: transform;
+      user-select: none;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .graph-3d-route-badge.is-done { background: rgba(122, 139, 160, 0.9); }
+    .graph-3d-route-badge.is-todo { opacity: .45 !important; }
+    .graph-3d-route-badge.is-current {
+      background: #ffb547;
+      color: #1a1a1a;
+      box-shadow: 0 0 6px rgba(255, 181, 71, 0.9);
+    }
+    [data-theme="light"] .graph-3d-route-badge { border-color: rgba(255, 255, 255, 0.95); }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
        字号/内边距由 graph-3d.js 按社区节点数 × 画布短边比例缩放（约 7–22px），此处仅作兜底 */
     .graph-3d-community-label {
@@ -946,6 +1027,10 @@
     }
     [data-theme="light"] .depth-intro-text { color: rgba(15, 23, 42, 0.68); }
     [data-theme="light"] .depth-intro-link { color: #2d74da; }
+    [data-theme="light"] .depth-intro-steps { color: rgba(15, 23, 42, 0.72); }
+    [data-theme="light"] .depth-intro-step-btn { color: #2d74da; border-color: rgba(45,116,218, 0.3); background: rgba(45,116,218, 0.08); }
+    [data-theme="light"] .depth-intro-step-label b { color: #2d74da; }
+    [data-theme="light"] .node-route-badge circle { stroke: rgba(255, 255, 255, 0.95); }
     [data-theme="light"] .node-depth-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .graph-3d-label.is-depth-hub { color: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .community-label-bg {
@@ -1942,6 +2027,11 @@
         <span class="depth-intro-hub-tag">路线</span>
       </div>
       <p class="depth-intro-text" id="depth-intro-text"></p>
+      <div class="depth-intro-steps" id="depth-intro-steps" hidden>
+        <button type="button" class="depth-intro-step-btn" id="depth-intro-prev" aria-label="上一步" title="上一步">‹</button>
+        <span class="depth-intro-step-label" id="depth-intro-step-label"></span>
+        <button type="button" class="depth-intro-step-btn" id="depth-intro-next" aria-label="下一步" title="下一步">›</button>
+      </div>
       <a id="depth-intro-link" class="depth-intro-link" href="#">打开路线页 →</a>
     </div>
     <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
@@ -2628,8 +2718,110 @@
     }
 
     function nodeMatchesDepth(d) {
-      return window.RNDepthFilters.matches(d, currentDepth);
+      return routeIndexById.has(d.id) || window.RNDepthFilters.matches(d, currentDepth);
     }
+
+    /* ── 路线顺序：节点序号徽标 + 导读条步进 ──
+       顺序来自 link-graph.json 里 roadmap 节点的 route_order（路线页正文内链首次出现顺序）。
+       不画连线：节点多、跨社区时整条路径连线太密；顺序信息落在节点徽标上，由步进器逐步定位。 */
+    let routeOrderIds = [];            // 当前路线正文顺序（含路线页自身）
+    const routeIndexById = new Map();  // id → 1 起的序号
+    let routeStep = -1;                // -1 = 总览（全部徽标同色）；≥0 = routeOrderIds 下标
+    const routeStepsEl = document.getElementById('depth-intro-steps');
+    const routeStepPrevEl = document.getElementById('depth-intro-prev');
+    const routeStepNextEl = document.getElementById('depth-intro-next');
+    const routeStepLabelEl = document.getElementById('depth-intro-step-label');
+
+    // null | 'all' | 'done' | 'current' | 'todo'
+    function routeBadgeStateOf(d) {
+      const idx = routeIndexById.get(d.id);
+      if (!idx) return null;
+      if (routeStep < 0) return 'all';
+      const i = idx - 1;
+      return i === routeStep ? 'current' : (i < routeStep ? 'done' : 'todo');
+    }
+
+    function routeBadgeOf(d) {
+      const state = routeBadgeStateOf(d);
+      return state ? { index: routeIndexById.get(d.id), state } : null;
+    }
+
+    function updateRouteStepper() {
+      if (!routeStepsEl) return;
+      const total = routeOrderIds.length;
+      routeStepsEl.hidden = total === 0;
+      if (!total) return;
+      if (routeStep < 0) {
+        routeStepLabelEl.innerHTML = '按正文顺序共 <b>' + total + '</b> 步，点 › 逐步定位';
+      } else {
+        const d = nodeById2D.get(routeOrderIds[routeStep]);
+        routeStepLabelEl.innerHTML = '第 <b>' + (routeStep + 1) + '</b> / ' + total + ' 步 · '
+          + escapeHtml((d && (d._info.title || d.label)) || routeOrderIds[routeStep]);
+      }
+      routeStepPrevEl.disabled = routeStep < 0;
+      routeStepNextEl.disabled = routeStep >= total - 1;
+    }
+
+    function syncRouteBadges2D() {
+      gNodes.selectAll('.node-route-badge').remove();
+      routeOrderIds.forEach(id => {
+        const d = nodeById2D.get(id);
+        if (!d || !d.__el) return;
+        const badge = routeBadgeOf(d);
+        if (!badge) return;
+        const r = scaledRadius(d) * (isCurrentTopicHub(d) ? 1.28 : 1);
+        const g = d3.select(d.__el).append('g')
+          .attr('class', 'node-route-badge is-' + badge.state)
+          .attr('transform', 'translate(' + (r * 0.85) + ',' + (-r * 0.85) + ')');
+        g.append('circle').attr('r', 7);
+        g.append('text').attr('dy', '0.35em').attr('text-anchor', 'middle').text(badge.index);
+      });
+    }
+
+    function syncRouteBadges() {
+      syncRouteBadges2D();
+      if (graph3dView && is3DView()) graph3dView.syncRouteBadges();
+      updateRouteStepper();
+    }
+
+    // 相机只在按步进时移动一次，用户随后拖拽 / 缩放不会被抢回视口。
+    function flyToRouteStep() {
+      const d = nodeById2D.get(routeOrderIds[routeStep]);
+      if (!d) return;
+      if (is3DView()) {
+        if (graph3dView) graph3dView.focusNode(d);
+        return;
+      }
+      if (d.x == null) return;
+      const k = Math.max(d3.zoomTransform(svg.node()).k, 1.4);
+      svg.transition().duration(600).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(W / 2 - k * d.x, H / 2 - k * d.y).scale(k)
+      );
+    }
+
+    function setRouteStep(step) {
+      const total = routeOrderIds.length;
+      if (!total) return;
+      routeStep = Math.max(-1, Math.min(total - 1, step));
+      syncRouteBadges();
+      if (routeStep < 0) {
+        if (is3DView()) { if (graph3dView) graph3dView.fitToVisible(); }
+        else fitToVisibleNodes();
+      } else {
+        flyToRouteStep();
+      }
+    }
+
+    function setRouteOrder(hub) {
+      routeOrderIds = ((hub && hub.route_order) || []).filter(id => nodeById2D.has(id));
+      routeIndexById.clear();
+      routeOrderIds.forEach((id, i) => routeIndexById.set(id, i + 1));
+      routeStep = -1;
+    }
+
+    if (routeStepPrevEl) routeStepPrevEl.addEventListener('click', () => setRouteStep(routeStep - 1));
+    if (routeStepNextEl) routeStepNextEl.addEventListener('click', () => setRouteStep(routeStep + 1));
 
     /* ── 可变物理参数 ── */
     let chargeStrength = -100;   // 排斥力（负值，由滑块控制）
@@ -2807,6 +2999,7 @@
         getNodeLabelColor: labelFill,
         getNodeLabelOpacity: computeNodeLabelOpacity,
         isNodeLabelHub: isCurrentTopicHub,
+        getRouteBadge: routeBadgeOf,
         areCommunityLabelsVisible: () => communityLabelsVisible(),
         getCommunityLabelDescriptors: () => {
           const sizeRange = communityLabelSizeRange();
@@ -2967,6 +3160,7 @@
           if (!graph3dView) throw new Error('3D view unavailable');
           graph3dView.show();
           graph3dView.syncFilters();
+          graph3dView.syncRouteBadges();
           // 3D 侧自持 sidebarNodeId：进入时按当前侧栏 / 固定卡片状态重放或清除，
           // 否则「3D 选中 → 2D 关侧栏 → 回 3D」会停在全图淡化且 hover 失效的陈旧高亮
           const focusNodeForView = sidebarNode || (isMobile ? pinnedNode : null);
@@ -4142,6 +4336,7 @@
         // 边层不在 SVG 里，缩放/平移需要同一变换并重绘（按帧合并，避免一次手势多次重绘）
         edgeTransform = ev.transform;
         scheduleEdgeDraw();
+        if (routeOrderIds.length) gRoot.classed('route-badges-far', ev.transform.k < 0.45);
         userZoomed2D = true;
         if (ev.sourceEvent) userGestureZoom2D = true;
         // 标签可见性只随缩放比例变，纯平移不重算；全隐藏态下 sync 本身也只写一次
@@ -5425,8 +5620,11 @@
         });
       }
       if (topicCurrentEl && activeBtn) topicCurrentEl.innerHTML = activeBtn.innerHTML;
+      setRouteOrder(currentDepth === 'all' ? null
+        : nodeById2D.get((DEPTH_META[currentDepth] || {}).wikiPath));
       updateTopicIntroBanner();
       applyFilters();
+      syncRouteBadges();
       updateFilterCount();
       if (currentDepth !== 'all') fitToVisibleNodes();
       else fitToScreen();

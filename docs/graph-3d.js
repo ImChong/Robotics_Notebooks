@@ -203,6 +203,8 @@
     };
     var getNodeLabelOpacity = opts.getNodeLabelOpacity || function () { return 0.85; };
     var isNodeLabelHub = opts.isNodeLabelHub || function () { return false; };
+    // 路线序号徽标：d → { index, state } | null（state: all / done / current / todo）
+    var getRouteBadge = opts.getRouteBadge || function () { return null; };
     // 社区聚类中心胶囊标签（HTML overlay，投影自 3D 质心）
     var areCommunityLabelsVisible = opts.areCommunityLabelsVisible || function () { return false; };
     var getCommunityLabelDescriptors = opts.getCommunityLabelDescriptors || function () { return []; };
@@ -750,7 +752,45 @@
       return true;
     }
 
+    // 路线序号徽标：HTML overlay（与节点标签同层、同投影），对应 2D 的 .node-route-badge。
+    // 库打包的 three 子集未暴露 Sprite / CanvasTexture，故不走场景对象。
+    var routeBadgeEls = new Map();   // node id → el
+    function rebuildRouteBadgeEls() {
+      routeBadgeEls.forEach(function (el) { if (el.parentNode) el.parentNode.removeChild(el); });
+      routeBadgeEls.clear();
+      var layer = ensureLabelLayer();
+      if (!layer) return;
+      nodes3d.forEach(function (d) {
+        var badge = getRouteBadge(resolveSourceNode(d.id) || d);
+        if (!badge) return;
+        var el = document.createElement('div');
+        el.className = 'graph-3d-route-badge is-' + badge.state;
+        el.textContent = String(badge.index);
+        layer.appendChild(el);
+        routeBadgeEls.set(d.id, el);
+      });
+    }
+    function syncRouteBadgePositions() {
+      if (!routeBadgeEls.size) return;
+      var hide = container.hidden || timelineActive() || !graph;
+      routeBadgeEls.forEach(function (el, id) {
+        var d = nodeById.get(id);
+        if (hide || !d || d.x == null || nodeHiddenByFilter(d)) { setLabelVisible(el, false, '0'); return; }
+        var z = d.z != null ? d.z : 0;
+        var c = graph.graph2ScreenCoords(d.x, d.y, z);
+        if (!c || !isFinite(c.x) || !isFinite(c.y)) { setLabelVisible(el, false, '0'); return; }
+        // 节点球在屏上的半径：投影球面一点与球心的距离；徽标挂在右上角
+        var rim = graph.graph2ScreenCoords(d.x, d.y + sphereRadiusFor(d), z);
+        var r = rim && isFinite(rim.y) ? Math.max(3, Math.abs(rim.y - c.y)) : 6;
+        var x = c.x + r * 0.75;
+        var y = c.y - r * 0.75;
+        setLabelScreenPos(el, x, y, 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%)');
+        setLabelVisible(el, true, '1');
+      });
+    }
+
     function syncCommunityLabelPositions() {
+      syncRouteBadgePositions();
       if (!labelLayer || communityLabelEls.size === 0) return;
       var hide = !areCommunityLabelsVisible() || container.hidden || timelineActive() || !graph;
       var seen = new Set();
@@ -1979,6 +2019,13 @@
         scheduleSubsetRebuild();
       },
 
+      // 路线步进只改徽标状态：重挂节点子对象即可，不必重建可见集合 / 力模拟子集
+      syncRouteBadges: function () {
+        rebuildRouteBadgeEls();
+        syncRouteBadgePositions();
+        wakeRender();
+      },
+
       syncLabels: function () {
         if (areNodeLabelsVisible()) maybeMarkLabelsLayoutReady();
         syncLabels();
@@ -2294,6 +2341,7 @@
           window.cancelAnimationFrame(cameraLabelSyncRaf);
           cameraLabelSyncRaf = 0;
         }
+        routeBadgeEls.clear();
         if (graph && graph._destructor) graph._destructor();
         graph = null;
         labelLayer = null;
