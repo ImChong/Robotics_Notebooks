@@ -13,6 +13,7 @@ related:
   - ../entities/habitat-sim.md
   - ../tasks/vision-language-navigation.md
   - ../entities/matterport3d-simulator.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md
 ---
@@ -68,6 +69,7 @@ RGB-D 视频自动重建，再经众包完成实例语义标注。
 - [habitat-sim](../entities/habitat-sim.md)
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [matterport3d-simulator](../entities/matterport3d-simulator.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, soccer, active-vision, reinforcement-learning, sim2real, mit]
 status: complete
 updated: 2026-10-20
+venue: "2026 preprint"
 related:
   - ../tasks/humanoid-soccer.md
   - ./unitree-g1.md

@@ -10,6 +10,7 @@ related:
   - ./gnm-head.md
   - ./sam-3d-body.md
   - ./paper-face-anything-4d-face-reconstruction.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/repos/hfhpe.md
 summary: "HFHPE 是一个针对整头图像 crop 的轻量头部姿态估计管线：用 DINOv3 教师蒸馏轻量学生，在单次姿态图推理中输出全角度 yaw、pitch、roll，并提供 ONNX/TFLite 模型。"
@@ -73,6 +74,7 @@ flowchart LR
 - [GNM Head](./gnm-head.md) — 参数化头脸 3D 网格；与 HFHPE 的朝向估计任务不同，可在感知链路中互补
 - [SAM 3D Body](./sam-3d-body.md) — 从图像恢复全身人体网格，任务范围更广
 - [FaceAnything（4D 脸重建）](./paper-face-anything-4d-face-reconstruction.md) — 单目视频头脸重建，侧重几何与动态外观
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

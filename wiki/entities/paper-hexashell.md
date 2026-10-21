@@ -13,6 +13,7 @@ related:
   - ./paper-robodawn.md
   - ./paper-coap-embodied-turing-machines.md
   - ../methods/vla.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/hexashell_arxiv_2610_23479.md
   - ../../sources/repos/hexashell.md
@@ -121,6 +122,7 @@ sequenceDiagram
 - [RoboDawn](./paper-robodawn.md) — 冻结视觉模型 Agent 的 RoboDojo 参照路线。
 - [COAP：具身图灵机与代码策略](./paper-coap-embodied-turing-machines.md) — 另一种用代码构成机器人策略的 RoboDojo 方法。
 - [VLA](../methods/vla.md) — 视觉语言动作模型与机器人策略背景。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

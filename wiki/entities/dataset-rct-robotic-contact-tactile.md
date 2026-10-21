@@ -14,6 +14,7 @@ related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md
 ---
@@ -69,6 +70,7 @@ sources:
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [visuo-tactile-fusion](../concepts/visuo-tactile-fusion.md)
 - [manipulation](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

@@ -219,6 +219,8 @@ op: ingest
 - **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
 - **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
 
+## [2026-10-20] lint | 全量 lint 修复：18 条预警清零（1 陈旧页 + 17 信息型）—— visual-servoing 回链 OptiSight；9 页补评测/感知栈枢纽回链；5 个 dataset 补模态维度；JOGA 补 venue；MemT 补评测/对比区块；Evo-DexBench 改写绝对化措辞
+
 ## [2026-10-20] ingest | SKY-001 工程世界模型（官方博客与产品页）
 
 - 归档 Skyfall AI 官方博客与产品页，并新增 SKY-001 实体页。
