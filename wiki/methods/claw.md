@@ -2,7 +2,7 @@
 type: method
 tags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]
 status: complete
-updated: 2026-04-23
+updated: 2026-10-21
 related:
   - ./imitation-learning.md
   - ../concepts/motion-retargeting.md
