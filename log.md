@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-21] ingest | sources/papers/minute_scale_microrobot_navigation_arxiv_2608_00854.md — 收录 Nature Machine Intelligence 微型机器人导航分钟级训练论文、官方代码与 wiki 提炼
+
 ## [2026-10-19] structural | docs/checklists/graph-perf-audit-2026-10-19.md — 图谱 2D/3D 渲染性能与 Bug 复审：实测基线（6,216 节点 / 53,740 边）、14 条已确认 Bug、P0/P1/P2 分批方案
 
 ## [2026-10-21] ingest | sources/repos/rpl-amazon-far.md — 补入 RPL 官方训练、蒸馏与 sim2sim 代码并更新既有论文实体

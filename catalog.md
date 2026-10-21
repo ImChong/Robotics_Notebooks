@@ -2470,6 +2470,7 @@
 - [MiniWAM：用紧凑未来目标做高效世界–动作建模](wiki/entities/paper-miniwam-compact-future-targets.md) — MiniWAM** 先用 **PRISM**（逆向时空建模的预测表示）把「当前→未来」的冻结视觉特征压成每相机仅 3×4×4×64 的紧凑潜变量，再冻结 PRISM，让一个 0.25B 的双专家  `📅unknown` `[entity_page]`
 - [MINT — World-Space Camera and Hand Motion Estimation](wiki/entities/paper-mint-ego-world-space-camera-hand-motion.md) — MINT**（*Minting IN-the-Wild Trajectories*，arXiv:2609.04958，[项目页](https://1847540790.github.io/mint `📅unknown` `[entity_page]`
 - [MINT（Mimic Intent, Not Just Trajectories）](wiki/entities/paper-mint-vla.md) — MINT**（*Mimic Intent, Not Just Trajectories*，arXiv:2602.08602，**RSS 2026**）由上海交通大学与上海创智学院等提出：认为 VL `📅unknown` `[entity_page]`
+- [Minute-scale training for microrobot navigation](wiki/entities/paper-minute-scale-microrobot-navigation.md) — Minute-scale training for microrobot navigation**（Yinghan Sun 等，*Nature Machine Intelligence*，2026 `📅unknown` `[entity_page]`
 - [MIRAGE：达芬奇控制台里的统一手术导航与可视化框架](wiki/entities/paper-mirage-davinci-surgical-navigation.md) — MIRAGE**（*Multimodal Image-based Robotic Assistance and Guidance Environment*，[arXiv:2610.12780](h `📅unknown` `[entity_page]`
 - [MistyPilot：社交机器人的多智能体 LLM 技能编排](wiki/entities/paper-mistypilot.md) — MistyPilot**（*MistyPilot: Enabling Social-Robot Control through Multi-Agent LLM Skill Orchestratio `📅unknown` `[entity_page]`
 - [Mixed MPM：刚性弹粘塑性混合物质点法](wiki/entities/paper-mixed-mpm-stiff-elastoplasticity.md) — Mixed Material Point Methods for Stiff Elastoplasticity**（Gilles Daviet，[DOI:10.1145/3811345](http `📅unknown` `[entity_page]`
