@@ -553,6 +553,8 @@ flowchart TD
 
 - [RFPO](../entities/paper-rfpo-rectified-flow-policy-optimization.md) — 以 reward-aware online reflow 与多预算蒸馏把具身 flow policy 推理缩短为单步 Euler 更新；论文报告 Go2 单步保留 98.5% 的 64 步 reward（arXiv:2610.10453）。
 
+- [Embodied Human Simulation](../entities/embodied-human-simulation.md) — 以肌肉骨骼数字人仿真评估外骨骼与协作人形机器人的交互，并联合优化结构与控制参数（arXiv:2603.09218）。
+
 ## 四足长时程操作实例
 
 - [Rubik Skills](../entities/paper-rubik-skills.md) — ANYmal-D 将多视角魔方感知、技能规划与足端转层串成长时程自主操作。
