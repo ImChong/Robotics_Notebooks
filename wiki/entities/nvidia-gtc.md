@@ -17,7 +17,7 @@ sources:
   - ../../sources/blogs/nvidia_gtc_berlin_2026_live_updates.md
   - ../../sources/courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md
   - ../../sources/courses/nvidia_gtc_2025_humanoid_developer_day.md
-summary: "NVIDIA GTC 是官方 AI 大会与 On-Demand 回放门户；机器人线含 GTC 2025 Physical AI/Robotics 播放列表（13 场）与 Humanoid Developer Day（6 场），覆盖 Cosmos、GR00T、Newton、工业数字孪生与通才人形愿景。"
+summary: "NVIDIA GTC 是官方 AI 大会与 On-Demand 回放门户；机器人线含 GTC 2025 Physical AI/Robotics 播放列表与 Humanoid Developer Day，并收录 GTC Berlin 2026 Agile ONE SN、Microduck 仿真训练和工厂数字孪生案例。"
 ---
 
 # NVIDIA GTC（机器人 / Physical AI 一手资料）
