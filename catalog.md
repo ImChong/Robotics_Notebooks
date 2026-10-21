@@ -11,6 +11,7 @@
 - [CAD Operations Skill（2836048681/cad-operations-skill）](wiki/entities/2836048681-cad-operations-skill.md) — CAD Operations Skill（2836048681/cad-operations-skill）是便携 Codex 技能面向 CAD 操作、DXF/PDF 生成，含 AutoCAD/Free `📅unknown` `[entity_page]`
 - [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
 - [COMSOL MCP（777gegewu/comsol-mcp）](wiki/entities/777gegewu-comsol-mcp.md) — COMSOL MCP（777gegewu/comsol-mcp）是非官方 COMSOL MCP 学习项目，通过 Java Shell 控制已经打开的 COMSOL Desktop GUI。 `📅unknown` `[entity_page]`
+- [AA-Robotics v0.1](wiki/entities/aa-robotics.md) — AA-Robotics v0.1** 是 Artificial Analysis 于 2026-10-14 发布的具身智能研究预览：让通用语言模型在 coding-agent Harness 中直 `📅unknown` `[entity_page]`
 - [Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）](wiki/entities/abhinavbwj-claude-skills-for-computational-designers.md) — Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）是面向建筑 `📅unknown` `[entity_page]`
 - [acados](wiki/entities/acados.md) — acados**](https://github.com/acados/acados) 是面向 **模型预测控制（MPC）** 与 **最优控制问题（OCP）** 的开源求解框架：用 **Rea `📅unknown` `[entity_page]`
 - [ACMOP（交流电机自动优化框架）](wiki/entities/acmop.md) — ACMOP**（horychen/ACMOP，*Alternating Current Machine Optimizat `📅unknown` `[entity_page]`
