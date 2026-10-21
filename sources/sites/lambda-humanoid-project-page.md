@@ -12,7 +12,7 @@
 - **开放状态：** 代码仓库及 Stage II checkpoint 已公开；完整 HumanVerse 数据未在代码仓库发布，项目页链接的样例数据目前需授权访问；Stage III 后训练流程仍在准备中。
 - **源码归档：** [OpenLambda 仓库核查](../repos/openlambda.md)
 - **论文归档：** [arXiv:2610.18950](../papers/lambda0_arxiv_2610_18950.md)
-- **Wiki 主实体：** [λ₀ / OpenLambda](../../wiki/entities/paper-lambda0.md)
+- **Wiki 主实体：** [λ₀ / OpenLambda](../../wiki/entities/paper-lambda0-egocentric-human-pretraining.md)
 
 ## 项目页内容
 

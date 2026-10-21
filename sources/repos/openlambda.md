@@ -11,7 +11,7 @@
 - **论文：** <https://arxiv.org/abs/2610.18950>
 - **模型：** <https://huggingface.co/lambda-humanoid/lambda0-midtrain-100k>
 - **项目页归档：** [lambda-humanoid-project-page.md](../sites/lambda-humanoid-project-page.md)
-- **Wiki 主实体：** [λ₀ / OpenLambda](../../wiki/entities/paper-lambda0.md)
+- **Wiki 主实体：** [λ₀ / OpenLambda](../../wiki/entities/paper-lambda0-egocentric-human-pretraining.md)
 - **核查日期：** 2026-10-16
 
 ## 仓库覆盖范围
