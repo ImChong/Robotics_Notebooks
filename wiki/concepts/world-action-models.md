@@ -16,6 +16,7 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-unified-robot-learning-survey.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
+  - ../overview/physical-ai.md
   - ../entities/rekacs2-10k-dataset.md
   - ../entities/lumo-2.md
   - ../entities/philia.md
@@ -173,6 +174,8 @@ sources:
 ## 一句话定义
 
 让模型在生成动作时 **必须依托对未来世界的显式前向预测**，且该预测与动作在结构与训练目标上 **耦合**，而不是事后外挂仿真或辅助分支。
+
+领域背景见 [Physical AI 总览](../overview/physical-ai.md)：该页从物理闭环解释感知、世界建模、动作与部署约束之间的关系。
 
 近期跨本体实例：[GreenWAM](../entities/paper-greenwam.md) 将 20 类机器人映射到 79 个共享关节槽位，并联合训练世界预测与策略生成。
 
