@@ -47,6 +47,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -65,6 +66,8 @@ WIKI_DIR = REPO_ROOT / "wiki"
 ROADMAP_DIR = REPO_ROOT / "roadmap"
 GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
+# 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
+SUMMARIES_PATH = REPO_ROOT / "exports" / "link-graph-summaries.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
@@ -1850,6 +1853,32 @@ def _compute_graph_stats(
     return stats
 
 
+def precompute_graph_layout(graph_path: Path) -> list[list[int]] | None:
+    """用 Node 跑与前端同参的力模拟（scripts/precompute_graph_layout.cjs），返回每节点 [x, y]。
+
+    无 node 或失败时返回 None，页面回退为首屏在线 warmup（layout 字段可选）。
+    """
+    node = shutil.which("node")
+    if not node:
+        print("⚠️ 未找到 node，跳过预计算布局（首屏回退为在线 warmup）")
+        return None
+    script = REPO_ROOT / "scripts" / "precompute_graph_layout.cjs"
+    try:
+        result = subprocess.run(
+            [node, str(script), str(graph_path)],
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=600,
+        )
+    except (subprocess.SubprocessError, OSError) as exc:
+        print(f"⚠️ 预计算布局失败，跳过：{exc}")
+        return None
+    if result.stderr.strip():
+        print(f"   {result.stderr.strip()}")
+    return json.loads(result.stdout)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="生成 wiki 内链图谱与统计。")
     parser.add_argument(
@@ -1885,9 +1914,8 @@ def main() -> None:
         node.pop("_tags", None)
         node.pop("_topics", None)
         node.pop("_topic_source", None)
-        recency = node.pop("_recency", None)
-        if recency:
-            node["recency"] = recency
+        # recency（导出时 mtime）全表同值，不再写出；更新明度 / Top N 用下面的 activity / added
+        node.pop("_recency", None)
         added = added_dates.get(str(node["id"]))
         if added:
             node["added"] = added
@@ -1896,6 +1924,8 @@ def main() -> None:
             node["activity"] = last_activity
 
     institutions = build_institutions_summary(nodes)
+
+    summaries = [str(node.pop("summary", "") or "") for node in nodes]
 
     graph = {
         "nodes": nodes,
@@ -1913,7 +1943,22 @@ def main() -> None:
         f"{len(communities)} communities, {len(institutions)} institutions "
         f"→ {OUT_PATH.relative_to(REPO_ROOT)}"
     )
+    SUMMARIES_PATH.write_text(
+        json.dumps(summaries, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}"
+    )
+    layout = precompute_graph_layout(OUT_PATH)
+    if layout is not None:
+        graph["layout"] = layout
+        OUT_PATH.write_text(
+            json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+        )
+        print(f"✅ link-graph.json: 已写入预计算布局 layout（{len(layout)} 节点）")
 
+    # 图谱页加载进度条的分母：gzip 下发时 Content-Length 是压缩后字节数，页面流里数到的是原始字节数
+    stats["link_graph_bytes"] = OUT_PATH.stat().st_size
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

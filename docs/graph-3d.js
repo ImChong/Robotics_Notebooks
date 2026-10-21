@@ -48,7 +48,7 @@
 
   function cloneNodeFor3D(source) {
     var copy = Object.assign({}, source);
-    if (source._info) copy._info = Object.assign({}, source._info);
+    // _info 与 2D 节点共享同一对象：摘要懒加载补入后 3D 浮窗同样可见
     copy.x = source.x != null ? source.x : (Math.random() - 0.5) * 80;
     copy.y = source.y != null ? source.y : (Math.random() - 0.5) * 80;
     copy.z = source.z != null ? source.z : (Math.random() - 0.5) * 80;
@@ -177,9 +177,13 @@
     var getLinkColor = opts.getLinkColor || function () { return 'rgba(255,255,255,0.07)'; };
     var getLinkWidth = opts.getLinkWidth || function () { return 1; };
     var isDark = opts.isDark || function () { return true; };
+    // 低端设备（触屏 / ≤4 核 / ≤4 GB）：由 graph.html 的 LOW_END_DEVICE 注入，用于冷却节奏与渲染档位
+    var isLowEnd = opts.isLowEnd || function () { return false; };
     var onNodeClick = opts.onNodeClick;
     var onNodeHover = opts.onNodeHover;
     var onPointerMove = opts.onPointerMove;
+    // WebGL 上下文丢失且未能恢复时通知宿主（graph.html 据此回退 2D）
+    var onContextLost = opts.onContextLost;
     var getVisibleNodeIds = opts.getVisibleNodeIds || function () { return new Set(); };
     var hasActiveFilter = opts.hasActiveFilter || function () { return false; };
     var edgeHighlightsWithNode = opts.edgeHighlightsWithNode;
@@ -273,6 +277,10 @@
     var meshInstallScheduled = false;
     var pendingFirstShowKick = false;
     var initialFitDone = false;
+    // 引擎 tick 计数（每次 graphData / reheat 后由库从 alpha=1 重新衰减，这里只用于首次取景与标签就绪）
+    var engineTicks = 0;
+    var INITIAL_FIT_TICKS = 60;
+    var initialFitRunner = null;
     // 拖拽手势期间是否已 reheat：见 bindGraphInstance 里 onNodeDrag 注释。
     var nodeDragReheated = false;
     // 时序激活动画：null = 关闭（正常渲染）；Set = 「已激活」节点集合（= 进入力模拟的子集）。
@@ -508,6 +516,12 @@
       if (labelTickBound || !graph) return;
       labelTickBound = true;
       graph.onEngineTick(function () {
+        engineTicks += 1;
+        engineRunning = true;
+        if (idlePaused) wakeRender();
+        // 慢设备上引擎每帧只跑 1 tick，等 alpha 自然衰减到阈值可能要一两分钟；
+        // 跑够 INITIAL_FIT_TICKS 时布局骨架已成型，先取景，不等停机。
+        if (!initialFitDone && engineTicks >= INITIAL_FIT_TICKS && initialFitRunner) initialFitRunner();
         // 力引擎推进时节点世界坐标在变 → 质心缓存失效
         invalidateCommunityCentroids3D();
         syncCommunityLabelPositions();
@@ -536,6 +550,21 @@
       cameraLabelSyncBound = true;
       controls.addEventListener('change', function () {
         if (container.hidden) return;
+        var cam = (typeof graph.camera === 'function') ? graph.camera() : null;
+        var moved = true;
+        if (cam && cam.position) {
+          var pp = cam.position;
+          if (lastChangeCamPos) {
+            var ddx = pp.x - lastChangeCamPos.x;
+            var ddy = pp.y - lastChangeCamPos.y;
+            var ddz = pp.z - lastChangeCamPos.z;
+            moved = (ddx * ddx + ddy * ddy + ddz * ddz) > CAMERA_CHANGE_WAKE_DIST2;
+            lastChangeCamPos.x = pp.x; lastChangeCamPos.y = pp.y; lastChangeCamPos.z = pp.z;
+          } else {
+            lastChangeCamPos = { x: pp.x, y: pp.y, z: pp.z };
+          }
+        }
+        if (moved || performance.now() - lastInputAt < INPUT_RECENT_MS) wakeRender(250);
         if (cameraLabelSyncRaf) return;
         cameraLabelSyncRaf = window.requestAnimationFrame(function () {
           cameraLabelSyncRaf = 0;
@@ -567,7 +596,9 @@
 
     function maybeMarkLabelsLayoutReady() {
       if (labelsLayoutReady || !graph) return;
-      if (typeof graph.d3Alpha === 'function' && graph.d3Alpha() > 0.02) return;
+      // ForceGraph3D 1.80.0 不透出 d3Alpha()，此前的守卫是死代码（第一 tick 就标就绪）；
+      // 改用引擎 tick 计数：跑够初始取景所需 tick 数或引擎已停机才算布局就绪。
+      if (!initialFitDone && engineTicks < INITIAL_FIT_TICKS) return;
       markLabelsLayoutReady();
     }
 
@@ -714,6 +745,7 @@
         y: ty + (cam3d.position.y - ty) * s,
         z: tz + (cam3d.position.z - tz) * s,
       };
+      wakeRender((durationMs == null ? 0 : durationMs) + 200);
       graph.cameraPosition(next, { x: tx, y: ty, z: tz }, durationMs == null ? 0 : durationMs);
       return true;
     }
@@ -750,6 +782,51 @@
       syncLabelPositions();
       syncLabelStyles();
       syncCommunityLabelPositions();
+    }
+
+    // 连线记录只建一次并在每次 graphData 复用：库的数据映射按对象身份 diff，
+    // 每次传新对象会把 53k 连线对象全部拆掉重建（首次进入曾因此重建 3 次）。
+    var linkRecords = null;
+    function getLinkRecords() {
+      if (!linkRecords) linkRecords = buildLinks();
+      return linkRecords;
+    }
+
+    // 筛选在 3D 改为真子集：此前只用 nodeVisibility / linkVisibility 隐藏，力模拟仍跑全部节点、
+    // 场景仍留 6 万对象，移动端默认 Top N 在 3D 侧收益为零。节点 / 连线记录对象身份不变，
+    // 库按身份 diff，留下的节点位置不丢。
+    function filteredGraphData() {
+      if (!hasActiveFilter() || timelineActive()) return { nodes: nodes3d, links: getLinkRecords() };
+      var visible = getVisibleNodeIds();
+      return {
+        nodes: nodes3d.filter(function (n) { return visible.has(n.id); }),
+        links: getLinkRecords().filter(function (l) {
+          return visible.has(l.source.id) && visible.has(l.target.id);
+        }),
+      };
+    }
+
+    // 滑块拖动时 syncFilters 每帧触发，graphData 重建按 300 ms 合并；成员未变则不重建
+    var subsetRebuildTimer = null;
+    function scheduleSubsetRebuild() {
+      if (subsetRebuildTimer) clearTimeout(subsetRebuildTimer);
+      subsetRebuildTimer = setTimeout(function () {
+        subsetRebuildTimer = null;
+        if (!graph || container.hidden || timelineActive()) return;
+        var next = filteredGraphData();
+        var cur = (graph.graphData() || {}).nodes || [];
+        if (cur.length === next.nodes.length) {
+          var curIds = new Set(cur.map(function (n) { return n.id; }));
+          var same = next.nodes.every(function (n) { return curIds.has(n.id); });
+          if (same) return;
+        }
+        graph.graphData(next);
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          reheatAfterGraphData();
+          syncLabels();
+        });
+      }, 300);
     }
 
     function buildLinks() {
@@ -879,8 +956,9 @@
         return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.88 : 0.06;
       }
       if (hoverNodeId) {
+        // 非邻接连线保持常态值（不再整体从 0.06 变 0.1）：hover 只需改邻接连线，O(度) 而非 O(E)
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.68 : 0.1;
+        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return 0.68;
       }
       if (!filtered) return 0.06;
       if (!visible.has(s) || !visible.has(t)) return 0.03;
@@ -926,6 +1004,103 @@
       return base;
     }
 
+    /* ── 连线材质 ──
+       3d-force-graph 1.80.0 的 linkOpacity 是标量：此前传函数，库内 `linkOpacity * colorAlpha`
+       算成 NaN → 全部连线 transparent:false / opacity:NaN，开「显示连线」后整图一片白线。
+       另外任何访问器 setter（linkColor / linkOpacity / linkVisibility / linkWidth）都会触发整图
+       digest，linkWidth 还会拆掉并重建全部 53k 连线对象（hover 一次 3 s 以上）。
+       改法：把「颜色 × 不透明度」预先混进不透明的场景底色（背景是纯色，视觉上与 alpha 叠加
+       等价，且不进透明队列、不逐帧排序），材质按颜色串共享；hover / 侧栏只给颜色变了的连线
+       换材质，不再碰任何 setter。 */
+    var LINK_BASE_OPACITY = 0.06;   // linkOpacityFor 的常态值；rgba 底色的 alpha 以此为基准缩放
+    var linkMaterialCache = new Map();
+    var linkMaterialCtor = null;
+    // 「颜色串|不透明度」→ 混合后 hex 的备忘：全图 53k 连线只会出现几种组合，避免逐线正则解析
+    var linkDisplayColorMemo = new Map();
+
+    function parseCssColor(str) {
+      var m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(str || '');
+      if (m) {
+        var h = m[1].length === 3 ? m[1].replace(/./g, function (c) { return c + c; }) : m[1];
+        var n = parseInt(h, 16);
+        return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1];
+      }
+      m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/i.exec(str || '');
+      if (m) return [+m[1], +m[2], +m[3], m[4] == null ? 1 : +m[4]];
+      return [255, 255, 255, 1];
+    }
+
+    function toHex(r, g, b) {
+      var n = (Math.round(r) << 16) | (Math.round(g) << 8) | Math.round(b);
+      return '#' + ('000000' + n.toString(16)).slice(-6);
+    }
+
+    /** 连线最终显示色：底色（可带 alpha）按 linkOpacityFor 缩放后与场景背景混合为不透明色。 */
+    function linkDisplayColor(l) {
+      var colorStr = linkColorFor(l);
+      var op = linkOpacityFor(l);
+      var key = colorStr + '|' + op;
+      var hex = linkDisplayColorMemo.get(key);
+      if (hex) return hex;
+      var c = parseCssColor(colorStr);
+      // 高亮色为不透明 hex 时直接用 op；rgba 底色自带的 alpha 按 op/常态值 等比缩放
+      var alpha = c[3] < 1 ? c[3] * (op / LINK_BASE_OPACITY) : op;
+      alpha = Math.max(0, Math.min(1, alpha));
+      var bg = parseCssColor(backgroundColor());
+      hex = toHex(bg[0] + (c[0] - bg[0]) * alpha, bg[1] + (c[1] - bg[1]) * alpha, bg[2] + (c[2] - bg[2]) * alpha);
+      linkDisplayColorMemo.set(key, hex);
+      return hex;
+    }
+
+    function linkMaterialFor(colorHex, sampleMaterial) {
+      var mat = linkMaterialCache.get(colorHex);
+      if (mat) return mat;
+      if (!linkMaterialCtor) linkMaterialCtor = sampleMaterial && sampleMaterial.constructor;
+      if (!linkMaterialCtor) return null;
+      mat = new linkMaterialCtor({ color: colorHex });
+      linkMaterialCache.set(colorHex, mat);
+      return mat;
+    }
+
+    // 按端点索引当前 graphData 的连线（随 links 数组身份重建），供 hover 增量换材质
+    var linkIndexSource = null;
+    var linkIndexMap = null;
+    function linksTouching(nodeId) {
+      if (!graph || !nodeId) return [];
+      var links = (graph.graphData() || {}).links || [];
+      if (linkIndexSource !== links) {
+        linkIndexSource = links;
+        linkIndexMap = new Map();
+        for (var i = 0; i < links.length; i++) {
+          var l = links[i];
+          var a = edgeEndpointId(l.source);
+          var b = edgeEndpointId(l.target);
+          if (!linkIndexMap.has(a)) linkIndexMap.set(a, []);
+          if (!linkIndexMap.has(b)) linkIndexMap.set(b, []);
+          linkIndexMap.get(a).push(l);
+          if (b !== a) linkIndexMap.get(b).push(l);
+        }
+      }
+      return linkIndexMap.get(nodeId) || [];
+    }
+
+    // 逐连线换材质：只对颜色变了的连线写 material，常态下 O(E) 比较、几乎不分配。
+    function updateLinkMaterials(subset) {
+      if (!graph) return;
+      var links = subset || ((graph.graphData() || {}).links || []);
+      for (var i = 0; i < links.length; i++) {
+        var l = links[i];
+        var mesh = resolveLinkCylinderMesh(l.__lineObj);
+        if (!mesh || !mesh.material) continue;
+        var want = linkDisplayColor(l);
+        if (mesh.userData.rnColor === want) continue;
+        var mat = linkMaterialFor(want, mesh.material);
+        if (!mat) continue;
+        mesh.material = mat;
+        mesh.userData.rnColor = want;
+      }
+    }
+
     function sphereRadiusFor(d) {
       var r = getNodeRadius(d);
       return Math.max(11, r * 1.65);
@@ -940,23 +1115,32 @@
     function ensureSharedSphereGeometry(T) {
       if (!sharedSphereGeometry) {
         // 单位球 + mesh.scale：1336 节点共享一份几何体，避免逐节点 new SphereGeometry 阻塞主线程。
-        sharedSphereGeometry = new T.SphereGeometry(1, 12, 10);
+        // 取景后节点球在屏上只有 2–8 px：低端用 8×6（80 三角）代替 12×10（216 三角）看不出差别
+        sharedSphereGeometry = isLowEnd() ? new T.SphereGeometry(1, 8, 6) : new T.SphereGeometry(1, 12, 10);
       }
       return sharedSphereGeometry;
+    }
+
+    // 节点材质按「颜色|不透明度（取两位小数）」共享：此前 6,216 个节点各持一份 MeshLambertMaterial，
+    // 每个 draw call 都要重传材质 uniform，hover / 侧栏淡化时还逐节点 color.set 重新解析颜色串。
+    // 全图只有社区色 × 几档淡化系数这几十种组合。
+    var nodeMaterialCache = new Map();
+    function nodeMaterialFor(colorStr, opacity) {
+      var q = Math.round(opacity * 100) / 100;
+      var key = colorStr + '|' + q;
+      var mat = nodeMaterialCache.get(key);
+      if (mat) return mat;
+      mat = new bundledThree.MeshLambertMaterial({ color: colorStr, transparent: q < 0.999, opacity: q });
+      nodeMaterialCache.set(key, mat);
+      return mat;
     }
 
     function createNodeMesh(d) {
       if (!bundledThree) return null;
       // 应用 pop-in 系数，避免新激活节点出现的首帧以全尺寸闪一下。
       var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
-      var opacity = nodeOpacityFor(d);
       var geometry = ensureSharedSphereGeometry(bundledThree);
-      var MaterialCtor = bundledThree.MeshLambertMaterial;
-      var material = new MaterialCtor({
-        color: getNodeColor(d),
-        transparent: opacity < 0.999,
-        opacity: opacity,
-      });
+      var material = nodeMaterialFor(getNodeColor(d), nodeOpacityFor(d));
       var mesh = new bundledThree.Mesh(geometry, material);
       mesh.scale.set(radius, radius, radius);
       mesh.userData.nodeId = d.id;
@@ -978,9 +1162,8 @@
         var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
         var opacity = nodeOpacityFor(d);
         obj.scale.set(radius, radius, radius);
-        obj.material.color.set(getNodeColor(d));
-        obj.material.opacity = opacity;
-        obj.material.transparent = opacity < 0.999;
+        var mat = nodeMaterialFor(getNodeColor(d), opacity);
+        if (obj.material !== mat) obj.material = mat;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
       }
     }
@@ -993,6 +1176,7 @@
     function linkScaleUpdate(obj, _coords, link) {
       var mesh = resolveLinkCylinderMesh(obj);
       if (!mesh) return false;
+      if (!obj.userData.rnLayerSet) markLinkObjectLayer(obj);
       var mult = 1;
       if (sidebarNodeId || hoverNodeId) {
         var base = linkBaseWidth();
@@ -1003,6 +1187,7 @@
       return false;
     }
 
+    // 外观刷新（hover / 侧栏 / 主题）：只直接改已有对象，不调用任何库 setter。
     function refreshAppearance() {
       if (!customMeshesInstalled) {
         // nodeOpacity 是标量配置：传函数会算出 NaN 不透明度让默认球体全透明。
@@ -1012,15 +1197,35 @@
           .nodeVal(nodeValFor)
           .nodeOpacity(1);
       }
+      updateNodeMeshes();
+      updateLinkMaterials();
+      syncLabels();
+      wakeRender();
+    }
+
+    // hover 专用：节点全量（O(N)，逐节点淡化本就需要）+ 只换前后两个焦点节点的邻接连线材质
+    function setHoverNode(nextId) {
+      var prevId = hoverNodeId;
+      hoverNodeId = nextId || null;
+      if (prevId === hoverNodeId) return;
+      updateNodeMeshes();
+      if (prevId) updateLinkMaterials(linksTouching(prevId));
+      if (hoverNodeId) updateLinkMaterials(linksTouching(hoverNodeId));
+      syncLabels();
+      wakeRender();
+      // 关闭「显示连线」时只画焦点连线：焦点变化即可见集合变化
+      if (!areEdgesVisible()) refreshVisibility();
+    }
+
+    // 可见集合变化（筛选 / 显示连线开关 / 关连线时的焦点连线）才需要库 digest 增删对象；
+    // 访问器本身读闭包状态，重新 set 只是为了触发 digest。刻意不碰 linkWidth。
+    function refreshVisibility() {
+      if (!graph) return;
       graph
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
-        .linkColor(function (l) { return linkColorFor(l); })
-        // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
-        .linkWidth(linkBaseWidth)
-        .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
-      updateNodeMeshes();
-      syncLabels();
+      afterGraphDataApplied(function () {});   // digest 落地后给新建的连线对象标层
+      wakeRender();
     }
 
     // pop-in 期间逐帧刷新节点 mesh 缩放，让「激活」放大过程平滑（由 3d-force-graph 的渲染环负责出图）。
@@ -1042,10 +1247,11 @@
       bundledThree = captureBundledThree(graph);
       if (!bundledThree) return false;
       ensureSharedSphereGeometry(bundledThree);
+      // nodeThreeObject setter 本身即触发节点对象重建（库内 nodeDataMapper.clear()），
+      // 无需再 graphData（那会连带重建全部连线并把 alpha 重置为 1）。
       graph
         .nodeThreeObject(function (d) { return createNodeMesh(d); })
         .nodeThreeObjectExtend(false);
-      graph.graphData({ nodes: nodes3d, links: buildLinks() });
       ensureSceneLights(graph.scene(), bundledThree);
       customMeshesInstalled = true;
       refreshAppearance();
@@ -1084,15 +1290,127 @@
       window.requestAnimationFrame(tryInstall);
     }
 
+    /* ── WebGL 上下文丢失 ──
+       手机（尤其 iOS Safari）在内存压力下会丢掉上下文；three 自身只在 restored 时重建 GL 状态，
+       若浏览器不再恢复，库的渲染环会对着死上下文空转、画面黑屏且无提示。这里：丢失即暂停渲染环，
+       CONTEXT_RESTORE_GRACE_MS 内恢复则刷新外观继续，否则通知宿主回退 2D。 */
+    var CONTEXT_RESTORE_GRACE_MS = 3000;
+    var contextLostTimer = 0;
+    var contextLost = false;
+    function bindContextLossHandlers(canvasEl) {
+      canvasEl.addEventListener('webglcontextlost', function (ev) {
+        ev.preventDefault();   // 允许浏览器随后派发 webglcontextrestored
+        contextLost = true;
+        pauseRenderLoop();
+        if (contextLostTimer) window.clearTimeout(contextLostTimer);
+        contextLostTimer = window.setTimeout(function () {
+          contextLostTimer = 0;
+          if (!contextLost) return;
+          if (onContextLost) onContextLost();
+        }, CONTEXT_RESTORE_GRACE_MS);
+      });
+      canvasEl.addEventListener('webglcontextrestored', function () {
+        contextLost = false;
+        if (contextLostTimer) { window.clearTimeout(contextLostTimer); contextLostTimer = 0; }
+        if (!graph || container.hidden) return;
+        refreshAppearance();
+        resumeRenderLoop();
+        forceRendererResize();
+      });
+    }
+
+    /* ── 拾取范围与节奏 ──
+       库在渲染环里每 50 ms 对整个场景递归 raycast（开连线时 6 万对象，指针不动也跑），
+       而本页没有任何连线的 hover / click 行为。连线对象放到 LINK_LAYER：库的 Raycaster 只查
+       默认层（0），相机另开该层所以照常渲染。再把库的指针拾取只在「最近有输入」时打开。 */
+    var LINK_LAYER = 1;
+    function markLinkObjectLayer(obj) {
+      if (!obj || obj.userData.rnLayerSet) return;
+      if (typeof obj.traverse === 'function') obj.traverse(function (o) { if (o.layers) o.layers.set(LINK_LAYER); });
+      else if (obj.layers) obj.layers.set(LINK_LAYER);
+      obj.userData.rnLayerSet = true;
+    }
+    // 全量补标：连线对象由库在防抖 digest 里异步创建，时机不可靠，digest 后延迟扫两次兜底；
+    // 常规路径由 linkScaleUpdate（库每次摆放连线都会回调）顺手标层，零额外遍历。
+    function markLinkLayers() {
+      if (!graph) return;
+      var links = (graph.graphData() || {}).links || [];
+      for (var i = 0; i < links.length; i++) markLinkObjectLayer(links[i].__lineObj);
+    }
+    function scheduleLinkLayerMarking() {
+      window.setTimeout(markLinkLayers, 300);
+      window.setTimeout(markLinkLayers, 2000);
+    }
+
+    var POINTER_IDLE_DISABLE_MS = 1000;
+    var pointerInteractionTimer = 0;
+    /** 最近有输入时才让库做 hover raycast；holdMs 后自动关闭（触屏给更长的保持期以保证轻触能命中） */
+    function armPointerInteraction(holdMs) {
+      if (!graph || typeof graph.enablePointerInteraction !== 'function') return;
+      if (!graph.enablePointerInteraction()) graph.enablePointerInteraction(true);
+      if (pointerInteractionTimer) window.clearTimeout(pointerInteractionTimer);
+      pointerInteractionTimer = window.setTimeout(function () {
+        pointerInteractionTimer = 0;
+        if (graph && typeof graph.enablePointerInteraction === 'function') graph.enablePointerInteraction(false);
+      }, holdMs || POINTER_IDLE_DISABLE_MS);
+    }
+
+    /* ── 渲染环空闲暂停 ──
+       3d-force-graph 的 _animationCycle 无条件 rAF：引擎停机、相机静止时每帧仍重算 6 万对象矩阵、
+       做视锥剔除、提交 6k–60k 次 draw call，并每 50 ms raycast 整个场景。这里在
+       「引擎已停 + 无相机变化 / 指针 / 飞行动画」持续 IDLE_PAUSE_MS 后 pauseAnimation()，
+       任何输入、reheat、外观变化或相机飞行都先 wakeRender() 再生效。 */
+    var IDLE_PAUSE_MS = 600;
+    var idlePauseTimer = 0;
+    var idlePaused = false;
+    var engineRunning = false;
+    var renderHoldUntil = 0;
+    var engineStopListeners = [];
+    var lastInputAt = 0;
+    var lastChangeCamPos = null;
+    // TrackballControls 的阻尼尾巴会以亚像素位移持续派发 change；只有位移可见或刚有输入才唤醒
+    var CAMERA_CHANGE_WAKE_DIST2 = 0.01;
+    var INPUT_RECENT_MS = 1500;
+
+    function scheduleIdlePause() {
+      if (idlePauseTimer) window.clearTimeout(idlePauseTimer);
+      var wait = Math.max(IDLE_PAUSE_MS, renderHoldUntil - performance.now() + 50);
+      idlePauseTimer = window.setTimeout(tryIdlePause, wait);
+    }
+
+    function tryIdlePause() {
+      idlePauseTimer = 0;
+      if (!graph || container.hidden || idlePaused) return;
+      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null) {
+        scheduleIdlePause();
+        return;
+      }
+      idlePaused = true;
+      if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
+    }
+
+    /** 唤醒渲染环；holdMs > 0 表示至少持续渲染这么久（相机飞行等）。 */
+    function wakeRender(holdMs) {
+      if (!graph || container.hidden) return;
+      if (holdMs) renderHoldUntil = Math.max(renderHoldUntil, performance.now() + holdMs);
+      if (idlePaused) {
+        idlePaused = false;
+        resumeRenderLoop();
+      }
+      scheduleIdlePause();
+    }
+
     function pauseRenderLoop() {
       if (!graph) return;
+      if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
       if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
     }
 
     var resumeDeferrals = 0;
     function resumeRenderLoop() {
-      if (!graph) return;
+      // show() 排队的回调（afterGraphDataApplied / 自定义 mesh 安装）可能在用户已切回 2D 后才到达，
+      // 此前没有 hidden 守卫 → 隐藏的 3D 继续跑整轮力模拟并每帧渲染 6 万对象
+      if (!graph || container.hidden) return;
       // 3d-force-graph 在 kapsule 的防抖 digest 里才创建 WebGL renderer 并由 init 自启渲染环。
       // 主线程繁忙时本函数（经 afterGraphDataApplied 调度）可能早于该 digest 跑完，
       // 此刻 renderer 尚未就绪；若仍 resumeAnimation，会让库内部 _animationCycle 在对象未就绪时
@@ -1109,6 +1427,8 @@
       try {
         if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
         resumeDeferrals = 0;
+        idlePaused = false;
+        scheduleIdlePause();
       } catch (_resumeErr) {
         if (resumeDeferrals++ < 180) window.requestAnimationFrame(resumeRenderLoop);
       }
@@ -1132,8 +1452,7 @@
 
   /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
     function reheatAfterGraphData() {
-      if (!graph) return;
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+      if (!graph || container.hidden) return;
       if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
       resumeRenderLoop();
     }
@@ -1301,6 +1620,7 @@
       var durationMs = duration == null ? 650 : duration;
       // 起飞前锁定胶囊为落稳尺寸，并把基线设为目标距离（避免飞行中途 scale 闪烁）
       beginFitLabelZoomLock(dist, durationMs);
+      wakeRender(durationMs + 200);
       graph.cameraPosition(
         { x: cx + (dx / len) * dist, y: cy + (dy / len) * dist, z: cz + (dz / len) * dist },
         lookAt,
@@ -1358,21 +1678,35 @@
           syncCommunityLabelPositions();
         }, Math.max(0, duration) + 60);
       }
-      if (typeof graph.onEngineStop === 'function') {
-        graph.onEngineStop(function () { runFit(); });
-      }
-      // 自然收敛约需 ~270 tick（≈4.5s），兜底超时放宽到 9s，让 onEngineStop（布局收敛完成）
-      // 成为主触发，避免兜底在收敛中途抢先适配。
-      window.setTimeout(runFit, 9000);
+      initialFitRunner = runFit;
+      engineStopListeners.push(runFit);
+      // 主触发：onEngineTick 计数到 INITIAL_FIT_TICKS 或 onEngineStop；兜底只防引擎根本没跑起来。
+      window.setTimeout(runFit, 60000);
     }
 
+    // 最近一次输入的指针类型：触屏抬指后库仍会按最后位置 raycast 并发 hover，须忽略
+    var lastPointerType = 'mouse';
     function onContainerPointerMove(ev) {
       lastPointer.clientX = ev.clientX;
       lastPointer.clientY = ev.clientY;
+      if (ev.pointerType) lastPointerType = ev.pointerType;
+      lastInputAt = performance.now();
+      wakeRender();   // hover 检测靠渲染环里的 raycast，指针一动就得先把环唤醒
+      armPointerInteraction(ev && ev.pointerType === 'touch' ? 1200 : POINTER_IDLE_DISABLE_MS);
       if (onPointerMove) onPointerMove(ev);
+    }
+    function onContainerInput(ev) {
+      if (ev && ev.type === 'touchstart') lastPointerType = 'touch';
+      else if (ev && ev.pointerType) lastPointerType = ev.pointerType;
+      lastInputAt = performance.now();
+      wakeRender();
+      armPointerInteraction(ev && (ev.type === 'touchstart' || ev.pointerType === 'touch') ? 1200 : POINTER_IDLE_DISABLE_MS);
     }
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
+    container.addEventListener('pointerdown', onContainerInput, { passive: true });
+    container.addEventListener('wheel', onContainerInput, { passive: true });
+    container.addEventListener('touchstart', onContainerInput, { passive: true });
     window.addEventListener('error', reviveRenderLoopOnError);
 
     var graph = null;
@@ -1394,6 +1728,8 @@
           else fn();
           return;
         }
+        markLinkLayers();
+        scheduleLinkLayerMarking();
         fn();
       }
       window.requestAnimationFrame(wait);
@@ -1416,21 +1752,29 @@
         // 因此下方 onNodeDrag / onNodeDragEnd 需在手势期间 d3ReheatSimulation()。
         .warmupTicks(0)
         .cooldownTicks(Infinity)
-        .d3AlphaDecay(0.025)
-        .d3AlphaMin(0.001)
+        // 库默认 cooldownTime=15 s：慢设备每帧 1 tick，15 s 只够几十 tick，alpha≈0.3 就停机、
+        // 相机 fit 到未收敛布局。改为只由 alpha 阈值停机，冷却节奏按设备档位缩放
+        // （低端 decay 0.05 / alphaMin 0.01 ≈ 92 tick；桌面 0.025 / 0.005 ≈ 212 tick）。
+        .cooldownTime(Infinity)
+        .d3AlphaDecay(isLowEnd() ? 0.05 : 0.025)
+        .d3AlphaMin(isLowEnd() ? 0.01 : 0.005)
         .d3VelocityDecay(0.4)
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)
+        // 连线圆柱默认 6 棱 + 封顶 = 24 三角 / 条，投影后不足 1 px；3 棱柱 12 三角视觉一致，
+        // 全图 53,740 条少约 64 万三角形
+        .linkResolution(3)
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
-        .linkColor(function (l) { return linkColorFor(l); })
+        // 颜色已混入底色（见 linkDisplayColor），库按颜色串缓存共享材质；linkOpacity 为标量
+        .linkColor(linkDisplayColor)
+        .linkOpacity(1)
         // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
         .linkWidth(linkBaseWidth)
         .linkPositionUpdate(linkScaleUpdate)
-        .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); })
         .enableNodeDrag(true)
         .onNodeDrag(function () {
@@ -1452,18 +1796,23 @@
         })
         .onNodeHover(function (node) {
           // 侧栏/触屏选中态由 sidebarNodeId 驱动；旋转视角时 hover 会短暂落空，不能覆盖持久高亮。
-          if (!sidebarNodeId) {
-            hoverNodeId = node ? node.id : null;
-            refreshAppearance();
-          }
+          // 触屏没有 hover：旋转 / 平移抬指后落在节点上会被库当成悬停，整图淡化直到下次点击
+          if (!sidebarNodeId && lastPointerType !== 'touch') setHoverNode(node ? node.id : null);
           var src = node ? (resolveSourceNode(node.id) || node) : null;
           if (onNodeHover) onNodeHover(src, lastPointer);
         })
         .onBackgroundClick(function () {
-          hoverNodeId = null;
-          refreshAppearance();
+          setHoverNode(null);
           if (opts.onBackgroundClick) opts.onBackgroundClick();
         });
+      // 唯一的 onEngineStop 处理器（kapsule 属性只能挂一个）：先跑监听者，再开始空闲计时
+      graph.onEngineStop(function () {
+        engineRunning = false;
+        engineStopListeners.forEach(function (fn) { fn(); });
+        scheduleIdlePause();
+      });
+      var cam = (typeof graph.camera === 'function') ? graph.camera() : null;
+      if (cam && cam.layers) cam.layers.enable(LINK_LAYER);
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
     }
@@ -1475,9 +1824,23 @@
       // rendererConfig 透传给内部 three.js WebGLRenderer：powerPreference='high-performance'
       // 提示浏览器/驱动在双显卡设备（典型为带集显+独显的笔记本）上优先选用独立 GPU。
       // 仅为性能提示——单 GPU 设备无效果，浏览器亦可忽略，不影响渲染正确性。
+      // 低端：关 MSAA（填充率是移动 GPU 最弱项）、不透明上下文（背景本就是纯色，省一次页面合成混合）
       graph = window.ForceGraph3D({
-        rendererConfig: { powerPreference: 'high-performance' },
+        rendererConfig: {
+          powerPreference: 'high-performance',
+          antialias: !isLowEnd(),
+          alpha: false,
+        },
       })(container);
+      // 库默认 setPixelRatio(min(2, DPR))：DPR 3 手机按 2× 渲染 = 4 倍像素。
+      // 按档位封顶：低端 1×，其余 1.5×（2.6M 三角形的细圆柱在 1.5× 已无可见差别）。
+      try {
+        var renderer = typeof graph.renderer === 'function' ? graph.renderer() : null;
+        if (renderer && typeof renderer.setPixelRatio === 'function') {
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowEnd() ? 1 : 1.5));
+        }
+        if (renderer && renderer.domElement) bindContextLossHandlers(renderer.domElement);
+      } catch (_e) { /* 渲染器未就绪时沿用库默认 */ }
       graph.pauseAnimation();
       bindGraphInstance();
       pendingFirstShowKick = true;
@@ -1494,13 +1857,10 @@
       window.setTimeout(function () {
         if (!graph || container.hidden) return;
         syncViewport();
-        pauseRenderLoop();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        // 只做尺寸抖动：恢复空白的本质是 drawing buffer 重建 + 合成层重绘，
+        // 此前这里还重跑一次 graphData（第三次全量重建连线），对恢复无帮助。
         afterGraphDataApplied(function () {
-          if (!graph) return;
-          reheatAfterGraphData();
-          // 渲染环恢复后再强制一次尺寸重建：仅重跑 graphData 不动 drawing buffer，
-          // 无法恢复新建渲染器首帧偶发的整屏空白；显式抖动尺寸才能强制重建+重绘。
+          if (!graph || container.hidden) return;
           forceRendererResize();
         });
       }, 250);
@@ -1512,13 +1872,14 @@
         showLabelLayer();
         syncPositionsFromSource();
         ensureGraph();
+        armPointerInteraction();   // 需在 ensureGraph 之后：无输入时保持期一过即关闭库的拾取
         buildLabelEls();
         bindLabelTick();
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
         pauseRenderLoop();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        graph.graphData(filteredGraphData());
         afterGraphDataApplied(function () {
           if (!graph) return;
           reheatAfterGraphData();
@@ -1557,12 +1918,15 @@
 
       resize: function () {
         if (container.hidden) return;
+        wakeRender();
         syncViewport();
         syncLabels();
       },
 
       syncFilters: function () {
         refreshAppearance();
+        refreshVisibility();
+        scheduleSubsetRebuild();
       },
 
       syncLabels: function () {
@@ -1611,6 +1975,7 @@
         timelineCount = count;
         graph.graphData({ nodes: timelineOrder.slice(0, count), links: buildTimelineLinks() });
         ensureTimelinePopRunning();
+        wakeRender();
       },
 
       // 相机适配到「已激活」子集（生长时随之缩放，类似 2D fitToTimelineNodes）。
@@ -1637,7 +2002,7 @@
           timelineSnapshot = null;
         }
         if (!graph) return;
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        graph.graphData(filteredGraphData());
         refreshAppearance();
         reheatAfterGraphData();
         markLabelsLayoutReady();
@@ -1645,6 +2010,8 @@
 
       refreshColors: function () {
         graph.backgroundColor(backgroundColor());
+        linkMaterialCache.clear();   // 混色依赖背景色，换主题后全部重算
+        linkDisplayColorMemo.clear();
         refreshAppearance();
         syncLabels();
       },
@@ -1657,8 +2024,8 @@
         afterGraphDataApplied(function () {
           if (!graph) return;
           // 力参数变化后重跑一轮自然收敛（alpha=1→0），而非把 alphaTarget 钉在 0.22。
-          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
           if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+          wakeRender();
         });
       },
 
@@ -1671,7 +2038,8 @@
         }
         nodes3d = sourceNodes.map(cloneNodeFor3D);
         rebuildNodeIndex();
-        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        linkRecords = null;   // 节点对象换了，连线记录里被库解析成对象的 source/target 也要重建
+        graph.graphData(filteredGraphData());
         this.updateForces();
       },
 
@@ -1690,6 +2058,7 @@
         if (!n3 || n3.x == null) return;
         var z = n3.z != null ? n3.z : 0;
         var dist = Math.max(180, sphereRadiusFor(n3) * 16);
+        wakeRender((ms == null ? 700 : ms) + 200);
         graph.cameraPosition(
           { x: n3.x, y: n3.y, z: z + dist },
           n3,
@@ -1740,6 +2109,7 @@
         sidebarSecondary = secondary || new Set();
         hoverNodeId = null;
         refreshAppearance();
+        if (!areEdgesVisible()) refreshVisibility();
       },
 
       clearSidebarHighlight: function () {
@@ -1747,13 +2117,13 @@
         sidebarDirect = new Set();
         sidebarSecondary = new Set();
         refreshAppearance();
+        if (!areEdgesVisible()) refreshVisibility();
       },
 
       // G2 基线测量：分离悬停刷新 / 标签同步 / 场景对象数（非业务 UI）
       measureHover: function (nodeId) {
         var t = performance.now();
-        hoverNodeId = nodeId || null;
-        refreshAppearance();
+        setHoverNode(nodeId || null);
         return +(performance.now() - t).toFixed(2);
       },
 
@@ -1777,11 +2147,13 @@
         if (!scene) return null;
         var meshes = 0, lines = 0, labels = 0;
         var nodeMeshes = 0, dimmed = 0, bright = 0;
+        var nodeMaterials = new Set();
         scene.traverse(function (obj) {
           if (obj.isMesh) {
             meshes += 1;
             if (obj.userData && obj.userData.nodeId && obj.material) {
               nodeMeshes += 1;
+              nodeMaterials.add(obj.material);
               if (obj.material.opacity < 0.5) dimmed += 1; else bright += 1;
             }
           } else if (obj.isLine || obj.isLineSegments) lines += 1;
@@ -1790,7 +2162,49 @@
         return {
           scene_meshes: meshes, scene_lines: lines, label_elements: labels,
           node_meshes: nodeMeshes, node_dimmed: dimmed, node_bright: bright,
+          node_materials: nodeMaterials.size,
         };
+      },
+
+      // 验证用：模拟 WebGL 上下文丢失（restoreAfterMs > 0 则随后恢复）
+      simulateContextLoss: function (restoreAfterMs) {
+        var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;
+        var gl = r && typeof r.getContext === 'function' ? r.getContext() : null;
+        var ext = gl && gl.getExtension('WEBGL_lose_context');
+        if (!ext) return false;
+        ext.loseContext();
+        if (restoreAfterMs > 0) window.setTimeout(function () { ext.restoreContext(); }, restoreAfterMs);
+        return true;
+      },
+      // 验证用：节点屏幕坐标与库指针拾取开关状态（非业务 UI）
+      getNodeScreenPos: function (id) {
+        var n = nodeById.get(id);
+        if (!graph || !n || n.x == null) return null;
+        var c = graph.graph2ScreenCoords(n.x, n.y, n.z != null ? n.z : 0);
+        var rect = container.getBoundingClientRect();
+        return c ? { x: c.x + rect.left, y: c.y + rect.top } : null;
+      },
+      isPointerInteractionEnabled: function () {
+        return !!(graph && typeof graph.enablePointerInteraction === 'function' && graph.enablePointerInteraction());
+      },
+
+      // 连线材质体检（非业务 UI）：此前 linkOpacity 传函数导致全部材质 opacity 为 NaN
+      getLinkMaterialStats: function () {
+        if (!graph || typeof graph.graphData !== 'function') return null;
+        var links = (graph.graphData() || {}).links || [];
+        var total = 0, nan = 0, transparent = 0, colors = {}, sample = null, onLinkLayer = 0;
+        for (var i = 0; i < links.length; i++) {
+          var mesh = resolveLinkCylinderMesh(links[i].__lineObj);
+          if (!mesh || !mesh.material) continue;
+          total += 1;
+          if (!isFinite(mesh.material.opacity)) nan += 1;
+          if (mesh.material.transparent) transparent += 1;
+          var hex = mesh.material.color ? mesh.material.color.getHexString() : '';
+          colors[hex] = (colors[hex] || 0) + 1;
+          if (mesh.layers && mesh.layers.mask === (1 << LINK_LAYER)) onLinkLayer += 1;
+          if (!sample) sample = { color: hex, opacity: mesh.material.opacity, transparent: mesh.material.transparent };
+        }
+        return { total: total, nan_opacity: nan, transparent: transparent, colors: colors, sample: sample, on_link_layer: onLinkLayer };
       },
 
       // G0 基线测量：读取 three.js 当帧 draw calls / 三角形数（非业务 UI）
@@ -1798,6 +2212,7 @@
         var r = graph && typeof graph.renderer === 'function' ? graph.renderer() : null;
         if (!r || !r.info) return null;
         return {
+          frame: r.info.render.frame,
           draw_calls: r.info.render.calls,
           triangles: r.info.render.triangles,
           lines: r.info.render.lines,
@@ -1806,12 +2221,19 @@
           textures: r.info.memory.textures,
           programs: r.info.programs ? r.info.programs.length : null,
           pixel_ratio: typeof r.getPixelRatio === 'function' ? r.getPixelRatio() : null,
+          context: (typeof r.getContextAttributes === 'function') ? r.getContextAttributes() : null,
+          drawing_buffer: r.domElement ? [r.domElement.width, r.domElement.height] : null,
         };
       },
 
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
+        container.removeEventListener('pointerdown', onContainerInput);
+        container.removeEventListener('wheel', onContainerInput);
+        container.removeEventListener('touchstart', onContainerInput);
+        if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
+        if (pointerInteractionTimer) { window.clearTimeout(pointerInteractionTimer); pointerInteractionTimer = 0; }
         window.removeEventListener('error', reviveRenderLoopOnError);
         if (fitLabelZoomUnlockTimer) {
           window.clearTimeout(fitLabelZoomUnlockTimer);

@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-visual" />
   <meta name="description" content="Robotics Notebooks 知识图谱 — 75 个概念节点、429 条关联边、8 个社区的力导向可视化" />
   <title>知识图谱 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
@@ -10,6 +10,8 @@
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2"></script>
   <link rel="stylesheet" href="style.css" />
+  <!-- 首屏关键数据：此前要等 ~750 KB 同步 JS 下载并执行完才发起请求；preload 让它与 HTML 解析同时开始 -->
+  <link rel="preload" href="exports/link-graph.json" as="fetch" crossorigin />
   <style>
     /* ── 图谱页专用样式（不影响其他页面）── */
     /* 画布背景与 body 对齐，避免壳层未撑满时露出浅灰底。
@@ -50,7 +52,6 @@
       gap: 10px;
       padding: 8px 20px;
       background: rgba(13, 17, 23, 0.92);
-      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
       flex-wrap: wrap;
     }
@@ -231,7 +232,7 @@
        bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
     .depth-intro-banner {
       position: absolute;
-      bottom: 72px;
+      bottom: calc(72px + env(safe-area-inset-bottom, 0px));
       right: 20px;
       z-index: 12;
       max-width: min(420px, calc(100% - 40px));
@@ -239,7 +240,6 @@
       border-radius: 10px;
       border: 1px solid rgba(91,156,246, 0.28);
       background: rgba(13, 17, 23, 0.88);
-      backdrop-filter: blur(8px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       pointer-events: auto;
     }
@@ -551,7 +551,7 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      bottom: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
       left: 20px;
       z-index: 12;
       width: 44px;
@@ -565,7 +565,6 @@
       line-height: 1;
       cursor: pointer;
       box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-      backdrop-filter: blur(8px);
       transition: transform .15s, border-color .15s, box-shadow .15s, opacity .15s;
     }
     #graph-legend-fab:hover,
@@ -580,7 +579,7 @@
     }
     #graph-legend {
       position: absolute;
-      bottom: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
       left: 20px;
       top: auto;
       z-index: 46;
@@ -598,7 +597,6 @@
       background: rgba(13,17,23,0.88);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
-      backdrop-filter: blur(6px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.45);
       overflow-y: auto;
       overflow-x: hidden;
@@ -606,12 +604,23 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
       transform: translateX(calc(-100% - 28px));
-      transition: transform .28s cubic-bezier(.4,0,.2,1);
+      /* 关闭态滑出屏外后 visibility:hidden，不再参与合成；打开时立即可见，关闭时等滑出动画结束 */
+      visibility: hidden;
+      transition: transform .28s cubic-bezier(.4,0,.2,1), visibility 0s linear .28s;
       pointer-events: none;
     }
     #graph-legend.graph-legend-open {
       transform: translateX(0);
+      visibility: visible;
+      transition: transform .28s cubic-bezier(.4,0,.2,1), visibility 0s;
       pointer-events: auto;
+    }
+    /* backdrop-filter 每帧都要对下层画布重采样模糊，触屏 / 低端设备上整帧变贵：
+       背景 alpha ≥ 0.92 的面板（工具栏、图例按钮、物理 / 筛选面板、侧栏）直接不用，
+       半透明较明显的两处只在精确指针设备上启用 */
+    @media (hover: hover) and (pointer: fine) {
+      .depth-intro-banner { backdrop-filter: blur(8px); }
+      #graph-legend { backdrop-filter: blur(6px); }
     }
     #graph-legend::-webkit-scrollbar {
       width: 6px;
@@ -668,11 +677,11 @@
     }
     @media (max-width: 768px) {
       #graph-legend-fab {
-        bottom: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
         left: 16px;
       }
       #graph-legend {
-        bottom: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
         left: 16px;
         width: auto;
         height: auto;
@@ -832,7 +841,7 @@
     /* ── 提示条（2D / 3D 互斥，同位置切换）── */
     .graph-hint {
       position: absolute;
-      bottom: 20px; right: 20px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px)); right: 20px;
       z-index: 10;
       font-size: .72rem;
       color: rgba(255,255,255,0.2);
@@ -843,8 +852,9 @@
     .graph-hint[hidden] { display: none !important; }
 
     /* ── SVG 节点动画 ── */
-    .node-circle { transition: r .15s, fill-opacity .15s; }
-    .node-label { transition: opacity .15s; }
+    /* 不再给全部 6k 个节点圆 / 标签挂 CSS transition：筛选滑块、hover、轻触、缩放等任何批量写
+       fill-opacity / r / opacity 都会同时启动上万个动画并整树重算样式；被交互的单个节点的动效
+       由 d3 transition 按需做（时序显现等已如此） */
 
     /* 社区聚类中心漂浮标签（2D 画布）：胶囊卡片 = 社区色圆角底 + 亮度自适应文字
        2D 字号 8–28px；3D 另用 8–16px（排除「其他」兜底社区），此处仅作 2D 兜底 */
@@ -1142,7 +1152,6 @@
       background: rgba(13,17,23,0.96);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      backdrop-filter: blur(14px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
@@ -1424,7 +1433,6 @@
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      backdrop-filter: blur(14px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
@@ -1755,7 +1763,6 @@
       z-index: 60;
       background: rgba(13, 17, 23, 0.97);
       border-left: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(16px);
       overflow-y: auto;
       transition: right .22s cubic-bezier(.4,0,.2,1);
       padding: 0;
@@ -1848,9 +1855,15 @@
   <meta name="theme-color" content="#191919" />
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
+      // 图谱页首屏要下载 1 MB 以上的数据：SW 安装会并行预缓存十几项离线壳资源，与之抢带宽。
+      // 注册推迟到首屏就绪（finishLoading）再做；数据加载失败等情况由 load 后 15 s 的兜底覆盖。
+      let swRegistered = false;
+      window.__rnRegisterSW = () => {
+        if (swRegistered) return;
+        swRegistered = true;
         navigator.serviceWorker.register('sw.js').catch(() => {});
-      });
+      };
+      window.addEventListener('load', () => { setTimeout(window.__rnRegisterSW, 15000); });
     }
   </script>
 </head>
@@ -2128,6 +2141,7 @@
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
+  <script src="graph-force-params.js"></script>
   <script src="graph-3d.js"></script>
   <script src="depth-filters.js"></script>
   <script>
@@ -2613,6 +2627,12 @@
     let showEdges = false;
     let labelsSettled2D = false;
     let userZoomed2D = false;
+    // 仅由用户手势（滚轮 / 拖拽 / 捏合，ev.sourceEvent 非空）置真；程序化 fit 不算。
+    // 用于决定力模拟落稳时是否还要自动 fit：用户已经自己取景就不再抢视口。
+    let userGestureZoom2D = false;
+    // 力模拟 'end' 只在首屏与「刷新布局」之后各自动 fit 一次；拖拽 / 滑块 / 切视图引起的
+    // 重新加热落稳后不再 fit（此前每次 end 都 fitToScreen，把用户缩放吃掉）。
+    let pendingAutoFit2D = false;
     let label = null;
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
     const checkShowEdgesEl = document.getElementById('check-show-edges');
@@ -2712,15 +2732,21 @@
       }
     }
 
+    function healthClusterKey(d) {
+      return String(d.health_score != null ? Math.min(d.health_score, 3) : 0);
+    }
     function colorModeClusterKey(d) {
       if (colorMode === 'community') return d.community || '';
       if (colorMode === 'opensource') return nodeOpensourceKey(d);
+      // 与 nodeColor 的分支对齐：按健康度上色时磁吸也按健康度聚类，而不是回落到类型
+      if (colorMode === 'health') return healthClusterKey(d);
       return d.type || '';
     }
     function colorModeClusterCategories() {
       if (colorMode === 'community') return Array.from(communityLabelMap.keys());
       if (colorMode === 'opensource') return ['open', 'closed'];
-      return Array.from(new Set(nodes.map(n => n.type)));
+      if (colorMode === 'health') return ['0', '1', '2', '3'];
+      return Array.from(new Set(nodes.map(n => n.type || '')));
     }
 
     function getMagneticConfig3D() {
@@ -2743,13 +2769,14 @@
         container: graphCanvas3d,
         nodes,
         edges,
-        resolveSourceNode: (id) => nodes.find(n => n.id === id),
+        resolveSourceNode: (id) => nodeById2D.get(id),
         getNodeColor: nodeColor,
         getNodeDim: recencyDimOf,
         getNodeRadius: scaledRadius,
         getLinkColor: edgeBaseColor,
         getLinkWidth: () => linkWidthBase,
         isDark,
+        isLowEnd: () => LOW_END_DEVICE,
         getVisibleNodeIds: () => visibleNodeIds,
         hasActiveFilter: hasActiveGraphFilter,
         edgeHighlightsWithNode,
@@ -2826,6 +2853,12 @@
           hideTooltip();
           closeSidebar();
         },
+        onContextLost: () => {
+          // WebGL 上下文丢失且 3 s 内未恢复：回退 2D 并提示，而不是停在黑屏
+          if (!is3DView()) return;
+          setSpatialViewMode('2d');
+          window.alert('3D 渲染上下文已丢失（通常是设备内存不足），已恢复 2D 视图。');
+        },
       });
         // 供验证脚本程序化 dolly / 读取 zoom scale（非业务 UI）
         window.__RN_GRAPH3D_VIEW__ = graph3dView;
@@ -2860,7 +2893,10 @@
     }
 
     /** 进入 3D 的统一入口：先确保库就位，再走原同步切换；2D 不受影响。 */
+    // 视图请求序号：3D 库异步加载期间用户又点了 2D，加载完成后的回调不得再切回 3D
+    let spatialRequestSeq = 0;
     function requestSpatialViewMode(mode, opts) {
+      const seq = ++spatialRequestSeq;
       if (mode !== '3d') {
         setSpatialViewMode(mode, opts);
         return Promise.resolve();
@@ -2883,6 +2919,7 @@
             viewMode3dBtn.disabled = false;
             viewMode3dBtn.removeAttribute('aria-busy');
           }
+          if (seq !== spatialRequestSeq) return;   // 期间用户已改主意（点了 2D）
           // 库缺失时这里会命中既有失败路径：恢复 2D + 提示，不另写一套降级。
           setSpatialViewMode('3d', opts);
         });
@@ -2912,7 +2949,11 @@
           if (!graph3dView) throw new Error('3D view unavailable');
           graph3dView.show();
           graph3dView.syncFilters();
-          if (isMobile && pinnedNode) applyNodeNeighborHighlight(pinnedNode);
+          // 3D 侧自持 sidebarNodeId：进入时按当前侧栏 / 固定卡片状态重放或清除，
+          // 否则「3D 选中 → 2D 关侧栏 → 回 3D」会停在全图淡化且 hover 失效的陈旧高亮
+          const focusNodeForView = sidebarNode || (isMobile ? pinnedNode : null);
+          if (focusNodeForView) applyNodeNeighborHighlight(focusNodeForView);
+          else graph3dView.clearSidebarHighlight();
         } catch (err) {
           console.warn('3D view unavailable; restoring 2D:', err);
           initializationFailed = true;
@@ -2928,7 +2969,10 @@
         catch (err) { console.warn('3D view cleanup failed:', err); }
         graphCanvas3d.hidden = true;
         graph3dHoverNode = null;
-        hideTooltip();
+        // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
+        // 下一次点同一节点会被当成「再次点击 → 关闭」
+        if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
+        else hideTooltip();
         svg.style('display', 'block');
         if (edgeCanvas) edgeCanvas.style.display = 'block';
         syncGraphDomFromSimulation();
@@ -2987,14 +3031,34 @@
       return k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0;
     }
 
+    /* 标签隐藏用 display:none 而非 opacity:0：6k 个 <text> 即便全透明，祖先 <g> 的 scale 一变
+       （滚轮 / 捏合 / fit 过渡的每一帧）浏览器都要重排全部文本度量，实测每步 230–540 ms；
+       display:none 的文本不参与布局。全隐藏态只写一次，避免每个 zoom 事件 6k 次样式写入。 */
+    let labelsAllHidden = false;
+    let lastLabelSyncK = null;
     function sync2DNodeLabels() {
       if (!label) return;
       if (!showNodeLabels || timelineAnimating || !labelsSettled2D) {
-        label.style('opacity', 0);
+        if (!labelsAllHidden) {
+          label.style('display', 'none').style('opacity', 0);
+          labelsAllHidden = true;
+        }
+        lastLabelSyncK = null;
         return;
       }
+      labelsAllHidden = false;
       const k = d3.zoomTransform(svg.node()).k;
-      label.style('opacity', d => computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d));
+      lastLabelSyncK = k;
+      label.each(function (d) {
+        const op = computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d) * sidebarDimFactorOf(d);
+        if (op > 0.02) {
+          if (this.style.display === 'none') this.style.display = '';
+          this.style.opacity = String(op);
+        } else if (this.style.display !== 'none') {
+          this.style.display = 'none';
+          this.style.opacity = '0';
+        }
+      });
     }
 
     function setShowNodeLabels(on) {
@@ -3052,7 +3116,7 @@
     // baseRadius∈[4,30] 对应约 [6,18]px（6px 为下限，防止低度数节点标签过小）
     function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
     function toDetailId(path) {
-      const item = indexItems && indexItems.find(it => it.path === path || it.id === path);
+      const item = indexItemByKey.get(path);
       return item?.id || path.replace(/\//g, '-').replace('.md', '');
     }
     function pageUrlForNode(d) {
@@ -3063,7 +3127,7 @@
       return 'detail.html?id=' + encodeURIComponent(detailId);
     }
     function pageUrlForPath(path, nodeHint) {
-      const n = nodeHint || nodes.find(nd => nd.id === path);
+      const n = nodeHint || nodeById2D.get(path);
       if (n) return pageUrlForNode(n);
       const detailId = toDetailId(path);
       if (String(path).startsWith('roadmap/')) {
@@ -3078,8 +3142,8 @@
     function findFocusNode(focusId) {
       if (!focusId) return null;
       const decoded = decodeURIComponent(focusId);
-      return nodes.find(n => n.id === focusId || n.id === decoded
-        || n.detail_id === focusId || n.detail_id === decoded) || null;
+      return nodeById2D.get(focusId) || nodeById2D.get(decoded)
+        || nodes.find(n => n.detail_id === focusId || n.detail_id === decoded) || null;
     }
     function renderLegend() {
       const rows = [];
@@ -3183,6 +3247,13 @@
         loadingEl.classList.add('is-hidden');
         setTimeout(() => { loadingEl.hidden = true; }, 500);
       }, LOADING_HOLD_MS);
+      if (window.__rnRegisterSW) runWhenIdle(window.__rnRegisterSW, 2000);
+    }
+
+    /** 空闲时执行：requestIdleCallback 的第二个参数是 options 对象，不能直接当 setTimeout 用 */
+    function runWhenIdle(fn, timeoutMs) {
+      if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(fn, { timeout: timeoutMs });
+      else window.setTimeout(fn, Math.min(1000, timeoutMs));
     }
 
     function failLoading(msg) {
@@ -3194,27 +3265,25 @@
     }
 
     /* 流式读取以反映真实下载进度；无法读取流或缺少 Content-Length 时退化为一次性解析。 */
-    async function fetchJsonWithProgress(url, onProgress) {
+    async function fetchJsonWithProgress(url, onProgress, rawBytesPromise) {
       const resp = await fetch(url);
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const total = Number(resp.headers.get('Content-Length')) || 0;
-      if (!resp.body || !resp.body.getReader || !total) return resp.json();
-      const reader = resp.body.getReader();
-      const chunks = [];
+      // 流里数到的是解压后的字节数；响应被 gzip 时 Content-Length 是压缩后的，不能当分母
+      //（线上 1.07 MB gz / 4.14 MB 原始：下到 26% 进度条就封顶 78% 停住），改用导出期记下的原始字节数
+      let total = Number(resp.headers.get('Content-Length')) || 0;
+      if (resp.headers.get('Content-Encoding')) total = Number(await rawBytesPromise) || 0;
+      if (!resp.body || !total || typeof TransformStream === 'undefined') return resp.json();
+      // 只在流上计数，解码与解析交给原生 Response.json()：此前手工拼 Uint8Array + TextDecoder
+      // 再 JSON.parse，4 MB 的载荷多拷贝三遍
       let received = 0;
-      for (;;) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        chunks.push(value);
-        received += value.length;
-        if (onProgress) onProgress(Math.min(1, received / total));
-      }
-      let size = 0;
-      for (const c of chunks) size += c.length;
-      const merged = new Uint8Array(size);
-      let pos = 0;
-      for (const c of chunks) { merged.set(c, pos); pos += c.length; }
-      return JSON.parse(new TextDecoder('utf-8').decode(merged));
+      const counted = resp.body.pipeThrough(new TransformStream({
+        transform(chunk, controller) {
+          received += chunk.length;
+          if (onProgress) onProgress(Math.min(1, received / total));
+          controller.enqueue(chunk);
+        },
+      }));
+      return new Response(counted, { headers: resp.headers }).json();
     }
 
     setLoadingProgress(5);
@@ -3228,9 +3297,14 @@
     let graphData;
     let indexItems = [];
     try {
+      // graph-stats.json 很小且与 link-graph 同批生成，并行取其 link_graph_bytes 作进度条分母；拿不到就不显示下载进度
+      const linkGraphBytes = fetch('exports/graph-stats.json')
+        .then(r => (r.ok ? r.json() : null))
+        .then(stats => (stats && stats.link_graph_bytes) || 0)
+        .catch(() => 0);
       graphData = await fetchJsonWithProgress('exports/link-graph.json', frac => {
         setLoadingProgress(5 + frac * 73);   // 下载阶段（首屏主要耗时）：5% → 78%
-      });
+      }, linkGraphBytes);
       // 边是节点下标对，还原成 {source, target}（main.js 的共享还原逻辑）
       if (window.RNExportFormats) graphData = window.RNExportFormats.expandLinkGraph(graphData);
     } catch (e) {
@@ -3243,14 +3317,28 @@
       return;
     }
     setLoadingProgress(80);   // 数据解析完成，进入构图渲染
-    fetch('exports/site-catalog-v1.json')
-      .then(r => r.json())
-      .then(d => {
-        // 目录条目不带 id，由键还原
-        indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
-          .map(([id, it]) => Object.assign({ id }, it));
-      })
-      .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
+    /* 侧栏目录（site-catalog-v1.json，3.9 MB 原始 / 1.2 MB gz）只服务侧栏的 tags / related，
+       此前在建图期并行下载并在主线程解析，与 link-graph 抢带宽、与 warmup 抢主线程。
+       改为首次打开侧栏时按需取（单例 Promise）；非低端设备在首次落稳后空闲预取。 */
+    let catalogPromise = null;
+    function ensureCatalog() {
+      if (catalogPromise) return catalogPromise;
+      catalogPromise = fetch('exports/site-catalog-v1.json')
+        .then(r => r.json())
+        .then(d => {
+          // 目录条目不带 id，由键还原
+          indexItems = Object.entries((d.pages && d.pages.detail_pages) || {})
+            .map(([id, it]) => Object.assign({ id }, it));
+          indexItemByKey = new Map();
+          for (const it of indexItems) {
+            if (it.path) indexItemByKey.set(it.path, it);
+            indexItemByKey.set(it.id, it);
+          }
+          return true;
+        })
+        .catch(() => { catalogPromise = null; return false; });   // 侧栏 tags / related 退化为空，下次再试
+      return catalogPromise;
+    }
 
     initCommunityMapsFromGraph();
     initInstitutionMapsFromGraph();
@@ -3268,7 +3356,41 @@
       _degree: degreeMap[n.id] || 0,
       _info: { title: n.label || n.id, summary: n.summary || '' },
     }));
-    const edges = graphData.edges.map(e => ({ ...e }));
+    // graphData 是本页独享的一份（expandLinkGraph 已返回新对象），无需再逐条拷贝 53k 条边
+    const edges = graphData.edges;
+    /* 摘要不随拓扑下发（link-graph-summaries.json，按 nodes 顺序的字符串数组）：它占 link-graph gzip
+       的 53%，首屏构图用不到。浮窗 / 侧栏首次需要时再取（非低端空闲预取），取回后补渲染正在显示的
+       浮窗 / 侧栏。3D 节点副本与 2D 共享同一个 _info 对象，补上的摘要两边都可见。 */
+    let summariesPromise = null;
+    function ensureSummaries() {
+      if (summariesPromise) return summariesPromise;
+      summariesPromise = fetch('exports/link-graph-summaries.json')
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(list => {
+          if (!Array.isArray(list) || list.length !== nodes.length) return false;
+          for (let i = 0; i < nodes.length; i++) nodes[i]._info.summary = list[i] || '';
+          if (tooltipNode && !tooltip.classList.contains('hidden')) refreshTooltipContent();
+          if (sidebarNode) renderSidebarSummary(sidebarNode);
+          return true;
+        })
+        .catch(() => { summariesPromise = null; return false; });   // 浮窗 / 侧栏暂无摘要，下次再试
+      return summariesPromise;
+    }
+    // id → 节点 / 目录条目的索引：侧栏、?focus、3D 回查此前都是 nodes.find / indexItems.find 线性扫描，
+    // 枢纽节点开侧栏时排序比较函数里每次两趟 O(N) 扫描
+    const nodeById2D = new Map(nodes.map(n => [n.id, n]));
+    const zhCollator = new Intl.Collator('zh-CN');
+    let indexItemByKey = new Map();
+    // 邻接表：边在页面生命周期内不变，建一次；hover / 侧栏邻居此前每次都全量扫 5 万多条边
+    const adjacency2D = new Map();
+    for (const e of edges) {
+      const a = typeof e.source === 'object' ? e.source.id : e.source;
+      const b = typeof e.target === 'object' ? e.target.id : e.target;
+      if (!adjacency2D.has(a)) adjacency2D.set(a, new Set());
+      if (!adjacency2D.has(b)) adjacency2D.set(b, new Set());
+      adjacency2D.get(a).add(b);
+      adjacency2D.get(b).add(a);
+    }
 
     /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（git 最近触达日 activity），
        把归一化时间 t∈[0,1]（0=最旧，1=最新）经指数曲线
@@ -3311,11 +3433,25 @@
       });
     })();
 
+    /* ── 低端设备判定（统一口径）──
+       触屏（hover:none + pointer:coarse）、≤4 逻辑核、≤4 GB 内存任一命中即按低端处理。
+       此前只看 hardwareConcurrency：iOS 不暴露或报 6 核、安卓中端报 8 核，手机全被当成高端。 */
+    const COARSE_POINTER = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const LOW_END_DEVICE = COARSE_POINTER
+      || (navigator.hardwareConcurrency || 8) <= 4
+      || (navigator.deviceMemory || 8) <= 4;
+
+    /* 当前可见节点 ID 集合（供 hover 检查筛选状态用；首屏按触屏默认 Top N 建子图时已要用到） */
+    const visibleNodeIds = new Set();
+
     /* ── 连接数 Top N 筛选（滑动条）── */
     const totalNodeCount = nodes.length;
     const degreeTopMin = Math.min(10, totalNodeCount);
-    let topDegreeLimit = totalNodeCount;
-    let topDegreeIds = null;
+    // 触屏设备默认只跑连接数 Top N 子图：全图 6k 节点在手机上 1 tick ≈ 760 ms（4× 节流实测），
+    // 子图成本按比例缩减；筛选面板可改回「全部」
+    const MOBILE_DEFAULT_TOP_N = 500;
+    let topDegreeLimit = COARSE_POINTER ? Math.min(MOBILE_DEFAULT_TOP_N, totalNodeCount) : totalNodeCount;
+    let topDegreeIds = computeTopDegreeIds(topDegreeLimit);
 
     function computeTopDegreeIds(limit) {
       if (limit >= totalNodeCount) return null;
@@ -3639,16 +3775,23 @@
     }
 
     /* ── 初始化搜索自动联想 ── */
+    // 6k 个 <option> 延后到首次聚焦搜索框再建：此前在首绘路径里同步解析 ~300 KB HTML
     const searchList = document.getElementById('graph-search-list');
-    if (searchList) {
-      // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during auto-complete list generation, reducing GC pauses on large graphs.
+    const searchInputEl = document.getElementById('graph-search');
+    let searchListBuilt = false;
+    function buildSearchDatalist() {
+      if (searchListBuilt || !searchList) return;
+      searchListBuilt = true;
       let searchOptionsHtml = '';
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         searchOptionsHtml += '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>';
       }
       searchList.innerHTML = searchOptionsHtml;
+    }
+    if (searchInputEl) {
+      searchInputEl.addEventListener('focus', buildSearchDatalist, { once: true });
+      searchInputEl.addEventListener('pointerdown', buildSearchDatalist, { once: true, passive: true });
     }
 
     /* ── SVG 尺寸（移动端首屏 clientHeight 可能为 0，需延后 fit）── */
@@ -3666,9 +3809,8 @@
        状态在此处声明（measureGraphViewport 早于绘制函数被调用，需避开 TDZ）。 */
     const edgeCanvas = document.getElementById('graph-edge-canvas');
     const edgeCtx = edgeCanvas ? edgeCanvas.getContext('2d') : null;
-    // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：
-    // 4 核及以下（多为集显/移动端）按 1 倍像素比绘制，其余封顶 2 倍。
-    const EDGE_CANVAS_MAX_DPR = (navigator.hardwareConcurrency || 8) <= 4 ? 1 : 2;
+    // 边层每帧全量重绘，像素数直接决定光栅化成本与显存占用：低端按 1 倍像素比，其余封顶 2 倍。
+    const EDGE_CANVAS_MAX_DPR = LOW_END_DEVICE ? 1 : 2;
     let edgeCanvasDpr = 1;
     let edgeTransform = d3.zoomIdentity;
     // 上色模式与原先四处 link.attr(...) 分支一一对应：
@@ -3691,6 +3833,9 @@
       edgeCanvas.width = cw;
       edgeCanvas.height = ch;
       edgeCanvasDpr = dpr;
+      // 改 width/height 会清空位图；只有像素比变了（拖到另一块屏、改系统缩放）时视口尺寸不变，
+      // runGraphViewportResize 会提前返回不重绘，这里自己补一帧
+      scheduleEdgeDraw();
     }
 
     /* ── 2D 边层配色、粗细与墨量预算 ──────────────────────────
@@ -3980,7 +4125,9 @@
         edgeTransform = ev.transform;
         scheduleEdgeDraw();
         userZoomed2D = true;
-        sync2DNodeLabels();
+        if (ev.sourceEvent) userGestureZoom2D = true;
+        // 标签可见性只随缩放比例变，纯平移不重算；全隐藏态下 sync 本身也只写一次
+        if (lastLabelSyncK === null || ev.transform.k !== lastLabelSyncK) sync2DNodeLabels();
       });
     svg.call(zoom);
 
@@ -3997,36 +4144,28 @@
     // 1) 叶序铺开（避免中心 80px 小团炸成多轮震荡）；
     // 2) 中等摩擦 + 度数加权弹簧（保活力，抑制密图连震）；
     // 3) 极短 warmup（~20 tick）只吃掉最凶的首段爆炸，之后不再二次加热。
-    const FORCE_CENTER_STRENGTH = 0.05;
-    const FORCE_VELOCITY_DECAY = 0.54;
-    const FORCE_ALPHA_DECAY = 0.04;
-    const FORCE_LINK_STRENGTH = 0.72;   // 实际强度 = 该值 / sqrt(min(deg_s, deg_t))
-    const FORCE_COLLIDE_STRENGTH = 0.45;
+    // 力参数与装配在 graph-force-params.js：与导出期预计算布局（scripts/precompute_graph_layout.cjs）
+    // 共用一份，避免两边漂移
+    const FORCE_CENTER_STRENGTH = window.RNGraphForce.PARAMS.CENTER_STRENGTH;
+    // 冷却阈值：d3 默认 0.001 时全图 170 tick 里最后 ~57 tick 位移已 <10 px（亚像素），
+    // 白付三分之一的力计算；抬到 0.005（低端 0.01）只砍不可见的尾段，展开/回弹不变。
+    const FORCE_ALPHA_MIN = LOW_END_DEVICE ? 0.01 : 0.005;
+    // Barnes–Hut 近似阈值：斥力占全图 tick 六成，theta 0.9 → 1.2 省约 20%，1.5 省约 35%；
+    // 视觉布局不需要 0.9 的精度。
+    const FORCE_THETA = LOW_END_DEVICE ? 1.5 : 1.2;
+    // 碰撞力占 tick 约三成：爆炸期（alpha>0.3）每 tick 位移几十 px，解重叠是白做；低端再隔 tick 跑。
+    const FORCE_COLLIDE_SKIP_ALPHA = 0.3;
     const FORCE_WARMUP_TICKS = 20;
     // warmup 分片按时间预算让出主线程：全图单 tick 已远超一帧（G0 实测 ≈46ms），
     // 固定 tick 数分片仍会攒出长任务。每片至少跑 1 tick 保证推进，故单片可能超预算。
     // 基线见 docs/checklists/graph-perf-baseline-g0.md。
     const FORCE_WARMUP_SLICE_MS = 16;
+    // 预计算布局已在平衡态：首屏只以低 alpha 轻量落稳（吸收视口中心 / 触屏子图与全图的差异），不跑 warmup
+    const FORCE_PRECOMPUTED_ALPHA = 0.03;
     let warmupToken = 0;
 
     function seedNodePositionsPhyllotaxis(targetNodes) {
-      const list = targetNodes || nodes;
-      const cx = W / 2;
-      const cy = H / 2;
-      // 略紧于完全舒展叶序，给首帧可见扩张动能，但仍远宽于旧 80px 小团。
-      const initialRadius = 10;
-      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-      for (let i = 0; i < list.length; i++) {
-        const n = list[i];
-        n.fx = null;
-        n.fy = null;
-        n.vx = 0;
-        n.vy = 0;
-        const r = initialRadius * Math.sqrt(0.5 + i);
-        const a = i * goldenAngle;
-        n.x = cx + r * Math.cos(a);
-        n.y = cy + r * Math.sin(a);
-      }
+      window.RNGraphForce.seedPhyllotaxis(targetNodes || nodes, W / 2, H / 2);
     }
 
     /** 「刷新布局」：真随机重铺（与 3D resetNodePositionsInPlace 同尺度）。
@@ -4051,13 +4190,6 @@
       }
     }
 
-    function linkStrengthFor(link) {
-      const s = typeof link.source === 'object' ? link.source.id : link.source;
-      const t = typeof link.target === 'object' ? link.target.id : link.target;
-      const deg = Math.min(degreeMap[s] || 1, degreeMap[t] || 1);
-      return FORCE_LINK_STRENGTH / Math.max(1, Math.sqrt(deg));
-    }
-
     function applyCenterGravity2D() {
       // 类似 Obsidian「Center force」：弱向心位置力抑制整图漂移/晃动；
       // forceCenter 只平移质心，本身不提供阻尼。
@@ -4067,22 +4199,36 @@
 
     // 首帧前先铺开，避免 d3 默认绕原点叶序 + 弱 forceCenter 造成的额外平移震荡。
     seedNodePositionsPhyllotaxis(nodes);
+    // 导出期预计算布局（link-graph.json 的 layout：按 nodes 顺序、相对画布中心的整数坐标）：
+    // 首屏直接从平衡态开始，手机上不再跑几十秒的 warmup / 收敛；缺失或长度不符则回退叶序 + warmup
+    const precomputedLayout = (Array.isArray(graphData.layout) && graphData.layout.length === nodes.length)
+      ? graphData.layout : null;
+    if (precomputedLayout) {
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x = W / 2 + precomputedLayout[i][0];
+        nodes[i].y = H / 2 + precomputedLayout[i][1];
+      }
+    }
 
     /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
-    const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(linkStrengthFor))
-      // 不设 distanceMax：硬截断会让越过阈值的节点瞬间失/得全部斥力，
-      // 与连线/向心力形成来回拉扯的极限环（3D 视图同样不截断）。
-      .force('charge', d3.forceManyBody().strength(chargeStrength))
-      .force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(FORCE_COLLIDE_STRENGTH))
-      .force('x', d3.forceX(W / 2).strength(FORCE_CENTER_STRENGTH))
-      .force('y', d3.forceY(H / 2).strength(FORCE_CENTER_STRENGTH))
-      .velocityDecay(FORCE_VELOCITY_DECAY)
-      .alphaDecay(FORCE_ALPHA_DECAY)
-      .stop();
+    const simulation = window.RNGraphForce.buildSimulation(d3, nodes, edges, {
+      degreeMap, radiusOf: scaledRadius, cx: W / 2, cy: H / 2,
+      theta: FORCE_THETA, alphaMin: FORCE_ALPHA_MIN, chargeStrength,
+    });
+    const collideForce = simulation.force('collision');
+    let collideTickNo = 0;
+    const gatedCollide = (alpha) => {
+      collideTickNo += 1;
+      if (alpha > FORCE_COLLIDE_SKIP_ALPHA) return;
+      if (LOW_END_DEVICE && (collideTickNo & 1)) return;
+      collideForce(alpha);
+    };
+    gatedCollide.initialize = (...args) => collideForce.initialize(...args);
+    simulation.force('collision', gatedCollide);
 
     function pauseSimulation2D() {
+      // 作废仍在分片中的 warmup：否则切到 3D 后剩余分片跑完会在后台 restart 隐藏的 2D 全图模拟
+      warmupToken += 1;
       simulation.stop();
       simulation.alphaTarget(0);
     }
@@ -4115,12 +4261,12 @@
         });
 
         const getTargetX = d => {
-          const key = colorModeClusterKey(d);
-          return centers[key]?.x || W/2;
+          const c = centers[colorModeClusterKey(d)];
+          return c ? c.x : W / 2;
         };
         const getTargetY = d => {
-          const key = colorModeClusterKey(d);
-          return centers[key]?.y || W/2;
+          const c = centers[colorModeClusterKey(d)];
+          return c ? c.y : H / 2;   // 此前误写为 W/2，兜底点落在画布外
         };
 
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
@@ -4143,18 +4289,29 @@
       .attr('class', 'node-g')
       .style('cursor', 'pointer')
       .call(d3.drag()
+        // 点击 / 轻触也会先触发 'start'：此前在 start 就 alphaTarget(0.2).restart()，
+        // 一次点击 = 约 55 个全图 tick（手机上 20 s 以上的卡顿）且什么都没拖。
+        // 改为首次真正移动时才加热（与 graph-3d.js 的 nodeDragReheated 同法），
+        // clickDistance 让轻微抖动仍算点击。
+        .clickDistance(4)
         .on('start', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0.2).restart();
+          d.__dragReheated = false;
           d.fx = d.x; d.fy = d.y;
         })
         .on('drag', (ev, d) => {
           if (is3DView()) return;
+          if (!d.__dragReheated) {
+            // 'drag' 事件里 ev.active 已含当前手势（恒 ≥1），不能再用 !ev.active 判断
+            d.__dragReheated = true;
+            simulation.alphaTarget(0.2).restart();
+          }
           d.fx = ev.x; d.fy = ev.y;
         })
         .on('end', (ev, d) => {
           if (is3DView()) return;
-          if (!ev.active) simulation.alphaTarget(0);
+          if (d.__dragReheated && !ev.active) simulation.alphaTarget(0);
+          d.__dragReheated = false;
           d.fx = null; d.fy = null;
         })
       );
@@ -4188,6 +4345,7 @@
       .attr('font-size', d => scaledFontSize(d) + 'px')
       .attr('fill', labelFill())
       .attr('pointer-events', 'none')
+      .style('display', 'none')
       .style('opacity', 0);
 
     /* ── 社区聚类中心漂浮标签层（2D，置于节点层之上）── */
@@ -4496,6 +4654,12 @@
     function finishSimulationLoad() {
       labelsSettled2D = true;
       sync2DNodeLabels();
+      if (!LOW_END_DEVICE && !(navigator.connection && navigator.connection.saveData)) {
+        runWhenIdle(() => { ensureSummaries(); ensureCatalog(); }, 3000);
+      }
+      if (!pendingAutoFit2D) return;
+      pendingAutoFit2D = false;
+      if (userGestureZoom2D) return;
       whenGraphViewportReady(() => fitToScreen());
     }
 
@@ -4505,6 +4669,8 @@
       const opts = options || {};
       // 新一轮布局作废上一轮尚未跑完的分片（连点「刷新布局」不叠加 warmup）
       const myToken = ++warmupToken;
+      pendingAutoFit2D = true;
+      userGestureZoom2D = false;
       if (opts.reseed) randomizeNodePositions();
       simulation.stop();
       simulation.alphaTarget(0);
@@ -4513,20 +4679,30 @@
         n.vy = 0;
       }
       // 分片 warmup 期间浏览器能出帧，若此时把「重铺后挤成一团」的状态画出来，
-      // 用户会先看到一坨再跳到展开态。故只有同步路径（首屏）才预先落 DOM，
-      // 分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
-      if (!opts.async) syncGraphDomFromSimulation();
+      // 用户会先看到一坨再跳到展开态。故只有未重铺（首屏叶序种子）时才预先落 DOM，
+      // 刷新布局的分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
+      if (!opts.reseed) syncGraphDomFromSimulation();
 
       const startVisiblePhase = () => {
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
         // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
         syncGraphDomFromSimulation();
+        // 首屏收遮罩 / 进入已保存的 3D 偏好都挂在这里，必须先于 3D 早退执行（?view=3d 直开时
+        // is3DView() 已为真，否则遮罩永不消失）
+        if (opts.onVisible) opts.onVisible();
+        if (is3DView()) return;
+        // 先把展开起点框进视口再开场：此前首屏在 end 之前没有任何 fit，
+        // 叶序种子半径随规模增长（6k 节点 ≈ 790px），手机上几十秒内只看到被裁掉的中心。
+        whenGraphViewportReady(() => fitToScreen({ duration: 0 }));
         simulation.restart();
       };
 
-      if (FORCE_WARMUP_TICKS <= 0) {
-        simulation.alpha(1);
-        startVisiblePhase();
+      if (FORCE_WARMUP_TICKS <= 0 || opts.precomputed) {
+        simulation.alpha(opts.precomputed ? FORCE_PRECOMPUTED_ALPHA : 1);
+        // 首屏是在顶层脚本里同步调到这里的：开场（fit 等）要等整段脚本的声明跑完，
+        // 与分片 warmup 一样放到下一帧
+        if (opts.async) requestAnimationFrame(() => { if (myToken === warmupToken) startVisiblePhase(); });
+        else startVisiblePhase();
         return;
       }
 
@@ -4541,6 +4717,7 @@
             simulation.tick();
             i += 1;
           } while (i < FORCE_WARMUP_TICKS && performance.now() - sliceStart < FORCE_WARMUP_SLICE_MS);
+          if (opts.onProgress) opts.onProgress(i, FORCE_WARMUP_TICKS);
           if (i < FORCE_WARMUP_TICKS) {
             requestAnimationFrame(step);
             return;
@@ -4563,7 +4740,7 @@
       }
       labelsSettled2D = false;
       userZoomed2D = false;
-      label.style('opacity', 0);
+      sync2DNodeLabels();   // labelsSettled2D 已复位 → 走全隐藏分支（display:none）
       updateGraphViewport();
       // 刷新布局：warmup 走按帧预算的分片，避免一次点击攒出秒级长任务（G0 实测最长 1.33s）。
       runStabilizedLayout2D({ reseed: true, async: true });
@@ -4577,14 +4754,25 @@
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
-      if (timelineAnimating) return;   // 时序动画期间不触发整图标签渐显 / 自适应
+      if (timelineAnimating || is3DView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
 
-    // 首屏：种子就位后直接开场（约 2–3s 内完成一次回弹并落稳）。
+    // 首屏：种子就位后开场。warmup 同样走按帧预算的分片：同步跑 20 tick 在 6k 节点全图上
+    // 是一个 3 s（手机 4× 节流下 ≈14 s）的长任务，遮罩停在 96% 且页面完全无响应。
+    // 分片期间 loading 遮罩保持可见，由 onVisible 回调在开场时收掉。
     setLoadingProgress(96);
-    runStabilizedLayout2D();
-    whenGraphViewportReady(() => finishGraphRenderLoad());
+    // 触屏默认 Top N：先按筛选建力模拟子图，首屏 warmup 只跑子集
+    if (hasActiveGraphFilter()) {
+      applyFilters();
+      updateFilterCount();
+    }
+    runStabilizedLayout2D({
+      async: true,
+      precomputed: !!precomputedLayout,
+      onProgress: (done, total) => setLoadingProgress(96 + 3 * (done / total)),
+      onVisible: () => whenGraphViewportReady(() => finishGraphRenderLoad()),
+    });
 
     setTimeout(() => {
       if (simulation.alpha() > 0.01) return;
@@ -4634,10 +4822,16 @@
       return '';
     }
 
+    let tooltipNode = null;
+    function refreshTooltipContent() {
+      tooltip.innerHTML = tooltipHtml(tooltipNode);
+      window.RNGraphTooltip?.renderMath?.(tooltip);
+    }
     function showTooltip(ev, d) {
       if (!d) return;
-      tooltip.innerHTML = tooltipHtml(d);
-      window.RNGraphTooltip?.renderMath?.(tooltip);
+      tooltipNode = d;
+      ensureSummaries();
+      refreshTooltipContent();
       tooltip.classList.remove('hidden');
       // 清理可能残留的 left/top/width，确保重新计算尺寸
       tooltip.style.left = '';
@@ -4665,6 +4859,7 @@
     }
 
     function hideTooltip() {
+      tooltipNode = null;
       tooltip.classList.add('hidden');
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
@@ -4768,16 +4963,19 @@
     const neighborSet = new Set();
     // 选中态（侧边栏打开）下允许悬停浮窗的节点：选中节点 + 直连邻居；非选中态为 null
     let sidebarFocusIds = null;
+    let sidebarSecondaryIds = null;
+    /** 侧栏聚焦时的淡化系数：选中节点与直连邻居 1、二跳 0.4、其余 0.05；未聚焦为 1 */
+    function sidebarDimFactorOf(n) {
+      if (!sidebarFocusIds) return 1;
+      if (sidebarFocusIds.has(n.id)) return 1;
+      return sidebarSecondaryIds && sidebarSecondaryIds.has(n.id) ? 0.4 : 0.05;
+    }
 
     function buildNeighborSet(d) {
       neighborSet.clear();
       neighborSet.add(d.id);
-      for (const e of edges) {
-        const srcId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tgtId = typeof e.target === 'object' ? e.target.id : e.target;
-        if (srcId === d.id) neighborSet.add(tgtId);
-        if (tgtId === d.id) neighborSet.add(srcId);
-      }
+      const adj = adjacency2D.get(d.id);
+      if (adj) adj.forEach(id => neighborSet.add(id));
     }
 
     function hasActiveGraphFilter() {
@@ -4819,6 +5017,9 @@
 
     node
       .on('mouseenter', (ev, d) => {
+        // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
+        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏只走 click → presentNodeDetail。
+        if (isMobile) return;
         if (timelineAnimating) {
           if (!timelineRevealedIds.has(d.id)) return;
           if (sidebarFocusIds) {
@@ -4840,23 +5041,28 @@
 
         buildNeighborSet(d);
         const hasFilter = hasActiveGraphFilter();
-        node.select('.node-circle').attr('fill-opacity', n => {
+        // 用缓存的子元素直写属性（此前每个节点两次 querySelector + d3 属性访问器）
+        node.each(function (n) {
+          const parts = nodePartsOf(this);
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
-          if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
-          return (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
+          const fo = (hasFilter && !visibleNodeIds.has(n.id))
+            ? 0.06
+            : (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
+          parts.circle.setAttribute('fill-opacity', fo);
+          parts.glow.setAttribute('fill-opacity', n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
         });
-        node.select('.node-glow').attr('fill-opacity', n =>
-          n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
         setEdgePaintMode('hover', d.id, nodeColor(d));
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
+        if (isMobile) return;
         // 移动端固定卡片后，mousemove 不移动 tooltip
         if (!isMobile || !pinnedNode) {
           moveTooltip(ev);
         }
       })
       .on('mouseleave', () => {
+        if (isMobile) return;
         if (timelineAnimating) {
           if (sidebarFocusIds) {
             if (!isMobile || !pinnedNode) hideTooltip();
@@ -4873,8 +5079,7 @@
           return;
         }
 
-        node.select('.node-glow').attr('fill-opacity', 0);
-        applyFilters();
+        restoreFilterAppearance();
         // 移动端固定卡片后，mouseleave 不隐藏 tooltip
         if (!isMobile || !pinnedNode) {
           hideTooltip();
@@ -4902,7 +5107,7 @@
       document.getElementById('graph-node-count').textContent =
         `${visible} / ${nodes.length} 节点 · ${edges.length} 边`;
     }
-    updateCount(nodes.length);
+    updateCount(hasActiveGraphFilter() ? visibleNodeIds.size : nodes.length);   // 触屏默认 Top N 已先筛过
 
     /* ── 点击背景：关闭面板 ── */
     document.addEventListener('click', ev => {
@@ -5138,6 +5343,15 @@
       topDegreeIds = null;
       initDegreeTopSlider();
       resetRecencyTopFilter();
+      // 图例聚焦（社区 / 类型 / 开源 / 健康度，含 ?community= 入口）与搜索词也是筛选条件
+      // （hasActiveGraphFilter 计入），此前不清 → 图仍淡化、子图仍生效而徽标显示无筛选
+      focusedCommunityId = null;
+      focusedType = null;
+      focusedOpensource = null;
+      focusedHealth = null;
+      searchQuery = '';
+      if (searchInputEl) searchInputEl.value = '';
+      renderLegend();
       renderFilterPanel();
       renderInstitutionFilterSection();
       setActiveTopic('all');
@@ -5149,7 +5363,9 @@
       const count = activeFilters.size + activeInstitutions.size
         + (topDegreeIds ? 1 : 0)
         + (topRecencyIds ? 1 : 0)
-        + (currentDepth && currentDepth !== 'all' ? 1 : 0);
+        + (currentDepth && currentDepth !== 'all' ? 1 : 0)
+        + ((focusedCommunityId || focusedType || focusedOpensource || focusedHealth !== null) ? 1 : 0)
+        + (searchQuery ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -5206,9 +5422,6 @@
       });
     }
 
-    /* 当前可见节点 ID 集合（供 hover 检查筛选状态用） */
-    const visibleNodeIds = new Set();
-
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;
       if (focusedType) return d.type === focusedType;
@@ -5251,6 +5464,36 @@
           || d.id.toLowerCase().includes(searchQuery);
     }
 
+    function nodePartsOf(el) {
+      let parts = el.__nodeParts;
+      if (!parts) {
+        parts = el.__nodeParts = {
+          glow: el.querySelector('.node-glow'),
+          circle: el.querySelector('.node-circle'),
+          label: el.querySelector('.node-label'),
+        };
+      }
+      return parts;
+    }
+
+    /** 按 applyFilters 缓存的筛选结果恢复节点外观（hover 离开 / 取消侧栏聚焦）。
+     *  此前这两处都整跑一遍 applyFilters：6 个谓词 × 6k 节点、标签与社区标签同步、
+     *  筛选态下还重建力模拟子图（实测 56–87 ms），扫过密集区每个节点都付一次。 */
+    function restoreFilterAppearance() {
+      const hasFilter = hasActiveGraphFilter();
+      node.each(function (d) {
+        const parts = nodePartsOf(this);
+        const ok = d.__filterOk !== false;
+        const hub = !!d.__filterHub;
+        const dim = recencyDimOf(d);
+        this.style.opacity = '';
+        parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
+        parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
+        parts.circle.setAttribute('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * dim : 0.05);
+      });
+      setEdgePaintMode('filter');
+    }
+
     function applyFilters() {
       if (timelineAnimating) return;
       const hasFilter = hasActiveGraphFilter();
@@ -5266,20 +5509,17 @@
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         const hub = isCurrentTopicHub(d);
+        // 缓存筛选结果：hover 离开 / 取消侧栏聚焦只需按它恢复外观，不必重跑筛选与子图重建
+        d.__filterOk = ok;
+        d.__filterHub = hub;
         this.classList.toggle('node-depth-hub', hub);
-        // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
-        this.style.opacity = hasFilter ? (ok ? '1' : '0.08') : '1';
+        // 不再用 <g> 组级 opacity 淡化：每个半透明组各成一个合成层，平移时多约两成栅格。
+        // 淡化全交给下面 circle / glow 的 fill-opacity、stroke-opacity；写空值清掉时序模式留下的残留
+        this.style.opacity = '';
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         this.style.pointerEvents = hasFilter && !ok ? 'none' : '';
 
-        let parts = this.__nodeParts;
-        if (!parts) {
-          parts = this.__nodeParts = {
-            glow: this.querySelector('.node-glow'),
-            circle: this.querySelector('.node-circle'),
-            label: this.querySelector('.node-label'),
-          };
-        }
+        const parts = nodePartsOf(this);
         const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
         const dim = recencyDimOf(d);
         parts.glow.setAttribute('r', hubR + 8);
@@ -5569,10 +5809,15 @@
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
+    let timelinePauseCoolTimer = 0;
     function stopTimelineTimer() {
       if (timelineAnimTimer) {
         clearInterval(timelineAnimTimer);
         timelineAnimTimer = null;
+      }
+      if (timelinePauseCoolTimer) {
+        clearTimeout(timelinePauseCoolTimer);
+        timelinePauseCoolTimer = 0;
       }
       timelinePlaying = false;
       svg.interrupt('tlfit');
@@ -5601,9 +5846,14 @@
 
     function pauseTimelinePlayback() {
       stopTimelineTimer();
-      // 仅停计时器：力导向继续演化（alphaTarget>0）。退出时序绝不能走这条路径，
-      // 否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      // 仅停计时器：先让刚显现的一批节点继续落位（alphaTarget>0），800 ms 后再放下加热目标
+      // 自然冷却——此前暂停期间永远 alphaTarget(0.3)，暂停在末尾时等于全图每帧 tick 直到退出。
+      // 退出时序绝不能走这条路径，否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
       simulation.alphaTarget(0.3).restart();
+      timelinePauseCoolTimer = setTimeout(() => {
+        timelinePauseCoolTimer = 0;
+        if (timelineAnimating && !timelinePlaying) simulation.alphaTarget(0);
+      }, 800);
       updateTimelineControls();
     }
 
@@ -5867,8 +6117,9 @@
         svg.call(zoom.transform, transform);
         return;
       }
-      let t = svg.transition();
-      if (transitionOpts && transitionOpts.name) t = t.name(transitionOpts.name);
+      // d3 v7 的 transition 没有 .name()：命名过渡要在创建时传名
+      // （selection.transition(name)），否则 fitToTimelineNodes 每次跟随相机都会抛错。
+      let t = svg.transition(transitionOpts && transitionOpts.name ? transitionOpts.name : undefined);
       t = t.duration(dur);
       if (ease) t = t.ease(ease);
       t.call(zoom.transform, transform);
@@ -5891,12 +6142,12 @@
     }
 
     /* ── 适配屏幕到所有节点 ── */
-    function fitToScreen() {
+    function fitToScreen(transitionOpts) {
       const transform = computeGraphFitTransform(nodes, {
         minScale: GRAPH_ZOOM_MIN,
         maxScale: GRAPH_ZOOM_MAX,
       });
-      applyGraphFitTransform(transform);
+      applyGraphFitTransform(transform, transitionOpts);
     }
 
     /** 视口尺寸变化后只平移画布变换，让图保持在可视区中央。
@@ -5942,6 +6193,9 @@
         return;
       }
       if (isMobile) {
+        // 触屏上键盘弹出 / 浏览器底栏收起只改高度：不重适配（会丢掉用户缩放），
+        // 画布尺寸已由 measureGraphViewport 同步；只在宽度变化（横竖屏、分屏）时 refit
+        if (W === prevW) return;
         if (currentDepth !== 'all') fitToVisibleNodes();
         else fitToScreen();
         return;
@@ -5959,6 +6213,18 @@
       });
     }
     window.addEventListener('resize', onGraphViewportResize);
+    // 像素比变化（跨屏拖动 / 系统缩放）不一定触发 resize：用 resolution 媒体查询监听，每次变化后重新挂
+    (function watchDevicePixelRatio() {
+      if (!window.matchMedia) return;
+      const mq = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
+      const onChange = () => {
+        mq.removeEventListener ? mq.removeEventListener('change', onChange) : mq.removeListener(onChange);
+        onGraphViewportResize();
+        watchDevicePixelRatio();
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    })();
     window.addEventListener('orientationchange', onGraphViewportResize);
     window.addEventListener('pageshow', onGraphViewportResize);
     document.addEventListener('visibilitychange', () => {
@@ -6065,7 +6331,7 @@
     }
 
     if (viewMode2dBtn) {
-      viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
+      viewMode2dBtn.addEventListener('click', () => requestSpatialViewMode('2d'));
     }
     if (viewMode3dBtn) {
       viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
@@ -6118,26 +6384,13 @@
       const fallbackTimer = setTimeout(finish, SIDEBAR_TRANSITION_MS + 40);
     }
 
-    function edgeNodeIds(e) {
-      return {
-        sourceId: typeof e.source === 'object' ? e.source.id : e.source,
-        targetId: typeof e.target === 'object' ? e.target.id : e.target,
-      };
-    }
-
     /** 侧栏/3D 选中高亮：当前节点的一跳与二跳邻居集合 */
     function buildSidebarNeighborSets(d) {
-      const direct = new Set();
+      const direct = new Set(adjacency2D.get(d.id) || []);
       const secondary = new Set();
-      edges.forEach(e => {
-        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-        if (sId === d.id) direct.add(tId);
-        if (tId === d.id) direct.add(sId);
-      });
-      edges.forEach(e => {
-        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-        if (direct.has(sId) && tId !== d.id) secondary.add(tId);
-        if (direct.has(tId) && sId !== d.id) secondary.add(sId);
+      direct.forEach(id => {
+        const adj = adjacency2D.get(id);
+        if (adj) adj.forEach(other => { if (other !== d.id) secondary.add(other); });
       });
       return { direct, secondary };
     }
@@ -6148,13 +6401,16 @@
       sidebarFocusIds = new Set([d.id, ...direct]);
       sidebarNode = d;
 
+      sidebarSecondaryIds = secondary;
+
       const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
+      // 非邻居淡化写在 circle 的 fill / stroke-opacity 上，而不是 <g> 组级 opacity（见 applyFilters）
+      const dimFactor = n => tlShown(n.id) ? sidebarDimFactorOf(n) * recencyDimOf(n) : 0;
       node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 * recencyDimOf(n) : 0);
-      node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? recencyDimOf(n) : 0);
-      node.style('opacity', n => {
-        if (!tlShown(n.id)) return 0;
-        return ((n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05)) * recencyDimOf(n);
-      });
+      node.select('.node-circle')
+        .attr('fill-opacity', dimFactor)
+        .attr('stroke-opacity', n => 0.35 * dimFactor(n));
+      sync2DNodeLabels();
       // 时序模式下未显现的边由边层绘制时跳过（判据同 tlShown）
       setEdgePaintMode('sidebar', d.id, nodeColor(d));
 
@@ -6167,6 +6423,7 @@
     function clearNodeNeighborHighlight(options) {
       const opts = options || {};
       sidebarFocusIds = null;
+      sidebarSecondaryIds = null;
       sidebarNode = null;
       if (!opts.keepPinned) pinnedNode = null;
       if (graph3dView && is3DView()) graph3dView.clearSidebarHighlight();
@@ -6176,9 +6433,8 @@
         updateTimelineLinks();   // 切回 timeline 上色模式
         return;
       }
-      node.select('.node-glow').attr('fill-opacity', 0);
-      node.style('opacity', null);
-      applyFilters();            // 内部切回 filter 上色模式
+      restoreFilterAppearance();   // 内部切回 filter 上色模式；不重跑筛选、不重建子图
+      sync2DNodeLabels();          // 标签淡化系数随聚焦态变
     }
 
     /* related / source_links / paper_notebook_links 不随目录下发：选中节点时按需取该页正文 JSON
@@ -6214,8 +6470,8 @@
         let relHtml = '';
         for (let i = 0; i < limit; i++) {
           const r = related[i];
-          const relNode = nodes.find(nd => nd.id === r);
-          const relItem = indexItems.find(it => it.path === r || it.id === toDetailId(r));
+          const relNode = nodeById2D.get(r);
+          const relItem = indexItemByKey.get(r) || indexItemByKey.get(toDetailId(r));
           const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
           relHtml += `<li><a href="${escapeHtml(pageUrlForPath(r, relNode))}">${escapeHtml(relTitle)}</a></li>`;
         }
@@ -6241,16 +6497,28 @@
       }
     }
 
+    function renderSidebarSummary(d) {
+      const raw = d._info.summary || '';
+      const summary = window.RNGraphTooltip?.formatTooltipSummary
+        ? window.RNGraphTooltip.formatTooltipSummary(raw, 150)
+        : raw.slice(0, 150) + (raw.length > 150 ? '…' : '');
+      if (summary) {
+        sbSummary.hidden = false;
+        sbSummary.textContent = summary;
+      } else {
+        sbSummary.hidden = true;
+        sbSummary.textContent = '';
+      }
+    }
+
     function openSidebar(d) {
       sidebarNodeId = d.id;
       const { direct } = applyNodeNeighborHighlight(d);
 
       hideTooltip();
+      ensureSummaries();
       const info = d._info;
       const detailUrl = pageUrlForNode(d);
-      const summary = window.RNGraphTooltip?.formatTooltipSummary
-        ? window.RNGraphTooltip.formatTooltipSummary(info.summary || '', 150)
-        : (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
 
       const communityLabel = communityLabelMap.get(d.community);
       const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
@@ -6268,41 +6536,21 @@
         }
       }
       sbTitle.textContent = info.title || d.label;
-      if (summary) {
-        sbSummary.hidden = false;
-        sbSummary.textContent = summary;
-      } else {
-        sbSummary.hidden = true;
-        sbSummary.textContent = '';
-      }
+      renderSidebarSummary(d);
 
-      // tags from index
-      const item = indexItems.find(it => it.path === d.id);
-      const tags = item?.tags || [];
-      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-      // Expected impact: Eliminates closure creation and array allocation when generating tag HTML.
-      let tagsHtml = '';
-      for (let i = 0; i < tags.length; i++) {
-        tagsHtml += `<span class="sb-tag">${escapeHtml(tags[i])}</span>`;
-      }
-      sbTags.innerHTML = tagsHtml;
+      renderSidebarCatalogParts(d);
 
       // 1-hop graph neighbors (full list)
-      const neighborIds = Array.from(direct).sort((a, b) => {
-        const na = nodes.find(n => n.id === a);
-        const nb = nodes.find(n => n.id === b);
-        return String(na?.label || na?._info?.title || a)
-          .localeCompare(String(nb?.label || nb?._info?.title || b), 'zh-CN');
-      });
-      if (neighborIds.length) {
-        if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborIds.length + ')';
-        // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
-        // Expected impact: Eliminates closure creation and array allocation when generating neighbors HTML.
+      // 先装饰再排序：标签只取一次，比较用共享的 Collator（此前比较函数里每次两趟 nodes.find）
+      const neighborEntries = Array.from(direct, id => {
+        const n = nodeById2D.get(id);
+        return { id, n, label: String(n?.label || n?._info?.title || id.split('/').pop().replace('.md', '')) };
+      }).sort((a, b) => zhCollator.compare(a.label, b.label));
+      if (neighborEntries.length) {
+        if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborEntries.length + ')';
         let neighborsHtml = '';
-        for (let i = 0; i < neighborIds.length; i++) {
-          const id = neighborIds[i];
-          const n = nodes.find(nd => nd.id === id);
-          const label = n?.label || n?._info?.title || id.split('/').pop().replace('.md', '');
+        for (let i = 0; i < neighborEntries.length; i++) {
+          const { id, n, label } = neighborEntries[i];
           neighborsHtml += `<li><a href="${escapeHtml(pageUrlForNode(n || { id }))}">${escapeHtml(label)}</a></li>`;
         }
         sbNeighborsList.innerHTML = neighborsHtml;
@@ -6311,14 +6559,28 @@
         sbNeighborsSec.hidden = true;
       }
 
-      renderSidebarItemLinks(item);
-      loadSidebarItemLinks(item, d.id);
-
       sbOpenLink.href = detailUrl;
 
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
       scheduleSidebarViewportSync();
+      // 目录尚未到达：先按空目录渲染，取回后若侧栏仍停在该节点再补 tags / related
+      if (!indexItems.length) {
+        ensureCatalog().then(ok => { if (ok && sidebarNodeId === d.id) renderSidebarCatalogParts(d); });
+      }
+    }
+
+    /** 侧栏里依赖目录（site-catalog）的部分：tags、related / 来源链接 */
+    function renderSidebarCatalogParts(d) {
+      const item = indexItemByKey.get(d.id);
+      const tags = item?.tags || [];
+      let tagsHtml = '';
+      for (let i = 0; i < tags.length; i++) {
+        tagsHtml += `<span class="sb-tag">${escapeHtml(tags[i])}</span>`;
+      }
+      sbTags.innerHTML = tagsHtml;
+      renderSidebarItemLinks(item);
+      loadSidebarItemLinks(item, d.id);
     }
     function closeSidebar() {
       sidebarNodeId = null;
@@ -6532,6 +6794,8 @@
         ? { w: edgeCanvas.width, h: edgeCanvas.height, dpr: edgeCanvasDpr }
         : null),
       applyFilters: () => applyFilters(),
+      // 侧栏打开耗时测量（非业务 UI）
+      openSidebarById: (id) => { const n = nodeById2D.get(id); if (n) openSidebar(n); return !!n; },
       // G2 回归：浮窗里的「显示节点名称」开关已隐藏，验证标签路径需从此处驱动
       setShowNodeLabels: (on) => setShowNodeLabels(on),
       // G2 基线测量：取度数最高的若干节点 id，供 3D 悬停刷新计时使用
