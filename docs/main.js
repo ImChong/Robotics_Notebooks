@@ -6926,7 +6926,8 @@
     if (!expanded) return;
     for (var ei = 0; ei < extras.length; ei++) {
       extras[ei].animate(
-        [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }],
+        // 位移会让短列表末行越过滚动边界，临时出现滚动条并挤窄全部按钮。
+        [{ opacity: 0 }, { opacity: 1 }],
         { duration: 300, delay: Math.min(ei * 16, 320), easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' }
       );
     }
