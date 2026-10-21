@@ -360,6 +360,7 @@ flowchart TD
 
 - [Humanoid Locomotion](./humanoid-locomotion.md)
 - [Manipulation](./manipulation.md)
+- [Humanoid SRL](../entities/paper-humanoid-srl.md) — 超冗余机械臂扩展下的人形三臂移动操作与全身协调
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Teleoperation](./teleoperation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
