@@ -8,7 +8,7 @@ tags:
   - technology-transfer
   - wechat-curator
 status: complete
-updated: 2026-08-01
+updated: 2026-10-21
 related:
   - ./overseas-embodied-ai-labs-landscape-2026.md
   - ./notable-commercial-robot-platforms.md
@@ -27,6 +27,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/sites/hku-embodied-labs.md
   - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
   - ../../sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md
 summary: "依据深蓝具身智能 2026-07 国内 50 所实验室盘点，把产学研现状归纳为技术孵化 / 深度合作 / 基础研究三层地图，并交叉本库实体与方法页；非官方排名。"
@@ -119,6 +120,17 @@ flowchart TB
 
 ## 工程实践：怎么用这张地图
 
+### 香港大学的两个研究入口
+
+根据 [官方导航核查](../../sources/sites/hku-embodied-labs.md)，[OpenDriveLab](https://opendrivelab.com/) 与 [MMLab @ HKU](https://mmlab.hk/) 存在成员与合作项目交叉，适合按研究问题分别阅读：
+
+| 入口 | 本库路线主线 | 代表节点 |
+|------|--------------|----------|
+| OpenDriveLab | 真机数据规模化 → 世界模型内策略改进 → 人形全身技能 | [AgiBot World](../entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md)、[RISE](../entities/paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
+| MMLab @ HKU | 仿真数据生成 → 稳健双臂操作 → 具身 agent 自改进 | [RoboTwin 2.0](../entities/robotwin.md)、[χ₀ / kai0](../entities/paper-kai0.md)、[Physical RSI 1.0](../entities/physical-rsi.md) |
+
+以上为导航选题顺序，不表示严格的技术继承或排他成果归属。港大 MMLab 与港中文、南洋理工分支应区分；其独立成立日期尚未核实，路线以罗平 2019 年加入港大的履历作排序锚点。
+
 1. **跟论文找组**：先定层（孵化 / 合作 / 底座），再落到 PI 与代表成果，而不是只记校名。
 2. **跟开源找入口**：合作层里 OpenDriveLab / 智元数据链路 → [Agibot World](../entities/agibot-world-2026.md) 与 [VLA 复现谱系](./vla-open-source-repro-landscape-2025.md)。
 3. **跟硬件找公司**：孵化层公司名 → [商业平台纵览](./notable-commercial-robot-platforms.md)；逐际 → [LimX COSA](../entities/limx-cosa.md)。
@@ -142,6 +154,8 @@ flowchart TB
 - [LimX COSA](../entities/limx-cosa.md)
 
 ## 参考来源
+
+- [香港大学 OpenDriveLab 与 MMLab 官方导航核查](../../sources/sites/hku-embodied-labs.md)
 
 - [wechat_shenlan_china_embodied_labs_50_2026.md](../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md)
 - [原始抓取正文](../../sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md)

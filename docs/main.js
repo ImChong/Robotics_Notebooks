@@ -6653,30 +6653,7 @@
   var companyCount = document.getElementById('heroCompanyCount');
   var companyRoutesCard = document.getElementById('home-company-routes');
   var labCount = document.getElementById('heroLabCount');
-  // 公司 / 实验室路线同卡：按钮切换两个面板（同互链枢纽的全站 / 论文切换）
-  var orgTabCompany = document.getElementById('homeOrgTabCompany');
-  var orgTabLab = document.getElementById('homeOrgTabLab');
-  var orgPanelCompany = document.getElementById('homeOrgPanelCompany');
-  var orgPanelLab = document.getElementById('home-lab-routes');
-  function showHomeOrgTab(showLab) {
-    if (!orgTabCompany || !orgTabLab || !orgPanelCompany || !orgPanelLab) return;
-    // 公司列表展开时切到实验室：先收起，卡片回到折叠高度，不卡在展开态
-    if (showLab) setHomeCompaniesExpanded(false);
-    orgTabCompany.classList.toggle('is-active', !showLab);
-    orgTabLab.classList.toggle('is-active', showLab);
-    orgTabCompany.setAttribute('aria-pressed', String(!showLab));
-    orgTabLab.setAttribute('aria-pressed', String(showLab));
-    orgPanelCompany.hidden = showLab;
-    orgPanelLab.hidden = !showLab;
-  }
-  // 点按钮切换：收起公司列表时卡片高度随同一次动画回落（高度不变时不动画）
-  function switchHomeOrgTab(showLab) {
-    animateHomeLinksToggle(companyRoutesCard, function () { showHomeOrgTab(showLab); }, false, []);
-  }
-  if (orgTabCompany && orgTabLab) {
-    orgTabCompany.addEventListener('click', function () { switchHomeOrgTab(false); });
-    orgTabLab.addEventListener('click', function () { switchHomeOrgTab(true); });
-  }
+  var labRoutesCard = document.getElementById('home-lab-routes');
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
   // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
@@ -6991,6 +6968,32 @@
     });
   }
 
+  // 实验室路线独立卡：默认展示前 4 个，其余可展开。
+  var labToggle = document.getElementById('homeLabToggle');
+  var labLinks = document.getElementById('homeLabLinks');
+  function setHomeLabsExpanded(expanded) {
+    if (!labToggle || !labLinks) return;
+    var extras = labLinks.querySelectorAll('[data-lab-extra]');
+    for (var lti = 0; lti < extras.length; lti++) {
+      extras[lti].hidden = !expanded;
+    }
+    labToggle.setAttribute('aria-expanded', String(expanded));
+    labLinks.classList.toggle('is-expanded', expanded);
+    syncHomeLinksScrollbar(labLinks);
+    labToggle.textContent = expanded
+      ? '收起实验室列表 ↑'
+      : '展开全部 ' + labLinks.querySelectorAll('a').length + ' 个实验室 ↓';
+  }
+  if (labToggle && labLinks) {
+    setHomeLabsExpanded(false);
+    labToggle.addEventListener('click', function () {
+      var expanded = labToggle.getAttribute('aria-expanded') !== 'true';
+      animateHomeLinksToggle(labRoutesCard, function () {
+        setHomeLabsExpanded(expanded);
+      }, expanded, labLinks.querySelectorAll('[data-lab-extra]'));
+    });
+  }
+
   // ── 首页入口卡指针光斑：把指针相对卡片的坐标写入 --spot-x / --spot-y（样式见 style.css） ──
   var homeEntryGrid = document.querySelector('.home-entry-grid');
   var finePointer = false;
@@ -7183,24 +7186,22 @@
     });
   }
 
-  // Hero「公司路线」数字：同纵深路线——切到公司面板，滚到卡片中心描边一圈（不展开），随后高亮展开按钮
+  // Hero「公司路线」数字：同纵深路线——滚到卡片中心描边一圈（不展开），随后高亮展开按钮
   if (companyCount && companyRoutesCard) {
     companyCount.addEventListener('click', function (event) {
       event.preventDefault();
-      showHomeOrgTab(false);
       scrollEntryCardToCenter(companyRoutesCard, '#home-company-routes', function () {
         playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
       });
     });
   }
 
-  // Hero「实验室路线」数字：切到实验室面板，滚到同一张卡中心描边一圈（暂无折叠按钮，不高亮文案）
-  if (labCount && companyRoutesCard) {
+  // Hero「实验室路线」数字：定位独立卡片并提示展开按钮。
+  if (labCount && labRoutesCard) {
     labCount.addEventListener('click', function (event) {
       event.preventDefault();
-      showHomeOrgTab(true);
-      scrollEntryCardToCenter(companyRoutesCard, '#home-lab-routes', function () {
-        playCardBorderTrace(companyRoutesCard);
+      scrollEntryCardToCenter(labRoutesCard, '#home-lab-routes', function () {
+        playCardBorderTrace(labRoutesCard, function () { pulseHintElement(labToggle); });
       });
     });
   }
@@ -7256,10 +7257,9 @@
     scrollEntryCardToCenter(companyRoutesCard, null, function () {
       playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
     });
-  } else if (window.location.hash === '#home-lab-routes' && companyRoutesCard) {
-    showHomeOrgTab(true);
-    scrollEntryCardToCenter(companyRoutesCard, null, function () {
-      playCardBorderTrace(companyRoutesCard);
+  } else if (window.location.hash === '#home-lab-routes' && labRoutesCard) {
+    scrollEntryCardToCenter(labRoutesCard, null, function () {
+      playCardBorderTrace(labRoutesCard, function () { pulseHintElement(labToggle); });
     });
   } else if (window.location.hash === '#wiki-search') {
     var searchSection = document.getElementById('wiki-search');

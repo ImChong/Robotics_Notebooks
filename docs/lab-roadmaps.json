@@ -1,8 +1,9 @@
 {
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "comparison_id": "wiki-overview-overseas-embodied-ai-labs-landscape-2026",
   "lenses": {
-    "wbc": "强全身控制"
+    "wbc": "强全身控制",
+    "embodied": "具身数据与操作"
   },
   "date_policy": "日期优先对应官方发布或论文 v1；工具与聚合节点可锚定明确版本、含实现提交、机构成立或演示事件，必须由 date_note / date_source 说明。提交时间不证明首次公开，演示不等于硬件首发；空日期不使用入库日补造。",
   "labs": [
@@ -128,6 +129,98 @@
           "id": "entity-paper-agile-perceptive-traversal-sparse-3d",
           "url": "https://arxiv.org/abs/2608.29769",
           "date_note": "arXiv:2608.29769 v1 为 2026-08-30。"
+        }
+      ]
+    },
+    {
+      "key": "hku-mmlab",
+      "name": "香港大学 MMLab",
+      "founded_year": 2019,
+      "founded_source": "https://mmlab.hk/about-us",
+      "founded_note": "官网未单列 HKU 分支成立日期；按负责人罗平 2019 年加入香港大学的履历作排序锚点，不视为已核实的成立年。官网 2001 年指汤晓鸥创立的 MMLab 体系，不能直接作为港大分支成立年。",
+      "lenses": [
+        "embodied"
+      ],
+      "official": "https://mmlab.hk/",
+      "summary": "香港大学多媒体实验室，研究覆盖视觉、多模态、生成式 AI、强化学习与机器人；此处聚焦双臂数据生成、稳健操作与具身 agent 自改进。与 OpenDriveLab 存在成员及合作项目交叉，两条路线按研究视角导航，不代表互斥机构或独立成果归属。",
+      "nodes": [
+        {
+          "date": "2025-06",
+          "title": "RoboTwin 2.0",
+          "track": "仿真 / 双臂数据",
+          "desc": "面向双臂操作的自动专家数据生成与仿真平台，基于 SAPIEN 扩展任务和示范规模；多机构合作。",
+          "id": "entity-robotwin",
+          "url": "https://arxiv.org/abs/2506.18088",
+          "date_note": "按 arXiv:2506.18088 v1 提交月；原版 RoboTwin 与 2.0 不混用日期。"
+        },
+        {
+          "date": "2026-02",
+          "title": "χ₀ / kai0",
+          "track": "VLA / 稳健操作",
+          "desc": "以模型合并、阶段优势与训练–部署对齐提升双臂衣物操作稳健性；与 Kinetix AI、OpenDriveLab 合作，代码、数据与权重已公开。",
+          "id": "entity-paper-kai0",
+          "url": "https://mmlab.hk/research/kai0",
+          "date_note": "按 arXiv:2602.09021 v1 提交月；项目博客另标 2025-12-24，不将博客日期当论文日期。"
+        },
+        {
+          "date": "2026-09",
+          "title": "Physical RSI 1.0",
+          "track": "具身 agent / 自我改进",
+          "desc": "以具身反馈驱动候选 harness 的改写、评测与选择；HKU MMLab 与 Kinetix AI 合作。现有归档未列公开源码，不能视为可完整复现。",
+          "id": "entity-physical-rsi",
+          "url": "https://mmlab.hk/research/PhysicalRSI",
+          "date_note": "项目页 RoboDojo 榜单标注 2026-09-28，按该明确演示事件锚定；不据此推断项目首次发布日。"
+        }
+      ]
+    },
+    {
+      "key": "opendrivelab",
+      "name": "香港大学 OpenDriveLab",
+      "founded_year": 2021,
+      "founded_source": "https://mmlab.hk/about-us",
+      "founded_note": "MMLab 官网 Hongyang Li 简介明确写明自 2021 年领导 OpenDriveLab，以该团队领导起点排序；不表示团队自 2021 年起即隶属香港大学。",
+      "lenses": [
+        "wbc",
+        "embodied"
+      ],
+      "official": "https://opendrivelab.com/",
+      "summary": "李弘扬领导、现位于香港大学的具身智能与自动驾驶团队；此处聚焦 AgiBot World 数据平台、世界模型内策略改进、人形足球和第一视角全身移动操作。与 MMLab 共享部分成员和合作成果；仅收录已有站内详情的代表项目。",
+      "nodes": [
+        {
+          "date": "2025-03",
+          "title": "AgiBot World Colosseo",
+          "track": "真机数据 / 通用操作",
+          "desc": "大规模真机操作数据与通用策略研究平台，为数据规模化及后续 GO-1 路线提供基础；与智元等机构合作。",
+          "id": "entity-paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation",
+          "url": "https://arxiv.org/abs/2503.06669",
+          "date_note": "按 arXiv:2503.06669 v1 提交月；GO-1 后续代码发布另计。"
+        },
+        {
+          "date": "2026-02",
+          "title": "RISE",
+          "track": "世界模型 / 策略改进",
+          "desc": "在组合式世界模型中进行想象 rollout 与策略自提升；官方 OpenDriveLab/RISE 实现公开。",
+          "id": "entity-paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio",
+          "url": "https://opendrivelab.com/RISE/",
+          "date_note": "按 arXiv:2602.11075 v1 提交月；勿与酷哇同名驾驶 WAM 混淆。"
+        },
+        {
+          "date": "2026-06",
+          "title": "RoboNaldo",
+          "track": "人形足球 / 全身控制",
+          "desc": "单条人类踢球参考引导三阶段课程强化学习，G1 真草地射门；已公开训练与 MuJoCo / 真机部署代码。",
+          "id": "entity-paper-robonaldo-humanoid-soccer-shooting",
+          "url": "https://opendrivelab.com/RoboNaldo/",
+          "date_note": "arXiv:2606.11092 v1 为 2026-06-09。"
+        },
+        {
+          "date": "2026-09",
+          "title": "EgoHumanoid-V2",
+          "track": "人体示范 / 全身移动操作",
+          "desc": "粗到细动作对齐与视觉适配将第一视角人体示范迁移到协调全身技能；现有归档为部分开源，策略训练与部署部分待发布。",
+          "id": "entity-paper-egohumanoid-v2",
+          "url": "https://opendrivelab.com/EgoHumanoid-V2/",
+          "date_note": "arXiv:2609.37181 v1 为 2026-09-29。"
         }
       ]
     },

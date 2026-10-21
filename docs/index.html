@@ -155,69 +155,62 @@
             </div>
             <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks" data-home-copy>展开全部 27 条纵深路线 ↓</button>
           </div>
-          <!-- 公司 / 实验室路线共用一张卡，按钮切换两个面板（同互链枢纽的全站 / 论文切换）；
-               实验室多了再拆成独立卡片，「更多路线」改为通栏 -->
           <div class="card home-entry-card home-entry-card-more" id="home-company-routes">
-            <div class="home-hub-tabs home-org-tabs" role="group" aria-label="切换公司 / 实验室路线" data-home-copy>
-              <button type="button" id="homeOrgTabCompany" class="home-hub-tab is-active" aria-pressed="true" aria-controls="homeOrgPanelCompany" data-home-copy>公司路线</button>
-              <button type="button" id="homeOrgTabLab" class="home-hub-tab" aria-pressed="false" aria-controls="home-lab-routes" data-home-copy>实验室路线</button>
+            <span class="home-entry-label" data-home-copy>公司路线</span>
+            <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
+            <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
+                 顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
+                 默认露出前 4 家，其余 data-company-extra + hidden，由 main.js 的展开按钮控制 -->
+            <div class="home-entry-route-links" id="homeCompanyLinks">
+              <a class="btn-secondary" href="company.html?id=nvidia">NVIDIA</a>
+              <a class="btn-secondary" href="company.html?id=gdm">Google DeepMind</a>
+              <a class="btn-secondary" href="company.html?id=1x">1X</a>
+              <a class="btn-secondary" href="company.html?id=unitree">宇树<span class="route-en">（Unitree）</span></a>
+              <a class="btn-secondary" href="company.html?id=xpeng" data-company-extra hidden>小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=motphys" data-company-extra hidden>谋先飞<span class="route-en">（Motphys）</span></a>
+              <a class="btn-secondary" href="company.html?id=xiaomi" data-company-extra hidden>小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=westlake" data-company-extra hidden>西湖机器人<span class="route-en">（Westlake Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
+              <a class="btn-secondary" href="company.html?id=figure" data-company-extra hidden>Figure</a>
+              <a class="btn-secondary" href="company.html?id=agibot" data-company-extra hidden>智元<span class="route-en">（AgiBot）</span></a>
+              <a class="btn-secondary" href="company.html?id=skild" data-company-extra hidden>Skild AI</a>
+              <a class="btn-secondary" href="company.html?id=galbot" data-company-extra hidden>银河通用<span class="route-en">（Galbot）</span></a>
+              <a class="btn-secondary" href="company.html?id=galaxea" data-company-extra hidden>星海图<span class="route-en">（Galaxea）</span></a>
+              <a class="btn-secondary" href="company.html?id=robotera" data-company-extra hidden>星动纪元<span class="route-en">（ROBOTERA）</span></a>
+              <a class="btn-secondary" href="company.html?id=xsquare" data-company-extra hidden>自变量机器人<span class="route-en">（X Square Robot）</span></a>
+              <a class="btn-secondary" href="company.html?id=lightwheel" data-company-extra hidden>光轮智能<span class="route-en">（Lightwheel）</span></a>
+              <a class="btn-secondary" href="company.html?id=pi" data-company-extra hidden>Physical Intelligence</a>
+              <a class="btn-secondary" href="company.html?id=light" data-company-extra hidden>亮源新创<span class="route-en">（Light Origins）</span></a>
+              <a class="btn-secondary" href="company.html?id=robbyant" data-company-extra hidden>蚂蚁灵波<span class="route-en">（Robbyant）</span></a>
+              <a class="btn-secondary" href="company.html?id=generalist" data-company-extra hidden>Generalist AI</a>
+              <a class="btn-secondary" href="company.html?id=amazon-far" data-company-extra hidden>亚马逊<span class="route-en">（Amazon FAR）</span></a>
+              <a class="btn-secondary" href="company.html?id=rhoda" data-company-extra hidden>Rhoda AI</a>
+              <a class="btn-secondary" href="company.html?id=sharpa" data-company-extra hidden>夏帕机器人<span class="route-en">（Sharpa Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=rewardai" data-company-extra hidden>励元智能<span class="route-en">（Reward AI）</span></a>
+              <a class="btn-secondary" href="company.html?id=roboparty" data-company-extra hidden>萝博派对<span class="route-en">（RoboParty）</span></a>
+              <a class="btn-secondary" href="company.html?id=beingbeyond" data-company-extra hidden>智在无界<span class="route-en">（BeingBeyond）</span></a>
+              <a class="btn-secondary" href="company.html?id=deltai" data-company-extra hidden>德塔智能<span class="route-en">（Delta Intelligence）</span></a>
+              <a class="btn-secondary" href="company.html?id=symbiosis" data-company-extra hidden>Symbiosis Robotics</a>
+              <a class="btn-secondary" href="company.html?id=liauto" data-company-extra hidden>理想汽车<span class="route-en">（Li Auto）</span></a>
+              <a class="btn-secondary" href="company.html?id=simate" data-company-extra hidden>硅基伙伴<span class="route-en">（Simate）</span></a>
+              <a class="btn-secondary" href="company.html?id=aether" data-company-extra hidden>Aether AI</a>
+              <a class="btn-secondary" href="company.html?id=archon" data-company-extra hidden>源策未来<span class="route-en">（Archon Robotics）</span></a>
             </div>
-            <!-- 桌面两面板叠在同一格：卡片取较高面板（公司）的高度，切到实验室时与旁边「更多路线」卡底边齐平 -->
-            <div class="home-org-panels">
-              <div class="home-org-panel" id="homeOrgPanelCompany">
-                <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
-                <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
-                     顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
-                     默认露出前 4 家，其余 data-company-extra + hidden，由 main.js 的展开按钮控制 -->
-                <div class="home-entry-route-links" id="homeCompanyLinks">
-                  <a class="btn-secondary" href="company.html?id=nvidia">NVIDIA</a>
-                  <a class="btn-secondary" href="company.html?id=gdm">Google DeepMind</a>
-                  <a class="btn-secondary" href="company.html?id=1x">1X</a>
-                  <a class="btn-secondary" href="company.html?id=unitree">宇树<span class="route-en">（Unitree）</span></a>
-                  <a class="btn-secondary" href="company.html?id=xpeng" data-company-extra hidden>小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
-                  <a class="btn-secondary" href="company.html?id=motphys" data-company-extra hidden>谋先飞<span class="route-en">（Motphys）</span></a>
-                  <a class="btn-secondary" href="company.html?id=xiaomi" data-company-extra hidden>小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
-                  <a class="btn-secondary" href="company.html?id=westlake" data-company-extra hidden>西湖机器人<span class="route-en">（Westlake Robotics）</span></a>
-                  <a class="btn-secondary" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
-                  <a class="btn-secondary" href="company.html?id=figure" data-company-extra hidden>Figure</a>
-                  <a class="btn-secondary" href="company.html?id=agibot" data-company-extra hidden>智元<span class="route-en">（AgiBot）</span></a>
-                  <a class="btn-secondary" href="company.html?id=skild" data-company-extra hidden>Skild AI</a>
-                  <a class="btn-secondary" href="company.html?id=galbot" data-company-extra hidden>银河通用<span class="route-en">（Galbot）</span></a>
-                  <a class="btn-secondary" href="company.html?id=galaxea" data-company-extra hidden>星海图<span class="route-en">（Galaxea）</span></a>
-                  <a class="btn-secondary" href="company.html?id=robotera" data-company-extra hidden>星动纪元<span class="route-en">（ROBOTERA）</span></a>
-                  <a class="btn-secondary" href="company.html?id=xsquare" data-company-extra hidden>自变量机器人<span class="route-en">（X Square Robot）</span></a>
-                  <a class="btn-secondary" href="company.html?id=lightwheel" data-company-extra hidden>光轮智能<span class="route-en">（Lightwheel）</span></a>
-                  <a class="btn-secondary" href="company.html?id=pi" data-company-extra hidden>Physical Intelligence</a>
-                  <a class="btn-secondary" href="company.html?id=light" data-company-extra hidden>亮源新创<span class="route-en">（Light Origins）</span></a>
-                  <a class="btn-secondary" href="company.html?id=robbyant" data-company-extra hidden>蚂蚁灵波<span class="route-en">（Robbyant）</span></a>
-                  <a class="btn-secondary" href="company.html?id=generalist" data-company-extra hidden>Generalist AI</a>
-                  <a class="btn-secondary" href="company.html?id=amazon-far" data-company-extra hidden>亚马逊<span class="route-en">（Amazon FAR）</span></a>
-                  <a class="btn-secondary" href="company.html?id=rhoda" data-company-extra hidden>Rhoda AI</a>
-                  <a class="btn-secondary" href="company.html?id=sharpa" data-company-extra hidden>夏帕机器人<span class="route-en">（Sharpa Robotics）</span></a>
-                  <a class="btn-secondary" href="company.html?id=rewardai" data-company-extra hidden>励元智能<span class="route-en">（Reward AI）</span></a>
-                  <a class="btn-secondary" href="company.html?id=roboparty" data-company-extra hidden>萝博派对<span class="route-en">（RoboParty）</span></a>
-                  <a class="btn-secondary" href="company.html?id=beingbeyond" data-company-extra hidden>智在无界<span class="route-en">（BeingBeyond）</span></a>
-                  <a class="btn-secondary" href="company.html?id=deltai" data-company-extra hidden>德塔智能<span class="route-en">（Delta Intelligence）</span></a>
-                  <a class="btn-secondary" href="company.html?id=symbiosis" data-company-extra hidden>Symbiosis Robotics</a>
-                  <a class="btn-secondary" href="company.html?id=liauto" data-company-extra hidden>理想汽车<span class="route-en">（Li Auto）</span></a>
-                  <a class="btn-secondary" href="company.html?id=simate" data-company-extra hidden>硅基伙伴<span class="route-en">（Simate）</span></a>
-                  <a class="btn-secondary" href="company.html?id=aether" data-company-extra hidden>Aether AI</a>
-                  <a class="btn-secondary" href="company.html?id=archon" data-company-extra hidden>源策未来<span class="route-en">（Archon Robotics）</span></a>
-                </div>
-                <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks" data-home-copy>展开全部 33 家公司 ↓</button>
-              </div>
-              <div class="home-org-panel" id="home-lab-routes" hidden>
-                <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
-                <!-- 按成立年份从早到晚排序，顺序与 docs/lab-roadmaps.json 一致（tests/test_lab_roadmaps.py 校验）；
-                     超过 4 个时拆成独立卡片并按公司卡的方式加折叠按钮 -->
-                <div class="home-entry-route-links" id="homeLabLinks">
-                  <a class="btn-secondary" href="lab.html?id=eth-rsl">ETH RSL</a>
-                  <a class="btn-secondary" href="lab.html?id=rai">RAI Institute</a>
-                  <a class="btn-secondary" href="lab.html?id=lecar">CMU LeCAR</a>
-                  <a class="btn-secondary" href="lab.html?id=teleai">中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
-                </div>
-              </div>
+            <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks" data-home-copy>展开全部 33 家公司 ↓</button>
+          </div>
+          <div class="card home-entry-card home-entry-card-more" id="home-lab-routes">
+            <span class="home-entry-label" data-home-copy>实验室路线</span>
+            <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
+            <!-- 按成立年份或已注明的排序锚点排序，与 lab-roadmaps.json 同序；默认展示前 4 个。 -->
+            <div class="home-entry-route-links" id="homeLabLinks">
+              <a class="btn-secondary" href="lab.html?id=eth-rsl">ETH RSL</a>
+              <a class="btn-secondary" href="lab.html?id=hku-mmlab">香港大学<span class="route-en">（MMLab）</span></a>
+              <a class="btn-secondary" href="lab.html?id=opendrivelab">香港大学<span class="route-en">（OpenDriveLab）</span></a>
+              <a class="btn-secondary" href="lab.html?id=rai">RAI Institute</a>
+              <a class="btn-secondary" href="lab.html?id=lecar" data-lab-extra hidden>CMU LeCAR</a>
+              <a class="btn-secondary" href="lab.html?id=teleai" data-lab-extra hidden>中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
             </div>
+            <button type="button" id="homeLabToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeLabLinks" data-home-copy>展开全部 6 个实验室 ↓</button>
           </div>
         </div>
       </div>
