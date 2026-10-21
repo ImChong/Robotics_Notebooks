@@ -123,7 +123,7 @@ Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公
 
 其内部版本控制系统 Scion 将服务器设为权威端，以增量 changeset 和内容寻址对象保存变更，另建 blame、路径历史等派生索引；客户端按需取稀疏文件，缓存分层提供对象，并通过 API 回答 diff、merge base 等元数据问题。Anthropic 报告 checkout 快约两个数量级、镜像基础设施 CPU 与内存需求下降 200 倍、CI 释放约 25% CPU 容量。数据属于单家公司内部工作负载报告，不能直接外推到普通团队。
 
-对机器人团队更可迁移的做法是先量化 coding agent 带来的提交频率、全量/稀疏 checkout 成本、CI 排队时间和评审吞吐，再决定优化点。Scion 本身未开源，Anthropic 也明确不建议把它视为通用 Git 替代品；它依赖定制的代码评审、代码搜索和 CI 配套系统。详细设计与边界见 [Anthropic 的 Scion 工程文章](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)。
+对机器人团队更可迁移的做法是先量化 coding agent 带来的提交频率、全量/稀疏 checkout 成本、CI 排队时间和评审吞吐，再决定优化点。Scion 本身未开源，Anthropic 也明确不建议把它视为通用 Git 替代品；它依赖定制的代码评审、代码搜索和 CI 配套系统。详细设计与边界见 [Anthropic 的 Scion 工程文章](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)。[Jujutsu（jj）](../entities/jujutsu.md) 则是公开可用、面向 Git 互通的版本控制工具，重点在更容易恢复的操作模型与无暂存区工作流；它解决的是日常版本控制交互，不是 Scion 面向超大规模基础设施的源码存储问题。
 
 
 ### Agent 吞吐上升后，代码评审也要分层
