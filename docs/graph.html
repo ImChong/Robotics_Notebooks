@@ -409,13 +409,14 @@
       overflow: hidden;
       pointer-events: none;
       z-index: 3;
-      --route-trace-color: #fbbf24;
-      --route-trace-glint: #fff1c2;
+      --route-trace-color: var(--accent, #5b9cf6);
+      --route-trace-glint: #d8e8fd;
+      --route-trace-glint: color-mix(in srgb, var(--accent, #5b9cf6) 24%, white);
     }
     [data-theme="light"] #graph-route-trace {
-      --route-trace-color: #b45309;
-      --route-trace-glint: #d97706;
+      --route-trace-glint: var(--accent-hover, #1a5bb8);
     }
+    [data-theme="light"] #graph-route-trace .route-trace-core { stroke-opacity: 0.8; }
     .route-trace-halo { filter: blur(1.5px); }
     .route-trace-flow { animation: route-trace-flow 1.8s linear infinite; }
     @keyframes route-trace-flow { to { stroke-dashoffset: -30; } }

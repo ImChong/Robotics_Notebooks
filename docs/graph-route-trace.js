@@ -70,7 +70,7 @@
     return { d, tip };
   }
 
-  // 独立叙事层：细金线、柔光尾迹、流动微光，不向知识图或力模拟加边。
+  // 独立叙事层：主题蓝细线、柔光尾迹、流动微光，不向知识图或力模拟加边。
   function create(options) {
     const svg = options.svg;
     const ns = 'http://www.w3.org/2000/svg';
@@ -81,19 +81,19 @@
       return el;
     };
     const line = (name, width, opacity, color) => make('path', {
-      class: 'route-trace-' + name, fill: 'none', stroke: color || 'var(--route-trace-color, #fbbf24)',
+      class: 'route-trace-' + name, fill: 'none', stroke: color || 'var(--route-trace-color, var(--accent, #5b9cf6))',
       'stroke-width': width, 'stroke-opacity': opacity,
       'stroke-linecap': 'round', 'stroke-linejoin': 'round',
     });
     const halo = line('halo', 8, 0.08);
     const core = line('core', 1.5, 0.58);
-    const flow = line('flow', 2, 0.56, 'var(--route-trace-glint, #fff1c2)');
+    const flow = line('flow', 2, 0.56, 'var(--route-trace-glint, #d8e8fd)');
     flow.setAttribute('stroke-dasharray', '2 28');
-    const tail = line('tail', 2.2, 0.95, 'var(--route-trace-glint, #fff1c2)');
+    const tail = line('tail', 2.2, 0.95, 'var(--route-trace-glint, #d8e8fd)');
     const start = make('circle', { class: 'route-trace-start', r: 6, fill: 'none',
-      stroke: 'var(--route-trace-color, #fbbf24)', 'stroke-width': 1.5, 'stroke-opacity': 0.75 });
-    const headGlow = make('circle', { r: 8, fill: 'var(--route-trace-color, #fbbf24)', 'fill-opacity': 0.16 });
-    const head = make('circle', { class: 'route-trace-head', r: 3, fill: 'var(--route-trace-glint, #fff1c2)' });
+      stroke: 'var(--route-trace-color, var(--accent, #5b9cf6))', 'stroke-width': 1.5, 'stroke-opacity': 0.75 });
+    const headGlow = make('circle', { r: 8, fill: 'var(--route-trace-color, var(--accent, #5b9cf6))', 'fill-opacity': 0.16 });
+    const head = make('circle', { class: 'route-trace-head', r: 3, fill: 'var(--route-trace-glint, #d8e8fd)' });
     let ids = [], progress = 0, startedAt = null, raf = 0, duration = 0;
     let cachedPoints = [], cachedGeometry = geometry([]);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
