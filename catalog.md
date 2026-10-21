@@ -6135,6 +6135,7 @@
 - [Paper Notebooks · Physics-Based Animation](wiki/overview/paper-notebook-category-13-physics-based-animation.md) — Physics-Based Animation**（`13_Physics-Based_Animation`）是 [Robot Learning Paper Notebooks](https:// `📅unknown` `[overview_page]`
 - [Paper Notebooks · Human Motion](wiki/overview/paper-notebook-category-14-human-motion.md) — Human Motion**（`14_Human_Motion`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robo `📅unknown` `[overview_page]`
 - [感知–动作–迁移：9 篇论文阅读坐标](wiki/overview/perception-action-transfer-9-papers-technology-map.md) — 「如何看、如何做、如何迁移」正在同时发生：拓扑递归与统一几何解决跨 body，主动感知与实时 edit 解决观测–执行错位，physics-aware 生成解决 Sim 数据可信度，agent k `📅unknown` `[overview_page]`
+- [Physical AI（物理智能）](wiki/overview/physical-ai.md) — 一句话定义：** Physical AI 是在真实世界约束下，依靠持续反馈感知、建模、决策并执行物理动作的人工智能系统。 `📅unknown` `[overview_page]`
 - [四足 × VLN × 具身智能实战营（技术地图）](wiki/overview/quadruped-vln-embodied-workshop.md) — 本页把「2 天线下实战 + 1 月线上答疑」课程日程中的 **技术点与项目** 映射到本知识库的 **独立详情节点**，作为覆盖验收表与学习入口。硬件基线：每组 **四足 + LiDAR + 相机 + `📅unknown` `[overview_page]`
 - [赛车漂移强化学习开源景观](wiki/overview/racing-drift-rl-open-source-landscape.md) — 赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈 vs **浏览器自研物理**）、**用什么控制**（端到 `📅unknown` `[overview_page]`
 - [RCL Awesome World-Action Models 技术地图](wiki/overview/rcl-awesome-wam-technology-map.md) — RCL Awesome WAM 技术地图** = 外部 PAPERS.md 的站内可点开版本（564 条、按 major category 分组，一点即达论文页）。 `📅unknown` `[overview_page]`
