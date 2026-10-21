@@ -38,6 +38,7 @@ related:
   - ../entities/paper-generate-track-improve.md
   - ../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md
   - ../entities/paper-visible-reachable-workspace-humanoid-design.md
+  - ../entities/paper-swap-humanoid-collision-avoidance.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
 
@@ -118,6 +119,10 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
 - [G1 屋顶斜坡全身作业 Locomotion](../entities/paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→metric 坡面 mesh 轨迹优化→相位门控 RL；钉枪/锤/推 clearance 0.26–0.53 cm；UF/G1（arXiv:2609.20558；未开源）
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪；超 NIST 孔洞/倾斜楼梯（arXiv:2608.10220；未开源）
+
+### 复杂空间避障
+
+- [SWAP：测试时可控的人形全身避障](../entities/paper-swap-humanoid-collision-avoidance.md) — 感知条件化扩散动作提案 + 低层 RL 稳定跟踪；仿真与 Unitree G1 静态/动态障碍，代码待开放（arXiv:2610.25711）
 
 ### 跑酷、冲刺与高动态技能
 

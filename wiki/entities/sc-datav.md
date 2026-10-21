@@ -14,7 +14,6 @@ related:
   - ./floorplan-3d-wy51ai.md
   - ../concepts/observability-logs-metrics-tracing.md
   - ../concepts/edge-cloud-robotics.md
-  - ../../docs/checklists/frontend-optimization-v1.md
 sources:
   - ../../sources/repos/sc-datav.md
   - ../../sources/sites/sc-datav.md
@@ -132,7 +131,6 @@ sequenceDiagram
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 Three.js **游戏 + Agent Skills QA** 路线
 - [可观测性（Logs / Metrics / Tracing）](../concepts/observability-logs-metrics-tracing.md) — 大屏指标应对齐的 telemetry 语义
 - [边缘–云端协同](../concepts/edge-cloud-robotics.md) — 云侧队级分析 vs 边缘实时控制分工
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 `docs/` 静态站交互 roadmap
 
 ## 参考来源
 

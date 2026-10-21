@@ -15,7 +15,6 @@ related:
   - ../entities/impeccable.md
   - ../entities/anthropic-frontend-design-skill.md
   - ../entities/find-skills-skill.md
-  - ../../docs/checklists/frontend-optimization-v1.md
 sources:
   - ../../sources/sites/skillry-dev.md
   - ../../sources/repos/leonxlnx-taste-skill.md
@@ -111,7 +110,7 @@ flowchart TD
 
 ## 与本站 Robotics_Notebooks 的关系
 
-- **wiki 知识 vs docs 展示：** 三工具都不替代 [Ingest Workflow](../../schema/ingest-workflow.md)；它们优化 **读者看到的静态站与 agent 维护体验**（见 [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md)）。
+- **wiki 知识 vs docs 展示：** 三工具都不替代 [Ingest Workflow](../../schema/ingest-workflow.md)；它们优化 **读者看到的静态站与 agent 维护体验**。
 - **机器人本体栈：** 仿真、RL、Sim2Real **不依赖** 这些 skill；价值在 **项目页、图谱 UI、对外 demo**。
 
 ## 关联页面

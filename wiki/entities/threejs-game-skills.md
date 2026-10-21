@@ -22,7 +22,6 @@ related:
   - ./video-shotcraft.md
   - ./sc-datav.md
   - ../references/llm-wiki-karpathy.md
-  - ../../docs/checklists/frontend-optimization-v1.md
 sources:
   - ../../sources/repos/threejs-game-skills.md
 summary: "Three.js Game Skills（majidmanzarpour/threejs-game-skills）是九件套 Agent Skills：threejs-game-director 路由玩法、AAA 画面、UI、Tripo/Gemini/ElevenLabs 资产生成、调试与 Playwright QA；内置 Vite+TS 脚手架、确定性测试钩子与证据清单，把浏览器 Three.js 游戏从零做到可发布。"
@@ -52,7 +51,7 @@ summary: "Three.js Game Skills（majidmanzarpour/threejs-game-skills）是九件
 
 - **Agent Skills 的「完整垂直交付」样本：** 与 [img2threejs](./img2threejs.md)（**单图→程序化模型**）、[GSAP Skills](./gsap-skills.md)（**DOM 动效**）、[image-blaster](./image-blaster.md)（**单图→splat 世界包**）并列，本仓把 **玩法、画面、UI、资产生成、调试、发布** 写成 **可安装技能簇**，并由导演统一路由——代表 **游戏级 scope 的 skill 编排**，而非单点 API 备忘。
 - **证据契约降低「声称完成」风险：** README 的 **Expected Evidence** 按改动缩放（小 HUD 修不必跑全量发布审计）；`check_evidence.py --manifest` 与 `inspect-threejs-canvas.mjs` 把 **premium/AAA** 声明绑定到 **截图、像素指标、run ID**，对本站维护者理解「代理自验」有直接参照。
-- **对本站 `docs/` 的弱交叉价值：** [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) 规划 richer 交互；若需要 **WebGL 小游戏 demo 或 Three.js 交互 sandbox**，本仓 **Vite 脚手架 + `__THREE_GAME_TEST_HOOKS__`** 是可复用起点（非必须引入全九技能）。
+- **对本站静态站的弱交叉价值：** 若需要 **WebGL 小游戏 demo 或 Three.js 交互 sandbox**，本仓 **Vite 脚手架 + `__THREE_GAME_TEST_HOOKS__`** 是可复用起点（非必须引入全九技能）。
 - **与机器人栈的边界清晰：** 产物是 **浏览器可发布游戏**，不是 URDF/MJCF 仿真资产或真机部署链；需要制造/仿真几何时看 [CAD Skills](./cad-skills.md) / [img2threejs](./img2threejs.md) 的 **程序化 WebGL** 或 **STEP/URDF** 路线。
 
 ## 核心结构
@@ -156,7 +155,6 @@ sequenceDiagram
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
 - [sc-datav](./sc-datav.md) — **Three.js + ECharts 地理大屏**（运营视图，非游戏循环）
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 `docs/` 交互 roadmap
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 规约编译
 
 ## 参考来源
