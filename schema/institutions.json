@@ -58,6 +58,13 @@
         "openai"
       ]
     },
+    "opengeos": {
+      "label": "开放地理空间解决方案（Open Geospatial Solutions）",
+      "aliases": [
+        "opengeos",
+        "open-geospatial-solutions"
+      ]
+    },
     "anthropic": {
       "label": "人类智能（Anthropic）",
       "aliases": [
