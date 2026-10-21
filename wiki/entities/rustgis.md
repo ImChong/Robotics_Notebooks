@@ -2,6 +2,7 @@
 type: entity
 project_id: rustgis
 project: https://rustgis.app/
+institutions: [opengeos]
 code: https://github.com/opengeos/RustGIS
 tags: [gis, geospatial, mapping, data-analysis, repo]
 status: complete
