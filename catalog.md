@@ -621,6 +621,7 @@
 - [Flightmare](wiki/entities/flightmare.md) — Flightmare**（uzh-rpg/flightmare）是苏黎世大学 **Robotics and Per `📅unknown` `[entity_page]`
 - [FloBaRoID（浮动基动力学辨识工具箱）](wiki/entities/flobaroid.md) — FloBaRoID**（*FLOating BAse RObot dynamical IDentification*，[kjyv/FloBaRoID](https://github.com/kjy `📅unknown` `[entity_page]`
 - [floorplan-3d：浏览器里的 2D/3D 户型装修设计器](wiki/entities/floorplan-3d-wy51ai.md) — floorplan-3d** 是无需构建步骤的纯前端户型设计器：用户在 2D 平面图里布置家具、测量或拆改墙体，并在同步的 Three.js 场景中查看与漫游；它不是自动识别任意上传户型图的 AI `📅unknown` `[entity_page]`
+- [Flora：机器人数据引擎模型套件](wiki/entities/flora-robotics-data-engine.md) — Flora 将机器人视频的时间分段、动作描述和奖励标注组合成模型套件，为预训练数据筛选、策略后训练与部署监测提供标签。 `📅unknown` `[entity_page]`
 - [FluidUse（Apple Silicon 本地计算机使用）](wiki/entities/fluiduse.md) — FluidUse**（GitHub，SPM `0.3.0+`）是 **FluidInference**  `📅unknown` `[entity_page]`
 - [FLUX 3 Action](wiki/entities/flux-3-action.md) — FLUX 3 Action** 是 Black Forest Labs 发布的 **world action mod `📅unknown` `[entity_page]`
 - [FluxVLA Engine（arXiv:2609.17210）](wiki/entities/fluxvla-engine.md) — FluxVLA Engine**（*A One-Stop VLA Engineering Platform for Embodied Intelligence*，[arXiv:2609.17210 `📅unknown` `[entity_page]`
@@ -1756,6 +1757,7 @@
 - [DR-WM（From Pixels to Executable Physics · arXiv:2610.17630）](wiki/entities/paper-dr-wm.md) — DR-WM**（*From Pixels to Executable Physics: Behavior-Grounded World Models for Embodied Action Con `📅unknown` `[entity_page]`
 - [Draft：参数化机器人设计探索工具](wiki/entities/paper-draft-parametric-robot-design.md) — Draft: A Parametric Tool for Robot Design Exploration**（David Nguyen、Marcelo Coelho、Sangbae Kim，MI `📅unknown` `[entity_page]`
 - [Dream-RSI：在演化世界中递归自改进](wiki/entities/paper-dream-rsi.md) — Dream-RSI**（arXiv:2609.14858，[dream-rsi.com](https://dream-rsi `📅unknown` `[entity_page]`
+- [DreamCan：长程操作的稀疏视觉规划](wiki/entities/paper-dreamcan-sparse-visual-planning.md) — DreamCan 从预训练视频模型产生稀疏视觉子目标，由低层 visuomotor 策略执行，以把长程操作规划拆成可达的小阶段。 `📅unknown` `[entity_page]`
 - [Dreamer（HMI P064）](wiki/entities/paper-dreamer-latent-imagination.md) — Dreamer**（*Dream to Control: Learning Behaviors by Latent Imagination*，2019，[arXiv:1912.01603](htt `📅unknown` `[entity_page]`
 - [DreamFly（arXiv:2608.12308）](wiki/entities/paper-dreamfly-aerial-vln.md) — DreamFly**（arXiv:2608.12308）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
 - [DreamHand](wiki/entities/paper-dreamhand.md) — DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recov `📅unknown` `[entity_page]`
@@ -3631,6 +3633,7 @@
 - [Rolling-WAM（滚动想象 · World Action Model）](wiki/entities/paper-rolling-wam.md) — Rolling-WAM**（*World Action Models with Rolling Imagination*，[arXiv:2609.30247](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [RoM-Nav：Learning Safe Humanoid Navigation from Reduced Order Models](wiki/entities/paper-rom-nav.md) — Learning Safe Humanoid Navigation from Reduced Order Models**（Compton / Olkin / Bena / Ames；[arXiv `📅unknown` `[entity_page]`
 - [RoMAN-Flow](wiki/entities/paper-roman-flow.md) — RoMAN-Flow: Taming Autoregressive Normalizing Flows for Offline Reinforcement Learning in Robotic  `📅unknown` `[entity_page]`
+- [Ropedia W0：跨本体运动-操作世界模型](wiki/entities/paper-ropedia-w0.md) — Ropedia W0 将人类第一视角经验与多种机器人数据编码到共享运动学接口中，学习跨本体预测运动和操作后果的世界模型。 `📅unknown` `[entity_page]`
 - [RopeFormer（arXiv:2609.23432）](wiki/entities/paper-ropeformer.md) — RopeFormer**（*Cross-Trial Adaptation from Interaction History for Dynamic Rope Manipulation*，加州大学伯 `📅unknown` `[entity_page]`
 - [ROS2SmolVLA：工业轻量臂上的本地小型 VLA](wiki/entities/paper-ros2smolvla.md) — ROS2SmolVLA**（*Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade  `📅unknown` `[entity_page]`
 - [DAgger 原论文（Ross et al., 2011）](wiki/entities/paper-ross-dagger.md) — A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning**（[PMLR v `📅unknown` `[entity_page]`
@@ -4643,6 +4646,7 @@
 - [SRD：latent 世界模型的状态–读数解耦](wiki/entities/paper-state-readout-decoupling.md) — State–Readout Decoupling (SRD)**（PDF，香港大学 Ag `📅unknown` `[entity_page]`
 - [Stay Seated：G1 被动椅上的全向坐姿移动](wiki/entities/paper-stay-seated.md) — Stay Seated**（*Learning Omnidirectional Humanoid Locomotion on a Passive Mobile Chair with Casters `📅unknown` `[entity_page]`
 - [STEAM：自监督时序 Ensemble Advantage 建模](wiki/entities/paper-steam-advantage-modeling.md) — STEAM**（*Self-Supervised Temporal Ensemble Advantage Modeling for Real-World Robot Learning*，[arXi `📅unknown` `[entity_page]`
+- [SteerAct：少样本时间维动作引导](wiki/entities/paper-steeract-few-shot-temporal-steering.md) — SteerAct 用少量成功与失败 rollout 找到区分任务结果的稀疏特征，再按该特征的时间演化引导冻结动作模型的推理激活。 `📅unknown` `[entity_page]`
 - [Steertuning：用几条人类视频给策略「微调 + 转向」](wiki/entities/paper-steertuning.md) — Steertuning 先在大规模第一人称人类交互视频上预训练一个扩散策略，部署新任务时仅用约 5 条人类示范做 LoRA 微调，并在反向采样的每一步把动作朝与当前场景最相似的那条示范拉近。 `📅unknown` `[entity_page]`
 - [Stein-ADMM（arXiv:2609.28299）](wiki/entities/paper-stein-admm-contact.md) — Contact-Implicit Stein Projected ADMM for Discovery of Diverse Contact-Rich Manipulation Strategie `📅unknown` `[entity_page]`
 - [StellaVLA（结构化 In-Context 示范 · VLA）](wiki/entities/paper-stellavla-structured-icl-vla.md) — StellaVLA**（*In-Context Structured Demonstration for Generalizable Vision-Language-Action Models*， `📅unknown` `[entity_page]`
