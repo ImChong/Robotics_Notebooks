@@ -4,7 +4,7 @@
 - **类型：** site / project-page
 - **URL：** <https://grange007.github.io/HAF/>
 - **入库日期：** 2026-08-20
-- **配套论文：** [HAF（arXiv:2608.16837）](https://arxiv.org/abs/2608.16837) — 归档见 [`sources/papers/haf_arxiv_2608_16837.md`](../papers/haf_arxiv_2608_16837.md)
+- **配套论文：** [HAF（arXiv:2608.16837）](https://arxiv.org/abs/2608.16837)；[HAF-VLA（arXiv:2610.26584）](https://arxiv.org/abs/2610.26584) — 后者聚焦 HAF-VLA 三阶段动作生成，归档见 [`sources/papers/haf_vla_arxiv_2610_26584.md`](../papers/haf_vla_arxiv_2610_26584.md)
 - **代码：** 截至入库日项目页 **未列出 GitHub / Hugging Face / 权重下载链接**（仅 arXiv 与演示视频）
 
 ## 一句话摘要
@@ -15,7 +15,7 @@
 
 - **核心叙事：** 把现成通才 flow-matching VLA 迁移到人形全身 loco-manipulation，无需大规模人形专属预训练；**HAF-VLA** 按运动学依赖分三阶段去噪（locomotion+head → +waist → +manipulation），**HAF-Steer** 在冻结生成器上用 flow reversal + DCT 压缩噪声子空间做 SAC 后训练。
 - **演示板块：** Laundry Loading、Clothes Retrieval、Table Tidy、Basket Transfer、Toy Storage、Ball Tossing、Box Transfer 七任务真机视频；OOD 椅子干扰与起始位姿偏移；HAF-Steer 在 Toy Storage / Basket Transfer 上的离线–在线增益曲线。
-- **资源链接：** arXiv（2608.16837）、PDF；**无 Code 按钮或仓库 URL**。
+- **资源链接：** arXiv（2608.16837、2610.26584）、PDF；**无 Code 按钮或仓库 URL**。
 
 ## 开源核查结论
 
