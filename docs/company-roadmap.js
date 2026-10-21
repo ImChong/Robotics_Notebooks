@@ -150,7 +150,13 @@
   }
 
   function render(data) {
-    var companies = Array.isArray(data && data[KIND.list]) ? data[KIND.list] : [];
+    var companies = Array.isArray(data && data[KIND.list]) ? data[KIND.list].slice() : [];
+    if (KIND.list === 'labs') {
+      // 与首页一致：机构选择、默认页与前后导航都使用成立时间升序。
+      companies.sort(function (a, b) {
+        return (Number(a.founded_year) || Infinity) - (Number(b.founded_year) || Infinity);
+      });
+    }
     var lenses = (data && data.lenses) || {};
     mount.classList.remove('data-loading');
     if (!companies.length) {

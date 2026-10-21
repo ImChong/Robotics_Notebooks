@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-21
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ./retrieval-augmented-generation.md
@@ -37,6 +37,7 @@ sources:
   - ../../sources/papers/scientisttwo_arxiv_2609_19644.md
   - ../../sources/sites/scientist-two-github-io.md
   - ../../sources/papers/paper2agent_nature_2026.md
+  - ../../sources/papers/autonomous_ai_discovery_busy_beaver_arxiv_2610_22603.md
   - ../../sources/repos/paper2agent.md
 ---
 
@@ -122,6 +123,8 @@ flowchart LR
 3. **人机共治** 优于完全自主 — 人保留实验设计、论证、问责；AI 减机械摩擦。
 4. **Explore → Execute → Verify 分层** — 搜索/检索、工具执行、执行反馈或人类检查缺一不可。
 5. **治理重心** 从检测 AI 文本转向 **披露、归因、责任** — 作者对 claim、citation、rebuttal 承诺与公开摘要负责。
+
+**形式化数学发现案例（arXiv:2610.22603v2）：** Gemini agent 流程在 BB(6) 中为 11 台未解决机器发现紧凑的执行加速规则，并用 Lean 形式化验证；机器是否停机仍未解决，“Cryptids”是作者的暂定称呼。它说明生成、猜想与形式证明可以分层，但结果属于特定数学领域，不能外推为机器人或通用科研能力。见[论文归档](../../sources/papers/autonomous_ai_discovery_busy_beaver_arxiv_2610_22603.md)。
 
 ## 与本库维护的对照
 

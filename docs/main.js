@@ -6969,7 +6969,7 @@
     });
   }
 
-  // 实验室路线独立卡：默认展示前 4 个，其余可展开。
+  // 实验室按成立年份从早到晚排序，折叠态优先展示最早的 4 个。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
@@ -6986,6 +6986,16 @@
       : '展开全部 ' + labLinks.querySelectorAll('a').length + ' 个实验室 ↓';
   }
   if (labToggle && labLinks) {
+    var labItems = Array.prototype.slice.call(labLinks.querySelectorAll('a'));
+    labItems.sort(function (a, b) {
+      return (Number(a.getAttribute('data-founded-year')) || Infinity)
+        - (Number(b.getAttribute('data-founded-year')) || Infinity);
+    });
+    labItems.forEach(function (link, index) {
+      labLinks.appendChild(link);
+      link.toggleAttribute('data-lab-extra', index >= 4);
+      link.hidden = index >= 4;
+    });
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {
       var expanded = labToggle.getAttribute('aria-expanded') !== 'true';
