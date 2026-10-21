@@ -771,6 +771,7 @@
 - [OpenPi π₀.₅ on Jetson Thor（官方部署教程）](wiki/entities/jetson-openpi-pi05-on-thor.md) — Jetson AI Lab](https://www.jetson-ai-lab.com/tutorials/openpi_on_thor/) 教程 **OpenPi π₀.₅ on Jetson  `📅unknown` `[entity_page]`
 - [NVIDIA Jetson Orin NX](wiki/entities/jetson-orin-nx.md) — Jetson Orin NX** 是 NVIDIA **Jetson Orin** 产品线中的边缘 AI 模组形态，面向移动机器人机载推理：在功耗与体积约束下运行 CUDA/TensorRT 加速 `📅unknown` `[entity_page]`
 - [Linxi "Jim" Fan（范林熹）](wiki/entities/jim-fan.md) — Linxi "Jim" Fan** 是 **NVIDIA 具身智能与通才 agent** 方向的 **PI 级研究科学家**：与 Yuke Zhu 共 `📅unknown` `[entity_page]`
+- [Jujutsu（jj）](wiki/entities/jujutsu.md) — Jujutsu**（命令名 `jj`，读作 “jujutsu”）是一个以 Git 互通为目标的版本控制系统。它把工作区、change 与可追溯操作作为主要交互模型，并可使用现有 Git 仓库作为存 `📅unknown` `[entity_page]`
 - [Jumper 六足机器人与训练部署栈](wiki/entities/jumper-crab-robot.md) — Jumper** 是 KingKongRobotics 发布的仿蟹式六足机器人和配套训练工程。其主要价值是把机器人模型、并行仿真、任务奖励、策略训练、导出契约和控制器打包放进可检查的开源工作流，而 `📅unknown` `[entity_page]`
 - [Scientific Agents（K-Dense-AI/scientific-agents）](wiki/entities/k-dense-ai-scientific-agents.md) — Scientific Agents（K-Dense-AI/scientific-agents）是以 AGENTS.md 配置集合教代理按资深科学家/工程师方式思考，属于专业人设与工作规则示例，不是专用 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`
