@@ -1407,10 +1407,13 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .home-entry-route-links {
   display: grid;
+  /* 高度动画只裁切外层卡片，不压缩列表；否则短列表会临时出现滚动条，
+     胶囊列宽先缩小再恢复。收起时也不让 auto 外边距把已有按钮推向下方。 */
+  flex-shrink: 0;
   /* 按钮含英文副行「(English)」：170px 让 >860px 时排 4 列，最长英文名也能单行放下 */
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
-  margin-top: auto;
+  margin-top: 0;
   padding-top: 2px;
 }
 .home-entry-route-links .btn-secondary {
