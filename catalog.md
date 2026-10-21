@@ -1911,6 +1911,7 @@
 - [Fetch My Beer（arXiv:2609.18119）](wiki/entities/paper-fetch-my-beer.md) — Fetch My Beer**（*Fetch My Beer: Synthetic-to-real Hierarchical Policy for Smooth Pick-and-place*， `📅unknown` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan**（*Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences*，[arXiv `📅unknown` `[entity_page]`
 - [Fiatlux：G1 攀梯换灯长时程基准](wiki/entities/paper-fiatlux.md) — Fiatlux 把搬梯、上下梯、双手换灯与易碎物品处置放进同一维护任务，用十二个子任务定位失败环节；它提供评测环境，完整自主换灯仍未解决。 `📅unknown` `[entity_page]`
+- [FIBER：动作对齐潜空间规划](wiki/entities/paper-fiber-action-aligned-latent-planning.md) — FIBER**（*Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation*，[arXiv:2610.2467 `📅unknown` `[entity_page]`
 - [What 30,000 Hours of Ego-centric Video Does Not Teach（Fidelity Gap）](wiki/entities/paper-fidelity-gap-egocentric-video.md) — What 30,000 Hours of Ego-centric Video Does Not Teach**（arXiv:2610.12464，项目名常称 **Fidelity Gap**）研究 `📅unknown` `[entity_page]`
 - [FIERCE（arXiv:2609.18651）](wiki/entities/paper-fierce.md) — FIERCE**（*From Generalist Robot Policies to Fast Specialists via Progress–Failure Feedback*，[arXiv `📅unknown` `[entity_page]`
 - [面向安全人形全身跟踪的过滤器感知微调](wiki/entities/paper-filter-aware-fine-tuning-for.md) — Filter-Aware Fine-Tuning for Safe Humanoid Whole-Body Tracking**（[arXiv:2610.02341](https://arxiv. `📅unknown` `[entity_page]`
