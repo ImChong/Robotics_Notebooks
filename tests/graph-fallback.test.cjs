@@ -19,6 +19,7 @@ function harness(failure) {
     syncFilters() { if (failure === 'cleanup') throw new Error('filter failure'); },
     // 进入 3D 时按侧栏 / 固定卡片状态重放或清除高亮（B20）
     clearSidebarHighlight() {},
+    syncRouteBadges() {},
   };
   const context = vm.createContext({
     console: { warn() {} }, spatialViewMode: '2d', timelineAnimating: false,
