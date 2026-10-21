@@ -5442,6 +5442,13 @@
       const hub = nodeById2D.get(DEPTH_META[currentDepth]?.wikiPath);
       const order = currentDepth === 'all' ? [] : (hub?.route_order || []);
       routeNodeIds = new Set(order);
+      // 亮起但不在正文里的节点（按 ids / 社区 / 关键词命中）用支线接上，保证亮起即相连。
+      let extra = [];
+      if (order.length) {
+        const lit = new Set(nodes.filter(nodeMatchesDepth).map(n => n.id));
+        extra = window.RNGraphRouteTrace.branches(order, lit, adjacency2D,
+          id => nodeById2D.get(id)?.community);
+      }
       let activeBtn = null;
       if (topicChipsEl) {
         topicChipsEl.querySelectorAll('.filter-depth-chip').forEach(btn => {
@@ -5454,7 +5461,7 @@
       updateTopicIntroBanner();
       applyFilters();
       updateFilterCount();
-      routeTrace.setRoute(order);
+      routeTrace.setRoute(order, extra);
       if (currentDepth !== 'all') fitToVisibleNodes();
       else fitToScreen();
     }

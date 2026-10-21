@@ -1,76 +1,62 @@
 (function () {
   'use strict';
 
-  const mix = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
   const distance = (a, b) => Math.hypot(b.x - a.x, b.y - a.y);
-  function split(c, t) {
-    const a = mix(c[0], c[1], t), b = mix(c[1], c[2], t), d = mix(c[2], c[3], t);
-    const e = mix(a, b, t), f = mix(b, d, t), p = mix(e, f, t);
-    return [[c[0], a, e, p], [p, f, d, c[3]]];
-  }
-  function portion(c, from, to) {
-    const left = to < 1 ? split(c, to)[0] : c;
-    return from > 0 && to > 0 ? split(left, from / to)[1] : left;
-  }
-  function tangent(prev, p, next) {
-    const v = { x: next.x - prev.x, y: next.y - prev.y };
-    const len = Math.hypot(v.x, v.y);
-    const cap = Math.min(distance(prev, p) || Infinity, distance(p, next) || Infinity) * 0.3;
-    const scale = len ? Math.min(0.16, cap / len) : 0;
-    return { x: v.x * scale, y: v.y * scale };
-  }
 
-  // 平滑切线穿过节点；弧长采样让长短边之间保持连续速度，不按每条边跳步。
-  function geometry(points) {
+  // 直线段按屏幕长度累计：长短边之间保持匀速。pairs 中 cont 表示接续上一段（同一条折线），
+  // 端点为 null（节点被筛掉）的段留缺口，不把前后节点误接起来。
+  function geometry(pairs) {
     const segments = [];
     let total = 0;
-    for (let i = 0; i < points.length - 1; i++) {
-      const a = points[i], b = points[i + 1];
-      if (!a || !b || distance(a, b) < 0.01) continue;
-      const va = tangent(points[i - 1] || a, a, b);
-      const vb = tangent(a, b, points[i + 2] || b);
-      const c = [a, { x: a.x + va.x, y: a.y + va.y },
-        { x: b.x - vb.x, y: b.y - vb.y }, b];
-      const lengths = [0];
-      let last = a;
-      for (let j = 1; j <= 24; j++) {
-        const p = split(c, j / 24)[0][3];
-        lengths.push(lengths[j - 1] + distance(last, p));
-        last = p;
-      }
-      const length = lengths[24];
-      segments.push({ c, lengths, length, start: total, run: i });
+    pairs.forEach(([a, b, cont], idx) => {
+      if (!a || !b) return;
+      const length = distance(a, b);
+      if (length < 0.01) return;
+      segments.push({ a, b, length, start: total, idx, cont: !!cont });
       total += length;
-    }
+    });
     return { segments, total };
-  }
-  function parameter(segment, length) {
-    if (length <= 0) return 0;
-    if (length >= segment.length) return 1;
-    const samples = segment.lengths;
-    for (let i = 1; i < samples.length; i++) {
-      if (samples[i] < length) continue;
-      return (i - 1 + (length - samples[i - 1]) / (samples[i] - samples[i - 1] || 1)) / 24;
-    }
-    return 1;
   }
   const xy = p => p.x.toFixed(2) + ',' + p.y.toFixed(2);
   function slice(g, from, to) {
-    let d = '', tip = null, lastRun = -2;
+    let d = '', tip = null, lastIdx = -2;
     for (const s of g.segments) {
-      if (!s.length || s.start >= to || s.start + s.length <= from) continue;
-      const a = parameter(s, Math.max(0, from - s.start));
-      const b = parameter(s, Math.min(s.length, to - s.start));
-      const c = portion(s.c, a, b);
-      if (s.run !== lastRun + 1 || a > 0) d += 'M' + xy(c[0]);
-      d += 'C' + xy(c[1]) + ' ' + xy(c[2]) + ' ' + xy(c[3]);
-      tip = c[3];
-      lastRun = s.run;
+      if (s.start >= to || s.start + s.length <= from) continue;
+      const t0 = Math.max(0, from - s.start) / s.length;
+      const t1 = Math.min(s.length, to - s.start) / s.length;
+      const p0 = { x: s.a.x + (s.b.x - s.a.x) * t0, y: s.a.y + (s.b.y - s.a.y) * t0 };
+      const p1 = { x: s.a.x + (s.b.x - s.a.x) * t1, y: s.a.y + (s.b.y - s.a.y) * t1 };
+      if (!(s.cont && s.idx === lastIdx + 1) || t0 > 0) d += 'M' + xy(p0);
+      d += 'L' + xy(p1);
+      tip = p1;
+      lastIdx = s.idx;
     }
     return { d, tip };
   }
 
-  // 独立叙事层：主题蓝细线、柔光尾迹、流动微光，不向知识图或力模拟加边。
+  // 亮起节点比正文内链多（路线还按 ids / 社区 / 关键词命中）。从主链出发沿真实邻接边宽度优先，
+  // 每个未覆盖节点接到发现它的节点；与亮起集合无边相连的，退而接到主链中同社区或起点。
+  function branches(order, lit, adjacency, communityOf) {
+    const reached = new Set(order.filter(id => lit.has(id)));
+    const queue = [...reached], out = [];
+    for (let i = 0; i < queue.length; i++) {
+      const neighbors = Array.from(adjacency.get(queue[i]) || []).sort();
+      for (const id of neighbors) {
+        if (!lit.has(id) || reached.has(id)) continue;
+        reached.add(id); queue.push(id); out.push([queue[i], id]);
+      }
+    }
+    const byCommunity = new Map();
+    order.forEach(id => { const c = communityOf(id); if (c && !byCommunity.has(c)) byCommunity.set(c, id); });
+    Array.from(lit).sort().forEach(id => {
+      if (reached.has(id)) return;
+      out.push([byCommunity.get(communityOf(id)) || order[0], id]);
+      reached.add(id);
+    });
+    return out;
+  }
+
+  // 独立叙事层：主题蓝直线、柔光尾迹、流动微光，不向知识图或力模拟加边。
   function create(options) {
     const svg = options.svg;
     const ns = 'http://www.w3.org/2000/svg';
@@ -94,7 +80,7 @@
       stroke: 'var(--route-trace-color, var(--accent, #5b9cf6))', 'stroke-width': 1.5, 'stroke-opacity': 0.75 });
     const headGlow = make('circle', { r: 8, fill: 'var(--route-trace-color, var(--accent, #5b9cf6))', 'fill-opacity': 0.16 });
     const head = make('circle', { class: 'route-trace-head', r: 3, fill: 'var(--route-trace-glint, #d8e8fd)' });
-    let ids = [], progress = 0, startedAt = null, raf = 0, duration = 0;
+    let ids = [], branches = [], progress = 0, startedAt = null, raf = 0, duration = 0;
     let cachedPoints = [], cachedGeometry = geometry([]);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     function position(el, p) {
@@ -107,15 +93,18 @@
       return p && Number.isFinite(p.x) && Number.isFinite(p.y) ? p : null;
     }
     function render() {
-      const on = ids.length > 1 && options.isActive();
+      const on = (ids.length > 1 || branches.length) && options.isActive();
       svg.style.display = on ? '' : 'none';
       svg.classList.toggle('route-trace-reduced', reducedMotion.matches);
       if (!on) return;
       const points = ids.map(point);
-      if (points.length !== cachedPoints.length || points.some((p, i) =>
+      const ends = branches.map(([parent, child]) => [point(parent), point(child)]);
+      const flat = points.concat(...ends);
+      if (flat.length !== cachedPoints.length || flat.some((p, i) =>
         !!p !== !!cachedPoints[i] || p && (p.x !== cachedPoints[i].x || p.y !== cachedPoints[i].y))) {
-        cachedPoints = points;
-        cachedGeometry = geometry(points);
+        cachedPoints = flat;
+        cachedGeometry = geometry(points.slice(1).map((b, i) => [points[i], b, true])
+          .concat(ends.map(([a, b]) => [a, b, false])));
       }
       // 起落柔和，中段近匀速；始终沿同一条连续曲线前进。
       const eased = progress * progress * (3 - 2 * progress);
@@ -137,16 +126,19 @@
       render();
       if (progress < 1) raf = window.requestAnimationFrame(frame);
     }
-    function setRoute(nextIds) {
+    // ids：正文提及顺序的主链；extra：[父, 子] 支线，让同样亮起却不在正文里的节点也被连到。
+    function setRoute(nextIds, extra) {
       if (raf) window.cancelAnimationFrame(raf);
       raf = 0;
       ids = Array.from(new Set(nextIds));
+      branches = extra || [];
+      cachedPoints = [];
       startedAt = null;
       progress = reducedMotion.matches ? 1 : 0;
       render();
       // 以屏幕弧长计时，短路线舒缓，长路线保留完整观看节奏。
       duration = Math.max(2800, Math.min(14000, cachedGeometry.total / 220 * 1000));
-      if (ids.length > 1 && progress < 1) raf = window.requestAnimationFrame(frame);
+      if ((ids.length > 1 || branches.length) && progress < 1) raf = window.requestAnimationFrame(frame);
     }
     function onMotionChange() {
       if (!reducedMotion.matches) return;
@@ -154,7 +146,7 @@
       raf = 0; progress = 1; render();
     }
     reducedMotion.addEventListener('change', onMotionChange);
-    return { setRoute, render, getState: () => ({ ids: ids.slice(), progress, animating: !!raf }),
+    return { setRoute, render, getState: () => ({ ids: ids.slice(), branches: branches.length, progress, animating: !!raf }),
       destroy: () => {
         if (raf) window.cancelAnimationFrame(raf);
         reducedMotion.removeEventListener('change', onMotionChange);
@@ -162,5 +154,5 @@
       },
     };
   }
-  window.RNGraphRouteTrace = { create, geometry, slice };
+  window.RNGraphRouteTrace = { create, geometry, slice, branches };
 })();
