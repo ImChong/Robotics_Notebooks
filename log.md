@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-21] ingest | PrismWAM
+
+- 归档论文、项目页与官方代码入口，并核对代码、训练配方及基准权重已公开。
+- 新增 PrismWAM 实体页，补充 WAM 概念页：记录语义目标与深度物理 rollout 解耦的设计、报告指标及复现边界。
+
 ## [2026-10-20] lint | 全量 lint 修复：18 条预警清零（1 陈旧页 + 17 信息型）—— visual-servoing 回链 OptiSight；9 页补评测/感知栈枢纽回链；5 个 dataset 补模态维度；JOGA 补 venue；MemT 补评测/对比区块；Evo-DexBench 改写绝对化措辞
 
 ## [2026-10-20] ingest | SKY-001 工程世界模型（官方博客与产品页）
