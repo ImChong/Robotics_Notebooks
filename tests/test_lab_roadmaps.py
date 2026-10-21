@@ -77,6 +77,8 @@ def test_home_entry_links_match_data_order() -> None:
     assert keys == [lab["key"] for lab in DATA["labs"]]
     # 独立卡片默认展示四个，后续入口可展开，避免新增路线撑长首页。
     tags = re.findall(r'<a [^>]*href="lab\.html\?id=[^"]+"[^>]*>', card)
+    years = [int(re.search(r'data-founded-year="(\d+)"', tag).group(1)) for tag in tags]
+    assert years == [lab["founded_year"] for lab in DATA["labs"]]
     assert len(tags) > 4
     assert all("hidden" not in tag for tag in tags[:4])
     assert all("data-lab-extra hidden" in tag for tag in tags[4:])
