@@ -21,7 +21,7 @@ function harness(failure) {
     clearSidebarHighlight() {},
   };
   const context = vm.createContext({
-    console: { warn() {} }, spatialViewMode: '2d', timelineAnimating: false, routeTrace: null,
+    console: { warn() {} }, spatialViewMode: '2d', timelineAnimating: false,
     window: { RNGraph3D: { isAvailable: () => failure !== 'library' }, alert: (s) => alerts.push(s) },
     graph3dView: null, graphCanvas3d: { hidden: true }, graph3dHoverNode: null,
     viewMode2dBtn: button(), viewMode3dBtn: button(), graphHint2dEl: {}, graphHint3dEl: {},

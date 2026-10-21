@@ -525,7 +525,6 @@
         // 力引擎推进时节点世界坐标在变 → 质心缓存失效
         invalidateCommunityCentroids3D();
         syncCommunityLabelPositions();
-        if (opts.onPositionsChange) opts.onPositionsChange();
         if (!areNodeLabelsVisible()) return;
         maybeMarkLabelsLayoutReady();
         syncLabelPositions();
@@ -571,7 +570,6 @@
           cameraLabelSyncRaf = 0;
           if (!graph || container.hidden) return;
           syncCommunityLabelPositions();
-          if (opts.onPositionsChange) opts.onPositionsChange();
           if (areNodeLabelsVisible()) syncLabelPositions();
         });
       });
@@ -784,7 +782,6 @@
       syncLabelPositions();
       syncLabelStyles();
       syncCommunityLabelPositions();
-      if (opts.onPositionsChange) opts.onPositionsChange();
     }
 
     // 连线记录只建一次并在每次 graphData 复用：库的数据映射按对象身份 diff，
@@ -1870,18 +1867,6 @@
     }
 
     return {
-      // 路线叙事层使用同一相机投影；不向 3D 力模拟添加虚构知识边。
-      projectNode: function (id) {
-        var n = nodeById.get(id);
-        if (!graph || container.hidden || !n || n.x == null) return null;
-        var camera = graph.camera();
-        var z = n.z || 0;
-        var forward = camera.getWorldDirection(camera.position.clone());
-        var dot = (n.x - camera.position.x) * forward.x
-          + (n.y - camera.position.y) * forward.y + (z - camera.position.z) * forward.z;
-        if (dot <= 0) return null;
-        return graph.graph2ScreenCoords(n.x, n.y, z);
-      },
       show: function () {
         container.hidden = false;
         showLabelLayer();

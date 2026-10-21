@@ -55,10 +55,8 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
-from urllib.parse import unquote, urlsplit
 
 from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
-from markdown_it import MarkdownIt
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
@@ -1255,36 +1253,6 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     return sorted(set(targets), key=lambda path: str(path.relative_to(REPO_ROOT)))
 
 
-def extract_route_order(content: str, source_path: Path) -> list[str]:
-    """路线起点 + 正文内链首次提及顺序；不使用按字母排序的图谱邻接表。"""
-    body = strip_frontmatter(content)
-    # Markdown token 顺序即读者提及顺序，天然跳过代码、注释并支持引用式链接。
-    tokens = MarkdownIt("commonmark").enable("table").parse(body)
-    hrefs = [
-        str(child.attrGet("href") or "")
-        for token in tokens
-        for child in token.children or []
-        if child.type == "link_open"
-    ]
-    hub_id = str(source_path.relative_to(REPO_ROOT))
-    order = [hub_id]
-    seen = {hub_id}
-    for href in hrefs:
-        url = urlsplit(href)
-        if url.scheme or url.netloc or not url.path:
-            continue
-        target = (source_path.parent / unquote(url.path)).resolve()
-        if not target.is_file() or target.suffix != ".md":
-            continue
-        if not any(target.is_relative_to(root) for root in GRAPH_CONTENT_DIRS):
-            continue
-        target_id = str(target.relative_to(REPO_ROOT))
-        if target_id not in seen:
-            order.append(target_id)
-            seen.add(target_id)
-    return order
-
-
 def build_undirected_adjacency(
     node_ids: list[str], edges: list[dict[str, str]]
 ) -> dict[str, set[str]]:
@@ -1680,8 +1648,6 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         institutions = derive_node_institutions(content)
         if institutions:
             node["institutions"] = institutions
-        if node_type == "roadmap_page":
-            node["route_order"] = extract_route_order(content, page)
         nodes.append(node)
 
         for target in internal_links:
@@ -1693,11 +1659,6 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 seen_edges.add(key)
                 edges.append({"source": page_id, "target": target_id})
 
-    # README 等现存文件未必是图谱节点；动画只能指向真实节点。
-    node_ids = {node["id"] for node in nodes}
-    for node in nodes:
-        if "route_order" in node:
-            node["route_order"] = [key for key in node["route_order"] if key in node_ids]
     return nodes, edges
 
 
