@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-20
+updated: 2026-10-21
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/rhoda-ai.md
@@ -109,6 +109,7 @@ related:
   - ../entities/paper-wing-world-action-spectral-guidance.md
   - ../entities/paper-thinker-wm-unified-world-model.md
   - ../entities/paper-onewm-unified-causal-training.md
+  - ../entities/paper-prismwam.md
 sources:
   - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -160,6 +161,7 @@ sources:
   - ../../sources/papers/uniwam_arxiv_2610_02054.md
   - ../../sources/repos/uniwam.md
   - ../../sources/papers/onewm_arxiv_2610_21095.md
+  - ../../sources/papers/prismwam_arxiv_2610_26564.md
   - ../../sources/papers/r2_wam_visual_representations_arxiv_2610_13024.md
   - ../../sources/sites/r2-wam-visual-representations-project.md
 ---
@@ -177,6 +179,8 @@ sources:
 多模态世界预测实例：[Thinker-WM](../entities/paper-thinker-wm-unified-world-model.md) 将 RGB、度量深度与机器人动作纳入统一动态表征。
 
 **OneWM**（[arXiv:2610.21095](../entities/paper-onewm-unified-causal-training.md)）进一步在因果视频—动作模型中混合干净、部分干净和带噪动作条件，检验前向世界预测与动作生成的互相增益。
+
+**PrismWAM**（[arXiv:2610.26564](../entities/paper-prismwam.md)）把外观语义目标与动作相关物理状态分开：预测目标 RGB 提供语义约束，未来深度 rollout 作为生成动作块的中间条件；官方 README 提供代码、训练配方及 RoboTwin 2.0、RoboDojo、LIBERO 权重。
 
 ## 英文缩写速查
 
