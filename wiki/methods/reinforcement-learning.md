@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-21
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -48,6 +48,7 @@ related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/skild-physical-self-play.md
   - ../entities/ai-engineering-from-scratch.md
+  - ../entities/paper-minute-scale-microrobot-navigation.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -181,6 +182,7 @@ flowchart TD
 - 人形机器人全身控制
 - 机械臂操作
 - 多指灵巧手操作
+- **微型机器人导航：** [Minute-scale training for microrobot navigation](../entities/paper-minute-scale-microrobot-navigation.md) 通过向量化血管仿真和 TSR 奖励，将导航策略训练压缩至 10 分钟以内，并在不同微机器人形态与未见场景中验证零样本迁移。
 
 ## 优势
 
