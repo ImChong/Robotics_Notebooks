@@ -409,6 +409,19 @@
       overflow: hidden;
       pointer-events: none;
       z-index: 3;
+      --route-trace-color: #fbbf24;
+      --route-trace-glint: #fff1c2;
+    }
+    [data-theme="light"] #graph-route-trace {
+      --route-trace-color: #b45309;
+      --route-trace-glint: #d97706;
+    }
+    .route-trace-halo { filter: blur(1.5px); }
+    .route-trace-flow { animation: route-trace-flow 1.8s linear infinite; }
+    @keyframes route-trace-flow { to { stroke-dashoffset: -30; } }
+    #graph-route-trace.route-trace-reduced .route-trace-flow { display: none; animation: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .route-trace-flow { display: none; animation: none; }
     }
     .graph-3d-labels {
       position: absolute;
