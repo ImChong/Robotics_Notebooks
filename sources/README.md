@@ -238,6 +238,7 @@
 | [x] [midas-hand-org.md](repos/midas-hand-org.md) | MIDAS Hand：UCLA 开源直驱触觉灵巧手官方组织（API/MuJoCo/重定向/遥操作/PCB） |
 | [x] [ruka-v2.md](repos/ruka-v2.md) | RUKA-v2：NYU 全开源腱驱动灵巧手官方代码（CAD/控制器/校准/遥操作，MIT） |
 | [x] [rpl_cs_ucl_sds.md](repos/rpl_cs_ucl_sds.md) | RPL-CS-UCL/SDS：See it, Do it, Sorted 四足单视频技能官方实现（与 E-SDS 同系） |
+| [x] [rpl-amazon-far.md](repos/rpl-amazon-far.md) | Amazon FAR RPL 官方代码：分地形专家训练、多深度 DAgger 蒸馏与 MuJoCo sim2sim（arXiv:2602.03002；Apache-2.0） |
 | [x] [roboto_origin.md](repos/roboto_origin.md) | Roboparty 人形机器人开源聚合入口（硬件/训练/部署/描述/固件） |
 | [x] [optimal_control_16_745.md](repos/optimal_control_16_745.md) | Optimal-Control-16-745：CMU 16-745 讲义 notebook GitHub 组织（配套 Optimal Control 2025 录像） |
 | [x] [omg-tsinghua-mars-lab.md](repos/omg-tsinghua-mars-lab.md) | tsinghua-mars-lab/OMG：omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker、训练/推理/部署；配套项目页） |

@@ -1,6 +1,9 @@
 ---
 
 type: entity
+project_id: rpl-robust-humanoid-perceptive-locomotion
+project: https://rpl-humanoid.github.io/
+code: https://github.com/amazon-far/RPL
 tags:
   - paper
   - humanoid
@@ -18,7 +21,7 @@ tags:
   - stanford
   - berkeley
 status: complete
-updated: 2026-10-06
+updated: 2026-10-21
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -41,6 +44,7 @@ related:
 sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/sites/rpl-humanoid-github-io.md
+  - ../../sources/repos/rpl-amazon-far.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
 summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程图分地形专家（FALCON 双智能体 PPO）经 DAgger 蒸馏为多视角深度 Transformer 统一策略；DFSV 与 RSM 鲁棒双向行走与未见窄地形；Warp 多深度渲染约 5× 加速；G1 真机带 2 kg 载荷穿越坡/楼梯/垫脚石。"
 ---
@@ -76,7 +80,7 @@ summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程�
 | **平台** | Unitree G1；真机前后 ZED 2i 深度相机（48×27 下采样） |
 | **任务** | 复杂地形 **双向/多向** 感知行走；**2 kg 载荷** loco-manipulation |
 | **仿真** | IsaacGym；Stage 1 4×L40S / 4096×4 env / 24 h；Stage 2 8×L40S / 1024×8 env / 12 h |
-| **开源** | **待发布** — 项目页标 **Code (Coming Soon)**，截至 2026-08-22 无官方可运行仓库 |
+| **开源** | **已发布** — [amazon-far/RPL](https://github.com/amazon-far/RPL)，Apache-2.0；包含专家训练、多深度蒸馏与 MuJoCo sim2sim |
 
 ## 为什么重要
 
@@ -151,15 +155,49 @@ flowchart TB
 | 深度渲染 | 1024 env × L40S：RPL **1.3–1.9 s/iter** vs IsaacSim Warp **3.5–9.1 s**（Table I） |
 | 多相机 | 垫脚石上 **2 相机** 达专家级双向性能；单下视相机明显掉点（Table II） |
 | 消融 | **RSM** 关键于未见窄宽度；**DFSV** 关键于非对称多视角（如前相机楼梯、后相机垫脚石） |
-| 代码 | 项目页 **Code (Coming Soon)**，尚无 URL |
+| 代码 | 官方仓库提供专家训练、多深度学生蒸馏与 MuJoCo sim2sim；详见下方源码运行时序图 |
 
-## 开源状态（项目页核查，2026-08-22）
+## 开源状态（官方仓库核查，2026-10-21）
 
 | 资源 | 状态 |
 |------|------|
-| RPL 官方训练/部署仓 | **待发布** — 项目页标 **Code (Coming Soon)**，尚无可点击 GitHub 链接 |
-| 相关索引仓 | [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA)（资源列表，**非** RPL 可运行训练代码） |
-| 源码运行时序图 | **不适用**（待官方仓库上线后补） |
+| RPL 官方仓 | [amazon-far/RPL](https://github.com/amazon-far/RPL)，Apache-2.0；公开分地形专家训练、多深度蒸馏与 MuJoCo sim2sim |
+| 训练后端 | IsaacGym；仓库以 `thirdparty/holosoma/` 子模块承载 Holosoma 核心 |
+| 发布边界 | README 标注 research release only；Holosoma 主线集成另行推进 |
+
+## 源码运行时序图
+
+训练使用 IsaacGym 专家生成器和多深度学生蒸馏器；README 建议专家训练 4 GPU、学生训练 8 GPU。蒸馏 checkpoint 同目录导出 ONNX，供 sim2sim 学生策略加载。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as Researcher
+  participant RPL as run_expert.sh / run_distill.sh
+  participant Holo as thirdparty/holosoma
+  participant Model as Checkpoints / ONNX
+  User->>RPL: Select terrain expert and launch training
+  RPL->>Holo: Configure IsaacGym training
+  Holo-->>Model: Save teacher checkpoints
+  User->>RPL: Launch multi-depth distillation
+  RPL->>Holo: Load teachers and train student
+  Holo-->>Model: Save student and export model_XXXXX.onnx
+```
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as Researcher
+  participant Sim as rpl_sim2sim/run_sim.sh
+  participant Policy as run_policy.sh / holosoma_inference
+  participant Bridge as Unitree SDK2 DDS + shared memory
+  User->>Sim: Start MuJoCo terrain simulation
+  User->>Policy: Load shipped student or exported ONNX
+  Sim->>Bridge: Publish simulated state and depth frames
+  Bridge->>Policy: Relay state and shared-memory depth
+  Policy->>Bridge: Send policy action
+  Bridge->>Sim: Apply action in MuJoCo
+```
 
 ## 结论
 
@@ -177,7 +215,7 @@ flowchart TB
 - **误区：「RPL = 又一个楼梯论文」。** 核心是 **多向深度蒸馏管线 + 仿真加速 + 载荷 loco-manipulation**；楼梯只是四类专家地形之一，与 [FastStair](./paper-faststair-humanoid-stair-ascent.md) 的 **高速上楼 + DCM 监督** 目标不同。
 - **误区：「四相机仿真 = 真机四相机」。** 论文因 G1 躯干 **仅前后安装位**，真机部署 **$N_{\text{cam}}=2$**；四向结果主要用于论证 **视野覆盖** 必要性。
 - **误区：「蒸馏损失低就等于 OOD 好」。** 项目页强调 **RSM/DFSV 训练损失相近但 OOD 差异大**——多向感知需要 **显式鲁棒化**，不能只看 MSE。
-- **局限：** 暂无开源代码；上身 **无感知**，极端上肢遮挡可能仍影响深度；与 [PILOT](./paper-pilot-perceptive-loco-manipulation.md) 的 **LiDAR 全身 LLC** 接口不同，上层需自行对接速度/姿态/上肢命令。
+- **局限：** 仓库定位为 research release，且明确说明合入 Holosoma 主线是独立工作；上身 **无感知**，极端上肢遮挡可能仍影响深度；与 [PILOT](./paper-pilot-perceptive-loco-manipulation.md) 的 **LiDAR 全身 LLC** 接口不同，上层需自行对接速度/姿态/上肢命令。
 
 ## 与其他工作对比
 
@@ -210,6 +248,7 @@ flowchart TB
 
 - [RPL 论文摘录（arXiv:2602.03002）](../../sources/papers/rpl_arxiv_2602_03002.md)
 - [RPL 项目页归档](../../sources/sites/rpl-humanoid-github-io.md)
+- [RPL 官方代码归档](../../sources/repos/rpl-amazon-far.md)
 - [EgoHTR 论文摘录](../../sources/papers/egohtr_arxiv_2607_13472.md) — 挑战地形人先验数据侧对照
 
 ## 推荐继续阅读
