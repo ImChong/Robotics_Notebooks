@@ -3,7 +3,7 @@ title: 跨具身策略迁移选型指南
 type: query
 status: complete
 created: 2026-05-31
-updated: 2026-09-15
+updated: 2026-10-17
 summary: 在人形 WBT 栈中，把一份运动控制策略搬到新机体的三条主流路径——单具身重训 + 重定向迁移 vs Any2Any 高效后训练 vs 多具身联合训练——的成本/数据/泛化三维选型决策树与典型故障模式；近亲骨架上 Any2Any 的更严冻结变体对照 SONIC-Transfer；灵巧手层可对照 UHAS（RL 球面）与 AdvDex（VLA 关节槽）；末端/工具接口轴对照 GEN-1 千手；同形态跨配置遗留示教对照 Emergent Transfer；设计侧生成机体可对照 Transformer Transformer。
 sources:
   - ../../sources/papers/any2any_arxiv_2605_23733.md
@@ -15,6 +15,7 @@ sources:
   - ../../sources/papers/transformer_transformer_arxiv_2607_25798.md
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+  - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
   - ../../sources/papers/eagle_wbc_arxiv_2602_02960.md
 related:
   - ../concepts/whole-body-tracking-pipeline.md
@@ -24,6 +25,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
+  - ../entities/paper-trace-humanoid-transfer.md
   - ../entities/paper-emergent-transfer-cross-config.md
   - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
   - ../entities/generalist-gen1-thousand-hands.md
@@ -108,6 +110,8 @@ flowchart TD
 ---
 
 ## 分路径选型说明
+
+**近期迁移案例：** [TRACE](../entities/paper-trace-humanoid-transfer.md) 把 G1 上的 SONIC 迁到 H2，结合运动学/动力学预对齐、紧凑动作集、表征蒸馏与低秩强化学习；可与 Any2Any、SONIC-Transfer 对照其适配边界与成本口径。
 
 ### 1. 单具身重训 + 重定向迁移：最稳的基线
 

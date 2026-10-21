@@ -4,6 +4,7 @@
 - **类型：** site / project-page
 - **URL：** <https://rpl-humanoid.github.io/>
 - **PDF 镜像：** <https://rpl-humanoid.github.io/static/rpl.pdf>
+- **代码：** <https://github.com/amazon-far/RPL>（官方训练与 sim2sim 仓，2026-10-21 核查）
 - **入库日期：** 2026-06-07
 - **配套论文：** [RPL（arXiv:2602.03002）](https://arxiv.org/abs/2602.03002) — 归档见 [`sources/papers/rpl_arxiv_2602_03002.md`](../papers/rpl_arxiv_2602_03002.md)
 
@@ -21,7 +22,7 @@ Amazon FAR 等人提出的 **RPL** 官方站点：展示 **单一深度策略** 
 - **消融视频：** RPL vs w/o DFSV vs w/o RSM（OOD 窄地形与非对称多视角）
 - **Benchmark 表：** IsaacGym PhysX、IsaacSim RTX、IsaacSim Warp vs RPL Warp 射线管线（VRAM / iter. time，$N_{\text{cam}}=1,2,4$）
 - **多相机表：** 双向与全向 locomotion 下 $N_{\text{cam}}=1/2/4$ 的地形等级对比
-- **代码：** 项目页标注 **Code (Coming Soon)**（截至 2026-08-22 核查仍无公开仓库 URL）
+- **代码状态：** 项目页原先标注 **Code (Coming Soon)**；官方代码现已发布于 [amazon-far/RPL](https://github.com/amazon-far/RPL)，包含分地形专家训练、多深度学生蒸馏与 MuJoCo sim2sim。仓库声明为研究发布；Holosoma 主线集成另行推进。
 
 ## 为何值得保留
 
@@ -32,5 +33,6 @@ Amazon FAR 等人提出的 **RPL** 官方站点：展示 **单一深度策略** 
 ## 关联资料
 
 - 论文归档：[`sources/papers/rpl_arxiv_2602_03002.md`](../papers/rpl_arxiv_2602_03002.md)
+- 官方代码：[`sources/repos/rpl-amazon-far.md`](../repos/rpl-amazon-far.md)
 - 同系感知跑酷：[`sources/papers/php_parkour_arxiv_2602_15827.md`](../papers/php_parkour_arxiv_2602_15827.md)
 - 感知 LLC 对照：[`sources/papers/pilot_arxiv_2601_17440.md`](../papers/pilot_arxiv_2601_17440.md)

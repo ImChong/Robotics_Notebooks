@@ -8,7 +8,7 @@
 - **arXiv：** <https://arxiv.org/abs/2609.38046>（v2，2026-09-30）
 - **论文 HTML：** <https://arxiv.org/html/2609.38046v2>
 - **项目页：** <https://lambdahumanoid.github.io/EgoAlign/>（归档见 [sources/sites/egoalign-project.md](../sites/egoalign-project.md)）
-- **代码仓：** <https://github.com/LambdaHumanoid/EgoAlign>（截至 2026-10-03 仅项目博客与媒体；代码待发布，归档见 [sources/repos/egoalign.md](../repos/egoalign.md)）
+- **代码仓：** <https://github.com/LambdaHumanoid/EgoAlign>（2026-10-16 已公开可运行的数据处理与 SONIC–MuJoCo 回放代码；VLA 训练配方仍未发布，归档见 [sources/repos/egoalign.md](../repos/egoalign.md)）
 - **作者：** Yiming Jiang、Jin Chen、Chongyang Xu、Yilun Chen、Aimin Hao、Yisheng He
 - **机构：** 北京航空航天大学（Beihang University）；上海创智学院（Shanghai Innovation Institute）；四川大学（Sichuan University）；阿里巴巴集团（Alibaba Group）
 - **提交日期：** 2026-09-29；**更新日期：** 2026-09-30
@@ -17,8 +17,9 @@
 
 ## 开源状态（步骤 2.5）
 
-- **项目页核查（2026-10-03）：** 项目页链接到公开的 [LambdaHumanoid/EgoAlign](https://github.com/LambdaHumanoid/EgoAlign)。该仓 README 说明仓内目前是项目博客和媒体资源，代码将在未来发布；当前未提供可运行的训练、重定向或部署实现，也未找到数据集下载链接。
-- **结论：** 项目页和占位仓已公开；**方法代码与数据待发布**。复现结论以官方仓后续发布为准。
+- **项目页核查（2026-10-16）：** 项目主页提供代码入口；官方仓已不再是占位仓。README 和文档给出 `endpoint-align`、`replay-only`、`sample_pipeline`、SONIC–MuJoCo 回放适配器及样例复现流程，可运行数据构造与仿真回放代码已公开。
+- **开放边界：** README 将 VLA 训练方案列为潜在后续发布内容，并指向 OpenPI 作为参考；仓库未提供 EgoAlign 的完整 VLA 训练配方或训练权重。仓库含样例任务文件，但未声明公开完整规模的人类示范训练集。
+- **结论：** **部分开源**——数据处理、动作适配和仿真回放实现已公开；VLA 训练配方、权重及完整数据集发布状态仍有限。
 
 ## 摘录 1：问题与方法
 

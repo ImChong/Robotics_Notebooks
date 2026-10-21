@@ -2,7 +2,7 @@
 type: query
 tags: [perception, vla, multimodal, sensors, machine-learning]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../formalizations/cross-modal-attention.md
   - ../concepts/tactile-sensing.md

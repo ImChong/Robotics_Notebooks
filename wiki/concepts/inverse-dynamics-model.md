@@ -2,7 +2,7 @@
 type: concept
 tags: [idm, inverse-dynamics-model, world-model, world-action-model, latent-action, video-policy]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-17
 summary: "逆动力学模型（IDM）由「当前观测 + 未来观测」反推其间的动作：视频/世界模型负责预测世界怎么变，IDM 只需少量带动作数据学「这个变化对应什么动作」；是级联式世界动作模型的动作解码接口，勿与刚体逆动力学控制混淆。"
 related:
   - ./world-action-models.md
@@ -101,6 +101,7 @@ flowchart LR
 - [mimic-video](../methods/mimic-video.md) — 视频潜表示条件的 IDM 式动作解码器
 - [逆动力学控制](../methods/inverse-dynamics-control.md) — 同名不同义：刚体动力学求力矩
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — World-Model 家族在选型闭环中的位置
+- [ForceWAM](../entities/paper-forcewam.md) — 用任务 + 无任务 play 数据训练 IDM 学「动作如何改变接触」，把世界模型预测的视频 + 力矩未来转成动作
 
 ## 参考来源
 

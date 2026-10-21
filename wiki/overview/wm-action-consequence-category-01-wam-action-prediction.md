@@ -2,12 +2,13 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-18
 summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / FACT / Flex-π / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
   - ./wm-action-consequence-category-02-contact-modeling.md
   - ../concepts/world-action-models.md
+  - ../entities/paper-dr-wm.md
   - ../entities/paper-dreamwam.md
   - ../entities/paper-fact.md
   - ../entities/paper-flex-pi.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
   - ../../sources/papers/lawa_arxiv_2608_24882.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
+  - ../../sources/papers/dr_wm_arxiv_2610_17630.md
 ---
 
 # 世界模型动作后果分类 01：WAM 动作后果预测
@@ -43,6 +45,7 @@ sources:
 
 | 工作 | Wiki 实体 | 文内角色 |
 |------|-----------|----------|
+| DR-WM | [DR-WM](../entities/paper-dr-wm.md) | 行为校准的空间地形物理 + Genesis / 视频 rollout，辅助 VLM 比较导航动作后果 |
 | DSWAM | [../entities/paper-dswam-dual-system-wam](../entities/paper-dswam-dual-system-wam.md) | 双系统 WAM 执行器 + 可选 VLM 规划器；视频协同训练、推理直出动作 |
 | DynaWM | [../entities/paper-dynawm-vla-online-correction](../entities/paper-dynawm-vla-online-correction.md) | 冻结 VLA + Mamba/V-JEPA 条件流匹配在线重生成动作块 |
 | DreamSteer | [../entities/paper-dreamsteer-vla-deployment-steering](../entities/paper-dreamsteer-vla-deployment-steering.md) | 潜变量 WM 预演候选动作 + 语言价值模型排序 |

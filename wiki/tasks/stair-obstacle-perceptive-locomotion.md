@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-10-10
+updated: 2026-10-20
 related:
   - ../entities/paper-dawn.md
   - ../entities/paper-cref.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-light-loco-parkour.md
   - ../entities/paper-parkourformer.md
   - ../entities/paper-deep-whole-body-parkour.md
+  - ../entities/paper-fcts-failure-guided-curriculum.md
   - ../entities/paper-hiking-in-the-wild.md
   - ../entities/paper-ssr-humanoid-open-world-traversal.md
   - ../entities/paper-passage.md
@@ -185,6 +186,7 @@ flowchart TB
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
 | 四足 Go1 | **原始深度 + 去噪 RSSM** | [DAWN](../entities/paper-dawn.md) | 带噪到干净重建 + 潜状态对齐；50 Hz 控制 / 10 Hz 深度；训练与仿真回放已开源，真机入口未见 |
 | 四足 Apollo | **深度 + RSSM WM** | [SWAP](../entities/paper-swap-parkour.md) | 对称等变潜变量世界模型 + 等变 Actor-Critic；2.13 m 远跳 / 1.63 m 攀台 |
+| 四足 | **扫描地形 + 深度 / 本体感知** | [FCTS](../entities/paper-fcts-failure-guided-curriculum.md) | 局部失败条件化生成训练地形，再以预算约束 MCTS 搜索课程；扫描施工场地路线测试，项目页未列代码 |
 
 ### 概念与方法（跨论文）
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-17
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -32,6 +32,7 @@ sources:
   - ../../sources/papers/rrsi_arxiv_2609_24972.md
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
+  - ../../sources/repos/awesome-embodied-self-improvement.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
 
@@ -117,6 +118,12 @@ flowchart LR
 ### 预测式世界模型辅助的任务级 RSI：RSI-Anything
 
 [RSI-Anything](../entities/paper-rsi-anything.md) 将 **Propose → Predict → Select → Evaluate → Learn → Retain** 用于代码修复、GUI 与科学任务：世界模型先预测候选后果，真实任务评估再为策略/工作流更新提供反馈，按需适配的模型组件需通过兼容性检查。其 CodeContests 消融在近似预算下由静态候选选择 26.3% 提升至预测选择 29.2%，再到模型适配后的 31.2%。这属于**有界任务闭环**：优化对象可只是 policy/workflow，且多轮联合改进仍待验证；它不构成系统已自主设计、训练并部署完整后继模型的证据。实现和实验边界见[官方仓库归档](../../sources/repos/rsi-anything.md)。
+
+### 具身自我改进：按可执行能力增量分级
+
+[Awesome Embodied Self-Improvement](../../sources/repos/awesome-embodied-self-improvement.md) 将范围限定为机器人、具身智能与 Physical AI 的部署后自我改进，并用「改进后是否新增一个此前无法执行的动作/技能」划分能力层级：L1 只在当前 episode 生效、重置即归零；L2 能跨 episode 保留，但只改善已有能力的记忆、调度或参数；L3 持久增加此前做不到的可执行技能；L4 改进产生改进的诊断、验证或晋级机制。清单 README 当前列出 45 项工作、3 个 benchmark 与 4 篇综述，前沿集中在 L3；PhysEvo 触及 L4 下界，但完整的物理 AI L4 仍开放。
+
+这套判据适合补充宏观 RSI 与 agent 层清单：它把具身研究中的「自进化」落到可检查的技能集合变化上，也避免把在线纠错、长期记忆、权重更新或论文自称 RSI 自动等同于能力扩张。条目按 README 的一次性策展快照理解；具体方法、真机/仿真条件、验证强度与代码开放状态仍应回到各自论文和官方仓库核验。
 
 ## 工程实践
 

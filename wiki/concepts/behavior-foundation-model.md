@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-16
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-p-bfm.md
   - ../entities/paper-reactivebfm.md
   - ../entities/paper-scaling-bfm-humanoid.md
+  - ../entities/paper-ttco-test-time-compute-humanoid-bfm.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ../methods/dagger.md
@@ -27,6 +28,9 @@ sources:
   - ../../sources/sites/p-bfm-project-page.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
+  - ../../sources/papers/ttco_test_time_compute_humanoid_bfm_arxiv_2610_14896.md
+  - ../../sources/sites/ttco-test-time-compute-humanoid-bfm.md
+  - ../../sources/repos/bfm_ttc.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
 summary: "Behavior Foundation Model（BFM）在大规模多样化行为数据上预训练广义行为先验，使人形全身控制可零样本或快速适应多下游任务；与 VLA 操作向基础策略互补，预训练常分 goal-conditioned、intrinsic-reward、forward-backward 三线，适应分微调与层次化控制两线。"
@@ -105,6 +109,7 @@ flowchart TB
 |------|------|----------------------|
 | **微调** | 全参 / LoRA / 修改潜任务向量、Task Tokens、跨具身 PEFT | Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation、[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、[ReactiveBFM](../entities/paper-reactivebfm.md)（闭环 AR 规划 + BFM 跟踪，真机 reactive WBC）、[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（离散 token 自回归生成式控制器 + PEFT，物理角色动画） |
+| **测试时命令优化** | 冻结 BFM，在闭环仿真中搜索更合适的输入 motion command；按预算扩展采样计算，无需重训 | [TTCO](../entities/paper-ttco-test-time-compute-humanoid-bfm.md)（跨 HEFT、SONIC、TWIST2 降低跟踪误差，并从机器人轨迹离线生成 BFM 专属标签） |
 
 与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 叙事一致：**VLA / 语言 / 扩散规划** 与 **运动跟踪执行器** 分层的工程趋势。
 
@@ -134,6 +139,7 @@ flowchart TB
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 地形感知 PMT/TCRS
 - [ReactiveBFM](../entities/paper-reactivebfm.md) — 闭环 AR 规划 + BFM 跟踪，真机 reactive WBC
 - [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md) — BFM scaling 三轴配方与 Humanoid Transformer
+- [TTCO](../entities/paper-ttco-test-time-compute-humanoid-bfm.md) — 冻结行为基础模型，通过采样优化缩小 motion command 的执行误差
 - [GPC](../entities/paper-gpc-generative-pretrained-controllers.md) — FSQ 离散技能 + GPT 式预训练生成式控制器（>600 h，SIGGRAPH 2026）
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

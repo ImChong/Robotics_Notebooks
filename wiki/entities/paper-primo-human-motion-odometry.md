@@ -5,15 +5,17 @@ tags:
   - humanoid
   - state-estimation
 status: complete
-updated: 2026-10-03
+updated: 2026-10-18
 arxiv: "2609.23610"
 related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/papers/primo-human-motion-odometry_arxiv_2609_23610.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "PRIMO（arXiv:2609.23610）：跟踪大量重定向人体动作扩分布；物理与对称先验约束速度/旋转预测。"
 ---
 

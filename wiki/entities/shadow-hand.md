@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, industry, shadow-robotics]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ./allegro-hand.md
   - ../tasks/manipulation.md

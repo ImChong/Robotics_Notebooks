@@ -18,6 +18,7 @@ related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
+  - ./paper-devgru.md
   - ./paper-roamflow.md
   - ./paper-notebook-egonav.md
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
@@ -107,6 +108,7 @@ NoMaD 只负责短时视觉控制。系统沿探索轨迹将图像加入 topolog
 | [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) | 连续轨迹 | 多 goal slots | local critic | 大规模仿真 RGB-D |
 | [EgoNav](./paper-notebook-egonav.md) | 未来 6-DoF 轨迹 | 当前无 goal | rolling cost | 人类 RGB-D |
 | **NoMaD** | **局部动作序列** | **attention goal mask** | **拓扑 planner，无 critic** | **100+ h 真机 RGB** |
+| [DevGRU](./paper-devgru.md) | 深度 + 点目标 → 碰撞感知路点 | 独立碰撞预测 + 子目标漂移修正 | 预建拓扑图逐段导航 |
 
 ## 工程实践与开源状态
 

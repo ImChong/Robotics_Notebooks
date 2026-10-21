@@ -2,7 +2,7 @@
 type: method
 tags: [reinforcement-learning, llm, policy-optimization, grpo]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-16
 related:
   - ./policy-optimization.md
   - ./ppo.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-lightnav-0.md
   - ../entities/paper-prism-grpo.md
   - ../entities/minimind.md
+  - ../entities/paper-atomic-wam.md
 sources:
   - ../../sources/papers/deepseekmath_grpo_2024.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
@@ -79,6 +80,7 @@ flowchart LR
 - [policy-optimization](./policy-optimization.md)
 - [LightNav-0](../entities/paper-lightnav-0.md)
 - [Prism-GRPO](../entities/paper-prism-grpo.md)
+- [Atomic-WAM](../entities/paper-atomic-wam.md) — EG-GRPO 用执行奖励后训练「原子动作描述」推理器，固定 WAM 据此出视频与动作块
 
 ## 参考来源
 

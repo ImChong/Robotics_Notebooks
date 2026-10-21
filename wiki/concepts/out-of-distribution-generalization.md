@@ -2,7 +2,7 @@
 type: concept
 tags: [ood, generalization, evaluation, deployment, sim2real, robustness, embodied-ai]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-16
 summary: "OOD（分布外）在具身智能里同时是三件事：评测里的一档测试集、部署时的一个监控量、数据配方里的一个目标；本页把这三义分开，给出「OOD 相对谁」的判据、常见的伪 OOD 陷阱与读 OOD 指标的口径。"
 sources:
   - ../../sources/papers/freedof_sim2real_37_rapt-sim2real-ood-detection.md
@@ -13,6 +13,7 @@ related:
   - ./domain-randomization.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../entities/paper-rapt-sim2real-ood-detection.md
+  - ../entities/paper-goal-misgeneralization-policy-alignment.md
   - ../entities/paper-huro.md
 ---
 
@@ -67,6 +68,7 @@ related:
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — OOD 档在四层评测里的位置（③ 成功率层的分档 + ④ 校准层的外推）
 - [RAPT（部署期 OOD 检测与失配诊断）](../entities/paper-rapt-sim2real-ood-detection.md) — ② 部署监控一义的代表页
 - [HuRo](../entities/paper-huro.md) — ① 评测档位一义的代表页（空间与视觉 shift 完成率 34.9%→72.2%）
+- [目标泛化失效与策略对齐](../entities/paper-goal-misgeneralization-policy-alignment.md) — OOD 失败不一定是能力缺失，也可能是目标替代 / 策略捷径 / 线索竞争三类目标错配
 
 ## 参考来源
 

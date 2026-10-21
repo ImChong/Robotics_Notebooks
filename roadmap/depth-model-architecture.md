@@ -126,6 +126,7 @@ flowchart LR
 - [多模态基础](../wiki/concepts/multimodality-basics.md) · [视觉–语言特征融合](../wiki/concepts/vision-language-feature-fusion.md) · [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 - [具身感知六种空间表征](../wiki/concepts/embodied-perception-six-spatial-representations.md) — 2D / 深度 / 点云 / 占据 / 语义 / 隐式各自回答什么问题
 - [视觉骨干知识链枢纽](../wiki/overview/hub-vision-backbone.md) — 骨干 → 检测分割头 → 策略输入的完整链路
+- [VisionHOPE](../wiki/entities/paper-visionhope.md) — VisionHOPE 将视觉骨干构造成自修改学习系统，使记忆与更新规则共同演化，并在二维特征图上使用稳定性控制和四向扫描。
 
 ### 学完输出什么
 - 一份感知侧选型记录：骨干、是否冻结、特征维度、token 预算与实测吞吐

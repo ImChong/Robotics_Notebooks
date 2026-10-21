@@ -58,6 +58,13 @@
         "openai"
       ]
     },
+    "opengeos": {
+      "label": "开放地理空间解决方案（Open Geospatial Solutions）",
+      "aliases": [
+        "opengeos",
+        "open-geospatial-solutions"
+      ]
+    },
     "anthropic": {
       "label": "人类智能（Anthropic）",
       "aliases": [
@@ -1631,7 +1638,7 @@
       ]
     },
     "motphys": {
-      "label": "莫特菲斯（Motphys）",
+      "label": "谋先飞（Motphys）",
       "aliases": [
         "motphys",
         "motrix"
@@ -4341,6 +4348,13 @@
         "university-of-almeria",
         "almeria",
         "ual"
+      ]
+    },
+    "dream-labs": {
+      "label": "梦想实验室（Dream Labs）",
+      "aliases": [
+        "dream-labs",
+        "dreamlabs"
       ]
     }
   }

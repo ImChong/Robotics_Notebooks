@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -16,6 +16,7 @@ related:
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/paper-fddc.md
+  - ../entities/paper-goal-misgeneralization-policy-alignment.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
 sources:
   - ../../sources/papers/policy_optimization.md
@@ -188,6 +189,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 当奖励来自 VLM 而非手写函数时，主要风险从「配比调不好」变成「打分标定差」。CLIFT 的 select-then-distill 给了一条低成本校准路线：VLM 生成 K=12 条候选奖励序列 → 用约 100 组人类成对偏好筛掉排序不一致的 → 蒸馏成固定的生成式奖励模型。
 
 见：[CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md)
+- [目标泛化失效与策略对齐](../entities/paper-goal-misgeneralization-policy-alignment.md) — 只看任务成功率可能掩盖目标错配；恢复手段须按失效发生的层次选择
 
 ## 参考来源
 

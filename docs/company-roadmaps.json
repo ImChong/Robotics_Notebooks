@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-17",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -129,6 +129,47 @@
         { "date": "2026-09", "title": "XPACE", "track": "WAM", "desc": "共享视频骨干统一 WAM 与世界模拟器，5000h 异构经验联合训练，仿真合成 recovery 做闭环 DAgger；IRON 真机评测，未开源。", "id": "entity-paper-xpace", "url": "https://xpeng-robotics.github.io/xpace/" },
         { "date": "2026-09", "title": "IronMind", "track": "灵巧操作预训练", "desc": "在相机坐标中对齐人类与机器人动作，对超过一万小时异构数据做质量加权预训练。", "id": "entity-paper-ironmind", "url": "https://xpeng-robotics.github.io/ironmind/" },
         { "date": "", "title": "IRON 54 项专利", "track": "整机", "desc": "头颈臂、灵巧手、腿腰动力、双足步态与全身具身五组 CN 专利阅读地图。", "id": "wiki-overview-xpeng-iron-54-patents-technology-map", "url": "https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg", "date_note": "54 项专利申请 / 公开日期跨多年，属聚合入口，不设单一日期；不代表 IRON 首发日。" }
+      ]
+    },
+    {
+      "key": "motphys",
+      "name": "谋先飞 Motphys",
+      "founded_year": 2020,
+      "founded_source": "https://www.36kr.com/p/1355856359654023",
+      "founded_note": "36氪 2021-08-16 天使轮首发报道写明「成立于 2020 年 10 月」；官网关于页只写「自 2021 年起专注自研实时物理引擎」，两者口径不同，此处取 36 氪。CB Insights 亦记 2020 年。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "仿真与训练基础设施路线：自研实时物理引擎 MotrixSim + MotrixLab 训练框架 + 数据 / 资产工具链，不训练机器人基础模型；公开研究为与高校联合的 GS-Playground 与 UniLab，官网未说明开源范围与许可证。",
+      "official": "https://www.motphys.com/zh/",
+      "nodes": [
+        {
+          "date": "2025-09",
+          "title": "MotrixSim / MotrixLab",
+          "track": "仿真 / 训练",
+          "desc": "Rust 实现、兼容 MJCF 的多体动力学引擎，配套 SKRL / RSL-RL / FastSAC 训练框架与浏览器 Web Viewer；版本日志此后逐月加入 IK、macOS、Web 平台、3DGS 混合渲染等。",
+          "id": "entity-motrix",
+          "url": "https://www.motphys.com/zh/release-notes/",
+          "date_note": "官网版本日志最早列出 v0.2.0（2025-09）；不证明 MotrixSim 首发，页面只写年月。"
+        },
+        {
+          "date": "2026-04",
+          "title": "GS-Playground",
+          "track": "仿真 / 视觉",
+          "desc": "以 3D 高斯泼溅为渲染核心的高吞吐照片级仿真器；官网研究页转述渲染约 10,000 FPS、零样本视觉抓取成功率约 90%（论文自报），十余家机构联合署名，入选 RSS 2026。",
+          "id": "entity-gs-playground",
+          "url": "https://arxiv.org/abs/2604.25459",
+          "date_note": "官网研究页标 2026.04，arXiv 编号 2604.25459 同月；联合署名，不当作 Motphys 单独成果。"
+        },
+        {
+          "date": "2026-05",
+          "title": "UniLab",
+          "track": "训练系统",
+          "desc": "CPU 并行物理仿真 + GPU 策略学习的异构 RL 架构，MotrixSim 作后端之一；论文自报端到端训练提速 3–10 倍；清华 × Motphys 等 21 家机构联合。",
+          "id": "entity-unilab",
+          "url": "https://arxiv.org/abs/2605.30313",
+          "date_note": "官网研究页标 2026.05，arXiv 编号 2605.30313 同月；联合署名。"
+        }
       ]
     },
     {
@@ -582,6 +623,299 @@
         { "date": "2026-04", "title": "Beyond World Models & VLAs", "track": "观点", "desc": "说明 GEN-1 约 99% 参数从零训练，不归类为 VLA 或世界模型，视觉语言预训练被视为过渡手段。", "id": "entity-generalist-gen1", "url": "https://generalistai.com/blog/beyond-world-models", "date_note": "官网博文 2026-04-07。" },
         { "date": "2026-07", "title": "千手：多末端执行器", "track": "跨具身", "desc": "GEN-1 跨约 9000 种末端变体与 >50 万小时交互预训练，主张手可变、物理不变，演示任务中途换手。", "id": "entity-generalist-gen1-thousand-hands", "url": "https://generalistai.com/blog/towards-machines-with-a-thousand-hands", "date_note": "官网博文 2026-07-23。" },
         { "date": "2026-08", "title": "GEN-1.5", "track": "基础模型", "desc": "持续预训练后涌现 physical prompting：3–12 秒单次示范无梯度约 59% 成功率，10 步微调约 83%（自报）。", "id": "entity-generalist-gen15-one-shot", "url": "https://generalistai.com/blog/gen-1.5", "date_note": "官网博文 2026-08-19。" }
+      ]
+    },
+    {
+      "key": "amazon-far",
+      "name": "亚马逊 Amazon FAR",
+      "founded_year": 2024,
+      "founded_source": "https://www.aboutamazon.com/news/company-news/amazon-covariant-ai-robots",
+      "founded_note": "按 2024 年 Amazon 引入 Covariant 创始人与部分研究工程团队、扩充湾区 AI 与机器人团队的事件年份排序。该公告未给出 FAR 名称的确切成立日；FAR 是 Amazon 内部研究团队，此年份不代表独立公司成立。",
+      "lenses": [
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "Amazon 内部的 Frontier AI & Robotics 研究与工程团队：交互保留重定向与数据生成 → 全身跟踪 / 残差操作 → 便携遥操作数采 → 深度感知行走、跑酷与攀梯；holosoma 提供训练与部署框架，开放范围按各项目核查。",
+      "official": "https://github.com/amazon-far",
+      "nodes": [
+        {
+          "date": "2025-09",
+          "title": "OmniRetarget",
+          "track": "重定向 / 数据生成",
+          "desc": "用交互网格保留人体、物体与地形关系，生成并增广可跟踪的全身参考；实现并入 holosoma，部分重定向轨迹公开。",
+          "id": "entity-paper-hrl-stack-03-omniretarget",
+          "url": "https://omniretarget.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2509.26633"
+        },
+        {
+          "date": "2025-10",
+          "title": "ResMimic",
+          "track": "全身操作 / 残差学习",
+          "desc": "复用通用运动跟踪先验，以任务残差、接触奖励与虚拟力课程学习全身搬运；官方代码入口见详情。",
+          "id": "entity-paper-resmimic",
+          "url": "https://resmimic.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2510.05070"
+        },
+        {
+          "date": "2025-11",
+          "title": "TWIST2",
+          "track": "遥操作 / 数据采集",
+          "desc": "便携 VR 全身遥操作、两自由度颈增广与分层 visuomotor 学习；公开训练部署代码、控制器与硬件设计。",
+          "id": "entity-paper-twist2",
+          "url": "https://yanjieze.com/projects/TWIST2/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2511.02832"
+        },
+        {
+          "date": "2026-02",
+          "title": "RPL",
+          "track": "感知行走",
+          "desc": "多地形专家蒸馏为多视角深度策略，支持 G1 双向行走与负载扰动；开放状态沿用详情页注明日期的核查。",
+          "id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
+          "url": "https://rpl-humanoid.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2602.03002"
+        },
+        {
+          "date": "2026-02",
+          "title": "Perceptive Humanoid Parkour",
+          "track": "感知跑酷",
+          "desc": "运动匹配合成长程技能链，再经专家训练与 DAgger / PPO 蒸馏为机载深度策略；已归档官方代码、动作库与学生 ONNX。",
+          "id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+          "url": "https://php-parkour.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2602.15827"
+        },
+        {
+          "date": "2026-06",
+          "title": "LadderMan",
+          "track": "攀梯 / 全身操作",
+          "desc": "混合运动跟踪与 DAgger / RL 蒸馏实现深度感知攀梯，双智能体分工支持梯顶稳定遥操作；开放范围见详情。",
+          "id": "entity-paper-ladderman-humanoid-perceptive-ladder-climbing",
+          "url": "https://ladderman-robot.github.io/",
+          "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
+          "date_source": "https://arxiv.org/abs/2606.05873"
+        },
+        {
+          "date": "",
+          "title": "holosoma",
+          "track": "训练 / 推理框架",
+          "desc": "人形 locomotion、全身运动跟踪与 OmniRetarget 重定向统一框架，支持多仿真后端与 G1 / T1 部署。",
+          "id": "entity-holosoma",
+          "url": "https://github.com/amazon-far/holosoma",
+          "date_note": "持续维护的框架聚合入口；未核实首次公开月份，不使用论文或入库日期代替。"
+        }
+      ]
+    },
+    {
+      "key": "rhoda",
+      "name": "Rhoda AI",
+      "founded_year": 2024,
+      "founded_source": "https://www.rhoda.ai/news/press-release",
+      "founded_note": "官网与新闻稿均未写成立日期；2026-03-10 新闻稿称公开亮相前已隐身 18 个月，据此倒推约为 2024 年下半年（推测），按 2024 年排序，月份未确认。",
+      "lenses": [
+        "wam"
+      ],
+      "summary": "闭源的视频预测控制路线：互联网规模视频预训练 + 少量机器人数据后训练，逆动力学模型把预测画面转成动作（DVA）；3 篇研究博文依次给出数据效率、真机 scaling 与触觉扩展，无代码 / 权重，数字均为自报。",
+      "official": "https://www.rhoda.ai/research",
+      "nodes": [
+        {
+          "date": "2026-03",
+          "title": "DVA / FutureVision",
+          "track": "视频动作策略",
+          "desc": "把策略重述为因果视频生成，逆动力学模型转动作并闭环运行；自报约 10–20 小时机器人数据学会长程任务（连续 1.5 小时 / 160 分钟），无成功率与基线对比。",
+          "id": "entity-rhoda-direct-video-action",
+          "url": "https://www.rhoda.ai/research/direct-video-action",
+          "date_note": "官网博文与结束隐身新闻稿同为 2026-03-10。"
+        },
+        {
+          "date": "2026-09",
+          "title": "网络视频预训练 scaling",
+          "track": "Scaling",
+          "desc": "同一拆包任务上只改模型规模与预训练算力：XS→L 的 100 秒内完成率 3.7%→84.7%；预训练质量指标 DINO FD 与任务表现同序；单任务单本体（自报）。",
+          "id": "entity-rhoda-scaling-web-video-pretraining",
+          "url": "https://www.rhoda.ai/research/scaling-web-video-pretraining",
+          "date_note": "官网新闻页标注 2026-09-10。"
+        },
+        {
+          "date": "2026-10",
+          "title": "触觉传感器 + 多模态 DVA",
+          "track": "触觉",
+          "desc": "薄型触觉传感器（羽毛轻触响应几毫牛，量程超 40 N）接入 DVA，预测未来触觉视频；遮挡相机的盲操作取回纹理球，无成功率与试验次数（自报）。",
+          "id": "entity-rhoda-dva-tactile-sensing",
+          "url": "https://www.rhoda.ai/research/giving-robots-a-sense-of-touch",
+          "date_note": "官网研究页只写 Oct 13；年份据文末引用块与页脚 © 2026 判定。"
+        }
+      ]
+    },
+    {
+      "key": "sharpa",
+      "name": "夏帕机器人 Sharpa Robotics",
+      "founded_year": 2024,
+      "founded_source": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/",
+      "founded_note": "2025-12-16 PR Newswire 新闻稿写明 Founded in 2024，总部新加坡；具体月份未核实。",
+      "lenses": ["wam"],
+      "summary": "以 22 DoF 触觉灵巧手 SharpaWave 为平台的灵巧操作公司：学术线以「人类数据 → 接触 → 跨本体触觉表征」三条主线推进，用 System 0/1/2 分层把接触交给高频触觉底层；2025-12 量产、2026 年起推出整机与触觉手套。",
+      "official": "https://www.sharpa.com/",
+      "nodes": [
+        {
+          "date": "2025-10",
+          "title": "SaTA 空间锚定触觉",
+          "track": "触觉 / 空间锚定",
+          "desc": "把触觉特征经正运动学锚定到手部运动学坐标系，策略无需物体模型即可推断物体几何；文章称 USB-C 插接等亚毫米任务成功率最高提升约 30 个百分点（自报）。",
+          "id": "entity-paper-sata",
+          "url": "https://arxiv.org/abs/2510.14647",
+          "date_note": "arXiv:2510.14647 v1 为 2025-10-16。"
+        },
+        {
+          "date": "2025-12",
+          "title": "SharpaWave 量产",
+          "track": "平台 / 硬件",
+          "desc": "22 DoF、指尖触觉阵列的 SharpaWave 灵巧手宣布量产；公司自述 2024 年成立、总部新加坡。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/",
+          "date_note": "PR Newswire 新闻稿 dateline 2025-12-16（经 Utusan 转载）。",
+          "date_source": "https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/"
+        },
+        {
+          "date": "2026-02",
+          "title": "Tacmap",
+          "track": "触觉 / Sim2Real",
+          "desc": "用穿透深度图统一仿真与真实触觉的几何表示，使仅在仿真中训练的手内旋转策略零样本迁移到真机（文章称与英伟达合作）。",
+          "id": "entity-paper-tacmap",
+          "url": "https://arxiv.org/abs/2602.21625",
+          "date_note": "arXiv:2602.21625 v1 为 2026-02-25。"
+        },
+        {
+          "date": "2026-02",
+          "title": "EgoScale",
+          "track": "人视频 / 规模化",
+          "desc": "用约 2 万小时第一视角人类视频预训练灵巧 VLA，再以少量人机对齐数据中期训练；在 Sharpa Wave 上平均成功率相对无预训练基线提升 54%（文章转述）。",
+          "id": "entity-paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div",
+          "url": "https://arxiv.org/abs/2602.16710",
+          "date_note": "arXiv:2602.16710 v1 为 2026-02-18。"
+        },
+        {
+          "date": "2026-02",
+          "title": "SimToolReal",
+          "track": "工具 / Sim2Real",
+          "desc": "程序化随机化工具几何与动力学，训练物体中心策略，KUKA 臂加 22 DoF 手零样本完成多类工具任务（文章称 RSS 2026）。",
+          "id": "entity-simtoolreal",
+          "url": "https://arxiv.org/abs/2602.16863",
+          "date_note": "arXiv:2602.16863 v1 为 2026-02-18。"
+        },
+        {
+          "date": "2026-03",
+          "title": "DexEMG",
+          "track": "遥操作 / 肌电",
+          "desc": "用前臂表面肌电推断手部姿态并实时重定向到 22 DoF Sharpa Wave，不依赖摄像头，手指被遮挡时仍可遥操作（文章转述）。",
+          "id": "entity-paper-dexemg",
+          "url": "https://arxiv.org/abs/2603.05861",
+          "date_note": "arXiv:2603.05861 v1 为 2026-03-06。"
+        },
+        {
+          "date": "2026-03",
+          "title": "MoDE-VLA",
+          "track": "VLA / 灵巧手",
+          "desc": "RL 训练的手内技能 IMCopilot 与力、触觉专家通路接入 VLA；削苹果等四任务平均成功率由基线 15% 提升到 34%（文章转述，自报）。",
+          "id": "entity-paper-sa-2603-08122-mode-vla-mixture-of-dexterous-experts-vla",
+          "url": "https://arxiv.org/abs/2603.08122",
+          "date_note": "arXiv:2603.08122 v1 为 2026-03-09。"
+        },
+        {
+          "date": "2026-06",
+          "title": "FTP-1",
+          "track": "触觉基础策略",
+          "desc": "跨 21 种触觉传感器的统一隐空间与 Transformer，约 3000 小时数据预训练；在两种未见传感器配置上成功率提升 31%（文章转述，自报）。",
+          "id": "entity-paper-ftp-1",
+          "url": "https://arxiv.org/abs/2606.13102",
+          "date_note": "arXiv:2606.13102 v1 为 2026-06-11。"
+        },
+        {
+          "date": "2026-06",
+          "title": "T-Rex",
+          "track": "触觉 / 数据",
+          "desc": "100 小时触觉同步遥操作 play 数据，变频率 MoT 与触觉 VQ-VAE，覆盖 12 项双手触觉反应任务（文章称基于 Sharpa Wave）。",
+          "id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
+          "url": "https://arxiv.org/abs/2606.17055",
+          "date_note": "arXiv:2606.17055 v1 为 2026-06-15；文章未给编号，按标题与数据规模对应。"
+        },
+        {
+          "date": "2026-06",
+          "title": "Do as I Do",
+          "track": "视频 → 灵巧数据",
+          "desc": "从日常人类视频重建手–物交互并重定向为灵巧手动作；文章称 655 条野外视频重建、Sharpa Wave 上 10 项真机任务（文章转述）。",
+          "id": "entity-paper-do-as-i-do",
+          "url": "https://arxiv.org/abs/2606.19333",
+          "date_note": "arXiv:2606.19333 v1 为 2026-06-17。"
+        },
+        {
+          "date": "2026-06",
+          "title": "Play2Perfect",
+          "track": "预训练 / 精密装配",
+          "desc": "灵巧手先做任务无关的自由玩耍预训练，再微调到精密装配；文章称 0.5 mm 间隙插入成功率 60%，样本效率约为从零训练的 33 倍（文章转述，自报）。",
+          "id": "entity-paper-play2perfect",
+          "url": "https://arxiv.org/abs/2606.26428",
+          "date_note": "arXiv:2606.26428 v1 为 2026-06-24。"
+        },
+        {
+          "date": "2026-08",
+          "title": "Dairy Queen 机器人餐厅",
+          "track": "真实部署",
+          "desc": "与 Dairy Queen 合作的机器人餐厅在上海吴江路开业，机器人需独立完成 55 步从点单到交付的流程（文章称）。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ",
+          "date_note": "文章称 2026-08-29 开业；文章据报道称其中 98% 的步骤涉及触觉。",
+          "date_source": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ"
+        },
+        {
+          "date": "2026-09",
+          "title": "D01 / W02 / AE01 发布",
+          "track": "硬件发布",
+          "desc": "发布 D01 整机、W02 灵巧手与 AE01 触觉反馈数据手套；AE01 为 22 自由度外骨骼手套，指尖提供振动触觉反馈，面向遥操作与数据采集。",
+          "id": "entity-sharpa-robotics",
+          "url": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ",
+          "date_note": "文章称于今年 9 月底的 IROS 2026 上发布；日期只到月份。",
+          "date_source": "https://mp.weixin.qq.com/s/wDRJgJArppWbAWm1QmzwNQ"
+        },
+        {
+          "date": "2026-09",
+          "title": "Dex-X",
+          "track": "视频 → 仿真 → 策略",
+          "desc": "单目 RGB 人类视频重建手–物轨迹，仿真中由物理引擎补全触觉，蒸馏为点云与触觉的学生策略；文章称真机方块抓取成功率 93%（自报）。",
+          "id": "entity-paper-dex-x",
+          "url": "https://arxiv.org/abs/2609.07747",
+          "date_note": "arXiv:2609.07747 v1 为 2026-09-07。"
+        },
+        {
+          "date": "2026-09",
+          "title": "GALATEA",
+          "track": "视频规划 → 控制",
+          "desc": "用扩散视频模型生成手–物交互，经双目深度与接触感知优化提取 3D 运动，再在仿真中跟踪为单一控制器；文章称从 2500 段生成视频中筛出约 2000 条轨迹。",
+          "id": "entity-paper-galatea",
+          "url": "https://arxiv.org/abs/2609.10050",
+          "date_note": "arXiv:2609.10050 v1 为 2026-09-09。"
+        },
+        {
+          "date": "2026-09",
+          "title": "TacBPM",
+          "track": "触觉 / 行为先验",
+          "desc": "8 个球体尺寸的专家蒸馏为触觉条件的隐空间先验，下游冻结先验只学残差动作；文章称复杂物体多任务中 PPO 成功率 1%，TacBPM 为 70%（文章转述，自报）。",
+          "id": "entity-paper-tacbpm",
+          "url": "https://arxiv.org/abs/2609.18174",
+          "date_note": "arXiv:2609.18174 v1 为 2026-09-16。"
+        },
+        {
+          "date": "2026-09",
+          "title": "UVTA",
+          "track": "人类演示 / 视触觉",
+          "desc": "人类演示与少量机器人遥操作联合训练视觉–触觉–动作模型，同时预测动作与触觉；文章称五任务平均成功率 70%（T-Rex 为 29%），人类演示从 0 增至 1000 条时三任务平均成功率由 0% 升至 84%（自报）。",
+          "id": "entity-paper-uvta-human-tactile-dexterous-manipulation",
+          "url": "https://arxiv.org/abs/2609.34182",
+          "date_note": "arXiv:2609.34182 v1 为 2026-09-28。"
+        }
       ]
     },
     {

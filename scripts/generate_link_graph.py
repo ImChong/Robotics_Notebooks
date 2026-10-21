@@ -47,6 +47,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -54,8 +55,10 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
+from urllib.parse import unquote, urlsplit
 
 from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
+from markdown_it import MarkdownIt
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
@@ -65,6 +68,8 @@ WIKI_DIR = REPO_ROOT / "wiki"
 ROADMAP_DIR = REPO_ROOT / "roadmap"
 GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
+# 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
+SUMMARIES_PATH = REPO_ROOT / "exports" / "link-graph-summaries.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
@@ -1250,6 +1255,36 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     return sorted(set(targets), key=lambda path: str(path.relative_to(REPO_ROOT)))
 
 
+def extract_route_order(content: str, source_path: Path) -> list[str]:
+    """路线起点 + 正文内链首次提及顺序；不使用按字母排序的图谱邻接表。"""
+    body = strip_frontmatter(content)
+    # Markdown token 顺序即读者提及顺序，天然跳过代码、注释并支持引用式链接。
+    tokens = MarkdownIt("commonmark").enable("table").parse(body)
+    hrefs = [
+        str(child.attrGet("href") or "")
+        for token in tokens
+        for child in token.children or []
+        if child.type == "link_open"
+    ]
+    hub_id = str(source_path.relative_to(REPO_ROOT))
+    order = [hub_id]
+    seen = {hub_id}
+    for href in hrefs:
+        url = urlsplit(href)
+        if url.scheme or url.netloc or not url.path:
+            continue
+        target = (source_path.parent / unquote(url.path)).resolve()
+        if not target.is_file() or target.suffix != ".md":
+            continue
+        if not any(target.is_relative_to(root) for root in GRAPH_CONTENT_DIRS):
+            continue
+        target_id = str(target.relative_to(REPO_ROOT))
+        if target_id not in seen:
+            order.append(target_id)
+            seen.add(target_id)
+    return order
+
+
 def build_undirected_adjacency(
     node_ids: list[str], edges: list[dict[str, str]]
 ) -> dict[str, set[str]]:
@@ -1645,6 +1680,8 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         institutions = derive_node_institutions(content)
         if institutions:
             node["institutions"] = institutions
+        if node_type == "roadmap_page":
+            node["route_order"] = extract_route_order(content, page)
         nodes.append(node)
 
         for target in internal_links:
@@ -1656,6 +1693,11 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 seen_edges.add(key)
                 edges.append({"source": page_id, "target": target_id})
 
+    # README 等现存文件未必是图谱节点；动画只能指向真实节点。
+    node_ids = {node["id"] for node in nodes}
+    for node in nodes:
+        if "route_order" in node:
+            node["route_order"] = [key for key in node["route_order"] if key in node_ids]
     return nodes, edges
 
 
@@ -1850,6 +1892,32 @@ def _compute_graph_stats(
     return stats
 
 
+def precompute_graph_layout(graph_path: Path) -> list[list[int]] | None:
+    """用 Node 跑与前端同参的力模拟（scripts/precompute_graph_layout.cjs），返回每节点 [x, y]。
+
+    无 node 或失败时返回 None，页面回退为首屏在线 warmup（layout 字段可选）。
+    """
+    node = shutil.which("node")
+    if not node:
+        print("⚠️ 未找到 node，跳过预计算布局（首屏回退为在线 warmup）")
+        return None
+    script = REPO_ROOT / "scripts" / "precompute_graph_layout.cjs"
+    try:
+        result = subprocess.run(
+            [node, str(script), str(graph_path)],
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=600,
+        )
+    except (subprocess.SubprocessError, OSError) as exc:
+        print(f"⚠️ 预计算布局失败，跳过：{exc}")
+        return None
+    if result.stderr.strip():
+        print(f"   {result.stderr.strip()}")
+    return json.loads(result.stdout)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="生成 wiki 内链图谱与统计。")
     parser.add_argument(
@@ -1885,9 +1953,8 @@ def main() -> None:
         node.pop("_tags", None)
         node.pop("_topics", None)
         node.pop("_topic_source", None)
-        recency = node.pop("_recency", None)
-        if recency:
-            node["recency"] = recency
+        # recency（导出时 mtime）全表同值，不再写出；更新明度 / Top N 用下面的 activity / added
+        node.pop("_recency", None)
         added = added_dates.get(str(node["id"]))
         if added:
             node["added"] = added
@@ -1896,6 +1963,8 @@ def main() -> None:
             node["activity"] = last_activity
 
     institutions = build_institutions_summary(nodes)
+
+    summaries = [str(node.pop("summary", "") or "") for node in nodes]
 
     graph = {
         "nodes": nodes,
@@ -1913,7 +1982,22 @@ def main() -> None:
         f"{len(communities)} communities, {len(institutions)} institutions "
         f"→ {OUT_PATH.relative_to(REPO_ROOT)}"
     )
+    SUMMARIES_PATH.write_text(
+        json.dumps(summaries, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}"
+    )
+    layout = precompute_graph_layout(OUT_PATH)
+    if layout is not None:
+        graph["layout"] = layout
+        OUT_PATH.write_text(
+            json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+        )
+        print(f"✅ link-graph.json: 已写入预计算布局 layout（{len(layout)} 节点）")
 
+    # 图谱页加载进度条的分母：gzip 下发时 Content-Length 是压缩后字节数，页面流里数到的是原始字节数
+    stats["link_graph_bytes"] = OUT_PATH.stat().st_size
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

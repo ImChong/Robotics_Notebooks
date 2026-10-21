@@ -3,16 +3,19 @@ type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-10-08
+updated: 2026-10-16
 related:
   - ../overview/ai-architecture-map.md
   - ../concepts/diffusion-transformer.md
   - ../concepts/diffusion-model.md
   - ../entities/paper-scaledp-scaling-diffusion-transformer-policy.md
   - ../entities/paper-robotic-dit-ingredients-dit-block-policy.md
+  - ../entities/paper-robofft.md
 ---
 
 # Diffusion Policy
+
+在线强化学习微调生成式动作策略的实例见 [RoboFFT](../entities/paper-robofft.md)：它复用扩散去噪目标估计 PPO 所需的替代策略比率。
 
 **Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。
 
@@ -82,7 +85,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 ### DDPM（基于 UNet 的扩散策略）
 - 噪声预测器使用 UNet 架构
 - 支持图像观测（视觉策略）
-- 推理步数多（DDPM 通常 100 步），较慢
+- DDPM 通常需多步去噪（常见配置约 100 步）；实际延迟取决于采样步数、模型规模与运行硬件
 - 适合离线桌面操作任务
 
 ### DDIM + Transformer 变体
@@ -97,7 +100,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 | 多模态 | ❌ 均值化，无法表达 | ✅ 天然支持 |
 | 接触丰富任务 | ❌ 容易失败 | ✅ 显著更好 |
 | 训练速度 | 快 | 较慢（需要扩散步骤） |
-| 推理速度 | 实时 | 需要加速变体（DDIM） |
+| 推理计算 | BC 单次前向 | DP 多步去噪，可用 DDIM 等减少采样步数 |
 | 实现复杂度 | 简单 | 较高 |
 
 ## 在机器人中的应用场景

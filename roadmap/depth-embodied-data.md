@@ -88,6 +88,7 @@ flowchart LR
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
+- [ARSTAG](../wiki/entities/paper-arstag.md) — 协调场景重建、专家生成与数据扩增，把单张图像和任务指令转成仿真训练示范。
 - [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
 
 ### 学完输出什么

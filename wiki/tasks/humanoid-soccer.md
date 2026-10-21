@@ -2,9 +2,10 @@
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
 status: drafting
-updated: 2026-09-21
+updated: 2026-10-20
 related:
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+  - ../entities/paper-joga-humanoid-soccer.md
   - ./locomotion.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../concepts/soccer-field-simulation.md
@@ -45,6 +46,9 @@ sources:
   - ../../sources/sites/humanoid-kick-vision-driven-soccer.md
   - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
+  - ../../sources/papers/joga_learning_agile_humanoid_soccer.md
+  - ../../sources/sites/joga-humanoid-soccer.md
+  - ../../sources/repos/joga-neck.md
 summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
 ---
 
@@ -86,6 +90,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - **[SkillX](../entities/paper-skillx-humanoid-soccer.md)**（arXiv:2609.06718，**CoRL 2026**）：松延动力×清华；命令条件 **统一多技能** actor + 技能专属 AMP/critic + 物体感知时序编码；E1 真机 MoCap/机载 ZED2i+YOLOv8；Hard 组合仿真 **81.7%**（[项目页](https://yzc0731.github.io/SkillX/)）；**代码待发布**。
 - **[视觉特权表征运球](../entities/paper-vision-dribbling-humanoid-soccer-privileged-representation.md)**（arXiv:2607.12702）：**RMA 式两阶段** — 特权编码器学对手感知运球，再蒸馏 **CNN+GRU 深度 latent**；Booster T1 仿真下无障碍 **100%**、静态障碍 **96%**、动态抢球 **46%** SR。
 - **[Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)**（Science Robotics 2026 / arXiv:2511.03996）：**虚拟感知 + encoder-decoder** 把机载视觉误差写进统一 RL 环；AMP 运动先验；前场约 **90%** 踢球 SR；Zenodo **部分开源** 仿真训练与 checkpoint。
+- **[Joga](../entities/paper-joga-humanoid-soccer.md)**（MIT CSAIL，2026 preprint）：把 2-DoF 主动相机颈部并入全身策略，以 PAM 对齐球检测误差、WB-UAN 对齐整机位置执行，再从运球状态分布微调传球与射门；Unitree G1 持续运球约 **1.71 m/s**、接住最高 **5.2 m/s** 来球。公开仓库仅覆盖相机颈部硬件，策略代码未见公开。
 
 ### 分层状态机 + 技能库
 将比赛逻辑划分为多个状态（寻球、追球、对齐、踢球），每个状态对应一个底层控制器。

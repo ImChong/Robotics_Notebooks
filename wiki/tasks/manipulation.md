@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-15
+updated: 2026-10-19
 related:
+  - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
@@ -447,7 +448,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 ### Agent 与技能编排
 
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
-- [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
+- [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K；官方代码 NVlabs/ASPIRE v1.0 已开源）
 - [EmbodiedSkills](../entities/paper-embodiedskills.md) — AgentLoop + skill contract；Qwen3-VL + π₀.₅；RoboTwin 86.20% / LIBERO 97.40%（arXiv:2609.01281，已开源）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — Graph-as-Policy 多 agent harness：ROS 式计算图 + MORSL 技能 + 仿真排练自学习，面向 [变体自动化](../concepts/variational-automation.md)（arXiv:2607.05369）
 
@@ -548,6 +549,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 LLM 直接控制 vs 监督 VLA
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 - [Blind Grasp Reflex](../entities/paper-blind-grasp-reflex.md) — 将手臂到达与只依赖本体感觉的灵巧手抓取分开
+- [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
 
 ## 参考来源
 

@@ -17,13 +17,15 @@ function harness(failure) {
     show() { if (failure === 'show') throw new Error('WebGL disabled'); },
     hide() { if (failure === 'cleanup') throw new Error('partial renderer'); },
     syncFilters() { if (failure === 'cleanup') throw new Error('filter failure'); },
+    // 进入 3D 时按侧栏 / 固定卡片状态重放或清除高亮（B20）
+    clearSidebarHighlight() {},
   };
   const context = vm.createContext({
-    console: { warn() {} }, spatialViewMode: '2d', timelineAnimating: false,
+    console: { warn() {} }, spatialViewMode: '2d', timelineAnimating: false, routeTrace: null,
     window: { RNGraph3D: { isAvailable: () => failure !== 'library' }, alert: (s) => alerts.push(s) },
     graph3dView: null, graphCanvas3d: { hidden: true }, graph3dHoverNode: null,
     viewMode2dBtn: button(), viewMode3dBtn: button(), graphHint2dEl: {}, graphHint3dEl: {},
-    isMobile: false, pinnedNode: null, SPATIAL_VIEW_KEY: 'view',
+    isMobile: false, pinnedNode: null, sidebarNode: null, applyNodeNeighborHighlight() {}, SPATIAL_VIEW_KEY: 'view',
     localStorage: { setItem: (k, v) => storage.set(k, v) },
     svg: { style: (_, value) => { display = value; } },
     // G4：2D 的边画在独立 canvas 上，显隐必须与 SVG 同进退

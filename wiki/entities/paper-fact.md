@@ -15,6 +15,7 @@ arxiv: "2608.10232"
 code: "https://github.com/Bariona/FACT"
 related:
   - ../concepts/world-action-models.md
+  - ./paper-fact-egoforce-human-dexterity.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-action-consequence-technology-map.md
@@ -34,6 +35,8 @@ summary: "FACT（arXiv:2608.10232，UCSD）：因果 Joint WAM，先动作后未
 # FACT（Failure-Aware Causal Training · arXiv:2608.10232）
 
 **FACT**（*FACT: Failure-Aware Causal Training for World-Action Models*，[arXiv:2608.10232](https://arxiv.org/abs/2608.10232)）由 **加州大学圣地亚哥分校（UCSD）** 提出（Peng\* / Liang\* / Yan / Hansen / Wang）：把 WAM 的未来预测改成 **动作条件后果建模**，使失败 rollout 监督「坏动作导致什么」，而不是污染策略模仿。[项目页](https://fact-wam.github.io/) · [代码](https://github.com/Bariona/FACT) · [权重](https://huggingface.co/Bariona/fact-wam)。
+
+> **同名缩写说明：** 本页是 Failure-Aware Causal Training（arXiv:2608.10232）；另有一项独立的 [FACT（EgoForce · 力–动作联合精修，arXiv:2610.19155）](./paper-fact-egoforce-human-dexterity.md)，主题是人类触觉示范与灵巧操作。
 
 ## 一句话定义
 

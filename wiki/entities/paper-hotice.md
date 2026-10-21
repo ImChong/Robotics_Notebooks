@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, reinforcement-learning, cluttered-navigation, sim2real, usc]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-18
 arxiv: "2609.25363"
 related:
   - ../tasks/loco-manipulation.md
@@ -11,10 +11,12 @@ related:
   - ../entities/paper-tango-vla.md
   - ../entities/unitree-g1.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md
   - ../../sources/papers/hotice_arxiv_2609_25363.md
   - ../../sources/sites/hotice2027-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "HOTICE（arXiv:2609.25363，USC）：HOD-PF 人形/物体解耦势场 + dual-agent RL + specialist 蒸馏；MuJoCo 88.5% SR、G1 真机 cluttered 搬运；代码待发布。"
 ---
 

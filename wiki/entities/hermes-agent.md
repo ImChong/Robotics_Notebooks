@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-09-23
+updated: 2026-10-15
 related:
   - ./deepseek-harness.md
   - ./ponytail.md
@@ -18,6 +18,7 @@ related:
   - ./superpowers-obra.md
   - ./sensenova-skills.md
   - ./agent-reach.md
+  - ./openviking-context-database.md
   - ./cli-anything.md
   - ./deeptutor.md
   - ./philia.md
@@ -134,6 +135,7 @@ flowchart TB
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [SkillCorpus](paper-skillcorpus.md) — 社区技能策展语料；可与 Hermes 技能目录对照「精品库 vs 生态语料」
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
+- [OpenViking 上下文数据库](./openviking-context-database.md) — 将 Agent 的资源、记忆与技能组织为可浏览和检索的独立上下文库
 - [CLI-Anything（HKUDS）](cli-anything.md) — 专业软件 → agent-native CLI / Hub / SKILL（可装入 Hermes）
 - [DeepTutor（HKUDS）](deeptutor.md) — 辅导工作区；My Agents 可 live consult Hermes
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Hermes 工具扩展所依的开放协议

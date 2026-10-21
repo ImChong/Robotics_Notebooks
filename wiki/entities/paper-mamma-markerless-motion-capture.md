@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion, eth, max-planck]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-20
 arxiv: "2506.13040"
 venue: "2026 · CVPR Oral"
 code: https://github.com/cuevhv/mamma
@@ -45,6 +45,7 @@ summary: "MAMMA（CVPR 2026 Oral）：多视角 markerless 管线，用 MammaNet
 ## 为什么重要
 
 - **降低高质量 MoCap 门槛：** 相对光学 marker 系统（贴标、清 swapped marker、MoSh++ 后处理），MAMMA 强调 **像素级全自动**；论文报告 held-out marker 误差与 Vicon 管线仅差 **~1.6 mm**，动画视觉难区分。
+- **速度说法要按口径读：** MPI 官方新闻稿称整套处理比传统 marker 系统的**人工工作流快近 3 倍**，并概括精度差异不到 1 mm；这不是模型推理速度指标。论文对 37 个 held-out markers 的可复核比较报告约 **1.6 mm**，详见[新闻稿来源归档](../../sources/sites/mamma-tue-mpg-de.md)。
 - **填补双人交互空白：** 多数学术 HMR / markerless 方法面向单人稀疏关键点；MAMMA 用 **mask 条件化 + per-landmark query + 可见性估计** 处理拥抱、舞蹈、搬运等 **人–人遮挡**。
 - **机器人上游数据源：** 输出 **SMPL-X 序列** 可直接进入 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)（与 [AMASS](./amass.md) 棚拍 SMPL 库、[EasyMocap](./easymocap.md) 多视角工具箱、[GVHMR](./gvhmr.md) 单目估计形成 **研究级双人 / 标定多相机 / 单目便捷 / 大库离线** 对照）；相对 [FreeMoCap](./freemocap.md) 更偏 **研究级精度与 SMPL-X 参数**，而非教学向低成本 GUI。
 - **可复现工程栈：** 开源 `ma_cap → ma_masks → ma_2d → ma_3d → ma_vis` CLI + 浏览器 GUI，附带 MAMMASyn 训练数据与 MAMMAEval 基准。
@@ -160,6 +161,7 @@ flowchart TB
 
 - [MAMMA 论文归档（arXiv:2506.13040）](../../sources/papers/mamma_arxiv_2506_13040.md)
 - [MAMMA 项目页](../../sources/sites/mamma-tue-mpg-de.md)
+- [Max Planck Society 新闻稿（2026-10-15）](https://www.mpg.de/27039732/avatars-without-marker-suits-using-only-smartphone-cameras)
 - [cuevhv/mamma 代码索引](../../sources/repos/mamma.md)
 
 ## 推荐继续阅读

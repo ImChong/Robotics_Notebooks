@@ -163,7 +163,7 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 - 仓库与说明：[sources/repos/mimickit.md](../../sources/repos/mimickit.md)（含 GitHub、Stanford 项目页与 arXiv 索引）
 - tan_norm 观测编码：[sources/repos/mimickit_tan_norm.md](../../sources/repos/mimickit_tan_norm.md)
-- 组内学习笔记（流程与代码导读，非官方文档）：[resources/train/MimicKit/MimicKit.md](../../resources/train/MimicKit/MimicKit.md)、[resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md](../../resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md)
+- 组内学习笔记（流程与代码导读，非官方文档）当前未随本知识库发布；可先参考上方官方仓库与论文阅读笔记。
 
 ## 推荐继续阅读
 

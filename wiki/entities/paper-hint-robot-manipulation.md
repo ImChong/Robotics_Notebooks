@@ -110,6 +110,9 @@ OOD 设置下仍有显著提升（如插孔 IS 26.7%→90.0%）。
 
 ## 关联页面
 
+- [DreamCan：长程操作的稀疏视觉规划](./paper-dreamcan-sparse-visual-planning.md) — 通过可达的视觉子目标组织长程操作。
+- [SteerAct：少样本时间维动作引导](./paper-steeract-few-shot-temporal-steering.md) — 以少量成功/失败轨迹在推理时调整冻结动作模型。
+
 - [VLA](../methods/vla.md)
 - [Manipulation](../tasks/manipulation.md)
 - [开源系统可靠性 8 篇地图](../overview/open-source-system-reliability-8-papers-technology-map.md)

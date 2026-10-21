@@ -2,7 +2,7 @@
 type: concept
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-09-21
+updated: 2026-10-18
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
@@ -17,6 +17,8 @@ related:
   - ../entities/andrej-karpathy.md
   - ../entities/paper-effective-degree.md
 sources:
+  - ../../sources/blogs/alexwang_associative_memory.md
+  - ../../sources/repos/keawang_associative_memory_blog.md
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/books/udl_book.md
   - ../../sources/repos/rasbt_llms_from_scratch.md
@@ -62,6 +64,16 @@ $$
 - 自注意力对顺序不敏感，需注入 **位置编码（PE）** 提供序列位置信息。
 - 每层 = 多头注意力 + 前馈网络，外加 **残差连接 + LayerNorm**（与 [深度学习基础](./deep-learning-foundations.md) 中的残差思想一致），使深层堆叠可训练。
 
+## 联想记忆视角：参数记忆与上下文记忆
+
+[Alex Wang 教程](../../sources/blogs/alexwang_associative_memory.md)把查询理解为“按键的相似度加权取值”：外积线性层累加键值，MLP 用非线性门控减少检索干扰，自注意力则从上下文构造键值。MLP 的键值在参数中，自注意力的键值随输入变化。
+
+工程上可据此区分两类问题：修改参数中的知识，需要训练或编辑权重；补充当前任务信息，可以增加上下文，但仍受计算、显存和检索质量限制。该区分是理解框架，不是两种机制完全独立的保证。
+
+**适用边界：** 教程的容量估计假设随机键值、用已存储键查询，并以干扰与信号等大为阈值；不能把结果当作训练后模型的事实记忆上限。文中的共享输入投影 SwiGLU 实验也不等于任意实际 SwiGLU 层。
+
+**复现入口：** [公开实验仓库归档](../../sources/repos/keawang_associative_memory_blog.md)；README 提供 `uv run crosstalk.py`。本次核对源码入口，未运行数值实验。
+
 ## 与机器人技术的联系
 
 - **策略网络骨干**：[人形策略网络架构](./humanoid-policy-network-architecture.md) 常以 Transformer 编码本体感受/视觉/历史动作序列。
@@ -82,6 +94,8 @@ $$
 - [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
 
 ## 参考来源
+- [Alex Wang：联想记忆与 Transformer](../../sources/blogs/alexwang_associative_memory.md)
+- [配套数值实验代码](../../sources/repos/keawang_associative_memory_blog.md)
 - [Attention Is All You Need（论文实体）](../entities/paper-attention-is-all-you-need.md)
 - [Attention Is All You Need 来源归档（arXiv:1706.03762）](../../sources/papers/attention_is_all_you_need.md)
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)

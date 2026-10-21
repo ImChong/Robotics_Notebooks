@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-10
+updated: 2026-10-21
 related:
 - ./physical-rsi.md
 - ./paper-gpt-6-astra-embodied-policy.md
@@ -32,6 +32,7 @@ related:
 - ./paper-prm-as-a-judge.md
 - ./xiaomi-robotics-1.md
 - ./paper-robodawn.md
+- ./paper-hexashell.md
 - ./paper-coap-embodied-turing-machines.md
 - ./simate.md
 - ./isaac-gym-isaac-lab.md
@@ -45,6 +46,8 @@ sources:
 - ../../sources/sites/robodojo-benchmark.md
 - ../../sources/repos/robodojo.md
 - ../../sources/repos/xpolicylab.md
+- ../../sources/papers/hexashell_arxiv_2610_23479.md
+- ../../sources/repos/hexashell.md
 - ../../sources/blogs/robodojo_open_longterm_eval_2026-07.md
 - ../../sources/sites/mmlab-physical-rsi.md
 - ../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md
@@ -213,7 +216,10 @@ sequenceDiagram
 
 ## 关联页面
 
+- [AA-Robotics v0.1](./aa-robotics.md) — coding-agent 驱动单臂真机的八项桌面评测；与 RoboDojo 的任务集合、硬件、评分口径不同，不可直接比数值。
+
 - [COAP：具身图灵机与代码策略](./paper-coap-embodied-turing-machines.md) — RoboDojo 42 项双臂仿真任务上的论文报告；策略源码截至 2026-10-10 未提供公开入口。
+- [HexaShell](./paper-hexashell.md) — 薄 Harness 编码 Agent；论文新布局复测 39.7%，官方项目 README 报 46.9% / 53.2，评测口径分开记录。
 
 - [XPolicyLab](./xpolicylab.md) — 策略适配、O(N+M) 契约与上榜开源口（arXiv:2608.09892）
 - [VLA](../methods/vla.md) — 通用操纵策略方法总览

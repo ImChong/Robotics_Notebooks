@@ -242,6 +242,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 > 部署后的真机在线适配自成一段窄口议题（低秩残差 / 生成兜底 / CBF 安全壳三条路径），单列于 [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md)。
 
+- **执行器残差与接触对齐（人形）：** [Contact-UAN](../entities/paper-contact-uan.md) 先从本体感知估计接触一致的仿真重置状态，再以约 6.5 分钟 G1 行走数据学习执行器残差；冻结 UAN 后训练多种任务策略，部署时仅运行下游策略。适合补充「域随机化覆盖不足、显式辨识难建模」的执行器 gap 路线，复现需自采 G1 数据。
 - **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
 - **训练期电机包络约束（轮足零样本）：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）将 **DC 电机速度–扭矩硬约束** 写入 **P3O**，把仿真违规从 **>90%** 压到 **<3.5%**，支撑 Go2-W **高台攀爬** 等极限机动零样本上真机而不触发过流保护——适合讨论「**约束即 sim2real 安全层**」而非仅域随机化。
 - **轮足高动态避障 + DR（动捕状态）：** [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md)（arXiv:2604.23761）在 Isaac Lab 用 TABLE II 式域随机化（质量/惯量/摩擦/执行器增益/外扰等）支撑 **M20** 真机反射规避；真机 ASR **≈59%** 显著低于仿真，作者归因硬件上限与残余 gap——适合对照「**DR 必要但不足以抹平极限机动**」。

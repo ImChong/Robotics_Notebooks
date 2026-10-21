@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-21
 related:
   - ../entities/paper-kamino.md
   - ../concepts/rl-runner.md
@@ -48,6 +48,7 @@ related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/skild-physical-self-play.md
   - ../entities/ai-engineering-from-scratch.md
+  - ../entities/paper-minute-scale-microrobot-navigation.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -181,6 +182,7 @@ flowchart TD
 - 人形机器人全身控制
 - 机械臂操作
 - 多指灵巧手操作
+- **微型机器人导航：** [Minute-scale training for microrobot navigation](../entities/paper-minute-scale-microrobot-navigation.md) 通过向量化血管仿真和 TSR 奖励，将导航策略训练压缩至 10 分钟以内，并在不同微机器人形态与未见场景中验证零样本迁移。
 
 ## 优势
 
@@ -270,6 +272,7 @@ flowchart LR
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷二 RL 算法面试速查；腿足落地对照卷六与本库 locomotion 页
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — RL 作为奖励信号主线，与 IL / LfV / VLA / 持续学习对照
 - [深度学习基础](../concepts/deep-learning-foundations.md)
+- [robomimic](../entities/robomimic.md) — 在固定示范数据上统一对照 BCQ / CQL / IRIS 等离线 RL 与 BC 系方法的框架
 - [Effective Degree（论文实体）](../entities/paper-effective-degree.md) — 函数空间简洁正则；Procgen 上对 PPO actor 提升未见 level 泛化（ICML 2026）
 - [Richard Sutton](../entities/richard-sutton.md) — RL 奠基人与一手资料总入口
 - [Sutton & Barto RL 教材](../entities/sutton-barto-rl-book.md) — 理论标准教材

@@ -3,11 +3,11 @@ type: entity
 project_id: unitas-3d-native-wam
 tags: [paper, wam, world-model, manipulation, vla, 3d, scene-flow, cuhk-sz, dexforce, sysu, scut]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-20
 arxiv: "2610.12099"
 code: https://github.com/DexForce/UNITAS
 project: https://unitas-wam.github.io
-summary: "UNITAS：把观测、动作与场景动力学统一到同一度量 3D 坐标系的 1.7B 世界动作模型，用点轨迹（action flow / scene flow）+ 单 token 轨迹 tokenizer + 世界对齐 3D 位置编码，LIBERO 99.8%、RoboTwin 2.0 约 93%，场景预测 Moving ADE 比 PointWorld 低 35%；代码仓库截至 2026-10-12 仍是占位。"
+summary: "UNITAS：把观测、动作与场景动力学统一到同一度量 3D 坐标系的 1.7B 世界动作模型，用点轨迹（action flow / scene flow）+ 单 token 轨迹 tokenizer + 世界对齐 3D 位置编码；LIBERO 99.8%、RoboTwin 2.0 约 93%。官方已发布推理/评测代码与权重，训练代码和数据集仍未发布。"
 related:
   - ../overview/frontier-manipulation-2026-10-05-10-09.md
   - ../concepts/world-action-models.md
@@ -102,11 +102,11 @@ flowchart LR
 
 ## 源码运行时序图
 
-不适用：官方仓库 [DexForce/UNITAS](https://github.com/DexForce/UNITAS) 截至 2026-10-12 只有 README、`assets/overview.png` 与 `.gitignore`（2 次提交），没有训练/推理脚本，故无法对齐真实目录画时序图。
+官方仓库 [DexForce/UNITAS](https://github.com/DexForce/UNITAS) 已发布推理与评测代码。README 提供场景流推理脚本 `src/unitas/scene_flow/inference.py`，并用 `visualize.py` 在 Viser 中交互查看预测轨迹；训练代码与数据集仍未发布。
 
 ## 工程实践
 
-- **复现门槛高：** 官方权重、训练代码、数据集均标 “Coming soon”；预训练用 64 张 64 GiB DCU，自行复现需先自建 3D 点轨迹数据管线（URDF 采样 + 正运动学 + 深度体素化）。
+- **复现边界：** 官方已发布模型权重与推理/评测代码，但训练代码和训练数据集仍未公开；论文报告预训练使用 64 张 64 GiB BW1000_H DCU。
 - **部署选择：** 只做动作时延迟约 56 ms，需要场景预测时必须提供当前 3D 查询点坐标（来自深度或外部几何），延迟升至 300 ms 量级。
 - **无深度相机场景：** 路由 PE 在 LIBERO-Plus 上只比真值深度低 0.25 点，可作为缺深度时的替代。
 
@@ -119,7 +119,7 @@ flowchart LR
 3. **推理可按需裁剪** — 仅动作约 56 ms，加场景预测到 300+ ms，按任务选择分支。
 4. **对比口径要谨慎** — 与 Fast-WAM、Motus 的训练数据、预训练规模不同，参数少不等于同条件更优。
 5. **真机仅两任务各 20 次** — 85% 平均值置信区间宽，不要外推为通用能力。
-6. **先看是否发布再规划复现** — 截至 2026-10-12 仓库为空壳。
+6. **推理可用不等于训练可复现** — 官方已有权重与推理/评测代码，训练代码及数据集仍未发布。
 
 ## 与其他工作对比
 
@@ -132,7 +132,7 @@ flowchart LR
 
 ## 局限与风险
 
-- **开源状态：** 代码仓库为占位，权重标 Coming soon，无许可证；项目页链接了仓库（见 [unitas-project.md](../../sources/sites/unitas-project.md)）。
+- **开源状态（2026-10-20 核验）：** 已有 Apache-2.0 许可、模型权重及推理/评测代码；训练代码与数据集未发布（见 [unitas-project.md](../../sources/sites/unitas-project.md)）。
 - **评测局限：** 论文无独立局限节；真机只有 Organize Books 与 Pack the Ball；论文投稿状态为 Under review。
 - **依赖几何输入：** 场景预测需要深度或外部几何提供查询点；长时程交互预测被作者列为未来工作。
 - **单位信息：** arXiv 页未列单位，机构取自项目页。
@@ -156,5 +156,5 @@ flowchart LR
 ## 推荐继续阅读
 
 - [UNITAS 项目页](https://unitas-wam.github.io)
-- [UNITAS GitHub（占位）](https://github.com/DexForce/UNITAS)
+- [UNITAS GitHub（推理/评测代码与权重）](https://github.com/DexForce/UNITAS)
 - [arXiv HTML 全文](https://arxiv.org/html/2610.12099v1)

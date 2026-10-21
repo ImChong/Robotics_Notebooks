@@ -195,8 +195,10 @@ flowchart LR
 - [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md) — 视觉/手持手指采集
 - [TeleDexter](../wiki/entities/paper-teledexter.md) — **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
 - [NestDex](../wiki/entities/paper-nestdex.md) — **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
+- [GLIDE](../wiki/entities/paper-glide-beyond-human-demonstration.md) — 从任务描述和遥操作代码推断失败模式，把规则护栏插入采集与部署过程，帮助完成难以直接示范的动作。
 - [OSMO 开源触觉手套（论文笔记）](../wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) 与 [ByteDexter 20-DOF 灵巧手遥操作（论文笔记）](../wiki/entities/paper-notebook-dexterous-teleoperation-of-20-dof-bytedexter-han.md) — 触觉手套 / 高 DOF 手
 - [HapMorph](../wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) 与 [Touch Dreaming 触觉策略](../wiki/methods/humanoid-transformer-touch-dreaming.md) — 操作员侧力触觉显示 / 机器人侧触觉进策略
+- [Touch2Robot](../wiki/entities/paper-touch2robot.md) — 把手套触觉、人体动作和物体跟踪用于实时重定向，让示范者在采集时看到目标机器人的接触反馈。
 - 灵巧手硬件谱系：[Shadow Hand](../wiki/entities/shadow-hand.md)、[Allegro Hand](../wiki/entities/allegro-hand.md)、[RUKA v2](../wiki/entities/ruka-v2-hand.md)、[ORCA Hand](../wiki/entities/orca-hand.md)、[mimic hand M1](../wiki/entities/mimic-hand-m1.md)、[MIDAS Hand](../wiki/entities/midas-hand.md)、[Handroid](../wiki/entities/handroid.md)
 - [CoordEx 灵巧人形 loco-manipulation](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — 全身 + 灵巧手协同遥操作
 

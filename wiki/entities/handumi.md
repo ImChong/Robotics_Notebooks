@@ -3,7 +3,7 @@ type: entity
 title: HandUMI
 tags: [hardware, software, teleoperation, dual-arm, bimanual, data-collection, robot-free, retargeting, lerobot, open-source, parallel-gripper, robonet]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 related:
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md
@@ -16,6 +16,7 @@ related:
   - ./paper-kiwi-kinematic-interface-wild.md
   - ./xyz-deux.md
   - ./twindex.md
+  - ./paper-fomi.md
 sources:
   - ../../sources/repos/handumi-sw.md
   - ../../sources/repos/handumi-hw.md
@@ -177,6 +178,7 @@ flowchart LR
 - [HiFi-UMI / HiFi-UMI-2K](./paper-hifi-umi.md) — 高保真双臂 UMI 2000 h；zero-robot 后训练（数据已开）
 - [DEUX / Glove X（XYZ）](./xyz-deux.md) — 商业 1:1 手套绑定对照（闭源、不可跨臂迁移）
 - [TwinDEX](./twindex.md) — 三指外骨骼–同构手共设计对照（闭源、无软件 retarget）
+- [FOMI](./paper-fomi.md) — 剪刀式机构直接传递交互力的手持力反馈采集接口，兼作遥操作
 
 ## 参考来源
 

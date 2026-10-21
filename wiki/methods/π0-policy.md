@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-10-09
+updated: 2026-10-16
 related:
   - ../entities/paper-pi0.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
@@ -77,7 +77,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [LWD（Learning while Deploying）](./lwd.md) — 其 QAM 组件正是为 flow-based 动作头（如 π₀）设计的策略抽取方法
 - [STEAM（自监督时序集成 advantage 建模）](../entities/paper-steam-advantage-modeling.md) — 以 π₀ 为策略骨干，用 CFGRL 做离线后训练提纯
 - [FM-VLA（力觉记忆 VLA）](../entities/paper-fm-vla.md) — 以 π₀.₅ 为骨干，在 flow-matching 动作专家后缀注入力觉长程记忆 token
-- [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（代码已开源）
+- [χ₀ / kai0](../entities/paper-kai0.md) — 在 openpi π₀.₅ 上做 MA/SA/TDA 分布对齐的协同叠衣配方（每任务约 20 h 演示 + 8×A100 全参微调，成功率相对开源 π₀.₅ 约 +250%；代码已开源）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — flow/扩散动作头抬升 IL 与 offline RL 的讲者坐标（Simons 2026）
 - [SPD](../entities/paper-spd.md) — 灵巧真机消融：π0 风格单帧长 chunk 弱于历史+短 chunk（CoRL 2026）
 - [DexHoldem](../entities/paper-dexholdem.md) — ShadowHand 扑克真机：π₀ / π₀.₅ SPSR 并列 47.5%，芯片 pull 仍弱

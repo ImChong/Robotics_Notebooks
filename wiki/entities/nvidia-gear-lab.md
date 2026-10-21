@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-18
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
@@ -94,7 +94,7 @@ flowchart TB
 |------|------|----------|
 | **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
 | **ENPIRE** | 真机 coding-agent 策略自改进 harness | [enpire.md](../methods/enpire.md) |
-| **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库 | [aspire.md](../methods/aspire.md) |
+| **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库（arXiv:2607.00272；NVlabs/ASPIRE 代码已开源） | [aspire.md](../methods/aspire.md) |
 | **GaP** | Graph-as-Policy 多 agent harness + 变体自动化 benchmark | [paper-gap-graph-as-policy.md](./paper-gap-graph-as-policy.md) |
 | **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |

@@ -6,6 +6,7 @@ updated: 2026-10-06
 arxiv: "2602.15922"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
+  - ./dreamlabs-dream-1.md
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_dreamzero-world-action-models-are-zero-shot-poli.md
@@ -32,6 +33,8 @@ DreamZero 提出 World Action Model (WAM)：在预训练视频扩散骨干上联
 | KV-cache | Key-Value Cache | 自回归推理缓存，避免重复计算历史 token |
 
 ## 为什么重要
+
+Dream Labs 后续公开了 [Dream-1](./dreamlabs-dream-1.md)，将其 WAM 路线以公共 API 形式提供。Dream-1 项目页将 DreamZero 研究列为团队的起点，但未披露两者之间具体的检查点继承关系。
 
 - **路线图顶点**：从 PPO → 模仿 → 扩散 → 世界模型，WAM 是「世界模型直接当策略」的落地形态
 - **GR00T 2 技术源头**：NVIDIA 称 GR00T 2 基于 DreamZero 研究，MolmoSpaces / RoboArena 榜单领先

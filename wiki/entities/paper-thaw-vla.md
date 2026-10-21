@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, representation-distillation, manipulation, uw-madison, uiuc]
 status: complete
-updated: 2026-09-24
+updated: 2026-10-18
 arxiv: "2609.24682"
 related:
   - ../methods/vla.md
@@ -10,10 +10,12 @@ related:
   - ../concepts/world-action-models.md
   - ../entities/paper-gift-intermediate-feature-training.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/papers/thaw_vla_arxiv_2609_24682.md
   - ../../sources/sites/thaw-vla-trung-dt-com.md
   - ../../sources/repos/thaw-vla.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "THAW-VLA（UW–Madison/UIUC, arXiv:2609.24682）：离线缓存 Cosmos3-Nano 特征，对 0.8B QwenGR00T 加 cosine 对齐；部署图与 baseline 相同，LIBERO 97.9%、真机 +10 pt。"
 ---
 

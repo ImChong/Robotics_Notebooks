@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-09-28
+updated: 2026-10-19
 related:
   - ./π0-policy.md
   - ./vla.md
@@ -15,6 +15,7 @@ related:
   - ../entities/perceptron-isaac-05.md
 sources:
   - ../../sources/papers/pi07.md
+  - ../../sources/sites/acastapaloma-pi07-training-guide.md
 summary: "π₀.7 是 Physical Intelligence 的通才机器人 VLA：用多模态提示（子任务语言、片段元数据、控制模态、视觉子目标）在训练时对齐异质数据，在推理时 steer 策略，从异质数据中蒸馏出可与 RL 专精模型比肩的开箱操作性能，并报告组合任务与跨本体泛化的实证迹象。"
 ---
 
@@ -103,6 +104,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — 论文 + 官方博客的统一归档
+- [Kuan Yi Wang 的 π0.7 Training Walkthrough](../../sources/sites/acastapaloma-pi07-training-guide.md) — 第三方图解补充
 - Physical Intelligence, *$\pi_{0.7}$ : a Steerable Generalist Robotic Foundation Model with Emergent Capabilities*, arXiv:2604.15483 — <https://arxiv.org/abs/2604.15483>
 - Physical Intelligence, *π0.7: a Steerable Model with Emergent Capabilities*（博客）— <https://www.pi.website/blog/pi07>
 

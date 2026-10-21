@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, mondo-robotics, hkust, hkust-gz, ustc]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: "2606.08059"
 venue: "CoRL 2026 · submission"
 code: https://github.com/Mondo-Robotics/PMT
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/unitree-g1.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ./paper-p-bfm.md
 sources:
   - ../../sources/papers/perceptive_bfm_corl_2026.md
   - ../../sources/sites/perceptive-bfm-github-io.md
@@ -237,6 +238,7 @@ sequenceDiagram
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [NEXUS（Research Preview）](./nexus-humanoid.md) — SJTU 预告：感知 foundation policy + 跨域全身 teleop；**待发布**，勿与本文混读
 - [Unitree G1](./unitree-g1.md)
+- [P-BFM](./paper-p-bfm.md) — 同面向感知条件全身控制；P-BFM 以地形无关意图空间、FB 学习和 ERI 为核心
 
 ## 推荐继续阅读
 

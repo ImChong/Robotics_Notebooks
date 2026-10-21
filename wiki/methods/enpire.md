@@ -3,7 +3,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-18
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
@@ -146,7 +146,7 @@ flowchart TB
 
 - [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) — 把 EN–PI–R–E 落到环境前提、范式选型与机队 scaling 的实操页
 - ENPIRE 官方项目页：<https://research.nvidia.com/labs/gear/enpire/>
-- [ASPIRE](./aspire.md) — GEAR 姊妹工作：持续学习技能库 + code-as-policy
+- [ASPIRE](./aspire.md) — GEAR 姊妹工作：持续学习技能库 + code-as-policy（arXiv:2607.00272，官方代码已开源）
 - RoboCasa 论文（仿真日常操作基准）：<https://arxiv.org/abs/2406.02545>
 - Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
 

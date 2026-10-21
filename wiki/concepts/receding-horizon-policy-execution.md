@@ -2,7 +2,7 @@
 type: concept
 tags: [imitation-learning, action-chunking, deployment, receding-horizon, diffusion-policy, act, control]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-16
 summary: "IL 策略的滚动执行：预测一段 action sequence，只执行前缀，再用新观测重规划；Diffusion Policy 是经典 receding horizon，ACT 的 temporal ensemble 是重叠融合，二者不可混称。"
 sources:
   - ../../sources/papers/receding_horizon_il_primary_refs.md
@@ -21,6 +21,7 @@ related:
   - ./control-inference-frequency-decoupling.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
   - ../methods/model-predictive-control.md
+  - ../entities/paper-acro.md
   - ../entities/paper-robotic-dit-ingredients-dit-block-policy.md
 ---
 
@@ -148,6 +149,7 @@ sequenceDiagram
 - [MPC（模型预测控制）](../methods/model-predictive-control.md) — 控制论 receding horizon 对照
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
 - [DiT-Block Policy](../entities/paper-robotic-dit-ingredients-dit-block-policy.md) — H=100 action chunk + 10 步确定性采样 + temporal ensembling 的执行配方
+- [ACRO](../entities/paper-acro.md) — 固定 VLA 之上的恢复层：Critic 决定何时中止、回退到哪里再续做，回退步数计入物理预算
 
 ## 参考来源
 

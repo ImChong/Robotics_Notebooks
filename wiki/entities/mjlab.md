@@ -18,6 +18,7 @@ related:
   - ./legged-gym.md
   - ./mjlab-playground.md
   - ./amp-mjlab.md
+  - ./open-beni.md
   - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
   - ./booster-mjlab.md
@@ -106,6 +107,7 @@ mjlab 架构
 
 ## 关联页面
 
+- [Open-BENI](./open-beni.md) — BENI 策略训练与浏览器端 MuJoCo + ONNX 演示
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 [MuJoCo Warp](./mujoco-warp.md)）
 - [MuJoCo Warp](./mujoco-warp.md) — 实际 GPU 刚体后端；PGS/PLUGIN 缺口与 AD 未通见该页
 - [mjviser](./mjviser.md) — 基于 Viser 的 MuJoCo 浏览器查看器；负责可视化与交互，不是训练框架

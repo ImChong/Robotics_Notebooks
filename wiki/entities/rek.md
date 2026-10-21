@@ -1,8 +1,10 @@
 ---
 type: entity
-tags: [humanoid, teleoperation, vr, entertainment-robotics, sports, unitree]
+project_id: rek
+project: https://rek.com/sim
+tags: [humanoid, teleoperation, vr, entertainment-robotics, sports, unitree, simulation]
 status: complete
-updated: 2026-07-24
+updated: 2026-10-18
 related:
   - ./unitree-g1.md
   - ./unitree.md
@@ -12,7 +14,8 @@ related:
   - ../methods/open-duck-mini.md
 sources:
   - ../../sources/sites/rek-com.md
-summary: "REK（Robot Embodied Kombat）是以 VR 遥操作 Unitree 人形进行全接触擂台格斗的现场联赛与机器人租赁品牌，把《铁甲钢拳》式 embodied 竞技做成可售票观赛产品。"
+  - ../../sources/sites/rek-simulator.md
+summary: "REK（Robot Embodied Kombat）运营真人遥操作的人形机器人格斗联赛，并提供使用与真实机器人相同 AI 的模拟器；模拟器已扩展至 iPhone/iPad TestFlight 测试，优秀选手可争取参加线下赛事。"
 ---
 
 # REK（Robot Embodied Kombat · 人形格斗联赛）
@@ -97,9 +100,22 @@ flowchart LR
 | **策略来源** | 常接 RL tracking 或 VLA 下层 | **人类实时决策** |
 | **数据用途** | 训练模仿学习 | 非公开强调 IL 数据集 |
 
+## 数字模拟器与 iOS 测试版
+
+REK 另提供 [REK Simulator](https://rek.com/sim)，以物理仿真呈现人形机器人格斗。官方称模拟器使用与真实人形机器人相同的 AI / 神经网络，并将模拟赛表现与获得线下活动 pilot 资格相连；Steam 产品页也描述了物理格斗与自平衡 AI。
+
+| 公开信息 | 核查结果 |
+|---|---|
+| **移动端** | REK 更新记录提到 iPhone 与 iPad 可经 Apple TestFlight 测试；此处是测试版分发，不是 App Store 正式上架。 |
+| **模拟器用途** | 通过虚拟对战练习操控机器人，REK 宣称优秀模拟赛选手可获得线下 pilot 机会。 |
+| **日期** | 可检索到的更新记录镜像将该次更新标为 **2026-10-09**；截至 **2026-10-18**，未找到能证实「10 月 17 日首次发布」的一手公告。 |
+| **运行边界** | 官方资料确认使用同一 AI / 神经网络，但没有说明完整模型是否在 iPhone 本地推理；不能据此写成手机可独立运行全部机器人 AI。 |
+
+这降低了公众接触模拟驾驶与参加选拔的门槛，但仍是格斗模拟器的 pilot 训练路径，不等于通用机器人操作员培训或直接获得真机工作资格。
+
 ## 常见误区
 
-- **不是自主拳击 AI 联赛：** 公开报道一致强调 **VR 真人 pilot**；与 RoboStriker 类 **策略互博** 不同。
+- **不是自主拳击 AI 联赛：** 真实赛事由 **真人 pilot** 遥操作；模拟器的平衡 AI 不代表机器人自主决策或无人操作。
 - **不等于 Unitree 官方产品：** 硬件来自 [Unitree](./unitree.md)，联赛与 REK TEK 为第三方运营。
 - **「机器人格斗」≠ 液压巨型机：** 使用 **轻量电驱人形**（数十 kg 级），安全与耐久设计决定可承受的打击强度。
 

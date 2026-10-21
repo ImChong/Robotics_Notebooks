@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [crossfly-project.md](sites/crossfly-project.md) | CrossFly 异构环境空中移动基准项目页（数据集已列于 ModelScope；代码 soon）
 - [x] [memcompiler.md](sites/memcompiler.md) | MemCompiler 状态条件记忆编译项目页（arXiv:2605.07594；代码公开，模型条目无 model card）
 - [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
 - [x] [dreamtrue-project-page.md](sites/dreamtrue-project-page.md) | DreamTrue 项目页（arXiv:2610.12468；部分开源）
@@ -14,6 +15,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [crossfly_arxiv_2610_18381.md](papers/crossfly_arxiv_2610_18381.md) | CrossFly：长程异构环境空中移动与交互就绪度基准（arXiv:2610.18381）
 - [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
 - [x] [viola_arxiv_2610_12435.md](papers/viola_arxiv_2610_12435.md) | VioLA 人类数据驱动人形通用控制
 - [x] [dreamtrue_arxiv_2610_12468.md](papers/dreamtrue_arxiv_2610_12468.md) | DreamTrue 动作保真机器人世界模型
@@ -236,6 +238,7 @@
 | [x] [midas-hand-org.md](repos/midas-hand-org.md) | MIDAS Hand：UCLA 开源直驱触觉灵巧手官方组织（API/MuJoCo/重定向/遥操作/PCB） |
 | [x] [ruka-v2.md](repos/ruka-v2.md) | RUKA-v2：NYU 全开源腱驱动灵巧手官方代码（CAD/控制器/校准/遥操作，MIT） |
 | [x] [rpl_cs_ucl_sds.md](repos/rpl_cs_ucl_sds.md) | RPL-CS-UCL/SDS：See it, Do it, Sorted 四足单视频技能官方实现（与 E-SDS 同系） |
+| [x] [rpl-amazon-far.md](repos/rpl-amazon-far.md) | Amazon FAR RPL 官方代码：分地形专家训练、多深度 DAgger 蒸馏与 MuJoCo sim2sim（arXiv:2602.03002；Apache-2.0） |
 | [x] [roboto_origin.md](repos/roboto_origin.md) | Roboparty 人形机器人开源聚合入口（硬件/训练/部署/描述/固件） |
 | [x] [optimal_control_16_745.md](repos/optimal_control_16_745.md) | Optimal-Control-16-745：CMU 16-745 讲义 notebook GitHub 组织（配套 Optimal Control 2025 录像） |
 | [x] [omg-tsinghua-mars-lab.md](repos/omg-tsinghua-mars-lab.md) | tsinghua-mars-lab/OMG：omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker、训练/推理/部署；配套项目页） |
@@ -389,6 +392,7 @@
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [openai_gpt6_software_maintenance_2026-10-14.md](blogs/openai_gpt6_software_maintenance_2026-10-14.md) | OpenAI：GPT-6 Astra / GPT-6.1 Sol 辅助清理死代码、过期实验与 CI（2026-10-14） |
 | [x] [mandarobotics_comparing_physics_engines_2026-10-05.md](blogs/mandarobotics_comparing_physics_engines_2026-10-05.md) | Manda Robotics：PhysX / Newton-MuJoCo-Warp / MuJoCo CPU / Genesis 匹配场景比较（2026-10-05） |
 | [x] [egm_themoonlight_literature_review_2512_19043.md](blogs/egm_themoonlight_literature_review_2512_19043.md) | Moonlight 社区英文导读：EGM（arXiv:2512.19043）结构化摘要（非官方） |
 | [x] [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
@@ -526,6 +530,7 @@
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [roboparty_com.md](sites/roboparty_com.md) | RoboParty 官网：公司叙事、里程碑、Roboto Origin 与 Lab 入口 |
+| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RPO 已完整开放；RP1 硬件、固件、仿真模型与训练工具按路线图分批发布 |
 | [x] [roboparty_com_roboto_origin_doc.md](sites/roboparty_com_roboto_origin_doc.md) | Roboto Origin 官方文档站：参数表、系统架构与开源范围 |
 | [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
 | [x] [roboparty_lab_tech_humanoid_control.md](sites/roboparty_lab_tech_humanoid_control.md) | TeCH 成果页（lab.roboparty.com/outputs/tech）：无监督人形全身控制 |

@@ -2,7 +2,7 @@
 type: query
 tags: [software, architecture, hal, c++, middleware, deployment]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ./ethercat-master-optimization.md
   - ../../roadmap/motion-control.md

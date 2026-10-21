@@ -7,11 +7,12 @@ tags:
   - dual-arm
   - safety
 status: complete
-updated: 2026-09-19
+updated: 2026-10-16
 arxiv: "2608.09125"
 related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
+  - ./paper-unified-continuum-actuation.md
 sources:
   - ../../sources/papers/tdhd_surgical_dual_arm_arxiv_2608_09125.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
@@ -84,6 +85,7 @@ summary: "双臂手术 VLA 的轨迹分歧视界决策：生成两份轻微扰�
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [一周 VLA 趋势技术地图](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md)
 - [Generative World Models](../methods/generative-world-models.md)
+- [统一连续体驱动平台](./paper-unified-continuum-actuation.md) — 把驱动硬件 / 软件与连续体机构解耦，在 dVRK PSM 上演示 TDCR 相机与 CTR 双臂遥操作；区分驱动平台与机构本体
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, robot-free, egocentric-demonstration, imitation-learning, vla, sonic, unitree-g1, beihang, shanghai-innovation-institute, alibaba]
 status: complete
-updated: 2026-10-03
+updated: 2026-10-16
 arxiv: "2609.38046"
 venue: "arXiv 2026"
 related:
@@ -18,7 +18,7 @@ sources:
   - ../../sources/papers/egoalign_arxiv_2609_38046.md
   - ../../sources/sites/egoalign-project.md
   - ../../sources/repos/egoalign.md
-summary: "EgoAlign 将第一视角人类示范适配为 SONIC 可执行的动作与因果状态监督：PICO/GoPro 采集、实时 SONIC–MuJoCo 反馈、尺度对齐与闭环手部修正、最终状态重建；只用人类数据微调 π₀.₅，在 G1 上验证约 10 米搬运、未见目标导航与脚踩交互。官方代码与数据截至 2026-10-03 待发布。"
+summary: "EgoAlign 将第一视角人类示范适配为 SONIC 可执行的动作与因果状态监督：PICO/GoPro 采集、实时 SONIC–MuJoCo 反馈、尺度对齐与闭环手部修正、最终状态重建；只用人类数据微调 π₀.₅，在 G1 上验证约 10 米搬运、未见目标导航与脚踩交互。官方已开放数据处理与仿真回放代码，VLA 训练配方未发布。"
 ---
 
 # EgoAlign：把第一视角人类示范变成可执行的人形移动操作监督
@@ -75,7 +75,28 @@ PICO 4 Ultra 头显与腕部、脚踝、腰部等五个追踪器采集人体运�
 
 ## 源码运行时序图
 
-**不适用（截至 2026-10-03）：** 官方仓目前只含静态项目博客和媒体文件，README 声明方法代码未来发布；没有可辨识的训练、推理或部署入口，暂时无法据源码绘制运行时序。
+官方仓可运行数据处理与 SONIC–MuJoCo 回放流程；README 将 EgoAlign VLA 训练方案列为未来可能发布，所以下图止于配对监督数据导出，不代表完整策略训练或部署代码已公开。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as User
+  participant CLI as egoalign.sample_pipeline
+  participant Align as scripts/human_data
+  participant Replay as tools/run_sim_replay.sh
+  participant Runtime as SONIC-MuJoCo runtime
+  participant Export as egoalign.datasets
+  User->>CLI: endpoint-align or replay-only
+  CLI->>Align: align motion and prepare replay
+  Align->>Replay: launch causal simulation replay
+  Replay->>Runtime: execute adapted motion
+  Runtime-->>Align: rollout states and residuals
+  Align->>Replay: replay final adapted motion
+  Runtime-->>Export: pre-action states and motion tokens
+  Export-->>User: paired 43D states and 76D actions
+```
+
+复现入口是仓库 README 中的 `python -m egoalign.sample_pipeline basket` 示例及 `docs/PROCESSING.md`、`docs/public_runtime.md`；运行前需按文档准备 SONIC/G1 资产与控制器环境。
 
 ## 工程实践
 
@@ -87,7 +108,7 @@ PICO 4 Ultra 头显与腕部、脚踝、腰部等五个追踪器采集人体运�
 | 运动适配 | 先运动学尺度对齐，再最多两轮 controller-in-the-loop 修正；保留整体移动与下肢参考 |
 | 监督标签 | 43 维本体状态；64 维 SONIC token + 双手命令；因果回放在 50 Hz 控制 tick 采集状态 |
 | VLA 训练 | π₀.₅ 架构，以 PaliGemma-3B-PT-224 初始化视觉语言骨干；50,000 步训练，8 张 A800、global batch 256 |
-| 推理执行 | 每块预测 50 步动作，在 50 Hz 执行后重新观测；SONIC 按实时本体历史继续闭环解码 |
+| 推理执行 | 论文描述每块预测 50 步动作，在 50 Hz 执行后重新观测；SONIC 按实时本体历史继续闭环解码。官方仓已开放数据处理/仿真回放代码，EgoAlign VLA 训练配方未发布 |
 | 采集效率 | 搬运示范的现场录制加重置时间从遥操作 130 秒降至人体示范 25 秒，约 5.2 倍 |
 
 ## 评测与实验证据
@@ -115,7 +136,7 @@ PICO 4 Ultra 头显与腕部、脚踝、腰部等五个追踪器采集人体运�
 2. **闭环修正比单次几何对齐有明显收益。** 右手掌误差从运动学对齐的 6.48 cm 降至 1.65 cm；真机接近/抬起从 50%/0% 提升到 100%/90%。
 3. **长程任务的远景信息不可省。** 去掉水平视角后，多位置导航成功率下降 25–30 个百分点；向下相机主要看近场操作。
 4. **成功率要和任务阶段一起读。** 约 10 m 搬运在未见目标的全任务成功率为 40%，虽能成功拿起篮筐，但转向与抵达桌面的后续阶段仍会失败。
-5. **“零样本真机”不是代码开源或全接触仿真。** 真机任务微调只用人类示范；但当前实现仍依赖 SONIC、G1 模型与仿真，回放不模拟真实篮筐/手足物体接触，方法代码和数据尚待发布。
+5. **“零样本真机”不代表完整训练栈已开放或仿真覆盖真实物体接触。** 真机任务微调只用人类示范；回放依赖 SONIC、G1 模型与仿真，且不模拟真实篮筐/手足物体接触。官方已开放数据处理与仿真回放代码，VLA 训练配方及完整规模示范数据仍未公开。
 
 ## 与其他工作对比
 
@@ -133,7 +154,7 @@ PICO 4 Ultra 头显与腕部、脚踝、腰部等五个追踪器采集人体运�
 - **接触物理被简化：** MuJoCo 回放只建模地面接触，不含真实篮筐及手/脚与物体接触；轻载、容错接触任务的成功不能直接外推到精细接触操作。
 - **远距离物体搬运仍会掉在后半程：** Multi-seen / unseen 搬运全任务成功率均为 40%，主要失败出现在转向、越界或未能放到桌面。
 - **当前实验规模有限：** 每项 20 次试验，示范量为数百条；没有证明对大量机器人形态或大规模复杂任务普遍成立。
-- **实现与数据尚未发布：** 论文中多个优化阈值与筛选规则留待代码发布；截至入库日官方仓尚未提供实现和数据。
+- **完整复现仍有限：** 数据处理与仿真回放代码现已公开，但 VLA 训练方案仍待发布；部分优化阈值/筛选细节及完整规模示范数据集的可获取性需以官方后续发布为准。
 - **采集仍需成套设备：** 头显、五个追踪器、两台相机及对应标定/同步流程，可能成为复制成本。
 - **依赖既有控制器：** EgoAlign 使用 SONIC 连续全身控制接口；换控制器时需要重新验证 token 语义、状态重建与回放闭环。
 

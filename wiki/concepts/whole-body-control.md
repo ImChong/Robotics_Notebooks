@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-18
 related:
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
@@ -22,6 +22,7 @@ related:
   - ./null-space-control.md
   - ../entities/paper-g1-confined-space-wbp.md
   - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
+  - ../entities/paper-rigid-soft-hybrid-link-humanoid.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
@@ -185,6 +186,7 @@ print("joint acceleration command:", qdd_star)
 - [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 
+- [刚-软混合链路人形机器人建模与控制（arXiv:2610.15073）](../entities/paper-rigid-soft-hybrid-link-humanoid.md) — PCS 柔性体建模、逆运动学与主动柔顺优化。
 ## 关联页面
 
 - [具身三层控制架构](./embodied-three-layer-control-architecture.md) — WBC 在「小脑层」与 VLA 大脑、反射安全链的分工
@@ -219,6 +221,7 @@ print("joint acceleration command:", qdd_star)
 - [FWBC-VLA](../entities/paper-fwbc-vla.md) — 无 F/T 残差力同时条件化 VLA 与轮足底盘补偿（arXiv:2609.03889；未开源）
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — generalist→specialist→DAgger 迭代蒸馏 + 统一速度/高度/pitch 指令，单策略跨 H1/G1/T1/N1/Adam（ICRA 2026；未开源）
 - [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；公开 MuJoCo 评测代码与 checkpoint，训练/真机部署未开放）
+- [TRACE（人形跨形态迁移）](../entities/paper-trace-humanoid-transfer.md) — 预训练全身控制器（SONIC）跨本体迁移的低成本路线：G1→H2，PHUMA 运动成功率 96.08%（作者报告）
 
 ## 继续深挖入口
 

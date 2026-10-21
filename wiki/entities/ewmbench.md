@@ -15,6 +15,7 @@ related:
   - ./worldarena.md
   - ./worldolympiad.md
   - ./paper-harnesseval-w.md
+  - ./paper-worldoracle.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/ewmbench.md
@@ -94,6 +95,8 @@ flowchart LR
 - **不是「策略控制基准」**：论文当前主实验聚焦 **I2V / 文本驱动视频生成**；**动作条件视频生成** 留待未来（统一输入格式已预留轨迹通道）。
 - **末端 vs 全臂**：指标主要基于 **单臂末端**；论文明确未来纳入 **整臂状态** 与 **动相机**。
 - **依赖链重**：README 要求 **Qwen2.5-VL、CLIP、微调 DINOv2/YOLO-World** 等权重与 **CUDA 11.8** 级环境；复现前需核对 **HF 数据卡与许可证**。
+
+**WorldOracle 与 EWMBench 回答不同问题**：WorldOracle 将同一初始观测和低层动作序列的预测 rollout 与配对真机执行比较；EWMBench 的主实验评估文本/图像条件生成视频的场景、运动和语义质量。前者检查给定动作是否产生正确真实后果，后者诊断生成视频的具身质量，两者可以串联使用。详见 [WorldOracle](./paper-worldoracle.md)。
 
 ## 关联页面
 

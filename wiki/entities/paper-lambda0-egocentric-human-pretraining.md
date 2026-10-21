@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: lambda0-humanverse
 tags:
   - paper
   - humanoid
@@ -16,8 +17,12 @@ tags:
   - hkust
   - arxiv
 status: complete
-updated: 2026-10-03
+updated: 2026-10-16
 arxiv: "2610.00438"
+papers:
+  - "2610.18950"
+project: "https://lambdahumanoid.github.io/"
+code: "https://github.com/LambdaHumanoid/openlambda"
 related:
   - ../tasks/loco-manipulation.md
   - ../concepts/world-action-models.md
@@ -26,12 +31,15 @@ related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
 sources:
   - ../../sources/papers/lambda0_arxiv_2610_00438.md
-summary: "λ₀（arXiv:2610.00438）以 500 小时 HumanVerse-500 第一视角全身人类移动操作数据，进行三阶段预训练/迁移；在 SIMPLE 与 4 项真机任务上评估，代码、模型和数据尚未发布。"
+  - ../../sources/papers/lambda0_arxiv_2610_18950.md
+  - ../../sources/sites/lambdahumanoid-github-io.md
+  - ../../sources/repos/lambdahumanoid-openlambda.md
+summary: "λ₀ / HumanVerse-500（arXiv:2610.00438、2610.18950）以 500 小时第一视角人类移动操作数据训练全身 VLA；OpenLambda 已部分开源代码与 Stage II checkpoint，数据和完整 Stage III / 真机流程仍未发布。"
 ---
 
-# λ₀ / HumanVerse-500
+# λ₀ / HumanVerse-500 / OpenLambda
 
-**λ₀**（*Towards a General Humanoid Loco-Manipulation Model via Egocentric Whole-Body Human Data Pretraining*，[arXiv:2610.00438](https://arxiv.org/abs/2610.00438)）是一种全身 humanoid VLA：先从第一视角人类数据学习互动，再用 **HumanVerse-500** 学习身体与手物互动的协调，最后适配人形机器人和下游任务。
+**λ₀**（早期报告 [arXiv:2610.00438](https://arxiv.org/abs/2610.00438)，后续技术报告 [arXiv:2610.18950](https://arxiv.org/abs/2610.18950)）是一种使用人类全身演示训练的人形移动操作 VLA；**OpenLambda** 提供其采集、动作对齐、训练与推理代码。
 
 ## 英文缩写速查
 
@@ -57,7 +65,8 @@ summary: "λ₀（arXiv:2610.00438）以 500 小时 HumanVerse-500 第一视角�
 | **人类数据** | HumanVerse-500：500 小时、32,993 episodes、827 类任务、约 8,700 万 pose 帧 |
 | **机器人平台** | Unitree G1；论文称头部使用 GoPro HERO13 |
 | **评测** | SIMPLE 仿真与 4 项真机 loco-manipulation 任务 |
-| **公开状态（2026-10-03）** | arXiv 未列 GitHub、权重或数据链接；论文称后续发布 |
+| **公开状态（2026-10-03）** | 初版提交时 arXiv 未列项目页、代码、权重或数据链接 |
+| **公开状态（2026-10-16）** | OpenLambda 部分开源：训练/推理代码与 Stage II checkpoint 可用；HumanVerse 数据及完整 Stage III / 真机流程待发布 |
 
 ## 三阶段训练流程
 
@@ -89,7 +98,26 @@ HumanVerse-500 以轻量穿戴式系统同步采集第一视角视频和身体�
 
 ## 源码运行时序图
 
-**不适用（截至 2026-10-03）：** arXiv 未列可运行代码仓库、训练脚本或部署入口；论文称代码、模型和数据将来发布。目前无法据公开资料核对源码执行路径。
+OpenLambda 已公开 λ₀ 模型训练与推理代码；推理服务输出动作预测，但当前 README 尚未给出完整机器人控制闭环。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Data as 人类/机器人数据
+  participant CLI as lambda0 CLI
+  participant Train as λ₀ 模型
+  participant Serve as 推理服务
+  participant Client as 外部控制客户端
+  Data->>CLI: prepare 生成训练 bundle
+  CLI->>Train: train 按阶段配置训练
+  Train-->>CLI: checkpoint
+  Client->>Serve: 相机、语言与本体观测
+  Serve->>Train: 加载 Stage II / 微调权重
+  Train-->>Serve: 动作预测
+  Serve-->>Client: SONIC motion token 与手部命令
+```
+
+仓库目前未提供完整 Stage III 数据工作流与真机控制桥接，因此最后一段执行需由用户系统补齐。
 
 ## 与其他工作对比
 
@@ -113,7 +141,7 @@ HumanVerse-500 以轻量穿戴式系统同步采集第一视角视频和身体�
 
 ## 局限与风险
 
-- **源码与数据待发布：** 论文承诺后续发布，但目前 arXiv 页面没有提供链接；三阶段训练和评测尚不能按官方实现复现。
+- **部分开源而非完整复现包：** OpenLambda 提供训练/推理代码和 Stage II 100k checkpoint，但 HumanVerse-500 与预训练/mid-training 数据未包含，完整 Stage III post-training、仿真评测及真机部署流程仍在准备。
 - **真机任务覆盖有限：** 论文摘要报告 4 项真实任务，不能据此推断对所有人形操作任务都泛化。
 - **机构与规模信息按预印本记录：** 后续版本若更新数据划分、评测协议或开源状态，应以新版本为准。
 
@@ -127,8 +155,15 @@ HumanVerse-500 以轻量穿戴式系统同步采集第一视角视频和身体�
 
 ## 参考来源
 
-- [来源归档：λ₀ / HumanVerse-500](../../sources/papers/lambda0_arxiv_2610_00438.md)
-- [arXiv 摘要](https://arxiv.org/abs/2610.00438)
+- [来源归档：λ₀ / HumanVerse-500（早期报告）](../../sources/papers/lambda0_arxiv_2610_00438.md)
+- [来源归档：λ₀（2610.18950）](../../sources/papers/lambda0_arxiv_2610_18950.md)
+- [OpenLambda 项目页归档](../../sources/sites/lambdahumanoid-github-io.md)
+- [OpenLambda 官方代码归档](../../sources/repos/lambdahumanoid-openlambda.md)
+- [arXiv:2610.00438](https://arxiv.org/abs/2610.00438)
+- [arXiv:2610.18950](https://arxiv.org/abs/2610.18950)
+- [OpenLambda Stage II checkpoint](https://huggingface.co/lambda-humanoid/lambda0-midtrain-100k)
+- [OpenLambda 官方代码](https://github.com/LambdaHumanoid/openlambda)
+- [arXiv 摘要（早期报告）](https://arxiv.org/abs/2610.00438)
 - [arXiv HTML 正文](https://arxiv.org/html/2610.00438)
 - [arXiv PDF](https://arxiv.org/pdf/2610.00438)
 

@@ -2,7 +2,7 @@
 type: query
 tags: [humanoid, hardware, battery, thermal, engineering]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../overview/humanoid-motion-control-know-how.md
   - ../entities/humanoid-robot.md

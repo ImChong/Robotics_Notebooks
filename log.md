@@ -180,6 +180,367 @@ type: ingest
 - 更新：Sim2Real 概念页及排行榜涉及的既有项目实体添加交叉链接。
 - 一手来源：<https://github.com/EGalahad/sim2real>、<https://egalahad.github.io/sim2real/>、<https://egalahad.github.io/sim2real/leaderboard/>、<https://nvlabs.github.io/GEAR-SONIC/>、<https://github.com/mrzuang/GRIT_teleop_deploy>。
 
+# Ingest — Test-Time Compute for Humanoid Behavior Foundation Models
+
+- **日期：** 2026-10-16
+- **意图：** 收录 TTCO 论文、官方项目页与运行代码；在 BFM 适应分类中加入测试时命令优化路线。
+- **源码核验：** 项目页直链官方 GitHub；主代码 Apache-2.0，SPIDER sampler 保留 CC BY-NC 4.0。代码可运行，但需另外准备 HEFT checkpoint 与 G1 机器人资产；未发现项目专属权重或独立数据集下载页。
+- **关键页：** [TTCO 论文实体](../wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md)；[BFM 概念页](../wiki/concepts/behavior-foundation-model.md)。
+
+2026-10-16 ingest — 归档 UVTA 论文、项目页、MIT 代码与 Hugging Face 数据集；建立跨本体视触觉动作建模实体，并关联触觉感知知识页。
+
+# Ingest: TRACE 跨具身人形控制迁移
+
+- **意图：** 收录 TRACE（arXiv:2610.17999），归纳其将 SONIC 从 Unitree G1 迁移到 H2 的预对齐、动作筛选、蒸馏和低秩强化学习流程。
+- **开源结论：** arXiv 指向官方项目页，但本次无法访问；未发现可确认的代码仓库，开放状态记为待核实。
+- **关键页面：** [TRACE 实体页](../wiki/entities/paper-trace-cross-embodiment-bfm.md)、[论文来源](../sources/papers/trace_arxiv_2610_17999.md)、[项目页核查](../sources/sites/trace-bfm-project.md)。
+
+---
+date: 2026-10-18
+op: ingest
+---
+
+将 DR-WM 论文与官方项目页归档，并整理到动作后果预测专题。官方项目页目前将代码和数据标为 coming soon，暂无可运行实现。
+
+- 2026-10-19 | ingest | Joshua Bird 的 Low Cost Mocap 项目：确认 MIT 开源仓库含相机处理、ESP32 固件和 3D 文件；补充项目来源与动捕实体页，区分约 20 美元相机系统与约 50 美元无人机成本。
+
+# 2026-10-19 ORA ingest
+
+- **Op：** ingest
+- **意图：** 收录 ORA 官方博客及其 robot-use agent harness，沉淀方法、仿真结果与部署边界。
+- **开源核查：** 官方仓库已公开，Apache-2.0；主量化结果来自仿真，真机内容为初步演示。
+- **关键页：** [ORA wiki 实体](../wiki/entities/ora-open-robot-use-agents.md)；关联更新 [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md)。
+
+- **2026-10-20** — **ingest**：新增 Embodiment-Aware Inference-Time Search 论文来源与实体页，整理冻结 ReMoGen 的候选搜索、G1 可行性评测及代码核验边界，并关联动作重定向概念页。
+
+# [2026-10-20] ingest | PointZero NeurIPS 2026 状态更新
+
+- **意图：** 复核已收录的 PointZero 官方项目页与代码仓库，补充发表信息并厘清 robot-free 仅指预训练阶段。
+- **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
+- **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
+
+---
+date: 2026-10-21
+op: ingest
+---
+
+归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
+
+## [2026-10-21] ingest | sources/papers/fiber_arxiv_2610_24675.md — 补充 FIBER 真机分任务成功率（6/10、4/10、2/10）与仿真分任务口径；核查「可控导航」：论文与项目页仅有 waypoint steering 定性演示，无导航基准，已在实体页标注边界
+
+## [2026-10-21] ingest | sources/repos/jj-vcs-jujutsu.md — 收录 Jujutsu 版本控制工具及其 Git 互通、change 工作流与适用边界
+
+## [2026-10-21] structural | 增加香港大学 OpenDriveLab 与 MMLab 实验室技术路线，复用已有节点并注明官方归属、排序锚点与开源边界；首页拆分独立实验室卡片并支持展开。
+
+## [2026-10-21] ingest | sources/papers/minute_scale_microrobot_navigation_arxiv_2608_00854.md — 收录 Nature Machine Intelligence 微型机器人导航分钟级训练论文、官方代码与 wiki 提炼
+
+## [2026-10-19] structural | docs/checklists/graph-perf-audit-2026-10-19.md — 图谱 2D/3D 渲染性能与 Bug 复审：实测基线（6,216 节点 / 53,740 边）、14 条已确认 Bug、P0/P1/P2 分批方案
+
+## [2026-10-21] ingest | sources/repos/rpl-amazon-far.md — 补入 RPL 官方训练、蒸馏与 sim2sim 代码并更新既有论文实体
+
+## [2026-10-21] ingest | sources/papers/fiber_arxiv_2610_24675.md — 收录 FIBER 论文、项目页与官方仓库，并补充移动操作潜空间规划路线
+
+## [2026-10-21] ingest | PrismWAM
+
+- 归档论文、项目页与官方代码入口，并核对代码、训练配方及基准权重已公开。
+- 新增 PrismWAM 实体页，补充 WAM 概念页：记录语义目标与深度物理 rollout 解耦的设计、报告指标及复现边界。
+
+## [2026-10-20] lint | 全量 lint 修复：18 条预警清零（1 陈旧页 + 17 信息型）—— visual-servoing 回链 OptiSight；9 页补评测/感知栈枢纽回链；5 个 dataset 补模态维度；JOGA 补 venue；MemT 补评测/对比区块；Evo-DexBench 改写绝对化措辞
+
+## [2026-10-20] ingest | SKY-001 工程世界模型（官方博客与产品页）
+
+- 归档 Skyfall AI 官方博客与产品页，并新增 SKY-001 实体页。
+- 记录发布方披露的 CAD/BIM 流程和基准结果；标明缺少公开复现代码及官方页面未列源码/权重入口。
+
+## [2026-10-20] ingest | 收录 Reason Network 编码代理协作通信引擎
+
+- 新增 `sources/repos/reason-network.md`，记录官方仓库与产品页、点对点通信和 MCP 协作能力。
+- 核实开源边界：通信引擎采用 MIT OR Apache-2.0；Reason CLI 免费但不开源。
+- 作为开发代理协作工具归档，暂不新建机器人知识实体页。
+
+## [2026-10-20] ingest | 收录 AutonomousVehicleControlBeginnersGuide 自动驾驶控制学习仓库
+
+- 新增 `sources/repos/autonomous-vehicle-control-beginners-guide.md`，记录官方仓库、MIT 许可、Python 环境和算法示例范围。
+- 作为自动驾驶算法学习资源归档，暂不新建 wiki 实体页。
+
+## [2026-10-20] ingest | KODA 官方代码与资产分阶段发布更新
+
+- 复核官方仓库并更新论文、项目页、代码仓库来源与 KODA 实体页：M1/M2 运动学和机器人机载视角管线已有安装与 CLI；M4 部分开放示例 MCAP 和 tracking checkpoint。
+- 记录 M3 控制器动作标签/对齐数据导出与 M5 策略训练仍待发布，说明当前代码可运行范围和第三方资产许可边界。
+
+## [2026-10-20] ingest | 收录 CrossFly 空中移动交互基准（arXiv:2610.18381）
+
+- 归档论文与项目页，覆盖异构环境中的长程飞行、IRR 交互就绪度指标及 CrossFly-Agent。
+- 项目页提供 ModelScope 数据集；代码标注 “Code soon”，当前未列公开仓库。
+
+## [2026-10-20] ingest | HFHPE — 归档 MIT 头部姿态估计代码与权重，记录姿态网络与检测器的延迟边界。
+
+## [2026-10-20] ingest | 深蓝具身智能「LeCun 2026 JEPA 11 项研究」：新建 6 个项目详情节点（Causal-JEPA、Value-Guided JEPA 规划、Music-JEPA、Rectified LpJEPA、SkyJEPA、TDV）；LeWM / LeVJEPA / When Does LeJEPA / LpWM / Patch Policy 复用既有节点。
+
+## [2026-10-20] ingest | 收录 DeepSeek 推理与协议适配仓库
+
+- 归档 DeepInfer 与 deepseek-recipe 官方仓库及 README。
+- 两者源码均公开；许可证分别为 Apache-2.0 与 MIT。
+- 记录机器人落地边界：DeepInfer 支持的硬件偏向数据中心加速器；deepseek-recipe 负责协议与提示词适配，不含模型推理及机器人控制。
+
+## [2026-10-20] ingest | R²-WAM 视觉表征实证
+
+- 收录 arXiv:2610.13024 论文摘录与项目页核查，并新增单一 WAM 论文实体。
+- 项目页仓库是静态网站源码；截至核查日未找到官方研究代码、权重或数据集链接。
+- 关键结论：优先强通用视觉表征与通道维联合预测，多源特征按任务相关增量选择。
+
+## [2026-10-20] ingest | MemT-1.0 — 归档原生记忆模型论文、官方项目与实现，并整理参数化记忆评测边界及软件 / 权重许可范围。
+
+## [2026-10-20] ingest | OptiSight：语义推理与几何控制的具身导航
+
+- 收录 arXiv:2608.23354 与 CSIC-UPC 官方技术报告记录 IRI-TR-26-02。
+- 作者代码仓库公开；地图和模型权重需另行准备，汇总成功率由人工统计且暂无自动评测脚本。
+- 关联视觉–语言导航与视觉伺服，归档论文、官方记录和仓库来源。
+
+## [2026-10-20] ingest | 三项论文/项目收录：Rubik Skills、Blind Precise Assembly/mjfit、ActiveAlign；补充三篇实体页及互链，记录公开实现边界
+
+## [2026-10-20] ingest | sources/sites/unitree-uniuni.md — 归档宇树 UniUni 桌面集群编舞系统，新增实体页并关联人形多机协调；闭源软件
+
+## [2026-10-20] ingest | 公众号综述「全球85个具身智能数据集全景」：新增44个数据集节点（dataset-*），复用41个已有节点，总览页 embodied-dataset-panorama-2026-10 给出逐项去重映射
+
+## [2026-10-20] ingest | 归档 Haoyang Weng 的可 steer 物理交互札记并补充 VLA/S0 接口分析
+
+## [2026-10-20] ingest | ACE-Brain-0.6 媒体披露归档，并更新 ACE-Brain 统一实体页的版本与开源状态
+
+## [2026-10-20] ingest | sources/papers/fcts_failure_guided_curriculum_tree_search_arxiv_2610_22619.md + sources/papers/replanmem_vla_arxiv_2610_22556.md + RAX skills/data — FCTS、RAX 在线探索与 RePlanMem 视觉记忆资料归档
+
+## [2026-10-19] lint | 全量 wiki lint：补齐 7 个 paper 实体「与其他工作对比」区块（LIBERO-PeRM 另将「基准设计」改为「方法与基准设计」），3 个 benchmark/evaluation 页回链评测基准选型闭环枢纽；信息型预警 10 → 0
+
+## [2026-10-20] ingest | 补充 MAMMA 官方新闻稿：奖项候选、iPhone 多视角、精度与工作流耗时口径
+
+## [2026-10-19] ingest | Commander–Executor 协作操作 — 归档 arXiv:2610.14911；仿真人形角色方法，代码待发布。
+
+## [2026-10-19] ingest | 收录 Tidy Design 开源产品画布及 MCP 设计协作工作流
+
+- 官方 GitHub 仓库标注 Apache-2.0，README 确认 agent 可经 MCP 读取、创建和编辑可编辑设计，并支持自托管。
+- 官网入口由官方 README 确认；官网页面本次未能直接读取，因此功能总结以仓库 README 为准。
+- 新增项目实体并关联 MCP 与 coding agent 知识页；机器人面板用途注明为工程推论，未表述成已验证集成。
+
+## [2026-10-19] ingest | sources/papers/onewm_arxiv_2610_21095.md — 归档 OneWM 论文、项目页和代码，并提炼因果联合训练与互惠评测结果
+
+## [2026-10-19] ingest | sources/papers/*_2610_22*.md — 收录六篇具身机器人论文，并核查项目页、代码开放状态和评测边界；T2-z 已在 main 完整归档
+
+## [2026-10-19] ingest | π0.7 训练图解补充来源
+
+- 收录 Kuan Yi Wang 的第三方 π0.7 训练前向流程图解，并关联既有论文摘录与方法页。
+- 教程 URL 在截图中被截断，已标注待核实；截图未提供代码或权重入口。
+
+## [2026-10-19] ingest | 收录 book-to-skill 资料编译工具
+
+- 归档公开仓库，并新增实体页说明其将技术书籍与文档集整理为按需加载的 Agent Skill。
+- 补充 LLM Wiki 关联，区分资料级 skill 编译与跨来源知识库维护。
+
+## [2026-10-19] lint | 修复 Wiki Lint「可能过期」12 页（updated 2026-04-21 满 180 天）：仅刷新 updated 日期，未做内容复核
+
+## [2026-10-18] structural | roadmap 巡检补入 28 个新知识节点中的 23 个（VLA/WAM/遥操作/重定向/接触操作/评测/动作生成/架构/硬件/电机/数据 11 条纵深路线）；HiRE、Visuomotor Pruning、DA-AO、26 篇技术地图暂无合适阶段未收
+
+## [2026-10-18] lint | 全量 lint 修复：4 个陈旧页 review、paper-* 三段式/结论补齐、评测基准枢纽回链、RAX 陈旧声明改写
+
+## [2026-10-18] ingest | OpenAI GPT-6 软件维护实践入库
+
+- 归档 GPT-6 Astra / GPT-6.1 Sol 在代码清理、过期实验审查与 CI 优化中的证据驱动工作流。
+- 将成本/发现数与 CI 时延数据作为 OpenAI 内部案例补充到 agentic coding 概念页，并明确机器人场景属于方法映射。
+
+## [2026-10-18] ingest | sources/papers/theophys_eval_arxiv_2610_16733.md — 归档自主理论物理 agent 基准与评测边界
+
+## [2026-10-18] ingest | 收录 arXiv:2610.15073 刚-软混合链路人形机器人论文
+- 新增论文来源归档与单一论文实体页，保留仿真与真机实验的证据边界。
+- 更新 Whole-Body Control 页的反向引用。
+
+## [2026-10-18] ingest | EdenLive 官方资料、代码、权重均可用
+
+- 归档项目页、技术报告入口、官方仓库与公开权重；代码和模型权重已开放。
+- 归纳实时生成渲染的系统分工，记录 RTX 5090 约 24.7 FPS 的测量边界及 FLUX 工作台许可范围。
+- 新增项目实体，并从生成式世界模型方法页建立交叉引用。
+
+## [2026-10-18] ingest | sources/sites/opencfs.md — 收录 openCFS 官方站点、源码与配套论文；核实 MIT 开源状态，建立统一多物理场仿真实体并关联 FEMM。
+
+## [2026-10-18] ingest | sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md — 具身智能小站 10-18 期 26 篇：新建 19 + 复用 7 个独立论文节点，阅读坐标 embodied-station-2026-10-18-26-papers-technology-map；开源结论 16 已开源 / 3 待发布 / 7 项目页未列 GitHub
+
+## [2026-10-18] ingest | 归档 Alex Wang 联想记忆教程与公开实验代码，补充 Transformer 的参数/上下文记忆区别及容量假设边界
+
+## [2026-10-18] ingest | REK Simulator 与 iOS TestFlight
+
+- 归档 REK 官方模拟器页与 Steam 产品页，更新既有 REK 实体节点。
+- 官方称模拟器使用与真实机器人相同 AI，并将模拟赛与线下 pilot 资格连接；更新记录镜像提到 iPhone/iPad TestFlight，标注日期为 10 月 9 日。
+- 尚无一手依据确认 10 月 17 日首发或完整 AI 在手机本地运行。
+
+## [2026-10-17] lint | 全量 wiki lint（full git history）：修复 20 个陈旧页（locomotion→DA-AO、NavDP→DevGRU、EmbodiedEvo→RAX、IL/RL/online-vs-offline-rl→robomimic，另 14 页补 CoSMO/CTP/ForceWAM/PACER/R²-WAM/RoboFQE/SANDO/SEAR/TRACE 回链）与 45 条信息型预警（29 篇 paper 补「与其他工作对比」、评测/感知栈枢纽回链 10 页、DA-AO venue、NavAble 重定向就绪度、VT-Bridge 措辞、缺页概念停用词 beta/choice/pip）
+
+## [2026-10-17] ingest | 收录 DA-AO 外骨骼步态相位估计论文
+
+- 归档 T-RO 论文 DOI 与摘要级方法、跨地形实验指标。
+- 建立 DA-AO 实体页并关联步态生成与运动控制；全文细节和代码状态待核验。
+
+## [2026-10-17] ingest | WorldScape R²SI — 记录技能修订与 WSP 更新的报道型系统节点
+
+- 新增 R²SI wiki 实体页与媒体报道、Manifold AI 官网、RoboDojo 官方榜单核查归档。
+- 将案例互链到 WorldScape Policy 2.0、RoboDojo 与 RSI 纵深路线。
+- 开放状态：未找到 R²SI 独立论文、代码或权重；RoboDojo 第一名及步数结果按报道口径记录，未独立核实。
+
+## [2026-10-17] ingest | sources/repos/awesome-embodied-self-improvement.md — 归档机器人 / Physical AI 部署后自我改进清单，并将 L1–L4 可执行能力判据接入 RSI 概念页
+
+- **范围：** 45 项具身自改进工作、3 个 benchmark、4 篇综述；区分 episode 内反馈、持久能力优化、技能扩张和改进机制演化。
+- **开源判断：** 清单仓库 MIT、内容开放；它是文献导航，不是机器人自改进运行时；逐篇代码状态需另行核验。
+- **关键页：** 更新递归自改进概念与通用 Awesome RSI 的机器人读者入口。
+
+## [2026-10-17] ingest | RoboJuDo / FRoM-W1
+
+- 归档 RoboJuDo 官方部署仓库与 FRoM-W1 官方项目页，核对代码、论文、数据开放状态及策略发布边界。
+- 更新既有 FRoM-W1 实体，按单一项目节点收录 RoboJuDo 部署流程；记录 RoboJuDo LICENSE 与 README 许可链接标签不一致，供复用前核查。
+
+## [2026-10-17] ingest | 归档 Alex Wa 的前沿模型训练方法综述，保留其训练流水线与后训练参考；暂不单独升格为 wiki
+
+- 来源：`sources/blogs/alex_wa_frontier_model_training_methodologies_2026-01-31.md`
+- 处理：归纳架构、稳定性、数据配比、预训练与后训练要点；说明向机器人基础模型迁移时仍需验证具身数据和闭环部署约束。
+
+## [2026-10-17] ingest | Claude Code 团队代码评审：补充 Agentic Coding 软件工程页
+
+- 归档 Anthropic 工程博客，提炼 PR 前验证、AI 与安全评审、风险分级人工审批、渐进发布和评审收敛机制。
+- 更新既有 Agentic Coding 知识页；文章报告的回滚率变化属于 Anthropic 内部结果，已标明外推边界。
+
+## [2026-10-17] ingest | RAX 在线探索机器人 agent
+
+- 核对官方项目页、论文 PDF 与代码仓；代码已公开，仓库以分支提供仿真、Franka 和 Rainbow RB-Y1 实现，根目录许可证待核实。
+- 建立统一 RAX wiki 实体，整理冻结 coding agent、在线探索、程序编译、技能复用和评测口径，并链接 ASENA / EmbodiedEvo 相关路线。
+
+## [2026-10-17] ingest | sources/blogs/wechat_embodied_station_robot_36_papers_2026-10-17.md — 具身智能小站 36 篇论文逐篇建独立详情节点（30 新建、6 沿用），含开源核查与技术地图索引
+
+## [2026-10-17] ingest | SANDO 动态未知环境安全规划
+
+- 归档 arXiv v3、作者项目页与 MIT ACL 官方代码；代码已开源，README 提供 ROS 2 Humble 仿真 / 硬件入口，并依赖 Gurobi WLS Academic license。
+- 新增 SANDO 统一实体页，记录 STSFC、热图 A*、硬约束 MIQP、变量消元与真机评测；明确形式安全的假设及真机估计 / 跟踪误差边界。
+- 作者主页称 T-RO 有条件接收，当前仓库 README 写作已接收；保留来源表述差异。
+
+## [2026-10-17] ingest | Infinigen V2 程序化 3D 场景生成
+
+- 官方代码与 V2 文档已核对并归档；仓库公开，BSD-3-Clause。
+- 新增项目来源页与实体页，关联场景生成、仿真接入和机器人数据用途；截图中的「一分钟」未找到官方基准，标记为未核实。
+
+## [2026-10-17] ingest | sources/sites/motphys.md — 归档 Motphys 官网首页/关于/研究/版本日志；新增公司入口并加入公司路线（复用 Motrix / GS-Playground / UniLab 三节点）
+
+## [2026-10-16] lint | 全量 wiki lint（full git history）：修复 25 个陈旧页（ppo 补 RoboFFT、π0-policy 复核 kai0，另 23 页补新 paper 实体回链）与 10 条信息型预警（paper 三段式/结论/缩写速查、评测与执行器枢纽回链）
+
+## [2026-10-17] ingest | 收录 KODA、T2-z 与 VLA 因果分析论文和官方实现
+
+## [2026-10-17] ingest | Agentic Design Patterns — 归档出版社书目与 GitHub 配套材料，标注书籍版权及仓库许可核查边界，并关联 agent 评测与 coding-agent 工程知识页
+
+## [2026-10-17] ingest | Whole-Body Dexterity — 收录论文与项目页，补充全身接触重定位知识节点
+
+- 项目页未列代码或数据下载入口；新增论文、项目页来源归档及 WBD 实体页，并接入 Loco-Manipulation 任务页。
+
+## [2026-10-17] ingest | Intern-Decision（arXiv:2610.22131）— 归档论文、项目页与代码；记录权重与训练数据的开放边界
+
+## [2026-10-16] ingest | vt-bridge | 预训练 VLA 的触觉残差适配
+
+- 意图：整理 VT-Bridge 的方法结构、真机结果与复现入口，补充视触觉残差适应路线。
+- 开源结论：项目页 GitHub 仅为静态网站源码；研究训练/推理代码与权重无公开链接，Code 按钮标为 “Coming soon”。
+- 关键页：新增论文来源、项目页/源码归档与 VT-Bridge wiki 实体；更新视触觉融合概念页建立入口。
+
+## [2026-10-16] ingest | Open-BENI — 归档 BENI 训练、恢复与浏览器仿真项目
+
+- 官方仓库包含 BENI 机器人模型、训练源码、策略文件及 MuJoCo + ONNX 浏览器游戏；MIT 许可。Hugging Face Space 为在线部署。
+- 归档项目页与代码仓库，并整理 wiki 实体，关联 mjlab、PPO 与 locomotion 学习路径。
+
+## [2026-10-16] ingest | RoboHarn-Evo | 记录可演化物理知识操作框架
+
+- **意图：** 收录 arXiv:2609.37583 及其项目页和官方实现，作为长时程机器人操作中“从交互经验更新外置知识”的案例。
+- **开源结论：** 项目页链接的官方仓库含 Python agent、RMBench / LIBERO-PRO 应用与运行脚本，Apache-2.0；模拟器、模型与许可资产另行配置。
+- **关键页面：** 统一实体页讲解 HPK 双层知识、内外循环、不同评测协议与代码复现入口；并链接 VLA 和 manipulation 页面。
+
+## [2026-10-16] ingest | Humanoid Rickshaw Pulling 来源档案与实体页更新至 arXiv v2
+
+- 核对 arXiv v2 的机构、版本与当前公开入口；论文仍未列独立代码仓库。
+- 将来源档案及 wiki 页面 HTML 链接升级至 v2，保留 115 kg loaded rickshaw mass 的口径说明。
+
+## [2026-10-16] structural | docs/lab-roadmaps.json 新增 CMU LeCAR Lab 实验室路线（10 个节点，成立年份按 Guanya Shi 2023 秋加入 CMU RI 计），首页实验室路线入口与计数同步
+
+## [2026-10-16] ingest | MoDE-VLA 与 IMCopilot 论文及项目页核查
+
+- 来源：arXiv:2603.08122 与官方项目页。
+- 开源结论：项目页未列代码、权重或数据下载链接，截至核查日未确认开源。
+- 更新：补全已有 MoDE-VLA 策展实体页，并增加论文摘录与项目页归档。
+
+## [2026-10-16] ingest | WorldOracle — 归档论文、项目页和评测代码，补充动作条件世界模型的配对真机评测入口
+
+- **开源结论：** 项目页链接官方评测代码（Apache-2.0）与 Hugging Face 数据入口；README 提供评测脚本和运行说明。
+- **关键判断：** WorldOracle 对照同一起点、同一低层动作条件下的预测与真机执行；其 SV/MV 指标与 EWMBench / WorldScore 互补，汇总分不可直接换算。
+
+## [2026-10-16] ingest | 收录 VLA 神经表征几何论文（arXiv:2610.20840）
+
+- 新增 `sources/papers/vla_neural_geometry_arxiv_2610_20840.md`，记录论文问题、方法、摘要中的几何发现与 steering 结论。
+- 截至入库日，arXiv 条目和作者主页未列项目页或代码仓库；七类概念清单及详细实验设置待精读正文补齐。
+
+## [2026-10-16] ingest | HumanoidTTT：入口证书驱动的人形完整动作复用
+
+- 收录北京大学 HumanoidTTT 论文、项目页与官方代码；代码和初始策略权重公开，应用运行时仍需接入 OMG、HoloMotion、动作资产及执行验证循环，仓库根目录未见许可文件。
+- Wiki 记录 200 个测试入口 0 次不安全接受、固定高复用请求轨迹端到端 16.4 倍加速，并注明证书冻结与测试范围等边界。
+
+## [2026-10-16] ingest | minisql-moonbit-vs-rust | 比较 AI agent 使用 MoonBit 与 Rust 的实际成本
+
+- 意图：记录 Agent-Friendly by Design 预印本、实验设计与可复核的逐试验数据。
+- 开源结论：官方仓库公开源码、harness、测试、运行资料与结果；复跑需要 Claude Code / 模型访问，根目录未见 LICENSE。
+- 关键页：[MoonBit/Rust 实验实体](../wiki/entities/paper-agent-friendly-by-design.md)、[Agentic Coding 软件工程基础](../wiki/concepts/agentic-coding-software-fundamentals.md)。
+
+## [2026-10-16] ingest | GroundAnything — 并行扩散视觉 grounding
+
+- 归档论文、官方项目页与 GitHub 仓库，并核实 DLM、自回归 VLM 权重及代码已公开。
+- 新建 GroundAnything 实体页，记录解码策略、benchmark 结果、推理入口和部署边界。
+- 与 GroundingPI（arXiv:2609.39601）明确区分并互链；二者共享作者团队，但项目入口与研究重点不同。
+
+## [2026-10-16] ingest | sources/sites/rhoda-ai.md — 归档 Rhoda AI 官网研究页/新闻稿/团队页（3 篇研究博文：DVA、网络视频预训练 scaling、触觉+DVA）；确认未开源；新增公司入口与 3 个研究节点并加入公司路线
+
+## [2026-10-16] ingest | SolidCraft — 收录浏览器端参数化 CAD 工具
+
+项目页与公开源码已核实并互链。新增 SolidCraft 来源归档与工具实体页，并从 FreeCAD、OpenSCAD 页增加 CAD 工具对照入口；官方项目当前标注为 early，曲面、工程图、CAM 与仿真仍在规划。
+
+## [2026-10-16] ingest | Kinematic Vision AI 高尔夫挥杆分析工具
+
+- 收录公开仓库 `anhtranp/golf`：浏览器内 MediaPipe 姿态跟踪与 Gemini 运动学反馈演示。
+- README 声称 MIT，但仓库缺 LICENSE 文件；PGA 基准与杆速指标未见公开验证来源，来源页已标出边界。
+
+## [2026-10-16] ingest | 深辰凯动 AI 羽毛球机器人官方资料
+
+- 归档官方产品页、公司纪录介绍与 Guinness World Records 条目，确认 1,452 次纪录及公开技术资料边界。
+- 新建项目实体，并与人形羽毛球研究节点建立对照链接；官方页面未列代码、数据或模型权重。
+
+## [2026-10-16] ingest | RoboSimStudio 多物理与真机案例
+
+- 更新既有项目、仓库与论文来源，并补充 wiki 实体页；没有创建重复节点。
+- 核实项目开源状态、Newton / MuJoCo Warp 与 SuperDex FEM 的分工、18 项任务仿真，以及约 56 分钟的双臂擦拭和单项真机闭环案例。
+- 将演示结果限定在具体案例，说明不构成普遍仿真精度或 Sim2Real 成功率保证。
+
+## [2026-10-16] ingest | ASENA arXiv:2609.39207 v2 论文核验与详情页深化
+
+- 复用已有 ASENA 实体，不重复建节点；归档 v2 论文与 NVIDIA GEAR 官方项目页。
+- 补充 coding-agent robot harness、ASENA-VLN、工作区演进、仿真 / 真机评测和安全边界。
+- 官方项目页未列训练 / 推理代码、权重或数据下载入口；没有确认到可运行官方实现。
+
+## [2026-10-15] lint | 全量 wiki lint：修复 10 条信息型预警（paper 三段式×5、dataset 重定向就绪度×1、评测基准枢纽回链×3、DMP 缺 queries 落地×1），复跑 0 问题 0 预警
+
+## [2026-10-16] ingest | OpenCut：归档官网与主仓库，区分可用 classic 版和重写中的 Rust 多端版
+
+- 官方 README 确认 opencut.app 当前运行 classic 版本，主仓库的 Rust 核心与插件、MCP 等能力仍处于重写路线图。
+- 仅收录 sources 资料；该通用视频编辑工具不升格为机器人知识 wiki 节点。
+
+## [2026-10-15] ingest | OpenViking — 收录火山引擎开源上下文数据库
+
+- 官方仓库和项目页均已核查，代码公开，许可证为 AGPL-3.0。
+- 建立 repo/site 来源归档与统一实体节点；将其定位为 Agent 上下文基础设施，不误列为机器人策略或数据集。
+
+## [2026-10-15] structural | roadmap/motion-control.md — 主路线讲解视频重渲：讲稿勘误、读音与字幕修正、BT.709 编码，时长 1:39:40，更新章节时间点
+
+## [2026-10-15] structural | 将 Amazon FAR 作为 Amazon 内部研究团队加入公司路线，复用七个已有项目节点并说明排序年份依据
+
+## [2026-10-15] ingest | Virtual Humans：归档图宾根大学数字人体课程与公开讲义，注明课程专属开源工具箱尚未核实
+
+## [2026-10-15] ingest | Paper2Agent：归档 Nature 论文、官网与 MIT 仓库，编译论文到 MCP 工具的验证流程和局限
+
 ## [2026-10-15] ingest | sources/sites/project_instinct.md — 复核 Project Instinct 官网页面状态与训练/部署代码入口并更新统一实体
 
 ## [2026-10-15] ingest | sources/papers/umv_arxiv_2602_22118.md — 归档 UMV 系统设计、状态估计与约束强化学习控制

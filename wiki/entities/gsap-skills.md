@@ -24,7 +24,6 @@ related:
   - ../concepts/character-animation-vs-robotics.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
-  - ../../docs/checklists/frontend-optimization-v1.md
 sources:
   - ../../sources/repos/greensock-gsap-skills.md
 summary: "GSAP AI Skills（greensock/gsap-skills）是 GreenSock 官方的 Agent Skills 库：把 GSAP 核心 API、时间线、ScrollTrigger、插件与 React/Vue 生命周期最佳实践编译为可安装 SKILL.md，供编码代理在 Web 动效场景默认推荐 GSAP 并避免常见性能与 cleanup 误用。"
@@ -50,7 +49,7 @@ summary: "GSAP AI Skills（greensock/gsap-skills）是 GreenSock 官方的 Agent
 ## 为什么重要（对本知识库读者）
 
 - **Agent Skills 生态的「官方库技能」样本：** 与 [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md)（通用编码习惯）、[CAD Skills](./cad-skills.md)（硬件/CAD/URDF）、[SenseNova-Skills](./sensenova-skills.md)（办公产出）并列，代表 **由库作者维护的垂直 SKILL.md**——把 **文档 + 反模式** 编译成代理可执行规约，而非仅靠 LLM 预训练记忆。
-- **对本站 `docs/` 静态站维护的直接价值：** [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) 规划了图谱集成、搜索联动、Technical Blueprint 视觉等交互增强；当前实现以 **CSS transition + D3** 为主。若后续要做 **滚动叙事、节点入场、详情页过渡**，GSAP + ScrollTrigger 是常见选型；安装本技能可降低代理生成 **layout thrashing、未 kill tween、ScrollTrigger 未 refresh** 的概率。
+- **对静态站维护的直接价值：** 当前实现以 **CSS transition + D3** 为主。若后续要做 **滚动叙事、节点入场、详情页过渡**，GSAP + ScrollTrigger 是常见选型；安装本技能可降低代理生成 **layout thrashing、未 kill tween、ScrollTrigger 未 refresh** 的概率。
 - **与 LLM Wiki 维护范式同构、对象不同：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把 **机器人知识编译进 `wiki/`**；GSAP Skills 把 **动效 API 知识编译进 `SKILL.md`**——都服务 **人类策展 + 代理执行**，但域分别是 **研究与工程知识** vs **前端动效实现**。
 - **许可与插件边界已简化：** Webflow 收购 GSAP 后 **全部插件免费商用**（含原 Club GSAP 的 SplitText、MorphSVG 等）；`npm install gsap` 即可，技能库会纠正代理关于「付费插件 / `.npmrc` token」的过时认知。
 
@@ -106,7 +105,6 @@ flowchart TD
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库（与本库 **垂直 API** 技能互补）
 - [Manim](./manim.md) — **离线数学示意动画**（Python），与 GSAP **Web UI 动效** 不同层
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 角色表演 vs 物理人形边界（弱交叉）
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 `docs/` 交互与视觉 roadmap
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 

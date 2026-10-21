@@ -9,7 +9,7 @@ tags:
   - vla
   - sim-to-real
 status: complete
-updated: 2026-10-03
+updated: 2026-10-18
 arxiv: "2609.27308"
 code: "https://github.com/EmbodiedSWE/EmbodiedSWE"
 related:
@@ -19,10 +19,12 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/data-flywheel.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-18-26-papers-technology-map.md
 sources:
   - ../../sources/papers/embodiedswe_arxiv_2609_27308.md
   - ../../sources/repos/embodiedswe.md
   - ../../sources/sites/embodiedswe-github-io.md
+  - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "EmbodiedSWE 用仿真 benchmark 评测 coding agent 编写长时程灵巧操作程序，并把 verified solution 扩增成 VLA 示范；论文报告 500 条生成示范微调后完成真实四阶段灯具拆解任务。"
 ---
 

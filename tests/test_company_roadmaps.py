@@ -75,6 +75,15 @@ def test_home_entry_links_match_data_order() -> None:
     assert [("hidden" in attrs) for _, attrs in links] == [i >= 4 for i in range(len(links))]
 
 
+def test_home_company_toggle_count_matches_data_and_syncs_on_init() -> None:
+    """折叠按钮静态数字须等于公司数；init 时也要按链接数同步，避免首屏 N、展开收起后 N+1。"""
+    html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    match = re.search(r'id="homeCompanyToggle"[^>]*>展开全部 (\d+) 家公司', html)
+    assert match and int(match.group(1)) == len(DATA["companies"])
+    script = (REPO_ROOT / "docs" / "main.js").read_text(encoding="utf-8")
+    assert "if (companyToggle && companyLinks) {\n    setHomeCompaniesExpanded(false);" in script
+
+
 def test_hero_company_count_uses_home_links_at_runtime() -> None:
     """Hero 数字属于部署统计；新增入口时不要求 PR 重写历史 HTML 数字。"""
     html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")

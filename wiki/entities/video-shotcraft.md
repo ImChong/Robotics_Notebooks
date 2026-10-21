@@ -24,7 +24,6 @@ related:
   - ../concepts/character-animation-vs-robotics.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
-  - ../../docs/checklists/frontend-optimization-v1.md
 sources:
   - ../../sources/repos/video-shotcraft.md
   - ../../sources/sites/video-shotcraft-gallery.md
@@ -123,7 +122,6 @@ flowchart TD
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可见科研插图**（MCP + Skill）
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库（与本库 **垂直制片** 互补）
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 表演意图 vs 物理可控边界（弱交叉）
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 `docs/` 交互 roadmap
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 

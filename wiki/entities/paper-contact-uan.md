@@ -1,128 +1,149 @@
 ---
 type: entity
 project_id: contact-uan
-tags: [paper, humanoid, sim2real, actuator, residual-world-model, force-control, mit]
+tags:
+  - paper
+  - humanoid
+  - sim2real
+  - actuator-network
+  - contact-rich
+  - unitree-g1
+  - arxiv
 status: complete
 updated: 2026-10-16
 arxiv: "2610.18991"
-project: https://contact-uan.csail.mit.edu/
-code: https://github.com/nolie-rolie/contact-uan
+project: "https://contact-uan.csail.mit.edu/"
+code: "https://github.com/nolie-rolie/contact-uan"
+venue: "CoRL 2026"
 related:
   - ../concepts/sim2real.md
-  - ../methods/actuator-network.md
+  - ../concepts/physics-fidelity-sim2real-gap.md
+  - ../concepts/contact-rich-manipulation.md
   - ../concepts/implicit-explicit-actuator-modeling.md
-  - ./paper-neuralactuator-neural-actuation-modeling.md
+  - ../entities/unitree-g1.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/contact_uan_arxiv_2610_18991.md
   - ../../sources/sites/contact-uan-csail-mit-edu.md
-  - ../../sources/repos/contact-uan.md
-summary: "以本体感觉估计支撑脚的接触一致仿真姿态，再学习关节目标残差修正执行器模型，使人形策略在仿真中学到更接近真机的接触力、跑步效率和冲击响应。"
+  - ../../sources/repos/nolie-rolie-contact-uan.md
+summary: "Contact-UAN（arXiv:2610.18991）以约 6.5 分钟 G1 行走数据学习执行器残差世界模型；先重建接触一致回放状态，再冻结 UAN 训练跑步、力控制与跳跃策略，部署时仅运行下游策略。"
 ---
 
-# Contact-UAN：用接触一致重放学习人形执行器残差
+# Contact-UAN（G1 执行器残差 Sim2Real）
 
-**Contact-UAN**（*Unsupervised Actuator Networks as a Residual World Model for Humanoid Control*，arXiv:2610.18991，2026-10-13）提出一种保留仿真物理先验、只修正执行器命令通道的残差世界模型。方法的关键是：有接触的硬件轨迹不能只按关节位置重置仿真，必须先找到能重现支撑接触力的仿真脚姿态。
+**Contact-UAN**（*Unsupervised Actuator Networks as a Residual World Model for Humanoid Control*，[arXiv:2610.18991](https://arxiv.org/abs/2610.18991)）针对人形机器人接触任务的执行器 Sim2Real 差距：从短时真机本体感知数据学习关节命令残差，保留仿真器的刚体、接触和数值积分先验。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| UAN | Unsupervised Actuator Network | 通过轨迹重放误差学习关节目标修正的执行器网络 |
-| Sim2Real | Simulation-to-Real Transfer | 将仿真中训练的策略迁移到真实机器人 |
-| PPO | Proximal Policy Optimization | 论文用于训练重放任务和下游策略的强化学习算法 |
-| WTW | Walk These Ways | 用于初始真机数据采集的步行策略范式 |
-| DoF | Degrees of Freedom | G1 实验平台的自由度计数单位 |
+|---|---|---|
+| UAN | Unsupervised Actuator Network | 学习仿真与真机执行器响应差异的残差网络 |
+| Sim2Real | Simulation to Real | 将仿真训练策略迁移到真实机器人 |
+| G1 | Unitree G1 humanoid robot | 论文使用的 29 自由度人形机器人 |
+| WTW | Walk These Ways | Contact-UAN 仓库用来采集行走数据的源策略 |
 
 ## 为什么重要
 
-人形策略可以在真机上复现大致动作，却仍可能依赖仿真里不真实的扭矩和接触力，导致耗能、推拉力跟踪或起跳落地失败。广泛域随机化会缓解部分模型误差，但可能使策略过于保守；单纯辨识物理参数也未必能覆盖复杂的执行器非线性。Contact-UAN 将数据学习限制在仿真与真机差异最大的执行器指令通道，同时保留仿真器的刚体动力学和接触求解器。
+- **执行器误差会变成接触力误差：** 关节扭矩差异会改变支撑力、冲击吸收与物体/地面交互；只让动作外观相似，不足以保证跑步、跳跃或力控制可迁移。
+- **把接触状态对齐放在残差学习之前：** 若仿真回放时足端初始高度或姿态不一致，模型会把接触求解器重置误差错学成执行器特性。
+- **保留可解释的物理边界：** UAN 只修正执行器命令通道；仿真刚体动力学与接触求解仍由 MuJoCo/MJLab 处理。
+- **从行走数据复用到多任务：** 论文报告约 6.5 分钟 G1 行走数据即可训练一个后续冻结的 UAN，支持多种依赖力与冲量的策略训练。
 
-## 方法栈与流程总览
+## 流程总览
 
 ```mermaid
-flowchart TD
-  A[训练 WTW 步行策略] --> B[G1 真机采集约 6.5 分钟本体轨迹]
-  B --> C[状态估计：接触状态 足姿 基座速度]
-  C --> D[接触一致地重置仿真轨迹]
-  D --> E[训练 UAN 修正关节目标并匹配硬件转移]
-  E --> F[冻结 UAN，在增广仿真训练任务策略]
-  F --> G[只将任务策略部署到 G1]
+flowchart LR
+  collect["G1 行走 rollout"] --> estimate["估计速度、接触与支撑脚位姿"]
+  estimate --> replay["接触一致的仿真重放"]
+  replay --> uan["学习执行器命令残差"]
+  uan --> policies["冻结 UAN，训练任务策略"]
+  policies --> deploy["导出并部署任务策略"]
 ```
 
-### 接触一致重放
+硬件状态与命令首先经过检查、裁剪和重标，再进入 UAN rollout。下游任务训练冻结 UAN，避免策略利用未经校正的执行器模型。
 
-短时序 IMU、关节状态和上一时刻关节目标提供接触相关线索。估计器先分类哪些脚处于支撑，再只回归支撑脚对应的仿真穿透高度和倾角，并融合到重置所需的根姿态和基座速度。绝对基座高度不作为输入，避免模型简单复制硬件高度，而忽略仿真接触力所需的毫米级穿透差异。
+## 方法栈与工程实践
 
-在论文的 MuJoCo 模型中，根高度偏差 +2 mm 会使法向力下降约 50%，俯仰偏差 −2° 会令支撑力矩变化约 45%。因此重放的关键不是几何上“站在地面”，而是生成与硬件相符的接触 wrench。
+| 阶段 | 实现要点 |
+|---|---|
+| 数据采集 | 用 WTW 源策略在 G1 上记录本体状态和最终关节目标；保留状态、动作和时间戳顺序 |
+| 状态估计 | 从多帧本体感知分别估计基座线速度、左右足接触、支撑脚高度和方向；足部几何只在支撑样本上回归 |
+| 数据重标 | 检查、裁剪有效 rollout 区间，并将估计量写入回放数据；接触一致重置是隔离执行器误差的前提 |
+| 残差训练 | UAN 修正基线关节位置目标，模拟下一步硬件状态；将训练好的 UAN 固定后再训练下游策略 |
+| 部署 | 将下游策略导出为 TorchScript 并校验关节顺序；UAN 和离线状态估计器不部署到真机 |
 
-### 残差模型与策略部署
-
-UAN 输出关节位置目标修正 `δq`，形成 `q_cmd = q_base + δq`。它观察短时关节目标误差与关节速度；同类执行器共享两层 MLP 参数。训练时把硬件记录的命令送入仿真重放并匹配状态转移；下游策略训练时冻结 UAN，以修正后的执行器响应约束策略。部署阶段只运行已训练的任务策略，离线估计器和 UAN 均不需要部署。
-
-## 源码运行时序图
+### 源码运行时序图
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Operator as G1采集与部署
-  participant Data as 硬件轨迹与重标注
-  participant UAN as 状态估计与UAN训练
-  participant Sim as UAN增广仿真
-  participant Policy as 任务策略训练
-  Operator->>Data: 运行WTW并采集本体轨迹
-  Data->>UAN: 接触标注和重放窗口
-  UAN->>Sim: 学得残差模型
-  Sim->>Policy: 冻结UAN后的任务环境
-  Policy->>Operator: 导出并部署任务策略
+  participant Operator as 操作员
+  participant G1 as Unitree G1
+  participant Pipeline as hardware_pipeline.py
+  participant Estimator as 六类状态估计器
+  participant Sim as MJLab UAN 仿真
+  participant Export as 部署导出脚本
+  Operator->>G1: 用 WTW 采集状态与关节目标
+  Operator->>Pipeline: sync、inspect、trim
+  Pipeline->>Estimator: 推理接触与支撑脚几何
+  Estimator-->>Pipeline: 输出状态标签
+  Pipeline->>Sim: relabel 后的硬件 rollout
+  Sim->>Sim: UAN 修正执行器并训练下游策略
+  Operator->>Export: 导出下游 checkpoint
+  Export-->>Operator: TorchScript 策略与运行配置
+  Operator->>G1: 部署任务策略（不部署 UAN）
 ```
 
-仓库入口以 README 的 Hardware Pipeline Guide、`src/mjlab`、`scripts` 和 `deploy` 为准；官方代码公开，但数据、checkpoint 未随仓库提供。
+源码路径来自官方 [硬件流程指南](https://github.com/nolie-rolie/contact-uan/blob/main/docs/SIM2REAL.md) 与 [部署指南](https://github.com/nolie-rolie/contact-uan/blob/main/docs/DEPLOYMENT.md)。策略导出和硬件启动仍需按机器人现场配置执行。
 
 ## 实验与评测
 
-论文在 29 自由度 Unitree G1 上用单一 UAN，从约 6.5 分钟步行数据迁移到跑步、力控、阻抗和跳跃。跑步时策略维持速度跟踪且扭矩用量降低约 20%；3.0 m/s 指令下真机达到 3.13 ± 0.06 m/s。力控制平均跟踪误差降低 42.8 ± 12.1%。接触一致重置在困难的 sim-to-sim 设置中把 20 秒存活率从 49.8% 提高到 96.7%；重放扭矩总量与硬件的相对不匹配降低 69.2%。
+项目页报告在 Unitree G1 上，单个从行走数据学得的 UAN 支持跑步、全身力控制、极端顺应、本体感知阻抗控制与动态跳跃。论文摘要报告约 43% 的力跟踪误差下降、20% 的运行扭矩使用下降；跑步速度约 3.13 m/s。不同指标对应各自任务协议，不能当作统一成功率。
 
-真机结果的每条件试验次数有限，且都来自单一 G1 平台。应将这些指标视为方法有效性的初步证据，而非跨型号保证。
+## 与代表性路线对比
+
+| 路线 | 学习对象 | 优点 | 代价 |
+|---|---|---|---|
+| 系统辨识 | 显式电机/执行器参数 | 参数可解释 | 受参数化和辨识工况限制 |
+| 域随机化 | 参数分布覆盖 | 无需真机残差模型 | 随机范围扩大可能使策略保守 |
+| Contact-UAN | 真机 rollout 的执行器命令残差 | 保留物理仿真先验；训练后跨任务复用 | 需要目标机器人的数据与接触一致重放 |
+
+Contact-UAN 对 [执行器网络](../concepts/implicit-explicit-actuator-modeling.md) 与 [Sim2Real](../concepts/sim2real.md) 提供一种结合路径：先用真机数据对齐难建模的执行器通道，再在修正仿真中训练策略。
 
 ## 结论
 
-**Contact-UAN 的主要价值是把“接触重置是否正确”纳入执行器残差学习，让策略优化看到更可信的力和冲击响应。**
+**Contact-UAN 的关键不是“学一个完整世界模型”，而是先消除接触重置误差，再用短时真机数据修正执行器通道。**
 
-1. 采集有支撑和冲击的轨迹前，先确保仿真重放复现接触状态；直接按硬件绝对姿态初始化会污染训练目标。
-2. 该方法更适合依赖力生成、承载、柔顺或落地冲击的任务；对准静态任务，复杂执行器残差可能收益有限。
-3. 只需少量目标硬件数据是优势，但复现仍需要自有 G1、可信仿真底座和数据采集链。
-4. 目前 UAN 未建模跨关节执行器耦合与温度效应，部署到不同执行器或长期热负载场景需要重新验证。
-
-## 与其他执行器建模路线对比
-
-| 路线 | 主要监督/数据 | 学习对象 | 部署含义 |
-|------|---------------|----------|----------|
-| **Contact-UAN** | 有接触的真机本体轨迹与接触一致仿真重放 | 对关节位置目标的残差，保留仿真动力学 | UAN 用于仿真训练，真机只跑下游任务策略 |
-| [Actuator Network](../methods/actuator-network.md) | 经典路线通常用真机驱动器响应轨迹训练 | 近似电机、减速器、驱动器及延迟动态 | 把学习到的执行器模型放入训练仿真 |
-| [NeuralActuator](./paper-neuralactuator-neural-actuation-modeling.md) | 关节位置轨迹及可微物理监督 | 关节响应与外力相关预测量 | 更偏向可微动力学建模和力感知用途 |
-| 系统辨识 / 域随机化 | 设计激励数据，或指定参数扰动分布 | 物理参数或跨参数鲁棒策略 | 更适合有明确参数化模型或希望覆盖不确定区间时 |
-
-Contact-UAN 的增量在于处理**接触状态会改变重放监督**这一问题，而不是证明所有执行器辨识或域随机化都不再需要。其位置位于[执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md)的执行器建模环节。
+1. **先对齐支撑状态再拟合残差** — 否则网络可能学到足端高度、姿态等初始化伪差。
+2. **训练期使用 UAN，部署期移除 UAN** — 导出的是真正的任务策略；UAN 只负责仿真训练时的执行器补偿。
+3. **一份行走数据可支撑多任务训练** — 论文展示跑步、力控制、顺应、阻抗和跳跃，但不等同于所有任务均已验证。
+4. **复现需要自采 G1 数据** — 官方仓库未提供预训练策略和硬件数据；下载代码本身不足以直接复现实验。
+5. **明确已知建模边界** — 当前网络逐执行器独立建模，不覆盖跨关节耦合与电机温度效应。
 
 ## 局限与风险
 
-方法依赖名义仿真器对刚体和接触动态具有足够的结构正确性；UAN 只补执行器命令误差。接触状态估计假设较平整地面和有效的负载相关本体感觉。开源仓库未附真机数据或训练好的策略，代码可见不等于能无硬件复现论文结果。
+- **依赖本体与硬件数据：** 官方说明不附带预训练策略和硬件采集数据，需先准备 G1、采集链路和策略。
+- **残差模型有结构边界：** 每个执行器独立建模，未覆盖关节间耦合与电机温度变化。
+- **仿真参数仍重要：** UAN 补偿执行器命令差异，不替代正确的接触、地面摩擦和机器人模型；下游训练仍随机化地形、摩擦与外力。
+- **结果按论文协议解读：** 论文和项目页数据是研究结果，不构成其他硬件平台的性能保证。
 
 ## 关联页面
 
-- [Sim2Real](../concepts/sim2real.md)：迁移时的模型差异与数据校准
-- [Actuator Network](../methods/actuator-network.md)：学习执行器动态的经典路线
-- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md)：执行器建模与验证的工程路径
-- [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)：仿真执行器实现的取舍
-- [NeuralActuator](./paper-neuralactuator-neural-actuation-modeling.md)：另一种数据驱动执行器建模工作
+- [Sim2Real](../concepts/sim2real.md)
+- [Physics Fidelity 与 Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
+- [隐式/显式执行器建模](../concepts/implicit-explicit-actuator-modeling.md)
+- [Unitree G1](./unitree-g1.md)
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Contact-UAN 属其 ③ 执行器建模与辨识层：用少量真机行走数据学执行器残差模型，替代逐关节摩擦/延迟手工辨识。
 
 ## 参考来源
 
-- [Contact-UAN 论文摘录](../../sources/papers/contact_uan_arxiv_2610_18991.md)
-- [官方项目页核查](../../sources/sites/contact-uan-csail-mit-edu.md)
-- [官方仓库核查](../../sources/repos/contact-uan.md)
+- [Contact-UAN 论文来源](../../sources/papers/contact_uan_arxiv_2610_18991.md)
+- [Contact-UAN 项目页核查](../../sources/sites/contact-uan-csail-mit-edu.md)
+- [Contact-UAN 官方代码](../../sources/repos/nolie-rolie-contact-uan.md)
 
 ## 推荐继续阅读
 
-- [Contact-UAN 论文全文](https://arxiv.org/html/2610.18991v1)
-- [Contact-UAN GitHub 仓库](https://github.com/nolie-rolie/contact-uan)
+- [Contact-UAN 官方硬件流程](https://github.com/nolie-rolie/contact-uan/blob/main/docs/SIM2REAL.md)
+- [Contact-UAN 部署指南](https://github.com/nolie-rolie/contact-uan/blob/main/docs/DEPLOYMENT.md)
+- [接触动力学](../concepts/contact-dynamics.md)

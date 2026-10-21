@@ -7,6 +7,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ./libero-benchmark.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/codeactionbench_arxiv_2609_33807.md
   - ../../sources/sites/codeactionbench-org.md
@@ -73,7 +74,7 @@ sequenceDiagram
 
 运行中 agent 基于反馈继续改写或执行程序；episode 结束后 verifier 独立检查物理状态，结果不返回 agent。仓库公开 reference harness 和机器人工具；Codex CLI、Claude Code 可通过 MCP 连接工具。
 
-### 评测设置
+## 实验与评测
 
 | 项目 | 设置 |
 |------|------|
@@ -85,6 +86,16 @@ sequenceDiagram
 | 结果范围 | 成功率 2.7%–73.3%；GPT-6 Astra + Codex CLI 达 73.3%，至少一次完成 22/25 项 |
 
 时间和工具调用用于描述资源成本而非调整主排名。论文轨迹分析还追踪中间空间检查点，避免把「机械臂执行了目标位姿」误读为「任务物理关系已成立」。
+
+## 与其他工作对比
+
+| 路线 | 感知与决策由谁承担 | 评测重点 | 与 CodeActionBench 的差异 |
+|------|--------------------|----------|----------------------------|
+| **CodeActionBench** | 被测 agent 只拿 RGB + 几何 API，自行选证据、估 3D、定目标 | 隐藏 verifier 判定的物理成功 | — |
+| 既有 Code-as-Policy 系统（如 [VoxPoser](./paper-voxposer.md)） | 外部模块可提供物体位置、抓取候选或预设技能 | 系统整体能否完成任务 | 成绩混入外部感知/技能的贡献；本基准把这些决策留给 agent，归因更干净 |
+| [VLA 策略](../methods/vla.md) | 由机器人数据训练的观察→动作映射 | 训练分布内外的策略成功率 | 推理时不写程序；与 CoP 横比需对齐感知信息、动作抽象与调用预算 |
+| [LIBERO](./libero-benchmark.md) / [RoboTwin](./robotwin.md) 等策略基准 | 被测策略本身 | 学习型策略的任务成功率 | CodeActionBench 复用 RoboTwin 2.0 本体配置，但评测对象换成通用 agent stack |
+| [EmbodiedEvo](./paper-embodied-evo-coding-agent.md) | coding agent + 跨场景沉淀的 Skills / Lessons | 经验迁移后的成功率 | 本基准测单 episode 内写对代码；EmbodiedEvo 测经验能否带进新场景 |
 
 ## 结论
 
@@ -117,6 +128,7 @@ CodeActionBench 提供了一个信息边界相对明确、以隐藏物理结果�
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 通用 agent 如何通过程序和工具接入机器人
 - [LIBERO Benchmark](./libero-benchmark.md) — 可与该任务/评测基准作不同侧重点的参照
 - [VLA](../methods/vla.md) — 数据训练得到的视觉语言动作策略
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归入其 ③ 策略任务成功率评测层：以隐藏 verifier 判定物理终态，区分 agent 自报完成与真实成功
 
 ## 参考来源
 

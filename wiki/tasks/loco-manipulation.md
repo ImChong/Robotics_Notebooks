@@ -3,8 +3,10 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-15
+updated: 2026-10-21
 sources:
+  - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
+  - ../../sources/sites/wholebodydex-project.md
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -20,6 +22,9 @@ sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
+  - ../../sources/papers/fiber_arxiv_2610_24675.md
+  - ../../sources/sites/fiber.md
+  - ../../sources/repos/fiber.md
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
   - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/papers/egoalign_arxiv_2609_38046.md
@@ -130,6 +135,8 @@ flowchart TD
 
 ### 2. 接触丰富与多约束
 涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。
+
+**全身接触重定位实例：** [Whole-Body Dexterity](../entities/paper-whole-body-dexterity.md) 将手臂和躯干用作物体支撑面，通过学习接触区域之间的转换，在 Unitree G1 上完成箱体腋下夹持、搬运和放置。
 
 ### 3. 高动态与精细度平衡
 在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。产业侧 [Skild Physical Self-Play](../entities/skild-physical-self-play.md) 以 **Isaac Sim 人形足球自博弈** 演示 **score-only RL** 涌现运球/铲球并 Sim2Real（闭源、无公开 benchmark）。
@@ -258,6 +265,11 @@ flowchart TD
 
 先预测未来（像素、潜表征或技能级宏动力学），再让动作头读这份未来；本组也收明确反对「冻结运动接口 + 未来预测」的对照工作。
 
+#### 冻结 BFM 的动作对齐潜空间规划（FIBER）
+- **核心：** 各任务专家先独立训练，再由 **LPP** 将其控制响应投影到冻结 **AH-BFM** 的可执行潜变量；随后汇总闭环潜轨迹，离线训练一个以深度、本体状态和指令为条件的感知 flow planner。部署时 planner 以 **5 Hz** 重规划，BFM 以 **50 Hz** 反馈执行。
+- **代表作：** [FIBER](../entities/paper-fiber-action-aligned-latent-planning.md)（Amazon FAR / CMU / Stanford，arXiv:2610.24675）— G1 真机箱子拾取、开门、物体抓取；在任务间共享“由其诱发动作定义”的技能接口。该方法与 WAM 同属潜空间规划路线，但核心是动作对齐的 BFM latent，而不是预测未来视频状态。
+- **复现边界：** 官方 [代码仓库](../../sources/repos/fiber.md) 已公开，但 README 标注代码 coming soon，当前尚无可运行训练/推理实现。
+
 #### 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
@@ -348,6 +360,7 @@ flowchart TD
 
 - [Humanoid Locomotion](./humanoid-locomotion.md)
 - [Manipulation](./manipulation.md)
+- [Humanoid SRL](../entities/paper-humanoid-srl.md) — 超冗余机械臂扩展下的人形三臂移动操作与全身协调
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Teleoperation](./teleoperation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
@@ -539,3 +552,9 @@ flowchart TD
 ## 低延迟生成式控制
 
 - [RFPO](../entities/paper-rfpo-rectified-flow-policy-optimization.md) — 以 reward-aware online reflow 与多预算蒸馏把具身 flow policy 推理缩短为单步 Euler 更新；论文报告 Go2 单步保留 98.5% 的 64 步 reward（arXiv:2610.10453）。
+
+- [Embodied Human Simulation](../entities/embodied-human-simulation.md) — 以肌肉骨骼数字人仿真评估外骨骼与协作人形机器人的交互，并联合优化结构与控制参数（arXiv:2603.09218）。
+
+## 四足长时程操作实例
+
+- [Rubik Skills](../entities/paper-rubik-skills.md) — ANYmal-D 将多视角魔方感知、技能规划与足端转层串成长时程自主操作。

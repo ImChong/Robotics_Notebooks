@@ -2,7 +2,7 @@
 type: formalization
 tags: [dynamics, contact, physics, control, manipulation, math]
 status: complete
-updated: 2026-04-23
+updated: 2026-10-21
 related:
   - ./friction-cone.md
   - ../concepts/contact-dynamics.md

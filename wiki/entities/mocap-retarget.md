@@ -1,9 +1,8 @@
 ---
-
 type: entity
 tags: [repo, motion-retargeting, mocap, humanoid, engineering, nvidia]
 status: complete
-updated: 2026-06-08
+updated: 2026-10-19
 summary: "ccrpRepo/mocap_retarget 是工程向动捕→机器人运动空间转换的参考管线，适合作为几何重定向脚本与配置的对照样本。"
 related:
   - ../concepts/motion-retargeting.md
@@ -29,7 +28,8 @@ sources:
 ## 为什么重要
 
 - **低门槛对照**：理解「源骨架关节角 → 目标机器人关节角」需要哪些标定与坐标对齐时，可作为比 GMR 更小的阅读样本。
-- **导航锚点**：本知识库 [retarget-tools](../../references/repos/retarget-tools.md) 与历史资源地图均收录此外链，补齐实体页可避免详情页空链。
+- **导航锚点**：本知识库 [retarget-tools](../../references/repos/retarget-tools.md) 与历史资源地图均收录此外链，补齐详情页空链可避免读者遇到断链。
+- **管线衔接**：动捕系统先得到人体或目标物体的运动状态，再进入重定向环节；例如 [Low Cost Mocap](./low-cost-mocap.md) 展示了低成本多相机跟踪与位置估计这一上游环节。
 
 > **一手性说明：** 非论文官方实现，而是 `ccrpRepo` 个人维护的工程示例；与 [GMR](../methods/motion-retargeting-gmr.md) 等论文作者仓相比，更适合作脚本参考而非方法复现基线。
 
@@ -46,6 +46,7 @@ sources:
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [Retarget Tools](../../references/repos/retarget-tools.md)
+- [Low Cost Mocap](./low-cost-mocap.md)
 
 ## 参考来源
 

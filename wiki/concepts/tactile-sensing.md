@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 related:
+  - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
   - ./contact-rich-manipulation.md
@@ -118,6 +119,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
+- [UVTA（跨本体视触觉动作建模）](../entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 人类可穿戴触觉示范与机器人遥操作联合训练，并用未来触觉预测塑造灵巧操作策略
 - [TactileStep（足底触觉跑酷）](../entities/paper-tactilestep.md) — G1 压力鞋垫 + 相位条件 RL；CoRL 2026 Spotlight
 - [GhostTac（触觉物理层 EMI 攻击）](../entities/paper-ghosttac.md) — CCS 2026；非接触操纵传感读数，提醒部署侧物理层威胁建模
 - [ViTacPhys（视触觉物理属性）](../entities/paper-vitacphys.md) — 人体视触觉示范预测质量/刚度/摩擦并条件化抓取
@@ -137,4 +139,5 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统
 - [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
 - [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
+- [UVTA（arXiv:2609.34182）](../../sources/papers/uvta_arxiv_2609_34182.md) — 跨本体人类触觉示范与机器人灵巧操作联合学习
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机

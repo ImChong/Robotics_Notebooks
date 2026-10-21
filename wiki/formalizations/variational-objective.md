@@ -2,7 +2,7 @@
 type: formalization
 tags: [math, machine-learning, reinforcement-learning, world-models, information-theory]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../concepts/latent-imagination.md
   - ../methods/model-based-rl.md

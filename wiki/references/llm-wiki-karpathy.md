@@ -15,6 +15,7 @@ related:
   - ../entities/darwin-skill.md
   - ../entities/andrej-karpathy.md
   - ../entities/graphify.md
+  - ../entities/book-to-skill.md
   - ../entities/understand-anything.md
   - ../overview/robot-learning-overview.md
   - ../overview/karpathy-asd-ste100-llm-outputs.md
@@ -164,6 +165,8 @@ Robotics_Notebooks 已有 `sources/`、`wiki/`、`schema/`、独立的 ingest/qu
 - **规模阈值不是硬定律。** Gist 中的文档数经验是作者的启发式判断，不应直接当成通用迁移门槛。
 
 ## 关联页面
+
+- [book-to-skill](../entities/book-to-skill.md) — 将指定书籍、文档目录或研究资料编译为可按需加载的 Agent Skill；与本页的跨来源持久 wiki 形成互补。
 
 - [ASD-STE100 与 LLM 输出可理解性](../overview/karpathy-asd-ste100-llm-outputs.md) — 受控语言原则与按任务选择图示、交互页面和视频
 - [ASD-STE100 概念页](../concepts/asd-ste100.md) — 技术英语规范及用于 LLM 的边界

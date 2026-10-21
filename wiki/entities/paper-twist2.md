@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-16
 arxiv: "2511.02832"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
@@ -29,6 +29,7 @@ related:
   - ./yanjie-ze.md
   - ./paper-xrobotoolkit.md
   - ./paper-humantracker.md
+  - ./paper-humanoidttt.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -169,6 +170,7 @@ sequenceDiagram
 - XR 中间层：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md) — PICO/Quest OpenXR 流与 QP-IK 套件
 - 全身体+连续灵巧手对照：[paper-teleopit.md](./paper-teleopit.md)
 - 任务：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
+- [HumanoidTTT](./paper-humanoidttt.md) — 部署期用入口状态证书筛选可复用的已验证完整动作，在线管理有限容量动作库
 
 ## 实验与评测
 

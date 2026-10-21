@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-17
 related:
   - ../entities/deepinsight.md
   - ../entities/insight-bench.md
@@ -130,6 +130,7 @@ flowchart TB
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其「④ sim↔real 校准层」的评测基建前提
 - [RoboDojo](../entities/robodojo.md) — Isaac 异构并行 + RealEval 真机的统一评测栈工程样本
 - [WWSimBench](../entities/wwsimbench.md) — 无问芯穹 HF 公开 USD 资产（线缆/铰链/三场景）；无官方 runner
+- [RoboFQE](../entities/paper-robofqe.md) — rollout 式评估的离线替代：DINOv3 编码 + 学得终端成功标注器做拟合 Q 评估
 
 ## 推荐继续阅读
 

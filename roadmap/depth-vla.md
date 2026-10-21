@@ -126,6 +126,10 @@ flowchart LR
 - [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
 - [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md) — 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
 - [Indi](../wiki/entities/paper-indi.md) — 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
+- [Topology-VLA](../wiki/entities/paper-topology-informed-visual-prompting-vla.md) — 用拓扑签名区分外观相似却需不同绕行的状态，借仿真规划扩增示范，再让 VLM 生成视觉路径提示。
+- [RoboMP-DINOv2](../wiki/entities/paper-robomp-dinov2.md) — 在完整图像特征上加入区域提示，而不是用硬掩码过滤，避免丢掉障碍与背景线索。
+- [X-Planner](../wiki/entities/paper-x-planner-event-structured-task-planning.md) — 用事件状态衔接高层指令与下游动作模型，把长任务计划写成可执行事件，并探索连续潜在推理接口。
+- [MIGU](../wiki/entities/paper-migu-multimodal-instruction-grounding.md) — 融合语言语义与指向手势的三维几何不确定性，先形成目标信念，再决定执行或澄清。
 - [TEMPO](../wiki/entities/paper-tempo-dynamic-manipulation.md) — 为单帧 VLA 补充视觉运动摘要与动作历史，缓解动态目标运动歧义与多阶段状态混淆（双臂动态操作）
 
 ### 学完输出什么
@@ -197,6 +201,8 @@ flowchart LR
 - [RoboHarness](../wiki/entities/paper-robo-harness.md) — 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 上 95.2% 成功，远超 π₀.₅ 的 6.4%；官方仓暂为项目页镜像
 - [RTCF](../wiki/entities/paper-rtcf.md) — 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
 - [Neural Introspection Gating](../wiki/entities/paper-neural-introspection-gating.md)（IROS 2026）— 训练无关、可插拔的 VLA 推理调度层：用上一步动作 token logit margin 当免费不确定性信号，门控 VLA-Cache 静态 patch 复用，在保留约 80% 算力节省（1.54 vs 1.43 TFLOPs）的同时收回盲缓存在 LIBERO-Long 上的掉点；适配已部署的 OpenVLA/OpenVLA-OFT；确认未开源
+- [VLAQuantBench](../wiki/entities/paper-vlaquantbench.md) — 统一量化格式与作用范围，在闭环任务上比较 VLA 的训练后量化（独立层组与联合量化），把成功率、校准条件与真实算子延迟一并检查。
+- [vla.simd](../wiki/entities/paper-vla-simd.md) — 用 SIMD 内核与计算复用加速 CPU 推理，并把查询延迟和动作块长度一起分析。
 - [ReflexVLA](../wiki/entities/paper-reflexvla.md) — ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测 + 时序融合骨干 + CUDA Graph）；均值 50.4%、LIBERO 97.2%；代码录用后开放
 - [FlashVLA](../wiki/entities/paper-flashvla.md)（UCSD/MIT）— 给流匹配 VLA 接上交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作，用一块缓冲同时压低逐步延迟与异步观测错配，无需额外未来状态预测器；LIBERO 异步 2.43×（96.9%→97.8%），真机单卡 ≥30 Hz；代码与 π₀.₅ 权重已开源
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)

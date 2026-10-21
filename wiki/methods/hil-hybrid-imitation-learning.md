@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, character-animation, parkour, heading-control, amp, motion-tracking, human-scene-interaction, tog, cmu, nvidia, sfu]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-17
 related:
   - ../entities/paper-hil-hybrid-imitation-learning.md
   - ./deepmimic.md
@@ -108,6 +108,7 @@ flowchart LR
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 三条路线选型
 - [ZEST](./zest.md) — 工业侧极简 motion imitation 与 sim2real
 - [Locomotion](../tasks/locomotion.md) — 跑酷与障碍穿越任务挂接
+- [PACER](../entities/paper-pacer.md) — 以进展 / 终端进入 / 停止交接 / 操作员标签等过程证据重加权 VLA rollout 与人工纠正动作块（UR5e 主板拆解）
 
 ## 参考来源
 

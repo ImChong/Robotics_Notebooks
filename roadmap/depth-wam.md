@@ -96,6 +96,10 @@ flowchart LR
 - [H-JEPA 视觉规划](../wiki/entities/paper-h-jepa-visual-planning.md) — 多时间尺度 action-conditioned JEPA 潜空间 + 由高层子目标到低层动作的分层规划
 - [DreamTrue](../wiki/entities/paper-dreamtrue-action-faithful-world-model.md) — 离线几何校准对齐图像空间动作条件，反事实后训练扩大交互覆盖，具身视频奖励模型做 RL 后训练
 - [AD-E2E-JEPA](../wiki/entities/paper-ad-e2e-jepa.md) — 动作条件 JEPA 世界模型（冻结 DINOv3 + SIGReg 投影器），无策略训练的目标条件规划（端到端自动驾驶，对照人形/操作 WM）
+- [D-JEPA](../wiki/entities/paper-d-jepa-decision-aligned-latent-world-model.md) — 用实际执行结果学习候选未来之间的关系，修正潜在距离与任务成败不一致的问题，让世界模型选对能成功的动作。
+- [DR-WM](../wiki/entities/paper-dr-wm.md) — 以真实机器人动作—响应校准空间地形物理，在 Genesis 中预测动作造成的运动与相机轨迹，再生成未来观测并迭代更新地形；用于导航候选动作比较与 VLM 选路。
+- [Murea-InWorld](../wiki/entities/paper-murea-inworld.md) — Murea-InWorld 将显式世界状态 Agent（Murea-Mind）与视听生成器 Murea-Fast 组合成互动故事闭环；Mind 与 Fast 推理代码已开源，Fast 权重已发布，报告中的 Murea-Pro 开放状态未确认。
+- [EdenLive](../wiki/entities/edenlive.md) — EdenLive 将上游引擎的状态推进与生成式画面渲染分开：根据参考视频、目标首帧和文本提示生成实时视觉流；官方开放实时推理代码及 5B / 14B 权重，也将机器人视角数据增强列为用途。
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"

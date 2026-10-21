@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-09-18
+updated: 2026-10-17
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT 等主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-gmt.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-sonic-transfer.md
+  - ../entities/paper-trace-humanoid-transfer.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-omg-omni-modal-humanoid-control.md
@@ -42,6 +43,7 @@ sources:
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+  - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md

@@ -4,12 +4,14 @@
 
 - **标题：** ASPIRE: Agentic /Skills Discovery for Robotics
 - **全称（论文）：** Agentic Skill Programming through Iterative Robot Exploration
-- **类型：** site（官方项目页 + PDF 白皮书）
+- **类型：** site（官方项目页 + PDF 白皮书；2026-10 起关联 v1.0 源码）
 - **发布方：** NVIDIA GEAR Lab；合作方含 UMich、UIUC、UC Berkeley、CMU
 - **原始链接：**
   - 项目页：<https://research.nvidia.com/labs/gear/aspire/>
   - PDF：<https://research.nvidia.com/labs/gear/aspire/assets/Aspire.pdf>
-- **入库日期：** 2026-07-01
+  - 代码：<https://github.com/NVlabs/ASPIRE>
+  - 仓库归档：[`sources/repos/nvlabs-aspire.md`](../repos/nvlabs-aspire.md)
+- **入库日期：** 2026-07-01；**更新核查：** 2026-10-18
 - **一句话说明：** 面向 **coding agent** 的 **持续学习机器人系统**：用 **闭环执行引擎** 暴露逐原语多模态 trace、**进化搜索** 改写控制程序，并把经真机/仿真验证的修复 **蒸馏进可扩展技能库**；第 100 个任务不再像第一个任务那样从零摸索。
 
 ## 摘录要点（与论文分工）
@@ -38,8 +40,15 @@
 
 ## 论文 / 代码状态
 
-- 截至入库日，公开 **PDF 白皮书**（2026-06-30）与项目页；**arXiv 正式条目待检索确认**；代码标注 **coming soon**。
+- 项目页列出论文 [arXiv:2607.00272](https://arxiv.org/abs/2607.00272)。官方代码仓库已公开：<https://github.com/NVlabs/ASPIRE>（v1.0，2026-10 README 更新）；更新前的 “coming soon” 状态已过时。
+- ASPIRE 项目材料采用 Apache-2.0；仓库提示第三方材料保留各自许可。详见仓库归档与 NOTICE。
 - 主基线 **CaP-Agent0**（Fu et al., 2026）为 CaP-X 框架上的 coding-agent 对照。
+
+## 2026-10 官方发布更新
+
+- 仓库 README 宣布 v1.0：魔方真机在线学习、长时程桌面整理仿真到真机迁移，并报告在 80 个 LIBERO-Pro Goal / Object / Spatial / Long 任务上 99% 成功率及部分 Robosuite、BEHAVIOR-1K 结果。该数据是仓库发布摘要，不应与论文表格的任务/种子协议混为一谈。
+- 项目页补充了模型成本—成功率前沿、跨具身技能迁移和在线学习效率图表；详细范围以各自评测协议为准。
+- 仿真 Quick Start 要求 CUDA、uv 与 gated SAM3 权重的 Hugging Face token。由于运行的是 LLM 生成 Python，官方建议隔离主机、限制网络和敏感挂载，且不授予仿真 agent 真机硬件访问。
 
 ## 对 wiki 的映射
 

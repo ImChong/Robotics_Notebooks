@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 arxiv: "2601.09988"
 venue: "ICRA 2026"
 code: https://github.com/real-stanford/UMI-FT
@@ -11,6 +11,7 @@ related:
   - ./paper-minimalist-compliance-control.md
   - ../tasks/teleoperation.md
   - ../overview/realab-14-papers-technology-map-2026.md
+  - ./paper-fomi.md
 sources:
   - ../../sources/papers/umi_ft_arxiv_2601_09988.md
   - ../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md
@@ -87,6 +88,7 @@ sequenceDiagram
 - [paper-minimalist-compliance-control](./paper-minimalist-compliance-control.md)
 - [teleoperation](../tasks/teleoperation.md)
 - [REALab 14 篇技术地图](../overview/realab-14-papers-technology-map-2026.md)
+- [FOMI](./paper-fomi.md) — 同为手持无机器人采集；FOMI 用机械结构把交互力直接反馈给操作者，报告采集效率较 UMI +29%
 
 ## 参考来源
 

@@ -101,6 +101,7 @@ flowchart LR
 - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../wiki/comparisons/open-source-torque-motor-em-design.md) — Ironless（样机+FEMM）→ FEMM-FOC → PYLEECAN/axfluxmdo 重设计
 - [FEMM](../wiki/entities/femm.md) — 官方文档/示例与开源 2D FEA 底座
+- [openCFS](../wiki/entities/opencfs.md) — openCFS：采用 MIT 许可的有限元多物理场仿真工具，覆盖声、机、电、磁、热及场间耦合，提供 XML 配置与数据前后处理资料。
 - [Ironless QDD Actuator](../wiki/entities/ironless-qdd-actuator.md) — 36N42P + Halbach + 开源 FEMM 的低成本关节样机
 - [Internal Cycloidal Actuator](../wiki/entities/internal-cycloidal-actuator.md) — 外转子 + 定子内嵌减速的开源一体设计（学气隙半径、槽极绕组与同轴集成）
 - [PYLEECAN](../wiki/entities/pyleecan.md) · [FEMM-FOC-Simulation](../wiki/entities/femm-foc-simulation.md)

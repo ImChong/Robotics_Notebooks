@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-10-10
+updated: 2026-10-19
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-parkour-in-the-wild.md
   - ../entities/paper-prism-real2sim2real.md
   - ../entities/paper-ross-dagger.md
+  - ../entities/paper-i3l.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/ross_dagger_aistats_2011.md
@@ -93,6 +94,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - 收集“快要失败但尚未完全失败”的纠偏数据
 - 比纯 BC 更适合插拔、接触、双手协调等长时序任务
 - **[Learning to Fold / LeHome](../entities/paper-lehome-learning-to-fold.md)**：SO-ARM101 双臂叠衣竞赛中，`record_real_dagger.py` 在自主 rollout 失败处 `SPACE` 接管，并把 `task_is_policy` 标签写回 LeRobot 数据集；仿真侧另有失败态 `dagger_collect.py`
+- **[I3L](../entities/paper-i3l.md)**：部署时通过 JoyLo+ 按需接管并收集纠正帧，以 HG-DAgger 迭代更新全身移动操作策略。
 
 ### locomotion / whole-body 任务
 - 可以把高性能教师控制器、MPC 或人类设计的参考轨迹当专家
@@ -156,6 +158,7 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - [DAgger 原论文（Ross et al., 2011）](../entities/paper-ross-dagger.md) — 理论锚点与 no-regret reduction
 - [ULTRA：统一多模态 loco-manipulation 控制](../tasks/ultra-survey.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)
+- [PACER](../entities/paper-pacer.md) — 不改数据聚合流程，只用过程证据给自身 rollout 与人工纠正的动作块重加权损失；DAgger 式纠正数据的加权变体
 
 ## 推荐继续阅读
 

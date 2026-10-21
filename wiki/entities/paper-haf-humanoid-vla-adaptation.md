@@ -2,8 +2,10 @@
 type: entity
 tags: [paper, vla, humanoid, loco-manipulation, flow-matching, reinforcement-learning, post-training, behavior-cloning, whole-body-control, pku, x-humanoid, nankai, xjtu]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-21
+project_id: haf-humanoid-whole-body-loco-manipulation
 arxiv: "2608.16837"
+papers: ["2608.16837", "2610.26584"]
 venue: "arXiv 2026"
 related:
   - ../methods/vla.md
@@ -19,9 +21,10 @@ related:
   - ./x-humanoid.md
 sources:
   - ../../sources/papers/haf_arxiv_2608_16837.md
+  - ../../sources/papers/haf_vla_arxiv_2610_26584.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/sites/haf-github-io.md
-summary: "HAF（arXiv:2608.16837，北大/北京人形/南开/西交）用 HAF-VLA 三阶段层次 action flow 与 HAF-Steer DCT 频谱潜空间 SAC，把通才 flow-matching VLA 适配到天工 2.0/3.0 七项家庭 loco-manipulation；平均归一化任务分 70.5%，超 π₀.₅（53.3%）与 GR00T N1.7（38.1%）；截至入库日未开源。"
+summary: "HAF（arXiv:2608.16837；配套 HAF-VLA 论文 arXiv:2610.26584）以三阶段层次 action flow 适配人形全身 loco-manipulation，并在原框架上加入 HAF-Steer 频谱潜空间 SAC 后训练；两篇论文分别报告七项与六项真机任务，代码截至 2026-10-21 未公开。"
 ---
 
 # HAF（Humanoid Adaptation Framework）
@@ -46,6 +49,11 @@ summary: "HAF（arXiv:2608.16837，北大/北京人形/南开/西交）用 HAF-V
 | OOD | Out-of-Distribution | 未见视觉/位姿扰动下的泛化评测 |
 
 ## 核心信息
+
+| 论文 | 范围与口径 |
+|------|------------|
+| [HAF（arXiv:2608.16837）](https://arxiv.org/abs/2608.16837) | 完整框架 HAF-VLA + HAF-Steer；七项家庭任务，原实体页结果 |
+| [HAF-VLA（arXiv:2610.26584）](https://arxiv.org/abs/2610.26584) | 聚焦层次动作流；摘要报告六项真实世界任务，不与上行七任务数字混用 |
 
 | 项 | 内容 |
 |----|------|
@@ -185,6 +193,7 @@ flowchart TB
 ## 参考来源
 
 - [HAF 论文摘录（arXiv:2608.16837）](../../sources/papers/haf_arxiv_2608_16837.md)
+- [HAF-VLA 论文摘录（arXiv:2610.26584）](../../sources/papers/haf_vla_arxiv_2610_26584.md)
 - [HAF 项目页归档](../../sources/sites/haf-github-io.md)
 
 ## 推荐继续阅读

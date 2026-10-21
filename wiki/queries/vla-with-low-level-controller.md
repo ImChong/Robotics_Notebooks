@@ -3,11 +3,12 @@
 type: query
 tags: [vla, wbc, mpc, impedance-control, architecture, fusion, latency, manipulation, humanoid, horizon-robotics]
 status: complete
-updated: 2026-08-28
-summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理 3 种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步），并对照去掉冻结 System 0 的 direct-joint（DPC）。"
+updated: 2026-10-20
+summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理 3 种主流架构、direct-joint（DPC）反例，并补入场景感知、动力学闭环与可 steer 交互意图接口。"
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
+  - ../../sources/blogs/haoyangweng_steerable_interaction_competence_2026-10.md
   - ../../sources/sites/anthropic-claude-plays-robotics.md
 related:
   - ../methods/vla.md
@@ -205,6 +206,20 @@ class ActionBuffer:
 Direct-joint 仍输出关节 PD 目标（与架构一同一电机接口），但 **没有学习式 tracker**：感知与控制在关节空间联合训练，再用 DriftDistill 补闭环漂移。这不是「VLA 直接驱动力矩」，也还没有公开代码或成功率表；选型时只把它当作架构三的反对命题，而不是已验证的第四套可部署栈。
 - VLA 输出格式和 WBC 接口之间需要精心设计任务约定
 
+#### 4.6 从运动跟踪到可 steer 的物理交互
+
+[Haoyang Weng 的研究札记](../../sources/blogs/haoyangweng_steerable_interaction_competence_2026-10.md)提出另一条互补判断：S0 不应只接收本体运动参考，而应同时具备 **场景感知、物体动力学闭环经验，以及表达交互意图的接口**。这不是要求高层模型直接承担高频控制，而是让 S1 能通过 S0 暴露的接口明确指定「物体/身体怎么动、在哪里接触、如何施力或柔顺」；低层控制器再结合传感反馈执行并调整。
+
+该文区分了两个常被混淆的能力：**空间 grounding** 让上层策略理解物体与空间关系；**动力学 grounding** 则来自 S0 在仿真或真机中执行动作、观察接触/物体/身体后果并据此调整的闭环经验。因此，单纯提升上层推理频率或运动参考精度，并不会自动使自由空间 motion tracker 具备负载变化、接触切换和扰动响应能力。
+
+对 VLA–WBC 架构的启示是，除了频率与安全约束，还应明确核查：
+
+1. S0 是否获得真实部署可用的场景输入（如 RGB、深度或点云），而非只看本体状态？
+2. 训练是否覆盖物体动力学与接触变化，使 S0 学会基于动作后果闭环调整？
+3. S1→S0 接口是否能表达物体运动与接触意图，而非只传一条身体轨迹？同一手臂轨迹可能代表轻触或用力按压，所需接触力不同。
+
+文中报告的概念验证使用 HDMI 代码库与 WEAVE 人–物交互数据，在仿真中与箱子、桌椅等物体交互；没有量化对照或通用真机指标。应把它读作 **S0 设计目标与接口论证**，而不是已证明的通用控制方案。它与 [SONIC](../methods/sonic-motion-tracking.md) 的自由空间全身跟踪定位、[DPC](../entities/paper-dpc.md) 对冻结运动接口的批评互补：前者强调增加场景/物理交互能力和更丰富的 intent，后者强调去掉冻结运动解码瓶颈；两者不能简单视为同一个方法。
+
 ---
 
 ### 5. VLA 输出格式详细对比
@@ -292,6 +307,7 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* (2024) — Action chunk + 低层控制器结合
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1/RT-2/π₀/Octo 综述
 - [sources/blogs/symbiosis_dpc_direct_perception_control.md](../../sources/blogs/symbiosis_dpc_direct_perception_control.md) — DPC：去掉冻结运动接口的 direct-joint 对照
+- [sources/blogs/haoyangweng_steerable_interaction_competence_2026-10.md](../../sources/blogs/haoyangweng_steerable_interaction_competence_2026-10.md) — 可 steer 的 S0 物理交互能力、场景表征与意图接口
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023) — Action chunking 缓冲机制
 - [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT `SendCommand` 与推理相位同步
 

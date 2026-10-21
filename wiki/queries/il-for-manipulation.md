@@ -8,6 +8,7 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/behavior-cloning.md
   - ../methods/dagger.md
+  - ../methods/dmp.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -48,6 +49,7 @@ sources:
 
 | 路线 | 什么时候用 | 优点 | 风险 |
 |------|------------|------|------|
+| [DMP](../methods/dmp.md) | 演示极少（甚至 1 条）、单段点到点或固定形状轨迹，需改目标点/改速度复用 | 目标自适应、时域缩放、无需大数据训练 | 不处理视觉条件与多模态动作，长时序/接触变化需外层规划 |
 | BC / ACT | 已有高质量 teleop 演示；任务相对稳定 | 快、简单、真机友好 | 分布漂移、长时序误差 |
 | DAgger | 策略会偏离演示分布；专家可在线纠偏 | 比纯 BC 更能处理 covariate shift | 真机标注和安全成本高 |
 | Diffusion / Flow | 多模态、长时序、精细接触 | 动作质量高、对操作更强 | 训练和推理更重 |
@@ -109,6 +111,7 @@ sources:
 |------|----------|----------|
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DMP | Dynamic Movement Primitives | 用二阶吸引子动力学编码可泛化到新目标的轨迹基元 |
 | DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
 | IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
 | DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
@@ -129,5 +132,6 @@ sources:
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
+- [DMP](../methods/dmp.md) — 极少演示下的轨迹级模仿基线
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 模仿学习在接触丰富型操作任务中的关键应用场景

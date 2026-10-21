@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-18
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -92,6 +92,7 @@ related:
   - ../entities/paper-puffin-world.md
   - ../entities/open-dreamer.md
   - ./dwm.md
+  - ../entities/edenlive.md
   - ./mimic-video.md
   - ../entities/paper-levjepa.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
@@ -351,6 +352,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [CurrentWorld-0](../entities/current-robotics-currentworld.md)（Current Robotics，2026-08 博客）把 WM 定义为 **interactive world simulator**：不统一低层动作空间，按本体保留动作子空间，联合训练人形（BrainCo / Wuji / 夹爪）、移动双臂与桌面双臂；同步预测头戴/腕部/第三人称，并联合力/触觉。产品用法是 **评测层**（自称与真机成功率强相关、保持排名）加上 **失败态保存/回滚/分支的人类接管后训练**（π0 / π0.5 / DP）。相对 Ctrl-World，它把多视角接口扩到跨本体 + 力触觉，并把纠正做成环境内遥操作，而不是只筛成功轨迹做 SFT。**确认未开源**；定量图为官方自报，独立复现前不作硬基准。
 
+### 配对真机执行的动作条件世界模型基准（WorldOracle）
+
+[WorldOracle](../entities/paper-worldoracle.md) 将预测视频与同一起始观测、同一条低层动作轨迹下的配对真机执行比较，覆盖成功与失败、长程多段 episode 和多视角数据。它从物理状态正确性、交互空间对齐、关键交互区域保真度及多视角动作一致性拆分误差，并报告单视角 / 多视角汇总分。相对 EWMBench 的生成质量评测，WorldOracle 更直接地回答「给定动作后，预测是否复现真实执行结果」；评测代码已公开。 共享多模态世界预测与策略推理路线可参见 [Thinker-WM](../entities/paper-thinker-wm-unified-world-model.md)。
+
 ### 自一致视频策略评估器（示例：SC3-Eval）
 
 [SC3-Eval](../entities/paper-sc3-eval.md)（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）把 **Cosmos3-Nano + 统一动力学** 改造成真机 VLA 评估沙盒：联合训 **前向/逆向动力学** 与 **跨视角 inpainting**，推理时用逆动力学误差 \(U_{\mathrm{chunk}}\) **早停** off-manifold rollout。七个 π₀.₅ checkpoint 上闭环 Pearson **0.929**、MMRV **0.119**，并复现 language/lifting/placing 失败类别；相对 Ctrl-World / IRASim 等纯前向基线，主卖点是 **自一致防漂移** 而非合成 SFT。截至入库日 **确认未开源**。
@@ -467,6 +472,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 足式控制与 MBRL 文献里也会出现 *Robotic World Model* 指 **学习的前向动力学 + 想象 rollout**（例如 ETH RSL 的 **RWM / RWM-U**：集成 RNN 预测 **状态与特权量**，而非扩散视频）。这与本页以 **像素 / Token 视频** 为中心的生成式世界模型 **共享「预测未来」动机**，但 **观测空间、训练目标与评测口径** 不同；工程入口与双仓分工见 [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)。
 
 ## 关联页面
+
+- [EdenLive](../entities/edenlive.md) — 将上游状态演化与实时生成式视觉渲染分离，并提供具身视角转换用途。
 
 按同一套分类归组，便于顺着某一类继续读。
 
@@ -628,3 +635,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。
 - ForeDrive（2026）— [arXiv v2](https://arxiv.org/html/2609.26299v2)；来源摘录：[foredrive_arxiv_2609_26299.md](../../sources/papers/foredrive_arxiv_2609_26299.md)。
+
+## 交互式视听生成案例
+
+- [Murea-InWorld](../entities/paper-murea-inworld.md)：显式世界状态 Agent 规划用户动作，再调用视听生成服务产出并回看视频片段；其代码开放范围与机器人适用边界见实体页。

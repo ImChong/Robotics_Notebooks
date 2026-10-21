@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, parametric-modeling, open-source, hardware, urdf, opencascade, manufacturing, freecad]
 status: complete
-updated: 2026-08-02
+updated: 2026-10-16
 related:
   - ./blender.md
   - ./tinkercad.md
@@ -11,6 +11,7 @@ related:
   - ./cad-skills.md
   - ./freecad-mcp.md
   - ./openscad.md
+  - ./solidcraft.md
   - ./moveit2.md
   - ../concepts/urdf-robot-description.md
   - ../concepts/text-to-cad.md
@@ -84,6 +85,7 @@ flowchart LR
 
 - **与 Blender 对照**：[Blender](./blender.md) 擅长 **网格、绑定、动画、渲染**；FreeCAD 擅长 **制造级 B-rep、约束参数与工程图**——动捕与场景可视化偏前者，机械零件与公差沟通偏后者。
 - **与 Tinkercad 对照**：[Tinkercad](./tinkercad.md) 是浏览器端 **积木式草模 + 课堂电路**；适合零门槛定外形，再导出 STL 进入 FreeCAD/Fusion 做参数化与 STEP——二者串联，不互替。
+- **与 [SolidCraft](./solidcraft.md) 对照**：两者都支持草图约束与参数化特征编辑；FreeCAD 的重点是成熟的 B-rep、STEP、装配与工程工作台，SolidCraft 则强调 Rust 实现、即开即用的浏览器版，以及统一命令系统对 GUI、CLI 和 MCP 的支持。SolidCraft 仍属早期项目，使用前应核对所需功能是否已实现。
 - **与 Web URDF 工具对照**：[step2urdf](./step2urdf.md) 适合 **已有 STEP 快速转 URDF**；[URDF-Studio](./urdf-studio.md) 适合 **描述文件深度编辑**；FreeCAD 适合 **从零设计或修改装配体真值**——三者常 **串联** 而非互斥。
 - **与控制实现对照**：[WBC 实现指南](../queries/wbc-implementation-guide.md) 第一步要求 **URDF/MJCF 与 CAD/实机一致**；FreeCAD 是开源团队完成该步的常见桌面工具。
 
@@ -102,6 +104,7 @@ flowchart LR
 - [URDF-Studio（URDF/MJCF 设计工作站）](./urdf-studio.md)
 - [CAD Skills（LLM 驱动 CAD 技能）](./cad-skills.md)
 - [OpenSCAD（脚本化参数 CAD）](./openscad.md)
+- [SolidCraft（Rust 参数化 CAD）](./solidcraft.md)
 - [FreeCAD MCP（MCP 驱动桌面 CAD）](./freecad-mcp.md)
 - [MoveIt 2（ROS 2 运动规划）](./moveit2.md)
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)

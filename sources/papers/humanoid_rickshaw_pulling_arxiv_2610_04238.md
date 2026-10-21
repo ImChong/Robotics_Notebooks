@@ -1,12 +1,14 @@
 # Humanoid Rickshaw Pulling 来源归档
 
 - **论文：** https://arxiv.org/abs/2610.04238
-- **HTML v1：** https://arxiv.org/html/2610.04238v1
+- **HTML v2：** https://arxiv.org/html/2610.04238v2
+- **版本：** arXiv v2，2026-10-07（cs.RO）
+- **核查日期：** 2026-10-16
 - **PDF：** https://arxiv.org/pdf/2610.04238
 - **演示视频：** https://youtu.be/eqnAlQLjZF8
 - **作者：** Yangzhi Yang, Xiansheng Lin, Zhaoming Xie, Xiaobin Xiong
 - **机构：** Legged AI Lab, Shanghai Innovation Institute
-- **代码：** arXiv v1 未列独立 GitHub 代码仓库
+- **代码：** 截至 arXiv v2（2026-10-07），论文未列独立 GitHub 代码仓库
 
 ## 方法摘录
 

@@ -5,13 +5,14 @@
 - **标题：** PointZero: 3D Point Track Completion for Learning Transferable 3D Dynamics
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/2609.19142>
+- **发表：** NeurIPS 2026；项目页注明 Robot Learning with World Models Workshop oral presentation。
 - **PDF：** <https://arxiv.org/pdf/2609.19142>
 - **代码：** https://github.com/Duisterhof/pointzero
 - **项目页：** https://pointzero-wm.github.io/
 - **入库日期：** 2026-09-20（初稿）；2026-09-21（项目页直 ingest 补全）
 - **一句话说明：** 3D 点轨迹补全预训练可迁移 3D 动力学；290 万合成帧；后训练用于 PGND 动作条件动力学与 7 任务模仿学习。
 
-## 开源状态
+## 开源状态（2026-10-20 复核）
 
 - **待发布**（步骤 2.5，2026-09-21）：项目页链 GitHub 但 README 写 release coming soon；Dataset 按钮 Coming Soon。
 

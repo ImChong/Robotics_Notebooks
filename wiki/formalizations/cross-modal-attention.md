@@ -2,7 +2,7 @@
 type: formalization
 tags: [vla, deep-learning, attention, multimodal, machine-learning]
 status: complete
-updated: 2026-04-21
+updated: 2026-10-19
 related:
   - ../methods/vla.md
   - ../formalizations/vla-tokenization.md

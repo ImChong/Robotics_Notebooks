@@ -127,6 +127,9 @@ flowchart LR
 - [Blind Grasp Reflex](../wiki/entities/paper-blind-grasp-reflex.md) — 臂部到达与手部接触控制解耦：20-DoF 手策略仅用关节位置/命令误差历史做本体感觉抓取并输出抓取分数；仿真含 92% 动态抓取，官方代码待发布
 - [Distributed Whole-Arm Interaction（软臂全臂接触）](../wiki/entities/paper-distributed-whole-arm-interaction-soft-robot.md) — 嵌入式 IMU 本体感觉历史驱动循环 RL，混合刚柔机械臂盲式全臂接触
 - [TouchScale](../wiki/entities/touchscale.md) — 统一穿戴式采集的人类视觉-触觉交互数据集（论文约 500 h，HF 当前发布 100 h）
+- [SpectRobot](../wiki/entities/paper-spectrobot-single-point-tactile.md) — 把高带宽单点传感信号转成时频图，让视觉编码器读取接触历史。
+- [Norm2Tex](../wiki/entities/paper-norm2tex.md) — 把法线纹理转成高度信息，在触觉渲染前修改深度图，为现有模拟器增加高频表面细节。
+- [Berkeley QUAD Hand](../wiki/entities/paper-berkeley-quad-hand.md) — 用非对称驱动和柔顺耦合让不同手指分工，兼顾灵巧与持续握力，并控制体积与发热。
 - [CoDance](../wiki/entities/paper-codance.md) — 双人舞视频构造双手受力感知片段，多连杆顺应增强 + RL 使 G1 跟随舞伴时对接触力作出让步
 - Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
 

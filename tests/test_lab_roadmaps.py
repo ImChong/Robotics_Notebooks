@@ -75,8 +75,17 @@ def test_home_entry_links_match_data_order() -> None:
     card = html[start : html.index("</div>", start)]
     keys = re.findall(r'<a [^>]*href="lab\.html\?id=([^"]+)"', card)
     assert keys == [lab["key"] for lab in DATA["labs"]]
-    # 实验室与公司同卡、按钮切换，尚无折叠按钮；超过 4 个时拆成独立卡片并加 data-lab-extra + 展开按钮
-    assert len(keys) <= 4
+    # 独立卡片默认展示四个，后续入口可展开，避免新增路线撑长首页。
+    tags = re.findall(r'<a [^>]*href="lab\.html\?id=[^"]+"[^>]*>', card)
+    years = [int(re.search(r'data-founded-year="(\d+)"', tag).group(1)) for tag in tags]
+    assert years == [lab["founded_year"] for lab in DATA["labs"]]
+    assert len(tags) > 4
+    assert all("hidden" not in tag for tag in tags[:4])
+    assert all("data-lab-extra hidden" in tag for tag in tags[4:])
+    toggle = re.search(r'id="homeLabToggle"[^>]*>展开全部 (\d+) 个实验室', html)
+    assert toggle and int(toggle.group(1)) == len(keys)
+    assert 'id="home-lab-routes" hidden' not in html
+    assert 'id="homeOrgTabLab"' not in html
 
 
 def test_hero_lab_count_uses_home_links_at_runtime() -> None:

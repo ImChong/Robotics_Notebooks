@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, humanoid, rl, motion-tracking, sim2real, onnx, empirical-study, unitree-g1, inria, mjlab]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 arxiv: "2607.19903"
 code: https://github.com/hucebot/yahmp
 related:
   - ./paper-twist2.md
+  - ./paper-humanoidttt.md
   - ./mjlab.md
   - ./paper-extreme-rgmt.md
   - ../methods/sonic-motion-tracking.md
@@ -166,6 +167,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [HumanoidTTT：让人形机器人复用完整动作](./paper-humanoidttt.md)
 - [TWIST2](./paper-twist2.md) — 外部完整 GMT/遥操作管线基线
 - [mjlab](./mjlab.md) — 训练栈依赖
 - [Extreme-RGMT](./paper-extreme-rgmt.md) — G1 高动态 generalist 持续学习（未开源）

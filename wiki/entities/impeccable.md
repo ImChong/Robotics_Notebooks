@@ -16,7 +16,6 @@ related:
   - ./anthropic-frontend-design-skill.md
   - ./find-skills-skill.md
   - ../comparisons/skillry-taste-skill-impeccable.md
-  - ../../docs/checklists/frontend-optimization-v1.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/pbakaus-impeccable.md
@@ -90,7 +89,6 @@ sequenceDiagram
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 上游灵感
 - [find-skills](find-skills-skill.md) — 安装路径之一
 - [选型对比](../comparisons/skillry-taste-skill-impeccable.md)
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md)
 
 ## 参考来源
 

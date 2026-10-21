@@ -1,9 +1,10 @@
 ---
 type: entity
 project_id: physical-rsi-research-map
+papers: ["2610.18842"]
 tags: [physical-ai, recursive-self-improvement, embodied-ai, research-map, literature-review, evaluation, safety, harness]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-17
 related:
   - ./physical-rsi.md
   - ./robodojo.md

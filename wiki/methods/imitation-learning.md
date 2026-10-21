@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-17
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
@@ -235,6 +235,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
+- [robomimic](../entities/robomimic.md) — BC / BC-RNN / HBC 与离线 RL 的统一框架；CoRL 研究揭示示范质量、历史信息与观测选择对 IL 结果的影响
 - [机器人学习五大范式](../comparisons/robot-learning-five-paradigms-taxonomy.md) — IL 作为示范信号主线，与 RL / LfV / VLA / 持续学习对照
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow → chunk → IL / offline RL 的讲者读法
 - [具身智能高频面试题库](../entities/embodied-interview-qa.md) — 卷三 IL/VLA 面试速查（BC / DAgger / ACT / Diffusion Policy）

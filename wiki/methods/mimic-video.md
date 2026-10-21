@@ -2,7 +2,7 @@
 type: method
 tags: [vam, video-action-model, imitation-learning, vla, flow-matching, manipulation, cosmos, inverse-dynamics]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-16
 date: 2026-05-17
 summary: "mimic-video 提出 Video-Action Model（VAM）：用语义–动力学一体的互联网规模视频扩散骨干在潜空间形成视觉计划，再以流匹配动作解码器作逆动力学模型输出机器人动作块，从而把大量样本效率压力从纯 VLA 式静态先验转移到视频表征质量。"
 related:
@@ -22,6 +22,7 @@ related:
   - ./defi-decoupled-dynamics-vla.md
   - ../overview/world-models-15-open-source-technology-map.md
   - ../overview/world-models-route-01-cascade.md
+  - ../entities/paper-kinogen.md
 sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
@@ -155,3 +156,4 @@ flowchart LR
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — 联合训练视频–动作 + 测试时动作条件仿真（Agibot，5B）
 - [mimic hand M1](../entities/mimic-hand-m1.md) — mimic 产业腱驱动灵巧手与数据金字塔
 - [mimic wearable U1](../entities/mimic-wearable-u1.md) — 与 M1 1:1 的可穿戴示范采集（umimic）
+- [KinoGen](../entities/paper-kinogen.md) — 校准渲染约束视频生成，再把机器人与物体模型拟合到双视角视频，直接得到构型空间移动操作参考

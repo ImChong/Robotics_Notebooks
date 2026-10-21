@@ -153,3 +153,8 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 ## 一句话记忆
 
 > **WiLoR/HaWoR 解手，Auto-labeling 解标，GAE 解优势，ActuatorNet 解扭矩 gap——拼成灵巧操作 RL 数据基建；长程 ego 度量轨迹另见 Macrodata Hand-Action。**
+
+
+## Flora：多模态视频标注与奖励
+
+- [Flora：机器人数据引擎模型套件](../entities/flora-robotics-data-engine.md) — 组合时间戳动作描述与过程/结果奖励标签，供数据筛选、训练和评估使用。

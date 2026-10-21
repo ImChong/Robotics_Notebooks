@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, evaluation, manipulation, openai, robodojo, pi05, technical-report]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-20
 venue: "Technical Report 2026"
 code: https://github.com/anonymous-report-421/eval-of-gpt-6-astra-as-policy
 related:
@@ -20,6 +20,10 @@ sources:
   - ../../sources/papers/gpt_6_astra_embodied_policy_2026.md
   - ../../sources/sites/gpt-6-astra-embodied-policy-eval.md
   - ../../sources/repos/eval-of-gpt-6-astra-as-policy.md
+  - ../../sources/papers/zhang_gpt6_astra_unexpected_robot_policy_2609_24170.md
+  - ../../sources/papers/galbot_gpt6_astra_embodied_policies_2609_38537.md
+  - ../../sources/sites/openai-gpt-6-astra.md
+  - ../../sources/sites/gpt-6-astra-visuo-tactile-policy.md
 summary: "GPT 6 Astra 具身策略评测（2026 技术报告）：RoboDojo 十任务上混合 π0.5+GPT 以 14.4% 修正步达 48% SR；Direct 26%；RoboLab 同子集 Direct 98%。"
 ---
 
@@ -198,6 +202,9 @@ RoboLab 结果为历史运行对照（`robolab120_*_specific_10ep_20260603`）�
 - [Robocurve GPT-6 Astra 实测](https://openai.robocurve.org/gpt-6-astra/) — 独立 YAM 机械臂报告
 - [GPT-Policy](./paper-gpt-policy.md) — 五类 in-context 真机 ablation 与开源 harness（arXiv:2609.19138）
 - [GPT-Policy-Eval](https://github.com/cheng-haha/GPT-Policy-Eval) — 单次视频示范→真机执行案例
+- [An Unexpected Robot Policy](../../sources/papers/zhang_gpt6_astra_unexpected_robot_policy_2609_24170.md) — RoboDojo 42 项任务、与公开策略比较的独立评测（arXiv:2609.24170）
+- [Systematically Exploring the Capabilities of GPT-6 Astra](../../sources/papers/galbot_gpt6_astra_embodied_policies_2609_38537.md) — 六领域评测与推理时延分析（arXiv:2609.38537）
+- [GPT-6 Astra 官方介绍](../../sources/sites/openai-gpt-6-astra.md) — OpenAI 模型介绍页；不作为机器人视触觉能力的证据
 
 ## 参考来源
 

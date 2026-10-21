@@ -4,7 +4,7 @@ tags: [company, archon-robotics, humanoid, humanoid-foundation-model, whole-body
 title: 源策未来（Archon Robotics）
 status: complete
 summary: "源策未来（Archon Robotics）2026-04 成立（媒体口径），研发总部在上海徐汇漕河泾，由港大助理教授、OpenDriveLab 负责人李弘扬（Founder & CRO）与李天羽（CEO）、陈立（Head of AI）创办，约 20 人；目标是做全身智能（WBI）人形基础模型（HFM）。2026-06-29 公布数亿元种子轮（真格、高榕、IDG、五源、戈壁与港大联名基金、奇绩、上海创智学院；未披露领投）。官网仅 1 篇博文（WBI，2026-07-13）；arXiv 署名论文 2 篇（RoboNaldo、EgoHumanoid-V2）；公司 GitHub / HF 组织均为空。"
-updated: 2026-10-10
+updated: 2026-10-16
 institutions: [archon-robotics]
 related:
   - ./archon-whole-body-intelligence.md
@@ -21,6 +21,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-soccer.md
   - ../overview/china-embodied-ai-labs-landscape-2026.md
+  - ./paper-pingpongduo.md
 sources:
   - ../../sources/sites/archon-tech.md
   - ../../sources/blogs/archon_whole_body_intelligence.md
@@ -187,6 +188,7 @@ flowchart LR
 - [Helix 02](./helix-02.md) · [西湖机器人](./westlake-robotics.md) — 产业对照
 - [行为基础模型](../concepts/behavior-foundation-model.md) · [Loco-Manipulation](../tasks/loco-manipulation.md) · [人形足球](../tasks/humanoid-soccer.md)
 - [国内具身智能实验室三层地图 2026](../overview/china-embodied-ai-labs-landscape-2026.md)
+- [PingpongDuo](./paper-pingpongduo.md) — 双台 Unitree G1 乒乓球双打：团队层风险过滤站位 + 分层击球技能
 
 ## 参考来源
 

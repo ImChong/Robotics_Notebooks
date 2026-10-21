@@ -3,7 +3,7 @@ type: entity
 project_id: embodied-evo-coding-agent
 tags: [paper, robotics, coding-agent, agentic, memory, self-improvement, physical-ai, simulation, tsinghua, arxiv]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-20
 arxiv: "2610.18867"
 project: https://lab.einsia.ai/embodiedevo/
 code: https://github.com/Einsia/EmbodiedEvo
@@ -105,6 +105,15 @@ sequenceDiagram
 
 配对实验中，继承经验后成功率从 **8.50%** 提高到 **30.17%**。Astra 经验迁移至 Sol / Luna 后，成功率分别增加 **8.86 / 5.50 个百分点**。Skills / Lessons 与原始交互历史的成功率为 **30.17% / 29.78%**，论文估算每回合成本从 **$12.203** 降至 **$5.732**（下降 53.0%）。
 
+## 与其他工作对比
+
+| 工作 | 改进 / 评测对象 | 经验载体 | 与 EmbodiedEvo 的差异 |
+|------|-----------------|----------|------------------------|
+| **EmbodiedEvo** | coding agent 的 harness 经验（权重冻结） | 代码 Skills + 诊断 Lessons，冻结后跨场景复用 | — |
+| [CodeActionBench](./paper-codeactionbench.md) | 通用 agent 单 episode 内写 / 改控制代码的能力 | 无跨 episode 经验沉淀 | 同属 Code-as-Policy 评测，但只测「当场写对」；EmbodiedEvo 测「经验能否带进新场景」 |
+| [RoboHarness](./paper-robo-harness.md) | 异构机器人策略的编排 | 能力路由与交接规则 | 侧重调度已有策略；EmbodiedEvo 让 agent 自己写并积累控制程序 |
+| [ASENA](./paper-asena-self-evolving-agents.md) | 具身导航 agent 的自我演进 | 环境反馈驱动的导航经验 | 任务域为导航；EmbodiedEvo 面向操作，经验以可执行代码表示 |
+
 ## 结论
 
 **EmbodiedEvo 的贡献是让具身 coding agent 的经验在 harness 中跨场景复用；当前证据支持 RoboDojo 仿真中的迁移，尚未说明精细操作或真机可靠性已解决。**
@@ -126,6 +135,7 @@ sequenceDiagram
 ## 关联页面
 - [RoboHarness](./paper-robo-harness.md) — 编排异构机器人策略，侧重能力路由与交接。
 - [ASENA](./paper-asena-self-evolving-agents.md) — 使用环境反馈改进具身导航 agent，任务和经验表示不同。
+- [RAX](./rax-scaling-online-exploration.md) — 冻结 coding agent 经机器人 API 在线探索，再把成功经验编译成可复用的感知—规划—控制程序。
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 具身 agent 的任务分解与执行编排。
 
 ## 参考来源

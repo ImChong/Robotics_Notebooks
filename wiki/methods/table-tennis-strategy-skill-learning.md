@@ -2,13 +2,14 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-09-16
+updated: 2026-10-16
 related:
   - ../entities/paper-sony-ai-ace-table-tennis.md
   - ../entities/smplolympics.md
   - ./ase.md
   - ./amp-reward.md
   - ../tasks/teleoperation.md
+  - ../entities/paper-pingpongduo.md
 sources:
   - ../../sources/papers/table_tennis_strategy_skill_arxiv_2407_16210.md
   - ../../sources/sites/physics-ping-pong-github-io.md
@@ -88,6 +89,7 @@ flowchart TB
 - [AMP](./amp-reward.md) — style reward 家族
 - [Reward Design](../concepts/reward-design.md) — 拍面/落点/contact 门控奖励设计
 - [Teleoperation](../tasks/teleoperation.md) — VR 交互范式参照
+- [PingpongDuo](../entities/paper-pingpongduo.md) — 把分层击球技能扩展到双人双打，团队层负责站位与轮换
 
 ## 参考来源
 

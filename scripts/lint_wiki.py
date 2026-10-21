@@ -368,6 +368,20 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # humannet-table1-human-video-corpora.md、paper-egoverse.md）与 INTACT 的 `Direct`
     # 评测模式，多义被小写 slug 合并，非单一可成页概念；与 clip / skills 同类停用词。
     "direct",
+    # beta：命中处分属三种不相干的含义——软件发布阶段（PlotJuggler PJ4 3D Scene、Newton
+    # Kamino、DimOS G1 支持的 **beta**、LejuBFM 仓库 `beta` 分支）、超参名（SDPG 的
+    # `BETA` 系数）与 Beta 分布（Xiaomi-Robotics-0 的 flow 时间步采样），被小写 slug
+    # 合并，非单一可成页概念；与 clip / meta 同类多义停用词。
+    "beta",
+    # choice：命中处均为 typed-decision 模型的 API 原语 / 输出类型名（Laya / Laya-MLX /
+    # Valen / Jev 的 `choice` / **Choice**，Intern-Decision、NavJev 沿用同一接口），
+    # 本体已由 entities/laya.md、entities/typesafe-jev.md 的接口表承载；与 infer /
+    # validate 同为代码 token，不建独立页。
+    "choice",
+    # pip：Python 包安装器，命中处均为「`pip` 安装后…」的复现入口指称（robot_descriptions.py、
+    # Isaac Teleop、Cepheid、SmolWAM、ADAMS 等），是工具链基础设施，非机器人概念/
+    # 方法/形式化；与 github / uv / python 同类工具链停用词。
+    "pip",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，

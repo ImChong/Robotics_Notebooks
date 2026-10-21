@@ -6,6 +6,7 @@
 - **类型：** site
 - **链接：** https://pointzero-wm.github.io/
 - **arXiv：** <https://arxiv.org/abs/2609.19142>
+- **发表：** NeurIPS 2026；项目页注明 Robot Learning with World Models Workshop oral presentation。
 - **代码：** https://github.com/Duisterhof/pointzero
 - **入库日期：** 2026-09-20（初稿）；2026-09-21（项目页直 ingest 补全）
 - **一句话说明：** 以 RGB-D + 稀疏 3D 点轨迹补全为预训练目标，在无机器人动作标签下学习可迁移 3D 动力学；290 万合成帧 + 真机评测集；后训练用于动作条件动力学与模仿学习。
@@ -19,10 +20,10 @@
 | Kaifeng Zhang, Yunzhu Li | Columbia University |
 | Bowen Wen, Stan Birchfield | NVIDIA |
 
-## 开源状态（步骤 2.5，2026-09-21 再核）
+## 开源状态（步骤 2.5，2026-10-20 再核）
 
-- **代码：** 项目页链至 [Duisterhof/pointzero](https://github.com/Duisterhof/pointzero)，但 README 写 **「Release coming soon」** — 截至入库日 **待发布**。
-- **数据集：** 项目页按钮标 **「Dataset (Coming Soon)」** — **待发布**。
+- **代码：** 项目页链至 [Duisterhof/pointzero](https://github.com/Duisterhof/pointzero)，但 README 写 **「Release coming soon」** — 截至 2026-10-20 仓库 README 仍写 **Release coming soon**，代码待发布。
+- **数据集：** 项目页按钮标 **「Dataset (Coming Soon)」** — 按钮仍标为 **Coming Soon**。
 - **Checkpoints / 训练配方：** 摘要与项目页宣称将发布，但页上尚无下载链接 — **待发布**。
 - **论文 PDF：** [arXiv:2609.19142](https://arxiv.org/abs/2609.19142) 可公开获取。
 

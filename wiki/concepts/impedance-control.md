@@ -2,12 +2,13 @@
 type: concept
 tags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-18
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
+  - ../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-hybrid-position-force.md
@@ -106,6 +107,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Mayr 笛卡尔阻抗 + 零空间开源实现](../../sources/papers/mayr_cartesian_impedance_joss_2024.md)
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织
+- [刚-软混合链路人形论文归档](../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md) — PCS 柔性段 + 柔顺优化控制（arXiv:2610.15073）
 - [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
 
 ## 关联页面
@@ -127,4 +129,5 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [LAC](../entities/paper-lac.md) — 人形上身线+角刚度命令；角通道走被动运动链（部分开源）
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)
+- [刚-软混合链路人形建模与控制](../entities/paper-rigid-soft-hybrid-link-humanoid.md) — 已有被动黏弹性（板簧假肢腿）时联合优化主动关节柔顺矩阵
 - [阻尼系统（M–B–K 与 ζ）](../formalizations/damped-systems.md) — 临界阻尼 $B_d\approx 2\sqrt{M_d K_d}$ 的理论背景
