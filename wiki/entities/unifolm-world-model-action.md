@@ -146,6 +146,9 @@ cd external/dlimp && pip install -e .
 
 ## 关联页面
 
+- [Ropedia W0：跨本体运动-操作世界模型](./paper-ropedia-w0.md) — 以共享运动学表示连接人类与机器人数据。
+- [SteerAct：少样本时间维动作引导](./paper-steeract-few-shot-temporal-steering.md) — 在冻结动作模型上实施测试时适配。
+
 - [UnifoLM-VLA](./unifolm-vla.md)
 - [UnifoLM-WLA-1.0](./unifolm-wla.md)
 - [World Action Models](../concepts/world-action-models.md)
