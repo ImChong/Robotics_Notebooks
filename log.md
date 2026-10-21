@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-21] ingest | sources/repos/rpl-amazon-far.md — 补入 RPL 官方训练、蒸馏与 sim2sim 代码并更新既有论文实体
+
 ## [2026-10-21] ingest | sources/papers/fiber_arxiv_2610_24675.md — 收录 FIBER 论文、项目页与官方仓库，并补充移动操作潜空间规划路线
 
 ## [2026-10-21] ingest | PrismWAM
