@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-21] ingest | sources/papers/visionhope_arxiv_2609_33325.md — 补充机构归属、主表数值与消融，修正评测表述为可核对数字
+
 ## [2026-10-16] ingest | sources/repos/anthropics-claude-for-legal.md — 归档官方法律工作流插件仓库并整理 Claude for Legal 的模块化 agent 配置、开源状态与适用边界
 
 ## [2026-10-16] ingest | sources/papers/trackeverything_arxiv_2609_30222.md — 归档论文、项目页与占位仓，新增实体页并关联状态估计；官方代码待发布
