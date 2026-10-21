@@ -2,7 +2,7 @@
 type: entity
 tags: [vfa, vision-force-action, manipulation, foundation-model, sim2real, reinforcement-learning, tactile, startup, mit, deepmind, eka-robotics]
 status: complete
-updated: 2026-09-26
+updated: 2026-10-21
 related:
   - ../methods/vla.md
   - ../concepts/sim2real.md
@@ -16,6 +16,7 @@ related:
 sources:
   - ../../sources/sites/eka_robotics_com.md
   - ../../sources/blogs/wechat_sourcemind_eka_vfa_actuate26_2026-09-26.md
+  - ../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md
 summary: "Eka Robotics（剑桥）公开 Vision-Force-Action（VFA）操作基础模型：力与视觉同为控制一等信号，主打仿真 RL 规模化与自研触觉手；相对 VLA/纯视频缩放强调速度×可靠性与 sim-to-real；截至入库日无官方代码/权重。"
 ---
 
@@ -43,7 +44,7 @@ summary: "Eka Robotics（剑桥）公开 Vision-Force-Action（VFA）操作基�
 - **重新打开「性能×通用性」取舍：** 官网与演讲均强调：仅扩大 **视频/遥操作** 数据改善 **泛化**，不自动带来 **工业级速度与可靠性**；VFA 把 **接触力学** 放回中心，对准 **付费门槛**（见 [VLA 方法页](../methods/vla.md) 中的 latency/部署讨论）。
 - **与 VLA 生态对照轴清晰：** 语言被定位为 **规划辅助** 而非物理本体；力与视觉同为 **闭环控制** 输入——与 [FM-VLA](../entities/paper-fm-vla.md)（力 token 注入 π₀.₅）、[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)（触觉 mid-training）等同属 **力/触觉增强** 谱系，但 Eka 宣称 **foundation 级统一模型 + 自研手硬件**。
 - **仿真 RL 作为数据引擎：** 对齐本库 [Sim2Real](../concepts/sim2real.md) 主线；演讲明确 **人类示范偏慢、难覆盖失败**；规模化依赖 **GPU + 物理仿真** 而非线性堆人力采集。
-- **证据等级需冷静读：** 截至入库日 **无 arXiv 论文、无 GitHub**；数字（如 **1500 vs 600 picks/h**、换灯泡、25× 慢放覆盆子）来自 **Actuate 26 讲者陈述** 与官网演示，**待独立 benchmark / 第三方复现**。
+- **证据等级需冷静读：** 截至 2026-10-21，公开材料中 **无 arXiv 论文、无官方 GitHub**。Eka 2026-10-20 官方文章报告训练分布外抓取约 **1,500 次/小时**，并以约 **600 次/小时**作人工对比；该吞吐为公司自述，未附标准测试协议或第三方评测，不能直接外推为生产线长期节拍。
 
 ## 核心原理
 
@@ -104,7 +105,7 @@ flowchart TD
 | 标准 benchmark（LIBERO、RoboTwin 等） | **未见公开数字** |
 | 第三方复现 | **无开源** |
 | 演示 | 官网视频；演讲 **8× 世界模型 vs 25× 慢放 Eka** 对比叙事 |
-| 吞吐 | 演讲：**~1500 grabs/h** vs 人 **~600**（**讲者陈述**） |
+| 吞吐 | Eka 官方文章报告训练分布外物体约 **1,500 operations/h**，并与约 **600 operations/h**人工基准比较；**公司自述，未见公开测试协议/第三方评测** |
 
 ### 对比（选型坐标）
 
@@ -150,4 +151,5 @@ flowchart TD
 ## 参考来源
 
 - [Eka Robotics 官网（一手）](../../sources/sites/eka_robotics_com.md)
+- [Eka Robotics 官方文章：VFA 与实验室操作吞吐（2026-10-20）](../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md)
 - [SOURCEMIND — Actuate 26 VFA 演讲整理（微信）](../../sources/blogs/wechat_sourcemind_eka_vfa_actuate26_2026-09-26.md)
