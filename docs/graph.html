@@ -437,6 +437,10 @@
     }
     .graph-3d-label.is-depth-hub {
       font-weight: 700;
+      animation: depth-hub-blink 1.2s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .graph-3d-label.is-depth-hub { animation: none; }
     }
     /* 3D 社区聚类中心胶囊标签（HTML overlay，样式对齐 2D .community-label）
        字号/内边距由 graph-3d.js 按社区节点数 × 画布短边比例缩放（约 7–22px），此处仅作兜底 */

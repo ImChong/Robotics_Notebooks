@@ -1151,10 +1151,41 @@
     // 逐节点外观。此前用 scene.traverse 遍历整棵场景树（节点 + 每条边各一个对象，
     // 全图约 3.8 万个），其中绝大多数是连线 mesh，白跑一遍判断。改为直接遍历数据侧的
     // nodes3d 并取库绑定的 __threeObj，工作量降到节点数量级。
+    // 选中路线时对应 roadmap 节点闪烁：逐帧在共享材质缓存里切换不透明度档位（不改共享材质本身）。
+    var hubBlinkMeshes = [];
+    var hubBlinkRaf = 0;
+    var hubBlinkReduced = window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+    function hubBlinkTick(now) {
+      hubBlinkRaf = 0;
+      if (!hubBlinkMeshes.length || container.hidden || hubBlinkReduced.matches) return;
+      // 与 2D 同为 1.2s 周期：不透明度在 0.25 ~ 1 之间余弦起伏，取 0.05 档位以复用材质缓存
+      var phase = 0.5 + 0.5 * Math.cos((now / 1200) * 2 * Math.PI);
+      var opacity = Math.round((0.25 + 0.75 * phase) * 20) / 20;
+      for (var i = 0; i < hubBlinkMeshes.length; i++) {
+        var item = hubBlinkMeshes[i];
+        // 库重建节点对象后旧 mesh 会脱离场景，每帧按数据侧重新取
+        var obj = item.d.__threeObj;
+        if (!obj || !obj.isMesh) continue;
+        obj.material = nodeMaterialFor(item.color, opacity * item.base);
+        // 光看明暗在 3D 里太小，同时让球体随闪烁放大到 3 倍
+        var r = item.radius * (1 + 2 * (1 - phase));
+        obj.scale.set(r, r, r);
+      }
+      hubBlinkRaf = window.requestAnimationFrame(hubBlinkTick);
+    }
+    function syncHubBlink() {
+      if (hubBlinkMeshes.length && !hubBlinkRaf && !hubBlinkReduced.matches) {
+        hubBlinkRaf = window.requestAnimationFrame(hubBlinkTick);
+        wakeRender();
+      }
+    }
+
     function updateNodeMeshes() {
       if (!graph || !bundledThree) return;
       var data = graph.graphData();
       var list = (data && data.nodes) || nodes3d;
+      hubBlinkMeshes = [];
       for (var i = 0; i < list.length; i++) {
         var d = list[i];
         var obj = d && d.__threeObj;
@@ -1165,7 +1196,11 @@
         var mat = nodeMaterialFor(getNodeColor(d), opacity);
         if (obj.material !== mat) obj.material = mat;
         obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
+        if (obj.visible && isNodeLabelHub(d)) {
+          hubBlinkMeshes.push({ obj: obj, color: getNodeColor(d), base: opacity, radius: radius, d: d });
+        }
       }
+      syncHubBlink();
     }
 
     // 连线加粗：linkWidth 访问器只在「创建连线几何」时把半径烘进圆柱，事后改它不会重建已渲染
@@ -1381,7 +1416,7 @@
     function tryIdlePause() {
       idlePauseTimer = 0;
       if (!graph || container.hidden || idlePaused) return;
-      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null) {
+      if (engineRunning || performance.now() < renderHoldUntil || timelinePopRaf != null || hubBlinkRaf) {
         scheduleIdlePause();
         return;
       }
