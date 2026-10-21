@@ -16,7 +16,6 @@ related:
   - ./manim.md
   - ./anthropic-claude-api-skill.md
   - ../references/llm-wiki-karpathy.md
-  - ../../media/roadmap-motion-control-video/README.md
 sources:
   - ../../sources/repos/remotion.md
 summary: "Remotion 是以 React 组件为源真值的可编程视频框架：支持 agent/交互/代码三条创作路径，Node/Lambda 等批量渲染，以及 Player/Editor 嵌入；许可需按公司规模查阅 Remotion License。"
@@ -42,7 +41,7 @@ summary: "Remotion 是以 React 组件为源真值的可编程视频框架：支
 ## 为什么重要（对本知识库读者）
 
 - **Agent 时代视频栈：** README 定位 *Video tools for the agent era*；官方提供 [Agent Skills 文档](https://www.remotion.dev/docs/ai/skills) 与 [Prompts](https://www.remotion.dev/prompts)，与 [video-shotcraft](video-shotcraft.md) 的 Remotion 样片库、[claude-api](../entities/anthropic-claude-api-skill.md) 类 API 技能形成 **「规约 + 参考实现 + 渲染 CLI」** 链。
-- **本仓库路线成片：** `media/roadmap-motion-control-video/` 用 Remotion + 章节脚本生成 [motion-control 解说视频](../../roadmap/motion-control.md) 资产，证明 **知识库内容 → 可复现视频 pipeline** 可行。
+- **机器人路线素材：** [motion-control 路线](../../roadmap/motion-control.md) 汇总了可进一步转为解说视频的章节内容；视频资产不在本仓库中发布。
 - **与 Manim / GSAP 分工：** [Manim](manim.md) 偏数学动画；[GSAP Skills](gsap-skills.md) 偏 Web 动效技能；Remotion 偏 **产品/路线/marketing 级成片与 batch**。
 
 ## 核心结构
@@ -86,7 +85,6 @@ flowchart LR
 ## 与其他页面的关系
 
 - [video-shotcraft](video-shotcraft.md) — Agent Skill 级 Remotion 镜头库  
-- [motion-control 路线视频 README](../../media/roadmap-motion-control-video/README.md) — 本库 Remotion 实践  
 - [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) — 知识编译与多媒体导出并列  
 
 ## 推荐继续阅读

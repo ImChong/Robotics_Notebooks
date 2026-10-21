@@ -15,7 +15,6 @@ related:
   - ./find-skills-skill.md
   - ./anthropic-frontend-design-skill.md
   - ../comparisons/skillry-taste-skill-impeccable.md
-  - ../../docs/checklists/frontend-optimization-v1.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/sites/skillry-dev.md
@@ -83,7 +82,6 @@ flowchart LR
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 官方 UI skill 基线
 - [find-skills](find-skills-skill.md) — 公开技能发现
 - [Skillry vs Taste vs Impeccable](../comparisons/skillry-taste-skill-impeccable.md) — 选型对比
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站 docs 工程清单
 
 ## 参考来源
 

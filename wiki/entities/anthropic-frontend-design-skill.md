@@ -20,7 +20,6 @@ related:
   - ./skillry.md
   - ../comparisons/skillry-taste-skill-impeccable.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../../docs/checklists/frontend-optimization-v1.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/anthropics-frontend-design-skill.md
@@ -47,7 +46,7 @@ summary: "frontend-design 是 anthropics/skills 官方 UI 技能：要求先出 
 
 ## 为什么重要（对本知识库读者）
 
-- **本站 `docs/` 展示层：** 知识库主体在 `wiki/`，但读者首触往往是 **静态站**；代理改 `docs/*.html` / CSS 时易产出 cream/terracotta、统一圆角卡片等指纹（见仓库 [`docs/frontend-redesign-plan.md`](../../docs/frontend-redesign-plan.md) 对本 skill 的引用）。
+- **静态站展示层：** 知识库主体在 `wiki/`，但读者首触往往是 **静态站**；代理改 HTML/CSS 时易产出 cream/terracotta、统一圆角卡片等指纹，本 skill 提供设计审查规约。
 - **与 claude-api 互补：** [claude-api](anthropic-claude-api-skill.md) 管 **API/评测**；frontend-design 管 **视觉与 UX 文案** — 同属 Anthropic 官方包，宜叠加。
 - **与 GSAP skill：** [GSAP AI Skills](gsap-skills.md) 管 **动效 API**；本 skill 管 **何时动、动多少**（反对每卡片 hover + 段段 fade-up）。
 - **社区延伸：** [Impeccable](impeccable.md) 在本 skill 之上加 **24 命令 + detector**；[Taste Skill](taste-skill.md) 用 **三旋钮 + 禁令** 约束生成；[Skillry](skillry.md) 则是 **闭源交付物市场** — 见 [对比](../comparisons/skillry-taste-skill-impeccable.md)。
@@ -97,7 +96,6 @@ flowchart LR
 - [find-skills](find-skills-skill.md) — 发现安装路径
 - [GSAP AI Skills](gsap-skills.md) — 动效垂直 skill
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 工程对齐/TDD 技能
-- [前端体验优化清单](../../docs/checklists/frontend-optimization-v1.md) — 本站工程清单
 
 ## 参考来源
 
