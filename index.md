@@ -38,6 +38,7 @@
 | 想把真实世界变成可训练/可评测的仿真资产 | [Real2Sim 纵深路线](roadmap/depth-real2sim.md) |
 | 想为具身模型建一条可交付的数据供给管线 | [具身数据纵深路线](roadmap/depth-embodied-data.md) |
 | 想让策略预知动作如何改变世界 | [WAM 纵深路线](roadmap/depth-wam.md) |
+| 想理解 Physical AI 的定义、闭环与技术版图 | [Physical AI 总览](wiki/overview/physical-ai.md) |
 | 想看知识概念和方法 | [浏览完整页面目录](catalog.md) |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 | 想浏览 CAE/CFD 代理工具与技能项目 | [CAE/CFD 项目总览](wiki/overview/cae-cfd-agent-skills-landscape.md) |
