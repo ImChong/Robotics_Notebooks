@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-20
+updated: 2026-10-21
 sources:
   - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
   - ../../sources/sites/wholebodydex-project.md
@@ -22,6 +22,9 @@ sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/omega0_arxiv_2608_06375.md
+  - ../../sources/papers/fiber_arxiv_2610_24675.md
+  - ../../sources/sites/fiber.md
+  - ../../sources/repos/fiber.md
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
   - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/papers/egoalign_arxiv_2609_38046.md
@@ -261,6 +264,11 @@ flowchart TD
 ### 世界–动作模型：用未来预测驱动全身动作
 
 先预测未来（像素、潜表征或技能级宏动力学），再让动作头读这份未来；本组也收明确反对「冻结运动接口 + 未来预测」的对照工作。
+
+#### 冻结 BFM 的动作对齐潜空间规划（FIBER）
+- **核心：** 各任务专家先独立训练，再由 **LPP** 将其控制响应投影到冻结 **AH-BFM** 的可执行潜变量；随后汇总闭环潜轨迹，离线训练一个以深度、本体状态和指令为条件的感知 flow planner。部署时 planner 以 **5 Hz** 重规划，BFM 以 **50 Hz** 反馈执行。
+- **代表作：** [FIBER](../entities/paper-fiber-action-aligned-latent-planning.md)（Amazon FAR / CMU / Stanford，arXiv:2610.24675）— G1 真机箱子拾取、开门、物体抓取；在任务间共享“由其诱发动作定义”的技能接口。该方法与 WAM 同属潜空间规划路线，但核心是动作对齐的 BFM latent，而不是预测未来视频状态。
+- **复现边界：** 官方 [代码仓库](../../sources/repos/fiber.md) 已公开，但 README 标注代码 coming soon，当前尚无可运行训练/推理实现。
 
 #### 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
