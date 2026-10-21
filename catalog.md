@@ -5313,6 +5313,7 @@
 - [video-shotcraft（Vincentwei1021/video-shotcraft）](wiki/entities/video-shotcraft.md) — video-shotcraft** 是 [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotc `📅unknown` `[entity_page]`
 - [VideoMamba](wiki/entities/videomamba.md) — VideoMamba 用状态空间模型做高效视频理解，在长视频上相对 Transformer 降低注意力平方复杂度。 `📅unknown` `[entity_page]`
 - [VideoMimic](wiki/entities/videomimic.md) — VideoMimic**（<https://github.com/hongsukchoi/VideoMimic>，<https://videomimic.github.io/>）实现 **视频驱动 `📅unknown` `[entity_page]`
+- [Viggle JST-2（Joint Space-and-Time 世界模型）](wiki/entities/viggle-jst-2.md) — JST-2** 是 Viggle 于 2026 年发布的空间生成模型：它在共享的 3D 表示中处理场景、角色和动作，可从稀疏图像重建并扩展场景，也能从文本或视频生成角色动作。官方称其面向「物理原生 `📅unknown` `[entity_page]`
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`
 - [Vision Mamba（Vim）](wiki/entities/vision-mamba-vim.md) — Vim 将双向 Mamba 扫描引入视觉骨干，以近线性复杂度做图像分类与密集预测，探索无注意力的通用视觉主干。 `📅unknown` `[entity_page]`

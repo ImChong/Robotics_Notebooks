@@ -219,6 +219,13 @@ op: ingest
 - **开源结论：** 官方代码仓库 README 仍标注 Release coming soon；项目页数据集按钮仍为 Coming Soon。
 - **关键页：** [paper-pointzero](../wiki/entities/paper-pointzero.md)
 
+---
+date: 2026-10-21
+op: ingest
+---
+
+归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
+
 ## [2026-10-20] lint | 全量 lint 修复：18 条预警清零（1 陈旧页 + 17 信息型）—— visual-servoing 回链 OptiSight；9 页补评测/感知栈枢纽回链；5 个 dataset 补模态维度；JOGA 补 venue；MemT 补评测/对比区块；Evo-DexBench 改写绝对化措辞
 
 ## [2026-10-20] ingest | SKY-001 工程世界模型（官方博客与产品页）
