@@ -1,7 +1,7 @@
 ---
 type: entity
 status: complete
-updated: 2026-10-18
+updated: 2026-10-21
 project_id: visionhope
 arxiv: "2609.33325"
 code: https://github.com/PSRben/VisionHOPE
@@ -9,6 +9,8 @@ tags:
   - vision-backbone
   - computer-vision
   - deep-learning
+  - casia
+  - ucas
 related:
   - ../concepts/vision-backbones.md
   - ../concepts/vision-transformer.md
@@ -53,15 +55,19 @@ VisionHOPE 构建五种耦合记忆，分别承担内容存储、key/value 表�
 
 ## 实验与评测
 
-论文报告了三个视觉基准方向：
+论文作者来自 Mininglamp Technology、中科院自动化所（CASIA）、中国科学院大学（UCAS）等单位。论文报告了三个视觉基准方向：
 
-| 任务 | 数据集 / 配置 | 论文报告 |
-| --- | --- | --- |
-| 图像分类 | ImageNet-1K | 达到有竞争力的结果 |
-| 目标检测与实例分割 | COCO | 达到有竞争力的结果 |
-| 语义分割 | ADE20K | 达到有竞争力的结果 |
+| 任务 | 规模（T / S / B） | VisionHOPE（论文报告） | 最接近基线 |
+| --- | --- | --- | --- |
+| ImageNet-1K 分类（层级式，Top-1） | 27M / 53M / 91M 参数 | 84.1 / 85.2 / 85.6 | RMT-S 84.1（并列）/ RMT-B 85.0 / RMT-L 85.5 |
+| ImageNet-1K 分类（平面式，Top-1） | 6M / 22M / 88M 参数 | 78.4 / 82.3 / 83.4 | Vision-TTT-T 77.7 / Vision-TTT-S 81.8 / Mamba®-B 83.0 |
+| COCO Mask R-CNN 1×（AP^b / AP^m） | Tiny / Small / Base | 47.9/43.1 · 49.5/44.2 · 50.5/45.0 | H-ViT3-T 47.3/42.8 · MILA-S 49.2/44.2 · MILA-B 50.5/45.0 |
+| ADE20K UPerNet（mIoU） | Tiny / Small / Base | 49.4 / 50.3 / 51.8 | H-ViT3-T 48.0 · H-ViT3-S 50.2 · H-ViT3-B 51.7 |
 
-具体指标、模型规模和基线对比应以论文表格为准。模型页提供对应任务的 T/S/B 预训练权重；COCO Mask R-CNN 3× 仅列出 Tiny 与 Small，ADE20K 使用 UPerNet。
+- **数值来源：** arXiv HTML v1 的主表，由自动摘录转述，**未逐格对照 PDF 核验**；引用前请以论文表格为准。
+- **消融（P-VisionHOPE-S，完整模型 ImageNet 82.3）：** 同时去掉自适应 K/V 与自适应动态更新后降至 81.7；去掉软注入上限会数值发散（NaN）；去掉谱裁剪后精度不变（82.3），作者认为该裁剪很少触发（推测性解读，未经验证）；单向扫描 81.6，二向 81.9，四向 82.1–82.3。
+- **效率：** 论文给出线性于 token 数的复杂度公式，并称 P-VisionHOPE-B 相对 Vim-B 吞吐更高、显存更低（作者报告，图表数值未核实）。
+- **模型页：** 对应任务提供 T/S/B 预训练权重；COCO Mask R-CNN 3× 仅列出 Tiny 与 Small，ADE20K 使用 UPerNet。
 
 ## 源码运行时序图
 
@@ -95,12 +101,12 @@ sequenceDiagram
 
 1. **读方法时关注两部分：** 五种耦合记忆定义了可演化状态，软上限与谱裁剪控制状态更新稳定性。
 2. **二维适配依赖扫描设计：** 行列对齐 chunk 加四向扫描处理空间特征，不能只把它看作普通序列模块。
-3. **评测覆盖常规视觉任务：** ImageNet-1K、COCO、ADE20K 结果支持其作为视觉骨干的可行性，不等于机器人任务验证。
+3. **评测覆盖常规视觉任务：** 与 RMT、H-ViT3 等基线相比多为持平或小幅领先（Base 级 ImageNet 85.6 对 85.5），不等于机器人任务验证。
 4. **复现入口可用：** 官方提供源码与任务 checkpoints，但完整环境需 NVIDIA/CUDA 编译栈和相应数据集。
 
 ## 工程实践
 
-- **开放状态（2026-10-18）：** 官方 PyTorch 代码与预训练权重均可获取。代码覆盖分类、检测/实例分割、语义分割及 standalone 模块；任务数据集需自行准备。
+- **开放状态（2026-10-21 复核）：** 官方 PyTorch 代码与预训练权重均可获取。代码覆盖分类、检测/实例分割、语义分割及 standalone 模块；任务数据集需自行准备。
 - **环境：** README 建议 Python 3.10、PyTorch 2.1 与 CUDA 12.1，并要求 `nvcc` 和 C++ 编译器。CUDA 扩展首次使用时编译。
 - **模型权重：** Hugging Face 提供 VisionHOPE-T/S/B 及各任务模型；分类样例可下载 `visionhope_small.pth`，再用 `visionhope.models.create_model` 加载。
 - **机器人应用边界：** 当前公开评测不包含 VLA 或实体机器人感知任务；接入机器人视觉塔前，应实测延迟、显存、输入分辨率适配和下游任务精度。
@@ -108,7 +114,7 @@ sequenceDiagram
 ## 局限与风险
 
 - arXiv 版本为预印本；论文结论与实验数值应结合后续版本复核。
-- 论文摘要只称结果有竞争力，不能替代逐项读取基线、输入分辨率、训练配方和误差范围。
+- 多数对比幅度很小（如 ImageNet Base 85.6 对 85.5、ADE20K Tiny 49.4 对 48.0），未报告多次运行的方差，不能据此断言稳定优于基线。
 - 需要 CUDA 扩展编译，CPU-only 或受限部署环境的可用性没有由 README 保证。
 - 当前机器人关联是视觉骨干层面的潜在借鉴，不是机器人控制或具身任务的实验证据。
 
