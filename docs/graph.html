@@ -436,7 +436,8 @@
       height: calc(100dvh - var(--header-h) - 46px);
       /* JS 写入 --app-vh 后覆盖为精确可视高度（见 syncGraphShellToViewport） */
       height: calc(var(--app-vh, 100dvh) - var(--header-h) - 46px);
-      transition: right .22s cubic-bezier(.4,0,.2,1);
+      /* 不给 right 加过渡：过渡期间 SVG / 边层 canvas 会被 CSS 挤压而位图不重绘，
+         连线先被推偏、过渡结束后图再平移，画面错位一瞬。侧栏开合由 JS 同帧重新取景。 */
     }
     /* 边层 canvas 在最底、承载节点与交互的 SVG 在其上；两层都绝对定位以固定叠放次序。
        #graph-wrap::before 的点阵与 #graph-canvas-3d 的 z-index 不变，故整体层序与此前一致。 */
@@ -6573,31 +6574,17 @@
     const sbPaperList  = document.getElementById('sb-paper-list');
     const sbOpenLink   = document.getElementById('sb-open-link');
     const sbClose      = document.getElementById('sb-close');
-    const SIDEBAR_TRANSITION_MS = 220;
 
-    /** 侧栏开合改变了绘图区宽度：等过渡结束后重新取景。
+    /** 侧栏开合改变了绘图区宽度（无过渡，立即生效）：同帧重新取景，避免边层与节点错位。
      *  refit=true（关闭侧栏）适配回整图，否则只平移保持居中。 */
     function scheduleSidebarViewportSync(options) {
       const opts = options || {};
-      let settled = false;
-      const finish = () => {
-        if (settled) return;
-        settled = true;
-        wrap.removeEventListener('transitionend', onEnd);
-        clearTimeout(fallbackTimer);
-        const prevW = W;
-        const prevH = H;
-        updateGraphViewport();
-        if (timelineAnimating || is3DView()) return;
-        if (opts.refit) fitToScreen();
-        else recenterAfterViewportChange(prevW, prevH);
-      };
-      const onEnd = (ev) => {
-        if (ev.target !== wrap || ev.propertyName !== 'right') return;
-        finish();
-      };
-      wrap.addEventListener('transitionend', onEnd);
-      const fallbackTimer = setTimeout(finish, SIDEBAR_TRANSITION_MS + 40);
+      const prevW = W;
+      const prevH = H;
+      updateGraphViewport();
+      if (timelineAnimating || is3DView()) return;
+      if (opts.refit) fitToScreen();
+      else recenterAfterViewportChange(prevW, prevH);
     }
 
     /** 侧栏/3D 选中高亮：当前节点的一跳与二跳邻居集合 */
