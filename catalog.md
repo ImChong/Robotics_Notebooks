@@ -5221,6 +5221,7 @@
 - [SAPIEN (仿真引擎)](wiki/entities/sapien.md) — SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理 `📅unknown` `[entity_page]`
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
 - [sc-datav（Three.js 数据可视化大屏）](wiki/entities/sc-datav.md) — sc-datav** 是 knight-L/sc-datav（Apache-2.0，~2.3k stars）提供的  `📅unknown` `[entity_page]`
+- [Scalabot / HERON-World Model（松延动力）](wiki/entities/scalabot-heron-world-model.md) — Scalabot（缩放机器人）** 是 松延动力（Noetix Robotics） 于 2026-09-08 发布的通用 `📅unknown` `[entity_page]`
 - [Scanford（图书馆盘点机器人）](wiki/entities/scanford.md) — Scanford** 是 Robot-Powered Data Flywheel 框架在  `📅unknown` `[entity_page]`
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
@@ -5418,6 +5419,7 @@
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
 - [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`
 - [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
+- [宅码 Common Know-How（二手知识点汇编）](wiki/entities/zhaima-common-know-how.md) — 这是一份由「宅码」公众号转载到飞书的 VLA 与机器人学习知识点汇编，适合作为入门索引，但它是二手笔记，结论需回到一手论文核对。 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
 - [OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）](wiki/entities/zyzhan417-openfoam-expert-skill.md) — OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读而非自动跑算例：让代理沿 OpenFOAM 源码定位实现，分析类继承、边界条件 `📅unknown` `[entity_page]`

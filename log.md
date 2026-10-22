@@ -226,6 +226,10 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | Scalabot（松延动力技术子品牌）归档并新增 Noetix 公司路线
+
+## [2026-10-22] ingest | wiki/entities/zhaima-common-know-how.md — 宅码 Common Know-How 飞书文档升格为独立信息节点，补全文主题索引
+
 ## [2026-10-22] ingest | sources/papers/yoco_arxiv_2610_11657.md — 收录 YOCO 论文并升格实体页，遥操作页回链
 
 ## [2026-10-22] ingest | sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md — 收录 Cosmos Interactive World Simulation 技术报告与四个开源模型，升格项目实体页，Cosmos 3 与 NVIDIA Cosmos 页回链
