@@ -226,6 +226,12 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | 收录 RoboDoctor RSI 项目，记录官网 54 项任务结果并标注代码待开放
+
+- 归档项目页与官方 Preview 仓库；核实其 GitHub 仓库当前为空，官网尚未发布论文/arXiv。
+- 官网数据（2026-10-21）：Warmup 49.74，RSI 57.10；RSI 301/324 个有效 episode，46/54 项任务完整。
+- 将项目作为具身 RSI 案例关联至递归自我改进概念页。
+
 ## [2026-10-22] ingest | Maxinsights Physical AI 第一人称数据服务
 
 - 归档 Maxinsights 官网与官方数据规模/密度文章，并同步 Dyna Robotics 的 Dyna-2 官方技术报告作为对照一手资料。

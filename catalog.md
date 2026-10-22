@@ -5168,6 +5168,7 @@
 - [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
 - [RoboColiseum（Genie Sim 仿真挑战赛）](wiki/entities/robocoliseum.md) — RoboColiseum**（官网，榜单）是智元在 **[Ge `📅unknown` `[entity_page]`
 - [Robocurve](wiki/entities/robocurve.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [RoboDoctor](wiki/entities/robodoctor-rsi.md) — RoboDoctor 是一种面向机器人操作的训练免费自我改进框架：冻结低层机器人策略，通过 Agent 诊断、修正和验证执行过程，并依据任务表现调整控制组织与可复用经验。 `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [Roboflow Trackers：检测器无关的多目标跟踪库](wiki/entities/roboflow-trackers.md) — Roboflow Trackers** 是一组统一 Python 接口的多目标跟踪算法实现：检测器提供逐帧边界框，跟踪器负责跨帧关联目标并维护身份 ID。 `📅unknown` `[entity_page]`
