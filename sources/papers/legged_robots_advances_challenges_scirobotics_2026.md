@@ -8,6 +8,9 @@
 - **DOI：** <https://doi.org/10.1126/scirobotics.aee0787>
 - **arXiv：** <https://arxiv.org/abs/2607.28952>（v1，2026-07-31；作者版 preprint，AAAS 许可个人使用、禁止再分发）
 - **PDF（arXiv）：** <https://arxiv.org/pdf/2607.28952>
+- **牛津大学 ORA（OA accepted manuscript，CC BY 4.0）：** <https://ora.ox.ac.uk/objects/uuid:16beaad4-7659-4d78-8a52-9ded499f1578>；PDF：<https://ora.ox.ac.uk/objects/uuid:16beaad4-7659-4d78-8a52-9ded499f1578/files/szw12z798b>（2026-10-22 核查）
+- **KAIST Pure 记录：** <https://pure.kaist.ac.kr/en/publications/advances-challenges-and-opportunities-for-legged-robots/>（2026-10-22 核查；Scopus：<https://www.scopus.com/pages/publications/105046444440>）
+- **ETH RSL 出版列表：** <https://rsl.ethz.ch/publications-sources.html> — 2026-10-22 核查：期刊列表为空，**未收录**本文
 - **PubMed：** <https://pubmed.ncbi.nlm.nih.gov/42525724/>（PMID:42525724）
 - **OpenAlex：** <https://openalex.org/W7171713488>
 - **项目页 / GitHub：** **无**（领域综述；截至 **2026-08-04** 未见独立项目页、代码仓库或数据集发布）
@@ -17,7 +20,7 @@
 - **入库日期：** 2026-07-31
 - **最后更新：** 2026-08-04（补 arXiv:2607.28952 作者版全文；以 PDF 核验五柱/价格/DSL 等数字）
 - **一句话说明：** Science Robotics **Review**：沿 **硬件 / locomotion / 自主 / 数据 / 应用** 五柱评估人形与四足腿式系统的能力与开放挑战，并展望伦理、经济、政策与社会影响。
-- **开放全文（PDF）：** **有** — arXiv 作者版（2026-07-31）；出版社 landing 仍可能付费；见下方「OA / PDF 核查」
+- **开放全文（PDF）：** **有** — arXiv 作者版（2026-07-31）；牛津 ORA 另有 CC BY 4.0 accepted manuscript（2026-10-22 核查）；出版社 landing 仍可能付费；见下方「OA / PDF 核查」
 - **深度二手源：** [机器人大讲堂微信导读](../blogs/wechat_robot_lecture_legged_robots_survey_2026-07-31.md)（Agent Reach 抓取；现作交叉对照，主源改为 arXiv PDF）
 
 ## 相关资料（策展）
@@ -37,6 +40,16 @@
 | 四足实体 | [`wiki/entities/quadruped-robot.md`](../../wiki/entities/quadruped-robot.md) | 四足平台总览 |
 
 ## OA / PDF 核查
+
+### 2026-10-22（补 ORA / KAIST / ETH）
+
+| 渠道 | 结果 |
+|------|------|
+| **牛津 ORA** | **命中**：accepted manuscript，CC BY 4.0，可公开下载 PDF |
+| **KAIST Pure** | **命中**：记录页含 DOI，Scopus 记录链接 |
+| **ETH RSL** | **未命中**：出版列表中无此文 |
+
+**结论：** 除 arXiv 作者版外，ORA 提供 CC BY 4.0 的 accepted manuscript；二者都不等同于出版社正式排版，技术数字仍以出版社 DOI 版为准。
 
 ### 2026-08-04（补 arXiv）
 

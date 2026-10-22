@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-22
 related:
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
