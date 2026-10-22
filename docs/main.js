@@ -6651,9 +6651,29 @@
   var mainRouteCard = document.getElementById('home-start-main-route');
   var moreRoutesCard = document.getElementById('home-more-routes');
   var companyCount = document.getElementById('heroCompanyCount');
-  var companyRoutesCard = document.getElementById('home-company-routes');
+  var orgRoutesCard = document.getElementById('home-org-routes');
+  var companyRoutesCard = orgRoutesCard;
   var labCount = document.getElementById('heroLabCount');
-  var labRoutesCard = document.getElementById('home-lab-routes');
+  var labRoutesCard = orgRoutesCard;
+  // 公司 / 实验室标签切换：同一张卡内只显示一个面板
+  function showOrgTab(name) {
+    if (!orgRoutesCard) return;
+    var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
+    for (var oti = 0; oti < tabs.length; oti++) {
+      var on = tabs[oti].getAttribute('data-org-tab') === name;
+      tabs[oti].classList.toggle('is-active', on);
+      tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
+      tabs[oti].tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    }
+  }
+  if (orgRoutesCard) {
+    orgRoutesCard.querySelector('.home-org-tabs').addEventListener('click', function (event) {
+      var tab = event.target.closest('[data-org-tab]');
+      if (tab) showOrgTab(tab.getAttribute('data-org-tab'));
+    });
+  }
   var BORDER_TRACE_MS = 2400;
   var TOGGLE_HINT_MS = 1800;
   // 目标接近落点即开启动画，避免干等 scrollend / 长 fallback 造成「点一下卡住」
@@ -7201,6 +7221,7 @@
   if (companyCount && companyRoutesCard) {
     companyCount.addEventListener('click', function (event) {
       event.preventDefault();
+      showOrgTab('company');
       scrollEntryCardToCenter(companyRoutesCard, '#home-company-routes', function () {
         playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
       });
@@ -7211,6 +7232,7 @@
   if (labCount && labRoutesCard) {
     labCount.addEventListener('click', function (event) {
       event.preventDefault();
+      showOrgTab('lab');
       scrollEntryCardToCenter(labRoutesCard, '#home-lab-routes', function () {
         playCardBorderTrace(labRoutesCard, function () { pulseHintElement(labToggle); });
       });
@@ -7265,10 +7287,12 @@
       playCardBorderTrace(moreRoutesCard, pulseRouteToggleHint);
     });
   } else if (window.location.hash === '#home-company-routes' && companyRoutesCard) {
+    showOrgTab('company');
     scrollEntryCardToCenter(companyRoutesCard, null, function () {
       playCardBorderTrace(companyRoutesCard, pulseCompanyToggleHint);
     });
   } else if (window.location.hash === '#home-lab-routes' && labRoutesCard) {
+    showOrgTab('lab');
     scrollEntryCardToCenter(labRoutesCard, null, function () {
       playCardBorderTrace(labRoutesCard, function () { pulseHintElement(labToggle); });
     });

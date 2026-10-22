@@ -1402,9 +1402,38 @@ button.home-wiki-heatmap-cell.is-active {
 @media (min-width: 861px) {
   .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .home-entry-grid > .home-entry-card { grid-column: span 2; }
-  .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
-  .home-entry-grid > #home-more-routes { grid-column: 1 / -1; }
+  /* 第二行：更多路线 | 公司/实验室（标签切换） */
+  .home-entry-grid > .home-entry-card-more { grid-column: span 3; }
 }
+.home-org-tabs {
+  display: flex;
+  gap: 8px;
+}
+.home-org-tab {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 650;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.home-org-tab.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.home-org-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.home-org-panel[hidden] { display: none; }
+.home-org-panel > h3 { margin: 0; line-height: 1.35; }
 .home-entry-route-links {
   display: grid;
   /* 高度动画只裁切外层卡片，不压缩列表；否则短列表会临时出现滚动条，
