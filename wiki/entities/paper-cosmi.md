@@ -48,6 +48,17 @@ COSMI（COmpositional Synthesis of Multi-object Interactions）从已有单物�
 
 论文报告 221,677 条序列（摘要约写 222k）、275.4 小时、59 名受试者和 36 个对象，其中 7 个是可动对象；每段最多含 5 个对象。作者报告镜像后左右手交互比例约为 49/51。
 
+```mermaid
+flowchart TD
+  source["单物体捕获数据"] --> extract["接触规则提取原子片段"]
+  extract --> annotation["Qwen3 语义标注与左右镜像"]
+  annotation --> compose["语义兼容与几何检查后组合"]
+  compose --> dataset["多对象交互训练序列"]
+  dataset --> model["共享槽位扩散 Transformer"]
+  model --> guidance["采样末段接触一致性引导"]
+  guidance --> output["同步人体与对象动作"]
+```
+
 ### 单模型生成可变数量对象
 
 模型以文本、人体和各对象的初始姿态、对象名称及几何特征为条件，在一个扩散 Transformer 中联合去噪人体与对象。每个窗口为 120 帧，即 30 fps 下的 4 秒。人体每帧一个 token，对象每 4 帧一个 token，以控制注意力计算量；对象槽位共享参数，因此对象数不绑定模型结构。
