@@ -1490,7 +1490,7 @@
 - [Awesome Humanoid Robot Learning](wiki/entities/paper-awesome-humanoid-robot-learning.md) — Awesome Humanoid Robot Learning**（GitHub 策展仓库）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blo `📅unknown` `[entity_page]`
 - [AXIS-Bench：质量感知 VLA 预训练实证研究](wiki/entities/paper-axis-bench-quality-aware-vla-pretraining.md) — AXIS-Bench** 是一套研究 VLA 预训练中示范质量如何使用的基准与受控比较：它对齐数据量和训练预算，比较加权、过滤和条件化，并用可回放轨迹支持重新计算质量标签。 `📅unknown` `[entity_page]`
 - [Axolotl3D：保真 3D 形状补全统一框架](wiki/entities/paper-axolotl3d.md) — Axolotl3D**（*a Unified Framework for Faithful 3D Shape Completion*，[arXiv:2607.20660](https://arxi `📅unknown` `[entity_page]`
-- [B-Human '26（arXiv:2610.14733）](wiki/entities/paper-b-human-26-scalable-team-play.md) — B-Human '26**（*B-Human '26 - Scalable Team Play up to 11 vs. 11*，[arXiv:2610.14733](https://arxiv. `📅unknown` `[entity_page]`
+- [B-Human '26：可扩展人形足球团队协作](wiki/entities/paper-b-human-26-scalable-team-play.md) — B-Human '26 是一篇 RoboCup 系统报告，介绍团队如何把既有足球软件迁移到更大型的人形平台，并支持 3v3、5v5 常规赛和 11v11 展示赛。 `📅unknown` `[entity_page]`
 - [扩展摩擦模型：舵机物理仿真（BAM 论文）](wiki/entities/paper-bam-extended-friction-servo-actuators.md) — Extended Friction Models for the Physics Simulation of Servo Actuators**（arXiv [2410.08650](https: `📅unknown` `[entity_page]`
 - [BAMPC（arXiv:2610.14064）](wiki/entities/paper-bampc-compute-budget-sampling-mpc.md) — BAMPC**（*Do My Samples Help? Compute Budget Allocation for Real-World Sampling-Based MPC in Contac `📅unknown` `[entity_page]`
 - [Banana Kick（arXiv:2609.27269）](wiki/entities/paper-banana-kick-humanoid-soccer.md) — Banana Kick**（*Banana Kick: Response-Informed Skill Evolution for Humanoid Soccer*，[arXiv:2609.272 `📅unknown` `[entity_page]`
