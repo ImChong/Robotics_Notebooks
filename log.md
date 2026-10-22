@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/papers/nerf_arxiv_2003_08934.md、sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md — 归档 NeRF 与 3DGS 奠基来源并补充具身空间表征选型
+
 ## [2026-10-22] ingest | 收录无配对跨模态几何对齐研究
 
 归档论文、作者项目页和官方代码，并整理统一论文实体。结论聚焦共享表示几何可支持粗粒度无配对对齐；CKA 质量分析仍依赖少量配对样本，且论文没有机器人实证。
