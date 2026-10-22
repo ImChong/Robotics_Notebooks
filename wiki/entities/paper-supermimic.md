@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
+  - ../../sources/repos/supermimic-unilab.md
+  - ../../sources/repos/supermimic-vibed.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -67,13 +69,24 @@ flowchart TB
 | 数据规模 | 使用 BONES-SEED 公开子集 264.56 小时；SONIC 使用 611 小时 | SuperMimic 数据量更少，仍须注意方法与硬件并非完全相同条件 |
 | 真机 | Unitree G1 展示多种动态动作，项目页称所有片段用同一策略且无按动作调参 | 展示 sim-to-real 可行性，不等于论文已提供开源部署栈 |
 
+## 独立复现与工程入口
+
+官方项目页截至 2026-10-22 仍未发布论文作者维护的源码；以下两个公开仓库是社区独立复现，不能视为论文官方实现，也不能据其结果推断官方代码已开放。
+
+| 仓库 | 实现路线 | 可复现入口与边界 |
+|---|---|---|
+| [Uni-SuperMimic](../../sources/repos/supermimic-unilab.md) | Motphys 基于 UniLab 独立实现，面向 Unitree G1 与 LAFAN1，支持 mjwarp、MuJoCo、Motrix 后端；提供训练、续训、整段动作评测、渲染与 Sim2Sim 检查。 | README 提供资产准备和运行命令；动作 CSV 与机器人网格需从 Hugging Face 数据集下载，mjwarp 训练需要 CUDA GPU。 |
+| [supermimic_vibed](../../sources/repos/supermimic-vibed.md) | 基于 Isaac Lab 3 kit-less 与 MuJoCo-Warp 的单卡 G1/LAFAN1 复现，公开训练、评测、渲染脚本。 | 作者报告在 RTX PRO 6000 上 1.47 小时得到 0.829 评测回报、40 段动作零失败；README 同时说明代码由 AI 助手快速生成且未经审查，结果尚未独立复核。 |
+
+两者让读者可以检查不同仿真栈下的独立实现细节；论文方法的权威描述仍以论文和官方项目页为准，复现指标需结合各自硬件、配置和 README 的声明解读。
+
 ## 与其他工作对比
 
 与 [SONIC](./nvidia-sonic.md) 的关键差异在训练范式：SONIC 依赖模型无关 PPO 与大规模并行仿真扩展 motion-tracking；SuperMimic 先从标准仿真数据学习动力学，再对策略做模型内解析梯度更新。两者都追求单一策略覆盖大量全身动作，且都在 Unitree G1 上展示动态行为。项目页中的 GPU-hour 和动作失败数使用各自报告配置，应视为论文所设基准下的结果，不应直接外推为所有机器人、数据集或硬件条件下的固定加速比。
 
 ## 源码运行时序图
 
-**不适用：** 截至 2026-10-22，官方项目页未列代码仓库、模型权重或可运行脚本，无法核实训练、导出或真机部署的实际源码入口。项目页提供浏览器演示，但没有公开对应源码，因此不将演示界面推断为可复现代码。
+**官方实现不适用：** 截至 2026-10-22，论文官方项目页没有公开训练、推理或部署源码入口。现在有两个社区独立复现（见上表），但它们并非论文作者的官方代码，因此本图不将任何一个复现仓库当成论文源码运行时序。
 
 ## 结论
 
@@ -88,7 +101,7 @@ flowchart TB
 
 - **评测边界：** 动作失败统计基于过滤后的 BONES-SEED 训练集、固定摩擦与确定性仿真设置，和带噪观测、域随机化或未见动作的泛化问题不同。
 - **模型误差：** 策略优化会利用世界模型；若模型在接触切换或训练分布外状态预测失准，想象轨迹上的梯度可能带来错误更新。迁移时仍需检查模型误差与真机动作安全性。
-- **开源状态：** 截至 2026-10-22，项目页只有论文入口和浏览器演示，没有公开代码、数据或权重下载链接；完整复现暂不可据公开页面确认。
+- **开源状态：** 截至 2026-10-22，论文官方项目页未列作者维护的代码、数据或权重入口；社区已有 UniLab 与 Isaac Lab 两种独立代码复现，但实现和实验结论需分别核对，不能等同于官方发布。
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
@@ -102,6 +115,8 @@ flowchart TB
 
 - [SuperMimic arXiv 论文](../../sources/papers/supermimic_arxiv_2610_28480.md)
 - [SuperMimic 官方项目页](../../sources/sites/supermimic-project.md)
+- [Uni-SuperMimic 独立复现](../../sources/repos/supermimic-unilab.md)
+- [supermimic_vibed 独立复现](../../sources/repos/supermimic-vibed.md)
 
 ## 推荐继续阅读
 
