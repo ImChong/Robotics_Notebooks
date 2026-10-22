@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-22
 arxiv: "2308.04079"
 venue: "ACM Transactions on Graphics 42(4), 2023"
 summary: "RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项目页为准。"
@@ -15,6 +15,7 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/rcl_awesome_wam_2308_04079_3d-gaussian-splatting-for-real-time-radi.md
+  - ../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
@@ -97,6 +98,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [3DGS 奠基论文与作者代码归档](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md)
 - 论文：<https://doi.org/10.1145/3592433>
 
 ## 推荐继续阅读

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-22
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
@@ -16,12 +16,16 @@ related:
   - ../entities/ov-sam3d.md
   - ../entities/cmu-mscv-semantic-3d-mapping.md
   - ../entities/paper-occanyscene.md
+  - ../entities/paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md
+  - ../entities/gs-playground.md
   - ../methods/grasp-pose-estimation.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
+  - ../../sources/papers/nerf_arxiv_2003_08934.md
+  - ../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md
 summary: "具身感知六种空间表征分层：2D 视觉 / 深度 / 点云 / 占据栅格与距离场 / 语义地图 / 隐式地图——各自回答不同问题，不是 2D→3D 单向升级；语义地图（存什么）与隐式地图（怎么表示）正交；选型口诀是「在正确层级选正确表征」。"
 ---
 
@@ -38,7 +42,8 @@ summary: "具身感知六种空间表征分层：2D 视觉 / 深度 / 点云 / �
 | RGB-D | RGB-Depth | 彩色 + 深度；深度层常见传感形态 |
 | TSDF | Truncated Signed Distance Function | 截断符号距离场；表面融合与网格提取 |
 | ESDF | Euclidean Signed Distance Field | 欧氏符号距离场；轨迹优化与安全余量 |
-| NeRF | Neural Radiance Field | 神经辐射场；隐式外观/几何的视觉代表，≠ 具身隐式地图全体 |
+| NeRF | Neural Radiance Fields | MLP 隐式场；以位置与视角预测体密度和辐射 |
+| 3DGS | 3D Gaussian Splatting | 显式可优化高斯；支持快速场景重建与 splatting 渲染 |
 | VLMaps | Visual-Language Maps | 将视觉语言特征锚定到三维地图，支持语言查询导航 |
 
 ## 为什么重要
@@ -84,6 +89,10 @@ flowchart TB
   F -.->|"正交：表示形式"| E
   F --> J["连续查询 / 稠密重建"]
 ```
+
+### NeRF 与 3DGS：外观场景重建的两种表示
+
+[NeRF](../../sources/papers/nerf_arxiv_2003_08934.md) 用 MLP 表示连续辐射场，沿射线采样并做体渲染；[3D Gaussian Splatting](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md) 用显式各向异性高斯，经过密度控制并以 splatting 渲染。二者主要解决从已知/校准多视图图像重建并合成新视角的问题。机器人项目 [GS-Playground](../entities/gs-playground.md) 展示了 3DGS 与物理仿真耦合的用法。选择这类表示时需另外检查几何尺度、动态更新、碰撞查询和物理一致性；画面逼真本身不等于机器人可用的导航地图。
 
 ### 两个正交轴（最易误解）
 
@@ -153,7 +162,7 @@ flowchart TB
 - **误区：点云密 = 可导航。** 无射线语义则未知与自由混淆，规划会假安全。
 - **误区：TSDF / ESDF / 占据可互换。** 同为体素，物理量与适用任务不同。
 - **误区：语义地图与隐式地图二选一。** 内容轴与表示轴正交；混用才是常态。
-- **误区：隐式地图 = NeRF。** 具身更常要隐式占据 / 神经 SDF / 神经场 SLAM；NeRF 只是视觉侧代表。
+- **误区：隐式地图 = NeRF，或 3DGS 场景 = 可直接规划的世界模型。** NeRF 与 3DGS 首先面向场景外观和新视角合成；具身还要校验占据、碰撞、尺度与更新能力。
 - **工程风险：** 语义精度绑定几何与位姿；隐式场的在线更新与碰撞提取仍是部署瓶颈。
 
 ## 关联页面
@@ -175,6 +184,8 @@ flowchart TB
 
 - [深蓝具身智能：六种空间表征分层](../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md) — 本页主编译来源（微信；原始落盘见同页）
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 学习型语义占据（第 4 层）跨协议对照
+- [NeRF 原始论文与项目归档](../../sources/papers/nerf_arxiv_2003_08934.md) — 隐式辐射场表示及官方实现
+- [3DGS 原始论文与项目归档](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md) — 显式高斯表示及作者实现
 
 ## 推荐继续阅读
 

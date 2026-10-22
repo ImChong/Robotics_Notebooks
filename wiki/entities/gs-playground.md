@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-22
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
@@ -19,6 +19,7 @@ related:
 sources:
   - ../../sources/repos/gs_playground.md
   - ../../sources/repos/gs_playground_gsplayground.md
+  - ../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md
 summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。"
 ---
 
