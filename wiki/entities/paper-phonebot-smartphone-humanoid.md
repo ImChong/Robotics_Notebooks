@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, humanoid, hardware, low-cost, open-source, smartphone, locomotion, rl, ucla]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-22
 project_id: phonebot-smartphone-humanoid
 arxiv: "2610.08737"
 project: https://phonebot.dev
 venue: "arXiv 2026"
-summary: "PhoneBot：UCLA RoMeLa 的 1.8 kg、13 DoF 低成本人形，智能手机充当躯干传感与策略推理单元（TFLite actor 50 Hz，UDP/Wi-Fi 下发关节目标），整机约 $400（不含手机）；矢状面镜像让关节对称误差从 0.254 降到 0.003 rad，宣称开源但项目页未列仓库。"
+summary: "PhoneBot：UCLA RoMeLa 的 1.8 kg、13 DoF 低成本人形，智能手机充当躯干传感与策略推理单元（TFLite actor 50 Hz，UDP/Wi-Fi 下发关节目标），整机约 $400（不含手机）；矢状面镜像让关节对称误差从 0.254 降到 0.003 rad，项目页现提供 CC BY-NC 4.0 硬件资料下载，软件源码仓库仍未核实。"
 related:
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
   - ../tasks/humanoid-locomotion.md
@@ -80,7 +80,7 @@ Android 应用读 200 Hz IMU，组成观测，在 CPU/GPU 上运行 TFLite actor
 
 ## 源码运行时序图
 
-**不适用**：论文称软硬件开源，但 [项目页](../../sources/sites/phonebot-project.md) 与 arXiv 均未提供仓库或 CAD 链接（核查日 2026-10-12），无法对齐真实脚本。下图为论文描述的**运行时数据流（非仓库时序）**：
+**不适用**：截至 2026-10-22，项目页已提供硬件资料下载入口，但未提供可核验的软件仓库或训练/部署脚本，无法对齐真实代码模块。下图为论文描述的**运行时数据流（非仓库时序）**：
 
 ```mermaid
 sequenceDiagram
@@ -117,20 +117,20 @@ sequenceDiagram
 3. **真机性能无数据** — 行走/跟随只有演示，没有速度、成功率或延迟数字。
 4. **只可站在平地上** — 仅平地训练，舵机扭矩限制负载与动态动作。
 5. **对话依赖外部笔记本** — 不是纯手机自洽系统。
-6. **开源需自行确认** — 论文称开源，但项目页无入口。
+6. **区分硬件和软件开放状态** — 硬件资料可按 CC BY-NC 4.0 获取；软件源码仓库尚未核实。
 
 ## 工程实践
 
 - 选机型：手机需 Android + IMU + Wi-Fi；ARCore SLAM 依赖 Google 服务，Honor 9 因此无法运行。
 - 复现路径：先在 MJX 训平地行走，actor 输入限定为手机可得的 52 维，critic 保留特权；开镜像；导出 TFLite。
-- **开源状态（核查日 2026-10-12）**：论文声称软硬件完全开源于 phonebot.dev，但页面只有硬件图，无 GitHub/CAD/文档链接与许可证，**宣称开源、待核实**；无 `sources/repos/` 条目。
+- **开源状态（核查日 2026-10-22）**：项目页现提供 CAD、BOM、STEP、打印部件及装配教程；硬件资料为 CC BY-NC 4.0，商业使用需另行许可。页面仍未提供可核验的软件源码仓库链接，因此软件开源状态待核实，暂无 `sources/repos/` 条目。
 
 ## 局限与风险
 
 - 无手臂，无法操作；仅平地；舵机扭矩限制动态能力。
 - 对话依赖外部后端；当前栈 CPU 受限。
 - 无延迟、跟随精度等量化数据；整机成本表无完整 BOM。
-- 开源承诺尚未兑现于可访问链接。
+- 项目页已开放硬件设计资料，但 CC BY-NC 4.0 不授予商业使用权；软件代码入口仍未核实。
 
 ## 与其他工作对比
 
