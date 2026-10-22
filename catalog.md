@@ -2096,6 +2096,7 @@
 - [硬件感知 LLM-VLM 零样本规划（arXiv:2610.14106）](wiki/entities/paper-hardware-aware-llm-vlm-zero-shot-task-planning.md) — 硬件感知 LLM-VLM 零样本规划**（*Embodied Zero-Shot Task Planning via Hardware-Aware LLM-VLM Integration for  `📅unknown` `[entity_page]`
 - [Harness Robotic OS（arXiv:2609.11225）](wiki/entities/paper-harness-robotic-os-quadruped-inspection.md) — Harness Robotic OS**（*Harness Robotic OS: A Unified Embodied-Agent Runtime for Closed-Loop Quadrup `📅unknown` `[entity_page]`
 - [Harness VLA（Memory-Guided Agentic Manipulation · arXiv:2607.08448v3）](wiki/entities/paper-harness-vla.md) — Harness VLA**（*Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents `📅unknown` `[entity_page]`
+- [Harness²：递归式 Agent Harness 改进](wiki/entities/paper-harness2.md) — Harness² 是一个冻结底座模型、递归优化 agent 外层 harness 的框架：单任务通过 Propose–Probe–Compose 按执行证据改文件，跨任务把有依据的经验沉淀到改进库 `📅unknown` `[entity_page]`
 - [HarnessBank：可信 Agent-Harness 自进化](wiki/entities/paper-harnessbank.md) — HarnessBank**（arXiv:2607.13683）由 **恒心智能（EverMind）/ 盛大集团（Shanda `📅unknown` `[entity_page]`
 - [HarnessEval-W（Agentifying the Evaluation of Visual Worlds）](wiki/entities/paper-harnesseval-w.md) — HarnessEval-W**（*Agentifying the Evaluation of Visual Worlds*，[arXiv:2608.16859](https://arxiv.org `📅unknown` `[entity_page]`
 - [HarnessPAI: An Evolving Harness for Physical AI（面向 Physical AI 的演化式 Harness）](wiki/entities/paper-harnesspai.md) — HarnessPAI**（arXiv:2609.29166，[项目页](https://darwin-agent.githu `📅unknown` `[entity_page]`
