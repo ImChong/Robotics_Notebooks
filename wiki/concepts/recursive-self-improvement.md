@@ -24,6 +24,7 @@ related:
   - ../entities/paper-last-ai-built-by-humans-rsi.md
   - ../entities/paper-neohorse-1.md
   - ../entities/paper-rsi-anything.md
+  - ../entities/robodoctor-rsi.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
