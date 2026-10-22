@@ -2,10 +2,11 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-08-02
+updated: 2026-10-22
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
+  - ./platformio-core.md
   - ./betaflight.md
   - ./inmoov-humanoid.md
   - ./tinkercad.md
@@ -95,6 +96,7 @@ flowchart LR
 
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [SimpleFOC](./simplefoc.md)
+- [PlatformIO Core](./platformio-core.md) — 配置驱动的嵌入式构建、包管理与 CLI 测试工具
 - [Betaflight](./betaflight.md)
 - [InMoov](./inmoov-humanoid.md)
 - [UART 串行通信](../concepts/uart-serial-communication.md)
