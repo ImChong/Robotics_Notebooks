@@ -226,6 +226,10 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/sites/mobiagent-dual-loop-self-improvement.md — 补 HKU/Astribot/SUSTech 项目页机构与 Hugging Face 权重链接
+
+## [2026-10-22] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补牛津 ORA（CC BY 4.0 accepted manuscript）、KAIST Pure 记录与 ETH RSL 未收录核查
+
 ## [2026-10-22] ingest | EmbodyHOI / AIM / ERR / Agensh / StairMaster / EVO-WAM 论文入库（sources/papers + wiki/entities/paper-*），飞书 Common Know-How 归档 sources/blogs；补 hub 回链
 
 ## [2026-10-21] ingest | 具身运控lab 10-12 至 10-16 Manipulation 33 篇（公众号）— 19 篇新建独立详情节点，14 篇复用已有节点（arXiv 去重）；新增 wiki/overview/senlanke-manipulation-10-12-16-33-papers-technology-map.md
