@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-22
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -25,6 +25,7 @@ related:
   - ../entities/paper-neohorse-1.md
   - ../entities/paper-rsi-anything.md
   - ../entities/robodoctor-rsi.md
+  - ../entities/paper-harness2.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/repos/awesome-rsi.md
   - ../../sources/sites/awesome-rsi-github-io.md
   - ../../sources/repos/awesome-embodied-self-improvement.md
+  - ../../sources/papers/harness2_arxiv_2610_14224.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
 
@@ -127,6 +129,10 @@ flowchart LR
 [Awesome Embodied Self-Improvement](../../sources/repos/awesome-embodied-self-improvement.md) 将范围限定为机器人、具身智能与 Physical AI 的部署后自我改进，并用「改进后是否新增一个此前无法执行的动作/技能」划分能力层级：L1 只在当前 episode 生效、重置即归零；L2 能跨 episode 保留，但只改善已有能力的记忆、调度或参数；L3 持久增加此前做不到的可执行技能；L4 改进产生改进的诊断、验证或晋级机制。清单 README 当前列出 45 项工作、3 个 benchmark 与 4 篇综述，前沿集中在 L3；PhysEvo 触及 L4 下界，但完整的物理 AI L4 仍开放。
 
 这套判据适合补充宏观 RSI 与 agent 层清单：它把具身研究中的「自进化」落到可检查的技能集合变化上，也避免把在线纠错、长期记忆、权重更新或论文自称 RSI 自动等同于能力扩张。条目按 README 的一次性策展快照理解；具体方法、真机/仿真条件、验证强度与代码开放状态仍应回到各自论文和官方仓库核验。
+
+## Harness²：冻结模型的 Harness 层 RSI
+
+[Harness²](../entities/paper-harness2.md) 把模型权重保持冻结，仅让 agent 修改周围的八类 harness 文件；单任务以 Propose–Probe–Compose 比较参考与候选执行，跨任务再将有证据的经验保存到改进库。它展示的是 **harness 层的持久改进**，不等于模型权重自我训练，也不证明机器人任务迁移。论文在 WorkBuddy-Bench、JobBench 和法律 LAB 上评测；执行轨迹差异并非正确性证明，且模型驱动实验仍有调用成本与 rubric 网络泄漏风险。原始资料见[论文来源归档](../../sources/papers/harness2_arxiv_2610_14224.md)、[项目页](../../sources/sites/harness2.md)和[源码仓库](../../sources/repos/google-research-harness2.md)。
 
 ## 工程实践
 
