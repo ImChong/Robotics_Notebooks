@@ -1422,9 +1422,9 @@ button.home-wiki-heatmap-cell.is-active {
   cursor: pointer;
 }
 .home-org-tab.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  /* 选中态保持低调：仅加深文字与描边，不用强调色填充，避免首屏抢焦点 */
+  border-color: var(--text-muted);
+  color: var(--text);
 }
 .home-org-panel {
   display: flex;
