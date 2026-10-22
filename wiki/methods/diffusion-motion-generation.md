@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, diffusion, generative-model, humanoid]
 status: complete
-updated: 2026-10-19
+updated: 2026-10-22
 related:
   - ../entities/kimodo.md
   - ../entities/kimodo-cpp.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-partigen.md
   - ../entities/paper-diffsheg.md
   - ../entities/paper-mmhu.md
+  - ../entities/paper-cosmi.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
 ---
 
@@ -53,6 +54,10 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 文本→机器人原生生成 + GMT 闭环（PhyGile，arXiv:2603.19305）
 
 [PhyGile](../entities/paper-phygile.md) 针对 **人体 text-to-motion 重定向** 的物理不可行问题：用 **TP-MoE 条件扩散** 在 **262D 机器人骨骼空间** 从文本直接生成运动，以 **physics-derived prefix** 引导推理续写，并经 **预训练 GMT** 验证、**闭环仿真精炼** 与 prefix 阶段 **GMT 微调** 闭合生成–执行环。真机展示 breakdance、侧手翻、高踢与空中旋跳等 **高动态全身** 动作。与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同属语言驱动人形生成，但 PhyGile 强调 **robot-native 空间** 与 **跟踪器共训** 而非人体先验 retarget。
+
+## 多物体交互动作组合与接触引导（COSMI，arXiv:2610.03252）
+
+[COSMI](../entities/paper-cosmi.md) 把扩散式人体动作生成扩展到 **一个人同时与 1–5 个对象交互**：训练数据由单物体接触片段按语义兼容和几何可行性组合而来；生成器用共享对象槽位和部位分配头，让对象按驱动关节的相对位姿或绝对位姿解码。采样末段的接触一致性梯度引导可缩小手物间隙并减少支撑脚滑动。它生成的是 SMPL-X 人体与物体轨迹，适用于交互动作合成研究；论文没有证明其输出可直接作为机器人控制策略。
 
 ## 部位感知共享表征与动作终止预测（PartiGen，arXiv:2610.13373）
 
