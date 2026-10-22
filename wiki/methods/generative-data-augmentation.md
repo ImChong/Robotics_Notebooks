@@ -2,13 +2,14 @@
 type: method
 tags: [data, generative-ai, simulation, long-tail, manipulation]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-22
 related:
   - ../concepts/embodied-data-cleaning.md
   - ../methods/generative-world-models.md
   - ../queries/demo-data-collection-guide.md
   - ../entities/comfyui.md
   - ../entities/qwen-image-2-1.md
+  - ../entities/moss-image.md
   - ../concepts/diffusion-model.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
@@ -38,6 +39,8 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
    针对特定的失败模式进行合成。例如，通过修改轨迹参数并使用生成模型，渲染出机器人“抓取失败”并触发“重新对齐”动作的虚拟轨迹。
 3. **物体变幻 (Object Swapping)**：
    在保持抓取动作不变的前提下，将手中的“马克杯”生成式替换为“易拉罐”、“玻璃杯”或“不规则容器”，训练模型对不同材质和几何形状的适应性。
+4. **文字密集图像生成**：
+   [MOSS-Image](../entities/moss-image.md) 可用自然语言或 JSON 布局提示生成包含文字与指定空间构图的图像，适合信息图等视觉素材。它是 2D 文生图模型，不负责编辑机器人轨迹，也不保证图像满足物理约束；用于机器人合成数据前需独立验证场景真实性和物理语义。
 
 ## 为什么对具身智能重要
 
@@ -58,6 +61,7 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 - [Generative World Models](../methods/generative-world-models.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 - [ComfyUI](../entities/comfyui.md) — 节点图式图像/视频合成运行时，适合把增强管线固化成 workflow JSON
+- [MOSS-Image](../entities/moss-image.md) — 文字密集、布局可控的 2D 文生图模型
 - [扩散模型](../concepts/diffusion-model.md) — 生成底座
 
 ## 参考来源
