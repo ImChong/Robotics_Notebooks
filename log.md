@@ -226,6 +226,13 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | Maxinsights Physical AI 第一人称数据服务
+
+- 归档 Maxinsights 官网与官方数据规模/密度文章，并同步 Dyna Robotics 的 Dyna-2 官方技术报告作为对照一手资料。
+- 官网自报累计经验 200 万小时、月产能上限 45 万小时；将产能、累计量与客户交付区分记录。
+- 公开一手资料未核实 Maxego、5000 名采集员、2024 年成立或具体客户关系；Dyna-2 报告称数据来自未具名合作方及内部采集，未点名 Maxinsights。
+- 新增公司实体并接入 Ego 数据采集分类页。
+
 ## [2026-10-22] ingest | Scalabot（松延动力技术子品牌）归档并新增 Noetix 公司路线
 
 ## [2026-10-22] ingest | wiki/entities/zhaima-common-know-how.md — 宅码 Common Know-How 飞书文档升格为独立信息节点，补全文主题索引

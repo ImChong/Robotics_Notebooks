@@ -874,6 +874,7 @@
 - [tdd（Matt Pocock Skill）](wiki/entities/mattpocock-tdd-skill.md) — tdd**（skills.sh）是 [mattpocock/skills](https://github.co `📅unknown` `[entity_page]`
 - [triage（Matt Pocock Skill）](wiki/entities/mattpocock-triage-skill.md) — triage**（skills.sh）把 issue tracker（与可选 **外部 PR**）纳入  `📅unknown` `[entity_page]`
 - [MAVSDK](wiki/entities/mavsdk.md) — MAVSDK**（mavlink/MAVSDK）把 **MAVLink** 报文封装为可维护的 **插件式服务**，是伴机 `📅unknown` `[entity_page]`
+- [Maxinsights：Physical AI 第一人称数据服务](wiki/entities/maxinsights-physical-ai-data.md) — Maxinsights** 是一家自述位于旧金山湾区的 Physical AI 数据服务商，官网介绍其采集和处理第一人称视频及多模态信号，并将其整理为机器人训练与评估可用的数据。公开页面披露的是公 `📅unknown` `[entity_page]`
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [MCAP](wiki/entities/mcap-log-format.md) — MCAP**（foxglove/mcap，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 `📅unknown` `[entity_page]`
 - [McByte++：无训练的长时体育多目标跟踪](wiki/entities/mcbyte-plus-plus.md) — McByte++** 是 Inria STARS 开发的体育视频多目标跟踪系统：它在 McByte 的检测跟踪框架上整合轻量掩码传播、条件相机运动补偿和在线行人再识别（Re-ID），以便球员被遮挡 `📅unknown` `[entity_page]`
