@@ -7,6 +7,8 @@
 - **链接：** https://kaiknower.github.io/mobiagent
 - **arXiv：** <https://arxiv.org/abs/2610.03476>
 - **代码：** <https://github.com/kaiknower/MobiAgent>
+- **权重（Hugging Face）：** <https://huggingface.co/Liukaikai/MobiAgent>（2026-10-22 项目页核查；下载访问未核实）
+- **机构（项目页，2026-10-22 核查）：** 香港大学（HKU）；Astribot；南方科技大学（SUSTech）。arXiv 摘要页未列单位。
 - **入库日期：** 2026-10-14
 - **一句话说明：** 内循环动态组合技能并视觉反思，外循环整理部署轨迹与更新技能库。
 - **沉淀到 wiki：** [`wiki/entities/paper-mobiagent-dual-loop-self-improvement.md`](../../wiki/entities/paper-mobiagent-dual-loop-self-improvement.md)
