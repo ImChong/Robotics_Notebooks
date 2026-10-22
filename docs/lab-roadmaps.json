@@ -512,6 +512,76 @@
           "date_note": "按 arXiv:2606.08548 编号月份（v1 提交月）"
         }
       ]
+    },
+    {
+      "key": "roboparty-lab",
+      "name": "RoboParty Lab",
+      "founded_year": 2026,
+      "founded_source": "https://mp.weixin.qq.com/s/DL-ypgpyLVnypxMwA5d5pw",
+      "founded_note": "官方公众号《RoboParty Lab 正式成立！》发表于 2026-07-14，按成立公告年计；Lab 是萝博派对（RoboParty，2025 成立）旗下的开放研发实验室。",
+      "lenses": [
+        "wbc"
+      ],
+      "summary": "萝博派对旗下面向全球开发者的人形开放实验室（lab.roboparty.com）：以 Party OS 串联数据、重定向、训练与 Sim2Real，开源 MimicLite、UFO、hhtools 三项工具链，成果含 TeCH 与联署的 INTACT 世界模型。",
+      "official": "https://lab.roboparty.com/",
+      "nodes": [
+        {
+          "date": "2026-07",
+          "title": "RoboParty Lab / Party OS",
+          "track": "研发底座",
+          "desc": "Lab 成立与首批工具链发布阶段：串联数据、运控和部署，并规划感知、全身操作与 Agent。",
+          "id": "entity-party-os",
+          "url": "https://github.com/Roboparty/Party_OS"
+        },
+        {
+          "date": "2026-07",
+          "title": "INTACT",
+          "track": "世界模型",
+          "desc": "Lab 联署的意图→动作 JEPA；上游已发布训练、评测和权重入口，RoboParty fork 仍为研究预览。",
+          "id": "entity-paper-intact",
+          "url": "https://zju3dv.github.io/INTACT-JEPA/"
+        },
+        {
+          "date": "2026-07",
+          "title": "UFO",
+          "track": "无监督控制",
+          "desc": "2026-07-02 以 UFO 命名并加入 FB / TLDR 预设；MJLab 训练、tracking / goal / reward 推理及 G1 遥操。",
+          "id": "entity-roboparty-ufo",
+          "url": "https://github.com/Roboparty/UFO",
+          "date_note": "2026-07-02 官方提交 Rebrand project as UFO and add FB/TLDR presets；前序 MJLab BFM-Zero 根提交为 06-30，不等于当时已发布 UFO。",
+          "date_source": "https://github.com/Roboparty/UFO/commit/3c36e178fbb3e92adcdd76541b3cc8426fc62ea2"
+        },
+        {
+          "date": "2026-07",
+          "title": "TeCH",
+          "track": "全身控制 / 表征",
+          "desc": "2026-07-13 UFO 将公开 TLDR 预设命名为 TeCH；时间距离与对比表征控制方法，日期对应实现事件。",
+          "id": "entity-paper-tech-humanoid-control",
+          "url": "https://lab.roboparty.com/outputs/tech",
+          "date_note": "2026-07-13 UFO 官方提交将公开 TLDR preset 改名为 TeCH；是方法实现命名事件，不是论文 v1 或成果网页首发。",
+          "date_source": "https://github.com/Roboparty/UFO/commit/e3679e3264e365a42259dc258fc191e67a6b7b46"
+        },
+        {
+          "date": "2026-08",
+          "title": "MimicLite：PPO / ROA",
+          "track": "监督运动跟踪",
+          "desc": "2026-08-31 官方版本表改为 PPO / ROA，提供训练、评测与 ONNX / G1 部署；旧版性能与日期另计。",
+          "id": "entity-mimiclite",
+          "url": "https://github.com/Roboparty/MimicLite",
+          "date_note": "2026-08-31 官方提交公开列出 MimicLite-PPO / MimicLite-ROA；是当前公开版本表记录，不沿用旧 Huge/Base/v1.1 或首批工具链日期。",
+          "date_source": "https://github.com/Roboparty/MimicLite/commit/3963976de8778d9292305fc8efacbcae79ed6685"
+        },
+        {
+          "date": "2026-09",
+          "title": "Human-Humanoid Tools / hhtools 0.1.0 Preview",
+          "track": "数据 / 重定向",
+          "desc": "2026-09-24 发布 0.1.0 Preview 桌面 GUI；人体→人形与机器人→机器人迁移、处理与可视化，人体模型另取。",
+          "id": "entity-human-humanoid-tools",
+          "url": "https://github.com/Roboparty/human-humanoid-tools",
+          "date_note": "GitHub Release：0.1.0(beta) / HHTools 0.1.0 Preview，2026-09-24 published_at；是 GUI 预览版本，不是首批工具链首发。",
+          "date_source": "https://github.com/Roboparty/human-humanoid-tools/releases/tag/0.1.0(beta)"
+        }
+      ]
     }
   ]
 }
