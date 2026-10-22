@@ -1,5 +1,8 @@
 ---
 type: entity
+project_id: img2threejs
+project: https://img2threejs.io/
+code: https://github.com/img2threejs/img2threejs
 tags:
   - llm-agents
   - coding-agents
@@ -11,171 +14,104 @@ tags:
   - frontend
   - agent-infrastructure
 status: complete
-updated: 2026-09-07
+updated: 2026-10-22
 related:
   - ./cad-skills.md
   - ./articraft.md
   - ./3dgenstudio.md
   - ./comfyui.md
   - ./gsap-skills.md
-  - ./video-shotcraft.md
   - ./image-blaster.md
-  - ./threejs-game-skills.md
-  - ./drawio-scientific-illustrator.md
-  - ./mattpocock-skills.md
-  - ./superpowers-obra.md
   - ../concepts/text-to-cad.md
   - ../concepts/character-animation-vs-robotics.md
   - ../concepts/sim2real.md
   - ./paper-physforge-physics-grounded-3d-assets.md
-  - ../references/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/img2threejs.md
+  - ../../sources/sites/img2threejs-io.md
   - ../../sources/sites/img2threejs-showcase.md
-  - ../../sources/repos/3dgenstudio.md
-summary: "img2threejs（hoainho/img2threejs）是 Agent Skill：把单张参考图重建为质量门控、可动画的程序化 Three.js Group 工厂（TypeScript）；Python stdlib 脚本 enforce 各阶段，宿主 agent vision 只做视觉判断——reconstruction-by-code，不是摄影测量或仿真就绪关节资产。"
+summary: "img2threejs（img2threejs/img2threejs，v2.0.0）是面向 Claude Code、Codex、OpenCode 与 Hermes 的开源 Agent Skill：将单张参考图经规格、逐阶段 TypeScript 生成和渲染评审重建为程序化 Three.js 模型；输出适用于 Web 3D 与外观原型，不等同于物理校准的机器人仿真资产。"
 ---
 
 # img2threejs
 
-**img2threejs**（[hoainho/img2threejs](https://github.com/hoainho/img2threejs)，MIT）是一套 **Agent Skill**：给定一张物体/角色参考图，按锁定的 sculpt 阶段写出 **纯代码程序化** 的 Three.js `Group` 工厂，并在浏览器里用截图对比做质量门控。官方叙事是 **reconstruction-by-code**，明确排除摄影测量、网格提取与艺术资源包下载。
-
-## 一句话定义
-
-用 **确定性 Python 脚本门控 + 宿主 agent 视觉评审**，把单图重建成 **diffable TypeScript Three.js 工厂**（含 pivots/sockets/colliders 运行时层级），而不是一次性黑盒 mesh。
+**img2threejs**（[官方主仓](https://github.com/img2threejs/img2threejs)，官方演示：[img2threejs.io](https://img2threejs.io/)，当前 Skill 版本 2.0.0）是一个开源 Agent Skill：从单张参考图出发，经结构化规格、逐阶段 TypeScript 生成和渲染评审，构建可编辑的程序化 Three.js 模型。它主张 **reconstruction-by-code**，而不是摄影测量或网格提取。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Three.js | — | 浏览器 WebGL 3D 库；本技能的运行时目标 |
-| PBR | Physically Based Rendering | 基于物理的材质通道（金属度/粗糙度等），门控要求独立通道而非 albedo 冒充 |
-| VLM | Vision-Language Model | 视觉-语言模型；仓库 `vlm_gate.py` 为 Divine Eye 的可选最后一层 |
-| SKILL.md | Agent Skill Manifest | Agent Skills 约定下的技能入口与触发说明 |
-| MCP | Model Context Protocol | 宿主可用的浏览器/工具协议；截图与预览常经此路径 |
-| glTF | GL Transmission Format | 计划中的导出格式（roadmap v1.4）；当前主产物是 TS 工厂 |
-| IoU | Intersection over Union | Divine Eye 中 silhouette 等硬门的几何一致性信号之一 |
+| Three.js | Three.js | 浏览器 3D 图形库；主流程的目标运行时 |
+| MCP | Model Context Protocol | 宿主可用的工具协议，常用于浏览器预览与截图 |
+| PBR | Physically Based Rendering | 基于物理的渲染材质表达；材质阶段会参照图像分析 |
+| GLB | GL Transmission Format Binary | 可选 `img2glb` 插件的网格交付格式，不是基础代码重建产物 |
+| VLM | Vision-Language Model | 可参与图像理解与渲染评审的视觉语言模型 |
 
 ## 为什么重要
 
-- **Agent Skills 垂直样本：** 与 [CAD Skills](./cad-skills.md)（STEP/URDF/制造）、[GSAP Skills](./gsap-skills.md)（Web 动效 API）同属 **可安装 `SKILL.md` 规约**；本仓库把 **图像→程序化 WebGL 资产** 写成可重复管线，对本站维护者理解「脚本 enforce、模型 judge」有直接对照价值。
-- **与仿真资产生成谱系对照：** [Articraft](./articraft.md) / [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) 追求 **仿真就绪可关节网格**；img2threejs 追求 **浏览器可运行、可动画的代码模型**。选型时勿把「好看的 Three.js prop」当成 MuJoCo/Isaac 操作资产（参见 [Sim2Real](../concepts/sim2real.md) 几何一致性提醒）。
-- **Token 成本模型可读：** `docs/TOKEN_COST.md` 给出 rough 量级（单物体约 ~80k–180k tokens，角色更高）；省 token 的杠杆是 **严格门控拦浅 spec** 与 **减少 review 循环**，而不是让模型手写 JSON 校验。
-- **角色轨边界清晰：** 角色走解剖 landmark / likeness 路径，但 README 明确为 **stylized 重建**，不是 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) 意义上的物理可控人形策略数据。
+- **产物可检查、可修改：** 规格 JSON 和 TypeScript 工厂能进入常规代码审阅与版本管理，适合迭代图形资产；这与直接下载一次性黑盒网格不同。
+- **把评审变成流程门：** 工具将确定性检查、阶段状态和视觉对比组合起来，避免仅凭一次生成就把模型判为完成。
+- **对机器人工程的价值有边界：** 它可帮助创建仿真演示中的外观道具和浏览器可视化资产，但模型外观与物理参数必须分开验证。
 
 ## 核心原理
 
-| 层次 | 内容 |
-|------|------|
-| **分发** | Clone 到 Claude Code / Codex / OpenCode 的 skills 目录；入口 `SKILL.md`（入库时 frontmatter `version: 1.3.0`）。 |
-| **规约** | `grimoire/`：适合性、detail inventory、PBR/光照、attachment、action-ready、自校正等评审细则。 |
-| **Forge 脚本** | `forge/stage1_intake` → `stage2_spec` → `stage3_build` → `stage4_review`；**纯 Python 3.10+ stdlib**，无 pip。 |
-| **规格真值** | `ObjectSculptSpec` JSON：部件树、材料、重复系统、sockets、每 pass 评审历史。 |
-| **代码产物** | `createXxxModel(spec, options)` → `THREE.Group`；`root.userData.sculptRuntime` 暴露 pivots / sockets / colliders / destruction groups。 |
-| **评审** | 每 pass 一张 reference\|render 对比 sheet；agent vision 打分；`divine_eye.py` 等确定性信号优先，VLM 为门控后的最后一层。 |
-
-### 流程总览
+主流程由 Agent Skill 提供操作规约，`forge/` 中的 Python 工具负责状态推进、规格验证、构建和证据整理；agent 负责解释参考图、生成当前阶段代码并评审渲染结果。大致顺序如下：
 
 ```mermaid
-flowchart TD
-  A[参考图] --> B[probe / 适合性门]
-  B --> C[Pre-Spec：类·复杂度·quality contract]
-  C --> D[ObjectSculptSpec + detail inventory]
-  D --> E{strict-quality}
-  E -->|过浅| D
-  E -->|通过| F[锁定 build pass]
-  F --> G[generate_threejs_factory<br/>仅当前 pass]
-  G --> H[浏览器渲染 + 截图]
-  H --> I[make_comparison_sheet]
-  I --> J{agent vision / Divine Eye}
-  J -->|低于阈值| K[refine-spec 或 refine-code]
-  K --> F
-  J -->|通过| L{还有后续 pass?}
-  L -->|是| F
-  L -->|否| M[动画就绪 Three.js 工厂]
+flowchart LR
+  A["参考图与适用性检查"] --> B["类别评估与质量契约"]
+  B --> C["ObjectSculptSpec"]
+  C --> D["严格校验"]
+  D --> E["逐阶段生成 Three.js 工厂"]
+  E --> F["浏览器渲染与对照评审"]
+  F --> G{"通过当前阶段？"}
+  G -->|否| C
+  G -->|是| H["继续后续阶段或交付"]
 ```
 
-### 源码运行时序图
+主要输出为组件、材质、重复结构、连接点等信息组成的 `ObjectSculptSpec`，以及返回 `THREE.Group` 的 TypeScript 工厂。交付可包含渲染图和分阶段的参考图对照证据；角色路线还可构造骨架与 skinning。主仓 `SKILL.md` 将状态文件作为单次重建的进度依据，要求每轮按状态检查下一步。
 
-主仓 **已开源**（MIT）。下列时序对齐 README / `SKILL.md` 与 `forge/` 入口：脚本做机械步骤，宿主 agent 只在评审节点消耗 vision tokens。
-
-```mermaid
-sequenceDiagram
-  autonumber
-  actor User
-  participant Agent as Host agent<br/>(Claude/Codex/OpenCode)
-  participant S1 as forge/stage1_intake
-  participant S2 as forge/stage2_spec
-  participant S3 as forge/stage3_build
-  participant Browser as Browser preview
-  participant S4 as forge/stage4_review
-
-  User->>Agent: 附参考图 + /img2threejs
-  Agent->>S1: probe_image.py / build_detail_inventory.py
-  S1-->>Agent: 元数据 + detailInventory 脚手架
-  Agent->>S2: new_pre_spec_assessment.py → new_sculpt_spec.py
-  Agent->>S2: validate_sculpt_spec.py --strict-quality
-  S2-->>Agent: ObjectSculptSpec（过门或失败）
-  loop 每个锁定 build pass
-    Agent->>S3: orchestrate_passes.py + generate_threejs_factory.py
-    S3-->>Agent: 当前 pass 的 createXxxModel.ts
-    Agent->>Browser: 渲染并截图
-    Agent->>S4: make_comparison_sheet.py
-    Agent->>Agent: vision 评审对比 sheet
-    Agent->>S4: append_review.py (continue / refine-*)
-  end
-  Agent-->>User: TS 工厂 + spec + 对比证据
-```
-
-关键复现路径：技能根目录下跑 `forge/...` 脚本（无需安装依赖）→ 在宿主里渲染当前工厂 → 用 `stage4_review` 打包对比图并写入评审。
+v2.0 将域知识扩展成单独插件体系。基础技能、`img2` harness 和插件分开安装；如角色、CS2 等特定域的工作流由相应插件提供。README 还列出可选 `img2glb` 插件，它通过托管 TRELLIS 路径生成 GLB，不能与基础的程序化代码重建混为一谈。
 
 ## 工程实践
 
 | 项 | 要点 |
 |----|------|
-| **安装** | `git clone https://github.com/hoainho/img2threejs.git ~/.claude/skills/img2threejs`（其它 harness 按各自 skills 目录放置）。 |
-| **调用** | `/img2threejs Rebuild this object as a Three.js model, keep the proportions, angles, and colours.` |
-| **主体路由** | `object` 硬表面；`character` / `hybrid` 走 `grimoire/character/`（landmark、可选 projection-first likeness）。 |
-| **门控** | Suitability → Pre-spec / strict-quality → 截图反馈 → action-ready → attachment → 材质光照 realism。 |
-| **自校正动作** | 每 pass 唯一动作：`continue` / `refine-spec` / `refine-code` / `request-input` / `stop`。 |
-| **演示** | 画廊 <https://hoainho.github.io/img2threejs-showcase/> 内模型均为生成代码在浏览器中运行。 |
-| **开源状态** | **已开源**（截至 2026-07-23）：主仓 MIT + 画廊仓；见 [sources/repos](../../sources/repos/img2threejs.md) 与 [sources/sites](../../sources/sites/img2threejs-showcase.md)。 |
+| **宿主** | README 列出 Hermes、Claude Code、Codex、OpenCode；具体视觉和浏览器能力由宿主提供 |
+| **前置条件** | Node.js 18+、Git、Python 3.10+；核心 `forge/` 脚本仅依赖 Python 标准库 |
+| **安装** | `npx --yes img2threejs@latest install`；安装后重启 agent |
+| **基础调用** | 对 agent 提供参考图，并要求使用已安装的 img2threejs skill 完成重建与质量门控 |
+| **阶段** | blockout → structural → form → material → surface → lighting → interaction → optimization |
+| **主仓版本 / 许可** | Skill frontmatter 为 2.0.0；Apache-2.0 |
+| **机器人下游** | 导入仿真前应自行确认比例、坐标系、碰撞几何、惯量、接触参数和关节语义 |
+
+官方在线画廊 [img2threejs.io](https://img2threejs.io/) 展示可交互的模型与源码；其入口由主仓 README 明确链接。源码开放状态核查见[仓库归档](../../sources/repos/img2threejs.md)和[官网归档](../../sources/sites/img2threejs-io.md)。
 
 ## 局限与风险
 
-- **误区：image-to-3D = 仿真就绪资产。** 本技能输出 **WebGL 程序化模型**；碰撞体是 `sculptRuntime` 语义，**不等于** URDF/MJCF 惯性、凸分解与关节限位。需要仿真资产时看 [Articraft](./articraft.md) / [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) / [CAD Skills](./cad-skills.md)。
-- **误区：单图可保证隐藏面与人物 likeness。** 官方明确 unseen faces 靠镜像推断；人物 likeness 为 opt-in 且报告 per-region confidence。
-- **误区：与 Meshy / Hunyuan3D 等同。** 那些路线偏 **网格/纹理生成服务**；本仓产物是 **可 diff 的 TS + JSON**，便于版本控制与代码审阅（见 [Text-to-CAD](../concepts/text-to-cad.md) §「3D 资产 / 网格」对照）。
-- **局限：** 强依赖宿主 vision 与浏览器预览工具；角色轨仍是 stylized；glTF / SkinnedMesh 仍在 roadmap。
+- **单张图片信息有限：** 隐藏面和内部结构不可直接观察，必须标明推断区域；生成的几何不能当作测量数据。
+- **视觉质量不等于仿真质量：** `THREE.Group`、动画骨架或语义 collider 层级不自动提供机器人模型所需的质量、惯量、摩擦、接触和关节限位真值。
+- **宿主能力影响结果：** 视觉理解、浏览器渲染和截图评审依赖运行它的 agent 环境；安装成功本身并不证明模型质量。
+- **插件单独核实：** 插件可能有各自的许可、依赖和访问要求；尤其 `img2glb` 属于单独的托管网格输出路径。
 
 ## 关联页面
 
-- [CAD Skills](./cad-skills.md) — **制造向 STEP + URDF** Agent Skills；同属 skill 分发，目标几何栈不同
-- [Articraft](./articraft.md) — **仿真就绪可关节 3D** 的 agent + SDK + harness；对照「程序化但偏物理」
-- [3D Gen Studio](./3dgenstudio.md) — **ComfyUI 网格生产编排**（GLB/OBJ）；同属视觉 3D 资产，产物是网格文件而非可 diff 的 TS 工厂
-- [ComfyUI](./comfyui.md) — 节点式生成运行时；3D Gen Studio 与社区 mesh 工作流的后端
-- [GSAP Skills](./gsap-skills.md) — **Web 动效** 官方 Agent Skills；同属前端垂直技能
-- [video-shotcraft](./video-shotcraft.md) — **Remotion 产品宣传片** Agent Skill；同属前端/运动设计技能，产物是时间线成片而非 Three.js
-- [image-blaster](./image-blaster.md) — **单图→Marble splat + Hunyuan 网格 + SFX** Agent Skills；依赖付费 3D API，产物是资产文件而非 TS 工厂
-- [Three.js Game Skills](./threejs-game-skills.md) — **完整可发布浏览器游戏** 九件套 Agent Skills（导演路由 + QA 证据）；与单图工厂互补
-- [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **图像→可编辑 draw.io 科研图**（Codex MCP）；同属「参考图重绘」，产物是矢量框图而非 Three.js
-- [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
-- [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
-- [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造 CAD vs 网格/Web 3D 工具谱系
-- [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 角色表演 vs 物理人形边界
-- [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性总提醒
-- [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) — 学习式仿真就绪关节资产对照
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 规约编译
+- [3D Gen Studio](./3dgenstudio.md) — 视觉资产生产工作台，面向网格生成、编辑和导出
+- [Articraft](./articraft.md) — 仿真就绪、可关节 3D 资产的 agent 与 SDK 路线
+- [CAD Skills](./cad-skills.md) — 面向 STEP / URDF 的制造与机器人描述工作流
+- [Sim2Real](../concepts/sim2real.md) — 仿真模型与真实系统差异及验证原则
+- [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 动画角色与物理机器人控制的任务边界
 
 ## 参考来源
 
-- [hoainho/img2threejs 仓库源归档（本站）](../../sources/repos/img2threejs.md)
-- [img2threejs Live Demo Gallery 站点归档（本站）](../../sources/sites/img2threejs-showcase.md)
-- [hoainho/img2threejs（GitHub）](https://github.com/hoainho/img2threejs)
+- [img2threejs 主仓归档](../../sources/repos/img2threejs.md)
+- [img2threejs.io 官方演示归档](../../sources/sites/img2threejs-io.md)
+- [img2threejs 旧版演示画廊归档](../../sources/sites/img2threejs-showcase.md)
+- [官方 GitHub 仓库](https://github.com/img2threejs/img2threejs)
 
 ## 推荐继续阅读
 
-- [Live Demo Gallery](https://hoainho.github.io/img2threejs-showcase/) — 浏览器内 orbit 生成模型并读源码
-- [docs/TOKEN_COST.md](https://github.com/hoainho/img2threejs/blob/main/docs/TOKEN_COST.md) — 分阶段 token 成本模型
-- [Agent Skills 规范](https://agentskills.io/) — `SKILL.md` 约定
-- [Three.js 文档](https://threejs.org/docs/) — `Group` / `MeshPhysicalMaterial` 等运行时 API
+- [主仓 README](https://github.com/img2threejs/img2threejs) — 安装、插件、示例与项目路线
+- [架构说明](https://github.com/img2threejs/img2threejs/blob/main/docs/ARCHITECTURE.md) — 阶段工具、质量门与评审流程
+- [Agent Skills 规范](https://agentskills.io/) — 可安装 agent skill 的说明格式
+- [Three.js 文档](https://threejs.org/docs/) — `THREE.Group` 与网格运行时 API
