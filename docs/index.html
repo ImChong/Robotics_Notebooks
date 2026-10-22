@@ -155,8 +155,12 @@
             </div>
             <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks" data-home-copy>展开全部 27 条纵深路线 ↓</button>
           </div>
-          <div class="card home-entry-card home-entry-card-more" id="home-company-routes">
-            <span class="home-entry-label" data-home-copy>公司路线</span>
+          <div class="card home-entry-card home-entry-card-more" id="home-org-routes">
+            <div class="home-org-tabs" role="tablist" aria-label="公司路线与实验室路线">
+              <button type="button" class="home-org-tab is-active" role="tab" id="homeOrgTabCompany" aria-selected="true" aria-controls="home-company-routes" data-org-tab="company" data-home-copy>公司路线</button>
+              <button type="button" class="home-org-tab" role="tab" id="homeOrgTabLab" aria-selected="false" aria-controls="home-lab-routes" data-org-tab="lab" tabindex="-1" data-home-copy>实验室路线</button>
+            </div>
+          <div class="home-org-panel" id="home-company-routes" role="tabpanel" aria-labelledby="homeOrgTabCompany">
             <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
             <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
                  顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
@@ -198,8 +202,7 @@
             </div>
             <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks" data-home-copy>展开全部 33 家公司 ↓</button>
           </div>
-          <div class="card home-entry-card home-entry-card-more" id="home-lab-routes">
-            <span class="home-entry-label" data-home-copy>实验室路线</span>
+          <div class="home-org-panel" id="home-lab-routes" role="tabpanel" aria-labelledby="homeOrgTabLab" hidden>
             <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
             <!-- 按成立年份或已注明的排序锚点排序，与 lab-roadmaps.json 同序；默认展示前 4 个。 -->
             <div class="home-entry-route-links" id="homeLabLinks">
@@ -211,6 +214,7 @@
               <a class="btn-secondary" href="lab.html?id=teleai" data-founded-year="2024" data-lab-extra hidden>中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
             </div>
             <button type="button" id="homeLabToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeLabLinks" data-home-copy>展开全部 6 个实验室 ↓</button>
+          </div>
           </div>
         </div>
       </div>

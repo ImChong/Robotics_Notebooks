@@ -84,8 +84,10 @@ def test_home_entry_links_match_data_order() -> None:
     assert all("data-lab-extra hidden" in tag for tag in tags[4:])
     toggle = re.search(r'id="homeLabToggle"[^>]*>展开全部 (\d+) 个实验室', html)
     assert toggle and int(toggle.group(1)) == len(keys)
-    assert 'id="home-lab-routes" hidden' not in html
-    assert 'id="homeOrgTabLab"' not in html
+    # 公司 / 实验室合并为一张带标签页的卡：默认显示公司面板，实验室面板隐藏待切换。
+    assert 'id="homeOrgTabLab"' in html
+    assert re.search(r'id="home-lab-routes"[^>]*\shidden', html)
+    assert not re.search(r'id="home-company-routes"[^>]*\shidden', html)
 
 
 def test_hero_lab_count_uses_home_links_at_runtime() -> None:
