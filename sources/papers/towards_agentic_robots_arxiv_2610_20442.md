@@ -6,6 +6,7 @@
 - **缩写 / 框架：** agentic robots；四域分类 Model / Data / Environment / Harness，十七个非互斥类别
 - **类型：** paper / survey / agentic-robots / vla / world-model / world-action-model
 - **arXiv：** <https://arxiv.org/abs/2610.20442>（Submitted 2026-10-14，v1；PDF：<https://arxiv.org/pdf/2610.20442>）
+- **版本核查（2026-10-22）：** 仅 v1；v2 版本页返回 404
 - **配套资源：** <https://github.com/chonghanqin/Awesome-Agentic-Robots>（Awesome 文献索引仓库，MIT 许可；论文主张的 companion repository。2026-10-15 只读浅克隆核查：README 与 `data/papers.yaml` 可读）
 - **代码：** 无（综述，未提供训练或推理代码）
 - **作者：** Chonghan Qin、Dongming Wu、Kaituo Feng、Jiaxu Wang、Xinlei Yu、Peiwen Sun、Yijia Fan、Xilin He、Bingao Chen、Weitong Lian、Ryan Ji、Wenqi Ren、Xiaobin Hu、Dahua Lin、Yu-Gang Jiang、Xiangyu Yue

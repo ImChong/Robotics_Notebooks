@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, agentic-robots, vla, world-model, world-action-model, data-pipeline, robot-learning]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-22
 project_id: towards-agentic-robots-survey
 arxiv: "2610.20442"
 related:
