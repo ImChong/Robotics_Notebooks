@@ -7,6 +7,7 @@
 - **URL：** <https://supermimic.github.io/>
 - **论文：** <https://arxiv.org/abs/2610.28480>（[sources/papers/supermimic_arxiv_2610_28480.md](../papers/supermimic_arxiv_2610_28480.md)）
 - **机构：** 加州大学伯克利分校
+- **墙钟时间：** 项目页另称 wall-clock 减少超过 50 倍（SuperMimic 单张 H100 约 3 小时；SONIC 128 张 L40 约 168 小时）；脚注给出的换算约 7200×（GPU-hours）与约 56×（wall-clock）（2026-10-22 核查）
 - **代码：** 页面未列 GitHub、Hugging Face 或其他代码/数据下载入口，亦未标注即将开源（2026-10-22 核查）
 - **入库日期：** 2026-10-22
 - **一句话说明：** 展示基于可微世界模型训练人形全身动作跟踪策略的方法、计算对比、仿真覆盖率与 Unitree G1 真机结果。
