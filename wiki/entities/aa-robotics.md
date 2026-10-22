@@ -10,6 +10,7 @@ related:
   - ./paper-hexashell.md
   - ../tasks/manipulation.md
   - ../concepts/sim-vs-real-eval-gap.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/artificial-analysis-aa-robotics.md
 summary: "Artificial Analysis 的 AA-Robotics v0.1：用 coding-agent Harness 让五个前沿语言模型通过 HTTP API 零样本操控 Hiwonder NexArm，完成 8 项桌面任务；首批 GPT-6 Astra 得分 69.4/100，但每项平均约 30 分钟，显著慢于人工 20 秒。"
@@ -70,7 +71,7 @@ summary: "Artificial Analysis 的 AA-Robotics v0.1：用 coding-agent Harness �
 
 ## 与相关基准的关系
 
-AA-Robotics 是以语言模型 coding agent 为控制主体的真机桌面操作评测。与 [RoboDojo](./robodojo.md) 的仿真/真机策略基准、[HexaShell](./paper-hexashell.md) 的轻量 Agent Harness 研究有关联，但任务集合、硬件、执行接口和评分口径不同，数值不可直接横向比较。
+AA-Robotics 是以语言模型 coding agent 为控制主体的真机桌面操作评测。与 [RoboDojo](./robodojo.md) 的仿真/真机策略基准、[HexaShell](./paper-hexashell.md) 的轻量 Agent Harness 研究有关联，但任务集合、硬件、执行接口和评分口径不同，数值不可直接横向比较。在 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中，它属于 ③ 策略任务成功率评测层的真机桌面操作样本，适合与仿真基准一起做 sim↔real 校准。
 
 ## 参考来源
 

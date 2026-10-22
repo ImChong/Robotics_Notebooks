@@ -2481,7 +2481,7 @@
   // integrity / crossorigin 与原静态标签保持一致。
   var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
   // Keep this exact version in sync with package.json and the Mermaid CI parser.
-  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js';
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.min.js';
   var _externalAssetPromises = {};
 
   /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */
