@@ -4356,6 +4356,12 @@
         "dream-labs",
         "dreamlabs"
       ]
+    },
+    "platformio": {
+      "label": "嵌入式开发生态（PlatformIO）",
+      "aliases": [
+        "platformio"
+      ]
     }
   }
 }
