@@ -59,6 +59,7 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 
 ## 关联页面
 
+- [StairMaster](../entities/paper-stairmaster.md) — 四足攀爬镂空楼梯，噪声深度下的 sim-to-real 零样本部署
 - [System Identification](../concepts/system-identification.md)
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)
 - [Privileged Training](../concepts/privileged-training.md)

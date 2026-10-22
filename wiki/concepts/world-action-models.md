@@ -486,6 +486,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Action Influence Maximization](../entities/paper-aim-action-influence-maximization.md) — 动作可控性的数据侧根因与主动采集
+- [EVO-WAM](../entities/paper-evo-wam.md) — 视频-动作验证驱动的世界动作模型自我改进
   - [Odyssey-3](../entities/odyssey-3.md) — 交互式视频世界模型；机器人动作执行依赖独立策略/动作解码器
 
 分组与上文 **实例库** 一一对应，便于从某一组的问题直接跳到对应详情页。
