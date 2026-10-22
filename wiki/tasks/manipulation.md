@@ -531,6 +531,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ## 关联页面
 
+- [AdaDex](../entities/paper-adadex.md) — 单条手-物轨迹训练可适应灵巧技能；混合灵巧模仿
+
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
