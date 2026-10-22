@@ -3,12 +3,13 @@ type: entity
 project_id: mobiagent-dual-loop-self-improvement
 tags:
   - paper
+  - hku
   - mobile-manipulation
   - self-improvement
   - skill-library
   - long-horizon
 status: complete
-updated: 2026-10-14
+updated: 2026-10-22
 arxiv: "2610.03476"
 project: https://kaiknower.github.io/mobiagent
 code: https://github.com/kaiknower/MobiAgent
@@ -109,4 +110,5 @@ sequenceDiagram
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.03476)
 - [项目页](https://kaiknower.github.io/mobiagent)
+- [Hugging Face 权重](https://huggingface.co/Liukaikai/MobiAgent)（项目页列出；下载访问条件未核实）
 - [https://github.com/kaiknower/MobiAgent](https://github.com/kaiknower/MobiAgent)
