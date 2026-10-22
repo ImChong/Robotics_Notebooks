@@ -169,6 +169,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Schaeffler × NVIDIA 执行器数字孪生（2026-10-21）](../../sources/blogs/schaeffler_newton_digital_twin_2026-10-21.md) — Schaeffler 执行器作为 Newton 的独家基础组件；新闻稿未给出定量结果
 - [DAT（多物理无穿透接触）](./paper-dat-divide-and-truncate.md) — 刚–软–壳–杆统一碰撞/接触后处理
 - [Mixed MPM（刚性弹塑性）](./paper-mixed-mpm-stiff-elastoplasticity.md) — `SolverImplicitMPM` 混合离散与刚体双向耦合
 - [Particles4All](./particles4all.md) — 浏览器 WebGPU 统一粒子 PBD 对照（非 Newton 组件）
