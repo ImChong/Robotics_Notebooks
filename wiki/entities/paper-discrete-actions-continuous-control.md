@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, vla, action-representation, discrete-tokens, flow-matching, classifier-free-guidance, imitation-learning, robocasa, libero, cmu, amazon]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-22
 project_id: discrete-actions-continuous-control
 arxiv: "2610.20429"
 project: https://iscoyizj.github.io/discrete-action-website/
 related:
+  - ../entities/paper-much-ado-about-noising.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
@@ -121,6 +122,7 @@ flowchart TB
 
 ## 关联页面
 
+- [生成式机器人控制的关键：迭代计算，而非“加噪”本身](paper-much-ado-about-noising.md) — 同一 “Robot Learning Science” 主题中的第一篇研究
 - [VLA](../methods/vla.md) — 本文多任务实验的模型类别
 - [Action Chunking](../methods/action-chunking.md) — 动作块输出的基础范式
 - [Diffusion Policy](../methods/diffusion-policy.md) — 连续生成式策略的代表对照
