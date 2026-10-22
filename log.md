@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/papers/harnesspai_arxiv_2609_29166.md — 记录 arXiv v2（2026-10-21）版本信息
+
 ## [2026-10-22] ingest | sources/sites/mobiagent-dual-loop-self-improvement.md — 补 HKU/Astribot/SUSTech 项目页机构与 Hugging Face 权重链接
 
 ## [2026-10-22] ingest | sources/papers/legged_robots_advances_challenges_scirobotics_2026.md — 补牛津 ORA（CC BY 4.0 accepted manuscript）、KAIST Pure 记录与 ETH RSL 未收录核查
