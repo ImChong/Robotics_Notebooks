@@ -1277,6 +1277,7 @@
 - [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [AFCE：让 VLA 预测「动作将产生的效果」而不只是动作](wiki/entities/paper-afce-action-future-coupled-effect-vla.md) — AFCE**（*Action–Future Coupled Effect Learning*；论文 *Beyond Actions: Learning Future Operation Targe `📅unknown` `[entity_page]`
 - [AffordCraft（arXiv:2610.06643）](wiki/entities/paper-affordcraft-task-ready-simulation-assets.md) — AffordCraft**（*AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Imag `📅unknown` `[entity_page]`
+- [Agensh（多 agent 组织智能扩展）](wiki/entities/paper-agensh.md) — Agensh 是一个没有中心编排者的多 agent harness：worker 通过共享工作区、消息与共享上下文自行认领、执行与合并，并把规模扩大到 1,024 个 agent。 `📅unknown` `[entity_page]`
 - [Agent-Friendly by Design：用 SQL 引擎比较 MoonBit 与 Rust](wiki/entities/paper-agent-friendly-by-design.md) — Agent-Friendly by Design: An Empirical Comparison of MoonBit and Rust in AI-Driven Software Constr `📅unknown` `[entity_page]`
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
@@ -1288,6 +1289,7 @@
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
 - [AIDA（arXiv:2610.15572）](wiki/entities/paper-aida-agent-interface-aligned-mobile-manipulation.md) — AIDA**（*Look Before You Move: Agent-Interface-Aligned Supervision for Open-World Mobile Manipulati `📅unknown` `[entity_page]`
+- [Action Influence Maximization（AIM，提升世界模型动作可控性的数据采集）](wiki/entities/paper-aim-action-influence-maximization.md) — AIM 认为动作条件世界模型「不听话」的根因在数据：专家示范里动作影响太小，因此主动采集能产生更多动作影响的 episode，而不是只扩大模型。 `📅unknown` `[entity_page]`
 - [Akule（arXiv:2610.14248）](wiki/entities/paper-akule-sparse-interaction-diffusion.md) — Akule**（*Akule: Fast and Scalable Multi-Robot Motion Planning via Sparse Interaction Diffusion*，[a `📅unknown` `[entity_page]`
 - [AlloEgo-VLM：消歧自我中心与环境中心参照系](wiki/entities/paper-alloego-vlm.md) — AlloEgo-VLM**（*AlloEgo-VLM: Disambiguating Allocentric and Egocentric Reference Frames in Vision-L `📅unknown` `[entity_page]`
 - [AlphaGo Zero：从规则开始的纯自我对弈](wiki/entities/paper-alphago-zero.md) — 一句话定义：** AlphaGo Zero 以围棋规则为唯一先验，通过自我对弈训练策略/价值网络，并让 MCTS 在搜索时使用它们的输出。 `📅unknown` `[entity_page]`
@@ -1861,6 +1863,7 @@
 - [EmbodiedSWE（arXiv:2609.27308）](wiki/entities/paper-embodiedswe.md) — EmbodiedSWE**（*Coding Agents for Long-Horizon Dexterous Robotics*，[项目页](https://embodiedswe.github `📅unknown` `[entity_page]`
 - [EmbodiedVAE：为操作世界模型解耦的视频 VAE](wiki/entities/paper-embodiedvae.md) — EmbodiedVAE**（*Disentangled Video VAE for Efficient and Controllable Embodied Manipulation*；[arXiv `📅unknown` `[entity_page]`
 - [Embodiment-Aware Inference-Time Search for Human Reaction Selection in Humanoid Retargeting](wiki/entities/paper-embodiment-aware-reaction-selection.md) — Embodiment-Aware Inference-Time Search**（arXiv:2610.15274）由  `📅unknown` `[entity_page]`
+- [EmbodyHOI（面向人形灵巧操作的具身感知 HOI 生成）](wiki/entities/paper-embodyhoi.md) — EmbodyHOI 不先在人手空间生成再做 retargeting，而是在采样时就把目标人形机器人的 IK 梯度引入生成过程，让生成结果直接满足该机器人的可达性与接触。 `📅unknown` `[entity_page]`
 - [EMERGE-Policy：超越单一策略的机器人系统级「心智」](wiki/entities/paper-emerge-policy.md) — EMERGE-Policy**（*A Robot Mind Emerges Beyond a Single Policy*，[arXiv:2608.29896](https://arxiv.org `📅unknown` `[entity_page]`
 - [Emergent Transfer（跨配置遗留数据何时开始有用）](wiki/entities/paper-emergent-transfer-cross-config.md) — Emergent Transfer**（*When Does Legacy Data Start to Help? Emergent Transfer in Cross-Configuration `📅unknown` `[entity_page]`
 - [EMMA（Waymo）（EMMA: End-to-End Multimodal Model for Autonomous Driving · arXiv:2410.23262）](wiki/entities/paper-emma-waymo-e2e.md) — EMMA（Waymo）**（*EMMA: End-to-End Multimodal Model for Autonomous Driving*，[2410.23262](https://arxi `📅unknown` `[entity_page]`
@@ -1872,12 +1875,14 @@
 - [EquivDP3：面向数据高效人形移动操作的SIM(3)不变点云编码器](wiki/entities/paper-equivdp3.md) — EquivDP3: A SIM(3)-Invariant Point-Cloud Encoder for Data-Efficient Humanoid Loco-Manipulation**（ `📅unknown` `[entity_page]`
 - [Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX](wiki/entities/paper-erez-simulation-tools-comparison-icra-2015.md) — Simulation tools for model-based robotics: comparison of Bullet, Havok, MuJoCo, ODE and PhysX**（IC `📅unknown` `[entity_page]`
 - [ergoCub：面向人因的共享具身智能人形](wiki/entities/paper-ergocub-shared-embodied-intelligence.md) — ergoCub**（*Towards shared embodied intelligence in humanoid robots through optimization, developme `📅unknown` `[entity_page]`
+- [ERR: Replan for Error Recovery（具身 VLM 在线错误恢复）](wiki/entities/paper-err-replan-error-recovery.md) — ERR 把「执行失败后能否重新规划并恢复」变成可验证的交互环境与基准，并用 turn 级 RL 训练具身 VLM 完成恢复。 `📅unknown` `[entity_page]`
 - [ESP（Energy-Score Policy）](wiki/entities/paper-esp-energy-score-policy.md) — ESP**（arXiv:2610.07696，Makabe / Kim / Matsushita）是一种**无教师的一步多模态动作生成**方法：把策略上下文与噪声 z ~ N(0, I) 一次映射 `📅unknown` `[entity_page]`
 - [ESRP：具身场景家具重排规划](wiki/entities/paper-esrp.md) — ESRP**（*Embodied Scene Rearrangement Planning*，[arXiv:2608.27371](https://arxiv.org/abs/2608.27371 `📅unknown` `[entity_page]`
 - [事件相机动作识别：多帧表示上的 MAE 预训练](wiki/entities/paper-event-action-recognition-multi-frame-mae.md) — 论文：** *Event-based Action Recognition by Pre-Training on Multi-Frame Representations*（[arXiv:2610. `📅unknown` `[entity_page]`
 - [EventVLA（Event-Driven Visual Evidence Memory for Long-Horizon VLA）](wiki/entities/paper-eventvla-visual-evidence-memory.md) — EventVLA**（arXiv:2606.20092，[项目页](https://ganlin-yang.github.i `📅unknown` `[entity_page]`
 - [Evo-DexBench（arXiv:2610.21180）](wiki/entities/paper-evo-dexbench.md) — Evo-DexBench**（*Evo-DexBench: Benchmarking Generalization across Related Tasks for Dexterous Manip `📅unknown` `[entity_page]`
 - [Evo-RL：从有选择的经验中迭代改进真机策略](wiki/entities/paper-evo-rl.md) — Evo-RL**（*Iterative Robot Reinforcement Learning from Selective Experience*，[arXiv:2610.13345](htt `📅unknown` `[entity_page]`
+- [EVO-WAM（通过视频-动作验证演化世界动作模型）](wiki/entities/paper-evo-wam.md) — EVO-WAM 让世界动作模型在自己的 rollout 中筛选出真正完成任务且视频与动作一致的前缀，再用这些前缀迭代重训，从而无需新示范地适配未见任务。 `📅unknown` `[entity_page]`
 - [Evo-World：用光流监督的轻量 VLA 未来运动预测](wiki/entities/paper-evo-world-optical-flow-vla.md) — Evo-World**（arXiv:2610.12936，[代码](https://github.com/MINT-SJTU `📅unknown` `[entity_page]`
 - [Evo-1：轻量 VLA 与语义对齐保持](wiki/entities/paper-evo1-lightweight-vla.md) — Evo-1**（*Lightweight Vision-Language-Action Model with Preserved Semantic Alignment*，arXiv:[2511.0 `📅unknown` `[entity_page]`
 - [Evolution of Humanoid Locomotion Control（Science Robotics 2026 Review）](wiki/entities/paper-evolution-humanoid-locomotion-control.md) — Evolution of Humanoid Locomotion Control**（Yan Gu* / Guanya Shi* / Fan Shi* 等；Aaron D. Ames†、Hao S `📅unknown` `[entity_page]`
@@ -4660,6 +4665,7 @@
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
 - [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
 - [STAIR：用目录做寻址的生成式检索](wiki/entities/paper-stair-toc-generative-retrieval.md) — STAIR**（*STructure Aware Information Retriever*，[arXiv:2609.03874](https://arxiv.org/abs/2609.0387 `📅unknown` `[entity_page]`
+- [StairMaster（四足机器人攀爬镂空楼梯）](wiki/entities/paper-stairmaster.md) — StairMaster 用三阶段 RL 训练四足机器人攀爬镂空楼梯：在噪声稀疏的深度输入下避免腿被卡住，并通过落脚点相关奖励改善踩点。 `📅unknown` `[entity_page]`
 - [StairVLA（arXiv:2610.07756）](wiki/entities/paper-stairvla-stage-aware-hierarchical-action.md) — StairVLA**（*StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models `📅unknown` `[entity_page]`
 - [STAR（arXiv:2609.12549）](wiki/entities/paper-star-vtla.md) — STAR**（[STAR: Sparse Tactile Representation Learning in Vision-Tactile-Language-Action Models for  `📅unknown` `[entity_page]`
 - [StarWM: Self-Supervised Trained Attention Routing for Robust World Models](wiki/entities/paper-starwm.md) — StarWM用注意力路由减少移动背景对任务相关预测的干扰。 `📅unknown` `[entity_page]`
