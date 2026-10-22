@@ -1657,6 +1657,7 @@
 - [CorrectVLA：VLA 失败的语言反馈推理期动作纠错](wiki/entities/paper-correctvla.md) — CorrectVLA**（*Training-Free Action Correction for VLA Model Failures via Language Feedback*，[arXiv `📅unknown` `[entity_page]`
 - [Cortical knowledge structures guide word concept learning](wiki/entities/paper-cortical-knowledge-word-learning.md) — Cortical knowledge structures guide word concept learning** 是北京大学与北京师范大学团队发表于 *Nature Communicatio `📅unknown` `[entity_page]`
 - [CoSMO：用共形预测给开放世界语义地图配安全边距](wiki/entities/paper-cosmo.md) — CoSMO 把 VLM 的地图嵌入转成带覆盖保证的标签集合，再据此给不同类别的障碍物设不同的膨胀半径；安全词典随新危险类别只增不减，阈值由延迟的专家反馈在线更新。 `📅unknown` `[entity_page]`
+- [Cosmos Interactive World Simulation（交互式世界仿真）](wiki/entities/paper-cosmos-interactive-world-simulation.md) — 这是 NVIDIA Cosmos 3 的后训练分支：把视频世界模型改成按动作与场景控制流式生成观测，让具身智能体或仿真器驱动的虚拟环境可以实时交互。 `📅unknown` `[entity_page]`
 - [Cosmos-Transfer1: Conditional World Generation with Adaptive Multimodal Control](wiki/entities/paper-cosmos-transfer1.md) — Cosmos-Transfer1**（arXiv:2503.14492，NVIDIA，[项目页](https://resea `📅unknown` `[entity_page]`
 - [CoToGrasp](wiki/entities/paper-cotograsp.md) — CoToGrasp: Contact-Topology-Conditioned Dexterous Grasp Synthesis via Canonical Workspace Learning `📅unknown` `[entity_page]`
 - [CPS4All：无障碍与能力增强的赛博物理系统工作坊](wiki/entities/paper-cps4all.md) — CPS4All**（*Cyber-Physical Systems for Accessibility and Ability Augmentation: Bridging Diverse Com `📅unknown` `[entity_page]`
