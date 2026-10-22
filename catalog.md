@@ -4996,6 +4996,7 @@
 - [XR-2：1500 小时双臂家务到在线修正](wiki/entities/paper-xr2-bimanual-household.md) — Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Correction `📅unknown` `[entity_page]`
 - [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
+- [YOCO（一次校准的动捕手部标定）](wiki/entities/paper-yoco.md) — YOCO 用少量成对的原始与目标手部姿态，经 HyperNet 一次前馈预测对冻结 MANO 估计器的 LoRA 式修正，使每个用户的动捕标定不再需要逐人微调。 `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO26（Unified Real-Time End-to-End Vision）](wiki/entities/paper-yolo26-unified-realtime-e2e-vision.md) — YOLO26** 是 Ultralytics 提出的 **统一实时视觉模型族**（arXiv:2606.03748）。在 Y `📅unknown` `[entity_page]`
 - [YOPO-MINCO](wiki/entities/paper-yopo-minco.md) — Some Modifications to Our End-to-End UAV Planner**（[arXiv:2608.15741](https://arxiv.org/abs/2608.1 `📅unknown` `[entity_page]`
