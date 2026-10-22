@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-09-15
+updated: 2026-10-22
 summary: "多模态学习联合建模图像、文本、音频等异质信号，核心是对齐共享语义空间并支持跨模态检索、生成与推理；是 VLM/VLA 的概念地基。"
 related:
   - ./vision-language-feature-fusion.md
@@ -15,8 +15,10 @@ related:
   - ../overview/multimodal-llm-development.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-shared-geometry-rosetta.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
+  - ../../sources/papers/shared_geometry_rosetta_arxiv_2610_09411.md
 ---
 
 # 多模态基础概念
@@ -42,7 +44,7 @@ sources:
 
 ## 核心原理
 
-常见三块：**编码器**（各模态专用）→ **融合/对齐**（对比、交叉注意力、Q-Former 等）→ **任务头**（检索、生成、检测 grounding）。数据可以是图文对、视频文本、区域短语等。
+常见三块：**编码器**（各模态专用）→ **融合/对齐**（对比、交叉注意力、Q-Former 等）→ **任务头**（检索、生成、检测 grounding）。数据可以是图文对、视频文本、区域短语等。另有研究尝试利用独立嵌入空间共享的几何结构，在不使用配对训练样本的情况下做粗粒度对齐；见 [Shared Geometry as a Rosetta Stone](../entities/paper-shared-geometry-rosetta.md)，它不是具身策略或完整 VLM。
 
 ```mermaid
 flowchart LR
@@ -69,6 +71,7 @@ flowchart LR
 - [多模态 LLM 发展路线](../overview/multimodal-llm-development.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 多模态对齐是①VLM 感知理解层的底座，决定上层 VLN/VLA 能消费到什么语义
+- [Shared Geometry as a Rosetta Stone](../entities/paper-shared-geometry-rosetta.md) — 无配对样本的跨模态粗对齐研究
 
 ## 参考来源
 

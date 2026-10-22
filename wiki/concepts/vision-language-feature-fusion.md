@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, vision-language, feature-fusion, multimodal, alignment, vlm, blip2, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-22
 related:
   - ./embodied-semantic-cognitive-map.md
   - ../entities/paper-blip2.md
@@ -13,9 +13,11 @@ related:
   - ../methods/vla.md
   - ../overview/quadruped-vln-embodied-workshop.md
   - ../queries/embodied-fm-taxonomy-loop.md
+  - ../entities/paper-shared-geometry-rosetta.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
   - ../../sources/papers/blip2_arxiv_2301_12597.md
+  - ../../sources/papers/shared_geometry_rosetta_arxiv_2610_09411.md
 summary: "视觉–语言特征融合与语义空间对齐：把图像区域特征与文本嵌入映到可比较空间，供匹配、检索与条件生成，是 VLN/ObjectNav 语义引导的基础机制。"
 ---
 
@@ -51,6 +53,7 @@ summary: "视觉–语言特征融合与语义空间对齐：把图像区域特�
 | 对比对齐 | 双塔编码 + InfoNCE | 区域/整图与指令快速打分 |
 | 桥接查询 | Q-Former 等可训 query（[BLIP-2](../entities/paper-blip2.md)） | 冻塔前提下的匹配与生成 |
 | 深度融合 | 多层 cross-attention / 统一 Transformer | 复杂 VQA、多视角核验 |
+| 几何对齐 | 聚类几何初始化 + Wasserstein Procrustes | 独立训练的嵌入空间之间做粗对齐；结果随共享几何而变 |
 
 ```mermaid
 flowchart LR
@@ -76,6 +79,7 @@ flowchart LR
 
 - **袋装语义：** 双塔对组合属性（「冰箱左边的杯子」）偏弱，需结构化语言或深度 VLM。
 - **域移：** 仿真渲染 vs 真机光照导致嵌入漂移，需目标域校准。
+- **无配对不等于无验证：** CKA 对齐质量分析需要配对样本；无监督方法的对齐也可能只恢复粗语义邻域，不能直接当作精确图文检索或机器人部署保证。
 - **不可替代规划：** 对齐只提供语义势场，不能保证可通行与动力学可行。
 
 ## 关联页面
@@ -86,6 +90,7 @@ flowchart LR
 - [ENEAS](../entities/paper-eneas.md) — 嵌入 + 条件 VLM 的本体验证实例
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
+- [Shared Geometry as a Rosetta Stone](../entities/paper-shared-geometry-rosetta.md) — 几何先验驱动的无配对跨模态对齐
 
 ## 参考来源
 
