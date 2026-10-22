@@ -184,6 +184,7 @@ sequenceDiagram
 | EmboCoach / RoboCoach 线 | LLM agent 写 **RL/IL policy** | 32 sim 任务闭环 | 同「agent 写 policy」但 **不覆盖机械设计/ harness 移交** |
 
 ## 关联页面
+- [Agensh](../entities/paper-agensh.md) — 无中心 orchestrator 的多 agent harness，coding agent 组织规模扩展
 
 - [ASPIRE](../methods/aspire.md) — code-as-policy 持续学习与技能库
 - [ENPIRE](../methods/enpire.md) — 真机策略自改进 harness

@@ -72,6 +72,8 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 
 ## 关联页面
 
+- [ERR（Replan for Error Recovery）](../entities/paper-err-replan-error-recovery.md) — 具身 VLM 在线错误恢复与 turn 级 RL
+- [EVO-WAM](../entities/paper-evo-wam.md) — 世界动作模型通过视频-动作验证自我演化
 - [VLM/VLN/VLA/VLX/世界模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [基础策略（Foundation Policy）](../concepts/foundation-policy.md)
