@@ -295,6 +295,8 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 
 ## 关联页面
 
+- [YOCO](../entities/paper-yoco.md) — 少样本免微调的动捕手部标定，用于灵巧遥操作
+
 ### 先读：上游任务与概念
 
 - [Loco-Manipulation](./loco-manipulation.md) — 遥操作在移动操作中的应用

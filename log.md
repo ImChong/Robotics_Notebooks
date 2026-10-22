@@ -226,6 +226,20 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/papers/yoco_arxiv_2610_11657.md — 收录 YOCO 论文并升格实体页，遥操作页回链
+
+## [2026-10-22] ingest | sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md — 收录 Cosmos Interactive World Simulation 技术报告与四个开源模型，升格项目实体页，Cosmos 3 与 NVIDIA Cosmos 页回链
+
+## [2026-10-22] ingest | sources/papers/spotter_arxiv_2609_36808.md — 收录 Spotter 论文与 MIT 代码仓核查，升格实体页，具身基础模型枢纽回链
+
+## [2026-10-22] ingest | sources/papers/vla_rolling_arxiv_2610_25043.md — 收录 VLA-Rolling（论文、项目页列出的代码与模型）并升格实体页，VLA / action-chunking 页回链
+
+## [2026-10-22] ingest | sources/papers/adadex_arxiv_2610_28628.md — 收录 AdaDex 并升格实体页，操作任务页回链
+
+## [2026-10-22] ingest | sources/papers/uniwalm_arxiv_2610_28626.md — 收录 UniWALM 并升格实体页，世界动作模型页回链
+
+## [2026-10-22] ingest | sources/blogs/schaeffler_newton_digital_twin_2026-10-21.md — 收录 Schaeffler × NVIDIA Newton 人形执行器数字孪生新闻稿，Newton 页回链
+
 ## [2026-10-22] structural | 实验室路线新增 RoboParty Lab（lab.roboparty.com）
 
 ## [2026-10-22] ingest | sources/blogs/nvidia_isaac_platform_gtc_berlin_2026-10-21.md — 收录 NVIDIA Isaac 平台新闻稿（Isaac OS、Isaac Lab 3.0、Human 1M、Agile ONE SN），更新 GTC 表格
