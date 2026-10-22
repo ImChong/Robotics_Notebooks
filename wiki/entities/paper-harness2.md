@@ -101,25 +101,18 @@ flowchart LR
 sequenceDiagram
   autonumber
   participant User as User
-  participant CLI as harness2 CLI
+  participant CLI as Harness² CLI
   participant Adapter as Benchmark adapter
-  participant Proposer as Proposer and scheduler
-  participant Executor as Frozen model executor
+  participant AgentLoop as Proposer and frozen executor
   participant Library as Improvement library
-  participant Judge as Judge CLI
   User->>CLI: Start benchmark sweep
   CLI->>Adapter: Select tasks and check setup
-  CLI->>Proposer: Create proposer and schedule sweep
-  Proposer->>Executor: Run base harness reference
-  Executor-->>Proposer: Reference trajectory and deliverable
-  Proposer->>Executor: Run invariant and domain candidate probes
-  Executor-->>Proposer: Candidate trajectories and deliverables
-  Proposer->>Executor: Run composed successor harness
-  Executor-->>Proposer: Final trajectory and deliverable
-  Proposer->>Library: Reflect and store harness plus supported lessons
-  User->>Judge: Run separate benchmark judging
-  Judge->>Adapter: Load benchmark scoring environment
-  Adapter-->>Judge: Scores and result records
+  CLI->>AgentLoop: Schedule task refinement
+  AgentLoop->>AgentLoop: Run reference, candidate probes, and composed harness
+  AgentLoop->>Library: Reflect and store supported lessons
+  User->>CLI: Run separate benchmark judging and report
+  CLI->>Adapter: Load scoring environment
+  Adapter-->>CLI: Scores and result records
 ```
 
 官方 CLI 由 `harness2` 启动 sweep；`harness2-judge` 在改进 sweep 之后独立评分，`harness2-report` 汇总结果。具体入口与安装信息见[官方仓库归档](../../sources/repos/google-research-harness2.md)。
