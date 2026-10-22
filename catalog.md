@@ -2550,6 +2550,7 @@
 - [MSFP Survey（具身 AI 多传感器融合感知）](wiki/entities/paper-msfp-embodied-ai-survey.md) — MSFP Survey**（*A Survey of Multi-sensor Fusion Perception for Embodied AI: Background, Methods, Ch `📅unknown` `[entity_page]`
 - [Moving Through Clutter：场景感知的人形杂物穿行](wiki/entities/paper-mtc-scene-aware-humanoid-locomotion.md) — Moving Through Clutter（MTC）**（*Learning Scene-Aware Humanoid Locomotion through 3D Clutter from Im `📅unknown` `[entity_page]`
 - [μ₀（3D Interaction-Trace World Model）](wiki/entities/paper-mu0-wm.md) — μ₀: A Scalable 3D Interaction-Trace World Model**（[arXiv:2606.13769](https://arxiv.org/abs/2606.13 `📅unknown` `[entity_page]`
+- [生成式机器人控制的关键：迭代计算，而非“加噪”本身](wiki/entities/paper-much-ado-about-noising.md) — 一句话定义：** 这项 ICLR 2026 研究通过受控行为克隆基准发现，flow / diffusion 策略的主要性能来源是受监督的迭代计算与适量随机性，而非多模态动作分布或额外表达能力。 `📅unknown` `[entity_page]`
 - [MUJICA：轮足多技能统一本体控制架构](wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2 `📅unknown` `[entity_page]`
 - [MulDP：四足跑酷自主导航扩散策略](wiki/entities/paper-muldp.md) — MulDP**（arXiv:2609.03984）由 **复旦大学智能机器人与先进制造学院** 提出（公众号周更 inges `📅unknown` `[entity_page]`
 - [Mulligan（arXiv:2610.05882）](wiki/entities/paper-mulligan-performance-guided-data-collection.md) — Mulligan**（*Mulligan: Performance-Guided Data Collection for Efficient On-Robot Learning*，[arXiv:2 `📅unknown` `[entity_page]`
