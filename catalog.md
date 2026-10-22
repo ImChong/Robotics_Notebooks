@@ -732,7 +732,7 @@
 - [IgH EtherCAT Master (EtherLab)](wiki/entities/igh-ethercat-master.md) — 以 Linux 内核模块形式实现的开源 EtherCAT 主站，文章将其定位为「高性能硬实时」首选。（分类：EtherCAT 主站；语言/形态：C，Linux 内核模块） `📅unknown` `[entity_page]`
 - [iGibson](wiki/entities/igibson.md) — iGibson** 是斯坦福大学等机构 2020 年发布的 **交互式室内仿真环境**，强调 **真实感视觉场景** 与 **高保真物理交互** 的融合。 `📅unknown` `[entity_page]`
 - [image-blaster](wiki/entities/image-blaster.md) — image-blaster** 是 neilsonnn/image-blaster（MIT，2026 年 `📅2026-09-07` `[entity_page]`
-- [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（hoainho/img2threejs，MIT）是一套 **Agent Skill `📅unknown` `[entity_page]`
+- [img2threejs](wiki/entities/img2threejs.md) — img2threejs**（官方主仓，官方演示：[img2threejs.io](https://img `📅unknown` `[entity_page]`
 - [Immersive Web Emulation Runtime（IWER）](wiki/entities/immersive-web-emulation-runtime.md) — IWER**（[Immersive Web Emulation Runtime](https://github.com/meta-quest/immersive-web-emulation-run `📅unknown` `[entity_page]`
 - [Impeccable](wiki/entities/impeccable.md) — Impeccable**（pbakaus/impeccable，[impeccable.style](https: `📅unknown` `[entity_page]`
 - [Infinigen V2](wiki/entities/infinigen.md) — 程序化 3D 场景生成**：Infinigen V2 是 Princeton Vision & Learning Lab 开源的 Blender/Python 工具，通过可组合的程序化生成器构造多 `📅unknown` `[entity_page]`

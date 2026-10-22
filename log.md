@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | 更新 img2threejs v2 官方归档与项目页
+
+- 将主仓身份更新为 `img2threejs/img2threejs`，记录 Skill v2.0.0、Apache-2.0 与 GitHub API 的 18,663 stars 快照。
+- 增补官方在线画廊归档，并修订 wiki 对基础代码重建、独立插件及机器人仿真资产边界的说明。
+
 ## [2026-10-22] ingest | MOSS-Image 与 MOSI 生态官方资料归档
 
 - 新增 MOSS-Image 仓库、项目页和 arXiv 技术报告来源归档及统一 wiki 实体页。
