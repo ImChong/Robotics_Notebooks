@@ -222,6 +222,8 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 
 ## 关联页面
 
+- [VLA-Rolling](../entities/paper-vla-rolling.md) — 复用未执行的动作 chunk 尾部，自适应重去噪
+
 - [Discrete Forcing](../entities/paper-discrete-forcing.md) — 离散动作 token 建立 chunk 粗结构，连续分支一次精修，作为 VLA action-chunk 生成的低 NFE 实例。
 
 - [Behavior Cloning](./behavior-cloning.md) — 动作块是对单步 BC 的时间窗扩展

@@ -588,6 +588,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 关联页面
 
+- [VLA-Rolling](../entities/paper-vla-rolling.md) — 冻结 flow-matching VLA 的动作尾部复用，降低去噪步数与推理延迟
+
 - [Discrete Forcing](../entities/paper-discrete-forcing.md) — 以离散 token 先定动作结构、再用连续 flow refinement 输出高精度动作；LIBERO 上两次 action-expert 前向达到 97.6%。
 - [AI 架构地图](../overview/ai-architecture-map.md) — VLA 在六支函数族中的决策层位置
 - [2026-10-15 具身新论文 31 篇技术地图索引](../overview/embodied-papers-2026-10-15-31-digest-map.md) — 其中多篇 VLA 适配、恢复与加速论文的入口
