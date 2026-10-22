@@ -23,10 +23,18 @@ related:
   - ./paper-artmanip.md
   - ./paper-teledexter.md
   - ./paper-spd.md
+  - ./paper-poise-in-hand-6d-pose-reaching.md
+  - ./sharpadex.md
+  - ./craftnet.md
+  - ./sharpa-d01-robot.md
+  - ./sharpa-w02-hand.md
+  - ./sharpa-ae01-data-glove.md
+  - ../overview/sharpa-academic-route-three-lines.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/visuo-tactile-fusion.md
 sources:
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
+  - ../../sources/blogs/wechat_tiannan_sharpa_academic_route_2026-10-22.md
 summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加坡的灵巧操作公司，以 22 自由度触觉灵巧手 SharpaWave 为平台；学术线主张「数据→接触→跨本体表征」三条主线，用 System 0/1/2 分层把接触交给高频触觉底层。"
 ---
 
@@ -80,6 +88,10 @@ summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加�
 3. **以触觉为锚的跨本体表征**：代表 [FTP-1](./paper-ftp-1.md)（跨 21 种触觉传感器预训练）、[EgoScale](./paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md)、[T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md)。
 
 文中还列出与 Sharpa 硬件或合作相关的他队工作：[Do as I Do](./paper-do-as-i-do.md)、[SimToolReal](./simtoolreal.md)、[Play2Perfect](./paper-play2perfect.md)、[GALATEA](./paper-galatea.md)、[Tacmap](./paper-tacmap.md)。
+
+## 2026-10-22 补充（天南文章）
+
+三条路线的项目索引见 [Sharpa 学术路线阅读坐标](../overview/sharpa-academic-route-three-lines.md)；新增独立节点：[POISE](./paper-poise-in-hand-6d-pose-reaching.md)、[SharpaDex](./sharpadex.md)、[CraftNet](./craftnet.md)、[D01](./sharpa-d01-robot.md)、[W02](./sharpa-w02-hand.md)、[AE01](./sharpa-ae01-data-glove.md)。
 
 ## 工程实践
 
