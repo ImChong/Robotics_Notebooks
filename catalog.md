@@ -1259,6 +1259,7 @@
 - [执行器约束 RL 高速四足奔跑（MOR）](wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — Actuator-Constrained Reinforcement Learning for High-Speed Quadrupedal Locomotion**（Shin / Song /  `📅unknown` `[entity_page]`
 - [Actuator Dynamics Curricula（arXiv:2609.09492）](wiki/entities/paper-actuator-dynamics-curricula-legged-rl.md) — Actuator Dynamics Curricula**（*Actuator Dynamics Curricula for Narrow-Viability Tasks in Legged Ro `📅unknown` `[entity_page]`
 - [AD-E2E-JEPA：端到端自动驾驶的联合嵌入预测架构](wiki/entities/paper-ad-e2e-jepa.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
+- [AdaDex（混合灵巧模仿学习可适应灵巧技能）](wiki/entities/paper-adadex.md) — AdaDex 从单条数秒的手-物轨迹出发，用「运动跟踪」与「加噪泛化」两类环境共同训练一个策略，让灵巧手技能能够泛化到相似但未见的动作和目标。 `📅unknown` `[entity_page]`
 - [AdaHVLA](wiki/entities/paper-adahvla.md) — AdaHVLA**（*Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution*，[arXiv:2609.29204 `📅unknown` `[entity_page]`
 - [AdaMimic：单条参考运动上的自适应全身跟踪](wiki/entities/paper-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*，[arXiv:2510.14454](ht `📅unknown` `[entity_page]`
 - [AdaMorph](wiki/entities/paper-adamorph-unified-motion-retargeting.md) — AdaMorph**（*AdaMorph: Unified Motion Retargeting via Embodiment-Aware Adaptive Transformers*，arXiv `📅unknown` `[entity_page]`
