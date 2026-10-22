@@ -4888,6 +4888,7 @@
 - [VLA Bit-Flip Attacks（arXiv:2608.15475）](wiki/entities/paper-vla-bit-flip-attacks-int8.md) — VLA Bit-Flip Attacks**（*Bit-Flip Attacks on Vision-Language-Action Models: Action-Decoding Archite `📅unknown` `[entity_page]`
 - [VLA-Precision：精密实机 VLA 在线强化学习](wiki/entities/paper-vla-precision.md) — VLA-Precision**（*Asymmetric Co-Bootstrapping for Efficient Real-World Online RL of Vision-Language `📅unknown` `[entity_page]`
 - [VLA Task Progress（arXiv:2608.13474）](wiki/entities/paper-vla-representation-task-progress.md) — VLA Task Progress**（arXiv:2608.13474）收录于 [多模空间 · 一周 VLA 研究趋势简析 `📅unknown` `[entity_page]`
+- [VLA-Rolling（自适应动作复用的冻结 VLA 加速）](wiki/entities/paper-vla-rolling.md) — VLA-Rolling 不丢弃 flow-matching VLA 未执行的动作尾部，而是在置信度引导下复用并重加噪，使冻结模型用更少的去噪步数得到更快、更准的动作。 `📅unknown` `[entity_page]`
 - [vla.simd（arXiv:2609.24274）](wiki/entities/paper-vla-simd.md) — vla.simd**（*vla.simd: Efficient CPU Inference for Language-Conditioned Manipulation*，[arXiv:2609.2 `📅unknown` `[entity_page]`
 - [VLA Survey（HMI P071）](wiki/entities/paper-vla-survey-embodied.md) — VLA Survey**（*A Survey on Vision-Language-Action Models for Embodied AI*，2024，[arXiv:2405.14093](h `📅unknown` `[entity_page]`
 - [VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错](wiki/entities/paper-vla-ulap.md) — VLA-ULAP**（*Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction at the Edg `📅unknown` `[entity_page]`
