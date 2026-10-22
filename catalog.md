@@ -4658,6 +4658,7 @@
 - [SPOT（arXiv:2609.07933）](wiki/entities/paper-spot-humanoid-teleoperation.md) — SPOT**（*SPOT: Spatial Perception-Oriented Long-Horizon Humanoid Teleoperation*，[arXiv:2609.07933 `📅unknown` `[entity_page]`
 - [Spot 精准除草（arXiv:2609.20048）](wiki/entities/paper-spot-precision-weeding.md) — Spot 精准除草**（*Mechanical Precision Weeding with a Quadruped Robot*，[arXiv:2609.20048](https://arxiv `📅unknown` `[entity_page]`
 - [Spot 高性能 RL（分布距离 Sim2Real 标定）](wiki/entities/paper-spot-rl-distributional-sim2real.md) — 本工作（arXiv:2504.17857）公开 **Boston Dynamics Spot** 在 **Spot RL Researcher Development Kit** 低层电机接口上的  `📅unknown` `[entity_page]`
+- [Spotter（具身模型主导、VLM 反思的失败修复层）](wiki/entities/paper-spotter.md) — Spotter 让冻结的具身模型持续执行，由并行的轻量 screener 盯住每个动作块，只有确认错误时才让 VLM 修复并交还控制。 `📅unknown` `[entity_page]`
 - [SPRINT：人形竞技冲刺的高效频谱先验](wiki/entities/paper-sprint-humanoid-athletic-sprints.md) — SPRINT**（*Efficient Spectral Priors for Humanoid Athletic Sprints*，国防科大 / 湖南大学，arXiv:2605.28549）针对 `📅unknown` `[entity_page]`
 - [SRDF](wiki/entities/paper-srdf-vln-flywheel.md) — SRDF**（Bootstrapping Language-Guided Navigation Learning with Self-Refining Data Flywheel）在 [Light `📅unknown` `[entity_page]`
 - [SRL-MPC：形状感知强化学习 MPC](wiki/entities/paper-srl-mpc.md) — SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control**（[arXiv:2608.21175](https://a `📅unknown` `[entity_page]`
