@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | 收录 PlatformIO Core 官方仓库
+
+- 归档 PlatformIO Core 的官方源码、Apache-2.0 许可与 CLI/构建/包管理能力；区分固件工程工具和机器人实时控制。
+- 新增工具实体页，并在 Wokwi 相关知识页补充工具链交叉引用。
+
 ## [2026-10-22] ingest | 更新 img2threejs v2 官方归档与项目页
 
 - 将主仓身份更新为 `img2threejs/img2threejs`，记录 Skill v2.0.0、Apache-2.0 与 GitHub API 的 18,663 stars 快照。
