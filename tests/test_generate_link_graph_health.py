@@ -45,3 +45,13 @@ def test_all_repo_roadmap_pages_score_full() -> None:
         links = glg.extract_internal_links(content, page)
         score = glg.compute_roadmap_health_score(content, len(links))
         assert score == 3, f"{page.name} 健康度 {score} != 3"
+
+
+def test_quoted_updated_date_counts_as_fresh() -> None:
+    """YAML 里 ``updated: '2026-10-05'`` 带引号时也应计入新鲜度（曾因 ValueError 少 1 分）。"""
+    from datetime import date
+
+    today = date.today().isoformat()
+    for quoted in (f"'{today}'", f'"{today}"', today):
+        content = f"---\nsummary: x\nupdated: {quoted}\n---\n\n## 参考来源\n\n- a\n"
+        assert glg.compute_health_score(content) == 3
