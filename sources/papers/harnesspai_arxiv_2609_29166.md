@@ -9,6 +9,7 @@
 - **官方 GitHub：** <https://github.com/Darwin-Agent/HarnessPAI>
 - **作者团队：** Darwin Agent Team
 - **论文日期：** 2026-09-24（arXiv 页面）
+- **版本：** v1 2026-09-24；v2 2026-10-21（2026-10-22 核查 arXiv 版本页，未列修订说明）
 - **作者单位：** Xiaomi Inc.; Tsinghua University; Nanjing University; Shanghai Jiao Tong University; East China Normal University; University College London; King's College London; Imperial College London; Institute of Automation, Chinese Academy of Sciences; Shanghai Innovation Institute; University of Oxford; University of Edinburgh; Nanyang Technological University.
 - **论文状态：** arXiv 预印本
 - **研究代码状态：** 2026-10-08 核验：官方 README 标注代码仍在整理、尚未公开；安装与复现说明尚未提供。当前仓库内容为论文/项目页配套材料，不是可安装的研究框架。
