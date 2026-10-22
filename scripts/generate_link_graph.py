@@ -1069,7 +1069,7 @@ def compute_health_score(content: str) -> int:
         try:
             from datetime import date
 
-            updated_date = date.fromisoformat(updated_match.group(1).strip())
+            updated_date = date.fromisoformat(updated_match.group(1).strip().strip("'\""))
             if (date.today() - updated_date).days <= 365:
                 score += 1
         except ValueError:
