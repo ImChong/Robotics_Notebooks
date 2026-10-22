@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-22
 related:
   - ./paper-dat-divide-and-truncate.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md

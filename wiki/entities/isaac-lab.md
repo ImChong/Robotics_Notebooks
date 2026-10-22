@@ -13,7 +13,7 @@ tags:
 - awesome-world-models
 - sun254667-wm
 status: stable
-updated: 2026-10-08
+updated: 2026-10-22
 related:
 - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
 - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
