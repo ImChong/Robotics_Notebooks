@@ -4828,6 +4828,7 @@
 - [UNITAS](wiki/entities/paper-unitas-3d-native-wam.md) — UNITAS**（*A 3D-Native World Action Model for Embodied Manipulation*，arXiv:2610.12099，2026-10-08，Un `📅unknown` `[entity_page]`
 - [UniTexture（arXiv:2608.13453）](wiki/entities/paper-unitexture-vla-adversarial.md) — UniTexture**（arXiv:2608.13453）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [UniW(A)M：统一世界模型与世界动作模型的混合专家框架](wiki/entities/paper-uniw-a-m-moe-world-world-action.md) — UniW(A)M 试图让预测环境变化的世界模型与输出机器人动作的 WAM 共享动力学知识，做法是用一组可跨接口复用的专家来承担不同能力。 `📅unknown` `[entity_page]`
+- [UniWALM（统一世界-动作-语言模型）](wiki/entities/paper-uniwalm.md) — UniWALM 用同一个骨干同时生成未来视频、动作与语言，并把模型自己生成的语言当作记忆回馈，从而不依赖外部规划器完成记忆依赖的具身任务。 `📅unknown` `[entity_page]`
 - [UniWAM：统一物理理解、世界预测与动作生成](wiki/entities/paper-uniwam-unified-world-action-model.md) — UniWAM（Unified World-Action Model）** 将视觉语言理解、未来视觉生成与机器人动作生成统一在 Mixture-of-Transformers（MoT）中。它用语言形 `📅unknown` `[entity_page]`
 - [Preparing for the unknown: learning a universal policy with online system identification](wiki/entities/paper-up-osi-universal-policy-online-sysid.md) — Preparing for the unknown: learning a universal policy with online system identification (UP-OSI `📅unknown` `[entity_page]`
 - [Uranus：面向具身 AI 的下一代模拟基础设施](wiki/entities/paper-uranus.md) — Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.2481 `📅unknown` `[entity_page]`

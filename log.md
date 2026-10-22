@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/papers/uniwalm_arxiv_2610_28626.md — 收录 UniWALM 并升格实体页，世界动作模型页回链
+
 ## [2026-10-22] ingest | sources/blogs/schaeffler_newton_digital_twin_2026-10-21.md — 收录 Schaeffler × NVIDIA Newton 人形执行器数字孪生新闻稿，Newton 页回链
 
 ## [2026-10-22] structural | 实验室路线新增 RoboParty Lab（lab.roboparty.com）
