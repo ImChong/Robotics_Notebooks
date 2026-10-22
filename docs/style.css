@@ -1403,7 +1403,8 @@ button.home-wiki-heatmap-cell.is-active {
   .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .home-entry-grid > .home-entry-card { grid-column: span 2; }
   /* 第二行：更多路线 | 公司/实验室（标签切换） */
-  .home-entry-grid > .home-entry-card-more { grid-column: span 3; }
+  /* 各卡高度独立：一张卡展开不撑高并排的另一张 */
+  .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
 }
 .home-org-tabs {
   display: flex;
