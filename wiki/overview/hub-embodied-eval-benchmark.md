@@ -149,6 +149,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [FailBench](../entities/paper-failbench.md) — VLM 失败裁判跨源基准；接触装配 balanced accuracy ≤0.60（③ 层相邻）
 - [LIBERO-Recover](../entities/paper-libero-recover.md) — 从真实执行失败态测 RSR；标准 LIBERO 排名不能预测恢复力（③ 层相邻）
 - [RLE-Bench](../entities/rle-bench.md) — coding agent 全栈 RLE 资格考：九任务四工作流 + Harbor hidden test（③″ agentic 工程）
+- [Embodied First Exam](../entities/embodied-first-exam.md) — coding agent 在冻结机器人任务场景中的编程—运行—验证考核（Harbor 运行）
 - [KaRMA](../entities/paper-karma-hand-metric.md) — URDF-only rolling-pinch 运动学指标 KaRMA-T/R/S（③‴ 手型 kinematic 预筛）
 - [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 运控模型（locomotion / WBT / MPC-WBC）侧的指标体系，与 ③ 层任务成功率互补
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)
