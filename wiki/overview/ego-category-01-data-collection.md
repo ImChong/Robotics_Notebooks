@@ -2,10 +2,11 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-22
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
+  - ../entities/maxinsights-physical-ai-data.md
   - ./ego-category-02-human-to-robot.md
   - ../entities/paper-ego-01-aoe.md
   - ../entities/paper-ego-02-egolive.md
@@ -21,6 +22,8 @@ related:
   - ../methods/macrodata-egocentric-hand-action.md
   - ../entities/pico-4-ultra-egocentric-capture.md
 sources:
+  - ../../sources/sites/maxinsights-official.md
+  - ../../sources/blogs/maxinsights-beyond-1m-hours-physical-ai-data.md
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
   - ../../sources/blogs/stellarnex_egoworld_100w.md
@@ -74,6 +77,7 @@ sources:
 - [Gen-HumanEgo](../entities/gen-human-ego-dataset.md) — GenRobot **1,848 h** DAS-Ego 六相机 MCAP + 官方 DFM 手/深度/三级语义（HF ungated CC BY-SA 4.0；das-datakit 消费）
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 把已采 egocentric RGB **重建为度量 21 关节手轨迹** 的开源配方与 HOT3D Action MPJPE 标尺（采集后的几何标注层）
 - [Pico 4 Ultra（Egocentric 采集）](../entities/pico-4-ultra-egocentric-capture.md) — Unidata **4,050 h** 量产工作流：头显-only vs ZED+Orin 双 rig、episode QA 与 Quest 3 / Aria 选型对照
+- [Maxinsights](../entities/maxinsights-physical-ai-data.md) — 商业化第一人称多模态数据服务；官网自报规模与月产能需和可用数据、客户交付口径分开核验
 
 ## 参考来源
 
@@ -88,6 +92,8 @@ sources:
 - [HumanPlus-1000 项目页归档](../../sources/sites/humanplus-1000.md)
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
 - [unidata_pico_4_ultra_egocentric_data_collection.md](../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md)
+- [Maxinsights 官方网站归档](../../sources/sites/maxinsights-official.md)
+- [Maxinsights 官方规模/密度观点](../../sources/blogs/maxinsights-beyond-1m-hours-physical-ai-data.md)
 
 ## 推荐继续阅读
 
