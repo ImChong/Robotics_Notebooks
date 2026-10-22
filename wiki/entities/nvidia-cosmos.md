@@ -125,6 +125,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Cosmos Interactive World Simulation](./paper-cosmos-interactive-world-simulation.md) — 基于 Cosmos 3 的交互式世界仿真后训练与三类开源 Nano 模型
+
 - [Cosmos 3](./cosmos-3.md) — 当前全模态母栈
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-Video / LingBot-World 与 Cosmos 的概念对照（非一一对应）
 - [Cosmos 1.0 WFM 平台论文](./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)

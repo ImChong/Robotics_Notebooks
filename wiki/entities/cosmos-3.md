@@ -10,7 +10,7 @@ tags:
   - wam
   - open-source
 status: complete
-updated: 2026-10-06
+updated: 2026-10-22
 arxiv: "2606.02800"
 related:
   - ./nvidia-cosmos.md
@@ -235,6 +235,8 @@ README 自列：长分辨率或复杂物理输出可出现时序不一致、相�
 - [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
 
 ## 关联页面
+
+- [Cosmos Interactive World Simulation](./paper-cosmos-interactive-world-simulation.md) — 基于 Cosmos 3 的交互式世界仿真后训练与三类开源 Nano 模型
 
 - [NVIDIA Cosmos 平台](./nvidia-cosmos.md) — 1.0 / 2.5 / 3.0 总览
 - [Cosmos 1.0 WFM 论文](./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
