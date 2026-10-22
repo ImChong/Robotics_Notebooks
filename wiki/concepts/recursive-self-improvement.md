@@ -26,6 +26,7 @@ related:
   - ../entities/paper-rsi-anything.md
   - ../entities/robodoctor-rsi.md
   - ../entities/paper-harness2.md
+  - ../entities/paper-duplexagent-rsi.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -36,6 +37,7 @@ sources:
   - ../../sources/sites/awesome-rsi-github-io.md
   - ../../sources/repos/awesome-embodied-self-improvement.md
   - ../../sources/papers/harness2_arxiv_2610_14224.md
+  - ../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
 
@@ -134,6 +136,12 @@ flowchart LR
 
 [Harness²](../entities/paper-harness2.md) 把模型权重保持冻结，仅让 agent 修改周围的八类 harness 文件；单任务以 Propose–Probe–Compose 比较参考与候选执行，跨任务再将有证据的经验保存到改进库。它展示的是 **harness 层的持久改进**，不等于模型权重自我训练，也不证明机器人任务迁移。论文在 WorkBuddy-Bench、JobBench 和法律 LAB 上评测；执行轨迹差异并非正确性证明，且模型驱动实验仍有调用成本与 rubric 网络泄漏风险。原始资料见[论文来源归档](../../sources/papers/harness2_arxiv_2610_14224.md)、[项目页](../../sources/sites/harness2.md)和[源码仓库](../../sources/repos/google-research-harness2.md)。
 
+## DuplexAgent-RSI：全双工语音协作的 Harness 层 RSI
+
+[DuplexAgent-RSI](../entities/paper-duplexagent-rsi.md) 将全双工交互模型留在实时对话通道，把长程推理和编码委派给后台代理，并将任务策略、任务解析、等待反馈、执行、结果交付与共享记忆拆成六个 harness 模块。Duplex-Harness-RSI 用定时对话考试产生有归因的失败 trace，由 Exam Planner 规划下一轮测试、Harness Editor 定向修改，再用配对评估和独立 protection set 决定是否保留；论文活动中附件模型权重固定。
+
+这比“连续改 prompt”多了**任务状态和发言时序**这一明确优化对象。VoiceChat 的十轮 checkpoint 在固定核心上从 54.6 升至 85.3，Qwen-Realtime 经八个保留版本从 47.1 升至 84.8；结果属于两个独立交互附件上的 harness 评测。项目页截至 2026-10-22 标注代码即将发布，尚无公开仓库，故此工作目前是可阅读的案例，非可复现的软件实现；语音协作结果也未验证机器人真机迁移。
+
 ## 工程实践
 
 对 **机器人研究自动化**（本库真正能用的一层）：
@@ -171,6 +179,7 @@ flowchart LR
 - [Axis 可组合能力库（Grounded RSI）](../entities/axis-composable-capability-library.md) — 真机 rollout 共训后继策略的产业实验摘要
 - [NeoHorse-1（2609.08183）](../entities/paper-neohorse-1.md) — 文本 agent routing harness 上的 evaluation–selection–update 原型（权重开源，训练 flywheel 未公开）
 - [RSI-Anything（2610.13912）](../entities/paper-rsi-anything.md) — 世界模型预测参与候选筛选、任务反馈更新及组件兼容检查的跨任务闭环
+- [DuplexAgent-RSI（2610.11299）](../entities/paper-duplexagent-rsi.md) — 全双工语音协作的模块化 harness 改进闭环
 
 ## 参考来源
 
@@ -184,6 +193,7 @@ flowchart LR
 - [Awesome RSI 仓库归档](../../sources/repos/awesome-rsi.md)
 - [Awesome RSI 站点归档](../../sources/sites/awesome-rsi-github-io.md)
 - [RSI-Anything 技术报告归档](../../sources/papers/rsi_anything_arxiv_2610_13912.md)
+- [DuplexAgent-RSI 论文归档（arXiv:2610.11299）](../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md)
 
 ## 推荐继续阅读
 
