@@ -23,7 +23,7 @@ tags:
   - monash
   - rai-institute
 status: complete
-updated: 2026-09-27
+updated: 2026-10-22
 arxiv: "2607.28952"
 doi: "10.1126/scirobotics.aee0787"
 venue: "Science Robotics 2026"
@@ -234,7 +234,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **作者版 vs 正式版：** 技术数字以 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) 作者版为准；AAAS 声明个人使用、禁止再分发。出版社正式排版若有修订，以 DOI 为准。
+- **作者版 vs 正式版：** 技术数字以 [arXiv:2607.28952](https://arxiv.org/abs/2607.28952) 作者版为准；AAAS 声明个人使用、禁止再分发。牛津 ORA 另有 CC BY 4.0 的 accepted manuscript 可公开获取（2026-10-22 核查）。出版社正式排版若有修订，以 DOI 为准。
 - **综述无单一基线实现：** 五柱落地仍需各系统自报口径；勿把本页当排行榜。
 - **开源状态：** **确认无官方代码 / 项目页**（综述）。
 - **社会层预测窗口宽：** 10–15 年「会社交」与价格带是展望性表述，不是保证交付时间表。
