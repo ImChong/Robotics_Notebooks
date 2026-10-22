@@ -1805,6 +1805,7 @@
 - [DualWAM（arXiv:2609.24868）](wiki/entities/paper-dualwam.md) — DualWAM**（*Dual-System World Action Models for Asynchronous Global Planning and Local Refinement*， `📅unknown` `[entity_page]`
 - [DUET-DINO（arXiv:2609.10506）](wiki/entities/paper-duet-dino.md) — DUET-DINO**（[DUET-DINO: Simultaneous Cross-View World Modeling for Latent Planning in Robot Manipu `📅unknown` `[entity_page]`
 - [地牢与可见性世界生成器：可复现的探索实验环境](wiki/entities/paper-dungeon-visibility-world-generator.md) — 一句话定义：** 一个可配置的 2D / 3D 地牢环境生成器，同时给出连续自由空间、离散占据网格与视线可见性数据，用于可复现的探索、覆盖与观测部署实验。 `📅unknown` `[entity_page]`
+- [DuplexAgent-RSI：面向全双工语音协作的递归 Harness 改进](wiki/entities/paper-duplexagent-rsi.md) — DuplexAgent-RSI 将全双工语音代理的协作逻辑拆成六个可编辑 harness 模块，再用定时对话、失败归因和保护集逐轮筛选改动；实验中交互模型权重保持固定。 `📅unknown` `[entity_page]`
 - [DURA（arXiv:2608.10393）](wiki/entities/paper-dura-diffusion-vla-visual-attack.md) — DURA**（*Hidden in Plain Sight: Diffusion-Based Unrestricted Robotic Attacks on Vision-Language-Act `📅unknown` `[entity_page]`
 - [占空比预测鲁棒性（arXiv:2609.22073）](wiki/entities/paper-duty-factor-quadruped-robustness.md) — 占空比预测鲁棒性**（*Duty Factor Predicts Robust Constrained Quadrupedal Locomotion Across Gait Types*，[arX `📅unknown` `[entity_page]`
 - [DWM（Separating World Effects · arXiv:2607.18715）](wiki/entities/paper-dwm-separating-world-effects.md) — DWM**（*DWM: Separating World Effects from Actions in Latent World Models*，Yi-Ge Zhang / Tianqi Du  `📅unknown` `[entity_page]`

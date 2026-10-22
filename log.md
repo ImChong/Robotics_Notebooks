@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-22] ingest | sources/papers/duplexagent_rsi_arxiv_2610_11299.md — 收录全双工语音协作的 harness RSI 论文、项目页开放状态与核心实体页
+
 ## [2026-10-22] ingest | sources/blogs/wechat_tiannan_sharpa_academic_route_2026-10-22.md — 天南 Sharpa 学术路线：15 个项目逐个对应独立节点，新建 POISE/SharpaDex/CraftNet/D01/W02/AE01 六个节点，其余复用；POISE 代码未发布，SharpaDex 无官方页面可核
 
 ## [2026-10-22] ingest | sources/papers/nerf_arxiv_2003_08934.md、sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md — 归档 NeRF 与 3DGS 奠基来源并补充具身空间表征选型
