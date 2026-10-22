@@ -13,7 +13,6 @@ status: complete
 updated: 2026-10-22
 project_id: cosmos-interactive-world-simulation
 project: https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/
-code: https://github.com/nvidia/cosmos
 related:
   - ./cosmos-3.md
   - ./nvidia-cosmos.md
