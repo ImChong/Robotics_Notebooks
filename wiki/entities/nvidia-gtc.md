@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, course, video, nvidia, gtc, physical-ai, robotics, humanoid, conference]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-cosmos.md
@@ -54,6 +54,7 @@ GTC Berlin 的官方新闻动态汇总见[来源归档](../../sources/blogs/nvid
 | 参考人形 | 主题演讲介绍基于 Isaac GR00T 的 31-DoF Agile ONE SN，称计划于 2027 年推出；同时展示 Capture → 仿真训练 → 云端训练 → 实机评估的 Microduck 工作流 | [Isaac GR00T](./isaac-gr00t.md)、[Isaac Lab](./isaac-lab.md)、[Isaac Sim](./isaac-sim.md) |
 | 抓取工作坊 | Build-a-Claw 活动以开放模型和 NVIDIA 平台搭建机器人夹爪，报道展示通过失败调整抓取的过程 | [NVIDIA GTC Berlin 汇总](../../sources/blogs/nvidia_gtc_berlin_2026_live_updates.md) |
 | 工厂数字孪生 | 西门子在数字孪生中测试工厂计划变更；工业案例也介绍移动机器人 / 人形机器人物流仿真和 Cosmos 合成缺陷图像 | [NVIDIA Omniverse](./nvidia-omniverse.md)、[NVIDIA Cosmos](./nvidia-cosmos.md) |
+| 平台发布（新闻稿，2026-10-21） | Isaac OS（基于 Holoscan 的开源运行时）；Isaac Lab 3.0 正式可用；Human 1M 数据集（三视角视频与 3D 手部追踪，Hugging Face）；Newton 物理引擎与 Schaeffler 执行器作为合作组件 | [Isaac Lab](./isaac-lab.md)、[Newton](./newton-physics.md)、[新闻稿归档](../../sources/blogs/nvidia_isaac_platform_gtc_berlin_2026-10-21.md) |
 
 以上为厂商与合作方新闻及演示摘要，不能替代可复现实验、独立评测或产品代码的开放状态核查。
 
@@ -144,6 +145,7 @@ flowchart TB
 ## 参考来源
 
 - [NVIDIA GTC 门户归档](../../sources/sites/nvidia-gtc.md)
+- [NVIDIA Isaac 平台新闻稿（GTC Berlin 2026）](../../sources/blogs/nvidia_isaac_platform_gtc_berlin_2026-10-21.md)
 - [GTC 2025 Physical AI/Robotics 播放列表](../../sources/courses/nvidia_gtc_2025_physical_ai_robotics_playlist.md)
 - [GTC 2025 Humanoid Developer Day](../../sources/courses/nvidia_gtc_2025_humanoid_developer_day.md)
 - [NVIDIA GTC](https://www.nvidia.com/gtc/)
