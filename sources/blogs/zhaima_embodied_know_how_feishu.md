@@ -24,3 +24,18 @@
 ## Robotics_Notebooks 映射
 
 - 暂未升格为 wiki 页；若后续需要，可并入 [Sim2Real](../../wiki/overview/hub-sim2real.md) 相关页的讨论。
+
+## 全文主题索引（2026-10-22，关键词级抽取）
+
+对抓取文本（832 块，约 6.8 万字符）做标题与短句抽取，**未逐段通读**。文中出现的主题包括：
+
+- **数据集：** Open X-Embodiment、BridgeData V2、DROID、RT-1、LIBERO、RoboMimic、Meta-World
+- **运动学：** FK / IK 的概念与 VLA 中的位置（图像 + 文本 + 状态 → VLA → IK → 关节目标）
+- **强化学习：** 奖励与 Q 值的递推示例、在线 HIL-RL（HIL-SERL）
+- **生成模型：** 流匹配的起点与终点插值、DiT、LDM、I-JEPA、diffusion policy、CVAE
+- **VLA 与动作表示：** RT-2、OpenVLA、CCT、π0（自回归与扩散两路）、DCT / BPE 动作 tokenization、动作块与时序融合
+- **视频世界模型：** Cosmos 的扩散与离散两路（latent → decoder）
+- **推理与训练方法：** RTC（实时分块）、SmolVLA、Wall-OSS、PLD（Probe / Learn / Distill）
+- **记忆与价值：** π0.6 与 MEM 多尺度记忆、VLA + RECAP（价值与优势条件化，ACP）
+
+以上为主题列表，具体结论与数字未逐条核对；文中部分内容是单篇论文的结论，文中已自行注明其适用条件有限。

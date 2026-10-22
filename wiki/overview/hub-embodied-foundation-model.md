@@ -72,6 +72,7 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 
 ## 关联页面
 
+- [宅码 Common Know-How（二手知识点汇编）](../entities/zhaima-common-know-how.md) — VLA 与机器人学习知识点的二手索引，结论需回一手论文核对
 - [Spotter](../entities/paper-spotter.md) — 具身模型主导、VLM 只为确认错误介入的失败修复层
 
 - [ERR（Replan for Error Recovery）](../entities/paper-err-replan-error-recovery.md) — 具身 VLM 在线错误恢复与 turn 级 RL

@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-sim2real, deployment, domain-randomization, transfer]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-22
 summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 concepts/sim2real，本页仅作知识链导航。"
 ---
 
