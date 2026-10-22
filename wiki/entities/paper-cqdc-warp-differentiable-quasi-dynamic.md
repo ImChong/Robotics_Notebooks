@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, differentiable-simulation, quasi-dynamic, gpu, model-predictive-control, contact-rich]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: cqdc-warp
 arxiv: "2610.21349"
 related:
@@ -50,6 +50,30 @@ summary: "CQDC-Warp（arXiv:2610.21349）：GPU 加速的可微准动态仿真�
 
 - 基准为 17 个物体的 Allegro 手内旋转任务（摘要）。
 - 源码运行时序图：**不适用**（未核查到官方代码）。
+
+## 评测与结果
+
+- **主基准：** 17 物体 Allegro 手内旋转，共 17,408 次试验（摘要）：
+
+| 方法 | 成功率 | 平均轨迹生成时间 |
+|------|--------|------------------|
+| CQDC-Warp（本文） | 79.8% | 基准 |
+| CFree | 73.7% | 为本文的 27.0 倍 |
+| IMPACT | 65.2% | 为本文的 50.2 倍 |
+
+- **吞吐量：** 单张 RTX 4090、2,048 个并行世界，前向 2.06×10⁵、反向 2.25×10⁵ world-steps/s。
+- **扩展实验：** LEAP 与 Shadow 手操作、利用环境接触、双臂操作、全身控制，以及在 Sharpa 手上的真实轨迹回放（摘要只列出，未给数字）。
+
+## 与其他工作对比
+
+| 路线 | 接触决策方式 | 与 CQDC-Warp 的差异 |
+|------|--------------|---------------------|
+| CFree（论文基线） | 接触引导的规划 | 同基准下成功率低 6.1 个百分点，轨迹生成慢 27 倍 |
+| IMPACT（论文基线） | 接触规划 | 同基准下成功率低 14.6 个百分点，轨迹生成慢 50 倍 |
+| 预设接触模式时间表的 [轨迹优化](../methods/trajectory-optimization.md) | 先定接触序列再优化运动 | CQDC-Warp 只用软代价鼓励意图接触，几何与摩擦响应交给仿真决定 |
+| [MuJoCo Warp](./mujoco-warp.md) 等 GPU 全动力学仿真 | 动力学仿真本身不负责接触规划 | 同样依赖 GPU 批量并行；CQDC-Warp 采用准动态近似并以可微 MPC 为主要用途 |
+
+前两行来自摘要中同一 Allegro 基准；后两行为路线层面的定性对比。
 
 ## 结论
 

@@ -17,6 +17,7 @@ related:
   - ../overview/hub-sim2real.md
   - ../concepts/sim2real.md
   - ../concepts/physics-fidelity-sim2real-gap.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/stairmaster_arxiv_2606_25765.md
 summary: "StairMaster（2026，上海交通大学）：三阶段 RL 框架，用 cross-attention 与空间感知循环单元处理噪声深度，使 Unitree Go2 零样本攀爬坡度达 55° 的镂空楼梯。"
@@ -82,6 +83,7 @@ summary: "StairMaster（2026，上海交通大学）：三阶段 RL 框架，用
 
 - [Sim2Real 知识链](../overview/hub-sim2real.md) — 仿真到真机迁移的知识背景
 - [Sim2Real 概念](../concepts/sim2real.md) — 深度传感器仿真与零样本迁移
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ①层「有深度图 ≠ 深度处处可信」：本文用深度传感器仿真与空间记忆应对镂空楼梯处稀疏、噪声深度；④层策略直接消费深度
 
 ## 参考来源
 

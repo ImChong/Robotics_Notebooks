@@ -12,6 +12,7 @@ related:
   - ../methods/diffusion-motion-generation.md
   - ./dataset-form-hoi.md
   - ./paper-hoi-retarget.md
+  - ./omomo-dataset.md
 sources:
   - ../../sources/papers/cosmi_arxiv_2610_03252.md
   - ../../sources/sites/cosmi-project-page.md
@@ -75,6 +76,17 @@ flowchart TD
 
 在 1–5 对象的主基准中，COSMI 相比 MDM 与 PriorMDM 获得更好的文本对齐和接触准确率，并取得更低的铰链误差；未知椅子上的接触准确率优势尤其明显。消融实验显示，辅助损失影响最大，部位分配同时改善文本对齐与接触准确率；末段引导显著降低足滑和手物间隙，且没有损害其他指标。
 
+## 与其他工作对比
+
+| 对照对象 | 与 COSMI 的差异 |
+|----------|----------------|
+| MDM / PriorMDM（论文基线） | 通用文本条件人体动作扩散，不显式建模对象槽位与驱动部位；论文主基准中文本对齐、接触准确率与铰链误差均不及 COSMI |
+| [OMOMO](./omomo-dataset.md) 等单物体捕获集 | COSMI 的输入之一；COSMI 并未新增真实录制，而是在其上做规则化组合扩到多物体 |
+| [FORM-HOI](./dataset-form-hoi.md) | 真实多相机采集的人–物交互数据（CC BY 4.0）；COSMI 是组合合成数据，规模更大但不等于真实多物体录制 |
+| [HOI-Retarget](./paper-hoi-retarget.md) | 解决人体 HOI → 人形机器人参考的重定向；COSMI 输出停留在 SMPL-X 人体层，二者可串联但评测口径不同 |
+
+上表除 MDM / PriorMDM 外均为数据与流程层面的定性对比，没有共享评测协议。
+
 ## 结论
 
 **一句话总判：COSMI 的主要价值在于把组合式数据构建、对象—身体部位绑定和采样期接触修正放进同一套可变对象数的人体交互生成流程。**
@@ -89,6 +101,7 @@ flowchart TD
 
 - **适合作为动作数据生成/研究基线候选：** 关注可变对象数、交互组合和接触标签的人体运动生成任务。
 - **机器人迁移需要额外步骤：** 先做目标机器人骨架重定向，再验证动力学可行性、接触时序、碰撞与控制器跟踪；论文评测对象是 SMPL-X 人体及物体轨迹，并非机器人执行。
+- **许可证：** 仓库声明 MIT（见[仓库归档](../../sources/repos/cosmi.md)），仅覆盖仓库现有内容；组合数据派生自 GRAB、BEHAVE、InterCap、OMOMO、ARCTIC、AMASS，各上游数据集自有许可条款，组合序列能否再分发需按上游逐一核对。
 - **复现状态：** 暂无官方可运行训练/推理实现，故源码运行时序图不适用。项目页链接仓库 README 表示代码、模型和数据流水线将发布，入库时尚未开放。
 
 ## 局限与风险

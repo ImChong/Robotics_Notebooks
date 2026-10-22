@@ -10,6 +10,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/dexterous-kinematics.md
   - ../tasks/manipulation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/dexstitch_arxiv_2610_17789.md
   - ../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md
@@ -68,6 +69,7 @@ summary: "DexStitch（arXiv:2610.17789）：把长时程人类视频切分为技
 - [模仿学习](../methods/imitation-learning.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [灵巧运动学](../concepts/dexterous-kinematics.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 注意区分：本文的 skill segmentation 是时间轴上的技能切分；把人类视频转为机器人观测时依赖的手/物体视觉分割与补全，才落在感知栈的 ②/③ 层
 
 ## 参考来源
 

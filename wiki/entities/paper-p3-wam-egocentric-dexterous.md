@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, dexterous-manipulation, egocentric-video, hand-reconstruction, video-diffusion]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: p3-wam
 arxiv: "2610.22363"
 related:
@@ -52,13 +52,35 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 
 - 未发现官方代码入口；源码运行时序图：**不适用**。
 
+## 评测与结果
+
+以下数字均来自论文 HTML 版正文（arXiv:2610.22363 v1），本库未复现。
+
+| 模式 | 评测设置 | 论文报告 |
+|------|----------|----------|
+| 统一 vs 单模式训练 | EgoDex / [ARCTIC](./dataset-arctic.md) / [HOT3D](./dataset-hot3d.md) / EgoLive 四数据集，其余训练变量固定 | Perceive 的相机空间、根相对、PA 关节误差分别降低 23.46%、14.23%、5.69%；Predict 与 Plan 指标同样优于单模式训练 |
+| Perceive（3D 手部重建） | 四数据集，presence-aware MPJPE | 平均相机空间误差 63.05 mm（HaMeR 145.34 mm、Dyn-HaMR 231.54 mm）；根相对 22.54 mm；PA 11.79 mm |
+| Predict（动作条件视频预测） | 四数据集，按各方法原生条件协议；全帧与手部区域 PSNR / SSIM / LPIPS / FVD | 作者报告在四数据集上整体优于对照基线 |
+| Plan（目标导向规划） | 方法盲 VLM 评审（Qwen3.8-Max）按 1–5 分打分动作过程、指令遵循、物理交互等 | 动作过程与指令遵循得分高于视频生成基线 |
+| 机器人部署 | 把生成的人手动作迁移到灵巧机器人 | 仅为演示性质，未报告成功率 |
+
+## 与其他工作对比
+
+| 对照 | 所在模式 | 与 P³-WAM 的差异 |
+|------|----------|------------------|
+| HaMeR / Dyn-HaMR（论文基线） | Perceive | 专用手部重建模型；P³-WAM 用同一视频 DiT 兼做重建，论文报告误差更低 |
+| Wan2.2-Fun-Control、[DreamDojo](./paper-hrl-stack-35-dreamdojo.md)、[Hand2World](./paper-sa-2602-09600-hand2world-autoregressive-egocentric-interaction.md)、[EgoSim](./paper-sa-2604-01001-egosim-egocentric-world-simulator-for-embodied-i.md)（论文基线） | Predict | 只做动作/条件到视频；P³-WAM 额外联合建模三维手部动作与相机 |
+| Wan2.2 I2V-A14B、Cosmos 3-Nano（论文基线，参见 [Cosmos 3](./cosmos-3.md)） | Plan | 纯视频生成，不输出动作轨迹；P³-WAM 同时生成动作与其视觉后果 |
+
+基线数字来自论文同一评测协议；Plan 模式依赖 VLM 评审打分，属主观代理指标，不能等同于机器人任务成功率。
+
 ## 结论
 
 **一句话总判：把三维手部感知与动作条件预测放进同一世界动作模型，是这篇工作的核心主张；其收益需要看三种模式各自的指标。**
 
 1. **统一训练被作者视为收益来源** — 摘要称统一训练同时改善三维手部重建、动作条件视频预测与目标规划。
 2. **三维动作表示是连接点** — 紧凑的结构化 3D 动作表示被接入视频 DiT。
-3. **读数字时区分模式** — 摘要未给出具体指标，需回到论文表格核对。
+3. **读数字时区分模式** — Perceive / Predict 有定量指标，Plan 依赖 VLM 评审打分，机器人部署仅为演示。
 
 ## 局限与风险
 
