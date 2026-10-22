@@ -3,7 +3,7 @@ type: entity
 project_id: harnesspai
 tags: [paper, agent, physical-ai, long-horizon, tsinghua, nju, sjtu]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-22
 arxiv: "2609.29166"
 code: https://github.com/Darwin-Agent/HarnessPAI
 related:
