@@ -4,6 +4,7 @@
 
 - **作者：** Jie Xu, Viktor Makoviychuk, Yashraj Narang, Fabio Ramos, Wojciech Matusik, Animesh Garg, Miles Macklin
 - **发表：** ICLR 2022
+- **机构：** 英伟达（NVIDIA）、麻省理工学院（MIT）、悉尼大学（University of Sydney）、多伦多大学（University of Toronto）
 - **论文：** [OpenReview](https://openreview.net/forum?id=ZSKRQMvttc) · [PDF](https://openreview.net/pdf?id=ZSKRQMvttc) · [arXiv:2204.07137](https://arxiv.org/abs/2204.07137)
 - **项目页：** <https://short-horizon-actor-critic.github.io/>
 - **代码：** <https://github.com/NVlabs/DiffRL>
