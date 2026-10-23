@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, urdf, model, kinematics, roboparty]
 status: complete
-updated: 2026-04-25
+updated: 2026-10-23
 related:
   - ./roboto-origin.md
   - ./atom01-hardware.md
@@ -13,6 +13,8 @@ summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是�
 ---
 
 # Atom01 Description
+> **范围说明（复核于2026-10-23）**：本页是基于 2026-04-25 归档快照整理的职责概述；上游仓库和接口可能变化，具体依赖、支持硬件与构建步骤请以各仓库当前 README、release 和代码为准。
+
 
 **atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。
 

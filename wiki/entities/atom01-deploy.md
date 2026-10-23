@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, deployment, ros2, middleware, sim2real, roboparty, linux-foundation]
 status: complete
-updated: 2026-04-25
+updated: 2026-10-23
 related:
   - ./roboto-origin.md
   - ./atom01-train.md
@@ -14,6 +14,8 @@ summary: "atom01_deploy 是 Atom01 的上机部署仓库，覆盖 ROS2 驱动、
 ---
 
 # Atom01 Deploy
+> **范围说明（复核于2026-10-23）**：本页是基于 2026-04-25 归档快照整理的职责概述；上游仓库和接口可能变化，具体依赖、支持硬件与构建步骤请以各仓库当前 README、release 和代码为准。
+
 
 **atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。
 
