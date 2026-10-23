@@ -4939,6 +4939,7 @@
 - [TacPAC：触觉预测驱动的 WAM 实时动作修正](wiki/entities/paper-tacpac.md) — TacPAC**（*Tactile Prediction and Real-Time Action Correction in World-Action Models for Contact-Ri `📅unknown` `[entity_page]`
 - [TacRefineNet：边缘突出物体的目标条件触觉抓取精修](wiki/entities/paper-tacrefinenet-tactile-grasp-refinement.md) — TacRefineNet**（*Goal-Conditioned Tactile Grasp Refinement for Edge-Prominent Objects*，小米机器人实验室，arX `📅unknown` `[entity_page]`
 - [TACROSS](wiki/entities/paper-tacross.md) — TACROSS**（arXiv:2610.11945，HKU / CUHK-Shenzhen / 中国海洋大学 / 武汉大学等）解决“灵巧操作缺触觉数据”：用便宜的人手触觉手套大规模采集，并在 `📅unknown` `[entity_page]`
+- [Tactile-Based Robotic Manipulation（触觉机器人操作综述）](wiki/entities/paper-tactile-based-robotic-manipulation-survey.md) — 一句话定义：** 这篇综述梳理机器人如何从接触处获得触觉信息，并比较显式力学推理与数据学习怎样把触觉转化为操作动作。 `📅unknown` `[entity_page]`
 - [触觉好奇心驱动机器人交互](wiki/entities/paper-tactile-curiosity-drives-robot-interaction.md) — Tactile Curiosity Drives Robot Interaction**（arXiv:2609.40134） `📅unknown` `[entity_page]`
 - [触觉引导机器人学习综述：从表示学习到基础模型](wiki/entities/paper-tactile-guided-robot-learning-survey.md) — Tactile-Guided Robot Learning: From Representation Learning to Foundation Models**（[arXiv:2610.201 `📅unknown` `[entity_page]`
 - [TactileStep：足底触觉学习调节人形足地交互](wiki/entities/paper-tactilestep.md) — TactileStep**（*Sole Tactile Learning for Regulating Foot-Terrain Interaction in Humanoid Locomotio `📅unknown` `[entity_page]`
