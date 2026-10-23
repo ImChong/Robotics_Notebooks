@@ -3,7 +3,7 @@ type: entity
 tags: [software, eda, pcb, hardware, electronics, manufacturing, cad, altium]
 status: complete
 date: 2026-07-18
-updated: 2026-07-18
+updated: 2026-10-23
 related:
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ./simplefoc.md
@@ -86,7 +86,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [Altium Designer 完整入门教程](https://www.altium.com/documentation/altium-designer/tutorial) — 九器件板从原理图到制造文件
+- [HeyPCB（AI PCB 设计）](./heypcb.md) — AI 辅助生成 PCB 工程的服务入口\n- [Altium Designer 完整入门教程](https://www.altium.com/documentation/altium-designer/tutorial) — 九器件板从原理图到制造文件
 - [KiCad 官方文档](https://docs.kicad.org/) — 开源 EDA 对照
 - [SimpleFOC 文档 — SimpleFOCBoards](https://docs.simplefoc.com/) — 低功率驱动硬件开源链
 
