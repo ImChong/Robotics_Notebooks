@@ -10,4 +10,4 @@
 - **关键内容：** 运动词汇与反馈解码器将动作 latent 转成动作；视觉规划器预测未来身体状态；任务代价在测试时引导恢复朝向、速度或路径。页面展示深度感知、障碍适应与 Unitree G1 真机恢复。
 - **代码：** 页面标注 “Code Coming soon”；截至 2026-10-23 未提供可访问仓库链接。
 - **核查日期：** 2026-10-23
-- **Wiki 映射：** `wiki/entities/paper-rise-humanoid-fall-recovery.md`（待建）
+- **Wiki 映射：** [paper-rise-humanoid-fall-recovery.md](../../wiki/entities/paper-rise-humanoid-fall-recovery.md)
