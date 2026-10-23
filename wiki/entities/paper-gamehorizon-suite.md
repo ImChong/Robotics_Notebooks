@@ -15,6 +15,7 @@ related:
   - ./paper-player-1.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/deep-rl-game-milestones.md
+  - ./paper-gamescaling.md
 sources:
   - ../../sources/papers/gamehorizon_suite_arxiv_2609_25001.md
   - ../../sources/sites/gamehorizon-suite.md
@@ -76,6 +77,7 @@ flowchart TD
 | --- | --- | --- |
 | GameHorizon Suite | 模型能否理解并完成不同时间跨度的游戏任务？ | AAA 玩家轨迹、多层指令、离线与在线分层评测 |
 | [Player-1](paper-player-1.md) | 合成环境交互能否改善通用游戏控制？ | 示范监督初始化后，在 16 个可验证奖励环境中做 RL |
+| [GameScaling](paper-gamescaling.md) | 数据量、多样性和模型规模如何影响跨游戏泛化？ | 游戏轨迹持续预训练，分析训练内、近域与远域迁移 |
 
 因此，GameHorizon 更接近**数据与测评基础设施**；Player-1 是**后训练路线与策略能力实验**。两者互补，但数据集规模、指标和模型设置不同，不宜直接把榜单数字横向比较。
 
