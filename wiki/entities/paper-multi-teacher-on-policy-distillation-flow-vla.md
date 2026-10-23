@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, flow-matching, on-policy-distillation, multi-teacher, policy-consolidation]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: multi-teacher-opd-flow-vla
 arxiv: "2610.21522"
 related:
@@ -53,6 +53,29 @@ summary: "Multi-Teacher On-Policy Distillation（arXiv:2610.21522）：把多个
 - 论文摘要未给出代码链接，复现需依赖论文描述。
 - 源码运行时序图：**不适用**（无官方代码入口可核对）。
 
+## 评测与结果
+
+据 arXiv 摘要（2026-10-22 核对），从联合 SFT 初始化出发，Velocity Loss OPD 的绝对成功率提升：
+
+| 基准 | 相对联合 SFT 初始化 | 相对 Action Loss OPD / Teacher-rollout SFT |
+|------|---------------------|--------------------------------------------|
+| LIBERO-40 | +22.55% | +6.4–9.5% |
+| [CALVIN](./calvin-benchmark.md) 五指令序列 | +33.4% | +9.7–18.3% |
+| [Meta-World](./paper-as-1910-10897-meta-world-a-benchmark-and-evaluation-for-multi.md) MT50 | +22.6% | +3.2–4.2% |
+
+按序列长度分析，CALVIN 上序列越长提升越大。部署时由单个学生策略覆盖全部领域。
+
+## 与其他工作对比
+
+| 路线 | 监督落在哪里 | 与本文的差异 |
+|------|--------------|--------------|
+| Teacher-rollout SFT（论文对照） | 教师自己的轨迹 | 学生部署分布与训练分布错配；本文改为学生驱动的环境交互 |
+| Action Loss OPD（论文对照） | 学生访问状态上的最终动作 | 只在环境观测层 on-policy；本文还在学生自己的动作流中间状态上监督速度场 |
+| [多专家蒸馏](../methods/multi-expert-distillation.md)（DAgger 式） | 学生访问状态上的专家动作 | 常用于运控 RL 专家；本文针对 flow-based VLA 增加动作生成过程这一层 |
+| [Cross-Tokenizer OPD](./paper-cross-tokenizer-opd.md) | LLM 学生生成序列上的 token 分布 | 同为 on-policy 蒸馏，但对象是离散 token 分布而非连续速度场 |
+
+前两行来自论文同协议对照；后两行为路线层面的定性对比。
+
 ## 结论
 
 **一句话总判：多教师蒸馏的关键在于监督必须落在学生自己访问的状态与动作流上，而不是只用教师数据。**
@@ -63,7 +86,7 @@ summary: "Multi-Teacher On-Policy Distillation（arXiv:2610.21522）：把多个
 
 ## 局限与风险
 
-- 摘要未给出具体成功率与基线，本页不引用数字。
+- 提升幅度均为摘要给出的绝对增益；各基准的绝对成功率与教师单独表现需回原文表格核对。
 - 教师之间的能力冲突如何处理，摘要未展开（推测：需要看完整方法节）。
 
 ## 关联页面

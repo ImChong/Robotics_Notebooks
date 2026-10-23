@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-action-models, latent-future-prediction, lightweight-world-model]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: wave-0
 arxiv: "2610.18568"
 related:
@@ -51,6 +51,30 @@ summary: "WAVE-0（arXiv:2610.18568）：用 257M 参数的轻量潜在世界模
 
 - 未发现官方代码入口；源码运行时序图：**不适用**。
 
+## 评测与结果
+
+以下数字来自 arXiv 摘要（论文 HTML 版未生成），本库未复现。
+
+| 评测 | 论文报告成功率 |
+|------|----------------|
+| [RoboTwin 2.0](./robotwin.md) | 91.47% |
+| [LIBERO](./libero-benchmark.md) | 98.7% |
+| [LIBERO-Plus](./paper-rcl-2510-13626-libero-plus-in-depth-robustness-analysis-of-visi.md) / LIBERO-Pro / LIBERO-Para（分布偏移） | 88.0% / 61.4% / 75.0% |
+| 真机任务 | 在 π0.5 上从 38.3% 提升到 73.3% |
+
+摘要另指出世界模型直接用真实机器人动作、以反事实排序目标训练，不需要像素重建或大规模视频预训练。摘要未给出推理延迟。
+
+## 与其他工作对比
+
+| 路线 | 未来预测形式 | 与 WAVE-0 的差异 |
+|------|--------------|------------------|
+| [π0.5](./paper-pi05-open-world-vla.md)（真机底座） | 无显式未来预测 | WAVE-0 在其上加 257M 潜在世界模型，用预测后果条件化动作专家 |
+| 视频生成式 WAM（见 [世界动作模型](../concepts/world-action-models.md)） | 生成未来视频帧 | 摘要称其计算昂贵；WAVE-0 只在潜在空间预测未来表征 |
+| [FLARE](./paper-sa-2505-15659-flare-robot-learning-with-implicit-world-modelin.md) 等潜在未来辅助目标路线 | 预测未来潜表征作为辅助损失 | 摘要指出此类方法只把未来当辅助目标；WAVE-0 让预测直接输入动作生成 |
+| [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) 等潜在动作路线 | 从视频转移推断潜在动作 | 往往需大规模视频预训练；WAVE-0 直接在机器人动作上训练世界模型 |
+
+除 π0.5 真机提升为论文同协议对照外，其余均为路线层面的定性区分，不共享评测口径。
+
 ## 结论
 
 **一句话总判：用小型潜在世界模型提供未来信息，是在保留 WAM 收益的同时压低计算成本的一条路线，但收益需要与完整视频 WAM 对照。**
@@ -61,7 +85,7 @@ summary: "WAVE-0（arXiv:2610.18568）：用 257M 参数的轻量潜在世界模
 
 ## 局限与风险
 
-- 摘要未给出成功率与延迟数字，本页不引用。
+- 成功率为论文自报；摘要未给出推理延迟，轻量化收益尚缺时间开销数据。
 - 对 VLM 潜在动作计划的依赖，使误差可能在两级之间累积（推测）。
 
 ## 关联页面

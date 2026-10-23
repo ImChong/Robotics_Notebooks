@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, failure-recovery, world-model, counterfactual, predictive-recovery]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: forkcast
 arxiv: "2610.18650"
 related:
@@ -51,6 +51,28 @@ summary: "ForkCast（arXiv:2610.18650）：在冻结的 VLA 之上，比较三�
 
 - 方法针对冻结的 VLA，理论上可外挂于已有策略（推测：需要能访问其动作块输出）。
 - 源码运行时序图：**不适用**（未核查到官方代码）。
+
+## 评测与结果
+
+据 arXiv 摘要（2026-10-22 核对）：
+
+| 设置 | 结果 |
+|------|------|
+| 仿真 | [RoboTwin 2.0](./robotwin.md) 的 5 个任务，注入遮挡与物体滑落扰动 |
+| 冻结 [π0.5](./paper-pi05-open-world-vla.md) 基线 → 加 ForkCast | 合并成功率 **13.3% → 30.0%** |
+| 跨底座迁移 | 不更新 ForkCast，迁移到另外两种 VLA 底座（摘要未给数字） |
+| 真机 | 在真机候选 rollout 上适配后，干净与能见度受限两种条件下均优于基础策略（摘要未给数字） |
+
+## 与其他工作对比
+
+| 恢复路线 | 何时 / 如何干预 | 与 ForkCast 的差异 |
+|----------|-----------------|-------------------|
+| 训练期学习恢复（如在恢复示范上微调） | 恢复能力写进策略权重 | 需要更新 VLA 主干；ForkCast 冻结 VLA，只外挂世界模型与进度头 |
+| 失败检测器 + 脚本式修复 | 检测到失败后触发预设修复 | 依赖检测器与干预阈值；ForkCast 把"继续执行"本身作为候选，用一次进度比较同时决定是否干预与如何干预 |
+| [LIBERO-Recover](./paper-libero-recover.md) | 恢复场景评测基准与人类恢复示范 | 是评测/数据侧工作，可作为 ForkCast 类外挂恢复方法的检验场景 |
+| [HF-WM](./paper-hf-wm-failure-dynamics-world-model.md) | 用世界模型学习失败动力学 | 同样借助世界模型预测失败；ForkCast 的重点是候选条件预测与决策，而非生成式失败建模 |
+
+前两行对应摘要中所述的两类现有恢复范式；后两行为路线层面的定性对比，没有共享评测设置。
 
 ## 结论
 

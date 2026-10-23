@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, world-action-models, mixture-of-experts, diffusion-transformer]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: uniw-a-m
 arxiv: "2610.18697"
 related:
@@ -53,13 +53,37 @@ summary: "UniW(A)M（arXiv:2610.18697）：基于扩散 Transformer 的混合专
 
 - 未发现官方代码入口；源码运行时序图：**不适用**。
 
+## 评测与结果
+
+以下数字来自 arXiv 摘要与论文 HTML 版正文，本库未复现。
+
+| 评测 | 设置 | 论文报告 |
+|------|------|----------|
+| 真机三任务（叠衣、折盒、桌面清理） | 每任务 20 次 | 平均成功率 88.3%（IDM-WAM 接口），最强基线 WorldScape Policy 2.0 为 76.7%；四个 WAM 接口均高于该基线 |
+| [RoboTwin 2.0](./robotwin.md) | 仅 clean 数据训练，50 任务平均 | Clean→Clean 84.38%（对比方法中排第二）；Clean→Randomized 66.60%，比所列最强基线 π0.5 高 20.60 个百分点 |
+| [LIBERO](./libero-benchmark.md) | 标准套件 | 摘要列为评测基准之一（具体数值见论文表格，本页未摘录） |
+| WorldArena（动作条件世界建模） | 三任务 EWMScore-P | 三个任务均为对比方法最高（对照含 Ctrl-World、Cosmos-Predict2.5） |
+| PAIR 路由（分布外） | 冻结骨干，只训练接口路由 | 平均成功率 63.3% → 76.7% |
+| 结构消融 | 同步数、同数据量的单一稠密 DiT（Wan2.1-I2V-14B 初始化） | 稠密基线最佳成功率仅 16.7%，联合训练 UniW(A)M 达 88.3% |
+
+## 与其他工作对比
+
+| 对照 | 与 UniW(A)M 的差异 |
+|------|--------------------|
+| [WorldScape Policy 2.0](./paper-worldscape-policy-2.md)（真机最强基线） | 单一策略接口；UniW(A)M 让四种 WAM 接口共享专家并按 chunk 切换 |
+| [π0.5](./paper-pi05-open-world-vla.md)（RoboTwin C2R 基线） | 不显式预测未来；UniW(A)M 用动作条件世界模型协同训练所有动作接口 |
+| [Ctrl-World](./paper-ctrl-world.md) / Cosmos-Predict2.5（WorldArena 基线） | 只做世界建模，不输出动作；UniW(A)M 在同一骨干内兼顾预测与控制 |
+| [UniWAM（2610.02054）](./paper-uniwam-unified-world-action-model.md) | 名称相近的另一篇统一 WAM 工作，方法与评测口径不同，数值不可直接对比 |
+
+前三行来自论文同一评测协议；与 UniWAM 的对比仅为定性区分。
+
 ## 结论
 
 **一句话总判：用共享专家加可复用能力专家统一世界模型与 WAM，是这篇工作的主要设计选择；它的价值取决于接口切换是否真的减少了训练成本。**
 
 1. **动力学共享是出发点** — 两类模型学到的物理动态有重叠。
 2. **能力专家跨接口复用** — 这是与各自独立训练的主要区别。
-3. **需要看对照实验** — 摘要未给出成功率数字，不能仅凭结构判断收益。
+3. **需要看对照实验** — 真机 88.3% 对最强基线 76.7%，同预算稠密 DiT 基线仅 16.7%，收益主要来自联合训练与专家共享（论文自报）。
 
 ## 局限与风险
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, long-horizon-manipulation, latent-memory, memory-augmented-policy, robot-manipulation]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: mem4act
 arxiv: "2610.22323"
 related:
@@ -50,6 +50,30 @@ summary: "Mem4Act（arXiv:2610.22323）：为长程机器人控制学习固定�
 
 - 未发现官方代码入口；源码运行时序图：**不适用**。
 
+## 评测与结果
+
+据 arXiv 摘要（2026-10-22 核对）：
+
+| 设置 | Mem4Act 成功率 |
+|------|----------------|
+| RoboMME（记忆依赖仿真基准） | 49.88% |
+| RMBench | 61.0% |
+| 4 个真实操作任务 | 81.5% |
+
+摘要称上述结果在记忆依赖控制上达到 SOTA；消融表明时间聚合、互补记忆监督（问答监督 + 关键帧 [DINO](./paper-dinov2.md) 特征重建）与"记忆优先"两阶段训练三项均有贡献。
+
+## 与其他工作对比
+
+| 记忆路线 | 记忆形态 | 与 Mem4Act 的差异 |
+|----------|----------|-------------------|
+| 原始历史观测（摘要所述基线类） | 直接拼接历史帧 | 输入随历史增长；Mem4Act 用固定大小潜在记忆限定接口 |
+| 压缩视觉 token / 语言摘要（摘要所述基线类） | token 压缩或文本摘要 | 可能丢失时间、语义或感知细节；Mem4Act 用问答监督与关键帧特征重建约束保留内容 |
+| [MemoryWAM](./paper-memorywam.md) | 滑窗近期帧 + 起点 anchor + gist token | 同样压缩长历史，但在 WAM 框架内；Mem4Act 额外用两阶段训练迫使策略读取记忆 |
+| [GMP](./paper-gated-memory-policy.md) | 学习型门控 + cross-attention 记忆 | 侧重何时读写记忆；Mem4Act 侧重记忆内容的监督目标 |
+| [IMPRINT](./paper-imprint-multi-stream-latent-memory.md) | 观察 / 动作 / 本体多流潜在记忆 | 同为潜在记忆，监督信号为历史重建与进度估计 |
+
+前两行对应摘要中的三类既有做法；后三行为路线层面的定性对比，各自基准不同，数值不可直接比较。
+
 ## 结论
 
 **一句话总判：长程操作的记忆应是固定大小且被显式优化的潜在表示，并需要验证策略真正读取了它。**
@@ -60,7 +84,7 @@ summary: "Mem4Act（arXiv:2610.22323）：为长程机器人控制学习固定�
 
 ## 局限与风险
 
-- 摘要未给出成功率数字，本页不引用。
+- 成功率数字仅取自 arXiv 摘要，RoboMME / RMBench 的分任务结果与试验次数需回原文表格核对。
 - 记忆大小的选择对不同任务的敏感度未知。
 
 ## 关联页面
