@@ -351,3 +351,8 @@ flowchart LR
 ### 开源框架入口
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 - [Simulation](../../references/repos/simulation.md)
+
+
+## 长程 VLA 操作后训练
+
+- [AtomicRL](../entities/paper-atomicrl.md) — 以原子子任务边界门控 TD residual，并按任务掌握度调整采样与探索。
