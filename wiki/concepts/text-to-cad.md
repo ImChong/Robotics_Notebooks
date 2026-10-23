@@ -21,6 +21,7 @@ related:
   - ../entities/freecad-mcp.md
   - ../entities/openscad.md
   - ../entities/nvidia-usd-brep-smlib.md
+  - ../entities/zero-to-cad.md
   - ./sim2real.md
 sources:
   - ../../sources/sites/text-to-cad-tools.md
@@ -36,6 +37,9 @@ sources:
   - ../../sources/papers/gencad_arxiv_2409_16294.md
   - ../../sources/papers/gencad3d_arxiv_2509_15246.md
   - ../../sources/papers/pointer_cad_v2_arxiv_2606_29301.md
+  - ../../sources/papers/zero_to_cad_arxiv_2604_24479.md
+  - ../../sources/models/zero-to-cad-qwen3-vl-2b.md
+  - ../../sources/datasets/zero-to-cad-100k.md
 summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概念件与参数化初稿，复杂装配与生产级 DFM 仍依赖专业 CAD；机器人方向更稳的是 LLM + CadQuery/OpenSCAD 参数化脚本再导出 STEP。"
 ---
 
@@ -89,6 +93,10 @@ summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概�
 **说明性机械插图不等于 Text-to-CAD：** [Anatomy](../entities/anatomy-skill.md) 会把技术原理转成可交互的等轴测 SVG/HTML 图，能用机械外观解释运动关系，但它不生成制造级 STEP/B-rep、工程图或机器人仿真模型。它更适合科普与文档表达。
 
 ## 代表工具谱系（简评）
+
+### Zero-to-CAD（多视角图像→CadQuery）
+
+[Zero-to-CAD](../entities/zero-to-cad.md) 以约 1M 条合成 CAD 构造程序为基础，提供多视角图像到 CadQuery 的 Qwen3-VL-2B 权重与 100K 精选子集。HF 页面将模型和数据集标为 Apache-2.0；发布范围应与论文中的完整代理式数据合成系统区分。
 
 详细链接见 [sources/sites/text-to-cad-tools.md](../../sources/sites/text-to-cad-tools.md)。
 
