@@ -233,6 +233,10 @@ op: ingest
 
 收录 huashu-art-motion 编码代理动画 Skill。核对公开仓库 README、SKILL 与许可说明；记录其面向技术解释和传播的用途，以及代码动画不能替代机器人仿真验证的边界。
 
+## [2026-10-23] ingest | RoboAug 官方代码与数据发布后更新既有实体
+
+- 更新论文、项目页与 wiki 中的机构及开源状态：官方来源列东南大学；代码仓库开放 Stage 1–2，数据集已发布，Stage 3 区域对比策略学习仍待开源。
+
 ## [2026-10-23] ingest | OpenCAL 计算轴向光刻打印机与配套资料
 
 - 收录 OpenCAL 文档、控制软件、CAL-hardware、Tomo、VAMToolbox 与两篇 CAL 论文的一手来源。
