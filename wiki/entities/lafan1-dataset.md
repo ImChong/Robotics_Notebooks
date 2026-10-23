@@ -4,7 +4,7 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020, sfu]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-09-20
+updated: 2026-10-23
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md
@@ -19,6 +19,7 @@ related:
 sources:
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/robust_motion_inbetweening_acm_tog_2020.md
 ---
 
 # LaFAN1（Ubisoft La Forge Animation Dataset）
@@ -46,6 +47,12 @@ sources:
 - **社区可复现基准**：README 定义 **L2Q / L2P / NPSS** 等指标与 `evaluate_test.py` 期望区间，便于论文对比。
 - **与部署案例衔接**：例如 **[wbc_fsm](./wbc-fsm.md)** 公开链路中采用 LAFAN1 子集经重定向训练 ONNX 跟踪策略，读者可把「数据形态」与「上机策略」对照阅读。
 - **极简参考统一走/跑/起身**：[SD-AMP（arXiv:2605.18611）](./paper-unified-walk-run-recovery-sdamp.md) 仅用 **三条 LAFAN1 retarget 片段** 训练 **单一 G1 策略**，部署 **无运行时 FSM**。
+
+## 配套论文：Robust Motion In-Betweening
+
+Harvey、Yurick、Nowrouzezahrai 与 Pal 的论文发表于 ACM TOG 39(4), 2020（[DOI](https://doi.org/10.1145/3386569.3392480)）。论文将动作关键帧间的过渡生成作为研究问题，并在 Human3.6M 与新引入的 LaFAN1 数据上评测。LaFAN1 因而既是动作过渡基准，也是后续全身跟踪和重定向工作常用的数据源。
+
+**复现边界：** Ubisoft 官方仓库公开 BVH 动作、评估脚本与插值基线；这不等于论文学习模型的完整训练实现也已发布。大文件需 Git LFS，数据采用 CC BY-NC-ND 4.0。
 
 ## 许可与合规（工程必读）
 
@@ -75,7 +82,7 @@ sources:
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
 - [sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP 三条 LAFAN1 clip
 - [sources/papers/sprint_arxiv_2605_28549.md](../../sources/papers/sprint_arxiv_2605_28549.md) — SPRINT 五条单周期步态 + GMR 重定向
-- Harvey et al., *Robust Motion In-betweening*, ACM TOG (SIGGRAPH) 2020 — README 内引用信息
+- [Robust Motion In-Betweening 论文来源归档](../../sources/papers/robust_motion_inbetweening_acm_tog_2020.md) — ACM TOG 39(4), 2020；DOI: 10.1145/3386569.3392480
 - GitHub 仓库：<https://github.com/ubisoft/ubisoft-laforge-animation-dataset>
 
 ## 关联页面
@@ -89,5 +96,5 @@ sources:
 
 ## 推荐继续阅读
 
-- Ubisoft Montreal 论文介绍页：[Robust Motion In-betweening](https://montreal.ubisoft.com/en/automatic-in-betweening-for-faster-animation-authoring/)（README 外链）
+- [Ubisoft La Forge 论文介绍页归档](../../sources/sites/ubisoft-laforge-robust-motion-inbetweening.md)
 - README 中列出的后续使用该数据集的代表性论文（Learned Motion Matching、DReCon 等）
