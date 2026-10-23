@@ -27,7 +27,7 @@ summary: "BONES-SEED 是 Bones Studio 的人形研究动作捕捉数据集：约
 |------|----------|----------|
 | BONES-SEED | Skeletal Everyday Embodiment Dataset | 人形具身研究的带注释骨架动作数据集 |
 | MoCap | Motion Capture | 记录身体运动并生成骨架序列的动作捕捉 |
-| SOMA | Skinned Object-aware Modular Avatar | 数据卡使用的标准化及按表演者比例适配骨架表示 |
+| SOMA | Unifying Parametric Human Body Models | 用统一人体拓扑与骨架规范承接不同参数化人体模型的框架 |
 | G1 | Unitree G1 Humanoid | 数据集提供兼容 G1 MuJoCo 的关节轨迹 |
 | BVH | Biovision Hierarchy | SOMA 动作序列使用的骨架层级与运动格式 |
 
@@ -71,9 +71,11 @@ BONES-SEED 组合了动作捕捉、自然语言描述、时间分段和机器人
 - [BONES-SEED 数据集归档](../../sources/datasets/bones-seed.md)
 - [Bones Studio 官方项目页](../../sources/sites/bones-studio-seed.md)
 - [Hugging Face 数据卡](https://huggingface.co/datasets/bones-studio/seed)
+- [NVIDIA SOMA-X 官方仓库](https://github.com/NVlabs/SOMA-X)
 
 ## 推荐继续阅读
 
 - [BONES-SEED 官方数据页](https://bones.studio/datasets/seed)
 - [Hugging Face 数据集](https://huggingface.co/datasets/bones-studio/seed)
 - [BONES-SEED 许可全文](https://bones.studio/info/seed-license)
+- [NVIDIA SOMA-X](https://github.com/NVlabs/SOMA-X)
