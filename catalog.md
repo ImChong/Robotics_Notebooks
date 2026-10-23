@@ -2229,6 +2229,7 @@
 - [GALATEA（arXiv:2609.10050）](wiki/entities/paper-galatea.md) — GALATEA**（*Grounding Generated Video Plans in Simulation Towards Versatile Dexterous Controllers*， `📅unknown` `[entity_page]`
 - [G0.5：推理与动作同一自回归流](wiki/entities/paper-galaxea-g05.md) — G0.5**（*Galaxea G0.5: One Autoregressive Stream for Robot Reasoning and Action*，[arXiv:2608.11739 `📅unknown` `[entity_page]`
 - [GameHorizon Suite：游戏理解的多时间尺度数据与评测](wiki/entities/paper-gamehorizon-suite.md) — GameHorizon Suite 将 AAA 游戏中的视频、玩家动作和从短时操作到长程策略的指令对齐，并以离线与在线基准评估模型理解和执行游戏目标的能力。 `📅unknown` `[entity_page]`
+- [GameScaling：虚拟世界具身智能体的持续预训练](wiki/entities/paper-gamescaling.md) — GameScaling 是一项受控研究，比较游戏轨迹持续预训练中的数据规模、世界多样性与模型容量，并测量智能体从训练内游戏向未见虚拟世界迁移的能力。 `📅unknown` `[entity_page]`
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
