@@ -3,6 +3,8 @@
 > 来源归档（ingest）
 
 - **标题：** SWAP: Test-Time Steerable Humanoid Whole-Body Collision Avoidance
+- **作者：** Zeji Yi, Guanqi He, Xiaofeng Guo, Guannan Qu, Pieter Abbeel, Yan Duan, Karen Liu, Guanya Shi
+- **机构：** Carnegie Mellon University、Amazon FAR
 - **类型：** paper / humanoid / whole-body-control / collision-avoidance / diffusion-policy
 - **arXiv abs：** <https://arxiv.org/abs/2610.25711>
 - **arXiv HTML：** <https://arxiv.org/html/2610.25711>
