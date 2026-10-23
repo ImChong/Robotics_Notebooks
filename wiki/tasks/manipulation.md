@@ -22,6 +22,7 @@ related:
   - ../methods/dynamic-manipulation-mocap-hand-open-loop.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/paper-embodied-manipulation-foundation-models-survey.md
+  - ../entities/paper-affordance-learning-embodied-ai-survey.md
   - ../entities/paper-vtap-gripper.md
   - ../entities/humantouch.md
   - ../entities/yale-openhand.md
