@@ -41,6 +41,6 @@
 
 ## 对 wiki 的映射
 
-- 计划沉淀实体页：`wiki/entities/paper-rise-humanoid-fall-recovery.md`（待建）
+- 实体页：[paper-rise-humanoid-fall-recovery.md](../../wiki/entities/paper-rise-humanoid-fall-recovery.md)
 - 项目页归档：[`sources/sites/osheraz-rise.md`](../sites/osheraz-rise.md)
 - 相关主题：人形机器人跌倒恢复、感知式全身控制、测试时规划
