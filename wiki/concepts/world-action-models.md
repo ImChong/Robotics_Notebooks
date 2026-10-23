@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-23
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/rhoda-ai.md
@@ -646,3 +646,8 @@ flowchart TB
 ## 长时程进度闭环：LAW
 
 - [LAW](../entities/paper-law.md)（arXiv:2610.23334）以语义子任务进度连接 VLM 规划与 WAM 候选动作：状态专家异步判断阶段完成，价值专家按当前目标排序、融合候选。官方模型与训练数据已公开；全量训练/评测要求 4 节点 × 8 GPU。
+
+
+## 程序化技能规划：AW-0
+
+- [AW-0：Agentic World Action Models](../entities/paper-aw-0-agentic-world-action-models.md) — MoT 联合生成技能代码、未来视频与机器人动作，让代码计划影响世界预测与控制。
