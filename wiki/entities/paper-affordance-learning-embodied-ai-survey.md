@@ -9,6 +9,7 @@ venue: "Preprints.org preprint, v1 (2026-10-07)"
 related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/affordance-awesome-technology-map.md
 sources:
   - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 summary: "综述以 affordance 感知、任务相关推理、引导动作三段组织具身交互文献，解释 affordance 如何从被动视觉区域预测发展为接地的规划与策略接口。"
@@ -21,6 +22,15 @@ summary: "综述以 affordance 感知、任务相关推理、引导动作三段�
 ## 一句话定义
 
 Affordance 是连接「环境里有什么」与「当前 agent 能对它做什么」的功能性表征。本综述把学习流程组织为 **感知 → 推理 → 引导动作**，从可交互对象/区域的识别，推进到任务相关性选择，再到可执行的计划或策略。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Affordance | Action possibility | 环境 / 物体对 agent 提供的可交互机会 |
+| VLM | Vision-Language Model | 视觉–语言模型，用于 affordance 推理 |
+| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| HOI | Human-Object Interaction | 人–物交互，常作监督来源 |
 
 ## 核心框架
 
@@ -61,12 +71,18 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 |------|------|
 | 论文类型 | 综述预印本；Preprints.org 标记为未同行评审 |
 | 项目主页 | [affordance-survey](https://jingliangli.com/affordance-survey/) |
-| 资源列表 | [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning) |
+| 资源列表 | [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning)；站内逐篇节点见 [技术地图](../overview/affordance-awesome-technology-map.md) |
 | 新算法 / 新实验 | 本文为综述，不提出新的控制策略或统一性能基准 |
 
 ## 结论
 
 这篇综述的实用价值在于提供一条清晰的接口链：**看见可交互区域 → 判断它对任务和本体是否合适 → 将其转换为动作**。设计具身系统时，需验证 affordance 表征能否传到规划与控制，并以实际可行性和执行结果评估它。
+
+## 关联页面
+
+- [Awesome-Affordance-Learning 技术地图](../overview/affordance-awesome-technology-map.md)
+- [manipulation](../tasks/manipulation.md)
+- [vla](../methods/vla.md)
 
 ## 参考来源
 
