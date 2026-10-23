@@ -2512,6 +2512,7 @@
 - [MM-Future（arXiv:2609.20377）](wiki/entities/paper-mm-future.md) — MM-Future**（*Multi-Mode Joint World–Action Modeling for Autonomous Driving*，[arXiv:2609.20377](htt `📅unknown` `[entity_page]`
 - [MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）](wiki/entities/paper-mmhu.md) — MMHU**（*MMHU: A Massive-Scale Multimodal Benchmark for Human Behavior Understanding*，[arXiv:2507.1 `📅unknown` `[entity_page]`
 - [MobiAgent（arXiv:2610.03476）](wiki/entities/paper-mobiagent-dual-loop-self-improvement.md) — MobiAgent**（*MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipu `📅unknown` `[entity_page]`
+- [MoCaP：让机器人找到目标后站到能抓的位置](wiki/entities/paper-mocap-mobile-code-as-policies.md) — MoCaP**（*Mobile Code-as-Policies*）从被动人类视频提取“物体在哪里”和“人从哪个方向准备操作”的线索，让移动操作机器人在找到目标后继续寻找符合自身机械臂可达性与碰撞 `📅unknown` `[entity_page]`
 - [基于步间预测的模型引导安全双足运动强化学习](wiki/entities/paper-model-informed-safe-reinforcement-learning.md) — Model-Informed Safe Reinforcement Learning for Bipedal Locomotion via Step-to-Step Prediction**（[a `📅unknown` `[entity_page]`
 - [ModPack（arXiv:2607.19479）](wiki/entities/paper-modpack.md) — ModPack**（Joshua Citron, Renee Zbizika, Zeyi Liu, Shuran Song；Stanford University；[arXiv:2607.1947 `📅unknown` `[entity_page]`
 - [MoeCo：知识驱动 MoE 协同识别手术三元组](wiki/entities/paper-moeco.md) — MoeCo**（*Mixture-of-Experts-guided Co-Optimization*，[arXiv:2608.22972](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
