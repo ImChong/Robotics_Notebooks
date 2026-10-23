@@ -7,14 +7,16 @@ tags:
   - data-augmentation
   - sim2real
   - x-humanoid
-  - tum
   - cityu-hk
-  - beihang
+  - buaa
   - pku
 status: complete
-updated: 2026-09-30
+updated: 2026-10-23
+project_id: roboaug
+project: https://x-roboaug.github.io/
+code: https://github.com/Open-X-Humanoid/RoboAug
 arxiv: "2602.14032"
-venue: "2026 · arXiv"
+venue: "CoRL 2026"
 related:
   - ../tasks/manipulation.md
   - ../methods/imitation-learning.md
@@ -23,7 +25,7 @@ related:
 sources:
   - ../../sources/papers/roboaug_arxiv_2602_14032.md
   - ../../sources/sites/x-roboaug-project.md
-summary: "RoboAug（arXiv:2602.14032，X-Humanoid 等）：单帧 bbox + one-shot 区域匹配与 SAM2 传播 → SDv3 全背景合成增广 + 区域对比 IL 损失；35k 真机 trial 三因子 OOD 成功率 UR 0.47 / AgileX 0.60 / 天工 2.0 0.67；代码与 RoboAug-D 截至入库日 Coming Soon。"
+summary: "RoboAug（CoRL 2026，arXiv:2602.14032）：单帧 bbox + one-shot 区域匹配与 SAM2 传播 → 生成式背景合成增广 + 区域对比 IL 损失；35k+ 真机 rollout 验证三机身 OOD 泛化。官方已开源 HDF5 数据增广阶段与数据集；策略区域对比训练代码仍未发布。"
 ---
 
 # RoboAug：一标注扩百场景的区域对比操纵增广
@@ -56,12 +58,12 @@ summary: "RoboAug（arXiv:2602.14032，X-Humanoid 等）：单帧 bbox + one-sho
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 北京人形机器人创新中心（X-Humanoid）；慕尼黑工业大学（TUM）；香港城市大学（CityU）；北京航空航天大学（Beihang）；北京大学（PKU） |
+| **机构** | 北京人形机器人创新中心（X-Humanoid）；东南大学；香港城市大学（CityU）；北京航空航天大学（Beihang）；北京大学（PKU） |
 | **策略基线** | ACT（无增广 0.09–0.19 三因子平均成功率） |
 | **增广基线** | GenAug、RoboEngine-T/G |
 | **生成** | Stable Diffusion v3 全背景；500 条 LLM 材质 prompt |
 | **分割栈** | GroundingDINO 提案 + DINOv2 one-shot 匹配 + SAM2 传播 |
-| **开源** | 截至 **2026-09-29** 项目页 **Code/Dataset Coming Soon**；论文承诺开源 RoboAug-D 与多任务真机数据 |
+| **开源** | **部分开源**：官方仓库已发布数据增广 Stage 1–2；RoboAug-D 与三机身示教数据已在 Hugging Face 发布；Stage 3 区域对比策略学习仍未开源 |
 
 ## 核心原理
 
@@ -89,8 +91,30 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至入库日（2026-09-29）项目页 **无 GitHub 链接**（Code Coming Soon）。若后续发布，预期离线链：参考帧标注 → VFM 匹配与 SAM2 批处理 → SDv3 背景批生成与合成 → ACT（或任意 visuomotor）训练脚本读 \(\mathcal{D}_{\text{fnl}}\) 并启用 \(\mathcal{L}_{\text{RC}}\)。
+官方仓库目前提供数据增广 Stage 1–2；策略学习阶段的区域对比损失实现尚未开源。
 
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Demo as scripts/demo.sh
+  participant Main as src/sam2_region_augment.py
+  participant H5 as src/read_h5.py
+  participant Region as GroundingDINO and DINOv2
+  participant Mask as SAM2
+  participant Gen as Stable Diffusion 3
+  Demo->>Main: pass trajectory and output paths
+  Main->>H5: read multi-camera HDF5 trajectory
+  Main->>Region: match task regions from one annotated keyframe
+  Region-->>Main: matched regions for anchor frames
+  Main->>Mask: propagate regions across trajectory
+  Mask-->>Main: dense task masks
+  Main->>Gen: synthesize full-scene backgrounds
+  Gen-->>Main: generated background frames
+  Main->>Main: composite preserved foreground and generated background
+  Main->>H5: write augmented images and masks to HDF5
+```
+
+该路径从 `scripts/demo.sh` 进入 `src/sam2_region_augment.py`，读写由 `src/read_h5.py` 负责；训练策略与区域对比损失不属于当前公开代码范围。
 ## 工程实践
 
 | 项 | 建议 |
@@ -100,7 +124,7 @@ flowchart TB
 | 与 GenAug | 同为生成式语义增广；RoboAug 强调 **抠图质量 + 对比损失**，三因子平均成功率常高 **15–25 pt** 量级（Table II） |
 | 与 RoboEngine | 后者依赖专用分割/背景管线；RoboAug 用 **one-shot 匹配** 降低检测失败导致的「空抓」增广 |
 | 与大规模预训练 VLA | 框架 **架构无关**；论文讨论可接 diverse policy，但实验以 **单任务 ACT + 真机** 为主 |
-| 复现等待 | 跟踪 [项目页](https://x-roboaug.github.io/) 代码与 **RoboAug-D** 发布后再做检测与增广 ablation |
+| 复现路径 | 按 [官方仓库](https://github.com/Open-X-Humanoid/RoboAug) 安装依赖与权重，运行 `scripts/demo.sh`；另有批处理脚本。区域对比策略训练仍需自行实现 |
 
 ## 实验与评测
 
@@ -128,7 +152,7 @@ flowchart TB
 4. **检测不能盲信 VFM** — RoboAug-D 证明操纵视角下 GroundingDINO 等会失败；one-shot 匹配是管线前提。
 5. **真机数字可行动** — 三因子下相对无增广，成功率约 **5×（UR）**、**4×（AgileX）**、**3.5×（天工 2.0）** 量级。
 6. **GenAug 仍强但可被超越** — 同设置平均仍低 **16–25 pt**，说明区域质量与对比学习不是可有可无。
-7. **开源待定** — 复现依赖即将发布的代码与 RoboAug-D；入库日仅项目页与 PDF。
+7. **部分开源** — 数据集和数据增广 Stage 1–2 已发布；策略区域对比训练 Stage 3 尚待开源。
 
 ## 与其他工作对比
 
@@ -146,7 +170,7 @@ flowchart TB
 - **单参考帧：** 首帧严重遮挡时 one-shot 匹配可能失败；论文依赖选清晰首帧实践。
 - **ACT 为主：** 未在 VLA 类策略上给出同等规模 ablation，迁移到 chunking/VLA 需自行验证 \(\mathcal{L}_{\text{RC}}\) 与增广 batch 设计。
 - **计算：** 离线 SD 背景生成 + SAM2 全库传播有 GPU 与存储成本。
-- **开源空窗：** Coming Soon 期间无法复现 RoboAug-D 检测数字与增广 magnitude scaling law（§IV-F）。
+- **开源边界：** 已公开数据集和 Stage 1–2 增广代码；Stage 3 区域对比策略学习仍未开源，论文完整训练结果暂不能由该仓库端到端复现。
 
 ## 关联页面
 
@@ -159,8 +183,11 @@ flowchart TB
 
 - [RoboAug 论文归档](../../sources/papers/roboaug_arxiv_2602_14032.md)
 - [RoboAug 项目页归档](../../sources/sites/x-roboaug-project.md)
+- [RoboAug 官方代码归档](../../sources/repos/roboaug.md)
 
 ## 推荐继续阅读
 
 - [arXiv:2602.14032 PDF](https://arxiv.org/pdf/2602.14032) — 附录含实现细节与更多泛化因子实例化
-- [RoboAug 项目页](https://x-roboaug.github.io/) — 三因子/单因子 demo 与 RoboAug-D 可视化
+- [RoboAug 官方代码](https://github.com/Open-X-Humanoid/RoboAug) — 数据增广 Stage 1–2 与运行说明
+- [RoboAug 数据集](https://huggingface.co/datasets/X-Humanoid/RoboAug-Datasets) — RoboAug-D 标注集与机器人示教数据
+- [RoboAug 项目页](https://x-roboaug.github.io/) — 泛化 demo 与 RoboAug-D 可视化
