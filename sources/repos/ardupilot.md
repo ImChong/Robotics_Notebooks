@@ -1,13 +1,25 @@
+---
+type: source
+source_type: repo
+title: "ArduPilot"
+url: "https://github.com/ArduPilot/ardupilot"
+project_id: ardupilot
+project: "https://ardupilot.org/"
+code: "https://github.com/ArduPilot/ardupilot"
+license: GPL-3.0
+status: public
+updated: 2026-10-23
+summary: "开源自动驾驶仪软件栈，覆盖多旋翼、固定翼、地面与水下车辆，并提供仿真、地面站和伴机 API 生态。"
+---
+
 # ArduPilot
 
 > 来源归档
 
-- **标题：** ArduPilot
 - **类型：** repo
-- **链接：** https://github.com/ArduPilot/ardupilot
+- **代码仓库：** https://github.com/ArduPilot/ardupilot
 - **官方文档：** https://ardupilot.org/
 - **许可证：** GPL-3.0
-- **入库日期：** 2026-10-23
 - **一句话说明：** 开源自动驾驶仪软件栈，覆盖多旋翼与直升机（Copter）、固定翼（Plane）、地面车辆（Rover）、水下车辆（Sub）等，并提供仿真、地面站和伴机 API 生态。
 - **沉淀到 wiki：** [ardupilot](../../wiki/entities/ardupilot.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
