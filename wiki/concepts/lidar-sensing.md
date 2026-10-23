@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, lidar, sensing, perception, localization, mapping, quadruped, hardware]
 status: complete
-updated: 2026-08-04
+updated: 2026-10-23
 related:
   - ../methods/lidar-odometry-fusion.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -13,6 +13,7 @@ related:
   - ../entities/point-lio-unilidar.md
   - ../overview/quadruped-vln-embodied-workshop.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../entities/paper-nidar.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
   - ../../sources/repos/point_lio_unilidar.md
@@ -84,6 +85,7 @@ flowchart LR
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [状态估计](./state-estimation.md)
 - [Jetson Orin NX](../entities/jetson-orin-nx.md)
+- [NIDAR：用伪 NIR 与内禀分解合成 LiDAR 强度](../entities/paper-nidar.md) — 为仿真点云补充强度样观测的 RGB 引导方法。
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 
 ## 参考来源
