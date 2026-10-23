@@ -3,7 +3,7 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-10-11
+updated: 2026-10-23
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
@@ -17,6 +17,7 @@ related:
   - ./arxivisual.md
   - ./arxiv.md
   - ./math-to-manim.md
+  - ./huashu-art-motion.md
 sources:
   - ../../sources/sites/manim-community.md
   - ../../sources/repos/manim-community.md
@@ -47,7 +48,8 @@ summary: "Manim 是用 Python 程序化生成数学/技术讲解动画的开源�
 2. **与 3D 工具分工明确**：[Blender](./blender.md) 解决 **网格、骨骼、BVH、USD**；Manim 解决 **2D/轻 3D 数学示意**——讲解 [DeepMimic](../methods/deepmimic.md) 类方法时，常见「仿真短片（图形学）+ 公式推导片（Manim）」组合。
 3. **教学与演示跳板**：[BotLab / MotionCanvas](./botlab-motioncanvas.md) 提供 **在线调 obs/策略**；Manim 产出 **离线、可嵌入幻灯片的讲解片段**——二者都服务教育，但交互形态不同。
 4. **许可与分发友好**：MIT 许可；官方文档说明生成视频可自由分享。注意 **3Blue1Brown 的 Pi creature 等角色资产受版权保护**，机器人演示中应避免直接挪用。
-5. **自然语言生成讲解片**：[Math To Manim](./math-to-manim.md) 在 Manim 之上编排学习简报、数学检查、分镜、场景生成与渲染审阅；Manim 仍是底层动画引擎，视频也不等同于仿真验证。
+5. **多风格视频制作**：[huashu-art-motion](./huashu-art-motion.md) 提供面向编码代理的艺术场景、解说语法与成片检查流程；它侧重多风格视频制作，与 Manim 的数学对象时间线编排互补，生成画面仍不能替代仿真验证。
+6. **自然语言生成讲解片**：[Math To Manim](./math-to-manim.md) 在 Manim 之上编排学习简报、数学检查、分镜、场景生成与渲染审阅；Manim 仍是底层动画引擎，视频也不等同于仿真验证。
 
 ## 两版本选型（必读）
 
