@@ -233,6 +233,8 @@ op: ingest
 
 收录 huashu-art-motion 编码代理动画 Skill。核对公开仓库 README、SKILL 与许可说明；记录其面向技术解释和传播的用途，以及代码动画不能替代机器人仿真验证的边界。
 
+## [2026-10-23] lint | 全量 lint 清零 3 条信息型预警：SuperDyno 补 venue、From Hitter to Player 对比章节标题、GameHorizon 回链评测基准选型闭环
+
 ## [2026-10-23] ingest | CTP | 复核机构与代码开放状态
 
 - 复核官方仓库 README：确认其为论文官方实现，列出数据转换、两阶段训练与开环评测入口，并确认 README 中的五个机构。
