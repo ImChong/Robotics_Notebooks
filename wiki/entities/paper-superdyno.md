@@ -2,7 +2,7 @@
 type: entity
 project_id: superdyno-humanoid-control
 project: https://dynamics-humanoid.github.io/dynamics-humanoid/
-paper: https://openreview.net/forum?id=FPgKt7bA8w
+openreview: https://openreview.net/forum?id=FPgKt7bA8w
 tags: [paper, humanoid, whole-body-control, differentiable-simulation, learned-dynamics, reinforcement-learning, cmu]
 status: complete
 updated: 2026-10-23
