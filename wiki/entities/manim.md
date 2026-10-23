@@ -3,7 +3,7 @@
 type: entity
 tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
-updated: 2026-10-11
+updated: 2026-10-23
 related:
   - ./blender.md
   - ./botlab-motioncanvas.md
@@ -17,6 +17,7 @@ related:
   - ./arxivisual.md
   - ./arxiv.md
   - ./math-to-manim.md
+  - ./huashu-art-motion.md
 sources:
   - ../../sources/sites/manim-community.md
   - ../../sources/repos/manim-community.md
