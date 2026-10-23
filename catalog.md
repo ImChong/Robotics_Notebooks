@@ -2596,6 +2596,7 @@
 - [NeuroGPR：脑启发多模态混合神经网络机器人场所识别](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md) — Brain-inspired multimodal hybrid neural network for robot place recognition**（Shi Luping（施路平）等，清华大 `📅unknown` `[entity_page]`
 - [NeuroVLA：脑启发流体反射具身控制](wiki/entities/paper-neurovla.md) — NeuroVLA**（*A Brain-inspired Embodied Intelligence for Fluid and Fast Reflexive Robotics Control*， `📅unknown` `[entity_page]`
 - [NEXUS：面向地形适配遥操作的感知式全身控制](wiki/entities/paper-nexus-terrain-adaptive-teleoperation.md) — NEXUS**（*Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation*，[arXiv:2609.39000](http `📅unknown` `[entity_page]`
+- [NIDAR：用伪 NIR 与内禀分解合成 LiDAR 强度](wiki/entities/paper-nidar.md) — NIDAR**（*NIR-Guided Intrinsic Decomposition for Scalable Scene-Agnostic LiDAR Intensity Reconstruc `📅unknown` `[entity_page]`
 - [No Free Checker（arXiv:2609.09250）](wiki/entities/paper-no-free-checker.md) — No Free Checker**（[No Free Checker: A Survey of Verifiers for Robot Policies](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [Norm2Tex（arXiv:2609.25398）](wiki/entities/paper-norm2tex.md) — Norm2Tex**（*Norm2Tex: Augmenting Visuo-Tactile Simulations with Texture*，[arXiv:2609.25398](https: `📅unknown` `[entity_page]`
 - [A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation](wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md) — A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation: CYJ Hand-0** 已列入 [Robot Learning `📅unknown` `[entity_page]`
