@@ -60,7 +60,7 @@ MoT 包含三个专家：代码专家生成参数化技能程序与控制逻辑�
 |------|----------|--------------|----------|
 | AW-0 | 结构化代码和可复用技能 | 与代码、动作联合生成 | 动作 chunk；混合模式可调用技能程序 |
 | [World Action Models](../concepts/world-action-models.md) | 取决于具体 WAM | 观察条件的未来预测 | 机器人动作 |
-| [Code-as-Policies](../methods/generative-world-models.md) | 程序化技能与控制逻辑 | 通常由外部环境或仿真提供 | 执行程序 |
+| Code-as-Policies | 程序化技能与控制逻辑 | 通常由外部环境或仿真提供 | 执行程序 |
 
 ## 工程实践
 
