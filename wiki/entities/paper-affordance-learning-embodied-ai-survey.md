@@ -3,6 +3,8 @@ type: entity
 tags: [paper, survey, affordance-learning, embodied-ai, robot-learning, manipulation, perception, reasoning]
 status: complete
 updated: 2026-10-23
+project_id: affordance-learning-embodied-ai-survey
+project: "https://jingliangli.com/affordance-survey/"
 venue: "Preprints.org preprint, v1 (2026-10-07)"
 related:
   - ../tasks/manipulation.md
@@ -29,6 +31,18 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 | Affordance-guided action | 如何把 affordance 转成行为？ | 动作原语、规划、策略；显式条件、隐式表征或优化信号 |
 
 论文强调 affordance 并非物体固定属性：它取决于任务、场景、交互对象与 embodiment。识别杯子只是起点，还需判断在当前目标和末端执行器条件下从何处、以何种方式操作。
+
+## 方法
+
+本文按 affordance perception、affordance reasoning 与 affordance-guided action 三个角色组织方法：先接地可行动作及位置，再依据任务和本体筛选相关机会，最后把表征转为动作原语、规划或策略。
+
+## 评测
+
+综述整理代表性方法、数据集与评测协议，但未提出新的统一基准或控制实验。比较结果应结合任务、模态、监督信号和评测设置阅读。
+
+## 对比
+
+相较只覆盖视觉感知或机器人交互的局部综述，本文将 perception、reasoning、action 纳入同一条具身交互链；它提供分类与查阅框架，不构成跨论文性能排名。
 
 ## 领域演进
 
