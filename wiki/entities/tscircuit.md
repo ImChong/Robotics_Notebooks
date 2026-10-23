@@ -1,6 +1,7 @@
 ---
 type: entity
 project_id: tscircuit
+institutions: [tscircuit]
 project: https://tscircuit.com/
 code: https://github.com/tscircuit/tscircuit
 tags: [software, electronics, eda, pcb, hardware, open-source, typescript]
