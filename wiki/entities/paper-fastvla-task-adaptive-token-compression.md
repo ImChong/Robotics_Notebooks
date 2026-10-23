@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, token-compression, inference-efficiency, training-free, libero, openvla-oft]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-22
 project_id: fastvla
 arxiv: "2610.22146"
 code: https://github.com/jiuyixu25/FastVLA
@@ -72,6 +72,29 @@ sequenceDiagram
 
 复现路径：先用 `--fastvla_enable False` 跑未压缩基线，再对比成功率、动作预测延迟与保留 token 比例（README 说明结果写入 `experiments/logs/`）。
 
+## 评测与结果
+
+据 arXiv 摘要（2026-10-22 核对）：
+
+| 设置 | 结果 |
+|------|------|
+| 底座模型 | [OpenVLA](./paper-openvla.md)、OpenVLA-OFT、[CogACT](./paper-cogact.md) |
+| 仿真基准 | [LIBERO](./libero-benchmark.md)、[SIMPLER](./paper-simplerenv-real2sim-eval.md) |
+| 仿真效率 | LLM 主干 FLOPs 降低 35–59%，动作延迟降低 9–32%（1.09×–1.46× 加速），任务成功率保持 |
+| 真机（[Franka Research 3](./franka-research-3.md)） | 动作预测延迟降低 20%（1.25× 加速），成功率相当 |
+
+摘要称其效率–性能权衡与现有即插即用的 token 压缩 / 剪枝 / 复用基线相当或更好；具体基线名与分套件成功率需看原文表格。
+
+## 与其他工作对比
+
+| 路线 | 压缩依据 | 与 FastVLA 的差异 |
+|------|----------|-------------------|
+| 通用显著性 / 固定预算的 token 剪枝（论文对照基线类） | 与任务无关的视觉显著性，静态保留比例 | FastVLA 用任务到视觉注意力打分，并按重要性分布均匀度（inverse-Simpson + 滑窗校准）逐步设定压缩率 |
+| 跨步 token 复用 / 缓存类加速 | 复用前几步的视觉计算 | FastVLA 不做步间缓存，只保留滑窗统计量，避免复用过期视觉信息 |
+| [World Tokens](./paper-world-tokens-inference-trimmed-wam.md) 等推理期裁剪 WAM 分支 | 训练期保留世界监督，推理期删掉生成分支 | 裁剪对象是模型分支而非视觉 token，且需在训练期设计；FastVLA 免训练、直接外挂 |
+
+第一、二行对应摘要所说的同协议 plug-and-play 基线类别；第三行为路线层面的定性区分。
+
 ## 结论
 
 **一句话总判：FastVLA 提供了一个可直接替换的免训练推理加速方案，但效果需要在目标任务与基线上按成功率和延迟一起核对。**
@@ -83,7 +106,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- 论文摘要与公众号未给出具体加速倍数与成功率，本页不引用未核验的数字。
+- 加速与延迟数字取自 arXiv 摘要；摘要只称成功率"保持 / 相当"，分基准成功率需回原文表格核对。
 - 结果覆盖 OpenVLA-OFT、CogACT 等已有 VLA，对其他架构的适用性未知。
 - 免训练方法的上限受原模型能力限制（推测）。
 

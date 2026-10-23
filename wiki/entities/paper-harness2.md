@@ -10,6 +10,7 @@ code: https://github.com/google-research/harness2
 related:
   - ../concepts/recursive-self-improvement.md
   - ../entities/paper-metarsi-v1.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/harness2_arxiv_2610_14224.md
   - ../../sources/sites/harness2.md
@@ -130,6 +131,28 @@ sequenceDiagram
 
 GLM-5 + Harness² 的 75.7 高于 Gemini 3.5 Flash + base harness 的 72.4。该比较跨模型与 harness 配置，只能说明某个较弱模型在该基准上的新配置超过另一较强模型的旧配置，不能归因于单独的 harness 因果效应。
 
+## 与其他工作对比
+
+论文 Table 1 在 WorkBuddy-Bench 上与三类 harness 改进基线同表比较（三域宏平均，三次运行均值）：
+
+| 方法 | 做法 | Gemini 3.5 Flash + OpenCode | Gemini 3.5 Flash + Codex |
+|------|----------|-----------------------------|--------------------------|
+| Base harness | — | 72.4 | 74.5 |
+| ReasoningBank | harness 固定，从过往轨迹提炼策略并检索回上下文 | 73.4 | 72.5 |
+| Meta-Harness † | 在训练划分上离线搜索 harness 代码，部署最优者 | 76.4 | 73.3 |
+| Harness Scaling | 每个实例用额外推理预算改写 harness，不跨实例保留状态 | 75.3 | 73.8 |
+| **Harness²（k=1）** | 同任务行为对照 + 跨任务改进库 | **77.5** | **77.5** |
+
+† 论文标注 Meta-Harness 为离线方法，在单独训练任务上优化，与 Harness² 的在线、无标准答案设置不同。论文称 Harness² 在四种配置下的 WorkBuddy-Bench Avg. 与 JobBench Score 均超过上述基线；LAB Partial 上 Gemini 3.5 Flash + Codex 配置由 Meta-Harness 领先。
+
+| 相关路线 | 与 Harness² 的差异 |
+|----------|--------------------|
+| STOP、Darwin Gödel Machine、Hyperagents 等 RSI 系统 | 论文归纳为依赖效用、benchmark 或验证信号指导改进；Harness² 不依赖 ground truth，也不回访已完成任务 |
+| [MetaRSI-v1](./paper-metarsi-v1.md) | 从多种 RSI 算子角度讨论 Harness-RSI；Harness² 是其中 harness 层的一个具体实现与评测 |
+| [HexaShell](./paper-hexashell.md) | 同属轻量 agent harness 研究，但面向机器人操控接口；两者评测任务与指标不同，不可直接比较 |
+
+作为 agent 评测样本，其结果属于办公 / 职业 / 法律任务，在[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)中不能替代 ③ 策略任务成功率层的机器人评测。
+
 ## 结论
 
 **Harness² 展示了不改底座模型权重、而通过执行证据递归改进 agent harness 的可行路径。**
@@ -159,6 +182,7 @@ GLM-5 + Harness² 的 75.7 高于 Gemini 3.5 Flash + base harness 的 72.4。该
 
 - [递归自改进](../concepts/recursive-self-improvement.md) — RSI 范围、层级与证据边界
 - [MetaRSI-v1](./paper-metarsi-v1.md) — 从多个 RSI 算子角度讨论 Harness-RSI
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测层级与指标取舍枢纽
 
 ## 参考来源
 
