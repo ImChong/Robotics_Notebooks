@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-23
 related:
   - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -25,6 +25,7 @@ related:
   - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/eflesh.md
+  - ../entities/opentac.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -79,6 +80,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。
 - **优点**：易于做成柔性贴片包裹在机械手上，成本较低。
 - **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。
+
+- **可定制 3D 触觉皮肤实例：** [OpenTac](../entities/opentac.md) 使用柔性压阻阵列与每四个 taxel 对齐的软凸点，通过四路共模/差分响应分别估计法向力与剪切力；CAD、仿真、跨皮肤数据迁移和自适应读取工具均开放。
 
 ### 3. 多轴力矩传感器 (Multi-axis Force/Torque Sensors, F/T)
 - **原理**：通常安装在机械臂的手腕处（Wrist F/T）或指尖内部（如应变片构成的六维力传感器）。
@@ -138,6 +141,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准
 - [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌压阻触觉采集系统
 - [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
+- [OpenTac 官方项目页与代码](../../sources/sites/opentac-project.md) — 可定制压阻触觉皮肤、剪切凸点与自适应采样生态
 - [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
 - [UVTA（arXiv:2609.34182）](../../sources/papers/uvta_arxiv_2609_34182.md) — 跨本体人类触觉示范与机器人灵巧操作联合学习
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-23
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
@@ -92,7 +92,7 @@ flowchart TB
 
 ### NeRF 与 3DGS：外观场景重建的两种表示
 
-[NeRF](../../sources/papers/nerf_arxiv_2003_08934.md) 用 MLP 表示连续辐射场，沿射线采样并做体渲染；[3D Gaussian Splatting](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md) 用显式各向异性高斯，经过密度控制并以 splatting 渲染。二者主要解决从已知/校准多视图图像重建并合成新视角的问题。机器人项目 [GS-Playground](../entities/gs-playground.md) 展示了 3DGS 与物理仿真耦合的用法。选择这类表示时需另外检查几何尺度、动态更新、碰撞查询和物理一致性；画面逼真本身不等于机器人可用的导航地图。
+[NeRF](../../sources/papers/nerf_arxiv_2003_08934.md) 用 MLP 表示连续辐射场，沿射线采样并做体渲染；[3D Gaussian Splatting](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md) 用显式各向异性高斯，经过密度控制并以 splatting 渲染。二者主要解决从已知/校准多视图图像重建并合成新视角的问题。前馈路线的 [CompactSplat](../entities/paper-compactsplat.md) 按纹理复杂度分配高斯，减少平坦区域的原语冗余，并允许推理时调节稀疏度；它仍以外观和新视角渲染为目标。机器人项目 [GS-Playground](../entities/gs-playground.md) 展示了 3DGS 与物理仿真耦合的用法。选择这类表示时需另外检查几何尺度、动态更新、碰撞查询和物理一致性；画面逼真本身不等于机器人可用的导航地图。
 
 ### 两个正交轴（最易误解）
 
