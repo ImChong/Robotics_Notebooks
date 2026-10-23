@@ -121,9 +121,10 @@ def test_info_only_keys_do_not_count_toward_failing_total() -> None:
     results["paper_missing_conclusions"].extend(
         ["wiki/entities/paper-y.md", "wiki/entities/paper-z.md"]
     )
+    results["outdated_pages"].append("wiki/entities/paper-old.md（updated: 2026-04-25）")
     assert lw._failing_total(results) == 0
     # conclusions backlog counts as one bucket
-    assert lw._info_total(results) == 3
+    assert lw._info_total(results) == 4
 
 
 def test_conclusions_report_is_truncated_when_many() -> None:
