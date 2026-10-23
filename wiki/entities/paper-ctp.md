@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, contact-rich, in-context-learning, one-shot, tactile, force-torque, flow-matching, xarm7]
+tags: [paper, contact-rich, in-context-learning, one-shot, tactile, force-torque, flow-matching, xarm7, sjtu, tars-robotics, nus, casia, fudan]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-23
 project_id: ctp
 arxiv: "2610.18848"
 code: https://github.com/ctp-robotics/CTP
@@ -45,10 +45,10 @@ summary: "CTP（arXiv:2610.18848）：把单条示范的运动与接触（指尖
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 论文页与 HTML 版均未列单位，**未核实** |
+| **机构** | 官方代码仓库 README 列出上海交通大学、它石智航、新加坡国立大学、中国科学院自动化研究所、复旦大学；未标注作者与机构的逐一对应关系 |
 | **平台** | 7 自由度 xArm7，每个指尖带触觉与六轴 F/T 传感器 |
 | **任务** | 擦拭、拧瓶盖（旋转）、插入；每族 3 个未见实例，每实例 12 次 |
-| **开源** | **已开源（训练代码）**，2026-10-17 核查：[ctp-robotics/CTP](https://github.com/ctp-robotics/CTP)；许可证、权重、真机数据未显示；项目页文本未列代码链接 |
+| **开源** | **已开源（训练与开环评测代码）**，2026-10-23 复核：[ctp-robotics/CTP](https://github.com/ctp-robotics/CTP)；仓库 README 将其称为官方实现并链接论文；许可证、权重、真机数据未核实；项目页归档文本未列代码链接 |
 
 ## 核心原理
 
@@ -146,7 +146,7 @@ sequenceDiagram
 - **插入表现不稳：** 实例 C 仅 33.3%。
 - **样本规模：** 每实例 12 次。
 - **作者展望：** 论文未设专门局限节，结论称未来将扩展到更多任务、更丰富的时序交互与其他平台。
-- **开源边界：** 仓库有训练与开环评测；权重、许可证、真机脚本未核实（2026-10-17）。
+- **开源边界：** 官方仓库有数据转换、训练与开环评测入口；许可证、权重、真机运行脚本未核实（2026-10-23）。
 
 ## 关联页面
 
