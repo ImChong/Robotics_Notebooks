@@ -3,6 +3,7 @@ type: entity
 project_id: superdyno-humanoid-control
 project: https://dynamics-humanoid.github.io/dynamics-humanoid/
 openreview: https://openreview.net/forum?id=FPgKt7bA8w
+venue: "ICLR 2025 Workshop on World Models"
 tags: [paper, humanoid, whole-body-control, differentiable-simulation, learned-dynamics, reinforcement-learning, cmu]
 status: complete
 updated: 2026-10-23
