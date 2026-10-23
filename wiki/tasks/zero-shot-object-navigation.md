@@ -2,7 +2,7 @@
 type: task
 tags: [task, objectnav, zero-shot, navigation, embodied-ai, open-vocabulary, habitat, vln]
 status: complete
-updated: 2026-10-13
+updated: 2026-10-23
 related:
   - ./vision-language-navigation.md
   - ../entities/paper-travexplorer.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-blip2.md
   - ../entities/paper-rpv-semnav.md
   - ../entities/paper-wildos-open-vocabulary-object-search.md
+  - ../entities/paper-mocap-mobile-code-as-policies.md
   - ../entities/habitat-sim.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/zonda_arxiv_2607_21025.md
   - ../../sources/papers/rpv_semnav_arxiv_2607_25448.md
   - ../../sources/papers/graph_mambanav_arxiv_2608_13723.md
+  - ../../sources/papers/mocap_arxiv_2610_20998.md
 summary: "零样本目标导航（ZSON / ObjectNav）：在未见环境中按开放词汇物体目标探索并到达，无需该目标类别的导航微调；常见 Habitat 评测与四足/轮腿真机部署。"
 ---
 
@@ -88,6 +90,7 @@ flowchart TB
 | 仿真 | [Habitat](../entities/habitat-sim.md) HM3D/MP3D |
 | 训练-free 语义 frontier | [RPV-SemNav](../entities/paper-rpv-semnav.md)（room-mediated RPV + geodesic value map） |
 | 户外长程搜索 | [WildOS](../entities/paper-wildos-open-vocabulary-object-search.md)：用视觉 frontier / 可通行性评分稀疏几何图，并融合多视角线索定位远处目标 |
+| 面向操作的末段站位 | [MoCaP](../entities/paper-mocap-mobile-code-as-policies.md)：用人类视频的空间记忆找物，以接近方向先验引导底盘位姿搜索，再检查机器人自身的可达性与碰撞约束 |
 | 真机 | 四足 Go2、轮腿双足等 + MPPI/局部规划 |
 
 - **图关系 + 长时序方法：** [Graph-MambaNav](../entities/paper-sa-2608-13723-graph-mambanav.md) 在 ObjectNav 对象图里用目标关系先验控制 Graph-Mamba 扫描顺序，并以逐物体 Mamba 记忆补长程上下文；AI2-THOR / RoboTHOR 有仿真评测，但真机证据目前是轮式底盘找书演示。
@@ -107,6 +110,14 @@ flowchart TB
 - **单楼层强、多楼层崩：** 缺楼梯/可通行 3D 表示。
 - **静态强、动态崩：** 缺行人预测与局部避障。
 
+### 从找到目标到可操作站位
+
+[MoCaP](../entities/paper-mocap-mobile-code-as-policies.md) 将目标搜索与后续移动操作连接起来：先从被动人类视频提取空间记忆和接近物体的方向，再结合当前观测搜索底盘位姿，通过抓取候选、逆运动学与全臂碰撞检查确认机械臂能否执行。人类站位只提供搜索先验，不能直接替代机器人自身的几何约束。
+
+- **分开报告导航与操作结果：** 论文在单个室内真机设置中报告，视频空间记忆使目标搜索成功率从 7/10 提升至 10/10；两类移动操作任务的成功率分别为 16/20 和 8/10。两组指标回答不同问题，不能把导航成功率当作抓取成功率。
+- **保留实验边界：** 来源记录的接近方向实验汇总为 38/45 对照 18/45，但作者指出该汇总差异在当前样本规模下不显著；不可据此推断在任意场景都能稳定找到可抓取站位。
+- **明确任务边界：** MoCaP 是移动操作框架，可作为 ObjectNav 之后的操作衔接案例；其结果不能直接与 Habitat HM3D/MP3D 上的 SR、SPL 排名横向比较。
+
 ## 局限与风险
 
 - **开放词汇 ≠ 开放世界鲁棒：** 稀有物体、重度遮挡仍难。
@@ -120,6 +131,7 @@ flowchart TB
 - [ZONDA](../entities/paper-zonda.md)
 - [Uni-LaViRA](../entities/paper-uni-lavira.md)
 - [WildOS：户外开放词汇目标搜索](../entities/paper-wildos-open-vocabulary-object-search.md)
+- [MoCaP：从人类视频学习找物与可操作站位](../entities/paper-mocap-mobile-code-as-policies.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 
 ## 参考来源
@@ -127,6 +139,7 @@ flowchart TB
 - [四足×VLN 实战营课程大纲](../../sources/courses/quadruped_vln_embodied_workshop_2day.md)
 - [TravExplorer 论文摘录](../../sources/papers/travexplorer_arxiv_2605_19958.md)
 - [ZONDA 论文摘录](../../sources/papers/zonda_arxiv_2607_21025.md)
+- [MoCaP 论文摘录](../../sources/papers/mocap_arxiv_2610_20998.md)
 
 ## 推荐继续阅读
 
