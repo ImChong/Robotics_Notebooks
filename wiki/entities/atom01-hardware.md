@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, cad, pcb, bom, roboparty]
 status: complete
-updated: 2026-04-25
+updated: 2026-10-23
 related:
   - ./roboto-origin.md
   - ./open-source-humanoid-hardware.md
@@ -14,6 +14,8 @@ summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，
 ---
 
 # Atom01 Hardware
+> **范围说明（复核于2026-10-23）**：本页是基于 2026-04-25 归档快照整理的职责概述；上游仓库和接口可能变化，具体依赖、支持硬件与构建步骤请以各仓库当前 README、release 和代码为准。
+
 
 **Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。
 

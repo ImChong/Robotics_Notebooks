@@ -3,7 +3,7 @@ type: query
 tags: [wbc, rl, mpc, locomotion, humanoid, control]
 status: complete
 summary: "> **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」"
-updated: 2026-04-25
+updated: 2026-10-23
 sources:
   - ../../sources/papers/whole_body_control.md
 ---
@@ -12,6 +12,8 @@ sources:
 > 综合来源：[WBC vs RL](../comparisons/wbc-vs-rl.md)、[MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)、[Reinforcement Learning](../methods/reinforcement-learning.md)、[Imitation Learning](../methods/imitation-learning.md)、[TSID](../concepts/tsid.md)
 
 # 人形机器人控制架构综合对比
+
+> **范围说明（复核于2026-10-23）**：本页按控制结构分类，不代表市场份额或行业排名。具体产品的控制器通常不会完整公开，示例不应视为厂商实现细节。
 
 ## 英文缩写速查
 
@@ -45,7 +47,7 @@ sources:
 人形机器人控制架构
 ├── A. 经典控制路线
 │   ├── A1. ZMP/LIPM + WBC（经典人形）
-│   └── A2. MPC + WBC（当前工业主流）
+│   └── A2. MPC + WBC（模型驱动分层路线）
 ├── B. 端到端 RL 路线
 │   ├── B1. 纯 RL 端到端（输出关节位置）
 │   └── B2. RL + 域随机化 + Sim2Real
@@ -53,7 +55,7 @@ sources:
 │   ├── C1. RL HLC + WBC LLC
 │   ├── C2. AMP/ASE：RL + 运动风格学习
 │   └── C3. 层次 IL：模仿学习分层
-└── D. 统一架构（新兴）
+└── D. 统一架构（研究与工程快速演进）
     └── D1. 视觉-语言-动作（VLA）端到端
 ```
 
@@ -84,9 +86,9 @@ sources:
 
 ---
 
-## A2. MPC（Centroidal） + WBC（当前工业主流）
+## A2. MPC（Centroidal） + WBC（模型驱动分层路线）
 
-**代表**：ETH ANYmal（WBC 版）、MIT Cheetah 3、Boston Dynamics Atlas
+**示例**：ETH ANYmal 研究、MIT Cheetah 3 等公开研究案例。产品控制栈的具体实现应以厂商公开资料为准。
 
 ### 工作流程
 ```
@@ -141,7 +143,7 @@ PPO/SAC 在仿真中大规模训练（域随机化）
 
 ## C1. RL HLC + WBC LLC（融合主流）
 
-**代表**：ETH ANYmal（RL 版）、Agility Cassie、多数 2022 年后顶会工作
+**示例**：ANYmal、Cassie 等平台上的研究工作；融合方式取决于任务和接口设计。
 
 ### 工作流程
 ```
@@ -231,7 +233,7 @@ MoCap 数据 → 训练判别器 D（区分真实/生成动作）
 | ✅ 多任务统一 | 一个模型处理所有任务 |
 | ❌ 计算开销极大 | 推理需要高端 GPU |
 | ❌ 控制频率低 | 大模型难以 >10Hz |
-| ❌ 成熟度低 | 仍是研究阶段 |
+| ❌ 系统要求高 | 感知、规划与低层控制需要协同验证 |
 
 **适用**：通用机器人、研究前沿、不需要高频精确控制。
 

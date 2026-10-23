@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/optimal_control_theory.md
 summary: "HJB 方程（Hamilton-Jacobi-Bellman）"
-updated: 2026-04-25
+updated: 2026-10-23
 ---
 
 # HJB 方程（Hamilton-Jacobi-Bellman）
@@ -30,7 +30,7 @@ updated: 2026-04-25
 | CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
 | LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| DP | Dynamic Programming | 动态规划；基于 Bellman 最优性原理分解多阶段决策问题 |
 | DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 | SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
@@ -39,7 +39,7 @@ updated: 2026-04-25
 
 ## 为什么重要
 
-- **轨迹优化的理论基础**：MPC、Crocoddyl 等工具求解的是 HJB 的离散近似
+- **与轨迹优化的关系**：MPC、Crocoddyl 等工具通常通过有限时域数值优化求解动力学约束下的控制问题；其理论与动态规划/HJB 有联系，但通常并不直接求解 HJB 偏微分方程。
 - **控制证书**：Lyapunov 稳定性分析和 Control Barrier Function（CBF）都与 HJB 密切相关
 - **LQR 是特例**：线性系统 + 二次代价下，HJB 方程有解析解，就是 LQR 的 Riccati 方程
 - **理解 RL vs OC**：HJB（连续时间）和 Bellman（离散时间）对应同一思想，建立了 RL 与最优控制的理论桥梁
@@ -113,9 +113,9 @@ Pontryagin 极大值原理（PMP）就是这个最小化条件的必要条件形
 | HJB | 连续时间 | PDE 求解（难！高维不可行） | 解析（LQR）、数值（SOS、GP） |
 | Bellman 最优 | 离散时间 | DP、值迭代 | 表格 RL、DQN |
 | Deep RL | 离散时间 | 函数近似 + 采样 | PPO、SAC |
-| MPC / DDP | 连续时间离散化 | 数值优化（SQP、iLQR） | Crocoddyl、acados |
+| MPC / DDP | 有限时域滚动优化 | 数值优化（SQP、iLQR） | Crocoddyl、acados |
 
-**关键洞察**：MPC 在每个控制周期里求解一个短时域的 HJB 近似问题（离散化 + 近似终端代价）。
+**关键洞察**：MPC 使用模型和有限时域代价滚动优化控制量。它与 HJB 同属动态规划与最优控制理论脉络，但常见 MPC 实现并不等于数值求解 HJB 方程。
 
 ## 在机器人控制中的意义
 
@@ -127,7 +127,7 @@ Pontryagin 极大值原理（PMP）就是这个最小化条件的必要条件形
 Deep RL (PPO/SAC)
 ```
 
-每一步都在用不同精度近似同一个 HJB 问题。理解 HJB 有助于：
+这些方法共享最优性原理或价值函数思想，但目标、表示和求解过程并不完全相同。理解 HJB 有助于：
 1. 判断 RL 的理论解（HJB 最优）vs 实际近似解的差距
 2. 设计终端代价函数（告诉 MPC "horizon 结束后还要花多少代价"）
 3. 理解为什么 CBF（控制障碍函数）能提供安全保证——CBF 是 HJB 的 barrier 形式
@@ -140,7 +140,7 @@ Deep RL (PPO/SAC)
 - **LQR**：线性系统解析解（小维度可用）
 - **iLQR / DDP**：局部二阶近似，沿轨迹求解（MPC 框架）
 - **MPC + 短时域**：只在短时域 $[t, t+T]$ 近似求解，用终端代价代替无限时域
-- **Deep RL**：用神经网络近似 $V^*$，避免显式求解 PDE
+- **Deep RL**：某些方法学习价值函数或策略近似；并非所有 RL 方法都显式近似 $V^*$
 
 ## 参考来源
 
