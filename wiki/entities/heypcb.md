@@ -1,6 +1,7 @@
 ---
 type: entity
 project_id: heypcb-ai-pcb-designer
+institutions: [heypcb]
 project: https://heypcb.ai/
 tags: [software, eda, pcb, generative-ai, hardware, robotics]
 status: complete
