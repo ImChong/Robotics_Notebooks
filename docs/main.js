@@ -1710,14 +1710,10 @@
       }
       var backTopBtn = ev.target.closest('button.updates-timeline-back-top');
       if (backTopBtn) {
-        var scrollTarget = document.getElementById('change-log-heading') ||
-          document.getElementById('change-log-section') ||
-          document.querySelector('.site-header');
-        if (scrollTarget && scrollTarget.scrollIntoView) {
-          scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        // 回到文档原点；标题锚点受 scroll-padding 影响，会留下非零滚动偏移。
+        var reduce = window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
         return;
       }
       var dayMoreStepBtn = ev.target.closest('button.updates-day-more-step');
