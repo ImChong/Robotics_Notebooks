@@ -113,6 +113,7 @@ flowchart TD
 - [Player-1：从合成经验中学习游戏控制](paper-player-1.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 离线 MCQ 轨近似①认知层评测，在线可验证子任务轨对应③任务成功率评测；游戏域结果不直接等价于机器人具身评测
 
 ## 参考来源
 
