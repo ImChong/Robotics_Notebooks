@@ -7,6 +7,7 @@ project_id: rise-humanoid-fall-recovery
 arxiv: "2610.30061"
 project: https://osheraz.github.io/RISE/
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-host-humanoid-standingup.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./unitree-g1.md
@@ -83,6 +84,8 @@ RISE 先从兼容动作片段构建可组合的恢复动作库，再训练动作
 - [HoST：跨多样姿态的人形起身控制](./paper-host-humanoid-standingup.md)
 - [SD-AMP：统一走跑起身](./paper-unified-walk-run-recovery-sdamp.md)
 - [Unitree G1](./unitree-g1.md)
+
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — RISE 使用视觉预测为起身动作提供引导。
 
 ## 参考来源
 

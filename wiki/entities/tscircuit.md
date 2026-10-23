@@ -8,6 +8,7 @@ tags: [software, electronics, eda, pcb, hardware, open-source, typescript]
 status: complete
 updated: 2026-10-23
 related:
+  - ../overview/hub-actuator-drive-chain.md
   - ./kicad.md
   - ./freecad.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -65,6 +66,8 @@ summary: "tscircuit 是 MIT 开源的 TypeScript/React 风格电子设计工具�
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md) — 机械结构设计与板卡外壳/安装件配合。
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — 机器人驱动、电源与计算电子系统背景。
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 驱动器 PCB 与固件/CAN 接口协同。
+
+- [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 代码化电路设计适用于驱动、电源和传感器板。
 
 ## 参考来源
 

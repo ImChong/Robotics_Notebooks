@@ -10,6 +10,7 @@ related:
   - ../concepts/can-bus-protocol.md
   - ./airsim.md
   - ./mavsdk.md
+  - ./ardupilot.md
   - ./ego-planner-swarm.md
   - ./xtdrone.md
   - ./crazyflie-firmware.md
@@ -82,3 +83,4 @@ summary: "PX4 是 Dronecode 生态的开源自动驾驶仪：多机型飞控固�
 
 - [PX4 User Guide — Flying](https://docs.px4.io/main/en/flying/)
 - [MAVSDK Offboard](https://mavsdk.mavlink.io/main/en/cpp/guide/offboard.html)
+- [ArduPilot](./ardupilot.md) — 独立飞控栈对照

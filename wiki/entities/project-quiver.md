@@ -6,6 +6,7 @@ updated: 2026-09-05
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
+  - ./ardupilot.md
   - ./mavsdk.md
   - ./crazyflie-firmware.md
   - ./betaflight.md
@@ -23,7 +24,7 @@ summary: "Project Quiver 是 Arrow Air 的开源 25 kg MTOW 模块化四旋翼�
 
 # Project Quiver
 
-**Project Quiver**（[Arrow-air/project-quiver](https://github.com/Arrow-air/project-quiver)）是 Arrow Air（箭头航空）发布的 **开源多用途四旋翼机架**：最大起飞重量 **25 kg**、载荷 **5–8 kg**，三路快拆附件口 + 分布式定制 PCB，飞控跑 **ArduPilot**（Pix32 V6），地面站用 QGroundControl / Mission Planner。它补的是本库多旋翼栈里长期空着的 **「ArduPilot 真机机架」** 层，而不是再做一个 [PX4](./px4-autopilot.md) 或 [Betaflight](./betaflight.md) 固件分叉。
+**Project Quiver**（[Arrow-air/project-quiver](https://github.com/Arrow-air/project-quiver)）是 Arrow Air（箭头航空）发布的 **开源多用途四旋翼机架**：最大起飞重量 **25 kg**、载荷 **5–8 kg**，三路快拆附件口 + 分布式定制 PCB，飞控跑 [**ArduPilot**](./ardupilot.md)（Pix32 V6），地面站用 QGroundControl / Mission Planner。它补的是本库多旋翼栈里长期空着的 **「ArduPilot 真机机架」** 层，而不是再做一个 [PX4](./px4-autopilot.md) 或 [Betaflight](./betaflight.md) 固件分叉。
 
 | 字段 | 内容 |
 |------|------|

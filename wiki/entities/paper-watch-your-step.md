@@ -9,6 +9,7 @@ project: https://leggedrobotics.github.io/watch-your-step/
 code: https://github.com/leggedrobotics/foothold-prediction-model
 institutions: [ethz]
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/ppo.md
@@ -124,6 +125,8 @@ sequenceDiagram
 - [台阶与障碍感知行走](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [PPO](../methods/ppo.md)
 - [Unitree G1](./unitree-g1.md)
+
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 足点预测用于筛选与当前步态相关的地形感知输入。
 
 ## 参考来源
 

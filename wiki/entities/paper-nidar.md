@@ -8,6 +8,7 @@ arxiv: "2609.36878"
 project: https://nidar-web.github.io/
 code: https://github.com/Zjj587/NIDAR
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/lidar-sensing.md
   - ../concepts/robot-simulation-three-layers.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -125,6 +126,8 @@ arXiv 摘要报告学习组件以 Waymo 数据离线训练，并固定权重与�
 - [LiDAR 传感](../concepts/lidar-sensing.md) — 点云、相机协同与传感边界。
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) — 仿真平台与任务/数据管线分工。
 - [导航·SLAM·自主栈总览](../overview/navigation-slam-autonomy-stack.md) — 下游定位建图流程。
+
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — LiDAR 强度重建补充感知输入。
 
 ## 参考来源
 

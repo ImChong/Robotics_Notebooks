@@ -7,6 +7,7 @@ project_id: affordance-learning-embodied-ai-survey
 project: "https://jingliangli.com/affordance-survey/"
 venue: "Preprints.org preprint, v1 (2026-10-07)"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/affordance-awesome-technology-map.md
@@ -27,9 +28,11 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| AI | Artificial Intelligence | 人工智能；本文讨论的具身智能方法所属领域 |
+| VLA | Vision-Language-Action | 视觉-语言-动作模型，作为 affordance 与动作策略的相关路线 |
+| 3D | Three-Dimensional | 三维空间表征；用于 affordance 的几何定位与接地 |
 | Affordance | Action possibility | 环境 / 物体对 agent 提供的可交互机会 |
 | VLM | Vision-Language Model | 视觉–语言模型，用于 affordance 推理 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | HOI | Human-Object Interaction | 人–物交互，常作监督来源 |
 
 ## 核心框架
@@ -80,9 +83,10 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — affordance 将感知输出连接到可执行交互。
 - [Awesome-Affordance-Learning 技术地图](../overview/affordance-awesome-technology-map.md)
-- [manipulation](../tasks/manipulation.md)
-- [vla](../methods/vla.md)
+- [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。
+- [VLA](../methods/vla.md)：affordance 可作为策略输入或中间动作表示。
 
 ## 参考来源
 
@@ -90,9 +94,3 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 - [项目主页](https://jingliangli.com/affordance-survey/)
 - [论文与数据集清单](https://github.com/hq-King/Awesome-Affordance-Learning)
 - [归档摘录](../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md)
-
-
-## 关联页面
-
-- [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。
-- [VLA](../methods/vla.md)：affordance 可作为策略输入或中间动作表示。

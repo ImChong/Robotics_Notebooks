@@ -8,6 +8,7 @@ status: complete
 date: 2026-10-23
 updated: 2026-10-23
 related:
+  - ../overview/hub-actuator-drive-chain.md
   - ./altium-designer.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ./cad-skills.md
@@ -63,6 +64,8 @@ Circuit World 是另一项相关能力：它将开放硬件板按所用器件、
 - [Altium Designer](./altium-designer.md) — 商业 EDA 工作流与制造交接参考
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — 机器人板级硬件所在的系统背景
 - [CAD Skills](./cad-skills.md) — AI 代理辅助机械 CAD 的工程校验方法
+
+- [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — EDA 工具也可用于电机驱动与接口板设计。
 
 ## 参考来源
 

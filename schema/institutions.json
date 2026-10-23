@@ -4375,6 +4375,13 @@
       "aliases": [
         "heypcb"
       ]
+    },
+    "ardupilot-foundation": {
+      "label": "开源自动驾驶仪基金会（ArduPilot Foundation）",
+      "aliases": [
+        "ardupilot-foundation",
+        "ardupilot foundation"
+      ]
     }
   }
 }

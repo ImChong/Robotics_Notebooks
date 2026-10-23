@@ -7,7 +7,7 @@ tags:
   - language-memory
   - flow-matching
 status: complete
-updated: 2026-10-22
+updated: 2026-10-23
 project_id: uniwalm
 arxiv: "2610.28626"
 related:
@@ -50,13 +50,13 @@ summary: "UniWALM（2026）：在同一 mixture-of-transformers 骨干中联合�
 
 - MolmoSpaces pick-and-place：优于同骨干基线（如 FastWAM）。
 - RMBench 记忆依赖子集：34.5%，高于 Mem-0 的 28.5%。
-- 真机 Find-the-Item：11.1% → 61.1%（加入文本记忆）；摘要称 SOTA VLA 最高 33.3%。
+- 真机 Find-the-Item：11.1% → 61.1%（加入文本记忆）；论文摘要报告一项对比 VLA 基线在 Find-the-Item 上为 33.3%。
 
 ## 与其他工作对比
 
 - 与同骨干基线 FastWAM：摘要称 UniWALM 在 MolmoSpaces 上更优。
 - 与 Mem-0：RMBench 记忆子集上摘要给出 34.5% 对 28.5%。
-- 与 SOTA VLA：真机 Find-the-Item 摘要称其最高 33.3%，本文为 61.1%。
+- 与对比 VLA 基线：摘要给出的真机 Find-the-Item 结果为 33.3%；本文加入文本记忆后为 61.1%。
 
 ## 结论
 
@@ -75,7 +75,7 @@ summary: "UniWALM（2026）：在同一 mixture-of-transformers 骨干中联合�
 
 - 代码与数据公开状态未核实。
 - 推测：模型自生成的语言记忆若出现错误，会沿时序传播，需要检验记忆的可靠性。
-- 摘要中的 SOTA 对比基线版本与设置未展开，需读全文核对。
+- 摘要未展开对比基线的版本与评测设置，需读全文核对。
 
 ## 关联页面
 
