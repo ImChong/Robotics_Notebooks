@@ -1689,6 +1689,7 @@
 - [Autonomous Spot（NeBula 长程探索）](wiki/entities/paper-autonomous-spot-nebula-exploration.md) — Autonomous Spot**（arXiv:2010.09259）系统论文描述如何将 **NeBula（Networked Belief-aware Perceptual Autonomy） `📅unknown` `[entity_page]`
 - [AutoPSO：PSO 变体不要再手搓](wiki/entities/paper-autopso.md) — AutoPSO**（*A Metaframework for Automated Particle Swarm Optimization*；[arXiv:2608.07539](https://a `📅unknown` `[entity_page]`
 - [AutoTAMP](wiki/entities/paper-autotamp.md) — AutoTAMP**（arXiv:2306.06531）收录于 Lumina [Embodied-AI-Guide 微信专辑 `📅unknown` `[entity_page]`
+- [AW-0：Agentic World Action Models](wiki/entities/paper-aw-0-agentic-world-action-models.md) — 一句话定义：** AW-0 把程序化技能规划、未来视频预测和机器人动作生成放进一个联合生成的世界动作模型，让代码结构为预测与控制提供语义条件。 `📅unknown` `[entity_page]`
 - [AWARE：轮足高动态反射式避障](wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md) — AWARE**（*Adaptive Wheeled-Legged Avoidance and Reflexive Evasion*，[arXiv:2604.23761](https://arxiv `📅unknown` `[entity_page]`
 - [Awesome Humanoid Robot Learning](wiki/entities/paper-awesome-humanoid-robot-learning.md) — Awesome Humanoid Robot Learning**（GitHub 策展仓库）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sources/blo `📅unknown` `[entity_page]`
 - [AXIS-Bench：质量感知 VLA 预训练实证研究](wiki/entities/paper-axis-bench-quality-aware-vla-pretraining.md) — AXIS-Bench** 是一套研究 VLA 预训练中示范质量如何使用的基准与受控比较：它对齐数据量和训练预算，比较加权、过滤和条件化，并用可回放轨迹支持重新计算质量标签。 `📅unknown` `[entity_page]`
@@ -1974,6 +1975,7 @@
 - [DLSRL（arXiv:2609.11270）](wiki/entities/paper-dlsrl.md) — DLSRL**（[Beyond Noise Steering: Dual-Latent Space Reinforcement Learning for Generative Robot Poli `📅unknown` `[entity_page]`
 - [Do as I Do：从日常人类视频生成灵巧操作数据](wiki/entities/paper-do-as-i-do.md) — Do as I Do**（*Do as I Do: Dexterous Manipulation Data from Everyday Human Videos*，[arXiv:2606.1933 `📅unknown` `[entity_page]`
 - [DODGER：动态障碍中的安全引导导航](wiki/entities/paper-dodger-dynamic-obstacle-navigation.md) — DODGER**（*Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles*，[arXi `📅unknown` `[entity_page]`
+- [DONIC：通用灵巧双手跟踪控制](wiki/entities/paper-donic.md) — 一句话定义：** DONIC 用一套共享策略跟踪不同操作类别与人类动作来源的双手物体交互，并在未见轨迹和留出物体上测试零微调泛化。 `📅unknown` `[entity_page]`
 - [DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）](wiki/entities/paper-doorman-opening-sim2real-door.md) — DoorMan** 是 NVIDIA GEAR 等团队的人形 **视觉 loco-manipulation** 论文（arXiv:2512.01061，CVPR 2026）：策略 **完全在仿真中 `📅unknown` `[entity_page]`
 - [DPC：Direct Perception Control（直接感知控制）](wiki/entities/paper-dpc.md) — DPC**（*Direct Perception Control Model*，项目页，[规范 `📅unknown` `[entity_page]`
 - [DPT：Vision Transformers for Dense Prediction](wiki/entities/paper-dpt.md) — DPT**（*Vision Transformers for Dense Prediction*，[arXiv:2103.13413](https://arxiv.org/abs/2103.134 `📅unknown` `[entity_page]`
