@@ -28,7 +28,7 @@ summary: "COWBOY 用环境感知 WBC 负责无碰接近、局部 RL 专家负责
 
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| COWBOY | Contextual Whole-Body Manipulation framework | 论文提出的仿真到现实移动操作框架 |
+| COWBOY | Project name (no expansion stated) | 论文提出的仿真到现实移动操作框架 |
 | WBC | Whole-Body Controller | 协调底座、手臂与视线的环境感知控制器 |
 | RL | Reinforcement Learning | 用于学习物体接触与局部抓取专家 |
 | DOF | Degrees of Freedom | 项目页所述整机策略协调 32 个自由度 |
