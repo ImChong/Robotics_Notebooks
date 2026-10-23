@@ -701,6 +701,7 @@
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md) — Hermes Agent** 是 Nous Research 维护的开源自主代理栈（[NousResearch/hermes-agent `📅unknown` `[entity_page]`
 - [HeyPCB（AI PCB 设计）](wiki/entities/heypcb.md) — HeyPCB** 是一项 AI 辅助 EDA 服务：根据用户描述生成原理图、PCB 布局和制造文件，并交付可编辑的 KiCad 设计文件；它还提供开放硬件板目录 Circuit World。 `📅2026-10-23` `[entity_page]`
 - [HFHPE：全角度头部姿态估计](wiki/entities/hfhpe.md) — HFHPE（High-Angle Robust Fast Head Pose Estimation）** 是 PINTO0309 开源的头部姿态估计项目：检测器先定位整头 crop，轻量网络随后一 `📅unknown` `[entity_page]`
+- [Hi3D v1.0](wiki/entities/hi3d-v1-0.md) — Hi3D v1.0** 是基于 Sparc3D 架构的高分辨率 3D 几何细化模型：给定同一物体的参考图像和粗网格，模型逐级补充几何细节，输出更高分辨率的网格。核心仓库公开推理代码和权重；它不是单 `📅unknown` `[entity_page]`
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
 - [Hindsight](wiki/entities/hindsight.md) — Hindsight**（vectorize-io/hindsight，文档 [hindsight.vect `📅unknown` `[entity_page]`
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`
