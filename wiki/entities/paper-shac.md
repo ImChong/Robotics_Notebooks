@@ -4,7 +4,7 @@ project_id: shac-parallel-differentiable-simulation
 project: https://short-horizon-actor-critic.github.io/
 code: https://github.com/NVlabs/DiffRL
 arxiv: "2204.07137"
-tags: [paper, differentiable-simulation, reinforcement-learning, humanoid, policy-optimization, nvidia, mit]
+tags: [paper, differentiable-simulation, reinforcement-learning, humanoid, policy-optimization, nvidia, mit, usyd, utoronto]
 status: complete
 updated: 2026-10-23
 related:
