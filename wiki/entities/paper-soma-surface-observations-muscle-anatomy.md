@@ -1,8 +1,9 @@
 ---
 type: entity
+project_id: soma-muscle-anatomy
 tags: [paper, computer-vision, biomechanics, anatomy, soft-tissue, multi-view, motion-capture, blendshape, dataset, max-planck, eccv-2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-23
 arxiv: "2606.09246"
 venue: "ECCV 2026"
 project: https://vcai.mpi-inf.mpg.de/projects/SOMA/
@@ -58,10 +59,10 @@ summary: "SOMA（arXiv:2606.09246，ECCV 2026，MPI-INF）：从体表观测（m
 |----|------|
 | **机构** | 马克斯·普朗克信息学研究所（Max Planck Institute for Informatics）；多特蒙德工业大学（TU Dortmund University） |
 | **发表** | ECCV 2026 |
-| **输入（训练/推理）** | 骨骼姿态 + 规范空间 **marker 残余**（来自 SKIM 或 suit 跟踪管线） |
+| **输入（训练）** | SKIM 规范空间 **marker 残余**及姿态；**推理**以用户定义的骨架姿态驱动 |
 | **输出** | 皮肤层、聚合肌肉层、**单块肌肉 mesh** 的时空形变与热图可视化 |
 | **数据** | SKIM：5 被试，~45 min 多视角运动，多层解剖 GT + marker 轨迹 |
-| **开源（截至 2026-09-09）** | **已开源**：[GitHub](https://github.com/edualvarado/SOMA)（MIT）全阶段源码 + 训练/评测；[数据集](https://gvv-assets.mpi-inf.mpg.de/soma) 独立下载 |
+| **开源（核验于 2026-10-23）** | **部分开放**：[GitHub](https://github.com/edualvarado/SOMA)（MIT）代码公开；SKIM V2 与 RELEASE_V2 检查点单独分发，数据门户当前需注册/登录 |
 
 ## 核心原理
 
@@ -155,15 +156,16 @@ sequenceDiagram
 | **划分** | 90/10 train-val；首次运行生成 `S{N}_validation_filepaths.json` |
 | **可视化** | `Residuals-Python/` Viser viewer；`05-Training/C_animation_meshes.py` 等 |
 | **评测** | `hit_bio_evaluation.py`：肌肉–皮肤 intersection、体积 frame-to-frame 稳定性、`smpl_alignment.py` |
-| **开源边界** | 源码与数据 **已发布**；checkpoint **不入 git**，需本地训练 |
+| **开源边界** | MIT 源码公开；SKIM V2 与 RELEASE_V2 检查点另行下载，门户需注册/登录 |
 | **机器人下游** | 输出解剖 mesh 动画，非 SMPL 关节轨迹；若接人形栈需另建骨骼/表面桥接 |
 
 ## 实验与评测
 
-- **定性：** 项目页展示单姿态下皮肤 / 肌肉层 / 单块肌肉 / 形变热图时间同步；多层 stack 纹理与热图并排。
-- **定量（仓库）：** `03_evaluate_metrics.py` + `hit_bio_evaluation.py`（穿透比、体积 CV、SMPL 对齐）。
-- **held-out：** 三支运动序列上预测 vs GT 多层形变（项目页 Results）。
-- **局限：** 仅 **5 被试**；需定制 suit 与重型扫描/棚拍；当前公开训练以 **marker 残余** 为强监督，端到端 RGB 前馈若存在需对照 README 阶段边界。
+- **定性：** 项目页展示皮肤、肌肉层、单块肌肉与形变热图的同步结果。
+- **定量：** 在未见动作上比较全局跟踪、动态区域误差、层间相交和体积变化；仓库提供 `03_evaluate_metrics.py` 与生物力学评测脚本。
+- **关键数值（arXiv v2 表 2）：** SOMA 的 MPME 为 13.43 mm（LBS 13.11），MedPME 11.51 mm（LBS 15.64），P90 19.20 mm（LBS 26.03）；高动态区域 `τ > 25 mm` 的 DRE 为 64.52 mm（LBS 134.28，HIT 151.65）。SOMA 皮肤—肌肉与肌肉—骨骼体积变化分别为 1.37% 和 10.35%；HIT 的皮肤—肌肉相交率为 7.61%，SOMA 为 0.85%。
+- **指标解读：** SOMA 的全局 MPME 略高于 LBS，优势集中在中位/尾部与高动态软组织区域、以及相对 HIT 的层间相交控制。
+- **局限：** 仅 **5 被试**；需定制 suit 与重型扫描/棚拍；训练依赖 SKIM marker 残余监督。推理以用户定义骨架姿态驱动，不是端到端 RGB 前馈。
 
 ## 结论
 

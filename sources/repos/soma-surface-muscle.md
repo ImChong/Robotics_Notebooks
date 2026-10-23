@@ -9,6 +9,7 @@
 - **数据集**: [https://gvv-assets.mpi-inf.mpg.de/soma](https://gvv-assets.mpi-inf.mpg.de/soma)
 - **许可**: MIT
 - **入库日期**: 2026-09-09
+- **最近核验**: 2026-10-23
 - **摘要**: 官方仓托管 **SOMA 全管线源码**（Suit marker 处理 → 规范模型 → LBS 注册 → Blender 残余/拉普拉斯工具 → U-Net 训练与生物力学评测）及 **SKIM 数据集构建脚本**（`Residuals-Python/`）；被试数据与 checkpoint **独立下载**。
 
 > **命名消歧：** 非 NVIDIA [`soma_retargeter.md`](./soma_retargeter.md) / [`nvlabs-soma-x.md`](./nvlabs-soma-x.md) 生态。
@@ -22,8 +23,12 @@
 | **训练入口** | **有** — `05-Training/01_end_to_end_training.py`（`ARCH`: linear / mlp / unet） |
 | **评测** | **有** — `02_validate_training.py`、`03_evaluate_metrics.py`、`06-Evaluation/hit_bio_evaluation.py` |
 | **数据预处理复现** | **有** — `01`–`04` 阶段 + `Residuals-Python/`；Blender 脚本需本机 Blender API |
-| **Checkpoint** | **不入 git** — 训练产出本地 `runs/`；推理需自行训练或待官方权重链 |
-| **结论** | **已开源（可训练 / 可复现管线）**；数据与权重需外站下载 |
+| **Checkpoint** | **不入 git** — S1–S5 的 RELEASE_V2 预训练模型随 SKIM V2 数据包另行分发；训练产物写入本地 `runs/` |
+| **结论** | **部分开放**：MIT 源码公开；SKIM V2 与预训练模型在独立门户发布，当前需注册/登录，数据许可按门户条款确认 |
+
+## 最新发布核验（2026-10-23）
+
+仓库 README 公告 **2026-10-20 发布 SKIM V2** 和 S1–S5 的 `RELEASE_V2` 模型；V2 修正旧版 rigs、hands、poses 与 marker maps。数据门户 `gvv-assets.mpi-inf.mpg.de/soma` 当前要求注册/登录，因此不能按匿名直链下载来描述其访问状态。旧版 SKIM 用户应按 README 提示重新获取 V2。
 
 ## 目录要点
 
