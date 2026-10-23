@@ -3,10 +3,12 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-21
+updated: 2026-10-23
 sources:
   - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
   - ../../sources/sites/wholebodydex-project.md
+  - ../../sources/papers/cowboy_arxiv_2610_28948.md
+  - ../../sources/sites/cowboy-manip.md
   - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
   - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
   - ../../sources/papers/roboreact_arxiv_2608_03387.md
@@ -558,3 +560,8 @@ flowchart TD
 ## 四足长时程操作实例
 
 - [Rubik Skills](../entities/paper-rubik-skills.md) — ANYmal-D 将多视角魔方感知、技能规划与足端转层串成长时程自主操作。
+
+
+## 场景几何驱动的移动抓取
+
+- [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 将环境感知全身控制、局部接触 RL 与多教师蒸馏结合；项目页报告在 24 个真实场景、100 多种物体上达到 91% 抓取成功率。
