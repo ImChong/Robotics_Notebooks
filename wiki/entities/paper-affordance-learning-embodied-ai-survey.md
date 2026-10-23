@@ -7,6 +7,7 @@ project_id: affordance-learning-embodied-ai-survey
 project: "https://jingliangli.com/affordance-survey/"
 venue: "Preprints.org preprint, v1 (2026-10-07)"
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
 sources:
@@ -75,6 +76,8 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 ## 结论
 
 这篇综述的实用价值在于提供一条清晰的接口链：**看见可交互区域 → 判断它对任务和本体是否合适 → 将其转换为动作**。设计具身系统时，需验证 affordance 表征能否传到规划与控制，并以实际可行性和执行结果评估它。
+
+- [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — affordance 将感知输出连接到可执行交互。
 
 ## 参考来源
 
