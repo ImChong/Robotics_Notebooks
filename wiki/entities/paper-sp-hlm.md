@@ -9,7 +9,7 @@ project: https://sp-hlm.github.io/
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/vla.md
-  - ./paper-fiber.md
+  - ./paper-smpc2rl-loco-manipulation.md
 sources:
   - ../../sources/papers/sp_hlm_arxiv_2610_30044.md
   - ../../sources/sites/sp-hlm.md
@@ -52,7 +52,7 @@ summary: "SP-HLM combines five explicit task-critical body poses with a learned 
 | 接口 | 显式空间目标 | 全身协调表示 |
 |------|--------------|--------------|
 | SP-HLM | 骨盆、双腕、双踝五点姿态 | 学习到的 motion latent |
-| [FIBER](./paper-fiber.md) | 高层计划与动作基础模型接口 | 冻结行为基础模型生成交互动作 |
+| [FIBER](./paper-smpc2rl-loco-manipulation.md) | 高层计划与动作基础模型接口 | 冻结行为基础模型生成交互动作 |
 | 关节空间动作 | 完整关节目标 | 由高层直接承担动作协调 |
 
 ## 工程实践
@@ -80,7 +80,7 @@ summary: "SP-HLM combines five explicit task-critical body poses with a learned 
 
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md)
 - [VLA](../methods/vla.md)
-- [FIBER](./paper-fiber.md)
+- [FIBER](./paper-smpc2rl-loco-manipulation.md)
 
 ## 参考来源
 
