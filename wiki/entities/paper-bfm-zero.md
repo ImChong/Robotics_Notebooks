@@ -23,6 +23,7 @@ related:
   - ../entities/paper-i-bfm.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
   - ./paper-p-bfm.md
+  - ./paper-bejepa.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_19_bfm_zero_a_promptable_behavioral_foundation_mode.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -40,6 +41,8 @@ sources:
 **BFM-Zero**（*A Promptable Behavioral Foundation Model for Humanoid Control*，arXiv:2511.04131）训练可提示的行为基础模型，用 latent prompt 统一目标姿态、奖励优化、恢复与少样本适配。
 
 > **同主题深读：** [paper-behavior-foundation-model-humanoid](../entities/paper-behavior-foundation-model-humanoid.md) — 同题材（人形 BFM）的另一篇论文深读页，两者并非同一工作；本页保留本文的 survey 坐标与交叉引用。
+
+> **相关新工作：** [BeJEPA](./paper-bejepa.md) — 进一步把世界位置与朝向纳入人形目标条件行为模型，并用 Dynamic / Successor 双预测器拆分即时物理变化与长期行为。
 
 ## 一句话定义
 
