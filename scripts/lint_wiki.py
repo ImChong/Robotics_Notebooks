@@ -765,6 +765,8 @@ INFO_ONLY_KEYS: set[str] = {
     "paper_missing_three_sections",
     "paper_missing_conclusions",
     "dataset_missing_metadata",
+    # updated 日期超过 180 天只提示复核；历史 backlog 不应阻塞无关 PR。
+    "outdated_pages",
     "stale_claims",
     "physics_concept_crosslink",
     "contact_control_crosslink",

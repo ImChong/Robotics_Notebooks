@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-08-02
+updated: 2026-10-23
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -115,6 +115,8 @@ flowchart TB
 - **GitHub 镜像误用**：向 GitHub 镜像提 PR **不会被合并**；贡献须遵循 GitLab 流程。
 
 ## 关联页面
+
+- [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
 
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（开源 KiCad vs 商用 Altium、自研驱动板 vs 商用一体化关节）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)

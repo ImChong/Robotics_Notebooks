@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-19
+updated: 2026-10-23
 related:
   - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
@@ -93,6 +93,7 @@ related:
   - ../entities/paper-artis-gripper.md
   - ../entities/paper-gvla-gripper-aware-vla.md
   - ../entities/paper-blind-grasp-reflex.md
+  - ../entities/paper-mocap-mobile-code-as-policies.md
 sources:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
@@ -113,6 +114,7 @@ sources:
   - ../../sources/papers/embodiedskills_arxiv_2609_01281.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
+  - ../../sources/papers/mocap_arxiv_2610_20998.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -166,6 +168,10 @@ flowchart TD
 ```
 
 ## 子问题地图
+
+### 移动操作：从找到目标到抓取就绪
+
+到达物体附近不代表机械臂已处于可抓取姿态；底盘从哪一侧接近会改变工作空间和碰撞条件。[MoCaP](../entities/paper-mocap-mobile-code-as-policies.md) 从被动人类视频提取互动前站位方向作为搜索先验，再用机器人自身的抓取碰撞与 IK 约束筛选底盘位姿。
 
 空中抓取把轨迹初始化与真实任务成功对齐的案例见 [Prior Evolution and Task Alignment for Aerial Grasping](../entities/paper-prior-evolution-aerial-grasping.md)。
 
@@ -569,3 +575,4 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前模仿学习 SOTA 路线之一）
 - Unitree 开源操作项目：<https://github.com/unitreerobotics>
+

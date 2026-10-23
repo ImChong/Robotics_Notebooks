@@ -4362,6 +4362,13 @@
       "aliases": [
         "platformio"
       ]
+    },
+    "tscircuit": {
+      "label": "开源电路设计社区（tscircuit）",
+      "aliases": [
+        "tscircuit",
+        "tscircuit-org"
+      ]
     }
   }
 }

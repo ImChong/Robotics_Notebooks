@@ -46,6 +46,7 @@ related:
   - ../entities/paper-wm-loco.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../entities/paper-cap-perception-blind-humanoid.md
+  - ../entities/paper-watch-your-step.md
   - ../entities/paper-solo.md
   - ../entities/paper-cmoe.md
   - ../entities/smp-g1-mjlab.md
