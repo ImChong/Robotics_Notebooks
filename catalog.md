@@ -712,6 +712,7 @@
 - [ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）](wiki/entities/hongwenwang36-eng-ansys-workbench-mcp.md) — ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）是中文 Workbench 本地桥接项目：以 Workbench journal 和 `📅unknown` `[entity_page]`
 - [Vortex Funnel Generator（hooyao/vortex-funnel-gen）](wiki/entities/hooyao-vortex-funnel-gen.md) — Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印防咕咚涡流漏斗，贯通 CadQuery 参数建模、OpenFOAM int `📅unknown` `[entity_page]`
 - [HRDexDB（人–机器人配对灵巧抓取数据集）](wiki/entities/hrdexdb-dataset.md) — HRDexDB**（Lim et al., arXiv:2604.14944，2026；<https://snuvclab. `📅unknown` `[entity_page]`
+- [huashu-art-motion（编码代理艺术动画）](wiki/entities/huashu-art-motion.md) — huashu-art-motion** 将面向编码代理的制作说明、艺术场景代码、解说动画语法和视频验收脚本组合成一个可安装 Skill。它主要服务于**动画制作与技术解释**，可用于机器人算法讲解 `📅unknown` `[entity_page]`
 - [Human Atlas（3D 解剖探索器）](wiki/entities/human-atlas.md) — Human Atlas**（GitHub，[在线演示](https://human-atlas-seven.ve `📅unknown` `[entity_page]`
 - [Human Body And Accessories（人体部件与服饰分割数据集）](wiki/entities/human-body-and-accessories-dataset.md) — Human Body And Accessories** 是托管在 Ultralytics Platform 上的细粒度人体解析分割数据集：它将画面中的人体拆成脸、头发、衣物、肢体与配件等 19  `📅unknown` `[entity_page]`
 - [human-humanoid-tools（hhtools）](wiki/entities/human-humanoid-tools.md) — human-humanoid-tools**（简称 **hhtools**）是 Party OS 首批开源的 **Human-to-Humanoid 动作重定向与 `📅unknown` `[entity_page]`

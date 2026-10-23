@@ -226,6 +226,13 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+---
+date: 2026-10-23
+op: ingest
+---
+
+收录 huashu-art-motion 编码代理动画 Skill。核对公开仓库 README、SKILL 与许可说明；记录其面向技术解释和传播的用途，以及代码动画不能替代机器人仿真验证的边界。
+
 ## [2026-10-23] ingest | OpenCAL 计算轴向光刻打印机与配套资料
 
 - 收录 OpenCAL 文档、控制软件、CAL-hardware、Tomo、VAMToolbox 与两篇 CAL 论文的一手来源。
