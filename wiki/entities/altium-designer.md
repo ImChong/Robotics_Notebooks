@@ -3,7 +3,7 @@ type: entity
 tags: [software, eda, pcb, hardware, electronics, manufacturing, cad, altium]
 status: complete
 date: 2026-07-18
-updated: 2026-07-18
+updated: 2026-10-23
 related:
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ./simplefoc.md
@@ -83,6 +83,7 @@ flowchart LR
 - [CAD Skills](./cad-skills.md) — 机械 CAD / URDF 与板级 ECAD 的分工
 - [开源人形机器人硬件](./open-source-humanoid-hardware.md) — 整机驱动板开源范例
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Altium Designer 是①层商用 EDA 驱动板设计工具
+- [HeyPCB（AI PCB 设计）](./heypcb.md) — AI 辅助生成 PCB 工程的服务入口
 
 ## 推荐继续阅读
 

@@ -4369,6 +4369,12 @@
         "tscircuit",
         "tscircuit-org"
       ]
+    },
+    "heypcb": {
+      "label": "电路设计服务（HeyPCB）",
+      "aliases": [
+        "heypcb"
+      ]
     }
   }
 }
