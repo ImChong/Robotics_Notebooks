@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-23
 related:
   - ../entities/paper-dawn.md
   - ../entities/paper-cref.md
