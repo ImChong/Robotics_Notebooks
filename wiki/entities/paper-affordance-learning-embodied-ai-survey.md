@@ -10,6 +10,7 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/affordance-awesome-technology-map.md
 sources:
   - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 summary: "综述以 affordance 感知、任务相关推理、引导动作三段组织具身交互文献，解释 affordance 如何从被动视觉区域预测发展为接地的规划与策略接口。"
@@ -30,6 +31,9 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 | AI | Artificial Intelligence | 人工智能；本文讨论的具身智能方法所属领域 |
 | VLA | Vision-Language-Action | 视觉-语言-动作模型，作为 affordance 与动作策略的相关路线 |
 | 3D | Three-Dimensional | 三维空间表征；用于 affordance 的几何定位与接地 |
+| Affordance | Action possibility | 环境 / 物体对 agent 提供的可交互机会 |
+| VLM | Vision-Language Model | 视觉–语言模型，用于 affordance 推理 |
+| HOI | Human-Object Interaction | 人–物交互，常作监督来源 |
 
 ## 核心框架
 
@@ -70,14 +74,19 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 |------|------|
 | 论文类型 | 综述预印本；Preprints.org 标记为未同行评审 |
 | 项目主页 | [affordance-survey](https://jingliangli.com/affordance-survey/) |
-| 资源列表 | [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning) |
+| 资源列表 | [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning)；站内逐篇节点见 [技术地图](../overview/affordance-awesome-technology-map.md) |
 | 新算法 / 新实验 | 本文为综述，不提出新的控制策略或统一性能基准 |
 
 ## 结论
 
 这篇综述的实用价值在于提供一条清晰的接口链：**看见可交互区域 → 判断它对任务和本体是否合适 → 将其转换为动作**。设计具身系统时，需验证 affordance 表征能否传到规划与控制，并以实际可行性和执行结果评估它。
 
+## 关联页面
+
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — affordance 将感知输出连接到可执行交互。
+- [Awesome-Affordance-Learning 技术地图](../overview/affordance-awesome-technology-map.md)
+- [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。
+- [VLA](../methods/vla.md)：affordance 可作为策略输入或中间动作表示。
 
 ## 参考来源
 
@@ -85,9 +94,3 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 - [项目主页](https://jingliangli.com/affordance-survey/)
 - [论文与数据集清单](https://github.com/hq-King/Awesome-Affordance-Learning)
 - [归档摘录](../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md)
-
-
-## 关联页面
-
-- [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。
-- [VLA](../methods/vla.md)：affordance 可作为策略输入或中间动作表示。
