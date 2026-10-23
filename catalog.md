@@ -1010,6 +1010,7 @@
 - [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
 - [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
 - [OpenSML](wiki/entities/opensml.md) — 适配 CiA402 的轻量 SoftMotion 运动控制库，提供点位与插补。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：SoftMotion 轻量运动控制库） `📅unknown` `[entity_page]`
+- [OpenTac（可定制 3D 触觉皮肤生态）](wiki/entities/opentac.md) — OpenTac** 是面向机器人任意可覆盖表面的开放触觉感知工具链。它将皮肤设计、制造、传感器读取、仿真、跨传感器数据映射和自适应采样放在一个共享 manifest 驱动的生态中；项目提供 [在线 `📅unknown` `[entity_page]`
 - [OpenTorque Actuator（开源准直驱关节）](wiki/entities/opentorque-actuator.md) — OpenTorque Actuator**（[G-Levine/OpenTorque-Actuator](https://github.com/G-Levine/OpenTorque-Actuat `📅unknown` `[entity_page]`
 - [OpenViking 上下文数据库](wiki/entities/openviking-context-database.md) — OpenViking 是面向 AI Agent 的开源上下文数据库，将知识资源、用户记忆和技能统一组织为可浏览、可检索的 viking:// 虚拟文件系统。 `📅unknown` `[entity_page]`
 - [OpenVINO](wiki/entities/openvino.md) — OpenVINO**（Open Visual Inference and Neural network Optimization）是 **Intel** 开源的 **AI 推理优化与部署工具包 `📅2026-06-25` `[entity_page]`
