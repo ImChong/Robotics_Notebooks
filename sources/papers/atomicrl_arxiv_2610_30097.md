@@ -40,5 +40,5 @@
 
 ## 对 wiki 的映射
 
-- 计划沉淀实体页：`wiki/entities/paper-atomicrl.md`（待建）
+- 实体页：[paper-atomicrl.md](../../wiki/entities/paper-atomicrl.md)
 - 相关主题：VLA 强化学习后训练、长程操作、信用分配、层级任务探索
