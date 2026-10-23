@@ -1,15 +1,16 @@
 ---
 type: comparison
-title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete / HiPHI）
+title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / BONES-SEED 等）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 HiPHI 高精度 HOI、KungFuAthlete 高动态与 EgoHTR 人–场景扩展。"
-updated: 2026-10-02
+updated: 2026-10-23
 status: complete
 related:
   - ../concepts/motion-retargeting.md
   - ../entities/paper-hiphi.md
   - ../entities/amass.md
   - ../entities/lafan1-dataset.md
+  - ../entities/bones-seed.md
   - ../entities/omomo-dataset.md
   - ../entities/dataset-bfm-phuma.md
   - ../entities/humanoid-everyday-dataset.md
@@ -23,6 +24,8 @@ sources:
   - ../../sources/papers/hiphi_arxiv_2608_16222.md
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
+  - ../../sources/datasets/bones-seed.md
+  - ../../sources/sites/bones-studio-seed.md
   - ../../sources/repos/omomo_release.md
   - ../../sources/repos/phuma.md
   - ../../sources/sites/humanoideveryday.md
@@ -59,6 +62,7 @@ sources:
 | [OMOMO](../entities/omomo-dataset.md) | **人–物交互** MoCap；loco-manipulation 重定向源 |
 | [PHUMA](../entities/dataset-bfm-phuma.md) | **已 PhySINK 重定向到 G1/H1-2** 的 73 h locomotion；宇树友好 |
 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形操作** 多模态集；非 MoCap 参考库 |
+| [BONES-SEED](../entities/bones-seed.md) | **142,220 段 / 约 288 小时**多类 MoCap 动作；带语言标注，含 SOMA 与 G1 轨迹；访问受许可门控 |
 | [KungFuAthlete](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) | **武术高动态** 视频→GVHMR→GMR；Jump 子集动力学上界；Ground ready |
 | [EgoHTR](../entities/paper-egohtr.md) | **rough-terrain 人–场景 4D**（Aria+IMU 服+扫描）；感知 locomotion 参考；**HF 数据已发布**（~719 GB），代码待发布 |
 | [HumanTracker](../entities/paper-humantracker.md) | **153 h / 25K 四族光学评测集 + HumanScore**；GMR→29-DoF；**数据待发布**，评测代码已开 |
