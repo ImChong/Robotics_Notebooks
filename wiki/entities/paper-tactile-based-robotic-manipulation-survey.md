@@ -28,7 +28,7 @@ summary: "这篇综述把触觉机器人操作组织为力学驱动与数据驱�
 | VLA | Vision-Language-Action | 综述覆盖的多模态策略方向之一，可将触觉加入动作生成 |
 | IL | Imitation Learning | 从示范数据学习触觉条件化操作策略 |
 | RL | Reinforcement Learning | 通过交互回报优化触觉感知策略 |
-| DOF | Degrees of Freedom | 描述机器人操作机构自由度的常用单位 |
+| F/T | Force/Torque | 触觉操作中常与接触信息联合使用的力/扭矩量测 |
 
 ## 为什么重要
 
