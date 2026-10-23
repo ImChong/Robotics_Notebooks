@@ -2,17 +2,21 @@
 type: concept
 tags: [simulation, differentiable-physics, system-identification, reinforcement-learning, gradient-based]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-23
 related:
   - ../formalizations/adjoint-sensitivity-analysis.md
   - ../entities/matrix-simulation-platform.md
   - ../entities/brax.md
   - ../entities/mujoco-mjx.md
+  - ../entities/paper-shac.md
+  - ../entities/paper-superdyno.md
   - ./system-identification.md
   - ../methods/model-based-rl.md
   - ./sim2real.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/papers/accelerated_policy_learning_shac_iclr_2022.md
+  - ../../sources/papers/superdyno_iclr_2025_workshop.md
 summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用于系统辨识、可微控制与样本高效策略学习；接触不连续仍是主要工程难点。"
 ---
 
@@ -60,6 +64,12 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 | 冲量法 | 避免 LCP 求导 | DiffTaichi 类 |
 | 硬 LCP | 不连续，求导难 | 经典 MuJoCo CPU、Nimble |
 | 混合双仿真器 | 简化可微模型 + 高保真对齐 | ETH 四足可微工作、MATRiX 课程叙事 |
+
+## 人形控制中的两种可微策略学习路线
+
+- [SHAC](../entities/paper-shac.md) 在并行可微分仿真上直接回传策略梯度，以平滑 critic 和截断学习窗口控制优化困难。
+- [SuperDyno](../entities/paper-superdyno.md) 从仿真数据学习神经动力学，再结合监督学习与强化学习训练全身跟踪控制器。
+- 两者梯度穿过的模型不同：SHAC 使用显式可微物理仿真；SuperDyno 使用拟合得到的神经动力学模型，需额外检查模型误差。
 
 ## 在四足课程中的位置
 

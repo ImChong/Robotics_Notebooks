@@ -3,7 +3,7 @@
 - **标题**: Ubisoft La Forge Animation Dataset ("LAFAN1")
 - **类型**: dataset / repo（含评估脚本）
 - **仓库**: https://github.com/ubisoft/ubisoft-laforge-animation-dataset
-- **关联论文**: Harvey et al., *Robust Motion In-betweening*, SIGGRAPH / ACM TOG 2020（README 内 BibTeX）
+- **关联论文**: Harvey et al., [*Robust Motion In-Betweening*](../papers/robust_motion_inbetweening_acm_tog_2020.md), SIGGRAPH / ACM TOG 2020；[DOI](https://doi.org/10.1145/3386569.3392480)
 - **许可**: Creative Commons **Attribution-NonCommercial-NoDerivatives 4.0**（`license.txt`，README 明确）
 - **收录日期**: 2026-05-15
 
