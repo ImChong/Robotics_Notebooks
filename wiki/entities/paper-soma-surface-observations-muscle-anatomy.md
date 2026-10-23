@@ -62,7 +62,7 @@ summary: "SOMA（arXiv:2606.09246，ECCV 2026，MPI-INF）：从体表观测（m
 | **输入（训练）** | SKIM 规范空间 **marker 残余**及姿态；**推理**以用户定义的骨架姿态驱动 |
 | **输出** | 皮肤层、聚合肌肉层、**单块肌肉 mesh** 的时空形变与热图可视化 |
 | **数据** | SKIM：5 被试，~45 min 多视角运动，多层解剖 GT + marker 轨迹 |
-| **开源（截至 2026-09-09）** | **已开源**：[GitHub](https://github.com/edualvarado/SOMA)（MIT）全阶段源码 + 训练/评测；[数据集](https://gvv-assets.mpi-inf.mpg.de/soma) 独立下载 |
+| **开源（核验于 2026-10-23）** | **部分开放**：[GitHub](https://github.com/edualvarado/SOMA)（MIT）代码公开；SKIM V2 与 RELEASE_V2 检查点单独分发，数据门户当前需注册/登录 |
 
 ## 核心原理
 
