@@ -2228,6 +2228,7 @@
 - [GALA（arXiv:2609.21948）](wiki/entities/paper-gala.md) — GALA**（*GALA: Geometry-Aware Latent Action Modeling for Vision-Language-Action Model Pretraining a `📅unknown` `[entity_page]`
 - [GALATEA（arXiv:2609.10050）](wiki/entities/paper-galatea.md) — GALATEA**（*Grounding Generated Video Plans in Simulation Towards Versatile Dexterous Controllers*， `📅unknown` `[entity_page]`
 - [G0.5：推理与动作同一自回归流](wiki/entities/paper-galaxea-g05.md) — G0.5**（*Galaxea G0.5: One Autoregressive Stream for Robot Reasoning and Action*，[arXiv:2608.11739 `📅unknown` `[entity_page]`
+- [GameHorizon Suite：游戏理解的多时间尺度数据与评测](wiki/entities/paper-gamehorizon-suite.md) — GameHorizon Suite 将 AAA 游戏中的视频、玩家动作和从短时操作到长程策略的指令对齐，并以离线与在线基准评估模型理解和执行游戏目标的能力。 `📅unknown` `[entity_page]`
 - [Gamma-World（γ-World / Generative Multi-Agent World Model）](wiki/entities/paper-gamma-world-multi-agent.md) — Gamma-World**（*γ-World*，arXiv:2605.28816，[项目页](https://research.nvidia.com/labs/sil/projects/gamma `📅unknown` `[entity_page]`
 - [GaP（Graph-as-Policy）](wiki/entities/paper-gap-graph-as-policy.md) — GaP**（*A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks*，NVIDI `📅unknown` `[entity_page]`
 - [Gated Memory Policy（arXiv:2604.18933）](wiki/entities/paper-gated-memory-policy.md) — Gated Memory Policy**（Yihuai Gao, Jeff Jinyun Liu, Shuang Li, Shuran Song；Stanford University；[arX `📅unknown` `[entity_page]`
@@ -3332,6 +3333,7 @@
 - [PLAT（arXiv:2609.25754）](wiki/entities/paper-plat-sparse-keyframe-tracking.md) — PLAT**（*PLAT: Sparse Timed Keyframe Motion Tracking for Humanoid Control via Privileged Latent Tra `📅unknown` `[entity_page]`
 - [PLaW-VLA：预测式潜在世界建模的 VLA 策略](wiki/entities/paper-plaw-vla-predictive-latent-world-model-vla.md) — PLaW-VLA** 在 π0.5 式 VLA 上增加一个从零训练的「潜在世界模型专家」，在冻结 V-JEPA 2 的表征空间里一次并行预测 K 个未来潜变量，再让动作专家以观测、语义与预测的未来 `📅unknown` `[entity_page]`
 - [Play2Perfect：灵巧「玩耍」预训练如何成就精密装配](wiki/entities/paper-play2perfect.md) — Play2Perfect**（*Play2Perfect: What Matters in Dexterous Play Pretraining for Precise Assembly?*，[a `📅unknown` `[entity_page]`
+- [Player-1：从合成经验中学习游戏控制](wiki/entities/paper-player-1.md) — Player-1 是一条计算机使用模型后训练路线：先用人类游戏轨迹做监督初始化，再用合成环境中的交互和可验证奖励强化游戏控制能力。 `📅unknown` `[entity_page]`
 - [PlayWorld](wiki/entities/paper-playworld-autonomous-play-data.md) — PlayWorld** 收录于 具身智能研究室 · 具身世界模型六路线综述 **趋势与判断 `📅unknown` `[entity_page]`
 - [Point It, Strike It](wiki/entities/paper-point-it-strike-it.md) — Point It, Strike It**（arXiv:2610.09573，CMU 机器人研究所等）研究**单次挥绳击打**：给定绳端目标 3D 位置与到达方向，机械臂一次开环挥动。系统由四部分 `📅unknown` `[entity_page]`
 - [Point2Pose](wiki/entities/paper-point2pose.md) — Point2Pose**（*Occlusion-Recovering 6D Pose Tracking and 3D Reconstruction for Multiple Unknown Obj `📅unknown` `[entity_page]`
