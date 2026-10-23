@@ -2,6 +2,7 @@
 
 type: entity
 project_id: ardupilot
+institutions: [ardupilot-foundation]
 project: https://ardupilot.org/
 code: https://github.com/ArduPilot/ardupilot
 tags: [repo, autopilot, ardupilot, mavlink, uav, multirotor, open-source, sitl]
@@ -21,6 +22,8 @@ summary: "ArduPilot 是覆盖多旋翼、固定翼、地面与水下车辆的开
 # ArduPilot
 
 **ArduPilot**（[官方文档](https://ardupilot.org/) · [ArduPilot/ardupilot](https://github.com/ArduPilot/ardupilot)）是一个开源自动驾驶仪软件项目。它为不同载具提供对应固件，并运行在兼容的自动驾驶仪硬件上；项目采用 **GPL-3.0** 许可证。
+
+ArduPilot 是社区开发的项目；官方捐赠说明将 ArduPilot Foundation 列为优先捐赠对象，该澳大利亚非营利协会承担项目资金支持。所属机构记录用于标识这一项目支持关系。
 
 ## 覆盖的载具
 
@@ -60,6 +63,7 @@ ArduPilot 与 [PX4 Autopilot](./px4-autopilot.md) 是两套独立的开源飞控
 - [ArduPilot 官方代码仓库](https://github.com/ArduPilot/ardupilot)
 - [支持的载具类型](https://ardupilot.org/ardupilot/docs/common-all-vehicle-types.html)
 - [ArduPilot Copter 介绍](https://ardupilot.org/copter/docs/introduction.html)
+- [向 ArduPilot 项目捐赠](https://ardupilot.org/dev/docs/common-donation.html)
 
 ## 关联页面
 
