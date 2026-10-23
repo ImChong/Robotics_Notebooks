@@ -13,7 +13,7 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-10-17
+updated: 2026-10-23
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
@@ -25,6 +25,7 @@ related:
   - ./paper-physforge-physics-grounded-3d-assets.md
   - ./paper-embodiedgen-v2-sim-ready-world-engine.md
   - ./infinigen.md
+  - ./hi3d-v1-0.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/sites/3dgenstudio-com.md
@@ -62,7 +63,7 @@ summary: "3D Gen Studio（visualbruno/3DGenStudio，v2.1.0）是本地优先的�
 
 ## 为什么对机器人栈重要
 
-1. **场景道具与外观资产瓶颈：** 具身仿真与演示常需要大量 **静态网格道具**（桌椅、物体外壳、背景件）。本工作室把 **ComfyUI 工作流 + 第三方 mesh API** 编排成可复用的 **Images → Mesh Gen → Texturing** 管线，降低「单次黑盒网站生成」的摩擦。
+1. **场景道具与外观资产瓶颈：** 具身仿真与演示常需要大量 **静态网格道具**（桌椅、物体外壳、背景件）。本工作室把 **ComfyUI 工作流 + 第三方 mesh API** 编排成可复用的 **Images → Mesh Gen → Texturing** 管线，降低「单次黑盒网站生成」的摩擦。 需要参考图和粗网格的高细节细化可另看 [Hi3D v1.0](./hi3d-v1-0.md)，其输出仍需下游验证后才能作为仿真资产。
 2. **与制造 CAD / 仿真关节资产的选型边界：** 输出是 **GLB / OBJ / FBX 等网格**，适合渲染与粗碰撞近似；**不是** [文字生成 CAD](../concepts/text-to-cad.md) 的 STEP/B-rep，也不是 [Articraft](./articraft.md) / [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) 的 **仿真就绪可关节** 真值——进入 MuJoCo / Isaac 前仍须简化碰撞、惯量与坐标系（见 [Sim2Real](../concepts/sim2real.md)）。
 3. **Agent 可自动化：** 内置 MCP（项目、卡片、图、工作流、mesh tools），可与 Claude / Cursor 等宿主批处理资产生成；对照 [FreeCAD MCP](./freecad-mcp.md)（遥控桌面 CAD）与 [CAD Skills](./cad-skills.md)（build123d→STEP），本产品落在 **网格生产编排** 一侧。
 4. **Local-first：** 项目与资产落盘本地、可 Git 同步，便于实验室环境复现与离线迭代，避免把中间资产锁进单一云厂商。
