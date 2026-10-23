@@ -182,6 +182,7 @@ flowchart TB
 | 人形 PM-01 | **头部固态 LiDAR（原始栅格）** | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) | AME-2+GRU 直接吃 E1R 稀疏回波；分阶段多教师蒸馏；猴架全序列真机 **14/15**、荡杆 0.5 m/s；截至 2026-09-04 未开源 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
 | 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
+| 人形 G1 | **高程图局部 patch** | [Watch Your Step](../entities/paper-watch-your-step.md) | FPM 预测未来两步足点，只读取周围高程 patch；Isaac Lab 训练代码已公开 |
 | 人形 G1 | **深度** | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) | 显著性 prior + **门控记忆** + 交替对称损失；稀疏踏点/窄梁；CoRL 2026；Jetson Orin NX；代码 Coming Soon |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
