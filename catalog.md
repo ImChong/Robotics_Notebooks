@@ -5447,6 +5447,7 @@
 - [Yale OpenHand（耶鲁开源欠驱动手）](wiki/entities/yale-openhand.md) — Yale OpenHand** 是耶鲁大学 Grab Lab（Aaron M. Dollar 组）维护的 **开源、可快速原型的腱驱动欠驱动机器人手系列**：以 3D 打印 + 柔顺关节浇注降低改 `📅unknown` `[entity_page]`
 - [Yanjie Ze（迮炎杰）](wiki/entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与  `📅unknown` `[entity_page]`
 - [Unitree Z1 软件栈（z1_sdk 等）](wiki/entities/z1-sdk.md) — Z1** 是宇树六轴协作机械臂产品线。组织下拆有 `z1_sdk`、`z1_ros`、`z1_controller`、`z1_joystick` 等多个仓库；本页作为**唯一 wiki 节点**归 `📅unknown` `[entity_page]`
+- [Zero-to-CAD：从多视角图像到可编辑 CAD 程序](wiki/entities/zero-to-cad.md) — Zero-to-CAD** 是 Autodesk Research 提出的 CAD 程序合成与重建项目：以带执行反馈的代理流程扩展合成构造序列，并用发布的视觉语言模型将多视角形状图像映射为 Cad `📅unknown` `[entity_page]`
 - [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
 - [宅码 Common Know-How（二手知识点汇编）](wiki/entities/zhaima-common-know-how.md) — 这是一份由「宅码」公众号转载到飞书的 VLA 与机器人学习知识点汇编，适合作为入门索引，但它是二手笔记，结论需回到一手论文核对。 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
