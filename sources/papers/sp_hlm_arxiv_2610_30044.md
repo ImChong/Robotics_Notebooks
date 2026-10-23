@@ -40,6 +40,6 @@
 
 ## 对 wiki 的映射
 
-- 计划沉淀实体页：`wiki/entities/paper-sp-hlm.md`（待建）
+- 实体页：[paper-sp-hlm.md](../../wiki/entities/paper-sp-hlm.md)
 - 项目页归档：[`sources/sites/sp-hlm.md`](../sites/sp-hlm.md)
 - 相关主题：稀疏动作表示、VLA、运动生成、全身控制、loco-manipulation
