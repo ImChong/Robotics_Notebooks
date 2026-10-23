@@ -60,6 +60,7 @@ ArduPilot 与 [PX4 Autopilot](./px4-autopilot.md) 是两套独立的开源飞控
 ## 参考来源
 
 - [ArduPilot 官方文档](https://ardupilot.org/)
+- [ArduPilot Foundation 捐赠说明](https://ardupilot.org/dev/docs/common-donation.html)
 - [ArduPilot 官方代码仓库](https://github.com/ArduPilot/ardupilot)
 - [支持的载具类型](https://ardupilot.org/ardupilot/docs/common-all-vehicle-types.html)
 - [ArduPilot Copter 介绍](https://ardupilot.org/copter/docs/introduction.html)
