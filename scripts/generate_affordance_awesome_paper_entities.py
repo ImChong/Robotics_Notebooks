@@ -19,6 +19,7 @@ import sys
 import unicodedata
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TODAY = date.today().isoformat()
@@ -77,9 +78,12 @@ def parse(path: Path) -> list[dict]:
             url = links[-1] if links else ""
             m = ARXIV_RE.search(url)
             attrs = [(h, v) for h, v in zip(hdr[4:], c[4:]) if v and v != "-"]
-            e = {
-                "title": c[2], "venue": c[0], "short": c[1].strip("`").strip(),
-                "url": url, "arxiv": m.group(1) if m else None,
+            e: dict[str, Any] = {
+                "title": c[2],
+                "venue": c[0],
+                "short": c[1].strip("`").strip(),
+                "url": url,
+                "arxiv": m.group(1) if m else None,
             }
             key = e["arxiv"] or norm(e["title"])
             cur = entries.setdefault(key, {**e, "groups": []})
@@ -160,7 +164,7 @@ def render_entity(e: dict, src_rel: str, wiki_name: str) -> str:
     short = short if len(short) <= 80 else short[:77] + "..."
     gt = group_text(e)
     summary = yq(f"{e['venue']} 的 affordance 论文，清单分组：{gt}。")[:220]
-    fm = [f'project_id: aff-{slugify(e["title"])}', f'venue: "{yq(e["venue"])[:80]}"']
+    fm = [f"project_id: aff-{slugify(e['title'])}", f'venue: "{yq(e["venue"])[:80]}"']
     doi = re.search(r"doi\.org/(10\.\S+)$", e["url"])
     if e["arxiv"]:
         fm.insert(1, f'arxiv: "{e["arxiv"]}"')
@@ -168,8 +172,10 @@ def render_entity(e: dict, src_rel: str, wiki_name: str) -> str:
         fm.insert(1, f'doi: "{doi.group(1)}"')
     elif e["url"]:
         fm.insert(1, f'url: "{e["url"]}"')
-    rows = "\n".join(f"| 分组 {i + 1} | {s}" + (" · " + "；".join(f"{h}: {v}" for h, v in a) if a else "") + " |"
-                     for i, (s, a) in enumerate(e["groups"]))
+    rows = "\n".join(
+        f"| 分组 {i + 1} | {s}" + (" · " + "；".join(f"{h}: {v}" for h, v in a) if a else "") + " |"
+        for i, (s, a) in enumerate(e["groups"])
+    )
     abbrev = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in ABBREV)
     pl = paper_link(e)
     related = [SURVEY, MAP_REL, *hubs]
@@ -269,7 +275,7 @@ def render_catalog(rows: list[dict]) -> str:
         "",
         f"> 由 `{REPO_URL}` 解析生成；入库日 {TODAY}。同一论文在多个分组出现时合并为一行。",
         "",
-        f"- **技术地图：** [`wiki/overview/affordance-awesome-technology-map.md`](../../wiki/overview/affordance-awesome-technology-map.md)",
+        "- **技术地图：** [`wiki/overview/affordance-awesome-technology-map.md`](../../wiki/overview/affordance-awesome-technology-map.md)",
         f"- **条目数（去重后）：** {len(rows)}",
         "",
         "| 标题 | 出处 | arXiv | 分组 | wiki |",
@@ -292,7 +298,7 @@ def render_map(rows: list[dict]) -> str:
             continue
         out += [f"### {sec}\n", "| 出处 | 论文 |", "|------|------|"]
         for r in items:
-            link = "../" + r["wiki"][len("wiki/"):]
+            link = "../" + r["wiki"][len("wiki/") :]
             out.append(f"| {r['venue']} | [{r['title'][:90].replace('|', '/')}]({link}) |")
         out.append("")
     abbrev = "\n".join(f"| {a} | {b} | {c} |" for a, b, c in ABBREV)
@@ -391,7 +397,9 @@ def main() -> None:
             new += 1
         rows.append(e)
     (ROOT / CATALOG_SRC).write_text(render_catalog(rows), encoding="utf-8")
-    (ROOT / "wiki/overview/affordance-awesome-technology-map.md").write_text(render_map(rows), encoding="utf-8")
+    (ROOT / "wiki/overview/affordance-awesome-technology-map.md").write_text(
+        render_map(rows), encoding="utf-8"
+    )
     print(f"unique={len(rows)} new={new} reused={reused}")
 
 
