@@ -1,6 +1,9 @@
 ---
 
 type: entity
+project_id: ardupilot
+project: https://ardupilot.org/
+code: https://github.com/ArduPilot/ardupilot
 tags: [repo, autopilot, ardupilot, mavlink, uav, multirotor, open-source, sitl]
 status: complete
 updated: 2026-10-23
