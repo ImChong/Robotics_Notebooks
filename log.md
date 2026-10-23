@@ -226,6 +226,8 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-23] ingest | Awesome-Affordance-Learning 清单逐篇入库：206 篇去重论文，新建 198 个索引级节点，8 篇复用站内既有页；新增技术地图并链入 affordance 综述页
+
 ## [2026-10-23] ingest | sources/models/zero-to-cad-qwen3-vl-2b.md 与 sources/datasets/zero-to-cad-100k.md — 收录 Zero-to-CAD 模型、精选集与论文，核实 Apache-2.0 发布范围
 
 ## [2026-10-23] ingest | 补充 HiRe-MoMa 底座与机械臂分层修正的因果说明
