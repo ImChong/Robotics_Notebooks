@@ -1478,6 +1478,7 @@
 - [AtomBridge（arXiv:2602.09430）](wiki/entities/paper-atombridge.md) — AtomBridge**（arXiv:2602.09430）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [Beyond Retargeting：学习式原子动作基元的低延迟人形全身遥操作](wiki/entities/paper-atomic-motion-primitives-teleoperation.md) — Beyond Retargeting**（arXiv:2610.07891）把人形全身遥操作里的「人体动作重定向 + 低层跟 `📅unknown` `[entity_page]`
 - [Atomic-WAM：用执行反馈校准原子动作推理](wiki/entities/paper-atomic-wam.md) — Atomic-WAM 在世界动作模型（WAM）之前加一个视觉语言推理器：推理器先描述下一步局部原子动作，再由固定的 WAM 执行；推理器通过 EG-GRPO 以执行成功与动作合理性奖励进行后训练。 `📅unknown` `[entity_page]`
+- [AtomicRL：长程操作的原子任务强化学习](wiki/entities/paper-atomicrl.md) — 一句话定义：** AtomicRL 把长程操作拆成原子子任务，并依据语义边界处理信用分配、根据薄弱子任务调整探索。 `📅unknown` `[entity_page]`
 - [AtomicVLA：原子技能学习的统一规划–执行 VLA](wiki/entities/paper-atomicvla.md) — AtomicVLA**（*AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots*，[arXiv:2603.07 `📅unknown` `[entity_page]`
 - [Attention Is All You Need](wiki/entities/paper-attention-is-all-you-need.md) — Attention Is All You Need**（Vaswani et al.，arXiv:1706.03762，Ne `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
@@ -3612,6 +3613,7 @@
 - [Rift：免视频 Rollout 的未来条件 WAM](wiki/entities/paper-rift-wam.md) — Rift**（*Keep the Future, Drop the Rollout: Rift for World Action Models*，[arXiv:2608.11521](https: `📅unknown` `[entity_page]`
 - [刚-软混合链路人形机器人建模与控制](wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 论文** *Modeling and Control of a Rigid-soft Hybrid-link Humanoid Robot*（[arXiv:2610.15073](https:// `📅unknown` `[entity_page]`
 - [RISE：驾驶 WAM 的自适应想象调度](wiki/entities/paper-rise-adaptive-imagination-wam.md) — RISE**（*Refining Imagination through SElective Rollout*；论文 *RISE: Adaptive Imagination for World A `📅unknown` `[entity_page]`
+- [RISE：感知式人形起身的测试时运动引导](wiki/entities/paper-rise-humanoid-fall-recovery.md) — 一句话定义：** RISE 把未来身体状态作为可引导的运动意图，在测试时按目标路径、朝向或起身速度选择人形机器人的起身方式。 `📅unknown` `[entity_page]`
 - [海上异构任务分配 RL（arXiv:2610.15237）](wiki/entities/paper-rl-heterogeneous-task-allocation-spatio-temporal.md) — 海上异构任务分配 RL**（*Reinforcement Learning Based Heterogeneous Task Allocation Under Spatio-Temporal En `📅unknown` `[entity_page]`
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
 - [RLinf-USER：真机在线策略学习统一系统](wiki/entities/paper-rlinf-user.md) — RLinf-USER**（*A Unified and Extensible System for Real-World Online Policy Learning in Embodied AI `📅unknown` `[entity_page]`
@@ -4650,6 +4652,7 @@
 - [SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移](wiki/entities/paper-sonic-transfer.md) — SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analyti `📅unknown` `[entity_page]`
 - [SonoWorld：可用探头位姿控制的超声世界模型](wiki/entities/paper-sonoworld.md) — SonoWorld 是一个因果的超声视频世界模型：先从大量无位姿标注的临床超声视频里学"画面怎么动"，再用少量带电磁追踪的徒手扫描把动作绑定到 6-DoF 探头位姿，最后蒸馏为可长程自回归生成的因 `📅unknown` `[entity_page]`
 - [Sony AI Ace：自主竞技乒乓球机器人](wiki/entities/paper-sony-ai-ace-table-tennis.md) — Ace**（Nature 2026，Sony AI / Sony Research；[项目页](http `📅unknown` `[entity_page]`
+- [SP-HLM：稀疏姿态驱动的人形全身控制](wiki/entities/paper-sp-hlm.md) — 一句话定义：** SP-HLM 用五个任务关键身体姿态表达空间意图，再用学习到的运动先验补全全身协调，连接高层 VLA 与低层全身控制。 `📅unknown` `[entity_page]`
 - [Spa-Bench：真机上检验 VLA 的空间落地](wiki/entities/paper-spa-bench-spatial-grounding-vla.md) — Spa-Bench**（arXiv:2610.12696，[项目页](https://justintiensmith.git `📅unknown` `[entity_page]`
 - [Space Mining with Robotics：太空采矿机器人综述](wiki/entities/paper-space-mining-with-robotics.md) — Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction**（[arXiv:2608.21358 `📅unknown` `[entity_page]`
 - [Spark-0：规模化空间对齐触觉预训练](wiki/entities/paper-spark-0-spatial-tactile-pretraining.md) — Spark-0 将触觉同时用作视觉空间接触监督和动作专家输入，让策略在预训练阶段学习接触位置、在部署时按需使用触觉。 `📅unknown` `[entity_page]`
