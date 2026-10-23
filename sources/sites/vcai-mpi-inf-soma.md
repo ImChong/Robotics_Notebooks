@@ -10,6 +10,7 @@
 - **视频：** <https://youtu.be/4EWyj6Ew9aw>
 - **作者单位：** Max Planck Institute for Informatics（Saarland Informatics Campus）；TU Dortmund University
 - **入库日期：** 2026-09-09
+- **最近核验：** 2026-10-23
 
 ## 一句话摘要
 
@@ -23,7 +24,7 @@ MPI-INF VCAI 组官方项目页：从 **多视角 RGB / 体表观测** 反演 **
 | **GitHub Repo** | 绿按钮 → [`edualvarado/SOMA`](https://github.com/edualvarado/SOMA)（MIT） |
 | **Dataset** | 绿按钮 → [`gvv-assets.mpi-inf.mpg.de/soma`](https://gvv-assets.mpi-inf.mpg.de/soma) |
 | **Video** | YouTube `4EWyj6Ew9aw` |
-| **开放程度** | **已开源**：完整管线源码（Suit 处理 → 规范模型 → 注册 → Blender 工具 → 训练/评测）+ SKIM 数据独立下载；大体积 checkpoint / Blender 场景不入 git |
+| **开放程度** | **部分开放**：完整管线源码公开并标注 MIT；SKIM V2 与 S1–S5 RELEASE_V2 模型单独发布，数据门户当前要求注册/登录 |
 
 - **代码：** <https://github.com/edualvarado/SOMA>
 - **数据集：** <https://gvv-assets.mpi-inf.mpg.de/soma>
@@ -69,3 +70,11 @@ MPI-INF VCAI 组官方项目页：从 **多视角 RGB / 体表观测** 反演 **
 
 - 论文实体：[paper-soma-surface-observations-muscle-anatomy](../../wiki/entities/paper-soma-surface-observations-muscle-anatomy.md)
 - 交叉：[UMA](../../wiki/entities/paper-uma.md)、[MAMMA](../../wiki/entities/paper-mamma-markerless-motion-capture.md)、[SMPL-X](../../wiki/concepts/smpl-x.md)、[SOMA-X](../../wiki/entities/soma-x.md)（同名不同工作，对比消歧）
+
+
+## 最新状态核查（2026-10-23）
+
+- 项目页更新记录显示 **2026-10-16** 发布 SKIM V2 与更新后的 SOMA 模型，并指出 V2 修复首版骨架绑定、姿态和标记映射差异。
+- 官方仓库 README 于 **2026-10-20** 确认 SKIM V2 及 S1–S5 的 RELEASE_V2 检查点。
+- 数据链接当前跳转到注册/登录页；源码公开可取，数据访问需按门户流程注册，数据许可以门户提供条款为准。
+- 方法边界：训练借助 SKIM 表面标记残差；推理以用户定义骨架姿态驱动多层形变，不应简化成端到端 RGB 视频直接输出肌肉形状。
