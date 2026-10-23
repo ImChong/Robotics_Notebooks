@@ -558,3 +558,8 @@ flowchart TD
 ## 四足长时程操作实例
 
 - [Rubik Skills](../entities/paper-rubik-skills.md) — ANYmal-D 将多视角魔方感知、技能规划与足端转层串成长时程自主操作。
+
+
+## 新增接口路线
+
+- [SP-HLM：稀疏姿态驱动的人形全身控制](../entities/paper-sp-hlm.md) — 用骨盆、双腕、双踝五点目标表达任务意图，并由 motion latent 补全全身协调。
