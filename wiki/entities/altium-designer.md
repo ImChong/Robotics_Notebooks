@@ -83,10 +83,11 @@ flowchart LR
 - [CAD Skills](./cad-skills.md) — 机械 CAD / URDF 与板级 ECAD 的分工
 - [开源人形机器人硬件](./open-source-humanoid-hardware.md) — 整机驱动板开源范例
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Altium Designer 是①层商用 EDA 驱动板设计工具
+- [HeyPCB（AI PCB 设计）](./heypcb.md) — AI 辅助生成 PCB 工程的服务入口
 
 ## 推荐继续阅读
 
-- [HeyPCB（AI PCB 设计）](./heypcb.md) — AI 辅助生成 PCB 工程的服务入口\n- [Altium Designer 完整入门教程](https://www.altium.com/documentation/altium-designer/tutorial) — 九器件板从原理图到制造文件
+- [Altium Designer 完整入门教程](https://www.altium.com/documentation/altium-designer/tutorial) — 九器件板从原理图到制造文件
 - [KiCad 官方文档](https://docs.kicad.org/) — 开源 EDA 对照
 - [SimpleFOC 文档 — SimpleFOCBoards](https://docs.simplefoc.com/) — 低功率驱动硬件开源链
 
