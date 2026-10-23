@@ -2,9 +2,10 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-23
 related:
   - ../entities/paper-sony-ai-ace-table-tennis.md
+  - ../entities/paper-from-hitter-to-player-humanoid-table-tennis.md
   - ../entities/smplolympics.md
   - ./ase.md
   - ./amp-reward.md
