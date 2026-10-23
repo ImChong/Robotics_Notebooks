@@ -74,3 +74,9 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 - [项目主页](https://jingliangli.com/affordance-survey/)
 - [论文与数据集清单](https://github.com/hq-King/Awesome-Affordance-Learning)
 - [归档摘录](../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md)
+
+
+## 关联页面
+
+- [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。
+- [VLA](../methods/vla.md)：affordance 可作为策略输入或中间动作表示。
