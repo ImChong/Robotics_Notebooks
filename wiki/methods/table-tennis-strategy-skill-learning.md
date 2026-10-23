@@ -2,9 +2,10 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-23
 related:
   - ../entities/paper-sony-ai-ace-table-tennis.md
+  - ../entities/paper-from-hitter-to-player-humanoid-table-tennis.md
   - ../entities/smplolympics.md
   - ./ase.md
   - ./amp-reward.md
@@ -82,6 +83,7 @@ flowchart TB
 ## 关联页面
 
 - [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md) — 真机 ITTF 规则下击败 elite 选手的 8-DOF 系统
+- [From Hitter to Player](../entities/paper-from-hitter-to-player-humanoid-table-tennis.md) — 将人形击球执行与竞争策略拆开训练
 - [SMPLOlympics](../entities/smplolympics.md) — 统一体育环境与乒乓球基线
 - [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型
 - [Imitation Learning](./imitation-learning.md) — 技能层模仿学习背景

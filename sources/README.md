@@ -15,6 +15,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [from_hitter_to_player_arxiv_2610_14067.md](papers/from_hitter_to_player_arxiv_2610_14067.md) | From Hitter to Player：人形乒乓球动作执行与策略分离（arXiv:2610.14067；项目页/代码状态待核实）
 - [x] [crossfly_arxiv_2610_18381.md](papers/crossfly_arxiv_2610_18381.md) | CrossFly：长程异构环境空中移动与交互就绪度基准（arXiv:2610.18381）
 - [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
 - [x] [viola_arxiv_2610_12435.md](papers/viola_arxiv_2610_12435.md) | VioLA 人类数据驱动人形通用控制
