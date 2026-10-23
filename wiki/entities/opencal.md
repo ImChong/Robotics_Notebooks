@@ -10,6 +10,7 @@ tags:
   - additive-manufacturing
   - volumetric-printing
   - open-source
+  - berkeley
 status: complete
 updated: 2026-10-23
 related:
@@ -36,6 +37,15 @@ summary: "OpenCAL 是面向研究与教育的计算轴向光刻（CAL）打印�
 | VAM | Volumetric Additive Manufacturing | 体积增材制造；CAL 所属的制造路线 |
 | OST | Optical Scattering Tomography | 光学散射层析；论文提及的 VAM 技术进展 |
 | DLP | Digital Light Processing | 投影图案的数字光处理投影技术 |
+
+## 核心信息
+
+| 字段 | 内容 |
+|---|---|
+| 机构 | 加州大学伯克利分校（UC Berkeley） |
+| 类型 | 计算轴向光刻（CAL）打印机与后处理平台 |
+| 论文 | [arXiv:2509.02865](https://arxiv.org/abs/2509.02865) |
+| 控制软件 | [computed-axial-lithography/OpenCAL](https://github.com/computed-axial-lithography/OpenCAL) |
 
 ## 核心结构 / 机制
 
