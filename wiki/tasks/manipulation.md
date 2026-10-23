@@ -418,6 +418,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [真机双臂灵巧抓取](../entities/paper-real-bi-dex-grasp.md) — 单视角 DDPM 双臂关节抓取（IROS 2026；已开源）
 - [空间条件多智能体灵巧操作](../entities/paper-spatially-conditioned-multi-agent-dexterous.md) — 8×8 Soft Delta 阵列；稀疏激活 ~65%（arXiv:2609.06930；未见代码）
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
+- [DONIC：通用灵巧双手跟踪控制](../entities/paper-donic.md) — 联合训练单一双手策略，配套 BiHOI 多视角手-物交互数据集。
 
 ### 触觉与力控
 
