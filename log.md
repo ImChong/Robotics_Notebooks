@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-23] ingest | 收录 Robotics Bench 交互式硬件教学演示
+
+- 归档 Robotics Bench 与 Colorfigures 官方说明，并新增知识实体页。
+- 将演示定位为浏览器交互式教学图形；源码开放状态和电路级仿真能力尚未核实。
+
 ## [2026-10-23] ingest | HeyPCB — 归档 AI PCB 设计服务及其开源状态
 
 - 官方首页介绍自然语言生成 PCB 原理图、布局与制造文件，并提供 Circuit World 开放硬件目录。
