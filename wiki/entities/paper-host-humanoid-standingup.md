@@ -151,3 +151,8 @@ flowchart TB
 - [arXiv:2502.08378](https://arxiv.org/abs/2502.08378) — 完整方法与评测协议
 - [项目页演示](https://taohuang13.github.io/humanoid-standingup.github.io/) — 真机场景视频
 - [SD-AMP（arXiv:2605.18611）](https://arxiv.org/abs/2605.18611) — 统一走/跑/起身的 AMP 路线对照
+
+
+## 新增对照论文
+
+- [RISE：感知式人形起身的测试时运动引导](./paper-rise-humanoid-fall-recovery.md) — 用视觉预测的未来身体状态，在测试时按路径、朝向或速度引导恢复动作。

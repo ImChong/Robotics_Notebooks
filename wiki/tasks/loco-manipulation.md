@@ -565,3 +565,8 @@ flowchart TD
 ## 场景几何驱动的移动抓取
 
 - [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 将环境感知全身控制、局部接触 RL 与多教师蒸馏结合；项目页报告在 24 个真实场景、100 多种物体上达到 91% 抓取成功率。
+
+
+## 新增接口路线
+
+- [SP-HLM：稀疏姿态驱动的人形全身控制](../entities/paper-sp-hlm.md) — 用骨盆、双腕、双踝五点目标表达任务意图，并由 motion latent 补全全身协调。
