@@ -5,10 +5,12 @@
 - **标题：** RoboAug: One Annotation to Hundreds of Scenes via Region-Contrastive Data Augmentation for Robotic Manipulation
 - **类型：** paper
 - **原始链接：** <https://arxiv.org/abs/2602.14032>
-- **机构：** 北京人形机器人创新中心（X-Humanoid）；慕尼黑工业大学（TUM）；香港城市大学（CityU）；北京航空航天大学（Beihang）；北京大学（PKU）
+- **机构：** 北京人形机器人创新中心（X-Humanoid）；东南大学；香港城市大学（CityU）；北京航空航天大学（Beihang）；北京大学（PKU）
 - **项目页：** <https://x-roboaug.github.io/>
-- **代码：** 截至入库日项目页标注 **Code (Coming Soon)**（论文摘要承诺将开源 RoboAug-D 与多任务真机数据集）
+- **代码：** [Open-X-Humanoid/RoboAug](https://github.com/Open-X-Humanoid/RoboAug)，Apache-2.0；已开放数据增广 Stage 1–2，策略学习 Stage 3 尚未开源
+- **数据集：** [X-Humanoid/RoboAug-Datasets](https://huggingface.co/datasets/X-Humanoid/RoboAug-Datasets)，Apache-2.0；含标注图像与 UR-5e、AgileX、天工 2.0 示教数据
 - **入库日期：** 2026-09-29
+- **开源状态核查：** 2026-10-23
 - **一句话说明：** 单任务 IL 下仅需 **一帧 bbox** 标注，经 GroundingDINO + DINOv2 一次性匹配与 SAM2 传播得稠密 mask，Stable Diffusion v3 全图背景合成 + 前景合成扩场景，并 plug-and-play **区域对比损失** 约束视觉编码器；35k+ 真机 rollout 上三因子 OOD 成功率相对无增广基线 UR **0.09→0.47**、AgileX **0.16→0.60**、天工 2.0 **0.19→0.67**。
 
 ## 核心摘录（MVP）
@@ -47,5 +49,6 @@
 
 ## 当前提炼状态
 
-- [x] 项目页开源核查（Code/Dataset **Coming Soon**；论文承诺后续开源）
-- [x] wiki 映射：`wiki/entities/paper-roboaug.md` 新建
+- [x] 更新开源核查：数据集及数据增广 Stage 1–2 已发布，Stage 3 仍待开源
+- [x] wiki 映射：`wiki/entities/paper-roboaug.md`（更新已存在的同项目实体）
+- [x] 官方代码映射：`sources/repos/roboaug.md`
