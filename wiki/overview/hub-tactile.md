@@ -47,6 +47,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；约 100 h 初版待 HF；代码未列） |
 | 文献索引 | 2025–2026 触觉×VLA/WM/WAM 策展 | [Awesome Touch](../entities/awesome-touch.md)（sun254667；VTLA / 视触觉 WM / Sim2Real） |
 | 管线轴综述 | 多模态 + 多阶段策略–控制 | [TF-ART](../entities/paper-tf-art-tactile-force-survey.md)（arXiv:2608.07558；Awesome 清单已开源） |
+| 研究范式综述 | 力学驱动 ↔ 数据驱动操作 | [Tactile-Based Robotic Manipulation](../entities/paper-tactile-based-robotic-manipulation-survey.md)（arXiv:2610.30438；Annual Review，触觉操作综述） |
 
 ## 与其他知识链的关系
 
@@ -64,6 +65,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 触觉 VLA / 视触觉 WM / Tactile WAM 近期文献索引
 - [TF-ART 触觉/力觉综述](../entities/paper-tf-art-tactile-force-survey.md) — 管线轴 taxonomy；与 Touch 清单互补
+- [Tactile-Based Robotic Manipulation 综述](../entities/paper-tactile-based-robotic-manipulation-survey.md) — 力学驱动与数据驱动操作的研究脉络
 - [接触–预测–适应 10 篇技术地图](./contact-predict-adapt-10-papers-technology-map.md) — 把接触接到预测/适应横切面
 - [Teleoperation](../tasks/teleoperation.md) — 操作员力反馈与示范采集
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
@@ -79,5 +81,6 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - **ingest 档案：** [sources/papers/softvtbench_arxiv_2607_04234.md](../../sources/papers/softvtbench_arxiv_2607_04234.md) — SoftVTBench 可变形视触觉安全基准（arXiv:2607.04234）
 - **ingest 档案：** [sources/sites/humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 人手全掌触觉采集（Xspark SparkLAB）
 - **ingest 档案：** [sources/papers/n0_foundation.md](../../sources/papers/n0_foundation.md) — 𝒩₀-Foundation / OpenNeoData
+- **ingest 档案：** [sources/papers/tactile_based_robotic_manipulation_survey_arxiv_2610_30438.md](../../sources/papers/tactile_based_robotic_manipulation_survey_arxiv_2610_30438.md) — 力学驱动与数据驱动触觉操作综述（arXiv:2610.30438）
 - **ingest 档案：** [sources/repos/awesome-touch.md](../../sources/repos/awesome-touch.md) — Awesome Touch 触觉操作策展清单
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`tactile` 命中规则）
