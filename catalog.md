@@ -62,6 +62,7 @@
 - [Archify](wiki/entities/archify.md) — Archify**（tt-a1i/archify，MIT）是面向 Cursor、Claude Code、Codex CLI `📅unknown` `[entity_page]`
 - [源策未来（Archon Robotics）](wiki/entities/archon-robotics.md) — 源策未来（Archon Robotics，官网 archon.tech）** 是 2026 年 4 月成立（媒体口径）、研发总部在上海的人形机器人基础模型公司，由香港大学助理教授、OpenDriv `📅unknown` `[entity_page]`
 - [全身智能 WBI：Archon 的人形基础模型预训练路线](wiki/entities/archon-whole-body-intelligence.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [ArduPilot](wiki/entities/ardupilot.md) — ArduPilot**（官方文档 · [ArduPilot/ardupilot](https://github.com/ArduPilot/ar `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Arena-Rosnav（社交导航仿真与 Benchmark）](wiki/entities/arena-rosnav.md) — Arena-Rosnav**（5.0 项目页，文档，[GitHub `📅unknown` `[entity_page]`
 - [CAD CAE Copilot（armpro24-blip/cad-cae-copilot）](wiki/entities/armpro24-blip-cad-cae-copilot.md) — CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/CAE 任务，使用 build123d 与 OpenCASCADE 创建真实可编辑 `📅unknown` `[entity_page]`
@@ -6385,7 +6386,7 @@
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](wiki/overview/motor-design-workflow.md) — 电机设计不是「先画线圈再试转」，而是 **指标驱动、电磁–热–机械耦合迭代**，最终以 **TN/TI 台架曲线 + FOC 电流环** 证明连续与峰值能力都达标。 `📅unknown` `[overview_page]`
 - [电机驱动器底软通信协议总览](wiki/overview/motor-drive-firmware-bus-protocols.md) — 底软通信 = 物理总线 + 应用层帧格式 + 控制模式语义** 三件套；机器人里最常见的是 **CAN 系（私有或 CANopen）** 与 **EtherCAT+CoE**，调试与外设用 **U `📅unknown` `[overview_page]`
 - [多模态 LLM 发展路线](wiki/overview/multimodal-llm-development.md) — 一条从 **图文对比对齐** 到 **冻结大语言模型+视觉接口**、再到 **视觉指令微调与下游接地/分割** 的多模态大模型演进路线图，对应课程 5.1.3–6.2。 `📅unknown` `[overview_page]`
-- [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 飞控与通信** 分两支：**自主导航 / 研究** 以 PX4 + MAVSDK  `📅unknown` `[overview_page]`
+- [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 飞控与通信** 分层选型：**自主导航 / 研究** 可选 PX4 或 [ArduPilot](../entities/ardupi `📅unknown` `[overview_page]`
 - [导航·SLAM·自动驾驶开源栈总览](wiki/overview/navigation-slam-autonomy-stack.md) — ROS 2 导航闭环** 以 Navigation2 为中枢，上游接 **2D SLAM**（[slam_toolbox](https: `📅unknown` `[overview_page]`
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅unknown` `[overview_page]`
 - [NVIDIA Physical AI 工具链技术地图（汇总节点）](wiki/overview/nvidia-physical-ai-toolchain-technology-map.md) — NVIDIA Physical AI 工具链** 是一条厂商自洽的机器人开发流水线：**真实数据 + 合成数据 → 世界模型策展/增广/评分 → Isaac Lab 训练 → 策略后训练与 Are `📅unknown` `[overview_page]`
