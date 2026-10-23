@@ -2,10 +2,11 @@
 type: entity
 tags: [course, education, textbook, kinematics, motion-planning, foundational, open-source]
 status: complete
-updated: 2026-08-08
+updated: 2026-10-23
 related:
   - ./embodied-interview-qa.md
   - ./embodied-interview-qa.md
+  - ./robotics-bench.md
   - ./modern-robotics-book.md
   - ./python-robotics.md
   - ./linear-algebra-curriculum.md
@@ -109,6 +110,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Robotics Bench](./robotics-bench.md) — 用可交互插画预览机器人硬件与装配步骤
 - [Modern Robotics（Lynch-Park 教材）](./modern-robotics-book.md) — 进阶「现代机器人学」章的主教材
 - [PythonRobotics](./python-robotics.md) — 移动机器人算法动画与入门实验
 - [线性代数学习策展](./linear-algebra-curriculum.md) — L0 数学打底，与先修章 Strang 路线对齐
