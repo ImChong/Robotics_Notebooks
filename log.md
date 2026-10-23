@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-23] ingest | OpenCAL 计算轴向光刻打印机与配套资料
+
+- 收录 OpenCAL 文档、控制软件、CAL-hardware、Tomo、VAMToolbox 与两篇 CAL 论文的一手来源。
+- 建立 OpenCAL wiki 实体并关联 Blender 上游网格工作流；记录 VAMToolbox 许可边界。
+
 ## [2026-10-23] ingest | ACP：以接触规划连接动作先验与人形移动
 
 - 归档 arXiv 论文、项目页入口和代码/数据开放状态核查；项目页当前无法读取，开放状态标为待核实。

@@ -1001,6 +1001,7 @@
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [OpenVINS](wiki/entities/open-vins.md) — OpenVINS** 面向 **VIO 研究** 的可扩展滤波框架，强调可复现与模块配置。 `📅unknown` `[entity_page]`
 - [OpenAI Codex CLI（openai/codex）](wiki/entities/openai-codex-cli.md) — Codex CLI** 是一个在本机开发环境中运行的编码代理：命令行负责连接模型与当前工作区，CLI 能力由开源 Rust 程序提供，也可经 TypeScript SDK 从应用中调用。 `📅unknown` `[entity_page]`
+- [OpenCAL：计算轴向光刻打印机](wiki/entities/opencal.md) — OpenCAL** 是一套开源 CAL（Computed Axial Lithography）体积打印机与后处理平台。打印时旋转装有光敏树脂的容器，并从多个角度投射计算出的二维光图案；当目标区域累 `📅unknown` `[entity_page]`
 - [openCFS：有限元多物理场仿真](wiki/entities/opencfs.md) — openCFS（Coupled Field Simulation）** 是面向物理场及其耦合的开源有限元建模与仿真工具，可作为执行器、传感器和振动声学问题的分析候选。 `📅unknown` `[entity_page]`
 - [OpenClaw](wiki/entities/openclaw.md) — OpenClaw**（openclaw.ai，[GitHub: openclaw/openclaw](https://github.com/open `📅unknown` `[entity_page]`
 - [openJiuwen（开放九问）](wiki/entities/openjiuwen.md) — openJiuwen**（openjiuwen.com，GitHub org [openJiuwen-ai](https://githu `📅unknown` `[entity_page]`
