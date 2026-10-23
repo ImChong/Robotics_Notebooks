@@ -226,6 +226,11 @@ op: ingest
 
 归档 Viggle JST-2 官方发布与评测资料，新增世界模型实体页，并从 Marble 页面建立交叉链接；记录模型/API 的闭源状态及其与机器人仿真之间尚未验证的边界。
 
+## [2026-10-23] ingest | ACP：以接触规划连接动作先验与人形移动
+
+- 归档 arXiv 论文、项目页入口和代码/数据开放状态核查；项目页当前无法读取，开放状态标为待核实。
+- 新增 ACP 论文实体，并挂接到人形移动索引。
+
 ## [2026-10-23] ingest | Awesome-Affordance-Learning 清单逐篇入库：206 篇去重论文，新建 198 个索引级节点，8 篇复用站内既有页；新增技术地图并链入 affordance 综述页
 
 ## [2026-10-23] ingest | sources/models/zero-to-cad-qwen3-vl-2b.md 与 sources/datasets/zero-to-cad-100k.md — 收录 Zero-to-CAD 模型、精选集与论文，核实 Apache-2.0 发布范围
