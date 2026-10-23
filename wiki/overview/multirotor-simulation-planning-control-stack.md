@@ -90,7 +90,7 @@ summary: "多旋翼开源栈总览：PX4/ArduPilot 飞控与 MAVLink 协议、EG
 ## 为什么重要
 
 - 本站主线以 **腿式/人形** 为主，但 **空中 VLN、群体避障、视觉 Sim2Real** 与地面机器人共享「仿真—规划—低层控制—部署」方法论。
-- 十仓覆盖从 **纳级微四轴** 到 **标准多旋翼 + PX4** 的完整谱系；后续补上 [Quiver](../entities/project-quiver.md) 作为 **25 kg / ArduPilot** 开源机架，避免把「有飞控固件」当成「有可制造真机」。选型错误常见表现：在 PyBullet Gym 里调 PX4 参数、或用 AirSim 期望精确接触动力学。
+- 十一仓覆盖从 **纳级微四轴** 到 **标准多旋翼 + PX4 / ArduPilot** 的完整谱系；后续补上 [Quiver](../entities/project-quiver.md) 作为 **25 kg / ArduPilot** 开源机架，避免把「有飞控固件」当成「有可制造真机」。选型错误常见表现：在 PyBullet Gym 里调 PX4 参数、或用 AirSim 期望精确接触动力学。
 - 与 [DroneCAN / UAVCAN](../../sources/sites/cia_dronecan_uavcan.md) 衔接：PX4 外设总线与地面机器人 CAN 栈对照阅读。
 
 ## 流程总览
