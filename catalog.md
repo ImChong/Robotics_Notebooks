@@ -118,6 +118,7 @@
 - [Birdview](wiki/entities/birdview.md) — Birdview**（Qiuner/birdview，MIT）是面向 Codex、Claude Code、DeepSee `📅unknown` `[entity_page]`
 - [Blender（开源 3D 创作套件）](wiki/entities/blender.md) — Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑 `📅unknown` `[entity_page]`
 - [BLIP](wiki/entities/blip.md) — BLIP 统一理解与生成的图文预训练：通过自举过滤噪声网图，并联合对比、匹配与语言模型目标，为后续 BLIP-2 奠基。 `📅unknown` `[entity_page]`
+- [BONES-SEED：日常具身动作数据集](wiki/entities/bones-seed.md) — 一句话定义：** BONES-SEED 是面向人形机器人研究的动作捕捉库，提供日常行为、全身动作、语言描述与 SOMA / Unitree G1 兼容轨迹。 `📅unknown` `[entity_page]`
 - [book-to-skill（将技术资料编译为 Agent Skill）](wiki/entities/book-to-skill.md) — book-to-skill** 是一个开源资料编译器：把技术书籍、文档目录或研究资料集合整理成可由多个代理读取的 skill，并将章节内容拆分为按需加载的文件。 `📅unknown` `[entity_page]`
 - [booster_mjlab（Booster K1 × mjlab）](wiki/entities/booster-mjlab.md) — booster_mjlab** 是由 whIRLwind Amsterdam（Intelligent Robotics Lab）维护的开源项目 `📅unknown` `[entity_page]`
 - [Booster Robotics RoboCup Demo](wiki/entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 Booster Robotics 官方维护的开源项 `📅unknown` `[entity_page]`
@@ -4798,6 +4799,7 @@
 - [SG-CPG（arXiv:2609.25687）](wiki/entities/paper-sg-cpg-actuator-degradation.md) — SG-CPG**（*SG-CPG: Severity-Gated Central Pattern Generators for Adaptive Quadruped Locomotion unde `📅unknown` `[entity_page]`
 - [SG-WAM（语义引导）：让 WAM 的未来视频听懂指令](wiki/entities/paper-sg-wam-semantic-guidance.md) — SG-WAM**（*Text-Grounded and Spatial-aware Semantic Guidance for World-Action Models*；[arXiv:2608.0 `📅unknown` `[entity_page]`
 - [SGS：把 RL 训练预算投到策略能力前沿](wiki/entities/paper-sgs-2610-12465.md) — SGS（Success-Guided Sampling）** 是一项任务配置自适应采样方法：在 PPO 外层根据策略近期成功率调整 episode reset 分布，让并行仿真训练主要消耗在当前“ `📅unknown` `[entity_page]`
+- [SHAC：并行可微仿真加速策略学习](wiki/entities/paper-shac.md) — 一句话定义：** SHAC（Short-Horizon Actor-Critic）在 GPU 并行可微仿真上反传短视界轨迹梯度，并由 critic 近似窗口外的长期价值。 `📅unknown` `[entity_page]`
 - [Shallow-π：Flow-based VLA 的层蒸馏](wiki/entities/paper-shallow-pi.md) — Shallow-π**（*Knowledge Distillation for Flow-based VLAs*，[arXiv:2601.20262](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [Shape Your Body：多具身价值梯度机器人共设计](wiki/entities/paper-shape-your-body-value-gradient-design.md) — Shape Your Body**（Bohlinger & Peters，TU Darmstadt；[项目页](https://nico-bohlinger.github.io/shape-you `📅unknown` `[entity_page]`
 - [Shared Geometry as a Rosetta Stone：无配对数据的跨模态对齐](wiki/entities/paper-shared-geometry-rosetta.md) — Shared Geometry as a Rosetta Stone** 提出用两组嵌入各自的几何关系，估计一个全局正交映射，让独立训练的不同模态编码器在没有配对训练样本时实现粗粒度对应。 `📅unknown` `[entity_page]`
@@ -4917,6 +4919,7 @@
 - [SUAVE：统一视频、语言与动作的 Masked Diffusion 模型](wiki/entities/paper-suave-unified-video-action.md) — SUAVE** 展开为 *Single-vocabulary Unified Action-Video modEl*，将语言、视频帧和机器人动作表示为同一离散词表 token，再通过 masked `📅unknown` `[entity_page]`
 - [亚厘米级管道检测机器人：DEA 驱动的蠕动穿管软体机器人](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md) — A pipeline inspection robot for navigating tubular environments in the sub-centimeter scale**（Tang `📅unknown` `[entity_page]`
 - [SUPER ODOMETRY 2.0](wiki/entities/paper-super-odometry-2.md) — SUPER ODOMETRY 2.0: Resilient Odometry via Hierarchical Adaptation**（[arXiv:2608.25427](https://ar `📅unknown` `[entity_page]`
+- [SuperDyno：可微神经动力学驱动的人形全身控制](wiki/entities/paper-superdyno.md) — 一句话定义：** SuperDyno 从模拟轨迹学习可微神经动力学模型，再结合监督学习与强化学习进行大规模人形全身跟踪。 `📅unknown` `[entity_page]`
 - [SuperMap：面向语言导航的 4D 空间记忆](wiki/entities/paper-supermap.md) — SuperMap 把物体在哪里、如何变化和彼此关系写入持续更新的三维地图及时间历史，为语言导航提供外部空间记忆。 `📅unknown` `[entity_page]`
 - [SuperMimic：用一个可微世界模型扩展人形全身控制](wiki/entities/paper-supermimic.md) — SuperMimic**（*Scaling Humanoid Whole-Body Control with One Differentiable World Model*，arXiv:2610. `📅unknown` `[entity_page]`
 - [SuperNav：面向任意任务与场景的 Agentic 导航系统](wiki/entities/paper-supernav-agentic-navigation.md) — SuperNav**（*An Agentic Navigation System for Any Task in Any Scene*，arXiv:[2610.12126](https://arx `📅unknown` `[entity_page]`
