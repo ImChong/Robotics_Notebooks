@@ -2,12 +2,13 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-19
+updated: 2026-10-23
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cref.md
+  - ../entities/paper-acp-humanoid-mobility.md
   - ../entities/paper-redact-robust-perceptive-locomotion.md
   - ../concepts/humanoid-policy-observation-inputs.md
   - ../concepts/humanoid-policy-reward-functions.md
@@ -104,6 +105,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 ### 感知行走与复杂地形
 
 - [SSR 开放世界人形穿越](../entities/paper-ssr-humanoid-open-world-traversal.md) — 想象落脚点 + 潜空间对称 + 分地形 AMP，楼梯/沟壑/高台与户外长程
+- [ACP：注意力式接触规划人形移动](../entities/paper-acp-humanoid-mobility.md) — 用接触规划与条件跟踪器连接动作先验和强化学习地形适应（arXiv:2610.31608）
 - [SOLO 长程感知行走](../entities/paper-solo.md) — QR 逐格高程 + TA-MSE；天工 Omni 单胸深相机零样本 **1.5 km**（未开源）
 - [FootQuery 深度历史触地检索](../entities/paper-footquery-perceptive-humanoid-locomotion.md) — per-foot 下一触地点 query 深度历史；G1 户外/室内楼梯·平台·沟；arXiv:2609.21447（无官方代码）
 - [CReF 深度条件融合行走](../entities/paper-cref.md) — 无 2.5D 中间层的单阶段 raw 深度；本体查询注意 + GRU highway + 可支撑落脚奖励；X2 Ultra 零样本
