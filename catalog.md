@@ -797,6 +797,7 @@
 - [Kinova Gen3](wiki/entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
 - [KITTI Stereo Benchmark](wiki/entities/kitti-stereo-benchmark.md) — KITTI** 立体评测（2012 / `📅unknown` `[entity_page]`
 - [Ansys MCP Server（多产品版）（knewnothing-git/ansys-mcp-server）](wiki/entities/knewnothing-git-ansys-mcp-server.md) — Ansys MCP Server（多产品版）（knewnothing-git/ansys-mcp-server）是与 vorobjewsen30-max 的同名项目是不同仓库。 `📅unknown` `[entity_page]`
+- [Konnect（KiCad 的 AI/MCP 设计插件）](wiki/entities/konnect.md) — Konnect** 是面向 KiCad 10 的开源原生插件及 MCP 服务端：AI 助手可通过 MCP 调用原理图编辑、PCB 布局与布线、设计检查及制造导出能力。它位于机器人硬件设计流程的 E `📅2026-10-24` `[entity_page]`
 - [KUAVO-VLA-1.0](wiki/entities/kuavo-vla-1.md) — KUAVO-VLA-1.0** 是乐聚面向 Kuavo 人形机器人与工业操作场景发布的垂域视觉-语言-动作模型，目标是把任务指令、视觉观察和机器人动作策略连接起来。 `📅unknown` `[entity_page]`
 - [Kyber Labs](wiki/entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](wiki/entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`

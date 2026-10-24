@@ -245,6 +245,11 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-24] ingest | Konnect — 归档 KiCad 10 的 AI/MCP PCB 设计插件
+
+- 核查官方仓库 README 与许可证：源码已公开，标注 AGPL-3.0，项目处于 Beta。
+- 收录 Rust/MCP 与 KiCad IPC 工作流，补充机器人板级硬件设计中的工程复核边界。
+
 ## [2026-10-24] ingest | 收录 HumanoidPose 视频人形姿态估计论文、ETH 项目页与待发布代码状态
 
 ## [2026-10-24] ingest | Qucs-S 电路仿真工具
