@@ -239,6 +239,12 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+# Ingest: Phoenix-MWA
+
+意图：归档 Anyverse Dynamics 与中科院自动化所强化学习团队的机器人操作项目。
+开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
+关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
+
 ## [2026-10-24] ingest | OmniInteract：归档论文与项目页，并将双人形接触交互接入多机协调知识图
 
 - arXiv:2610.26043 提出 SCAR 表面接触感知重定向与基于 SONIC 冻结先验的流匹配残差策略。

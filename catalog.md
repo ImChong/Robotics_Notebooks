@@ -5320,6 +5320,7 @@
 - [PhAI Labs（科学 AI 研究机构）](wiki/entities/phai-labs.md) — PhAI Labs 是以模型和数据基础设施推动科学发现为公开定位的研究机构，发布 JEPA-Anything、RSI-Anything、ScienceBuddy、ScienceIDE 等研究项目。 `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
+- [Phoenix-MWA：从世界预测到接触反馈操作](wiki/entities/phoenix-mwa.md) — Phoenix** 是 Anyverse Dynamics 与中科院自动化所强化学习团队联合开发的机器人操作学习系统，由视觉—动作预训练、触觉接触技能学习和世界模型中的强化学习后训练组成。 `📅unknown` `[entity_page]`
 - [Physical Commonsense（Generalist 产业观点）](wiki/entities/physical-commonsense-generalist.md) — The Dark Matter of Robotics: Physical Commonsense**（Andy Zeng & Generalist Team，[2026-01-29](https `📅unknown` `[entity_page]`
 - [Physical Intelligence Pi API beta](wiki/entities/physical-intelligence-pi-api.md) — Pi API 是 Physical Intelligence 面向机器人开发者开放 beta 的托管服务：上传机器人数据，在云端基础设施上微调策略，再通过 hosted gateway 为机器人提供模 `📅unknown` `[entity_page]`
 - [Physical RSI Research Map（SAIL Research Lab）](wiki/entities/physical-rsi-research-map.md) — Physical RSI — Physical Recursive Self-Improvement** 是 SAIL-Research-Lab 维护的具身递归改进研究地图。项目将自己定位为遵循配 `📅unknown` `[entity_page]`
