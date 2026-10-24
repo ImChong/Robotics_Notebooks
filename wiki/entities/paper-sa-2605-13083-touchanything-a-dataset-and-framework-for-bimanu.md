@@ -1,11 +1,15 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
-status: complete
-updated: 2026-10-06
+project_id: touchanything-egotouch
 arxiv: "2605.13083"
+project: https://jianyi2004.github.io/TouchAnything-Website/
+code: https://github.com/Jianyi2004/TouchAnything
+dataset: https://huggingface.co/datasets/zhouzhoujy/EgoTouch
 venue: "arXiv 2026"
-summary: "Introduces EgoTouch, a large-scale multi-view egocentric dataset with dense tactile supervision for bimanual hand-object interaction, comprising 208 manipulation tasks spanning 1,891 episodes"
+tags: [paper, hitsz, meituan, tsinghua, awesome-egocentric-vision, sun254667-ego, egocentric, tactile, manipulation, visuo-tactile]
+status: complete
+updated: '2026-10-24'
+summary: "TouchAnything 使用第一人称与腕部视频预测双手触觉；EgoTouch 提供 208 项任务、1,891 段带压力监督的人手操作数据。"
 related:
   - ../entities/awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
@@ -13,91 +17,143 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
+  - ../concepts/visuo-tactile-fusion.md
+  - ../concepts/tactile-sensing.md
+  - ./dataset-opentouch.md
 sources:
+  - ../../sources/papers/touchanything_arxiv_2605_13083.md
+  - ../../sources/sites/touchanything-github-io.md
+  - ../../sources/repos/touchanything.md
   - ../../sources/papers/sun_awesome_ego_2605_13083_touchanything-a-dataset-and-framework-fo.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
-# TouchAnything
-
-**TouchAnything: A Dataset and Framework for Bimanual Tactile Estimation from Egocentric Video** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 028/249** 篇，分组 **22 Hand-Object Interaction & Fine-grained Activity**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# TouchAnything 与 EgoTouch
 
 ## 一句话定义
 
-Introduces EgoTouch, a large-scale multi-view egocentric dataset with dense tactile supervision for bimanual hand-object interaction, comprising 208 manipulation tasks spanning 1,891 episodes
+**TouchAnything** 是从第一人称多视角视频预测双手触觉压力的基线框架；**EgoTouch** 是为其建立的同步视触觉人手操作数据集。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称可穿戴视角感知 |
-| HOI | Hand–Object Interaction | 手–物交互理解 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| VLM | Vision-Language Model | 视觉–语言模型 |
+| --- | --- | --- |
+| RGB | Red-Green-Blue | 数据中的彩色相机图像 |
+| IoU | Intersection over Union | 评估接触区域重叠的指标 |
+| HDF5 | Hierarchical Data Format version 5 | 仓库采用的 episode 数据容器 |
+| DDP | Distributed Data Parallel | README 提供的分布式训练入口 |
 
 ## 为什么重要
 
-- Introduces EgoTouch, a large-scale multi-view egocentric dataset with dense tactile supervision for bimanual hand-object interaction, comprising 208 manipulation tasks spanning 1,891 episodes
-- 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+- 视频提供易扩展的全局上下文，腕部视角能补充被头戴相机遮挡的手物接触区域。
+- 数据将影像、手姿和真实可穿戴触觉压力同步起来，可用于研究从视觉中学习接触预测，而不需要在每段视频上都依赖机器人末端触觉硬件。
+- 与机器人触觉策略不同，该工作聚焦人手操作数据的触觉估计；用于机器人学习时还需处理人机形态和传感器映射差异。
 
-## 核心信息
+## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 028/249 |
-| 分组 | 22 Hand-Object Interaction & Fine-grained Activity |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2605.13083> |
+EgoTouch 收录室内外人手操作：208 项任务、1,891 段 episode，含头戴第一人称 RGB、双腕 RGB、双手 42 关节 3D 姿态和连续压力图。项目页给出约 2M 帧、约 1,000 个物体的统计。
 
-## 核心机制（归纳）
+TouchAnything 以第一人称图像为主输入；共享 DINOv2 视觉编码器提取各视角特征，视角嵌入区分相机位置，跨视角 Transformer 注意力融合互补观察。训练时使用 view dropout，使模型能在缺少腕部输入时运行。输出是双手压力图预测，不应直接解释为以牛顿计的接触力。
 
-### 策展导读要点
+## 训练与推理流程
 
-Introduces EgoTouch, a large-scale multi-view egocentric dataset with dense tactile supervision for bimanual hand-object interaction, comprising 208 manipulation tasks spanning 1,891 episodes
+原始数据由转换脚本整理成 HDF5 episode，随后分布式训练并运行推理评测：
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+```mermaid
+flowchart LR
+    A["EgoTouch 原始多视角数据"] --> B["scripts/run_convert_to_hdf5.sh"]
+    B --> C["同步 HDF5 episode"]
+    C --> D["scripts/run_train_ddp.sh"]
+    D --> E["TouchAnything 触觉预测模型"]
+    E --> F["scripts/run_inference.sh"]
+    F --> G["指标与可视化结果"]
+```
 
-## 评测与指标
+## 源码运行时序图
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2605.13083) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as "研究者"
+    participant D as "EgoTouch 数据集"
+    participant C as "run_convert_to_hdf5.sh"
+    participant T as "run_train_ddp.sh"
+    participant I as "run_inference.sh"
+    U->>D: 下载原始 episode 与 split
+    U->>C: 运行数据转换
+    C-->>T: 写入 datasets/EgoTouch_hdf5
+    T->>D: 加载 HDF5 并训练
+    T-->>I: 保存训练 checkpoint
+    U->>I: 执行推理与评测
+    I-->>U: 输出指标与可视化
+```
+
+图描述 README 的离线数据训练和评测路径，不代表机器人在线力控部署。
+
+## 实验与评测
+
+- 论文 / 项目页报告：加入腕部视角通常优于只使用第一人称视角。
+- 最高相对改进为 Contact IoU 5.0%、Volumetric IoU 6.1%；这些是相对提升，不是绝对百分点。
+- 评测覆盖已见与未见物体及不同相机视角配置；解读时应区分单视角和多视角输入条件。
 
 ## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 的 **22 Hand-Object Interaction & Fine-grained Activity** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+与 OpenTouch 等直接同步发布视觉和触觉的具身数据相比，EgoTouch 的突出采集设计是头戴视角加双腕相机，并提供双手姿态与压力监督；TouchAnything 进一步提供多视角到触觉的基准模型。两类工作的数据定义和任务协议不同，跨论文比较前应先对齐压力来源、视角和评价指标。
 
 ## 结论
 
-**这一页能给你的是「TouchAnything」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**一句话总判：这项工作的主要价值在于把真实人手压力监督、腕部视角和第一人称视频结合起来，检验视觉能否补出遮挡下的触觉线索。**
 
-- 可确证的只有清单坐标：分组 **22 Hand-Object Interaction & Fine-grained Activity**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 复现从公开 HDF5 数据和转换脚本开始；确认数据 split 与模型 checkpoint 的实际可用性。
+2. 做消融时按 ego-only、ego + left wrist、ego + dual wrists 分开比较，避免把输入增加带来的收益归因到模型结构。
+3. Contact IoU 和 Volumetric IoU 的相对增益不能直接当作下游机器人操作成功率。
+4. 将压力图用于机器人时需重新标定传感器与坐标，并验证人手到机器人手的迁移。
 
-## 常见误区
+## 工程实践
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+| 项 | 公开信息 |
+| --- | --- |
+| 代码许可 | MIT |
+| 环境 | environment.yaml 创建 Conda 环境 |
+| 数据转换 | scripts/run_convert_to_hdf5.sh |
+| 训练 | scripts/run_train_ddp.sh |
+| 推理评测 | scripts/run_inference.sh |
+| 数据率 | README 标注 HDF5 episode 为 30 FPS |
+| 压力网格 | README HDF5 为 21×21；项目页采集描述为 16×16，使用前需核对转换定义 |
+| 机器人部署 | 公开 README 提供训练与推理评测，不等同于可直接部署到机器人上的实时力控策略 |
+
+## 局限与风险
+
+- 主要学习信号来自穿戴压力手套和人手动作，转移到特定机器人灵巧手需处理形态、坐标与传感器差异。
+- 预测压力分布不自动给出经物理标定的接触力，也不替代闭环触觉反馈。
+- README 的五月更新曾提示数据上传进行中；虽然当前 Hugging Face 页面已显示数据文件，复现前仍应校验需要的 episode、split 与版本。
+- 16×16 采集描述与 21×21 HDF5 网格存在表达差异，避免混用其物理含义。
+
+## 策展索引
+
+TouchAnything 同时由 Awesome Egocentric Vision 收录为第 028/249 项，分组为 “Hand-Object Interaction & Fine-grained Activity”。该策展入口保留在本页的来源与关联链接中；本页统一承载论文、项目页、代码与数据集的研究信息。
 
 ## 关联页面
 
-- 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
-- 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
-- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- [视触觉融合](../concepts/visuo-tactile-fusion.md)
+- [触觉感知](../concepts/tactile-sensing.md)
+- [Manipulation 任务](../tasks/manipulation.md)
+- [OpenTouch](./dataset-opentouch.md)
+- [Awesome Egocentric Vision](./awesome-egocentric-vision.md)
+- [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_ego_2605_13083_touchanything-a-dataset-and-framework-fo.md`](../../sources/papers/sun_awesome_ego_2605_13083_touchanything-a-dataset-and-framework-fo.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
-- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2605.13083>
+- [论文与复现入口](../../sources/papers/touchanything_arxiv_2605_13083.md)
+- [项目页与数据开放核查](../../sources/sites/touchanything-github-io.md)
+- [官方代码仓库归档](../../sources/repos/touchanything.md)
+- [Awesome Egocentric Vision 对应条目](../../sources/papers/sun_awesome_ego_2605_13083_touchanything-a-dataset-and-framework-fo.md)
+- [Awesome Egocentric Vision 清单](../../sources/papers/sun_awesome_ego_catalog.md)
 
 ## 推荐继续阅读
 
+- [arXiv 论文](https://arxiv.org/abs/2605.13083)
+- [TouchAnything 项目页](https://jianyi2004.github.io/TouchAnything-Website/)
+- [EgoTouch 数据集](https://huggingface.co/datasets/zhouzhoujy/EgoTouch)
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2605.13083)
