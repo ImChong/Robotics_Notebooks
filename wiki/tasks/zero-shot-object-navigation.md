@@ -15,6 +15,7 @@ related:
   - ../entities/paper-rpv-semnav.md
   - ../entities/paper-wildos-open-vocabulary-object-search.md
   - ../entities/paper-mocap-mobile-code-as-policies.md
+  - ../entities/paper-rtnav.md
   - ../entities/habitat-sim.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/rpv_semnav_arxiv_2607_25448.md
   - ../../sources/papers/graph_mambanav_arxiv_2608_13723.md
   - ../../sources/papers/mocap_arxiv_2610_20998.md
+  - ../../sources/papers/rtnav_arxiv_2608_26496.md
 summary: "零样本目标导航（ZSON / ObjectNav）：在未见环境中按开放词汇物体目标探索并到达，无需该目标类别的导航微调；常见 Habitat 评测与四足/轮腿真机部署。"
 ---
 
@@ -92,6 +94,8 @@ flowchart TB
 | 户外长程搜索 | [WildOS](../entities/paper-wildos-open-vocabulary-object-search.md)：用视觉 frontier / 可通行性评分稀疏几何图，并融合多视角线索定位远处目标 |
 | 面向操作的末段站位 | [MoCaP](../entities/paper-mocap-mobile-code-as-policies.md)：用人类视频的空间记忆找物，以接近方向先验引导底盘位姿搜索，再检查机器人自身的可达性与碰撞约束 |
 | 真机 | 四足 Go2、轮腿双足等 + MPPI/局部规划 |
+
+- **实时系统与墙钟评测：** [RTNav](../entities/paper-rtnav.md) 将 Habitat 以 30 Hz 墙钟持续推进，并行运行感知、建图、规划和导航；用 SCT 补充 SR/SPL，显式计入 VLM 推理等待时间。
 
 - **图关系 + 长时序方法：** [Graph-MambaNav](../entities/paper-sa-2608-13723-graph-mambanav.md) 在 ObjectNav 对象图里用目标关系先验控制 Graph-Mamba 扫描顺序，并以逐物体 Mamba 记忆补长程上下文；AI2-THOR / RoboTHOR 有仿真评测，但真机证据目前是轮式底盘找书演示。
 
