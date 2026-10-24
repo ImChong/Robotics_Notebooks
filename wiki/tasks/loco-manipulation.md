@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-23
+updated: 2026-10-24
 sources:
   - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
   - ../../sources/sites/wholebodydex-project.md
@@ -139,6 +139,8 @@ flowchart TD
 涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。
 
 **全身接触重定位实例：** [Whole-Body Dexterity](../entities/paper-whole-body-dexterity.md) 将手臂和躯干用作物体支撑面，通过学习接触区域之间的转换，在 Unitree G1 上完成箱体腋下夹持、搬运和放置。
+
+**视频驱动的人形搬运：** [MOVER](../entities/paper-mover-humanoid-carrying.md) 将人类搬运视频重定向并扩增为物体/接触参考，再通过三阶段 RL、DAgger-PPO 与 QuatNet 迁移到天工 3.0 的 RGB-D 无动捕搬运；视觉真机每个摆放点仅 10 次测试。
 
 ### 3. 高动态与精细度平衡
 在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。产业侧 [Skild Physical Self-Play](../entities/skild-physical-self-play.md) 以 **Isaac Sim 人形足球自博弈** 演示 **score-only RL** 涌现运球/铲球并 Sim2Real（闭源、无公开 benchmark）。
@@ -491,6 +493,7 @@ flowchart TD
 ## 参考来源
 
 - [Fiatlux 论文与评测边界](../../sources/papers/fiatlux_arxiv_2609_38216.md)
+- [MOVER 视频驱动的人形搬运](../../sources/papers/from_video_to_vision_arxiv_2610_14561.md)
 
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身 loco-manip 产品叙事归档
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集

@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, x-humanoid, tienkung, vla, robomind, sim2real, hardware]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-24
 related:
   - ./tienkung-humanoid-open-source.md
   - ./open-source-humanoid-hardware.md
