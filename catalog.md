@@ -3311,6 +3311,7 @@
 - [PhysCoRe（物理修正残差世界模型 · 材料感知可变形动力学）](wiki/entities/paper-physcore.md) — PhysCoRe**（*Physics-Corrected Residual World Models for Material-Aware Deformable Dynamics*，[arXiv `📅unknown` `[entity_page]`
 - [PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）](wiki/entities/paper-physforge-physics-grounded-3d-assets.md) — PhysForge** 是 HKU MMLab 与腾讯混元等合作者的论文工作（arXiv:2605.05163，项目页 [PhysForge](https://hku-mmlab.github.i `📅unknown` `[entity_page]`
 - [PhySGA：物理空间中的智能体式 3D 组合](wiki/entities/paper-physga.md) — PhySGA**（*Physics-Space Grounded Agentic Framework*；论文 *PhySGA: A Physics-Space Grounded Agentic F `📅unknown` `[entity_page]`
+- [PhysibleMDM：推理时优化动作扩散噪声以提升物理可行性](wiki/entities/paper-physiblemdm.md) — PhysibleMDM**（*PhysibleMDM: Enforcing Inference-Time Physical Feasibility Constraints on Motion Di `📅unknown` `[entity_page]`
 - [Physical Agentic AI：可验证的多机器人编排](wiki/entities/paper-physical-agentic-ai.md) — Physical Agentic AI**（*An Architecture for Orchestrating a Robot Crew with LLMs*，[arXiv:2608.22657 `📅unknown` `[entity_page]`
 - [Physical AI is enabled by mechanical hardware](wiki/entities/paper-physical-ai-mechanical-hardware.md) — Physical AI is enabled by mechanical hardware**（Jonathan W. Hurst；[*Science Robotics* **11**(117)， `📅unknown` `[entity_page]`
 - [Physics-Consistent HRC Benchmark：接触丰富辅助护理评测](wiki/entities/paper-physics-consistent-hrc-benchmark.md) — Physics-Consistent Benchmark for Contact-Rich Human-Robot Interaction in Assistive Care**（[arXiv:2 `📅unknown` `[entity_page]`
