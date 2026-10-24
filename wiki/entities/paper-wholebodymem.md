@@ -43,3 +43,8 @@ HuMeGo 包含六项仿真和六项真实 Unitree G1 任务。论文摘要报告�
 - [WholeBodyMem 项目页归档](../../sources/sites/wholebodymem.md)
 - [arXiv:2610.31166](https://arxiv.org/abs/2610.31166)
 - [官方项目页](https://memory-before-goal.github.io/)
+
+## 关联页面
+
+- [VLA](../methods/vla.md)
+- [Loco-Manipulation](../tasks/loco-manipulation.md)
