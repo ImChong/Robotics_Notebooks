@@ -185,7 +185,9 @@ sources:
 
 **PrismWAM**（[arXiv:2610.26564](../entities/paper-prismwam.md)）把外观语义目标与动作相关物理状态分开：预测目标 RGB 提供语义约束，未来深度 rollout 作为生成动作块的中间条件；官方 README 提供代码、训练配方及 RoboTwin 2.0、RoboDojo、LIBERO 权重。
 
-**Phoenix-MWA** 是将 WAM 用于真实机器人操作的系统实例：它把未来视频与动作联合预测、运动—触觉接触表征，以及在学习到的视觉触觉模型中进行策略优化接在一条训练链路上；实现与开放边界见 [Phoenix 实体页](../entities/phoenix-mwa.md)。\n\n## 英文缩写速查
+**Phoenix-MWA** 是将 WAM 用于真实机器人操作的系统实例：它把未来视频与动作联合预测、运动—触觉接触表征，以及在学习到的视觉触觉模型中进行策略优化接在一条训练链路上；实现与开放边界见 [Phoenix 实体页](../entities/phoenix-mwa.md)。
+
+## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
