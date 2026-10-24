@@ -239,6 +239,17 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+## [2026-10-24] ingest | OmniInteract：归档论文与项目页，并将双人形接触交互接入多机协调知识图
+
+- arXiv:2610.26043 提出 SCAR 表面接触感知重定向与基于 SONIC 冻结先验的流匹配残差策略。
+- 官方项目页提供演示入口；截至入库日未见可运行代码或数据下载链接。
+- 建立论文实体并从人形多机协调概念页添加关联入口。
+
+## [2026-10-24] ingest | DistScene 单图组合式 3D 场景生成
+
+- 归档论文与官方项目页；官方代码、checkpoint、数据集仍标为待发布。
+- 编译 DistScene 实体页并关联 Real2Sim 纵深路线，区分几何指标与机器人仿真可用性。
+
 ## [2026-10-24] ingest | RTNav — 实时零样本物体导航与异步部署
 
 - 归档论文、项目主页、仿真评测代码和 Stretch 3 / Jetson AGX Thor 部署仓库。

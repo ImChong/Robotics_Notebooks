@@ -1974,6 +1974,7 @@
 - [Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing](wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md) — 一句话定义**：在四足 **足底** 嵌入 **低成本红外 ToF 接近传感器**，把 **接触前（pre-contact）** 的局部几何读数直接作为 RL 观测，使机器人在 **踏石、碎石、沟 `📅unknown` `[entity_page]`
 - [DissectVLA（arXiv:2609.28161）](wiki/entities/paper-dissect-vla-post-training.md) — Dissecting Advantage-Guided Post-Training for Vision-Language-Action Policies**（[项目页](https://diss `📅unknown` `[entity_page]`
 - [从分布式全臂交互中学习推断与操作](wiki/entities/paper-distributed-whole-arm-interaction-soft-robot.md) — Learning to infer and manipulate through distributed whole-arm interaction in a soft robot**（Chuha `📅unknown` `[entity_page]`
+- [DistScene](wiki/entities/paper-distscene.md) — DistScene 从单张图像生成共享坐标系中的环境与独立物体，再用场景上下文精修局部几何。 `📅unknown` `[entity_page]`
 - [DiT：可扩展的 Transformer 扩散模型](wiki/entities/paper-dit-scalable-diffusion-transformers.md) — DiT**（*Scalable Diffusion Models with Transformers*，[arXiv:2212.09748](https://arxiv.org/abs/2212. `📅unknown` `[entity_page]`
 - [DiT4DiT（双 DiT 联合视频–动作建模）](wiki/entities/paper-dit4dit-video-action-model.md) — DiT4DiT**（*Jointly Modeling Video Dynamics and Actions for Generalizable Robot Control*，arXiv:2603 `📅unknown` `[entity_page]`
 - [Dita：可扩展的扩散 Transformer 通才 VLA](wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md) — Dita**（*Dita: Scaling Diffusion Transformer for Generalist Vision-Language-Action Policy*，[arXiv:2 `📅unknown` `[entity_page]`
@@ -3188,6 +3189,7 @@
 - [OmniContact（Chaining Meta-Skills via Contact Flow）](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md) — OmniContact**（*Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation `📅unknown` `[entity_page]`
 - [OmniDex](wiki/entities/paper-omnidex.md) — OmniDex**（*Scaling Dexterous Hand Grasping to Diverse Cluttered Scenes*，arXiv:2610.11194）同时给出一个杂乱场 `📅unknown` `[entity_page]`
 - [OmniHOI](wiki/entities/paper-omnihoi.md) — OmniHOI**（*Dexterous Hand-Object Interaction from Monocular Human Video*，arXiv:2610.10855）把一段单目 RG `📅unknown` `[entity_page]`
+- [OmniInteract：双人形全身交互控制](wiki/entities/paper-omniinteract-dual-humanoids.md) — OmniInteract**（*Towards Unified Whole-Body Interaction Control for Dual Humanoids*，[arXiv:2610.260 `📅unknown` `[entity_page]`
 - [OmniManip](wiki/entities/paper-omnimanip.md) — OmniManip**（arXiv:2501.03841）收录于 Lumina [Embodied-AI-Guide 微信专 `📅unknown` `[entity_page]`
 - [OmniMimic（arXiv:2609.20566）](wiki/entities/paper-omnimimic.md) — OmniMimic**（*Dynamics-completed Motion Augmentation for Multi-style Omnidirectional Quadruped Loco `📅unknown` `[entity_page]`
 - [OmniTacTune：视觉策略的触觉残差真机适应](wiki/entities/paper-omnitactune-tactile-residual-adaptation.md) — OmniTacTune**（*Policy-Agnostic Real-World RL for Tactile Residual Adaptation of Visual Policies*，U `📅unknown` `[entity_page]`
