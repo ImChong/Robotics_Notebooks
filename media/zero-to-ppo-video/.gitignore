@@ -1,6 +1,7 @@
-# 依赖与中间产物不入库：配音、渲染帧、成片与封面都在 out/
+# 依赖与中间产物不入库：配音、渲染帧、成片与封面都在 out/；URDF 与网格在 assets/（python3 fetch_robots.py 下载）
 node_modules/
 package-lock.json
 out/
 stage.*.built.html
 __pycache__/
+assets/

@@ -161,7 +161,7 @@
     var floor = el('line', { x1: 20, y1: 388, x2: 780, y2: 388, 'stroke-width': 3 }, back);
     K.paint(floor, null, E.BORDER);
     for (var x = 40; x <= 760; x += 60) K.paint(el('line', { x1: x, y1: 390, x2: x, y2: 398, 'stroke-width': 2 }, back), null, E.GRID);
-    // 门高 240，约为机器人身高（≈ 199）的 1.2 倍：1.7 m 的机器人配 2 m 的门，比例才对
+    // 门高 240：G1 身高 1.32 m 画出来约 165，门按同一比例约 1.9 m，比例才对
     var door = el('rect', { x: 712, y: 148, width: 58, height: 240, rx: 4, 'stroke-width': 2.5 }, back);
     K.paint(door, E.S2, E.INK2);
     var knob = K.paint(el('circle', { cx: 760, cy: 272, r: 4 }, back), E.INK2);
@@ -174,73 +174,11 @@
     return { back: back, floor: floor, door: door, knob: knob, doorLabel: doorLabel, boxG: boxG, box: box, tape: tape };
   };
 
-  /* ── 侧视人形机器人（朝 +x），本地坐标里髋在 (0, 302)，脚底在 y = 388，头顶约 y = 190。
-     place({ x, rot, pivot, scale, dy })：先在本地绕 pivot（本地坐标）转 rot 度、以脚底 (0,388) 为心缩放，再平移到 x。
-     legs(near, far)：两条腿 [髋角, 膝角]（度，0 = 竖直向下，正值朝 +x，膝角也是全局角）；arm([肩, 肘])。
-     walk(ph)：kit 的 poseWalk 步态；腿长 42 + 42、髋摆 ±22°，一个周期约走 4·84·sin22° ≈ 126，ph = 已走距离 / 126 时脚不打滑。
-     pts()：近腿髋 / 膝 / 踝与摄像头、小盒子的本地坐标（加上 x 就是画面坐标，未计旋转缩放）。 ── */
-  E.robot = function (parent, X) {
-    var outer = el('g', {}, parent), g = el('g', {}, outer);
-    var R = Math.PI / 180;
-    function seg(len, ang, p) { return [p[0] + len * Math.sin(ang * R), p[1] + len * Math.cos(ang * R)]; }
-    function line(w, c, parentG) { var l = el('line', { 'stroke-width': w, 'stroke-linecap': 'round' }, parentG || g); K.paint(l, null, c); return l; }
-    function put(l, a, b) { l.setAttribute('x1', a[0].toFixed(1)); l.setAttribute('y1', a[1].toFixed(1)); l.setAttribute('x2', b[0].toFixed(1)); l.setAttribute('y2', b[1].toFixed(1)); }
-    var far = el('g', {}, g); op(far, 0.5);
-    var farThigh = line(7, E.INK2, far), farShin = line(7, E.INK2, far), farFoot = line(4, E.INK2, far);
-    var torso = el('rect', { x: -15, y: 228, width: 30, height: 72, rx: 8, 'stroke-width': 3 }, g);
-    K.paint(torso, E.S2, E.INK);
-    var neck = line(4, E.INK); put(neck, [0, 222], [0, 228]);
-    var head = el('circle', { cx: 0, cy: 206, r: 16, 'stroke-width': 3 }, g);
-    K.paint(head, E.S2, E.INK);
-    var cam = K.paint(el('rect', { x: 5, y: 199, width: 12, height: 8, rx: 2 }, g), E.INK2);
-    var thigh = line(8, E.INK), shin = line(8, E.INK), foot = line(4, E.INK);
-    var upper = line(6, E.INK), fore = line(6, E.INK);
-    var imu = K.paint(el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, g), E.MUT);  // 画在手臂之后，不被挡住
-    var hipDot = K.paint(el('circle', { r: 5 }, g), E.INK), kneeDot = K.paint(el('circle', { r: 5 }, g), E.INK), ankleDot = K.paint(el('circle', { r: 5 }, g), E.INK);
-    var P = { hip: [0, 302], knee: [0, 344], ankle: [0, 386], cam: [11, 203], imu: [0, 255], shoulder: [0, 238] };
-    var legA = [4, 0], legB = [-4, 0], armA = [8, 4];
-    function leg(hipP, a, th, sh, ft) {
-      var k = seg(42, a[0], hipP), an = seg(42, a[1], k);
-      put(th, hipP, k); put(sh, k, an); put(ft, [an[0] - 4, an[1] + 2], [an[0] + 18, an[1] + 2]);
-      return [k, an];
-    }
-    function redraw() {
-      var kn = leg([0, 302], legA, thigh, shin, foot);
-      leg([4, 302], legB, farThigh, farShin, farFoot);
-      P.knee = kn[0]; P.ankle = kn[1];
-      [[hipDot, P.hip], [kneeDot, P.knee], [ankleDot, P.ankle]].forEach(function (d) { d[0].setAttribute('cx', d[1][0].toFixed(1)); d[0].setAttribute('cy', d[1][1].toFixed(1)); });
-      var e = seg(30, armA[0], P.shoulder); put(upper, P.shoulder, e); put(fore, e, seg(28, armA[1], e));
-    }
-    var state = { x: X || 0, rot: 0, pivot: [0, 388], scale: 1, dy: 0 };
-    function place(o) {
-      for (var k in o) state[k] = o[k];
-      outer.setAttribute('transform', 'translate(' + state.x.toFixed(2) + ' ' + state.dy.toFixed(2) + ') translate(0 388) scale(' + state.scale.toFixed(4) + ') translate(0 -388)');
-      g.setAttribute('transform', state.rot ? 'rotate(' + state.rot.toFixed(2) + ' ' + state.pivot[0] + ' ' + state.pivot[1] + ')' : '');
-    }
-    redraw(); place({});
-    return {
-      g: outer, body: g, head: head, cam: cam, imu: imu, torso: torso, neck: neck,
-      thigh: thigh, shin: shin, foot: foot, far: far, upper: upper, fore: fore,
-      hipDot: hipDot, kneeDot: kneeDot, ankleDot: ankleDot,
-      nearLeg: [thigh, shin, foot, hipDot, kneeDot, ankleDot],
-      place: place, state: state,
-      legs: function (near, farA) { legA = near; legB = farA || legB; redraw(); },
-      arm: function (a) { armA = a; redraw(); },
-      stand: function () { legA = [4, 0]; legB = [-4, 0]; armA = [8, 4]; redraw(); },
-      walk: function (ph) { var w = K.poseWalk(ph); legA = w.legA; legB = w.legB; armA = [w.armA[0] * 0.8, w.armA[1] * 0.8]; redraw(); },
-      pts: function () { return P; },
-      // 近腿描边换色（如执行时变 warn）；dash 为虚线；c 为空恢复 ink
-      legStyle: function (c, dash, opacity) {
-        // 虚线时用平头线帽，否则圆头会把空隙填满、看起来还是实线
-        [thigh, shin, foot].forEach(function (l) { l.style.stroke = c || E.INK; l.setAttribute('stroke-dasharray', dash || ''); l.setAttribute('stroke-linecap', dash ? 'butt' : 'round'); });
-        [hipDot, kneeDot, ankleDot].forEach(function (d) { d.style.fill = c || E.INK; });
-        var o = opacity === undefined ? 1 : opacity;
-        [thigh, shin, foot, hipDot, kneeDot, ankleDot].forEach(function (n) { op(n, o); });
-        far.querySelectorAll('line').forEach(function (l) { l.setAttribute('stroke-dasharray', dash || ''); l.setAttribute('stroke-linecap', dash ? 'butt' : 'round'); });
-        op(far, 0.5 * o);
-      }
-    };
-  };
+  /* ── 侧视人形机器人 = Unitree G1 的 URDF（Robot Description Gallery Online 收录，../../robot3d.js 渲染）。
+     接口与原先的手画版一致：朝 +x，本地坐标里右髋在 (0, 302)、膝在 (0, 344)、脚底 y = 388（头顶约 223，G1 身高 1.32 m）；
+     place / legs / arm / walk / stand / pts / legStyle 照旧。躯干、大腿、小腿、脚、远侧腿是「把手」——设它的 stroke / filter
+     就给 G1 对应的连杆上色发光；髋 / 膝 / 踝圆点、摄像头（G1 头上的 d435）、IMU（骨盆里的 imu_in_pelvis）只在被上色时显示，位置按正运动学算。 ── */
+  E.robot = function (parent, X, opts) { return window.Robot3D.g1Side(parent, X, opts); };
 
   /* ── 俯视小地图（S3、S6）：面板 + 网格 + 迷雾 + 机器人白点 + 纸箱 + 门 + 绕行路线 + 脚印。
      setReveal(x)：迷雾只盖 x 右边；at(u)：路线上比例 u 处的点（u = (侧视 X − 110) / 580）；
@@ -291,72 +229,16 @@
     };
   };
 
-  /* ── 四台机器人的简笔图标（片头、S7）。(x, y) 为脚底中心（扫地机为圆心），s 为缩放 ── */
-  function holder(parent, x, y, s) { return el('g', { transform: 'translate(' + x + ' ' + y + ') scale(' + (s || 1) + ')' }, parent); }
-  // 扫地机（俯视）：圆盘 + 顶上的激光雷达 + 前方保险杠（朝上；需要朝右就外面套 rotate(90)）
-  E.vacuum = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s), c = color || E.INK2;
-    var body = K.paint(el('circle', { r: 46, 'stroke-width': 4 }, g), E.S2, c);
-    var lidar = K.paint(el('circle', { r: 14, 'stroke-width': 3 }, g), E.S1, c);
-    var bumper = K.paint(el('path', { d: 'M -38 -26 A 46 46 0 0 1 38 -26', fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, g), null, c);
-    return { g: g, body: body, lidar: lidar, bumper: bumper };
-  };
-  // 机械臂（侧视）：底座 + 两节连杆 + 夹爪；set(a1, a2) 两个关节角（度，0 = 竖直向上），返回夹爪位置（本地）
-  E.arm = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s), c = color || E.INK2;
-    K.paint(el('path', { d: 'M -34 0 L 34 0 L 22 -18 L -22 -18 Z', 'stroke-width': 3 }, g), E.S2, c);
-    var l1 = el('line', { 'stroke-width': 12, 'stroke-linecap': 'round' }, g), l2 = el('line', { 'stroke-width': 10, 'stroke-linecap': 'round' }, g);
-    K.paint(l1, null, c); K.paint(l2, null, c);
-    var j = [0, 1, 2].map(function () { return K.paint(el('circle', { r: 7, 'stroke-width': 3 }, g), E.S1, c); });
-    var f1 = el('line', { 'stroke-width': 5, 'stroke-linecap': 'round' }, g), f2 = el('line', { 'stroke-width': 5, 'stroke-linecap': 'round' }, g);
-    K.paint(f1, null, c); K.paint(f2, null, c);
-    function set(a1, a2) {
-      var r = Math.PI / 180, p0 = [0, -18];
-      var p1 = [p0[0] + 64 * Math.sin(a1 * r), p0[1] - 64 * Math.cos(a1 * r)];
-      var p2 = [p1[0] + 54 * Math.sin((a1 + a2) * r), p1[1] - 54 * Math.cos((a1 + a2) * r)];
-      var a = (a1 + a2) * r, ux = Math.sin(a), uy = -Math.cos(a), nx = -uy, ny = ux;
-      l1.setAttribute('x1', p0[0]); l1.setAttribute('y1', p0[1]); l1.setAttribute('x2', p1[0].toFixed(1)); l1.setAttribute('y2', p1[1].toFixed(1));
-      l2.setAttribute('x1', p1[0].toFixed(1)); l2.setAttribute('y1', p1[1].toFixed(1)); l2.setAttribute('x2', p2[0].toFixed(1)); l2.setAttribute('y2', p2[1].toFixed(1));
-      [p0, p1, p2].forEach(function (p, k) { j[k].setAttribute('cx', p[0].toFixed(1)); j[k].setAttribute('cy', p[1].toFixed(1)); });
-      [[f1, 1], [f2, -1]].forEach(function (f) {
-        f[0].setAttribute('x1', (p2[0] + 8 * nx * f[1]).toFixed(1)); f[0].setAttribute('y1', (p2[1] + 8 * ny * f[1]).toFixed(1));
-        f[0].setAttribute('x2', (p2[0] + 8 * nx * f[1] + 16 * ux).toFixed(1)); f[0].setAttribute('y2', (p2[1] + 8 * ny * f[1] + 16 * uy).toFixed(1));
-      });
-      return p2;
-    }
-    set(25, 60);
-    return { g: g, set: set };
-  };
-  // 自动驾驶汽车（侧视）：车身 + 车窗 + 两个轮子 + 车顶传感器；spin(圈数) 转动轮辐——只在车真的往前走时按走过的距离转，停着的车别转轮子
-  E.car = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s), c = color || E.INK2;
-    K.paint(el('path', { d: 'M -78 -16 L -78 -40 L -48 -44 L -26 -70 L 30 -70 L 54 -44 L 78 -38 L 78 -16 Z', 'stroke-width': 4, 'stroke-linejoin': 'round' }, g), E.S2, c);
-    K.paint(el('path', { d: 'M -20 -64 L 26 -64 L 44 -46 L -38 -46 Z', 'stroke-width': 2 }, g), E.S1, c);
-    K.paint(el('rect', { x: -10, y: -84, width: 20, height: 12, rx: 4, 'stroke-width': 3 }, g), E.S1, c);
-    var wheels = [-46, 46].map(function (wx) {
-      var w = el('g', { transform: 'translate(' + wx + ' -14)' }, g);
-      K.paint(el('circle', { r: 16, 'stroke-width': 4 }, w), E.S1, c);
-      var sp = el('line', { x1: -10, y1: 0, x2: 10, y2: 0, 'stroke-width': 3 }, w);
-      K.paint(sp, null, c);
-      return sp;
-    });
-    return {
-      g: g,
-      spin: function (t) { wheels.forEach(function (sp) { sp.setAttribute('transform', 'rotate(' + ((t * 360) % 360).toFixed(1) + ')'); }); }
-    };
-  };
-  // 人形机器人图标：kit 的火柴人（髋在 y−48，脚底在 y）；walk(ph) 走一步的相位 0…1
-  E.humanoid = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s);
-    var f = K.stickFigure(color || E.INK2, 6, false, 0.55);
-    g.appendChild(f.el);
-    function stand() { f.pose(0, -48, { lean: 0, armA: [14, 8], armB: [-14, -8], legA: [8, 2], legB: [-8, -2] }); }   // 双脚略分开，不然像一根杆
-    stand();
-    // idle(t)：站着轻轻晃（重心微移、手臂小幅摆）。图标不往前走，就不要用 walk，原地迈步看起来像在跑步机上
-    function idle(t) {
-      var w = Math.sin(2 * Math.PI * t / 3.2);
-      f.pose(0, -48, { lean: 1.5 * w, armA: [14 + 4 * w, 8 + 6 * w], armB: [-14 + 4 * w, -8 + 6 * w], legA: [8, 2], legB: [-8, -2] });
-    }
-    return { g: g, walk: function (ph) { f.pose(0, -48, K.poseWalk(ph)); }, stand: stand, idle: idle };
-  };
+  /* ── 四台机器人（片头、S7）：都是 Robot Description Gallery Online 收录的 URDF，由 ../../robot3d.js 渲染。
+     (x, y) 为底下地面中心（俯视扫地机为圆心），s 为缩放 ── */
+  // 扫地机 = iRobot Create 2（Roomba 600 系列机身）：从右前方斜看，宽 ≈ 92·s；{ top: true } 俯视、车头朝 +x，直径 ≈ 92·s
+  E.vacuum = function (parent, x, y, s, opts) { return window.Robot3D.create2(parent, x, y, s, opts); };
+  // 机械臂 = UR5 的 URDF：set(a1, a2) 同手画版（大臂离竖直的角、小臂再弯的角，度），joints() 给 6 个关节的画面位置
+  E.arm = function (parent, x, y, s, opts) { return window.Robot3D.ur5(parent, x, y, s, opts); };
+
+  // 自动驾驶汽车 = Toyota Prius（OSRF car_demo）：从右前方斜看，车头朝右、宽 ≈ 156·s；
+  // spin(圈数) 转轮子——只在车真的往前走时按走过的距离转，停着的车别转轮子
+  E.car = function (parent, x, y, s, opts) { return window.Robot3D.prius(parent, x, y, s, opts); };
+  // 人形机器人图标 = G1 从右前方斜看（脚底在 (x, y)、高 ≈ 113·s）：stand / idle(t) 同手画版
+  E.humanoid = function (parent, x, y, s, opts) { return window.Robot3D.g1Icon(parent, x, y, s, opts); };
 })();

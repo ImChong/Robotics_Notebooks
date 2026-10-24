@@ -10,6 +10,7 @@ import { spawn, execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serve } from './serve.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = execFileSync('python3', ['-c', 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())']).toString().trim();
@@ -35,12 +36,14 @@ const built = path.join(HERE, mode === 'scene' ? `stage.${name}.scene${arg}.buil
 fs.writeFileSync(built, html);
 
 const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
+const server = await serve(HERE);   // 舞台用 ES module 读 three.js / URDF，要走 http（见 serve.mjs）
 // 一个页面就是一条渲染线：装好时间线、每幕预热一次、按实际字宽缩放分镜。并行分段时每段各开一个
 async function openPage(log) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => console.error('pageerror', e.message));
   page.on('console', (m) => { if (m.type() === 'error') console.error('console', m.text()); });
-  await page.goto('file://' + built);
+  await page.goto(server.url + path.basename(built));
+  await page.evaluate(() => window.robotsReady);   // robot3d.js 把这一集要用的 URDF 和网格都加载完
   if (!tl) {
     // 只放这一幕：分镜时间 = 真实时间，时长取分镜里写的 dur（片头 / 片尾取 introDur / outroDur）
     const key = /^\d+$/.test(arg) ? Number(arg) : arg;
@@ -145,3 +148,4 @@ if (mode === 'scene') {
   console.error('done', mp4);
 }
 await browser.close();
+server.close();
