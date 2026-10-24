@@ -12,6 +12,7 @@ related:
   - ./wokwi.md
   - ./tinkercad.md
   - ./qucs-s.md
+  - ./konnect.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -21,6 +22,7 @@ sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md
   - ../../sources/repos/kicad.md
+  - ../../sources/repos/konnect.md
   - ../../sources/repos/wolfiemouse.md
   - ../../sources/repos/opatiny-micromouse.md
 summary: "KiCad 是 GPLv3 开源跨平台 EDA：原理图、PCB 布局、ERC/DRC、SPICE、3D 预览与 kicad-cli；机器人栈中用于关节驱动板、BMS 与传感转接板的电子设计真值与 Gerber 制造交付。"
@@ -118,6 +120,7 @@ flowchart TB
 ## 关联页面
 
 - [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
+- [Konnect](./konnect.md) — 通过 MCP 将 AI 助手接入 KiCad 10，辅助编辑、检查和导出板级工程。
 
 - [Qucs-S](./qucs-s.md) — 独立的电路仿真 GUI，可调用 Ngspice、Xyce 等外部后端；补充电路级分析，不替代 PCB 设计。
 
@@ -140,6 +143,7 @@ flowchart TB
 - [KiCad 官网归档](../../sources/sites/kicad-org.md)
 - [KiCad 10.0 简体中文文档归档](../../sources/courses/kicad_docs_10_zh.md)
 - [KiCad 官方源码仓库归档](../../sources/repos/kicad.md)
+- [Konnect 源码归档](../../sources/repos/konnect.md)
 - [WolfieMouse 归档](../../sources/repos/wolfiemouse.md)
 - [Algernon / opatiny 归档](../../sources/repos/opatiny-micromouse.md)
 
