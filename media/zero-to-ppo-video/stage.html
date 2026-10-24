@@ -134,7 +134,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
   }
 
-  document.getElementById('badge').textContent = E.badge;  // 只写第几季，不写集数和路线层级
+  document.getElementById('badge').textContent = E.badge;  // 正片只写第几季；封面在 renderAt 里加上集数（「第一季 · 001」）
 
   /* 纵向排版：按各块实际高度自上而下排，块间距 gaps[k]，整组在 [top, bottom] 里垂直居中；
      放不下就等比压缩间距（不压内容）。挂到 DOM 之后才量得到高度，所以在 draw 里调。 */
@@ -376,6 +376,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     for (var i = 0; i < segs.length; i++) if (t < segs[i].t1) { s = segs[i]; break; }
     var key = String(s.scene);
     if (window.__cover) key = 'cover';  // 封面用自己的版式（render.mjs cover 设 __cover）
+    // 封面右上角的季胶囊带上集数，不做成最显眼的标志；正片里不写集数
+    if (window.__cover) document.getElementById('badge').textContent = E.badge + ' · ' + E.ep;
     var first = s, idx = segs.indexOf(s);
     while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
