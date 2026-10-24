@@ -233,6 +233,12 @@ op: ingest
 
 收录 huashu-art-motion 编码代理动画 Skill。核对公开仓库 README、SKILL 与许可说明；记录其面向技术解释和传播的用途，以及代码动画不能替代机器人仿真验证的边界。
 
+## 2026-10-24 | ingest
+
+- **意图：** 收录 Datawhale Diy-LLM 中文课程与 Stanford CS336 Language Modeling from Scratch 的课程站、在线/离线阅读和官方讲义仓库入口。
+- **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
+- **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
+
 ## [2026-10-23] lint | 全量 lint 清零 3 条信息型预警：SuperDyno 补 venue、From Hitter to Player 对比章节标题、GameHorizon 回链评测基准选型闭环
 
 ## [2026-10-23] ingest | CTP | 复核机构与代码开放状态
