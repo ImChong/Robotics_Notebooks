@@ -239,6 +239,12 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+## [2026-10-24] ingest | Jev 仿真机器人与自动驾驶应用
+
+- 意图：收录三个 Jev 应用演示，补全 TypeSafe Jev 在无人机、驾驶模拟和机械臂操作中的工程案例。
+- 开源结论：jev-drone 与机械臂演示为 MIT 开源；JevPilot 仓库公开但未声明许可证。三项均是 MuJoCo 或 Three.js 仿真，未将演示性能外推为实机结论。
+- 写回：更新 Jev 总览及对应仓库 / 项目页来源归档。
+
 ## [2026-10-24] ingest | StreamSplat（ICLR 2026）— 在线动态 3DGS 重建
 
 归档论文、作者项目页和官方代码；记录其开源代码与 checkpoint 入口，并建立动态场景重建 Wiki 实体。该方法是通用视频重建研究，机器人导航/控制闭环仍需另行验证。
