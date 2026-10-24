@@ -32,7 +32,7 @@
   window.EpisodeVideo = {
     ep: '001',                      // 只用于文件名；画面和封面上都不出现集数
     badge: '第一季',
-    robots: ['g1', 'ur5'],          // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
+    robots: ['g1', 'ur5', 'create2', 'prius'],   // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '四步循环',
     name: '感知 → 规划 → 控制 → 执行',
     pitch: '从扫地机到人形机器人，拆开全是这一套',

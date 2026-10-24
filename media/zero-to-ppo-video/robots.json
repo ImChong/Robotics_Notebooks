@@ -1,5 +1,5 @@
 {
-  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
+  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。create2 / turtlebot3 / prius 由 Gallery PR #120 收录（上游 commit 同样固定）；create2、turtlebot3 上游只发布 xacro，舞台加载时用 xacro-parser 展开（同 Gallery 的 web/js/xacro.js）。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
   "gallery": {
     "repo": "https://github.com/ImChong/Robot_Description_Gallery_Online",
     "commit": "ca1efb74e8a642d1bd1a26b0ef7a0068dc2b6ebb",
@@ -29,6 +29,30 @@
       "base": "https://cdn.jsdelivr.net/gh/unitreerobotics/unitree_ros@267182b8521c8d6a631bab1fe63836873237a525/",
       "urdf": "robots/go2_description/urdf/go2_description.urdf",
       "packages": { "go2_description": "robots/go2_description" }
+    },
+    "create2": {
+      "name": "iRobot Create 2（Roomba 600 系列机身）",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/AutonomyLab/create_robot/blob/5e2215bda34b15e2d5d5ea4ede8bb9d2cf9003f0/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/AutonomyLab/create_robot@5e2215bda34b15e2d5d5ea4ede8bb9d2cf9003f0/",
+      "urdf": "create_description/urdf/create_2.urdf.xacro",
+      "packages": { "create_description": "create_description" }
+    },
+    "turtlebot3": {
+      "name": "ROBOTIS TurtleBot3 Waffle",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/ROBOTIS-GIT/turtlebot3/blob/4ae959ea6a52415c90bf752d2b76e3e28f8a87e2/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/ROBOTIS-GIT/turtlebot3@4ae959ea6a52415c90bf752d2b76e3e28f8a87e2/",
+      "urdf": "turtlebot3_description/urdf/turtlebot3_waffle.urdf.xacro",
+      "packages": { "turtlebot3_description": "turtlebot3_description" }
+    },
+    "prius": {
+      "name": "Toyota Prius（OSRF car_demo）",
+      "license": "Apache-2.0（仓库无 LICENSE 文件，见 package.xml）",
+      "license_url": "https://github.com/osrf/car_demo/blob/38a4686dd573739dcd237187030efba3ce4913b0/prius_description/package.xml",
+      "base": "https://cdn.jsdelivr.net/gh/osrf/car_demo@38a4686dd573739dcd237187030efba3ce4913b0/",
+      "urdf": "prius_description/urdf/prius.urdf",
+      "packages": { "prius_description": "prius_description" }
     }
   }
 }

@@ -6,6 +6,8 @@
 // 分镜里的叠加标注（关节点、重心、力箭头……）用 view.project() / view.at() 算位置，和模型对得上。
 import * as THREE from 'three';
 import URDFLoader from 'urdf-loader';
+import { XacroParser } from 'xacro-parser';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { mergeVertices, toCreasedNormals } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { MeshoptSimplifier } from 'meshoptimizer/meshopt_simplifier.module.js';
 
@@ -92,6 +94,36 @@ function simplify(mesh) {
 }
 
 /* ── 加载 ── */
+// URDF / xacro 里写的路径 → 仓库内相对路径：package://pkg/… 按 packages 映射，其余已是相对仓库的（xacro 的 workingPath 给的是仓库内目录）
+function repoPath(path, packages) {
+  if (path.startsWith('package://')) {
+    const [pkg, ...rest] = path.slice('package://'.length).split('/');
+    if (!(pkg in packages)) throw new Error('xacro: unknown package ' + pkg);
+    path = packages[pkg] + '/' + rest.join('/');
+  }
+  const out = [];
+  for (const seg of path.split('/')) { if (seg === '..') out.pop(); else if (seg && seg !== '.') out.push(seg); }
+  return out.join('/');
+}
+// 上游只发布 xacro 的（Create 2、TurtleBot3）照 Gallery 的 web/js/xacro.js 展开：ROS Jade 语义、<xacro:arg> 取默认值，
+// 去掉 gazebo / transmission 块，以及条件没成立、只剩空 <geometry> 的 visual / collision
+async function expandXacro(text, m, root) {
+  const parser = new XacroParser();
+  parser.inOrder = true; parser.requirePrefix = true; parser.localProperties = true;
+  parser.workingPath = m.urdf.replace(/[^/]+$/, '');
+  parser.arguments = {};
+  for (const [, k, v] of text.matchAll(/<(?:xacro:)?arg\s+name=["']([^"']+)["'](?:\s+default=["']([^"']*)["'])?/g)) parser.arguments[k] = v === undefined ? '' : v;
+  parser.rospackCommands = { find: (pkg) => `package://${pkg}` };
+  parser.getFileContents = async (path) => (await fetch(root + repoPath(path, m.packages))).text();
+  const doc = await parser.parse(text);
+  for (const n of doc.querySelectorAll('gazebo, transmission')) n.remove();
+  for (const g of doc.querySelectorAll('geometry')) {
+    const holder = g.parentNode;
+    if (!g.children.length && (holder.nodeName === 'visual' || holder.nodeName === 'collision')) holder.remove();
+  }
+  return new XMLSerializer().serializeToString(doc).replace(/\sxmlns=""/g, '');
+}
+
 const models = {};
 async function loadRobot(id, manifest) {
   const m = manifest.robots[id];
@@ -100,14 +132,25 @@ async function loadRobot(id, manifest) {
   const done = new Promise((resolve, reject) => { manager.onLoad = resolve; manager.onError = (url) => reject(new Error('load failed: ' + url)); });
   const loader = new URDFLoader(manager);
   loader.parseCollision = false;
+  // urdf-loader 自带的只认 STL / Collada，Prius 的网格是 OBJ
+  const objLoader = new OBJLoader(manager), defaultLoad = loader.loadMeshCb.bind(loader);
+  loader.loadMeshCb = (path, mgr, onComplete) => {
+    if (/\.obj$/i.test(path)) objLoader.load(path, (obj) => onComplete(obj), undefined, (err) => onComplete(null, err));
+    else defaultLoad(path, mgr, onComplete);
+  };
   loader.packages = Object.fromEntries(Object.entries(m.packages).map(([k, v]) => [k, (root + v).replace(/\/+$/, '')]));
   loader.workingPath = root + m.urdf.replace(/[^/]+$/, '');
-  const text = await (await fetch(root + m.urdf)).text();
+  let text = await (await fetch(root + m.urdf)).text();
+  if (m.urdf.endsWith('.xacro')) text = await expandXacro(text, m, root);
   manager.itemStart('urdf');
   const robot = loader.parse(text);
   manager.itemEnd('urdf');
   await done;
   await MeshoptSimplifier.ready;
+  // Collada 里自带的灯光、相机（Create 2 的网格就有）会照乱统一的打光，去掉
+  const extras = [];
+  robot.traverse((o) => { if (o.isLight || o.isCamera) extras.push(o); });
+  extras.forEach((o) => o.removeFromParent());
   robot.traverse((o) => { if (o.isMesh) simplify(o); });
   // 统一换成 PBR 材质；原色太暗的（G1、Go2 的黑件）提亮到深灰，深色底上也看得见轮廓
   robot.traverse((o) => {
@@ -278,7 +321,7 @@ function measure(id) {
 }
 
 /* ══ 分镜用的机器人 ══
-   和各集 00-common.js 里手画版同一套接口（E.robot 侧视人形、E.front 正面人形、E.arm 机械臂、E.quadruped 四足、E.humanoid 小图标），
+   和各集 00-common.js 里手画版同一套接口（E.robot 侧视人形、E.front 正面人形、E.arm 机械臂、E.quadruped 四足、E.humanoid 小图标；E.vacuum 扫地机、E.car 汽车、E.wheeled 轮式底盘），
    各集只把这几个函数换成下面的版本，分镜里的动作、叠加标注照旧。
    手画版里被分镜改样式的部件（躯干、大腿、脚……）在这里是不显示的 <g>「把手」：分镜照样设它的 stroke / fill / filter / opacity，
    画之前按这些样式给对应连杆上色（发光 = 上色更重）、变淡；关节圆点、摄像头、IMU 这类标注仍是 svg，位置按正运动学算。 */
@@ -527,6 +570,37 @@ function go2(parent, x, y, s, o) {
   return { g, view: v };
 }
 
+/* ── 贴地的整台（Create 2 扫地机、TurtleBot3 Waffle 底盘、Prius 汽车）：外框中心挪到原点、底面贴地，
+   (x, y) 是它底下地面中心在画面里的位置，w 是外框投影后的画面宽度。top：从正上方看（扫地机俯视），车头朝 +x，(x, y) 为圆心。
+   spin(圈数)：转轮子关节（只在车真的往前走时按走过的距离转）。 ── */
+const WHEELS = {
+  create2: ['left_wheel_joint', 'right_wheel_joint'],
+  turtlebot3: ['wheel_left_joint', 'wheel_right_joint'],
+  prius: ['front_left_wheel_joint', 'front_right_wheel_joint', 'rear_left_wheel_joint', 'rear_right_wheel_joint']
+};
+function grounded(robot, parent, x, y, w, o, az, el) {
+  const opt = o || {};
+  if (opt.az !== undefined) az = opt.az;
+  if (opt.el !== undefined) el = opt.el;
+  if (opt.top) { az = 0; el = 89.9; }
+  const b = measure(robot), dx = b.max.x - b.min.x, dy = b.max.y - b.min.y, dz = b.max.z - b.min.z;
+  const ca = Math.abs(Math.cos(az * DEG)), sa = Math.abs(Math.sin(az * DEG)), ce = Math.cos(el * DEG), se = Math.sin(el * DEG);
+  const S = w / (dx * ca + dy * sa), half = (dx * sa + dy * ca) * se / 2;   // 地面外框投影后在原点上下各伸出 half
+  const g = sel('g', {}, parent);
+  const v = view(g, { robot, origin: [x, y], scale: S, az, el, res: opt.res || 2.4,
+    box: [x - w / 2 - 4, y - (dz * ce + half) * S - 4, w + 8, (dz * ce + 2 * half) * S + 8] });
+  v.base([-(b.min.x + b.max.x) / 2, -(b.min.y + b.max.y) / 2, -b.min.z]);
+  function spin(turns) {
+    const j = {};
+    WHEELS[robot].forEach((n) => { j[n] = turns * 2 * Math.PI; });
+    v.joints(j);
+  }
+  return { g, view: v, spin };
+}
+function create2(parent, x, y, s, o) { return grounded('create2', parent, x, y, 92 * (s || 1), o, 30, 25); }
+function turtlebot3(parent, x, y, s, o) { return grounded('turtlebot3', parent, x, y, 104 * (s || 1), o, 25, 12); }
+function prius(parent, x, y, s, o) { return grounded('prius', parent, x, y, 156 * (s || 1), o, 20, 10); }
+
 /* ── 小人形图标（替换 E.humanoid）：G1 从右前方斜看，脚底在 (x, y)，高 ≈ 113·s（同手画版火柴人）。 ── */
 function g1Icon(parent, x, y, s, o) {
   const opt = o || {}, G = g1Geom(), S = 113 * (s || 1) / (G.top - G.sole);
@@ -559,7 +633,7 @@ function flush() {
   });
 }
 
-window.Robot3D = { view, models, measure, flush, centerOfMass, g1Side, g1Front, ur5, go2, g1Icon, THREE };
+window.Robot3D = { view, models, measure, flush, centerOfMass, g1Side, g1Front, ur5, go2, g1Icon, create2, turtlebot3, prius, THREE };
 // render.mjs / check_layout.mjs 打开舞台后先等这个：这一集要用的机器人（EpisodeVideo.robots）都加载完
 window.robotsReady = (async () => {
   const want = (window.EpisodeVideo && window.EpisodeVideo.robots) || [];

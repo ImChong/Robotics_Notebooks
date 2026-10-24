@@ -6,6 +6,8 @@ Usage: python3 fetch_robots.py            # 全部
 路径照 Robot Description Gallery Online 的 download.js 解析：package://<pkg>/... 按 packages 映射到仓库内目录，
 相对路径按 URDF 所在目录；文件按仓库内路径原样存在 assets/robots/<id>/ 下，舞台用同一套 packages / workingPath 读取。
 Collada 文件里引用的贴图也一并下载。走 TLS 代理时设置 SSL_CERT_FILE。
+上游只发布 xacro 的（create2、turtlebot3）：xacro:include 引到的文件递归下载（$(find pkg) 按 packages 映射），
+网格从所有这些文件里找（网格可能作为宏参数写在 <visual> 外面）；展开在舞台加载时做（robot3d.js）。
 """
 import json
 import posixpath
@@ -34,23 +36,46 @@ def save(robot_id, base, rel):
     return data
 
 
-def mesh_paths(urdf_text, urdf_rel, packages):
-    """<visual> 里的网格在仓库内的相对路径（碰撞体不画，不下载）。"""
-    urdf_dir = posixpath.dirname(urdf_rel)
+def resolve(name, here, packages):
+    """URDF / xacro 里写的路径 → 仓库内相对路径（here 为所在文件的目录）。"""
+    for prefix in ("package://", "$(find "):
+        if name.startswith(prefix):
+            pkg, _, rest = name[len(prefix):].partition("/")
+            pkg = pkg.rstrip(")")
+            if pkg not in packages:
+                raise SystemExit(f"unknown package {pkg} in {name}")
+            return posixpath.normpath(posixpath.join(packages[pkg], rest))
+    return posixpath.normpath(posixpath.join(here, name))
+
+
+def mesh_paths(texts, packages, visual_only):
+    """texts：{仓库内路径: 文本}。返回网格在仓库内的相对路径（URDF 只取 <visual> 里的，碰撞体不画，不下载）。"""
     out = []
-    for visual in re.findall(r"<visual\b.*?</visual>", urdf_text, re.S):
-        for name in re.findall(r'<mesh\b[^>]*\bfilename="([^"]+)"', visual):
-            if name.startswith("package://"):
-                pkg, _, rest = name[len("package://"):].partition("/")
-                if pkg not in packages:
-                    raise SystemExit(f"unknown package {pkg} in {name}")
-                path = posixpath.join(packages[pkg], rest)
-            else:
-                path = posixpath.join(urdf_dir, name)
-            path = posixpath.normpath(path)
-            if path not in out:
-                out.append(path)
+    for rel, text in texts.items():
+        text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+        blocks = re.findall(r"<visual\b.*?</visual>", text, re.S) if visual_only else [text]
+        for block in blocks:
+            for name in re.findall(r'<mesh\b[^>]*\bfilename="([^"]+)"', block):
+                if "${" in name:
+                    raise SystemExit(f"mesh path with a xacro expression: {name}")
+                path = resolve(name, posixpath.dirname(rel), packages)
+                if path not in out:
+                    out.append(path)
     return out
+
+
+def xacro_tree(robot_id, base, root_rel, root_text, packages):
+    """xacro 及它 include 的全部文件：{仓库内路径: 文本}。"""
+    texts, queue = {root_rel: root_text}, [root_rel]
+    while queue:
+        rel = queue.pop()
+        body = re.sub(r"<!--.*?-->", "", texts[rel], flags=re.S)
+        for name in re.findall(r'<xacro:include\b[^>]*?\bfilename="([^"]+)"', body):
+            inc = resolve(name, posixpath.dirname(rel), packages)
+            if inc not in texts:
+                texts[inc] = save(robot_id, base, inc).decode("utf-8")
+                queue.append(inc)
+    return texts
 
 
 def main():
@@ -58,7 +83,10 @@ def main():
     for robot_id in ids:
         m = MANIFEST[robot_id]
         text = save(robot_id, m["base"], m["urdf"]).decode("utf-8")
-        meshes = mesh_paths(text, m["urdf"], m["packages"])
+        if m["urdf"].endswith(".xacro"):
+            meshes = mesh_paths(xacro_tree(robot_id, m["base"], m["urdf"], text, m["packages"]), m["packages"], False)
+        else:
+            meshes = mesh_paths({m["urdf"]: text}, m["packages"], True)
         total = 0
         for rel in meshes:
             data = save(robot_id, m["base"], rel)

@@ -229,37 +229,16 @@
     };
   };
 
-  /* ── 四台机器人的简笔图标（片头、S7）。(x, y) 为脚底中心（扫地机为圆心），s 为缩放 ── */
-  function holder(parent, x, y, s) { return el('g', { transform: 'translate(' + x + ' ' + y + ') scale(' + (s || 1) + ')' }, parent); }
-  // 扫地机（俯视）：圆盘 + 顶上的激光雷达 + 前方保险杠（朝上；需要朝右就外面套 rotate(90)）
-  E.vacuum = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s), c = color || E.INK2;
-    var body = K.paint(el('circle', { r: 46, 'stroke-width': 4 }, g), E.S2, c);
-    var lidar = K.paint(el('circle', { r: 14, 'stroke-width': 3 }, g), E.S1, c);
-    var bumper = K.paint(el('path', { d: 'M -38 -26 A 46 46 0 0 1 38 -26', fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, g), null, c);
-    return { g: g, body: body, lidar: lidar, bumper: bumper };
-  };
+  /* ── 四台机器人（片头、S7）：都是 Robot Description Gallery Online 收录的 URDF，由 ../../robot3d.js 渲染。
+     (x, y) 为底下地面中心（俯视扫地机为圆心），s 为缩放 ── */
+  // 扫地机 = iRobot Create 2（Roomba 600 系列机身）：从右前方斜看，宽 ≈ 92·s；{ top: true } 俯视、车头朝 +x，直径 ≈ 92·s
+  E.vacuum = function (parent, x, y, s, opts) { return window.Robot3D.create2(parent, x, y, s, opts); };
   // 机械臂 = UR5 的 URDF：set(a1, a2) 同手画版（大臂离竖直的角、小臂再弯的角，度），joints() 给 6 个关节的画面位置
   E.arm = function (parent, x, y, s, opts) { return window.Robot3D.ur5(parent, x, y, s, opts); };
 
-  // 自动驾驶汽车（侧视）：车身 + 车窗 + 两个轮子 + 车顶传感器；spin(圈数) 转动轮辐——只在车真的往前走时按走过的距离转，停着的车别转轮子
-  E.car = function (parent, x, y, s, color) {
-    var g = holder(parent, x, y, s), c = color || E.INK2;
-    K.paint(el('path', { d: 'M -78 -16 L -78 -40 L -48 -44 L -26 -70 L 30 -70 L 54 -44 L 78 -38 L 78 -16 Z', 'stroke-width': 4, 'stroke-linejoin': 'round' }, g), E.S2, c);
-    K.paint(el('path', { d: 'M -20 -64 L 26 -64 L 44 -46 L -38 -46 Z', 'stroke-width': 2 }, g), E.S1, c);
-    K.paint(el('rect', { x: -10, y: -84, width: 20, height: 12, rx: 4, 'stroke-width': 3 }, g), E.S1, c);
-    var wheels = [-46, 46].map(function (wx) {
-      var w = el('g', { transform: 'translate(' + wx + ' -14)' }, g);
-      K.paint(el('circle', { r: 16, 'stroke-width': 4 }, w), E.S1, c);
-      var sp = el('line', { x1: -10, y1: 0, x2: 10, y2: 0, 'stroke-width': 3 }, w);
-      K.paint(sp, null, c);
-      return sp;
-    });
-    return {
-      g: g,
-      spin: function (t) { wheels.forEach(function (sp) { sp.setAttribute('transform', 'rotate(' + ((t * 360) % 360).toFixed(1) + ')'); }); }
-    };
-  };
+  // 自动驾驶汽车 = Toyota Prius（OSRF car_demo）：从右前方斜看，车头朝右、宽 ≈ 156·s；
+  // spin(圈数) 转轮子——只在车真的往前走时按走过的距离转，停着的车别转轮子
+  E.car = function (parent, x, y, s, opts) { return window.Robot3D.prius(parent, x, y, s, opts); };
   // 人形机器人图标 = G1 从右前方斜看（脚底在 (x, y)、高 ≈ 113·s）：stand / idle(t) 同手画版
   E.humanoid = function (parent, x, y, s, opts) { return window.Robot3D.g1Icon(parent, x, y, s, opts); };
 })();
