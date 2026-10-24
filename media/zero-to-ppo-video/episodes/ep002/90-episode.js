@@ -40,19 +40,15 @@
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：四个难点各用本色（关节多 accent、浮动基 violet、接触切换 good、强不稳定 warn）
     boldColors: { '关节多': 'var(--demo-accent)', '浮动基': 'var(--violet)', '接触切换': 'var(--demo-good)', '强不稳定': 'var(--demo-warn)',
-      '降难度': 'var(--demo-good)', 'C': 'var(--demo-accent)' },
+      '降难度': 'var(--demo-good)' },
     introDur: 24.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
-    outroDur: 41.2,
+    outroDur: 11.1,
+    // 片尾不出题：只有下一集预告和衔接语
     outro: {
-      quiz: {
-        q: '机械臂换成人形：哪件事是**新多出来**的难题？\nA 给每个关节下命令　B 算出手该伸到哪\nC 身子歪了靠脚扶正　D 用电机带动关节',
-        a: '**C**　A、B、D 机械臂也天天在做\nC 是**浮动基** + **强不稳定**',
-        thinkFrom: 16.8, revealAt: 20.0
-      },
-      next: { ep: '003', q: '线性代数在机器人里到底怎么用？\n为什么说位置是向量、变换是矩阵？', at: 30.1 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 39.3 }
+      next: { ep: '003', q: '线性代数在机器人里到底怎么用？\n为什么说位置是向量、变换是矩阵？', at: 0 },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 9.2 }
     }
   };
 })();

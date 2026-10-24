@@ -40,19 +40,15 @@
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：四步各用本色（感知 good、规划 violet、控制 accent、执行 warn）
     boldColors: { '感知': 'var(--demo-good)', '规划': 'var(--violet)', '控制': 'var(--demo-accent)', '执行': 'var(--demo-warn)',
-      '反馈': 'var(--text)', 'C': 'var(--demo-accent)' },
+      '反馈': 'var(--text)' },
     introDur: 11.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
-    outroDur: 37.0,
+    outroDur: 9.8,
+    // 片尾不出题：只有下一集预告和衔接语
     outro: {
-      quiz: {
-        q: '客厅那台机器人：哪件事属于**控制**？\nA 认出前面有个纸箱　B 决定从旁边绕过\nC 算出膝盖该出多大力　D 电机带着膝盖转',
-        a: '**C**　A 感知 · B 规划 · D 执行\n只有 C 在给关节派活',
-        thinkFrom: 15.2, revealAt: 20.2
-      },
-      next: { ep: '002', q: '所有机器人都跑这四步，\n为什么偏偏从人形、双足学起？', at: 27.2 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 35.9 }
+      next: { ep: '002', q: '所有机器人都跑这四步，\n为什么偏偏从人形、双足学起？', at: 0 },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 8.7 }
     }
   };
 })();

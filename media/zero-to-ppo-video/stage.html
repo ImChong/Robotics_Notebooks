@@ -317,16 +317,19 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     return { zoom: Math.min(W / (x1 - x0), H / (y1 - y0)), viewBox: svg.getAttribute('viewBox') };
   }
 
-  /* ── outro：自测题 → 想一想（进度条倒数）→ 揭晓答案 → 下一集预告 → 系列衔接语 ── */
+  /* ── outro：〔自测题 → 想一想（进度条倒数）→ 揭晓答案〕→ 下一集预告 → 系列衔接语。
+     自测题可选：零基础篇片尾不出题，outro 里不写 quiz 就只有预告和衔接语 ── */
   function buildOutro() {
-    var O = E.outro, root = h('div', 'card');
-    var quiz = h('div', 'pt', root);
-    h('div', 'n', quiz, '自测题').style.color = 'var(--demo-warn)';
-    richInto(h('div', '', quiz), O.quiz.q);
-    var wait = h('div', 'wait', quiz), waitBar = h('b', '', wait);
-    var ans = h('div', 'pt', root);
-    h('div', 'n', ans, '答案').style.color = 'var(--demo-good)';
-    richInto(h('div', '', ans), O.quiz.a);
+    var O = E.outro, root = h('div', 'card'), quiz = null, ans = null, waitBar = null;
+    if (O.quiz) {
+      quiz = h('div', 'pt', root);
+      h('div', 'n', quiz, '自测题').style.color = 'var(--demo-warn)';
+      richInto(h('div', '', quiz), O.quiz.q);
+      waitBar = h('b', '', h('div', 'wait', quiz));
+      ans = h('div', 'pt', root);
+      h('div', 'n', ans, '答案').style.color = 'var(--demo-good)';
+      richInto(h('div', '', ans), O.quiz.a);
+    }
     var next = h('div', 'pt', root);
     next.style.borderColor = 'var(--demo-accent)';
     h('div', 'n', next, '下一集 · ' + O.next.ep).style.color = 'var(--demo-accent)';
@@ -336,10 +339,12 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     return {
       root: root,
       draw: function (st, t) {
-        stack([quiz, ans, next, end], [26, 26, 30], SAFE_TOP, CONTENT_BOTTOM);
-        fadeUp(quiz, st, 0.1);
-        waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
-        fadeUp(ans, st, O.quiz.revealAt);
+        if (O.quiz) {
+          stack([quiz, ans, next, end], [26, 26, 30], SAFE_TOP, CONTENT_BOTTOM);
+          fadeUp(quiz, st, 0.1);
+          waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
+          fadeUp(ans, st, O.quiz.revealAt);
+        } else stack([next, end], [30], SAFE_TOP, CONTENT_BOTTOM);
         fadeUp(next, st, O.next.at);
         fadeUp(end, st, O.end.at);
       }
