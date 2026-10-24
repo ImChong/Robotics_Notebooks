@@ -245,6 +245,8 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-24] ingest | sources/repos/horizon_robotics_holomotion.md — 更新 HoloMotion v2 预览、SuperMimic 与 H-bot 官方资料
+
 ## [2026-10-24] ingest | sources/sites/nvidia-simready-central.md 与 sources/repos/nvidia-simready-central.md — 归档 NVIDIA SimReady Central 及其 Agent 仿真资产工作流
 
 ## [2026-10-24] ingest | Konnect — 归档 KiCad 10 的 AI/MCP PCB 设计插件
