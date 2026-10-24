@@ -29,6 +29,6 @@ README 的 HDF5 样例记录左右压力网格为 (T, 21, 21)，值归一化至 
 
 ## 对 wiki 的映射
 
-- [wiki/entities/paper-touchanything-egotouch.md](../../wiki/entities/paper-touchanything-egotouch.md)
+- [wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md](../../wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md)
 - [sources/papers/touchanything_arxiv_2605_13083.md](../papers/touchanything_arxiv_2605_13083.md)
 - [sources/sites/touchanything-github-io.md](../sites/touchanything-github-io.md)
