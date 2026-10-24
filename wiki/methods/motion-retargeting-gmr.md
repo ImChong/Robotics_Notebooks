@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-24
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-core.md
   - ../entities/paper-rmr.md
   - ../entities/paper-hoi-retarget.md
+  - ../entities/paper-humanoidpose-video-pose-estimation.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
@@ -215,3 +216,4 @@ $$
 - [X-Morph](../entities/paper-xmorph.md) — 视频链路用 GMR 把 SMPL→G1，再跨形态到非人形腿式机器人。
 - [CoRe v0.1.0](../entities/paper-core.md) — SOMA 输入 + 接触精炼的开源对照；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)。
 - [HOI-Retarget](../entities/paper-hoi-retarget.md) — ETH RSL HOI 管线 **vendored GMR fork** 作 III-A IK，再接物体系 contact 窗口 NLP（arXiv:2609.34674，[已开源](https://github.com/shinben0327/hoi-retarget)）。
+- [HumanoidPose](../entities/paper-humanoidpose-video-pose-estimation.md) — 从机器人视频恢复自身根姿态与关节配置；与 GMR 的动作重定向问题互补。
