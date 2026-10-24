@@ -404,14 +404,14 @@ function g1Side(parent, X, opts) {
   const dot = () => sel('circle', { r: 5 }, ov);
   const hipDot = dot(), kneeDot = dot(), ankleDot = dot();
   [cam, imu, hipDot, kneeDot, ankleDot].forEach((n) => { n.style.fill = 'var(--text)'; });
-  let legA = [4, 0], legB = [-4, 0], armA = [8, 4], tiltA = 0;
+  let legA = [4, 0], legB = [-4, 0], armA = [8, 4], tiltA = 0, tiltB = 0;
   const state = { x: X || 0, rot: 0, pivot: [0, 388], scale: 1, dy: 0 };
   function apply() {
     const leg = (side, a, tilt) => {
       const q1 = -a[0] * DEG, q2 = Math.max(-0.08, (a[0] - a[1]) * DEG);
       v.joints({ [side + '_hip_pitch_joint']: q1, [side + '_knee_joint']: q2, [side + '_ankle_pitch_joint']: -(q1 + q2) + (tilt || 0) * DEG });
     };
-    leg('right', legA, tiltA); leg('left', legB);
+    leg('right', legA, tiltA); leg('left', legB, tiltB);
     const arm = (side, s, e) => v.joints({ [side + '_shoulder_pitch_joint']: -s * DEG, [side + '_elbow_joint']: Math.min(2.09, (90 - (e - s)) * DEG) });
     arm('right', armA[0], armA[1]);
     arm('left', 16 - armA[0], 16 - armA[0] + (armA[1] - armA[0]));   // 远侧手臂和近侧对着摆（绕站姿 8° 镜像）
@@ -447,10 +447,10 @@ function g1Side(parent, X, opts) {
     g: outer, body, view: v, head, cam, imu, torso, pelvis, neck, thigh, shin, foot, far, upper, fore, hipDot, kneeDot, ankleDot,
     nearLeg: [thigh, shin, foot, hipDot, kneeDot, ankleDot],
     place, state, scale: S, ankleY: 388 - G.ankleH * S,
-    // tilt：近侧脚掌在放平之外再转多少度（正值脚尖朝下），踩到不平时用
-    legs(near, farA, tilt) { legA = near; legB = farA || legB; tiltA = tilt || 0; apply(); },
+    // tilt / tiltFar：近侧 / 远侧脚掌在放平之外再转多少度（正值脚尖朝下），踩到不平、抬脚跟、落地翘脚尖时用
+    legs(near, farA, tilt, tiltFar) { legA = near; legB = farA || legB; tiltA = tilt || 0; tiltB = tiltFar || 0; apply(); },
     arm(a) { armA = a; apply(); },
-    stand() { legA = [4, 0]; legB = [-4, 0]; armA = [8, 4]; tiltA = 0; apply(); },
+    stand() { legA = [4, 0]; legB = [-4, 0]; armA = [8, 4]; tiltA = 0; tiltB = 0; apply(); },
     // 走路时近侧手臂的 [大臂角, 小臂角]：绕站姿的 8° 前后各摆 17.6°，和近腿反相。远侧手臂在 apply() 里绕 8° 镜像，
     // 所以两只手摆幅一样；手画版 poseWalk 的手臂绕 −8° 摆，直接喂进来会一只手往前多摆、一只往后多摆
     walkArm(ph) { const a = 8 - 17.6 * Math.sin(ph * 2 * Math.PI); return [a, a + 19.2]; },

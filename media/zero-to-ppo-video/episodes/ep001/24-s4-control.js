@@ -11,7 +11,7 @@
   var HIP = [150, 110];
   var LEG_K = 2.87, LEG_X = 150, LEG_DY = HIP[1] - 388 + 86 * LEG_K;
   // 关节名在关节圆左侧（右对齐），跟着关节走。「髋」比规格 (112,115) 低 7px：推的箭头 y = 93 从它头顶擦过，原位会压字
-  var LABEL_OFF = [[-38, 12], [-38, 5], [-38, 5]];
+  var LABEL_OFF = [[-38, 22], [-38, 5], [-38, 5]];   // 「髋」再往下 10：「推一下」的箭头横在髋的高度上，别压字
 
   var ROWS = [{ name: '髋', y: 170, at: 17.2 }, { name: '膝', y: 228, at: 17.8 }, { name: '踝', y: 286, at: 18.2 }];
   var JITTER = 18.7, FAST = 28.9;          // 横条开始跳；改成每 0.04 s 跳
@@ -157,7 +157,7 @@
       put(hand, [300, 340], [300, 326]);
       K.paint(E.el('circle', { cx: 300, cy: 340, r: 2.5 }, watch), E.ACC);
       // 「1 秒」用 accent，和秒表归成一组；用 ink2 时和同一水平线上的灰色「出处：…」连成一句
-      var oneSec = E.txt(s, 300, 378, '1 秒', 18, E.ACC);
+      var oneSec = E.txt(s, 300, 384, '1 秒', 18, E.ACC);   // 离秒表圈远一点（圈底 y 361.5）
       var rate = E.txt(s, 335, 348, '每秒几百～上千次', 28, E.ACC, 'start', 700);
       var source = E.txt(s, 335, 380, '出处：主路线 L4.0 方法谱系表', 18, E.MUT, 'start');
       var more = E.txt(s, 582, 348, '甚至更多', 22, E.ACC, 'start');

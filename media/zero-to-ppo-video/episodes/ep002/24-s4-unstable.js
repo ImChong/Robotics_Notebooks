@@ -38,6 +38,8 @@
       });
       var top = K.paint(E.el('path', { d: 'M 58 300 L 242 300 L 282 276 L 98 276 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, table), E.S2, E.INK2);
       K.paint(E.el('rect', { x: 58, y: 300, width: 184, height: 10, 'stroke-width': 2.5 }, table), E.S2, E.INK2);
+      // 桌面的右侧面（斜着看得见的那一面，厚 10，和正面一样）
+      K.paint(E.el('path', { d: 'M 242 300 L 282 276 L 282 286 L 242 310 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, table), E.S1, E.INK2);
       [70, 230].forEach(function (x) { K.paint(E.el('line', { x1: x, y1: 310, x2: x, y2: 388, 'stroke-width': 8, 'stroke-linecap': 'round' }, table), null, E.INK2); });
       var tLine = K.paint(E.el('path', { d: 'M ' + TCOM[0] + ' ' + (TCOM[1] + 12) + ' V ' + TFOOT[1], fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, s), null, E.WARN);
       var tDot = K.paint(E.el('circle', { cx: TFOOT[0], cy: TFOOT[1], r: 4.5 }, s), E.WARN);
@@ -57,12 +59,12 @@
       var hBar = E.el('g', {}, s);
       s.insertBefore(hBar, hum.g);
       K.paint(E.el('path', { d: 'M 352 388 V ' + C0[1].toFixed(1) + ' M 344 ' + C0[1].toFixed(1) + ' H 360 M 344 388 H 360', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, hBar), null, E.WARN);
-      E.txt(hBar, 340, ((388 + C0[1]) / 2 + 8).toFixed(1), '重心高', 22, E.WARN, 'end', 700);
+      E.txt(hBar, 340, (C0[1] + 8).toFixed(1), '重心高', 22, E.WARN, 'end', 700);   // 标在量尺顶端（重心那头），放中间会贴着桌面右角
       var hLine = K.paint(E.el('line', { 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, s), null, E.WARN);
       var hDot = K.paint(E.el('circle', { r: 4.5 }, s), E.WARN);
       var hCom = E.comMark(s, E.WARN, 11);
       var fallTag = E.tag(s, RX - 56, 40, 112, 36, '要倒！', E.BAD, { size: 22, ink: E.BAD, weight: 900 });
-      var fellTag = E.tag(s, 594, 214, 92, 36, '倒了', E.BAD, { size: 22, ink: E.BAD, weight: 900 });
+      var fellTag = E.tag(s, 340, 300, 92, 36, '倒了', E.BAD, { size: 22, ink: E.BAD, weight: 900 });   // 人往右倒，牌子放在支点左边，不被扫过
       var push = E.arrow(s, [[300, 160], [384, 160]], E.BAD, 5, { head: 14 });
       var pushTxt = E.txt(s, 300, 146, '推一下', 20, E.BAD, 'start', 700);
       var liftTxt = E.txt(s, 392, 336, '抬脚', 20, E.BAD, 'end', 700);
@@ -142,7 +144,7 @@
 
           /* 21.5「要倒」；22.3「推」箭头；23.45「抬脚」 */
           E.pop(fallTag.g, RX, 58, E.win(st, 21.45, 22.2, 0.25), 0.7);
-          E.pop(fellTag.g, 640, 232, fade(st, 35.15, 0.25), 0.7);
+          E.pop(fellTag.g, 386, 318, fade(st, 35.15, 0.25), 0.7);
           var pp = E.win(st, 22.25, 23.2, 0.25);
           E.drawOn(push.line, fade(st, 22.25, 0.3)); E.op(push.g, pp); E.op(push.head, K.seg(fade(st, 22.25, 0.3), 0.9, 1));
           E.op(pushTxt, pp);

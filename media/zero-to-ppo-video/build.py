@@ -8,10 +8,12 @@ Usage: python3 build.py ep001
 Each line plays storyboard time [from, to] of one scene at 1x speed while it is spoken;
 if the line runs longer, the scene holds on `to`.
 """
+import array
 import asyncio
 import importlib.util
 import json
 import os
+import random
 import re
 import ssl
 import subprocess
@@ -39,9 +41,12 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 VOICE = "zh-CN-YunjianNeural"
 RATE = "+6%"
 SR = 24000
-LEAD = 0.45   # silence before the first line of each scene (scene fades in)
+LEAD = 0.6    # silence before the first line of each scene: the stage fades the scene in during it (stage.html renderAt)
 GAP = 0.30    # breath after every line
 END_HOLD = 0.5  # 每幕最后一句再多停一会儿：舞台转场淡出要 0.3 s，收尾画面得先看清
+# 全片垫一层 −72 dBFS 的底噪，不留整段的数字静音：换幕处有 2 s 多完全为零的静音，有的播放端 / 蓝牙耳机
+# 会在长静音后把接下来的第一个字吞掉。这个电平经 AAC 160k 编码后还在，正常音量下听不见
+NOISE_DBFS = -72
 
 
 def display(s):
@@ -137,6 +142,10 @@ async def main():
         print(f"{i:02d} {scene!s:>5} {alen:5.2f}s -> seg {dur:5.2f}s", file=sys.stderr)
     t += 0.8
     pcm += b"\x00\x00" * (int(round(t * SR)) - len(pcm) // 2)
+    samples, rng, sd = array.array("h", bytes(pcm)), random.Random(0), 32768 * 10 ** (NOISE_DBFS / 20)
+    for k in range(len(samples)):
+        samples[k] = max(-32768, min(32767, samples[k] + round(rng.gauss(0, sd))))
+    pcm = samples.tobytes()
     with wave.open(str(OUT / "narration.wav"), "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)

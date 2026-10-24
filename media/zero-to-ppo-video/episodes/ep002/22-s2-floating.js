@@ -81,7 +81,7 @@
       var push = E.arrow(pushG, [[471, 198], [584, 265]], E.INK2, 3, { head: 11 });   // 箭头尖顶到走完后骨盆的后缘
       var noPush = E.cross(s, 527, 231, 12, E.BAD, 4);
       var grf = E.arrow(s, [[X1 + 9, 416], [X1 + 9, 394]], E.GOOD, 4, { head: 12 });
-      var grfLabel = E.txt(s, X1 + 24, 414, '地面推回来的力', 18, E.GOOD, 'start', 700);
+      var grfLabel = E.txt(s, X1 + 36, 414, '地面推回来的力', 18, E.GOOD, 'start', 700);   // 让开脚尖
 
       return {
         el: s,

@@ -1,5 +1,6 @@
 // 002 第 3 幕：难点三·接触切换。下面侧视人形从左慢慢走到右（慢放），上面是两只脚的着地时间条（实心 = 着地），竖线跟着当前时刻走。
 // 步态自己算：每步 1.95 s，前 30% 双脚着地、后 70% 后脚摆到前面；髋匀速前进、着地的脚钉在地上不打滑（腿用两节 IK 算），
+// 像人一样直膝走：撑地的腿近乎伸直，后脚够不着时先抬脚跟，摆动腿先屈膝提脚、落地前伸直（见 L 那行），
 // 所以时间条上真有「两只脚都踩着」的一小段。近侧（实线）是右脚、远侧（半透明）是左脚：人朝右走，观众看到的是他的右侧。
 // 「两只脚都踩着」时时间条标出所有双脚着地段；「哪只脚踩在地上」着地脚底亮绿；「往上推」地面推力箭头（长短按分到的体重）；
 // 「一抬一落」起每次抬脚 / 落脚闪一圈；「规律」起状态牌加上「规律①（两脚撑）/ 规律②（单脚撑）」；「控制」盒连到状态牌，「切换」起每次换状态闪一下。
@@ -8,8 +9,10 @@
   var E = window.EP002, K = E.K;
   // 2.5 起走 12 步，25.9 走完。起步时刻选成让第 3 步的双脚着地段落在 6.4–7.0（正念「两只脚都踩着」），紧接着单脚段 7.0–8.35（「只剩一只」）
   var WS = 2.5, T = 1.95, D = 0.3, NSTEP = 12, WE = WS + T * NSTEP;
-  // 步长（本地单位）、放大、起点、身子压低 8（膝盖微弯，步子才迈得开：G1 髋到踝 ≈ 79，压低 8 后脚离髋最远 0.8 L = 32，够得着）
-  var L = 40, SC = 1.25, X0 = 110, DY = 8;
+  // 步长（本地单位）、放大、起点。撑地那条腿近乎伸直（膝弯同站姿的 4°）：髋高由前面那只撑地脚定，
+  // 刚落地时最低、移到脚正上方时最高（起伏 ≈ 2.6）。后脚离髋最远 0.8 L = 32，直腿够不着就抬脚跟、脚尖着地（FOOT：踝到脚尖）；
+  // 摆动腿先屈膝把脚提起（最高点在摆动的前 1/3，膝弯约 65°），落地前伸直、脚尖翘 TOE_UP°，落地后放平
+  var L = 40, SC = 1.25, X0 = 110, FOOT = 16, TOE_UP = 6, DEG = Math.PI / 180;
   var CX0 = 120, CX1 = 770, ROW = { far: 49, near: 83 }, ROW_H = 22;
   var PILL = [230, 112, 220, 34];
 
@@ -24,9 +27,11 @@
     var s = E.clamp((u - D) / (1 - D), 0, 1);
     stn.x = (k + 0.5) * L;
     sw.x = (k - 0.5) * L + 2 * L * K.ease(s);
-    sw.lift = s > 0 && s < 1 ? 14 * Math.sin(Math.PI * s) : 0;
+    var p = E.clamp(s / 0.85, 0, 1);
+    sw.lift = s > 0 && s < 1 ? Math.max(13 * Math.sin(Math.PI * p) * (1 - 0.35 * p), 3 * Math.sin(Math.PI * s)) : 0;
     sw.on = !(s > 0 && s < 1);
-    return { near: near, far: far, hip: (k + u) * L, ds: sw.on, stance: k % 2 ? 'far' : 'near' };
+    sw.s = s;
+    return { near: near, far: far, hip: (k + u) * L, ds: sw.on, stance: k % 2 ? 'far' : 'near', k: k };
   }
   // 竖直推力箭头（线 + 三角头），set(x, len, op)：从地面下 392 + len 往上指到 392
   function upArrow(parent) {
@@ -117,13 +122,34 @@
         draw: function (st, t) {
           var fade = E.fade, G = gait(st);
 
-          /* 人形：髋匀速前进，两条腿用 IK 让脚踩在算好的位置上；手臂跟近腿反着摆——按两条大腿的角差摆，绕站姿 8° 对称 */
+          /* 人形：髋匀速前进，直膝走（见 L 那行），两条腿用 IK 让踝落在算好的位置上；
+             手臂跟近腿反着摆——按两条大腿的角差摆，绕站姿 8° 对称 */
           var X = X0 + G.hip * SC;
-          // r.ankleY：G1 站直时踝关节的本地 y（≈ 381，踝离脚底 5 cm）
-          var aN = r.legIK([0, 302], [G.near.x - G.hip, r.ankleY - DY - G.near.lift]);
-          var aF = r.legIK([0, 302], [G.far.x - G.hip, r.ankleY - DY - G.far.lift]);
-          r.legs(aN, aF);
-          var sw = 8 - 0.35 * (aN[0] - aF[0]);
+          // r.ankleY：G1 站直时踝关节的本地 y（≈ 381，踝离脚底 5 cm）；LEG：髋到踝，近乎伸直
+          var LEG = r.ankleY - 302, d = { near: G.near.x - G.hip, far: G.far.x - G.hip };
+          var lead = G.ds ? Math.max(d.near, d.far) : d[G.stance];
+          var V = Math.sqrt(LEG * LEG - lead * lead), DY = LEG - V;         // 髋到踝的竖直距离；身子比站直时低多少
+          var walking = st >= WS + T && st < WE, lift = {}, tilt = {}, ang = {};
+          ['near', 'far'].forEach(function (w) {
+            var f = G[w], dx = d[w];
+            // 直腿够不着（后脚、刚离地的摆动脚）就抬脚跟：踝要抬高 heel，脚尖着地，脚掌倾角按它算
+            var heel = Math.max(0, V - Math.sqrt(Math.max(0, LEG * LEG - dx * dx)));
+            var toeDown = Math.asin(Math.min(1, heel / FOOT)) / DEG;
+            lift[w] = Math.max(f.lift, heel);
+            if (f.on) {
+              // 刚落地的前脚：脚尖还翘着，前半段双脚撑里放平
+              var q = walking && dx === lead && G.ds ? E.clamp((L / 2 - dx) / (0.15 * L), 0, 1) : 1;
+              tilt[w] = heel > 0 ? toeDown : -TOE_UP * (1 - q);
+            } else {
+              // 摆动：离地时的脚尖朝下在前 40% 收平，之后慢慢翘起脚尖，准备脚跟落地
+              var off = Math.asin(Math.min(1, Math.max(0, Math.sqrt(LEG * LEG - Math.pow((0.5 - D) * L, 2))
+                - Math.sqrt(LEG * LEG - Math.pow((0.5 + D) * L, 2))) / FOOT)) / DEG;
+              tilt[w] = f.s < 0.4 ? Math.max(toeDown, off * (1 - f.s / 0.4)) : -TOE_UP * (f.s - 0.4) / 0.6;
+            }
+            ang[w] = r.legIK([0, 302], [dx, r.ankleY - DY - lift[w]]);
+          });
+          r.legs(ang.near, ang.far, tilt.near, tilt.far);
+          var sw = 8 - 0.35 * (ang.near[0] - ang.far[0]);
           r.arm([sw, sw + 12]);
           r.place({ x: X, dy: DY * SC, scale: SC });
           E.op(r.g, fade(st, 0, 0.6));
@@ -156,7 +182,7 @@
             var load = !f.on ? 0 : G.ds ? 1 - Math.abs(G.hip - f.x) / span : 1;
             grf[w].set((fx + 7 * SC).toFixed(1), 14 + 14 * load, (f.on ? fade(st, 12.4, 0.4) * (w === 'far' ? 0.6 : 1) : 0).toFixed(3));
             var ev = st >= 13.2 ? sinceEvent(st, w) : 99, ru = ev / 0.5;
-            rings[w].setAttribute('cx', (fx + 7 * SC).toFixed(1)); rings[w].setAttribute('cy', (388 - (388 - r.ankleY + f.lift) * SC).toFixed(1));
+            rings[w].setAttribute('cx', (fx + 7 * SC).toFixed(1)); rings[w].setAttribute('cy', (388 - (388 - r.ankleY + lift[w]) * SC).toFixed(1));
             rings[w].setAttribute('r', (6 + 16 * ru).toFixed(1));
             E.op(rings[w], ru < 1 ? (0.9 * (1 - ru)).toFixed(3) : 0);
           });

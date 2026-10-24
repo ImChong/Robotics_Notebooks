@@ -9,7 +9,7 @@
   var ARM = [150, 360, 1.35];                              // UR5 底座 (x, y) 与缩放
   var HX = 540;                                            // 正面 G1 中心 x
   var GROUP_AT = { legs: 8.45, waist: 9.05, arms: 9.85 };
-  var LABEL = { arms: ['胳膊', 612, 170], waist: ['腰', 612, 216], legs: ['腿', 612, 314] };
+  var LABEL = { arms: ['胳膊', 636, 170], waist: ['腰', 636, 216], legs: ['腿', 636, 314] };   // 在「一起配合」虚线框（右缘 622）外面
   var STEP = 15.45, PULSE = { legs: 16.6, waist: 17.4, arms: 17.75 }, TOGETHER = 18.9;
   var CTRL = 20.3, TICK = 21.2, FAN = 23.0, SYNC = 24.7;
 
