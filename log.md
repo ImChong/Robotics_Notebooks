@@ -245,6 +245,12 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-24] ingest | Learn ESP32 — 收录交互课程与 MIT 源码，标明浏览器教学模型和真机验证边界
+
+- 归档课程站、公开源码与 16 课结构，补充 ESP32 入门路线及其与 Wokwi 的用途区别。
+
+## [2026-10-24] ingest | sources/papers/from_video_to_vision_arxiv_2610_14561.md — 收录 MOVER 视频驱动人形搬运论文并链接 Loco-Manipulation
+
 ## [2026-10-24] ingest | sources/repos/horizon_robotics_holomotion.md — 更新 HoloMotion v2 预览、SuperMimic 与 H-bot 官方资料
 
 ## [2026-10-24] ingest | sources/sites/nvidia-simready-central.md 与 sources/repos/nvidia-simready-central.md — 归档 NVIDIA SimReady Central 及其 Agent 仿真资产工作流

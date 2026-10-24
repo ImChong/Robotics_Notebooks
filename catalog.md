@@ -2773,6 +2773,7 @@
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM**（*Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation*，arXi `📅unknown` `[entity_page]`
 - [Motubrain（世界动作模型 · arXiv:2604.27792）](wiki/entities/paper-motubrain.md) — Motubrain**（*An Advanced World Action Model for Robot Control*，[arXiv:2604.27792](https://arxiv.or `📅unknown` `[entity_page]`
 - [Motus2（自进化通用世界模型 · arXiv:2608.30237）](wiki/entities/paper-motus2.md) — Motus2**（*A Self-Evolving General World Model for Dexterous Manipulation*，[arXiv:2608.30237](https `📅unknown` `[entity_page]`
+- [MOVER：从人类搬运视频学习可泛化的人形搬运](wiki/entities/paper-mover-humanoid-carrying.md) — From Video to Vision**（MOVER，*Learning Generalizable Humanoid Carrying from Human Motion*，[arXiv:2 `📅unknown` `[entity_page]`
 - [MPBRS：九种人形机器人共享奖励配置](wiki/entities/paper-mpbrs-humanoid-reward-shaping.md) — 一句话定义：** MPBRS 研究如何用同一组多势函数奖励结构与权重训练多种人形机器人，只提供机器人特定的结构映射和默认姿态元数据。 `📅unknown` `[entity_page]`
 - [MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — MPC-RL**（*Accelerating and Scaling MPC-Guided Reinforcement Learning for Humanoid Locomotion and M `📅unknown` `[entity_page]`
 - [MPC 脚手架灵巧 RL（arXiv:2609.14878）](wiki/entities/paper-mpc-scaffolding-dex-rl.md) — MPC 脚手架灵巧 RL**（*Real-World Reinforcement Learning with MPC Scaffolding for Dexterous Manipulation `📅unknown` `[entity_page]`
