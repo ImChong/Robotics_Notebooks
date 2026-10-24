@@ -110,6 +110,7 @@ flowchart LR
 
 ## 关联页面
 
+- 云深处同批研究：[DR-APO](./paper-dr-apo.md)、[DR-VLA](./paper-dr-vla.md)、[AMC](./paper-amc.md)、[EvolvingNav](./paper-evolvingnav.md)、[LynxScenes](./paper-lynxscenes.md)
 - [WAM 动作后果预测分类](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — DR-WM 作为物理 rollout 辅助候选动作选择的案例
 - [机器人世界模型动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 动作前预测物理变化的整体坐标
 - [World Action Models](../concepts/world-action-models.md) — WAM 与世界模型的概念关系

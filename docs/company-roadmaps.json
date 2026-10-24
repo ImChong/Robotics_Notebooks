@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-24",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -661,6 +661,80 @@
           "id": "wiki-overview-xpeng-iron-54-patents-technology-map",
           "url": "https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg",
           "date_note": "54 项专利申请 / 公开日期跨多年，属聚合入口，不设单一日期；不代表 IRON 首发日。"
+        }
+      ]
+    },
+    {
+      "key": "deeprobotics",
+      "name": "云深处 Deep Robotics",
+      "founded_year": 2017,
+      "founded_source": "https://www.deeprobotics.cn/",
+      "founded_note": "官网页脚版权年份起于 2017（©2017-2026 云深处科技股份有限公司）；这是官网署名年份，不是工商登记日。",
+      "lenses": [
+        "wam"
+      ],
+      "summary": "四足 / 轮足机器人整机公司，研究线（开发者中心「前沿探索」）覆盖地形物理世界模型、导航 VLA、演化世界 4D 信念导航、RL 策略优化、原子运动坐标 VLA 与室外轮足基准。",
+      "official": "https://developer.deeprobotics.cn/research/",
+      "nodes": [
+        {
+          "date": "2026-09",
+          "title": "AMC",
+          "track": "VLA / 操作",
+          "desc": "每臂 13 个平移 / 旋转 / 保持原子，经文本与正运动学落地，注入 VLA 动作专家；语言可转向、接触可修正。项目页链接 GitHub，未逐文件核验。",
+          "id": "entity-paper-amc",
+          "url": "https://developer.deeprobotics.cn/research/articles/AMC_web_handoff_20261012/index.html",
+          "date_note": "arXiv:2609.15012 v1 提交于 2026-09-14。",
+          "date_source": "https://arxiv.org/abs/2609.15012"
+        },
+        {
+          "date": "2026-09",
+          "title": "EvolvingNav",
+          "track": "导航 / 4D 信念",
+          "desc": "把带时间戳 3D 历史转为到达时刻的预测式 4D 信念，闭环证据更新；配 EvoWorld-Bench（54 场景）。项目页链接 GitHub 代码目录。",
+          "id": "entity-paper-evolvingnav",
+          "url": "https://developer.deeprobotics.cn/research/articles/evolving-nav/index.html",
+          "date_note": "arXiv:2609.39166 v1 提交于 2026-09-30。",
+          "date_source": "https://arxiv.org/abs/2609.39166"
+        },
+        {
+          "date": "2026-10",
+          "title": "DR-APO",
+          "track": "强化学习",
+          "desc": "优势引导目标改进 + 表示兼容的直接动作拟合，统一高斯 / 扩散 / 流策略；NavDP 后训练真机 SR 25%→65%（自报）。项目页未列代码。",
+          "id": "entity-paper-dr-apo",
+          "url": "https://developer.deeprobotics.cn/research/articles/dr-apo/index.html",
+          "date_note": "arXiv:2610.16618 v1 提交于 2026-10-12。",
+          "date_source": "https://arxiv.org/abs/2610.16618"
+        },
+        {
+          "date": "2026-10",
+          "title": "DR-WM",
+          "track": "世界模型",
+          "desc": "行为校准的地形物理 + 几何控制视频模型，预测导航动作后果；官方项目页标注代码与数据 Coming soon。",
+          "id": "entity-paper-dr-wm",
+          "url": "https://developer.deeprobotics.cn/research/articles/dr-wm/index.html",
+          "date_note": "arXiv:2610.17630 v1 提交于 2026-10-13；项目页发表日同为 2026-10-13。",
+          "date_source": "https://arxiv.org/abs/2610.17630"
+        },
+        {
+          "date": "2026-10",
+          "title": "DR-VLA",
+          "track": "VLA / 导航",
+          "desc": "域不变场景表示 DISR 把 1 万小时第一视角网络视频迁移到轮足导航；三专家 MoT；项目页 Code 标注 Coming soon。",
+          "id": "entity-paper-dr-vla",
+          "url": "https://developer.deeprobotics.cn/research/articles/dr-vla/index.html",
+          "date_note": "arXiv:2610.18373 v1 提交于 2026-10-13。",
+          "date_source": "https://arxiv.org/abs/2610.18373"
+        },
+        {
+          "date": "2026-10",
+          "title": "LynxScenes",
+          "track": "数据集 / 基准",
+          "desc": "LYNX M20 室外轮足基准：100K 片段、3.0M 标注帧、833.6 h；Code / Dataset 均标注 SOON，页面注明 ICLR 2027 审稿中。",
+          "id": "entity-paper-lynxscenes",
+          "url": "https://developer.deeprobotics.cn/research/articles/lynx-scenes/index.html",
+          "date_note": "arXiv:2610.18093 v1 提交于 2026-10-13。",
+          "date_source": "https://arxiv.org/abs/2610.18093"
         }
       ]
     },
