@@ -9,7 +9,6 @@ project: https://memory-before-goal.github.io/
 related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
-  - ../concepts/object-centric-representation.md
 sources:
   - ../../sources/papers/wholebodymem_arxiv_2610_31166.md
   - ../../sources/sites/wholebodymem.md
