@@ -128,7 +128,7 @@
       // 扫地机：外层 translate + rotate 跟着路线走，俯视的 Create 2 车头朝 +x。保险杠（前半圈的弧）平时不画，感知时闪；
       // 两个驱动轮藏在机身下面，按真实位置（左右各 0.1175 m）叠一层「透视」的轮子 + 条纹，看得见各转多快
       var bot = E.el('g', {}, s);
-      var vac = E.vacuum(bot, 0, 0, 0.8, { top: true });
+      E.vacuum(bot, 0, 0, 0.8, { top: true });
       var bumper = K.paint(E.el('path', { d: 'M 21.2 -31.5 A 38 38 0 0 1 21.2 31.5', fill: 'none', 'stroke-width': 5.6, 'stroke-linecap': 'round' }, bot), null, E.GOOD);
       var wheels = [-30, 22].map(function (wy) {
         K.paint(E.el('rect', { x: -15, y: wy, width: 30, height: 8, rx: 2 }, bot), E.INK2);
