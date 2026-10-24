@@ -11,6 +11,7 @@ related:
   - ./simplefoc.md
   - ./wokwi.md
   - ./tinkercad.md
+  - ./konnect.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md
   - ../../sources/repos/kicad.md
+  - ../../sources/repos/konnect.md
   - ../../sources/repos/wolfiemouse.md
   - ../../sources/repos/opatiny-micromouse.md
 summary: "KiCad 是 GPLv3 开源跨平台 EDA：原理图、PCB 布局、ERC/DRC、SPICE、3D 预览与 kicad-cli；机器人栈中用于关节驱动板、BMS 与传感转接板的电子设计真值与 Gerber 制造交付。"
@@ -117,6 +119,7 @@ flowchart TB
 ## 关联页面
 
 - [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
+- [Konnect](./konnect.md) — 通过 MCP 将 AI 助手接入 KiCad 10，辅助编辑、检查和导出板级工程。
 
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（开源 KiCad vs 商用 Altium、自研驱动板 vs 商用一体化关节）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
@@ -137,6 +140,7 @@ flowchart TB
 - [KiCad 官网归档](../../sources/sites/kicad-org.md)
 - [KiCad 10.0 简体中文文档归档](../../sources/courses/kicad_docs_10_zh.md)
 - [KiCad 官方源码仓库归档](../../sources/repos/kicad.md)
+- [Konnect 源码归档](../../sources/repos/konnect.md)
 - [WolfieMouse 归档](../../sources/repos/wolfiemouse.md)
 - [Algernon / opatiny 归档](../../sources/repos/opatiny-micromouse.md)
 
