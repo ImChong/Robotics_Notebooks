@@ -40,7 +40,7 @@ related:
   - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/humantouch.md
-  - ../entities/paper-touchanything-egotouch.md
+  - ../entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
@@ -253,7 +253,7 @@ flowchart LR
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务：同数据 vision-only vs visuotactile（arXiv:2605.21976）
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal vs Safety；π₀.₅ VO/VT 在 FEM 软体上的安全增益（arXiv:2607.04234）
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 触觉+手姿+头/腕 RGB 同步；强调可解释接触与质控（数据待 HF 发布）
-- [TouchAnything 与 EgoTouch](../entities/paper-touchanything-egotouch.md) — 多视角视频预测人手压力；含公开数据、代码与评测脚本
+- [TouchAnything 与 EgoTouch](../entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md) — 多视角视频预测人手压力；含公开数据、代码与评测脚本
 - [NeoteAI / 𝒩₀ 栈](../entities/neoteai.md) — NeoForce 力场 + 𝒩₀-VTLA 预测触觉 + 𝒩₀-TWAM 双通路
 - [ViTacWorld](../entities/paper-vitacworld.md) — 动作条件视触觉 WM：dream 增强下游触觉策略（arXiv:2607.22530）
 - [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) — 联合预测视触觉形变与动作的 WAM
