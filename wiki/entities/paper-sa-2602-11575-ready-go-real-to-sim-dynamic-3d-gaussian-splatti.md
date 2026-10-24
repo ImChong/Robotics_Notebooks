@@ -86,6 +86,8 @@ Real-to-sim dynamic 3D Gaussian splatting simulation for environment-specific vi
 
 ## 关联页面
 
+- [StreamSplat：未标定视频流的在线动态 3D 重建](paper-streamsplat-iclr-2026.md) — 通用动态场景重建方法，可作为动态 3DGS 方法参照
+
 - 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
 - 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
