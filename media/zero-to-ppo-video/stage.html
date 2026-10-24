@@ -384,12 +384,13 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
     while (idx < segs.length - 1 && String(segs[idx + 1].scene) === String(s.scene)) last = segs[++idx];
-    // 这句念多久，[from, to] 就拉伸成多久（配音比分镜短则 1 倍速）；停在 to 之前一刻，让从 to 开始的要点等下一句
+    // [from, to] 连续铺满这一句（含句间停顿），下一句开口时正好走到 to，从 to 开始的要点等下一句；
+    // 句间不停、一幕开头也不停（停住再走看着像卡顿）。一幕第一句从这一幕一开始就走，淡入在开口前做完；
+    // 最后一句念完（配音比分镜短则 1 倍速走完）停在 to，收尾画面先看清再淡出
     var local = t - first.t0, span = Math.max(s.to - s.from, s.alen || 0);
-    var st = s.from + (s.to - s.from) * clamp((t - s.t0 - s.lead) / (span || 1), 0, 1);
-    // 一幕开头配音前的停顿（lead）里分镜先按 1 倍速走起来，淡入在开口前就做完，不然画面要等第一个字才出来；
-    // 配音追上之前停在 from + lead
-    if (s === first && s.lead) st = Math.max(st, s.from + Math.min(t - s.t0, s.lead, s.to - s.from));
+    var a0 = s === first ? s.t0 : s.t0 + s.lead;
+    var a1 = s === last ? Math.min(s.t0 + s.lead + span, s.t1) : s.t1;
+    var st = s.from + (s.to - s.from) * clamp((t - a0) / Math.max(a1 - a0, 1e-3), 0, 1);
     st = Math.min(st, Math.max(s.to - 1e-3, s.from));
     var sc = get(key);
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
