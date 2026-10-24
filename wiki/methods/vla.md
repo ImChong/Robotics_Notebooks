@@ -789,3 +789,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 主动视角后的状态对齐
 
 - [ActiveAlign](../entities/paper-activealign.md) — 用主动相机轨迹终点续接示范并微调 VLA，处理“视角更好但首帧分布改变”的操作性能下降。
+
+## 人形 VLA 的物体历史记忆
+
+- [WholeBodyMem](../entities/paper-wholebodymem.md) — 由物体事件筛选目标前历史关键帧，并将关键帧与物体 token 输入人形全身动作专家（arXiv:2610.31166）。
