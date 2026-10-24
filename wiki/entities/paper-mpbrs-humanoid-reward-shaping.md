@@ -42,3 +42,9 @@ summary: "MPBRS evaluates one potential-based reward configuration across nine h
 
 - [MPBRS 论文归档](../../sources/papers/mpbrs_arxiv_2610_30334.md)
 - [arXiv:2610.30334](https://arxiv.org/abs/2610.30334)
+
+## 关联页面
+
+- [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Reward Design](../concepts/reward-design.md)
+- [Locomotion](../tasks/locomotion.md)
