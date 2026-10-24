@@ -18,7 +18,7 @@
   var TAB = { x: 0.47, y: -1.12, w: 0.82, d: 0.45, h: 0.39, t: 0.045, inset: 0.04 };
   var GRID = 0.25, FLOOR = [24, 278, 776, 414];             // 地面网格间距（米）；网格只画在画框里这一块地面上
   var TIP = 17, FALL0 = 34.4, FALL1 = 35.4;
-  var BROOM = [680, 300];                                   // 扫把立在手心 (680, 300)
+  var BROOM = [646, 300], HAND = 1.25;                      // 扫把立在手心 (646, 300)，手放大 1.25 倍；手和扫把画在右边一张小卡片里
 
   E.scenes[3] = {
     title: '难点四：强不稳定，一松就倒',
@@ -124,15 +124,22 @@
           fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, s), null, E.ACC);
       });
 
-      /* 手托扫把（扫把头朝上），在自己的组里绕手心转 */
+      /* 手托扫把：一个比喻，放在右边一张小卡片里（不站在三维地面上）。手是侧面、掌心朝上的一整只手——小臂、袖口、
+         并拢的四指（两道指缝）、翘起的大拇指，填成和机器人一样的浅灰；扫把头朝上，扫把在自己的组里绕手心转 */
       var broomG = E.el('g', {}, s);
+      K.paint(E.el('rect', { x: BROOM[0] - 82, y: 128, width: 218, height: 254, rx: 14, 'stroke-width': 2 }, broomG), E.S1, E.BORDER);
       var palm = E.el('g', {}, broomG);
-      K.paint(E.el('path', { d: 'M -4 14 L -34 62', fill: 'none', 'stroke-width': 14, 'stroke-linecap': 'round' }, palm), null, E.INK2);   // 小臂
-      K.paint(E.el('path', { d: 'M -26 -2 Q 0 16 26 0', fill: 'none', 'stroke-width': 9, 'stroke-linecap': 'round' }, palm), null, E.INK2);   // 摊开的手掌
-      K.paint(E.el('path', { d: 'M -26 -2 L -30 -14', fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, palm), null, E.INK2);   // 大拇指
+      var skin = E.tint(E.INK, 72, 'var(--demo-surface)');
+      function part(d, fill) { return K.paint(E.el('path', { d: d, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, palm), fill, E.INK2); }
+      part('M -27 -1 L -21 14 L -40 50 L -55 41 Z', skin);                     // 小臂
+      part('M -40 50 L -55 41 L -61 51 L -46 60 Z', E.S2);                     // 袖口
+      part('M -24 -1 C -10 3 8 3 20 -2 C 30 -6 44 -8 50 -4 Q 56 0 50 5 C 40 9 26 10 16 12 C 4 15 -12 16 -22 14 Z', skin);   // 手掌 + 四指
+      K.paint(E.el('path', { d: 'M 22 4 Q 34 2 47 0 M 20 8 Q 30 7 41 6', fill: 'none', 'stroke-width': 1.5, 'stroke-linecap': 'round' }, palm), null, E.INK2);   // 指缝
+      part('M -22 0 C -25 -8 -19 -17 -13 -17 Q -8 -16 -10 -10 C -12 -5 -13 -3 -14 0 Z', skin);   // 大拇指
       var stick = E.el('g', {}, broomG);
-      K.paint(E.el('line', { x1: 0, y1: 0, x2: 0, y2: -140, 'stroke-width': 5, 'stroke-linecap': 'round' }, stick), null, E.WARN);
-      K.paint(E.el('path', { d: 'M -6 -138 L 6 -138 L 20 -176 L -20 -176 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, stick), E.S2, E.WARN);
+      K.paint(E.el('line', { x1: 0, y1: 0, x2: 0, y2: -110, 'stroke-width': 5, 'stroke-linecap': 'round' }, stick), null, E.WARN);
+      K.paint(E.el('path', { d: 'M -6 -108 L 6 -108 L 20 -146 L -20 -146 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, stick), E.S2, E.WARN);
+      K.paint(E.el('path', { d: 'M -9 -113 L -13 -141 M -3 -113 L -4 -141 M 3 -113 L 4 -141 M 9 -113 L 13 -141', fill: 'none', 'stroke-width': 1.5, 'stroke-linecap': 'round' }, stick), null, E.WARN);   // 扫把苗
 
       // 脚下的地面框：两只脚都踩着时是两只脚掌外沿围成的一块，抬起右脚（画面左脚）后只剩左脚那一块
       function setBand(lifted, bad) {
@@ -210,12 +217,12 @@
           var dir = Math.cos(TAU * t / 1.4);                 // 晃的速度方向：往右晃时左边的弧（把人往回拉）亮，反之亦然
           adj.forEach(function (a, k) { E.op(a, (cp * (1 - stop) * Math.max(0, k ? -dir : dir)).toFixed(3)); });
 
-          /* 29.9「手心里立一根扫把」：扫把小幅晃、手跟着往同一边挪；32.7「松手」手往下撤走，扫把倒下（33.6 后淡出） */
+          /* 29.9「手心里立一根扫把」：扫把小幅晃、手跟着往同一边挪；32.7「松手」手往下撤走，扫把倒下（倒 60°，不甩出卡片；33.6 后淡出） */
           var bp = fade(st, 29.9, 0.35) * (1 - fade(st, 33.7, 0.4));
           var wob = 7 * Math.sin(TAU * t / 1.6), drop = fade(st, 32.7, 0.4);
-          var bu = K.seg(st, 32.75, 33.55), ang = wob * (1 - drop) + 85 * bu * bu;
+          var bu = K.seg(st, 32.75, 33.55), ang = wob * (1 - drop) + 60 * bu * bu;
           var hx = BROOM[0] + 10 * Math.sin(TAU * t / 1.6 + 0.6) * (1 - drop);
-          palm.setAttribute('transform', 'translate(' + hx.toFixed(1) + ' ' + (BROOM[1] + 40 * drop).toFixed(1) + ')');
+          palm.setAttribute('transform', 'translate(' + hx.toFixed(1) + ' ' + (BROOM[1] + 24 * drop).toFixed(1) + ') scale(' + HAND + ')');
           E.op(palm, 1 - drop);
           stick.setAttribute('transform', 'translate(' + hx.toFixed(1) + ' ' + BROOM[1] + ') rotate(' + ang.toFixed(1) + ')');
           E.op(broomG, bp);
