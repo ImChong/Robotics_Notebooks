@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: deeprobotics-dr-apo
 tags: [paper, reinforcement-learning, policy-optimization, diffusion-policy, flow-matching, robot-navigation, deep-robotics]
 status: complete
 updated: 2026-10-24

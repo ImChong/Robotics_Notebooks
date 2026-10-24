@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: deeprobotics-lynxscenes
 tags: [dataset, benchmark, wheel-legged, outdoor-navigation, perception, reconstruction, deep-robotics]
 status: complete
 updated: 2026-10-24

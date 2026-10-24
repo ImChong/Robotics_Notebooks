@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: deeprobotics-evolvingnav
 tags: [paper, robot-navigation, 4d-memory, belief, benchmark, deep-robotics]
 status: complete
 updated: 2026-10-24

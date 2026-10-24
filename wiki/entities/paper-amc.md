@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: deeprobotics-amc
 tags: [paper, vla, manipulation, language-steering, force-control, bimanual, deep-robotics]
 status: complete
 updated: 2026-10-24

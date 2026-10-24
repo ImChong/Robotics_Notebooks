@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: deeprobotics-dr-vla
 tags: [paper, vla, world-model, robot-navigation, egocentric-video, wheel-legged, deep-robotics]
 status: complete
 updated: 2026-10-24
