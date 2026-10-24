@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-10-13
+updated: 2026-10-24
 related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
@@ -38,6 +38,7 @@ sources:
   - ../../sources/sites/lerobot-envhub-docs.md
   - ../../sources/sites/lerobot-dataset-v3-docs.md
   - ../../sources/sites/lerobot-huggingface-org.md
+  - ../../sources/courses/robot_learning_tutorial_arxiv_2510_12403.md
 ---
 
 # LeRobot (Hugging Face)
@@ -120,7 +121,7 @@ lerobot-record --robot.type=so100_follower --policy.path=<checkpoint> ...
 | **任务示范** | `lerobot/folding_latest` | 叠衣等端到端真机策略 |
 | **Spaces** | LeLab、Visualize Dataset (v2.0+) | 不装环境也能在浏览器里看数据 |
 
-组织页还收录了教程论文 **Robot Learning: A Tutorial**，适合配合 [模仿学习](../methods/imitation-learning.md) 主线阅读。
+组织页还收录了 **Robot Learning: A Tutorial**。教程从经典模型式机器人学的边界过渡到强化学习、模仿学习和通用策略；章节导读、Figure 8/9 说明及一手引用见[来源归档](../../sources/courses/robot_learning_tutorial_arxiv_2510_12403.md)，可配合 [模仿学习](../methods/imitation-learning.md) 主线阅读。
 
 ## 生态：谁在用 LeRobot
 
