@@ -30,9 +30,9 @@ summary: "Phoenix 是面向机器人操作的世界动作模型系统：联合�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | MWA | 官方未展开 | Phoenix-MWA 的世界动作预训练主干；项目页未说明缩写全称 |
-| ILA | Interaction Latent Action | 将运动与触觉变化编码成策略生成目标的交互潜变量 |
+| ILA | 官方未展开 | Phoenix 的交互潜变量后训练模块，学习运动与触觉变化的联合表征 |
 | GRPO | Group Relative Policy Optimization | 按同一初始条件下的多条 rollout 相对表现更新策略 |
-| UMI | Universal Manipulation Interface | 项目预训练数据中的一种人类操作记录来源 |
+| UMI | 官方项目页未展开 | 项目预训练数据中列出的一种操作记录来源 |
 | RTC | Real-Time Chunking | 执行动作块时并行准备后续动作以维持连续性 |
 
 ## 为什么重要
