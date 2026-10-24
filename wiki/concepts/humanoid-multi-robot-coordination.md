@@ -9,7 +9,7 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-10-16
+updated: 2026-10-24
 related:
   - ../tasks/humanoid-soccer.md
   - ../methods/marl.md
@@ -18,6 +18,7 @@ related:
   - ../methods/htwk-gym.md
   - ../entities/booster-robocup-demo.md
   - ../entities/paper-pingpongduo.md
+  - ../entities/paper-omniinteract-dual-humanoids.md
 sources:
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md
@@ -113,6 +114,7 @@ flowchart LR
 - [CHORUS](../entities/paper-chorus.md) — 移动操作臂 **零通信** 去中心化 VLA 协作（共享 π₀.₅ 权重 + 身份 prompt；与足球群控场景不同但同属多机协调谱系）
 - [UniUni](../entities/unitree-uniuni.md) — 宇树面向编队演出的图形化轨迹与动作时间线工具；偏预编排执行，不公开底层同步/定位实现
 - [PingpongDuo](../entities/paper-pingpongduo.md) — 双人形乒乓球双打：风险过滤站位实现高动态多机协同
+- [OmniInteract](../entities/paper-omniinteract-dual-humanoids.md) — 双人形表面接触重定向与伙伴条件化全身交互控制
 
 ## 参考来源
 
