@@ -1,5 +1,5 @@
 {
-  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。create2 / turtlebot3 / prius 由 Gallery PR #120 收录（上游 commit 同样固定）；create2、turtlebot3 上游只发布 xacro，舞台加载时用 xacro-parser 展开（同 Gallery 的 web/js/xacro.js）。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
+  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。prius 由 Gallery PR #120 收录；create2、turtlebot3 的同一上游仓库由 Gallery PR #119 收录（commit 不同，片中各自固定；turtlebot3 用同一包里的 Waffle，画廊收的是 Burger）；create2、turtlebot3 上游只发布 xacro，舞台加载时用 xacro-parser 展开（同 Gallery 的 web/js/xacro.js）。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
   "gallery": {
     "repo": "https://github.com/ImChong/Robot_Description_Gallery_Online",
     "commit": "ca1efb74e8a642d1bd1a26b0ef7a0068dc2b6ebb",
