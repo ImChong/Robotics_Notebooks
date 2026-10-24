@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-24
 arxiv: "2606.28276"
 code: https://github.com/NVlabs/SimFoundry
 related:
@@ -22,6 +22,7 @@ related:
   - ./paper-agentic-real2sim.md
   - ./paper-lucida-r2s.md
   - ./paper-sceneagent-real2sim-capture-physics.md
+  - ./paper-distscene.md
 sources:
   - ../../sources/papers/simfoundry_arxiv_2606_28276.md
   - ../../sources/sites/nvidia-research-simfoundry.md
@@ -228,6 +229,7 @@ sequenceDiagram
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM agent 编排的 episode 级 Real2Sim（代码待开放）
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑资产 + GizmoAct 9-DoF（几何对齐，无策略评测）
 - [SceneAgent](./paper-sceneagent-real2sim-capture-physics.md) — 3D 捕获 + 预测物理 + digital sisters + VLA 微调（代码待发布）
+- [DistScene](./paper-distscene.md) — 单张图像联合生成环境与独立物体；可与 SimFoundry 的视频驱动、sim-ready Real2Sim 管线对照。DistScene 当前公开评测以几何指标为主，尚未发布可复现代码与仿真物理配置。
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 驾驶/现场神经体积 USDZ；本页是操作 mesh+cousins，不是车队日志
 - [Instant NuRec](./paper-instant-nurec.md) — 前向 3DGS 驾驶世界；闭环看策略排序而非 Pearson
 - [HKTex](./paper-hktex-heat-kernel-textures.md) — sim-ready 物体 mesh 的无 UV 紧凑纹理与 PBR 外观层（ECCV 2026 Best Paper）

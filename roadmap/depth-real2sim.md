@@ -138,6 +138,7 @@ flowchart LR
 
 ### 核心问题
 - **场景孪生 vs episode 孪生**：[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 从单段视频重建 **sim-ready 场景**；[Agentic Real2Sim](../wiki/entities/paper-agentic-real2sim.md) 把真机交互录像复现成 **MuJoCo episode 孪生**（含执行器/轨迹/接触/任务）
+- **单图组合式场景生成**：[DistScene](../wiki/entities/paper-distscene.md) 联合生成环境与独立物体，并展示导入导航模拟器的例子；论文评测聚焦几何质量，代码 / checkpoint / 数据集仍待发布，物理可用性需单独验证
 - **VLM-agent 编排的解耦设计**：agent 只做物体发现、关键帧、mask/tracking critic 等 **schema 约束决策**，几何与抓取 sweep 走**确定性工具**——因此开源 31B 与闭源大模型回放成功接近、成本差约一个数量级
 - **数字表亲（digital cousins）作为可控域随机化**：object/scene/task cousins 是**保 affordance 的语义变体**，不是简单 pose 噪声；SimFoundry 报告三者分别约 +17%/+21%/+40% 平均任务成功率增益——把 Real2Sim 从"复刻一个场景"扩到"批量生产可训练场景"
 - **人–场景交互的生成 vs 重建**：[CRISP](../wiki/methods/crisp-real2sim.md) 从视频**后向重建**可仿真人形运动；[COINS](../wiki/entities/paper-coins-compositional-human-scene-interaction.md) 按语义**前向合成**静态交互；[DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md) 用 RL 潜空间正向合成室内坐/躺/走——互补的"重建 vs 生成"
