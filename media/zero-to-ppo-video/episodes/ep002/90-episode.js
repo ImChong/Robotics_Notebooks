@@ -32,7 +32,7 @@
   window.EpisodeVideo = {
     ep: '002',                      // 只用于文件名；画面和封面上都不出现集数
     badge: '第一季',
-    robots: ['g1', 'ur5', 'go2', 'turtlebot3'],   // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
+    robots: ['g1', 'ur5', 'go2', 'jackal'],   // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '人形难点',
     name: '多关节、浮动基、换脚、易倒',
     pitch: '把它控好，换到机械臂、四足几乎都更简单',

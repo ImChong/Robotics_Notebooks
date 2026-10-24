@@ -1,15 +1,16 @@
 // 002 第 2 幕：难点二·浮动基。左边桌上的机械臂：「拧死」时两颗螺栓拧上，手臂摆动底座不动，「固定点」处一个原点 + 虚线箭头指到夹爪；
-// 右边侧视人形：躯干上一个随身的小坐标架（紫），「没钉在任何地方」时「没钉住」，「到处跑」时往前走一小段、拖出一条轨迹，
-// 「浮动基」标签；「在哪 / 朝哪 / 歪没歪」右侧三行依次出现（地上原点连到躯干、躯干朝向加粗、身子前倾 6°），「要控制的量」时三行变色；
-// 「没有哪个电机能直接推躯干」：电机推躯干的箭头打叉；「脚踩地 / 借地面推回来的力」：脚亮起、地面往上的推力箭头；「扶正」时回正。
+// 右边侧视人形：骨盆（G1 的根连杆 pelvis，也就是浮动基）上一个随身的小坐标架（紫），「没钉在任何地方」时「没钉住」，「到处跑」时往前走一小段、拖出一条轨迹，
+// 「浮动基」标签；「在哪 / 朝哪 / 歪没歪」右侧三行依次出现（地上原点连到骨盆、骨盆朝向加粗、身子前倾 6°），「要控制的量」时三行变色；
+// 「没有哪个电机能直接推骨盆」：电机推骨盆的箭头打叉；「脚踩地 / 借地面推回来的力」：脚亮起、地面往上的推力箭头；「扶正」时回正。
 // 时刻取自配音的逐词时间（分镜时间 ≈ 念到的时刻），见 ../ep002.py。
 (function () {
   var E = window.EP002, K = E.K;
   var TAU = Math.PI * 2;
   var X0 = 540, WALK = 63, W0 = 16.4, W1 = 18.2;           // 人形从 x 540 走 63（poseWalk 半个周期）到 603
-  // 躯干坐标架画在 G1 胸腔里那颗 IMU（imu_in_torso）的高度：本地 y ≈ 265。人形放大 1.15 倍（以脚底为心）；TW 是坐标架原点的画面 y
-  var X1 = X0 + WALK, TORSO_Y = 265, SC = 1.15;
-  var TW = 388 - (388 - TORSO_Y) * SC;
+  // 浮动基坐标架画在 G1 的根连杆 pelvis 的原点：URDF 里在右髋俯仰关节正上方 0.1027 m，本地 y = 302 − 0.1027 × 124.7 ≈ 289.2
+  // （IMU 也在骨盆里：imu_in_pelvis）。人形放大 1.15 倍（以脚底为心）；TW 是坐标架原点的画面 y
+  var X1 = X0 + WALK, BASE_Y = 289.2, SC = 1.15;
+  var TW = 388 - (388 - BASE_Y) * SC;
   var Q = [['在哪？', 20.55], ['朝哪？', 21.3], ['歪没歪？', 21.75]], Q_X = 690, Q_Y = [226, 260, 294];
   var TILT = 6;
 
@@ -21,12 +22,12 @@
     cues: [
       { at: 0, s: '难点二：**浮动基**（基 = 机器人的身子、底座）' },
       { at: 5.9, s: '机械臂：底座拧死，算什么都从这个固定点出发' },
-      { at: 13.5, s: '人形：躯干没钉住，跟着身体到处跑' },
-      { at: 20.2, s: '躯干在哪、朝哪、歪没歪：都要控制' },
-      { at: 25.3, s: '没有电机能直接推躯干：只能脚踩地，借地面的力' }
+      { at: 13.5, s: '人形：骨盆（根连杆）没钉住，跟着身体到处跑' },
+      { at: 20.2, s: '骨盆在哪、朝哪、歪没歪：都要控制' },
+      { at: 25.3, s: '没有电机能直接推骨盆：只能脚踩地，借地面的力' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('难点二浮动基：机械臂底座拧死在桌上，算什么都从这个固定点出发；人形的躯干没钉在任何地方，在哪、朝哪、歪没歪都要控制，而且没有电机能直接推躯干，只能靠脚踩地借地面推回来的力');
+      var s = K.sceneSvg('难点二浮动基：机械臂底座拧死在桌上，算什么都从这个固定点出发；人形的骨盆（根连杆）没钉在任何地方，在哪、朝哪、歪没歪都要控制，而且没有电机能直接推骨盆，只能靠脚踩地借地面推回来的力');
 
       K.paint(E.el('line', { x1: 20, y1: 388, x2: 780, y2: 388, 'stroke-width': 3 }, s), null, E.BORDER);
 
@@ -51,7 +52,7 @@
       var fixedTag = E.tag(left, 128, 318, 104, 32, '固定点', E.ACC, { size: 20, ink: E.ACC, weight: 700 });
       var reach = E.arrow(left, [[O[0] + 5, O[1] - 5], [TOOL[0] - 6, TOOL[1] + 4]], E.ACC, 2.5, { dash: '6 5', head: 10 });
 
-      /* ── 右：侧视人形 + 躯干上的小坐标架 ── */
+      /* ── 右：侧视人形 + 骨盆上的小坐标架 ── */
       var noPin = E.tag(s, 412, 228, 96, 32, '没钉住', E.BAD, { size: 20, ink: E.BAD, weight: 700 });
       var trail = K.paint(E.el('path', { d: 'M ' + X0 + ' ' + TW + ' H ' + X1, fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '3 6', 'stroke-linecap': 'round' }, s), null, E.VIOLET);
       var trailStart = K.paint(E.el('circle', { cx: X0, cy: TW, r: 4 }, s), E.VIOLET);
@@ -59,11 +60,11 @@
       var whereO = K.paint(E.el('circle', { cx: 450, cy: 388, r: 5 }, s), E.INK2);
       var r = E.robot(s, X0);
       var frame = E.el('g', {}, r.body);
-      E.arrow(frame, [[0, TORSO_Y], [30, TORSO_Y]], E.VIOLET, 3, { head: 9 });
-      E.arrow(frame, [[0, TORSO_Y], [0, TORSO_Y - 30]], E.VIOLET, 3, { head: 9 });
-      var heading = E.arrow(frame, [[30, TORSO_Y], [54, TORSO_Y]], E.ACC, 3, { head: 10, dash: '5 4' });
-      K.paint(E.el('circle', { cx: 0, cy: TORSO_Y, r: 4.5 }, frame), E.VIOLET);
-      var tiltArc = K.paint(E.el('path', { d: 'M 0 ' + (TORSO_Y - 44) + ' A 44 44 0 0 1 ' + (44 * Math.sin(TILT * Math.PI / 180)).toFixed(1) + ' ' + (TORSO_Y - 44 * Math.cos(TILT * Math.PI / 180)).toFixed(1),
+      E.arrow(frame, [[0, BASE_Y], [30, BASE_Y]], E.VIOLET, 3, { head: 9 });
+      E.arrow(frame, [[0, BASE_Y], [0, BASE_Y - 30]], E.VIOLET, 3, { head: 9 });
+      var heading = E.arrow(frame, [[30, BASE_Y], [54, BASE_Y]], E.ACC, 3, { head: 10, dash: '5 4' });
+      K.paint(E.el('circle', { cx: 0, cy: BASE_Y, r: 4.5 }, frame), E.VIOLET);
+      var tiltArc = K.paint(E.el('path', { d: 'M 0 ' + (BASE_Y - 44) + ' A 44 44 0 0 1 ' + (44 * Math.sin(TILT * Math.PI / 180)).toFixed(1) + ' ' + (BASE_Y - 44 * Math.cos(TILT * Math.PI / 180)).toFixed(1),
         fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, frame), null, E.ACC);
       var floatTag = E.tag(s, X1 - 52, 112, 104, 34, '浮动基', E.VIOLET, { size: 22, ink: E.VIOLET, weight: 900 });
 
@@ -71,14 +72,14 @@
       var qs = Q.map(function (q, i) { return E.txt(s, Q_X, Q_Y[i], q[0], 22, E.INK, 'start', 700); });
       var ctrlTag = E.tag(s, Q_X - 6, 312, 112, 30, '要控制的量', E.ACC, { size: 18, ink: E.ACC, weight: 700 });
 
-      // 电机 → 躯干（打叉）；地面推力
+      // 电机 → 骨盆（打叉）；地面推力
       var motor = E.el('g', {}, s);
       K.paint(E.el('circle', { cx: 450, cy: 186, r: 20, 'stroke-width': 3 }, motor), E.S2, E.INK2);
       K.paint(E.el('path', { d: 'M 442 194 V 178 L 450 188 L 458 178 V 194', fill: 'none', 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, motor), null, E.INK2);
       E.txt(motor, 450, 230, '电机', 18, E.INK2);
       var pushG = E.el('g', {}, s);
-      var push = E.arrow(pushG, [[474, 192], [576, 236]], E.INK2, 3, { head: 11 });
-      var noPush = E.cross(s, 525, 214, 12, E.BAD, 4);
+      var push = E.arrow(pushG, [[471, 198], [584, 265]], E.INK2, 3, { head: 11 });   // 箭头尖顶到走完后骨盆的后缘
+      var noPush = E.cross(s, 527, 231, 12, E.BAD, 4);
       var grf = E.arrow(s, [[X1 + 9, 416], [X1 + 9, 394]], E.GOOD, 4, { head: 12 });
       var grfLabel = E.txt(s, X1 + 24, 414, '地面推回来的力', 18, E.GOOD, 'start', 700);
 
@@ -91,10 +92,12 @@
           E.op(left, (fade(st, 0, 0.6) * (1 - 0.6 * fade(st, 13.4, 0.5))).toFixed(3));
           E.op(r.g, fade(st, 0, 0.6));
 
-          /* 3.89「身子」：躯干亮紫边；4.54「底座」：机械臂底座亮紫边；5.9 前都退回去。14.16「躯干」起躯干一直亮着 */
-          var body = Math.max(E.win(st, 3.85, 5.8, 0.3), fade(st, 14.1, 0.3));
-          r.torso.style.stroke = body > 0.5 ? E.VIOLET : E.INK;
-          E.glow(r.torso, E.VIOLET, body > 0.5);
+          /* 3.89「身子」：整段躯干亮紫边；4.54「底座」：机械臂底座亮紫边；5.9 前都退回去。14.16「骨盆」起骨盆一直亮着 */
+          var body = E.win(st, 3.85, 5.8, 0.3) > 0.5, base = fade(st, 14.1, 0.3) > 0.5;
+          r.torso.style.stroke = body ? E.VIOLET : E.INK;
+          E.glow(r.torso, E.VIOLET, body);
+          r.pelvis.style.stroke = base ? E.VIOLET : E.INK;
+          E.glow(r.pelvis, E.VIOLET, base);
           var hi = E.win(st, 4.5, 5.8, 0.3) > 0.5;
           arm.view.tint(['base_link', 'shoulder_link'], hi ? E.VIOLET : null, 1);
           K.paint(plate, null, hi ? E.VIOLET : E.INK2);
@@ -120,7 +123,7 @@
           var u = K.seg(st, W0, W1), X = X0 + WALK * K.ease(u);
           var w = K.poseWalk((X - X0) / 126), k = fade(st, W1, 0.4);
           r.legs(mix(w.legA, [4, 0], k), mix(w.legB, [-4, 0], k));
-          r.arm(mix([w.armA[0] * 0.8, w.armA[1] * 0.8], [8, 4], k));
+          r.arm(mix(r.walkArm((X - X0) / 126), [8, 4], k));
           if (st < W0) r.stand();
           // 19–20：身子前倾 6°（绕脚底）；32.1–32.6「扶正」回 0
           var tilt = TILT * fade(st, 21.75, 0.5) * (1 - fade(st, 32.1, 0.5));
@@ -130,12 +133,12 @@
           E.pop(floatTag.g, X1, 129, fade(st, 18.7, 0.3), 0.8);
 
           /* 小坐标架：14.2 出现；21.3「朝哪」朝向箭头；21.75「歪」弧线 */
-          E.pop(frame, 0, TORSO_Y, fade(st, 14.2, 0.3), 0.6);
+          E.pop(frame, 0, BASE_Y, fade(st, 14.2, 0.3), 0.6);
           E.drawOn(heading.line, fade(st, 21.3, 0.4));
           E.op(heading.head, K.seg(fade(st, 21.3, 0.4), 0.9, 1));
           E.drawOn(tiltArc, fade(st, 21.9, 0.4));
 
-          /* 右侧三行；20.55「在哪」地上原点连到躯干；23.65「要控制的量」三行变 accent */
+          /* 右侧三行；20.55「在哪」地上原点连到骨盆；23.65「要控制的量」三行变 accent */
           var ctl = fade(st, 23.65, 0.3);
           qs.forEach(function (q, i) {
             var p = fade(st, Q[i][1], 0.3);
@@ -147,12 +150,12 @@
           E.op(whereO, fade(st, 20.55, 0.2));
           E.pop(ctrlTag.g, Q_X + 50, 327, ctl, 0.8);
 
-          /* 26.1「电机」；27.2「推」箭头；27.5「躯干」打叉；28.7「脚踩地」脚亮；29.95「借地面推回来的力」推力箭头 */
+          /* 26.1「电机」；27.2「推」箭头；27.5「骨盆」打叉；28.7「脚踩地」脚亮；29.95「借地面推回来的力」推力箭头 */
           E.op(motor, fade(st, 26.1, 0.3) * (1 - 0.6 * fade(st, 28.6, 0.4)));
           E.drawOn(push.line, fade(st, 26.6, 0.5));
           E.op(push.head, K.seg(fade(st, 26.6, 0.5), 0.9, 1));
           E.op(pushG, (1 - 0.6 * fade(st, 28.6, 0.4)).toFixed(3));
-          E.pop(noPush, 525, 214, fade(st, 27.45, 0.25), 0.4);
+          E.pop(noPush, 527, 231, fade(st, 27.45, 0.25), 0.4);
           var foot = fade(st, 28.65, 0.3);
           r.foot.style.stroke = foot > 0.5 ? E.GOOD : E.INK;
           E.glow(r.foot, E.GOOD, foot > 0.5);

@@ -26,8 +26,8 @@
 | `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面，`scene` 模式不用配音单看某一幕 |
 | `check_layout.mjs` | 逐帧检查：块不重叠、不压字幕、都在安全区；封面检查 3:4 置顶裁剪 |
 | `vendor/` | 论文系列的分镜工具库 `kit.js` 与样式 `paper-demos.css`（取自 `f7a5b14`，未改动） |
-| `robots.json` | 片中机器人的 URDF 来源：取自 [Robot Description Gallery Online](https://github.com/ImChong/Robot_Description_Gallery_Online)（固定 commit）的 `data/robots.json`，每台只记上游仓库 + 固定 commit 的 jsDelivr 地址与许可证。现用 Unitree G1（人形）、UR5（机械臂）、Unitree Go2（四足）、iRobot Create 2（扫地机）、Toyota Prius（汽车，OSRF car_demo）、TurtleBot3 Waffle（轮式底盘） |
-| `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊；上游只发布 xacro 的（Create 2、TurtleBot3）连同它 include 的文件一起下载，舞台加载时用 xacro-parser 展开 |
+| `robots.json` | 片中机器人的 URDF 来源：取自 [Robot Description Gallery Online](https://github.com/ImChong/Robot_Description_Gallery_Online)（固定 commit）的 `data/robots.json`，每台只记上游仓库 + 固定 commit 的 jsDelivr 地址与许可证。现用 Unitree G1（人形）、UR5（机械臂）、Unitree Go2（四足）、iRobot Create 2（扫地机）、Toyota Prius（汽车，OSRF car_demo）、Clearpath Jackal（轮式底盘） |
+| `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊；上游只发布 xacro 的（Create 2、Jackal）连同它 include 的文件一起下载（照画廊的规则：`$(optenv)` 取默认值、`xacro_stubs` 里的包不下载），舞台加载时用 xacro-parser 展开 |
 | `robot3d.js` | 舞台里的 URDF 渲染（three.js + urdf-loader，ES module）：全页共用一个离屏 WebGL 画布、正交相机，世界坐标线性映射到分镜坐标，叠加标注按正运动学定位；加载后用 meshoptimizer 减面到约 15%。另有和手画版同接口的封装：侧视 / 正面 G1、UR5、Go2、小人形图标、扫地机 / 汽车 / 轮式底盘，分镜里改样式的部件变成给连杆上色 |
 | `serve.mjs` | 本目录的极简静态 http 服务：ES module 和 fetch 在 `file://` 下不能用，`render.mjs` / `check_layout.mjs` 都经它打开舞台 |
 

@@ -103,7 +103,7 @@
         j.wedge.style.fillOpacity = 0.4;
         j.arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, arcG), null, E.GOOD);
       });
-      // 近侧上臂正好压在小盒子上：亮起时在手臂上面再画一个同位置的小盒子
+      // 小盒子 = 骨盆里的 IMU（imu_in_pelvis），侧视时被大腿根挡住：亮起时在上面再画一个同位置的小盒子
       var imuHi = K.paint(E.el('rect', { x: P.imu[0] - 5, y: P.imu[1] - 5, width: 10, height: 10, rx: 2 }, robot.body), E.GOOD);
       var imuRing = K.paint(E.el('circle', { cx: P.imu[0], cy: P.imu[1], r: 6, fill: 'none', 'stroke-width': 2.5 }, robot.body), null, E.GOOD);
 
@@ -188,10 +188,10 @@
           E.op(seen, sp);
           seen.setAttribute('transform', sp < 1 ? 'translate(0 ' + (6 * (1 - sp)).toFixed(2) + ')' : '');
 
-          /* 14.9：小盒子变 good，脉冲 3 次（放大 + 波纹） */
-          var ip = fade(st, 14.9, 0.25), ib = flash(st, 14.9, 3, 0.5);
-          robot.imu.style.fill = mix(E.GOOD, ip, E.MUT);
-          E.op(imuHi, ip);
+          /* 14.9：小盒子变 good，脉冲 3 次（放大 + 波纹）；20.1 起退淡——IMU 在骨盆里，紧挨着下面要亮的髋关节角度弧 */
+          var ip = fade(st, 14.9, 0.25), ib = flash(st, 14.9, 3, 0.5), id = ip * (1 - 0.7 * fade(st, 20.1, 0.3));
+          robot.imu.style.fill = mix(E.GOOD, id, E.MUT);
+          E.op(imuHi, id.toFixed(3));
           scaleOr(imuHi, P.imu[0], P.imu[1], 1 + 0.5 * ib);
           E.glow(imuHi, E.GOOD, ip > 0.5);
           var iu = (st - 14.9) / 0.5;

@@ -86,13 +86,13 @@
 
       var bot = E.robot(s, X0);
       var P = bot.pts();
-      // 近侧上臂正好压在小盒子上：闪红时在手臂上面再画一个同位置的小盒子（跟着身子转）
-      var imuHi = K.paint(E.el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, bot.body), E.BAD);
+      // 小盒子 = 骨盆里的 IMU（imu_in_pelvis），侧视时被大腿根和手挡住：闪红时在上面再画一个同位置的小盒子（跟着身子转）
+      var imuHi = K.paint(E.el('rect', { x: P.imu[0] - 5, y: P.imu[1] - 5, width: 10, height: 10, rx: 2 }, bot.body), E.BAD);
       E.op(imuHi, 0);
 
       // 传感器扩散圈：摄像头、小盒子、髋 / 膝 / 踝、脚底（画面坐标，此时机器人站在 X0 不动）
       var ringG = E.el('g', {}, s);
-      var rings = [[X0 + 11, 203], [X0, 255], [X0 + P.hip[0], P.hip[1]], [X0 + P.knee[0], P.knee[1]], [X0 + P.ankle[0], P.ankle[1]], [X0 + 8, 388]]
+      var rings = [[X0 + 11, 203], [X0 + P.imu[0], P.imu[1]], [X0 + P.hip[0], P.hip[1]], [X0 + P.knee[0], P.knee[1]], [X0 + P.ankle[0], P.ankle[1]], [X0 + 8, 388]]
         .map(function (c) { return K.paint(E.el('circle', { cx: c[0].toFixed(1), cy: c[1].toFixed(1), r: 4, fill: 'none', 'stroke-width': 2.5 }, ringG), null, E.GOOD); });
       s.appendChild(room.boxG);
 
@@ -172,7 +172,7 @@
           if (w > 0) {
             var g = K.poseWalk(phase(d));
             bot.legs(lerp([4, 0], g.legA, w), lerp([-4, 0], g.legB, w));
-            bot.arm(lerp([8, 4], [g.armA[0] * 0.8, g.armA[1] * 0.8], w));
+            bot.arm(lerp([8, 4], bot.walkArm(phase(d)), w));
           } else bot.stand();
 
           /* 4.5 传感器各处冒扩散圈（半径 4 → 18、淡出，0.8 s）+「新读数」 */

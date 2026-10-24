@@ -105,17 +105,23 @@ function repoPath(path, packages) {
   for (const seg of path.split('/')) { if (seg === '..') out.pop(); else if (seg && seg !== '.') out.push(seg); }
   return out.join('/');
 }
-// 上游只发布 xacro 的（Create 2、TurtleBot3）照 Gallery 的 web/js/xacro.js 展开：ROS Jade 语义、<xacro:arg> 取默认值，
+// 上游只发布 xacro 的（Create 2、Jackal）照 Gallery 的 web/js/xacro.js 展开：ROS Jade 语义、<xacro:arg> 取默认值，
+// $(optenv NAME 默认值) 取默认值，表达式里 Python 的 ** 换成 expr-eval 的 ^，xacro_stubs 里的包 include 进来是空 <robot/>；
 // 去掉 gazebo / transmission 块，以及条件没成立、只剩空 <geometry> 的 visual / collision
 async function expandXacro(text, m, root) {
   const parser = new XacroParser();
   parser.inOrder = true; parser.requirePrefix = true; parser.localProperties = true;
   parser.workingPath = m.urdf.replace(/[^/]+$/, '');
   parser.arguments = {};
-  for (const [, k, v] of text.matchAll(/<(?:xacro:)?arg\s+name=["']([^"']+)["'](?:\s+default=["']([^"']*)["'])?/g)) parser.arguments[k] = v === undefined ? '' : v;
-  parser.rospackCommands = { find: (pkg) => `package://${pkg}` };
-  parser.getFileContents = async (path) => (await fetch(root + repoPath(path, m.packages))).text();
-  const doc = await parser.parse(text);
+  for (const [, k, v] of text.matchAll(/<(?:xacro:)?arg\s+name=["']([^"']+)["'](?:\s+default=["']([^"']*)["'])?/g)) {
+    parser.arguments[k] = (v === undefined ? '' : v).replace(/^\$\(optenv\s+\S+\s*([^)]*)\)$/, '$1');
+  }
+  parser.rospackCommands = { find: (pkg) => `package://${pkg}`, optenv: (name, ...fallback) => fallback.join(' ') };
+  const pythonPower = (src) => src.replace(/\$\{[^}]*\}/g, (expr) => expr.replace(/\*\*/g, '^'));
+  const stubs = m.xacro_stubs || [];
+  parser.getFileContents = async (path) => stubs.some((pkg) => path.startsWith(`package://${pkg}/`)) ? '<robot/>'
+    : pythonPower(await (await fetch(root + repoPath(path, m.packages))).text());
+  const doc = await parser.parse(pythonPower(text));
   for (const n of doc.querySelectorAll('gazebo, transmission')) n.remove();
   for (const g of doc.querySelectorAll('geometry')) {
     const holder = g.parentNode;
@@ -390,6 +396,7 @@ function g1Side(parent, X, opts) {
   if (o.fadeTop) v.canvas.style.maskImage = 'linear-gradient(to bottom, transparent 0%, #000 28%)';
   const handle = () => sel('g', {}, body);
   const torso = handle(), head = handle(), neck = handle(), thigh = handle(), shin = handle(), foot = handle(), upper = handle(), fore = handle();
+  const pelvis = handle();   // 只有骨盆（G1 的根连杆 = 浮动基）；torso 把手是骨盆 + 腰 + 胸腔
   const far = handle();
   const ov = sel('g', {}, body);
   const cam = sel('rect', { width: 12, height: 8, rx: 2 }, ov);
@@ -414,7 +421,8 @@ function g1Side(parent, X, opts) {
   const P = {};
   function pts() {
     P.hip = local('right_hip_pitch_link'); P.knee = local('right_knee_link'); P.ankle = local('right_ankle_pitch_link');
-    P.cam = local('d435_link'); P.imu = local('imu_in_torso'); P.shoulder = local('right_shoulder_pitch_link');
+    P.cam = local('d435_link'); P.imu = local('imu_in_pelvis'); P.shoulder = local('right_shoulder_pitch_link');
+    P.pelvis = local('pelvis');
     return P;
   }
   function place(o) {
@@ -428,6 +436,7 @@ function g1Side(parent, X, opts) {
     [[hipDot, P.hip], [kneeDot, P.knee], [ankleDot, P.ankle]].forEach(([n, p]) => { n.setAttribute('cx', p[0].toFixed(1)); n.setAttribute('cy', p[1].toFixed(1)); showIfColored(n); });
     v.clearTint();
     applyHandle(v, torso, ['pelvis', 'torso']); applyHandle(v, head, 'head');
+    if (handleColor(pelvis) || handleOpacity(pelvis) < 1) applyHandle(v, pelvis, 'pelvis');   // 没上色时别把 torso 给骨盆的颜色抹掉
     applyHandle(v, thigh, 'rightThigh'); applyHandle(v, shin, 'rightShin'); applyHandle(v, foot, 'rightFoot');
     applyHandle(v, upper, 'rightArm'); applyHandle(v, fore, 'rightArm');
     v.tint('leftLeg', handleColor(far), 0.8, handleOpacity(far));
@@ -435,14 +444,17 @@ function g1Side(parent, X, opts) {
   };
   apply(); place({});
   return {
-    g: outer, body, view: v, head, cam, imu, torso, neck, thigh, shin, foot, far, upper, fore, hipDot, kneeDot, ankleDot,
+    g: outer, body, view: v, head, cam, imu, torso, pelvis, neck, thigh, shin, foot, far, upper, fore, hipDot, kneeDot, ankleDot,
     nearLeg: [thigh, shin, foot, hipDot, kneeDot, ankleDot],
     place, state, scale: S, ankleY: 388 - G.ankleH * S,
     // tilt：近侧脚掌在放平之外再转多少度（正值脚尖朝下），踩到不平时用
     legs(near, farA, tilt) { legA = near; legB = farA || legB; tiltA = tilt || 0; apply(); },
     arm(a) { armA = a; apply(); },
     stand() { legA = [4, 0]; legB = [-4, 0]; armA = [8, 4]; tiltA = 0; apply(); },
-    walk(ph) { const w = K().poseWalk(ph); legA = w.legA; legB = w.legB; armA = [w.armA[0] * 0.8, w.armA[1] * 0.8]; apply(); },
+    // 走路时近侧手臂的 [大臂角, 小臂角]：绕站姿的 8° 前后各摆 17.6°，和近腿反相。远侧手臂在 apply() 里绕 8° 镜像，
+    // 所以两只手摆幅一样；手画版 poseWalk 的手臂绕 −8° 摆，直接喂进来会一只手往前多摆、一只往后多摆
+    walkArm(ph) { const a = 8 - 17.6 * Math.sin(ph * 2 * Math.PI); return [a, a + 19.2]; },
+    walk(ph) { const w = K().poseWalk(ph); legA = w.legA; legB = w.legB; armA = this.walkArm(ph); apply(); },
     pts,
     // 给髋、踝的本地坐标，返回 [大腿角, 小腿角]（度），喂给 legs() 正好让踝落在那里
     legIK(hip, ankle) {
@@ -570,12 +582,12 @@ function go2(parent, x, y, s, o) {
   return { g, view: v };
 }
 
-/* ── 贴地的整台（Create 2 扫地机、TurtleBot3 Waffle 底盘、Prius 汽车）：外框中心挪到原点、底面贴地，
+/* ── 贴地的整台（Create 2 扫地机、Jackal 轮式底盘、Prius 汽车）：外框中心挪到原点、底面贴地，
    (x, y) 是它底下地面中心在画面里的位置，w 是外框投影后的画面宽度。top：从正上方看（扫地机俯视），车头朝 +x，(x, y) 为圆心。
    spin(圈数)：转轮子关节（只在车真的往前走时按走过的距离转）。 ── */
 const WHEELS = {
   create2: ['left_wheel_joint', 'right_wheel_joint'],
-  turtlebot3: ['wheel_left_joint', 'wheel_right_joint'],
+  jackal: ['front_left_wheel', 'front_right_wheel', 'rear_left_wheel', 'rear_right_wheel'],
   prius: ['front_left_wheel_joint', 'front_right_wheel_joint', 'rear_left_wheel_joint', 'rear_right_wheel_joint']
 };
 function grounded(robot, parent, x, y, w, o, az, el) {
@@ -598,7 +610,7 @@ function grounded(robot, parent, x, y, w, o, az, el) {
   return { g, view: v, spin };
 }
 function create2(parent, x, y, s, o) { return grounded('create2', parent, x, y, 92 * (s || 1), o, 30, 25); }
-function turtlebot3(parent, x, y, s, o) { return grounded('turtlebot3', parent, x, y, 104 * (s || 1), o, 25, 12); }
+function jackal(parent, x, y, s, o) { return grounded('jackal', parent, x, y, 104 * (s || 1), o, 25, 12); }
 function prius(parent, x, y, s, o) { return grounded('prius', parent, x, y, 156 * (s || 1), o, 20, 10); }
 
 /* ── 小人形图标（替换 E.humanoid）：G1 从右前方斜看，脚底在 (x, y)，高 ≈ 113·s（同手画版火柴人）。 ── */
@@ -633,7 +645,7 @@ function flush() {
   });
 }
 
-window.Robot3D = { view, models, measure, flush, centerOfMass, g1Side, g1Front, ur5, go2, g1Icon, create2, turtlebot3, prius, THREE };
+window.Robot3D = { view, models, measure, flush, centerOfMass, g1Side, g1Front, ur5, go2, g1Icon, create2, jackal, prius, THREE };
 // render.mjs / check_layout.mjs 打开舞台后先等这个：这一集要用的机器人（EpisodeVideo.robots）都加载完
 window.robotsReady = (async () => {
   const want = (window.EpisodeVideo && window.EpisodeVideo.robots) || [];

@@ -117,13 +117,14 @@
         draw: function (st, t) {
           var fade = E.fade, G = gait(st);
 
-          /* 人形：髋匀速前进，两条腿用 IK 让脚踩在算好的位置上；手臂跟近腿反着摆 */
+          /* 人形：髋匀速前进，两条腿用 IK 让脚踩在算好的位置上；手臂跟近腿反着摆——按两条大腿的角差摆，绕站姿 8° 对称 */
           var X = X0 + G.hip * SC;
           // r.ankleY：G1 站直时踝关节的本地 y（≈ 381，踝离脚底 5 cm）
           var aN = r.legIK([0, 302], [G.near.x - G.hip, r.ankleY - DY - G.near.lift]);
           var aF = r.legIK([0, 302], [G.far.x - G.hip, r.ankleY - DY - G.far.lift]);
           r.legs(aN, aF);
-          r.arm([-0.7 * aN[0] + 8, -0.7 * aN[0] + 20]);
+          var sw = 8 - 0.35 * (aN[0] - aF[0]);
+          r.arm([sw, sw + 12]);
           r.place({ x: X, dy: DY * SC, scale: SC });
           E.op(r.g, fade(st, 0, 0.6));
 

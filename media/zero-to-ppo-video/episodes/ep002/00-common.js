@@ -141,18 +141,18 @@
   E.el = el; E.txt = txt; E.op = op; E.clamp = clamp; E.fade = fade; E.win = window_; E.pop = pop; E.scaleAt = scaleAt;
   E.drawOn = drawOn; E.arrow = arrow; E.curveArrow = curveArrow; E.check = check; E.cross = cross; E.tag = tag; E.tint = tint; E.glow = glow;
 
-  /* ── 机器人：片中的人形、机械臂、四足、轮式底盘都是 Robot Description Gallery Online 收录的 URDF（Unitree G1、UR5、Unitree Go2、TurtleBot3），
+  /* ── 机器人：片中的人形、机械臂、四足、轮式底盘都是 Robot Description Gallery Online 收录的 URDF（Unitree G1、UR5、Unitree Go2、Clearpath Jackal），
      由 ../../robot3d.js 渲染，接口与原先的手画版一致：
      E.robot  侧视 G1（朝 +x，右髋在 (0, 302)、脚底 y = 388）：place / legs / arm / walk / stand / legIK / pts，
               躯干、大腿、脚等是「把手」——设它的 stroke / filter 就给对应连杆上色发光；
      E.front  正面 G1（两脚中间 x = 0、脚底 y = 388、头顶 y = 92）：place / pose / com（真实重心）/ joints（29 个转动关节）；
      E.arm    UR5（set(a1, a2) 驱动大臂、小臂，joints() 给 6 个关节的画面位置）；E.quadruped  Go2 站姿；
-     E.wheeled  轮式底盘 = TurtleBot3 Waffle（从右前方斜看，(x, y) 为底下地面中心，宽 ≈ 104·s）。 ── */
+     E.wheeled  轮式底盘 = Clearpath Jackal（从右前方斜看，(x, y) 为底下地面中心，宽 ≈ 104·s）。 ── */
   E.robot = function (parent, X, opts) { return window.Robot3D.g1Side(parent, X, opts); };
   E.front = function (parent, opts) { return window.Robot3D.g1Front(parent, opts); };
   E.arm = function (parent, x, y, s, opts) { return window.Robot3D.ur5(parent, x, y, s, opts); };
   E.quadruped = function (parent, x, y, s, opts) { return window.Robot3D.go2(parent, x, y, s, opts); };
-  E.wheeled = function (parent, x, y, s, opts) { return window.Robot3D.turtlebot3(parent, x, y, s, opts); };
+  E.wheeled = function (parent, x, y, s, opts) { return window.Robot3D.jackal(parent, x, y, s, opts); };
 
 
   /* ── 重心标记：圆圈里对角两块涂色（工程图里的重心符号），(x, y) 为圆心 ── */

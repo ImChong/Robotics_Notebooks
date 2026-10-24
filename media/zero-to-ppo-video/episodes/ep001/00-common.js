@@ -177,7 +177,7 @@
   /* ── 侧视人形机器人 = Unitree G1 的 URDF（Robot Description Gallery Online 收录，../../robot3d.js 渲染）。
      接口与原先的手画版一致：朝 +x，本地坐标里右髋在 (0, 302)、膝在 (0, 344)、脚底 y = 388（头顶约 223，G1 身高 1.32 m）；
      place / legs / arm / walk / stand / pts / legStyle 照旧。躯干、大腿、小腿、脚、远侧腿是「把手」——设它的 stroke / filter
-     就给 G1 对应的连杆上色发光；髋 / 膝 / 踝圆点、摄像头（G1 头上的 d435）、IMU（imu_in_torso）只在被上色时显示，位置按正运动学算。 ── */
+     就给 G1 对应的连杆上色发光；髋 / 膝 / 踝圆点、摄像头（G1 头上的 d435）、IMU（骨盆里的 imu_in_pelvis）只在被上色时显示，位置按正运动学算。 ── */
   E.robot = function (parent, X, opts) { return window.Robot3D.g1Side(parent, X, opts); };
 
   /* ── 俯视小地图（S3、S6）：面板 + 网格 + 迷雾 + 机器人白点 + 纸箱 + 门 + 绕行路线 + 脚印。
