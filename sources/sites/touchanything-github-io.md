@@ -25,6 +25,6 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/paper-touchanything-egotouch.md](../../wiki/entities/paper-touchanything-egotouch.md)
+- [wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md](../../wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md)
 - [sources/papers/touchanything_arxiv_2605_13083.md](../papers/touchanything_arxiv_2605_13083.md)
 - [sources/repos/touchanything.md](../repos/touchanything.md)
