@@ -4,6 +4,7 @@ project_id: qucs-s
 project: "https://ra3xdh.github.io/"
 code: "https://github.com/ra3xdh/qucs_s"
 license: GPL-2.0
+institutions: [independent-maintainer]
 tags: [software, electronics, hardware, simulation, circuit-design, eda, spice, open-source]
 status: complete
 updated: 2026-10-24
@@ -50,6 +51,10 @@ Qucs-S 将图形化电路编辑和仿真后端分开：
 4. Qucs-S 读取仿真结果并绘制波形或分析图。
 
 官方 README 当前列出 Ngspice（推荐）、Xyce、SpiceOpus 与非 SPICE 内核 Qucsator。官方 Wiki 还介绍 AC、DC、瞬态、S 参数、FFT、噪声等分析能力；具体能力取决于选用的后端与组件模型。
+
+## 项目维护与归属
+
+Qucs-S 官方主页列出 Vadim Kuznetsov 与 Mike Brinson 为项目创建者，但未标出所属机构；因此本页按仓库的“独立维护者”归属口径标注，不推定其机构隶属关系。
 
 ## 工程实践
 
