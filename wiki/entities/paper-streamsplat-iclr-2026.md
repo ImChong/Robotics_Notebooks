@@ -53,7 +53,7 @@ summary: "StreamSplat（ICLR 2026）：从未标定视频流在线构建动态 3
 
 ## 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
   V["未标定视频帧"]
   D["深度估计 / RGB-D"]
@@ -62,7 +62,7 @@ flowchart LR
   G["自适应高斯融合"]
   R["动态 3DGS：任意时刻与视角渲染"]
   V --> D --> E --> F --> G --> R
-\`\`\`
+```
 
 ## 评测与指标
 
@@ -74,7 +74,7 @@ flowchart LR
 
 官方仓库提供训练与推理脚本，核心复现入口如下：
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
@@ -95,7 +95,7 @@ sequenceDiagram
     Infer->>Model: 逐帧预测动态高斯
     Model->>Render: 传递动态 3DGS 表示
     Render-->>Infer: 渲染 RGB / 深度 / 新视角结果
-\`\`\`
+```
 
 推理路径依赖预计算深度图与 checkpoint；README 示例以 DAVIS 数据预处理为主，换用其他数据集时需按其格式准备对应输入。
 
