@@ -481,11 +481,17 @@ function g1Side(parent, X, opts) {
    pose({ shift, lean, lift: [画面左脚, 画面右脚], arm: [[外张角, 小臂角], [..]], tilt, pivot })：
    shift 用两腿髋 / 踝侧摆（平行四边形）把骨盆横移、两脚不动；lift 屈髋屈膝抬脚、脚掌放平；lean 是腰的侧倾；
    外张角 ≤ 100° 用肩侧摆，更大（举过头顶）改用肩俯仰；tilt 整个人绕 pivot 转（svg 旋转，正面看就是绕前后轴的侧倒）。
-   joints：29 个转动关节的圆点（svg，opts.dots 才显示），按腿 / 腰 / 胳膊分组。com() 用各连杆的质量与质心算真实重心。 ── */
+   joints：29 个转动关节的圆点（svg，opts.dots 才显示），按腿 / 腰 / 胳膊分组。com() 用各连杆的质量与质心算真实重心。
+   opts.az / opts.el 换成斜视（和分镜里斜着画的桌子、地面网格同一个相机）：这时 tilt 是真的三维滚转——绕 pivot[0]（本地 x，
+   即机器人 +y 方向离两脚中间多远）那条贴地、沿机器人前后方向的轴转，svg 不再旋转。斜视时 proj([x, y, z]) 把机器人坐标系里的
+   三维点（米，地面 z = ground）投到分镜坐标，com3() 是三维重心，sole(side) 是一只脚掌贴地的四个角。 ── */
 function g1Front(parent, opts) {
   const o = opts || {}, G = g1Geom(), S = 296 / (G.top - G.sole);
+  const az = o.az === undefined ? 90 : o.az, el = o.el || 0, oblique = az !== 90 || el !== 0;
   const outer = sel('g', {}, parent), body = sel('g', {}, outer);
-  const v = view(body, { robot: 'g1', origin: [0, 388 + G.sole * S], scale: S, az: 90, box: [-150, 0, 300, 402], res: o.res || 2 });
+  // 原点放在让「两脚中间的地面点」投到本地 (0, 388)：斜视时地面高度要乘 cos(el)
+  const v = view(body, { robot: 'g1', origin: [0, 388 + G.sole * S * Math.cos(el * DEG)], scale: S, az, el,
+    box: o.box || [-150, 0, 300, 402], res: o.res || 2 });
   const ov = sel('g', {}, body);
   const names = Object.keys(v.robot.joints).filter((n) => v.robot.joints[n].jointType === 'revolute');
   const groupOf = (n) => (/hip|knee|ankle/.test(n) ? 'legs' : /waist/.test(n) ? 'waist' : 'arms');
@@ -499,7 +505,7 @@ function g1Front(parent, opts) {
   const all = groups.legs.concat(groups.waist, groups.arms);
   ov.style.display = o.dots ? '' : 'none';
   const st = { shift: 0, lean: 0, lift: [0, 0], arm: [[8, 4], [8, 4]], tilt: 0, pivot: [0, 388] };
-  let X = 0, SC = 1;
+  let X = 0, SC = 1, GY = 388;                           // GY：两脚中间的地面点放到画面里的 y
   const L = -G.T[1] - G.Sv[1];                           // 髋到踝的竖直距离（米）
   function apply() {
     const dy = st.shift / S, th = Math.asin(Math.max(-0.25, Math.min(0.25, dy / L)));
@@ -519,10 +525,18 @@ function g1Front(parent, opts) {
     });
     j.waist_roll_joint = st.lean * DEG;
     v.joints(j);
+    if (oblique) {
+      // 往画面右边倒 = 往机器人左边（+y）倒：绕 +x 轴转负角，根连杆的位置也绕支点那条轴转过去
+      const a = -st.tilt * DEG, P = new THREE.Vector3(0, st.pivot[0] / S, G.sole);
+      const q = new THREE.Vector3(0, dy, -L * (1 - Math.cos(th))).sub(P).applyAxisAngle(new THREE.Vector3(1, 0, 0), a).add(P);
+      v.base([q.x, q.y, q.z], [a, 0, 0]);
+      return;
+    }
     v.base([0, dy, -L * (1 - Math.cos(th))]);
     body.setAttribute('transform', st.tilt ? 'rotate(' + st.tilt.toFixed(2) + ' ' + st.pivot[0] + ' ' + st.pivot[1] + ')' : '');
   }
   function world(p) {
+    if (oblique) return [X + p[0] * SC, GY + (p[1] - 388) * SC];
     const a = st.tilt * DEG, px = p[0] - st.pivot[0], py = p[1] - st.pivot[1];
     const q = [st.pivot[0] + px * Math.cos(a) - py * Math.sin(a), st.pivot[1] + px * Math.sin(a) + py * Math.cos(a)];
     return [X + q[0] * SC, 388 + (q[1] - 388) * SC];
@@ -539,10 +553,22 @@ function g1Front(parent, opts) {
   apply();
   return {
     g: outer, body, view: v, joints, groups, all, footSpan, scale: S,
-    place(x, s) { X = x; SC = s || 1; outer.setAttribute('transform', 'translate(' + X + ' 0) translate(0 388) scale(' + SC + ') translate(0 -388)'); },
+    // place(x, s, gy)：两脚中间的地面点放到 (x, gy)（gy 默认 388），以它为心缩放 s
+    place(x, s, gy) {
+      X = x; SC = s || 1; GY = gy === undefined ? 388 : gy;
+      outer.setAttribute('transform', 'translate(' + X + ' ' + (GY - 388) + ') translate(0 388) scale(' + SC + ') translate(0 -388)');
+    },
     pose(p) { for (const k in p) st[k] = p[k]; apply(); },
     reset() { Object.assign(st, { shift: 0, lean: 0, lift: [0, 0], arm: [[8, 4], [8, 4]], tilt: 0, pivot: [0, 388] }); apply(); },
     com() { return v.project(centerOfMass(v.robot)); },
+    com3() { return centerOfMass(v.robot); },
+    proj(p) { return world(v.project(p)); },
+    ground: G.sole,
+    // 一只脚掌贴地的四个角（机器人坐标系，米）：'right' / 'left'，零位站立时的脚掌外框
+    sole(side) {
+      const sg = side === 'right' ? 1 : -1, y0 = sg * fb.min.y, y1 = sg * fb.max.y;
+      return [[fb.max.x, y0, G.sole], [fb.max.x, y1, G.sole], [fb.min.x, y1, G.sole], [fb.min.x, y0, G.sole]];
+    },
     world,
     locate(el) { return world([+el.getAttribute('cx'), +el.getAttribute('cy')]); },
     tint(part, color, amount, opacity) { v.tint(part, color, amount, opacity); },

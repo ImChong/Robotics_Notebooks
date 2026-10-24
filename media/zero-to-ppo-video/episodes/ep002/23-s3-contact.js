@@ -40,10 +40,11 @@
     var head = K.paint(E.el('path', {}, g), E.GOOD);
     return {
       g: g,
+      // x 是数：之前传进来的是 toFixed 出的字符串，x + 9 成了字符串拼接，箭头的右角跑到 x 后面 0.0x 处，头歪了
       set: function (x, len, o) {
-        var top = 392, bot = top + len;
-        line.setAttribute('x1', x); line.setAttribute('x2', x); line.setAttribute('y1', bot.toFixed(1)); line.setAttribute('y2', top + 8);
-        head.setAttribute('d', 'M ' + x + ' ' + top + ' L ' + (x - 9) + ' ' + (top + 13) + ' L ' + (x + 9) + ' ' + (top + 13) + ' Z');
+        var top = 392, bot = top + len, f = function (v) { return v.toFixed(1); };
+        line.setAttribute('x1', f(x)); line.setAttribute('x2', f(x)); line.setAttribute('y1', f(bot)); line.setAttribute('y2', top + 8);
+        head.setAttribute('d', 'M ' + f(x) + ' ' + top + ' L ' + f(x - 9) + ' ' + (top + 13) + ' L ' + f(x + 9) + ' ' + (top + 13) + ' Z');
         E.op(g, o);
       }
     };
@@ -180,7 +181,7 @@
             m.setAttribute('x', (fx - 4 * SC).toFixed(1)); m.setAttribute('y', 389); m.setAttribute('width', (22 * SC).toFixed(1));
             E.op(m, f.on ? fade(st, 10.2, 0.3) * (w === 'far' ? 0.6 : 1) : 0);
             var load = !f.on ? 0 : G.ds ? 1 - Math.abs(G.hip - f.x) / span : 1;
-            grf[w].set((fx + 7 * SC).toFixed(1), 14 + 14 * load, (f.on ? fade(st, 12.4, 0.4) * (w === 'far' ? 0.6 : 1) : 0).toFixed(3));
+            grf[w].set(fx + 7 * SC, 14 + 14 * load, (f.on ? fade(st, 12.4, 0.4) * (w === 'far' ? 0.6 : 1) : 0).toFixed(3));
             var ev = st >= 13.2 ? sinceEvent(st, w) : 99, ru = ev / 0.5;
             rings[w].setAttribute('cx', (fx + 7 * SC).toFixed(1)); rings[w].setAttribute('cy', (388 - (388 - r.ankleY + lift[w]) * SC).toFixed(1));
             rings[w].setAttribute('r', (6 + 16 * ru).toFixed(1));
