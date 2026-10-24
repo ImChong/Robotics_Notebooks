@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, nvidia, physical-ai, huggingface, robotics, autonomous-driving, nurec, gr00t, sim2real, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-10-24
 related:
   - ./isaac-gr00t.md
   - ./nvidia-nurec.md
@@ -10,17 +10,21 @@ related:
   - ./cosmos-3.md
   - ./grail-locomanipulation-dataset.md
   - ./nvidia-physical-ai-learning.md
+  - ./nvidia-simready-central.md
   - ../concepts/sim2real.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/sites/hf-nvidia-physical-ai-collection.md
+  - ../../sources/sites/nvidia-simready-central.md
 summary: "NVIDIA 在 Hugging Face 上的 Physical AI 官方集合：49 条开放商业级数据集/资产，覆盖 GR00T 操纵与遥操作、AV NuRec/NCore、WFM 合成场景、SimReady 仓库与空间智能 benchmark；部分子集门控。"
 ---
 
 # NVIDIA Physical AI 数据集（Hugging Face 集合）
 
 **NVIDIA Physical AI**（[Hugging Face Collection](https://huggingface.co/collections/nvidia/physical-ai)）是 NVIDIA 为 Physical AI 开发者维护的 **官方数据与资产索引**：把机器人操纵、人形遥操作、自动驾驶神经重建、世界模型合成场景、SimReady 工业场景等 **49** 个 HF 仓收进同一集合，与 [Isaac GR00T](./isaac-gr00t.md)、[NuRec](./nvidia-nurec.md)、[Cosmos](./nvidia-cosmos.md) 产品栈互指。
+
+2026-10-21 NVIDIA 另发布了 [SimReady Central](./nvidia-simready-central.md)：面向仿真的 **2,000+ OpenUSD 资产发现与 OEM 提交入口**。它与本页的 Physical AI Collection 有资产生态交集，但不是该 49 项 collection 的别名或同一计数口径。
 
 ## 一句话定义
 
@@ -115,11 +119,13 @@ flowchart TB
 - [Cosmos 3](./cosmos-3.md) — WFM 权重（另集合）
 - [GRAIL Loco-Manipulation Dataset](./grail-locomanipulation-dataset.md) — 集合内大型 G1 子集
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md) — 官方课程门户
+- [NVIDIA SimReady Central](./nvidia-simready-central.md) — 2,000+ 仿真就绪 OpenUSD 资产的发现与提交入口
 - [Sim2Real](../concepts/sim2real.md) — 合成/仿真数据上真机语境
 
 ## 参考来源
 
 - [HF Physical AI 集合归档](../../sources/sites/hf-nvidia-physical-ai-collection.md)
+- [SimReady Central 公告与入口归档](../../sources/sites/nvidia-simready-central.md)
 
 ## 推荐继续阅读
 
