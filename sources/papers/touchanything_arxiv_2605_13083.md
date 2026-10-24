@@ -33,7 +33,7 @@
 
 ## 对 wiki 的映射
 
-- 详情节点：[wiki/entities/paper-touchanything-egotouch.md](../../wiki/entities/paper-touchanything-egotouch.md)
+- 详情节点：[wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md](../../wiki/entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md)
 - 概念关联：[wiki/concepts/visuo-tactile-fusion.md](../../wiki/concepts/visuo-tactile-fusion.md)、[wiki/concepts/tactile-sensing.md](../../wiki/concepts/tactile-sensing.md)
 
 ## 一手来源
