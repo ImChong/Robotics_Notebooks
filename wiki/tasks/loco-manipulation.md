@@ -570,3 +570,7 @@ flowchart TD
 ## 新增接口路线
 
 - [SP-HLM：稀疏姿态驱动的人形全身控制](../entities/paper-sp-hlm.md) — 用骨盆、双腕、双踝五点目标表达任务意图，并由 motion latent 补全全身协调。
+
+## 时空重定向与接触感知控制
+
+- [STR](../entities/paper-str-spatiotemporal-retargeting.md) — 对任务关键帧、身体部位与物体接触分配重定向优化，再用于 G1 仿真和 R1 真机移动操作（arXiv:2610.30540）。

@@ -356,3 +356,7 @@ flowchart LR
 ## 长程 VLA 操作后训练
 
 - [AtomicRL](../entities/paper-atomicrl.md) — 以原子子任务边界门控 TD residual，并按任务掌握度调整采样与探索。
+
+## 跨人形机器人的统一奖励塑形
+
+- [MPBRS](../entities/paper-mpbrs-humanoid-reward-shaping.md) — 在九种人形机器人上评估共享奖励结构与权重，仅用机器人特定映射和默认姿态元数据适配（arXiv:2610.30334）。
