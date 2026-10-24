@@ -42,3 +42,9 @@ summary: "STR allocates motion-retargeting effort to task-critical keyframes, bo
 
 - [STR 论文归档](../../sources/papers/str_arxiv_2610_30540.md)
 - [arXiv:2610.30540](https://arxiv.org/abs/2610.30540)
+
+## 关联页面
+
+- [Motion Retargeting](../concepts/motion-retargeting.md)
+- [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [Reinforcement Learning](../methods/reinforcement-learning.md)
