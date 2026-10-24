@@ -239,6 +239,11 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+## [2026-10-24] ingest | RTNav — 实时零样本物体导航与异步部署
+
+- 归档论文、项目主页、仿真评测代码和 Stretch 3 / Jetson AGX Thor 部署仓库。
+- 在 ObjectNav 任务页补充实时墙钟评测与异步系统案例。
+
 ## [2026-10-24] ingest | Jev 仿真机器人与自动驾驶应用
 
 - 意图：收录三个 Jev 应用演示，补全 TypeSafe Jev 在无人机、驾驶模拟和机械臂操作中的工程案例。
