@@ -975,6 +975,7 @@
 - [NVIDIA OSMO（Physical AI 工作流编排）](wiki/entities/nvidia-osmo.md) — NVIDIA OSMO**（GitHub，[User Guide](https://nvidia.github.io/OSMO/ `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI 数据集（Hugging Face 集合）](wiki/entities/nvidia-physical-ai-datasets.md) — NVIDIA Physical AI**（[Hugging Face Collection](https://huggingface.co/collections/nvidia/physical- `📅unknown` `[entity_page]`
 - [NVIDIA Physical AI Learning](wiki/entities/nvidia-physical-ai-learning.md) — NVIDIA Physical AI Learning** 是 NVIDIA 面向 **Physical AI**（能感知、推理物理关系、执行动作并适应真实环境的 AI 系统）的 **免费自学课程 `📅unknown` `[entity_page]`
+- [NVIDIA SimReady Central](wiki/entities/nvidia-simready-central.md) — NVIDIA SimReady Central** 是 NVIDIA 面向机器人仿真与 AI 工厂数字孪生的 **SimReady OpenUSD 资产发现与提交体系**：Hugging Face `📅unknown` `[entity_page]`
 - [NVIDIA SO-101 Sim2Real 实验 workflow](wiki/entities/nvidia-so101-sim2real-lab-workflow.md) — Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac** 是 [Physical AI Learning](./nvidia-physi `📅unknown` `[entity_page]`
 - [SONIC：大规模自然人形全身控制](wiki/entities/nvidia-sonic.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
 - [NVIDIA Spatial Intelligence Lab（SIL）](wiki/entities/nvidia-spatial-intelligence-lab.md) — NVIDIA Spatial Intelligence Lab**（门户：<https://research.nvidia.com/labs/sil/>，GitHub：<https://githu `📅unknown` `[entity_page]`
