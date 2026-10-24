@@ -6,14 +6,10 @@
   var E = window.EP001, K = E.K;
   var RAD = Math.PI / 180, TAU = Math.PI * 2;
 
-  /* 腿：髋 (150,110) → 膝 (166,227) → 踝 (150,338) → 脚尖 (204,344)；按角度驱动，段长固定。
-     规格写的膝 (134,227) 在髋—踝连线后方，脚尖朝 +x 时是反关节（像鸟腿），和 S2/S3 机器人膝盖朝前不一致；
-     这里镜像到 (166,227)，段长不变 */
+  /* 腿：G1 的右腿特写——侧视 G1（髋在本地 (0, 302)、踝 ≈ 381）放大 LEG_K 倍，髋落在 (150, 110)、踝 ≈ (150, 338)，
+     和原先手画的腿同一位置；膝屈伸、被推时绕踝晃、踩到鼓包脚掌转动都驱动 G1 的关节 */
   var HIP = [150, 110];
-  var THIGH = Math.hypot(16, 117), SHIN = Math.hypot(16, 111), FOOT = Math.hypot(54, 6);
-  var A_THIGH = Math.atan2(16, 117) / RAD;            // 大腿全局角（0 = 竖直向下，正值朝 +x）
-  var A_KNEE = Math.atan2(-16, 111) / RAD - A_THIGH;  // 小腿相对大腿的角
-  var A_FOOT = Math.atan2(6, 54) / RAD;               // 脚相对水平往下（顺时针）的角
+  var LEG_K = 2.87, LEG_X = 150, LEG_DY = HIP[1] - 388 + 86 * LEG_K;
   // 关节名在关节圆左侧（右对齐），跟着关节走。「髋」比规格 (112,115) 低 7px：推的箭头 y = 93 从它头顶擦过，原位会压字
   var LABEL_OFF = [[-38, 12], [-38, 5], [-38, 5]];
 
@@ -52,19 +48,6 @@
     return lvl(i, n - 1, amp) + (lvl(i, n, amp) - lvl(i, n - 1, amp)) * K.ease(u - n);
   }
 
-  // 髋→踝方向角（度，0 = 竖直向下）。膝角变 dKnee 时整条腿绕髋补转回原方向，踝几乎不动（髋踝距离只变 ≤ 2px），
-  // 膝在原地屈伸；不补的话踝会左右滑 ±12px，鼓包出来以后就是脚在地上打滑
-  function ankleDir(dKnee) {
-    var a1 = A_THIGH * RAD, a2 = (A_THIGH + A_KNEE + dKnee) * RAD;
-    return Math.atan2(THIGH * Math.sin(a1) + SHIN * Math.sin(a2), THIGH * Math.cos(a1) + SHIN * Math.cos(a2)) / RAD;
-  }
-  function legPts(sway, dKnee, tilt) {
-    var base = A_THIGH + sway + ankleDir(0) - ankleDir(dKnee);
-    var a1 = base * RAD, a2 = (base + A_KNEE + dKnee) * RAD, f = (A_FOOT + tilt) * RAD;
-    var knee = [HIP[0] + THIGH * Math.sin(a1), HIP[1] + THIGH * Math.cos(a1)];
-    var ankle = [knee[0] + SHIN * Math.sin(a2), knee[1] + SHIN * Math.cos(a2)];
-    return { hip: HIP, knee: knee, ankle: ankle, toe: [ankle[0] + FOOT * Math.cos(f), ankle[1] + FOOT * Math.sin(f)] };
-  }
 
   E.scenes[3] = {
     title: '第三步：控制（主战场）',
@@ -119,13 +102,12 @@
       /* ── 脚下不平（先建，压在腿下面）：规格 M100,370 Q150,354 210,370 整体上移 8px，让鼓包顶贴住脚底，不然脚悬在包上方约 12px ── */
       var bump = K.paint(E.el('path', { d: 'M 100 362 Q 150 346 210 362', fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, s), null, E.BAD);
 
-      /* ── 腿部特写（左） ── */
+      /* ── 腿部特写（左）：G1 的右腿（同 S2–S6 的侧视 G1，放大 LEG_K 倍、只画骨盆以下，上缘渐隐），髋落在 (150, 110)。
+         髋 / 膝 / 踝套一个空心圈（点名时发光），关节名跟着圈走 ── */
       var leg = E.el('g', {}, s);
-      var torsoG = E.el('g', {}, leg);   // 被推时跟着腿绕踝转
-      K.paint(E.el('rect', { x: 120, y: 84, width: 60, height: 18, rx: 6, 'stroke-width': 3 }, torsoG), E.S2, E.INK2);
-      var thigh = line(leg, E.INK2, 12), shin = line(leg, E.INK2, 12), foot = line(leg, E.INK2, 10);
-      var joints = [14, 14, 12].map(function (r) {
-        return K.paint(E.el('circle', { r: r, 'stroke-width': 3 }, leg), E.S2, E.INK2);
+      var bot = E.robot(leg, 0, { box: [-34, 286, 84, 106], res: 6, fadeTop: true, hideArms: true });
+      var joints = [16, 15, 13].map(function (r) {
+        return K.paint(E.el('circle', { r: r, fill: 'none', 'stroke-width': 3 }, leg), null, E.INK2);
       });
       var jointNames = ROWS.map(function (row) { return E.txt(leg, 0, 0, row.name, 20, E.INK2, 'end'); });
 
@@ -253,14 +235,16 @@
           var dKnee = on ? 6 * E.clamp((levelSmooth(1, t, 0.1, amp) - 0.6) / 0.2, -1, 1) : 0;
           var tau = st - HIT, sway = 0;
           if (tau > 0 && tau < 1.2) sway = 4 * Math.pow(1 - tau / 1.2, 2) * Math.sin(TAU * tau / 0.6);
-          var P = legPts(0, dKnee, 6 * fade(st, BUMP, 0.3));
-          if (sway) {
-            var sr = sway * RAD, cs = Math.cos(sr), sn = Math.sin(sr);
-            var turn = function (q) { var dx = q[0] - P.ankle[0], dy = q[1] - P.ankle[1]; return [P.ankle[0] + dx * cs - dy * sn, P.ankle[1] + dx * sn + dy * cs]; };
-            P.hip = turn(P.hip); P.knee = turn(P.knee);
-          }
-          torsoG.setAttribute('transform', sway ? 'rotate(' + sway.toFixed(3) + ' ' + P.ankle[0].toFixed(1) + ' ' + P.ankle[1].toFixed(1) + ')' : '');
-          put(thigh, P.hip, P.knee); put(shin, P.knee, P.ankle); put(foot, P.ankle, P.toe);
+          // G1：膝屈 dKnee，大腿前摆、小腿后摆各一半，踝留在髋正下方；踩到鼓包脚尖朝上 6°；被推时整个人绕踝晃（svg 旋转）
+          bot.legs([dKnee / 2, -dKnee / 2], [dKnee / 2 - 3, -dKnee / 2 - 3], -6 * fade(st, BUMP, 0.3));
+          var LP = bot.pts(), piv = LP.ankle.slice();
+          bot.place({ x: LEG_X, dy: LEG_DY, scale: LEG_K, rot: sway, pivot: piv });
+          var sr = sway * RAD, cs = Math.cos(sr), sn = Math.sin(sr);
+          var toScene = function (q) {
+            var dx = q[0] - piv[0], dy = q[1] - piv[1], r = [piv[0] + dx * cs - dy * sn, piv[1] + dx * sn + dy * cs];
+            return [LEG_X + r[0] * LEG_K, 388 + (r[1] - 388) * LEG_K + LEG_DY];
+          };
+          var P = { hip: toScene(LP.hip), knee: toScene(LP.knee), ankle: toScene(LP.ankle) };
           [P.hip, P.knee, P.ankle].forEach(function (c, i) {
             joints[i].setAttribute('cx', c[0].toFixed(1)); joints[i].setAttribute('cy', c[1].toFixed(1));
             jointNames[i].setAttribute('x', (c[0] + LABEL_OFF[i][0]).toFixed(1)); jointNames[i].setAttribute('y', (c[1] + LABEL_OFF[i][1]).toFixed(1));

@@ -8,7 +8,8 @@
   var E = window.EP002, K = E.K;
   // 2.5 起走 12 步，25.9 走完。起步时刻选成让第 3 步的双脚着地段落在 6.4–7.0（正念「两只脚都踩着」），紧接着单脚段 7.0–8.35（「只剩一只」）
   var WS = 2.5, T = 1.95, D = 0.3, NSTEP = 12, WE = WS + T * NSTEP;
-  var L = 46, SC = 1.1, X0 = 110, DY = 10;                // 步长（本地单位）、放大、起点、身子压低 10（膝盖微弯，步子才迈得开）
+  // 步长（本地单位）、放大、起点、身子压低 8（膝盖微弯，步子才迈得开：G1 髋到踝 ≈ 79，压低 8 后脚离髋最远 0.8 L = 32，够得着）
+  var L = 40, SC = 1.25, X0 = 110, DY = 8;
   var CX0 = 120, CX1 = 770, ROW = { far: 49, near: 83 }, ROW_H = 22;
   var PILL = [230, 112, 220, 34];
 
@@ -118,8 +119,9 @@
 
           /* 人形：髋匀速前进，两条腿用 IK 让脚踩在算好的位置上；手臂跟近腿反着摆 */
           var X = X0 + G.hip * SC;
-          var aN = r.legIK([0, 302], [G.near.x - G.hip, 386 - DY - G.near.lift]);
-          var aF = r.legIK([4, 302], [G.far.x - G.hip, 386 - DY - G.far.lift]);
+          // r.ankleY：G1 站直时踝关节的本地 y（≈ 381，踝离脚底 5 cm）
+          var aN = r.legIK([0, 302], [G.near.x - G.hip, r.ankleY - DY - G.near.lift]);
+          var aF = r.legIK([0, 302], [G.far.x - G.hip, r.ankleY - DY - G.far.lift]);
           r.legs(aN, aF);
           r.arm([-0.7 * aN[0] + 8, -0.7 * aN[0] + 20]);
           r.place({ x: X, dy: DY * SC, scale: SC });
@@ -153,7 +155,7 @@
             var load = !f.on ? 0 : G.ds ? 1 - Math.abs(G.hip - f.x) / span : 1;
             grf[w].set((fx + 7 * SC).toFixed(1), 14 + 14 * load, (f.on ? fade(st, 12.4, 0.4) * (w === 'far' ? 0.6 : 1) : 0).toFixed(3));
             var ev = st >= 13.2 ? sinceEvent(st, w) : 99, ru = ev / 0.5;
-            rings[w].setAttribute('cx', (fx + 7 * SC).toFixed(1)); rings[w].setAttribute('cy', (386 - f.lift * SC).toFixed(1));
+            rings[w].setAttribute('cx', (fx + 7 * SC).toFixed(1)); rings[w].setAttribute('cy', (388 - (388 - r.ankleY + f.lift) * SC).toFixed(1));
             rings[w].setAttribute('r', (6 + 16 * ru).toFixed(1));
             E.op(rings[w], ru < 1 ? (0.9 * (1 - ru)).toFixed(3) : 0);
           });

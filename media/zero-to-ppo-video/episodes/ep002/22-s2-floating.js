@@ -7,7 +7,8 @@
   var E = window.EP002, K = E.K;
   var TAU = Math.PI * 2;
   var X0 = 540, WALK = 63, W0 = 16.4, W1 = 18.2;           // 人形从 x 540 走 63（poseWalk 半个周期）到 603
-  var X1 = X0 + WALK, TORSO_Y = 262, SC = 1.15;            // 人形放大 1.15 倍（以脚底为心）；TW 是躯干坐标架原点的画面 y
+  // 躯干坐标架画在 G1 胸腔里那颗 IMU（imu_in_torso）的高度：本地 y ≈ 265。人形放大 1.15 倍（以脚底为心）；TW 是坐标架原点的画面 y
+  var X1 = X0 + WALK, TORSO_Y = 265, SC = 1.15;
   var TW = 388 - (388 - TORSO_Y) * SC;
   var Q = [['在哪？', 20.55], ['朝哪？', 21.3], ['歪没歪？', 21.75]], Q_X = 690, Q_Y = [226, 260, 294];
   var TILT = 6;
@@ -34,17 +35,21 @@
       K.paint(E.el('rect', { x: 72, y: 302, width: 12, height: 86, rx: 2, 'stroke-width': 2 }, left), E.S2, E.INK2);
       K.paint(E.el('rect', { x: 276, y: 302, width: 12, height: 86, rx: 2, 'stroke-width': 2 }, left), E.S2, E.INK2);
       K.paint(E.el('rect', { x: 60, y: 290, width: 240, height: 12, rx: 3, 'stroke-width': 2.5 }, left), E.S2, E.INK2);
-      var arm = E.arm(left, 180, 290, 1);
-      var baseHi = K.paint(E.el('path', { d: 'M 146 290 L 214 290 L 202 272 L 158 272 Z', fill: 'none', 'stroke-width': 3.5, 'stroke-linejoin': 'round' }, left), null, E.VIOLET);
+      // UR5 立在一块底板上，两颗螺栓把底板拧在桌面上（UR5 自己的底座比手画版窄，螺栓落在底板两端）
+      var plate = K.paint(E.el('rect', { x: 148, y: 284, width: 64, height: 6, rx: 2, 'stroke-width': 2 }, left), E.S2, E.INK2);
+      var arm = E.arm(left, 180, 284, 1.2);
       var bolts = [156, 204].map(function (x) {
         var g = E.el('g', {}, left);
         K.paint(E.el('circle', { cx: 0, cy: 0, r: 5.5, 'stroke-width': 2 }, g), E.S1, E.INK);
         var x1 = K.paint(E.el('line', { x1: -3.5, y1: 0, x2: 3.5, y2: 0, 'stroke-width': 2 }, g), null, E.INK);
         return { g: g, x: x, slot: x1 };
       });
-      var origin = K.paint(E.el('circle', { cx: 180, cy: 272, r: 7, 'stroke-width': 2 }, left), E.ACC, E.S1);
+      // 固定点 = 底座转台关节；虚线箭头从它画到停稳后的工具头
+      arm.set(25, 60);
+      var O = arm.joints()[0], TOOL = arm.tool();
+      var origin = K.paint(E.el('circle', { cx: O[0].toFixed(1), cy: O[1].toFixed(1), r: 7, 'stroke-width': 2 }, left), E.ACC, E.S1);
       var fixedTag = E.tag(left, 128, 318, 104, 32, '固定点', E.ACC, { size: 20, ink: E.ACC, weight: 700 });
-      var reach = E.arrow(left, [[186, 267], [250, 216]], E.ACC, 2.5, { dash: '6 5', head: 10 });
+      var reach = E.arrow(left, [[O[0] + 5, O[1] - 5], [TOOL[0] - 6, TOOL[1] + 4]], E.ACC, 2.5, { dash: '6 5', head: 10 });
 
       /* ── 右：侧视人形 + 躯干上的小坐标架 ── */
       var noPin = E.tag(s, 412, 228, 96, 32, '没钉住', E.BAD, { size: 20, ink: E.BAD, weight: 700 });
@@ -90,12 +95,14 @@
           var body = Math.max(E.win(st, 3.85, 5.8, 0.3), fade(st, 14.1, 0.3));
           r.torso.style.stroke = body > 0.5 ? E.VIOLET : E.INK;
           E.glow(r.torso, E.VIOLET, body > 0.5);
-          E.op(baseHi, E.win(st, 4.5, 5.8, 0.3));
+          var hi = E.win(st, 4.5, 5.8, 0.3) > 0.5;
+          arm.view.tint(['base_link', 'shoulder_link'], hi ? E.VIOLET : null, 1);
+          K.paint(plate, null, hi ? E.VIOLET : E.INK2);
 
           /* 7.18「拧死」：两颗螺栓弹出、拧两圈 */
           bolts.forEach(function (b, i) {
             var p = fade(st, 7.15 + 0.12 * i, 0.3), rot = 720 * K.ease(K.seg(st, 7.15 + 0.12 * i, 7.75 + 0.12 * i));
-            b.g.setAttribute('transform', 'translate(' + b.x + ' 284) scale(' + (0.6 + 0.4 * p).toFixed(3) + ')');
+            b.g.setAttribute('transform', 'translate(' + b.x + ' 287) scale(' + (0.6 + 0.4 * p).toFixed(3) + ')');
             b.slot.setAttribute('transform', 'rotate(' + rot.toFixed(1) + ')');
             E.op(b.g, p);
           });
@@ -103,7 +110,7 @@
           /* 8.28–10.3 手臂摆动、底座不动；11.75「固定点」；12.25「出发」：虚线从固定点画到夹爪 */
           var sw = K.seg(st, 8.25, 10.3), wob = sw > 0 && sw < 1 ? Math.sin(TAU * sw) : 0;
           arm.set(25 + 22 * wob, 60 - 18 * wob);
-          E.pop(origin, 180, 272, fade(st, 11.7, 0.3), 0.5);
+          E.pop(origin, O[0], O[1], fade(st, 11.7, 0.3), 0.5);
           E.pop(fixedTag.g, 180, 334, fade(st, 11.75, 0.3), 0.8);
           E.drawOn(reach.line, fade(st, 12.2, 0.5));
           E.op(reach.head, K.seg(fade(st, 12.2, 0.5), 0.9, 1));

@@ -53,7 +53,7 @@
       var cards = CARDS.map(function (c, i) {
         var y = CARD_Y[i], g = E.el('g', {}, s);
         var rect = K.paint(E.el('rect', { x: CARD_X, y: y, width: CARD_W, height: CARD_H, rx: 14, 'stroke-width': 2 }, g), E.S1, E.BORDER);
-        if (i === 0) E.arm(g, 470, y + 100, 0.62).set(18, 58);
+        if (i === 0) E.arm(g, 452, y + 104, 0.82).set(16, 62);
         else if (i === 1) E.quadruped(g, 466, y + 96, 0.72);
         else E.wheeled(g, 468, y + 92, 0.72);
         E.txt(g, 530, y + 34, c.name, 22, E.INK, 'start', 900);

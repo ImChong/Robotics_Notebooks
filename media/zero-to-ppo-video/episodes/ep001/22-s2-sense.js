@@ -59,6 +59,9 @@
     ],
     build: function (K) {
       var s = K.sceneSvg('人形机器人站在客厅一头，门口插着小旗，路中间有个纸箱；摄像头看见纸箱，身体里的小盒子感觉歪没歪，关节传感器知道弯了多少——这就是感知');
+      // 机器人先建出来：视线锥要从 G1 头上摄像头（d435）的实际位置发出；它的组稍后挪回原来的绘制顺序（客厅、视线锥之后）
+      var robot = E.robot(s, X);
+      var P = robot.pts(), CAM = [X + P.cam[0] + 5, P.cam[1]];
 
       /* ── 客厅；门口的脉冲圈和小旗夹在门与纸箱之间 ── */
       var room = E.room(s);
@@ -69,25 +72,24 @@
       var flag = K.paint(E.el('path', { d: 'M 770 120 L 790 127 L 770 134 Z' }, doorFx), E.ACC);
       var boxName = halo(E.txt(s, 413, 412, '纸箱', 18, E.INK2));
 
-      /* ── 视线锥：从摄像头 (127,203) 发出的扇形（向下 12°–42°，半径 360），越远越淡，远端是圆弧不是硬切边；
+      /* ── 视线锥：从摄像头 CAM 发出的扇形（向下 12°–42°，半径 360），越远越淡，远端是圆弧不是硬切边；
          摄像头装在头上，锥只跟着身子绕脚底晃，自己不摆。裁在地面以上 ── */
       var defs = E.el('defs', {}, s);
       var clip = E.el('clipPath', { id: 'ep001-s2-cone-clip' }, defs);
       E.el('rect', { x: 0, y: 0, width: 800, height: 389 }, clip);
-      var grad = E.el('radialGradient', { id: 'ep001-s2-cone-grad', gradientUnits: 'userSpaceOnUse', cx: 127, cy: 203, r: 360 }, defs);
+      var grad = E.el('radialGradient', { id: 'ep001-s2-cone-grad', gradientUnits: 'userSpaceOnUse', cx: CAM[0], cy: CAM[1], r: 360 }, defs);
       [[0, 0.34], [0.55, 0.16], [1, 0]].forEach(function (g) {
         var st = E.el('stop', { offset: g[0] }, grad); st.style.stopColor = 'var(--demo-good)'; st.style.stopOpacity = g[1];
       });
       var coneClip = E.el('g', { 'clip-path': 'url(#ep001-s2-cone-clip)' }, s);
       var coneOuter = E.el('g', {}, coneClip), coneG = E.el('g', {}, coneOuter);
       var R0 = 360, A0 = 12 * Math.PI / 180, A1 = 42 * Math.PI / 180;
-      var cone = E.el('path', { d: 'M127,203 L' + (127 + R0 * Math.cos(A0)).toFixed(1) + ',' + (203 + R0 * Math.sin(A0)).toFixed(1) +
-        ' A' + R0 + ',' + R0 + ' 0 0 1 ' + (127 + R0 * Math.cos(A1)).toFixed(1) + ',' + (203 + R0 * Math.sin(A1)).toFixed(1) + ' Z', fill: 'url(#ep001-s2-cone-grad)' }, coneG);
+      var cone = E.el('path', { d: 'M' + CAM[0] + ',' + CAM[1] + ' L' + (CAM[0] + R0 * Math.cos(A0)).toFixed(1) + ',' + (CAM[1] + R0 * Math.sin(A0)).toFixed(1) +
+        ' A' + R0 + ',' + R0 + ' 0 0 1 ' + (CAM[0] + R0 * Math.cos(A1)).toFixed(1) + ',' + (CAM[1] + R0 * Math.sin(A1)).toFixed(1) + ' Z', fill: 'url(#ep001-s2-cone-grad)' }, coneG);
       var seen = E.txt(s, 413, 330, '前方：纸箱', 20, E.GOOD);
 
       /* ── 机器人；角度弧、IMU 高亮、IMU 波纹挂在它的身体组里（本地坐标，髋在 (0,302)） ── */
-      var robot = E.robot(s, X);
-      var P = robot.pts();
+      s.appendChild(robot.g);
       var arcG = E.el('g', {}, robot.body);
       robot.body.insertBefore(arcG, robot.thigh);   // 垫在腿下面：扇形贴着肢体，腿线压住起始边
       var joints = [
@@ -102,8 +104,8 @@
         j.arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, arcG), null, E.GOOD);
       });
       // 近侧上臂正好压在小盒子上：亮起时在手臂上面再画一个同位置的小盒子
-      var imuHi = K.paint(E.el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, robot.body), E.GOOD);
-      var imuRing = K.paint(E.el('circle', { cx: 0, cy: 255, r: 6, fill: 'none', 'stroke-width': 2.5 }, robot.body), null, E.GOOD);
+      var imuHi = K.paint(E.el('rect', { x: P.imu[0] - 5, y: P.imu[1] - 5, width: 10, height: 10, rx: 2 }, robot.body), E.GOOD);
+      var imuRing = K.paint(E.el('circle', { cx: P.imu[0], cy: P.imu[1], r: 6, fill: 'none', 'stroke-width': 2.5 }, robot.body), null, E.GOOD);
 
       /* ── 三个标签 + 引线（引线终点跟着机器人晃） ── */
       function label(y, w, str, from, to, at) {
@@ -114,9 +116,9 @@
         return { g: g, lead: lead, tag: tg, cx: 200 + w / 2, cy: y + 18, from: from, to: to, at: at };
       }
       var L = [
-        label(74, 300, '摄像头 ≈ 眼睛', [214, 110], [124, 200], 11.2),
-        label(118, 400, '', [214, 154], [112, 252], 14.9),
-        label(162, 400, '关节角度传感器 ≈ 闭眼也知道弯了多少', [214, 198], [116, 342], 20.3)
+        label(74, 300, '摄像头 ≈ 眼睛', [214, 110], [CAM[0] + 2, CAM[1] - 4], 11.2),
+        label(118, 400, '', [214, 154], [X + P.imu[0] + 3, P.imu[1] - 4], 14.9),
+        label(162, 400, '关节角度传感器 ≈ 闭眼也知道弯了多少', [214, 198], [X + P.knee[0] + 6, P.knee[1] - 2], 20.3)
       ];
       var l2 = L[1].tag.text;
       l2.appendChild(document.createTextNode('测歪斜和转动的小盒子（IMU）≈ '));
@@ -178,7 +180,7 @@
           E.glow(robot.cam, E.GOOD, cp > 0.5);
           coneOuter.setAttribute('transform', rot ? 'rotate(' + rot.toFixed(3) + ' ' + FOOT[0] + ' ' + FOOT[1] + ')' : '');
           var cs = 0.3 + 0.7 * pc;   // 打开时从摄像头展开一次，之后不动
-          coneG.setAttribute('transform', 'translate(127 203) scale(' + cs.toFixed(4) + ') translate(-127 -203)');
+          coneG.setAttribute('transform', 'translate(' + CAM[0] + ' ' + CAM[1] + ') scale(' + cs.toFixed(4) + ') translate(' + (-CAM[0]) + ' ' + (-CAM[1]) + ')');
           E.op(cone, pc * (1 - 0.55 * dim));
 
           /* 13.2：箱上「前方：纸箱」 */
@@ -190,7 +192,7 @@
           var ip = fade(st, 14.9, 0.25), ib = flash(st, 14.9, 3, 0.5);
           robot.imu.style.fill = mix(E.GOOD, ip, E.MUT);
           E.op(imuHi, ip);
-          scaleOr(imuHi, 0, 255, 1 + 0.5 * ib);
+          scaleOr(imuHi, P.imu[0], P.imu[1], 1 + 0.5 * ib);
           E.glow(imuHi, E.GOOD, ip > 0.5);
           var iu = (st - 14.9) / 0.5;
           if (iu >= 0 && iu < 3) {

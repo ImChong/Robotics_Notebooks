@@ -26,6 +26,10 @@
 | `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面，`scene` 模式不用配音单看某一幕 |
 | `check_layout.mjs` | 逐帧检查：块不重叠、不压字幕、都在安全区；封面检查 3:4 置顶裁剪 |
 | `vendor/` | 论文系列的分镜工具库 `kit.js` 与样式 `paper-demos.css`（取自 `f7a5b14`，未改动） |
+| `robots.json` | 片中机器人的 URDF 来源：取自 [Robot Description Gallery Online](https://github.com/ImChong/Robot_Description_Gallery_Online)（固定 commit）的 `data/robots.json`，每台只记上游仓库 + 固定 commit 的 jsDelivr 地址与许可证。现用 Unitree G1（人形）、UR5（机械臂）、Unitree Go2（四足） |
+| `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊 |
+| `robot3d.js` | 舞台里的 URDF 渲染（three.js + urdf-loader，ES module）：全页共用一个离屏 WebGL 画布、正交相机，世界坐标线性映射到分镜坐标，叠加标注按正运动学定位；加载后用 meshoptimizer 减面到约 15%。另有和手画版同接口的封装：侧视 / 正面 G1、UR5、Go2、小人形图标，分镜里改样式的部件变成给连杆上色 |
+| `serve.mjs` | 本目录的极简静态 http 服务：ES module 和 fetch 在 `file://` 下不能用，`render.mjs` / `check_layout.mjs` 都经它打开舞台 |
 
 ## 用法
 
@@ -33,6 +37,7 @@
 cd media/zero-to-ppo-video
 npm install
 pip3 install edge-tts imageio-ffmpeg
+python3 fetch_robots.py                # 下载片中机器人的 URDF 与网格（约 50 MB）-> assets/robots/
 node render.mjs ep001 scene 3 0,5,12   # 做分镜时：不配音，单看第 3 幕这几个分镜时刻
 python3 build.py ep001                 # 旁白 TTS -> out/ep001/timeline.json + narration.wav
 node render.mjs ep001 stills 5,40,90   # 先抽几帧看排版
@@ -44,6 +49,7 @@ node check_layout.mjs ep001 cover
 
 - Chromium：设置 `CHROME=/path/to/chrome`，否则用 playwright-core 默认路径。
 - 走 TLS 代理时设置 `SSL_CERT_FILE`，`build.py` 会让 edge-tts 用这份 CA。
-- 2026-10 起旧合成地址 `speech.platform.bing.com` 回 403，PyPI 上的 edge-tts 7.2.8 合成不了；新版发布前先装 [rany2/edge-tts#491](https://github.com/rany2/edge-tts/pull/491)（改走 `api.msedgeservices.com`）：`pip3 install "git+https://github.com/rany2/edge-tts@refs/pull/491/head"`。
+- 2026-10 起旧合成地址 `speech.platform.bing.com` 回 403，PyPI 上的 edge-tts 7.2.8 合成不了；7.3.1（2026-10-23 实测）已能正常合成，直接 `pip3 install edge-tts` 即可。
 - 分段并行只在换幕处切（一幕里有的动画记着前面几帧），各段各开一个页面、各编一段无声视频，最后拼接再配旁白。001 全片（9356 帧）在 4 核机器上实测：1 / 2 / 3 / 4 段 = 530 / 392 / 360 / 342 s，逐帧和一口气渲染的版本比 PSNR 都 ≥ 50 dB。核数多的机器可以多分几段，最多到幕数。
 - 成片、封面、配音都在 `out/`，不入库。
+- URDF 机器人在无 GPU 的机器上走 Chromium 自带的 SwiftShader 软件渲染：G1 减面后约 8 万个三角形，一次重画约 50 ms；姿态和上色没变的视图不重画，移动、倾斜、倒地用 svg 变换，也不重画。一集用哪些机器人写在 `EpisodeVideo.robots`，舞台加载完才开始渲染。

@@ -8,7 +8,7 @@
 (function () {
   var E = window.EP002, K = E.K;
   var TAU = Math.PI * 2;
-  var RX = 440, EDGE = 39;                                  // 人形中心 x；脚外沿离中心 39（脚踝 ±24 + 半只脚 15）
+  var RX = 440, EDGE = 35, IN = 18;                        // 人形中心 x；右脚（画面右）外沿 / 内沿离中心多远——建好 G1 后按它脚的实际宽度改
   var TCOM = [170, 288], TFOOT = [170, 376];                // 桌面中心与它正下方的地面点（框的中心）
   var TIP = 17, FALL0 = 34.4, FALL1 = 35.4;
   var BROOM = [680, 300];                                   // 扫把立在手心 (680, 300)
@@ -49,11 +49,15 @@
       /* ── 右：正面人形 + 脚下窄条 + 重心竖线 ── */
       var band = K.paint(E.el('rect', { y: 384, height: 10, rx: 3, 'stroke-width': 2 }, s), E.tint(E.GOOD, 30, 'transparent'), E.GOOD);
       var bandLabel = E.txt(s, RX, 416, '只有这一小块', 18, E.GOOD, 'middle', 700);
-      var hBar = E.el('g', {}, s);
-      K.paint(E.el('path', { d: 'M 352 388 V 236 M 344 236 H 360 M 344 388 H 360', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, hBar), null, E.WARN);
-      E.txt(hBar, 340, 318, '重心高', 22, E.WARN, 'end', 700);
+      // 重心用 G1 各连杆的质量与质心算（E.front 的 com()），脚宽按它的脚掌外形；「重心高」的量尺量到站直时的重心
       var hum = E.front(s);
       hum.place(RX, 1);
+      EDGE = hum.footSpan[1][1]; IN = hum.footSpan[1][0];
+      var C0 = hum.com();
+      var hBar = E.el('g', {}, s);
+      s.insertBefore(hBar, hum.g);
+      K.paint(E.el('path', { d: 'M 352 388 V ' + C0[1].toFixed(1) + ' M 344 ' + C0[1].toFixed(1) + ' H 360 M 344 388 H 360', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, hBar), null, E.WARN);
+      E.txt(hBar, 340, ((388 + C0[1]) / 2 + 8).toFixed(1), '重心高', 22, E.WARN, 'end', 700);
       var hLine = K.paint(E.el('line', { 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, s), null, E.WARN);
       var hDot = K.paint(E.el('circle', { r: 4.5 }, s), E.WARN);
       var hCom = E.comMark(s, E.WARN, 11);
@@ -101,7 +105,7 @@
           var lift = 28 * fade(st, 23.45, 0.35) * (1 - fade(st, 24.6, 0.4));
           var sway = 2.2 * Math.sin(TAU * t / 1.4) * fade(st, 26.3, 0.6) * (1 - fade(st, FALL0, 0.2));
           // 倒地转到 86°，右臂甩过头顶：绕右脚外沿转 90° 时右臂和右肩会压进地面以下（左臂在上面，不用动）
-          var u = K.seg(st, FALL0, FALL1), fall = 86 * u * u, fl = fade(st, FALL0, 0.5);
+          var u = K.seg(st, FALL0, FALL1), fall = 86 * u * u, fl = fade(st, FALL0 + 0.45, 0.45);   // 倒到一半才甩臂，免得手先戳到头顶的控制牌
           var tilt = Math.max(tipA, tipB) + fall;
           var pivot = tilt > 0.01 ? [EDGE, 388] : [0, 388];
           var armL = 8 + 10 * (tipA + tipB) / TIP;
@@ -115,7 +119,7 @@
           E.op(tCom.g, pm);
           var pl = fade(st, 4.15, 0.5);
           E.drawOn(tLine, pl); E.op(tDot, K.seg(pl, 0.9, 1));
-          var bx0 = lift > 1 ? RX + 24 - 15 : RX - EDGE, bx1 = RX + EDGE;
+          var bx0 = lift > 1 ? RX + IN : RX - EDGE, bx1 = RX + EDGE;
           var out = c[0] < bx0 - 0.5 || c[0] > bx1 + 0.5;
           var lineC = out && fade(st, 15.6, 0.3) > 0 ? E.BAD : E.WARN;
           hLine.setAttribute('x1', c[0].toFixed(1)); hLine.setAttribute('x2', c[0].toFixed(1));

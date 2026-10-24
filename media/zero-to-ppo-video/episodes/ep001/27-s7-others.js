@@ -85,7 +85,7 @@
   function card(s, i) {
     var y = CARD_Y[i], g = E.el('g', {}, s);
     K.paint(E.el('rect', { x: 420, y: y, width: 360, height: 112, rx: 12, 'stroke-width': 2 }, g), E.S1, E.BORDER);
-    var icon = i === 0 ? E.arm(g, 470, y + 100, 0.48) : i === 1 ? E.car(g, 472, y + 92, 0.55) : E.humanoid(g, 470, y + 102, 0.62);
+    var icon = i === 0 ? E.arm(g, 456, y + 102, 0.68) : i === 1 ? E.car(g, 472, y + 92, 0.55) : E.humanoid(g, 470, y + 106, 0.86);
     E.txt(g, 530, y + 44, CARD_NAME[i], 22, E.INK, 'start', 700);
     // 回头虚线带箭头（与四步条的反馈线一样），看得出「执行完又回到感知」；末端切线方向 (548−623, 94−108)
     E.curveArrow(g, 'M 698 ' + (y + 94) + ' Q 623 ' + (y + 108) + ' 548 ' + (y + 94), E.MUT, 2, Math.atan2(-14, -75) / R, { dash: '5 4', head: 8 });

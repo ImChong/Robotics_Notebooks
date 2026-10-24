@@ -23,9 +23,9 @@
     // 人形取 2.15 而不是规格的 2.6：配音里「人形机器人」从分镜 2.17 念到 2.81，2.6 弹出时这个词已快念完。
     var bots = [
       { x: 160, at: 0.1, name: '扫地机', c: [160, 100], make: function (g) { return E.vacuum(g, 160, 100, 0.8); } },
-      { x: 320, at: 0.7, name: '机械臂', c: [335, 117], make: function (g) { return E.arm(g, 320, 150, 0.7); } },
+      { x: 320, at: 0.7, name: '机械臂', c: [330, 112], make: function (g) { return E.arm(g, 306, 150, 0.9); } },
       { x: 480, at: 1.3, name: '自动驾驶汽车', c: [480, 120], make: function (g) { return E.car(g, 480, 150, 0.8); } },
-      { x: 640, at: 2.15, name: '人形机器人', c: [640, 104], make: function (g) { return E.humanoid(g, 640, 150, 0.8); } }
+      { x: 640, at: 2.15, name: '人形机器人', c: [640, 96], make: function (g) { return E.humanoid(g, 640, 152, 1.0); } }
     ];
     bots.forEach(function (b) {
       b.g = E.el('g', {}, s);

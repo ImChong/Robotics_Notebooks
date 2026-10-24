@@ -1,0 +1,34 @@
+{
+  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
+  "gallery": {
+    "repo": "https://github.com/ImChong/Robot_Description_Gallery_Online",
+    "commit": "ca1efb74e8a642d1bd1a26b0ef7a0068dc2b6ebb",
+    "registry": "data/robots.json"
+  },
+  "robots": {
+    "g1": {
+      "name": "Unitree G1（29 自由度）",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/unitreerobotics/unitree_ros/blob/daadf41ee9afce8f90fdc09a98506012691fa122/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/unitreerobotics/unitree_ros@daadf41ee9afce8f90fdc09a98506012691fa122/",
+      "urdf": "robots/g1_description/g1_29dof_rev_1_0.urdf",
+      "packages": {}
+    },
+    "ur5": {
+      "name": "Universal Robots UR5",
+      "license": "BSD",
+      "license_url": "https://github.com/Gepetto/example-robot-data/blob/8ac8e67a04b0d6080507841c95a9ff50a533713c/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/Gepetto/example-robot-data@8ac8e67a04b0d6080507841c95a9ff50a533713c/",
+      "urdf": "robots/ur_description/urdf/ur5_robot.urdf",
+      "packages": { "example-robot-data": "" }
+    },
+    "go2": {
+      "name": "Unitree Go2",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/unitreerobotics/unitree_ros/blob/267182b8521c8d6a631bab1fe63836873237a525/robots/go2_description/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/unitreerobotics/unitree_ros@267182b8521c8d6a631bab1fe63836873237a525/",
+      "urdf": "robots/go2_description/urdf/go2_description.urdf",
+      "packages": { "go2_description": "robots/go2_description" }
+    }
+  }
+}

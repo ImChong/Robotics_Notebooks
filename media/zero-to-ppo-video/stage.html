@@ -294,6 +294,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     sc.spec.cues.forEach(function (c) { times.push(c.at); });
     times.forEach(function (tt) {
       sc.story.draw(tt, tt);
+      if (window.Robot3D) window.Robot3D.flush();   // URDF 视图跟着画，它们的外框（robot3d.js 的不可见 rect）才是这一刻的
       var o = svg.getBoundingClientRect();
       svg.querySelectorAll('rect, circle, ellipse, line, path, polyline, polygon, text').forEach(function (n) {
         if (!n.closest('defs, marker')) add(n.getBoundingClientRect(), o);
@@ -381,6 +382,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     var sc = get(key);
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
     sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));
+    if (window.Robot3D) window.Robot3D.flush();     // 只重画这一帧里挂在页面上、姿态或上色变了的 URDF 视图
     // cross-fade at scene edges
     var fin = clamp(local / 0.35, 0, 1), fout = clamp((last.t1 - t) / 0.3, 0, 1);
     sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, t > TL.total - 1 ? 1 : fout);
@@ -402,5 +404,12 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   };
 })();
 </script>
+<!-- URDF 机器人（robot3d.js）：ES module，按 EpisodeVideo.robots 加载模型；不用机器人的集也照样能放 -->
+<script type="importmap">{ "imports": {
+  "three": "./node_modules/three/build/three.module.js",
+  "three/examples/jsm/": "./node_modules/three/examples/jsm/",
+  "urdf-loader": "./node_modules/urdf-loader/src/URDFLoader.js",
+  "meshoptimizer/": "./node_modules/meshoptimizer/" } }</script>
+<script type="module" src="robot3d.js"></script>
 </body>
 </html>
