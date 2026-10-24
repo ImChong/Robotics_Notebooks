@@ -7,7 +7,7 @@ project_id: mpbrs-unified-humanoid-reward-configuration
 arxiv: "2610.30334"
 related:
   - ../methods/reinforcement-learning.md
-  - ../concepts/reward-shaping.md
+  - ../concepts/reward-design.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/mpbrs_arxiv_2610_30334.md
