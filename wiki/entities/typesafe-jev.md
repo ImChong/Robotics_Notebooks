@@ -2,7 +2,7 @@
 type: entity
 tags: [typesafe-ai, jev, system-one-model, llm-agents, agent-infrastructure, open-source, decision-api]
 status: complete
-updated: 2026-09-30
+updated: 2026-10-24
 related:
   - ./valen.md
   - ./laya.md
@@ -26,6 +26,11 @@ sources:
   - ../../sources/repos/laya.md
   - ../../sources/sites/dimensional_research_can_jev_nav.md
   - ../../sources/papers/navjev_arxiv_2609_34969.md
+  - ../../sources/repos/jev-drone.md
+  - ../../sources/sites/jev-drone.md
+  - ../../sources/repos/jevpilot.md
+  - ../../sources/sites/jevpilot.md
+  - ../../sources/repos/jev-robotics-demo.md
 summary: "Jev 是 TypeSafe AI 首个 System One Model：并行采样、schema 约束的类型安全结构化决策 + 校准概率，用 RLCD 训练；官方 JS/Python SDK 与 Agent Skills 已 MIT 开源，模型为早期访问 API（非权重开放）。开源对照见 [Laya](./laya.md)、多模态开源延伸 [Valen](./valen.md)。"
 ---
 
@@ -155,6 +160,16 @@ sequenceDiagram
 
 - **[Can Jev Nav? / Nav Arena](./dimensional-can-jev-nav-benchmark.md)（Dimensional，2026）：** Habitat **327** object-goal 任务；Jev **2 Hz typed drive**（无 tool）得 **mean SPL 0.263 / 45.9% arrived**，低于 **Dimcode 导航 tool（0.743 / 88.4%）** 与 **Pi+Astra（0.522 / 76%）**；**&lt;10 m** 子集 **71.1% arrived**、**~$0.055/run**。报告强调 **WorldState 须 robot-frame + 语言 helper**（否则 Jev 完成率骤降）。
 - **[NavJev](./paper-navjev-efficient-vln-jev.md)（同济，arXiv:2609.34969）：** VLN-CE 上 **ACVC + DASM + Jev** → **27.0% SR / 22.4% SPL**，**0.65 s/步**；真机小样本 **SR 50%**。展示 Jev 在 **指令跟随 VLN** 而非仅 object-goal 上的 typed 用法。
+
+## 仿真机器人与自动驾驶应用示例
+
+以下项目展示 Jev 作为低频结构化判断模块，如何与常规仿真、感知和控制代码组合。它们是仿真或浏览器演示，不能据此推断真实无人机、汽车或机械臂已达到同等性能。
+
+- **[jev-drone](../../sources/repos/jev-drone.md)：** MuJoCo 中的 Skydio X2 四旋翼仅靠机载相机飞越障碍路线。视觉场景提取约 **15 Hz**、安全引导 **50 Hz**、几何飞控 **500 Hz**；Jev 约 **2.5 Hz** 提供战术判断，安全反射始终由普通代码掌控。作者报告的 65 秒单次运行包含 80 次 Jev 调用；README 同时披露早期简化赛道的三种子对照未见 Jev 优势，且运行间方差较大。
+- **[JevPilot](../../sources/repos/jevpilot.md)：** Three.js 浏览器驾驶模拟器将候选路径、道路边界、交通灯和周围车辆压缩为表格交给 Jev 选择方向与速度；几何和控制计算留在本地。交互繁忙时请求最高约 **4 Hz**，道路空闲时约 **1.5 Hz**。仓库支持本地启动，托管演示需要登录；这不是实车自动驾驶验证。
+- **[Jev vs LLM: Robot Arm Control](../../sources/repos/jev-robotics-demo.md)：** MuJoCo 中的 Franka 机械臂与 Allegro 灵巧手堆叠方块。代码生成小幅候选动作并在物理副本中预演，再由 Jev 选择动作、抓放时机与完成判断；对照 LLM 则通过工具逐步操作。仓库报告的各一条记录中两者均完成任务，因此时间和成本数字是演示记录，不能视为统计性基准。
+
+这三个例子共同体现分层边界：将候选生成、状态提取、仿真推进、硬实时控制和安全约束留在可测试代码中，再让 Jev 在有限、明确的选项中作较低频决策。
 
 ## 局限与风险
 
