@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, physics-guided, motion-imitation, iccv, humanoid-paper-notebooks, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-24
 arxiv: "2212.02500"
 related:
   - ../methods/diffusion-motion-generation.md
@@ -10,11 +10,13 @@ related:
   - ./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md
   - ./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md
   - ./paper-phygile.md
+  - ./paper-physiblemdm.md
   - ./paper-gpc-generative-pretrained-controllers.md
   - ../overview/paper-notebook-category-14-human-motion.md
 sources:
   - ../../sources/papers/humanoid_pnb_physdiff.md
   - ../../sources/sites/physdiff-project.md
+  - ../../sources/papers/physiblemdm_arxiv_2610_30500.md
 summary: "PhysDiff（ICCV 2023 Oral，arXiv:2212.02500）在扩散采样的若干后期步调用物理仿真 motion-imitation policy，把 denoised motion 投影回可行动作并继续去噪；HumanML3D 物理误差降 86%+，但截至 2026-07-28 官方未开源代码。"
 ---
 
@@ -111,6 +113,7 @@ flowchart LR
 | 方法 | 约束来源 | 作用时机 | 输出空间 |
 |------|----------|----------|----------|
 | **PhysDiff** | 物理仿真 imitation policy | 扩散采样中多次投影 | 人体运动学 |
+| [PhysibleMDM](./paper-physiblemdm.md) | 扩散噪声搜索 + 运动学/逆动力学约束 | 推理时优化噪声 | 人体与自定义双足动作 |
 | [GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) | 可微空间目标函数 | 每步 guidance | 人体 root + pose |
 | [OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) | 任意关节 xyz + realism branch | 每步 hybrid guidance | 人体运动学 |
 | [CondMDI](./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md) | 训练期关键帧 mask | 条件去噪 | 人体运动学 |
