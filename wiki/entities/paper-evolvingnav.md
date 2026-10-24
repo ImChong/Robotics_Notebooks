@@ -30,7 +30,7 @@ summary: "EvolvingNav（arXiv:2609.39166；云深处 + 浙大）：把带时间�
 | EvoWorld-Bench | Evolving World Benchmark | 本文配套基准（命名依项目页） |
 | HSSD / HM3D | Habitat 场景数据集 | 评测场景来源（项目页列出） |
 
-## 核心思路
+## 核心方法
 
 - 预测式导航、信念引导搜索、证据重规划、预测式时间 4D 记忆四个环节。
 - EvoWorld-Bench 覆盖预测导航、搜索、重规划、在线动态、迁移与具身问答。
@@ -43,6 +43,12 @@ summary: "EvolvingNav（arXiv:2609.39166；云深处 + 浙大）：把带时间�
 | 首次检查成功率 | 61.32% |
 | 预算搜索成功率 | 86.18% |
 | 真机 | 室内巡逻、送文件两段演示 |
+
+## 与其他工作对比
+
+- **相对「记住即真」的静态记忆导航：** 常规做法把历史建图结果当作当前世界；EvolvingNav 把记忆当作待验证假设，先预测到达时刻的状态，再用可见性限定的证据修正，适合物体会移动、消失的长期部署场景。
+- **相对 [DR-WM](./paper-dr-wm.md)：** 同为云深处导航研究，DR-WM 预测动作造成的运动与未来观测以比较候选动作；EvolvingNav 关注的是世界状态本身随时间的变化与记忆更新，两者分别对应「动作后果」与「环境演化」两类预测。
+- 具体基线与协议以论文为准，本页不跨论文比较数字。
 
 ## 开源状态
 
@@ -57,6 +63,7 @@ summary: "EvolvingNav（arXiv:2609.39166；云深处 + 浙大）：把带时间�
 - [DR-WM](./paper-dr-wm.md) — 云深处同批研究
 - [云深处 rl_training](./deeprobotics-rl-training.md) — 同公司 RL 训练工程
 - [hierarchical-quadruped-navigation-stack](../concepts/hierarchical-quadruped-navigation-stack.md)
+- [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — EvoWorld-Bench 属于③层任务成功率评测（动态世界导航 / 搜索 / 重规划）；真机仅演示，未覆盖④层 sim↔real gap 校准
 
 ## 参考来源
 

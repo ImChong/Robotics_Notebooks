@@ -61,6 +61,7 @@ summary: "Konnect 是 KiCad 10 的原生 Rust/MCP 插件，通过 KiCad IPC API 
 - [KiCad（开源 PCB 与原理图 EDA）](./kicad.md) — Konnect 操作的 EDA 工程与桌面环境
 - [HeyPCB（AI PCB 设计）](./heypcb.md) — 自然语言到 KiCad 工程的托管式服务
 - [tscircuit](./tscircuit.md) — 以代码描述电路并生成 PCB 设计文件
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（AI/MCP 辅助编辑 KiCad 工程，输出仍需 ERC/DRC 与实测复核）
 
 ## 参考来源
 
