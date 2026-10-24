@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-24
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/rhoda-ai.md
@@ -185,7 +185,7 @@ sources:
 
 **PrismWAM**（[arXiv:2610.26564](../entities/paper-prismwam.md)）把外观语义目标与动作相关物理状态分开：预测目标 RGB 提供语义约束，未来深度 rollout 作为生成动作块的中间条件；官方 README 提供代码、训练配方及 RoboTwin 2.0、RoboDojo、LIBERO 权重。
 
-## 英文缩写速查
+**Phoenix-MWA** 是将 WAM 用于真实机器人操作的系统实例：它把未来视频与动作联合预测、运动—触觉接触表征，以及在学习到的视觉触觉模型中进行策略优化接在一条训练链路上；实现与开放边界见 [Phoenix 实体页](../entities/phoenix-mwa.md)。\n\n## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
