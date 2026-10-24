@@ -239,6 +239,12 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+## [2026-10-24] ingest | touchanything-egotouch | 收录视触觉估计论文、数据与实现
+
+- 意图：将 TouchAnything 及 EgoTouch 的论文、项目页、代码和数据集入口纳入机器人研究知识库。
+- 开源核查：代码公开，MIT 许可；EgoTouch 公开托管于 Hugging Face。采集说明与转换后压力网格尺寸不同，页面明确保留该核查点。
+- 写回：新增一篇论文来源、一篇项目页来源、一篇代码仓来源及一个统一 wiki 项目节点，并链接至视触觉融合概念页。
+
 ## [2026-10-23] lint | 全量 lint 清零 3 条信息型预警：SuperDyno 补 venue、From Hitter to Player 对比章节标题、GameHorizon 回链评测基准选型闭环
 
 ## [2026-10-23] ingest | CTP | 复核机构与代码开放状态
