@@ -1,6 +1,6 @@
 // node check_layout.mjs <ep>        （先跑过 build.py，并用 render.mjs 生成过 stage.<ep>.built.html）
 // node check_layout.mjs <ep> cover  封面帧（stage.html 的 buildCover，论文系列同款版式）：块互不重叠、都在画面里、大标题 / 中文名 /
-//                                   一句话 / 每条目录各占一行、集数只在右上角季胶囊里（「第一季 · 001」）、别处没有集数和路线层级、
+//                                   一句话 / 每条目录各占一行、集数只在顶栏正中（「No.001」，不碰左右两块）、别处没有集数和路线层级、
 //                                   3:4 置顶裁剪后目录字底不过 1405（不需要 build.py）
 // 每 0.5 s 抽一帧，用 DOM 量各块位置：可见块之间不许重叠、不许压字幕、片头 / 片尾相邻块间距 ≥ 10px，要读的东西必须在安全区 330–1440 之内
 // （视频号 9:16 画面会被裁成居中的 6:7，底部还压着作者、标题、转赞评与浮评）。改自论文系列的 check_layout.mjs。
@@ -55,11 +55,15 @@ if (mode === 'cover') {
     oneLine('title', bigs[0].firstElementChild);
     [...bigs[1].children].forEach((e, k) => oneLine(k ? 'pitch' : 'name', e));
     [...toc.children].forEach((e, k) => oneLine(`toc row ${k + 1}`, e));
-    // 集数只写在右上角的季胶囊里（「第一季 · 001」）；别处不出现集数和路线层级
-    const E = window.EpisodeVideo, badge = document.getElementById('badge').textContent;
-    if (badge !== E.badge + ' · ' + E.ep) out.push(`season pill reads "${badge}", want "${E.badge} · ${E.ep}"`);
-    const all = sc.textContent + document.querySelector('.brand').textContent.replace(badge, '');
-    if (/\b0\d\d\b|L[−-]?\d/.test(all)) out.push('cover shows an episode number or roadmap level outside the season pill');
+    // 集数只写在顶栏正中（「No.001」），和左边品牌、右边季胶囊各留 ≥ 10px；别处不出现集数和路线层级
+    const E = window.EpisodeVideo, epno = document.getElementById('epno'), badge = document.getElementById('badge');
+    if (epno.textContent !== 'No.' + E.ep) out.push(`episode number reads "${epno.textContent}", want "No.${E.ep}"`);
+    if (badge.textContent !== E.badge) out.push(`season pill reads "${badge.textContent}", want "${E.badge}"`);
+    const en = text(epno), bl = text(document.querySelector('.brand').firstElementChild), pr = badge.getBoundingClientRect();
+    if (en.left < bl.right + 10 || en.right > pr.left - 10) out.push('episode number crowds the brand or the season pill');
+    if (Math.abs((en.left + en.right) / 2 - 540) > 2) out.push('episode number is not centred');
+    const all = sc.textContent + document.querySelector('.brand').textContent.replace(epno.textContent, '');
+    if (/\b0\d\d\b|L[−-]?\d/.test(all)) out.push('cover shows an episode number or roadmap level outside the top-centre number');
     // 视频号「设置封面」按 3:4 置顶裁剪到 y 1440：最后一行目录的字底要离裁剪线 ≥ 35px
     const g = document.createRange(); g.selectNodeContents(toc.lastElementChild);
     const ink = Math.max(...[...g.getClientRects()].map((r) => r.bottom));

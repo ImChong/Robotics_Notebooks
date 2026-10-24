@@ -30,7 +30,7 @@
   }
 
   window.EpisodeVideo = {
-    ep: '001',                      // 用于文件名和封面右上角的季胶囊（「第一季 · 001」）；正片画面里不出现集数
+    ep: '001',                      // 用于文件名和封面顶栏正中的集数（「No.001」）；正片画面里不出现集数
     badge: '第一季',
     robots: ['g1', 'ur5', 'create2', 'prius'],   // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '四步循环',

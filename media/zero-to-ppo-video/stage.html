@@ -29,6 +29,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   align-items: center; font-size: 30px; color: var(--text-secondary); }
 .brand b { background: var(--hi); color: var(--bg); font-weight: 900; padding: 4px 16px; border-radius: 10px; }
 .pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; }
+/* 封面顶栏正中的集数（灰色小字，和「机器人学习」同字号）：以画面中线居中，不参与左右两块的排布；正片里是空的 */
+.epno { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--demo-muted); letter-spacing: 2px; white-space: nowrap; }
 
 /* ── scene chrome ── */
 #scene { position: absolute; inset: 0; }
@@ -89,7 +91,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 </head>
 <body>
 <div id="app">
-  <div class="brand"><span><b>零基础篇</b> · 机器人学习</span><span class="pill" id="badge"></span></div>
+  <div class="brand"><span><b>零基础篇</b> · 机器人学习</span><span class="epno" id="epno"></span><span class="pill" id="badge"></span></div>
   <div id="scene"></div>
   <div class="sub" id="sub"></div>
 </div>
@@ -134,7 +136,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
   }
 
-  document.getElementById('badge').textContent = E.badge;  // 正片只写第几季；封面在 renderAt 里加上集数（「第一季 · 001」）
+  document.getElementById('badge').textContent = E.badge;  // 右上角只写第几季；集数只在封面上，写在顶栏正中（renderAt）
 
   /* 纵向排版：按各块实际高度自上而下排，块间距 gaps[k]，整组在 [top, bottom] 里垂直居中；
      放不下就等比压缩间距（不压内容）。挂到 DOM 之后才量得到高度，所以在 draw 里调。 */
@@ -376,8 +378,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     for (var i = 0; i < segs.length; i++) if (t < segs[i].t1) { s = segs[i]; break; }
     var key = String(s.scene);
     if (window.__cover) key = 'cover';  // 封面用自己的版式（render.mjs cover 设 __cover）
-    // 封面右上角的季胶囊带上集数，不做成最显眼的标志；正片里不写集数
-    if (window.__cover) document.getElementById('badge').textContent = E.badge + ' · ' + E.ep;
+    // 封面顶栏正中写集数（灰色小字，不做成最显眼的标志）；正片里不写集数
+    if (window.__cover) document.getElementById('epno').textContent = 'No.' + E.ep;
     var first = s, idx = segs.indexOf(s);
     while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
