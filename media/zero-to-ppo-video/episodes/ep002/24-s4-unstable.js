@@ -36,11 +36,12 @@
         var n = K.paint(E.el('line', { x1: l[0], y1: l[1], x2: l[0], y2: l[2], 'stroke-width': 8, 'stroke-linecap': 'round' }, table), null, E.INK2);
         E.op(n, 0.55);
       });
+      // 前面两条腿先画、上端伸进桌面里：桌面压住腿，而不是腿的圆头压在桌面正面的下沿上
+      [70, 230].forEach(function (x) { K.paint(E.el('line', { x1: x, y1: 304, x2: x, y2: 388, 'stroke-width': 8, 'stroke-linecap': 'round' }, table), null, E.INK2); });
       var top = K.paint(E.el('path', { d: 'M 58 300 L 242 300 L 282 276 L 98 276 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, table), E.S2, E.INK2);
       K.paint(E.el('rect', { x: 58, y: 300, width: 184, height: 10, 'stroke-width': 2.5 }, table), E.S2, E.INK2);
       // 桌面的右侧面（斜着看得见的那一面，厚 10，和正面一样）
       K.paint(E.el('path', { d: 'M 242 300 L 282 276 L 282 286 L 242 310 Z', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, table), E.S1, E.INK2);
-      [70, 230].forEach(function (x) { K.paint(E.el('line', { x1: x, y1: 310, x2: x, y2: 388, 'stroke-width': 8, 'stroke-linecap': 'round' }, table), null, E.INK2); });
       var tLine = K.paint(E.el('path', { d: 'M ' + TCOM[0] + ' ' + (TCOM[1] + 12) + ' V ' + TFOOT[1], fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, s), null, E.WARN);
       var tDot = K.paint(E.el('circle', { cx: TFOOT[0], cy: TFOOT[1], r: 4.5 }, s), E.WARN);
       var tCom = E.comMark(s, E.WARN, 11); tCom.at(TCOM[0], TCOM[1]);
