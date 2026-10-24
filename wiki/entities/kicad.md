@@ -11,6 +11,7 @@ related:
   - ./simplefoc.md
   - ./wokwi.md
   - ./tinkercad.md
+  - ./qucs-s.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -117,6 +118,8 @@ flowchart TB
 ## 关联页面
 
 - [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
+
+- [Qucs-S](./qucs-s.md) — 独立的电路仿真 GUI，可调用 Ngspice、Xyce 等外部后端；补充电路级分析，不替代 PCB 设计。
 
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（开源 KiCad vs 商用 Altium、自研驱动板 vs 商用一体化关节）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
