@@ -2764,6 +2764,7 @@
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM**（*Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation*，arXi `📅unknown` `[entity_page]`
 - [Motubrain（世界动作模型 · arXiv:2604.27792）](wiki/entities/paper-motubrain.md) — Motubrain**（*An Advanced World Action Model for Robot Control*，[arXiv:2604.27792](https://arxiv.or `📅unknown` `[entity_page]`
 - [Motus2（自进化通用世界模型 · arXiv:2608.30237）](wiki/entities/paper-motus2.md) — Motus2**（*A Self-Evolving General World Model for Dexterous Manipulation*，[arXiv:2608.30237](https `📅unknown` `[entity_page]`
+- [MPBRS：九种人形机器人共享奖励配置](wiki/entities/paper-mpbrs-humanoid-reward-shaping.md) — 一句话定义：** MPBRS 研究如何用同一组多势函数奖励结构与权重训练多种人形机器人，只提供机器人特定的结构映射和默认姿态元数据。 `📅unknown` `[entity_page]`
 - [MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — MPC-RL**（*Accelerating and Scaling MPC-Guided Reinforcement Learning for Humanoid Locomotion and M `📅unknown` `[entity_page]`
 - [MPC 脚手架灵巧 RL（arXiv:2609.14878）](wiki/entities/paper-mpc-scaffolding-dex-rl.md) — MPC 脚手架灵巧 RL**（*Real-World Reinforcement Learning with MPC Scaffolding for Dexterous Manipulation `📅unknown` `[entity_page]`
 - [MRSVLMRA（arXiv:2609.27816）](wiki/entities/paper-mrsvlmra.md) — Safe Multi-Robot Coordination via VLM-LLM Reasoning and Reachability Analysis**（[代码](https://githu `📅unknown` `[entity_page]`
@@ -4912,6 +4913,7 @@
 - [StellaVLA（结构化 In-Context 示范 · VLA）](wiki/entities/paper-stellavla-structured-icl-vla.md) — StellaVLA**（*In-Context Structured Demonstration for Generalizable Vision-Language-Action Models*， `📅unknown` `[entity_page]`
 - [StereoEngine：没有双目相机也能扩充双目示范](wiki/entities/paper-stereoengine.md) — StereoEngine**（*Scaling Stereo Bimanual Robot Data without Stereo Cameras*，[arXiv:2610.12734](http `📅unknown` `[entity_page]`
 - [StereoPatch（arXiv:2609.15509）](wiki/entities/paper-stereopatch.md) — StereoPatch**（*StereoPatch: Patch-Aligned RGB-Depth Fusion for Spatial Perception in Robot Manipul `📅unknown` `[entity_page]`
+- [STR：面向人形移动操作的时空偏好动作重定向](wiki/entities/paper-str-spatiotemporal-retargeting.md) — 一句话定义：** STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。 `📅unknown` `[entity_page]`
 - [Streaming Interventions：Ego-MC-Bench 与 Ego-CoMist](wiki/entities/paper-streaming-interventions.md) — Streaming Interventions**（*Can Video Large Language Models Correct Mistakes as They Occur?*，[arXiv `📅unknown` `[entity_page]`
 - [Streaming RL 分析](wiki/entities/paper-streaming-rl-continual-robotics.md) — An Analysis of Streaming Deep Reinforcement Learning for Adaptive Continual Learning in Robotics `📅unknown` `[entity_page]`
 - [Streaming-WAM](wiki/entities/paper-streaming-wam.md) — Streaming-WAM: Action-Conditioned World–Action Model for Asynchronous Robot Manipulation**（[arXiv: `📅unknown` `[entity_page]`
@@ -5181,6 +5183,7 @@
 - [Whole-Body Behaviors（HMI P002）](wiki/entities/paper-whole-body-behaviors-primitives.md) — Whole-Body Behaviors**（*Synthesis of Whole-Body Behaviors through Hierarchical Control of Behavior `📅unknown` `[entity_page]`
 - [Whole-Body Dexterity：让人形机器人用身体重定位物体](wiki/entities/paper-whole-body-dexterity.md) — Whole-Body Dexterity（WBD）**（arXiv:2610.22184，[项目页](https://www `📅unknown` `[entity_page]`
 - [Whole-Body UMI（arXiv:2609.22829）](wiki/entities/paper-whole-body-umi-realtime-motion.md) — Whole-Body UMI**（*Whole-Body UMI: Transferring UMI Manipulation Skills to Humanoid Whole-Body Mani `📅unknown` `[entity_page]`
+- [WholeBodyMem：人形移动操作的目标前历史记忆](wiki/entities/paper-wholebodymem.md) — 一句话定义：** WholeBodyMem 让人形 VLA 保留执行目标前观察到的物体事件，减少遮挡、物体变化和视角转动造成的历史线索丢失。 `📅unknown` `[entity_page]`
 - [WholeBodyWAM · UniMotion-4K（4100 小时全身运动世界模型）](wiki/entities/paper-wholebodywam-unimotion-4k.md) — WholeBodyWAM**（*Learning Whole-Body World Action Models with Scalable Motion Priors*，[arXiv:2609.1 `📅unknown` `[entity_page]`
 - [WholeBodyWAM：预训练 WAM 先验 × WBC 接地协调](wiki/entities/paper-wholebodywam.md) — WholeBodyWAM**（*WholeBodyWAM: Generalizing Pre-trained World-Action Priors to Humanoid Loco-Manipu `📅unknown` `[entity_page]`
 - [Why Action Chunking Improves BC（延迟策略与隐式集成）](wiki/entities/paper-why-action-chunking-improves-bc.md) — Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[arXiv:2608. `📅unknown` `[entity_page]`
