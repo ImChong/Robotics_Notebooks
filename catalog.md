@@ -4917,6 +4917,7 @@
 - [Streaming-WAM](wiki/entities/paper-streaming-wam.md) — Streaming-WAM: Action-Conditioned World–Action Model for Asynchronous Robot Manipulation**（[arXiv: `📅unknown` `[entity_page]`
 - [StreamingWAM（arXiv:2610.15585）](wiki/entities/paper-streamingwam.md) — StreamingWAM**（*StreamingWAM: Streaming World Action Modeling via Chunk-Wise Staircase Flow Matchi `📅unknown` `[entity_page]`
 - [StreamPI](wiki/entities/paper-streampi.md) — StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models**（[arXiv:2608.2 `📅unknown` `[entity_page]`
+- [StreamSplat：未标定视频流的在线动态 3D 重建](wiki/entities/paper-streamsplat-iclr-2026.md) — StreamSplat** 是一个前馈式动态 3D Gaussian Splatting（3DGS）框架：逐帧处理未标定视频流，在线融合静态场景结构和动态形变，支持任意时刻的插值与新视角渲染。 `📅unknown` `[entity_page]`
 - [STRIDER（arXiv:2609.23483）](wiki/entities/paper-strider-multi-gait-loco-manip.md) — STRIDER**（*STRIDER: Stepping-Enabled Multi-Gait Hierarchical 3D Loco-Manipulation Framework for Hu `📅unknown` `[entity_page]`
 - [StrucPhysVideo（arXiv:2609.18430）](wiki/entities/paper-strucphysvideo.md) — StrucPhysVideo**（*Learning Physical Dynamics from Structured Captions and Robot Actions*，[arXiv:26 `📅unknown` `[entity_page]`
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs**（[arXiv:2608.15139](https://arx `📅unknown` `[entity_page]`

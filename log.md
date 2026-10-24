@@ -239,6 +239,10 @@ op: ingest
 - **开源结论：** 两个项目提供公开课程材料；Diy-LLM 最新 Release 提供 PDF，Stanford 讲义仓库包含可执行 Python 讲座与 PDF。仓库元数据未返回许可证信息，不推断授权条款。
 - **关键页：** sources/courses/、sources/repos/、sources/sites/ 下的 Diy-LLM 与 Stanford CS336 归档。
 
+## [2026-10-24] ingest | StreamSplat（ICLR 2026）— 在线动态 3DGS 重建
+
+归档论文、作者项目页和官方代码；记录其开源代码与 checkpoint 入口，并建立动态场景重建 Wiki 实体。该方法是通用视频重建研究，机器人导航/控制闭环仍需另行验证。
+
 ## [2026-10-24] ingest | touchanything-egotouch | 收录视触觉估计论文、数据与实现
 
 - 意图：将 TouchAnything 及 EgoTouch 的论文、项目页、代码和数据集入口纳入机器人研究知识库。
