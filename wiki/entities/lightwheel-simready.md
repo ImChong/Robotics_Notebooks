@@ -14,7 +14,7 @@ tags:
 project_id: lightwheel-simready
 project: https://lightwheel.ai/asset-library
 status: complete
-updated: 2026-10-10
+updated: 2026-10-24
 related:
   - ./lightwheel.md
   - ./lightwheel-simreadygen.md
@@ -27,6 +27,7 @@ related:
   - ./isaac-lab-arena.md
   - ./mujoco-warp.md
   - ./nvidia-omniverse.md
+  - ./nvidia-simready-central.md
   - ./nvidia-learn-openusd.md
   - ./anymal.md
   - ../concepts/physics-fidelity-sim2real-gap.md
@@ -70,6 +71,7 @@ institutions:
 - **OpenUSD 中立资产 → 多引擎复用：** 同一资产按 content profile 编写，可喂 [Isaac Sim](./isaac-sim.md)、[Newton](./newton-physics.md) 与其它 OpenUSD 工作流；对需要做 **跨仿真器鲁棒性**（如 RoboFinals 多后端记分板）的团队，减少格式转换造成的物理漂移。
 - **Newton 生态的资产标准参与者：** 光轮从 2025-09 的 Newton 颗粒地形资产贡献者，到 2026-03 宣布加入 Newton TSC，负责复杂物理资产的 SimReady schema、Real-to-Sim 调参工具与参考资产——Newton 资产格式演进值得跟踪。
 - **商业化资产市场的现实参照：** simready.com 按件售卖（样例 $50 / $145）+ 部分 CC BY-NC 免费，是「仿真资产商品化」的一个可观察样本，可与 [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) 的开放 SimReady 场景对照。
+- **与 NVIDIA SimReady Central 区分：** [NVIDIA SimReady Central](./nvidia-simready-central.md) 是多家 OEM / 供应商资产的发现与提交审核入口；它与光轮的商业资产库、测量管线和自有开放子集不是同一个产品，资产许可也需分别核对。
 
 ## 核心原理
 
@@ -207,6 +209,7 @@ flowchart TB
 - [Isaac Sim](./isaac-sim.md) / [Isaac Lab](./isaac-lab.md) — 资产主要目标平台
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — 光轮共建的评测框架
 - [NVIDIA Omniverse](./nvidia-omniverse.md) / [Learn OpenUSD](./nvidia-learn-openusd.md) — OpenUSD 生态背景
+- [NVIDIA SimReady Central](./nvidia-simready-central.md) — 多方仿真资产发现、USD Search 与 Agent 场景编排
 - [物理保真度与 Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - [具身数据采集五路线全景](../queries/embodied-data-collection-five-routes-landscape.md) — SimReady 在「场景重建」路线中的位置
 
