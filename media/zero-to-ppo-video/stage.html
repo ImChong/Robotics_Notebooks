@@ -86,6 +86,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .pt b { color: var(--hi); }
 .pt > div:not([class]) { white-space: pre-line; }
 .pt .wait { margin-top: 14px; height: 10px; border-radius: 5px; background: var(--demo-grid); overflow: hidden; }
+.pt .d { font-size: 31px; color: var(--text-secondary); }
 .pt .wait b { display: block; height: 100%; width: 0; background: var(--demo-warn); }
 </style>
 </head>
@@ -321,6 +322,38 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 
   /* ── outro：〔自测题 → 想一想（进度条倒数）→ 揭晓答案〕→ 下一集预告 → 系列衔接语。
      自测题可选：零基础篇片尾不出题，outro 里不写 quiz 就只有预告和衔接语 ── */
+  /* 片尾总结（参照论文系列「三句话记住」）：小标题 + 大标题，几张左侧色条卡片按旁白逐张弹出，可选一行结论；
+     卡片张数按内容定，E.recap 不写就没有这一页 */
+  function buildRecap() {
+    var R = E.recap, root = h('div', 'card');
+    var head = h('div', 'head', root);
+    h('div', 'act', head, R.act);
+    richInto(h('div', 'title', head), R.title);
+    var pts = R.items.map(function (it) {
+      var p = h('div', 'pt', root);
+      p.style.fontSize = '37px'; p.style.padding = '18px 32px';
+      p.style.borderLeft = '10px solid ' + it.c;
+      var n = h('div', 'n', p, it.n); n.style.color = it.c;
+      richInto(h('div', '', p), it.s);
+      if (it.d) richInto(h('div', 'd', p), it.d);
+      return p;
+    });
+    var foot = null;
+    if (R.foot) { foot = h('div', 'footer', root); richInto(foot, R.foot.s); foot.style.color = 'var(--text)'; }  // 结论比卡片说明亮一档
+    var els = [head].concat(pts, foot ? [foot] : []);
+    var gaps = els.slice(1).map(function (e, k) { return k ? 20 : 30; });
+    if (foot) gaps[gaps.length - 1] = 30;
+    return {
+      root: root,
+      draw: function (st) {
+        stack(els, gaps, SAFE_TOP, CONTENT_BOTTOM);
+        fadeUp(head, st, 0);
+        pts.forEach(function (p, k) { fadeUp(p, st, R.items[k].at); });
+        if (foot) fadeUp(foot, st, R.foot.at);
+      }
+    };
+  }
+
   function buildOutro() {
     var O = E.outro, root = h('div', 'card'), quiz = null, ans = null, waitBar = null;
     if (O.quiz) {
@@ -354,7 +387,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   }
 
   function get(key) {
-    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'outro' ? buildOutro() : buildStory(+key);
+    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'recap' ? buildRecap() : key === 'outro' ? buildOutro() : buildStory(+key);
     return built[key];
   }
 

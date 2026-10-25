@@ -3,7 +3,7 @@
 // node render.mjs <ep> cover                  -> out/<ep>/cover.png（封面版式、无字幕）
 // node render.mjs <ep> clip 140.5,191 [fps]   -> out/<ep>/clip_140.5-191.mp4（只渲染这一段，配同一段旁白）
 // node render.mjs <ep> scene 3 0,5,12.5        -> out/<ep>/scene3_<t>.png（不用配音：第 3 幕按分镜时间 1 倍速播放，抽这几个时刻；
-//                                               也可写 intro / outro。做分镜时先看画面用）
+//                                               也可写 intro / recap / outro。做分镜时先看画面用）
 // <ep> 对应 episodes/<ep>.{js,py}。改自 Robot_Learning_Paper_Notebooks 的 scripts/paper_video/render.mjs。
 import { chromium } from 'playwright-core';
 import { spawn, execFileSync } from 'node:child_process';
@@ -45,9 +45,9 @@ async function openPage(log) {
   await page.goto(server.url + path.basename(built));
   await page.evaluate(() => window.robotsReady);   // robot3d.js 把这一集要用的 URDF 和网格都加载完
   if (!tl) {
-    // 只放这一幕：分镜时间 = 真实时间，时长取分镜里写的 dur（片头 / 片尾取 introDur / outroDur）
+    // 只放这一幕：分镜时间 = 真实时间，时长取分镜里写的 dur（片头 / 总结 / 片尾取 introDur / recapDur / outroDur）
     const key = /^\d+$/.test(arg) ? Number(arg) : arg;
-    const dur = await page.evaluate((k) => { const E = window.EpisodeVideo; return k === 'intro' ? E.introDur : k === 'outro' ? E.outroDur : E.scenes[k].dur; }, key);
+    const dur = await page.evaluate((k) => { const E = window.EpisodeVideo; return k === 'intro' ? E.introDur : k === 'recap' ? E.recapDur : k === 'outro' ? E.outroDur : E.scenes[k].dur; }, key);
     tl = { total: dur + 0.5, segments: [{ scene: key, t0: 0, t1: dur + 0.5, from: 0, to: dur + 0.5, lead: 0 }], subs: [] };
   }
   await page.evaluate((t) => window.setup(t), tl);

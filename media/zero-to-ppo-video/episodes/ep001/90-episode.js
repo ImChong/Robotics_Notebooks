@@ -44,6 +44,17 @@
     introDur: 11.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
+    // 片尾总结：三句旁白对应三张卡片（at 是这张卡片弹出的分镜时间，和 ../ep001.py 的 recap 句对齐）
+    recapDur: 17.6,
+    recap: {
+      act: '三句话记住',
+      title: '所有机器人，都在转同一个圈',
+      items: [
+        { c: 'var(--hi)', n: '① 四步', s: '**感知** → **规划** → **控制** → **执行**', d: '看清周围 → 想好路线 → 算出关节命令 → 电机带着动', at: 1.2 },
+        { c: 'var(--demo-good)', n: '② 反馈', s: '执行完马上测到，绕回感知', d: '一圈接一圈，四步连成一个圈', at: 6.6 },
+        { c: 'var(--demo-accent)', n: '③ 只钻控制', s: '“要去哪儿” → “每个关节怎么出力”', d: '这个系列的主角，常见一秒算几百到一千次', at: 11.4 }
+      ]
+    },
     outroDur: 9.8,
     // 片尾不出题：只有下一集预告和衔接语
     outro: {

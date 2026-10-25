@@ -44,6 +44,19 @@
     introDur: 24.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
+    // 片尾总结：四个难点各一张卡片，结论一行（at 是弹出的分镜时间，和 ../ep002.py 的 recap 句对齐）
+    recapDur: 23.4,
+    recap: {
+      act: '本集总结',
+      title: '四个难点，人形全占',
+      items: [
+        { c: 'var(--demo-accent)', n: '① 关节多', s: '二十多个关节，一起派活还要配合', at: 3.6 },
+        { c: 'var(--violet)', n: '② 浮动基', s: '骨盆没钉住，只能靠脚踩地借力', at: 7.6 },
+        { c: 'var(--demo-good)', n: '③ 接触切换', s: '脚一抬一落，能借的力就变了', at: 11.6 },
+        { c: 'var(--demo-warn)', n: '④ 强不稳定', s: '重心高、脚下小，控制一停就倒', at: 15.6 }
+      ],
+      foot: { s: '学会人形，换机械臂、四足、轮式底盘，几乎都是**降难度**', at: 19.2 }
+    },
     outroDur: 11.1,
     // 片尾不出题：只有下一集预告和衔接语
     outro: {
