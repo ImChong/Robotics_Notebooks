@@ -3211,6 +3211,7 @@
 - [OnOff：可微物理笔刷打通在线轨迹与离线手写](wiki/entities/paper-onoff-handwriting.md) — OnOff**（*Bridging Online and Offline Handwriting via Differentiable Physical Rendering*；[arXiv:260 `📅unknown` `[entity_page]`
 - [An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) — Grimminger et al.（MPI-IS / NYU / LAAS，arXiv:1910.00093，IEEE RA `📅unknown` `[entity_page]`
 - [Open X-Embodiment（HMI P055）](wiki/entities/paper-open-x-embodiment.md) — Open X-Embodiment**（*Open X-Embodiment: Robotic Learning Datasets and RT-X Models*，2023，[arXiv:231 `📅unknown` `[entity_page]`
+- [OpenBot：把智能手机变成低成本移动机器人](wiki/entities/paper-openbot-smartphone-mobile-robot.md) — OpenBot**（*OpenBot: Turning Smartphones into Robots*，[arXiv:2008.10631](https://arxiv.org/abs/2008 `📅unknown` `[entity_page]`
 - [OpenCap Monocular：单手机视频的人体运动学与动力学](wiki/entities/paper-opencap-monocular.md) — OpenCap Monocular**（*3D Human Kinematics and Musculoskeletal Dynamics from a Single Smartphone Vid `📅unknown` `[entity_page]`
 - [OpenDexGrasp（arXiv:2609.18117）](wiki/entities/paper-opendexgrasp.md) — OpenDexGrasp**（*OpenDexGrasp: Open-vocabulary Task-Oriented Dexterous Grasping*，[arXiv:2609.18117 `📅unknown` `[entity_page]`
 - [OpenEAI-VLA（arXiv:2606.03392）](wiki/entities/paper-openeai-vla.md) — OpenEAI-VLA**（*OpenEAI-Platform: An Open-source Embodied Artificial Intelligence Hardware-Software `📅unknown` `[entity_page]`

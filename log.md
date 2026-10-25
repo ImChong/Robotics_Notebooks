@@ -245,6 +245,8 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | sources/papers/openbot_arxiv_2008_10631.md — 归档 OpenBot 手机驱动低成本轮式机器人的论文与源码，关联既有 PhoneBot 人形平台
+
 ## [2026-10-25] ingest | sources/papers/wholebodymem_arxiv_2610_31166.md — 补录 arXiv HTML v1 明示的 MBZUAI 作者单位，并同步项目页归档与 WholeBodyMem 实体标签
 
 ## [2026-10-24] lint | 全量 lint 清零 19 条信息型预警：3 篇 paper 补英文缩写速查与结论，10 篇 paper 补方法/评测/对比三段式，LynxScenes 补重定向就绪度，4 页补选型闭环枢纽回链
