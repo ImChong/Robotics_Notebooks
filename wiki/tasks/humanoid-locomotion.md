@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-25
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
@@ -128,6 +128,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 ### 跑酷、冲刺与高动态技能
 
+- [Push the Limit：高速冲刺与激进转弯](../entities/paper-push-the-limit-humanoid-sprinting.md) — 因果 MHA 历史编码 + 航向方向奖励 + 技能条件 Multi-AMP；减重真机 100 m 平均 7.14 m/s（CoRL 2026）
 - [SPRINT 人形竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 极少 MoCap + 频域先验外推至高动态冲刺
 - [GaitSpan 从行走到跑步的技能生长](../entities/paper-gaitspan-humanoid-locomotion-walking-running.md) — 冻结行走种子 + GaitWave 节律组合 + H-SLIP 动态步幅；Booster T1/K1、G1 真机户外走–慢跑–跑连续变速
 - [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 结合重定向与控制引导的 RL 实现高性能奔跑
@@ -172,6 +173,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [Walk Like This（CoRL 2026）](../../sources/papers/walk_like_this_corl2026.md) — 示例条件风格化 locomotion 与 G1 实机追踪。
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 - [SPRINT: Efficient Spectral Priors for Humanoid Athletic Sprints](../../sources/papers/sprint_arxiv_2605_28549.md) — 5 条参考 + 频谱先验 + 残差 RL，G1 真机冲刺 6 m/s。
+- [Push the Limit（CoRL 2026）](../../sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md) — 时序注意力、航向方向奖励与技能条件 Multi-AMP，解决高速冲刺中的转弯和多技能风格监督。
 - [SSR: Scaling Surefooted and Symmetric Humanoid Traversal to the Open World](../../sources/papers/ssr_arxiv_2605_30770.md) — 第一视角深度单阶段 PPO + 想象落脚点，AgiBot X2 户外 1.3 km 长程。
 - [CReF（arXiv:2603.29452）](../../sources/papers/cref_arxiv_2603_29452.md) — 单阶段前向深度交叉注意 + 落脚奖励；X2 Ultra 零样本楼梯/台/沟；训练代码未开源。
 - [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — 基于扩散模型与 RL 的全身移动框架。
