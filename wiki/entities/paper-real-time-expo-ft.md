@@ -11,8 +11,9 @@ tags:
   - manipulation
   - stanford
 status: complete
-updated: 2026-09-29
+updated: 2026-10-26
 arxiv: "2609.18207"
+code: "https://github.com/pd-perry/expo-ft"
 related:
   - ../concepts/universal-post-training-robotics.md
   - ../methods/vla.md
@@ -94,7 +95,27 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-17** 无官方 GitHub；项目页 Code 链为 `#` 占位。
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Robot as DROID 真机环境
+  participant Client as client/run_client.py
+  participant Server as train_pi_robo_async.py
+  participant VLA as OpenPI VLA 基座
+  participant EditQ as RealTimeEXPOFTLearner
+  Client->>Robot: 读取当前观测
+  Client->>Server: WebSocket 发送观测
+  Server->>VLA: 生成候选 action chunk
+  VLA-->>Server: 返回候选 chunk
+  Server->>EditQ: 按最新观测修正候选并计算 Q
+  EditQ-->>Server: 返回选中的 action chunk
+  Server-->>Client: WebSocket 返回动作
+  Client->>Robot: 执行动作并采集转移
+  Client->>Server: 回传奖励与后继观测
+  Server->>EditQ: 写入 replay 并更新策略 / Q
+```
+
+源码入口依据仓库 README：server/client 分离，在线异步训练入口为 `train_pi_robo_async.py`，实时策略配置为 `realtime_expo_ft_pi_config.py`；实际启动需先按对应分支克隆 OpenPI 与 DROID。
 
 ## 实验与评测
 
@@ -124,13 +145,14 @@ flowchart LR
 |----|------|
 | 与 SmoothRL 并读 | [SmoothRL](./paper-smoothrl.md) 在异步环内用 \(\nabla_a Q\)；本文走 **EXPO-FT + edit + Q 选择** |
 | 与 WAM-async 并读 | [WAM 实时异步](./paper-wam-realtime-async.md) 拆融合策略；本文聚焦 **VLA + RL + 延迟** |
+| 代码入口 | 先克隆 `pd-perry/openpi` 与 `pd-perry/droid` 的 `real-time-expo-ft` 分支，再按 README 安装 server/client 环境；在线异步训练入口为 `train_pi_robo_async.py` |
 | RTC 评测 | 项目页分 **w/ RTC** 与 **w/o RTC** 报告 — 动态任务两者差距大 |
 | 数据预算 | 真机在线 RL **≤10 min** 仍可达 **97%** 量级 — 适合快速部署迭代 |
 | 视频判据 | 演示强调 **1× wall-clock**，非加速剪辑 |
 
 ## 局限与风险
 
-- **代码未发布：** 复现 edit policy 结构、Q 头与 EXPO-FT 耦合细节暂不可审计。
+- **依赖与复现：** 代码已开源，但训练依赖 OpenPI 与 DROID 的 `real-time-expo-ft` 分支、分离的 server/client Python 环境及真机 SDK；复现仍需处理较重的软硬件依赖。
 - **任务域：** 四动态 manipulation；是否泛化到 loco-manip / 长 horizon 待验证。
 - **算力与 base VLA：** 仍依赖大 VLA 慢路径；edit 再快也需等 base 提案周期。
 
