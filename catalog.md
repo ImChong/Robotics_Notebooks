@@ -2446,6 +2446,7 @@
 - [ILA：把交互潜变量作为接触丰富操作的动作](wiki/entities/paper-ila-interaction-latents-as-actions.md) — Interaction Latents as Actions（ILA）** 将运动、触觉接触和施力演化共同编码成策略的动作单元，并用共享解码器把生成的潜变量还原为可执行机器人动作。 `📅unknown` `[entity_page]`
 - [Imagine2Real](wiki/entities/paper-imagine2real-zero-shot-hoi.md) — Imagine2Real: Towards Zero-shot Humanoid-Object Interaction via Video Generative Priors**（arXiv:26 `📅unknown` `[entity_page]`
 - [Imagined Rollouts are Kinematic, Not Dynamic（长程世界模型失败诊断）](wiki/entities/paper-imagined-rollouts-kinematic-not-dynamic.md) — Imagined Rollouts are Kinematic, Not Dynamic**（*A Diagnosis of Long-Horizon World-Model Failure*， `📅unknown` `[entity_page]`
+- [A survey on imitation learning for contact-rich tasks in robotics（接触丰富任务中的模仿学习综述）](wiki/entities/paper-imitation-learning-contact-rich-tasks-survey.md) — 一句话定义：** 本文系统组织接触丰富机器人任务的模仿学习研究，沿着示教数据如何采集、算法如何学习、方法如何进入应用来梳理技术路线。 `📅unknown` `[entity_page]`
 - [The Imitator Game：用目标等价衡量模仿](wiki/entities/paper-imitator-game.md) — The Imitator Game**（*Benchmarking Robot Imitative Ability Beyond Action Prediction*，[arXiv:2608.22 `📅unknown` `[entity_page]`
 - [IMLE-VLA（arXiv:2609.10915）](wiki/entities/paper-imle-vla.md) — IMLE-VLA**（[IMLE-VLA: Fast Single-Step Action Generation for Vision-Language-Action Policies](http `📅unknown` `[entity_page]`
 - [Immersive Social VR + LLM Humanoid Teleop](wiki/entities/paper-immersive-social-vr-llm-humanoids.md) — Immersive Social Interaction with VR and LLM-Assisted Humanoids**（[arXiv:2607.07430](https://arxiv `📅unknown` `[entity_page]`
