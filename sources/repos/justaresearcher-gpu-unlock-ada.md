@@ -5,7 +5,7 @@
 - **标题：** GPU unlock Ada port
 - **类型：** repo（Linux GPU 内核模块与诊断基准）
 - **链接：** <https://github.com/JustAResearcher/gpu-unlock-ada>
-- **许可：** GPL-2.0-only（以仓库 LICENSE 为准）
+- **许可：** GPL-2.0-or-later（仓库 LICENSE 文件）
 - **入库日期：** 2026-10-25
 - **一句话说明：** 将 GPU Unlock 的预驱动 speed-select 流程移植到 RTX 4090，并提供实验性 RTX 4070 Ti SUPER 支持及寄存器/指令吞吐验证材料。
 - **代码：** <https://github.com/JustAResearcher/gpu-unlock-ada>（**已开源**）
