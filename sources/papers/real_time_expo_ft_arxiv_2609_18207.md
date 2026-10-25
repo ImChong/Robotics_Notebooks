@@ -10,11 +10,13 @@
 - **机构：** 斯坦福大学（Stanford University）
 - **作者：** Perry Dong, Kuo-Han Hung, Dorsa Sadigh, Chelsea Finn
 - **入库日期：** 2026-09-17
-- **一句话说明：** 在 EXPO-FT 上解耦慢 VLA chunk 生成与快 edit policy，用 Q 值选 chunk，实现在线 RL 微调实时 VLA；Kinetix 10/10 环境最优，真机 10 分钟数据 42%→97%。
+- **最后复核：** 2026-10-26
+- **代码：** <https://github.com/pd-perry/expo-ft>（已开源；与 EXPO-FT 共仓，Real-Time 使用 `real-time-expo-ft` 分支）
+- **一句话说明：** 在 EXPO-FT 上解耦慢 VLA chunk 生成与快 edit policy，用 Q 值选 chunk，实现在线 RL 微调实时 VLA；Kinetix 10/10 环境最优，四项真机任务平均 42%→97%。
 
 ## 开源状态
 
-- **待发布**（步骤 2.5 核查，2026-09-17）：项目页 Code 按钮为占位 `#`，无 GitHub 链接。
+- **已开源**（复核于 2026-10-26）：项目页现有 Code 链接指向 `pd-perry/expo-ft`；README 提供 Real-Time EXPO-FT 的 OpenPI 与 DROID 分支、训练入口及真机 client。
 
 ## 核心摘录
 
