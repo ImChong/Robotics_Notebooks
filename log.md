@@ -245,6 +245,11 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | 归档 SpaceX 火箭回收动力下降的一手资料
+
+- 收录 SpaceX 着陆工程师 Lars Blackmore 关于 F9R 精确着陆的技术文章，以及 SpaceX 官方 Grasshopper 垂直起降测试视频。
+- 区分 Grasshopper 悬停测试与 Falcon 9 轨道返回时的末段着陆燃烧；未将 G-FOLD 推断为 Falcon 9 实际使用算法。
+
 ## [2026-10-25] ingest | sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md — 收录 CoRL 2026 人形高速冲刺与转弯论文及实体页
 
 ## [2026-10-25] ingest | HandsOn：归档跨具身灵巧操作基准、PhysX 示范数据与开源边界
