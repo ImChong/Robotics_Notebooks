@@ -48,6 +48,14 @@
 
 ## 三、 风格对齐 (Aesthetic Refinement)
 
+- [x] 按 [redesign-skill](https://github.com/elayadesign/redesign-skill) 审核并升级（2026-10-25）：保留品牌值（`#191919` / Notion 配色 / 960px 主栏 / 系统字体栈），只套审核规则。
+    - 交互状态：全站 `:focus-visible` 焦点环（`:where()` 零特异性），搜索栏 `:focus-within` 环，按钮 / tab / chip 按压 `scale(0.98)`，各页「跳到正文」链接，补全 `prefers-reduced-motion`（平滑滚动、悬停上浮、按压、抽屉）。
+    - 表面：去掉 Hero 柔光、`.card` 与 `.section-alt` 的背景渐变（点阵纹理保留）；阴影改为 `--shadow-tint` 着色并补亮色版；修 `.card:hover` 两种主题都用亮色 accent、未定义的 `--border-color`。
+    - 动效：统一 `--ease: cubic-bezier(0.32, 0.72, 0, 1)`，`--transition` 改用它；短于 200ms 的过渡统一到 0.2s，去掉 `transition: all`；修 `var(--transition,.2s) ease` 展开后无效的两处；移动端 TOC 抽屉由 `left` 改 `transform`；入场动画 0.8s（`REVEAL_MS` 同步）。
+    - 排版：`font-weight: 820` → 700，标题 `text-wrap: balance`、正文 `pretty`，`.kpi-value` 等宽数字，字体栈去掉 Roboto / Helvetica / Arial。
+    - 完整度：新增 `404.html`（`<base>` 固定相对路径、`noindex`）；详情 / 路线页「未找到」时注入 `robots noindex`；读者可见的开发者术语改为自然文案；`graph.html` 的 `window.alert` 改页内 `role="status"` 提示；各页补 `og:image`（`assets/og-cover.png`）、`og:site_name`、`twitter:card`，无 `?id=` 参数的页面补 `og:url` 与 `canonical`。
+    - 未采纳：skill 的 Design Values（Geist、`#181818`、Hero 渐变标题、悬浮岛导航、1200px+ 容器）、字号全量吸附 Tailwind 阶梯、accent 饱和度、入场动画 64px + blur、`graph.html` 内联样式整体动效 / 配色。
+
 - [ ] **引入 Technical Blueprint 风格**：
     - [x] 背景：暗色主题底色改为 `#0d1117`（与 `graph-3d.js` 画布同色，2D/3D 切换无色差），配套调深 `--bg-alt`/`--surface-strong` `#161b22`、`--border` `#30363d`、`--border-strong` `#6e7681`、`--text` `#e6edf3`、`--text-muted` `#9ba4b0`，`theme-color` / `manifest.theme_color` 同步 `#0d1117`；全站叠加细密点阵（`--grid-size: 22px` + `--grid-dot`，`body` 背景图与 `.hero-backdrop::before` 共用同一尺寸、同为文档原点且随内容滚动，叠加不产生摩尔纹；亮色主题 `--grid-dot: transparent` 保持纯净底不变）。对比度实测（暗色）：正文 16.0:1 / 次要文字 7.5:1 / 链接 6.9:1，均高于改动前（6.2:1）。
     - [ ] 字体：标题切换为工程感更强的 `DM Mono`，正文优化衬线比例。
