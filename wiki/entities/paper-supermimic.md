@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-25
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -11,6 +11,7 @@ summary: "SuperMimic 将运动跟踪策略与一个从仿真器转移数据学�
 related:
   - ./nvidia-sonic.md
   - ./paper-twist2.md
+  - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
 sources:
