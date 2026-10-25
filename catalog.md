@@ -2322,6 +2322,7 @@
 - [Hand Visibility Detector：逐关节手部可见性](wiki/entities/paper-hand-visibility-detector.md) — Hand Visibility Detector**（*Per-Keypoint Visibility Estimation for Hands*，[arXiv:2608.11574](https `📅unknown` `[entity_page]`
 - [HandEdit（arXiv:2608.12122）](wiki/entities/paper-handedit.md) — HandEdit**（*HandEdit: A Unified Benchmark for Egocentric Human-to-Robot Dexterous Hand Image Editi `📅unknown` `[entity_page]`
 - [HandPriorScore（arXiv:2608.11769）](wiki/entities/paper-handprior-score-humanoid-dual-arm.md) — HandPriorScore**（*Policy-Induced Hand Priors in Humanoid Dual-Arm Manipulation: Diagnosing and Mit `📅unknown` `[entity_page]`
+- [HandsOn：面向泛化灵巧操作的大规模仿真基准](wiki/entities/paper-handson.md) — HandsOn**（*A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation*，[arXiv:261 `📅unknown` `[entity_page]`
 - [HapMorph：多维气动触觉属性渲染框架](wiki/entities/paper-hapmorph-pneumatic-haptic-render.md) — HapMorph**（Chen et al., Scuola Superiore Sant'Anna；[arXiv:2509.05433](https://arxiv.org/abs/2509.0 `📅unknown` `[entity_page]`
 - [硬件感知 LLM-VLM 零样本规划（arXiv:2610.14106）](wiki/entities/paper-hardware-aware-llm-vlm-zero-shot-task-planning.md) — 硬件感知 LLM-VLM 零样本规划**（*Embodied Zero-Shot Task Planning via Hardware-Aware LLM-VLM Integration for  `📅unknown` `[entity_page]`
 - [Harness Robotic OS（arXiv:2609.11225）](wiki/entities/paper-harness-robotic-os-quadruped-inspection.md) — Harness Robotic OS**（*Harness Robotic OS: A Unified Embodied-Agent Runtime for Closed-Loop Quadrup `📅unknown` `[entity_page]`
