@@ -245,6 +245,11 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | MorphMimic — 收录报告、项目页与官方实现，整理跨本体共享方法和仿真/真机评测边界
+
+- 官方代码已开源；核对其与 SuperMimic 的关系，注明基础算法为作者独立复现。
+- 归档 128,786 段公共动作评测、统一策略仿真生存率和 G1 真机演示；区分仿真结果与硬件结论。
+
 ## [2026-10-25] ingest | sources/papers/openbot_arxiv_2008_10631.md — 归档 OpenBot 手机驱动低成本轮式机器人的论文与源码，关联既有 PhoneBot 人形平台
 
 ## [2026-10-25] ingest | sources/papers/wholebodymem_arxiv_2610_31166.md — 补录 arXiv HTML v1 明示的 MBZUAI 作者单位，并同步项目页归档与 WholeBodyMem 实体标签

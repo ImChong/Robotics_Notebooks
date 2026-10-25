@@ -2749,6 +2749,7 @@
 - [单目深度估计综述：进展与机遇](wiki/entities/paper-monocular-depth-estimation-survey.md) — Monocular Depth Estimation from a Single Image: Progress and Opportunities**（[arXiv:2609.01172](ht `📅unknown` `[entity_page]`
 - [MoReFlow](wiki/entities/paper-moreflow-motion-retargeting-flow.md) — MoReFlow**（*MoReFlow: Motion Retargeting Learning through Unsupervised Flow Matching*，arXiv:[2509. `📅unknown` `[entity_page]`
 - [MorphAct：机器人策略随操作情境改变参数](wiki/entities/paper-morphact.md) — MorphAct 让 VLA 的低秩参数更新随当前情境生成，并让视觉语言侧与动作侧生成器耦合训练，以缓解共享参数在不同操作之间的梯度冲突。 `📅unknown` `[entity_page]`
+- [MorphMimic：跨人形机器人共享可微世界模型与跟踪策略](wiki/entities/paper-morphmimic.md) — MorphMimic**（*Morphology-Conditioned World Model and Policy Sharing Across Humanoids*，2026 技术报告）由加 `📅unknown` `[entity_page]`
 - [Morphology-Aware Retargeting（arXiv:2609.11357）](wiki/entities/paper-morphology-aware-retargeting-wheeled-humanoid.md) — Morphology-Aware Retargeting**（*Morphology-Aware Human Motion Retargeting for Wheeled-Humanoid Loc `📅unknown` `[entity_page]`
 - [Morphometric Imitation（人类 HOI → 零样本真机 visuomotor）](wiki/entities/paper-morphometric-imitation.md) — Morphometric Imitation**（*From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuom `📅unknown` `[entity_page]`
 - [MOSS Transcribe Diarize（长时多说话人 SATS）](wiki/entities/paper-moss-transcribe-diarize.md) — MOSS Transcribe Diarize**（*MOSS Transcribe Diarize Technical Report*，[arXiv:2601.01554](https://ar `📅unknown` `[entity_page]`
