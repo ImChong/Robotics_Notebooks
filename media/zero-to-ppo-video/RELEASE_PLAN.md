@@ -1,6 +1,6 @@
 # 视频发布清单：从头学人形机器人算法 · 零基础篇
 
-按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-25 已发布 001–002；下一集为 003。
+按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-25 已发布 001–003；下一集为 004。
 
 - 🎬 `<ep>`：本目录已有分镜与旁白源稿（`episodes/<ep>`），成片用 `render.mjs` 渲染（见 [README](README.md)）
 - 🆕：还没有视频，要新做
@@ -24,7 +24,7 @@
 - [x] 002 [为什么从人形 / 双足学起](../../wiki/entities/humanoid-robot.md) 🎬 `ep002` — 只讲人形的四个难点：高自由度、浮动基、接触切换、强不稳定；§L−1「为什么以"人形 / 双足"为主载体」。素材 c02「为什么以人形 / 双足为主载体」。〔取舍〕§L−1 没有自测题，片尾也不出题；路线原文每个难点只有一句，片中展开的说法另有出处：浮动基「只能靠脚踩地借力」见 [浮动基动力学](../../wiki/concepts/floating-base-dynamics.md)，四足站着更稳见 [四足机器人](../../wiki/entities/quadruped-robot.md)，轮式「推一把不翻」见 [人形与其他机器人的区别](../../wiki/concepts/humanoid-vs-other-robots.md)
   - 封面：**人形难点** ｜ 多关节、浮动基、换脚、易倒 ｜ 把它控好，换到机械臂、四足几乎都更简单
   - 信息框：主路线入门：为什么以人形为主载体 ／ Robotics Notebooks · 不用数学 · 不用代码
-- [ ] 003 [向量与矩阵：机器人里的线性代数](../../wiki/entities/linear-algebra-curriculum.md) 🆕 — 只讲向量、矩阵乘法在描述位置和变换时的含义；§L0 核心问题「线性代数在机器人里到底怎么用」
+- [x] 003 [向量与矩阵：机器人里的线性代数](../../wiki/entities/linear-algebra-curriculum.md) 🎬 `ep003` — 只讲向量、矩阵乘法在描述位置和变换时的含义；§L0 核心问题「线性代数在机器人里到底怎么用」。〔取舍〕§L0 的自测题都在讲旋转与 SE(3)（留给 005–007），本集不出自测题；本集不用代码，最小例子是当场手算一次矩阵乘向量：UR5 肩关节转 90°，手从 (3, 2) 转到 (−2, 3)，按列、按横排各算一遍，代码留给 004。「线性变换」用策展页推荐的 3Blue1Brown 几何说法（原点不动，格子线变完仍直、平行、等距）；片尾一幕点到后面怎么用：旋转矩阵 005、4×4 齐次变换 007、雅可比 013
   - 封面：**向量与矩阵** ｜ 位置是向量，变换是矩阵 ｜ 位置、朝向、速度、力，后面全用它们来写
   - 信息框：数学打底：机器人里的线性代数 ／ Robotics Notebooks · 高中数学 · 不用代码
 - [ ] 004 用 Python / NumPy 写第一段矩阵代码 🆕 — 只讲把 003 的运算写成 NumPy 代码并跑通；§L0 前置知识「会写 Python」、学完输出「能用 NumPy 写简单矩阵运算」。〔取舍〕先讲概念再上代码
