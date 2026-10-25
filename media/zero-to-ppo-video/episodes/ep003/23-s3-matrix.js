@@ -79,7 +79,7 @@
       var e1 = E.vec(s, E.GOOD, 5, { head: 16 }), e2 = E.vec(s, E.WARN, 5, { head: 16 });
       var tips = [E.GOOD, E.WARN].map(function (c) { return K.paint(E.el('circle', { r: 10, fill: 'none', 'stroke-width': 3 }, s), null, c); });
       var p01 = P(0, 1), pm10 = P(-1, 0);
-      var lab1 = halo(E.txt(s, p01[0] + 12, p01[1] + 2, '(0, 1)', 22, E.GOOD, 'start', 700));
+      var lab1 = halo(E.txt(s, p01[0], p01[1] - 16, '(0, 1)', 22, E.GOOD, 'middle', 700));   // 写在箭头尖正上方：连到矩阵第一列的虚线从它下面过
       var lab2 = halo(E.txt(s, pm10[0], pm10[1] - 16, '(−1, 0)', 22, E.WARN, 'middle', 700));
 
       /* ── 右栏：句 1 的「矩阵 → 变换」、句 2 的三种变换、句 3 的共同点、句 4–5 的两根小箭头、句 6 的矩阵 ── */
@@ -107,7 +107,9 @@
       var colHi = [E.GOOD, E.WARN].map(function (c) { return K.paint(E.el('rect', { rx: 8, 'stroke-width': 2.5 }, s), E.tint(c, 18, 'var(--demo-surface)'), c); });
       var mat = E.tex(s, MX, MCY + 0.34 * MS, E.mat2([0, -1, 1, 0], [E.HEX.good, E.HEX.warn]), MS, E.INK);
       var matLabel = E.txt(s, MX, LABEL_Y, '转 90° 的矩阵', 22, E.VIOLET, 'middle', 900);
-      var fly = [E.col([0, 1], E.HEX.good), E.col([-1, 0], E.HEX.warn)].map(function (tex) { return E.tex(s, MX, MCY, tex, 30); });
+      // 飞进矩阵的只是两列数字（不带括号、字号同矩阵），落点正好是矩阵里那一列，换成整个矩阵时不会叠出两层
+      function numCol(xs, hex) { return '\\begin{matrix}' + xs.map(function (x) { return '\\textcolor{' + hex + '}{' + x + '}'; }).join('\\\\') + '\\end{matrix}'; }
+      var fly = [numCol([0, 1], E.HEX.good), numCol([-1, 0], E.HEX.warn)].map(function (tex) { return E.tex(s, MX, MCY, tex, MS); });
 
       // 画面坐标 ↔ 分镜坐标：KaTeX 排出来的列在哪，要从页面上量（fitStory 改 viewBox 也不影响分镜坐标）
       function toSvg(cx, cy) { var p = s.createSVGPoint(); p.x = cx; p.y = cy; return p.matrixTransform(s.getScreenCTM().inverse()); }
@@ -217,19 +219,20 @@
           /* 句 5：落点坐标 33.85「零、一」、37.29「负一、零」；句 6 开头 39.5「这两个新位置」鼓一下 */
           var pb = bump(st, 39.45, 0.7);
           E.op(lab1, f(st, 33.75, 0.3)); E.op(lab2, f(st, 37.2, 0.3));
-          E.scaleAt(lab1, p01[0] + 40, p01[1] - 6, 1 + 0.15 * pb);
+          E.scaleAt(lab1, p01[0], p01[1] - 22, 1 + 0.15 * pb);
           E.scaleAt(lab2, pm10[0], pm10[1] - 22, 1 + 0.15 * pb);
 
           /* 句 6：40.6「竖着排成两列」两个坐标飞进矩阵的两列，41.4 矩阵出来；43.2「矩阵」紫框 +「转 90° 的矩阵」；
              44.25「每一列」第一列框亮、虚线连到往右那根的箭头尖，44.85 第二列；46.5「落在哪」两个箭头尖亮一圈 */
           var M = st >= 39 ? measure() : null;
-          var showMat = f(st, 41.4, 0.35);
+          var showMat = f(st, 41.55, 0.25);   // 两列都落定以后矩阵（括号）才出来
           E.op(mat, showMat.toFixed(3));
           fly.forEach(function (n, i) {
             var p = f(st, 40.6 + 0.12 * i, 0.8), a = center(i ? lab2 : lab1);
             var b = M ? [(M.cols[i].x0 + M.cols[i].x1) / 2, (M.cols[i].y0 + M.cols[i].y1) / 2] : [MX + (i ? 24 : -24), MCY];
-            n.setX(a[0] + (b[0] - a[0]) * p); n.setY(a[1] + (b[1] - a[1]) * p + 0.34 * 30);
-            E.op(n, (f(st, 40.45 + 0.12 * i, 0.2) * (1 - f(st, 41.5, 0.3))).toFixed(3));
+            n.setX(a[0] + (b[0] - a[0]) * p); n.setY(a[1] + (b[1] - a[1]) * p - 56 * Math.sin(Math.PI * p) + 0.34 * MS);   // 往上拱着飞，不从 x 轴的「x」上划过
+            // 起飞后才显出来（不和原来的坐标标签叠在一起）；落定、矩阵整个出来以后再收掉
+            E.op(n, (f(st, 40.7 + 0.12 * i, 0.25) * (1 - f(st, 41.8, 0.05))).toFixed(3));
           });
           var pf = f(st, 43.2, 0.35);
           if (M) {

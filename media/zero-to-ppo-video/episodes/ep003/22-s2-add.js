@@ -190,7 +190,7 @@
           var ps = K.ease(K.seg(st, SUM[0], SUM[1]));
           if (ps > 0) { var e = lerp(o0, s3, ps); arS.set(o0[0], o0[1], e[0], e[1]); } else arS.set(0, 0, 0, 0);
           arS.line.style.strokeWidth = (5 + 3 * bell(st, PULSE, PULSE + 0.6)).toFixed(2);
-          E.op(ans, fade(st, ANS, 0.3));
+          E.op(ans, fade(st, ANS, 0.3) * (1 - fade(st, DIM, 0.3)));
 
           /* 右边算式：17.95 出现；19.04「对应」行标签；两排依次垫亮黄；数乘时变暗 */
           E.op(eqG, (fade(st, EQ, 0.4) * (1 - 0.65 * fade(st, DIM + 0.2, 0.4)) * (1 - fade(st, CLEAR, 0.4))).toFixed(3));

@@ -171,7 +171,7 @@
 
   /* ── 坐标网格（数学坐标：x 往右、y 往上）：
      o = { ox, oy：原点在画面里的位置；u：一格多少 px；x0, x1, y0, y1：画出的整数范围（含两端）；axes（默认 true）：画 x / y 轴与箭头；
-           labels（默认 true）：轴端写 x、y；ticks：轴上标 1、2、3…（默认 false）；color：格线颜色 }
+           labels（默认 true）：轴端写 x、y（y 写在箭头尖右边）；ticks：轴上标 1、2、3…（默认 false）；color：格线颜色 }
      返回 { g, P(x, y) → [X, Y]：数学坐标 → 画面坐标, box：网格外框（画面坐标 [x0, y0, x1, y1]）,
             warp：一层可变形的格线（默认不显示），warp.set(m) 按矩阵 m = [a, b, c, d]（即 [[a, b], [c, d]]）变形，变完仍裁在外框里；
             warp.g / warp.lines 可改颜色、透明度 } ── */
@@ -210,7 +210,7 @@
       ax.set(box[0], oy, box[2] + 14, oy); ay.set(ox, box[3], ox, box[1] - 14);
       if (o.labels !== false) {
         txt(axes, box[2] + 22, oy + 8, 'x', 24, E.INK2, 'start', 700);
-        txt(axes, ox, box[1] - 24, 'y', 24, E.INK2, 'middle', 700);
+        txt(axes, ox + 12, box[1] - 8, 'y', 24, E.INK2, 'start', 700);   // 写在箭头尖右边，不往上多占一行
       }
       if (o.ticks) {
         for (x = o.x0; x <= o.x1; x++) if (x) txt(axes, P(x, 0)[0], oy + 24, String(x).replace('-', '−'), 18, E.MUT);

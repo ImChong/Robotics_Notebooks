@@ -4,6 +4,7 @@
 //                                   3:4 置顶裁剪后目录字底不过 1405（不需要 build.py）
 // 每 0.5 s 抽一帧，用 DOM 量各块位置：可见块之间不许重叠、不许压字幕、片头 / 片尾相邻块间距 ≥ 10px，要读的东西必须在安全区 330–1440 之内
 // （视频号 9:16 画面会被裁成居中的 6:7，底部还压着作者、标题、转赞评与浮评）。改自论文系列的 check_layout.mjs。
+// 分镜 / 片头主图里面也查：看得见的字、公式、图形、机器人不许超出画面被裁掉，字和字（含公式）不许互相压住。
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import { serve } from './serve.mjs';
@@ -127,6 +128,71 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
       if (e && vis(e) && e.scrollWidth > e.clientWidth + 2) out.push(s + ' wider than the frame');
     }
     if (subR && (subR.top < 328 || subR.bottom > 1442)) out.push('subtitle outside safe zone (' + Math.round(subR.top) + '–' + Math.round(subR.bottom) + ')');
+    // 分镜 / 主图的 svg 里面：舞台框（圆角留 2px）与 svg 视口的交集就是看得见的范围
+    const host = sc.querySelector('.stage > svg, .hero > svg');
+    if (host) {
+      const fr = host.parentElement.getBoundingClientRect(), sv = host.getBoundingClientRect();
+      const view = { left: Math.max(fr.left + 2, sv.left), right: Math.min(fr.right - 2, sv.right), top: Math.max(fr.top + 2, sv.top), bottom: Math.min(fr.bottom - 2, sv.bottom) };
+      const alpha = (n) => {
+        let a = 1;
+        for (let e = n; e && e !== host.parentElement; e = e.parentElement) {
+          const cs = getComputedStyle(e);
+          if (cs.display === 'none' || cs.visibility === 'hidden') return 0;
+          a *= +cs.opacity;
+        }
+        return a;
+      };
+      const cut = (r) => Math.max(view.left - r.left, r.right - view.right, view.top - r.top, r.bottom - view.bottom);
+      const name = (n) => (n.textContent || '').trim().slice(0, 14) || n.tagName;
+      // 字的外框按行高算，比字形高出一截：上下各收 15% 再比（只看墨迹会不会被裁、会不会碰到）
+      const ink = (r) => ({ left: r.left, right: r.right, top: r.top + 0.15 * r.height, bottom: r.bottom - 0.15 * r.height });
+      // 图形与 svg 字：机器人是 robot3d.js 跟着模型投影外框走的透明 rect（后面紧跟画布的 foreignObject）
+      for (const n of host.querySelectorAll('rect, circle, ellipse, line, path, polyline, polygon, text')) {
+        if (n.closest('defs, mask, clipPath, marker')) continue;
+        const r = n.getBoundingClientRect();
+        if (!(r.width > 0 || r.height > 0) || alpha(n) < 0.1) continue;
+        const robot = n.tagName === 'rect' && n.nextElementSibling && n.nextElementSibling.tagName === 'foreignObject' && n.getAttribute('fill') === 'none';
+        const d = cut(n.tagName === 'text' ? ink(r) : r);
+        if (d > 2) out.push(`${robot ? 'robot' : n.tagName + ' "' + name(n) + '"'} cut off by ${Math.round(d)}px`);
+      }
+      // 字块：svg 的 text 各算一块；KaTeX 公式按文字逐段量（不算 MathML 副本），同一条公式里的段不互查
+      const words = [];
+      for (const n of host.querySelectorAll('text')) {
+        const r = n.getBoundingClientRect(), a = alpha(n);
+        if (r.width > 0 && a >= 0.5 && n.textContent.trim()) words.push({ key: n, r: ink(r), s: name(n) });
+      }
+      const g = document.createRange();
+      for (const fo of host.querySelectorAll('foreignObject')) {
+        const kh = fo.querySelector('.katex-html');
+        if (!kh || alpha(fo) < 0.1) continue;
+        // 公式整体（括号是 svg / 带边框的 span，取 .katex-html 里所有元素外框的并集）不许被裁掉
+        let u = null;
+        for (const e of [kh, ...kh.querySelectorAll('*')]) {
+          const r = e.getBoundingClientRect();
+          if (!(r.width > 0 && r.height > 0)) continue;
+          u = u ? { left: Math.min(u.left, r.left), right: Math.max(u.right, r.right), top: Math.min(u.top, r.top), bottom: Math.max(u.bottom, r.bottom) } : { left: r.left, right: r.right, top: r.top, bottom: r.bottom };
+        }
+        const tex = (fo.texSource || fo.textSource || kh.textContent).slice(0, 24);
+        if (u && cut(u) > 2) out.push(`formula "${tex}" cut off by ${Math.round(cut(u))}px`);
+        if (alpha(fo) < 0.5) continue;
+        const walk = document.createTreeWalker(kh, NodeFilter.SHOW_TEXT);
+        for (let t = walk.nextNode(); t; t = walk.nextNode()) {
+          if (!t.nodeValue.trim()) continue;
+          g.selectNodeContents(t);
+          for (const r of g.getClientRects()) if (r.width > 0) words.push({ key: fo, r: ink(r), s: tex });
+        }
+      }
+      const seen = new Set();
+      for (let i = 0; i < words.length; i++) {
+        for (let j = i + 1; j < words.length; j++) {
+          const a = words[i], c = words[j];
+          if (a.key === c.key) continue;
+          const w = Math.min(a.r.right, c.r.right) - Math.max(a.r.left, c.r.left), h = Math.min(a.r.bottom, c.r.bottom) - Math.max(a.r.top, c.r.top);
+          const msg = `"${a.s}" x "${c.s}"`;
+          if (w > 3 && h > 3 && !seen.has(msg)) { seen.add(msg); out.push('text overlap ' + msg); }
+        }
+      }
+    }
     return out;
   }, [t, BLOCKS, KEYS]);
   for (const x of r) if (!issues.has(x)) issues.set(x, Math.round(t * 10) / 10);

@@ -12,14 +12,14 @@
   var E = window.EP003, K = E.K;
   var TAU = Math.PI * 2;
   var R = [0, -1, 1, 0], S = [2, 0, 0, 1];
-  var U = 40, OX = 180, OY = 330;                           // 网格：一格 40 px，原点 (180, 330)
+  var U = 38, OX = 180, OY = 330;                           // 网格：一格 38 px，原点 (180, 330)；右边的「x」和第二行乘式之间留出空
   var START = [3, 2];
   var ROT_A = 2.91, STR_A = 4.19, MUL = 6.94, MERGE = 7.8, JUMP = 9.24, FIRST = 11.21, RIGHT = 11.9;
   var HEAD_B = 14.0, STR_B = 15.24, ROT_B = 16.08, LAND_B = 17.61, DIFF = 18.04, NEQ = 18.48;
   var ORDER = 21.9, SWAP = 22.85;
   var ROBOT = 25.0, CHAIN = 25.59, TAGS = [27.1, 27.45, 27.8, 28.15], HAND = 29.85, BUNCH = 31.57, PROD = 32.36, EP11 = 33.75;
   // 右边两行乘式：「拉」「转」「=」「合成」四列的 x；第一行（先转再拉）中心 y 124，第二行（先拉再转）中心 y 334
-  var COL = [522, 612, 670, 738], ROW_A = 124, ROW_B = 334, MS = 30, MID = 644;   // COL 只是初值，layout() 按实际宽度重排
+  var COL = [522, 612, 670, 738], ROW_A = 124, ROW_B = 334, MS = 26, MID = 620, XMAX = 786;   // COL 只是初值，layout() 按实际宽度重排；一行右缘不过 XMAX（画面宽 800）
   var LINKS = ['shoulder_link', 'upper_arm_link', 'forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'];
 
   function bell(st, a, b) { var u = K.seg(st, a, b); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
@@ -67,12 +67,15 @@
       var vecB = E.vec(partA, E.HI, 4), vecA = E.vec(partA, E.ACC, 4);
       var dotB = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, partA), E.HI, E.S1);
       var dotA = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, partA), E.ACC, E.S1);
-      var lab0 = E.txt(partA, at(START)[0] + 12, at(START)[1] - 12, '(3, 2)', 20, E.INK, 'start', 700);
-      var labA = E.txt(partA, at(END_A)[0] + 8, at(END_A)[1] - 25, '(−4, 3)', 20, E.ACC, 'start', 900);
-      var labB = E.txt(partA, at(END_B)[0] - 22, at(END_B)[1] + 7, '(−2, 6)', 20, E.HI, 'end', 900);   // 放在点左边：右边是转过来的弧线
+      // 坐标标签垫一圈底色描边（paint-order: stroke），「一步」的虚线弧落到 (−4, 3) 时从字后面过
+      function halo(n) { n.style.stroke = E.S1; n.style.strokeWidth = 6; n.style.paintOrder = 'stroke'; n.style.strokeLinejoin = 'round'; return n; }
+      var lab0 = halo(E.txt(partA, at(START)[0] + 12, at(START)[1] - 12, '(3, 2)', 20, E.INK, 'start', 700));
+      var labA = halo(E.txt(partA, at(END_A)[0] + 8, at(END_A)[1] - 25, '(−4, 3)', 20, E.ACC, 'start', 900));
+      var labB = halo(E.txt(partA, at(END_B)[0] - 22, at(END_B)[1] + 7, '(−2, 6)', 20, E.HI, 'end', 900));   // 放在点左边：右边是转过来的弧线
       var ringA = K.paint(E.el('circle', { cx: at(END_A)[0], cy: at(END_A)[1], r: 17, fill: 'none', 'stroke-width': 3 }, partA), null, E.ACC);
       var ringB = K.paint(E.el('circle', { cx: at(END_B)[0], cy: at(END_B)[1], r: 17, fill: 'none', 'stroke-width': 3 }, partA), null, E.HI);
-      var neqPts = E.txt(partA, (at(END_A)[0] + at(END_B)[0]) / 2 - 6, (at(END_A)[1] + at(END_B)[1]) / 2 + 12, '≠', 38, E.BAD, 'middle', 900);
+      var NEQ_AT = at([-3.3, 5]);                                // 两个终点左上方的空白处，不压「(−4, 3)」和黄色向量
+      var neqPts = E.txt(partA, NEQ_AT[0], NEQ_AT[1] + 13, '≠', 38, E.BAD, 'middle', 900);
 
       /* ── 右边两行乘式 ── */
       function mat(cx, cy, tex, color) {
@@ -101,7 +104,7 @@
         function w(fo) { var n = fo.texBox.querySelector('.katex') || fo.texBox; return n.getBoundingClientRect().width * k; }
         var ws = [w(r.m[0].fo), w(r.m[1].fo), r.eq.getBBox().width, w(r.res.fo)];
         if (!(ws[0] > 0 && ws[3] > 0)) return;
-        var gaps = [4, 8, 8], tot = ws.reduce(function (a, b) { return a + b; }, 0) + 20, x = MID - tot / 2;
+        var gaps = [4, 8, 8], tot = ws.reduce(function (a, b) { return a + b; }, 0) + 20, x = Math.min(MID - tot / 2, XMAX - tot);
         ws.forEach(function (wi, i) { r.x[i] = x + wi / 2; x += wi + (gaps[i] || 0); });
         r.m[0].fo.setX(r.x[0]); r.m[1].fo.setX(r.x[1]); r.eq.setAttribute('x', r.x[2].toFixed(1)); r.res.fo.setX(r.x[3]);
         r.labels[0].setAttribute('x', r.x[0].toFixed(1)); r.labels[1].setAttribute('x', r.x[1].toFixed(1)); r.labels[2].setAttribute('x', r.x[3].toFixed(1));
@@ -118,10 +121,10 @@
       E.txt(neqRow, MID - 68, 230, '拉·转', 24, E.ACC, 'middle', 900);
       E.txt(neqRow, MID, 232, '≠', 32, E.BAD, 'middle', 900);
       E.txt(neqRow, MID + 68, 230, '转·拉', 24, E.HI, 'middle', 900);
-      var swap = E.el('path', { d: 'M 574 244 Q 630 270 686 244', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, partA);
+      var swap = E.el('path', { d: 'M ' + (MID - 56) + ' 244 Q ' + MID + ' 270 ' + (MID + 56) + ' 244', fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, partA);
       K.paint(swap, null, E.INK2);
       var swapHeads = E.el('g', {}, partA);
-      [[574, 244, 205], [686, 244, -25]].forEach(function (h) {   // 两端各一个小三角：⇄
+      [[MID - 56, 244, 205], [MID + 56, 244, -25]].forEach(function (h) {   // 两端各一个小三角：⇄
         var a = h[2] * Math.PI / 180, L = 9, W = 5.4;
         K.paint(E.el('path', { d: 'M ' + h[0] + ' ' + h[1] + ' L ' + (h[0] - L * Math.cos(a) + W * Math.sin(a)).toFixed(1) + ' ' + (h[1] - L * Math.sin(a) - W * Math.cos(a)).toFixed(1) +
           ' L ' + (h[0] - L * Math.cos(a) - W * Math.sin(a)).toFixed(1) + ' ' + (h[1] - L * Math.sin(a) + W * Math.cos(a)).toFixed(1) + ' Z' }, swapHeads), E.INK2);
@@ -217,7 +220,7 @@
           var ca = fade(st, DIFF, 0.3), cb = fade(st, DIFF + 0.2, 0.3);
           ringA.setAttribute('r', (17 + 8 * bell(st, DIFF, DIFF + 0.6)).toFixed(2)); E.op(ringA, ca);
           ringB.setAttribute('r', (17 + 8 * bell(st, DIFF + 0.2, DIFF + 0.8)).toFixed(2)); E.op(ringB, cb);
-          E.pop(neqPts, (at(END_A)[0] + at(END_B)[0]) / 2 - 6, (at(END_A)[1] + at(END_B)[1]) / 2, fade(st, NEQ, 0.3), 0.5);
+          E.pop(neqPts, NEQ_AT[0], NEQ_AT[1], fade(st, NEQ, 0.3), 0.5);
 
           /* ③ 21.9「顺序」两行之间出「拉·转 ≠ 转·拉」；22.85「不能随便交换」交换弧线、23.1 打红 × */
           E.pop(neqRow, MID, 222, fade(st, ORDER, 0.3), 0.8);
