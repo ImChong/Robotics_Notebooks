@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-25
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
@@ -28,6 +28,7 @@ related:
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
   - ../entities/paper-egophi.md
+  - ../entities/paper-imitation-learning-contact-rich-tasks-survey.md
   - ../entities/paper-veragmil.md
   - ../entities/paper-imitator-game.md
   - ../entities/paper-host-one-shot-human-video.md
@@ -71,6 +72,7 @@ sources:
   - ../../sources/papers/last_hd_arxiv_2606_23685.md
   - ../../sources/repos/robot_lab.md
   - ../../sources/papers/taco_tactile_sensor_benchmark_arxiv_2605_21976.md
+  - ../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md
   - ../../sources/sites/xyzcorp-deux.md
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
   - ../../sources/papers/speedtuning_arxiv_2608_09138.md
@@ -202,6 +204,7 @@ flowchart TD
 
 ### 策略结构与训练系统
 
+- [接触丰富任务中的模仿学习综述](../entities/paper-imitation-learning-contact-rich-tasks-survey.md) — 从示教模态、采集方式、学习范式到工业/家庭/医疗应用，梳理接触任务 IL 的研究版图。
 - [HTD](./humanoid-transformer-touch-dreaming.md)：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
 - [JEPA Policy](../entities/paper-jepa-policy.md)：成对监督 **动作块 + 未来视觉表征** 的扩散-free MIP；共享 Transformer 两次前向；仿真九任务 **83.0%** 均值、相对 100-step Diffusion Policy **33×** 决策加速（arXiv:2609.09630；**已开源**）
 - [InstantMimic](../entities/paper-instantmimic.md)：GPU-native 整环训练系统，标准动作跟踪 **秒级** 收敛、AMASS **37.4 h→约 30 min**（arXiv:2609.09821；**待发布**）

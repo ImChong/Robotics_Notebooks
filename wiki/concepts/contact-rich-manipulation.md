@@ -42,6 +42,7 @@ related:
   - ../methods/tactile-impedance-control.md
   - ../entities/paper-ila-interaction-latents-as-actions.md
   - ../entities/paper-accrue-continual-off-policy-rl.md
+  - ../entities/paper-imitation-learning-contact-rich-tasks-survey.md
 sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
@@ -57,6 +58,7 @@ sources:
   - ../../sources/papers/robot_juggling_arxiv_2608_26800.md
   - ../../sources/papers/fa_rdp_arxiv_2607_28596.md
   - ../../sources/papers/distributed_whole_arm_interaction_soft_robot_arxiv_2608_30773.md
+  - ../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -149,6 +151,7 @@ sources:
 - [SoftVTBench](../entities/paper-softvtbench.md) — **可变形过程安全评测**：Goal vs Safety Success；FEM 特权态暴露过压「虚假成功」，触觉主要抬高 Safety。
 - [Distributed Whole-Arm Interaction](../entities/paper-distributed-whole-arm-interaction-soft-robot.md) — 软臂用嵌入式 IMU 本体感觉历史，从交互中推断物体并组织全臂包裹抓取（arXiv:2608.30773）。
 - [Flying Knots](../entities/paper-flying-knots.md) — 绳段 **自碰撞（critical point）** 的动态操作；用 **任务级 ILC + 逆模型 QP** 而非阻抗执行层直接闭环。
+- [接触丰富任务中的模仿学习综述](../entities/paper-imitation-learning-contact-rich-tasks-survey.md) — 汇总接触任务的示教采集、视触觉/力觉模态与 IL 方法，补充本页的接触控制视角。
 - [Robot Juggling / AthenaZero](../entities/paper-robot-juggling-athenazero.md) — 多指 **抛/接间歇接触**；真机 **正则化记忆学习** 修正落点，**MRS** 保证连续动态动作不撞限位（arXiv:2608.26800；未开源）
 - [Project SuperDex](../entities/project-superdex.md) — Meta **接触优先物理 + Studio 资产 + Lab RL** 的灵巧操作全栈平台（已开源；Teleop 计划 Q4 2026）。
 - [ArtManip](../entities/paper-artmanip.md) — **铰接物体手内操作**：在自由漂浮基座上 **抓稳 + 推动内部关节** 的双目标耦合；程序化功能抓取 + Teacher–Student RL（[ArtGym](https://github.com/youngcv/artgym) 已开源）。
@@ -207,6 +210,8 @@ sources:
 - [DAPL 杂乱场景外在灵巧](../entities/paper-dapl-extrinsic-dexterity-clutter.md)
 - [PRISM](../entities/paper-prism.md) — 无 force/触觉输入的多项式本体柔顺；LIBERO 接触力曲线（arXiv:2607.23473）
 
+
+- [接触丰富任务中的模仿学习综述（SAGE / IJRR）](../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md)
 
 ## 推荐继续阅读
 
