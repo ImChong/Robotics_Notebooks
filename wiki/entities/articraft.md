@@ -8,6 +8,7 @@ related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
   - ./paper-physforge-physics-grounded-3d-assets.md
+  - ./artisan.md
   - ./physx-omni.md
   - ./urdf-studio.md
   - ./cad-skills.md
@@ -92,6 +93,7 @@ flowchart TB
 - [MuJoCo](./mujoco.md) — 常见刚体/关节仿真后端之一；项目页演示强调物理与 VR 交互叙事。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。
+- [Artisan](./artisan.md) — 在多智能体程序化生成链路中加入独立 Review 与物理仿真反馈，和 Articraft 形成直接方法对照。
 - [PhysX-Omni](./physx-omni.md) — **VLM + 模板 RLE + TRELLIS** 统一三类物理 3D 与 **PhysXVerse** 数据引擎；项目页亦列 Articraft 等为生成对比基线。
 - [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式纹理部件生成**；共享骨干生态但不含关节/物理仿真字段。
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — 同属 **agentic VLM** 谱系，但单位是 **交互 episode→MuJoCo 孪生**，而非可关节网格资产库。
