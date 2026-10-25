@@ -159,7 +159,7 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
       const words = [];
       for (const n of host.querySelectorAll('text')) {
         const r = n.getBoundingClientRect(), a = alpha(n);
-        if (r.width > 0 && a >= 0.5 && n.textContent.trim()) words.push({ key: n, r: ink(r), s: name(n) });
+        if (r.width > 0 && a >= 0.5 && n.textContent.trim()) words.push({ key: n, r: ink(r), s: name(n), g: n.textContent.trim() });
       }
       const g = document.createRange();
       for (const fo of host.querySelectorAll('foreignObject')) {
@@ -179,7 +179,7 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         for (let t = walk.nextNode(); t; t = walk.nextNode()) {
           if (!t.nodeValue.trim()) continue;
           g.selectNodeContents(t);
-          for (const r of g.getClientRects()) if (r.width > 0) words.push({ key: fo, r: ink(r), s: tex });
+          for (const r of g.getClientRects()) if (r.width > 0) words.push({ key: fo, r: ink(r), s: tex, g: t.nodeValue.trim() });
         }
       }
       const seen = new Set();
@@ -187,6 +187,8 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         for (let j = i + 1; j < words.length; j++) {
           const a = words[i], c = words[j];
           if (a.key === c.key) continue;
+          // 同一个字落在同一处（飞过去的数字交接给公式里的那个数）：叠在一起也看不出两层
+          if (a.g === c.g && Math.abs(a.r.left + a.r.right - c.r.left - c.r.right) < 8 && Math.abs(a.r.top + a.r.bottom - c.r.top - c.r.bottom) < 8) continue;
           const w = Math.min(a.r.right, c.r.right) - Math.max(a.r.left, c.r.left), h = Math.min(a.r.bottom, c.r.bottom) - Math.max(a.r.top, c.r.top);
           const msg = `"${a.s}" x "${c.s}"`;
           if (w > 3 && h > 3 && !seen.has(msg)) { seen.add(msg); out.push('text overlap ' + msg); }
