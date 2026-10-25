@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, motion-tracking, scaling-law, transformer, ppo, unitree-g1, isaac-lab, cuhk, sjtu, zju, pku, tsinghua, galbot, shanghai-ai-lab, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-25
 arxiv: "2607.15163"
 venue: "arXiv 2026"
 related:
@@ -23,6 +23,7 @@ sources:
   - ../../sources/papers/scaling_bfm_arxiv_2607_15163.md
   - ../../sources/sites/scalebfm-github-io.md
   - ../../sources/repos/scalebfm.md
+  - ../../sources/repos/scalebfm-plus.md
 summary: "ScaleBFM（arXiv:2607.15163）系统给出人形 BFM 规模化配方：全局坐标系 integrated whole-body motion tracking + on-policy rollout 数量与参考运动多样性协同 + Humanoid Transformer（3M 参数）；Unitree G1 真机 50 Hz，whole-body 模式相对 SONIC 等基线 G-MPKPE 最高降约 82%（global）、L-MPKPE 降 >10%（local）。"
 ---
 
@@ -151,7 +152,7 @@ flowchart TB
 
 - **训练：** IsaacLab（Unitree G1, 29 DoF）；评测 MuJoCo sim-to-sim。
 - **真机：** G1 + 板载/外接 GPU；Wi-Fi TCP 缓冲带时间戳的流式控制信号；八模式可 **在线切换**。
-- **开源（截至 2026-07-18）：** 项目页与 [GitHub `zengweishuai/ScaleBFM`](https://github.com/zengweishuai/ScaleBFM) 已上线，**代码待发布** — README 公告 **2026-07-26 前** 逐步释出重定向、训练、部署；归类 **部分开源 / 待发布**。论文正文亦写将 open-source all resources。
+- **开源（截至 2026-10-25）：** 项目页链接的上游仓库已公开 ScaleRetarget、ScaleTrack 与 ScaleBridge 的代码和指南。用户提供的 fork [`Hxxxz0/ScaleBFM_Plus`](https://github.com/Hxxxz0/ScaleBFM_Plus) 还记录 SuperMimic-style 学习世界模型训练、32 步 imagined BPTT，以及 M checkpoint / ONNX 导出；其约 26× 训练速度和与 ScaleBFM-M 持平的跟踪结果是 fork 维护者报告，不是论文原文结果。
 
 ## 常见误区或局限
 
@@ -177,6 +178,7 @@ flowchart TB
 - [sources/papers/scaling_bfm_arxiv_2607_15163.md](../../sources/papers/scaling_bfm_arxiv_2607_15163.md)
 - [sources/sites/scalebfm-github-io.md](../../sources/sites/scalebfm-github-io.md)
 - [sources/repos/scalebfm.md](../../sources/repos/scalebfm.md)
+- [sources/repos/scalebfm-plus.md](../../sources/repos/scalebfm-plus.md)
 - Zeng, Yin, Niu et al. *Scaling Behavior Foundation Model for Humanoid Robots*. arXiv:2607.15163, 2026. <https://arxiv.org/abs/2607.15163>
 
 ## 推荐继续阅读
