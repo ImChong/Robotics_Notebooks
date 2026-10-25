@@ -245,6 +245,10 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | Artisan
+
+- 收录 Artisan 论文、项目主页、官方代码和 benchmark 数据入口；建立统一项目实体页，归纳其多智能体资产生成与物理仿真验证流程。
+
 ## [2026-10-25] ingest | NVIDIA SimReady Assets — 归档 Hugging Face 数据集规模与开放边界
 
 - 核对 NVIDIA 的 Hugging Face 数据集页、SimReady Central 公告及官方文档。
