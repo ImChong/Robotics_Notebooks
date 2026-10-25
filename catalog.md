@@ -1037,6 +1037,7 @@
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
 - [OWASP MAS（Mobile Application Security）](wiki/entities/owasp-mas.md) — OWASP Mobile Application Security (MAS)** 是 OWASP 旗舰项目，用 **MASVS**（该满足哪些控制）、**MASWE**（常见弱点是什么）和  `📅unknown` `[entity_page]`
 - [p5.js](wiki/entities/p5js.md) — p5.js** 是 Processing 生态中的浏览器端创意编程库，让 JavaScript 草图通过逐帧绘制、输入事件和图形 API 构成交互式网页作品。 `📅unknown` `[entity_page]`
+- [PageIndex（VectifyAI）](wiki/entities/pageindex.md) — PageIndex** 是 VectifyAI 开源的无向量 RAG 引擎。它把长文档组织成分层树索引，再让 LLM 基于问题在树上推理检索，返回可追溯到原文位置的答案。官方 Python SDK `📅unknown` `[entity_page]`
 - [2025 GS Paper List](wiki/entities/painode-001-2025gspaperlist.md) — 2025 GS Paper List** 收录于 awesome-physical-ai（aichr）**第 001/384** 条，分组 **3D Computer Vision**。本页是  `📅unknown` `[entity_page]`
 - [Awesome 3D Gaussian Splatting](wiki/entities/painode-002-awesome3dgaussiansplatting.md) — Awesome 3D Gaussian Splatting** 收录于 awesome-physical-ai（aichr）**第 002/384** 条，分组 **3D Computer Vis `📅unknown` `[entity_page]`
 - [Depth Anything](wiki/entities/painode-003-depthanything.md) — Depth Anything** 收录于 awesome-physical-ai（aichr）**第 003/384** 条，分组 **3D Computer Vision**。本页是 **清单索 `📅unknown` `[entity_page]`
