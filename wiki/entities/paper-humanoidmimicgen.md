@@ -209,3 +209,7 @@ flowchart TB
 - [HumanoidMimicGen 论文摘录](../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md)
 - Lin et al., *HumanoidMimicGen: Data Generation for Loco-Manipulation via Whole-Body Planning*, arXiv:2605.27724, 2026. <https://arxiv.org/abs/2605.27724>
 - OpenReview：<https://openreview.net/forum?id=ekzk7TSLKr>
+
+## 相关软体操作数据生成
+
+- [SoftMimicGen](./paper-softmimicgen.md)：将示范自动扩增扩展到可变形物体操作，与本文的人形移动操作研究侧重点不同。
