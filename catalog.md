@@ -676,6 +676,7 @@
 - [God's Eye View](wiki/entities/gods-eye-view.md) — God's Eye View**（bilawalsidhu/gods-eye-view，入口 [m `📅unknown` `[entity_page]`
 - [Google Cloud GPU](wiki/entities/google-cloud-gpu.md) — Google Cloud GPU** 涵盖 **Compute Engine GPU 虚拟机**与 **Vertex AI** 托管 ML 服务，是除 AWS 外最常用的 **超大规模云 GPU `📅unknown` `[entity_page]`
 - [Google Colab](wiki/entities/google-colab.md) — Google Colab**（colab.research.google.com）是 Google 提供的 **云端 J `📅unknown` `[entity_page]`
+- [GPU Unlock](wiki/entities/gpu-unlock.md) — GPU Unlock** 是一组 Linux 内核模块项目，在 NVIDIA 驱动接管 GPU 前调整特定 SM speed-select 配置，以改变部分张量指令的发射速率。截图中的 RTX 3 `📅2026-10-25` `[entity_page]`
 - [算力自由（GPUFree）](wiki/entities/gpufree.md) — 算力自由**（gpufree.cn，北京算力自由科技有限公司）是国内 **GPU 云平台**：整合多地 IDC 资源，用**容器化**方式把物 `📅unknown` `[entity_page]`
 - [恒源云（GPUShare）](wiki/entities/gpushare.md) — 恒源云**（gpushare.com）是专注 AI 的 **共享 GPU 算力平台**，提供云市场租卡、官方深度学习镜像与自研 **OSS 个人数 `📅unknown` `[entity_page]`
 - [GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)](wiki/entities/gr00t-visual-sim2real.md) — GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规 `📅unknown` `[entity_page]`
