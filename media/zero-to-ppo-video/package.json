@@ -2,10 +2,15 @@
   "name": "zero-to-ppo-video",
   "private": true,
   "type": "module",
-  "description": "《从头学人形机器人算法 · 零基础篇》竖屏讲解视频的渲染依赖（KaTeX、思源黑体、playwright-core）",
+  "description": "《从头学人形机器人算法 · 零基础篇》竖屏讲解视频的渲染依赖（KaTeX、思源黑体、playwright-core；URDF 机器人用 three.js、urdf-loader、xacro-parser、meshoptimizer）",
   "dependencies": {
     "@fontsource/noto-sans-sc": "5.3.0",
+    "expr-eval-fork": "3.0.3",
     "katex": "0.16.9",
-    "playwright-core": "1.63.0"
+    "meshoptimizer": "0.25.0",
+    "playwright-core": "1.63.0",
+    "three": "0.180.0",
+    "urdf-loader": "0.12.6",
+    "xacro-parser": "0.3.11"
   }
 }

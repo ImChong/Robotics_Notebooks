@@ -22,10 +22,10 @@
     // 机器人一排：出场时刻对上旁白念到的名字；c 是弹出缩放的中心（各自画面的中心）。
     // 人形取 2.15 而不是规格的 2.6：配音里「人形机器人」从分镜 2.17 念到 2.81，2.6 弹出时这个词已快念完。
     var bots = [
-      { x: 160, at: 0.1, name: '扫地机', c: [160, 100], make: function (g) { return E.vacuum(g, 160, 100, 0.8); } },
-      { x: 320, at: 0.7, name: '机械臂', c: [335, 117], make: function (g) { return E.arm(g, 320, 150, 0.7); } },
-      { x: 480, at: 1.3, name: '自动驾驶汽车', c: [480, 120], make: function (g) { return E.car(g, 480, 150, 0.8); } },
-      { x: 640, at: 2.15, name: '人形机器人', c: [640, 104], make: function (g) { return E.humanoid(g, 640, 150, 0.8); } }
+      { x: 160, at: 0.1, name: '扫地机', c: [160, 112], make: function (g) { return E.vacuum(g, 160, 136, 1.3); } },
+      { x: 320, at: 0.7, name: '机械臂', c: [330, 112], make: function (g) { return E.arm(g, 306, 150, 0.9); } },
+      { x: 480, at: 1.3, name: '自动驾驶汽车', c: [480, 124], make: function (g) { return E.car(g, 480, 150, 0.85); } },
+      { x: 640, at: 2.15, name: '人形机器人', c: [640, 96], make: function (g) { return E.humanoid(g, 640, 152, 1.0); } }
     ];
     bots.forEach(function (b) {
       b.g = E.el('g', {}, s);
@@ -80,7 +80,7 @@
         });
         // 循环动作；封面取一个好看的定格姿势
         var dx = still ? 0 : 12 * Math.sin(TAU * rt / 2);
-        vac.g.setAttribute('transform', 'translate(' + (160 + dx).toFixed(2) + ' 100) scale(0.8)');
+        vac.g.setAttribute('transform', 'translate(' + dx.toFixed(2) + ' 0)');
         arm.set(25 + (still ? 0 : 10 * Math.sin(TAU * rt / 2.4)), 60);
         car.spin(0.125);                                   // 车停着：轮子不转
         if (still) hum.stand(); else hum.idle(rt);          // 站着轻晃，不原地迈步

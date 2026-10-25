@@ -57,7 +57,7 @@
       var stepLabel = E.txt(s, 225, 362, '下一脚踩这儿', 20, E.VIOLET);
 
       /* ── 侧视：关节旁的「?」和旁注 ── */
-      var qs = [304, 346, 386].map(function (y) { return E.txt(s, 136, y, '?', 22, E.MUT, 'start', 700); });
+      var qs = [304, 346, 374].map(function (y) { return E.txt(s, 136, y, '?', 22, E.MUT, 'start', 700); });   // 最下面那个别贴着「下一脚踩这儿」的椭圆
       var noCare = E.txt(s, 290, 292, '关节怎么用力？规划不管', 20, E.MUT);
 
       /* ── 小地图：整组从右侧滑入 ── */
@@ -105,8 +105,9 @@
 
           /* 0.3–0.8 小地图滑入；3.0–8.0 扫描线 442 → 650，迷雾跟着散开 */
           var mp = fade(st, 0.3, 0.5);
-          // 滑入前（完全透明）留在原位：fitStory 会把透明但右移 40 的面板也算进取景范围，白白缩小整幕
-          mapG.setAttribute('transform', 'translate(' + (mp > 0 ? 40 * (1 - mp) : 0).toFixed(2) + ' 0)');
+          // 从左边滑入（从右边进来会压过门上的「门口」）；滑入前（完全透明）留在原位：fitStory 会把透明但挪开 40 的面板
+          // 也算进取景范围，白白缩小整幕
+          mapG.setAttribute('transform', 'translate(' + (mp > 0 ? -40 * (1 - mp) : 0).toFixed(2) + ' 0)');
           E.op(mapG, mp);
           var rx = 442 + 208 * K.seg(st, 3.0, 8.0);
           mm.setReveal(rx);

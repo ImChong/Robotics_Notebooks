@@ -30,8 +30,9 @@
   }
 
   window.EpisodeVideo = {
-    ep: '001',                      // 只用于文件名；画面和封面上都不出现集数
+    ep: '001',                      // 用于文件名和封面顶栏正中的集数（「No.001」）；正片画面里不出现集数
     badge: '第一季',
+    robots: ['g1', 'ur5', 'create2', 'prius'],   // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '四步循环',
     name: '感知 → 规划 → 控制 → 执行',
     pitch: '从扫地机到人形机器人，拆开全是这一套',
@@ -39,19 +40,27 @@
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：四步各用本色（感知 good、规划 violet、控制 accent、执行 warn）
     boldColors: { '感知': 'var(--demo-good)', '规划': 'var(--violet)', '控制': 'var(--demo-accent)', '执行': 'var(--demo-warn)',
-      '反馈': 'var(--text)', 'C': 'var(--demo-accent)' },
+      '反馈': 'var(--text)' },
     introDur: 11.9,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
-    outroDur: 37.0,
+    // 片尾总结：三句旁白对应三张卡片（at 是这张卡片弹出的分镜时间，和 ../ep001.py 的 recap 句对齐）
+    recapDur: 17.6,
+    recap: {
+      act: '三句话记住',
+      title: '所有机器人，都在转同一个圈',
+      items: [
+        { c: 'var(--hi)', n: '① 四步', s: '**感知** → **规划** → **控制** → **执行**', d: '看清周围 → 想好路线 → 算出关节命令 → 电机带着动', at: 1.2 },
+        { c: 'var(--demo-good)', n: '② 反馈', s: '执行完马上测到，绕回感知', d: '一圈接一圈，四步连成一个圈', at: 6.6 },
+        { c: 'var(--demo-accent)', n: '③ 只钻控制', s: '“要去哪儿” → “每个关节怎么出力”', d: '这个系列的主角，常见一秒算几百到一千次', at: 11.4 }
+      ]
+    },
+    outroDur: 13.0,
+    // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
     outro: {
-      quiz: {
-        q: '客厅那台机器人：哪件事属于**控制**？\nA 认出前面有个纸箱　B 决定从旁边绕过\nC 算出膝盖该出多大力　D 电机带着膝盖转',
-        a: '**C**　A 感知 · B 规划 · D 执行\n只有 C 在给关节派活',
-        thinkFrom: 15.2, revealAt: 20.2
-      },
-      next: { ep: '002', q: '所有机器人都跑这四步，\n为什么偏偏从人形、双足学起？', at: 27.2 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 35.9 }
+      next: { ep: '002', q: '所有机器人都跑这四步，\n为什么偏偏从人形、双足学起？', at: 0 },
+      link: { s: '<b>完整内容</b><br>imchong.github.io/Robotics_Notebooks', at: 8.7 },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 11.9 }
     }
   };
 })();

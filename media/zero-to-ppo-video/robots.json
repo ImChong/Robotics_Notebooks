@@ -1,0 +1,59 @@
+{
+  "_comment": "片中用到的 URDF 模型，取自 Robot Description Gallery Online（固定 commit）的 data/robots.json：每台只记上游仓库 + 固定 commit 的 jsDelivr 地址，不入库任何网格。jackal 与画廊条目一致（Gallery PR #119 收录，同一 commit、同一组 xacro_stubs）；create2 的同一上游仓库也由 #119 收录（commit 不同，片中固定的是这里写的）；prius 由 Gallery PR #120 收录。create2、jackal 上游只发布 xacro，舞台加载时用 xacro-parser 展开（同 Gallery 的 web/js/xacro.js）。python3 fetch_robots.py 把 URDF 与网格下载到 assets/robots/<id>/（不入库）。",
+  "gallery": {
+    "repo": "https://github.com/ImChong/Robot_Description_Gallery_Online",
+    "commit": "ca1efb74e8a642d1bd1a26b0ef7a0068dc2b6ebb",
+    "registry": "data/robots.json"
+  },
+  "robots": {
+    "g1": {
+      "name": "Unitree G1（29 自由度）",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/unitreerobotics/unitree_ros/blob/daadf41ee9afce8f90fdc09a98506012691fa122/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/unitreerobotics/unitree_ros@daadf41ee9afce8f90fdc09a98506012691fa122/",
+      "urdf": "robots/g1_description/g1_29dof_rev_1_0.urdf",
+      "packages": {}
+    },
+    "ur5": {
+      "name": "Universal Robots UR5",
+      "license": "BSD",
+      "license_url": "https://github.com/Gepetto/example-robot-data/blob/8ac8e67a04b0d6080507841c95a9ff50a533713c/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/Gepetto/example-robot-data@8ac8e67a04b0d6080507841c95a9ff50a533713c/",
+      "urdf": "robots/ur_description/urdf/ur5_robot.urdf",
+      "packages": { "example-robot-data": "" }
+    },
+    "go2": {
+      "name": "Unitree Go2",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/unitreerobotics/unitree_ros/blob/267182b8521c8d6a631bab1fe63836873237a525/robots/go2_description/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/unitreerobotics/unitree_ros@267182b8521c8d6a631bab1fe63836873237a525/",
+      "urdf": "robots/go2_description/urdf/go2_description.urdf",
+      "packages": { "go2_description": "robots/go2_description" }
+    },
+    "create2": {
+      "name": "iRobot Create 2（Roomba 600 系列机身）",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/AutonomyLab/create_robot/blob/5e2215bda34b15e2d5d5ea4ede8bb9d2cf9003f0/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/AutonomyLab/create_robot@5e2215bda34b15e2d5d5ea4ede8bb9d2cf9003f0/",
+      "urdf": "create_description/urdf/create_2.urdf.xacro",
+      "packages": { "create_description": "create_description" }
+    },
+    "jackal": {
+      "name": "Clearpath Jackal",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/jackal/jackal/blob/4ddf9b578bb7abce1115c8dc59d8b7f86aa9268c/LICENSE",
+      "base": "https://cdn.jsdelivr.net/gh/jackal/jackal@4ddf9b578bb7abce1115c8dc59d8b7f86aa9268c/",
+      "urdf": "jackal_description/urdf/jackal.urdf.xacro",
+      "packages": { "jackal_description": "jackal_description" },
+      "xacro_stubs": ["sick_tim", "lms1xx", "pointgrey_camera_description", "flir_camera_description", "velodyne_description"]
+    },
+    "prius": {
+      "name": "Toyota Prius（OSRF car_demo）",
+      "license": "Apache-2.0（仓库无 LICENSE 文件，见 package.xml）",
+      "license_url": "https://github.com/osrf/car_demo/blob/38a4686dd573739dcd237187030efba3ce4913b0/prius_description/package.xml",
+      "base": "https://cdn.jsdelivr.net/gh/osrf/car_demo@38a4686dd573739dcd237187030efba3ce4913b0/",
+      "urdf": "prius_description/urdf/prius.urdf",
+      "packages": { "prius_description": "prius_description" }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 // 001 第 7 幕：换台机器人，还是这四步。不画四步条，换新布局：
-// 左侧大面板是扫地机（俯视）遇到拖鞋：感知（保险杠闪 + 三道弧扩散）→ 规划（紫色虚线从拖鞋上方绕过）→
+// 左侧大面板是扫地机（Create 2 的 URDF，俯视）遇到拖鞋：感知（保险杠闪 + 三道弧扩散）→ 规划（紫色虚线从拖鞋上方绕过）→
 // 控制（左右轮速度条：往左拐右轮快、往右拐左轮快）→ 执行（沿紫线绕过去，车身随切线转、轮子条纹滚动），四行步骤标签逐句出现；
 // 右侧三张小卡（机械臂 / 自动驾驶汽车 / 人形）按念到的名字弹出，每张卡带一个迷你四步环；
 // 15.6「全是」起，三张卡的四个点和左面板四行标签一起按真实时间 t 轮流点亮。
@@ -9,7 +9,7 @@
 
   var VAC = [150, 180];                                   // 扫地机起点（圆心）
   // 紫色虚线（规划路线），从保险杠前沿 (190,180) 出发。扫地机圆心沿「(150,180) 直行到 (190,180) + 这条线」走。
-  // 规格是 M190,180 C232,180 248,124 300,124 S348,160 356,180：按它走，0.8 倍的机身（半径 37）+ 两侧轮子（伸到 42）
+  // 规格是 M190,180 C232,180 248,124 300,124 S348,160 356,180：按它走，0.8 倍的机身（手画版半径 37，两侧轮子伸到 42；Create 2 俯视半径约 38）
   // 上坡时右轮蹭到拖鞋左上角、下坡起机身压住拖鞋右半（终点 (356,180) 时压进 13px）——拖鞋右端 x≈330 到面板右缘 400
   // 只有 70px，放不下直径 77 的机身，回不到 y=180。改为：早点抬头、峰顶抬到 y=108、停在拖鞋右上方 (350,128)，
   // 全程离拖鞋 ≥ 4px，机身不出面板。第二段的控制点让航向一路往右拐到 60°（不在终点前回勾）。
@@ -85,7 +85,7 @@
   function card(s, i) {
     var y = CARD_Y[i], g = E.el('g', {}, s);
     K.paint(E.el('rect', { x: 420, y: y, width: 360, height: 112, rx: 12, 'stroke-width': 2 }, g), E.S1, E.BORDER);
-    var icon = i === 0 ? E.arm(g, 470, y + 100, 0.48) : i === 1 ? E.car(g, 472, y + 92, 0.55) : E.humanoid(g, 470, y + 102, 0.62);
+    var icon = i === 0 ? E.arm(g, 456, y + 102, 0.68) : i === 1 ? E.car(g, 477, y + 92, 0.55) : E.humanoid(g, 470, y + 106, 0.86);
     E.txt(g, 530, y + 44, CARD_NAME[i], 22, E.INK, 'start', 700);
     // 回头虚线带箭头（与四步条的反馈线一样），看得出「执行完又回到感知」；末端切线方向 (548−623, 94−108)
     E.curveArrow(g, 'M 698 ' + (y + 94) + ' Q 623 ' + (y + 108) + ' 548 ' + (y + 94), E.MUT, 2, Math.atan2(-14, -75) / R, { dash: '5 4', head: 8 });
@@ -125,10 +125,12 @@
         return K.paint(p, null, E.GOOD);
       });
 
-      // 扫地机：外层 translate + rotate 跟着路线走；vacuum() 再套 rotate(90) 让保险杠朝 +x。轮子在同一组里、压在机身上（看得见条纹）
+      // 扫地机：外层 translate + rotate 跟着路线走，俯视的 Create 2 车头朝 +x。保险杠（前半圈的弧）平时不画，感知时闪；
+      // 两个驱动轮藏在机身下面，按真实位置（左右各 0.1175 m）叠一层「透视」的轮子 + 条纹，看得见各转多快
       var bot = E.el('g', {}, s);
-      var vac = E.vacuum(E.el('g', { transform: 'rotate(90)' }, bot), 0, 0, 0.8);
-      var wheels = [-42, 34].map(function (wy) {
+      E.vacuum(bot, 0, 0, 0.8, { top: true });
+      var bumper = K.paint(E.el('path', { d: 'M 21.2 -31.5 A 38 38 0 0 1 21.2 31.5', fill: 'none', 'stroke-width': 5.6, 'stroke-linecap': 'round' }, bot), null, E.GOOD);
+      var wheels = [-30, 22].map(function (wy) {
         K.paint(E.el('rect', { x: -15, y: wy, width: 30, height: 8, rx: 2 }, bot), E.INK2);
         var stripes = [0, 1, 2, 3, 4].map(function () {
           var l = E.el('line', { y1: wy + 1.5, y2: wy + 6.5, 'stroke-width': 2 }, bot);
@@ -176,8 +178,8 @@
 
           /* 3.5 感知：保险杠闪 good 三下；三道弧按 t 一圈圈扩散（9.6 扫地机开走时淡出） */
           var fu = K.seg(st, 3.5, 4.7), flash = fu > 0 && fu < 1 ? Math.pow(Math.sin(3 * Math.PI * fu), 2) : 0;
-          vac.bumper.style.stroke = mix(E.GOOD, flash, E.INK2);
-          E.glow(vac.bumper, E.GOOD, flash > 0.4);
+          E.op(bumper, flash.toFixed(3));
+          E.glow(bumper, E.GOOD, flash > 0.4);
           var wv = E.win(st, 3.5, MOVE0, 0.3);
           waves.forEach(function (w, k) {
             var f = frac(t / 1.2 + k / 3);

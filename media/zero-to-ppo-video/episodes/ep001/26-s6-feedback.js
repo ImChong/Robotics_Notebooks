@@ -86,13 +86,13 @@
 
       var bot = E.robot(s, X0);
       var P = bot.pts();
-      // 近侧上臂正好压在小盒子上：闪红时在手臂上面再画一个同位置的小盒子（跟着身子转）
-      var imuHi = K.paint(E.el('rect', { x: -5, y: 250, width: 10, height: 10, rx: 2 }, bot.body), E.BAD);
+      // 小盒子 = 骨盆里的 IMU（imu_in_pelvis），侧视时被大腿根和手挡住：闪红时在上面再画一个同位置的小盒子（跟着身子转）
+      var imuHi = K.paint(E.el('rect', { x: P.imu[0] - 5, y: P.imu[1] - 5, width: 10, height: 10, rx: 2 }, bot.body), E.BAD);
       E.op(imuHi, 0);
 
       // 传感器扩散圈：摄像头、小盒子、髋 / 膝 / 踝、脚底（画面坐标，此时机器人站在 X0 不动）
       var ringG = E.el('g', {}, s);
-      var rings = [[X0 + 11, 203], [X0, 255], [X0 + P.hip[0], P.hip[1]], [X0 + P.knee[0], P.knee[1]], [X0 + P.ankle[0], P.ankle[1]], [X0 + 8, 388]]
+      var rings = [[X0 + 11, 203], [X0 + P.imu[0], P.imu[1]], [X0 + P.hip[0], P.hip[1]], [X0 + P.knee[0], P.knee[1]], [X0 + P.ankle[0], P.ankle[1]], [X0 + 8, 388]]
         .map(function (c) { return K.paint(E.el('circle', { cx: c[0].toFixed(1), cy: c[1].toFixed(1), r: 4, fill: 'none', 'stroke-width': 2.5 }, ringG), null, E.GOOD); });
       s.appendChild(room.boxG);
 
@@ -110,7 +110,7 @@
       // 「到了 ✓」接替门上方的「门口」（门顶 y 148）
       E.txt(arrG, 735, 138, '到了', 20, E.ACC);
       var arrCheck = E.check(arrG, 759, 124, 16, E.ACC, 3);
-      var fbWord = E.txt(s, 408, 90, '反馈', 24, E.INK, 'middle', 700);
+      var fbWord = E.txt(s, 408, 96, '反馈', 24, E.INK, 'middle', 700);   // 离虚线远一点：光点沿虚线走过时不压字
 
       // 四步条盒子：k = 0 为「已讲过」，k = 1 为「当前步」样式；so 为描边不透明度
       function box(i, k, c, so, glow) {
@@ -162,7 +162,7 @@
           fbDot.setAttribute('cx', dp[0].toFixed(1)); fbDot.setAttribute('cy', dp[1].toFixed(1));
           E.op(fbDot, (fade(st, 20.4, 0.4) * Math.min(1, du / 0.06, (1 - du) / 0.06)).toFixed(3));
           E.glow(fbDot, E.INK, true);
-          E.pop(fbWord, 408, 82, fade(st, 22.8, 0.35), 0.8);
+          E.pop(fbWord, 408, 88, fade(st, 22.8, 0.35), 0.8);
 
           /* ── 机器人：9.5 绕前脚尖前倾 10°（0.6 s），13.2–14.0 回正；16.6–19.4 走到 X=672 ── */
           var d = walked(st), X = X0 + d;
@@ -172,7 +172,7 @@
           if (w > 0) {
             var g = K.poseWalk(phase(d));
             bot.legs(lerp([4, 0], g.legA, w), lerp([-4, 0], g.legB, w));
-            bot.arm(lerp([8, 4], [g.armA[0] * 0.8, g.armA[1] * 0.8], w));
+            bot.arm(lerp([8, 4], bot.walkArm(phase(d)), w));
           } else bot.stand();
 
           /* 4.5 传感器各处冒扩散圈（半径 4 → 18、淡出，0.8 s）+「新读数」 */
@@ -186,7 +186,8 @@
           E.glow(imuHi, E.BAD, fi > 0.4);
 
           /* 9.5「身子往前歪！」→ 15.4「扶正了 ✓」；16.5 淡出（机器人要从这里走过） */
-          E.op(tilt, Math.min(fade(st, 9.5, 0.3), 1 - fade(st, 15.4, 0.25)));
+          // 两句在同一个位置：先让「身子往前歪！」退掉，「扶正了」再出来，不叠在一起
+          E.op(tilt, Math.min(fade(st, 9.5, 0.3), 1 - fade(st, 15.2, 0.2)));
           E.pop(okG, 280, 184, Math.min(fade(st, 15.4, 0.3), 1 - fade(st, 16.5, 0.3)), 0.8);
           E.drawOn(okCheck, K.seg(st, 15.5, 15.8));
 
@@ -211,8 +212,9 @@
           room.door.style.strokeWidth = (2.5 + ap).toFixed(2);
           var gr = ap * (6 + 4 * pulse * Math.sin(TAU * t / 1.2));
           room.door.style.filter = ap > 0 ? 'drop-shadow(0 0 ' + gr.toFixed(1) + 'px ' + E.ACC + ')' : '';
-          E.op(room.doorLabel, 1 - ap);
-          E.pop(arrG, 745, 224, ap, 0.8);
+          // 「门口」先退、「到了 ✓」再出来（同一个位置，各占一半）
+          E.op(room.doorLabel, 1 - Math.min(1, 2 * ap));
+          E.pop(arrG, 745, 224, Math.max(0, 2 * ap - 1), 0.8);
           E.drawOn(arrCheck, K.seg(st, 19.5, 19.8));
         }
       };

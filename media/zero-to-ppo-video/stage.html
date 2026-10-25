@@ -29,6 +29,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   align-items: center; font-size: 30px; color: var(--text-secondary); }
 .brand b { background: var(--hi); color: var(--bg); font-weight: 900; padding: 4px 16px; border-radius: 10px; }
 .pill { border: 2px solid var(--demo-border); border-radius: 999px; padding: 6px 22px; font-size: 26px; }
+/* 封面顶栏正中的集数（灰色小字，和「机器人学习」同字号）：以画面中线居中，不参与左右两块的排布；正片里是空的 */
+.epno { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--demo-muted); letter-spacing: 2px; white-space: nowrap; }
 
 /* ── scene chrome ── */
 #scene { position: absolute; inset: 0; }
@@ -84,12 +86,13 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .pt b { color: var(--hi); }
 .pt > div:not([class]) { white-space: pre-line; }
 .pt .wait { margin-top: 14px; height: 10px; border-radius: 5px; background: var(--demo-grid); overflow: hidden; }
+.pt .d { font-size: 31px; color: var(--text-secondary); }
 .pt .wait b { display: block; height: 100%; width: 0; background: var(--demo-warn); }
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="brand"><span><b>零基础篇</b> · 机器人学习</span><span class="pill" id="badge"></span></div>
+  <div class="brand"><span><b>零基础篇</b> · 机器人学习</span><span class="epno" id="epno"></span><span class="pill" id="badge"></span></div>
   <div id="scene"></div>
   <div class="sub" id="sub"></div>
 </div>
@@ -134,7 +137,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
   }
 
-  document.getElementById('badge').textContent = E.badge;  // 只写第几季，不写集数和路线层级
+  document.getElementById('badge').textContent = E.badge;  // 右上角只写第几季；集数只在封面上，写在顶栏正中（renderAt）
 
   /* 纵向排版：按各块实际高度自上而下排，块间距 gaps[k]，整组在 [top, bottom] 里垂直居中；
      放不下就等比压缩间距（不压内容）。挂到 DOM 之后才量得到高度，所以在 draw 里调。 */
@@ -294,6 +297,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     sc.spec.cues.forEach(function (c) { times.push(c.at); });
     times.forEach(function (tt) {
       sc.story.draw(tt, tt);
+      if (window.Robot3D) window.Robot3D.flush();   // URDF 视图跟着画，它们的外框（robot3d.js 的不可见 rect）才是这一刻的
       var o = svg.getBoundingClientRect();
       svg.querySelectorAll('rect, circle, ellipse, line, path, polyline, polygon, text').forEach(function (n) {
         if (!n.closest('defs, marker')) add(n.getBoundingClientRect(), o);
@@ -316,37 +320,79 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     return { zoom: Math.min(W / (x1 - x0), H / (y1 - y0)), viewBox: svg.getAttribute('viewBox') };
   }
 
-  /* ── outro：自测题 → 想一想（进度条倒数）→ 揭晓答案 → 下一集预告 → 系列衔接语 ── */
+  /* ── outro：〔自测题 → 想一想（进度条倒数）→ 揭晓答案〕→ 下一集预告 → 系列衔接语。
+     自测题可选：零基础篇片尾不出题，outro 里不写 quiz 就只有预告和衔接语 ── */
+  /* 片尾总结（参照论文系列「三句话记住」）：小标题 + 大标题，几张左侧色条卡片按旁白逐张弹出，可选一行结论；
+     卡片张数按内容定，E.recap 不写就没有这一页 */
+  function buildRecap() {
+    var R = E.recap, root = h('div', 'card');
+    var head = h('div', 'head', root);
+    h('div', 'act', head, R.act);
+    richInto(h('div', 'title', head), R.title);
+    var pts = R.items.map(function (it) {
+      var p = h('div', 'pt', root);
+      p.style.fontSize = '37px'; p.style.padding = '18px 32px';
+      p.style.borderLeft = '10px solid ' + it.c;
+      var n = h('div', 'n', p, it.n); n.style.color = it.c;
+      richInto(h('div', '', p), it.s);
+      if (it.d) richInto(h('div', 'd', p), it.d);
+      return p;
+    });
+    var foot = null;
+    if (R.foot) { foot = h('div', 'footer', root); richInto(foot, R.foot.s); foot.style.color = 'var(--text)'; }  // 结论比卡片说明亮一档
+    var els = [head].concat(pts, foot ? [foot] : []);
+    var gaps = els.slice(1).map(function (e, k) { return k ? 20 : 30; });
+    if (foot) gaps[gaps.length - 1] = 30;
+    return {
+      root: root,
+      draw: function (st) {
+        stack(els, gaps, SAFE_TOP, CONTENT_BOTTOM);
+        fadeUp(head, st, 0);
+        pts.forEach(function (p, k) { fadeUp(p, st, R.items[k].at); });
+        if (foot) fadeUp(foot, st, R.foot.at);
+      }
+    };
+  }
+
   function buildOutro() {
-    var O = E.outro, root = h('div', 'card');
-    var quiz = h('div', 'pt', root);
-    h('div', 'n', quiz, '自测题').style.color = 'var(--demo-warn)';
-    richInto(h('div', '', quiz), O.quiz.q);
-    var wait = h('div', 'wait', quiz), waitBar = h('b', '', wait);
-    var ans = h('div', 'pt', root);
-    h('div', 'n', ans, '答案').style.color = 'var(--demo-good)';
-    richInto(h('div', '', ans), O.quiz.a);
+    var O = E.outro, root = h('div', 'card'), quiz = null, ans = null, waitBar = null;
+    if (O.quiz) {
+      quiz = h('div', 'pt', root);
+      h('div', 'n', quiz, '自测题').style.color = 'var(--demo-warn)';
+      richInto(h('div', '', quiz), O.quiz.q);
+      waitBar = h('b', '', h('div', 'wait', quiz));
+      ans = h('div', 'pt', root);
+      h('div', 'n', ans, '答案').style.color = 'var(--demo-good)';
+      richInto(h('div', '', ans), O.quiz.a);
+    }
     var next = h('div', 'pt', root);
     next.style.borderColor = 'var(--demo-accent)';
     h('div', 'n', next, '下一集 · ' + O.next.ep).style.color = 'var(--demo-accent)';
     richInto(h('div', '', next), O.next.q);
+    // 完整内容的网址卡片（仿论文系列片尾的笔记网址框）
+    var link = O.link ? h('div', 'meta', root, O.link.s) : null;
+    if (link) { link.style.textAlign = 'center'; link.style.fontSize = '29px'; link.style.padding = '22px 34px'; }
     var end = h('div', 'footer', root); richInto(end, O.end.s);
     end.style.whiteSpace = 'normal';
     return {
       root: root,
       draw: function (st, t) {
-        stack([quiz, ans, next, end], [26, 26, 30], SAFE_TOP, CONTENT_BOTTOM);
-        fadeUp(quiz, st, 0.1);
-        waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
-        fadeUp(ans, st, O.quiz.revealAt);
+        if (O.quiz) {
+          stack([quiz, ans, next, end], [26, 26, 30], SAFE_TOP, CONTENT_BOTTOM);
+          fadeUp(quiz, st, 0.1);
+          waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
+          fadeUp(ans, st, O.quiz.revealAt);
+        } else if (link) stack([next, link, end], [30, 30], SAFE_TOP, CONTENT_BOTTOM);
+        else stack([next, end], [30], SAFE_TOP, CONTENT_BOTTOM);
         fadeUp(next, st, O.next.at);
+        if (link) fadeUp(link, st, O.link.at);
         fadeUp(end, st, O.end.at);
       }
     };
   }
 
   function get(key) {
-    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'outro' ? buildOutro() : buildStory(+key);
+    if (!built[key]) built[key] = key === 'cover' ? buildCover() : key === 'intro' ? buildIntro() : key === 'recap' ? buildRecap() : key === 'outro' ? buildOutro() : buildStory(+key);
     return built[key];
   }
 
@@ -370,17 +416,24 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     for (var i = 0; i < segs.length; i++) if (t < segs[i].t1) { s = segs[i]; break; }
     var key = String(s.scene);
     if (window.__cover) key = 'cover';  // 封面用自己的版式（render.mjs cover 设 __cover）
+    // 封面顶栏正中写集数（灰色小字，不做成最显眼的标志）；正片里不写集数
+    if (window.__cover) document.getElementById('epno').textContent = 'No.' + E.ep;
     var first = s, idx = segs.indexOf(s);
     while (idx > 0 && String(segs[idx - 1].scene) === String(s.scene)) first = segs[--idx];
     var last = s; idx = segs.indexOf(s);
     while (idx < segs.length - 1 && String(segs[idx + 1].scene) === String(s.scene)) last = segs[++idx];
-    // 这句念多久，[from, to] 就拉伸成多久（配音比分镜短则 1 倍速）；停在 to 之前一刻，让从 to 开始的要点等下一句
+    // [from, to] 连续铺满这一句（含句间停顿），下一句开口时正好走到 to，从 to 开始的要点等下一句；
+    // 句间不停、一幕开头也不停（停住再走看着像卡顿）。一幕第一句从这一幕一开始就走，淡入在开口前做完；
+    // 最后一句念完（配音比分镜短则 1 倍速走完）停在 to，收尾画面先看清再淡出
     var local = t - first.t0, span = Math.max(s.to - s.from, s.alen || 0);
-    var st = s.from + (s.to - s.from) * clamp((t - s.t0 - s.lead) / (span || 1), 0, 1);
+    var a0 = s === first ? s.t0 : s.t0 + s.lead;
+    var a1 = s === last ? Math.min(s.t0 + s.lead + span, s.t1) : s.t1;
+    var st = s.from + (s.to - s.from) * clamp((t - a0) / Math.max(a1 - a0, 1e-3), 0, 1);
     st = Math.min(st, Math.max(s.to - 1e-3, s.from));
     var sc = get(key);
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
     sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));
+    if (window.Robot3D) window.Robot3D.flush();     // 只重画这一帧里挂在页面上、姿态或上色变了的 URDF 视图
     // cross-fade at scene edges
     var fin = clamp(local / 0.35, 0, 1), fout = clamp((last.t1 - t) / 0.3, 0, 1);
     sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, t > TL.total - 1 ? 1 : fout);
@@ -402,5 +455,14 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   };
 })();
 </script>
+<!-- URDF 机器人（robot3d.js）：ES module，按 EpisodeVideo.robots 加载模型；不用机器人的集也照样能放 -->
+<script type="importmap">{ "imports": {
+  "three": "./node_modules/three/build/three.module.js",
+  "three/examples/jsm/": "./node_modules/three/examples/jsm/",
+  "urdf-loader": "./node_modules/urdf-loader/src/URDFLoader.js",
+  "xacro-parser": "./node_modules/xacro-parser/src/index.js",
+  "expr-eval-fork": "./node_modules/expr-eval-fork/dist/index.mjs",
+  "meshoptimizer/": "./node_modules/meshoptimizer/" } }</script>
+<script type="module" src="robot3d.js"></script>
 </body>
 </html>
