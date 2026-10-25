@@ -32,7 +32,7 @@
 |------|---------------|------|
 | 执行器基座 | [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) | Protocol 1.0/2.0 多语言 SDK |
 | 教育 / 经典平台 | [turtlebot3](https://github.com/ROBOTIS-GIT/turtlebot3)、[OpenCR](https://github.com/ROBOTIS-GIT/OpenCR)、[ROBOTIS-OP3](https://github.com/ROBOTIS-GIT/ROBOTIS-OP3) | ROS 教学与小型人形 |
-| 机械臂 / 手 | [open_manipulator](https://github.com/ROBOTIS-GIT/open_manipulator)、[robotis_hand](https://github.com/ROBOTIS-GIT/robotis_hand) | OMY/OMX 与灵巧手 ROS 2 |
+| 机械臂 / 手 | [open_manipulator](https://github.com/ROBOTIS-GIT/open_manipulator)、[robotis_hand](https://github.com/ROBOTIS-GIT/robotis_hand)、[HX Friends](https://docs.robotis.com/docs/systems/hx_friends/) | OMY/OMX、模块化手部设计与灵巧手 ROS 2 |
 | Physical AI 硬件 | [ai_worker](https://github.com/ROBOTIS-GIT/ai_worker)、[ai_sapiens](https://github.com/ROBOTIS-GIT/ai_sapiens) | 半人形 AI Worker（FFW）与人形 AI Sapiens K1 |
 | Cyclo 框架索引 | [cyclo](https://github.com/ROBOTIS-GIT/cyclo) | 模块表：Manager / Intelligence / Control / Lab |
 | 学习与仿真 | [cyclo_lab](https://github.com/ROBOTIS-GIT/cyclo_lab)、[cyclo_mjlab](https://github.com/ROBOTIS-GIT/cyclo_mjlab)、[robotis_mujoco_menagerie](https://github.com/ROBOTIS-GIT/robotis_mujoco_menagerie) | Isaac Lab RL/IL；**K1 专用 mjlab 路径**；MuJoCo 资产 |
@@ -57,6 +57,7 @@
 | Cyclo Control | [cyclo-control](../../wiki/entities/cyclo-control.md) |
 | Cyclo Intelligence | [cyclo-intelligence.md](../../wiki/entities/cyclo-intelligence.md) |
 | Dynamixel SDK | [dynamixel-sdk.md](../../wiki/entities/dynamixel-sdk.md) |
+| HX Friends | [robotis-hx-friends.md](../../wiki/entities/robotis-hx-friends.md) |
 | MuJoCo Menagerie | [robotis-mujoco-menagerie.md](../../wiki/entities/robotis-mujoco-menagerie.md) |
 | TurtleBot3 | [turtlebot3.md](../../wiki/entities/turtlebot3.md) |
 | OpenMANIPULATOR 线 | [robotis-open-manipulator-line.md](../../wiki/entities/robotis-open-manipulator-line.md) |

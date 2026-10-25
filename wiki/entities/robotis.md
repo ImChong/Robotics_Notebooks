@@ -15,6 +15,7 @@ related:
   - ./cyclo-control.md
   - ./dynamixel-sdk.md
   - ./robotis-mujoco-menagerie.md
+  - ./robotis-hx-friends.md
   - ./turtlebot3.md
   - ./robotis-open-manipulator-line.md
   - ./robotis-op3.md
@@ -114,7 +115,7 @@ flowchart TB
 | MuJoCo 资产 | [robotis_mujoco_menagerie](https://github.com/ROBOTIS-GIT/robotis_mujoco_menagerie) | [robotis-mujoco-menagerie.md](./robotis-mujoco-menagerie.md) |
 | 执行器 SDK | [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) | [dynamixel-sdk.md](./dynamixel-sdk.md) |
 
-`cyclo_manager`、`robotis_hand`、`soma-retargeter` 等：在组织归档与本 hub 导航；深度细节见对应 `sources/repos/`（`soma-retargeter` 已有独立归档）。
+`cyclo_manager`、`soma-retargeter` 等：在组织归档与本 hub 导航；深度细节见对应 `sources/repos/`。HX Friends 设计与 URDF 见 [独立实体页](./robotis-hx-friends.md) 和 [项目归档](../../sources/repos/robotis-hx-friends.md)。
 
 ## 工程实践
 
@@ -136,7 +137,7 @@ flowchart TB
 - [Humanoid Skills × NVIDIA 栈（K1 全身 + Worker 操作）](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [AI Worker](./robotis-ai-worker.md) · [AI Sapiens](./robotis-ai-sapiens.md)
 - [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [cyclo_control](./cyclo-control.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)
-- [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)
+- [Dynamixel SDK](./dynamixel-sdk.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md) · [HX Friends](./robotis-hx-friends.md)
 - [TurtleBot3](./turtlebot3.md) · [OpenMANIPULATOR 线](./robotis-open-manipulator-line.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 - [Unitree（厂商对照）](./unitree.md)

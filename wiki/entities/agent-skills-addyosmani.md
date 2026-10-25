@@ -16,6 +16,7 @@ related:
   - ./humanlayer-skills.md
   - ./hermes-agent.md
   - ./anthropic-claude-api-skill.md
+  - ./bilibili-douyin-notes.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../references/llm-wiki-karpathy.md
@@ -161,6 +162,8 @@ sequenceDiagram
 - [Agent Skills 官方站](https://skills.addy.ie)
 
 ## 推荐继续阅读
+
+- [bilibili-douyin-notes](./bilibili-douyin-notes.md) — 面向视频学习的 Agent Skill，覆盖字幕、ASR 与课堂笔记生成。
 
 - [docs/comparison.md（GitHub）](https://github.com/addyosmani/agent-skills/blob/main/docs/comparison.md) — 与 Superpowers、mattpocock/skills 并排对照
 - [docs/skill-anatomy.md](https://github.com/addyosmani/agent-skills/blob/main/docs/skill-anatomy.md) — SKILL.md 格式规范
