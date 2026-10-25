@@ -3,7 +3,7 @@ type: entity
 project_id: robotics-toolbox-python
 project: https://petercorke.github.io/robotics-toolbox-python/
 code: https://github.com/petercorke/robotics-toolbox-python
-tags: [software, python, robotics, kinematics, inverse-kinematics, dynamics, trajectory-generation, manipulation, mobile-robot]
+tags: [software, python, robotics, kinematics, inverse-kinematics, dynamics, trajectory-generation, manipulation, mobile-robot, qut]
 status: complete
 updated: 2026-10-26
 related:
@@ -32,6 +32,10 @@ summary: "Peter Corke 的 Python 机器人学工具箱，覆盖串联机械臂�
 | URDF | Unified Robot Description Format | 可导入的机器人连杆与关节描述格式 |
 | FK | Forward Kinematics | 从关节配置计算末端位姿 |
 | IK | Inverse Kinematics | 根据目标末端位姿求关节配置 |
+
+## 项目与维护者
+
+Peter Corke 的官方 QUT 学术主页将他列为 QUT 荣休杰出教授，并说明他创建了用于机器人学教学与研究的开源 Python/MATLAB 软件。该主页确认的是作者的 QUT 关联；代码开放与 MIT 许可则以项目仓库为准。
 
 ## 为什么重要
 
@@ -88,6 +92,7 @@ sol = robot.ik_LM(T)        # Levenberg–Marquardt 数值 IK
 - [Robotics Toolbox for Python 仓库归档](../../sources/repos/robotics-toolbox-python.md)
 - [Robotics Toolbox for Python 官方文档归档](../../sources/sites/robotics-toolbox-python-docs.md)
 - [官方 GitHub 仓库与 README](https://github.com/petercorke/robotics-toolbox-python)
+- [QUT 官方学术主页：Peter Corke](https://www.qut.edu.au/about/our-people/academic-profiles/peter.corke)
 - [官方文档](https://petercorke.github.io/robotics-toolbox-python/)
 - [Corke & Haviland, “Not your grandmother’s toolbox – the Robotics Toolbox reinvented for Python,” ICRA 2021](https://ieeexplore.ieee.org/document/9561366)
 
