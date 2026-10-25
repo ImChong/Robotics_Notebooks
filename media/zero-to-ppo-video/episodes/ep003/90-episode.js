@@ -41,7 +41,7 @@
     // 划重点 / 片尾里的加粗词：向量 accent、矩阵 violet（和分镜里的箭头、变形网格同色）
     boldColors: { '向量': 'var(--demo-accent)', '位置是向量': 'var(--demo-accent)', '矩阵': 'var(--violet)', '变换是矩阵': 'var(--violet)',
       '线性变换': 'var(--violet)', '顺序': 'var(--demo-warn)' },
-    introDur: 21.58,
+    introDur: 21.7,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep003.py 的 recap 句对齐）
