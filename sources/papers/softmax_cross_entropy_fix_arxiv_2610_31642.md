@@ -19,8 +19,8 @@
 
 ## 摘录 2：修正方法
 
-- **硬标签路径：** 从 log-sum-exp 中排除最大 logit或目标 logit，直接求 margin \(m\)，再用稳定的 \`softplus(-m)\` 表达损失。目标梯度写成 \(-e^{-m}/(1+e^{-m})\)，避免先计算接近 1 的概率再减 1。论文给出 JAX 的 log-softmax、softmax 和 hard-target cross-entropy 实现。
-- **软标签路径：** 直接使用学生与教师 logits 的差，在 log 空间计算概率比；使用 \`expm1\`、\`log1p\` 保留接近零的差值，并校正残余浮点漂移。论文的 JAX 自定义梯度在两者 logits 相等时为零。
+- **硬标签路径：** 从 log-sum-exp 中排除最大 logit或目标 logit，直接求 margin \(m\)，再用稳定的 `softplus(-m)` 表达损失。目标梯度写成 \(-e^{-m}/(1+e^{-m})\)，避免先计算接近 1 的概率再减 1。论文给出 JAX 的 log-softmax、softmax 和 hard-target cross-entropy 实现。
+- **软标签路径：** 直接使用学生与教师 logits 的差，在 log 空间计算概率比；使用 `expm1`、`log1p` 保留接近零的差值，并校正残余浮点漂移。论文的 JAX 自定义梯度在两者 logits 相等时为零。
 
 ## 摘录 3：论文报告的结果
 
