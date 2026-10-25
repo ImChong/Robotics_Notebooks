@@ -245,6 +245,8 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md — 收录 CoRL 2026 人形高速冲刺与转弯论文及实体页
+
 ## [2026-10-25] ingest | HandsOn：归档跨具身灵巧操作基准、PhysX 示范数据与开源边界
 
 - 论文、项目页、官方仓库和 Hugging Face 数据卡已互相核对；源码与 PhysX 数据可公开获取，Newton 数据待发布，模型 checkpoint 未随仓库分发。
