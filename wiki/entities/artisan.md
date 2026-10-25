@@ -48,7 +48,7 @@ Artisan 的意义在于把物理验证放进生成闭环，并将评测从单一
 论文将系统描述为 Design、Coding、Review 多代理协作。设计代理根据用户的文本和可选参考图形成资产设计，编码代理生成程序化模型，审查代理结合结构化检查和仿真反馈指出问题，再驱动修订。
 
 ```mermaid
-flowchart LR
+flowchart TB
   I["文本描述 + 可选参考图"] --> D["Design agent：需求与结构规划"]
   D --> C["Coding agent：程序化资产实现"]
   C --> S["MuJoCo：物理仿真与反馈"]
