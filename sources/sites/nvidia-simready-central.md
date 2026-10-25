@@ -7,6 +7,7 @@
 - **来源：** NVIDIA / Hugging Face
 - **链接：** https://huggingface.co/blog/nvidia/simready-central-assets-robotics-ai-factories
 - **资产搜索：** https://huggingface.co/spaces/nvidia/simready-central
+- **NVIDIA 官方数据集：** https://huggingface.co/datasets/nvidia/simready-assets（页面核查：2,575 个 3D Assets、222 行 Viewer 数据、472 GB；详见数据集来源归档）
 - **发布：** 2026-10-21
 - **入库日期：** 2026-10-24
 - **一句话说明：** NVIDIA 将 2,000 多个面向机器人仿真与 AI 工厂数字孪生的 SimReady OpenUSD 资产汇集到 Hugging Face；资产来自多个供应商数据集，可由开发者和 Agent 检索、组合成仿真场景。
@@ -40,5 +41,6 @@
 
 - [NVIDIA/Hugging Face 公告](https://huggingface.co/blog/nvidia/simready-central-assets-robotics-ai-factories)
 - [SimReady Central Hugging Face 搜索入口](https://huggingface.co/spaces/nvidia/simready-central)
+- [NVIDIA SimReady Assets 数据集](../datasets/nvidia-simready-assets.md)
 - [NVIDIA-Omniverse/simready-central 仓库](https://github.com/NVIDIA-Omniverse/simready-central)
 - [SimReady Foundation 规范与校验工具](https://github.com/NVIDIA/simready-foundation)
