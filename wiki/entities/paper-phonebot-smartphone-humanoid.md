@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware, low-cost, open-source, smartphone, locomotion, rl, ucla]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-25
 project_id: phonebot-smartphone-humanoid
 arxiv: "2610.08737"
 project: https://phonebot.dev
@@ -15,6 +15,7 @@ related:
   - ../methods/ppo.md
   - ../concepts/sim2real.md
   - ./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
+  - ./paper-openbot-smartphone-mobile-robot.md
 sources:
   - ../../sources/papers/phonebot_arxiv_2610_08737.md
   - ../../sources/sites/phonebot-project.md
@@ -136,6 +137,7 @@ sequenceDiagram
 
 - [自然人形运动 AMP 条目](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)：高端人形用 AMP 追求自然步态；PhoneBot 走低成本舵机路线，只做基础行走。
 - [人形硬件 101 技术地图](../overview/humanoid-hardware-101-technology-map.md)：对照典型人形的执行器/算力/传感方案，PhoneBot 以消费电子替代专用算力与传感。
+- [OpenBot：把智能手机变成低成本移动机器人](./paper-openbot-smartphone-mobile-robot.md)：同样以手机作为机器人计算核心，但 OpenBot 面向四轮差速导航，PhoneBot 面向双足人形步态。
 - 其它周报条目（如 [DAMP](./paper-damp-humanoid-denoised-belief-amp.md)）属于中型人形高性能运动控制，成本与能力量级差异大。
 
 ## 关联页面
