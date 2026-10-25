@@ -539,7 +539,7 @@ function g1Front(parent, opts) {
     if (oblique) return [X + p[0] * SC, GY + (p[1] - 388) * SC];
     const a = st.tilt * DEG, px = p[0] - st.pivot[0], py = p[1] - st.pivot[1];
     const q = [st.pivot[0] + px * Math.cos(a) - py * Math.sin(a), st.pivot[1] + px * Math.sin(a) + py * Math.cos(a)];
-    return [X + q[0] * SC, 388 + (q[1] - 388) * SC];
+    return [X + q[0] * SC, GY + (q[1] - 388) * SC];   // 和 place() 的变换一致：两脚中间的地面点在 (X, GY)
   }
   v.pre = () => {
     joints.forEach((jt) => {
