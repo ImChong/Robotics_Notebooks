@@ -5,6 +5,7 @@
 - **标题：** Robotics Toolbox for Python
 - **类型：** repo / Python 机器人学软件库
 - **作者 / 维护者：** Peter Corke、Jesse Haviland 等贡献者
+- **作者机构背景：** QUT 官方主页记载 Peter Corke 为荣休杰出教授，并说明他创建了用于机器人教学与研究的开源 Python/MATLAB 软件；[QUT 学术主页](https://www.qut.edu.au/about/our-people/academic-profiles/peter.corke)
 - **代码：** <https://github.com/petercorke/robotics-toolbox-python>
 - **官方文档：** <https://petercorke.github.io/robotics-toolbox-python/>
 - **官方 Wiki：** <https://github.com/petercorke/robotics-toolbox-python/wiki>
