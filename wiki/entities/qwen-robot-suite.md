@@ -2,12 +2,13 @@
 type: entity
 tags: [qwen, embodied-ai, vla, navigation, world-models, agentic, foundation-model]
 status: complete
-updated: 2026-06-16
+updated: 2026-10-25
 related:
   - ./qwen-robot-nav.md
   - ./qwen-robot-manip.md
   - ./qwen-robot-world.md
   - ./qwen-vla.md
+  - ./paper-navmcp-long-horizon-navigation.md
   - ../methods/vla.md
   - ../tasks/vision-language-navigation.md
   - ../tasks/manipulation.md
@@ -17,6 +18,7 @@ sources:
   - ../../sources/blogs/qwen_robot_nav.md
   - ../../sources/blogs/qwen_robot_manip.md
   - ../../sources/blogs/qwen_robot_world.md
+  - ../../sources/papers/navmcp_arxiv_2608_30396.md
 summary: "Qwen-Robot Suite 是通义团队的具身基础模型套件：Qwen-RobotNav（可配置上下文导航）、Qwen-RobotManip（跨本体操作 VLA）、Qwen-RobotWorld（语言条件具身世界模型），三者均以语言优先接口暴露，可与通用 Qwen 规划器组合成 agentic 物理智能闭环。"
 ---
 
@@ -44,6 +46,7 @@ summary: "Qwen-Robot Suite 是通义团队的具身基础模型套件：Qwen-Rob
 
 - **分域对齐降低异构数据冲突：** 导航轨迹、遥操作、行车片段 **动作空间与观测格式** 差异大；Suite 用 **三个专用 foundation** 分别建模，避免 naive pooling。
 - **Agent 可组合：** 三模型 **language-first**，与通用 planner 组成 **两层系统**（高层分解 + 低层执行/导航/想象），已在 **桌面清理、开放世界寻物、语音提议操作** 等 demo 验证。
+- **长程导航对照：** [NavMCP](./paper-navmcp-long-horizon-navigation.md) 以 VLM + NFM 加入跨调用证据记忆，可与 Suite 的 agent 编排思路对读；两者是不同工作，NavMCP 摘要未称使用 Qwen-Robot 模型。
 - **开源入口清晰：** Nav / Manip 已有 GitHub 与 PDF 技术报告；World 以技术报告为主，便于与 [生成式世界模型](../methods/generative-world-models.md) 路线对照。
 
 ## 套件组成
@@ -105,6 +108,7 @@ flowchart TB
 - [Qwen-RobotManip](./qwen-robot-manip.md) — 跨本体操作 VLA 与 H2R 合成
 - [Qwen-RobotWorld](./qwen-robot-world.md) — 语言条件具身世界模型
 - [Qwen-VLA](./qwen-vla.md) — 通才 VLA 对照
+- [NavMCP](./paper-navmcp-long-horizon-navigation.md) — VLM + NFM 的长时程导航与证据记忆
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — VLN / EQA 任务语境
 - [Manipulation](../tasks/manipulation.md) — 操作任务与 VLA 选型
 - [Generative World Models](../methods/generative-world-models.md) — 世界模型方法纵览
