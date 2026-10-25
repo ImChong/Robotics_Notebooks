@@ -24,7 +24,7 @@
 
     /* ── 人形（外面一层 g 管退到左边） ── */
     var humG = E.el('g', {}, s);
-    var ground = K.paint(E.el('line', { x1: -120, y1: 388, x2: 120, y2: 388, 'stroke-width': 3, 'stroke-linecap': 'round' }, humG), null, E.BORDER);
+    K.paint(E.el('line', { x1: -120, y1: 388, x2: 120, y2: 388, 'stroke-width': 3, 'stroke-linecap': 'round' }, humG), null, E.BORDER);
     var hum = E.front(humG);
     hum.place(0, 1);
     var prev = E.tag(s, 300, 14, 200, 36, '上一集：人形难控', E.INK2, { size: 20, ink: E.INK2, weight: 700, fill: E.S2 });

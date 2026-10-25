@@ -228,8 +228,8 @@
     parent.appendChild(fo);
     return fo;
   };
-  // 上色的一个数：\textcolor{#hex}{x}；负号换成真正的减号
-  function cnum(x, hex) { var s = String(x).replace(/^-/, '-'); return hex ? '\\textcolor{' + hex + '}{' + s + '}' : s; }
+  // 上色的一个数：\textcolor{#hex}{x}（「-」在 KaTeX 数学模式里本来就排成减号）
+  function cnum(x, hex) { var s = String(x); return hex ? '\\textcolor{' + hex + '}{' + s + '}' : s; }
   // 列向量：col([3, 2]) → \begin{bmatrix}3\\2\end{bmatrix}；hex 可以是一个颜色或每个数各一个
   E.col = function (xs, hex) {
     return '\\begin{bmatrix}' + xs.map(function (x, i) { return cnum(x, Array.isArray(hex) ? hex[i] : hex); }).join('\\\\') + '\\end{bmatrix}';
