@@ -8,6 +8,7 @@
 - **arXiv：** <https://arxiv.org/abs/2610.31166>（v1，2026-10-22）
 - **项目页：** <https://memory-before-goal.github.io/>
 - **作者：** Chenyuan Chen、Ran Ding、Lechen Zhang、Zewen He、Yoshihiko Nakamura
+- **机构：** 穆罕默德·本·扎耶德人工智能大学（MBZUAI；[arXiv HTML v1](https://arxiv.org/html/2610.31166v1) 列出的作者单位）
 - **投稿信息：** arXiv 页面注明已投稿 IEEE Robotics and Automation Letters（RA-L）
 - **入库日期：** 2026-10-24
 - **一句话说明：** WholeBodyMem 为人形 VLA 保留机器人执行目标前观察到的物体事件，并通过目标物体引导的关键帧记忆支持后续全身移动操作。
