@@ -1,6 +1,6 @@
 # 视频发布清单：从头学人形机器人算法 · 零基础篇
 
-按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-11 尚未发布；下一集为 001。
+按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-25 已发布 001–002；下一集为 003。
 
 - 🎬 `<ep>`：本目录已有分镜与旁白源稿（`episodes/<ep>`），成片用 `render.mjs` 渲染（见 [README](README.md)）
 - 🆕：还没有视频，要新做
@@ -18,10 +18,10 @@
 
 ## 第一季 · 全景与数学打底（L−1、L0）
 
-- [ ] 001 [四步循环：感知 → 规划 → 控制 → 执行](../../roadmap/motion-control.md#l1-序言机器人技术栈全景--怎么读这条路线) 🎬 `ep001` — 只讲四步循环，以及本系列只钻「控制」这一盒；§L−1「30 秒看懂"一台机器人在干嘛"」。素材 c02「任何机器人都在循环跑同一个 4 步」、`svg/loop4.svg`。〔取舍〕§L−1 没有自测题，片尾也不出题；§L−1 把 SLAM 放在规划盒、§L7.1 放在感知层，片中按 §L7.1：感知负责建图定位，规划只拿地图找路
+- [x] 001 [四步循环：感知 → 规划 → 控制 → 执行](../../roadmap/motion-control.md#l1-序言机器人技术栈全景--怎么读这条路线) 🎬 `ep001` — 只讲四步循环，以及本系列只钻「控制」这一盒；§L−1「30 秒看懂"一台机器人在干嘛"」。素材 c02「任何机器人都在循环跑同一个 4 步」、`svg/loop4.svg`。〔取舍〕§L−1 没有自测题，片尾也不出题；§L−1 把 SLAM 放在规划盒、§L7.1 放在感知层，片中按 §L7.1：感知负责建图定位，规划只拿地图找路
   - 封面：**四步循环** ｜ 感知 → 规划 → 控制 → 执行 ｜ 从扫地机到人形机器人，拆开全是这一套
   - 信息框：主路线入门：机器人技术栈全景 ／ Robotics Notebooks · 不用数学 · 不用代码
-- [ ] 002 [为什么从人形 / 双足学起](../../wiki/entities/humanoid-robot.md) 🎬 `ep002` — 只讲人形的四个难点：高自由度、浮动基、接触切换、强不稳定；§L−1「为什么以"人形 / 双足"为主载体」。素材 c02「为什么以人形 / 双足为主载体」。〔取舍〕§L−1 没有自测题，片尾也不出题；路线原文每个难点只有一句，片中展开的说法另有出处：浮动基「只能靠脚踩地借力」见 [浮动基动力学](../../wiki/concepts/floating-base-dynamics.md)，四足站着更稳见 [四足机器人](../../wiki/entities/quadruped-robot.md)，轮式「推一把不翻」见 [人形与其他机器人的区别](../../wiki/concepts/humanoid-vs-other-robots.md)
+- [x] 002 [为什么从人形 / 双足学起](../../wiki/entities/humanoid-robot.md) 🎬 `ep002` — 只讲人形的四个难点：高自由度、浮动基、接触切换、强不稳定；§L−1「为什么以"人形 / 双足"为主载体」。素材 c02「为什么以人形 / 双足为主载体」。〔取舍〕§L−1 没有自测题，片尾也不出题；路线原文每个难点只有一句，片中展开的说法另有出处：浮动基「只能靠脚踩地借力」见 [浮动基动力学](../../wiki/concepts/floating-base-dynamics.md)，四足站着更稳见 [四足机器人](../../wiki/entities/quadruped-robot.md)，轮式「推一把不翻」见 [人形与其他机器人的区别](../../wiki/concepts/humanoid-vs-other-robots.md)
   - 封面：**人形难点** ｜ 多关节、浮动基、换脚、易倒 ｜ 把它控好，换到机械臂、四足几乎都更简单
   - 信息框：主路线入门：为什么以人形为主载体 ／ Robotics Notebooks · 不用数学 · 不用代码
 - [ ] 003 [向量与矩阵：机器人里的线性代数](../../wiki/entities/linear-algebra-curriculum.md) 🆕 — 只讲向量、矩阵乘法在描述位置和变换时的含义；§L0 核心问题「线性代数在机器人里到底怎么用」
