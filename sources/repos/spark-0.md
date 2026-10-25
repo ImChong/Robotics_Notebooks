@@ -12,7 +12,7 @@
 ## README 入口
 
 - 仓库说明基于 Qwen3-VL-4B 与 flow-matching action expert，并提供安装、checkpoint serving、训练、数据与部署说明。
-- HumanTouch 数据集与 SparkArena 数据/基准的开放边界以项目页后续链接为准；本次未找到 HumanTouch 的直接下载地址。
+- HumanTouch 数据集首批约 100 h 已公开：<https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch>；Hugging Face 镜像同步中：<https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch>。SparkArena 数据/基准的开放边界仍以项目页说明为准。
 
 ## 关联资料
 

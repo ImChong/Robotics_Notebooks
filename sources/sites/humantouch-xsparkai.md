@@ -7,31 +7,32 @@
 - **公司页：** <https://xsparkai.com/>
 - **发布日期：** 2026-08-07
 - **入库日期：** 2026-08-07
+- **复核日期：** 2026-10-25
 - **联系：** sparklab@xsparkai.com
 - **项目负责人：** Chuqiao Lyu
 - **核心成员：** Chenze Yu, Eric J Chen, Wenxuan Zhu
 - **通讯作者：** Wenbo Ding, Tianxing Chen, Qi Xiong
-- **数据集托管（宣称）：** [Hugging Face · XsparkAI](https://huggingface.co/XsparkAI)
-- **代码：** 截至入库日项目页**未列** GitHub / 训练仓链接
-- **配套论文：** 截至入库日项目页**未挂** arXiv / PDF
+- **数据集：** [ModelScope · Xspark-HumanTouch](https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch)；[Hugging Face · Xspark-HumanTouch](https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch)（同步中）
+- **代码：** 项目页未列独立 HumanTouch 采集/处理代码仓；关联策略论文 Spark-0 的模型代码已公开
+- **相关论文：** [Spark-0, arXiv:2610.22342](https://arxiv.org/abs/2610.22342)（使用 HumanTouch 数据进行触觉预训练，不是 HumanTouch 采集系统的独立论文）
 
 ## 一句话摘要
 
 Xspark AI SparkLAB 提出的 **人手可穿戴多模态触觉采集系统**：双手套压阻触觉（每手约 **360** 点）+ MANUS EMF 手姿 + 腕部 6-DoF + 头/腕多视角 RGB，强调 **可校准、可追溯、可质控** 的规模化接触数据，而非单纯堆小时数。
 
-## 开源状态（步骤 2.5 · 2026-08-07 核查）
+## 开源状态（复核于 2026-10-25）
 
 | 项 | 状态 | 证据 |
 |----|------|------|
-| 项目页 Code 链 | **无** | 页内仅 HF org 与 mailto；无 GitHub Code 按钮 |
+| HumanTouch 独立采集代码 | **未列** | 项目页无 HumanTouch 专属 GitHub/代码链接；关联 Spark-0 策略代码另见其仓库 |
 | GitHub org | 存在但无 HumanTouch 仓 | <https://github.com/XsparkAI>（可见 X-One-Pipeline 等，非本项目） |
-| 数据集 | **宣称将开源 / 待发布** | 文称渐进发布于 HF；首批约 **100 h** 目标 **2026-08-15**，随后扩至 **1,000 h** |
-| HF org 公开资产 | **空** | 截至入库日 `XsparkAI` 公开 models/datasets = 0 |
+| 数据集 | **已公开（首批）** | 官方页链接 ModelScope；Hugging Face 数据集仓库存在且卡片注明仍在上传。首批约 **100 h**；Spark-0 论文报告总规模 **1,000 h** |
+| 数据集内容核验 | **首批切片公开，镜像同步中** | HF 页面当前约 **2.09 TB / 52,826 rows**；数据卡列出 10 个规范任务与约 100 h 首发切片 |
 | 源码运行时序图 | **不适用** | 无可运行官方实现入口 |
 
-结论写入 wiki：按「宣称将开源数据、代码未列」处理；勿写「已开源可复现」。
+结论：HumanTouch 首批数据集已公开；独立采集代码未列。不要将 Spark-0 模型仓误标为采集系统代码。
 
-## 公开信息要点（截至入库日）
+## 公开信息要点（复核于 2026-10-25）
 
 - **传感取舍：** 选用柔性压阻手套以覆盖指面+手掌；承认非线性、迟滞、漂移与姿态伪迹，故配套姿态/历史感知标定与生命周期质控。
 - **手姿：** MANUS **EMF** 跟踪（相对 IMU 无积分漂移；金属干扰需控场）；触觉自接触用于校准指段长度/关节偏置。

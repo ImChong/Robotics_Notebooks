@@ -2,7 +2,7 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-25
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/paper-nestdex.md
@@ -63,7 +63,7 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 ## 融合趋势：视触觉混合采集
 
-目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。规模化人侧全掌压阻路线见 [HumanTouch](../entities/humantouch.md)（MANUS EMF 手姿 + 头/腕 RGB + 手套质控；数据待发）；人机共用开源磁触觉见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
+目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。规模化人侧全掌压阻路线见 [HumanTouch](../entities/humantouch.md)（MANUS EMF 手姿 + 头/腕 RGB + 手套质控；ModelScope 已发布首批约 100 h 数据）；人机共用开源磁触觉见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
 第三条通道是 **copilot / 共享自治采数**：操作员不再直接编全部手指关节。[NestDex](../entities/paper-nestdex.md) 用 1-DoF clutch 调节学到的内层手技能，人只管臂与进度；完整示范再训独立外层策略。它不替代手套或视觉重定向（内层技能仍靠多视重定向冷启动），但把「整任务手指协调」从操作员认知负荷里卸掉。
 

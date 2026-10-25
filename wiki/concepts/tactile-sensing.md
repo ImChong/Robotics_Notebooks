@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-25
 related:
   - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -76,7 +76,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区；**TacO** 显示高分辨率未必翻译为粗操作 IL 的更高成功率。
 
 ### 2. 电阻/电容式阵列 (Piezoresistive / Capacitive Arrays)
-- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）；同硬件亦出现在 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) 与廉价单点 **FSR**、液态金属 **eGain** 同台对比；人手全掌可穿戴例见 [HumanTouch](../entities/humantouch.md)（约 **360** 点/手压阻手套 + 姿态/历史感知标定与生命周期质控，数据待 HF 发布）。
+- **代表**：BioTac, 各种柔性薄膜阵列；夹爪集成例见 [VTAP Gripper](../entities/paper-vtap-gripper.md) 指尖 **FlexiTac**（\(32\times 12\) taxels，与 Fin-Ray 顺应指兼容）；同硬件亦出现在 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md) 与廉价单点 **FSR**、液态金属 **eGain** 同台对比；人手全掌可穿戴例见 [HumanTouch](../entities/humantouch.md)（约 **360** 点/手压阻手套 + 姿态/历史感知标定与生命周期质控；ModelScope 已公开首批数据）。
 - **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。
 - **优点**：易于做成柔性贴片包裹在机械手上，成本较低。
 - **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。
@@ -120,7 +120,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [VTAP Gripper（论文实体）](../entities/paper-vtap-gripper.md) — 指尖 FlexiTac 阵列 + 掌上光学视触主动掌
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 六传感器 × 三任务真机 ACT 对比；无通用最佳模态
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — GelSight 仿真栈上 Goal/Safety；触觉抬高软体安全率
-- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（数据待发）
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（首批数据已在 ModelScope 发布）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
 - [UVTA（跨本体视触觉动作建模）](../entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 人类可穿戴触觉示范与机器人遥操作联合训练，并用未来触觉预测塑造灵巧操作策略
 - [TactileStep（足底触觉跑酷）](../entities/paper-tactilestep.md) — G1 压力鞋垫 + 相位条件 RL；CoRL 2026 Spotlight

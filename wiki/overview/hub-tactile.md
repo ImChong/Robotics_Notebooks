@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-25
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -44,7 +44,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 传感器选型基准 | 跨模态真机 IL 对比 | [TacO](../entities/paper-taco-tactile-sensor-benchmark.md)（六传感器 × 三任务 ACT；无通用最佳模态 · arXiv:2605.21976） |
 | 可变形接触安全评测 | Goal vs Safety Success | [SoftVTBench](../entities/paper-softvtbench.md)（Isaac Sim FEM + GelSight；π₀.₅ VO/VT · arXiv:2607.04234） |
 | 数据+策略栈 | 力场表征 / VTLA / 触觉 WAM | [NeoteAI 𝒩₀](../entities/neoteai.md)（OpenNeoData 5k h；Foundation / VTLA / TWAM） |
-| 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；约 100 h 初版待 HF；代码未列） |
+| 人侧规模化采数 | 全掌压阻手套 + 手姿 + 多视角 RGB | [HumanTouch](../entities/humantouch.md)（Xspark SparkLAB；ModelScope 已发布约 100 h 首批数据；独立采集代码未列） |
 | 文献索引 | 2025–2026 触觉×VLA/WM/WAM 策展 | [Awesome Touch](../entities/awesome-touch.md)（sun254667；VTLA / 视触觉 WM / Sim2Real） |
 | 管线轴综述 | 多模态 + 多阶段策略–控制 | [TF-ART](../entities/paper-tf-art-tactile-force-survey.md)（arXiv:2608.07558；Awesome 清单已开源） |
 | 研究范式综述 | 力学驱动 ↔ 数据驱动操作 | [Tactile-Based Robotic Manipulation](../entities/paper-tactile-based-robotic-manipulation-survey.md)（arXiv:2610.30438；Annual Review，触觉操作综述） |
@@ -61,7 +61,7 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉抓取精修
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 跨模态触觉硬件 × 真机 ACT 选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — Goal/Safety Success；触觉抬高软体安全率
-- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可校准/质控的人侧视–触–运动数据（数据待发）
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可校准/质控的人侧视–触–运动数据（ModelScope 已公开首批约 100 h）
 - [NeoteAI / 𝒩₀ 三件套](../entities/neoteai.md) — OpenNeoData + NeoForce + VTLA/TWAM
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 触觉 VLA / 视触觉 WM / Tactile WAM 近期文献索引
 - [TF-ART 触觉/力觉综述](../entities/paper-tf-art-tactile-force-survey.md) — 管线轴 taxonomy；与 Touch 清单互补
