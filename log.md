@@ -245,6 +245,21 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-26] ingest | Real-Time EXPO-FT 官方代码状态复核
+
+- 官方项目页现链接至 `pd-perry/expo-ft`；更新论文与项目页归档的开放状态。
+- wiki 补充 README 中 server/client、异步训练入口及 OpenPI/DROID 分支复现路径。
+
+## [2026-10-26] ingest | Robotics Toolbox for Python — 归档官方仓库、在线文档与 ICRA 2021 论文入口；整理机械臂及移动机器人算法能力和实机部署边界。
+
+## [2026-10-26] ingest | NVIDIA Isaac Sim Agent Skills 官方文档与技能索引
+
+归档官方文档及源码索引，补充 Isaac Sim 实体页的 Agent 工作流和安全边界说明。
+
+## [2026-10-26] ingest | NVIDIA Isaac Lab Agent Skills 官方资料
+
+归档官方技能设计、3.0 EA 发布记录及 RL 调试和 PhysX/Newton 策略迁移示例，补充现有 Isaac Lab 实体页。
+
 ## [2026-10-26] ingest | blurt 工程反馈整理工具
 
 - 来源：AGI Hunt 官方仓库 README；项目页列于 README。
