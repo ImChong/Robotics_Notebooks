@@ -3,7 +3,6 @@ type: entity
 project_id: robotics-toolbox-python
 project: https://petercorke.github.io/robotics-toolbox-python/
 code: https://github.com/petercorke/robotics-toolbox-python
-papers: ["Corke & Haviland, ICRA 2021"]
 tags: [software, python, robotics, kinematics, inverse-kinematics, dynamics, trajectory-generation, manipulation, mobile-robot]
 status: complete
 updated: 2026-10-26
