@@ -154,6 +154,15 @@
     if (element) element.classList.remove('data-loading');
   }
 
+  // 「未找到」页面不进搜索引擎索引，避免 soft 404
+  function markPageNoindex() {
+    if (document.querySelector('meta[name="robots"]')) return;
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex';
+    document.head.appendChild(meta);
+  }
+
   function stripYamlFrontmatter(markdown) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source.startsWith('---\n')) return source;
@@ -3871,7 +3880,7 @@
   function renderMarkdownContent(markdown, headings, markdownContext) {
     let source = stripYamlFrontmatter(markdown);
     if (!source) {
-      return '<p>当前 detail page 暂无可同步正文。</p>';
+      return '<p>这篇知识页暂无正文。</p>';
     }
 
     const baseContext = markdownContext || {};
@@ -5695,6 +5704,7 @@
     const breadcrumb = document.getElementById('detailBreadcrumb');
 
     if (!detailPage) {
+      markPageNoindex();
       if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
       if (titleEl) titleEl.textContent = '未找到这篇知识页';
@@ -5821,7 +5831,7 @@
       contentSectionEl.hidden = !contentMarkdown;
     }
     if (contentEl) {
-      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext) : '<p>当前 detail page 暂无可同步正文。</p>';
+      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext) : '<p>这篇知识页暂无正文。</p>';
       renderDetailMath(contentEl);
       detailMermaidPromise = renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
@@ -5844,7 +5854,7 @@
     });
     renderRelatedCommunityDistribution(document.getElementById('detailRelatedCommunityDist'), detailPage.related, detailPages);
     renderInternalLinks(relatedEl, detailPage.related, detailPages, {
-      emptyText: '当前 detail page 暂无 related。',
+      emptyText: '暂无相关页面。',
       compact: true,
       metaExtra: function (id, page) {
         return page && page.updated ? String(page.updated) : '';
@@ -5878,7 +5888,7 @@
         .catch(function () { renderRecommendedRows(null); });
     }
 
-    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。', {
+    renderSourceCards(sourceEl, detailPage.source_links, '暂无来源链接。', {
       compact: true,
       detailPages: detailPages
     });
@@ -5928,15 +5938,16 @@
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
 
     if (!roadmapPage) {
+      markPageNoindex();
       if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
-      if (titleEl) titleEl.textContent = '未找到对应 roadmap page';
+      if (titleEl) titleEl.textContent = '未找到这条路线';
       if (summaryEl) {
-        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>roadmap.html?id=roadmap-motion-control</code>。';
+        summaryEl.innerHTML = '链接可能不完整或路线已调整。<a href="roadmap.html?id=roadmap-motion-control">从主路线开始</a>，或<a href="index.html#home-more-routes">回首页选择纵深路线</a>。';
         removeLoadingState(summaryEl);
       }
       if (metaEl) {
-        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 roadmap_pages 项。</p>';
+        metaEl.innerHTML = '';
         removeLoadingState(metaEl);
       }
       if (breadcrumb) removeLoadingState(breadcrumb);
@@ -6378,7 +6389,7 @@
           '  <ul>' + nodeRelatedHtml + '</ul>' +
           '</article>';
       }
-      techMapNodeGrid.innerHTML = nodeCardsHtml || '<article class="card"><p>暂无 tech-map 节点数据</p></article>';
+      techMapNodeGrid.innerHTML = nodeCardsHtml || '<article class="card"><p>暂无技术地图节点。</p></article>';
       removeLoadingState(techMapNodeGrid);
     }
   }
@@ -7113,7 +7124,7 @@
   // 列表与正文多为异步渲染，用 MutationObserver 登记后来插入（或取消 hidden）的元素；
   // 祖先仍在等待入场时子元素不再单独登记，随祖先一起出现，避免位移叠加。
   if (!document.getElementById('graph-wrap') && !prefersReducedMotion && typeof IntersectionObserver !== 'undefined') {
-    var REVEAL_MS = 700;
+    var REVEAL_MS = 800;
     var REVEAL_STAGGER_MS = 70;
     var REVEAL_BATCH_MAX = 1000;
     var REVEAL_SELECTOR = [
