@@ -2,9 +2,10 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-25
 related:
   - ../entities/paper-kamino.md
+  - ../entities/paper-monorace-champion-level-drone-racing.md
   - ../concepts/rl-runner.md
   - ../entities/embodied-interview-qa.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
@@ -182,6 +183,7 @@ flowchart TD
 - 人形机器人全身控制
 - 机械臂操作
 - 多指灵巧手操作
+- **高速无人机竞速：** [MonoRace](../entities/paper-monorace-champion-level-drone-racing.md) 用强化学习训练的小型神经网络以 500 Hz 直接输出电机命令，并在论文中报告 2025 年 A2RL 竞赛结果。
 - **微型机器人导航：** [Minute-scale training for microrobot navigation](../entities/paper-minute-scale-microrobot-navigation.md) 通过向量化血管仿真和 TSR 奖励，将导航策略训练压缩至 10 分钟以内，并在不同微机器人形态与未见场景中验证零样本迁移。
 
 ## 优势
@@ -345,6 +347,7 @@ flowchart LR
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景
 
 ### 论文入口
+- [MonoRace：单目 AI 高速自主无人机竞速](../entities/paper-monorace-champion-level-drone-racing.md) — 单目视觉与 IMU 状态估计后，由小型 RL 网络直接控制电机。
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 - [Survey Papers](../../references/papers/survey-papers.md)
 
