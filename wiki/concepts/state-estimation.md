@@ -2,7 +2,7 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-10-16
+updated: 2026-10-25
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../queries/contact-wrench-closed-loop.md
@@ -15,6 +15,7 @@ related:
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-x-ionet-cross-platform-inertial-odometry.md
   - ../entities/paper-p3.md
+  - ../entities/paper-monorace-champion-level-drone-racing.md
   - ./humanoid-policy-observation-inputs.md
 sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
   - ../../sources/papers/trackeverything_arxiv_2609_30222.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/monorace_arxiv_2601_15222.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
 ---
 
@@ -322,6 +324,10 @@ print("estimated:", x_est)
 
 优点：能抑制长时间漂移。
 缺点：计算重、延迟高、对环境有依赖。
+
+## 高速无人机中的单目状态估计
+
+[MonoRace](../entities/paper-monorace-champion-level-drone-racing.md) 将单目滚动快门相机的赛道门框分割、IMU 观测和无人机模型结合起来估计高速飞行状态，并通过已知门框几何与机载数据离线细化估计参数。这一案例说明，状态估计的传感器融合与标定策略需要适配平台动态和可用环境先验。
 
 ## 在控制链里的位置
 
