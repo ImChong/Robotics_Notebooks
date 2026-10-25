@@ -5,7 +5,7 @@
 - **标题：** GPU unlock
 - **类型：** repo（Linux GPU 内核模块）
 - **链接：** <https://github.com/Zagitta/gpu-unlock>
-- **许可：** GPL-2.0-only（以仓库 LICENSE 为准）
+- **许可：** 入库时未能在仓库根目录定位 LICENSE 文件；许可信息待核实。
 - **入库日期：** 2026-10-25
 - **一句话说明：** 在 NVIDIA 驱动绑定前设置 SM speed-select 寄存器，针对部分 RTX 30 系列 Ampere 卡恢复 FP16/BF16/TF32 输入、FP32 累加模式的指令发射速率。
 - **代码：** <https://github.com/Zagitta/gpu-unlock>（**已开源**）
