@@ -37,9 +37,10 @@
 
       /* ── 左：交互窗口 ── */
       var py = E.code(s, 10, 14, 440, 392, { title: 'Python', size: 25 });
-      py.line('>>> p = np.array([{a:3}, {a:2}])', 0, { dur: 0, alpha: 0.55 });
-      py.line('>>> R = np.array([[{g:0}, {w:-1}],', 0, { dur: 0, alpha: 0.55 });
-      py.line('...               [{g:1},  {w:0}]])', 0, { dur: 0, alpha: 0.55 });
+      // 上一幕已经跑过的三句：当成已有的内容（out），光标不停在它们后面
+      py.line('>>> p = np.array([{a:3}, {a:2}])', 0, { out: true, alpha: 0.55 });
+      py.line('>>> R = np.array([[{g:0}, {w:-1}],', 0, { out: true, alpha: 0.55 });
+      py.line('...               [{g:1},  {w:0}]])', 0, { out: true, alpha: 0.55 });
       var L_AT = py.line('>>> R {h:@} p', KEYS[0], { keys: KEYS });
       var L_OUT = py.line('array([{a:-2},  {a:3}])', OUT, { out: true });
       var L_STAR = py.line('>>> R {b:*} p', STAR, { dur: 0.6 });
