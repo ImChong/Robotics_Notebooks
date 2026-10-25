@@ -120,10 +120,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     if (map) node.querySelectorAll('b, strong').forEach(function (b) { if (map[b.textContent]) b.style.color = map[b.textContent]; });
   }
   function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
-  function fadeUp(node, t, a, d) {
+  /* 淡入并往上滑 dist px（默认 40） */
+  function fadeUp(node, t, a, d, dist) {
     var p = K.ease(clamp((t - a) / (d || 0.6), 0, 1));
     node.style.opacity = p;
-    node.style.transform = 'translateY(' + ((1 - p) * 40).toFixed(1) + 'px)';
+    node.style.transform = 'translateY(' + ((1 - p) * (dist || 40)).toFixed(1) + 'px)';
   }
   function shown(node) { node.style.opacity = 1; node.style.transform = 'none'; }
   /* 一行放下：比 maxW 宽就逐级缩字号（不折行），最小到 minFs */
@@ -349,7 +350,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
         stack(els, gaps, SAFE_TOP, CONTENT_BOTTOM);
         fadeUp(head, st, 0);
         pts.forEach(function (p, k) { fadeUp(p, st, R.items[k].at); });
-        if (foot) fadeUp(foot, st, R.foot.at);
+        if (foot) fadeUp(foot, st, R.foot.at, 0.6, 16);   // 结论行紧挨着字幕（top 1318）：只滑 16px，淡入时不碰到字幕
       }
     };
   }
