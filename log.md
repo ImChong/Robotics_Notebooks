@@ -245,6 +245,12 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] ingest | NVIDIA SimReady Assets — 归档 Hugging Face 数据集规模与开放边界
+
+- 核对 NVIDIA 的 Hugging Face 数据集页、SimReady Central 公告及官方文档。
+- 记录页面所示 2,575 个 3D Assets、222 行 Viewer 数据与 472 GB，并注明页面尚无 dataset card。
+- 明确 SimReady 属性随资产/profile 而异，许可需按资产包核查；补充现有 SimReady Central 实体页与来源映射。
+
 ## [2026-10-25] ingest | 归档 SpaceX 火箭回收动力下降的一手资料
 
 - 收录 SpaceX 着陆工程师 Lars Blackmore 关于 F9R 精确着陆的技术文章，以及 SpaceX 官方 Grasshopper 垂直起降测试视频。
