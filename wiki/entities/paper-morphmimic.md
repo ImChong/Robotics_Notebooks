@@ -49,7 +49,7 @@ sources:
 ### 双接口训练流程
 
 ```mermaid
-flowchart LR
+flowchart TB
   data["BONES-SEED 参考动作"] --> retarget["X2 与 T2 动作重定向"]
   retarget --> model["按机器人映射的训练环境"]
   model --> wm["形态条件化共享世界模型"]
