@@ -156,10 +156,9 @@
       var hand = line(watch, E.ACC, 3);
       put(hand, [300, 340], [300, 326]);
       K.paint(E.el('circle', { cx: 300, cy: 340, r: 2.5 }, watch), E.ACC);
-      // 「1 秒」用 accent，和秒表归成一组；用 ink2 时和同一水平线上的灰色「出处：…」连成一句
+      // 「1 秒」用 accent，和秒表归成一组
       var oneSec = E.txt(s, 300, 384, '1 秒', 18, E.ACC);   // 离秒表圈远一点（圈底 y 361.5）
       var rate = E.txt(s, 335, 348, '每秒几百～上千次', 28, E.ACC, 'start', 700);
-      var source = E.txt(s, 335, 380, '出处：主路线 L4.0 方法谱系表', 18, E.MUT, 'start');
       var more = E.txt(s, 582, 348, '甚至更多', 22, E.ACC, 'start');
 
       return {
@@ -265,12 +264,11 @@
           var ru = (st - REDO) / 0.45;
           E.op(redo, ru <= 0 ? 0 : ru < 1.5 ? 0.5 - 0.5 * Math.cos(TAU * ru) : 1);
 
-          /* 27.8 秒表：指针按 t 一秒一圈；28.9 每秒几百～上千次 + 出处；30.0 甚至更多 */
+          /* 27.8 秒表：指针按 t 一秒一圈；28.9 每秒几百～上千次；30.0 甚至更多 */
           E.pop(watch, 300, 338, fade(st, 27.8, 0.35), 0.7);
           hand.setAttribute('transform', 'rotate(' + (360 * (((t % 1) + 1) % 1)).toFixed(1) + ' 300 340)');
           E.op(oneSec, fade(st, 27.9, 0.35));
           slide(rate, -12, fade(st, 28.9, 0.35));
-          E.op(source, fade(st, 29.05, 0.35));
           slide(more, -12, fade(st, 30.0, 0.35));
         }
       };
