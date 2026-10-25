@@ -8,13 +8,14 @@
 - **arXiv：** <https://arxiv.org/abs/2609.18207>
 - **机构：** 斯坦福大学（Stanford University）
 - **入库日期：** 2026-09-17
+- **最后复核：** 2026-10-26
+- **代码：** <https://github.com/pd-perry/expo-ft>（已开源；EXPO-FT 与 Real-Time EXPO-FT 共仓）
 - **一句话说明：** EXPO-FT + 慢生成/快 edit + Q 选 chunk 的实时 VLA 在线 RL 框架。
 - **沉淀到 wiki：** [`wiki/entities/paper-real-time-expo-ft.md`](../../wiki/entities/paper-real-time-expo-ft.md)
 
 ## 开源状态
 
-- **待发布**（步骤 2.5 核查，2026-09-17）。
-- 页内 **Code** 链为 `#` 占位；BibTeX 仍为匿名占位作者。
+- **已开源**（复核于 2026-10-26）：页内 Code 链指向 `pd-perry/expo-ft`；该仓库 README 标明包含两篇 EXPO-FT 论文的代码，并给出 Real-Time 的分支与运行入口。
 
 ## 项目页要点
 
