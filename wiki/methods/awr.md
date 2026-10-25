@@ -8,6 +8,7 @@ related:
   - ../entities/protomotions.md
   - ../entities/paper-topreward.md
   - ../entities/paper-kai0.md
+  - ../entities/paper-softmax-cross-entropy-fix.md
   - ./reinforcement-learning.md
   - ./policy-optimization.md
 sources:
@@ -51,6 +52,7 @@ AWR 不直接计算策略梯度，而是通过对优势函数进行指数加权�
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — 竞赛中把 AWR 重采样与 RECAP 条件化叠在 π₀.₅ 上。
 - [TOPReward](../entities/paper-topreward.md) — 用零样本 VLM 进度作 advantage 的 TOP-AWR 真机 BC。
 - [χ₀ / kai0](../entities/paper-kai0.md) — Stage Advantage → advantage-weighted BC，相对值差式 RECAP 更稳。
+- [A Fix for Softmax and Cross-Entropy](../entities/paper-softmax-cross-entropy-fix.md) — 交叉熵高置信度时的浮点梯度坍缩分析；实验并非机器人训练验证。
 
 ## 参考来源
 - [机器人论文阅读笔记：Advantage Weighted Regression](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
