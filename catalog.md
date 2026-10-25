@@ -2750,6 +2750,7 @@
 - [MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）](wiki/entities/paper-momad.md) — MomAD**（*Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving*，[2503.03 `📅unknown` `[entity_page]`
 - [Momentum Control（HMI P004）](wiki/entities/paper-momentum-control-hierarchical-id.md) — Momentum Control**（*Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Hum `📅unknown` `[entity_page]`
 - [单目深度估计综述：进展与机遇](wiki/entities/paper-monocular-depth-estimation-survey.md) — Monocular Depth Estimation from a Single Image: Progress and Opportunities**（[arXiv:2609.01172](ht `📅unknown` `[entity_page]`
+- [MonoRace（Winning Champion-Level Drone Racing with Robust Monocular AI）](wiki/entities/paper-monorace-champion-level-drone-racing.md) — MonoRace** 是代尔夫特理工大学提出的自主竞速无人机系统：它将单目视觉与 IMU 状态估计、赛道几何离线校准和 500 Hz 直接电机控制组合起来，在不使用 GPS 或外部运动捕捉的条件下 `📅unknown` `[entity_page]`
 - [MoReFlow](wiki/entities/paper-moreflow-motion-retargeting-flow.md) — MoReFlow**（*MoReFlow: Motion Retargeting Learning through Unsupervised Flow Matching*，arXiv:[2509. `📅unknown` `[entity_page]`
 - [MorphAct：机器人策略随操作情境改变参数](wiki/entities/paper-morphact.md) — MorphAct 让 VLA 的低秩参数更新随当前情境生成，并让视觉语言侧与动作侧生成器耦合训练，以缓解共享参数在不同操作之间的梯度冲突。 `📅unknown` `[entity_page]`
 - [MorphMimic：跨人形机器人共享可微世界模型与跟踪策略](wiki/entities/paper-morphmimic.md) — MorphMimic**（*Morphology-Conditioned World Model and Policy Sharing Across Humanoids*，2026 技术报告）由加 `📅unknown` `[entity_page]`
