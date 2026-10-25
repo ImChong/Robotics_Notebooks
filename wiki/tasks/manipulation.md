@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-10-25
 related:
+  - ../entities/paper-handson.md
   - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
@@ -96,6 +97,10 @@ related:
   - ../entities/paper-blind-grasp-reflex.md
   - ../entities/paper-mocap-mobile-code-as-policies.md
 sources:
+  - ../../sources/papers/handson_arxiv_2610_26765.md
+  - ../../sources/sites/handson-project-page.md
+  - ../../sources/repos/handson.md
+  - ../../sources/datasets/handson_datasets.md
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
@@ -495,6 +500,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [自动化仿生对话面部机构合成](../entities/paper-automated-facial-mechanisms-animatronic.md)
 
 ### 数据集与基准
+
+- [HandsOn](../entities/paper-handson.md) — 66 项跨具身灵巧操作仿真任务；Core-50 提供示范，Transfer-16 测无目标示范迁移，含 18,000 条 PhysX 示范数据。
 
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）
 - [DexVerse](../entities/paper-dexverse.md) — 100 项多任务多具身灵巧 benchmark + 3,180 VR 示范；IL/VLA 基线均值成功率 34%（arXiv:2607.08751，UNC/HKU/Berkeley）
