@@ -15,6 +15,19 @@
 
 ---
 
+## Agent Skills（官方文档更新：2026-10-14）
+
+Isaac Sim 官方文档将 Agent Skills 定义为按需加载的版本控制工作流指南，供 Cursor、Claude Code、Codex CLI 等 AI 编码 Agent 执行仿真任务。每项技能以 `SKILL.md` 为主体，可带辅助脚本与参考资料。
+
+- 官方文档列出安装、运行中实例控制、机器人资产转换、物理配置、导航、操作、传感器、合成数据、渲染、ROS 2 等技能。
+- 技能位于 Isaac Sim 仓库的 `skills/`，官方文档称它也随 pip 与二进制安装包分发；`skills/SKILLS.md` 是分类索引。
+- 根目录的 `AGENTS.md`、`CLAUDE.md` 等指引文件帮助 Agent 发现技能。官方文档还提示，远程控制类技能可在 Kit 进程中执行任意 Python，应将服务绑定到 localhost 并保护运行环境。
+
+- **Agent Skills 官方文档：** <https://docs.isaacsim.omniverse.nvidia.com/6.2.0/development_tools/agent_skills.html>
+- **技能目录与索引：** <https://github.com/isaac-sim/IsaacSim/tree/develop/skills>
+- **索引文件：** <https://github.com/isaac-sim/IsaacSim/blob/develop/skills/SKILLS.md>
+- **官方文档归档：** [`nvidia-isaac-sim-agent-skills.md`](../sites/nvidia-isaac-sim-agent-skills.md)
+
 ## 核心定位
 
 Isaac Sim 解决的是「高保真机器人仿真工作台」问题，而不是 RL 训练框架本身：
