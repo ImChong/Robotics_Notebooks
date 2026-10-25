@@ -5,17 +5,19 @@ date: 2026-09-28
 tags: [framework, gpu, cuda, nvidia, deployment, jetson]
 status: complete
 summary: "NVIDIA CUDA 是 GPU 并行计算平台与工具链：编程模型、NVCC/runtime、数学库与 Nsight；TensorRT、Warp、Isaac 与 JetPack 机载栈均建立在其驱动+CTK 版本对齐之上。"
-updated: 2026-09-28
+updated: 2026-10-25
 related:
   - ./tensorrt.md
   - ./nvidia-warp.md
   - ./nvidia-jetson.md
+  - ./gpu-unlock.md
   - ./curobo.md
   - ../comparisons/robot-policy-deployment-dev-board-selection.md
   - ../queries/vla-deployment-guide.md
 sources:
   - ../../sources/sites/nvidia-cuda-toolkit-docs.md
   - ../../sources/repos/cuda-samples.md
+  - ../../sources/sites/gpu-unlock.md
 ---
 
 # NVIDIA CUDA
@@ -73,6 +75,7 @@ flowchart LR
 | **Linux 新装 CTK** | 13.4+ **单独安装驱动**；勿假设 runfile 仍捆绑 driver |
 | **低延迟 VLA / 策略** | 固定 input shape → 考虑 **CUDA Graph** + Nsight 验证 launch gap；见 Best Practices「Assess → Deploy」 |
 | **调试数值** | sim2real 敏感算子注意 **FP32 非结合律**（Best Practices §7.3） |
+| **评估非官方 speed-select 工具** | [GPU Unlock](./gpu-unlock.md) 的寄存器级吞吐、GEMM 与完整推理数据分层判断；不能把指令微基准当作应用加速 |
 | **学习路径** | 读 Programming Guide Part 1–2 → 跑 [`cuda-samples`](https://github.com/NVIDIA/cuda-samples) 对照 → 用 Nsight  profile 自己的 ONNX/TRT 环 |
 
 ## 局限与风险
@@ -87,6 +90,7 @@ flowchart LR
 - [TensorRT](./tensorrt.md) — 建立在 CUDA 上的推理编译/runtime
 - [NVIDIA Warp](./nvidia-warp.md) — Python JIT 到 CUDA kernel
 - [NVIDIA Jetson](./nvidia-jetson.md) — JetPack 捆绑 CUDA 的机载平台
+- [GPU Unlock](./gpu-unlock.md) — 非官方预驱动 speed-select 配置与实测边界
 - [cuRobo](./curobo.md) — CUDA 端到端运动规划示例
 - [机器人运控开发板选型（按策略网络模型）](../comparisons/robot-policy-deployment-dev-board-selection.md)
 - [VLA 部署指南](../queries/vla-deployment-guide.md)
@@ -95,6 +99,7 @@ flowchart LR
 
 - [NVIDIA CUDA Toolkit 官方文档（一手资料）](../../sources/sites/nvidia-cuda-toolkit-docs.md)
 - [NVIDIA/cuda-samples（官方示例仓库）](../../sources/repos/cuda-samples.md)
+- [GPU Unlock 项目入口](../../sources/sites/gpu-unlock.md)
 
 ## 推荐继续阅读
 
