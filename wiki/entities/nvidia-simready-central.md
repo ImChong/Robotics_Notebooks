@@ -4,7 +4,7 @@ project_id: nvidia-simready-central
 project: https://huggingface.co/spaces/nvidia/simready-central
 code: https://github.com/NVIDIA-Omniverse/simready-central
 status: complete
-updated: 2026-10-24
+updated: 2026-10-25
 tags:
   - entity
   - nvidia
@@ -27,6 +27,7 @@ related:
 sources:
   - ../../sources/sites/nvidia-simready-central.md
   - ../../sources/repos/nvidia-simready-central.md
+  - ../../sources/datasets/nvidia-simready-assets.md
 summary: "NVIDIA SimReady Central：Hugging Face 上免费、无需门控的 2,000+ SimReady OpenUSD 仿真资产入口；聚合 OEM/供应商数据集，支持 USD Search 与 Agent 发现、组装场景，资产许可证按包核对。"
 institutions:
   - nvidia
@@ -85,6 +86,10 @@ flowchart LR
 
 NVIDIA 公告给出的典型流程是：按任务描述检索资产 → 将资产引用到 OpenUSD stage → 生成场景组装代码 → 配置操作任务 → 渲染预览供人检查。示例面向 Isaac Sim 中的仓储抓取和 AI 工厂布局；这说明它支持 Agent 辅助仿真工作流，不等于资产能自动变成任意游戏引擎里的即用素材。
 
+### NVIDIA/SimReady Assets 数据集实例
+
+Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/datasets/nvidia/simready-assets)是该生态中的一个具体资产集。数据集页在 2026-10-25 显示 2,575 个 3D Assets、222 行 Viewer 数据和 472 GB 总文件大小；这些是页面上的不同统计口径。页面尚无 dataset card，因而需根据单个资产、profile 和元数据核验物理属性与许可。不能把 SimReady 的目标能力概括成“每个模型都带质量、重心、材质”。
+
 ## 工程实践
 
 | 目标 | 做法 |
@@ -123,11 +128,13 @@ NVIDIA 公告给出的典型流程是：按任务描述检索资产 → 将资�
 ## 参考来源
 
 - [NVIDIA SimReady Central 官方公告归档](../../sources/sites/nvidia-simready-central.md)
+- [NVIDIA SimReady Assets 数据集归档](../../sources/datasets/nvidia-simready-assets.md)
 - [NVIDIA-Omniverse/simready-central 仓库归档](../../sources/repos/nvidia-simready-central.md)
 
 ## 推荐继续阅读
 
 - [NVIDIA/Hugging Face：SimReady Central 公告](https://huggingface.co/blog/nvidia/simready-central-assets-robotics-ai-factories)
 - [SimReady Central 资产搜索](https://huggingface.co/spaces/nvidia/simready-central)
+- [NVIDIA SimReady Assets 数据集](https://huggingface.co/datasets/nvidia/simready-assets)
 - [SimReady Foundation](https://github.com/NVIDIA/simready-foundation) — 规范、profile 与校验工具
 - [USD Search](https://github.com/NVIDIA-Omniverse/usd-search) — OpenUSD 资产检索组件
