@@ -22,6 +22,16 @@ summary: "Barron、Gnanapragasam 与 Tschannen（Google DeepMind，arXiv:2610.31
 
 **在高置信度分类与学生教师 logits 接近时，避免浮点舍入把正确梯度抹掉或制造伪梯度。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CE | Cross-Entropy | 分类与蒸馏常用损失；本文修正其数值实现 |
+| KL | Kullback–Leibler Divergence | 学生与教师分布差异；蒸馏实验中理论值应为零 |
+| bf16 / fp32 / fp64 | bfloat16 / 32-bit / 64-bit Floating Point | 论文对比的三种浮点精度 |
+| LSE | Log-Sum-Exp | 对非目标类 logits 求和以得到目标 margin |
+| JAX | JAX | 论文给出修正版参考实现所用的数值计算框架 |
+
 ## 两类问题
 
 | 问题 | 发生位置 | 标准实现的误差 |

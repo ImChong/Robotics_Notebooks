@@ -2,7 +2,7 @@
 type: concept
 tags: [in-context-learning, icl, manipulation, imitation-learning, vla, foundation-policy, one-shot, physical-prompting, memory]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-25
 related:
   - ../../roadmap/depth-icl.md
   - ./foundation-policy.md

@@ -86,6 +86,14 @@ Hugging Face 发布的 PhysX 数据包含 18,000 条 episode、6,053,555 帧，3
 5. 复现论文 checkpoint 分数还需要对应权重；仓库本身不包含该 checkpoint。
 6. 将定性真机 rollout 作为 sim-to-real 证据参考，不等同于大规模真机 benchmark。
 
+## 与其他工作对比
+
+| 基准 | 主要范围 | 与 HandsOn 的区别 |
+|------|----------|------------------|
+| [DexVerse](./paper-dexverse.md) | Isaac Lab 上 100 项模块化灵巧操作任务、3 臂 × 6 手、VR 遥操作示范 | 同为仿真跨具身灵巧操作 benchmark；HandsOn 额外拆出无目标示范的 Transfer-16，专测迁移、技能组合与可变形操作 |
+| [DexBench](./dexbench.md) | 工业灵巧操作开放规格，配可采购实物与难度诊断 | 以真实物体规格和能力包络为中心；HandsOn 以仿真闭环 task checker 评分并公开 PhysX 示范数据 |
+| [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) | MLLM、世界模型与策略层评测谱系 | HandsOn 属策略任务成功率评测层，分数不代表上游感知或真机部署能力 |
+
 ## 源码运行时序图
 
 仓库提供统一评测入口和模型适配接口。示范数据为可选项：它可经 dataset reader 用于训练或离线分析；闭环评测则由任务环境产生观测，策略返回动作，模拟器与任务检查器完成 rollout 评分。
@@ -145,6 +153,7 @@ sequenceDiagram
 - [模仿学习](../methods/imitation-learning.md) — 从示范学习操作策略
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 接触建立、力控制与维持目标的核心问题
 - [Isaac Sim](./isaac-sim.md) — 默认仿真运行环境
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属其策略任务成功率评测层：仿真闭环灵巧操作 benchmark
 
 ## 参考来源
 
