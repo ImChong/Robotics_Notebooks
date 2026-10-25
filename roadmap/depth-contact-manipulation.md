@@ -95,6 +95,8 @@ flowchart LR
 - [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
 - [DexBench](../wiki/entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
+- [模仿学习接触丰富任务综述](../wiki/entities/paper-imitation-learning-contact-rich-tasks-survey.md) — 按接触感知、力/触觉表征与策略结构梳理 IL 在接触丰富操作上的方法谱系
+- [HandsOn](../wiki/entities/paper-handson.md) — 跨具身灵巧操作仿真平台与 benchmark（66 任务 / 18,000 条示范，Core-50 + Transfer-16）
 
 ### 推荐做什么
 - 用 ACT 框架收集遥操作数据并训练一个抓取策略
