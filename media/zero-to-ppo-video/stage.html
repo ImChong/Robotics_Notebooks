@@ -369,6 +369,9 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     next.style.borderColor = 'var(--demo-accent)';
     h('div', 'n', next, '下一集 · ' + O.next.ep).style.color = 'var(--demo-accent)';
     richInto(h('div', '', next), O.next.q);
+    // 完整内容的网址卡片（仿论文系列片尾的笔记网址框）
+    var link = O.link ? h('div', 'meta', root, O.link.s) : null;
+    if (link) { link.style.textAlign = 'center'; link.style.fontSize = '29px'; link.style.padding = '22px 34px'; }
     var end = h('div', 'footer', root); richInto(end, O.end.s);
     end.style.whiteSpace = 'normal';
     return {
@@ -379,8 +382,10 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
           fadeUp(quiz, st, 0.1);
           waitBar.style.width = (100 * clamp((st - O.quiz.thinkFrom) / (O.quiz.revealAt - O.quiz.thinkFrom), 0, 1)) + '%';
           fadeUp(ans, st, O.quiz.revealAt);
-        } else stack([next, end], [30], SAFE_TOP, CONTENT_BOTTOM);
+        } else if (link) stack([next, link, end], [30, 30], SAFE_TOP, CONTENT_BOTTOM);
+        else stack([next, end], [30], SAFE_TOP, CONTENT_BOTTOM);
         fadeUp(next, st, O.next.at);
+        if (link) fadeUp(link, st, O.link.at);
         fadeUp(end, st, O.end.at);
       }
     };
