@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [paper, humanoid, VLA, object-memory, loco-manipulation, keyframe-memory]
+tags: [paper, humanoid, VLA, object-memory, loco-manipulation, keyframe-memory, mbzuai]
 status: draft
-updated: 2026-10-24
+updated: 2026-10-25
 project_id: wholebodymem-prehistory-memory-humanoid-loco-manipulation
 arxiv: "2610.31166"
 project: https://memory-before-goal.github.io/
@@ -28,6 +28,8 @@ summary: "WholeBodyMem equips humanoid VLA policies with object-guided keyframe 
 | HuMeGo | 论文基准名 | 六项仿真 + 六项真机 G1 任务的记忆依赖基准 |
 | G1 | Unitree G1 humanoid robot | 真机平台 |
 | RA-L | IEEE Robotics and Automation Letters | 论文投稿期刊 |
+
+| 机构 | 穆罕默德·本·扎耶德人工智能大学（MBZUAI；[arXiv HTML v1](https://arxiv.org/html/2610.31166v1) 列出的作者单位） |
 
 ## 核心方法
 
