@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-10-20
+updated: 2026-10-25
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-egophi.md
@@ -196,7 +196,7 @@ sources:
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
-- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可规模化人侧接触–运动–视觉数据（压阻手套；数据待发）
+- [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可规模化人侧接触–运动–视觉数据（压阻手套；首批约 100 h 已公开）
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [EgoPHI](../entities/paper-egophi.md) — **ego 视觉** 预测双手–物体 mesh **per-vertex 接触与 3D 力**；SOFA 仿真监督 + 透光真机 sim-to-real（arXiv:2608.13014；ETH SIPLAB）
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）

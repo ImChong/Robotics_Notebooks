@@ -2,7 +2,7 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-09-19
+updated: 2026-10-25
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
@@ -75,7 +75,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **原理**：通过弯曲传感器或 IMU 阵列直接测量人类指节的弯曲度。
 - **优点**：数据极其稳定，不受视觉遮挡影响。SenseGlove 等高级型号还能提供力反馈（Haptic Feedback），让操作者“摸”到虚拟物体。
 - **缺点**：价格极其昂贵（数万美金）；设备校准繁琐。
-- **触觉增强手套（人侧采数）**：[HumanTouch](../entities/humantouch.md) 在 MANUS **EMF** 手姿之上叠加全掌压阻触觉（约 **360** 点/手）与头/腕多视角 RGB，用姿态/历史感知标定与手套日检把「规模化」写成可追溯质控协议；初版约 100 h 宣称 HF 发布，**代码截至 2026-08-07 未列**。人机共用磁触觉迁移则见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
+- **触觉增强手套（人侧采数）**：[HumanTouch](../entities/humantouch.md) 在 MANUS **EMF** 手姿之上叠加全掌压阻触觉（约 **360** 点/手）与头/腕多视角 RGB，用姿态/历史感知标定与手套日检把「规模化」写成可追溯质控协议；首批约 100 h 已在 ModelScope 发布，HF 镜像同步中；**HumanTouch 独立采集代码未列**。人机共用磁触觉迁移则见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
 ## 3. 仿真示教与自动生成 (Synthesized Data)
 
@@ -106,7 +106,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [TeleDexter（论文实体）](../entities/paper-teledexter.md) — co-tracking 灵巧遥操作数据引擎
 - [SPD（论文实体）](../entities/paper-spd.md) — 仿真 VR 75 h 预训练 + 真机 1–2 h 微调（CoRL 2026；代码待发布）
 - [NestDex（论文实体）](../entities/paper-nestdex.md) — clutch copilot 嵌套采数，部署卸内层（arXiv:2608.13362；未开源）
-- [HumanTouch](../entities/humantouch.md) — 人手全掌压阻触觉 + EMF 手姿多模态采数（数据待发）
+- [HumanTouch](../entities/humantouch.md) — 人手全掌压阻触觉 + EMF 手姿多模态采数（ModelScope 已发布首批约 100 h；独立采集代码未列）
 - [OSMO 触觉手套](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉对照
 - [Bifur-circuits（论文实体）](../entities/paper-bifur-circuits.md) — 可 bifurcate 超材料积木 + 内嵌 I2C 构型感知（UIST 2026；代码待发布）
 - [多模态融合技巧](./multimodal-fusion-tricks.md)

@@ -13,7 +13,7 @@ tags:
   - xspark-ai
   - sparklab
 status: complete
-updated: 2026-09-16
+updated: 2026-10-25
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
@@ -26,7 +26,7 @@ related:
   - ./hrdexdb-dataset.md
 sources:
   - ../../sources/sites/humantouch-xsparkai.md
-summary: "HumanTouch（Xspark AI SparkLAB，2026-08）：人手全掌压阻触觉手套 + EMF 手姿 + 多视角 RGB 的可校准采集系统；初版约 100 h / 1.3 万 episode 待 HF 发布，代码未列。"
+summary: "HumanTouch（Xspark AI SparkLAB）：约 360 点/手的压阻触觉手套 + EMF 手姿 + 多视角 RGB；ModelScope 已发布约 100 h 首批数据，HF 镜像同步中，独立采集代码未列。"
 ---
 
 # HumanTouch（可规模化人手触觉采集系统）
@@ -46,7 +46,7 @@ summary: "HumanTouch（Xspark AI SparkLAB，2026-08）：人手全掌压阻触�
 | EMF | Electromagnetic Field tracking | MANUS 电磁场手姿跟踪，避免 IMU 积分漂移 |
 | SLERP | Spherical Linear Interpolation | 同步层对旋转的插值方式 |
 | RGB | Red-Green-Blue | 头戴场景相机 + 左右腕部近距相机 |
-| HF | Hugging Face | 宣称的数据集渐进发布宿主 |
+| HF | Hugging Face | HumanTouch 数据集镜像；项目数据卡标注同步上传中 |
 
 ## 为什么重要
 
@@ -68,10 +68,10 @@ summary: "HumanTouch（Xspark AI SparkLAB，2026-08）：人手全掌压阻触�
 | 手姿 | MANUS EMF · **25** 关节；腕部 **6-DoF** |
 | 视觉 | 头 RGB + 左右腕 RGB |
 | 时间基准 | 离线统一 **60 Hz** |
-| 初版切片 | 约 **100 h** · 10 规范任务 · **13,469** episode（约 10 h/任务） |
+| 初版切片 | 约 **100 h** · 10 规范任务 · **13,469** episode；ModelScope 已公开，HF 镜像同步中 |
 | 全库目标 | **1000+ h** · **100+** 任务（项目页对比表口径） |
-| 发布计划 | HF 渐进；首批约 100 h 目标 **2026-08-15**；另预告 AIGC 版 |
-| 开源核查 | **数据：宣称待发**；**代码：截至 2026-08-07 项目页未列**（见下） |
+| 发布状态 | 首批约 100 h 已在 ModelScope 发布；HF 镜像同步中。Spark-0 论文报告 HumanTouch 总规模为 1,000 h；另预告 AIGC 版 |
+| 开源核查（2026-10-25） | **首批数据已公开**；**HumanTouch 独立采集/处理代码未列**（见下） |
 
 ### 开源状态
 
@@ -79,8 +79,8 @@ summary: "HumanTouch（Xspark AI SparkLAB，2026-08）：人手全掌压阻触�
 |------|---------------------------|
 | 项目页 | <https://xsparkai.com/sparklab/humantouch/> |
 | 代码仓 | **未列**；org <https://github.com/XsparkAI> 无 HumanTouch 仓 |
-| 数据集 | **待发布** → [HF XsparkAI](https://huggingface.co/XsparkAI)（公开 datasets=0） |
-| 源码运行时序图 | **不适用**（无可运行官方实现） |
+| 数据集 | [ModelScope 首批数据](https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch)；[Hugging Face 镜像](https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch)（同步上传中） |
+| HumanTouch 采集源码 | **未列**（Spark-0 策略代码不等于采集流水线实现） |
 
 ## 流程总览
 
@@ -152,13 +152,13 @@ flowchart TB
 |----|----------|
 | 选型问题 | 要人侧全掌接触地图 + 多视角 RGB 预训练/分析数据时优先关注；要人机同构触觉迁移先看 [OSMO](./paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) |
 | 勿当力标签 | patch 相对强度 ≠ 牛顿力；下游监督应使用接触置信/区域活动，勿直接当 F/T |
-| 部署前核对 | HF 是否已挂数据集卡、许可、同步与标定元数据；入库时仍为空 |
+| 使用前核对 | 以数据集平台的当前文件、许可与元数据为准；首发数据约 100 h，不能将其与论文报告的 1,000 h 总库规模混为一谈 |
 | 复现边界 | 无公开采集固件/同步代码 → 现阶段只能消费未来数据卡，不能自建同款单元 |
 | 指标用途 | DcSNR 衡量「任务接触图案是否可重复」；不替代策略成功率 |
 
 ## 局限与风险
 
-- **开源未落地：** 截至 2026-08-07 仅有技术说明页与发布时间表；代码未列、HF 公开集为空——选型时按 **待核实承诺** 处理。
+- **复现边界：** 首批数据已公开，但 HumanTouch 独立采集/处理代码未列；Spark-0 论文与模型代码提供的是下游触觉策略研究，不能据此复现原始采集系统。
 - **手套仍改接触界面：** 摩擦/顺应性偏移可能改变策略分布；与裸手或刚性指尖传感器存在域差。
 - **压阻老化非单调：** 任务与操作者比「使用时长」更能解释检验指标波动；不能用录制小时数推断手套健康。
 - **EMF 对环境敏感：** 金属与 EMI 会扭曲场；多站点部署须统一场控规程。
@@ -178,10 +178,12 @@ flowchart TB
 
 ## 参考来源
 
-- [HumanTouch 项目页归档](../../sources/sites/humantouch-xsparkai.md) — <https://xsparkai.com/sparklab/humantouch/>（2026-08-07 核查）
+- [HumanTouch 项目页归档](../../sources/sites/humantouch-xsparkai.md) — <https://xsparkai.com/sparklab/humantouch/>（2026-10-25 复核）
+- [Spark-0 论文](https://arxiv.org/abs/2610.22342) — 报告 1,000 h HumanTouch 数据用于空间对齐触觉预训练
 
 ## 推荐继续阅读
 
 - [HumanTouch 项目页](https://xsparkai.com/sparklab/humantouch/) — 系统视频、对比表、DcSNR 与发布计划
-- [Hugging Face · XsparkAI](https://huggingface.co/XsparkAI) — 宣称数据宿主（发布后跟进）
+- [ModelScope · Xspark-HumanTouch](https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch) — 官方项目页链接的首批数据集
+- [Hugging Face · Xspark-HumanTouch](https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch) — 数据集镜像，卡片注明仍在同步上传
 - [OSMO 项目页](https://www.jessicayin.com/osmo_tactile_glove/) — 人机共用开源触觉手套对照

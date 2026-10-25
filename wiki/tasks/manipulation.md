@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-23
+updated: 2026-10-25
 related:
   - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
@@ -427,7 +427,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [VTAP Gripper](../entities/paper-vtap-gripper.md) — 视触觉主动掌三指夹爪 + FlexiTac；遥操作重定向参考架构（arXiv:2607.15448）
 - [FM-VLA](../entities/paper-fm-vla.md) — Force-VAE 力觉长程记忆注入 π₀.₅；智元 G1 接触计数任务平均 83.3%（arXiv:2607.18231）
 - [FA-RDP](../entities/paper-fa-rdp.md) — 频率自适应视觉–力反应扩散；Flexiv 接触丰富三任务 81.7%（arXiv:2607.28596）
-- [HumanTouch](../entities/humantouch.md) — Xspark SparkLAB 人手全掌压阻触觉 + EMF 手姿 + 头/腕 RGB（约 100 h 初版待 HF；代码未列）
+- [HumanTouch](../entities/humantouch.md) — Xspark SparkLAB 人手全掌压阻触觉 + EMF 手姿 + 头/腕 RGB（首批约 100 h 已在 ModelScope 发布；独立采集代码未列）
 - [SoftVTBench](../entities/paper-softvtbench.md) — 可变形视触觉安全基准：Goal vs Safety Success（arXiv:2607.04234）
 - [NeoteAI / 𝒩₀](../entities/neoteai.md) — OpenNeoData + NeoForce；[𝒩₀-VTLA](../entities/paper-n0-vtla.md) · [𝒩₀-TWAM](../entities/paper-n0-twam.md)
 
