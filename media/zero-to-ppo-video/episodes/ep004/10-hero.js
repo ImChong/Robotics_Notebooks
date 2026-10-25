@@ -9,9 +9,9 @@
 (function () {
   var E = window.EP004, K = E.K, H = E.HEX;
   var OX = 196, OY = 356, ARM_S = 1.68, A1 = 30;          // ① 网格原点（= UR5 肩关节）
-  var PREV = 0.64, CARD = 1.6, FORM = 3.13, TURN = [5.54, 6.5], LAND = 8.05, OUT1 = 10.1;
-  var MOVE = [10.2, 11.0], WIN = 11.13, LINK = 14.86, ASK = 15.64;
-  var KEYS = [21.94, 22.0, 22.71, 22.75, 22.8], RES = 23.05, OK = 23.3, PILL1 = 21.36, PILL2 = 22.71;
+  var PREV = 0.64, CARD = 1.57, FORM = 3.04, TURN = [5.38, 6.34], LAND = 7.89, OUT1 = 9.93;
+  var MOVE = [10.03, 10.83], WIN = 10.96, LINK = 14.69, ASK = 15.47, LINK_OUT = 17.43;
+  var P_LINE = 19.72, R_LINE = 20.33, KEYS = [21.72, 21.78, 22.48, 22.52, 22.57], RES = 22.8, OK = 23.05, PILL1 = 21.13, PILL2 = 22.48;
   var LINKS = ['upper_arm_link', 'forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'];
   var CW = 280, CH = 210;                                   // 纸和笔卡的宽、高：① 在右边 (484, 96)，② 起挪到左边 (14, 96)
 
@@ -48,9 +48,9 @@
     var WX = 420, WY = 60, WW = 366, WH = 270;
     var py = E.code(winG, WX, WY, WW, WH, { title: 'Python', size: 20, lh: 30 });
     py.line('>>> ', WIN, { dur: 0 });                       // 第 0 页：空提示符等着；第 1 页起正式打
-    py.line('>>> p = np.array([{a:3}, {a:2}])', 19.95, { dur: 0.5, page: 1 });
-    py.line('>>> R = np.array([[{g:0}, {w:-1}],', 20.57, { dur: 0.4, page: 1 });
-    py.line('...               [{g:1},  {w:0}]])', 21.0, { dur: 0.35, page: 1 });
+    py.line('>>> p = np.array([{a:3}, {a:2}])', P_LINE, { dur: 0.5, page: 1 });
+    py.line('>>> R = np.array([[{g:0}, {w:-1}],', R_LINE, { dur: 0.4, page: 1 });
+    py.line('...               [{g:1},  {w:0}]])', R_LINE + 0.43, { dur: 0.35, page: 1 });
     py.line('>>> R {h:@} p', KEYS[0], { keys: KEYS, page: 1 });
     var L_RES = py.line('array([{a:-2},  {a:3}])', RES, { out: true, page: 1 });
     var okWinO = E.el('g', {}, winG), okWin = E.el('g', {}, okWinO);   // 外层跟着输出那一句走，里层弹出
@@ -101,7 +101,7 @@
         /* 卡 → 窗口的箭头 */
         var lp = fade(t, LINK, 0.6);
         E.drawOn(link.line, lp); E.op(link.head, K.seg(lp, 0.85, 1));
-        E.op(linkG, 1 - fade(t, 17.6, 0.4));
+        E.op(linkG, 1 - fade(t, LINK_OUT, 0.4));
         E.op(ask, fade(t, ASK, 0.3));
       }
     };

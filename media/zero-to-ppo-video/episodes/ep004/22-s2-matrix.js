@@ -3,7 +3,8 @@
 // ② 「转九十度的矩阵」右边换成 R = [[0, −1], [1, 0]]（第一列绿、第二列琥珀，同 003）；「两列」两列各框一圈，「零、一」「负一、零」依次亮。
 // ③ 「一个横排」打 R 的第一排、矩阵上面一排垫底色；「一个横排」打第二排（续行「...」，0 对齐 −1 的 1）、下面一排垫底色；
 //    「最外层是方括号」框住代码最外层的 [ 和 ]、矩阵括号亮黄；「上下两个横排」框住代码里的两个小列表。
-// ④ 「上面一排」「下面一排」依次亮（代码与矩阵一起）；「绿色的第一列」矩阵第一列框绿，「拆到」两个绿数先后飞进代码里每排的第一个位置。
+// ④ 「上面一排」「下面一排」依次亮（代码与矩阵一起）；「绿色的第一列」矩阵第一列框绿，「拆到」矩阵里上面的 0、下面的 1 先后放大闪一下，
+//    代码里第一排、第二排的第一个数同时框绿（不让数字飞过去：飞的路上会压过上面几句代码）。
 // ⑤ 「R、方括号、冒号、逗号、零」逐字打 R[:, 0]，右下方放大写一遍：「冒号是每个横排都要」冒号下标字、矩阵两排都亮，
 //    「零是第一列」0 下标字、矩阵第一列框绿；「编号从零开始」矩阵两列头上标 0、1。
 // ⑥ 「结果」出 array([0, 1])（绿）；右下换成小网格：「往右的那根小箭头」灰色 (1, 0)，「转完」转到 (0, 1) 变绿，标 (0, 1)。
@@ -14,21 +15,21 @@
   var MX = 668, MY = 176;                                   // 右边矩阵中心
   var HAND = 3.37, P_LINE = 5.21, P_NAME = 6.73, P_OUT = 8.3;
   var MAT = 8.99, TWO = 10.62, COL1 = [11.4, 12.0], COL2 = [12.27, 13.1];
-  var ROW_T = [15.3, 17.0], ROW_B = [17.19, 17.9], OUTER = [18.65, 20.1], INNER = [20.2, 22.4];
-  var UP = [23.08, 24.85], DOWN = [24.95, 26.7], GREEN = 27.02, FLY = [[28.13, 28.75], [28.63, 29.25]], GREEN_OUT = 30.8;
-  var KEYS = [33.27, 33.72, 34.5, 35.12, 35.5, 35.79, 36.05], ZOOM = 33.27, COLON = 36.55, ZERO = 38.38, IDX = 39.24, ZOOM_OUT = 41.3;
-  var RES = 41.6, ARROW = 43.64, TURN = [45.36, 46.4];
+  var ROW_T = [15.37, 17.1], ROW_B = [17.29, 18.0], OUTER = [18.78, 20.23], INNER = [20.33, 22.53];
+  var UP = [23.2, 24.97], DOWN = [25.07, 26.82], GREEN = 27.14, FLY = [[28.25, 28.95], [28.75, 29.45]], GREEN_OUT = 30.92;
+  var KEYS = [33.39, 33.84, 34.62, 35.24, 35.62, 35.91, 36.17], ZOOM = 33.39, COLON = 36.67, ZERO = 38.5, IDX = 39.36, ZOOM_OUT = 41.42;
+  var RES = 41.72, ARROW = 43.76, TURN = [45.48, 46.52];
 
   E.scenes[1] = {
     title: '矩阵：一个横排一个横排地写',
-    dur: 47.4,
+    dur: 47.52,
     cues: [
       { at: 0, s: '手的位置写成数组：`p = np.array([3, 2])`' },
       { at: 7.92, s: '转 90° 的**矩阵** R：两列是 (0, 1)、(−1, 0)' },
       { at: 14.18, s: 'NumPy 按**横排**写：外层方括号里装两个横排' },
-      { at: 22.99, s: '第一列拆到了每一排的第一个位置' },
-      { at: 31.2, s: '`R[:, 0]`：冒号 = 每个横排都要，0 = 第一列' },
-      { at: 41.5, s: '结果 `[0, 1]`：往右的小箭头转完以后的位置' }
+      { at: 23.11, s: '第一列拆到了每一排的第一个位置' },
+      { at: 31.32, s: '`R[:, 0]`：冒号 = 每个横排都要，0 = 第一列' },
+      { at: 41.62, s: '结果 `[0, 1]`：往右的小箭头转完以后的位置' }
     ],
     build: function (K) {
       var s = K.sceneSvg('把手的位置写成数组 p = np.array([3, 2])；转 90 度的矩阵 R 两列是 (0, 1) 和 (−1, 0)，写进 NumPy 时一个横排一个横排地写：最外层是方括号，里面装着上下两个横排，第一列拆到每一排的第一个位置；R[:, 0] 取出第一列，结果 [0, 1] 是往右的小箭头转完以后的位置');
@@ -56,13 +57,6 @@
       [0, 1].forEach(function (c) {
         var t = E.txt(idxG, MX + (c ? 1 : -1) * M.dx / 2, M.box[1] - 14, String(c), 24, E.HI, 'middle', 700);
         t.style.fontFamily = E.MONO;
-      });
-      // 飞进代码的两个绿数（KaTeX 字体出发，落到代码里同一个数上）
-      var flyers = [0, 1].map(function (k) {
-        var n = E.txt(s, 0, 0, String(k), 42, E.GOOD, 'middle');
-        n.style.fontFamily = 'KaTeX_Main, serif';
-        n.setAttribute('dominant-baseline', 'central');
-        return n;
       });
 
       /* ── 右 ⑤：放大的 R[:, 0] 与两条注解 ── */
@@ -102,7 +96,7 @@
           /* ② 矩阵 */
           E.pop(matG, MX, MY, fade(st, MAT, 0.35), 0.85);
           var c1 = Math.max(win(st, TWO, COL2[1], 0.25) * (st < COL2[0] ? 1 : 0.35), win(st, COL1[0], COL1[1], 0.2),
-            win(st, GREEN, GREEN_OUT, 0.3), win(st, ZERO, ZOOM_OUT, 0.3), win(st, RES, 47.4, 0.3));
+            win(st, GREEN, GREEN_OUT, 0.3), win(st, ZERO, ZOOM_OUT, 0.3), win(st, RES, 47.52, 0.3));
           var c2 = Math.max(win(st, TWO, COL1[0], 0.25), win(st, COL2[0], COL2[1], 0.2)) * (st >= COL1[0] && st < COL2[0] ? 0.35 : 1);
           M.colBox(0, E.GOOD, c1);
           M.colBox(1, E.WARN, c2);
@@ -120,15 +114,11 @@
           py.boxCol(L_R1, 18, 7, E.VIOLET, Math.max(inner, win(st, UP[0], UP[1], 0.2)));
           py.boxCol(L_R2, 18, 7, E.VIOLET, Math.max(inner, win(st, DOWN[0], DOWN[1], 0.2)));
 
-          /* ④ 两个绿数飞进代码：上面的 0 落到第一排的 0（第 19 列），下面的 1 落到第二排的 1 */
+          /* ④ 矩阵里上面的 0、下面的 1 先后放大闪一下，代码里第一排、第二排的第一个数（第 19 列）同时框绿 */
           [[L_R1, 0], [L_R2, 2]].forEach(function (q, k) {
-            var f = FLY[k], u = K.ease(K.seg(st, f[0], f[1])), from = M.pos(q[1]);
-            var to = [py.x(19) + py.cw / 2, py.y(q[0]) - py.size * 0.33];
-            var x = from[0] + (to[0] - from[0]) * u, y = from[1] + (to[1] - from[1]) * u - 60 * Math.sin(Math.PI * u);
-            flyers[k].setAttribute('x', x.toFixed(1)); flyers[k].setAttribute('y', y.toFixed(1));
-            flyers[k].setAttribute('font-size', (42 + (py.size - 42) * u).toFixed(1));
-            E.op(flyers[k], st >= f[0] && st < f[1] + 0.25 ? 1 - fade(st, f[1], 0.25) : 0);
-            py.boxCol(q[0], 19, 1, E.GOOD, win(st, f[1] - 0.05, GREEN_OUT, 0.25));
+            var f = FLY[k], u = K.seg(st, f[0], f[1]), b = u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0;
+            M.cells[q[1]].setAttribute('font-size', (42 * (1 + 0.3 * b)).toFixed(1));
+            py.boxCol(q[0], 19, 1, E.GOOD, win(st, f[0] + 0.15, GREEN_OUT, 0.25));
           });
 
           /* ⑤ R[:, 0]：放大写一遍，冒号、0 各标一句；「编号从零开始」两列头上标 0、1 */

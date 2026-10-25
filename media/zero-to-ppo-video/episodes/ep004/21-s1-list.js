@@ -1,6 +1,6 @@
 // 004 第 1 幕：列表不是向量，要用 NumPy 数组。左边 Python 交互窗口，右边说明区。
 // ① 「列表」a = [2, 1]（2、1 用 003 第 2 幕扫地机第一段的绿）；「两个列表」b = [1, 2]（琥珀）；「相加」a + b → [2, 1, 1, 2]。
-//    「二、一」右边上方先出「向量相加：」[2;1] + [1;2] = [3;3]（003 第 2 幕的结果）；下方两组小方块（绿 2 1、琥珀 1 2），「接在一起」琥珀那组滑过来贴上，「四个数」底下标 1–4，「不是向量相加」打红 ×。
+//    「二、一」右边上方先出「向量相加：」[2;1] + [1;2] = [3;3]（003 第 2 幕的结果）；下方两组小方块（绿 2 1、琥珀 1 2），「接在一起」琥珀那组滑过来贴上，「四个数」底下标 1–4，「向量可不是这么加的」打红 ×。
 // ② 「乘二」2 * a → [2, 1, 2, 1]：右上换成 2 × [2;1] = [4;2]，「重复」绿方块抄一份滑到右边，打红 ×。
 // ③ 「NumPy」右边出「NumPy · 专门处理数组的库」；「终端」右边弹出小终端，打 pip install numpy，「装上它」✓；
 //    交互窗口翻到新的一页：「导入」打 import numpy as np，「短名字」框住 np、下面标「短名字」。
@@ -12,10 +12,10 @@
   var E = window.EP004, K = E.K, H = E.HEX, DIM = '#5c5c64';
   var RX = 466, RW = 318, RC = RX + RW / 2;                 // 右边说明区（左边代码窗口宽 440）
   var CP = 62, CX = RX + 16, CY = 196, GAP = 56;             // 列表小方块：间距、第一个方块左上角、两组之间多空出的距离
-  var WANT = 4.5, OUT_A = 8.34, JOIN = [9.56, 9.91], FOUR = 10.95, NOT = 11.63;
-  var TIMES = 13.96, OUT_B = 14.96, DUP = [15.59, 16.0], NOT_B = 16.25, PART_A_OUT = 17.3;
-  var NP = 18.49, TERM = 20.42, PIP = [20.81, 21.6], OK = 21.6, IMPORT = 22.26, NICK = 24.49, NICK_OUT = 26.3;
-  var GRID = 26.6, ADD = 29.67, ROW1 = [31.26, 32.4], ROW2 = [32.51, 33.6], SCALE = 34.65, GROW = 36.56, DIR = 37.11, TWICE = 38.9;
+  var WANT = 4.46, OUT_A = 8.28, JOIN = [9.5, 9.85], FOUR = 10.89, NOT = 11.58;
+  var TIMES = 14.23, OUT_B = 15.23, DUP = [15.86, 16.27], NOT_B = 16.52, PART_A_OUT = 17.57;
+  var NP = 18.76, TERM = 20.63, PIP = [21.02, 21.81], OK = 21.81, IMPORT = 22.47, NICK = 24.7, NICK_OUT = 26.5;
+  var GRID = 26.82, ADD = 29.83, ROW1 = [31.39, 32.53], ROW2 = [32.59, 33.68], SCALE = 34.7, GROW = 36.61, DIR = 37.16, TWICE = 38.95;
 
   // 一排小方块（列表里的数）：返回 { g, cells }，(x, y) 是第一个方块左上角
   function cells(parent, x, y, nums, color) {
@@ -32,33 +32,33 @@
 
   E.scenes[0] = {
     title: '列表不是向量：要用 NumPy 数组',
-    dur: 40.36,
+    dur: 40.41,
     cues: [
       { at: 0, s: 'Python 自带的**列表**也能装下一串数' },
-      { at: 6.62, s: '列表相加是**接起来**：`[2, 1, 1, 2]`' },
-      { at: 13.87, s: '列表乘 2 是把它重复一遍' },
-      { at: 17.49, s: '装上 NumPy：`pip install numpy`，再 `import numpy as np`' },
-      { at: 26.44, s: '`np.array` 是数组：对应的数分别相加' },
-      { at: 34.55, s: '乘 2：每个数都乘 2，方向不变、两倍长' }
+      { at: 6.58, s: '列表相加是**接起来**：`[2, 1, 1, 2]`' },
+      { at: 14.14, s: '列表乘 2 是把它重复一遍' },
+      { at: 17.76, s: '装上 NumPy：`pip install numpy`，再 `import numpy as np`' },
+      { at: 26.66, s: '`np.array` 是数组：对应的数分别相加' },
+      { at: 34.6, s: '乘 2：每个数都乘 2，方向不变、两倍长' }
     ],
     build: function (K) {
       var s = K.sceneSvg('Python 的列表相加是把两个列表接在一起，乘 2 是重复一遍，都不是向量运算；装上 NumPy、导入并起短名字 np 以后，把列表变成数组，相加就是对应的数分别相加，乘 2 就是每个数都乘 2');
 
       /* ── 左：交互窗口（第 0 页列表、第 1 页 NumPy） ── */
       var py = E.code(s, 10, 14, 440, 392, { title: 'Python', size: 25 });
-      py.line('>>> a = [{g:2, 1}]', 3.3, { dur: 1.5 });
-      py.line('>>> b = [{w:1, 2}]', 6.96, { dur: 0.6 });
-      py.line('>>> a + b', 7.67, { dur: 0.4 });
+      py.line('>>> a = [{g:2, 1}]', 3.26, { dur: 1.5 });
+      py.line('>>> b = [{w:1, 2}]', 6.93, { dur: 0.6 });
+      py.line('>>> a + b', 7.63, { dur: 0.4 });
       py.line('{g:[2, 1}, {w:1, 2]}', OUT_A, { out: true });
       py.line('>>> 2 * a', TIMES, { dur: 0.4 });
       py.line('{g:[2, 1, 2, 1]}', OUT_B, { out: true });
       var L_IMP = py.line('>>> import numpy as {h.np:np}', IMPORT, { dur: 1.0, page: 1 });
-      py.line('>>> a = np.array([{g:2, 1}])', 26.6, { dur: 1.4, page: 1 });
-      py.line('>>> b = np.array([{w:1, 2}])', 28.1, { dur: 0.7, page: 1 });
-      py.line('>>> a + b', 28.85, { dur: 0.3, page: 1 });
+      py.line('>>> a = np.array([{g:2, 1}])', GRID, { dur: 1.4, page: 1 });
+      py.line('>>> b = np.array([{w:1, 2}])', 28.32, { dur: 0.7, page: 1 });
+      py.line('>>> a + b', 29.07, { dur: 0.3, page: 1 });
       var L_SUM = py.line('array([{a:3, 3}])', ADD, { out: true, page: 1 });
       py.line('>>> 2 * a', SCALE, { dur: 0.35, page: 1 });
-      var L_TWO = py.line('array([{g:4, 2}])', 35.8, { out: true, page: 1 });
+      var L_TWO = py.line('array([{g:4, 2}])', 35.85, { out: true, page: 1 });
       var nickLbl = E.txt(s, 0, 0, '↑ 短名字', 20, E.HI, 'middle', 700);
 
       /* ── 右 ①②：「应该是」的算式 + 列表方块 ── */
@@ -124,7 +124,7 @@
           E.op(nickLbl, nk);
           // 「二加一」「一加二」时 array([3, 3]) 那一句垫底色
           py.hl(L_SUM, E.HI, Math.max(E.win(st, ROW1[0], ROW1[1], 0.2), E.win(st, ROW2[0], ROW2[1], 0.2)) * 0.9);
-          py.hl(L_TWO, E.GOOD, E.win(st, 35.8, 38.0, 0.3) * 0.8);
+          py.hl(L_TWO, E.GOOD, E.win(st, 35.85, 38.05, 0.3) * 0.8);
 
           /* ①② 列表 */
           E.op(partA, 1 - fade(st, PART_A_OUT, 0.4));
@@ -165,7 +165,7 @@
               '=' + E.col([3, 3], r2 ? [DIM, H.acc] : r1 ? [H.acc, DIM] : H.acc));
           E.op(sumTex, sc ? fade(st, SCALE, 0.3) : fade(st, ADD, 0.4) * (1 - fade(st, SCALE - 0.3, 0.2)));
           var g0 = P(0, 0), g1 = P(2, 1), g2 = P(3, 3);
-          var pg = fade(st, ADD, 0.5), pam = fade(st, ADD + 0.4, 0.5), pbl = fade(st, 30.67, 0.6);
+          var pg = fade(st, ADD, 0.5), pam = fade(st, ADD + 0.4, 0.5), pbl = fade(st, 30.81, 0.6);
           var grow = fade(st, GROW, 0.5);
           var ge = P(2 + 2 * grow, 1 + grow);
           green.set(g0[0], g0[1], g0[0] + (ge[0] - g0[0]) * pg, g0[1] + (ge[1] - g0[1]) * pg); E.op(green.g, pg > 0 ? 1 : 0);

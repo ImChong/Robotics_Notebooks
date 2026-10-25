@@ -41,21 +41,21 @@
     // 划重点 / 片尾里的加粗词：向量 accent、矩阵 violet（同 003），顺序 / 先做 warn，列表的错用法 bad
     boldColors: { '向量': 'var(--demo-accent)', '矩阵': 'var(--violet)', '横排': 'var(--violet)', '列表': 'var(--demo-bad)', '接起来': 'var(--demo-bad)',
       '对应位置': 'var(--demo-bad)', '先做': 'var(--demo-warn)', '顺序': 'var(--demo-warn)', '向量、矩阵都是数组': 'var(--demo-accent)' },
-    introDur: 24.29,
+    introDur: 24.0,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep004.py 的 recap 句对齐）
-    recapDur: 27.84,
+    recapDur: 27.93,
     recap: {
       act: '本集总结',
       title: '向量和矩阵怎么写成代码',
       items: [
         { c: 'var(--demo-bad)', n: '① 列表不是向量', s: '`[2, 1] + [1, 2]` 是接起来\n算向量要用 `np.array`', at: 1.87 },
-        { c: 'var(--violet)', n: '② 矩阵按横排写', s: '外层方括号里，一个横排一个列表', at: 6.98 },
-        { c: 'var(--demo-accent)', n: '③ 乘法用 @', s: '`R @ p`、`S @ R`：矩阵乘向量、乘矩阵\n`*` 只是对应位置相乘', at: 12.16 },
-        { c: 'var(--demo-warn)', n: '④ 顺序', s: '`S @ R @ p`：离向量最近的先做，不能换', at: 18.4 }
+        { c: 'var(--violet)', n: '② 矩阵按横排写', s: '外层方括号里，一个横排一个列表', at: 7.03 },
+        { c: 'var(--demo-accent)', n: '③ 乘法用 @', s: '`R @ p`、`S @ R`：矩阵乘向量、乘矩阵\n`*` 只是对应位置相乘', at: 12.31 },
+        { c: 'var(--demo-warn)', n: '④ 顺序', s: '`S @ R @ p`：离向量最近的先做，不能换', at: 18.55 }
       ],
-      foot: { s: '**向量、矩阵都是数组**，相乘用 `@`', at: 22.48 }
+      foot: { s: '**向量、矩阵都是数组**，相乘用 `@`', at: 22.65 }
     },
     outroDur: 11.39,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
