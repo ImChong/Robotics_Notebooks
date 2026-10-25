@@ -13,7 +13,7 @@ tags:
 - awesome-world-models
 - sun254667-wm
 status: stable
-updated: 2026-10-22
+updated: 2026-10-26
 related:
 - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
 - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
@@ -269,6 +269,19 @@ flowchart TB
 - 是 NVIDIA 现在推荐的主线
 - 通过事件系统组织 domain randomization
 
+## Agent Skills：把官方工作流提供给编码 Agent
+
+Isaac Lab 仓库还提供面向编码 Agent 的工作流指南。它们是仓库维护的 Markdown 指引，不是运行时 Python 包；技能以 `SKILL.md` 为入口，按 `user/` 与 `developer/` 分组。Codex、Claude 可通过仓库内的原生别名自动发现；其他 Agent 可从技能目录索引按需加载。
+
+v3.0.0-EA 发布说明记录了 **17 个面向用户的技能**，覆盖安装、2.x 迁移、环境搭建、后端选择、Newton 资产准备、训练、调试、传感器/执行器和仿真间策略迁移。
+
+| 技能 | 解决的问题 | 关键核验点 |
+|------|------------|------------|
+| [RL 训练调试](../../sources/sites/isaac-lab-agent-skills.md)（`debug-rl-training`） | 定位奖励、任务指标、checkpoint 或训练实验异常 | 用最小复现定位环境/奖励/重置/物理/runner/checkpoint；每次只改一个变量，不把 reward 上升等同于任务成功 |
+| PhysX ↔ Newton 策略迁移（`isaaclab-transferring-policies-sim-to-sim`） | 验证同一策略跨 Isaac Sim PhysX 与 Newton MJWarp 的迁移 | 固定策略侧环境契约，检查关节/刚体顺序与执行器响应，并评估 PP、PN、NN、NP 四种训练/部署组合 |
+
+官方技能页列出的完整验证任务包括 Franka Lift、G1 rough locomotion 与 ANYmal-D rough locomotion；跨后端成功与否应以具体任务和配置为准，不能据此推断任意策略都能零改动迁移。
+
 ## 从 Isaac Gym 迁移过来
 
 Isaac Lab 收敛了之前几条分叉的 NVIDIA robot learning 栈：
@@ -357,6 +370,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - **ingest 档案：** [sources/repos/isaac_lab.md](../../sources/repos/isaac_lab.md)
+- **Agent Skills 官方资料：** [sources/sites/isaac-lab-agent-skills.md](../../sources/sites/isaac-lab-agent-skills.md)
 - **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)
 - 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Task Design Workflows：<https://isaac-sim.github.io/IsaacLab/main/source/overview/core-concepts/task_workflows.html>
