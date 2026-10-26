@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-26
 arxiv: "2412.00259"
 venue: "IEEE Robotics and Automation Letters 2025"
 summary: "One-shot real-to-sim via end-to-end differentiable simulation and rendering"
@@ -13,6 +13,7 @@ related:
   - ../methods/crisp-real2sim.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../entities/paper-realsimloop.md
 sources:
   - ../../sources/papers/sun_awesome_r2s2r_2412_00259_one-shot-real-to-sim-via-end-to-end-diff.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
@@ -86,6 +87,7 @@ One-shot real-to-sim via end-to-end differentiable simulation and rendering
 
 ## 关联页面
 
+- [RealSimLoop](paper-realsimloop.md) — 在线视觉反馈与时变材料参数校准，和本页的一次性 Real-to-Sim 路线互补。
 - 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
 - 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
