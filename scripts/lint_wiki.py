@@ -696,6 +696,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # newtons-method.md / gauss-newton.md 覆盖。
     "newton",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
+    # pace：同名异义——四足 pace 步态（concepts/gait-generation.md 步态表行）与多篇
+    # 互不相干的 PACE 论文缩写（ETH 足式 sim2real 系统辨识、精细插入、示范条件长程
+    # 操作的进度对齐上下文、Extreme-RGMT 的 acquisition/consolidation 训练环），
+    # 各有 entities/paper-pace-*.md 承载；不是单一可成页概念，不建 concepts/pace.md。
+    "pace",
     # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect
     # Robots 的 `Model` = `Policy` + `Embodiment` 概念映射表、Isaac Lab 的观测组键
     # `observations.policy`（LW-BenchHub 改组成 `policy` + `camera_obs`）、ORCS 保持

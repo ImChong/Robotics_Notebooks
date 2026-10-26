@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 3d-tracking, scene-flow, dense-tracking, feedforward, vggt, eccv-2026, hkust, tencent, dynamic-scene]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-26
 arxiv: "2603.02573"
 venue: "ECCV 2026"
 related:
@@ -137,6 +137,7 @@ sequenceDiagram
 - [state-estimation](../concepts/state-estimation.md) — 状态估计 hub
 - [TAPVid-MV](./paper-tapvid-mv.md) — 多视角 3D 跟踪基准邻域
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — R5 具身/跟踪 reuse 地图
+- [ARROW](./paper-arrow-4d-reconstruction.md) — 无序图像集 / 多视角流的顺序无关查询式 4D 重建与点跟踪；同为前馈 3D 跟踪路线对照（arXiv:2610.01314）
 
 ## 参考来源
 
