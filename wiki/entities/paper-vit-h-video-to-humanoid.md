@@ -10,10 +10,10 @@ arxiv: "2610.32966"
 project: https://awfuact.github.io/vit-h/
 code: https://github.com/mileret/ViT-H-release
 related:
-  - ../../wiki/methods/motion-retargeting-gmr.md
-  - ../../wiki/methods/sonic-motion-tracking.md
-  - ../../wiki/tasks/teleoperation.md
-  - ../../wiki/tasks/loco-manipulation.md
+  - ../methods/motion-retargeting-gmr.md
+  - ../methods/sonic-motion-tracking.md
+  - ../tasks/teleoperation.md
+  - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/vit_h_arxiv_2610_32966.md
   - ../../sources/sites/vit-h.md
@@ -74,7 +74,7 @@ flowchart TD
 | ViT-H | 视频条件 → 直接生成机器人动作 → tracker | tracker rollout 构造偏好对，DPO 更新生成器 |
 | SONIC / 通用 tracker | 提供多动作跟踪执行接口 | ViT-H 可将 tracker 作为生成结果评估器；二者职责不同 |
 
-ViT-H 与 [GMR](../../wiki/methods/motion-retargeting-gmr.md) 的路线差异在于推理时是否显式输出人体动作并做运动学重定向；它也依赖可用的全身跟踪器，和 [SONIC](../../wiki/methods/sonic-motion-tracking.md) 这类通用跟踪器处在生成与执行的相邻模块。
+ViT-H 与 [GMR](../methods/motion-retargeting-gmr.md) 的路线差异在于推理时是否显式输出人体动作并做运动学重定向；它也依赖可用的全身跟踪器，和 [SONIC](../methods/sonic-motion-tracking.md) 这类通用跟踪器处在生成与执行的相邻模块。
 
 ## 结论
 
@@ -109,10 +109,10 @@ ViT-H 与 [GMR](../../wiki/methods/motion-retargeting-gmr.md) 的路线差异在
 
 ## 关联页面
 
-- [GMR：通用动作重定向](../../wiki/methods/motion-retargeting-gmr.md) — 视频到机器人常见显式重定向方案。
-- [SONIC：规模化人形运动跟踪](../../wiki/methods/sonic-motion-tracking.md) — ViT-H 生成器下游的通用 tracker 背景。
-- [遥操作（Teleoperation）](../../wiki/tasks/teleoperation.md) — 在线视频输入驱动机器人控制。
-- [移动操作（Loco-Manipulation）](../../wiki/tasks/loco-manipulation.md) — 项目页演示的搬运与桌面任务类型。
+- [GMR：通用动作重定向](../methods/motion-retargeting-gmr.md) — 视频到机器人常见显式重定向方案。
+- [SONIC：规模化人形运动跟踪](../methods/sonic-motion-tracking.md) — ViT-H 生成器下游的通用 tracker 背景。
+- [遥操作（Teleoperation）](../tasks/teleoperation.md) — 在线视频输入驱动机器人控制。
+- [移动操作（Loco-Manipulation）](../tasks/loco-manipulation.md) — 项目页演示的搬运与桌面任务类型。
 
 ## 参考来源
 
