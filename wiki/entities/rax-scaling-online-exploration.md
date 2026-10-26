@@ -14,7 +14,7 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-10-20
+updated: 2026-10-26
 arxiv: "2610.22496"
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
@@ -28,7 +28,7 @@ sources:
   - ../../sources/repos/rax.md
   - ../../sources/repos/skills-lib.md
   - ../../sources/datasets/rax-robot-session-logs.md
-summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器人 API 在线探索，并把成功经验编译成可复用的感知—规划—控制程序；官方仓库提供 RoboDojo / BEHAVIOR-1K、HumanoidArena、DexJoCo 及真机实现分支。"
+summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器人 API 在线探索，并把成功经验编译成可复用的感知—规划—控制程序；官方仓库提供 RoboDojo / BEHAVIOR-1K、HumanoidArena、DexJoCo、LIBERO / LIBERO-PRO 及真机实现分支。"
 ---
 
 # RAX：把机器人在线探索编译成可复用程序
@@ -51,7 +51,7 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 | **论文** | [Scaling Online Exploration for Robot Agents](https://arxiv.org/abs/2610.22496)；项目站同时提供 [PDF](https://robot-agent-exploration.com/rax.pdf)。 |
 | **机构** | 哈佛大学、NVIDIA、加州大学伯克利分校、麻省理工、斯坦福大学。 |
 | **代码 / 许可** | [robot-agent-exploration/rax](https://github.com/robot-agent-exploration/rax)；`main/LICENSE` 为 Apache License 2.0。 |
-| **实现形态** | `main` 为索引；实现分支覆盖 RoboDojo / BEHAVIOR-1K、HumanoidArena（G1 + Dex3）、DexJoCo（Franka + Allegro）、Franka FR3 与 Rainbow RB-Y1。 |
+| **实现形态** | `main` 为索引；实现分支覆盖 RoboDojo / BEHAVIOR-1K、HumanoidArena（G1 + Dex3）、DexJoCo（Franka + Allegro）、LIBERO / LIBERO-PRO（Franka Panda）、Franka FR3 与 Rainbow RB-Y1。LIBERO 系列分支于 2026-10-24 发布。 |
 | **经验载体** | agent 工作区中的任务说明、记忆、技能及编译后的控制程序；模型保持冻结。真机技能按本体保存在 [skills-lib](../../sources/repos/skills-lib.md)，并可参考 [公开 session logs](../../sources/datasets/rax-robot-session-logs.md)。 |
 
 ## 为什么重要
@@ -78,7 +78,7 @@ flowchart TB
 
 ## 系统与本体覆盖
 
-- **仿真：** RoboDojo / BEHAVIOR-1K、HumanoidArena（Unitree G1 + Dex3 手、冻结 SONIC 控制器）及 DexJoCo（Franka + Allegro 手）均提供 container / native 分支。
+- **仿真：** RoboDojo / BEHAVIOR-1K、HumanoidArena（Unitree G1 + Dex3 手、冻结 SONIC 控制器）、DexJoCo（Franka + Allegro 手）及 LIBERO / LIBERO-PRO（robosuite / MuJoCo 中的 Franka Panda 并行夹爪）均提供 container / native 分支；LIBERO-PRO 可对 LIBERO 初始状态施加扰动。官方模拟分支还列出 Codex CLI、Claude Code、DeepSeek Harness 与 Kimi Code。
 - **真机：** 官方仓库 README 列出 Franka FR3 单臂和 Rainbow RB-Y1 轮式双臂平台。
 - **接口：** harness 不直接依赖具体机器人或模拟器包；后端通过共同工具接口暴露状态、观测、控制及任务能力。
 - **技能复用：** harness 将相应本体的技能库带入工作区，技能携带适用前提、检查、失败模式和运行记录。README 描述连续两次无人值守成功后才标记 verified。

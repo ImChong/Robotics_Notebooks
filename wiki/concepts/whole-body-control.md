@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-25
 related:
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
@@ -223,6 +223,7 @@ print("joint acceleration command:", qdd_star)
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — generalist→specialist→DAgger 迭代蒸馏 + 统一速度/高度/pitch 指令，单策略跨 H1/G1/T1/N1/Adam（ICRA 2026；未开源）
 - [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；公开 MuJoCo 评测代码与 checkpoint，训练/真机部署未开放）
 - [TRACE（人形跨形态迁移）](../entities/paper-trace-humanoid-transfer.md) — 预训练全身控制器（SONIC）跨本体迁移的低成本路线：G1→H2，PHUMA 运动成功率 96.08%（作者报告）
+- [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 环境感知 WBC 负责无碰接近、局部 RL 专家负责接触抓取，再蒸馏为协调底座/手臂/灵巧手/主动视觉的单一移动操作策略
 
 ## 继续深挖入口
 

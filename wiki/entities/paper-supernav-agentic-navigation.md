@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, navigation, vln, objectnav, pointnav, agentic, embodied-ai, mobile-robot, unitree-go2, zju, szu]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-26
 arxiv: "2610.12126"
 project_id: supernav-agentic-navigation-any-task-any-scene
 project: https://zju3dv.github.io/SuperNav/
@@ -84,18 +84,18 @@ Agent 接收用户请求与四向 RGB 图像后，MLLM 反复选择观测、转�
 | HM3D-OVON 未见验证 | SR 68.33% / 73.33%；SPL 0.3837 / 0.4105 | 0.25 m / 1 m 成功阈值 |
 | HM3Dv2 验证 | SR 80.30% / 86.50%；SPL 0.3338 / 0.3638 | 0.2 m / 1 m 成功阈值 |
 
-不同基准的任务构成、成功阈值与协议不同，数字只适合在同一行对应的设置内理解。论文和项目页也展示了 Unitree Go2 实机视频，但不能据此推断仓库已有可复现真机部署栈。
+不同基准的任务构成、成功阈值与协议不同，数字只适合在同一行对应的设置内理解。项目页展示 Unitree Go2 实机视频；官方仓库另提供 Go2 部署指南，详见下方复现状态。
 
 ## 开源与复现状态
 
-截至 **2026-10-14**，[官方仓库](https://github.com/zju3dv/SuperNav)提供 agent runtime、导航 Tools 与 Skills、仿真实验配置和评测工具，并公开了 Learned Executor 权重和 Habitat-GS 测试任务。官方 README 将 AI2-THOR 需求驱动数据与 Unitree Go2 真机部署列为待发布；当前仓库尚未包含真机驱动。运行仿真还需自行准备场景数据、模型访问与相应服务配置。
+截至 **2026-10-26**，[官方仓库](https://github.com/zju3dv/SuperNav)提供 agent runtime、导航 Tools 与 Skills、仿真实验配置和评测工具，并公开了 Learned Executor 权重和 Habitat-GS 测试任务。HabitatGS-Benchmark 的 ObjectNav 与有序 Multi-ObjectNav 测试任务于 2026-10-13 发布；Unitree Go2 部署指南于 2026-10-21 发布。该指南面向 Jetson aarch64，使用四路 GoPro HERO8 USB 网络相机和 LiDAR 地图支持的 PixelGoal 导航，并通过固定版本的公开 DimOS 子模块、补丁与部署脚本组装运行环境。运行仿真仍需自行准备场景数据、模型访问与相应服务配置。
 
 ## 阅读判断
 
 - **贡献在 harness 与接口**：不是把某个导航动作头做得更大，而是让通用 MLLM 通过视觉目标点、执行反馈和任务记录持续完成不同请求。
 - **运动后端可替换**：几何规划更依赖深度/地图等几何输入；学习执行器更依赖训练数据与权重，二者不应被误认为同一控制器。
 - **结果有跨任务证据，但边界需按基准读**：单物体、多物体、需求驱动及 HM3D 类别导航协议不同；SR 不宜混成一个总体指标。
-- **真机演示与复现入口分开**：页面有 Go2 演示，代码仓库仍标注真机部署待发布。
+- **真机演示与复现条件分开**：页面有 Go2 演示，仓库现已提供部署指南；实际运行仍要求对应 Jetson、相机、LiDAR 地图和机器人环境。
 
 ## 与其他工作对比
 
@@ -115,7 +115,7 @@ Agent 接收用户请求与四向 RGB 图像后，MLLM 反复选择观测、转�
 - 复用时优先迁移的是接口设计：视觉目标点 + 执行反馈 + 结构化任务进度，而不是某个具体模型。
 - 各基准协议与成功阈值不同，SR / SPL 只能在同一基准行内比较；有序多物体任务 SR 34% 说明长程状态跟踪仍是瓶颈。
 - 几何执行器与学习执行器依赖的输入和权重不同，复现时要分别准备深度/定位或 Learned Executor 权重。
-- 截至 2026-10-14 仿真评测栈已开源，Unitree Go2 真机部署与 AI2-THOR 需求驱动数据仍待发布。
+- 截至 2026-10-26，仿真运行与 Habitat-GS 测试任务可从公开仓库/数据集获取；Go2 部署指南已发布，但部署仍依赖指定硬件、相机与机器人环境。
 
 ## Mermaid：从任务请求到闭环导航
 

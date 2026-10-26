@@ -71,7 +71,7 @@ flowchart TB
 
 | 评测 | 论文摘要报告 |
 |------|--------------|
-| 具身问答 | HM-EQA、MT-HM3D、EXPRESS-Bench 上达到作者所称的 state of the art |
+| 具身问答 | HM-EQA、MT-HM3D、EXPRESS-Bench 上作者报告优于论文所列对照方法（以投稿时的比较集合为限） |
 | 匹配骨干的接口比较 | HM-EQA 上，NavMCP 比 episodic interface 高 14.9 个百分点 |
 | Unitree Go2 实机长程导航 | 成功率 78.3%；任务时程增加时，相对最强基线的差距由 10 扩大到 45 个百分点 |
 

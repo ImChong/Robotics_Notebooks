@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-26
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -34,6 +34,7 @@ sources:
   - ../../sources/sites/nvidia-isaac-sim-omnigraph.md
   - ../../sources/sites/nvidia-omniverse-omnigraph.md
   - ../../sources/repos/isaac_sim_ws.md
+  - ../../sources/sites/nvidia-isaac-sim-agent-skills.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -199,6 +200,15 @@ flowchart TB
 
 若不需要 Omniverse 渲染与传感器、只想轻量 GPU RL，可对照 [mjlab](./mjlab.md) / [MuJoCo](./mujoco.md) 选型（见 [仿真器选型指南](../queries/simulator-selection-guide.md)）。
 
+## Agent Skills：面向 AI Agent 的仿真工作流
+
+Isaac Sim 将一组可复用工作流指南随产品发布，让 AI 编码 Agent 能按需读取操作步骤，而不是从零猜测 API 用法。
+
+- 每项技能以 `SKILL.md` 描述适用任务、步骤、代码片段与常见陷阱；可附 `scripts/` 和 `references/`。
+- 技能覆盖 Isaac Sim 本身的构建、调试、性能分析，也覆盖下游用户的仿真工作，例如机器人导入、物理配置、导航、操作、传感器、合成数据、渲染与 ROS 2。
+- 官方文档称技能随源码、pip 包和二进制包提供；安装后可从 `skills/` 目录接入 Agent。索引见 [官方技能清单](../../sources/sites/nvidia-isaac-sim-agent-skills.md)。
+- 运行远程控制类技能时需注意权限边界：官方文档指出它们可能在 Kit 进程中执行任意 Python，并建议将 Python Server 绑定到 `127.0.0.1`。
+
 ## 常见误区
 
 ### 1. 以为 Isaac Sim = Isaac Lab
@@ -223,6 +233,7 @@ flowchart TB
 ## 参考来源
 
 - [isaac_sim_ws 源码归档](../../sources/repos/isaac_sim_ws.md)（<https://github.com/flexivrobotics/isaac_sim_ws>）
+- **Agent Skills 官方文档归档：** [nvidia-isaac-sim-agent-skills.md](../../sources/sites/nvidia-isaac-sim-agent-skills.md)
 
 - **ingest 档案：** [sources/repos/isaac_sim.md](../../sources/repos/isaac_sim.md)
 - **ingest 档案：** [sources/repos/isaac_gym_isaac_lab.md](../../sources/repos/isaac_gym_isaac_lab.md)

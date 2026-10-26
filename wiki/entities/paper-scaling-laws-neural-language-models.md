@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, scaling-laws, nlp, foundation-model, openai, machine-learning]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-25
 arxiv: "2001.08361"
 venue: "arXiv 2020"
 related:
@@ -77,6 +77,7 @@ summary: "Kaplan et al.（OpenAI，arXiv:2001.08361）：LM 损失对模型规�
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Light-O1](./light-o1.md)
 - [Dyna-2](./dyna-2.md)
+- [A Fix for Softmax and Cross-Entropy](./paper-softmax-cross-entropy-fix.md) — 交叉熵训练损失的浮点数值问题（高置信度梯度坍缩、蒸馏相消）与修正实现
 
 ## 参考来源
 

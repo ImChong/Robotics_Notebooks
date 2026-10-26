@@ -12,6 +12,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-dexmimic.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/donic_arxiv_2610_29997.md
 summary: "DONIC jointly trains one bimanual dexterous reference-tracking policy across operation categories and human motion sources, using BiHOI data, object-centered per-hand rewards, and verified demonstrations."
 ---

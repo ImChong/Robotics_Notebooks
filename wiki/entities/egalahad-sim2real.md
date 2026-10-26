@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, sim2sim, sim2real, deployment, motion-tracking, benchmark, unitree-g1, mujoco, onnx]
 status: complete
-updated: 2026-10-13
+updated: 2026-10-26
 project_id: egalahad-sim2real
 code: https://github.com/EGalahad/sim2real
 project: https://egalahad.github.io/sim2real/
@@ -76,6 +76,18 @@ flowchart LR
 | TWIST2 | [TWIST2](./paper-twist2.md) | 独立项目实体 |
 
 因此 15 行没有被误当成 15 个不同项目，也没有为同一 MimicLite/SONIC/ScaleBFM 系列重复建实体；缺失的 SONIC 与 GRIT v0.0.1 节点已单独补充。
+
+## 榜单快照（2026-09-15）
+
+页面展示的前三行如下；括号内为 Locomotion / Manipulation 均值。位置与姿态误差越低越好，Tracking Return 与 Progress 越高越好。该数字是页面当前报告口径，比较时需同时保留数据集拆分与 GPU Hours 来源信息。
+
+| 排名 / 策略 | Body Pos (mm) | Body Ori (rad) | Wrist Pos (mm) | Tracking Return | Progress (%) | GPU Hours |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 · Mimic Lite v1.1 | 26.68 (25.11 / 28.25) | 0.088 (0.081 / 0.095) | 22.86 (22.15 / 23.57) | 1.852 (1.913 / 1.790) | 96.5 (99.3 / 93.6) | 50.1 |
+| 2 · MimicLite-ROA | 31.98 (29.22 / 34.74) | 0.106 (0.095 / 0.118) | 33.21 (31.61 / 34.81) | 1.826 (1.886 / 1.766) | 96.6 (98.7 / 94.5) | 173.2 |
+| 3 · MimicLite-PPO | 32.92 (31.52 / 34.32) | 0.109 (0.097 / 0.121) | 35.96 (33.25 / 38.66) | 1.836 (1.900 / 1.772) | 97.6 (100.0 / 95.2) | 92.3 |
+
+这组结果说明排名不能只看单一进度值：PPO 的进度最高，但 v1.1 在所列位置、姿态、手腕误差及 Tracking Return 上领先。GPU Hours 是页面单列训练成本，不能脱离各项目的训练流程直接视为同条件成本比较。
 
 ## Benchmark 协议与指标
 

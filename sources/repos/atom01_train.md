@@ -7,6 +7,7 @@
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/atom01_train
 - **入库日期：** 2026-04-25
+- **复核（2026-10-25）：** 原链接已重定向到 https://github.com/Roboparty/roboparty_train ；当前 README 面向 RPO / RP1，基于 Isaac Lab 3.0.0 + RSL-RL 5.5.1 fork，支持 AMP / BeyondMimic / Parkour。
 - **一句话说明：** Atom01 的训练仓库，围绕 IsaacLab 训练配置、策略学习与 Sim2Sim/Sim2Real 迁移流程展开。
 - **沉淀到 wiki：** 否（待补充训练结果与方法对比后再升格）
 

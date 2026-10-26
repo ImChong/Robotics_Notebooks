@@ -10,6 +10,8 @@ related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/wholebodymem_arxiv_2610_31166.md
   - ../../sources/sites/wholebodymem.md
 summary: "WholeBodyMem equips humanoid VLA policies with object-guided keyframe memory of pre-goal events for dynamic loco-manipulation."

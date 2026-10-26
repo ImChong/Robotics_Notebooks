@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/whole-body-control.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/cowboy_arxiv_2610_28948.md
   - ../../sources/sites/cowboy-manip.md
 summary: "COWBOY 用环境感知 WBC 负责无碰接近、局部 RL 专家负责接触抓取，再蒸馏成协调移动底座、手臂、灵巧手和主动视觉的单一策略；项目页报告 24 个真实场景、100 多种物体上 91% 成功率。"

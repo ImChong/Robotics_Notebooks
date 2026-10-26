@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, isaac-lab, rl, sim2sim, sim2real, roboparty]
 status: complete
-updated: 2026-04-27
+updated: 2026-10-25
 related:
   - ./roboto-origin.md
   - ./robot-lab.md
@@ -110,44 +110,36 @@ summary: "atom01_train 是 Atom01 的训练仓库，围绕 IsaacLab 训练配置
 - 每次只改一组参数，避免多变量耦合导致无法归因。
 - 训练日志至少跟踪：总 reward、各 reward 分量、跌倒率、速度跟踪误差。
 
-## 开始训练与 Sim2Sim 指令（可直接放到 detail 页）
+## 开始训练与回放指令（上游 README 实参版）
 
-> 说明：本仓库当前已收录 `atom01_train` 的来源与定位，但没有把上游 README 的完整命令原文入库。为保证页面可用性，先给出 IsaacLab 生态常用命令模板（按实际脚本名替换）。
+> 2026-10-25 复核：`Roboparty/atom01_train` 已更名并重定向到 [`Roboparty/roboparty_train`](https://github.com/Roboparty/roboparty_train)。当前 README 面向 RPO 与 RP1 机器人，基于 Isaac Lab 3.0.0 与仓库内 RSL-RL 5.5.1 fork（Python 3.12、Ubuntu 22.04），以 `robolab`、`rsl_rl` 两个子模块组织；支持 AMP、BeyondMimic 与 Parkour 工作流。下列命令摘自上游 README，替换本页早先的通用模板。
 
-### 1) 开始训练（Train）
-
-```bash
-# 进入训练仓库后
-python scripts/train.py --task atom01_walk --headless
-```
-
-常见可选参数：
+### 1) 安装与检查任务
 
 ```bash
-python scripts/train.py   --task atom01_walk   --num_envs 4096   --max_iterations 5000   --seed 42   --headless
+git clone --recursive https://github.com/Roboparty/roboparty_train.git
+cd roboparty_train
+# 默认 MJWarp（Newton）后端环境
+uv sync --locked
+source .venv/bin/activate
+isaaclab list_envs --keyword RP   # 应同时列出 RPO- 与 RP1- 任务
 ```
 
-### 2) Sim2Sim（例如 Isaac → MuJoCo）
+PhysX（Isaac Sim 6.2）后端使用独立的 `.venv-physx` 环境，按 README 的 `uv sync --extra physx` 选项创建，运行时附加 `physics=isaacsim_physx`。
+
+### 2) 开始训练（Train）
 
 ```bash
-# 使用训练好的 checkpoint 在第二仿真器回放/评测
-python scripts/sim2sim.py --task atom01_walk --checkpoint <ckpt_path>
+python robolab/scripts/rsl_rl/train.py --task=RP1-Flat --viz=none --logger=tensorboard --num_envs=4096
 ```
 
-常见可选参数：
+### 3) 回放与导出（Play）
 
 ```bash
-python scripts/sim2sim.py   --task atom01_walk   --checkpoint logs/atom01_walk/model_XXXX.pt   --sim mujoco
+python robolab/scripts/rsl_rl/play.py --task=RP1-Flat --num_envs=1 --checkpoint=latest --viz=newton_gl
 ```
 
-如果上游仓库采用 `isaaclab.sh` 启动方式，可等价写成：
-
-```bash
-./isaaclab.sh -p scripts/train.py --task atom01_walk --headless
-./isaaclab.sh -p scripts/sim2sim.py --task atom01_walk --checkpoint <ckpt_path>
-```
-
-> 建议在后续 ingest 中补全 `atom01_train` README 的原始命令段落，再把本节模板替换成“仓库实参版”。
+回放会把策略导出到对应训练 run 的 `exported/` 目录；AMP、BeyondMimic、Parkour 分别使用 `RPO-AMP-Play`、`RPO-BeyondMimic`、`RPO-Parkour-Play` 任务。动作数据由 [HHTools](https://github.com/Roboparty/human-humanoid-tools) 重定向后经 `robolab/scripts/tools/hhtools/convert_motion.py` 转换。
 
 ## 常见误区或局限
 
@@ -157,7 +149,8 @@ python scripts/sim2sim.py   --task atom01_walk   --checkpoint logs/atom01_walk/m
 ## 参考来源
 
 - [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)
-- [Roboparty/atom01_train](https://github.com/Roboparty/atom01_train)
+- [Roboparty/atom01_train](https://github.com/Roboparty/atom01_train)（已重定向至 [Roboparty/roboparty_train](https://github.com/Roboparty/roboparty_train)）
+- [sources/repos/roboparty_train.md](../../sources/repos/roboparty_train.md)
 
 ## 关联页面
 

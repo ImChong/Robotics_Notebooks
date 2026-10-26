@@ -2,7 +2,7 @@
 type: concept
 tags: [control, modeling, optimization, humanoid]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-25
 summary: "飞书「建模+求解」框架：先把人形控制问题写成动力学模型与约束，再选择 OCP/QP/MPC/RL 等求解器；是 Model-based 与 Learning-based 的共同上游。"
 related:
   - ./optimal-control.md
@@ -13,6 +13,7 @@ related:
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/papers/blackmore_autonomous_precision_landing_space_rockets.md
 ---
 
 # 建模与求解（控制问题框架）
@@ -56,6 +57,7 @@ sources:
 - 用 [Pinocchio](../entities/pinocchio.md) 从 URDF 生成动力学项。
 - 手写最小 QP（CVXPY）理解约束激活（飞书传统路线练习）。
 - 建模文档与代码 **同一套符号**，避免 README 与实现不一致。
+- **在线求解要满足实时与重规划：** Blackmore 对 Falcon 9 回收着陆的概述给出跨领域实例——末段制导须在极短时间内求出满足硬件约束、到目标点静止的轨迹，并在故障时重规划；文中公开的实现线索是用 CVXGEN 生成机载凸优化代码（概述性资料，非完整飞控设计）。
 
 ## 局限与风险
 
@@ -73,6 +75,7 @@ sources:
 
 - [飞书 Know-How 全文](../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md) — §建模+求解
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
+- [Blackmore：Autonomous Precision Landing of Space Rockets](../../sources/papers/blackmore_autonomous_precision_landing_space_rockets.md) — 约束优化在线制导的实时性与重规划实例
 
 ## 推荐继续阅读
 

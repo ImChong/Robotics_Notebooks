@@ -20,6 +20,7 @@ related:
   - ./paper-hrl-stack-30-wholebodyvla.md
   - ./x-humanoid.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/haf_arxiv_2608_16837.md
   - ../../sources/papers/haf_vla_arxiv_2610_26584.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md

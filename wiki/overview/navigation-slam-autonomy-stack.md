@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-25
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -264,6 +264,7 @@ flowchart TB
 - [CommNav](../entities/paper-commnav.md) — 主动向路人打听目标位置（Habitat 3.0c；代码待发布）
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA；Spot GraphNav 高层路点（非替代经典栈）
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野开销地理学习 costmap + A\* LRP；局部仍走 MPPI（数据已开源，训练代码待发布）
+- [RTNav](../entities/paper-rtnav.md) — 30 Hz 墙钟实时评测零样本 ObjectNav，异步感知/建图/规划/按需 VLM 推理减少延迟损失
 
 ## 推荐继续阅读
 

@@ -11,7 +11,7 @@
 - **技能库：** <https://github.com/robot-agent-exploration/skills-lib> — [技能库归档](skills-lib.md)
 - **Session logs：** <https://huggingface.co/datasets/robot-agent-exploration/robot-session-logs> — [数据集归档](../datasets/rax-robot-session-logs.md)
 - **许可证：** Apache License 2.0（官方仓库 `main/LICENSE`；另有 `NOTICE`）。技能库许可证需单独核查
-- **入库日期：** 2026-10-17；分支与许可证核查更新：2026-10-20
+- **入库日期：** 2026-10-17；分支与许可证核查更新：2026-10-26
 
 ## 一句话摘要
 
@@ -27,6 +27,8 @@ RAX 提供统一的 coding-agent 探索与技能沉淀流程；根分支是索�
 | [humanoid-arena/native](https://github.com/robot-agent-exploration/rax/tree/humanoid-arena/native) | HumanoidArena 仿真 | 本机运行 agent CLI，由 CLI 沙箱隔离。 |
 | [dexjoco/container](https://github.com/robot-agent-exploration/rax/tree/dexjoco/container) | DexJoCo 仿真 | MuJoCo 中 Franka + Allegro 手；离线 Docker。 |
 | [dexjoco/native](https://github.com/robot-agent-exploration/rax/tree/dexjoco/native) | DexJoCo 仿真 | 本机运行 agent CLI，由 CLI 沙箱隔离。 |
+| [libero-pro/container](https://github.com/robot-agent-exploration/rax/tree/libero-pro/container) | LIBERO / LIBERO-PRO 仿真 | robosuite / MuJoCo，Franka Panda 并行夹爪；Docker 容器运行 agent，正式评测使用 LIBERO 官方初始状态或 LIBERO-PRO 扰动状态。 |
+| [libero-pro/native](https://github.com/robot-agent-exploration/rax/tree/libero-pro/native) | LIBERO / LIBERO-PRO 仿真 | 本机运行 agent CLI，由 CLI 沙箱隔离。 |
 | [real/franka](https://github.com/robot-agent-exploration/rax/tree/real/franka) | Franka FR3 真机 | 7-DoF 单臂、Franka Hand、三台 ZED 相机。 |
 | [real/rainbow](https://github.com/robot-agent-exploration/rax/tree/real/rainbow) | Rainbow RB-Y1 真机 | 轮式底盘、躯干、双臂、夹爪与头部 ZED 2i。 |
 

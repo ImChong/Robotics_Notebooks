@@ -28,6 +28,7 @@ related:
   - ../entities/xpolicylab.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-mmhu.md
+  - ../entities/paper-omnicompass.md
   - ../entities/dexbench.md
   - ../entities/paper-hand-erc-benchmarking-dexterity.md
   - ../entities/paper-dexholdem.md
@@ -53,6 +54,8 @@ sources:
   - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
+  - ../../sources/papers/omnicompass_arxiv_2610_18829.md
+  - ../../sources/sites/omnicompass-netlify-app.md
   - ../../sources/sites/dexbench-org.md
   - ../../sources/papers/hand_erc_benchmarking_arxiv_2609_05585.md
   - ../../sources/sites/hand-erc-benchmarking.md
@@ -179,6 +182,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [Imitator Game](../entities/paper-imitator-game.md) — L0–L3 意图级模仿基准（③ 层成功判据：目标等价而非轨迹相似）
 - [Bet4Sim2Real](../entities/paper-bet4sim2real.md) — 仿真库下注换 anytime-valid 真机性能证书（④ 层，真机样本贵时收窄区间）
 - [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为多模态基准（① 层相邻）
+- [OmniCompass](../entities/paper-omnicompass.md) — 视频时空 grounding 与 VL / AV 理解基准（① 层上游评测）
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
@@ -197,6 +201,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [PRM-as-a-Judge 论文](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — 过程评测 OPD
 - [SoftVTBench 论文](../../sources/papers/softvtbench_arxiv_2607_04234.md) — 可变形视触觉 Goal/Safety Success
 - [MMHU 论文](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA / 运动评测
+- [OmniCompass 论文](../../sources/papers/omnicompass_arxiv_2610_18829.md) — 视频时空 grounding / AV 理解评测
+- [OmniCompass 项目页](../../sources/sites/omnicompass-netlify-app.md) — 代码与数据入口核查
 - [Imitator Game 论文](../../sources/papers/imitator_game_arxiv_2608_22301.md) — L0–L3 意图级模仿评测协议
 - [Bet4Sim2Real 论文](../../sources/papers/bet4sim2real_arxiv_2608_21572.md) — 下注式 anytime-valid 真机性能证书
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页

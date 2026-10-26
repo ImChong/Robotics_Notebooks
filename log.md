@@ -245,6 +245,62 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+# [2026-10-26] ingest
+
+- **意图：** 收录 STAMP 人形动作片段时空对齐与人体动作先验论文。
+- **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
+- **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
+
+## [2026-10-26] ingest | RealSimLoop：收录在线可微 Real-to-Sim 论文
+
+- 归档 arXiv:2609.09828，新增论文 source 与论文实体页，并与 One-Shot Real-to-Sim 建立互链。
+- 论文报告滑窗视觉反馈、神经降阶仿真和伴随梯度可在线估计时变材料参数；双臂软杆场景约 6.23× 加速。
+- 开源状态：论文称录用后发布代码；截至入库日未提供公开仓库链接。
+
+## [2026-10-26] ingest | senlanke 具身运控lab 10.19-10.23 两篇周报（人形/四足 39 + Manipulation 37）：72 个唯一 arXiv，新建 48 篇独立 paper-* 节点，复用 24 篇，新增 2 篇 blog 源与 2 张技术地图
+
+## [2026-10-26] ingest | RoboMIND v1.0 / v2.0 论文、项目页与数据入口
+
+## [2026-10-25] structural | roadmap/depth-{bfm,rl-locomotion,contact-manipulation,motion-retargeting,navigation,loco-manipulation,embodied-data}.md — 巡检最新知识节点，补入 12 个未被引用的新页面（SuperMimic/MorphMimic/ScaleBFM/Push the Limit/IL 接触综述/HandsOn/STR/SuperNav/NavMCP/EvolvingNav/WholeBodyMem/SoftMimicGen）
+
+## [2026-10-25] lint | 全量 wiki lint 清零：修复 12 条警告与 9 条信息型预警（atom01-train 过期复核、11 页陈旧页面按新 sources 复核回链、modeling-and-solving 并入 Blackmore 来源、paper 三段式/缩写速查/评测枢纽回链补齐、Generate 停用词）
+
+## [2026-10-26] ingest | Real-Time EXPO-FT 官方代码状态复核
+
+- 官方项目页现链接至 `pd-perry/expo-ft`；更新论文与项目页归档的开放状态。
+- wiki 补充 README 中 server/client、异步训练入口及 OpenPI/DROID 分支复现路径。
+
+## [2026-10-26] ingest | Robotics Toolbox for Python — 归档官方仓库、在线文档与 ICRA 2021 论文入口；整理机械臂及移动机器人算法能力和实机部署边界。
+
+## [2026-10-26] ingest | NVIDIA Isaac Sim Agent Skills 官方文档与技能索引
+
+归档官方文档及源码索引，补充 Isaac Sim 实体页的 Agent 工作流和安全边界说明。
+
+## [2026-10-26] ingest | NVIDIA Isaac Lab Agent Skills 官方资料
+
+归档官方技能设计、3.0 EA 发布记录及 RL 调试和 PhysX/Newton 策略迁移示例，补充现有 Isaac Lab 实体页。
+
+## [2026-10-26] ingest | blurt 工程反馈整理工具
+
+- 来源：AGI Hunt 官方仓库 README；项目页列于 README。
+- 开源结论：仓库公开，MIT 许可证；README 描述本地优先语音转写并提供多平台工作流。
+- 判断：作为通用 AI 辅助工程工具归档至 sources；暂不升格为机器人知识页。
+
+## [2026-10-25] ingest | Artisan
+
+- 收录 Artisan 论文、项目主页、官方代码和 benchmark 数据入口；建立统一项目实体页，归纳其多智能体资产生成与物理仿真验证流程。
+
+## [2026-10-25] ingest | NVIDIA SimReady Assets — 归档 Hugging Face 数据集规模与开放边界
+
+- 核对 NVIDIA 的 Hugging Face 数据集页、SimReady Central 公告及官方文档。
+- 记录页面所示 2,575 个 3D Assets、222 行 Viewer 数据与 472 GB，并注明页面尚无 dataset card。
+- 明确 SimReady 属性随资产/profile 而异，许可需按资产包核查；补充现有 SimReady Central 实体页与来源映射。
+
+## [2026-10-25] ingest | 归档 SpaceX 火箭回收动力下降的一手资料
+
+- 收录 SpaceX 着陆工程师 Lars Blackmore 关于 F9R 精确着陆的技术文章，以及 SpaceX 官方 Grasshopper 垂直起降测试视频。
+- 区分 Grasshopper 悬停测试与 Falcon 9 轨道返回时的末段着陆燃烧；未将 G-FOLD 推断为 Falcon 9 实际使用算法。
+
 ## [2026-10-25] ingest | sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md — 收录 CoRL 2026 人形高速冲刺与转弯论文及实体页
 
 ## [2026-10-25] ingest | HandsOn：归档跨具身灵巧操作基准、PhysX 示范数据与开源边界

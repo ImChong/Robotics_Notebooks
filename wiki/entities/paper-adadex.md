@@ -18,6 +18,7 @@ related:
   - ../methods/spider-physics-informed-dexterous-retargeting.md
   - ../concepts/motion-retargeting.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/adadex_arxiv_2610_28628.md
 summary: "AdaDex（2026，CMU / NVIDIA）：用混合灵巧模仿，从单条数秒手-物轨迹训练一个共享的目标条件策略，学习可泛化的多指技能；代码标注 coming soon。"
 ---

@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, dh, se3, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-10-01
+updated: 2026-10-26
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ../overview/modern-robotics-wechat-principles-series.md
@@ -14,6 +14,7 @@ related:
   - ./se3-representation.md
   - ../entities/modern-robotics-book.md
   - ../entities/pinocchio.md
+  - ../entities/robotics-toolbox-python.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
 sources:
   - ../../sources/blogs/wechat_shenlan_forward_kinematics.md
@@ -106,7 +107,7 @@ flowchart LR
 | 人形 1 kHz 全身 FK | 按父索引拓扑一次算完树，分支可并行 | 30 DoF 量级 ~0.1 ms（向量化） |
 | Sim2Real 一致性 | 同 $q$ 序列对比仿真 FK 与真机 FK | 位置 <1 mm、姿态 <0.5° 为常见门槛 |
 
-手写 DH 只适合教学与标定；部署侧用 [Pinocchio](../entities/pinocchio.md) / URDF 树，再用 PoE 公式（[Modern Robotics](../entities/modern-robotics-book.md) Ch 4）交叉验证零位。
+手写 DH 只适合教学与标定；部署侧用 [Pinocchio](../entities/pinocchio.md) / URDF 树；教学与算法原型可用 [Robotics Toolbox for Python](../entities/robotics-toolbox-python.md) 对照 FK/IK，再用 PoE 公式（[Modern Robotics](../entities/modern-robotics-book.md) Ch 4）交叉验证零位。
 
 数值微分也能出雅可比，但奇异附近条件数差；工程默认几何雅可比（见 [robot-jacobian](./robot-jacobian.md)）。
 
@@ -122,6 +123,7 @@ flowchart LR
 - [齐次坐标与齐次变换](./homogeneous-coordinates-transform.md) — $4\times4$ 连乘的代数底座
 - [逆运动学](./inverse-kinematics.md) — 反函数：多解、奇异、DLS
 - [雅可比矩阵](./robot-jacobian.md) — FK 的速度/力接口
+- [Robotics Toolbox for Python](../entities/robotics-toolbox-python.md) — 可运行的机械臂 FK / IK / 轨迹 API
 - [李群 / SE(3)](./lie-group-rigid-body-motions.md) — 姿态合法表示
 - [Pinocchio](../entities/pinocchio.md) — 部署侧 FK/雅可比引擎
 - [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md) — 深蓝专栏 08
@@ -134,6 +136,7 @@ flowchart LR
 - [深蓝具身智能：正向运动学](../../sources/blogs/wechat_shenlan_forward_kinematics.md)
 - [抓取落盘](../../sources/raw/wechat_shenlan_forward_kinematics_2026-07-17.md)
 - [Modern Robotics 教材摘录](../../sources/papers/modern_robotics_textbook.md)
+- [Robotics Toolbox for Python](../../sources/repos/robotics-toolbox-python.md)
 
 ## 推荐继续阅读
 

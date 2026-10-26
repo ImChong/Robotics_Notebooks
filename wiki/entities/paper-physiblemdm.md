@@ -16,6 +16,7 @@ related:
   - ../methods/diffusion-motion-generation.md
   - ./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/physiblemdm_arxiv_2610_30500.md
 summary: "PhysibleMDM（arXiv:2610.30500）冻结动作扩散模型，在推理时用 Sep-CMA-ES 搜索初始与后验噪声，以运动学惩罚和锥规划逆动力学约束提升动作可行性；论文报告 SMPL 与自定义双足机器人上的可行性改善，但未列作者代码入口。"
 ---

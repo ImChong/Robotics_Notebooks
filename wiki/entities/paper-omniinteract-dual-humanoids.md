@@ -12,6 +12,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ./paper-decentralized-multi-humanoid-pickup.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/omniinteract_arxiv_2610_26043.md
   - ../../sources/sites/omniinteract-project.md
 summary: "OmniInteract（arXiv:2610.26043）：以表面接触感知重定向和冻结 SONIC 先验上的流匹配残差控制，实现双 Unitree G1 的多样全身交互；项目页未列可运行代码。"

@@ -17,6 +17,7 @@ related:
   - ../overview/hub-cross-embodiment.md
   - ../concepts/world-action-models.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/embodyhoi_arxiv_2610_27242.md
 summary: "EmbodyHOI（2026）：在冻结的 flow-matching 手-物交互生成器采样中嵌入可微 IK，使同一生成器适配 Unitree G1 与 H1-2，减少事后 retargeting 对接触的破坏。"
 ---
