@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | sources/repos/blender-skills.md — 收录 94 个 Blender 代理技能及 MCP 资产工作流
+
 ## [2026-10-26] ingest | RealSimLoop：收录在线可微 Real-to-Sim 论文
 
 - 归档 arXiv:2609.09828，新增论文 source 与论文实体页，并与 One-Shot Real-to-Sim 建立互链。

@@ -119,6 +119,7 @@
 - [Betaflight](wiki/entities/betaflight.md) — Betaflight**（betaflight/betaflight）是面向 **FPV 手飞、竞速与自由式 `📅unknown` `[entity_page]`
 - [bilibili-douyin-notes](wiki/entities/bilibili-douyin-notes.md) — bilibili-douyin-notes**（GitHub，MIT）是遵循 Agen `📅unknown` `[entity_page]`
 - [Birdview](wiki/entities/birdview.md) — Birdview**（Qiuner/birdview，MIT）是面向 Codex、Claude Code、DeepSee `📅unknown` `[entity_page]`
+- [Blender Skills](wiki/entities/blender-skills.md) — Blender Skills** 是一个面向 Cursor、Claude Code、Kiro 与 Codex 的 Blender 技能仓库。它把建模、材质、动画、场景搭建、物理效果、资产优化和格式 `📅unknown` `[entity_page]`
 - [Blender（开源 3D 创作套件）](wiki/entities/blender.md) — Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑 `📅unknown` `[entity_page]`
 - [BLIP](wiki/entities/blip.md) — BLIP 统一理解与生成的图文预训练：通过自举过滤噪声网图，并联合对比、匹配与语言模型目标，为后续 BLIP-2 奠基。 `📅unknown` `[entity_page]`
 - [BONES-SEED：日常具身动作数据集](wiki/entities/bones-seed.md) — 一句话定义：** BONES-SEED 是面向人形机器人研究的动作捕捉库，提供日常行为、全身动作、语言描述与 SOMA / Unitree G1 兼容轨迹。 `📅unknown` `[entity_page]`
