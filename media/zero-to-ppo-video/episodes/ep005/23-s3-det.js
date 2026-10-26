@@ -122,7 +122,8 @@
       function at(m, p) { var q = E.apply(m, p); return P(q[0], q[1]); }
       function poly(m, pts) { return pts.map(function (p, k) { var q = at(m, p); return (k ? 'L ' : 'M ') + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' '); }
       var ARC = [];
-      for (var k = 0; k <= 24; k++) { var aa = (-40 + 250 * k / 24) * D; ARC.push([0.5 + 0.24 * Math.cos(aa), 0.5 + 0.24 * Math.sin(aa)]); }
+      // 方块里的小弯箭头：逆时针从 −60° 转到 160°，半径 0.21；箭头尖停在方块左上部，整个三角离四条边（两根小箭头压在边上）都留出空，不被挡住
+      for (var k = 0; k <= 24; k++) { var aa = (-60 + 220 * k / 24) * D; ARC.push([0.5 + 0.21 * Math.cos(aa), 0.5 + 0.21 * Math.sin(aa)]); }
 
       return {
         el: s,
@@ -151,7 +152,7 @@
           var sqOn = f(st, T.square, 0.4);
           E.op(sq, sqOn);
           turnArc.setAttribute('d', poly(M, ARC));
-          var a = at(M, ARC[ARC.length - 2]), b = at(M, ARC[ARC.length - 1]), an = Math.atan2(b[1] - a[1], b[0] - a[0]), L = 11, W = 7;
+          var a = at(M, ARC[ARC.length - 2]), b = at(M, ARC[ARC.length - 1]), an = Math.atan2(b[1] - a[1], b[0] - a[0]), L = 10, W = 6;
           turnHead.setAttribute('d', 'M ' + (b[0] + 3 * Math.cos(an)).toFixed(1) + ' ' + (b[1] + 3 * Math.sin(an)).toFixed(1) +
             ' L ' + (b[0] - L * Math.cos(an) + W * Math.sin(an)).toFixed(1) + ' ' + (b[1] - L * Math.sin(an) - W * Math.cos(an)).toFixed(1) +
             ' L ' + (b[0] - L * Math.cos(an) - W * Math.sin(an)).toFixed(1) + ' ' + (b[1] - L * Math.sin(an) + W * Math.cos(an)).toFixed(1) + ' Z');
