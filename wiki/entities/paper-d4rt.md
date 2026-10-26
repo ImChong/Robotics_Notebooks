@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, computer-vision, 4d-reconstruction, point-tracking, depth-estimation, camera-pose, feedforward, foundation-model, deepmind, oxford, cvpr-2026, dynamic-scene]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-26
 arxiv: "2512.08924"
 venue: "CVPR 2026"
 related:
   - ../entities/genception.md
   - ./paper-vgg-ttt.md
+  - ./paper-arrow-4d-reconstruction.md
   - ../concepts/state-estimation.md
   - ../overview/hub-state-estimation.md
   - ../concepts/visual-representation-for-policy.md
@@ -133,6 +134,7 @@ flowchart TB
 | **SpatialTrackerV2** | 多阶段 + 迭代 refine；D4RT **单阶段**；跟踪吞吐 **18–300×**（Table 3） |
 | [VGG-T³](./paper-vgg-ttt.md) | **离线多视图 pointmap / COLMAP 替代**；D4RT 面向 **视频 4D / 动态** |
 | [GenCeption](./genception.md) | 生成骨干改 **统一视频感知**；深度上 GenCeption 以 **极少合成数据** 逼近 D4RT 量级（Table 2 对照） |
+| [ARROW](./paper-arrow-4d-reconstruction.md) | 借鉴 D4RT 查询接口，以**内容派生观测身份**扩展到无序图像集与多视角输入；是独立后续项目，代码与查看器已发布 |
 
 ## 工程实践
 
@@ -172,6 +174,7 @@ flowchart TB
 ## 关联页面
 
 - [GenCeption](./genception.md) — 深度/4D 感知统一基础模型；benchmark 以 D4RT 为对照专家
+- [ARROW](./paper-arrow-4d-reconstruction.md) — 将查询式几何扩展到顺序无关的观测集合，提供开源推理代码与交互查看器
 - [VGG-T³](./paper-vgg-ttt.md) — VGGT 系离线前馈几何与视觉定位
 - [State Estimation](../concepts/state-estimation.md) — 相机与稠密几何在状态估计栈中的位置
 - [状态估计枢纽](../overview/hub-state-estimation.md) — SLAM / 几何基础模型索引
