@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | RoboCompiler-Humanoids（arXiv:2610.14237）
+
+- 复核已存在的收录，依据 arXiv 摘要与作者 README 补齐方法、数值验证和复现入口。
+- 开源状态：代码、报告结果、论文手稿和视频公开，Apache-2.0；实验为 MuJoCo / Pinocchio 仿真，未据此外推真机性能。
+- 更新论文、仓库来源归档与 wiki 实体页。
+
 ## [2026-10-26] ingest | Anthropic 以 Claude 扩展形式化软件验证规模
 
 - 收录 Anthropic 与 Theorem 关于 OSS-Fuzz 二进制级 Rocq 证明的研究文章及公开证明/语义仓库。
