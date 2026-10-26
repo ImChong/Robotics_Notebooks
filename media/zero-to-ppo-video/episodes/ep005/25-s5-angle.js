@@ -1,9 +1,11 @@
 // 005 第 5 幕：中间的朝向——平均转过的角度。左边接着上一幕的地面网格（x 前、y 左），右栏放做法、矩阵、G1 与三维示意。
 // 句 1 网格上 0° 的两根小箭头和 90° 的虚线小箭头；右栏「别平均矩阵」打叉、「平均转过的角度」打勾，「零度到九十度」单位圆上从 0° 到 90° 的弧亮起，
 //    「四十五」两根小箭头沿圆转到 45°（长度不变），右栏写出「0° 到 90°：中间是 45°」；
-// 句 2 右栏出转 45° 的旋转矩阵，四个数按念到的顺序写出，网格上两个箭头尖标坐标；「长度」「垂直」「航列式」三块小牌依次打勾，网格上同时写「1」、标直角、涂小方块；
-// 句 3「每一个中间朝向」0°…90° 每隔 15° 一根淡绿小箭头依次亮起，尖都落在圆上；「机器人」右栏换成 G1，从 0° 一路转到 90°（每一刻都是真正的转动），「不变形」打勾；
-// 句 4「三维」网格换成斜着看的三维小坐标架，「转动的轴」画出一根斜着的转轴，坐标架绕它来回转；右栏顶上弯曲球面示意图（蓝弧沿着面走），
+// 句 2、3 讲 0.71 怎么来：「小箭头」往右那根鼓一下，「什么位置」尖上打问号，「斜线」画出 45° 的斜线，「横」「竖」量出沿 x 轴的横边、竖边（都标 a），
+//    「一样大」两个 a 一起鼓一下；「勾股定理」涂出直角三角形、斜边标 1，右栏一行行写出 a² + a² = 1、a² = 0.5、a ≈ 0.71，「零点七一」问号换成坐标；
+// 句 4 右栏出转 45° 的旋转矩阵，四个数按念到的顺序写出，网格上往上那根的尖也标坐标；「长度」「垂直」「航列式」三块小牌依次打勾，网格上同时写「1」、标直角、涂小方块；
+// 句 5「每一个中间朝向」0°…90° 每隔 15° 一根淡绿小箭头依次亮起，尖都落在圆上；「机器人」右栏换成 G1，从 0° 一路转到 90°（每一刻都是真正的转动），「不变形」打勾；
+// 句 6「三维」网格换成斜着看的三维小坐标架，「转动的轴」画出一根斜着的转轴，坐标架绕它来回转；右栏顶上弯曲球面示意图（蓝弧沿着面走），
 //    「四元数」「矩阵指数」两块小牌，念到「第六集」「第十集」各补上集数。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
 (function () {
@@ -13,9 +15,11 @@
   var MX = 622, R45 = [0.71, -0.71, 0.71, 0.71];
   var T = {
     no: 3.0, yes: 4.09, arc: 5.6, mid: 7.33, turn: [7.33, 1.0], txt: [5.6, 6.13, 6.85],
-    mat: 9.98, cells: [11.42, 13.49, 12.32, 14.42], chk: [15.31, 16.29, 17.26],
-    fan: 20.25, along: 21.73, robot: 22.68, spin: [23.0, 2.2], ok: 25.07,
-    to3: 26.66, axis: 27.48, tilt: 28.35, slerp: 30.08, quat: 32.27, mexp: 33.3, ep6: 35.35, ep10: 37.13
+    // 句 2、3：0.71 怎么来——「小箭头」「什么位置」「斜线」「横」「竖」「一样大」「勾股定理」「两个数的平方」「等于一」「零点五」「零点七一」
+    arrow: 11.04, where: 12.46, diag: 14.2, heng: 14.98, shu: 15.61, same: 16.47, gougu: 18.59, sq: [19.61, 20.9], half: 22.59, a71: 24.65, clear: 26.4,
+    mat: 27.45, cells: [28.89, 30.96, 29.79, 31.89], chk: [32.78, 33.76, 34.73],
+    fan: 37.72, along: 39.2, robot: 40.15, spin: [40.47, 2.2], ok: 42.54,
+    to3: 44.13, axis: 44.95, tilt: 45.82, slerp: 47.55, quat: 49.74, mexp: 50.77, ep6: 52.82, ep10: 54.6
   };
   var AXIS = [1, -0.5, 1];                                  // 和三根小箭头都隔 48° 以上，画面里也够长
 
@@ -23,12 +27,14 @@
 
   E.scenes[4] = {
     title: '中间的朝向：平均转过的角度',
-    dur: 38.7,
+    dur: 56.17,
     cues: [
       { at: 0, s: '别平均矩阵，**平均角度**：0° 到 90°，中间是 45°' },
-      { at: 9.02, s: '转 45° 的旋转矩阵：长度 1、互相垂直、行列式 1' },
-      { at: 19.36, s: '每个中间朝向都沿着圆走：转身的每一刻，身子都不变形' },
-      { at: 26.56, s: '三维：沿着转动取中间值，用四元数（第 6 集）或矩阵指数（第 10 集）' }
+      { at: 9.02, s: '转 45°：往右那根落在斜线上，横、竖一样大' },
+      { at: 18.04, s: '勾股定理：$a^2+a^2=1$，$a^2=0.5$，$a\\approx0.71$' },
+      { at: 26.49, s: '转 45° 的旋转矩阵：长度 1、互相垂直、行列式 1' },
+      { at: 36.83, s: '每个中间朝向都沿着圆走：转身的每一刻，身子都不变形' },
+      { at: 44.03, s: '三维：沿着转动取中间值，用四元数（第 6 集）或矩阵指数（第 10 集）' }
     ],
     build: function (K) {
       var s = K.sceneSvg('中间的朝向要平均转过的角度，不要平均矩阵：零度到九十度，中间是四十五度；转 45 度的旋转矩阵两列是 (0.71, 0.71) 和 (−0.71, 0.71)，长度 1、互相垂直、行列式 1；每个中间朝向都沿着圆走，机器人转身每一刻都不变形；三维里转轴不一定竖直，沿着转动取中间值要用四元数（第 6 集）或矩阵指数（第 10 集）');
@@ -44,6 +50,16 @@
       unit.style.strokeOpacity = 0.6;
       var arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, flat), null, E.ACC);
       var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, flat), E.tint(E.HI, 26, 'var(--demo-surface)'), E.HI);
+      // 0.71 怎么来：45° 斜线、直角三角形（横边沿 x 轴、竖边虚线，都是 a）、斜边 1
+      var R2 = Math.SQRT1_2, TIP = P(R2, R2), FOOT = P(R2, 0);
+      var diag = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + P(1.2, 1.2).join(' '), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '7 6' }, flat), null, E.HI);
+      var tri = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' ') + ' L ' + TIP.join(' ') + ' Z' }, flat), E.tint(E.GOOD, 22, 'var(--demo-surface)'));
+      var legH = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' '), 'stroke-width': 6, 'stroke-linecap': 'round' }, flat), null, E.GOOD);
+      legH.style.strokeOpacity = 0.75;
+      var legV = K.paint(E.el('path', { d: 'M ' + FOOT.join(' ') + ' L ' + TIP.join(' '), 'stroke-width': 2.5, 'stroke-dasharray': '5 5' }, flat), null, E.GOOD);
+      function mathTxt(x, y, t, c) { var n = E.halo(E.txt(flat, x, y, t, 26, c, 'middle', 400)); n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; return n; }
+      var aH = mathTxt((OX + FOOT[0]) / 2, OY + 30, 'a', E.GOOD), aV = mathTxt(FOOT[0] + 32, (OY + TIP[1]) / 2 + 9, 'a', E.GOOD);   // 竖边的 a 写在单位圆外
+      var hyp = E.halo(E.txt(flat, (OX + TIP[0]) / 2 - 16, (OY + TIP[1]) / 2 - 12, '1', 24, E.HI, 'middle', 900));
       var fan = [];
       for (var a = 0; a <= 90; a += 15) fan.push({ a: a * D, v: E.vec(flat, E.GOOD, 3, { head: 11 }), dot: K.paint(E.el('circle', { r: 5 }, flat), E.ACC) });
       var ghost = [E.vec(flat, E.GOOD, 3.5, { head: 13, dash: '6 5' }), E.vec(flat, E.WARN, 3.5, { head: 13, dash: '6 5' })];
@@ -58,6 +74,7 @@
       var noX = E.cross(noG, 482, 40, 10, E.BAD, 4.5); E.txt(noG, 506, 48, '别平均矩阵', 24, E.BAD, 'start', 900);
       var yesC = E.check(yesG, 470, 76, 24, E.GOOD, 4.5); E.txt(yesG, 506, 96, '平均转过的角度', 24, E.GOOD, 'start', 900);
       var ang = E.txt(r1, 476, 150, '', 26, E.INK, 'start', 900);
+      var der = [214, 266, 318].map(function (y) { return E.tex(r1, 476, y, '', 32, E.INK, 'start', { w: 300, h: 52 }); });
       var m = E.mat(r1, MX, 248, R45, { size: 28, dx: 84, dy: 42, pad: 46, cw: 76, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
       var chips = ['长度 1', '互相垂直', '行列式 1'].map(function (t, i) {
         var g = E.el('g', {}, r1), x = 456 + 114 * i;
@@ -118,11 +135,27 @@
           E.op(arc, 0.85);
           var l45 = P(1.32 * Math.cos(Math.PI / 4), 1.32 * Math.sin(Math.PI / 4));
           lab45.setAttribute('x', l45[0] + 6); lab45.setAttribute('y', l45[1] + 8);
-          E.pop(lab45, l45[0] + 6, l45[1], f(st, T.mid, 0.3) * (1 - f(st, T.cells[0] - 0.2, 0.3)), 0.6);
+          E.pop(lab45, l45[0] + 6, l45[1], f(st, T.mid, 0.3) * (1 - f(st, T.where - 0.3, 0.3)), 0.6);   // 问号出来前收掉：「45°」挨着箭头尖，后面又正好写在斜线上
           // 句 2：坐标、「1」、直角、小方块
-          tip1.setAttribute('x', q1[0] + 12); tip1.setAttribute('y', q1[1] - 10);
+          tip1.setAttribute('x', q1[0] + 16); tip1.setAttribute('y', q1[1] + (st < T.a71 ? 16 : 6));   // 尖的右边：在斜线下面、单位圆上面（问号字大，再往下挪）
           tip2.setAttribute('x', q2[0] - 12); tip2.setAttribute('y', q2[1] - 10);
-          E.op(tip1, f(st, T.cells[0], 0.3) * (1 - f(st, T.fan, 0.4))); E.op(tip2, f(st, T.cells[1], 0.3) * (1 - f(st, T.fan, 0.4)));
+          tip1.textContent = st < T.a71 ? '?' : '(0.71, 0.71)';   // 「什么位置」先打问号，「零点七一」算出来再写坐标
+          tip1.style.fontSize = st < T.a71 ? '28px' : '20px';
+          E.op(tip1, f(st, T.where, 0.3) * (1 - f(st, T.fan, 0.4))); E.op(tip2, f(st, T.cells[1], 0.3) * (1 - f(st, T.fan, 0.4)));
+          // 0.71 怎么来：斜线、横边、竖边、两个 a、三角形、斜边 1；26.4 起收掉，让给旋转矩阵
+          var dOut = 1 - f(st, T.clear, 0.4);
+          E.drawOn(diag, f(st, T.diag, 0.6)); E.op(diag, f(st, T.diag, 0.1) * dOut);
+          E.op(legH, f(st, T.heng, 0.3) * dOut); E.op(aH, f(st, T.heng, 0.3) * dOut);
+          E.op(legV, f(st, T.shu, 0.3) * dOut); E.op(aV, f(st, T.shu, 0.3) * dOut);
+          var sb = bump(st, T.same, 0.8);
+          E.scaleAt(aH, +aH.getAttribute('x'), OY + 22, 1 + 0.3 * sb); E.scaleAt(aV, +aV.getAttribute('x'), +aV.getAttribute('y') - 8, 1 + 0.3 * sb);
+          E.op(tri, f(st, T.gougu, 0.4) * dOut); E.op(hyp, f(st, T.gougu, 0.3) * dOut);
+          var ea = bump(st, T.arrow, 0.7);
+          e1.line.style.strokeWidth = 5 + 3 * ea; E.glow(e1.g, E.GOOD, ea > 0.05);
+          der[0].setTex(st < T.sq[1] ? 'a^2+a^2' : 'a^2+a^2=1');
+          der[1].setTex('a^2=0.5');
+          der[2].setTex('a\\approx\\textcolor{' + E.HEX.good + '}{0.71}');
+          E.op(der[0], f(st, T.sq[0], 0.3) * dOut); E.op(der[1], f(st, T.half, 0.3) * dOut); E.op(der[2], f(st, T.a71, 0.3) * dOut);
           [a2, b2].forEach(function (v, i) {
             var mid = P(v[0] * 0.55, v[1] * 0.55), n = i ? [-v[1], v[0]] : [v[1], -v[0]];
             ones[i].setAttribute('x', (mid[0] + 18 * n[0]).toFixed(1)); ones[i].setAttribute('y', (mid[1] - 18 * n[1] + 8).toFixed(1));
