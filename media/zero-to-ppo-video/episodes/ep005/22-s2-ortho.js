@@ -5,7 +5,8 @@
 // 句 3「第二列」往上那根同样画三角形、写一行算式打勾；「夹角」两根之间画角弧，「九十度」写 90°；
 // 句 4 网格从旋转变成 003 的「横着拉长」，矩阵换成 [[2, 0], [0, 1]]，「不合格」红叉，「第一列」框亮，「长度是二」往右那根写红色「2」，伸出单位圆；
 // 句 5 再变成「斜着推一下」[[1, 1], [0, 1]]，红叉，「垂直」两根之间画 45° 的红角弧；
-// 句 6 变回旋转矩阵，「正交」规矩牌下出大字「正交」，「书上常写成」一行，「R 的转置乘 R」「等于单位矩阵」式子一段段写出，「同一件事」规矩牌和式子一起亮一下。
+// 句 6 变回旋转矩阵，「正交」规矩牌下出大字「正交」，「书上常写成」一行，「R 的转置乘 R」「等于」式子一段段写出，「单位矩阵」式子右边画出第 1 幕讲过的单位矩阵，
+//    「同一件事」规矩牌和式子一起亮一下。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
 (function () {
   var E = window.EP005, K = E.K, H = E.HEX;
@@ -79,8 +80,10 @@
       var rowsBad = [E.txt(s, EX, 262, '', 24, E.INK, 'start', 700), E.txt(s, EX, 306, '', 24, E.BAD, 'start', 900)];
       var big = E.tag(s, MX - 70, 222, 140, 50, '正交', E.GOOD, { size: 30, ink: E.GOOD, weight: 900, rx: 14, sw: 3 });
       var book = E.txt(s, EX, 312, '书上常写成：', 22, E.INK2, 'start', 700);
-      var form = E.tex(s, MX + 30, 362, '', 34, E.INK, 'middle', { w: 260, h: 56 });
-      var unitLab = E.txt(s, MX + 30, 408, '（I 是单位矩阵）', 20, E.INK2, 'middle', 700);
+      var form = E.tex(s, EX + 4, 362, '', 34, E.INK, 'start', { w: 190, h: 56 });
+      var unitG = E.el('g', {}, s);                         // 单位矩阵 I（第 1 幕讲过）：斜线上 1、别处 0
+      E.mat(unitG, 716, 350, [1, 0, 0, 1], { size: 24, dx: 42, dy: 32, pad: 28, cw: 34, colors: [E.HI, E.MUT, E.MUT, E.HI] });
+      E.txt(unitG, 716, 408, '单位矩阵 I', 20, E.HI, 'middle', 900);
 
       function arcPath(a0, a1, r) {
         var p = P(r * Math.cos(a0), r * Math.sin(a0)), q = P(r * Math.cos(a1), r * Math.sin(a1));
@@ -194,7 +197,7 @@
           E.op(form, f(st, T.f[0], 0.3));
           var fg = bump(st, T.same, 1.0);
           E.glow(form, E.GOOD, fg > 0.05);
-          E.op(unitLab, f(st, T.unit, 0.3));
+          E.pop(unitG, 716, 360, f(st, T.unit, 0.35), 0.85);
         }
       };
     }
