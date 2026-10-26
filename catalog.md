@@ -607,6 +607,7 @@
 - [EtherCAT 虚拟从站仿真（EtherCAT Master Sim / ethercat-master-sim）](wiki/entities/ethercat-virtual-slave-sim.md) — 文章「仿真/调试工具」栏的两条同类条目：无需真实硬件、在 PC 上调试主站代码的虚拟从站。（分类：EtherCAT 仿真/调试；语言/形态：软件虚拟从站） `📅unknown` `[entity_page]`
 - [EtherCrab](wiki/entities/ethercrab.md) — 纯 Rust 实现的 EtherCAT 主站，面向 Rust 嵌入式开发。（分类：EtherCAT 主站；语言/形态：Rust） `📅unknown` `[entity_page]`
 - [EuRoC MAV 数据集（The EuRoC Micro Aerial Vehicle Datasets）](wiki/entities/euroc-mav-datasets.md) — EuRoC MAV Datasets**（*The EuRoC Micro Aerial Vehicle Datasets*，[DOI: 10.1177/0278364915620033](htt `📅unknown` `[entity_page]`
+- [Every Joule：互动 3D 物理课本](wiki/entities/every-joule.md) — Every Joule** 是 Techartist 制作的浏览器互动物理书，用十节课程讲解 GCSE/IGCSE 物理中的能量主题；作者称项目使用 Claude Opus 5.5 与 Three `📅unknown` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](wiki/entities/ewmbench.md) — EWMBench**（*Embodied World Model Benchmark*，arXiv:2505.09694）把「文生 / 图生视频」模型放在 **机器人操作** 语境里考核：给定  `📅unknown` `[entity_page]`
 - [Exercises Dataset（健身动作目录）](wiki/entities/exercises-dataset.md) — Exercises Dataset**（[hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-datas `📅unknown` `[entity_page]`
 - [Exploy](wiki/entities/exploy.md) — Exploy**（EXport and dePLOY）是 RAI Institute 开源的强化学习部署工具：它把仿真环境的观测生成、策略网络和动作后处理编译到一个 ONNX 计算图，再由 C++ `📅2026-10-07` `[entity_page]`
