@@ -31,14 +31,17 @@
   };
 
   function lerp4(A, B, p) { return A.map(function (a, i) { return a + (B[i] - a) * p; }); }
+  // 这一刻网格的矩阵 M 与可见度 vis。「左右一翻」「翻了面」「镜子」三处要演给人看，照旧逐元素插值（中途压扁再翻过去）；
+  // 镜子 → 原样、镜子 → 旋转这两处只是换下一段的起点，不演变形：淡出、换矩阵、再淡入（逐元素插值会在中途把整张网格压成一条，闪一下）
   function matAt(st) {
     var f = E.fade;
-    if (st < T.reset[0]) return lerp4(I, MIR, f(st, T.flip[0], T.flip[1]));
-    if (st < T.toS[0]) return lerp4(MIR, I, f(st, T.reset[0], T.reset[1]));
-    if (st < T.toM[0]) return lerp4(I, S, f(st, T.toS[0], T.toS[1]));
-    if (st < T.toR[0]) return lerp4(S, MIR, f(st, T.toM[0], T.toM[1]));
-    if (st < T.toMir[0]) return lerp4(MIR, Rm, f(st, T.toR[0], T.toR[1]));
-    return lerp4(Rm, MIR, f(st, T.toMir[0], T.toMir[1]));
+    function swap(A, B, w) { var p = K.seg(st, w[0], w[0] + w[1]); return { M: p < 0.5 ? A : B, vis: Math.abs(1 - 2 * p) }; }
+    if (st < T.reset[0]) return { M: lerp4(I, MIR, f(st, T.flip[0], T.flip[1])), vis: 1 };
+    if (st < T.toS[0]) return swap(MIR, I, T.reset);
+    if (st < T.toM[0]) return { M: lerp4(I, S, f(st, T.toS[0], T.toS[1])), vis: 1 };
+    if (st < T.toR[0]) return { M: lerp4(S, MIR, f(st, T.toM[0], T.toM[1])), vis: 1 };
+    if (st < T.toMir[0]) return swap(MIR, Rm, T.toR);
+    return { M: lerp4(Rm, MIR, f(st, T.toMir[0], T.toMir[1])), vis: 1 };
   }
   function bump(st, a, d) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
 
@@ -128,12 +131,15 @@
       return {
         el: s,
         draw: function (st, t) {
-          var f = E.fade, M = matAt(st);
+          var f = E.fade, MV = matAt(st), M = MV.M, vis = MV.vis;
           var two = f(st, T.to3, 0.5);
           E.op(flat, 1 - two);
           pl.warp.set(M);
+          // 翻面途中面积因子（行列式）接近 0，格线全挤到一条线上：按 |行列式| 把紫色网格淡掉，不让它闪成一根实心的条
+          E.op(pl.warp.g, (0.6 * vis * E.clamp(Math.abs(M[0] * M[3] - M[1] * M[2]) / 0.4, 0, 1)).toFixed(3));
           var o = P(0, 0), q1 = at(M, [1, 0]), q2 = at(M, [0, 1]);
           e1.set(o[0], o[1], q1[0], q1[1]); e2.set(o[0], o[1], q2[0], q2[1]);
+          E.op(e1.g, vis); E.op(e2.g, vis);
           var ba = bump(st, T.arrows, 0.7);
           e1.line.style.strokeWidth = e2.line.style.strokeWidth = 5 + 3 * ba;
 
@@ -149,7 +155,7 @@
           var det = M[0] * M[3] - M[1] * M[2], front = det >= 0;
           sq.setAttribute('d', poly(M, [[0, 0], [1, 0], [1, 1], [0, 1]]) + ' Z');
           K.paint(sq, E.tint(front ? E.HI : E.BAD, 30, 'var(--demo-surface)'), front ? E.HI : E.BAD);
-          var sqOn = f(st, T.square, 0.4);
+          var sqOn = f(st, T.square, 0.4) * vis;
           E.op(sq, sqOn);
           turnArc.setAttribute('d', poly(M, ARC));
           var a = at(M, ARC[ARC.length - 2]), b = at(M, ARC[ARC.length - 1]), an = Math.atan2(b[1] - a[1], b[0] - a[0]), L = 10, W = 6;
@@ -166,7 +172,7 @@
           areaLab.textContent = '面积 ' + E.num(Math.abs(det), 1);
           areaLab.setAttribute('x', fp[0].toFixed(1)); areaLab.setAttribute('y', (fp[1] + 7).toFixed(1));
           var areaOn = st < T.toR[0] ? f(st, T.square + 0.4, 0.3) * (Math.abs(det) > 0.5 ? 1 : 0) : f(st, T.area1, 0.3) * (Math.abs(det) > 0.5 ? 1 : 0);
-          E.op(areaLab, areaOn);
+          E.op(areaLab, areaOn * vis);
           areaLab.style.fill = front ? E.INK : E.BAD;
           var ab = bump(st, T.area, 0.8);
           areaLab.style.fontSize = (20 + 4 * ab) + 'px';
