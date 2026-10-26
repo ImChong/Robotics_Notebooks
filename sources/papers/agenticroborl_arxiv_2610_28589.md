@@ -48,6 +48,6 @@
 
 ## 对 wiki 的映射
 
-- 统一实体：[`wiki/entities/paper-agentic-roborl.md`](../../wiki/entities/paper-agentic-roborl.md)
-- 项目页归档：[`sources/sites/agenticroborl-project.md`](../sites/agenticroborl-project.md)
-- 官方仓库归档：[`sources/repos/agenticroborl.md`](../repos/agenticroborl.md)
+- 统一实体：[wiki/entities/paper-agentic-roborl.md](../../wiki/entities/paper-agentic-roborl.md)
+- 项目页归档：[sources/sites/agenticroborl-project.md](../sites/agenticroborl-project.md)
+- 官方仓库归档：[sources/repos/agenticroborl.md](../repos/agenticroborl.md)

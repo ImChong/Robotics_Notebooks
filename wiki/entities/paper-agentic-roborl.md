@@ -32,7 +32,7 @@ summary: "AgenticRoboRL（arXiv:2610.28589，UCF/USC/MSU）：先用教师轨迹
 | RL | Reinforcement Learning | 按任务结果进一步优化 planner |
 | VLA | Vision-Language-Action | RPent harness 中被 planner 调用的冻结策略 |
 | PPO | Proximal Policy Optimization | 以 dual-clip token loss 更新 planner |
-| LIBERO-PRO | LIBERO-Professional | 评估操作规划在物体位置与任务扰动下的表现 |
+| LIBERO-PRO | Perturbed LIBERO benchmark | 评估操作规划在物体位置与任务扰动下的表现 |
 
 ## 为什么重要
 

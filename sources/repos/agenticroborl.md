@@ -11,7 +11,7 @@
 - **许可证：** Apache-2.0
 - **入库日期：** 2026-10-26
 - **一句话说明：** 在保留机器人 harness 执行组件的前提下，记录 planner 的真实模型请求，将 episode 结果映射为可复用的训练样本，并以 SFT 和多轮 RL 更新 planner。
-- **沉淀到 wiki：** [`wiki/entities/paper-agentic-roborl.md`](../../wiki/entities/paper-agentic-roborl.md)
+- **沉淀到 wiki：** [wiki/entities/paper-agentic-roborl.md](../../wiki/entities/paper-agentic-roborl.md)
 
 ## 仓库结构与运行入口（依据 README）
 
