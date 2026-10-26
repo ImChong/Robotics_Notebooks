@@ -5197,6 +5197,7 @@
 - [Visual Foresight](wiki/entities/paper-visual-foresight-latent-mpc.md) — Visual Foresight** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`
 - [VBC（HMI P043）](wiki/entities/paper-visual-whole-body-control-vbc.md) — VBC**（*Visual Whole-Body Control for Legged Loco-Manipulation*，2024，[arXiv:2403.16967](https://arx `📅unknown` `[entity_page]`
 - [Visuomotor Pruning（arXiv:2609.24906）](wiki/entities/paper-visuomotor-robotic-pruning-orchards.md) — Visuomotor Pruning**（*Visuomotor Robotic Pruning in Planar Orchards Using Hybrid Reinforcement Lea `📅unknown` `[entity_page]`
+- [ViT-H：带运动跟踪反馈的视频到人形控制](wiki/entities/paper-vit-h-video-to-humanoid.md) — 一句话定义：** ViT-H 从单目人类视频直接生成 Unitree G1 的参考动作，并用机器人跟踪表现反向优化生成器。 `📅2026-10-27` `[entity_page]`
 - [ViTacPhys：视触觉物理属性感知自适应抓取](wiki/entities/paper-vitacphys.md) — ViTacPhys**（*Physical Property-Aware Grasping from Human Visual-Tactile Demonstrations*，[arXiv:260 `📅unknown` `[entity_page]`
 - [ViTacWorld（视触觉世界模型 · arXiv:2607.22530）](wiki/entities/paper-vitacworld.md) — ViTacWorld**（*Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [ViTaR：基础 VLA 的视触觉残差适配](wiki/entities/paper-vitar.md) — ViTaR**（*ViTaR: Visuo-Tactile Residual Adaptation for Foundation VLA Manipulation*，[arXiv:2608.158 `📅unknown` `[entity_page]`
