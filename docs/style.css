@@ -292,13 +292,18 @@ body.sponsor-dialog-open {
   padding: 32px 0 28px;
   isolation: isolate;
 }
-/* 氛围层：向下渐隐的点阵，给首屏一点「地图 / 图纸」质感（纯色底，不叠背景渐变） */
+/* 氛围层：左上角柔光 + 向下渐隐的点阵，给首屏一点「地图 / 图纸」质感 */
 .hero-backdrop {
   position: absolute;
   inset: calc(var(--header-h) * -1) 0 0;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  background: radial-gradient(
+    76% 116% at 4% -14%,
+    color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+    transparent 60%
+  );
 }
 .hero-backdrop::before {
   content: "";
