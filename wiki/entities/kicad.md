@@ -13,6 +13,7 @@ related:
   - ./tinkercad.md
   - ./qucs-s.md
   - ./konnect.md
+  - ./atopile.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -121,6 +122,7 @@ flowchart TB
 
 - [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
 - [Konnect](./konnect.md) — 通过 MCP 将 AI 助手接入 KiCad 10，辅助编辑、检查和导出板级工程。
+- [atopile](./atopile.md) — 以声明式代码描述电子设计，并与 KiCad 布局衔接的语言与编译工具链。
 
 - [Qucs-S](./qucs-s.md) — 独立的电路仿真 GUI，可调用 Ngspice、Xyce 等外部后端；补充电路级分析，不替代 PCB 设计。
 
