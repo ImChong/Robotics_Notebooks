@@ -11,6 +11,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/diffusion-motion-generation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/humanoid_srl_arxiv_2610_25628.md
 summary: "Humanoid SRL 研究在人形机器人上集成超冗余机械臂，以模型式轨迹优化生成动态可行运动、训练目标条件强化学习控制器，并将仿真策略零样本迁移至硬件；同时展示基于硬件示范训练的扩散策略用于视觉引导自主执行。"
 ---

@@ -11,6 +11,8 @@ related:
   - ../methods/vla.md
   - ./paper-smpc2rl-loco-manipulation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/sp_hlm_arxiv_2610_30044.md
   - ../../sources/sites/sp-hlm.md
 summary: "SP-HLM combines five explicit task-critical body poses with a learned motion prior, linking a VLA planner to real-time humanoid whole-body control for loco-manipulation."

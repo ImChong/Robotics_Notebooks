@@ -15,6 +15,7 @@ related:
   - ../methods/ppo.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/watch_your_step_arxiv_2610_29612.md
   - ../../sources/sites/watch-your-step.md
   - ../../sources/repos/foothold-prediction-model.md

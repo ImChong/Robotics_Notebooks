@@ -11,6 +11,8 @@ related:
   - ../entities/unifolm-world-model-action.md
   - ../methods/generative-world-models.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/ropedia_w0_arxiv_2610_26855.md
   - ../../sources/sites/ropedia-w0.md
   - ../../sources/repos/ropedia-w0.md

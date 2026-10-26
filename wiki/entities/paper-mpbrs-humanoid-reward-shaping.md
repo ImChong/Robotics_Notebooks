@@ -10,6 +10,7 @@ related:
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/mpbrs_arxiv_2610_30334.md
 summary: "MPBRS evaluates one potential-based reward configuration across nine humanoid robots, requiring robot-specific metadata but no per-robot reward redesign."
 ---

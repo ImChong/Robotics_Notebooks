@@ -12,6 +12,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/swap_humanoid_oa_arxiv_2610_25711.md
   - ../../sources/sites/swap-steerable-humanoid-oa-website.md
 summary: "SWAP（arXiv:2610.25711）用感知条件化扩散策略提出多模态全身避障动作，低层 RL 控制器负责稳定跟踪；仿真与 Unitree G1 实验覆盖静态和动态障碍，测试时引导使目标奖励平均提升 34%，代码待开放。"

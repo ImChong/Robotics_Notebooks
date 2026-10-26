@@ -10,6 +10,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/atomicrl_arxiv_2610_30097.md
 summary: "AtomicRL post-trains VLA policies for long-horizon manipulation using atomic subtasks, boundary-aware credit assignment, and bottleneck-adaptive exploration."
 ---

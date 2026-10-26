@@ -12,6 +12,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ./paper-vibe.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md
   - ../../sources/sites/stamp-project-page.md
 summary: "STAMP 先为两段独立人形机器人动作学习选择空间位置、朝向与过渡时长，再调用人体动作先验生成中间动作，并重定向回机器人训练跟踪策略。"
