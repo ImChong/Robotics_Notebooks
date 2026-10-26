@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-26
 related:
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
@@ -50,6 +50,7 @@ related:
   - ../entities/skild-physical-self-play.md
   - ../entities/ai-engineering-from-scratch.md
   - ../entities/paper-minute-scale-microrobot-navigation.md
+  - ../entities/paper-agentic-roborl.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -141,6 +142,7 @@ flowchart TD
     - **[SDPG（视觉 RL）](../entities/paper-sdpg-visual-rl-stochastic-decoupled.md)**：随机解耦 + 混合 batch-rendered/physics-only 并行，单卡端到端视觉 on-policy（arXiv:2605.26478；[Genesis 实现已开源](https://github.com/HaoxiangYou/SDPG)）。
     - **[SDPG（LLM RLVR）](../entities/paper-sdpg-self-distilled-policy-gradient.md)**：GRPO + privileged 全词表自蒸馏 + ref KL（arXiv:2606.04036；[verl 实现已开源](https://github.com/lauyikfung/SDPG)）；**与视觉 SDPG 仅缩写相同**。
     - **[Agent Lightning](../entities/agent-lightning.md)**：微软开源 **agent harness → verl + vLLM** 轨迹 RL 栈（Gateway 代理、K8s rollout）；与腿足/仿真 RL 正交，但共享 verl 生态。
+    - **[AgenticRoboRL](../entities/paper-agentic-roborl.md)**：对机器人 harness planner 做 SFT + 多轮 RL；在模型调用边界记录真实请求，并以 adapter 连接 episode 结果，底层 VLA / 控制执行器保持固定。
 - **Q-Learning**：学习状态-动作价值函数 (Q-function)。
     - **DQN**：深度 Q 网络，适用于离散动作。
 - **Actor-Critic (行动者-评论家)**：结合两者优势。
