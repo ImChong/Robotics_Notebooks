@@ -3837,6 +3837,7 @@
 - [Real-Time EXPO-FT：实时残差 RL 修正 VLA](wiki/entities/paper-real-time-expo-ft.md) — Real-Time EXPO-FT**（*Reinforcement Learning for Real-Time Vision-Language-Action Policies*，[arXiv: `📅unknown` `[entity_page]`
 - [RealCompanion：真实纵向对话中的用户理解基准](wiki/entities/paper-realcompanion.md) — RealCompanion 是真实人-AI companion 长周期对话基准，检验模型能否理解用户、判断何时需要历史记忆，并让回答由消息证据支撑。 `📅unknown` `[entity_page]`
 - [REALM（Last-3-Meter VLN · 实例级接地）](wiki/entities/paper-realm-last-3-meter-vln-grounding.md) — REALM**（*From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation*，arXiv: `📅unknown` `[entity_page]`
+- [RealSimLoop：视觉反馈驱动的在线 Real-to-Sim](wiki/entities/paper-realsimloop.md) — RealSimLoop** 将多视角视觉误差接入可微软体仿真，以低维神经子空间加速动力学与梯度计算，并在滑动时间窗中持续更新材料参数。 `📅unknown` `[entity_page]`
 - [RealtimeWAM：免训练的世界–动作模型实时推理](wiki/entities/paper-realtimewam-training-free-wam-acceleration.md) — RealtimeWAM** 不改权重、不重训，只在推理层面做两件事——让观测预填充（Prefill）与未来预测按层并行重叠，以及按画面/运动变化选择性复用缓存的 token 特征与 Transfo `📅unknown` `[entity_page]`
 - [Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations（arXiv:2609.20477）](wiki/entities/paper-rebarsim.md) — Visual Sim-to-Real Learning for Robotic Insertion under Geometric Variations**（*Application to Reb `📅unknown` `[entity_page]`
 - [RECAL（arXiv:2609.16405）](wiki/entities/paper-recal-collision-aware-wbc.md) — RECAL**（*Collision-Aware Humanoid Whole-Body Control under Imperfect Tracking Targets*，[arXiv:2609 `📅unknown` `[entity_page]`
