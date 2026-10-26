@@ -1111,7 +1111,7 @@
 - [nuScenes](wiki/entities/painode-090-nuscenes.md) — nuScenes** 收录于 awesome-physical-ai（natnew）**第 090/384** 条，分组 **Datasets**。本页是 **清单索引**：给出它在清单中的位置与 `📅unknown` `[entity_page]`
 - [RH20T](wiki/entities/painode-092-rh20t.md) — RH20T** 收录于 awesome-physical-ai（natnew）**第 092/384** 条，分组 **Datasets**。本页是 **清单索引**：给出它在清单中的位置与官方入 `📅unknown` `[entity_page]`
 - [RLDS](wiki/entities/painode-093-rlds.md) — RLDS** 收录于 awesome-physical-ai（natnew）**第 093/384** 条，分组 **Datasets**。本页是 **清单索引**：给出它在清单中的位置与官方入口 `📅unknown` `[entity_page]`
-- [RoboMIND](wiki/entities/painode-094-robomind.md) — RoboMIND** 收录于 awesome-physical-ai（natnew）**第 094/384** 条，分组 **Datasets**。本页是 **清单索引**：给出它在清单中的位置与 `📅unknown` `[entity_page]`
+- [RoboMIND](wiki/entities/painode-094-robomind.md) — RoboMIND** 是北京人形机器人创新中心（X-Humanoid）发布的多本体机器人操作数据集与基准，提供真实遥操作轨迹、语言任务描述和多视角观测；2.0 扩展了双臂移动操作、触觉和数字孪生数 `📅unknown` `[entity_page]`
 - [Something-Something V2](wiki/entities/painode-096-somethingsomethingv2.md) — Something-Something V2** 收录于 awesome-physical-ai（natnew）**第 096/384** 条，分组 **Datasets**。本页是 **清单索引 `📅unknown` `[entity_page]`
 - [Waymo Open Dataset](wiki/entities/painode-097-waymoopendataset.md) — Waymo Open Dataset** 收录于 awesome-physical-ai（natnew）**第 097/384** 条，分组 **Datasets**。本页是 **清单索引**：给 `📅unknown` `[entity_page]`
 - [AutoGPTQ](wiki/entities/painode-098-autogptq.md) — AutoGPTQ** 收录于 awesome-physical-ai（aichr）**第 098/384** 条，分组 **Edge AI & Inference**。本页是 **清单索引**：给 `📅unknown` `[entity_page]`

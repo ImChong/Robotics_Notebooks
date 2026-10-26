@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | RoboMIND v1.0 / v2.0 论文、项目页与数据入口
+
 ## [2026-10-25] structural | roadmap/depth-{bfm,rl-locomotion,contact-manipulation,motion-retargeting,navigation,loco-manipulation,embodied-data}.md — 巡检最新知识节点，补入 12 个未被引用的新页面（SuperMimic/MorphMimic/ScaleBFM/Push the Limit/IL 接触综述/HandsOn/STR/SuperNav/NavMCP/EvolvingNav/WholeBodyMem/SoftMimicGen）
 
 ## [2026-10-25] lint | 全量 wiki lint 清零：修复 12 条警告与 9 条信息型预警（atom01-train 过期复核、11 页陈旧页面按新 sources 复核回链、modeling-and-solving 并入 Blackmore 来源、paper 三段式/缩写速查/评测枢纽回链补齐、Generate 停用词）
