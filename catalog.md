@@ -3277,6 +3277,7 @@
 - [P³-WAM：第一视角灵巧操作的统一世界动作模型](wiki/entities/paper-p3-wam-egocentric-dexterous.md) — P³-WAM 把感知、预测与规划放进同一个世界动作模型，三种模式共享基础参数，通过视觉与三维动作之间的双向注意力交换信息。 `📅unknown` `[entity_page]`
 - [P³：稳定 VAE 策略学习的概率传播](wiki/entities/paper-p3.md) — P³**（*Probabilistic Policy Propagation for Stable VAE-Based Robot Learning*，[arXiv:2607.25541](htt `📅unknown` `[entity_page]`
 - [PAC-MAN](wiki/entities/paper-pac-man-perceptive-cbf-rl.md) — PAC-MAN**（*Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*，[arXiv:2607.28623 `📅unknown` `[entity_page]`
+- [PACE：让触觉承担三种时间角色](wiki/entities/paper-pace-insertion.md) — PACE（Phase-Aware Contact-Event Conditioning）把触觉流拆成状态条件、事件纠正和后果预测三条互补路径：状态稳定动作块生成，事件修正动作块，预测目标则在训练中 `📅unknown` `[entity_page]`
 - [PACE（VLA 长程信用）（arXiv:2608.15026）](wiki/entities/paper-pace-phase-progress-vla.md) — PACE（VLA 长程信用）**（*PACE: Phase-Progress-Aware Credit for Long-Horizon Embodied Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [PACE](wiki/entities/paper-pace-progress-aligned-context.md) — PACE**（*Progress-Aligned Context for Execution*，arXiv:2610.07917，浙江大学）针对示范条件长程操作中的**阶段混淆**：相似观测出现在 `📅unknown` `[entity_page]`
 - [PACE（足式系统化 Sim2Real）](wiki/entities/paper-pace-sim2real-legged-robots.md) — PACE**（**P**recise **A**daptation through **C**ontinuous **E**volution）是 ETH Zurich Robotic System `📅unknown` `[entity_page]`
