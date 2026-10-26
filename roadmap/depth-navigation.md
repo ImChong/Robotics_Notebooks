@@ -190,6 +190,9 @@ flowchart LR
 - [NavVerse](../wiki/entities/paper-navverse.md) — UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
 - [VTInstructor](../wiki/entities/paper-vtinstructor.md) — 第一视角轨迹压缩为导航关键帧并注入路径/转向/终点提示，生成 VLN 指令并以冻结 follower 验证下游效果
 - [Embodied-Navigator / TAMP-Nav](../wiki/entities/paper-embodied-navigator-tamp-nav.md) — 像素到三维 waypoint + 选择性 CoT / 锚点记忆 + 双层 GRPO 的 VLN 策略
+- [SuperNav](../wiki/entities/paper-supernav-agentic-navigation.md) — 给预训练 MLLM 配 agent harness（Tools / Skills / 任务进度 / 上下文管理），以视觉点目标连接高层决策与可替换运动后端
+- [NavMCP](../wiki/entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆，支持长时程具身探索与问答
+- [EvolvingNav](../wiki/entities/paper-evolvingnav.md) — 带时间戳 3D 历史转为「到达时刻」世界的预测式 4D 信念，行动→证据→信念修正→记忆更新闭环（云深处 + 浙大）
 
 ### 学完输出什么
 - 一次标准 VLN 基准上的复现与评测记录

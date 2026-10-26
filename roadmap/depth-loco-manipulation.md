@@ -150,6 +150,7 @@ flowchart LR
 - [OCLO](../wiki/entities/paper-oclo-online-posture-compliant-loco-manipulation.md) — 不用人体动作数据：从双末端目标在线生成骨盆/躯干姿态，并以力反馈参考偏移实现全身顺应
 - [ResGAC](../wiki/entities/paper-resgac-precise-se3-end-effector-tracking.md) — 几何导纳控制（GAC）的 SE(3) 末端跟踪先验 + 残差 RL，G1 上协调手臂/腿/腰；站立插孔成功率 90%
 - [RoboDuet](../wiki/entities/paper-roboduet-loco-manipulation.md) — locomotion 与 arm 两个协作策略控制带臂四足，移动中追踪末端 6D 位姿，并验证跨相近四足平台零样本迁移
+- [WholeBodyMem](../wiki/entities/paper-wholebodymem.md) — 给人形 VLA 加对象引导的关键帧记忆，保留目标达成前事件，服务动态 loco-manipulation
 
 ### 学完输出什么
 - 一个能在仿真里完成"走近 + 全身接触搬运"的技能策略

@@ -118,6 +118,9 @@ flowchart LR
 - [GigaBrain-WBC-0.5](../wiki/entities/paper-gigabrain-wbc-0-5.md) — 首个 humanoid Behavior World Model：因果 Transformer 联合预测 action/state/next-command GMM，自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；代码 coming soon
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- [SuperMimic](../wiki/entities/paper-supermimic.md) — 动作跟踪策略与可微世界模型联合训练，短时想象 rollout + 解析梯度降低大规模人形全身控制的训练算力
+- [MorphMimic](../wiki/entities/paper-morphmimic.md) — 在 SuperMimic 路线上加规范化人形接口与形态条件化，G1 / X2 Ultra / T2 共用一个世界模型与一套跟踪策略
+- [ScaleBFM](../wiki/entities/paper-scaling-bfm-humanoid.md) — 人形 BFM 规模化配方：全局坐标系整体跟踪 + on-policy rollout 与参考运动多样性协同 + 3M 参数 Humanoid Transformer
 
 ### 学完输出什么
 - 一个跑通的人形动作跟踪 demo

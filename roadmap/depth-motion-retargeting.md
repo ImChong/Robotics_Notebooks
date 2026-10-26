@@ -168,6 +168,7 @@ flowchart LR
 - [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
 - [UMR](../wiki/entities/paper-umr-unified-motion-retargeting.md)（HKUST-GZ / 诺亦腾 / 汉阳大学）— 把人–机对应从"手写关键点表"改成规范 T-pose 上学到的稠密点云索引对应，同一套点对同时传表面位姿与接触向量，换源换机主要复用对应而非重画映射；LAFAN1 全局体段误差低于 GMR，接触任务关节误差相对 OmniRetarget 约 −40–56%，G1 真机旋踢/捡球/爬楼；代码待发布
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) — 四足支线主入口，见下节
+- [STR](../wiki/entities/paper-str-spatiotemporal-retargeting.md) — 时空重定向：把重定向精度集中分配给任务关键帧、关键身体部位与物体接触，再训练接触感知人形控制
 
 ### 四足支线：动物 / 视频关键点 → 四足参考
 
