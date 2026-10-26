@@ -135,6 +135,8 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 
 让机器人的手能做事情——抓东西、搬东西、用东西。
 
+技能获取与跨任务复用的例子见 [RoboSkill：Explore, Execute, Evolve](../entities/paper-roboskill.md)。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
