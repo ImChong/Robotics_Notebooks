@@ -34,9 +34,21 @@ BLOGS = {
 }
 
 SEC_META = {
-    "人形机器人": ("humanoid", ["paper", "humanoid"], ["../tasks/humanoid-locomotion.md", "../methods/reinforcement-learning.md"]),
-    "四足机器人": ("quadruped", ["paper", "quadruped", "locomotion"], ["../tasks/locomotion.md", "../methods/reinforcement-learning.md"]),
-    "轮足与通用腿式机器人": ("legged", ["paper", "legged-robot", "locomotion"], ["../tasks/locomotion.md"]),
+    "人形机器人": (
+        "humanoid",
+        ["paper", "humanoid"],
+        ["../tasks/humanoid-locomotion.md", "../methods/reinforcement-learning.md"],
+    ),
+    "四足机器人": (
+        "quadruped",
+        ["paper", "quadruped", "locomotion"],
+        ["../tasks/locomotion.md", "../methods/reinforcement-learning.md"],
+    ),
+    "轮足与通用腿式机器人": (
+        "legged",
+        ["paper", "legged-robot", "locomotion"],
+        ["../tasks/locomotion.md"],
+    ),
 }
 MAN_REL = ["../tasks/manipulation.md", "../methods/vla.md"]
 MAN_TAGS = {
@@ -61,7 +73,7 @@ ABBREV = {
     "IMU": ("Inertial Measurement Unit", "惯性测量单元"),
 }
 
-DATA = json.loads(r'''{
+DATA = json.loads(r"""{
  "papers": {
   "2610.25711": {
    "id": "2610.25711",
@@ -1511,7 +1523,7 @@ DATA = json.loads(r'''{
    }
   ]
  }
-}''')
+}""")
 PAPERS: dict[str, dict] = DATA["papers"]
 LISTS: dict[str, list[dict]] = DATA["lists"]
 
@@ -1737,7 +1749,8 @@ def render_blog(key: str) -> str:
     parts = []
     for sec, rows in table_rows(key, "../../wiki/entities/").items():
         parts.append(
-            f"### {sec}（{len(rows)}）\n\n| # | 节点 | arXiv | 状态 |\n|---|------|-------|------|\n" + "\n".join(rows)
+            f"### {sec}（{len(rows)}）\n\n| # | 节点 | arXiv | 状态 |\n|---|------|-------|------|\n"
+            + "\n".join(rows)
         )
     return f"""# {b["title"]}
 
@@ -1776,12 +1789,25 @@ def render_overview(key: str) -> str:
     parts = []
     for sec, rows in table_rows(key, "../entities/").items():
         parts.append(
-            f"### {sec}（{len(rows)}）\n\n| # | 论文节点 | arXiv | 状态 |\n|---|----------|-------|------|\n" + "\n".join(rows)
+            f"### {sec}（{len(rows)}）\n\n| # | 论文节点 | arXiv | 状态 |\n|---|----------|-------|------|\n"
+            + "\n".join(rows)
         )
     if key == "hq":
-        tags, related, abbr = "[survey, humanoid, quadruped, legged-robot, senlanke]", ["../tasks/locomotion.md", "../tasks/humanoid-locomotion.md", "../methods/reinforcement-learning.md"], ["RL", "WBC", "MPC", "LiDAR", "IMU"]
+        tags, related, abbr = (
+            "[survey, humanoid, quadruped, legged-robot, senlanke]",
+            [
+                "../tasks/locomotion.md",
+                "../tasks/humanoid-locomotion.md",
+                "../methods/reinforcement-learning.md",
+            ],
+            ["RL", "WBC", "MPC", "LiDAR", "IMU"],
+        )
     else:
-        tags, related, abbr = "[survey, manipulation, vla, world-action-model, senlanke]", ["../tasks/manipulation.md", "../methods/vla.md", "../concepts/world-action-models.md"], ["VLA", "WAM", "RL", "IL"]
+        tags, related, abbr = (
+            "[survey, manipulation, vla, world-action-model, senlanke]",
+            ["../tasks/manipulation.md", "../methods/vla.md", "../concepts/world-action-models.md"],
+            ["VLA", "WAM", "RL", "IL"],
+        )
     other = BLOGS["man" if key == "hq" else "hq"]
     return f"""---
 type: overview
@@ -1793,7 +1819,7 @@ related:
   - {other["overview"]}.md
 sources:
   - ../../sources/blogs/{b["file"]}
-summary: "senlanke 具身运控lab {WEEK} {b['label']}周报：{n_all} 条论文条目，每条对应唯一 arXiv 详情节点（新建 {n_new} / 复用 {n_all - n_new}）。"
+summary: "senlanke 具身运控lab {WEEK} {b["label"]}周报：{n_all} 条论文条目，每条对应唯一 arXiv 详情节点（新建 {n_new} / 复用 {n_all - n_new}）。"
 ---
 
 # senlanke 周报索引：{WEEK} {b["label"]}（{n_all} 篇）
@@ -1850,7 +1876,9 @@ def main() -> None:
         n_new += 1
     for key, b in BLOGS.items():
         (ROOT / "sources/blogs" / b["file"]).write_text(render_blog(key), encoding="utf-8")
-        (ROOT / "wiki/overview" / f"{b['overview']}.md").write_text(render_overview(key), encoding="utf-8")
+        (ROOT / "wiki/overview" / f"{b['overview']}.md").write_text(
+            render_overview(key), encoding="utf-8"
+        )
     print(f"Done: {n_new} new + {n_reuse} reuse; {len(PAPERS)} unique arXiv")
 
 
