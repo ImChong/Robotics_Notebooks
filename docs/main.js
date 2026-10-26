@@ -163,6 +163,22 @@
     document.head.appendChild(meta);
   }
 
+  // 入口卡「项目查询」/ #wiki-search 深链跳转聚焦搜索框时，搜索栏正在播描边扫描：
+  // 本次聚焦不叠 :focus-within 焦点环（.is-jump-focus），焦点离开搜索栏后恢复常规焦点样式
+  function focusSearchFromJump(input) {
+    var wrap = input.closest('.search-bar-wrap');
+    if (wrap && !wrap.classList.contains('is-jump-focus')) {
+      wrap.classList.add('is-jump-focus');
+      var onFocusOut = function (event) {
+        if (wrap.contains(event.relatedTarget)) return;
+        wrap.classList.remove('is-jump-focus');
+        wrap.removeEventListener('focusout', onFocusOut);
+      };
+      wrap.addEventListener('focusout', onFocusOut);
+    }
+    input.focus({ preventScroll: true });
+  }
+
   function stripYamlFrontmatter(markdown) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source.startsWith('---\n')) return source;
@@ -7271,7 +7287,7 @@
         // 项目查询：立刻聚焦，不把 focus 排在滚动/描边之后（旧路径会「卡一下再跳」）
         if (shouldFocusSearch && searchInput) {
           prefetchWikiSearchIndex();
-          searchInput.focus({ preventScroll: true });
+          focusSearchFromJump(searchInput);
         }
         scrollEntryCardIntoView(scrollTarget, hashId ? hash : null, function () {
           var onTraceDone = null;
@@ -7470,7 +7486,7 @@
     // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
     if (window.location.hash === '#wiki-search') {
       prefetchWikiSearchIndex();
-      searchInput.focus({ preventScroll: true });
+      focusSearchFromJump(searchInput);
     }
 
     function tokenizeQuery(text) {

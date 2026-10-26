@@ -42,6 +42,7 @@ function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes
     },
     escapeHtml: (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;'),
     isRoadmapPageId: () => false, wikiTypeLabel: () => '概念',
+    focusSearchFromJump: (input) => input.focus(),
   });
   const source = readFileSync(resolve(__dirname, '../../docs/main.js'), 'utf8');
   const start = source.indexOf('    var _selectedIndex = -1;');
