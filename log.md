@@ -245,6 +245,8 @@ op: ingest
 开源结论：官方预训练代码和模型入口已公开；训练数据/权重资源与部分后训练、数据处理和 RTC 部署代码存在额外准备或待发布边界。
 关键页：Phoenix 项目页、官方代码仓库与 WAM 知识节点。
 
+## [2026-10-25] structural | roadmap/depth-{bfm,rl-locomotion,contact-manipulation,motion-retargeting,navigation,loco-manipulation,embodied-data}.md — 巡检最新知识节点，补入 12 个未被引用的新页面（SuperMimic/MorphMimic/ScaleBFM/Push the Limit/IL 接触综述/HandsOn/STR/SuperNav/NavMCP/EvolvingNav/WholeBodyMem/SoftMimicGen）
+
 ## [2026-10-25] lint | 全量 wiki lint 清零：修复 12 条警告与 9 条信息型预警（atom01-train 过期复核、11 页陈旧页面按新 sources 复核回链、modeling-and-solving 并入 Blackmore 来源、paper 三段式/缩写速查/评测枢纽回链补齐、Generate 停用词）
 
 ## [2026-10-26] ingest | Real-Time EXPO-FT 官方代码状态复核
