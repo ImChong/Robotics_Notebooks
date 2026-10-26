@@ -1,6 +1,6 @@
 # 视频发布清单：从头学人形机器人算法 · 零基础篇
 
-按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-25 已发布 001–003；下一集为 004。
+按 [主路线：运动控制 → 物理智能全栈成长路线](../../roadmap/motion-control.md)（站点 [roadmap.html?id=roadmap-motion-control](https://imchong.github.io/Robotics_Notebooks/roadmap.html?id=roadmap-motion-control)）从 L−1 讲到 L5.1 的 PPO，面向完全零基础的初学者；讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读）的 001 PPO。共 60 集，**每集只讲一个主题**，按发布顺序排好。格式参考 [Robot_Learning_Paper_Notebooks 的论文视频发布清单](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/scripts/paper_video/RELEASE_PLAN.md)。每发一集，把那一行的 `[ ]` 改成 `[x]`。截至 2026-10-26 已发布 001–004；下一集为 005。
 
 - 🎬 `<ep>`：本目录已有分镜与旁白源稿（`episodes/<ep>`），成片用 `render.mjs` 渲染（见 [README](README.md)）
 - 🆕：还没有视频，要新做
@@ -27,7 +27,7 @@
 - [x] 003 [向量与矩阵：机器人里的线性代数](../../wiki/entities/linear-algebra-curriculum.md) 🎬 `ep003` — 只讲向量、矩阵乘法在描述位置和变换时的含义；§L0 核心问题「线性代数在机器人里到底怎么用」。〔取舍〕§L0 的自测题都在讲旋转与 SE(3)（留给 005–007），本集不出自测题；本集不用代码，最小例子是当场手算一次矩阵乘向量：UR5 肩关节转 90°，手从 (3, 2) 转到 (−2, 3)，按列、按横排各算一遍，代码留给 004。「线性变换」用策展页推荐的 3Blue1Brown 几何说法（原点不动，格子线变完仍直、平行、等距）；片尾一幕点到后面怎么用：旋转矩阵 005、4×4 齐次变换 007、雅可比 013
   - 封面：**向量与矩阵** ｜ 位置是向量，变换是矩阵 ｜ 位置、朝向、速度、力，后面全用它们来写
   - 信息框：数学打底：机器人里的线性代数 ／ Robotics Notebooks · 高中数学 · 不用代码
-- [ ] 004 用 Python / NumPy 写第一段矩阵代码 🆕 — 只讲把 003 的运算写成 NumPy 代码并跑通；§L0 前置知识「会写 Python」、学完输出「能用 NumPy 写简单矩阵运算」。〔取舍〕先讲概念再上代码
+- [x] 004 用 Python / NumPy 写第一段矩阵代码 🎬 `ep004` — 只讲把 003 的运算写成 NumPy 代码并跑通；§L0 前置知识「会写 Python」、学完输出「能用 NumPy 写简单矩阵运算」。〔取舍〕先讲概念再上代码；§L0 前置知识已要求会写 Python，片中不教 Python 语法，只演示 `pip install numpy` 和 `import numpy as np`。例子全用 003 的数：扫地机 (2, 1) + (1, 2) 先用列表算错（接起来、重复一遍）、再用数组算对，手 p = (3, 2)、转 90° 的 R、横着拉长的 S；要讲清的三个坑是矩阵按横排写、`@` 才是矩阵乘法（`R * p` 是对应位置相乘：三份第一列、两份第二列没加起来）、`S @ R @ p` 离 p 最近的先做；片中每条输出都按 NumPy 2.5.3 实跑结果写，最后存成 `hand.py` 用 `python3` 跑一遍当最小例子；三维只示范绕 z 轴转 90° 的 3×3（旋转矩阵留给 005），片尾一幕点到旋转矩阵 005、4×4 位姿 007、雅可比 013 在代码里也是数组 + `@`
   - 封面：**矩阵代码** ｜ 用 NumPy 跑通矩阵乘法 ｜ 纸上算的变换，交给电脑一行算完
   - 信息框：数学打底：编程基础 ／ Robotics Notebooks · 懂向量与矩阵 · 要写代码
 - [ ] 005 [旋转矩阵：为什么旋转不能直接相加](../../wiki/comparisons/so3-rotation-representations.md) 🆕 — 只讲旋转矩阵的两条性质（正交、行列式为 1），以及逐元素相加 / 插值会跳出 SO(3)；§L0 自测题 1。素材 c03「旋转矩阵为什么不能直接相加 / 插值」、`svg/so3manifold.svg`

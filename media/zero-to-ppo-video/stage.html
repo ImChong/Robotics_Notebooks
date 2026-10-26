@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/400.css">
 <link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/700.css">
 <link rel="stylesheet" href="node_modules/@fontsource/noto-sans-sc/900.css">
+<link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/700.css">
 <link rel="stylesheet" href="vendor/paper-demos.css">
 <style>
 /* 配色与论文精读系列（视频号 / 小红书上的《从头学人形机器人算法》）统一：灰黑底 + 蓝 #569cd6，
@@ -63,6 +65,9 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .cue .tag { font-size: 26px; color: var(--hi); font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; }
 .cue b { color: var(--hi); font-weight: 700; }
 .cue .katex { font-size: 1.02em; }
+/* 划重点 / 片尾卡片里的 `代码`（K.rich 生成 code.demo-code）：等宽字体 JetBrains Mono，和分镜里的代码窗口同一套 */
+.cue code, .pt code, .footer code { font-family: 'JetBrains Mono', monospace; font-size: .9em; background: var(--demo-surface-2);
+  border: 1px solid var(--demo-border); border-radius: 8px; padding: 0 .22em; }
 .sub { position: absolute; top: 1318px; left: 50px; right: 50px; text-align: center;
   font-size: 52px; font-weight: 900; line-height: 1.3; color: #fff;
   text-shadow: 0 3px 0 #000, 0 0 18px rgba(0,0,0,.85); }
