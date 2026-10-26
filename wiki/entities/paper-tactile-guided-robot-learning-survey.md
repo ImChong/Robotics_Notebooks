@@ -2,18 +2,21 @@
 type: entity
 tags: [paper, survey, tactile, tactile-sensing, representation-learning, foundation-model, sim2real, review]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-26
 project_id: tactile-guided-robot-learning-survey
 arxiv: "2610.20134"
 project: https://sites.google.com/view/touch-in-robot-learning-review/home
 related:
+  - ../overview/hub-tactile.md
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
   - ./paper-tf-art-tactile-force-survey.md
   - ./paper-vision-based-tactile-intelligence.md
+  - ./paper-sparsh.md
   - ../concepts/foundation-policy.md
 sources:
   - ../../sources/papers/tactile_guided_survey_arxiv_2610_20134.md
+  - ../../sources/sites/touch-in-robot-learning-review.md
 summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在学习与控制流程中的功能组织文献，覆盖表示学习、策略、预测控制与触觉基础模型，并讨论跨物体/传感器/形态与 sim2real 泛化；综述无代码，配套文献库为资源索引。"
 ---
 
@@ -56,6 +59,16 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 | 触觉基础模型 | 大规模预训练能否覆盖跨任务与跨传感器 | 偏前沿，证据较少 |
 | 泛化与 sim2real | 跨物体、传感器、形态与仿真迁移 | 作为选型时的约束清单 |
 
+## Figure 2：自监督触觉表征的三类目标
+
+| 范式 | 图中例子 | 学习信号 |
+|------|----------|----------|
+| 重建式 | Autoencoder、VAE、Masked AE、隐式场 | 从编码表示恢复原始或被遮挡的触觉观测 |
+| 对比式 | 增强视图、跨传感器同一接触、同步视触觉、冻结模型锚点 | 拉近正样本表示，并与负样本分离 |
+| 非对比 / 预测式 | 自蒸馏、潜变量预测、动作条件未来预测 | 对齐教师与学生表示，或从当前上下文预测目标/未来潜变量 |
+
+正样本如何定义，决定模型学会忽略哪些变化。跨传感器对齐强调同一接触的共性；动作条件预测则可保留接触随操作变化的信息。图 2 是分类示意，不是方法性能排名。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -67,7 +80,7 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 
 ## 实验与评测
 
-综述本身不做新实验。论文关注的评价维度是跨物体、任务、传感器、形态与 sim2real 的泛化能力；具体各方法的数字以原文与被引论文为准，本页不引用摘要之外的数值。
+综述本身不做新实验。文中以 Sparsh 对 460k 以上无标注触觉观测和六类任务的评测为代表，指出该基准中 DINO 与 I-JEPA 风格潜变量学习的迁移表现强于重建触觉外观的 MAE。此结论限定于该基准，不是跨传感器和任务的通用排序；具体设置见 [Sparsh 实体页](./paper-sparsh.md)。
 
 ## 结论
 
@@ -93,7 +106,7 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 - **综述不是实验证据：** 结论依赖被引文献的质量，本页不做重复验证。
 - **条目链接未逐条核实：** 配套站点的条目级外部链接在抽取中不可见，使用前需要逐条打开。
 - **时效性：** 2026-10 发布，领域变化快，基础模型部分尤其需要跟进。
-- **作者与机构未核实：** 作者列表来自 arXiv 摘要页，机构未在入库时核实。
+- **作者单位：** arXiv 与配套页列出作者，但配套页未列机构，因此本页不推定作者单位。
 
 ## 关联页面
 
@@ -106,9 +119,11 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 ## 参考来源
 
 - [tactile_guided_survey_arxiv_2610_20134.md](../../sources/papers/tactile_guided_survey_arxiv_2610_20134.md) — 综述摘录与开源核查
+- [配套文献库来源页](../../sources/sites/touch-in-robot-learning-review.md) — 官方站点范围与资源类型
 - [arXiv:2610.20134](https://arxiv.org/abs/2610.20134) — 原文（v1，2026-10-14）
 
 ## 推荐继续阅读
 
 - [配套文献库](https://sites.google.com/view/touch-in-robot-learning-review/home) — 按条目索引的论文与资源
 - [arXiv 原文](https://arxiv.org/abs/2610.20134) — 综述全文入口
+- [Sparsh](./paper-sparsh.md) — 对照文中引用的触觉表征基准
