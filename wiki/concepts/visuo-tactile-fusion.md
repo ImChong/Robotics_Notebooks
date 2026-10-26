@@ -41,6 +41,7 @@ related:
   - ../entities/paper-anytouch2.md
   - ../entities/humantouch.md
   - ../entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md
+  - ../entities/paper-pace-insertion.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
