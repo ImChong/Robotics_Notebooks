@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | senlanke 具身运控lab 10.19-10.23 两篇周报（人形/四足 39 + Manipulation 37）：72 个唯一 arXiv，新建 48 篇独立 paper-* 节点，复用 24 篇，新增 2 篇 blog 源与 2 张技术地图
+
 ## [2026-10-26] ingest | RoboMIND v1.0 / v2.0 论文、项目页与数据入口
 
 ## [2026-10-25] structural | roadmap/depth-{bfm,rl-locomotion,contact-manipulation,motion-retargeting,navigation,loco-manipulation,embodied-data}.md — 巡检最新知识节点，补入 12 个未被引用的新页面（SuperMimic/MorphMimic/ScaleBFM/Push the Limit/IL 接触综述/HandsOn/STR/SuperNav/NavMCP/EvolvingNav/WholeBodyMem/SoftMimicGen）
