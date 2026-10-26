@@ -440,9 +440,9 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     if (current !== sc) { sceneHost.textContent = ''; sceneHost.appendChild(sc.root); current = sc; }
     sc.draw(st, local, clamp((t - first.t0) / (last.t1 - first.t0), 0, 1));
     if (window.Robot3D) window.Robot3D.flush();     // 只重画这一帧里挂在页面上、姿态或上色变了的 URDF 视图
-    // cross-fade at scene edges
+    // cross-fade at scene edges；全片最后一段不淡出，停在收尾画面（原来按「最后 1 s」判断，比淡出晚开始 0.2 s，片尾会暗一下再亮回来）
     var fin = clamp(local / 0.35, 0, 1), fout = clamp((last.t1 - t) / 0.3, 0, 1);
-    sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, t > TL.total - 1 ? 1 : fout);
+    sc.root.style.opacity = window.__cover ? 1 : Math.min(fin, last === segs[segs.length - 1] ? 1 : fout);
 
     var sub = '';
     for (var k = 0; k < TL.subs.length; k++) {
