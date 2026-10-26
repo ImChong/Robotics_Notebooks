@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [robomind.md](sites/robomind.md) | RoboMIND 官方项目页、v1.x Hugging Face 与 v2.0 ModelScope 数据入口
 - [x] [crossfly-project.md](sites/crossfly-project.md) | CrossFly 异构环境空中移动基准项目页（数据集已列于 ModelScope；代码 soon）
 - [x] [memcompiler.md](sites/memcompiler.md) | MemCompiler 状态条件记忆编译项目页（arXiv:2605.07594；代码公开，模型条目无 model card）
 - [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
@@ -15,6 +16,8 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [robomind-v1-rss21.md](papers/robomind-v1-rss21.md) | RoboMIND 1.0：RSS 2025 / arXiv:2412.13877，多本体操作数据基准
+- [x] [robomind-v2-arxiv-2512-24653.md](papers/robomind-v2-arxiv-2512-24653.md) | RoboMIND 2.0：双臂移动操作、触觉与数字孪生数据集（arXiv:2512.24653）
 - [x] [from_hitter_to_player_arxiv_2610_14067.md](papers/from_hitter_to_player_arxiv_2610_14067.md) | From Hitter to Player：人形乒乓球动作执行与策略分离（arXiv:2610.14067；项目页/代码状态待核实）
 - [x] [crossfly_arxiv_2610_18381.md](papers/crossfly_arxiv_2610_18381.md) | CrossFly：长程异构环境空中移动与交互就绪度基准（arXiv:2610.18381）
 - [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
