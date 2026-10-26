@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, video-generation, multimodal, open-source, audio-video, comfyui, synthetic-data]
 status: complete
-updated: 2026-09-29
+updated: 2026-10-26
 code: https://github.com/MiniMax-AI/MiniMax-H3
 related:
   - ./comfyui.md
@@ -14,11 +14,15 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./cosmos-3.md
   - ./paper-wan-video.md
+  - ./minimax-h3-orb360-cardspin.md
+  - ./minimax-h3-360-orbit-lora.md
 sources:
   - ../../sources/sites/minimax-h3-blog.md
   - ../../sources/repos/minimax-h3.md
   - ../../sources/repos/comfyui-rh-minimax-h3.md
   - ../../sources/sites/runninghub-rh-enhanced-h3-camp.md
+  - ../../sources/repos/matlowai-minimax-h3-orb360-cardspin.md
+  - ../../sources/repos/pablodawson-minimax-h3-360-orbit-lora.md
 summary: "MiniMax H3 是通用全模态音视频生成系统：统一 T2VA/FL2VA/Ref2VA，原生 32 kHz 立体声，768p Base + In-Context 2K；开源 H3-Base 与权重（Community License），Context-IR 与部分 2K/稀疏注意力模块未随仓发布；HarnessEval-W Prompt I2V Overall 74.3；RunningHub RH Enhanced Camp 与 ComfyUI 插件提供云端/本地工程入口。"
 ---
 
@@ -106,6 +110,17 @@ sequenceDiagram
 | **Hailuo / platform.minimax.io** | 产品/API | 与开源权重并行，非同一 SLA |
 
 **RunningHub RH Enhanced（Camp）：** URL `https://rhtv.runninghub.cn/projects/camp/view/2103108085243867138`。入库日 SPA **无法无 token 抓取正文**；同生态公开 **All-In-One** 工作流说明提到 **合并 T2V/I2V/参考**、**两段式 latent 放大 (~1080p)**、缓解 turbo LoRA 塑料感与高运动糊——可作为 Camp **能力策展参照**（是否同一 JSON 需登录 UI 核对）。
+
+## 360° 环绕 LoRA 选型
+
+MiniMax-H3 生态中已有两种独立的第三方环绕适配器，条件路径不同，不能混用权重：
+
+| 适配器 | 基座与条件 | 用途 | 已知限制 |
+|------|------|------|------|
+| [MATLOWAI ORB360 + CardSpin](./minimax-h3-orb360-cardspin.md) | Ref2VA；1–4 张带角度/时间标注的参考图 | step 1500 纯轨道版偏向清晰 360° 环绕；CardSpin 另加卡片式旋转 | 训练主体为灰背景 Blender 物件；实拍图的高度控制未稳定；CardSpin 会降低细节 |
+| [Pablo Dawson 360 Orbit](./minimax-h3-360-orbit-lora.md) | FL2VA；同一张图作为首帧和尾帧 | 闭合环绕并返回起始视角，适合制作可拼接片段 | 训练集为 28 条人类 Gaussian Splatting 轨道，其他主体和视频规格未经验证 |
+
+两者均依赖 MiniMax-H3 权重，模型卡标注 MiniMax H3 Community License Agreement。用于机器人合成数据时，应额外检查视角几何、标注和物理一致性；环绕视频本身不提供机器人状态或动力学监督。
 
 ## 局限与风险
 
