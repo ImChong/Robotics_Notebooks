@@ -50,7 +50,7 @@ summary: "SMR：从人体动作语义学习流式人形动作重定向（arXiv:2
 
 ### arXiv 摘要节选（英文原文）
 
-> Retargeting human motion to humanoids requires preserving motion semantics while accounting for the robot's physical constraints. Kinematic pipelines prescribe a robot trajectory through geometric matching, without establishing whether it can be executed under the robot's dynamics.
+> Kinematic pipelines prescribe a robot trajectory through geometric matching, without establishing whether it can be executed under the robot's dynamics. Prior physics-supervised neural methods train bidirectional full-sequence models on physics-refined kinematic trajectories, remaining tied to prescribed kinematic solutions and requiring noncausal context.
 
 ## 源码运行时序图
 
