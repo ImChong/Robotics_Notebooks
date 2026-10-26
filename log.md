@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | Anthropic 以 Claude 扩展形式化软件验证规模
+
+- 收录 Anthropic 与 Theorem 关于 OSS-Fuzz 二进制级 Rocq 证明的研究文章及公开证明/语义仓库。
+- 区分文章实验总体（123 个库、239 个入口）与公开仓库当前展示的子集（25 个库、60 个入口），记录 RISC-V/Linux 等证明假设。
+
 ## [2026-10-26] ingest | ARROW — 收录顺序无关的 4D 重建与跟踪实现
 
 - 收录 ARROW 论文、项目页和官方仓库；核实推理代码、权重与交互式查看器均已发布。
