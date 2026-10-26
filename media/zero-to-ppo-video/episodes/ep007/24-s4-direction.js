@@ -1,0 +1,229 @@
+// 007 第 4 幕：方向——只转，不平移（路线 §L0 自测题 2 的后一半：方向 v' = Rv）。左边接着用俯视地图，右栏分几段换着写。
+// 句 1「扫地机往前开」扫地机身后拖出三道速度线，绿色小箭头（往前）亮一下、写「往前开」，「一、零」右栏写「开的方向（扫地机看）」和列向量 (1, 0)；
+// 句 2「先转」右栏写「① 只转」和 R 乘 (1, 0)，「第一列拿一份」第一列框绿，「零、一」写出 (0, 1)，「指向上方」绿箭头亮一下、尖旁写 (0, 1)，「没错」打勾；
+// 句 3「再加上位置」右栏写「要是再加上位置」和 (0, 1) + (3, 1)，「三、二」写出红色 (3, 2)，「箭头斜着指向右上」从原点画红箭头到 (3, 2)（绿箭头先退淡），
+//    「明明是朝上」绿箭头回来、亮一下，红箭头和红算式打叉；
+// 句 4 红箭头收起，「没有起点」右栏写「方向没有起点」，「停在这里」扫地机连同绿箭头滑到 (1, 3)，「停在那里」再滑到 (−1, 0.5)，每停一处留下一支淡绿箭头，
+//    「都是朝上」三支绿箭头一起亮，扫地机滑回 (3, 1)；「只转，不平移」右栏框出「方向：只转，不平移」；
+// 句 5 右栏换成 T 乘 (1, 0, 0)：「补零」最后的 0 框亮黄，「第三列拿零份」第三列框紫、写「× 0」，「没加进来」写出 (0, 1, 0)；
+// 句 6「指到袜子的这支箭头」地图上从扫地机画亮黄虚线箭头到袜子，「也是方向」旁边写「方向」，「两个点相减」右栏写 (2, 3, 1) − (3, 1, 1)，
+//    「最后一个数」两个 1 框亮黄，「零」写出 (−1, 2, 0)、最后的 0 框亮黄；
+// 句 7 右栏换成总结：「速度」「力」两块小牌，「点后面补一」「方向后面补零」两行依次亮起。
+// 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
+(function () {
+  var E = window.EP007;
+  var D = Math.PI / 180;
+  var O = { ox: 160, oy: 300, u: 60, x0: -2, x1: 4, y0: -1, y1: 4 };
+  var VX = 3, VY = 1, SOCK = [2, 3];
+  var STOPS = [[VX, VY], [1, 3], [-1, 0.5], [VX, VY]];        // 句 4：扫地机滑过的几处（最后滑回来）
+  var T = {
+    drive: 2.09, self: 3.15, a1: [4.94, 5.41],
+    turn: 7.69, k1: 8.63, r1: [9.76, 10.22], up: 10.68, ok: 11.79,
+    plusP: 13.59, r2: [15.01, 15.51], red: [16.0, 16.77], still: 18.32, phase1Out: 20.0,
+    noStart: 20.29, slide: [[22.3, 22.9], [23.55, 24.15], [26.0, 26.8]], same: 25.23, rule: 27.04, phase2Out: 29.2,
+    homo: 29.84, zero: 31.81, k3: 32.44, res3: 33.73,
+    toSock: 37.02, isDir: 38.94, sub: 40.28, lasts: 41.04, res4: [42.16, 43.66], phase4Out: 44.5,
+    speed: 44.79, force: 45.56, pt1: 48.3, dir0: 49.5
+  };
+  var RX = 452;
+
+  E.scenes[3] = {
+    title: '方向：只转，不平移',
+    dur: 51.58,
+    cues: [
+      { at: 0, s: '扫地机往前开：在它自己看来，开的**方向**是 (1, 0)' },
+      { at: 6.48, s: '换到地图上先转：$R$ 乘 (1, 0) = (0, 1)，朝上，没错' },
+      { at: 13.03, s: '要是再加上**位置**：(3, 2)，箭头斜着指向右上——**算错**了' },
+      { at: 19.97, s: '**方向**没有起点：停在哪儿，往前开都朝上——只转，**不平移**' },
+      { at: 29.52, s: '齐次变换：**方向**后面补 0，第三列拿 0 份，**位置**没加进来' },
+      { at: 36.17, s: '两个点相减是**方向**：最后一个数 1 − 1 = 0' },
+      { at: 44.69, s: '速度、力都是**方向**：点后面补 1，**方向**后面补 0' }
+    ],
+    build: function (K) {
+      var s = K.sceneSvg('扫地机往前开，在它自己看来开的方向是 (1, 0)；换到地图上先转，得到 (0, 1)，朝上；要是再加上位置就成了 (3, 2)，箭头斜着指向右上，算错了；方向没有起点，扫地机停在哪里往前开都是朝上，所以方向只转、不平移；用齐次变换算，方向后面补 0，位置一点也没加进来；两个点相减是方向，最后一个数 1 − 1 = 0；速度、力都是方向');
+      function sym(parent, x, y, t, size, color) { var n = E.txt(parent, x, y + (size || 28) * 0.34, t, size || 28, color || E.INK, 'middle', 400); n.style.fontFamily = 'KaTeX_Main, serif'; return n; }
+      function vecN(parent, x, y, v, color, size) {
+        return E.matN(parent, x, y, v.map(function (a) { return [a]; }), { size: size || 24, color: function (i) { return Array.isArray(color) ? color[i] : color; } });
+      }
+
+      /* ══ 左：俯视地图 ══ */
+      var pl = E.plane(s, O), P = pl.P, box = pl.box;
+      E.txt(s, (box[0] + box[2]) / 2, box[3] + 34, '俯视地图', 20, E.INK2, 'middle', 700);
+      var o0 = P(0, 0), sk = P(SOCK[0], SOCK[1]);
+      E.halo(E.txt(s, o0[0] - 12, o0[1] + 32, '原点', 20, E.INK2, 'end', 700));
+      var sock = E.sock(s, sk[0], sk[1], 30);
+      var ghosts = [1, 2].map(function () { var a = E.vec(s, E.GOOD, 4.5, { head: 14 }); return a; });
+      var redA = E.vec(s, E.BAD, 5, { head: 16 });
+      var redLab = E.halo(E.txt(s, P(3, 2)[0] + 14, P(3, 2)[1] - 8, '(3, 2)', 22, E.BAD, 'start', 900));
+      var redX = E.cross(s, P(1.5, 1)[0] - 4, P(1.5, 1)[1] - 22, 10, E.BAD, 4.5);
+      var speed = E.el('g', {}, s);
+      [-14, 0, 14].forEach(function (dx, i) {
+        K.paint(E.el('line', { x1: 0, y1: 0, x2: 0, y2: 22 - 6 * Math.abs(i - 1), 'stroke-width': 3, 'stroke-linecap': 'round', transform: 'translate(' + dx + ' ' + (36 + 4 * Math.abs(i - 1)) + ')' }, speed), null, E.INK2);
+      });
+      var vac = E.vac(s, P, 0.6);
+      vac.set(VX, VY, 90 * D);
+      E.op(vac.arrows[1].g, 0);
+      var fwdLab = E.halo(E.txt(s, 0, 0, '往前开', 20, E.GOOD, 'start', 900));
+      var upLab = E.halo(E.txt(s, 0, 0, '(0, 1)', 22, E.GOOD, 'end', 900));
+      var toSock = E.arrow(s, [P(VX, VY), [sk[0] + 8, sk[1] + 16]], E.HI, 3.5, { head: 14, dash: '8 6' });
+      var dirLab = E.halo(E.txt(s, P(2.45, 2.1)[0] - 12, P(2.45, 2.1)[1] + 6, '方向', 20, E.HI, 'end', 900));
+
+      /* ══ 右栏 ══ */
+      // 第一段（句 1–3）
+      var ph1 = E.el('g', {}, s);
+      var rowA = E.el('g', {}, ph1);
+      E.txt(rowA, RX, 64, '开的方向（扫地机看）', 21, E.INK2, 'start', 700);
+      var vA = vecN(rowA, 704, 56, [1, 0], [E.GOOD, E.WARN]);
+      var rowB = E.el('g', {}, ph1), YB = 150;
+      E.txt(rowB, RX, YB + 8, '① 只转', 22, E.GOOD, 'start', 900);
+      var Rm = E.matN(rowB, 576, YB, [[0, -1], [1, 0]], { size: 24, dx: 44, color: function (i, j) { return j ? E.WARN : E.GOOD; } });
+      var vB = vecN(rowB, 652, YB, [1, 0], [E.GOOD, E.WARN]);
+      var resB = E.el('g', {}, rowB);
+      sym(resB, 694, YB, '=');
+      var rB = vecN(resB, 734, YB, [0, 1], E.GOOD);
+      var okB = E.check(rowB, 764, YB - 12, 24, E.GOOD, 4.5);
+      var rowC = E.el('g', {}, ph1), YC = 262;
+      E.txt(rowC, RX, YC - 44, '要是再加上位置', 21, E.BAD, 'start', 700);
+      vecN(rowC, 490, YC, [0, 1], E.GOOD);
+      sym(rowC, 528, YC, '+');
+      vecN(rowC, 566, YC, [3, 1], E.VIOLET);
+      var resC = E.el('g', {}, rowC);
+      sym(resC, 604, YC, '=');
+      var rC = vecN(resC, 642, YC, [3, 2], E.BAD);
+      var xC = E.cross(rowC, 688, YC, 11, E.BAD, 4.5);
+      // 第二段（句 4）：方向没有起点 → 只转，不平移
+      var ph2 = E.el('g', {}, s);
+      E.txt(ph2, 620, 352, '方向没有起点', 24, E.INK, 'middle', 900);
+      var ruleG = E.el('g', {}, ph2);
+      K.paint(E.el('rect', { x: RX + 4, y: 368, width: 328, height: 46, rx: 12, 'stroke-width': 2.5 }, ruleG), E.tint(E.GOOD, 12, 'var(--demo-surface)'), E.GOOD);
+      E.txt(ruleG, 620, 399, '方向：只转，不平移', 24, E.GOOD, 'middle', 900);
+      // 第三段（句 5）：T 乘 (1, 0, 0)
+      var ph3 = E.el('g', {}, s), Y3 = 110;
+      E.txt(ph3, RX, 40, '用齐次变换算', 21, E.INK2, 'start', 700);
+      var Tm = E.matN(ph3, 540, Y3, [[0, -1, 3], [1, 0, 1], [0, 0, 1]], { size: 24, dx: 44,
+        color: function (i, j) { return i === 2 ? E.MUT : j === 0 ? E.GOOD : j === 1 ? E.WARN : E.VIOLET; } });
+      var v3 = vecN(ph3, 646, Y3, [1, 0, 0], [E.GOOD, E.WARN, E.HI]);
+      var res3 = E.el('g', {}, ph3);
+      sym(res3, 688, Y3, '=');
+      var r3 = vecN(res3, 730, Y3, [0, 1, 0], [E.GOOD, E.GOOD, E.HI]);
+      var times0 = E.halo(E.txt(ph3, Tm.pos(2, 2)[0], Tm.box[3] + 28, '× 0', 22, E.VIOLET, 'middle', 900));
+      var note3 = E.txt(ph3, 620, 226, '第三列拿 0 份：位置没加进来', 21, E.INK, 'middle', 700);
+      // 第四段（句 6）：两个点相减
+      var ph4 = E.el('g', {}, s), Y4 = 330;
+      E.txt(ph4, RX, 280, '两个点相减', 21, E.HI, 'start', 900);
+      var a4 = vecN(ph4, 496, Y4, [2, 3, 1], E.HI);
+      sym(ph4, 536, Y4, '−');
+      var b4 = vecN(ph4, 576, Y4, [3, 1, 1], E.VIOLET);
+      var res4 = E.el('g', {}, ph4);
+      sym(res4, 616, Y4, '=');
+      var r4 = vecN(res4, 660, Y4, [-1, 2, 0], [E.HI, E.HI, E.HI]);
+      var dirTag = E.txt(ph4, 702, Y4 + 8, '方向', 22, E.GOOD, 'start', 900);
+      // 第五段（句 7）：总结
+      var ph5 = E.el('g', {}, s);
+      var chips = [['速度', 0], ['力', 1]].map(function (d) { return E.tag(ph5, 470 + d[1] * 104, 40, 90, 38, d[0], E.GOOD, { size: 22, weight: 900 }); });
+      var chipTo = E.txt(ph5, 682, 66, '→ 方向', 22, E.GOOD, 'start', 900);
+      var rows5 = [{ s: '点', v: ['x', 'y', 1], c: E.HI, y: 190 }, { s: '方向', v: ['x', 'y', 0], c: E.GOOD, y: 330 }].map(function (d) {
+        var g = E.el('g', {}, ph5);
+        var r = K.paint(E.el('rect', { x: RX + 4, y: d.y - 66, width: 328, height: 132, rx: 16, 'stroke-width': 2.5 }, g), E.tint(d.c, 10, 'var(--demo-surface)'), d.c);
+        E.txt(g, 540, d.y + 9, d.s, 30, d.c, 'middle', 900);
+        var m = vecN(g, 660, d.y, d.v, [E.INK, E.INK, E.HI], 26);
+        [0, 1].forEach(function (i) { m.cells[i][0].style.fontFamily = 'KaTeX_Math, serif'; m.cells[i][0].style.fontStyle = 'italic'; });
+        m.hl('last', 2, 0, 2, 0, E.HI, 1);
+        var tail = E.txt(g, 714, d.y + 30, d.v[2] ? '补 1' : '补 0', 22, E.HI, 'start', 900);
+        return { g: g, r: r, m: m, tail: tail };
+      });
+
+      function placeVac(st) {
+        var pos = STOPS[0];
+        for (var i = 0; i < 3; i++) {
+          var a = T.slide[i], q = E.fade(st, a[0], a[1] - a[0]);
+          if (q > 0) pos = [STOPS[i][0] + (STOPS[i + 1][0] - STOPS[i][0]) * q, STOPS[i][1] + (STOPS[i + 1][1] - STOPS[i][1]) * q];
+        }
+        return pos;
+      }
+
+      return {
+        el: s,
+        draw: function (st, t) {
+          var f = E.fade, bump = E.bump;
+
+          /* ══ 地图 ══ */
+          var pos = placeVac(st);
+          vac.set(pos[0], pos[1], 90 * D);
+          E.op(vac.arrows[1].g, 0);
+          var c = P(pos[0], pos[1]), tip = vac.tips()[0];
+          speed.setAttribute('transform', 'translate(' + c[0].toFixed(1) + ' ' + c[1].toFixed(1) + ')');
+          var drv = f(st, T.drive, 0.3) * (1 - f(st, T.turn - 0.6, 0.5));
+          E.op(speed, drv * (0.7 + 0.3 * Math.sin(2 * Math.PI * t / 0.5)));
+          // 绿箭头：句 3 画红箭头时退淡，「明明是朝上」回来
+          var gDim = 1 - 0.75 * f(st, T.red[0], 0.3) * (1 - f(st, T.still, 0.3));
+          E.op(vac.arrows[0].g, gDim);
+          var gb = Math.max(bump(st, T.drive, 0.8), bump(st, T.up, 0.9), bump(st, T.still, 0.9), bump(st, T.same, 1.0));
+          vac.arrows[0].line.style.strokeWidth = 5 + 3 * gb; E.glow(vac.arrows[0].g, E.GOOD, gb > 0.05);
+          fwdLab.setAttribute('x', (tip[0] + 12).toFixed(1)); fwdLab.setAttribute('y', (tip[1] + 4).toFixed(1));
+          E.op(fwdLab, f(st, T.drive, 0.3) * (1 - f(st, T.turn, 0.3)));
+          upLab.setAttribute('x', (tip[0] - 12).toFixed(1)); upLab.setAttribute('y', (tip[1] - 8).toFixed(1));   // 往上挪：句 3 的红箭头从左下方过来
+          E.op(upLab, f(st, T.up, 0.3) * (1 - f(st, T.phase1Out, 0.3)));
+          // 句 3：红箭头
+          var rp = f(st, T.red[0], T.red[1] - T.red[0] + 0.2), r32 = P(3 * rp, 2 * rp);
+          redA.set(o0[0], o0[1], r32[0], r32[1]);
+          var redOut = 1 - f(st, T.phase1Out, 0.4);
+          E.op(redA.g, (rp > 0 ? 1 : 0) * redOut); E.op(redLab, f(st, T.red[1], 0.3) * redOut);
+          E.drawOn(redX, f(st, T.still + 0.3, 0.4)); E.op(redX, (st >= T.still + 0.3 ? 1 : 0) * redOut);
+          // 句 4：停过的两处留下淡绿箭头
+          ghosts.forEach(function (g, i) {
+            var p0 = P(STOPS[i + 1][0], STOPS[i + 1][1]), p1 = P(STOPS[i + 1][0], STOPS[i + 1][1] + 1);
+            g.set(p0[0], p0[1], p1[0], p1[1]);
+            var on = f(st, T.slide[i][1], 0.2) * (1 - f(st, T.phase2Out, 0.4));
+            var sb = bump(st, T.same, 1.0);
+            E.op(g.g, on * (0.45 + 0.55 * sb)); g.line.style.strokeWidth = 4.5 + 2.5 * sb;
+          });
+          // 句 6：扫地机指到袜子的箭头
+          E.op(sock, 0.45 + 0.55 * f(st, T.toSock, 0.4));
+          E.drawOn(toSock.line, f(st, T.toSock, 0.9)); E.op(toSock.head, f(st, T.toSock + 0.8, 0.2));
+          var tOut = 1 - f(st, T.phase4Out, 0.4);
+          E.op(toSock.g, tOut); E.op(dirLab, f(st, T.isDir, 0.3) * tOut);
+
+          /* ══ 右栏 ══ */
+          E.op(ph1, 1 - f(st, T.phase2Out, 0.4));
+          E.op(rowA, f(st, T.a1[0] - 0.2, 0.4));
+          vA.cells[0][0].style.opacity = f(st, T.a1[0], 0.3); vA.cells[1][0].style.opacity = f(st, T.a1[1], 0.3);
+          E.op(rowB, f(st, T.turn, 0.4));
+          Rm.hl('c0', 0, 0, 1, 0, E.GOOD, f(st, T.k1, 0.3) * (1 - f(st, T.up, 0.3)));
+          vB.hl('a', 0, 0, 0, 0, E.GOOD, f(st, T.k1, 0.3) * (1 - f(st, T.up, 0.3)));
+          E.op(resB, f(st, T.r1[0], 0.3));
+          rB.cells[0][0].style.opacity = f(st, T.r1[0], 0.3); rB.cells[1][0].style.opacity = f(st, T.r1[1], 0.3);
+          E.drawOn(okB, f(st, T.ok, 0.4));
+          E.op(rowC, f(st, T.plusP, 0.4) * (1 - f(st, T.phase1Out, 0.4)));
+          E.op(resC, f(st, T.r2[0], 0.3));
+          rC.cells[0][0].style.opacity = f(st, T.r2[0], 0.3); rC.cells[1][0].style.opacity = f(st, T.r2[1], 0.3);
+          E.drawOn(xC, f(st, T.still + 0.3, 0.4));
+          E.op(ph2, f(st, T.noStart, 0.4) * (1 - f(st, T.phase2Out, 0.4)));
+          E.pop(ruleG, 620, 391, f(st, T.rule, 0.4), 0.85);
+          E.op(ph3, f(st, T.homo, 0.4) * (1 - f(st, T.phase4Out, 0.4)));
+          var z = f(st, T.zero, 0.35), qz = v3.pos(2, 0);
+          E.op(v3.cells[2][0], z); E.scaleAt(v3.cells[2][0], qz[0], qz[1], 1 + 0.6 * (1 - z));
+          v3.hl('z', 2, 0, 2, 0, E.HI, z);
+          Tm.hl('c2', 0, 2, 2, 2, E.VIOLET, f(st, T.k3, 0.3));
+          E.op(times0, f(st, T.k3 + 0.3, 0.3));
+          E.op(res3, f(st, T.res3, 0.35)); E.op(note3, f(st, T.res3 + 0.3, 0.4));
+          r3.hl('z', 2, 0, 2, 0, E.HI, f(st, T.res3, 0.35));
+          E.op(ph4, f(st, T.sub, 0.4) * (1 - f(st, T.phase4Out, 0.4)));
+          a4.hl('l', 2, 0, 2, 0, E.HI, f(st, T.lasts, 0.3)); b4.hl('l', 2, 0, 2, 0, E.HI, f(st, T.lasts, 0.3));
+          E.op(res4, f(st, T.res4[0], 0.3));
+          r4.hl('l', 2, 0, 2, 0, E.HI, f(st, T.res4[1], 0.3));
+          r4.cells[2][0].style.opacity = f(st, T.res4[1], 0.3);
+          E.op(dirTag, f(st, T.res4[1] + 0.3, 0.3));
+          E.op(ph5, f(st, T.speed - 0.2, 0.4));
+          chips.forEach(function (ch, i) { E.pop(ch.g, 515 + i * 104, 59, f(st, i ? T.force : T.speed, 0.35), 0.8); });
+          E.op(chipTo, f(st, T.force + 0.3, 0.3));
+          rows5.forEach(function (r, i) {
+            var on = f(st, i ? T.dir0 : T.pt1, 0.4);
+            E.op(r.g, 0.25 + 0.75 * on);
+            E.op(r.tail, on);
+          });
+        }
+      };
+    }
+  };
+})();
