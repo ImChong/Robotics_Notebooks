@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [locomanilab-project.md](sites/locomanilab-project.md) | LocoManiLab 全栈人形移动操作测试床（arXiv:2610.30876；代码/数据 Coming soon）
 - [x] [crossfly-project.md](sites/crossfly-project.md) | CrossFly 异构环境空中移动基准项目页（数据集已列于 ModelScope；代码 soon）
 - [x] [memcompiler.md](sites/memcompiler.md) | MemCompiler 状态条件记忆编译项目页（arXiv:2605.07594；代码公开，模型条目无 model card）
 - [x] [viola-project.md](sites/viola-project.md) | VioLA 项目页核查（arXiv:2610.12435；代码/权重待发布）
@@ -15,6 +16,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [locomanilab_arxiv_2610_30876.md](papers/locomanilab_arxiv_2610_30876.md) | LocoManiLab 人形移动操作数据、策略、控制器和部署统一测试床（arXiv:2610.30876）
 - [x] [from_hitter_to_player_arxiv_2610_14067.md](papers/from_hitter_to_player_arxiv_2610_14067.md) | From Hitter to Player：人形乒乓球动作执行与策略分离（arXiv:2610.14067；项目页/代码状态待核实）
 - [x] [crossfly_arxiv_2610_18381.md](papers/crossfly_arxiv_2610_18381.md) | CrossFly：长程异构环境空中移动与交互就绪度基准（arXiv:2610.18381）
 - [x] [memcompiler_arxiv_2605_07594.md](papers/memcompiler_arxiv_2605_07594.md) | MemCompiler：逐步状态条件编译记忆，文本 + Soft-Mem（arXiv:2605.07594）
