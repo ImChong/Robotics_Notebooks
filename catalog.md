@@ -1505,6 +1505,7 @@
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
+- [AgenticRoboRL：把 Coding-Agent 后训练用于机器人 Planner](wiki/entities/paper-agentic-roborl.md) — AgenticRoboRL**（arXiv:2610.28589，[项目页](https://xinxinliu-ai.gi `📅unknown` `[entity_page]`
 - [AgentSTAR（单目视频 Agentic 形状跟踪与重建）](wiki/entities/paper-agenticstar.md) — AgentSTAR**（*Agentic Shape Tracking and Reconstruction from Monocular Videos*，[arXiv:2609.24487](h `📅unknown` `[entity_page]`
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
 - [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
