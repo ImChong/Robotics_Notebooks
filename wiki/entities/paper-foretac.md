@@ -12,6 +12,7 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../methods/diffusion-policy.md
   - ../concepts/flow-matching-embodied-policy.md
+  - ./paper-pace-insertion.md
 sources:
   - ../../sources/papers/foretac_arxiv_2610_18118.md
   - ../../sources/sites/foretac-project.md
@@ -115,6 +116,7 @@ flowchart TB
 | [Diffusion Policy](../methods/diffusion-policy.md) | 基座策略；ForeTac 不改其参数，只在采样时引导 |
 | [Flow matching 具身策略](../concepts/flow-matching-embodied-policy.md) | 第二个基座族（π0.5），引导对象换成流状态 |
 | [视触觉融合](../concepts/visuo-tactile-fusion.md) | 现有做法多为把当前触觉拼入策略（Tactile Concat 48.8/41.3）；ForeTac 预测未来触觉 |
+| [PACE](./paper-pace-insertion.md) | PACE 将触觉拆为状态条件、接触事件纠正和后果预测，服务 chunk-based 插入；ForeTac 则预测候选动作的接触后果并在生成时做梯度引导 |
 | RDP（反应式触觉） | 根据当前触觉实时修正；ForeTac 在动作成形阶段预判，CSR 高 17.5 个百分点 |
 
 ## 局限与风险

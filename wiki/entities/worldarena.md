@@ -2,10 +2,12 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, tsinghua]
 status: complete
-updated: 2026-10-16
-summary: "WorldArena 1.0 以 16 项视频感知指标评估具身世界模型的生成质量，并延伸到数据引擎、策略评估和动作规划；Track 1 专测视频质量，Track 2 专测功能效用。"
+updated: 2026-10-26
+summary: "WorldArena 1.0/2.0 评估具身世界模型的视频感知与功能效用；2.0 扩展到视触觉预测、在线 RL 环境和模拟/真机跨平台评估，榜单收录 Xiaomi-Robotics-U0。"
 project_id: worldarena
 arxiv: '2602.08971'
+papers: ["2602.08971", "2605.17912"]
+code_v2: https://github.com/WorldArena2/WorldArena-2.0
 project: https://world-arena.ai/
 code: https://github.com/tsinghua-fib-lab/WorldArena
 related:
@@ -20,6 +22,9 @@ sources:
   - ../../sources/repos/worldarena.md
   - ../../sources/sites/worldarena.md
   - ../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md
+  - ../../sources/papers/worldarena2_arxiv_2605_17912.md
+  - ../../sources/sites/worldarena2.md
+  - ../../sources/repos/worldarena2.md
 ---
 
 # WorldArena（具身世界模型评测）
@@ -77,6 +82,19 @@ flowchart LR
 
 官方测试集基于 RoboTwin 2.0 Clean-50 配置。评测指南要求使用公布的测试集；文本驱动视频为 121 帧，动作驱动视频需与动作轨迹长度对齐。Challenge 1.0 已结束，官方评测资源已公开，可按仓库指南本地评测。
 
+
+### WorldArena 2.0 扩展
+
+WorldArena 2.0 将评测扩展到三个方向：
+
+| 方向 | 1.0 到 2.0 的变化 | 读法 |
+|------|-------------------|------|
+| 模态 | 从视觉扩展到视触觉 | 测模型是否预测接触、力、滑移与材料交互，不止生成画面 |
+| 功能 | 增加世界模型作为在线 RL 环境 | 检查模型能否稳定支持策略优化与交互 rollout |
+| 平台 | 从仿真扩到仿真和真机 | 在 RoboTwin 2.0、LIBERO 与 AgileX ALOHA 等平台检查跨具身和 sim-to-real |
+
+官方代码位于 [WorldArena 2.0 仓库](../../sources/repos/worldarena2.md)，榜单由 [Hugging Face Space](https://huggingface.co/spaces/WorldArena/WorldArena2.0) 展示。当前榜单包含 Xiaomi-Robotics-U0 条目；这是小米模型参加该基准评测的结果，WorldArena 2.0 本身由独立研究团队提出，不应写成小米自研基准。
+
 ## 工程实践
 
 1. **先明确赛道。** 比较视频生成质量时按 Track 1 准备首帧、文本指令/动作和生成视频；验证对策略的价值时按 Track 2 准备对应模型适配器与 rollout 环境。
@@ -88,7 +106,7 @@ flowchart LR
 
 - WorldArena 1.0 Track 1 基于 RoboTwin 仿真操作视频；成绩不能直接代表开放场景、真实相机或真机任务表现。
 - EWMScore 汇总感知指标，不能取代策略闭环成功率、真机迁移或安全评测。
-- **WorldArena 2.0 是扩展版**，增加触觉等模态、交互式 RL 环境和真实机器人平台；不要把 2.0 榜单与 1.0 Track 1 结果当成同一协议。
+- **WorldArena 2.0 是独立扩展版**，增加视触觉、交互式 RL 环境和模拟/真机平台；不要把 2.0 榜单与 1.0 Track 1 结果当成同一协议。榜单出现 Xiaomi-Robotics-U0 只表示该模型参评，不代表基准归属小米。
 - Challenge 1.0 提交已截止；本地复现以 GitHub 指南与当前公开测试资源为准。
 
 ## 关联页面
