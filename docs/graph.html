@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-visual" />
-  <meta name="description" content="Robotics Notebooks 知识图谱 — 75 个概念节点、429 条关联边、8 个社区的力导向可视化" />
+  <meta name="description" content="Robotics Notebooks 知识图谱：全站知识节点与互链关系的力导向可视化，支持 2D / 3D 视图、社区着色与路线筛选。" />
+  <meta property="og:title" content="知识图谱 | Robotics Notebooks" />
+  <meta property="og:description" content="Robotics Notebooks 知识图谱：全站知识节点与互链关系的力导向可视化，支持 2D / 3D 视图、社区着色与路线筛选。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Robotics Notebooks" />
+  <meta property="og:url" content="https://imchong.github.io/Robotics_Notebooks/graph.html" />
+  <meta property="og:image" content="https://imchong.github.io/Robotics_Notebooks/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://imchong.github.io/Robotics_Notebooks/graph.html" />
   <title>知识图谱 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
@@ -70,6 +80,7 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(91,156,246,0.5); width: 240px; }
+    #graph-search:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
     /* 路线视图区块（在筛选面板里，可折叠 <details>）
        手风琴：三区（维度 / 路线 / 机构）同时仅展开一个；
        维度 / 机构展开区吃满中间剩余高度；路线视图 chip 保持紧凑换行 */
@@ -672,6 +683,10 @@
       border-color: rgba(91,156,246,0.45);
       box-shadow: 0 6px 22px rgba(91,156,246,0.18);
       outline: none;
+    }
+    #graph-legend-fab:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     #graph-legend-fab[aria-expanded="true"] {
       opacity: 0;
@@ -1292,6 +1307,7 @@
       background: rgba(255,255,255,0.1);
       border-radius: 2px; outline: none; cursor: pointer;
     }
+    input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 15px; height: 15px; border-radius: 50%;
@@ -1954,6 +1970,28 @@
     [data-theme="light"] .sb-open-link { color: #2d74da; border-color: rgba(45,116,218,0.3); }
     [data-theme="light"] .sb-open-link:hover { background: rgba(45,116,218,0.06); border-color: rgba(45,116,218,0.6); }
     [data-theme="light"] #graph-sidebar .sb-header { border-bottom-color: rgba(0,0,0,0.08); }
+    /* 一次性提示浮层（如 3D 回退 2D），替代阻塞式 window.alert；始终在 DOM 中以便读屏播报 */
+    .graph-notice {
+      position: fixed;
+      left: 50%;
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      z-index: 70;
+      max-width: min(420px, calc(100vw - 32px));
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      font-size: .875rem;
+      line-height: 1.5;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translate(-50%, 8px);
+      pointer-events: none;
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .graph-notice:empty { padding: 0; border: 0; }
+    .graph-notice.is-visible { opacity: 1; transform: translate(-50%, 0); }
   </style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#191919" />
@@ -2010,6 +2048,7 @@
 
   <!-- ── 图谱容器 ── -->
   <div id="graph-wrap">
+    <div id="graph-notice" class="graph-notice" role="status" aria-live="polite"></div>
     <div id="graph-loading" role="status" aria-live="polite">
       <div class="graph-loading-inner">
         <div class="graph-loading-spinner" aria-hidden="true"></div>
@@ -2923,6 +2962,19 @@
     const viewMode3dBtn = document.getElementById('view-mode-3d');
     const graphHint2dEl = document.getElementById('graph-hint-2d');
     const graphHint3dEl = document.getElementById('graph-hint-3d');
+    const graphNoticeEl = document.getElementById('graph-notice');
+    let graphNoticeTimer = 0;
+
+    function showGraphNotice(message) {
+      if (!graphNoticeEl) return;
+      graphNoticeEl.textContent = message;
+      graphNoticeEl.classList.add('is-visible');
+      clearTimeout(graphNoticeTimer);
+      graphNoticeTimer = setTimeout(() => {
+        graphNoticeEl.classList.remove('is-visible');
+        graphNoticeTimer = setTimeout(() => { graphNoticeEl.textContent = ''; }, 400);
+      }, 6000);
+    }
 
     function is3DView() { return spatialViewMode === '3d'; }
 
@@ -3069,7 +3121,7 @@
           // WebGL 上下文丢失且 3 s 内未恢复：回退 2D 并提示，而不是停在黑屏
           if (!is3DView()) return;
           setSpatialViewMode('2d');
-          window.alert('3D 渲染上下文已丢失（通常是设备内存不足），已恢复 2D 视图。');
+          showGraphNotice('3D 渲染上下文已丢失（通常是设备内存不足），已恢复 2D 视图。');
         },
       });
         // 供验证脚本程序化 dolly / 读取 zoom scale（非业务 UI）
@@ -3201,7 +3253,7 @@
       syncMagneticCheckbox();
       updateForces();
       if (initializationFailed) {
-        window.alert('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
+        showGraphNotice('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
       }
     }
 

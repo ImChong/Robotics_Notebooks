@@ -8,6 +8,7 @@
   var copy = {
     'Robotics Notebooks | 机器人技术栈地图': 'Robotics Notebooks | Robotics Knowledge Map',
     '切换白天黑夜模式': 'Toggle light / dark mode',
+    '跳到正文': 'Skip to content',
     '持续更新的机器人技术栈地图': 'An evolving robotics knowledge map',
     '面向人形机器人': 'For humanoid robots', '运动控制的知识入口': 'humanoid motion control',
     '从运动控制到': 'From motion control to ', '物理智能': 'Physical AI',
