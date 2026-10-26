@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-26
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2026 · Science Robotics"
 arxiv: "2508.08241"
@@ -28,6 +28,7 @@ related:
   - ../entities/paper-pfm-hr.md
   - ../entities/paper-umr-unified-motion-retargeting.md
   - ../entities/paper-vibe.md
+  - ../entities/paper-stamp.md
 sources:
   - ../../sources/repos/beyondmimic-reproduction.md
   - ../../sources/papers/motion_control_projects.md
@@ -375,6 +376,7 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 
 ## 关联页面
 
+- [STAMP（Robot Motion Transition with a Human Motion Prior）](../entities/paper-stamp.md) — 先优化边界位置、朝向与时长，再由人体动作先验生成过渡；项目页说明组合序列使用 BeyondMimic 训练跟踪策略。
 - [BeyondMimic（论文实体页）](../methods/beyondmimic.md) — survey 坐标（RL 身体系统栈 #15/42、BFM 地图 #35/41、Loco-Manip 161 #004）与交叉引用。
 - [Imitation Learning (模仿学习)](./imitation-learning.md)
 - [DeepMimic](./deepmimic.md) — 轨迹跟踪式模仿的前置脉络。
