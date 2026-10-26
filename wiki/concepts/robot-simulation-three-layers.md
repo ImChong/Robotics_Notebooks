@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, mujoco, isaac-lab, genesis, mjlab, soft-body, sim2real, physics-engine, reinforcement-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-25
 related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
@@ -172,6 +172,7 @@ flowchart TB
 - [MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Sim2Real](sim2real.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) — 同源 GitHub 知识库入口
+- [NIDAR](../entities/paper-nidar.md) — 由 RGB 估计伪 NIR 并校准，为仿真点云合成 LiDAR 强度样信号（传感器渲染层实例）
 
 ## 参考来源
 

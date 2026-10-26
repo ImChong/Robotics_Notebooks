@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, tactile, force-aware, contact-rich, ntu, stanford, berkeley, mit, nus, georgia-tech]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-25
 arxiv: "2608.07558"
 code: https://github.com/NTUMARS/Awesome-Tactile-Force-aware-Robot-Learning
 related:
@@ -108,6 +108,7 @@ flowchart TB
 - [Awesome Touch](./awesome-touch.md)
 - [接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [RL 中的触觉反馈](../queries/tactile-feedback-in-rl.md)
+- [触觉机器人操作综述（力学驱动 + 数据驱动）](./paper-tactile-based-robotic-manipulation-survey.md) — 互补综述：按力学驱动与数据驱动两条路线组织触觉操作
 
 ## 参考来源
 

@@ -3,7 +3,7 @@ type: entity
 project_id: swap-humanoid-collision-avoidance
 tags: [paper, humanoid, whole-body-control, collision-avoidance, diffusion-policy, reinforcement-learning]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-25
 arxiv: "2610.25711"
 project: "https://iscoyizj.github.io/SWAP-steerable-humanoid-oa-website/"
 related:
@@ -19,7 +19,7 @@ summary: "SWAP（arXiv:2610.25711）用感知条件化扩散策略提出多模�
 
 # SWAP：测试时可控的人形全身避障
 
-**SWAP**（*Steerable Whole-body Avoidance Policy*， [arXiv:2610.25711](https://arxiv.org/abs/2610.25711)，[项目页](https://iscoyizj.github.io/SWAP-steerable-humanoid-oa-website/)）把「选一条安全的全身通过动作」与「稳定执行该动作」分层：高层感知条件化扩散策略生成多种避障提案，低层全身 RL 控制器跟踪提案并维持动态平衡。
+**SWAP**（*Steerable Whole-body Avoidance Policy*， [arXiv:2610.25711](https://arxiv.org/abs/2610.25711)，[项目页](https://iscoyizj.github.io/SWAP-steerable-humanoid-oa-website/)；Zeji Yi、Guanqi He、Xiaofeng Guo、Guannan Qu、Pieter Abbeel、Yan Duan、Karen Liu、Guanya Shi，Carnegie Mellon University 与 Amazon FAR）把「选一条安全的全身通过动作」与「稳定执行该动作」分层：高层感知条件化扩散策略生成多种避障提案，低层全身 RL 控制器跟踪提案并维持动态平衡。
 
 ## 一句话定义
 

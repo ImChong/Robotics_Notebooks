@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-10-20
+updated: 2026-10-25
 status: complete
 related:
   - ../entities/paper-vtinstructor.md
@@ -274,6 +274,7 @@ sources:
 - [SPARK-VLN](../entities/paper-spark-vln.md) — 逐 token 隐状态流 + flow 快规划器；Idealized/Realistic 动态社会基准；未开源（arXiv:2607.16806）
 - [NavVerse](../entities/paper-navverse.md) — Isaac Sim 室内–户外连通基准；ObjNav/PlaceNav/VLN + 安全与 transition 诊断；代码待发布（arXiv:2607.19695）
 - [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
+- [NavMCP](../entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆的长时程探索与具身问答系统
 
 ## 推荐继续阅读
 

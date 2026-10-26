@@ -241,6 +241,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 「Plan → Generate → **Validate**」），是命令/阶段 token，非机器人概念/方法/
     # 形式化，不应建独立页；与 train / eval / play / stop 同类命令名停用词。
     "validate",
+    # generate：各页正文里的 **Generate** / `generate` 均为流水线阶段标签（SoftMimicGen /
+    # SimReady 的 Measure → Solve → **Generate**、ArXiVisual / Archify 的阶段表行）或
+    # HF `generate` 推理 API 方法名（llada2-2-flash），是阶段/命令 token，非机器人
+    # 概念/方法/形式化，不应建独立页；与 validate / export 同类阶段名停用词。
+    "generate",
     # export：各页正文里的 `export` 均为工具页的 CLI 子命令名（Ultralytics
     # `train` → `val` → `export` 导出 TensorRT/ONNX、Codex Security 的 `export`
     # SARIF、MARGoS 的 `export` / `import`、draw.io 插件的导出步骤），是命令 token，

@@ -129,6 +129,7 @@ README 提供 `./run.sh run`、`./run.sh viewer` 和 benchmark 脚本入口；�
 - [SAPIEN](./sapien.md) — 交互式关节物体仿真背景。
 - [Sim2Real](../concepts/sim2real.md) — 仿真资产与真实动力学一致性的工程问题。
 - [Manipulation](../tasks/manipulation.md) — 机器人操作任务对可交互资产的需求。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Artisan benchmark 以生成资产为评测对象（空间保真、物理合理性、下游任务与整体质量），选型时应与策略成功率评测分层阅读。
 
 ## 参考来源
 
