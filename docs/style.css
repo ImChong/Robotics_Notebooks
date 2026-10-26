@@ -3039,6 +3039,10 @@ button.home-wiki-heatmap-cell.is-active {
 .search-bar-wrap:focus-within {
   box-shadow: 0 0 0 2px var(--accent);
 }
+/* 入口卡 / 深链跳转聚焦时只放描边扫描，不叠焦点环（main.js focusSearchFromJump） */
+.search-bar-wrap.is-jump-focus:focus-within {
+  box-shadow: none;
+}
 /* 社区筛选下拉约占整条搜索栏宽度的 1/3，过长文案省略 */
 #wikiCommunityFilter {
   flex: 0 0 33.333%;
