@@ -3,8 +3,10 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-24
+updated: 2026-10-26
 sources:
+  - ../../sources/papers/locomanilab_arxiv_2610_30876.md
+  - ../../sources/sites/locomanilab-project.md
   - ../../sources/papers/whole_body_dexterity_arxiv_2610_22184.md
   - ../../sources/sites/wholebodydex-project.md
   - ../../sources/papers/cowboy_arxiv_2610_28948.md
@@ -577,3 +579,8 @@ flowchart TD
 ## 时空重定向与接触感知控制
 
 - [STR](../entities/paper-str-spatiotemporal-retargeting.md) — 对任务关键帧、身体部位与物体接触分配重定向优化，再用于 G1 仿真和 R1 真机移动操作（arXiv:2610.30540）。
+
+
+## 统一测试床与系统级评测
+
+- [LocoManiLab](../entities/paper-locomanilab.md) — 将任务、示范数据、策略、全身控制器与仿真到真机评测整合进同一人形移动操作测试床（arXiv:2610.30876）。
