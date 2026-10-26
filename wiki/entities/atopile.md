@@ -2,6 +2,7 @@
 type: entity
 project_id: atopile
 project: https://atopile.io/
+institutions: [atopile]
 code: https://github.com/atopile/atopile
 tags: [software, electronics, eda, pcb, hardware, robotics]
 status: complete
