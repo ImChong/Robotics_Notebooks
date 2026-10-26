@@ -2,12 +2,12 @@
 // 句 1「照镜子」y 轴上画一面镜子，「左右一翻」网格、两根小箭头和一面亮黄小旗（F 形，不对称）左右翻过去；右栏出镜子的矩阵，
 //    「长度」「角度」两行打勾，「拦不住」写出「规矩一拦不住它」；
 // 句 2「小旗」鼓一下，「不管怎么转」原来那面小旗的虚线影子绕原点转一整圈，怎么转都和翻过去的小旗对不上，「这个样子」红叉「转不出来」；
-// 句 3 小旗退场、网格回到原样，右栏顶上出「行列式」；「小方块」两根小箭头围成的小方块涂亮黄、写「面积 1」，方块外一支从往右那根转到往上那根的弯箭头（逆时针）；
+// 句 3 小旗退场、网格回到原样，右栏顶上出「行列式」；「小方块」两根小箭头围成的小方块涂亮黄、写「面积 1」，方块里一支逆时针的小弯箭头；
 //    「变换以后」网格横着拉长到 2 倍，「面积」「几倍」方块写「面积 2」，右栏一行「拉长 2 倍 → 行列式 2」；
-//    「翻了面」网格变成镜子（中途压扁再翻过去），方块翻到背面变成红色，弯箭头变成红色的顺时针，「负号」右栏一行「镜子：翻面 → 行列式 −1」；
+//    「翻了面」网格变成镜子（中途压扁再翻过去），方块翻到背面变成红色，小弯箭头变成顺时针，「负号」右栏一行「镜子：翻面 → 行列式 −1」；
 // 句 4 网格转回 36.87° 的旋转；右栏换成字母矩阵 [[a, b], [c, d]]，「左上」「右下」两个数框亮、连一条绿对角线，「减去」「右上」「左下」框亮、连红对角线，
 //    下面一行一段段写出「ad − bc」；
-// 句 5 字母换成旋转矩阵的数，「零点八乘零点八」「减去」「负零点六乘零点六」「等于一」第二行写出算式，「面积不变」方块写「面积 1」，「没翻面」弯箭头亮一下；
+// 句 5 字母换成旋转矩阵的数，「零点八乘零点八」「减去」「负零点六乘零点六」「等于一」第二行写出算式，「面积不变」方块写「面积 1」，「没翻面」小弯箭头亮一下；
 // 句 6「镜子」网格翻成镜子，矩阵换成镜子的数，第三行写出「(−1)×1 − 0×0 = −1」，「第二条规矩」顶上改成「规矩二：行列式 = 1」，两行各打勾、打叉；
 // 句 7「三维」换成斜着看的小坐标架（慢慢转），右栏「正交：每列长度 1、两两垂直」「特殊：行列式 = 1」两行，
 //    「特殊正交群」大字 SO(3)，三个字母下面写特殊 / 正交 / 三维，念到「正交」「特殊」各自和上面那行一起亮。
@@ -68,16 +68,14 @@
       var mirror = E.el('g', {}, flat);
       K.paint(E.el('rect', { x: OX - 4, y: OY - 3 * U, width: 8, height: 6 * U, rx: 3 }, mirror), E.tint(E.ACC, 45, 'var(--demo-surface)'), E.ACC);
       E.halo(E.txt(mirror, OX + 12, OY - 3 * U + 22, '镜子', 22, E.ACC, 'start', 900));
-      // 方块（正面亮黄、背面红）+ 弯箭头 + 面积。弯箭头画在方块外面、半径 1.32 的圆弧上，从往右那根转到往上那根：
-      // 逆时针 = 没翻面，顺时针 = 翻了面（常见的「定向」画法）；方块里只有 60 宽，放不下看得清的三角，挪到外面才能画大、加深色描边
+      // 方块（正面亮黄、背面红）+ 方块里的小弯箭头 + 面积
       var sq = E.el('path', { 'stroke-width': 2.5 }, flat);
-      var turnUnder = K.paint(E.el('path', { fill: 'none', 'stroke-width': 10, 'stroke-linecap': 'round' }, flat), null, E.S1);   // 深色底边：压在格线上也看得清
-      var turnArc = E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, flat);
-      var turnHead = E.el('path', { 'stroke-width': 3, 'stroke-linejoin': 'round' }, flat);
+      var turnArc = E.el('path', { fill: 'none', 'stroke-width': 2, 'stroke-linecap': 'round' }, flat);
+      var turnHead = E.el('path', { 'stroke-width': 1.5, 'stroke-linejoin': 'round' }, flat);
       turnHead.style.paintOrder = 'stroke';
       var areaLab = E.halo(E.txt(flat, 0, 0, '', 20, E.INK, 'middle', 900));
       var ghost = FLAG.map(function () {
-        return K.paint(E.el('path', { fill: 'none', 'stroke-width': 5, 'stroke-dasharray': '7 6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, flat), null, E.HI);
+        return K.paint(E.el('path', { fill: 'none', 'stroke-width': 5, 'stroke-dasharray': '8 7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, flat), null, E.HI);   // 8 实 7 空：两段都停在空白里（7 6 时短的那段正好 39 = 3 个周期，末端剩一个零长的点，转起来时有时无地闪）
       });
       var flag = FLAG.map(function () {
         return K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, flat), null, E.HI);
@@ -127,6 +125,10 @@
       var groupSub = E.txt(so, 620, 384, '所有三维旋转矩阵', 22, E.INK2, 'middle', 700);
 
       function at(m, p) { var q = E.apply(m, p); return P(q[0], q[1]); }
+      // 小弯箭头（原来的小方块里，中心 (0.5, 0.5)、半径 0.26）：逆时针从 −160° 转到 100°，箭头尖停在方块上部、朝左；
+      // 线细（2），三角长 12、底宽 12，四种状态（原样 / 拉长 / 转动 / 镜子）下离四条边都有 9 以上，不被压在边上的两根小箭头挡住
+      var ARC = [];
+      for (var k = 0; k <= 32; k++) { var aa = (-160 + 260 * k / 32) * D; ARC.push([0.5 + 0.26 * Math.cos(aa), 0.5 + 0.26 * Math.sin(aa)]); }
       function poly(m, pts) { return pts.map(function (p, k) { var q = at(m, p); return (k ? 'L ' : 'M ') + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' '); }
 
       return {
@@ -158,26 +160,18 @@
           K.paint(sq, E.tint(front ? E.HI : E.BAD, 30, 'var(--demo-surface)'), front ? E.HI : E.BAD);
           var sqOn = f(st, T.square, 0.4) * vis;
           E.op(sq, sqOn);
-          // 弯箭头：从 M·(1, 0) 的方向转到 M·(0, 1) 的方向，走小于 180° 的那一边（逆时针 = 行列式为正）；两头各让一点，箭头尖不碰往上那根
-          var A1 = Math.atan2(M[2], M[0]), A2 = Math.atan2(M[3], M[1]), dl = A2 - A1;
-          while (dl > Math.PI) dl -= 2 * Math.PI;
-          while (dl < -Math.PI) dl += 2 * Math.PI;
-          var sg = dl >= 0 ? 1 : -1, RA = 1.32, b0 = A1 + sg * 0.05, b1 = A2 - sg * 0.2, pts = [];
-          for (var k = 0; k <= 24; k++) { var aa = b0 + (b1 - b0) * k / 24; pts.push(P(RA * Math.cos(aa), RA * Math.sin(aa))); }
-          var arcD = 'M ' + pts.map(function (q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L ');
-          turnArc.setAttribute('d', arcD); turnUnder.setAttribute('d', arcD);
-          // 三角：沿弧末端的切线，尖比弧多伸出 7、长 17、底宽 14，盖住弧的最后一截
-          var tb2 = pts[24], an = Math.atan2(-Math.cos(b1) * sg, -Math.sin(b1) * sg), L = 17, W = 7;
-          var tx = tb2[0] + 7 * Math.cos(an), ty = tb2[1] + 7 * Math.sin(an);
+          // 方块里的小弯箭头：先在原来的小方块里定好，再跟着矩阵变（镜子里自动变成顺时针）；三角按变换后最后一小段的方向画
+          turnArc.setAttribute('d', poly(M, ARC));
+          var ta = at(M, ARC[ARC.length - 2]), tb2 = at(M, ARC[ARC.length - 1]), an = Math.atan2(tb2[1] - ta[1], tb2[0] - ta[0]), L = 12, W = 6;
+          var tx = tb2[0] + 4 * Math.cos(an), ty = tb2[1] + 4 * Math.sin(an);
           turnHead.setAttribute('d', 'M ' + tx.toFixed(1) + ' ' + ty.toFixed(1) +
             ' L ' + (tx - L * Math.cos(an) + W * Math.sin(an)).toFixed(1) + ' ' + (ty - L * Math.sin(an) - W * Math.cos(an)).toFixed(1) +
             ' L ' + (tx - L * Math.cos(an) - W * Math.sin(an)).toFixed(1) + ' ' + (ty - L * Math.sin(an) + W * Math.cos(an)).toFixed(1) + ' Z');
-          var tc = front ? E.INK : E.BAD;
-          K.paint(turnArc, null, tc); K.paint(turnHead, tc, E.S1);
+          K.paint(turnArc, null, E.INK); K.paint(turnHead, E.INK, E.S1);   // 白色：红色方块上红线看不清，翻没翻面看箭头转的方向
           var tb = bump(st, T.noflip, 0.9);
-          turnArc.style.strokeWidth = 4 + 2 * tb; E.glow(turnArc, E.HI, tb > 0.05); E.glow(turnHead, E.HI, tb > 0.05);
-          var arcOn = sqOn * E.clamp(Math.abs(det) / 0.4, 0, 1);   // 翻面途中两根小箭头叠到一条线上，弯箭头没有方向：淡掉
-          E.op(turnArc, arcOn); E.op(turnHead, arcOn); E.op(turnUnder, arcOn);
+          turnArc.style.strokeWidth = 2 + 1.5 * tb; E.glow(turnArc, E.HI, tb > 0.05); E.glow(turnHead, E.HI, tb > 0.05);
+          var arcOn = sqOn * E.clamp(Math.abs(det) / 0.4, 0, 1);   // 翻面途中方块压扁，弯箭头没有方向：淡掉
+          E.op(turnArc, arcOn); E.op(turnHead, arcOn);
           // 面积写在方块对角（两根小箭头之和）再往外一点，不压两根小箭头
           var far = E.apply(M, [1, 1]), fl = Math.hypot(far[0], far[1]) || 1, fp = P(far[0] + 0.42 * far[0] / fl, far[1] + 0.42 * far[1] / fl);
           areaLab.textContent = '面积 ' + E.num(Math.abs(det), 1);
