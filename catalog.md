@@ -24,6 +24,7 @@
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [Agent Skills（Addy Osmani）](wiki/entities/agent-skills-addyosmani.md) — Agent Skills** 是 addyosmani/agent-skills 仓库及其 [skill `📅unknown` `[entity_page]`
 - [Agentic Design Patterns：智能体设计模式实践指南](wiki/entities/agentic-design-patterns.md) — Antonio Gullí 的 *Agentic Design Patterns: A Hands-On Guide to Building Intelligent Systems*（Springer `📅unknown` `[entity_page]`
+- [AgentPlay：编码 Agent 会话回放](wiki/entities/agentplay.md) — AgentPlay 是 Entelligence 开源的本地优先会话观察器：解析多种 coding agent 写入磁盘的 transcript，生成标准化 session map，并在本机 view `📅unknown` `[entity_page]`
 - [AgentsDock](wiki/entities/agentsdock.md) — AgentsDock](https://agentsdock.net/) 由 Zhengyi Luo 维护：**客户端**（[ZhengyiLuo/Agent `📅2026-10-01` `[entity_page]`
 - [AGILE（智元感控一体）](wiki/entities/agibot-agile.md) — AGILE** 是智元在 2026-06 发布地图 中推出的 **感控一体能力底 `📅unknown` `[entity_page]`
 - [AimDK X2（灵犀 X2 二次开发框架）](wiki/entities/agibot-aimdk-x2.md) — AimDK X2** 是智元机器人（AgiBot）为 **灵犀 X2** 人形提供的 **任务编程与扩展框架**：通过 [官方文档站](https://x2-aimdk.agibot.com/zh `📅unknown` `[entity_page]`
