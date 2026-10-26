@@ -30,7 +30,7 @@ sources:
 | RSS | Robotics: Science and Systems | RoboMIND 1.0 论文发表会议 |
 | VLA | Vision-Language-Action | 视觉、语言到机器人动作的策略模型 |
 | HDF5 | Hierarchical Data Format 5 | RoboMIND 1.x 轨迹文件格式 |
-| MIND-2 | Multimodal Intelligence for Networked Devices 2 | RoboMIND 2.0 配套的分层操作系统 |
+| VLM | Vision-Language Model | RoboMIND 2.0 高层语义规划模块 MIND-2-VLM 的模型类别 |
 
 ## 为什么重要
 
