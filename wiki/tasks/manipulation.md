@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-25
+updated: 2026-10-27
 related:
   - ../entities/paper-handson.md
   - ../entities/paper-commander-executor-coordination.md
@@ -96,7 +96,10 @@ related:
   - ../entities/paper-gvla-gripper-aware-vla.md
   - ../entities/paper-blind-grasp-reflex.md
   - ../entities/paper-mocap-mobile-code-as-policies.md
+  - ../entities/paper-roboskill.md
 sources:
+  - ../../sources/papers/roboskill_arxiv_2609_37810.md
+  - ../../sources/repos/roboskill.md
   - ../../sources/papers/handson_arxiv_2610_26765.md
   - ../../sources/sites/handson-project-page.md
   - ../../sources/repos/handson.md
