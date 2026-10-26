@@ -18,6 +18,7 @@ related:
   - ./motioncode.md
   - ./3dgenstudio.md
   - ./scenario-blender-plugin.md
+  - ./blender-skills.md
   - ./opencal.md
   - ./comfyui.md
   - ../concepts/motion-retargeting.md
@@ -28,6 +29,7 @@ related:
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
+  - ../../sources/repos/blender-skills.md
   - ../../sources/sites/3dgenstudio-com.md
   - ../../sources/repos/3dgenstudio.md
   - ../../sources/repos/opencal.md
@@ -117,6 +119,7 @@ flowchart LR
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md)
 - [Scenario for Blender](./scenario-blender-plugin.md) — 将 Scenario 云生成与本地 MCP 接入 Blender；生成资产需验证后才能进入仿真。
+- [Blender Skills](./blender-skills.md) — 面向 coding agent 的 Blender 建模、资产检查与导出工作流技能。
 - [3D Gen Studio（ComfyUI 网格生产编排）](./3dgenstudio.md)
 - [OpenCAL（计算轴向光刻打印机）](./opencal.md)
 - [ComfyUI（节点式生成引擎）](./comfyui.md) — 像素/视频/mesh 生成运行时；常与本页 DCC 精修串联
@@ -128,6 +131,7 @@ flowchart LR
 
 - [Blender 官网归档](../../sources/sites/blender-org.md)
 - [Blender 官方源码仓库归档](../../sources/repos/blender.md)
+- [Blender Skills 仓库归档](../../sources/repos/blender-skills.md)
 - [Blender 用户手册](https://docs.blender.org/manual/en/latest/index.html)
 - [Blender 开发者文档](https://developer.blender.org/docs/)
 
