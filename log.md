@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] ingest | ARROW — 收录顺序无关的 4D 重建与跟踪实现
+
+- 收录 ARROW 论文、项目页和官方仓库；核实推理代码、权重与交互式查看器均已发布。
+- 记录代码 MIT / 部分源码 Apache-2.0 与权重 CC BY-NC 4.0 + Waymo 非商业条款的许可边界。
+- 在 D4RT 页面加入对照，明确 ARROW 借鉴其查询接口，但属于独立项目。
+
 ## [2026-10-26] ingest | sources/repos/blender-skills.md — 收录 94 个 Blender 代理技能及 MCP 资产工作流
 
 ## [2026-10-26] ingest | RealSimLoop：收录在线可微 Real-to-Sim 论文

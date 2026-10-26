@@ -1555,6 +1555,7 @@
 - [ARLI：异步 VLA 的延迟感知 RL 后训练](wiki/entities/paper-arli.md) — ARLI**（*Asynchronous RL with Intermediate Information*；论文 *Learning to Act While Waiting*，[arXiv:2 `📅unknown` `[entity_page]`
 - [Arm-Aware DexGrasp：推理时臂约束的灵巧抓取生成](wiki/entities/paper-arm-aware-dexgrasp.md) — Arm-Aware Guided Dexterous Grasp Generation**（[arXiv:2608.16351](https://arxiv.org/abs/2608.16351 `📅unknown` `[entity_page]`
 - [环行世界：270克连续旋转四足机器人的统一学习式运动](wiki/entities/paper-around-the-world.md) — Around the World: Unified Learned Locomotion on a 270 g Continuous-Rotation Quadruped**（[arXiv:261 `📅unknown` `[entity_page]`
+- [ARROW：任意观测集合的 4D 重建与跟踪](wiki/entities/paper-arrow-4d-reconstruction.md) — ARROW**（*Arbitrary Reconstruction and Tracking of 4D Observations in the Wild*，[arXiv:2610.01314 `📅unknown` `[entity_page]`
 - [ARSTAG（arXiv:2609.24563）](wiki/entities/paper-arstag.md) — ARSTAG**（*ARSTAG: An Agentic Real2Sim2Real System for Task-Specific Robot Data Generation*，[arXiv: `📅unknown` `[entity_page]`
 - [ART（arXiv:2608.14047）](wiki/entities/paper-art-vla-on-the-fly-tool-use.md) — ART**（arXiv:2608.14047）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08 `📅unknown` `[entity_page]`
 - [ARTiS：面向拆解的自适应工具夹爪](wiki/entities/paper-artis-gripper.md) — ARTiS**（*Adaptive Robotic Tool Gripper in Disassembly Systems*，[arXiv:2609.03362](https://arxiv.or `📅unknown` `[entity_page]`
