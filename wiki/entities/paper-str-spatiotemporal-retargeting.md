@@ -10,6 +10,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/str_arxiv_2610_30540.md
 summary: "STR allocates motion-retargeting effort to task-critical keyframes, body parts, and object contacts, then trains contact-aware humanoid control."
 ---

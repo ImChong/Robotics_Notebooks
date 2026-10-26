@@ -12,6 +12,7 @@ related:
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/rise_fall_recovery_arxiv_2610_30061.md
   - ../../sources/sites/osheraz-rise.md
 summary: "RISE uses visual prediction of future body states and test-time task costs to steer how a fallen Unitree G1 recovers, without retraining for each recovery objective."

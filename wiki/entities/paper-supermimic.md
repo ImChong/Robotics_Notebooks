@@ -15,6 +15,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
   - ../../sources/repos/supermimic-unilab.md

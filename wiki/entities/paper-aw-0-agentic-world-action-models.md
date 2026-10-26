@@ -13,6 +13,7 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/aw0_arxiv_2610_30136.md
 summary: "AW-0 jointly generates skill code, future video, and robot actions with a Mixture-of-Transformers world action model, using code as structured planning context and reusable skills."
 ---

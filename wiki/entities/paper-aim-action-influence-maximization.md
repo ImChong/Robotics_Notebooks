@@ -15,6 +15,7 @@ related:
   - ../methods/generative-world-models.md
   - ../overview/hub-embodied-foundation-model.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/aim_action_influence_maximization_arxiv_2610_27387.md
 summary: "AIM（2026）：指出动作条件视频世界模型忽略动作的根因在训练数据的动作影响不足，并主动采集数据以最大化动作影响，提高末端执行器可控性的数据效率。"
 ---

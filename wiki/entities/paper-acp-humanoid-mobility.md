@@ -12,6 +12,7 @@ related:
   - ../concepts/contact-dynamics.md
   - ../concepts/terrain-adaptation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/acp_arxiv_2610_31608.md
   - ../../sources/sites/acp-attention-based-contacts.md
   - ../../sources/repos/acp-code-availability.md
