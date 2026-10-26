@@ -4376,6 +4376,12 @@
         "heypcb"
       ]
     },
+    "atopile": {
+      "label": "Atopile 开源组织（Atopile）",
+      "aliases": [
+        "atopile"
+      ]
+    },
     "ardupilot-foundation": {
       "label": "开源自动驾驶仪基金会（ArduPilot Foundation）",
       "aliases": [
