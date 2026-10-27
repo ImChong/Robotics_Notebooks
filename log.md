@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/papers/reduced_3dgs.md — 补充 3DGS 内存压缩与复现边界
+
+- 在空间表征页面补充 Reduced 3DGS 的实验结果与部署边界，复用主分支已有论文、项目页和代码归档。
+- 3DGS 与 NeRF 原论文已收录，沿用现有节点。
+
 ## [2026-10-27] ingest | sources/sites/machenta-instant-robot-learning.md — 收录 Machenta 单次示范即时学习
 
 - 汇总仿真训练、真实示范提示及公司自报的跨机器人和一小时测试；官方文章未列公开代码、权重或数据。
