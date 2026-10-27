@@ -139,6 +139,7 @@
 - [Caden Kraft Ironless Axial Flux Motor（无铁芯轴向磁通电机）](wiki/entities/cadenkraft-ironless-axial-flux-motor.md) — Ironless Axial Flux Motor**（[cadenkraft.com Part 1](https://cadenkraft.com/designing-a-coreless-ax `📅unknown` `[entity_page]`
 - [CAE Agent Hub（Cai-aa/CAE-Agent-Hub）](wiki/entities/cai-aa-cae-agent-hub.md) — CAE Agent Hub（Cai-aa/CAE-Agent-Hub）是面向工程仿真的代理工具集合，将 Skill 工作流与 MCP 软件接口分层。 `📅unknown` `[entity_page]`
 - [FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）](wiki/entities/cai-aa-freecad-automation-skill.md) — FreeCAD Automation Skill（Cai-aa）（Cai-aa/freecad-automation-skill）是FreeCAD 自动化技能，文章列出参数化建模、装配、TechDra `📅unknown` `[entity_page]`
+- [Calibrex：多传感器标定与外参检查](wiki/entities/calibrex.md) — Calibrex 从机器人录制的传感器数据估计或检查外参，比较已部署的变换与数据支持的估计，逐轴报告判定和可观测性。 `📅unknown` `[entity_page]`
 - [CALVIN](wiki/entities/calvin-benchmark.md) — CALVIN](https://github.com/mees/calvin) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid- `📅unknown` `[entity_page]`
 - [CanFestival](wiki/entities/canfestival.md) — CanFestival** 是面向 PC、实时工控机与微控制器的 **开源 CANopen® 协议栈**：用 ANSI-C 实现可配置为 **NMT Master 或 Slave** 的节点，并配 `📅unknown` `[entity_page]`
 - [Cangjie Skill](wiki/entities/cangjie-skill.md) — Cangjie Skill** 是 kangarooking/cangjie-skill 仓库分发 `📅unknown` `[entity_page]`
