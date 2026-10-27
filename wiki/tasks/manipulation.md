@@ -97,6 +97,7 @@ related:
   - ../entities/paper-blind-grasp-reflex.md
   - ../entities/paper-mocap-mobile-code-as-policies.md
   - ../entities/paper-roboskill.md
+  - ../entities/paper-genesis-handover.md
 sources:
   - ../../sources/papers/roboskill_arxiv_2609_37810.md
   - ../../sources/repos/roboskill.md
@@ -124,6 +125,7 @@ sources:
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/papers/mocap_arxiv_2610_20998.md
+  - ../../sources/papers/genesis_handover_arxiv_2610_08003.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -573,6 +575,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 - [Blind Grasp Reflex](../entities/paper-blind-grasp-reflex.md) — 将手臂到达与只依赖本体感觉的灵巧手抓取分开
 - [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
+
+- [GENESIS-Handover](../entities/paper-genesis-handover.md) — 通过多种生成式手-物假设选择任务导向的人机递物姿态。
 
 ## 参考来源
 
