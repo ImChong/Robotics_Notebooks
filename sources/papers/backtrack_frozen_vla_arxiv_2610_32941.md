@@ -23,4 +23,4 @@ Backtrack 从冻结 VLA 的内部表示预测当前任务是否将失败。预�
 - 视觉—语言—动作模型（VLA）
 - 机器人策略失败检测与恢复
 - 长程任务执行与重试机制
-- [论文实体](../../wiki/entities/paper-backtrack-frozen-vla.md)
+- VLA 失败恢复与长程任务执行实体（待后续从原始来源提炼）
