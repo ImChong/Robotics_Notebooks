@@ -125,6 +125,7 @@ sources:
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/papers/mocap_arxiv_2610_20998.md
+  - ../../sources/papers/genesis_handover_arxiv_2610_08003.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
