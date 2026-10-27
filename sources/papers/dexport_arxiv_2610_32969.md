@@ -31,4 +31,4 @@ DexPort 将 Wuji 20-DoF 灵巧手和鱼眼相机组成可移植模组，采集�
 - 灵巧操作与机器人示范数据
 - 遥操作（Teleoperation）
 - 模仿学习（Imitation Learning）
-- [论文实体](../../wiki/entities/dexport.md)
+- 灵巧手数据采集与灵巧操作实体（待后续从原始来源提炼）
