@@ -9,7 +9,6 @@ venue: "CoRL 2026 · arXiv"
 related:
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
-  - ./paper-aft-handover.md
 sources:
   - ../../sources/papers/genesis_handover_arxiv_2610_08003.md
 summary: "GENESIS-Handover 将任务导向人机递物建模为生成式手-物交互假设选择：按接收者手型选出任务相关抓握方式，并持续调整递交目标。"
@@ -119,7 +118,6 @@ flowchart LR
 
 - [操作任务](../tasks/manipulation.md) — 物体交接与面向任务的操作属于操作任务的人机协作边界。
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 关注末端接触、抓取关系及执行偏差。
-- [AFT-Handover](./paper-aft-handover.md) — 论文中的启发式对照；若该页尚未入库，可由后续 ingest 补全。
 
 ## 参考来源
 
