@@ -8,10 +8,12 @@
 - **开源模型代码库：** <https://github.com/HorizonRobotics/HoloMotion>
 - **项目主页（文档站）：** <https://horizonrobotics.github.io/robot_lab/holomotion>
 - **技术报告：** <https://arxiv.org/abs/2605.15336>
+- **配套论文：** [HoloBoxing](https://arxiv.org/abs/2610.32909)（拳击高层策略；代码位于 holoboxing/）
+- **竞赛平台：** <https://hbot-competition.horizon.auto/>
 - **Hugging Face 模型：** <https://huggingface.co/HorizonRobotics/HoloMotion_models>
 - **Docker Hub：** <https://hub.docker.com/r/horizonrobotics/holomotion>
 - **入库日期：** 2026-05-18
-- **再核日期：** 2026-10-24
+- **再核日期：** 2026-10-27
 - **一句话说明：** 地平线发布的人形全身控制开源栈：v1 提供大规模动作跟踪基础模型；v2 预览同一策略稀疏到全身指令跟随；SuperMimic 支持单 GPU 从零训练轻量跟踪器，并提供预训练权重、部署指南与仿真方案。
 - **沉淀到 wiki：** [`wiki/entities/holomotion.md`](../../wiki/entities/holomotion.md)
 - **文档站归档：** [`sources/sites/holomotion-docs.md`](../sites/holomotion-docs.md)
@@ -28,7 +30,7 @@
 | `docs/train_motion_tracking.md` · `evaluate_motion_tracking.md` | 训练 / 评测入口 |
 | `docs/realworld_deployment.md` | 离线 motion / 在线 teleop 真机部署 |
 | `deployment/` + Docker Hub | **v1.4.1** 镜像与机上部署（离线 motion / 在线 teleop） |
-| `holoboxing/` | H-bot 比赛拳击 Track 2 训练教程与评测入口 |
+| `holoboxing/` | H-bot 比赛拳击 Track 2 训练教程与评测入口；独立论文见 [HoloBoxing](../papers/holoboxing_arxiv_2610_32909.md) |
 | `docs/supermimic.md` | SuperMimic：单 GPU 轻量 motion tracker 从零训练 |
 | HF [HorizonRobotics/HoloMotion_models](https://huggingface.co/HorizonRobotics/HoloMotion_models) · [collections/holomotion](https://huggingface.co/collections/HorizonRobotics/holomotion) | 预训练 motion / velocity tracking 权重，含 v2.0.0 motion-tracking checkpoint |
 
@@ -71,4 +73,5 @@
 | 资料 | 角色 |
 |------|------|
 | [holomotion_arxiv_2605_15336.md](../papers/holomotion_arxiv_2605_15336.md) | 方法、数据与系统叙述的论文级摘录 |
+| [HoloBoxing 论文](../papers/holoboxing_arxiv_2610_32909.md) | 高层拳击策略、训练配方与评测边界 |
 | 本文件 | 官方入口（代码 / 站点 / 权重 / 容器）一站式索引 |
