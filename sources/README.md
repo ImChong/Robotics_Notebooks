@@ -676,3 +676,12 @@
 - `wiki/` = 结构化知识层
 
 sources 里的内容是原材料，wiki 是提炼后的知识。
+
+### 新增论文归档（2026-10-27）
+- [x] [dexport_arxiv_2610_32969.md](papers/dexport_arxiv_2610_32969.md) | DexPort：便携式 20-DoF 灵巧手数据采集与技能控制（arXiv:2610.32969）
+- [x] [rynnunify_arxiv_2610_32965.md](papers/rynnunify_arxiv_2610_32965.md) | RynnUnify：统一具身理解、视觉规划与机器人控制（arXiv:2610.32965）
+- [x] [backtrack_frozen_vla_arxiv_2610_32941.md](papers/backtrack_frozen_vla_arxiv_2610_32941.md) | Backtrack：冻结 VLA 的轻量失败检测与轨迹回退恢复（arXiv:2610.32941）
+
+### 新增项目页归档
+- [x] [dexport-project.md](sites/dexport-project.md) | DexPort 官方项目页与开放状态核查
+- [x] [rynnunify-project.md](sites/rynnunify-project.md) | RynnUnify 官方项目与 Hugging Face 入口核查
