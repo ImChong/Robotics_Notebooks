@@ -539,7 +539,7 @@
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [roboparty_com.md](sites/roboparty_com.md) | RoboParty 官网：公司叙事、里程碑、Roboto Origin 与 Lab 入口 |
-| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RPO 已完整开放；RP1 硬件、固件、仿真模型与训练工具按路线图分批发布 |
+| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RoboParty RP1 开放状态历史快照（截至 2026-10-15；不代表当前发布状态） |
 | [x] [roboparty_rp1_official.md](sites/roboparty_rp1_official.md) | RoboParty RP1 产品页、技术文档、GitHub 模块与当前开放/许可边界核查 |
 | [x] [roboparty_com_roboto_origin_doc.md](sites/roboparty_com_roboto_origin_doc.md) | Roboto Origin 官方文档站：参数表、系统架构与开源范围 |
 | [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
