@@ -110,3 +110,5 @@ Zero-to-CAD 的可复用价值在于把 CAD 构造历史作为合成与重建目
 
 - [Zero-to-CAD arXiv 论文](https://arxiv.org/abs/2604.24479) — 方法、数据合成与评测细节。
 - [Hugging Face 模型卡](https://huggingface.co/ADSKAILab/Zero-To-CAD-Qwen3-VL-2B) — 加载、推理和模型限制。
+
+- 相关研究：[多部件参数化 CAD 重建](./paper-cadonatello.md)
