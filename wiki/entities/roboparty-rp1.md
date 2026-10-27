@@ -46,7 +46,7 @@ RP1（ROBOTO 01）是 RoboParty 发布的人形机器人开发平台，目标是
 RP1 是一组相互衔接的仓库和产品配置，而不是单一代码仓：
 
 - **机械与电气**：`rp1_hardware` 提供结构、PCB、线束、BOM 与装配资料。
-- **关节与底层系统**：ROMOMO 管理关节模组相关固件及主机工具；`RP1_firmware` 提供 Linux BSP、USB-CAN bridge 和底层 SDK。
+- **关节与底层系统**：ROMOMO 公开关节模组规格、图纸、文档与测试资料，不含软件/固件源码；`RP1_firmware` 提供 Linux BSP、USB-CAN bridge 和底层 SDK。
 - **本体模型**：`RP1_description` 提供 URDF、MJCF、网格和配置。
 - **部署与训练**：`roboparty_deploy` 提供 ROS 2 驱动和推理接口；`roboparty_train` 提供 Isaac Lab 工作区。
 - **扩展和测试**：手柄/App、RP Hand 与整机测试仓库补充交互及验证入口。
