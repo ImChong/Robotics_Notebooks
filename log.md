@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/sites/machenta-instant-robot-learning.md — 收录 Machenta 单次示范即时学习
+
+- 汇总仿真训练、真实示范提示及公司自报的跨机器人和一小时测试；官方文章未列公开代码、权重或数据。
+
 ## [2026-10-27] ingest | sources/repos/wise-motion.md — 收录开源动效参考技能及源码导出流程
 
 ## [2026-10-27] ingest | sources/repos/deepfounder-desigma.md — 收录开源界面设计工具及 MCP 接口

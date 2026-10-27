@@ -870,6 +870,7 @@
 - [Lumo-2（Latent World-Action Model）](wiki/entities/lumo-2.md) — Lumo-2**（*Towards Predictive, Aligned, and Scalable Robot Learning*，[arXiv:2607.11270](https://arx `📅unknown` `[entity_page]`
 - [LW BENCHHUB TOUR](wiki/entities/lw-benchhub-tour.md) — LW BENCHHUB TOUR**（[GimpelZhang/lw_benchhub_tour](https://github.com/GimpelZhang/lw_benchhub_tour `📅unknown` `[entity_page]`
 - [LZ4](wiki/entities/lz4.md) — LZ4** 是 Yann Collet 维护的 **无损压缩库**（lz4/lz4，**BSD 2-Clause**），设计目标是  `📅unknown` `[entity_page]`
+- [Machenta 即时机器人学习（Instant Robot Learning）](wiki/entities/machenta-instant-robot-learning.md) — Machenta 的 **即时机器人学习**将单次示范作为任务条件，结合实时图像生成动作；公司称模型仅在仿真中训练，新任务部署时不再进行任务专属训练。 `📅unknown` `[entity_page]`
 - [Male CNS Connectome](wiki/entities/male-cns-connectome.md) — Male CNS Connectome** 是 HHMI Janelia **FlyEM Project Team** 发布的 **雄性果蝇中枢神经系统** 全连接组（**v1.0**，2026- `📅unknown` `[entity_page]`
 - [MambaIR](wiki/entities/mambair.md) — MambaIR 把 Mamba/SSM 用于图像恢复（去噪、超分等），利用长程建模改善伪影与全局一致性。 `📅unknown` `[entity_page]`
 - [Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）](wiki/entities/manda-robotics-open-policy-evaluation.md) — Understanding the Limits of Open-Source General Robotics Policies**（[Manda Robotics](https://manda `📅unknown` `[entity_page]`
@@ -3870,6 +3871,7 @@
 - [Rectified LpJEPA（可控稀疏的 JEPA 表示）](wiki/entities/paper-rectified-lpjepa.md) — Rectified LpJEPA** 在 JEPA 的分布匹配正则里，把原本的各向同性高斯换成 Rectified Generalized Gaussian，使表示可以显式控制稀疏程度，并保持非负 `📅unknown` `[entity_page]`
 - [Recursive Game Creator](wiki/entities/paper-recursive-game-creator.md) — Recursive Game Creator** 是一个体验导向的游戏开发 harness：Designer、Builder、coding-native Player、Reviewer 组成循环， `📅unknown` `[entity_page]`
 - [REDACT（arXiv:2609.25450）](wiki/entities/paper-redact-robust-perceptive-locomotion.md) — REDACT**（*REDACT: Robust Perceptive Locomotion under Unseen Visual Corruption*，[arXiv:2609.25450 `📅unknown` `[entity_page]`
+- [Reducing the Memory Footprint of 3D Gaussian Splatting](wiki/entities/paper-reduced-3dgs.md) — Reduced 3DGS** 是针对逐场景优化的 3DGS 表示的压缩方法，通过减少高斯数量、方向外观系数和属性精度降低场景文件大小。 `📅unknown` `[entity_page]`
 - [Redwood（Architect Labs AI 加速器）](wiki/entities/paper-redwood-architectlabs-accelerator.md) — Redwood**（*Redwood: A Frontier AI Accelerator Designed, Verified, and Deployed from Scratch in 2 W `📅unknown` `[entity_page]`
 - [ReEnvision：未来引导的选择性动作修复](wiki/entities/paper-reenvision.md) — ReEnvision 在长程操作中维护「未来 + 动作」的联合信念，执行偏离时用反馈修订该信念，预测缓存动作块里哪些未执行动作受影响，只修复这些动作、保留仍有效的部分，偏离严重才整体重规划。 `📅unknown` `[entity_page]`
 - [ReferTrack（Referring Then Tracking · arXiv:2607.20061）](wiki/entities/paper-refertrack.md) — ReferTrack**（*Referring Then Tracking for Embodied Visual Tracking*，[arXiv:2607.20061](https://arx `📅unknown` `[entity_page]`
