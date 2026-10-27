@@ -17,7 +17,7 @@ tags:
   - polyu
   - u-tokyo
 status: complete
-updated: 2026-10-12
+updated: 2026-10-27
 arxiv: "2610.12285"
 project: https://rainyrobo.github.io/PLaW-VLA/
 code: https://github.com/RainyRobo/PLaW-VLA
@@ -29,6 +29,8 @@ related:
   - ../tasks/manipulation.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-vjepa2.md
+  - ./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md
+  - ./paper-rcl-2510-13626-libero-plus-in-depth-robustness-analysis-of-visi.md
   - ./libero-benchmark.md
   - ./robotwin.md
 sources:
@@ -170,7 +172,9 @@ sequenceDiagram
 | [π0.5](./paper-pi05-open-world-vla.md) | 反应式基线；PLaW-VLA 在其上加 LWM 专家，LIBERO 96.9→97.4，RoboTwin Hard 76.8→83.2 |
 | [VLA-JEPA](./paper-sa-2602-10098-vla-jepa-enhancing-vision-language-action-model.md) | 同属 JEPA 式 VLA；LIBERO 97.2，在 Goal/Long 上高于 PLaW-VLA |
 | [Fast-WAM](./paper-fast-wam.md) / [WAM 概念](../concepts/world-action-models.md) | 生成视频或视频特征的 WAM；PLaW-VLA 不生成视频，只预测潜变量 |
-| [V-JEPA 2](./paper-vjepa2.md) | 本文冻结使用的表征编码器 |
+| [V-JEPA 2](./paper-vjepa2.md) | 本文冻结使用其编码器，将未来观测编码为预测目标；与 V-JEPA 2-AC 的动作条件规划用途不同 |
+| [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) | 统一视频与动作生成的世界动作模型；论文报告在相近 LIBERO 成功率下，PLaW-VLA 推理延迟约为其 1/19，具体比较依赖论文评测设置 |
+| [LIBERO-Plus](./paper-rcl-2510-13626-libero-plus-in-depth-robustness-analysis-of-visi.md) | 鲁棒性评测基准而非策略；本文用其测试相机、光照等扰动下的零样本表现 |
 
 ## 局限与风险
 
@@ -185,6 +189,8 @@ sequenceDiagram
 - [VLA 方法](../methods/vla.md)
 - [World Action Models 概念](../concepts/world-action-models.md)
 - [π0.5](./paper-pi05-open-world-vla.md)
+- [Motus：统一潜在动作世界模型](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md)
+- [LIBERO-Plus 鲁棒性评测](./paper-rcl-2510-13626-libero-plus-in-depth-robustness-analysis-of-visi.md)
 - [LIBERO 基准](./libero-benchmark.md)
 - [RoboTwin](./robotwin.md)
 
