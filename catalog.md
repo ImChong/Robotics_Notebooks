@@ -653,6 +653,7 @@
 - [Gemini 4 Argon](wiki/entities/gemini-4-argon.md) — Gemini 4 Argon** 是 Google 描述的通用物理推理模型；在机器人场景中，它通过视觉语义理解、代码生成与多轮推理辅助整个开发和执行生命周期。官方博客展示了多种工作流，但没有将 A `📅unknown` `[entity_page]`
 - [Gemini Robotics](wiki/entities/gemini-robotics.md) — Gemini Robotics** 是 Google DeepMind 面向物理交互的 Gemini 系列机器人模型族。HMI 论文/报告总索引将其收录为 **P061**（世界模型、VLA 与  `📅unknown` `[entity_page]`
 - [Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）](wiki/entities/gen-human-ego-dataset.md) — Gen-HumanEgo**（HF · [开放数据门户](https:// `📅unknown` `[entity_page]`
+- [Gen-HumanWholeBody（全身操作数据集）](wiki/entities/gen-human-whole-body-dataset.md) — Gen-HumanWholeBody 是简智机器人发布的全身操作数据集，官方门户标注 **600 小时**及重建 **MPJPE 约 3 cm**。 `📅unknown` `[entity_page]`
 - [Gen2Humanoid（文本→人形运动端到端管线）](wiki/entities/gen2humanoid.md) — Gen2Humanoid**（RavenLeeANU/Gen2Humanoid）把两条成熟开源能力—— `📅unknown` `[entity_page]`
 - [GenCAD-3D（Multimodal Geometry → CAD Program）](wiki/entities/gencad-3d.md) — GenCAD-3D** 是 MIT **Nomi Yu、Md Ferdous Alam、A John Hart、Faez Ahmed** 的工作（arXiv:2509.15246，[JMD](ht `📅2026-05-21` `[entity_page]`
 - [GenCAD（Image-Conditioned CAD Program Generation）](wiki/entities/gencad.md) — GenCAD** 是 MIT **Md Ferdous Alam** 与 **Faez Ahmed** 的工作（arXiv:2409.16294，[项目页](https://gencad.gith `📅2026-05-21` `[entity_page]`
@@ -4916,6 +4917,7 @@
 - [simple-evrgb-cal：无运动的事件—RGB 标定](wiki/entities/paper-simple-evrgb-cal.md) — Simplified Cross-Modal Calibration for Heterogeneous Event-RGB Stereo Systems**（[arXiv:2608.22965 `📅unknown` `[entity_page]`
 - [SimpleMemVLA（Native-Video Memory for VLA）](wiki/entities/paper-simplememvla.md) — SimpleMemVLA**（arXiv:2609.05533，[OpenBMB/SimpleMemVLA](https:/ `📅unknown` `[entity_page]`
 - [SIMPLER：仿真里评真实数据训练的 manipulation 策略](wiki/entities/paper-simplerenv-real2sim-eval.md) — SIMPLER**（*Evaluating Real-World Robot Manipulation Policies in Simulation*，[arXiv:2405.05941](htt `📅unknown` `[entity_page]`
+- [SimpleTouch：用触觉专家扩展 VLA](wiki/entities/paper-simpletouch.md) — SimpleTouch 在预训练 π₀.₅ 上加入触觉专家，通过任务演示中的动作监督和未来触觉预测学习接触丰富操作。 `📅unknown` `[entity_page]`
 - [SimPT：面向干预式 VLA 后训练的自动化仿真框架](wiki/entities/paper-simpt-intervention-based-vla-post-training.md) — SimPT**（*SimPT: An Automated Simulation Framework for Intervention-Based VLA Post-Training*，[arXiv `📅unknown` `[entity_page]`
 - [SimVLA：从仿真到真实家庭的移动操作 VLA](wiki/entities/paper-simvla-zero-shot-mobile-manipulation.md) — SimVLA**（Zero-Shot Sim-to-Real VLA Learning for Mobile Manipulation）提出完全依靠仿真监督训练移动操作视觉-语言-动作策略，并直接 `📅unknown` `[entity_page]`
 - [Situation-Aware Dual Cobots（arXiv:2609.26083）](wiki/entities/paper-situation-aware-dual-cobots.md) — Situation-Aware Dual Cobots**（*Situation Aware Locomotion for Dual Mobile Cobots in Shared Environ `📅unknown` `[entity_page]`
