@@ -1869,6 +1869,7 @@
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav**（*Robots Ask the Way: Communication-Enabled Social Navigation*，[arXiv:2607.01044](https:/ `📅unknown` `[entity_page]`
 - [Compact Visuotactile WM（arXiv:2609.09597）](wiki/entities/paper-compact-visuotactile-wm-lifting.md) — Compact Visuotactile WM**（*Compact Visuotactile World Models for Lifting: Prediction, Reward Align `📅unknown` `[entity_page]`
 - [CompactSplat](wiki/entities/paper-compactsplat.md) — CompactSplat** 是一种稀疏视图前馈 3D Gaussian Splatting（3DGS）重建方法：按图像区域纹理复杂度分配高斯，并通过层级采样让平坦区域使用更大、更少的原语，从而在 `📅unknown` `[entity_page]`
+- [Compliant GMT：残差参考适配的全身柔顺运动跟踪](wiki/entities/paper-compliant-gmt.md) — 一句话定义**：C-GMT 为预训练通用运动跟踪器加入参考动作残差，使机器人在跟踪多样动作时对外力产生全身柔顺响应。 `📅unknown` `[entity_page]`
 - [CompliantWBC：重型人形的全身柔顺](wiki/entities/paper-compliantwbc-heavy-humanoid.md) — CompliantWBC 估计外力 latent，并以有界阻抗目标残差调节冻结的全身策略，实现多身体接触位置的柔顺响应。 `📅unknown` `[entity_page]`
 - [Compression is Routing（重建误差作模块化 LLM 内在路由信号）](wiki/entities/paper-compression-is-routing.md) — Compression is Routing**（*Reconstruction Error as an Intrinsic Signal for Modular Language Models `📅unknown` `[entity_page]`
 - [ConceptGraphs](wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md) — ConceptGraphs** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上 `📅unknown` `[entity_page]`
@@ -5716,6 +5717,7 @@
 - [UniUni（宇树智能集群控制系统）](wiki/entities/unitree-uniuni.md) — UniUni** 是宇树科技面向多机器人编队与舞台演出的桌面应用，官网提供 Windows x64 与 Apple Silicon macOS 下载。它把轨迹设计、机器人定位、动作编排和现场监控放 `📅unknown` `[entity_page]`
 - [Unitree](wiki/entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 - [Unity Engine（Unity Technologies 实时 3D 引擎）](wiki/entities/unity-engine.md) — Unity** 是 **Unity Technologies** 的 **实时 3D 创作与运行时平台**，以 **Unity Editor**、**C# / .NET 脚本** 与 **Pack `📅unknown` `[entity_page]`
+- [Unlimited OCR Works 2](wiki/entities/unlimited-ocr-2.md) — Unlimited OCR Works 2 是百度发布的长文档解析模型，使用稀疏引用滑动窗口注意力处理跨页上下文，可作为论文、手册等资料入库的文档解析工具。 `📅unknown` `[entity_page]`
 - [Unreal Engine 5（Epic 实时 3D 引擎）](wiki/entities/unreal-engine-5.md) — Unreal Engine 5（UE5）** 是 **Epic Games** 的 **下一代实时 3D 创作与运行时平台**，面向游戏、影视、建筑、汽车与 **仿真 / 数字孪生** 等行业。在 `📅unknown` `[entity_page]`
 - [Unreal MCP（Unreal Editor 内嵌 MCP Server）](wiki/entities/unreal-mcp.md) — Unreal MCP** 是 Epic 在 **Unreal Engine 5.8** 引入的 **Experimental** 编辑器能力：以插件标识 **`ModelContextProtoc `📅unknown` `[entity_page]`
 - [URDF Files Dataset](wiki/entities/urdf-files-dataset.md) — URDF Files Dataset](https://github.com/Daniella1/urdf_files_dataset) 配套 Tola & Corke 的 RA-L 论文 *Und `📅unknown` `[entity_page]`

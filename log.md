@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/repos/unlimited-ocr-2.md — 收录百度长文档解析模型及推理入口
+
+- 官方仓库提供推理代码并链接权重；训练资料开放范围与权重许可待核实。
+
 ## [2026-10-27] ingest | SimpleTouch
 
 - 收录论文、项目页与公开代码，归纳触觉专家与评测；项目页和权重页面访问失败，开放状态待核实。
