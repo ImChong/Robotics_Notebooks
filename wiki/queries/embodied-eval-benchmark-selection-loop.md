@@ -44,6 +44,7 @@ related:
   - ../entities/worldolympiad.md
   - ../entities/paper-worldscore.md
   - ../entities/paper-harnesseval-w.md
+  - ../entities/paper-streameval.md
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-driftworld.md
   - ../entities/paper-masked-visual-actions.md
@@ -223,6 +224,7 @@ flowchart TD
 - [WorldArena](../entities/worldarena.md) — Track 1 视频质量与 Track 2 功能效用
 - [WorldOlympiad](../entities/worldolympiad.md) — 长视频物理、几何与交互诊断
 - [WorldScore](../entities/paper-worldscore.md) — ②层相邻：3D/4D/视频多场景世界生成统一榜
+- [StreamEval](../entities/paper-streameval.md) — ②层相邻：交互式流式视频生成，请求执行、长时状态一致与视听协调
 - [HarnessEval-W](../entities/paper-harnesseval-w.md) — ②层相邻：交互式世界 agentic 评测（干预/持久证据树）
 - [GigaWorld-1（世界模型策略评估器）](../entities/paper-gigaworld-1-policy-evaluation.md) — ②层「动作忠实 > 视觉逼真」策略评估器
 - [DriftWorld](../entities/paper-driftworld.md) — ②层外延：1-step drifting 快评估 + 推理时搜索（相关性最高约 0.99）
