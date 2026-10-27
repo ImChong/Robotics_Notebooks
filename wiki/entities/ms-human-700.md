@@ -78,6 +78,8 @@ summary: "全身人体肌骨 MuJoCo 模型，含 90 个身体节段、206 个关
 
 ## 关联页面
 
+- [muscle-supermimic](./muscle-supermimic.md)：使用可微世界模型训练肌骨全身跟踪。
+
 - [具身人体仿真](./embodied-human-simulation.md)：MS-Human-700 是数字人体与交互机器人耦合研究的一项肌骨模型基础。
 - [MuJoCo](./mujoco.md)：模型使用的物理仿真与 MJCF 平台。
 - [强化学习](../methods/reinforcement-learning.md)：理解层级策略训练和 SAC 的算法背景。
