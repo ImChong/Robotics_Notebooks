@@ -10,14 +10,15 @@
   var C = K.xColors;
   var E = window.EP006 = { K: K, scenes: [] };
 
-  /* 坐标系 x、y、z 用红、绿、蓝（E.AX，006 起；003–005 是绿、琥珀、蓝）：身子的三根小箭头、三根转轴、矩阵对应的列都用它，
-     绕哪根轴转（偏航绕 z、俯仰绕 y、横滚绕 x）的箭头和圈就用那根轴的颜色；
-     三种写法：欧拉角 warn、四元数 accent、旋转矩阵 violet（同 003–005 的矩阵色）；坑、出毛病 bad；本系列亮黄 --hi 只做强调。
+  /* 颜色同 005（RELEASE_PLAN「画面配色」）：坐标轴 x 红、y 绿、z 蓝（E.X / E.Y / E.Z）——身子的三根小箭头、三根转轴、矩阵对应的列都用它，
+     绕哪根轴转（横滚绕 x、俯仰绕 y、偏航绕 z）的箭头和圈就用那根轴的颜色；坑、出毛病、不是旋转用橙 E.ERR（红色留给 x 轴），打勾这类「对」用 good（绿）；
+     三种写法：欧拉角 warn、四元数 accent、旋转矩阵 violet（同 003–005 的矩阵色）；本系列亮黄 --hi 只做强调。
      KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
   E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
-  E.AX = [C.bad, C.good, C.accent];   // x 红、y 绿、z 蓝
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
-  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a',
+    x: '#e06c75', y: '#4ec9a4', z: '#569cd6', err: '#ff7b3a' };
+  E.X = E.HEX.x; E.Y = E.HEX.y; E.Z = E.HEX.z; E.ERR = E.HEX.err;
 
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }
@@ -108,7 +109,7 @@
   function cross(parent, cx, cy, r, color, w) {
     var p = el('path', { d: 'M ' + (cx - r) + ' ' + (cy - r) + ' L ' + (cx + r) + ' ' + (cy + r) + ' M ' + (cx + r) + ' ' + (cy - r) + ' L ' + (cx - r) + ' ' + (cy + r),
       fill: 'none', 'stroke-width': w || 3, 'stroke-linecap': 'round' }, parent);
-    K.paint(p, null, color || E.BAD);
+    K.paint(p, null, color || E.ERR);
     return p;
   }
   // 圆角胶囊标签：rect + 文字；返回 { g, rect, text }
@@ -297,7 +298,7 @@
     P.toward = [Math.sin(a) * Math.cos(e), -Math.cos(a) * Math.cos(e), Math.sin(e)];
     return P;
   };
-  // 3×3：按行存；绕 x / y / z 轴转 a 弧度、相乘、取第 j 列；欧拉角 ZYX：先偏航（z）、再俯仰（新的 y）、最后横滚（新的 x）
+  // 3×3：按行存；绕 x / y / z 轴转 a 弧度、相乘、取第 j 列；E.zyx(偏航, 俯仰, 横滚) = Rz·Ry·Rx，就是 RPY：先绕不动的 x 横滚、再绕 y 俯仰、最后绕 z 偏航
   E.Rx = function (a) { var c = Math.cos(a), s = Math.sin(a); return [[1, 0, 0], [0, c, -s], [0, s, c]]; };
   E.Ry = function (a) { var c = Math.cos(a), s = Math.sin(a); return [[c, 0, s], [0, 1, 0], [-s, 0, c]]; };
   E.Rz = function (a) { var c = Math.cos(a), s = Math.sin(a); return [[c, -s, 0], [s, c, 0], [0, 0, 1]]; };
@@ -345,19 +346,19 @@
     var foot = K.paint(el('path', { 'stroke-width': 2.5 }, stand), E.tint(E.MUT, 18, 'var(--demo-surface)'), E.MUT);
     var post = K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, stand), null, E.MUT);
     var back = el('g', {}, g), axesG = el('g', {}, g), bodyG = el('g', {}, g), front = el('g', {}, g);
-    var cols = [E.AX[2], E.AX[1], E.AX[0]];
+    var cols = [E.Z, E.Y, E.X];
     var rings = cols.map(function (c) { return E.ring3(back, front, c, 8); });
     // 环和环之间的小轴（连接点）：外环上下两点接立柱、中环左右两点接外环、内环前后两点接中环
     var axles = cols.map(function (c) { return K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, front), null, c); });
     var pins = [];
     for (var k = 0; k < 6; k++) pins.push(K.paint(el('circle', { r: 5.5, 'stroke-width': 2 }, front), E.S1, cols[Math.floor(k / 2)]));
     var axes = {};
-    [['z', E.AX[2]], ['y', E.AX[1]], ['x', E.AX[0]]].forEach(function (d) {
+    [['z', E.Z], ['y', E.Y], ['x', E.X]].forEach(function (d) {
       var p = K.paint(el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '10 7', 'stroke-linecap': 'round' }, axesG), null, d[1]);
       op(p, 0);
       axes[d[0]] = p;
     });
-    var body = E.AX.map(function (c) { var a = E.vec(bodyG, c, 6, { head: 17 }); return a; });
+    var body = [E.X, E.Y, E.Z].map(function (c) { var a = E.vec(bodyG, c, 6, { head: 17 }); return a; });
     var hub = K.paint(el('circle', { r: 7, 'stroke-width': 2.5 }, bodyG), E.INK, E.S1);
     function seg(path, a, b) { var p = P(a), q = P(b); path.setAttribute('d', 'M ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ' L ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1)); }
     function sc(v, s) { return [v[0] * s, v[1] * s, v[2] * s]; }
@@ -401,7 +402,7 @@
     var g = el('g', {}, parent), box = el('g', {}, g);
     var edges = [];
     for (var k = 0; k < 12; k++) edges.push(K.paint(el('line', { 'stroke-width': 1.6, 'stroke-dasharray': '5 5' }, box), null, E.MUT));
-    var cols = E.AX;
+    var cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { return E.vec(g, c, o.w || 4.5, { head: o.head || 14 }); });
     var labs = ['x', 'y', 'z'].map(function (s, i) { return halo(txt(g, 0, 0, s, o.lab || 22, cols[i], 'middle', 700)); });
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }
@@ -478,7 +479,7 @@
 
   /* 骨盆上的三根小箭头（x 前 红、y 左 绿、z 上 蓝）：E.frame3(parent) → { g, set(f)：f 是 E.g1(...).frame() 的结果 } */
   E.frame3 = function (parent, w) {
-    var g = el('g', {}, parent), cols = E.AX;
+    var g = el('g', {}, parent), cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { var a = E.vec(g, c, w || 4.5, { head: 13 }); a.line.style.filter = 'drop-shadow(0 0 2px #000)'; return a; });
     var dot = K.paint(el('circle', { r: 4.5, 'stroke-width': 2 }, g), E.INK, E.S1);
     return {
@@ -500,20 +501,11 @@
   /* 折线点 → path 的 d（闭合可选） */
   E.ptsPath = function (pts, close) { return pts.map(function (p, k) { return (k ? 'L ' : 'M ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + (close ? ' Z' : ''); };
 
-  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：圆角框 + 左边粗色条 + 名字；返回 { g, rect（外框，高亮时加描边、发光）, name }。
-     照片尾总结卡片的 CSS（border-left 粗、别的边细、border-radius）来画：外面一整块本色圆角框，里面再铺一块底色——
-     里面那块左边让出 BW、别的边让出 B，左边两个角是椭圆角（横半径 R − BW、竖半径 R − B），
-     左边的粗条就在上下两个圆角处顺着弧线变细、接进细边框，不是一根另画的直条 */
+  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：本色圆角框 + 名字；返回 { g, rect, name }。
+     不加左边的粗色条：框和名字已经是这种写法的本色，色条不多说什么（片尾总结卡片的色条是 stage.html 的版式，各集统一） */
   E.card = function (parent, x, y, w, h, name, color, size) {
-    var g = el('g', {}, parent), R = 16, BW = 8, B = 2.5;
-    function f(v) { return v.toFixed(2); }
-    var r = K.paint(el('path', { d: 'M ' + (x + R) + ' ' + y + ' H ' + (x + w - R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + w) + ' ' + (y + R) +
-      ' V ' + (y + h - R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + w - R) + ' ' + (y + h) + ' H ' + (x + R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + x + ' ' + (y + h - R) +
-      ' V ' + (y + R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + R) + ' ' + y + ' Z', 'stroke-width': 0, 'stroke-linejoin': 'round' }, g), color, color);
-    var xi = x + BW, yi = y + B, xr = x + w - B, yb = y + h - B, ax = R - BW, ay = R - B, rr = R - B;
-    K.paint(el('path', { d: 'M ' + f(xi + ax) + ' ' + f(yi) + ' H ' + f(xr - rr) + ' A ' + rr + ' ' + rr + ' 0 0 1 ' + f(xr) + ' ' + f(yi + rr) +
-      ' V ' + f(yb - rr) + ' A ' + rr + ' ' + rr + ' 0 0 1 ' + f(xr - rr) + ' ' + f(yb) + ' H ' + f(xi + ax) + ' A ' + ax + ' ' + ay + ' 0 0 1 ' + f(xi) + ' ' + f(yb - ay) +
-      ' V ' + f(yi + ay) + ' A ' + ax + ' ' + ay + ' 0 0 1 ' + f(xi + ax) + ' ' + f(yi) + ' Z' }, g), tint(color, 9, 'var(--demo-surface)'));
+    var g = el('g', {}, parent);
+    var r = K.paint(el('rect', { x: x, y: y, width: w, height: h, rx: 14, 'stroke-width': 2.5 }, g), tint(color, 9, 'var(--demo-surface)'), color);
     var n = txt(g, x + 22, y + (size || 26) + 12, name, size || 26, color, 'start', 900);
     return { g: g, rect: r, name: n };
   };

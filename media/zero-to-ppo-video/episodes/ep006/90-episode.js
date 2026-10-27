@@ -7,7 +7,7 @@
       title: title, dur: 4, cues: [{ at: 0, s: msg }],
       build: function () {
         var s = K.sceneSvg(title);
-        E.txt(s, 400, 210, msg, 22, E.BAD);
+        E.txt(s, 400, 210, msg, 22, E.ERR);
         return { el: s, draw: function () {} };
       }
     };
@@ -40,7 +40,7 @@
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：三种写法各用本色（欧拉角 warn、四元数 accent、旋转矩阵 violet）；坑 bad；扶正、直观 good
     boldColors: { '欧拉角': 'var(--demo-warn)', '四元数': 'var(--demo-accent)', '旋转矩阵': 'var(--violet)', '矩阵': 'var(--violet)',
-      '万向锁': 'var(--demo-bad)', '双重覆盖': 'var(--demo-bad)', '冗余': 'var(--demo-bad)', '重合': 'var(--demo-bad)',
+      '万向锁': E.ERR, '双重覆盖': E.ERR, '冗余': E.ERR, '重合': E.ERR,
       '直观': 'var(--demo-good)', '扶正': 'var(--demo-good)', '同一个朝向': 'var(--hi)', '万向节': 'var(--hi)' },
     introDur: 29.2,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },

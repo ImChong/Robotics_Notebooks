@@ -42,8 +42,8 @@
         var x = XS[i], cd = E.card(s, x, CY, CW, CH, d.name, d.c, 26);
         var n = E.txt(cd.g, x + 22, CY + 76, d.n, 21, E.INK, 'start', 900);
         var minus = E.txt(cd.g, x + 22, CY + 106, d.minus, 20, E.GOOD, 'start', 900);
-        var trouble = i === 0 ? E.txt(cd.g, x + 22, CY + 106, '总有姿势出毛病', 20, E.BAD, 'start', 900) : null;
-        var bad = E.tag(cd.g, x + 18, CY + 124, 140, 34, d.bad, E.BAD, { size: 19, ink: E.BAD, weight: 900, rx: 10 });
+        var trouble = i === 0 ? E.txt(cd.g, x + 22, CY + 106, '总有姿势出毛病', 20, E.ERR, 'start', 900) : null;
+        var bad = E.tag(cd.g, x + 18, CY + 124, 140, 34, d.bad, E.ERR, { size: 19, ink: E.ERR, weight: 900, rx: 10 });
         var use = E.txt(cd.g, x + 22, CY + 196, '用：' + d.use, 21, E.GOOD, 'start', 900);
         var ex = d.ex.map(function (t, k) { return E.txt(cd.g, x + 22, CY + 226 + 26 * k, t, 18, E.INK2, 'start', 700); });
         return { g: cd.g, rect: cd.rect, n: n, minus: minus, trouble: trouble, bad: bad, use: use, ex: ex, cx: x + CW / 2 };
@@ -78,7 +78,7 @@
             E.op(c.use, f(st, u[1], 0.3));
             c.ex.forEach(function (e, k) { E.op(e, f(st, u[2 + k], 0.3)); });
             var hl = f(st, u[0], 0.3) * (1 - f(st, i < 2 ? T.use[i + 1][0] : T.flow[0], 0.3));
-            c.rect.style.strokeWidth = 5 * hl;   // 高亮：外框描一圈同色的边，边框加粗
+            c.rect.style.strokeWidth = 2.5 + 2.5 * hl;
             E.glow(c.rect, DEFS[i].c, hl > 0.05);
           });
           boxes.forEach(function (b, i) {

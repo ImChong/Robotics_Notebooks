@@ -82,15 +82,15 @@
       var angArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, cir), null, E.HI);
       var angLab = E.halo(E.txt(cir, 0, 0, '45°', 19, E.HI, 'middle', 900));
       var near = K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, cir), null, E.GOOD);
-      var far = K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, cir), null, E.BAD);
-      var farLab = E.halo(E.txt(cir, CX - 6, CY + R + 38, '绕远路：往右转 270°', 19, E.BAD, 'middle', 900));
+      var far = K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, cir), null, E.ERR);
+      var farLab = E.halo(E.txt(cir, CX - 6, CY + R + 38, '绕远路：往右转 270°', 19, E.ERR, 'middle', 900));
       var nearLab = E.halo(E.txt(cir, 0, 0, '近路', 19, E.GOOD, 'start', 900));
       var dia = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, cir), null, E.INK2);
       var proj = [0, 1].map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '5 5' }, cir), null, E.INK2); });
       var radius = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, cir), null, E.INK);
       var coordW = E.halo(E.txt(cir, 0, 0, '', 19, E.INK, 'middle', 900)), coordZ = E.halo(E.txt(cir, 0, 0, '', 19, E.ACC, 'end', 900));
       var ptB = K.paint(E.el('circle', { r: 9, 'stroke-width': 3 }, cir), E.S1, E.WARN);
-      var ptBGhost = K.paint(E.el('circle', { r: 9, 'stroke-width': 2.5, 'stroke-dasharray': '4 3', fill: 'none' }, cir), null, E.BAD);
+      var ptBGhost = K.paint(E.el('circle', { r: 9, 'stroke-width': 2.5, 'stroke-dasharray': '4 3', fill: 'none' }, cir), null, E.ERR);
       var labB = E.halo(E.txt(cir, 0, 0, '', 19, E.WARN, 'middle', 900));
       var ptMid = K.paint(E.el('circle', { r: 8 }, cir), E.HI);
       var pt = K.paint(E.el('circle', { r: 9, 'stroke-width': 3 }, cir), E.HI, E.S1);
@@ -100,7 +100,7 @@
       /* ══ 右：四元数（列向量），左边可以再放一列 ══ */
       var vecs = [V0X, VX].map(function (x) {
         var g = E.el('g', {}, s);
-        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 42, cellColors: [E.INK].concat(E.AX) });
+        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 42, cellColors: [E.INK, E.X, E.Y, E.Z] });
         var head = E.txt(g, x, 30, '', 21, E.INK, 'middle', 900);
         return { g: g, m: m, head: head };
       });
@@ -108,12 +108,12 @@
       // 分量名写在右边那列的右边，左边留给第二列
       ['w', 'x', 'y', 'z'].forEach(function (c, k) { var n = E.txt(names, VX + 60, VY - 60 + 40 * k + 7, c, 20, E.MUT, 'middle', 700); n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; });
       var times = E.el('g', {}, s);
-      E.arrow(times, [[V0X + 45, VY - 60], [VX - 45, VY - 60]], E.BAD, 2.5, { head: 9 });
-      E.txt(times, (V0X + VX) / 2, 30, '× (−1)', 19, E.BAD, 'middle', 900);   // 和两列的标题同一行，夹在中间
+      E.arrow(times, [[V0X + 45, VY - 60], [VX - 45, VY - 60]], E.HI, 2.5, { head: 9 });
+      E.txt(times, (V0X + VX) / 2, 30, '× (−1)', 19, E.HI, 'middle', 900);   // 和两列的标题同一行，夹在中间
       var sameG = E.el('g', {}, s);
       E.check(sameG, 600, 236, 20, E.GOOD, 4);
       E.txt(sameG, 628, 254, '朝向一模一样', 21, E.GOOD, 'start', 900);
-      var dbl = E.tag(s, 594, 232, 196, 44, '双重覆盖', E.BAD, { size: 24, ink: E.BAD, weight: 900, rx: 12, sw: 3 });
+      var dbl = E.tag(s, 594, 232, 196, 44, '双重覆盖', E.ERR, { size: 24, ink: E.ERR, weight: 900, rx: 12, sw: 3 });
       var dblSub = E.txt(s, 692, 304, 'q 和 −q：同一个朝向', 19, E.INK2, 'middle', 700);
       var ep5b = E.tag(s, 586, 236, 210, 34, '第 5 集：沿着转动取中间值', E.VIOLET, { size: 17, ink: E.INK, weight: 900, rx: 9 });
       // 规矩：平方和 = 1
@@ -230,7 +230,7 @@
             var p = 0;
             if (k === 0 || k === 3) p = Math.max(p, f(st, T.ends[k ? 1 : 0], 0.3) * (1 - f(st, T.half, 0.3)));
             [T.fill, T.neg, T.ones, T.midN].forEach(function (arr) { p = Math.max(p, bump(st, arr[k], 0.9)); });
-            V.cellBox(k, k === 0 ? E.HI : E.AX[k - 1], p);
+            V.cellBox(k, k === 0 ? E.HI : [E.X, E.Y, E.Z][k - 1], p);
           });
           vecs[1].head.textContent = st < T.orig ? '四元数' : st < T.turn3[0] ? '现在' : st < T.two ? '四元数' : st < T.reset[0] ? '−q' : '四元数';
           E.op(vecs[1].head, f(st, T.vec, 0.4));

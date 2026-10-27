@@ -1,5 +1,5 @@
 // 006 第 5 幕：旋转矩阵——九个数，六个等式。
-// 句 1 左上出第 2 幕那个朝向（转身 45°、前倾 25°、侧歪 20°）的旋转矩阵，「好处」右边三行依次打勾：接着做 = 相乘、乘向量得位置、没有万向锁；
+// 句 1 左上出第 2 幕那个朝向（RPY (20°, 25°, 45°)：侧歪 20°、前倾 25°、转身 45°）的旋转矩阵，「好处」右边三行依次打勾：接着做 = 相乘、乘向量得位置、没有万向锁；
 // 句 2「冗余」右边换成「代价：冗余」，左下出三维小坐标架；「三列长度都是一」三根小箭头依次标 1、矩阵三列依次框亮，「三个等式」；
 //    「每两列互相垂直」三对小箭头之间依次画直角、矩阵两列一起框亮，「又是三个等式」；
 // 句 3「九个数，六个等式」写出 9 − 6 = 3，「三个自由度」接上，「多出来的六个数」「负担」红字；
@@ -48,8 +48,8 @@
 
       /* ══ 句 1–3：矩阵 + 小坐标架 + 右边的列表 ══ */
       var A = E.el('g', {}, s);
-      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, colors: E.AX });
-      var cap = E.txt(A, MX, 166, '转身 45°、前倾 25°、侧歪 20°', 19, E.INK2, 'middle', 700);
+      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, colors: [E.X, E.Y, E.Z] });
+      var cap = E.txt(A, MX, 166, '侧歪 20°、前倾 25°、转身 45°', 19, E.INK2, 'middle', 700);
       var gzG = E.el('g', {}, A);
       var proj = E.view3(128, 24);
       var gz = E.gizmo(gzG, GZ[0], GZ[1], 118, proj, { w: 5, head: 15, lab: 22 });
@@ -59,7 +59,7 @@
         var o0 = gz.P([0, 0, 0]), tp = gz.P(E.col3(EUL, j).map(function (x) { return x * 0.55; }));
         var dx = tp[0] - o0[0], dy = tp[1] - o0[1], dl = Math.hypot(dx, dy) || 1, nx = -dy / dl, ny = dx / dl;
         if (ny > 0) { nx = -nx; ny = -ny; }
-        var n = E.halo(E.txt(gzG, tp[0] + 16 * nx, tp[1] + 16 * ny + 8, '1', 22, E.AX[j], 'middle', 900));
+        var n = E.halo(E.txt(gzG, tp[0] + 16 * nx, tp[1] + 16 * ny + 8, '1', 22, [E.X, E.Y, E.Z][j], 'middle', 900));
         return n;
       });
       var corners = [[0, 1], [0, 2], [1, 2]].map(function (pr) {
@@ -79,7 +79,7 @@
       });
       // 右：代价——6 个等式
       var costG = E.el('g', {}, s);
-      E.txt(costG, RX, 46, '代价：冗余', 26, E.BAD, 'start', 900);
+      E.txt(costG, RX, 46, '代价：冗余', 26, E.ERR, 'start', 900);
       var nineT = E.txt(costG, RX + 150, 46, '9 个数要守上一集的规矩', 21, E.INK2, 'start', 700);
       function chipRow(y, label, chips, color) {
         var g = E.el('g', {}, costG);
@@ -95,7 +95,7 @@
       var rowPerp = chipRow(132, '两两垂直', ['1 ⊥ 2', '1 ⊥ 3', '2 ⊥ 3'], E.HI);
       var tal = E.tex(costG, RX + 4, 222, '', 28, E.INK, 'start', { w: 400, h: 50 });
       var dofT = E.txt(costG, RX + 4, 282, '= 转动的 3 个自由度', 22, E.GOOD, 'start', 900);
-      var burden = E.txt(costG, RX + 4, 330, '多出来的 6 个数：负担', 22, E.BAD, 'start', 900);
+      var burden = E.txt(costG, RX + 4, 330, '多出来的 6 个数：负担', 22, E.ERR, 'start', 900);
 
       /* ══ 句 4–6：二维网格（从上往下看）+ 右边的数 ══ */
       var B = E.el('g', {}, s);
@@ -107,20 +107,20 @@
       var trail = E.el('g', {}, B), dots = [];
       for (var k = 1; k <= 100; k++) {
         var r = Math.pow(S, k), a = 45 * D * k, p = P(r * Math.cos(a), r * Math.sin(a));
-        dots.push(K.paint(E.el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3 }, trail), E.AX[0]));
+        dots.push(K.paint(E.el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3 }, trail), E.X));
       }
       var ghostSq = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, B), null, E.INK2);
-      var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, B), E.tint(E.BAD, 26, 'var(--demo-surface)'), E.BAD);
-      var e1 = E.vec(B, E.AX[0], 5, { head: 15 }), e2 = E.vec(B, E.AX[1], 5, { head: 15 });
+      var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, B), E.tint(E.ERR, 26, 'var(--demo-surface)'), E.ERR);
+      var e1 = E.vec(B, E.X, 5, { head: 15 }), e2 = E.vec(B, E.Y, 5, { head: 15 });
       var cornerFix = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, B), null, E.INK);
       var lenLab = E.halo(E.txt(B, 0, 0, '', 20, E.INK, 'middle', 900));
-      var big = E.halo(E.txt(B, OX, OY + 2.5 * U - 2, '格子大了一半', 21, E.BAD, 'middle', 900));
+      var big = E.halo(E.txt(B, OX, OY + 2.5 * U - 2, '格子大了一半', 21, E.ERR, 'middle', 900));
       var exag = E.halo(E.txt(B, OX, OY + 2.5 * U - 2, '积累的误差（夸大画）', 20, E.INK2, 'middle', 700));
       // 右：45° 的矩阵、每列长度、连乘计数
       var RB = 420;
       var r1 = E.el('g', {}, s);
       E.txt(r1, RB, 40, '45° 的矩阵，小数只留两位：', 22, E.INK, 'start', 900);
-      var m2 = E.grid(r1, 560, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 118, dy: 40, pad: 66, colors: [E.AX[0], E.AX[1]] });
+      var m2 = E.grid(r1, 560, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 118, dy: 40, pad: 66, colors: [E.X, E.Y] });
       // 不用根号（KaTeX 的根号是一条很长、靠裁剪显示的 path）：先写长度的平方，再写长度，同 005 的 a² + a² = 1
       var lenL = E.txt(r1, RB, 190, '长度的平方：', 21, E.INK, 'start', 900);
       var lenT = E.tex(r1, RB + 128, 182, '0.71^2+0.71^2\\approx 1.008', 24, E.INK, 'start', { w: 250, h: 44 });
@@ -128,13 +128,13 @@
       var permil = E.txt(r1, RB, 264, '只多了千分之四', 21, E.INK2, 'start', 700);
       var cnt = E.txt(r1, RB, 304, '', 24, E.INK, 'start', 900);
       var lenNow = E.txt(r1, RB, 340, '', 24, E.INK, 'start', 900);
-      var notRot = E.tag(r1, RB, 358, 200, 40, '已经不是旋转了', E.BAD, { size: 22, ink: E.BAD, weight: 900, rx: 12, sw: 3 });
+      var notRot = E.tag(r1, RB, 358, 200, 40, '已经不是旋转了', E.ERR, { size: 22, ink: E.ERR, weight: 900, rx: 12, sw: 3 });
       // 右：电脑、积累、扶正
       var r2 = E.el('g', {}, s);
       var pcL = [E.txt(r2, RB, 52, '电脑留十几位小数：0.70710678…', 21, E.INK, 'start', 700),
         E.txt(r2, RB, 92, '走样也慢得多', 21, E.GOOD, 'start', 900),
         E.txt(r2, RB, 148, '可一秒要算几百上千次', 21, E.INK, 'start', 700),
-        E.txt(r2, RB, 188, '算久了，照样会走样', 21, E.BAD, 'start', 900)];
+        E.txt(r2, RB, 188, '算久了，照样会走样', 21, E.ERR, 'start', 900)];
       var fixT = E.txt(r2, RB, 250, '隔一阵子，把矩阵扶正：', 22, E.HI, 'start', 900);
       var fixSteps = ['① 长度拉回 1', '② 两两垂直'].map(function (t1, i) { return E.txt(r2, RB + 24, 292 + 40 * i, t1, 22, E.GOOD, 'start', 900); });
 
@@ -153,7 +153,7 @@
         return { g: g, cx: x + 55, cy: y + 21 };
       });
       var hard = E.txt(C, 595, 280, '六个都要同时守住', 22, E.INK, 'middle', 900);
-      var hard2 = E.txt(C, 595, 324, '扶正麻烦得多', 24, E.BAD, 'middle', 900);
+      var hard2 = E.txt(C, 595, 324, '扶正麻烦得多', 24, E.ERR, 'middle', 900);
 
       function sqPath(m) {
         var pts = [[0, 0], [m[0], m[2]], [m[0] + m[1], m[2] + m[3]], [m[1], m[3]]].map(function (q) { return P(q[0], q[1]); });
@@ -175,7 +175,7 @@
             E.op(ones[j], lenOn);
             var pj = [0, 1, 2].filter(function (pi) { return [[0, 1], [0, 2], [1, 2]][pi].indexOf(j) >= 0; });
             var colOn = Math.max(bump(st, T.len[j], 0.9), Math.max.apply(null, pj.map(function (pi) { return bump(st, T.perp[pi], 0.9); })));
-            m3.colBox(j, E.AX[j], colOn);
+            m3.colBox(j, [E.X, E.Y, E.Z][j], colOn);
             E.op(corners[j], f(st, T.perp[j], 0.3));
           });
           E.op(goodG, f(st, T.goodHead, 0.3) * (1 - f(st, T.cost - 0.2, 0.3)));
@@ -227,7 +227,7 @@
           lenLab.textContent = E.num(L, 2);
           var lp2 = P(M[0] * 0.55 + 0.25 * -M[2] / (L || 1), M[2] * 0.55 + 0.25 * M[0] / (L || 1));
           lenLab.setAttribute('x', lp2[0].toFixed(1)); lenLab.setAttribute('y', (lp2[1] + 7).toFixed(1));
-          lenLab.style.fill = L > 1.2 ? E.BAD : '';
+          lenLab.style.fill = L > 1.2 ? E.ERR : '';
           E.op(lenLab, f(st, T.mulTxt, 0.3) * (1 - f(st, T.skew[0], 0.4)));
           // 扶正以后：直角记号
           var cf = f(st, T.perpFix[0] + T.perpFix[1], 0.3);
@@ -244,7 +244,7 @@
           cnt.textContent = '连乘了 ' + kk + ' 次';
           E.op(cnt, f(st, T.mulTxt, 0.3));
           lenNow.textContent = '每一列长：' + E.num(Math.pow(S, kk), kk >= 100 ? 1 : 2);
-          lenNow.style.fill = kk >= 100 ? E.BAD : '';
+          lenNow.style.fill = kk >= 100 ? E.ERR : '';
           E.op(lenNow, f(st, T.mulTxt, 0.3));
           E.scaleAt(lenNow, RB, 332, 1 + 0.15 * bump(st, T.l15, 0.8));
           E.pop(notRot.g, RB + 100, 378, f(st, T.notRot, 0.3), 0.8);

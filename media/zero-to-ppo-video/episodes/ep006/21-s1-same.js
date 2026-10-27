@@ -1,7 +1,7 @@
 // 006 第 1 幕：同一个朝向，三种写法。左边 G1，右边一列三张写法卡片（同片头：欧拉角 / 四元数 / 旋转矩阵，从上往下）。
 // 句 1「机器人原地往左转」G1 往左转 90°，脚下画出 0° → 90° 的弧（绕竖轴 z 转，蓝），「九十度」弧旁标 90°；
 // 句 2「旋转矩阵」矩阵卡弹出，「三列」「三根小箭头」「转完以后的方向」三列依次框亮、骨盆上对应的小箭头同时变粗，「九个数」卡上写「9 个数」；
-// 句 3「欧拉角」欧拉角卡弹出 (90°, 0°, 0°)，「三个角」写「3 个数」，「转身九十度」框亮 90°，「另外两个角」框亮两个 0°；
+// 句 3「欧拉角」欧拉角卡弹出 (0°, 0°, 90°)（RPY：横滚、俯仰、偏航），「三个角」写「3 个数」，「转身九十度」框亮 90°，「另外两个角」框亮两个 0°；
 // 句 4「四元数」四元数卡弹出，「四个数」写「4 个数」，四个数按念到的顺序写出，「怎么算出来」右边出问号，「第四幕」问号换成「第 4 幕再算」；
 // 句 5「九个数」「三个数」「四个数」三张卡的个数依次鼓一下，「同一个朝向」卡片左边出一道亮黄括线、箭头指回 G1，G1 头顶写「同一个朝向」；
 // 句 6「三个自由度」骨盆上绕三根小箭头各出一圈（绕哪根轴就用那根轴的颜色：蓝 z 转身、绿 y 前后倾、红 x 侧歪），「最少三个数」欧拉角卡的「3 个数」亮起来；
@@ -31,27 +31,27 @@
     cues: [
       { at: 0, s: '一个朝向：机器人原地往左转 90°' },
       { at: 4.58, s: '**旋转矩阵**：3×3，三列 = 三根小箭头转完的方向，9 个数' },
-      { at: 13.05, s: '**欧拉角**：3 个角，转身 90°，另外两个是 0' },
+      { at: 13.05, s: '**欧拉角**：3 个角 (0°, 0°, 90°)，转身 90°，另外两个是 0' },
       { at: 18.95, s: '**四元数**：4 个数 (0.71, 0, 0, 0.71)，第 4 幕再算' },
       { at: 28.12, s: '9 个、3 个、4 个数，说的是**同一个朝向**' },
       { at: 32.63, s: '转动只有 3 个自由度：最少 3 个数就能说清楚' },
       { at: 38.92, s: '欧拉角数最少，偏偏有坑；另外两种多用几个数，要守规矩' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('机器人原地往左转九十度：用旋转矩阵写是九个数，三列是三根小箭头转完的方向；用欧拉角写是三个角 (90°, 0°, 0°)；用四元数写是四个数 (0.71, 0, 0, 0.71)；三种写法说的是同一个朝向。转动只有三个自由度，最少三个数就够；只用三个数的欧拉角偏偏有坑，另外两种多用几个数，要守规矩');
+      var s = K.sceneSvg('机器人原地往左转九十度：用旋转矩阵写是九个数，三列是三根小箭头转完的方向；用欧拉角写是三个角 (0°, 0°, 90°)；用四元数写是四个数 (0.71, 0, 0, 0.71)；三种写法说的是同一个朝向。转动只有三个自由度，最少三个数就够；只用三个数的欧拉角偏偏有坑，另外两种多用几个数，要守规矩');
 
       /* ══ 左：G1 ══ */
       var rob = E.el('g', {}, s);
       var ring = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, rob), null, E.BORDER);
       var arc = E.el('g', {}, rob);
-      var arcLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, arc), null, E.AX[2]);
-      var arcHead = K.paint(E.el('path', {}, arc), E.AX[2]);
+      var arcLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, arc), null, E.Z);
+      var arcHead = K.paint(E.el('path', {}, arc), E.Z);
       var g1 = E.g1(rob, GX, GY, GH);
       var dofBack = E.el('g', {}, rob);
       var fr = E.frame3(rob, 5);
       var dofFront = E.el('g', {}, rob);
-      var dofRings = [E.AX[2], E.AX[1], E.AX[0]].map(function (c) { return E.ring3(dofBack, dofFront, c, 4.5); });
-      var deg = E.halo(E.txt(rob, 0, 0, '90°', 24, E.AX[2], 'middle', 900));
+      var dofRings = [E.Z, E.Y, E.X].map(function (c) { return E.ring3(dofBack, dofFront, c, 4.5); });
+      var deg = E.halo(E.txt(rob, 0, 0, '90°', 24, E.Z, 'middle', 900));
       ring.setAttribute('d', E.ptsPath(g1.ring(0.45), true));
       var sameLab = E.halo(E.txt(s, GX, 34, '同一个朝向', 26, E.HI, 'middle', 900));
       var dofLab = E.el('g', {}, s);
@@ -59,30 +59,30 @@
 
       /* ══ 右：三张卡片 ══ */
       var defs = [
-        { name: '欧拉角', c: E.WARN, n: '3 个数', tag: '有个坑', tc: E.BAD, next: '第 2、3 幕' },
+        { name: '欧拉角', c: E.WARN, n: '3 个数', tag: '有个坑', tc: E.ERR, next: '第 2、3 幕' },
         { name: '四元数', c: E.ACC, n: '4 个数', tag: '要守规矩', tc: E.INK2, next: '第 4 幕' },
         { name: '旋转矩阵', c: E.VIOLET, n: '9 个数', tag: '要守规矩', tc: E.INK2, next: '第 5 幕' }
       ];
       var cards = defs.map(function (d, i) {
         var r = ROWS[i], cd = E.card(s, CX, r.y, CW, r.h, d.name, d.c, 26);
         var cnt = E.txt(cd.g, CX + 22, r.y + 72, d.n, 20, E.INK2, 'start', 700);
-        var tg = E.tag(cd.g, TX, r.y + r.h / 2 - 40, TW, 36, d.tag, d.tc, { size: 20, ink: d.tc === E.BAD ? E.BAD : E.INK, weight: 900, rx: 10 });
+        var tg = E.tag(cd.g, TX, r.y + r.h / 2 - 40, TW, 36, d.tag, d.tc, { size: 20, ink: d.tc === E.ERR ? E.ERR : E.INK, weight: 900, rx: 10 });
         var nx = E.txt(cd.g, TX + TW / 2, r.y + r.h / 2 + 30, d.next, 20, E.INK2, 'middle', 700);
         return { g: cd.g, rect: cd.rect, cnt: cnt, tag: tg, next: nx, cy: r.y + r.h / 2 };
       });
       // 欧拉角：三个角（度数用正文字体），各带一个框
       var eulG = E.el('g', {}, cards[0].g);
       var eulBox = [0, 1, 2].map(function () { var b = K.paint(E.el('rect', { y: ROWS[0].y + 34, height: 40, rx: 8, 'stroke-width': 2.5 }, eulG), E.tint(E.HI, 18, 'var(--demo-surface)'), E.HI); E.op(b, 0); return b; });
-      var EX = [446, 520, 584];   // 三个数各自居中，逗号、括号单独排，框只套住数（框边离逗号、括号都留几 px）
-      [[406, '('], [484, ','], [552, ','], [618, ')']].forEach(function (d) { E.txt(eulG, d[0], ROWS[0].y + 64, d[1], 30, E.INK, 'middle', 700); });
-      ['90°', '0°', '0°'].forEach(function (v, i) { E.txt(eulG, EX[i], ROWS[0].y + 64, v, 30, E.INK, 'middle', 700); });
-      eulBox.forEach(function (b, i) { var w = i ? 40 : 58; b.setAttribute('x', EX[i] - w / 2); b.setAttribute('width', w); });
+      var EX = [440, 506, 582];   // RPY：(横滚, 俯仰, 偏航)；三个数各自居中，逗号、括号单独排，框只套住数（框边离逗号、括号都留几 px）
+      [[412, '('], [474, ','], [540, ','], [622, ')']].forEach(function (d) { E.txt(eulG, d[0], ROWS[0].y + 64, d[1], 30, E.INK, 'middle', 700); });
+      ['0°', '0°', '90°'].forEach(function (v, i) { E.txt(eulG, EX[i], ROWS[0].y + 64, v, 30, E.INK, 'middle', 700); });
+      eulBox.forEach(function (b, i) { var w = i < 2 ? 40 : 58; b.setAttribute('x', EX[i] - w / 2); b.setAttribute('width', w); });
       // 四元数：四个数
       var qNums = E.spans(cards[1].g, 524, ROWS[1].y + 62, ['(', '0.71', ', ', '0', ', ', '0', ', ', '0.71', ')'], 28, E.INK).filter(function (sp, k) { return k % 2; });
       var qAsk = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 66, '?', 40, E.INK2, 'middle', 900);
       var qLater = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 58, '第 4 幕再算', 20, E.INK2, 'middle', 700);
       // 旋转矩阵：往左转 90°
-      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, colors: E.AX });
+      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, colors: [E.X, E.Y, E.Z] });
       // 括线：卡片左边一道竖线，三个小钩接到卡片，中间一支箭头指回 G1
       var brace = E.el('g', {}, s);
       K.paint(E.el('path', { d: 'M 296 ' + (ROWS[0].y + 50) + ' H 284 V ' + (ROWS[2].y + 75) + ' H 296 M 284 ' + (ROWS[1].y + 50) + ' H 296', fill: 'none', 'stroke-width': 3.5, 'stroke-linejoin': 'round' }, brace), null, E.HI);
@@ -113,7 +113,7 @@
           /* 句 2：三列依次框亮，骨盆上对应的小箭头变粗 */
           [0, 1, 2].forEach(function (j) {
             var on = f(st, T.cols + 0.25 * j, 0.3) * (1 - f(st, T.nine + 0.6, 0.4));
-            m3.colBox(j, E.AX[j], on);
+            m3.colBox(j, [E.X, E.Y, E.Z][j], on);
             var ab = Math.max(bump(st, T.arrows, 0.8), on);
             fr.arrows[j].line.style.strokeWidth = 5 + 3.5 * ab;
           });
@@ -130,9 +130,9 @@
           });
 
           /* 句 3：欧拉角的三个数 */
-          E.op(eulBox[0], f(st, T.first, 0.3) * (1 - f(st, T.rest, 0.3)));
-          E.op(eulBox[1], f(st, T.rest, 0.3) * (1 - f(st, T.rest + 1.4, 0.3)));
-          E.op(eulBox[2], f(st, T.rest + 0.2, 0.3) * (1 - f(st, T.rest + 1.4, 0.3)));
+          E.op(eulBox[2], f(st, T.first, 0.3) * (1 - f(st, T.rest, 0.3)));   // 「转身九十度」是第三个数（偏航）
+          E.op(eulBox[0], f(st, T.rest, 0.3) * (1 - f(st, T.rest + 1.4, 0.3)));
+          E.op(eulBox[1], f(st, T.rest + 0.2, 0.3) * (1 - f(st, T.rest + 1.4, 0.3)));
 
           /* 句 4：四元数四个数依次写出；问号 → 第 4 幕再算 */
           qNums.forEach(function (c, k) { c.style.fillOpacity = f(st, T.nums[k], 0.25); });
@@ -161,7 +161,7 @@
             E.pop(cd.tag.g, TX + TW / 2, cd.cy - 22, f(st, a, 0.3), 0.8);
             E.op(cd.next, f(st, T.next + 0.25 * i, 0.3));
             var hl = i === 0 ? bump(st, 39.18, 1.2) : bump(st, T.others, 1.2);
-            cd.rect.style.strokeWidth = 5 * hl;   // 高亮：外框描一圈同色的边，边框加粗
+            cd.rect.style.strokeWidth = 2.5 + 2.5 * hl;
           });
         }
       };
