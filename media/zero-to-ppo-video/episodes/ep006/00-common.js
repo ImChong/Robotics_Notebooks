@@ -500,11 +500,13 @@
   /* 折线点 → path 的 d（闭合可选） */
   E.ptsPath = function (pts, close) { return pts.map(function (p, k) { return (k ? 'L ' : 'M ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + (close ? ' Z' : ''); };
 
-  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：圆角框 + 左边色条 + 名字；返回 { g, rect, name } */
+  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：圆角框 + 左边色条 + 名字；返回 { g, rect, name }。
+     色条是圆角框最左边宽 BW 的一条，外沿顺着两个圆角弯过去（同片尾总结卡片的 CSS border-left），不另画一根直条 */
   E.card = function (parent, x, y, w, h, name, color, size) {
-    var g = el('g', {}, parent);
-    var r = K.paint(el('rect', { x: x, y: y, width: w, height: h, rx: 14, 'stroke-width': 2.5 }, g), tint(color, 9, 'var(--demo-surface)'), color);
-    K.paint(el('rect', { x: x, y: y + 10, width: 7, height: h - 20, rx: 3.5 }, g), color);
+    var g = el('g', {}, parent), R = 14, BW = 8, dy = Math.sqrt(R * R - (R - BW) * (R - BW));
+    var r = K.paint(el('rect', { x: x, y: y, width: w, height: h, rx: R, 'stroke-width': 2.5 }, g), tint(color, 9, 'var(--demo-surface)'), color);
+    K.paint(el('path', { d: 'M ' + (x + BW) + ' ' + (y + R - dy).toFixed(2) + ' A ' + R + ' ' + R + ' 0 0 0 ' + x + ' ' + (y + R) +
+      ' V ' + (y + h - R) + ' A ' + R + ' ' + R + ' 0 0 0 ' + (x + BW) + ' ' + (y + h - R + dy).toFixed(2) + ' Z' }, g), color);
     var n = txt(g, x + 22, y + (size || 26) + 12, name, size || 26, color, 'start', 900);
     return { g: g, rect: r, name: n };
   };
