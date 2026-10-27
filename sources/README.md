@@ -179,6 +179,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [awesome-supermimic.md](repos/awesome-supermimic.md) | DiaoOrg/awesome-supermimic：SuperMimic 社区实现、扩展、演示与数据资源索引（CC0-1.0）
 - [x] [roboparty_rp1.md](repos/roboparty_rp1.md) | RoboParty RP1（ROBOTO 01）官方代码仓库体系、复现入口与许可证边界
 - [x] [theorem-labs-oss-verify-proofs.md](repos/theorem-labs-oss-verify-proofs.md) | Theorem OSS Verify：OSS-Fuzz 入口证明、Rocq 检查与 RISC-V/Linux process semantics
 - [x] [mjviser.md](repos/mjviser.md) | mujocolab/mjviser：基于 Viser 的 MuJoCo 浏览器查看器；与 mjlab（训练）分层区分（Apache-2.0）
@@ -676,3 +677,12 @@
 - `wiki/` = 结构化知识层
 
 sources 里的内容是原材料，wiki 是提炼后的知识。
+
+### 新增论文归档（2026-10-27）
+- [x] [dexport_arxiv_2610_32969.md](papers/dexport_arxiv_2610_32969.md) | DexPort：便携式 20-DoF 灵巧手数据采集与技能控制（arXiv:2610.32969）
+- [x] [rynnunify_arxiv_2610_32965.md](papers/rynnunify_arxiv_2610_32965.md) | RynnUnify：统一具身理解、视觉规划与机器人控制（arXiv:2610.32965）
+- [x] [backtrack_frozen_vla_arxiv_2610_32941.md](papers/backtrack_frozen_vla_arxiv_2610_32941.md) | Backtrack：冻结 VLA 的轻量失败检测与轨迹回退恢复（arXiv:2610.32941）
+
+### 新增项目页归档
+- [x] [dexport-project.md](sites/dexport-project.md) | DexPort 官方项目页与开放状态核查
+- [x] [rynnunify-project.md](sites/rynnunify-project.md) | RynnUnify 官方项目与 Hugging Face 入口核查

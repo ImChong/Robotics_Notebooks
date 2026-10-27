@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | awesome-supermimic 社区索引
+
+- 收录 DiaoOrg/awesome-supermimic，记录其作为社区导航清单的定位及 CC0 策展许可。
+- 更新 SuperMimic 实体页，明确资源索引不代表官方代码，也不独立验证各复现结果。
+
 ## [2026-10-27] ingest | 收录 Replica Skill 并整理应用重建 Agent Skills 的流程与使用边界
 
 - 核验官方 GitHub README 与 MIT 许可，记录 11 阶段技能工作流及 Python 工具。

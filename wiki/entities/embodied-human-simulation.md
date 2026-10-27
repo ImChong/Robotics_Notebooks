@@ -3,13 +3,14 @@ type: entity
 project_id: embodied-human-simulation-interactive-robotics
 tags: [paper, human-robot-interaction, biomechanics, exoskeleton, simulation, reinforcement-learning, tsinghua]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-27
 arxiv: "2603.09218"
 venue: "IROS 2026"
 project: https://lnsgroup.cc/research/HRI/
 related:
   - ../tasks/loco-manipulation.md
   - ./paper-opencap-monocular.md
+  - ./ms-human-700.md
 sources:
   - ../../sources/papers/embodied_human_simulation_arxiv_2603_09218.md
   - ../../sources/sites/embodied-human-simulation-hri.md
@@ -43,7 +44,7 @@ summary: "以受强化学习控制的全身肌肉骨骼数字人作为预测性�
 
 ## 工程实践与开源状态
 
-项目页使用 MuJoCo 进行耦合仿真，适合关注生物力学指标的人机交互设计研究。项目页截至 2026-10-21 标注 **“Code Coming Soon”**，未提供公开代码、模型权重或数据下载入口，因此目前无法据公开资料复现其具体训练与优化实现；不能将演示结果直接视为真实人体实验或临床安全性结论。
+项目页使用 MuJoCo 进行耦合仿真，适合关注生物力学指标的人机交互设计研究。项目页截至 2026-10-21 标注 **“Code Coming Soon”**，未提供该交互设计框架的公开代码、模型权重或数据下载入口，因此目前无法据公开资料复现其具体训练与优化实现；不能将演示结果直接视为真实人体实验或临床安全性结论。该工作使用的 [MS-Human-700 肌骨模型](./ms-human-700.md) 已有独立的公开 MuJoCo 模型和 Gymnasium 环境，两者开源状态应分开判断。
 
 ## 结论
 
@@ -58,6 +59,7 @@ summary: "以受强化学习控制的全身肌肉骨骼数字人作为预测性�
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md)：机器人全身运动与操作任务背景。
 - [OpenCap Monocular](./paper-opencap-monocular.md)：从视频估计人体运动学与肌肉骨骼动力学的相关工作。
+- [MS-Human-700](./ms-human-700.md)：该项目所用肌骨数字人的公开模型与控制环境。
 
 ## 推荐继续阅读
 
