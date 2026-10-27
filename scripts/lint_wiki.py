@@ -246,6 +246,15 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # HF `generate` 推理 API 方法名（llada2-2-flash），是阶段/命令 token，非机器人
     # 概念/方法/形式化，不应建独立页；与 validate / export 同类阶段名停用词。
     "generate",
+    # default：各页正文里的 `default` / **Default** 均为配置/档位名——roboparty 策略配置名、
+    # MJCF `default` 类、WH0 多卡 `default` profile、SONIC 发布权重的 **Default** 档、
+    # Exploy 的 **Default** 子图，是配置 token，非机器人概念/方法/形式化，不应建独立页。
+    "default",
+    # inference：各页正文里的 `inference` / **Inference** 均为仓库入口脚本名、包目录名或
+    # 阶段表行标签（cosmos-framework `scripts.train` / `inference`、valen、roboparty-ufo
+    # 的 `ufo/inference`、HumanEgo 的 `inference` 抽象），与已作停用词的 train / eval
+    # 成对出现，是命令/阶段 token，不应建独立页。
+    "inference",
     # export：各页正文里的 `export` 均为工具页的 CLI 子命令名（Ultralytics
     # `train` → `val` → `export` 导出 TensorRT/ONNX、Codex Security 的 `export`
     # SARIF、MARGoS 的 `export` / `import`、draw.io 插件的导出步骤），是命令 token，
@@ -722,6 +731,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 等实体页覆盖。与 demo / score 同类「表格字段标签而非可成页机制」。
     "runtime",
     "sim-to-real",  # 已由 concepts/sim2real.md 覆盖（全称写法与页面 stem 不同名）
+    "sim2sim",  # 迁移前的跨仿真器验证环节，已由 concepts/sim2real.md 缩写速查与 SOP 覆盖
     "ros",  # 裸名写法，已由 concepts/ros2-basics.md 覆盖（与 ros2 同一 canonical 页）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
     "sonic",

@@ -75,6 +75,16 @@ flowchart LR
 
 这里的区间覆盖不同 agent，不能直接当成单个 agent 的固定收益。比较具体模型、任务或运行条件时，应回到论文正文对应表格。
 
+## 与其他工作对比
+
+| 工作 | 经验如何沉淀 | 与 RoboSkill 的差异 |
+|------|--------------|---------------------|
+| [Agentic Coding Agent](./paper-agentic-coding-manipulation.md) | coding agent 在单任务内自写、自调代码 | 同样让通用 agent 写代码控制机器人；RoboSkill 进一步把成功经验经 reviewer 校验后写入技能库，跨任务复用 |
+| [AgenticRoboRL](./paper-agentic-roborl.md) | SFT + 多轮成功奖励 RL 更新 planner 权重 | 经验沉淀进模型参数；RoboSkill 不训练模型，经验以文本指导和可复用代码的形式外置 |
+| [MoCaP](./paper-mocap-mobile-code-as-policies.md) | 从人类视频提取空间记忆与站位先验 | 先验来自被动人类视频；RoboSkill 的经验来自 agent 自身的探索与执行记录，并额外利用触觉反馈 |
+
+外置技能库的好处是可审查、可回滚，并且不依赖特定底座模型；代价是技能的适用条件需要显式维护，否则场景绑定的偶然成功会污染后续任务。
+
 ## 结论
 
 **一句话总判：** RoboSkill 的价值在于把一次性的具身交互变成可复用经验，适用于任务会重复、技能库能持续维护的场景。

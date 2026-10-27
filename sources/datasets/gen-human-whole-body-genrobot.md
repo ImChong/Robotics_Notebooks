@@ -10,9 +10,16 @@
 
 官方开放数据门户将其描述为全身操作数据集，标注 **600 小时**及全身重建 **MPJPE 约 3 cm**。门户提供 Hugging Face 数据集链接。
 
+## Hugging Face 数据卡摘要（2026-10-27 复核）
+
+- **采集与重建：** 由 DAS-Ego 采集，经 GenRobot 专有 Data Foundation Model（DFM）重建；全身 MPJPE 约 3 cm（上身约 2 cm、下身约 3.5 cm）。
+- **规模：** 600 小时、15,943 个 episode、26 个领域；摘要段称覆盖 16,976 个真实场景与 1,281 种技能，概览表另列 16,400 个 unique task，口径以数据卡为准。
+- **模态与格式：** 6 路原生 RGB 视角，1600 × 1300，30 FPS，mcap 格式；字段含 `origin`、`face_mark`、`vio`、`handtracking`、`annotation_v2`、`body_track`、`bold_mark`、`task`、`sub_task`。
+- **许可与访问：** 数据卡 frontmatter 为 `license: other`，正文未给出许可文本；数据集未设访问门槛（`gated: false`）。
+
 ## 开放状态与核查边界
 
-门户提供数据集下载入口；本次无法读取数据卡，具体访问条件、许可、模态和评测细节待核实。官方门户未列出本数据集专属训练代码。
+数据可直接从 Hugging Face 下载，但许可条款未公开，商用或再分发前需向官方（opendata@genrobot.ai）确认。官方门户未列出本数据集专属训练代码。
 
 ## 对 wiki 的映射
 
