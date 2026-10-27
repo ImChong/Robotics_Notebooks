@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, open-source, stanford, legged, education, research, pupper, ros2, vlm]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-27
 related:
   - ./quadruped-robot.md
   - ./easy-quadruped.md
@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ./awesome-physical-ai-natnew.md
+  - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/sites/pupper-v3-documentation-readthedocs.md
   - ../../sources/repos/pupperv3_monorepo.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
+  - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 summary: "Stanford Doggo 与 Pupper 开源四足生态：Doggo 偏高动态跳跃（QDD 同步带 + ODrive）；Pupper 从教学版演进至 v3 伴侣平台（~$2000 自组、Pi 5 + GIM4305、仿真 RL、VLM/语音、ROS 2 monorepo 与 CS 123 课程）。"
 ---
 
@@ -159,3 +161,4 @@ Doggo 主仓 [StanfordDoggoProject](https://github.com/Nate711/StanfordDoggoProj
 - [stanford_cs123_robotics_ai.md](../../sources/courses/stanford_cs123_robotics_ai.md)
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
+- [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）
