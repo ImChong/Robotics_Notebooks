@@ -179,6 +179,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [roboparty_rp1.md](repos/roboparty_rp1.md) | RoboParty RP1（ROBOTO 01）官方代码仓库体系、复现入口与许可证边界
 - [x] [theorem-labs-oss-verify-proofs.md](repos/theorem-labs-oss-verify-proofs.md) | Theorem OSS Verify：OSS-Fuzz 入口证明、Rocq 检查与 RISC-V/Linux process semantics
 - [x] [mjviser.md](repos/mjviser.md) | mujocolab/mjviser：基于 Viser 的 MuJoCo 浏览器查看器；与 mjlab（训练）分层区分（Apache-2.0）
 - [x] [air-embodied-brain-memcompiler.md](repos/air-embodied-brain-memcompiler.md) | MemCompiler 官方实现：ALFWorld / ScienceWorld Manager–Executor 运行与评测入口
@@ -539,7 +540,8 @@
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [roboparty_com.md](sites/roboparty_com.md) | RoboParty 官网：公司叙事、里程碑、Roboto Origin 与 Lab 入口 |
-| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RPO 已完整开放；RP1 硬件、固件、仿真模型与训练工具按路线图分批发布 |
+| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RoboParty RP1 开放状态历史快照（截至 2026-10-15；不代表当前发布状态） |
+| [x] [roboparty_rp1_official.md](sites/roboparty_rp1_official.md) | RoboParty RP1 产品页、技术文档、GitHub 模块与当前开放/许可边界核查 |
 | [x] [roboparty_com_roboto_origin_doc.md](sites/roboparty_com_roboto_origin_doc.md) | Roboto Origin 官方文档站：参数表、系统架构与开源范围 |
 | [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
 | [x] [roboparty_lab_tech_humanoid_control.md](sites/roboparty_lab_tech_humanoid_control.md) | TeCH 成果页（lab.roboparty.com/outputs/tech）：无监督人形全身控制 |

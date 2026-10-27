@@ -2,9 +2,10 @@
 type: entity
 tags: [roboparty, humanoid, open-source, hardware, infrastructure]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-27
 related:
   - ./roboto-origin.md
+  - ./roboparty-rp1.md
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ./open-source-humanoid-hardware.md
@@ -27,6 +28,8 @@ sources:
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/repos/roboparty_train.md
   - ../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md
+  - ../../sources/sites/roboparty_rp1_official.md
+  - ../../sources/repos/roboparty_rp1.md
   - ../../sources/repos/roboparty_deploy.md
 summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
