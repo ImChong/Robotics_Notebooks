@@ -17,7 +17,20 @@
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
   E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a',
     x: '#e06c75', y: '#4ec9a4', z: '#569cd6', err: '#ff7b3a' };
-  E.X = E.HEX.x; E.Y = E.HEX.y; E.Z = E.HEX.z; E.ERR = E.HEX.err;
+  E.Z = E.HEX.z; E.ERR = E.HEX.err;
+  /* 003、004 的两根小箭头是 x 绿、y 琥珀：片头和第 1 幕开头先沿用，第 1 幕讲颜色约定时渐变成 x 红、y 绿。
+     E.X / E.Y 是 CSS 变量（这一幕没设就是新配色）；E.axes(svg, px, py) 在这一幕的 svg 上设：0 = 旧色、1 = 新色，返回两个 hex 给 KaTeX 用 */
+  E.HEX.x0 = E.HEX.good; E.HEX.y0 = E.HEX.warn;
+  E.X = 'var(--ax-x, ' + E.HEX.x + ')'; E.Y = 'var(--ax-y, ' + E.HEX.y + ')';
+  function mixHex(a, b, p) {
+    var A = parseInt(a.slice(1), 16), B = parseInt(b.slice(1), 16);
+    return '#' + [16, 8, 0].map(function (s) { var u = (A >> s) & 255, v = (B >> s) & 255; return ('0' + Math.round(u + (v - u) * p).toString(16)).slice(-2); }).join('');
+  }
+  E.axes = function (svg, px, py) {
+    var x = mixHex(E.HEX.x0, E.HEX.x, px), y = mixHex(E.HEX.y0, E.HEX.y, py);
+    svg.style.setProperty('--ax-x', x); svg.style.setProperty('--ax-y', y);
+    return [x, y];
+  };
 
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }

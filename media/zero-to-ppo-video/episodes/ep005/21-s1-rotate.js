@@ -1,6 +1,8 @@
 // 005 第 1 幕：旋转矩阵——转动只改朝向。左边一张坐标网格（灰色原网格 + 紫色变形网格，同 003 第 3 幕），右栏放矩阵与要点。
-// 句 1 回忆 003：「矩阵」右栏出单位矩阵，「列」两列依次框亮，「小箭头」往右一格（红）、往上一格（绿）各鼓一下，「落到」两个箭头尖标出 (1, 0)、(0, 1)；
-// 句 2、3 颜色约定：「颜色约定」右栏矩阵下面出标题，「x」「y」「z」三块小牌（x 红、y 绿、z 蓝）依次弹出，网格上往右 / 往上那根各鼓一下；
+// 句 1 回忆 003：「矩阵」右栏出单位矩阵，「列」两列依次框亮，「小箭头」往右一格、往上一格各鼓一下，「落到」两个箭头尖标出 (1, 0)、(0, 1)；
+//    这时两根小箭头和矩阵两列还是 003、004 的配色（往右 绿、往上 琥珀）；
+// 句 2、3 颜色约定：「颜色约定」右栏矩阵下面出标题，「x」「y」「z」三块小牌（x 红、y 绿、z 蓝）依次弹出，
+//    念到「红色」往右那根（连同坐标、矩阵第一列）渐变成红并鼓一下，念到「绿色」往上那根渐变成绿；
 //    「机器人软件」写出「机器人软件常用这套配色（例：ROS 的 RViz）」，「红」「绿」「蓝」「x」「y」「z」三块小牌按念到的顺序鼓一下；25.5 起收掉；
 // 句 4「不转的时候」「两根小箭头」「留在原地」两根小箭头鼓一下、尖上的坐标亮一下，「一、零和零、一」矩阵里四个数按念到的顺序框一下；
 // 句 5 单位矩阵：「左上」「右下」两个 1 框亮黄，「别处都是零」两个 0 框灰，「单位矩阵」矩阵下写名字，「拿它乘谁」右栏写 I p = p、网格上一个点 p，
@@ -21,8 +23,8 @@
   var MX = 622, MY = 140;                                   // 右栏矩阵中心
   var T = {
     mat: 1.95, col: [2.45, 2.73], arrows: [3.44, 3.6], link: 4.56, out1: 40.61,
-    // 句 2、3：颜色约定——「颜色约定」「x」「y」「z」；「机器人软件」「红」「绿」「蓝」「x」「y」「z」；25.5 起收掉
-    rule: 7.02, cx: 8.99, cy: 10.4, cz: 12.38, soft: 14.61, rgb: [17.59, 18.15, 18.64], xyz: [20.24, 20.65, 21.09], ruleOut: 25.5,
+    // 句 2、3：颜色约定——「颜色约定」「x」「红色」「y」「绿色」「z」；「机器人软件」「红」「绿」「蓝」「x」「y」「z」；25.5 起收掉
+    rule: 7.02, cx: 8.99, red: 9.85, cy: 10.4, green: 11.25, cz: 12.38, soft: 14.61, rgb: [17.59, 18.15, 18.64], xyz: [20.24, 20.65, 21.09], ruleOut: 25.5,
     // 句 4、5：单位矩阵——「不转的时候」「两根小箭头」「留在原地」「一 零 零 一」，「左上」「右下」「斜线」「别处」「单位矩阵」「拿它乘谁」「不变」
     still: 25.79, both: 27.03, stay: 27.94, nums: [29.2, 29.6, 30.04, 30.53], tl: 32.18, br: 32.67, diag: 33.64, zero: 34.9,
     unit: 36.73, mul: 37.75, same0: 39.07,
@@ -80,7 +82,7 @@
       // 颜色约定：标题、三块小牌、出处（RViz 的 Axes 显示：red - x、green - y、blue - z）
       var ruleG = E.el('g', {}, flat);
       var ruleTitle = E.txt(ruleG, MX, 236, '颜色约定（这一集起）', 22, E.INK2, 'middle', 900);
-      var chipsC = [['x 红', E.X], ['y 绿', E.Y], ['z 蓝', E.Z]].map(function (d, i) {
+      var chipsC = [['x 红', E.HEX.x], ['y 绿', E.HEX.y], ['z 蓝', E.Z]].map(function (d, i) {
         var x = 470 + 106 * i, tg = E.tag(ruleG, x, 256, 94, 42, d[0], d[1], { size: 24, ink: d[1], weight: 900, rx: 12, sw: 3 });
         return { tg: tg, cx: x + 47 };
       });
@@ -116,6 +118,7 @@
         el: s,
         draw: function (st, t) {
           var f = E.fade;
+          E.axes(s, f(st, T.red, 0.7), f(st, T.green, 0.7));   // 旧配色（x 绿、y 琥珀）→ x 红、y 绿
 
           /* ── 二维部分：句 6 开头淡出 ── */
           E.op(flat, 1 - f(st, T.to3, 0.5));
@@ -125,8 +128,8 @@
           E.op(pl.warp.g, (0.6 * f(st, T.spin[0] - 0.4, 0.5)).toFixed(3));
           var a = [R[0], R[2]], b = [R[1], R[3]], o = P(0, 0), q1 = P(a[0], a[1]), q2 = P(b[0], b[1]);
           e1.set(o[0], o[1], q1[0], q1[1]); e2.set(o[0], o[1], q2[0], q2[1]);
-          var b1 = Math.max(bump(st, T.arrows[0], 0.6), bump(st, T.e1, 0.6), bump(st, T.both, 0.6), bump(st, T.cx, 0.7), bump(st, T.xyz[0], 0.6)),
-            b2 = Math.max(bump(st, T.arrows[1], 0.6), bump(st, T.e2, 0.6), bump(st, T.both, 0.6), bump(st, T.cy, 0.7), bump(st, T.xyz[1], 0.6));
+          var b1 = Math.max(bump(st, T.arrows[0], 0.6), bump(st, T.e1, 0.6), bump(st, T.both, 0.6), bump(st, T.red - 0.1, 0.9), bump(st, T.xyz[0], 0.6)),
+            b2 = Math.max(bump(st, T.arrows[1], 0.6), bump(st, T.e2, 0.6), bump(st, T.both, 0.6), bump(st, T.green - 0.1, 0.9), bump(st, T.xyz[1], 0.6));
           e1.line.style.strokeWidth = 5 + 3 * b1; e2.line.style.strokeWidth = 5 + 3 * b2;
           E.glow(e1.g, E.X, b1 > 0.05); E.glow(e2.g, E.Y, b2 > 0.05);
 
@@ -186,7 +189,7 @@
           chipsC.forEach(function (c, i) {
             E.pop(c.tg.g, c.cx, 277, f(st, [T.cx, T.cy, T.cz][i], 0.3) * rOut, 0.8);
             var cb = Math.max(bump(st, T.rgb[i], 0.5), bump(st, T.xyz[i], 0.5));
-            c.tg.rect.style.strokeWidth = 3 + 2 * cb; E.glow(c.tg.rect, [E.X, E.Y, E.Z][i], cb > 0.05);
+            c.tg.rect.style.strokeWidth = 3 + 2 * cb; E.glow(c.tg.rect, [E.HEX.x, E.HEX.y, E.Z][i], cb > 0.05);
           });
           E.op(soft1, f(st, T.soft, 0.3) * rOut); E.op(soft2, f(st, T.soft + 0.4, 0.3) * rOut);
           E.pop(unitLab, MX, MY + 96, f(st, T.unit, 0.35) * uOut, 0.8);
