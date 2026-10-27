@@ -652,6 +652,11 @@
 | [humanoid_motion_control_know_how.md](notes/humanoid_motion_control_know_how.md) | 飞书公开文档《人形机器人运动控制 Know-How》结构化来源归档 |
 | [legacy-readme-resource-map.md](notes/legacy-readme-resource-map.md) | 旧 README 完整原始内容（归档备份） |
 
+### patents/ — 专利申请与专利文献归档
+| 文件 | 内容 |
+|------|------|
+| [us20260326293a1_mobile_robot_control_architecture.md](patents/us20260326293a1_mobile_robot_control_architecture.md) | Boston Dynamics：全身动态平衡与局部末端执行器控制协同（US 2026/0326293 A1；同族 WO 2026/136238 A1） |
+
 ### 根目录散文件
 | 文件 | 内容 |
 |------|------|
