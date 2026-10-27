@@ -5283,6 +5283,7 @@
 - [WEAVE：从人–物交互学习全身灵巧 Loco-Manipulation](wiki/entities/paper-weave.md) — WEAVE**（*Learning Whole-Body Dexterous Loco-Manipulation from Human–Object Interactions*，[arXiv:26 `📅unknown` `[entity_page]`
 - [WEM（World-Ego Modeling / World-Ego Model）](wiki/entities/paper-wem-world-ego-modeling.md) — WEM**（*World-Ego Model*，arXiv:2605.19957，项目页，[代码](https://g `📅unknown` `[entity_page]`
 - [WetRobo（arXiv:2609.18435）](wiki/entities/paper-wetrobo.md) — WetRobo**（*A Reproducible Robot Kit for Coding Agents in Biological Laboratories*，[arXiv:2609.1843 `📅unknown` `[entity_page]`
+- [WeVisOne-VL：从物体到像素的统一视觉感知](wiki/entities/paper-wevisone-vl.md) — 腾讯微信视觉团队提出的视觉语言模型，将目标级定位和像素级分割、抠图统一到同一接口，并支持缺失目标拒答。 `📅unknown` `[entity_page]`
 - [Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确定性学习与退化感知激光—惯性里程计](wiki/entities/paper-wheel-motion-uncertainty-degeneracy-aware-lio.md) — Wheel Uncertainty LIO**（*Learning Wheel Motion Uncertainty for Degeneracy-Aware LiDAR-Inertial Odo `📅unknown` `[entity_page]`
 - [When Does LeJEPA Learn a World Model?](wiki/entities/paper-when-does-lejepa-learn-world-model.md) — When Does LeJEPA Learn a World Model?**（arXiv:2605.26379）由 David Klindt、Yann LeCun、Randall Balestr `📅unknown` `[entity_page]`
 - [何时摇摆行走（arXiv:2609.21185）](wiki/entities/paper-when-to-waddle-biped-friction.md) — 何时摇摆行走**（*When to Waddle: A Comparative Study of Bipedal Torso-Stabilization on Low-Friction Surfa `📅unknown` `[entity_page]`
