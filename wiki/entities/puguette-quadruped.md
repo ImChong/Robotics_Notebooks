@@ -10,6 +10,7 @@ related:
   - ./quadruped-robot.md
   - ./stanford-doggo-and-pupper.md
   - ../comparisons/open-source-qdd-actuator-projects.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
@@ -55,6 +56,7 @@ sources:
 - [quadruped-robot](./quadruped-robot.md)
 - [stanford-doggo-and-pupper](./stanford-doggo-and-pupper.md)
 - [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
 
 ## 推荐继续阅读

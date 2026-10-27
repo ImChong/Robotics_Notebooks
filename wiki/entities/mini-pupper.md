@@ -9,7 +9,7 @@ summary: "Mini Pupper：MangDang 的小型开源四足，自研 3-DoF coreless �
 related:
   - ./quadruped-robot.md
   - ./stanford-doggo-and-pupper.md
-  - ./sim2real.md
+  - ../concepts/sim2real.md
   - ../concepts/ros2-basics.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
@@ -56,7 +56,7 @@ sources:
 
 - [quadruped-robot](./quadruped-robot.md)
 - [stanford-doggo-and-pupper](./stanford-doggo-and-pupper.md)
-- [sim2real](./sim2real.md)
+- [sim2real](../concepts/sim2real.md)
 - [ros2-basics](../concepts/ros2-basics.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
 

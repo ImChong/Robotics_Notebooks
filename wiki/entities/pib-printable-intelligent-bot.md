@@ -9,7 +9,7 @@ summary: "pib：德国 isento GmbH 的可完全 3D 打印开源人形，当前 p
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
-  - ./ros2-basics.md
+  - ../concepts/ros2-basics.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
@@ -55,7 +55,7 @@ sources:
 
 - [humanoid-robot](./humanoid-robot.md)
 - [open-source-humanoid-hardware](./open-source-humanoid-hardware.md)
-- [ros2-basics](./ros2-basics.md)
+- [ros2-basics](../concepts/ros2-basics.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
 
 ## 推荐继续阅读
