@@ -161,7 +161,7 @@
             E.pop(cd.tag.g, TX + TW / 2, cd.cy - 22, f(st, a, 0.3), 0.8);
             E.op(cd.next, f(st, T.next + 0.25 * i, 0.3));
             var hl = i === 0 ? bump(st, 39.18, 1.2) : bump(st, T.others, 1.2);
-            cd.rect.style.strokeWidth = 2.5 + 2.5 * hl;
+            cd.rect.style.strokeWidth = 5 * hl;   // 高亮：外框描一圈同色的边，边框加粗
           });
         }
       };

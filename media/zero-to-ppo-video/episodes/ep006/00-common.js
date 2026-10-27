@@ -500,13 +500,20 @@
   /* 折线点 → path 的 d（闭合可选） */
   E.ptsPath = function (pts, close) { return pts.map(function (p, k) { return (k ? 'L ' : 'M ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + (close ? ' Z' : ''); };
 
-  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：圆角框 + 左边色条 + 名字；返回 { g, rect, name }。
-     色条是圆角框最左边宽 BW 的一条，外沿顺着两个圆角弯过去（同片尾总结卡片的 CSS border-left），不另画一根直条 */
+  /* 一张写法卡片（欧拉角 / 四元数 / 旋转矩阵）：圆角框 + 左边粗色条 + 名字；返回 { g, rect（外框，高亮时加描边、发光）, name }。
+     照片尾总结卡片的 CSS（border-left 粗、别的边细、border-radius）来画：外面一整块本色圆角框，里面再铺一块底色——
+     里面那块左边让出 BW、别的边让出 B，左边两个角是椭圆角（横半径 R − BW、竖半径 R − B），
+     左边的粗条就在上下两个圆角处顺着弧线变细、接进细边框，不是一根另画的直条 */
   E.card = function (parent, x, y, w, h, name, color, size) {
-    var g = el('g', {}, parent), R = 14, BW = 8, dy = Math.sqrt(R * R - (R - BW) * (R - BW));
-    var r = K.paint(el('rect', { x: x, y: y, width: w, height: h, rx: R, 'stroke-width': 2.5 }, g), tint(color, 9, 'var(--demo-surface)'), color);
-    K.paint(el('path', { d: 'M ' + (x + BW) + ' ' + (y + R - dy).toFixed(2) + ' A ' + R + ' ' + R + ' 0 0 0 ' + x + ' ' + (y + R) +
-      ' V ' + (y + h - R) + ' A ' + R + ' ' + R + ' 0 0 0 ' + (x + BW) + ' ' + (y + h - R + dy).toFixed(2) + ' Z' }, g), color);
+    var g = el('g', {}, parent), R = 16, BW = 8, B = 2.5;
+    function f(v) { return v.toFixed(2); }
+    var r = K.paint(el('path', { d: 'M ' + (x + R) + ' ' + y + ' H ' + (x + w - R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + w) + ' ' + (y + R) +
+      ' V ' + (y + h - R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + w - R) + ' ' + (y + h) + ' H ' + (x + R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + x + ' ' + (y + h - R) +
+      ' V ' + (y + R) + ' A ' + R + ' ' + R + ' 0 0 1 ' + (x + R) + ' ' + y + ' Z', 'stroke-width': 0, 'stroke-linejoin': 'round' }, g), color, color);
+    var xi = x + BW, yi = y + B, xr = x + w - B, yb = y + h - B, ax = R - BW, ay = R - B, rr = R - B;
+    K.paint(el('path', { d: 'M ' + f(xi + ax) + ' ' + f(yi) + ' H ' + f(xr - rr) + ' A ' + rr + ' ' + rr + ' 0 0 1 ' + f(xr) + ' ' + f(yi + rr) +
+      ' V ' + f(yb - rr) + ' A ' + rr + ' ' + rr + ' 0 0 1 ' + f(xr - rr) + ' ' + f(yb) + ' H ' + f(xi + ax) + ' A ' + ax + ' ' + ay + ' 0 0 1 ' + f(xi) + ' ' + f(yb - ay) +
+      ' V ' + f(yi + ay) + ' A ' + ax + ' ' + ay + ' 0 0 1 ' + f(xi + ax) + ' ' + f(yi) + ' Z' }, g), tint(color, 9, 'var(--demo-surface)'));
     var n = txt(g, x + 22, y + (size || 26) + 12, name, size || 26, color, 'start', 900);
     return { g: g, rect: r, name: n };
   };

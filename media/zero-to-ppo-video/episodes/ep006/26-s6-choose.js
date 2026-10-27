@@ -78,7 +78,7 @@
             E.op(c.use, f(st, u[1], 0.3));
             c.ex.forEach(function (e, k) { E.op(e, f(st, u[2 + k], 0.3)); });
             var hl = f(st, u[0], 0.3) * (1 - f(st, i < 2 ? T.use[i + 1][0] : T.flow[0], 0.3));
-            c.rect.style.strokeWidth = 2.5 + 2.5 * hl;
+            c.rect.style.strokeWidth = 5 * hl;   // 高亮：外框描一圈同色的边，边框加粗
             E.glow(c.rect, DEFS[i].c, hl > 0.05);
           });
           boxes.forEach(function (b, i) {
