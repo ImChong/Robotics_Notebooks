@@ -30,6 +30,9 @@ sources:
   - ../../sources/papers/tapvid_mv_arxiv_2609_01899.md
   - ../../sources/papers/hand_erc_benchmarking_arxiv_2609_05585.md
   - ../../sources/sites/hand-erc-benchmarking.md
+  - ../../sources/papers/streameval_arxiv_2610_28402.md
+  - ../../sources/sites/streameval-ai.md
+  - ../../sources/repos/streameval.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../entities/anthropic-embody.md
