@@ -55,18 +55,19 @@
       var proj = E.view3(150, 22);   // 从左前方看：外环转到 +30° 时也不会侧成一条线（−30° 那一下才侧过来，只在来回摆的一瞬）
       var gb = E.gimbal(s, GC[0], GC[1], GL, proj);
       var P = gb.P;
-      var downLab = E.halo(E.txt(s, 0, 0, '朝下', 22, E.X, 'start', 900));
+      var downG = E.el('g', {}, s);
+      var downLead = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2, 'stroke-dasharray': '5 5' }, downG), null, E.X);
+      var downLab = E.halo(E.txt(downG, 0, 0, '朝下', 22, E.X, 'start', 900));
       // 世界的前后（x）：红虚线 + 绕它的弯箭头 + 叉
       var redG = E.el('g', {}, s);
-      var xLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '10 7', 'stroke-linecap': 'round' }, redG), null, E.X);
+      var xLine = gb.line([-1.25, 0, 0], [1.3, 0, 0], E.X, 3.5, '10 7').op(0);   // 世界的 x：放进万向节里一起按远近排，被近处的环挡住
       var curl = E.el('g', {}, redG);
       var curlLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, curl), null, E.X);   // 绕世界 x 转：x 轴的红
       var curlHead = K.paint(E.el('path', {}, curl), E.X);
       var curlX = E.el('g', {}, redG);
       var xLab = E.halo(E.txt(redG, 0, 0, '前后 x', 22, E.X, 'middle', 900));
       (function () {
-        var a = P([-1.25, 0, 0]), b = P([1.3, 0, 0]);
-        xLine.setAttribute('d', 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1));
+        var b = P([1.3, 0, 0]);
         var pts = [];
         for (var k = 0; k <= 36; k++) { var t = (-60 + 290 * k / 36) * D; pts.push(P([1.12, 0.26 * Math.cos(t), 0.26 * Math.sin(t)])); }
         curlLine.setAttribute('d', E.ptsPath(pts));
@@ -143,27 +144,28 @@
           var pitch = wig(st, T.wig[1], T.wigD, 25 * D) + 90 * D * f(st, T.pitch[0], T.pitch[1]);
           var roll = wig(st, T.wig[2], T.wigD, 25 * D) + wig(st, T.innerW[0], T.innerW[1], -30 * D) - 30 * D * f(st, T.swap[0], T.swap[1]);
           gb.set(yaw, pitch, roll);
-          E.op(gb.stand, f(st, T.stand, 0.4)); E.op(gb.body[0].g.parentNode, f(st, T.stand, 0.4));
+          gb.stand.op(f(st, T.stand, 0.4)); gb.bodyOp(f(st, T.stand, 0.4));
           gb.rings.forEach(function (r, i) {
             var on = f(st, T.rings[i], 0.35);
-            E.op(r.front, on); E.op(r.back, on); E.op(gb.axles[i], on);
-            E.op(gb.pins[2 * i], on); E.op(gb.pins[2 * i + 1], on);
-            var hl = bump(st, T.wig[i] - 0.1, T.wigD + 0.2);
-            r.front.style.strokeWidth = 8 + 4 * hl;
+            r.op(on); gb.axles[i].op(on);
+            r.width(8 + 4 * bump(st, T.wig[i] - 0.1, T.wigD + 0.2));
           });
           // 红箭头（身子的前，x）变粗、写「朝下」
           var gw = Math.max(bump(st, T.green, 1.2), f(st, T.green, 0.3) * (1 - f(st, T.xAxis, 0.4)));
           gb.body[0].line.style.strokeWidth = 6 + 4 * gw;
           var tip = P(E.col3(gb.R, 0).map(function (x) { return x * 0.52; }));
-          downLab.setAttribute('x', (tip[0] + 14).toFixed(1)); downLab.setAttribute('y', (tip[1] + 8).toFixed(1));
-          E.op(downLab, f(st, T.down, 0.3) * (1 - f(st, T.xAxis, 0.4)));
+          // 箭头尖右边紧挨着是三个环，字放到环外，一根细虚线连回箭头尖
+          downLab.setAttribute('x', (tip[0] + 108).toFixed(1)); downLab.setAttribute('y', (tip[1] + 8).toFixed(1));
+          downLead.setAttribute('d', 'M ' + (tip[0] + 100).toFixed(1) + ' ' + tip[1].toFixed(1) + ' H ' + (tip[0] + 14).toFixed(1));
+          E.op(downG, f(st, T.down, 0.3) * (1 - f(st, T.xAxis, 0.4)));
           // 两根转轴：内环（红，x）、外环（蓝，z）；「转到了一起」一起亮
           var sb = bump(st, T.same, 1.0) + bump(st, T.same + 1.0, 1.0);
-          E.op(gb.axes.x, f(st, T.xAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
-          E.op(gb.axes.z, f(st, T.zAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
-          gb.axes.z.style.strokeWidth = 9 + 3 * sb; gb.axes.x.style.strokeWidth = 3.5 + 2 * sb;   // 两根重合：蓝的粗、垫在下面，红的细、压在上面，看得出是两根
+          gb.axes.x.op(f(st, T.xAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
+          gb.axes.z.op(f(st, T.zAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
+          gb.axes.z.width(9 + 3 * sb); gb.axes.x.width(3.5 + 2 * sb);   // 两根重合：蓝的粗、垫在下面，红的细、压在上面，看得出是两根
           // 世界的前后：红虚线、弯箭头、叉
-          E.op(redG, f(st, T.xRed, 0.4) * (1 - f(st, T.fall - 0.4, 0.4)));
+          var redOn = f(st, T.xRed, 0.4) * (1 - f(st, T.fall - 0.4, 0.4));
+          E.op(redG, redOn); xLine.op(redOn);
           E.drawOn(curlLine, f(st, T.xRed + 0.3, 0.6));
           E.op(curlHead, f(st, T.xRed + 0.8, 0.2));
           var cx0 = P([1.12, 0, 0.62]);

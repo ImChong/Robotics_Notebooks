@@ -151,7 +151,7 @@
           [[ax[0], ax[1]], [ax[0], ax[2]], [ax[1], ax[2]]].forEach(function (pl, i) {
             dofRings[i].set([0, 0, 0], pl[0], pl[1], 0.3, P, P);
             var on = f(st, T.rings[i], 0.3) * (1 - f(st, T.outRings, 0.4));
-            E.op(dofRings[i].front, on); E.op(dofRings[i].back, on);
+            dofRings[i].op(on);
           });
           E.op(dofLab, f(st, T.rings[0], 0.3) * (1 - f(st, T.outRings, 0.4)));
 

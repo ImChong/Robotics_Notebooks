@@ -2,7 +2,7 @@
 // 本目录按文件名顺序加载：00 共用部件 → 10 片头主图 → 21…26 六幕分镜 → 90 组装 window.EpisodeVideo。旁白在 ../ep006.py。
 // 工具函数取自 ../ep005/00-common.js（命名空间换成 EP006；可动箭头、坐标网格、KaTeX、三维小坐标架、G1、骨盆上的三根小箭头）；
 // 手画矩阵合成一个 E.grid（任意行列，四元数的 4×1 也用它）；G1 改成能按任意旋转矩阵摆（setR）、能抬高贴地（趴下用）；
-// 另加三维里的一圈 E.ring3（前后半圈分两层画）和三个环套在一起的万向节 E.gimbal（第 3 幕）。
+// 另加三维里的一圈 E.ring3（切成小段，机器人前后各一层、层里按远近排）和三个环套在一起的万向节 E.gimbal（第 3 幕，所有部件按远近排，近的挡住远的）。
 // 分镜都画在 800×420 的网格上。draw(st, t)：st 是分镜时间（旁白念完前画面停在 to 之前，一次性事件用它），
 // t 是这一幕的真实时间（呼吸、来回摆这类循环动作用它，停帧时也不会卡住）。
 (function () {
@@ -309,85 +309,167 @@
   E.zyx = function (yaw, pitch, roll) { return E.mul3(E.mul3(E.Rz(yaw), E.Ry(pitch)), E.Rx(roll)); };
   function dot3(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
 
-  /* ── 三维里一圈（圆心 c、半径 r、所在平面由单位向量 a、b 张成）画成两段折线：前半圈（朝着看的人）和后半圈。
-     E.ring3(back, front, color, w)：back / front 是两层 <g>（后半圈画在小箭头后面，前半圈画在前面）；set(c, a, b, r, proj, P) ── */
+  /* ── 三维里一圈（圆心 c、半径 r、所在平面由单位向量 a、b 张成），绕在机器人身上用：切成 48 小段，
+     朝着看的人的那些段放进 front 层（画在机器人前面），其余放进 back 层（画在后面、颜色淡一些、细一点）；
+     每层里的段（几个圈混在一起）按远近重新排，近的盖住远的。
+     E.ring3(back, front, color, w) → { op(v)：不透明度, set(c, a, b, r, proj, P) } ── */
+  function sortByDepth(gr) {
+    var kids = Array.prototype.slice.call(gr.children), next = kids.slice().sort(function (p, q) { return p.__d - q.__d; });
+    if (next.some(function (n, k) { return n !== kids[k]; })) next.forEach(function (n) { gr.appendChild(n); });
+  }
   E.ring3 = function (back, front, color, w) {
-    var pb = K.paint(el('path', { fill: 'none', 'stroke-width': (w || 7) - 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, back), null, color);
-    var pf = K.paint(el('path', { fill: 'none', 'stroke-width': w || 7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, front), null, color);
-    pb.style.strokeOpacity = 0.4;
+    var N = 48, W = w || 7, segs = [];
+    for (var k = 0; k < N; k++) { var n = el('path', { fill: 'none', 'stroke-linecap': 'round' }, front); n.__d = 0; segs.push(n); }
     return {
-      back: pb, front: pf,
+      op: function (v) { segs.forEach(function (n) { n.style.opacity = v; }); },
       set: function (c, a, b, r, proj, P) {
-        var N = 96, df = '', db = '', prevF = null;
-        for (var k = 0; k <= N; k++) {
-          var t = 2 * Math.PI * k / N, ct = Math.cos(t), st = Math.sin(t);
-          var v = [c[0] + r * (ct * a[0] + st * b[0]), c[1] + r * (ct * a[1] + st * b[1]), c[2] + r * (ct * a[2] + st * b[2])];
-          var isF = dot3([ct * a[0] + st * b[0], ct * a[1] + st * b[1], ct * a[2] + st * b[2]], proj.toward) >= -0.02;
-          var q = P(v), s = q[0].toFixed(1) + ' ' + q[1].toFixed(1);
-          // 前后交界处两段各多画一个点，接得上
-          if (isF) df += (prevF === true ? ' L ' : ' M ') + s; else db += (prevF === false ? ' L ' : ' M ') + s;
-          if (prevF !== null && prevF !== isF) { if (isF) db += ' L ' + s; else df += ' L ' + s; }
-          prevF = isF;
-        }
-        pf.setAttribute('d', df); pb.setAttribute('d', db);
+        segs.forEach(function (n, k) {
+          var t0 = 2 * Math.PI * k / N, t1 = 2 * Math.PI * (k + 1) / N, tm = (t0 + t1) / 2;
+          function at(t) { return [c[0] + r * (Math.cos(t) * a[0] + Math.sin(t) * b[0]), c[1] + r * (Math.cos(t) * a[1] + Math.sin(t) * b[1]), c[2] + r * (Math.cos(t) * a[2] + Math.sin(t) * b[2])]; }
+          var p = P(at(t0)), q = P(at(t1));
+          n.setAttribute('d', 'M ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ' L ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1));
+          var d = dot3([Math.cos(tm) * a[0] + Math.sin(tm) * b[0], Math.cos(tm) * a[1] + Math.sin(tm) * b[1], Math.cos(tm) * a[2] + Math.sin(tm) * b[2]], proj.toward);
+          n.__d = d;
+          var gr = d >= -0.02 ? front : back;
+          if (n.parentNode !== gr) gr.appendChild(n);
+          n.style.stroke = gr === front ? color : 'color-mix(in srgb, ' + color + ' 45%, var(--demo-surface))';
+          n.style.strokeWidth = gr === front ? W : W - 1.5;
+        });
+        sortByDepth(front); sortByDepth(back);
       }
     };
   };
 
   /* ── 万向节：三个套在一起的环，外环绕竖轴转（偏航，蓝）、中环绕外环上左右方向的轴转（俯仰，绿）、内环绕中环上前后方向的轴转（横滚，红）；
      中间是身子的三根小箭头（x 前 红、y 左 绿、z 上 蓝）。底下一根立柱和底座托着外环。
+     遮挡按远近来：每个环切成 64 小段，转轴虚线、外加的直线切成几小段，连同小轴、连接点、身子的小箭头、立柱，每帧按离看的人的远近（点乘 proj.toward）
+     从远到近重新排一遍 DOM，近的盖住远的；远的那半圈颜色往底色里淡一些、细一点。
      E.gimbal(parent, cx, cy, L, proj)：中心 (cx, cy)，单位长 L px。set(yaw, pitch, roll)（弧度）；
-     返回 { P, rings[外, 中, 内], axes：三根转轴虚线 { z 外环、y 中环、x 内环 }（默认不显示）, body：身子的三根小箭头, R：身子的旋转矩阵 } ── */
+     返回 { P, R：身子的旋转矩阵, rings[外, 中, 内]、axles[外, 中, 内]（连同两个连接点）、axes { z 外环、y 中环、x 内环 }（转轴虚线，默认不显示）、stand：
+     各有 op(v) 设不透明度、width(w) 设线宽；body：身子的三根小箭头（E.vec）、bodyOp(v)；line(a, b, color, w, dash)：再加一条参与远近排序的三维直线 } ── */
   E.gimbal = function (parent, cx, cy, L, proj) {
-    var g = el('g', {}, parent);
+    var g = el('g', {}, parent), TW = proj.toward;
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }
-    var RAD = [1, 0.84, 0.68], BASE = -1.32;
-    var stand = el('g', {}, g);
-    var foot = K.paint(el('path', { 'stroke-width': 2.5 }, stand), E.tint(E.MUT, 18, 'var(--demo-surface)'), E.MUT);
-    var post = K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, stand), null, E.MUT);
-    var back = el('g', {}, g), axesG = el('g', {}, g), bodyG = el('g', {}, g), front = el('g', {}, g);
+    function dep(v) { return v[0] * TW[0] + v[1] * TW[1] + v[2] * TW[2]; }
+    function sc(v, k) { return [v[0] * k, v[1] * k, v[2] * k]; }
+    function lerp3(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+    function f2(q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }
+    var RAD = [1, 0.84, 0.68], BASE = -1.32, NS = 64, NL = 8;
+    var items = [], order = null;
+    function owner() {
+      var o = { items: [], base: null };
+      o.op = function (v) { o.items.forEach(function (it) { it.el.style.opacity = v; }); return o; };
+      o.width = function (w) { o.base = w; o.items.forEach(function (it) { if (it.ws) it.el.style.strokeWidth = (w * it.ws).toFixed(2); }); return o; };
+      return o;
+    }
+    function add(o, node, ws) { var it = { el: node, d: 0, ws: ws || 0 }; items.push(it); if (o) o.items.push(it); return it; }   // ws：线宽跟着 width() 走的比例，0 = 线宽固定
+    // 一条三维直线切成 NL 段，各算远近；虚线的节奏用 dashoffset 接上
+    function seg3(o, color, w, dash, bias) {   // bias：远近相同时谁压上面（加一点就靠前）
+      var segs = [];
+      for (var k = 0; k < NL; k++) {
+        var n = el('path', { fill: 'none', 'stroke-width': w, 'stroke-linecap': dash ? 'butt' : 'round' }, g);
+        K.paint(n, null, color);
+        if (dash) n.setAttribute('stroke-dasharray', dash);
+        segs.push(add(o, n, 1));
+      }
+      o.width(w);
+      o.set = function (a, b) {
+        var off = 0;
+        segs.forEach(function (it, k) {
+          var p = lerp3(a, b, k / NL), q = lerp3(a, b, (k + 1) / NL), pp = P(p), qq = P(q);
+          it.el.setAttribute('d', 'M ' + f2(pp) + ' L ' + f2(qq));
+          if (dash) it.el.style.strokeDashoffset = (-off).toFixed(1);
+          off += Math.hypot(qq[0] - pp[0], qq[1] - pp[1]);
+          it.d = dep(lerp3(p, q, 0.5)) + (bias || 0);
+        });
+      };
+      return o;
+    }
+    // 立柱和底座（底座永远在最后面）
+    var stand = owner();
+    var foot = add(stand, K.paint(el('path', { 'stroke-width': 2.5 }, g), E.tint(E.MUT, 18, 'var(--demo-surface)'), E.MUT));
+    var post = seg3(stand, E.MUT, 5);
+    // 三个环
     var cols = [E.Z, E.Y, E.X];
-    var rings = cols.map(function (c) { return E.ring3(back, front, c, 8); });
-    // 环和环之间的小轴（连接点）：外环上下两点接立柱、中环左右两点接外环、内环前后两点接中环
-    var axles = cols.map(function (c) { return K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, front), null, c); });
-    var pins = [];
-    for (var k = 0; k < 6; k++) pins.push(K.paint(el('circle', { r: 5.5, 'stroke-width': 2 }, front), E.S1, cols[Math.floor(k / 2)]));
-    var axes = {};
-    [['z', E.Z], ['y', E.Y], ['x', E.X]].forEach(function (d) {
-      var p = K.paint(el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '10 7', 'stroke-linecap': 'round' }, axesG), null, d[1]);
-      op(p, 0);
-      axes[d[0]] = p;
+    var rings = cols.map(function (c) {
+      var o = owner(), segs = [];
+      for (var k = 0; k < NS; k++) segs.push(add(o, el('path', { fill: 'none', 'stroke-linecap': 'round' }, g), 1));
+      o.width(8);
+      o.set = function (a, b, r) {
+        segs.forEach(function (it, k) {
+          var t0 = 2 * Math.PI * k / NS, t1 = 2 * Math.PI * (k + 1) / NS;
+          var p = [0, 0, 0].map(function (_, m) { return r * (Math.cos(t0) * a[m] + Math.sin(t0) * b[m]); });
+          var q = [0, 0, 0].map(function (_, m) { return r * (Math.cos(t1) * a[m] + Math.sin(t1) * b[m]); });
+          it.el.setAttribute('d', 'M ' + f2(P(p)) + ' L ' + f2(P(q)));
+          var d = dep(lerp3(p, q, 0.5)), dn = clamp(d / r, -1, 1), near = (dn + 1) / 2;
+          it.d = d;
+          it.el.style.stroke = 'color-mix(in srgb, ' + c + ' ' + Math.round(55 + 45 * near) + '%, var(--demo-surface))';
+          it.ws = 0.78 + 0.22 * near;
+          it.el.style.strokeWidth = (o.base * it.ws).toFixed(2);
+        });
+      };
+      return o;
     });
-    var body = [E.X, E.Y, E.Z].map(function (c) { var a = E.vec(bodyG, c, 6, { head: 17 }); return a; });
-    var hub = K.paint(el('circle', { r: 7, 'stroke-width': 2.5 }, bodyG), E.INK, E.S1);
-    function seg(path, a, b) { var p = P(a), q = P(b); path.setAttribute('d', 'M ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ' L ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1)); }
-    function sc(v, s) { return [v[0] * s, v[1] * s, v[2] * s]; }
+    // 环和环之间的小轴（连接点一并算进这个环）：外环上下两点接立柱、中环左右两点接外环、内环前后两点接中环
+    var axles = cols.map(function (c) {
+      var o = owner();
+      o.lines = [0, 1].map(function () { var it = add(o, K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, g), null, c)); return it; });
+      o.pins = [0, 1].map(function () { return add(o, K.paint(el('circle', { r: 5.5, 'stroke-width': 2 }, g), E.S1, c)); });
+      return o;
+    });
+    // 转轴虚线
+    var axes = {};
+    // 内环的轴（x）重合到外环的轴（z）上时：红的压在蓝的上面（蓝的画粗垫底，看得出是两根）
+    [['z', E.Z, 0], ['y', E.Y, 0.01], ['x', E.X, 0.02]].forEach(function (d) { axes[d[0]] = seg3(owner(), d[1], 3.5, '10 7', d[2]).op(0); });
+    // 身子：三根小箭头 + 圆心
+    var bodyO = owner();
+    var body = [E.X, E.Y, E.Z].map(function (c) { var a = E.vec(g, c, 6, { head: 17 }); add(bodyO, a.g); return a; });
+    var hub = add(bodyO, K.paint(el('circle', { r: 7, 'stroke-width': 2.5 }, g), E.INK, E.S1));
+    var extra = [];
+
+    function sortDom() {
+      var next = items.slice().sort(function (a, b) { return a.d - b.d; });
+      if (order && next.every(function (it, k) { return it === order[k]; })) return;
+      next.forEach(function (it) { g.appendChild(it.el); });
+      order = next;
+    }
     var api = {
-      g: g, P: P, rings: rings, axes: axes, body: body, axles: axles, pins: pins, stand: stand, hub: hub, R: null, RAD: RAD,
+      g: g, P: P, rings: rings, axes: axes, body: body, axles: axles, stand: stand, R: null, RAD: RAD,
+      bodyOp: function (v) { bodyO.op(v); return api; },
+      line: function (a, b, color, w, dash) { var o = seg3(owner(), color, w, dash); o.set(a, b); extra.push(o); return o; },
       set: function (yaw, pitch, roll) {
         var F0 = E.Rz(yaw), F1 = E.mul3(F0, E.Ry(pitch)), F2 = E.mul3(F1, E.Rx(roll));
         var z = [0, 0, 1], y0 = E.col3(F0, 1), x1 = E.col3(F1, 0), y1 = E.col3(F1, 1), x2 = E.col3(F2, 0), z2 = E.col3(F2, 2);
-        rings[0].set([0, 0, 0], y0, z, RAD[0], proj, P);     // 外环：竖着，平面里有竖轴和中环的轴
-        rings[1].set([0, 0, 0], x1, y1, RAD[1], proj, P);    // 中环：平面里有自己的轴（左右）和内环的轴（前后）
-        rings[2].set([0, 0, 0], x2, z2, RAD[2], proj, P);    // 内环：平面里有自己的轴（前后）和身子的上
-        seg(post, [0, 0, BASE], sc(z, -RAD[0]));
+        rings[0].set(y0, z, RAD[0]);     // 外环：竖着，平面里有竖轴和中环的轴
+        rings[1].set(x1, y1, RAD[1]);    // 中环：平面里有自己的轴（左右）和内环的轴（前后）
+        rings[2].set(x2, z2, RAD[2]);    // 内环：平面里有自己的轴（前后）和身子的上
         var fp = [];
-        for (var k = 0; k <= 32; k++) { var t = 2 * Math.PI * k / 32, q = P([0.42 * Math.cos(t), 0.42 * Math.sin(t), BASE]); fp.push((k ? 'L ' : 'M ') + q[0].toFixed(1) + ' ' + q[1].toFixed(1)); }
-        foot.setAttribute('d', fp.join(' ') + ' Z');
-        // 小轴：外环顶上一小截竖轴；中环 ↔ 外环（沿 y0）；内环 ↔ 中环（沿 x1）
-        axles[0].setAttribute('d', (function () { var a = P(sc(z, RAD[0])), b = P(sc(z, RAD[0] + 0.1)); return 'M ' + a.join(' ') + ' L ' + b.join(' '); })());
-        axles[1].setAttribute('d', [1, -1].map(function (s) { var a = P(sc(y0, s * RAD[1])), b = P(sc(y0, s * RAD[0])); return 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1); }).join(' '));
-        axles[2].setAttribute('d', [1, -1].map(function (s) { var a = P(sc(x1, s * RAD[2])), b = P(sc(x1, s * RAD[1])); return 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1); }).join(' '));
-        [[z, RAD[0]], [y0, RAD[1]], [x1, RAD[2]]].forEach(function (d, i) {
-          [1, -1].forEach(function (s, j) { var q = P(sc(d[0], s * d[1])); pins[2 * i + j].setAttribute('cx', q[0].toFixed(1)); pins[2 * i + j].setAttribute('cy', q[1].toFixed(1)); });
+        for (var k = 0; k <= 32; k++) { var t = 2 * Math.PI * k / 32; fp.push(P([0.42 * Math.cos(t), 0.42 * Math.sin(t), BASE])); }
+        foot.el.setAttribute('d', E.ptsPath(fp, true)); foot.d = -99;
+        post.set([0, 0, BASE], sc(z, -RAD[0]));
+        // 小轴与连接点：外环顶上一小截竖轴（另一头接立柱）；中环 ↔ 外环（沿 y0）；内环 ↔ 中环（沿 x1）
+        [[z, RAD[0], RAD[0] + 0.1, true], [y0, RAD[1], RAD[0]], [x1, RAD[2], RAD[1]]].forEach(function (d, i) {
+          [1, -1].forEach(function (sg, j) {
+            var a = sc(d[0], sg * d[1]), b = sc(d[0], sg * d[2]), ln = axles[i].lines[j], pin = axles[i].pins[j];
+            if (d[3] && sg < 0) ln.el.setAttribute('d', '');   // 外环底下那一截是立柱
+            else ln.el.setAttribute('d', 'M ' + f2(P(a)) + ' L ' + f2(P(b)));
+            ln.d = dep(lerp3(a, b, 0.5)) + 0.004;
+            var q = P(a); pin.el.setAttribute('cx', q[0].toFixed(1)); pin.el.setAttribute('cy', q[1].toFixed(1));
+            pin.d = dep(a) + 0.008;   // 连接点压在它那一段环上面
+          });
         });
-        seg(axes.z, [0, 0, -1.25], [0, 0, 1.3]);
-        seg(axes.y, sc(y0, -1.25), sc(y0, 1.25));
-        seg(axes.x, sc(x2, -1.25), sc(x2, 1.25));
+        axes.z.set([0, 0, -1.25], [0, 0, 1.3]);
+        axes.y.set(sc(y0, -1.25), sc(y0, 1.25));
+        axes.x.set(sc(x2, -1.25), sc(x2, 1.25));
         var o0 = P([0, 0, 0]);
-        [0, 1, 2].forEach(function (j) { var tp = P(sc(E.col3(F2, j), 0.52)); body[j].set(o0[0], o0[1], tp[0], tp[1]); });
-        hub.setAttribute('cx', o0[0].toFixed(1)); hub.setAttribute('cy', o0[1].toFixed(1));
+        [0, 1, 2].forEach(function (j) {
+          var v = E.col3(F2, j), tp = P(sc(v, 0.52));
+          body[j].set(o0[0], o0[1], tp[0], tp[1]);
+          bodyO.items[j].d = dep(sc(v, 0.26));
+        });
+        hub.el.setAttribute('cx', o0[0].toFixed(1)); hub.el.setAttribute('cy', o0[1].toFixed(1)); hub.d = 0.01;
         api.R = F2;
+        sortDom();
         return api;
       }
     };
