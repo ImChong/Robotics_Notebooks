@@ -2105,6 +2105,7 @@
 - [EgoWild2Dex（arXiv:2609.23755）](wiki/entities/paper-egowild2dex.md) — EgoWild2Dex**（*Learning Dexterous Robotic Manipulation from In-the-Wild Human Experience*，[arXiv:2 `📅unknown` `[entity_page]`
 - [EgoWM（Egocentric World Model from Internet Priors）](wiki/entities/paper-egowm-egocentric-world-model.md) — EgoWM**（*Walk through Paintings: Egocentric World Models from Internet Priors*，ECCV 2026，[arXiv:26 `📅unknown` `[entity_page]`
 - [EgoWorld（exo→ego 视图翻译）](wiki/entities/paper-egoworld.md) — EgoWorld**（*Translating Exocentric View to Egocentric View using Rich Exocentric Observations*，[ar `📅2026-07-24` `[entity_page]`
+- [EgoXperience：世界坐标系中的第一视角重建](wiki/entities/paper-egoxperience.md) — 以统一世界坐标系联合重建第一视角视频中的相机、场景、手和物体。 `📅unknown` `[entity_page]`
 - [EGR：面向鲁棒 VLA 的证据门控正则](wiki/entities/paper-egr.md) — EGR**（*Evidence-Gated Regularization*；*Sensing Which Modality Matters*，[arXiv:2609.03142](https:// `📅unknown` `[entity_page]`
 - [EigenDEXplore](wiki/entities/paper-eigendexplore.md) — EigenDEXplore**（*Structured Exploration for Dexterous Manipulation with Human Priors*，arXiv:2610.0 `📅unknown` `[entity_page]`
 - [ElastiQP（arXiv:2609.19080）](wiki/entities/paper-elastiqp.md) — ElastiQP**（*ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control*，[arXiv:2609.1908 `📅unknown` `[entity_page]`
@@ -2390,6 +2391,7 @@
 - [Stack of Tasks（HMI P003）](wiki/entities/paper-hmi-stack-of-tasks.md) — Stack of Tasks**（*A Versatile Generalized Inverted Kinematics Implementation for Collaborative Wor `📅unknown` `[entity_page]`
 - [高阶形态先验：Go1 执行器退化下的 Hodge 消息传递策略](wiki/entities/paper-hodge-morphology-priors-quadruped-degradation.md) — 论文：** *Higher-Order Morphology Priors for Quadruped Reinforcement Learning Under Actuator Degradat `📅unknown` `[entity_page]`
 - [HOI-Retarget（arXiv:2609.34674）](wiki/entities/paper-hoi-retarget.md) — HOI-Retarget**（*Contact-Centric Retargeting for Human-Object Interaction*，苏黎世联邦理工学院机器人系统实验室 ETH RS `📅unknown` `[entity_page]`
+- [Holi-World：从第一视角经验构建世界理解](wiki/entities/paper-holi-world.md) — 将第一视角记录转换为静态三维对象、动态轨迹与时空推理监督。 `📅unknown` `[entity_page]`
 - [双足整体 loco-manip（arXiv:2609.18930）](wiki/entities/paper-holistic-biped-loco-manip.md) — 双足整体 loco-manip**（*Learning Holistic Whole-Body Loco-Manipulation with a Bipedal Mobile Manipulato `📅unknown` `[entity_page]`
 - [Holo-M（arXiv:2609.35709）](wiki/entities/paper-holo-m.md) — Holo-M**（*Humanoid Loco-Manipulation With Discrete VLA Model*，地平线机器人，[arXiv:2609.35709](https://ar `📅unknown` `[entity_page]`
 - [HomeBody（探索、记忆与自主行动的人形系统）](wiki/entities/paper-homebody.md) — HomeBody**（*A Humanoid That Explores, Remembers, and Acts on Its Own*，[项目页](https://tml.stanford.e `📅unknown` `[entity_page]`
@@ -3992,6 +3994,7 @@
 - [RxR](wiki/entities/paper-rxr.md) — RxR**（Room-Across-Room: Multilingual VLN with Dense Spatiotemporal Grounding）在 [Light Origins · Li `📅unknown` `[entity_page]`
 - [RynnBrain 1.1：更强、更可泛化的具身基础模型](wiki/entities/paper-rynnbrain-1-1.md) — RynnBrain 1.1**（*Towards More Capable and Generalizable Embodied Foundation Model*，[arXiv:2607.179 `📅unknown` `[entity_page]`
 - [RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md) — RynnWorld-4D**（*RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation*，[arXiv:2607.06559 `📅unknown` `[entity_page]`
+- [S-Agent 2.0：通用编码智能体的空间推理](wiki/entities/paper-s-agent-2.md) — 为通用编码智能体接入三维感知命令行工具、持久场景记忆和可解释的空间读数。 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
 - [S2C](wiki/entities/paper-s2c-safety-filtered-rl.md) — Turning Safety into Competence: Minimally Exploitable Robot Policies via Safety-Filtered Reinforce `📅unknown` `[entity_page]`
 - [NPE](wiki/entities/paper-sa-1612-00341-npe-a-compositional-object-based-approach-to-lea.md) — NPE: A Compositional Object-Based Approach to Learning Physical Dynamics** 收录于 [Awesome World Mode `📅unknown` `[entity_page]`

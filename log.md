@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/papers/holi-world.md 等 — 收录 Ropedia 第一视角重建与空间推理，复用 W0 和 DONIC，记录开源状态
+
 ## [2026-10-27] ingest | sources/repos/unlimited-ocr-2.md — 收录百度长文档解析模型及推理入口
 
 - 官方仓库提供推理代码并链接权重；训练资料开放范围与权重许可待核实。
