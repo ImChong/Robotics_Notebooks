@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [streameval-ai.md](sites/streameval-ai.md) | StreamEval 官方项目页与公开排行榜（arXiv:2610.28402）
 - [x] [anthropic-formal-verification.md](sites/anthropic-formal-verification.md) | Anthropic × Theorem：Claude 辅助 OSS-Fuzz RISC-V 二进制级 Rocq 证明；记录公开范围与形式模型边界
 - [x] [robomind.md](sites/robomind.md) | RoboMIND 官方项目页、v1.x Hugging Face 与 v2.0 ModelScope 数据入口
 - [x] [locomanilab-project.md](sites/locomanilab-project.md) | LocoManiLab 全栈人形移动操作测试床（arXiv:2610.30876；代码/数据 Coming soon）
@@ -18,6 +19,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [streameval_arxiv_2610_28402.md](papers/streameval_arxiv_2610_28402.md) | StreamEval：交互式流式视频生成基准（arXiv:2610.28402）
 - [x] [robomind-v1-rss21.md](papers/robomind-v1-rss21.md) | RoboMIND 1.0：RSS 2025 / arXiv:2412.13877，多本体操作数据基准
 - [x] [robomind-v2-arxiv-2512-24653.md](papers/robomind-v2-arxiv-2512-24653.md) | RoboMIND 2.0：双臂移动操作、触觉与数字孪生数据集（arXiv:2512.24653）
 - [x] [locomanilab_arxiv_2610_30876.md](papers/locomanilab_arxiv_2610_30876.md) | LocoManiLab 人形移动操作数据、策略、控制器和部署统一测试床（arXiv:2610.30876）
@@ -179,6 +181,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [streameval.md](repos/streameval.md) | StreamEval 官方评测代码、协议、模型适配入口与基准运行工具（Apache-2.0）
 - [x] [awesome-supermimic.md](repos/awesome-supermimic.md) | DiaoOrg/awesome-supermimic：SuperMimic 社区实现、扩展、演示与数据资源索引（CC0-1.0）
 - [x] [roboparty_rp1.md](repos/roboparty_rp1.md) | RoboParty RP1（ROBOTO 01）官方代码仓库体系、复现入口与许可证边界
 - [x] [theorem-labs-oss-verify-proofs.md](repos/theorem-labs-oss-verify-proofs.md) | Theorem OSS Verify：OSS-Fuzz 入口证明、Rocq 检查与 RISC-V/Linux process semantics
