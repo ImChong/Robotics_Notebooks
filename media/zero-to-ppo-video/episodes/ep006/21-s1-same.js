@@ -73,16 +73,16 @@
       // 欧拉角：三个角（度数用正文字体），各带一个框
       var eulG = E.el('g', {}, cards[0].g);
       var eulBox = [0, 1, 2].map(function () { var b = K.paint(E.el('rect', { y: ROWS[0].y + 34, height: 40, rx: 8, 'stroke-width': 2.5 }, eulG), E.tint(E.HI, 18, 'var(--demo-surface)'), E.HI); E.op(b, 0); return b; });
-      var EX = [440, 506, 582];   // RPY：(横滚, 俯仰, 偏航)；三个数各自居中，逗号、括号单独排，框只套住数（框边离逗号、括号都留几 px）
-      [[412, '('], [474, ','], [540, ','], [622, ')']].forEach(function (d) { E.txt(eulG, d[0], ROWS[0].y + 64, d[1], 30, E.INK, 'middle', 700); });
+      var EX = [442, 506, 582];   // RPY：(横滚, 俯仰, 偏航)；三个数各自居中，逗号、括号单独排，框只套住数（框边离逗号、括号都留几 px）
+      [[410, '('], [474, ','], [540, ','], [626, ')']].forEach(function (d) { E.txt(eulG, d[0], ROWS[0].y + 64, d[1], 30, E.INK, 'middle', 700); });
       ['0°', '0°', '90°'].forEach(function (v, i) { E.txt(eulG, EX[i], ROWS[0].y + 64, v, 30, E.INK, 'middle', 700); });
-      eulBox.forEach(function (b, i) { var w = i < 2 ? 40 : 58; b.setAttribute('x', EX[i] - w / 2); b.setAttribute('width', w); });
+      eulBox.forEach(function (b, i) { var w = i < 2 ? 44 : 62; b.setAttribute('x', EX[i] - w / 2); b.setAttribute('width', w); });
       // 四元数：四个数
       var qNums = E.spans(cards[1].g, 524, ROWS[1].y + 62, ['(', '0.71', ', ', '0', ', ', '0', ', ', '0.71', ')'], 28, E.INK).filter(function (sp, k) { return k % 2; });
       var qAsk = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 66, '?', 40, E.INK2, 'middle', 900);
       var qLater = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 58, '第 4 幕再算', 20, E.INK2, 'middle', 700);
       // 旋转矩阵：往左转 90°
-      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, colors: [E.X, E.Y, E.Z] });
+      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, pad: 30, cw: 48, colors: [E.X, E.Y, E.Z] });   // 列框 48 宽，左右离中括号留出空
       // 括线：卡片左边一道竖线，三个小钩接到卡片，中间一支箭头指回 G1
       var brace = E.el('g', {}, s);
       K.paint(E.el('path', { d: 'M 296 ' + (ROWS[0].y + 50) + ' H 284 V ' + (ROWS[2].y + 75) + ' H 296 M 284 ' + (ROWS[1].y + 50) + ' H 296', fill: 'none', 'stroke-width': 3.5, 'stroke-linejoin': 'round' }, brace), null, E.HI);

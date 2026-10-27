@@ -48,7 +48,7 @@
 
       /* ══ 句 1–3：矩阵 + 小坐标架 + 右边的列表 ══ */
       var A = E.el('g', {}, s);
-      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, colors: [E.X, E.Y, E.Z] });
+      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, cw: 80, colors: [E.X, E.Y, E.Z] });   // 列框 80 宽，离中括号留出空
       var cap = E.txt(A, MX, 166, '侧歪 20°、前倾 25°、转身 45°', 19, E.INK2, 'middle', 700);
       var gzG = E.el('g', {}, A);
       var proj = E.view3(128, 24);
@@ -120,7 +120,7 @@
       var RB = 420;
       var r1 = E.el('g', {}, s);
       E.txt(r1, RB, 40, '45° 的矩阵，小数只留两位：', 22, E.INK, 'start', 900);
-      var m2 = E.grid(r1, 560, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 118, dy: 40, pad: 66, colors: [E.X, E.Y] });
+      var m2 = E.grid(r1, 570, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 144, dy: 40, pad: 78, cw: 138, colors: [E.X, E.Y] });   // 「−0.7071…」实排约 122 宽：高亮框 138 宽套得住，框边离中括号还有 9
       // 不用根号（KaTeX 的根号是一条很长、靠裁剪显示的 path）：先写长度的平方，再写长度，同 005 的 a² + a² = 1
       var lenL = E.txt(r1, RB, 190, '长度的平方：', 21, E.INK, 'start', 900);
       var lenT = E.tex(r1, RB + 128, 182, '0.71^2+0.71^2\\approx 1.008', 24, E.INK, 'start', { w: 250, h: 44 });

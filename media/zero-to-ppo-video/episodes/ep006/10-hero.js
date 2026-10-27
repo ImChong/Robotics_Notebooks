@@ -46,7 +46,8 @@
     E.txt(cards[0].g, 516, ROWS[0].y + 62, '(0°, 0°, 90°)', 30, E.INK, 'middle', 700);   // 度数用正文字体：KaTeX_Main 的 ° 排得像上标小圈
     E.txt(cards[1].g, 524, ROWS[1].y + 62, '(0.71, 0, 0, 0.71)', 28, E.INK, 'middle', 700).style.fontFamily = 'KaTeX_Main, serif';
     var rules = E.txt(cards[2].g, CX + 22, ROWS[2].y + 100, '2 条规矩', 20, E.INK2, 'start', 700);
-    var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 22, dx: 56, dy: 30, colors: [E.X, E.Y, E.Z] });
+    // 转身时第一列是 0.92 这类四个字符的数，左括号多留一点（pad），整块往左挪一点，右边离红绿牌还有空
+    var m3 = E.grid(cards[2].g, 540, ROWS[2].y + 76, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 22, dx: 56, dy: 30, pad: 30, colors: [E.X, E.Y, E.Z] });
 
     return {
       el: s,

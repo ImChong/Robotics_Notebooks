@@ -244,12 +244,12 @@
     o = o || {};
     var R = M.length, Cn = M[0].length, size = o.size || 28;
     var dx = o.dx || size * 2.4, dy = o.dy || size * 1.3;
-    var g = el('g', {}, parent), under = el('g', {}, g);
+    var g = el('g', { 'data-mgrid': '' }, parent), under = el('g', {}, g);   // data-mgrid / data-bracket：给版面检查认矩阵和中括号用
     var bh = (R - 1) * dy + size * 1.15, bx = (Cn - 1) * dx / 2 + (o.pad || size * 0.95), CW = o.cw || dx - 6;
     var brackets = [-1, 1].map(function (sd) {
       var xb = cx + sd * bx, lip = size * 0.28;
       return K.paint(el('path', { d: 'M ' + (xb - sd * lip) + ' ' + (cy - bh / 2) + ' H ' + xb + ' V ' + (cy + bh / 2) + ' H ' + (xb - sd * lip),
-        fill: 'none', 'stroke-width': Math.max(2, size / 14), 'stroke-linecap': 'square' }, g), null, o.bracket || E.INK);
+        fill: 'none', 'stroke-width': Math.max(2, size / 14), 'stroke-linecap': 'square', 'data-bracket': sd }, g), null, o.bracket || E.INK);
     });
     function pos(k) { var r = Math.floor(k / Cn), c = k % Cn; return [cx + (c - (Cn - 1) / 2) * dx, cy + (r - (R - 1) / 2) * dy]; }
     var colR = [], cellR = [], k;

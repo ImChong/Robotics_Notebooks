@@ -122,7 +122,7 @@
       E.txt(sameG, 628, 254, '朝向一模一样', 21, E.GOOD, 'start', 900);
       var dbl = E.tag(s, 594, 232, 196, 44, '双重覆盖', E.ERR, { size: 24, ink: E.ERR, weight: 900, rx: 12, sw: 3 });
       var dblSub = E.txt(s, 692, 304, 'q 和 −q：同一个朝向', 19, E.INK2, 'middle', 700);
-      var ep5b = E.tag(s, 586, 384, 210, 34, '第 5 集：沿着转动取中间值', E.VIOLET, { size: 17, ink: E.INK, weight: 900, rx: 9 });
+      var ep5b = E.tag(s, 586, 384, 210, 34, '第 5 集：沿着转动取中间值', E.VIOLET, { size: 16, ink: E.INK, weight: 900, rx: 9 });
       // 句 10：圆上的点，横坐标 = 余弦、纵坐标 = 正弦
       var trig = [['横坐标叫余弦', E.INK2, '\\cos', '0.92'], ['纵坐标叫正弦', E.ACC, '\\sin', '0.38']].map(function (r, k) {
         var g = E.el('g', {}, s);
