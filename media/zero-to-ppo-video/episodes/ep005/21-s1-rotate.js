@@ -1,15 +1,15 @@
 // 005 第 1 幕：旋转矩阵——转动只改朝向。左边一张坐标网格（灰色原网格 + 紫色变形网格，同 003 第 3 幕），右栏放矩阵与要点。
-// 句 1 回忆 003：「矩阵」右栏出单位矩阵，「列」两列依次框亮，「小箭头」往右一格（绿）、往上一格（琥珀）各鼓一下，「落到」两个箭头尖标出 (1, 0)、(0, 1)；
+// 句 1 回忆 003：「矩阵」右栏出单位矩阵，「列」两列依次框亮，「小箭头」往右一格（红）、往上一格（绿）各鼓一下，「落到」两个箭头尖标出 (1, 0)、(0, 1)；
 // 句 2「不转的时候」「两根小箭头」「留在原地」两根小箭头鼓一下、尖上的坐标亮一下，「一、零和零、一」矩阵里四个数按念到的顺序框一下；
 // 句 3 单位矩阵：「左上」「右下」两个 1 框亮黄，「别处都是零」两个 0 框灰，「单位矩阵」矩阵下写名字，「拿它乘谁」右栏写 I p = p、网格上一个点 p，
 //    「不变」p 原地亮一下、写「乘谁，谁都不变」；句 4 起淡出；
 // 句 4「转起来」紫色网格连同两根小箭头一起转（转一圈多，最后停在 36.87°），箭头尖走过的地方描出一个虚线圆，「半径」写出半径 1；
 // 句 5「这里」停住；「零点八」「零点六」往右那根的尖标出坐标、量出横 0.8 竖 0.6；「负零点六」「零点八」往上那根同样标出；
-// 句 6「竖着排成两列」右栏换成旋转矩阵：绿列先、琥珀列后，在矩阵里放大弹出，同时网格上对应的坐标鼓一下（不让数飞过网格，同 004 第 2 幕的改法）；
+// 句 6「竖着排成两列」右栏换成旋转矩阵：红列先、绿列后，在矩阵里放大弹出，同时网格上对应的坐标鼓一下（不让数飞过网格，同 004 第 2 幕的改法）；
 //    「矩阵」加紫框，「旋转矩阵」写出名字；
 // 句 7「格子」两根小箭头围成的小方块涂亮黄、原来的小方块画成虚线，「正方形」原点标直角；右栏「只改朝向 / 不改长短 / 不改角度」三行依次打勾，
 //    念到「长短」两根小箭头上写「1」，「角度」直角亮一下；
-// 句 8「三维」网格换成斜着看的三维小坐标架（x 绿、y 琥珀），「再加一根」长出 z（蓝），「三乘三」右栏换成 3×3 矩阵，
+// 句 8「三维」网格换成斜着看的三维小坐标架（x 红、y 绿），「再加一根」长出 z（蓝），「三乘三」右栏换成 3×3 矩阵，
 //    「三列」坐标架绕一根斜轴转起来，三列的数跟着实时变、各自框亮。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
 (function () {
@@ -59,17 +59,17 @@
       // 句 5：两根小箭头围成的小方块（亮黄）、原来的小方块（虚线）、直角、两根上的「1」
       var ghostSq = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, flat), null, E.INK2);
       var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, flat), E.tint(E.HI, 26, 'var(--demo-surface)'), E.HI);
-      var legs = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '5 5' }, flat), null, E.GOOD);
-      var legX = E.halo(E.txt(flat, 0, 0, '0.8', 20, E.GOOD, 'middle', 700)), legY = E.halo(E.txt(flat, 0, 0, '0.6', 20, E.GOOD, 'start', 700));
-      var e1 = E.vec(flat, E.GOOD, 5, { head: 16 }), e2 = E.vec(flat, E.WARN, 5, { head: 16 });
+      var legs = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '5 5' }, flat), null, E.X);
+      var legX = E.halo(E.txt(flat, 0, 0, '0.8', 20, E.X, 'middle', 700)), legY = E.halo(E.txt(flat, 0, 0, '0.6', 20, E.X, 'start', 700));
+      var e1 = E.vec(flat, E.X, 5, { head: 16 }), e2 = E.vec(flat, E.Y, 5, { head: 16 });
       var corner = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, flat), null, E.INK);
-      var ones = [E.GOOD, E.WARN].map(function (c) { return E.halo(E.txt(flat, 0, 0, '1', 22, c, 'middle', 900)); });
-      var tipDots = [E.GOOD, E.WARN].map(function (c) { return K.paint(E.el('circle', { r: 7 }, flat), c); });
-      var lab1 = E.halo(E.txt(flat, 0, 0, '', 22, E.GOOD, 'start', 900)), lab2 = E.halo(E.txt(flat, 0, 0, '', 22, E.WARN, 'end', 900));
+      var ones = [E.X, E.Y].map(function (c) { return E.halo(E.txt(flat, 0, 0, '1', 22, c, 'middle', 900)); });
+      var tipDots = [E.X, E.Y].map(function (c) { return K.paint(E.el('circle', { r: 7 }, flat), c); });
+      var lab1 = E.halo(E.txt(flat, 0, 0, '', 22, E.X, 'start', 900)), lab2 = E.halo(E.txt(flat, 0, 0, '', 22, E.Y, 'end', 900));
 
       /* ── 右栏：矩阵（句 1 是单位矩阵，句 4 起是旋转矩阵）、名字、句 5 三行 ── */
       var frame = K.paint(E.el('rect', { x: MX - 112, y: MY - 66, width: 224, height: 132, rx: 14, 'stroke-width': 3 }, flat), E.tint(E.VIOLET, 10, 'var(--demo-surface)'), E.VIOLET);
-      var m = E.mat(flat, MX, MY, [1, 0, 0, 1], { size: 34, dx: 90, dy: 50, pad: 50, cw: 80, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var m = E.mat(flat, MX, MY, [1, 0, 0, 1], { size: 34, dx: 90, dy: 50, pad: 50, cw: 80, colors: [E.X, E.Y, E.X, E.Y] });
       var name = E.txt(flat, MX, MY + 104, '旋转矩阵', 26, E.VIOLET, 'middle', 900);
       // 单位矩阵：名字、I p = p、网格上不动的点 p
       var unitLab = E.txt(flat, MX, MY + 104, '单位矩阵 I', 26, E.HI, 'middle', 900);
@@ -88,7 +88,7 @@
       var solid = E.el('g', {}, s);
       var proj = E.view3(128, 24);
       var gz = E.gizmo(solid, 210, 250, 120, proj);
-      var m3 = E.mat3(solid, MX, 190, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 26, dx: 84, dy: 40, colors: [E.GOOD, E.WARN, E.ACC] });
+      var m3 = E.mat3(solid, MX, 190, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 26, dx: 84, dy: 40, colors: [E.X, E.Y, E.Z] });
       var m3lab = E.txt(solid, MX, 300, '3×3 旋转矩阵', 26, E.VIOLET, 'middle', 900);
 
       function sqPath(a, b) {   // 两根小箭头 a、b（数学坐标）围成的平行四边形
@@ -112,7 +112,7 @@
           e1.set(o[0], o[1], q1[0], q1[1]); e2.set(o[0], o[1], q2[0], q2[1]);
           var b1 = Math.max(bump(st, T.arrows[0], 0.6), bump(st, T.e1, 0.6), bump(st, T.both, 0.6)), b2 = Math.max(bump(st, T.arrows[1], 0.6), bump(st, T.e2, 0.6), bump(st, T.both, 0.6));
           e1.line.style.strokeWidth = 5 + 3 * b1; e2.line.style.strokeWidth = 5 + 3 * b2;
-          E.glow(e1.g, E.GOOD, b1 > 0.05); E.glow(e2.g, E.WARN, b2 > 0.05);
+          E.glow(e1.g, E.X, b1 > 0.05); E.glow(e2.g, E.Y, b2 > 0.05);
 
           // 句 2：箭头尖走过的地方描出虚线圆（转满一圈后整圈都在）；「尖」两个尖上的圆点；「半径」半径线
           var sweep = Math.min(th, 2 * Math.PI - 1e-4);
@@ -157,8 +157,8 @@
             var pc = rot ? f(st, T.pop[k % 2], 0.4) : 1, q = m.pos(k);
             E.op(c, pc); E.scaleAt(c, q[0], q[1], 1 + 0.6 * (1 - pc));
           });
-          m.colBox(0, E.GOOD, rot ? f(st, T.pop[0], 0.3) : f(st, T.col[0], 0.3) * (1 - f(st, T.still, 0.3)));
-          m.colBox(1, E.WARN, rot ? f(st, T.pop[1], 0.3) : f(st, T.col[1], 0.3) * (1 - f(st, T.still, 0.3)));
+          m.colBox(0, E.X, rot ? f(st, T.pop[0], 0.3) : f(st, T.col[0], 0.3) * (1 - f(st, T.still, 0.3)));
+          m.colBox(1, E.Y, rot ? f(st, T.pop[1], 0.3) : f(st, T.col[1], 0.3) * (1 - f(st, T.still, 0.3)));
           // 单位矩阵：念到的数各框一下；「左上」「右下」两个 1 留着亮黄框，「别处」两个 0 留着灰框（矩阵里 [左上, 右上, 左下, 右下]）
           var uOut = 1 - f(st, T.out1, 0.4);
           [[0, T.nums[0], T.tl, E.HI], [1, T.nums[2], T.zero, E.MUT], [2, T.nums[1], T.zero, E.MUT], [3, T.nums[3], T.br, E.HI]].forEach(function (d) {
@@ -204,7 +204,7 @@
           E.op(gz.box, 0.7 * f(st, T.z + 0.3, 0.5));
           m3.set(R3);
           E.pop(m3.g, MX, 190, f(st, T.m3, 0.35), 0.85);
-          [E.GOOD, E.WARN, E.ACC].forEach(function (c, j) { m3.colBox(j, c, f(st, T.cols3 + 0.2 * j, 0.3)); });
+          [E.X, E.Y, E.Z].forEach(function (c, j) { m3.colBox(j, c, f(st, T.cols3 + 0.2 * j, 0.3)); });
           E.op(m3lab, f(st, T.m3 + 0.2, 0.35));
         }
       };
