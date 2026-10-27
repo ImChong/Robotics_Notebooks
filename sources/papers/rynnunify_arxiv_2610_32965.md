@@ -25,4 +25,4 @@ RynnUnify 结合具身理解与交错视频—语言推理，覆盖空间推理�
 - 具身基础模型（Embodied Foundation Models）
 - 世界—动作模型（WAM）
 - 视觉规划与具身推理
-- [论文实体](../../wiki/entities/rynnunify.md)
+- 具身基础模型与世界—动作模型实体（待后续从原始来源提炼）
