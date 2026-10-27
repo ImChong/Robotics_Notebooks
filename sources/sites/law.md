@@ -6,6 +6,7 @@
 - **论文：** <https://arxiv.org/abs/2610.23334>（2026-10-16）
 - **代码：** <https://github.com/hey-cjj/LAW>（项目论文及官方 README 链接）
 - **模型：** LAW-FastWAM、LAW-VLM-FastWAM、LAW-OpenWAM、LAW-VLM-OpenWAM（Hugging Face 链接见[官方 README](https://github.com/hey-cjj/LAW#2-models-and-data)）
+- **模型与数据集合：** <https://huggingface.co/collections/KAITANG2003/law>（用户提供；2026-10-27 自动访问未能核验，具体资源以官方 README 为准）
 - **训练数据：** LAW-RoboTwin-WAM-Training、LAW-RoboTwin-VLM-Training（公开于 Hugging Face，见官方 README）
 - **核查日期：** 2026-10-20
 - **一句话说明：** 论文、项目页和官方仓库围绕同一 LAW 闭环 VLM–WAM 系统；以语义子任务进度连接长时程规划、动作选择与完成检测。
