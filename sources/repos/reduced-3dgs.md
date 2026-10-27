@@ -1,8 +1,9 @@
-# graphdeco-inria/reduced-3dgs
+# Reduced 3DGS 官方代码
 
-- **仓库：** <https://github.com/graphdeco-inria/reduced-3dgs>
-- **项目页：** <https://repo-sam.inria.fr/fungraph/reduced_3dgs/>；[项目页归档](../sites/reduced-3dgs.md)
-- **论文：** [I3D 2024 论文归档](../papers/reduced_3dgs_i3d_2024.md)
+- **代码：** <https://github.com/graphdeco-inria/reduced-3dgs>
+- **项目页：** <https://repo-sam.inria.fr/fungraph/reduced_3dgs/>
+- **论文：** [I3D 2024 论文归档](../papers/reduced_3dgs.md)
+- **状态：** 代码、训练配置与评估脚本公开；README 的数据集链接标为 TODO。
 - **入库日期：** 2026-10-27
 
-作者公开训练与评估实现，包括 `train.py`、`compress.py`、`render.py`、`metrics.py` 和 `full_eval.py`；仓库含子模块，README 要求递归克隆。README 的数据集链接标为 TODO。修改后的 PLY 格式与原版不兼容，可使用 `update_old_ply_format.py` 转换旧格式；实际使用条件以仓库许可证为准。
+仓库要求递归克隆子模块；入口包括 `train.py`、`compress.py`、`render.py` 和 `metrics.py`。其 PLY 格式与原始 3DGS 不兼容，仓库提供 `update_old_ply_format.py` 转换旧格式。环境与许可证以仓库为准。

@@ -3,8 +3,8 @@
 // 句 2「勾股定理」往右那根下面画出直角三角形（横边 0.8 沿 x 轴、竖边 0.6 虚线），右栏矩阵「第一列」框亮，
 //    「零点八的平方」「加零点六的平方」「零点六四」「零点三六」「正好是一」算式一段段写出来，最后打勾；
 // 句 3「第二列」往上那根同样画三角形、写一行算式打勾；「夹角」两根之间画角弧，「九十度」写 90°；
-// 句 4 网格从旋转变成 003 的「横着拉长」，矩阵换成 [[2, 0], [0, 1]]，「不合格」红叉，「第一列」框亮，「长度是二」往右那根写红色「2」，伸出单位圆；
-// 句 5 再变成「斜着推一下」[[1, 1], [0, 1]]，红叉，「垂直」两根之间画 45° 的红角弧；
+// 句 4 网格从旋转变成 003 的「横着拉长」，矩阵换成 [[2, 0], [0, 1]]，「不合格」橙叉，「第一列」框亮，「长度是二」往右那根写橙色「2」，伸出单位圆；
+// 句 5 再变成「斜着推一下」[[1, 1], [0, 1]]，橙叉，「垂直」两根之间画 45° 的橙色角弧；
 // 句 6 变回旋转矩阵，「正交」规矩牌下出大字「正交」，「书上常写成」一行，「R 的转置乘 R」「等于」式子一段段写出，「单位矩阵」式子右边画出第 1 幕讲过的单位矩阵，
 //    「同一件事」规矩牌和式子一起亮一下。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
@@ -53,7 +53,7 @@
       var unit = K.paint(E.el('circle', { cx: OX, cy: OY, r: U, fill: 'none', 'stroke-width': 2, 'stroke-dasharray': '6 6' }, s), null, E.HI);
       unit.style.strokeOpacity = 0.55;
       // 直角三角形：t[0] 往右那根、t[1] 往上那根（横边沿 x 轴、竖边虚线、淡色填充）
-      var tris = [E.GOOD, E.WARN].map(function (c) {
+      var tris = [E.X, E.Y].map(function (c) {
         var g = E.el('g', {}, s);
         var fill = K.paint(E.el('path', {}, g), E.tint(c, 18, 'var(--demo-surface)'));
         var base = K.paint(E.el('path', { 'stroke-width': 6, 'stroke-linecap': 'round' }, g), null, c);
@@ -64,20 +64,20 @@
       });
       var arc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, s), null, E.HI);
       var arcLab = E.halo(E.txt(s, 0, 0, '', 22, E.HI, 'middle', 900));
-      var e1 = E.vec(s, E.GOOD, 5, { head: 16 }), e2 = E.vec(s, E.WARN, 5, { head: 16 });
+      var e1 = E.vec(s, E.X, 5, { head: 16 }), e2 = E.vec(s, E.Y, 5, { head: 16 });
       var corner = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, s), null, E.INK);
-      var ones = [E.GOOD, E.WARN].map(function (c) { return E.halo(E.txt(s, 0, 0, '1', 22, c, 'middle', 900)); });
-      var two = E.halo(E.txt(s, 0, 0, '长度 2', 22, E.BAD, 'middle', 900));
+      var ones = [E.X, E.Y].map(function (c) { return E.halo(E.txt(s, 0, 0, '1', 22, c, 'middle', 900)); });
+      var two = E.halo(E.txt(s, 0, 0, '长度 2', 22, E.ERR, 'middle', 900));
 
       /* ══ 右栏 ══ */
       var rule = E.tag(s, 452, 12, 340, 44, '规矩一：每列长度 1、互相垂直', E.GOOD, { size: 20, ink: E.INK, weight: 900, rx: 12, sw: 2.5 });
-      var m = E.mat(s, MX, MY, Rm, { size: 30, dx: 84, dy: 44, pad: 46, cw: 72, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var m = E.mat(s, MX, MY, Rm, { size: 30, dx: 84, dy: 44, pad: 46, cw: 72, colors: [E.X, E.Y, E.X, E.Y] });
       var mLab = E.txt(s, MX, 200, '', 22, E.INK2, 'middle', 900);
-      var badX = E.cross(s, MX + 96, 193, 10, E.BAD, 4.5);
+      var badX = E.cross(s, MX + 96, 193, 10, E.ERR, 4.5);
       function eqLine(y) { return E.tex(s, EX, y, '', 28, E.INK, 'start', { w: 320, h: 46 }); }
       var eqA = eqLine(250), eqB = eqLine(296), eqC = eqLine(352);
       var okB = E.check(s, 0, 0, 22, E.GOOD, 4), okC = E.check(s, 0, 0, 22, E.GOOD, 4);
-      var rowsBad = [E.txt(s, EX, 262, '', 24, E.INK, 'start', 700), E.txt(s, EX, 306, '', 24, E.BAD, 'start', 900)];
+      var rowsBad = [E.txt(s, EX, 262, '', 24, E.INK, 'start', 700), E.txt(s, EX, 306, '', 24, E.ERR, 'start', 900)];
       var big = E.tag(s, MX - 70, 222, 140, 50, '正交', E.GOOD, { size: 30, ink: E.GOOD, weight: 900, rx: 14, sw: 3 });
       var book = E.txt(s, EX, 312, '书上常写成：', 22, E.INK2, 'start', 700);
       var form = E.tex(s, EX + 4, 362, '', 34, E.INK, 'start', { w: 190, h: 56 });
@@ -99,7 +99,7 @@
           e1.set(o[0], o[1], q1[0], q1[1]); e2.set(o[0], o[1], q2[0], q2[1]);
           var bl = bump(st, T.len, 0.7);
           e1.line.style.strokeWidth = e2.line.style.strokeWidth = 5 + 3 * bl;
-          E.glow(e1.g, E.GOOD, bl > 0.05); E.glow(e2.g, E.WARN, bl > 0.05);
+          E.glow(e1.g, E.X, bl > 0.05); E.glow(e2.g, E.Y, bl > 0.05);
 
           /* 句 1：「1」与直角（只在是旋转矩阵时显示：拉长 / 斜推前淡出，变回旋转后再出来） */
           var isRot = 1 - f(st, T.toS[0] - 0.4, 0.3) + f(st, T.toR[0] + T.toR[1], 0.3);
@@ -130,17 +130,17 @@
             E.scaleAt(tr.lx, +tr.lx.getAttribute('x'), OY + 18, 1 + 0.25 * pb);
             E.scaleAt(tr.ly, +tr.ly.getAttribute('x'), +tr.ly.getAttribute('y') - 7, 1 + 0.25 * pc);
           });
-          // 夹角：句 3 是 90°（亮黄），句 5 是 45°（红）
+          // 夹角：句 3 是 90°（亮黄），句 5 是 45°（橙）
           var A1 = Math.atan2(a[1], a[0]), A2 = Math.atan2(b[1], b[0]), shear = st >= T.toH[0];
           arc.setAttribute('d', arcPath(A1, A2, shear ? 0.42 : 0.36));
-          K.paint(arc, null, shear ? E.BAD : E.HI);
+          K.paint(arc, null, shear ? E.ERR : E.HI);
           var am = (A1 + A2) / 2, ap = P(0.72 * Math.cos(am), 0.72 * Math.sin(am));
           arcLab.textContent = shear ? '45°' : '90°';
-          arcLab.style.fill = shear ? E.BAD : E.HI;
+          arcLab.style.fill = shear ? E.ERR : E.HI;
           arcLab.setAttribute('x', ap[0].toFixed(1)); arcLab.setAttribute('y', (ap[1] + 8).toFixed(1));
           var arcOn = shear ? f(st, T.arc2, 0.35) * (1 - f(st, T.toR[0], 0.3)) : f(st, T.arc, 0.35) * (1 - f(st, T.toS[0] - 0.4, 0.3));
           E.op(arc, arcOn); E.op(arcLab, shear ? f(st, T.arc2 + 0.2, 0.3) * (1 - f(st, T.toR[0], 0.3)) : f(st, T.deg, 0.3) * (1 - f(st, T.toS[0] - 0.4, 0.3)));
-          // 句 4：拉长后往右那根写红色「长度 2」
+          // 句 4：拉长后往右那根写橙色「长度 2」
           var tw = P(1.6, 0.22); two.setAttribute('x', tw[0].toFixed(1)); two.setAttribute('y', tw[1].toFixed(1));   // 单位圆外面
           E.op(two, f(st, T.two, 0.3) * (1 - f(st, T.toH[0], 0.3)));
 
@@ -153,8 +153,8 @@
           m.set(shown);
           E.op(m.g, f(st, 0.2, 0.4));
           var colOn = st < T.toS[0] ? [f(st, T.col1, 0.3), f(st, T.col2, 0.3)] : st < T.toH[0] ? [f(st, T.c1, 0.3), 0] : [0, 0];
-          m.colBox(0, E.GOOD, colOn[0] * (st < T.toS[0] ? 1 - f(st, T.toS[0] - 0.4, 0.3) : 1));
-          m.colBox(1, E.WARN, colOn[1] * (1 - f(st, T.toS[0] - 0.4, 0.3)));
+          m.colBox(0, E.X, colOn[0] * (st < T.toS[0] ? 1 - f(st, T.toS[0] - 0.4, 0.3) : 1));
+          m.colBox(1, E.Y, colOn[1] * (1 - f(st, T.toS[0] - 0.4, 0.3)));
           mLab.textContent = st < T.toH[0] ? '横着拉长' : '斜着推一下';
           var labOn = st < T.toH[0] ? f(st, T.toS[0], 0.4) : st < T.toR[0] ? f(st, T.toH[0], 0.4) : 0;
           E.op(mLab, labOn * (1 - f(st, T.toR[0], 0.3)));
@@ -163,17 +163,17 @@
 
           // 句 2、3 的算式
           var eqOut = 1 - f(st, T.toS[0] - 0.5, 0.4);
-          var A = '\\textcolor{' + H.good + '}{0.8}^2';
+          var A = '\\textcolor{' + E.HEX.x + '}{0.8}^2';
           if (st >= T.eq[1]) A += '+';
-          if (st >= T.eq[2]) A += '\\textcolor{' + H.good + '}{0.6}^2';
+          if (st >= T.eq[2]) A += '\\textcolor{' + E.HEX.x + '}{0.6}^2';
           eqA.setTex(A);
           E.op(eqA, f(st, T.eq[0], 0.3) * eqOut);
           var B = '=0.64';
           if (st >= T.eq[4]) B += '+0.36';
-          if (st >= T.eq[5]) B += '=\\textcolor{' + H.good + '}{1}';
+          if (st >= T.eq[5]) B += '=\\textcolor{' + E.HEX.x + '}{1}';
           eqB.setTex(B);
           E.op(eqB, f(st, T.eq[3], 0.3) * eqOut);
-          eqC.setTex('(\\textcolor{' + H.warn + '}{-0.6})^2+\\textcolor{' + H.warn + '}{0.8}^2=\\textcolor{' + H.warn + '}{1}');
+          eqC.setTex('(\\textcolor{' + E.HEX.y + '}{-0.6})^2+\\textcolor{' + E.HEX.y + '}{0.8}^2=\\textcolor{' + E.HEX.y + '}{1}');
           E.op(eqC, f(st, T.eq2, 0.35) * eqOut);
           okB.setAttribute('transform', 'translate(' + (EX + 236) + ' 278)'); E.drawOn(okB, f(st, T.ok1, 0.4) * eqOut);
           okC.setAttribute('transform', 'translate(' + (EX + 270) + ' 334)'); E.drawOn(okC, f(st, T.eq2 + 0.9, 0.4) * eqOut);

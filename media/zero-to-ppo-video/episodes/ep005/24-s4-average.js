@@ -1,15 +1,15 @@
 // 005 第 4 幕：直接平均——跳出了旋转矩阵（路线 §L0 自测题 1）。左边一张从上往下看的地面网格：x 是机器人原来的「前」、y 是「左」；右栏放算式、G1 与示意图。
-// 句 1「机器人」右栏出 G1，「朝前」网格上两根小箭头标「0°：朝前」，「转到朝左」G1 原地往左转 90°，网格上同时转出一组虚线小箭头标「90°：朝左」，
-//    「中间那一刻」两组之间画 0°→90° 的弧，45° 处一个问号；
+// 句 1「机器人」右栏出 G1，「朝前」网格上两根小箭头标「0°：朝前」，「转到朝左」G1 原地往左转 90°，网格上同时有一组虚线小箭头从 0° 跟着转过去、
+//    描出 0°→90° 的弧，转到了标「90°：朝左」；「中间那一刻」弧鼓一下，45° 处一个问号；
 // 句 2 G1 退场，右栏「两个矩阵」出 0° 和 90° 的矩阵，「对应位置」四对数依次一起框亮，「除以二」出「÷ 2 =」，结果矩阵四个数按念到的顺序写出来；
-// 句 3「画出来」网格从原样变成平均出来的矩阵：两根小箭头转到 45°（虚线标 45°），「长度」「零点七一」两根上写红色 0.71，「格子」两根小箭头围成的小方块（红）和原来的小方块（虚线）比，「缩小」鼓一下；
+// 句 3「画出来」网格从原样变成平均出来的矩阵：两根小箭头转到 45°（虚线标 45°），「长度」「零点七一」两根上写橙色 0.71，「格子」两根小箭头围成的小方块（红）和原来的小方块（虚线）比，「缩小」鼓一下；
 // 句 4 右栏算式收起、结果矩阵挪到顶上，「第一条破了」「航列式」「零点二五」「零点五」「第二条也破了」三行依次写出，方块里写「面积 0.5」；
-// 句 5「不是旋转」右栏顶上红牌，「身子」右栏出 G1（按 45° 摆，后面垫一台正常的淡影子），「摆」G1 横向压成 0.71 倍，「压瘦」写「压瘦了一圈」；
-// 句 6 网格回到原样，「朝前」「朝后」网格上标 0° 与 180°（虚线小箭头），右栏出 0° 和 180° 的两个矩阵，「一平均」结果全是 0，
+// 句 5「不是旋转」右栏顶上橙牌，「身子」右栏出 G1（按 45° 摆，后面垫一台正常的淡影子），「摆」G1 横向压成 0.71 倍，「压瘦」写「压瘦了一圈」；
+// 句 6 网格回到原样，「朝前」标 0°，「朝后」虚线小箭头从 0° 转过 180°、描出半圈弧，转到了标「180°：朝后」；右栏出 0° 和 180° 的两个矩阵，「一平均」结果全是 0，
 //    「所有的点」网格交点上亮起一片点，「缩到了原点」网格、点和小箭头一起缩成原点一个点；
-// 句 7 网格回来，「箭头尖」往右那根沿单位圆从 0° 转到 90°，「圆上」圆亮一下；「直接平均」画红色虚线弦，「直线」一个红点沿弦走过去，
-//    「离开了圆」弦和圆弧之间的月牙涂红；「三维」右栏出示意图：一个弯曲的球面（特殊正交群），两个朝向之间的蓝色弧沿着面走、红色虚线弦穿进里面，「跳出」红叉；
-// 句 8「相加」网格变成两个矩阵直接相加的结果（两根小箭头长 1.41，红），右栏「R₁ + R₂」一行打叉；「接着做」网格回到原样，往右那根先转 45°、再转 45°，
+// 句 7 网格回来，「箭头尖」往右那根沿单位圆从 0° 转到 90°，「圆上」圆亮一下；「直接平均」画橙色虚线弦，「直线」一个橙点沿弦走过去，
+//    「离开了圆」弦和圆弧之间的月牙涂橙；「三维」右栏出示意图：一个弯曲的球面（特殊正交群），两个朝向之间的蓝色弧沿着面走、橙色虚线弦穿进里面，「跳出」橙叉；
+// 句 8「相加」网格变成两个矩阵直接相加的结果（两根小箭头长 1.41），右栏「R₁ + R₂」一行打叉；「接着做」网格回到原样，往右那根先转 45°、再转 45°，
 //    右栏「R₂ R₁」一行打勾，「第三集」出「第 3 集：矩阵相乘 = 接着做」。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
 (function () {
@@ -19,12 +19,13 @@
   var MX = 622;
   var I = [1, 0, 0, 1], R90 = [0, -1, 1, 0], R180 = [-1, 0, 0, -1], AVG = [0.5, -0.5, 0.5, 0.5], Z = [0, 0, 0, 0], SUM = [1, -1, 1, 1];
   var T = {
-    robot: 2.62, front: 3.26, turn: [3.87, 0.8], left: 4.46, mid: 7.24, ask: 8.38,
+    // turn：G1 和虚线小箭头一起转 90°，转到了才标「90°：朝左」；f180：「朝后」起虚线小箭头转 180°，「一百八十度」转到
+    robot: 2.62, front: 3.26, turn: [3.87, 1.2], mid: 7.24, ask: 8.38,
     out1: 10.75, mats: 11.89, pairs: 12.51, div: 13.8, res: [14.85, 16.76, 15.61, 17.54],   // res 按矩阵里 [左上, 右上, 左下, 右下] 的顺序
     draw: [19.4, 1.6], half: 21.73, len: 22.76, l71: 23.99, grid: 24.9, shrink: 25.7,
     up: [27.0, 0.6], b1: 28.53, det: [29.56, 30.17, 30.96, 32.17], b2: 32.93,
     notRot: 35.49, body: 36.73, squash: [38.26, 1.0], thin: 39.59,
-    back: [41.5, 0.7], f0: 44.01, f180: 44.53, mats2: 45.44, avg2: 46.75, zeros: [47.39, 47.6, 47.99, 48.46], dots: 48.87, collapse: [49.61, 0.9],
+    back: [41.5, 0.7], f0: 44.01, f180: [44.43, 1.4], mats2: 45.44, avg2: 46.75, zeros: [47.39, 47.6, 47.99, 48.46], dots: 48.87, collapse: [49.61, 0.9],
     restore: [51.8, 0.7], sweep: [53.53, 1.0], onCircle: 54.55, chord: 55.13, walk: [56.16, 1.2], leave: 57.81, so3: 59.8, jump: 61.88,
     add: 65.48, toSum: [66.6, 0.8], addX: 68.52, toI: [69.9, 0.5], steps: [70.68, 71.4], mul: 72.1, ep3: 72.78
   };
@@ -66,25 +67,25 @@
       E.halo(E.txt(s, OX + 12, box[1] - 4, 'y 左', 22, E.INK2, 'start', 700));
       E.op(pl.warp.g, 0.6);
       var unit = K.paint(E.el('circle', { cx: OX, cy: OY, r: U, fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
-      var lens = K.paint(E.el('path', {}, s), E.tint(E.BAD, 40, 'var(--demo-surface)'));
-      var chord = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, s), null, E.BAD);
-      var walker = K.paint(E.el('circle', { r: 8 }, s), E.BAD);
-      var sweepArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4 }, s), null, E.GOOD);
+      var lens = K.paint(E.el('path', {}, s), E.tint(E.ERR, 40, 'var(--demo-surface)'));
+      var chord = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, s), null, E.ERR);
+      var walker = K.paint(E.el('circle', { r: 8 }, s), E.ERR);
+      var sweepArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4 }, s), null, E.Z);   // 箭头尖沿圆转：绕 z 轴的转动，蓝
       var ghostSq = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, s), null, E.INK2);
-      var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, s), E.tint(E.BAD, 30, 'var(--demo-surface)'), E.BAD);
-      var area = E.halo(E.txt(s, 0, 0, '面积 0.5', 20, E.BAD, 'middle', 900));
+      var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, s), E.tint(E.ERR, 30, 'var(--demo-surface)'), E.ERR);
+      var area = E.halo(E.txt(s, 0, 0, '面积 0.5', 20, E.ERR, 'middle', 900));
       // 0° / 90° / 180° 的虚线小箭头与标签、中间的弧和问号、45° 虚线
-      var ghostA = [E.vec(s, E.GOOD, 3.5, { head: 13, dash: '6 5' }), E.vec(s, E.WARN, 3.5, { head: 13, dash: '6 5' })];
-      var midArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '4 5' }, s), null, E.HI);
+      var ghostA = [E.vec(s, E.X, 3.5, { head: 13, dash: '6 5' }), E.vec(s, E.Y, 3.5, { head: 13, dash: '6 5' })];
+      var midArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '4 5' }, s), null, E.Z);   // 0° → 90° 的转动：蓝
       var ask = E.halo(E.txt(s, 0, 0, '?', 40, E.HI, 'middle', 900));
       var ray45 = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
       var lab45 = E.halo(E.txt(s, 0, 0, '45°', 22, E.HI, 'middle', 900));
-      var labs = [E.halo(E.txt(s, 0, 0, '0°：朝前', 21, E.GOOD, 'start', 900)), E.halo(E.txt(s, 0, 0, '', 21, E.GOOD, 'middle', 900))];
+      var labs = [E.halo(E.txt(s, 0, 0, '0°：朝前', 21, E.X, 'start', 900)), E.halo(E.txt(s, 0, 0, '', 21, E.X, 'middle', 900))];
       var dots = [];
       for (var x = -2; x <= 2; x++) for (var y = -2; y <= 2; y++) dots.push({ p: [x, y], el: K.paint(E.el('circle', { r: 4.5 }, s), E.INK) });
-      var e1 = E.vec(s, E.GOOD, 5, { head: 16 }), e2 = E.vec(s, E.WARN, 5, { head: 16 });
-      var lens71 = [E.BAD, E.BAD].map(function () { return E.halo(E.txt(s, 0, 0, '0.71', 21, E.BAD, 'middle', 900)); });
-      var dot0 = K.paint(E.el('circle', { cx: OX, cy: OY, r: 7 }, s), E.BAD);
+      var e1 = E.vec(s, E.X, 5, { head: 16 }), e2 = E.vec(s, E.Y, 5, { head: 16 });
+      var lens71 = [E.ERR, E.ERR].map(function () { return E.halo(E.txt(s, 0, 0, '0.71', 21, E.ERR, 'middle', 900)); });
+      var dot0 = K.paint(E.el('circle', { cx: OX, cy: OY, r: 7 }, s), E.ERR);
 
       /* ══ 右栏 ══ */
       // G1（句 1 转身；句 5 按平均出来的矩阵摆：后面垫一台正常的淡影子）
@@ -92,23 +93,23 @@
       var shadow = E.g1(gRobot, MX, 378, 238, { az: 135, el: 20 });
       var g1 = E.g1(gRobot, MX, 378, 238, { az: 135, el: 20 });
       var fr = E.frame3(gRobot, 4.5);
-      var thin = E.halo(E.txt(gRobot, MX, 414, '压瘦了一圈', 24, E.BAD, 'middle', 900));
+      var thin = E.halo(E.txt(gRobot, MX, 414, '压瘦了一圈', 24, E.ERR, 'middle', 900));
       var turnLab = E.halo(E.txt(gRobot, MX, 414, '', 22, E.INK, 'middle', 900));
       // 两个矩阵相加、除以二
       var rowA = E.el('g', {}, s);
-      var mA = E.mat(rowA, 530, 80, I, { size: 26, dx: 52, dy: 38, pad: 34, cw: 44, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
-      var mB = E.mat(rowA, 706, 80, R90, { size: 26, dx: 52, dy: 38, pad: 34, cw: 44, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var mA = E.mat(rowA, 530, 80, I, { size: 26, dx: 52, dy: 38, pad: 34, cw: 44, colors: [E.X, E.Y, E.X, E.Y] });
+      var mB = E.mat(rowA, 706, 80, R90, { size: 26, dx: 52, dy: 38, pad: 34, cw: 44, colors: [E.X, E.Y, E.X, E.Y] });
       E.txt(rowA, 618, 92, '+', 36, E.INK, 'middle', 700);
       E.txt(rowA, 530, 146, '0°：朝前', 20, E.INK2, 'middle', 700);
       var labB = E.txt(rowA, 706, 146, '90°：朝左', 20, E.INK2, 'middle', 700);
       var rowB = E.el('g', {}, s), rowBin = E.el('g', {}, rowB);
       E.txt(rowBin, 476, 260, '÷ 2 =', 30, E.INK, 'start', 700);
-      var mR = E.mat(rowBin, 668, 250, AVG, { size: 28, dx: 82, dy: 42, pad: 44, cw: 72, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var mR = E.mat(rowBin, 668, 250, AVG, { size: 28, dx: 82, dy: 42, pad: 44, cw: 72, colors: [E.X, E.Y, E.X, E.Y] });
       // 句 4 三行
       var badRows = E.el('g', {}, s);
       function badRow(y, txt1, color) {
         var g = E.el('g', {}, badRows);
-        var x = E.cross(g, 480, y - 8, 9, E.BAD, 4);
+        var x = E.cross(g, 480, y - 8, 9, E.ERR, 4);
         var t = E.txt(g, 500, y, txt1, 22, color || E.INK, 'start', 900);
         return { g: g, x: x, t: t };
       }
@@ -116,29 +117,29 @@
       var detLab = E.txt(badRows, 476, 252, '行列式 =', 22, E.INK, 'start', 900);
       var detEq = E.tex(badRows, 572, 246, '', 26, E.INK, 'start', { w: 230, h: 44 });
       var bad2 = badRow(304, '规矩二：行列式 0.5，不是 1');
-      var notRot = E.tag(s, 512, 14, 220, 44, '不是旋转', E.BAD, { size: 24, ink: E.BAD, weight: 900, rx: 12, sw: 3 });
+      var notRot = E.tag(s, 512, 14, 220, 44, '不是旋转', E.ERR, { size: 24, ink: E.ERR, weight: 900, rx: 12, sw: 3 });
       // 句 7：两行 + 弯曲的球面示意图
       var why = E.el('g', {}, s);
       var whyA = E.txt(why, 470, 54, '旋转：箭头尖都在圆上', 22, E.GOOD, 'start', 900);
-      var whyB = E.txt(why, 470, 94, '平均：走圆里面的直线', 22, E.BAD, 'start', 900);
+      var whyB = E.txt(why, 470, 94, '平均：走圆里面的直线', 22, E.ERR, 'start', 900);
       var sph = E.el('g', {}, why);
       K.paint(E.el('circle', { cx: MX, cy: 258, r: 92, 'stroke-width': 2.5 }, sph), E.tint(E.VIOLET, 16, 'var(--demo-surface)'), E.VIOLET);
       K.paint(E.el('ellipse', { cx: MX, cy: 300, rx: 80, ry: 20, fill: 'none', 'stroke-width': 1.8, 'stroke-dasharray': '6 6' }, sph), null, E.VIOLET);
       var sArc = K.paint(E.el('path', { d: 'M 566 236 Q 622 166 678 236', fill: 'none', 'stroke-width': 4 }, sph), null, E.ACC);
-      var sChord = K.paint(E.el('path', { d: 'M 566 236 L 678 236', fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, sph), null, E.BAD);
+      var sChord = K.paint(E.el('path', { d: 'M 566 236 L 678 236', fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, sph), null, E.ERR);
       [[566, 'R₁'], [678, 'R₂']].forEach(function (d) {
         K.paint(E.el('circle', { cx: d[0], cy: 236, r: 7 }, sph), E.INK);
         E.halo(E.txt(sph, d[0] + (d[0] < MX ? -16 : 16), 228, d[1], 22, E.INK, 'middle', 900));
       });
       E.txt(sph, MX, 384, '特殊正交群：弯的，不是平的', 21, E.VIOLET, 'middle', 900);
       var jumpG = E.el('g', {}, why);
-      E.cross(jumpG, MX, 236, 10, E.BAD, 4.5);
-      E.halo(E.txt(jumpG, MX, 270, '跳出', 22, E.BAD, 'middle', 900));
+      E.cross(jumpG, MX, 236, 10, E.ERR, 4.5);
+      E.halo(E.txt(jumpG, MX, 270, '跳出', 22, E.ERR, 'middle', 900));
       // 句 8：相加 vs 相乘
       var ops = E.el('g', {}, s);
       var opAdd = E.tex(ops, 500, 86, 'R_1+R_2', 32, E.INK, 'start', { w: 160, h: 50 });
-      var opAddX = E.el('g', {}, ops); E.cross(opAddX, 482, 74, 10, E.BAD, 4.5);
-      var opAddT = E.txt(ops, 630, 84, '一般不是旋转', 22, E.BAD, 'start', 900);
+      var opAddX = E.el('g', {}, ops); E.cross(opAddX, 482, 74, 10, E.ERR, 4.5);
+      var opAddT = E.txt(ops, 630, 84, '一般不是旋转', 22, E.ERR, 'start', 900);
       var opMul = E.tex(ops, 500, 166, 'R_2\\,R_1', 32, E.INK, 'start', { w: 160, h: 50 });
       var opMulOk = E.check(ops, 470, 146, 22, E.GOOD, 4);
       var opMulT = E.txt(ops, 630, 164, '还是旋转', 22, E.GOOD, 'start', 900);
@@ -165,19 +166,23 @@
 
           /* 句 1：0° / 90° 两组、弧和问号；句 6：0° / 180° */
           var phase2 = st >= T.back[0];
-          var gAng = phase2 ? Math.PI : Math.PI / 2;
+          // 虚线小箭头从 0° 转过去（句 1 和 G1 一起转 90°，句 6 转 180°），句 6 留到「所有的点」再收
+          var turnW = phase2 ? T.f180 : T.turn, gEnd = turnW[0] + turnW[1];
+          var gAng = (phase2 ? Math.PI : Math.PI / 2) * f(st, turnW[0], turnW[1]);
           var ga = E.rot(gAng), g1p = at(ga, [1, 0]), g2p = at(ga, [0, 1]);
           ghostA[0].set(o[0], o[1], g1p[0], g1p[1]); ghostA[1].set(o[0], o[1], g2p[0], g2p[1]);
-          var ghostOn = phase2 ? f(st, T.f180, 0.4) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.turn[0] + T.turn[1], 0.3) * (1 - f(st, T.shrink + 1.2, 0.5)) * 0.8;
+          var out2 = 1 - f(st, T.dots - 0.3, 0.4);
+          var ghostOn = phase2 ? f(st, turnW[0], 0.2) * out2 : f(st, turnW[0], 0.2) * (1 - f(st, T.shrink + 1.2, 0.5)) * 0.8;
           ghostA.forEach(function (g) { E.op(g.g, ghostOn); });
           labs[0].setAttribute('x', P(1.06, 0)[0]); labs[0].setAttribute('y', P(0, -0.36)[1]);   // 圆外面
-          E.op(labs[0], phase2 ? f(st, T.f0, 0.3) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.front, 0.3) * (1 - f(st, T.draw[0], 0.4)));
+          E.op(labs[0], phase2 ? f(st, T.f0, 0.3) * out2 : f(st, T.front, 0.3) * (1 - f(st, T.draw[0], 0.4)));
           labs[1].textContent = phase2 ? '180°：朝后' : '90°：朝左';
           var lp = phase2 ? P(-1.06, -0.36) : P(-0.72, 1.2);   // 90° 的写在 y 轴左边，右上方留给弧和问号
           labs[1].setAttribute('x', lp[0]); labs[1].setAttribute('y', lp[1]); labs[1].setAttribute('text-anchor', phase2 ? 'end' : 'middle');
-          E.op(labs[1], phase2 ? f(st, T.f180, 0.3) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.left, 0.3) * (1 - f(st, T.draw[0], 0.4)));
-          midArc.setAttribute('d', arcD(0, Math.PI / 2, 1.32));
-          E.op(midArc, f(st, T.mid, 0.4) * (1 - f(st, T.draw[0], 0.4)));
+          E.op(labs[1], phase2 ? f(st, gEnd, 0.3) * out2 : f(st, gEnd, 0.3) * (1 - f(st, T.draw[0], 0.4)));
+          midArc.setAttribute('d', gAng > 0.01 ? arcD(0, gAng, 1.32) : '');   // 跟着虚线小箭头描出来
+          E.op(midArc, f(st, turnW[0], 0.2) * (phase2 ? out2 : 1 - f(st, T.draw[0], 0.4)));
+          midArc.style.strokeWidth = 3 + 2 * bump(st, T.mid, 0.8);
           var ap = P(1.24, 1.24);
           ask.setAttribute('x', ap[0]); ask.setAttribute('y', ap[1] + 14);
           E.pop(ask, ap[0], ap[1], f(st, T.ask, 0.3) * (1 - f(st, T.draw[0], 0.4)), 0.6);
@@ -209,7 +214,7 @@
             E.op(d.el, f(st, T.dots, 0.4) * (1 - f(st, T.restore[0], 0.3)));
           });
 
-          /* 句 7：往右那根沿圆转一段、弦、红点、月牙 */
+          /* 句 7：往右那根沿圆转一段（蓝：绕 z 轴转）、弦、橙点、月牙 */
           var sw = f(st, T.sweep[0], T.sweep[1]);
           sweepArc.setAttribute('d', sw > 0.01 ? arcD(0, Math.PI / 2 * sw, 1) : '');
           E.op(sweepArc, f(st, T.sweep[0], 0.2) * (1 - f(st, T.add - 0.3, 0.4)));
@@ -230,13 +235,13 @@
           var sq5 = phase5 ? 1 + (Math.cos(45 * D) - 1) * f(st, T.squash[0], T.squash[1]) : 1;
           g1.set(yaw, sq5); shadow.set(yaw, 1);
           g1.view.clearTint();
-          if (phase5) g1.tint('all', E.BAD, 0.5 * f(st, T.thin, 0.5));
+          if (phase5) g1.tint('all', E.ERR, 0.5 * f(st, T.thin, 0.5));
           fr.set(g1.frame(0.5));
           E.op(shadow.g, phase5 ? 0.28 * f(st, T.squash[0], 0.4) : 0);
           var robotOn = phase5 ? f(st, T.body, 0.4) * (1 - f(st, T.back[0], 0.4)) : f(st, T.robot, 0.4) * (1 - f(st, T.out1, 0.4));
           E.op(gRobot, robotOn);
           E.op(thin, phase5 ? f(st, T.thin, 0.3) : 0);
-          turnLab.textContent = st < T.turn[0] + 0.4 ? '朝前' : '朝左';
+          turnLab.textContent = st < T.turn[0] + T.turn[1] / 2 ? '朝前' : '朝左';
           E.op(turnLab, phase5 ? 0 : f(st, T.front, 0.3));
 
           // 两个矩阵 + 除以二（句 2；句 6 换成 0° 和 180°）
@@ -264,7 +269,7 @@
           var DE = '';
           if (st >= T.det[1]) DE = '0.25';
           if (st >= T.det[2]) DE += '+0.25';
-          if (st >= T.det[3]) DE += '=\\textcolor{' + H.bad + '}{0.5}';
+          if (st >= T.det[3]) DE += '=\\textcolor{' + E.HEX.err + '}{0.5}';
           detEq.setTex(DE || '\\,');
           E.op(detLab, f(st, T.det[0], 0.3)); E.op(detEq, f(st, T.det[1], 0.3));
           E.op(bad2.g, f(st, T.b2, 0.3)); E.drawOn(bad2.x, f(st, T.b2 + 0.59, 0.35));

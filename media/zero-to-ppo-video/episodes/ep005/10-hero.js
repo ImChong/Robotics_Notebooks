@@ -1,10 +1,11 @@
 // 片头主图（800×420）：三句旁白各一段——
-// ① 回顾：「上一集」顶上出小牌；G1 站在左边，「身子的朝向」骨盆上长出三根小箭头（前 绿、左 琥珀、上 蓝）并原地往左转一点，
+// ① 回顾：「上一集」顶上出小牌；G1 站在左边，「身子的朝向」骨盆上长出三根小箭头（片头沿用 003、004 的配色：前 绿、左 琥珀、上 蓝，
+//    第 1 幕讲颜色约定时才换成红绿蓝）并原地往左转一点，
 //    「三乘三」右边弹出矩阵卡，三列的数跟着转身实时变，「旋转矩阵」卡下写出名字；
 // ② 9.3 起卡片淡出、G1 转回朝前并退到左边：「两个朝向」右边出一台朝左（转 90°）的 G1，「中间值」中间留一个虚线圈和问号，
 //    「直接平均」中间上方写出「(R₁ + R₂) ÷ 2 ?」；
 // ③ 「两条规矩」顶上两块规矩牌，「直接平均」中间换成按平均出来的矩阵摆的 G1——转了 45°，横向被压成 0.71 倍（瘦了一圈），
-//    「破坏」两块规矩牌各打红 ×，「不是旋转」中间下方写「不是旋转」。
+//    「破坏」两块规矩牌各打橙色 ×，「不是旋转」中间下方写「不是旋转」。
 // 时刻取自配音的逐词时间（../ep005.py 的 [from, to] 等于每句配音实长，分镜时间 = 念到这个词的时刻）。
 (function () {
   var E = window.EP005, K = E.K, H = E.HEX;
@@ -55,12 +56,12 @@
     var rules = [{ x: 40, w: 340, s: '① 每列长度 1、互相垂直' }, { x: 420, w: 340, s: '② 行列式 = 1' }].map(function (d) {
       var g = E.el('g', {}, s);
       var tg = E.tag(g, d.x, 10, d.w, 42, d.s, E.GOOD, { size: 22, ink: E.INK, weight: 900, rx: 12 });
-      var x = E.cross(g, d.x + d.w - 24, 31, 10, E.BAD, 4.5);
+      var x = E.cross(g, d.x + d.w - 24, 31, 10, E.ERR, 4.5);
       return { g: g, tg: tg, x: x, cx: d.x + d.w / 2 };
     });
     var notG = E.el('g', {}, s);                            // 「✗」用 path 画，不靠字体
-    E.cross(notG, SLOT[1] - 66, 404, 9, E.BAD, 4);
-    E.halo(E.txt(notG, SLOT[1] + 12, 412, '不是旋转', 22, E.BAD, 'middle', 900));
+    E.cross(notG, SLOT[1] - 66, 404, 9, E.ERR, 4);
+    E.halo(E.txt(notG, SLOT[1] + 12, 412, '不是旋转', 22, E.ERR, 'middle', 900));
 
     return {
       el: s,
@@ -79,8 +80,8 @@
         E.pop(prev.g, 400, 26, f(t, PREV[0], 0.35) * (1 - f(t, PREV[1], 0.4)), 0.85);
 
         /* ① 矩阵卡：三列跟着转身实时变 */
-        var c = Math.cos(turn), sn = Math.sin(turn);
-        m3.setTex(E.mat3tex([[c, -sn, 0], [sn, c, 0], [0, 0, 1]], [H.good, H.warn, H.acc]));
+        var c = Math.cos(turn), sn = Math.sin(turn), ax = E.axes(s, 0, 0);
+        m3.setTex(E.mat3tex([[c, -sn, 0], [sn, c, 0], [0, 0, 1]], [ax[0], ax[1], E.HEX.z]));
         var out1 = 1 - f(t, OUT1, 0.4);
         E.pop(card, 626, 205, f(t, CARD, 0.35) * out1, 0.88);
         E.op(name, f(t, NAME, 0.3));
@@ -97,13 +98,13 @@
         rules.forEach(function (r, i) {
           E.pop(r.g, r.cx, 31, f(t, RULES[i], 0.3), 0.85);
           E.drawOn(r.x, f(t, BREAK + 0.25 * i, 0.4));
-          r.tg.rect.style.stroke = t >= BREAK + 0.25 * i ? E.BAD : E.GOOD;
+          r.tg.rect.style.stroke = t >= BREAK + 0.25 * i ? E.ERR : E.GOOD;
         });
         var sq = 1 + (Math.cos(45 * D) - 1) * f(t, SQUASH[0], SQUASH[1] - SQUASH[0]);
         mid.set(45 * D, sq);
         mid.r.view.clearTint();
         var red = f(t, BREAK, 0.5);
-        if (red > 0) mid.r.tint('all', E.BAD, 0.55 * red);
+        if (red > 0) mid.r.tint('all', E.ERR, 0.55 * red);
         E.pop(mid.g, SLOT[1], 300, f(t, AVG, 0.4), 0.85);
         E.op(notG, f(t, NOTROT, 0.3));
       }
