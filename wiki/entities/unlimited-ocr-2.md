@@ -47,6 +47,8 @@ Unlimited OCR Works 2 是百度发布的长文档解析模型，使用稀疏引�
 
 ## 关联页面
 
+- [OXR](./somark-oxr.md)（可替换版面分析的文档解析模型）
+
 - [TeleOCR](./paper-teleocr.md)
 - [LLM Wiki](../references/llm-wiki-karpathy.md)
 
