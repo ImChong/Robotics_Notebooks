@@ -69,6 +69,7 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 
 ## 关联页面
 
+- [Desigma](./desigma.md) — Rust 本地优先设计工具，也提供 MCP 接口。
 - [Model Context Protocol](../concepts/model-context-protocol.md) — agent 与外部工具交互的协议层。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 设计协作仍需架构、约束和评测判断。
 - [frontend-design（Anthropic 官方 Skill）](./anthropic-frontend-design-skill.md) — 设计规约与视觉判断的补充工具。
