@@ -4,12 +4,14 @@ title: Claude-shaped science：适配 AI 能力的科研选题
 tags: [ai-auto-research, scientific-workflow, llm-agents, anthropic]
 status: complete
 summary: "Matthew Schwartz 的客座文章：选择适合代理执行和外部核验的问题，并由领域专家判断科学价值；BootLoops 是相关工具实践。"
-updated: 2026-10-03
+updated: 2026-10-27
 related:
   - ./bootloops.md
   - ../concepts/ai-auto-research.md
+  - ./every-joule.md
 sources:
   - ../../sources/sites/anthropic-claude-shaped-science.md
+  - ../../sources/sites/every-joule.md
 ---
 
 # Claude-shaped science：适配 AI 能力的科研选题
@@ -74,10 +76,12 @@ flowchart TD
 
 - [BootLoops](./bootloops.md)：计算工具与验证协议的实现边界。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：研究生命周期与人机治理。
+- [Every Joule](./every-joule.md)：使用 Claude 与 Three.js 制作的十课互动 3D 物理书，是 AI 辅助内容制作的独立案例。
 
 ## 参考来源
 
 - [Claude-shaped science 来源归档](../../sources/sites/anthropic-claude-shaped-science.md)
+- [Every Joule 项目来源归档](../../sources/sites/every-joule.md)
 
 ## 推荐继续阅读
 

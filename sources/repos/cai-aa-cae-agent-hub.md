@@ -5,13 +5,17 @@
 - **默认分支：** `main`
 - **源码状态：** 已公开；GitHub 仓库 API 可访问
 - **许可证：** MIT
-- **核验日期：** 2026-10-07
+- **核验日期：** 2026-10-27
 - **文章来源：** [《我把全网 CAE、CFD相关的 Skill 扒了一遍，这份清单建议先收藏！》](../blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - **知识节点：** [CAE Agent Hub](../../wiki/entities/cai-aa-cae-agent-hub.md)
 
 ## 仓库说明
 
 文章将该仓库定位为「中文 CAE 代理资源仓库，把 Skill 与 MCP 执行服务分层；覆盖 Abaqus、Fluent、Workbench、ANSYS EDT、Altair HyperWorks、LAMMPS、OVITO、CalculiX，以及 FreeCAD→Elmer FEM→ParaView 开源链路。」
+
+## 官方 README 核验（2026-10-27）
+
+仓库提供面向工程仿真的 MCP 服务、Skill、求解器自动化和浏览器结果查看器。README 列出 Abaqus、Fluent、Workbench、Ansys Electronics Desktop/HFSS、HyperWorks、LAMMPS、OVITO、CalculiX、Peridigm 和 FreeCAD → Elmer FEM → ParaView 工作流；Adams MCP 单独列出，其实时集成尚未验证。Peridigm MCP 标记为原型并列出已验证配置。求解由对应软件或求解器执行，商业软件及许可证不随仓库提供。
 
 ## 文章中的定位
 

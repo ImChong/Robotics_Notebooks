@@ -251,6 +251,65 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/sites/machenta-instant-robot-learning.md — 收录 Machenta 单次示范即时学习
+
+- 汇总仿真训练、真实示范提示及公司自报的跨机器人和一小时测试；官方文章未列公开代码、权重或数据。
+
+## [2026-10-27] ingest | sources/repos/wise-motion.md — 收录开源动效参考技能及源码导出流程
+
+## [2026-10-27] ingest | sources/repos/deepfounder-desigma.md — 收录开源界面设计工具及 MCP 接口
+
+## [2026-10-27] ingest | sources/repos/muscle-supermimic.md — 收录肌骨世界模型跟踪项目、实验与开放边界
+
+## [2026-10-27] ingest | sources/repos/somark-oxr.md — 收录 OXR 文档解析模型，代码及权重公开，记录部署与许可边界
+
+## [2026-10-27] ingest | 复用 PLaW-VLA、V-JEPA 2、π0.5、Motus 与 LIBERO-Plus 现有节点，补充方法和评测关系
+
+## [2026-10-27] ingest | FastHarness 官方资料
+
+补充官方代码归档和项目页入口，核对开放状态并完善已有实体的机制、实验与运行时序；项目页本次不可访问，数据状态待核实。
+
+## [2026-10-27] ingest | sources/papers/wevisone_vl_arxiv_2610_31329.md — 收录统一视觉感知、缺失目标拒答及官方开放状态
+
+## [2026-10-27] ingest | sources/papers/holi-world.md 等 — 收录 Ropedia 第一视角重建与空间推理，复用 W0 和 DONIC，记录开源状态
+
+## [2026-10-27] ingest | sources/repos/unlimited-ocr-2.md — 收录百度长文档解析模型及推理入口
+
+- 官方仓库提供推理代码并链接权重；训练资料开放范围与权重许可待核实。
+
+## [2026-10-27] ingest | SimpleTouch
+
+- 收录论文、项目页与公开代码，归纳触觉专家与评测；项目页和权重页面访问失败，开放状态待核实。
+
+## [2026-10-27] ingest | GENESIS-Handover | 生成式任务导向人机递物
+
+- 意图：归档论文并提炼任务导向递物的候选生成、手型选择与真机评测。
+- 开源结论：arXiv 页面未列项目页或官方代码仓；论文附录所含提示词代码不构成完整可运行实现。
+- 关键页：[GENESIS-Handover 实体](../../wiki/entities/paper-genesis-handover.md)、[操作任务](../../wiki/tasks/manipulation.md)。
+- 证据：arXiv HTML 全文（v1），尤其方法、评测与失败分析。
+
+## [2026-10-27] ingest | sources/blogs/wechat_githubstore_18_open_source_robot_projects.md — GitHubStore 18 个开源机器人项目：12 个新独立实体节点 + 6 个既有节点复用，索引 overview；fetch_wechat_article.py 抓取成功，未核对官方仓库
+
+## [2026-10-27] ingest | Roboparty/RP1 总览仓库全部子项目补齐独立详情节点：新增 rp1-hardware、romomo、rp-hand、rp1-test、roboparty-joystick、rp1-description、rp1-firmware、robolab 的 AMP/BeyondMimic/Parkour 三模块与 VIStream；roboparty_train/deploy 与旧 atom01 页为同一仓库改名（HEAD 相同），合并为 roboparty-train/roboparty-deploy 并登记别名；核验并更新 P-BFM（已发布训练/推理代码）、I-BFM（已发布 ibfm 代码）、UFO、MimicLite、Party OS 开源状态。总览仓库仅 README，无工程代码；rp1 总览页『RP1 部署 Coming soon』『训练仅 RPO』已按仓库现状修正。
+
+## [2026-10-27] ingest | awesome-supermimic 社区索引
+
+- 收录 DiaoOrg/awesome-supermimic，记录其作为社区导航清单的定位及 CC0 策展许可。
+- 更新 SuperMimic 实体页，明确资源索引不代表官方代码，也不独立验证各复现结果。
+
+## [2026-10-27] ingest | 收录 Replica Skill 并整理应用重建 Agent Skills 的流程与使用边界
+
+- 核验官方 GitHub README 与 MIT 许可，记录 11 阶段技能工作流及 Python 工具。
+- Wiki 说明其可用于机器人周边软件原型的工作流参考，并明确不提供机器人控制实现。
+
+## [2026-10-27] ingest | RoboParty RP1 — 官方开源范围与子仓库核查
+
+新增 RP1 官方产品/文档和仓库归档及实体页，记录硬件、模型、固件、ROS 2 部署与训练入口；对照 RPO 既有条目，注明当前训练/部署文档的范围差异及分仓许可，避免把厂商规格写成独立实测。
+
+## [2026-10-26] lint | 全量 lint 清零：8 个陈旧页补回链、lcp.md 修正公式与论文出处、7 条信息型预警（Pace 停用词 / 3 篇 paper 补对比 / 2 页回链知识链枢纽）
+
+## [2026-10-27] ingest | Every Joule — 收录 Claude + Three.js 十课互动物理教学项目，并注明未发现官方源码仓库
+
 ## [2026-10-26] ingest | AgenticRoboRL — 归档论文、项目页与已开源仓库，并建立统一 planner 后训练实体页
 
 - 项目页与仓库核实：代码 Apache-2.0，Qwen3.5-9B checkpoint 已发布；teacher SFT 轨迹未发布。

@@ -4,7 +4,7 @@
 // 句 2、3 讲 0.71 怎么来：「小箭头」往右那根鼓一下，「什么位置」尖上打问号，「斜线」画出 45° 的斜线，「横」「竖」量出沿 x 轴的横边、竖边（都标 a），
 //    「一样大」两个 a 一起鼓一下；「勾股定理」涂出直角三角形、斜边标 1，右栏一行行写出 a² + a² = 1、a² = 0.5、a ≈ 0.71，「零点七一」问号换成坐标；
 // 句 4 右栏出转 45° 的旋转矩阵，四个数按念到的顺序写出，网格上往上那根的尖也标坐标；「长度」「垂直」「航列式」三块小牌依次打勾，网格上同时写「1」、标直角、涂小方块；
-// 句 5「每一个中间朝向」0°…90° 每隔 15° 一根淡绿小箭头依次亮起，尖都落在圆上；「机器人」右栏换成 G1，从 0° 一路转到 90°（每一刻都是真正的转动），「不变形」打勾；
+// 句 5「每一个中间朝向」0°…90° 每隔 15° 一根淡红小箭头依次亮起，尖都落在圆上；「机器人」右栏换成 G1，从 0° 一路转到 90°（每一刻都是真正的转动），「不变形」打勾；
 // 句 6「三维」网格换成斜着看的三维小坐标架，「转动的轴」画出一根斜着的转轴，坐标架绕它来回转；右栏顶上弯曲球面示意图（蓝弧沿着面走），
 //    「四元数」「矩阵指数」两块小牌，念到「第六集」「第十集」各补上集数。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep005.py。
@@ -53,35 +53,35 @@
       // 0.71 怎么来：45° 斜线、直角三角形（横边沿 x 轴、竖边虚线，都是 a）、斜边 1
       var R2 = Math.SQRT1_2, TIP = P(R2, R2), FOOT = P(R2, 0);
       var diag = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + P(1.2, 1.2).join(' '), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '7 6' }, flat), null, E.HI);
-      var tri = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' ') + ' L ' + TIP.join(' ') + ' Z' }, flat), E.tint(E.GOOD, 22, 'var(--demo-surface)'));
-      var legH = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' '), 'stroke-width': 6, 'stroke-linecap': 'round' }, flat), null, E.GOOD);
+      var tri = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' ') + ' L ' + TIP.join(' ') + ' Z' }, flat), E.tint(E.X, 22, 'var(--demo-surface)'));
+      var legH = K.paint(E.el('path', { d: 'M ' + OX + ' ' + OY + ' L ' + FOOT.join(' '), 'stroke-width': 6, 'stroke-linecap': 'round' }, flat), null, E.X);
       legH.style.strokeOpacity = 0.75;
-      var legV = K.paint(E.el('path', { d: 'M ' + FOOT.join(' ') + ' L ' + TIP.join(' '), 'stroke-width': 2.5, 'stroke-dasharray': '5 5' }, flat), null, E.GOOD);
+      var legV = K.paint(E.el('path', { d: 'M ' + FOOT.join(' ') + ' L ' + TIP.join(' '), 'stroke-width': 2.5, 'stroke-dasharray': '5 5' }, flat), null, E.X);
       function mathTxt(x, y, t, c) { var n = E.halo(E.txt(flat, x, y, t, 26, c, 'middle', 400)); n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; return n; }
-      var aH = mathTxt((OX + FOOT[0]) / 2, OY + 30, 'a', E.GOOD), aV = mathTxt(FOOT[0] + 32, (OY + TIP[1]) / 2 + 9, 'a', E.GOOD);   // 竖边的 a 写在单位圆外
+      var aH = mathTxt((OX + FOOT[0]) / 2, OY + 30, 'a', E.X), aV = mathTxt(FOOT[0] + 32, (OY + TIP[1]) / 2 + 9, 'a', E.X);   // 竖边的 a 写在单位圆外
       var hyp = E.halo(E.txt(flat, (OX + TIP[0]) / 2 - 16, (OY + TIP[1]) / 2 - 12, '1', 24, E.HI, 'middle', 900));
       var fan = [];
-      for (var a = 0; a <= 90; a += 15) fan.push({ a: a * D, v: E.vec(flat, E.GOOD, 3, { head: 11 }), dot: K.paint(E.el('circle', { r: 5 }, flat), E.ACC) });
-      var ghost = [E.vec(flat, E.GOOD, 3.5, { head: 13, dash: '6 5' }), E.vec(flat, E.WARN, 3.5, { head: 13, dash: '6 5' })];
-      var e1 = E.vec(flat, E.GOOD, 5, { head: 16 }), e2 = E.vec(flat, E.WARN, 5, { head: 16 });
+      for (var a = 0; a <= 90; a += 15) fan.push({ a: a * D, v: E.vec(flat, E.X, 3, { head: 11 }), dot: K.paint(E.el('circle', { r: 5 }, flat), E.ACC) });
+      var ghost = [E.vec(flat, E.X, 3.5, { head: 13, dash: '6 5' }), E.vec(flat, E.Y, 3.5, { head: 13, dash: '6 5' })];
+      var e1 = E.vec(flat, E.X, 5, { head: 16 }), e2 = E.vec(flat, E.Y, 5, { head: 16 });
       var corner = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, flat), null, E.INK);
       var lab45 = E.halo(E.txt(flat, 0, 0, '45°', 22, E.ACC, 'middle', 900));
-      var tip1 = E.halo(E.txt(flat, 0, 0, '(0.71, 0.71)', 20, E.GOOD, 'start', 900)), tip2 = E.halo(E.txt(flat, 0, 0, '(−0.71, 0.71)', 20, E.WARN, 'end', 900));
+      var tip1 = E.halo(E.txt(flat, 0, 0, '(0.71, 0.71)', 20, E.X, 'start', 900)), tip2 = E.halo(E.txt(flat, 0, 0, '(−0.71, 0.71)', 20, E.Y, 'end', 900));
 
       /* 右栏 ①：做法 + 矩阵 + 三块小牌 */
       var r1 = E.el('g', {}, flat);
       var noG = E.el('g', {}, r1), yesG = E.el('g', {}, r1);
-      var noX = E.cross(noG, 482, 40, 10, E.BAD, 4.5); E.txt(noG, 506, 48, '别平均矩阵', 24, E.BAD, 'start', 900);
+      var noX = E.cross(noG, 482, 40, 10, E.ERR, 4.5); E.txt(noG, 506, 48, '别平均矩阵', 24, E.ERR, 'start', 900);
       var yesC = E.check(yesG, 470, 76, 24, E.GOOD, 4.5); E.txt(yesG, 506, 96, '平均转过的角度', 24, E.GOOD, 'start', 900);
       var ang = E.txt(r1, 476, 150, '', 26, E.INK, 'start', 900);
       var der = [214, 266, 318].map(function (y) { return E.tex(r1, 476, y, '', 32, E.INK, 'start', { w: 300, h: 52 }); });
-      var m = E.mat(r1, MX, 248, R45, { size: 28, dx: 84, dy: 42, pad: 46, cw: 76, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var m = E.mat(r1, MX, 248, R45, { size: 28, dx: 84, dy: 42, pad: 46, cw: 76, colors: [E.X, E.Y, E.X, E.Y] });
       var chips = ['长度 1', '互相垂直', '行列式 1'].map(function (t, i) {
         var g = E.el('g', {}, r1), x = 456 + 114 * i;
         var tg = E.tag(g, x, 318, 106, 40, t, E.GOOD, { size: 20, ink: E.INK, weight: 900, rx: 10 });
         return { g: g, tg: tg, cx: x + 53 };
       });
-      var ones = [E.GOOD, E.WARN].map(function (c) { return E.halo(E.txt(flat, 0, 0, '1', 22, c, 'middle', 900)); });
+      var ones = [E.X, E.Y].map(function (c) { return E.halo(E.txt(flat, 0, 0, '1', 22, c, 'middle', 900)); });
 
       /* 右栏 ②：G1 转身 */
       var rob = E.el('g', {}, flat);
@@ -151,10 +151,10 @@
           E.scaleAt(aH, +aH.getAttribute('x'), OY + 22, 1 + 0.3 * sb); E.scaleAt(aV, +aV.getAttribute('x'), +aV.getAttribute('y') - 8, 1 + 0.3 * sb);
           E.op(tri, f(st, T.gougu, 0.4) * dOut); E.op(hyp, f(st, T.gougu, 0.3) * dOut);
           var ea = bump(st, T.arrow, 0.7);
-          e1.line.style.strokeWidth = 5 + 3 * ea; E.glow(e1.g, E.GOOD, ea > 0.05);
+          e1.line.style.strokeWidth = 5 + 3 * ea; E.glow(e1.g, E.X, ea > 0.05);
           der[0].setTex(st < T.sq[1] ? 'a^2+a^2' : 'a^2+a^2=1');
           der[1].setTex('a^2=0.5');
-          der[2].setTex('a\\approx\\textcolor{' + E.HEX.good + '}{0.71}');
+          der[2].setTex('a\\approx\\textcolor{' + E.HEX.x + '}{0.71}');
           E.op(der[0], f(st, T.sq[0], 0.3) * dOut); E.op(der[1], f(st, T.half, 0.3) * dOut); E.op(der[2], f(st, T.a71, 0.3) * dOut);
           [a2, b2].forEach(function (v, i) {
             var mid = P(v[0] * 0.55, v[1] * 0.55), n = i ? [-v[1], v[0]] : [v[1], -v[0]];

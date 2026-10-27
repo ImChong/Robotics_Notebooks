@@ -79,6 +79,16 @@ flowchart TD
 
 Kimodo 的 39.7%–90.7% 是项目页特定动作生成实验的指标，不应当作整个 LocoManiLab 基准的平均成绩。项目页的 Arena 和结果 CSV 提供了可交互的结果复核入口。
 
+## 与其他工作对比
+
+| 工作 | 评测对象 | 分层方式 | 开放状态 | 与 LocoManiLab 的区别 |
+|------|----------|----------|----------|-----------------------|
+| [HumanoidArena](./paper-humanoidarena.md) | 7 项下肢关键 HOI/HSI 任务，视觉 / 语义 / 执行扰动与跨 GMT 迁移 | 高层策略输出中间全身动作，低层 GMT（TWIST2 / SONIC）执行 | 代码 / 数据 / 模型已开源 | HumanoidArena 聚焦 egocentric 高层策略与跟踪器接口；LocoManiLab 覆盖 234 个家庭场景任务，并显式做「固定控制器比策略 / 固定策略比控制器」两组对照 |
+| [I-BFM](./paper-i-bfm.md) | 人形与物体交互的行为表征（搬运 / 推 / 踢与扰动恢复） | forward–backward 行为空间 + 奖励推断 latent 指令 | 项目页提供演示 | I-BFM 是被评测的方法类型（单策略复用），LocoManiLab 是评测这类方法的测试床 |
+
+- **在评测基准谱系中的位置：** 按[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)的分层，LocoManiLab 属 ③ 策略任务成功率层，并以三个匹配任务触及 ④ sim↔real 评测 gap 校准层；它支持的是策略**相对排序**的一致性，而非真机绝对成功率。
+- **比较边界：** LocoManiLab 的成功率依赖其 task-scene 切分与 G1 平台，不能与其他基准的成功率直接横比。
+
 ## 结论
 
 **一句话总判：** LocoManiLab 的主要贡献是将人形移动操作的示范、策略、控制器和评测放到可比较的共同测试床中；它提供系统级评测框架，目前公开入口尚不足以独立复现实验。

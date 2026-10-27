@@ -21,7 +21,7 @@
 
 该仓库强调：可通过公开供应链与开源代码复现一个可跑可跳的人形机器人原型。
 
-> 开源范围注意：这里记录的是 RPO / Roboto Origin。RoboParty 后续 RP1 的硬件文件、固件、仿真模型与训练工具按路线图分批发布；不能据此认为 RP1 全栈已公开。最新进展与仓库入口见 [RP1 开源进度来源归档](../sites/roboparty_rp1_opensource_status_2026-10-15.md)。
+> 开源范围注意：这里记录的是 RPO / Roboto Origin，不代表 RP1 的配置或许可。RoboParty 已另行发布 [RP1（ROBOTO 01）](./roboparty_rp1.md)的总览和多个模块仓库；当前开放范围及部署/训练资料边界见[官方核查归档](../sites/roboparty_rp1_official.md)。此前的[2026-10-15 状态快照](../sites/roboparty_rp1_opensource_status_2026-10-15.md)保留为历史记录。
 
 ---
 

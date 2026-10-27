@@ -3,7 +3,7 @@ type: entity
 tags: [repo, humanoid, motion-tracking, foundation-model, horizon-robotics, transformer, mixture-of-experts, ppo, zero-shot, teleoperation, imitation-learning]
 status: complete
 arxiv: "2605.15336"
-updated: 2026-10-24
+updated: 2026-10-27
 related:
   - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -18,11 +18,14 @@ related:
   - ./amass.md
   - ./unitree-g1.md
   - ./paper-omg-omni-modal-humanoid-control.md
+  - ./holoboxing.md
   - ./robo-orchard-lab.md
 sources:
   - ../../sources/repos/horizon_robotics_holomotion.md
   - ../../sources/sites/holomotion-docs.md
   - ../../sources/papers/holomotion_arxiv_2605_15336.md
+  - ../../sources/papers/holoboxing_arxiv_2610_32909.md
+  - ../../sources/sites/hbot-competition.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "HoloMotion 是地平线的人形全身控制开源栈：v1 为大规模运动跟踪基础模型，v2 预览统一稀疏关键点到全身控制，另集成 SuperMimic 单 GPU 训练；含代码、权重、仿真与部署文档（2026-10-24）。"
@@ -82,6 +85,10 @@ summary: "HoloMotion 是地平线的人形全身控制开源栈：v1 为大规�
 | **仅拉权重推理** | [HF HorizonRobotics/HoloMotion_models](https://huggingface.co/HorizonRobotics/HoloMotion_models) | motion / velocity tracking 预训练 checkpoint |
 
 **复现提示：** HoloRetarget 训练侧可达 **3000+ FPS**（RTX 4090），机上遥操作 **300+ FPS**；HoloSMPL 已对接 **10+** 数据集/设备。评测分 **IsaacLab HDF5 rollout** 与 **MuJoCo sim2sim 批量指标** 两路，与「训练 checkpoint → 导出 ONNX/策略 → 真机 runtime」部署链对齐。
+
+## HoloBoxing 竞赛拳击模块
+
+HoloMotion 仓库的 holoboxing/ 是 H-bot Track 2 的独立高层拳击策略训练与评测教程，对应 [HoloBoxing 论文](./holoboxing.md)。它把比赛决策与关节级执行拆开：参赛者训练输出未来身体关键点目标的高层策略，比赛指定的冻结 HoloMotion V2 控制器负责 29 关节执行。教程包含数据准备、表征解码器拟合、测量状态模仿初始化、强化学习、ONNX 导出和仿真评测；论文所称约 7 分钟仅是额外训练时间，不含控制器/对手预训练、数据准备、评测和搜索。
 
 ## 局限与风险
 
@@ -177,6 +184,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [HoloBoxing 论文与竞赛策略](./holoboxing.md)
 - [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)
 - [BFM（人形行为基础模型论文实体）](./paper-behavior-foundation-model-humanoid.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
@@ -196,3 +204,5 @@ sequenceDiagram
 - [sources/repos/horizon_robotics_holomotion.md](../../sources/repos/horizon_robotics_holomotion.md)
 - [sources/sites/holomotion-docs.md](../../sources/sites/holomotion-docs.md)
 - [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md)
+- [sources/papers/holoboxing_arxiv_2610_32909.md](../../sources/papers/holoboxing_arxiv_2610_32909.md)
+- [sources/sites/hbot-competition.md](../../sources/sites/hbot-competition.md)

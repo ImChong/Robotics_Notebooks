@@ -149,6 +149,8 @@ flowchart TB
 
 ## 与其他页面的关系
 
+- [Calibrex](./calibrex.md) — 基于录包逐轴检查外参及可观测性，可作为多传感器部署前后的补充工具。
+
 - [Sensor Fusion（概念）](../concepts/sensor-fusion.md) — 多模态融合与退化感知的一般语境
 - [State Estimation（概念）](../concepts/state-estimation.md) — 位姿/速度估计在控制栈中的位置
 - [LiDAR SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 开源系统横向对照；本文提供 **退化与标定扰动** 维度的补充证据

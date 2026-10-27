@@ -9,7 +9,7 @@ tags:
   - open-source
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-10-27
 related:
   - ./taste-skill.md
   - ./skillry.md
@@ -20,12 +20,12 @@ related:
 sources:
   - ../../sources/repos/pbakaus-impeccable.md
   - ../../sources/sites/impeccable-style.md
-summary: "Impeccable 是 Apache-2.0 的设计语言 skill：24 条 /impeccable 命令、PRODUCT.md/DESIGN.md、61 条无 LLM detector 与 hook，支持 live 浏览器迭代；自 Anthropic frontend-design 演进。"
+summary: "Impeccable 是 Apache-2.0 的设计语言 skill：24 条 /impeccable 命令、PRODUCT.md/DESIGN.md、62 条无 LLM detector 与 hook，支持 live 浏览器迭代；自 Anthropic frontend-design 演进。"
 ---
 
 # Impeccable
 
-**Impeccable**（[pbakaus/impeccable](https://github.com/pbakaus/impeccable)，[impeccable.style](https://impeccable.style)）给 coding agent 与用户一套 **共享设计词汇表**：用 **`/impeccable <command>`** 驱动 polish、typeset、distill、audit 等 **24 条命令**，把 **产品真相** 写入 `PRODUCT.md`、把 **视觉系统** 写入 `DESIGN.md`，并用 **61 条确定性 detector** 在编辑循环中抓 AI slop（无需 LLM、无需 API key）。
+**Impeccable**（[pbakaus/impeccable](https://github.com/pbakaus/impeccable)，[impeccable.style](https://impeccable.style)）给 coding agent 与用户一套 **共享设计词汇表**：用 **`/impeccable <command>`** 驱动 polish、typeset、distill、audit 等 **24 条命令**，把 **产品真相** 写入 `PRODUCT.md`、把 **视觉系统** 写入 `DESIGN.md`，并用 **62 条确定性 detector** 在编辑循环中抓 AI slop（无需 LLM、无需 API key）。
 
 ## 一句话定义
 
@@ -55,7 +55,7 @@ summary: "Impeccable 是 Apache-2.0 的设计语言 skill：24 条 /impeccable �
 | **安装** | `npx impeccable install`；或 `npx skills add pbakaus/impeccable`；Claude marketplace |
 | **初始化** | `/impeccable init` → `PRODUCT.md`；`/impeccable document` → `DESIGN.md` |
 | **命令（24）** | craft, init, document, extract, shape, critique, audit, polish, distill, typeset, layout, animate, colorize, bolder, quieter, harden, onboard, clarify, adapt, optimize, delight, overdrive, live, generate |
-| **Detector** | 61 规则；PostToolUse / Stop **hooks**；Chrome DevTools 扩展 |
+| **Detector** | 62 规则；PostToolUse / Stop **hooks**；Chrome DevTools 扩展 |
 | **Live** | `/impeccable live` — 浏览器点选元素迭代 |
 | **Design directions** | 站点 curation（如 Neo Mirai case study） |
 | **协议** | Apache-2.0 |
@@ -67,7 +67,7 @@ sequenceDiagram
   participant A as Coding agent
   participant F as 源码文件
   participant H as Impeccable hook
-  participant D as Detector 61 rules
+  participant D as Detector 62 rules
   A->>F: 编辑 UI 组件
   H->>D: PostToolUse 扫描
   D-->>A: findings（如 AI beige）

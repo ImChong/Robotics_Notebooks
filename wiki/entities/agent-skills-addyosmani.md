@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-09-19
+updated: 2026-10-27
 related:
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
@@ -16,6 +16,7 @@ related:
   - ./humanlayer-skills.md
   - ./hermes-agent.md
   - ./anthropic-claude-api-skill.md
+  - ./replica-skill.md
   - ./bilibili-douyin-notes.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -53,6 +54,7 @@ summary: "Agent Skills（addyosmani/agent-skills）是 Addy Osmani 维护的 25 
 - **与本站维护流程同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) + [Ingest Workflow](../../schema/ingest-workflow.md) 把 **知识维护** 写成文件契约；Agent Skills 把 **软件交付** 写成 SKILL + references + evals；`constraint-driven-development` 与 `make ci-preflight` 文化相近（**质量栏写进文件、禁止静默跳过检查**）。
 - **与 Open Code Review 分工：** [Open Code Review](open-code-review.md) 提供 **diff 级评审 CLI**；本包 `code-review-and-quality` 与 `/review` 提供 **流程内五轴 review 技能**；可组合而非互斥。
 - **stars 高 ≠ 机器人栈开箱即用：** 示例与 checklist 偏 **Web/TS 应用工程**；迁移到 Isaac / MuJoCo / ROS 时需重写 CONSTRAINTS 与测试证据类型。
+- **应用重建工作流对照：** [Replica Skill](replica-skill.md) 专注竞品功能调研、clean-room 重建与产品化；适合比较编码代理如何处理「观察目标 → 实现新产品」任务，不能替代机器人软件的安全验证。
 
 ## 核心结构
 

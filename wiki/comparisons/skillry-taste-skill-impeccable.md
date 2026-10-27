@@ -8,7 +8,7 @@ tags:
   - ux
   - agent-infrastructure
 status: complete
-updated: 2026-10-03
+updated: 2026-10-27
 related:
   - ../entities/skillry.md
   - ../entities/taste-skill.md
@@ -19,7 +19,7 @@ sources:
   - ../../sources/sites/skillry-dev.md
   - ../../sources/repos/leonxlnx-taste-skill.md
   - ../../sources/repos/pbakaus-impeccable.md
-summary: "Agent 前端/交付物能力选型：Skillry 是闭源交付物市场；Taste Skill 是 MIT 生成约束（三旋钮+禁令）；Impeccable 是 Apache-2.0 设计语言+24 命令+61 detector。与 Anthropic frontend-design 可叠加。"
+summary: "Agent 前端/交付物能力选型：Skillry 是闭源交付物市场；Taste Skill 是 MIT 生成约束（三旋钮+禁令）；Impeccable 是 Apache-2.0 设计语言+24 命令+62 detector。与 Anthropic frontend-design 可叠加。"
 ---
 
 # Skillry vs Taste Skill vs Impeccable（Agent 前端与交付物选型）
@@ -30,7 +30,7 @@ summary: "Agent 前端/交付物能力选型：Skillry 是闭源交付物市场�
 |------|------|------|----------|
 | [Skillry](../entities/skillry.md) | **交付物市场** | 否（Skill 私有包） | ~150 精选 Skill；Web/Slides/Image/Video；先看效果再装 |
 | [Taste Skill](../entities/taste-skill.md) | **生成约束层** | MIT | 三旋钮 + 硬禁令 + pre-flight |
-| [Impeccable](../entities/impeccable.md) | **设计语言 + 检测器** | Apache-2.0 | 24 命令 + PRODUCT/DESIGN.md + 61 detector hooks |
+| [Impeccable](../entities/impeccable.md) | **设计语言 + 检测器** | Apache-2.0 | 24 命令 + PRODUCT/DESIGN.md + 62 detector hooks |
 
 [Anthropic frontend-design](../entities/anthropic-frontend-design-skill.md) 仍是 **官方 UI skill 基线**；Impeccable 自述由其演进，Taste 与 Impeccable 常 **叠在** frontend-design 或裸 agent 之上。
 
@@ -79,7 +79,7 @@ flowchart TD
 | **约束形式** | 每 Skill 独立指令包 | SKILL 内规则 + 3 dials | 命令 + MD 文件 + detector |
 | **可审计性** | 闭源 ZIP | 公开 SKILL.md | 公开 skill + 规则源码 |
 | **迭代已有 UI** | 视 Skill 而定 | redesign audit 协议 | polish / distill / audit |
-| **自动化检测** | 无统一引擎 | pre-flight（agent 自检） | **61 确定性规则** + hooks |
+| **自动化检测** | 无统一引擎 | pre-flight（agent 自检） | **62 确定性规则** + hooks |
 | **非 Web 产出** | **Slides / Image / Video** | image 参考板 skill | 弱（偏 UI 工程） |
 
 ## 如何选型？
@@ -99,7 +99,7 @@ flowchart TD
 ### 何时优先 Impeccable？
 
 1. **长期维护同一产品 UI**，需要 `PRODUCT.md` / `DESIGN.md` 与 **polish、typeset、distill** 等 **共享动词**。
-2. 要在 **agent 编辑循环或 PR** 里 **实证** 去掉 AI tell（61 detector，无 API key）。
+2. 要在 **agent 编辑循环或 PR** 里 **实证** 去掉 AI tell（62 detector，无 API key）。
 3. 需要 **live 浏览器** 点选迭代或 **design direction** 案例库作起点。
 
 ### 叠加建议（非互斥）

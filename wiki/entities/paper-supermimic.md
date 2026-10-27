@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-27
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -20,6 +20,7 @@ sources:
   - ../../sources/sites/supermimic-project.md
   - ../../sources/repos/supermimic-unilab.md
   - ../../sources/repos/supermimic-vibed.md
+  - ../../sources/repos/awesome-supermimic.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -73,6 +74,8 @@ flowchart TB
 
 ## 独立复现与工程入口
 
+社区维护的 [awesome-supermimic 索引](../../sources/repos/awesome-supermimic.md) 汇总了多种实现、扩展、演示与数据资源；它是导航入口，不是官方代码或对各项目指标的独立验证。
+
 官方项目页截至 2026-10-22 仍未发布论文作者维护的源码；以下两个公开仓库是社区独立复现，不能视为论文官方实现，也不能据其结果推断官方代码已开放。
 
 | 仓库 | 实现路线 | 可复现入口与边界 |
@@ -119,6 +122,7 @@ flowchart TB
 - [SuperMimic 官方项目页](../../sources/sites/supermimic-project.md)
 - [Uni-SuperMimic 独立复现](../../sources/repos/supermimic-unilab.md)
 - [supermimic_vibed 独立复现](../../sources/repos/supermimic-vibed.md)
+- [awesome-supermimic 社区资源索引](../../sources/repos/awesome-supermimic.md)
 
 ## 推荐继续阅读
 
