@@ -9,7 +9,7 @@
 - **Lab：** <https://lab.roboparty.com/>
 - **许可：** MIT（与上游一致）
 - **入库日期：** 2026-07-30
-- **最后更新：** 2026-10-06
+- **最后更新：** 2026-10-27
 - **一句话说明：** RoboParty 组织对 `zju3dv/INTACT-JEPA` 的 **fork 镜像**（作者单位含 RoboParty Lab）；本 fork 仍为研究预览，上游训练、评测与权重入口已公开。
 - **代码：** <https://github.com/Roboparty/INTACT-JEPA>（fork；非独立可跑训练入口）
 
@@ -21,6 +21,8 @@
 | 树内容 | 与上游同构：`docs/`（METHOD/RESULTS/RELEASE）、`assets/`、站点工具 `tools/*.py`；**无** `train`/`eval` 训练入口 |
 | Code / Models badge | **Coming Soon**（`docs/RELEASE.md` Stage 0–2） |
 | 结论 | **部分开源镜像**：便于从 [Roboparty](https://github.com/Roboparty) 组织导航；复现仍以规范仓 `zju3dv/INTACT-JEPA` 与 Stage 2+ 发布为准 |
+
+**2026-10-27 复核：** 本地浅克隆显示 fork 最近提交仍为 2026-07-30（`web: enlarge RoboParty affiliation mark`），树内为 `assets/`、`docs/`、`tools/`、`CITATION.cff`、`NOTICE.md`，无 `scripts/`；README 徽章 Code / Models 仍为 Coming Soon，`docs/RELEASE.md` 仍为 Stage 0；许可 MIT。RP1 总览 README 将其列为 “RP1 support coming soon”。结论不变：本 fork 仍是预览镜像。
 
 ## 与 Lab 叙事的关系
 
