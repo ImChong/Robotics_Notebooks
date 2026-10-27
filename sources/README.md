@@ -400,6 +400,7 @@
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [goodfire_neural_networks_are_already_clean_2026-10-15.md](blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md) | Nick Cammarata / Goodfire：机制可解释性的非正式 working hypothesis（2026-10-15；companion paper 待发布） |
 | [x] [openai_gpt6_software_maintenance_2026-10-14.md](blogs/openai_gpt6_software_maintenance_2026-10-14.md) | OpenAI：GPT-6 Astra / GPT-6.1 Sol 辅助清理死代码、过期实验与 CI（2026-10-14） |
 | [x] [mandarobotics_comparing_physics_engines_2026-10-05.md](blogs/mandarobotics_comparing_physics_engines_2026-10-05.md) | Manda Robotics：PhysX / Newton-MuJoCo-Warp / MuJoCo CPU / Genesis 匹配场景比较（2026-10-05） |
 | [x] [egm_themoonlight_literature_review_2512_19043.md](blogs/egm_themoonlight_literature_review_2512_19043.md) | Moonlight 社区英文导读：EGM（arXiv:2512.19043）结构化摘要（非官方） |
