@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-26] lint | 全量 lint 清零：8 个陈旧页补回链、lcp.md 修正公式与论文出处、7 条信息型预警（Pace 停用词 / 3 篇 paper 补对比 / 2 页回链知识链枢纽）
+
 ## [2026-10-27] ingest | Every Joule — 收录 Claude + Three.js 十课互动物理教学项目，并注明未发现官方源码仓库
 
 ## [2026-10-26] ingest | AgenticRoboRL — 归档论文、项目页与已开源仓库，并建立统一 planner 后训练实体页
