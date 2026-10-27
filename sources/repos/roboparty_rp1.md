@@ -24,9 +24,9 @@
 | [roboparty_deploy](https://github.com/Roboparty/roboparty_deploy) | RPO / RP1 ROS 2 部署框架、驱动与推理；README 当前将 RP1 部署指南标为 Coming soon |
 | [RP1_firmware](https://github.com/Roboparty/RP1_firmware) | Linux BSP、USB-CAN bridge、底层 SDK 与软件包 |
 | [roboparty_train](https://github.com/Roboparty/roboparty_train) | Isaac Lab 训练工作区；总览说明主要写 RPO locomotion policies，RP1 任务应核对实际配置 |
-| [RP1_TEST](https://github.com/Roboparty/RP1_TEST) | RP1 整机测试 |
+| [RP1_TEST](https://github.com/Roboparty/rp1_test) | RP1 整机测试 |
 | [roboparty_joystick](https://github.com/Roboparty/roboparty_joystick) | 手柄与 Android App 控制接口 |
-| [RP Hand](https://github.com/Roboparty/RP_Hand) | 灵巧手文档、接线、CAD、机器人模型与 SDK 入口 |
+| [RP Hand](https://github.com/Roboparty/rp_dexhand) | 灵巧手文档、接线、CAD、机器人模型与 SDK 入口 |
 
 ## 可复现入口
 
