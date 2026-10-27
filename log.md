@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/repos/deepfounder-desigma.md — 收录开源界面设计工具及 MCP 接口
+
 ## [2026-10-27] ingest | sources/repos/muscle-supermimic.md — 收录肌骨世界模型跟踪项目、实验与开放边界
 
 ## [2026-10-27] ingest | sources/repos/somark-oxr.md — 收录 OXR 文档解析模型，代码及权重公开，记录部署与许可边界
