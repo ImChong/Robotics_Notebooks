@@ -8,7 +8,9 @@
 // 句 6「原来是」右边左侧出「原来」(1, 0, 0, 0)，「全变了号」两列之间写「× (−1)」，「一模一样」打勾；「再转一圈」G1 转到 720°、点回到最右边，四个数回到 (1, 0, 0, 0)；
 // 句 7「每个朝向」G1 再往左转 90°（点到 45°），「两套数」圆上对面出第二个点 −q，右边两列 q、−q，「全部变号」q 到 −q 画一条过圆心的虚线，「双重覆盖」红牌；
 // 句 8「取中间值」G1 回到朝前（点 A 在最右边），淡影子朝左；朝左先写成 −q（225°），「对齐」它沿虚线跳到 q（45°），「靠得近」画绿色短弧，「绕远路」画红色长弧（往右转 270°）；
-// 句 9「中间的点」短弧中点出黄点，「零点九二……零点三八」右边四个数依次写出、两条投影标数，「四十五度」G1 转到 45°，「上一集说的」出小牌。
+// 句 9「中间的点」起，「零度」「四十五度」两个点旁标出 0°、45°，「正中间」短弧中点出黄点，「二十二点五度」点旁写 22.5°，「机器人」G1 转到 45°（点跟着走到 22.5°）；
+// 句 10「横坐标」「纵坐标」各画投影虚线，「余弦」「正弦」右下写 cos 22.5°、sin 22.5°（同时写出这就是横、纵坐标），「零点九二」「零点三八」补上约等于几、投影上标数；
+// 句 11「零点九二……零点三八」右边四个数依次写出，「这就是上一集说的」出小牌。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep006.py。
 (function () {
   var E = window.EP006, K = E.K, H = E.HEX;
@@ -22,7 +24,9 @@
     orig: 52.6, origN: [53.05, 53.42, 53.91, 54.4], flip: 55.18, same: 56.53, turn3: [58.1, 1.6], ones: [59.74, 60.2, 60.76, 61.31],
     turn4: [62.5, 1.0], two: 65.16, minus: 65.97, dbl: 69.11,
     reset: [71.0, 0.9], setup: 72.53, align: [74.4, 0.6], near: 75.7, far: 77.33,
-    mid: 80.16, midN: [81.66, 82.72, 83.22, 83.7], turn5: [84.71, 1.2], ep5b: 87.03
+    mid: 80.2, deg0: 82.63, deg45: 83.13, midPt: 83.97, mid22: 84.66, turn5: [86.0, 1.2],
+    hx: 90.72, cos: 91.96, vz: 92.55, sin: 93.31, cosV: 97.13, sinV: 98.9,
+    midN: [102.52, 103.6, 104.09, 104.56], ep5b: 105.98
   };
   var GX = 112, GY = 372, GH = 290;
   var CX = 404, CY = 214, R = 108;
@@ -39,7 +43,7 @@
 
   E.scenes[3] = {
     title: '四元数：一个朝向，两套数',
-    dur: 91.07,
+    dur: 110.04,
     cues: [
       { at: 0, s: '**四元数**：4 个数。原地转身，转轴竖直朝上：中间两个数一直是 0' },
       { at: 11.38, s: '规则：转过的角度**减半**，找圆上的点：横坐标 → 第一个数，纵坐标 → 最后一个数' },
@@ -49,10 +53,12 @@
       { at: 52.5, s: '(1, 0, 0, 0) 和 (−1, 0, 0, 0)：全变了号，朝向一样；再转一圈才回去' },
       { at: 62.36, s: '每个朝向都有两套数：q 和 −q，这叫**双重覆盖**' },
       { at: 70.86, s: '取中间值：先把符号对齐，选靠得近的那一套，不然绕远路' },
-      { at: 79.24, s: '沿着圆取中点 (0.92, 0, 0, 0.38)：机器人转 45°，沿着转动取中间值' }
+      { at: 79.24, s: '沿着圆取中点：两个点在 0° 和 45°，中点在 22.5°；机器人转两倍，45°' },
+      { at: 89.66, s: '横坐标叫**余弦**、纵坐标叫**正弦**：cos 22.5° ≈ 0.92，sin 22.5° ≈ 0.38' },
+      { at: 100.51, s: '中间的四元数 (0.92, 0, 0, 0.38)，就是沿着转动取的中间值' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('四元数用四个数。机器人原地转身，转轴竖直朝上，中间两个数一直是零。把转过的角度减半，在半径为一的圆上找到那个点：横坐标是第一个数，纵坐标是最后一个数。往左转九十度，减半四十五度，四元数是 (0.71, 0, 0, 0.71)，四个数平方和等于一。转一整圈回到原来的朝向，点只走了半圈，四元数变成 (−1, 0, 0, 0)；每个朝向都有两套数 q 和 −q，叫双重覆盖。取中间值要先把符号对齐，选靠得近的那一套，不然会绕远路；对齐以后沿着圆取中点 (0.92, 0, 0, 0.38)，机器人转四十五度');
+      var s = K.sceneSvg('四元数用四个数。机器人原地转身，转轴竖直朝上，中间两个数一直是零。把转过的角度减半，在半径为一的圆上找到那个点：横坐标是第一个数，纵坐标是最后一个数。往左转九十度，减半四十五度，四元数是 (0.71, 0, 0, 0.71)，四个数平方和等于一。转一整圈回到原来的朝向，点只走了半圈，四元数变成 (−1, 0, 0, 0)；每个朝向都有两套数 q 和 −q，叫双重覆盖。取中间值要先把符号对齐，选靠得近的那一套，不然会绕远路；对齐以后沿着圆取中点：两个点在零度和四十五度，中点在二十二点五度，机器人转四十五度。圆上的点横坐标叫余弦、纵坐标叫正弦，cos 22.5° 约 0.92、sin 22.5° 约 0.38，中间的四元数是 (0.92, 0, 0, 0.38)');
 
       /* ══ 左：G1 + 竖轴 + 朝向影子 ══ */
       var rob = E.el('g', {}, s);
@@ -93,6 +99,7 @@
       var ptBGhost = K.paint(E.el('circle', { r: 9, 'stroke-width': 2.5, 'stroke-dasharray': '4 3', fill: 'none' }, cir), null, E.ERR);
       var labB = E.halo(E.txt(cir, 0, 0, '', 19, E.WARN, 'middle', 900));
       var ptMid = K.paint(E.el('circle', { r: 8 }, cir), E.HI);
+      var midLab = E.halo(E.txt(cir, 0, 0, '22.5°', 19, E.HI, 'start', 900));
       var pt = K.paint(E.el('circle', { r: 9, 'stroke-width': 3 }, cir), E.HI, E.S1);
       var labA = E.halo(E.txt(cir, 0, 0, '', 19, E.INK, 'start', 900));
       var ep5 = E.tag(cir, 0, 0, 132, 32, '第 5 集算过', E.VIOLET, { size: 18, ink: E.INK, weight: 900, rx: 9 });
@@ -115,7 +122,13 @@
       E.txt(sameG, 628, 254, '朝向一模一样', 21, E.GOOD, 'start', 900);
       var dbl = E.tag(s, 594, 232, 196, 44, '双重覆盖', E.ERR, { size: 24, ink: E.ERR, weight: 900, rx: 12, sw: 3 });
       var dblSub = E.txt(s, 692, 304, 'q 和 −q：同一个朝向', 19, E.INK2, 'middle', 700);
-      var ep5b = E.tag(s, 586, 236, 210, 34, '第 5 集：沿着转动取中间值', E.VIOLET, { size: 17, ink: E.INK, weight: 900, rx: 9 });
+      var ep5b = E.tag(s, 586, 384, 210, 34, '第 5 集：沿着转动取中间值', E.VIOLET, { size: 17, ink: E.INK, weight: 900, rx: 9 });
+      // 句 10：圆上的点，横坐标 = 余弦、纵坐标 = 正弦
+      var trig = [['横坐标叫余弦', E.INK2, '\\cos', '0.92'], ['纵坐标叫正弦', E.ACC, '\\sin', '0.38']].map(function (r, k) {
+        var g = E.el('g', {}, s);
+        E.txt(g, 690, 250 + 80 * k, r[0], 19, r[1], 'middle', 900);
+        return { g: g, r: r, tex: E.tex(g, 690, 284 + 80 * k, '', 24, E.INK, 'middle', { w: 220, h: 40 }) };
+      });
       // 规矩：平方和 = 1
       var rule = E.el('g', {}, s);
       E.txt(rule, 690, 236, '一条规矩：', 21, E.INK, 'middle', 900);
@@ -162,14 +175,14 @@
           proj[0].setAttribute('d', 'M ' + mtip[0].toFixed(1) + ' ' + mtip[1].toFixed(1) + ' L ' + mtip[0].toFixed(1) + ' ' + CY);
           proj[1].setAttribute('d', 'M ' + mtip[0].toFixed(1) + ' ' + mtip[1].toFixed(1) + ' L ' + CX + ' ' + mtip[1].toFixed(1));
           var showC = st < T.two || st >= T.mid;
-          E.op(proj[0], (st >= T.mid ? f(st, T.midN[0], 0.3) : f(st, T.wProj, 0.3)) * (showC ? 1 : 0));
-          E.op(proj[1], (st >= T.mid ? f(st, T.midN[3], 0.3) : f(st, T.zProj, 0.3)) * (showC ? 1 : 0));
+          E.op(proj[0], (st >= T.mid ? f(st, T.hx, 0.3) : f(st, T.wProj, 0.3)) * (showC ? 1 : 0));
+          E.op(proj[1], (st >= T.mid ? f(st, T.vz, 0.3) : f(st, T.zProj, 0.3)) * (showC ? 1 : 0));
           coordW.textContent = E.num(mq[0]); coordZ.textContent = E.num(mq[3]);
           coordW.setAttribute('x', mtip[0].toFixed(1)); coordW.setAttribute('y', (CY + (mq[3] >= -0.05 ? 26 : -12)).toFixed(1));
           coordZ.setAttribute('x', (CX - 8).toFixed(1)); coordZ.setAttribute('y', (mtip[1] + 7).toFixed(1));
           var cOn = showC ? 1 : 0;
-          var wOn = st >= T.mid ? f(st, T.midN[0], 0.3) : Math.max(f(st, T.c71[0], 0.3), bump(st, T.wProj, 1.6));
-          var zOn = st >= T.mid ? f(st, T.midN[3], 0.3) : Math.max(f(st, T.c71[1], 0.3), bump(st, T.zProj, 1.6));
+          var wOn = st >= T.mid ? f(st, T.cosV, 0.3) : Math.max(f(st, T.c71[0], 0.3), bump(st, T.wProj, 1.6));
+          var zOn = st >= T.mid ? f(st, T.sinV, 0.3) : Math.max(f(st, T.c71[1], 0.3), bump(st, T.zProj, 1.6));
           E.op(coordW, wOn * cOn);
           E.op(coordZ, zOn * cOn * (Math.abs(mq[3]) > 0.05 ? 1 : 0));
           // 半角的小弧和读数
@@ -194,15 +207,15 @@
           var al = f(st, T.align[0], T.align[1]);
           var bp = st < T.reset[0] ? b225 : [b225[0] + (P(45 * D)[0] - b225[0]) * al, b225[1] + (P(45 * D)[1] - b225[1]) * al];
           ptB.setAttribute('cx', bp[0].toFixed(1)); ptB.setAttribute('cy', bp[1].toFixed(1));
-          E.op(ptB, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.mid, 0.4))));
-          labB.textContent = st < T.reset[0] ? '−q' : al < 0.5 ? '朝左 −q' : '朝左 q';
+          E.op(ptB, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.turn5[0], 0.4))));
+          labB.textContent = st < T.reset[0] ? '−q' : al < 0.5 ? '朝左 −q' : st < T.deg45 ? '朝左 q' : '朝左 45°';
           labB.setAttribute('x', (bp[0] + (al > 0.5 ? 34 : -6)).toFixed(1)); labB.setAttribute('y', (bp[1] + (al > 0.5 ? -12 : 30)).toFixed(1));
-          E.op(labB, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.mid, 0.4))));
+          E.op(labB, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.turn5[0], 0.4))));
           ptBGhost.setAttribute('cx', b225[0].toFixed(1)); ptBGhost.setAttribute('cy', b225[1].toFixed(1));
           E.op(ptBGhost, f(st, T.far, 0.3) * (1 - f(st, T.mid, 0.4)));
-          labA.textContent = st < T.reset[0] ? 'q' : '朝前';
+          labA.textContent = st < T.reset[0] ? 'q' : st < T.deg0 ? '朝前' : '朝前 0°';
           labA.setAttribute('x', (tip[0] + 14).toFixed(1)); labA.setAttribute('y', (tip[1] + (st < T.reset[0] ? -10 : 30)).toFixed(1));
-          E.op(labA, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.mid, 0.4))));
+          E.op(labA, Math.max(twoOn, f(st, T.setup, 0.3) * (1 - f(st, T.turn5[0], 0.4))));
           near.setAttribute('d', arcD(0, 45 * D));
           E.drawOn(near, f(st, T.near, 0.6)); E.op(near, f(st, T.near, 0.1) * 0.85);
           var np = P(30 * D, R + 18);
@@ -213,17 +226,24 @@
           E.op(farLab, f(st, T.far + 0.5, 0.3) * (1 - f(st, T.mid, 0.4)));
           var mp = P(22.5 * D);
           ptMid.setAttribute('cx', mp[0].toFixed(1)); ptMid.setAttribute('cy', mp[1].toFixed(1));
-          E.pop(ptMid, mp[0], mp[1], f(st, T.mid + 0.6, 0.3) * (1 - f(st, T.turn5[0] + T.turn5[1], 0.3)), 0.3);
+          E.pop(ptMid, mp[0], mp[1], f(st, T.midPt, 0.3) * (1 - f(st, T.turn5[0] + T.turn5[1], 0.3)), 0.3);
+          midLab.setAttribute('x', (mp[0] + 16).toFixed(1)); midLab.setAttribute('y', (mp[1] - 6).toFixed(1));
+          E.op(midLab, f(st, T.mid22, 0.3));
+          // 句 10：cos / sin 两行，先写名字，念到数再补上约等于几
+          trig.forEach(function (t, k) {
+            var a = k ? T.sin : T.cos, v = k ? T.sinV : T.cosV;
+            t.tex.setTex(t.r[2] + ' 22.5^\\circ' + (st >= v ? '\\approx ' + t.r[3] : ''));
+            E.op(t.g, f(st, a, 0.3));
+          });
 
           /* 右：列向量 */
           var V = vecs[1].m, V0 = vecs[0].m;
           var vals;
           if (st < T.mid) vals = q.map(function (x) { return E.num(x); });
-          else vals = ['0.92', '0', '0', '0.38'];
+          else vals = ['0.92', '0', '0', '0.38'].map(function (v, k) { return k === 1 || k === 2 || st >= T.midN[k] ? v : '?'; });
           var shown = [st >= T.wProj, st >= T.zeros, st >= T.zeros, st >= T.zProj];
           V.set(vals.map(function (v, k) { return [shown[k] ? v : '?']; }));
-          if (st >= T.mid && st < T.turn5[0] + T.turn5[1]) V.cells.forEach(function (c, k) { E.op(c, f(st, T.midN[k], 0.25)); });
-          else V.cells.forEach(function (c) { E.op(c, 1); });
+          V.cells.forEach(function (c) { E.op(c, 1); });
           E.op(vecs[1].g, f(st, T.vec, 0.4));
           E.scaleAt(vecs[1].g, VX, VY, 1 + 0.08 * bump(st, T.four, 0.7));
           [0, 1, 2, 3].forEach(function (k) {
@@ -247,7 +267,7 @@
           E.op(sameG, f(st, T.same, 0.3) * (1 - f(st, T.turn3[0], 0.3)));
           E.pop(dbl.g, 692, 254, f(st, T.dbl, 0.3) * (1 - f(st, T.reset[0], 0.3)), 0.7);
           E.op(dblSub, f(st, T.dbl + 0.3, 0.3) * (1 - f(st, T.reset[0], 0.3)));
-          E.pop(ep5b.g, 691, 253, f(st, T.ep5b, 0.3), 0.85);
+          E.pop(ep5b.g, 691, 401, f(st, T.ep5b, 0.3), 0.85);
           // 规矩
           E.op(rule, f(st, T.rule, 0.3) * (1 - f(st, T.turn2[0], 0.4)));
           E.op(rl[0], f(st, T.formula, 0.3));
