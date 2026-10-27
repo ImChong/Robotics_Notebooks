@@ -3933,6 +3933,7 @@
 - [RoboRecover](wiki/entities/paper-roborecover.md) — RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations**（[arXiv:2609.28952](ht `📅unknown` `[entity_page]`
 - [RoboRefer：机器人空间指代与推理](wiki/entities/paper-roborefer.md) — RoboRefer**（*Towards Spatial Referring with Reasoning in Vision-Language Models for Robotics*，[arX `📅unknown` `[entity_page]`
 - [RoboReward：面向机器人的通用视觉语言奖励模型](wiki/entities/paper-roboreward.md) — RoboReward** 是面向机器人策略学习的视觉语言奖励数据集、评测基准和模型系列，目标是从任务指令与机器人轨迹中判断完成程度，为奖励设计和强化学习提供自动信号。 `📅unknown` `[entity_page]`
+- [RoboSkill：Explore, Execute, Evolve](wiki/entities/paper-roboskill.md) — 一句话定义：** RoboSkill 让具身智能体把任务探索和执行经验整理成可复用技能，再用于后续任务的探索与执行，形成“探索—执行—进化”循环。 `📅unknown` `[entity_page]`
 - [RoboSteer：行为基础模型可操控性基准](wiki/entities/paper-robosteer-behavior-steerability-benchmark.md) — RoboSteer**（arXiv:2610.10198，[项目页](https://robosteer.github.io `📅unknown` `[entity_page]`
 - [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [VLA 因果分析：定位动作条件接口并压缩连接](wiki/entities/paper-robot-foundation-model-causal-analysis.md) — 论文用 activation patching 追踪视觉语言信息如何因果影响机器人动作，并将动作专家的条件输入限制在少数关键层以降低计算量。 `📅unknown` `[entity_page]`
