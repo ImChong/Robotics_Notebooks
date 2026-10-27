@@ -5769,6 +5769,7 @@
 - [Where2Place](wiki/entities/where2place.md) — Where2Place**（Where2Place：可放置空间推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](ht `📅unknown` `[entity_page]`
 - [Exploring Artificial Intelligence（William Theisen 学习枢纽）](wiki/entities/williamtheisen-ai-learning.md) — Exploring Artificial Intelligence**（ai.williamtheisen.com，Willia `📅unknown` `[entity_page]`
 - [WinUI](wiki/entities/winui.md) — WinUI**（microsoft/microsoft-ui-xaml，文档 [Microsof `📅unknown` `[entity_page]`
+- [Wise Motion](wiki/entities/wise-motion.md) — Wise Motion** 是一个按动作需求检索现有动效、查看实现并导出源码的 Agent Skill，可用于产品演示和讲解视频素材制作。 `📅unknown` `[entity_page]`
 - [COMSOL Multiphysics MCP（wjc9011/COMSOL_Multiphysics_MCP）](wiki/entities/wjc9011-comsol-multiphysics-mcp.md) — COMSOL Multiphysics MCP（wjc9011/COMSOL_Multiphysics_MCP）是面向 COMSOL 多物理场软件的 MCP 接口。 `📅unknown` `[entity_page]`
 - [Agentic CAE（wogokoro/Agentic-CAE）](wiki/entities/wogokoro-agentic-cae.md) — Agentic CAE（wogokoro/Agentic-CAE）是Agentic Mechanical Engineering 集合中的 CAE 项目，涵盖网格、FEA/CFD 设置、求解器运行和结 `📅unknown` `[entity_page]`
 - [Wokwi](wiki/entities/wokwi.md) — Wokwi**（wokwi.com）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、ST `📅unknown` `[entity_page]`
