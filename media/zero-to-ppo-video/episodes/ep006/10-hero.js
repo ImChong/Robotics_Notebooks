@@ -46,7 +46,7 @@
     E.txt(cards[0].g, 516, ROWS[0].y + 62, '(90°, 0°, 0°)', 30, E.INK, 'middle', 700);   // 度数用正文字体：KaTeX_Main 的 ° 排得像上标小圈
     E.txt(cards[1].g, 524, ROWS[1].y + 62, '(0.71, 0, 0, 0.71)', 28, E.INK, 'middle', 700).style.fontFamily = 'KaTeX_Main, serif';
     var rules = E.txt(cards[2].g, CX + 22, ROWS[2].y + 100, '2 条规矩', 20, E.INK2, 'start', 700);
-    var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 22, dx: 56, dy: 30, colors: [E.GOOD, E.WARN, E.ACC] });
+    var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[1, 0, 0], [0, 1, 0], [0, 0, 1]], { size: 22, dx: 56, dy: 30, colors: E.AX });
 
     return {
       el: s,

@@ -100,7 +100,7 @@
       /* ══ 右：四元数（列向量），左边可以再放一列 ══ */
       var vecs = [V0X, VX].map(function (x) {
         var g = E.el('g', {}, s);
-        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 42, cellColors: [E.INK, E.GOOD, E.WARN, E.ACC] });
+        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 42, cellColors: [E.INK].concat(E.AX) });
         var head = E.txt(g, x, 30, '', 21, E.INK, 'middle', 900);
         return { g: g, m: m, head: head };
       });
@@ -230,7 +230,7 @@
             var p = 0;
             if (k === 0 || k === 3) p = Math.max(p, f(st, T.ends[k ? 1 : 0], 0.3) * (1 - f(st, T.half, 0.3)));
             [T.fill, T.neg, T.ones, T.midN].forEach(function (arr) { p = Math.max(p, bump(st, arr[k], 0.9)); });
-            V.cellBox(k, k === 0 ? E.HI : [E.HI, E.GOOD, E.WARN, E.ACC][k], p);
+            V.cellBox(k, k === 0 ? E.HI : E.AX[k - 1], p);
           });
           vecs[1].head.textContent = st < T.orig ? '四元数' : st < T.turn3[0] ? '现在' : st < T.two ? '四元数' : st < T.reset[0] ? '−q' : '四元数';
           E.op(vecs[1].head, f(st, T.vec, 0.4));

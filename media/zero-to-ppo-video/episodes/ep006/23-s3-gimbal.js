@@ -3,8 +3,8 @@
 // 句 1 右边三行先出来，「第二个角」第二行亮一下；「三次转动」万向节的立柱和小箭头出来，「三个套在一起的环」外、中、内三个环依次出来；
 //    「外环管偏航」「中环管俯仰」「内环管横滚」各自来回摆一下，同时对应的行亮；
 // 句 2「万向节」说明区写「这种架子：万向节」，「万向锁」下面补一行「万向锁的名字就来自它」；
-// 句 3「俯仰转到九十度」中环转到 90°（第二行数到 90°），「前面那根小箭头」绿箭头变粗，「地面」箭头尖旁写「朝下」；
-// 句 4「内环的轴」画绿色转轴虚线（已经竖着），「外环的轴」画蓝色转轴虚线，「转到了一起」两根一起亮、说明区写「两根轴重合」；
+// 句 3「俯仰转到九十度」中环转到 90°（第二行数到 90°），「前面那根小箭头」红箭头（x）变粗，「地面」箭头尖旁写「朝下」；
+// 句 4「内环的轴」画红色转轴虚线（x，已经竖着），「外环的轴」画蓝色转轴虚线，「转到了一起」两根一起亮、说明区写「两根轴重合」；
 // 句 5「转外环」外环来回转 30°，「转内环」内环反着来回转 30°——身子的动作一模一样，说明区一行行写出，「效果一样」打等号；
 // 句 6「偏航三十」外环转到 30°，说明区写 (30°, 90°, 0°)；「偏航零、横滚负三十」外环转回 0°、内环转到 −30°，身子一动不动，写 (0°, 90°, −30°)，「一模一样」打等号；
 // 句 7「绕前后这根轴」画红色虚线（世界的前后）和绕它的红色弯箭头，「做不到」打叉；「只剩两个方向」说明区写出，「万向锁」大红牌；
@@ -27,7 +27,7 @@
   };
   var GC = [228, 196], GL = 148;
   var RX = 430, RW = 360;
-  var COLS = [E.ACC, E.WARN, E.GOOD];
+  var COLS = [E.AX[2], E.AX[1], E.AX[0]];   // 外环 / 偏航绕 z（蓝）、中环 / 俯仰绕 y（绿）、内环 / 横滚绕 x（红）
   var JUMP = [[80, 6], [85, 11], [88, 27], [89, 45]];   // 身子绕世界 x 转 1° 时，ZYX 欧拉角的偏航、横滚各变多少（数值算出，见 ../ep006.py）
 
   function bump(st, a, d) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
@@ -54,7 +54,7 @@
       var proj = E.view3(150, 22);   // 从左前方看：外环转到 +30° 时也不会侧成一条线（−30° 那一下才侧过来，只在来回摆的一瞬）
       var gb = E.gimbal(s, GC[0], GC[1], GL, proj);
       var P = gb.P;
-      var downLab = E.halo(E.txt(s, 0, 0, '朝下', 22, E.GOOD, 'start', 900));
+      var downLab = E.halo(E.txt(s, 0, 0, '朝下', 22, E.AX[0], 'start', 900));
       // 世界的前后（x）：红虚线 + 绕它的弯箭头 + 叉
       var redG = E.el('g', {}, s);
       var xLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '10 7', 'stroke-linecap': 'round' }, redG), null, E.BAD);
@@ -116,7 +116,7 @@
       g1.lift(-g1.lowest());   // 趴下以后整台挪到最低点贴地
       fr.set(g1.frame(0.2));
       var fallLab = E.txt(fallG, RX + RW / 2, 168, '摔倒、脸朝下趴着', 24, E.INK, 'middle', 900);
-      var p90 = E.txt(fallG, RX + RW / 2, 214, '俯仰 = 90°', 28, E.WARN, 'middle', 900);
+      var p90 = E.txt(fallG, RX + RW / 2, 214, '俯仰 = 90°', 28, E.AX[1], 'middle', 900);
 
       /* ══ 右：靠近 90° 的小表 ══ */
       var tab = E.el('g', {}, s);
@@ -125,7 +125,7 @@
       E.txt(tab, RX + 250, 84, '偏航、横滚各跳', 20, E.INK2, 'middle', 700);
       var bars = JUMP.map(function (j, i) {
         var y = 104 + 64 * i, g = E.el('g', {}, tab);
-        E.txt(g, RX + 70, y + 34, j[0] + '°', 26, E.WARN, 'middle', 900);
+        E.txt(g, RX + 70, y + 34, j[0] + '°', 26, E.AX[1], 'middle', 900);
         var bar = E.el('rect', { x: RX + 140, y: y + 12, width: 0, height: 30, rx: 6 }, g);
         var v = E.txt(g, RX + 150, y + 36, j[1] + '°', 24, E.INK, 'start', 900);
         return { g: g, bar: bar, v: v, w: 150 * j[1] / 45 };
@@ -150,17 +150,17 @@
             var hl = bump(st, T.wig[i] - 0.1, T.wigD + 0.2);
             r.front.style.strokeWidth = 8 + 4 * hl;
           });
-          // 绿箭头（身子的前）变粗、写「朝下」
+          // 红箭头（身子的前，x）变粗、写「朝下」
           var gw = Math.max(bump(st, T.green, 1.2), f(st, T.green, 0.3) * (1 - f(st, T.xAxis, 0.4)));
           gb.body[0].line.style.strokeWidth = 6 + 4 * gw;
           var tip = P(E.col3(gb.R, 0).map(function (x) { return x * 0.52; }));
           downLab.setAttribute('x', (tip[0] + 14).toFixed(1)); downLab.setAttribute('y', (tip[1] + 8).toFixed(1));
           E.op(downLab, f(st, T.down, 0.3) * (1 - f(st, T.xAxis, 0.4)));
-          // 两根转轴：内环（绿）、外环（蓝）；「转到了一起」一起亮
+          // 两根转轴：内环（红，x）、外环（蓝，z）；「转到了一起」一起亮
           var sb = bump(st, T.same, 1.0) + bump(st, T.same + 1.0, 1.0);
           E.op(gb.axes.x, f(st, T.xAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
           E.op(gb.axes.z, f(st, T.zAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
-          gb.axes.z.style.strokeWidth = 9 + 3 * sb; gb.axes.x.style.strokeWidth = 3.5 + 2 * sb;   // 两根重合：蓝的粗、垫在下面，绿的细、压在上面，看得出是两根
+          gb.axes.z.style.strokeWidth = 9 + 3 * sb; gb.axes.x.style.strokeWidth = 3.5 + 2 * sb;   // 两根重合：蓝的粗、垫在下面，红的细、压在上面，看得出是两根
           // 世界的前后：红虚线、弯箭头、叉
           E.op(redG, f(st, T.xRed, 0.4) * (1 - f(st, T.fall - 0.4, 0.4)));
           E.drawOn(curlLine, f(st, T.xRed + 0.3, 0.6));

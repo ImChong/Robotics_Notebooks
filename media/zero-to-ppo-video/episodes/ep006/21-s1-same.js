@@ -1,10 +1,10 @@
 // 006 第 1 幕：同一个朝向，三种写法。左边 G1，右边一列三张写法卡片（同片头：欧拉角 / 四元数 / 旋转矩阵，从上往下）。
-// 句 1「机器人原地往左转」G1 往左转 90°，脚下画出 0° → 90° 的弧，「九十度」弧旁标 90°；
+// 句 1「机器人原地往左转」G1 往左转 90°，脚下画出 0° → 90° 的弧（绕竖轴 z 转，蓝），「九十度」弧旁标 90°；
 // 句 2「旋转矩阵」矩阵卡弹出，「三列」「三根小箭头」「转完以后的方向」三列依次框亮、骨盆上对应的小箭头同时变粗，「九个数」卡上写「9 个数」；
 // 句 3「欧拉角」欧拉角卡弹出 (90°, 0°, 0°)，「三个角」写「3 个数」，「转身九十度」框亮 90°，「另外两个角」框亮两个 0°；
 // 句 4「四元数」四元数卡弹出，「四个数」写「4 个数」，四个数按念到的顺序写出，「怎么算出来」右边出问号，「第四幕」问号换成「第 4 幕再算」；
 // 句 5「九个数」「三个数」「四个数」三张卡的个数依次鼓一下，「同一个朝向」卡片左边出一道亮黄括线、箭头指回 G1，G1 头顶写「同一个朝向」；
-// 句 6「三个自由度」骨盆上绕三根小箭头各出一圈（蓝：转身、琥珀：前后倾、绿：侧歪），「最少三个数」欧拉角卡的「3 个数」亮起来；
+// 句 6「三个自由度」骨盆上绕三根小箭头各出一圈（绕哪根轴就用那根轴的颜色：蓝 z 转身、绿 y 前后倾、红 x 侧歪），「最少三个数」欧拉角卡的「3 个数」亮起来；
 // 句 7「欧拉角」「有个坑」欧拉角卡右边红牌「有个坑」，「另外两种」「守规矩」另两张卡右边出「要守规矩」，「下面一个一个看」三张卡右下写第几幕讲。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep006.py。
 (function () {
@@ -44,14 +44,14 @@
       var rob = E.el('g', {}, s);
       var ring = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, rob), null, E.BORDER);
       var arc = E.el('g', {}, rob);
-      var arcLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, arc), null, E.HI);
-      var arcHead = K.paint(E.el('path', {}, arc), E.HI);
+      var arcLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, arc), null, E.AX[2]);
+      var arcHead = K.paint(E.el('path', {}, arc), E.AX[2]);
       var g1 = E.g1(rob, GX, GY, GH);
       var dofBack = E.el('g', {}, rob);
       var fr = E.frame3(rob, 5);
       var dofFront = E.el('g', {}, rob);
-      var dofRings = [E.ACC, E.WARN, E.GOOD].map(function (c) { return E.ring3(dofBack, dofFront, c, 4.5); });
-      var deg = E.halo(E.txt(rob, 0, 0, '90°', 24, E.HI, 'middle', 900));
+      var dofRings = [E.AX[2], E.AX[1], E.AX[0]].map(function (c) { return E.ring3(dofBack, dofFront, c, 4.5); });
+      var deg = E.halo(E.txt(rob, 0, 0, '90°', 24, E.AX[2], 'middle', 900));
       ring.setAttribute('d', E.ptsPath(g1.ring(0.45), true));
       var sameLab = E.halo(E.txt(s, GX, 34, '同一个朝向', 26, E.HI, 'middle', 900));
       var dofLab = E.el('g', {}, s);
@@ -82,7 +82,7 @@
       var qAsk = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 66, '?', 40, E.INK2, 'middle', 900);
       var qLater = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 58, '第 4 幕再算', 20, E.INK2, 'middle', 700);
       // 旋转矩阵：往左转 90°
-      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, colors: [E.GOOD, E.WARN, E.ACC] });
+      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, colors: E.AX });
       // 括线：卡片左边一道竖线，三个小钩接到卡片，中间一支箭头指回 G1
       var brace = E.el('g', {}, s);
       K.paint(E.el('path', { d: 'M 296 ' + (ROWS[0].y + 50) + ' H 284 V ' + (ROWS[2].y + 75) + ' H 296 M 284 ' + (ROWS[1].y + 50) + ' H 296', fill: 'none', 'stroke-width': 3.5, 'stroke-linejoin': 'round' }, brace), null, E.HI);
@@ -113,7 +113,7 @@
           /* 句 2：三列依次框亮，骨盆上对应的小箭头变粗 */
           [0, 1, 2].forEach(function (j) {
             var on = f(st, T.cols + 0.25 * j, 0.3) * (1 - f(st, T.nine + 0.6, 0.4));
-            m3.colBox(j, [E.GOOD, E.WARN, E.ACC][j], on);
+            m3.colBox(j, E.AX[j], on);
             var ab = Math.max(bump(st, T.arrows, 0.8), on);
             fr.arrows[j].line.style.strokeWidth = 5 + 3.5 * ab;
           });

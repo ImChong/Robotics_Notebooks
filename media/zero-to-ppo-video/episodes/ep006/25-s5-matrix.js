@@ -48,7 +48,7 @@
 
       /* ══ 句 1–3：矩阵 + 小坐标架 + 右边的列表 ══ */
       var A = E.el('g', {}, s);
-      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, colors: [E.GOOD, E.WARN, E.ACC] });
+      var m3 = E.grid(A, MX, MY, EUL, { size: 26, dx: 94, dy: 38, pad: 46, colors: E.AX });
       var cap = E.txt(A, MX, 166, '转身 45°、前倾 25°、侧歪 20°', 19, E.INK2, 'middle', 700);
       var gzG = E.el('g', {}, A);
       var proj = E.view3(128, 24);
@@ -59,7 +59,7 @@
         var o0 = gz.P([0, 0, 0]), tp = gz.P(E.col3(EUL, j).map(function (x) { return x * 0.55; }));
         var dx = tp[0] - o0[0], dy = tp[1] - o0[1], dl = Math.hypot(dx, dy) || 1, nx = -dy / dl, ny = dx / dl;
         if (ny > 0) { nx = -nx; ny = -ny; }
-        var n = E.halo(E.txt(gzG, tp[0] + 16 * nx, tp[1] + 16 * ny + 8, '1', 22, [E.GOOD, E.WARN, E.ACC][j], 'middle', 900));
+        var n = E.halo(E.txt(gzG, tp[0] + 16 * nx, tp[1] + 16 * ny + 8, '1', 22, E.AX[j], 'middle', 900));
         return n;
       });
       var corners = [[0, 1], [0, 2], [1, 2]].map(function (pr) {
@@ -107,11 +107,11 @@
       var trail = E.el('g', {}, B), dots = [];
       for (var k = 1; k <= 100; k++) {
         var r = Math.pow(S, k), a = 45 * D * k, p = P(r * Math.cos(a), r * Math.sin(a));
-        dots.push(K.paint(E.el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3 }, trail), E.GOOD));
+        dots.push(K.paint(E.el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3 }, trail), E.AX[0]));
       }
       var ghostSq = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, B), null, E.INK2);
       var sq = K.paint(E.el('path', { 'stroke-width': 2.5 }, B), E.tint(E.BAD, 26, 'var(--demo-surface)'), E.BAD);
-      var e1 = E.vec(B, E.GOOD, 5, { head: 15 }), e2 = E.vec(B, E.WARN, 5, { head: 15 });
+      var e1 = E.vec(B, E.AX[0], 5, { head: 15 }), e2 = E.vec(B, E.AX[1], 5, { head: 15 });
       var cornerFix = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, B), null, E.INK);
       var lenLab = E.halo(E.txt(B, 0, 0, '', 20, E.INK, 'middle', 900));
       var big = E.halo(E.txt(B, OX, OY + 2.5 * U - 2, '格子大了一半', 21, E.BAD, 'middle', 900));
@@ -120,7 +120,7 @@
       var RB = 420;
       var r1 = E.el('g', {}, s);
       E.txt(r1, RB, 40, '45° 的矩阵，小数只留两位：', 22, E.INK, 'start', 900);
-      var m2 = E.grid(r1, 560, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 118, dy: 40, pad: 66, colors: [E.GOOD, E.WARN] });
+      var m2 = E.grid(r1, 560, 104, [['0.7071…', '−0.7071…'], ['0.7071…', '0.7071…']], { size: 26, dx: 118, dy: 40, pad: 66, colors: [E.AX[0], E.AX[1]] });
       // 不用根号（KaTeX 的根号是一条很长、靠裁剪显示的 path）：先写长度的平方，再写长度，同 005 的 a² + a² = 1
       var lenL = E.txt(r1, RB, 190, '长度的平方：', 21, E.INK, 'start', 900);
       var lenT = E.tex(r1, RB + 128, 182, '0.71^2+0.71^2\\approx 1.008', 24, E.INK, 'start', { w: 250, h: 44 });
@@ -175,7 +175,7 @@
             E.op(ones[j], lenOn);
             var pj = [0, 1, 2].filter(function (pi) { return [[0, 1], [0, 2], [1, 2]][pi].indexOf(j) >= 0; });
             var colOn = Math.max(bump(st, T.len[j], 0.9), Math.max.apply(null, pj.map(function (pi) { return bump(st, T.perp[pi], 0.9); })));
-            m3.colBox(j, [E.GOOD, E.WARN, E.ACC][j], colOn);
+            m3.colBox(j, E.AX[j], colOn);
             E.op(corners[j], f(st, T.perp[j], 0.3));
           });
           E.op(goodG, f(st, T.goodHead, 0.3) * (1 - f(st, T.cost - 0.2, 0.3)));

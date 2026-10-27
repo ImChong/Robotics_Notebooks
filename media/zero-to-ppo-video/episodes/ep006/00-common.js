@@ -10,10 +10,12 @@
   var C = K.xColors;
   var E = window.EP006 = { K: K, scenes: [] };
 
-  /* 颜色同 005：身子的三根小箭头 / 三根转轴——x 前 good（绿）、y 左 warn（琥珀）、z 上 accent（蓝），偏航 / 俯仰 / 横滚跟着各自绕的轴着色（蓝 / 琥珀 / 绿）；
+  /* 坐标系 x、y、z 用红、绿、蓝（E.AX，006 起；003–005 是绿、琥珀、蓝）：身子的三根小箭头、三根转轴、矩阵对应的列都用它，
+     绕哪根轴转（偏航绕 z、俯仰绕 y、横滚绕 x）的箭头和圈就用那根轴的颜色；
      三种写法：欧拉角 warn、四元数 accent、旋转矩阵 violet（同 003–005 的矩阵色）；坑、出毛病 bad；本系列亮黄 --hi 只做强调。
      KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
   E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
+  E.AX = [C.bad, C.good, C.accent];   // x 红、y 绿、z 蓝
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
   E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
 
@@ -331,8 +333,8 @@
     };
   };
 
-  /* ── 万向节：三个套在一起的环，外环绕竖轴转（偏航，蓝）、中环绕外环上左右方向的轴转（俯仰，琥珀）、内环绕中环上前后方向的轴转（横滚，绿）；
-     中间是身子的三根小箭头（x 前 绿、y 左 琥珀、z 上 蓝）。底下一根立柱和底座托着外环。
+  /* ── 万向节：三个套在一起的环，外环绕竖轴转（偏航，蓝）、中环绕外环上左右方向的轴转（俯仰，绿）、内环绕中环上前后方向的轴转（横滚，红）；
+     中间是身子的三根小箭头（x 前 红、y 左 绿、z 上 蓝）。底下一根立柱和底座托着外环。
      E.gimbal(parent, cx, cy, L, proj)：中心 (cx, cy)，单位长 L px。set(yaw, pitch, roll)（弧度）；
      返回 { P, rings[外, 中, 内], axes：三根转轴虚线 { z 外环、y 中环、x 内环 }（默认不显示）, body：身子的三根小箭头, R：身子的旋转矩阵 } ── */
   E.gimbal = function (parent, cx, cy, L, proj) {
@@ -343,19 +345,19 @@
     var foot = K.paint(el('path', { 'stroke-width': 2.5 }, stand), E.tint(E.MUT, 18, 'var(--demo-surface)'), E.MUT);
     var post = K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, stand), null, E.MUT);
     var back = el('g', {}, g), axesG = el('g', {}, g), bodyG = el('g', {}, g), front = el('g', {}, g);
-    var cols = [E.ACC, E.WARN, E.GOOD];
+    var cols = [E.AX[2], E.AX[1], E.AX[0]];
     var rings = cols.map(function (c) { return E.ring3(back, front, c, 8); });
     // 环和环之间的小轴（连接点）：外环上下两点接立柱、中环左右两点接外环、内环前后两点接中环
     var axles = cols.map(function (c) { return K.paint(el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, front), null, c); });
     var pins = [];
     for (var k = 0; k < 6; k++) pins.push(K.paint(el('circle', { r: 5.5, 'stroke-width': 2 }, front), E.S1, cols[Math.floor(k / 2)]));
     var axes = {};
-    [['z', E.ACC], ['y', E.WARN], ['x', E.GOOD]].forEach(function (d) {
+    [['z', E.AX[2]], ['y', E.AX[1]], ['x', E.AX[0]]].forEach(function (d) {
       var p = K.paint(el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '10 7', 'stroke-linecap': 'round' }, axesG), null, d[1]);
       op(p, 0);
       axes[d[0]] = p;
     });
-    var body = [E.GOOD, E.WARN, E.ACC].map(function (c) { var a = E.vec(bodyG, c, 6, { head: 17 }); return a; });
+    var body = E.AX.map(function (c) { var a = E.vec(bodyG, c, 6, { head: 17 }); return a; });
     var hub = K.paint(el('circle', { r: 7, 'stroke-width': 2.5 }, bodyG), E.INK, E.S1);
     function seg(path, a, b) { var p = P(a), q = P(b); path.setAttribute('d', 'M ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ' L ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1)); }
     function sc(v, s) { return [v[0] * s, v[1] * s, v[2] * s]; }
@@ -392,14 +394,14 @@
     return api;
   };
 
-  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 绿、y 琥珀、z 蓝）+ 三根小箭头围成的小方块（淡线）。
+  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 红、y 绿、z 蓝）+ 三根小箭头围成的小方块（淡线）。
      set(M)：M 是 3×3（列 = 三根小箭头转完以后的方向）；proj：E.view3 的投影 ── */
   E.gizmo = function (parent, cx, cy, L, proj, opts) {
     var o = opts || {};
     var g = el('g', {}, parent), box = el('g', {}, g);
     var edges = [];
     for (var k = 0; k < 12; k++) edges.push(K.paint(el('line', { 'stroke-width': 1.6, 'stroke-dasharray': '5 5' }, box), null, E.MUT));
-    var cols = [E.GOOD, E.WARN, E.ACC];
+    var cols = E.AX;
     var arrows = cols.map(function (c) { return E.vec(g, c, o.w || 4.5, { head: o.head || 14 }); });
     var labs = ['x', 'y', 'z'].map(function (s, i) { return halo(txt(g, 0, 0, s, o.lab || 22, cols[i], 'middle', 700)); });
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }
@@ -474,9 +476,9 @@
     return api;
   };
 
-  /* 骨盆上的三根小箭头（x 前 绿、y 左 琥珀、z 上 蓝）：E.frame3(parent) → { g, set(f)：f 是 E.g1(...).frame() 的结果 } */
+  /* 骨盆上的三根小箭头（x 前 红、y 左 绿、z 上 蓝）：E.frame3(parent) → { g, set(f)：f 是 E.g1(...).frame() 的结果 } */
   E.frame3 = function (parent, w) {
-    var g = el('g', {}, parent), cols = [E.GOOD, E.WARN, E.ACC];
+    var g = el('g', {}, parent), cols = E.AX;
     var arrows = cols.map(function (c) { var a = E.vec(g, c, w || 4.5, { head: 13 }); a.line.style.filter = 'drop-shadow(0 0 2px #000)'; return a; });
     var dot = K.paint(el('circle', { r: 4.5, 'stroke-width': 2 }, g), E.INK, E.S1);
     return {
