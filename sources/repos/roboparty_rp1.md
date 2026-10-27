@@ -19,7 +19,7 @@
 |---|---|
 | [RP1](https://github.com/Roboparty/RP1) | 全栈平台总览；索引各模块，具体版本、配置与贡献入口以子仓库为准 |
 | [rp1_hardware](https://github.com/Roboparty/rp1_hardware) | 机械源文件、电子设计、PCB、线束、BOM、测试与装配 SOP |
-| [ROMOMO](https://github.com/Roboparty/ROMOMO) | 关节模组、固件与主机端工具 |
+| [ROMOMO](https://github.com/Roboparty/ROMOMO) | 关节模组规格、图纸、文档与测试资料（不含软件/固件源码） |
 | [RP1_description](https://github.com/Roboparty/RP1_description) | URDF、MJCF、网格与机器人配置 |
 | [roboparty_deploy](https://github.com/Roboparty/roboparty_deploy) | RPO / RP1 ROS 2 部署框架、驱动与推理；README 当前将 RP1 部署指南标为 Coming soon |
 | [RP1_firmware](https://github.com/Roboparty/RP1_firmware) | Linux BSP、USB-CAN bridge、底层 SDK 与软件包 |
