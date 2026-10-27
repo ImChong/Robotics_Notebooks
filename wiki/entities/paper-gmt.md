@@ -232,6 +232,10 @@ sequenceDiagram
 - 论文：<https://arxiv.org/abs/2506.14770>
 - ResMimic（GMT→残差）：<https://resmimic.github.io/>
 
+## 相关工作
+
+- [Compliant GMT](./paper-compliant-gmt.md) — 在预训练跟踪器前适配参考动作，学习全身柔顺响应。
+
 ## 参考来源
 
 - [GMT 论文摘录](../../sources/papers/gmt_arxiv_2506_14770.md)
