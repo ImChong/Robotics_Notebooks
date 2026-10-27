@@ -251,6 +251,15 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | GENESIS-Handover | 生成式任务导向人机递物
+
+- 意图：归档论文并提炼任务导向递物的候选生成、手型选择与真机评测。
+- 开源结论：arXiv 页面未列项目页或官方代码仓；论文附录所含提示词代码不构成完整可运行实现。
+- 关键页：[GENESIS-Handover 实体](../../wiki/entities/paper-genesis-handover.md)、[操作任务](../../wiki/tasks/manipulation.md)。
+- 证据：arXiv HTML 全文（v1），尤其方法、评测与失败分析。
+
+## [2026-10-27] ingest | sources/blogs/wechat_githubstore_18_open_source_robot_projects.md — GitHubStore 18 个开源机器人项目：12 个新独立实体节点 + 6 个既有节点复用，索引 overview；fetch_wechat_article.py 抓取成功，未核对官方仓库
+
 ## [2026-10-27] ingest | Roboparty/RP1 总览仓库全部子项目补齐独立详情节点：新增 rp1-hardware、romomo、rp-hand、rp1-test、roboparty-joystick、rp1-description、rp1-firmware、robolab 的 AMP/BeyondMimic/Parkour 三模块与 VIStream；roboparty_train/deploy 与旧 atom01 页为同一仓库改名（HEAD 相同），合并为 roboparty-train/roboparty-deploy 并登记别名；核验并更新 P-BFM（已发布训练/推理代码）、I-BFM（已发布 ibfm 代码）、UFO、MimicLite、Party OS 开源状态。总览仓库仅 README，无工程代码；rp1 总览页『RP1 部署 Coming soon』『训练仅 RPO』已按仓库现状修正。
 
 ## [2026-10-27] ingest | awesome-supermimic 社区索引

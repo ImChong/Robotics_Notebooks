@@ -565,6 +565,7 @@
 - [drive-game（Nürburgring Drive）](wiki/entities/drive-game.md) — drive-game** 是面向 **纽博格林** 等真实赛道的 **浏览器/Android 第一人称驾驶模拟器**：**Three.js** 渲染叠在自研 **240 Hz** 车辆物理之上，赛 `📅unknown` `[entity_page]`
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
+- [Duckiebot（Duckietown）](wiki/entities/duckietown-duckiebot.md) — Duckiebot** 是 Duckietown 生态中的标准化开源小车，组织 duckietown，关键仓库 [dt-ducki `📅unknown` `[entity_page]`
 - [DVID](wiki/entities/dvid.md) — DVID**（*Distributed, Versioned, Image-oriented Dataservice*）是 HHMI Janelia FlyEM 团队开发的 **大尺度科学数据版本 `📅unknown` `[entity_page]`
 - [Dyna-2.1（Physical Agent · Taku）](wiki/entities/dyna-2-1.md) — Dyna-2.1** 是 **Dyna Robotics**（2026-09-29 发布）对外宣称的首个可 **端到端完成长时真实工作流** 的 **physical agent** 系统：硬件为 `📅unknown` `[entity_page]`
 - [Dyna-2（Dyna Robotics · 百万小时 WAM 缩放律）](wiki/entities/dyna-2.md) — Dyna-2** 是 **Dyna Robotics**（2026-08 研究长文）发布的旗舰 **World-Action Model（WAM）**：在 **≥1,000,000 小时** eg `📅unknown` `[entity_page]`
@@ -828,6 +829,7 @@
 - [Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）](wiki/entities/leisymqaz-lumerical-fdtd-mcp.md) — Lumerical FDTD MCP（leisymqaz/lumerical-fdtd-mcp）是控制 Ansys Lumerical FDTD 的 MCP 服务。 `📅unknown` `[entity_page]`
 - [乐聚机器人（Leju Robotics）](wiki/entities/leju-robotics.md) — 乐聚机器人**（lejurobot.com）是国内 **全尺寸人形机器人产业化** 代表厂商之一：以 **KUAVO（夸父）** 系 `📅unknown` `[entity_page]`
 - [LejuBFM 通用小脑运控基座模型](wiki/entities/lejubfm-bfm.md) — LejuBFM** 是乐聚面向人形机器人全身运动控制发布的模型与配套开发流程；当前公开文档聚焦于用配套模型追踪离线动作轨迹，并通过仿真验证后在 Roban 2.2 真机播放。 `📅unknown` `[entity_page]`
+- [LeKiwi](wiki/entities/lekiwi-mobile-manipulator.md) — LeKiwi** 是低成本开源移动操作机器人，仓库 SIGRobotics-UIUC/LeKiwi。 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot Humanoid](wiki/entities/lerobot-humanoid.md) — Hugging Face **LeRobot** 系开源 **12-DoF 双足** 整机：从 Onshape/BOM/3D 打印到 CAN 真机控制、MJLab 行走 RL、动力学辨识与 LeRob `📅unknown` `[entity_page]`
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署 `📅unknown` `[entity_page]`
@@ -898,6 +900,7 @@
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
 - [FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）](wiki/entities/miaooo0000oooo-freecad-automation-skill.md) — FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）是与 Cai-aa 的同名仓库是不同实 `📅unknown` `[entity_page]`
 - [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`
+- [Microban](wiki/entities/microban-humanoid.md) — Microban** 是 Rhoban 团队（法国波尔多大学 LaBRI）开发的约 30 cm 高开源人形机器人，主仓库 [Rhoban/microban](https://github.com/ `📅unknown` `[entity_page]`
 - [Microsoft VibeVoice](wiki/entities/microsoft-vibevoice.md) — VibeVoice** 是 Microsoft 的开放语音模型系列；其中截图对应的 **VibeVoice-ASR** 将长音频的文字、说话人及时间戳共同解码，支持自定义热词和多语言，面向会议级录 `📅unknown` `[entity_page]`
 - [MIDAS Hand](wiki/entities/midas-hand.md) — MIDAS Hand**（Modular low-Impedance Direct-drive Anthropomorphic Sensing Hand）是加州大学洛杉矶分校 **Dennis H `📅unknown` `[entity_page]`
 - [Middlebury Stereo Evaluation](wiki/entities/middlebury-stereo-benchmark.md) — Middlebury Stereo** V3 评测 是立体匹配领域 **历史最久** 的公开基准之一， `📅unknown` `[entity_page]`
@@ -907,7 +910,9 @@
 - [MimicKit: 运动模仿与控制研究套件](wiki/entities/mimickit.md) — MimicKit** 是 Xue Bin Peng（彭学斌） 团队（Stanford / UC Berkeley / NVIDIA 等合作脉络）维护的  `📅unknown` `[entity_page]`
 - [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
 - [MiMo-V2.6（Scaling RL Toward Self-Improvement）](wiki/entities/mimo-v2-6.md) — MiMo-V2.6**（发布说明 · [技术报告 PDF](https://huggingfa `📅unknown` `[entity_page]`
+- [Mini Pupper](wiki/entities/mini-pupper.md) — Mini Pupper** 是 MangDang 推出的小型开源四足机器人，仓库 [mangdangroboticsclub/mini_pupper](https://github.com/man `📅unknown` `[entity_page]`
 - [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
+- [MiniLoong（强化小子 / RL-Boy）](wiki/entities/miniloong-humanoid.md) — MiniLoong（强化小子 / RL-Boy）** 是 OpenLoong 生态中的小型开源人形机器人，仓库 [loongOpen/MiniLoong](ht `📅unknown` `[entity_page]`
 - [MiniMax-H3 360° Orbit LoRA（Pablo Dawson）](wiki/entities/minimax-h3-360-orbit-lora.md) — MiniMax-H3 360° Orbit LoRA** 是 FL2VA 适配器：将同一张参考图设置为视频首帧和尾帧，模型在中间生成连续环绕视角，最后回到输入视角。 `📅unknown` `[entity_page]`
 - [MiniMax-H3 ORB360 + CardSpin](wiki/entities/minimax-h3-orb360-cardspin.md) — MiniMax-H3 ORB360** 是 MATLOWAI 发布的 Ref2VA LoRA：输入一至数张参考图，生成主体保持静止、相机围绕主体运动的环绕视频；CardSpin 分支则学习把主体像 `📅unknown` `[entity_page]`
 - [MiniMax H3](wiki/entities/minimax-h3.md) — MiniMax H3**（官方博客，[GitHub](https://github.com/MiniMax-AI `📅unknown` `[entity_page]`
@@ -1010,6 +1015,7 @@
 - [Open Duck Mini](wiki/entities/open-duck-mini.md) — Open Duck Mini** 是社区驱动的 **BDX 风格迷你双足机器人**：在娱乐角色外形下，把 **低成本舵机硬件** 与 **MuJoCo Playground RL + Disney `📅unknown` `[entity_page]`
 - [Open Duck Playground](wiki/entities/open-duck-playground.md) — Open Duck Playground** 是 Open Duck 项目的 **MuJoCo Playground 训练仓**：在 JAX/MJX 并行仿真里训练 `open_duck_mini `📅unknown` `[entity_page]`
 - [Open Duck Reference Motion Generator](wiki/entities/open-duck-reference-motion-generator.md) — Open Duck Reference Motion Generator** 为 Open Duck 生态提供 **可批量再生的参考运动**：基于 [Placo](https://github.c `📅unknown` `[entity_page]`
+- [OpenQuadruped](wiki/entities/open-quadruped.md) — OpenQuadruped** 是全 3D 打印的 12 自由度开源四足机器人，仓库 [adham-elarabawy/open-quadruped](https://github.com/adh `📅unknown` `[entity_page]`
 - [open-source-games（bobeff）](wiki/entities/open-source-games.md) — bobeff/open-source-games](https://github.com/bobeff/open-source-games)** 是 GitHub 上维护的 **开源与商业游戏源 `📅unknown` `[entity_page]`
 - [开源人形机器人“大脑” (主控电脑) 选型](wiki/entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](wiki/entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
@@ -1039,6 +1045,7 @@
 - [ORCS（Oracle Robot Control Synthesis）](wiki/entities/orcs.md) — ORCS**（*Optimize, Retarget, Control Suite*，GitHub，[HF 权重](https:/ `📅unknown` `[entity_page]`
 - [OSIRIS 全球 OSINT 情报地图](wiki/entities/osiris-global-osint.md) — OSIRIS** 是一个开源的全球 OSINT（开源情报）仪表盘：通过地图图层汇聚航班、卫星、摄像头、地震、火点、天气、地缘事件及网络威胁等公开信息。 `📅unknown` `[entity_page]`
 - [OSQP](wiki/entities/osqp.md) — OSQP](https://github.com/osqp/osqp) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-moti `📅unknown` `[entity_page]`
+- [Otto DIY](wiki/entities/otto-diy-biped.md) — Otto DIY** 是面向教育的低成本开源双足机器人，官方站点 ottodiy.com，库仓库 [OttoDIY/OttoDIYLib](https://github.com/OttoDIY/O `📅unknown` `[entity_page]`
 - [AutoStar（Ouscar-ou/AutoStar）](wiki/entities/ouscar-ou-autostar.md) — AutoStar（Ouscar-ou/AutoStar）是针对 STAR-CCM+ 螺旋桨敞水 CFD。 `📅unknown` `[entity_page]`
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
@@ -2277,6 +2284,7 @@
 - [On the identification of the inertial parameters of robots](wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md) — On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四 `📅unknown` `[entity_page]`
 - [GE-Act 2.0：世界–动作模型预训练与规模扩展](wiki/entities/paper-ge-act-2.md) — GE-Act 2.0**（*GE-Act 2.0: Pretraining and Scaling a World-Action Model for Robotic Manipulation*，全 `📅unknown` `[entity_page]`
 - [Generate, Track, Improve（GTI）](wiki/entities/paper-generate-track-improve.md) — Generate, Track, Improve**（*Perceptive Multi-Skill Humanoid Locomotion with RL-Fine-Tuned Motion G `📅unknown` `[entity_page]`
+- [GENESIS-Handover：生成式任务导向人机递物](wiki/entities/paper-genesis-handover.md) — GENESIS-Handover**（*Reactive Task-Oriented Robot-Human Handovers via Generative Hypothesis Selecti `📅unknown` `[entity_page]`
 - [GenIA：冻结生成先验上的测试时 3D 对齐](wiki/entities/paper-genia-arxiv-2610-12388.md) — GenIA（Generative Reconstruction with Test-Time Input Alignment）**（[arXiv:2610.12388](https://arxiv `📅unknown` `[entity_page]`
 - [GentleHumanoid](wiki/entities/paper-gentlehumanoid.md) — GentleHumanoid**（*Learning Upper-body Compliance for Contact-rich Human and Object Interaction*）是接 `📅unknown` `[entity_page]`
 - [GenTrack：机器人原生运动生成与零样本跟踪的物理对齐](wiki/entities/paper-gentrack.md) — GenTrack**（*Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking `📅unknown` `[entity_page]`
@@ -5405,6 +5413,7 @@
 - [PentAGI（VXControl）](wiki/entities/pentagi.md) — PentAGI**（Penetration Testing Artificial General Intelligence）是面向安全工程师与研究者的自托管多智能体安全评估平台：用户给出评估目标， `📅unknown` `[entity_page]`
 - [Perceptron Egocentric](wiki/entities/perceptron-egocentric.md) — Perceptron Egocentric**（[官方博客](https://www.perceptron.inc/blog/introducing-perceptron-egocentric-a `📅unknown` `[entity_page]`
 - [Perceptron Isaac 0.5](wiki/entities/perceptron-isaac-05.md) — Isaac 0.5**（官方博客 | [技术报告 PDF](https://pub `📅unknown` `[entity_page]`
+- [Petoi Bittle / OpenCat](wiki/entities/petoi-bittle-opencat.md) — Petoi Bittle** 是掌上尺寸的商业机器人狗，运行开源 **OpenCat** 框架，仓库 [PetoiCamp/OpenCat-Quadruped-Robot](https://git `📅unknown` `[entity_page]`
 - [PhAI Labs（科学 AI 研究机构）](wiki/entities/phai-labs.md) — PhAI Labs 是以模型和数据基础设施推动科学发现为公开定位的研究机构，发布 JEPA-Anything、RSI-Anything、ScienceBuddy、ScienceIDE 等研究项目。 `📅unknown` `[entity_page]`
 - [PHC（Perpetual Humanoid Control）](wiki/entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 Zhengyi Luo 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [Philia（Physical AI Symbiotic Agent）](wiki/entities/philia.md) — PHILIA**（*A Glimpse into Long-term Physical Coexistence with Intelligent Robots*，[arXiv:2607.11377 `📅unknown` `[entity_page]`
@@ -5416,6 +5425,7 @@
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](wiki/entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [The Physical Intelligence Layer：伙伴现场里的模型层](wiki/entities/pi-physical-intelligence-layer.md) — 2026-02-24 的博客 The Physical Intelligence Layer 不发布新模型。Physica `📅unknown` `[entity_page]`
 - [Robot Olympics：用 π₀.₆ 微调硬操作](wiki/entities/pi-robot-olympics.md) — Physical Intelligence 在 2025-12-22 的博客 [Moravec's Paradox and the Robot Olympics](https://www.pi.web `📅unknown` `[entity_page]`
+- [pib（printable intelligent bot）](wiki/entities/pib-printable-intelligent-bot.md) — pib（printable intelligent bot）** 由德国 isento GmbH 开发，是可完全 3D 打印的开源人形机器人，软件在 GitHub 组织 [pib-rocks](h `📅unknown` `[entity_page]`
 - [Pico 4 Ultra（Egocentric 采集）](wiki/entities/pico-4-ultra-egocentric-capture.md) — Pico 4 Ultra** 在 2026 年成为可规模化部署的 **第一人称视频 + 全身/手部姿态** 采集硬件：PICO SDK 允许自研录制服务直接读取 passthrough RGB 与 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
@@ -5438,6 +5448,7 @@
 - [ProtoMotions: 大规模人形机器人仿真框架](wiki/entities/protomotions.md) — ProtoMotions**（当前主线为 **ProtoMotions3**）是 NVIDIA Labs 维护的 **GPU 加速仿真 + 强化学习训练** 框架：面向 **动画角色** 与  `📅unknown` `[entity_page]`
 - [ProxSuite](wiki/entities/proxsuite.md) — ProxSuite](https://github.com/Simple-Robotics/proxsuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [Psi-R2.5（PsiBot · Scaling Pair Data）](wiki/entities/psibot-r25.md) — Psi-R2.5** 是 **灵巧智能（PsiBot）** 2026-09 通过技术博客 [Scaling Pair Data for Embodied Intelligence](https:/ `📅unknown` `[entity_page]`
+- [Puguette](wiki/entities/puguette-quadruped.md) — Puguette** 是日本开源 12 自由度四足机器人，尺寸约 80×40×60 cm（腿伸直时），仓库 [haruto89610/puguette](https://github.com/ha `📅unknown` `[entity_page]`
 - [PULSE](wiki/entities/pulse-physics.md) — PULSE**（*Universal Humanoid Motion Representations for Physics-Based Control*，[arXiv:2310.04582](h `📅unknown` `[entity_page]`
 - [PX4 Autopilot](wiki/entities/px4-autopilot.md) — PX4**（PX4/PX4-Autopilot）是面向多旋翼、固定翼、VTOL 等的 **开源飞控固件**，通过  `📅unknown` `[entity_page]`
 - [PyBullet](wiki/entities/pybullet.md) — PyBullet** 把 **Bullet3** C++ 物理 SDK 封装为 **Python API `📅unknown` `[entity_page]`
@@ -5622,6 +5633,7 @@
 - [Spark（Web 3DGS 渲染器）](wiki/entities/spark-3dgs-renderer.md) — Spark** 是 World Labs 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`
 - [SPEAR（Photorealistic Embodied AI Simulator）](wiki/entities/spear-sim.md) — SPEAR**（spear-sim/spear）是面向 **光真实感具身 AI 与合成视觉** 的 **Unreal E `📅unknown` `[entity_page]`
 - [Spingi（Unitree G1 分层物理 Agent 原型）](wiki/entities/spingi.md) — Spingi** 是面向人形机器人的 sim-first Physical Agent Runtime：它把自然语言任务或静态 YAML 计划转成可验证的技能步骤，在 MuJoCo 的 Unitr `📅unknown` `[entity_page]`
+- [SpotMicro](wiki/entities/spotmicro.md) — SpotMicro** 是社区开源四足项目，设计基于 Boston Dynamics Spot Mini 的外观，原始 STL 由 KDY0523 在 Thingiverse 发布；主仓库 [Gi `📅unknown` `[entity_page]`
 - [SRU-Odin（SRU × Odin1 部署套件）](wiki/entities/sru-odin.md) — SRU-Odin**（ManifoldTechLtd/SRU-Odin）把 [SRU 论文](./pa `📅unknown` `[entity_page]`
 - [ssik（解析逆运动学）](wiki/entities/ssik.md) — ssik**（personalrobotics/ssik）面向 **6R 与 7R 全转动关节机械臂**，提 `📅unknown` `[entity_page]`
 - [Stable-Baselines3](wiki/entities/stable-baselines3.md) — Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) 收录于具身智能研究室 [开源项目主表](https://github. `📅unknown` `[entity_page]`
@@ -5732,6 +5744,7 @@
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`
 - [Walter Zhu：GPT-6 Astra, 3D, Embodied AI, and Beyond](wiki/entities/walterzhu-astra-and-beyond.md) — Walter Zhu（朱文涛，@walterzhu8）** 2026-09-16 在 X 发布的 [长文](https://x.com/walterzhu8/status/210025599936 `📅unknown` `[entity_page]`
+- [RoArm-M2](wiki/entities/waveshare-roarm-m2.md) — RoArm-M2** 是 Waveshare 的桌面级机械臂，约 4 自由度（3 轴 + 夹爪），仓库 [waveshareteam/roarm_m2](https://github.com/wa `📅unknown` `[entity_page]`
 - [WaytoAGI（通往 AGI 之路）](wiki/entities/waytoagi.md) — WaytoAGI**（飞书知识库首页 <https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e>，官网 <https://www.w `📅unknown` `[entity_page]`
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
@@ -6555,6 +6568,7 @@
 - [强化学习智能控制（体系⑧）](wiki/overview/robot-control-paradigm-rl-intelligent-control.md) — 无标注环境交互试错，靠奖励函数优化策略，面向未知动力学与复杂多任务。 `📅unknown` `[overview_page]`
 - [鲁棒控制（体系③）](wiki/overview/robot-control-paradigm-robust-control.md) — 在模型不精确与外部扰动下保证稳定与有界误差，强调「最坏情况」下的性能保证。 `📅unknown` `[overview_page]`
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
+- [机器人开源项目 18 例（微信 GitHubStore）— 索引](wiki/overview/robot-open-source-wechat-githubstore-18-projects.md) — 按原文编号 1–18 列出入门向开源机器人项目，**每个项目只对应一个实体节点**；已有节点（Poppy、Stanford Doggo、SO-ARM100、OpenMANIPULATOR、Turtle `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第02期）— 索引](wiki/overview/robot-open-source-wechat-issue02-curator.md) — 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作 `📅unknown` `[overview_page]`
 - [开源机器人算法大全（微信策展）— 索引](wiki/overview/robot-opensource-algorithms-compendium-wechat.md) — 本页把 微信公众号清单 中的 **16 项开源资源**拆成 **独立、不重复** 的 wiki `📅unknown` `[overview_page]`
