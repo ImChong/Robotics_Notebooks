@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-26
 related:
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
@@ -397,6 +397,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — onboard 推理 runtime 选型
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+- [RealSimLoop](../entities/paper-realsimloop.md) — 3DGS 视觉反馈驱动的可微降阶软体仿真在线 Real-to-Sim 校准（SIGGRAPH Asia 2026，arXiv:2609.09828）
 
 
 ## 继续深挖入口
