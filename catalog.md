@@ -80,11 +80,9 @@
 - [Astranomy：GPT-6 Astra 原生机器人策略研究](wiki/entities/astranomy.md) — Astranomy** 是 NVIDIA Seattle Robotics Lab 对 GPT-6 Astra 直接控制、agentic 控制和策略监督三种用法进行系统比较的技术报告，重点揭示推理 `📅unknown` `[entity_page]`
 - [Atlas OS（Windows 优化 Playbook）](wiki/entities/atlas-os.md) — Atlas OS**（Atlas-OS/Atlas，atlasos.net， `📅unknown` `[entity_page]`
 - [Atlas（World Labs omni 世界模型）](wiki/entities/atlas-world-model.md) — Atlas** 是 World Labs 在 2026-09 公开的 **下一代世界模型**：从零预训练、原生融合 **文本、图像、视频与 3D**，用  `📅unknown` `[entity_page]`
-- [Atom01 Deploy](wiki/entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`
 - [Atom01 Description](wiki/entities/atom01-description.md) — atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。 `📅unknown` `[entity_page]`
 - [Atom01 Firmware](wiki/entities/atom01-firmware.md) — atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。 `📅unknown` `[entity_page]`
 - [Atom01 Hardware](wiki/entities/atom01-hardware.md) — Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。 `📅unknown` `[entity_page]`
-- [Atom01 Train](wiki/entities/atom01-train.md) — atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。 `📅unknown` `[entity_page]`
 - [Atomic Machines Matter Compiler](wiki/entities/atomic-machines-matter-compiler.md) — Matter Compiler** 是 Atomic Machines 宣称的 AI 原生微型机器制造系统：它把设备设计转换为可执行的制造步骤，制造后测量实体结果，并将反馈用于后续迭代。公司公布的 `📅unknown` `[entity_page]`
 - [atopile](wiki/entities/atopile.md) — atopile**](https://github.com/atopile/atopile) 是面向电子硬件的声明式设计语言、编译器与工具链。用户用 `.ato` 文件描述模块、接口、单位、容差 `📅unknown` `[entity_page]`
 - [AutoDL](wiki/entities/autodl.md) — AutoDL**（autodl.com）是国内 **GPU 算力租赁与炼丹** 平台：用 Docker 容器把物理机的 1–N 块 GPU 租 `📅unknown` `[entity_page]`
@@ -5511,7 +5509,13 @@
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [RoboLab（通用策略高保真仿真评测）](wiki/entities/robolab.md) — RoboLab**（*RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic 是 ARISE Initiative 发布的机器人示范学习研究框架。它把数据集、离线模仿学习与强化学习算法、训练配置和评估工具组织在统一接口下，方便在同一批机器人操作示范上比较方法 `📅unknown` `[entity_page]`
+- [roboparty_deploy（RPO / RP1 ROS 2 部署框架，原 atom01_deploy）](wiki/entities/roboparty-deploy.md) — roboparty_deploy** 是 RoboParty 把训练好的 ONNX 策略送上真机的 **ROS 2（Humble / Jazzy）C++17 部署框架**：主仓库只有文档、脚本与资 `📅unknown` `[entity_page]`
+- [Roboparty Joystick（安卓手柄 / 控制 App）](wiki/entities/roboparty-joystick.md) — Roboparty Joystick** 是 RoboParty 机器人的 Android 控制台应用：把实体手柄或屏幕双虚拟摇杆的输入以 50 Hz 控制包经 UDP 或 BLE 发给机器人，同 `📅unknown` `[entity_page]`
+- [robolab · AMP（RP1 / RPO 对抗运动先验行走）](wiki/entities/roboparty-robolab-amp.md) — 一句话定义：** `Roboparty/robolab` 里 `robolab/tasks/manager_based/amp` 这一组 Isaac Lab 任务，用对抗运动先验（AMP）让 RP `📅unknown` `[entity_page]`
+- [robolab · BeyondMimic（RP1 / RPO 参考动作跟踪）](wiki/entities/roboparty-robolab-beyondmimic.md) — 一句话定义：** `Roboparty/robolab` 中 `robolab/tasks/manager_based/beyondmimic` 这组 Isaac Lab 任务，按 [Beyond `📅unknown` `[entity_page]`
+- [robolab · Parkour（深度感知地形穿越，当前仅 RPO）](wiki/entities/roboparty-robolab-parkour.md) — 一句话定义：** `Roboparty/robolab` 里 `robolab/tasks/manager_based/parkour` 这组 Isaac Lab 任务，用深度图像加本体历史训练人 `📅unknown` `[entity_page]`
 - [RoboParty RP1（ROBOTO 01）](wiki/entities/roboparty-rp1.md) — RP1（ROBOTO 01）是 RoboParty 发布的人形机器人开发平台，目标是把本体设计、仿真模型、底层系统、部署和学习工作流放在可检查、可扩展的开放体系中。 `📅unknown` `[entity_page]`
+- [roboparty_train（RoboParty 训练工作区，原 atom01_train）](wiki/entities/roboparty-train.md) — roboparty_train** 是 RoboParty 面向 RPO 与 RP1 两款人形机器人的 **Isaac Lab 3.0 + RSL-RL 5.5.1 训练工作区**：根仓库只负责依 `📅unknown` `[entity_page]`
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
@@ -5544,9 +5548,15 @@
 - [Roboto Origin（开源人形机器人基线）](wiki/entities/roboto-origin.md) — Roboto Origin（萝博头原型机，RPO）** 是 RoboParty 发布的「全链路开源」人形机器人项目入口，目标不是只给一个仓库，而是提供从硬件到训 `📅unknown` `[entity_page]`
 - [RoboTwin 2.0](wiki/entities/robotwin.md) — RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 SAPIEN (仿真引擎) 仿真引擎之上，旨在解决具身智能（Em `📅unknown` `[entity_page]`
 - [Rokoko](wiki/entities/rokoko.md) — Rokoko** 长期服务于 **3D 动画与影视动捕** 市场，近年将同一套 **人体运动采集** 能力 pivot 到 **人形机器人 / 物理 AI** 数据赛道——代表「已有垂直硬件公司横 `📅unknown` `[entity_page]`
+- [ROMOMO（RMM 关节模组公开资料）](wiki/entities/romomo.md) — ROMOMO** 是 RoboParty 自研关节模组 RMM 系列的“资料仓”：三款统一驱动架构、不同功率级的 48 V 一体化关节（电机 + 减速器 + 双编码器 + 圆形驱动板），以规格图纸 `📅unknown` `[entity_page]`
 - [ros2_control](wiki/entities/ros2-control.md) — ros2_control](https://github.com/ros-controls/ros2_control) 收录于具身智能研究室 [开源项目主表](https://github.com/ `📅unknown` `[entity_page]`
 - [ROS2-ethercat](wiki/entities/ros2-ethercat.md) — 文章列出的 ROS 2 封装 EtherCAT 主站（SOEM / IgH）用于机器人关节控制的方案线索。（分类：EtherCAT 语言绑定/封装；语言/形态：ROS 2 封装（SOEM / IgH） `📅unknown` `[entity_page]`
 - [RosClaw](wiki/entities/rosclaw.md) — RosClaw**（GitHub: PlaiPin/rosclaw）把 [OpenClaw](./openclaw.md `📅unknown` `[entity_page]`
+- [RP Hand（五指灵巧手产品与开发资料）](wiki/entities/rp-hand.md) — RP Hand** 是 RoboParty 的紧凑五指灵巧手，**6 个主动轴驱动 11 个机械自由度**（其余 5 个为被动/耦合），蜗轮蜗杆传动、CAN-FD 接入；**rp_dexhand `📅unknown` `[entity_page]`
+- [RP1_description（RP1 本体模型：URDF / MJCF / 网格）](wiki/entities/rp1-description.md) — RP1_description** 是 RoboParty RP1 人形机器人的 **机器人描述仓库**：用 URDF 与 MJCF 两种格式给出同一台机器人的运动学、惯量、关节限位与网格，训练仓 `📅unknown` `[entity_page]`
+- [RP1_firmware（RP1 固件、BSP 与 CAN 桥入口）](wiki/entities/rp1-firmware.md) — RP1_firmware** 是 RoboParty RP1 的 **固件与板级系统入口仓库**：它本身不含固件代码，而是把「RoboPi 计算板系统镜像」「USB-CAN FD 桥固件」「APT `📅unknown` `[entity_page]`
+- [RP1 Hardware（RP1.3.4 整机制造资料）](wiki/entities/rp1-hardware.md) — rp1_hardware** 是 RP1 人形机器人的“可制造性”仓库：按 `00_Docs → 01_Mechanic → 02_PCB → 03_Harness → 04_BOM` 五层目录给 `📅unknown` `[entity_page]`
+- [RP1 Test（模块老化与整机可靠性测试平台）](wiki/entities/rp1-test.md) — RP1 Test** 是 RP1 的“出厂前验证”工程：用台架把机器人手臂、胸腔、腿部固定并加载，由 PLC/CAN 上位机控制并记录，把结果送入可靠性平台做 MTBF、归档与审批；`test-c `📅unknown` `[entity_page]`
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
 - [RSL-RL](wiki/entities/rsl-rl.md) — RSL-RL**（leggedrobotics/rsl_rl，论文 [arXiv:2509.10771](h `📅unknown` `[entity_page]`
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
@@ -5712,6 +5722,7 @@
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`
 - [Vision Mamba（Vim）](wiki/entities/vision-mamba-vim.md) — Vim 将双向 Mamba 扫描引入视觉骨干，以近线性复杂度做图像分类与密集预测，探索无注意力的通用视觉主干。 `📅unknown` `[entity_page]`
+- [VIStream：给流式几何基础模型接上惯性运动](wiki/entities/vistream.md) — 一句话定义：** VIStream 是一种免训练的视觉-惯性运动积分方法：保持 LingBot-Map 等流式视觉几何模型不动，把标定后的视觉- `📅unknown` `[entity_page]`
 - [VLA SOTA Leaderboard（EvoMind / MINT-SJTU）](wiki/entities/vla-sota-leaderboard.md) — VLA SOTA Leaderboard**（线上站 sota.evomind-tech.com，源码 [MINT-SJTU/E `📅unknown` `[entity_page]`
 - [VLNVerse](wiki/entities/vlnverse.md) — VLNVerse**（VLNVerse：VLN 场景数据源（LightNav 数据引擎））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [VLX-Seek（Om AI Lab）](wiki/entities/vlx-seek.md) — VLX-Seek**（om-ai-lab/VLX-Seek，Apache-2.0）是 **联汇科技 OmAI 实验 `📅unknown` `[entity_page]`

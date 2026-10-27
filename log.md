@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | Roboparty/RP1 总览仓库全部子项目补齐独立详情节点：新增 rp1-hardware、romomo、rp-hand、rp1-test、roboparty-joystick、rp1-description、rp1-firmware、robolab 的 AMP/BeyondMimic/Parkour 三模块与 VIStream；roboparty_train/deploy 与旧 atom01 页为同一仓库改名（HEAD 相同），合并为 roboparty-train/roboparty-deploy 并登记别名；核验并更新 P-BFM（已发布训练/推理代码）、I-BFM（已发布 ibfm 代码）、UFO、MimicLite、Party OS 开源状态。总览仓库仅 README，无工程代码；rp1 总览页『RP1 部署 Coming soon』『训练仅 RPO』已按仓库现状修正。
+
 ## [2026-10-27] ingest | awesome-supermimic 社区索引
 
 - 收录 DiaoOrg/awesome-supermimic，记录其作为社区导航清单的定位及 CC0 策展许可。
