@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-27
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
@@ -16,6 +16,7 @@ related:
   - ../entities/ov-sam3d.md
   - ../entities/cmu-mscv-semantic-3d-mapping.md
   - ../entities/paper-occanyscene.md
+  - ../entities/paper-reduced-3dgs.md
   - ../entities/paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md
   - ../entities/gs-playground.md
   - ../methods/grasp-pose-estimation.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
   - ../../sources/papers/nerf_arxiv_2003_08934.md
   - ../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md
+  - ../../sources/papers/reduced_3dgs.md
 summary: "具身感知六种空间表征分层：2D 视觉 / 深度 / 点云 / 占据栅格与距离场 / 语义地图 / 隐式地图——各自回答不同问题，不是 2D→3D 单向升级；语义地图（存什么）与隐式地图（怎么表示）正交；选型口诀是「在正确层级选正确表征」。"
 ---
 
@@ -167,6 +169,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Reduced 3DGS](../entities/paper-reduced-3dgs.md) — 通过剪枝、球谐系数分配和量化降低高斯场存储开销。
+
 - [2D→3D 语义提升 Gap](./2d-to-3d-semantic-lifting-gap.md) — 2D/深度提升到可消费 3D 语义几何的信息损失
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 传感→策略消费的工程选型链
 - [导航·SLAM·自动驾驶开源栈](../overview/navigation-slam-autonomy-stack.md) — 占据 / ESDF / Nav2 落点
@@ -181,6 +185,8 @@ flowchart TB
 - [VLN（任务）](../tasks/vision-language-navigation.md) — 语义地图的语言导航消费方
 
 ## 参考来源
+
+- [Reduced 3DGS 论文归档](../../sources/papers/reduced_3dgs.md) — 高斯场压缩及评测。
 
 - [深蓝具身智能：六种空间表征分层](../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md) — 本页主编译来源（微信；原始落盘见同页）
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 学习型语义占据（第 4 层）跨协议对照
