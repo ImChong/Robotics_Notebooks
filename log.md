@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | 收录 Replica Skill 并整理应用重建 Agent Skills 的流程与使用边界
+
+- 核验官方 GitHub README 与 MIT 许可，记录 11 阶段技能工作流及 Python 工具。
+- Wiki 说明其可用于机器人周边软件原型的工作流参考，并明确不提供机器人控制实现。
+
 ## [2026-10-27] ingest | RoboParty RP1 — 官方开源范围与子仓库核查
 
 新增 RP1 官方产品/文档和仓库归档及实体页，记录硬件、模型、固件、ROS 2 部署与训练入口；对照 RPO 既有条目，注明当前训练/部署文档的范围差异及分仓许可，避免把厂商规格写成独立实测。
