@@ -5178,6 +5178,7 @@
 - [VERAGMIL：VR 颗粒食物喂食仿真与模仿学习](wiki/entities/paper-veragmil.md) — VERAGMIL**（*Virtual Environment for Scooping Granular Foods with Imitation Learning Models*；[arXiv `📅unknown` `[entity_page]`
 - [VeriFine（arXiv:2610.08761）](wiki/entities/paper-verifine-scaling-verification-self-improvement.md) — VeriFine**（*VeriFine: Scaling Verification for Self-Improvement in Embodied Reasoning*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [VeriVLA：Flow-VLA 的自适应测试时验证](wiki/entities/paper-verivla-test-time-verification.md) — VeriVLA 利用 Flow-VLA 生成的随机性：只在判断为关键的步骤上，从多个候选动作块中挑出预测进度最好的一个。 `📅unknown` `[entity_page]`
+- [VersaCamVLA：相机可配置的机器人操控策略](wiki/entities/paper-versacamvla.md) — VersaCamVLA 把不同数量、不同位姿的 RGB 相机视图统一编码为固定大小的场景 token，再接入预训练 VLA，使操控策略适应相机布局变化。 `📅unknown` `[entity_page]`
 - [Continuous Versatile Jumping Using Learned Action Residuals（L4DC 2022）](wiki/entities/paper-versatile-jumping-action-residuals.md) — Continuous Versatile Jumping Using Learned Action Residuals**（Yuxiang Yang, Xiangyun Meng, Wenhao  `📅unknown` `[entity_page]`
 - [Vesta（A Generalist Embodied Reasoning Model）](wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT  `📅unknown` `[entity_page]`
 - [VGA（arXiv:2604.12908）](wiki/entities/paper-vga-vision-geometry-action.md) — VGA**（*Robotic Manipulation is Vision-to-Geometry Mapping: Vision-Geometry Backbones over Language `📅unknown` `[entity_page]`
