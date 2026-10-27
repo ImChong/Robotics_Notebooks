@@ -1,6 +1,7 @@
 ---
 type: entity
 project_id: part-db
+institutions: [part-db]
 project: https://docs.part-db.de/
 code: https://github.com/Part-DB/Part-DB-server
 tags: [software, electronics, hardware, open-source, inventory]

@@ -4388,6 +4388,12 @@
         "ardupilot-foundation",
         "ardupilot foundation"
       ]
+    },
+    "part-db": {
+      "label": "零件数据库开源项目（Part-DB）",
+      "aliases": [
+        "part-db"
+      ]
     }
   }
 }
