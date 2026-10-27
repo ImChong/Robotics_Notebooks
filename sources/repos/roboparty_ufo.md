@@ -6,7 +6,7 @@
 - **类型：** repo（无监督强化学习控制框架）
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/UFO
-- **入库日期：** 2026-07-14
+- **入库日期：** 2026-07-14（仓库复核 2026-10-27）
 - **一句话说明：** 面向研发、完全开源的人形机器人无监督强化学习控制开发框架，覆盖训练基础设施、数据管线、算法研究与推理部署全流程。
 - **沉淀到 wiki：** 是（`wiki/entities/roboparty-ufo.md`）
 
@@ -20,6 +20,15 @@
 | 通用可扩展 | 无缝适配不同机器人形态；多来源数据混合训练与调度 |
 | 表征集成 | BFM-Zero（FB Representation）；[TeCH](https://lab.roboparty.com/outputs/tech)（TLDR 时间距离表征） |
 | 真机遥操 | 首次开源无监督 RL 控制遥操作代码与完整验证方案 |
+
+---
+
+## 开源状态与现状（2026-10-27 复核）
+
+- **已开源**，许可 CC BY-NC 4.0（非商用）；最近提交 2026-10-21，包名为 `ufo/`，旧 `humanoidverse` 布局已替换。
+- 支持 G1 / RP1.3、FB / TeCH；训练与推理入口 `run_train.sh`、`run_inference.sh`；训练数据 `xuewang/UFO-MotionData`、G1 真机验证策略 `xuewang/ufo-g1-policy` 位于 Hugging Face；G1 部署见 `deploy` 分支，RP1 部署见 `Roboparty/roboparty_deploy`。
+- README 声明 RP1 TeCH 策略未在真机测试；README 自报 8×H20 约 4 h 45 min 完成 192M 步 FB 训练。
+- 下游：[P-BFM](../../wiki/entities/paper-p-bfm.md) 基于 UFO 构建。
 
 ---
 

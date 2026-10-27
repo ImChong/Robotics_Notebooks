@@ -15,8 +15,8 @@ related:
   - ./unitree.md
   - ./atom01-hardware.md
   - ./atom01-description.md
-  - ./atom01-train.md
-  - ./atom01-deploy.md
+  - ./roboparty-train.md
+  - ./roboparty-deploy.md
   - ./atom01-firmware.md
   - ../concepts/character-animation-vs-robotics.md
 sources:
@@ -75,8 +75,8 @@ summary: "Roboto Origin（萝博头原型机 / RPO）是 RoboParty 发布的开�
 Roboto Origin 的仓库体系可理解为「多段流水线 + 聚合快照」：
 
 - **rpo_hardware / rpo_description**：机械与模型（CAD/PCB/BOM、URDF/MJCF）；历史索引见 [atom01-hardware](./atom01-hardware.md)、[atom01-description](./atom01-description.md)
-- **roboparty_train**：IsaacLab 训练与 Sim2Sim；历史索引见 [atom01-train](./atom01-train.md)
-- **roboparty_deploy**：ROS2 真机驱动与部署；历史索引见 [atom01-deploy](./atom01-deploy.md)
+- **roboparty_train**：IsaacLab 训练与 Sim2Sim；历史索引见 [roboparty_train](./roboparty-train.md)
+- **roboparty_deploy**：ROS2 真机驱动与部署；历史索引见 [roboparty_deploy](./roboparty-deploy.md)
 - **roboparty_firmware**：底层固件与板端支持；历史索引见 [atom01-firmware](./atom01-firmware.md)
 - **扩展模块**：rpo_appearance、roboparty_navigation、roboparty_xr_teleop（实验性）
 
@@ -105,8 +105,8 @@ Roboto Origin（RPO）是独立于 RP1 的已开放人形项目；[RoboParty Lab
 - [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
 - [Atom01 Hardware](./atom01-hardware.md)
 - [Atom01 Description](./atom01-description.md)
-- [Atom01 Train](./atom01-train.md)
-- [Atom01 Deploy](./atom01-deploy.md)
+- [Atom01 Train](./roboparty-train.md)
+- [Atom01 Deploy](./roboparty-deploy.md)
 - [Atom01 Firmware](./atom01-firmware.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 作为「中性研究型开源人形」对照组：机构未为角色形象做妥协，与 Disney Olaf 形成两端
 

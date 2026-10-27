@@ -6,7 +6,7 @@ updated: 2026-10-23
 related:
   - ./roboto-origin.md
   - ./atom01-hardware.md
-  - ./atom01-train.md
+  - ./roboparty-train.md
 sources:
   - ../../sources/repos/atom01_description.md
 summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是仿真、控制与可视化共享的统一模型基线。"
@@ -51,9 +51,9 @@ summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是�
 
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Atom01 Hardware](./atom01-hardware.md)
-- [Atom01 Train](./atom01-train.md)
+- [Atom01 Train](./roboparty-train.md)
 
 ## 推荐继续阅读
 
 - [sources/urdf.md](../../sources/urdf.md)
-- [Atom01 Deploy](./atom01-deploy.md)
+- [Atom01 Deploy](./roboparty-deploy.md)
