@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | RoboParty RP1 — 官方开源范围与子仓库核查
+
+新增 RP1 官方产品/文档和仓库归档及实体页，记录硬件、模型、固件、ROS 2 部署与训练入口；对照 RPO 既有条目，注明当前训练/部署文档的范围差异及分仓许可，避免把厂商规格写成独立实测。
+
 ## [2026-10-26] lint | 全量 lint 清零：8 个陈旧页补回链、lcp.md 修正公式与论文出处、7 条信息型预警（Pace 停用词 / 3 篇 paper 补对比 / 2 页回链知识链枢纽）
 
 ## [2026-10-27] ingest | Every Joule — 收录 Claude + Three.js 十课互动物理教学项目，并注明未发现官方源码仓库

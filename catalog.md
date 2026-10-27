@@ -5506,6 +5506,7 @@
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
 - [RoboLab（通用策略高保真仿真评测）](wiki/entities/robolab.md) — RoboLab**（*RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic 是 ARISE Initiative 发布的机器人示范学习研究框架。它把数据集、离线模仿学习与强化学习算法、训练配置和评估工具组织在统一接口下，方便在同一批机器人操作示范上比较方法 `📅unknown` `[entity_page]`
+- [RoboParty RP1（ROBOTO 01）](wiki/entities/roboparty-rp1.md) — RP1（ROBOTO 01）是 RoboParty 发布的人形机器人开发平台，目标是把本体设计、仿真模型、底层系统、部署和学习工作流放在可检查、可扩展的开放体系中。 `📅unknown` `[entity_page]`
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
@@ -5891,6 +5892,7 @@
 - [LoRA (Low-Rank Adaptation，低秩适配)](wiki/concepts/lora.md) — LoRA** 是一种参数高效微调（PEFT）方法：不改动预训练权重，只在其旁路上训练一对低秩矩阵，使大模型能以极小的可训练参数量适配新任务、新形态或新动力学。 `📅unknown` `[wiki_page]`
 - [Mamba](wiki/concepts/mamba.md) — Mamba**：在 SSM 上加入 **选择性**——离散化参数随当前输入变化——并用硬件感知的 **并行扫描** 训练，推理时只更新常 `📅unknown` `[wiki_page]`
 - [Math 2.0：AI 时代的数学研究范式](wiki/concepts/math-2-0.md) — Math 2.0** 是 Terence Tao 对 AI 时代数学研究的愿景：从证明稀缺的传统假设转向管理证明丰裕，借 AI 扩展数学共同体的理解、协作与现实影响，而不把自动解题本身当作终点。 `📅unknown` `[wiki_page]`
+- [机制可解释性（Mechanistic Interpretability）](wiki/concepts/mechanistic-interpretability.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [消息队列可靠性（队列 / 重复消费 / 顺序 / 幂等）](wiki/concepts/message-queue-reliability.md) — 消息队列可靠性** 处理「异步投递」下的 **至少一次、重复、乱序** 现实，要求消费者 **幂等**——适用于任务调度与遥测，不替代实时中间件。 `📅unknown` `[wiki_page]`
 - [Micromouse](wiki/concepts/micromouse.md) — Micromouse** 是要求 **完全自主** 的小型差速（或同类）机器人在 **事先未知的网格迷宫** 中探索建图，并在后续跑次中以 **最短时间** 抵达中心目标区的经典机器人竞赛——现代 `📅unknown` `[wiki_page]`
 - [MoE（Mixture-of-Experts，混合专家）](wiki/concepts/mixture-of-experts.md) — MoE**：在一层里放多个 **专家**（通常是 MLP），由 **门控** 为每个 token/样本算出稀疏权重，只运行被选中的专家并把输出加权求和。 `📅unknown` `[wiki_page]`
