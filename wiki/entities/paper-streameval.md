@@ -51,7 +51,8 @@ summary: "StreamEval（arXiv:2610.28402）：交互式流式视频生成基准�
 
 ### 评测流程
 
-```flowchart LR
+```mermaid
+flowchart LR
   cases["脚本用例与输入时间线"] --> harness["StreamEval 运行框架"]
   harness --> model["被测流式生成模型"]
   model --> artifacts["视频、音频与会话记录"]
@@ -69,7 +70,8 @@ summary: "StreamEval（arXiv:2610.28402）：交互式流式视频生成基准�
 
 ### 源码运行时序图
 
-```sequenceDiagram
+```mermaid
+sequenceDiagram
     autonumber
     actor User as 评测者
     participant CLI as StreamEval CLI
