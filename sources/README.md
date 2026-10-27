@@ -179,6 +179,7 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [awesome-supermimic.md](repos/awesome-supermimic.md) | DiaoOrg/awesome-supermimic：SuperMimic 社区实现、扩展、演示与数据资源索引（CC0-1.0）
 - [x] [roboparty_rp1.md](repos/roboparty_rp1.md) | RoboParty RP1（ROBOTO 01）官方代码仓库体系、复现入口与许可证边界
 - [x] [theorem-labs-oss-verify-proofs.md](repos/theorem-labs-oss-verify-proofs.md) | Theorem OSS Verify：OSS-Fuzz 入口证明、Rocq 检查与 RISC-V/Linux process semantics
 - [x] [mjviser.md](repos/mjviser.md) | mujocolab/mjviser：基于 Viser 的 MuJoCo 浏览器查看器；与 mjlab（训练）分层区分（Apache-2.0）
