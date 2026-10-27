@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | sources/repos/somark-oxr.md — 收录 OXR 文档解析模型，代码及权重公开，记录部署与许可边界
+
 ## [2026-10-27] ingest | 复用 PLaW-VLA、V-JEPA 2、π0.5、Motus 与 LIBERO-Plus 现有节点，补充方法和评测关系
 
 ## [2026-10-27] ingest | FastHarness 官方资料
