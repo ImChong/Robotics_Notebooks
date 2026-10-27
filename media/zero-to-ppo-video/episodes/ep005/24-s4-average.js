@@ -1,11 +1,11 @@
 // 005 第 4 幕：直接平均——跳出了旋转矩阵（路线 §L0 自测题 1）。左边一张从上往下看的地面网格：x 是机器人原来的「前」、y 是「左」；右栏放算式、G1 与示意图。
-// 句 1「机器人」右栏出 G1，「朝前」网格上两根小箭头标「0°：朝前」，「转到朝左」G1 原地往左转 90°，网格上同时转出一组虚线小箭头标「90°：朝左」，
-//    「中间那一刻」两组之间画 0°→90° 的弧，45° 处一个问号；
+// 句 1「机器人」右栏出 G1，「朝前」网格上两根小箭头标「0°：朝前」，「转到朝左」G1 原地往左转 90°，网格上同时有一组虚线小箭头从 0° 跟着转过去、
+//    描出 0°→90° 的弧，转到了标「90°：朝左」；「中间那一刻」弧鼓一下，45° 处一个问号；
 // 句 2 G1 退场，右栏「两个矩阵」出 0° 和 90° 的矩阵，「对应位置」四对数依次一起框亮，「除以二」出「÷ 2 =」，结果矩阵四个数按念到的顺序写出来；
 // 句 3「画出来」网格从原样变成平均出来的矩阵：两根小箭头转到 45°（虚线标 45°），「长度」「零点七一」两根上写橙色 0.71，「格子」两根小箭头围成的小方块（红）和原来的小方块（虚线）比，「缩小」鼓一下；
 // 句 4 右栏算式收起、结果矩阵挪到顶上，「第一条破了」「航列式」「零点二五」「零点五」「第二条也破了」三行依次写出，方块里写「面积 0.5」；
 // 句 5「不是旋转」右栏顶上橙牌，「身子」右栏出 G1（按 45° 摆，后面垫一台正常的淡影子），「摆」G1 横向压成 0.71 倍，「压瘦」写「压瘦了一圈」；
-// 句 6 网格回到原样，「朝前」「朝后」网格上标 0° 与 180°（虚线小箭头），右栏出 0° 和 180° 的两个矩阵，「一平均」结果全是 0，
+// 句 6 网格回到原样，「朝前」标 0°，「朝后」虚线小箭头从 0° 转过 180°、描出半圈弧，转到了标「180°：朝后」；右栏出 0° 和 180° 的两个矩阵，「一平均」结果全是 0，
 //    「所有的点」网格交点上亮起一片点，「缩到了原点」网格、点和小箭头一起缩成原点一个点；
 // 句 7 网格回来，「箭头尖」往右那根沿单位圆从 0° 转到 90°，「圆上」圆亮一下；「直接平均」画橙色虚线弦，「直线」一个橙点沿弦走过去，
 //    「离开了圆」弦和圆弧之间的月牙涂橙；「三维」右栏出示意图：一个弯曲的球面（特殊正交群），两个朝向之间的蓝色弧沿着面走、橙色虚线弦穿进里面，「跳出」橙叉；
@@ -19,12 +19,13 @@
   var MX = 622;
   var I = [1, 0, 0, 1], R90 = [0, -1, 1, 0], R180 = [-1, 0, 0, -1], AVG = [0.5, -0.5, 0.5, 0.5], Z = [0, 0, 0, 0], SUM = [1, -1, 1, 1];
   var T = {
-    robot: 2.62, front: 3.26, turn: [3.87, 0.8], left: 4.46, mid: 7.24, ask: 8.38,
+    // turn：G1 和虚线小箭头一起转 90°，转到了才标「90°：朝左」；f180：「朝后」起虚线小箭头转 180°，「一百八十度」转到
+    robot: 2.62, front: 3.26, turn: [3.87, 1.2], mid: 7.24, ask: 8.38,
     out1: 10.75, mats: 11.89, pairs: 12.51, div: 13.8, res: [14.85, 16.76, 15.61, 17.54],   // res 按矩阵里 [左上, 右上, 左下, 右下] 的顺序
     draw: [19.4, 1.6], half: 21.73, len: 22.76, l71: 23.99, grid: 24.9, shrink: 25.7,
     up: [27.0, 0.6], b1: 28.53, det: [29.56, 30.17, 30.96, 32.17], b2: 32.93,
     notRot: 35.49, body: 36.73, squash: [38.26, 1.0], thin: 39.59,
-    back: [41.5, 0.7], f0: 44.01, f180: 44.53, mats2: 45.44, avg2: 46.75, zeros: [47.39, 47.6, 47.99, 48.46], dots: 48.87, collapse: [49.61, 0.9],
+    back: [41.5, 0.7], f0: 44.01, f180: [44.43, 1.4], mats2: 45.44, avg2: 46.75, zeros: [47.39, 47.6, 47.99, 48.46], dots: 48.87, collapse: [49.61, 0.9],
     restore: [51.8, 0.7], sweep: [53.53, 1.0], onCircle: 54.55, chord: 55.13, walk: [56.16, 1.2], leave: 57.81, so3: 59.8, jump: 61.88,
     add: 65.48, toSum: [66.6, 0.8], addX: 68.52, toI: [69.9, 0.5], steps: [70.68, 71.4], mul: 72.1, ep3: 72.78
   };
@@ -165,19 +166,23 @@
 
           /* 句 1：0° / 90° 两组、弧和问号；句 6：0° / 180° */
           var phase2 = st >= T.back[0];
-          var gAng = phase2 ? Math.PI : Math.PI / 2;
+          // 虚线小箭头从 0° 转过去（句 1 和 G1 一起转 90°，句 6 转 180°），句 6 留到「所有的点」再收
+          var turnW = phase2 ? T.f180 : T.turn, gEnd = turnW[0] + turnW[1];
+          var gAng = (phase2 ? Math.PI : Math.PI / 2) * f(st, turnW[0], turnW[1]);
           var ga = E.rot(gAng), g1p = at(ga, [1, 0]), g2p = at(ga, [0, 1]);
           ghostA[0].set(o[0], o[1], g1p[0], g1p[1]); ghostA[1].set(o[0], o[1], g2p[0], g2p[1]);
-          var ghostOn = phase2 ? f(st, T.f180, 0.4) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.turn[0] + T.turn[1], 0.3) * (1 - f(st, T.shrink + 1.2, 0.5)) * 0.8;
+          var out2 = 1 - f(st, T.dots - 0.3, 0.4);
+          var ghostOn = phase2 ? f(st, turnW[0], 0.2) * out2 : f(st, turnW[0], 0.2) * (1 - f(st, T.shrink + 1.2, 0.5)) * 0.8;
           ghostA.forEach(function (g) { E.op(g.g, ghostOn); });
           labs[0].setAttribute('x', P(1.06, 0)[0]); labs[0].setAttribute('y', P(0, -0.36)[1]);   // 圆外面
-          E.op(labs[0], phase2 ? f(st, T.f0, 0.3) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.front, 0.3) * (1 - f(st, T.draw[0], 0.4)));
+          E.op(labs[0], phase2 ? f(st, T.f0, 0.3) * out2 : f(st, T.front, 0.3) * (1 - f(st, T.draw[0], 0.4)));
           labs[1].textContent = phase2 ? '180°：朝后' : '90°：朝左';
           var lp = phase2 ? P(-1.06, -0.36) : P(-0.72, 1.2);   // 90° 的写在 y 轴左边，右上方留给弧和问号
           labs[1].setAttribute('x', lp[0]); labs[1].setAttribute('y', lp[1]); labs[1].setAttribute('text-anchor', phase2 ? 'end' : 'middle');
-          E.op(labs[1], phase2 ? f(st, T.f180, 0.3) * (1 - f(st, T.avg2 + 0.1, 0.4)) : f(st, T.left, 0.3) * (1 - f(st, T.draw[0], 0.4)));
-          midArc.setAttribute('d', arcD(0, Math.PI / 2, 1.32));
-          E.op(midArc, f(st, T.mid, 0.4) * (1 - f(st, T.draw[0], 0.4)));
+          E.op(labs[1], phase2 ? f(st, gEnd, 0.3) * out2 : f(st, gEnd, 0.3) * (1 - f(st, T.draw[0], 0.4)));
+          midArc.setAttribute('d', gAng > 0.01 ? arcD(0, gAng, 1.32) : '');   // 跟着虚线小箭头描出来
+          E.op(midArc, f(st, turnW[0], 0.2) * (phase2 ? out2 : 1 - f(st, T.draw[0], 0.4)));
+          midArc.style.strokeWidth = 3 + 2 * bump(st, T.mid, 0.8);
           var ap = P(1.24, 1.24);
           ask.setAttribute('x', ap[0]); ask.setAttribute('y', ap[1] + 14);
           E.pop(ask, ap[0], ap[1], f(st, T.ask, 0.3) * (1 - f(st, T.draw[0], 0.4)), 0.6);
@@ -236,7 +241,7 @@
           var robotOn = phase5 ? f(st, T.body, 0.4) * (1 - f(st, T.back[0], 0.4)) : f(st, T.robot, 0.4) * (1 - f(st, T.out1, 0.4));
           E.op(gRobot, robotOn);
           E.op(thin, phase5 ? f(st, T.thin, 0.3) : 0);
-          turnLab.textContent = st < T.turn[0] + 0.4 ? '朝前' : '朝左';
+          turnLab.textContent = st < T.turn[0] + T.turn[1] / 2 ? '朝前' : '朝左';
           E.op(turnLab, phase5 ? 0 : f(st, T.front, 0.3));
 
           // 两个矩阵 + 除以二（句 2；句 6 换成 0° 和 180°）
