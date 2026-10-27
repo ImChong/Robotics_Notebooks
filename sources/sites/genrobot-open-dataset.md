@@ -26,6 +26,11 @@
 | **训练 / VLA 代码** | **未见** | 项目页与 HF 卡片未列官方训练栈 |
 | **全量 RealOmni（含机器人侧）** | **部分 / 分批发** | 门户叙事 10Kh+1M clips；入库日可直链下载的为 **Gen-HumanEgo** 人类 ego 子集 |
 
+
+## 2026-10-27 更新：Gen-HumanWholeBody
+
+官网现列出 [Gen-HumanWholeBody](https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody)，标注 600 小时及约 3 cm MPJPE。数据卡许可和访问条件本次未能核实；参见 [数据集归档](../datasets/gen-human-whole-body-genrobot.md)。
+
 ## 联系方式（官网）
 
 - Email: opendata@genrobot.ai
