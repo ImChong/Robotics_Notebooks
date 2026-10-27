@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-27] ingest | FastHarness 官方资料
+
+补充官方代码归档和项目页入口，核对开放状态并完善已有实体的机制、实验与运行时序；项目页本次不可访问，数据状态待核实。
+
 ## [2026-10-27] ingest | sources/papers/wevisone_vl_arxiv_2610_31329.md — 收录统一视觉感知、缺失目标拒答及官方开放状态
 
 ## [2026-10-27] ingest | sources/papers/holi-world.md 等 — 收录 Ropedia 第一视角重建与空间推理，复用 W0 和 DONIC，记录开源状态
