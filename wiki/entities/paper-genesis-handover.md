@@ -26,8 +26,8 @@ summary: "GENESIS-Handover 将任务导向人机递物建模为生成式手-物�
 | VLM | Vision-Language Model | 为物体-任务生成抓握描述及交互图像的视觉语言模型 |
 | RGB-D | Red-Green-Blue + Depth | 感知真实场景、物体与接收者手部的彩色和深度输入 |
 | ICP | Iterative Closest Point | 将合成候选中的物体点云对齐到真实物体网格 |
-| MANO | Modeling and Analysis of Nonlinear Hand Motion | 从候选图像估计手部形状与关节姿态的手模型 |
-| AFT | Affordance-based Framework for Task-oriented handovers | 为候选对齐初始化和机器人夹持位置提供任务可供性先验的基线系统 |
+| MANO | Hand model (Romero et al., 2017) | 从候选图像估计手部形状与关节姿态的手模型 |
+| AFT-Handover | Baseline method name | 为候选对齐初始化和机器人夹持位置提供任务可供性先验；本文未展开该缩写 |
 
 ## 为什么重要
 
