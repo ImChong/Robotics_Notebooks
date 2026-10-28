@@ -144,3 +144,5 @@ flowchart TB
 - [arXiv:2512.14696](https://arxiv.org/abs/2512.14696)
 - [VideoMimic 项目页](https://videomimic.github.io/)（站点中与 CRISP 做交互对比的基线之一）
 - [Sim2Real（概念总览）](../concepts/sim2real.md)
+
+- 相关研究：[autophyx](../entities/paper-autophyx.md)。
