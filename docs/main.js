@@ -3502,6 +3502,20 @@
     var typeLabelOf =
       (window.RNWikiTypeLabels && window.RNWikiTypeLabels.formatChinese) || function () { return ''; };
 
+    if (graphLink) {
+      var roadmapDetail = detailPages[roadmapId] || {};
+      var focus = roadmapDetail.path || roadmapPage.path || roadmapPage.id || roadmapId;
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(focus);
+      graphLink.hidden = false;
+    }
+    wrap.hidden = false;
+
+    // 纵深路线阶段少（≤8）、每阶段节点 ≤10：用天赋树一屏铺开；主路线阶段多仍用竖向树
+    if (roadmapId.indexOf('roadmap-depth-') === 0) {
+      renderRoadmapTalentTree(stages, treeEl, metaEl, detailPages, typeColors);
+      return;
+    }
+
     var totalNodes = 0;
     var parts = [];
     parts.push('<div class="roadmap-kmap-root">');
@@ -3587,13 +3601,143 @@
     treeEl.innerHTML = parts.join('');
 
     if (metaEl) metaEl.textContent = stageCount + ' 个阶段 · ' + totalNodes + ' 个知识节点';
-    if (graphLink) {
-      var roadmapDetail = detailPages[roadmapId] || {};
-      var focus = roadmapDetail.path || roadmapPage.path || roadmapPage.id || roadmapId;
-      graphLink.href = 'graph.html?focus=' + encodeURIComponent(focus);
-      graphLink.hidden = false;
+  }
+
+  /**
+   * 纵深路线「知识地图」：天赋树布局。每个 Stage 一列（左→右），列内节点为天赋格；
+   * 列间连线只取 link-graph.json 里相邻两阶段节点的站内互链，不另造依赖关系。
+   * 悬停 / 聚焦节点时点亮它沿连线的上游与下游链，其余变暗。
+   */
+  function renderRoadmapTalentTree(stages, treeEl, metaEl, detailPages, typeColors) {
+    var cells = [];
+    var parts = [];
+    parts.push('<div class="roadmap-ttree" style="--tt-cols:' + stages.length + ';">');
+    parts.push('<svg class="roadmap-ttree-edges" aria-hidden="true"></svg>');
+    for (var s = 0; s < stages.length; s++) {
+      var stage = stages[s];
+      var title = String(stage.title || '');
+      var related = Array.isArray(stage.related_items) ? stage.related_items : [];
+      var badge = formatRoadmapStageBadge(stage.id) || '·';
+      var chapterHref = '#' + slugifyHeading(stage.heading || (badge + ' ' + title));
+      parts.push('<div class="roadmap-ttree-col" role="group" aria-label="' + escapeHtml(badge + ' ' + title) + '">');
+      parts.push('<a class="roadmap-ttree-head" href="' + escapeHtml(chapterHref) + '">');
+      parts.push('<span class="roadmap-kmap-badge">' + escapeHtml(badge) + '</span>');
+      parts.push('<span class="roadmap-ttree-head-title">' + escapeHtml(title) + '</span>');
+      parts.push('<span class="roadmap-kmap-stage-count">' + escapeHtml(String(related.length)) + '</span>');
+      parts.push('</a>');
+      for (var k = 0; k < related.length; k++) {
+        var rid = related[k];
+        var page = detailPages[rid] || {};
+        var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+        var color = typeColors[roadmapKmapNodeType(page, rid)] || typeColors[''] || '#64748b';
+        parts.push(
+          '<a class="roadmap-ttree-node" data-tt="' + cells.length + '" href="' + escapeHtml(href) +
+            '" style="--tt-c:' + color + ';">'
+        );
+        parts.push('<span class="roadmap-kmap-dot" aria-hidden="true"></span>');
+        parts.push('<span class="roadmap-ttree-label">' + escapeHtml(page.title || rid) + '</span>');
+        parts.push('</a>');
+        cells.push({ id: rid, stage: s });
+      }
+      parts.push('</div>');
     }
-    wrap.hidden = false;
+    parts.push('</div>');
+    treeEl.classList.add('roadmap-kmap--ttree');
+    treeEl.innerHTML = parts.join('');
+    if (metaEl) metaEl.textContent = stages.length + ' 个阶段 · ' + cells.length + ' 个知识节点';
+
+    var grid = treeEl.firstChild;
+    var svg = grid.firstChild;
+    var nodeEls = grid.querySelectorAll('.roadmap-ttree-node');
+    var edges = [];
+
+    function drawEdges() {
+      var box = grid.getBoundingClientRect();
+      svg.setAttribute('width', grid.scrollWidth);
+      svg.setAttribute('height', grid.scrollHeight);
+      var html = '';
+      for (var e = 0; e < edges.length; e++) {
+        var a = nodeEls[edges[e][0]].getBoundingClientRect();
+        var b = nodeEls[edges[e][1]].getBoundingClientRect();
+        var x1 = a.right - box.left;
+        var y1 = a.top + a.height / 2 - box.top;
+        var x2 = b.left - box.left;
+        var y2 = b.top + b.height / 2 - box.top;
+        var mx = (x1 + x2) / 2;
+        html += '<path d="M' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+          'C' + mx.toFixed(1) + ' ' + y1.toFixed(1) + ' ' + mx.toFixed(1) + ' ' + y2.toFixed(1) +
+          ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1) + '"/>';
+      }
+      svg.innerHTML = html;
+    }
+
+    function lightUp(start) {
+      var lit = {};
+      lit[start] = true;
+      // dir 0 沿连线往上游（前置）走到底，dir 1 往下游（后续）走到底
+      for (var dir = 0; dir < 2; dir++) {
+        var queue = [start];
+        while (queue.length) {
+          var cur = queue.pop();
+          for (var e = 0; e < edges.length; e++) {
+            var next = edges[e][dir];
+            if (edges[e][1 - dir] === cur && !lit[next]) {
+              lit[next] = true;
+              queue.push(next);
+            }
+          }
+        }
+      }
+      grid.classList.add('is-focus');
+      for (var n = 0; n < nodeEls.length; n++) nodeEls[n].classList.toggle('is-lit', !!lit[n]);
+      for (var p = 0; p < svg.children.length; p++) {
+        svg.children[p].classList.toggle('is-lit', !!(lit[edges[p][0]] && lit[edges[p][1]]));
+      }
+    }
+
+    function clearLight() {
+      grid.classList.remove('is-focus');
+    }
+
+    function onEnter(ev) {
+      var node = ev.target.closest ? ev.target.closest('.roadmap-ttree-node') : null;
+      if (node) lightUp(Number(node.dataset.tt));
+      else clearLight();
+    }
+
+    ensureLinkGraphData().then(function (gd) {
+      var wanted = {};
+      for (var c = 0; c < cells.length; c++) wanted[cells[c].id] = true;
+      var idOfPath = {};
+      var gNodes = (gd && gd.nodes) || [];
+      for (var gn = 0; gn < gNodes.length; gn++) {
+        if (gNodes[gn] && wanted[gNodes[gn].detail_id]) idOfPath[gNodes[gn].id] = gNodes[gn].detail_id;
+      }
+      var linked = {};
+      var gEdges = (gd && gd.edges) || [];
+      for (var ge = 0; ge < gEdges.length; ge++) {
+        var src = idOfPath[gEdges[ge].source];
+        var dst = idOfPath[gEdges[ge].target];
+        if (src && dst) linked[src + '|' + dst] = linked[dst + '|' + src] = true;
+      }
+      for (var j = 0; j < cells.length; j++) {
+        for (var i = 0; i < cells.length; i++) {
+          if (cells[i].stage === cells[j].stage - 1 && linked[cells[i].id + '|' + cells[j].id]) edges.push([i, j]);
+        }
+      }
+      if (!edges.length) return;
+      if (metaEl) {
+        metaEl.textContent += ' · ' + edges.length + ' 条互链';
+        metaEl.title = '连线：相邻两个阶段的节点之间存在站内互链；悬停节点可点亮其上下游链';
+      }
+      new ResizeObserver(drawEdges).observe(grid);
+      grid.addEventListener('mouseover', onEnter);
+      grid.addEventListener('focusin', onEnter);
+      grid.addEventListener('mouseleave', clearLight);
+      grid.addEventListener('focusout', clearLight);
+    }).catch(function () {
+      // 取不到图谱只是没有连线，分列布局照常可用
+    });
   }
 
   function renderDetailMath(container) {
