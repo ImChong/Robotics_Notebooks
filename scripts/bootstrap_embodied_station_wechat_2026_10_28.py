@@ -105,9 +105,25 @@ GROUP_RELATED = {
 }
 # 个别节点额外关联
 EXTRA_RELATED = {
-    9: [TACT], 17: [TELEOP, RETARGET], 8: [RETARGET], 26: [VLN], 38: [BIMAN], 47: [BIMAN],
-    45: [BIMAN], 22: [DP], 23: [DP], 50: [DP], 42: [DP], 24: [TELEOP], 28: [TACT],
-    31: [VLN], 44: [VLN], 12: [LLMCTRL], 56: [LLMCTRL], 57: [LLMCTRL], 53: [LLMCTRL],
+    9: [TACT],
+    17: [TELEOP, RETARGET],
+    8: [RETARGET],
+    26: [VLN],
+    38: [BIMAN],
+    47: [BIMAN],
+    45: [BIMAN],
+    22: [DP],
+    23: [DP],
+    50: [DP],
+    42: [DP],
+    24: [TELEOP],
+    28: [TACT],
+    31: [VLN],
+    44: [VLN],
+    12: [LLMCTRL],
+    56: [LLMCTRL],
+    57: [LLMCTRL],
+    53: [LLMCTRL],
 }
 
 # 公众号标题无短名（或冒号过远）时的手工短名
@@ -145,9 +161,15 @@ SLUG_OVERRIDE = {51: "x-world-variable-view-video-priors"}
 # 步骤 2.5 核查（2026-10-28）：repo = git ls-remote 结果；site = 项目页扫描；
 # 其余键为人工补充说明。未出现的论文：有 code 且 ls-remote 成功 → 已开源。
 OPEN_CHECK: dict[int, tuple[str, str]] = {
-    13: (OPEN, "公众号只给 Hugging Face 模型页；页面链接的 GitHub 仓库 josefchen/robojev 经 git ls-remote 可达。"),
+    13: (
+        OPEN,
+        "公众号只给 Hugging Face 模型页；页面链接的 GitHub 仓库 josefchen/robojev 经 git ls-remote 可达。",
+    ),
     17: (TBD, "项目页 HTTP 200，未列 GitHub，页面含 coming soon 字样（脚本扫描）。"),
-    24: (OPEN, "公众号未给代码链接；项目页链接的 adithyamurali/OpenJaws 经 git ls-remote 可达（页面另含 soon 字样，可能指部分资源）。"),
+    24: (
+        OPEN,
+        "公众号未给代码链接；项目页链接的 adithyamurali/OpenJaws 经 git ls-remote 可达（页面另含 soon 字样，可能指部分资源）。",
+    ),
     25: (OPEN, "公众号未给代码链接；项目页链接的 InternRobotics/EBench 经 git ls-remote 可达。"),
     27: (TBD, "项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。"),
     32: (TBD, "项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。"),
@@ -156,10 +178,19 @@ OPEN_CHECK: dict[int, tuple[str, str]] = {
     42: (NOLINK, "项目页为 anonymous.4open.science 匿名链接，curl 返回 HTTP 400，无法核查代码。"),
     43: (TBD, "项目页 HTTP 200，仅见 mujoco_menagerie 引用，页面含 soon 字样（脚本扫描）。"),
     48: (OPEN, "公众号未给代码链接；项目页链接的 luo-yc17/OmniBrain-0 经 git ls-remote 可达。"),
-    50: (PART, "公众号未给代码链接；项目页链接 teee111/ADWM-Code，git ls-remote 失败（仓库不存在或私有），不能当作已开源。"),
+    50: (
+        PART,
+        "公众号未给代码链接；项目页链接 teee111/ADWM-Code，git ls-remote 失败（仓库不存在或私有），不能当作已开源。",
+    ),
     53: (TBD, "项目页 HTTP 200，仅见项目页模板链接，页面含 soon 字样（脚本扫描）。"),
-    54: (OPEN, "公众号未给代码链接；项目页链接的 abwerby/GEMS 经 git ls-remote 可达（页面另含 soon 字样，可能指部分资源）。"),
-    59: (PART, "公众号给出的是 GitLab snippet（gitlab.com/-/snippets/...），不是完整仓库，git ls-remote 失败；不能当作完整开源。"),
+    54: (
+        OPEN,
+        "公众号未给代码链接；项目页链接的 abwerby/GEMS 经 git ls-remote 可达（页面另含 soon 字样，可能指部分资源）。",
+    ),
+    59: (
+        PART,
+        "公众号给出的是 GitLab snippet（gitlab.com/-/snippets/...），不是完整仓库，git ls-remote 失败；不能当作完整开源。",
+    ),
 }
 
 
@@ -180,7 +211,9 @@ def parse(txt: str) -> list[dict]:
             blocks.append(dict(n=int(m.group(1)), head=m.group(2), lines=[]))
         elif blocks and l:
             blocks[-1]["lines"].append(l)
-    skip = re.compile(r"^(另外 \d+ 篇|\d+ 篇一眼|下面每篇|关注本号|整理不易|具身智能小站|Like|Share|Boost|Comment|​)")
+    skip = re.compile(
+        r"^(另外 \d+ 篇|\d+ 篇一眼|下面每篇|关注本号|整理不易|具身智能小站|Like|Share|Boost|Comment|​)"
+    )
     out = []
     for b in blocks:
         ls = b["lines"]
@@ -237,7 +270,10 @@ def build_papers(txt: str) -> list[dict]:
         if n in OPEN_CHECK:
             op, note = OPEN_CHECK[n]
         elif code:
-            op, note = OPEN, "仓库可达（git ls-remote）。" + ("项目页 HTTP 200。" if project else "")
+            op, note = (
+                OPEN,
+                "仓库可达（git ls-remote）。" + ("项目页 HTTP 200。" if project else ""),
+            )
         else:
             op, note = NOLINK, "项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。"
         if code and "gitlab.com/-/snippets" in code:
@@ -261,7 +297,9 @@ def build_papers(txt: str) -> list[dict]:
                 one=S[0],
                 why=o["head"] + "。" + (S[1] if len(S) > 1 else ""),
                 mech=S[0],
-                metrics=("公众号转述：" + S[-1]) if len(S) > 1 else "公众号未给具体数字，本页不引用。",
+                metrics=("公众号转述：" + S[-1])
+                if len(S) > 1
+                else "公众号未给具体数字，本页不引用。",
                 concl=o["head"] + "：" + (S[-1] if len(S) > 1 else S[0]),
                 related=GROUP_RELATED[g] + EXTRA_RELATED.get(n, []),
                 abbr=_abbr(short, title),
@@ -694,8 +732,6 @@ def _patch_reuse(a: str) -> None:
         _append("related", mapl)
         lines = [f"updated: {TODAY}" if l.startswith("updated:") else l for l in lines]
         path.write_text("\n".join(lines) + sep + body, encoding="utf-8")
-
-
 
 
 def main() -> None:
