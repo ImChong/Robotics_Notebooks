@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | sources/repos/jeremyipark-vision-demos.md — 收录运动视频分析示例，注明开源代码与外部模型调用边界
+
+## [2026-10-28] ingest | sources/papers/self_improving_agents_embodied_lifelong_learning.md — 对比自我改进机制与具身终身学习，复用 RISE、SERL、Arcadia 节点并记录开放边界
+
 ## [2026-10-28] structural | roadmap/depth-cross-embodiment.md — 联网核对一手论文，新增「谱系速览」表（Devin 2017 → NerveNet → RoboNet → SMP → MetaMorph → OXE → Polybot → Mirage → Octo → CrossFormer → HPT → URMA → RoVi-Aug → LAPA → Embodiment Scaling Laws）并在各 Stage 补一手出处
 
 ## [2026-10-28] lint | 修复 2 个陈旧页面：contact-rich-manipulation.md 补入 GENESIS-Handover（arXiv:2610.08003）；paper-harness-vla.md 同步 RoboFoundry 2026-10-28 开源状态复核
