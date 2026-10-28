@@ -3,7 +3,7 @@
 //    右栏「朝向 R」的 3×3 跟着实时变、转完是 006 的 [[0, −1, 0], [1, 0, 0], [0, 0, 1]]，顶上写「第 5、6 集：朝向」；
 //    「位置」地面网格和地图原点的三根灰轴淡入，紫色虚线箭头从原点画到骨盆，「数字」右栏「位置 p」一列三个数弹出；
 // ② 接 006 片尾的预告：「朝向」「位置」右栏两块依次鼓一下，「四乘四的矩阵」两块下面写「拼成 4×4？」，
-//    「一个点」地上的杯子弹出、头上摄像头画一条亮黄虚线视线、杯子旁写「点 ?」，「一个方向」脚边地上一支白箭头（往前）、旁写「方向 ?」，「不同」两个问号鼓一下；
+//    「一个点」地上的杯子（三维的圆柱杯，和房间用同一个投影，见 00-common.js 的 E.cup3）弹出、头上摄像头画一条亮黄虚线视线、杯子旁写「点 ?」，「一个方向」脚边地上一支白箭头（往前）、旁写「方向 ?」，「不同」两个问号鼓一下；
 // ③ 「点要先转、再平移」右栏写「点：先转、再平移」，「方向只转、不平移」写「方向：只转、不平移」，问号换成「点」「方向」；
 //    「拼成一个四乘四」两对小括号先收起、位置那一列贴到 R 右边、换成一对大括号，最下面一排 0、0、0、1 弹出，「点后面补一」「方向后面补零」各补一行 (x, y, z, 1 / 0)。
 // 时刻取自配音的逐词时间（../ep007.py 的 [from, to] 等于每句配音实长，分镜时间 = 念到这个词的时刻）。
@@ -30,13 +30,14 @@
     pLab.style.fontFamily = 'KaTeX_Math, serif'; pLab.style.fontStyle = 'italic';
     var fr = E.frame3(s, 4.5, 13);
     var camAt = room.at('d435_link'), cupAt = P([CUP[0], CUP[1], 0]);
-    var sight = K.paint(E.el('path', { d: 'M ' + camAt[0].toFixed(1) + ' ' + camAt[1].toFixed(1) + ' L ' + cupAt[0].toFixed(1) + ' ' + (cupAt[1] - 14).toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
-    var cup = E.cup(s, cupAt[0], cupAt[1], 30);
+    var cup = E.cup3(s, P, CUP), cupMid = P([CUP[0], CUP[1], 0.065]);
+    var sight = K.paint(E.el('path', { d: 'M ' + camAt[0].toFixed(1) + ' ' + camAt[1].toFixed(1) + ' L ' + cup.top[0].toFixed(1) + ' ' + cup.top[1].toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
+    s.insertBefore(sight, cup.g);   // 视线压在杯子下面，停在杯口
     var v0 = P([VEL[0][0], VEL[0][1], 0]), v1 = P([VEL[1][0], VEL[1][1], 0]);
     var vel = E.vec(s, E.INK, 4.5, { head: 15 }); vel.set(v0[0], v0[1], v1[0], v1[1]);
-    var askPt = E.halo(E.txt(s, cupAt[0] + 22, cupAt[1] - 2, '点 ?', 22, E.HI, 'start', 900));
+    var askPt = E.halo(E.txt(s, cupAt[0] + 36, cupAt[1] - 2, '点 ?', 22, E.HI, 'start', 900));
     var askDir = E.halo(E.txt(s, v1[0] + 14, v1[1] + 6, '方向 ?', 22, E.INK, 'start', 900));   // 写在箭头尖右边：左边是脚
-    var nPt = E.halo(E.txt(s, cupAt[0] + 22, cupAt[1] - 2, '点', 22, E.HI, 'start', 900));
+    var nPt = E.halo(E.txt(s, cupAt[0] + 36, cupAt[1] - 2, '点', 22, E.HI, 'start', 900));
     var nDir = E.halo(E.txt(s, v1[0] + 14, v1[1] + 6, '方向', 22, E.INK, 'start', 900));
 
     /* ── 右：朝向 R、位置 p → 4×4（转身时 R 的数留一位小数，按最宽的那组留空） ── */
@@ -77,11 +78,11 @@
 
         /* ② 杯子、视线、往前的方向 */
         E.drawOn(sight, f(t, T.cup, 0.6));
-        E.pop(cup, cupAt[0], cupAt[1] - 12, f(t, T.cup, 0.35), 0.6);
+        E.pop(cup.g, cupMid[0], cupMid[1], f(t, T.cup, 0.35), 0.6);
         E.op(vel.g, f(t, T.dir, 0.35));
         var aOut1 = 1 - f(t, T.ptAns, 0.3), aOut2 = 1 - f(t, T.dirAns, 0.3), qb = bump(t, T.diff, 0.8);
         E.op(askPt, f(t, T.cup + 0.3, 0.3) * aOut1); E.op(askDir, f(t, T.dir + 0.3, 0.3) * aOut2);
-        E.scaleAt(askPt, cupAt[0] + 22, cupAt[1] - 10, 1 + 0.2 * qb); E.scaleAt(askDir, v1[0] + 14, v1[1] - 2, 1 + 0.2 * qb);
+        E.scaleAt(askPt, cupAt[0] + 36, cupAt[1] - 10, 1 + 0.2 * qb); E.scaleAt(askDir, v1[0] + 14, v1[1] - 2, 1 + 0.2 * qb);
         E.op(nPt, f(t, T.ptAns, 0.3)); E.op(nDir, f(t, T.dirAns, 0.3));
 
         /* 右栏：R 与 p 分开 → 拼成 4×4 */

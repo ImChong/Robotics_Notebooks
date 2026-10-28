@@ -2,12 +2,16 @@
 // 句 1「摄像头」扫地机前方张开一片亮黄视野，「袜子」袜子在 (2, 3) 弹出，「正前方两格」从扫地机中心沿红箭头画红色虚线（写「前 2」），
 //    「往左一格」再沿绿箭头方向画绿色虚线（写「左 1」），右栏顶上写「扫地机看到」和列向量 (2, 1)；
 // 句 2「自己的说法」两条虚线鼓一下，「地图」地图的两根轴亮一下，「什么位置」袜子旁边打问号；
-// 句 3「先转」右栏写「① 先转」，「旋转矩阵乘二、一」出 R 乘 (2, 1)，「第一列拿两份」R 的第一列框红、地图上从原点往上画两格红线，下一行出 2 (0, 1)，
-//    「第二列拿一份」第二列框绿、红线尖上再往左画一格绿线，出 + 1 (−1, 0)，「加起来」从原点画亮黄箭头到 (−1, 2)，「负一、二」写出结果；
-// 句 4「前」「左」扫地机旁的两条虚线依次鼓一下，「上」「左」原点出发的红线、绿线依次鼓一下，「箭头」亮黄箭头亮一下，「原点」原点鼓一下；
-// 句 5「再平移」右栏写「② 再平移」，「扫地机的位置」紫箭头从原点画到扫地机，「三、一」出 + (3, 1)，「得到」亮黄箭头整支平移、起点从原点挪到扫地机，
+// 句 3 讲「转」要看得见转：「先转」右栏写「① 先转」；「二」「一」「画在原点」先按车头朝右的样子把 (2, 1) 画在原点：往右 2 格红线、往上 1 格绿线（「2」标在红线外侧，「1」标在绿线箭头尖外面，到「加起来」退场）、
+//    亮黄箭头指到 (2, 1)（扫地机自己的绿箭头尖正好也在 (2, 1)，这段先退淡）；「车头转了九十度」扫地机上画一段从朝右转到朝上的蓝虚线弧（写 90°）；
+//    「跟着转九十度」原点那一套（红线、绿线、亮黄箭头）绕原点一起转 90°，箭头尖描出一段蓝弧（写 90°），停在 (−1, 2)：红线朝上、绿线朝左；
+//    「旋转矩阵」「乘上二、一」右栏出 R 乘 (2, 1)；
+// 句 4（新拆出来的一句）「第一列拿两份」R 的第一列框红、朝上的红线亮一下，下一行出 2 (0, 1)；「第二列拿一份」第二列框绿、朝左的绿线亮一下，出 + 1 (−1, 0)；
+//    「负一、二」写出结果和 (−1, 2)；
+// 句 5「前」「左」扫地机旁的两条虚线依次鼓一下，「上」「左」原点出发的红线、绿线依次鼓一下，「箭头」亮黄箭头亮一下，「原点」原点鼓一下；
+// 句 6「再平移」右栏写「② 再平移」，「扫地机的位置」紫箭头从原点画到扫地机，「三、一」出 + (3, 1)，「得到」亮黄箭头整支平移、起点从原点挪到扫地机，
 //    箭头尖沿一支紫色虚线从 (−1, 2) 挪到 (2, 3)，「二、三」写出结果；「你看」袜子外一圈亮环，「落在袜子上」打勾；
-// 句 6 右栏底部框出「点：v′ = Rv + p」，「乘」「旋转矩阵」Rv 亮一下，「加上」「位置」+ p 亮一下。
+// 句 7 右栏底部框出「点：v′ = Rv + p」，「乘」「旋转矩阵」Rv 亮一下，「加上」「位置」+ p 亮一下。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
 (function () {
   var E = window.EP007;
@@ -17,10 +21,11 @@
   var T = {
     cam: 0.83, sock: 2.09, camOut: 2.8, g1: [3.21, 4.04], g2: [4.45, 4.9], seen: 3.9,
     self: 7.17, map: 8.99, ask: 9.81,
-    s1: 12.38, rv: 13.33, c1: 15.79, two: 16.37, c2: 16.98, one: 17.57, add: 18.04, res: [18.94, 19.63],
-    front: 22.35, left: 22.8, up: 24.37, left2: 24.8, arrow: 25.95, origin: 27.18,
-    s2: 29.5, p: [30.29, 31.4], pv: 32.14, slide: [33.1, 34.3], res2: [33.53, 33.98], look: 34.78, land: 35.99,
-    sum: 38.85, mul: 40.56, plus: 42.0
+    s1: 12.38, draw: [13.46, 13.9, 14.13], vacTurn: 15.53, turn: [18.0, 19.1], rv: 19.96, rvv: 21.07,
+    c1: 23.08, two: 23.66, c2: 24.27, one: 24.86, add: 25.33, res: [26.23, 26.92],
+    front: 29.64, left: 30.09, up: 31.66, left2: 32.09, arrow: 33.24, origin: 34.47,
+    s2: 36.79, p: [37.58, 38.69], pv: 39.43, slide: [40.4, 41.6], res2: [40.82, 41.27], look: 42.07, land: 43.29,
+    sum: 46.14, mul: 47.85, plus: 49.29
   };
   var RX = 452;                                              // 右栏左边界
 
@@ -40,17 +45,18 @@
 
   E.scenes[1] = {
     title: '点：先转，再平移',
-    dur: 43.58,
+    dur: 50.87,
     cues: [
       { at: 0, s: '扫地机看到一只袜子：正前方 2 格、往左 1 格 → (2, 1)' },
       { at: 6.14, s: '这是扫地机自己的说法：换到地图上，袜子在什么位置？' },
-      { at: 11.92, s: '① 先转：$R$ 乘 (2, 1)＝第一列拿 2 份 + 第二列拿 1 份＝(−1, 2)' },
-      { at: 20.73, s: '扫地机的前、左，换成了地图的上、左——可箭头还从原点出发' },
-      { at: 28.99, s: '② 再平移：加上**位置** (3, 1)，得到 (2, 3)，正好落在袜子上' },
-      { at: 37.77, s: '**点**换到地图上：先乘 $R$，再加 $p$，即 $v\' = Rv + p$' }
+      { at: 11.92, s: '① 先转：(2, 1) 先画在原点，跟着车头转 90°，就是 $R$ 乘 (2, 1)' },
+      { at: 22.98, s: '第一列拿 2 份 + 第二列拿 1 份 = (−1, 2)' },
+      { at: 28.02, s: '扫地机的前、左，换成了地图的上、左——可箭头还从原点出发' },
+      { at: 36.28, s: '② 再平移：加上**位置** (3, 1)，得到 (2, 3)，正好落在袜子上' },
+      { at: 45.06, s: '**点**换到地图上：先乘 $R$，再加 $p$，即 $v\' = Rv + p$' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('扫地机看到袜子在它正前方 2 格、往左 1 格，即 (2, 1)；换到地图上，先转：旋转矩阵乘 (2, 1)，第一列拿 2 份、第二列拿 1 份，得到 (−1, 2)，箭头还从原点出发；再平移：加上扫地机的位置 (3, 1)，得到 (2, 3)，正好落在袜子上；所以点换到地图上是先乘 R、再加 p');
+      var s = K.sceneSvg('扫地机看到袜子在它正前方 2 格、往左 1 格，即 (2, 1)；换到地图上，先转：先把 (2, 1) 按车头朝右画在原点，车头转了 90 度，箭头也跟着绕原点转 90 度，就是旋转矩阵乘 (2, 1)，第一列拿 2 份、第二列拿 1 份，得到 (−1, 2)，箭头还从原点出发；再平移：加上扫地机的位置 (3, 1)，得到 (2, 3)，正好落在袜子上；所以点换到地图上是先乘 R、再加 p');
 
       /* ══ 左：俯视地图 ══ */
       var pl = E.plane(s, O), P = pl.P, box = pl.box;
@@ -77,8 +83,17 @@
       var gF = dash([VX, VY], [VX, VY + 2], E.X), gL = dash([VX, VY + 2], SOCK, E.Y);
       var gFl = E.halo(E.txt(s, P(VX, 2)[0] + 14, P(VX, 2)[1] + 8, '前 2', 20, E.X, 'start', 900));
       var gLl = E.halo(E.txt(s, P(2.5, 3)[0] + 4, P(2.5, 3)[1] - 14, '左 1', 20, E.Y, 'middle', 900));
-      // 原点出发：两份 (0, 1)（红）、一份 (−1, 0)（绿）、合起来的亮黄箭头
+      // 原点那一套：先按车头朝右画 (2, 1)——往右 2（红）、往上 1（绿）、亮黄箭头；跟着车头转 90° 以后就是两份 (0, 1) 和一份 (−1, 0)
       var seg1 = E.vec(s, E.X, 5, { head: 14 }), seg2 = E.vec(s, E.Y, 5, { head: 14 });
+      var segL = [E.halo(E.txt(s, 0, 0, '2', 22, E.X, 'middle', 900)), E.halo(E.txt(s, 0, 0, '1', 22, E.Y, 'middle', 900))];
+      var R5 = Math.sqrt(5), A0 = Math.atan2(1, 2);
+      var tipArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '6 5' }, s), null, E.Z);   // 平面里的转动：蓝
+      var tipArcLab = E.halo(E.txt(s, P(2.6 * Math.cos(A0 + 45 * D), 0)[0], P(0, 2.6 * Math.sin(A0 + 45 * D))[1], '90°', 22, E.Z, 'middle', 900));
+      // 扫地机上：车头从朝右转到朝上的蓝虚线弧（同第 1 幕）
+      var vcp = P(VX, VY), VR = 0.82 * O.u, vArcPts = [];
+      for (var q = 0; q <= 24; q++) { var aq = 90 * D * q / 24; vArcPts.push([vcp[0] + VR * Math.cos(aq), vcp[1] - VR * Math.sin(aq)]); }
+      var vArc = E.arrow(s, vArcPts, E.Z, 3, { head: 11, dash: '6 5' });
+      var vArcLab = E.halo(E.txt(s, vcp[0] + 1.05 * O.u, vcp[1] - 0.62 * O.u, '90°', 22, E.Z, 'start', 900));
       var vac = E.vac(s, P, 0.6);
       vac.set(VX, VY, 90 * D);
       var pArrow = E.vec(vac.g, E.VIOLET, 5, { head: 16 });
@@ -149,18 +164,36 @@
           pl.axes.style.filter = mb > 0.05 ? 'drop-shadow(0 0 ' + (6 * mb).toFixed(1) + 'px #fff)' : '';
           E.op(ask, f(st, T.ask, 0.3) * (1 - f(st, T.slide[1] - 0.2, 0.3)));
 
-          /* 句 3：原点出发的两段 + 合起来的亮黄箭头；句 5 整支平移到扫地机 */
-          var p2 = f(st, T.two, 0.5), p1 = f(st, T.one, 0.4);
-          var a2 = P(0, 2 * p2), b1 = P(-p1, 2);
-          seg1.set(o0[0], o0[1], a2[0], a2[1]);
+          /* 句 3：原点那一套先按车头朝右画出来，再跟着车头绕原点转 90°；句 6 亮黄箭头整支平移到扫地机 */
+          var th = 90 * D * f(st, T.turn[0], T.turn[1] - T.turn[0]), c = Math.cos(th), sn = Math.sin(th);
+          function rot(x, y) { return [c * x - sn * y, sn * x + c * y]; }
+          var d1 = f(st, T.draw[0], 0.4), d2 = f(st, T.draw[1], 0.35);
+          var e1 = rot(2 * d1, 0), e2 = rot(2, d2), q1 = P(e1[0], e1[1]), q2 = P(rot(2, 0)[0], rot(2, 0)[1]), q3 = P(e2[0], e2[1]);
+          seg1.set(o0[0], o0[1], q1[0], q1[1]);
           var sOut = 1 - f(st, T.p[0], 0.5);
-          E.op(seg1.g, (p2 > 0 ? 1 : 0) * sOut);
-          seg2.set(P(0, 2)[0], P(0, 2)[1], b1[0], b1[1]);
-          E.op(seg2.g, (p1 > 0 ? 1 : 0) * sOut);
-          var bu = bump(st, T.up, 0.7), bl2 = bump(st, T.left2, 0.7);
+          E.op(seg1.g, (d1 > 0 ? 1 : 0) * sOut);
+          seg2.set(q2[0], q2[1], q3[0], q3[1]);
+          E.op(seg2.g, (d2 > 0 ? 1 : 0) * sOut);
+          [[1, -0.32], [2, 1.4]].forEach(function (l, i) {   // 「2」写在红线外侧、「1」写在绿线箭头尖外面（绿线和黄箭头中间太挤），跟着一起转；「加起来」就退场，给 (−1, 2) 让位
+            var r = rot(l[0], l[1]), pr = P(r[0], r[1]);
+            segL[i].setAttribute('x', pr[0].toFixed(1)); segL[i].setAttribute('y', (pr[1] + 8).toFixed(1));
+            E.op(segL[i], f(st, T.draw[i] + 0.2, 0.3) * (1 - f(st, T.add, 0.4)));
+          });
+          var bu = Math.max(bump(st, T.up, 0.7), bump(st, T.two, 0.8)), bl2 = Math.max(bump(st, T.left2, 0.7), bump(st, T.one, 0.8));
           seg1.line.style.strokeWidth = 5 + 3 * bu; seg2.line.style.strokeWidth = 5 + 3 * bl2;
-          var pa = f(st, T.add, 0.5), mv = f(st, T.slide[0], T.slide[1] - T.slide[0]);
-          var start = [mv * VX, mv * VY], tip = [start[0] + RV[0] * pa, start[1] + RV[1] * pa];
+          // 两段蓝弧：扫地机车头转 90°；箭头尖绕原点转 90°（边转边描）
+          E.drawOn(vArc.line, f(st, T.vacTurn, 0.8)); E.op(vArc.head, f(st, T.vacTurn + 0.7, 0.2));
+          var arcOut = 1 - f(st, T.add, 0.5);
+          E.op(vArc.g, arcOut); E.op(vArcLab, f(st, T.vacTurn + 0.6, 0.3) * arcOut);
+          if (th > 0.01) {
+            var ae = P(R5 * Math.cos(A0 + th), R5 * Math.sin(A0 + th)), as = P(R5 * Math.cos(A0), R5 * Math.sin(A0));
+            tipArc.setAttribute('d', 'M ' + as[0].toFixed(2) + ' ' + as[1].toFixed(2) + ' A ' + (R5 * O.u).toFixed(2) + ' ' + (R5 * O.u).toFixed(2) + ' 0 0 0 ' + ae[0].toFixed(2) + ' ' + ae[1].toFixed(2));
+          } else tipArc.setAttribute('d', '');
+          E.op(tipArc, arcOut); E.op(tipArcLab, f(st, T.turn[1], 0.3) * arcOut);
+          // 扫地机自己的绿箭头尖正好在 (2, 1)：原点那一套没转完之前先退淡，免得看成一回事
+          E.op(vac.arrows[1].g, 1 - 0.85 * f(st, T.draw[0] - 0.3, 0.3) * (1 - f(st, T.turn[1], 0.4)));
+          var pa = f(st, T.draw[2], 0.4), mv = f(st, T.slide[0], T.slide[1] - T.slide[0]);
+          var rv = rot(2, 1), start = [mv * VX, mv * VY], tip = [start[0] + rv[0] * pa, start[1] + rv[1] * pa];
           var ps = P(start[0], start[1]), pt = P(tip[0], tip[1]);
           big.set(ps[0], ps[1], pt[0], pt[1]);
           E.op(big.g, pa > 0 ? 1 : 0);
@@ -185,7 +218,7 @@
           /* 右栏 */
           E.op(rowA, f(st, T.seen, 0.4));
           E.op(rowB, f(st, T.s1, 0.4));
-          E.op(Rm.g, f(st, T.rv, 0.3)); E.op(Rv.g, f(st, T.rv + 0.2, 0.3)); E.op(eq1, f(st, T.c1 - 0.2, 0.3));
+          E.op(Rm.g, f(st, T.rv, 0.3)); E.op(Rv.g, f(st, T.rvv, 0.3)); E.op(eq1, f(st, T.c1 - 0.2, 0.3));
           Rm.hl('c0', 0, 0, 1, 0, E.X, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));
           Rm.hl('c1', 0, 1, 1, 1, E.Y, f(st, T.c2, 0.3) * (1 - f(st, T.add, 0.3)));
           Rv.hl('a', 0, 0, 0, 0, E.X, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));

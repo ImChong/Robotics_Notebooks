@@ -449,13 +449,43 @@
     };
   };
 
-  /* ── 杯子（三维里的一个点）：画面坐标 (x, y) 是杯底中心 ── */
-  E.cup = function (parent, x, y, size, color) {
-    var k = (size || 30) / 30, g = el('g', {}, parent), c = color || E.HI;
-    var inner = el('g', { transform: 'translate(' + x + ' ' + y + ') scale(' + k + ')' }, g);
-    K.paint(el('path', { d: 'M -10 -24 L 10 -24 L 8 0 L -8 0 Z', 'stroke-width': 2.5 / k, 'stroke-linejoin': 'round' }, inner), tint(c, 35, 'var(--demo-surface)'), c);
-    K.paint(el('path', { d: 'M 9.6 -19 Q 17 -19 16 -12 Q 15 -6 8.6 -6', fill: 'none', 'stroke-width': 2.5 / k }, inner), null, c);
-    return g;
+  /* ── 三维的杯子（房间里的一个点）：一个圆柱，按房间同一个投影 P 画出来——底面、口都是椭圆，侧面取左右两条切线，口里面压暗，
+     把手是立在侧面的半个圈（同样按 P 投影）。E.cup3(parent, P, at, o)：at = [x, y] 杯底中心（米，地面 z = 0）；o = { r（默认 0.07）, h（默认 0.13）, color }
+     返回 { g, top：杯口中心在画面里的位置 } ── */
+  var cupN = 0;
+  E.cup3 = function (parent, P, at, o) {
+    o = o || {};
+    var r = o.r || 0.07, h = o.h || 0.13, c = o.color || E.HI, n = 48, g = el('g', {}, parent);
+    var B = [], T = [];
+    for (var k = 0; k < n; k++) {
+      var a = 2 * Math.PI * k / n;
+      B.push(P([at[0] + r * Math.cos(a), at[1] + r * Math.sin(a), 0])); T.push(P([at[0] + r * Math.cos(a), at[1] + r * Math.sin(a), h]));
+    }
+    // 正交投影里竖直方向只往画面上下挪：底面和口的左右切点是同一个角度
+    var iL = 0, iR = 0;
+    B.forEach(function (q, k) { if (q[0] < B[iL][0]) iL = k; if (q[0] > B[iR][0]) iR = k; });
+    function arc(R, from, to, step) { var out = [], k = from; for (;;) { out.push(R[k]); if (k === to) break; k = (k + step + n) % n; } return out; }
+    // 底面靠近看的人那半圈：画面上更低（y 更大）的那一边
+    var fwd = arc(B, iL, iR, 1), bwd = arc(B, iL, iR, -1);
+    var avg = function (pts) { return pts.reduce(function (s0, q) { return s0 + q[1]; }, 0) / pts.length; };
+    var step = avg(fwd) > avg(bwd) ? 1 : -1;
+    var front = arc(B, iL, iR, step), topFront = arc(T, iR, iL, -step);
+    function path(pts, close) { return 'M ' + pts.map(function (q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L ') + (close ? ' Z' : ''); }
+    var id = 'ep007-cup-' + (++cupN), defs = el('defs', {}, g);
+    var gr = el('linearGradient', { id: id, x1: '0', y1: '0', x2: '1', y2: '0' }, defs);
+    [['0', 48], ['0.55', 30], ['1', 16]].forEach(function (d) { var st = el('stop', { offset: d[0] }, gr); st.style.stopColor = tint(c, d[1], 'var(--demo-surface)'); });
+    // 把手：杯身朝画面右边那一侧、半高处，立着的半个圈
+    var side = [P([1, 0, 0])[0] - P([0, 0, 0])[0], P([0, 1, 0])[0] - P([0, 0, 0])[0]], sl = Math.hypot(side[0], side[1]);
+    var dir = [side[0] / sl, side[1] / sl], hp = [];
+    for (k = 0; k <= 16; k++) {
+      var ph = Math.PI * k / 16, rr = r + 0.045 * Math.sin(ph);
+      hp.push(P([at[0] + dir[0] * rr, at[1] + dir[1] * rr, h * 0.5 + 0.035 * Math.cos(ph)]));
+    }
+    K.paint(el('path', { d: path(hp), fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, g), null, c);
+    var body = el('path', { d: path([T[iL]].concat(front, topFront), true), 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, g);
+    body.style.fill = 'url(#' + id + ')'; K.paint(body, null, c);
+    K.paint(el('path', { d: path(T, true), 'stroke-width': 2.5 }, g), tint(c, 8, 'var(--demo-surface-2)'), c);   // 杯口：里面压暗
+    return { g: g, top: P([at[0], at[1], h]) };
   };
 
   E.bump = function (st, a, d) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; };

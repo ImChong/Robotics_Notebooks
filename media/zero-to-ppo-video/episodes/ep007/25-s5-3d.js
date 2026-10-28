@@ -5,7 +5,7 @@
 //    「位置」「三个数」紫色虚线箭头从地图原点画到骨盆，右栏出位置那一列（紫，自带括号）；
 // 句 2「拼起来」两对括号先收起、位置那一列贴过来、换成一对大括号，「四乘四」左边写「4×4」，「右边一列是位置」第四列框紫，「最下面一排」最下面一排框亮黄，
 //    「零、零、零、一」四个数依次弹出（灰）；
-// 句 3「点」右栏写「点 (x, y, z, 1)」，「摄像头」从头上的摄像头（d435）画一条亮黄虚线视线，「杯子」地上的杯子弹出；
+// 句 3「点」右栏写「点 (x, y, z, 1)」，「摄像头」从头上的摄像头（d435）画一条亮黄虚线视线，「杯子」地上的杯子（三维的圆柱杯，和房间用同一个投影，见 00-common.js 的 E.cup3）弹出；
 //    「方向」写「方向 (x, y, z, 0)」，「往前走的速度」脚前地上一支白箭头（往前）写「速度」，「往下的重力」机器人旁边一支白箭头往下写「重力」；
 // 句 4「所有这样的四乘四矩阵」矩阵外框亮一下，「特殊欧氏群」矩阵下面写「SE(3)：特殊欧氏群」，「旋转再加上平移」补「= 旋转 + 平移」；
 // 句 5 右栏换成连乘：「接着乘」写「一节一节接着乘」，「骨盆」「大腿」「小腿」「脚」G1 的骨盆、左大腿、左小腿、左脚依次涂亮黄，每一节长出自己的三根小箭头，右栏对应出一块「4×4」；
@@ -52,9 +52,10 @@
       var fr = E.frame3(s, 4.5, 13);
       // 句 3：杯子（点）、视线；速度、重力（方向）
       var camAt = room.at('d435_link'), cupAt = P([CUP[0], CUP[1], 0]);
-      var sight = K.paint(E.el('path', { d: 'M ' + camAt[0].toFixed(1) + ' ' + camAt[1].toFixed(1) + ' L ' + cupAt[0].toFixed(1) + ' ' + (cupAt[1] - 14).toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
-      var cup = E.cup(s, cupAt[0], cupAt[1], 30);
-      var cupLab = E.halo(E.txt(s, cupAt[0] + 22, cupAt[1] - 2, '杯子', 20, E.HI, 'start', 900));   // 写在杯子右边：视线从左上方来
+      var cup = E.cup3(s, P, CUP), cupMid = P([CUP[0], CUP[1], 0.065]);
+      var sight = K.paint(E.el('path', { d: 'M ' + camAt[0].toFixed(1) + ' ' + camAt[1].toFixed(1) + ' L ' + cup.top[0].toFixed(1) + ' ' + cup.top[1].toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, s), null, E.HI);
+      s.insertBefore(sight, cup.g);   // 视线压在杯子下面，停在杯口
+      var cupLab = E.halo(E.txt(s, cupAt[0] + 36, cupAt[1] - 2, '杯子', 20, E.HI, 'start', 900));   // 写在杯子右边、把手外面：视线从左上方来
       var v0 = P([VEL[0][0], VEL[0][1], 0]), v1 = P([VEL[1][0], VEL[1][1], 0]);
       var vel = E.vec(s, E.INK, 4.5, { head: 15 }); vel.set(v0[0], v0[1], v1[0], v1[1]);
       var velLab = E.halo(E.txt(s, v1[0] + 14, v1[1] + 6, '速度', 20, E.INK, 'start', 900));   // 写在箭头尖右边：左边是脚
@@ -130,7 +131,7 @@
           var pw = bump(st, T.col4, 0.9);
           pArrow.line.style.strokeWidth = 3.5 + 2.5 * pw;
           E.drawOn(sight, f(st, T.cam, 0.6)); E.op(sight, (st >= T.cam ? 1 : 0) * A);
-          E.pop(cup, cupAt[0], cupAt[1] - 12, f(st, T.cup, 0.35) * A, 0.6); E.op(cupLab, f(st, T.cup + 0.2, 0.3) * A);
+          E.pop(cup.g, cupMid[0], cupMid[1], f(st, T.cup, 0.35) * A, 0.6); E.op(cupLab, f(st, T.cup + 0.2, 0.3) * A);
           E.op(vel.g, f(st, T.vel, 0.35) * A); E.op(velLab, f(st, T.vel + 0.2, 0.3) * A);
           E.op(grav.g, f(st, T.grav, 0.35) * A); E.op(gravLab, f(st, T.grav + 0.2, 0.3) * A);
 
