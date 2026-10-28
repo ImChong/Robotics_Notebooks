@@ -4,6 +4,7 @@ project_id: modly
 project: https://modly3d.app/
 code: https://github.com/lightningpixel/modly
 tags:
+  - lightning-pixel
   - software
   - 3d-assets
   - mesh-generation
