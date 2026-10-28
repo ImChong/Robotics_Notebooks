@@ -10,9 +10,11 @@ related:
   - ../methods/vla.md
   - ../concepts/world-action-models.md
   - ./paper-dial-latent-world-vla.md
+  - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
   - ../../sources/papers/thinkworld_arxiv_2610_37666.md
   - ../../sources/sites/thinkworld.md
+  - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
 summary: "ThinkWorld 用世界想象强化跨具身的动作动力学链，从无动作标注的视频中学习，探索人类经验向机器人技能组合迁移。"
 ---
 
