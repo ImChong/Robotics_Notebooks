@@ -77,14 +77,15 @@ class RoadmapPageTests(unittest.TestCase):
     def test_main_roadmap_knowledge_map_includes_depth_branches(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function collectDepthBranchRoadmaps", content)
-        self.assertIn("roadmap-kmap-stage-depth", content)
+        self.assertIn("title: '可选路线'", content)
         self.assertIn("#depth-optional-index", content)
 
-    def test_depth_roadmap_knowledge_map_uses_talent_tree(self):
+    def test_roadmap_knowledge_map_uses_talent_tree(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function renderRoadmapTalentTree", content)
-        self.assertIn("roadmapId.indexOf('roadmap-depth-') === 0", content)
+        self.assertIn("renderRoadmapTalentTree(columns, treeEl, metaEl, detailPages)", content)
         self.assertIn("roadmap-ttree-edges", content)
+        self.assertNotIn("roadmap-kmap-leaf", content)
         self.assertIn(".roadmap-ttree {", STYLE_CSS.read_text(encoding="utf-8"))
 
 
