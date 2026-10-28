@@ -2,7 +2,7 @@
 type: entity
 tags: [agibot, simulation, benchmark, sim2real, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-28
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
@@ -14,6 +14,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/repos/genie_sim.md
+  - ../../sources/sites/genie_sim.md
   - ../../sources/repos/genie_sim_3.md
   - ../../sources/repos/genie_sim_robocoliseum.md
   - ../../sources/sites/robocoliseum.md
@@ -44,6 +45,24 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - **训练栈：** 支持 RLinf、并行仿真、标准 Gym 接口与 **在线微调**。
 - **Sim2Real 叙事：** 材料称相同模型在仿真与真机评测差异 **<10%**（策展文建议等待更多任务验证）。
 
+## 源码架构与运行
+
+依据 [官方源码快照](../../sources/repos/genie_sim.md)，目前先用 `geniesim` CLI 管理容器和工作区，再按目标选择两条**独立的运行栈**：
+
+| 路径 | 用途与边界 |
+|------|------------|
+| `geniesim_benchmark` | 直接使用 Isaac Sim 运行基准、连接策略推理服务并评分；RoboColiseum 使用同一评测生态。 |
+| `geniesim_ros` | ROS 2 实时交互引擎，物理、渲染与机器人共享仿真时间，接入 MoveIt 2、ros2_control、遥操作和记录。 |
+
+官方计划将 benchmark 重构为 `geniesim_ros` 之上的层；截至该快照仍未合并，场景格式和启动流程不能假设互通。场景生成、世界生成、遥操作和自动采集分别由其他模块承担；`geniesim_world` 输出的 Gaussian/PLY 接入实时引擎仍在计划中。
+
+### 实践入口与限制
+
+- 默认容器以 **Isaac Sim 5.1 + ROS 2 Jazzy** 为目标；官方将 Humble 限定在已停止新功能支持的 Isaac Sim 4.5 容器。现有 Humble 系统集成应先检查容器与接口兼容性。
+- RT Engine 支持 Isaac Sim PhysX、实验性 Isaac Sim Newton 与独立 Newton；官方说明独立 Newton 路径支持布料和软体。后端能力不能一概而论。
+- 仓库公开代码并提供外置资产、数据集入口；README 仍将上传全部资产和数据集列为待办。`geniesim_*` 和 `data_collection` 默认 MPL 2.0，重建模块含多种许可，使用前需逐项核对。
+- 官方展示的仿真与真机结果是特定任务、数据量和模型下的实验结果，不能推断所有任务均有同等 Sim2Real 精度。README 宣布 2026-11-02 有重大更新，具体内容应待发布后核实。
+
 ## 与 GE-Sim 2.0 / GO-2
 
 | 项目 | 分工 |
@@ -65,6 +84,8 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - [Genie Sim 3.0 源码归档](../../sources/repos/genie_sim_3.md)（<https://github.com/AgibotTech/genie_sim>）
 
 - [Genie Sim 3.0 源码归档](../../sources/repos/genie_sim.md)（<https://github.com/AgibotTech/genie_sim>）
+
+- [Genie Sim 项目页归档](../../sources/sites/genie_sim.md)
 
 - [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)
 
