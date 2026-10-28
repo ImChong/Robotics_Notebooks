@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | 补充人形 VLA、潜在动作与技能工程四项研究；复用既有 Machenta 和 MimicAll 页面，记录官方仓库及项目页核查状态
+
+## [2026-10-28] ingest | sources/papers/partllm.md — 收录三维部件分割与官方推理、训练入口；项目页源码列有代码和权重链接
+
+## [2026-10-28] ingest | 收录 FlowHMR、RLMuscle、AutoPhyX 并复核 RoboFoundry 官方代码状态
+
 ## [2026-10-28] ingest | Modly 本地三维网格生成
 
 - 应用代码以 MIT 许可开放；模型扩展与权重分别核查。记录机器人仿真资产的验证边界。
