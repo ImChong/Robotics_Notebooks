@@ -31,6 +31,27 @@ flowchart LR
 - 数据侧与 [具身数据纵深](depth-embodied-data.md)（跨本体数据怎么聚合）串联；全身控制侧与 [BFM 纵深](depth-bfm.md)（一个 checkpoint 控全身）串联
 - 若目标是"读一条示范就换任务"，那是 [ICL 纵深](depth-icl.md)；本路线关心的是"换身体"
 
+## 谱系速览（一手来源）
+
+下表按时间列出本方向的关键节点，数字均摘自论文摘要；工作名带链接的是站内已有详情页，其余直接读原文。
+
+| 年份 | 工作 | 一手来源 | 对本路线的意义 |
+|------|------|----------|----------------|
+| 2017 | 模块化多机器人策略（Devin 等） | [arXiv:1609.07088](https://arxiv.org/abs/1609.07088)（ICRA 2017） | 策略拆成任务模块 × 机器人模块，可组合出未训练过的机器人–任务对；**本路线起点** |
+| 2018 | NerveNet | [项目页](https://www.cs.toronto.edu/~tingwuwang/nervenet.html)（ICLR 2018） | 把智能体身体建成图、用 GNN 作策略；提出尺寸迁移与"残肢"迁移基准 |
+| 2019 | [RoboNet](../wiki/entities/paper-rcl-1910-11215-robonet-large-scale-multi-robot-learning.md) | [arXiv:1910.11215](https://arxiv.org/abs/1910.11215)（CoRL 2019） | 7 个平台、1500 万帧；在留出的 Franka / Kuka 上微调，超过使用 4–20 倍数据的单机方法 |
+| 2020 | Shared Modular Policies | [arXiv:2007.04976](https://arxiv.org/abs/2007.04976)（ICML 2020） | 每个执行器一个相同模块、只看局部传感并互传消息；一个策略控制不同骨架，泛化到未见形态 |
+| 2022 | MetaMorph | [arXiv:2203.11931](https://arxiv.org/abs/2203.11931)（ICLR 2022） | Transformer 把身体结构当作额外输入，多形态预训练后零样本控制未见机器人 |
+| 2023 | [Open X-Embodiment / RT-X](../wiki/entities/paper-open-x-embodiment.md) | [arXiv:2310.08864](https://arxiv.org/abs/2310.08864) | 21 家机构、22 种机器人、527 项技能；RT-X 借其他平台经验提升多台机器人能力（正迁移） |
+| 2023 | Polybot | [arXiv:2307.03719](https://arxiv.org/abs/2307.03719) | 腕部相机 + 统一模块化代码对齐观测/动作，再用对比学习对齐表征；3 台机械臂约 60 h |
+| 2024 | Mirage | [arXiv:2402.19249](https://arxiv.org/abs/2402.19249)（RSS 2024） | 部署时遮掉目标机器人、补画源机器人（cross-painting），零样本跨臂/跨夹爪 |
+| 2024 | [Octo](../wiki/entities/paper-octo.md) | [arXiv:2405.12213](https://arxiv.org/abs/2405.12213) | 可插拔 token 输入与读出头，少样本适配新观测/新动作空间 |
+| 2024 | CrossFormer | [arXiv:2408.11812](https://arxiv.org/abs/2408.11812) | 约 90 万条轨迹、20 种本体（单/双臂、轮式、四足、四旋翼）；无需手工对齐观测/动作空间，单权重持平各本体专才 |
+| 2024 | HPT | [arXiv:2409.20537](https://arxiv.org/abs/2409.20537)（NeurIPS 2024） | 各本体本体感知与视觉先对齐成短 token 序列，再进共享 trunk；52 个数据集，未见任务微调提升 20% 以上 |
+| 2024 | URMA | [arXiv:2409.06366](https://arxiv.org/abs/2409.06366) | 形态无关编码器/解码器，一个腿足运动策略跨本体，迁到未见平台（仿真与真机） |
+| 2024 | RoVi-Aug | [arXiv:2409.03403](https://arxiv.org/abs/2409.03403)（CoRL 2024） | 生成模型合成不同机器人与视角的训练图像，零样本部署到未见机器人，成功率最高 +30% |
+| 2024 | LAPA | [arXiv:2410.11758](https://arxiv.org/abs/2410.11758)（ICLR 2025） | VQ-VAE 学帧间潜在动作，在无动作标签视频上预训练 VLA；仅用人类视频也出现正迁移 |
+| 2025 | Embodiment Scaling Laws | [arXiv:2505.05753](https://arxiv.org/abs/2505.05753)（CoRL 2025） | 程序生成约 1000 种本体；增加训练本体数比在固定本体上加数据泛化更广，零样本上 Go2 与 H1 |
 ---
 
 ## Stage 0 本体差异画像：先说清差在哪几层
@@ -78,7 +99,9 @@ flowchart LR
   - **规范槽位 + 掩码**：按身体语义把关节放进固定槽位，缺失关节用掩码屏蔽——XHugWBC 的 32 槽、GreenWAM 的 79 个解剖关节槽、Qwen-RobotManip 的 80 维 canonical state-action
   - **几何锚点**：用相机系可观测的腕/抓取几何作共享目标，再由翻译器出各本体命令（UCAG-P）；或把 TCP 坐标系投影进图像让 VLM 直接出增量（EASG）
   - **领域规范空间**：灵巧手用规范球面形变 + 级联 IK 映射到不同手（UHAS）；人手/灵巧手/夹爪用腕 SE(3) + 指关节槽（AdvDex）
-  - **潜在动作**：从视频学与本体无关的 latent action，再解码到各本体（LAPA 系；41 项 LAM 设计的实证见 Latent Actions Matter）
+  - **潜在动作**：从视频学与本体无关的 latent action，再解码到各本体（LAPA 用 VQ-VAE 学帧间离散潜动作；41 项 LAM 设计的实证见 Latent Actions Matter）
+- **对齐还是不对齐**：Polybot 用腕部相机与统一代码库把观测/动作手工对齐，再用对比学习对齐内部表征；CrossFormer 则主张不做手工对齐，直接把 20 种本体的原生观测/动作交给 Transformer——两条路线的取舍是工程契约 vs 数据规模
+- **观测层的外观差异**：机器人长得不一样本身就是分布偏移——Mirage 在部署时把目标机器人遮掉、补画成源机器人；RoVi-Aug 在训练时用生成模型合成不同机器人与视角
 - **相机系 vs 基座系**：跨本体时基座系动作语义随安装位置变，相机系更可迁移但依赖外参
 - **描述文件本身也是接口**：DoF 映射、链结构、碰撞近似若每次从 URDF 手工派生，接口会在工程层就不一致
 
@@ -95,6 +118,7 @@ flowchart LR
 - [UHAS](../wiki/methods/uhas-unified-hand-action-space.md) · [AdvDex](../wiki/entities/paper-advdex.md) — 灵巧手层的两种统一动作空间（RL 球面 vs VLA 关节槽）
 - [Latent Actions Matter](../wiki/entities/paper-latent-actions-matter.md) · [LAC-WM](../wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md) — 潜在动作接口的实证与跨本体世界模型用法
 - [URDD](../wiki/entities/paper-urdd-universal-robot-description-directory.md) — 把 URDF 派生的 DoF 映射、链结构等整理成带版本的模块目录
+- 一手原文：[Polybot（arXiv:2307.03719）](https://arxiv.org/abs/2307.03719) · [CrossFormer（arXiv:2408.11812）](https://arxiv.org/abs/2408.11812) · [LAPA（arXiv:2410.11758）](https://arxiv.org/abs/2410.11758) · [Mirage（arXiv:2402.19249）](https://arxiv.org/abs/2402.19249) · [RoVi-Aug（arXiv:2409.03403）](https://arxiv.org/abs/2409.03403)
 
 ### 学完输出什么
 - 一份接口选型便签：接口类型 × 能覆盖的本体范围 × 丢失的信息 × 需要的外参/标定
@@ -111,8 +135,8 @@ flowchart LR
 - Transformer / GNN 的使用级直觉；会改策略网络的输入输出头
 
 ### 核心问题
-- **共享骨干 + 本体专属头**：Octo 用可插拔读出头吃新动作空间；GR00T N1 给每个本体配独立的状态/动作编码解码 MLP；X-WBC 把人类运动语义放进共享骨干、形态差异留给轻量本体模块——这一支的起点就是 Devin 2017 的"任务模块 × 机器人模块"
-- **形态作为输入**：把关节树本身编码进网络——XHugWBC 用本体图网络，RecMorph 用运动学树 DFS 序 + 双向空间 RNN，Hodge 消息传递把四足建成胞腔复形；形态变了网络结构不用改
+- **共享骨干 + 本体专属头**：Octo 用可插拔读出头吃新动作空间；HPT 先把各本体的本体感知与视觉对齐成短 token 序列再进共享 trunk；GR00T N1 给每个本体配独立的状态/动作编码解码 MLP；X-WBC 把人类运动语义放进共享骨干、形态差异留给轻量本体模块——这一支的起点就是 Devin 2017 的"任务模块 × 机器人模块"
+- **形态作为输入**：把关节树本身编码进网络。谱系是 NerveNet（GNN，ICLR 2018）→ Shared Modular Policies（每个执行器一个模块 + 消息传递，ICML 2020）→ MetaMorph（Transformer 把身体结构当输入，ICLR 2022）→ URMA（形态无关编码/解码）/ GET-Zero（本体图连通性作注意力偏置）；站内近作有 XHugWBC 的本体图网络、RecMorph 的运动学树 DFS 序 + 双向空间 RNN、Hodge 消息传递把四足建成胞腔复形——形态变了网络结构不用改
 - **共享行为、各自执行**：CrossBFM 只共享高层行为潜空间，每台机器人保留自己的低层跟踪器——把跨本体复用放在行为接口上，而不是复制关节命令
 - **历史即辨识**：LocoFormer 用 Transformer-XL 跨 episode 记忆在未见形态/电机故障下做部署期适应；UP-OSI（RSS 2017）用在线辨识器估参数再调策略——本体差异被当成"要从历史里推断的隐变量"
 - **反过来用**：同一个多本体策略还能当设计工具（Shape Your Body 先训 URMA 多具身策略再沿价值梯度改机体参数；Transformer Transformer 统一共设计与跨具身控制）
@@ -129,6 +153,8 @@ flowchart LR
 - [CrossBFM](../wiki/entities/paper-crossbfm-shared-latent-behavior.md) — 共享潜在行为空间 + 各本体专用跟踪器
 - [LocoFormer](../wiki/entities/paper-locoformer.md) · [UP-OSI](../wiki/entities/paper-up-osi-universal-policy-online-sysid.md) — 历史上下文 / 在线辨识吸收本体差异
 - [Shape Your Body](../wiki/entities/paper-shape-your-body-value-gradient-design.md) · [Transformer Transformer](../wiki/entities/paper-transformer-transformer.md) — 多具身策略反哺机体设计
+- 一手原文（形态感知谱系）：[NerveNet](https://www.cs.toronto.edu/~tingwuwang/nervenet.html) · [Shared Modular Policies（arXiv:2007.04976）](https://arxiv.org/abs/2007.04976) · [MetaMorph（arXiv:2203.11931）](https://arxiv.org/abs/2203.11931) · [URMA（arXiv:2409.06366）](https://arxiv.org/abs/2409.06366) · [GET-Zero（arXiv:2407.15002）](https://arxiv.org/abs/2407.15002)
+- 一手原文（共享骨干）：[HPT（arXiv:2409.20537）](https://arxiv.org/abs/2409.20537) — 52 个数据集上的 trunk 缩放研究
 
 ### 学完输出什么
 - 一张架构选型表：共享层 / 本体层各放什么，新增本体的代码改动量与训练成本
@@ -145,7 +171,8 @@ flowchart LR
 - 会写多数据集混合采样器，读得懂训练曲线里的分数据集指标
 
 ### 核心问题
-- **谱系**：RoboNet（CoRL 2019）首次把多机器人视觉经验汇成共享数据集，报告预训练能让目标机用几百条轨迹适配、但"相关子集"可以胜过更大的混合池 → OXE / RT-X（2023）检验跨本体混训何时正迁移
+- **谱系**：RoboNet（CoRL 2019）把 7 个平台、1500 万帧视觉经验汇成共享数据集，在留出的 Franka / Kuka 上微调即超过使用 4–20 倍数据的单机方法，但"相关子集"可以胜过更大的混合池 → OXE / RT-X（2023）在 22 种机器人上检验跨本体混训何时正迁移
+- **本体数也是缩放轴**：Embodiment Scaling Laws（CoRL 2025）程序生成约 1000 种本体，报告增加训练本体数比在固定本体上加数据泛化更广，最佳策略零样本上 Go2 与 H1——腿足运动场景下的结论，操作侧仍待验证
 - **阈值现象**：Emergent Transfer 报告新配置必须先靠自身数据越过任务依赖阈值 τ(T)，跨代共训才会涌现大幅收益——过早硬混遗留数据常零收益
 - **扩形态分布**：XHugWBC 用同步调整几何、质量、惯量的物理一致随机形态；LocoFormer 用程序生成机器人——训练时见过的形态分布决定了零样本能走多远
 - **通才 ↔ 专才循环**：EAGLE-WBC 用 generalist → specialist 微调 → DAgger 回蒸迭代，让单一策略跨 H1/G1/T1 等人形
@@ -164,6 +191,7 @@ flowchart LR
 - [Xiaomi-Robotics-1](../wiki/entities/xiaomi-robotics-1.md) — 无本体 UMI 预训练 + 跨本体后训练
 - [具身缩放律](../wiki/concepts/embodied-scaling-laws.md) — 数据规模、参数量与跨本体泛化的幂律讨论
 - [具身数据纵深](depth-embodied-data.md) — 跨本体数据怎么聚合、清洗、配比
+- 一手原文：[RoboNet（arXiv:1910.11215）](https://arxiv.org/abs/1910.11215) · [Open X-Embodiment（arXiv:2310.08864）](https://arxiv.org/abs/2310.08864) · [Towards Embodiment Scaling Laws in Robot Locomotion（arXiv:2505.05753）](https://arxiv.org/abs/2505.05753) · [Pushing the Limits of Cross-Embodiment Learning（arXiv:2402.19432）](https://arxiv.org/abs/2402.19432)（臂、四旋翼、四足、移动底座共训一个目标条件策略）
 
 ### 学完输出什么
 - 一张分本体的混训消融表（单训 / 混训 / 重加权），能直接回答"混进来的数据到底帮没帮忙"
@@ -200,6 +228,7 @@ flowchart LR
 - [H2R-Bench](../wiki/entities/paper-h2r-bench.md) — 人类视频→指定机器人本体视频的跨本体诊断基准
 - [Human2Dex](../wiki/entities/paper-human2dex-wrist-centric-dexterous.md) — 同一批人手示范分别重定向到两只不同灵巧手
 - [OM-1（Reward AI）](../wiki/entities/reward-ai-om1.md) — 仅人类示范直驱跨本体的产业样本（闭源自报）
+- 一手原文：[LAPA（arXiv:2410.11758）](https://arxiv.org/abs/2410.11758) — 仅用人类操作视频预训练潜动作 VLA 也出现正迁移
 
 ### 学完输出什么
 - 一条"人类数据 → 目标本体可执行轨迹"的最短链路，并标出哪一环最脆
@@ -268,5 +297,18 @@ flowchart LR
 - [跨具身迁移知识链汇总](../wiki/overview/hub-cross-embodiment.md)
 - [跨具身策略迁移选型指南](../wiki/queries/cross-embodiment-transfer-strategy.md)
 - [Learning Modular Neural Network Policies for Multi-Task and Multi-Robot Transfer（arXiv:1609.07088）](https://arxiv.org/abs/1609.07088) — Devin、Gupta、Darrell、Abbeel、Levine；任务模块 × 机器人模块，本路线起点
+- [NerveNet: Learning Structured Policy with Graph Neural Networks（ICLR 2018，项目页）](https://www.cs.toronto.edu/~tingwuwang/nervenet.html) — Wang、Liao、Ba、Fidler；图结构策略与结构迁移基准
 - [RoboNet: Large-Scale Multi-Robot Learning（arXiv:1910.11215）](https://arxiv.org/abs/1910.11215) — 多机器人共享数据集
+- [One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control（arXiv:2007.04976）](https://arxiv.org/abs/2007.04976) — Huang、Mordatch、Pathak；ICML 2020
+- [MetaMorph: Learning Universal Controllers with Transformers（arXiv:2203.11931）](https://arxiv.org/abs/2203.11931) — Gupta、Fan、Ganguli、Fei-Fei；ICLR 2022
 - [Open X-Embodiment: Robotic Learning Datasets and RT-X Models（arXiv:2310.08864）](https://arxiv.org/abs/2310.08864) — 跨本体数据聚合与 RT-X 正迁移检验
+- [Polybot: Training One Policy Across Robots While Embracing Variability（arXiv:2307.03719）](https://arxiv.org/abs/2307.03719) — Yang、Sadigh、Finn
+- [Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting（arXiv:2402.19249）](https://arxiv.org/abs/2402.19249) — RSS 2024
+- [Pushing the Limits of Cross-Embodiment Learning for Manipulation and Navigation（arXiv:2402.19432）](https://arxiv.org/abs/2402.19432)
+- [GET-Zero: Graph Embodiment Transformer for Zero-shot Embodiment Generalization（arXiv:2407.15002）](https://arxiv.org/abs/2407.15002)
+- [Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation（arXiv:2408.11812）](https://arxiv.org/abs/2408.11812) — CrossFormer
+- [RoVi-Aug: Robot and Viewpoint Augmentation for Cross-Embodiment Robot Learning（arXiv:2409.03403）](https://arxiv.org/abs/2409.03403) — CoRL 2024
+- [One Policy to Run Them All: an End-to-end Learning Approach to Multi-Embodiment Locomotion（arXiv:2409.06366）](https://arxiv.org/abs/2409.06366) — URMA
+- [Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers（arXiv:2409.20537）](https://arxiv.org/abs/2409.20537) — HPT；NeurIPS 2024
+- [Latent Action Pretraining from Videos（arXiv:2410.11758）](https://arxiv.org/abs/2410.11758) — LAPA；ICLR 2025
+- [Towards Embodiment Scaling Laws in Robot Locomotion（arXiv:2505.05753）](https://arxiv.org/abs/2505.05753) — CoRL 2025
