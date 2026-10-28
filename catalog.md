@@ -935,6 +935,7 @@
 - [MobileGym（移动 GUI Agent 可验证仿真与基准）](wiki/entities/mobilegym.md) — MobileGym**（arXiv:2605.26114，官网，[代码](https://github.com/Purewhiter/mobile `📅unknown` `[entity_page]`
 - [mocap_retarget](wiki/entities/mocap-retarget.md) — mocap_retarget**（<https://github.com/ccrpRepo/mocap_retarget>）是社区维护的 **动捕数据重定向到机器人** 的工程向示例仓库，侧重脚本 `📅unknown` `[entity_page]`
 - [Modern Robotics (Lynch-Park 教材)](wiki/entities/modern-robotics-book.md) — Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（ `📅unknown` `[entity_page]`
+- [Modly](wiki/entities/modly.md) — Modly](https://github.com/lightningpixel/modly) 是由 Lightning Pixel 开发的本地 AI 三维网格生成桌面应用。官方仓库以图片生成网格为 `📅unknown` `[entity_page]`
 - [Molmo2-ER（MolmoER）](wiki/entities/molmo-er.md) — Molmo2-ER**（**MolmoER**）是 **Ai2** 为 MolmoAct2 提供的 **具身推理（Embodied Reasonin `📅unknown` `[entity_page]`
 - [MolmoMotion](wiki/entities/molmo-motion.md) — MolmoMotion**（Ai2 博客 | [arXiv:2606.18558](https://arxiv.o `📅unknown` `[entity_page]`
 - [Molmo2](wiki/entities/molmo2-vlm.md) — Molmo2**（Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Gro `📅unknown` `[entity_page]`
