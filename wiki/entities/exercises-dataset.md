@@ -106,6 +106,7 @@ chest = [e for e in exercises if e["category"] == "chest"]
 
 ## 关联页面
 
+- [vision-demos](./vision-demos.md) — 从运动视频估计姿态并计算动作指标的开源示例。
 - [人形参考运动与操作数据集选型](../comparisons/humanoid-reference-motion-datasets.md) — 真正的 MoCap / 预重定向 / 真机操作集对照
 - [AMASS](./amass.md) — SMPL 统一人体动捕元库（对照「什么才是跟踪参考」）
 - [LaFAN1](./lafan1-dataset.md) — BVH 棚拍小集（对照「有骨架轨迹」）
