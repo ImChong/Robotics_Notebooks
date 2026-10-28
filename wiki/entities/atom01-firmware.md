@@ -5,7 +5,7 @@ status: complete
 updated: 2026-10-23
 related:
   - ./roboto-origin.md
-  - ./atom01-deploy.md
+  - ./roboparty-deploy.md
   - ./atom01-hardware.md
 sources:
   - ../../sources/repos/atom01_firmware.md
@@ -49,7 +49,7 @@ summary: "atom01_firmware 是 Atom01 的底层固件仓库，覆盖板端构建�
 ## 关联页面
 
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
-- [Atom01 Deploy](./atom01-deploy.md)
+- [Atom01 Deploy](./roboparty-deploy.md)
 - [Atom01 Hardware](./atom01-hardware.md)
 
 ## 推荐继续阅读

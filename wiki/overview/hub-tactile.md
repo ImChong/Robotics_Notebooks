@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-27
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -57,6 +57,8 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - **[通信协议](./hub-communication.md)**：EtherCAT 等低延迟总线服务力控环路。
 
 ## 关联页面
+
+- [SimpleTouch](../entities/paper-simpletouch.md) — 基于任务示范训练触觉专家的 VLA
 
 - [HapMorph（论文实体）](../entities/paper-hapmorph-pneumatic-haptic-render.md) — VR/遥操作操作员侧可穿戴气动触觉
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉抓取精修

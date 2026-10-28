@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ROADMAP_HTML = ROOT / "docs" / "roadmap.html"
 MAIN_JS = ROOT / "docs" / "main.js"
+STYLE_CSS = ROOT / "docs" / "style.css"
 
 
 class RoadmapPageTests(unittest.TestCase):
@@ -76,8 +77,16 @@ class RoadmapPageTests(unittest.TestCase):
     def test_main_roadmap_knowledge_map_includes_depth_branches(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function collectDepthBranchRoadmaps", content)
-        self.assertIn("roadmap-kmap-stage-depth", content)
+        self.assertIn("title: '可选路线'", content)
         self.assertIn("#depth-optional-index", content)
+
+    def test_roadmap_knowledge_map_uses_talent_tree(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function renderRoadmapTalentTree", content)
+        self.assertIn("renderRoadmapTalentTree(columns, treeEl, metaEl, detailPages)", content)
+        self.assertIn("roadmap-ttree-edges", content)
+        self.assertNotIn("roadmap-kmap-leaf", content)
+        self.assertIn(".roadmap-ttree {", STYLE_CSS.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

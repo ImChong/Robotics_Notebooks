@@ -172,7 +172,8 @@
         "wiki/overview/vla-open-source-repro-landscape-2025.md",
         "roadmap/depth-vla.md",
         "roadmap/depth-model-architecture.md",
-        "roadmap/depth-icl.md"
+        "roadmap/depth-icl.md",
+        "roadmap/depth-cross-embodiment.md"
       ],
       "tags": [
         "vla",

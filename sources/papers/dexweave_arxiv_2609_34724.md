@@ -5,6 +5,9 @@
 - **标题：** DexWeave: Learning Dexterous Humanoid Loco-Manipulation from Human Demonstrations
 - **arXiv：** <https://arxiv.org/abs/2609.34724> · <https://arxiv.org/pdf/2609.34724>
 - **项目页：** <https://dexweave.github.io/>
+- **代码：** <https://github.com/WU-CVGL/DexWeave>
+- **数据：** <https://huggingface.co/datasets/naichuan04/DexWeave>
+- **相关归档：** [项目页](../sites/dexweave.md) · [代码](../repos/dexweave.md)
 - **作者：** Naichuan Sun、Haotian Shen、Yizhang Zhang、Luying Feng、Haoze Wang、Yuanbo Xiangli、Yaochu Jin、Peidong Liu
 - **入库日期：** 2026-10-05
 - **摘要：** 交互一致重定向、解剖结构化策略与 G1/灵巧手部署。

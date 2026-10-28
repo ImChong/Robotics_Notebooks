@@ -210,6 +210,7 @@ $$
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
+- [ViT-H：带运动跟踪反馈的视频到人形控制](../entities/paper-vit-h-video-to-humanoid.md) — 直接从单目视频生成机器人参考动作，并用 tracker 执行反馈后训练生成器。
 - [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion 生成轨迹经 GMR 到多机型的端到端胶水管线。
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 场景对齐人演示的 Human2Robot 上游之一。
 - [HumanTracker](../entities/paper-humantracker.md) — 153 h 光学基准用 GMR 得到 29-DoF `qpos` 参考，再人工剔除漂浮/穿地。

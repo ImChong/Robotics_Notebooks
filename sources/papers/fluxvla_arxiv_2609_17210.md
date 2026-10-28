@@ -13,11 +13,11 @@
   - 代码：<https://github.com/FluxVLA/FluxVLA>
   - HF 权重：<https://huggingface.co/limxdynamics/FluxVLAEngine>
   - Zenodo：<https://doi.org/10.5281/zenodo.20049506>
-- **作者：** Yinhao Li, Weixin Mao, Zihan Lan, Jikun Rong, Qirui Hu, Yiming Zhang, Weipeng Deng, Bowen Shen, Minzhao Zhu, Yiming Mao, Yan Yang, Chenguang Cui, Hongyuan Chen, Xu Huang, Zheyi Zhao, Pinxi Shen, Bozhen He, Zhen Fu, Yifan Wang, Zexin Zhang, Ang Gao, Haoyu Chen, Chengqi Shi, Hua Chen（CITATION.cff 列举；arXiv 页显示 24 作者）
+- **作者：** Yinhao Li, Weixin Mao, Zihan Lan, Jikun Rong, Qirui Hu, Yiming Zhang, Weipeng Deng, Bowen Shen, Minzhao Zhu, Yiming Mao, Yan Yang, Chenguang Cui, Hongyuan Chen, Xu Huang, Zheyi Zhao, Pinxi Shen, Bozhen He, Zhen Fu, Yifan Wang, Zexin Zhang, Ang Gao, Haoyu Chen, Chengqi Shi, Wenda Wu, Hua Chen（arXiv v2 作者表，25 人；v1 与既有单位映射见下）
 - **机构：** 作者单位按论文首页标注：¹ LimX Dynamics；² 南开大学；³ 香港大学；⁴ 电子科技大学；⁵ 北京理工大学；⁶ 西安电子科技大学；⁷ 浙江大学；⁸ 西安交通大学。
-- **单位对应作者：** ¹ Yinhao Li, Zihan Lan, Jikun Rong, Weixin Mao, Qirui Hu, Bowen Shen, Minzhao Zhu, Yiming Mao, Yan Yang, Hongyuan Chen, Xu Huang, Zheyi Zhao, Pinxi Shen, Bozhen He, Zhen Fu, Haoyu Chen, Hua Chen；² Yiming Zhang；³ Weipeng Deng；⁴ Chenguang Cui；⁵ Yifan Wang；⁶ Zexin Zhang；⁷ Ang Gao；⁸ Chengqi Shi。
+- **单位对应作者（2026-10-13 归档，未重新核实 v2 单位映射）：** ¹ Yinhao Li, Zihan Lan, Jikun Rong, Weixin Mao, Qirui Hu, Bowen Shen, Minzhao Zhu, Yiming Mao, Yan Yang, Hongyuan Chen, Xu Huang, Zheyi Zhao, Pinxi Shen, Bozhen He, Zhen Fu, Haoyu Chen, Hua Chen；² Yiming Zhang；³ Weipeng Deng；⁴ Chenguang Cui；⁵ Yifan Wang；⁶ Zexin Zhang；⁷ Ang Gao；⁸ Chengqi Shi。
 - **入库日期：** 2026-09-28
-- **复核日期：** 2026-10-13（补录截图中的作者单位映射，并与 arXiv 作者表及 GitHub 项目页交叉核对）
+- **复核日期：** 2026-10-28（arXiv v2，2026-10-22 修订；更新作者表，单位映射保留旧记录）
 - **一句话说明：** **配置驱动的开源 VLA 工程平台**（非新策略模型）：统一数据集、VLM/世界模型、动作头、优势加权学习、分布式训练、仿真评测、加速推理与机器人 operator 接口；串联离线学习、仿真验证、在线纠正与真机执行，并集成双臂组合仿真、自动数据生成与模型解耦的人在环采集/接管/奖励标注；真机侧强调 **RTC**、远程 GPU 服务与轨迹后处理。
 
 ## 开源状态（项目页 / README 核查 2026-09-28）
@@ -78,3 +78,8 @@
 - [`wiki/methods/vla.md`](../../wiki/methods/vla.md) — VLA 工程栈选型
 - [`wiki/entities/limx-cosa.md`](../../wiki/entities/limx-cosa.md) — 产品层 OS vs 开源技能层分工
 - [`wiki/queries/vla-deployment-guide.md`](../../wiki/queries/vla-deployment-guide.md) — RTC / 远程推理 / 端侧部署
+
+## 2026-10-28 版本核查
+
+- [arXiv v2](https://arxiv.org/abs/2609.17210v2) 于 2026-10-22 修订；摘要仍将平台定位为配置驱动的数据到部署工作流。
+- [Hugging Face 模型卡归档](../models/fluxvla-engine-huggingface.md)记录权重入口与其性能表，数值不可与 GitHub README 表格混用。

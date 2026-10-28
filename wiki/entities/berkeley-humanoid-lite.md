@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware, open-source, berkeley, reinforcement-learning, qdd, humanoid-paper-notebooks, cycloidal, actuator]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-27
 arxiv: "2504.17249"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
@@ -72,6 +72,12 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 | 项目门户 | [lite.berkeley-humanoid.org](https://lite.berkeley-humanoid.org/) | 已发布 |
 | GitBook 文档 | [berkeley-humanoid-lite.gitbook.io/docs](https://berkeley-humanoid-lite.gitbook.io/docs) | 已发布 |
 | 主仓库 | [HybridRobotics/Berkeley-Humanoid-Lite](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite) | **已开源**（MIT） |
+
+## 复现入口：硬件与软件
+
+原论文平台以模块化 3D 打印摆线减速器和通用采购件降低门槛；官方按美国市场价格估算硬件成本低于 5000 美元，实际成本依地区与时间变化。复现前先核对[官方发布页](https://berkeley-humanoid-lite.gitbook.io/docs/releases)的 BOM、整机与 6512 / 5010 执行器 CAD、打印文件及修订记录，再按[硬件文档](https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware)装配和校准。具体入口见[项目页归档](../../sources/sites/berkeley_humanoid_lite.md)。
+
+软件链路包括 Isaac Lab 环境与策略训练、sim2sim、实机底层控制及 SteamVR 遥操作；[软件归档](../../sources/repos/berkeley_humanoid_lite.md)列出描述资产（URDF / MJCF / USD）、固件与各仓库。官方组织还发布 Lite V1.5 双臂和 Lite V2 相关资源，不能默认与原论文版本直接兼容。
 
 ## 局限与风险
 

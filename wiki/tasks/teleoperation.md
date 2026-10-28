@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-10-12
+updated: 2026-10-26
 sources:
   - ../../sources/papers/human-like-redundancy-resolution.md
   - ../../sources/sites/human-like-redundancy.md
@@ -374,6 +374,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [LiveTalking（实体）](../entities/livetalking.md) — 2D 流式口型数字人 + WebRTC/API；遥呈现讲解 UI 层（Apache-2.0 社区版，权重网盘）
 - [DynHair（论文实体）](../entities/paper-dynhair.md) — 多视角显式发丝动态人头化身；telepresence 头发动力学（ECCV 2026，arXiv:2607.23861，GitHub 占位仓）
 - [NPHM（论文实体）](../entities/paper-nphm.md) — 神经参数化 **完整人头** morphable model（SDF 身份 + 形变表情 + 局部场；CVPR 2023，代码+预训练已开源）
+- [ViT-H（论文实体）](../entities/paper-vit-h-video-to-humanoid.md) — 单台 RGB 相机视频驱动 G1 实时遥操作，绕过人体重建与重定向；AR 生成端到端延迟 < 400 ms（arXiv:2610.32966）
 
 ## 推荐继续阅读
 

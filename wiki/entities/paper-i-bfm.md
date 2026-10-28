@@ -12,7 +12,7 @@ tags:
 - project
 - mujoco-demo
 status: complete
-updated: 2026-10-16
+updated: 2026-10-27
 arxiv: '2610.06129'
 venue: 2026 · arXiv preprint
 related:
@@ -27,9 +27,10 @@ sources:
 - ../../sources/sites/i-bfm-project-page.md
 - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
-summary: I-BFM 将人形本体、物体动力学与手–物接触共同编码进 forward–backward 行为空间，以奖励推断 latent 指令调用同一策略；LOGO 同时条件化近端交互意图与远端目标。G1 仿真评测覆盖搬运/推/踢与扰动恢复，项目页另提供定性真机视频和 MuJoCo 交互演示。
+summary: I-BFM 将人形本体、物体动力学与手–物接触共同编码进 forward–backward 行为空间，以奖励推断 latent 指令调用同一策略；LOGO 同时条件化近端交互意图与远端目标。G1 仿真评测覆盖搬运/推/踢与扰动恢复，项目页另提供定性真机视频和 MuJoCo 交互演示；官方 Roboparty/I-BFM-Code 已发布 H200 训练源码、166.560M 步 checkpoint 与 Carry/Push/Kick 交互脚本。
 project_id: i-bfm
 project: https://iamhardworking.github.io/I-BFM/
+code: https://github.com/Roboparty/I-BFM-Code
 ---
 
 # I-BFM: Reward-Conditioned Robust Humanoid Interaction via Unsupervised Reinforcement Learning
@@ -38,7 +39,7 @@ project: https://iamhardworking.github.io/I-BFM/
 **机构：** Tongji University（同济大学）、Tsinghua University（清华大学）、Zhejiang University（浙江大学）、RoboParty Lab、Harbin Institute of Technology（哈尔滨工业大学）、ShanghaiTech University（上海科技大学）。  
 **时间/状态：** arXiv:2610.06129v1，2026-10-05 提交；预印本。  
 **论文：** [arXiv 摘要页](https://arxiv.org/abs/2610.06129) · [PDF](https://arxiv.org/pdf/2610.06129) · [HTML](https://arxiv.org/html/2610.06129v1)  
-**官方项目页：** [I-BFM](https://iamhardworking.github.io/I-BFM/) · 代码状态标注为 “Coming soon”。
+**官方项目页：** [I-BFM](https://iamhardworking.github.io/I-BFM/) · 官方代码仓库 [Roboparty/I-BFM-Code](https://github.com/Roboparty/I-BFM-Code)（核查于 2026-10-27；项目页 2026-10-06 时仍标 “Coming soon”）。
 
 ## 一句话定义
 
@@ -166,24 +167,44 @@ flowchart TB
 - 任务的阶段奖励仍需设计，推断 latent 后还需高层进度/接触逻辑选择阶段；“零样本”不等于无任务定义。
 - 真机结果是动捕工作区中的定性演示，策略执行为 50 Hz；没有真机统计成功率、多硬件泛化或广泛物体种类评测。
 - 稳健性结论依赖 MuJoCo 指定箱体与中途施加的固定方向/持续时间扰动协议；不等同于自然分布中所有失败模式的鲁棒性。
-- 官方项目页将代码状态标为 **Coming soon**；目前未发现可下载代码仓库或权重/数据集发布入口。项目页提供浏览器内 MuJoCo 交互演示，但它不是训练代码公开。
+- **开源状态（核查于 2026-10-27）：** `Roboparty/I-BFM-Code`（最近提交 2026-10-14）已发布 `ibfm/` 训练源码、`checkpoints/ibfm-166m/`（经 Git LFS 分片，需 `git lfs pull` 后 `bash restore_checkpoint.sh` 校验拼合）、Carry/Push/Kick 三个交互任务脚本与 latent，并在 Hugging Face 提供约 210 GiB 的 166.560M 步 replay buffer（`HanSj77/I-BFM-166560M-replay-buffer`，8 个 rank 分片）。2026-10-06 项目页“Coming soon”状态已过期；本页此前“未发现代码仓库”的结论作废。
+- **仍未覆盖：** 仓库 README 只给出 MuJoCo 交互与训练复现，未提供真机部署代码（推测：真机演示的部署栈未随仓库公开）；许可为继承上游 BFM-Zero 的 CC BY-NC 4.0（非商用）；README 另提示 RP1 支持在主仓库标为 “coming soon”。
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-10-06，官方项目页标注 Code Coming soon，未公开可运行训练/推理实现；网页 MuJoCo 演示不能替代源码）。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant R as restore_checkpoint.sh
+    participant T as ibfm/scripts/train_ibfm_h200.sh
+    participant H as ibfm/humanoidverse/train
+    participant I as humanoidverse/reward_inference.py
+    participant K as ibfm/tasks/{carry,push,kick}_box
+    U->>R: git lfs pull + 校验拼合 ibfm-166m 权重
+    U->>T: 8×H200 训练（可 RESUME=1 续训）
+    T->>H: 固定数据混合 / seed / 超参
+    H-->>T: runs/…/checkpoint + policies/{latest,best}
+    U->>I: 可选 replay buffer（--buffer-path 单个 rank 目录）
+    I-->>K: 奖励推断得到各任务 latent
+    U->>K: run_interactive.sh（MuJoCo 闭环）
+    K-->>U: 视频 / trace / summary
+```
+
+关键复现路径（`Roboparty/I-BFM-Code` README）：`uv sync` 后用 `./scripts/train_ibfm_h200.sh` 从头训练，或直接以随仓库发布的 166.560M 步 checkpoint 运行 `tasks/*/run_interactive.sh`；README 称 replay buffer 支持奖励推断时的 latent 选择，据此（推测）新 latent 的奖励推断需要 buffer，仅有权重不够。
 
 ## 结论
 
-I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共享状态和 latent 行为从身体运动扩展到人形–物体–接触耦合。FB 奖励寻址提供统一调用接口，LOGO 则显式保留接触附近的下一步意图和较远的任务目标。在所报告的 G1 仿真测试中，尤其是 Carry 的中途机器人跌倒恢复，以及 G1 上的定性演示，展示了这一交互建模方向的潜力；但成本信息缺失、Eobj 与项目网页结果不一致、真机评估未量化等因素限制了现阶段的可复现性和结论外推范围。
+I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共享状态和 latent 行为从身体运动扩展到人形–物体–接触耦合。FB 奖励寻址提供统一调用接口，LOGO 则显式保留接触附近的下一步意图和较远的任务目标。在所报告的 G1 仿真测试中，尤其是 Carry 的中途机器人跌倒恢复，以及 G1 上的定性演示，展示了这一交互建模方向的潜力；但成本信息缺失、Eobj 与项目网页结果不一致、真机评估未量化等因素限制了结论外推；官方训练源码与 checkpoint 现已公开，可在 MuJoCo 中复核仿真侧结果。
 
 ## 项目资源与工程补充
 
 ### 项目页提供什么
 
-该站点是论文配套的视觉演示与试用入口，不是一个已发布的训练代码仓库。首页提供：
+该站点是论文配套的视觉演示与试用入口（训练代码在独立仓库 I-BFM-Code，见下表）。首页提供：
 
 - **研究概览视频**：呈现 I-BFM 预训练及奖励推断的框架。
-- **浏览器内交互演示**：Live MuJoCo Carry Box 与键盘控制入口。该交互 demo 可用于体验项目所表达的闭环操作概念，但不能据此复现训练。
+- **浏览器内交互演示**：Live MuJoCo Carry Box 与键盘控制入口。该交互 demo 可用于体验项目所表达的闭环操作概念，但网页演示本身不能复现训练，复现请用 I-BFM-Code。
 - **鲁棒性视频**：Carry Box、Push Box、Kick Box 的受扰表现，以及 Robust Goal Reaching。
 - **结果卡片**：把 Carry / Push / Kick 在无扰动、物体受扰、机器人受扰下的 300 episode 计数放到同一页面。
 
@@ -210,8 +231,8 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 | 项目页与演示视频 | 已公开 |
 | 浏览器内 MuJoCo 交互入口 | 项目页嵌入/链接提供 |
 | 论文 | [arXiv:2610.06129](https://arxiv.org/abs/2610.06129) |
-| 代码仓库 | 页面标注 Coming soon；未找到公开仓库 |
-| 权重 / 训练数据下载 | 未发现公开入口；论文也未给出可下载链接 |
+| 代码仓库 | [Roboparty/I-BFM-Code](https://github.com/Roboparty/I-BFM-Code) 已公开（2026-10-27 核查；项目页 2026-10-06 仍标 Coming soon） |
+| 权重 / 训练数据下载 | 仓库内 `checkpoints/ibfm-166m`（Git LFS）；replay buffer 在 Hugging Face（约 210 GiB） |
 
 ## 关联页面
 
@@ -229,6 +250,7 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 - [arXiv 摘要页](https://arxiv.org/abs/2610.06129)
 - [arXiv PDF](https://arxiv.org/pdf/2610.06129)
 - [官方 I-BFM 项目页](https://iamhardworking.github.io/I-BFM/)
+- [Roboparty/I-BFM-Code 官方仓库](https://github.com/Roboparty/I-BFM-Code)（README，核查于 2026-10-27）
 - [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 - [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
 

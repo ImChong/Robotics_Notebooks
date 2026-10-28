@@ -7,6 +7,7 @@
 ## 当前资料文件
 
 ### sites/ — 项目页与官方公告归档
+- [x] [streameval-ai.md](sites/streameval-ai.md) | StreamEval 官方项目页与公开排行榜（arXiv:2610.28402）
 - [x] [anthropic-formal-verification.md](sites/anthropic-formal-verification.md) | Anthropic × Theorem：Claude 辅助 OSS-Fuzz RISC-V 二进制级 Rocq 证明；记录公开范围与形式模型边界
 - [x] [robomind.md](sites/robomind.md) | RoboMIND 官方项目页、v1.x Hugging Face 与 v2.0 ModelScope 数据入口
 - [x] [locomanilab-project.md](sites/locomanilab-project.md) | LocoManiLab 全栈人形移动操作测试床（arXiv:2610.30876；代码/数据 Coming soon）
@@ -18,6 +19,7 @@
 - [x] [workhorse.md](sites/workhorse.md) | Workhorse：从人类示范学习全身人形移动操作；截至 2026-10-07 未找到独立项目页、预印本或官方代码入口
 
 ### papers/ — 论文来源归档
+- [x] [streameval_arxiv_2610_28402.md](papers/streameval_arxiv_2610_28402.md) | StreamEval：交互式流式视频生成基准（arXiv:2610.28402）
 - [x] [robomind-v1-rss21.md](papers/robomind-v1-rss21.md) | RoboMIND 1.0：RSS 2025 / arXiv:2412.13877，多本体操作数据基准
 - [x] [robomind-v2-arxiv-2512-24653.md](papers/robomind-v2-arxiv-2512-24653.md) | RoboMIND 2.0：双臂移动操作、触觉与数字孪生数据集（arXiv:2512.24653）
 - [x] [locomanilab_arxiv_2610_30876.md](papers/locomanilab_arxiv_2610_30876.md) | LocoManiLab 人形移动操作数据、策略、控制器和部署统一测试床（arXiv:2610.30876）
@@ -179,6 +181,9 @@
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
+- [x] [streameval.md](repos/streameval.md) | StreamEval 官方评测代码、协议、模型适配入口与基准运行工具（Apache-2.0）
+- [x] [awesome-supermimic.md](repos/awesome-supermimic.md) | DiaoOrg/awesome-supermimic：SuperMimic 社区实现、扩展、演示与数据资源索引（CC0-1.0）
+- [x] [roboparty_rp1.md](repos/roboparty_rp1.md) | RoboParty RP1（ROBOTO 01）官方代码仓库体系、复现入口与许可证边界
 - [x] [theorem-labs-oss-verify-proofs.md](repos/theorem-labs-oss-verify-proofs.md) | Theorem OSS Verify：OSS-Fuzz 入口证明、Rocq 检查与 RISC-V/Linux process semantics
 - [x] [mjviser.md](repos/mjviser.md) | mujocolab/mjviser：基于 Viser 的 MuJoCo 浏览器查看器；与 mjlab（训练）分层区分（Apache-2.0）
 - [x] [air-embodied-brain-memcompiler.md](repos/air-embodied-brain-memcompiler.md) | MemCompiler 官方实现：ALFWorld / ScienceWorld Manager–Executor 运行与评测入口
@@ -400,6 +405,7 @@
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
 |------|------|
+| [x] [goodfire_neural_networks_are_already_clean_2026-10-15.md](blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md) | Nick Cammarata / Goodfire：机制可解释性的非正式 working hypothesis（2026-10-15；companion paper 待发布） |
 | [x] [openai_gpt6_software_maintenance_2026-10-14.md](blogs/openai_gpt6_software_maintenance_2026-10-14.md) | OpenAI：GPT-6 Astra / GPT-6.1 Sol 辅助清理死代码、过期实验与 CI（2026-10-14） |
 | [x] [mandarobotics_comparing_physics_engines_2026-10-05.md](blogs/mandarobotics_comparing_physics_engines_2026-10-05.md) | Manda Robotics：PhysX / Newton-MuJoCo-Warp / MuJoCo CPU / Genesis 匹配场景比较（2026-10-05） |
 | [x] [egm_themoonlight_literature_review_2512_19043.md](blogs/egm_themoonlight_literature_review_2512_19043.md) | Moonlight 社区英文导读：EGM（arXiv:2512.19043）结构化摘要（非官方） |
@@ -448,6 +454,7 @@
 | [x] [wechat_human_five_vit_intro.md](blogs/wechat_human_five_vit_intro.md) | 微信公众号 human five：《ViT入门》（`ugiOirWHrSgEefG8W1-o6Q`；Agent Reach + wechat-article-for-ai；`wiki/concepts/vision-transformer.md`） |
 | [x] [wechat_shenlan_five_embodied_model_taxonomy.md](blogs/wechat_shenlan_five_embodied_model_taxonomy.md) | 微信公众号 深蓝具身智能：《五大具身模型详解：VLM、VLA、VLN、VLX、世界模型》（`xj-rc6v64Ge6onoUPvkHLg`；Agent Reach + wechat-article-for-ai；`wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md`） |
 | [x] [wechat_shenlan_tro_manip_5_papers_survey.md](blogs/wechat_shenlan_tro_manip_5_papers_survey.md) | 微信公众号 深蓝具身智能：《顶刊 T-RO 精选：2026上半年机器人操作学习的五项核心突破》（`nswA-jCGC3kr9iQjhRRuXQ`；Agent Reach + wechat-article-for-ai；`wiki/overview/tro-manip-5-papers-technology-map.md` + 5 论文实体） |
+| [x] [wechat_githubstore_18_open_source_robot_projects.md](blogs/wechat_githubstore_18_open_source_robot_projects.md) | 微信公众号 GitHubStore：《想进入机器人领域吗？学习这18个开源项目就够了》（`DVGSnatQ5hw2UxAkPeS1Wg`；`fetch_wechat_article.py`；`wiki/overview/robot-open-source-wechat-githubstore-18-projects.md` + 12 新实体 / 6 既有节点复用） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 | [x] [worldlabs_spark_2_0_streaming_3dgs.md](blogs/worldlabs_spark_2_0_streaming_3dgs.md) | World Labs：Spark 2.0 流式 3DGS（LoD splat 树、.RAD、虚拟 splat 分页）技术博客归档 |
@@ -538,7 +545,8 @@
 | [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [roboparty_com.md](sites/roboparty_com.md) | RoboParty 官网：公司叙事、里程碑、Roboto Origin 与 Lab 入口 |
-| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RPO 已完整开放；RP1 硬件、固件、仿真模型与训练工具按路线图分批发布 |
+| [x] [roboparty_rp1_opensource_status_2026-10-15.md](sites/roboparty_rp1_opensource_status_2026-10-15.md) | RoboParty RP1 开放状态历史快照（截至 2026-10-15；不代表当前发布状态） |
+| [x] [roboparty_rp1_official.md](sites/roboparty_rp1_official.md) | RoboParty RP1 产品页、技术文档、GitHub 模块与当前开放/许可边界核查 |
 | [x] [roboparty_com_roboto_origin_doc.md](sites/roboparty_com_roboto_origin_doc.md) | Roboto Origin 官方文档站：参数表、系统架构与开源范围 |
 | [x] [lab_roboparty_com.md](sites/lab_roboparty_com.md) | RoboParty Lab 官网：Party OS 四方向、开源项目与荣誉列表 |
 | [x] [roboparty_lab_tech_humanoid_control.md](sites/roboparty_lab_tech_humanoid_control.md) | TeCH 成果页（lab.roboparty.com/outputs/tech）：无监督人形全身控制 |
@@ -648,6 +656,11 @@
 | [humanoid_motion_control_know_how.md](notes/humanoid_motion_control_know_how.md) | 飞书公开文档《人形机器人运动控制 Know-How》结构化来源归档 |
 | [legacy-readme-resource-map.md](notes/legacy-readme-resource-map.md) | 旧 README 完整原始内容（归档备份） |
 
+### patents/ — 专利申请与专利文献归档
+| 文件 | 内容 |
+|------|------|
+| [us20260326293a1_mobile_robot_control_architecture.md](patents/us20260326293a1_mobile_robot_control_architecture.md) | Boston Dynamics：全身动态平衡与局部末端执行器控制协同（US 2026/0326293 A1；同族 WO 2026/136238 A1） |
+
 ### 根目录散文件
 | 文件 | 内容 |
 |------|------|
@@ -673,3 +686,12 @@
 - `wiki/` = 结构化知识层
 
 sources 里的内容是原材料，wiki 是提炼后的知识。
+
+### 新增论文归档（2026-10-27）
+- [x] [dexport_arxiv_2610_32969.md](papers/dexport_arxiv_2610_32969.md) | DexPort：便携式 20-DoF 灵巧手数据采集与技能控制（arXiv:2610.32969）
+- [x] [rynnunify_arxiv_2610_32965.md](papers/rynnunify_arxiv_2610_32965.md) | RynnUnify：统一具身理解、视觉规划与机器人控制（arXiv:2610.32965）
+- [x] [backtrack_frozen_vla_arxiv_2610_32941.md](papers/backtrack_frozen_vla_arxiv_2610_32941.md) | Backtrack：冻结 VLA 的轻量失败检测与轨迹回退恢复（arXiv:2610.32941）
+
+### 新增项目页归档
+- [x] [dexport-project.md](sites/dexport-project.md) | DexPort 官方项目页与开放状态核查
+- [x] [rynnunify-project.md](sites/rynnunify-project.md) | RynnUnify 官方项目与 Hugging Face 入口核查

@@ -11,7 +11,7 @@
 - **论文：** <https://arxiv.org/abs/2609.17210>（Zenodo [10.5281/zenodo.20049506](https://doi.org/10.5281/zenodo.20049506)）
 - **HF 权重：** <https://huggingface.co/limxdynamics/FluxVLAEngine>
 - **入库日期：** 2026-09-06（国内开源全景初录）
-- **复核日期：** 2026-09-28（arXiv 论文 ingest + README / 仓库结构核对）
+- **复核日期：** 2026-10-28（README 与公开仓库核对）
 - **一句话说明：** 配置驱动的 **VLA 全栈工程平台**：LeRobot 兼容数据、`fluxvla/` 训练/评测/推理引擎、多 backbone 微调（π0/π0.5、GR00T、Cosmos3、FastWAM、DiT4DiT、DreamZero、SmolVLA 等）、LIBERO / RoboCasa / RoboDojo 统一评测、RTC + Triton + ZMQ 远程推理与 Franka / Oli 真机 runner。
 
 ## 开源状态（README / 项目页核查 2026-09-28）
@@ -45,3 +45,8 @@ python scripts/inference_real_robot.py --config [CONFIG] -- ckpt-path [CKPT_PATH
 - [LimX COSA](../../wiki/entities/limx-cosa.md) — 闭源 OS vs 开源技能层
 - [VLA 部署 12 篇地图](../../wiki/overview/vla-deploy-12-papers-technology-map.md)
 - [LeRobot](../../wiki/entities/lerobot.md) — 数据格式互操作
+
+## 2026-10-28 核查
+
+- 主仓公开，许可证为 Apache-2.0；第三方模型与权重许可须分别核查。
+- README 的 π0.5 LIBERO 四套件平均为 97.95%；[模型卡](../models/fluxvla-engine-huggingface.md)列 97.85%，两处结果不同，复现时应核对 checkpoint、配置及评测条件。

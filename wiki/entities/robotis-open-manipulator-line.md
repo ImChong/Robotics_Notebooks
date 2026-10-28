@@ -14,11 +14,13 @@ related:
   - ../concepts/ros2-basics.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ./awesome-physical-ai-natnew.md
+  - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/repos/robotis-git.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
+  - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulator-H、RH-P12-RN 等）：文档在 eManual 分系列维护，代码集中在 ROBOTIS-GIT 组织；Physical AI 侧见 OMY 与 cyclo_lab。"
 ---
 
@@ -68,3 +70,4 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - [sources/repos/robotis-git.md](../../sources/repos/robotis-git.md)
+- [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）
