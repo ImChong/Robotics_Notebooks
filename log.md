@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | Proteus 跨人形动作跟踪项目页
+
+- 归档项目页并整理共享关节布局、本体描述、跨仿真器评测及未见本体泛化边界。
+- 论文和代码标注即将发布；网页提供 ONNX 仿真演示，真机表现待验证。
+
 ## [2026-10-28] ingest | sources/repos/jeremyipark-vision-demos.md — 收录运动视频分析示例，注明开源代码与外部模型调用边界
 
 ## [2026-10-28] ingest | sources/papers/self_improving_agents_embodied_lifelong_learning.md — 对比自我改进机制与具身终身学习，复用 RISE、SERL、Arcadia 节点并记录开放边界
