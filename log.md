@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | sources/papers/omni_woodpecker_arxiv_2610_27103.md — 收录音视频幻觉纠正方法及官方开源推理入口
+
+## [2026-10-28] ingest | 具身智能小站 2026-10-28 盘点 59 篇（深读免渲染事件仿真；59/59 独立节点：新建 55 / 复用 4）+ 技术地图
+
 ## [2026-10-28] ingest | ThinkWorld 世界想象与动作推理
 
 - 收录论文与技能组合实验，关联 VLA 和世界模型知识。
