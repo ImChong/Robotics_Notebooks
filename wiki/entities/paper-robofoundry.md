@@ -13,8 +13,10 @@ tags:
   - nus
   - sjtu
 status: complete
-updated: 2026-10-01
+updated: 2026-10-28
+project_id: robofoundry
 arxiv: "2609.32862"
+code: https://github.com/robofoundry2026/RoboFoundry
 venue: "Preprint, 2026"
 related:
   - ../methods/vla.md
@@ -27,7 +29,8 @@ related:
 sources:
   - ../../sources/papers/robofoundry_arxiv_2609_32862.md
   - ../../sources/sites/robofoundry-project.md
-summary: "RoboFoundry（arXiv:2609.32862，NTU/北航/NUS 等）：Self-Evolving System-as-Policy — 冻结 FM，演化 context+skill 支撑系统；EmbodiedBench Avg 78.0（GPT-6 Astra）、RoboMemArena 53.5/72.8、LIBERO-PRO SOTA 级；项目页截至入库日未列代码仓。"
+  - ../../sources/repos/robofoundry.md
+summary: "RoboFoundry（arXiv:2609.32862，NTU/北航/NUS 等）：Self-Evolving System-as-Policy — 冻结 FM，演化 context+skill 支撑系统；EmbodiedBench Avg 78.0（GPT-6 Astra）、RoboMemArena 53.5/72.8、LIBERO-PRO SOTA 级；官方仓库已有占位页，评测代码待发布。"
 ---
 
 # RoboFoundry（System-as-Policy · arXiv:2609.32862）
@@ -55,7 +58,7 @@ summary: "RoboFoundry（arXiv:2609.32862，NTU/北航/NUS 等）：Self-Evolving
 |------|------|
 | **机构** | 南洋理工大学（NTU）；北京航空航天大学（Beihang）；新加坡国立大学（NUS）；云蝶科技（Cloud Butterfly Technology）；上海交通大学（SJTU） |
 | **arXiv** | [2609.32862](https://arxiv.org/abs/2609.32862) |
-| **开源** | **截至 2026-09-30 项目页未列 GitHub / 权重** — 复现需等待官方发布或联系作者 |
+| **开源** | **截至 2026-10-28** 项目页链接官方仓库；仓库仅有 README 和 assets，三个评测代码均列为待发布 |
 | **评测规模** | EmbodiedBench 四套件 + RoboMemArena + LIBERO-PRO（文内与项目页合计约 **1200** 量级任务/settings） |
 | **Backbone 示例** | GPT-6 Astra、GPT-5.5、Qwen3.7-Plus、GLM5.3-Flash、Qwen3.8-27B 等 |
 
@@ -100,7 +103,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-30 项目页未发布可运行官方仓库；演化环路由与 filesystem 编辑接口无法对齐到公开 README 入口。）
+**不适用**（截至 2026-10-28 官方仓库尚无可运行评测实现；演化环路由与 filesystem 编辑接口无法对齐到公开 README 入口。）
 
 ## 实验与评测
 
@@ -143,13 +146,13 @@ RoboFoundry 还可作为 **context 演化插件** 提升 standalone π₀.₅ / 
 3. **Context 与 Skill 分工明确** — 记忆类失败改 context 面；组合/恢复失败改 skill 面，便于运维归因。
 4. **语义接口服务迁移** — 演化落在 BIND_s，换机器人主要换 BIND_e（VLA / API / code）。
 5. **开放 backbone 可逼近 frontier** — Qwen3.7-Plus **70.3%** vs GPT-5.5 **72.7%** Avg.，利于工程选型。
-6. **与 Harness VLA 同榜但机制不同** — Harness 偏 **冻结 VLA 原语 + 记忆重绑定**；RoboFoundry 偏 **整个支撑系统的版本化演化**（当前 **无公开代码** 对比复现成本）。
+6. **与 Harness VLA 同榜但机制不同** — Harness 偏 **冻结 VLA 原语 + 记忆重绑定**；RoboFoundry 偏 **整个支撑系统的版本化演化**（当前评测代码待发布）。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| 复现入口 | 关注 [项目页](https://jingsongliang.com/robofoundry/) 是否挂 GitHub；勿与无关 org [`robofoundry`](https://github.com/robofoundry)（ROS 工具）混淆 |
+| 复现入口 | 关注 [官方仓库](https://github.com/robofoundry2026/RoboFoundry) 的代码发布；勿与无关 org [`robofoundry`](https://github.com/robofoundry)（ROS 工具）混淆 |
 | Backbone | 论文在多 FM 上报告增益；部署前先固定 **评测 backbone** 再谈系统演化预算 |
 | 执行后端 | BIND_e 可接 **冻结 VLA**、coding agent、CuRobo 等 — 与 [EmbodiedSkills](./paper-embodiedskills.md) 的 guarded runtime 可组合对比 |
 | 记忆基准 | 长程任务优先 RoboMemArena / RMBench 族；对照 [SimpleMemVLA](./paper-simplememvla.md) 等 **模型内记忆** 路线 |
@@ -166,7 +169,7 @@ RoboFoundry 还可作为 **context 演化插件** 提升 standalone π₀.₅ / 
 
 ## 局限与风险
 
-- **官方代码未发布** — 截至入库日无法复现 filesystem 演化实现与 compute 成本。
+- **评测代码待发布** — 截至 2026-10-28 官方仓库为占位页，无法据此复现 filesystem 演化与 compute 成本。
 - **FM 名称与版本** — 项目页使用 GPT-6 Astra / GPT-5.5 等 **前沿商用或预览模型**；开源 backbone 结果需单独核对 API 与 prompt 快照。
 - **自进化安全** — 无公开 guard 细节时，真机 **unconstrained self-edit** 风险需额外 sandbox（对照 EmbodiedSkills preflight/verify）。
 - **与模型内记忆路线竞争** — [SimpleMemVLA](./paper-simplememvla.md) 等通过 **原生上下文** 抬记忆分数；RoboFoundry 走 **系统外持久记忆**，延迟与一致性 trade-off 不同。
