@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | 收录布料显式摩擦、MimicAll 与 CADonatello，注明开放状态核查边界
+
+## [2026-10-27] lint | 全量 wiki lint 清零：修复 20 条信息型预警（12 篇 paper 补「与其他工作对比」、Kine2Go/StreamEval 补评测章节、4 篇感知页回链感知栈枢纽、Gen-HumanWholeBody 按 HF 数据卡补许可证与模态、sim2sim 并入 Sim2Real 缩写速查、Default/inference 停用词）
+
 ## [2026-10-27] ingest | sources/papers/reduced_3dgs.md — 补充 3DGS 内存压缩与复现边界
 
 - 在空间表征页面补充 Reduced 3DGS 的实验结果与部署边界，复用主分支已有论文、项目页和代码归档。

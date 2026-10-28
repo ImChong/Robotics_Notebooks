@@ -55,10 +55,21 @@ Foundry 结合静态场景感知和动态对象跟踪，生成关联几何、语
 
 官方仓库 README 表明代码不计划开源；模型和数据列为待发布，仓库目前仅提供项目说明。
 
+## 与其他工作对比
+
+| 工作 | 场景表示 | 与 Holi-World 的差异 |
+|------|----------|----------------------|
+| [ConceptGraphs](./paper-conceptgraphs-open-vocabulary-3d-scene.md) | 开放词汇三维对象图 | ConceptGraphs 把 VLM 语义融入静态对象图供空间查询；Holi-World 在静态对象之外追加动态轨迹与交互历史，并据此生成时空问答监督训练 VL-4B |
+| [SpatialLM](./cn-os-spatiallm.md) | 点云 → 结构化室内布局与 3D 框 | SpatialLM 输出静态布局且训练代码与合成数据公开；Holi-World 面向第一视角记录中的动态交互，代码不计划开源 |
+| [S-Agent 2.0](./paper-s-agent-2.md) | 推理时调用感知工具 + 场景记忆 | 同一团队的另一条路线：S-Agent 2.0 不训练模型，靠工具读数推理；Holi-World 把世界记录蒸馏成训练数据，训练专用 VL 模型 |
+
+ScanNet AP50 只衡量静态检测；若关心动态物体与时序推理，应看自建 Bench 的分项结果。在[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)中，它对应「2D→3D 提升与语义建图」层，并向下游提供带时间维度的语义地图。
+
 ## 关联页面
 
 - [Ropedia W0](./paper-ropedia-w0.md) — 跨本体第一视角世界模型。
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知栈选型闭环知识链枢纽
 
 ## 参考来源
 

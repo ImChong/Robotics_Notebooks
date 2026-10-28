@@ -80,6 +80,16 @@ sequenceDiagram
 
 两组拒答率来自不同基准，不能混为一项。官方表中 Qwen3-VL-8B 的 WeRef F1 为 36.7、拒答率为 18.3；不意味着所有任务或场景都优于该模型。
 
+## 与其他工作对比
+
+| 工作 | 像素输出机制 | 与 WeVisOne-VL 的差异 |
+|------|--------------|-----------------------|
+| [LISA](./lisa.md) | 特殊分割 token 调用分割解码器 | 同为 token 驱动解码器；WeVisOne-VL 还把预测框一并送入约 9.6M 参数的轻量解码器，并增加连续 alpha matte 输出 |
+| [Sa2VA](./sa2va.md) | SEG token 驱动 SAM 2 | Sa2VA 覆盖视频指称分割；WeVisOne-VL 以图像为主，但把检测、计数、OCR、指点与分割统一到结构化文本接口 |
+| LocateAnything-3B（官方表基线） | 目标级定位 | 官方表中 WeRef-Bench F1 与拒答率均低于 WeVisOne-VL-4B；比较限于官方报告口径 |
+
+主要差异点是显式拒答：目标不存在时输出 `None`，而非强行给框。对机器人而言，这能减少「幻觉目标」直接进入抓取或导航；在[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)中，它属于语言条件的 2D 检测/分割层，延迟与误拒答仍需在任务中实测。
+
 ## 结论
 
 统一的目标与像素接口有助于构建语言条件视觉感知，但评测优势需要结合任务和部署条件判断。
@@ -93,6 +103,7 @@ sequenceDiagram
 
 - [Sa2VA](./sa2va.md)：以多模态模型与分割模块结合输出掩码。
 - [LISA](./lisa.md)：语言驱动的分割方法。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：感知栈选型闭环知识链枢纽
 
 ## 参考来源
 

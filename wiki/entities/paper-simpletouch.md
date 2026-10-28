@@ -68,6 +68,16 @@ sequenceDiagram
 
 上述结果为论文所报告的特定任务和实验条件，不能直接推广为所有触觉操作的结论。
 
+## 与其他工作对比
+
+| 工作 | 触觉如何进入策略 | 与 SimpleTouch 的差异 |
+|------|------------------|-----------------------|
+| [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md) | 冻结视觉基策略，真机 RL 训练触觉残差 | 不需要触觉示范，但需要真机在线交互；SimpleTouch 只用离线示范单阶段训练 |
+| [𝒩₀-VTLA](./paper-n0-vtla.md) | 潜空间触觉 token 条件 flow-matching 动作专家 | 同样在 VLA 中加入触觉专家并预测未来触觉；𝒩₀-VTLA 另加 ALTER 离线 advantage，SimpleTouch 强调不做额外触觉策略预训练 |
+| [ForceVLA](./paper-forcevla.md) | 6 轴外力/力矩作为 VLM 之后的一等模态（FVLMoE） | 用力/力矩传感而非触觉图像；两者都在 π 系列 VLA 上扩展接触模态 |
+
+论文的核心论点是「触觉策略预训练并非必需」，比较对象是 FTP 系列微调策略；与上表其他方法之间没有同条件对比，跨论文成功率不宜直接比较。
+
 ## 结论
 
 在所测试任务中，已有预训练表征加任务示范足以训练有效触觉策略。
