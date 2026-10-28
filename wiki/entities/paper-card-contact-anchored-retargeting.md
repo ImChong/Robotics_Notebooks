@@ -11,9 +11,11 @@ summary: "CARD 将人手示范统一为手部与接触表示，向机器人同�
 related:
   - ../concepts/motion-retargeting.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
+  - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
   - ../../sources/papers/card_arxiv_2610_36539.md
   - ../../sources/sites/card-retargeting.md
+  - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
 ---
 
 # CARD（接触锚定的灵巧操作重定向）
