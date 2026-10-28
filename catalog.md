@@ -438,6 +438,7 @@
 - [XGripper](wiki/entities/cn-os-xgripper.md) — XGripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 数据采集夹爪 SDK `📅unknown` `[entity_page]`
 - [xMimic](wiki/entities/cn-os-xmimic.md) — xMimic** 是 北京人形机器人创新中心 公开的 **全身动作跟踪/技能训练** 开源项目：BVH动作由xGMR重定 `📅unknown` `[entity_page]`
 - [XR-1](wiki/entities/cn-os-xr-1.md) — XR-1** 是 北京人形机器人创新中心 公开的 **VLA/操作模型** 开源项目：三阶段流程先学习统一视觉—运动离散 `📅unknown` `[entity_page]`
+- [CO01：经验作为提示](wiki/entities/co01.md) — CO01 是可可矩阵（COCO Matrix）提出的机器人系统：把示范、尝试和指导放入上下文，使策略在不更新权重的情况下调整操作行为。 `📅unknown` `[entity_page]`
 - [CodeGraph](wiki/entities/codegraph.md) — CodeGraph**（官方仓库，[项目页](https://colbymchenry.github.io `📅unknown` `[entity_page]`
 - [Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）](wiki/entities/codersag-mechanical-mcp.md) — Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）是通过 PyMechanical gRPC 连接 ANSYS Mechanical， `📅unknown` `[entity_page]`
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
