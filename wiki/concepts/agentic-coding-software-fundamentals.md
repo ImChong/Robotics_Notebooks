@@ -35,6 +35,7 @@ related:
   - ../entities/agentic-design-patterns.md
   - ../entities/tidy-design.md
 sources:
+  - ../../sources/repos/humanfia-humanize.md
   - ../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md
   - ../../sources/blogs/anthropic_context_engineering_2026-07-24.md
   - ../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md
@@ -187,7 +188,13 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
+## Humanize 工作流入口
+
+[Humanize](../../sources/repos/humanfia-humanize.md) 提供 CLI、终端与 Web 工作流来编排 coding agent；其 README 明确提示运行时绕过审批，应先在临时仓库验证。将其用于机器人代码时，仍需由项目自己的测试与评审定义交付条件。
+
 ## 参考来源
+
+- [Humanize 仓库归档](../../sources/repos/humanfia-humanize.md)
 
 - [Thariq Shihipar，Finding your unknowns（本站归档）](../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md)
 - [Thariq Shihipar，The new rules of context engineering（本站归档）](../../sources/blogs/anthropic_context_engineering_2026-07-24.md)
