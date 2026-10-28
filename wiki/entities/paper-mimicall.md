@@ -51,6 +51,11 @@ sources:
 
 ## 关联页面
 
+- [HuGe 人形 VLA](./paper-huge-humanoid-vla.md)
+- [RynnVLA-Latent](./paper-rynnvla-latent.md)
+- [EXE 跨具身预训练](./paper-exe-cross-embodiment.md)
+- [MOTIO 技能工程](./paper-motio.md)
+
 - [相关方法](./paper-yahmp.md)
 - [机器人仿真三层结构](../concepts/robot-simulation-three-layers.md)
 
