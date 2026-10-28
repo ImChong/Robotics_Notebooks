@@ -5,7 +5,7 @@
 - **代码：** <https://github.com/robosimstudio/robosimstudio>（Apache-2.0，已公开）
 - **技术报告：** <https://arxiv.org/abs/2610.18835>
 - **团队：** UC Berkeley AUTOLab 与 NVIDIA
-- **核查日期：** 2026-10-16
+- **核查日期：** 2026-10-28
 - **收录日期：** 2026-10-15
 - **一句话说明：** 面向机器人操作任务 Real2Sim 的开放交互式 GPU 仿真工具包，可由人或编码 Agent 根据手机视频构建并迭代检查物理场景。
 
@@ -30,6 +30,8 @@
 | **复现入口** | 仓库提供 examples/；README 给出 Agent 根据本地视频与任务描述创建环境的提示 |
 
 项目页可作为演示与概览入口；实现细节、许可证和运行入口以[官方仓库](../repos/robosimstudio.md)及其 README 为准。
+
+2026-10-28 复核：项目页仍提供论文、公开源码与 examples 链接；当前 README 另提供 CPU 路径，特定 SuperDex 海绵示例仍要求 GPU。项目页展示入口并非独立公开数据集的证据。
 
 ## 对 wiki 的映射
 
