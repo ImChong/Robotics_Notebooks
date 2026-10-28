@@ -71,6 +71,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .sub { position: absolute; top: 1318px; left: 50px; right: 50px; text-align: center;
   font-size: 52px; font-weight: 900; line-height: 1.3; color: #fff;
   text-shadow: 0 3px 0 #000, 0 0 18px rgba(0,0,0,.85); }
+/* 字幕里的式子（DISPLAY 换成 $…$ 的数和向量）：和字幕一样粗，字号同划重点 */
+.sub .katex { font-size: 1.02em; font-weight: 700; }
 
 /* ── intro / cover / outro cards ── */
 .card { position: absolute; inset: 0; }
@@ -451,7 +453,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
     if (window.__cover) sub = '';
     if (sub !== lastSub) {
-      subEl.textContent = sub; lastSub = sub;
+      richInto(subEl, sub); lastSub = sub;
       /* 一行放不下就缩字号，两行也不越过安全区底线 */
       for (var fs = 52; fs >= 40; fs -= 4) {
         subEl.style.fontSize = fs + 'px';
