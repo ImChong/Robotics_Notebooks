@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | sources/sites/worldarena2-challenge-iros2026.md — 补充赛事三赛道与指标修正；PACE 和 ForeTac 已有实体页
+
+## [2026-10-28] ingest | 收录 Humanize 工作流及四项算子生成 benchmark，补充评测基线与硬件界限的区别
+
+## [2026-10-28] ingest | sources/papers/robosimstudio_arxiv_2610_18835.md — 深读论文与源码，补充多物理、反馈闭环和擦拭示例实现；源码已公开
+
+## [2026-10-28] ingest | sources/papers/defm_arxiv_2601_18923.md — 收录深度表征与机器人实验；公开推理代码和权重，vision-demos 复用已有节点
+
 ## [2026-10-28] ingest | sources/repos/genie_sim.md — 核查官方开源边界并补充双运行栈与 ROS 2 实践
 
 ## [2026-10-28] ingest | sources/papers/learning_dexterous_manipulation_survey_2610_33486.md — 整理灵巧操作训练与评测综述，逐篇数据可向作者索取
