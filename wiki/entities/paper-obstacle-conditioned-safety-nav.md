@@ -10,6 +10,7 @@ updated: 2026-10-28
 arxiv: "2610.34674"
 project: https://huggingface.co/ocsnav/groot-vlm-graft28
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -74,6 +75,7 @@ summary: "Obstacle-Conditioned Safety Nav（arXiv:2610.34674）：用空间匹�
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：在成功率之外检查安全语义是否落到间距/速度/平滑性
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

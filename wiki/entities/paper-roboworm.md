@@ -11,6 +11,7 @@ arxiv: "2610.33807"
 project: https://huggingface.co/datasets/doanh25032004/vgp_datasets
 code: https://github.com/ltdoanhwork/RoboWorM
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -92,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ② 世界模型预测保真度评测层：用运动学树与固定相机先验检查运动稳定与多视角几何一致性
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

@@ -10,6 +10,7 @@ updated: 2026-10-28
 arxiv: "2610.33718"
 project: https://huggingface.co/josefchen/RoboJev-27B
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -73,6 +74,7 @@ summary: "RoboJev（arXiv:2610.33718）：以任务指令、操作视频抽帧�
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：以 LoRA 微调的 VLM 裁判自动判执行成功
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

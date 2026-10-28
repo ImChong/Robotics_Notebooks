@@ -10,6 +10,7 @@ updated: 2026-10-28
 arxiv: "2610.33778"
 project: https://sagnikanupam.com/papers/roboreason/
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -75,6 +76,7 @@ summary: "RoboReason（arXiv:2610.33778）：构建帧时序、物体深度与�
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ① 具身大脑/MLLM 认知评测层：帧时序、物体深度与左右排序的空间–时序推理
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
