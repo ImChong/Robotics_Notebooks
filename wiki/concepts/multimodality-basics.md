@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-10-22
+updated: 2026-10-28
 summary: "多模态学习联合建模图像、文本、音频等异质信号，核心是对齐共享语义空间并支持跨模态检索、生成与推理；是 VLM/VLA 的概念地基。"
 related:
   - ./vision-language-feature-fusion.md
@@ -72,6 +72,8 @@ flowchart LR
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [具身大模型分类学选型闭环知识链](../queries/embodied-fm-taxonomy-loop.md) — 多模态对齐是①VLM 感知理解层的底座，决定上层 VLN/VLA 能消费到什么语义
 - [Shared Geometry as a Rosetta Stone](../entities/paper-shared-geometry-rosetta.md) — 无配对样本的跨模态粗对齐研究
+
+- [Omni-Woodpecker](../entities/paper-omni-woodpecker.md) — 通过推理时表征干预缓解音视频模态冲突。
 
 ## 参考来源
 
