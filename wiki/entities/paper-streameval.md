@@ -60,9 +60,18 @@ flowchart LR
   judge --> report["任务分数与排行榜"]
 ```
 
-### 实验与评测
+## 实验与评测
 
 论文评测 37 个模型。视觉质量与身份保持较好，并不必然伴随可靠的请求执行或长时状态一致。论文报告 avatar performance 的 Following 最高 36.90、文本条件 world generation 的 Following 最高 25.93、reference editing 的 Edit Success 最高 15.00。它们分别是特定任务/指标最高值，不能作为跨任务总分排序。
+
+## 与其他工作对比
+
+| 基准 | 评测对象 | 与 StreamEval 的差异 |
+|------|----------|----------------------|
+| [WorldScore](./paper-worldscore.md) | 带显式相机轨迹的 next-scene 世界生成，十项 Ctrl/Quality/Dynamics 指标 | WorldScore 的控制信号在生成前给定；StreamEval 的请求在会话中增量到达，并额外考核状态保持与视听协调 |
+| [HarnessEval-W](./paper-harnesseval-w.md) | 交互式世界模型，LLM harness 取证并产出证据树 | 二者都评交互式生成；HarnessEval-W 的创新在评测器（agent 取证、可审计），StreamEval 的重点在用例协议（脚本化时间线、十项任务专属指标） |
+
+三者都不评机器人动作执行；若要为具身策略挑世界模型，仍需回到[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)中的动作条件基准。
 
 ## 开源状态与工程实践
 

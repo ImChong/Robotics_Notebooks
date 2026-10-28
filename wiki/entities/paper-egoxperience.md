@@ -55,10 +55,21 @@ EgoX-Engine 通过几何验证的物体跟踪与 SLAM 对齐构造多模态监�
 
 官方仓库目前为项目说明，代码、数据、基准和权重均列为待发布；不能据此认定可复现。
 
+## 与其他工作对比
+
+| 工作 | 输入与输出 | 与 EgoXperience 的差异 |
+|------|------------|------------------------|
+| [HOT3D](./dataset-hot3d.md) / [HOI4D](./dataset-hoi4d.md) | 头戴/第一视角采集的手-物数据集 | 二者是本文评测所用的外部基准；EgoXperience 自建 EgoX-Data-6M 训练集，目标是单目视频下一次前向同时输出相机、手、物体与深度 |
+| [R3D](./paper-sa-2607-02921-r3d-quantitative-3d-spatial-reasoning-for-egocen.md) | 第一视角问答 + 空间工具调用 | R3D 做定量空间问答，几何来自工具；EgoXperience 直接回归世界坐标系几何，可作为此类工具的上游感知 |
+| [Ropedia W0](./paper-ropedia-w0.md) | 相机位姿 + 投影骨架的跨本体世界模型 | 同一团队；W0 消费相机位姿与骨架做世界建模，EgoXperience 负责从第一视角视频恢复这类世界坐标信号 |
+
+选型上，若下游需要「手–物–相机」在同一世界坐标系对齐的监督，EgoXperience 的联合重建思路比逐模块拼接（SLAM + 手部姿态 + 物体位姿）更直接；但代码与数据尚未发布，当前只能当作方法参考，在感知栈中对应「2D→3D 提升」层，见[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)。
+
 ## 关联页面
 
 - [Ropedia W0](./paper-ropedia-w0.md) — 跨本体第一视角世界模型。
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知栈选型闭环知识链枢纽
 
 ## 参考来源
 
