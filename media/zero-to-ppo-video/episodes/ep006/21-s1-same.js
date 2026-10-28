@@ -82,7 +82,7 @@
       var qAsk = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 66, '?', 40, E.INK2, 'middle', 900);
       var qLater = E.txt(cards[1].g, TX + TW / 2, ROWS[1].y + 58, '第 4 幕再算', 20, E.INK2, 'middle', 700);
       // 旋转矩阵：往左转 90°
-      var m3 = E.grid(cards[2].g, 548, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, pad: 30, cw: 48, colors: [E.X, E.Y, E.Z] });   // 列框 48 宽，左右离中括号留出空
+      var m3 = E.grid(cards[2].g, 530, ROWS[2].y + 76, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 24, dx: 58, dy: 32, pad: 30, cw: 48, colors: [E.X, E.Y, E.Z] });   // 列框 48 宽，左右离中括号留出空；右括号离右边的小牌（TX）留 22
       // 括线：卡片左边一道竖线，三个小钩接到卡片，中间一支箭头指回 G1
       var brace = E.el('g', {}, s);
       K.paint(E.el('path', { d: 'M 296 ' + (ROWS[0].y + 50) + ' H 284 V ' + (ROWS[2].y + 75) + ' H 296 M 284 ' + (ROWS[1].y + 50) + ' H 296', fill: 'none', 'stroke-width': 3.5, 'stroke-linejoin': 'round' }, brace), null, E.HI);

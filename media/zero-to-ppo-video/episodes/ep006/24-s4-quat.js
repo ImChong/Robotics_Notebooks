@@ -30,7 +30,7 @@
   };
   var GX = 112, GY = 372, GH = 290;
   var CX = 404, CY = 214, R = 108;
-  var VX = 726, V0X = 600, VY = 128;
+  var VX = 722, V0X = 600, VY = 128;
 
   function bump(st, a, d) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
   // 机器人一共转了多少（度，往左为正）：90 → 360 → 720 → 810（= 朝左）→ 720（朝前）→ 765（45°）
@@ -84,7 +84,7 @@
         fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, cir), null, E.HI);
       var rad1 = E.halo(E.txt(cir, 0, 0, '半径 1', 19, E.HI, 'middle', 900));
       var halfArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 6, 'stroke-linecap': 'round' }, cir), null, E.HI);
-      var halfLab = E.halo(E.txt(cir, CX + 58, CY - R - 12, '只走了半圈', 20, E.HI, 'start', 900));
+      var halfLab = E.halo(E.txt(cir, CX + 14, CY - R - 12, '只走了半圈', 20, E.HI, 'start', 900));   // 淡出时右边那列「原来」已经出来，字别伸到它的括号上
       var angArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, cir), null, E.HI);
       var angLab = E.halo(E.txt(cir, 0, 0, '45°', 19, E.HI, 'middle', 900));
       var near = K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, cir), null, E.GOOD);
@@ -107,13 +107,13 @@
       /* ══ 右：四元数（列向量），左边可以再放一列 ══ */
       var vecs = [V0X, VX].map(function (x) {
         var g = E.el('g', {}, s);
-        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 42, cellColors: [E.INK, E.X, E.Y, E.Z] });
+        var m = E.grid(g, x, VY, [['?'], ['?'], ['?'], ['?']], { size: 26, dx: 70, dy: 40, pad: 40, cellColors: [E.INK, E.X, E.Y, E.Z] });
         var head = E.txt(g, x, 30, '', 21, E.INK, 'middle', 900);
         return { g: g, m: m, head: head };
       });
       var names = E.el('g', {}, s);
       // 分量名写在右边那列的右边，左边留给第二列
-      ['w', 'x', 'y', 'z'].forEach(function (c, k) { var n = E.txt(names, VX + 60, VY - 60 + 40 * k + 7, c, 20, E.MUT, 'middle', 700); n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; });
+      ['w', 'x', 'y', 'z'].forEach(function (c, k) { var n = E.txt(names, VX + 64, VY - 60 + 40 * k + 7, c, 20, E.MUT, 'middle', 700); n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; });
       var times = E.el('g', {}, s);
       E.arrow(times, [[V0X + 45, VY - 60], [VX - 45, VY - 60]], E.HI, 2.5, { head: 9 });
       E.txt(times, (V0X + VX) / 2, 30, '× (−1)', 19, E.HI, 'middle', 900);   // 和两列的标题同一行，夹在中间
