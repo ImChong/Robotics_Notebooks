@@ -2,10 +2,10 @@
 // 句 1「平面」地图淡入，「地图」写出「俯视地图」，「扫地机」扫地机在 (3, 1) 弹出（车头朝上），「两样东西」右栏两个虚线空格（各一个问号）；
 // 句 2「位置」左格亮起，「原点」原点鼓一下、写「原点」，「往右三格」「往上一格」各画一条紫色虚线分量（标 3、1），
 //    「这就是它的位置」紫色箭头从原点画到扫地机，左格写出列向量 (3, 1) 和「位置 p」；
-// 句 3「朝向」右格亮起，「往前的一根」绿色小箭头从扫地机中心长出来（写「前」），「往左的一根」琥珀小箭头（写「左」）；
-// 句 4「车头朝上」扫地机亮一下，「往前那根」「零、一」绿色尖上写 (0, 1)，「往左那根」「负一、零」琥珀尖上写 (−1, 0)；
+// 句 3「朝向」右格亮起，「往前的一根」红色小箭头从扫地机中心长出来（写「前」），「往左的一根」绿色小箭头（写「左」）；
+// 句 4「车头朝上」扫地机亮一下，「往前那根」「零、一」红色尖上写 (0, 1)，「往左那根」「负一、零」绿色尖上写 (−1, 0)；
 // 句 5「竖着排成两列」右格的矩阵两列先后弹出（同 005 第 1 幕：在矩阵里放大弹出，网格上对应的坐标鼓一下），「旋转矩阵」写出「朝向 R」，
-//    「转九十度」扫地机上画一段从朝右转到朝上的虚线弧，写「90°」，矩阵下写「转 90°（第 3 集）」；
+//    「转九十度」扫地机上画一段从朝右转到朝上的虚线弧，写「90°」（平面里的转动，蓝），矩阵下写「转 90°（第 3 集）」；
 // 句 6「合起来叫位姿」两格外面框一个亮黄框，写「位姿 = 位置 + 朝向」，「停在什么位置」紫箭头亮一下，「车头朝着什么方向」两根小箭头亮一下，「说清楚」打勾。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
 (function () {
@@ -63,15 +63,15 @@
       var pLab = E.halo(E.txt(s, P(1, 1 / 3)[0] - 6, P(1, 1 / 3)[1] - 16, 'p', 28, E.VIOLET, 'middle', 900));
       pLab.style.fontFamily = 'KaTeX_Math, serif'; pLab.style.fontStyle = 'italic';
       var tips = vac.tips();
-      var fwdLab = E.halo(E.txt(s, tips[0][0] - 16, tips[0][1] + 6, '前', 20, E.GOOD, 'end', 900));
-      var leftLab = E.halo(E.txt(s, tips[1][0] - 14, tips[1][1] + 7, '左', 20, E.WARN, 'end', 900));
-      var lab1 = E.halo(E.txt(s, tips[0][0] + 12, tips[0][1] - 10, '(0, 1)', 22, E.GOOD, 'start', 900));
-      var lab2 = E.halo(E.txt(s, tips[1][0] - 8, tips[1][1] - 16, '(−1, 0)', 22, E.WARN, 'end', 900));
+      var fwdLab = E.halo(E.txt(s, tips[0][0] - 16, tips[0][1] + 6, '前', 20, E.X, 'end', 900));
+      var leftLab = E.halo(E.txt(s, tips[1][0] - 14, tips[1][1] + 7, '左', 20, E.Y, 'end', 900));
+      var lab1 = E.halo(E.txt(s, tips[0][0] + 12, tips[0][1] - 10, '(0, 1)', 22, E.X, 'start', 900));
+      var lab2 = E.halo(E.txt(s, tips[1][0] - 8, tips[1][1] - 16, '(−1, 0)', 22, E.Y, 'end', 900));
       // 「转九十度」：从朝右转到朝上的虚线弧
       var AR = 0.82 * O.u, arcPts = [];
       for (var k = 0; k <= 24; k++) { var a = 90 * D * k / 24; arcPts.push([pc[0] + AR * Math.cos(a), pc[1] - AR * Math.sin(a)]); }
-      var turnArc = E.arrow(s, arcPts, E.HI, 3, { head: 11, dash: '6 5' });
-      var turnLab = E.halo(E.txt(s, pc[0] + 1.05 * O.u, pc[1] - 0.62 * O.u, '90°', 22, E.HI, 'start', 900));
+      var turnArc = E.arrow(s, arcPts, E.Z, 3, { head: 11, dash: '6 5' });   // 平面里的转动是绕 z 轴转：蓝
+      var turnLab = E.halo(E.txt(s, pc[0] + 1.05 * O.u, pc[1] - 0.62 * O.u, '90°', 22, E.Z, 'start', 900));
 
       /* ══ 右栏：位置 p、朝向 R 两格 ══ */
       var slots = SX.map(function (x, i) {
@@ -84,7 +84,8 @@
       var pv = E.matN(s, SX[0], SY, [[3], [1]], { size: 34, dy: 46, color: function () { return E.VIOLET; } });
       var pName = E.txt(s, SX[0], SY + 96, 'p', 30, E.VIOLET, 'middle', 900);
       pName.style.fontFamily = 'KaTeX_Math, serif'; pName.style.fontStyle = 'italic';
-      var Rm = E.matN(s, SX[1], SY, [[0, -1], [1, 0]], { size: 34, dx: 64, dy: 46, color: function (i, j) { return j ? E.WARN : E.GOOD; } });
+      var RO = { size: 34, dx: 64, dy: 46, color: function (i, j) { return j ? E.Y : E.X; } }, re = E.matExt([[0, -1], [1, 0]], RO);
+      var Rm = E.matN(s, SX[1] + (re[0] - re[1]) / 2, SY, [[0, -1], [1, 0]], RO);   // 「−1」那列宽：整块挪一下，括号在格子里居中
       var rName = E.txt(s, SX[1], SY + 96, 'R', 30, E.INK, 'middle', 900);
       rName.style.fontFamily = 'KaTeX_Math, serif'; rName.style.fontStyle = 'italic';
       var ep3 = E.txt(s, SX[1], SY + 132, '转 90°（第 3 集）', 20, E.INK2, 'middle', 700);
@@ -124,7 +125,7 @@
           vac.arrows[1].set(c[0], c[1], c[0] + (tips[1][0] - c[0]) * el2, c[1] + (tips[1][1] - c[1]) * el2);
           var b1 = Math.max(bump(st, T.e1, 0.7), bump(st, T.dir, 0.9)), b2 = Math.max(bump(st, T.e2, 0.7), bump(st, T.dir, 0.9));
           vac.arrows[0].line.style.strokeWidth = 5 + 3 * b1; vac.arrows[1].line.style.strokeWidth = 5 + 3 * b2;
-          E.glow(vac.arrows[0].g, E.GOOD, b1 > 0.05); E.glow(vac.arrows[1].g, E.WARN, b2 > 0.05);
+          E.glow(vac.arrows[0].g, E.X, b1 > 0.05); E.glow(vac.arrows[1].g, E.Y, b2 > 0.05);
           E.op(fwdLab, f(st, T.fwd + 0.3, 0.3)); E.op(leftLab, f(st, T.left + 0.3, 0.3));
           var labOut = 1 - f(st, T.labOut, 0.4);
           lab1.textContent = st < T.l1[1] ? '(0,' : '(0, 1)';
@@ -151,8 +152,8 @@
               E.op(n, pc2); E.scaleAt(n, q2[0], q2[1], 1 + 0.35 * (1 - pc2));
             });
           });
-          Rm.hl('c0', 0, 0, 1, 0, E.GOOD, f(st, T.cols[0] + 0.3, 0.3) * (1 - f(st, T.name + 0.6, 0.4)));   // 数弹完再框
-          Rm.hl('c1', 0, 1, 1, 1, E.WARN, f(st, T.cols[1] + 0.3, 0.3) * (1 - f(st, T.name + 0.6, 0.4)));
+          Rm.hl('c0', 0, 0, 1, 0, E.X, f(st, T.cols[0] + 0.3, 0.3) * (1 - f(st, T.name + 0.6, 0.4)));   // 数弹完再框
+          Rm.hl('c1', 0, 1, 1, 1, E.Y, f(st, T.cols[1] + 0.3, 0.3) * (1 - f(st, T.name + 0.6, 0.4)));
           E.pop(rName, SX[1], SY + 86, f(st, T.name, 0.35), 0.8);
           E.op(ep3, f(st, T.ep3, 0.3));
           var sb = bump(st, T.sum[0], 0.7), rb = bump(st, T.sum[1], 0.7);

@@ -1,10 +1,10 @@
 // 007 第 2 幕：点——先转，再平移（路线 §L0 自测题 2 的前一半：点 v' = Rv + p）。左边接着第 1 幕的俯视地图，右栏一行行写算式。
-// 句 1「摄像头」扫地机前方张开一片亮黄视野，「袜子」袜子在 (2, 3) 弹出，「正前方两格」从扫地机中心沿绿箭头画绿色虚线（写「前 2」），
-//    「往左一格」再沿琥珀方向画琥珀虚线（写「左 1」），右栏顶上写「扫地机看到」和列向量 (2, 1)；
+// 句 1「摄像头」扫地机前方张开一片亮黄视野，「袜子」袜子在 (2, 3) 弹出，「正前方两格」从扫地机中心沿红箭头画红色虚线（写「前 2」），
+//    「往左一格」再沿绿箭头方向画绿色虚线（写「左 1」），右栏顶上写「扫地机看到」和列向量 (2, 1)；
 // 句 2「自己的说法」两条虚线鼓一下，「地图」地图的两根轴亮一下，「什么位置」袜子旁边打问号；
-// 句 3「先转」右栏写「① 先转」，「旋转矩阵乘二、一」出 R 乘 (2, 1)，「第一列拿两份」R 的第一列框绿、地图上从原点往上画两格绿线，下一行出 2 (0, 1)，
-//    「第二列拿一份」第二列框琥珀、绿线尖上再往左画一格琥珀线，出 + 1 (−1, 0)，「加起来」从原点画亮黄箭头到 (−1, 2)，「负一、二」写出结果；
-// 句 4「前」「左」扫地机旁的两条虚线依次鼓一下，「上」「左」原点出发的绿线、琥珀线依次鼓一下，「箭头」亮黄箭头亮一下，「原点」原点鼓一下；
+// 句 3「先转」右栏写「① 先转」，「旋转矩阵乘二、一」出 R 乘 (2, 1)，「第一列拿两份」R 的第一列框红、地图上从原点往上画两格红线，下一行出 2 (0, 1)，
+//    「第二列拿一份」第二列框绿、红线尖上再往左画一格绿线，出 + 1 (−1, 0)，「加起来」从原点画亮黄箭头到 (−1, 2)，「负一、二」写出结果；
+// 句 4「前」「左」扫地机旁的两条虚线依次鼓一下，「上」「左」原点出发的红线、绿线依次鼓一下，「箭头」亮黄箭头亮一下，「原点」原点鼓一下；
 // 句 5「再平移」右栏写「② 再平移」，「扫地机的位置」紫箭头从原点画到扫地机，「三、一」出 + (3, 1)，「得到」亮黄箭头整支平移、起点从原点挪到扫地机，
 //    箭头尖沿一支紫色虚线从 (−1, 2) 挪到 (2, 3)，「二、三」写出结果；「你看」袜子外一圈亮环，「落在袜子上」打勾；
 // 句 6 右栏底部框出「点：v′ = Rv + p」，「乘」「旋转矩阵」Rv 亮一下，「加上」「位置」+ p 亮一下。
@@ -69,16 +69,16 @@
       var skRing = K.paint(E.el('circle', { cx: sk[0], cy: sk[1], r: 22, fill: 'none', 'stroke-width': 3 }, s), null, E.HI);
       var ask = E.halo(E.txt(s, sk[0] - 30, sk[1] - 14, '?', 34, E.HI, 'middle', 900));
       var okSock = E.check(s, sk[0] - 52, sk[1] - 20, 24, E.GOOD, 4.5);
-      // 扫地机看到的：前 2（绿虚线）、左 1（琥珀虚线）
+      // 扫地机看到的：前 2（红虚线）、左 1（绿虚线）
       function dash(a, b, color) {
         var pa = P(a[0], a[1]), pb = P(b[0], b[1]);
         return K.paint(E.el('path', { d: 'M ' + pa[0] + ' ' + pa[1] + ' L ' + pb[0] + ' ' + pb[1], fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6', 'stroke-linecap': 'round' }, s), null, color);
       }
-      var gF = dash([VX, VY], [VX, VY + 2], E.GOOD), gL = dash([VX, VY + 2], SOCK, E.WARN);
-      var gFl = E.halo(E.txt(s, P(VX, 2)[0] + 14, P(VX, 2)[1] + 8, '前 2', 20, E.GOOD, 'start', 900));
-      var gLl = E.halo(E.txt(s, P(2.5, 3)[0] + 4, P(2.5, 3)[1] - 14, '左 1', 20, E.WARN, 'middle', 900));
-      // 原点出发：两份 (0, 1)（绿）、一份 (−1, 0)（琥珀）、合起来的亮黄箭头
-      var seg1 = E.vec(s, E.GOOD, 5, { head: 14 }), seg2 = E.vec(s, E.WARN, 5, { head: 14 });
+      var gF = dash([VX, VY], [VX, VY + 2], E.X), gL = dash([VX, VY + 2], SOCK, E.Y);
+      var gFl = E.halo(E.txt(s, P(VX, 2)[0] + 14, P(VX, 2)[1] + 8, '前 2', 20, E.X, 'start', 900));
+      var gLl = E.halo(E.txt(s, P(2.5, 3)[0] + 4, P(2.5, 3)[1] - 14, '左 1', 20, E.Y, 'middle', 900));
+      // 原点出发：两份 (0, 1)（红）、一份 (−1, 0)（绿）、合起来的亮黄箭头
+      var seg1 = E.vec(s, E.X, 5, { head: 14 }), seg2 = E.vec(s, E.Y, 5, { head: 14 });
       var vac = E.vac(s, P, 0.6);
       vac.set(VX, VY, 90 * D);
       var pArrow = E.vec(vac.g, E.VIOLET, 5, { head: 16 });
@@ -91,39 +91,36 @@
       var skLab = E.halo(E.txt(s, sk[0] + 8, sk[1] - 50, '(2, 3)', 22, E.HI, 'middle', 900));
 
       /* ══ 右栏：一行行的算式 ══ */
-      function lab(y, t, c) { return E.txt(s, RX, y + 8, t, 22, c || E.HI, 'start', 900); }
-      function vec2(x, y, v, color, size) { return E.matN(s, x, y, v.map(function (a) { return [a]; }), { size: size || 26, color: function (i) { return Array.isArray(color) ? color[i] : color; } }); }
-      function sym(x, y, t, size) { var n = E.txt(s, x, y + 9, t, size || 28, E.INK, 'middle', 400); n.style.fontFamily = 'KaTeX_Main, serif'; return n; }
+      // 一行一行从左往右排（E.flow：按括号的真实宽度留空，括号和 =、+ 之间留 10）
+      function vecO(color) { return { size: 26, color: function (i) { return Array.isArray(color) ? color[i] : color; } }; }
+      function col(v) { return v.map(function (a) { return [a]; }); }
       // A：扫地机看到 (2, 1)
-      var rowA = E.el('g', {}, s);
-      E.txt(rowA, RX, 66, '扫地机看到', 22, E.INK2, 'start', 700);
-      var vA = vec2(600, 58, [2, 1], [E.GOOD, E.WARN]); rowA.appendChild(vA.g);
-      E.sock(rowA, 668, 64, 26);
-      // B：① 先转
-      var rowB = E.el('g', {}, s), YB = 150, YB2 = 234;
-      rowB.appendChild(lab(YB, '① 先转'));
-      var Rm = E.matN(rowB, 600, YB, [[0, -1], [1, 0]], { size: 26, dx: 48, color: function (i, j) { return j ? E.WARN : E.GOOD; } });
-      var Rv = vec2(676, YB, [2, 1], [E.GOOD, E.WARN]); rowB.appendChild(Rv.g);
-      var eq1 = sym(722, YB, '=');
-      var termG = [E.el('g', {}, rowB), E.el('g', {}, rowB)];
-      termG[0].appendChild(sym(474, YB2, '2'));
-      var t1 = vec2(512, YB2, [0, 1], E.GOOD); termG[0].appendChild(t1.g);
-      termG[1].appendChild(sym(550, YB2, '+')); termG[1].appendChild(sym(574, YB2, '1'));
-      var t2 = vec2(614, YB2, [-1, 0], E.WARN); termG[1].appendChild(t2.g);
-      var resG = E.el('g', {}, rowB);
-      resG.appendChild(sym(662, YB2, '='));
-      var r1 = vec2(706, YB2, [-1, 2], E.HI); resG.appendChild(r1.g);
-      rowB.appendChild(eq1);
-      // C：② 再平移
-      var rowC = E.el('g', {}, s), YC = 320;
-      rowC.appendChild(lab(YC, '② 再平移'));
-      var c1 = vec2(594, YC, [-1, 2], E.HI); rowC.appendChild(c1.g);
-      var plusG = E.el('g', {}, rowC);
-      plusG.appendChild(sym(636, YC, '+'));
-      var c2 = vec2(676, YC, [3, 1], E.VIOLET); plusG.appendChild(c2.g);
-      var res2G = E.el('g', {}, rowC);
-      res2G.appendChild(sym(716, YC, '='));
-      var c3 = vec2(754, YC, [2, 3], E.HI); res2G.appendChild(c3.g);
+      var rowA = E.el('g', {}, s), fA = E.flow(RX - 6, 58, 10);
+      fA.txt(rowA, '扫地机看到', 22, E.INK2, 700, 0);
+      fA.mat(rowA, col([2, 1]), vecO([E.X, E.Y]));
+      E.sock(rowA, fA.x + 24, 64, 26);
+      // B：① 先转——R 乘 (2, 1) =，下一行 2 (0, 1) + 1 (−1, 0) = (−1, 2)
+      var rowB = E.el('g', {}, s), YB = 150, YB2 = 234, fB = E.flow(RX - 6, YB, 10);
+      fB.txt(rowB, '① 先转', 22, E.HI, 900, 0);
+      var Rm = fB.mat(rowB, [[0, -1], [1, 0]], { size: 26, dx: 48, color: function (i, j) { return j ? E.Y : E.X; } });
+      var Rv = fB.mat(rowB, col([2, 1]), vecO([E.X, E.Y]), 6);
+      var eq1 = fB.sym(rowB, '=', 28);
+      var termG = [E.el('g', {}, rowB), E.el('g', {}, rowB)], resG = E.el('g', {}, rowB), fB2 = E.flow(RX, YB2, 10);
+      fB2.sym(termG[0], '2', 28, E.X, 0);
+      fB2.mat(termG[0], col([0, 1]), vecO(E.X), 5);
+      fB2.sym(termG[1], '+', 28); fB2.sym(termG[1], '1', 28, E.Y, 8);
+      fB2.mat(termG[1], col([-1, 0]), vecO(E.Y), 5);
+      fB2.sym(resG, '=', 28);
+      var r1 = fB2.mat(resG, col([-1, 2]), vecO(E.HI));
+      // C：② 再平移——(−1, 2) + (3, 1) = (2, 3)
+      var rowC = E.el('g', {}, s), YC = 320, fC = E.flow(RX - 6, YC, 10);
+      fC.txt(rowC, '② 再平移', 22, E.HI, 900, 0);
+      fC.mat(rowC, col([-1, 2]), vecO(E.HI), 8);
+      var plusG = E.el('g', {}, rowC), res2G = E.el('g', {}, rowC);
+      fC.sym(plusG, '+', 28);
+      fC.mat(plusG, col([3, 1]), vecO(E.VIOLET));
+      fC.sym(res2G, '=', 28);
+      var c3 = fC.mat(res2G, col([2, 3]), vecO(E.HI));
       // D：点：v′ = Rv + p
       var rowD = E.el('g', {}, s);
       K.paint(E.el('rect', { x: RX - 6, y: 372, width: 340, height: 46, rx: 12, 'stroke-width': 2.5 }, rowD), E.tint(E.HI, 10, 'var(--demo-surface)'), E.HI);
@@ -189,10 +186,10 @@
           E.op(rowA, f(st, T.seen, 0.4));
           E.op(rowB, f(st, T.s1, 0.4));
           E.op(Rm.g, f(st, T.rv, 0.3)); E.op(Rv.g, f(st, T.rv + 0.2, 0.3)); E.op(eq1, f(st, T.c1 - 0.2, 0.3));
-          Rm.hl('c0', 0, 0, 1, 0, E.GOOD, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));
-          Rm.hl('c1', 0, 1, 1, 1, E.WARN, f(st, T.c2, 0.3) * (1 - f(st, T.add, 0.3)));
-          Rv.hl('a', 0, 0, 0, 0, E.GOOD, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));
-          Rv.hl('b', 1, 0, 1, 0, E.WARN, f(st, T.c2, 0.3) * (1 - f(st, T.add, 0.3)));
+          Rm.hl('c0', 0, 0, 1, 0, E.X, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));
+          Rm.hl('c1', 0, 1, 1, 1, E.Y, f(st, T.c2, 0.3) * (1 - f(st, T.add, 0.3)));
+          Rv.hl('a', 0, 0, 0, 0, E.X, f(st, T.c1, 0.3) * (1 - f(st, T.c2, 0.3)));
+          Rv.hl('b', 1, 0, 1, 0, E.Y, f(st, T.c2, 0.3) * (1 - f(st, T.add, 0.3)));
           E.op(termG[0], f(st, T.two, 0.3)); E.op(termG[1], f(st, T.one, 0.3));
           E.op(resG, f(st, T.res[0], 0.3));
           r1.cells[0][0].style.opacity = f(st, T.res[0], 0.3); r1.cells[1][0].style.opacity = f(st, T.res[1], 0.3);

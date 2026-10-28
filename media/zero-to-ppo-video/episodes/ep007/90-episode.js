@@ -7,7 +7,7 @@
       title: title, dur: 4, cues: [{ at: 0, s: msg }],
       build: function () {
         var s = K.sceneSvg(title);
-        E.txt(s, 400, 210, msg, 22, E.BAD);
+        E.txt(s, 400, 210, msg, 22, E.ERR);
         return { el: s, draw: function () {} };
       }
     };
@@ -38,9 +38,9 @@
     pitch: '点要平移、方向不用：推导不出错的前提',
     meta: '<b>数学打底：位姿与 SE(3)</b><br>Robotics Notebooks · 懂旋转矩阵 · 不用代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
-    // 划重点 / 片尾里的加粗词：位置 violet（同分镜里的 p）；点亮黄（同袜子、杯子）；方向 good（同往前的小箭头）；算错 bad
-    boldColors: { '位置': 'var(--violet)', '位置 p': 'var(--violet)', '方向': 'var(--demo-good)', '不平移': 'var(--demo-good)', '算错': 'var(--demo-bad)' },
-    introDur: 29.05,
+    // 划重点 / 片尾里的加粗词：位置 violet（同分镜里的 p）；点亮黄（同袜子、杯子）；方向白字（同分镜，绿留给「对」和 y 轴）；不平移 good；算错橙（同 005、006）
+    boldColors: { '位置': 'var(--violet)', '位置 p': 'var(--violet)', '方向': 'var(--text)', '不平移': 'var(--demo-good)', '算错': E.ERR },
+    introDur: 33.37,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep007.py 的 recap 句对齐）
