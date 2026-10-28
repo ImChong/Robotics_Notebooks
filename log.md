@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | 复核 FluxVLA 论文 v2、公开源码及 Hugging Face 模型卡，记录基准口径差异并复用既有实体
+
 ## [2026-10-28] ingest | sources/sites/worldarena2-challenge-iros2026.md — 补充赛事三赛道与指标修正；PACE 和 ForeTac 已有实体页
 
 ## [2026-10-28] ingest | 收录 Humanize 工作流及四项算子生成 benchmark，补充评测基线与硬件界限的区别
