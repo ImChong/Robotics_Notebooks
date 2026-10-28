@@ -1310,6 +1310,7 @@
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`
 - [Adaptive-MHE（arXiv:2609.17832）](wiki/entities/paper-adaptive-mhe.md) — Adaptive-MHE**（*Adaptive-MHE: A Sampling-Based Adaptive MPC for Legged Loco-Manipulation via Movin `📅unknown` `[entity_page]`
 - [Traversal Tubes：面向双足人形姿态感知导航的自适应通行管道](wiki/entities/paper-adaptive-traversal-tubes-bipedal-navigation.md) — Traversal Tubes**（*Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids*，[ar `📅unknown` `[entity_page]`
+- [未知载荷下的自适应全身 MPC（arXiv:2610.12972）](wiki/entities/paper-adaptive-whole-body-mpc-payload.md) — 结合质心模型预测控制、支撑腿自适应模糊力矩补偿和最优起坐姿态规划，处理未知载荷下的人形搬运平衡。 `📅unknown` `[entity_page]`
 - [AdaRoboVLG：可组合先验的自适应视觉语言抓取](wiki/entities/paper-adarobovlg.md) — AdaRoboVLG**（*Adaptive Vision-Language Grasping via Composable Foundation Priors and Generalizable `📅unknown` `[entity_page]`
 - [ADEPT：灵巧操作 RL 预训练与后训练](wiki/entities/paper-adept-dexterity.md) — ADEPT**（*Accelerating Dexterity via Pre-Training and Post-Training using Reinforcement Learning*； `📅unknown` `[entity_page]`
 - [ADM-BA：无对应点的多视角点云配准](wiki/entities/paper-adm-ba.md) — ADM-BA**（*Adaptive Depth-Map-Guided Bundle Adjustment for Correspondence-Free Multi-View Point Clo `📅unknown` `[entity_page]`
