@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | sources/papers/grifips_science_advances_2026.md — 收录梯度夹层触觉传感器并补充触觉感知；代码与数据开放状态待核实
+
 ## [2026-10-28] ingest | 收录三篇 Claude 使用与上下文工程文章，补充 agent 工作中的未知、目标与验证边界
 
 ## [2026-10-28] ingest | sources/papers/world_t3_arxiv_2610_17434.md — 收录位姿索引的测试时记忆世界模型；项目页暂未列代码或数据链接
