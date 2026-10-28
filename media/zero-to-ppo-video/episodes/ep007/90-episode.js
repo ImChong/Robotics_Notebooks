@@ -44,17 +44,17 @@
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep007.py 的 recap 句对齐）
-    recapDur: 29.4,
+    recapDur: 29.64,
     recap: {
       act: '本集总结',
       title: '朝向 + 位置，拼成一个矩阵',
       items: [
         { c: 'var(--violet)', n: '① 位姿 = 朝向 + 位置', s: '旋转矩阵 $R$，加上位置 $p$', at: 1.87 },
         { c: 'var(--hi)', n: '② 点：先转、再平移', s: '$v\' = Rv + p$', at: 7.77 },
-        { c: 'var(--demo-good)', n: '③ 方向：只转、不平移', s: '$v\' = Rv$：速度、力都是方向', at: 11.51 },
-        { c: 'var(--demo-accent)', n: '④ 齐次变换矩阵', s: '点后面补 1，方向后面补 0\n三维：$R$ 和 $p$ 拼成 4×4', at: 16.41 }
+        { c: 'var(--demo-good)', n: '③ 方向：只转、不平移', s: '$v\' = Rv$：速度、力都是方向', at: 11.75 },
+        { c: 'var(--demo-accent)', n: '④ 齐次变换矩阵', s: '点后面补 1，方向后面补 0\n三维：$R$ 和 $p$ 拼成 4×4', at: 16.65 }
       ],
-      foot: { s: '**朝向 + 位置**拼成 4×4：点补 1，方向补 0', at: 23.18 }
+      foot: { s: '**朝向 + 位置**拼成 4×4：点补 1，方向补 0', at: 23.42 }
     },
     outroDur: 13.17,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
