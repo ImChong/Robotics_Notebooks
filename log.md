@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] structural | roadmap/depth-cross-embodiment.md — 联网核对一手论文，新增「谱系速览」表（Devin 2017 → NerveNet → RoboNet → SMP → MetaMorph → OXE → Polybot → Mirage → Octo → CrossFormer → HPT → URMA → RoVi-Aug → LAPA → Embodiment Scaling Laws）并在各 Stage 补一手出处
+
+## [2026-10-28] lint | 修复 2 个陈旧页面：contact-rich-manipulation.md 补入 GENESIS-Handover（arXiv:2610.08003）；paper-harness-vla.md 同步 RoboFoundry 2026-10-28 开源状态复核
+
+## [2026-10-28] structural | roadmap/depth-cross-embodiment.md — 新增第 28 条纵深路线「跨本体迁移（Cross-Embodiment）」：本体差异画像 → 统一接口 → 形态感知架构 → 多本体混训 → 人→机 → 新本体适配；同步首页按钮、路线总览、README/index、depth-filters 与 topics 种子
+
 ## [2026-10-28] ingest | sources/papers/grifips_science_advances_2026.md — 收录梯度夹层触觉传感器并补充触觉感知；代码与数据开放状态待核实
 
 ## [2026-10-28] ingest | 收录三篇 Claude 使用与上下文工程文章，补充 agent 工作中的未知、目标与验证边界
