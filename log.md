@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] ingest | sources/papers/learning_dexterous_manipulation_survey_2610_33486.md — 整理灵巧操作训练与评测综述，逐篇数据可向作者索取
+
 ## [2026-10-28] ingest | Proteus 跨人形动作跟踪项目页
 
 - 归档项目页并整理共享关节布局、本体描述、跨仿真器评测及未见本体泛化边界。
