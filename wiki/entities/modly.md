@@ -40,6 +40,12 @@ summary: "Modly 是本地运行模型扩展的开源桌面网格生成工具；�
 | CLI | Command Line Interface | 通过命令行调用运行中的 Modly |
 | API | Application Programming Interface | 程序之间调用服务的接口 |
 
+## 核心信息
+
+| 项 | 内容 |
+|------|------|
+| 机构 | Lightning Pixel |
+
 ## 工作流程与选型
 
 1. 安装桌面应用，在 Models 页面安装模型扩展并下载相应权重。
