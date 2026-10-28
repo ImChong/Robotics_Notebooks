@@ -2,7 +2,7 @@
 """Bootstrap ingest: 具身智能小站 2026-10-28（59 篇）公众号盘点。
 
 - 抓取方式：`scripts/fetch_wechat_article.py`（Chromium + 微信 UA）；本脚本直接解析抓取的纯文本。
-- 59 条论文 → 59 个独立 `wiki/entities/paper-*.md` 节点：新建 56，复用 3（arXiv 已在库内）。
+- 59 条论文 → 59 个独立 `wiki/entities/paper-*.md` 节点：新建 55，复用 4（arXiv 已在库内）。
 - 开源结论（步骤 2.5）：GitHub 仓库用 `git ls-remote` 核实可达；项目页用 curl 读取并扫描
   GitHub 链接 / "soon" 字样（入库日 2026-10-28）。OPEN_CHECK 为当日核查结果。
 - 用法：python3 scripts/bootstrap_embodied_station_wechat_2026_10_28.py <抓取的 txt>
@@ -28,7 +28,7 @@ ARTICLES: dict[str, dict[str, Any]] = {
         "n": 59,
         "map": "embodied-station-2026-10-28-59-papers-technology-map.md",
         "map_title": "潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标",
-        "map_summary": "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深读）、RynnVLA-Latent 三维潜在动作、AuRA 自主交互采集，以及评测基准、灵巧操作、导航与无人机、世界模型等 59 篇；59/59 独立节点（新建 56 / 复用 3）。",
+        "map_summary": "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深读）、RynnVLA-Latent 三维潜在动作、AuRA 自主交互采集，以及评测基准、灵巧操作、导航与无人机、世界模型等 59 篇；59/59 独立节点（新建 55 / 复用 4）。",
         "view": "人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。",
     },
 }
@@ -72,6 +72,7 @@ REUSE: dict[str, str] = {
     "2610.34356": "paper-rynnvla-latent",
     "2610.34186": "paper-huge-humanoid-vla",
     "2610.36539": "paper-card-contact-anchored-retargeting",
+    "2610.37666": "paper-thinkworld",
 }
 
 # 公众号序号 → 分组

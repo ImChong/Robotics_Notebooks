@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-10-17
+updated: 2026-10-28
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -20,6 +20,7 @@ related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 sources:
+  - ../../sources/papers/kernel_generation_benchmarks_2025_2026.md
   - ../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md
   - ../../sources/blogs/claude_dev_automating_eval_hillclimbing_2026-09-28.md
   - ../../sources/sites/artificial-analysis.md
@@ -156,7 +157,22 @@ flowchart TD
 - [Automating eval design and hillclimbing（claude.dev）](https://claude.dev/blog/automating-eval-design-and-hillclimbing/)  
 - 框架附录：Harbor、Braintrust、LangSmith、Langfuse、Phoenix  
 
+## 算子生成评测：基线与硬件界限
+
+四种 benchmark 的目标不同，得分不宜直接横向比较：
+
+| Benchmark | 任务与平台 | 核心判据 |
+|------|------|------|
+| KernelBench | 250 个 PyTorch 工作负载，GPU | 正确且超过软件基线加速阈值的比例 fast_p |
+| MultiKernelBench | 285 任务、14 类，GPU / NPU / TPU | 跨平台与类别评估，关注平台泛化 |
+| SOL-ExecBench | 235 个 CUDA 问题，Blackwell | 相对发布基线与分析得到的硬件 SOL 界限计算得分 |
+| CANN Bench | 53 算子、1060 用例，昇腾 NPU | 编译、正确性、性能三维评分；性能参考软件基线与硬件锚定界限 |
+
+工程上先固定硬件、精度、输入形状与计时方式，再同时检查编译、数值正确性与延迟；软件基线加速并不自动说明已接近硬件极限。SOL / HAP 是论文中的分析界限，实际表现仍受实现和测量条件影响。这些评测可借鉴于机器人推理或仿真算子，但论文摘要未直接验证机器人系统端到端收益。
+
 ## 参考来源
+
+- [算子生成 benchmark 论文归档](../../sources/papers/kernel_generation_benchmarks_2025_2026.md)
 
 - [Artificial Analysis 平台归档](../../sources/sites/artificial-analysis.md)
 - [Demystifying evals 归档](../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md)

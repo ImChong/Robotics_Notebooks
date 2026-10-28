@@ -11,7 +11,7 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
-summary: "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深读）、RynnVLA-Latent 三维潜在动作、AuRA 自主交互采集，以及评测基准、灵巧操作、导航与无人机、世界模型等 59 篇；59/59 独立节点（新建 56 / 复用 3）。"
+summary: "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深读）、RynnVLA-Latent 三维潜在动作、AuRA 自主交互采集，以及评测基准、灵巧操作、导航与无人机、世界模型等 59 篇；59/59 独立节点（新建 55 / 复用 4）。"
 ---
 
 # 潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标
@@ -71,7 +71,7 @@ flowchart TB
 | RynnVLA-Latent | [paper-rynnvla-latent](../entities/paper-rynnvla-latent.md)（复用） | 已开源 |
 | RynnWorld-Latent | [paper-rynnworld-latent](../entities/paper-rynnworld-latent.md) | 已开源 |
 | Tapestry | [paper-tapestry](../entities/paper-tapestry.md) | 项目页未列 GitHub |
-| ThinkWorld | [paper-thinkworld](../entities/paper-thinkworld.md) | 待发布 |
+| ThinkWorld | [paper-thinkworld](../entities/paper-thinkworld.md)（复用） | 已开源 |
 | Trace-WAM | [paper-trace-wam](../entities/paper-trace-wam.md) | 项目页未列 GitHub |
 | X-World | [paper-x-world-variable-view-video-priors](../entities/paper-x-world-variable-view-video-priors.md) | 项目页未列 GitHub |
 | GEMS | [paper-gems](../entities/paper-gems.md) | 已开源 |

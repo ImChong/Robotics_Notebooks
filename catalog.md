@@ -1966,6 +1966,7 @@
 - [Deep Whole-Body Control（HMI P042）](wiki/entities/paper-deep-whole-body-control-loco-manip.md) — Deep Whole-Body Control**（*Deep Whole-Body Control: Learning a Unified Policy for Manipulation and `📅unknown` `[entity_page]`
 - [Deep Whole-body Parkour：感知式全身跑酷](wiki/entities/paper-deep-whole-body-parkour.md) — Deep Whole-body Parkour**（arXiv:2601.07701）隶属 Project Instinct，在 [42 篇 RL `📅unknown` `[entity_page]`
 - [Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?](wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md) — 一句话定义**：在 **平面物理角色** 的 **步态周期模仿** 上，用深度 RL **对照四种动作参数化**（扭矩、肌肉激活、**目标关节角 + PD**、目标关节角速度），从 **学习时间、 `📅unknown` `[entity_page]`
+- [DeFM（机器人深度基础表征）](wiki/entities/paper-defm.md) — DeFM** 是针对深度图预训练的视觉编码器，为机器人任务提供几何与语义特征。 `📅unknown` `[entity_page]`
 - [Deform360（Massive Multi-view Visuotactile Dataset · arXiv:2607.05390）](wiki/entities/paper-deform360-deformable-visuotactile-dataset.md) — Deform360**（*Deform360: A Massive Multi-view Visuotactile Dataset for Deformable World Models*，[ar `📅unknown` `[entity_page]`
 - [DeformSmith（arXiv:2609.18620）](wiki/entities/paper-deformsmith.md) — DeformSmith**（*Physics Harness-Guided Hierarchical Generation of Deformable Assets for Robot Manip `📅unknown` `[entity_page]`
 - [DeicticVLA：语言与指示手势三模式统一 VLA](wiki/entities/paper-deicticvla.md) — DeicticVLA**（*Unifying Instruction Modes Based on Language and Deictic Gestures in a Single VLA*， `📅unknown` `[entity_page]`
@@ -5116,6 +5117,7 @@
 - [THAW-VLA（arXiv:2609.24682）](wiki/entities/paper-thaw-vla.md) — THAW-VLA**（*Think Like a World Model, Act Like a VLA*，UW–Madison / UIUC，[arXiv:2609.24682](https:/ `📅unknown` `[entity_page]`
 - [Thinker-WM：共享多模态表征的具身统一世界模型](wiki/entities/paper-thinker-wm-unified-world-model.md) — Thinker-WM**（*Thinker-WM: A Unified World Model with Shared Multimodal Representations for Embodie `📅unknown` `[entity_page]`
 - [Thinking in Video（视频生成器能否对真实世界做因果推理？）](wiki/entities/paper-thinking-in-video.md) — Thinking in Video**（*Can Video Generators Really Reason About the Real World?*，[arXiv:2607.17523 `📅unknown` `[entity_page]`
+- [ThinkWorld](wiki/entities/paper-thinkworld.md) — ThinkWorld 是一种 VLA 学习框架：用动作动力学链表示动作推理，并通过预测未来状态与视频实际结果的一致性强化该表示。 `📅unknown` `[entity_page]`
 - [Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑](wiki/entities/paper-thrust-assisted-trotting-legged-aerial-qp-mpc.md) — Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Rea `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
 - [TIDE/TIDES（arXiv:2610.16167）](wiki/entities/paper-tide-tides-4d-liquid-forecasting.md) — TIDE/TIDES**（*Interactive 4D Volumetric Liquid Forecasting under Moving-Solid Interaction*，[arXiv: `📅unknown` `[entity_page]`
@@ -5562,7 +5564,7 @@
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
-- [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式 GPU 仿真工具包，让人或编码 Agent 将真实场景视频转成可检查、可调整的物理仿真。 `📅unknown` `[entity_page]`
+- [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。 `📅unknown` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial**（arXiv:2411.16537，[项目页](https://chanh.ee/RoboSpat `📅unknown` `[entity_page]`
 - [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体 `📅unknown` `[entity_page]`
 - [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) 是把分散在各 git 仓的  `📅unknown` `[entity_page]`

@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-28
 - **抓取方式：** `scripts/fetch_wechat_article.py`（Chromium + 微信 UA）
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md`](../raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
-- **一句话说明：** 人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。 共 59 篇；**59/59 独立详情节点**（本 ingest **新建 56**、**复用 3**）。
+- **一句话说明：** 人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。 共 59 篇；**59/59 独立详情节点**（本 ingest **新建 55**、**复用 4**）。
 
 ## 59 篇 → 本库节点
 
@@ -42,7 +42,7 @@
 | 24 | 数据采集与示范迁移 | OpenJaws | [2610.36598](https://arxiv.org/abs/2610.36598) | **已开源** | [paper-openjaws](../../wiki/entities/paper-openjaws.md) |
 | 25 | 评测与基准 | EBench Frontier Agent Profiling | [2610.35832](https://arxiv.org/abs/2610.35832) | **已开源** | [paper-ebench-frontier-agent-profiling](../../wiki/entities/paper-ebench-frontier-agent-profiling.md) |
 | 26 | 评测与基准 | Obstacle-Conditioned Safety Nav | [2610.34674](https://arxiv.org/abs/2610.34674) | **项目页未列 GitHub** | [paper-obstacle-conditioned-safety-nav](../../wiki/entities/paper-obstacle-conditioned-safety-nav.md) |
-| 27 | 潜在动作与世界模型 | ThinkWorld | [2610.37666](https://arxiv.org/abs/2610.37666) | **待发布** | [paper-thinkworld](../../wiki/entities/paper-thinkworld.md) |
+| 27 | 潜在动作与世界模型 | ThinkWorld | [2610.37666](https://arxiv.org/abs/2610.37666) | **已开源** | [paper-thinkworld](../../wiki/entities/paper-thinkworld.md)（**复用**） |
 | 28 | 灵巧与接触操作 | CARD | [2610.36539](https://arxiv.org/abs/2610.36539) | **已开源** | [paper-card-contact-anchored-retargeting](../../wiki/entities/paper-card-contact-anchored-retargeting.md)（**复用**） |
 | 29 | 控制、规划与系统 | cuArms | [2610.36250](https://arxiv.org/abs/2610.36250) | **项目页未列 GitHub** | [paper-cuarms](../../wiki/entities/paper-cuarms.md) |
 | 30 | 导航、无人机与群体 | Motion-Induced WiFi-CSI Sim | [2610.34034](https://arxiv.org/abs/2610.34034) | **已开源** | [paper-motion-induced-wifi-csi-sim](../../wiki/entities/paper-motion-induced-wifi-csi-sim.md) |
@@ -85,6 +85,6 @@
 ## 当前提炼状态
 
 - [x] 公众号正文抓取（2026-10-28）
-- [x] 59 篇独立节点（56 新建 / 3 复用）
+- [x] 59 篇独立节点（55 新建 / 4 复用）
 - [x] 项目页 / 仓库开源状态核查（步骤 2.5）
 - [ ] 原文实验表格核验（节点内数字仅为公众号转述）

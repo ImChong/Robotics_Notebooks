@@ -37,6 +37,18 @@
 
 官方 README 推荐查看 examples/，或让 Codex / Claude Code 克隆仓库，再根据任务描述和本地视频创建仿真环境。具体安装依赖、硬件要求与示例命令以仓库当前 README 和 examples 为准。
 
+## 源码核查（2026-10-28）
+
+阅读版本：[`d9b2e442fd86dd10b6e4659993a7febad4cf5ef9`](https://github.com/robosimstudio/robosimstudio/tree/d9b2e442fd86dd10b6e4659993a7febad4cf5ef9)。该版本的安装文档提供 CPU 运行路径，不能把整个工具包限定为 GPU-only；具体示例的依赖另行判断。
+
+| 入口或模块 | 核查内容 |
+|----|----|
+| [`examples/00_getting_started/00_hello_world.py`](https://github.com/robosimstudio/robosimstudio/blob/d9b2e442fd86dd10b6e4659993a7febad4cf5ef9/examples/00_getting_started/00_hello_world.py) | `Scene.add` 声明物体并返回 `Ref`；`build` 得到 `Sim`；`run(150).sync()` 后读取方块位置，`rss.view` 打开 Studio。`MUJOCO_500HZ` 为 50 Hz 控制。 |
+| [`robosimstudio/core/pipeline.py`](https://github.com/robosimstudio/robosimstudio/blob/d9b2e442fd86dd10b6e4659993a7febad4cf5ef9/robosimstudio/core/pipeline.py) | `ScenePipeline` 执行场景配置所组成的求解程序及批量状态读回；统一子步包含碰撞、求解和状态交换。 |
+| [`examples/08_demos/wipe_the_bar/`](https://github.com/robosimstudio/robosimstudio/tree/d9b2e442fd86dd10b6e4659993a7febad4cf5ef9/examples/08_demos/wipe_the_bar) | `bar.py` 设置 MuJoCo / SuperDex 与接触驱动的污迹磨损，`routine.py` 定义任务，入口创建场景并启动 Studio。抓稳后 latch 约束海绵局部节点，松爪解除；支撑在该示例中固定。 |
+
+最小示例运行 `uv run examples/00_getting_started/00_hello_world.py`。擦拭示例运行 `uv run --extra superdex python examples/08_demos/wipe_the_bar/wipe_the_bar.py`，其 README 指明 Python 3.12 与 GPU。此处为静态源码阅读，并未在本次 ingest 中运行或复现。
+
 ## 对 wiki 的映射
 
 - RoboSimStudio 工具页：[wiki/entities/robosimstudio.md](../../wiki/entities/robosimstudio.md)

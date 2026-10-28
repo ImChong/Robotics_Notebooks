@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, tsinghua]
 status: complete
-updated: 2026-10-26
+updated: 2026-10-28
 summary: "WorldArena 1.0/2.0 评估具身世界模型的视频感知与功能效用；2.0 扩展到视触觉预测、在线 RL 环境和模拟/真机跨平台评估，榜单收录 Xiaomi-Robotics-U0。"
 project_id: worldarena
 arxiv: '2602.08971'
@@ -25,6 +25,7 @@ sources:
   - ../../sources/papers/worldarena2_arxiv_2605_17912.md
   - ../../sources/sites/worldarena2.md
   - ../../sources/repos/worldarena2.md
+  - ../../sources/sites/worldarena2-challenge-iros2026.md
 ---
 
 # WorldArena（具身世界模型评测）
@@ -95,6 +96,12 @@ WorldArena 2.0 将评测扩展到三个方向：
 
 官方代码位于 [WorldArena 2.0 仓库](../../sources/repos/worldarena2.md)，榜单由 [Hugging Face Space](https://huggingface.co/spaces/WorldArena/WorldArena2.0) 展示。当前榜单包含 Xiaomi-Robotics-U0 条目；这是小米模型参加该基准评测的结果，WorldArena 2.0 本身由独立研究团队提出，不应写成小米自研基准。
 
+### IROS 2026 WorldArena 2.0 Challenge
+
+赛事在 2.0 基准上设置三条赛道：视频质量评估（含分布外场景）、世界模型作为在线强化学习环境、以及真机 WAM 操作（有触觉与纯视觉两种设置）。[赛事资料归档](../../sources/sites/worldarena2-challenge-iros2026.md)和 [workshop 官方页面](https://physical-world-models.github.io/IROS2026/)提供赛道说明；workshop 议程列出 10 月 1 日的赛事环节。
+
+主办方针对极端帧数与帧率带来的异常分数，将 Track 1 的 Dynamic Degree、Flow Score 和 Motion Smoothness 分数限制在相同协议真实数据的参考上限。比较榜单时需确认指标版本和生成视频设置，不能把此修正理解为模型在所有局部指标上都不能超过真实数据。[主办方说明](https://v2.world-arena.ai/WorldArena-2.0/motion-quality-evaluation-update.html)
+
 ## 工程实践
 
 1. **先明确赛道。** 比较视频生成质量时按 Track 1 准备首帧、文本指令/动作和生成视频；验证对策略的价值时按 Track 2 准备对应模型适配器与 rollout 环境。
@@ -118,6 +125,9 @@ WorldArena 2.0 将评测扩展到三个方向：
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 所在研究路线索引。
 
 ## 参考来源
+
+- [IROS 2026 WorldArena 2.0 Challenge 赛事归档](../../sources/sites/worldarena2-challenge-iros2026.md)
+- [WorldArena 2.0 项目页](../../sources/sites/worldarena2.md)
 
 - [WorldArena 官方论文与项目页](../../sources/sites/worldarena.md)
 - [WorldArena 官方代码与 Track 1 评测指南](../../sources/repos/worldarena.md)
