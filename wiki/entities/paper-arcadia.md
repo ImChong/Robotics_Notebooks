@@ -18,11 +18,12 @@ tags:
   - bytedance
   - adelaide
 status: complete
-updated: 2026-10-06
+updated: 2026-10-28
 arxiv: "2512.00076"
 code: https://github.com/Embodied-Arcadia/EmbodiedKit
 summary: "Arcadia（arXiv:2512.00076）：具身终身学习四段闭环——自主采集、生成式 USD、共享 VLN/VLA 骨干、Sim-from-Real 反馈；VLN-CE-Isaac SR 50.1%，G1+Dex-3 真机导航 46/100、操作 27/100。EmbodiedKit 部分开源：训练/数据脚本可辨识，探索/3DGS/反馈与权重未发布。"
 related:
+  - ../comparisons/self-improving-agents-embodied-lifelong-learning.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
@@ -213,6 +214,7 @@ Table 1 的 NaVILA 分数是 **本文 Isaac 协议下的复现**，不要和 NaV
 
 ## 关联页面
 
+- [自我改进智能体与具身终身学习对比](../comparisons/self-improving-agents-embodied-lifelong-learning.md) — Arcadia 在其中代表「具身生命周期闭环」：自主采集、生成场景与 sim-from-real 反馈
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 本页补 **生命周期闭环 + 共享操作骨干** 分支
 - [VLA](../methods/vla.md) — 导航与操作共用编码器的系统假设
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim2Real：资产与策略一起更新

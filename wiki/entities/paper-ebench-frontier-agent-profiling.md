@@ -10,6 +10,7 @@ updated: 2026-10-28
 arxiv: "2610.35832"
 project: https://internrobotics.github.io/EBench-Astra-Tech-Report/
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -73,6 +74,7 @@ summary: "EBench Frontier Agent Profiling（arXiv:2610.35832）：在统一视�
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ① 具身大脑/MLLM 认知评测层：前沿智能体直接控制 vs 调用专用策略的配置对照
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

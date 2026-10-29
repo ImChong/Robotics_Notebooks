@@ -11,6 +11,7 @@ arxiv: "2610.36420"
 project: https://so101-bench.github.io/
 code: https://github.com/5hadytru/so101_bench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -92,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层，并借数字孪生触及 ④ sim↔real 校准：区分见过对象/未见实例/未见类别
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

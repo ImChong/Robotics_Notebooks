@@ -2,7 +2,7 @@
 type: query
 tags: [vla, deployment, latency, manipulation, foundation-policy, real-robot, tensorrt]
 status: complete
-updated: 2026-10-13
+updated: 2026-10-28
 summary: "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
 related:
   - ../methods/vla.md
@@ -17,6 +17,7 @@ related:
   - ../entities/lw-benchhub-tour.md
   - ../entities/jetson-openpi-pi05-on-thor.md
   - ../concepts/llm-inference-vram-estimation.md
+  - ../entities/fluxvla-engine.md
 sources:
   - ../../sources/courses/jetson_openpi_pi05_on_thor.md
   - ../../sources/papers/rl_foundation_models.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/papers/rift_wam_arxiv_2608_11521.md
   - ../../sources/papers/wam_realtime_async_arxiv_2608_01880.md
   - ../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md
+  - ../../sources/papers/fluxvla_arxiv_2609_17210.md
 ---
 
 # VLA 真机部署指南：延迟、异步与加速
@@ -124,10 +126,12 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 上延迟感知 RL 后训练；中间动作 + 中间观测条件 DSRL（确认未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真侧 EnvHub 闭环对照（headless SmolVLA + 双臂 Piper）；不含真机异步/TensorRT
 - [SmolVLA ONNX LIBERO 审计](../entities/paper-smolvla-onnx-libero.md) — PyTorch vs ONNX 闭环成功率–延迟权衡；语言 width 与图审计（arXiv:2609.14146；MIT 脚本已开源）
+- [FluxVLA Engine](../entities/fluxvla-engine.md) — 开源工程平台侧的 RTC + 加速推理后端 + 远程 GPU 服务 + 轨迹后处理（arXiv:2609.17210）
 - [APXInf](../entities/apxinf.md) — RLinf 生态 π₀.₅ 端侧引擎；Thor FP8 ~26–41 ms；OpenPI serve
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
 - [sources/repos/cyclo_intelligence.md](../../sources/repos/cyclo_intelligence.md) — BT 编排 VLA 推理相位的工程参考
+- [sources/papers/fluxvla_arxiv_2609_17210.md](../../sources/papers/fluxvla_arxiv_2609_17210.md) — FluxVLA Engine：RTC、远程推理与端侧部署的工程平台
 - [sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md](../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md) — LLM 推理 VRAM 五块拆账与 TP 公式

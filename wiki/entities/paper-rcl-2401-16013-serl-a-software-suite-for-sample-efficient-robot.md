@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-28
 arxiv: "2401.16013"
 venue: "ICRA 2024"
 code: https://github.com/rail-berkeley/serl
 summary: "RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。"
 related:
+  - ../comparisons/self-improving-agents-embodied-lifelong-learning.md
   - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md
@@ -89,6 +90,7 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 
 ## 关联页面
 
+- [自我改进智能体与具身终身学习对比](../comparisons/self-improving-agents-embodied-lifelong-learning.md) — SERL 在其中代表「真机在线 RL 自我改进」的软件栈：off-policy RL、奖励、复位与控制组件
 - 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)

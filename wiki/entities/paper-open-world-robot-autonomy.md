@@ -11,6 +11,7 @@ arxiv: "2610.34649"
 project: https://huggingface.co/AetherLabs-AI/InternVLA-A1.5-RAB
 code: https://github.com/AetherLabsAI/RobotAgentBench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -92,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：分层家庭任务覆盖发现、推理、操作、恢复与鲁棒性
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

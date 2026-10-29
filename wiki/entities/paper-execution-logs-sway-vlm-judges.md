@@ -10,6 +10,7 @@ updated: 2026-10-28
 arxiv: "2610.34151"
 code: https://github.com/sunnyadn/exec-logs-robot-judges
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -92,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：揭示 VLM 裁判判成功时被文字进展声明带偏的风险
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)

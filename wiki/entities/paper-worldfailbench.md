@@ -11,6 +11,7 @@ arxiv: "2610.33565"
 project: https://huggingface.co/datasets/ACERobotics/WorldFailBench
 code: https://github.com/DAXIAORobotics/WorldFailBench
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -92,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页横跨其 ② 世界模型预测保真度与 ③ 策略评测层：检验世界模型能否复现策略的失败原因、阶段与成败边界
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
