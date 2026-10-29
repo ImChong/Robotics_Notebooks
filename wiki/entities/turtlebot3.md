@@ -10,9 +10,11 @@ related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../concepts/ros2-basics.md
+  - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/repos/robotis-git.md
+  - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台，含 Burger/Waffle 等型号；eManual 与 turtlebot3 仓库为主入口。"
 ---
 
@@ -58,3 +60,4 @@ summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台�
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - [sources/repos/robotis-git.md](../../sources/repos/robotis-git.md)
+- [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）

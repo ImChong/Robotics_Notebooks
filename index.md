@@ -26,6 +26,7 @@
 | 想让机器人追球射门打比赛 | [人形足球纵深路线](roadmap/depth-humanoid-soccer.md) |
 | 想把人体动作变成机器人参考轨迹 | [动作重定向纵深路线](roadmap/depth-motion-retargeting.md) |
 | 想让一群人形同台跳舞变队形炫技 | [人形群控展演纵深路线](roadmap/depth-humanoid-swarm-performance.md) |
+| 想让一个策略适配不同本体（换夹爪 / 换机型 / 换形态） | [跨本体迁移纵深路线](roadmap/depth-cross-embodiment.md) |
 | 想让仿真训好的策略稳上真机 | [Sim2Real 纵深路线](roadmap/depth-sim2real.md) |
 | 想让两台人形在擂台上对打 | [人形拳击纵深路线](roadmap/depth-humanoid-boxing.md) |
 | 想让机器人读完一条示范就会新任务 | [ICL 纵深路线](roadmap/depth-icl.md) |

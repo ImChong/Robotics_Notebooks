@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, bimanual, hand-object-tracking, imitation-learning, reinforcement-learning, ropedia]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-29
 project_id: donic-generalist-dexterous-bimanual-tracking
 arxiv: "2610.29997"
 project: https://ropedia.github.io/DONIC/
@@ -11,9 +11,11 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../tasks/manipulation.md
   - ./paper-dexmimic.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/donic_arxiv_2610_29997.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "DONIC jointly trains one bimanual dexterous reference-tracking policy across operation categories and human motion sources, using BiHOI data, object-centered per-hand rewards, and verified demonstrations."
 ---
 

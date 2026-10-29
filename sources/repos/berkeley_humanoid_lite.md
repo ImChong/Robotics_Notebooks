@@ -37,3 +37,12 @@
 
 - [Berkeley Humanoid Lite](../../wiki/entities/berkeley-humanoid-lite.md)
 - [开源 QDD 执行器项目对比](../../wiki/comparisons/open-source-qdd-actuator-projects.md)
+
+## 官方软件组件（2026-10-27 核查）
+
+原论文平台的 [主仓](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite) 包含 Isaac Lab 环境与任务、策略训练、sim2sim、实机部署和遥操作。README 标注主仓代码 MIT，其他资产 CC BY-SA 4.0；各独立仓库许可应分别核查。
+
+- [机器人描述资产](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite-Assets)：URDF、MJCF、USD 与 Onshape 导出脚本。
+- [实机底层控制](https://github.com/HybridRobotics/Berkeley-Humanoid-Lite-Lowlevel)：真机运行代码。
+- [电机控制器固件](https://github.com/T-K-233/Recoil-Motor-Controller-BESC)；[SteamVR 遥操作桥](https://github.com/ucb-bar/SteamVR-Bridge)。上述入口由[官方发布页](https://berkeley-humanoid-lite.gitbook.io/docs/releases)列出。
+- [Berkeley Humanoids 组织](https://github.com/Berkeley-Humanoids)另列 [Lite V1.5 双臂平台](https://github.com/Berkeley-Humanoids/berkeley-humanoid-lite-arm)、[Lite V2 描述资产](https://github.com/Berkeley-Humanoids/lite_description)、[ROS 2 控制栈](https://github.com/Berkeley-Humanoids/humanoid_control_ros2) 和 [低层通信 SDK](https://github.com/Berkeley-Humanoids/lite-sdk2)。这些是后续平台资源，版本与原论文平台不同，兼容性需按各自说明确认。

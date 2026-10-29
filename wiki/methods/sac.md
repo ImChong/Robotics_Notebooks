@@ -2,9 +2,11 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-29
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
+  - ./td3.md
+  - ./mbpo.md
   - ../concepts/rl-runner.md
   - ./flashsac.md
   - ./policy-optimization.md
@@ -122,6 +124,8 @@ $$
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — SAC 默认的 Off-policy 循环：Replay Buffer 反复抽历史
 - [FlashSAC（快速稳定 SAC）](./flashsac.md)
+- [TD3](./td3.md) — 确定性策略的 off-policy 对照
+- [MBPO](./mbpo.md) — 以 SAC 为策略更新器的 Model-Based RL
 - [PPO（近端策略优化）](./ppo.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)
 - [Online vs Offline RL（对比）](../comparisons/online-vs-offline-rl.md)

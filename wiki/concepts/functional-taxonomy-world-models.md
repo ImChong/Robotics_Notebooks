@@ -8,9 +8,10 @@ tags:
   - world-labs
   - shanghai-ai-lab
 status: complete
-updated: 2026-10-15
+updated: 2026-10-28
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
+  - ../entities/deepmind-genie-4.md
   - ../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md
   - ../methods/generative-world-models.md
   - ./world-action-models.md
@@ -27,6 +28,7 @@ related:
   - ../entities/paper-foredrive.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
 sources:
+  - ../../sources/blogs/deepmind_genie_4_world_simulation.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md
@@ -88,6 +90,8 @@ flowchart LR
 
 Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**，两边都无法互相推导。
 
+[Genie 4](../entities/deepmind-genie-4.md) 将实时生成画面与音频和 Gemini 的场景引导结合；其机器人示例是模拟演示，尚不能据此推断可查询物理状态或真机策略效果。
+
 ### 仿真为什么是枢纽
 
 语言是世界的抽象，像素是世界的投影，几何/物理/动力学才是世界本身。掌握仿真，才能向下投影成给人看的像素、向上投影成给 agent 的动作后果。只掌握渲染或只掌握规划，做不到另一侧。
@@ -147,6 +151,8 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 - [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) — 图像空间动作接地的跨本体视频 Simulator 样本
 
 ## 参考来源
+
+- [Genie 4 官方博客归档](../../sources/blogs/deepmind_genie_4_world_simulation.md)
 
 - [World Labs / Fei-Fei：功能分类博客归档](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)
 - [A Definition and Roadmap for World Models 归档](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md)

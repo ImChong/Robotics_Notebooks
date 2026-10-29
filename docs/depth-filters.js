@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 27 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 28 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -20,7 +20,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（27 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（28 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
@@ -38,6 +38,7 @@
     'humanoid-soccer',
     'motion-retargeting',
     'humanoid-swarm-performance',
+    'cross-embodiment',
     'sim2real',
     'humanoid-boxing',
     'icl',
@@ -69,6 +70,7 @@
     'humanoid-soccer': 'roadmap/depth-humanoid-soccer.md',
     'motion-retargeting': 'roadmap/depth-motion-retargeting.md',
     'humanoid-swarm-performance': 'roadmap/depth-humanoid-swarm-performance.md',
+    'cross-embodiment': 'roadmap/depth-cross-embodiment.md',
     'sim2real': 'roadmap/depth-sim2real.md',
     'humanoid-boxing': 'roadmap/depth-humanoid-boxing.md',
     'icl': 'roadmap/depth-icl.md',
@@ -653,6 +655,51 @@
         'wiki/entities/skild-s1.md'
       ])
     },
+    'cross-embodiment': {
+      segments: new Set([
+        'cross-embodiment', 'cross-embod', 'x-embodiment', 'cross-humanoid',
+        'across-morphologies', 'embodiment-aware', 'any2any'
+      ]),
+      ids: mergeIds('cross-embodiment', [
+        'wiki/concepts/embodied-foundation-model-hardware-codesign.md',
+        'wiki/concepts/embodied-scaling-laws.md',
+        'wiki/concepts/strong-pair-data.md',
+        'wiki/concepts/whole-body-tracking-pipeline.md',
+        'wiki/methods/uhas-unified-hand-action-space.md',
+        'wiki/entities/paper-emergent-transfer-cross-config.md',
+        'wiki/entities/generalist-gen1-thousand-hands.md',
+        'wiki/entities/paper-greenwam.md',
+        'wiki/entities/qwen-robot-manip.md',
+        'wiki/entities/paper-ucag-p.md',
+        'wiki/entities/paper-easg-vlm-native-action-model.md',
+        'wiki/entities/paper-advdex.md',
+        'wiki/entities/paper-latent-actions-matter.md',
+        'wiki/entities/paper-urdd-universal-robot-description-directory.md',
+        'wiki/entities/paper-octo.md',
+        'wiki/entities/paper-hrl-stack-34-gr00t_n1.md',
+        'wiki/entities/paper-x-wbc.md',
+        'wiki/entities/paper-recmorph.md',
+        'wiki/entities/paper-hodge-morphology-priors-quadruped-degradation.md',
+        'wiki/entities/paper-crossbfm-shared-latent-behavior.md',
+        'wiki/entities/paper-locoformer.md',
+        'wiki/entities/paper-up-osi-universal-policy-online-sysid.md',
+        'wiki/entities/paper-shape-your-body-value-gradient-design.md',
+        'wiki/entities/paper-transformer-transformer.md',
+        'wiki/entities/paper-rcl-1910-11215-robonet-large-scale-multi-robot-learning.md',
+        'wiki/entities/xiaomi-robotics-1.md',
+        'wiki/entities/paper-xmorph.md',
+        'wiki/entities/paper-human-demos-object-retargeting.md',
+        'wiki/entities/paper-egojepa-egocentric-latent-action.md',
+        'wiki/entities/paper-last-hd-latent-physical-reasoning.md',
+        'wiki/entities/paper-h2r-bench.md',
+        'wiki/entities/paper-human2dex-wrist-centric-dexterous.md',
+        'wiki/entities/reward-ai-om1.md',
+        'wiki/entities/paper-sonic-transfer.md',
+        'wiki/entities/paper-trace-humanoid-transfer.md',
+        'wiki/entities/paper-morphact.md',
+        'wiki/entities/gemini-robotics.md'
+      ])
+    },
     'wam': {
       segments: new Set([
         'wam', 'world-action', 'world-model', 'worldmodel', 'video-prediction',
@@ -775,6 +822,12 @@
       label: '人形群控展演（Swarm Performance）',
       wikiPath: DEPTH_HUB_IDS['humanoid-swarm-performance'],
       description: '群舞同步、编队走位与群体特技的多机协同展演。'
+    },
+    'cross-embodiment': {
+      emoji: '🦾',
+      label: '跨本体迁移（Cross-Embodiment）',
+      wikiPath: DEPTH_HUB_IDS['cross-embodiment'],
+      description: '一个策略适配不同本体：统一接口 → 形态感知架构 → 多本体混训 → 人→机 → 新本体快速适配。'
     },
     'sim2real': {
       emoji: '🔁',

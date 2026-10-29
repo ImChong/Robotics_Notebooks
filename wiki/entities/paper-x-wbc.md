@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, cross-embodiment]
 status: complete
-updated: 2026-09-20
+updated: 2026-10-28
 arxiv: "2609.15213"
 code: https://github.com/LogosRoboticsGroup/x-wbc
 related:
@@ -95,6 +95,8 @@ X-WBC 的出发点是一条工程观察：**一机一策略** 让运动经验被
 - 结论范围以 arXiv 与项目页为准；待发布代码无法独立验数。
 
 ## 关联页面
+
+- [Proteus](./proteus-humanoids.md)：单组权重与关节级本体描述的跨人形仿真跟踪；未见本体泛化仍有限，论文和代码待发布。
 
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
 

@@ -8,7 +8,8 @@
 - **链接：** https://github.com/Roboparty/atom01_deploy
 - **入库日期：** 2026-04-25
 - **一句话说明：** Atom01 的部署与运行仓库，聚焦 ROS2 驱动、中间件、设备接入与上机部署流程。
-- **沉淀到 wiki：** 否（待后续补齐部署链路实践后再沉淀）
+- **复核（2026-10-27）：** `git ls-remote` 显示 HEAD 与 [roboparty_deploy](roboparty_deploy.md) 同为 `c4d8b87`，即同一仓库更名；当前面向 RPO 与 RP1。
+- **沉淀到 wiki：** 是（[`wiki/entities/roboparty-deploy.md`](../../wiki/entities/roboparty-deploy.md)）
 
 ---
 

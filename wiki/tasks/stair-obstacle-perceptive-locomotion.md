@@ -2,8 +2,9 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-27
 related:
+  - ../entities/paper-terrain-traversal-without-motion-priors.md
   - ../entities/paper-dawn.md
   - ../entities/paper-cref.md
   - ../entities/paper-ame-attention-based-map-encoding.md
@@ -258,6 +259,10 @@ flowchart TB
 - [机器人论文阅读笔记：Collision-Free Humanoid Traversal in Cluttered Indoor Scenes](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes.html)
 - FastStair 论文 HTML：<https://arxiv.org/html/2601.10365v1>
 - FastStair 项目页：<https://npcliu.github.io/FastStair>
+
+## 相关新研究
+
+- [Terrain Traversal Without Motion Priors](../entities/paper-terrain-traversal-without-motion-priors.md) — 地形分类路由五专家并连续优化落足；部署保真仿真中验证混合地形穿越，真机结果待验证。
 
 ## 参考来源
 

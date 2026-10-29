@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, WAM, code-as-policies, mixture-of-transformers, manipulation, uc-berkeley, nvidia]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-29
 project_id: aw-0-agentic-world-action-models
 arxiv: "2610.30136"
 project: https://agentic-wam.github.io/
@@ -12,9 +12,11 @@ models:
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/aw0_arxiv_2610_30136.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "AW-0 jointly generates skill code, future video, and robot actions with a Mixture-of-Transformers world action model, using code as structured planning context and reusable skills."
 ---
 

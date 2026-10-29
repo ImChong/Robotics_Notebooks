@@ -148,6 +148,8 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 - 行为意图蒸馏：[Indi](./paper-indi.md) — 在 GR00T-N1.7 解码器中间层恢复局部目标（arXiv:2608.23478；未开源）
 - 名称撞车：[Perceptron Isaac 0.5](./perceptron-isaac-05.md) — Perceptron 36B 稀疏 VLA；**不是** 本平台
 
+- 仿真示范扩增：[Zero-HLM](./paper-zero-hlm.md) — 重建场景并以执行反馈生成 G1 移动操作训练数据。
+
 ## 参考来源
 
 - [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库 README 策展摘录  

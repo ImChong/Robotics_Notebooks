@@ -71,6 +71,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .sub { position: absolute; top: 1318px; left: 50px; right: 50px; text-align: center;
   font-size: 52px; font-weight: 900; line-height: 1.3; color: #fff;
   text-shadow: 0 3px 0 #000, 0 0 18px rgba(0,0,0,.85); }
+/* 字幕里的式子（DISPLAY 换成 $…$ 的数和向量）：和字幕一样粗，字号同划重点 */
+.sub .katex { font-size: 1.02em; font-weight: 700; }
 
 /* ── intro / cover / outro cards ── */
 .card { position: absolute; inset: 0; }
@@ -327,7 +329,8 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
   }
 
   /* ── outro：〔自测题 → 想一想（进度条倒数）→ 揭晓答案〕→ 下一集预告 → 系列衔接语。
-     自测题可选：零基础篇片尾不出题，outro 里不写 quiz 就只有预告和衔接语 ── */
+     自测题可选：零基础篇片尾不出题，outro 里不写 quiz 就只有预告和衔接语。
+     outro.refs（可选）：片尾最后一页列出本集核对过的官方一手资料——念到时预告、网址两张卡先淡出，再换上这张 ── */
   /* 片尾总结（参照论文系列「三句话记住」）：小标题 + 大标题，几张左侧色条卡片按旁白逐张弹出，可选一行结论；
      卡片张数按内容定，E.recap 不写就没有这一页 */
   function buildRecap() {
@@ -380,6 +383,12 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     if (link) { link.style.textAlign = 'center'; link.style.fontSize = '29px'; link.style.padding = '22px 34px'; }
     var end = h('div', 'footer', root); richInto(end, O.end.s);
     end.style.whiteSpace = 'normal';
+    var refs = null;
+    if (O.refs) {
+      refs = h('div', 'pt', root);
+      h('div', 'n', refs, O.refs.title || '本集核对的一手资料').style.color = 'var(--text)';
+      O.refs.items.forEach(function (s) { var d = h('div', 'd', refs); d.style.fontSize = '27px'; d.style.marginTop = '8px'; richInto(d, s); });
+    }
     return {
       root: root,
       draw: function (st, t) {
@@ -393,6 +402,13 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
         fadeUp(next, st, O.next.at);
         if (link) fadeUp(link, st, O.link.at);
         fadeUp(end, st, O.end.at);
+        if (refs) {
+          // 预告、网址卡 0.4 s 淡出后，资料卡在衔接语上方居中淡入（两块不同时出现，不互相压）
+          var off = 1 - clamp((st - O.refs.at) / 0.4, 0, 1);
+          [next, link].forEach(function (e) { if (e) e.style.opacity = +e.style.opacity * off; });
+          stack([refs], [], SAFE_TOP, (parseFloat(end.style.top) || CONTENT_BOTTOM) - 30);
+          fadeUp(refs, st, O.refs.at + 0.4, 0.5);
+        }
       }
     };
   }
@@ -451,7 +467,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
     }
     if (window.__cover) sub = '';
     if (sub !== lastSub) {
-      subEl.textContent = sub; lastSub = sub;
+      richInto(subEl, sub); lastSub = sub;
       /* 一行放不下就缩字号，两行也不越过安全区底线 */
       for (var fs = 52; fs >= 40; fs -= 4) {
         subEl.style.fontSize = fs + 'px';

@@ -7,7 +7,7 @@ tags:
   - panoptic-segmentation
   - computer-vision
 status: complete
-updated: 2026-10-05
+updated: 2026-10-28
 summary: "图像分割三类任务：语义（像素类别）、实例（区分同类别个体）、全景（stuff+things 统一）；决定标注协议、指标与模型头设计。"
 related:
   - ../methods/fcn-semantic-segmentation.md
@@ -71,6 +71,7 @@ flowchart TB
 
 ## 关联页面
 
+- [PartLLM](../entities/paper-partllm.md) — 三维形状的提示式部件分解。
 - [FCN](../methods/fcn-semantic-segmentation.md)
 - [Mask R-CNN](../methods/mask-rcnn.md)
 - [Human Body And Accessories](../entities/human-body-and-accessories-dataset.md) — 细粒度人体部件与服饰分割数据集

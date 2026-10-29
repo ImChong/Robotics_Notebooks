@@ -5,7 +5,7 @@ tags:
   - world-action-model
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.30991"
 project_id: uniflowwam-semantics-4d-geometry-world-action-model
 project: https://kksham111.github.io/UniFlowWAM_ProjectPage/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/uniflowwam-semantics-4d-geometry-world-action-model_arxiv_2610_30991.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "UniFlowWAM：融合视觉语义与四维几何的统一世界动作模型（arXiv:2610.30991）：将视觉语义与四维几何信息统一引入世界动作建模，使模型能够同时利用场景语义和时空几何结构生成动作。"
 ---
 

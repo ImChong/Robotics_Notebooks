@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-09-21
+updated: 2026-10-27
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -46,6 +46,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 | 榜站 | VLA / 灵巧手多基准相对位次 | [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) |
 | 实体 | Perceptron 开源通才（非 NVIDIA） | [Isaac 0.5](../entities/perceptron-isaac-05.md) |
 | 实体 | 相机系锚点几何通才 | [UCAG-P](../entities/paper-ucag-p.md) — 人手与机器人共享 \(p_0/p_1\)；代码待发布 |
+| 实体 | 相机可配置的多视角 VLA | [VersaCamVLA](../entities/paper-versacamvla.md) — 可变相机集合编码为固定大小场景 token；代码待发布 |
 | 驾驶 VLA | 语义∥空间双流规划（NAVSIM） | [S²-VLA](../entities/paper-s-squared-vla.md) |
 | 数据 | 跨具身数据倡议 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 

@@ -4,7 +4,7 @@ project_id: agentic-roborl
 project: https://xinxinliu-ai.github.io/AgenticRoboRL/
 tags: [paper, agentic-robotics, manipulation, reinforcement-learning, sft, post-training, libero, open-source, usc, michigan-state]
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.28589"
 code: https://github.com/xinxinliu-ai/AgenticRoboRL
 venue: "arXiv cs.RO, 2026"
@@ -13,10 +13,12 @@ related:
   - ../methods/imitation-learning.md
   - ./agent-lightning.md
   - ./paper-harnesseval-w.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/agenticroborl_arxiv_2610_28589.md
   - ../../sources/sites/agenticroborl-project.md
   - ../../sources/repos/agenticroborl.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "AgenticRoboRL（arXiv:2610.28589，UCF/USC/MSU）：先用教师轨迹 SFT，再用多轮成功奖励 RL 后训练机器人 planner；统一接口位于模型调用边界，通过 adapter 把多种 harness 的调用记录映射到 episode 结果。Qwen3.5-9B 在 RPent/LIBERO-PRO 达 71.0%，CaP-X 控制代码 harness 达 28.5%；teacher SFT 轨迹未发布。"
 ---
 

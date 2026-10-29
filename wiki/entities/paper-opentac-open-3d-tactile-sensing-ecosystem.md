@@ -5,7 +5,7 @@ tags:
   - cross-embodiment
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.31661"
 project_id: opentac-open-3d-tactile-sensing-ecosystem
 project: https://opentac.github.io
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/opentac-open-3d-tactile-sensing-ecosystem_arxiv_2610_31661.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "OpenTac：可定制、可扩展、可迁移的三维触觉感知开放生态（arXiv:2610.31661）：OpenTac 构建开放的三维触觉感知生态，重点支持传感器定制、规模化部署与跨设备迁移，并提供开源软硬件和演示资源。"
 ---
 

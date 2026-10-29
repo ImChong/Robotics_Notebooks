@@ -8,12 +8,14 @@ related:
   - ./lip-zmp.md
   - ../methods/model-predictive-control.md
   - ../entities/paper-adp.md
+  - ../entities/paper-adaptive-whole-body-mpc-payload.md
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
+  - ../../sources/papers/adaptive_whole_body_mpc_2610_12972.md
 summary: "Centroidal Dynamics 以质心动量为核心描述全身运动，是 MPC、WBC 和多接触规划的重要中间层。"
-updated: 2026-09-15
+updated: 2026-10-28
 ---
 
 # Centroidal Dynamics
@@ -320,6 +322,8 @@ LIP / ZMP 是更简化的双足平衡模型，Centroidal Dynamics 则是更接�
 Centroidal Dynamics 是很多足式 / 人形 MPC 控制器最常见的预测模型。
 
 见：[Model Predictive Control (MPC)](../methods/model-predictive-control.md)
+
+[未知载荷下的自适应全身 MPC](../entities/paper-adaptive-whole-body-mpc-payload.md)（arXiv:2610.12972）以 **质心 MPC** 生成动力学可行参考，再由自适应模糊平衡控制器补偿未知载荷引入的模型失配——说明质心模型参数（质量/惯量）偏差需要下游补偿层兜底。
 
 [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 将 **CD-MPC** 用于 **训练期** landmark guidance reward（非部署期在线 MPC），是 centroidal 模型进入大规模 RL 的一条 2026 路线。
 
