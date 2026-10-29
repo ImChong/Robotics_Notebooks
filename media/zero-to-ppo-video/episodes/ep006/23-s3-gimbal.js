@@ -10,6 +10,10 @@
 // 句 7「绕前后这根轴」画红色虚线（世界的 x）和绕它的红色弯箭头，「做不到」打橙叉；「只剩两个方向」说明区写出，「万向锁」大橙牌；
 // 句 8「摔倒」右边换成一台脸朝下趴在地上的 G1（俯仰 90°），「俯仰正好九十度」标出；
 // 句 9「没到九十度」右边换成一张小表：身子绕前后转 1°，俯仰 80° / 85° / 88° / 89° 时横滚、偏航各跳 6° / 11° / 27° / 45°，「跳一大截」最后两格变橙。
+// 句 10「拿万向节看」小表换回三行读数，内环转回 0°，「八十八度」中环转到 88°，「内环和外环的轴」两根转轴虚线亮起，「竖线」一起亮一下；
+// 句 11「身子」身子的三根小箭头留一个虚线影子（起点），「歪一度」说明区写目标；「外环要转动」外环转 27°，身子跟着转一大截；
+//    「内环再往回转动」内环转 27°，身子又转回来，停在影子旁边——只差绕前后 1°（结束姿势按 Rx(1°)·Ry(88°) 反算出 RPY）；「抵消」「只剩这一度」写出、影子亮一下；
+// 句 12「跳的只是算出来的数」横滚、偏航两行亮，「身子其实没怎么动」底下写出。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep006.py。
 (function () {
   var E = window.EP006, K = E.K;
@@ -24,19 +28,27 @@
     tA: 35.72, y30: [36.58, 0.6], tB: 37.88, swap: [38.16, 1.5], eq2: 41.05,
     xRed: 43.81, nope: 45.48, two: 48.66, lock: 50.87,
     fall: 54.22, face: 55.71, p90: 56.97,
-    table: 59.74, small: 61.84, jump: 64.74
+    table: 59.74, small: 61.84, jump: 64.74,
+    g0: 66.44, p88: [68.54, 0.6], near: 69.53, line: 71.78,
+    ghost: 73.33, goal: 74.4, yawS: [75.19, 1.4], rollS: [77.23, 1.4], cancel: 79.79, left: 80.73,
+    num: 82.55, still: 84.23
   };
   var GC = [228, 196], GL = 148;
   var RX = 430, RW = 360;
   var COLS = [E.X, E.Y, E.Z];   // 三行按 RPY：横滚 · 内环（x 红）、俯仰 · 中环（y 绿）、偏航 · 外环（z 蓝）   // 外环 / 偏航绕 z（蓝）、中环 / 俯仰绕 y（绿）、内环 / 横滚绕 x（红）
   var JUMP = [[80, 6], [85, 11], [88, 27], [89, 45]];   // 身子绕世界 x 转 1° 时，RPY 欧拉角的横滚、偏航各变多少（数值算出，见 ../ep006.py）
+  // 句 11 的终点：俯仰 88° 的身子再绕世界 x 转 1°，反算 RPY（Modern Robotics 附录 B.1.1 的 atan2 公式）：横滚、偏航各约 26.6°，俯仰约 87.8°
+  var TGT = (function () {
+    var R = E.mul3(E.Rx(1 * D), E.Ry(88 * D));
+    return { roll: Math.atan2(R[2][1], R[2][2]), pitch: -Math.asin(R[2][0]), yaw: Math.atan2(R[1][0], R[0][0]) };
+  })();
 
   function bump(st, a, d) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
   function wig(st, a, d, amp) { var u = K.seg(st, a, a + d); return u > 0 && u < 1 ? amp * Math.sin(2 * Math.PI * u) : 0; }
 
   E.scenes[2] = {
     title: '万向锁：两根轴转到一起',
-    dur: 66.34,
+    dur: 86.29,
     cues: [
       { at: 0, s: '三次转动做成三个套在一起的环：横滚是内环、俯仰是中环、偏航是外环' },
       { at: 10.56, s: '这种架子叫**万向节**，「万向锁」的名字就来自它' },
@@ -46,10 +58,13 @@
       { at: 34.95, s: '(0°, 90°, 30°) 和 (−30°, 90°, 0°)：同一个姿势' },
       { at: 42.63, s: '绕前后的轴，三个环都转不了：只剩 2 个方向 → **万向锁**' },
       { at: 52.37, s: '人形机器人摔倒、脸朝下趴着：俯仰正好 90°' },
-      { at: 59.28, s: '靠近 90° 时：身子只转一点点，算出来的角跳一大截' }
+      { at: 59.28, s: '靠近 90° 时：身子只转一点点，算出来的角跳一大截' },
+      { at: 66.34, s: '万向节俯仰停在 88°：内环的轴和外环的轴几乎在一条竖线上' },
+      { at: 73.23, s: '身子只歪 1°：外环转 27°，内环再转回 27°，两下几乎抵消' },
+      { at: 82.45, s: '跳的只是算出来的数：身子其实没怎么动' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('万向节：横滚是内环、俯仰是中环、偏航是外环。俯仰转到九十度，内环的轴竖起来和外环的轴重合，转外环和转内环效果一样，(0°, 90°, 30°) 和 (−30°, 90°, 0°) 是同一个姿势；绕前后的轴，三个环都转不了，只剩两个方向，这就是万向锁。人形机器人摔倒脸朝下趴着，俯仰正好九十度；靠近九十度时，身子转一点点，算出来的角跳一大截');
+      var s = K.sceneSvg('万向节：横滚是内环、俯仰是中环、偏航是外环。俯仰转到九十度，内环的轴竖起来和外环的轴重合，转外环和转内环效果一样，(0°, 90°, 30°) 和 (−30°, 90°, 0°) 是同一个姿势；绕前后的轴，三个环都转不了，只剩两个方向，这就是万向锁。人形机器人摔倒脸朝下趴着，俯仰正好九十度；靠近九十度时，身子转一点点，算出来的角跳一大截：俯仰 88 度时身子只歪 1 度，外环要转 27 度、内环再转回 27 度，两下抵消，跳的只是算出来的数');
 
       /* ══ 左：万向节 ══ */
       var proj = E.view3(150, 22);   // 从左前方看：外环转到 +30° 时也不会侧成一条线（−30° 那一下才侧过来，只在来回摆的一瞬）
@@ -77,6 +92,14 @@
         var c = P([1.12, 0, 0.62]);   // 叉打在弯箭头上方，不压箭头
         E.cross(curlX, c[0], c[1], 13, E.ERR, 5);
         xLab.setAttribute('x', b[0].toFixed(1)); xLab.setAttribute('y', (b[1] + 30).toFixed(1));
+      })();
+
+      // 句 11：身子起点的影子（俯仰 88°，横滚、偏航为 0）
+      var ghostG = E.el('g', {}, s);
+      var ghost = [E.X, E.Y, E.Z].map(function (c) { var a = E.vec(ghostG, c, 3, { head: 13 }); a.paint(c); a.line.setAttribute('stroke-dasharray', '6 5'); return a; });
+      (function () {
+        var R0 = E.zyx(0, 88 * D, 0), o = P([0, 0, 0]);
+        ghost.forEach(function (a, j) { var t = P(E.col3(R0, j).map(function (x) { return x * 0.52; })); a.set(o[0], o[1], t[0], t[1]); });
       })();
 
       /* ══ 右：三行读数 ══ */
@@ -108,6 +131,10 @@
       var tSame = E.txt(nTwo, RX + RW / 2, 366, '两组数，同一个姿势', 22, E.HI, 'middle', 900);
       var nLock = note([{ s: '绕前后的轴：转不了', y: 232, c: E.ERR }, { s: '3 个角，只剩 2 个方向', y: 274 }]);
       var lockTag = E.tag(nLock.g, RX + 70, 300, 220, 56, '万向锁', E.ERR, { size: 32, ink: E.ERR, weight: 900, rx: 14, sw: 3 });
+      var nNear = note([{ s: '俯仰 88°：两根轴几乎重合', y: 236, c: E.ERR }]);
+      var nTilt = note([{ s: '目标：身子只歪 1°', y: 232 }, { s: '① 外环转 27°：身子跟着转一大截', y: 272, c: E.Z, size: 20 },
+        { s: '② 内环转回 27°：身子又转回来', y: 310, c: E.X, size: 20 }, { s: '两下抵消，只剩 1°', y: 350, c: E.HI }]);
+      var nNum = note([{ s: '跳的是算出来的数，身子没怎么动', y: 392, c: E.HI, size: 20 }]);
 
       /* ══ 右：脸朝下趴着的 G1（俯仰 90°） ══ */
       var fallG = E.el('g', {}, s);
@@ -143,12 +170,20 @@
             + 30 * D * f(st, T.y30[0], T.y30[1]) * (1 - f(st, T.swap[0], T.swap[1]));
           var pitch = wig(st, T.wig[1], T.wigD, 25 * D) + 90 * D * f(st, T.pitch[0], T.pitch[1]);
           var roll = wig(st, T.wig[2], T.wigD, 25 * D) + wig(st, T.innerW[0], T.innerW[1], -30 * D) - 30 * D * f(st, T.swap[0], T.swap[1]);
+          // 句 10–11：内环先转回 0°、中环停到 88°；再外环转到终点的偏航，内环转到终点的横滚（俯仰跟着外环那一步走完那 0.2°）
+          if (st >= T.g0) {
+            var u = f(st, T.yawS[0], T.yawS[1]), v = f(st, T.rollS[0], T.rollS[1]);
+            yaw = TGT.yaw * u;
+            pitch = 90 * D - 2 * D * f(st, T.p88[0], T.p88[1]) + (TGT.pitch - 88 * D) * u;
+            roll = -30 * D * (1 - f(st, T.g0, 0.8)) + TGT.roll * v;
+          }
           gb.set(yaw, pitch, roll);
           gb.stand.op(f(st, T.stand, 0.4)); gb.bodyOp(f(st, T.stand, 0.4));
           gb.rings.forEach(function (r, i) {
             var on = f(st, T.rings[i], 0.35);
             r.op(on); gb.axles[i].op(on);
-            r.width(8 + 4 * bump(st, T.wig[i] - 0.1, T.wigD + 0.2));
+            var step = i === 0 ? bump(st, T.yawS[0] - 0.1, T.yawS[1] + 0.2) : i === 2 ? bump(st, T.rollS[0] - 0.1, T.rollS[1] + 0.2) : 0;   // 句 11：正在转的那个环加粗
+            r.width(8 + 4 * Math.max(bump(st, T.wig[i] - 0.1, T.wigD + 0.2), step));
           });
           // 红箭头（身子的前，x）变粗、写「朝下」
           var gw = Math.max(bump(st, T.green, 1.2), f(st, T.green, 0.3) * (1 - f(st, T.xAxis, 0.4)));
@@ -160,8 +195,10 @@
           E.op(downG, f(st, T.down, 0.3) * (1 - f(st, T.xAxis, 0.4)));
           // 两根转轴：内环（红，x）、外环（蓝，z）；「转到了一起」一起亮
           var sb = bump(st, T.same, 1.0) + bump(st, T.same + 1.0, 1.0);
-          gb.axes.x.op(f(st, T.xAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
-          gb.axes.z.op(f(st, T.zAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)));
+          var axLate = f(st, T.near, 0.4) * (1 - f(st, T.num, 0.4));   // 句 10–11：俯仰 88°，两根轴几乎重合
+          sb += bump(st, T.line, 1.0);
+          gb.axes.x.op(Math.max(f(st, T.xAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)), axLate));
+          gb.axes.z.op(Math.max(f(st, T.zAxis, 0.4) * (1 - f(st, T.xRed - 0.3, 0.4)), axLate));
           gb.axes.z.width(9 + 3 * sb); gb.axes.x.width(3.5 + 2 * sb);   // 两根重合：蓝的粗、垫在下面，红的细、压在上面，看得出是两根
           // 世界的前后：红虚线、弯箭头、叉
           var redOn = f(st, T.xRed, 0.4) * (1 - f(st, T.fall - 0.4, 0.4));
@@ -173,11 +210,12 @@
 
           /* 右：三行读数 */
           var vals = [roll, pitch, yaw], WI = [2, 1, 0];   // 第 i 行对应 wig 的下标
-          var rowsOn = f(st, T.rows, 0.4) * (1 - f(st, T.fall - 0.4, 0.4));
+          var rowsOn = Math.max(f(st, T.rows, 0.4) * (1 - f(st, T.fall - 0.4, 0.4)), f(st, T.g0 + 0.4, 0.4));   // 句 10 起换回三行读数：小表先淡出，再出读数，两块不同时出现
           rows.forEach(function (r, i) {
             E.op(r.g, rowsOn);
             r.val.textContent = E.num(Math.round(vals[i] / D)) + '°';
-            var hl = bump(st, T.wig[WI[i]] - 0.3, T.wigD + 0.6) + (i === 1 ? bump(st, T.second, 1.0) + bump(st, T.pitch[0], T.pitch[1] + 0.4) : 0);
+            var hl = bump(st, T.wig[WI[i]] - 0.3, T.wigD + 0.6) + (i === 1 ? bump(st, T.second, 1.0) + bump(st, T.pitch[0], T.pitch[1] + 0.4) + bump(st, T.p88[0] - 0.2, T.p88[1] + 0.4) : 0)
+              + (i === 2 ? bump(st, T.yawS[0] - 0.2, T.yawS[1] + 0.4) : 0) + (i === 0 ? bump(st, T.rollS[0] - 0.2, T.rollS[1] + 0.4) : 0) + (i !== 1 ? bump(st, T.num, 1.2) : 0);
             r.box.style.strokeWidth = 2.5 + 3 * Math.min(1, hl);
             E.glow(r.box, COLS[i], hl > 0.05);
           });
@@ -193,11 +231,17 @@
           E.op(nLock.g, f(st, T.xRed, 0.3) * (1 - f(st, T.fall - 0.4, 0.4)));
           E.op(nLock.items[0], f(st, T.nope, 0.3)); E.op(nLock.items[1], f(st, T.two, 0.3));
           E.pop(lockTag.g, RX + 180, 328, f(st, T.lock, 0.35), 0.6);
+          E.op(nNear.g, f(st, T.near, 0.35) * (1 - f(st, T.ghost - 0.2, 0.3)));
+          E.op(nTilt.g, f(st, T.goal, 0.3));
+          [T.goal, T.yawS[0], T.rollS[0], T.cancel].forEach(function (a, k) { E.op(nTilt.items[k], f(st, a, 0.3)); });
+          E.op(nNum.g, f(st, T.still, 0.3));
+          // 身子起点的影子：「只剩这一度」「身子其实没怎么动」亮一下
+          E.op(ghostG, f(st, T.ghost, 0.4) * (0.55 + 0.45 * Math.max(bump(st, T.left, 1.2), bump(st, T.still, 1.2))));
 
           /* 右：趴着的 G1、小表 */
           E.op(fallG, f(st, T.fall, 0.4) * (1 - f(st, T.table, 0.4)));
           E.op(fallLab, f(st, T.face, 0.3)); E.op(p90, f(st, T.p90, 0.3));
-          E.op(tab, f(st, T.table, 0.4));
+          E.op(tab, f(st, T.table, 0.4) * (1 - f(st, T.g0, 0.4)));
           bars.forEach(function (b, i) {
             var p = f(st, T.small + 0.35 * i, 0.4);
             b.bar.setAttribute('width', (b.w * p).toFixed(1));
