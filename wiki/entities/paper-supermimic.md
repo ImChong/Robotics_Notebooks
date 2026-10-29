@@ -121,6 +121,7 @@ flowchart TB
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
+- [InstantTrack](./instanttrack.md) — 基于社区复现的训练加速与足部接触优化。
 - [BPTT](../concepts/bptt.md) / [MBPO](../methods/mbpo.md) / [Model-Based RL](../methods/model-based-rl.md) — 背景复习
 - [SONIC：大规模自然人形全身控制](./nvidia-sonic.md) — 论文采用的高算力 motion-tracking 对照基线。
 - [TWIST2](./paper-twist2.md) — 人形全身数据采集、跟踪控制与学习系统案例。
