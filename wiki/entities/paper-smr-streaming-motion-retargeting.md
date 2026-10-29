@@ -4,7 +4,7 @@ tags:
   - paper
   - humanoid
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.29169"
 project_id: smr-streaming-motion-retargeting
 project: https://logosintelligencelab.github.io/SMR/
@@ -12,9 +12,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/smr-streaming-motion-retargeting_arxiv_2610_29169.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "SMR：从人体动作语义学习流式人形动作重定向（arXiv:2610.29169）：先训练物理专家跟踪机器人感知的任务空间语义目标，再将专家实际执行轨迹蒸馏到严格因果 Transformer；部署时只使用当前和历史人体观测生成动作参考。"
 ---
 

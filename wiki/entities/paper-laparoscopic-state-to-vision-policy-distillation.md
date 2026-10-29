@@ -5,16 +5,18 @@ tags:
   - imitation-learning
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.31010"
 project_id: laparoscopic-state-to-vision-policy-distillation
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/laparoscopic-state-to-vision-policy-distillation_arxiv_2610_31010.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "Laparoscopic Distillation：重新研究腹腔镜机器人操作中从状态到视觉的策略蒸馏分布匹配（arXiv:2610.31010）：重新研究 State-to-Vision Policy Distillation 中的分布匹配问题，重点关注教师与学生之间的状态分布差异对蒸馏效果的影响。"
 ---
 
