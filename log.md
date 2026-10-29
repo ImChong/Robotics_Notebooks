@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-28] lint | 全量 wiki lint 修复：7+3 陈旧页复核并回链新来源，11 篇 paper 补「与其他工作对比」，11 篇评测基准页回链评测基准选型闭环，PartLLM 回链感知栈闭环；问题与信息型预警清零
+
 ## [2026-10-28] ingest | 未知载荷下的自适应全身 MPC
 
 - 收录 arXiv:2610.12972，关联质心动力学与 MPC/WBC 集成。
