@@ -29,7 +29,7 @@
 
 ## 2026-10-27 更新：Gen-HumanWholeBody
 
-官网现列出 [Gen-HumanWholeBody](https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody)，标注 600 小时及约 3 cm MPJPE。数据卡许可和访问条件本次未能核实；参见 [数据集归档](../datasets/gen-human-whole-body-genrobot.md)。
+官网现列出 [Gen-HumanWholeBody](https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody)，标注 600 小时及约 3 cm MPJPE。2026-10-29 复核：数据可公开下载，数据卡许可标为 `other`，未给出许可文本；不能直接套用 Gen-HumanEgo 的 CC BY-SA 4.0。参见 [数据集归档](../datasets/gen-human-whole-body-genrobot.md)。
 
 ## 联系方式（官网）
 
