@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-08-12
+updated: 2026-10-27
 summary: "Sa2VA（arXiv:2501.04001）将 SAM 2 与 LLaVA 类 MLLM 结合，用 SEG token 驱动掩码，统一图像/视频指称分割与 grounded 对话。"
 related:
   - ../concepts/multimodality-basics.md
@@ -64,6 +64,8 @@ flowchart LR
 幻觉、错误 grounding、许可与安全过滤必须单独评估；开源状态以项目页为准，部署前核查权重协议。
 
 ## 关联页面
+
+- [WeVisOne-VL](./paper-wevisone-vl.md)：统一目标与像素感知的另一种实现。
 
 - [多模态基础](../concepts/multimodality-basics.md)
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)

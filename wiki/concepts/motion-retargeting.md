@@ -330,7 +330,10 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [mocap_retarget](../entities/mocap-retarget.md) — 轻量工程向 MoCap 映射参考
 - [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) / [STMR](../entities/stmr-quadruped-retargeting.md) / [AMP_for_hardware](../entities/amp-for-hardware.md) / [MetalHead](../entities/metalhead.md) / [LeggedGym-Ex](../entities/leggedgym-ex.md) — 四足模仿与 AMP 生态
 - [Go2 Motion Imitation](../entities/go2-motion-imitation.md) — Go2 + Genesis 重定向样板
+- [Kine2Go 数据集](../entities/paper-kine2go.md) — 40 段多来源参考动作经 Go2 重定向与 PPO 模仿，发布 800 条仿真 rollout。
 - [PAN Motion Retargeting](../entities/pan-motion-retargeting.md) / [WalkTheDog](../entities/walk-the-dog.md) — 跨形态（人↔四足）学习式对齐研究
 - [AMP-RSL-RL](../entities/amp-rsl-rl.md) — rsl_rl(PPO)+AMP 的人形模仿实现，重定向/动捕产物的消费侧（可 pip 安装）
 - [fairmotion](../entities/fairmotion.md) — 上游通用动捕数据处理库（已归档），重定向前的数据 IO/表示层
 - [KinoGen](../entities/paper-kinogen.md) — 从生成视频拟合机器人与物体模型，绕过人体到机器人的逐帧重定向
+
+- 相关研究：[flowhmr](../entities/paper-flowhmr.md)。

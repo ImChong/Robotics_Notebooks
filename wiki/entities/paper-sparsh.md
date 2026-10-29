@@ -10,7 +10,7 @@ tags:
   - meta
   - corl
 status: complete
-updated: 2026-09-23
+updated: 2026-10-26
 arxiv: "2410.24090"
 venue: "CoRL 2024"
 summary: "Sparsh（CoRL 2024，Meta FAIR/UW/CMU）：460k+ 无标 VBTS 图像上 MAE/DINO/IJEPA/VJEPA SSL；TacBench 六任务 frozen probe 较 E2E 平均 +95.1%；facebookresearch/sparsh 已归档开源 + HF 权重。"
@@ -184,6 +184,7 @@ sequenceDiagram
 - [OmniVTLA](./paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md) — dual-path 触觉编码对照
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — Hardware/SSL 层节点
 - [VBTS 综述](./paper-vision-based-tactile-intelligence.md) — foundation model 章节
+- [触觉引导机器人学习综述](./paper-tactile-guided-robot-learning-survey.md) — Figure 2 自监督触觉表征范式分类（重建 / 对比 / 预测式），Sparsh 所在 SSL 谱系
 
 ## 参考来源
 

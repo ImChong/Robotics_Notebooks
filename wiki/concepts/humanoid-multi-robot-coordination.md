@@ -9,7 +9,7 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-10-24
+updated: 2026-10-26
 related:
   - ../tasks/humanoid-soccer.md
   - ../methods/marl.md
@@ -115,12 +115,14 @@ flowchart LR
 - [UniUni](../entities/unitree-uniuni.md) — 宇树面向编队演出的图形化轨迹与动作时间线工具；偏预编排执行，不公开底层同步/定位实现
 - [PingpongDuo](../entities/paper-pingpongduo.md) — 双人形乒乓球双打：风险过滤站位实现高动态多机协同
 - [OmniInteract](../entities/paper-omniinteract-dual-humanoids.md) — 双人形表面接触重定向与伙伴条件化全身交互控制
+- [RoboCompiler-Humanoids](../entities/paper-robocompiler-humanoids-composable-dynamics.md) — 合作人形的动力学建模侧：成员级模型复用 + 手部连接 / 地面支撑两级约简（MuJoCo 环形舞蹈与侧步验证，arXiv:2610.14237）
 
 ## 参考来源
 
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md)
 - [robocup_spl_limited_communication_coordination_arxiv_2401_15026.md](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md)
 - [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md)
+- [robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md](../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md)
 
 ## 推荐继续阅读
 

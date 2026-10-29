@@ -10,6 +10,7 @@ related:
   - ./transformer.md
   - ../overview/ai-architecture-map.md
   - ./mlp.md
+  - ./mechanistic-interpretability.md
   - ../methods/object-detection.md
   - ../methods/sgd.md
   - ../methods/adam.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/papers/effective_degree_arxiv_2605_29823.md
   - ../../sources/repos/rasbt_llms_from_scratch.md
   - ../../sources/courses/karpathy_intro_llms_youtube.md
+  - ../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md
 ---
 
 # 深度学习基础 (Deep Learning Foundations)
@@ -59,6 +61,8 @@ sources:
 - **初始化与残差连接 (Residual Connections)**: 缓解极深网络的 **退化（degradation）** 与优化困难，使百层 CNN（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）可训练；详见 [视觉骨干](./vision-backbones.md)。
 
 ### 3. 泛化理论 (Generalization)
+
+- **内部机制分析**：机制可解释性通过分析神经元、电路及因果干预解释模型计算；Goodfire 的《Neural Networks Are Already Clean》提出多数表面多义性或可由结构化泛化解释，但原文标注为工作假设，见[机制可解释性](./mechanistic-interpretability.md)。
 深度学习的成功在很大程度上取决于其在未见数据上的表现。
 - **偏差-方差权衡 (Bias-Variance Tradeoff)**: 模型复杂度与泛化能力的关系。
 - **正则化 (Regularization)**: 通过 Dropout、权重衰减等技术防止过拟合。
@@ -92,6 +96,7 @@ sources:
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [MiniMind](../entities/minimind.md) — 中文社区「从 0 训练小 LLM」PyTorch 全链路开源教程
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
+- [机制可解释性](./mechanistic-interpretability.md)
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
@@ -101,6 +106,7 @@ sources:
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)
 - [Karpathy Intro to LLMs（YouTube）](../../sources/courses/karpathy_intro_llms_youtube.md)
+- [Goodfire：Neural Networks Are Already Clean](../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md)
 
 ## 推荐继续阅读
 - [Deep Learning Book (Goodfellow et al.)](https://www.deeplearningbook.org/)

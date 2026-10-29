@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-27
 related:
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
@@ -131,6 +131,7 @@ sources:
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | Sim2Real | Simulation to Real | 仿真训练策略迁移到真机部署 |
+| Sim2Sim | Simulation to Simulation | 上真机前把策略换到另一仿真器（如 Isaac Gym → MuJoCo）回放，暴露对单一物理引擎的过拟合 |
 | DR | Domain Randomization | 随机化仿真物理参数以提升跨域鲁棒性 |
 | RMA | Rapid Motor Adaptation | 特权信息 Teacher–Student，从历史轨迹隐式估计环境参数 |
 | SysID | System Identification | 标定真机动力学/摩擦等，缩小仿真–现实差距 |
@@ -397,6 +398,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — onboard 推理 runtime 选型
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
+- [RealSimLoop](../entities/paper-realsimloop.md) — 3DGS 视觉反馈驱动的可微降阶软体仿真在线 Real-to-Sim 校准（SIGGRAPH Asia 2026，arXiv:2609.09828）
 
 
 ## 继续深挖入口

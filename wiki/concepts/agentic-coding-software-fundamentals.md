@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-19
+updated: 2026-10-28
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
@@ -35,6 +35,10 @@ related:
   - ../entities/agentic-design-patterns.md
   - ../entities/tidy-design.md
 sources:
+  - ../../sources/repos/humanfia-humanize.md
+  - ../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md
+  - ../../sources/blogs/anthropic_context_engineering_2026-07-24.md
+  - ../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
   - ../../sources/blogs/anthropic_claude_code_review_2026-10-15.md
@@ -67,6 +71,8 @@ sources:
 - **真机 / 仿真闭环同构。** [ENPIRE](../methods/enpire.md) 与 [autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) 反复强调：有 coding agent **不能**跳过环境工程。吴恩达把同一句话写到通用软件：有 agent **不能**跳过对 latency、可靠性、数据生命周期的理解。
 - **数据是难改的地基，也是模型的上下文。** 机器人侧的轨迹集、回放缓冲、[数据飞轮](./data-flywheel.md) 一旦 schema 选错，后续策略与评测都在错误上下文上训练——对应原文「AI doesn’t know what it doesn’t know」。
 - **语法记忆正在过时，原理没有。** 过时的是背 API 签名；没过时的是知道原型架构、首版生产架构、规模化架构是三个不同目标。
+
+- **让会话回放成为复盘证据：** [AgentPlay](../entities/agentplay.md) 把 coding agent 留在本机的 transcript 转成可交互地图和时间线，帮助定位文件探索、重复失败、上下文压缩与交付输出；它补充执行过程观察，不能替代测试结果或代码审查。
 
 ## 核心原理
 
@@ -145,6 +151,16 @@ OpenAI Core Experimentation 报告了另一类 coding-agent 工作流：GPT-6 As
 
 文中的量化数据属于特定内部仓库和工作负载：GPT-6.1 Sol Ultra 在该次实验里以约 14% API 成本得到 Astra Ultra 92% 的发现数；约 30 个 CI 优化 PR 后，中位耗时由约 10 分钟降至 4.5 分钟。它们适合作为「对照发现率、成本和回归质量」的例子，不构成其他团队可直接复现的收益承诺。文章建议从单个小维护任务开始，review 结果后再逐步扩大范围。
 
+## 用未知、上下文和目标组织 agent 工作
+
+Thariq Shihipar 将实施中的不确定性分为已知的已知、已知的未知、未说出的已知和未知的未知。实施前可让 agent 查盲点、做小原型、就影响架构的歧义提问，再用代码或其他具体参考审阅计划；实施中记录偏离，完成后用解释与检查帮助人理解。计划不能保证发现所有未知，模型提出的问题也要对照实际系统核验。
+
+同一作者建议随模型和任务调整上下文：减少重复、冲突和过度具体的规则，保留项目特有陷阱及关键约束，将详细技能和工具说明按需加载。Anthropic 报告对特定新模型删除 Claude Code 系统提示的 80% 以上且编码评测无可测损失；这个数字不是其他项目应照搬的删除比例。
+
+Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加快单项任务，还可以明确最终结果、接入原始数据和专业工具、引入跨领域方法，并用外部证据验证。应用到机器人时，例如让 agent 分析控制日志和复现仿真故障；这是对原文的工程映射，涉及真机时仍须由工程师设定安全边界和验证步骤。
+
+三篇资料的细节分别见[发现未知](../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md)、[上下文工程](../../sources/blogs/anthropic_context_engineering_2026-07-24.md)和[更有野心地使用模型](../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md)。
+
 ## 局限与风险
 
 - **误区：会用 Cursor / Claude Code = 具备软件工程基础。** 工具降低的是击键成本；取舍识别仍是人的技能。吴恩达原文把「语法记忆」标为过时，把「软件如何工作」标为拉开差距的部分。
@@ -172,8 +188,17 @@ OpenAI Core Experimentation 报告了另一类 coding-agent 工作流：GPT-6 As
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
+## Humanize 工作流入口
+
+[Humanize](../../sources/repos/humanfia-humanize.md) 提供 CLI、终端与 Web 工作流来编排 coding agent；其 README 明确提示运行时绕过审批，应先在临时仓库验证。将其用于机器人代码时，仍需由项目自己的测试与评审定义交付条件。
+
 ## 参考来源
 
+- [Humanize 仓库归档](../../sources/repos/humanfia-humanize.md)
+
+- [Thariq Shihipar，Finding your unknowns（本站归档）](../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md)
+- [Thariq Shihipar，The new rules of context engineering（本站归档）](../../sources/blogs/anthropic_context_engineering_2026-07-24.md)
+- [Felix Rieseberg，How to be more ambitious（本站归档）](../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md)
 - [Andrew Ng，AI Engineering Skills Map: Software engineering fundamentals（本站归档）](../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md)
 - [Anthropic，Redesigning source control at Anthropic（本站归档）](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)
 - [Anthropic，How the Claude Code team does code review（本站归档）](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)

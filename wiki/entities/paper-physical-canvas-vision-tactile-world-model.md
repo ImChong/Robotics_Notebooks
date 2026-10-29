@@ -5,7 +5,7 @@ tags:
   - world-action-model
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.28613"
 project_id: physical-canvas-vision-tactile-world-model
 project: https://zebinx.github.io/PhysCanvas_HomePage/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/physical-canvas-vision-tactile-world-model_arxiv_2610_28613.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "Physical Canvas：面向机器人策略评估与学习的视觉触觉世界模型（arXiv:2610.28613）：Physical Canvas 将视觉与触觉共同用于世界建模，研究通过多模态物理预测支持机器人策略评估和策略学习。"
 ---
 

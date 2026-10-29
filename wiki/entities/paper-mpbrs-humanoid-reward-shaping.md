@@ -2,16 +2,18 @@
 type: entity
 tags: [paper, humanoid, locomotion, reinforcement-learning, reward-shaping, sim2sim]
 status: draft
-updated: 2026-10-24
+updated: 2026-10-29
 project_id: mpbrs-unified-humanoid-reward-configuration
 arxiv: "2610.30334"
 related:
   - ../methods/reinforcement-learning.md
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/mpbrs_arxiv_2610_30334.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "MPBRS evaluates one potential-based reward configuration across nine humanoid robots, requiring robot-specific metadata but no per-robot reward redesign."
 ---
 

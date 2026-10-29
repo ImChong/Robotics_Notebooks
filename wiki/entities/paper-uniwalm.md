@@ -7,7 +7,7 @@ tags:
   - language-memory
   - flow-matching
 status: complete
-updated: 2026-10-23
+updated: 2026-10-29
 project_id: uniwalm
 arxiv: "2610.28626"
 related:
@@ -15,9 +15,11 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../overview/hub-embodied-foundation-model.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/uniwalm_arxiv_2610_28626.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "UniWALM（2026）：在同一 mixture-of-transformers 骨干中联合生成视频、动作与语言，生成的语言作为记忆回馈，并以 Flow Matching with Correction 提升扰动恢复。"
 ---
 

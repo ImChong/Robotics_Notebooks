@@ -2,18 +2,20 @@
 type: entity
 tags: [paper, humanoid, VLA, object-memory, loco-manipulation, keyframe-memory, mbzuai]
 status: draft
-updated: 2026-10-25
+updated: 2026-10-29
 project_id: wholebodymem-prehistory-memory-humanoid-loco-manipulation
 arxiv: "2610.31166"
 project: https://memory-before-goal.github.io/
 related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/wholebodymem_arxiv_2610_31166.md
   - ../../sources/sites/wholebodymem.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "WholeBodyMem equips humanoid VLA policies with object-guided keyframe memory of pre-goal events for dynamic loco-manipulation."
 ---
 

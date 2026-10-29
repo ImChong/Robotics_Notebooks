@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, dexterous-manipulation, egocentric-video, hand-reconstruction, video-diffusion]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-27
 project_id: p3-wam
 arxiv: "2610.22363"
 related:
@@ -12,6 +12,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/p3_wam_arxiv_2610_22363.md
+  - ../../sources/sites/p3-wam-project-page.md
   - ../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md
 summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世界动作模型，用同一套预训练视频 DiT 参数完成 3D 手部感知、动作条件视频预测与目标导向规划。"
 ---
@@ -37,9 +38,9 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 | 项目 | 内容 |
 |------|------|
 | arXiv | [2610.22363](https://arxiv.org/abs/2610.22363) |
-| 作者 | Zirui Wu, Chen Guo, Tianjian Jiang, Zeren Jiang, Zeming Li, Lingchen Yang, Longteng Duan, Ying Xue（arXiv 作者列表） |
+| 作者 | Zirui Wu, Chen Guo, Tianjian Jiang, Zeren Jiang, Zeming Li, Lingchen Yang, Longteng Duan, Ying Xue, Handi Yin, Shenyuan Gao, Martin R. Oswald, Jun Zhang, Ping Tan, Jie Song |
 | 机构 | 未核实（公众号标注"待核实"） |
-| 开源状态 | **未核查代码**（摘要页未列代码链接） |
+| 开源状态 | **代码待发布**（项目页标注 “Code forthcoming”；未列公开代码仓或数据下载） |
 
 ## 核心原理
 
@@ -50,7 +51,8 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 
 ## 工程实践
 
-- 未发现官方代码入口；源码运行时序图：**不适用**。
+- 官方项目页展示生成的人手轨迹经重定向后用于机器人执行，并说明演示是开环执行，运行时不使用新观测纠正轨迹。
+- **源码运行时序图：不适用**（官方项目页标注代码待发布，未提供可运行仓库）。
 
 ## 评测与结果
 
@@ -96,6 +98,7 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 ## 参考来源
 
 - [论文归档](../../sources/papers/p3_wam_arxiv_2610_22363.md)
+- [官方项目页归档](../../sources/sites/p3-wam-project-page.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
 
 ## 推荐继续阅读

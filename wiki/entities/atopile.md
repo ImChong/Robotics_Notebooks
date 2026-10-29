@@ -68,6 +68,7 @@ atopile 的代码化描述和构建检查不能单独证明电路安全、可制
 - [HeyPCB（AI PCB 设计）](./heypcb.md) — 自然语言辅助生成电路设计的另一种工具路径
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — PCB 在机器人整机硬件中的位置
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 电路设计中的驱动器总线与接口背景
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — atopile 属驱动链 ① EDA 电路设计层：以代码描述电路与约束，PCB 布局仍落到 KiCad
 
 ## 参考来源
 

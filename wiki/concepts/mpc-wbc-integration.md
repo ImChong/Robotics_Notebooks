@@ -4,7 +4,7 @@ sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
 summary: "MPC-WBC integration 说明高层预测规划与低层全身控制如何分层协同完成稳定运动。"
-updated: 2026-09-15
+updated: 2026-10-28
 ---
 
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构
@@ -161,6 +161,8 @@ QP 优化层：
 
 ## 参考来源
 
+- [未知载荷下的自适应全身 MPC](../../sources/papers/adaptive_whole_body_mpc_2610_12972.md) — 质心 MPC、模糊平衡补偿与姿态规划
+
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC+WBC 两层架构代表作
 - [MIT Mini Cheetah 平台页](../entities/mit-mini-cheetah.md) — 官方 `Cheetah-Software` 与开源边界
 - Bellicoso et al., *Advances in Real-world Applications for Legged Systems* (2018) — ANYmal MPC-WBC 实践
@@ -168,6 +170,8 @@ QP 优化层：
 - [MIT Mini Cheetah](../entities/mit-mini-cheetah.md) — 平台与论文生态
 
 ## 关联页面
+
+- [未知载荷下的自适应全身 MPC](../entities/paper-adaptive-whole-body-mpc-payload.md) — 搬运中的载荷失配补偿
 
 - [具身三层控制架构](./embodied-three-layer-control-architecture.md) — MPC+WBC 所在「小脑层」与大脑/反射边界
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — MPC 层

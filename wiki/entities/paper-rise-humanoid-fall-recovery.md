@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, fall-recovery, perception, motion-steering, unitree-g1]
 status: draft
-updated: 2026-10-23
+updated: 2026-10-29
 project_id: rise-humanoid-fall-recovery
 arxiv: "2610.30061"
 project: https://osheraz.github.io/RISE/
@@ -11,10 +11,12 @@ related:
   - ./paper-host-humanoid-standingup.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./unitree-g1.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/rise_fall_recovery_arxiv_2610_30061.md
   - ../../sources/sites/osheraz-rise.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "RISE uses visual prediction of future body states and test-time task costs to steer how a fallen Unitree G1 recovers, without retraining for each recovery objective."
 ---
 

@@ -6,8 +6,8 @@
 - **项目页：** <https://iamhardworking.github.io/I-BFM/>
 - **配套论文：** [arXiv:2610.06129](https://arxiv.org/abs/2610.06129)
 - **作者与机构：** 页面署名与论文一致；Tongji / Tsinghua / Zhejiang / RoboParty Lab / HIT / ShanghaiTech
-- **核查日期：** 2026-10-06
-- **代码状态：** 页面原文标注 “Code · Coming soon”
+- **核查日期：** 2026-10-06（代码仓库复核 2026-10-27）
+- **代码状态：** 2026-10-06 页面原文标注 “Code · Coming soon”；2026-10-27 复核：官方仓库 <https://github.com/Roboparty/I-BFM-Code> 已公开训练源码、166.560M 步 checkpoint（Git LFS）与 Carry/Push/Kick 交互脚本，replay buffer 见 Hugging Face `HanSj77/I-BFM-166560M-replay-buffer`
 
 ## 页面可见内容
 
@@ -17,7 +17,7 @@
 - **结果卡片：** 三个条件（无扰动、物体受扰、机器人受扰）各按 300 episodes 展示计数。
 - 网站显示：Nominal Carry 94.33% (283/300)、Push 90.00% (270/300)、Kick 81.67% (245/300)；Box disturbance 分别 91.00%、85.33%、79.67%；Robot disturbance 分别 89.33%、84.67%、86.67%。
 - 这些站点结果与 arXiv Table I 的 Push/Kick 结果及多个扰动值不同。网页未提供版本/评测协议说明；应并列保留来源，勿推测哪一组是更新版或用网页值覆盖论文表格。
-- 页面中未发现 GitHub 代码仓库、权重或数据集入口，且状态明确为即将开放代码。
+- 2026-10-06 时页面中未发现 GitHub 代码仓库、权重或数据集入口；此后官方 I-BFM-Code 仓库上线（RP1 总览 README 亦链接该仓库），页面状态未再核对。
 
 **对 wiki 的映射**
 

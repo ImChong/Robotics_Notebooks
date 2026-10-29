@@ -386,6 +386,8 @@
       white-space: nowrap;
     }
     .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    /* 工具栏图标用内联 SVG：U+26F6 等符号字符在缺字形的系统（如 Linux Chrome）上会显示成豆腐块 */
+    .chip-icon { width: 1em; height: 1em; vertical-align: -0.15em; }
     .chip.is-running {
       background: rgba(91,156,246,0.16);
       border-color: rgba(91,156,246,0.55);
@@ -2040,7 +2042,7 @@
       <div class="toolbar-sep"></div>
       <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span>⚙</span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
-      <button id="fit-to-screen" class="chip" title="适配屏幕"><span>⛶</span><span> 适配屏幕</span></button>
+      <button id="fit-to-screen" class="chip" title="适配屏幕"><span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>

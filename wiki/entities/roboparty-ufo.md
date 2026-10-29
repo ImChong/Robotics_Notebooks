@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, unsupervised-rl, bfm, open-source, roboparty, teleoperation, mjlab]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-27
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -88,11 +88,22 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 
 **仓库：** [github.com/Roboparty/UFO](https://github.com/Roboparty/UFO)
 
+### 仓库现状（核查于 2026-10-27，依据 `Roboparty/UFO` README 与 `docs/`）
+
+- **布局：** 最近提交 2026-10-21；包名由旧 `humanoidverse` 改为 `ufo/`（`agents`、`envs`、`motion`、`inference`、`training`），另有 `configs/robots`、`docs/{ARCHITECTURE,ROBOT_ADAPTATION,TRAIN_INFERENCE}.md`、`tests/`；README 明确旧 `humanoidverse` 版本不适用本指南。
+- **机器人与算法：** 支持 Unitree G1 与 RoboParty RP1.3（RP1 为 24 个受控关节），算法为 FB-CPR-Aux（FB）与 TeCH；G1 数据含 40 段动作，RP1 含 55 段 50 Hz 动作（1,166 个训练 clip），两者数据不可互用。**README 声明 RP1 TeCH 策略未在真机测试。**
+- **入口：** `bash scripts/download_data.sh g1_lafan|rp1_lafan`（SHA256 校验）→ `./run_train.sh --robot {g1,rp1} --agent {fb,tech} --gpu-ids all` → `./run_inference.sh {tracking,reward,goal} --model-folder …`。reward 推断仅 FB、需保存的 rank-0 replay，RP1 目前仅支持根/行走类任务。
+- **公开资源：** Hugging Face 上有 G1/RP1 训练数据（`xuewang/UFO-MotionData`）与真机验证过的 G1 FB 策略（`xuewang/ufo-g1-policy`，约 192M 步 checkpoint、ONNX 与跟踪/目标/前行 z；不含优化器与 replay）。
+- **训练性能（README 自报，2026-10-15）：** 8×NVIDIA H20、BF16、1024 宽网络共享 critic，192M 步约 4 h 45 min–4 h 55 min，全局约 12.2–12.5k FPS；README 注明各 G1 行跨越代码改动，不是受控的 DR/奖励消融。这与上文公众号「8×4090 <12 h」属于不同硬件口径，不可互相换算（推测不同卡型吞吐差异较大）。
+- **部署：** G1 真机部署在仓库 `deploy` 分支；RP1 的 UFO 部署指向 [roboparty_deploy](https://github.com/Roboparty/roboparty_deploy)。
+- **许可：** CC BY-NC 4.0（仅限非商用研究）；P-BFM 代码在此基础上构建，见 [P-BFM](./paper-p-bfm.md)。
+
 ## 局限与风险
 
 - **TeCH 发布形态：** 方法细节见 [Lab 成果页](https://lab.roboparty.com/outputs/tech) 与 [paper-tech-humanoid-control](./paper-tech-humanoid-control.md)；独立 arXiv 须以官方后续发布为准。
 - **性能对比口径：** 「优于 BFM-Zero 原版」须明确任务、种子与硬件；避免跨仓库直接比 wall-clock。
 - **无监督边界：** 技能发现质量依赖数据分布与表征设计；不等同于有参考的跟踪精度。
+- **许可与硬件口径：** CC BY-NC 4.0 不允许商用；文内 4090 / H200 训练时长为宣传口径，仓库 README 当前给出的实测为 H20 表（见上）。
 - **命名冲突：** 检索时注意与无关「UFO」项目区分，使用 `Roboparty/UFO` 全名。
 
 ## 关联页面
@@ -102,6 +113,7 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - [mjlab](./mjlab.md) — 训练 backend
 - [BFM-Zero（论文实体）](./paper-bfm-zero.md)
 - [TeCH（论文实体）](./paper-tech-humanoid-control.md)
+- [P-BFM](./paper-p-bfm.md) — 以 UFO 代码为基础加入深度感知的下游工作
 - [行为基础模型](../concepts/behavior-foundation-model.md)
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
 - [Teleoperation](../tasks/teleoperation.md)
@@ -116,6 +128,7 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
+- [Roboparty/UFO 官方 README 与 docs（2026-10-27 核查）](https://github.com/Roboparty/UFO)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)

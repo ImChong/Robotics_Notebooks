@@ -173,6 +173,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Unlimited OCR Works 2](./unlimited-ocr-2.md)（长文档跨页解析）
+
 - [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md)
 - [VLA](../methods/vla.md)（VLM 上游能力谱系）

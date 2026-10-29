@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-27
 related:
   - ./egalahad-sim2real.md
   - ./party-os.md
@@ -89,12 +89,21 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 
 **仓库：** [github.com/Roboparty/MimicLite](https://github.com/Roboparty/MimicLite)
 
+### 仓库现状（核查于 2026-10-27，依据 `Roboparty/MimicLite` README / README_cn.md）
+
+- **性质：** `Roboparty/MimicLite` 是**项目落地页**（最近提交 2026-10-15「Point MimicLite submodule to latest main」），含技术报告 `mimic-lite.pdf`；训练与部署代码在 `.gitmodules` 指向的外部子模块中，浅克隆里这些目录为空。许可 GPL-3.0-or-later，各组件仓库保留各自许可。
+- **组件分工（README 表）：** `EGalahad/mimic-lite`（训练、评测、策略导出、任务配置）；`Agent-3154/active-adaptation`（仿真后端、分布式启动器、环境）；`EGalahad/any4hdmi`（动作转换/校验/可视化/数据集工具）；`EGalahad/sim2real`（ONNX 推理、MuJoCo sim2sim、Pico 遥操、Unitree G1 部署）。本页上文的 `mjhub` 来自公众号文章，当前 README 未出现该名称（核查关键词 `mjhub` 无命中）。
+- **已发布 checkpoint：** G1（MimicLite v1.1）、H2、A3、RP1 28 DoF、RP1 24 DoF，均为 Finetune 阶段的 ROA student 策略，托管于 Google Drive；训练为 Train/Adapt/Finetune 4000/1000/2000 次更新，G1 v1.1 与 RP1 用 8×8192 环境。所以上文“RP1 发布后可快速部署”现已有 RP1 checkpoint 可查，但 RP1 真机验证状态以子仓库 docs 为准（本页未核）。
+- **数据：** 训练数据集在 Hugging Face `any4hdmi` collection；BONES-SEED 因许可不转存，仅提供转换脚本。
+- **评测口径：** README 的对比图仅为 **G1**；动作前瞻延迟表（50 Hz）：MimicLite-PPO/ROA 0.08 s，SONIC 0.90 s，BFM-Zero 0.12 s，TWIST2 0.00 s。
+
 ## 局限与风险
 
 - **监督跟踪边界：** 强依赖参考 motion 质量与分布；与 [UFO](./roboparty-ufo.md) 无监督线互补而非替代。
 - **跨 codebase 列表演进：** 接入项目以仓库 README 为准，文内列表可能滞后。
 - **性能声明：** 1/875、3h 等数字为公众号自述，跨硬件与任务须独立 benchmark。
-- **RP1 依赖：** 部分真机叙事绑定 RoboParty RP1 发布节奏。
+- **RP1 依赖：** 部分真机叙事绑定 RoboParty RP1 发布节奏；RP1 总览 README 将 MimicLite 列为 RP1 demo 项目之一。
+- **落地页非代码库：** 复现需分别拉取上述子仓库，版本以落地页固定的子模块提交为准。
 
 ## 关联页面
 
@@ -117,6 +126,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [mimiclite.md](../../sources/repos/mimiclite.md)
+- [Roboparty/MimicLite README（2026-10-27 核查）](https://github.com/Roboparty/MimicLite)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
 

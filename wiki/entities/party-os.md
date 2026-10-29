@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, infrastructure, roboparty, motion-tracking, reinforcement-learning, motion-retargeting]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-27
 related:
   - ./roboparty.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -55,6 +55,23 @@ Party OS 首批开源子模块可理解为「三段流水线 + 一个聚合入�
 | [UFO](./roboparty-ufo.md) | 无监督 RL 控制全栈框架 | MJLab backend；BFM-Zero / [TeCH](./paper-tech-humanoid-control.md)；真机遥操 |
 | **Party_OS 仓库** | 聚合入口与路线图 | [GitHub](https://github.com/Roboparty/Party_OS) |
 
+### 2026-10-21 README 子项目表（核查于 2026-10-27）
+
+`Roboparty/Party_OS` 最近提交 2026-10-21「Add P-BFM to Party OS roadmap」，README 按 Roadmap v3 把子项目从底层到上层列为下表（数据生成仍标「即将开源」）：
+
+| 层级 | 模块 | 仓库 / 本库节点 |
+|------|------|------|
+| Know-how 文档 | 《人形机器人运动控制 Know-how》 | 飞书文档，见[来源归档](../../sources/sites/roboparty_motion_control_knowhow.md) |
+| 底层运控 Infra | 数据生成（generate） | 即将开源，无仓库 |
+| 底层运控 Infra | 重定向（hhtools） | [human-humanoid-tools](./human-humanoid-tools.md) |
+| 底层运控 Infra | 监督学习（MimicLite） | [MimicLite](./mimiclite.md) |
+| 底层运控 Infra | 无监督学习（UFO） | [UFO](./roboparty-ufo.md) |
+| 全身操作 Infra | JEPA World Model | [INTACT](./paper-intact.md)（`Roboparty/INTACT-JEPA`） |
+| 交互感知 Infra | 交互基础模型（I-BFM） | [I-BFM](./paper-i-bfm.md)（`Roboparty/I-BFM-Code`） |
+| 交互感知 Infra | 感知行为基础模型（P-BFM） | [P-BFM](./paper-p-bfm.md)（`Roboparty/P-BFM`） |
+
+README 许可为 GPL-3.0，并声明各子项目保留各自许可（UFO、P-BFM、I-BFM 代码为 CC BY-NC 4.0，见各节点页）。
+
 ```mermaid
 flowchart TB
   PO["Party OS 聚合入口"]
@@ -64,6 +81,8 @@ flowchart TB
   PO --> HHT & ML & UFO
   HHT --> ML & UFO
 ```
+
+上图为首批三段工具链；其后新增的 INTACT / I-BFM / P-BFM 见上表。
 
 ## Lab 四方向路线图（规划）
 
@@ -87,7 +106,7 @@ flowchart TB
 
 - **快速演进：** 2026-07 首批发布，API 与文档可能频繁变更。
 - **性能数字：** 文内 GPU-hours、训练时长为自述，须以仓库复现为准。
-- **路线图 ≠ 已交付：** 2026-10-06 README 中数据生成仍待发布，VLA / Agentic Humanoid 是规划；世界模型已有 [INTACT](./paper-intact.md)入口，上游已发布实现，但 RoboParty fork 仍为研究预览，不能据此推定全身操作系统已交付。
+- **路线图 ≠ 已交付：** 2026-10-27 核查时 README 中数据生成仍待发布，VLA / Agentic Humanoid 是规划；交互感知层的 I-BFM、P-BFM 已有公开仓库；世界模型已有 [INTACT](./paper-intact.md)入口，上游已发布实现，但 RoboParty fork 仍为研究预览，不能据此推定全身操作系统已交付。
 - **知识入口：** README 直接列出[运动控制 Know-How 飞书文档](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)，本次重试已读取目录与部分正文，未确认新增章节；见[来源归档](../../sources/sites/roboparty_motion_control_knowhow.md)；完整研发文档与阅读坐标见[现有技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
 
 ## 关联页面
@@ -96,6 +115,7 @@ flowchart TB
 - [MimicLite](./mimiclite.md)
 - [UFO（Roboparty）](./roboparty-ufo.md)
 - [human-humanoid-tools](./human-humanoid-tools.md)
+- [I-BFM](./paper-i-bfm.md) / [P-BFM](./paper-p-bfm.md)
 - [Roboto Origin](./roboto-origin.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 
@@ -106,6 +126,7 @@ flowchart TB
 - [party_os.md](../../sources/repos/party_os.md)
 - [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
 - [roboparty_com.md](../../sources/sites/roboparty_com.md)
+- [Roboparty/Party_OS README（2026-10-27 核查）](https://github.com/Roboparty/Party_OS)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 
 ## 推荐继续阅读

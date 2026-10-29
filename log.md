@@ -251,6 +251,166 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-29] ingest | shadcn-admin
+
+- 收录管理后台 UI 集合，源码公开且使用 MIT 许可；记录技术栈、使用边界与组件更新注意事项。
+- 主节点：[shadcn-admin](../wiki/entities/shadcn-admin.md)。
+
+## [2026-10-29] ingest | sources/papers/ventral_groove_fibers_aeh5116.md — 收录仿生腹沟纤维，基于摘要概述并标注全文与源码待核实
+
+## [2026-10-29] ingest | InstantTrack
+
+- 收录 G1 仿真动作跟踪项目，记录训练流程、实验口径、接触优化及开源边界。
+- 项目页未能直接访问；依据源码仓库 README 核查。
+
+## [2026-10-29] ingest | sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md — 具身智能小站 10-29 期 58 篇（新建 35 节点 / 复用 23）+ 阅读坐标页
+
+## [2026-10-29] ingest | senlanke《借着supermimic复习：Model base，可微世界模型，BPTT》公众号：点名项目逐一映射唯一节点，新建 TD3 / MBPO / BPTT，其余复用并补反链
+
+## [2026-10-29] ingest | sources/papers/phase_conditioned_loco_manipulation_arxiv_2610_36270.md — 收录多阶段 PPO、真机部署与代码状态待核实
+
+## [2026-10-29] ingest | PhysWord 项目页
+
+- 核对项目主页，补充机构、方法与评测信息，复用已有论文节点。
+- 项目页标注代码即将发布，未列数据或权重下载链接。
+
+## [2026-10-29] ingest | Pico.Lab | 嵌入式调试工具
+
+- 收录官方仓库及 Hackaday 项目页，归纳波形、总线和电源功能。
+- 固件、PCB 与 CAD 已公开；明确普通 Pico 与专用板的功能边界。
+
+## [2026-10-29] ingest | sources/papers/ssio_arxiv_2610_25988.md — 收录 SSIO 自监督惯性里程计；代码、权重与 G1 数据公开，复用已有 cuArms 与 DeFM 节点
+
+## [2026-10-28] lint | 全量 wiki lint 修复：7+3 陈旧页复核并回链新来源，11 篇 paper 补「与其他工作对比」，11 篇评测基准页回链评测基准选型闭环，PartLLM 回链感知栈闭环；问题与信息型预警清零
+
+## [2026-10-28] ingest | 未知载荷下的自适应全身 MPC
+
+- 收录 arXiv:2610.12972，关联质心动力学与 MPC/WBC 集成。
+- 依据摘要整理；全文与官方代码开放状态待核实。
+
+## [2026-10-28] ingest | sources/papers/omni_woodpecker_arxiv_2610_27103.md — 收录音视频幻觉纠正方法及官方开源推理入口
+
+## [2026-10-28] ingest | 具身智能小站 2026-10-28 盘点 59 篇（深读免渲染事件仿真；59/59 独立节点：新建 55 / 复用 4）+ 技术地图
+
+## [2026-10-28] ingest | ThinkWorld 世界想象与动作推理
+
+- 收录论文与技能组合实验，关联 VLA 和世界模型知识。
+- 项目页访问失败，代码、权重与数据开放状态待核实。
+
+## [2026-10-28] ingest | 复核 FluxVLA 论文 v2、公开源码及 Hugging Face 模型卡，记录基准口径差异并复用既有实体
+
+## [2026-10-28] ingest | sources/sites/worldarena2-challenge-iros2026.md — 补充赛事三赛道与指标修正；PACE 和 ForeTac 已有实体页
+
+## [2026-10-28] ingest | 收录 Humanize 工作流及四项算子生成 benchmark，补充评测基线与硬件界限的区别
+
+## [2026-10-28] ingest | sources/papers/robosimstudio_arxiv_2610_18835.md — 深读论文与源码，补充多物理、反馈闭环和擦拭示例实现；源码已公开
+
+## [2026-10-28] ingest | sources/papers/defm_arxiv_2601_18923.md — 收录深度表征与机器人实验；公开推理代码和权重，vision-demos 复用已有节点
+
+## [2026-10-28] ingest | sources/repos/genie_sim.md — 核查官方开源边界并补充双运行栈与 ROS 2 实践
+
+## [2026-10-28] ingest | sources/papers/learning_dexterous_manipulation_survey_2610_33486.md — 整理灵巧操作训练与评测综述，逐篇数据可向作者索取
+
+## [2026-10-28] ingest | Proteus 跨人形动作跟踪项目页
+
+- 归档项目页并整理共享关节布局、本体描述、跨仿真器评测及未见本体泛化边界。
+- 论文和代码标注即将发布；网页提供 ONNX 仿真演示，真机表现待验证。
+
+## [2026-10-28] ingest | sources/repos/jeremyipark-vision-demos.md — 收录运动视频分析示例，注明开源代码与外部模型调用边界
+
+## [2026-10-28] ingest | sources/papers/self_improving_agents_embodied_lifelong_learning.md — 对比自我改进机制与具身终身学习，复用 RISE、SERL、Arcadia 节点并记录开放边界
+
+## [2026-10-28] structural | roadmap/depth-cross-embodiment.md — 联网核对一手论文，新增「谱系速览」表（Devin 2017 → NerveNet → RoboNet → SMP → MetaMorph → OXE → Polybot → Mirage → Octo → CrossFormer → HPT → URMA → RoVi-Aug → LAPA → Embodiment Scaling Laws）并在各 Stage 补一手出处
+
+## [2026-10-28] lint | 修复 2 个陈旧页面：contact-rich-manipulation.md 补入 GENESIS-Handover（arXiv:2610.08003）；paper-harness-vla.md 同步 RoboFoundry 2026-10-28 开源状态复核
+
+## [2026-10-28] structural | roadmap/depth-cross-embodiment.md — 新增第 28 条纵深路线「跨本体迁移（Cross-Embodiment）」：本体差异画像 → 统一接口 → 形态感知架构 → 多本体混训 → 人→机 → 新本体适配；同步首页按钮、路线总览、README/index、depth-filters 与 topics 种子
+
+## [2026-10-28] ingest | sources/papers/grifips_science_advances_2026.md — 收录梯度夹层触觉传感器并补充触觉感知；代码与数据开放状态待核实
+
+## [2026-10-28] ingest | 收录三篇 Claude 使用与上下文工程文章，补充 agent 工作中的未知、目标与验证边界
+
+## [2026-10-28] ingest | sources/papers/world_t3_arxiv_2610_17434.md — 收录位姿索引的测试时记忆世界模型；项目页暂未列代码或数据链接
+
+## [2026-10-28] ingest | 补充人形 VLA、潜在动作与技能工程四项研究；复用既有 Machenta 和 MimicAll 页面，记录官方仓库及项目页核查状态
+
+## [2026-10-28] ingest | sources/papers/partllm.md — 收录三维部件分割与官方推理、训练入口；项目页源码列有代码和权重链接
+
+## [2026-10-28] ingest | 收录 FlowHMR、RLMuscle、AutoPhyX 并复核 RoboFoundry 官方代码状态
+
+## [2026-10-28] ingest | Modly 本地三维网格生成
+
+- 应用代码以 MIT 许可开放；模型扩展与权重分别核查。记录机器人仿真资产的验证边界。
+- VoiceStudio 已有实体和来源归档，本次复用已有节点。
+
+## [2026-10-28] ingest | 收录布料显式摩擦、MimicAll 与 CADonatello，注明开放状态核查边界
+
+## [2026-10-27] lint | 全量 wiki lint 清零：修复 20 条信息型预警（12 篇 paper 补「与其他工作对比」、Kine2Go/StreamEval 补评测章节、4 篇感知页回链感知栈枢纽、Gen-HumanWholeBody 按 HF 数据卡补许可证与模态、sim2sim 并入 Sim2Real 缩写速查、Default/inference 停用词）
+
+## [2026-10-27] ingest | sources/papers/reduced_3dgs.md — 补充 3DGS 内存压缩与复现边界
+
+- 在空间表征页面补充 Reduced 3DGS 的实验结果与部署边界，复用主分支已有论文、项目页和代码归档。
+- 3DGS 与 NeRF 原论文已收录，沿用现有节点。
+
+## [2026-10-27] ingest | sources/sites/machenta-instant-robot-learning.md — 收录 Machenta 单次示范即时学习
+
+- 汇总仿真训练、真实示范提示及公司自报的跨机器人和一小时测试；官方文章未列公开代码、权重或数据。
+
+## [2026-10-27] ingest | sources/repos/wise-motion.md — 收录开源动效参考技能及源码导出流程
+
+## [2026-10-27] ingest | sources/repos/deepfounder-desigma.md — 收录开源界面设计工具及 MCP 接口
+
+## [2026-10-27] ingest | sources/repos/muscle-supermimic.md — 收录肌骨世界模型跟踪项目、实验与开放边界
+
+## [2026-10-27] ingest | sources/repos/somark-oxr.md — 收录 OXR 文档解析模型，代码及权重公开，记录部署与许可边界
+
+## [2026-10-27] ingest | 复用 PLaW-VLA、V-JEPA 2、π0.5、Motus 与 LIBERO-Plus 现有节点，补充方法和评测关系
+
+## [2026-10-27] ingest | FastHarness 官方资料
+
+补充官方代码归档和项目页入口，核对开放状态并完善已有实体的机制、实验与运行时序；项目页本次不可访问，数据状态待核实。
+
+## [2026-10-27] ingest | sources/papers/wevisone_vl_arxiv_2610_31329.md — 收录统一视觉感知、缺失目标拒答及官方开放状态
+
+## [2026-10-27] ingest | sources/papers/holi-world.md 等 — 收录 Ropedia 第一视角重建与空间推理，复用 W0 和 DONIC，记录开源状态
+
+## [2026-10-27] ingest | sources/repos/unlimited-ocr-2.md — 收录百度长文档解析模型及推理入口
+
+- 官方仓库提供推理代码并链接权重；训练资料开放范围与权重许可待核实。
+
+## [2026-10-27] ingest | SimpleTouch
+
+- 收录论文、项目页与公开代码，归纳触觉专家与评测；项目页和权重页面访问失败，开放状态待核实。
+
+## [2026-10-27] ingest | GENESIS-Handover | 生成式任务导向人机递物
+
+- 意图：归档论文并提炼任务导向递物的候选生成、手型选择与真机评测。
+- 开源结论：arXiv 页面未列项目页或官方代码仓；论文附录所含提示词代码不构成完整可运行实现。
+- 关键页：[GENESIS-Handover 实体](../../wiki/entities/paper-genesis-handover.md)、[操作任务](../../wiki/tasks/manipulation.md)。
+- 证据：arXiv HTML 全文（v1），尤其方法、评测与失败分析。
+
+## [2026-10-27] ingest | sources/blogs/wechat_githubstore_18_open_source_robot_projects.md — GitHubStore 18 个开源机器人项目：12 个新独立实体节点 + 6 个既有节点复用，索引 overview；fetch_wechat_article.py 抓取成功，未核对官方仓库
+
+## [2026-10-27] ingest | Roboparty/RP1 总览仓库全部子项目补齐独立详情节点：新增 rp1-hardware、romomo、rp-hand、rp1-test、roboparty-joystick、rp1-description、rp1-firmware、robolab 的 AMP/BeyondMimic/Parkour 三模块与 VIStream；roboparty_train/deploy 与旧 atom01 页为同一仓库改名（HEAD 相同），合并为 roboparty-train/roboparty-deploy 并登记别名；核验并更新 P-BFM（已发布训练/推理代码）、I-BFM（已发布 ibfm 代码）、UFO、MimicLite、Party OS 开源状态。总览仓库仅 README，无工程代码；rp1 总览页『RP1 部署 Coming soon』『训练仅 RPO』已按仓库现状修正。
+
+## [2026-10-27] ingest | awesome-supermimic 社区索引
+
+- 收录 DiaoOrg/awesome-supermimic，记录其作为社区导航清单的定位及 CC0 策展许可。
+- 更新 SuperMimic 实体页，明确资源索引不代表官方代码，也不独立验证各复现结果。
+
+## [2026-10-27] ingest | 收录 Replica Skill 并整理应用重建 Agent Skills 的流程与使用边界
+
+- 核验官方 GitHub README 与 MIT 许可，记录 11 阶段技能工作流及 Python 工具。
+- Wiki 说明其可用于机器人周边软件原型的工作流参考，并明确不提供机器人控制实现。
+
+## [2026-10-27] ingest | RoboParty RP1 — 官方开源范围与子仓库核查
+
+新增 RP1 官方产品/文档和仓库归档及实体页，记录硬件、模型、固件、ROS 2 部署与训练入口；对照 RPO 既有条目，注明当前训练/部署文档的范围差异及分仓许可，避免把厂商规格写成独立实测。
+
+## [2026-10-26] lint | 全量 lint 清零：8 个陈旧页补回链、lcp.md 修正公式与论文出处、7 条信息型预警（Pace 停用词 / 3 篇 paper 补对比 / 2 页回链知识链枢纽）
+
+## [2026-10-27] ingest | Every Joule — 收录 Claude + Three.js 十课互动物理教学项目，并注明未发现官方源码仓库
+
 ## [2026-10-26] ingest | AgenticRoboRL — 归档论文、项目页与已开源仓库，并建立统一 planner 后训练实体页
 
 - 项目页与仓库核实：代码 Apache-2.0，Qwen3.5-9B checkpoint 已发布；teacher SFT 轨迹未发布。

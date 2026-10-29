@@ -3,7 +3,7 @@ type: entity
 project_id: ropedia-w0
 tags: [paper, world-model, loco-manipulation, cross-embodiment]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-27
 arxiv: "2610.26855"
 project: "https://ropedia.github.io/ropedia-w0/"
 code: "https://github.com/Ropedia/ropedia-w0"
@@ -92,6 +92,10 @@ sequenceDiagram
 - 跨本体结果不保证零样本真机控制安全；仍需单独验证闭环执行。
 
 ## 关联页面
+
+- [Holi-World](./paper-holi-world.md) — 用第一视角经验构建时空世界记录。
+- [EgoXperience](./paper-egoxperience.md) — 在统一世界坐标系中重建手、物体与场景。
+- [S-Agent 2.0](./paper-s-agent-2.md) — 使用三维感知工具进行空间推理。
 
 - [UnifoLM 世界模型动作](../entities/unifolm-world-model-action.md) — 世界模型与动作接口
 - [生成式世界模型](../methods/generative-world-models.md) — 视频生成式预测方法

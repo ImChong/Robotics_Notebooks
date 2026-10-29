@@ -2,7 +2,7 @@
 type: method
 tags: [control, manipulation, contact-rich, tactile-sensing, impedance-control, force-control, dexterity]
 status: complete
-updated: 2026-04-29
+updated: 2026-10-27
 related:
   - ../concepts/impedance-control.md
   - ../concepts/force-control-basics.md
@@ -34,10 +34,11 @@ summary: "基于触觉的阻抗控制（Tactile Impedance Control）把指尖触
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| F/T | Force / Torque (sensor) | 力 / 力矩传感器，正文中用于高频法向力与切向力反馈 |
+| CoP | Center of Pressure | 压力中心，其位移速度 $\dot{c}$ 用于滑移检测 |
+| QP | Quadratic Programming | 把刚度调度写成受约束的二次规划子问题 |
+| RL / IL | Reinforcement / Imitation Learning | 学习式变阻抗的两种训练范式 |
+| CWC | Contact Wrench Cone | 接触力旋量锥，多指协同时的约束空间 |
 
 ## 为什么仅靠固定参数阻抗不够
 

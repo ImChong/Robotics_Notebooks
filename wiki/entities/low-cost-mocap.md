@@ -69,6 +69,8 @@ PS3 Eye 移除红外截止滤镜并配合红外滤光片，观测安装在无人
 
 ## 关联页面
 
+- [JE Motion Lab](./je-motion-lab.md) — 浏览器中的动捕记录查看与编辑工具。
+
 - [状态估计](../concepts/state-estimation.md)
 - [传感器融合](../concepts/sensor-fusion.md)
 - [动捕到机器人动作重定向](./mocap-retarget.md)

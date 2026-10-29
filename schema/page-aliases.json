@@ -331,6 +331,8 @@
     "entity-paper-rcl-ref-502ccb43b26687d765d7-0-a-vision-language-action-flow-model-for-genera": "entity-paper-pi0",
     "entity-paper-rcl-ref-a351afa5504418f3e26f-0-5-a-vision-language-action-model-with-open-wor": "entity-paper-pi05-open-world-vla",
     "entity-project-cari4d": "entity-paper-cari4d",
-    "entity-paper-trace-cross-embodiment-bfm": "entity-paper-trace-humanoid-transfer"
+    "entity-paper-trace-cross-embodiment-bfm": "entity-paper-trace-humanoid-transfer",
+    "entity-atom01-train": "entity-roboparty-train",
+    "entity-atom01-deploy": "entity-roboparty-deploy"
   }
 }

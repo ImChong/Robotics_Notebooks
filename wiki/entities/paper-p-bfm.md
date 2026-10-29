@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, behavioral-foundation-model, perceptive-control, unsupervised-rl, forward-backward, terrain-adaptation, roboparty]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-27
 arxiv: "2610.15833"
 venue: "2026 · arXiv preprint"
 project_id: p-bfm
@@ -18,7 +18,7 @@ related:
 sources:
   - ../../sources/papers/p_bfm_arxiv_2610_15833.md
   - ../../sources/sites/p-bfm-project-page.md
-summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度感知策略在线学习地形适配；ERI 将目标朝向和水平速度作为全局根运动指令。一个冻结策略零样本迁移至 Unitree G1，覆盖跟踪、目标到达、奖励推断、遥操作与扰动恢复；官方模型代码尚未上传。"
+summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度感知策略在线学习地形适配；ERI 将目标朝向和水平速度作为全局根运动指令。一个冻结策略零样本迁移至 Unitree G1，覆盖跟踪、目标到达、奖励推断、遥操作与扰动恢复；官方 main 分支已发布 G1/RP1 训练、推理与 ONNX 导出代码（预训练权重与 RP1 动作数据未随仓库提供）。"
 ---
 
 # P-BFM：感知行为基础模型的人形控制
@@ -62,9 +62,37 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 
 论文在见过的 LaFAN 动作及 994 段未见 SOMA 动作上比较 P-BFM、UFO、PMT。P-BFM 在表格中呈现较低的关节位置误差、足滑和较高的扰动恢复率；但 seen-motion 对比中 PMT 只有其唯一公开参考轨迹，而 P-BFM/UFO 使用 40 段 LaFAN，不能把该组直接当作严格同覆盖对照。真实机器人演示涵盖遥操作、动作跟踪、目标姿态到达、奖励推断以及推搡/踢击后的地形感知恢复。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant D as scripts/download_data.sh
+    participant T as scripts/train_legacy_scratch.py
+    participant W as pbfm/training/workspace
+    participant E as pbfm/envs + terrains + perception
+    participant A as pbfm/agents (FB / D / Q* / Actor)
+    participant I as pbfm/inference/{tracking,goal,reward}
+    participant X as scripts/export_*_onnx.py
+    D->>T: G1 LaFAN PKL（RP1 动作 PKL 需自备）
+    T->>W: robot YAML + 地形课程 + torchrun 8 卡
+    loop 192,020,480 全局步
+        W->>E: MJLab 并行环境 rollout（深度栈、DR）
+        E-->>W: obs / reward / reset
+        W->>A: replay 采样，更新 FB、判别器、Q 与 Actor
+    end
+    W-->>I: run 目录（config.json + checkpoint/）
+    I->>I: tracking / goal / reward 三类 prompt 推断
+    I->>X: 导出 policy.onnx 与 backward_encoder.onnx
+```
+
+关键复现路径（`Roboparty/P-BFM` main 分支 README、`docs/ARCHITECTURE.md`）：先 `uv sync --extra test`，用 `scripts/train_legacy_scratch.py` 配合 `--robot-config pbfm/configs/robots/{g1_29dof,rp1_24dof}.yaml` 训练；已保存的 run 配置携带机器人标定进入三类推理与 ONNX 导出。
+
 ## 复现与边界
 
-- 官方 GitHub 仓库存在，但 README 截至 2026-10-15 明确说明 main 分支的项目代码尚未上传；pages 分支用于网站、论文与演示资产。论文与网页可用于方法核对，不能据此声称已有可复现训练代码。
+- **开源状态（核查于 2026-10-27）：** `Roboparty/P-BFM` main 分支已有 `pbfm/`（算法、训练、仿真、机器人配置与推理）、`scripts/`（训练与 ONNX 导出）、`tests/`、`docs/`（TRAINING / INFERENCE / ARCHITECTURE）；最近提交为 2026-10-22「Support G1 and RP1 training, inference and calibrated export」。此前（2026-10-15）README 称代码尚未上传，该状态已过期。许可沿用 UFO 的 CC BY-NC 4.0（非商用）。
+- **未随仓库提供：** G1 与 RP1 的预训练权重（README 称“Motion data and weights are external”）；RP1 重定向动作 PKL 需自备，`download_data.sh` 只下载 G1 LaFAN。
+- **RP1 验证范围：** README 自述 RP1 仅通过 GPU rollout/reset、八卡短训练、三类推理入口与 ONNX 一致性检查；长程训练与真机验证待完成。G1/RP1 权重不可互换，且不能直接加载 `roboparty_train` 的 Newton 后端权重。
 - 论文承认行为泛化仍受训练动作先验和探索地形范围限制；更广泛的动作数据与更复杂的全身接触是后续方向。
 - P-BFM 的核心不是“任何地形都复刻原动作”，而是在保持任务/动作意图的同时，允许接触、步态和姿态根据地形重组。
 
@@ -79,7 +107,7 @@ summary: "P-BFM 以 FB 表征学习跨地形共享的行为意图，并用深度
 
 ## 结论
 
-P-BFM 的核心贡献是将 BFM 的共享行为意图与地形感知执行解耦，并用 ERI 修补 FB 无监督学习对精确全局位移约束较弱的问题。论文给出仿真与 G1 真机上的多接口验证；但训练动作先验和地形覆盖仍限制泛化，且官方仓库尚无可运行项目代码，复现入口暂不完整。
+P-BFM 的核心贡献是将 BFM 的共享行为意图与地形感知执行解耦，并用 ERI 修补 FB 无监督学习对精确全局位移约束较弱的问题。论文给出仿真与 G1 真机上的多接口验证；但训练动作先验和地形覆盖仍限制泛化，官方仓库现已提供 G1/RP1 训练与推理代码，但无预训练权重，RP1 路径尚缺长程训练与真机验证。
 
 ## 关联页面
 
@@ -94,3 +122,4 @@ P-BFM 的核心贡献是将 BFM 的共享行为意图与地形感知执行解耦
 
 - [论文来源归档](../../sources/papers/p_bfm_arxiv_2610_15833.md)
 - [项目页与代码开放状态](../../sources/sites/p-bfm-project-page.md)
+- [Roboparty/P-BFM 官方仓库](https://github.com/Roboparty/P-BFM)（README 与 docs/，核查于 2026-10-27）
