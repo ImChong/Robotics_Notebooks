@@ -50,6 +50,19 @@ summary: "CEMIR vs. FISER（arXiv:2610.32022）：CEMIR与FISER在HandMeThat v2�
 | **要点** | CEMIR与FISER在HandMeThat v2上对比图文扩充与结构化推理；多重比较校正后未见显著差异，提示文本派生图像未必带来新的意图信息。 |
 | **文内指标** | 公众号未给具体数字，本页不引用。 |
 
+## 核心流程图
+
+以下概括本页所述的核心关系；具体实现与评测条件以原论文为准。
+
+```mermaid
+flowchart TD
+  A["HandMeThat v2"] --> B["图文扩充：CEMIR"]
+  A --> C["结构化推理：FISER"]
+  B --> D["比较结果"]
+  C --> D
+  D --> E["多重比较校正后未见显著差异"]
+```
+
 ## 源码运行时序图
 
 以下为按仓库入口（`CEMIR-Project/CEMIR`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
