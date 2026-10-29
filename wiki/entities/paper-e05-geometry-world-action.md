@@ -5,12 +5,16 @@ tags: [paper, robotics, world-model, manipulation]
 status: draft
 updated: 2026-10-29
 arxiv: "2610.36011"
+project_url: https://www.x-era.ai/e05/index.html
+code_url: https://github.com/X-EraAI/e05
 related:
   - ../concepts/world-action-models.md
   - ../tasks/manipulation.md
   - ./paper-rollback-world-model.md
 sources:
   - ../../sources/papers/e05_arxiv_2610_36011.md
+  - ../../sources/sites/e05_project.md
+  - ../../sources/repos/e05.md
 summary: "E0.5 用 3D 基础模型联合预测未来几何与动作，探索几何原生世界动作建模。"
 ---
 
@@ -36,9 +40,38 @@ E0.5 以三维基础模型为主干，联合预测未来三维状态与机器人
 
 3D 基础模型同时承担未来几何与动作预测；在机器人轨迹上联合预训练，使表征学习交互中的几何变化。它与 [ThinkWorld](./paper-thinkworld.md) 的未来视觉特征一致性奖励不同。
 
+## 流程总览
+
+以下根据官方 README 的发布实现整理：
+
+```mermaid
+flowchart TD
+  O["三路 RGB 与语言指令"] --> G["VGGT 几何骨干"]
+  S["机器人状态"] --> A["动作分支"]
+  G --> A
+  G --> F["未来几何预测"]
+  A --> C["动作序列"]
+  F --> L["训练时几何监督"]
+```
+
 ## 源码运行时序图
 
-不适用：arXiv 摘要未列项目页或代码地址，官方可运行实现待核实。
+```mermaid
+sequenceDiagram
+  participant U as 用户
+  participant I as scripts/infer.py
+  participant P as WorldActionRobotWinPolicy
+  participant M as E05 模型
+  U->>I: 输入观测、配置和检查点
+  I->>P: 加载策略与归一化统计
+  I->>P: 预处理图像、语言与状态
+  I->>M: infer_action
+  M-->>I: 动作及可选几何预测
+  I->>P: 反归一化动作
+  I-->>U: 保存 NPZ 结果
+```
+
+对应独立推理入口；RoboTwin 评测从 `scripts/evaluate.sh` 启动。
 
 ## 实验与评测
 
@@ -59,7 +92,11 @@ E0.5 以三维基础模型为主干，联合预测未来三维状态与机器人
 
 ## 工程实践与局限
 
-本页依据论文摘要，实验细节与实现入口需结合全文核查；截至 2026-10-29，arXiv 摘要未列项目地址，开放状态待确认。
+截至 2026-10-29，官方仓库提供训练、推理和 RoboTwin 评测代码，并列出策略权重、具身预训练 VGGT 和处理后数据的下载地址；下载未实测。代码为 MIT，第三方模型、数据与资产有各自条款，VGGT-Omega 含非商业研究条款。
+
+默认 RoboTwin 输入为三路 RGB、语言和 14 维状态，输出 32 × 14 动作块；未来几何监督只在训练时需要。独立推理使用单 GPU，README 默认训练配置为 8 GPU。预测深度是场景归一化尺度，不能直接视为米制深度。真机适配需自行准备任务配置与数据，具身预训练 VGGT 不是完整真机策略。
+
+论文指标来自摘要，全文本次未能获取。发布的 109k 中间检查点模型卡报告 clean 89.48%（5000 次）与 random 49.431867%（4961 次），应与论文摘要结果分别记录。
 
 ## 关联页面
 
@@ -69,7 +106,11 @@ E0.5 以三维基础模型为主干，联合预测未来三维状态与机器人
 ## 参考来源
 
 - [E0.5 论文摘录](../../sources/papers/e05_arxiv_2610_36011.md)
+- [官方仓库记录](../../sources/repos/e05.md)
+- [项目主页记录](../../sources/sites/e05_project.md)
 
 ## 推荐继续阅读
 
 - [E0.5 论文](https://arxiv.org/abs/2610.36011)
+- [官方代码与 README](https://github.com/X-EraAI/e05)
+- [项目主页](https://www.x-era.ai/e05/index.html)
