@@ -17,6 +17,12 @@
 - **模态与格式：** 6 路原生 RGB 视角，1600 × 1300，30 FPS，mcap 格式；字段含 `origin`、`face_mark`、`vio`、`handtracking`、`annotation_v2`、`body_track`、`bold_mark`、`task`、`sub_task`。
 - **许可与访问：** 数据卡 frontmatter 为 `license: other`，正文未给出许可文本；数据集未设访问门槛（`gated: false`）。
 
+## 2026-10-29 核查补充
+
+- Hugging Face 页面显示文件总大小为 **8.79 TB**；该数字是页面当时显示的仓库文件大小，可能随数据更新变化。
+- [官方技术文章](https://www.gen-robot.org/blog/whole-body)介绍：通过同步第一视角设备与多台第三视角相机生成监督真值，DFM 利用可见身体信息、时序线索和人体结构先验重建全身运动；约 3 cm 为官方内部评估结果。
+- 数据集页面仍标注 `license: other`，不能将其他 GenRobot 数据集的 CC BY-SA 4.0 许可直接套用到本数据集。
+
 ## 开放状态与核查边界
 
 数据可直接从 Hugging Face 下载，但许可条款未公开，商用或再分发前需向官方（opendata@genrobot.ai）确认。官方门户未列出本数据集专属训练代码。
