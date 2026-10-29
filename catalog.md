@@ -5063,6 +5063,7 @@
 - [SRDF](wiki/entities/paper-srdf-vln-flywheel.md) — SRDF**（Bootstrapping Language-Guided Navigation Learning with Self-Refining Data Flywheel）在 [Light `📅unknown` `[entity_page]`
 - [SRL-MPC：形状感知强化学习 MPC](wiki/entities/paper-srl-mpc.md) — SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control**（[arXiv:2608.21175](https://a `📅unknown` `[entity_page]`
 - [SRU（Spatially-Enhanced Recurrent Memory）](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — SRU**（*Spatially-Enhanced Recurrent Memory for Long-Range Mapless Navigation via End-to-End Reinfo `📅unknown` `[entity_page]`
+- [SSIO（自监督惯性里程计）](wiki/entities/paper-ssio.md) — SSIO** 使用已标定 IMU 数据构造训练信号，无需速度或位置标签即可从头训练惯性速度估计模型。 `📅unknown` `[entity_page]`
 - [SSP（arXiv:2608.14024）](wiki/entities/paper-ssp-syn2sim2phy-vla-eval.md) — SSP**（arXiv:2608.14024）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08 `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
 - [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
@@ -5517,6 +5518,7 @@
 - [Robot Olympics：用 π₀.₆ 微调硬操作](wiki/entities/pi-robot-olympics.md) — Physical Intelligence 在 2025-12-22 的博客 [Moravec's Paradox and the Robot Olympics](https://www.pi.web `📅unknown` `[entity_page]`
 - [pib（printable intelligent bot）](wiki/entities/pib-printable-intelligent-bot.md) — pib（printable intelligent bot）** 由德国 isento GmbH 开发，是可完全 3D 打印的开源人形机器人，软件在 GitHub 组织 [pib-rocks](h `📅unknown` `[entity_page]`
 - [Pico 4 Ultra（Egocentric 采集）](wiki/entities/pico-4-ultra-egocentric-capture.md) — Pico 4 Ultra** 在 2026 年成为可规模化部署的 **第一人称视频 + 全身/手部姿态** 采集硬件：PICO SDK 允许自研录制服务直接读取 passthrough RGB 与 `📅unknown` `[entity_page]`
+- [Pico.Lab](wiki/entities/picolab.md) — Pico.Lab** 是面向嵌入式板卡 bring-up 的开源多功能工具，集成示波、逻辑分析、总线通信和浏览器界面；专用板还提供电源控制及电流监测。 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlatformIO Core](wiki/entities/platformio-core.md) — PlatformIO Core** 是 PlatformIO 生态的命令行核心：以 `platformio.ini` 描述嵌入式项目环境，并用 `pio` CLI 管理相关开发平台、工具链、库依赖 `📅unknown` `[entity_page]`
