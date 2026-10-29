@@ -76,6 +76,12 @@ README 也提供分别启动 `navgpt.environment`、`navgpt.vla` 后运行 `navg
 
 项目页说明上述完整系统采用 GPT-6 Astra 作为 Planner。论文将 RxR-CE 的 90.43 SR 与人类 90.4 SR 对照，但项目页注明人类研究采用离散导航，设置不同，不宜视作严格同条件比较。论文报告 VLA 单步 0.5–1 秒、语言模型决策 3–19 秒，属于高层决策响应时间，而非电机控制周期。
 
+## 与其他工作对比
+
+- **对 [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md)：** 二者都是分层导航：NaVILA 由高层 VLA 输出「前进 75 cm」等中层命令、RL locomotion 执行关节控制；NavGPT-3 在 VLA 之上再加语言模型 Planner 与线程运行时，负责工具调用、委派与中断。
+- **对 [NaVid](./paper-vln-10-navid.md) 一类端到端导航 VLA：** NaVid 仅依赖 RGB 视频流直接输出底层动作；NavGPT-3 的 VLA 单模型与完整系统 SR 对照（R2R-CE 76.94%→81.51%）显示外层 Planner 的增益，但完整系统使用项目页所述的 GPT-6 Astra 作为 Planner，增益与该 Planner 绑定。
+- 范式定位可对照 [VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md)：NavGPT-3 横跨「语言中枢」与「导航 VLA」两条范式。
+
 ## 结论
 
 分层运行时为语言推理与导航动作提供了可中断、可反馈的接口，仿真结果显示完整系统优于单独 VLA。

@@ -18,6 +18,7 @@ summary: "AdaOcc 用稀疏语义点、可调 query 和解码深度实现面向�
 related:
   - ./paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md
   - ./paper-occanyscene.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/adaocc_arxiv_2609_38864.md
   - ../../sources/sites/adaocc.md
@@ -82,6 +83,12 @@ sequenceDiagram
 | 预算对照 | 论文所述 EfficientNet 变体 500 queries：mIoU 57.97、IoU 65.16、64.4 ms；与 full 主结果不是同一配置。 |
 | 真实系统 | 展示 Go2 导航、ARX X5 操作和移动操作；演示不等于任意场景可靠性保证。 |
 
+## 与其他工作对比
+
+- **对 [OccAnyScene](./paper-occanyscene.md)：** OccAnyScene 追求一个模型覆盖室内单目与室外六相机街道的跨场景语义占据；AdaOcc 侧重同一模型在传感器配置（估计深度 / 深度相机 / LiDAR）与推理预算之间自适应，并以 Go2、ARX X5 等具身平台演示。
+- **对 [Humanoid Occupancy](./paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md)：** Humanoid Occupancy 是整合硬件布局、数据采集与标注流水线并融合时序信息的人形占据系统；AdaOcc 主要采用单帧或直接聚合设置，显式时序记忆仍待探索。
+- 二者均与 AdaOcc 使用不同数据集与评测口径，本页数字不可直接横比。
+
 ## 结论
 
 **AdaOcc 的价值在于让同一占据预测框架适配传感器与推理预算，同时保持可供下游规划使用的语义几何。**
@@ -95,6 +102,7 @@ sequenceDiagram
 
 - [Humanoid Occupancy](./paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — 侧重人形多模态与时序占据系统。
 - [OccAnyScene](./paper-occanyscene.md) — 跨场景占据预测对照。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

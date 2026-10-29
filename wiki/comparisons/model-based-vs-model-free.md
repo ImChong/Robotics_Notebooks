@@ -3,7 +3,7 @@ title: Model-Based vs Model-Free RL 对比
 type: comparison
 status: complete
 created: 2026-04-14
-updated: 2026-10-12
+updated: 2026-10-29
 summary: 从模型使用方式、样本效率、模型偏差、工程复杂度与机器人部署约束对比 Model-Based 和 Model-Free RL；强调结论依赖任务、模型质量和算力预算。
 ---
 
@@ -131,6 +131,7 @@ MBRL 的最大风险：**模型误差在 rollout 中累积**（compound error）
 ## 关联页面
 
 - [Model-Based RL](../methods/model-based-rl.md) — MBRL 详细介绍
+- [MBPO](../methods/mbpo.md) — 短模型 rollout + SAC 的混合方法代表
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 整体框架
 - [Policy Optimization](../methods/policy-optimization.md) — Model-Free 主要算法
 - [Sim2Real](../concepts/sim2real.md) — MF sim2real 是当前机器人主流路径

@@ -72,6 +72,11 @@ sequenceDiagram
 - 项目官方公开代码与数据；代码 Apache-2.0，数据许可独立，商业使用应逐项核对。
 - 论文展示 MuJoCo 应用，并未证明生成资产自动具备准确物理参数或可直接训练机器人。
 
+## 与其他工作对比
+
+- **对 [3D Model Anything](./3d-model-anything.md)：** 二者都用编程智能体迭代生成可编辑三维内容；3D Model Anything 以 LiDAR 与照片等实景扫描为证据重建室内场景，3DCodeVerse 则以需求描述与可执行代码数据集驱动资产生成，并用几何测量约束视觉评分。前者偏「还原现有场景」，后者偏「按约束创建资产」。
+- **对 [Agentic Real2Sim](./paper-agentic-real2sim.md)：** Agentic Real2Sim 把真机交互 episode 转为可回放的 MuJoCo 孪生；3DCodeVerse 虽展示 MuJoCo 应用，但未证明生成资产具备准确物理参数，选型时应区分「可回放孪生」与「可编辑资产」两种目标。
+
 ## 关联页面
 
 - [3D Model Anything](./3d-model-anything.md) — 用实景扫描证据重建可编辑室内场景。
