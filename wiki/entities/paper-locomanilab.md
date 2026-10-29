@@ -3,18 +3,20 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, benchmark, teleop-data, simulation, evaluation, teleai, ustc, hku, zju, sjtu, shanghaitech]
 topic: [loco-manipulation, evaluation]
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.30876"
 venue: "2026 · arXiv preprint"
 related:
   - ../tasks/loco-manipulation.md
   - ./paper-humanoidarena.md
   - ./paper-i-bfm.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/locomanilab_arxiv_2610_30876.md
   - ../../sources/sites/locomanilab-project.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "LocoManiLab 是人形移动操作全栈测试床：统一 234 个任务、模拟遥操作数据、12 种策略、5 种全身控制器与仿真到真机评测；官网截至 2026-10-26 仍将代码和数据标为 Coming soon。"
 project_id: locomanilab
 project: https://locomanilab.github.io/

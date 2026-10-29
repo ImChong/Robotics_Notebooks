@@ -5,7 +5,7 @@ tags:
   - long-horizon
   - manipulation
 status: complete
-updated: 2026-10-27
+updated: 2026-10-29
 arxiv: "2610.31427"
 project_id: fastharness-experience-driven-review-scheduling
 code: https://github.com/FastHarness/fast-harness
@@ -14,11 +14,13 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/fastharness-experience-driven-review-scheduling_arxiv_2610_31427.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/repos/fastharness.md
   - ../../sources/sites/fastharness.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "FastHarness：面向视觉语言动作策略的经验驱动复查调度（arXiv:2610.31427）：FastHarness 将历史执行经验引入复查调度，研究如何根据经验决定何时重新评估 VLA 的执行状态。"
 ---
 

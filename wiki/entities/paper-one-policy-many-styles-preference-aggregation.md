@@ -4,16 +4,18 @@ tags:
   - paper
   - humanoid
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.28925"
 project_id: one-policy-many-styles-preference-aggregation
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/one-policy-many-styles-preference-aggregation_arxiv_2610_28925.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "One Policy Many Styles：一个策略、多种风格：可引导人形控制应在何处聚合偏好？（arXiv:2610.28925）：建立偏好响应度、覆盖率和效用联合指标，系统比较奖励、优势、损失及 PCGrad 层面的目标聚合；揭示早期聚合响应范围更大，后期聚合控制更精确。"
 ---
 
