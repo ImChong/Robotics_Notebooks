@@ -2906,6 +2906,7 @@
 - [NaP-Control：扩散先验噪声导航的快速全身角色控制](wiki/entities/paper-nap-control.md) — NaP-Control**（*Navigating Diffusion Prior for Versatile and Fast Character Control*，[arXiv:2605.20 `📅unknown` `[entity_page]`
 - [接近–安全跟随：别把跟紧和防撞塞进同一个 reward](wiki/entities/paper-nav-ps-balance.md) — 接近–安全跟随**（*Navigating the Proximity-Safety Balance*；[arXiv:2608.10056](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [NavAble：盲人导航的无障碍关键物体数据集与合成管线](wiki/entities/paper-navable.md) — NavAble 把电梯按钮、门按钮、行人信号、扶手等稀有但安全攸关的物体做成 11 类分割数据集，并用「网页爬取 + VLM 过滤 + SAM 3D 资产 + Isaac Sim 重放」的管线补足 `📅unknown` `[entity_page]`
+- [NavGPT-3：分层运行时连接导航推理与动作](wiki/entities/paper-navgpt-3.md) — NavGPT-3 用导航 harness 和线程调度连接语言模型规划、空间工具与 NavGPT VLA，使长程推理与较快的动作执行协同。 `📅unknown` `[entity_page]`
 - [NavJev：ACVC + DASM + Jev 的高效 VLN-CE](wiki/entities/paper-navjev-efficient-vln-jev.md) — NavJev**（*Efficient Vision-Language Navigation via Action-Centric Visual Compression and Discrimin `📅unknown` `[entity_page]`
 - [NavMCP：长时程具身导航的基础模型脚手架](wiki/entities/paper-navmcp-long-horizon-navigation.md) — NavMCP（arXiv:2608.30396）让视觉语言模型负责选择要寻找的证据与何时停止，让导航基础模型负责闭环执行语义子目标，并通过记忆跨多次导航调用持续累积证据。 `📅unknown` `[entity_page]`
 - [NavVerse：室内–户外连续具身导航基准](wiki/entities/paper-navverse.md) — NavVerse**（*Benchmarking Indoor-to-Outdoor Embodied Navigation in Continuous Robot Simulation*，[ar `📅unknown` `[entity_page]`
