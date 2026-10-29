@@ -35,26 +35,26 @@
     robots: ['create2', 'g1'],      // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '齐次变换',
     name: '朝向 + 位置 → 4×4 矩阵',
-    pitch: '点要平移、方向不用：推导不出错的前提',
+    pitch: '点要平移、向量不用：推导不出错的前提',
     meta: '<b>数学打底：位姿与 SE(3)</b><br>Robotics Notebooks · 懂旋转矩阵 · 不用代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
-    // 划重点 / 片尾里的加粗词：位置 violet（同分镜里的 p）；点亮黄（同袜子、杯子）；方向白字（同分镜，绿留给「对」和 y 轴）；不平移 good；算错橙（同 005、006）
-    boldColors: { '位置': 'var(--violet)', '位置 p': 'var(--violet)', '方向': 'var(--text)', '不平移': 'var(--demo-good)', '算错': E.ERR },
-    introDur: 33.37,
+    // 划重点 / 片尾里的加粗词：位置 violet（同分镜里的 p）；点亮黄（同袜子、杯子）；向量白字（同分镜，绿留给「对」和 y 轴）；不平移 good；算错橙（同 005、006）
+    boldColors: { '位置': 'var(--violet)', '位置 p': 'var(--violet)', '向量': 'var(--text)', '不平移': 'var(--demo-good)', '算错': E.ERR },
+    introDur: 33.34,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep007.py 的 recap 句对齐）
-    recapDur: 32.57,
+    recapDur: 32.66,
     recap: {
       act: '本集总结',
       title: '朝向 + 位置，拼成一个矩阵',
       items: [
         { c: 'var(--violet)', n: '① 位姿 = 朝向 + 位置', s: '旋转矩阵 $R$，加上位置 $p$', at: 1.87 },
         { c: 'var(--hi)', n: '② 点：先转、再平移', s: '$v\' = Rv + p$', at: 7.77 },
-        { c: 'var(--demo-good)', n: '③ 方向：只转、不平移', s: '$v\' = Rv$：速度、力都是方向', at: 11.75 },
-        { c: 'var(--demo-accent)', n: '④ 齐次变换矩阵', s: '点后面补 1，方向后面补 0\n这个矩阵：平面上 3×3，三维里 4×4', at: 16.65 }
+        { c: 'var(--demo-good)', n: '③ 向量：只转、不平移', s: '$v\' = Rv$：速度、力都是向量', at: 11.75 },
+        { c: 'var(--demo-accent)', n: '④ 齐次变换矩阵', s: '点后面补 1，向量后面补 0\n这个矩阵：平面上 3×3，三维里 4×4', at: 16.67 }
       ],
-      foot: { s: '**朝向 + 位置**拼成 4×4：点补 1，方向补 0', at: 26.35 }
+      foot: { s: '**朝向 + 位置**拼成 4×4：点补 1，向量补 0', at: 26.44 }
     },
     outroDur: 17.01,
     // 片尾不出题：下一集预告、完整内容的网址卡片、本集核对过的一手资料（同 006）和衔接语
