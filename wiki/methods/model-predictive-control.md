@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-29
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -145,7 +145,8 @@ IsaacGym /机器人领域常见。
 - 保持平衡约束
 
 代表工作：
-- "Convex Model Predictive Control for Bipedal Locomotion" (C原 Bellicoso et al.)
+- Di Carlo et al., "Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control"（IROS 2018，四足凸 MPC）
+- Li & Nguyen, "Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots"（arXiv:2104.00065，双足）
 - ANYmal 的行走控制
 
 ### 全身控制
@@ -243,7 +244,8 @@ print("apply control:", u.ravel())
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
-- Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文
+- Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control*（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 代表论文（四足）
+- Li & Nguyen, *Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots*（[arXiv:2104.00065](https://arxiv.org/abs/2104.00065)）— 双足行走 MPC
 - [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 10 Convex MPC（播放列表归档）
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
 - Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
@@ -278,5 +280,6 @@ print("apply control:", u.ravel())
 
 - [CMU Optimal Control 2025（课程归档）](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — Lecture 10: Convex Model-Predictive Control
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) - Lecture 10: Convex Model-Predictive Control
-- [Convex MPC for Bipedal Locomotion](https://arxiv.org/abs/1709.10219) - Cory (Bellicoso et al.)
+- [Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control](https://doi.org/10.1109/IROS.2018.8594448) - Di Carlo et al., IROS 2018
+- [Force-and-moment-based MPC for Bipedal Robots](https://arxiv.org/abs/2104.00065) - Li & Nguyen
 - Acados: http://acados.org/ - NMPC solver
