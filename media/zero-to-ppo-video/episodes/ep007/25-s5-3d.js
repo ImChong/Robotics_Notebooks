@@ -18,7 +18,8 @@
   var ROOM = { ox: 110, oy: 300, scale: 230, az: 135, el: 18, floor: [-0.1, 0.4, -0.1, 1.7], step: 0.25, at: [0.3, 1.0], yaw: 90 * D, axis: 0.3, margin: 40 };
   var MX = 620, MY = 158;                                     // 右栏 4×4 的中心
   var CUP = [-0.05, 1.4], VEL = [[0.45, 1.1], [0.45, 1.55]], GRAV = [-0.1, 1.2, [1.05, 0.65]];
-  var LINKS = [['pelvis', 'pelvis', '骨盆'], ['left_hip_pitch_link', 'leftThigh', '大腿'], ['left_knee_link', 'leftShin', '小腿'], ['left_ankle_roll_link', 'leftFoot', '脚']];
+  // 大腿取膝关节的父连杆 left_hip_yaw_link（G1 URDF：hip pitch → roll → yaw 三个小连杆，yaw 那节一直到膝盖）
+  var LINKS = [['pelvis', 'pelvis', '骨盆'], ['left_hip_yaw_link', 'leftThigh', '大腿'], ['left_knee_link', 'leftShin', '小腿'], ['left_ankle_roll_link', 'leftFoot', '脚']];
   var T = {
     room: 0.1, bot: 1.75, turn: [3.16, 4.3], pelvis: 4.69, ori: 5.17, ep6: 6.08, rot: 6.91, pos: 9.1, pcol: 9.71,
     join: [11.14, 11.78], four: 12.48, col4: 13.89, row: 15.35, zeros: [16.54, 16.99, 17.47, 17.98], ep6Out: 18.78,
