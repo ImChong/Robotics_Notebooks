@@ -251,6 +251,29 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-29] ingest | senlanke《借着supermimic复习：Model base，可微世界模型，BPTT》公众号：点名项目逐一映射唯一节点，新建 TD3 / MBPO / BPTT，其余复用并补反链
+
+## [2026-10-29] ingest | sources/papers/phase_conditioned_loco_manipulation_arxiv_2610_36270.md — 收录多阶段 PPO、真机部署与代码状态待核实
+
+## [2026-10-29] ingest | PhysWord 项目页
+
+- 核对项目主页，补充机构、方法与评测信息，复用已有论文节点。
+- 项目页标注代码即将发布，未列数据或权重下载链接。
+
+## [2026-10-29] ingest | Pico.Lab | 嵌入式调试工具
+
+- 收录官方仓库及 Hackaday 项目页，归纳波形、总线和电源功能。
+- 固件、PCB 与 CAD 已公开；明确普通 Pico 与专用板的功能边界。
+
+## [2026-10-29] ingest | sources/papers/ssio_arxiv_2610_25988.md — 收录 SSIO 自监督惯性里程计；代码、权重与 G1 数据公开，复用已有 cuArms 与 DeFM 节点
+
+## [2026-10-28] lint | 全量 wiki lint 修复：7+3 陈旧页复核并回链新来源，11 篇 paper 补「与其他工作对比」，11 篇评测基准页回链评测基准选型闭环，PartLLM 回链感知栈闭环；问题与信息型预警清零
+
+## [2026-10-28] ingest | 未知载荷下的自适应全身 MPC
+
+- 收录 arXiv:2610.12972，关联质心动力学与 MPC/WBC 集成。
+- 依据摘要整理；全文与官方代码开放状态待核实。
+
 ## [2026-10-28] ingest | sources/papers/omni_woodpecker_arxiv_2610_27103.md — 收录音视频幻觉纠正方法及官方开源推理入口
 
 ## [2026-10-28] ingest | 具身智能小站 2026-10-28 盘点 59 篇（深读免渲染事件仿真；59/59 独立节点：新建 55 / 复用 4）+ 技术地图

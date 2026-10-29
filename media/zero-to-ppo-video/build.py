@@ -35,6 +35,7 @@ _spec = importlib.util.spec_from_file_location(NAME, HERE / "episodes" / f"{NAME
 EPISODE = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(EPISODE)
 SCRIPT, DISPLAY = EPISODE.SCRIPT, EPISODE.DISPLAY
+DISPLAY_FN = getattr(EPISODE, "DISPLAY_FN", None)   # 可选：DISPLAY 换完再加工一遍（如 006 把念出来的角度、小数、乘号写成 $…$）；切行前后各调一次，结果要不变
 OUT = HERE / "out" / NAME
 OUT.mkdir(parents=True, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
@@ -52,7 +53,7 @@ NOISE_DBFS = -72
 def display(s):
     for a, b in DISPLAY:
         s = s.replace(a, b)
-    return s
+    return DISPLAY_FN(s) if DISPLAY_FN else s
 
 
 async def tts(text, mp3, tries=4):

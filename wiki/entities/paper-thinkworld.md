@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, manipulation, nvidia, kaist]
 status: complete
-updated: 2026-10-28
+updated: 2026-10-29
 project_id: thinkworld
 arxiv: "2610.37666"
 project: https://thinkworld-project.github.io/
@@ -63,6 +63,11 @@ ThinkWorld 展示了利用视频中的状态变化增强动作推理，并在特
 3. 烤箱轨迹是定性证据；复现时应单独统计组合任务的成功次数。
 4. 分布外成功率来自另外三类任务，部署时需按任务和硬件重新评测。
 
+## 与其他工作对比
+
+- **vs [DIAL](./paper-dial-latent-world-vla.md)：** DIAL 用潜在世界建模把语言 ground 为视觉路线图再出低层动作；ThinkWorld 以 CoD 运动 token 预测约 1 秒后的 DINO 特征，用预测一致性作奖励从无动作标注视频中学习，且部署时不运行这一推理过程。
+- **vs 生成视频式 [世界动作模型](../concepts/world-action-models.md)：** 奖励比较的是未来视觉 **特征** 而非生成视频与现实的逐像素一致，避免把画质当作动作质量。
+
 ## 工程实践与局限
 
 项目页截至 2026-10-28 无法访问，代码、权重和数据开放状态待核实，不能判断能否复现。
@@ -72,6 +77,9 @@ ThinkWorld 展示了利用视频中的状态变化增强动作推理，并在特
 不适用：项目页无法访问，尚未核实官方可运行代码及入口。
 
 ## 关联页面
+
+- [E0.5](./paper-e05-geometry-world-action.md) — 以三维基础模型联合预测未来几何与动作。
+- [Rollback](./paper-rollback-world-model.md) — 利用世界模型分支改进策略。
 
 - [VLA](../methods/vla.md) — 视觉语言动作策略基础。
 - [世界动作模型](../concepts/world-action-models.md) — 动作与未来预测的关系。

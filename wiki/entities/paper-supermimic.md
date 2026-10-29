@@ -2,25 +2,30 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-27
+updated: 2026-10-29
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
 project: https://supermimic.github.io/
 summary: "SuperMimic 将运动跟踪策略与一个从仿真器转移数据学习的可微世界模型联合训练，用短时想象 rollout 和解析梯度显著降低大规模人形全身控制的训练计算。"
 related:
+  - ../concepts/bptt.md
+  - ../methods/mbpo.md
+  - ../methods/model-based-rl.md
   - ./nvidia-sonic.md
   - ./paper-twist2.md
   - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
   - ../../sources/repos/supermimic-unilab.md
   - ../../sources/repos/supermimic-vibed.md
   - ../../sources/repos/awesome-supermimic.md
+  - ../../sources/repos/supermimic-integration-drafts.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -85,6 +90,12 @@ flowchart TB
 
 两者让读者可以检查不同仿真栈下的独立实现细节；论文方法的权威描述仍以论文和官方项目页为准，复现指标需结合各自硬件、配置和 README 的声明解读。
 
+### 上游集成草案（2026-10-29）
+
+[LeRobot #5119](../../sources/repos/supermimic-integration-drafts.md) 集成 Uni-SuperMimic 导出 actor，针对 29 DoF G1 以 50 Hz 输出关节目标；PR 作者仅报告 MuJoCo 仿真验证，真机尚待验证，actor 与参考动作不随 PR 提供。策略跟踪动作片段，不接受速度指令。
+
+[Isaac Lab #8867](../../sources/repos/supermimic-integration-drafts.md) 提议添加 RSL-RL SuperMimic 支持、可微速度任务与 G1 配置；依赖上游 #8866 和包含 SuperMimic 的 RSL-RL 版本。两项均为未合并草案，不能视作正式版本功能或原论文官方实现。
+
 ## 与其他工作对比
 
 与 [SONIC](./nvidia-sonic.md) 的关键差异在训练范式：SONIC 依赖模型无关 PPO 与大规模并行仿真扩展 motion-tracking；SuperMimic 先从标准仿真数据学习动力学，再对策略做模型内解析梯度更新。两者都追求单一策略覆盖大量全身动作，且都在 Unitree G1 上展示动态行为。项目页中的 GPU-hour 和动作失败数使用各自报告配置，应视为论文所设基准下的结果，不应直接外推为所有机器人、数据集或硬件条件下的固定加速比。
@@ -110,19 +121,22 @@ flowchart TB
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
-
+- [BPTT](../concepts/bptt.md) / [MBPO](../methods/mbpo.md) / [Model-Based RL](../methods/model-based-rl.md) — 背景复习
 - [SONIC：大规模自然人形全身控制](./nvidia-sonic.md) — 论文采用的高算力 motion-tracking 对照基线。
 - [TWIST2](./paper-twist2.md) — 人形全身数据采集、跟踪控制与学习系统案例。
 - [全身控制（WBC）](../concepts/whole-body-control.md) — 人形整体协调控制任务背景。
 - [模仿学习](../methods/imitation-learning.md) — 从参考动作学习跟踪策略的相关方法。
 
 ## 参考来源
+- [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
 - [SuperMimic arXiv 论文](../../sources/papers/supermimic_arxiv_2610_28480.md)
 - [SuperMimic 官方项目页](../../sources/sites/supermimic-project.md)
 - [Uni-SuperMimic 独立复现](../../sources/repos/supermimic-unilab.md)
 - [supermimic_vibed 独立复现](../../sources/repos/supermimic-vibed.md)
 - [awesome-supermimic 社区资源索引](../../sources/repos/awesome-supermimic.md)
+
+- [LeRobot 与 Isaac Lab 集成草案](../../sources/repos/supermimic-integration-drafts.md)
 
 ## 推荐继续阅读
 

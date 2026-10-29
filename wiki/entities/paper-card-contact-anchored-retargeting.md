@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, motion-retargeting, dexterous-manipulation, contact-rich-manipulation, tactile, imitation-learning]
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 project_id: card-contact-anchored-retargeting
 arxiv: "2610.36539"
 project: https://card-retargeting.github.io/
@@ -61,12 +61,19 @@ CARD 把接触力目标作为跨人手和机器人手迁移的显式信号。
 3. 接触帧保持率与严格任务成功率衡量不同结果，不能混用。
 4. 代码状态、指标细节和硬件配置须在项目页及全文可访问后复核。
 
+## 与其他工作对比
+
+- **vs [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)：** SPIDER 在物理仿真中采样优化以获得可执行轨迹；CARD 摘要强调 **无需仿真器与物体模型**，直接输出运动学与接触力目标，再靠触觉跟踪控制器在硬件上维持接触。两者实验设置不同，数字不宜直接比较。
+- **vs 纯运动学重定向：** 论文报告运动学基线接触帧保持比例低于 10%、物体感知基线 22.5%，CARD 为 43%–78%——显式接触目标是主要差异来源（详见 [动作重定向](../concepts/motion-retargeting.md)）。
+
 ## 局限与风险
 
 - 本页依据 arXiv 摘要整理；方法公式、实验细节与传感器要求尚待全文核实。
 - 项目页本次无法访问，代码及数据是否开放尚未确认。
 
 ## 关联页面
+
+- [FLoRe](./paper-flore.md) — 面向人形移动操作的力反应策略与全身控制。
 
 - [动作重定向](../concepts/motion-retargeting.md)
 - [SPIDER：物理感知灵巧重定向](../methods/spider-physics-informed-dexterous-retargeting.md)

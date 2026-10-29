@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-10-29
 arxiv: "2507.20217"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ./paper-occanyscene.md
+  - ./paper-adaocc.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoid-occupancy.md
   - ../../sources/repos/humanoid-occupancy.md
@@ -83,6 +84,8 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 跨室内外视觉占据对照：[OccAnyScene](./paper-occanyscene.md) — 像素视锥高斯统一房间/街道协议；不解决人形自遮挡与传感器布局
+
+- [AdaOcc](./paper-adaocc.md) — 稀疏语义点与可调计算预算的具身占据预测。
 
 ## 参考来源
 

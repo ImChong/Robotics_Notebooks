@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-10-28
+updated: 2026-10-29
 arxiv: "2610.35862"
 project: https://louis-leee.github.io/FLoRe/
 related:
@@ -35,7 +35,9 @@ summary: "FLoRe（arXiv:2610.35862）：用带力传感的手持夹爪与身体�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| FLoRe | Learning Force-Reactive Humanoid Loco-Manipulation | 本文方法 / 基准的简称 |
+| FLoRe | Learning Force-Reactive Humanoid Loco-Manipulation | 本文框架的简称 |
+| UMI | Universal Manipulation Interface | 手持示教接口形式 |
+| F/T | Force/Torque | 力与力矩传感 |
 
 ## 为什么重要
 
@@ -58,7 +60,8 @@ summary: "FLoRe（arXiv:2610.35862）：用带力传感的手持夹爪与身体�
 
 ## 实验与评测
 
-- 公众号转述：混合柔顺全身控制兼顾受力与平衡，真机比较强调同示范、同控制器下的力反馈价值。
+- 论文摘要报告：三类真机接触任务中成功率为 **80%**；相同示范与控制器下，仅位置策略为 **26.7%**。
+- 策略输入视觉、本体感觉与测量力/力矩，输出动作和每只手的力命令；全身控制器跟踪力并维持平衡。
 - **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
@@ -74,6 +77,8 @@ summary: "FLoRe（arXiv:2610.35862）：用带力传感的手持夹爪与身体�
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [CARD](./paper-card-contact-anchored-retargeting.md) — 通过显式接触目标和触觉跟踪重定向灵巧示范。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

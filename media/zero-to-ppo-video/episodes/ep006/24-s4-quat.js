@@ -183,8 +183,10 @@
           var cOn = showC ? 1 : 0;
           var wOn = st >= T.mid ? f(st, T.cosV, 0.3) : Math.max(f(st, T.c71[0], 0.3), bump(st, T.wProj, 1.6));
           var zOn = st >= T.mid ? f(st, T.sinV, 0.3) : Math.max(f(st, T.c71[1], 0.3), bump(st, T.zProj, 1.6));
-          E.op(coordW, wOn * cOn);
-          E.op(coordZ, zOn * cOn * (Math.abs(mq[3]) > 0.05 ? 1 : 0));
+          // 点在圆上转的时候，两个读数跟着点跑会压到半径、投影线和圆：转的时候先藏起来，停稳再亮
+          var mv = [T.turn1, T.turn2, T.turn3, T.turn4, T.reset, T.turn5].reduce(function (m, tr) { return Math.max(m, f(st, tr[0] - 0.15, 0.15) * (1 - f(st, tr[0] + tr[1], 0.3))); }, 0);
+          E.op(coordW, wOn * cOn * (1 - mv));
+          E.op(coordZ, zOn * cOn * (Math.abs(mq[3]) > 0.05 ? 1 : 0) * (1 - mv));
           // 半角的小弧和读数
           var aOn = f(st, T.h45, 0.3) * (1 - f(st, T.turn2[0], 0.3));
           angArc.setAttribute('d', h > 0.02 && h < Math.PI ? arcD(0, h, 34) : '');
