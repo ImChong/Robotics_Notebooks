@@ -5,9 +5,10 @@ project_id: rai-institute
 project: https://rai-inst.com/
 tags: [rai-institute, robotics, whole-body-control, dynamic-manipulation, sim2real]
 status: complete
-updated: 2026-10-08
+updated: 2026-10-29
 summary: "2022 年成立的机器人与人工智能研究机构：从全身技能、动态接触和规划学习，到自包含 ONNX 部署；路线复用项目详情并区分研究演示与开放资产。"
 related:
+  - ./rai-spot-perceptive-manipulation.md
   - ./paper-zest.md
   - ../methods/sumo.md
   - ./paper-athenazero.md
@@ -82,6 +83,8 @@ flowchart TB
 | 为什么动态操作要硬件共设计 | [AthenaZero](./paper-athenazero.md) | 有效质量、低减速比、柔顺接触；硬件论文与抛接学习分别阅读 |
 | 不完美模型如何在真机适应 | [Robot Juggling](./paper-robot-juggling-athenazero.md) | 经验记忆、任务规划与连续抛接安全约束 |
 | 如何减少训练与部署的实现差异 | [Exploy](./exploy.md) | 观测、actor、动作处理一起导出；C++ 接设备状态与命令 |
+
+| 如何摆脱外部动捕与工作站 | [Spot 机载感知全身操作](./rai-spot-perceptive-manipulation.md) | 深度图、Crossfade RL 与技能门控；单轮胎实验的边界 |
 
 ## 工程实践
 
