@@ -35,6 +35,7 @@ _spec = importlib.util.spec_from_file_location(NAME, HERE / "episodes" / f"{NAME
 EPISODE = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(EPISODE)
 SCRIPT, DISPLAY = EPISODE.SCRIPT, EPISODE.DISPLAY
+DISPLAY_FN = getattr(EPISODE, "DISPLAY_FN", None)   # 可选：字幕再加工一遍（如把念出来的数写成 $LaTeX$，舞台用 KaTeX 排）
 OUT = HERE / "out" / NAME
 OUT.mkdir(parents=True, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
@@ -52,7 +53,7 @@ NOISE_DBFS = -72
 def display(s):
     for a, b in DISPLAY:
         s = s.replace(a, b)
-    return s
+    return DISPLAY_FN(s) if DISPLAY_FN else s
 
 
 async def tts(text, mp3, tries=4):
@@ -80,13 +81,27 @@ def to_wav(mp3, wav):
 
 
 def chunks(text, start, dur, limit=17):
-    """Split one TTS sentence into subtitle lines of <= ~limit chars, timed by char share."""
+    """Split one TTS sentence into subtitle lines of <= ~limit chars, timed by char share.
+    A $LaTeX$ run (DISPLAY_FN) is never split: it stands in as private-use chars, as many as it shows (\\times = ×, \\circ = °)."""
+    maths = []
+
+    def hold(m):
+        maths.append(m.group(0))
+        shown = re.sub(r"\\[A-Za-z]+|[{}^_ ]", "", m.group(0)[1:-1].replace("\\times", "×").replace("\\circ", "°"))
+        return chr(0xE000 + len(maths) - 1) * max(1, len(shown))
+
+    def back(x):
+        return re.sub(r"([\ue000-\uf8ff])\1*", lambda m: maths[ord(m.group(1)) - 0xE000], x)
+
+    text = re.sub(r"\$[^$]+\$", hold, text)
     parts = []
     for p in re.split(r"(?<=[，、；：。！？,;:])", text):
         while len(p) > limit + 4:  # no punctuation to break on: cut near the middle, at a space if any
             mid = len(p) // 2
             sp = [k for k in range(mid - 5, mid + 6) if 0 < k < len(p) and p[k] == " "]
             k = min(sp, key=lambda k: abs(k - mid)) if sp else mid
+            while 0 < k < len(p) and p[k] == p[k - 1] and "\ue000" <= p[k] <= "\uf8ff":   # 不切在公式中间
+                k -= 1
             parts.append(p[:k])
             p = p[k:].lstrip()
         if p.strip():
@@ -104,7 +119,7 @@ def chunks(text, start, dur, limit=17):
     out, t = [], start
     for x in lines:
         d = dur * len(x) / total
-        out.append({"t0": round(t, 3), "t1": round(t + d, 3), "text": display(x.rstrip("，、；：。,;:"))})
+        out.append({"t0": round(t, 3), "t1": round(t + d, 3), "text": display(back(x).rstrip("，、；：。,;:"))})
         t += d
     return out
 

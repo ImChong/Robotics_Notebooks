@@ -114,3 +114,53 @@ DISPLAY = [
     ("向亮", "向量"),
     ("测歪", "侧歪"),
 ]
+
+
+# 字幕里的数学写成 LaTeX（舞台用 KaTeX 排）：念出来的角度、小数、乘号、坐标里的数、「等于一」、轴名 x / y / z 换成公式；
+# 量词、序数（三个数、第三集、十二种、一百次）和「千分之四」照念的写。只改字幕，旁白照念。
+import re as _re
+
+_CN = {"零": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+_N = "零一二三四五六七八九十"
+
+
+def _int(s):
+    if "十" in s:
+        a, b = s.split("十")
+        return (_CN[a] if a else 1) * 10 + (_CN[b] if b else 0)
+    return _CN[s]
+
+
+def _dec(neg, i, d):
+    return ("-" if neg else "") + str(_int(i)) + ("." + "".join(str(_CN[c]) for c in d) if d else "")
+
+
+# 不带「度」念出来的角度：补上「度」再按角度换
+_DEG = [("比如二十、二十五、四十五", "比如二十度、二十五度、四十五度"), ("比如二十、二十五", "比如二十度、二十五度"), ("四十五，人一看", "四十五度，人一看"),
+        ("横滚零、", "横滚零度、"), ("偏航三十", "偏航三十度"), ("横滚负三十", "横滚负三十度"), ("偏航零", "偏航零度")]
+
+
+def math_subs(s):
+    for a, b in _DEG:
+        s = s.replace(a, b)
+    s = _re.sub(r"(?<![A-Za-z$\\])([xyz])(?![A-Za-z])", r"$\1$", s)                                   # 轴名
+    s = _re.sub(r"([一二三四五六七八九])乘([一二三四五六七八九])(?:乘([一二三四五六七八九]))?",          # 三乘二乘二
+                lambda m: "$" + r"\times ".join(str(_CN[g]) for g in m.groups() if g) + "$", s)
+    s = _re.sub(r"(负)?([%s]+)(?:点([零一二三四五六七八九]+))?度" % _N,                                 # 九十度、二十二点五度、负三十度
+                lambda m: "$" + _dec(m.group(1), m.group(2), m.group(3)) + r"^\circ$", s)
+    s = _re.sub(r"(负)?([%s]+)点([零一二三四五六七八九]+)" % _N,                                        # 零点七一、一点零零四
+                lambda m: "$" + _dec(m.group(1), m.group(2), m.group(3)) + "$", s)
+    s = _re.sub(r"(?:^|(?<=[：、是到于]))(负)?([零一])(?=[、。，；]|$)",                                 # 坐标里的「零」「一」「负一」、等于一
+                lambda m: "$" + _dec(m.group(1), m.group(2), "") + "$", s)
+    # 公式和汉字之间留一个空格（标点旁不留）。字幕先换写法再切行、每行再换一遍：这里换两遍结果不变
+    parts = _re.split(r"(\$[^$]+\$)", s)
+    for k, p in enumerate(parts):
+        if p.startswith("$") and len(p) > 1:
+            if k > 0 and parts[k - 1] and _re.match(r"[一-鿿]", parts[k - 1][-1]):
+                parts[k - 1] += " "
+            if k + 1 < len(parts) and parts[k + 1] and _re.match(r"[一-鿿]", parts[k + 1][0]):
+                parts[k + 1] = " " + parts[k + 1]
+    return "".join(parts)
+
+
+DISPLAY_FN = math_subs
