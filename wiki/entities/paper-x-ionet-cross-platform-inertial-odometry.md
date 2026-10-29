@@ -11,7 +11,7 @@ tags:
   - pedestrian
   - unitree
 status: complete
-updated: 2026-09-15
+updated: 2026-10-29
 arxiv: "2511.08277"
 venue: "IEEE RA-L 2026"
 related:
@@ -108,6 +108,8 @@ flowchart TB
 - **对比 VIO/LIO：** 不解决 **全局一致建图** 与 **尺度来自视觉/激光** 的问题；优势在 **极简传感与拒止环境鲁棒性**。
 
 ## 与其他页面的关系
+
+- [SSIO](./paper-ssio.md) — 利用短窗 IMU 积分构造自监督信号，不需要位置或速度标签。
 
 - [State Estimation（概念总览）](../concepts/state-estimation.md) — IMU 融合与足式状态估计语境
 - [EKF（形式化）](../formalizations/ekf.md) — 本文滤波后端与 TLIO 范式
