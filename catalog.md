@@ -5740,6 +5740,7 @@
 - [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
 - [Serial Studio](wiki/entities/serial-studio.md) — Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。 `📅unknown` `[entity_page]`
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
+- [shadcn-admin](wiki/entities/shadcn-admin.md) — shadcn-admin** 是基于 Shadcn UI 和 Vite 的 MIT 开源管理后台界面集合，提供可修改的页面与组件。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）](wiki/entities/shanputaoye-freecad-ai-skill.md) — FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）是与 reyk 的同名项目独立。 `📅unknown` `[entity_page]`
 - [Sharpa AE01 触觉数据手套](wiki/entities/sharpa-ae01-data-glove.md) — AE01** 是带振动触觉反馈的外骨骼数据手套，用于灵巧手遥操作与人类数据采集，直指“操作员感受不到机器手”的断点。 `📅unknown` `[entity_page]`

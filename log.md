@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-29] ingest | shadcn-admin
+
+- 收录管理后台 UI 集合，源码公开且使用 MIT 许可；记录技术栈、使用边界与组件更新注意事项。
+- 主节点：[shadcn-admin](../wiki/entities/shadcn-admin.md)。
+
 ## [2026-10-29] ingest | sources/papers/ventral_groove_fibers_aeh5116.md — 收录仿生腹沟纤维，基于摘要概述并标注全文与源码待核实
 
 ## [2026-10-29] ingest | InstantTrack
