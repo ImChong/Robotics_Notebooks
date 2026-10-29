@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-29] ingest | PhysWord 项目页
+
+- 核对项目主页，补充机构、方法与评测信息，复用已有论文节点。
+- 项目页标注代码即将发布，未列数据或权重下载链接。
+
 ## [2026-10-29] ingest | Pico.Lab | 嵌入式调试工具
 
 - 收录官方仓库及 Hackaday 项目页，归纳波形、总线和电源功能。
