@@ -5920,6 +5920,7 @@
 - [Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）](wiki/concepts/behavioral-cloning-mysteries.md) — Behavioral Cloning Mysteries**：在统计性质接近人类演示（窄分布、时间强相关、平滑随机）的数据上训 BC 时，会出现标准 D4RL/OGBench 看不到的四条现象—— `📅unknown` `[wiki_page]`
 - [The Bitter Lesson（惨痛教训）](wiki/concepts/bitter-lesson.md) — The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类 `📅unknown` `[wiki_page]`
 - [Bode 图（Bode Plot）](wiki/concepts/bode-plots.md) — Bode 图**用两条曲线展示系统对不同频率正弦输入的响应：上图是幅值（通常用 dB），下图是相位（通常用度），横轴是对数频率。读它可以知道系统跟不跟得上快速变化、在哪些频率容易放大/共振，以及在 `📅unknown` `[wiki_page]`
+- [BPTT（Backpropagation Through Time）](wiki/concepts/bptt.md) — BPTT 就是普通反向传播作用在**按时间展开**的计算图上：未来累计奖励的梯度沿多个时间步的链路回传到当前动作和 Actor 参数。它只是计算跨时间梯 `📅unknown` `[wiki_page]`
 - [缓存一致性陷阱（穿透 / 雪崩 / 击穿 / 一致性）](wiki/concepts/cache-consistency-pitfalls.md) — 缓存一致性陷阱** 归纳「加速层」失效时如何打穿数据库或返回脏数据——在机器人模型仓库、配置中心与遥测聚合 API 上反复出现。 `📅unknown` `[wiki_page]`
 - [CAN 总线（经典 CAN / CAN 2.0）](wiki/concepts/can-bus-protocol.md) — CAN（Controller Area Network）** 是一种 **多主、广播式、带硬件仲裁** 的串行现场总线。在机器人里，它最常见于 **主控板 ↔ 关节电机驱动器** 的反馈与力矩指令 `📅unknown` `[wiki_page]`
 - [CAN FD（Flexible Data Rate）](wiki/concepts/can-fd.md) — CAN FD** 是对经典 CAN 的数据链路层扩展：由 Bosch 2011 年起与车企等推动，在 **ISO 11898-1** 框架下标准化。机器人新一代 **USB2CAN FD**、部分 `📅unknown` `[wiki_page]`
@@ -6238,6 +6239,7 @@
 - [Macrodata Egocentric Hand-Action Pipeline](wiki/methods/macrodata-egocentric-hand-action.md) — Macrodata Labs**（[博客 2026-08-06](https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-a `📅unknown` `[method_page]`
 - [Multi-Agent Reinforcement Learning (MARL)](wiki/methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [Mask R-CNN](wiki/methods/mask-rcnn.md) — Mask R-CNN 在 Faster R-CNN 上增加并行掩码分支与 RoI Align，成为实例分割的长期标准两阶段框架。 `📅unknown` `[method_page]`
+- [MBPO（Model-Based Policy Optimization）](wiki/methods/mbpo.md) — MBPO**（Janner et al., 2019）是「学习型动力学模型 + 无模型策略优化」的典型组合：模型只负责生成**短期**虚拟数据，策略仍由 SAC 更新。 `📅unknown` `[method_page]`
 - [mimic-video（Video-Action Model, VAM）](wiki/methods/mimic-video.md) — mimic-video 是一类把互联网规模视频生成模型当作操作语义与物理动力学先验的通用操作策略：先在视频潜空间里形成与语言指令一致的视觉动力学计划，再以流匹配动作头输出机器人动作块。 `📅2026-05-17` `[method_page]`
 - [MIT 关节阻抗模式参数整定](wiki/methods/mit-joint-impedance-mode-tuning.md) — MIT 模式**（开源四足/部分协作臂驱动器中的 **紧凑阻抗帧** 语义，见 [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-proto `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](wiki/methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
@@ -6303,6 +6305,7 @@
 - [Switch: 敏捷技能切换框架](wiki/methods/switch-framework.md) — Switch** 是由香港科技大学等机构提出的一种针对人形机器人的技能切换方案。它解决了传统运动模仿方法在处理非连续、大跨度动作转换时容易失稳的问题，通过将高层图规划与底层强化学习（RL）控制相结 `📅unknown` `[method_page]`
 - [Table Tennis Strategy & Skill Learning（PhysicsPingPong）](wiki/methods/table-tennis-strategy-skill-learning.md) — PhysicsPingPong**（Wang et al., SIGGRAPH 2024, [arXiv:2407.16210](https://arxiv.org/abs/2407.16210 `📅unknown` `[method_page]`
 - [Tactile Impedance Control（基于触觉反馈的阻抗控制）](wiki/methods/tactile-impedance-control.md) — Tactile Impedance Control** 在标准 阻抗控制 的「质量-弹簧-阻尼」框架之上，把指尖触觉传感器（ `📅unknown` `[method_page]`
+- [TD3（Twin Delayed DDPG）](wiki/methods/td3.md) — TD3** 是 DDPG 的改进版：确定性策略 + Replay Buffer 的 off-policy actor-critic，用三项修正缓解 Q 值高估造成的训练不稳。 `📅unknown` `[method_page]`
 - [Teacher-Student 与 DAgger 训练](wiki/methods/teacher-student-dagger-training.md) — RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset Aggregation）** 列为同一教学模块：在仿真中用**特权观 `📅unknown` `[method_page]`
 - [Teacher-Student 多动作 BFM 学习](wiki/methods/teacher-student-multi-skill-bfm.md) — 飞书 Know-How 在 **BFM 行为基础模型** 下分三线：**BFM-Zero（FB 无监督）**、**SONIC（DeepMimic 规模化跟踪）**、**基于 Teacher-Stude `📅unknown` `[method_page]`
 - [Time-Optimal Path Parameterization（TOPP）](wiki/methods/time-optimal-path-parameterization.md) — TOPP（时间最优路径参数化）**：给定关节空间或任务空间 **几何路径** $q(s)$（$s$ 为路径参数），求速度 $\dot{s}(t)$ 或 $\dot{s}(s)$ 曲线，使 **总时 `📅unknown` `[method_page]`
