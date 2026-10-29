@@ -1999,6 +1999,7 @@
 - [DexNinja：真实到仿真再到真实的灵巧切割](wiki/entities/paper-dexninja-real2sim2real-cutting.md) — DexNinja 用少量真实切割示范构建仿真数据引擎，再把仿真中学到的切割策略部署回真实机器人，缓解切割这类拓扑变化任务的数据稀缺问题。 `📅unknown` `[entity_page]`
 - [Dexora（arXiv:2605.18722）](wiki/entities/paper-dexora.md) — Dexora**（*Dexora: Open-source VLA for High-DoF Bimanual Dexterity*，[arXiv:2605.18722](https://arxi `📅unknown` `[entity_page]`
 - [DexRoam：从第一视角全身示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam 将无需外部追踪器的人类全身示教映射到机器人动作空间，再与机器人示教联合学习移动双臂灵巧操作策略。 `📅unknown` `[entity_page]`
+- [DexSafe：灵巧手位姿到达与安全过滤](wiki/entities/paper-dexsafe.md) — DexSafe** 在仿真训练灵巧手移动手中物体到目标位姿，并以学习式残差过滤器降低掉落风险。 `📅unknown` `[entity_page]`
 - [DexStitch：从人类视频学习并组合灵巧技能](wiki/entities/paper-dexstitch-skill-stitching-human-videos.md) — DexStitch 把长视频切成技能段与过渡段，再把人类手部示范转换成机器人可用的数据，使单个技能可以按需串联。 `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
 - [DexWeave：从人体示范学习灵巧人形移动操作](wiki/entities/paper-dexweave-humanoid-loco-manipulation.md) — DexWeave 将身体、手腕、手指和物体交互共同重定向，再以解剖区域注意力策略学习全身灵巧移动操作。 `📅unknown` `[entity_page]`
