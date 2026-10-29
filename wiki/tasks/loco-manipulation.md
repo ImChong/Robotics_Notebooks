@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-26
+updated: 2026-10-29
 sources:
   - ../../sources/papers/locomanilab_arxiv_2610_30876.md
   - ../../sources/sites/locomanilab-project.md
@@ -571,6 +571,10 @@ flowchart TD
 
 - [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 将环境感知全身控制、局部接触 RL 与多教师蒸馏结合；项目页报告在 24 个真实场景、100 多种物体上达到 91% 抓取成功率。
 
+
+## 多阶段策略优化
+
+- [阶段条件 PPO](../entities/paper-phase-conditioned-loco-manipulation.md) — 训练期以阶段预测、门控奖励和重置课程引导单一高层策略；在 G1 与带臂 Spot 验证。
 
 ## 新增接口路线
 

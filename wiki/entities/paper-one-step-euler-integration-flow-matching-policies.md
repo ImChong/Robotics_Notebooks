@@ -5,16 +5,18 @@ tags:
   - imitation-learning
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.30735"
 project_id: one-step-euler-integration-flow-matching-policies
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/one-step-euler-integration-flow-matching-policies_arxiv_2610_30735.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "One-Step Euler FM：何时一步就够：Flow Matching 策略中欧拉积分的实证研究（arXiv:2610.30735）：系统研究欧拉积分步数对生成式机器人策略的影响，重点分析单步积分在不同条件下的适用性。论文已被 CoRL 2026 接收。"
 ---
 

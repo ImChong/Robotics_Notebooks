@@ -3,7 +3,7 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-09-15
+updated: 2026-10-28
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/wilor.md
@@ -19,6 +19,7 @@ sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
+  - ../../sources/papers/learning_dexterous_manipulation_survey_2610_33486.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「灵巧操作项目里，数据标注、手部感知、RL 优势估计和执行器建模分别该用哪条技术线？」
@@ -91,6 +92,12 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 
 [DexVerse](../entities/paper-dexverse.md)（arXiv:2607.08751）提供 **Vision Pro + CloudXR** 采集的 **3,180** 条多模态示范（action–state + state replay 再生 RGB/深度/点云），覆盖 **100** 任务与 **3** 臂 × **6** 手具身。当目标是 **跨任务/跨视觉条件的模仿学习或 VLA 微调**（而非 CHORD 式 CWS-RL）时，可把 DexVerse 当作 **未饱和排行榜**：论文报告 π₀.₅/DP3 均值成功率仅 **34%**，PushT/InsertPen 等精密任务全线 **0%**——适合检验新观测模态或接触修正模块是否带来 **category-level** 增益。
 
+## 7. 训练路线与评测口径
+
+[灵巧操作综述](../../sources/papers/learning_dexterous_manipulation_survey_2610_33486.md)统计的 113 篇方法中，54 篇使用 RL，27 篇使用行为克隆，23 篇使用蒸馏；标签允许重叠。特权状态仿真训练和演示驱动学习是两条常见路线，是否需要蒸馏取决于部署时可用观测，不能默认每个 RL 方法都做蒸馏。
+
+实验对比应同时记录手型、物体与初始条件、成功判据、试验次数和置信区间。仿真接触质量也需要独立检查：综述建议在策略 rollout 上报告平均及最大穿透深度，测量代码不参与奖励或终止条件；仅检查重定向参考轨迹不能证明执行结果的接触合理。综述中的统计受选样与信息提取限制，不应视为全领域普查。
+
 ---
 
 ## 推荐 pipeline（端到端）
@@ -136,6 +143,7 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
 - [运动控制项目笔记](../../sources/papers/motion_control_projects.md)
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md)
 - [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md) — 逐关节可见性门控与加权三角化
+- [Learning Dexterous Manipulation 综述](../../sources/papers/learning_dexterous_manipulation_survey_2610_33486.md) — 训练、硬件与评测报告的统计
 
 ## 关联页面
 

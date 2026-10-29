@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
-updated: 2026-09-15
+updated: 2026-10-26
 ---
 
 # Floating Base Dynamics
@@ -369,6 +369,7 @@ floating base 系统还有一个麻烦点：
 - Lynch & Park (2017), *Modern Robotics*. Ch 8 *Dynamics of Open Chains* — 用李群 / 螺旋理论给出 Lagrange 与 Newton-Euler 形式的统一推导，本科级入口
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 - [sources/papers/diebel_2006_representing_attitude_quaternions.md](../../sources/papers/diebel_2006_representing_attitude_quaternions.md) — 四元数率 ↔ 角速度、$n_q \neq n_v$
+- [sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md](../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md) — 合作人形可组合约简动力学（RoboCompiler 扩展）
 
 ## 推荐继续阅读
 
@@ -380,6 +381,7 @@ floating base 系统还有一个麻烦点：
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) — ABA / RNEA 与 $M(q)$、$g(q)$ 计算
 - [URDF Robot Description](./urdf-robot-description.md)
 - [State Estimation](./state-estimation.md)
+- [RoboCompiler-Humanoids](../entities/paper-robocompiler-humanoids-composable-dynamics.md) — 多人形手牵手 / 支撑切换的可组合浮动基约简动力学（显式 Coriolis + 功率恒等式；arXiv:2610.14237）
 
 ## 一句话记忆
 

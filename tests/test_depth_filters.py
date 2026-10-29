@@ -55,7 +55,7 @@ console.log(JSON.stringify({
 """
         )
         data = json.loads(out.strip())
-        self.assertEqual(data["orderLen"], 28)
+        self.assertEqual(data["orderLen"], 29)
         self.assertTrue(data["hasLoco"])
         self.assertTrue(data["hasMotionGen"])
 
@@ -118,6 +118,7 @@ const cases = [
   ['motion-generation', 'wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md'],
   ['real2sim', 'wiki/entities/articraft.md'],
   ['wam', 'wiki/entities/cosmos-3.md'],
+  ['cross-embodiment', 'wiki/entities/paper-x-wbc.md'],
   ['loco-manipulation', 'wiki/entities/paper-resmimic.md'],
 ];
 const failed = [];

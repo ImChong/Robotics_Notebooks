@@ -56,6 +56,7 @@
 | 让机器人追球射门打比赛 | [人形足球（Humanoid Soccer）](roadmap/depth-humanoid-soccer.md) |
 | 把人体/动物动作变成人形或四足参考轨迹 | [动作重定向（Motion Retargeting）](roadmap/depth-motion-retargeting.md) |
 | 让一群人形同台跳舞变队形炫技 | [人形群控展演（Swarm Performance）](roadmap/depth-humanoid-swarm-performance.md) |
+| 让一个策略适配不同本体（换夹爪 / 换机型 / 换形态） | [跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) |
 | 让仿真训好的策略稳上真机 | [仿真到真机迁移（Sim2Real）](roadmap/depth-sim2real.md) |
 | 让两台人形在擂台上对打 | [人形拳击（Humanoid Boxing）](roadmap/depth-humanoid-boxing.md) |
 | 让机器人读完一条示范就会新任务 | [具身上下文学习（ICL）](roadmap/depth-icl.md) |
@@ -71,7 +72,7 @@
 | 浏览所有知识页 | [完整页面目录](catalog.md) |
 | 搜索特定概念 | [站点搜索](https://imchong.github.io/Robotics_Notebooks/) |
 
-> 二十七条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：遥操作（Goertz 主从机械手，1954）→ 力矩电机设计（磁场定向控制 FOC，1971）→ 传统控制（ZMP 判据，1972）→ 整机硬件设计（WABOT-1 全尺寸人形整机，1973）→ 安全控制（CLF，1983）→ 递归自我改进（EURISKO 自改启发式，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模型架构（反向传播，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 人形足球（首届 RoboCup，1997）→ 动作重定向（Gleicher 动作重定向，1998）→ 人形群控展演（央视春晚 540 台 Alpha 1S 群舞，2016）→ 仿真到真机（域随机化 DR，2017）→ 人形拳击（MuJoCo 人形对抗自博弈，2017）→ 上下文学习（One-Shot Imitation Learning，NeurIPS 2017）→ 行为基础模型（DeepMimic 动作跟踪谱系，2018）→ 具身模型测评（RLBench 标准化视觉操作评测套件，2019）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ 扩散与流匹配策略（Diffusion Policy，2023）→ 视觉–语言–动作（RT-2 确立 VLA，2023）→ 真实到仿真（3D Gaussian Splatting 规模化重建，2023）→ 具身数据（Open X-Embodiment 跨具身数据聚合，2023）→ 世界–动作模型（World Action Models 综述形式化，2026）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
+> 二十八条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：遥操作（Goertz 主从机械手，1954）→ 力矩电机设计（磁场定向控制 FOC，1971）→ 传统控制（ZMP 判据，1972）→ 整机硬件设计（WABOT-1 全尺寸人形整机，1973）→ 安全控制（CLF，1983）→ 递归自我改进（EURISKO 自改启发式，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模型架构（反向传播，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 人形足球（首届 RoboCup，1997）→ 动作重定向（Gleicher 动作重定向，1998）→ 人形群控展演（央视春晚 540 台 Alpha 1S 群舞，2016）→ 跨本体迁移（Devin 等模块化多机器人策略迁移，ICRA 2017）→ 仿真到真机（域随机化 DR，2017）→ 人形拳击（MuJoCo 人形对抗自博弈，2017）→ 上下文学习（One-Shot Imitation Learning，NeurIPS 2017）→ 行为基础模型（DeepMimic 动作跟踪谱系，2018）→ 具身模型测评（RLBench 标准化视觉操作评测套件，2019）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ 扩散与流匹配策略（Diffusion Policy，2023）→ 视觉–语言–动作（RT-2 确立 VLA，2023）→ 真实到仿真（3D Gaussian Splatting 规模化重建，2023）→ 具身数据（Open X-Embodiment 跨具身数据聚合，2023）→ 世界–动作模型（World Action Models 综述形式化，2026）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
 
 ---
 

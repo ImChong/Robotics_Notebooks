@@ -21,6 +21,7 @@ related:
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/paper-flashdexretarget.md
+  - ../entities/paper-card-contact-anchored-retargeting.md
   - ../tasks/manipulation.md
   - ./imitation-learning.md
 sources:
@@ -106,6 +107,9 @@ flowchart LR
 ```
 
 ## 与常见路线的关系
+
+- **接触力目标：** [CARD](../entities/paper-card-contact-anchored-retargeting.md) 在重定向中显式保留接触力目标，并使用触觉反馈跟踪；其重定向框架无需仿真器和物体模型。
+
 
 - **相对 GMR 等纯运动学前端**：GMR 类方法优先解决**骨架几何对齐**；SPIDER 假定已有（或可先做）**运动学参考**，把主计算预算花在**仿真里的动力学与接触可行性**上，产物更贴近「可 rollout 的机器人数据」。
 - **相对 NMR / CEPR**：NMR 用 **RL 跟踪专家**在仿真里构造人机配对监督，再训练**前向网络**做快速推断；SPIDER 不显式以「训练大网络」为主叙事，而是强调**采样优化 + 接触课程**在跨机型数据生成上的**通用外壳**（仍可与学习式模块组合）。

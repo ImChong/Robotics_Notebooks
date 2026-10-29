@@ -8,7 +8,7 @@
 - **链接：** https://github.com/Roboparty/Party_OS
 - **官网：** https://lab.roboparty.com
 - **入库日期：** 2026-07-14
-- **路线核查：** 2026-10-06
+- **路线核查：** 2026-10-06（仓库复核 2026-10-27）
 - **一句话说明：** RoboParty Lab 的人形机器人研发底座，连接本体、数据、训练、动作工具链、Sim2Real、真机验证与开源发布，首批开源 MimicLite、UFO、hhtools 三项工具链。
 - **沉淀到 wiki：** 是（`wiki/entities/party-os.md`、`wiki/overview/roboparty-lab-party-os-technology-map.md`）
 
@@ -54,8 +54,14 @@ Party OS 是 RoboParty Lab 对外沉淀的 **开放研发基础设施**，目标
 - UFO 的[项目页](https://roboparty.github.io/UFO/)链接到[公开源码](https://github.com/Roboparty/UFO)，README 提供数据下载、smoke、FB / TeCH 训练、推理和部署路径。项目与数据入口细节见[既有归档](roboparty_ufo.md)。
 - INTACT 的[上游](https://github.com/zju3dv/INTACT-JEPA)已发布训练/评测入口及权重链接；[RoboParty fork](https://github.com/Roboparty/INTACT-JEPA)仍为研究预览。开放状态按仓库分别判断，见[规范仓归档](intact-jepa.md)。
 
+## 仓库复核（2026-10-27）
+
+- 仓库最近提交 2026-10-21「Add P-BFM to Party OS roadmap」；README 的子项目表在 hhtools / MimicLite / UFO / INTACT-JEPA 之外新增 **I-BFM（`Roboparty/I-BFM-Code`）** 与 **P-BFM（`Roboparty/P-BFM`）**，归在“交互感知 Infra”层；“数据生成（generate）”仍标“即将开源”；路线图图片为 `assets/party-os-roadmap-v3.png`。
+- 许可 GPL-3.0，README 声明子项目各自保留许可。
+
 ## 技术地图与子模块
 
 - [party-os](../../wiki/entities/party-os.md)
 - [roboparty-lab-party-os-technology-map](../../wiki/overview/roboparty-lab-party-os-technology-map.md)
+- 后加入子模块：[paper-i-bfm](../../wiki/entities/paper-i-bfm.md)、[paper-p-bfm](../../wiki/entities/paper-p-bfm.md)、[paper-intact](../../wiki/entities/paper-intact.md)
 - 子模块：[mimiclite](../../wiki/entities/mimiclite.md)、[roboparty-ufo](../../wiki/entities/roboparty-ufo.md)、[human-humanoid-tools](../../wiki/entities/human-humanoid-tools.md)

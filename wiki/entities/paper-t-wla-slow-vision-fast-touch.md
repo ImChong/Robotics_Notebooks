@@ -5,7 +5,7 @@ tags:
   - vla
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.28814"
 project_id: t-wla-slow-vision-fast-touch
 project: https://anonymous-submission-20.github.io/T-WLA.github.io/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/t-wla-slow-vision-fast-touch_arxiv_2610_28814.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "T-WLA：连接低频视觉与高频触觉（arXiv:2610.28814）：T-WLA 研究低频视觉与高频触觉的联合建模，使机器人在利用视觉进行任务级决策的同时，能够通过快速触觉信息响应接触变化。"
 ---
 

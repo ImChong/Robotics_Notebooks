@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-25
+updated: 2026-10-29
 related:
+  - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
   - ../entities/paper-commander-executor-coordination.md
   - ../entities/paper-egoexplorer-vision-motion-touch-dataset.md
@@ -96,7 +97,11 @@ related:
   - ../entities/paper-gvla-gripper-aware-vla.md
   - ../entities/paper-blind-grasp-reflex.md
   - ../entities/paper-mocap-mobile-code-as-policies.md
+  - ../entities/paper-roboskill.md
+  - ../entities/paper-genesis-handover.md
 sources:
+  - ../../sources/papers/roboskill_arxiv_2609_37810.md
+  - ../../sources/repos/roboskill.md
   - ../../sources/papers/handson_arxiv_2610_26765.md
   - ../../sources/sites/handson-project-page.md
   - ../../sources/repos/handson.md
@@ -121,6 +126,7 @@ sources:
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
   - ../../sources/blogs/generalist_thousand_hands.md
   - ../../sources/papers/mocap_arxiv_2610_20998.md
+  - ../../sources/papers/genesis_handover_arxiv_2610_08003.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -131,6 +137,8 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 ## 一句话定义
 
 让机器人的手能做事情——抓东西、搬东西、用东西。
+
+技能获取与跨任务复用的例子见 [RoboSkill：Explore, Execute, Evolve](../entities/paper-roboskill.md)。
 
 ## 英文缩写速查
 
@@ -153,6 +161,8 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。**多物体 clutter 下的物体系 6D 跟踪与在线 mesh**（无 CAD、遮挡可恢复）见 [Point2Pose](../entities/paper-point2pose.md)。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
 
 ### 3. 灵巧操作
+
+[DexSafe](../entities/paper-dexsafe.md) 在 LEAP 手上训练手内位姿到达策略，并用残差安全过滤器权衡目标到达与掉落风险。
 很多操作需要多指协调、精细力控（如插头、拧瓶盖）。仿真侧 Meta [Project SuperDex](../entities/project-superdex.md) 提供 **接触优先物理引擎 + Gymnasium 风格 Lab** 的端到端灵巧操作平台（已开源 Apache 2.0）。工业侧把这类任务收成可采购实物 + 状态终态的规格，见 [DexBench](../entities/dexbench.md)（18 原子任务 / OSC；官方评测仓待发布）。HAND ERC 从**手型设计归因**出发给出四层 dexterity benchmark 与 16 项 DexNex 原子任务，见 [HAND ERC 灵巧评测综述](../entities/paper-hand-erc-benchmarking-dexterity.md)（arXiv:2609.05585；规范站已公开、无官方仿真仓）。真机扑克桌面协议见 [DexHoldem](../entities/paper-dexholdem.md)（ShadowHand + UR10e；报 SPSR 而不是只报做成）。
 
 ### 4. 开放词汇
@@ -568,6 +578,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Embody](../entities/anthropic-embody.md) — LIBERO 上的 LLM×VLA 监督评测
 - [Blind Grasp Reflex](../entities/paper-blind-grasp-reflex.md) — 将手臂到达与只依赖本体感觉的灵巧手抓取分开
 - [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
+
+- [GENESIS-Handover](../entities/paper-genesis-handover.md) — 通过多种生成式手-物假设选择任务导向的人机递物姿态。
 
 ## 参考来源
 

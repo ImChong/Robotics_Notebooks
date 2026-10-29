@@ -1,11 +1,11 @@
 // 005 第 3 幕：规矩二——行列式等于 1（不照镜子），最后给两条规矩起名：特殊正交群 SO(3)。左边网格（x、y 都是 −3…3），右栏放矩阵和算式。
 // 句 1「照镜子」y 轴上画一面镜子，「左右一翻」网格、两根小箭头和一面亮黄小旗（F 形，不对称）左右翻过去；右栏出镜子的矩阵，
 //    「长度」「角度」两行打勾，「拦不住」写出「规矩一拦不住它」；
-// 句 2「小旗」鼓一下，「不管怎么转」原来那面小旗的虚线影子绕原点转一整圈，怎么转都和翻过去的小旗对不上，「这个样子」红叉「转不出来」；
+// 句 2「小旗」鼓一下，「不管怎么转」原来那面小旗的虚线影子绕原点转一整圈，怎么转都和翻过去的小旗对不上，「这个样子」橙叉「转不出来」；
 // 句 3 小旗退场、网格回到原样，右栏顶上出「行列式」；「小方块」两根小箭头围成的小方块涂亮黄、写「面积 1」，方块里一支逆时针的小弯箭头；
 //    「变换以后」网格横着拉长到 2 倍，「面积」「几倍」方块写「面积 2」，右栏一行「拉长 2 倍 → 行列式 2」；
-//    「翻了面」网格变成镜子（中途压扁再翻过去），方块翻到背面变成红色，小弯箭头变成顺时针，「负号」右栏一行「镜子：翻面 → 行列式 −1」；
-// 句 4 网格转回 36.87° 的旋转；右栏换成字母矩阵 [[a, b], [c, d]]，「左上」「右下」两个数框亮、连一条绿对角线，「减去」「右上」「左下」框亮、连红对角线，
+//    「翻了面」网格变成镜子（中途压扁再翻过去），方块翻到背面变成橙色，小弯箭头（蓝，绕 z 轴转）变成顺时针，「负号」右栏一行「镜子：翻面 → 行列式 −1」；
+// 句 4 网格转回 36.87° 的旋转；右栏换成字母矩阵 [[a, b], [c, d]]，「左上」「右下」两个数框亮黄、连一条亮黄对角线，「减去」「右上」「左下」框亮、连红对角线，
 //    下面一行一段段写出「ad − bc」；
 // 句 5 字母换成旋转矩阵的数，「零点八乘零点八」「减去」「负零点六乘零点六」「等于一」第二行写出算式，「面积不变」方块写「面积 1」，「没翻面」小弯箭头亮一下；
 // 句 6「镜子」网格翻成镜子，矩阵换成镜子的数，第三行写出「(−1)×1 − 0×0 = −1」，「第二条规矩」顶上改成「规矩二：行列式 = 1」，两行各打勾、打叉；
@@ -68,7 +68,7 @@
       var mirror = E.el('g', {}, flat);
       K.paint(E.el('rect', { x: OX - 4, y: OY - 3 * U, width: 8, height: 6 * U, rx: 3 }, mirror), E.tint(E.ACC, 45, 'var(--demo-surface)'), E.ACC);
       E.halo(E.txt(mirror, OX + 12, OY - 3 * U + 22, '镜子', 22, E.ACC, 'start', 900));
-      // 方块（正面亮黄、背面红）+ 方块里的小弯箭头 + 面积
+      // 方块（正面亮黄、背面橙）+ 方块里的小弯箭头 + 面积
       var sq = E.el('path', { 'stroke-width': 2.5 }, flat);
       var turnArc = E.el('path', { fill: 'none', 'stroke-width': 2, 'stroke-linecap': 'round' }, flat);
       var turnHead = E.el('path', { 'stroke-width': 1.5, 'stroke-linejoin': 'round' }, flat);
@@ -80,32 +80,32 @@
       var flag = FLAG.map(function () {
         return K.paint(E.el('path', { fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, flat), null, E.HI);
       });
-      var e1 = E.vec(flat, E.GOOD, 5, { head: 16 }), e2 = E.vec(flat, E.WARN, 5, { head: 16 });
+      var e1 = E.vec(flat, E.X, 5, { head: 16 }), e2 = E.vec(flat, E.Y, 5, { head: 16 });
 
       /* 右栏 ①（句 1、2）：镜子 */
       var r1 = E.el('g', {}, flat);
       var mirTag = E.tag(r1, 472, 14, 300, 42, '镜子：左右一翻', E.ACC, { size: 22, ink: E.INK, weight: 900, rx: 12 });
-      var mMir = E.mat(r1, MX, 116, MIR, { size: 30, dx: 84, dy: 44, pad: 46, cw: 72, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var mMir = E.mat(r1, MX, 116, MIR, { size: 30, dx: 84, dy: 44, pad: 46, cw: 72, colors: [E.X, E.Y, E.X, E.Y] });
       var okRows = ['长度不变', '角度不变'].map(function (t, i) {
         var g = E.el('g', {}, r1), y = 214 + 40 * i;
         return { g: g, mark: E.check(g, EX + 10, y - 16, 22, E.GOOD, 4), text: E.txt(g, EX + 44, y + 3, t, 24, E.INK, 'start', 700) };
       });
       var pass = E.txt(r1, EX + 10, 304, '规矩一拦不住它', 24, E.WARN, 'start', 900);
       var noG = E.el('g', {}, r1);
-      E.cross(noG, EX + 21, 345, 10, E.BAD, 4.5);
-      E.txt(noG, EX + 44, 353, '小旗反了，转不出来', 24, E.BAD, 'start', 900);
+      E.cross(noG, EX + 21, 345, 10, E.ERR, 4.5);
+      E.txt(noG, EX + 44, 353, '小旗反了，转不出来', 24, E.ERR, 'start', 900);
 
       /* 右栏 ②（句 3–6）：行列式 */
       var r2 = E.el('g', {}, flat);
       var detTag = E.tag(r2, 452, 14, 340, 44, '', E.ACC, { size: 22, ink: E.INK, weight: 900, rx: 12, sw: 2.5 });
       var rowA = E.txt(r2, EX, 118, '拉长 2 倍：面积 ×2 → 行列式 2', 22, E.INK, 'start', 700);
-      var rowB = E.txt(r2, EX, 166, '镜子：翻了面 → 行列式 −1', 22, E.BAD, 'start', 700);
+      var rowB = E.txt(r2, EX, 166, '镜子：翻了面 → 行列式 −1', 22, E.ERR, 'start', 700);
       // 两条对角线垫在矩阵底下（数字框把线遮住，只在框和框之间露出来）
-      var diag = [E.GOOD, E.BAD].map(function (c) { var l = K.paint(E.el('path', { 'stroke-width': 3, 'stroke-linecap': 'round' }, r2), null, c); l.style.strokeOpacity = 0.7; return l; });
-      var mAbc = E.mat(r2, MX, 120, ['a', 'b', 'c', 'd'], { size: 32, dx: 90, dy: 50, pad: 48, cw: 70, colors: [E.GOOD, E.WARN, E.GOOD, E.WARN] });
+      var diag = [E.HI, E.VIOLET].map(function (c) { var l = K.paint(E.el('path', { 'stroke-width': 3, 'stroke-linecap': 'round' }, r2), null, c); l.style.strokeOpacity = 0.7; return l; });
+      var mAbc = E.mat(r2, MX, 120, ['a', 'b', 'c', 'd'], { size: 32, dx: 90, dy: 50, pad: 48, cw: 70, colors: [E.X, E.Y, E.X, E.Y] });
       var detLab = E.txt(r2, EX, 240, '行列式 =', 24, E.INK, 'start', 900);
       var eq = [[EX + 108, 232], [EX, 290], [EX, 348]].map(function (p) { return E.tex(r2, p[0], p[1], '', 28, E.INK, 'start', { w: 330, h: 48 }); });
-      var marks = [E.check(r2, 0, 0, 22, E.GOOD, 4), E.cross(r2, 0, 0, 10, E.BAD, 4.5)];   // 打在第二、三行左边
+      var marks = [E.check(r2, 0, 0, 22, E.GOOD, 4), E.cross(r2, 0, 0, 10, E.ERR, 4.5)];   // 打在第二、三行左边
 
       /* ══ 三维：小坐标架 + SO(3) ══ */
       var solid = E.el('g', {}, s);
@@ -154,10 +154,10 @@
           var gA = 2 * Math.PI * f(st, T.spin[0], T.spin[1] - T.spin[0]);
           ghost.forEach(function (p, i) { p.setAttribute('d', poly(E.rot(gA), FLAG[i])); E.op(p, f(st, T.spin[0] - 0.3, 0.3) * (1 - f(st, T.reset[0], 0.4)) * 0.85); });
 
-          /* 方块：det > 0 正面亮黄，det < 0 背面红；小弯箭头跟着变换（镜子里变成顺时针）；面积 */
+          /* 方块：det > 0 正面亮黄，det < 0 背面橙；小弯箭头跟着变换（镜子里变成顺时针）；面积 */
           var det = M[0] * M[3] - M[1] * M[2], front = det >= 0;
           sq.setAttribute('d', poly(M, [[0, 0], [1, 0], [1, 1], [0, 1]]) + ' Z');
-          K.paint(sq, E.tint(front ? E.HI : E.BAD, 30, 'var(--demo-surface)'), front ? E.HI : E.BAD);
+          K.paint(sq, E.tint(front ? E.HI : E.ERR, 30, 'var(--demo-surface)'), front ? E.HI : E.ERR);
           var sqOn = f(st, T.square, 0.4) * vis;
           E.op(sq, sqOn);
           // 方块里的小弯箭头：先在原来的小方块里定好，再跟着矩阵变（镜子里自动变成顺时针）；三角按变换后最后一小段的方向画
@@ -167,7 +167,7 @@
           turnHead.setAttribute('d', 'M ' + tx.toFixed(1) + ' ' + ty.toFixed(1) +
             ' L ' + (tx - L * Math.cos(an) + W * Math.sin(an)).toFixed(1) + ' ' + (ty - L * Math.sin(an) - W * Math.cos(an)).toFixed(1) +
             ' L ' + (tx - L * Math.cos(an) - W * Math.sin(an)).toFixed(1) + ' ' + (ty - L * Math.sin(an) + W * Math.cos(an)).toFixed(1) + ' Z');
-          K.paint(turnArc, null, E.INK); K.paint(turnHead, E.INK, E.S1);   // 白色：红色方块上红线看不清，翻没翻面看箭头转的方向
+          K.paint(turnArc, null, E.Z); K.paint(turnHead, E.Z, E.S1);   // 平面里的转动是绕 z 轴转：用 z 轴的蓝；翻没翻面看箭头转的方向
           var tb = bump(st, T.noflip, 0.9);
           turnArc.style.strokeWidth = 2 + 1.5 * tb; E.glow(turnArc, E.HI, tb > 0.05); E.glow(turnHead, E.HI, tb > 0.05);
           var arcOn = sqOn * E.clamp(Math.abs(det) / 0.4, 0, 1);   // 翻面途中方块压扁，弯箭头没有方向：淡掉
@@ -180,7 +180,7 @@
           // 翻面途中（「翻了面」「镜子」两段）面积会数过 0.9、0.8… 这些没意义的中间值，还会擦到弯箭头：翻的时候先收起，翻完再出来
           var flipping = [T.toM, T.toMir].some(function (w) { return st > w[0] - 0.05 && st < w[0] + w[1] + 0.05; });
           E.op(areaLab, flipping ? 0 : areaOn * vis);
-          areaLab.style.fill = front ? E.INK : E.BAD;
+          areaLab.style.fill = front ? E.INK : E.ERR;
           var ab = bump(st, T.area, 0.8);
           areaLab.style.fontSize = (20 + 4 * ab) + 'px';
 
@@ -206,14 +206,14 @@
           mAbc.set(cells);
           E.op(mAbc.g, f(st, T.abcd, 0.35));
           var hiA = f(st, T.a, 0.25), hiD = f(st, T.d, 0.25), hiB = f(st, T.b, 0.25), hiC = f(st, T.c, 0.25);
-          mAbc.cellBox(0, E.GOOD, hiA); mAbc.cellBox(3, E.GOOD, hiD); mAbc.cellBox(1, E.BAD, hiB); mAbc.cellBox(2, E.BAD, hiC);
+          mAbc.cellBox(0, E.HI, hiA); mAbc.cellBox(3, E.HI, hiD); mAbc.cellBox(1, E.VIOLET, hiB); mAbc.cellBox(2, E.VIOLET, hiC);
           [[0, 3, hiD], [1, 2, hiC]].forEach(function (d, i) {   // 只连两个框之间的空隙（框的角到角），不穿过数字
             var p = mAbc.pos(d[0]), q = mAbc.pos(d[1]), u = d[2], sx = q[0] > p[0] ? 1 : -1;
             p = [p[0] + sx * 35, p[1] + 17.6]; q = [q[0] - sx * 35, q[1] - 17.6];
             diag[i].setAttribute('d', 'M ' + p[0] + ' ' + p[1] + ' L ' + (p[0] + (q[0] - p[0]) * u).toFixed(1) + ' ' + (p[1] + (q[1] - p[1]) * u).toFixed(1));
             E.op(diag[i], u > 0 ? 0.85 : 0);
           });
-          var g = H.good, w = H.warn, bad = H.bad;
+          var g = E.HEX.x, w = E.HEX.y, bad = E.HEX.err;
           function c(x, hex) { return '\\textcolor{' + hex + '}{' + x + '}'; }
           // 第一行：ad − bc
           var L1 = c('a', g) + c('d', w);

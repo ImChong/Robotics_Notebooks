@@ -8,13 +8,14 @@
 - **PDF：** <https://arxiv.org/pdf/2610.26854>
 - **作者：** Jiaming Liu, Xinghao Zhu, Yiming Zhang, Shanghang Zhang, Yinxi Wang, Yichu Yang, Zhuoyang Liu, Dantong Niu, Soha Pouya, Juekun Li, Yan Chang
 - **arXiv 评论栏：** （无）
-- **外链：** <https://nvidia-isaac.github.io/video_to_data/physicalword/>
+- **项目页：** <https://nvidia-isaac.github.io/video_to_data/physicalword/>（[项目页归档](../sites/physword.md)）
+- **机构：** NVIDIA、北京大学、加州大学伯克利分校
 - **入库日期：** 2026-10-26
 - **一句话说明：** 物理词汇：用于组织机器人操作潜在推理的词汇体系。
 
 ## 开源状态
 
-- arXiv 摘要页/评论给出项目页或外链（https://nvidia-isaac.github.io/video_to_data/physicalword/）；未发现代码仓库链接（2026-10-26，仅核对 arXiv 摘要页）
+- 截至 2026-10-29，项目页显示代码即将发布，未列出代码、数据或权重下载链接。
 
 ## 核心摘录
 

@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-10-24
+updated: 2026-10-28
 related:
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
@@ -33,12 +33,14 @@ related:
   - ./isaac-teleop.md
   - ./lerobot-humanoid.md
   - ./xbotics-embodied-ai-handbook.md
+  - ./fluxvla-engine.md
 sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/sites/lerobot-envhub-docs.md
   - ../../sources/sites/lerobot-dataset-v3-docs.md
   - ../../sources/sites/lerobot-huggingface-org.md
   - ../../sources/courses/robot_learning_tutorial_arxiv_2510_12403.md
+  - ../../sources/papers/fluxvla_arxiv_2609_17210.md
 ---
 
 # LeRobot (Hugging Face)
@@ -175,6 +177,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 
 - **ROS 2：** [ROS 2](../concepts/ros2-basics.md) 是分布式中间件，LeRobot 是数据驱动的端到端学习框架；两者可以并用（如上文 ROS2SmolVLA、ROBOTIS 的做法）：ROS 2 管通信，LeRobot 管数据与策略。
 - **DimOS：** [DimOS](./dimensionalos-dimos.md) 负责现场模块编排、SLAM 导航和自然语言控制，与 LeRobot 的「数据集 + 策略训练」正交，常见分层是「训练用 LeRobot、集成用 DimOS / ROS」。
+- **FluxVLA Engine：** [FluxVLA Engine](./fluxvla-engine.md)（arXiv:2609.17210）是逐际开源的配置驱动 VLA 工程平台，覆盖数据集、多策略族训练、仿真评测与 RTC 真机推理；与 LeRobot 同属「数据→策略→部署」一站式框架，选型时重点对照数据格式互操作与真机 operator 接口。
 - **Model Hardware Standard（MHS）：** Anthropic 的 [MHS](../concepts/model-hardware-standard.md) 让 agent 发现并操作真实设备，Hugging Face 称会加进 LeRobot；截至 2026-09 仍是研究预览、规范与 SDK 未开源，暂不能当依赖。
 
 ## 常见误区
@@ -193,6 +196,7 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [NVIDIA SO-101 Sim2Real 课程](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — `lerobot-record` 采集 so101_follower/leader 真机与仿真演示
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [RIO 仓库与论文归档](../../sources/repos/robot-io-rio.md) — 与 LeRobot 数据导出衔接的跨形态实时 I/O 框架
+- [FluxVLA Engine 论文归档](../../sources/papers/fluxvla_arxiv_2609_17210.md) — 配置驱动 VLA 工程平台，与 LeRobot 的数据格式与生态互操作对照
 - [Cyclo Intelligence 仓库归档](../../sources/repos/cyclo_intelligence.md) — LeRobot 作为 Cyclo 推理后端之一
 - [Evo-1 论文与仓库归档](../../sources/papers/evo1_arxiv_2511_04555.md) — 官方 LeRobot 内置轻量 VLA 策略（SO100/SO101）
 - [reBot-DevArm 仓库归档](../../sources/repos/rebot-devarm.md) — Seeed 开源桌面臂官方 LeRobot 教程对接

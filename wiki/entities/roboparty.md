@@ -2,9 +2,10 @@
 type: entity
 tags: [roboparty, humanoid, open-source, hardware, infrastructure]
 status: complete
-updated: 2026-10-15
+updated: 2026-10-27
 related:
   - ./roboto-origin.md
+  - ./roboparty-rp1.md
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ./open-source-humanoid-hardware.md
@@ -27,6 +28,8 @@ sources:
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/repos/roboparty_train.md
   - ../../sources/sites/roboparty_rp1_opensource_status_2026-10-15.md
+  - ../../sources/sites/roboparty_rp1_official.md
+  - ../../sources/repos/roboparty_rp1.md
   - ../../sources/repos/roboparty_deploy.md
 summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
@@ -145,6 +148,9 @@ RoboParty 的 GitHub 组织入口为 [github.com/Roboparty](https://github.com/R
 - [MimicLite](./mimiclite.md) · [UFO](./roboparty-ufo.md) · [human-humanoid-tools](./human-humanoid-tools.md)
 - [TeCH 论文实体](./paper-tech-humanoid-control.md)
 - [INTACT 论文实体](./paper-intact.md) — Lab 联署意图→动作无搜索 WM
+- [RP1 硬件制造资料](./rp1-hardware.md) · [ROMOMO 关节模组](./romomo.md) · [RP Hand 灵巧手](./rp-hand.md) · [RP1 Test 可靠性平台](./rp1-test.md) · [Roboparty Joystick](./roboparty-joystick.md) — RP1 硬件与工具子项目
+- [roboparty_deploy](./roboparty-deploy.md) · [roboparty_train](./roboparty-train.md) · [RP1_description](./rp1-description.md) · [RP1_firmware](./rp1-firmware.md) — RP1 软件与系统子项目
+- [robolab · AMP](./roboparty-robolab-amp.md) · [robolab · BeyondMimic](./roboparty-robolab-beyondmimic.md) · [robolab · Parkour](./roboparty-robolab-parkour.md) — RP1 Demo 中基于 robolab 仓库的三个训练任务；[VIStream](./vistream.md) — RP1 README 相关论文中的视觉-惯性工作（非 Roboparty 仓库）
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — 国内另一类开源路线：不做整机开源，开源 LingBot 感知→世界模型→VLA 模型栈
 
 ## 推荐继续阅读

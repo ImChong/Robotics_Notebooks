@@ -190,3 +190,5 @@ sequenceDiagram
 - [补充视频（真机实验）](https://youtu.be/BH6FpQzwm8M)
 - [TWIST2 项目页](https://yanjieze.com/projects/TWIST2/)
 - [mjlab 文档](https://mujocolab.github.io/mjlab/main/index.html)
+
+- 相关研究：[跨本体全身动作跟踪](./paper-mimicall.md)

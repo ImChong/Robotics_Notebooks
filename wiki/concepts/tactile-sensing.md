@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-28
 related:
   - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -27,6 +27,7 @@ related:
   - ../entities/eflesh.md
   - ../entities/opentac.md
 sources:
+  - ../../sources/papers/grifips_science_advances_2026.md
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
@@ -83,6 +84,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 
 - **可定制 3D 触觉皮肤实例：** [OpenTac](../entities/opentac.md) 使用柔性压阻阵列与每四个 taxel 对齐的软凸点，通过四路共模/差分响应分别估计法向力与剪切力；CAD、仿真、跨皮肤数据迁移和自适应读取工具均开放。
 
+- **梯度离子触觉实例：** [GriFIPS](../../sources/papers/grifips_science_advances_2026.md) 以孔径梯度弹性网格调节电极与离子水凝胶的逐级接触。论文摘要报告单通道灵敏度 175.9 kPa⁻¹、线性范围至 360 kPa（R² = 0.997），并扩展为可分辨三轴力的结构；指标的测试条件及代码、数据开放状态仍需核实。
+
 ### 3. 多轴力矩传感器 (Multi-axis Force/Torque Sensors, F/T)
 - **原理**：通常安装在机械臂的手腕处（Wrist F/T）或指尖内部（如应变片构成的六维力传感器）。
 - **优点**：测量极其精准，带宽极高（可达 1000Hz+），是工业阻抗控制（Impedance Control）的标配。
@@ -132,6 +135,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [Contact Wrench Cone (接触力旋量锥) 形式化](../formalizations/contact-wrench-cone.md)
 
 ## 参考来源
+- [GriFIPS 论文摘要归档](../../sources/papers/grifips_science_advances_2026.md) — 梯度夹层离子压力传感与三轴扩展
 - Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)

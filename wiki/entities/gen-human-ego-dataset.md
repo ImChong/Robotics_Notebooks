@@ -138,6 +138,9 @@ flowchart TB
 - **DFM 黑盒边界：** 手重建/深度/语义为官方离线产物；质量审计需抽样 + 与自建重建对照。
 - **机器人距离：** 人类 MCAP **无** 真机关节轨迹；进 sim/real 仍需 embodiment 对齐或重定向。
 
+
+- [Gen-HumanWholeBody](./gen-human-whole-body-dataset.md) — 同机构全身操作数据集。
+
 ## 关联页面
 
 - [das-datakit（简智 MCAP 工具链）](./cn-os-das-datakit.md)

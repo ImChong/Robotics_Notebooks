@@ -9,12 +9,28 @@
   var C = K.xColors;
   var E = window.EP005 = { K: K, scenes: [] };
 
-  /* 颜色同 003：矩阵 / 变换 violet；两根小箭头与矩阵的两列——往右的一格 / 第一列 good（绿）、往上的一格 / 第二列 warn（琥珀）；
-     三维的第三根小箭头 / 第三列 accent（蓝）；不合格、跳出旋转矩阵 bad；本系列亮黄 --hi 只做强调（小旗、小方块）。
+  /* 颜色：坐标轴按机器人领域的习惯 x 红、y 绿、z 蓝（E.X / E.Y / E.Z）——往右的一格 / 第一列 / x 轴红，往上的一格 / 第二列 / y 轴绿，
+     第三根小箭头 / 第三列 / z 轴蓝；平面里的转动是绕 z 轴转，转动的弧线、小弯箭头也用蓝。矩阵 / 变换 violet；
+     不合格、跳出旋转矩阵、镜子的背面用橙 E.ERR（红色留给 x 轴）；打勾、规矩牌这类「对」仍用 good（绿）；本系列亮黄 --hi 只做强调（小旗、小方块）。
      KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
   E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
-  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a',
+    x: '#e06c75', y: '#4ec9a4', z: '#569cd6', err: '#ff7b3a' };
+  E.Z = E.HEX.z; E.ERR = E.HEX.err;
+  /* 003、004 的两根小箭头是 x 绿、y 琥珀：片头和第 1 幕开头先沿用，第 1 幕讲颜色约定时渐变成 x 红、y 绿。
+     E.X / E.Y 是 CSS 变量（这一幕没设就是新配色）；E.axes(svg, px, py) 在这一幕的 svg 上设：0 = 旧色、1 = 新色，返回两个 hex 给 KaTeX 用 */
+  E.HEX.x0 = E.HEX.good; E.HEX.y0 = E.HEX.warn;
+  E.X = 'var(--ax-x, ' + E.HEX.x + ')'; E.Y = 'var(--ax-y, ' + E.HEX.y + ')';
+  function mixHex(a, b, p) {
+    var A = parseInt(a.slice(1), 16), B = parseInt(b.slice(1), 16);
+    return '#' + [16, 8, 0].map(function (s) { var u = (A >> s) & 255, v = (B >> s) & 255; return ('0' + Math.round(u + (v - u) * p).toString(16)).slice(-2); }).join('');
+  }
+  E.axes = function (svg, px, py) {
+    var x = mixHex(E.HEX.x0, E.HEX.x, px), y = mixHex(E.HEX.y0, E.HEX.y, py);
+    svg.style.setProperty('--ax-x', x); svg.style.setProperty('--ax-y', y);
+    return [x, y];
+  };
 
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }
@@ -105,7 +121,7 @@
   function cross(parent, cx, cy, r, color, w) {
     var p = el('path', { d: 'M ' + (cx - r) + ' ' + (cy - r) + ' L ' + (cx + r) + ' ' + (cy + r) + ' M ' + (cx + r) + ' ' + (cy - r) + ' L ' + (cx - r) + ' ' + (cy + r),
       fill: 'none', 'stroke-width': w || 3, 'stroke-linecap': 'round' }, parent);
-    K.paint(p, null, color || E.BAD);
+    K.paint(p, null, color || E.ERR);
     return p;
   }
   // 圆角胶囊标签：rect + 文字；返回 { g, rect, text }
@@ -355,14 +371,14 @@
     }).join('\\\\') + '\\end{bmatrix}';
   };
 
-  /* ── 三维小坐标架：原点 (cx, cy)，单位长 L px；三根小箭头（x 绿、y 琥珀、z 蓝）+ 三根小箭头围成的小方块（淡线）。
+  /* ── 三维小坐标架：原点 (cx, cy)，单位长 L px；三根小箭头（x 红、y 绿、z 蓝）+ 三根小箭头围成的小方块（淡线）。
      set(M)：M 是 3×3（列 = 三根小箭头转完以后的方向，可以不是旋转矩阵）；proj：E.view3 的投影 ── */
   E.gizmo = function (parent, cx, cy, L, proj, opts) {
     var o = opts || {};
     var g = el('g', {}, parent), box = el('g', {}, g);
     var edges = [];
     for (var k = 0; k < 12; k++) edges.push(K.paint(el('line', { 'stroke-width': 1.6, 'stroke-dasharray': '5 5' }, box), null, E.MUT));
-    var cols = [E.GOOD, E.WARN, E.ACC];
+    var cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { return E.vec(g, c, o.w || 4.5, { head: 14 }); });
     var labs = ['x', 'y', 'z'].map(function (s, i) { return halo(txt(g, 0, 0, s, 22, cols[i], 'middle', 700)); });
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }
@@ -438,9 +454,9 @@
     return api;
   };
 
-  /* 骨盆上的三根小箭头（x 前 绿、y 左 琥珀、z 上 蓝）：E.frame3(parent) → { g, set(f)：f 是 E.g1(...).frame() 的结果 } */
+  /* 骨盆上的三根小箭头（x 前 红、y 左 绿、z 上 蓝）：E.frame3(parent) → { g, set(f)：f 是 E.g1(...).frame() 的结果 } */
   E.frame3 = function (parent, w) {
-    var g = el('g', {}, parent), cols = [E.GOOD, E.WARN, E.ACC];
+    var g = el('g', {}, parent), cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { var a = E.vec(g, c, w || 4.5, { head: 13 }); a.line.style.filter = 'drop-shadow(0 0 2px #000)'; return a; });
     var dot = K.paint(el('circle', { r: 4.5, 'stroke-width': 2 }, g), E.INK, E.S1);
     return {

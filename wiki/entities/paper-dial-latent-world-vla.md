@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, robocasa, manipulation]
 status: complete
-updated: 2026-09-23
+updated: 2026-10-28
 arxiv: "2603.29844"
 related:
   - ./light-o1.md
@@ -72,6 +72,8 @@ summary: "DIAL（arXiv:2603.29844）：VLA 中解耦 intent 与 action，用 lat
 5. **部署** 仍依赖仿真 teleop 数据分布；真机 zero-shot 未作为本文主 claim。
 
 ## 关联页面
+
+- [ThinkWorld](./paper-thinkworld.md) — 用未来特征预测强化动作推理，并利用人类视频学习技能组合。
 
 - [Light-O1](./light-o1.md) — 同 benchmark 更强 reported macro success
 - [RoboCasa](./robocasa.md) — 仿真环境与数据协议
