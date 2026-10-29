@@ -57,12 +57,24 @@
       ],
       foot: { s: '**优化**：在约束里，找让代价最小的变量', at: 25.61 }
     },
-    outroDur: 14.59,
+    outroDur: 18.43,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
     outro: {
       next: { ep: '009', q: '第二季开讲：刚体又转又移，\n速度怎么用六个数一起说清楚？', at: 0 },
       link: { s: '<b>完整内容</b><br>imchong.github.io/Robotics_Notebooks', at: 9.58 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 12.72 }
+      refs: {
+        at: 12.72,
+        items: [
+          '**《Convex Optimization》** Boyd & Vandenberghe：1.1、4.1.1 节（变量、目标函数即代价函数、约束），9.3 节梯度下降',
+          '**《Underactuated Robotics》** Tedrake：第 24 章（优化问题的写法）、第 8 章（LQR 的代价）',
+          '**《Modern Robotics》** Lynch & Park：6.2 节（逆运动学用优化）、12.1 节（只能推，不能拉）',
+          '**mink 文档**：逆运动学写成二次规划，关节不超限位',
+          '**Herzog 等**（arXiv:1410.7284）：全身控制的变量是关节加速度、力矩和接触力',
+          '**《Reinforcement Learning》** Sutton & Barto：式 (13.1)，策略参数一小步一小步地改',
+          '**Unitree G1 URDF**（unitree_ros）：29 个转动关节'
+        ]
+      },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 16.56 }
     }
   };
 })();
