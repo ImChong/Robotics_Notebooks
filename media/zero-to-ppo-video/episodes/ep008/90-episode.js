@@ -38,9 +38,9 @@
     pitch: '在限制下找最好的解，机器人里到处都是',
     meta: '<b>数学打底：优化问题的直觉</b><br>Robotics Notebooks · 高中数学 · 不用代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
-    // 划重点 / 片尾里的加粗词：变量 good、代价 / 目标函数 violet、约束 bad、碗底 / 最好的选择 hi
+    // 划重点 / 片尾里的加粗词：变量 good、代价 / 目标函数 violet、约束橙（同 00-common.js 的 E.BAD）、碗底 / 最好的选择 hi
     boldColors: { '变量': 'var(--demo-good)', '代价': 'var(--violet)', '目标函数': 'var(--violet)', '目标': 'var(--violet)',
-      '约束': 'var(--demo-bad)', '碗底': 'var(--hi)', '优化问题': 'var(--hi)', '优化': 'var(--hi)', '出界': 'var(--demo-bad)' },
+      '约束': '#ff7b3a', '碗底': 'var(--hi)', '优化问题': 'var(--hi)', '优化': 'var(--hi)', '出界': '#ff7b3a' },
     introDur: 23.17,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
@@ -52,7 +52,7 @@
       items: [
         { c: 'var(--demo-good)', n: '① 变量', s: '由我们来选的数：这一步迈几格 u', at: 1.87 },
         { c: 'var(--violet)', n: '② 目标函数', s: '给每个选择算代价：迈 2 格只扣 8 分', at: 6.65 },
-        { c: 'var(--demo-bad)', n: '③ 约束', s: '不能越过的线：最好的解常贴在边上', at: 12.6 },
+        { c: '#ff7b3a', n: '③ 约束', s: '不能越过的线：最好的解常贴在边上', at: 12.6 },
         { c: 'var(--hi)', n: '④ 到处都是优化', s: '逆运动学、最优控制、全身控制、强化学习', at: 18.55 }
       ],
       foot: { s: '**优化**：在约束里，找让代价最小的变量', at: 25.61 }
@@ -71,7 +71,7 @@
           '**mink 文档**：逆运动学写成二次规划，关节不超限位',
           '**Herzog 等**（arXiv:1410.7284）：全身控制的变量是关节加速度、力矩和接触力',
           '**《Reinforcement Learning》** Sutton & Barto：式 (13.1)，策略参数一小步一小步地改',
-          '**Unitree G1 URDF**（unitree_ros）：29 个转动关节'
+          '**Unitree G1 URDF**：29 个转动关节，膝、肘的限位，膝力矩上限'
         ]
       },
       end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 16.56 }

@@ -1,10 +1,11 @@
 // 008 第 3 幕：约束——不能越过的线。左半边接着上一幕：小跑道 + 代价图（紫色的碗，亮黄小球停在碗底 (2, 8)）；右栏上面是代价的式子。
-// 句 1「最多」小跑道和代价图在 1 格处立起红墙，墙右边是红色斜线区，右栏出约束牌「约束：u ≤ 1」，「约束」牌子鼓一下；
-// 句 2「超过一格」斜线区加深、碗在墙外的那段变灰，「碗底」小球亮一下，「出界」小球上打红 ×、写「出界」；
-// 句 3「能选的范围」横轴 0–1 加粗成绿色、写「能选」，「代价最小」小球顺着碗壁滚到 (1, 10)，「十分」写「10 分」，「贴」红墙和小球一起亮一下；
-// 句 4「迈三格」红墙挪到 3 格，约束牌改成 u ≤ 3，「碗底」小球滚回 (2, 8) 打勾，「不起作用」右栏写「约束不起作用」，「两格」小球亮一下；
-// 句 5 左半边和右栏收起，三块牌按念到的词弹出：「关节」一根连杆在两道红色挡块之间来回摆、碰到就停；
-//    「电机」力的竖条往上涨、到红线「上限」就顶住；「脚」脚掌踩在地面上，「推」绿箭头从地面往上顶（✓），「拉」红虚线箭头往下拽（×）。
+// 句 1「最多」小跑道和代价图在 1 格处立起橙色的墙，墙右边是橙色斜线区，右栏出约束牌「约束：u ≤ 1」，「约束」牌子鼓一下；
+// 句 2「超过一格」斜线区加深、碗在墙外的那段变灰，「碗底」小球亮一下，「出界」小球上打橙 ×、写「出界」；
+// 句 3「能选的范围」横轴 0–1 加粗成绿色、写「能选」，「代价最小」小球顺着碗壁滚到 (1, 10)，「十分」写「10 分」，「贴」墙和小球一起亮一下；
+// 句 4「迈三格」墙挪到 3 格，约束牌改成 u ≤ 3，「碗底」小球滚回 (2, 8) 打勾，「不起作用」右栏写「约束不起作用」，「两格」小球亮一下；
+// 句 5 左半边和右栏收起，三块牌按念到的词弹出，每块一台侧视 G1（URDF）：「关节」大腿抬起，小腿在膝关节的限位 −5°…165°
+//    （URDF 的 lower / upper）之间来回转、碰到橙色挡块就停；「电机」G1 一下一下往下蹲，膝关节力矩的竖条跟着涨、到橙线「上限」
+//    （URDF 的 effort 139 N·m）就顶住；「脚」G1 站着，「推」绿箭头从地面往上顶脚底（✓），「拉」橙虚线箭头往下拽（×）。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep008.py。
 (function () {
   var E = window.EP008, K = E.K, H = E.HEX;
@@ -30,7 +31,7 @@
     build: function (K) {
       var s = K.sceneSvg('约束：一步最多只能迈一格，超过一格的迈法都不能选，碗底两格出界了；能选的范围里代价最小的是一格，十分，最好的解贴在约束的边上；要是最多能迈三格，碗底在范围里，约束不起作用，答案还是两格；机器人里的约束：关节只能在一定范围里转，电机的力有上限，脚只能推地面不能拉地面');
 
-      /* ══ 左：小跑道 + 代价图 + 红墙 ══ */
+      /* ══ 左：小跑道 + 代价图 + 墙 ══ */
       var left = E.el('g', {}, s);
       var tr = E.track(left, E.MINI);
       var ch = E.chart(left, { ox: E.CH.ox, oy: E.CH.oy, su: E.CH.su, sc: E.CH.sc, xLab: '迈几格 u', yLab: '扣分' });
@@ -65,56 +66,53 @@
       var line2 = E.txt(right, RX + 6, 246, '', 24, E.INK, 'start', 900);
       var line3 = E.txt(right, RX + 6, 296, '', 24, E.INK, 'start', 900);
 
-      /* ══ 句 5：三块牌 ══ */
+      /* ══ 句 5：三块牌，每块一台侧视 G1（URDF），数取自 unitree_ros 的 g1_29dof_rev_1_0.urdf ══ */
+      var GY = 292, SC = 1.05;                              // 牌里的地面线、G1 缩放（第三块的地面高一些，脚底下要画箭头）
       var cards = [0, 1, 2].map(function (i) {
-        var g = E.el('g', {}, s), x = 28 + 252 * i;
+        var g = E.el('g', {}, s), x = 28 + 252 * i, cx = x + 118, gy = i === 2 ? 254 : GY, sc = i === 2 ? 0.92 : SC;
         K.paint(E.el('rect', { x: x, y: 40, width: 236, height: 344, rx: 18, 'stroke-width': 2.5 }, g), E.tint(E.BAD, 8, 'var(--demo-surface)'), E.BAD);
-        return { g: g, x: x, cx: x + 118 };
+        K.paint(E.el('line', { x1: x + 22, y1: gy, x2: x + 214, y2: gy, 'stroke-width': 3, 'stroke-linecap': 'round' }, g), null, E.BORDER);
+        var r = window.Robot3D.g1Side(g, 0);
+        var rx = cx - (i === 1 ? 36 : 22);
+        r.place({ x: rx, scale: sc, dy: gy - 388 });
+        // G1 本地坐标 → 牌上的坐标（同 g1Side 的 place：以脚底 y = 388 为心缩放）
+        function sv(p) { return [r.state.x + sc * p[0], r.state.dy + 388 + sc * (p[1] - 388)]; }
+        return { g: g, x: x, cx: cx, r: r, sv: sv, gy: gy };
       });
-      // ① 关节：转轴 + 连杆，绿色的能转范围（±50°），两道红色挡块
-      var J = { x: cards[0].cx, y: 250, r: 96, lim: 50 };
+      function caption(c, title, l1, l2) {
+        E.txt(c.g, c.cx, 82, title, 26, E.INK, 'middle', 900);
+        E.txt(c.g, c.cx, 336, l1, 22, E.INK2, 'middle', 700);
+        E.txt(c.g, c.cx, 366, l2, 22, E.INK2, 'middle', 700);
+      }
+      // ① 膝关节：大腿往前抬 55°，小腿在 URDF 的限位 −5°（lower −0.087 rad）到 165°（upper 2.8798 rad）之间来回转，碰到就停
+      var KN = { a: 55, lo: -5, hi: 165 };
       var jg = cards[0].g;
-      function polar(a, r) { var q = a * Math.PI / 180; return [J.x + r * Math.sin(q), J.y - r * Math.cos(q)]; }
-      var a0 = polar(-J.lim, J.r + 18), a1 = polar(J.lim, J.r + 18);
-      K.paint(E.el('path', { d: 'M ' + a0[0].toFixed(1) + ' ' + a0[1].toFixed(1) + ' A ' + (J.r + 18) + ' ' + (J.r + 18) + ' 0 0 1 ' + a1[0].toFixed(1) + ' ' + a1[1].toFixed(1),
-        fill: 'none', 'stroke-width': 6, 'stroke-linecap': 'round' }, jg), null, E.GOOD);
-      [-1, 1].forEach(function (sg) {
-        var p = polar(sg * (J.lim + 4), J.r - 6), q = polar(sg * (J.lim + 4), J.r + 34);
-        K.paint(E.el('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], 'stroke-width': 7, 'stroke-linecap': 'round' }, jg), null, E.BAD);
-      });
-      var link = K.paint(E.el('line', { x1: J.x, y1: J.y, 'stroke-width': 16, 'stroke-linecap': 'round' }, jg), null, E.INK2);
-      K.paint(E.el('circle', { cx: J.x, cy: J.y, r: 15, 'stroke-width': 4 }, jg), E.S2, E.INK);
-      E.txt(jg, J.x, 86, '关节', 26, E.INK, 'middle', 900);
-      E.txt(jg, J.x, 330, '只能在一定', 22, E.INK2, 'middle', 700);
-      E.txt(jg, J.x, 360, '范围里转', 22, E.INK2, 'middle', 700);
-      // ② 电机：力的竖条，到红线就顶住
-      var M = { x: cards[1].cx, y0: 300, y1: 112, cap: 150 };
-      var mg = cards[1].g;
-      K.paint(E.el('rect', { x: M.x - 26, y: M.y1, width: 52, height: M.y0 - M.y1, rx: 10, 'stroke-width': 2.5 }, mg), E.S2, E.BORDER);
-      var bar = K.paint(E.el('rect', { x: M.x - 20, width: 40, rx: 6 }, mg), E.tint(E.WARN, 70, 'var(--demo-surface)'));
-      K.paint(E.el('line', { x1: M.x - 40, y1: M.cap, x2: M.x + 40, y2: M.cap, 'stroke-width': 4, 'stroke-linecap': 'round' }, mg), null, E.BAD);
-      E.halo(E.txt(mg, M.x + 46, M.cap + 7, '上限', 20, E.BAD, 'start', 900));
-      E.txt(mg, M.x, 86, '电机', 26, E.INK, 'middle', 900);
-      E.txt(mg, M.x, 330, '出的力', 22, E.INK2, 'middle', 700);
-      E.txt(mg, M.x, 360, '有上限', 22, E.INK2, 'middle', 700);
-      // ③ 脚：脚掌踩在地面上，推（绿、往上）可以，拉（红、往下）不行
-      var F = { x: cards[2].cx, y: 220 };
-      var fg = cards[2].g;
-      K.paint(E.el('line', { x1: F.x - 92, y1: F.y, x2: F.x + 92, y2: F.y, 'stroke-width': 3 }, fg), null, E.BORDER);
-      for (var k = 0; k < 7; k++) K.paint(E.el('line', { x1: F.x - 84 + 26 * k, y1: F.y + 2, x2: F.x - 96 + 26 * k, y2: F.y + 14, 'stroke-width': 2 }, fg), null, E.BORDER);
-      K.paint(E.el('path', { d: E.rrect(F.x - 46, F.y - 30, 92, 30, 10), 'stroke-width': 2.5 }, fg), E.S2, E.INK);
-      K.paint(E.el('rect', { x: F.x - 22, y: F.y - 92, width: 30, height: 64, rx: 8, 'stroke-width': 2.5 }, fg), E.S2, E.INK);
+      var kArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, jg), null, E.GOOD);
+      kArc.style.strokeOpacity = 0.85;
+      var kStops = [0, 1].map(function () { return K.paint(E.el('line', { 'stroke-width': 6, 'stroke-linecap': 'round' }, jg), null, E.BAD); });
+      var kLab = E.halo(E.txt(jg, 0, 0, '', 20, E.INK, 'middle', 900));
+      caption(cards[0], '关节', '膝关节只能在', '−5° 到 165° 里转');
+      // ② 电机：一下一下往下蹲，膝关节要的力矩跟着涨，到 URDF 的上限（effort 139 N·m）就顶住
+      var mg = cards[1].g, M = { x: cards[1].x + 196, y0: 280, y1: 112, cap: 150 };
+      K.paint(E.el('rect', { x: M.x - 16, y: M.y1, width: 32, height: M.y0 - M.y1, rx: 8, 'stroke-width': 2.5 }, mg), E.S2, E.BORDER);
+      var bar = K.paint(E.el('rect', { x: M.x - 11, width: 22, rx: 5 }, mg), E.tint(E.WARN, 70, 'var(--demo-surface)'));
+      K.paint(E.el('line', { x1: M.x - 26, y1: M.cap, x2: M.x + 26, y2: M.cap, 'stroke-width': 4, 'stroke-linecap': 'round' }, mg), null, E.BAD);
+      E.halo(E.txt(mg, M.x, M.cap - 12, '上限', 20, E.BAD, 'middle', 900));
+      var A1X = cards[1].r.pts().ankle[0];                  // 站直时踝的本地 x：往下蹲时踝不挪
+      var link2 = K.paint(E.el('line', { 'stroke-width': 2, 'stroke-dasharray': '4 5' }, mg), null, E.WARN);
+      caption(cards[1], '电机', '膝关节的力矩', '上限 139 N·m');
+      // ③ 脚：站着；地面往上推脚底（绿）可以，往下拉（橙虚线）不行
+      var fg = cards[2].g, FX = cards[2].sv([14, 388])[0], FY = cards[2].gy;
+      for (var k = 0; k < 7; k++) K.paint(E.el('line', { x1: cards[2].x + 34 + 26 * k, y1: FY + 2, x2: cards[2].x + 22 + 26 * k, y2: FY + 14, 'stroke-width': 2 }, fg), null, E.BORDER);
       var push = E.el('g', {}, fg);
-      E.arrow(push, [[F.x + 66, F.y + 60], [F.x + 66, F.y - 6]], E.GOOD, 5, { head: 15 });
-      E.halo(E.txt(push, F.x + 50, F.y + 52, '推', 22, E.GOOD, 'end', 900));
-      E.check(push, F.x + 78, F.y + 36, 18, E.GOOD, 4);
+      E.arrow(push, [[FX - 8, FY + 56], [FX - 8, FY + 3]], E.GOOD, 5, { head: 15 });
+      E.halo(E.txt(push, FX - 24, FY + 48, '推', 22, E.GOOD, 'end', 900));
+      E.check(push, FX - 70, FY + 30, 18, E.GOOD, 4);
       var pull = E.el('g', {}, fg);
-      E.arrow(pull, [[F.x - 66, F.y - 20], [F.x - 66, F.y + 62]], E.BAD, 5, { head: 15, dash: '8 7' });
-      E.halo(E.txt(pull, F.x - 50, F.y + 52, '拉', 22, E.BAD, 'start', 900));
-      E.cross(pull, F.x - 88, F.y + 44, 9, E.BAD, 4);
-      E.txt(fg, F.x, 86, '脚', 26, E.INK, 'middle', 900);
-      E.txt(fg, F.x, 330, '只能推地面', 22, E.INK2, 'middle', 700);
-      E.txt(fg, F.x, 360, '不能拉地面', 22, E.INK2, 'middle', 700);
+      E.arrow(pull, [[FX + 40, FY + 3], [FX + 40, FY + 56]], E.BAD, 5, { head: 15, dash: '8 7' });
+      E.halo(E.txt(pull, FX + 56, FY + 48, '拉', 22, E.BAD, 'start', 900));
+      E.cross(pull, FX + 94, FY + 40, 9, E.BAD, 4);
+      caption(cards[2], '脚', '只能推地面', '不能拉地面');
 
       return {
         el: s,
@@ -182,16 +180,39 @@
 
           /* 句 5：三块牌 */
           cards.forEach(function (c, i) { E.pop(c.g, c.cx, 212, f(st, T.cards[i], 0.35), 0.85); });
-          // 连杆在 ±58° 之间摆，碰到 ±50° 的挡块就停住
-          var ang = Math.max(-J.lim, Math.min(J.lim, 64 * Math.sin(2 * Math.PI * (t - T.cards[0]) / 2.6)));
-          var tip = polar(ang, J.r);
-          link.setAttribute('x2', tip[0].toFixed(1)); link.setAttribute('y2', tip[1].toFixed(1));
-          K.paint(link, null, Math.abs(ang) >= J.lim - 0.01 ? E.BAD : E.INK2);
-          // 力的竖条：想要的力一涨一落，超过上限的部分顶住
-          var want = 0.5 + 0.62 * Math.sin(2 * Math.PI * (t - T.cards[1]) / 2.4), top = M.y0 - (M.y0 - M.y1 - 6) * want;
-          var y = Math.max(M.cap, Math.min(M.y0 - 6, top));
+          // ① 膝关节：想转到的角度一来一回，超出 −5°…165° 的部分被限位挡住
+          var kWant = 80 + 105 * Math.sin(2 * Math.PI * (t - T.cards[0]) / 3.2), kk = Math.max(KN.lo, Math.min(KN.hi, kWant));
+          var r0 = cards[0].r;
+          r0.legs([KN.a, KN.a - kk], [-4, 0]);
+          var P0 = r0.pts(), kn = cards[0].sv(P0.knee), an = cards[0].sv(P0.ankle);
+          // 小腿实际方向和名义角（0 = 竖直朝下、往前为正）差一个常数：URDF 的小腿不是正竖着的
+          var phiReal = Math.atan2(an[0] - kn[0], an[1] - kn[1]) * 180 / Math.PI, off = phiReal - (KN.a - kk);
+          function dirAt(phi) { var q = (phi + off) * Math.PI / 180; return [Math.sin(q), Math.cos(q)]; }
+          var R = 30, pts = [];
+          for (var j = 0; j <= 40; j++) { var d = dirAt(KN.a - KN.lo - (KN.hi - KN.lo) * j / 40); pts.push([kn[0] + R * d[0], kn[1] + R * d[1]]); }
+          kArc.setAttribute('d', K.polyPath(pts));
+          [KN.lo, KN.hi].forEach(function (lim, i) {
+            var d = dirAt(KN.a - lim);
+            kStops[i].setAttribute('x1', (kn[0] + (R - 9) * d[0]).toFixed(1)); kStops[i].setAttribute('y1', (kn[1] + (R - 9) * d[1]).toFixed(1));
+            kStops[i].setAttribute('x2', (kn[0] + (R + 11) * d[0]).toFixed(1)); kStops[i].setAttribute('y2', (kn[1] + (R + 11) * d[1]).toFixed(1));
+            kStops[i].style.strokeWidth = Math.abs(kk - lim) < 0.01 ? 9 : 6;
+          });
+          kLab.textContent = String(Math.round(kk)).replace('-', '−') + '°';
+          kLab.setAttribute('x', (kn[0] - 66).toFixed(1)); kLab.setAttribute('y', (kn[1] - 30).toFixed(1));
+          kLab.style.fill = kk === KN.lo || kk === KN.hi ? E.BAD : E.INK;
+          // ② 往下蹲：蹲得越深，膝关节要的力矩越大；超过上限的部分顶住（示意，不按真实质量算）
+          var r1 = cards[1].r, dep = 24 * (0.5 - 0.5 * Math.cos(2 * Math.PI * (t - T.cards[1]) / 3.0));
+          var lg = r1.legIK([0, 302], [A1X, r1.ankleY - dep]);
+          r1.legs(lg, lg);
+          r1.place({ dy: GY - 388 + SC * dep });
+          r1.kneeDot.style.fill = E.WARN;
+          var want = 0.3 + 1.0 * dep / 24, capH = M.y0 - M.cap, top = M.y0 - capH * want;
+          var y = Math.max(M.cap, top);
           bar.setAttribute('y', y.toFixed(1)); bar.setAttribute('height', (M.y0 - 3 - y).toFixed(1));
           K.paint(bar, top <= M.cap ? E.tint(E.BAD, 70, 'var(--demo-surface)') : E.tint(E.WARN, 70, 'var(--demo-surface)'));
+          var kp = cards[1].sv(r1.pts().knee);
+          link2.setAttribute('x1', (kp[0] + 8).toFixed(1)); link2.setAttribute('y1', kp[1].toFixed(1));
+          link2.setAttribute('x2', (M.x - 18).toFixed(1)); link2.setAttribute('y2', ((M.y0 + y) / 2).toFixed(1));
           E.op(push, f(st, T.push, 0.3)); E.op(pull, f(st, T.pull, 0.3));
         }
       };

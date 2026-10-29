@@ -2,7 +2,7 @@
 // 本目录按文件名顺序加载：00 共用部件 → 10 片头主图 → 21…25 五幕分镜 → 90 组装 window.EpisodeVideo。旁白在 ../ep008.py。
 // 基础工具（文字、淡入、弹出、画线、箭头、✓ / ×、胶囊标签、描边、可动箭头）取自 ../ep005/00-common.js（命名空间换成 EP008）；
 // 另加贯穿全集的最小例子：离终点线 4 格的跑道（侧视 G1 + 脚印 + 「迈 u 格 / 还剩 4 − u 格」）E.track，
-// 代价图 E.chart（横轴迈几格 u，竖轴扣分；两项扣分 (4 − u)²、u² 与总代价——一只碗），约束的红墙与斜线区 E.wall。
+// 代价图 E.chart（横轴迈几格 u，竖轴扣分；两项扣分 (4 − u)²、u² 与总代价——一只碗），约束的墙与斜线区 E.wall。
 // 分镜都画在 800×420 的网格上。draw(st, t)：st 是分镜时间（旁白念完前画面停在 to 之前，一次性事件用它），
 // t 是这一幕的真实时间（呼吸、晃动这类循环动作用它，停帧时也不会卡住）。
 (function () {
@@ -11,11 +11,13 @@
   var E = window.EP008 = { K: K, scenes: [] };
 
   /* 颜色：变量 u（迈几格、脚印）good 绿；第一项扣分「还剩几格的平方」accent 蓝；第二项扣分「步子的平方」warn 琥珀；
-     代价 / 目标函数（两项相加、那只碗）violet；约束（红墙、不能选的斜线区、出界）bad 红；最好的选择（碗底、小球）本系列亮黄 --hi。
+     代价 / 目标函数（两项相加、那只碗）violet；约束（墙、不能选的斜线区、出界、不能拉）用橙 E.BAD = #ff7b3a（005 起的配色约定：
+     错误、不合格用橙，红色留给 x 轴，见 RELEASE_PLAN「画面配色」）；最好的选择（碗底、小球）本系列亮黄 --hi。
      KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
-  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
+  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
-  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#ff7b3a', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.BAD = E.HEX.bad;
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }
   // 文字：size 不小于 18；anchor 默认居中；weight 如 700 / 900
@@ -207,7 +209,7 @@
     p.lastChild.style.strokeOpacity = 0.45;
     return 'url(#' + id + ')';
   };
-  /* 约束的红墙：竖线 x = xa（从 y0 到 y1）+ 它右边到 xb 的斜线区。set(xa, xb)；墙顶写字 label（可空） */
+  /* 约束的墙（橙）：竖线 x = xa（从 y0 到 y1）+ 它右边到 xb 的斜线区。set(xa, xb)；墙顶写字 label（可空） */
   E.wall = function (parent, svg, y0, y1, label) {
     var g = el('g', {}, parent);
     var zone = el('rect', { y: y0, height: y1 - y0 }, g);
@@ -350,6 +352,6 @@
   E.MINI = { x0: 100, y: 88, w: 68, scale: 0.5, nums: false, arcH: 30, flagH: 44, flagLab: false };
   E.CH = { ox: 100, oy: 384, su: 68, sc: 14 };
 
-  /* ── 三样东西的胶囊：变量 绿、目标 紫、约束 红（片头、第 4 幕用） ── */
+  /* ── 三样东西的胶囊：变量 绿、目标 紫、约束 橙（片头、第 4 幕用） ── */
   E.THREE = [{ s: '变量', c: E.GOOD }, { s: '目标', c: E.VIOLET }, { s: '约束', c: E.BAD }];
 })();

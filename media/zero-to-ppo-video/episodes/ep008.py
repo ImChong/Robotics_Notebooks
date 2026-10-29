@@ -16,7 +16,8 @@ objective function or cost function、constraint active / inactive）与 9.3 节
 subject to φ(z) ≤ 0，变量写在 min 下面）与第 8 章 LQR 代价 xᵀQx + uᵀRu；《Modern Robotics》6.2 节（精确解不存在时用优化找最接近的解）、
 12.1 节（法向力只能推、不能拉）；mink 文档（逆运动学写成二次规划、关节不能超限位）；Herzog 等 arXiv:1410.7284（全身控制 QP 的变量
 y = [q̈ᵀ λᵀ τᵀ]ᵀ，约束含摩擦锥、力矩上限）；Sutton & Barto 第 2 版式 (13.1)（θ ← θ + α∇J）；unitree_ros 的 g1_29dof_rev_1_0.urdf
-（29 个转动关节）。全身控制的变量原先只说「力矩和脚底的力」，按 Herzog 等补上关节加速度。
+（29 个转动关节；right_knee_joint 的 limit lower −0.087267、upper 2.8798 rad 即 −5°～165°、effort 139 N·m，right_elbow_joint 的 lower −1.0472、
+upper 2.0944 rad 即 −60°～120°，第 3、5 幕的限位和力矩上限都用这几个数）。全身控制的变量原先只说「力矩和脚底的力」，按 Herzog 等补上关节加速度。
 """
 
 # scene: "intro" / 0..4（分镜下标）/ "recap"（片尾总结卡片）/ "outro"；[from, to] 是这一幕的分镜时间：念这句时画面从 from 播到 to，念不完就停在 to
