@@ -175,7 +175,10 @@ OPEN_CHECK: dict[int, tuple[str, str]] = {
         PART,
         "公众号未给代码链接；项目页挂 Code 入口、链接 QinghangLiu/PAL_official，但 git ls-remote 失败（仓库不存在或私有），不能当作已开源。",
     ),
-    33: (OPEN, "公众号未给代码链接；项目页链接的 LogosIntelligenceLab/TIDE 经 git ls-remote 可达。"),
+    33: (
+        OPEN,
+        "公众号未给代码链接；项目页链接的 LogosIntelligenceLab/TIDE 经 git ls-remote 可达。",
+    ),
     38: (NOLINK, "项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。"),
     41: (TBD, "项目页 HTTP 200，页面写 Code upon acceptance（论文录用后释出）。"),
     44: (TBD, "项目页 HTTP 200，Code 标注 coming soon（脚本扫描）。"),
