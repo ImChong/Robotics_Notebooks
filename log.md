@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-29] ingest | InstantTrack
+
+- 收录 G1 仿真动作跟踪项目，记录训练流程、实验口径、接触优化及开源边界。
+- 项目页未能直接访问；依据源码仓库 README 核查。
+
 ## [2026-10-29] ingest | sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md — 具身智能小站 10-29 期 58 篇（新建 35 节点 / 复用 23）+ 阅读坐标页
 
 ## [2026-10-29] ingest | senlanke《借着supermimic复习：Model base，可微世界模型，BPTT》公众号：点名项目逐一映射唯一节点，新建 TD3 / MBPO / BPTT，其余复用并补反链
