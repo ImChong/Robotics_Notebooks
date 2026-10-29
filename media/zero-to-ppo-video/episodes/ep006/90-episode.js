@@ -69,6 +69,7 @@
           '**《Modern Robotics》** Lynch & Park，2017：第 2、3 章，附录 B',
           '**ROS REP 103**：旋转表示（固定轴 RPY 与欧拉角分开列）',
           '**urdfdom_headers**（URDF 解析库）：rpy 的换算',
+          '**ROS tf2** Quaternion::setRPY：绕固定轴的横滚、俯仰、偏航',
           '**Eigen** Quaternion::slerp：点积为负先变号',
           '**MuJoCo 文档** Modeling：朝向在内部一律存成单位四元数',
           '**ROS sensor_msgs/Imu**：IMU 的朝向用四元数'
