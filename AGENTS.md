@@ -122,6 +122,10 @@
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
 - 新增页面**不需要**手动更新 `catalog.md`（合入 main 后 `export.yml` 自动重新生成，PR 不得修改它）；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
 
+### 视频内容核对（`media/`）
+
+- 做或改 `media/` 下的视频时，除本仓库内容外，片中每个定义、术语、公式、数值都要找官方一手资料核对（教材原文、官方规范 / 文档、源码、原始论文），术语按一手资料的严格叫法；借鉴的一手资料列在视频最末尾一页（`outro.refs`）。细则见 `media/zero-to-ppo-video/RELEASE_PLAN.md`「内容核对：一手资料」。
+
 ### 浏览器验证工具
 
 后续 agent 如果需要修改或验证 `docs/` 下的前端页面，尤其是 `graph.html` 这类交互页面，应优先安装并使用 Chrome DevTools MCP：

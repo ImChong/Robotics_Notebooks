@@ -58,12 +58,24 @@
       ],
       foot: { s: '**欧拉角**给人看，**四元数**做内部计算，**矩阵**用来连乘', at: 25.53 }
     },
-    outroDur: 10.96,
-    // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
+    outroDur: 14.8,
+    // 片尾不出题：下一集预告、完整内容的网址卡片、本集核对过的一手资料和衔接语
     outro: {
       next: { ep: '007', q: '位姿 = 朝向 + 位置：\n怎么拼成一个 4×4 的矩阵？', at: 0 },
       link: { s: '<b>完整内容</b><br>imchong.github.io/Robotics_Notebooks', at: 5.95 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 9.09 }
+      refs: {
+        at: 9.09,
+        items: [
+          '**《Modern Robotics》** Lynch & Park，2017：第 2、3 章，附录 B',
+          '**ROS REP 103**：旋转表示（固定轴 RPY 与欧拉角分开列）',
+          '**urdfdom_headers**（URDF 解析库）：rpy 的换算',
+          '**ROS tf2** Quaternion::setRPY：绕固定轴的横滚、俯仰、偏航',
+          '**Eigen** Quaternion::slerp：点积为负先变号',
+          '**MuJoCo 文档** Modeling：朝向在内部一律存成单位四元数',
+          '**ROS sensor_msgs/Imu**：IMU 的朝向用四元数'
+        ]
+      },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 12.93 }
     }
   };
 })();

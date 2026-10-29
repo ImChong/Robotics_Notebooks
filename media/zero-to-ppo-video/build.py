@@ -35,6 +35,7 @@ _spec = importlib.util.spec_from_file_location(NAME, HERE / "episodes" / f"{NAME
 EPISODE = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(EPISODE)
 SCRIPT, DISPLAY = EPISODE.SCRIPT, EPISODE.DISPLAY
+DISPLAY_FN = getattr(EPISODE, "DISPLAY_FN", None)   # 可选：DISPLAY 换完再加工一遍（如 006 把念出来的角度、小数、乘号写成 $…$）；切行前后各调一次，结果要不变
 OUT = HERE / "out" / NAME
 OUT.mkdir(parents=True, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
@@ -52,7 +53,7 @@ NOISE_DBFS = -72
 def display(s):
     for a, b in DISPLAY:
         s = s.replace(a, b)
-    return s
+    return DISPLAY_FN(s) if DISPLAY_FN else s
 
 
 async def tts(text, mp3, tries=4):
@@ -79,31 +80,48 @@ def to_wav(mp3, wav):
         return w.readframes(w.getnframes())
 
 
+MATH = re.compile(r"\$[^$]+\$")
+
+
+def vlen(s):
+    """字幕排出来有几个字：$…$（KaTeX）按排出来的字数算，不按 LaTeX 源码"""
+    return len(MATH.sub(lambda m: re.sub(r"\\[a-zA-Z]+|\\.|[{}$^_]", "", m.group(0).replace("\\times", "×").replace("\\circ", "°")), s))
+
+
 def chunks(text, start, dur, limit=17):
     """Split one TTS sentence into subtitle lines of <= ~limit chars, timed by char share."""
+    maths = []  # $…$ 里有逗号，不能在那儿断行：先换成一个占位字，断完行再换回来
+
+    def hold(m):
+        maths.append(m.group(0))
+        return chr(0xE000 + len(maths) - 1)
+
+    def back(s):
+        return re.sub("[\ue000-\uf8ff]", lambda m: maths[ord(m.group(0)) - 0xE000], s)
+
     parts = []
-    for p in re.split(r"(?<=[，、；：。！？,;:])", text):
+    for p in re.split(r"(?<=[，、；：。！？,;:])", MATH.sub(hold, text)):
         while len(p) > limit + 4:  # no punctuation to break on: cut near the middle, at a space if any
             mid = len(p) // 2
             sp = [k for k in range(mid - 5, mid + 6) if 0 < k < len(p) and p[k] == " "]
             k = min(sp, key=lambda k: abs(k - mid)) if sp else mid
-            parts.append(p[:k])
+            parts.append(back(p[:k]))
             p = p[k:].lstrip()
         if p.strip():
-            parts.append(p)
+            parts.append(back(p))
     lines, cur = [], ""
     for p in parts:
-        if cur and len(cur) + len(p) > limit:
+        if cur and vlen(cur) + vlen(p) > limit:
             lines.append(cur)
             cur = p
         else:
             cur += p
     if cur:
         lines.append(cur)
-    total = sum(len(x) for x in lines) or 1
+    total = sum(vlen(x) for x in lines) or 1
     out, t = [], start
     for x in lines:
-        d = dur * len(x) / total
+        d = dur * vlen(x) / total
         out.append({"t0": round(t, 3), "t1": round(t + d, 3), "text": display(x.rstrip("，、；：。,;:"))})
         t += d
     return out

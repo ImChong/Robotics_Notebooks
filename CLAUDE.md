@@ -125,3 +125,11 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - **只提交源文件**：派生统计 / 导出 JSON 全部 gitignore，部署时生成；`make ci-preflight` 只做本地检查。
 - **不改 `catalog.md` / `log.md`**：由 main 上的 `export.yml` 维护。日志用 `make log OP=... DESC="..."` 写入 `log.d/` 碎片。
 - **PR 与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push（派生文件自动以 main 为准，`log.md` 新增条目自动转存为碎片）。只剩真实源文件冲突时再按内容合并。
+
+---
+
+## 6. 视频（`media/`）：一手资料核对
+
+- 做或改 `media/` 下的视频（零基础篇等）时，片中每个定义、术语、公式、数值，**除本仓库内容外，都要找官方一手资料核对**（教材原文、官方规范 / 文档、源码、原始论文；百科、博客只当线索），术语按一手资料的严格叫法。
+- **借鉴的一手资料列在视频最末尾一页**（`outro.refs`），发布清单那一行写明。
+- 细则见 [media/zero-to-ppo-video/RELEASE_PLAN.md](media/zero-to-ppo-video/RELEASE_PLAN.md)「内容核对：一手资料」。起因：006 初版把绕固定轴的「固定角」叫成了欧拉角，观众指出后改正。
