@@ -5475,6 +5475,7 @@
 - [Ultralytics YOLO26（Unified Real-Time End-to-End Vision）](wiki/entities/paper-yolo26-unified-realtime-e2e-vision.md) — YOLO26** 是 Ultralytics 提出的 **统一实时视觉模型族**（arXiv:2606.03748）。在 Y `📅unknown` `[entity_page]`
 - [YOPO-MINCO](wiki/entities/paper-yopo-minco.md) — Some Modifications to Our End-to-End UAV Planner**（[arXiv:2608.15741](https://arxiv.org/abs/2608.1 `📅unknown` `[entity_page]`
 - [Zeno-1：机器人协作智能基础模型](wiki/entities/paper-zeno-1-collaborative-intelligence.md) — Zeno-1**（*Collaborative Intelligence for Robots That Work Together*，[Zeno AI 研究页](https://www.zeno `📅unknown` `[entity_page]`
+- [Zero-HLM：无需真机示范的人形移动操作](wiki/entities/paper-zero-hlm.md) — Zero-HLM 从手机场景采集和少量仿真遥操作示范出发，通过场景重建、运动与环境协同修正，生成可执行的全身操作数据，训练后零样本部署到 G1。 `📅unknown` `[entity_page]`
 - [Zero-WAM](wiki/entities/paper-zero-wam.md) — Zero-WAM: In-Context World-Action Modeling from Human Videos for Open-Ended Task Generalization**（ `📅unknown` `[entity_page]`
 - [ZEST：异构运动参考的零样本具身技能迁移](wiki/entities/paper-zest.md) — ZEST**（*Zero-shot Embodied Skill Transfer*；期刊标题 *Embodied skill transfer for locomotion control*， `📅unknown` `[entity_page]`
 - [Zetta ζ：高效闭环具身 Harness 与自进化物理智能](wiki/entities/paper-zetta.md) — Zetta ζ**（*Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intellige `📅unknown` `[entity_page]`
