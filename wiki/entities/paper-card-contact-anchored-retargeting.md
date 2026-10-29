@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, motion-retargeting, dexterous-manipulation, contact-rich-manipulation, tactile, imitation-learning]
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 project_id: card-contact-anchored-retargeting
 arxiv: "2610.36539"
 project: https://card-retargeting.github.io/
@@ -72,6 +72,8 @@ CARD 把接触力目标作为跨人手和机器人手迁移的显式信号。
 - 项目页本次无法访问，代码及数据是否开放尚未确认。
 
 ## 关联页面
+
+- [FLoRe](./paper-flore.md) — 面向人形移动操作的力反应策略与全身控制。
 
 - [动作重定向](../concepts/motion-retargeting.md)
 - [SPIDER：物理感知灵巧重定向](../methods/spider-physics-informed-dexterous-retargeting.md)

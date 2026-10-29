@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, manipulation, nvidia, kaist]
 status: complete
-updated: 2026-10-28
+updated: 2026-10-29
 project_id: thinkworld
 arxiv: "2610.37666"
 project: https://thinkworld-project.github.io/
@@ -77,6 +77,9 @@ ThinkWorld 展示了利用视频中的状态变化增强动作推理，并在特
 不适用：项目页无法访问，尚未核实官方可运行代码及入口。
 
 ## 关联页面
+
+- [E0.5](./paper-e05-geometry-world-action.md) — 以三维基础模型联合预测未来几何与动作。
+- [Rollback](./paper-rollback-world-model.md) — 利用世界模型分支改进策略。
 
 - [VLA](../methods/vla.md) — 视觉语言动作策略基础。
 - [世界动作模型](../concepts/world-action-models.md) — 动作与未来预测的关系。
