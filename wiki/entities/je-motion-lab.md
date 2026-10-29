@@ -3,7 +3,7 @@ type: entity
 project_id: je-motion-lab
 project: https://jemolab.com/
 code: https://github.com/JEBbecke/mocap-web-viewer
-tags: [motion-capture, visualization, biomechanics, data-processing]
+tags: [motion-capture, visualization, biomechanics, data-processing, independent-maintainer]
 status: complete
 updated: 2026-10-29
 summary: "JE Motion Lab 是在浏览器本地查看和编辑 C3D 与特定机构 H5 动捕记录的工具。"
@@ -42,6 +42,8 @@ flowchart TD
 浏览器中可播放、逐帧检查 marker 和力平台信号，编辑事件及标签、删除完整 marker 轨迹或裁剪试验，再导出 C3D 或机构 H5；跨格式转换会提示变化与遗漏。连接线是显示预设，并非推断出的解剖骨架。
 
 ## 工程实践与限制
+
+- 仓库由 GitHub 用户 [JEBbecke](https://github.com/JEBbecke/mocap-web-viewer) 维护，机构归类为独立维护者。
 
 - 文件和测量数据在浏览器本地处理；应用加载和成功导入会发送仅含事件类型的匿名统计，网络基础设施仍可见常规请求信息。
 - H5 仅支持项目规定的当前机构 schema，并非任意 HDF5；部分 C3D Rotation 扩展只支持部分导入，旋转记录会被省略并提示。
