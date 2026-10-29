@@ -9,12 +9,16 @@ venue: "CoRL 2026 (Oral)"
 project: https://supermimic.github.io/
 summary: "SuperMimic 将运动跟踪策略与一个从仿真器转移数据学习的可微世界模型联合训练，用短时想象 rollout 和解析梯度显著降低大规模人形全身控制的训练计算。"
 related:
+  - ../concepts/bptt.md
+  - ../methods/mbpo.md
+  - ../methods/model-based-rl.md
   - ./nvidia-sonic.md
   - ./paper-twist2.md
   - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
@@ -117,13 +121,14 @@ flowchart TB
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
-
+- [BPTT](../concepts/bptt.md) / [MBPO](../methods/mbpo.md) / [Model-Based RL](../methods/model-based-rl.md) — 背景复习
 - [SONIC：大规模自然人形全身控制](./nvidia-sonic.md) — 论文采用的高算力 motion-tracking 对照基线。
 - [TWIST2](./paper-twist2.md) — 人形全身数据采集、跟踪控制与学习系统案例。
 - [全身控制（WBC）](../concepts/whole-body-control.md) — 人形整体协调控制任务背景。
 - [模仿学习](../methods/imitation-learning.md) — 从参考动作学习跟踪策略的相关方法。
 
 ## 参考来源
+- [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
 - [SuperMimic arXiv 论文](../../sources/papers/supermimic_arxiv_2610_28480.md)
 - [SuperMimic 官方项目页](../../sources/sites/supermimic-project.md)
