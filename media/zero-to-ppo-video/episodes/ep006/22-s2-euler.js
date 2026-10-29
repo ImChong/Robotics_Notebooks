@@ -167,7 +167,7 @@
         return { g: g, r: r, f3: f3, l1: l1, l2: l2, x: d.x };
       });
       var neq = E.txt(ord, 580, 300, '≠', 52, E.ERR, 'middle', 900);
-      var ep3 = E.tag(ord, 478, 8, 204, 36, '欧拉角：顺序不能换', E.VIOLET, { size: 19, ink: E.INK, weight: 900, rx: 10 });
+      var ep3 = E.tag(ord, 470, 8, 220, 36, '欧拉角：顺序不能换', E.VIOLET, { size: 19, ink: E.INK, weight: 900, rx: 10 });
       var conv = E.halo(E.txt(ord, 580, 34, '欧拉角、固定角各 12 种：写清楚是哪一种', 20, E.HI, 'middle', 900));
 
       /* ══ 右 ③：12 种怎么数、是哪 12 种，每种欧拉角对应哪种固定角（每个字母用那根轴的颜色） ══ */
