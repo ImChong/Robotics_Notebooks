@@ -56,12 +56,23 @@
       ],
       foot: { s: '**朝向 + 位置**拼成 4×4：点补 1，方向补 0', at: 23.42 }
     },
-    outroDur: 13.17,
-    // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
+    outroDur: 17.01,
+    // 片尾不出题：下一集预告、完整内容的网址卡片、本集核对过的一手资料（同 006）和衔接语
     outro: {
       next: { ep: '008', q: '优化的直觉：变量、目标、约束——\n在一堆限制里找最好的做法，怎么写下来？', at: 0 },
       link: { s: '<b>完整内容</b><br>imchong.github.io/Robotics_Notebooks', at: 8.16 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 11.3 }
+      refs: {
+        at: 11.3,
+        items: [
+          '**《Modern Robotics》** Lynch & Park，2017：第 3 章（自由向量、旋转矩阵的列、换坐标系、SE(3)、补 1 的齐次坐标），式 (4.4) 正运动学',
+          '**ROS REP 103**：身上的坐标轴 x 朝前、y 朝左、z 朝上',
+          '**ROS REP 105**：base_link 固定在机器人身上，map 是世界固定坐标系',
+          '**ROS geometry_msgs**：Vector3 只转不平移，速度 Twist、力 Wrench 都用它；位姿 Pose = 位置 + 朝向',
+          '**Eigen** 几何模块：变换作用于点 t * p，作用于向量 t.linear() * v',
+          '**Unitree G1 URDF**（unitree_ros）：骨盆、头上的 d435 摄像头'
+        ]
+      },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 15.14 }
     }
   };
 })();

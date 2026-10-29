@@ -8,10 +8,11 @@
 //    「明明是朝上」红箭头回来、亮一下，橙箭头和橙算式打叉；
 // 句 5 橙箭头收起，「没有起点」右栏写「方向没有起点」，「停在这里」扫地机连同红箭头滑到 (1, 3)，「停在那里」再滑到 (−1, 0.5)，每停一处留下一支淡红箭头，
 //    「都是朝上」三支红箭头一起亮，扫地机滑回 (3, 1)；「只转，不平移」右栏框出「方向：只转，不平移」；
-// 句 6 右栏换成 T 乘 (1, 0, 0)：「补零」最后的 0 框亮黄，「第三列拿零份」第三列框紫、写「× 0」，「没加进来」写出 (0, 1, 0)；
-// 句 7「指到袜子的这支箭头」地图上从扫地机画亮黄虚线箭头到袜子，「也是方向」旁边写「方向」，「两个点相减」右栏写 (2, 3, 1) − (3, 1, 1)，
+// 句 6（自由向量）右栏上半写「只管长短和方向、不管起点：课本上叫」，「箭头」地图上三支红箭头再亮一下，「自由向量」弹出「自由向量（free vector）」牌子；
+// 句 7 右栏换成 T 乘 (1, 0, 0)：「补零」最后的 0 框亮黄，「第三列拿零份」第三列框紫、写「× 0」，「没加进来」写出 (0, 1, 0)；
+// 句 8「指到袜子的这支箭头」地图上从扫地机画亮黄虚线箭头到袜子，「也是方向」旁边写「方向」，「两个点相减」右栏写 (2, 3, 1) − (3, 1, 1)，
 //    「最后一个数」两个 1 框亮黄，「零」写出 (−1, 2, 0)、最后的 0 框亮黄；
-// 句 8 右栏换成总结：「速度」「力」两块小牌，「点后面补一」「方向后面补零」两行依次亮起。
+// 句 9 右栏换成总结：「速度」「力」两块小牌，「点后面补一」「方向后面补零」两行依次亮起。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
 (function () {
   var E = window.EP007;
@@ -23,28 +24,29 @@
     drive: 2.11, self: 3.1, a1: [5.34, 5.77],
     turn: 6.94, frameB: 10.29, frameW: 11.99, ghost: 13.69, rot: [15.34, 16.24], k1: 17.04, r1: [18.49, 18.97], up: 19.86, ok: 20.54,
     plusP: 22.32, r2: [23.74, 24.24], red: [24.73, 25.5], still: 27.05, phase1Out: 28.73,
-    noStart: 29.02, slide: [[31.03, 31.63], [32.28, 32.88], [34.73, 35.53]], same: 33.96, rule: 35.77, phase2Out: 37.93,
-    homo: 38.57, zero: 40.54, k3: 41.17, res3: 42.46,
-    toSock: 45.75, isDir: 47.67, sub: 49.01, lasts: 49.77, res4: [50.89, 52.39], phase4Out: 53.23,
-    speed: 53.52, force: 54.29, pt1: 57.03, dir0: 58.23
+    noStart: 29.02, slide: [[31.03, 31.63], [32.28, 32.88], [34.73, 35.53]], same: 33.96, rule: 35.77, freeA: 38.67, arrows2: 41.08, free: 42.63, phase2Out: 43.86,
+    homo: 44.5, zero: 46.47, k3: 47.1, res3: 48.39,
+    toSock: 51.68, isDir: 53.6, sub: 54.94, lasts: 55.7, res4: [56.82, 58.32], phase4Out: 59.16,
+    speed: 59.45, force: 60.22, pt1: 62.96, dir0: 64.16
   };
   var RX = 452;
 
   E.scenes[3] = {
     title: '方向：只转，不平移',
-    dur: 60.31,
+    dur: 66.24,
     cues: [
       { at: 0, s: '扫地机往前开：在**扫地机坐标系**里，开的**方向**是 (1, 0)' },
       { at: 6.84, s: '先转：乘 $R$，就是把**扫地机坐标系**里的数换成**世界坐标系**里的数——(1, 0) 跟着车头转 90°' },
       { at: 16.94, s: '第 1 列拿 1 份：$R$ 乘 (1, 0) = (0, 1)，朝上，没错' },
       { at: 21.76, s: '要是再加上**位置**：(3, 2)，箭头斜着指向右上——**算错**了' },
       { at: 28.7, s: '**方向**没有起点：停在哪儿，往前开都朝上——只转，**不平移**' },
-      { at: 38.25, s: '齐次变换：**方向**后面补 0，第 3 列拿 0 份，**位置**没加进来' },
-      { at: 44.9, s: '2 个点相减是**方向**：最后一个数 1 − 1 = 0' },
-      { at: 53.42, s: '速度、力都是**方向**：点后面补 1，**方向**后面补 0' }
+      { at: 38.25, s: '只管长短和方向、不管起点：课本上叫**自由向量**（free vector）' },
+      { at: 44.18, s: '齐次变换：**方向**后面补 0，第 3 列拿 0 份，**位置**没加进来' },
+      { at: 50.83, s: '2 个点相减是**方向**：最后一个数 1 − 1 = 0' },
+      { at: 59.35, s: '速度、力都是**方向**：点后面补 1，**方向**后面补 0' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('扫地机往前开，在扫地机坐标系里开的方向是 (1, 0)；先转：乘旋转矩阵，就是把扫地机坐标系里的数换成世界坐标系里的数，(1, 0) 先按车头朝右画出来，再跟着车头转 90 度，得到世界坐标系里的 (0, 1)，朝上；要是再加上位置就成了 (3, 2)，箭头斜着指向右上，算错了；方向没有起点，扫地机停在哪里往前开都是朝上，所以方向只转、不平移；用齐次变换算，方向后面补 0，位置一点也没加进来；两个点相减是方向，最后一个数 1 − 1 = 0；速度、力都是方向');
+      var s = K.sceneSvg('扫地机往前开，在扫地机坐标系里开的方向是 (1, 0)；先转：乘旋转矩阵，就是把扫地机坐标系里的数换成世界坐标系里的数，(1, 0) 先按车头朝右画出来，再跟着车头转 90 度，得到世界坐标系里的 (0, 1)，朝上；要是再加上位置就成了 (3, 2)，箭头斜着指向右上，算错了；方向没有起点，扫地机停在哪里往前开都是朝上，所以方向只转、不平移，这种只管长短和方向、不管起点的箭头课本上叫自由向量；用齐次变换算，方向后面补 0，位置一点也没加进来；两个点相减是方向，最后一个数 1 − 1 = 0；速度、力都是方向');
       function vecN(parent, x, y, v, color, size) {
         return E.matN(parent, x, y, v.map(function (a) { return [a]; }), { size: size || 24, color: function (i) { return Array.isArray(color) ? color[i] : color; } });
       }
@@ -109,6 +111,11 @@
       var ruleG = E.el('g', {}, ph2);
       K.paint(E.el('rect', { x: RX + 4, y: 368, width: 328, height: 46, rx: 12, 'stroke-width': 2.5 }, ruleG), E.tint(E.GOOD, 12, 'var(--demo-surface)'), E.GOOD);
       E.txt(ruleG, 620, 399, '方向：只转，不平移', 24, E.GOOD, 'middle', 900);
+      // 句 6：一手资料里的叫法（《Modern Robotics》第 3 章 free vector）；上面一、二行（开的方向、只转）这时还在，写在它们和「方向没有起点」中间
+      var freeA = E.txt(ph2, 620, 258, '只管长短和方向、不管起点：课本上叫', 20, E.INK2, 'middle', 700);
+      var freeG = E.el('g', {}, ph2);
+      K.paint(E.el('rect', { x: RX + 4, y: 270, width: 328, height: 46, rx: 12, 'stroke-width': 2.5 }, freeG), E.tint(E.HI, 12, 'var(--demo-surface)'), E.HI);
+      E.txt(freeG, 620, 301, '自由向量（free vector）', 24, E.HI, 'middle', 900);
       // 第三段（句 5）：T 乘 (1, 0, 0)
       var ph3 = E.el('g', {}, s), Y3 = 110, f3 = E.flow(RX - 6, Y3, 10);
       E.txt(ph3, RX, 40, '用齐次变换算', 21, E.INK2, 'start', 700);
@@ -184,7 +191,7 @@
           var gaOut = 1 - f(st, T.up + 0.6, 0.4);
           E.op(gArc, gaOut); E.op(gArcLab, f(st, T.rot[1], 0.3) * gaOut);
           E.op(vac.arrows[0].g, gDim);
-          var gb = Math.max(bump(st, T.drive, 0.8), fb, bump(st, T.up, 0.9), bump(st, T.still, 0.9), bump(st, T.same, 1.0));
+          var gb = Math.max(bump(st, T.drive, 0.8), fb, bump(st, T.up, 0.9), bump(st, T.still, 0.9), bump(st, T.same, 1.0), bump(st, T.arrows2, 0.9));
           vac.arrows[0].line.style.strokeWidth = 5 + 3 * gb; E.glow(vac.arrows[0].g, E.X, gb > 0.05);
           fwdLab.setAttribute('x', (tip[0] + 12).toFixed(1)); fwdLab.setAttribute('y', (tip[1] + 4).toFixed(1));
           E.op(fwdLab, f(st, T.drive, 0.3) * (1 - f(st, T.turn, 0.3)));
@@ -201,7 +208,7 @@
             var p0 = P(STOPS[i + 1][0], STOPS[i + 1][1]), p1 = P(STOPS[i + 1][0], STOPS[i + 1][1] + 1);
             g.set(p0[0], p0[1], p1[0], p1[1]);
             var on = f(st, T.slide[i][1], 0.2) * (1 - f(st, T.phase2Out, 0.4));
-            var sb = bump(st, T.same, 1.0);
+            var sb = Math.max(bump(st, T.same, 1.0), bump(st, T.arrows2, 0.9));
             E.op(g.g, on * (0.45 + 0.55 * sb)); g.line.style.strokeWidth = 4.5 + 2.5 * sb;
           });
           // 句 6：扫地机指到袜子的箭头
@@ -227,10 +234,12 @@
           E.drawOn(xC, f(st, T.still + 0.3, 0.4));
           E.op(ph2, f(st, T.noStart, 0.4) * (1 - f(st, T.phase2Out, 0.4)));
           E.pop(ruleG, 620, 391, f(st, T.rule, 0.4), 0.85);
+          E.op(freeA, f(st, T.freeA, 0.4));
+          E.pop(freeG, 620, 293, f(st, T.free, 0.4), 0.85);
           E.op(ph3, f(st, T.homo, 0.4) * (1 - f(st, T.phase4Out, 0.4)));
           var z = f(st, T.zero, 0.35), qz = v3.pos(2, 0);
           E.op(v3.cells[2][0], z); E.scaleAt(v3.cells[2][0], qz[0], qz[1], 1 + 0.6 * (1 - z));
-          v3.hl('z', 2, 0, 2, 0, E.HI, z);
+          v3.hl('z', 2, 0, 2, 0, E.HI, f(st, T.zero + 0.3, 0.3));   // 「0」放大弹完再框，弹的时候不碰框边
           Tm.hl('c2', 0, 2, 2, 2, E.VIOLET, f(st, T.k3, 0.3));
           E.op(times0, f(st, T.k3 + 0.3, 0.3));
           E.op(res3, f(st, T.res3, 0.35)); E.op(note3, f(st, T.res3 + 0.3, 0.4));

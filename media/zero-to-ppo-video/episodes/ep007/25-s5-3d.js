@@ -90,8 +90,9 @@
       E.txt(phB, MX, 60, '一节一节接着乘', 22, E.INK2, 'middle', 900);
       var chips = LINKS.map(function (l, i) {
         var g = E.el('g', {}, phB), x = 488 + i * 88;
-        K.paint(E.el('rect', { x: x - 29, y: 104, width: 58, height: 56, rx: 10, 'stroke-width': 2.5 }, g), E.tint(E.HI, 14, 'var(--demo-surface)'), E.HI);
-        E.txt(g, x, 139, '4×4', 20, E.INK, 'middle', 900);
+        // 小牌比「4×4」宽出两边各 12 px 左右（同 006「字离框边留足空」），× 号夹在两块中间
+        K.paint(E.el('rect', { x: x - 32, y: 104, width: 64, height: 56, rx: 10, 'stroke-width': 2.5 }, g), E.tint(E.HI, 14, 'var(--demo-surface)'), E.HI);
+        E.txt(g, x, 138, '4×4', 18, E.INK, 'middle', 900);
         E.txt(g, x, 190, l[2], 22, E.HI, 'middle', 900);
         return { g: g, x: x };
       });
