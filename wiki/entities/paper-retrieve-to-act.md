@@ -6,7 +6,7 @@ tags:
   - vla
   - policy-learning
 status: complete
-updated: 2026-10-28
+updated: 2026-10-29
 arxiv: "2610.37215"
 project: https://retrieve2act.github.io/r2a/
 related:
@@ -35,6 +35,8 @@ summary: "Retrieve to Act（arXiv:2610.37215）：把成功示范构成时空运
 |------|----------|----------|
 | Retrieve to Act | Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution | 本文方法 / 基准的简称 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| GNN | Graph Neural Network | 在动作基元图中定位与检索 |
+| OOD | Out of Distribution | 分布外的视觉变化 |
 
 ## 为什么重要
 
@@ -57,8 +59,9 @@ summary: "Retrieve to Act（arXiv:2610.37215）：把成功示范构成时空运
 
 ## 实验与评测
 
-- 公众号转述：跨多种视觉语言动作模型考察扰动鲁棒性，基础策略无需微调，检索模块仍需学习。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+论文摘要报告在 GR00T N1.7、π₀.₅、StableVLA 上评估，LIBERO-Plus 与 RoboTwin2.0-Plus 仿真最高提升 12 个百分点，真机最高提升 40 个百分点；这是所测条件下的最大值，并非所有任务的平均提升。基础 VLA 冻结，GNN 检索和逐维门控仍需学习。
+
+2026-10-29 再次访问项目页时未能获取页面；保留 2026-10-28 的代码待发布核查记录，不推断当前状态。
 
 ## 与其他工作对比
 
@@ -81,6 +84,7 @@ summary: "Retrieve to Act（arXiv:2610.37215）：把成功示范构成时空运
 
 ## 参考来源
 
+- [项目页归档](../../sources/sites/retrieve-to-act.md)
 - [retrieve_to_act_arxiv_2610_37215.md](../../sources/papers/retrieve_to_act_arxiv_2610_37215.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.37215](https://arxiv.org/abs/2610.37215)
