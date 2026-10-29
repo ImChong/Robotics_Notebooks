@@ -11,7 +11,9 @@
 // 句 5「前」「左」扫地机旁的两条虚线依次鼓一下，「上」「左」原点出发的红线、绿线依次鼓一下，「箭头」亮黄箭头亮一下，「原点」原点鼓一下；
 // 句 6「再平移」右栏写「② 再平移」，「扫地机的位置」紫箭头从原点画到扫地机，「三、一」出 + (3, 1)，「得到」亮黄箭头整支平移、起点从原点挪到扫地机，
 //    箭头尖沿一支紫色虚线从 (−1, 2) 挪到 (2, 3)，「二、三」写出结果；「你看」袜子外一圈亮环，「落在袜子上」打勾；
-// 句 7 右栏底部框出「点：v′ = Rv + p」，「乘」「旋转矩阵」Rv 亮一下，「加上」「位置」+ p 亮一下。
+// 句 7「世界原点」原点鼓一下，「画到袜子」从原点画一支亮黄箭头到袜子（紫色位置箭头、平移过去的亮黄箭头退淡成辅助线），「位置」这支箭头亮一下，
+//    「二、三」袜子旁的 (2, 3) 和右栏结果 (2, 3) 鼓一下；
+// 句 8 右栏底部框出「点：v′ = Rv + p」，「乘」「旋转矩阵」Rv 亮一下，「加上」「位置」+ p 亮一下。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
 (function () {
   var E = window.EP007;
@@ -25,7 +27,8 @@
     c1: 23.9, two: 24.48, c2: 25.09, one: 25.68, add: 26.15, res: [27.05, 27.74],
     front: 30.46, left: 30.91, up: 32.48, left2: 32.91, arrow: 34.06, origin: 35.29,
     s2: 37.61, p: [38.4, 39.51], pv: 40.25, slide: [41.22, 42.42], res2: [41.64, 42.09], look: 42.89, land: 44.11,
-    sum: 46.93, mul: 50.42, plus: 51.79
+    wOrigin: 46.23, wDraw: [46.94, 47.6], wPos: 51.04, wRes: [51.83, 52.37],
+    sum: 54.56, mul: 58.05, plus: 59.42
   };
   var RX = 452;                                              // 右栏左边界
 
@@ -45,7 +48,7 @@
 
   E.scenes[1] = {
     title: '点：先转，再平移',
-    dur: 53.37,
+    dur: 61,
     cues: [
       { at: 0, s: '扫地机看到一只袜子：正前方 2 格、往左 1 格 → (2, 1)' },
       { at: 6.14, s: '(2, 1) 是**扫地机坐标系**里的说法：换到**世界坐标系**，袜子在什么位置？' },
@@ -53,10 +56,11 @@
       { at: 23.8, s: '第 1 列拿 2 份 + 第 2 列拿 1 份 = (−1, 2)' },
       { at: 28.84, s: '扫地机的前、左，换成了地图的上、左——可箭头还从原点出发' },
       { at: 37.1, s: '② 再平移：加上**位置** (3, 1)，得到 (2, 3)，正好落在袜子上' },
-      { at: 45.88, s: '**点**从扫地机坐标系换到世界坐标系：先乘 $R$，再加 $p$，即 $v\' = Rv + p$' }
+      { at: 45.88, s: '世界原点画到袜子的箭头 = 袜子在**世界坐标系**里的位置 (2, 3)' },
+      { at: 53.51, s: '**点**从扫地机坐标系换到世界坐标系：先乘 $R$，再加 $p$，即 $v\' = Rv + p$' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('扫地机看到袜子在它正前方 2 格、往左 1 格，即 (2, 1)，这是扫地机坐标系里的说法；换到世界坐标系，先转：先把 (2, 1) 按车头朝右画在原点，车头转了 90 度，箭头也跟着绕原点转 90 度，就是旋转矩阵乘 (2, 1)，第一列拿 2 份、第二列拿 1 份，得到 (−1, 2)，箭头还从原点出发；再平移：加上扫地机的位置 (3, 1)，得到 (2, 3)，正好落在袜子上；所以点从扫地机坐标系换到世界坐标系是先乘 R、再加 p');
+      var s = K.sceneSvg('扫地机看到袜子在它正前方 2 格、往左 1 格，即 (2, 1)，这是扫地机坐标系里的说法；换到世界坐标系，先转：先把 (2, 1) 按车头朝右画在原点，车头转了 90 度，箭头也跟着绕原点转 90 度，就是旋转矩阵乘 (2, 1)，第一列拿 2 份、第二列拿 1 份，得到 (−1, 2)，箭头还从原点出发；再平移：加上扫地机的位置 (3, 1)，得到 (2, 3)，正好落在袜子上；从世界原点画到袜子的箭头就是袜子在世界坐标系里的位置 (2, 3)；所以点从扫地机坐标系换到世界坐标系是先乘 R、再加 p');
 
       /* ══ 左：俯视地图 ══ */
       var pl = E.plane(s, O), P = pl.P, box = pl.box;
@@ -104,6 +108,10 @@
       big.line.style.filter = 'drop-shadow(0 0 2px #000)';
       var rvLab = E.halo(E.txt(s, P(RV[0], RV[1])[0] - 14, P(RV[0], RV[1])[1] - 14, '(−1, 2)', 22, E.HI, 'middle', 900));
       var skLab = E.halo(E.txt(s, sk[0] + 8, sk[1] - 50, '(2, 3)', 22, E.HI, 'middle', 900));
+      // 句 7：世界原点 → 袜子（停在袜子边上，不压袜子）= 袜子在世界坐标系里的位置
+      var wd = [sk[0] - o0[0], sk[1] - o0[1]], wl = Math.hypot(wd[0], wd[1]), wEnd = [sk[0] - wd[0] / wl * 20, sk[1] - wd[1] / wl * 20];
+      var wArrow = E.vec(s, E.HI, 5, { head: 16 });
+      wArrow.line.style.filter = 'drop-shadow(0 0 2px #000)';
 
       /* ══ 右栏：一行行的算式 ══ */
       // 一行一行从左往右排（E.flow：按括号的真实宽度留空，括号和 =、+ 之间留 10）
@@ -196,7 +204,8 @@
           var rv = rot(2, 1), start = [mv * VX, mv * VY], tip = [start[0] + rv[0] * pa, start[1] + rv[1] * pa];
           var ps = P(start[0], start[1]), pt = P(tip[0], tip[1]);
           big.set(ps[0], ps[1], pt[0], pt[1]);
-          E.op(big.g, pa > 0 ? 1 : 0);
+          var aux = 1 - 0.65 * f(st, T.wDraw[0], 0.4);                     // 句 7：画世界原点 → 袜子时，两支箭头退成辅助线
+          E.op(big.g, (pa > 0 ? 1 : 0) * aux);
           var ba = bump(st, T.arrow, 0.9);
           big.line.style.strokeWidth = 5 + 3 * ba; E.glow(big.g, E.HI, ba > 0.05);
           E.op(rvLab, f(st, T.res[0], 0.3) * (1 - f(st, T.slide[0], 0.3)));
@@ -204,13 +213,20 @@
           E.drawOn(tipPath.line, f(st, T.slide[0], T.slide[1] - T.slide[0]));
           E.op(tipPath.head, f(st, T.slide[1] - 0.1, 0.2));
           E.op(skLab, f(st, T.res2[1], 0.3));
-          var ob = Math.max(bump(st, T.origin, 0.8), 0);
+          var wr = Math.max(bump(st, T.wRes[0], 0.8), bump(st, T.wRes[1], 0.8));
+          E.scaleAt(skLab, sk[0] + 8, sk[1] - 58, 1 + 0.2 * wr);
+          var wp = f(st, T.wDraw[0], T.wDraw[1] - T.wDraw[0]);
+          wArrow.set(o0[0], o0[1], o0[0] + (wEnd[0] - o0[0]) * wp, o0[1] + (wEnd[1] - o0[1]) * wp);
+          E.op(wArrow.g, wp > 0 ? 1 : 0);
+          var wb = bump(st, T.wPos, 0.9);
+          wArrow.line.style.strokeWidth = 5 + 3 * wb; E.glow(wArrow.g, E.HI, wb > 0.05);
+          var ob = Math.max(bump(st, T.origin, 0.8), bump(st, T.wOrigin, 0.8));
           oRing.setAttribute('r', (8 + 6 * ob).toFixed(2)); E.op(oRing, ob > 0.02 ? 1 : 0);
 
           /* 句 5：位置箭头；袜子亮环、勾 */
           var pp = f(st, T.p[0], T.p[1] - T.p[0]);
           pArrow.set(o0[0], o0[1], o0[0] + (vc[0] - o0[0]) * pp, o0[1] + (vc[1] - o0[1]) * pp);
-          E.op(pArrow.g, pp > 0 ? 1 : 0);
+          E.op(pArrow.g, (pp > 0 ? 1 : 0) * aux);
           var lk = K.seg(st, T.look, T.look + 1.0);
           skRing.setAttribute('r', (18 + 16 * lk).toFixed(2)); E.op(skRing, lk > 0 && lk < 1 ? 1 - lk : 0);
           E.drawOn(okSock, f(st, T.land, 0.4));
@@ -230,6 +246,7 @@
           E.op(plusG, f(st, T.pv - 0.4, 0.3));
           E.op(res2G, f(st, T.res2[0], 0.3));
           c3.cells[0][0].style.opacity = f(st, T.res2[0], 0.3); c3.cells[1][0].style.opacity = f(st, T.res2[1], 0.3);
+          c3.hl('w', 0, 0, 1, 0, E.HI, wr);
           E.op(rowD, f(st, T.sum, 0.4));
           fD.setTex(texD(bump(st, T.mul, 1.0) > 0.3, bump(st, T.plus, 0.9) > 0.3));   // setTex 内容没变就不重排
         }
