@@ -2,8 +2,11 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-29
 related:
+  - ./mbpo.md
+  - ../concepts/bptt.md
+  - ./td3.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../concepts/rl-runner.md
   - ../overview/robot-control-paradigm-rl-intelligent-control.md
@@ -20,6 +23,7 @@ related:
   - ../entities/paper-lucid.md
   - ../entities/paper-motus2.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/papers/world-model-consultation-study.md
   - ../../sources/repos/robot-world-model-study.md
   - ../../sources/personal/rl_runner_types.md
@@ -269,6 +273,7 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 ---
 
 ## 关联页面
+- [MBPO](./mbpo.md) / [TD3](./td3.md) / [BPTT](../concepts/bptt.md) — senlanke 复习文章点名的独立详情节点
 
 ### 先读：定位与选型
 
