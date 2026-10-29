@@ -335,3 +335,5 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [AMP-RSL-RL](../entities/amp-rsl-rl.md) — rsl_rl(PPO)+AMP 的人形模仿实现，重定向/动捕产物的消费侧（可 pip 安装）
 - [fairmotion](../entities/fairmotion.md) — 上游通用动捕数据处理库（已归档），重定向前的数据 IO/表示层
 - [KinoGen](../entities/paper-kinogen.md) — 从生成视频拟合机器人与物体模型，绕过人体到机器人的逐帧重定向
+
+- 相关研究：[flowhmr](../entities/paper-flowhmr.md)。

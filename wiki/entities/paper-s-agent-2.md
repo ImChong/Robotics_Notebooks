@@ -68,10 +68,22 @@ sequenceDiagram
 
 官方仓库提供系统与评测代码，权重需另行获取；agent 和文档采用 Apache-2.0，perception 包装的 SpatialClaw 子模块受 NVIDIA 非商业许可证约束。
 
+## 与其他工作对比
+
+| 工作 | 空间能力来源 | 与 S-Agent 2.0 的差异 |
+|------|--------------|-----------------------|
+| [Ego3D-VLM](./paper-sa-2509-06266-spatial-reasoning-with-vision-language-models-in.md) | 后训练 VLM | 通过训练把空间能力写进权重；S-Agent 2.0 不改模型，靠外部三维感知工具提供读数 |
+| [R3D](./paper-sa-2607-02921-r3d-quantitative-3d-spatial-reasoning-for-egocen.md) | 模型无关的空间工具调用 | 同属「工具调用」路线；S-Agent 2.0 用通用编码智能体（OpenHands）+ CLI 网关，并额外维护跨轮的持久场景记忆 |
+| [SMA](./paper-spatial-memory-agent.md) | 冻结 VLM + 过程性空间记忆 | 同样强调记忆；SMA 用 verifier 引导记忆写入，S-Agent 2.0 的记忆由感知服务的几何结果填充 |
+| [Holi-World](./paper-holi-world.md) | 世界记录蒸馏成训练数据 | 同一团队的训练路线，与本文的免训练工具路线互补 |
+
+报告的提升以「同一智能体无工具」为对照，说明增益主要来自感知工具；更换底座模型或感知后端时需重测。感知后端 SpatialClaw 受非商业许可证约束，商用前需替换；该层在[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)中属于「下游消费」接口。
+
 ## 关联页面
 
 - [Ropedia W0](./paper-ropedia-w0.md) — 跨本体第一视角世界模型。
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知栈选型闭环知识链枢纽
 
 ## 参考来源
 

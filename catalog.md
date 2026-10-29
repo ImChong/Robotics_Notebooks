@@ -438,6 +438,7 @@
 - [XGripper](wiki/entities/cn-os-xgripper.md) — XGripper** 是 千觉机器人 公开的 **SDK/驱动** 开源项目：Xense 数据采集夹爪 SDK `📅unknown` `[entity_page]`
 - [xMimic](wiki/entities/cn-os-xmimic.md) — xMimic** 是 北京人形机器人创新中心 公开的 **全身动作跟踪/技能训练** 开源项目：BVH动作由xGMR重定 `📅unknown` `[entity_page]`
 - [XR-1](wiki/entities/cn-os-xr-1.md) — XR-1** 是 北京人形机器人创新中心 公开的 **VLA/操作模型** 开源项目：三阶段流程先学习统一视觉—运动离散 `📅unknown` `[entity_page]`
+- [CO01：经验作为提示](wiki/entities/co01.md) — CO01 是可可矩阵（COCO Matrix）提出的机器人系统：把示范、尝试和指导放入上下文，使策略在不更新权重的情况下调整操作行为。 `📅unknown` `[entity_page]`
 - [CodeGraph](wiki/entities/codegraph.md) — CodeGraph**（官方仓库，[项目页](https://colbymchenry.github.io `📅unknown` `[entity_page]`
 - [Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）](wiki/entities/codersag-mechanical-mcp.md) — Mechanical MCP（PyMechanical gRPC）（codersag/mechanical-mcp）是通过 PyMechanical gRPC 连接 ANSYS Mechanical， `📅unknown` `[entity_page]`
 - [Codex Security（OpenAI）](wiki/entities/codex-security.md) — Codex Security**（`@openai/codex-security`  `📅unknown` `[entity_page]`
@@ -540,6 +541,7 @@
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
 - [Deep Agents](wiki/entities/deep-agents.md) — Deep Agents** 是 LangChain 生态的 **开箱 agent harness**（*The batteries-included agent harness*）：在 **[La `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
+- [Genie 4（Google DeepMind · 交互世界模拟）](wiki/entities/deepmind-genie-4.md) — Genie 4 是实时生成交互画面与音频的世界模型；Gemini 可观察生成画面、规划步骤并以文本引导模拟。 `📅unknown` `[entity_page]`
 - [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
 - [DeepSeek Harness](wiki/entities/deepseek-harness.md) — DeepSeek Harness**（`dsh`，[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-ha `📅unknown` `[entity_page]`
 - [DeepTutor（HKUDS）](wiki/entities/deeptutor.md) — DeepTutor**（HKUDS/DeepTutor，Apache-2.0）是香港大学 [HKUDS](https:/ `📅unknown` `[entity_page]`
@@ -935,6 +937,7 @@
 - [MobileGym（移动 GUI Agent 可验证仿真与基准）](wiki/entities/mobilegym.md) — MobileGym**（arXiv:2605.26114，官网，[代码](https://github.com/Purewhiter/mobile `📅unknown` `[entity_page]`
 - [mocap_retarget](wiki/entities/mocap-retarget.md) — mocap_retarget**（<https://github.com/ccrpRepo/mocap_retarget>）是社区维护的 **动捕数据重定向到机器人** 的工程向示例仓库，侧重脚本 `📅unknown` `[entity_page]`
 - [Modern Robotics (Lynch-Park 教材)](wiki/entities/modern-robotics-book.md) — Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（ `📅unknown` `[entity_page]`
+- [Modly](wiki/entities/modly.md) — Modly](https://github.com/lightningpixel/modly) 是由 Lightning Pixel 开发的本地 AI 三维网格生成桌面应用。官方仓库以图片生成网格为 `📅unknown` `[entity_page]`
 - [Molmo2-ER（MolmoER）](wiki/entities/molmo-er.md) — Molmo2-ER**（**MolmoER**）是 **Ai2** 为 MolmoAct2 提供的 **具身推理（Embodied Reasonin `📅unknown` `[entity_page]`
 - [MolmoMotion](wiki/entities/molmo-motion.md) — MolmoMotion**（Ai2 博客 | [arXiv:2606.18558](https://arxiv.o `📅unknown` `[entity_page]`
 - [Molmo2](wiki/entities/molmo2-vlm.md) — Molmo2**（Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Gro `📅unknown` `[entity_page]`
@@ -1287,6 +1290,7 @@
 - [ACT：低成本硬件上的动作块 Transformer](wiki/entities/paper-act.md) — ACT**（*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*，[arXiv:2304.13705](http `📅unknown` `[entity_page]`
 - [ActFovea：给 VLA 策略加一层运行时防护](wiki/entities/paper-actfovea.md) — ActFovea**（论文 *ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Co `📅unknown` `[entity_page]`
 - [ActGaze](wiki/entities/paper-actgaze.md) — ActGaze: Learning Action-Grounded Gaze through Counterfactual Visual Interventions for High-Precis `📅unknown` `[entity_page]`
+- [Action Representation Pretraining（arXiv:2610.34453）](wiki/entities/paper-action-representation-pretraining.md) — Action Representation Pretraining**（*Scaling Dexterous Manipulation via Action Representation Pret `📅unknown` `[entity_page]`
 - [Action Upcycling（arXiv:2609.34911）](wiki/entities/paper-action-upcycling.md) — Action Upcycling**（*Don't Throw Away the Tail: Action Upcycling for Policy Acceleration*，成均馆大学 / K `📅unknown` `[entity_page]`
 - [One Demo Is Worth a Thousand Trajectories（arXiv:2606.19586）](wiki/entities/paper-action-view-augmentation.md) — One Demo Is Worth a Thousand Trajectories**（Chuer Pan, Litian Liang, Dominik Bauer, Eric Cousineau `📅unknown` `[entity_page]`
 - [ActiveAlign：主动感知后的 VLA 观测对齐](wiki/entities/paper-activealign.md) — 一句话定义：** ActiveAlign 在 VLA 前增加主动相机视角选择，并用从该视角终点成功续接到的示范数据微调 VLA，使策略适应相机动作改变后的首帧观测与机器人状态。 `📅unknown` `[entity_page]`
@@ -1296,14 +1300,17 @@
 - [Actuator Dynamics Curricula（arXiv:2609.09492）](wiki/entities/paper-actuator-dynamics-curricula-legged-rl.md) — Actuator Dynamics Curricula**（*Actuator Dynamics Curricula for Narrow-Viability Tasks in Legged Ro `📅unknown` `[entity_page]`
 - [AD-E2E-JEPA：端到端自动驾驶的联合嵌入预测架构](wiki/entities/paper-ad-e2e-jepa.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
 - [AdaDex（混合灵巧模仿学习可适应灵巧技能）](wiki/entities/paper-adadex.md) — AdaDex 从单条数秒的手-物轨迹出发，用「运动跟踪」与「加噪泛化」两类环境共同训练一个策略，让灵巧手技能能够泛化到相似但未见的动作和目标。 `📅unknown` `[entity_page]`
+- [AdaDexTrack（arXiv:2610.33852）](wiki/entities/paper-adadextrack.md) — AdaDexTrack**（*AdaDexTrack: Dynamic Modulation for Adaptive and Generalizable Dexterous Manipulati `📅unknown` `[entity_page]`
 - [AdaHVLA](wiki/entities/paper-adahvla.md) — AdaHVLA**（*Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution*，[arXiv:2609.29204 `📅unknown` `[entity_page]`
 - [AdaMimic：单条参考运动上的自适应全身跟踪](wiki/entities/paper-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*，[arXiv:2510.14454](ht `📅unknown` `[entity_page]`
 - [AdaMorph](wiki/entities/paper-adamorph-unified-motion-retargeting.md) — AdaMorph**（*AdaMorph: Unified Motion Retargeting via Embodiment-Aware Adaptive Transformers*，arXiv `📅unknown` `[entity_page]`
+- [AdaPolicy（arXiv:2610.34280）](wiki/entities/paper-adapolicy.md) — AdaPolicy**（*AdaPolicy: Action-Driven Anticipatory Robot Policies via Next-Chunk Prediction*，[arXi `📅unknown` `[entity_page]`
 - [ADAPT：端到端文本驱动人形控制](wiki/entities/paper-adapt-text-driven-humanoid.md) — ADAPT**（*Agile Diffusion Action Priors for Robust and Steerable Online Text-Driven Humanoid Contro `📅unknown` `[entity_page]`
 - [AdaPT（人形网球自适应规划与跟踪）](wiki/entities/paper-adapt.md) — AdaPT**（*Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and  `📅unknown` `[entity_page]`
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`
 - [Adaptive-MHE（arXiv:2609.17832）](wiki/entities/paper-adaptive-mhe.md) — Adaptive-MHE**（*Adaptive-MHE: A Sampling-Based Adaptive MPC for Legged Loco-Manipulation via Movin `📅unknown` `[entity_page]`
 - [Traversal Tubes：面向双足人形姿态感知导航的自适应通行管道](wiki/entities/paper-adaptive-traversal-tubes-bipedal-navigation.md) — Traversal Tubes**（*Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids*，[ar `📅unknown` `[entity_page]`
+- [未知载荷下的自适应全身 MPC（arXiv:2610.12972）](wiki/entities/paper-adaptive-whole-body-mpc-payload.md) — 结合质心模型预测控制、支撑腿自适应模糊力矩补偿和最优起坐姿态规划，处理未知载荷下的人形搬运平衡。 `📅unknown` `[entity_page]`
 - [AdaRoboVLG：可组合先验的自适应视觉语言抓取](wiki/entities/paper-adarobovlg.md) — AdaRoboVLG**（*Adaptive Vision-Language Grasping via Composable Foundation Priors and Generalizable `📅unknown` `[entity_page]`
 - [ADEPT：灵巧操作 RL 预训练与后训练](wiki/entities/paper-adept-dexterity.md) — ADEPT**（*Accelerating Dexterity via Pre-Training and Post-Training using Reinforcement Learning*； `📅unknown` `[entity_page]`
 - [ADM-BA：无对应点的多视角点云配准](wiki/entities/paper-adm-ba.md) — ADM-BA**（*Adaptive Depth-Map-Guided Bundle Adjustment for Correspondence-Free Multi-View Point Clo `📅unknown` `[entity_page]`
@@ -1312,6 +1319,7 @@
 - [像素扩散的对抗训练（Adversarial Training for Pixel Diffusion）](wiki/entities/paper-adversarial-training-pixel-diffusion.md) — Adversarial Training for Pixel Diffusion**（Xin Lin、Zhifei Zhang、Yuqian Zhou、Haitian Zheng、Zhe Lin、 `📅unknown` `[entity_page]`
 - [AE-VLA 与 ACG-Bench](wiki/entities/paper-ae-vla-arm-wise-compositional.md) — AE-VLA / ACG-Bench**（arXiv:2610.06184，Zhang 等，通讯方向含 Huchuan Lu）把“双臂已分别学会单臂技能，能否按臂重新组合”定义为 **arm-wi `📅unknown` `[entity_page]`
 - [空中-水中两栖搭便车机器人：仿印鱼吸盘+被动变形桨](wiki/entities/paper-aerial-aquatic-remora-hitchhiking-robot.md) — Aerial-aquatic robots capable of crossing the air-water boundary and hitchhiking on surfaces**（Don `📅unknown` `[entity_page]`
+- [Aerial Manipulator Nonlinear Control（arXiv:2610.34454）](wiki/entities/paper-aerial-manipulator-nonlinear-control.md) — Aerial Manipulator Nonlinear Control**（*Nonlinear Control of Aerial Manipulator*，[arXiv:2610.34454 `📅unknown` `[entity_page]`
 - [Aero Hand Open：仿真就绪的腱驱灵巧手](wiki/entities/paper-aero-hand-open.md) — Aero Hand Open**（*A Simulation-Ready Tendon-Driven Hand for Dexterous Manipulation Learning*，[arXi `📅unknown` `[entity_page]`
 - [AFCE：让 VLA 预测「动作将产生的效果」而不只是动作](wiki/entities/paper-afce-action-future-coupled-effect-vla.md) — AFCE**（*Action–Future Coupled Effect Learning*；论文 *Beyond Actions: Learning Future Operation Targe `📅unknown` `[entity_page]`
 - [Adaptive Binarization for Weakly Supervised Affordance Segmentation](wiki/entities/paper-aff-1707-02850-adaptive-binarization-for-weakly-supervised-affordance-s.md) — Adaptive Binarization for Weakly Supervised Affordance Segmentation**（ICCVW 2017）收录于 [Awesome-Affo `📅unknown` `[entity_page]`
@@ -1524,6 +1532,7 @@
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
 - [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
 - [Agile-WAM（arXiv:2609.20761）](wiki/entities/paper-agile-wam.md) — Agile-WAM**（*An Agile Tactile World Action Model for Contact-Rich Robot Control*，[arXiv:2609.20761 `📅unknown` `[entity_page]`
+- [AGQ（arXiv:2610.33074）](wiki/entities/paper-agq.md) — AGQ**（*AGQ: Action-Guided Ultra-Low-Bit Quantization for Vision-Language-Action Models*，[arXiv:261 `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
 - [AIDA（arXiv:2610.15572）](wiki/entities/paper-aida-agent-interface-aligned-mobile-manipulation.md) — AIDA**（*Look Before You Move: Agent-Interface-Aligned Supervision for Open-World Mobile Manipulati `📅unknown` `[entity_page]`
@@ -1714,6 +1723,7 @@
 - [AtomicRL：长程操作的原子任务强化学习](wiki/entities/paper-atomicrl.md) — 一句话定义：** AtomicRL 把长程操作拆成原子子任务，并依据语义边界处理信用分配、根据薄弱子任务调整探索。 `📅unknown` `[entity_page]`
 - [AtomicVLA：原子技能学习的统一规划–执行 VLA](wiki/entities/paper-atomicvla.md) — AtomicVLA**（*AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots*，[arXiv:2603.07 `📅unknown` `[entity_page]`
 - [Attention Is All You Need](wiki/entities/paper-attention-is-all-you-need.md) — Attention Is All You Need**（Vaswani et al.，arXiv:1706.03762，Ne `📅unknown` `[entity_page]`
+- [AuRA（arXiv:2610.34452）](wiki/entities/paper-aura.md) — AuRA**（*AuRA: From Atoms to Bits through Autonomous Robot Interaction*，[arXiv:2610.34452](https:// `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
 - [面向孤独症教育人形机器人的视觉任务建模与自动规划](wiki/entities/paper-autism-education-humanoid-visual-task-planning.md) — 孤独症教育 NAO 规划**（*Visual Task Modeling and Automated Planning for Humanoid Robots in Education of In `📅unknown` `[entity_page]`
 - [AutoBio+：带动态实验现象的生物实验室灵巧操作基准](wiki/entities/paper-autobio-plus-lab-dexterous-benchmark.md) — AutoBio+**（*Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic L `📅unknown` `[entity_page]`
@@ -1724,6 +1734,7 @@
 - [Automatic Labelling for Bimanual Mobile Manipulation](wiki/entities/paper-automatic-labelling-bimanual-mobile.md) — 这项工作自动把双臂移动操作示范切成带时间和语义的动作段，**分别保留底盘、左臂、右臂**并行的事件。 `📅unknown` `[entity_page]`
 - [使用 Boston Dynamics Spot 实现自主砌砖](wiki/entities/paper-autonomous-bricklaying-boston-dynamics-spot.md) — Spot 砌砖**（*Towards Autonomous Bricklaying Using Boston Dynamics Spot*，[arXiv:2610.27472](https://a `📅unknown` `[entity_page]`
 - [Autonomous Spot（NeBula 长程探索）](wiki/entities/paper-autonomous-spot-nebula-exploration.md) — Autonomous Spot**（arXiv:2010.09259）系统论文描述如何将 **NeBula（Networked Belief-aware Perceptual Autonomy） `📅unknown` `[entity_page]`
+- [AutoPhyX: Automatic Text-Condition Physics Property Generation](wiki/entities/paper-autophyx.md) — 以三维资产和文本为条件预测空间变化的杨氏模量、泊松比与密度体素场，供物理仿真使用。 `📅unknown` `[entity_page]`
 - [AutoPSO：PSO 变体不要再手搓](wiki/entities/paper-autopso.md) — AutoPSO**（*A Metaframework for Automated Particle Swarm Optimization*；[arXiv:2608.07539](https://a `📅unknown` `[entity_page]`
 - [AutoTAMP](wiki/entities/paper-autotamp.md) — AutoTAMP**（arXiv:2306.06531）收录于 Lumina [Embodied-AI-Guide 微信专辑 `📅unknown` `[entity_page]`
 - [AW-0：Agentic World Action Models](wiki/entities/paper-aw-0-agentic-world-action-models.md) — 一句话定义：** AW-0 把程序化技能规划、未来视频预测和机器人动作生成放进一个联合生成的世界动作模型，让代码结构为预测与控制提供语义条件。 `📅unknown` `[entity_page]`
@@ -1741,6 +1752,7 @@
 - [BFM（Behavior Foundation Model for Humanoid Robots）](wiki/entities/paper-behavior-foundation-model-humanoid.md) — BFM** 是北大、港中大（深圳）、上交、复旦与 **上海人工智能实验室** 合作的人形 **whole-body control（WBC）基础模型** 论文（arXiv:2509.13780， `📅unknown` `[entity_page]`
 - [Behavior Prompting Policy（arXiv:2606.30457）](wiki/entities/paper-behavior-prompting-policy.md) — Behavior Prompting Policy**（Austin Patel, Ben Pekarek, Joel Enrique Castro Hernandez, Shuran Song； `📅unknown` `[entity_page]`
 - [BehaviorWorldGen（行为感知结构化世界生成闭环）](wiki/entities/paper-behaviorworldgen.md) — BehaviorWorldGen**（*Closing the Loop between Action Models and World Simulators via Controllable B `📅unknown` `[entity_page]`
+- [Behavioural Quality vs Learning Utility（arXiv:2610.34839）](wiki/entities/paper-behavioural-quality-vs-learning-utility.md) — Behavioural Quality vs Learning Utility**（*Behavioural Quality Is Not Learning Utility: Objective  `📅unknown` `[entity_page]`
 - [Being-M0.7: A Latent World-Action Model for Humanoid Robots（人形机器人潜空间世界–动作模型）](wiki/entities/paper-being-m07-humanoid-latent-wam.md) — 先用人类视频与运动学数据学会预测，再适配机器人视角，最后训练动作专家把预测转成全身控制命令。** 本页以 2026-10-08 的 [arXiv v1](https://arxiv.org/abs `📅2026-10-08` `[entity_page]`
 - [BeJEPA](wiki/entities/paper-bejepa.md) — BeJEPA**（arXiv:2610.23127）是一个通过无监督强化学习训练的目标条件人形行为世界模型，用统一潜在表征连接身体姿态、世界位置与朝向控制。 `📅unknown` `[entity_page]`
 - [Bench2Dex（arXiv:2609.15726）](wiki/entities/paper-bench2dex.md) — Bench2Dex**（*Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterou `📅unknown` `[entity_page]`
@@ -1810,12 +1822,14 @@
 - [BridgeWAM（arXiv:2610.14746）](wiki/entities/paper-bridgewam-latent-bridge-queries.md) — BridgeWAM**（*BridgeWAM: Bridging Video and Action Experts via Latent Bridge Queries*，[arXiv:2610.1 `📅unknown` `[entity_page]`
 - [Bundled Contact Gradients: Stabilizing Differentiable Simulation for Deployable Dynamic Tasks](wiki/entities/paper-bundled-contact-gradients.md) — 该方法处理可微仿真强接触事件附近梯度不稳定的问题。 `📅unknown` `[entity_page]`
 - [C-Slerp：超球面对比表示上的规划与探索](wiki/entities/paper-c-slerp-hyperspherical.md) — C-Slerp 是一种自监督目标条件强化学习方法：把对比表示当作可复用的构件，在超球面上用球面线性插值闭式生成通向目标的中间路标，无需额外的高层策略或图搜索。 `📅unknown` `[entity_page]`
+- [CADonatello: Towards Real-World Multi-Part 3D CAD Reconstruction](wiki/entities/paper-cadonatello.md) — 一句话定义：** 先对真实三维扫描分割部件，再用截面驱动草图参数化和拉伸重建各部件。 `📅unknown` `[entity_page]`
 - [CALM：多机空中操作的去中心化 MARL 控制](wiki/entities/paper-calm-decentralized-aerial-manipulation.md) — CALM 为多架带机械臂的无人机共同搬运篮筐并跟踪移动地面机器人提供去中心化控制：参数共享的 MAPPO 策略接收扰动观测、质量估计与目标预测，再叠加按目标转向提前旋转编队的偏航前馈。 `📅unknown` `[entity_page]`
 - [Cambrian-1：视觉中心 MLLM 开源探索](wiki/entities/paper-cambrian-1.md) — Cambrian-1**（*A Fully Open, Vision-Centric Exploration of Multimodal LLMs*，[arXiv:2406.16860](http `📅unknown` `[entity_page]`
 - [CAMP](wiki/entities/paper-camp-arm-hand-motion-planning.md) — CAMP**（*Cooperative Arm–Hand Motion Planning in Constrained Spaces*，[arXiv:2609.29021](https://arx `📅unknown` `[entity_page]`
 - [CAP（arXiv:2609.11553）](wiki/entities/paper-cap-perception-blind-humanoid.md) — CAP**（*Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising*，[arXiv:26 `📅unknown` `[entity_page]`
 - [CapPro：单段人类视频引导的 VLA 新任务适配](wiki/entities/paper-cappro.md) — CapPro**（论文 *One-shot Human Video-Guided Adaptation for Vision-Language-Action Models*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector** 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 [capvector.github.io](ht `📅unknown` `[entity_page]`
+- [CARD（接触锚定的灵巧操作重定向）](wiki/entities/paper-card-contact-anchored-retargeting.md) — CARD**（Contact-Anchored Retargeting for Dexterous Manipulation，[arXiv:2610.36539](https://arxiv.or `📅unknown` `[entity_page]`
 - [CARE（arXiv:2610.14551）](wiki/entities/paper-care-team-response-beliefs-multi-robot.md) — CARE**（*Before We Act: Learning Action-Conditioned Team-Response Beliefs for Decentralized Multi-R `📅unknown` `[entity_page]`
 - [CARF（arXiv:2609.21982）](wiki/entities/paper-carf.md) — CARF**（*CARF: Contrastive Attraction-Repulsion of Failure-Guided Flow Matching*，[arXiv:2609.21982 `📅unknown` `[entity_page]`
 - [CARI4D：类别无关的人–物交互 4D 重建](wiki/entities/paper-cari4d.md) — 论文：** [CARI4D: Category Agnostic 4D Reconstruction of Human-Object Interaction](https://arxiv.org/ `📅unknown` `[entity_page]`
@@ -1927,6 +1941,7 @@
 - [CTP：用一条示范的接触轨迹当提示](wiki/entities/paper-ctp.md) — Contact Trajectory Prompting（CTP）把一条示范里的运动和接触变化（指尖力矩、力图）编成一串有序提示 token，让冻结参数的策略在线用接触反馈去检索相关片段，从而在新 `📅unknown` `[entity_page]`
 - [Ctrl-World（可控机器人操作生成式世界模型）](wiki/entities/paper-ctrl-world.md) — Ctrl-World**（*Ctrl-World: A Controllable Generative World Model for Robot Manipulation*，[arXiv:251 `📅unknown` `[entity_page]`
 - [CTS：并发 Teacher–Student 腿足 Locomotion 强化学习](wiki/entities/paper-cts-concurrent-teacher-student-locomotion.md) — CTS**（*Concurrent Teacher-Student Reinforcement Learning for Legged Locomotion*；Hongxi Wang *、Haox `📅unknown` `[entity_page]`
+- [cuArms（arXiv:2610.36250）](wiki/entities/paper-cuarms.md) — cuArms**（*cuArms: GPU-Accelerated Conflict-Based Planning for Multi-Arm Manipulation*，[arXiv:2610. `📅unknown` `[entity_page]`
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
 - [Current as Touch（Proprioceptive Contact Feedback · arXiv:2607.03529）](wiki/entities/paper-current-as-touch-proprioceptive-contact.md) — Current as Touch**（*Current as Touch: Proprioceptive Contact Feedback for Compliant Dexterous Mani `📅unknown` `[entity_page]`
 - [CUSP（arXiv:2610.07882）](wiki/entities/paper-cusp-survival-hazard-alarms-offroad.md) — CUSP**（*CUSP: CUSUM-Governed Survival Hazard Alarms at the Perception Onset for Off-Road Navigatio `📅unknown` `[entity_page]`
@@ -1960,6 +1975,7 @@
 - [Deep Whole-Body Control（HMI P042）](wiki/entities/paper-deep-whole-body-control-loco-manip.md) — Deep Whole-Body Control**（*Deep Whole-Body Control: Learning a Unified Policy for Manipulation and `📅unknown` `[entity_page]`
 - [Deep Whole-body Parkour：感知式全身跑酷](wiki/entities/paper-deep-whole-body-parkour.md) — Deep Whole-body Parkour**（arXiv:2601.07701）隶属 Project Instinct，在 [42 篇 RL `📅unknown` `[entity_page]`
 - [Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?](wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md) — 一句话定义**：在 **平面物理角色** 的 **步态周期模仿** 上，用深度 RL **对照四种动作参数化**（扭矩、肌肉激活、**目标关节角 + PD**、目标关节角速度），从 **学习时间、 `📅unknown` `[entity_page]`
+- [DeFM（机器人深度基础表征）](wiki/entities/paper-defm.md) — DeFM** 是针对深度图预训练的视觉编码器，为机器人任务提供几何与语义特征。 `📅unknown` `[entity_page]`
 - [Deform360（Massive Multi-view Visuotactile Dataset · arXiv:2607.05390）](wiki/entities/paper-deform360-deformable-visuotactile-dataset.md) — Deform360**（*Deform360: A Massive Multi-view Visuotactile Dataset for Deformable World Models*，[ar `📅unknown` `[entity_page]`
 - [DeformSmith（arXiv:2609.18620）](wiki/entities/paper-deformsmith.md) — DeformSmith**（*Physics Harness-Guided Hierarchical Generation of Deformable Assets for Robot Manip `📅unknown` `[entity_page]`
 - [DeicticVLA：语言与指示手势三模式统一 VLA](wiki/entities/paper-deicticvla.md) — DeicticVLA**（*Unifying Instruction Modes Based on Language and Deictic Gestures in a Single VLA*， `📅unknown` `[entity_page]`
@@ -1991,6 +2007,7 @@
 - [From Prior to Pro（arXiv:2603.10263）](wiki/entities/paper-dice-rl.md) — From Prior to Pro**（Zhanyi Sun, Shuran Song；Stanford University；[arXiv:2603.10263](https://arxiv.o `📅unknown` `[entity_page]`
 - [DIDO（arXiv:2609.15570）](wiki/entities/paper-dido-wam.md) — DIDO**（*DIDO: Distilling Interaction-Centric Dynamics into One-Step Denoising for World Action Mod `📅unknown` `[entity_page]`
 - [Differentiable Charts IK Planning（arXiv:2609.10905）](wiki/entities/paper-differentiable-charts-constraint-manifolds.md) — Differentiable Charts IK Planning**（[Planning along Differentiable Charts of Constraint Manifolds  `📅unknown` `[entity_page]`
+- [Differentiable Contact Legged（arXiv:2610.35852）](wiki/entities/paper-differentiable-contact-legged.md) — Differentiable Contact Legged**（*Differentiable Contact Dynamics for Legged Locomotion: Policy Lea `📅unknown` `[entity_page]`
 - [DiffGI（Differentiable Geometry Images · ECCV 2026）](wiki/entities/paper-diffgi.md) — DiffGI**（*DiffGI: Differentiable Geometry Images for High-Fidelity Thin-Shell 3D Generation*，[arXi `📅unknown` `[entity_page]`
 - [DiffSHEG（语音驱动整体 3D 表情与手势扩散生成）](wiki/entities/paper-diffsheg.md) — DiffSHEG**（*A Diffusion-Based Approach for Real-Time Speech-driven Holistic 3D Expression and Gest `📅unknown` `[entity_page]`
 - [Diffusion-Based World Models: A Survey](wiki/entities/paper-diffusion-based-world-models-survey.md) — Diffusion-Based World Models: A Survey**（Gang Wang、Zhen Liu、Mingliang Zhou、Ziying Song、Yugui Zhang `📅unknown` `[entity_page]`
@@ -2009,6 +2026,7 @@
 - [Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing](wiki/entities/paper-discrete-terrain-minimal-proximity-sensing.md) — 一句话定义**：在四足 **足底** 嵌入 **低成本红外 ToF 接近传感器**，把 **接触前（pre-contact）** 的局部几何读数直接作为 RL 观测，使机器人在 **踏石、碎石、沟 `📅unknown` `[entity_page]`
 - [DissectVLA（arXiv:2609.28161）](wiki/entities/paper-dissect-vla-post-training.md) — Dissecting Advantage-Guided Post-Training for Vision-Language-Action Policies**（[项目页](https://diss `📅unknown` `[entity_page]`
 - [Distilled Tree Search Rearrangement：通过连续动作空间树搜索蒸馏实现长程多物体重排](wiki/entities/paper-distilled-tree-search-multi-object-rearrangement.md) — Distilled Tree Search Rearrangement**（*Long-Horizon Multi-Object Rearrangement via Distilled Tree  `📅unknown` `[entity_page]`
+- [Distributed Predictive Flocking（arXiv:2610.35582）](wiki/entities/paper-distributed-predictive-flocking.md) — Distributed Predictive Flocking**（*Distributed Predictive Flocking for a Swarm of Miniature Vibrat `📅unknown` `[entity_page]`
 - [从分布式全臂交互中学习推断与操作](wiki/entities/paper-distributed-whole-arm-interaction-soft-robot.md) — Learning to infer and manipulate through distributed whole-arm interaction in a soft robot**（Chuha `📅unknown` `[entity_page]`
 - [DistScene](wiki/entities/paper-distscene.md) — DistScene 从单张图像生成共享坐标系中的环境与独立物体，再用场景上下文精修局部几何。 `📅unknown` `[entity_page]`
 - [DiT：可扩展的 Transformer 扩散模型](wiki/entities/paper-dit-scalable-diffusion-transformers.md) — DiT**（*Scalable Diffusion Models with Transformers*，[arXiv:2212.09748](https://arxiv.org/abs/2212. `📅unknown` `[entity_page]`
@@ -2047,6 +2065,7 @@
 - [DriveVLM（DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models · arXiv:2402.12289）](wiki/entities/paper-drivevlm.md) — DriveVLM**（*DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models*，[240 `📅unknown` `[entity_page]`
 - [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](wiki/entities/paper-dsdyn-vla.md) — DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness,  `📅unknown` `[entity_page]`
+- [DSGN（arXiv:2610.34084）](wiki/entities/paper-dsgn.md) — DSGN**（*DSGN: A Dual-Stream Gated Network for Scalable Simultaneous Surveillance and Containment*， `📅unknown` `[entity_page]`
 - [DSLC：隐蔽执行器攻击下的多机器人安全学习控制](wiki/entities/paper-dslc-multirobot-secure-control.md) — Distributed Secure Learning Control（DSLC）** 将分布式模型预测控制与对抗式策略学习结合，在多机器人系统中同时优化攻击者和防御者策略，以应对隐蔽执行器攻击。 `📅unknown` `[entity_page]`
 - [DSP：从有监督玩耍中学习灵巧操作](wiki/entities/paper-dsp-supervised-play.md) — DSP 将机器人灵巧操作的数据获取本身变成可学习的玩耍策略：人类短时示范启动策略，机器人再自主收集数据并用世界模型规划。 `📅unknown` `[entity_page]`
 - [DSWAM（Dual-System World Action Foundation Model · arXiv:2607.04927）](wiki/entities/paper-dswam-dual-system-wam.md) — DSWAM**（*DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation*， `📅unknown` `[entity_page]`
@@ -2064,6 +2083,7 @@
 - [DWMP：双世界模型人形越障](wiki/entities/paper-dwmp.md) — DWMP**（*Leveraging Dual World Models for Humanoid Obstacle Traversal*，[arXiv:2609.12347](https://a `📅unknown` `[entity_page]`
 - [DyMD: Preserving Interaction Dynamics through Distribution Matching Distillation in Few-Step Video World Models](wiki/entities/paper-dymd.md) — DyMD压缩视频世界模型时着重保留抓取、搬运中的交互变化。 `📅unknown` `[entity_page]`
 - [动态多模态 HRI 参与度数据集（Unitree U1）](wiki/entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Dynamic Multimodal HRI Dataset Protocol**（arXiv:2609.03255）由  `📅unknown` `[entity_page]`
+- [Dynamic Narrow Gap Flight（arXiv:2610.37557）](wiki/entities/paper-dynamic-narrow-gap-flight.md) — Dynamic Narrow Gap Flight**（*Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps via  `📅unknown` `[entity_page]`
 - [Dynamic SpectraFormer：UHD 水下视觉的频域增强](wiki/entities/paper-dynamic-spectraformer.md) — Dynamic SpectraFormer**（*Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancem `📅unknown` `[entity_page]`
 - [DynaWM（Dynamic World Model for VLA Action Correction · arXiv:2607.02604）](wiki/entities/paper-dynawm-vla-online-correction.md) — DynaWM**（*DynaWM: A Base-VLA-Guided World Foundation Model for Moving-Object Manipulation*，[arXiv: `📅unknown` `[entity_page]`
 - [DynHair：显式动态发丝人头化身](wiki/entities/paper-dynhair.md) — DynHair**（*Head Avatars with Dynamic Explicit Hair*，[arXiv:2607.23861](https://arxiv.org/abs/2607. `📅unknown` `[entity_page]`
@@ -2074,6 +2094,7 @@
 - [Moon Walk Transfer：在地球训练的人形控制器能在月球行走吗？重力、地形与土壤迁移研究](wiki/entities/paper-earth-trained-humanoid-controllers-moon-transfer.md) — Moon Walk Transfer**（*Do Earth-Trained Humanoid Controllers Walk on the Moon? Gravity, Terrain, an `📅unknown` `[entity_page]`
 - [EASG：把动作坐标系画进图像，让 VLM 直接当动作模型](wiki/entities/paper-easg-vlm-native-action-model.md) — EASG**（*Explicit Action-Space Grounding*；论文 *VLMs are Native Action Models*，[arXiv:2610.12832](htt `📅unknown` `[entity_page]`
 - [EATR-Stereo](wiki/entities/paper-eatr-stereo.md) — EATR-Stereo**（*Embodiment-Aware Token Routing of Paired Stereo Evidence for Humanoid Vision-Langua `📅unknown` `[entity_page]`
+- [EBench Frontier Agent Profiling（arXiv:2610.35832）](wiki/entities/paper-ebench-frontier-agent-profiling.md) — EBench Frontier Agent Profiling**（*Profiling a Frontier Agent with EBench: From Direct Control to  `📅unknown` `[entity_page]`
 - [eBert：非线性正规模涌现四足步态](wiki/entities/paper-ebert-nonlinear-normal-modes.md) — eBert NNM Gaits**（arXiv:2609.00539）由 **慕尼黑工业大学（TUM）、德国航空航天中心（D `📅unknown` `[entity_page]`
 - [Echo-VLA：Echo：面向视觉语言动作模型的动作与任务状态信号联合去噪](wiki/entities/paper-echo-coupled-action-task-status-denoising.md) — Echo-VLA**（*Echo: Coupled Action and Task Status Signal Denoising for Vision Language Action Model `📅unknown` `[entity_page]`
 - [ECHO-G：Embodied Co-speech Humanoid mOtion Generation](wiki/entities/paper-echo-g-cospeech-humanoid.md) — ECHO-G** 依据说话的声音节奏与文本语义生成与语音同步的 G1 全身手势，交给已有运动跟踪器执行。 `📅unknown` `[entity_page]`
@@ -2104,6 +2125,7 @@
 - [EgoMatrix：从第一视角人类视频生成物理可信的灵巧机器人示范](wiki/entities/paper-egomatrix.md) — EgoMatrix 是一个数据引擎：把单目第一视角人类视频重建为手物交互，再用关键点重定向与强化学习在仿真中复现任务，最后渲染机器人手与物体并合成到真实或替换背景，得到成对的双手灵巧轨迹与机器人观 `📅unknown` `[entity_page]`
 - [EgoPHI：从 ego 视觉估计 3D 手–物接触与力](wiki/entities/paper-egophi.md) — EgoPHI**（*Estimating 3D Hand-Object Contact and Force from Egocentric Vision*，[arXiv:2608.13014](h `📅unknown` `[entity_page]`
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`
+- [EgoThumb（arXiv:2610.37582）](wiki/entities/paper-egothumb.md) — EgoThumb**（*EgoThumb: A Vision-Driven Supernumerary Robotic Thumb for Autonomous Grasp and Holding `📅unknown` `[entity_page]`
 - [EgoVerse（Egocentric 人类数据集 · 联盟级人→机迁移）](wiki/entities/paper-egoverse.md) — EgoVerse**（*An Egocentric Human Dataset for Robot Learning from Around the World*，[项目页](https://eg `📅unknown` `[entity_page]`
 - [EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）](wiki/entities/paper-egowam-egocentric-human-wam-co-training.md) — EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[项目页](https:// `📅unknown` `[entity_page]`
 - [EgoWild2Dex（arXiv:2609.23755）](wiki/entities/paper-egowild2dex.md) — EgoWild2Dex**（*Learning Dexterous Robotic Manipulation from In-the-Wild Human Experience*，[arXiv:2 `📅unknown` `[entity_page]`
@@ -2121,6 +2143,7 @@
 - [EmbodiedBrain（arXiv:2510.20578）](wiki/entities/paper-embodiedbrain.md) — EmbodiedBrain**（*EmbodiedBrain: Expanding Performance Boundaries of Task Planning for Embodied Int `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [EmbodiedGPT](wiki/entities/paper-embodiedgpt.md) — EmbodiedGPT**（arXiv:2305.15021）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
+- [EmbodiedLab（arXiv:2610.35385）](wiki/entities/paper-embodiedlab.md) — EmbodiedLab**（*EmbodiedLab: Benchmarking Embodied Agents That Act to Know*，[arXiv:2610.35385](http `📅unknown` `[entity_page]`
 - [EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）](wiki/entities/paper-embodiedskills.md) — EmbodiedSkills**（arXiv:2609.01281，[GitHub](https://github.com/ `📅unknown` `[entity_page]`
 - [EmbodiedSWE（arXiv:2609.27308）](wiki/entities/paper-embodiedswe.md) — EmbodiedSWE**（*Coding Agents for Long-Horizon Dexterous Robotics*，[项目页](https://embodiedswe.github `📅unknown` `[entity_page]`
 - [EmbodiedVAE：为操作世界模型解耦的视频 VAE](wiki/entities/paper-embodiedvae.md) — EmbodiedVAE**（*Disentangled Video VAE for Efficient and Controllable Embodied Manipulation*；[arXiv `📅unknown` `[entity_page]`
@@ -2152,11 +2175,15 @@
 - [EvoScene-VLA（arXiv:2605.21862）](wiki/entities/paper-evoscene-vla.md) — EvoScene-VLA**（*EvoScene-VLA: Evolving Scene Beliefs Inside the Action Decoder for Chunked Robot C `📅unknown` `[entity_page]`
 - [EVPeriscope（arXiv:2609.11920）](wiki/entities/paper-evperiscope.md) — EVPeriscope**（[EVPeriscope: Extended Perception across Aerial and Ground Vehicles with Event-based `📅unknown` `[entity_page]`
 - [ExBody（HMI P028）](wiki/entities/paper-exbody-expressive-humanoid.md) — ExBody**（*Expressive Whole-Body Control for Humanoid Robots*，2024，[arXiv:2402.16796](https://arxiv `📅unknown` `[entity_page]`
+- [EXE: Egocentric Cross-Embodiment Pretraining via Factorized Latent Actions for VLA Models](wiki/entities/paper-exe-cross-embodiment.md) — 一句话定义：** 将第一视角视频的潜在动作分解为可迁移的共享操作先验与具身特有运动学，借共享动作表示向不同机器人传递操作语义。 `📅unknown` `[entity_page]`
+- [Execution Logs Sway VLM Judges（arXiv:2610.34151）](wiki/entities/paper-execution-logs-sway-vlm-judges.md) — Execution Logs Sway VLM Judges**（*Execution Logs Sway VLM Judges of Robot Progress*，[arXiv:2610.34 `📅unknown` `[entity_page]`
 - [本体不匹配条件下基于经验可行性感知的生成式对抗观察模仿](wiki/entities/paper-experience-based-feasibility-aware-generative.md) — Experience-Based Feasibility-Aware Generative Adversarial Imitation from Observation under Embodim `📅unknown` `[entity_page]`
 - [基于经验驱动持续学习的四足地形可通行性预测](wiki/entities/paper-experience-driven-continual-learning-of.md) — Experience-Driven Continual Learning of Terrain Traversability for Quadruped Robots**（[arXiv:2609. `📅unknown` `[entity_page]`
+- [Explicit Frictional Contact Modeling in Neural Garment Simulation](wiki/entities/paper-explicit-friction.md) — 一句话定义：** 神经布料预测器之后加入可调摩擦的接触算子，估计法向载荷、执行库仑修正并传播布料运动。 `📅unknown` `[entity_page]`
 - [显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md) — 显式楼梯几何条件化**（arXiv:2605.09944，AIRS / CUHK-Shenzhen / MBZUAI）针对 **人形楼梯爬升** 提出：不把地形压进 **高维隐式 embeddin `📅unknown` `[entity_page]`
 - [EXPO-FT：样本高效 VLA 强化学习微调](wiki/entities/paper-expo-ft.md) — EXPO-FT**（*Sample-Efficient Reinforcement Learning Finetuning for Vision-Language-Action Models*， `📅unknown` `[entity_page]`
 - [EXPO：expressive 策略上的稳定 value RL](wiki/entities/paper-expo.md) — EXPO**（*Expressive Policy Optimization*，arXiv:2507.07986，[代码 `📅unknown` `[entity_page]`
+- [Expressive Motion Behavior（arXiv:2610.35615）](wiki/entities/paper-expressive-motion-behavior.md) — Expressive Motion Behavior**（*Context-Aware Generation and Modulation of Expressive Motion Behavio `📅unknown` `[entity_page]`
 - [Expressive Robotic Pianist（arXiv:2609.10844）](wiki/entities/paper-expressive-robotic-pianist.md) — Expressive Robotic Pianist**（[Expressive Robotic Pianist: Mastering Complex Piano Repertoire with  `📅unknown` `[entity_page]`
 - [Extracting Legged Locomotion Heuristics with RPC](wiki/entities/paper-extracting-legged-locomotion-heuristics-rpc.md) — Bledt & Kim（MIT，ICRA 2020，[DOI:10.1109/ICRA40945.2020.9197488](https://doi.org/10.1109/ICRA40945.2 `📅unknown` `[entity_page]`
 - [Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪](wiki/entities/paper-extreme-rgmt.md) — Extreme-RGMT**（*Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control `📅unknown` `[entity_page]`
@@ -2204,6 +2231,7 @@
 - [面向安全人形全身跟踪的过滤器感知微调](wiki/entities/paper-filter-aware-fine-tuning-for.md) — Filter-Aware Fine-Tuning for Safe Humanoid Whole-Body Tracking**（[arXiv:2610.02341](https://arxiv. `📅unknown` `[entity_page]`
 - [FineART-VLA：用语言子任务组织双臂长时程操作](wiki/entities/paper-fineart-vla.md) — FineART** 同时指细粒度标注的双臂机器人轨迹数据集，以及基于该数据的 **FineART-VLA** 策略。策略不只接收一次性的高层任务指令，而是在执行中预测下一低层子任务，再以子任务为条 `📅unknown` `[entity_page]`
 - [FIRE-VLA（arXiv:2608.13395）](wiki/entities/paper-fire-vla.md) — FIRE-VLA**（arXiv:2608.13395）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
+- [FISRF（arXiv:2610.35686）](wiki/entities/paper-fisrf.md) — FISRF**（*FISRF: Flexible Instructional Scaffolding Reflection Framework for Robotics Task Planning `📅unknown` `[entity_page]`
 - [FixAnything](wiki/entities/paper-fixanything.md) — FixAnything: 3D-Consistent Rendering Refinement via Video Generative Priors**（[arXiv:2608.23549](h `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
 - [FlashDexRetarget：Accelerating Dexterous Manipulation Data Generation through Multi-Motion Retargeting](wiki/entities/paper-flashdexretarget.md) — FlashDexRetarget** 将灵巧手动作重定向从“每段演示单独优化”改为“一个策略联合学习许多演示”，用物体几何与交互监督生成物理可执行的机器人轨迹。 `📅unknown` `[entity_page]`
@@ -2213,7 +2241,9 @@
 - [Flatness-Preserving Residual Learning（紧密四旋翼编队）](wiki/entities/paper-flatness-preserving-quadrotor-formation.md) — Flatness-Preserving Residual Learning for Real-Time Tight Quadrotor Formation Flight**（[arXiv:2607 `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
 - [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
+- [FLoRe（arXiv:2610.35862）](wiki/entities/paper-flore.md) — FLoRe**（*Learning Force-Reactive Humanoid Loco-Manipulation*，[arXiv:2610.35862](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [技能级世界模型的流策略动作（arXiv:2610.04767）](wiki/entities/paper-flow-policies-skill-level-world-models.md) — 技能级世界模型的流策略动作**（*Flow Policies as Actions of Skill-Level World Models: Learned and Symbolic Abstra `📅unknown` `[entity_page]`
+- [FlowHMR: Physically Plausible Motion Capture from Video](wiki/entities/paper-flowhmr.md) — 单目视频经条件流匹配生成全局人体、手部及轨迹，再以物理跟踪奖励进行 GRPO 后训练。 `📅unknown` `[entity_page]`
 - [FlowVLA（arXiv:2610.16160）](wiki/entities/paper-flowvla-pluggable-3d-flow.md) — FlowVLA**（*FlowVLA: Enabling World Dynamics Understanding through Pluggable 3D Flow Learning*，[arX `📅unknown` `[entity_page]`
 - [FlowVLA：面向定量机器人倾倒操作的流动感知物理完成状态学习](wiki/entities/paper-flowvla-quantitative-robotic-pouring.md) — FlowVLA 倾倒**（*FlowVLA: Learning Flow-Aware Physical Completion for Quantitative Robotic Pouring*， `📅unknown` `[entity_page]`
 - [Fly-by-Code：让空中操作的编码智能体主动查明失败原因](wiki/entities/paper-fly-by-code-aerial-manipulation.md) — Fly-by-Code**（arXiv:2610.12549，[项目页](https://fly-by-code.githu `📅unknown` `[entity_page]`
@@ -2256,11 +2286,13 @@
 - [FrogNano：用在线任务合成训练 4B 编码智能体](wiki/entities/paper-frognano-4b-coding-agent.md) — FrogNano**（arXiv:2609.07925，Microsoft Research Montréal 的 Frog `📅unknown` `[entity_page]`
 - [From AGI to ASI（DeepMind 技术报告）](wiki/entities/paper-from-agi-to-asi.md) — From AGI to ASI** 是 Google DeepMind 发布的长篇技术报告（arXiv:2606.12683，2026-06）：在 **不预设 AGI 到达时间** 的前提下，讨论 `📅unknown` `[entity_page]`
 - [From Hitter to Player：人形乒乓球中的动作执行与策略分离](wiki/entities/paper-from-hitter-to-player-humanoid-table-tennis.md) — From Hitter to Player**（Dong et al., 2026，arXiv:2610.14067）把人形 `📅unknown` `[entity_page]`
+- [From Language to Drives（arXiv:2610.35629）](wiki/entities/paper-from-language-to-drives.md) — From Language to Drives**（*From Language to Drives: A Multimodal Framework for Aligning Autonomous `📅unknown` `[entity_page]`
 - [From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning](wiki/entities/paper-from-tokens-to-thoughts.md) — From Tokens to Thoughts**（arXiv:2505.17117）由 Chen Shani、Liron Soffer、Dan Jurafsky、Yann LeCun、Ravid `📅unknown` `[entity_page]`
 - [Coherent4D / HIGFlow](wiki/entities/paper-from-where-to-how.md) — Coherent4D / HIGFlow**（*Continuous 4D Interaction Forecasting from Egocentric Video*，[arXiv:2609.0 `📅unknown` `[entity_page]`
 - [FSD-VLN（空中长程 VLN · 快慢双系统）](wiki/entities/paper-fsd-vln.md) — FSD-VLN**（*Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*，[arX `📅unknown` `[entity_page]`
 - [FTP-1：跨触觉传感器的通用基础触觉策略](wiki/entities/paper-ftp-1.md) — FTP-1**（*FTP-1: A Generalist Foundation Tactile Policy Across Tactile Sensors for Contact-Rich Man `📅unknown` `[entity_page]`
 - [Functional-SLAM（在线功能场景图 SLAM）](wiki/entities/paper-functional-slam.md) — Functional-SLAM**（*Interaction-Aware Mapping with Online Functional Scene Graphs*，[arXiv:2609.0749 `📅unknown` `[entity_page]`
+- [Functional Specialisation Bimanual（arXiv:2610.33947）](wiki/entities/paper-functional-specialisation-bimanual.md) — Functional Specialisation Bimanual**（*Learning Functional Specialisation for Bimanual Robotic Cont `📅unknown` `[entity_page]`
 - [FutureRTC（Anticipatory-Conditioned Chunking · arXiv:2607.24008）](wiki/entities/paper-futurertc.md) — FutureRTC**（*Real-Time Robot Execution with Anticipatory-Conditioned Action Chunking*，[arXiv:2607. `📅unknown` `[entity_page]`
 - [FWBC-VLA：无传感器接触感知的全身补偿](wiki/entities/paper-fwbc-vla.md) — FWBC-VLA**（*Force-Aware Whole-Body Compensation for Contact-Rich Loco-Manipulation*，[arXiv:2609.03 `📅unknown` `[entity_page]`
 - [G1 Compliant-Surface Stand-Up：软地面参考引导起身](wiki/entities/paper-g1-compliant-surface-standup.md) — Demonstration-Guided Humanoid Stand-Up on an Emulated Deformable Surface**（[arXiv:2608.20852](http `📅unknown` `[entity_page]`
@@ -2290,6 +2322,7 @@
 - [GaussiAnimate：从 4D 角色序列自动构建可驱动绑定](wiki/entities/paper-gaussianimate.md) — GaussiAnimate**（*Reconstruct and Rig Animatable Categories with Level of Dynamics*，arXiv:2604.0854 `📅unknown` `[entity_page]`
 - [On the identification of the inertial parameters of robots](wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md) — On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四 `📅unknown` `[entity_page]`
 - [GE-Act 2.0：世界–动作模型预训练与规模扩展](wiki/entities/paper-ge-act-2.md) — GE-Act 2.0**（*GE-Act 2.0: Pretraining and Scaling a World-Action Model for Robotic Manipulation*，全 `📅unknown` `[entity_page]`
+- [GEMS（arXiv:2610.33158）](wiki/entities/paper-gems.md) — GEMS**（*Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning*，[arXiv:2610.33158](https: `📅unknown` `[entity_page]`
 - [Generate, Track, Improve（GTI）](wiki/entities/paper-generate-track-improve.md) — Generate, Track, Improve**（*Perceptive Multi-Skill Humanoid Locomotion with RL-Fine-Tuned Motion G `📅unknown` `[entity_page]`
 - [GENESIS-Handover：生成式任务导向人机递物](wiki/entities/paper-genesis-handover.md) — GENESIS-Handover**（*Reactive Task-Oriented Robot-Human Handovers via Generative Hypothesis Selecti `📅unknown` `[entity_page]`
 - [GenIA：冻结生成先验上的测试时 3D 对齐](wiki/entities/paper-genia-arxiv-2610-12388.md) — GenIA（Generative Reconstruction with Test-Time Input Alignment）**（[arXiv:2610.12388](https://arxiv `📅unknown` `[entity_page]`
@@ -2351,6 +2384,7 @@
 - [H-JEPA: End-to-End Learning of Hierarchical World Models for Visual Planning](wiki/entities/paper-h-jepa-visual-planning.md) — H-JEPA** 是一种端到端分层潜空间世界模型：每层在自己的潜表示和时间尺度上预测动作条件下的未来，再从高层目标逐级规划到低层原始动作。 `📅unknown` `[entity_page]`
 - [H2R-Bench：世界模型先要过「人到机器人」这一关](wiki/entities/paper-h2r-bench.md) — H2R-Bench**（*Benchmarking Human-to-Robot Manipulation Video Generation in World Models*；[arXiv:260 `📅unknown` `[entity_page]`
 - [H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer](wiki/entities/paper-h2rbench.md) — H2RBench把人类视频到机器人操作的迁移放进统一real-to-sim评测协议。 `📅unknown` `[entity_page]`
+- [HA-DiPO（arXiv:2610.33584）](wiki/entities/paper-ha-dipo.md) — HA-DiPO**（*HA-DiPO: Diffusion Policy Optimization for Heterogeneous Cooperative Transport*，[arXiv: `📅unknown` `[entity_page]`
 - [Multiple Contact Planning for Minimizing Damage of Humanoid Falls](wiki/entities/paper-ha-liu-multiple-contact-fall-planning.md) — 一句话定义：** Ha 与 Liu 的 IROS 2015 工作把失稳后的人形跌倒建模为一串倒立摆问题，再用动态规划寻找多接触响应序列，让初始动量通过后续接触逐步耗散、减少冲击。 `📅unknown` `[entity_page]`
 - [World Models（Ha & Schmidhuber）](wiki/entities/paper-ha-schmidhuber-world-models.md) — World Models**（arXiv:1803.10122，2018，David Ha · **谷歌（Google Br `📅unknown` `[entity_page]`
 - [HAF（Humanoid Adaptation Framework）](wiki/entities/paper-haf-humanoid-vla-adaptation.md) — HAF**（*Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action F `📅unknown` `[entity_page]`
@@ -2434,10 +2468,12 @@
 - [Hybrid Systems DDP for Whole-Body Motion Planning](wiki/entities/paper-hs-ddp-legged.md) — Li & Wensing（圣母大学，arXiv:2006.08102）** 提出 **HS-DDP**：把 Differen `📅unknown` `[entity_page]`
 - [HSImul3R：物理在环的 simulation-ready 人–场景交互重建](wiki/entities/paper-hsimul3r.md) — HSImul3R**（*Physics-in-the-Loop Reconstruction of Simulation-Ready Human–Scene Interactions*，arXiv `📅unknown` `[entity_page]`
 - [HTD-Refine：对齐高阶时序动力学的单目人体运动恢复](wiki/entities/paper-htd-refine-monocular-hmr.md) — HTD-Refine**（arXiv:2605.26879，CVPR 2026 Oral Award Candidate，浙大 / Ant / UT Austin）研究 **单目 world-gr `📅unknown` `[entity_page]`
+- [HuGe: Scaling Humanoid Generalist Vision-Language-Action Models with Egocentric Experience](wiki/entities/paper-huge-humanoid-vla.md) — 一句话定义：** 超过 2000 小时第一视角人类及机器人数据经人称预训练、人形适配、下游微调三个阶段处理；仿真回放构造伪本体感觉，微调时重渲染手臂外观。VLA 输出运动 token 与手部控制信 `📅unknown` `[entity_page]`
 - [HUI360：社交机器人要先预测人会不会靠近](wiki/entities/paper-hui360.md) — HUI360**（*A 360° Egocentric Dataset and Baselines for Human-Robot Interaction Anticipation*；[arXiv `📅unknown` `[entity_page]`
 - [HULK：重载人形机器人的全身移动操作](wiki/entities/paper-hulk-forceful-loco-manipulation.md) — HULK**（*Learning Whole-Body Forceful Loco-Manipulation for Humanoids*，[arXiv:2610.08970](https://a `📅unknown` `[entity_page]`
 - [Human-as-Humanoid](wiki/entities/paper-human-as-humanoid.md) — Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Align `📅unknown` `[entity_page]`
 - [人类示范：重定向物体而非人手](wiki/entities/paper-human-demos-object-retargeting.md) — Human Demonstrations as Post-Training Data for Any Robot Body: Retargeting the Object, Not the Han `📅unknown` `[entity_page]`
+- [Human-Guided Adaptive Residual Correction（arXiv:2610.37547）](wiki/entities/paper-human-guided-adaptive-residual-correction.md) — Human-Guided Adaptive Residual Correction**（*When, Where, and What to Correct: Human-Guided Adapti `📅unknown` `[entity_page]`
 - [Human-Like Redundancy Resolution：双臂遥操作的类人冗余解析](wiki/entities/paper-human-like-redundancy-resolution.md) — 论文提出面向实时双臂人形遥操作的冗余解析方法：从人的肩—腕几何构造机器人尺度的末端目标，再用肘部偏好引导冗余自由度；层级速度 IK 优先满足腕部跟踪，只在其零空间调整肘姿态，避免姿态偏好破坏主任务。 `📅unknown` `[entity_page]`
 - [Human2Dex：腕部视角人类示范驱动多只灵巧手](wiki/entities/paper-human2dex-wrist-centric-dexterous.md) — Human2Dex**（arXiv:2610.13119，[项目页](https://human2dex.pages.dev `📅unknown` `[entity_page]`
 - [HumanCLAW：VLM 能否通过身体行动？](wiki/entities/paper-humanclaw.md) — HumanCLAW**（*Can Vision-Language Models Act Through a Body?*，[arXiv:2607.27180](https://arxiv.org/ `📅unknown` `[entity_page]`
@@ -2542,6 +2578,7 @@
 - [Kandinsky 6.0 Video：同步生成视频与音频](wiki/entities/paper-kandinsky-6-video.md) — Kandinsky 6.0 Video 是一组双流扩散基础模型，以跨模态注意力连接视频与音频生成，支持文本或图像条件的同步音视频片段。 `📅unknown` `[entity_page]`
 - [KaRMA：机器人手精细操作运动学指标](wiki/entities/paper-karma-hand-metric.md) — KaRMA**（*A Kinematic Metric for Fine Manipulation Ability in Robotic Hands*，[arXiv:2605.15548](htt `📅unknown` `[entity_page]`
 - [KDMR（Kinodynamic Motion Retargeting）](wiki/entities/paper-kdmr.md) — KDMR**（*Kinodynamic Motion Retargeting for Humanoid Locomotion via Multi-Contact Whole-Body Trajec `📅unknown` `[entity_page]`
+- [Keeping Contact（arXiv:2610.36961）](wiki/entities/paper-keeping-contact.md) — Keeping Contact**（*Keeping Contact: Task-Adaptive Friction Margins for Bimanual Non-Prehensile Man `📅unknown` `[entity_page]`
 - [KEMO（Event-Driven Keyframe Memory for Long-Horizon Robot Manipulation with VLA Policies）](wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) — KEMO**（arXiv:2606.23589，项目页， `📅unknown` `[entity_page]`
 - [KeyGen](wiki/entities/paper-keygen.md) — KeyGen: Unsupervised Keypoint based Object-Centric Representations for Category-Level Policy Gener `📅unknown` `[entity_page]`
 - [Whole body dynamic behavior and control of human-like robots（IJHR 2004）](wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) — Whole body dynamic behavior and control of human-like robots**（Khatib, Sentis, Park, Warren；*Inter `📅unknown` `[entity_page]`
@@ -2772,6 +2809,7 @@
 - [MIGU（arXiv:2609.24995）](wiki/entities/paper-migu-multimodal-instruction-grounding.md) — MIGU**（*MIGU: Multimodal Instruction Grounding under Uncertainty for Manipulation Planning*，[arXiv `📅unknown` `[entity_page]`
 - [MILO：大型重建模型解释人—物三维交互](wiki/entities/paper-milo.md) — MILO**（*Reconstructing Humans and Objects in Interaction using Large Reconstruction Models*，[arXiv `📅unknown` `[entity_page]`
 - [MimicAgent（arXiv:2609.24145）](wiki/entities/paper-mimicagent.md) — MimicAgent**（*Quadruped Skills via Prompt-to-Trajectory Generation*，CMU，[arXiv:2609.24145](https:/ `📅unknown` `[entity_page]`
+- [MimicAll: Structured Embodiment Conditioning for Cross-Humanoid Whole-Body Motion Tracking](wiki/entities/paper-mimicall.md) — 一句话定义：** 将机体结构描述编码为全局和逐关节条件，与观测历史及匹配机体的参考动作一起预测关节目标偏移。 `📅unknown` `[entity_page]`
 - [MimicX（策略在环的视频驱动人形动作跟踪监督精炼）](wiki/entities/paper-mimicx.md) — MimicX**（*Policy-in-the-Loop Supervision Refinement for Video-Driven Humanoid Motion Tracking*，[ar `📅unknown` `[entity_page]`
 - [MIND：只重算受影响房间的指令条件增量语义落地](wiki/entities/paper-mind-incremental-grounding.md) — MIND 让机器人在执行持久语言指令（如「去一个有某物品的房间」）时，不必每次环境变化后都重新评估所有缓存的房间判断：语言模型一次性把指令编译为依赖变量，事件足迹与之求交，只刷新重叠的房间，可达性 `📅unknown` `[entity_page]`
 - [Mind the Context：同样的房间布局，社交规则可以完全不同](wiki/entities/paper-mind-the-context.md) — Mind the Context**（*Continual Learning of Socially Appropriate Robot Actions via Environmental-Soc `📅unknown` `[entity_page]`
@@ -2806,6 +2844,7 @@
 - [Morphology-Aware Retargeting（arXiv:2609.11357）](wiki/entities/paper-morphology-aware-retargeting-wheeled-humanoid.md) — Morphology-Aware Retargeting**（*Morphology-Aware Human Motion Retargeting for Wheeled-Humanoid Loc `📅unknown` `[entity_page]`
 - [Morphometric Imitation（人类 HOI → 零样本真机 visuomotor）](wiki/entities/paper-morphometric-imitation.md) — Morphometric Imitation**（*From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuom `📅unknown` `[entity_page]`
 - [MOSS Transcribe Diarize（长时多说话人 SATS）](wiki/entities/paper-moss-transcribe-diarize.md) — MOSS Transcribe Diarize**（*MOSS Transcribe Diarize Technical Report*，[arXiv:2601.01554](https://ar `📅unknown` `[entity_page]`
+- [MOTIO: Agentic Skill Engineering for Reality-Grounded Humanoid Loco-Manipulation](wiki/entities/paper-motio.md) — 一句话定义：** 智能体将人类动作视频、度量三维资产、运动参考及可复用技能组合成分阶段机器人程序，利用物理执行反馈与人类验证迭代，无需任务专用遥操作示范。 `📅unknown` `[entity_page]`
 - [Motion-as-Prompt：先把运动画给 MLLM 看](wiki/entities/paper-motion-as-prompt.md) — Motion-as-Prompt（MaP）**（*Enhancing Motion Reasoning in Multimodal Large Language Models via Motion `📅unknown` `[entity_page]`
 - [Motion-based messaging](wiki/entities/paper-motion-based-messaging.md) — Motion-based messaging**（*Remotely Detectable Keyed Communication through Motion*，[arXiv:2609.0892 `📅unknown` `[entity_page]`
 - [主动空间大脑与泛化动作小脑](wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) — 主动空间大脑与泛化动作小脑** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 `📅unknown` `[entity_page]`
@@ -2820,6 +2859,7 @@
 - [Stubborn](wiki/entities/paper-motion-cerebellum-stubborn.md) — Stubborn**（*A Streamlined and Unified Reinforcement Learning Framework for Robust Motion Tracking  `📅unknown` `[entity_page]`
 - [T-GMP：地形条件生成式运动先验的人形多地形行走](wiki/entities/paper-motion-cerebellum-t-gmp.md) — T-GMP**（*Terrain-conditioned Generative Motion Priors for Versatile and Natural Humanoid Locomotio `📅unknown` `[entity_page]`
 - [TAGA](wiki/entities/paper-motion-cerebellum-taga.md) — TAGA** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 09/64**  `📅unknown` `[entity_page]`
+- [Motion-Induced WiFi-CSI Sim（arXiv:2610.34034）](wiki/entities/paper-motion-induced-wifi-csi-sim.md) — Motion-Induced WiFi-CSI Sim**（*Enabling Motion-Induced WiFi-CSI Sensing in Multi-Robot Systems: A  `📅unknown` `[entity_page]`
 - [MotionBricks：模块化潜空间实时运动生成](wiki/entities/paper-motionbricks.md) — MotionBricks**（*Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitiv `📅unknown` `[entity_page]`
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco**（*Motion Discovery for Extreme Humanoid Loco-Manipulation*，arXiv:2606.06139，TUM · NYU `📅unknown` `[entity_page]`
 - [MotionForge: A Data Generation Pipeline and Large-Scale Benchmark for Long-Horizon Manipulation of Dynamic Objects with Domain Shifts](wiki/entities/paper-motionforge.md) — MotionForge生成动态物体长程操作任务，改变速度、物体、背景和光照以测域偏移。 `📅unknown` `[entity_page]`
@@ -2877,6 +2917,7 @@
 - [NeuroVLA：脑启发流体反射具身控制](wiki/entities/paper-neurovla.md) — NeuroVLA**（*A Brain-inspired Embodied Intelligence for Fluid and Fast Reflexive Robotics Control*， `📅unknown` `[entity_page]`
 - [NEXUS：面向地形适配遥操作的感知式全身控制](wiki/entities/paper-nexus-terrain-adaptive-teleoperation.md) — NEXUS**（*Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation*，[arXiv:2609.39000](http `📅unknown` `[entity_page]`
 - [NIDAR：用伪 NIR 与内禀分解合成 LiDAR 强度](wiki/entities/paper-nidar.md) — NIDAR**（*NIR-Guided Intrinsic Decomposition for Scalable Scene-Agnostic LiDAR Intensity Reconstruc `📅unknown` `[entity_page]`
+- [NIT-TrajMamba（arXiv:2610.33916）](wiki/entities/paper-nit-trajmamba.md) — NIT-TrajMamba**（*Real-Time Human Trajectory Prediction from RGB-D for Mobile Robots Using Bi-Mamba `📅unknown` `[entity_page]`
 - [No Free Checker（arXiv:2609.09250）](wiki/entities/paper-no-free-checker.md) — No Free Checker**（[No Free Checker: A Survey of Verifiers for Robot Policies](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [Norm2Tex（arXiv:2609.25398）](wiki/entities/paper-norm2tex.md) — Norm2Tex**（*Norm2Tex: Augmenting Visuo-Tactile Simulations with Texture*，[arXiv:2609.25398](https: `📅unknown` `[entity_page]`
 - [A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation](wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md) — A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation: CYJ Hand-0** 已列入 [Robot Learning `📅unknown` `[entity_page]`
@@ -3243,6 +3284,7 @@
 - [Nymeria（论文）](wiki/entities/paper-nymeria.md) — Nymeria: A Massive Collection of Multimodal Egocentric Daily Motion in the Wild**（Ma et al.，[arXiv `📅unknown` `[entity_page]`
 - [OAT：有序动作 Tokenization（Ordered Action Tokenization）](wiki/entities/paper-oat-ordered-action-tokenization.md) — OAT**（*Ordered Action Tokenization*，arXiv:2602.04215，Harvard / `📅unknown` `[entity_page]`
 - [ObjDream：用物体级理解与未来状态预测引导 VLA](wiki/entities/paper-objdream.md) — ObjDream**（论文 *ObjDream: Guiding Vision-Language-Action Models with Object-Level Understanding and `📅unknown` `[entity_page]`
+- [Obstacle-Conditioned Safety Nav（arXiv:2610.34674）](wiki/entities/paper-obstacle-conditioned-safety-nav.md) — Obstacle-Conditioned Safety Nav**（*Benchmarking Obstacle-Conditioned Safety in Household Robot Nav `📅unknown` `[entity_page]`
 - [OccAnyScene（统一室内外 3D 占据预测）](wiki/entities/paper-occanyscene.md) — OccAnyScene**（*Towards Unified Indoor-Outdoor 3D Occupancy Prediction*，[arXiv:2608.08696](https:// `📅unknown` `[entity_page]`
 - [OccluDex：自遮挡第一视角灵巧操作的分层三维视触觉表征学习](wiki/entities/paper-occludex.md) — OccluDex: Hierarchical 3D Visuo-Tactile Representation Learning for Egocentric Dexterous Manipulat `📅unknown` `[entity_page]`
 - [OccPlanner：占用条件扩散式 PixelGoal 导航](wiki/entities/paper-occplanner-2608-14160.md) — 一句话定义：** OccPlanner 将图像目标接地为机器人局部度量目标，并结合局部 3D 占据特征，条件化扩散模型生成避障轨迹。 `📅unknown` `[entity_page]`
@@ -3253,6 +3295,8 @@
 - [Off-Road Global Nav：可通行感知的长程越野全局规划](wiki/entities/paper-offroad-global-nav.md) — Learning Traversability-Aware Global Planners for Long Horizon Off-Road Navigation**（[arXiv:2607.2 `📅unknown` `[entity_page]`
 - [ω-0：潜空间预测式人形并发 Loco-Manipulation WAM](wiki/entities/paper-omega-0.md) — ω-0**（OMEGA-0；*A Latent Predictive World Action Model for Concurrent Humanoid Loco-Manipulation*， `📅unknown` `[entity_page]`
 - [OMG：Omni-Modal Motion Generation for Generalist Humanoid Control](wiki/entities/paper-omg-omni-modal-humanoid-control.md) — OMG**（*Omni-Modal Motion Generation for Generalist Humanoid Control*，[项目页](https://tsinghua-mars-l `📅unknown` `[entity_page]`
+- [Omni-Woodpecker：音视频跨模态幻觉纠正](wiki/entities/paper-omni-woodpecker.md) — OWP 是无需训练的推理干预方法，通过识别音视频模态冲突并调整隐藏表征，抑制误导性先验、恢复与问题相关的证据。 `📅unknown` `[entity_page]`
+- [OmniBrain-0（arXiv:2610.36013）](wiki/entities/paper-omnibrain-0.md) — OmniBrain-0**（*OmniBrain-0: A Unified Agentic Model for Embodied Intelligence*，[arXiv:2610.36013 `📅unknown` `[entity_page]`
 - [OmniCalib（arXiv:2609.19582）](wiki/entities/paper-omnicalib.md) — OmniCalib**（*Target-Free, Task-Structured Self-Calibration for Humanoid Robots*，[arXiv:2609.19582 `📅unknown` `[entity_page]`
 - [OmniCompass（全模态视频定位与理解基准 · arXiv:2610.18829）](wiki/entities/paper-omnicompass.md) — OmniCompass** 以配对的文本与文本+图像目标描述，评测视觉语言模型及音视频模型对视频的时序定位、空间定位和问答能力。 `📅unknown` `[entity_page]`
 - [OmniContact（Chaining Meta-Skills via Contact Flow）](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md) — OmniContact**（*Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation `📅unknown` `[entity_page]`
@@ -3271,11 +3315,13 @@
 - [在线闭环 Sim2Real（arXiv:2609.28878）](wiki/entities/paper-online-sim2real-closed-loop-modeling.md) — 在线闭环 Sim2Real**（*Online Sim-to-Real Adaptation via Closed-Loop System Modeling*，[arXiv:2609.28878 `📅unknown` `[entity_page]`
 - [OnOff：可微物理笔刷打通在线轨迹与离线手写](wiki/entities/paper-onoff-handwriting.md) — OnOff**（*Bridging Online and Offline Handwriting via Differentiable Physical Rendering*；[arXiv:260 `📅unknown` `[entity_page]`
 - [An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) — Grimminger et al.（MPI-IS / NYU / LAAS，arXiv:1910.00093，IEEE RA `📅unknown` `[entity_page]`
+- [Open-world Robot Autonomy（arXiv:2610.34649）](wiki/entities/paper-open-world-robot-autonomy.md) — Open-world Robot Autonomy**（*Towards Open-world Robot Autonomy*，[arXiv:2610.34649](https://arxiv.o `📅unknown` `[entity_page]`
 - [Open X-Embodiment（HMI P055）](wiki/entities/paper-open-x-embodiment.md) — Open X-Embodiment**（*Open X-Embodiment: Robotic Learning Datasets and RT-X Models*，2023，[arXiv:231 `📅unknown` `[entity_page]`
 - [OpenBot：把智能手机变成低成本移动机器人](wiki/entities/paper-openbot-smartphone-mobile-robot.md) — OpenBot**（*OpenBot: Turning Smartphones into Robots*，[arXiv:2008.10631](https://arxiv.org/abs/2008 `📅unknown` `[entity_page]`
 - [OpenCap Monocular：单手机视频的人体运动学与动力学](wiki/entities/paper-opencap-monocular.md) — OpenCap Monocular**（*3D Human Kinematics and Musculoskeletal Dynamics from a Single Smartphone Vid `📅unknown` `[entity_page]`
 - [OpenDexGrasp（arXiv:2609.18117）](wiki/entities/paper-opendexgrasp.md) — OpenDexGrasp**（*OpenDexGrasp: Open-vocabulary Task-Oriented Dexterous Grasping*，[arXiv:2609.18117 `📅unknown` `[entity_page]`
 - [OpenEAI-VLA（arXiv:2606.03392）](wiki/entities/paper-openeai-vla.md) — OpenEAI-VLA**（*OpenEAI-Platform: An Open-source Embodied Artificial Intelligence Hardware-Software `📅unknown` `[entity_page]`
+- [OpenJaws（arXiv:2610.36598）](wiki/entities/paper-openjaws.md) — OpenJaws**（*OpenJaws: An Open Hardware UMI Framework with Stereo Localization for Generalist Manip `📅unknown` `[entity_page]`
 - [OpenTac：可定制、可扩展、可迁移的三维触觉感知开放生态](wiki/entities/paper-opentac-open-3d-tactile-sensing-ecosystem.md) — OpenTac**（*OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sens `📅unknown` `[entity_page]`
 - [Track Any Motions under Any Disturbances](wiki/entities/paper-opentrack.md) — Track Any Motions under Any Disturbances**（OpenTrack / Any2Track，arXiv:2509.13833）要求人形 motion trac `📅unknown` `[entity_page]`
 - [OpenViTac](wiki/entities/paper-openvitac.md) — OpenViTac**（arXiv:2610.10384，复旦大学等）是一个让视觉触觉（VT）策略在**同一套仿真与真机任务**上可比的基准与框架：按四类依赖触觉的能力组织任务，横向评测 VLA  `📅unknown` `[entity_page]`
@@ -3359,6 +3405,7 @@
 - [PartialBiGrasp：残缺观测下的双臂抓取局部几何补全](wiki/entities/paper-partialbigrasp.md) — PartialBiGrasp**（*Inferring Hidden Local Geometry for Bimanual Grasping from Partial Views*；[arXiv `📅unknown` `[entity_page]`
 - [ParticleSplat（arXiv:2609.19463）](wiki/entities/paper-particlesplat.md) — ParticleSplat**（*Self-supervised Object-centric Latent Particle Splatting*，[arXiv:2609.19463](http `📅unknown` `[entity_page]`
 - [PartiGen：部位感知的语言条件人形运动生成](wiki/entities/paper-partigen.md) — PartiGen**（*Part-Aware Representations for Language-Conditioned Humanoid Motion Generation*，[arXiv `📅unknown` `[entity_page]`
+- [PartLLM：统一三维部件分割](wiki/entities/paper-partllm.md) — PartLLM 将形状和用户意图转换为语义部件查询，再联合预测三维部件掩码，支持文本、点提示和全形状分解。 `📅unknown` `[entity_page]`
 - [PARTS（arXiv:2609.21788）](wiki/entities/paper-parts.md) — PARTS**（*From Pretraining to Proficiency: Real-World Subtask RL for Long-Horizon Manipulation with `📅unknown` `[entity_page]`
 - [PASSAGE：场景对齐的人形感知 clutter 穿越](wiki/entities/paper-passage.md) — PASSAGE**（*Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered En `📅unknown` `[entity_page]`
 - [受被动动态行走启发的节能人形运动动力学引导](wiki/entities/paper-passive-dynamic-walking-inspired-dynamics.md) — Passive-Dynamic-Walking-Inspired Dynamics Guidance for Energy- Efficient Humanoid Locomotion**（[ar `📅unknown` `[entity_page]`
@@ -3435,6 +3482,7 @@
 - [A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness（TOG）](wiki/entities/paper-ppf-cubic-barrier-contact-solver.md) — 一句话定义：** 本文提出一种 **三次障碍（cubic barrier）** 接触模型，并在接触矩阵组装时纳入 **弹性模态对动态刚度的贡献（elasticity-inclusive dynam `📅unknown` `[entity_page]`
 - [PPTBench（可编辑幻灯片视觉重建 · arXiv:2609.29718）](wiki/entities/paper-pptbench.md) — PPTBench**（*Can Coding Agents Reconstruct the Visual World through Structured, Editable Slides*，[a `📅unknown` `[entity_page]`
 - [Praxis：第一视角交互先验与全身操作（待核）](wiki/entities/paper-praxis-egocentric-interaction-priors.md) — 文章称该方法从第一视角视频提取手腕、手指及手物接触信息，并连接导航、姿态校准与灵巧操作。 `📅unknown` `[entity_page]`
+- [PrecisionReach-GS（arXiv:2610.35626）](wiki/entities/paper-precisionreach-gs.md) — PrecisionReach-GS**（*Robot-Aligned 3D Gaussian Splatting for Precise Reaching with Wrist-Camera VL `📅unknown` `[entity_page]`
 - [PredActor（arXiv:2609.24840）](wiki/entities/paper-predactor.md) — PredActor**（*Predictive Action Diffusion for Steerable Onboard Humanoid Control*，[arXiv:2609.24840 `📅unknown` `[entity_page]`
 - [Predict Before You Deploy（arXiv:2609.19441）](wiki/entities/paper-prede.md) — Predict Before You Deploy**（*Offline Prediction of Quantization-Induced Task Degradation for World `📅unknown` `[entity_page]`
 - [面向鲁棒腿式运动的预测式安全课程学习](wiki/entities/paper-predictive-safety-curricula-for-robust.md) — Predictive Safety Curricula for Robust Legged Locomotion**（[arXiv:2609.37070](https://arxiv.org/ab `📅unknown` `[entity_page]`
@@ -3470,6 +3518,7 @@
 - [四足多技能：RL+模仿联合蒸馏与对抗任务选择](wiki/entities/paper-quadruped-skills-adversarial-task-selection.md) — 论文：** *Teaching a Robot Dog New Tricks: Diverse Quadruped Skills via Combined Reinforcement and Im `📅unknown` `[entity_page]`
 - [Learning Torque Control for Quadrupedal Locomotion](wiki/entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
 - [四足机器人为微型无人机提供定位与主动跟踪](wiki/entities/paper-quadruped-uav-localization-active-tracking.md) — 论文 *Towards Quadruped-Provided Localization and Active Tracking for Micro-UAVs*（[arXiv:2610.06215](h `📅unknown` `[entity_page]`
+- [Quality-Controllable Policies（arXiv:2610.37393）](wiki/entities/paper-quality-controllable-policies.md) — Quality-Controllable Policies**（*Learning Quality-Controllable Robot Policies with Iterative Hinds `📅unknown` `[entity_page]`
 - [QUEEN（arXiv:2610.03695）](wiki/entities/paper-queen-chess-language-model-explanations.md) — QUEEN**（*Language Models that Play Chess and Explain Their Moves*，[arXiv:2610.03695](https://arxiv `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
 - [Qwen-Audio-Agent：全双工语音与异步任务怎么同时跑？](wiki/entities/paper-qwen-audio-agent.md) — Qwen-Audio-Agent**（*Qwen-Audio-Agent Technical Report*，[arXiv:2609.25195](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
@@ -3884,9 +3933,11 @@
 - [RelateAnything：实时开放词汇关系预测](wiki/entities/paper-relateanything.md) — RelateAnything**（*Real-Time Open-Vocabulary Relation Prediction From Any Inputs*，[arXiv:2609.12552 `📅unknown` `[entity_page]`
 - [REMAC（Masked Action Chunking · arXiv:2601.20130）](wiki/entities/paper-remac.md) — REMAC**（*Real-Time Robot Execution with Masked Action Chunking*，[arXiv:2601.20130](https://arxiv.o `📅unknown` `[entity_page]`
 - [Remember Smarter（RS）（arXiv:2608.15269）](wiki/entities/paper-remember-smarter-vla-memory.md) — Remember Smarter（RS）**（*Remember Smarter: Visual History Compressor and Hyperbolic Experience Spac `📅unknown` `[entity_page]`
+- [RememberWhereYouWalk（arXiv:2610.37203）](wiki/entities/paper-rememberwhereyouwalk.md) — RememberWhereYouWalk**（*Remember Where You Walk: Learning Spatial Memory for End-to-End Legged Rob `📅unknown` `[entity_page]`
 - [REMM：给冻结操作策略加“可修订记忆”](wiki/entities/paper-remm-revisable-embodied-memory.md) — REMM**（*Revisable Embodied Memory for Manipulation*，[arXiv:2610.12710](https://arxiv.org/abs/2610. `📅unknown` `[entity_page]`
 - [ReMoMask-2](wiki/entities/paper-remomask-2.md) — ReMoMask-2**（*Latent Retrieval-Augmented Masked Motion Generation*，[arXiv:2609.08365](https://arxi `📅unknown` `[entity_page]`
 - [Remote Surfaces（arXiv:2609.27938）](wiki/entities/paper-remote-surfaces-electrovibration.md) — Remote Surfaces at Your Fingertips: Electrovibration-Based Tactile Feedback for Robot Teleoperatio `📅unknown` `[entity_page]`
+- [Rendering-Free Event Sim（arXiv:2610.37543）](wiki/entities/paper-rendering-free-event-sim.md) — Rendering-Free Event Sim**（*Rendering-Free Event Frame Simulation for Fast Reinforcement Learning  `📅unknown` `[entity_page]`
 - [RePlanMem-VLA：用计划修订触发视觉记忆](wiki/entities/paper-replanmem-vla.md) — RePlanMem-VLA**（When Plans Change, Remember，[项目页](https://vika `📅unknown` `[entity_page]`
 - [自主研究群体中的作弊与吹哨：一个案例研究](wiki/entities/paper-research-swarm-cheating-whistleblowing.md) — Research Swarm Cheating**（论文 *A Case Study on Emergent Cheating and Whistleblowing in Autonomous R `📅unknown` `[entity_page]`
 - [ResGAC：全身人形控制中的精确 SE(3) 末端执行器跟踪](wiki/entities/paper-resgac-precise-se3-end-effector-tracking.md) — ResGAC**（Joohwan Seo 等，UC Berkeley / Amazon FAR / CMU，arXiv:[2610.09479](https://arxiv.org/abs/261 `📅unknown` `[entity_page]`
@@ -3899,6 +3950,7 @@
 - [ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）](wiki/entities/paper-resmimic.md) — ResMimic**（*From General Motion Tracking to Humanoid Whole-body Loco-Manipulation via Residual Lea `📅unknown` `[entity_page]`
 - [ResNet（Deep Residual Learning for Image Recognition）](wiki/entities/paper-resnet-deep-residual-learning.md) — ResNet**（Residual Network）是 Kaiming He 等提出的 **深度残差学习** 框架（arXiv:1512.03385，CVPR 2016 Best Paper）。其 `📅unknown` `[entity_page]`
 - [ResSafe：G1 残差安全过滤](wiki/entities/paper-ressafe.md) — ResSafe**（*Learning Safety Filtering with Residual Reinforcement Learning for Humanoids*，[arXiv:26 `📅unknown` `[entity_page]`
+- [Retrieve to Act（arXiv:2610.37215）](wiki/entities/paper-retrieve-to-act.md) — Retrieve to Act**（*Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution*，[ar `📅unknown` `[entity_page]`
 - [Reuse Before You Retrieve](wiki/entities/paper-reuse-before-you-retrieve-tta-vla.md) — Reuse Before You Retrieve: Diagnosing Headroom and Complementarity for Test-Time Augmentation of E `📅unknown` `[entity_page]`
 - [Revisiting Open-Loop Execution（长上下文 reactive 策略）](wiki/entities/paper-revisiting-open-loop-action-chunking.md) — Revisiting Open-Loop Execution in Robotics: Toward Reactive, Higher-Performing Policies**（[arXiv:2 `📅unknown` `[entity_page]`
 - [ReViV](wiki/entities/paper-reviv4d.md) — ReViV**（*Reconstructing the Viewer and the View in 4D from Monocular Egocentric Video*，[ECCV 2026 `📅unknown` `[entity_page]`
@@ -3916,6 +3968,7 @@
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
 - [RLinf-USER：真机在线策略学习统一系统](wiki/entities/paper-rlinf-user.md) — RLinf-USER**（*A Unified and Extensible System for Real-World Online Policy Learning in Embodied AI `📅unknown` `[entity_page]`
 - [RLinf-VLA（arXiv:2510.06710）](wiki/entities/paper-rlinf-vla.md) — RLinf-VLA**（*RLinf-VLA: A Unified and Efficient Framework for Reinforcement Learning of Vision-Lan `📅unknown` `[entity_page]`
+- [RLMuscle: Muscle-Driven Character Animation via Reinforcement Learning](wiki/entities/paper-rlmuscle.md) — 强化学习控制器在一维 Hill 肌肉模型中学习参考动作跟踪激活，再用相同本构规律驱动三维肌肉变形。 `📅unknown` `[entity_page]`
 - [RMA: Rapid Motor Adaptation for Legged Robots](wiki/entities/paper-rma-rapid-motor-adaptation.md) — RMA**（Kumar et al., arXiv:2107.04034，**RSS 2021**）提出 **快速运动自适应 `📅unknown` `[entity_page]`
 - [RMR（优化式 Rig 统一的人形重定向）](wiki/entities/paper-rmr.md) — RMR**（项目页标题 *Robust Robot Motion Retargeting*；论文 *Robust and Expressive Humanoid Motion Retargetin `📅unknown` `[entity_page]`
 - [RoamFlow](wiki/entities/paper-roamflow.md) — RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大 `📅unknown` `[entity_page]`
@@ -3924,11 +3977,13 @@
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
 - [RoboAssist：面向长时手术辅助的交互式人—人形规划](wiki/entities/paper-roboassist.md) — RoboAssist: Interactive Human-Humanoid Planning for Long-Horizon Surgical Assistance**（[arXiv:2609 `📅unknown` `[entity_page]`
 - [RoboAug：一标注扩百场景的区域对比操纵增广](wiki/entities/paper-roboaug.md) — RoboAug**（*One Annotation to Hundreds of Scenes via Region-Contrastive Data Augmentation for Robot `📅unknown` `[entity_page]`
+- [RoboAuto（arXiv:2610.36533）](wiki/entities/paper-roboauto.md) — RoboAuto**（*RoboAuto: Autonomous Robot Program Search through Multi-Level Physical Understanding*， `📅unknown` `[entity_page]`
 - [RoboCoach：将世界模型作为组合式机器人技能的主动教练](wiki/entities/paper-robocoach.md) — RoboCoach: World Models as Active Coaches for Compositional Robot Skills**（[arXiv:2609.39685](http `📅unknown` `[entity_page]`
 - [RoboCombine（arXiv:2610.15425）](wiki/entities/paper-robocombine-combinatorial-generalization.md) — RoboCombine**（*Exploring the Limits of Combinatorial Generalization in Embodied Manipulation*，[arX `📅unknown` `[entity_page]`
 - [RoboCompiler-Humanoids（arXiv:2610.14237）](wiki/entities/paper-robocompiler-humanoids-composable-dynamics.md) — RoboCompiler-Humanoids** 是面向闭链协作人形的可组合动力学建模扩展，支持将各机器人保留为可复用模块，再按手部连接和地面支撑状态组合整体模型。论文由坦佩雷大学 Mehdi H `📅unknown` `[entity_page]`
 - [RoboCraft](wiki/entities/paper-robocraft-particle-graph-dynamics.md) — RoboCraft** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型 `📅unknown` `[entity_page]`
 - [RoboDawn（arXiv:2609.22966）](wiki/entities/paper-robodawn.md) — RoboDawn**（*Transferring the Intelligence of VLMs to Robotic Control*，[arXiv:2609.22966](https://a `📅unknown` `[entity_page]`
+- [RoboDoctor（arXiv:2610.35604）](wiki/entities/paper-robodoctor.md) — RoboDoctor**（*RoboDoctor: Training-Free Recursive Self-Improvement for Robot Policies*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [RoboDreamer（arXiv:2609.07096）](wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — RoboDreamer**（*RoboDreamer: Anticipatory Humanoid Locomotion with Predictive State-Space Models*， `📅unknown` `[entity_page]`
 - [RoboDrop（arXiv:2609.10021）](wiki/entities/paper-robodrop-vla-post-training.md) — RoboDrop**（*RoboDrop: Curating VLA Post-Training Data via Local Gradient Compatibility*，[arXiv:260 `📅unknown` `[entity_page]`
 - [RoboDuet：四足机器人协作式全身移动操作](wiki/entities/paper-roboduet-loco-manipulation.md) — 一句话定义：** RoboDuet 是面向“腿式移动底盘 + 机械臂”的双策略强化学习框架，让 locomotion policy 与 arm policy 协作完成边走边操作，而不是把两者作为互 `📅unknown` `[entity_page]`
@@ -3940,6 +3995,8 @@
 - [RoboGesture：人形实时语义对齐伴随语音手势](wiki/entities/paper-robogesture.md) — RoboGesture: Real-Time Semantic-aligned Co-Speech Gestures Generation for Humanoid Interaction**（ `📅unknown` `[entity_page]`
 - [RoboHarn-Evo（可演化分层物理知识 · arXiv:2609.37583）](wiki/entities/paper-roboharn-evo.md) — RoboHarn-Evo**（论文、[项目页](https://ruckbreasoning.github.io/RoboH `📅unknown` `[entity_page]`
 - [RoboInter1.5（中间表示操作与世界建模套件）](wiki/entities/paper-robointer-1-5.md) — RoboInter1.5**（*A Holistic Intermediate Representation Suite for Embodied World Modeling and Robot `📅unknown` `[entity_page]`
+- [RoboJev（arXiv:2610.33718）](wiki/entities/paper-robojev.md) — RoboJev**（*RoboJev: An Open Vision-Language Judge for Robot Success Detection*，[arXiv:2610.33718 `📅unknown` `[entity_page]`
+- [RoboLongR（arXiv:2610.33863）](wiki/entities/paper-robolongr.md) — RoboLongR**（*RoboLongR: Causally Consistent Rewards Teach Robots to Progressively Master Long-Hori `📅unknown` `[entity_page]`
 - [RoboMemory](wiki/entities/paper-robomemory-multi-type-embodied-memory.md) — RoboMemory** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主 `📅unknown` `[entity_page]`
 - [RoboMMT：调制式表达与交互机器人动作的稳定跟踪学习](wiki/entities/paper-robommt-modulated-expressive-motion-tracking.md) — RoboMMT**（*RoboMMT: Learning Stable Tracking of Modulated Expressive and Interactive Robot Motion `📅unknown` `[entity_page]`
 - [RoboMP-DINOv2（arXiv:2609.25506）](wiki/entities/paper-robomp-dinov2.md) — RoboMP-DINOv2**（*RoboMP-DINOv2: Prompts, Not Filters for Robust Robot Manipulation*，[arXiv:2609.25 `📅unknown` `[entity_page]`
@@ -3948,10 +4005,12 @@
 - [RoboPoint：空间 affordance 的 keypoint VLM](wiki/entities/paper-robopoint.md) — RoboPoint**（*A Vision-Language Model for Spatial Affordance Prediction for Robotics*，[arXiv:2406.1 `📅unknown` `[entity_page]`
 - [RoboPrompt: Intuitive Robot Policy Steering with Sparse Human Input](wiki/entities/paper-roboprompt.md) — RoboPrompt**（arXiv:2610.10534，上海交通大学、上海创智学院与诺玛矩阵）让用户在相机图像上给出点、 `📅unknown` `[entity_page]`
 - [RoboReact：从生成第一人称视频蒸馏可泛化全身操作技能](wiki/entities/paper-roboreact.md) — RoboReact**（*Agentic Skill Distillation from Generated Egocentric Videos for Generalizable Whole-B `📅unknown` `[entity_page]`
+- [RoboReason（arXiv:2610.33778）](wiki/entities/paper-roboreason.md) — RoboReason**（*RoboReason: Boosting Robotics-Relevant VLM Reasoning Through Scalable Data Generatio `📅unknown` `[entity_page]`
 - [RoboRecover](wiki/entities/paper-roborecover.md) — RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations**（[arXiv:2609.28952](ht `📅unknown` `[entity_page]`
 - [RoboRefer：机器人空间指代与推理](wiki/entities/paper-roborefer.md) — RoboRefer**（*Towards Spatial Referring with Reasoning in Vision-Language Models for Robotics*，[arX `📅unknown` `[entity_page]`
 - [RoboReward：面向机器人的通用视觉语言奖励模型](wiki/entities/paper-roboreward.md) — RoboReward** 是面向机器人策略学习的视觉语言奖励数据集、评测基准和模型系列，目标是从任务指令与机器人轨迹中判断完成程度，为奖励设计和强化学习提供自动信号。 `📅unknown` `[entity_page]`
 - [RoboSkill：Explore, Execute, Evolve](wiki/entities/paper-roboskill.md) — 一句话定义：** RoboSkill 让具身智能体把任务探索和执行经验整理成可复用技能，再用于后续任务的探索与执行，形成“探索—执行—进化”循环。 `📅unknown` `[entity_page]`
+- [RoboSTD（arXiv:2610.36685）](wiki/entities/paper-robostd.md) — RoboSTD**（*RoboSTD: Zero-Shot Single-to-Dual Transfer via Sagittal Mirroring for Bimanual Learning `📅unknown` `[entity_page]`
 - [RoboSteer：行为基础模型可操控性基准](wiki/entities/paper-robosteer-behavior-steerability-benchmark.md) — RoboSteer**（arXiv:2610.10198，[项目页](https://robosteer.github.io `📅unknown` `[entity_page]`
 - [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [VLA 因果分析：定位动作条件接口并压缩连接](wiki/entities/paper-robot-foundation-model-causal-analysis.md) — 论文用 activation patching 追踪视觉语言信息如何因果影响机器人动作，并将动作专家的条件输入限制在少数关键层以降低计算量。 `📅unknown` `[entity_page]`
@@ -3969,6 +4028,7 @@
 - [RoboTwin-Phys（arXiv:2609.26292）](wiki/entities/paper-robotwin-phys.md) — RoboTwin-Phys**（*Do WAMs and VLAs Understand the Physical World?*，[arXiv:2609.26292](https://arxiv `📅unknown` `[entity_page]`
 - [RoboVAD（arXiv:2609.17843）](wiki/entities/paper-robovad.md) — RoboVAD**（*RoboVAD: A Large Cross-Domain Evaluation Benchmark for Anomaly Detection in Robotic Arm `📅unknown` `[entity_page]`
 - [RoboValue：细粒度仿真-真实机器人价值模型基准](wiki/entities/paper-robovalue-benchmark.md) — RoboValue**（*A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models `📅unknown` `[entity_page]`
+- [RoboWorM（arXiv:2610.33807）](wiki/entities/paper-roboworm.md) — RoboWorM**（*RoboWorM: Evaluating movement realism, consistency and acceleration affects in Embodie `📅unknown` `[entity_page]`
 - [RobResilience（arXiv:2609.17349）](wiki/entities/paper-robresilience.md) — RobResilience**（*RobResilience: Implementing and Evaluating a Resilience Framework for Cyber-Physi `📅unknown` `[entity_page]`
 - [Robust Autonomous Navigation of Mini-Cheetah Vision](wiki/entities/paper-robust-autonomous-navigation-mini-cheetah-vision.md) — Dudzik et al.（MIT，IROS 2020，[DOI:10.1109/IROS45743.2020.9340701](https://doi.org/10.1109/IROS45743 `📅unknown` `[entity_page]`
 - [Robust Perceptive Locomotion（HMI P012）](wiki/entities/paper-robust-perceptive-locomotion-wild.md) — Robust Perceptive Locomotion**（*Learning Robust Perceptive Locomotion for Quadrupedal Robots in th `📅unknown` `[entity_page]`
@@ -3998,7 +4058,9 @@
 - [走秀表现型行走（arXiv:2609.27003）](wiki/entities/paper-runway-expressive-locomotion.md) — 走秀表现型行走**（*Learning Expressive Humanoid Locomotion from Monocular Runway Videos for Robot Fashion  `📅unknown` `[entity_page]`
 - [RxR](wiki/entities/paper-rxr.md) — RxR**（Room-Across-Room: Multilingual VLN with Dense Spatiotemporal Grounding）在 [Light Origins · Li `📅unknown` `[entity_page]`
 - [RynnBrain 1.1：更强、更可泛化的具身基础模型](wiki/entities/paper-rynnbrain-1-1.md) — RynnBrain 1.1**（*Towards More Capable and Generalizable Embodied Foundation Model*，[arXiv:2607.179 `📅unknown` `[entity_page]`
+- [RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](wiki/entities/paper-rynnvla-latent.md) — 一句话定义：** RynnLAM 从视频变化学习连续的三维锚定潜在动作，使用残差未来特征预测、相机补偿三维流与相机运动解耦；VLA 先预测潜在动作块，再适配具身动作。 `📅unknown` `[entity_page]`
 - [RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md) — RynnWorld-4D**（*RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation*，[arXiv:2607.06559 `📅unknown` `[entity_page]`
+- [RynnWorld-Latent（arXiv:2610.36791）](wiki/entities/paper-rynnworld-latent.md) — RynnWorld-Latent**（*RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Late `📅unknown` `[entity_page]`
 - [S-Agent 2.0：通用编码智能体的空间推理](wiki/entities/paper-s-agent-2.md) — 为通用编码智能体接入三维感知命令行工具、持久场景记忆和可解释的空间读数。 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
 - [S2C](wiki/entities/paper-s2c-safety-filtered-rl.md) — Turning Safety into Competence: Minimally Exploitable Robot Policies via Safety-Filtered Reinforce `📅unknown` `[entity_page]`
@@ -4865,6 +4927,7 @@
 - [Robot-Powered Data Flywheel（RPDF）](wiki/entities/paper-scanford-robot-powered-data-flywheel.md) — Robot-Powered Data Flywheel**（*Deploying Robots in the Wild for Continual Data Collection and Foun `📅unknown` `[entity_page]`
 - [SCAR（自监督连续动作表示：跨本体统一潜动作接口）](wiki/entities/paper-scar-continuous-action.md) — SCAR**（*SCAR: Self-Supervised Continuous Action Representation Learning*，[arXiv:2605.16412](https: `📅unknown` `[entity_page]`
 - [SceneAgent（3D 捕获 → 预测物理仿真环境与策略训练）](wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — SceneAgent**（*3D Capture-Derived Scenes with Predictive Physics for Policy Evaluation and Training `📅unknown` `[entity_page]`
+- [SceneAgent（arXiv:2610.34745）](wiki/entities/paper-sceneagent.md) — SceneAgent**（*SceneAgent: An Agentic Pipeline from 3D and 4D Captures to Simulation Environments*， `📅unknown` `[entity_page]`
 - [SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）](wiki/entities/paper-scenebot.md) — SceneBot**（arXiv:2606.27581，Amazon FAR / Stanford / CMU）提出 **接触条件化（contact-prompted）** 的通用人形全身运动跟踪 `📅unknown` `[entity_page]`
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
 - [Learning deployable locomotion control via differentiable simulation](wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md) — Learning deployable locomotion control via differentiable simulation**（[arXiv:2404.02887](https:// `📅unknown` `[entity_page]`
@@ -4920,6 +4983,7 @@
 - [Show-Harness（arXiv:2609.10522）](wiki/entities/paper-show-harness.md) — Show-Harness**（*Just a VLM Agent Can Play Robots*，[arXiv:2609.10522](https://arxiv.org/abs/2609.10 `📅unknown` `[entity_page]`
 - [SHRIMP：先在仿真里改计划，再让协作臂执行](wiki/entities/paper-shrimp.md) — SHRIMP**（*Simulation-driven Human-in-the-loop Refinement Interface for Manipulation Planning*；[arX `📅unknown` `[entity_page]`
 - [Silent Sabotage（arXiv:2609.26184）](wiki/entities/paper-silent-sabotage.md) — Silent Sabotage**（*Silent Sabotage: Internal State Triggered Backdoor Attacks on LLM-Powered Robot `📅unknown` `[entity_page]`
+- [Sim-Trained Compositional Agent（arXiv:2610.35817）](wiki/entities/paper-sim-trained-compositional-agent.md) — Sim-Trained Compositional Agent**（*Pretraining Knows What, Simulation Teaches How: Compositional G `📅unknown` `[entity_page]`
 - [Sim2Real Chunk VLA Pipeline（arXiv:2609.21817）](wiki/entities/paper-sim2real-chunk-vla-pipeline.md) — Sim2Real Chunk VLA Pipeline**（*A Sim-to-Real Integration Pipeline for Training and Deployment of C `📅unknown` `[entity_page]`
 - [SimForcing（arXiv:2610.06598）](wiki/entities/paper-simforcing-simulation-motion-priors.md) — SimForcing**（*SimForcing: Distilling Simulation Motion Priors into Real-Domain Robot World Models `📅unknown` `[entity_page]`
 - [SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）](wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — SimFoundry** 是 NVIDIA GEAR Lab 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606. `📅unknown` `[entity_page]`
@@ -4956,6 +5020,7 @@
 - [SMP：可复用 Score-Matching 运动先验](wiki/entities/paper-smp.md) — SMP**（*SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control*，[arXiv:2512 `📅unknown` `[entity_page]`
 - [SMPC-to-RL：稀疏奖励全身 Loco-Manipulation](wiki/entities/paper-smpc2rl-loco-manipulation.md) — SMPC-to-RL**（*Learning Loco-Manipulation From SMPC Demonstrations With Sparse Offline-to-Online RL `📅unknown` `[entity_page]`
 - [SMR：从人体动作语义学习流式人形动作重定向](wiki/entities/paper-smr-streaming-motion-retargeting.md) — SMR**（*SMR: Learning Streaming Motion Retargeting for Humanoids from Human Semantic*，[arXiv:2610.2 `📅unknown` `[entity_page]`
+- [SO-101 Bench（arXiv:2610.36420）](wiki/entities/paper-so-101-bench.md) — SO-101 Bench**（*SO-101 Bench: Accessible Spatial Manipulation*，[arXiv:2610.36420](https://arxiv.or `📅unknown` `[entity_page]`
 - [A Fix for Softmax and Cross-Entropy](wiki/entities/paper-softmax-cross-entropy-fix.md) — A Fix for Softmax and Cross-Entropy**（Jonathan T. Barron、Dan Gnanapragasam、Michael Tschannen，Googl `📅unknown` `[entity_page]`
 - [SoftMimicGen](wiki/entities/paper-softmimicgen.md) — SoftMimicGen**（ICRA 2026，NVIDIA 等）是一套面向**可变形物体操作（deformable object manipulation）**的自动化示范数据生成系统。 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
@@ -4978,11 +5043,13 @@
 - [Spatially Conditioned Multi-Agent Dexterous（arXiv:2609.06930）](wiki/entities/paper-spatially-conditioned-multi-agent-dexterous.md) — Spatially Conditioned Multi-Agent Dexterous**（*Distributed Dexterous Manipulation with Spatially C `📅unknown` `[entity_page]`
 - [SpatialVLA](wiki/entities/paper-spatialvla.md) — SpatialVLA**（arXiv:2501.15830，[代码](https://github.com/SpatialV `📅unknown` `[entity_page]`
 - [SPD：在仿真里预训练视觉灵巧操作](wiki/entities/paper-spd.md) — SPD**（*Simulation Pre-training for Dexterity*；论文 *Pre-training Visual Dexterity in Simulation*，[ar `📅unknown` `[entity_page]`
+- [Specola（arXiv:2610.35730）](wiki/entities/paper-specola.md) — Specola**（*Specola: A Tool for Specification Driven Robot Evaluation*，[arXiv:2610.35730](https://a `📅unknown` `[entity_page]`
 - [Learning Expressive and Compositional Motion Representation via Spectral Skills](wiki/entities/paper-spectral-skills-motion-representation.md) — Spectral Skills**（arXiv:2609.37677，[项目页](https://spectral-skil `📅unknown` `[entity_page]`
 - [SpectRobot（arXiv:2609.24621）](wiki/entities/paper-spectrobot-single-point-tactile.md) — SpectRobot**（*Learning tactile perception from high-bandwidth single-point sensing*，[arXiv:2609.24 `📅unknown` `[entity_page]`
 - [SpecVLA（arXiv:2608.15636）](wiki/entities/paper-specvla.md) — SpecVLA**（*Algorithm-Architecture Co-Design for Efficient VLA Inference via Speculative Inference  `📅unknown` `[entity_page]`
 - [SpeedTuning：给冻结模仿策略加一层速度倍率](wiki/entities/paper-speedtuning.md) — SpeedTuning**（*Speeding Up Policy Execution with Lightweight Reinforcement Learning*；[arXiv:2608.0 `📅unknown` `[entity_page]`
 - [Spiderbot（arXiv:2609.26989）](wiki/entities/paper-spiderbot-hexapod-open-source.md) — Spiderbot**（*Spiderbot: An Open-Source Energy-Efficient Hexapod with Passive Gravity Compensation `📅unknown` `[entity_page]`
+- [Spiking Periodic Orbit Stabilization（arXiv:2610.37310）](wiki/entities/paper-spiking-periodic-orbit-stabilization.md) — Spiking Periodic Orbit Stabilization**（*Spiking Neuromorphic Control for Periodic Orbits Stabiliza `📅unknown` `[entity_page]`
 - [Splat2Act：从场景扫描到个性化 VLA 操作](wiki/entities/paper-splat2act-personalized-vla.md) — Splat2Act**（*Splat2Act: From Captured Scenes to Personalized VLA Manipulation*，[arXiv:2610.13945 `📅unknown` `[entity_page]`
 - [SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting](wiki/entities/paper-splatsim-gaussian-splatting-sim2real.md) — SplatSim: zero-shot sim2real transfer of RGB manipulation policies using Gaussian splatting**（[arX `📅unknown` `[entity_page]`
 - [SPLC（社交偏好学习的人群机器人导航）](wiki/entities/paper-splc.md) — SPLC**（*Social Preference Learning for Crowd Robot Navigation*，[arXiv:2607.01925](https://arxiv.or `📅unknown` `[entity_page]`
@@ -4996,6 +5063,7 @@
 - [SRDF](wiki/entities/paper-srdf-vln-flywheel.md) — SRDF**（Bootstrapping Language-Guided Navigation Learning with Self-Refining Data Flywheel）在 [Light `📅unknown` `[entity_page]`
 - [SRL-MPC：形状感知强化学习 MPC](wiki/entities/paper-srl-mpc.md) — SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control**（[arXiv:2608.21175](https://a `📅unknown` `[entity_page]`
 - [SRU（Spatially-Enhanced Recurrent Memory）](wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — SRU**（*Spatially-Enhanced Recurrent Memory for Long-Range Mapless Navigation via End-to-End Reinfo `📅unknown` `[entity_page]`
+- [SSIO（自监督惯性里程计）](wiki/entities/paper-ssio.md) — SSIO** 使用已标定 IMU 数据构造训练信号，无需速度或位置标签即可从头训练惯性速度估计模型。 `📅unknown` `[entity_page]`
 - [SSP（arXiv:2608.14024）](wiki/entities/paper-ssp-syn2sim2phy-vla-eval.md) — SSP**（arXiv:2608.14024）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08 `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
 - [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
@@ -5043,6 +5111,7 @@
 - [SWIM（arXiv:2609.17035）](wiki/entities/paper-swim-vla.md) — SWIM**（*SWIM: Vision-Language-Grounded Soft Whole-Body Interactive Manipulation*，[arXiv:2609.17035 `📅unknown` `[entity_page]`
 - [SwingBot（arXiv:2609.10283）](wiki/entities/paper-swingbot.md) — SwingBot**（[SwingBot: Learning Whole-Body Brachiation for Humanoid Robots](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [Learning Diverse Humanoid Tasks via Synthetic Video Scenarios](wiki/entities/paper-synthetic-video-humanoid-tasks.md) — Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data**（国立成功大学 NCK `📅unknown` `[entity_page]`
+- [SysML v2 ROS 2 Library（arXiv:2610.33362）](wiki/entities/paper-sysml-v2-ros-2-library.md) — SysML v2 ROS 2 Library**（*A SysML v2 Domain Library for ROS 2 Robot Architectures*，[arXiv:2610.333 `📅unknown` `[entity_page]`
 - [T-WLA：连接低频视觉与高频触觉](wiki/entities/paper-t-wla-slow-vision-fast-touch.md) — T-WLA**（*T-WLA: Bridging Slow Vision and Fast Touch*，[arXiv:2610.28814](https://arxiv.org/abs/2610 `📅unknown` `[entity_page]`
 - [T2-z：测试时优化环境潜变量以适应机器人世界模型](wiki/entities/paper-t2-z-environment-latents.md) — T2-z 保持世界模型参数冻结，仅用测试环境中的少量交互轨迹优化 32 维环境潜变量，再以该潜变量条件化未来动作的视觉预测。 `📅unknown` `[entity_page]`
 - [T²Mem：面向机器人的测试时记忆学习](wiki/entities/paper-t2mem.md) — T²Mem: Learning Test-Time Memory for Robotics**（[arXiv:2609.36720](https://arxiv.org/abs/2609.3672 `📅unknown` `[entity_page]`
@@ -5067,6 +5136,7 @@
 - [TANGO：杂乱室内的人形全身 VLA 导航](wiki/entities/paper-tango-vla.md) — TANGO**（*Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Mo `📅unknown` `[entity_page]`
 - [TAPDreamer（arXiv:2610.06814）](wiki/entities/paper-tapdreamer-adversarial-patches-wam.md) — TAPDreamer**（*TAPDreamer: Transferable Adversarial Patches for World Action Models*，[arXiv:2610.06 `📅unknown` `[entity_page]`
 - [TAPESIM: Efficient Simulation of Adhesive Tape Dispensing for Robotic Manipulation](wiki/entities/paper-tapesim.md) — TAPESIM为机器人胶带分配任务提供高效的混合刚柔仿真。 `📅unknown` `[entity_page]`
+- [Tapestry（arXiv:2610.36823）](wiki/entities/paper-tapestry.md) — Tapestry**（*Tapestry: A Single Backbone for Video Generation and Robot Control*，[arXiv:2610.36823 `📅unknown` `[entity_page]`
 - [TAPNAV：通过触觉主动感知实现人形机器人导航](wiki/entities/paper-tapnav-humanoid-tactile-navigation.md) — TAPNAV**（*Humanoid Navigation through Tactile Active Perception*，arXiv:2610.10748，Georgia Tech 的 Y `📅unknown` `[entity_page]`
 - [TAPVid-MV：多视角 3D 任意点跟踪基准](wiki/entities/paper-tapvid-mv.md) — TAPVid-MV**（*A Benchmark for Tracking Any Point in 3D Across Multiple Views*，[arXiv:2609.01899](ht `📅unknown` `[entity_page]`
 - [TARCAT](wiki/entities/paper-tarcat.md) — A Taxonomy of Construction Task Activities for Robot Workers**（[arXiv:2608.25395](https://arxiv.or `📅unknown` `[entity_page]`
@@ -5099,8 +5169,10 @@
 - [TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢](wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md) — TF8**（MIT Media Lab Biomechatronics，Matthew Carney 等，[IEEE TMRB 2021](https://doi.org/10.1109/TMRB `📅unknown` `[entity_page]`
 - [TFGCA（arXiv:2609.09925）](wiki/entities/paper-tfgca-chunked-vla.md) — TFGCA**（*Time-Frequency Geometric Cross-Attention for Chunked Vision-Language-Action Models*，[arXi `📅unknown` `[entity_page]`
 - [THAW-VLA（arXiv:2609.24682）](wiki/entities/paper-thaw-vla.md) — THAW-VLA**（*Think Like a World Model, Act Like a VLA*，UW–Madison / UIUC，[arXiv:2609.24682](https:/ `📅unknown` `[entity_page]`
+- [Thermal-Headroom Routing（arXiv:2610.35231）](wiki/entities/paper-thermal-headroom-routing.md) — Thermal-Headroom Routing**（*Thermal-Headroom Routing for Efficient Robot Perception in Extreme Hea `📅unknown` `[entity_page]`
 - [Thinker-WM：共享多模态表征的具身统一世界模型](wiki/entities/paper-thinker-wm-unified-world-model.md) — Thinker-WM**（*Thinker-WM: A Unified World Model with Shared Multimodal Representations for Embodie `📅unknown` `[entity_page]`
 - [Thinking in Video（视频生成器能否对真实世界做因果推理？）](wiki/entities/paper-thinking-in-video.md) — Thinking in Video**（*Can Video Generators Really Reason About the Real World?*，[arXiv:2607.17523 `📅unknown` `[entity_page]`
+- [ThinkWorld](wiki/entities/paper-thinkworld.md) — ThinkWorld 是一种 VLA 学习框架：用动作动力学链表示动作推理，并通过预测未来状态与视频实际结果的一致性强化该表示。 `📅unknown` `[entity_page]`
 - [Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑](wiki/entities/paper-thrust-assisted-trotting-legged-aerial-qp-mpc.md) — Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Rea `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
 - [TIDE/TIDES（arXiv:2610.16167）](wiki/entities/paper-tide-tides-4d-liquid-forecasting.md) — TIDE/TIDES**（*Interactive 4D Volumetric Liquid Forecasting under Moving-Solid Interaction*，[arXiv: `📅unknown` `[entity_page]`
@@ -5119,6 +5191,7 @@
 - [TRABot：说、演、动](wiki/entities/paper-trabot-talk-render-act.md) — TRABot（Talk, Render, Act）**（arXiv:2610.06153，Jiang 等）是一个让 **Un `📅unknown` `[entity_page]`
 - [TRACE：轨迹路由因果记忆](wiki/entities/paper-trace-causal-memory.md) — TRACE**（*Trajectory-Routed Causal Memory for Delayed-Evidence Visuomotor Imitation*，[arXiv:2606.14 `📅unknown` `[entity_page]`
 - [TRACE：把现成的全身控制器搬到另一台人形上](wiki/entities/paper-trace-humanoid-transfer.md) — TRACE 保留预训练全身控制器（SONIC）的运动表征，只对目标人形重调反馈控制：先用运动学先验与动力学对齐把新本体"接"进旧网络，再用编码器蒸馏加低秩 RL 的两阶段课程，在小规模筛选运动集上 `📅unknown` `[entity_page]`
+- [Trace-WAM（arXiv:2610.36840）](wiki/entities/paper-trace-wam.md) — Trace-WAM**（*Trace-WAM: Learning to Act via 3D Motion Prediction for World Action Models*，[arXiv:2 `📅unknown` `[entity_page]`
 - [跟踪并完成：从单段失败人体视频学习人形技能](wiki/entities/paper-track-and-complete.md) — Track-and-Complete: Learning Humanoid Skills from a Single Failed Human Video**（[arXiv:2609.36924 `📅unknown` `[entity_page]`
 - [Track4World：前馈世界系全像素稠密 3D 跟踪](wiki/entities/paper-track4world.md) — Track4World**（*Feedforward World-centric Dense 3D Tracking of All Pixels*，[arXiv:2603.02573](https `📅unknown` `[entity_page]`
 - [TrackEverything（Long-Horizon Dense 3D Point Tracking）](wiki/entities/paper-trackeverything.md) — TrackEverything**（[*Long Horizon Dense Tracking via De-Duplicating 3D Scene Representations*](http `📅unknown` `[entity_page]`
@@ -5205,6 +5278,7 @@
 - [ViBe：感知人形全身控制的视觉行为适配](wiki/entities/paper-vibe.md) — ViBe**（*Visual Behavior Adaptation for Perceptive Humanoid Whole-Body Control*，[arXiv:2609.09918 `📅unknown` `[entity_page]`
 - [VICAR：面向人形交互技能的视频模仿与接触感知重定向](wiki/entities/paper-vicar-contact-aware-video-imitation.md) — VICAR: Video Imitation with Contact-Aware Retargeting for Humanoid Interactive Skills**（Dvij Kalar `📅unknown` `[entity_page]`
 - [ViDAL：视觉动力学锚定的 VLA 动作潜空间](wiki/entities/paper-vidal-visual-dynamics-action-latent-vla.md) — ViDAL**（arXiv:2610.08150）让 VLA 不再直接预测动作 token/块，而是预测一个**既能重构动作 `📅unknown` `[entity_page]`
+- [视频世界模型综述：Reading, Writing, Sharing, and Interacting](wiki/entities/paper-video-world-model-survey.md) — 这篇综述以世界建模为视角，将视频理解、视频生成、理解与生成的统一以及交互预测组织为四种互补操作。 `📅unknown` `[entity_page]`
 - [Video2DoorTraversal](wiki/entities/paper-video2door-traversal.md) — Video2DoorTraversal**（*Push Door Traversal via Simulated Door Twins*，[arXiv:2608.20251](https://ar `📅unknown` `[entity_page]`
 - [Video2World（arXiv:2610.04432）](wiki/entities/paper-video2world-coding-agents-benchmark.md) — Video2World**（*Video2World: Benchmarking Coding Agents for Interactive World Modeling from Embodie `📅unknown` `[entity_page]`
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
@@ -5315,9 +5389,11 @@
 - [World Action Agent（arXiv:2609.29964）](wiki/entities/paper-world-action-agent-rehearsal.md) — World Action Agent**（*World Action Agent: Harnessing VLMs for Robot Manipulation via World Action  `📅unknown` `[entity_page]`
 - [World Action Planner](wiki/entities/paper-world-action-planner.md) — World Action Planner（WAP）**（*Generalizable Decision-Making with Action-Conditioned World Models*， `📅unknown` `[entity_page]`
 - [World Model Consultation Study：何时值得咨询世界模型？](wiki/entities/paper-world-model-consultation-study.md) — 该研究把“世界模型是否值得在控制时调用”变成可比较的策略选择问题：对照直接执行已学策略、用预测未来状态挑选候选动作，以及直接给候选动作打分；并分析任务条件、预测器容量、前视长度与推理代价。 `📅unknown` `[entity_page]`
+- [World-T³：测试时训练作为持久记忆](wiki/entities/paper-world-t3.md) — World-T³** 是相机控制的视频世界模型：它在生成过程中将历史视觉特征写入快速权重，再按目标相机位姿读取，以改善场景重访一致性。 `📅unknown` `[entity_page]`
 - [World Tokens](wiki/entities/paper-world-tokens-inference-trimmed-wam.md) — World Tokens** 收录于 具身智能研究室 · 具身世界模型六路线综述 **行动 `📅unknown` `[entity_page]`
 - [World Translation：反向动力学提取的 Sim2Real 域翻译](wiki/entities/paper-world-translation.md) — World Translation** 从观测到的状态转移反向抽取隐含动力学，再以无配对域翻译在仿真与现实间保留动力学内容、迁移域风格。 `📅unknown` `[entity_page]`
 - [WorldEcho / WorldSync（动作条件世界模型的动作跟随评测与对齐）](wiki/entities/paper-worldecho-worldsync.md) — WorldEcho / WorldSync**（*Do Robotic World Models Really Follow Actions?*，[arXiv:2608.24885](https: `📅unknown` `[entity_page]`
+- [WorldFailBench（arXiv:2610.33565）](wiki/entities/paper-worldfailbench.md) — WorldFailBench**（*WorldFailBench: Do World Models Understand Policy Failures?*，[arXiv:2610.33565 `📅unknown` `[entity_page]`
 - [WorldLine：动作驱动的机器人操纵视觉仿真](wiki/entities/paper-worldline-action-driven-visual-simulation.md) — WorldLine**（*Action-Driven Visual Simulation for Robotic Manipulation*，arXiv:2609.38059）是一种动作条件视频模 `📅unknown` `[entity_page]`
 - [WorldOracle（动作条件世界模型真机执行基准）](wiki/entities/paper-worldoracle.md) — WorldOracle 把预测 rollout 与相同初始观测、相同低层动作序列下的配对真机执行对齐，判断模型是否复现真实物理后果与任务状态转移。 `📅unknown` `[entity_page]`
 - [WorldRoamBench：交互世界模型长程稳定性开放基准](wiki/entities/paper-worldroambench.md) — WorldRoamBench**（*An Open-World Benchmark for Long-Horizon Stability of Interactive World Models*； `📅unknown` `[entity_page]`
@@ -5336,6 +5412,7 @@
 - [X-NavDP：跨本体导航扩散策略 RL 后训练](wiki/entities/paper-x-navdp.md) — X-NavDP: Generalizing Navigation Diffusion Policy to Novel Behavior and Embodiments with Group Q-s `📅unknown` `[entity_page]`
 - [X-Planner（arXiv:2609.25187）](wiki/entities/paper-x-planner-event-structured-task-planning.md) — X-Planner**（*X-Planner: Event-Structured Task Planning for Embodied Intelligence*，[arXiv:2609.2518 `📅unknown` `[entity_page]`
 - [X-WBC：跨具身人形全身控制基础模型](wiki/entities/paper-x-wbc.md) — X-WBC**（arXiv:2609.15213，[代码](https://github.com/LogosRobotics `📅unknown` `[entity_page]`
+- [X-World（arXiv:2610.34105）](wiki/entities/paper-x-world-variable-view-video-priors.md) — X-World**（*X-World: Transferring Video Priors to Variable-View Robot Control*，[arXiv:2610.34105](h `📅unknown` `[entity_page]`
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [X2Real: an eXtensive simulation benchmark for real-world generalist policies](wiki/entities/paper-x2real.md) — 论文类型：** arXiv 预印本（v1，2026-09-23） `📅unknown` `[entity_page]`
 - [X2Streaming-TTS：令牌级因果流式语音合成](wiki/entities/paper-x2streaming-tts.md) — X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inherit `📅unknown` `[entity_page]`
@@ -5363,6 +5440,7 @@
 - [Paperclip](wiki/entities/paperclip.md) — Paperclip**（paperclipai/paperclip，[paperclip.ing](http `📅unknown` `[entity_page]`
 - [Parkour MJLab：G1 / Go2 跑酷强化学习代码库](wiki/entities/parkour-mjlab.md) — 一句话定义：** Parkour MJLab 是基于 MJLab 的公开强化学习代码库，提供 Unitree `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
+- [Part-DB（电子元件库存管理）](wiki/entities/part-db.md) — Part-DB** 是部署在服务器、通过浏览器访问的开源电子元件库存管理系统。 `📅unknown` `[entity_page]`
 - [Particles4All](wiki/entities/particles4all.md) — Particles4All**（GitHub，[在线 Demo](https://particle `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`
 - [Boston Dynamics 足式控制与硬件专利栈](wiki/entities/patent-boston-dynamics-legged-control-stack.md) — 本页归纳 **Boston Dynamics** 五件与 **Spot / Atlas 类足式平台** 相关的授权或公开专利（见 [`sources/patents/boston_dynamics_l `📅unknown` `[entity_page]`
@@ -5440,6 +5518,7 @@
 - [Robot Olympics：用 π₀.₆ 微调硬操作](wiki/entities/pi-robot-olympics.md) — Physical Intelligence 在 2025-12-22 的博客 [Moravec's Paradox and the Robot Olympics](https://www.pi.web `📅unknown` `[entity_page]`
 - [pib（printable intelligent bot）](wiki/entities/pib-printable-intelligent-bot.md) — pib（printable intelligent bot）** 由德国 isento GmbH 开发，是可完全 3D 打印的开源人形机器人，软件在 GitHub 组织 [pib-rocks](h `📅unknown` `[entity_page]`
 - [Pico 4 Ultra（Egocentric 采集）](wiki/entities/pico-4-ultra-egocentric-capture.md) — Pico 4 Ultra** 在 2026 年成为可规模化部署的 **第一人称视频 + 全身/手部姿态** 采集硬件：PICO SDK 允许自研录制服务直接读取 passthrough RGB 与 `📅unknown` `[entity_page]`
+- [Pico.Lab](wiki/entities/picolab.md) — Pico.Lab** 是面向嵌入式板卡 bring-up 的开源多功能工具，集成示波、逻辑分析、总线通信和浏览器界面；专用板还提供电源控制及电流监测。 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlatformIO Core](wiki/entities/platformio-core.md) — PlatformIO Core** 是 PlatformIO 生态的命令行核心：以 `platformio.ini` 描述嵌入式项目环境，并用 `pio` CLI 管理相关开发平台、工具链、库依赖 `📅unknown` `[entity_page]`
@@ -5457,6 +5536,7 @@
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [Project Quiver](wiki/entities/project-quiver.md) — Project Quiver**（Arrow-air/project-quiver）是 Arrow A `📅unknown` `[entity_page]`
 - [Project SuperDex](wiki/entities/project-superdex.md) — Project SuperDex** 是 Meta（[facebookresearch](https://github.com/facebookresearch/project_superdex `📅unknown` `[entity_page]`
+- [Proteus：一套策略跟踪多种人形机器人的动作](wiki/entities/proteus-humanoids.md) — Proteus 使用共享关节布局、本体参数描述和联合训练，让一套策略权重在多种人形机器人上跟踪重定向的人体动作。 `📅unknown` `[entity_page]`
 - [Protocol Buffers（Protobuf）](wiki/entities/protocol-buffers.md) — Protocol Buffers** 是 Google 开源的 **语言中立、平台中立** 结构化数据 **序列化机制**：用 **`.proto` IDL** 定义 `message`/`enu `📅unknown` `[entity_page]`
 - [ProtoMotions: 大规模人形机器人仿真框架](wiki/entities/protomotions.md) — ProtoMotions**（当前主线为 **ProtoMotions3**）是 NVIDIA Labs 维护的 **GPU 加速仿真 + 强化学习训练** 框架：面向 **动画角色** 与  `📅unknown` `[entity_page]`
 - [ProxSuite](wiki/entities/proxsuite.md) — ProxSuite](https://github.com/Simple-Robotics/proxsuite) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
@@ -5484,6 +5564,7 @@
 - [Qwen-VLA](wiki/entities/qwen-vla.md) — Qwen-VLA**（QwenLM/Qwen-VLA）把 **操作（manipulation）**、**视觉–语言导航（ `📅unknown` `[entity_page]`
 - [Qwen3-VL](wiki/entities/qwen3-vl.md) — Qwen3-VL**（Qwen3-VL：视觉-语言基座（LightNav-ER 初始化））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [RAI Institute：全身控制、动态操作与部署研究路线](wiki/entities/rai-institute.md) — RAI Institute** 是由 Marc Raibert 领导、2022 年成立的机器人与人工智能研究机构，以学习控制、动态操作、硬件设计和物理交互研究提升机器人能力。 `📅unknown` `[entity_page]`
+- [Spot 机载感知全身操作](wiki/entities/rai-spot-perceptive-manipulation.md) — RAI Institute 将轮胎全身操作从依赖外部动捕和桌面计算的实验室系统，迁移到机载深度感知、计算与技能切换，展示在未见过的场地自主执行轮胎任务。 `📅unknown` `[entity_page]`
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [RAX：把机器人在线探索编译成可复用程序](wiki/entities/rax-scaling-online-exploration.md) — RAX**（论文 PDF、[项目页](https://robot-agent-exploration. `📅unknown` `[entity_page]`
 - [Raylib：轻量的跨平台图形与游戏编程库](wiki/entities/raylib.md) — Raylib** 是以 C API 为中心的跨平台图形库，用一组清晰的模块提供窗口、输入、2D/3D 绘制、模型、文字、音频和数学功能；它适合自己写可视化程序，不附带场景编辑器或完整游戏制作工作流 `📅unknown` `[entity_page]`
@@ -5543,7 +5624,7 @@
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
-- [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式 GPU 仿真工具包，让人或编码 Agent 将真实场景视频转成可检查、可调整的物理仿真。 `📅unknown` `[entity_page]`
+- [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。 `📅unknown` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial**（arXiv:2411.16537，[项目页](https://chanh.ee/RoboSpat `📅unknown` `[entity_page]`
 - [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体 `📅unknown` `[entity_page]`
 - [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py](https://github.com/robot-descriptions/robot_descriptions.py) 是把分散在各 git 仓的  `📅unknown` `[entity_page]`
@@ -5748,6 +5829,7 @@
 - [Viggle JST-2（Joint Space-and-Time 世界模型）](wiki/entities/viggle-jst-2.md) — JST-2** 是 Viggle 于 2026 年发布的空间生成模型：它在共享的 3D 表示中处理场景、角色和动作，可从稀疏图像重建并扩展场景，也能从文本或视频生成角色动作。官方称其面向「物理原生 `📅unknown` `[entity_page]`
 - [VINS-Fusion](wiki/entities/vins-fusion.md) — VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。 `📅unknown` `[entity_page]`
 - [Vision Banana](wiki/entities/vision-banana.md) — Vision Banana**（*Image Generators are Generalist Vision Learners*，arXiv:2604.20329，[项目页](https://v `📅unknown` `[entity_page]`
+- [vision-demos（视频运动分析示例）](wiki/entities/vision-demos.md) — vision-demos** 是 Jeremy Park 的开源计算机视觉示例集，从运动视频提取姿态或物体分割结果，再计算健身、跑步、舞蹈和攀岩指标。 `📅unknown` `[entity_page]`
 - [Vision Mamba（Vim）](wiki/entities/vision-mamba-vim.md) — Vim 将双向 Mamba 扫描引入视觉骨干，以近线性复杂度做图像分类与密集预测，探索无注意力的通用视觉主干。 `📅unknown` `[entity_page]`
 - [VIStream：给流式几何基础模型接上惯性运动](wiki/entities/vistream.md) — 一句话定义：** VIStream 是一种免训练的视觉-惯性运动积分方法：保持 LingBot-Map 等流式视觉几何模型不动，把标定后的视觉- `📅unknown` `[entity_page]`
 - [VLA SOTA Leaderboard（EvoMind / MINT-SJTU）](wiki/entities/vla-sota-leaderboard.md) — VLA SOTA Leaderboard**（线上站 sota.evomind-tech.com，源码 [MINT-SJTU/E `📅unknown` `[entity_page]`
@@ -6353,6 +6435,7 @@
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`
 - [SDD、TDD、BDD 与 ATDD：外层规格和内层反馈如何组合](wiki/comparisons/sdd-tdd-bdd-development-methods.md) — SDD（规格驱动）、TDD（测试驱动）、BDD（行为驱动）和 ATDD（验收测试驱动）解决的是不同层次的问题：SDD 让规格跨计划与实现保持可追溯，BDD / ATDD 让跨角色对行为和完成条件达 `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
+- [自我改进智能体与具身终身学习](wiki/comparisons/self-improving-agents-embodied-lifelong-learning.md) — 自我改进闭环**将交互经验或评测反馈用于更新智能体；具身场景还必须处理真实机器人采集、复位、硬件约束和部署验证。 `📅unknown` `[comparison_page]`
 - [Sim2Real 方法横向对比](wiki/comparisons/sim2real-approaches.md) — Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fi `📅unknown` `[comparison_page]`
 - [Sim2Real 四条路线：可辨识性视角](wiki/comparisons/sim2real-four-routes-identifiability.md) — 仿真里优化 $J_{\mathrm{sim}}(\pi)$，真机却要 $J_{\mathrm{real}}(\pi)$ 高——**系统辨识、域随机化、在线适应、残差学习**出自不同传统，却都在回答同一 `📅unknown` `[comparison_page]`
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md) — 背景**：当一台机器人已经在仿真里训出可用策略、但真机上还差最后几成性能时，Sim2Real 链路的**最后一公里**有三种本质不同的修补思路 `📅unknown` `[comparison_page]`
@@ -6421,6 +6504,7 @@
 - [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](wiki/overview/embodied-station-2026-10-13-34-papers-technology-map.md) — 真机策略越熟练，均匀采集越浪费预算：把采集起点、价值函数与人工介入作为可优化变量，是部署后持续学习的主线。本期深读 Mulligan，跟进 OpenWAM 与 EigenDEXplore。 `📅unknown` `[overview_page]`
 - [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](wiki/overview/embodied-station-2026-10-14-41-papers-technology-map.md) — 「换块卡顿」是动作块策略部署的共性问题：相邻动作块是否接得上、新观察到达后能否持续细化，比单次推理更快更关键。本期深读 StreamingWAM，跟进 FreeBar 与 RoboCombine。 `📅unknown` `[overview_page]`
 - [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](wiki/overview/embodied-station-2026-10-18-26-papers-technology-map.md) — 机器人会写控制程序之后，成功程序本身就能变成可验证、可扩增的示范来源；与之配套的是用闭环任务而非数值误差来评测 VLA 的部署改动。本期深读 EmbodiedSWE，跟进 VLAQuantBenc `📅unknown` `[overview_page]`
+- [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](wiki/overview/embodied-station-2026-10-28-59-papers-technology-map.md) — 人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 R `📅unknown` `[overview_page]`
 - [空间指令、时间建模与世界模型：34 篇论文阅读坐标](wiki/overview/embodied-station-34-papers-spatial-grounding-technology-map.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [具身世界模型六路线 · 行动主导型](wiki/overview/embodied-wm-route-action.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [具身世界模型六路线 · 上下文主导型](wiki/overview/embodied-wm-route-context.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -6660,6 +6744,7 @@
 - [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) — 摘要**：面向"想让一个策略适配不同本体——换夹爪、换相机、换一台人形甚至换一类形态都不必从零重训"的纵深路线，从「本体差异到底差在哪几层」的画像，到统一动作/状态接口、形态感知架构、多本体混训与 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）](roadmap/depth-embodied-data.md) — 摘要**：面向"想把具身数据当成一条可交付的工程管线来做"的纵深路线，从数据口径与金字塔分层（可扩展性 × 机器人对齐两轴、真机/UMI/Ego-Exo/仿真/通用五层），到采集范式与装置选型（遥 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](roadmap/depth-embodied-eval.md) — 摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测， `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`

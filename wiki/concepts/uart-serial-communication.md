@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, protocol, uart, rs485, serial, embedded, debugging, robotics]
 status: complete
-updated: 2026-06-10
+updated: 2026-10-29
 related:
   - ./ttl-serial-logic-level.md
   - ./rs-232-serial-interface.md
@@ -79,6 +79,8 @@ flowchart LR
 - **3.3 V 与 5 V TTL 直连**：可能损坏引脚或电平误判。
 
 ## 关联页面
+
+- [Pico.Lab](../entities/picolab.md) — 通过逻辑分析与 UART 终端排查实物串口。
 
 - [TTL 串行逻辑电平](./ttl-serial-logic-level.md)
 - [RS-232 串行接口](./rs-232-serial-interface.md)

@@ -2,11 +2,12 @@
 type: entity
 tags: [paper, world-models, model-based-rl, vla, opendrivelab, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-28
 arxiv: "2602.11075"
 venue: "RSS 2026"
 code: https://github.com/OpenDriveLab/RISE
 related:
+  - ../comparisons/self-improving-agents-embodied-lifelong-learning.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
@@ -122,6 +123,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [自我改进智能体与具身终身学习对比](../comparisons/self-improving-agents-embodied-lifelong-learning.md) — RISE 在其中代表「想象空间自我改进」：动力学模型预测 + 进度价值模型评估后更新策略
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [Awesome World Models](../entities/awesome-world-models.md)
 - [Model-based RL](../methods/model-based-rl.md)

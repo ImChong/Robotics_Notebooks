@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-27
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -14,6 +14,7 @@ related:
   - ./qucs-s.md
   - ./konnect.md
   - ./atopile.md
+  - ./part-db.md
   - ./en02-op.md
   - ./open-source-humanoid-hardware.md
   - ../concepts/field-oriented-control.md
@@ -119,6 +120,8 @@ flowchart TB
 - **GitHub 镜像误用**：向 GitHub 镜像提 PR **不会被合并**；贡献须遵循 GitLab 流程。
 
 ## 关联页面
+
+- [Part-DB](./part-db.md) — 电子元件库存管理，支持 KiCad BOM 导入与数据源集成。
 
 - [tscircuit](./tscircuit.md) — 用 TypeScript/React 编写电路并生成原理图、PCB 与制造文件；适合机器人驱动板和传感器板的快速迭代。
 - [Konnect](./konnect.md) — 通过 MCP 将 AI 助手接入 KiCad 10，辅助编辑、检查和导出板级工程。

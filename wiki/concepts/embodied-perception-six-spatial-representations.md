@@ -96,6 +96,8 @@ flowchart TB
 
 [NeRF](../../sources/papers/nerf_arxiv_2003_08934.md) 用 MLP 表示连续辐射场，沿射线采样并做体渲染；[3D Gaussian Splatting](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md) 用显式各向异性高斯，经过密度控制并以 splatting 渲染。二者主要解决从已知/校准多视图图像重建并合成新视角的问题。前馈路线的 [CompactSplat](../entities/paper-compactsplat.md) 按纹理复杂度分配高斯，减少平坦区域的原语冗余，并允许推理时调节稀疏度；它仍以外观和新视角渲染为目标。机器人项目 [GS-Playground](../entities/gs-playground.md) 展示了 3DGS 与物理仿真耦合的用法。选择这类表示时需另外检查几何尺度、动态更新、碰撞查询和物理一致性；画面逼真本身不等于机器人可用的导航地图。
 
+**存储与部署：** [Reduced 3DGS](../entities/paper-reduced-3dgs.md) 通过分辨率感知剪枝、球谐阶数分配和量化压缩场景；作者在标准数据集报告磁盘体积缩小 27 倍、渲染速度提高 1.7 倍。实际收益依场景和硬件而定，且其 PLY 格式需要兼容性处理。
+
 ### 两个正交轴（最易误解）
 
 1. **点云 → 占据不是必经之路**：点云可直接服务抓取与三维检测，也可分别注入距离场或语义地图。

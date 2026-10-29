@@ -4,7 +4,7 @@ title: Gen-HumanWholeBody（简智机器人全身操作数据集）
 project_id: gen-human-whole-body
 project: https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody
 tags: [dataset, human-motion, whole-body, genrobot, jzrobot, imitation-learning]
-summary: "简智机器人的全身操作数据集，官方门户标注 600 小时和约 3 cm 全身重建 MPJPE。"
+summary: "简智机器人的全身操作数据集：600 小时、15,943 个 episode、6 路 RGB + 全身/手部跟踪，全身重建 MPJPE 约 3 cm；许可标注为 other，条款未公开。"
 updated: 2026-10-27
 status: draft
 institutions:
@@ -37,14 +37,16 @@ Gen-HumanWholeBody 是简智机器人发布的全身操作数据集，官方门�
 
 ## 数据与使用边界
 
-| 项目 | 官方门户信息 |
+| 项目 | 官方信息（门户与 Hugging Face 数据卡） |
 |------|--------------|
-| 时长 | 600 小时 |
-| 重建精度 | MPJPE 约 3 cm；具体测试条件待查数据卡 |
-| 获取 | [Hugging Face 数据集](https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody) |
+| 规模 | 600 小时、15,943 个 episode、26 个领域 |
+| 模态 | 6 路 RGB（1600 × 1300，30 FPS）、VIO、手部跟踪、全身跟踪与任务/子任务标注；mcap 格式 |
+| 重建精度 | 全身 MPJPE 约 3 cm（上身约 2 cm、下身约 3.5 cm），由专有 DFM 重建 |
+| 许可证 | 数据卡标注 `license: other`，未给出许可文本；商用或再分发前需向官方确认 |
+| 获取 | [Hugging Face 数据集](https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody)，无访问门槛 |
 | 代码 | 官方数据门户未列出本数据集专属训练代码 |
 
-数据卡本次无法读取，许可、访问条件、episode 数量、场景域、数据模态和精度评测细节尚待核实。不要将人类动作直接视作机器人关节指令；迁移时应检查坐标系、身体形态和接触约束。
+重定向就绪度：数据是人体全身轨迹，不是机器人关节指令，迁移时应检查坐标系、身体形态和接触约束，见[运动重定向](../concepts/motion-retargeting.md)。精度数字来自官方对 DFM 的自评，测试集与对照真值的细节未公开。
 
 ## 关联页面
 

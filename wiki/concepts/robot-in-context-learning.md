@@ -53,7 +53,7 @@ summary: "机器人 In-Context Learning（ICL）指部署时不更新权重、�
 
 **机器人 In-Context Learning（ICL，上下文学习）**：在 **不更新模型权重** 的前提下，把一段 **示范轨迹、人类视频或任务无关交互片段** 放进策略的 **上下文窗口**，让模型从窗口内的配对样本中 **归纳出新的观测→动作映射**，并应用到当前场景——类比语言模型 few-shot prompt，但输入是连续图像、力与动作序列。
 
-Machenta 的 [即时机器人学习](../entities/machenta-instant-robot-learning.md) 提供纯仿真训练、真实示范提示的产业案例；结果为公司自报。
+Machenta 的 [即时机器人学习](../entities/machenta-instant-robot-learning.md) 提供纯仿真训练、真实示范提示的产业案例；[CO01](../entities/co01.md) 将示范、失败历史和即时指导共同作为上下文。结果均为公司自报。
 
 ## 英文缩写速查
 

@@ -80,6 +80,15 @@ sequenceDiagram
 
 作者在 Mip-NeRF 360、Deep Blending、Tanks and Temples 数据集上报告总体磁盘大小缩小 **27 倍**、渲染速度提升 **1.7 倍**，并指出指标下降较小。数字属于论文测试条件，不代表任意场景或硬件均可复现。
 
+## 与其他工作对比
+
+| 工作 | 高斯从何而来 | 与 Reduced 3DGS 的差异 |
+|------|--------------|------------------------|
+| [原始 3DGS](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) | 逐场景优化，所有高斯统一使用完整球谐系数 | Reduced 3DGS 沿用同一优化框架，在其上做剪枝、逐高斯球谐阶数分配与量化；PLY 格式因此不再兼容 |
+| [CompactSplat](./paper-compactsplat.md) | 前馈网络直接预测，按纹理分区自适应分配 | CompactSplat 在生成阶段就少放高斯并支持推理期稀疏度控制；Reduced 3DGS 是对已优化场景的后处理式压缩，需要逐场景训练 |
+
+三类压缩手段相互独立：只需降低传输体积时，量化收益最直接；需要提速渲染时，剪枝更关键。对机器人而言，两类方法都只保证渲染质量，几何可用性需另行验证，见[具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)。
+
 ## 结论
 
 **Reduced 3DGS 通过三类互补压缩减少存储和传输成本，同时保留新视角渲染能力。**

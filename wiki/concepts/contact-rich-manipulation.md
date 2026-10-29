@@ -2,7 +2,7 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-28
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-egophi.md
@@ -43,6 +43,7 @@ related:
   - ../entities/paper-ila-interaction-latents-as-actions.md
   - ../entities/paper-accrue-continual-off-policy-rl.md
   - ../entities/paper-imitation-learning-contact-rich-tasks-survey.md
+  - ../entities/paper-genesis-handover.md
 sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/fa_rdp_arxiv_2607_28596.md
   - ../../sources/papers/distributed_whole_arm_interaction_soft_robot_arxiv_2608_30773.md
   - ../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md
+  - ../../sources/papers/genesis_handover_arxiv_2610_08003.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -155,6 +157,7 @@ sources:
 - [Robot Juggling / AthenaZero](../entities/paper-robot-juggling-athenazero.md) — 多指 **抛/接间歇接触**；真机 **正则化记忆学习** 修正落点，**MRS** 保证连续动态动作不撞限位（arXiv:2608.26800；未开源）
 - [Project SuperDex](../entities/project-superdex.md) — Meta **接触优先物理 + Studio 资产 + Lab RL** 的灵巧操作全栈平台（已开源；Teleop 计划 Q4 2026）。
 - [ArtManip](../entities/paper-artmanip.md) — **铰接物体手内操作**：在自由漂浮基座上 **抓稳 + 推动内部关节** 的双目标耦合；程序化功能抓取 + Teacher–Student RL（[ArtGym](https://github.com/youngcv/artgym) 已开源）。
+- [GENESIS-Handover](../entities/paper-genesis-handover.md) — **人机递物的接触边界**：VLM 生成多种任务条件化手-物交互假设，按接收者实时手型选定并持续更新末端目标；ANYmal 移动操作真机 12 人、两方法各 60 次，「无需调整即可使用」6/60 → 16/60（对照 AFT-Handover；arXiv:2610.08003，CoRL 2026，未见官方代码）。接触发生在人手与物体之间，机器人侧解决的是交接前的目标调整，而非持续力控。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
 ## 常见误区
@@ -176,6 +179,7 @@ sources:
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter hand–object co-tracking 灵巧遥操作
 - [sources/papers/nestdex_arxiv_2608_13362.md](../../sources/papers/nestdex_arxiv_2608_13362.md) — NestDex：闭环本体感觉手技能 + 时间集成
 - [sources/papers/fa_rdp_arxiv_2607_28596.md](../../sources/papers/fa_rdp_arxiv_2607_28596.md) — FA-RDP 频率自适应反应扩散
+- [sources/papers/genesis_handover_arxiv_2610_08003.md](../../sources/papers/genesis_handover_arxiv_2610_08003.md) — GENESIS-Handover 生成式任务导向人机递物
 - Mordatch et al., *Contact-Invariant Optimization for Hand Manipulations*
 
 ## 关联页面

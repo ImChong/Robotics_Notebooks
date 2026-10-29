@@ -123,3 +123,5 @@ flowchart LR
 - [Disney Research LA Research 总览归档](../../sources/sites/disney-research-la.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html>
 - 论文：<https://arxiv.org/abs/2605.06593v1>
+
+- 相关研究：[rlmuscle](../entities/paper-rlmuscle.md)。

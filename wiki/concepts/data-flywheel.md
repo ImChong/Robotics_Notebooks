@@ -3,8 +3,9 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-10-06
+updated: 2026-10-28
 related:
+  - ../comparisons/self-improving-agents-embodied-lifelong-learning.md
   - ./embodied-data-flywheel-minimal-closed-loop.md
   - ./robot-data-supervision-signal-types.md
   - ../overview/embodied-data-collection-to-flywheel-album.md
@@ -50,6 +51,8 @@ sources:
 2. **清洗与标注 (Cleaning & Labeling)**：利用 [auto-labeling-pipelines](../methods/auto-labeling-pipelines.md) 自动剔除低质数据并添加语义标签。
 3. **训练 (Training)**：在海量异构数据上进行大规模预训练。
 4. **验证与反馈 (Eval & Feedback)**：模型在实测中发现弱点，反馈给采集端进行针对性补全。[Arcadia](../entities/paper-arcadia.md) 把这一步写成任务/场景/硬件三通道，并要求同时更新 **仿真资产与策略**，而不是只追加演示。
+
+自我改进闭环还可更新代码、记忆或仿真资产；参见 [自我改进与具身终身学习对比](../comparisons/self-improving-agents-embodied-lifelong-learning.md)。
 
 ## 与其他系统的关系
 
