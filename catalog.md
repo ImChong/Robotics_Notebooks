@@ -1306,6 +1306,7 @@
 - [AdaHVLA](wiki/entities/paper-adahvla.md) — AdaHVLA**（*Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution*，[arXiv:2609.29204 `📅unknown` `[entity_page]`
 - [AdaMimic：单条参考运动上的自适应全身跟踪](wiki/entities/paper-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*，[arXiv:2510.14454](ht `📅unknown` `[entity_page]`
 - [AdaMorph](wiki/entities/paper-adamorph-unified-motion-retargeting.md) — AdaMorph**（*AdaMorph: Unified Motion Retargeting via Embodiment-Aware Adaptive Transformers*，arXiv `📅unknown` `[entity_page]`
+- [AdaOcc：自适应具身三维占据预测](wiki/entities/paper-adaocc.md) — AdaOcc 把多视角 RGB 与深度或 LiDAR 几何融合为稀疏语义点，再按计算预算调整预测精度，为导航和操作提供局部三维占据表示。 `📅unknown` `[entity_page]`
 - [AdaPolicy（arXiv:2610.34280）](wiki/entities/paper-adapolicy.md) — AdaPolicy**（*AdaPolicy: Action-Driven Anticipatory Robot Policies via Next-Chunk Prediction*，[arXi `📅unknown` `[entity_page]`
 - [ADAPT：端到端文本驱动人形控制](wiki/entities/paper-adapt-text-driven-humanoid.md) — ADAPT**（*Agile Diffusion Action Priors for Robust and Steerable Online Text-Driven Humanoid Contro `📅unknown` `[entity_page]`
 - [AdaPT（人形网球自适应规划与跟踪）](wiki/entities/paper-adapt.md) — AdaPT**（*Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and  `📅unknown` `[entity_page]`
