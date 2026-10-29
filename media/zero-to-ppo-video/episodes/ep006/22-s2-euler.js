@@ -14,9 +14,11 @@
 // 句 9「欧拉角这三次转动」底下换成两台小 G1：左边先绕竖轴转 90° 再绕（身子的）左右轴转 45°，右边反过来，「第三集」顶上出小牌「欧拉角：顺序不能换」，
 //    「转动接着做」左边那台按顺序做，「换了顺序」右边那台做，「结果」中间打「≠」，「固定角也是这样」小牌换成「固定角：顺序也不能换」，
 //    「欧拉角和固定角各有十二种」顶上写出「各 12 种：写清楚是哪一种」；
-// 句 10「这十二种」两台小 G1 收起，「第一次」写出数法，「三乘二乘二」写出 3 × 2 × 2 = 12；
-// 句 11「三根轴都不一样」「六种」写出第一排六种（x-y-z … z-y-x），「我们用的 z、y、x」框住 z-y-x；「头尾是同一根轴」「六种」第二排（x-y-x … z-y-z），「z、y、z」框住 z-y-z
-//    （相邻两次绕的轴不同就行，第一根和第三根可以相同：Modern Robotics 附录 B.1.2）。
+// 句 10「这十二种」两台小 G1 和左边的 G1 收起（后面三句用整个画面排表），「第一次」写出数法，「三乘二乘二」写出 3 × 2 × 2 = 12；
+// 句 11 右边两块：左「三根轴都不一样」、右「头尾是同一根轴」，「六种」各写出一列欧拉角（x-y-z … z-y-x / x-y-x … z-y-z），「z、y、x」「z、y、z」各框住最后一种
+//    （相邻两次绕的轴不同就行，第一根和第三根可以相同：Modern Robotics 附录 B.1.2）；
+// 句 12「固定角」每行补上「= 固定角」（欧拉角的顺序反过来），「欧拉角 z、y、x」「固定角 x、y、z」两格依次框住，「头尾」框住 z-y-z = z-y-z，「轴的顺序不变」右块等号亮一下
+//    （绕不动的轴转是左乘、绕身子的轴转是右乘：Modern Robotics 式 (3.23)(3.24)，所以欧拉角 a-b-c = 固定角 c-b-a，12 种都验算过）。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep006.py。
 (function () {
   var E = window.EP006, K = E.K;
@@ -31,7 +33,8 @@
     triple: 47.21, flash: [48.53, 49.17, 49.85], easy: 50.65, flash2: [51.85, 52.95, 54.22],
     good: [56.33, 57.27], best: 59.19,
     order: 61.9, ep3: 65.05, runA: 66.15, runB: 67.24, runD: 0.45, neq: 68.19, fixToo: 69.41, conv: 72.53,
-    cnt: 78.6, rule: 80.26, mult: 85.28, r1: [88.3, 89.7, 91.34], r2: [92.73, 94.55, 95.62]
+    cnt: 78.6, rule: 80.26, mult: 85.28, r1: [88.3, 89.7, 91.34], r2: [92.73, 94.55, 95.62],
+    fixCol: 100.87, exE: 103.41, exF: 105.46, pal: 107.43, palRev: 109.12
   };
   var ANG = [20 * D, 25 * D, 45 * D];                         // (横滚, 俯仰, 偏航)
   var GX = 170, GY = 362, GH = 290;
@@ -47,7 +50,7 @@
 
   E.scenes[1] = {
     title: '欧拉角：三个角，按顺序转',
-    dur: 97.68,
+    dur: 111.62,
     cues: [
       { at: 0, s: '**欧拉角**：拆成按顺序的三次转动，每次绕身子自己的一根轴、转一个角度' },
       { at: 7.66, s: '① 偏航：绕竖着的轴（z），原地转身' },
@@ -59,10 +62,11 @@
       { at: 56.23, s: '好处：**直观**，又只用 3 个数' },
       { at: 61.03, s: '欧拉角三次转动的顺序不能换，固定角也一样；两种各 12 种，要写清楚是哪一种' },
       { at: 78.5, s: '数法：第一次 3 根轴选 1 根，之后每次和上一次不同：3 × 2 × 2 = 12' },
-      { at: 88.2, s: '三根轴都不一样 6 种（如 z-y-x），头尾是同一根轴 6 种（如 z-y-z）' }
+      { at: 88.2, s: '三根轴都不一样 6 种（如 z-y-x），头尾是同一根轴 6 种（如 z-y-z）' },
+      { at: 97.68, s: '欧拉角 a-b-c = 固定角 c-b-a，摆出来一样' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('欧拉角把一个朝向拆成按顺序的三次转动，每次绕身子自己的一根轴：先偏航，绕竖着的轴原地转身 45 度；再俯仰，绕身子左右方向的轴前倾 25 度；最后横滚，绕身子前后方向的轴侧歪 20 度，机器人里最常用这个顺序。同样三个角绕不动的轴、反过来先横滚再俯仰后偏航，摆出来一模一样，叫固定角，ROS 的 URDF 文件就按横滚、俯仰、偏航的顺序写这三个数。写成 (20°, 25°, 45°)：直观，只用三个数。欧拉角三次转动的顺序不能换：先绕竖轴转 90 度再绕身子的左右轴转 45 度，和反过来，结果不一样，固定角也一样；欧拉角和固定角各有 12 种，要写清楚是哪一种：第一次在 x、y、z 里选一根，之后每次和上一次不同，3 × 2 × 2 = 12；三根轴都不一样的 6 种，比如 z-y-x，头尾是同一根轴的 6 种，比如 z-y-z');
+      var s = K.sceneSvg('欧拉角把一个朝向拆成按顺序的三次转动，每次绕身子自己的一根轴：先偏航，绕竖着的轴原地转身 45 度；再俯仰，绕身子左右方向的轴前倾 25 度；最后横滚，绕身子前后方向的轴侧歪 20 度，机器人里最常用这个顺序。同样三个角绕不动的轴、反过来先横滚再俯仰后偏航，摆出来一模一样，叫固定角，ROS 的 URDF 文件就按横滚、俯仰、偏航的顺序写这三个数。写成 (20°, 25°, 45°)：直观，只用三个数。欧拉角三次转动的顺序不能换：先绕竖轴转 90 度再绕身子的左右轴转 45 度，和反过来，结果不一样，固定角也一样；欧拉角和固定角各有 12 种，要写清楚是哪一种：第一次在 x、y、z 里选一根，之后每次和上一次不同，3 × 2 × 2 = 12；三根轴都不一样的 6 种，比如 z-y-x，头尾是同一根轴的 6 种，比如 z-y-z；每一种欧拉角把顺序反过来就是一种固定角，摆出来一样，比如欧拉角 z-y-x 就是固定角 x-y-z');
 
       /* ══ 左：G1 + 转轴（虚线）和绕轴的一圈 ══ */
       var rob = E.el('g', {}, s);
@@ -166,28 +170,35 @@
       var ep3 = E.tag(ord, 478, 8, 204, 36, '欧拉角：顺序不能换', E.VIOLET, { size: 19, ink: E.INK, weight: 900, rx: 10 });
       var conv = E.halo(E.txt(ord, 580, 34, '欧拉角、固定角各 12 种：写清楚是哪一种', 20, E.HI, 'middle', 900));
 
-      /* ══ 右 ③：12 种怎么数、是哪 12 种（每个字母用那根轴的颜色） ══ */
-      var cnt = E.el('g', {}, s);
-      var cRule = E.txt(cnt, 580, 76, '第一次 3 选 1，之后每次和上一次不同', 20, E.INK, 'middle', 900);
-      var cMult = E.txt(cnt, 580, 118, '3 × 2 × 2 = 12 种', 28, E.HI, 'middle', 900);
+      /* ══ 右 ③：12 种怎么数、是哪 12 种，每种欧拉角对应哪种固定角（每个字母用那根轴的颜色） ══ */
+      var cnt = E.el('g', {}, s);   // 用整个画面（左边的 G1 收起），居中在 400
+      var cConv = E.halo(E.txt(cnt, 400, 34, '欧拉角、固定角各 12 种：写清楚是哪一种', 20, E.HI, 'middle', 900));
+      var cRule = E.txt(cnt, 400, 78, '第一次 3 选 1，之后每次和上一次不同', 22, E.INK, 'middle', 900);
+      var cMult = E.txt(cnt, 400, 122, '3 × 2 × 2 = 12 种', 30, E.HI, 'middle', 900);
       var AXC = { x: E.X, y: E.Y, z: E.Z };
-      // 每组 6 种排成两行、每行 3 种；最后一种（z-y-x / z-y-z）带框
-      function seqRow(y, title, list) {
-        var g = E.el('g', {}, cnt);
-        var tt = E.txt(g, 580, y - 38, title, 20, E.INK2, 'middle', 900);
-        var hl = K.paint(E.el('rect', { x: 676 - 44, y: y + 36 - 27, width: 88, height: 38, rx: 9, 'stroke-width': 2.5 }, g), E.tint(E.HI, 18, 'var(--demo-surface)'), E.HI);
-        var cells = list.map(function (q, k) {
-          var t = E.txt(g, 484 + 96 * (k % 3), y + 36 * Math.floor(k / 3), '', 24, E.INK2, 'middle', 900);
-          q.split('').forEach(function (ch, j) {
-            if (j) { var d = document.createElementNS('http://www.w3.org/2000/svg', 'tspan'); d.textContent = '-'; t.appendChild(d); }
-            var n = document.createElementNS('http://www.w3.org/2000/svg', 'tspan'); n.textContent = ch; n.style.fill = AXC[ch]; t.appendChild(n);
-          });
-          return t;
+      function seqTxt(parent, x, y, q) {
+        var t = E.txt(parent, x, y, '', 26, E.INK2, 'middle', 900);
+        q.split('').forEach(function (ch, j) {
+          if (j) { var d = document.createElementNS('http://www.w3.org/2000/svg', 'tspan'); d.textContent = '-'; t.appendChild(d); }
+          var n = document.createElementNS('http://www.w3.org/2000/svg', 'tspan'); n.textContent = ch; n.style.fill = AXC[ch]; t.appendChild(n);
         });
-        return { g: g, tt: tt, hl: hl, cells: cells };
+        return t;
       }
-      var row1 = seqRow(196, '三根轴都不一样：6 种', ['xyz', 'xzy', 'yxz', 'yzx', 'zxy', 'zyx']);
-      var row2 = seqRow(318, '头尾是同一根轴：6 种', ['xyx', 'xzx', 'yxy', 'yzy', 'zxz', 'zyz']);
+      // 一块 6 行：欧拉角 = 固定角（同一个转法，轴的顺序反过来）；最后一行（z-y-x / z-y-z）两格各带一个框
+      function block(cx, title, list) {
+        var g = E.el('g', {}, cnt), EX = cx - 72, FX = cx + 72, Y0 = 232, DY = 34;
+        var tt = E.txt(g, cx, 166, title, 22, E.INK2, 'middle', 900);
+        var hE = E.txt(g, EX, 198, '欧拉角', 19, E.WARN, 'middle', 900), hF = E.txt(g, FX, 198, '固定角', 19, E.INK, 'middle', 900);
+        function box(x) { return K.paint(E.el('rect', { x: x - 46, y: Y0 + 5 * DY - 26, width: 92, height: 35, rx: 8, 'stroke-width': 2.5 }, g), E.tint(E.HI, 18, 'var(--demo-surface)'), E.HI); }
+        var hlE = box(EX), hlF = box(FX);
+        var rows = list.map(function (q, k) {
+          var y = Y0 + DY * k;
+          return { e: seqTxt(g, EX, y, q), eq: E.txt(g, cx, y, '=', 24, E.MUT, 'middle', 900), fx: seqTxt(g, FX, y, q.split('').reverse().join('')) };
+        });
+        return { g: g, tt: tt, hE: hE, hF: hF, hlE: hlE, hlF: hlF, rows: rows };
+      }
+      var blkA = block(210, '三根轴都不一样：6 种', ['xyz', 'xzy', 'yxz', 'yzx', 'zxy', 'zyx']);
+      var blkB = block(590, '头尾是同一根轴：6 种', ['xyx', 'xzx', 'yxy', 'yzy', 'zxz', 'zyz']);
 
       return {
         el: s,
@@ -270,19 +281,27 @@
             m.l2.style.fill = a1 >= 1 && a2 > 0 && a2 < 1 ? 'var(--hi)' : '';
           });
           E.pop(neq, 580, 284, f(st, T.neq, 0.3) * (1 - f(st, T.cnt, 0.4)), 0.5);
-          mini.forEach(function (m) { E.op(m.g, 1 - f(st, T.cnt, 0.4)); });   // 句 10：两台小 G1 收起，换上 12 种
+          mini.forEach(function (m) { E.op(m.g, 1 - f(st, T.cnt, 0.4)); });   // 句 10：两台小 G1、左边的 G1 收起，整个画面换上 12 种
+          E.op(rob, 1 - f(st, T.cnt, 0.4));
           E.op(cnt, f(st, T.cnt + 0.4, 0.3));
           E.op(cRule, f(st, T.rule, 0.3)); E.op(cMult, f(st, T.mult, 0.3));
-          [[row1, T.r1], [row2, T.r2]].forEach(function (rw) {
-            var r = rw[0], tt = rw[1];
-            E.op(r.tt, f(st, tt[0], 0.3));
-            r.cells.forEach(function (c, k) { E.op(c, f(st, tt[1] + 0.08 * k, 0.25)); });
-            E.op(r.hl, f(st, tt[2], 0.3));
+          // 句 11 先出欧拉角一列，句 12「固定角」每行补上「= 固定角」
+          [[blkA, T.r1, T.exF], [blkB, T.r2, T.pal]].forEach(function (b, n) {
+            var B = b[0], tt = b[1];
+            E.op(B.tt, f(st, tt[0], 0.3)); E.op(B.hE, f(st, tt[1], 0.3)); E.op(B.hF, f(st, T.fixCol, 0.3));
+            B.rows.forEach(function (r, k) {
+              E.op(r.e, f(st, tt[1] + 0.08 * k, 0.25));
+              var fo = f(st, T.fixCol + 0.08 * k, 0.25);
+              E.op(r.eq, fo); E.op(r.fx, fo);
+              r.eq.style.fill = n && bump(st, T.palRev, 1.2) > 0.3 ? 'var(--hi)' : '';   // 「轴的顺序不变」：右块等号亮一下
+            });
+            E.op(B.hlE, f(st, tt[2], 0.3));
+            E.op(B.hlF, f(st, b[2], 0.3));
           });
           // 「固定角也是这样」小牌换字，换字时先淡下去再亮回来
           ep3.text.textContent = st < T.fixToo ? '欧拉角：顺序不能换' : '固定角：顺序也不能换';
           E.pop(ep3.g, 580, 26, f(st, T.ep3, 0.3) * (1 - f(st, T.conv - 0.3, 0.3)) * (1 - 0.9 * bump(st, T.fixToo - 0.2, 0.4)), 0.85);
-          E.op(conv, f(st, T.conv, 0.35));
+          E.op(conv, f(st, T.conv, 0.35) * (1 - f(st, T.cnt, 0.4)));   // 句 10 起换成居中的那一行（cConv）
         }
       };
     }
