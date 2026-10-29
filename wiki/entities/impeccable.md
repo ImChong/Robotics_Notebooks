@@ -84,6 +84,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [shadcn-admin](shadcn-admin.md) — 可复用管理后台页面与组件，可配合设计审查。
+
 - [Taste Skill](taste-skill.md) — SKILL 层约束
 - [Skillry](skillry.md) — 商业 Skill 市场
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 上游灵感
