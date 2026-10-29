@@ -64,12 +64,15 @@
       refs: {
         at: 11.3,
         items: [
-          '**《Modern Robotics》** Lynch & Park，2017：第 3 章（自由向量、旋转矩阵的列、换坐标系、SE(3)、补 1 的齐次坐标），式 (4.4) 正运动学',
-          '**ROS REP 103**：身上的坐标轴 x 朝前、y 朝左、z 朝上',
-          '**ROS REP 105**：base_link 固定在机器人身上，map 是世界固定坐标系',
-          '**ROS geometry_msgs**：Vector3 只转不平移，速度 Twist、力 Wrench 都用它；位姿 Pose = 位置 + 朝向',
-          '**Eigen** 几何模块：变换作用于点 t * p，作用于向量 t.linear() * v',
-          '**Unitree G1 URDF**（unitree_ros）：骨盆、头上的 d435 摄像头'
+          '**《Modern Robotics》** 2017：第 3 章（自由向量、换坐标系、SE(2) / SE(3)、补 1），式 (4.4)',
+          '**CGAL 手册** 线性几何核：向量 = 两点之差，两点相加没有意义',
+          '**Strang《线性代数导论》** 第 5 版 1.3 节：矩阵乘向量 = 各列的组合',
+          '**ROS REP 103**：身上的轴 x 朝前、y 朝左、z 朝上',
+          '**ROS REP 105**：base_link 在机器人身上，map 是世界固定坐标系',
+          '**ROS geometry_msgs**：Vector3 只转不平移，Twist、Wrench 都用它；Pose = 位置 + 朝向',
+          '**Eigen** 几何模块：点 t * p，向量 t.linear() * v',
+          '**OpenGL 2.1** glLight：w = 0 表示方向、不管位置',
+          '**Unitree G1 URDF**（unitree_ros）：骨盆、腿的连杆、头上的 d435'
         ]
       },
       end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 15.14 }

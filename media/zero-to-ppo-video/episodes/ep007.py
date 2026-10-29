@@ -19,7 +19,9 @@ T = [[0, −1, 3], [1, 0, 1], [0, 0, 1]]，T (2, 1, 1) = 2 × (0, 1, 0) + 1 × (
 （不扎根在哪儿、只管长短和方向，线速度就是一个）、式 (3.16) R = [x̂b ŷb ẑb]、Rab pb = pa（换坐标系）、定义 3.13 / 3.14 的 SE(3)、SE(2)、式 (3.65) 补 1 的齐次坐标，
 式 (3.96) 力只随旋转变，式 (4.4) 正运动学 = 一节一节的齐次变换连乘；ROS REP 103（身上 x 朝前、y 朝左、z 朝上）、REP 105（base_link 固定在机器人身上，map 是 world fixed frame）；
 ROS geometry_msgs：Vector3「semantically different than a point … only the rotational component is applied」、Twist（速度）、Wrench（力）都用 Vector3，Pose = position + orientation；
-Eigen 几何模块教程：点 t * p、向量 t.linear() * v；Unitree G1 URDF（unitree_ros，robots.json 固定的 commit）里的 pelvis、d435_link。
+Eigen 几何模块教程：点 t * p、向量 t.linear() * v；Unitree G1 URDF（unitree_ros，robots.json 固定的 commit）里的 pelvis、腿的连杆、d435_link；
+CGAL 手册 Kernel_23「Points and Vectors」：vector 是两点之差（有方向、有距离），direction 是忘掉长短的 vector，两点相加在仿射几何里没有意义，点减 ORIGIN 得到它的位置向量；
+Strang《Introduction to Linear Algebra》第 5 版 1.3 节：Ax = A 各列的组合；Khronos OpenGL 2.1 glLight：齐次坐标 w = 0 的光源只算方向、不算位置。
 """
 
 # scene: "intro" / 0..4（分镜下标）/ "recap"（片尾总结卡片）/ "outro"；[from, to] 是这一幕的分镜时间：念这句时画面从 from 播到 to，念不完就停在 to
