@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-10-22
+updated: 2026-10-29
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-ego-oscar.md
   - ../methods/macrodata-egocentric-hand-action.md
   - ../entities/pico-4-ultra-egocentric-capture.md
+  - ../entities/tsing-ego-pro.md
 sources:
   - ../../sources/sites/maxinsights-official.md
   - ../../sources/blogs/maxinsights-beyond-1m-hours-physical-ai-data.md
@@ -78,6 +79,8 @@ sources:
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md) — 把已采 egocentric RGB **重建为度量 21 关节手轨迹** 的开源配方与 HOT3D Action MPJPE 标尺（采集后的几何标注层）
 - [Pico 4 Ultra（Egocentric 采集）](../entities/pico-4-ultra-egocentric-capture.md) — Unidata **4,050 h** 量产工作流：头显-only vs ZED+Orin 双 rig、episode QA 与 Quest 3 / Aria 选型对照
 - [Maxinsights](../entities/maxinsights-physical-ai-data.md) — 商业化第一人称多模态数据服务；官网自报规模与月产能需和可用数据、客户交付口径分开核验
+
+- [TSING-EGO PRO](../entities/tsing-ego-pro.md) — 清研精准面向工业操作的第一视角采集方案；详细参数仍需核实
 
 ## 参考来源
 
