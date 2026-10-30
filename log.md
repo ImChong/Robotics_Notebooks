@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-30] ingest | 深蓝《路径规划5大主流算法详解》10-30 重发版（具身智能基础第11篇）归档 raw，并入既有 source 与五范式对比页，未新建 wiki
+
 ## [2026-10-29] ingest | shadcn-admin
 
 - 收录管理后台 UI 集合，源码公开且使用 MIT 许可；记录技术栈、使用边界与组件更新注意事项。
