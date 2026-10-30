@@ -59,37 +59,37 @@
 
       /* ── 透明板：钉在小臂上，跟着绕肘转 ── */
       var plate = E.el('g', {}, top);
-      var plateFill = K.paint(E.el('path', { 'stroke-width': 2.5, 'stroke-dasharray': '8 6' }, plate), E.tint(E.VIOLET, 14, 'transparent'), E.VIOLET);
+      var plateFill = K.paint(E.el('path', { 'stroke-width': 2.5, 'stroke-dasharray': '8 6' }, plate), E.tint(E.BODY, 14, 'transparent'), E.BODY);
       plateFill.style.fillOpacity = 0.9;
       var plateLines = [];
       for (var gx = Math.ceil(PLATE[0]); gx <= PLATE[2]; gx++) plateLines.push({ a: [gx, PLATE[1]], b: [gx, PLATE[3]] });
       for (var gy = Math.ceil(PLATE[1]); gy <= PLATE[3]; gy++) plateLines.push({ a: [PLATE[0], gy], b: [PLATE[2], gy] });
-      plateLines.forEach(function (l) { l.el = K.paint(E.el('path', { fill: 'none', 'stroke-width': 1.2 }, plate), null, E.VIOLET); l.el.style.opacity = 0.45; });
-      var plateLab = E.halo(E.txt(plate, 0, 0, '透明板', 20, E.VIOLET, 'start', 900));
+      plateLines.forEach(function (l) { l.el = K.paint(E.el('path', { fill: 'none', 'stroke-width': 1.2 }, plate), null, E.BODY); l.el.style.opacity = 0.45; });
+      var plateLab = E.halo(E.txt(plate, 0, 0, '透明板', 20, E.BODY, 'start', 900));
 
       // 原点：一圈 + 「原点 = 肩关节」+（句 10）「没动」
       var oRing = K.paint(E.el('circle', { cx: O[0], cy: O[1], r: 10, fill: 'none', 'stroke-width': 3 }, top), null, E.HI);
       var oLab = E.halo(E.txt(top, O[0] - 20, O[1] - 14, '原点', 22, E.HI, 'end', 900));
       var oLab2 = E.halo(E.txt(top, O[0] - 20, O[1] + 14, '= 肩关节', 20, E.INK2, 'end', 700));
-      var noMove = E.halo(E.txt(top, O[0] - 20, O[1] - 44, '没动', 22, E.BAD, 'end', 900));   // 写在「原点」上面：下面是底座
+      var noMove = E.halo(E.txt(top, O[0] - 20, O[1] - 44, '没动', 22, E.ERR, 'end', 900));   // 写在「原点」上面：下面是底座
       // 肘：⊙（角速度朝向你）+ (1, 2)
       var outOf = E.el('g', {}, top);
-      K.paint(E.el('circle', { r: 14, 'stroke-width': 3.5 }, outOf), E.S1, E.VIOLET);
-      K.paint(E.el('circle', { r: 4.5 }, outOf), E.VIOLET);
+      K.paint(E.el('circle', { r: 14, 'stroke-width': 3.5 }, outOf), E.S1, E.OMEGA);
+      K.paint(E.el('circle', { r: 4.5 }, outOf), E.OMEGA);
       var qLab = E.halo(E.txt(top, Q[0] + 12, Q[1] - 24, '(1, 2)', 22, E.HI, 'start', 900));   // 肘的右上方：左上是验算时「那一份」的箭头
       var still = E.halo(E.txt(top, Q[0] + 20, Q[1] + 40, '不动', 22, E.GOOD, 'start', 900));
       // 肘 → 原点的虚线箭头；原点处的直角
       var link = E.vec(top, E.HI, 3, { head: 13, dash: '7 5' });
       var corner = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, top), null, E.INK);
       // 板上此刻在原点的那一点 + v
-      var vArr = E.vec(top, E.ACC, 5, { head: 16 });
-      var pDot = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, top), E.ACC, E.S1);
-      var vLab = E.halo(E.txt(top, 0, 0, 'v', 26, E.ACC, 'start', 900));
+      var vArr = E.vec(top, E.VEL, 5, { head: 16 });
+      var pDot = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, top), E.VEL, E.S1);
+      var vLab = E.halo(E.txt(top, 0, 0, 'v', 26, E.VEL, 'start', 900));
       // 验算：肘上的两支箭头
-      var partArr = E.vec(top, E.VIOLET, 4.5, { head: 15, dash: '7 5' });
-      var vCopy = E.vec(top, E.ACC, 4.5, { head: 15 });
-      var partLab = E.halo(E.txt(top, 0, 0, '(−4, 2)', 20, E.VIOLET, 'middle', 900));
-      var vCopyLab = E.halo(E.txt(top, 0, 0, '(4, −2)', 20, E.ACC, 'start', 900));
+      var partArr = E.vec(top, E.OMEGA, 4.5, { head: 15, dash: '7 5' });
+      var vCopy = E.vec(top, E.VEL, 4.5, { head: 15 });
+      var partLab = E.halo(E.txt(top, 0, 0, '(−4, 2)', 20, E.OMEGA, 'middle', 900));
+      var vCopyLab = E.halo(E.txt(top, 0, 0, '(4, −2)', 20, E.VEL, 'start', 900));
 
       /* ══ 右栏 ══ */
       var R = E.el('g', {}, s);
@@ -109,47 +109,47 @@
       }
       // 句 1、2
       var g1 = E.el('g', {}, R);
-      var k1 = line(g1, 60, [['已知：', E.INK2], ['角速度 ω', E.VIOLET, 900]]);
+      var k1 = line(g1, 60, [['已知：', E.INK2], ['角速度 ω', E.OMEGA, 900]]);
       var k1c = E.check(k1.g, RX + 250, 42, 22, E.GOOD, 4);
-      var k2 = line(g1, 104, [['还缺：', E.INK2], ['随便一个点的速度', E.ACC, 900]]);
+      var k2 = line(g1, 104, [['还缺：', E.INK2], ['随便一个点的速度', E.VEL, 900]]);
       var k3 = line(g1, 148, [['→ 每一点的速度都能算出来', E.INK, 900]]);
       var k4 = line(g1, 210, [['这个点：', E.INK2], ['原点（肩关节）', E.HI, 900]]);
-      var k5 = line(g1, 254, [['可肩关节', E.INK], ['不在', E.BAD, 900], ['小臂上……', E.INK]]);
+      var k5 = line(g1, 254, [['可肩关节', E.INK], ['不在', E.ERR, 900], ['小臂上……', E.INK]]);
       var k6 = line(g1, 298, [['怎么办？', E.INK, 900]]);
       // 句 3
       var g2 = E.el('g', {}, R);
-      var k7 = line(g2, 60, [['小臂 → 很大的', E.INK], ['透明板', E.VIOLET, 900]]);
+      var k7 = line(g2, 60, [['小臂 → 很大的', E.INK], ['透明板', E.BODY, 900]]);
       var k8 = line(g2, 104, [['跟着小臂一起转', E.INK2]]);
-      var k9 = line(g2, 160, [['v', E.ACC, 900], ['：板上此刻在原点', E.INK, 900]]);
+      var k9 = line(g2, 160, [['v', E.VEL, 900], ['：板上此刻在原点', E.INK, 900]]);
       var k9b = line(g2, 200, [['　那一点的速度', E.INK, 900]]);
       // 句 4–6：算式
       var g3 = E.el('g', {}, R);
-      var c0 = line(g3, 50, [['算 ', E.INK2], ['v', E.ACC, 900], ['：', E.INK2]], 24);
+      var c0 = line(g3, 50, [['算 ', E.INK2], ['v', E.VEL, 900], ['：', E.INK2]], 24);
       var c1 = line(g3, 96, [['肘：', E.INK2], ['(1, 2)', E.HI, 900]]);
       var c2 = line(g3, 140, [['肘 → 原点：', E.INK2], ['(−1, ', E.INK, 900], ['−2)', E.INK, 900]]);
-      var c3 = line(g3, 184, [['垂直：', E.INK2], ['逆时针转 90°', E.VIOLET, 900]]);
+      var c3 = line(g3, 184, [['垂直：', E.INK2], ['逆时针转 90°', E.OMEGA, 900]]);
       var c4 = line(g3, 222, [['（第 3 集：', E.MUT], ['(3, 2)', E.MUT], [' → ', E.MUT], ['(−2, 3)', E.MUT], ['）', E.MUT]], 20);
       var c5 = line(g3, 266, [['(−1, −2)', E.INK, 900], [' → ', E.INK2], ['(2, ', E.INK, 900], ['−1)', E.INK, 900]]);
-      var c6 = line(g3, 316, [['× 2：', E.VIOLET, 900], ['v', E.ACC, 900], [' = ', E.INK], ['(4, ', E.ACC, 900], ['−2)', E.ACC, 900]], 26);
+      var c6 = line(g3, 316, [['× 2：', E.OMEGA, 900], ['v', E.VEL, 900], [' = ', E.INK], ['(4, ', E.VEL, 900], ['−2)', E.VEL, 900]], 26);
       // 句 7：六维列向量
       var g4 = E.el('g', {}, R), CX = RX + 200, CY = 226;
-      var colv = E.colvec(g4, CX, CY, [0, 0, 2, 4, -2, 0], { size: 28, dy: 36, colors: [E.VIOLET, E.VIOLET, E.VIOLET, E.ACC, E.ACC, E.ACC], w: 70 });
-      var wTag = E.txt(g4, CX + 56, CY - 50, 'ω', 28, E.VIOLET, 'start', 900), vTag = E.txt(g4, CX + 56, CY + 66, 'v', 28, E.ACC, 'start', 900);
-      var wTag2 = E.txt(g4, CX + 86, CY - 50, '角速度', 20, E.VIOLET, 'start', 700), vTag2 = E.txt(g4, CX + 82, CY + 66, '线速度', 20, E.ACC, 'start', 700);
+      var colv = E.colvec(g4, CX, CY, [0, 0, 2, 4, -2, 0], { size: 28, dy: 36, colors: [E.OMEGA, E.OMEGA, E.OMEGA, E.VEL, E.VEL, E.VEL], w: 70 });
+      var wTag = E.txt(g4, CX + 56, CY - 50, 'ω', 28, E.OMEGA, 'start', 900), vTag = E.txt(g4, CX + 56, CY + 66, 'v', 28, E.VEL, 'start', 900);
+      var wTag2 = E.txt(g4, CX + 86, CY - 50, '角速度', 20, E.OMEGA, 'start', 700), vTag2 = E.txt(g4, CX + 82, CY + 66, '线速度', 20, E.VEL, 'start', 700);
       var vName = E.txt(g4, CX - 56, CY + 10, '运动旋量 =', 26, E.HI, 'end', 900);
       // 句 8、9：验算
       var g5 = E.el('g', {}, R);
       var e0 = line(g5, 50, [['验算：', E.INK2]], 24);
-      var e1 = line(g5, 96, [['某点的速度 = ', E.INK, 900], ['v', E.ACC, 900], [' + 绕原点转的那一份', E.INK, 900]], 22);
-      var e2 = line(g5, 134, [['那一份：位置转 90°，再乘 ω', E.VIOLET, 700]], 20);
-      var e3 = line(g5, 184, [['肘 ', E.INK2], ['(1, 2)', E.HI, 900], [' → ', E.INK2], ['(−2, 1)', E.INK, 900], [' → ', E.INK2], ['(−4, 2)', E.VIOLET, 900]]);
-      var e4 = line(g5, 236, [['(−4, 2)', E.VIOLET, 900], [' + ', E.INK], ['(4, −2)', E.ACC, 900], [' = ', E.INK], ['(0, 0)', E.GOOD, 900]], 24);
+      var e1 = line(g5, 96, [['某点的速度 = ', E.INK, 900], ['v', E.VEL, 900], [' + 绕原点转的那一份', E.INK, 900]], 20);   // 20 号：空格照排（white-space: pre）以后，22 号会超出右边
+      var e2 = line(g5, 134, [['那一份：位置转 90°，再乘 ω', E.OMEGA, 700]], 20);
+      var e3 = line(g5, 184, [['肘 ', E.INK2], ['(1, 2)', E.HI, 900], [' → ', E.INK2], ['(−2, 1)', E.INK, 900], [' → ', E.INK2], ['(−4, 2)', E.OMEGA, 900]]);
+      var e4 = line(g5, 236, [['(−4, 2)', E.OMEGA, 900], [' + ', E.INK], ['(4, −2)', E.VEL, 900], [' = ', E.INK], ['(0, 0)', E.GOOD, 900]], 24);
       var e4c = E.check(e4.g, RX + 300, 216, 22, E.GOOD, 4);
       // 句 10
       var g6 = E.el('g', {}, R);
-      var n1 = line(g6, 300, [['v', E.ACC, 900], [' 不是肩关节的速度', E.BAD, 900]]);
-      var n1x = E.cross(n1.g, RX + 250, 292, 10, E.BAD, 4);
-      var n2 = line(g6, 346, [['v', E.ACC, 900], [' 是板上此刻在原点那一点的', E.GOOD, 900]], 22);
+      var n1 = line(g6, 300, [['v', E.VEL, 900], [' 不是肩关节的速度', E.ERR, 900]]);
+      var n1x = E.cross(n1.g, RX + 250, 292, 10, E.ERR, 4);
+      var n2 = line(g6, 346, [['v', E.VEL, 900], [' 是板上此刻在原点那一点的', E.GOOD, 900]], 22);
       var n2b = line(g6, 384, [['　速度', E.GOOD, 900]], 22);
       var n2c = E.check(n2b.g, RX + 92, 368, 20, E.GOOD, 4);
 
@@ -165,14 +165,14 @@
           /* ── 小臂（连同透明板）从 −20° 转到水平 ── */
           var phi = PHI0 * (1 - f(st, T.rot[0], T.rot[1] - T.rot[0]));
           arm.bend(phi);
-          V.clearTint(); V.tint(RIGID, E.VIOLET, 0.45);
+          V.clearTint(); V.tint(RIGID, E.BODY, 0.4);
           var c = Math.cos(phi), sn = Math.sin(phi);
           function plateP(x, y) { return P(1 + c * x - sn * y, 2 + sn * x + c * y); }   // 板上一点（相对肘、小臂水平时的坐标）→ 画面
           plateFill.setAttribute('d', E.poly([plateP(PLATE[0], PLATE[1]), plateP(PLATE[2], PLATE[1]), plateP(PLATE[2], PLATE[3]), plateP(PLATE[0], PLATE[3])], true));
           plateLines.forEach(function (l) { l.el.setAttribute('d', E.poly([plateP(l.a[0], l.a[1]), plateP(l.b[0], l.b[1])])); });
           var pl0 = plateP(PLATE[2] - 1.15, PLATE[3] - 0.55); plateLab.setAttribute('x', pl0[0].toFixed(1)); plateLab.setAttribute('y', pl0[1].toFixed(1));
           var plb = b(st, T.plateHi, 1);
-          plateFill.style.strokeWidth = 2.5 + 2.5 * plb; E.glow(plateFill, E.VIOLET, plb > 0.05);
+          plateFill.style.strokeWidth = 2.5 + 2.5 * plb; E.glow(plateFill, E.BODY, plb > 0.05);
           E.op(plate, f(st, T.plate, 0.6));
 
           /* ── 原点、肘 ── */
@@ -198,7 +198,7 @@
           vArr.set(O[0], O[1], tip[0], tip[1]); E.op(vArr.g, vOn > 0 ? 1 : 0);
           var here = Math.max(b(st, T.cover, 0.8), b(st, T.here, 0.9));
           pDot.setAttribute('cx', O[0]); pDot.setAttribute('cy', O[1]); pDot.setAttribute('r', (7 + 4 * here).toFixed(2));
-          E.op(pDot, f(st, T.cover, 0.3)); E.glow(pDot, E.ACC, here > 0.05);
+          E.op(pDot, f(st, T.cover, 0.3)); E.glow(pDot, E.VEL, here > 0.05);
           var vt = P(KV * W * 2, -KV * W);
           vLab.textContent = st >= T.v[1] ? 'v = (4, −2)' : 'v';
           vLab.setAttribute('x', (vt[0] + 10).toFixed(1)); vLab.setAttribute('y', (vt[1] + 22).toFixed(1));
@@ -235,7 +235,7 @@
           E.op(c6.g, fr(st, T.times)); E.op(c6.parts[3], fr(st, T.v[0])); E.op(c6.parts[4], fr(st, T.v[1]));
           // 六维列向量
           E.op(g4, f(st, T.clear6 + 0.2, 0.4) * (1 - f(st, T.clear7, 0.4)));
-          colv.rangeBox(0, 2, E.VIOLET, f(st, T.omega, 0.3)); colv.rangeBox(3, 5, E.ACC, f(st, T.vv, 0.3));
+          colv.rangeBox(0, 2, E.OMEGA, f(st, T.omega, 0.3)); colv.rangeBox(3, 5, E.VEL, f(st, T.vv, 0.3));
           E.op(wTag, fr(st, T.omega)); E.op(wTag2, fr(st, T.omega)); E.op(vTag, fr(st, T.vv)); E.op(vTag2, fr(st, T.vv));
           E.op(vName, fr(st, T.name));
           colv.cells.forEach(function (cl, i) { E.op(cl, f(st, T.nums[i], 0.3)); });   // 只淡入、不放大：上下两个框紧挨着数

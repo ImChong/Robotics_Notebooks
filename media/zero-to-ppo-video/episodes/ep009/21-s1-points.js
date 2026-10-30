@@ -52,30 +52,30 @@
       // 肘：黄点 + 「肘」+ 逆时针的小弯箭头（画在肘的左上方，那里没有胳膊）
       var eDot = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, top), E.HI, E.S1);
       var eLab = E.halo(E.txt(top, 0, 0, '肘', 22, E.HI, 'end', 900));
-      var spin = E.arcArrow(top, 0, 0, 30, E.VIOLET, 3.5, { head: 12 });
+      var spin = E.arcArrow(top, 0, 0, 30, E.OMEGA, 3.5, { head: 12 });
       // 三个点：A 靠近肘、B 手腕、C 手；虚线连到肘、直角、速度箭头
       var links = [0, 1, 2].map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 2, 'stroke-dasharray': '5 5' }, top), null, E.HI); });
       var corners = [0, 1, 2].map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2 }, top), null, E.INK); });
-      var vels = [0, 1, 2].map(function () { return E.vec(top, E.ACC, 4.5, { head: 15 }); });
-      var dots = [0, 1, 2].map(function () { return K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, top), E.ACC, E.S1); });
+      var vels = [0, 1, 2].map(function () { return E.vec(top, E.VEL, 4.5, { head: 15 }); });
+      var dots = [0, 1, 2].map(function () { return K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, top), E.VEL, E.S1); });
 
       /* ══ 右栏 ══ */
       var R = E.el('g', {}, s);
       var rigid = E.el('g', {}, R);
-      K.paint(E.el('rect', { x: RX, y: 22, width: 340, height: 82, rx: 14, 'stroke-width': 2.5 }, rigid), E.tint(E.VIOLET, 10, 'var(--demo-surface)'), E.VIOLET);
-      E.txt(rigid, RX + 22, 56, '刚体', 26, E.VIOLET, 'start', 900);
+      K.paint(E.el('rect', { x: RX, y: 22, width: 340, height: 82, rx: 14, 'stroke-width': 2.5 }, rigid), E.tint(E.BODY, 10, 'var(--demo-surface)'), E.BODY);
+      E.txt(rigid, RX + 22, 56, '刚体', 26, E.BODY, 'start', 900);
       var noDef = E.txt(rigid, RX + 22, 90, '怎么动都不变形', 22, E.INK, 'start', 700);
       // 观察（句 3、4）
       var obs = E.el('g', {}, R);
       var obsRows = [['靠近肘：', '慢'], ['越往外：', '越快']].map(function (d, i) {
         var g = E.el('g', {}, obs), y = 160 + 44 * i;
         E.txt(g, RX + 10, y, d[0], 24, E.INK2, 'start', 700);
-        E.txt(g, RX + 10 + 24 * d[0].length, y, d[1], 24, E.ACC, 'start', 900);
+        E.txt(g, RX + 10 + 24 * d[0].length, y, d[1], 24, E.VEL, 'start', 900);
         return g;
       });
       var one = E.el('g', {}, obs);
       E.txt(one, RX + 10, 268, '刚体的速度 = 一支箭头？', 24, E.INK, 'start', 900);
-      var oneX = E.cross(one, RX + 312, 260, 11, E.BAD, 4.5);
+      var oneX = E.cross(one, RX + 312, 260, 11, E.ERR, 4.5);
       // 规律（句 5、6）
       var rule = E.el('g', {}, R);
       E.txt(rule, RX + 10, 150, '规律', 24, E.HI, 'start', 900);
@@ -99,7 +99,7 @@
           arm.bend(phi);
           V.clearTint();
           var tf = f(st, T.forearm, 0.5);
-          if (tf > 0) V.tint(RIGID, E.VIOLET, 0.45 * tf);
+          if (tf > 0) V.tint(RIGID, E.BODY, 0.4 * tf);
 
           var e = arm.elbow(), w = arm.wrist();
           var dir = [(w[0] - e[0]), (w[1] - e[1])], dl = Math.hypot(dir[0], dir[1]);
@@ -117,7 +117,7 @@
           spin.g.setAttribute('transform', 'translate(' + e[0].toFixed(1) + ' ' + e[1].toFixed(1) + ')');
           spin.set(115 * D, 205 * D);
           var sb = b(st, T.howFast, 0.8);
-          spin.arc.style.strokeWidth = 3.5 + 2 * sb; E.glow(spin.g, E.VIOLET, sb > 0.05);
+          spin.arc.style.strokeWidth = 3.5 + 2 * sb; E.glow(spin.g, E.OMEGA, sb > 0.05);
           E.op(spin.g, f(st, T.around, 0.4));
 
           /* ── 三个点、速度箭头、虚线、直角 ── */
@@ -129,7 +129,7 @@
             vels[i].set(p[0], p[1], p[0] + (tip[0] - p[0]) * on, p[1] + (tip[1] - p[1]) * on);
             E.op(vels[i].g, on > 0 ? 1 : 0);
             var hi = Math.max(i === 0 ? b(st, T.near, 0.8) : 0, i > 0 ? b(st, T.out + 0.25 * (i - 1), 0.8) : 0, b(st, T.longer[i], 0.6));
-            vels[i].line.style.strokeWidth = 4.5 + 3 * hi; E.glow(vels[i].g, E.ACC, hi > 0.05);
+            vels[i].line.style.strokeWidth = 4.5 + 3 * hi; E.glow(vels[i].g, E.VEL, hi > 0.05);
             dots[i].setAttribute('cx', p[0].toFixed(1)); dots[i].setAttribute('cy', p[1].toFixed(1));
             dots[i].setAttribute('r', (6.5 + 3 * hi).toFixed(2));
             E.op(dots[i], f(st, T.dots + 0.15 * i, 0.3));

@@ -9,12 +9,16 @@
   var C = K.xColors;
   var E = window.EP009 = { K: K, scenes: [] };
 
-  /* 颜色：角速度 ω / 转动 violet（同 003、005 的变换色）；点的速度、线速度 v accent（蓝，同 003 的向量）；
-     转轴 / 肘（转动中心）亮黄 --hi；螺旋轴 warn（琥珀）；螺距、沿轴移动 good（绿）；说错的、不合格 bad。
-     三维坐标轴沿用 005：x 绿、y 琥珀、z 蓝。KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
-  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
+  /* 颜色按发布清单「画面配色（005 起）」：坐标轴 x 红、y 绿、z 蓝；平面里的转动是绕 z 轴转，小弯箭头、角速度 ω、⊙ 都用蓝（E.OMEGA）；
+     错误、不合格用橙（E.ERR，红色留给 x 轴），打勾这类「对」用绿。本集另定：点的速度、线速度 v 紫（E.VEL，同 007 的位置 p）；
+     刚体（小臂、透明板、方块）淡黄（E.BODY，系列色）；转轴 / 肘（转动中心）亮黄；螺旋轴琥珀；螺距、沿轴移动绿。
+     KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
+  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
-  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a',
+    x: '#e06c75', y: '#4ec9a4', z: '#569cd6', err: '#ff7b3a' };
+  E.X = E.HEX.x; E.Y = E.HEX.y; E.Z = E.HEX.z; E.ERR = E.HEX.err;
+  E.OMEGA = E.ACC; E.VEL = E.VIOLET; E.BODY = E.HI;
 
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }
@@ -77,7 +81,7 @@
   function cross(parent, cx, cy, r, color, w) {
     var p = el('path', { d: 'M ' + (cx - r) + ' ' + (cy - r) + ' L ' + (cx + r) + ' ' + (cy + r) + ' M ' + (cx + r) + ' ' + (cy - r) + ' L ' + (cx - r) + ' ' + (cy + r),
       fill: 'none', 'stroke-width': w || 3, 'stroke-linecap': 'round' }, parent);
-    K.paint(p, null, color || E.BAD);
+    K.paint(p, null, color || E.ERR);
     return p;
   }
   // 圆角胶囊标签：rect + 文字；返回 { g, rect, text }
@@ -243,7 +247,7 @@
       box: [cx - bx, cy - h / 2, cx + bx, cy + h / 2],
       set: function (ys) { ys.forEach(function (v, k) { cells[k].textContent = E.num(v); }); },
       cellBox: function (k, color, p) {
-        var b = boxes[k], q = pos(k), bw = w - 10, bh = Math.min(size * 1.1, dy - 4);
+        var b = boxes[k], q = pos(k), bw = w - 22, bh = Math.min(size * 1.1, dy - 4);
         b.setAttribute('x', (q[0] - bw / 2).toFixed(1)); b.setAttribute('width', bw.toFixed(1));
         b.setAttribute('y', (q[1] - bh / 2).toFixed(1)); b.setAttribute('height', bh.toFixed(1));
         K.paint(b, tint(color, 20, 'var(--demo-surface)'), color); op(b, clamp(p, 0, 1));
@@ -252,7 +256,7 @@
       rangeBox: function (k0, k1, color, p) {
         var key = k0 + '-' + k1, r = ranges[key];
         if (!r) { r = ranges[key] = el('rect', { rx: 10, 'stroke-width': 2.5 }, under); }
-        var a = pos(k0), b = pos(k1), bw = w - 6;
+        var a = pos(k0), b = pos(k1), bw = w - 18;   // 框离中括号各留 9 px（同 006：高亮框和括号隔开）
         r.setAttribute('x', (cx - bw / 2).toFixed(1)); r.setAttribute('width', bw.toFixed(1));
         r.setAttribute('y', (a[1] - size * 0.62).toFixed(1)); r.setAttribute('height', (b[1] - a[1] + size * 1.24).toFixed(1));
         K.paint(r, tint(color, 14, 'var(--demo-surface)'), color); op(r, clamp(p, 0, 1));
@@ -278,14 +282,14 @@
   E.col3 = function (M, j) { return [M[0][j], M[1][j], M[2][j]]; };
   E.cross3 = function (a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; };
 
-  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 绿、y 琥珀、z 蓝）。set(M)：M 是 3×3（列 = 三根小箭头的方向）；
+  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 红、y 绿、z 蓝）。set(M)：M 是 3×3（列 = 三根小箭头的方向）；
      opts.box：画三根小箭头围成的小方块（淡虚线） ── */
   E.gizmo = function (parent, cx, cy, L, proj, opts) {
     var o = opts || {};
     var g = el('g', {}, parent), box = el('g', {}, g);
     var edges = [];
     if (o.box) for (var k = 0; k < 12; k++) edges.push(K.paint(el('line', { 'stroke-width': 1.6, 'stroke-dasharray': '5 5' }, box), null, E.MUT));
-    var cols = [E.GOOD, E.WARN, E.ACC];
+    var cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { return E.vec(g, c, o.w || 4.5, { head: 14 }); });
     var labs = ['x', 'y', 'z'].map(function (s, i) { return halo(txt(g, 0, 0, s, 22, cols[i], 'middle', 700)); });
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }

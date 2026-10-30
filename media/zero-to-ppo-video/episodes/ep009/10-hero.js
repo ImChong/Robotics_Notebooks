@@ -1,7 +1,7 @@
 // 片头主图（800×420）：三句旁白各一段——
 // ① 「第二季」顶上出小牌「第二季 · 机器人学骨架」；「第七集」「位姿」左边斜着看的 UR5 手上长出坐标架，「朝向」坐标架鼓一下，
 //    「位置」底座到手画一条虚线，「四乘四的矩阵」右边弹出位姿卡 [R p; 0 1]；
-// ② 9.8 起卡片收起：「动起来」UR5 的肘开始转，小臂往上抬，「刚体在动」小臂上色，「速度」小臂上三个点各长出速度箭头（大小、方向跟着算），
+// ② 10.1 起卡片收起：「动起来」UR5 的肘开始转，小臂往上抬，「刚体」小臂上色，「速度」小臂上三个点各长出速度箭头（大小、方向跟着算），
 //    「一个量」右边写「速度：一个量？」；
 // ③ 「运动旋量」右边换成六维列向量卡：「角速度三个数」上三格框紫，「线速度三个数」下三格框蓝，「六个数」写「6 个数」；
 //    「绕着一根轴」左边换成三维的螺旋运动小图：竖直的螺旋轴（琥珀虚线）、绕它走螺旋线的小方块，「边转边移」写出四个字。
@@ -10,9 +10,9 @@
   var E = window.EP009, K = E.K, H = E.HEX;
   var D = Math.PI / 180;
   var T = {
-    season: 2.0, ep7: 4.16, pose: 5.24, orient: 5.79, pos: 6.42, mat: 7.79, out1: 9.8,
-    move: 10.65, body: 12.77, vel: 13.94, one: 14.95,
-    twist: 17.79, w3: 18.81, v3: 20.12, six: 21.37, any: 22.78, axis: 25.03, screw: 26.04
+    season: 2.02, ep7: 4.43, pose: 5.51, orient: 6.06, pos: 6.69, mat: 8.07, out1: 10.1,
+    move: 10.93, body: 12.77, vel: 14.82, one: 15.81,
+    twist: 18.61, w3: 19.63, v3: 20.94, six: 22.19, any: 23.6, axis: 25.85, screw: 26.86
   };
 
   E.hero = function (K) {
@@ -28,30 +28,31 @@
     V.joints(POSE0);
     var RIGID = ['forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'];
     var over = E.el('g', {}, armG);
-    var posLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '7 6' }, over), null, E.ACC);
+    var posLine = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '7 6' }, over), null, E.VEL);
     var baseDot = K.paint(E.el('circle', { r: 6 }, over), E.HI);
-    var toolAx = [E.GOOD, E.WARN, E.ACC].map(function (c) { return E.vec(over, c, 4.5, { head: 13 }); });
-    var vels = [0, 1, 2].map(function () { return E.vec(over, E.ACC, 4.5, { head: 14 }); });
-    var vdots = [0, 1, 2].map(function () { return K.paint(E.el('circle', { r: 6, 'stroke-width': 2.5 }, over), E.ACC, E.S1); });
+    var toolAx = [E.X, E.Y, E.Z].map(function (c) { return E.vec(over, c, 4.5, { head: 13 }); });
+    var vels = [0, 1, 2].map(function () { return E.vec(over, E.VEL, 4.5, { head: 14 }); });
+    var vdots = [0, 1, 2].map(function () { return K.paint(E.el('circle', { r: 6, 'stroke-width': 2.5 }, over), E.VEL, E.S1); });
 
     /* ── 左（③）：螺旋运动小图 ── */
     var scr = E.el('g', {}, s), proj = E.view3(28, 18), SL = 120, SX = 236, SY = 392, Rr = 0.8, HP = 0.2;
     function S3(v) { var q = proj(v); return [SX + SL * q[0], SY - SL * q[1]]; }
     var a0 = S3([0, 0, -0.15]), a1 = S3([0, 0, 2.6]);
+    // 按远近遮挡：远的半圈螺旋线画在轴后面，近的在前面；方块每帧按它和轴谁近放到轴前或轴后
+    var hBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 6' }, scr), null, E.VEL);
     var axis = K.paint(E.el('path', { d: 'M ' + a0[0].toFixed(1) + ' ' + a0[1].toFixed(1) + ' L ' + a1[0].toFixed(1) + ' ' + a1[1].toFixed(1), fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '9 7' }, scr), null, E.WARN);
-    var hBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 6' }, scr), null, E.ACC);
-    var hFront = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.2 }, scr), null, E.ACC);
+    var hFront = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.2 }, scr), null, E.VEL);
     hBack.style.opacity = 0.55;
-    var block = K.paint(E.el('path', { 'stroke-width': 2.5 }, scr), E.tint(E.VIOLET, 40, 'var(--demo-surface)'), E.VIOLET);
+    var block = K.paint(E.el('path', { 'stroke-width': 2.5 }, scr), E.tint(E.BODY, 34, 'var(--demo-surface)'), E.BODY);
     var axLab = E.halo(E.txt(scr, a1[0] + 12, a1[1] + 6, '一根轴', 24, E.WARN, 'start', 900));
     var scrLab = E.halo(E.txt(scr, 122, 402, '边转边移', 28, E.GOOD, 'end', 900));   // 写在左下角：螺旋线贴地那一段在轴的右边，方块走到这一带时已经升高了
 
     /* ── 右：位姿卡 / 问句 / 六维列向量 ── */
     var RX = 440;
     var card = E.el('g', {}, s);
-    K.paint(E.el('rect', { x: RX, y: 70, width: 330, height: 280, rx: 18, 'stroke-width': 2.5 }, card), E.tint(E.VIOLET, 8, 'var(--demo-surface)'), E.BORDER);
+    K.paint(E.el('rect', { x: RX, y: 70, width: 330, height: 280, rx: 18, 'stroke-width': 2.5 }, card), E.tint(E.VEL, 8, 'var(--demo-surface)'), E.BORDER);
     E.txt(card, RX + 165, 112, '位姿 = 朝向 + 位置', 26, E.INK, 'middle', 900);
-    E.tex(card, RX + 165, 230, '\\begin{bmatrix}\\textcolor{' + H.violet + '}{R} & \\textcolor{' + H.acc + '}{p}\\\\ 0 & 1\\end{bmatrix}', 44, E.INK, 'middle', { w: 240, h: 130 });
+    E.tex(card, RX + 165, 230, '\\begin{bmatrix}R & \\textcolor{' + H.violet + '}{p}\\\\ 0 & 1\\end{bmatrix}', 44, E.INK, 'middle', { w: 240, h: 130 });
     E.txt(card, RX + 165, 320, '4 × 4 矩阵（第 7 集）', 22, E.INK2, 'middle', 700);
     var ask = E.el('g', {}, s);
     E.txt(ask, RX + 165, 170, '速度：', 30, E.INK, 'middle', 900);
@@ -59,9 +60,9 @@
     var tw = E.el('g', {}, s), CX = RX + 150, CY = 232;
     K.paint(E.el('rect', { x: RX, y: 52, width: 330, height: 360, rx: 18, 'stroke-width': 2.5 }, tw), E.tint(E.HI, 6, 'var(--demo-surface)'), E.HI);
     E.txt(tw, RX + 165, 92, '运动旋量', 30, E.HI, 'middle', 900);
-    var col = E.colvec(tw, CX, CY, ['ωx', 'ωy', 'ωz', 'vx', 'vy', 'vz'], { size: 30, dy: 42, w: 92, colors: [E.VIOLET, E.VIOLET, E.VIOLET, E.ACC, E.ACC, E.ACC] });
+    var col = E.colvec(tw, CX, CY, ['ωx', 'ωy', 'ωz', 'vx', 'vy', 'vz'], { size: 30, dy: 42, w: 92, colors: [E.OMEGA, E.OMEGA, E.OMEGA, E.VEL, E.VEL, E.VEL] });
     col.cells.forEach(function (c) { c.style.fontFamily = 'KaTeX_Math, serif'; c.style.fontStyle = 'italic'; });
-    var wLab = E.txt(tw, CX + 58, CY - 50, '角速度', 24, E.VIOLET, 'start', 900), vLab = E.txt(tw, CX + 58, CY + 72, '线速度', 24, E.ACC, 'start', 900);
+    var wLab = E.txt(tw, CX + 58, CY - 50, '角速度', 24, E.OMEGA, 'start', 900), vLab = E.txt(tw, CX + 58, CY + 72, '线速度', 24, E.VEL, 'start', 900);
     var sixLab = E.tag(tw, RX + 210, CY - 6, 100, 36, '6 个数', E.HI, { size: 22, ink: E.HI, weight: 900, rx: 10 });
 
     // 小臂上一点（相对肘、腕的比例 k）在世界里的位置
@@ -82,7 +83,7 @@
         V.joints(pose);
         V.clearTint();
         var bt = f(t, T.body, 0.5);
-        if (bt > 0) V.tint(RIGID, E.VIOLET, 0.45 * bt);
+        if (bt > 0) V.tint(RIGID, E.BODY, 0.4 * bt);
         E.op(armG, f(t, 0, 0.4) * (1 - f(t, T.any, 0.6)));
         // 手上的坐标架、底座到手的虚线
         var tl = V.robot.links.tool0 || V.robot.frames.tool0;
@@ -119,7 +120,7 @@
         E.pop(card, RX + 165, 210, f(t, T.mat, 0.35) * (1 - f(t, T.out1, 0.35)), 0.88);
         E.pop(ask, RX + 165, 205, f(t, T.one, 0.35) * (1 - f(t, T.twist - 0.3, 0.3)), 0.85);
         E.pop(tw, RX + 165, 232, f(t, T.twist, 0.4), 0.9);
-        col.rangeBox(0, 2, E.VIOLET, f(t, T.w3, 0.3)); col.rangeBox(3, 5, E.ACC, f(t, T.v3, 0.3));
+        col.rangeBox(0, 2, E.OMEGA, f(t, T.w3, 0.3)); col.rangeBox(3, 5, E.VEL, f(t, T.v3, 0.3));
         col.cells.forEach(function (c, i) { E.op(c, f(t, i < 3 ? T.w3 : T.v3, 0.3)); });
         E.op(wLab, f(t, T.w3, 0.3)); E.op(vLab, f(t, T.v3, 0.3));
         E.pop(sixLab.g, RX + 260, CY + 12, f(t, T.six + 0.3, 0.3), 0.8);
@@ -149,6 +150,8 @@
           if (proj.depth(mid) < 0) d += ' M ' + [topF[k], topF[j], botF[j], botF[k]].map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L ') + ' Z';
         }
         block.setAttribute('d', d);
+        if (proj.depth(c) > proj.depth([0, 0, c[2]])) { if (block.nextSibling !== axis) scr.insertBefore(block, axis); }
+        else if (block.previousSibling !== hFront) scr.insertBefore(block, hFront.nextSibling);
         var ab = b(t, T.axis, 0.9);
         axis.style.strokeWidth = 3.5 + 2.5 * ab; E.glow(axis, E.WARN, ab > 0.05);
         E.op(axLab, f(t, T.axis, 0.3)); E.op(scrLab, f(t, T.screw, 0.3));

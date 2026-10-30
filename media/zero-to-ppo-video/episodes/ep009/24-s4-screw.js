@@ -14,19 +14,19 @@
   var E = window.EP009, K = E.K, H = E.HEX;
   var D = Math.PI / 180, RX = E.ARM.RX;
   var T = {
-    plane: 0.63, plane2: 3.66, to3: 4.35, turn: 6.27, rise: 7.03, end3: 9.0,
-    screw: 9.3, screwTurn: [10.69, 12.65], more: [13.0, 16.4], head: 13.42, helix: 15.14, out4: 16.7,
-    thm: 17.74, block2: 17.4, any: 18.4, rot: 21.74, mov: 22.11, name: 23.93, stop: 25.5,
-    dirS: 28.58, pointQ: 29.66, pitch: 30.73, perRad: 32.05, far: 33.26,
-    h0: 35.57, h0t: 36.37, hInf: 37.6, hInfT: 39.34,
-    form: 41.07, two: 43.53, part1: 44.51, origin: 45.04, plate: 47.51, part2: 48.78, hPulse: 49.52, times: 50.39
+    plane: 0.63, plane2: 4.22, to3: 4.91, turn: 6.83, rise: 7.59, end3: 9.58,
+    screw: 9.88, screwTurn: [11.27, 13.23], more: [13.58, 16.98], head: 14, helix: 15.72, out4: 17.28,
+    thm: 18.32, block2: 17.98, any: 18.98, rot: 22.32, mov: 22.69, name: 24.51, stop: 26.08,
+    dirS: 29.16, pointQ: 30.24, pitch: 31.31, perRad: 32.63, far: 33.84,
+    h0: 36.15, h0t: 36.95, hInf: 38.18, hInfT: 39.92,
+    form: 41.65, two: 44.11, part1: 45.09, origin: 45.62, plate: 48.09, part2: 49.36, hPulse: 50.1, times: 50.97
   };
-  var END = 52.59;
+  var END = 53.17;
   // 三维场景：世界原点 O 在画面 (WX, WY)；一格 L px；转轴竖直，穿过 q；方块中心离轴 R，每转 1 弧度往上走 h
   var WX = 78, WY = 372, L = 118, Qw = [1.15, 0.55, 0], R = 0.85, HP = 0.22, A0 = -40 * D, CUBE = 0.27;
   var proj = E.view3(28, 18);
   function S3(v) { var q = proj(v); return [WX + L * q[0], WY - L * q[1]]; }
-  // 方块角度随时间：句 1 6.27 起转到 9.0（2.9 弧度）；句 3 17.4 起接着转到 25.5（再 5.7 弧度）；之后停住
+  // 方块角度随时间：句 1「边转」起转到句 1 结束（2.9 弧度）；句 3 开头起接着转到「螺旋轴」念完（再 5.7 弧度）；之后停住
   function theta(st) {
     var a = 2.9 * E.clamp((st - T.turn) / (T.end3 - T.turn), 0, 1);
     return a + 5.7 * E.clamp((st - T.block2) / (T.stop - T.block2), 0, 1);
@@ -38,44 +38,47 @@
     dur: END,
     cues: [
       { at: 0, s: '平面里刚体绕一个点转；三维里还能边转、边沿着转轴移动' },
-      { at: 9.12, s: '像拧螺丝：每转一圈往里走一小段，上面的点走出螺旋线' },
-      { at: 16.8, s: '任何刚体的速度 = 绕某根轴边转边移：这根轴叫**螺旋轴**' },
-      { at: 25.58, s: '**螺旋轴**：方向、轴上一点、**螺距**（每转 1 弧度沿轴走多远）' },
-      { at: 34.92, s: '**螺距**是 0：只转不移；只移不转：**螺距**看成无穷大' },
-      { at: 40.97, s: '**v** 分两份：轴不过原点带出来的 + **角速度** × **螺距**' }
+      { at: 9.7, s: '像拧螺丝：每转一圈往里走一小段，上面的点走出螺旋线' },
+      { at: 17.38, s: '任何刚体的速度 = 绕某根轴边转边移：这根轴叫**螺旋轴**' },
+      { at: 26.16, s: '**螺旋轴**：方向、轴上一点、**螺距**（每转 1 弧度沿轴走多远）' },
+      { at: 35.5, s: '**螺距**是 0：只转不移；只移不转：**螺距**看成无穷大' },
+      { at: 41.55, s: '**v** 分两份：轴不过原点带出来的 + **角速度** × **螺距**' }
     ],
     build: function (K) {
       var s = K.sceneSvg('平面里刚体绕一个点转；三维里一个小方块绕竖直的转轴转，同时沿着轴往上走，走出螺旋线；就像拧螺丝，每转一圈往里走一小段；任何刚体的速度都能看成绕某根轴边转边移，这根轴叫螺旋轴，由方向、轴上一点和螺距（每转一弧度沿轴走多远）描述；螺距为零只转不移，只移不转时螺距看成无穷大；运动旋量的后三个数 v 分成两份：轴不过原点带出来的 −ω × q，和沿轴移动的 h ω');
 
       /* ══ ① 平面小图（俯视）：一块板绕黄点转 ══ */
       var flat = E.el('g', {}, s), FC = [215, 215];
-      var fPlate = K.paint(E.el('path', { 'stroke-width': 2.5 }, flat), E.tint(E.VIOLET, 24, 'var(--demo-surface)'), E.VIOLET);
-      var fTrail = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, flat), null, E.ACC);
-      var fCorner = K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, flat), E.ACC, E.S1);
+      var fPlate = K.paint(E.el('path', { 'stroke-width': 2.5 }, flat), E.tint(E.BODY, 24, 'var(--demo-surface)'), E.BODY);
+      var fTrail = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 6' }, flat), null, E.VEL);
+      var fCorner = K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, flat), E.VEL, E.S1);
       var fPivot = K.paint(E.el('circle', { cx: FC[0], cy: FC[1], r: 8, 'stroke-width': 2.5 }, flat), E.HI, E.S1);
-      var fSpin = E.arcArrow(flat, FC[0], FC[1], 34, E.VIOLET, 3.5, { head: 12 });
+      var fSpin = E.arcArrow(flat, FC[0], FC[1], 34, E.OMEGA, 3.5, { head: 12 });
 
       /* ══ ② 三维：转轴 + 方块 + 螺旋线 ══ */
       var solid = E.el('g', {}, s);
       var originG = E.el('g', {}, solid);                     // 句 6：世界原点 + 原点到 q 的虚线
-      var oAx = [[0.45, 0, 0], [0, 0.45, 0], [0, 0, 0.45]].map(function (v, i) { var a = E.vec(originG, [E.GOOD, E.WARN, E.ACC][i], 2.5, { head: 10 }), p0 = S3([0, 0, 0]), p1 = S3(v); a.set(p0[0], p0[1], p1[0], p1[1]); return a; });
+      var oAx = [[0.45, 0, 0], [0, 0.45, 0], [0, 0, 0.45]].map(function (v, i) { var a = E.vec(originG, [E.X, E.Y, E.Z][i], 2.5, { head: 10 }), p0 = S3([0, 0, 0]), p1 = S3(v); a.set(p0[0], p0[1], p1[0], p1[1]); return a; });
       var oDot = S3([0, 0, 0]);
       K.paint(E.el('circle', { cx: oDot[0], cy: oDot[1], r: 5 }, originG), E.HI);
       E.halo(E.txt(originG, oDot[0] - 8, oDot[1] + 34, '原点', 20, E.HI, 'middle', 900));
       var oq = S3(Qw);
       var oLine = K.paint(E.el('path', { d: 'M ' + oDot[0] + ' ' + oDot[1] + ' L ' + oq[0].toFixed(1) + ' ' + oq[1].toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, originG), null, E.HI);
       var axLo = S3([Qw[0], Qw[1], -0.3]), axHi = S3([Qw[0], Qw[1], 2.85]);
+      // 按远近遮挡（同 006 的万向节）：远的半圈螺旋线、远的半个小椭圆画在转轴后面，近的画在前面；方块每帧按它和转轴谁近挪到轴前或轴后
+      var trailBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 6' }, solid), null, E.VEL);
+      var tArcBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, solid), null, E.OMEGA);
       var axis = K.paint(E.el('path', { d: 'M ' + axLo[0].toFixed(1) + ' ' + axLo[1].toFixed(1) + ' L ' + axHi[0].toFixed(1) + ' ' + axHi[1].toFixed(1), fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '9 7' }, solid), null, E.WARN);
-      var trailBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 6' }, solid), null, E.ACC);
-      var trailFront = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, solid), null, E.ACC);
+      var trailFront = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, solid), null, E.VEL);
       trailBack.style.opacity = 0.55;
       var upArr = E.vec(solid, E.GOOD, 5, { head: 16 });     // 画在方块下面：方块转到前面时挡住它
       var cubeG = E.el('g', {}, solid);
       var faces = [0, 1, 2, 3, 4, 5].map(function () { return E.el('path', { 'stroke-width': 2, 'stroke-linejoin': 'round' }, cubeG); });
-      var cDot = K.paint(E.el('circle', { r: 5 }, solid), E.ACC);
+      var cDot = K.paint(E.el('circle', { r: 5 }, cubeG), E.VEL);
+      var frontSlot = E.el('g', {}, solid);                    // 方块在转轴前面时放在这里
       var turnArc = E.el('g', {}, solid);                      // 「边转」：转轴上方一圈带箭头的椭圆；「边移」：沿轴往上的箭头
-      var tArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, turnArc), null, E.VIOLET);
-      var tHead = K.paint(E.el('path', {}, turnArc), E.VIOLET);
+      var tArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, turnArc), null, E.OMEGA);   // 近的半圈
+      var tHead = K.paint(E.el('path', {}, turnArc), E.OMEGA);
       var nameLab = E.halo(E.txt(solid, axHi[0] - 12, axHi[1] + 6, '螺旋轴', 24, E.WARN, 'end', 900));   // 轴顶左边：方块最后停在轴的右上方
       // 句 4：方向 ŝ、轴上一点 q、螺距 h
       var sArr = E.vec(solid, E.WARN, 5.5, { head: 18 });
@@ -87,7 +90,7 @@
       var pArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 4.5 }, pitchG), null, E.GOOD);
       var hBar = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, pitchG), null, E.GOOD);
       var hGuide = K.paint(E.el('path', { fill: 'none', 'stroke-width': 1.8, 'stroke-dasharray': '4 4' }, pitchG), null, E.GOOD);
-      var hLab = E.halo(E.txt(pitchG, 0, 0, '螺距 h', 22, E.GOOD, 'start', 900));
+      var hLab = E.halo(E.txt(pitchG, 0, 0, '螺距 h', 22, E.GOOD, 'middle', 900));
       var oneRad = E.halo(E.txt(pitchG, 0, 0, '1 弧度', 20, E.GOOD, 'start', 900));
 
       /* ══ ③ 螺丝拧进木板 ══ */
@@ -114,8 +117,8 @@
       var headSide = K.paint(E.el('path', { 'stroke-width': 2 }, screwBody), '#8d939b', '#c8ccd2');
       var headTop = K.paint(E.el('path', { 'stroke-width': 2 }, screwBody), '#b9bec5', '#dfe2e6');
       var slot = K.paint(E.el('path', { fill: 'none', 'stroke-width': 6, 'stroke-linecap': 'round' }, screwBody), null, '#4a4f56');
-      var sTrail = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, scr), null, E.ACC);
-      var sDot = K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, scr), E.ACC, E.S1);
+      var sTrail = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, scr), null, E.VEL);
+      var sDot = K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, scr), E.VEL, E.S1);
       var downArr = E.vec(scr, E.GOOD, 5, { head: 15 });
       var downLab = E.halo(E.txt(scr, 0, 0, '往里走', 22, E.GOOD, 'start', 900));
 
@@ -128,7 +131,7 @@
       var a3 = rtxt(r1, 160, '边转，边沿着转轴移动', 24, E.GOOD, 900);
       var a4 = rtxt(r1, 230, '拧螺丝：', 24, E.INK, 900);
       var a5 = rtxt(r1, 270, '每转一圈，往里走一小段', 22, E.INK2);
-      var a6 = rtxt(r1, 310, '上面的点：螺旋线', 22, E.ACC, 900);
+      var a6 = rtxt(r1, 310, '上面的点：螺旋线', 22, E.VEL, 900);
       var r2 = E.el('g', {}, Rg);
       var thm = E.el('g', {}, r2);
       K.paint(E.el('rect', { x: RX, y: 24, width: 340, height: 104, rx: 14, 'stroke-width': 2.5 }, thm), E.tint(E.WARN, 10, 'var(--demo-surface)'), E.WARN);
@@ -140,20 +143,20 @@
       var b3 = rtxt(r2, 284, '③ 螺距 h：每转 1 弧度沿轴走多远', 21, E.GOOD, 900);
       var cI = E.el('g', {}, r2);                              // h = 0 / h = ∞ 两个小图标
       var ic0 = E.el('g', {}, cI), ic1 = E.el('g', {}, cI);
-      var i0 = E.arcArrow(ic0, RX + 26, 340, 15, E.VIOLET, 3, { head: 9 }); i0.set(100 * D, 420 * D);
+      var i0 = E.arcArrow(ic0, RX + 26, 340, 15, E.OMEGA, 3, { head: 9 }); i0.set(100 * D, 420 * D);
       E.txt(ic0, RX + 52, 348, 'h = 0：只转不移', 22, E.INK, 'start', 900);
       var i1 = E.vec(ic1, E.GOOD, 3.5, { head: 11 }); i1.set(RX + 10, 380, RX + 42, 380);
       E.txt(ic1, RX + 52, 388, 'h = ∞：只移不转', 22, E.INK, 'start', 900);
       var r3 = E.el('g', {}, Rg);
-      var fV = E.tex(r3, RX + 10, 66, '\\mathcal{V}=\\begin{bmatrix}\\textcolor{' + H.violet + '}{\\omega}\\\\ \\textcolor{' + H.acc + '}{v}\\end{bmatrix}', 30, E.INK, 'start', { w: 200, h: 90 });
+      var fV = E.tex(r3, RX + 10, 66, '\\mathcal{V}=\\begin{bmatrix}\\textcolor{' + H.acc + '}{\\omega}\\\\ \\textcolor{' + H.violet + '}{v}\\end{bmatrix}', 30, E.INK, 'start', { w: 200, h: 90 });
       var fTwo = E.txt(r3, RX + 150, 70, 'v 分成两份：', 22, E.INK2, 'start', 700);
-      var fEq = E.tex(r3, RX + 10, 170, '\\textcolor{' + H.acc + '}{v}=', 32, E.INK, 'start', { w: 60, h: 50 });
-      var fP1 = E.tex(r3, RX + 64, 170, '-\\omega\\times q', 32, E.VIOLET, 'start', { w: 150, h: 50 });
+      var fEq = E.tex(r3, RX + 10, 170, '\\textcolor{' + H.violet + '}{v}=', 32, E.INK, 'start', { w: 60, h: 50 });
+      var fP1 = E.tex(r3, RX + 64, 170, '-\\omega\\times q', 32, E.VEL, 'start', { w: 150, h: 50 });
       var fPlus = E.tex(r3, RX + 194, 170, '+', 32, E.INK, 'start', { w: 30, h: 50 });
       var fP2 = E.tex(r3, RX + 228, 170, 'h\\,\\omega', 32, E.GOOD, 'start', { w: 80, h: 50 });
-      var br1 = K.paint(E.el('path', { d: 'M ' + (RX + 66) + ' 186 Q ' + (RX + 66) + ' 196 ' + (RX + 76) + ' 196 H ' + (RX + 118) + ' Q ' + (RX + 126) + ' 196 ' + (RX + 128) + ' 204 Q ' + (RX + 130) + ' 196 ' + (RX + 138) + ' 196 H ' + (RX + 180) + ' Q ' + (RX + 190) + ' 196 ' + (RX + 190) + ' 186', fill: 'none', 'stroke-width': 2.5 }, r3), null, E.VIOLET);
+      var br1 = K.paint(E.el('path', { d: 'M ' + (RX + 66) + ' 186 Q ' + (RX + 66) + ' 196 ' + (RX + 76) + ' 196 H ' + (RX + 118) + ' Q ' + (RX + 126) + ' 196 ' + (RX + 128) + ' 204 Q ' + (RX + 130) + ' 196 ' + (RX + 138) + ' 196 H ' + (RX + 180) + ' Q ' + (RX + 190) + ' 196 ' + (RX + 190) + ' 186', fill: 'none', 'stroke-width': 2.5 }, r3), null, E.VEL);
       var br2 = K.paint(E.el('path', { d: 'M ' + (RX + 230) + ' 186 Q ' + (RX + 230) + ' 196 ' + (RX + 240) + ' 196 H ' + (RX + 252) + ' Q ' + (RX + 258) + ' 196 ' + (RX + 260) + ' 204 Q ' + (RX + 262) + ' 196 ' + (RX + 268) + ' 196 H ' + (RX + 280) + ' Q ' + (RX + 290) + ' 196 ' + (RX + 290) + ' 186', fill: 'none', 'stroke-width': 2.5 }, r3), null, E.GOOD);
-      var l1 = rtxt(r3, 250, '① 轴不过原点带出来的', 22, E.VIOLET, 900);
+      var l1 = rtxt(r3, 250, '① 轴不过原点带出来的', 22, E.VEL, 900);
       var l1b = rtxt(r3, 286, '　（就是那张透明板）', 21, E.INK2);
       var l2 = rtxt(r3, 336, '② 沿轴移动：角速度 × 螺距', 22, E.GOOD, 900);
 
@@ -173,7 +176,7 @@
         list.forEach(function (fc, k) {
           var el = faces[k];
           el.setAttribute('d', fc.vis ? fc.d : '');
-          K.paint(el, E.tint(E.VIOLET, fc.shade + 20, 'var(--demo-surface)'), E.VIOLET);
+          K.paint(el, E.tint(E.BODY, fc.shade + 10, 'var(--demo-surface)'), E.BODY);
         });
         var cp = S3(c); cDot.setAttribute('cx', cp[0].toFixed(1)); cDot.setAttribute('cy', cp[1].toFixed(1));
       }
@@ -212,16 +215,27 @@
           E.op(solid, on3);
           var th = theta(st);
           drawCube(th); trail(Math.max(th, 0.001));
+          var cc = center(th);
+          if (proj.depth(cc) > proj.depth([Qw[0], Qw[1], cc[2]])) { if (cubeG.nextSibling !== axis) solid.insertBefore(cubeG, axis); }
+          else if (cubeG.parentNode !== frontSlot) frontSlot.appendChild(cubeG);
           E.op(trailFront, th > 0.01 ? 1 : 0); E.op(trailBack, th > 0.01 ? 0.55 : 0);
           // 「边转」「边移」：句 1 时出现，句 3 后半收掉
           var cTop = S3([Qw[0], Qw[1], 2.45]), rx = 0.5;
           var ring = []; for (var k = 0; k <= 30; k++) { var aa = (-60 + 280 * k / 30) * D; ring.push(S3([Qw[0] + rx * Math.cos(aa), Qw[1] + rx * Math.sin(aa), 2.45])); }
-          tArc.setAttribute('d', E.poly(ring));
+          // 小椭圆拆成远、近两段（近的半圈压在转轴上，远的半圈被转轴挡住）
+          var near = '', far = '', prevN = null;
+          ring.forEach(function (p, k) {
+            var aa = (-60 + 280 * k / 30) * D, isN = proj.depth([Math.cos(aa), Math.sin(aa), 0]) < 0, sg = p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+            if (isN) near += (prevN === true ? ' L ' : ' M ') + sg; else far += (prevN === false ? ' L ' : ' M ') + sg;
+            if (prevN !== null && prevN !== isN) { if (isN) far += ' L ' + sg; else near += ' L ' + sg; }
+            prevN = isN;
+          });
+          tArc.setAttribute('d', near); tArcBack.setAttribute('d', far);
           var e1 = ring[ring.length - 1], e0 = ring[ring.length - 3], dx = e1[0] - e0[0], dy = e1[1] - e0[1], dl = Math.hypot(dx, dy) || 1;
           dx /= dl; dy /= dl;
           tHead.setAttribute('d', 'M ' + (e1[0] + dx * 12).toFixed(1) + ' ' + (e1[1] + dy * 12).toFixed(1) + ' L ' + (e1[0] - dy * 7).toFixed(1) + ' ' + (e1[1] + dx * 7).toFixed(1) + ' L ' + (e1[0] + dy * 7).toFixed(1) + ' ' + (e1[1] - dx * 7).toFixed(1) + ' Z');
           var spinOn = Math.max(f(st, T.turn + 0.2, 0.3) * (1 - f(st, T.screw, 0.3)), f(st, T.rot, 0.3) * (1 - f(st, T.name - 0.5, 0.4)));   // 「螺旋轴」三个字出来前收掉，免得压字
-          E.op(turnArc, spinOn);
+          E.op(turnArc, spinOn); E.op(tArcBack, spinOn);
           var upOn = Math.max(f(st, T.rise, 0.4) * (1 - f(st, T.screw, 0.3)), f(st, T.mov, 0.3) * (1 - f(st, T.stop, 0.4)));
           var u0 = S3([Qw[0], Qw[1], 0.55]), u1 = S3([Qw[0], Qw[1], 0.55 + 1.0 * upOn]);   // 贴着转轴、往上：沿着轴移动
           upArr.set(u0[0] + 22, u0[1], u1[0] + 22, u1[1]); E.op(upArr.g, upOn > 0.01 ? 1 : 0);
@@ -242,7 +256,7 @@
           var hx = Math.max(pa[0], pb[0]) + 40;
           hBar.setAttribute('d', 'M ' + (hx - 8) + ' ' + pa[1].toFixed(1) + ' H ' + (hx + 8) + ' M ' + hx + ' ' + pa[1].toFixed(1) + ' V ' + pb[1].toFixed(1) + ' M ' + (hx - 8) + ' ' + pb[1].toFixed(1) + ' H ' + (hx + 8));
           hGuide.setAttribute('d', 'M ' + pa[0].toFixed(1) + ' ' + pa[1].toFixed(1) + ' H ' + (hx - 8) + ' M ' + pb[0].toFixed(1) + ' ' + pb[1].toFixed(1) + ' H ' + (hx - 8));
-          hLab.setAttribute('x', hx + 14); hLab.setAttribute('y', ((pa[1] + pb[1]) / 2 + 8).toFixed(1));
+          hLab.setAttribute('x', hx); hLab.setAttribute('y', (pb[1] - 14).toFixed(1));   // 写在量尺上方：右边紧挨着右栏的公式
           oneRad.setAttribute('x', (pa[0] + 12).toFixed(1)); oneRad.setAttribute('y', (pa[1] + 26).toFixed(1));   // 写在下面那个点的右下方，不压转轴
           E.op(pitchG, f(st, T.pitch, 0.3));
           E.op(pA, f(st, T.pitch, 0.3)); E.op(pB, f(st, T.perRad + 0.5, 0.3)); E.op(oneRad, f(st, T.perRad + 0.3, 0.3));

@@ -7,7 +7,7 @@
       title: title, dur: 4, cues: [{ at: 0, s: msg }],
       build: function () {
         var s = K.sceneSvg(title);
-        E.txt(s, 400, 210, msg, 22, E.BAD);
+        E.txt(s, 400, 210, msg, 22, E.ERR);
         return { el: s, draw: function () {} };
       }
     };
@@ -38,10 +38,10 @@
     pitch: '任何刚体速度，都能看成绕一根轴边转边移',
     meta: '<b>机器人学骨架：刚体变换</b><br>Robotics Notebooks · 懂齐次变换 · 不用代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
-    // 划重点 / 片尾里的加粗词：角速度 violet；v、点的速度 accent；运动旋量 亮黄；螺旋轴 warn；螺距 good
-    boldColors: { '角速度': 'var(--violet)', 'ω': 'var(--violet)', 'v': 'var(--demo-accent)', '线速度': 'var(--demo-accent)',
-      '运动旋量': 'var(--hi)', '螺旋轴': 'var(--demo-warn)', '螺距': 'var(--demo-good)', '不是': 'var(--demo-bad)' },
-    introDur: 27.79,
+    // 划重点 / 片尾里的加粗词（同 00-common 的配色）：角速度蓝；v、线速度紫；运动旋量亮黄；螺旋轴琥珀；螺距绿；说错的橙
+    boldColors: { '角速度': 'var(--demo-accent)', 'ω': 'var(--demo-accent)', 'v': 'var(--violet)', '线速度': 'var(--violet)',
+      '运动旋量': 'var(--hi)', '螺旋轴': 'var(--demo-warn)', '螺距': 'var(--demo-good)', '不是': '#ff7b3a' },
+    introDur: 28.61,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep009.py 的 recap 句对齐）

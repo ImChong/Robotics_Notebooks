@@ -45,12 +45,12 @@
       var V = arm.view, RIGID = ['forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'];
 
       var eDot = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, top), E.HI, E.S1);
-      var spin = E.arcArrow(top, 0, 0, 30, E.VIOLET, 3.5, { head: 12 });
+      var spin = E.arcArrow(top, 0, 0, 30, E.OMEGA, 3.5, { head: 12 });
       // 「⊙」：角速度箭头朝向你（圆圈里一个点）
       var outOf = E.el('g', {}, top);
-      var outRing = K.paint(E.el('circle', { r: 15, 'stroke-width': 3.5 }, outOf), E.S1, E.VIOLET);
-      var outDot = K.paint(E.el('circle', { r: 5 }, outOf), E.VIOLET);
-      var outLab = E.halo(E.txt(outOf, 0, 0, 'ω', 26, E.VIOLET, 'middle', 900));
+      var outRing = K.paint(E.el('circle', { r: 15, 'stroke-width': 3.5 }, outOf), E.S1, E.OMEGA);
+      var outDot = K.paint(E.el('circle', { r: 5 }, outOf), E.OMEGA);
+      var outLab = E.halo(E.txt(outOf, 0, 0, 'ω', 26, E.OMEGA, 'middle', 900));
 
       /* ── 一弧度（右栏）：轴心 + 两根半径 + 黄点 + 弧 + 角 ── */
       var radG = E.el('g', {}, s), RC = [RX + 40, 352], RR = 156;
@@ -65,24 +65,24 @@
       var deg = E.halo(E.txt(radG, 0, 0, '1 弧度', 21, E.HI, 'start', 900));
 
       /* ── 两个点：离肘 1 格、2 格；速度箭头 + 尖上的数 ── */
-      var dots = [0, 1].map(function () { return K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, top), E.ACC, E.S1); });
-      var vels = [0, 1].map(function () { return E.vec(top, E.ACC, 4.5, { head: 15 }); });
-      var vlab = ['2', '4'].map(function (n) { return E.halo(E.txt(top, 0, 0, n, 22, E.ACC, 'middle', 900)); });
+      var dots = [0, 1].map(function () { return K.paint(E.el('circle', { r: 6.5, 'stroke-width': 2.5 }, top), E.VEL, E.S1); });
+      var vels = [0, 1].map(function () { return E.vec(top, E.VEL, 4.5, { head: 15 }); });
+      var vlab = ['2', '4'].map(function (n) { return E.halo(E.txt(top, 0, 0, n, 22, E.VEL, 'middle', 900)); });
 
       /* ══ 右栏 ══ */
       var R = E.el('g', {}, s);
       var head = E.el('g', {}, R);
-      E.txt(head, RX + 10, 50, '角速度 ω', 28, E.VIOLET, 'start', 900);
+      E.txt(head, RX + 10, 50, '角速度 ω', 28, E.OMEGA, 'start', 900);
       var unit = E.txt(head, RX + 10, 86, '单位：弧度 / 秒', 22, E.INK2, 'start', 700);
       var radCard = E.el('g', {}, R);
       E.txt(radCard, RX + 10, 140, '1 弧度：半径 1 格 → 弧长 1 格', 22, E.HI, 'start', 700);
       var radDeg = E.txt(radCard, RX + 10, 176, '大约是 57°', 22, E.INK2, 'start', 700);
       var spd = E.el('g', {}, R);
-      var two = E.txt(spd, RX + 10, 140, 'ω = 2 弧度 / 秒', 24, E.VIOLET, 'start', 900);
+      var two = E.txt(spd, RX + 10, 140, 'ω = 2 弧度 / 秒', 24, E.OMEGA, 'start', 900);
       var rows = [['离肘 1 格', '每秒 2 格'], ['离肘 2 格', '每秒 4 格']].map(function (d, i) {
         var g = E.el('g', {}, spd), y = 184 + 40 * i;
         E.txt(g, RX + 10, y, d[0] + ' →', 22, E.INK2, 'start', 700);
-        E.txt(g, RX + 128, y, d[1], 22, E.ACC, 'start', 900);
+        E.txt(g, RX + 128, y, d[1], 22, E.VEL, 'start', 900);
         return g;
       });
       var times = E.el('g', {}, spd);
@@ -90,28 +90,29 @@
       E.txt(times, RX + 150, 281, '速度大小 = ω × 距离', 24, E.INK, 'middle', 900);
       // 右手定则示意：竖着的转轴箭头（拇指）+ 绕着它的一圈带箭头的椭圆（四指）
       var rh = E.el('g', {}, R), CX = RX + 205, CY = 270;
-      var axisV = E.vec(rh, E.VIOLET, 5, { head: 18 });
+      // 按远近遮挡：后半圈（虚线）画在拇指后面，前半圈压在拇指上
       var ringBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '6 6' }, rh), null, E.INK2);
+      var axisV = E.vec(rh, E.OMEGA, 5, { head: 18 });
       var ringFront = E.el('path', { fill: 'none', 'stroke-width': 4, 'stroke-linecap': 'round' }, rh);
       K.paint(ringFront, null, E.INK);
       var ringHead = K.paint(E.el('path', {}, rh), E.INK);
       var fingLab = E.txt(rh, CX - 84, CY + 12, '四指：顺着转', 22, E.INK, 'end', 900);
-      var thumbLab = E.txt(rh, CX - 18, 150, '拇指 → ω 的方向', 22, E.VIOLET, 'end', 900);
+      var thumbLab = E.txt(rh, CX - 18, 150, '拇指 → ω 的方向', 22, E.OMEGA, 'end', 900);
       // 小坐标架：x 右、y 上、z 斜着朝向你（往左下画）；ω 沿 z；旁边 ω 的三个数
       var gz = E.el('g', {}, R), GX = RX + 110, GY = 250, GL = 96;
       function P3(v) { return [GX + GL * (v[0] - 0.55 * v[2] * Math.cos(35 * D)), GY - GL * (v[1] - 0.55 * v[2] * Math.sin(35 * D))]; }
       var axes = [[1, 0, 0], [0, 1, 0], [0, 0, 1]].map(function (v, i) {
-        var a = E.vec(gz, [E.GOOD, E.WARN, E.ACC][i], 3, { head: 12 }), p = P3(v);
+        var a = E.vec(gz, [E.X, E.Y, E.Z][i], 3, { head: 12 }), p = P3(v);
         a.set(GX, GY, p[0], p[1]);
         var lp = P3([v[0] * 1.22, v[1] * 1.22, v[2] * 1.3]);
-        E.halo(E.txt(gz, lp[0], lp[1] + 8, ['x', 'y', 'z'][i], 22, [E.GOOD, E.WARN, E.ACC][i], 'middle', 900));
+        E.halo(E.txt(gz, lp[0], lp[1] + 8, ['x', 'y', 'z'][i], 22, [E.X, E.Y, E.Z][i], 'middle', 900));
         return a;
       });
-      var wz = E.vec(gz, E.VIOLET, 6, { head: 18 });
-      var wzLab = E.halo(E.txt(gz, 0, 0, 'ω', 26, E.VIOLET, 'middle', 900));
-      var youLab = E.txt(gz, 0, 0, '朝向你', 20, E.VIOLET, 'start', 900);
-      var wcol = E.colvec(gz, RX + 305, 168, [0, 0, 2], { size: 30, colors: [E.VIOLET, E.VIOLET, E.VIOLET] });   // 放在小坐标架右上方，不挨着 x 的字母
-      var wEq = E.txt(gz, RX + 250, 179, 'ω =', 26, E.VIOLET, 'end', 900);
+      var wz = E.vec(gz, E.OMEGA, 6, { head: 18 });
+      var wzLab = E.halo(E.txt(gz, 0, 0, 'ω', 26, E.OMEGA, 'middle', 900));
+      var youLab = E.txt(gz, 0, 0, '朝向你', 20, E.OMEGA, 'start', 900);
+      var wcol = E.colvec(gz, RX + 305, 168, [0, 0, 2], { size: 30, colors: [E.OMEGA, E.OMEGA, E.OMEGA] });   // 放在小坐标架右上方，不挨着 x 的字母
+      var wEq = E.txt(gz, RX + 250, 179, 'ω =', 26, E.OMEGA, 'end', 900);
 
       function toMath(p) { return [(p[0] - OX) / u, (OY - p[1]) / u]; }
 
@@ -122,14 +123,14 @@
           var k = E.clamp((st - T.rot) / (END - T.rot), 0, 1);
           var phi = SWING * (k < 0.03 ? k * k / 0.06 : k - 0.015) / 0.985;
           arm.bend(phi);
-          V.clearTint(); V.tint(RIGID, E.VIOLET, 0.45);
+          V.clearTint(); V.tint(RIGID, E.BODY, 0.4);
           var e = arm.elbow(), w = arm.wrist(), dir = [w[0] - e[0], w[1] - e[1]], dl = Math.hypot(dir[0], dir[1]);
 
           eDot.setAttribute('cx', e[0].toFixed(1)); eDot.setAttribute('cy', e[1].toFixed(1));
           spin.g.setAttribute('transform', 'translate(' + e[0].toFixed(1) + ' ' + e[1].toFixed(1) + ')');
           spin.set(115 * D, 205 * D);
           var sb = b(st, T.ccw, 0.9);
-          spin.arc.style.strokeWidth = 3.5 + 2 * sb; E.glow(spin.g, E.VIOLET, sb > 0.05);
+          spin.arc.style.strokeWidth = 3.5 + 2 * sb; E.glow(spin.g, E.OMEGA, sb > 0.05);
           // ⊙ 盖在肘上：箭头朝向你
           outOf.setAttribute('transform', 'translate(' + e[0].toFixed(1) + ' ' + e[1].toFixed(1) + ')');
           outLab.setAttribute('x', -6); outLab.setAttribute('y', -42);   // 写在肘的正上方、肘的外壳和小弯箭头再往上：右上是小臂和速度箭头
@@ -188,7 +189,7 @@
           var ga = f(st, T.dirArrow, 0.5);
           axisV.set(CX, CY + 110, CX, CY + 110 - 260 * ga);
           var tb = b(st, T.thumb, 0.9);
-          axisV.line.style.strokeWidth = 5 + 3 * tb; E.glow(axisV.g, E.VIOLET, tb > 0.05);
+          axisV.line.style.strokeWidth = 5 + 3 * tb; E.glow(axisV.g, E.OMEGA, tb > 0.05);
           var fp = f(st, T.fingers[0], T.fingers[1] - T.fingers[0]), RXe = 78, RYe = 22;
           // 后半圈（虚线，从右到左）一次画出；前半圈（实线）从左往右按 fp 画，末端三角朝右
           ringBack.setAttribute('d', 'M ' + (CX + RXe) + ' ' + CY + ' A ' + RXe + ' ' + RYe + ' 0 0 0 ' + (CX - RXe) + ' ' + CY);
@@ -209,7 +210,7 @@
           youLab.setAttribute('x', (tip3[0] + 14).toFixed(1)); youLab.setAttribute('y', (tip3[1] + 26).toFixed(1));
           E.op(youLab, f(st, T.you + 0.2, 0.3));
           var zb = b(st, T.z, 0.8);
-          axes[2].line.style.strokeWidth = 3 + 3 * zb; E.glow(axes[2].g, E.ACC, zb > 0.05);
+          axes[2].line.style.strokeWidth = 3 + 3 * zb; E.glow(axes[2].g, E.Z, zb > 0.05);
           E.op(wEq, f(st, T.nums[0] - 0.3, 0.3));
           wcol.cells.forEach(function (c, i) { var q = wcol.pos(i), pc = f(st, T.nums[i], 0.3); E.op(c, pc); E.scaleAt(c, q[0], q[1], 1 + 0.5 * (1 - pc)); });
           E.op(wcol.g, f(st, T.nums[0] - 0.3, 0.3));

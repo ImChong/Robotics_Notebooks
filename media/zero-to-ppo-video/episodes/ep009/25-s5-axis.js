@@ -38,7 +38,7 @@
 
       /* ══ ① 公式 ══ */
       var fm = E.el('g', {}, s);
-      var f1 = E.tex(fm, 30, 92, '\\mathcal{V}=\\begin{bmatrix}\\textcolor{' + H.violet + '}{\\omega}\\\\ \\textcolor{' + H.acc + '}{v}\\end{bmatrix}=\\begin{bmatrix}\\hat s\\,\\textcolor{' + H.good + '}{\\dot\\theta}\\\\ (-\\hat s\\times q+h\\,\\hat s)\\,\\textcolor{' + H.good + '}{\\dot\\theta}\\end{bmatrix}', 28, E.INK, 'start', { w: 400, h: 100 });
+      var f1 = E.tex(fm, 30, 92, '\\mathcal{V}=\\begin{bmatrix}\\textcolor{' + H.acc + '}{\\omega}\\\\ \\textcolor{' + H.violet + '}{v}\\end{bmatrix}=\\begin{bmatrix}\\hat s\\,\\textcolor{' + H.good + '}{\\dot\\theta}\\\\ (-\\hat s\\times q+h\\,\\hat s)\\,\\textcolor{' + H.good + '}{\\dot\\theta}\\end{bmatrix}', 28, E.INK, 'start', { w: 400, h: 100 });
       var f2 = E.tex(fm, 104, 212, '=\\begin{bmatrix}\\hat s\\\\ -\\hat s\\times q+h\\,\\hat s\\end{bmatrix}\\textcolor{' + H.good + '}{\\dot\\theta}', 28, E.INK, 'start', { w: 320, h: 100 });
       var sBr = K.paint(E.el('path', { d: 'M 132 250 Q 132 262 144 262 H 214 Q 222 262 225 272 Q 228 262 236 262 H 306 Q 318 262 318 250', fill: 'none', 'stroke-width': 2.5 }, fm), null, E.WARN);
       var sName = E.txt(fm, 225, 298, '螺旋轴 S', 24, E.WARN, 'middle', 900);
@@ -56,12 +56,12 @@
       var mOrig = K.paint(E.el('circle', { cx: MO[0], cy: MO[1], r: 6 }, mini), E.HI);
       E.halo(E.txt(mini, MO[0] - 12, MO[1] + 26, '原点', 20, E.HI, 'end', 900));
       var mOut = E.el('g', {}, mini);
-      var mRing = K.paint(E.el('circle', { cx: mq[0], cy: mq[1], r: 15, 'stroke-width': 3.5 }, mOut), E.S1, E.VIOLET);
-      K.paint(E.el('circle', { cx: mq[0], cy: mq[1], r: 5 }, mOut), E.VIOLET);
-      var mYou = E.halo(E.txt(mini, mq[0] + 24, mq[1] - 18, '转轴朝向你', 20, E.VIOLET, 'start', 900));
+      var mRing = K.paint(E.el('circle', { cx: mq[0], cy: mq[1], r: 15, 'stroke-width': 3.5 }, mOut), E.S1, E.OMEGA);
+      K.paint(E.el('circle', { cx: mq[0], cy: mq[1], r: 5 }, mOut), E.OMEGA);
+      var mYou = E.halo(E.txt(mini, mq[0] + 24, mq[1] - 18, '转轴朝向你', 20, E.OMEGA, 'start', 900));
       var mQ = E.halo(E.txt(mini, mq[0] + 24, mq[1] + 10, '穿过 (1, 2)', 20, E.HI, 'start', 900));
       var mH = E.halo(E.txt(mini, mq[0] + 24, mq[1] + 38, '螺距 h = 0', 20, E.GOOD, 'start', 900));
-      var mSpin = E.arcArrow(mini, mq[0], mq[1], 30, E.VIOLET, 3.5, { head: 12 }); mSpin.set(115 * D, 205 * D);
+      var mSpin = E.arcArrow(mini, mq[0], mq[1], 30, E.OMEGA, 3.5, { head: 12 }); mSpin.set(115 * D, 205 * D);
 
       /* ══ ③ 两种关节 ══ */
       var jg = E.el('g', {}, s);
@@ -69,16 +69,16 @@
       var revG = E.el('g', {}, jg), RC = [110, 200];
       var link1 = K.paint(E.el('rect', { x: RC[0] - 90, y: RC[1] - 14, width: 90, height: 28, rx: 14, 'stroke-width': 2.5 }, revG), E.tint(E.INK2, 30, 'var(--demo-surface)'), E.INK2);
       var link2 = E.el('g', {}, revG);
-      K.paint(E.el('rect', { x: RC[0], y: RC[1] - 13, width: 92, height: 26, rx: 13, 'stroke-width': 2.5 }, link2), E.tint(E.VIOLET, 30, 'var(--demo-surface)'), E.VIOLET);
+      K.paint(E.el('rect', { x: RC[0], y: RC[1] - 13, width: 92, height: 26, rx: 13, 'stroke-width': 2.5 }, link2), E.tint(E.BODY, 30, 'var(--demo-surface)'), E.BODY);
       K.paint(E.el('circle', { cx: RC[0], cy: RC[1], r: 13, 'stroke-width': 3 }, revG), E.S1, E.WARN);
       K.paint(E.el('circle', { cx: RC[0], cy: RC[1], r: 4 }, revG), E.WARN);
-      var revSpin = E.arcArrow(revG, RC[0], RC[1], 44, E.VIOLET, 3.5, { head: 12 });
+      var revSpin = E.arcArrow(revG, RC[0], RC[1], 44, E.OMEGA, 3.5, { head: 12 });
       E.txt(revG, RC[0], RC[1] + 92, '转动关节', 24, E.INK, 'middle', 900);
       var revH = E.txt(revG, RC[0], RC[1] + 124, '螺距 h = 0', 22, E.GOOD, 'middle', 900);
       // 移动关节：导轨 + 滑块 + 双向箭头
       var priG = E.el('g', {}, jg), PC = [330, 200];
       K.paint(E.el('rect', { x: PC[0] - 90, y: PC[1] + 12, width: 180, height: 14, rx: 4, 'stroke-width': 2 }, priG), E.tint(E.INK2, 30, 'var(--demo-surface)'), E.INK2);
-      var slider = K.paint(E.el('rect', { width: 56, height: 36, rx: 8, 'stroke-width': 2.5 }, priG), E.tint(E.VIOLET, 30, 'var(--demo-surface)'), E.VIOLET);
+      var slider = K.paint(E.el('rect', { width: 56, height: 36, rx: 8, 'stroke-width': 2.5 }, priG), E.tint(E.BODY, 30, 'var(--demo-surface)'), E.BODY);
       var priArr = E.vec(priG, E.GOOD, 4, { head: 13 });
       E.txt(priG, PC[0], PC[1] + 92, '移动关节', 24, E.INK, 'middle', 900);
       var priH = E.txt(priG, PC[0], PC[1] + 124, '只移不转', 22, E.GOOD, 'middle', 900);
@@ -93,7 +93,7 @@
       var axLines = JN.map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '8 5' }, axG), null, E.WARN); });
       var axLabs = JN.map(function (n, i) { return E.halo(E.txt(axG, 0, 0, 'S' + '₁₂₃₄₅₆'[i], 22, E.WARN, 'middle', 900)); });
       var toolG = E.el('g', {}, armG);
-      var toolAx = [E.GOOD, E.WARN, E.ACC].map(function (c) { return E.vec(toolG, c, 4, { head: 12 }); });
+      var toolAx = [E.X, E.Y, E.Z].map(function (c) { return E.vec(toolG, c, 4, { head: 12 }); });
       function axisOf(name) {
         var j = V.robot.joints[name];
         j.updateMatrixWorld(true);
@@ -118,7 +118,7 @@
       var r1d = rt(r1, RX + 50, 226, '怎么转', 22, E.INK);
       var r2 = E.el('g', {}, Rg), SC = RX + 60, VC = RX + 250, CY = 220;
       var sCol = E.colvec(r2, SC, CY, [0, 0, 1, 2, -1, 0], { size: 28, dy: 36, colors: [E.WARN, E.WARN, E.WARN, E.WARN, E.WARN, E.WARN], w: 66 });
-      var vCol = E.colvec(r2, VC, CY, [0, 0, 2, 4, -2, 0], { size: 28, dy: 36, colors: [E.VIOLET, E.VIOLET, E.VIOLET, E.ACC, E.ACC, E.ACC], w: 66 });
+      var vCol = E.colvec(r2, VC, CY, [0, 0, 2, 4, -2, 0], { size: 28, dy: 36, colors: [E.OMEGA, E.OMEGA, E.OMEGA, E.VEL, E.VEL, E.VEL], w: 66 });
       var sTop = rt(r2, SC, 92, 'S', 26, E.WARN, 900, 'middle');
       var vTop = rt(r2, VC, 92, '运动旋量', 22, E.HI, 900, 'middle');
       var times = rt(r2, (SC + VC) / 2, CY + 10, '× 2 =', 28, E.GOOD, 900, 'middle');
