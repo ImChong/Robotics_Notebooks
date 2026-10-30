@@ -167,6 +167,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [HumanoidNDM：真机神经动力学微调](./paper-humanoidndm.md) — 针对部署差异，用真实数据微调已有跟踪策略。
+
 - [HumanoidTTT：让人形机器人复用完整动作](./paper-humanoidttt.md)
 - [TWIST2](./paper-twist2.md) — 外部完整 GMT/遥操作管线基线
 - [mjlab](./mjlab.md) — 训练栈依赖
