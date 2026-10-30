@@ -1746,6 +1746,7 @@
 - [AutoPhyX: Automatic Text-Condition Physics Property Generation](wiki/entities/paper-autophyx.md) — 以三维资产和文本为条件预测空间变化的杨氏模量、泊松比与密度体素场，供物理仿真使用。 `📅unknown` `[entity_page]`
 - [AutoPSO：PSO 变体不要再手搓](wiki/entities/paper-autopso.md) — AutoPSO**（*A Metaframework for Automated Particle Swarm Optimization*；[arXiv:2608.07539](https://a `📅unknown` `[entity_page]`
 - [AutoTAMP](wiki/entities/paper-autotamp.md) — AutoTAMP**（arXiv:2306.06531）收录于 Lumina [Embodied-AI-Guide 微信专辑 `📅unknown` `[entity_page]`
+- [AVGGT：多视图几何注意力加速](wiki/entities/paper-avggt.md) — AVGGT 利用早期全局注意力与后续跨视图对齐的不同作用，在不重新训练模型的条件下减少 VGGT 和 π³ 的推理计算。 `📅unknown` `[entity_page]`
 - [AW-0：Agentic World Action Models](wiki/entities/paper-aw-0-agentic-world-action-models.md) — 一句话定义：** AW-0 把程序化技能规划、未来视频预测和机器人动作生成放进一个联合生成的世界动作模型，让代码结构为预测与控制提供语义条件。 `📅unknown` `[entity_page]`
 - [AWARE：轮足高动态反射式避障](wiki/entities/paper-aware-wheeled-legged-reflexive-evasion.md) — AWARE**（*Adaptive Wheeled-Legged Avoidance and Reflexive Evasion*，[arXiv:2604.23761](https://arxiv `📅unknown` `[entity_page]`
 - [AWARE（arXiv:2610.32742）](wiki/entities/paper-aware.md) — AWARE**（*Adaptive World-Models for Anomaly Recognition (AWARE): A Framework for Robot Dynamics Pre `📅unknown` `[entity_page]`
