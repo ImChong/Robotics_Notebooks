@@ -10,6 +10,7 @@ updated: 2026-10-30
 arxiv: "2610.38221"
 code: https://github.com/jiuyixu25/CuraEval
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../methods/imitation-learning.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -94,6 +95,7 @@ sequenceDiagram
 - [imitation-learning](../methods/imitation-learning.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [embodied-station-2026-10-30-28-papers-technology-map](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 

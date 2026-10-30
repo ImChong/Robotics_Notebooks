@@ -10,6 +10,7 @@ updated: 2026-10-30
 arxiv: "2610.39287"
 code: https://github.com/Ideal-ljl/AeroBrain
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/vision-language-navigation.md
   - ../tasks/manipulation.md
@@ -94,6 +95,7 @@ sequenceDiagram
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-30-28-papers-technology-map](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+- [Query：机器人视觉感知栈选型](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

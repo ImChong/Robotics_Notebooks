@@ -2,9 +2,10 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-10-24
+updated: 2026-10-30
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
+  - ../entities/paper-forcewam.md
   - ../entities/rhoda-ai.md
   - ../entities/paper-dreamtrue-action-faithful-world-model.md
   - ./inverse-dynamics-model.md
@@ -451,6 +452,7 @@ flowchart TB
 ## 参考来源
 
 - [Sparse-WAM 论文摘录](../../sources/papers/sparse_wam_arxiv_2609_38984.md) — 动作相关稀疏想象与同后端计时
+- [ForceWAM 论文摘录](../../sources/papers/forcewam_arxiv_2610_18852.md) — 力矩未来预测 + play 数据 IDM
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
 - [sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md) — WAM 不是第四架构列
@@ -526,6 +528,7 @@ flowchart TB
 - [SG-WAM（语义引导）](../entities/paper-sg-wam-semantic-guidance.md) — VLM foresight 注入；勿与 Self-Guided 同缩写篇合并
 - [LD4WAM（运动对齐潜动力学 · 人视频 WAM）](../entities/paper-ld4wam.md) — DINOv3 语义码 + Delta EE；RoboTwin 93.4%、真机 70.5%；未开源（arXiv:2608.22403）
 - [VT-WAM（视觉-触觉接触丰富 WAM）](../entities/paper-vt-wam-visuotactile-contact-rich.md)
+- [ForceWAM（视频 + 力矩未来 + IDM）](../entities/paper-forcewam.md) — 示教训练 ForceWM 预测腕部视频与六轴力矩，任务 + 无任务 play 数据训练 IDM 把未来转成动作；四个真机接触任务 85–95%（arXiv:2610.18852；仓库仅 README，实现待发布）
 - [𝒩₀-TWAM（NeoteAI 触觉原生 WAM）](../entities/paper-n0-twam.md)
 - [EmbodiedVAE](../entities/paper-embodiedvae.md) — 操作世界模型的解耦 video VAE tokenizer（arXiv:2608.02990）
 - [GIFT](../entities/paper-gift-intermediate-feature-training.md) — 把几何/可供性/目标区域监督接到 VLA 与 WAM-Fast/IDM（arXiv:2609.04193；待发布）

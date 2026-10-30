@@ -12,6 +12,7 @@ tags:
 status: draft
 updated: 2026-10-30
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-daily-omni.md
   - ./embspatial.md
 sources:
@@ -78,6 +79,15 @@ sequenceDiagram
 - 官方仓库 2026-10-26 记载 WITA-Omni 1.0 平均分 66.4；具体名次、聚合方式和完整配置须按官方榜单核对。
 - 公开代码、模型与数据；真实交互和机器人动作能力不由此单项基准直接证明。
 
+## 与其他工作对比
+
+| 对象 | 差异 |
+|---|---|
+| 原始 Charades-STA / ActivityNet Captions / QVHighlights 标注 | TimeLens-Bench 对其人工诊断与修订；论文主张未修订标注会影响排名 |
+| [Daily-Omni](./paper-daily-omni.md) | 以问答形式测音视频跨模态时序对齐；TimeLens 直接输出时间区间并以 IoU 评分 |
+| [MMAU](./paper-mmau.md) | 纯音频理解与推理选择题，不涉及时间定位 |
+| [EmbSpatial-Bench](./embspatial.md) | 静态图像空间关系，与视频时序维度互补 |
+
 ## 结论
 
 TimeLens 强调定位指标依赖标注质量，榜单比较应同时核查数据与推理配置。
@@ -90,6 +100,7 @@ TimeLens 强调定位指标依赖标注质量，榜单比较应同时核查数�
 
 - [Daily-Omni](./paper-daily-omni.md)：音视频跨模态时序推理。
 - [EmbSpatial-Bench](./embspatial.md)：静态空间关系评测。
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 

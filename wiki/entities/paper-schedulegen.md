@@ -10,6 +10,7 @@ updated: 2026-10-30
 arxiv: "2610.39429"
 project: https://schedulegen.github.io/
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../methods/imitation-learning.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -79,6 +80,7 @@ summary: "ScheduleGen（arXiv:2610.39429）：ScheduleGen 联合技能迁移、�
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [bimanual-manipulation](../tasks/bimanual-manipulation.md)
 - [embodied-station-2026-10-30-28-papers-technology-map](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 
