@@ -28,3 +28,7 @@
 
 - [DirtyMoCap 论文与项目实体](../../wiki/entities/paper-dirtymocap-robust-motion-capture.md)
 - [动作重定向流水线](../../wiki/concepts/motion-retargeting-pipeline.md)
+
+## 2026-10-30 复核
+
+官方项目页仍标注数据待发布；官方 GitHub 仓库仅有 README，仍写明代码将发布，未见可运行实现。本次未能获取论文全文，尚未重新通读；既有实体已包含项目流程图，源码运行时序图仍不适用。
