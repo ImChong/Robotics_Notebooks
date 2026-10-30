@@ -4,9 +4,9 @@
 
 - **标题：** Reflex: Visually Grounded Reactive Humanoid Control
 - **类型：** paper / humanoid / reactive-catching / whole-body-control / sim2real
-- **论文：** <https://toberj.github.io/reflex/static/paper/reflex.pdf?v=1008n>（官方项目页 PDF；页面与 BibTeX 未列 arXiv 编号或会议）
+- **论文：** <https://arxiv.org/abs/2610.12772>（arXiv 预印本）
 - **项目页：** <https://toberj.github.io/reflex/>
-- **代码：** <https://github.com/ToberJ/reflex>（仓库已建立，训练 / 评测 / checkpoint / 真机栈待发布）
+- **代码：** <https://github.com/ToberJ/reflex>（仿真训练 / 评测与 checkpoint 已公开，真机栈未包含）
 - **作者：** Taoyang Jia、Weikai Huang、Linxin Song、Jared Darlington、Jieyu Zhao、Yue Wang、Jiafei Duan、Zhongzheng Ren、Ranjay Krishna
 - **机构：** University of Washington、Stanford University、University of Southern California、National University of Singapore、University of North Carolina at Chapel Hill、Allen Institute for AI
 - **平台：** Unitree G1，29 DoF；躯干 RGB-D 相机
@@ -32,7 +32,7 @@
 ## 摘录 3：评测与证据边界
 
 - **仿真：** RGB-D 视觉策略成功率 85.7%；特权观测对照为 87.9%。没有视觉历史时，居中 / 偏置抛掷成功率分别下降 35.6 / 39.8 个百分点。
-- **真机 G1：** 2.5 m 与 5 m 抛掷距离成功率分别为 65% 与 40%；项目页同时报告人类接球者为 76% 与 59%。
+- **真机 G1：** 2.5 m 与 5 m 抛掷距离成功率分别为 65% 与 40%；人类接球率分别为 85% 与 68.3%，机器人达到对应人类成功率的约 76% 与 59%。
 - **距离范围：** 项目页演示 2.5–7 m 抛掷；这些演示距离不等于每个距离上的论文成功率。
 - **证据边界：** 仿真最优策略接近特权观测上限；现实成功率随距离增加而下降。不同距离上的人类结果是参照，不是机器人任务成功的替代指标。
 
@@ -41,5 +41,5 @@
 ## 官方资料之间的身份关系
 
 - 项目页提供论文 PDF、演示与代码仓入口。
-- GitHub README 将自身标为 Reflex 项目代码仓，但明确训练 / 评测代码、预训练 checkpoint 与真机部署栈正在准备发布；当前仓只有 README 和演示资产。
-- 项目无可验证 arXiv ID；不填 frontmatter `arxiv:` 或 `paper:` 编号字段，身份由稳定 `project_id`、官方项目 URL 与代码 URL 表达。
+- GitHub README 提供三阶段仿真训练、评测和 checkpoint；真机部署栈不在发布范围内。
+- 论文为 arXiv:2610.12772；项目身份沿用原有稳定 `project_id`。
