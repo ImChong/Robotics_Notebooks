@@ -2530,6 +2530,7 @@
 - [Humanoid Touch Dream（Learning Versatile Humanoid Manipulation with Touch Dreaming）](wiki/entities/paper-humanoid-touch-dream.md) — Humanoid Touch Dream（HTD）**（arXiv:2604.13015，[项目页](https://hum `📅unknown` `[entity_page]`
 - [HumanoidArena（Egocentric Hierarchical Whole-body Benchmark）](wiki/entities/paper-humanoidarena.md) — HumanoidArena** 是香港科技大学（广州）、北京工业大学、哈尔滨工业大学（深圳）、深圳北理莫斯科大学与京东探索研究院等团队的 **仿真优先人形全身学习基准**（arXiv:2606.1 `📅unknown` `[entity_page]`
 - [HumanoidMimicGen](wiki/entities/paper-humanoidmimicgen.md) — HumanoidMimicGen** 是 NVIDIA 与 UT Austin 团队的 **人形 loco-manipulation 合成示范生成** 论文（arXiv:2605.27724，Op `📅unknown` `[entity_page]`
+- [HumanoidNDM：以真机神经动力学模型微调动作跟踪](wiki/entities/paper-humanoidndm.md) — 用参考轨迹的低频探索采集真机数据，训练可微动力学模型，再通过模型梯度微调仿真训练的人形跟踪策略。 `📅unknown` `[entity_page]`
 - [HumanoidPose：从视频估计人形机器人姿态](wiki/entities/paper-humanoidpose-video-pose-estimation.md) — HumanoidPose**（*Vision as Proprioception: Estimating Humanoid Robot Pose from Video*，[arXiv:2610.2 `📅unknown` `[entity_page]`
 - [HumanoidToolBench：从工具选择到移动执行的人形工具使用基准](wiki/entities/paper-humanoidtoolbench.md) — HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution**（[arXiv:2610 `📅unknown` `[entity_page]`
 - [HumanoidTTT：让人形机器人复用完整动作](wiki/entities/paper-humanoidttt.md) — HumanoidTTT**（arXiv:2610.00198）面向重复出现的人形动作请求：系统只在当前机器人入口状态通过该完整动作的适用性认证时才重放已验证动作，并在存储容量受限时学习保留哪些动作 `📅unknown` `[entity_page]`
