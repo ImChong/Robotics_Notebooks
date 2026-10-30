@@ -10,7 +10,7 @@ tags:
   - open-source
 status: complete
 topic: [teleop-data]
-updated: 2026-09-24
+updated: 2026-10-30
 related:
   - ../entities/lerobot.md
   - ./lerobot-envhub.md
@@ -44,6 +44,10 @@ summary: "LeRobotDataset v3.0：Parquet 表数据 + 分相机 MP4 + 关系型 me
 | IL | Imitation Learning | v3 数据集主要服务的示范学习管线 |
 | CLI | Command-Line Interface | `lerobot-record` / `lerobot-train` 读写 v3 |
 | API | Application Programming Interface | `LeRobotDataset` / `StreamingLeRobotDataset` |
+
+## 相关研究
+
+- [codec4AI](../entities/paper-codec4ai.md) 研究视频随机采样时的解码与编码取舍。
 
 ## 为什么重要
 
