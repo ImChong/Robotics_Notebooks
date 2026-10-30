@@ -2,16 +2,16 @@
 
 - **类型：** site / benchmark / leaderboard
 - **记录日期：** 2026-10-30
-- **状态：** 收录草稿；本次尚未通读四篇论文及核查评测源码，不应视为完成 ingest。
+- **状态：** 收录草稿；论文与源码核查尚未全部完成，不应视为完成 ingest。
 
 ## 原始入口
 
 | 基准 | 测量对象 | 一手资料 | 本库已有节点 |
 |------|----------|----------|--------------|
 | Daily-Omni | 音视频时序对齐与推理 | [项目页及榜单](https://lliar-liar.github.io/Daily-Omni/#leaderboard) · [论文](https://arxiv.org/abs/2505.17862) · [代码](https://github.com/Lliar-liar/Daily-Omni) · [数据](https://huggingface.co/datasets/liarliar/Daily-Omni) | [Daily-Omni](../../wiki/entities/paper-daily-omni.md) |
-| TimeLens-Bench | 视频时序定位 | [项目页及榜单](https://timelens-arc-lab.github.io/#leaderboard) · [论文](https://arxiv.org/abs/2512.14698) · [代码](https://github.com/TencentARC/TimeLens) · [数据](https://huggingface.co/datasets/TencentARC/TimeLens-Bench) | 待深入检索 |
+| TimeLens-Bench | 视频时序定位 | [项目页及榜单](https://timelens-arc-lab.github.io/#leaderboard) · [论文](https://arxiv.org/abs/2512.14698) · [代码](https://github.com/TencentARC/TimeLens) · [数据](https://huggingface.co/datasets/TencentARC/TimeLens-Bench) | [TimeLens](../../wiki/entities/paper-timelens.md) |
 | EmbSpatial-Bench | 具身第一视角空间关系理解 | [ACL 论文](https://aclanthology.org/2024.acl-short.33/) · [代码与数据入口](https://github.com/mengfeidu/EmbSpatial-Bench) | [EmbSpatial](../../wiki/entities/embspatial.md) |
-| MMAU | 音频理解与推理 | [项目页及榜单](https://sakshi113.github.io/mmau_homepage/) · [论文](https://arxiv.org/abs/2410.19168) · [代码](https://github.com/Sakshi113/mmau) | 待深入检索 |
+| MMAU | 音频理解与推理 | [项目页及榜单](https://sakshi113.github.io/mmau_homepage/) · [论文](https://arxiv.org/abs/2410.19168) · [代码](https://github.com/Sakshi113/mmau) | [MMAU](../../wiki/entities/paper-mmau.md) |
 
 ## 2026-10-30 可核对的结果
 
