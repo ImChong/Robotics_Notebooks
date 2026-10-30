@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, world-action-model, contact-rich, force-torque, inverse-dynamics, play-data, cosmos, flexiv, fudan, sjtu, seu, sustech, shanghai-innovation-institute]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-30
 project_id: forcewam
 arxiv: "2610.18852"
 project: https://force-wam.github.io/
+code: https://github.com/SII-ZijunX/ForceWAM
 related:
   - ../concepts/world-action-models.md
   - ../concepts/inverse-dynamics-model.md
@@ -14,7 +15,8 @@ related:
 sources:
   - ../../sources/papers/forcewam_arxiv_2610_18852.md
   - ../../sources/sites/forcewam-project.md
-summary: "ForceWAM（arXiv:2610.18852）：成功示教训练 ForceWM 预测腕部视频 + 六轴力矩未来，任务 + 无任务 play 数据训练 IDM 学「动作如何改变接触」，部署时慢-快执行器用新力反馈把未来转成动作；四个真机接触任务 85–95%，play 数据 +15–45 pp；项目页仅 Code coming soon。"
+  - ../../sources/repos/forcewam.md
+summary: "ForceWAM（arXiv:2610.18852）：成功示教训练 ForceWM 预测腕部视频 + 六轴力矩未来，任务 + 无任务 play 数据训练 IDM 学「动作如何改变接触」，部署时慢-快执行器用新力反馈把未来转成动作；四个真机接触任务 85–95%，play 数据 +15–45 pp；官方仓库仅有 README，实现待发布。"
 ---
 
 # ForceWAM：把「未来」与「响应」拆开学的力觉世界动作模型
@@ -46,7 +48,7 @@ summary: "ForceWAM（arXiv:2610.18852）：成功示教训练 ForceWM 预测腕�
 | **平台** | Flexiv Rizon 4S 7 自由度臂 + 末端六轴 F/T（型号未给出）；Robotiq 2F-85 或带柔顺指尖的摇杆工具；腕部相机 |
 | **数据** | 每任务族 200 条成功示教 + 200 条 play；Flip 与 Flip-D 共享数据 |
 | **骨干** | ForceWM 由 Cosmos Predict 2B 初始化；IDM 为 ResNet-34 + GRU + 7 层 Transformer 解码 |
-| **开源** | **宣称将开源**（2026-10-17 核查）：项目页仅 "Code coming soon"，无 GitHub / Hugging Face 链接 |
+| **开源** | [官方仓库](https://github.com/SII-ZijunX/ForceWAM)仅有 README，实现待发布（2026-10-30 核查） |
 
 ## 核心原理
 
@@ -77,7 +79,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**：截至 2026-10-17 项目页只写 "Code coming soon"，无可运行的官方代码，无法对齐真实入口；上方流程图依据论文 HTML 描述。
+**不适用**：截至 2026-10-30 官方仓库仅有占位 README，无可运行的官方代码，无法对齐真实入口；上方流程图依据论文 HTML 描述。
 
 ## 与其他工作对比
 
@@ -98,10 +100,10 @@ flowchart TB
 | 项 | 建议 |
 |----|------|
 | 复现门槛 | 需要力矩传感的臂（论文用 Flexiv Rizon 4S）与腕部相机；代码未发布，只能按论文自建 |
-| 数据配比 | 示教只喂 ForceWM；IDM 同时喂示教与 play，play 越多越好（0→200 条单调上升） |
+| 数据配比 | 示教只喂 ForceWM；IDM 同时喂示教与 play，论文所测范围内 play 数据从 0 增至 200 条时表现提升 |
 | 未来条件 | 视觉 + 力矩最优；仅视觉、仅力矩、无未来都更低 |
 | 延迟 | 世界模型每 6 个动作才刷新一次，快环由 IDM 靠力反馈维持 |
-| 开源状态 | 未发布；入库日期 2026-10-17，后续 lint 复查 |
+| 开源状态 | 官方仓库已有 README，训练与推理实现待发布（2026-10-30） |
 
 ## 实验与评测
 
@@ -148,7 +150,8 @@ flowchart TB
 
 - [forcewam_arxiv_2610_18852.md](../../sources/papers/forcewam_arxiv_2610_18852.md) — 论文摘录与开源核查
 - [forcewam-project.md](../../sources/sites/forcewam-project.md) — 项目页归档
-- [arXiv:2610.18852](https://arxiv.org/abs/2610.18852) — 原文
+- [官方仓库归档](../../sources/repos/forcewam.md) — 仓库发布状态
+- [arXiv:2610.18852v1](https://arxiv.org/abs/2610.18852v1) — 原文；本次更新未能获取全文，原有内容与流程图尚待重新核对
 
 ## 推荐继续阅读
 
