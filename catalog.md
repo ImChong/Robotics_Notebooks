@@ -3346,6 +3346,7 @@
 - [OmniCompass（全模态视频定位与理解基准 · arXiv:2610.18829）](wiki/entities/paper-omnicompass.md) — OmniCompass** 以配对的文本与文本+图像目标描述，评测视觉语言模型及音视频模型对视频的时序定位、空间定位和问答能力。 `📅unknown` `[entity_page]`
 - [OmniContact（Chaining Meta-Skills via Contact Flow）](wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md) — OmniContact**（*Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation `📅unknown` `[entity_page]`
 - [OmniDex](wiki/entities/paper-omnidex.md) — OmniDex**（*Scaling Dexterous Hand Grasping to Diverse Cluttered Scenes*，arXiv:2610.11194）同时给出一个杂乱场 `📅unknown` `[entity_page]`
+- [OmniEdu：面向学习与教学的开放基础模型](wiki/entities/paper-omniedu.md) — OmniEdu 是以学科解题、课程关联、学习诊断和教学引导为目标的 4B、9B、27B 教育模型族。 `📅unknown` `[entity_page]`
 - [OmniHOI](wiki/entities/paper-omnihoi.md) — OmniHOI**（*Dexterous Hand-Object Interaction from Monocular Human Video*，arXiv:2610.10855）把一段单目 RG `📅unknown` `[entity_page]`
 - [OmniInteract：双人形全身交互控制](wiki/entities/paper-omniinteract-dual-humanoids.md) — OmniInteract**（*Towards Unified Whole-Body Interaction Control for Dual Humanoids*，[arXiv:2610.260 `📅unknown` `[entity_page]`
 - [OmniManip](wiki/entities/paper-omnimanip.md) — OmniManip**（arXiv:2501.03841）收录于 Lumina [Embodied-AI-Guide 微信专 `📅unknown` `[entity_page]`
