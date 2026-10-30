@@ -16,6 +16,7 @@ related:
   - ./embspatial.md
 sources:
   - ../../sources/sites/multimodal-four-benchmarks-20261030.md
+  - ../../sources/repos/timelens.md
 summary: "TimeLens-Bench 是修订三个视频时序定位数据集的评测套件；TimeLens 研究时间编码及 RLVR 训练。"
 ---
 
@@ -91,6 +92,8 @@ TimeLens 强调定位指标依赖标注质量，榜单比较应同时核查数�
 - [EmbSpatial-Bench](./embspatial.md)：静态空间关系评测。
 
 ## 参考来源
+
+- [官方仓库归档](../../sources/repos/timelens.md)
 
 - [四项基准来源归档](../../sources/sites/multimodal-four-benchmarks-20261030.md)
 - [TimeLens 原始论文 v2](https://arxiv.org/abs/2512.14698v2)

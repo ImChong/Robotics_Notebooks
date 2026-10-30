@@ -15,6 +15,7 @@ related:
   - ./embspatial.md
 sources:
   - ../../sources/sites/multimodal-four-benchmarks-20261030.md
+  - ../../sources/repos/mmau.md
 summary: "MMAU 是覆盖语音、音乐和环境声音的音频理解与推理选择题基准；需区分数据版本与 test/test-mini。"
 ---
 
@@ -83,6 +84,8 @@ MMAU 适合诊断音频感知与推理，结果需带版本、数据划分和有
 - [EmbSpatial-Bench](./embspatial.md)：静态图像空间关系。
 
 ## 参考来源
+
+- [官方仓库归档](../../sources/repos/mmau.md)
 
 - [四项基准来源归档](../../sources/sites/multimodal-four-benchmarks-20261030.md)
 - [MMAU 原始论文 v1](https://arxiv.org/abs/2410.19168v1)
