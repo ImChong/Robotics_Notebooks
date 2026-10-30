@@ -2,10 +2,11 @@
 type: overview
 tags: [survey, vggt, 3d-reconstruction, state-estimation, slam, world-model, bupt, pku, foundation-model, pointmap]
 status: complete
-updated: 2026-09-22
+updated: 2026-10-30
 related:
   - ./hub-state-estimation.md
   - ../concepts/state-estimation.md
+  - ../entities/paper-avggt.md
   - ../entities/paper-vgg-ttt.md
   - ../entities/paper-lingbot-map.md
   - ../entities/paper-slamformer-infinity.md
@@ -89,7 +90,7 @@ flowchart TB
 | ID | 方向 | 篇数 | 典型子题 | 本库 |
 |----|------|------|----------|------|
 | S1 | Diverse-Input 3D Reconstruction | 11 | 可选相机/深度、LiDAR-VGGT、鱼眼/全景/事件 | [Wid3R](../entities/paper-wid3r.md)（宽 FoV 原生几何） |
-| S2 | Efficient 3D Reconstruction | 22 | 量化、token merge、sparse/global attention 加速 | [VGG-T³](../entities/paper-vgg-ttt.md)（TTT 线性化全局 attention） |
+| S2 | Efficient 3D Reconstruction | 22 | 量化、token merge、sparse/global attention 加速 | [VGG-T³](../entities/paper-vgg-ttt.md)（TTT 线性化全局 attention）；[AVGGT](../entities/paper-avggt.md)（免训练子采样） |
 | S3 | Robust 3D Reconstruction | 5 | 噪声、遮挡、域移 | — |
 | S4 | Streaming and Long-Sequence | 17 | 流式 KV、长序列窗口、有界内存 | [LingBot-Map](../entities/paper-lingbot-map.md)、[SURE-Map](../entities/paper-sure-map.md)、[VGG-T³](../entities/paper-vgg-ttt.md) |
 | S5 | Dynamic 3D Reconstruction | 8 | 动态场景 / 4D 查询 | [D4RT](../entities/paper-d4rt.md) |

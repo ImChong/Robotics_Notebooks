@@ -2,6 +2,7 @@
 type: entity
 project_id: ventral-groove-fibers
 doi: "10.1126/sciadv.aeh5116"
+venue: "Science Advances"
 tags: [paper, soft-robotics, pneumatic, materials, nus]
 status: draft
 updated: 2026-10-29
@@ -57,6 +58,12 @@ flowchart TD
 - 约 **0.8 kPa** 下实现约 **400 倍可逆面积扩张**；这是面积比，不是直径或长度比。
 - 纤维直径从约 **100 μm 到厘米级**，长度可达数十米；漂浮服装示范使用 **20 米**纤维。
 - 抓取示范包括抗干扰、高精度抓取，以及对神经样细丝和香灰锥的柔顺处理；摘要还报告开环操作。
+
+## 与其他工作对比
+
+- **对 [Deimel & Brock 顺应性欠驱动手](./paper-deimel-compliant-underactuated-robotic-hand.md)：** 后者以少量气动执行器配合机械耦合实现接触自适应抓取，是柔性气动手的经典路线；腹沟纤维把气动形变下沉到纤维材料结构，以微沟槽展开获得低压大面积扩张。
+- **对 [HapMorph](./paper-hapmorph-pneumatic-haptic-render.md)：** HapMorph 用拮抗式织物气动执行器在可穿戴形态下渲染尺寸与刚度，面向触觉反馈；腹沟纤维的织物示范面向响应式服装与抓取，二者同属织物 / 纤维气动驱动，但目标与指标不同。
+- 本页仅依据摘要，量化横比需待全文核实。
 
 ## 结论
 

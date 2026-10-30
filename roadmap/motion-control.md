@@ -642,7 +642,7 @@ flowchart TD
 
 ### 推荐读什么
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 9、Ch 11：Trajectory Generation、Robot Control
-- [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
+- [Underactuated Robotics](https://underactuated.mit.edu/)（Tedrake 的在线讲义；第 8 章 LQR、第 10 章轨迹优化）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
 - [LQR](../wiki/formalizations/lqr.md)
 - [Optimal Control](../wiki/concepts/optimal-control.md)
@@ -941,7 +941,8 @@ flowchart LR
 - 在仿真里跑通一个双足行走 MPC
 
 **推荐读什么：**
-- "Convex MPC for Bipedal Locomotion" (Bellicoso et al.)
+- Di Carlo et al., "Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control"（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 的代表作（四足）
+- Li & Nguyen, "Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots"（[arXiv:2104.00065](https://arxiv.org/abs/2104.00065)）— 同一思路用到双足
 - [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
 - [MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)

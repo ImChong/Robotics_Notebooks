@@ -251,6 +251,18 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-30] ingest | sources/repos/time-series-library.md — 收录时序分析实验库，核对源码入口与基准局限
+
+## [2026-10-30] ingest | 具身智能小站 10-30 期 28 篇（Event2Reward 深读）逐篇建独立详情节点，含步骤 2.5 开源核查；节点为索引级摘要，未通读各论文全文
+
+## [2026-10-30] ingest | sources/papers/codec4ai_arxiv_2610_33079.md — 收录稀疏解码与 DDRA，核查代码开放及实验边界
+
+## [2026-10-30] ingest | sources/repos/crowdbricks.md — 收录 SOMA 批量运动生成运行时与性能、许可边界
+
+## [2026-10-30] ingest | 具身智能研究室 SuperMimic 42 个社区复现/扩展项目盘点归档（raw + blog 清单），论文页补生态概览；未逐仓核查、未新建项目页
+
+## [2026-10-30] ingest | 深蓝《路径规划5大主流算法详解》10-30 重发版（具身智能基础第11篇）归档 raw，并入既有 source 与五范式对比页，未新建 wiki
+
 ## [2026-10-29] ingest | shadcn-admin
 
 - 收录管理后台 UI 集合，源码公开且使用 MIT 许可；记录技术栈、使用边界与组件更新注意事项。

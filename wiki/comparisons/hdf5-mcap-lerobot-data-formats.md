@@ -125,3 +125,7 @@ flowchart TB
 
 - [LeRobotDataset v3.0 官方文档](https://huggingface.co/docs/lerobot/lerobot-dataset-v3)
 - [MCAP evaluation PDF（动机）](https://mcap.dev/files/evaluation.pdf)
+
+## 相关工具
+
+- [Time-Series-Library](../entities/time-series-library.md)：通用时间序列分析实验库；使用机器人日志前需要自行完成数据适配。

@@ -122,7 +122,8 @@ IsaacGym /机器人领域常见。
 - 保持平衡约束
 
 代表工作：
-- "Convex Model Predictive Control for Bipedal Locomotion" (C原 Bellicoso et al.)
+- Di Carlo et al., "Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control"（IROS 2018，四足凸 MPC）
+- Li & Nguyen, "Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots"（arXiv:2104.00065，双足）
 - ANYmal 的行走控制
 
 ### 全身控制

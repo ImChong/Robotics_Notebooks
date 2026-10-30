@@ -2,7 +2,7 @@
 type: comparison
 tags: [path-planning, navigation, motion-planning, mpc, reinforcement-learning, graph-search, sampling, apf, taxonomy, shenlan]
 status: complete
-updated: 2026-09-01
+updated: 2026-10-30
 related:
   - ./mobile-robot-navigation-planning-methods.md
   - ./robot-control-eight-paradigms-taxonomy.md
@@ -153,6 +153,7 @@ flowchart TB
 ## 推荐继续阅读
 
 - 深蓝具身智能原文：<https://mp.weixin.qq.com/s/buw_88K8DlR9Tw70NDTzkw>
+- 同文重发版（《具身智能基础》第 11 篇，2026-10-30，含图注）：<https://mp.weixin.qq.com/s/f5H-Zh0HgOEaEM_82VKoqg>
 - LaValle, *Planning Algorithms* — 图搜索与采样经典教材
 - [PythonRobotics Path Planning](https://github.com/AtsushiSakai/PythonRobotics/tree/master/PathPlanning) — A\* / RRT / APF 动画对照
 - 高飞团队《移动机器人运动规划》课程（文内推荐；搜索、采样、动力学规划与 MPC）

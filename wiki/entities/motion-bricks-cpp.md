@@ -7,6 +7,7 @@ code: https://github.com/localai-org/motion-bricks.cpp
 related:
   - ../methods/motionbricks.md
   - ./paper-motionbricks.md
+  - ./crowdbricks.md
   - ./kimodo.md
   - ./kimodo-cpp.md
   - ../methods/sonic-motion-tracking.md
@@ -120,6 +121,8 @@ sequenceDiagram
 - [Kimodo](./kimodo.md) — Demo 可选动画来源；文本约束生成仍走官方 Python
 - [SONIC 运动跟踪](../methods/sonic-motion-tracking.md) — 可选 GGML 跟踪后端
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — 官方预览代码母仓
+
+- [CrowdBricks](./crowdbricks.md) — 面向 SOMA 多角色的 TensorRT 批量运行时。
 
 ## 参考来源
 
