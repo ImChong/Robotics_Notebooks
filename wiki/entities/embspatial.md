@@ -19,7 +19,7 @@ sources:
   - ../../sources/papers/embspatial_bench_arxiv_2406_05756.md
   - ../../sources/papers/embspatial_lightnav_2026.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
-summary: "EmbSpatial-Bench（arXiv:2406.05756）：egocentric 六类空间关系 benchmark；LightNav-ER 套件成员；已开源 mengfeidu/EmbSpatial-Bench。"
+summary: "EmbSpatial-Bench（arXiv:2406.05756）：egocentric 六类空间关系 benchmark；LightNav-ER 套件成员；数据公开，仓库未见可运行实现。"
 ---
 
 # EmbSpatial-Bench
