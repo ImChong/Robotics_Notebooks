@@ -34,7 +34,6 @@ ARTICLES: dict[str, dict[str, Any]] = {
 }
 
 
-
 def blog_name(a: str) -> str:
     return f"wechat_embodied_station_{ARTICLES[a]['key']}.md"
 
