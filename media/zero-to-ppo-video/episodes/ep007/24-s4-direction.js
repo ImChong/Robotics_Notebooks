@@ -1,18 +1,19 @@
-// 007 第 4 幕：方向——只转，不平移（路线 §L0 自测题 2 的后一半：方向 v' = Rv）。左边接着用俯视地图，右栏分几段换着写。
-// 句 1「扫地机往前开」扫地机身后拖出三道速度线，红色小箭头（往前）亮一下、写「往前开」，「一、零」右栏写「开的方向（扫地机坐标系）」和列向量 (1, 0)；
+// 007 第 4 幕：自由向量——只转，不平移（路线 §L0 自测题 2 的后一半：自由向量 v' = Rv）。左边接着用俯视地图，右栏分几段换着写。
+// 句 1「自由向量」只在划重点里写定义（只管大小和方向、不管起点，free vector），「扫地机往前开」扫地机身后拖出三道速度线，红色小箭头（往前）亮一下、写「往前开」，「一、零」右栏写「开的方向（扫地机坐标系）」和列向量 (1, 0)；
 // 句 2 讲清转的是什么：「先转」右栏写「① 只转」和 R 乘 (1, 0)；「扫地机坐标系」扫地机的两根小箭头（往前红、往左绿）亮一下，
 //    「世界坐标系」地图的两根轴亮一下；讲「转」要看得见转：「一、零」扫地机中心先按车头朝右画一支红色虚线箭头 (1, 0)（写 (1, 0)，扫地机自己的红箭头先退淡），
 //    「跟着车头转九十度」这支箭头绕扫地机中心转 90°，箭头尖描出一段蓝弧（写 90°），正好落在扫地机朝上的红箭头上；
 // 句 3「第一列拿一份」第一列框红，「零、一」写出 (0, 1)、下面写「世界坐标系」，「指向上方」红箭头亮一下、尖旁写 (0, 1)，「没错」打勾；
 // 句 4「再加上位置」右栏写「要是再加上位置」和 (0, 1) + (3, 1)，「三、二」写出橙色 (3, 2)，「箭头斜着指向右上」从原点画橙箭头到 (3, 2)（红箭头先退淡），
 //    「明明是朝上」红箭头回来、亮一下，橙箭头和橙算式打叉；
-// 句 5 橙箭头收起，「没有起点」右栏写「方向没有起点」，「停在这里」扫地机连同红箭头滑到 (1, 3)，「停在那里」再滑到 (−1, 0.5)，每停一处留下一支淡红箭头，
-//    「都是朝上」三支红箭头一起亮，扫地机滑回 (3, 1)；「只转，不平移」右栏框出「方向：只转，不平移」；
-// 句 6（自由向量）右栏上半写「只管长短和方向、不管起点：课本上叫」，「箭头」地图上三支红箭头再亮一下，「自由向量」弹出「自由向量（free vector）」牌子；
+// 句 5 橙箭头收起，「没有起点」右栏写「自由向量没有固定的起点」，「停在这里」扫地机连同红箭头滑到 (1, 3)，「停在那里」再滑到 (−1, 0.5)，每停一处留下一支淡红箭头，
+//    「都是朝上」三支红箭头一起亮，扫地机滑回 (3, 1)；「只转，不平移」右栏框出「自由向量：只转，不平移」；
+// 句 6（怎么分辨）「挪个地方」三支红箭头再亮一下，「就是自由向量」右栏写「挪了意思不变：自由向量」，「从原点画到袜子」画一支亮黄箭头到袜子（红箭头先收起），
+//    「一挪」它的虚线副本挪到 (−1, 0.5)、箭头尖不在袜子上（打叉），「位置」右栏写「原点画到点，一挪就变：点的位置」；
 // 句 7 右栏换成 T 乘 (1, 0, 0)：「补零」最后的 0 框亮黄，「第三列拿零份」第三列框紫、写「× 0」，「没加进来」写出 (0, 1, 0)；
-// 句 8「指到袜子的这支箭头」地图上从扫地机画亮黄虚线箭头到袜子，「也是方向」旁边写「方向」，「两个点相减」右栏写 (2, 3, 1) − (3, 1, 1)，
+// 句 8「指到袜子的这支箭头」地图上从扫地机画亮黄虚线箭头到袜子，「位移」箭头旁边写「位移」，「两个点相减」右栏写 (2, 3, 1) − (3, 1, 1)，
 //    「最后一个数」两个 1 框亮黄，「零」写出 (−1, 2, 0)、最后的 0 框亮黄；
-// 句 9 右栏换成总结：「速度」「力」两块小牌，「点后面补一」「方向后面补零」两行依次亮起。
+// 句 9 右栏换成总结：「速度」「力」两块小牌、写「→ 只转」（力有作用线，不说它是自由向量，只说换坐标系时也只转），「点后面补一」「自由向量后面补零」两行依次亮起。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep007.py。
 (function () {
   var E = window.EP007;
@@ -21,32 +22,33 @@
   var VX = 3, VY = 1, SOCK = [2, 3];
   var STOPS = [[VX, VY], [1, 3], [-1, 0.5], [VX, VY]];        // 句 4：扫地机滑过的几处（最后滑回来）
   var T = {
-    drive: 2.11, self: 3.1, a1: [5.34, 5.77],
-    turn: 6.94, frameB: 10.29, frameW: 11.99, ghost: 13.69, rot: [15.34, 16.24], k1: 17.04, r1: [18.49, 18.97], up: 19.86, ok: 20.54,
-    plusP: 22.32, r2: [23.74, 24.24], red: [24.73, 25.5], still: 27.05, phase1Out: 28.73,
-    noStart: 29.02, slide: [[31.03, 31.63], [32.28, 32.88], [34.73, 35.53]], same: 33.96, rule: 35.77, freeA: 38.67, arrows2: 41.08, free: 42.63, phase2Out: 43.86,
-    homo: 44.5, zero: 46.47, k3: 47.1, res3: 48.39,
-    toSock: 51.68, isDir: 53.6, sub: 54.94, lasts: 55.7, res4: [56.82, 58.32], phase4Out: 59.16,
-    speed: 59.45, force: 60.22, pt1: 62.96, dir0: 64.16
+    drive: 5.41, self: 6.4, a1: [8.64, 9.07],
+    turn: 10.23, frameB: 13.59, frameW: 15.28, ghost: 16.98, rot: [18.63, 19.53], k1: 20.33, r1: [21.78, 22.26], up: 23.15, ok: 23.83,
+    plusP: 25.61, r2: [27.03, 27.53], red: [28.02, 28.79], still: 30.34, phase1Out: 32.02,
+    noStart: 32.64, slide: [[35.29, 35.88], [36.52, 37.13], [38.98, 39.97]], same: 38.24, rule: 40.43,
+    moveAsk: 45.63, freeYes: 47.22, posDraw: [48.75, 49.6], posMove: [51.17, 51.9], posX: 52.0, posLine: 53.67, phase2Out: 55.9,
+    homo: 56.48, zero: 58.77, k3: 59.44, res3: 60.73,
+    toSock: 63.91, isDir: 64.61, sub: 66.97, lasts: 67.72, res4: [68.78, 70.25], phase4Out: 71.11,
+    speed: 71.86, force: 72.91, pt1: 77.92, dir0: 79.43
   };
   var RX = 452;
 
   E.scenes[3] = {
-    title: '方向：只转，不平移',
-    dur: 66.24,
+    title: '自由向量：只转，不平移',
+    dur: 81.43,
     cues: [
-      { at: 0, s: '扫地机往前开：在**扫地机坐标系**里，开的**方向**是 (1, 0)' },
-      { at: 6.84, s: '先转：乘 $R$，就是把**扫地机坐标系**里的数换成**世界坐标系**里的数——(1, 0) 跟着车头转 90°' },
-      { at: 16.94, s: '第 1 列拿 1 份：$R$ 乘 (1, 0) = (0, 1)，朝上，没错' },
-      { at: 21.76, s: '要是再加上**位置**：(3, 2)，箭头斜着指向右上——**算错**了' },
-      { at: 28.7, s: '**方向**没有起点：停在哪儿，往前开都朝上——只转，**不平移**' },
-      { at: 38.25, s: '只管长短和方向、不管起点：课本上叫**自由向量**（free vector）' },
-      { at: 44.18, s: '齐次变换：**方向**后面补 0，第 3 列拿 0 份，**位置**没加进来' },
-      { at: 50.83, s: '2 个点相减是**方向**：最后一个数 1 − 1 = 0' },
-      { at: 59.35, s: '速度、力都是**方向**：点后面补 1，**方向**后面补 0' }
+      { at: 0, s: '**自由向量**：只管大小和方向、不管起点的箭头（free vector）；扫地机往前开，在扫地机坐标系里开的方向是 (1, 0)' },
+      { at: 10.13, s: '先转：乘 $R$，就是把**扫地机坐标系**里的数换成**世界坐标系**里的数——(1, 0) 跟着车头转 90°' },
+      { at: 20.23, s: '第 1 列拿 1 份：$R$ 乘 (1, 0) = (0, 1)，朝上，没错' },
+      { at: 25.05, s: '要是再加上**位置**：(3, 2)，箭头斜着指向右上——**算错**了' },
+      { at: 31.99, s: '**自由向量**没有固定的起点：停在哪儿，往前开都朝上——只转，**不平移**' },
+      { at: 42.81, s: '怎么分辨：箭头挪个地方意思不变 → **自由向量**；原点画到点的箭头一挪就变 → 表示点的**位置**' },
+      { at: 56.18, s: '齐次变换：**自由向量**后面补 0，第 3 列拿 0 份，**位置**没加进来' },
+      { at: 63.14, s: '扫地机到袜子的**位移** = 2 个点相减，是**自由向量**：最后一个数 1 − 1 = 0' },
+      { at: 71.3, s: '同一个速度、同一个力，换到另一个坐标系里写也只转、不平移：点后面补 1，**自由向量**后面补 0' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('扫地机往前开，在扫地机坐标系里开的方向是 (1, 0)；先转：乘旋转矩阵，就是把扫地机坐标系里的数换成世界坐标系里的数，(1, 0) 先按车头朝右画出来，再跟着车头转 90 度，得到世界坐标系里的 (0, 1)，朝上；要是再加上位置就成了 (3, 2)，箭头斜着指向右上，算错了；方向没有起点，扫地机停在哪里往前开都是朝上，所以方向只转、不平移，这种只管长短和方向、不管起点的箭头课本上叫自由向量；用齐次变换算，方向后面补 0，位置一点也没加进来；两个点相减是方向，最后一个数 1 − 1 = 0；速度、力都是方向');
+      var s = K.sceneSvg('扫地机往前开，在扫地机坐标系里开的方向是 (1, 0)；先转：乘旋转矩阵，就是把扫地机坐标系里的数换成世界坐标系里的数，(1, 0) 先按车头朝右画出来，再跟着车头转 90 度，得到世界坐标系里的 (0, 1)，朝上；要是再加上位置就成了 (3, 2)，箭头斜着指向右上，算错了；自由向量没有起点，扫地机停在哪里往前开都是朝上，所以自由向量只转、不平移；怎么分辨：把箭头挪个地方意思不变的是自由向量，从原点画到袜子的箭头一挪就不指袜子了，它表示袜子的位置，不是自由向量；用齐次变换算，自由向量后面补 0，位置一点也没加进来；从扫地机到袜子的位移是两个点相减，也是自由向量，最后一个数 1 − 1 = 0；速度、力换坐标系时也只转、不平移');
       function vecN(parent, x, y, v, color, size) {
         return E.matN(parent, x, y, v.map(function (a) { return [a]; }), { size: size || 24, color: function (i) { return Array.isArray(color) ? color[i] : color; } });
       }
@@ -75,8 +77,12 @@
       var gArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '6 5' }, s), null, E.Z);   // 平面里的转动：蓝
       var gArcLab = E.halo(E.txt(s, vcp[0] + 0.95 * O.u, vcp[1] - 0.95 * O.u, '90°', 22, E.Z, 'start', 900));
       var upLab = E.halo(E.txt(s, 0, 0, '(0, 1)', 22, E.X, 'end', 900));
+      // 句 6（怎么分辨）：原点 → 袜子的箭头（袜子的位置），再把它挪到 (−1, 0.5)，箭头尖就不在袜子上了，打叉
+      var skd = [sk[0] - o0[0], sk[1] - o0[1]], skl = Math.hypot(skd[0], skd[1]), skEnd = [sk[0] - skd[0] / skl * 20, sk[1] - skd[1] / skl * 20];
+      var posArrow = E.vec(s, E.HI, 4.5, { head: 15 }), posCopy = E.vec(s, E.HI, 4.5, { head: 15, dash: '7 5' });
+      var pc0 = P(-1, 0.5), posXg = E.cross(s, pc0[0] + skEnd[0] - o0[0] + 14, pc0[1] + skEnd[1] - o0[1] - 4, 10, E.ERR, 4.5);
       var toSock = E.arrow(s, [P(VX, VY), [sk[0] + 8, sk[1] + 16]], E.HI, 3.5, { head: 14, dash: '8 6' });
-      var dirLab = E.halo(E.txt(s, P(2.45, 2.1)[0] - 12, P(2.45, 2.1)[1] + 6, '方向', 20, E.HI, 'end', 900));
+      var dirLab = E.halo(E.txt(s, P(2.45, 2.1)[0] - 12, P(2.45, 2.1)[1] + 6, '位移', 20, E.HI, 'end', 900));   // 两点之差叫位移（Hauser：displacement），它是自由向量
 
       /* ══ 右栏 ══ */
       // 第一段（句 1–3）
@@ -105,17 +111,15 @@
       fC.sym(resC, '=', 28);
       var rC = fC.mat(resC, col([3, 2]), vecO(E.ERR));
       var xC = E.cross(rowC, fC.x + 22, YC, 11, E.ERR, 4.5);
-      // 第二段（句 4）：方向没有起点 → 只转，不平移
+      // 第二段（句 4）：自由向量没有固定的起点 → 只转，不平移
       var ph2 = E.el('g', {}, s);
-      E.txt(ph2, 620, 352, '方向没有起点', 24, E.INK, 'middle', 900);
+      E.txt(ph2, 620, 352, '自由向量没有固定的起点', 24, E.INK, 'middle', 900);
       var ruleG = E.el('g', {}, ph2);
       K.paint(E.el('rect', { x: RX + 4, y: 368, width: 328, height: 46, rx: 12, 'stroke-width': 2.5 }, ruleG), E.tint(E.GOOD, 12, 'var(--demo-surface)'), E.GOOD);
-      E.txt(ruleG, 620, 399, '方向：只转，不平移', 24, E.GOOD, 'middle', 900);
-      // 句 6：一手资料里的叫法（《Modern Robotics》第 3 章 free vector）；上面一、二行（开的方向、只转）这时还在，写在它们和「方向没有起点」中间
-      var freeA = E.txt(ph2, 620, 258, '只管长短和方向、不管起点：课本上叫', 20, E.INK2, 'middle', 700);
-      var freeG = E.el('g', {}, ph2);
-      K.paint(E.el('rect', { x: RX + 4, y: 270, width: 328, height: 46, rx: 12, 'stroke-width': 2.5 }, freeG), E.tint(E.HI, 12, 'var(--demo-surface)'), E.HI);
-      E.txt(freeG, 620, 301, '自由向量（free vector）', 24, E.HI, 'middle', 900);
+      E.txt(ruleG, 620, 399, '自由向量：只转，不平移', 24, E.GOOD, 'middle', 900);
+      // 句 6：怎么分辨（上面一、二行这时还在，写在它们和「自由向量没有固定的起点」中间）
+      var ruleYes = E.txt(ph2, 620, 262, '挪了意思不变：自由向量', 22, E.GOOD, 'middle', 900);
+      var ruleNo = E.txt(ph2, 620, 302, '原点画到点，一挪就变：点的位置', 22, E.ERR, 'middle', 900);
       // 第三段（句 5）：T 乘 (1, 0, 0)
       var ph3 = E.el('g', {}, s), Y3 = 110, f3 = E.flow(RX - 6, Y3, 10);
       E.txt(ph3, RX, 40, '用齐次变换算', 21, E.INK2, 'start', 700);
@@ -136,12 +140,12 @@
       var res4 = E.el('g', {}, ph4);
       f4.sym(res4, '=', 28);
       var r4 = f4.mat(res4, col([-1, 2, 0]), vecO(E.HI));
-      var dirTag = E.txt(ph4, r4.pos(2, 0)[0], r4.box[3] + 24, '方向', 22, E.INK, 'middle', 900);   // 写在结果下面：右边没地方
+      var dirTag = E.txt(ph4, r4.pos(2, 0)[0], r4.box[3] + 32, '自由向量', 22, E.INK, 'middle', 900);   // 写在结果下面：右边没地方
       // 第五段（句 7）：总结
       var ph5 = E.el('g', {}, s);
       var chips = [['速度', 0], ['力', 1]].map(function (d) { return E.tag(ph5, 470 + d[1] * 104, 40, 90, 38, d[0], E.INK2, { size: 22, weight: 900 }); });
-      var chipTo = E.txt(ph5, 682, 66, '→ 方向', 22, E.INK, 'start', 900);
-      var rows5 = [{ s: '点', v: ['x', 'y', 1], c: E.HI, y: 190 }, { s: '方向', v: ['x', 'y', 0], c: E.INK, y: 330 }].map(function (d) {
+      var chipTo = E.txt(ph5, 682, 66, '→ 只转', 22, E.INK, 'start', 900);
+      var rows5 = [{ s: '点', v: ['x', 'y', 1], c: E.HI, y: 190 }, { s: '自由向量', v: ['x', 'y', 0], c: E.INK, y: 330 }].map(function (d) {
         var g = E.el('g', {}, ph5);
         var r = K.paint(E.el('rect', { x: RX + 4, y: d.y - 66, width: 328, height: 132, rx: 16, 'stroke-width': 2.5 }, g), E.tint(d.c, 10, 'var(--demo-surface)'), d.c);
         E.txt(g, 540, d.y + 9, d.s, 30, d.c, 'middle', 900);
@@ -191,7 +195,7 @@
           var gaOut = 1 - f(st, T.up + 0.6, 0.4);
           E.op(gArc, gaOut); E.op(gArcLab, f(st, T.rot[1], 0.3) * gaOut);
           E.op(vac.arrows[0].g, gDim);
-          var gb = Math.max(bump(st, T.drive, 0.8), fb, bump(st, T.up, 0.9), bump(st, T.still, 0.9), bump(st, T.same, 1.0), bump(st, T.arrows2, 0.9));
+          var gb = Math.max(bump(st, T.drive, 0.8), fb, bump(st, T.up, 0.9), bump(st, T.still, 0.9), bump(st, T.same, 1.0));
           vac.arrows[0].line.style.strokeWidth = 5 + 3 * gb; E.glow(vac.arrows[0].g, E.X, gb > 0.05);
           fwdLab.setAttribute('x', (tip[0] + 12).toFixed(1)); fwdLab.setAttribute('y', (tip[1] + 4).toFixed(1));
           E.op(fwdLab, f(st, T.drive, 0.3) * (1 - f(st, T.turn, 0.3)));
@@ -207,12 +211,20 @@
           ghosts.forEach(function (g, i) {
             var p0 = P(STOPS[i + 1][0], STOPS[i + 1][1]), p1 = P(STOPS[i + 1][0], STOPS[i + 1][1] + 1);
             g.set(p0[0], p0[1], p1[0], p1[1]);
-            var on = f(st, T.slide[i][1], 0.2) * (1 - f(st, T.phase2Out, 0.4));
-            var sb = Math.max(bump(st, T.same, 1.0), bump(st, T.arrows2, 0.9));
+            var on = f(st, T.slide[i][1], 0.2) * (1 - f(st, T.posDraw[0] - 0.3, 0.4));   // 画原点 → 袜子之前收起，给挪动的箭头让路
+            var sb = Math.max(bump(st, T.same, 1.0), bump(st, T.moveAsk, 0.9));
             E.op(g.g, on * (0.45 + 0.55 * sb)); g.line.style.strokeWidth = 4.5 + 2.5 * sb;
           });
           // 句 6：扫地机指到袜子的箭头
-          E.op(sock, 0.45 + 0.55 * f(st, T.toSock, 0.4));
+          E.op(sock, 0.45 + 0.55 * Math.max(f(st, T.toSock, 0.4), f(st, T.posDraw[0], 0.4) * (1 - f(st, T.phase2Out, 0.4))));
+          // 句 6：原点 → 袜子，再挪开
+          var pd = f(st, T.posDraw[0], T.posDraw[1] - T.posDraw[0]), pOut = 1 - f(st, T.phase2Out, 0.4);
+          posArrow.set(o0[0], o0[1], o0[0] + (skEnd[0] - o0[0]) * pd, o0[1] + (skEnd[1] - o0[1]) * pd);
+          E.op(posArrow.g, (pd > 0 ? 1 : 0) * pOut);
+          var pm = f(st, T.posMove[0], T.posMove[1] - T.posMove[0]), cs = [o0[0] + (pc0[0] - o0[0]) * pm, o0[1] + (pc0[1] - o0[1]) * pm];
+          posCopy.set(cs[0], cs[1], cs[0] + skEnd[0] - o0[0], cs[1] + skEnd[1] - o0[1]);
+          E.op(posCopy.g, (st >= T.posMove[0] ? 1 : 0) * pOut);
+          E.drawOn(posXg, f(st, T.posX, 0.4)); E.op(posXg, (st >= T.posX ? 1 : 0) * pOut);
           E.drawOn(toSock.line, f(st, T.toSock, 0.9)); E.op(toSock.head, f(st, T.toSock + 0.8, 0.2));
           var tOut = 1 - f(st, T.phase4Out, 0.4);
           E.op(toSock.g, tOut); E.op(dirLab, f(st, T.isDir, 0.3) * tOut);
@@ -234,8 +246,7 @@
           E.drawOn(xC, f(st, T.still + 0.3, 0.4));
           E.op(ph2, f(st, T.noStart, 0.4) * (1 - f(st, T.phase2Out, 0.4)));
           E.pop(ruleG, 620, 391, f(st, T.rule, 0.4), 0.85);
-          E.op(freeA, f(st, T.freeA, 0.4));
-          E.pop(freeG, 620, 293, f(st, T.free, 0.4), 0.85);
+          E.op(ruleYes, f(st, T.freeYes, 0.4)); E.op(ruleNo, f(st, T.posLine, 0.4));
           E.op(ph3, f(st, T.homo, 0.4) * (1 - f(st, T.phase4Out, 0.4)));
           var z = f(st, T.zero, 0.35), qz = v3.pos(2, 0);
           E.op(v3.cells[2][0], z); E.scaleAt(v3.cells[2][0], qz[0], qz[1], 1 + 0.6 * (1 - z));
