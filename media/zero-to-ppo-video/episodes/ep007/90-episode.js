@@ -40,7 +40,7 @@
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词：位置 violet（同分镜里的 p）；点亮黄（同袜子、杯子）；自由向量白字（同分镜，绿留给「对」和 y 轴）；不平移 good；算错橙（同 005、006）
     boldColors: { '位置': 'var(--violet)', '位置 p': 'var(--violet)', '自由向量': 'var(--text)', '不平移': 'var(--demo-good)', '算错': E.ERR },
-    introDur: 34.04,
+    introDur: 37.52,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep007.py 的 recap 句对齐）
