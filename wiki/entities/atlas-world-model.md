@@ -3,10 +3,11 @@
 type: entity
 tags: [world-models, spatial-intelligence, generative-ai, 3dgs, 3d-reconstruction, real-to-sim, diffusion, transformer]
 status: complete
-updated: 2026-09-05
+updated: 2026-10-30
 related:
   - ./world-labs.md
   - ./marble-world-model.md
+  - ./mundo-world-model.md
   - ./spark-3dgs-renderer.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -108,6 +109,8 @@ flowchart TB
 - **与 Boston Dynamics Atlas 机器人无关**：本页指 World Labs **世界模型** 产品名，勿与 [人形硬件选型](../queries/humanoid-hardware-selection.md) 中的 Atlas 平台混淆。
 
 ## 关联页面
+
+- [Mundo（显式代理与物理仿真驱动的定制世界模型）](./mundo-world-model.md)
 
 - [World Labs（空间智能与世界生成）](./world-labs.md)
 - [Marble（当前可注册的多模态世界产品）](./marble-world-model.md)

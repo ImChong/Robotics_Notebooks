@@ -5,7 +5,7 @@
 - **标题：** ForceWAM: Decoupling Future and Response Learning from Demo and Play Data for Contact-Rich Manipulation
 - **arXiv：** <https://arxiv.org/abs/2610.18852>（HTML：<https://arxiv.org/html/2610.18852>）
 - **项目页：** <https://force-wam.github.io/>（归档：[forcewam-project.md](../sites/forcewam-project.md)）
-- **代码：** 项目页标注 "Code coming soon"，无 GitHub / Hugging Face 链接（2026-10-17 核查）
+- **代码：** <https://github.com/SII-ZijunX/ForceWAM>；截至 2026-10-30 仅有占位 README，实现待发布（[仓库归档](../repos/forcewam.md)）
 - **作者：** Zijun Xu、Wendi Chen、Xinkai Wang（共同一作）等 19 人，通讯作者 Lixin Yang；含 Chuan Wen、Jieru Zhao、Wenchao Ding、Cewu Lu
 - **机构（项目页）：** 复旦大学；上海交通大学；东南大学；上海创智学院（Shanghai Innovation Institute）；南方科技大学
 - **入库日期：** 2026-10-17
@@ -15,7 +15,7 @@
 ## 开源状态（步骤 2.5）
 
 - **项目页核查（2026-10-17）：** 页面仅有 "Code coming soon"，无仓库链接。
-- **结论：** **宣称将开源 / 未列链接**；截至入库日不可复现，无 `sources/repos/` 归档。
+- **2026-10-30 更新：** 官方仓库已公开地址，但仅有 README，训练及推理实现仍待发布。本次未能访问项目页和论文全文，原有方法及实验摘录尚待以 [v1 全文](https://arxiv.org/abs/2610.18852v1)复核。
 
 ## 摘录 1：方法（摘要 + arXiv HTML）
 

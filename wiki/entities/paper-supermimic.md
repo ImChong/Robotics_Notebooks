@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-29
+updated: 2026-10-30
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -22,10 +22,12 @@ sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
+  - ../../sources/repos/supermimic-repro-sim2real.md
   - ../../sources/repos/supermimic-unilab.md
   - ../../sources/repos/supermimic-vibed.md
   - ../../sources/repos/awesome-supermimic.md
   - ../../sources/repos/supermimic-integration-drafts.md
+  - ../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -90,6 +92,30 @@ flowchart TB
 
 两者让读者可以检查不同仿真栈下的独立实现细节；论文方法的权威描述仍以论文和官方项目页为准，复现指标需结合各自硬件、配置和 README 的声明解读。
 
+### G1 社区复现与真机部署（待完整核验）
+
+[SuperMimic-Repro-Sim2Real](../../sources/repos/supermimic-repro-sim2real.md) 基于社区复现扩展 mjlab 训练、ONNX 导出、Sim2Sim 和 G1 真机部署，并公开部分模型。作者自报严格论文观测的 LAFAN1 归一化回报为 0.56，增加 anchor 相对位姿后为 0.904；后者不能直接用于该真机部署。仓库还报告 46 秒串联舞蹈与特定动作模型的两次真机成功；这些是社区复现结果，不是原论文实验。数据须另行下载并遵守条款。
+
+下面的时序仅覆盖已检查的入口与关键调用；论文全文、实现细节及完整部署链仍待核实。
+
+```mermaid
+sequenceDiagram
+  participant U as 运行者
+  participant T as sm-train
+  participant L as Trainer.run
+  participant E as mjlab 环境
+  participant P as PolicyTrainer
+  U->>T: 启动训练
+  T->>L: 构造 Trainer 并运行
+  L->>E: env.step 动作采样
+  L->>P: 从 buffer 更新策略
+  P-->>L: 返回训练指标
+```
+
+### 社区复现与扩展生态（2026-10-29 公众号盘点）
+
+[具身智能研究室的盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)列出 42 个相关项目（截至 2026-10-29），分为基础复现 7、方法改进 5、本体与硬件 8、感知与地形 4、操作与灵巧手 4、肌肉与交互 3、框架集成 6、真机与部署 2、相关探索 3。已有 wiki 节点的有 [HoloMotion](./holomotion.md)、[MorphMimic](./paper-morphmimic.md)、[muscle-supermimic](./muscle-supermimic.md)、[Project Instinct](./project-instinct.md)（InstinctMJ 分支）。该清单为转述自文章的检索结果，我未逐个核查仓库；均属社区实现，不能据此认为论文官方代码已开放。
+
 ### 上游集成草案（2026-10-29）
 
 [LeRobot #5119](../../sources/repos/supermimic-integration-drafts.md) 集成 Uni-SuperMimic 导出 actor，针对 29 DoF G1 以 50 Hz 输出关节目标；PR 作者仅报告 MuJoCo 仿真验证，真机尚待验证，actor 与参考动作不随 PR 提供。策略跟踪动作片段，不接受速度指令。
@@ -129,6 +155,7 @@ flowchart TB
 - [模仿学习](../methods/imitation-learning.md) — 从参考动作学习跟踪策略的相关方法。
 
 ## 参考来源
+- [SuperMimic-Repro-Sim2Real 社区复现](../../sources/repos/supermimic-repro-sim2real.md)
 - [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
 - [SuperMimic arXiv 论文](../../sources/papers/supermimic_arxiv_2610_28480.md)
@@ -138,6 +165,7 @@ flowchart TB
 - [awesome-supermimic 社区资源索引](../../sources/repos/awesome-supermimic.md)
 
 - [LeRobot 与 Isaac Lab 集成草案](../../sources/repos/supermimic-integration-drafts.md)
+- [具身智能研究室：SuperMimic 42 个复现与扩展项目盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)
 
 ## 推荐继续阅读
 

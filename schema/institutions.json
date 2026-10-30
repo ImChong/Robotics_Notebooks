@@ -4400,6 +4400,12 @@
       "aliases": [
         "part-db"
       ]
+    },
+    "patch-gg": {
+      "label": "帕奇团队（Patch）",
+      "aliases": [
+        "patch-gg"
+      ]
     }
   }
 }

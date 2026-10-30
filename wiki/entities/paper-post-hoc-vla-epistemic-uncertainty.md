@@ -15,6 +15,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/post_hoc_vla_epistemic_uncertainty_arxiv_2610_29730.md
   - ../../sources/repos/post_hoc_vla_epistemic_uncertainty.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [embodied-station-2026-10-29-58-papers-technology-map](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

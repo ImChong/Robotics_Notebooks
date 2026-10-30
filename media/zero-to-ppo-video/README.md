@@ -1,6 +1,6 @@
 # 《从头学人形机器人算法 · 零基础篇》视频：源稿与生成脚本
 
-按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
+按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 062，想读 PPO 原论文可以接姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
 
 渲染流程改自论文系列的 [`scripts/paper_video`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/tree/main/scripts/paper_video)（BSD-3，见 `vendor/LICENSE`）：安全区、逐帧版式检查、旁白与分镜对时的做法都照搬。
 

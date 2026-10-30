@@ -2,7 +2,7 @@
 type: formalization
 tags: [real-time, communication, middleware, lcm, networking, math]
 status: complete
-updated: 2026-05-01
+updated: 2026-10-29
 related:
   - ./control-loop-latency-modeling.md
   - ../concepts/lcm-basics.md
@@ -79,7 +79,7 @@ T_{i,k} = T_{\text{send}} + T_{\text{switch}} + T_{\text{recv}} + T_{\text{stack
 $$
 
 - $T_{\text{send}}$：发送方内核协议栈到网卡；
-- $T_{\text{switch}}$：交换机存储转发 + 多播复制 ($\propto N$ 订阅者数量)；
+- $T_{\text{switch}}$：交换机存储转发 + 多播复制（是否随订阅端口数 $N$ 增长取决于交换机实现）；
 - $T_{\text{recv}}$：接收方网卡 → socket buffer；
 - $T_{\text{stack}}$：用户态 `recvmsg` + 反序列化。
 
@@ -109,7 +109,7 @@ $$
 \Delta_k^{\max} = \max_{i,j} |T_{i,k} - T_{j,k}|
 $$
 
-经验上 $\Delta_k^{\max}$ 服从 Gumbel 型极值分布，其期望随订阅者数 $N$ 缓慢增长 $\sim \sigma\sqrt{2\ln N}$。这意味着：把日志、可视化、状态估计三类订阅者放在同一组播组上，调度抖动会被“最慢那个”放大。**工程对策**：把硬实时订阅者（控制环）单独走一个组播组或共享内存，绝不和 GUI/日志混播。
+若各订阅者延迟近似独立、标准差为 $\sigma$ 的高斯分布，$\Delta_k^{\max}$ 即 $N$ 个样本的极差，其期望随订阅者数 $N$ 缓慢增长，大 $N$ 时量级约 $2\sigma\sqrt{2\ln N}$（最大值与最小值各偏离均值约 $\sigma\sqrt{2\ln N}$）；真实延迟右偏，尾部通常更重。这意味着：把日志、可视化、状态估计三类订阅者放在同一组播组上，调度抖动会被“最慢那个”放大。**工程对策**：把硬实时订阅者（控制环）单独走一个组播组或共享内存，绝不和 GUI/日志混播。
 
 ## 数据老化与控制可用窗口
 
@@ -119,11 +119,13 @@ $$
 A(\tau) = \tau - t_{\text{last}}(\tau)
 $$
 
-在 UDP 多播下 $A(\tau)$ 是一个分段线性的锯齿过程：每来一帧瞬时跌到 $T_{\text{stack}}$，无新帧时以斜率 1 累加。稳态平均年龄
+在 UDP 多播下 $A(\tau)$ 是一个分段线性的锯齿过程：每来一帧瞬时跌到该帧的端到端延迟 $T_{i,k}$，无新帧时以斜率 1 累加。设发送频率为 $f_{\text{ctrl}}$、每帧独立以概率 $p_{\text{miss}}$ 丢失（或迟到），相邻两次成功送达的间隔为 $G/f_{\text{ctrl}}$，$G$ 服从成功概率 $1-p_{\text{miss}}$ 的几何分布；由锯齿面积 $\mathbb{E}[X^2]/(2\mathbb{E}[X])$ 得稳态平均年龄
 
 $$
-\mathbb{E}[A] = \frac{1}{f_{\text{ctrl}}} \cdot \frac{1}{1 - p_{\text{miss}}} \cdot \tfrac{1}{2} + \mathbb{E}[T_{\text{stack}}]
+\mathbb{E}[A] = \frac{1}{f_{\text{ctrl}}} \left( \frac{1}{1 - p_{\text{miss}}} - \tfrac{1}{2} \right) + \mathbb{E}[T_{i,k}]
 $$
+
+$p_{\text{miss}} = 0$ 时退化为半个发送周期加平均延迟。Gilbert-Elliott 突发丢包会拉长送达间隔的方差，实际平均年龄高于此独立丢包估计。
 
 控制器可用观测窗口 $W$ 是 $A(\tau) \leq A_{\max}$ 的时间占比，要求
 
@@ -137,7 +139,7 @@ $$
 
 落地这套形式化，通常归结为四组测量：
 
-1. 在每条报文里写入发送时间戳，接收侧用 `clock_gettime(CLOCK_MONOTONIC_RAW)` 算 $T_{i,k}$，按窗口统计 99 / 99.9 分位；
+1. 在每条报文里写入发送时间戳，接收侧用同一时钟读数算 $T_{i,k}$，按窗口统计 99 / 99.9 分位；同一主机内可用 `clock_gettime(CLOCK_MONOTONIC)`，跨主机时单调时钟不可比，须先做 PTP 同步并使用同步后的时钟（如 `CLOCK_REALTIME`）；
 2. 用序列号检测漏号，估计稳态丢包率 $\bar{p}$ 与突发长度分布；
 3. 双订阅者交叉日志，计算 $\Delta_{ij,k}$ 的极值分布；
 4. 控制环里持续记录 AoI，绘 $A(\tau)$ 锯齿曲线，找 deadline miss 的根因。
@@ -172,9 +174,10 @@ $$
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
 - Huang, A. S., Olson, E., Moore, D. C., *LCM: Lightweight Communications and Marshalling*, IROS 2010.
 - Gilbert, E. N., *Capacity of a Burst-Noise Channel*, Bell System Technical Journal, 1960.
+- Elliott, E. O., *Estimates of Error Rates for Codes on Burst-Noise Channels*, Bell System Technical Journal, 1963.
 - Kaul, S., Yates, R., Gruteser, M., *Real-Time Status: How Often Should One Update?*, INFOCOM 2012.
 
 ## 推荐继续阅读
 
 - RFC 1112 / 4604 (IGMP 与 SSM 多播)
-- Tanenbaum, *Computer Networks* (5th ed.) 第 4 章：多址访问与多播
+- Tanenbaum, *Computer Networks* (5th ed.) 第 4 章（介质访问控制子层）与第 5 章（网络层，含多播路由）
