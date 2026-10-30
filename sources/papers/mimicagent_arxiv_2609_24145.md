@@ -7,7 +7,7 @@
 - **arXiv abs：** <https://arxiv.org/abs/2609.24145>
 - **PDF：** <https://arxiv.org/pdf/2609.24145>
 - **项目页：** <https://luckykantnayak.github.io/mimic-agent/> — 归档见 [`sources/sites/mimic-agent-github-io.md`](../sites/mimic-agent-github-io.md)
-- **代码：** **待发布**（项目页标注 *code coming soon*，截至 2026-09-23 无 GitHub URL）
+- **代码（2026-10-30 核查）：** 四足仓库仅有占位 README；人形仓库已公开运动学生成代码，详见 [仓库核查](../repos/mimicagent-code.md)。
 - **机构：** 卡内基梅隆大学（Carnegie Mellon University）— Lucky Kant Nayak*、Narayanan Palghat Parameswaran*、Neehar Peri、Deva Ramanan（* 共同一作）
 - **入库日期：** 2026-09-23
 - **一句话说明：** **Prompt-to-trajectory** agentic 管线：LLM  coding agent 从文本生成 **粗粒度参考轨迹**（MuJoCo FK，无物理仿真），再喂给 **example-guided RL**（DeepMimic 族）训练四足技能；Claude Fable 5.1 下 **87%** prompt 语义对齐，多技能上用户偏好常优于 Eureka 与手工 keyframe。
@@ -51,7 +51,8 @@ Trot、Bound、Side Flip、Front Flip、Aerial Crossover、Crab Diagonal Scuttle
 | 组件 | 状态 |
 |------|------|
 | 项目页 / 视频 | 已公开 |
-| 代码仓库 | **待发布**（code coming soon） |
+| 四足代码仓库 | 占位 README，代码待发布（2026-10-30） |
+| 人形代码仓库 | 已公开运动学生成与回放代码（2026-10-30） |
 | 预训练 checkpoint | 未列链接 |
 
 ## 对 wiki 的映射
@@ -63,4 +64,5 @@ Trot、Bound、Side Flip、Front Flip、Aerial Crossover、Crab Diagonal Scuttle
 
 - [x] arXiv + 项目页核查
 - [x] 开源状态：待发布
-- [ ] 代码发布后补 `sources/repos/` 与时序图
+- [x] 核查两个仓库并补人形代码时序图
+- [ ] 获取并通读论文全文，复核现有内容与主流程图
