@@ -13,9 +13,13 @@
 //    「坑里」写「局部最优」「全局最优」，「不一定是最低」左边写「不是最低」（初始值很关键：Boyd 1.4.1 节、Tedrake 第 24 章）；
 // 句 8「离答案近」全局最优附近的横轴亮一段，「上一次」曲线上插一面小旗「上一次的答案」，从那儿出发两三步就到最低的坑
 //    （上一步的解当初始值：Modern Robotics 6.2 节）；
-// 句 9 换回碗，「约束」1 格处立起橙色的墙，顶上式子补上 s.t. u ≤ 1，「从零格出发」小球从 0 格出发：0 → 0.8 → 1（挪过墙就拉回边上，
+// 句 9「不知道答案」小旗收起、出「答案在哪？」，「像碗一样」虚线画出一只好算的碗（对两个坑的曲线做最小二乘的抛物线），「碗底」它的碗底亮起，
+//    「用它做初始值」碗底正上方、两个坑的曲线上放一只球、写「初始值」，挪到最低的坑（拿简单的凸问题的解做初始值：Boyd 1.4.3 节）；
+// 句 10「多选几个初始值」五只球依次出现在 0.15、1.1、1.7、2.3、3.8 格，「各挪一遍」一起往下挪，「留下」停在高坑的三只淡下去，
+//    「最小」低坑的两只鼓一下、写「代价最小 ✓」；
+// 句 11 换回碗，「约束」1 格处立起橙色的墙，顶上式子补上 s.t. u ≤ 1，「从零格出发」小球从 0 格出发：0 → 0.8 → 1（挪过墙就拉回边上，
 //    即 EE364b 讲义的投影次梯度法），「停」打勾；
-// 句 10「一小步一小步」右边写「一小步一小步挪」，「第六季」出「第六季：训练策略」小牌和小 G1。
+// 句 12「一小步一小步」右边写「一小步一小步挪」，「第六季」出「第六季：训练策略」小牌和小 G1。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep008.py。
 (function () {
   var E = window.EP008, K = E.K, H = E.HEX;
@@ -32,8 +36,10 @@
     two: 41.7, two2: 42.88, sameBot: 44.88,
     wIn: 47.0, wDip: 48.81, wStart: 49.84, wLab: 52.43, notLow: 52.94,
     near: 57.24, prev: 59.34,
-    back: 61.7, con: 62.14, restart: 62.8, cSteps: [63.89, 64.36], stop: 65.27,
-    small: 67.28, s6: 69.23
+    unk: 62.09, unkQ: 63.42, approx: 66.2, appBot: 68.37, appInit: 69.52, appGo: 70.3,
+    multi: 73.01, multiGo: 74.4, keep: 75.68, keepBest: 76.34,
+    back: 78.4, con: 78.8, restart: 79.46, cSteps: [80.55, 81.02], stop: 81.93,
+    small: 83.94, s6: 85.89
   };
   // 两个坑的代价（示意）：w(u) = 1.6 (u − 0.8)² (u − 3.2)² − (u − 2) + 4，左坑高（局部最优）、右坑低（全局最优）
   function W(u) { return 1.6 * Math.pow(u - 0.8, 2) * Math.pow(u - 3.2, 2) - (u - 2) + 4; }
@@ -55,10 +61,10 @@
 
   E.scenes[3] = {
     title: '写成优化问题，交给电脑找',
-    dur: 72.91,
+    dur: 89.57,
     cues: [
       { at: 0, s: '变量、目标、约束凑齐 = 一个**优化问题**' },
-      { at: 5.33, s: 'min 下面写**变量**，后面是**目标函数**，s.t. 后面写**约束**' },
+      { at: 5.33, s: 'min 下：**变量**；后面：**目标函数**；s.t. 后：**约束**' },
       { at: 12.25, s: '变量多了：$u$ 换成一串数 $x$，写法不变' },
       { at: 16.61, s: '电脑怎么找碗底？变量一多，没法一个一个试' },
       { at: 21.36, s: '先选出发点（**初始值**），再看往左还是往右代价变小，就往那边挪一小步' },
@@ -66,8 +72,10 @@
       { at: 38.04, s: '这只碗只有一个碗底：从左、从右出发，都停在同一个碗底' },
       { at: 46.78, s: '不止一个坑：从不同的地方出发，可能停在不同的坑里（局部最优）' },
       { at: 55.61, s: '初始值选在离答案近的地方，常用上一次算出来的答案' },
-      { at: 61.68, s: '加上约束：从 0 格出发，挪到 1 格的边上就停下' },
-      { at: 66.86, s: '一小步一小步地挪：第六季训练策略还会用到' }
+      { at: 61.68, s: '不知道答案在哪：先换一个像碗一样好算的问题，用它的碗底做初始值' },
+      { at: 71.74, s: '多选几个初始值，各挪一遍，留下代价最小的' },
+      { at: 78.34, s: '加上约束：从 0 格出发，挪到 1 格的边上就停下' },
+      { at: 83.52, s: '一小步一小步地挪：第六季训练策略还会用到' }
     ],
     build: function (K) {
       var s = K.sceneSvg('写成优化问题：最小化下面写变量 u，后面是目标函数 (4 − u)² + u²，s.t. 后面写约束 u ≤ 1；变量多了就换成一串数 x，写成 min f(x) s.t. g(x) ≤ 0；电脑找碗底：先选一个出发点叫初始值，看往左还是往右代价变小，就往那边挪一小步，越靠近碗底坡越缓、步子越小，最后停在碗底；这只碗只有一个碗底，从左边、右边出发都停在同一个碗底；代价不止一个坑时，从不同的地方出发可能停在不同的坑里，所以初始值要选在离答案近的地方，常用上一次算出来的答案；加上约束，从零格出发挪到一格的边上就停下；这种一小步一小步挪的办法，第六季训练策略还会用到');
@@ -163,6 +171,30 @@
       K.paint(E.el('line', { x1: pq[0], y1: pq[1], x2: pq[0], y2: pq[1] - 52, 'stroke-width': 2.5 }, prevG), null, E.HI);
       K.paint(E.el('path', { d: 'M ' + pq[0] + ' ' + (pq[1] - 52) + ' L ' + (pq[0] + 20) + ' ' + (pq[1] - 45) + ' L ' + pq[0] + ' ' + (pq[1] - 38) + ' Z' }, prevG), E.HI);
       E.halo(E.txt(prevG, pq[0] - 6, pq[1] - 62, '上一次的答案', 20, E.HI, 'middle', 900));
+      // 不知道答案在什么地方：① 换一只像碗一样好算的简单问题——对两个坑的曲线做最小二乘的抛物线（0.905u² − 4.62u + 10.72，
+      // 碗底 u ≈ 2.55，在中间那道坎 u ≈ 1.89 的右边），用它的碗底做初始值；② 多选几个初始值各挪一遍，留下代价最小的
+      var AP = (function () {
+        var S = [0, 0, 0, 0, 0], Tt = [0, 0, 0];
+        for (var k = 0; k <= 400; k++) { var u = 4 * k / 400, y = W(u); S[0]++; S[1] += u; S[2] += u * u; S[3] += u * u * u; S[4] += u * u * u * u; Tt[0] += y; Tt[1] += u * y; Tt[2] += u * u * y; }
+        var M = [[S[4], S[3], S[2], Tt[2]], [S[3], S[2], S[1], Tt[1]], [S[2], S[1], S[0], Tt[0]]];
+        for (var i = 0; i < 3; i++) for (var r = 0; r < 3; r++) if (r !== i) { var fct = M[r][i] / M[i][i]; for (var c = i; c < 4; c++) M[r][c] -= fct * M[i][c]; }
+        var a = M[0][3] / M[0][0], b = M[1][3] / M[1][1], cc = M[2][3] / M[2][2];
+        return { f: function (u) { return a * u * u + b * u + cc; }, u0: -b / (2 * a) };
+      })();
+      var appG = E.el('g', {}, B);
+      var appC = K.paint(E.el('path', { d: ch.path(AP.f, 0.2, 4, 60), fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '9 7', 'stroke-linecap': 'round' }, appG), null, E.ACC);
+      var ab = P(AP.u0, AP.f(AP.u0)), aw = P(AP.u0, W(AP.u0));
+      E.halo(E.txt(appG, P(2.0, 0)[0], P(0, 3.4)[1], '好算的碗', 20, E.ACC, 'middle', 900));   // 写在碗下面，不压两个坑的曲线
+      var appBot = K.paint(E.el('circle', { cx: ab[0], cy: ab[1], r: 8, 'stroke-width': 2.5 }, B), E.ACC, 'var(--demo-surface)');
+      var unkQ = E.halo(E.txt(B, P(2.2, 0)[0], P(0, 11.5)[1], '答案在哪？', 24, E.HI, 'middle', 900));
+      var rAp = runner(E.HI), wAp = gd(W, AP.u0, 10, 0.04);
+      var apLab = E.halo(E.txt(B, aw[0] + 14, aw[1] - 14, '初始值', 20, E.HI, 'start', 900));
+      var MS = [0.15, 1.1, 1.7, 2.3, 3.8].map(function (u0, i) {
+        var run = gd(W, u0, 14, 0.04);
+        return { r: runner(E.HI), run: run, end: run[run.length - 1], i: i };
+      });
+      var bestMin = Math.min.apply(null, MS.map(function (m) { return W(m.end); }));
+      var keepLab = E.halo(E.txt(B, P(gloU, 0)[0], P(0, 6)[1], '代价最小 ✓', 22, E.HI, 'middle', 900));
       var small = E.halo(E.txt(B, 712, 170, '一小步一小步挪', 24, E.HI, 'middle', 900));
       var s6 = E.el('g', {}, B);
       E.tag(s6, 628, 196, 168, 40, '第六季：训练策略', E.ACC, { size: 20, ink: E.ACC, weight: 900, rx: 12 });
@@ -216,7 +248,7 @@
           });
           E.op(noTry, f(st, T.noTry, 0.3) * (1 - f(st, T.start, 0.4)));
           // 碗 ↔ 两个坑
-          var wOn = f(st, T.wIn, 0.6) * (1 - f(st, T.back, 0.5));
+          var wOn = f(st, T.wIn, 0.6) * (1 - f(st, T.back, 0.5));   // 两个坑：句 7–10
           E.op(bowl, 1 - wOn); E.op(wCurve, wOn);
           var bowlPart = 1 - f(st, T.wIn - 0.4, 0.4);              // 碗上的这些东西在换成两个坑之前收起
 
@@ -273,11 +305,31 @@
           E.op(gloLab, f(st, T.wLab + 0.2, 0.3) * labOut);
           E.op(notLow, f(st, T.notLow, 0.3) * labOut);
           /* 句 8：离答案近、上一次的答案 → 从那儿出发，两三步就到最低的坑 */
-          E.op(near, f(st, T.near, 0.3) * (1 - f(st, T.back, 0.3))); E.op(nearLab, f(st, T.near, 0.3) * (1 - f(st, T.prev, 0.3)));
-          E.pop(prevG, pq[0], pq[1] - 30, f(st, T.prev, 0.3) * (1 - f(st, T.back, 0.3)), 0.6);
+          var prevOut = 1 - f(st, T.unk, 0.3);                       // 「不知道答案」时收起
+          E.op(near, f(st, T.near, 0.3) * prevOut); E.op(nearLab, f(st, T.near, 0.3) * (1 - f(st, T.prev, 0.3)));
+          E.pop(prevG, pq[0], pq[1] - 30, f(st, T.prev, 0.3) * prevOut, 0.6);
           var wp = walk(st, wP, T.prev + 0.6, 0.2);
           rP.set(W, wP, wp.u, wp.n, 1);
-          E.op(rP.g, f(st, T.prev + 0.3, 0.3) * (1 - f(st, T.back, 0.3)));
+          E.op(rP.g, f(st, T.prev + 0.3, 0.3) * prevOut);
+
+          /* 句 9：不知道答案在什么地方 → 好算的碗（虚线），它的碗底落到两个坑的曲线上做初始值，挪到最低的坑 */
+          E.pop(unkQ, P(2.2, 0)[0], P(0, 11.5)[1] - 8, f(st, T.unkQ, 0.3) * (1 - f(st, T.approx, 0.3)), 0.7);
+          var apOut = 1 - f(st, T.multi - 0.3, 0.3);
+          E.drawOn(appC, f(st, T.approx, 0.9)); E.op(appG, f(st, T.approx, 0.3) * apOut);
+          E.op(appBot, f(st, T.appBot, 0.3) * apOut);
+          var wa = walk(st, wAp, T.appGo, 0.13);
+          rAp.set(W, wAp, wa.u, wa.n, 1);
+          E.op(rAp.g, f(st, T.appInit, 0.3) * apOut); E.op(apLab, f(st, T.appInit, 0.3) * apOut);
+          /* 句 10：多选几个初始值（五个），各挪一遍，留下代价最小的（右坑里的两个） */
+          var mOut = 1 - f(st, T.back, 0.3);
+          MS.forEach(function (m) {
+            var w = walk(st, m.run, T.multiGo + 0.03 * m.i, 0.09);
+            m.r.set(W, m.run, w.u, w.n, 1);
+            var best = Math.abs(W(m.end) - bestMin) < 1e-3;
+            E.op(m.r.g, f(st, T.multi + 0.18 * m.i, 0.25) * mOut * (best ? 1 : 1 - 0.65 * f(st, T.keep, 0.4)));
+            if (best) m.r.ball.setAttribute('r', (11 + 4 * E.bump(st, T.keepBest, 0.9)).toFixed(1));
+          });
+          E.op(keepLab, f(st, T.keepBest, 0.3) * mOut);
 
           /* 句 9：换回碗，加上约束，从 0 格出发：0 → 0.8 → 1（顶到墙） */
           var kc = [[0, 0], [T.cSteps[0], runC[1]], [T.cSteps[1], runC[2]]];

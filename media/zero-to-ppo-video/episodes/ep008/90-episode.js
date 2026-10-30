@@ -65,11 +65,11 @@
       refs: {
         at: 12.72,
         items: [
-          '**《Convex Optimization》** Boyd 等：1.1、1.4、4.1、4.2.2、6.1.2、9.3 节（变量、目标、约束、可行集、初始值、梯度下降）',
-          '**EE364b 讲义** Boyd：投影次梯度法（挪过界就拉回边上）',
+          '**《Convex Optimization》** Boyd 等：1.1、1.4、4.1、4.2.2、6.1.2、9.3 节；**EE364b 讲义**：投影次梯度法',
           '**《Underactuated Robotics》** Tedrake：第 24 章（写法、初始值）、第 8 章（LQR 的代价）',
           '**《Modern Robotics》**：6.2 节（逆运动学、初始值）、12.1 节（只能推，不能拉）',
           '**Deits & Tedrake 2014**：落脚点当变量',
+          '**cuRobo**（arXiv:2310.17274）：30 个初始值一起算，留下最好的',
           '**mink 文档**：逆运动学写成二次规划，关节不超限位',
           '**Herzog 等**（arXiv:1410.7284）：全身控制的变量和约束',
           '**《Reinforcement Learning》** Sutton & Barto：式 (13.1)',
