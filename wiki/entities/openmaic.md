@@ -94,6 +94,8 @@ flowchart TD
 
 ## 关联页面
 
+- [OmniEdu](./paper-omniedu.md) — 面向 K–12 的开放教育基础模型，可作为教育模型研究参照。
+
 - [OpenClaw](openclaw.md) — OpenMAIC Skill 宿主之一
 - [Paperclip](paperclip.md) — 多 Agent 工作编排（偏商业目标）
 - [Hyperframes](hyperframes.md) — 课程视频导出可对照
