@@ -459,6 +459,7 @@
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
 - [Crocoddyl](wiki/entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [CrowdBricks：批量实时角色运动生成](wiki/entities/crowdbricks.md) —  项目 | 信息  `📅unknown` `[entity_page]`
+- [CS146S：The Modern Software Developer](wiki/entities/cs146s-modern-software-developer.md) — CS146S** 是斯坦福大学一门讨论 AI 原生软件开发的课程；2026 秋季版本结合讲课、实操作业、开源贡献与期末项目，关注人和 coding agent 如何协作构建软件。 `📅unknown` `[entity_page]`
 - [Foam-Agent（csml-rpi/Foam-Agent）](wiki/entities/csml-rpi-foam-agent.md) — Foam-Agent（csml-rpi/Foam-Agent）是多智能体 CFD 工作流框架（文章指出发表于 CMAME），不是单个 SKILL.md。 `📅unknown` `[entity_page]`
 - [cuRobo](wiki/entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [Curr-0（Current Robotics · Loco-Dexterous Manipulation）](wiki/entities/current-robotics-curr0.md) — Curr-0** 是 **Current Robotics**（2026-06 博客发布）对外阐述的 **第一代人形 loco-dexterous manipulation 基础系统**：把  `📅unknown` `[entity_page]`
