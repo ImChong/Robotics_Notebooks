@@ -212,3 +212,5 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - Andrew Ng，[The AI Engineering Skills Map](https://www.linkedin.com/pulse/ai-engineering-skills-map-andrew-ng-m479c) — 四支柱总图（职位/访谈依据）
 - Andrew Ng，[AI Engineering Skills Map: Building and deploying AI applications](https://www.linkedin.com/pulse/ai-engineering-skills-map-building-deploying-ai-applications-andrew-ng-gyn5e) — 同系列上一篇（LLM、grounding、agentic systems、eval-driven、生产、ML 基础）
 - [mattpocock/skills](https://github.com/mattpocock/skills) — 把「不要 vibe coding」落成可安装工程习惯
+
+- 课程实践入口：[CS146S：The Modern Software Developer](../entities/cs146s-modern-software-developer.md)（2026 秋季）。
