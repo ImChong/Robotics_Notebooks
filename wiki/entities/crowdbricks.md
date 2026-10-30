@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: crowdbricks
-tags: [repo, motion-generation, motionbricks, tensorrt, gpu, crowd-simulation]
+tags: [patch-gg, repo, motion-generation, motionbricks, tensorrt, gpu, crowd-simulation]
 status: complete
 updated: 2026-10-30
 code: https://github.com/patch-gg/crowdbricks
@@ -15,6 +15,10 @@ summary: "CrowdBricks 是 Patch 基于 NVIDIA MotionBricks 的 SOMA 模型构建
 ---
 
 # CrowdBricks：批量实时角色运动生成
+
+| 项目 | 信息 |
+|------|------|
+| 机构 | 帕奇团队（Patch） |
 
 ## 一句话定义
 
