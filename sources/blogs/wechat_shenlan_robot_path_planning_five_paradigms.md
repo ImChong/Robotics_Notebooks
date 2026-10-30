@@ -10,6 +10,7 @@
 - **入库日期：** 2026-09-01
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；`--no-images`；正文约 9.5k 字符 / 22 图；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [wechat_shenlan_robot_path_planning_five_paradigms_2026-09-01.md](../raw/wechat_shenlan_robot_path_planning_five_paradigms_2026-09-01.md)
+- **重发版（2026-10-30）：** 同标题、同五范式结构，作为深蓝学院《具身智能基础》专栏第 11 篇重发：<https://mp.weixin.qq.com/s/f5H-Zh0HgOEaEM_82VKoqg>；纯文本抓取（`scripts/fetch_wechat_article.py`）已落盘 [raw](../raw/wechat_shenlan_robot_path_planning_five_paradigms_republish_2026-10-30.md)。新版仅见措辞润色与 9 张图注（图1–9，含 Hybrid A\* 与 Bi-RRT\* 泊车对比、APF 势场对比、四足 MPC 测试场景、室内 3D 检测 + LLM 语义锚点、狭窄通道五法同测），技术结论与组合方案（A\* 定门位 → RRT 精修 → APF 防撞 → MPC 微调）与 9-01 版一致；该对比是我逐段通读后的判断，未做逐字 diff。
 - **关联姊妹篇：** [机器人控制八范式](wechat_shenlan_robot_control_eight_paradigms.md)、[机器人学习五范式](wechat_shenlan_robot_learning_five_paradigms.md)、[移动机器人导航规划方法对比](../../wiki/comparisons/mobile-robot-navigation-planning-methods.md)
 - **一句话说明：** 按 **五条技术路线**（图搜索、采样、人工势场、最优控制/MPC、强化学习与 AI）梳理路径规划范式；以「狭窄通道」场景对照各法优劣，收束为 **分层协同组合** 而非单算法万能。
 
