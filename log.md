@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-30] ingest | Reflex 仿真源码更新
+
+- 更新已有 Reflex 节点：补充 arXiv 编号、仿真源码运行时序及复现边界。
+- 修正人类接球成功率和 7 m 真机结果；训练与评测代码已公开，真机部署栈未公开。
+
 ## [2026-10-30] ingest | sources/courses/cs146s-modern-software-developer.md — 收录 2026 秋季课程日历与学习路径；讲义和代码入口待核实
 
 ## [2026-10-30] ingest | sources/repos/time-series-library.md — 收录时序分析实验库，核对源码入口与基准局限
