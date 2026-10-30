@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-29
+updated: 2026-10-30
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -26,6 +26,7 @@ sources:
   - ../../sources/repos/supermimic-vibed.md
   - ../../sources/repos/awesome-supermimic.md
   - ../../sources/repos/supermimic-integration-drafts.md
+  - ../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -90,6 +91,10 @@ flowchart TB
 
 两者让读者可以检查不同仿真栈下的独立实现细节；论文方法的权威描述仍以论文和官方项目页为准，复现指标需结合各自硬件、配置和 README 的声明解读。
 
+### 社区复现与扩展生态（2026-10-29 公众号盘点）
+
+[具身智能研究室的盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)列出 42 个相关项目（截至 2026-10-29），分为基础复现 7、方法改进 5、本体与硬件 8、感知与地形 4、操作与灵巧手 4、肌肉与交互 3、框架集成 6、真机与部署 2、相关探索 3。已有 wiki 节点的有 [HoloMotion](./holomotion.md)、[MorphMimic](./paper-morphmimic.md)、[muscle-supermimic](./muscle-supermimic.md)、[Project Instinct](./project-instinct.md)（InstinctMJ 分支）。该清单为转述自文章的检索结果，我未逐个核查仓库；均属社区实现，不能据此认为论文官方代码已开放。
+
 ### 上游集成草案（2026-10-29）
 
 [LeRobot #5119](../../sources/repos/supermimic-integration-drafts.md) 集成 Uni-SuperMimic 导出 actor，针对 29 DoF G1 以 50 Hz 输出关节目标；PR 作者仅报告 MuJoCo 仿真验证，真机尚待验证，actor 与参考动作不随 PR 提供。策略跟踪动作片段，不接受速度指令。
@@ -138,6 +143,7 @@ flowchart TB
 - [awesome-supermimic 社区资源索引](../../sources/repos/awesome-supermimic.md)
 
 - [LeRobot 与 Isaac Lab 集成草案](../../sources/repos/supermimic-integration-drafts.md)
+- [具身智能研究室：SuperMimic 42 个复现与扩展项目盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)
 
 ## 推荐继续阅读
 
