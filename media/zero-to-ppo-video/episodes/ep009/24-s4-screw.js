@@ -7,8 +7,15 @@
 // 句 4 方块停住：「方向」轴上画出方向箭头 ŝ，「一个点」轴上点出 q，「螺距」「每转一弧度」螺旋线上取相隔 1 弧度的两点，
 //    「走多远」量出两点的高度差、标 h（右栏三行依次写出）；
 // 句 5「螺距是零」右栏画一个圆圈图标「h = 0：只转不移」，「只移不转」画一支直箭头「h = ∞：只移不转」；
-// 句 6 右栏换成公式：运动旋量 = (ω, v)，「后三个数」v 分成两份：「轴不过原点」左边画出原点和原点到 q 的虚线、右栏第一份 −ω × q（标「轴不过原点：透明板」），
-//    「沿着轴的移动」h 的量尺鼓一下、右栏第二份 h ω（标「沿轴移动：角速度 × 螺距」）。
+// 句 6–10 v 的两份，边讲边画（初版只在右栏写 v = −ω × q + h ω，用户反馈「矩阵运算还是展开细节步骤，旋转和平移等」）：
+//    句 6「这时」方块、螺旋线、量尺淡出，镜头绕竖直方向转到另一个角度（转轴、q 留着），右栏 𝒱 = (ω, v)、「v 分成两份」；
+//    句 7「第一份来自转动」右栏「① 转动」，「透明板」转轴上套一张圆形的透明板（淡黄，带辐条），「原点」原点亮一圈，
+//       「跟着板」「绕着螺旋轴转动」板绕轴转、原点那一点的路（紫虚线圆）画出来，转轴上方蓝色小椭圆标出转的方向；
+//    句 8（同第 3 幕算 v）「从轴上那一点指到原点」q → 原点画黄箭头，「顺着转动的方向」箭头平移到原点（尾巴在原点），
+//       「转九十度」在板面里绕原点转 90°（蓝弧），「乘以角速度」拉长，标「−ω × q」，右栏写出 −ω × q；
+//    句 9「第二份来自移动」右栏「② 移动」，「沿着轴走」转轴旁长出往上的绿箭头，「沿着轴」「角速度乘螺距」第一份的尖上往上接一支绿箭头，标「h ω」；
+//    句 10「两份加起来」原点到绿箭头尖画出紫色的 v，右栏框出 v = −ω × q + h ω。
+//    q 取在和原点一样高的地方：从 q 指到原点的箭头和转轴垂直，「转 90° 再乘」才成立（画面上标出）。
 // 时刻取自配音的逐词时间，见 ../ep009.py。
 (function () {
   var E = window.EP009, K = E.K, H = E.HEX;
@@ -19,9 +26,13 @@
     thm: 18.32, block2: 17.98, any: 18.98, rot: 22.32, mov: 22.69, name: 24.51, stop: 26.08,
     dirS: 29.16, pointQ: 30.24, pitch: 31.31, perRad: 32.63, far: 33.84,
     h0: 36.15, h0t: 36.95, hInf: 38.18, hInfT: 39.92,
-    form: 41.65, two: 44.11, part1: 45.09, origin: 45.62, plate: 48.09, part2: 49.36, hPulse: 50.1, times: 50.97
+    form: 41.64, cam: 41.9, two: 44.1,
+    part1: 46.1, turning: 46.79, plate: 49.29, origin: 50.05, around: [51.84, 53.3], same: 54.31,
+    qArr: [55.64, 56.95], slide: [57.59, 58.35], rot: [58.83, 59.5], stretch: [59.91, 60.45], p1Lab: 60.22,
+    part2: 61.94, along: 63.68, dir2: 67.58, grow: [68.74, 69.9], p2Lab: 69.71,
+    sum: [71.24, 71.95], plus: 71.59, vLab: 72.59
   };
-  var END = 53.17;
+  var END = 73.66;
   // 三维场景：世界原点 O 在画面 (WX, WY)；一格 L px；转轴竖直，穿过 q；方块中心离轴 R，每转 1 弧度往上走 h
   var WX = 78, WY = 372, L = 118, Qw = [1.15, 0.55, 0], R = 0.85, HP = 0.22, A0 = -40 * D, CUBE = 0.27;
   var proj = E.view3(28, 18);
@@ -42,10 +53,14 @@
       { at: 17.38, s: '任何刚体的速度 = 绕某根轴边转边移：这根轴叫**螺旋轴**' },
       { at: 26.16, s: '**螺旋轴**：方向、轴上一点、**螺距**（每转 1 弧度沿轴走多远）' },
       { at: 35.5, s: '**螺距**是 0：只转不移；只移不转：**螺距**看成无穷大' },
-      { at: 41.55, s: '**v** 分两份：轴不过原点带出来的 + **角速度** × **螺距**' }
+      { at: 41.55, s: '运动旋量的后三个数 **v** 分成两份' },
+      { at: 46.01, s: '① 转动：把刚体想成透明板，原点那一点绕**螺旋轴**转' },
+      { at: 54.22, s: '同第 3 幕算 **v**：q 指到原点，顺着转动的方向转 90°，再 × **角速度**' },
+      { at: 61.85, s: '② 移动：沿着轴，大小 = **角速度** × **螺距**' },
+      { at: 71.14, s: '两份加起来：**v** = −ω × q + h ω' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('平面里刚体绕一个点转；三维里一个小方块绕竖直的转轴转，同时沿着轴往上走，走出螺旋线；就像拧螺丝，每转一圈往里走一小段；任何刚体的速度都能看成绕某根轴边转边移，这根轴叫螺旋轴，由方向、轴上一点和螺距（每转一弧度沿轴走多远）描述；螺距为零只转不移，只移不转时螺距看成无穷大；运动旋量的后三个数 v 分成两份：轴不过原点带出来的 −ω × q，和沿轴移动的 h ω');
+      var s = K.sceneSvg('平面里刚体绕一个点转；三维里一个小方块绕竖直的转轴转，同时沿着轴往上走，走出螺旋线；就像拧螺丝，每转一圈往里走一小段；任何刚体的速度都能看成绕某根轴边转边移，这根轴叫螺旋轴，由方向、轴上一点和螺距（每转一弧度沿轴走多远）描述；螺距为零只转不移，只移不转时螺距看成无穷大；运动旋量的后三个数 v 分成两份：转动带出来的一份，是从轴上一点 q 指到原点的箭头顺着转动方向转 90° 再乘角速度，写成 −ω × q；移动带出来的一份沿着轴，大小是角速度乘螺距，写成 h ω；两份加起来就是 v');
 
       /* ══ ① 平面小图（俯视）：一块板绕黄点转 ══ */
       var flat = E.el('g', {}, s), FC = [215, 215];
@@ -57,13 +72,7 @@
 
       /* ══ ② 三维：转轴 + 方块 + 螺旋线 ══ */
       var solid = E.el('g', {}, s);
-      var originG = E.el('g', {}, solid);                     // 句 6：世界原点 + 原点到 q 的虚线
-      var oAx = [[0.45, 0, 0], [0, 0.45, 0], [0, 0, 0.45]].map(function (v, i) { var a = E.vec(originG, [E.X, E.Y, E.Z][i], 2.5, { head: 10 }), p0 = S3([0, 0, 0]), p1 = S3(v); a.set(p0[0], p0[1], p1[0], p1[1]); return a; });
-      var oDot = S3([0, 0, 0]);
-      K.paint(E.el('circle', { cx: oDot[0], cy: oDot[1], r: 5 }, originG), E.HI);
-      E.halo(E.txt(originG, oDot[0] - 8, oDot[1] + 34, '原点', 20, E.HI, 'middle', 900));
       var oq = S3(Qw);
-      var oLine = K.paint(E.el('path', { d: 'M ' + oDot[0] + ' ' + oDot[1] + ' L ' + oq[0].toFixed(1) + ' ' + oq[1].toFixed(1), fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '6 5' }, originG), null, E.HI);
       var axLo = S3([Qw[0], Qw[1], -0.3]), axHi = S3([Qw[0], Qw[1], 2.85]);
       // 按远近遮挡（同 006 的万向节）：远的半圈螺旋线、远的半个小椭圆画在转轴后面，近的画在前面；方块每帧按它和转轴谁近挪到轴前或轴后
       var trailBack = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 6' }, solid), null, E.VEL);
@@ -92,6 +101,57 @@
       var hGuide = K.paint(E.el('path', { fill: 'none', 'stroke-width': 1.8, 'stroke-dasharray': '4 4' }, pitchG), null, E.GOOD);
       var hLab = E.halo(E.txt(pitchG, 0, 0, '螺距 h', 22, E.GOOD, 'middle', 900));
       var oneRad = E.halo(E.txt(pitchG, 0, 0, '1 弧度', 20, E.GOOD, 'start', 900));
+
+
+      /* ══ ④ v 的两份（句 6–10）：镜头绕竖直方向转到另一个角度，原点挪到左边中间；转轴上套一张圆形的透明板 ══ */
+      var dec = E.el('g', {}, s);
+      var CAM0 = { az: 28, el: 18, ox: WX, oy: WY, l: L, z0: -0.3, z1: 2.85 }, CAM1 = { az: -20, el: 32, ox: 163, oy: 290, l: 104, z0: -0.4, z1: 1.75 };
+      var RD = 1.6, KW = 1.25, HW = 0.9;                      // 板的半径；第一份拉长的倍数（角速度，示意）；第二份的长度（角速度 × 螺距，示意）
+      var RQ = Math.hypot(Qw[0], Qw[1]), AO = Math.atan2(-Qw[1], -Qw[0]), MQ = [-Qw[0], -Qw[1]];   // 原点离轴多远、在轴的哪个方向；从 q 指到原点
+      var dAxLo = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '9 7' }, dec), null, E.WARN);   // 板下面那段转轴：被透明板盖住
+      var diskG = E.el('g', {}, dec);
+      var disk = K.paint(E.el('path', { 'stroke-width': 2.5, 'stroke-dasharray': '8 6' }, diskG), E.tint(E.BODY, 14, 'var(--demo-surface)'), E.BODY);
+      var spokeG = E.el('g', { 'data-grid': '1' }, diskG);     // 辐条同格线：查「字压线」时不算
+      var spokes = K.paint(E.el('path', { fill: 'none', 'stroke-width': 1.5 }, spokeG), null, E.BODY);
+      spokes.style.opacity = 0.5;
+      var diskLab = E.halo(E.txt(dec, 0, 0, '透明板', 20, E.BODY, 'middle', 900));
+      var dPath = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '5 6' }, dec), null, E.VEL);
+      var dPathHead = K.paint(E.el('path', {}, dec), E.VEL);
+      var dSpinFar = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, dec), null, E.OMEGA);
+      var dAxHi = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '9 7' }, dec), null, E.WARN);
+      var dSpin = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, dec), null, E.OMEGA);
+      var dSpinHead = K.paint(E.el('path', {}, dec), E.OMEGA);
+      var upA = E.vec(dec, E.GOOD, 4.5, { head: 14 });
+      var dQ = K.paint(E.el('circle', { r: 7, 'stroke-width': 2.5 }, dec), E.HI, E.S1);
+      var dQLab = E.halo(E.txt(dec, 0, 0, 'q', 22, E.HI, 'end', 900));
+      var dORing = K.paint(E.el('circle', { r: 12, fill: 'none', 'stroke-width': 3 }, dec), null, E.HI);
+      var dO = K.paint(E.el('circle', { r: 7, 'stroke-width': 2 }, dec), E.VEL, E.S1);   // 板上此刻在原点的那一点（紫，同第 3 幕）
+      var dOLab = E.halo(E.txt(dec, 0, 0, '原点', 20, E.HI, 'end', 900));
+      var rArc = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3 }, dec), null, E.OMEGA);
+      var rArcHead = K.paint(E.el('path', {}, dec), E.OMEGA);
+      var rLab = E.halo(E.txt(dec, 0, 0, '90°', 20, E.OMEGA, 'middle', 900));
+      var dA1 = E.vec(dec, E.HI, 4.5, { head: 15 });
+      var p1Lab = E.halo(E.txt(dec, 0, 0, '−ω × q', 22, E.HI, 'start', 900));
+      var dA2 = E.vec(dec, E.GOOD, 4.5, { head: 15 });
+      var p2Lab = E.halo(E.txt(dec, 0, 0, 'h ω', 22, E.GOOD, 'start', 900));
+      var dAV = E.vec(dec, E.VEL, 5.5, { head: 17 });
+      var vLab2 = E.halo(E.txt(dec, 0, 0, 'v', 26, E.VEL, 'middle', 900));
+      // 镜头：c = 0 时同上面的三维场景（转轴、q 和它重合，换场看不出跳），c = 1 时是这一段的角度
+      function camAt(c) {
+        var m = function (a, b2) { return a + (b2 - a) * c; };
+        var pr = E.view3(m(CAM0.az, CAM1.az), m(CAM0.el, CAM1.el)), ox = m(CAM0.ox, CAM1.ox), oy = m(CAM0.oy, CAM1.oy), l = m(CAM0.l, CAM1.l);
+        var P = function (v) { var q = pr(v); return [ox + l * q[0], oy - l * q[1]]; };
+        P.depth = pr.depth; P.z0 = m(CAM0.z0, CAM1.z0); P.z1 = m(CAM0.z1, CAM1.z1);
+        return P;
+      }
+      function ringPts(P, c, r, a0, aEnd, n) { var out = []; for (var k = 0; k <= n; k++) { var a = a0 + (aEnd - a0) * k / n; out.push(P([c[0] + r * Math.cos(a), c[1] + r * Math.sin(a), c[2]])); } return out; }
+      function headAt(el, pts, size) {                         // 折线末端的箭头三角
+        var e1 = pts[pts.length - 1], e0 = pts[pts.length - 2], dx = e1[0] - e0[0], dy = e1[1] - e0[1], dl = Math.hypot(dx, dy) || 1;
+        dx /= dl; dy /= dl;
+        el.setAttribute('d', 'M ' + (e1[0] + dx * size).toFixed(1) + ' ' + (e1[1] + dy * size).toFixed(1) + ' L ' + (e1[0] - dy * size * 0.6).toFixed(1) + ' ' + (e1[1] + dx * size * 0.6).toFixed(1) +
+          ' L ' + (e1[0] + dy * size * 0.6).toFixed(1) + ' ' + (e1[1] - dx * size * 0.6).toFixed(1) + ' Z');
+      }
+      function seg(el, a, b2) { el.setAttribute('d', 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b2[0].toFixed(1) + ' ' + b2[1].toFixed(1)); }
 
       /* ══ ③ 螺丝拧进木板 ══ */
       var scr = E.el('g', {}, s), SX = 230, SY = 300, SL = 118, SR = 0.2, HR = 0.46, HH = 0.2, LEN = 1.55, PITCH = 0.26;
@@ -150,15 +210,18 @@
       var r3 = E.el('g', {}, Rg);
       var fV = E.tex(r3, RX + 10, 66, '\\mathcal{V}=\\begin{bmatrix}\\textcolor{' + H.acc + '}{\\omega}\\\\ \\textcolor{' + H.violet + '}{v}\\end{bmatrix}', 30, E.INK, 'start', { w: 200, h: 90 });
       var fTwo = E.txt(r3, RX + 150, 70, 'v 分成两份：', 22, E.INK2, 'start', 700);
-      var fEq = E.tex(r3, RX + 10, 170, '\\textcolor{' + H.violet + '}{v}=', 32, E.INK, 'start', { w: 60, h: 50 });
-      var fP1 = E.tex(r3, RX + 64, 170, '-\\omega\\times q', 32, E.VEL, 'start', { w: 150, h: 50 });
-      var fPlus = E.tex(r3, RX + 194, 170, '+', 32, E.INK, 'start', { w: 30, h: 50 });
-      var fP2 = E.tex(r3, RX + 228, 170, 'h\\,\\omega', 32, E.GOOD, 'start', { w: 80, h: 50 });
-      var br1 = K.paint(E.el('path', { d: 'M ' + (RX + 66) + ' 186 Q ' + (RX + 66) + ' 196 ' + (RX + 76) + ' 196 H ' + (RX + 118) + ' Q ' + (RX + 126) + ' 196 ' + (RX + 128) + ' 204 Q ' + (RX + 130) + ' 196 ' + (RX + 138) + ' 196 H ' + (RX + 180) + ' Q ' + (RX + 190) + ' 196 ' + (RX + 190) + ' 186', fill: 'none', 'stroke-width': 2.5 }, r3), null, E.VEL);
-      var br2 = K.paint(E.el('path', { d: 'M ' + (RX + 230) + ' 186 Q ' + (RX + 230) + ' 196 ' + (RX + 240) + ' 196 H ' + (RX + 252) + ' Q ' + (RX + 258) + ' 196 ' + (RX + 260) + ' 204 Q ' + (RX + 262) + ' 196 ' + (RX + 268) + ' 196 H ' + (RX + 280) + ' Q ' + (RX + 290) + ' 196 ' + (RX + 290) + ' 186', fill: 'none', 'stroke-width': 2.5 }, r3), null, E.GOOD);
-      var l1 = rtxt(r3, 250, '① 轴不过原点带出来的', 22, E.VEL, 900);
-      var l1b = rtxt(r3, 286, '　（就是那张透明板）', 21, E.INK2);
-      var l2 = rtxt(r3, 336, '② 沿轴移动：角速度 × 螺距', 22, E.GOOD, 900);
+      var m1 = rtxt(r3, 152, '① 转动：', 23, E.HI, 900);
+      var m1f = E.tex(r3, RX + 118, 152, '-\\textcolor{' + H.acc + '}{\\omega}\\times q', 28, E.HI, 'start', { w: 140, h: 46 });
+      var m1a = rtxt(r3, 188, '从 q 指到原点，', 20, E.INK2);
+      var m1b = rtxt(r3, 218, '顺着转动的方向转 90°，', 20, E.INK2);
+      var m1c = rtxt(r3, 248, '再 × 角速度', 20, E.INK2);
+      var m1d = rtxt(r3, 274, '（q 取和原点一样高：箭头和轴垂直）', 17, E.MUT);
+      var m2 = rtxt(r3, 308, '② 移动：', 23, E.GOOD, 900);
+      var m2f = E.tex(r3, RX + 118, 308, 'h\\,\\textcolor{' + H.acc + '}{\\omega}', 28, E.GOOD, 'start', { w: 80, h: 46 });
+      var m2a = rtxt(r3, 340, '沿着轴，大小 = 角速度 × 螺距', 20, E.INK2);
+      var sumG = E.el('g', {}, r3);
+      K.paint(E.el('rect', { x: RX, y: 356, width: 340, height: 54, rx: 12, 'stroke-width': 2.5 }, sumG), E.tint(E.VEL, 10, 'var(--demo-surface)'), E.VEL);
+      E.tex(sumG, RX + 170, 392, '\\textcolor{' + H.violet + '}{v}=\\textcolor{' + H.hi + '}{-\\textcolor{' + H.acc + '}{\\omega}\\times q}+\\textcolor{' + H.good + '}{h\\,\\textcolor{' + H.acc + '}{\\omega}}', 28, E.INK, 'middle', { w: 300, h: 50 });
 
       /* ── 方块：中心、朝向随角度 θ；六个面按深度排序，背面不画 ── */
       var CUBE_C = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1], [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
@@ -212,7 +275,7 @@
 
           /* ── ② 三维方块（句 1 结尾、句 3–6） ── */
           var on3 = Math.min(f(st, T.to3 + 0.3, 0.5) * (1 - f(st, T.screw, 0.4)) + f(st, T.block2, 0.5), 1);
-          E.op(solid, on3);
+          E.op(solid, on3 * (1 - f(st, T.form, 0.5)));
           var th = theta(st);
           drawCube(th); trail(Math.max(th, 0.001));
           var cc = center(th);
@@ -263,10 +326,75 @@
           var hp = f(st, T.far, 0.4), hb = b(st, T.hPulse, 0.9);
           E.op(hBar, hp); E.op(hGuide, hp); E.op(hLab, hp);
           hBar.style.strokeWidth = 3 + 3 * hb; E.glow(hBar, E.GOOD, hb > 0.05);
-          // 句 6：原点、原点到 q
-          E.op(originG, f(st, T.origin, 0.4));
-          var ob = b(st, T.plate, 0.9);
-          oLine.style.strokeWidth = 2.5 + 2.5 * ob; E.glow(oLine, E.HI, ob > 0.05);
+
+
+          /* ── ④ v 的两份 ── */
+          var dOn = f(st, T.form, 0.5);
+          E.op(dec, dOn);
+          var Pc = camAt(f(st, T.cam, 1.4));
+          var O = Pc([0, 0, 0]), qp = Pc(Qw), q0 = [Qw[0], Qw[1], 0];
+          seg(dAxLo, Pc([Qw[0], Qw[1], Pc.z0]), qp); seg(dAxHi, qp, Pc([Qw[0], Qw[1], Pc.z1]));
+          // 透明板：绕轴转（辐条跟着转），句 8 开头停住——算的是「这一刻」
+          var diskOn = f(st, T.plate, 0.5), db = b(st, T.plate, 0.9);
+          disk.setAttribute('d', E.poly(ringPts(Pc, q0, RD, 0, 2 * Math.PI, 60), true));
+          var phi = 0.6 * E.clamp(st - T.plate, 0, T.same - T.plate), spd = '';
+          for (k = 0; k < 6; k++) { var sE = Pc([Qw[0] + RD * Math.cos(phi + k * Math.PI / 3), Qw[1] + RD * Math.sin(phi + k * Math.PI / 3), 0]); spd += 'M ' + qp[0].toFixed(1) + ' ' + qp[1].toFixed(1) + ' L ' + sE[0].toFixed(1) + ' ' + sE[1].toFixed(1) + ' '; }
+          spokes.setAttribute('d', spd);
+          E.op(diskG, diskOn); disk.style.strokeWidth = 2.5 + 2 * db; E.glow(disk, E.BODY, db > 0.05);
+          // 「透明板」写在板后沿的上方、转轴左边（板里面有紫色的路和辐条）
+          diskLab.setAttribute('x', (qp[0] - 70).toFixed(1)); diskLab.setAttribute('y', (qp[1] - 100).toFixed(1)); E.op(diskLab, diskOn);
+          // 原点那一点跟着板绕轴走的路（紫虚线圆），画到哪、箭头跟到哪
+          var pg = f(st, T.around[0], T.around[1] - T.around[0]);
+          if (pg > 0.01) { var pp = ringPts(Pc, q0, RQ, AO + 0.25, AO + 0.25 + (2 * Math.PI - 0.42) * pg, 64); dPath.setAttribute('d', E.poly(pp)); headAt(dPathHead, pp, 12); }
+          E.op(dPath, pg > 0.01 ? 1 : 0); E.op(dPathHead, pg > 0.01 ? 1 : 0);
+          // 转轴上方的蓝色小椭圆：转的方向（远的半圈压在轴后面）
+          var zS = Pc.z1 - 0.38, spinPts = ringPts(Pc, [Qw[0], Qw[1], zS], 0.32, -60 * D, 220 * D, 40), nearD = '', farD = '', prevN = null;
+          spinPts.forEach(function (pt, k2) {
+            var aa = (-60 + 280 * k2 / 40) * D, isN = Pc.depth([Math.cos(aa), Math.sin(aa), 0]) < 0, sg = pt[0].toFixed(1) + ' ' + pt[1].toFixed(1);
+            if (isN) nearD += (prevN === true ? ' L ' : ' M ') + sg; else farD += (prevN === false ? ' L ' : ' M ') + sg;
+            if (prevN !== null && prevN !== isN) { if (isN) farD += ' L ' + sg; else nearD += ' L ' + sg; }
+            prevN = isN;
+          });
+          dSpin.setAttribute('d', nearD); dSpinFar.setAttribute('d', farD); headAt(dSpinHead, spinPts, 11);
+          var spOn = f(st, T.turning, 0.3);
+          E.op(dSpin, spOn); E.op(dSpinFar, spOn); E.op(dSpinHead, spOn);
+          // q、原点
+          dQ.setAttribute('cx', qp[0].toFixed(1)); dQ.setAttribute('cy', qp[1].toFixed(1));
+          dQLab.setAttribute('x', (qp[0] - 14).toFixed(1)); dQLab.setAttribute('y', (qp[1] - 6).toFixed(1));   // 写在 q 左边：右边是沿轴往上的绿箭头
+          var oOn = f(st, T.origin, 0.3), ob2 = Math.max(b(st, T.origin, 0.8), b(st, T.around[0], 0.8));
+          dO.setAttribute('cx', O[0].toFixed(1)); dO.setAttribute('cy', O[1].toFixed(1)); E.op(dO, oOn);
+          dORing.setAttribute('cx', O[0].toFixed(1)); dORing.setAttribute('cy', O[1].toFixed(1)); dORing.setAttribute('r', (12 + 5 * ob2).toFixed(2)); E.op(dORing, oOn);
+          // 「原点」写在左边、板的边外面：左下是平移过来的箭头和 90° 的蓝弧
+          dOLab.setAttribute('x', (O[0] - 64).toFixed(1)); dOLab.setAttribute('y', (O[1] + 6).toFixed(1)); E.op(dOLab, oOn);
+          // 句 8：q → 原点的黄箭头；平移到原点；在板面里绕原点转 90°；拉长（乘角速度）
+          var g0 = f(st, T.qArr[0] + 0.3, T.qArr[1] - T.qArr[0]), sl = f(st, T.slide[0], T.slide[1] - T.slide[0]);
+          var al = f(st, T.rot[0], T.rot[1] - T.rot[0]), sc = f(st, T.stretch[0], T.stretch[1] - T.stretch[0]);
+          var ca = Math.cos(Math.PI / 2 * al), sn = Math.sin(Math.PI / 2 * al), kk = 1 + (KW - 1) * sc;
+          var dv = [(ca * MQ[0] - sn * MQ[1]) * kk, (sn * MQ[0] + ca * MQ[1]) * kk];
+          var tl0 = [Qw[0] * (1 - sl), Qw[1] * (1 - sl)];
+          var tipW = sl > 0 ? [tl0[0] + dv[0], tl0[1] + dv[1], 0] : [Qw[0] + MQ[0] * g0, Qw[1] + MQ[1] * g0, 0];
+          var t0p = Pc([tl0[0], tl0[1], 0]), t1p = Pc(tipW);
+          dA1.set(t0p[0], t0p[1], t1p[0], t1p[1]); E.op(dA1.g, g0 > 0.01 ? 1 : 0);
+          var arcOn = al > 0.02 ? 1 - f(st, T.part2, 0.3) : 0;
+          if (al > 0.02) { var ap = ringPts(Pc, [0, 0, 0], 0.6, AO, AO + Math.PI / 2 * al, 24); rArc.setAttribute('d', E.poly(ap)); headAt(rArcHead, ap, 10); }
+          E.op(rArc, arcOn); E.op(rArcHead, arcOn);
+          var rl = Pc([1.15 * Math.cos(AO + Math.PI / 4), 1.15 * Math.sin(AO + Math.PI / 4), 0]);
+          rLab.setAttribute('x', rl[0].toFixed(1)); rLab.setAttribute('y', (rl[1] + 7).toFixed(1));
+          E.op(rLab, f(st, T.rot[0] + 0.3, 0.3) * (1 - f(st, T.part2, 0.3)));
+          var P1 = [KW * -MQ[1], KW * MQ[0], 0], p1s = Pc(P1);
+          p1Lab.setAttribute('x', (p1s[0] + 12).toFixed(1)); p1Lab.setAttribute('y', (p1s[1] + 14).toFixed(1)); E.op(p1Lab, f(st, T.p1Lab, 0.3));
+          dA1.line.style.strokeWidth = 4.5 + 2.5 * b(st, T.stretch[1], 0.8);
+          // 句 9：沿着轴走（转轴旁的绿箭头）；第一份的尖上往上接第二份
+          var ug = f(st, T.along, 0.5), u0 = Pc([Qw[0], Qw[1], 0.2]), u1 = Pc([Qw[0], Qw[1], 0.2 + 0.7 * ug]);
+          upA.set(u0[0] + 18, u0[1], u1[0] + 18, u1[1]); E.op(upA.g, ug > 0.01 ? 1 - f(st, T.sum[0], 0.4) : 0);
+          var g2 = f(st, T.grow[0], T.grow[1] - T.grow[0]), p2s = Pc([P1[0], P1[1], HW * g2]);
+          dA2.set(p1s[0], p1s[1], p2s[0], p2s[1]); E.op(dA2.g, g2 > 0.01 ? 1 : 0);
+          p2Lab.setAttribute('x', (p2s[0] + 12).toFixed(1)); p2Lab.setAttribute('y', (p2s[1] + 12).toFixed(1)); E.op(p2Lab, f(st, T.p2Lab, 0.3));
+          // 句 10：两份加起来就是 v（原点 → 第二份的尖）
+          var gv = f(st, T.sum[0], T.sum[1] - T.sum[0]), vt = Pc([P1[0] * gv, P1[1] * gv, HW * gv]);
+          dAV.set(O[0], O[1], vt[0], vt[1]); E.op(dAV.g, gv > 0.01 ? 1 : 0);
+          var vb = b(st, T.vLab, 0.9); dAV.line.style.strokeWidth = 5.5 + 3 * vb; E.glow(dAV.line, E.VEL, vb > 0.05);
+          vLab2.setAttribute('x', ((O[0] + vt[0]) / 2 - 6).toFixed(1)); vLab2.setAttribute('y', ((O[1] + vt[1]) / 2 - 14).toFixed(1)); E.op(vLab2, f(st, T.vLab, 0.3));
 
           /* ── ③ 螺丝 ── */
           var scOn = f(st, T.screw, 0.4) * (1 - f(st, T.out4, 0.4));
@@ -319,8 +447,9 @@
           E.op(ic0, f(st, T.h0, 0.3)); E.op(ic1, f(st, T.hInf - 0.2, 0.3));
           E.op(r3, f(st, T.form, 0.4));
           E.op(fV, 1); E.op(fTwo, f(st, T.two, 0.3));
-          E.op(fEq, f(st, T.two, 0.3)); E.op(fP1, f(st, T.part1, 0.3)); E.op(br1, f(st, T.origin, 0.3)); E.op(l1, f(st, T.origin, 0.3)); E.op(l1b, f(st, T.plate, 0.3));
-          E.op(fPlus, f(st, T.part2, 0.3)); E.op(fP2, f(st, T.part2, 0.3)); E.op(br2, f(st, T.hPulse, 0.3)); E.op(l2, f(st, T.times, 0.3));
+          E.op(m1, f(st, T.part1, 0.3)); E.op(m1a, f(st, T.qArr[0], 0.3)); E.op(m1b, f(st, T.slide[0], 0.3)); E.op(m1c, f(st, T.stretch[0], 0.3)); E.op(m1f, f(st, T.p1Lab, 0.3)); E.op(m1d, f(st, T.qArr[0] + 0.6, 0.3));
+          E.op(m2, f(st, T.part2, 0.3)); E.op(m2a, f(st, T.dir2, 0.3)); E.op(m2f, f(st, T.p2Lab, 0.3));
+          E.pop(sumG, RX + 170, 383, f(st, T.plus, 0.35), 0.92);
         }
       };
     }
