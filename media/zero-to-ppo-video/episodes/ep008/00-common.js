@@ -326,7 +326,7 @@
     E.vec(axes, E.INK2, 2.5, { head: 12 }).set(ox, oy, P(4.45, 0)[0], oy);
     E.vec(axes, E.INK2, 2.5, { head: 12 }).set(ox, oy, ox, P(0, cMax + 1.6)[1]);
     var xLab = txt(axes, P(4.45, 0)[0] + 10, oy + 7, o.xLab || 'u', 20, E.GOOD, 'start', 900);
-    var yLab = txt(axes, ox + 12, P(0, cMax + 1.6)[1] + 6, o.yLab || '扣分', 20, E.INK2, 'start', 900);
+    var yLab = halo(txt(axes, ox + 12, P(0, cMax + 1.6)[1] + 6, o.yLab || '扣分', 20, E.INK2, 'start', 900));   // 描底色：第 3 幕斜线区会盖到这里
     function path(fn, a, b, n) {
       var pts = [], N = n || 60;
       for (var k = 0; k <= N; k++) { var u = a + (b - a) * k / N; pts.push(P(u, fn(u))); }

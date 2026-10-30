@@ -8,7 +8,7 @@
 // 句 6「两项加起来」两块牌换成一行式子「代价 = (4 − u)² + u²」，「代价」鼓一下，「式子」下面括出「目标函数」；
 // 句 7 右栏出表：迈 0…4 格，按念到的数一格格填「还剩² + 步子² = 代价」，每行算完图上打一个紫点，脚印跟着停到那一格；
 // 句 8「迈两格」第 3 行亮黄框，「代价最小」紫点 (2, 8) 套亮黄圈，「两项」蓝线、琥珀线上 u = 2 的两点（各 4 分）鼓一下；
-// 句 9「连起来」紫点连成曲线（蓝、琥珀两条淡下去），「碗」曲线下垫一层淡紫，「碗底」亮黄小球落到 (2, 8) 并写「碗底」，「最好」打勾。
+// 句 9「连起来」紫点连成曲线（蓝、琥珀两条淡下去），「碗」曲线下垫一层淡紫，「碗底」亮黄小球落到 (2, 8) 并写「碗底（最优解）」，「最好」打勾。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep008.py。
 (function () {
   var E = window.EP008, K = E.K, H = E.HEX;
@@ -70,8 +70,8 @@
       var d3 = [0, 1, 2, 3, 4].map(function (u) { return ch.dot(E.VIOLET, 8).set(u, E.cost(u)); });
       var ring = K.paint(E.el('circle', { cx: P(2, 8)[0], cy: P(2, 8)[1], r: 15, fill: 'none', 'stroke-width': 3.5 }, s), null, E.HI);
       var ball = K.paint(E.el('circle', { r: 11, 'stroke-width': 3 }, s), E.HI, 'var(--demo-surface)');
-      var bottom = E.halo(E.txt(s, P(2, 8)[0], P(0, 8)[1] + 44, '碗底', 22, E.HI, 'middle', 900));
-      var okBest = E.check(s, P(2, 8)[0] + 40, P(0, 8)[1] + 26, 20, E.HI, 4.5);
+      var bottom = E.halo(E.txt(s, P(2, 8)[0], P(0, 8)[1] + 44, '碗底（最优解）', 22, E.HI, 'middle', 900));   // 最优解：Boyd & Vandenberghe 4.1.1 节的 optimal point
+      var okBest = E.check(s, P(2, 8)[0] + 88, P(0, 8)[1] + 28, 20, E.HI, 4.5);
 
       /* ══ 右栏：两块牌 → 一行式子；四个正方形；表 ══ */
       function card(y, n, tex, color) {

@@ -8,7 +8,7 @@
 //    左上蓝条「偏离²」跟着变，「用了多大的力」琥珀条「用力²」跟着变（同迈步子的两项扣分的颜色），「迈步子」右栏第三行出 (4 − u)² + u²；
 // 句 4 全身控制（第五季）：正面 G1，「加速度」「力矩」29 个关节点依次点亮，「脚底」两只脚下出地面往上推的力，「任务」一只手往旁边抬、够到目标点、
 //    骨盆下垂一条虚线落在两脚之间（站稳），「摩擦」脚下出摩擦锥，「力矩上限」关节点描一圈橙；
-// 句 5 强化学习（第六季）：侧视 G1 原地走，「参数」右上出一排参数小条，「奖励」下面画奖励曲线往上爬，「一小步」参数条一下一下变、曲线跟着长。
+// 句 5 强化学习（第六季）：侧视 G1 原地走，「参数」右上出一排参数小条，「越多越好」右栏下面写一行小字：加个负号就是越小越好，「奖励」下面画奖励曲线往上爬，「一小步」参数条一下一下变、曲线跟着长。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep008.py。
 (function () {
   var E = window.EP008, K = E.K, H = E.HEX, R3 = function () { return window.Robot3D; };
@@ -29,7 +29,7 @@
     ik: { joints: 5.32, target: 6.54, move: [6.9, 8.0], limit: 8.25, range: 9.74 },
     oc: { push0: 12.3, motor: 13.71, dev: 15.59, effort: 16.9 },
     wbc: { acc: 24.02, tau: 24.73, foot: 25.36, task: 26.84, stand: 27.19, dyn: 28.81, fric: 29.55, cap: 30.22 },
-    rl: { param: 34.29, reward: [35.53, 36.9], steps: [37.84, 38.37, 38.9] }
+    rl: { param: 34.29, reward: [35.53, 36.9], note: 36.4, steps: [37.84, 38.37, 38.9] }
   };
   var BOX = [10, 58, 320, 354];                            // 左边演示框 x, y, w, h
 
@@ -66,7 +66,9 @@
           else E.txt(rg, x + lw + 14, ry, r[1], 26, E.INK, 'start', 700);
           return { g: rg, at: r[2], cy: ry - 7, x: x };
         });
-        return { g: g, rows: rows, d: d };
+        // 强化学习的目标是越大越好：加个负号就是越小越好（Boyd & Vandenberghe 4.1.1 节：maximize f0 即 minimize −f0）
+        var note = d.name === '强化学习' ? E.txt(g, x, 392, '越多越好：加个负号，就是越小越好', 20, E.MUT, 'start', 700) : null;
+        return { g: g, rows: rows, d: d, note: note };
       });
 
       /* ══ 演示：四组，各自一台 G1 ══ */
@@ -197,6 +199,7 @@
           E.op(box, f(st, CARDS[0].on - 0.3, 0.4));
           panels.forEach(function (p, i) {
             E.op(p.g, act[i]);
+            if (p.note) E.op(p.note, f(st, T.rl.note, 0.4));
             p.rows.forEach(function (r, k) {
               var pr = f(st, r.at, 0.35), sc = 1 + (i === 1 && k === 2 ? 0.08 * E.bump(st, SAME, 0.9) : 0);
               r.g.setAttribute('transform', 'translate(' + (-24 * (1 - pr)).toFixed(1) + ' 0) translate(' + r.x + ' ' + r.cy + ') scale(' + sc.toFixed(3) + ') translate(' + (-r.x) + ' ' + (-r.cy) + ')');

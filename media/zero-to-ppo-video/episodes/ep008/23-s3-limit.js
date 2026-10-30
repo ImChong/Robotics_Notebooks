@@ -1,9 +1,11 @@
 // 008 第 3 幕：约束——不能越过的线。左半边接着上一幕：小跑道 + 代价图（紫色的碗，亮黄小球停在碗底 (2, 8)）；右栏上面是代价的式子。
 // 句 1「最多」小跑道和代价图在 1 格处立起橙色的墙，墙右边是橙色斜线区，右栏出约束牌「约束：u ≤ 1」，「约束」牌子鼓一下；
 // 句 2「超过一格」斜线区加深、碗在墙外的那段变灰，「碗底」小球亮一下，「出界」小球上打橙 ×、写「出界」；
-// 句 3「能选的范围」横轴 0–1 加粗成绿色、写「能选」，「代价最小」小球顺着碗壁滚到 (1, 10)，「十分」写「10 分」，「贴」墙和小球一起亮一下；
+// 句 3「能选的范围」横轴 0–1 加粗成绿色、写「能选（可行集）」，「代价最小」小球顺着碗壁滚到 (1, 10)，「十分」写「10 分」，「贴」墙和小球一起亮一下；
 // 句 4「迈三格」墙挪到 3 格，约束牌改成 u ≤ 3，「碗底」小球滚回 (2, 8) 打勾，「不起作用」右栏写「约束不起作用」，「两格」小球亮一下；
-// 句 5 左半边和右栏收起，三块牌按念到的词弹出，每块一台侧视 G1（URDF）：「关节」大腿抬起，小腿在膝关节的限位 −5°…165°
+// 句 5「至少迈四格」4 格处再立一道墙，左边全盖上斜线区（4 ≤ u ≤ 3），「没有」横轴上能选的那段消失、小球淡下去，「无解」碗下写「无解」、
+//    右栏写「可行集是空的」「无解（不可行）」（Boyd & Vandenberghe 4.1.1 节：没有可行点叫 infeasible）；
+// 句 6 左半边和右栏收起，三块牌按念到的词弹出，每块一台侧视 G1（URDF）：「关节」大腿抬起，小腿在膝关节的限位 −5°…165°
 //    （URDF 的 lower / upper）之间来回转、碰到橙色挡块就停；「电机」G1 一下一下往下蹲，膝关节力矩的竖条跟着涨、到橙线「上限」
 //    （URDF 的 effort 139 N·m）就顶住；「脚」G1 站着，「推」绿箭头从地面往上顶脚底（✓），「拉」橙虚线箭头往下拽（×）。
 // 时刻取自配音的逐词时间（分镜时间 = 念到这个词的时刻），见 ../ep008.py。
@@ -15,18 +17,20 @@
     over: 7.34, gray: 8.6, bottom: 9.59, out: 11.07,
     feas: 13.01, roll1: [14.3, 0.9], ten: 15.78, edge: 17.92,
     move: [21.3, 0.8], roll2: [22.3, 0.8], ok: 23.4, noUse: 24.84, two: 26.24,
-    leave: 27.85, cards: [29.99, 32.26, 33.72], push: 34.3, pull: 35.27
+    infe: 28.56, add: 30.25, lo: 31.5, none: 33.15, word: 34.65,
+    leave: 36.25, cards: [38.39, 40.66, 42.12], push: 42.7, pull: 43.67
   };
 
   E.scenes[2] = {
     title: '约束：不能越过的线',
-    dur: 36.65,
+    dur: 45.05,
     cues: [
       { at: 0, s: '一步最多迈 1 格：必须守住的限制叫**约束**，$u \\le 1$' },
       { at: 6.84, s: '超过 1 格都不能选：**碗底**（2 格）**出界**了' },
       { at: 12.7, s: '能选的范围里最好的是 1 格（10 分）：贴在约束的边上' },
       { at: 20.21, s: '要是最多迈 3 格：碗底在范围里，约束不起作用' },
-      { at: 27.75, s: '机器人的约束：关节有范围、电机的力有上限、脚只能推不能拉' }
+      { at: 27.75, s: '约束打架：最多 3 格又至少 4 格 → 没有能选的，**无解**（不可行）' },
+      { at: 36.15, s: '机器人的约束：关节有范围、电机的力有上限、脚只能推不能拉' }
     ],
     build: function (K) {
       var s = K.sceneSvg('约束：一步最多只能迈一格，超过一格的迈法都不能选，碗底两格出界了；能选的范围里代价最小的是一格，十分，最好的解贴在约束的边上；要是最多能迈三格，碗底在范围里，约束不起作用，答案还是两格；机器人里的约束：关节只能在一定范围里转，电机的力有上限，脚只能推地面不能拉地面');
@@ -42,9 +46,13 @@
       var c3 = ch.curve(E.cost, E.VIOLET, 5);
       var gray = K.paint(E.el('path', { fill: 'none', 'stroke-width': 6, 'stroke-linecap': 'round' }, left), null, E.MUT);
       var feas = K.paint(E.el('line', { y1: E.CH.oy, y2: E.CH.oy, 'stroke-width': 8, 'stroke-linecap': 'round' }, left), null, E.GOOD);
-      var feasLab = E.halo(E.txt(left, 0, E.CH.oy - 14, '能选', 20, E.GOOD, 'middle', 900));
+      var feasLab = E.halo(E.txt(left, 0, E.CH.oy - 14, '能选（可行集）', 20, E.GOOD, 'start', 900));
       var wallC = E.wall(left, s, P(0, 17.4)[1], E.CH.oy, '');
       var wallT = E.wall(left, s, E.MINI.y - 50, E.MINI.y + 14, '');
+      // 句 5：再加一条「至少 4 格」——4 格左边全是斜线区，墙在 4 格
+      var loC = E.wall(left, s, P(0, 17.4)[1], E.CH.oy, ''), loT = E.wall(left, s, E.MINI.y - 50, E.MINI.y + 14, '');
+      var loLab = E.halo(E.txt(left, 0, P(0, 12.4)[1], '至少 4 格', 20, E.BAD, 'end', 900));
+      var noneLab = E.halo(E.txt(left, P(2, 0)[0], P(0, 4)[1], '无解', 30, E.BAD, 'middle', 900));
       var wallLab = E.halo(E.txt(left, 0, P(0, 16.4)[1], '', 20, E.BAD, 'start', 900));   // 写在墙右边的斜线区顶上，不压竖轴的「扣分」
       s.appendChild(tr.foot); s.appendChild(tr.step);
       var ring = K.paint(E.el('circle', { r: 17, fill: 'none', 'stroke-width': 3.5 }, left), null, E.HI);
@@ -60,8 +68,8 @@
       E.tex(right, RX + 62, 38, '=' + E.ctex(H.acc, '(4-u)^2') + '+' + E.ctex(H.warn, 'u^2'), 26, E.INK, 'start', { w: 240, h: 46 });
       var card = E.el('g', {}, right);
       var cardR = K.paint(E.el('rect', { x: RX, y: 70, width: 320, height: 62, rx: 14, 'stroke-width': 3 }, card), E.tint(E.BAD, 12, 'var(--demo-surface)'), E.BAD);
-      E.txt(card, RX + 16, 110, '约束：一步最多迈', 22, E.INK, 'start', 900);
-      var cardTex = E.tex(card, RX + 304, 109, '', 30, E.BAD, 'end', { w: 110, h: 50 });
+      var cardTxt = E.txt(card, RX + 16, 110, '约束：一步最多迈', 22, E.INK, 'start', 900);
+      var cardTex = E.tex(card, RX + 304, 109, '', 30, E.BAD, 'end', { w: 160, h: 50 });
       var line1 = E.txt(right, RX + 6, 196, '', 24, E.INK, 'start', 900);
       var line2 = E.txt(right, RX + 6, 246, '', 24, E.INK, 'start', 900);
       var line3 = E.txt(right, RX + 6, 296, '', 24, E.INK, 'start', 900);
@@ -120,7 +128,8 @@
           var f = E.fade;
           var keep = 1 - f(st, T.leave, 0.5);
           E.op(left, keep); E.op(right, keep);
-          E.op(tr.foot, keep); E.op(tr.step, keep);
+          var dimB = 1 - 0.75 * f(st, T.none, 0.4);              // 无解时小球、脚印淡下去
+          E.op(tr.foot, keep * dimB); E.op(tr.step, keep * dimB);
 
           /* 约束的上限：1 → 3（句 4） */
           var lim = 1 + 2 * f(st, T.move[0], T.move[1]);
@@ -138,9 +147,17 @@
           gray.setAttribute('d', ch.path(E.cost, lim, 4, 40));
           E.op(gray, 0.85 * f(st, T.gray, 0.4));
           feas.setAttribute('x1', P(0, 0)[0]); feas.setAttribute('x2', P(lim, 0)[0].toFixed(1));
-          E.op(feas, f(st, T.feas, 0.4));
-          feasLab.setAttribute('x', P(lim / 2, 0)[0].toFixed(1));
-          E.op(feasLab, f(st, T.feas, 0.4));
+          var noneP = f(st, T.none, 0.4);                         // 句 5：没有能选的了
+          E.op(feas, f(st, T.feas, 0.4) * (1 - noneP));
+          feasLab.setAttribute('x', (P(0, 0)[0] + 8).toFixed(1));
+          E.op(feasLab, f(st, T.feas, 0.4) * (1 - noneP));
+          // 「至少 4 格」的墙：线在 4 格，斜线区盖住 0–4 格
+          loC.set(P(0, 0)[0], P(4, 0)[0]); loT.set(tr.X(0) - 6, tr.X(4));
+          [loC, loT].forEach(function (w) { var x = w === loC ? P(4, 0)[0] : tr.X(4); w.line.setAttribute('x1', x.toFixed(1)); w.line.setAttribute('x2', x.toFixed(1)); });
+          var loOn = f(st, T.lo, 0.4);
+          E.op(loC.g, loOn); E.op(loT.g, loOn);
+          loLab.setAttribute('x', (P(4, 0)[0] - 10).toFixed(1)); E.op(loLab, loOn);
+          E.pop(noneLab, P(2, 0)[0], P(0, 4)[1] - 10, f(st, T.word, 0.35), 0.7);
 
           /* 小球：碗底 → 1 格（贴着墙）→ 回到碗底 */
           var ub = E.steps(st, [[0, 2], [T.roll1[0], 1], [T.roll2[0], 2]], 0.85);
@@ -148,6 +165,7 @@
           ball.setAttribute('cx', bp[0].toFixed(1)); ball.setAttribute('cy', bp[1].toFixed(1));
           var bb = E.bump(st, T.bottom, 0.8) + E.bump(st, T.edge, 1.0) + E.bump(st, T.two, 0.8);
           ball.setAttribute('r', (11 + 4 * Math.min(1, bb)).toFixed(2)); E.glow(ball, E.HI, bb > 0.05);
+          E.op(ball, dimB);
           ring.setAttribute('cx', bp[0].toFixed(1)); ring.setAttribute('cy', bp[1].toFixed(1));
           E.op(ring, E.bump(st, T.edge, 1.0));
           tr.setU(ub);
@@ -158,25 +176,27 @@
           ballLab.textContent = st < T.move[0] ? '10 分' : '8 分';
           ballLab.setAttribute('x', (bp[0] + (st < T.move[0] ? -18 : 0)).toFixed(1)); ballLab.setAttribute('y', (bp[1] + (st < T.move[0] ? 36 : 44)).toFixed(1));
           ballLab.setAttribute('text-anchor', st < T.move[0] ? 'end' : 'middle');
-          E.op(ballLab, f(st, T.ten, 0.3) * (1 - f(st, T.move[0], 0.3)) + f(st, T.two, 0.3));
+          E.op(ballLab, f(st, T.ten, 0.3) * (1 - f(st, T.move[0], 0.3)) + f(st, T.two, 0.3) * (1 - f(st, T.infe, 0.3)));
           okC.setAttribute('transform', 'translate(' + (P(2, 8)[0] + 22) + ' ' + (P(2, 8)[1] - 34) + ')');
-          E.drawOn(okC, f(st, T.ok, 0.4));
+          E.drawOn(okC, f(st, T.ok, 0.4) * (1 - f(st, T.infe, 0.3)));
 
           /* 右栏 */
           E.pop(card, RX + 160, 101, f(st, T.card, 0.35), 0.85);
-          cardTex.setTex('u\\le ' + (st < T.move[0] + T.move[1] / 2 ? 1 : 3));
+          cardTex.setTex(st >= T.lo ? '4\\le u\\le 3' : 'u\\le ' + (st < T.move[0] + T.move[1] / 2 ? 1 : 3));
+          cardTxt.textContent = st >= T.lo ? '约束：同时要' : '约束：一步最多迈';
           var wb = E.bump(st, T.word, 0.8);
           cardR.style.strokeWidth = 3 + 2 * wb; E.glow(cardR, E.BAD, wb > 0.05);
-          var A = st < T.move[0];
-          line1.textContent = A ? '碗底 u = 2：出界' : '碗底 u = 2：在范围里';
-          line1.style.fill = A ? E.BAD : E.GOOD;
-          E.op(line1, A ? f(st, T.out, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.ok, 0.3));
-          line2.textContent = A ? '能选：0 ≤ u ≤ 1' : '约束不起作用';
-          line2.style.fill = A ? E.GOOD : E.MUT;
-          E.op(line2, A ? f(st, T.feas, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.noUse, 0.3));
-          line3.textContent = A ? '最好：u = 1，代价 10' : '答案：还是 u = 2';
-          line3.style.fill = E.HI;
-          E.op(line3, A ? f(st, T.ten, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.two, 0.3));
+          var A = st < T.move[0], Z = st >= T.infe;              // A：最多 1 格；Z：句 5 约束打架
+          var zOut = 1 - f(st, T.infe - 0.3, 0.3);
+          line1.textContent = Z ? '至少 4 格、最多 3 格' : A ? '碗底 u = 2：出界' : '碗底 u = 2：在范围里';
+          line1.style.fill = Z ? E.INK : A ? E.BAD : E.GOOD;
+          E.op(line1, Z ? f(st, T.lo, 0.3) : A ? f(st, T.out, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.ok, 0.3) * zOut);
+          line2.textContent = Z ? '可行集是空的' : A ? '可行集：0 ≤ u ≤ 1' : '约束不起作用';
+          line2.style.fill = Z ? E.BAD : A ? E.GOOD : E.MUT;
+          E.op(line2, Z ? f(st, T.none, 0.3) : A ? f(st, T.feas, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.noUse, 0.3) * zOut);
+          line3.textContent = Z ? '无解（不可行）' : A ? '最好：u = 1，代价 10' : '答案：还是 u = 2';
+          line3.style.fill = Z ? E.BAD : E.HI;
+          E.op(line3, Z ? f(st, T.word, 0.3) : A ? f(st, T.ten, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.two, 0.3) * zOut);
 
           /* 句 5：三块牌 */
           cards.forEach(function (c, i) { E.pop(c.g, c.cx, 212, f(st, T.cards[i], 0.35), 0.85); });

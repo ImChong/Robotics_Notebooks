@@ -52,7 +52,7 @@
       items: [
         { c: 'var(--demo-good)', n: '① 变量', s: '由我们来选的数：这一步迈几格 u', at: 1.87 },
         { c: 'var(--violet)', n: '② 目标函数', s: '给每个选择算代价：迈 2 格只扣 8 分', at: 6.65 },
-        { c: '#ff7b3a', n: '③ 约束', s: '不能越过的线：最好的解常贴在边上', at: 12.6 },
+        { c: '#ff7b3a', n: '③ 约束', s: '不能越过的线：最好的解可能就贴在边上', at: 12.6 },
         { c: 'var(--hi)', n: '④ 到处都是优化', s: '逆运动学、最优控制、全身控制、强化学习', at: 18.55 }
       ],
       foot: { s: '**优化**：在约束里，找让代价最小的变量', at: 25.61 }
@@ -65,12 +65,14 @@
       refs: {
         at: 12.72,
         items: [
-          '**《Convex Optimization》** Boyd & Vandenberghe：1.1、4.1.1 节（变量、目标函数即代价函数、约束），9.3 节梯度下降',
-          '**《Underactuated Robotics》** Tedrake：第 24 章（优化问题的写法）、第 8 章（LQR 的代价）',
-          '**《Modern Robotics》** Lynch & Park：6.2 节（逆运动学用优化）、12.1 节（只能推，不能拉）',
+          '**《Convex Optimization》** Boyd 等：1.1、1.4、4.1、4.2.2、6.1.2、9.3 节（变量、目标、约束、可行集、初始值、梯度下降）',
+          '**EE364b 讲义** Boyd：投影次梯度法（挪过界就拉回边上）',
+          '**《Underactuated Robotics》** Tedrake：第 24 章（写法、初始值）、第 8 章（LQR 的代价）',
+          '**《Modern Robotics》**：6.2 节（逆运动学、初始值）、12.1 节（只能推，不能拉）',
+          '**Deits & Tedrake 2014**：落脚点当变量',
           '**mink 文档**：逆运动学写成二次规划，关节不超限位',
-          '**Herzog 等**（arXiv:1410.7284）：全身控制的变量是关节加速度、力矩和接触力',
-          '**《Reinforcement Learning》** Sutton & Barto：式 (13.1)，策略参数一小步一小步地改',
+          '**Herzog 等**（arXiv:1410.7284）：全身控制的变量和约束',
+          '**《Reinforcement Learning》** Sutton & Barto：式 (13.1)',
           '**Unitree G1 URDF**：29 个转动关节，膝、肘的限位，膝力矩上限'
         ]
       },
