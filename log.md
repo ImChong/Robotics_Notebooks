@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-30] ingest | 具身智能研究室 SuperMimic 42 个社区复现/扩展项目盘点归档（raw + blog 清单），论文页补生态概览；未逐仓核查、未新建项目页
+
 ## [2026-10-30] ingest | 深蓝《路径规划5大主流算法详解》10-30 重发版（具身智能基础第11篇）归档 raw，并入既有 source 与五范式对比页，未新建 wiki
 
 ## [2026-10-29] ingest | shadcn-admin
