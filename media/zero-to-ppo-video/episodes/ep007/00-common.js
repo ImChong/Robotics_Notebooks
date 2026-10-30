@@ -13,7 +13,7 @@
   /* 颜色同 005、006（RELEASE_PLAN「画面配色」）：坐标轴 x 红、y 绿、z 蓝（E.X / E.Y / E.Z）——扫地机和骨盆上往前 / 往左 / 往上的小箭头、
      矩阵对应的前三列都用它；平面里的转动（绕 z 轴）用蓝；算错用橙 E.ERR（红色留给 x 轴），打勾这类「对」用 good（绿）；
      位置 p（地图原点指到机器人的箭头、齐次变换矩阵里位置那一列）violet；点（袜子、杯子）和补上的 1 / 0 用本系列亮黄 --hi；
-     最下面补的一排（0、0、1）muted；「向量」这个说法用白字（绿留给「对」和 y 轴）。
+     最下面补的一排（0、0、1）muted；「自由向量」这个说法用白字（绿留给「对」和 y 轴）。
      KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
   E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
