@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-31
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md
@@ -113,7 +113,7 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - [Curr-0（Current Robotics）](./current-robotics-curr0.md) — 博客将 **21-DoF Wuji Hand** 作为 System 0 灵巧手部署样例（2026-06）
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 跨本体世界模型将 **Wuji 灵巧手** 列为人形末端配置之一（2026-08）
 - [CoorDex（论文实体）](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — G1+**20-DoF WUJI** 连续 dexterous loco-manipulation 仿真主平台（arXiv:2606.23680）
-- [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 论文在 Wuji Hand 上零样本 sim2real 转笔与魔方重定向（arXiv:2606.16272）
+- [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 论文在 Wuji Hand 上零样本 sim2real 转笔与魔方重定向（arXiv:2606.16272）；[官方代码](https://github.com/wuji-technology/toporetarget) 由 `wuji-technology` 组织以 MIT 开源，附 Wuji Hand 2 转笔数据转换示例（下游训练见 [wuji-mjlab](https://github.com/wuji-technology/wuji-mjlab)）
 - [Kyber Labs](./kyber-labs.md) — 同为产业侧 **五指灵巧手 × 具身 AI** 路线；Kyber 强调背驱动与数百美元级成本叙事
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 无级机器人的执行器/灵巧手硬件是本驱动链的产业实体之一
 - [All Hands Up](./all-hands-up.md) — RLWRLD 将 Wuji Hand V1.1 列为轻量拟人、**不背驱**、小工具表现好的案例（仿真 Kapandji 10/11）

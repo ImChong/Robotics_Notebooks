@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-29
+updated: 2026-10-31
 related:
   - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
@@ -422,7 +422,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 JAAS 统一动作空间（arXiv:2608.14028；确认未开源）
 - [NestDex](../entities/paper-nestdex.md) — copilot 嵌套采数 + 独立外层 visuomotor（arXiv:2608.13362；确认未开源）
-- [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 人手演示 → 接触保真参考 → PPO 跟踪，Pen-Spin / 魔方重定向
+- [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 人手演示 → 接触保真参考 → PPO 跟踪，Pen-Spin / 魔方重定向；[官方代码](https://github.com/wuji-technology/toporetarget)（MIT）
 - [REGRIND（重定向引导灵巧操作 RL）](../methods/regrind-retargeting-guided-rl.md) — MoCap 单次演示 → interaction mesh 重定向 → 残差 RL；LEAP/WUJI 剪刀与螺丝刀真机（arXiv:2607.11874）
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 人类演示 → CWS 奖励 + RL；4,739 项双手 benchmark 与 DexMachina/ManipTrans/SPIDER 对照
 - [DemoMimic（单次示范灵巧泛化）](../entities/paper-demomimic.md) — 接触局部几何 + AR/SCR；16 物体真机 71% 均值（Stanford；代码待发布）
