@@ -3,7 +3,7 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-09-23
+updated: 2026-10-30
 sources:
   - ../../sources/papers/x2n_transformable.md
   - ../../sources/papers/mujica_arxiv_2605_13058.md
@@ -57,7 +57,7 @@ related:
 
 ### MimicAgent（Go2 / Go2-W 文本→轨迹→RL）
 
-- [MimicAgent](../entities/paper-mimicagent.md)（CMU，arXiv:2609.24145）用 LLM 生成 **粗参考轨迹** 再 example-guided RL，覆盖 **Go2-W** 侧 flip、双足 skating 等 wheeled-quadruped 技能；与 MUJICA 的「单策略多技能指示」互补，强调 **缺 mocap 时用 agent 合成参考**。
+- [MimicAgent](../entities/paper-mimicagent.md)（CMU，arXiv:2609.24145）用 LLM 生成 **粗参考轨迹** 再 example-guided RL，覆盖 **Go2-W** 侧 flip、双足 skating 等 wheeled-quadruped 技能；与 MUJICA 的「单策略多技能指示」互补，强调 **缺 mocap 时用 agent 合成参考**。截至 2026-10-30 四足代码仓仅有占位 README（人形仓已公开运动学生成代码）。
 
 ### AWARE（Deep Robotics M20 高动态反射避障）
 

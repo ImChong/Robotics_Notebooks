@@ -11,6 +11,7 @@ tags:
 status: draft
 updated: 2026-10-30
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-daily-omni.md
   - ./embspatial.md
 sources:
@@ -70,6 +71,17 @@ sequenceDiagram
 - README 写 `model_prediction`，当前脚本实际读取 `model_output`；缺少该键的样本被跳过，须核对覆盖数，不能把输出总数当作完整集结果。test 答案不公开，官方提供提交评测入口。
 - 图中 WITA-Omni 的 82.6 暂未在可读取的基准官方榜单中核验，不能确认其子集、版本和测评方。
 
+## 与其他工作对比
+
+| 基准 | 输入模态 | 侧重 |
+|---|---|---|
+| MMAU | 音频 | 语音、音乐、环境声的感知、知识提取与推理选择题 |
+| [Daily-Omni](./paper-daily-omni.md) | 音频 + 视频 | 跨模态时序对齐问答 |
+| [TimeLens-Bench](./paper-timelens.md) | 视频 + 文本查询 | 事件起止时间定位 |
+| [EmbSpatial-Bench](./embspatial.md) | 静态图像 | 第一人称空间关系 |
+
+MMAU 只覆盖音频单模态，与音视频基准互补；四者都不直接评测机器人动作。
+
 ## 结论
 
 MMAU 适合诊断音频感知与推理，结果需带版本、数据划分和有效样本数。
@@ -82,6 +94,7 @@ MMAU 适合诊断音频感知与推理，结果需带版本、数据划分和有
 
 - [Daily-Omni](./paper-daily-omni.md)：音视频时序对齐。
 - [EmbSpatial-Bench](./embspatial.md)：静态图像空间关系。
+- [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 

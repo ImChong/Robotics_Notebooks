@@ -94,6 +94,14 @@ sequenceDiagram
 
 论文 v1 报告 OmniEdu-27B 在 K12-Bench 为 63.12% EM / 76.69% F1，MathFish 为 85.89%，MathTutorBench Scaffold 胜率为 78.74%，LongTutor Teaching 为 3.02。与各自基础模型相比，三个规模的教育评测汇总指标均提升；排名限于论文的评测模型和设置。
 
+## 与其他工作对比
+
+| 对象 | 差异 |
+|---|---|
+| 同规模基础模型 | 论文报告三个规模的教育评测汇总指标均高于各自基础模型；差异来自教育数据整理与 SFT，而非新架构 |
+| [OpenMAIC](./openmaic.md) | 多智能体课堂生成应用系统；OmniEdu 是模型层，可作为此类应用的底座之一 |
+| [OpenClaw](./openclaw.md) | 应用编排层参照；OmniEdu 通过 SDK 或 OpenAI 兼容服务被调用，本身不提供编排 |
+
 ## 结论
 
 能力导向的教育数据整理与 SFT 在论文报告的基准上改善了多个教育任务。
