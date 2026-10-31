@@ -6,6 +6,8 @@
 - **类型：** site / project-page
 - **URL：** <https://tsinghua-mars-lab.github.io/toporetarget-web/>
 - **PDF 镜像：** <https://tsinghua-mars-lab.github.io/toporetarget-web/static/images/paper.pdf>
+- **官方项目页：** <https://toporetarget2026.github.io/TopoRetarget/>
+- **代码：** <https://github.com/wuji-technology/toporetarget>（[源码归档](../repos/toporetarget.md)）
 - **入库日期：** 2026-06-17
 - **配套论文：** [TopoRetarget（arXiv:2606.16272）](https://arxiv.org/abs/2606.16272) — 归档见 [`sources/papers/toporetarget_arxiv_2606_16272.md`](../papers/toporetarget_arxiv_2606_16272.md)
 
