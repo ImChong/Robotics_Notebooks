@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real]
 status: complete
 date: 2026-06-17
-updated: 2026-09-15
+updated: 2026-10-31
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -17,6 +17,7 @@ related:
 sources:
   - ../../sources/papers/toporetarget_arxiv_2606_16272.md
   - ../../sources/sites/toporetarget-github-io.md
+  - ../../sources/repos/toporetarget.md
 summary: "TopoRetarget 用共享拓扑的 hand–object interaction mesh 与距离加权 Laplacian 优化，把人手演示转为灵巧手可学的接触保真参考；配套轻量 PPO 残差跟踪与 DR，在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署到 Wuji Hand。"
 ---
 
@@ -88,6 +89,44 @@ flowchart LR
   SIM --> REAL
 ```
 
+## 源码运行时序图
+
+以下按官方代码的 `toporetarget run` 单片段路径整理；论文方法见 [arXiv v2](https://arxiv.org/html/2606.16272v2)。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant C as CLI
+    participant P as pipeline
+    participant R as solver.run
+    participant F as FrameSolver
+    participant T as Retargeter
+    participant V as viewer
+    U->>C: toporetarget run --data ... --clip ...
+    C->>P: 启动 pipeline
+    P->>P: 解析数据集和机器人配置
+    P->>R: 子进程运行 solver
+    R->>F: 构造会话并逐帧求解
+    loop 每帧
+        F->>T: retarget_frame（上一帧状态）
+        T->>T: 构建拓扑；骨方向预热；mesh SQP
+        T-->>F: 关节配置
+    end
+    R->>R: 自碰撞后处理并保存 NPZ 与诊断
+    R-->>P: 求解完成
+    opt 未关闭预览
+        P->>V: 加载结果并播放
+    end
+```
+
+官方仓库提供单片段 CLI、批处理与可视化；求解无需 GPU。仓库内置转笔示例，输出含轨迹及诊断文件。论文报告的 4.70 ms/帧是其实验指标，不应直接等同于整个工程流水线耗时。
+
+## 工程实践与开放状态
+
+- [官方代码](https://github.com/wuji-technology/toporetarget)以 MIT 许可发布；需要 Linux x86_64、Python 3.10+ 与 MuJoCo 3.4+。手模型子模块及公开数据集分别遵循其许可。
+- 示例：`toporetarget run --data data/pen_spin --clip pen_spin_029`。求解器 CPU 运行；`--skip-view` 跳过预览。
+- `examples/wuji_mjlab/convert_to_wuji_mjlab_pen_spin.py` 仅适配单支笔、右手 Wuji Hand 2、50 Hz 转笔数据；RL 训练在独立的 [wuji-mjlab](https://github.com/wuji-technology/wuji-mjlab) 中进行。项目提供的已训练 checkpoint 并非使用 README 的单片段示例训练。
+
 ## 与常见路线的关系
 
 - **相对 OmniRetarget：** 同用 **interaction mesh + Laplacian** 保留人–物/手–物局部关系；OmniRetarget 面向 **人形全身 + 地形/物体 Sequential SOCP**（~41 ms/帧），TopoRetarget 面向 **灵巧手 + 固定参数实时优化**（~4.7 ms/帧），在 ContactPose 接触精度/对齐上更优。
@@ -109,7 +148,7 @@ flowchart LR
 
 - **上游参考质量：** 可容忍源侧轻微穿透，但对「应接触未接触」的虚拟接触需预处理。
 - **未强调动力学一致化：** 与 SPIDER / DynaRetarget 不同，可行性主要靠运动学约束 + 下游 RL/DR；极端力控任务仍需验证。
-- **数据集与代码发布：** 论文承诺轨迹与策略数据；入库日以项目页与 arXiv 为准，工程复现前请核对仓库更新。
+- **公开范围：** 重定向实现与转笔示例已公开；公开数据集和 MANO 需按各自许可自行获取。转笔适配器的对象、手型和频率有上述限制。
 
 ## 关联页面
 
@@ -125,7 +164,9 @@ flowchart LR
 ## 推荐继续阅读
 
 - 论文摘要页：<https://arxiv.org/abs/2606.16272>
-- arXiv HTML 全文：<https://arxiv.org/html/2606.16272v1>
+- arXiv HTML 全文：<https://arxiv.org/html/2606.16272v2>
+- 官方项目页：<https://toporetarget2026.github.io/TopoRetarget/>
+- 官方源码：<https://github.com/wuji-technology/toporetarget>
 - MARS Lab 项目页：<https://tsinghua-mars-lab.github.io/toporetarget-web/>
 - 近邻全身交互保留：[OmniRetarget 项目页](https://omniretarget.github.io/)
 
@@ -133,3 +174,4 @@ flowchart LR
 
 - [toporetarget_arxiv_2606_16272（本入库摘录）](../../sources/papers/toporetarget_arxiv_2606_16272.md)
 - [toporetarget-github-io（项目页索引）](../../sources/sites/toporetarget-github-io.md)
+- [toporetarget（官方源码归档）](../../sources/repos/toporetarget.md)

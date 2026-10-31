@@ -8,6 +8,7 @@
 - **arXiv HTML：** <https://arxiv.org/html/2606.16272v1>
 - **PDF：** <https://tsinghua-mars-lab.github.io/toporetarget-web/static/images/paper.pdf>（MARS Lab 项目页镜像）；<https://arxiv.org/pdf/2606.16272>
 - **项目页：** <https://tsinghua-mars-lab.github.io/toporetarget-web/>（归档见 [`sources/sites/toporetarget-github-io.md`](../sites/toporetarget-github-io.md)）
+- **官方代码：** <https://github.com/wuji-technology/toporetarget>（[源码归档](../repos/toporetarget.md)）
 - **作者：** Jielin Wu*, Shenzhe Yao*, Guanqi He*‡, Xiaohan Liu*‡, Zhaoqing Zeng, Xiangrui Jiang, Han Yang, Wentao Zhang, Hang Zhao†（* equal；‡ project lead；† corresponding）
 - **机构：** IIIS, Tsinghua University
 - **硬件：** Wuji Hand（主真机实验）；亦展示 MANO、Leap 等跨 embodiment 增广
