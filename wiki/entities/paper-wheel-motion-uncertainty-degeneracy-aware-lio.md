@@ -5,16 +5,18 @@ tags:
   - legged-robot
   - locomotion
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.26550"
 project_id: wheel-motion-uncertainty-degeneracy-aware-lio
 project: https://weihairuo.github.io/wheel-motion-uncertainty/
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/wheel-motion-uncertainty-degeneracy-aware-lio_arxiv_2610_26550.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确定性学习与退化感知激光—惯性里程计（arXiv:2610.26550）：从本体历史为每个轮子学习方向相关过程协方差，在可微滤波器中训练；同时抑制激光雷达几何弱方向的约束，使轮运动和激光约束根据各自退化程度自适应加权。"
 ---
 

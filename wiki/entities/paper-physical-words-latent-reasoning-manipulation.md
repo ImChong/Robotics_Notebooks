@@ -6,7 +6,7 @@ tags:
   - manipulation
   - nvidia
 status: complete
-updated: 2026-10-29
+updated: 2026-10-31
 arxiv: "2610.26854"
 project_id: physical-words-latent-reasoning-manipulation
 project: https://nvidia-isaac.github.io/video_to_data/physicalword/
@@ -14,10 +14,12 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/sites/physword.md
   - ../../sources/papers/physical-words-latent-reasoning-manipulation_arxiv_2610_26854.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "PhysWord：物理词汇：用于组织机器人操作潜在推理的词汇体系（arXiv:2610.26854）：提出 PhysWord，以原子动作词汇作为语义锚点，将动作词的隐藏状态与未来观测提取的潜在表示对齐。模型自回归预测未来的 Physical Words，并通过视觉或触觉条件表达不同操作阶段的状态变化。"
 ---
 

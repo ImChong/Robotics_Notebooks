@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, dexterous-manipulation, manipulation, imitation-learning, simulation, sim2real, isaac-sim, tsinghua, bupt, pku]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-31
 project_id: handson
 arxiv: "2610.26765"
 code: https://github.com/TsinghuaC3I/HandsOn
@@ -14,11 +14,13 @@ related:
   - ../methods/imitation-learning.md
   - ../concepts/contact-rich-manipulation.md
   - ./isaac-sim.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/handson_arxiv_2610_26765.md
   - ../../sources/sites/handson-project-page.md
   - ../../sources/repos/handson.md
   - ../../sources/datasets/handson_datasets.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "HandsOn（arXiv:2610.26765，清华大学等）是跨具身灵巧操作仿真平台与 benchmark：66 项任务、18,000 条示范，区分有示范的 Core-50 与无目标示范的 Transfer-16；当前公开 PhysX 数据与评测代码，论文 checkpoint 未发布。"
 ---
 

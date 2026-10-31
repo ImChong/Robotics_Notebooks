@@ -4,7 +4,7 @@ tags:
   - paper
   - humanoid
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.28470"
 project_id: fast-motion-retargeting-pipeline-humanoid
 project: https://daroslab.github.io/frdv/
@@ -12,9 +12,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/fast-motion-retargeting-pipeline-humanoid_arxiv_2610_28470.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "Fast Retargeting：面向规模化人形学习的快速动作重定向流程（arXiv:2610.28470）：结合定制 SQP、实时迭代和分块并行，将速度提升至最高每秒 9156 帧；再用接触隐式 iLQR 筛除或修正动力学不可执行、悬脚和滑脚动作。"
 ---
 

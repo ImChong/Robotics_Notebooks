@@ -5,7 +5,7 @@ tags:
   - cross-embodiment
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.27794"
 project_id: multi-view-latent-action-pretraining-cross-embodiment
 project: https://learnsyslab.github.io/multiview_latent_action_pretraining/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜在动作预训练（arXiv:2610.27794）：研究通过多视角视频学习潜在动作表示，使模型能够利用不同视角的运动信息进行预训练，并将学到的动作表示用于跨机器人本体学习。"
 ---
 

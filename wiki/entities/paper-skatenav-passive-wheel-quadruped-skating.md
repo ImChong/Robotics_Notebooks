@@ -5,16 +5,18 @@ tags:
   - legged-robot
   - locomotion
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.25962"
 project_id: skatenav-passive-wheel-quadruped-skating
 project: https://ktw1404.github.io/SkateNav/
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/skatenav-passive-wheel-quadruped-skating_arxiv_2610_25962.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "SkateNav：通过自适应滑行学习被动轮四足机器人的高能效导航（arXiv:2610.25962）：把导航改写为带时间预算的到达目标任务，使策略联合决定转向、蹬地和滑行时长；通过可逐控制周期调频的滑行动作循环适应环境，并零样本迁移到带被动轮的 Mini Cheetah。"
 ---
 

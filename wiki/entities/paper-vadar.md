@@ -3,16 +3,19 @@ type: entity
 project_id: vadar
 tags: [paper, reinforcement-learning, hierarchical-reinforcement-learning, goal-conditioned, long-horizon, cmu]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-31
 project: "https://shashwatsaxena13.github.io/vadar-site/"
-venue: "preprint（项目页 PDF；归档未见 arXiv 编号）"
+arxiv: "2610.26629"
+venue: "preprint（arXiv:2610.26629）"
 related:
   - ../methods/hierarchical-reinforcement-learning.md
   - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/vadar.md
   - ../../sources/sites/vadar.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "VaDar 将多个子目标价值分量拆分监督、共享 critic 表征，再用未来子目标价值训练部署时 goal-agnostic 的策略，针对长时程任务中只追逐当前子目标的短视行为。"
 ---
 
