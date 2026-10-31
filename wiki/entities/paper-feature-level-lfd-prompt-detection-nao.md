@@ -4,16 +4,18 @@ tags:
   - paper
   - humanoid
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.26170"
 project_id: feature-level-lfd-prompt-detection-nao
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/feature-level-lfd-prompt-detection-nao_arxiv_2610_26170.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "特征级示范学习：基于特征级感知与提示式目标检测的人形机器人数据高效示范学习（arXiv:2610.26170）：从视频中提取人体关节、提示词检测结果和三维物体位置等紧凑特征，再预测 NAO 的关节轨迹；在极少示范条件下完成推物和抓放任务。"
 ---
 

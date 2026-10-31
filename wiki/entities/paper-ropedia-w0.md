@@ -3,19 +3,21 @@ type: entity
 project_id: ropedia-w0
 tags: [paper, world-model, loco-manipulation, cross-embodiment]
 status: complete
-updated: 2026-10-27
+updated: 2026-10-31
 arxiv: "2610.26855"
 project: "https://ropedia.github.io/ropedia-w0/"
 code: "https://github.com/Ropedia/ropedia-w0"
 related:
   - ../entities/unifolm-world-model-action.md
   - ../methods/generative-world-models.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/ropedia_w0_arxiv_2610_26855.md
   - ../../sources/sites/ropedia-w0.md
   - ../../sources/repos/ropedia-w0.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "Ropedia W0 用共享相机位姿与投影骨架表示连接人类和多种机器人运动-操作数据，论文报告以 13,000 小时人类与机器人数据训练跨本体世界基础模型。"
 ---
 

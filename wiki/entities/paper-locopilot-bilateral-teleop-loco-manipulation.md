@@ -5,7 +5,7 @@ tags:
   - quadruped
   - locomotion
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.27998"
 project_id: locopilot-bilateral-teleop-loco-manipulation
 code: https://github.com/iit-DLSLab/LocoPilot
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/locopilot-bilateral-teleop-loco-manipulation_arxiv_2610_27998.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "LocoPilot：面向移动操作策略学习的单人双向遥操作（arXiv:2610.27998）：用主机械臂与两个手柄实现全系统同步控制，以无力传感器方式估计并反馈接触力；数据采集和策略部署共享同一个 11 维动作接口，避免额外动作重定向。"
 ---
 

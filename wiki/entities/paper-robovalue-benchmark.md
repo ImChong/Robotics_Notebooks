@@ -14,7 +14,7 @@ tags:
   - pku
   - hku
 status: complete
-updated: 2026-10-20
+updated: 2026-10-31
 project_id: robo-value-benchmark
 arxiv: "2610.26663"
 project: https://robovalue-benchmark.github.io/
@@ -25,10 +25,12 @@ related:
   - ./paper-roboreward.md
   - ./paper-prm-as-a-judge.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md
   - ../../sources/sites/robovalue-benchmark.md
   - ../../sources/repos/robovalue-benchmark-robovalue.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "RoboValue（arXiv:2610.26663）以 15 项仿真与 20 项真实操作任务，联合评测机器人价值模型的任务状态理解、时序进度、失败恢复和价值一致性；代码与训练数据公开，测试轨迹由组织方保留。"
 ---
 

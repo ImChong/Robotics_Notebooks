@@ -3,7 +3,7 @@ type: entity
 project_id: swap-humanoid-collision-avoidance
 tags: [paper, humanoid, whole-body-control, collision-avoidance, diffusion-policy, reinforcement-learning]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-31
 arxiv: "2610.25711"
 project: "https://iscoyizj.github.io/SWAP-steerable-humanoid-oa-website/"
 related:
@@ -11,10 +11,12 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/swap_humanoid_oa_arxiv_2610_25711.md
   - ../../sources/sites/swap-steerable-humanoid-oa-website.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "SWAP（arXiv:2610.25711）用感知条件化扩散策略提出多模态全身避障动作，低层 RL 控制器负责稳定跟踪；仿真与 Unitree G1 实验覆盖静态和动态障碍，测试时引导使目标奖励平均提升 34%，代码待开放。"
 ---
 

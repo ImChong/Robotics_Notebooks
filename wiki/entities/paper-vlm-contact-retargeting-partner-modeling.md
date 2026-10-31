@@ -4,7 +4,7 @@ tags:
   - paper
   - humanoid
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.28523"
 project_id: vlm-contact-retargeting-partner-modeling
 project: https://yutoshibata07.github.io/REACT/
@@ -12,9 +12,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/vlm-contact-retargeting-partner-modeling_arxiv_2610_28523.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "面向人形—人交互的 VLM 引导接触重定向与生成式伙伴建模（arXiv:2610.28523）：先由 VLM 识别语义接触并进行接触保持重定向，再将可访问伙伴真值的特权教师蒸馏为仅使用机载深度的学生；通过生成式伙伴状态预测处理视野外和遮挡人体。"
 ---
 
