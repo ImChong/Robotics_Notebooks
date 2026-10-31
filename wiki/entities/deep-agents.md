@@ -119,3 +119,5 @@ sequenceDiagram
 - [Deep Agents 文档](https://docs.langchain.com/oss/python/deepagents/overview)
 - [产品页](https://www.langchain.com/deep-agents)
 - [Python 仓库](https://github.com/langchain-ai/deepagents)
+
+- [dsh-superagent-prototype](./dsh-superagent.md)：面向单仓库的事件驱动编码代理研究原型。
