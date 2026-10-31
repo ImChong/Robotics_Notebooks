@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-10-31] ingest | 具身智能小站 2026-10-31《一张照片变成仿真场景》50 篇逐篇建独立详情节点（新建 34 / 复用 16）
+
 ## [2026-10-30] lint | 全量 lint 修复：6 陈旧页 + 1 过期页复核，7 篇 paper-* 补「与其他工作对比」，codec4AI 补训练输入适配，12 页补评测基准 / 感知栈枢纽回链
 
 ## [2026-10-30] ingest | Reflex 仿真源码更新
