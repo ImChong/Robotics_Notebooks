@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, 3d-generation, shape-completion, point-cloud, multi-view, occlusion, eccv, hunyuan3d, spatial-intelligence]
 status: complete
-updated: 2026-09-15
+updated: 2026-10-31
 arxiv: "2607.20660"
 venue: ECCV 2026
 related:
@@ -154,6 +154,8 @@ flowchart LR
 - **读法：** 以上为 **路线级** 对照；与各 baseline 的逐项定量比较以 **原文 PDF** 为准（[参考来源](#参考来源)）。
 
 ## 关联页面
+
+- [GenSfM](./paper-gensfm.md) — 联合估计相机与形状的稀疏视图生成重建。
 
 - [NVIDIA Spatial Intelligence Lab](./nvidia-spatial-intelligence-lab.md)
 - [Instant NuRec](./paper-instant-nurec.md) — 同 SIL 驾驶场景重建
