@@ -571,6 +571,7 @@
 - [drift_drl（High-speed Autonomous Drifting with DRL）](wiki/entities/drift-drl.md) — drift_drl** 是 Cai 等提出的 **高速自主漂移深度强化学习** 方法与官方实现（*IEEE RA-L & ICRA 2020*），在 **CARLA 0.9.5 定制仿真** 上训 `📅unknown` `[entity_page]`
 - [drive-game（Nürburgring Drive）](wiki/entities/drive-game.md) — drive-game** 是面向 **纽博格林** 等真实赛道的 **浏览器/Android 第一人称驾驶模拟器**：**Three.js** 渲染叠在自研 **240 Hz** 车辆物理之上，赛 `📅unknown` `[entity_page]`
 - [DROID Policy Learning](wiki/entities/droid-policy-learning.md) — DROID Policy Learning](https://github.com/droid-dataset/droid_policy_learning) 收录于具身智能研究室 [开源项目主表 `📅unknown` `[entity_page]`
+- [dsh-superagent-prototype](wiki/entities/dsh-superagent.md) — DeepSeek 将该项目作为 DeepSeek Harness 的插件包公开：接收 GitHub 和可选飞书事件，为符合授权的任务建立独立工作项和会话，结果可返回原会话。它是研究原型，不是正式产品。 `📅unknown` `[entity_page]`
 - [DualMap](wiki/entities/dualmap.md) — DualMap**（Eku127/DualMap，RAL 2025）是面向动态环境的 **在线开放词汇语义建图** 与自然 `📅unknown` `[entity_page]`
 - [Duckiebot（Duckietown）](wiki/entities/duckietown-duckiebot.md) — Duckiebot** 是 Duckietown 生态中的标准化开源小车，组织 duckietown，关键仓库 [dt-ducki `📅unknown` `[entity_page]`
 - [DVID](wiki/entities/dvid.md) — DVID**（*Distributed, Versioned, Image-oriented Dataservice*）是 HHMI Janelia FlyEM 团队开发的 **大尺度科学数据版本 `📅unknown` `[entity_page]`
