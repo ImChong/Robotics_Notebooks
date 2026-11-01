@@ -13,7 +13,7 @@ tags:
 - awesome-world-models
 - sun254667-wm
 status: stable
-updated: 2026-10-26
+updated: 2026-11-01
 related:
 - ./nvidia-isaac-lab-spot-locomotion-sim2real.md
 - ./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md
@@ -61,6 +61,7 @@ related:
 - ../methods/generative-world-models.md
 - ../methods/model-based-rl.md
 - ../tasks/manipulation.md
+- ../overview/quadruped-open-source-projects-technology-map.md
 sources:
 - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
 - ../../sources/repos/isaac_lab.md
@@ -84,6 +85,7 @@ sources:
 - ../../sources/papers/sun_awesome_wm_2511_04831_isaac-lab-a-gpu-accelerated-simulation-f.md
 - ../../sources/papers/sun_awesome_wm_catalog.md
 - ../../sources/repos/awesome-world-models.md
+- ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。
 project_id: isaac-lab
 arxiv: '2511.04831'

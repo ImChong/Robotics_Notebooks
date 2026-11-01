@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, postech, reinforcement-learning, isaac-lab, locomotion, wheel-legged, flamingo, cat, rsl-rl, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-11-01
 related:
   - ./isaac-lab.md
   - ./rsl-rl.md
@@ -13,8 +13,10 @@ related:
   - ../methods/safe-rl.md
   - ../tasks/hybrid-locomotion.md
   - ../tasks/locomotion.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/repos/isaac_rl_two_wheel_legged_bot.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "jaykorea/Isaac-RL-Two-wheel-Legged-Bot：Isaac Lab 扩展 lab.flamingo，为 Flamingo 双轮足注册速度/姿态/跳跃/后空翻任务；CoRL 支持 PPO 与 off-policy，并实现 CaT 约束管理器。"
 ---
 

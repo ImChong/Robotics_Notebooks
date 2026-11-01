@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can-fd, open-source, qdd, mjbots]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-01
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./simplefoc.md
@@ -15,9 +15,11 @@ related:
   - ../concepts/field-oriented-control.md
   - ../concepts/can-fd.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/repos/moteus.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "mjbots moteus：面向机器人关节的开源无刷伺服驱动（多板型 PCB + 固件），FOC、编码器、5 Mbps CAN-FD 与位置/速度/力矩控制；Apache-2.0；Urs 论文与 Jeong 双摆线 QDD 等均采用。"
 ---
 

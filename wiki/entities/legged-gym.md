@@ -2,18 +2,20 @@
 
 type: entity
 summary: "legged_gym"
-updated: 2026-10-01
+updated: 2026-11-01
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md
   - ../entities/paper-infinite-diffusion-terrain-diffusion.md
   - ./tita-rl.md
   - ../concepts/procedural-terrain-generation.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 tags: [eth]
 
 ---

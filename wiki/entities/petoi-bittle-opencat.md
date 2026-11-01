@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, education, open-source, esp32, arduino]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-01
 project_id: petoi-bittle-opencat
 code: https://github.com/PetoiCamp/OpenCat-Quadruped-Robot
 summary: "Petoi Bittle：掌上商业机器人狗，运行开源 OpenCat 框架（BiBoard + ESP32）；框架开源，硬件本身是成品套件而非开源 DIY 设计。"
@@ -11,8 +11,10 @@ related:
   - ./stanford-doggo-and-pupper.md
   - ./mini-pupper.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 ---
 
 # Petoi Bittle / OpenCat

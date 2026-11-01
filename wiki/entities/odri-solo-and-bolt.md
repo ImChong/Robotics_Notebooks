@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, biped, hardware, open-source, odri, torque-control, qdd, actuator]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-01
 related:
   - ./paper-open-torque-controlled-modular-robot-solo.md
   - ./quadruped-robot.md
@@ -13,12 +13,14 @@ related:
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../tasks/locomotion.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/repos/open_robot_actuator_hardware.md
   - ../../sources/sites/open_dynamic_robot_initiative.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Open Dynamic Robot Initiative（ODRI）：开源扭矩控制腿足平台（Solo/Bolt）与 open_robot_actuator_hardware 力控关节硬件——结构、行星/皮带减速、驱动 PCB、双编码器、电流/力矩环与测试资料的学术基线。"
 ---
 
