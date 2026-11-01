@@ -2,7 +2,7 @@
 type: concept
 tags: [real-time, clock-sync, ptp, ethercat, hardware, networking]
 status: complete
-updated: 2026-05-02
+updated: 2026-10-30
 related:
   - ./ethercat-protocol.md
   - ./lcm-basics.md
@@ -23,12 +23,18 @@ summary: "时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| NTP | Network Time Protocol | 通用网络授时协议，毫秒到百微秒级 |
+| PTP | Precision Time Protocol | IEEE 1588 精确时间协议 |
+| BMCA | Best Master Clock Algorithm | PTP 主时钟选举算法 |
+| HWTS | Hardware Timestamping | 在网卡 / PHY 层打时间戳 |
+| TC | Transparent Clock | 累加交换机驻留时间的透明时钟 |
+| BC | Boundary Clock | 在交换机处重新同步、再向下游授时的边界时钟 |
+| gPTP | generalized Precision Time Protocol | IEEE 802.1AS 定义的 PTP 子集 |
+| TSN | Time-Sensitive Networking | IEEE 802.1 时间敏感网络标准族 |
 | EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| DC | Distributed Clocks | EtherCAT 分布式时钟 |
 | IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 为什么单靠 NTP 不够
 
@@ -82,10 +88,10 @@ $$
 
 EtherCAT 走另一条路：既然总线是确定性环网，不如让所有从站在 ASIC 里维护一个 64 位 DC 时钟，由主站做一次性测量后下发偏置。其工作流程：
 
-1. 主站发出一帧 `BRW(0x900)`，途经每个 DC 从站时打两个时间戳（来时、去时）；
+1. 主站以广播写（`BWR`）访问寄存器 `0x0900`，报文途经每个 DC 从站时各端口锁存接收时间（来时、去时）；
 2. 报文绕环回来，主站读出每段 **传播延迟差**，计算每个从站相对参考从站的偏置 $\theta_i$；
 3. 主站通过 `FPWR` 把 $\theta_i$ 写回从站的 `0x920` 寄存器，从此本地 DC 时钟在硬件层补偿；
-4. 主站周期性发 **DC Sync 报文** 维护漂移，带宽几乎可忽略。
+4. 主站周期性用 `ARMW` / `FRMW` 读取参考时钟的系统时间（`0x0910`）并写入其余从站，各从站据此补偿漂移，带宽几乎可忽略。
 
 由于偏置是用**同一帧的来回时间戳**算的，链路非对称在这里几乎被消去；又因为补偿做在 ASIC 里，软件抖动完全不参与。这两点合起来解释了为什么 EtherCAT DC 在 100 个轴的人形机器人上仍能稳定到 $< 100\ ns$，而同样数量的 PTP 节点在普通交换机上只能做到 $\sim 1\ \mu s$。
 

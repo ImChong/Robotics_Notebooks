@@ -148,6 +148,8 @@ flowchart TB
 
 ## 关联页面
 
+- [仿生腹沟纤维](paper-ventral-groove-fibers.md) — 低压纤维气动驱动与柔顺抓取。
+
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 灵巧手是操作的核心硬件基础
 - [MIDAS Hand](../entities/midas-hand.md) — 现代直驱电动灵巧手；与气动柔性手形成对照
 - [Yale OpenHand](../entities/yale-openhand.md) — 打印件腱驱欠驱动开源手族对照

@@ -7,8 +7,10 @@ related:
   - ./humanoid-robot.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../methods/imitation-learning.md
+  - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
+  - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humanoid、Torso、Ergo Jr 等），软硬件全开源，主打教育、艺术与科研。"
 ---
 
@@ -50,3 +52,4 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
+- [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）

@@ -3,15 +3,18 @@ type: entity
 project_id: flora-robotics-data-engine
 tags: [robotics-data, video-annotation, reward-model, nvidia]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-29
 project: "https://research.nvidia.com/labs/gear/flora/"
 sources:
   - ../../sources/papers/flora_nvidia_2026.md
   - ../../sources/sites/flora-nvidia.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 related:
   - ../concepts/world-action-models.md
   - ../queries/dexterous-manipulation-data-pipeline.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 summary: "Flora 是面向机器人基础模型训练与后训练的数据标注模型套件，以视频时间分段和描述、过程/结果奖励及 rubric 评分生成监督标签；Hugging Face 已提供三类模型权重。"
+arxiv: "2610.31779"
 ---
 
 # Flora：机器人数据引擎模型套件

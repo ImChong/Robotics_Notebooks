@@ -5,7 +5,7 @@ tags:
   - world-action-model
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.30320"
 project_id: self-distilling-future-video-representations-wam
 project: https://huiwon-jang.github.io/FRED/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/self-distilling-future-video-representations-wam_arxiv_2610_30320.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "Self-Distilling WAM：面向世界动作模型的未来视频表示自蒸馏（arXiv:2610.30320）：研究未来视频表示的自蒸馏，使模型通过蒸馏学习未来视觉特征，并将这些表示用于世界动作建模。"
 ---
 

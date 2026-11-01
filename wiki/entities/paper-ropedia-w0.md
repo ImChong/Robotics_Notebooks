@@ -3,19 +3,21 @@ type: entity
 project_id: ropedia-w0
 tags: [paper, world-model, loco-manipulation, cross-embodiment]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-31
 arxiv: "2610.26855"
 project: "https://ropedia.github.io/ropedia-w0/"
 code: "https://github.com/Ropedia/ropedia-w0"
 related:
   - ../entities/unifolm-world-model-action.md
   - ../methods/generative-world-models.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/ropedia_w0_arxiv_2610_26855.md
   - ../../sources/sites/ropedia-w0.md
   - ../../sources/repos/ropedia-w0.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "Ropedia W0 用共享相机位姿与投影骨架表示连接人类和多种机器人运动-操作数据，论文报告以 13,000 小时人类与机器人数据训练跨本体世界基础模型。"
 ---
 
@@ -92,6 +94,10 @@ sequenceDiagram
 - 跨本体结果不保证零样本真机控制安全；仍需单独验证闭环执行。
 
 ## 关联页面
+
+- [Holi-World](./paper-holi-world.md) — 用第一视角经验构建时空世界记录。
+- [EgoXperience](./paper-egoxperience.md) — 在统一世界坐标系中重建手、物体与场景。
+- [S-Agent 2.0](./paper-s-agent-2.md) — 使用三维感知工具进行空间推理。
 
 - [UnifoLM 世界模型动作](../entities/unifolm-world-model-action.md) — 世界模型与动作接口
 - [生成式世界模型](../methods/generative-world-models.md) — 视频生成式预测方法

@@ -5,7 +5,7 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-s
 status: complete
 code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-10-07
+updated: 2026-10-31
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -21,6 +21,7 @@ related:
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../entities/paper-flashdexretarget.md
+  - ../entities/paper-card-contact-anchored-retargeting.md
   - ../tasks/manipulation.md
   - ./imitation-learning.md
 sources:
@@ -107,6 +108,9 @@ flowchart LR
 
 ## 与常见路线的关系
 
+- **接触力目标：** [CARD](../entities/paper-card-contact-anchored-retargeting.md) 在重定向中显式保留接触力目标，并使用触觉反馈跟踪；其重定向框架无需仿真器和物体模型。
+
+
 - **相对 GMR 等纯运动学前端**：GMR 类方法优先解决**骨架几何对齐**；SPIDER 假定已有（或可先做）**运动学参考**，把主计算预算花在**仿真里的动力学与接触可行性**上，产物更贴近「可 rollout 的机器人数据」。
 - **相对 NMR / CEPR**：NMR 用 **RL 跟踪专家**在仿真里构造人机配对监督，再训练**前向网络**做快速推断；SPIDER 不显式以「训练大网络」为主叙事，而是强调**采样优化 + 接触课程**在跨机型数据生成上的**通用外壳**（仍可与学习式模块组合）。
 - **相对 ReActor**：ReActor 用**双层 RL**联合更新「参数化参考」与「跟踪策略」；SPIDER 用**采样轨迹分布**直接优化控制序列，**不更新策略网络**，更靠近「轨迹级 MPC/CEM 式」物理修补器。
@@ -155,7 +159,7 @@ sequenceDiagram
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 另一条「仿真生成配对数据」主线，便于对照网络与优化分工。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层 RL 式物理一致参考生成，对照采样优化路径。
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](./dynaretarget-sbto-motion-retargeting.md) — SBMPC 对照：incremental full-horizon refinement。
-- [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向。
+- [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向；[官方代码](https://github.com/wuji-technology/toporetarget)（MIT）。
 - [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL；论文以 SPIDER 为对照，四任务 residual RL 初始化 SR **0%**。
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 共享虚拟接触/VOC 叙事；CHORD 在 RL 奖励层用 wrench 空间替代位置匹配。
 - [FlashDexRetarget（多参考 RL 灵巧重定向）](../entities/paper-flashdexretarget.md) — 以 SPIDER 命名的物体级成功判据（SR_SPIDER）报告 50 动作基准；用一个共享多参考策略替代逐段优化，并另报更严格的 SR_MT。

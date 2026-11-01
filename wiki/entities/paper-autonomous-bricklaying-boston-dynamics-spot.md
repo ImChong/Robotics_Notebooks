@@ -5,16 +5,18 @@ tags:
   - quadruped
   - locomotion
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.27472"
 project_id: autonomous-bricklaying-boston-dynamics-spot
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/autonomous-bricklaying-boston-dynamics-spot_arxiv_2610_27472.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "使用 Boston Dynamics Spot 实现自主砌砖（arXiv:2610.27472）：将 CAD 砖块位姿直接转换为 Spot 操作任务，以 AprilTag 定位并通过 Autowalk 完成区域间导航；在重复曲面墙体搭建实验中定量测量放置误差，并进行室外楼梯测试。"
 ---
 

@@ -1,6 +1,6 @@
 # 《从头学人形机器人算法 · 零基础篇》视频：源稿与生成脚本
 
-按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 060 接上姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
+按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 062，想读 PPO 原论文可以接姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
 
 渲染流程改自论文系列的 [`scripts/paper_video`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/tree/main/scripts/paper_video)（BSD-3，见 `vendor/LICENSE`）：安全区、逐帧版式检查、旁白与分镜对时的做法都照搬。
 
@@ -11,7 +11,7 @@
 | 配色 | 灰黑底 `#16161a` + 蓝 `#569cd6` | 同一套灰黑底；系列色是亮黄 `#ffd166`：封面 / 片头大标题、角标「零基础篇」色块、目录符号、幕号、「划重点」框 |
 | 角标 | 「论文精读 · 机器人学习」+ arXiv 胶囊 | 「零基础篇 · 机器人学习」+ 季数胶囊（如「第一季」） |
 | 封面 | 英文缩写大标题 + 论文信息框 + 目录 | 同版式：中文大标题 + 副标题 + 一句话 + 信息框 + 目录；右上角胶囊写第几季，顶栏正中用灰色小字写集数「No.001」（只在封面上、不做最显眼的标志），不写路线层级 |
-| 片头 / 片尾 | 论文卡 + 目录 / 「三句话记住」 | 问句 + 主图 / 总结卡片（`recap`，仿「三句话记住」，张数按内容定）+ 下一集预告 + 完整内容网址卡片（`outro.link`）+ 衔接语（不出题；`outro.quiz` 可选，零基础篇不写） |
+| 片头 / 片尾 | 论文卡 + 目录 / 「三句话记住」 | 问句 + 主图 / 总结卡片（`recap`，仿「三句话记住」，张数按内容定）+ 下一集预告 + 完整内容网址卡片（`outro.link`）+ 本集核对的一手资料（`outro.refs`，最后一页）+ 衔接语（不出题；`outro.quiz` 可选，零基础篇不写） |
 | 要点框 | 「要点」 | 「划重点」 |
 | 配音 | `zh-CN-YunxiNeural` +22% | `zh-CN-YunjianNeural` +6% |
 
@@ -20,7 +20,7 @@
 | 路径 | 内容 |
 |------|------|
 | `episodes/<ep>/*.js` | 一集的分镜，按文件名顺序加载：共用部件 → 片头主图 → 各幕 → 最后一个文件组装 `window.EpisodeVideo`（集数、季、角标、问句、一句话、主图 `hero`、各幕 `scenes`、片尾总结 `recap`、片尾 `outro`）。短的一集也可以只写一个 `episodes/<ep>.js` |
-| `episodes/<ep>.py` | 旁白：`SCRIPT`（每句绑定一幕的分镜时间 `[from, to]`）与 `DISPLAY`（字幕换写法） |
+| `episodes/<ep>.py` | 旁白：`SCRIPT`（每句绑定一幕的分镜时间 `[from, to]`）与 `DISPLAY`（字幕换写法；换成的字可带 `$…$`，字幕里用 KaTeX 排） |
 | `stage.html` | 1080×1920 舞台：片头、分镜、片尾、封面版式，安全区 330–1440 |
 | `build.py` | 旁白 → edge-tts 逐句配音 → `out/<ep>/timeline.json` + `narration.wav`。每句记下配音实长，舞台按它把这句的分镜区间等比拉伸，画面事件跟着念到的词走 |
 | `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面，`scene` 模式不用配音单看某一幕 |

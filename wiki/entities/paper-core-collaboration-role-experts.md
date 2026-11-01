@@ -3,7 +3,7 @@ type: entity
 project_id: core-collaboration-role-experts
 tags: [paper, manipulation, multi-robot, mixture-of-experts, decentralized, imitation-learning, usyd, pair-lab]
 status: complete
-updated: 2026-10-14
+updated: 2026-10-28
 arxiv: "2610.07752"
 project: https://aus.bot/research/core/
 venue: "arXiv 2026"
@@ -13,6 +13,7 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ../tasks/manipulation.md
   - ../concepts/mixture-of-experts.md
+  - ./paper-defm.md
   - ./paper-chorus.md
   - ./paper-ae-vla-arm-wise-compositional.md
   - ../overview/embodied-station-2026-10-13-34-papers-technology-map.md
@@ -36,7 +37,7 @@ sources:
 | AEA | Action-Expert Alignment loss | 用强制路由误差监督路由器的 KL 损失 |
 | CVAE | Conditional VAE | 动作块回归器的隐变量，部署时置零 |
 | ARCA | action-query cross-attention | 论文消融名，query 条件交叉注意力专家（具体展开未核实） |
-| StereoPatch | RGB+depth patch fusion | DINOv3 RGB 特征与 DeFM 深度特征共网格融合 |
+| StereoPatch | RGB+depth patch fusion | DINOv3 RGB 特征与 [DeFM](./paper-defm.md) 深度特征共网格融合 |
 
 ## 为什么重要
 

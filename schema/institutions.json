@@ -1,6 +1,12 @@
 {
   "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。展示 label 统一为「中文（English）」格式（见 schema/naming.md § 研究机构命名）。新增机构在此追加即可，无需改前端。",
   "registry": {
+    "lightning-pixel": {
+      "label": "闪电像素（Lightning Pixel）",
+      "aliases": [
+        "lightning-pixel"
+      ]
+    },
     "alicevision": {
       "label": "爱丽丝视觉开源社区（AliceVision）",
       "aliases": [
@@ -4387,6 +4393,18 @@
       "aliases": [
         "ardupilot-foundation",
         "ardupilot foundation"
+      ]
+    },
+    "part-db": {
+      "label": "零件数据库开源项目（Part-DB）",
+      "aliases": [
+        "part-db"
+      ]
+    },
+    "patch-gg": {
+      "label": "帕奇团队（Patch）",
+      "aliases": [
+        "patch-gg"
       ]
     }
   }

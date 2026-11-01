@@ -2,7 +2,7 @@
 type: concept
 tags: [idm, inverse-dynamics-model, world-model, world-action-model, latent-action, video-policy]
 status: complete
-updated: 2026-10-17
+updated: 2026-10-30
 summary: "逆动力学模型（IDM）由「当前观测 + 未来观测」反推其间的动作：视频/世界模型负责预测世界怎么变，IDM 只需少量带动作数据学「这个变化对应什么动作」；是级联式世界动作模型的动作解码接口，勿与刚体逆动力学控制混淆。"
 related:
   - ./world-action-models.md

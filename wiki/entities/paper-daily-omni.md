@@ -12,7 +12,7 @@ tags:
   - fudan
   - agibot
 status: complete
-updated: 2026-09-15
+updated: 2026-10-30
 arxiv: "2505.17862"
 code: https://github.com/Lliar-liar/Daily-Omni
 related:
@@ -28,7 +28,7 @@ sources:
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/sites/daily-omni-github-io.md
   - ../../sources/repos/daily-omni.md
-summary: "Daily-Omni（arXiv:2505.17862，复旦）：684 视频 / 1197 AVQA，测跨模态时序对齐；半自动管线 + 24 模型 / 37 设定；Agent 基线 61.82%；榜首 AGIBOT WITA-Omni Preview 85.21%；代码 GPL-3.0 + HF 数据已开源。"
+summary: "Daily-Omni（arXiv:2505.17862，复旦）：684 视频 / 1197 AVQA，测跨模态时序对齐；半自动管线 + 24 模型 / 37 设定；Agent 基线 61.82%；2026-10-30 榜首 AGIBOT WITA-Omni 1.0 86.22%；代码 GPL-3.0 + HF 数据已开源。"
 ---
 
 # Daily-Omni（日常音视频跨模态时序推理基准）
@@ -154,6 +154,10 @@ sequenceDiagram
 
 ## 实验与评测
 
+### 官方榜单更新（2026-10-30）
+
+官方 AV 榜单列出 WITA-Omni 1.0 为 **86.22%**，Preview 为 **85.21%**；下表保留此前入库日快照。部分模型有效回答样本数不同，比较时参照[官方榜单脚注](https://lliar-liar.github.io/Daily-Omni/#leaderboard)。
+
 ### Leaderboard 快照（AV 全模态 Avg，入库日）
 
 | 模型 | 开闭源 | Avg |
@@ -207,6 +211,9 @@ sequenceDiagram
 - **领域偏置：** 排除非英语与大量静态口播；工业噪声 / 机器人本体噪声分布可能不同。
 
 ## 关联页面
+
+- [TimeLens](./paper-timelens.md) — 视频事件时间定位
+- [MMAU](./paper-mmau.md) — 音频理解与推理
 
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ① 层放入 AV 同步诊断
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLM/OLM 感知层 I/O

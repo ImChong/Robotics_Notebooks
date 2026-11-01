@@ -6,7 +6,7 @@
 - **类型：** repo（监督学习 / 运动跟踪基础设施）
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/MimicLite
-- **入库日期：** 2026-07-14
+- **入库日期：** 2026-07-14（仓库复核 2026-10-27）
 - **一句话说明：** 面向人形机器人通用运动跟踪的开源训练与部署基础设施，贯通数据、训练、统一评测与真机部署，支持小时级迭代与跨 codebase 策略接入。
 - **沉淀到 wiki：** 是（`wiki/entities/mimiclite.md`）
 
@@ -20,6 +20,14 @@
 | Tracking Infra | any4hdmi 统一多来源动作；mjhub 保证训练/运动学/sim2sim 一致性 |
 | 遥操 + 高动态 | 同一 policy 支持 Pico/XR 低延迟遥操与高动态真机动作 |
 | 跨 codebase 部署 | 模块化 observation interface；已接入 SONIC、HEFT、TeleopIT、Humanoid-GPT、BFM-Zero、TWIST2 |
+
+---
+
+## 开源状态（2026-10-27 复核）
+
+- **已开源（落地页 + 外部子仓库）**：`Roboparty/MimicLite` 为 GPL-3.0-or-later 项目落地页（含 `mimic-lite.pdf` 技术报告），子模块 `EGalahad/mimic-lite`、`Agent-3154/active-adaptation`、`EGalahad/sim2real`，数据工具 `EGalahad/any4hdmi`。
+- 已发布 G1 / H2 / A3 / RP1(28 与 24 DoF) 的 Finetune 阶段 ROA student checkpoint（Google Drive）；README 对比图仅覆盖 G1。
+- README 未出现 `mjhub` 命名（文内命名见下）。
 
 ---
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-10-06
+updated: 2026-10-27
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
@@ -177,7 +177,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **代码未就绪：** 文档仓 ≠ 可复现训练；数字以论文/RESULTS 审计为准。
+- **仓库分工（核查于 2026-10-27）：** `Roboparty/INTACT-JEPA` 的最近提交仍是 2026-07-30，树内只有 `docs/`、`assets/`、`tools/`（站点与发布检查脚本），无训练/评测入口，README 的 Code / Models 徽章仍为 Coming Soon，`docs/RELEASE.md` 仍停在 Stage 0；可运行入口以规范仓 `zju3dv/INTACT-JEPA` 为准（来源归档记录其已公开训练、评测与权重，本次未重新核对规范仓）。RP1 总览 README 将 INTACT-JEPA 列为 “RP1 support coming soon”，说明尚无 RP1 适配。数字以论文/RESULTS 审计为准。
 - **多模态动作：** Direct 高斯均值可能抹平多峰动作律。
 - **gauge / 流形：** 意图等价依赖任务流形与容差。
 - **三 seed：** 扩展方差估计粗糙。

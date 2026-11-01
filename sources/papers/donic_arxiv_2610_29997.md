@@ -41,3 +41,8 @@
 
 - 实体页：[paper-donic.md](../../wiki/entities/paper-donic.md)
 - 相关主题：灵巧手-物体跟踪、双臂/双手操作、模仿学习、强化学习
+
+## 本次补充核查（2026-11-01，未完成）
+
+- 已定位 [论文 PDF v1](https://arxiv.org/pdf/2610.29997)、[项目页](https://ropedia.github.io/DONIC/)与[官方仓库](https://github.com/Ropedia/DONIC)；本次尚未完成全文与 BiHOI pipeline 运行入口源码通读，须完成后补充项目流程图和源码运行时序图。
+- 官方仓库目前列出 BiHOI 处理 pipeline，DONIC 训练与评测代码、权重及 BiHOI 数据集仍列为待发布；处理代码及第三方依赖的许可条件需分别核对。

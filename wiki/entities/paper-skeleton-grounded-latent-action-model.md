@@ -5,7 +5,7 @@ tags:
   - world-action-model
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-29
 arxiv: "2610.31474"
 project_id: skeleton-grounded-latent-action-model
 project: https://aopolin-lv.github.io/SkeLAM/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/papers/skeleton-grounded-latent-action-model_arxiv_2610_31474.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜在动作模型（arXiv:2610.31474）：将机器人骨架信息引入潜在动作学习，利用运动结构为世界模型提供更明确的动作表示。"
 ---
 

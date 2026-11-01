@@ -3,7 +3,7 @@ type: entity
 project_id: watch-your-step-humanoid-locomotion
 tags: [paper, humanoid, locomotion, perception, reinforcement-learning, unitree-g1, ethz]
 status: complete
-updated: 2026-10-23
+updated: 2026-10-29
 arxiv: "2610.29612"
 project: https://leggedrobotics.github.io/watch-your-step/
 code: https://github.com/leggedrobotics/foothold-prediction-model
@@ -14,11 +14,13 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/ppo.md
   - ./unitree-g1.md
+  - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/watch_your_step_arxiv_2610_29612.md
   - ../../sources/sites/watch-your-step.md
   - ../../sources/repos/foothold-prediction-model.md
+  - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "用本体感觉预测未来两个足点，再按足点裁剪高程图输入；官方代码提供 Unitree G1（29 DoF）Isaac Lab 训练和评估入口。"
 ---
 

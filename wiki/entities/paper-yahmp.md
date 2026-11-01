@@ -167,6 +167,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [HumanoidNDM：真机神经动力学微调](./paper-humanoidndm.md) — 针对部署差异，用真实数据微调已有跟踪策略。
+
 - [HumanoidTTT：让人形机器人复用完整动作](./paper-humanoidttt.md)
 - [TWIST2](./paper-twist2.md) — 外部完整 GMT/遥操作管线基线
 - [mjlab](./mjlab.md) — 训练栈依赖
@@ -190,3 +192,5 @@ sequenceDiagram
 - [补充视频（真机实验）](https://youtu.be/BH6FpQzwm8M)
 - [TWIST2 项目页](https://yanjieze.com/projects/TWIST2/)
 - [mjlab 文档](https://mujocolab.github.io/mjlab/main/index.html)
+
+- 相关研究：[跨本体全身动作跟踪](./paper-mimicall.md)

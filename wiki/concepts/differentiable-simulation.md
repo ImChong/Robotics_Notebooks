@@ -102,3 +102,5 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 ## 参考来源
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch1、Ch3 可微仿真与 SysID
+
+- 相关研究：[显式摩擦布料仿真](../entities/paper-explicit-friction.md)

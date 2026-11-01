@@ -5,7 +5,7 @@ tags:
   - reinforcement-learning
   - manipulation
 status: complete
-updated: 2026-10-26
+updated: 2026-10-31
 arxiv: "2610.27736"
 project_id: awls-advantage-weighted-latent-steering
 project: https://awls-corl2026.github.io/
@@ -13,9 +13,11 @@ related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/awls-advantage-weighted-latent-steering_arxiv_2610_27736.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+  - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
 summary: "AWLS：面向单步生成式机器人操作策略的优势加权潜在引导（arXiv:2610.27736）：AWLS 将优势加权与潜在空间引导结合，通过动作价值信息调整生成式策略的潜在表示，研究在保留单步生成效率的同时改善操作性能。论文已被 CoRL 2026 接收。"
 ---
 

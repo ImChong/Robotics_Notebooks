@@ -71,7 +71,7 @@
 - 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读，再进入 L8–L12 的 Physical AI 扩展。
 - 想 **先看 Physical AI 全栈地图 / 时间有限只走核心路径**：跳到 [Physical AI 全栈视图](#physical-ai-full-stack-view) 与 [Physical AI Core Path](#physical-ai-core-path)。
 - 看到 **新模型 / 新论文不知道要不要学**：先用 [How to filter new Physical AI work](#physical-ai-signal-vs-noise) 过一遍。
-- 想 **直接走某个方向**：跳到 [可选纵深](#depth-optional-index)，二十七条独立路线页各自标了适合谁、从主线哪一层衔接。
+- 想 **直接走某个方向**：跳到 [可选纵深](#depth-optional-index)，二十八条独立路线页各自标了适合谁、从主线哪一层衔接。
 
 ---
 
@@ -642,7 +642,7 @@ flowchart TD
 
 ### 推荐读什么
 - [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 9、Ch 11：Trajectory Generation、Robot Control
-- [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
+- [Underactuated Robotics](https://underactuated.mit.edu/)（Tedrake 的在线讲义；第 8 章 LQR、第 10 章轨迹优化）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
 - [LQR](../wiki/formalizations/lqr.md)
 - [Optimal Control](../wiki/concepts/optimal-control.md)
@@ -941,7 +941,8 @@ flowchart LR
 - 在仿真里跑通一个双足行走 MPC
 
 **推荐读什么：**
-- "Convex MPC for Bipedal Locomotion" (Bellicoso et al.)
+- Di Carlo et al., "Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control"（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 的代表作（四足）
+- Li & Nguyen, "Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots"（[arXiv:2104.00065](https://arxiv.org/abs/2104.00065)）— 同一思路用到双足
 - [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
 - [MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)
@@ -2101,7 +2102,7 @@ flowchart TB
 
 ## 可选纵深（独立路线页）
 
-主路线偏向"先稳住一条主干"，但真正做研究或做项目时，总要往某个子方向深挖。下面二十七条纵深路径**各自是独立的路线页**，从主路线的某个阶段衔接出去（按各方向起点里程碑的时间先后排列）：
+主路线偏向"先稳住一条主干"，但真正做研究或做项目时，总要往某个子方向深挖。下面二十八条纵深路径**各自是独立的路线页**，从主路线的某个阶段衔接出去（按各方向起点里程碑的时间先后排列）：
 
 | 纵深路径 | 适合谁 | 主线衔接点 |
 |---------|------|-----------|
@@ -2120,6 +2121,7 @@ flowchart TB
 | [如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) | 想让机器人追球、射门、打整场比赛 | L5 之后 |
 | [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L5.4 展开（L2 的 FK/IK 为前置） |
 | [如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md) | 想让一群人形同台跳舞、变队形、协同炫技 | L5.3 之后 |
+| [如果目标是跨本体迁移（本体差异画像 → 统一接口 → 形态感知架构 → 多本体混训 → 人→机迁移 → 新本体适配）](depth-cross-embodiment.md) | 想让一个策略适配不同本体，换夹爪、换机型、换形态都不必从零重训 | L5.4 之后（重定向的策略层延伸；操作侧与 L10 交汇）|
 | [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) | 想把仿真里训好的策略稳定搬上真机 | L5.2 → L6（L6 的展开版）|
 | [如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](depth-humanoid-boxing.md) | 想让两台人形在擂台上像人一样对打 | L5.3 之后 |
 | [如果目标是 ICL（具身上下文学习）](depth-icl.md) | 想让机器人读完一条示范就会做新任务、且不动权重 | L5.3 之后（示范数据侧与遥操作纵深串联）|

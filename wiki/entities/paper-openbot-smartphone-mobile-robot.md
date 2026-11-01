@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mobile-robot, smartphone, open-source, imitation-learning, intel]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-27
 project_id: openbot-smartphone-mobile-robot
 arxiv: "2008.10631"
 project: https://www.openbot.org/
@@ -15,10 +15,12 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../concepts/sim2real.md
   - ../methods/imitation-learning.md
+  - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
   - ../../sources/papers/openbot_arxiv_2008_10631.md
   - ../../sources/sites/openbot-project.md
   - ../../sources/repos/openbot.md
+  - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 ---
 
 # OpenBot：把智能手机变成低成本移动机器人
@@ -126,3 +128,4 @@ sequenceDiagram
 - [OpenBot 官方仓库](https://github.com/ob-f/OpenBot)
 - [OpenBot 项目页](https://www.openbot.org/)
 - [PhoneBot 人形平台](./paper-phonebot-smartphone-humanoid.md)
+- [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）

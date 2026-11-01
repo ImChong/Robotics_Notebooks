@@ -8,13 +8,14 @@
 - **PDF：** <https://arxiv.org/pdf/2610.31427>
 - **作者：** Tao Lin, Yuxin Du, Haoxiao Wang, Zile Zhong, Bo Zhao
 - **arXiv 评论栏：** Github:this https URL
-- **外链：** <https://github.com/FastHarness/fast-harness>
+- **代码：** <https://github.com/FastHarness/fast-harness>；[仓库归档](../repos/fastharness.md)
+- **项目页：** <https://fastharness.github.io/>；[站点归档](../sites/fastharness.md)
 - **入库日期：** 2026-10-26
 - **一句话说明：** FastHarness：面向视觉语言动作策略的经验驱动复查调度。
 
 ## 开源状态
 
-- arXiv 摘要页/评论给出 GitHub 链接（https://github.com/FastHarness/fast-harness；仅核对到链接存在，未核验仓库内容）（2026-10-26，仅核对 arXiv 摘要页）
+- 2026-10-27 核查：官方 GitHub 仓库公开代码，MIT 许可证；RoboDojo 与策略服务器需自行提供。项目页本次无法访问，数据开放情况未核实。
 
 ## 核心摘录
 

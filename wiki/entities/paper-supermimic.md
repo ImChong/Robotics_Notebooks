@@ -2,24 +2,32 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-25
+updated: 2026-10-30
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
 project: https://supermimic.github.io/
 summary: "SuperMimic 将运动跟踪策略与一个从仿真器转移数据学习的可微世界模型联合训练，用短时想象 rollout 和解析梯度显著降低大规模人形全身控制的训练计算。"
 related:
+  - ../concepts/bptt.md
+  - ../methods/mbpo.md
+  - ../methods/model-based-rl.md
   - ./nvidia-sonic.md
   - ./paper-twist2.md
   - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
+  - ../../sources/repos/supermimic-repro-sim2real.md
   - ../../sources/repos/supermimic-unilab.md
   - ../../sources/repos/supermimic-vibed.md
+  - ../../sources/repos/awesome-supermimic.md
+  - ../../sources/repos/supermimic-integration-drafts.md
+  - ../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -73,6 +81,8 @@ flowchart TB
 
 ## 独立复现与工程入口
 
+社区维护的 [awesome-supermimic 索引](../../sources/repos/awesome-supermimic.md) 汇总了多种实现、扩展、演示与数据资源；它是导航入口，不是官方代码或对各项目指标的独立验证。
+
 官方项目页截至 2026-10-22 仍未发布论文作者维护的源码；以下两个公开仓库是社区独立复现，不能视为论文官方实现，也不能据其结果推断官方代码已开放。
 
 | 仓库 | 实现路线 | 可复现入口与边界 |
@@ -81,6 +91,36 @@ flowchart TB
 | [supermimic_vibed](../../sources/repos/supermimic-vibed.md) | 基于 Isaac Lab 3 kit-less 与 MuJoCo-Warp 的单卡 G1/LAFAN1 复现，公开训练、评测、渲染脚本。 | 作者报告在 RTX PRO 6000 上 1.47 小时得到 0.829 评测回报、40 段动作零失败；README 同时说明代码由 AI 助手快速生成且未经审查，结果尚未独立复核。 |
 
 两者让读者可以检查不同仿真栈下的独立实现细节；论文方法的权威描述仍以论文和官方项目页为准，复现指标需结合各自硬件、配置和 README 的声明解读。
+
+### G1 社区复现与真机部署（待完整核验）
+
+[SuperMimic-Repro-Sim2Real](../../sources/repos/supermimic-repro-sim2real.md) 基于社区复现扩展 mjlab 训练、ONNX 导出、Sim2Sim 和 G1 真机部署，并公开部分模型。作者自报严格论文观测的 LAFAN1 归一化回报为 0.56，增加 anchor 相对位姿后为 0.904；后者不能直接用于该真机部署。仓库还报告 46 秒串联舞蹈与特定动作模型的两次真机成功；这些是社区复现结果，不是原论文实验。数据须另行下载并遵守条款。
+
+下面的时序仅覆盖已检查的入口与关键调用；论文全文、实现细节及完整部署链仍待核实。
+
+```mermaid
+sequenceDiagram
+  participant U as 运行者
+  participant T as sm-train
+  participant L as Trainer.run
+  participant E as mjlab 环境
+  participant P as PolicyTrainer
+  U->>T: 启动训练
+  T->>L: 构造 Trainer 并运行
+  L->>E: env.step 动作采样
+  L->>P: 从 buffer 更新策略
+  P-->>L: 返回训练指标
+```
+
+### 社区复现与扩展生态（2026-10-29 公众号盘点）
+
+[具身智能研究室的盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)列出 42 个相关项目（截至 2026-10-29），分为基础复现 7、方法改进 5、本体与硬件 8、感知与地形 4、操作与灵巧手 4、肌肉与交互 3、框架集成 6、真机与部署 2、相关探索 3。已有 wiki 节点的有 [HoloMotion](./holomotion.md)、[MorphMimic](./paper-morphmimic.md)、[muscle-supermimic](./muscle-supermimic.md)、[Project Instinct](./project-instinct.md)（InstinctMJ 分支）。该清单为转述自文章的检索结果，我未逐个核查仓库；均属社区实现，不能据此认为论文官方代码已开放。
+
+### 上游集成草案（2026-10-29）
+
+[LeRobot #5119](../../sources/repos/supermimic-integration-drafts.md) 集成 Uni-SuperMimic 导出 actor，针对 29 DoF G1 以 50 Hz 输出关节目标；PR 作者仅报告 MuJoCo 仿真验证，真机尚待验证，actor 与参考动作不随 PR 提供。策略跟踪动作片段，不接受速度指令。
+
+[Isaac Lab #8867](../../sources/repos/supermimic-integration-drafts.md) 提议添加 RSL-RL SuperMimic 支持、可微速度任务与 G1 配置；依赖上游 #8866 和包含 SuperMimic 的 RSL-RL 版本。两项均为未合并草案，不能视作正式版本功能或原论文官方实现。
 
 ## 与其他工作对比
 
@@ -107,18 +147,25 @@ flowchart TB
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
-
+- [InstantTrack](./instanttrack.md) — 基于社区复现的训练加速与足部接触优化。
+- [BPTT](../concepts/bptt.md) / [MBPO](../methods/mbpo.md) / [Model-Based RL](../methods/model-based-rl.md) — 背景复习
 - [SONIC：大规模自然人形全身控制](./nvidia-sonic.md) — 论文采用的高算力 motion-tracking 对照基线。
 - [TWIST2](./paper-twist2.md) — 人形全身数据采集、跟踪控制与学习系统案例。
 - [全身控制（WBC）](../concepts/whole-body-control.md) — 人形整体协调控制任务背景。
 - [模仿学习](../methods/imitation-learning.md) — 从参考动作学习跟踪策略的相关方法。
 
 ## 参考来源
+- [SuperMimic-Repro-Sim2Real 社区复现](../../sources/repos/supermimic-repro-sim2real.md)
+- [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
 - [SuperMimic arXiv 论文](../../sources/papers/supermimic_arxiv_2610_28480.md)
 - [SuperMimic 官方项目页](../../sources/sites/supermimic-project.md)
 - [Uni-SuperMimic 独立复现](../../sources/repos/supermimic-unilab.md)
 - [supermimic_vibed 独立复现](../../sources/repos/supermimic-vibed.md)
+- [awesome-supermimic 社区资源索引](../../sources/repos/awesome-supermimic.md)
+
+- [LeRobot 与 Isaac Lab 集成草案](../../sources/repos/supermimic-integration-drafts.md)
+- [具身智能研究室：SuperMimic 42 个复现与扩展项目盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)
 
 ## 推荐继续阅读
 

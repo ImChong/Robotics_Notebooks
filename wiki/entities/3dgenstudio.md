@@ -13,13 +13,14 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-10-23
+updated: 2026-10-28
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
   - ./comfyui.md
   - ./articraft.md
   - ./img2threejs.md
+  - ./modly.md
   - ./freecad-mcp.md
   - ./cad-skills.md
   - ./paper-physforge-physics-grounded-3d-assets.md
@@ -155,6 +156,8 @@ sequenceDiagram
 - **运维成本：** 本地 GPU、ComfyUI 节点兼容性、多 workflow 排队延迟（Changelog 曾修过批量排队卡顿）需自行承担。
 
 ## 关联页面
+
+- [Modly](./modly.md) — 本地模型扩展驱动的图片到网格桌面工作流。
 
 - [Infinigen V2](./infinigen.md) — 程序化生成整套室内外场景和合成数据，与本页的 AI 网格生成工作台互补。
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造向 B-rep/STEP 主线；本页属「网格资产」对照分支。

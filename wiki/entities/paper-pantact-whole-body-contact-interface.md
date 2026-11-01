@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-manipulation, contact, loco-manipulation, wearable, umi, diffusion-policy, unitree-g1, stanford, amazon, cmu]
 status: complete
-updated: 2026-10-12
+updated: 2026-10-31
 arxiv: "2610.12558"
 project_id: pantact
 project: https://pantact.github.io/
@@ -82,12 +82,12 @@ flowchart LR
 | Grasp-and-Embrace（20 次） | 臂支撑（非抓握） | Upper-Body IK | 85% |
 | | | Sparse Contact Tracker | 80% |
 | | | Humanoid UMI | 无法支撑大体积物体（正文无数值；项目页 0%） |
-| Sweep-and-Stow（16 次） | 臂扫、腿推柜 | WBIK + SONIC | 90.63% 端到端 |
+| Sweep-and-Stow（16 次） | 臂扫、腿推柜 | WBIK + SONIC | 90.63% 端到端得分 |
 | | | Humanoid UMI++ | 正文无数值（项目页 0%） |
 | Carry-and-Push（10 次） | 双臂分担 + 腿推 | WBIK + SONIC | 90% |
 | | | Humanoid UMI++ | 正文无数值（项目页 40%） |
 
-Sweep-and-Stow 评分为扫物计数分与柜门闭合分（过半 100%、未过半 50%）之积；Carry-and-Push 成功要求手持箱不掉且地面箱移动超过 20 cm。
+Sweep-and-Stow 评分为扫入物体数量得分与柜门闭合得分之积；关门未超过一半可得 50% 部分分、超过一半得 100%。因此 90.63% 是带部分分的端到端得分，不能直接解释为完整成功的试次比例。Carry-and-Push 成功要求手持箱不掉且地面箱移动超过 20 cm。
 
 **控制器回放比较（10 条 Grasp-and-Embrace 上身轨迹 + 20 条全身轨迹）：** 加入接触目标后各控制器接触距离均降低且末端代价小；Upper-Body IK 上身末端误差最低；Sparse Tracker 接触距离最低，并在上身两项指标上胜过 WBIK+SONIC，但在全身任务上末端误差更高。数值仅在图中，未读取。
 
@@ -95,9 +95,9 @@ Sweep-and-Stow 评分为扫物计数分与柜门闭合分（过半 100%、未过
 
 **把接触当作人机共享接口可行，但控制器选择决定成败：上身任务用无训练 IK 就够，需要腿部接触时要用稠密跟踪，稀疏 RL 以更高末端误差换更低接触距离。**
 
-1. 先判断任务是否需要腿：只用上身就选 Upper-Body IK（85%），无需训练。
-2. 全身任务用 WBIK + SONIC（90.63% / 90%），代价是稠密参考带多余姿态。
-3. 仅跟踪末端（Humanoid UMI 类）撑不住大体积物体，接触目标是必要信息。
+1. 固定腿部的上身任务可先试 Upper-Body IK：该实验获得 85%，无需为控制器训练。
+2. WBIK + SONIC 在两个全身任务中分别取得 90.63% 得分和 90% 成功率；稠密参考可能产生与任务无关的姿态约束。
+3. 在 Grasp-and-Embrace 实验中，仅跟踪末端的 Humanoid UMI 基线无法支撑大物体；该结果不证明所有方法都必须显式预测接触目标。
 4. 人机观察差异靠遮挡身体区域处理，不需要机器人外观模型。
 5. 数据量不大（100–150 条/任务），但测试每条件仅 10–20 次，不要外推。
 6. 复现需要自制 FSR 贴片与多相机采集，项目页尚无硬件或代码。
@@ -127,6 +127,8 @@ Sweep-and-Stow 评分为扫物计数分与柜门闭合分（过半 100%、未过
 | 观察对齐 | 遮挡人体区域而非仿真机器人外观 |
 | 控制器选型 | 先 Upper-Body IK 验证接触目标，再上全身方案 |
 | 时延 | 异步推理，丢弃过期动作 |
+
+训练数据先对齐至 60 Hz，再以 20 Hz 采样；策略以 10 Hz 预测动作块，调度器丢弃过期步骤并重采样至跟踪器 50 Hz。接触跟踪器训练时用 SONIC 仿真轨迹事后采样可达接触目标，不能将其视为直接从人体接触数据训练的底层控制器。
 
 ## 关联页面
 

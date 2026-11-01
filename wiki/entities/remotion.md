@@ -9,9 +9,10 @@ tags:
   - agent-infrastructure
   - open-source
 status: complete
-updated: 2026-09-30
+updated: 2026-10-27
 related:
   - ./video-shotcraft.md
+  - ./wise-motion.md
   - ./gsap-skills.md
   - ./manim.md
   - ./anthropic-claude-api-skill.md
@@ -83,6 +84,8 @@ flowchart LR
 - **渲染成本：** 长片高分辨率 batch 需预算 CPU/GPU 或 Lambda 费用。
 
 ## 与其他页面的关系
+
+- [Wise Motion](wise-motion.md) — 动效参考匹配与源码导出技能。
 
 - [video-shotcraft](video-shotcraft.md) — Agent Skill 级 Remotion 镜头库  
 - [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) — 知识编译与多媒体导出并列  

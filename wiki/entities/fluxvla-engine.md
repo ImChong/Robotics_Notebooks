@@ -16,7 +16,7 @@ tags:
   - manipulation
   - humanoid
 status: complete
-updated: 2026-10-13
+updated: 2026-10-28
 arxiv: "2609.17210"
 code: https://github.com/FluxVLA/FluxVLA
 related:
@@ -34,6 +34,7 @@ related:
 sources:
   - ../../sources/papers/fluxvla_arxiv_2609_17210.md
   - ../../sources/repos/fluxvla.md
+  - ../../sources/models/fluxvla-engine-huggingface.md
   - ../../sources/sites/limx-fluxvla-product.md
   - ../../sources/blogs/limx_cosa_05_release_2026-07-15.md
 summary: "FluxVLA Engine（arXiv:2609.17210，逐际动力）：配置驱动的开源 VLA 工程平台——统一数据/训练/仿真评测/RTC 推理/真机 operator，即插 π0.5/GR00T/Cosmos3/FastWAM/DiT4DiT 等；非新策略模型；HF 权重 + FluxDAgger/FluxBisim 生态。"
@@ -64,7 +65,7 @@ summary: "FluxVLA Engine（arXiv:2609.17210，逐际动力）：配置驱动的�
 |------|------|
 | **机构** | 逐际动力（LimX Dynamics） |
 | **arXiv** | [2609.17210](https://arxiv.org/abs/2609.17210)（2026-09-15） |
-| **开源** | **已开源**（2026-09-28 复核）— [`FluxVLA/FluxVLA`](https://github.com/FluxVLA/FluxVLA)；HF [`limxdynamics/FluxVLAEngine`](https://huggingface.co/limxdynamics/FluxVLAEngine)；子项目 [FluxDAgger](https://github.com/FluxVLA/FluxDAgger)、[FluxBisim](https://github.com/FluxVLA/FluxBisim) |
+| **开源** | **已开源**（2026-10-28 复核）— [`FluxVLA/FluxVLA`](https://github.com/FluxVLA/FluxVLA)；HF [`limxdynamics/FluxVLAEngine`](https://huggingface.co/limxdynamics/FluxVLAEngine)；子项目 [FluxDAgger](https://github.com/FluxVLA/FluxDAgger)、[FluxBisim](https://github.com/FluxVLA/FluxBisim) |
 | **安装** | `bash scripts/install_env.sh`（`sim-only` / `real-only` / `full`）；Python 3.10 |
 | **真机** | Franka 单/双臂；Oli 人形全身 loco-manipulation 最小路径（ROS + WebSocket）；Jetson Orin Docker |
 
@@ -157,6 +158,8 @@ sequenceDiagram
 
 **RoboDojo 提醒：** π0.5 平均 progress/success **13.61% / 8.83%** 仍显著低于 LIBERO  tabletop 分数——长程泛化是 **平台能测、模型仍难** 的显例。
 
+**结果口径：** GitHub README 报 π0.5 LIBERO 四套件平均 97.95%，[HF 模型卡](../../sources/models/fluxvla-engine-huggingface.md)报 97.85%；两个来源的分项也不同，不能直接视为同一次实验或取平均。选定 checkpoint 和评测配置后再复现。
+
 ## 工程实践
 
 | 项 | 说明 |
@@ -200,5 +203,6 @@ sequenceDiagram
 
 - [FluxVLA Engine（arXiv:2609.17210 归档）](../../sources/papers/fluxvla_arxiv_2609_17210.md)
 - [FluxVLA 源码归档](../../sources/repos/fluxvla.md)
+- [FluxVLA Hugging Face 模型卡归档](../../sources/models/fluxvla-engine-huggingface.md)
 - [LimX FluxVLA 产品页归档](../../sources/sites/limx-fluxvla-product.md)
 - [COSA 0.5 发布：FluxVLA 同步开源](../../sources/blogs/limx_cosa_05_release_2026-07-15.md)

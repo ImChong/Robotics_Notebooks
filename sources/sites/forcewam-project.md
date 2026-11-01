@@ -6,7 +6,7 @@
 - **类型：** site（项目页）
 - **URL：** <https://force-wam.github.io/>
 - **论文：** <https://arxiv.org/abs/2610.18852>（归档：[forcewam_arxiv_2610_18852.md](../papers/forcewam_arxiv_2610_18852.md)）
-- **代码：** 页面标注 "Code coming soon"，无 GitHub / Hugging Face 链接
+- **代码：** [官方仓库](https://github.com/SII-ZijunX/ForceWAM)（[仓库归档](../repos/forcewam.md)）；截至 2026-10-30 仅有 README，实现待发布。
 - **入库日期：** 2026-10-17
 - **一句话说明：** 力觉世界动作模型；四个接触密集真机任务，85–95% 成功率；play 数据带来 15–45 个百分点增益。
 
@@ -22,7 +22,7 @@
 
 ## 开源核查结论
 
-截至 2026-10-17：仅 "Code coming soon"，未列任何仓库。
+2026-10-17 项目页显示 "Code coming soon"；2026-10-30 项目页本次无法访问，直接核查官方仓库发现仅有占位 README，暂无实现。
 
 ## 对 wiki 的映射
 

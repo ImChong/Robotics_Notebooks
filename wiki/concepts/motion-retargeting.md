@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-10-24
+updated: 2026-10-31
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -78,7 +78,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **接触感知运动学精炼（CoRe）**：在 RL 之前用趾轨迹检测接触段，再做接触约束轨迹优化、足偏航与自碰平滑；主张「先修参考、再跟踪」。Humanoids 2025 论文含接触奖励 RL；开源 [CoRe v0.1.0](../entities/paper-core.md) 兑现重定向+精炼（Kimodo/GEM-X → 11 机），T2M/RL 未随仓发布。前端跨骨架统一见姊妹 [RMR](../entities/paper-rmr.md)。勿与 [PhysCoRe](../entities/paper-physcore.md) 混淆。
 - **GRF 锚定多接触 TO（KDMR）**：用同步 **地面反力** 推断 heel–toe 接触日程，再以 CasADi+Pinocchio 全身 NLP 强制动力学与无滑约束，减轻 GMR 类脚浮空伪影并加速 BeyondMimic 跟踪；详见 [KDMR](../entities/paper-kdmr.md)。
 - **骨架 URDF 校准 + 渐进 KDTO（SPARK）**：先校准 human URDF 到目标人形再 IK，再经 KTO→ID→KDTO 产出动力学可行轨迹与力矩参考，服务 side flip 等高动态；详见 [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md)。
-- **交互保留灵巧重定向（TopoRetarget）**：在 **hand–object interaction mesh** 上匹配 **距离加权 Laplacian 坐标** + 骨方向先验与穿透约束，把人手演示转为灵巧手可学的接触保真参考（~5 ms/帧）；下游轻量 PPO 残差跟踪可在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署 [Wuji Hand](../entities/wuji-robotics.md)，详见 [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)。
+- **交互保留灵巧重定向（TopoRetarget）**：在 **hand–object interaction mesh** 上匹配 **距离加权 Laplacian 坐标** + 骨方向先验与穿透约束，把人手演示转为灵巧手可学的接触保真参考（~5 ms/帧）；下游轻量 PPO 残差跟踪可在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署 [Wuji Hand](../entities/wuji-robotics.md)；[官方代码](https://github.com/wuji-technology/toporetarget)（MIT）已开源，详见 [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)。
 
 ### 3.5 稀疏关键点重定向（SKR，BifrostUMI）
 
@@ -251,7 +251,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
 - **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
 - **ingest 档案：** [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导的规模化物理重定向（arXiv:2511.09484）
-- **ingest 档案：** [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object interaction mesh + Laplacian 灵巧重定向 + 轻量 PPO 跟踪（arXiv:2606.16272）；配套 [项目页](../../sources/sites/toporetarget-github-io.md)
+- **ingest 档案：** [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object interaction mesh + Laplacian 灵巧重定向 + 轻量 PPO 跟踪（arXiv:2606.16272）；配套 [项目页](../../sources/sites/toporetarget-github-io.md) 与 [源码归档](../../sources/repos/toporetarget.md)
 - **ingest 档案：** [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP：非拟人三指夹爪手势条件遥操作重定向（arXiv:2607.15448）
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI SKR：稀疏关键点 + 仅身高缩放 + mink IK（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/warp_arxiv_2606_29940.md](../../sources/papers/warp_arxiv_2606_29940.md) — WARP：离线 Meta Quest 全身演示的闭式 c-SEW 重定向 + lazy base（arXiv:2606.29940）；配套 [项目页](../../sources/sites/warp-retargeting-github-io.md)（截至入库日未列代码）
@@ -330,7 +330,10 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [mocap_retarget](../entities/mocap-retarget.md) — 轻量工程向 MoCap 映射参考
 - [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) / [STMR](../entities/stmr-quadruped-retargeting.md) / [AMP_for_hardware](../entities/amp-for-hardware.md) / [MetalHead](../entities/metalhead.md) / [LeggedGym-Ex](../entities/leggedgym-ex.md) — 四足模仿与 AMP 生态
 - [Go2 Motion Imitation](../entities/go2-motion-imitation.md) — Go2 + Genesis 重定向样板
+- [Kine2Go 数据集](../entities/paper-kine2go.md) — 40 段多来源参考动作经 Go2 重定向与 PPO 模仿，发布 800 条仿真 rollout。
 - [PAN Motion Retargeting](../entities/pan-motion-retargeting.md) / [WalkTheDog](../entities/walk-the-dog.md) — 跨形态（人↔四足）学习式对齐研究
 - [AMP-RSL-RL](../entities/amp-rsl-rl.md) — rsl_rl(PPO)+AMP 的人形模仿实现，重定向/动捕产物的消费侧（可 pip 安装）
 - [fairmotion](../entities/fairmotion.md) — 上游通用动捕数据处理库（已归档），重定向前的数据 IO/表示层
 - [KinoGen](../entities/paper-kinogen.md) — 从生成视频拟合机器人与物体模型，绕过人体到机器人的逐帧重定向
+
+- 相关研究：[flowhmr](../entities/paper-flowhmr.md)。

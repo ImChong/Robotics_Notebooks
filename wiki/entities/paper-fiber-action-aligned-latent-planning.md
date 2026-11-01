@@ -3,7 +3,7 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, latent-planning, flow-matching, unitree-g1, amazon-far, cmu, stanford]
 institutions: [amazon-far, cmu, stanford]
 status: complete
-updated: 2026-10-21
+updated: 2026-10-30
 project_id: fiber-humanoid-loco-manipulation
 arxiv: "2610.24675"
 project: "https://fiberaa.github.io/"
@@ -78,7 +78,9 @@ flowchart LR
 
 ## 工程实践与复现边界
 
-- 项目页展示专家、latent projector 和 planner 均在仿真训练，真机演示使用机载深度观测。
+- 项目页展示专家、latent projector 和 planner 均在仿真训练，真机演示使用机载 RealSense 深度相机。论文报告规划器与 AH-BFM 同在一台 NVIDIA RTX PRO 5000 Blackwell 笔记本上运行；TensorRT 下规划器使用 10 步 Heun，约 20 ms/次，BFM 前向约 1 ms/次。
+- 论文附录说明 BFM 以 50 Hz 控制 G1 的 29 个身体关节；使用 Dex3 手时，另由独立分支预测双手共 14 个关节目标，手部目标不属于 BFM 身体动作。
+- 真机定性演示中，搬箱受扰后机器人跪地稳定并恢复；该演示不足以证明任意摔倒姿态均可起身。
 - 结果应区分仿真汇总成功率（每任务 128 种变化）与真机小样本结果（每任务 10 次）；项目页展示的 18 段 rollout 是演示集合，不作统计口径。
 - 「可控导航」在论文中仅指 waypoint steering 的定性演示，没有目标点到达或路径跟随的量化评测；引用时不要外推为导航能力已验证。
 - 官方 GitHub 仓库已公开，许可证为 Apache-2.0；但仓库 README 写明代码 coming soon，现有文件不足以复现训练与部署。
