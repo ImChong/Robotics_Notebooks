@@ -6255,6 +6255,7 @@
 - [机器人数据：监督信号类型分流](wiki/concepts/robot-data-supervision-signal-types.md) — 同一次任务** 可能产生相机、关节、动作、成败、接管与 Ego 视频等多种记录，但它们回答的 **训练提问** 不同；混成「具身数据大池」会丢失监督含义，让模型收到比任务所需更粗或更错的答案。 `📅unknown` `[wiki_page]`
 - [机器人 In-Context Learning（上下文学习）](wiki/concepts/robot-in-context-learning.md) — 机器人 In-Context Learning（ICL，上下文学习）**：在 **不更新模型权重** 的前提下，把一段 **示范轨迹、人类视频或任务无关交互片段** 放进策略的 **上下文窗口 `📅unknown` `[wiki_page]`
 - [机器人关节轴承选型（载荷路径与五笔账）](wiki/concepts/robot-joint-bearing-selection.md) — 关节轴承**占 BOM 比例不高，却处在 **径向–轴向–倾覆力矩** 复合载荷的关键节点；选型不是翻样本选最大 C 值，而是先画清 **谐波 / RV / 直驱** 各自载荷路径，再用 **载荷 `📅unknown` `[wiki_page]`
+- [机器人关节方案选型](wiki/concepts/robot-joint-scheme-selection.md) — 关节方案选型就是：先把负载谱、运动谱、精度与交互要求定义清楚，再从旋转、直线、力控三条线里挑出力学边界匹配的传动与集成方案；原理上不匹配的传动链，控制算法补偿不回来。 `📅unknown` `[wiki_page]`
 - [连杆惯量与转子惯量（Robot Link vs Rotor Inertia）](wiki/concepts/robot-link-and-rotor-inertia.md) — 人形与腿足机器人的「关节有多沉」，在工程上往往来自 **两件不同的事**：**连杆刚体惯量**（机械结构质量分布）与 **电机转子经减速器反射的等效惯量**（传动链旋转部件）。混淆两者会导致仿真偏轻、 `📅unknown` `[wiki_page]`
 - [机器人整机通信架构（总线分域 → 拓扑 → 时钟同步 → 延迟预算）](wiki/concepts/robot-onboard-communication-architecture.md) — 整机通信架构**回答：几十个关节、多路相机与 IMU、主控与外部运维工具之间，**数据分几个域、走什么拓扑、时间基准怎么统一、从传感到力矩输出的延迟预算怎么分配**——单点协议选型（[CAN vs `📅unknown` `[wiki_page]`
 - [机器人整机配电架构（电池 → 母线 → DC/DC → 线束 → 安全回路）](wiki/concepts/robot-power-distribution-architecture.md) — 整机配电架构**回答：电池里的能量经过哪些开关、变换与导线，才能在**几十个关节同时爆发力矩**时既不掉压、不烧线、不干扰编码器，又能在异常时**以可预期的方式停下来**。 `📅unknown` `[wiki_page]`
