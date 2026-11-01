@@ -4,6 +4,7 @@ tags: [motor, actuator, hardware, humanoid, torque, current, efficiency]
 status: complete
 updated: 2026-07-24
 related:
+  - joint-motor-rated-current-overload.md
   - ./motor-torque-speed-curve.md
   - ./field-oriented-control.md
   - ../formalizations/field-oriented-control-derivation.md
@@ -94,6 +95,7 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 | 仿真 TI 等于整机 TI | 关节模组含减速器摩擦、温升与驱动器限流，需台架验证 |
 
 ## 关联页面
+- [关节模组：额定电流小于负载电流的后果](joint-motor-rated-current-overload.md)
 
 - [电机转矩-转速曲线（TN 曲线）](./motor-torque-speed-curve.md)
 - [电机测功机（Dynamometer）](./motor-dynamometer.md) — 静态扭矩与 \(K_t\) 的台架测法
