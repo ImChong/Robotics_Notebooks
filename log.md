@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | Zane Hub 公众号《灵巧手负载与核心指标》：新建 dexterous-hand-payload-core-metrics 概念页（工程经验综述，无论文/项目清单）
+
 ## [2026-11-01] ingest | Zane Hub 公众号《机器人关节方案选型》：新建 robot-joint-scheme-selection 概念页（工程经验综述，无论文/项目清单）
 
 ## [2026-11-01] ingest | Zane Hub 公众号《关节模组减速器的难度拆解》：新建 joint-module-reducer-difficulty 概念页（工程经验综述，无论文/项目清单）

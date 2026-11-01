@@ -6121,6 +6121,7 @@
 - [深度学习基础 (Deep Learning Foundations)](wiki/concepts/deep-learning-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [深度强化学习游戏里程碑（DQN / AlphaGo）](wiki/concepts/deep-rl-game-milestones.md) — 深度强化学习游戏里程碑**：以 Atari DQN 与围棋 AlphaGo 为代表的一系列工作，用端到端神经网络从像素或棋盘状态映射到动作，证明了规模化数据驱动方法在**离散或结构化动作空间**任 `📅unknown` `[wiki_page]`
 - [面向机器人的密集视频字幕](wiki/concepts/dense-captioning-for-robotics.md) — 密集视频字幕（dense captioning）** 将连续第一视角操作视频分解为按时间排序的短动作步骤，并为每步标注动作、作用对象与执行手，形成可检索、可质检的任务语义标签；它是视频语义监督，不 `📅unknown` `[wiki_page]`
+- [灵巧手负载与核心指标](wiki/concepts/dexterous-hand-payload-core-metrics.md) — 灵巧手的「能搬多重」不只由手决定，而取决于抓取姿态、摩擦、重心、包覆与机械臂加速度；因此负载只是入场券，真正的评价要看**带条件声明**的一组耦合指标：力量、自由度、力控、精度、感知、可靠性、轻量化、 `📅unknown` `[wiki_page]`
 - [Dexterous Kinematics (灵巧手运动学)](wiki/concepts/dexterous-kinematics.md) — 灵巧手运动学 (Dexterous Kinematics)** 是机器人学中研究多指协同操作的理论基础。与传统的单臂串联运动学不同，灵巧手在抓取物体时，多个手指通过接触点与物体共同构成了一个**闭 `📅unknown` `[wiki_page]`
 - [Differentiable Simulation（可微仿真）](wiki/concepts/differentiable-simulation.md) — 可微仿真**：物理引擎在 forward rollout 的同时支持 **对状态、参数或控制输入求导**，使优化与 learning 可直接利用 **解析梯度** 而非纯有限差分或黑盒 RL。 `📅unknown` `[wiki_page]`
 - [Diffusion Model（扩散模型）](wiki/concepts/diffusion-model.md) — 扩散模型（Diffusion Model）**：人为定义从真实数据到高斯噪声的前向破坏过程，训练神经网络学习逆向降噪，使模型能从简单噪声分布经多步小幅修正生成结构化样本。 `📅unknown` `[wiki_page]`
