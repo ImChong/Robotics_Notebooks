@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-31
+updated: 2026-11-01
 related:
+  - ../entities/paper-seer-vla.md
   - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
   - ../entities/paper-commander-executor-coordination.md
