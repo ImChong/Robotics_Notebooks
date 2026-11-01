@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | Zane Hub 公众号《机器人结构公差仿真工具链》：新建 structure-tolerance-simulation-toolchain 概念页（工程经验综述，无论文/项目清单）
+
 ## [2026-11-01] ingest | Zane Hub《人形机器人结构设计工程师需要懂哪些跨专业知识？》：新建跨专业知识地图（无论文/项目清单，不做逐项目节点）
 
 ## [2026-11-01] ingest | sources/sites/qiayuan-liao-homepage.md — 收录个人主页与相关人形控制研究和开源入口

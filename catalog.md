@@ -6276,6 +6276,7 @@
 - [State Estimation](wiki/concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [状态空间模型（SSM）](wiki/concepts/state-space-model-ssm.md) — SSM（State Space Model）** 用隐状态 $h_t$ 与输入 $x_t$ 的线性（或输入依赖的选择性）递推生成输出，可在频域/卷积视图与递推视图间转换；**Mamba** 为其选 `📅unknown` `[wiki_page]`
 - [强 Pair Data（Strong Pair Data）](wiki/concepts/strong-pair-data.md) — 强 pair data** 是 人–机迁移 数据策展里的一个精度档位：不只要求「同一任务语义」，还要求 **视觉场景（除本体外）一致、时序逐帧对 `📅unknown` `[wiki_page]`
+- [机器人结构公差仿真工具链](wiki/concepts/structure-tolerance-simulation-toolchain.md) — 公差仿真是把「每个尺寸都合格、整机精度却不达标」的问题拦在开模和投产之前的一套分层方法：从**标注**出发，经**尺寸链 / 三维仿真 / 蒙特卡洛 / 刚度耦合**，最后用**实测数据**回头校准。 `📅unknown` `[wiki_page]`
 - [Swinging Door Trending（摆动门趋势压缩）](wiki/concepts/swinging-door-trending-compression.md) — Swinging Door Trending（SDT）** 是一种在线、按单变量样本流工作的有损分段线性压缩算法：它维护锚点周围的上下斜率边界；只要新样本仍能落在容差走廊内，就暂不归档，走廊被新样 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](wiki/concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
