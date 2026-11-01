@@ -6177,6 +6177,7 @@
 - [人形机器人测试流程（L0–L5 六级递进）](wiki/concepts/humanoid-testing-workflow.md) — 人形机器人测试流程**是把 ~30+ 自由度、机械–电气–控制–AI 四域耦合的双足整机，按 **L0 仿真 → L1 部件台架 → L2 关节模组 → L3 子系统 → L4 整机 → L5 场 `📅unknown` `[wiki_page]`
 - [人形结构拓扑优化工具链（工况谱 → 优化 → 重建 → 验证）](wiki/concepts/humanoid-topology-optimization-toolchain.md) — 拓扑优化工具链**是在给定设计空间与载荷约束下，用 **SIMP 等密度法** 重分配结构材料、再经 **CAD 重建与工艺收口** 得到可装机零件的一整条 CAE 流程；对人形机器人而言，它服务 `📅unknown` `[wiki_page]`
 - [人形机器人与其他机器人的区别](wiki/concepts/humanoid-vs-other-robots.md) — 飞书 Know-How「人形机器人与其他机器人的区别」强调：人形不是「自由度更多的机械臂」或「双足版四足」，而是**浮动基 + 间歇接触 + 上身–下肢强耦合** 带来的独特控制问题集合。 `📅unknown` `[wiki_page]`
+- [人形机器人线束类型与防护](wiki/concepts/humanoid-wire-harness-types-protection.md) — 人形机器人线束是遍布全身、同时承担**动力传输、信号反馈与数据通信**的线缆组件；它在复合运动、毫米级空间下长期工作，选型与防护失当时，关节断芯、护套开裂、信号漂移会在量产阶段集中爆发。 `📅unknown` `[wiki_page]`
 - [Hybrid Force-Position Control（力位混合控制）](wiki/concepts/hybrid-force-position-control.md) — 力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。 `📅unknown` `[wiki_page]`
 - [图像分割任务分类（语义 / 实例 / 全景）](wiki/concepts/image-segmentation-taxonomy.md) — 语义分割**给每个像素一个类别；**实例分割**还要区分同类别不同物体；**全景分割**统一可数 things 与不可数 stuff，输出整图一致的像素–段表示。 `📅unknown` `[wiki_page]`
 - [Impedance Control（阻抗控制）](wiki/concepts/impedance-control.md) — 阻抗控制**：不直接要求机器人“精确走到某个位姿”，而是规定当机器人与环境之间出现位置误差或接触力时，系统应该表现出怎样的 **质量-弹簧-阻尼（Mass-Spring-Damper）** 响应。 `📅unknown` `[wiki_page]`
