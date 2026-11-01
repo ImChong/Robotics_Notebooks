@@ -4,7 +4,7 @@ project_id: shadcn-admin
 code: https://github.com/satnaing/shadcn-admin
 tags: [frontend, dashboard, open-source, developer-tools]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-01
 related:
   - ./impeccable.md
   - ./anthropic-frontend-design-skill.md
@@ -67,6 +67,8 @@ flowchart TD
 - MIT 许可允许复用，分发时应遵守许可文本及依赖项各自的许可要求。
 
 ## 关联页面
+
+- [Semi Design](semi-design.md) — 提供 React 组件与主题工具的设计系统。
 
 - [Impeccable](impeccable.md) — 界面设计与检查工具，可辅助打磨复用后的页面。
 - [frontend-design](anthropic-frontend-design-skill.md) — 用于规划和审查前端设计的技能。
