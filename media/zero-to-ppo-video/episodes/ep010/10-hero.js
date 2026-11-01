@@ -3,14 +3,15 @@
 //    「肘关节的螺旋轴」右边出 S 的六维列向量，「零、零、一、二、负一、零」六个数按念到的顺序弹出；
 // ② 9.8 起右边换成问句：「绕着螺旋轴」肘亮一圈，「转了一个角度」小臂绕肘转 90°、标 θ，「停在什么位置」小臂上离肘两格的点旁打问号，「朝向什么方向」那里出两根小箭头；
 // ③ 「矩阵指数」右边换成一条竖着的流程：[S] θ →（exp 矩阵指数）→ 4 × 4 的位姿 T，按念到的词依次出来，「位姿」小臂上的两根小箭头鼓一下。
+// 2026-11-01 按 005–009 的新配色复查：小臂淡黄，转动和 θ 蓝，小臂上的两根小箭头 x 红、y 绿，位姿里 R 蓝、p 紫。
 // 时刻取自配音的逐词时间（../ep010.py 的 [from, to] 等于每句配音实长，分镜时间 = 念到这个词的时刻）。
 (function () {
   var E = window.EP010, K = E.K, H = E.HEX;
   var D = Math.PI / 180, A = { OX: 84, OY: 345, S: 2.2 }, RX = 450;   // 主图不缩放：UR5 放大到一格约 60 px
   var T = {
-    twist: 1.66, speed: 2.76, screw: 3.56, elbow: 4.57, nums: [6.16, 6.57, 7.03, 7.55, 7.97, 8.6], out1: 9.6,
-    ask: 10.4, axis: 12.02, turn: [12.74, 13.6], ang: 13.25, where: 15.04, dir: 16.26, out2: 18.3,
-    mexp: 19.14, sth: 20.44, times: 20.98, angle: 21.84, give: 22.47, step: 23.24, mat: 24.6, pose: 25.37
+    twist: 1.67, speed: 2.78, screw: 3.81, elbow: 4.86, nums: [6.45, 6.86, 7.33, 7.85, 8.27, 8.9], out1: 9.9,
+    ask: 10.71, axis: 12.33, turn: [13.05, 13.9], ang: 13.56, where: 15.35, dir: 16.57, out2: 18.6,
+    mexp: 19.45, sth: 20.75, times: 21.29, angle: 22.15, give: 22.78, step: 23.55, mat: 24.91, pose: 25.68
   };
 
   E.hero = function (K) {
@@ -25,10 +26,10 @@
     var top = E.el('g', {}, s);
     var ring = K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 12, 'stroke-width': 3.5 }, top), E.S1, E.HI);
     var ringDot = K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 4 }, top), E.HI);
-    var spin = E.arcArrow(top, Q[0], Q[1], 1.05 * u, E.VIOLET, 3.5, { head: 13 });
-    var thLab = E.halo(E.txt(top, 0, 0, 'θ', 28, E.VIOLET, 'start', 900));
+    var spin = E.arcArrow(top, Q[0], Q[1], 1.05 * u, E.OMEGA, 3.5, { head: 13 });
+    var thLab = E.halo(E.txt(top, 0, 0, 'θ', 28, E.OMEGA, 'start', 900));
     thLab.style.fontFamily = 'KaTeX_Math, serif'; thLab.style.fontStyle = 'italic';
-    var ax = [E.vec(top, E.GOOD, 4.5, { head: 14 }), E.vec(top, E.WARN, 4.5, { head: 14 })];
+    var ax = [E.vec(top, E.X, 4.5, { head: 14 }), E.vec(top, E.Y, 4.5, { head: 14 })];
     var qm = E.halo(E.txt(top, 0, 0, '?', 34, E.HI, 'middle', 900));
 
     /* ── 右 ① ：运动旋量 = 转速 × 螺旋轴，S 的六个数 ── */
@@ -51,8 +52,8 @@
     /* ── 右 ③ ：[S]θ → exp → T ── */
     var r3 = E.el('g', {}, s), CX = RX + 160;
     var f1 = E.el('g', {}, r3);
-    E.tex(f1, CX - 40, 66, '[\\textcolor{' + H.warn + '}{\\mathcal S}]\\,\\textcolor{' + H.violet + '}{\\theta}', 40, E.INK, 'start', { w: 110, h: 62 });
-    var f1a = E.txt(f1, CX - 52, 62, '螺旋轴', 24, E.WARN, 'end', 900), f1b = E.txt(f1, CX + 66, 62, '× 角度', 24, E.VIOLET, 'start', 900);
+    E.tex(f1, CX - 40, 66, '[\\textcolor{' + H.warn + '}{\\mathcal S}]\\,\\textcolor{' + H.acc + '}{\\theta}', 40, E.INK, 'start', { w: 110, h: 62 });
+    var f1a = E.txt(f1, CX - 52, 62, '螺旋轴', 24, E.WARN, 'end', 900), f1b = E.txt(f1, CX + 66, 62, '× 角度', 24, E.OMEGA, 'start', 900);
     var a1 = E.vec(r3, E.INK2, 3.5, { head: 13 }), a2 = E.vec(r3, E.INK2, 3.5, { head: 13 });
     var box = E.el('g', {}, r3);
     K.paint(E.el('rect', { x: CX - 150, y: 112, width: 300, height: 84, rx: 16, 'stroke-width': 3.5 }, box), E.tint(E.HI, 12, 'var(--demo-surface)'), E.HI);
@@ -60,7 +61,7 @@
     E.txt(box, CX + 130, 166, '矩阵指数', 32, E.HI, 'end', 900);
     var oneStep = E.txt(r3, CX + 16, 236, '一步', 24, E.GOOD, 'start', 900);
     var tG = E.el('g', {}, r3);
-    E.tex(tG, CX - 140, 340, 'T=\\begin{bmatrix}\\textcolor{' + H.violet + '}{R} & \\textcolor{' + H.acc + '}{p}\\\\ 0 & 1\\end{bmatrix}', 42, E.INK, 'start', { w: 220, h: 130 });
+    E.tex(tG, CX - 140, 340, 'T=\\begin{bmatrix}\\textcolor{' + H.acc + '}{R} & \\textcolor{' + H.violet + '}{p}\\\\ 0 & 1\\end{bmatrix}', 42, E.INK, 'start', { w: 220, h: 130 });
     E.txt(tG, CX + 100, 324, '4 × 4', 28, E.INK, 'start', 900);
     var tName2 = E.txt(tG, CX + 100, 364, '的位姿', 28, E.HI, 'start', 900);
 
@@ -70,7 +71,7 @@
         var f = E.fade, b = E.bump;
         /* ── 左 ── */
         var phi = 90 * D * f(t, T.turn[0], T.turn[1] - T.turn[0]);
-        arm.bend(phi); V.clearTint(); V.tint(RIGID, E.VIOLET, 0.45);
+        arm.bend(phi); V.clearTint(); V.tint(RIGID, E.BODY, 0.45);
         E.op(ring, f(t, T.elbow, 0.3)); E.op(ringDot, f(t, T.elbow, 0.3));
         ring.setAttribute('r', (12 + 5 * Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8))).toFixed(2));
         E.glow(ring, E.HI, Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8)) > 0.05);

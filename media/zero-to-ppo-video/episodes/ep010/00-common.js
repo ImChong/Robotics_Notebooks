@@ -1,7 +1,8 @@
 // 零基础篇 010：矩阵指数——从螺旋运动到位姿（路线 §L1.1「矩阵指数 / PoE」，§L0 自测题 3，Modern Robotics 3.3.3）
 // 本目录按文件名顺序加载：00 共用部件 → 10 片头主图 → 21…25 五幕分镜 → 90 组装 window.EpisodeVideo。旁白在 ../ep010.py。
-// 工具函数取自 ../ep009/00-common.js（命名空间换成 EP010；坐标网格、可动箭头、小弯箭头、KaTeX、六维列向量、三维投影、三维小坐标架、
-// UR5 侧视放到网格上并绕肘刚性转动），另取 ../ep007/00-common.js 的手画矩阵 E.matN（每个数的位置都知道，好逐个框亮、弹出）和俯视的扫地机 E.vac。
+// 工具函数取自 ../ep009/00-common.js（2026-11-01 按 005–009 的新配色复查；命名空间换成 EP010；坐标网格、可动箭头、小弯箭头、KaTeX、六维列向量、三维投影、三维小坐标架、
+// UR5 侧视放到网格上并绕肘刚性转动），另取 ../ep007/00-common.js 的手画矩阵 E.matN（每个数的位置都知道，好逐个框亮、弹出；按每列最宽的数给框和括号留空）、
+// 一行算式从左往右排的 E.flow 和俯视的扫地机 E.vac。
 // 分镜都画在 800×420 的网格上。draw(st, t)：st 是分镜时间（旁白念完前画面停在 to 之前，一次性事件用它），
 // t 是这一幕的真实时间（绕圈这类循环动作用它，停帧时也不会卡住）。
 (function () {
@@ -9,12 +10,17 @@
   var C = K.xColors;
   var E = window.EP010 = { K: K, scenes: [] };
 
-  /* 颜色：角速度 ω / 转动 violet（同 003、005 的变换色）；点的速度、线速度 v accent（蓝，同 003 的向量）；
-     转轴 / 肘（转动中心）亮黄 --hi；螺旋轴 warn（琥珀）；螺距、沿轴移动 good（绿）；说错的、不合格 bad。
-     三维坐标轴沿用 005：x 绿、y 琥珀、z 蓝。KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
-  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.BAD = C.bad; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
+  /* 颜色按发布清单「画面配色（005 起）」：坐标轴 x 红、y 绿、z 蓝（矩阵的第一、二、三列同色，扫地机、方块上的小箭头同色）；
+     平面里的转动是绕 z 轴转，小弯箭头、转过的角度 θ 用蓝（E.OMEGA）；错误、不合格、走歪的直线用橙（E.ERR，红色留给 x 轴），
+     打勾这类「对」、真正的圆弧用绿。照 009：刚体（小臂、方块）淡黄（E.BODY）；肘（转动中心）亮黄；螺旋轴、ŝ 琥珀；螺距、沿轴移动绿；
+     点的位置、速度和位姿里的位置 p 用紫（E.VEL，同 007 的位置 p、009 的 v）。
+     KaTeX 的 \textcolor 不认 CSS 变量，公式里用 E.HEX 的同一组色值（与 stage.html 的 :root 一致） */
+  E.ACC = C.accent; E.GOOD = C.good; E.WARN = C.warn; E.VIOLET = 'var(--violet)'; E.HI = 'var(--hi)';
   E.MUT = C.muted; E.INK = C.ink; E.INK2 = C.ink2; E.S1 = C.surface; E.S2 = C.surface2; E.BORDER = C.border; E.GRID = C.grid;
-  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', bad: '#e06c75', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a' };
+  E.HEX = { acc: '#569cd6', good: '#4ec9a4', warn: '#d7a75f', violet: '#c586c0', hi: '#ffd166', ink: '#e6e6e6', ink2: '#a8a8a8', mut: '#8a8a8a',
+    x: '#e06c75', y: '#4ec9a4', z: '#569cd6', err: '#ff7b3a' };
+  E.X = E.HEX.x; E.Y = E.HEX.y; E.Z = E.HEX.z; E.ERR = E.HEX.err;
+  E.OMEGA = E.ACC; E.VEL = E.VIOLET; E.BODY = E.HI;
 
   /* ── 基础工具 ── */
   function el(tag, attrs, parent) { var n = K.svgEl(tag, attrs || {}); if (parent) parent.appendChild(n); return n; }
@@ -77,7 +83,7 @@
   function cross(parent, cx, cy, r, color, w) {
     var p = el('path', { d: 'M ' + (cx - r) + ' ' + (cy - r) + ' L ' + (cx + r) + ' ' + (cy + r) + ' M ' + (cx + r) + ' ' + (cy - r) + ' L ' + (cx - r) + ' ' + (cy + r),
       fill: 'none', 'stroke-width': w || 3, 'stroke-linecap': 'round' }, parent);
-    K.paint(p, null, color || E.BAD);
+    K.paint(p, null, color || E.ERR);
     return p;
   }
   // 圆角胶囊标签：rect + 文字；返回 { g, rect, text }
@@ -289,8 +295,8 @@
   };
 
   /* ── 一对方括号：把 [x0, x1] × [y0, y1] 这一块括起来（lip 是括号上下两个小钩的长度） ── */
-  E.brk = function (parent, x0, y0, x1, y1, color, w) {
-    var lip = Math.max(7, (y1 - y0) * 0.09), g = el('g', {}, parent);
+  E.brk = function (parent, x0, y0, x1, y1, color, w, lipMax) {
+    var lip = Math.min(Math.max(7, (y1 - y0) * 0.09), lipMax || 99), g = el('g', { 'data-bracket': '' }, parent);
     [[x0, 1], [x1, -1]].forEach(function (d) {
       K.paint(el('path', { d: 'M ' + (d[0] + d[1] * lip) + ' ' + y0 + ' H ' + d[0] + ' V ' + y1 + ' H ' + (d[0] + d[1] * lip),
         fill: 'none', 'stroke-width': w || 2.5, 'stroke-linecap': 'square' }, g), null, color || E.INK);
@@ -300,22 +306,42 @@
 
   /* ── 手画的矩阵 / 列向量（不用 KaTeX）：每个数的位置都知道，好逐个框亮、弹出。
      E.matN(parent, cx, cy, M, o)：M 按行存（数或字符串）；o = { size：字号（默认 30），dx / dy：列距 / 排距，
-       color(i, j) → 这个数的颜色（默认 INK），pad：括号离最外一列中心多远（默认 0.95 字号），cw：框数的宽（默认 1.8 字号，不超过列距） }
+       color(i, j) → 这个数的颜色（默认 INK），wide：按哪组数留宽度（默认 M；数会变的矩阵给最宽的那组） }
+     框和括号按每列最宽的数留空（同 006 的修法）：框比数宽出 0.25 字号，括号再离框 0.36 字号，数不贴框、框不压括号。
      返回 { g, cells[i][j], pos(i, j) → [x, y]（这个数的中心）, set(M), frame（整块的括号）, brk(i0, j0, i1, j1)：给其中一块另画括号,
        hl(key, i0, j0, i1, j1, color, p)：在这一块底下垫一个框（key 相同就复用同一个框）, box（括号外框） } ── */
+  // KaTeX_Main 的字宽（em）：数字 0.5、小数点 0.278、减号 0.778，斜体字母约 0.55
+  function textW(s, size) {
+    var w = 0;
+    String(s).split('').forEach(function (c) { w += /[0-9]/.test(c) ? 0.5 : c === '.' || c === ',' ? 0.278 : c === '−' ? 0.778 : 0.55; });
+    return w * size;
+  }
+  // 每列最宽的数有多宽；括号竖笔离最左 / 最右一列中心多远（E.flow 排一行算式时也用）
+  function colWidths(M, o, size) {
+    var out = [];
+    for (var j = 0; j < M[0].length; j++) out.push(Math.max.apply(null, (o.wide || M).map(function (row) { return textW(E.num(row[j]), size); })));
+    return out;
+  }
+  E.matExt = function (M, o) {
+    o = o || {};
+    var size = o.size || 30, dx = o.dx || size * 1.9, cw = colWidths(M, o, size), w = (M[0].length - 1) * dx, k = size * (0.25 + 0.36);
+    return [w / 2 + cw[0] / 2 + k + 1.5, w / 2 + cw[cw.length - 1] / 2 + k + 1.5];   // 左、右（含括号线宽的一半）
+  };
   E.matN = function (parent, cx, cy, M, o) {
     o = o || {};
-    var size = o.size || 30, dx = o.dx || size * 1.9, dy = o.dy || size * 1.3, cw = o.cw || Math.min(size * 1.8, dx - 4);
+    var size = o.size || 30, dx = o.dx || size * 1.9, dy = o.dy || size * 1.3;
     var rows = M.length, cols = M[0].length, w = (cols - 1) * dx, h = (rows - 1) * dy;
-    var g = el('g', {}, parent), under = el('g', {}, g), boxes = {};
+    var g = el('g', { 'data-mgrid': '' }, parent), under = el('g', {}, g), boxes = {};   // data-mgrid / data-bracket / data-hl：给版面检查认
+    var colW = colWidths(M, o, size);
+    var IN = size * 0.25, GAP = size * 0.36;
     function pos(i, j) { return [cx - w / 2 + j * dx, cy - h / 2 + i * dy]; }
-    function block(i0, j0, i1, j1, padX) {
-      var a = pos(i0, j0), b = pos(i1, j1), px = padX === undefined ? cw / 2 : padX;
-      return [a[0] - px, a[1] - size * 0.68, b[0] + px, b[1] + size * 0.68];
+    function block(i0, j0, i1, j1) {
+      var a = pos(i0, j0), b = pos(i1, j1);
+      return [a[0] - colW[j0] / 2 - IN, a[1] - size * 0.62, b[0] + colW[j1] / 2 + IN, b[1] + size * 0.62];
     }
-    var pad = o.pad || size * 0.95;
-    var fb = [cx - w / 2 - pad, cy - h / 2 - size * 0.62, cx + w / 2 + pad, cy + h / 2 + size * 0.62];
-    var frame = E.brk(g, fb[0], fb[1], fb[2], fb[3], o.bracket || E.INK, Math.max(2, size / 14));
+    function brkBox(i0, j0, i1, j1) { var b = block(i0, j0, i1, j1); return [b[0] - GAP, b[1] - size * 0.12, b[2] + GAP, b[3] + size * 0.12]; }   // 括号上下也比框长一点，小钩不碰框角
+    var fb = brkBox(0, 0, rows - 1, cols - 1);
+    var frame = E.brk(g, fb[0], fb[1], fb[2], fb[3], o.bracket || E.INK, Math.max(2, size / 14), GAP - 1);   // 小钩不伸到框上面
     var cells = M.map(function (row, i) {
       return row.map(function (v, j) {
         var p = pos(i, j), n = txt(g, p[0], p[1] + size * 0.35, E.num(v), size, o.color ? o.color(i, j) : E.INK, 'middle');
@@ -327,13 +353,13 @@
       g: g, cells: cells, pos: pos, frame: frame, size: size, box: fb,
       set: function (m) { m.forEach(function (row, i) { row.forEach(function (v, j) { cells[i][j].textContent = E.num(v); }); }); return api; },
       brk: function (i0, j0, i1, j1, color) {
-        var b = block(i0, j0, i1, j1, pad);
-        return E.brk(g, b[0], b[1], b[2], b[3], color || E.INK, Math.max(2, size / 14));
+        var b = brkBox(i0, j0, i1, j1);
+        return E.brk(g, b[0], b[1], b[2], b[3], color || E.INK, Math.max(2, size / 14), GAP - 1);
       },
       hl: function (key, i0, j0, i1, j1, color, p) {
-        var r = boxes[key] || (boxes[key] = el('rect', { rx: 9, 'stroke-width': 2.5 }, under)), b = block(i0, j0, i1, j1);
-        r.setAttribute('x', (b[0] + 3).toFixed(1)); r.setAttribute('y', (b[1] + 2).toFixed(1));
-        r.setAttribute('width', (b[2] - b[0] - 6).toFixed(1)); r.setAttribute('height', (b[3] - b[1] - 4).toFixed(1));
+        var r = boxes[key] || (boxes[key] = el('rect', { rx: 9, 'stroke-width': 2.5, 'data-hl': '' }, under)), b = block(i0, j0, i1, j1);
+        r.setAttribute('x', b[0].toFixed(1)); r.setAttribute('y', b[1].toFixed(1));
+        r.setAttribute('width', (b[2] - b[0]).toFixed(1)); r.setAttribute('height', (b[3] - b[1]).toFixed(1));
         K.paint(r, tint(color, 18, 'var(--demo-surface)'), color); op(r, clamp(p, 0, 1));
         return r;
       }
@@ -341,15 +367,53 @@
     return api;
   };
 
+  /* ── 一行算式从左往右排：E.flow(x, y, gap) 记着排到哪儿了，按矩阵括号的真实宽度和字宽留空（gap：括号和旁边的字之间默认 12）。
+     .mat(parent, M, o) → E.matN；.sym(parent, s, size, color) → 字（KaTeX_Main，如 =、+、×、2）；.txt(parent, s, size, color, weight) → 中文标签；
+     .skip(d) 多空一点；.x 现在排到的位置 ── */
+  // 估一行字有多宽（px）：汉字和圈码 1 字号，数字 0.5，=、+、−、× 0.78，小数点、逗号、空格 0.28，其余 0.55
+  function estW(s0, size) {
+    var w = 0;
+    String(s0).split('').forEach(function (c) {
+      w += /[\u2460-\u24ff\u2e80-\uffff]/.test(c) ? 1 : /[0-9]/.test(c) ? 0.5 : /[=+\u2212\u00d7]/.test(c) ? 0.78 : /[., ]/.test(c) ? 0.28 : 0.55;
+    });
+    return w * size;
+  }
+  E.flow = function (x, y, gap) {
+    var G = gap === undefined ? 12 : gap;
+    function step(g) { return g === undefined ? G : g; }
+    var api = {
+      x: x,
+      mat: function (parent, M, o, g) {
+        var e = E.matExt(M, o), cx = api.x + step(g) + e[0];
+        api.x = cx + e[1];
+        return E.matN(parent, cx, y, M, o);
+      },
+      sym: function (parent, s0, size, color, g) {
+        var w = estW(s0, size), cx = api.x + step(g) + w / 2;
+        api.x = cx + w / 2;
+        var n = txt(parent, cx, y + size * 0.34, s0, size, color || E.INK, 'middle', 400);
+        n.style.fontFamily = 'KaTeX_Main, serif';
+        return n;
+      },
+      txt: function (parent, s0, size, color, weight, g) {
+        var x0 = api.x + step(g);
+        api.x = x0 + estW(s0, size);
+        return txt(parent, x0, y + size * 0.36, s0, size, color || E.INK, 'start', weight || 900);
+      },
+      skip: function (d) { api.x += d; return api; }
+    };
+    return api;
+  };
+
   /* ── 俯视的扫地机（iRobot Create 2 的 URDF，由 ../../robot3d.js 渲染，同 003 第 2 幕）+ 它自己的两根小箭头：
-     往前（绿）、往左（琥珀），各长一格。E.vac(parent, P, s)：P 是坐标网格的 P(x, y)；s 是缩放（宽 92·s px）。
+     往前（红）、往左（绿），各长一格。E.vac(parent, P, s)：P 是坐标网格的 P(x, y)；s 是缩放（宽 92·s px）。
      set(x, y, heading)：停在网格上 (x, y)，车头朝 heading 弧度（0 = 朝 +x，逆时针为正）；arrows：两根小箭头（E.vec），
      tips() → 两根小箭头尖的画面坐标 ── */
   E.vac = function (parent, P, s) {
     var g = el('g', {}, parent), body = el('g', {}, g);
     window.Robot3D.create2(body, 0, 0, s, { top: true });
     var ar = el('g', {}, g);
-    var arrows = [E.GOOD, E.WARN].map(function (c) { var a = E.vec(ar, c, 5, { head: 15 }); a.line.style.filter = 'drop-shadow(0 0 2px #000)'; return a; });
+    var arrows = [E.X, E.Y].map(function (c) { var a = E.vec(ar, c, 5, { head: 15 }); a.line.style.filter = 'drop-shadow(0 0 2px #000)'; return a; });
     var dot = K.paint(el('circle', { r: 4.5, 'stroke-width': 2 }, ar), E.INK, E.S1);
     var st = { x: 0, y: 0, h: 0 };
     var api = {
@@ -388,14 +452,14 @@
   E.col3 = function (M, j) { return [M[0][j], M[1][j], M[2][j]]; };
   E.cross3 = function (a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; };
 
-  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 绿、y 琥珀、z 蓝）。set(M)：M 是 3×3（列 = 三根小箭头的方向）；
+  /* ── 三维小坐标架（取自 005）：原点 (cx, cy)，单位长 L px；三根小箭头（x 红、y 绿、z 蓝）。set(M)：M 是 3×3（列 = 三根小箭头的方向）；
      opts.box：画三根小箭头围成的小方块（淡虚线） ── */
   E.gizmo = function (parent, cx, cy, L, proj, opts) {
     var o = opts || {};
     var g = el('g', {}, parent), box = el('g', {}, g);
     var edges = [];
     if (o.box) for (var k = 0; k < 12; k++) edges.push(K.paint(el('line', { 'stroke-width': 1.6, 'stroke-dasharray': '5 5' }, box), null, E.MUT));
-    var cols = [E.GOOD, E.WARN, E.ACC];
+    var cols = [E.X, E.Y, E.Z];
     var arrows = cols.map(function (c) { return E.vec(g, c, o.w || 4.5, { head: 14 }); });
     var labs = ['x', 'y', 'z'].map(function (s, i) { return halo(txt(g, 0, 0, s, 22, cols[i], 'middle', 700)); });
     function P(v) { var q = proj(v); return [cx + L * q[0], cy - L * q[1]]; }

@@ -1,6 +1,7 @@
 // 010 第 5 幕：比一比——矩阵指数好在哪。左边先是第 1 幕的网格 + UR5，中段换成三张对照卡片（占满整幅），最后是斜着看的 UR5 和它的六根关节轴。
-// 句 1「两个朝向」小臂 0° 和 90° 两个位置画成虚线（第 5 集的两个朝向），「不能直接平均」右栏打红 ×，「矩阵指数」右栏写 exp([S] θ / 2)，
-//    「同一根轴」肘亮一圈，「只转一半的角度」小臂从 0° 转到 45°、标 45°；
+// 2026-11-01 按 005–009 的新配色复查：小臂淡黄，转动和角度蓝，打 × 用橙，手上的坐标架 x 红、y 绿、z 蓝；「九十除以二」右栏写 90° ÷ 2 = 45°。
+// 句 1「两个朝向」小臂 0° 和 90° 两个位置画成虚线（第 5 集的两个朝向），「不能直接平均」右栏打橙 ×，「矩阵指数」右栏写 exp([S] θ / 2)，
+//    「同一根轴」肘亮一圈，「只转一半的角度」小臂从 0° 转到 45°、标 45°，「九十除以二」写出 90° ÷ 2 = 45°；
 // 句 2（2026-10-29 补）「两个朝向都不是原样」「矩阵对数」右栏下方写「两个都不是原样：先求矩阵对数」，「再只转一半」出 R₀ exp(½ log(R₀ᵀR₁))
 //    （《Modern Robotics》3.2.3.3 节、Solà 等式 (25)(26)；005 的例子里一个朝向是原样，才是「绕同一根轴转一半」）；
 // 句 3 换成三张卡片：欧拉角、四元数、矩阵指数（亮黄框）；
@@ -14,29 +15,29 @@
   var E = window.EP010, K = E.K, H = E.HEX;
   var D = Math.PI / 180, A = E.ARM, RX = A.RX;
   var T = {
-    ep5: 0.64, two: 1.74, mid: 2.41, avg: 3.29, mexp: 4.87, axis: 6.93, half: [8.13, 9.03], log: 13.07, logEq: 17.49, out1: 19.11,
-    cards: 19.36,
-    eu: [23.43, 24.27, 25.24], qu: [26.59, 27.25, 28.42], mx: [31.78, 33.32, 34.41, 35.75, 38.43], out2: 41.31,
-    arm: 41.54, joint: 42.91, axes: [45.07, 45.31, 45.55, 45.79, 46.03, 46.27], turn: [47.12, 48.01], ang: 48.39,
-    each: 50.29, facs: [51.08, 51.28, 51.64, 51.86, 52.08, 52.31], mult: 52.69, hand: 54.55, name: 56.23, ep11: 57.38
+    ep5: 0.65, two: 1.76, mid: 2.44, avg: 3.33, mexp: 4.94, axis: 6.94, half: [8.17, 9.06], halfCalc: 9.72, log: 15.02, logEq: 19.3, out1: 21.15,
+    cards: 21.4,
+    eu: [25.47, 26.31, 27.28], qu: [28.63, 29.29, 30.46], mx: [33.82, 35.35, 36.45, 37.85, 40.53], out2: 43.4,
+    arm: 43.63, joint: 44.75, axes: [47.1, 47.34, 47.58, 47.82, 48.06, 48.3], turn: [48.84, 49.7], ang: 50.12,
+    each: 52.01, facs: [52.8, 53.0, 53.36, 53.58, 53.8, 54.02], mult: 54.41, hand: 56.28, name: 57.96, ep11: 59.1
   };
-  var END = 59.23;
+  var END = 60.96;
   var JN = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint'];
 
   E.scenes[4] = {
     title: '比一比：矩阵指数好在哪',
     dur: END,
     cues: [
-      { at: 0, s: '两个**朝向**取中间值：绕同一根轴，只转一半的**角度**' },
-      { at: 10.46, s: '两个朝向都不是原样：先求**矩阵对数**，再转一半' },
-      { at: 19.27, s: '和第 6 集的另外两种写法比一比' },
-      { at: 22.87, s: '欧拉角 3 个数、直观，可会万向锁；四元数 4 个数，可一个朝向两套数' },
-      { at: 30.89, s: '**矩阵指数**给出的旋转矩阵：没有万向锁、能直接连乘、和**螺旋轴**一套说法；代价是 9 个数' },
-      { at: 41.45, s: '关节的运动都用它写：每个关节是一根**螺旋轴**，转了多少就是**角度**' },
-      { at: 50.19, s: '各算一个**矩阵指数**，按顺序乘起来，就得到手的**位姿**（第 11 集：指数积公式）' }
+      { at: 0, s: '两个**朝向**取中间值：绕同一根轴，只转一半的**角度**：90° ÷ 2 = 45°' },
+      { at: 12.5, s: '两个朝向都不是原样：先求**矩阵对数**，再转一半' },
+      { at: 21.31, s: '和第 6 集的另外 2 种写法比一比' },
+      { at: 24.91, s: '欧拉角 3 个数、直观，可会万向锁；四元数 4 个数，可一个朝向 2 套数' },
+      { at: 32.93, s: '**矩阵指数**给出的旋转矩阵：没有万向锁、能直接相乘、和**螺旋轴**一套说法；代价是 9 个数' },
+      { at: 43.54, s: '关节的运动都用它写：每个关节是一根**螺旋轴**，转了多少就是**角度**' },
+      { at: 51.91, s: '各算一个**矩阵指数**，按顺序乘起来，就得到手的**位姿**（第 11 集：指数积公式）' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('两个朝向取中间值不能直接平均，用矩阵指数绕同一根轴只转一半的角度；两个朝向都不是原样时先用矩阵对数求出两者之间绕什么轴、转了多少，再转一半；和第六集另外两种写法比：欧拉角三个数最直观但会万向锁，四元数四个数没有万向锁但一个朝向两套数，矩阵指数给出的旋转矩阵没有万向锁、能直接连乘、和运动旋量螺旋轴是一套说法，代价是九个数有冗余；机械臂每个关节是一根螺旋轴，各算一个矩阵指数按顺序乘起来就得到手的位姿，这叫指数积公式，第十一集讲');
+      var s = K.sceneSvg('两个朝向取中间值不能直接平均，用矩阵指数绕同一根轴只转一半的角度；两个朝向都不是原样时先用矩阵对数求出两者之间绕什么轴、转了多少，再转一半；和第六集另外两种写法比：欧拉角三个数最直观但会万向锁，四元数四个数没有万向锁但一个朝向两套数，矩阵指数给出的旋转矩阵没有万向锁、能直接相乘、和运动旋量螺旋轴是一套说法，代价是九个数有冗余；机械臂每个关节是一根螺旋轴，各算一个矩阵指数按顺序乘起来就得到手的位姿，这叫指数积公式，第十一集讲');
 
       /* ══ ① 网格 + UR5：取中间值 ══ */
       var g1 = E.el('g', {}, s), under = E.el('g', {}, g1);
@@ -47,25 +48,25 @@
       var top1 = E.el('g', {}, g1);
       var ghosts = [0, 90].map(function (a) {
         var g = E.el('g', {}, top1), e = P(1 + 2.06 * Math.cos(a * D), 2 + 2.06 * Math.sin(a * D));
-        K.paint(E.el('path', { d: E.poly([Q, e]), fill: 'none', 'stroke-width': 4, 'stroke-dasharray': '8 6', 'stroke-linecap': 'round' }, g), null, E.VIOLET);
-        K.paint(E.el('circle', { cx: e[0], cy: e[1], r: 6, 'stroke-width': 2.5 }, g), E.S1, E.VIOLET);
-        E.halo(E.txt(g, e[0] + (a ? -14 : 0.75 * u), e[1] + 8, a + '°', 22, E.VIOLET, a ? 'end' : 'start', 900));   // 0° 写在手腕右边：手腕往右还伸出一截
+        K.paint(E.el('path', { d: E.poly([Q, e]), fill: 'none', 'stroke-width': 4, 'stroke-dasharray': '8 6', 'stroke-linecap': 'round' }, g), null, E.BODY);
+        K.paint(E.el('circle', { cx: e[0], cy: e[1], r: 6, 'stroke-width': 2.5 }, g), E.S1, E.BODY);
+        E.halo(E.txt(g, e[0] + (a ? -14 : 0.75 * u), e[1] + 8, a + '°', 22, E.OMEGA, a ? 'end' : 'start', 900));   // 0° 写在手腕右边：手腕往右还伸出一截
         return g;
       });
       var ring = K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 12, 'stroke-width': 3.5 }, top1), E.S1, E.HI);
       K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 4 }, top1), E.HI);
-      var halfArc = E.arcArrow(top1, Q[0], Q[1], 1.2 * u, E.HI, 3.5, { head: 13 });
-      var halfLab = E.halo(E.txt(top1, 0, 0, '45°', 24, E.HI, 'start', 900));
+      var halfArc = E.arcArrow(top1, Q[0], Q[1], 1.2 * u, E.OMEGA, 3.5, { head: 13 });
+      var halfLab = E.halo(E.txt(top1, 0, 0, '45°', 24, E.OMEGA, 'start', 900));
       var RK = E.rowKit(), X = RX + 10;
       var r1 = E.el('g', {}, g1);
       var a1 = RK.line(r1, X, 64, [['第 5 集：两个朝向取中间值', E.INK, 900]], 22);
-      var a2 = RK.line(r1, X, 104, [['直接平均', E.BAD, 900], ['：跳出旋转矩阵', E.INK2]], 22);
-      var a2x = E.cross(a2.g, X + 260, 96, 9, E.BAD, 4);
+      var a2 = RK.line(r1, X, 104, [['直接平均', E.ERR, 900], ['：跳出旋转矩阵', E.INK2]], 22);
+      var a2x = E.cross(a2.g, X + 260, 96, 9, E.ERR, 4);
       var a3 = RK.line(r1, X, 166, [['矩阵指数：', E.HI, 900], ['绕同一根轴', E.WARN, 900]], 22);
-      var a4 = RK.line(r1, X, 206, [['　　　　　只转一半的角度', E.VIOLET, 900]], 22);
+      var a4 = RK.line(r1, X, 206, [['　　　　　只转一半的角度', E.OMEGA, 900]], 22);
       var a5 = E.el('g', {}, r1);
       E.tex(a5, X, 268, '\\textcolor{' + H.hi + '}{\\exp\\!\\big([\\mathcal S]\\,\\tfrac{\\theta}{2}\\big)}', 30, E.INK, 'start', { w: 190, h: 60 });
-      E.txt(a5, X + 200, 268, '90° → 45°', 24, E.VIOLET, 'start', 900);
+      var a5c = E.txt(a5, X + 196, 268, '90° ÷ 2 = 45°', 21, E.OMEGA, 'start', 900);
       var a5ok = E.check(a5, X + 200, 296, 22, E.GOOD, 4);
       var a6 = RK.line(r1, X, 346, [['两个都不是原样：', E.INK, 900], ['先求矩阵对数', E.HI, 900]], 22);
       var a7 = E.el('g', {}, r1);
@@ -73,7 +74,7 @@
 
       /* ══ ② 三张卡片 ══ */
       var g2 = E.el('g', {}, s);
-      E.txt(g2, 400, 40, '和第 6 集的另外两种写法比一比', 24, E.INK, 'middle', 900);
+      E.txt(g2, 400, 40, '和第 6 集的另外 2 种写法比一比', 24, E.INK, 'middle', 900);
       var CW = 244, CX = [22, 278, 534], CY = 62, CH = 340;
       function card(i, name, color, hi) {
         var g = E.el('g', {}, g2);
@@ -86,13 +87,13 @@
       function item(gc, i, k, str, good, size) {   // 卡片里的一行：✓ / ✗ + 字
         var g = E.el('g', {}, gc), y = CY + 118 + 46 * k;
         if (good === true) E.check(g, CX[i] + 18, y - 16, 18, E.GOOD, 3.5);
-        else if (good === false) E.cross(g, CX[i] + 27, y - 7, 7, E.BAD, 3.5);
-        E.txt(g, CX[i] + (good === null ? CW / 2 : 46), y, str, size || 21, good === null ? E.HI : good ? E.INK : E.BAD, good === null ? 'middle' : 'start', 900);
+        else if (good === false) E.cross(g, CX[i] + 27, y - 7, 7, E.ERR, 3.5);
+        E.txt(g, CX[i] + (good === null ? CW / 2 : 46), y, str, size || 21, good === null ? E.HI : good ? E.INK : E.ERR, good === null ? 'middle' : 'start', 900);
         return g;
       }
       var iE = [item(cE, 0, 0, '3 个数', null, 24), item(cE, 0, 1, '最直观', true), item(cE, 0, 2, '会万向锁', false)];
       var iQ = [item(cQ, 1, 0, '4 个数', null, 24), item(cQ, 1, 1, '没有万向锁', true), item(cQ, 1, 2, '一个朝向两套数', false)];
-      var iM = [item(cM, 2, 0.35, '没有万向锁', true), item(cM, 2, 1.25, '能直接连乘', true), item(cM, 2, 2.15, '和运动旋量、', true), item(cM, 2, 4.4, '9 个数，有冗余', false)];
+      var iM = [item(cM, 2, 0.35, '没有万向锁', true), item(cM, 2, 1.25, '能直接相乘', true), item(cM, 2, 2.15, '和运动旋量、', true), item(cM, 2, 4.4, '9 个数，有冗余', false)];
       var iM2 = E.txt(cM, CX[2] + 46, CY + 118 + 46 * 2.15 + 30, '螺旋轴一套说法', 21, E.INK, 'start', 900);
 
       /* ══ ③ UR5 斜视 + 六根关节轴 + 指数积公式 ══ */
@@ -104,9 +105,9 @@
       var axG = E.el('g', {}, g3);
       var axLines = JN.map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '8 5' }, axG), null, E.WARN); });
       var axLabs = JN.map(function (n, i) { return E.halo(E.txt(axG, 0, 0, 'S' + '₁₂₃₄₅₆'[i], 22, E.WARN, 'middle', 900)); });
-      var thLab = E.halo(E.txt(axG, 0, 0, 'θ₂', 24, E.VIOLET, 'start', 900));
+      var thLab = E.halo(E.txt(axG, 0, 0, 'θ₂', 24, E.OMEGA, 'start', 900));
       var toolG = E.el('g', {}, g3);
-      var toolAx = [E.GOOD, E.WARN, E.ACC].map(function (c) { return E.vec(toolG, c, 4, { head: 12 }); });
+      var toolAx = [E.X, E.Y, E.Z].map(function (c) { return E.vec(toolG, c, 4, { head: 12 }); });
       function axisOf(name) {
         var j = V.robot.joints[name];
         j.updateMatrixWorld(true);
@@ -118,7 +119,7 @@
       var RK3 = E.rowKit(), r3 = E.el('g', {}, g3);
       var b1 = RK3.line(r3, X, 60, [['关节的运动都用它来写：', E.INK, 900]], 22);
       var b2 = RK3.line(r3, X, 96, [['每个关节 = 一根', E.INK2], ['螺旋轴', E.WARN, 900]], 22);
-      var b3 = RK3.line(r3, X, 132, [['转了多少 = ', E.INK2], ['角度 θ', E.VIOLET, 900]], 22);
+      var b3 = RK3.line(r3, X, 132, [['转了多少 = ', E.INK2], ['角度 θ', E.OMEGA, 900]], 22);
       var fm = E.el('g', {}, r3), FY = 190;
       // 两行：T手 = exp([S₁]θ₁) exp([S₂]θ₂) / ⋯ exp([S₆]θ₆) M（中间三个因子写成 ⋯；上标太小，不用 e 的上标写法）
       var tEq = E.tex(fm, X, FY, 'T_{\\text{手}}=', 24, E.HI, 'start', { w: 72, h: 44 });
@@ -151,7 +152,7 @@
           /* ── ① ── */
           E.op(g1, 1 - f(st, T.out1, 0.4));
           var phi = 45 * D * f(st, T.half[0], T.half[1] - T.half[0]);
-          arm.bend(phi); V1.clearTint(); V1.tint(RIGID, E.VIOLET, 0.45);
+          arm.bend(phi); V1.clearTint(); V1.tint(RIGID, E.BODY, 0.45);
           ghosts.forEach(function (g) { E.op(g, f(st, T.two, 0.4)); });
           ring.setAttribute('r', (12 + 5 * b(st, T.axis, 0.9)).toFixed(2)); E.glow(ring, E.HI, b(st, T.axis, 0.9) > 0.05);
           halfArc.set(4 * D, Math.max(5 * D, phi - 4 * D)); E.op(halfArc.g, f(st, T.half[0], 0.2));
@@ -159,7 +160,7 @@
           E.op(halfLab, f(st, T.half[1], 0.3));
           E.op(a1.g, fr(st, T.ep5)); E.op(a2.g, fr(st, T.avg)); E.drawOn(a2x, f(st, T.avg + 0.4, 0.3));
           E.op(a3.g, fr(st, T.mexp)); E.op(a3.parts[1], fr(st, T.axis)); E.op(a4.g, fr(st, T.half[0]));
-          E.op(a5, fr(st, T.half[0] + 0.2)); E.drawOn(a5ok, f(st, T.half[1] + 0.2, 0.3));
+          E.op(a5, fr(st, T.half[0] + 0.2)); E.op(a5c, fr(st, T.halfCalc)); E.drawOn(a5ok, f(st, T.halfCalc + 1.0, 0.3));
           E.op(a6.g, fr(st, T.log)); E.op(a7, fr(st, T.logEq));
 
           /* ── ② ── */
