@@ -5862,6 +5862,7 @@
 - [step2urdf](wiki/entities/step2urdf.md) — step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dex `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [StreamRig 项目：多相机流式视觉里程计](wiki/entities/streamrig.md) — StreamRig**（*Exploiting Intra-Rig Geometry for Streaming Multi-Camera Odometry*，[arXiv:2609.40244 `📅unknown` `[entity_page]`
+- [Stringman：房间尺度绳索机器人](wiki/entities/stringman.md) — Stringman 是悬挂在房间上方的四线绳索驱动并联机器人，用于遥操作、模仿学习和抓取搬运实验。 `📅unknown` `[entity_page]`
 - [ACT-2（Sunday Robotics · Generalizing Reliability）](wiki/entities/sunday-robotics-act2.md) — ACT-2** 是 **Sunday Robotics**（2026-07 博客预览）在自研移动平台 **Memo** 上部署的 **第二代家用机器人基础模型**：在 **ACT-1**（2025 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [SuperTuxKart](wiki/entities/supertuxkart.md) — SuperTuxKart**（项目主页，代码，[R `📅unknown` `[entity_page]`
