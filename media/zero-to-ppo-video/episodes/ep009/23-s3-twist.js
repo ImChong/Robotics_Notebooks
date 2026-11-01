@@ -300,13 +300,14 @@
           var ll = st >= T.res ? [t1[0], t1[1] + 46] : [t1[0] + 14, t1[1] + 10];   // (−1, −2) 写在尖的右边：尖在网格左下角，往左写会出画面
           linkLab.setAttribute('x', ll[0].toFixed(1)); linkLab.setAttribute('y', ll[1].toFixed(1)); linkLab.style.textAnchor = st >= T.res ? 'middle' : 'start';
           E.op(linkLab, (st >= T.res ? f(st, T.res, 0.3) : f(st, T.ccw + 0.6, 0.3) * (1 - f(st, T.turn[0], 0.2))) * (1 - f(st, T.stretch[0], 0.3)));
-          // 「逆时针转九十度」：原点旁的小弯箭头；「加起来」它跟着转过去
+          // 「逆时针转九十度」：原点旁的小弯箭头从 (−1, −2) 的方向逆时针画满 90°，正好停在垂线（(2, −1) 的方向）上；「加起来」黄箭头沿着它转过去
+          //（初版只画了 90° 的三分之一，标着「90°」角度却不对，用户指出）
           var a0 = Math.atan2(-2, -1);
-          turnArc.set(a0, a0 + Math.PI / 2 * Math.max(0.35 * f(st, T.hint, 0.4), tr));
+          turnArc.set(a0, a0 + Math.PI / 2 * Math.max(f(st, T.hint, 0.65), tr));
           E.op(turnArc.g, f(st, T.hint, 0.3) * (1 - f(st, T.stretch[0], 0.3)));
-          var tl = P(1.3 * Math.cos(a0 - 30 * D), 1.3 * Math.sin(a0 - 30 * D));   // 写在平移过来的箭头左边、「= 肩关节」下面：弧的箭头不压字，右下要画红、绿两段
+          var tl = P(1.15 * Math.cos(a0 + Math.PI / 4), 1.15 * Math.sin(a0 + Math.PI / 4));   // 写在弧的正中、弧外；红、绿两段画出来前收掉（它们画在这里）
           turnLab.setAttribute('x', tl[0].toFixed(1)); turnLab.setAttribute('y', (tl[1] + 7).toFixed(1));
-          E.op(turnLab, f(st, T.hint + 0.2, 0.3) * (1 - f(st, T.stretch[0], 0.3)));
+          E.op(turnLab, f(st, T.hint + 0.4, 0.3) * (1 - f(st, T.got1 - 0.3, 0.3)));
           // 句 6：第一列取 −1 份 = (0, −1)（红，从原点往下），第二列取 −2 份 = (2, 0)（绿，接在红的尖上往右）
           var ga = f(st, T.got1, 0.5), gb = f(st, T.got2, 0.5), cOn = 1 - f(st, T.stretch[0], 0.3);
           var pa0 = P(0, 0), pa1 = P(0, -ga), pb1 = P(2 * gb, -1);
