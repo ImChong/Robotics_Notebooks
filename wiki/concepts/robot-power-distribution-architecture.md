@@ -4,6 +4,7 @@ tags: [humanoid, hardware, electrical-design, power-distribution, bms, safety-ci
 status: complete
 updated: 2026-09-15
 related:
+  - humanoid-wire-harness-types-protection.md
   - ./humanoid-mechanical-layout-design.md
   - ./robot-onboard-communication-architecture.md
   - ./robot-safety-state-machine.md
@@ -105,6 +106,7 @@ flowchart LR
 - **标准只作参考**：本页给的是标准覆盖范围与工程判据，实际认证需按目标市场与机型查阅标准正文。
 
 ## 关联页面
+- [人形机器人线束类型与防护](humanoid-wire-harness-types-protection.md)
 
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — 本页在 Stage 3–4 展开为学习顺序
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md) — 走线空间与散热路径的上游
