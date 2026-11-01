@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | sources/sites/qiayuan-liao-homepage.md — 收录个人主页与相关人形控制研究和开源入口
+
 ## [2026-11-01] ingest | Zane Hub 公众号《人形机器人线束类型与防护》：新建 humanoid-wire-harness-types-protection 概念页（工程经验综述，无论文/项目清单）
 
 ## [2026-11-01] ingest | 深蓝具身智能《四年十篇顶会Best Paper，谁在持续霸榜？》：正文 9 篇 CV 三大会 Best Paper 逐篇建独立详情节点（新建 7 / 复用 2）

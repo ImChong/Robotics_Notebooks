@@ -5724,6 +5724,7 @@
 - [pysoem](wiki/entities/pysoem.md) — SOEM 的 Python 绑定，用于快速脚本化调试 EtherCAT 网络。（分类：EtherCAT 语言绑定/封装；语言/形态：Python（绑定 SOEM）） `📅unknown` `[entity_page]`
 - [PythonRobotics](wiki/entities/python-robotics.md) — PythonRobotics**（AtsushiSakai/PythonRobotics）是 G `📅unknown` `[entity_page]`
 - [PyTorch](wiki/entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
+- [Qiayuan Liao](wiki/entities/qiayuan-liao.md) — Qiayuan Liao** 是加州大学伯克利分校机器人研究者；其个人主页汇集人形全身控制、移动操作与机器人软件资源。身份和项目状态以 2026-11-01 主页为准。 `📅unknown` `[entity_page]`
 - [qm_control（四足机械臂 OCS2 MPC + WBC）](wiki/entities/qm-control.md) — qm_control**（skywoodsz/qm_control，BSD-3-Clause）是面向 **四足 `📅unknown` `[entity_page]`
 - [Qmini](wiki/entities/qmini.md) — Qmini** 面向爱好者、教育与科研的小型四足开源项目：强调可 3D 打印结构、一站式零件清单与模块化扩展。 `📅unknown` `[entity_page]`
 - [quad-swarm-rl](wiki/entities/quad-swarm-rl.md) — quad-swarm-rl**（Zhehui-Huang/quad-swarm-rl）是 **多四 `📅unknown` `[entity_page]`
