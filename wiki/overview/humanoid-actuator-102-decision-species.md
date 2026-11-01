@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-27
 summary: "Actuator 102 · 07 — No Free Lunch 评分卡；三大物种（工厂/快递/家庭）；关节指标 >15Nm/kg、反向驱动 <1Nm、峰值持续 3:1、智能关节集成。"
 related:
+  - ../concepts/robot-joint-scheme-selection.md
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-compliance-sensing.md
   - ./humanoid-actuator-102-industrial-actuator-trap.md
@@ -56,6 +57,7 @@ sources:
 膝关节样本参数见原文图 31；髋/踝/肩/肘/腕按负荷缩放。上述峰值:持续与比力矩指标应在供应商 [TN 曲线](../concepts/motor-torque-speed-curve.md) 与 [TI 曲线](../concepts/motor-torque-current-curve.md) 上逐项核对，而非仅看单点标称值。
 
 ## 关联页面
+- [机器人关节方案选型](../concepts/robot-joint-scheme-selection.md)
 
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
