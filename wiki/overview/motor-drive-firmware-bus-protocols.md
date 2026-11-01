@@ -5,6 +5,7 @@ tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, em
 status: complete
 updated: 2026-08-12
 related:
+  - ../concepts/joint-module-electromagnetic-isolation.md
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
   - ../concepts/ethercat-protocol.md
@@ -188,6 +189,7 @@ flowchart TD
 | 「Modbus 能控人形 30 关节」 | 带宽与半双工机制不适合 kHz 级多轴同步 |
 
 ## 关联页面
+- [关节模组电磁隔离](../concepts/joint-module-electromagnetic-isolation.md)
 
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [SimpleFOC](../entities/simplefoc.md)
