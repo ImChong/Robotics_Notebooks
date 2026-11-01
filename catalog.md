@@ -6190,6 +6190,7 @@
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
 - [关节模组电磁隔离](wiki/concepts/joint-module-electromagnetic-isolation.md) — 关节模组的电磁隔离不是「接好线、壳体接地」，而是按干扰源、传导、辐射、磁场、滤波分层设计的一套方法：隔离切断传导，屏蔽阻挡辐射，磁屏蔽针对静磁 / 低频磁场，三者不能互相替代。 `📅unknown` `[wiki_page]`
 - [关节模组空载：速度环与力矩环的输出扭矩区别](wiki/concepts/joint-module-no-load-velocity-vs-torque-loop.md) — 空载时**速度环的输出扭矩是「结果」**（摩擦要多少、闭环给多少，转速恒定），**力矩环的输出扭矩是「原因」**（指令多少就是多少，转速只是动力学的后果）。 `📅unknown` `[wiki_page]`
+- [关节模组减速器的难度拆解](wiki/concepts/joint-module-reducer-difficulty.md) — 减速器的「难」不是一个量：谐波难在会反复弯折的薄壁（柔轮），RV 难在几十个微米级零件的公差叠加，行星难在被低估的多级精度累积；真正最难的是批量一致性，而不是样机能转。 `📅unknown` `[wiki_page]`
 - [自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）](wiki/concepts/joint-module-self-development-workflow.md) — 自研关节模组**不是外购电机、减速器、编码器简单拼装，而是从**负载谱与空间/成本约束**出发，经**传动构型选型、五件套集成设计、结构刚度链、标定与控制、装配工艺与四层测试矩阵**，交付可在整机 `📅unknown` `[wiki_page]`
 - [关节模组轴的径向热膨胀校核](wiki/concepts/joint-module-shaft-thermal-expansion.md) — 关节模组里电机转子、减速器输入端、轴承内圈、编码器磁环都装在同一根轴上，温升使轴径增大几微米到几十微米，与过盈量、轴承游隙同量级；用 **Δd = α·d·ΔT** 在图纸阶段手算，再回到过盈 / 游 `📅unknown` `[wiki_page]`
 - [关节模组：额定电流小于负载电流的后果](wiki/concepts/joint-motor-rated-current-overload.md) — 额定（连续）电流是电机在指定安装与环温下的**热平衡点**而非能力上限；长期让负载电流超过它，机器短期仍能转，代价是绕组绝缘、磁钢、驱动器、减速器的寿命与性能被**无报警地**消耗。本页综合 Zane `📅unknown` `[wiki_page]`
