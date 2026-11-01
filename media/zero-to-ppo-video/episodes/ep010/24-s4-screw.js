@@ -6,11 +6,14 @@
 //    「转过的角度」轴上的小弯箭头 θ；
 // 句 3「绕着螺旋轴的方向」轴亮一下，「罗德里格斯公式」右栏出公式，「正弦和余弦」下一行写；
 // 句 4「位置分两份」右栏出 p = (I − R)q + θhŝ：「轴上的点转完不动」原点亮一下，「角度，乘上螺距」轴旁的绿箭头鼓一下；
-// 句 5「拧螺丝」画出一圈多（450°）的螺旋线，原点出 x、y 两根细箭头，「竖直向上」「穿过原点」「每转一圈，往上走一格」右栏三行，量出 1 格；
-// 句 6「转四分之一圈」方块沿螺旋线走 90°，「x 轴转到零、一、零」方块的红箭头鼓一下、T 第一列填数，y、z 同样逐列填，「这三列就是朝向」左上框亮；
-// 句 7「第一份是零」「一格的四分之一」「零点二五」T 右边一列填 0、0、0.25；
-// 句 8「转一整圈」方块接着走到 360°（T 跟着变），「单位矩阵」左上角框亮，「一格」右边一列框亮；
-// 句 9「不管转多少」方块接着走到 450°（T 跟着变），「每一列的长度是一、两两垂直」「航列式是一」右栏两行打勾。
+// 句 5「拧螺丝」画出一圈多（450°）的螺旋线，原点出 x、y 两根细箭头，「竖直向上」「穿过原点」一行，「每转一圈，往上走一格」一行，量出 1 格；
+// 句 6「螺距是转一弧度，往上走多少」右栏写 h 的意思，「一整圈」「六点二八弧度」「一除以六点二八」「零点一六格」逐个写出，「1 格」鼓一下
+//    （2026-11-01 按一手资料改：螺距是沿轴走的速度 ÷ 转的速度，即转 1 弧度走多少，《Modern Robotics》图 3.19、例 4.20；
+//    Murray–Li–Sastry 式 (2.40) 上方 h := d/θ。原先说「螺距是每转一圈往上走一格」，和位置那份「角度 × 螺距」对不上）；
+// 句 7「转四分之一圈」方块沿螺旋线走 90°，「x 轴转到零、一、零」方块的红箭头鼓一下、T 第一列填数，y、z 同样逐列填，「这三列就是朝向」左上框亮；
+// 句 8「第一份是零」「角度，乘上螺距」「一点五七，乘上零点一六」「零点二五」T 右边一列填 0、0、0.25，「一格的四分之一」写出；
+// 句 9「转一整圈」方块接着走到 360°（T 跟着变），「单位矩阵」左上角框亮，「一格」右边一列框亮；
+// 句 10「不管转多少」方块接着走到 450°（T 跟着变），「每一列的长度是一、两两垂直」「航列式是一」右栏两行打勾。
 // 三维按远近遮挡（同 006、009）：方块走到转轴后面时画在轴后面。时刻取自配音的逐词时间，见 ../ep010.py。
 (function () {
   var E = window.EP010, K = E.K, H = E.HEX;
@@ -20,13 +23,14 @@
     sym: 8.59, sHat: 10.66, unit: 12.02, q: 13.67, h: 14.95, th: 15.64, I: 17.27, out1: 19.7,
     axis: 21.33, turn: 22.5, ang: 23.18, rod: 25.69, rodName: 27.2, sc: 28.66, out2: 31.3,
     two: 31.58, part1: 32.73, still: 34.93, part2: 35.82, hpart: 37.35, out3: 39.7,
-    ex: 40.03, up: 41.52, orig: 42.98, pitch: 44.04, turn1: 44.68, one: 46.05,
-    q1: [47.54, 48.6], deg: 49.05, cx: [49.82, 50.6], cy: [51.86, 52.66], cz: [54.16, 55.1], three: 57.3,
-    pos2: 59.68, p0: 61.5, p0v: 62.05, perTurn: 62.46, quarter: 64.15, p25: 67.24,
-    full: [69.16, 70.3], back3: 70.16, eye: 72.25, p1: 74.64,
-    any: [76.47, 79.5], rule1: 80.77, rule1b: 83.15, rule2: 83.9, rule2b: 84.73
+    ex: 40.03, up: 42.07, orig: 43.04, pitch: 44.1, one: 45.65,
+    hDef: 47.13, rev: 49.78, rev2: 50.65, hDiv: 51.95, h16: 53.74,
+    q1: [55.89, 56.95], deg: 57.4, cx: [58.17, 58.95], cy: [60.21, 61.01], cz: [62.51, 63.45], three: 65.65,
+    pos2: 68.03, p0: 69.81, p0v: 70.34, perTurn: 70.75, mul: 72.73, p25: 75.02, quarter: 75.86,
+    full: [78.67, 79.81], back3: 79.67, eye: 81.76, p1: 84.15,
+    any: [85.97, 89.0], rule1: 90.27, rule1b: 92.65, rule2: 93.4, rule2b: 94.23
   };
-  var END = 85.82, HP = 1 / (2 * Math.PI), RAD = 0.8, CUBE = 0.17;
+  var END = 95.33, HP = 1 / (2 * Math.PI), RAD = 0.8, CUBE = 0.17;
   var proj = E.view3(28, 18), WX = 205, WY = 352, L = 150;
   function S3(v) { var q = proj(v); return [WX + L * q[0], WY - L * q[1]]; }
   function th(st) {
@@ -43,13 +47,14 @@
       { at: 19.9, s: '**朝向**：绕**螺旋轴**的方向转过这个**角度**，罗德里格斯公式只用到 sin、cos' },
       { at: 31.49, s: '**位置**两份：轴上的点转完不动 + **角度** × **螺距**（沿着轴走）' },
       { at: 39.94, s: '拧螺丝：**螺旋轴**竖直向上、穿过原点，每转一圈往上走 1 格' },
-      { at: 47.45, s: '转 ¼ 圈 = 90°：x 轴 → (0, 1, 0)，y 轴 → (−1, 0, 0)，z 轴不动 (0, 0, 1)' },
-      { at: 59.59, s: '**位置**：第一份是 0；第二份 1 格的 ¼ = 0.25' },
-      { at: 69.07, s: '转一整圈：**朝向**回到原样（单位矩阵），**位置**往上 1 格' },
-      { at: 76.01, s: '不管转多少：每列长度 1、两两垂直，行列式是 1' }
+      { at: 47.04, s: '**螺距**：转 1 弧度往上走多少；一整圈 ≈ 6.28 弧度，1 ÷ 6.28 ≈ 0.16 格' },
+      { at: 55.8, s: '转 ¼ 圈 = 90°：x 轴 → (0, 1, 0)，y 轴 → (−1, 0, 0)，z 轴不动 (0, 0, 1)' },
+      { at: 67.94, s: '**位置**：第一份是 0；第二份 = **角度** × **螺距** = 1.57 × 0.16 ≈ 0.25，正好是 1 格的 ¼' },
+      { at: 78.58, s: '转一整圈：**朝向**回到原样（单位矩阵），**位置**往上 1 格' },
+      { at: 85.51, s: '不管转多少：每列长度 1、两两垂直，行列式是 1' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('三维里矩阵指数给出四乘四的位姿：左上角三乘三是朝向，右边一列是位置；符号：ŝ 轴的方向（长度为一），q 轴上一点，h 螺距，θ 转过的角度，I 单位矩阵；朝向是绕螺旋轴方向转过这个角度，用罗德里格斯公式算；位置分两份：让轴上的点转完不动，再加上角度乘螺距；例子：螺旋轴竖直向上穿过原点，每转一圈往上走一格；转四分之一圈，x 轴转到 (0, 1, 0)，y 轴转到 (−1, 0, 0)，z 轴不动，位置往上一格的四分之一 0.25；转一整圈朝向回到单位矩阵、往上一格；算出来的朝向总守着正交、行列式为一两条规矩');
+      var s = K.sceneSvg('三维里矩阵指数给出四乘四的位姿：左上角三乘三是朝向，右边一列是位置；符号：ŝ 轴的方向（长度为一），q 轴上一点，h 螺距，θ 转过的角度，I 单位矩阵；朝向是绕螺旋轴方向转过这个角度，用罗德里格斯公式算；位置分两份：让轴上的点转完不动，再加上角度乘螺距；例子：螺旋轴竖直向上穿过原点，每转一圈往上走一格，螺距是转一弧度走多少，一除以 6.28 约 0.16 格；转四分之一圈，x 轴转到 (0, 1, 0)，y 轴转到 (−1, 0, 0)，z 轴不动，位置第二份是角度乘螺距 1.57 × 0.16 ≈ 0.25，正好一格的四分之一；转一整圈朝向回到单位矩阵、往上一格；算出来的朝向总守着正交、行列式为一两条规矩');
 
       /* ══ 左：三维 ══ */
       var g3 = E.el('g', {}, s);
@@ -84,7 +89,8 @@
       var dimG = E.el('g', {}, g3), d0 = S3([RAD, 0, 0]), d1 = S3([RAD, 0, 1]);
       K.paint(E.el('path', { d: 'M ' + (d0[0] + 46) + ' ' + d0[1].toFixed(1) + ' H ' + (d0[0] + 58) + ' M ' + (d0[0] + 52) + ' ' + d0[1].toFixed(1) + ' V ' + d1[1].toFixed(1) + ' M ' + (d1[0] + 46) + ' ' + d1[1].toFixed(1) + ' H ' + (d1[0] + 58),
         fill: 'none', 'stroke-width': 2.5 }, dimG), null, E.GOOD);
-      E.halo(E.txt(dimG, d0[0] + 66, (d0[1] + d1[1]) / 2 + 8, '1 格', 22, E.GOOD, 'start', 900));
+      var dimLab = E.halo(E.txt(dimG, d0[0] + 66, (d0[1] + d1[1]) / 2 + 8, '1 格', 22, E.GOOD, 'start', 900));
+      dimLab.__x = d0[0] + 80; dimLab.__y = (d0[1] + d1[1]) / 2;
       E.halo(E.txt(dimG, d0[0] + 66, (d0[1] + d1[1]) / 2 + 36, '（一圈）', 18, E.INK2, 'start', 700));
       // 小方块（淡黄）+ 自己的三根小箭头（x 红、y 绿、z 蓝）
       var blockG = E.el('g', {}, g3);
@@ -118,7 +124,7 @@
       E.tex(b2, X, ROWS + 56, 'R=I+\\textcolor{' + H.good + '}{\\sin\\theta}\\,[\\hat s]+(1-\\textcolor{' + H.good + '}{\\cos\\theta})\\,[\\hat s]^2', 21, E.INK, 'start', { w: 320, h: 44 });
       var b3 = RK.line(g2, X, ROWS + 104, [['罗德里格斯公式', E.OMEGA, 900]], 22);
       var b4 = RK.line(g2, X, ROWS + 140, [['只用到 ', E.INK2], ['sin、cos', E.GOOD, 900]], 21);
-      var b4b = RK.line(g2, X, ROWS + 170, [['[ŝ]：把 ŝ 的三个数排成 3 × 3', E.MUT, 700]], 17);
+      var b4b = RK.line(g2, X, ROWS + 170, [['[ŝ]：ŝ 的三个数带正负号排成 3 × 3', E.MUT, 700]], 17);
       var g3r = E.el('g', {}, Rg);
       var c1 = E.el('g', {}, g3r);
       E.tex(c1, X, ROWS + 16, 'p=\\textcolor{' + H.hi + '}{(I-R)\\,q}+\\textcolor{' + H.good + '}{\\theta\\,h\\,\\hat s}', 28, E.VEL, 'start', { w: 300, h: 56 });
@@ -126,9 +132,12 @@
       var c3 = RK.line(g3r, X, ROWS + 112, [['② ', E.GOOD, 900], ['沿着轴走：角度 × 螺距', E.INK, 900]], 21);
       var c4 = RK.line(g3r, X, ROWS + 150, [['原书写作 G(θ)v，展开就是这两份', E.MUT, 700]], 17);
       var g4 = E.el('g', {}, Rg);
-      var e1 = RK.line(g4, X, ROWS + 6, [['ŝ', E.WARN, 900], ['：竖直向上', E.INK, 900]], 21);
-      var e2 = RK.line(g4, X, ROWS + 42, [['q', E.HI, 900], ['：原点', E.INK, 900]], 21);
-      var e3 = RK.line(g4, X, ROWS + 78, [['螺距：每转一圈，往上 ', E.INK, 900], ['1 格', E.GOOD, 900]], 21);
+      var e1 = RK.line(g4, X, ROWS + 6, [['ŝ', E.WARN, 900], ['：竖直向上；', E.INK, 900], ['q', E.HI, 900], ['：原点', E.INK, 900]], 21);
+      var e3 = RK.line(g4, X, ROWS + 42, [['每转一圈，往上 ', E.INK, 900], ['1 格', E.GOOD, 900]], 21);
+      // 螺距按原书定义是「沿轴走的速度 ÷ 转的速度」，即转 1 弧度走多少（《Modern Robotics》图 3.19、例 4.20 的 0.1 m/rad）
+      var e4 = RK.line(g4, X, ROWS + 78, [['h', E.GOOD, 900], [' 螺距：转 1 弧度，往上走多少', E.INK, 900]], 21);
+      var e5 = RK.line(g4, X, ROWS + 114, [['一整圈 ≈ ', E.INK2], ['6.28 弧度', E.OMEGA, 900]], 21);
+      var e6 = RK.line(g4, X, ROWS + 150, [['h = 1 ÷ 6.28 ≈ ', E.INK2], ['0.16 格', E.GOOD, 900]], 21);
       var g4b = E.el('g', {}, Rg);
       var q1 = RK.line(g4b, X, ROWS + 6, [['转 ¼ 圈 = ', E.INK2], ['90°', E.OMEGA, 900], ['：', E.INK2]], 21);
       var q2 = RK.line(g4b, X, ROWS + 40, [['x 轴 → ', E.X, 900], ['(0, 1, 0)', E.X, 900]], 21);
@@ -137,7 +146,9 @@
       var q5 = RK.line(g4b, X, ROWS + 142, [['这 3 列就是', E.INK2], ['朝向', E.OMEGA, 900]], 21);
       var g4c = E.el('g', {}, Rg);
       var p1 = RK.line(g4c, X, ROWS + 6, [['位置：轴过原点，第一份 = ', E.INK2], ['0', E.HI, 900]], 21);
-      var p2 = RK.line(g4c, X, ROWS + 42, [['第二份：1 格的 ¼ = ', E.INK2], ['0.25', E.GOOD, 900]], 21);
+      var p2 = RK.line(g4c, X, ROWS + 42, [['第二份 = ', E.INK2], ['角度', E.OMEGA, 900], [' × ', E.INK2], ['螺距', E.GOOD, 900]], 21);
+      var p3 = RK.line(g4c, X, ROWS + 78, [['= 1.57 × 0.16 ≈ ', E.INK2], ['0.25', E.GOOD, 900]], 21);
+      var p4 = RK.line(g4c, X, ROWS + 114, [['正好是 1 格的 ¼', E.INK2]], 21);
       var g4d = E.el('g', {}, Rg);
       var u1 = RK.line(g4d, X, ROWS + 6, [['转一整圈：3 根轴回到原样', E.INK2]], 21);
       var u2 = RK.line(g4d, X, ROWS + 42, [['朝向 = ', E.INK2], ['单位矩阵', E.OMEGA, 900]], 21);
@@ -176,6 +187,7 @@
           oDot.setAttribute('r', (6.5 + 4 * Math.max(b(st, T.q, 0.8), b(st, T.still, 0.8), b(st, T.orig, 0.8))).toFixed(2));
           E.op(oLab, f(st, T.q, 0.3));
           E.op(dimG, f(st, T.one, 0.3) * (1 - f(st, T.q1[0], 0.4)));
+          E.scaleAt(dimLab, dimLab.__x, dimLab.__y, 1 + 0.25 * Math.max(b(st, T.hDiv, 0.9), b(st, T.one, 0.9)));
           var won = f(st, T.ex + 0.4, 0.4);
           [wx.g, wy.g].forEach(function (e) { E.op(e, won); }); E.op(wxL, 0); E.op(wyL, 0);   // 不写 x、y：字会压在地上的圆和螺旋线上，红、绿照「画面配色」认
           wx.line.style.strokeWidth = 2.5 + 2 * b(st, T.cx[0], 0.9); wy.line.style.strokeWidth = 2.5 + 2 * b(st, T.cy[0], 0.9);
@@ -241,13 +253,14 @@
           E.op(g3r, fr(st, T.two) * (1 - f(st, T.out3, 0.4)));
           E.op(c1, 1); E.op(c2.g, fr(st, T.part1)); E.op(c3.g, fr(st, T.part2)); E.op(c4.g, fr(st, T.hpart + 0.4));
           E.op(g4, fr(st, T.ex) * (1 - f(st, T.q1[0] - 0.3, 0.3)));
-          E.op(e1.g, fr(st, T.up)); E.op(e2.g, fr(st, T.orig)); E.op(e3.g, fr(st, T.pitch)); E.op(e3.parts[1], fr(st, T.one));
+          E.op(e1.g, fr(st, T.up)); E.op(e1.parts[2], fr(st, T.orig)); E.op(e1.parts[3], fr(st, T.orig)); E.op(e3.g, fr(st, T.pitch)); E.op(e3.parts[1], fr(st, T.one));
+          E.op(e4.g, fr(st, T.hDef)); E.op(e5.g, fr(st, T.rev)); E.op(e5.parts[1], fr(st, T.rev2)); E.op(e6.g, fr(st, T.hDiv)); E.op(e6.parts[1], fr(st, T.h16));
           E.op(g4b, fr(st, T.q1[0]) * (1 - f(st, T.pos2 - 0.3, 0.3)));
           E.op(q1.g, 1); E.op(q1.parts[1], fr(st, T.deg));
           E.op(q2.g, fr(st, T.cx[0])); E.op(q2.parts[1], fr(st, T.cx[1])); E.op(q3.g, fr(st, T.cy[0])); E.op(q3.parts[1], fr(st, T.cy[1]));
           E.op(q4.g, fr(st, T.cz[0])); E.op(q4.parts[1], fr(st, T.cz[1])); E.op(q5.g, fr(st, T.three));
           E.op(g4c, fr(st, T.pos2) * (1 - f(st, T.full[0] - 0.3, 0.3)));
-          E.op(p1.g, fr(st, T.p0)); E.op(p1.parts[1], fr(st, T.p0v)); E.op(p2.g, fr(st, T.perTurn)); E.op(p2.parts[1], fr(st, T.p25));
+          E.op(p1.g, fr(st, T.p0)); E.op(p1.parts[1], fr(st, T.p0v)); E.op(p2.g, fr(st, T.perTurn)); E.op(p3.g, fr(st, T.mul)); E.op(p3.parts[1], fr(st, T.p25)); E.op(p4.g, fr(st, T.quarter));
           E.op(g4d, fr(st, T.full[0]) * (1 - f(st, T.any[0] - 0.3, 0.3)));
           E.op(u1.g, fr(st, T.back3)); E.op(u2.g, fr(st, T.eye)); E.op(u3.g, fr(st, T.p1));
           E.op(g5, fr(st, T.any[0]));

@@ -46,17 +46,17 @@
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep010.py 的 recap 句对齐）
-    recapDur: 36.0,
+    recapDur: 36.1,
     recap: {
       act: '本集总结',
       title: '螺旋轴 × 角度 → 位姿',
       items: [
         { c: '#ff7b3a', n: '① 不能直接乘角度', s: '前进的方向一直在变：走的是圆弧，不是直线', at: 1.87 },
-        { c: 'var(--hi)', n: '② 无穷多小步：矩阵指数', s: '一步一步乘起来，名字来自自然常数 e', at: 8.62 },
-        { c: 'var(--demo-accent)', n: '③ 结果是位姿 T', s: '朝向：绕轴转过这个角度\n位置：轴上的点不动 + 角度 × 螺距', at: 15.43 },
-        { c: 'var(--demo-good)', n: '④ 守规矩、能直接相乘', s: '关节的运动都用它来写（第 11 集：指数积公式）', at: 23.5 }
+        { c: 'var(--hi)', n: '② 无穷多小步：矩阵指数', s: '一步一步乘起来，名字来自指数函数 eˣ', at: 8.62 },
+        { c: 'var(--demo-accent)', n: '③ 结果是位姿 T', s: '朝向：绕轴转过这个角度\n位置：轴上的点不动 + 角度 × 螺距', at: 15.5 },
+        { c: 'var(--demo-good)', n: '④ 守规矩、能直接相乘', s: '关节的运动也可以用它来写（第 11 集：指数积公式）', at: 23.57 }
       ],
-      foot: { s: '**螺旋轴** × **角度**，交给**矩阵指数**，一步得到**位姿**', at: 29.69 }
+      foot: { s: '**螺旋轴** × **角度**，交给**矩阵指数**，一步得到**位姿**', at: 29.78 }
     },
     outroDur: 16.58,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
@@ -66,10 +66,15 @@
       refs: {
         at: 10.87,
         items: [
-          '**《Modern Robotics》** Lynch & Park，2017：式 (3.51) 罗德里格斯公式，3.2.3.3 节矩阵对数',
-          '**《Modern Robotics》** 3.3.3 节命题 3.25（螺旋运动的矩阵指数），4.1 节指数积公式',
-          '**Solà 等**（arXiv:1812.01537）：式 (25)(26)，两个朝向之间先求对数、再取一半',
-          '**Modern Robotics 官方代码**（NxRLab）：MatrixExp3、MatrixLog3、MatrixExp6'
+          '**《Modern Robotics》** Lynch & Park：式 (3.42)(3.51)、命题 3.25',
+          '**《Modern Robotics》** 3.2.3.3 节，图 3.19、定义 3.24、例 4.20',
+          '**《Modern Robotics》** 第 1 章、2.3.2 节、式 (4.14)、4.5 节',
+          '**Murray、Li、Sastry**（1994）第 2 章：式 (2.40)，h = d / θ',
+          '**Hall**（arXiv:math-ph/0005032）命题 3.8：(I + X/m)ᵐ → eˣ',
+          '**OpenStax《College Algebra 2e》** 6.1 节表 5（复利）',
+          '**Solà 等**（arXiv:1812.01537）式 (25)(26)',
+          '**BIPM《SI 手册》** 第 9 版表 4（弧度）',
+          '**Modern Robotics 官方代码**：MatrixExp3、MatrixLog3、MatrixExp6'
         ]
       },
       end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 14.71 }
