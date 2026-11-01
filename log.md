@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | sources/repos/semi-design.md — 收录 React 组件库及设计系统，待补完整技术文档核对
+
 ## [2026-10-31] lint | health-check — 全量 lint 清零：TopoRetarget 4 个陈旧页同步官方代码、9 个评测基准页回链枢纽、GenSfM 补「与其他工作对比」
 
 ## [2026-10-31] ingest | sources/repos/deepseek_dsh_superagent.md — 记录 DeepSeek 编码代理原型及待核实的文章原文

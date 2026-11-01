@@ -5810,6 +5810,7 @@
 - [Seed2.0](wiki/entities/seed2-0.md) — Seed2.0**（Seed2.0 Model Card（ByteDance Seed））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [SEEM（Segment Everything Everywhere All at Once）](wiki/entities/seem.md) — SEEM** 用统一的解码接口消费 **多种提示**（点、框、涂鸦、文本、参照实体等），在一张图上做开放词汇、交互式与全景式分割。 `📅unknown` `[entity_page]`
 - [SegFormer](wiki/entities/segformer.md) — SegFormer** 结合 **分层高效 Transformer 编码器** 与 **极简 MLP 解码器**，在无pe、无重型解码头的情况下达到强语义分割精度与良好推理效率。 `📅unknown` `[entity_page]`
+- [Semi Design](wiki/entities/semi-design.md) — Semi Design** 是由抖音前端与 UED 团队维护的设计系统，提供 React 组件、主题定制与设计工具。 `📅unknown` `[entity_page]`
 - [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-S `📅unknown` `[entity_page]`
 - [SenseNova-U1.5（Preview · NEO-unify）](wiki/entities/sensenova-u1-5.md) — SenseNova-U1.5-8B-MoT (Preview)**（商汤科技，`2026-07-31`，[GitHub](h `📅unknown` `[entity_page]`
 - [Serial Studio](wiki/entities/serial-studio.md) — Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。 `📅unknown` `[entity_page]`
