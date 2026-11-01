@@ -11,7 +11,7 @@ tags:
   - whu
   - sensenova
 status: complete
-updated: 2026-09-15
+updated: 2026-11-01
 venue: "CVPR 2023"
 arxiv: "2212.10156"
 code: https://github.com/OpenDriveLab/UniAD
@@ -22,11 +22,13 @@ related:
   - ./paper-s-squared-vla.md
   - ./paper-m4world.md
   - ../methods/vla.md
+  - ../overview/cv-best-papers-2023-2026-technology-map.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/papers/e2e_ad_uniad.md
   - ../../sources/repos/opendrivelab_uniad.md
   - ../../sources/sites/opendrivelab-uniad.md
+  - ../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md
 summary: "UniAD（arXiv:2212.10156，CVPR 2023 Best Paper）：以规划为优化中心，把多视角相机 BEV 上的 Track/Map/Motion/Occ 与 Planner 串成可解释端到端管线。 开源：已开源。"
 ---
 
