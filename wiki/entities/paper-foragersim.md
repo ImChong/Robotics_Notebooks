@@ -15,6 +15,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/vision-language-navigation.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/foragersim_arxiv_2610_26395.md
   - ../../sources/repos/foragersim.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

@@ -15,6 +15,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/runtime_safety_check_robot_loops_arxiv_2610_27350.md
   - ../../sources/repos/runtime_safety_check_robot_loops.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

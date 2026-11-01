@@ -5,7 +5,7 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-s
 status: complete
 code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-10-07
+updated: 2026-10-31
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -159,7 +159,7 @@ sequenceDiagram
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 另一条「仿真生成配对数据」主线，便于对照网络与优化分工。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层 RL 式物理一致参考生成，对照采样优化路径。
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](./dynaretarget-sbto-motion-retargeting.md) — SBMPC 对照：incremental full-horizon refinement。
-- [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向。
+- [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向；[官方代码](https://github.com/wuji-technology/toporetarget)（MIT）。
 - [REGRIND（重定向引导灵巧操作 RL）](./regrind-retargeting-guided-rl.md) — 同族 mesh 重定向 + 残差 RL；论文以 SPIDER 为对照，四任务 residual RL 初始化 SR **0%**。
 - [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 共享虚拟接触/VOC 叙事；CHORD 在 RL 奖励层用 wrench 空间替代位置匹配。
 - [FlashDexRetarget（多参考 RL 灵巧重定向）](../entities/paper-flashdexretarget.md) — 以 SPIDER 命名的物体级成功判据（SR_SPIDER）报告 50 动作基准；用一个共享多参考策略替代逐段优化，并另报更严格的 SR_MT。
