@@ -6,6 +6,7 @@ tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
 updated: 2026-10-28
 related:
+  - ./stringman.md
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
