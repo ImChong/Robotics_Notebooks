@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, WAM, code-as-policies, mixture-of-transformers, manipulation, uc-berkeley, nvidia]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-01
 project_id: aw-0-agentic-world-action-models
 arxiv: "2610.30136"
 project: https://agentic-wam.github.io/
@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/papers/aw0_arxiv_2610_30136.md
+  - ../../sources/sites/aw0_agentic_wam.md
+  - ../../sources/repos/aw0_agentic_wam.md
   - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "AW-0 jointly generates skill code, future video, and robot actions with a Mixture-of-Transformers world action model, using code as structured planning context and reusable skills."
 ---
@@ -44,6 +46,46 @@ MoT 包含三个专家：代码专家生成参数化技能程序与控制逻辑�
 
 自动标注流程将机器人及第一人称人类演示对齐到子任务程序，并从中整理可复用技能。默认执行方式可直接使用动作专家输出；混合评测则会在重规划点按程序有效性等检查结果切换到程序技能调用。
 
+## 项目流程图
+
+依据 [arXiv v1 §2](https://arxiv.org/html/2610.30136v1) 绘制。注意混合模式可执行程序；默认路径只将程序作为模型条件。
+
+```mermaid
+flowchart TD
+    D["机器人与人类演示"] --> L["自动标注与技能库"]
+    L --> T["预训练与任务后训练"]
+    T --> M["三专家联合去噪"]
+    O["视觉观测、指令和状态"] --> M
+    M --> C["技能程序"]
+    M --> V["未来视频"]
+    M --> A["动作 chunk"]
+    C --> H["混合执行仲裁"]
+    A --> H
+    A --> R["机器人执行"]
+    H --> R
+```
+
+## 源码运行时序图
+
+以下为 [deploy/deploy_server.py](https://github.com/ZhuoyangLiu2005/agentic-wam/blob/275818e5787d59012eba4c43504342f1201ad25b/deploy/deploy_server.py) 的三专家服务路径，不代表混合执行实现。
+
+```mermaid
+sequenceDiagram
+    participant Client as 客户端
+    participant Server as deploy_server.py
+    participant Policy as deploy_policy.py
+    participant Model as AW-0 模型
+    Client->>Server: POST /act 图像、状态、指令
+    Server->>Policy: _infer_action_chunk
+    Policy->>Policy: 构造视频输入并归一化状态
+    Policy->>Model: infer_action_trimodal
+    Model-->>Policy: 动作和代码
+    Policy-->>Server: 反归一化的相对动作
+    Server-->>Client: 相对动作加当前状态，返回绝对目标
+```
+
+该服务将响应中的 `code` 固定为 `None`；程序技能执行与仲裁不在此时序图中。参见[源码归档](../../sources/repos/aw0_agentic_wam.md)。
+
 ## 方法栈
 
 `多视角观察 + 指令 + 机器人状态 → 代码 / 未来视频 / 动作联合生成 → 动作 chunk 或混合程序执行`
@@ -55,7 +97,7 @@ MoT 包含三个专家：代码专家生成参数化技能程序与控制逻辑�
 
 ## 实验与评测
 
-论文评测 RoboTwin 2.0 和真实双臂操作，报告相较 VLA 与 WAM 基线的任务表现、语言跟随、语义推理与鲁棒性提升。真实任务包括平行夹爪与 Tianji–Sharpa 灵巧手平台；数字需结合论文的任务、评分规则和执行模式阅读。
+论文在 RoboTwin 2.0 的 50 个任务上，每任务每设置评测 50 次。默认 AW-0 在 clean / random 设置下成功率为 80.8% / 20.6%；混合模式分别为 63.1% / 29.2%，但混合模式使用单独收集的程序生成示范数据，不能将差异全部归因于执行仲裁。8 项真机任务的平均分为 71.1，对比最强基线 DreamZero 的 46.0；这是分项评分均值，并非任务成功率。
 
 ## 与其他工作对比
 
@@ -93,6 +135,8 @@ MoT 包含三个专家：代码专家生成参数化技能程序与控制逻辑�
 
 ## 参考来源
 
+- [AW-0 项目页归档](../../sources/sites/aw0_agentic_wam.md)
+- [AW-0 源码归档](../../sources/repos/aw0_agentic_wam.md)
 - [AW-0 论文归档](../../sources/papers/aw0_arxiv_2610_30136.md)
 - [AW-0 官方项目页](https://agentic-wam.github.io/)
 - [AW-0 官方代码](https://github.com/ZhuoyangLiu2005/agentic-wam)
