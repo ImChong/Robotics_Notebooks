@@ -116,6 +116,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Audio8 TTS](./audio8-tts.md) — 支持零样本声音克隆的开源语音合成模型。
+
 - [Teleoperation](../tasks/teleoperation.md)
 - [SHRIMP](./paper-shrimp.md) — 自然语言→机器人任务（不同模态，可组合）
 - [WALL-SS](./paper-wall-ss.md) — 同机构 next-scale 世界模型
