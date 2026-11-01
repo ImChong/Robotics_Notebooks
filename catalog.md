@@ -6188,6 +6188,7 @@
 - [进程间通信（Inter-Process Communication, IPC）](wiki/concepts/ipc-inter-process-communication.md) — IPC** 是操作系统提供的、让 **隔离进程** 交换数据与同步的原语集合——从 **管道、POSIX 共享内存、消息队列** 到 **Unix/Internet 套接字**；机器人栈在其之上再 `📅unknown` `[wiki_page]`
 - [关节编码器选型（光电 / 磁 / 电感）](wiki/concepts/joint-encoder-selection.md) — 关节编码器**决定模组 **定位精度上限、速度环带宽与长期可靠性**。选型核心不是「哪种精度更高」，而是 **测什么物理量、装在哪、失效模式能否接受** — 光电数光通量、磁测磁场方向、电感测互感 `📅unknown` `[wiki_page]`
 - [Joint Friction Models（关节摩擦模型）](wiki/concepts/joint-friction-models.md) — 关节摩擦模型** 描述传动与轴承中 **与速度、负载相关的非线性阻力**，是 URDF 默认参数往往缺失、却强烈影响 **力矩跟踪与 Sim2Real** 的关键项。 `📅unknown` `[wiki_page]`
+- [关节模组空载：速度环与力矩环的输出扭矩区别](wiki/concepts/joint-module-no-load-velocity-vs-torque-loop.md) — 空载时**速度环的输出扭矩是「结果」**（摩擦要多少、闭环给多少，转速恒定），**力矩环的输出扭矩是「原因」**（指令多少就是多少，转速只是动力学的后果）。 `📅unknown` `[wiki_page]`
 - [自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）](wiki/concepts/joint-module-self-development-workflow.md) — 自研关节模组**不是外购电机、减速器、编码器简单拼装，而是从**负载谱与空间/成本约束**出发，经**传动构型选型、五件套集成设计、结构刚度链、标定与控制、装配工艺与四层测试矩阵**，交付可在整机 `📅unknown` `[wiki_page]`
 - [关节模组轴的径向热膨胀校核](wiki/concepts/joint-module-shaft-thermal-expansion.md) — 关节模组里电机转子、减速器输入端、轴承内圈、编码器磁环都装在同一根轴上，温升使轴径增大几微米到几十微米，与过盈量、轴承游隙同量级；用 **Δd = α·d·ΔT** 在图纸阶段手算，再回到过盈 / 游 `📅unknown` `[wiki_page]`
 - [关节力矩传感器选型（估力 / 双编差值 / 物理传感）](wiki/concepts/joint-torque-sensor-selection.md) — 关节力矩反馈**决定力控模组的「跟手感、减震感与恒力精度」。进入力控时代，反馈获取方式直接约束控制品质、成本与轴向尺寸 — 编译自 [Zane Hub 公众号文](../../sources/bl `📅unknown` `[wiki_page]`
