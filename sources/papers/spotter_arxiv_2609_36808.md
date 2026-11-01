@@ -4,7 +4,7 @@
 
 - **题目：** Spotter: Let the Embodied Model Lead, and the VLM Reflect for It
 - **作者：** Long Li, Qichao Zhao, Yue Yang, Fan Xu, Zhe Wang, Alan Wee-Chung Liew, Chao Qu, Heng Tao Shen, Shirui Pan
-- **单位：** 抓取页面未列出
+- **单位：** Griffith University、清华大学 IIIS、MainCode、腾讯、复旦大学、同济大学（论文首页）
 - **预印本：** https://arxiv.org/abs/2609.36808（cs.RO，also cs.AI；v1，2026-09-29 提交；19 页，7 图，6 表）
 - **项目页：** https://zqc3117.github.io/Spotter/
 - **代码：** https://github.com/zqc3117/Spotter（MIT；见 [代码归档](../repos/spotter.md)）
@@ -34,3 +34,8 @@
 ## 一手来源
 
 - arXiv 摘要页（经 WebFetch 摘要）；项目页因截断未能核对作者与数字
+
+## 本次补充核查（2026-11-01，未完成）
+
+- 已定位 [论文 PDF](https://arxiv.org/pdf/2609.36808) 和 [官方仓库](https://github.com/zqc3117/Spotter)；本次尚未完成全文及运行入口源码通读，须继续核对方法、实验与局限后绘制项目流程图和源码运行时序图。
+- 官方 README 列出 RoboCasa 和 RoboTwin 2.0 评测入口及模型权重；项目页本次未能打开，需补核。
