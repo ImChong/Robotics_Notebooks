@@ -3,7 +3,7 @@
 - **论文：** https://arxiv.org/abs/2610.40503 （v1，2026-10-29）
 - **项目主页：** https://ephemeral6.github.io/awm-site/
 - **作者：** Guancheng Pan、Qixin Tan、Yang Yuan、Andrew Chi-Chih Yao
-- **机构：** 浙江大学、清华大学
+- **机构：** 浙江大学、清华大学、上海期智研究院
 - **状态：** 待完成。已查阅论文摘要、方法及部分实验；尚未通读全部正文与必要附录，也未验证全部源码。
 
 ## 已核对的内容
