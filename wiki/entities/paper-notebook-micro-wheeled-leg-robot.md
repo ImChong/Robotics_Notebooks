@@ -2,13 +2,15 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-09-15
+updated: 2026-11-01
 venue: curated
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/papers/humanoid_pnb_micro-wheeled-leg-robot.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Micro-Wheeled_leg-Robot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
