@@ -86,6 +86,7 @@
 - [Atom01 Hardware](wiki/entities/atom01-hardware.md) — Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。 `📅unknown` `[entity_page]`
 - [Atomic Machines Matter Compiler](wiki/entities/atomic-machines-matter-compiler.md) — Matter Compiler** 是 Atomic Machines 宣称的 AI 原生微型机器制造系统：它把设备设计转换为可执行的制造步骤，制造后测量实体结果，并将反馈用于后续迭代。公司公布的 `📅unknown` `[entity_page]`
 - [atopile](wiki/entities/atopile.md) — atopile**](https://github.com/atopile/atopile) 是面向电子硬件的声明式设计语言、编译器与工具链。用户用 `.ato` 文件描述模块、接口、单位、容差 `📅unknown` `[entity_page]`
+- [Audio8 TTS：紧凑型多语言语音合成](wiki/entities/audio8-tts.md) — Audio8-TTS-Realistic-0.6B 是支持参考音频零样本声音克隆的文本转语音模型；也可不提供参考音频生成语音。 `📅unknown` `[entity_page]`
 - [AutoDL](wiki/entities/autodl.md) — AutoDL**（autodl.com）是国内 **GPU 算力租赁与炼丹** 平台：用 Docker 容器把物理机的 1–N 块 GPU 租 `📅unknown` `[entity_page]`
 - [autonomy_stack_go2](wiki/entities/autonomy-stack-go2.md) — autonomy_stack_go2**（[jizhang-cmu/autonomy_stack_go2](https://github.com/jizhang-cmu/autonomy_stac `📅unknown` `[entity_page]`
 - [Autoware](wiki/entities/autoware.md) — Autoware**（autowarefoundation/autoware）由 Autowar `📅unknown` `[entity_page]`
