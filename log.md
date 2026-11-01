@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组：额定电流小于负载电流的后果》：新建 joint-motor-rated-current-overload 概念页（工程经验综述，无论文/项目清单）
+
 ## [2026-11-01] ingest | Zane Hub 公众号《关节模组空载：速度环与力矩环的输出扭矩区别》：新建 joint-module-no-load-velocity-vs-torque-loop 概念页（工程经验综述，无论文/项目清单）
 
 ## [2026-11-01] ingest | Zane Hub 公众号《关节模组轴的径向热膨胀校核》：新建 joint-module-shaft-thermal-expansion 概念页（工程经验综述，无论文/项目清单）

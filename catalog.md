@@ -6191,6 +6191,7 @@
 - [关节模组空载：速度环与力矩环的输出扭矩区别](wiki/concepts/joint-module-no-load-velocity-vs-torque-loop.md) — 空载时**速度环的输出扭矩是「结果」**（摩擦要多少、闭环给多少，转速恒定），**力矩环的输出扭矩是「原因」**（指令多少就是多少，转速只是动力学的后果）。 `📅unknown` `[wiki_page]`
 - [自研关节模组开发流程（需求 → 传动 → 五件套 → 验收）](wiki/concepts/joint-module-self-development-workflow.md) — 自研关节模组**不是外购电机、减速器、编码器简单拼装，而是从**负载谱与空间/成本约束**出发，经**传动构型选型、五件套集成设计、结构刚度链、标定与控制、装配工艺与四层测试矩阵**，交付可在整机 `📅unknown` `[wiki_page]`
 - [关节模组轴的径向热膨胀校核](wiki/concepts/joint-module-shaft-thermal-expansion.md) — 关节模组里电机转子、减速器输入端、轴承内圈、编码器磁环都装在同一根轴上，温升使轴径增大几微米到几十微米，与过盈量、轴承游隙同量级；用 **Δd = α·d·ΔT** 在图纸阶段手算，再回到过盈 / 游 `📅unknown` `[wiki_page]`
+- [关节模组：额定电流小于负载电流的后果](wiki/concepts/joint-motor-rated-current-overload.md) — 额定（连续）电流是电机在指定安装与环温下的**热平衡点**而非能力上限；长期让负载电流超过它，机器短期仍能转，代价是绕组绝缘、磁钢、驱动器、减速器的寿命与性能被**无报警地**消耗。本页综合 Zane `📅unknown` `[wiki_page]`
 - [关节力矩传感器选型（估力 / 双编差值 / 物理传感）](wiki/concepts/joint-torque-sensor-selection.md) — 关节力矩反馈**决定力控模组的「跟手感、减震感与恒力精度」。进入力控时代，反馈获取方式直接约束控制品质、成本与轴向尺寸 — 编译自 [Zane Hub 公众号文](../../sources/bl `📅unknown` `[wiki_page]`
 - [运动学可行与动力学可行](wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 飞书 Know-How 将 **运动学可行和动力学可行** 列为控制问题框架的核心分叉：前者回答「关节角度/末端轨迹是否存在」，后者回答「在给定力矩、摩擦与接触下是否稳定可执行」。 `📅unknown` `[wiki_page]`
 - [Latent Imagination (潜空间想象)](wiki/concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
