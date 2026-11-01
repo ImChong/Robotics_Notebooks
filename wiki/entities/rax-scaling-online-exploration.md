@@ -14,7 +14,7 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-10-26
+updated: 2026-11-01
 arxiv: "2610.22496"
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
@@ -22,12 +22,14 @@ related:
   - ./paper-asena-self-evolving-agents.md
   - ./paper-embodied-evo-coding-agent.md
   - ./paper-harness-vla.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/rax_scaling_online_exploration.md
   - ../../sources/sites/rax-project.md
   - ../../sources/repos/rax.md
   - ../../sources/repos/skills-lib.md
   - ../../sources/datasets/rax-robot-session-logs.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器人 API 在线探索，并把成功经验编译成可复用的感知—规划—控制程序；官方仓库提供 RoboDojo / BEHAVIOR-1K、HumanoidArena、DexJoCo、LIBERO / LIBERO-PRO 及真机实现分支。"
 ---
 

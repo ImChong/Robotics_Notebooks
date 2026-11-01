@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, world-model, jepa, bfm, sjtu, shanghai-innovation-institute, zju, tongji, fudan]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-01
 project_id: bejepa
 arxiv: "2610.23127"
 project: https://ylyem9x.github.io/BeJEPA-project/
@@ -12,9 +12,11 @@ related:
   - ./paper-behavior-foundation-model-humanoid.md
   - ../concepts/behavior-foundation-model.md
   - ../concepts/whole-body-control.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/bejepa_arxiv_2610_23127.md
   - ../../sources/sites/bejepa-project-page.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 ---
 
 # BeJEPA

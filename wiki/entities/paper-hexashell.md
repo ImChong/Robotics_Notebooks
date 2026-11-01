@@ -7,16 +7,18 @@ tags:
   - tool-use
   - open-source
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 related:
   - ./robodojo.md
   - ./paper-robodawn.md
   - ./paper-coap-embodied-turing-machines.md
   - ../methods/vla.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/hexashell_arxiv_2610_23479.md
   - ../../sources/repos/hexashell.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "HexaShell：VLM 编码 Agent 通过机器人 CLI 控制 RoboDojo 双臂任务，失败后将经验沉淀为可复用工具；论文新布局复测 39.7%，官方评测 README 报 46.9% / 53.2，评测口径需区分。"
 project_id: hexashell
 arxiv: "2610.23479"

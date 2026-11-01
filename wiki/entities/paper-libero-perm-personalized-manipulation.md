@@ -3,16 +3,18 @@ type: entity
 project_id: libero-perm-personalized-manipulation
 tags: [paper, benchmark, personalized-manipulation, vla, uc-riverside, yale, georgia-tech, university-of-michigan, utoronto]
 status: complete
-updated: 2026-10-19
+updated: 2026-11-01
 arxiv: "2610.22372"
 project: https://libero-perm.github.io/
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../methods/vla.md
   - ./paper-fast-vla-once-per-episode.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/libero_perm_arxiv_2610_22372.md
   - ../../sources/sites/libero-perm.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "LIBERO-PeRM 在 LIBERO 仿真中独立评测策略能否按用户偏好完成任务，提供五类套件、配对示范和偏好满足度指标。"
 ---
 

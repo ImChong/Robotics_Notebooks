@@ -3,7 +3,7 @@ type: entity
 project_id: value-as-memory-online-robot-posttraining
 tags: [paper, reinforcement-learning, online-rl, memory, manipulation, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-10-19
+updated: 2026-11-01
 arxiv: "2610.22368"
 project: https://virlus.github.io/vam/
 code: https://github.com/Virlus/vam
@@ -11,10 +11,12 @@ related:
   - ../methods/reinforcement-learning.md
   - ../methods/value-based-reinforcement-learning.md
   - ./paper-dsp-supervised-play.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/vam_arxiv_2610_22368.md
   - ../../sources/sites/vam.md
   - ../../sources/repos/vam.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "VaM 缓存近期价值预测作为任务进度记忆，并通过离线热启动、人工干预和在线 rollout 后训练通用机器人策略。"
 ---
 
