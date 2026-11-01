@@ -256,6 +256,8 @@ flowchart LR
   - [Humanoid Hardware 101 · 04：集成执行器](../wiki/overview/humanoid-hardware-101-integrated-actuators.md)
   - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
   - [电机转矩-电流曲线（TI 曲线）](../wiki/concepts/motor-torque-current-curve.md)
+  - 关节模组工程细节：[减速器难度拆解](../wiki/concepts/joint-module-reducer-difficulty.md) · [电磁隔离](../wiki/concepts/joint-module-electromagnetic-isolation.md) · [空载速度环 vs 力矩环](../wiki/concepts/joint-module-no-load-velocity-vs-torque-loop.md) · [轴径向热膨胀校核](../wiki/concepts/joint-module-shaft-thermal-expansion.md) · [额定电流小于负载电流的后果](../wiki/concepts/joint-motor-rated-current-overload.md)
+  - [Gearbox Lubricant Temperature Observer](../wiki/entities/paper-gearbox-lubricant-temperature-observer.md) — 减速器润滑温度观测
   - [Query：人形机器人硬件选型指南](../wiki/queries/humanoid-hardware-selection.md)
 
 ## 参考来源
