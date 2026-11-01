@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/bidex_100_arxiv_2610_25459.md
   - ../../sources/repos/bidex_100.md
@@ -98,6 +99,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [bimanual-manipulation](../tasks/bimanual-manipulation.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

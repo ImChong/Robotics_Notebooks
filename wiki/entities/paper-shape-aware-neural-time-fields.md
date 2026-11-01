@@ -3,7 +3,7 @@ type: entity
 project_id: shape-aware-neural-time-fields
 tags:
   - paper
-  - perception
+  - motion-planning
   - planning
 status: complete
 updated: 2026-11-01

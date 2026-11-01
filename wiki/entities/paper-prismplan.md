@@ -3,7 +3,8 @@ type: entity
 project_id: prismplan
 tags:
   - paper
-  - perception
+  - motion-planning
+  - gpu
   - planning
 status: complete
 updated: 2026-11-01

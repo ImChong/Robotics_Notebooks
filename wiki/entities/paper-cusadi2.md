@@ -3,7 +3,8 @@ type: entity
 project_id: cusadi2
 tags:
   - paper
-  - perception
+  - kinematics
+  - gpu
   - planning
 status: complete
 updated: 2026-11-01

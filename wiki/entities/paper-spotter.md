@@ -9,7 +9,7 @@ tags:
   - robotwin
   - mit
 status: complete
-updated: 2026-10-22
+updated: 2026-11-01
 project_id: spotter
 arxiv: "2609.36808"
 project: https://zqc3117.github.io/Spotter/
@@ -74,11 +74,12 @@ summary: "Spotter（2026）：具身模型持续执行，并行的本地 screene
 
 - 代码：`zqc3117/Spotter`（MIT），含 `spotter.sh` 与 `robotwin_eval.sh` 入口。
 - 权重：README 列出 pi0.5（RoboCasa、RoboTwin 2.0）、Cosmos Policy 与 Qwen 模型的 Hugging Face 链接。
+- 作者单位（论文首页）：Griffith University、清华大学 IIIS、MainCode、腾讯、复旦大学、同济大学。
 - 本次只做浅克隆核查，未安装环境或运行评测。
 
 ## 局限与风险
 
-- 论文摘要与项目页数字的全文核对未完成（项目页内容被截断）。
+- 论文摘要与项目页数字的全文核对未完成（项目页内容被截断；2026-11-01 补核时项目页仍未能打开，PDF 与运行入口源码尚未通读）。
 - 复现需要多套仿真环境与大模型（如 Qwen 27B 量级，README 所列），硬件门槛高。
 - 推测：screener 的漏检会让错误继续传播，误检则会增加 VLM 调用。
 

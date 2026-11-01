@@ -10,6 +10,7 @@ related:
   - ./contact-force-loop-bandwidth.md
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
   - ../overview/humanoid-hardware-101-linear-transmission-bearings.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_dexterous_hand_payload_core_metrics_2026-10-15.md
 summary: "灵巧手的「最大负载」是任务结果而非产品属性：必须先区分抓握力/指尖力/被动载荷等口径，再结合自由度分层、力控、精度、触觉、寿命、轻量化、传动架构与系统边界，才能得到可比较的评价体系（Zane Hub 观点文章整理）。"
@@ -155,6 +156,7 @@ R = 额定负载 / 整手（含必要驱动与传动）质量
 - [接触力环带宽](./contact-force-loop-bandwidth.md)：力控带宽与过冲
 - [Humanoid Hardware 101：感知与末端执行器](../overview/humanoid-hardware-101-sensing-end-effectors.md)
 - [Humanoid Hardware 101：直线传动与轴承](../overview/humanoid-hardware-101-linear-transmission-bearings.md)：丝杠等传动背景
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

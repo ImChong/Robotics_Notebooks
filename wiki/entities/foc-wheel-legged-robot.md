@@ -17,6 +17,7 @@ related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ../tasks/locomotion.md
   - ../overview/quadruped-open-source-projects-technology-map.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/repos/foc_wheel_legged_robot.md
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
@@ -64,6 +65,7 @@ summary: "foc-wheel-legged-robot 是完整的双轮腿机器人开源项目：So
 - [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md)
 - [locomotion](../tasks/locomotion.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — FOC 驱动与执行器选型在驱动链闭环中的位置
 
 ## 参考来源
 
