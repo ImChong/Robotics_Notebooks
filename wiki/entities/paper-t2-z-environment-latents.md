@@ -3,7 +3,7 @@ type: entity
 project_id: t2-z-environment-latents
 tags: [paper, world-model, latent-variable, test-time-training, stanford, cmu, usc]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-01
 arxiv: "2610.22364"
 project: https://t2-z-latent-optimization.github.io/
 code: https://github.com/T2-z-latent-optimization/T2-z
@@ -11,10 +11,12 @@ related:
   - ../methods/vla.md
   - ../concepts/transformer.md
   - ./paper-robot-foundation-model-causal-analysis.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/t2_z_arxiv_2610_22364.md
   - ../../sources/sites/t2-z-latent-optimization.md
   - ../../sources/repos/t2-z-latent-optimization.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "T2-z（arXiv:2610.22364）：用测试时交互优化 32 维环境潜变量，让冻结的机器人世界模型适应未观测的物理属性与交互规则。"
 ---
 

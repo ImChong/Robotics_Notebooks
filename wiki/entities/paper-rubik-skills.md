@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ethz, nvidia, quadruped, manipulation, loco-manipulation, reinforcement-learning, sim2real]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-01
 project_id: rubik-skills
 arxiv: "2610.24610"
 project: https://leggedrobotics.github.io/rubik-skills/
@@ -11,9 +11,11 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
   - ../concepts/contact-rich-manipulation.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/rubik_skills_arxiv_2610_24610.md
   - ../../sources/sites/rubik-skills.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "四足机器人以 ANYmal-D 足端执行大型魔方的长时程自主操作：机载 RGB-D 扫描与状态重建、符号求解规划、感知型 RL 技能蒸馏；项目页报告三次完整实机求解，代码未在项目页公开链接。"
 ---
 

@@ -3,15 +3,17 @@ type: entity
 project_id: steeract-few-shot-temporal-steering
 tags: [paper, action-model, activation-steering, few-shot-adaptation]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 arxiv: "2610.25632"
 project: "https://steeract.github.io"
 related:
   - ../entities/unifolm-world-model-action.md
   - ../entities/paper-hint-robot-manipulation.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/steeract_arxiv_2610_25632.md
   - ../../sources/sites/steeract.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "SteerAct 从每任务 24 条带结果标签的 rollout 中选择稀疏特征，以时间描述符在推理时调节冻结动作模型激活；论文摘要报告成功率较未引导模型提高约 10%。"
 ---
 

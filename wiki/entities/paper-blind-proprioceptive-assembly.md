@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mit, proprioception, contact-rich-manipulation, sim2real, reinforcement-learning, assembly]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-01
 project_id: blind-proprioceptive-assembly
 arxiv: "2610.23849"
 project: https://younghyopark.me/blind-proprioceptive-assembly/
@@ -12,10 +12,12 @@ related:
   - ../concepts/contact-estimation.md
   - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/blind_precise_assembly_arxiv_2610_23849.md
   - ../../sources/sites/blind-proprioceptive-assembly.md
   - ../../sources/repos/mjfit.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "仅凭关节位置、速度和动作历史训练盲装配策略；插销策略在多形状、多尺寸实机测试中成功率 73%。公开代码 mjfit 提供 MuJoCo 精确间隙的插销、孔、螺纹和齿轮几何生成器，不含已确认的策略部署实现。"
 ---
 

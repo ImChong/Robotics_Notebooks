@@ -3,15 +3,17 @@ type: entity
 project_id: dreamcan-sparse-visual-planning
 tags: [paper, robot-manipulation, long-horizon-planning, video-model]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 arxiv: "2610.24981"
 project: "https://dreamcan.github.io"
 related:
   - ../entities/paper-hint-robot-manipulation.md
   - ../entities/unifolm-world-model-action.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/dreamcan_arxiv_2610_24981.md
   - ../../sources/sites/dreamcan.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "DreamCan 将预训练视频模型用作长程操作高层规划器，生成稀疏视觉子目标，再由低层视觉运动策略执行；论文报告 LIBERO-Long 成功率为 91.2%。"
 ---
 

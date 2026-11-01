@@ -3,16 +3,18 @@ type: entity
 project_id: humanoid-srl
 tags: [paper, humanoid, supernumerary-robotic-limbs, loco-manipulation, reinforcement-learning, trajectory-optimization, diffusion-policy, georgia-tech]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 arxiv: "2610.25628"
 venue: "2026 · arXiv"
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/reinforcement-learning.md
   - ../methods/diffusion-motion-generation.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/humanoid_srl_arxiv_2610_25628.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "Humanoid SRL 研究在人形机器人上集成超冗余机械臂，以模型式轨迹优化生成动态可行运动、训练目标条件强化学习控制器，并将仿真策略零样本迁移至硬件；同时展示基于硬件示范训练的扩散策略用于视觉引导自主执行。"
 ---
 
