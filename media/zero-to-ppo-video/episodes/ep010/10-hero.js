@@ -75,7 +75,7 @@
         E.op(ring, f(t, T.elbow, 0.3)); E.op(ringDot, f(t, T.elbow, 0.3));
         ring.setAttribute('r', (12 + 5 * Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8))).toFixed(2));
         E.glow(ring, E.HI, Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8)) > 0.05);
-        spin.set(4 * D, Math.max(5 * D, phi - 6 * D)); E.op(spin.g, f(t, T.turn[0], 0.2));
+        spin.set(0, Math.max(1e-3, phi));   // 画满转过的角度：从小臂原来的方向到现在的方向（同 009 第 3 幕的修正） E.op(spin.g, f(t, T.turn[0], 0.2));
         var tl = P(1 + 1.35 * Math.cos(40 * D), 2 + 1.35 * Math.sin(40 * D));
         thLab.setAttribute('x', tl[0].toFixed(1)); thLab.setAttribute('y', (tl[1] + 8).toFixed(1)); E.op(thLab, f(t, T.ang, 0.3));
         // 小臂上离肘两格的点（转完在 (1, 4)）：问号写在它左边，两根小箭头（沿小臂、垂直小臂）

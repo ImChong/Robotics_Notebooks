@@ -324,7 +324,7 @@
   }
   E.matExt = function (M, o) {
     o = o || {};
-    var size = o.size || 30, dx = o.dx || size * 1.9, cw = colWidths(M, o, size), w = (M[0].length - 1) * dx, k = size * (0.25 + 0.36);
+    var size = o.size || 30, dx = o.dx || size * 1.9, cw = colWidths(M, o, size), w = (M[0].length - 1) * dx, k = size * 0.25 + Math.max(9, size * 0.36);
     return [w / 2 + cw[0] / 2 + k + 1.5, w / 2 + cw[cw.length - 1] / 2 + k + 1.5];   // 左、右（含括号线宽的一半）
   };
   E.matN = function (parent, cx, cy, M, o) {
@@ -333,7 +333,7 @@
     var rows = M.length, cols = M[0].length, w = (cols - 1) * dx, h = (rows - 1) * dy;
     var g = el('g', { 'data-mgrid': '' }, parent), under = el('g', {}, g), boxes = {};   // data-mgrid / data-bracket / data-hl：给版面检查认
     var colW = colWidths(M, o, size);
-    var IN = size * 0.25, GAP = size * 0.36;
+    var IN = size * 0.25, GAP = Math.max(9, size * 0.36);   // 高亮框离中括号至少 9 px（同 006、009）
     function pos(i, j) { return [cx - w / 2 + j * dx, cy - h / 2 + i * dy]; }
     function block(i0, j0, i1, j1) {
       var a = pos(i0, j0), b = pos(i1, j1);

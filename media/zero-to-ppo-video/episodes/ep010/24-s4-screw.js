@@ -121,9 +121,9 @@
       var g2 = E.el('g', {}, Rg);
       var b1 = RK.line(g2, X, ROWS, [['朝向：绕 ', E.INK2], ['ŝ', E.WARN, 900], [' 转过角度 ', E.INK2], ['θ', E.OMEGA, 900]]);
       var b2 = E.el('g', {}, g2);
-      E.tex(b2, X, ROWS + 56, 'R=I+\\textcolor{' + H.good + '}{\\sin\\theta}\\,[\\hat s]+(1-\\textcolor{' + H.good + '}{\\cos\\theta})\\,[\\hat s]^2', 21, E.INK, 'start', { w: 320, h: 44 });
+      E.tex(b2, X, ROWS + 56, 'R=I+\\textcolor{' + H.acc + '}{\\sin\\theta}\\,[\\hat s]+(1-\\textcolor{' + H.acc + '}{\\cos\\theta})\\,[\\hat s]^2', 21, E.INK, 'start', { w: 320, h: 44 });
       var b3 = RK.line(g2, X, ROWS + 104, [['罗德里格斯公式', E.OMEGA, 900]], 22);
-      var b4 = RK.line(g2, X, ROWS + 140, [['只用到 ', E.INK2], ['sin、cos', E.GOOD, 900]], 21);
+      var b4 = RK.line(g2, X, ROWS + 140, [['只用到 ', E.INK2], ['sin、cos', E.OMEGA, 900]], 21);
       var b4b = RK.line(g2, X, ROWS + 170, [['[ŝ]：ŝ 的三个数带正负号排成 3 × 3', E.MUT, 700]], 17);
       var g3r = E.el('g', {}, Rg);
       var c1 = E.el('g', {}, g3r);

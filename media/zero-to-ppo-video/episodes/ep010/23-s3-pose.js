@@ -183,7 +183,7 @@
           fy.set(O[0], O[1], O[0] - Math.sin(fa) * u, O[1] - Math.cos(fa) * u);
           var fOn = f(st, T.ep3 - 0.3, 0.3) * (1 - f(st, T.out2, 0.4));
           E.op(fx.g, fOn); E.op(fy.g, fOn);
-          fTurn.set(4 * D, Math.max(5 * D, fa - 4 * D)); E.op(fTurn.g, f(st, T.frameTurn[0], 0.2) * (1 - f(st, T.out2, 0.4)));
+          fTurn.set(0, Math.max(1e-3, fa));   // 画满 90°：箭头停在红箭头上（同 009 第 3 幕的修正） E.op(fTurn.g, f(st, T.frameTurn[0], 0.2) * (1 - f(st, T.out2, 0.4)));
           fx.line.style.strokeWidth = 4.5 + 2.5 * b(st, T.col1, 0.8); fy.line.style.strokeWidth = 4.5 + 2.5 * b(st, T.col2, 0.8);
 
           /* ── 肘 ── */

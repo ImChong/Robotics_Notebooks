@@ -157,7 +157,7 @@
           arm.bend(phi); V1.clearTint(); V1.tint(RIGID, E.BODY, 0.45);
           ghosts.forEach(function (g) { E.op(g, f(st, T.two, 0.4)); });
           ring.setAttribute('r', (12 + 5 * b(st, T.axis, 0.9)).toFixed(2)); E.glow(ring, E.HI, b(st, T.axis, 0.9) > 0.05);
-          halfArc.set(4 * D, Math.max(5 * D, phi - 4 * D)); E.op(halfArc.g, f(st, T.half[0], 0.2));
+          halfArc.set(0, Math.max(1e-3, phi));   // 画满 45°：标着「45°」，弧就从 0° 画到 45°（同 009 第 3 幕的修正） E.op(halfArc.g, f(st, T.half[0], 0.2));
           var hl = P(1 + 1.45 * Math.cos(22 * D), 2 + 1.45 * Math.sin(22 * D)); halfLab.setAttribute('x', hl[0].toFixed(1)); halfLab.setAttribute('y', (hl[1] + 8).toFixed(1));
           E.op(halfLab, f(st, T.half[1], 0.3));
           E.op(a1.g, fr(st, T.ep5)); E.op(a2.g, fr(st, T.avg)); E.drawOn(a2x, f(st, T.avg + 0.4, 0.3));

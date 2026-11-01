@@ -19,7 +19,7 @@
 // 时刻取自配音的逐词时间，见 ../ep010.py。
 (function () {
   var E = window.EP010, K = E.K, H = E.HEX;
-  var D = Math.PI / 180, A = E.ARM, RX = A.RX;
+  var A = E.ARM, RX = A.RX;
   var T = {
     each: 1.97, stop: 3.08, dir: 3.71, next: 4.89, out0: 6.7,
     two: 7.26, deg: 8.12, div: 9.15, h: 10.85,
@@ -252,7 +252,7 @@
           var sp2 = P(kq[0] + dl * Math.cos(ang), kq[1] + dl * Math.sin(ang));
           spoke2.set(K1[0], K1[1], sp2[0], sp2[1]);
           E.op(spoke2.g, f(st, T.perp, 0.3) * (1 - f(st, T.left, 0.3)));
-          turnArc.set(Math.atan2(dd[1], dd[0]) + 4 * D, Math.max(Math.atan2(dd[1], dd[0]) + 5 * D, ang - 4 * D));
+          turnArc.set(Math.atan2(dd[1], dd[0]), Math.max(Math.atan2(dd[1], dd[0]) + 1e-3, ang));   // 画满 90°：从虚线原来的方向到转完的方向（同 009 第 3 幕的修正）
           E.op(turnArc.g, f(st, T.turn[0], 0.2) * (1 - f(st, T.left + 0.6, 0.3)));
           // 红（往左）、绿（往上）两段：先是整份，句 5 缩成 0.785 倍，头尾相接
           var sc = 1 - (1 - HH) * f(st, T.scale[0], T.scale[1] - T.scale[0]);
