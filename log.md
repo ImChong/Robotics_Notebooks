@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] ingest | 深蓝具身智能《四年十篇顶会Best Paper，谁在持续霸榜？》：正文 9 篇 CV 三大会 Best Paper 逐篇建独立详情节点（新建 7 / 复用 2）
+
 ## [2026-11-01] ingest | 具身智能小站 2026-11-01《模型还在思考，目标已经移动》56 篇逐篇建独立详情节点（新建 43 / 复用 13）
 
 ## [2026-11-01] ingest | sources/blogs/videodb_how_a_robot_remembers_2026-10-27.md — 收录外部视频记忆架构并区分 SDK 与服务端开放范围
