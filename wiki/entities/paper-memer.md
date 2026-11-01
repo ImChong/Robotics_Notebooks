@@ -158,3 +158,7 @@ sequenceDiagram
 
 - [MemER 项目页](https://jen-pan.github.io/memer/) — 方法图、任务对比和代码入口
 - [arXiv:2510.20328](https://arxiv.org/abs/2510.20328)
+
+## 相关延伸阅读
+
+- [VideoDB：机器人外部视频记忆](./article-videodb-robot-memory.md) 讨论通过索引检索并回看历史视频，与 MemER 策略中的关键帧记忆侧重点不同。
