@@ -6774,6 +6774,7 @@
 - [深度强化学习运动控制方法（Learning-based）](wiki/overview/humanoid-rl-motion-control-methods.md) — 飞书 Know-How **「深度强化学习运动控制方法（Learning Base）」** 的图谱父节点：覆盖 **RL 基础 → 特权/模仿训练 → 感知 loco → 重定向与跟踪 → BFM 三 `📅unknown` `[overview_page]`
 - [人形 RL 策略训练五模块：从 MDP 到蒸馏部署](wiki/overview/humanoid-rl-policy-training-five-modules.md) — 人形 RL 策略训练五模块** 把数据驱动运动控制拆成固定耦合的闭环：RL/MDP 交互框架 → Actor-Critic 决策–评估 → PPO 稳定更新 → 多维奖励塑形 → Teacher- `📅unknown` `[overview_page]`
 - [人形机器人发展历史](wiki/overview/humanoid-robot-history.md) — 人形机器人发展历史**梳理双足类人平台从实验室样机到可量产科研整机的关键里程碑，帮助理解今日 G1 等课程平台为何同时继承 **模型基平衡 `📅unknown` `[overview_page]`
+- [人形结构设计工程师的跨专业知识地图](wiki/overview/humanoid-structure-engineer-cross-discipline-map.md) — 结构参数本身就是控制系统的输入——凡是会通过结构把约束传递给下游的东西，结构工程师都必须懂。**（文章结语的概括） `📅unknown` `[overview_page]`
 - [IROS 2026 九篇获奖论文：阅读地图](wiki/overview/iros-2026-awards-9-papers-technology-map.md) — IROS 2026 主会/workshop 获奖线同时覆盖「长期记忆、毫秒级传统控制+学习、人形 loco-manip、人类视频与轨迹 WM、接触 RL 表示、执行期 TAMP」——没有单一赢家范 `📅unknown` `[overview_page]`
 - [IROS 2026：1933 篇论文的六条变化](wiki/overview/iros-2026-six-trends-technology-map.md) — 大模型没有「吃掉」机器人学——学习、感知、规划、控制与操作以更高密度交织；VLA 从 scaling 转向效率/几何/记忆/系统壳，World Model 仍少（~1%）但更贴近控制环。 `📅unknown` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 **数据稀缺** 下仍能 **组合行为、适应新目标与物体**——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互 `📅unknown` `[overview_page]`
