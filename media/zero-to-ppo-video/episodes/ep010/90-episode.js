@@ -57,12 +57,21 @@
       ],
       foot: { s: '**螺旋轴** × **角度**，交给**矩阵指数**，一步得到**位姿**', at: 29.06 }
     },
-    outroDur: 12.74,
+    outroDur: 16.58,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
     outro: {
       next: { ep: '011', q: '正运动学：六个关节各转一个角度，\n手最后停在什么位置？', at: 0 },
       link: { s: '<b>完整内容</b><br>imchong.github.io/Robotics_Notebooks', at: 7.73 },
-      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 10.87 }
+      refs: {
+        at: 10.87,
+        items: [
+          '**《Modern Robotics》** Lynch & Park，2017：式 (3.51) 罗德里格斯公式，3.2.3.3 节矩阵对数',
+          '**《Modern Robotics》** 3.3.3 节命题 3.25（螺旋运动的矩阵指数），4.1 节指数积公式',
+          '**Solà 等**（arXiv:1812.01537）：式 (25)(26)，两个朝向之间先求对数、再取一半',
+          '**Modern Robotics 官方代码**（NxRLab）：MatrixExp3、MatrixLog3、MatrixExp6'
+        ]
+      },
+      end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 14.71 }
     }
   };
 })();
