@@ -70,6 +70,7 @@
 - [CAD CAE Copilot（armpro24-blip/cad-cae-copilot）](wiki/entities/armpro24-blip-cad-cae-copilot.md) — CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/CAE 任务，使用 build123d 与 OpenCASCADE 创建真实可编辑 `📅unknown` `[entity_page]`
 - [Arnis](wiki/entities/arnis.md) — Arnis**（`louis-e/arnis`，Apache-2.0，~17.7k★）把 **真实世界地理** 编译进  `📅unknown` `[entity_page]`
 - [JEPA, from language models to world models（VideoDB）](wiki/entities/article-videodb-jepa-world-models.md) — VideoDB Labs 于 2026-07-07 发布的技术长文，从 next-token prediction 与 latent prediction 的差异讨论 JEPA 如何进入 VLM、VL `📅unknown` `[entity_page]`
+- [How a robot remembers：机器人外部视频记忆](wiki/entities/article-videodb-robot-memory.md) — VideoDB 的文章提出：将摄像头视频与可查询的带时间索引结合，让模型按任务回看片段，并把分析结果写回索引。 `📅unknown` `[entity_page]`
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
 - [Artificial Analysis](wiki/entities/artificial-analysis.md) — Artificial Analysis** 是独立 AI 模型与推理服务评测平台，通过公开榜单、方法说明和结构化 API 汇总模型能力、定价及用户侧推理性能，帮助团队按质量、成本和响应速度选型。 `📅unknown` `[entity_page]`
 - [Artisan：物理接地的可关节 3D 资产生成](wiki/entities/artisan.md) — Artisan 是一套多智能体 3D 资产生成与验证管线：从文本和可选图像生成带关节的物体，再用物理仿真反馈检查它是否能稳定、无明显碰撞地运动。 `📅unknown` `[entity_page]`
