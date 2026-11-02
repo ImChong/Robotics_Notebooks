@@ -68,14 +68,14 @@
       var fm = E.el('g', {}, r3), FY = 190;
       // 两行：T手 = exp([S₁]θ₁) exp([S₂]θ₂) / ⋯ exp([S₆]θ₆) M（中间三个因子写成 ⋯；上标太小，不用 e 的上标写法）
       var tEq = E.tex(fm, X, FY, 'T_{\\text{手}}=', 24, E.HI, 'start', { w: 72, h: 44 });
-      var facs = [[1, X + 70, FY], [2, X + 184, FY], [6, X + 104, FY + 46]].map(function (q) {
+      var facs = [[1, X + 78, FY], [2, X + 210, FY], [6, X + 104, FY + 46]].map(function (q) {   // 框比公式宽一圈，两个框隔开（压线检查：右括号原先压在框线上）
         var g = E.el('g', {}, fm);
-        var box = K.paint(E.el('rect', { x: q[1] - 4, y: q[2] - 28, width: 110, height: 40, rx: 8, 'stroke-width': 2 }, g), E.tint(E.HI, 16, 'var(--demo-surface)'), E.HI);
+        var box = K.paint(E.el('rect', { x: q[1] - 7, y: q[2] - 29, width: 126, height: 42, rx: 8, 'stroke-width': 2 }, g), E.tint(E.HI, 16, 'var(--demo-surface)'), E.HI);
         E.tex(g, q[1], q[2], '\\exp([\\mathcal S_' + q[0] + ']\\,\\theta_' + q[0] + ')', 22, E.INK, 'start', { w: 104, h: 44 });
         return { g: g, box: box };
       });
       var dots = E.tex(fm, X + 70, FY + 46, '\\cdots', 22, E.INK, 'start', { w: 30, h: 44 });
-      var mTex = E.tex(fm, X + 220, FY + 46, 'M', 24, E.INK, 'start', { w: 30, h: 44 });
+      var mTex = E.tex(fm, X + 234, FY + 46, 'M', 24, E.INK, 'start', { w: 30, h: 44 });
       var mNote = RK3.line(r3, X, FY + 82, [['M：所有关节都在 0° 时，手的位姿', E.MUT, 700]], 17);
       var nm = RK3.line(r3, X, FY + 122, [['指数积公式', E.HI, 900], ['（PoE）', E.INK2, 700]], 24);
       var c11 = E.el('g', {}, r3);
@@ -138,11 +138,11 @@
       var bodyG = E.el('g', {}, gB);
       K.paint(E.el('rect', { x: BC[0] - BS, y: BC[1] - BS, width: 2 * BS, height: 2 * BS, rx: 18, 'stroke-width': 3 }, bodyG), E.tint(E.HI, 22, 'var(--demo-surface)'), E.BODY);
       // 陀螺仪芯片放在身体左下角：中心往右、往上是两根小箭头
-      K.paint(E.el('rect', { x: BC[0] - 64, y: BC[1] + 14, width: 68, height: 32, rx: 7, 'stroke-width': 2 }, bodyG), E.tint(E.INK2, 30, 'var(--demo-surface)'), E.INK2);
-      E.txt(bodyG, BC[0] - 30, BC[1] + 37, '陀螺仪', 17, E.INK, 'middle', 900);
+      K.paint(E.el('circle', { cx: BC[0] - 30, cy: BC[1] + 30, r: 29, 'stroke-width': 2 }, bodyG), E.tint(E.INK2, 30, 'var(--demo-surface)'), E.INK2);   // 圆形芯片：转多少都包得住正着写的字
+      var gyroLab = E.txt(gB, 0, 0, '陀螺仪', 17, E.INK, 'middle', 900);   // 字不跟着身体转（转着的字外框大，会压到芯片框）：每帧放到芯片中心
       var bx = E.vec(gB, E.X, 4.5, { head: 14 }), by = E.vec(gB, E.Y, 4.5, { head: 14 });
       var wArc = E.arcArrow(gB, BC[0], BC[1], 118, E.OMEGA, 3.5, { head: 13 });
-      var wLab = E.halo(E.txt(gB, BC[0] - 118, BC[1] - 98, 'ω = 2 弧度/秒', 20, E.OMEGA, 'start', 900));
+      var wLab = E.halo(E.txt(gB, BC[0] + 110, BC[1] + 66, 'ω = 2 弧度/秒', 20, E.OMEGA, 'start', 900));   // 写在右下：左上会压到身体的 y 箭头
       var turnArc = E.arcArrow(gB, BC[0], BC[1], 150, E.OMEGA, 3, { head: 11 });
       var cnt = E.halo(E.txt(gB, BC[0], BC[1] + 168, '', 20, E.INK, 'middle', 900));
       var RB = E.rowKit(), rB = E.el('g', {}, s);
@@ -168,7 +168,7 @@
         var arr = E.vec(g, E.INK2, 3.5, { head: 13 }); arr.set(NX + (cx - NX) * 0.3, NY + 44, cx, 232);
         K.paint(E.el('rect', { x: cx - 120, y: 240, width: 240, height: 100, rx: 14, 'stroke-width': 2.5 }, g), E.tint(E.GOOD, 10, 'var(--demo-surface)'), E.GOOD);
         E.txt(g, cx, 280, bx_[1], 21, E.GOOD, 'middle', 900);
-        E.txt(g, cx, 314, bx_[2], 17, E.INK, 'middle', 700);
+        E.txt(g, cx, 314, bx_[2], 15, E.INK, 'middle', 700);   // 15 号：17 号时第 3 个框的字超出框
         return { g: g, arr: arr };
       });
       var footD = E.txt(gD, NX, 392, '后面几集都从这里出发', 24, E.HI, 'middle', 900);
@@ -236,6 +236,8 @@
           var k50 = Math.floor(50 * E.clamp((st - T.run[0]) / (T.run[1] - T.run[0]), 0, 1) + 1e-9), nStep = (st >= T.res ? 1 : 0);
           var steps = Math.max(nStep, k50), ang = 0.02 * steps;
           bodyG.setAttribute('transform', 'rotate(' + (-ang / D).toFixed(3) + ' ' + BC[0] + ' ' + BC[1] + ')');
+          var gx = -30, gy = 30;   // 芯片中心相对身体中心（屏幕坐标，y 朝下）
+          gyroLab.setAttribute('x', (BC[0] + gx * Math.cos(ang) + gy * Math.sin(ang)).toFixed(1)); gyroLab.setAttribute('y', (BC[1] - gx * Math.sin(ang) + gy * Math.cos(ang) + 6).toFixed(1));
           bx.set(BC[0], BC[1], BC[0] + 112 * Math.cos(ang), BC[1] - 112 * Math.sin(ang));
           by.set(BC[0], BC[1], BC[0] - 112 * Math.sin(ang), BC[1] - 112 * Math.cos(ang));
           wArc.set(-25 * D, 55 * D); E.op(wArc.g, f(st, T.omega, 0.3)); E.op(wLab, f(st, T.omega, 0.3));
