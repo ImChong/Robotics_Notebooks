@@ -12,6 +12,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/sites/metatron-nvidia.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/metatron-promptable-whole-body-execution_arxiv_2610_38027.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
@@ -73,7 +74,7 @@ flowchart TD
 | **作者（arXiv）** | Tessler, Chen, Jiang, Yifeng, Otto, Alec, Shi, Yi, Iqbal, Umar, Chechik, Gal, Peng, Xue Bin |
 | **机构（周报所述，未逐条核实）** | NVIDIA、Dollhouse Robotics |
 | **arXiv 评论栏** | （无） |
-| **开源** | arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布）（2026-11-02） |
+| **开源** | 官方提供 ProtoMotions 和 Metatron v1 权重；训练数据及完整部署范围仍待核查（2026-11-02）。 |
 | **周报所述创新点** | 冻结一个接收身体部位目标、速度和风格提示的生成式基础策略；高层技能以有状态程序逐周期生成提示，使编码智能体能够通过修改程序而不是重新训练策略来构建新技能。 |
 
 ### arXiv 摘要节选（英文原文）
@@ -82,9 +83,12 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布），无可对齐的官方代码流程。
+**待补充**：官方已发布 [ProtoMotions](https://github.com/NVlabs/ProtoMotions) 与 [Metatron v1 权重](https://huggingface.co/nvidia/Metatron-v1)；本次尚未逐文件核查运行入口及调用链，不能据此绘制源码时序图。
 
 ## 实验与评测
+
+- NVIDIA 项目页的跨栏、跌倒恢复、保龄球、网球和踢球为 G1 MuJoCo 仿真，不能视作真机成功率；SOMA 使用独立策略。
+- 真机 G1 转向通过速度、航向与定时脚部目标控制；步态和稳定性改进仅作定性评估。技能由编码智能体离线开发，运行时由普通代码生成目标。
 
 - 周报与摘要给出的数字/场景已写入上表「创新点」与摘要节选；其余实验细节、基线与成功率定义请回到论文正文。
 - 读法：先对齐任务设定、传感器与成功定义（仿真/真机），再解读 headline 数字，勿跨论文直接比较。
@@ -94,7 +98,7 @@ flowchart TD
 | 维度 | 读法 |
 |------|------|
 | **同周对照** | 见 [人形/四足周报技术地图](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)，按方向浏览同期论文 |
-| **开源状态** | arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布） |
+| **开源状态** | 已公开框架与权重，具体复现范围待核查。 |
 
 ## 结论
 
@@ -111,6 +115,8 @@ flowchart TD
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 
 ## 参考来源
+
+- [NVIDIA 官方项目页归档](../../sources/sites/metatron-nvidia.md)
 
 - [metatron-promptable-whole-body-execution_arxiv_2610_38027.md](../../sources/papers/metatron-promptable-whole-body-execution_arxiv_2610_38027.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
