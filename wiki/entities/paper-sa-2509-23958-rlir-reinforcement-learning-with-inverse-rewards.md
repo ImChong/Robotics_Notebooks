@@ -112,7 +112,7 @@ Uses inverse rewards for world model post-training.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.23958>
-- [arXiv PDF](https://arxiv.org/pdf/2509.23958)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 预备知识、§4 方法（4.1–4.3）、§5.1 实验设定。
+- [arXiv PDF](https://arxiv.org/pdf/2509.23958)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4 方法（4.1–4.3）、§5.1 实验设定。
 
 ## 推荐继续阅读
 

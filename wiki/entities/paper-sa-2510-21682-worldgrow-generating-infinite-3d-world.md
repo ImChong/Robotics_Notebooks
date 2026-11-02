@@ -43,6 +43,22 @@ Generates infinite 3D worlds.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["3D-FRONT 场景网格"] --> B["场景切块：Blender 布尔交集，得到 coarse 与 fine 两套 block 数据"]
+    B --> C["Scene-friendly SLAT：遮挡感知特征聚合，并在场景块上重训解码器 D"]
+    C --> D["训练 3D block inpainting：输入为噪声潜变量、掩码、已知区域，粗模型 Gs-c，细模型 Gs-f 与 Gl-f"]
+    D --> E["种子块（vanilla TRELLIS 采样或全掩码 inpainting）"]
+    E --> F["粗结构：Gs-c 逐块向 +X / +Y 扩展，复用邻块重叠区作上下文"]
+    F --> G["细结构：上采样粗结构，SDEdit 式加噪后由 Gs-f 去噪精化"]
+    G --> H["外观：Gl-f 逐块 latent inpainting 生成 SLAT"]
+    H --> I["重训的解码器 D 解码，得到可渲染的无限 3D 世界"]
+```
+
+图依据：论文 §4.2 Data Curation、§4.3 Scene-friendly SLAT、§4.4 3D Block Inpainting、§4.5 Infinite Scene Generation / Fig.2、Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Generates infinite 3D worlds.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.21682>
+- [arXiv PDF](https://arxiv.org/pdf/2510.21682)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminary: TRELLIS、§4 Method（4.1–4.5）、§5.1 实验设置；实验结果与附录未细读
 
 ## 推荐继续阅读
 

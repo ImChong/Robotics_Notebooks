@@ -42,6 +42,20 @@ Deep active inference with diffusion policy and multiple timescale world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["过去观测 o(t-1:t)"] --> B["扩散策略：从高斯噪声反向去噪，采样多条候选动作序列（长度 T_F）"]
+    B --> C["MTRSSM 世界模型：潜在想象，模拟每条候选序列的高 / 低层潜状态与预测观测"]
+    C --> D["计算期望自由能 EFE = 认知价值（低层后验与先验的 KL）+ 外在价值（预测观测与目标图像的特征距离）"]
+    D --> E["选 EFE 最小的序列，只执行前 T_a 步"]
+    E --> F["真实环境产生新观测"]
+    F --> A
+```
+
+图依据：论文 §III-A Overview / Fig.2、§III-C Policy Model、§III-D World Model、§III-E EFE 最小化 / Fig.3（仅画推理时的动作选择循环）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Deep active inference with diffusion policy and multiple timescale world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.23258>
+- [arXiv PDF](https://arxiv.org/pdf/2510.23258)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III Methodology（A–E）、§IV 实验开头的数据集与硬件设定；§V 结果、§VI 讨论未细读
 
 ## 推荐继续阅读
 

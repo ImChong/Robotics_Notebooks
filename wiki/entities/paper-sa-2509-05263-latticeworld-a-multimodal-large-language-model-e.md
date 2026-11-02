@@ -42,6 +42,24 @@ Takes text descriptions and visual instructions as multimodal input to create la
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["用户输入: 布局文本描述 xL<br/>+ 可选视觉条件 vL(高度图)<br/>+ 环境配置文本 xC"] --> B["场景布局生成 LLM_L (LLaMA-2-7B)<br/>视觉经 CLIP + 投影 Φ 嵌入语言空间"]
+    B --> C["符号化布局 ŷL<br/>32×32 字母矩阵"]
+    C --> D["环境配置生成 LLM_C<br/>输入 xC、Φ(vL)、ŷL"]
+    D --> E["环境配置 ŷC<br/>场景属性与智能体参数, JSON 格式"]
+    C --> F["布局解码器 ΨL<br/>二值掩码 → 拉伸与边缘混合 → 引擎读取"]
+    E --> G["配置翻译 ΨC<br/>转为引擎原生属性"]
+    F --> H["渲染引擎 UE5 程序化生成管线<br/>Render(ΨL(ŷL), ΨC(ŷC), vL)"]
+    G --> H
+    A -. vL .-> H
+    H --> I["可交互 3D 虚拟世界 W<br/>主智能体可操控, 与其他智能体交互"]
+```
+
+图依据：论文 §3 / Fig. 2、式 (1)–(3)，§4 场景布局生成、§5 环境配置、§6 渲染管线。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Takes text descriptions and visual instructions as multimodal input to create la
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.05263>
+- [arXiv PDF](https://arxiv.org/pdf/2509.05263)：已通读方法部分（实验与附录以略读为准）：§3 框架、§4 场景布局生成、§5 环境配置生成、§6 渲染管线；§7 数据集与实验略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ General, interactable, and long-horizon world simulation model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t（视频）"] --> ENC["Vision Encoder h<br/>Qwen2.5-VL-7B 视觉塔 → 潜表示 ŝ_t"]
+    ENC --> BB
+    ACT["自然语言动作 a_t<br/>（视频块级）"] --> BB
+    HIST["历史 (ŝ_1, a_1, …, ŝ_t, a_t)<br/>多轮对话格式，窗口内最近 10 轮"] --> BB
+    BB["自回归世界模型骨干 f<br/>Qwen2.5-VL-7B 语言模型 + 256 个可学习 query<br/>→ 下一潜世界状态 ŝ_t+1（256 个连续 token）"]
+    BB --> DEC
+    ACT --> T5["umT5 编码动作文本"] --> DEC
+    PREV["上一块的部分去噪上下文 ô_t"] --> DEC
+    DEC["视频扩散解码器 g<br/>Wan2.1-T2V-14B 改造，Causal Swin-DPM<br/>滑窗内两块不同噪声级，块级因果注意力<br/>潜状态经新增 cross-attention 流（零初始化）注入"]
+    DEC --> NEXT["预测下一段视频 ô_t+1"]
+    NEXT -.->|"自回归 rollout：作为下一步观测上下文"| ENC
+    subgraph TR["训练（两阶段）"]
+        S1["阶段 1 模块级：冻结 VLM（视觉编码器+骨干），<br/>把解码器适配为 Causal Swin-DPM"] --> S2["阶段 2 联合训练：GLP 生成式目标 (flow matching)<br/>VLM 冻结，只训 query 嵌入与解码器"]
+    end
+```
+
+图依据：论文 §2.1–2.3 / Fig. 1 与补充材料 §1（模型架构）、§2（训练）；rollout 回灌箭头依据式 (4)–(6)。树状规划（Fig. 3）与 WR-Arena 评测未在图中展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ General, interactable, and long-horizon world simulation model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.09057>
+- [arXiv PDF](https://arxiv.org/pdf/2511.09057)：已通读方法部分（实验与附录以略读为准）：§2 GLP 框架与设计选择、§5.3 训练、补充材料 §1 模型架构与 §2 训练（评测与其余附录略读）
 
 ## 推荐继续阅读
 

@@ -113,7 +113,7 @@ Key frame reasoning enables effective and efficient world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.21027>
-- [arXiv PDF](https://arxiv.org/pdf/2509.21027)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1–3.4）、§4.1 实验设定；结果与消融略读。
+- [arXiv PDF](https://arxiv.org/pdf/2509.21027)：已通读方法部分（实验与附录以略读为准）：§2 预备知识、§3 方法（3.1–3.4）、§4.1 实验设定；结果与消融略读。
 
 ## 推荐继续阅读
 

@@ -119,7 +119,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2509.21790>
-- [arXiv PDF](https://arxiv.org/pdf/2509.21790)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）、§4.1 实验设定；结果与消融略读。
+- [arXiv PDF](https://arxiv.org/pdf/2509.21790)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.3）、§4.1 实验设定；结果与消融略读。
 
 ## 推荐继续阅读
 

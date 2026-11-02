@@ -113,7 +113,7 @@ Generalizes real-world robot manipulation via generative visual transfer.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22407>
-- [arXiv PDF](https://arxiv.org/pdf/2509.22407)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1–2.3）、§3 实验设定与 §3.2 真机部分；附录与仿真实验略读。
+- [arXiv PDF](https://arxiv.org/pdf/2509.22407)：已通读方法部分（实验与附录以略读为准）：§2 方法（2.1–2.3）、§3 实验设定与 §3.2 真机部分；附录与仿真实验略读。
 
 ## 推荐继续阅读
 

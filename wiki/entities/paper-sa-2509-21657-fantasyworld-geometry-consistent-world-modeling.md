@@ -114,7 +114,7 @@ Geometry-consistent world modeling via unified video and 3D prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.21657>
-- [arXiv PDF](https://arxiv.org/pdf/2509.21657)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）、§4.1 实现细节；实验结果与附录略读。
+- [arXiv PDF](https://arxiv.org/pdf/2509.21657)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4.1 实现细节；实验结果与附录略读。
 
 ## 推荐继续阅读
 

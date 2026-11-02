@@ -114,7 +114,7 @@ Towards a world-omniscient world model through embodied interaction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22642>
-- [arXiv PDF](https://arxiv.org/pdf/2509.22642)：已通读方法部分（实验与附录以略读为准）：§3 WoW 世界模型、§4 自优化框架（4.1–4.3）；§2 概念综述与 §5–§8 评测、案例、下游应用仅略读或未读。
+- [arXiv PDF](https://arxiv.org/pdf/2509.22642)：已通读方法部分（实验与附录以略读为准）：§3 WoW 世界模型、§4 自优化框架（4.1–4.3）；§2 概念综述与 §5–§8 评测、案例、下游应用未读。
 
 ## 推荐继续阅读
 

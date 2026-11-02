@@ -42,6 +42,28 @@ Towards general cognitive robotics with foundation world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["自然语言目标 + 初始场景观测"] --> DEC["VLM 任务理解与分解：拆成原子子任务序列"]
+  DEC --> DESC["VLM 为每个子任务生成带约束的场景描述 / 提示词"]
+  DESC --> VID["扩散式图像到视频世界模型（实验中为 Wan 2.2 Image-to-Video Fast）：以当前帧 + 描述生成子任务短视频"]
+  subgraph ADP["机器人专用适配器（唯一需按平台训练的部分）"]
+    VID --> POSE["微调 YOLO11-Pose 逐帧提取机器人关节关键点"]
+    POSE --> FEAT["特征计算：关键点坐标 + 关节间连杆长度"]
+    FEAT --> REG["回归模型预测低层电机指令"]
+  end
+  REG --> EXEC["机器人执行子任务"]
+  EXEC --> MON["VLM 执行监控：比较执行前后两张图像，判断子任务是否完成"]
+  MON -->|"继续计划"| NEXT["进入下一个子任务"]
+  NEXT --> DESC
+  MON -->|"重试当前动作"| VID
+  MON -->|"回到高层规划"| DEC
+```
+
+图依据：论文 §IV（VLM 视觉推理）、§V（扩散世界模型）、§VI / Fig. 3（视频到动作的适配器）与 Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Towards general cognitive robotics with foundation world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.13903>
+- [arXiv PDF](https://arxiv.org/pdf/2509.13903)：已通读方法部分（§III–§VI）；实验（§VII）略读：实验设定与结果表。
 
 ## 推荐继续阅读
 

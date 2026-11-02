@@ -43,6 +43,31 @@ World modeling with dynamic modulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t（图像）"] --> DIFF["帧间差分：与 o_(t-k) 比较，阈值 ε 二值化<br/>卷积扩张周围区域得到差分掩码 M(o_t)"]
+    DIFF --> OD["差分观测 o'_t = M(o_t) · o_t"]
+    OD --> DENC["动态编码器 q(d_t | h_t, o'_t)<br/>得到动态调制器 d_t"]
+    OBS --> SENC["随机编码器 q(z_t | h_t, o_t)<br/>得到 z_t"]
+    H["RSSM 循环状态 h_t<br/>GRU：f(h_(t-1), z_(t-1), d_(t-1), a_(t-1))"] --> SENC
+    H --> DENC
+    SENC --> DEC["解码器 p(ô_t | h_t, z_t, d_t)"]
+    DENC --> DEC
+    H --> PRED["MLP 预测：ẑ_t、d̂_t、奖励 r̂_t、继续标志 ĉ_t"]
+    SENC --> PRED
+    DENC --> PRED
+    DEC --> LOSS["端到端损失<br/>L_pred + ω_dyn·L_dyn + ω_rep·L_rep + L_reg"]
+    PRED --> LOSS
+    SENC --> STATE
+    DENC --> STATE
+    H --> STATE["模型状态 s_t = {h_t, z_t, d_t}"]
+    STATE --> AC["在想象轨迹上训练 Actor-Critic<br/>（其余设置同 DreamerV3）"]
+```
+
+图依据：论文 §2.1–§2.5、式 (1)–(10)、Fig.2 总览。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ World modeling with dynamic modulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.24804>
+- [arXiv PDF](https://arxiv.org/pdf/2509.24804)：已通读方法部分（实验与附录以略读为准）：§2.1–§2.5 方法
 
 ## 推荐继续阅读
 
