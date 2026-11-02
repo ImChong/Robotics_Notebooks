@@ -43,6 +43,29 @@ Physical autoregressive model for robotic manipulation without action pretrainin
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务指令 T"] --> B["冻结 Phi + 线性投影 -> K_t 个文本 token"]
+    C["图像观测 O_0..O_n-1"] --> D["冻结 3D VAE 编码 -> 投影展平<br/>frame token"]
+    E["动作块 A_1..A_n-1 (每块 L 步)"] --> F["MLP 动作编码 -> action token"]
+    D --> G["拼成 physical token P_n = [O_n ; A_n]<br/>首帧配可学习 BOA token"]
+    F --> G
+    B --> H["因果 Transformer (沿用 NOVA, 视频预训练权重)<br/>自回归, 因果 mask: 动作 token 单向看 frame token"]
+    G --> H
+    H --> I["条件向量 Z_n"]
+    I --> J["Frame 去 token 化: 掩码 patch 集自回归 + 扩散 (NOVA 方式)"]
+    I --> K["Action-DiT: 条件向量经 cross-attention 注入去噪"]
+    J --> L["预测下一帧 O_n"]
+    K --> M["预测动作块 A_n"]
+    M --> N["环境执行, 新观测与本体感知编码回上下文"]
+    N --> C
+    L -. "训练: 逐 token 平均 Diffusion Loss; 推理: KV-cache" .-> H
+```
+
+图依据：论文 §4.1–§4.2（Tokenizer / Physical Autoregression / De-Tokenizer / Causal Mask / Loss / 训练推理）/ Fig.1、Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Physical autoregressive model for robotic manipulation without action pretrainin
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.09822>
+- [arXiv PDF](https://arxiv.org/pdf/2508.09822)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Preliminaries、§4 Method（4.1–4.2）、Table 2 实验设定
 
 ## 推荐继续阅读
 

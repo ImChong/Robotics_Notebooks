@@ -62,7 +62,7 @@ flowchart TD
     J --> L["文本对齐: 冻结视觉主干 + 2 层 transformer<br/>从头训练文本编码器 (LiT 式对比学习)"]
 ```
 
-图依据：论文 §3 Training at scale（3.1 数据、3.2 SSL 训练）、§4 Gram Anchoring、§5 Post-Training（5.1–5.3）/ Fig.12
+图依据：论文 §3（3.1 数据准备、3.2 大规模自监督训练）、§4 Gram Anchoring、§5 Post-Training（5.1–5.3）/ Fig.12
 
 ## 核心信息
 
