@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance Field Intervention: Enabling VLAs to Escape Memory Traps in Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance Field Intervention: Enabling VLAs to Escape Memory Traps in Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ Affordance Field Intervention: Enabling VLAs to Escape Memory Traps in Robotic M
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SAF["空间 Affordance 场 SAF 构建"]
+        TASK["任务指令 τ + RGB-D 观测"] --> GPT["GPT-4o 分解为有序子目标并提取目标词"]
+        GPT --> GSAM["Grounded-SAM 得 2D mask<br/>结合深度反投影为目标点云"]
+        GSAM --> VOX["体素化工作空间：目标引导场 + 避障场<br/>加权融合、距离变换 + 高斯平滑、归一化为代价场 V_SAF"]
+    end
+    VLA["VLA 策略正常执行"] --> DET{"记忆陷阱检测：末端近似静止<br/>且距目标仍远？"}
+    DET -- 否 --> VLA
+    DET -- 是 --> RB["历史回滚：回到历史缓冲中 SAF 代价最低的位置"]
+    VOX -.-> DET
+    VOX -.-> RB
+    RB --> WP["阶段1：在回滚点邻域按 SAF 取代价最低的 N 个中间航点"]
+    WP --> CAND["阶段2：逐航点查询 VLA，各生成 K 个动作块候选"]
+    CAND --> SEL["正向运动学得末端轨迹，累计 SAF 代价最小者执行"]
+```
+
+图依据：论文 §3.2（SAF 构建）/ Fig.2、§4（Method）/ Fig.3；§4.1 记忆陷阱检测、§4.2.1 历史回滚、§4.2.2 分层探索。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ Affordance Field Intervention: Enabling VLAs to Escape Memory Traps in Robotic M
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2512.07472)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2512.07472)。
 
 ## 评测与指标
 
@@ -88,6 +109,7 @@ Affordance Field Intervention: Enabling VLAs to Escape Memory Traps in Robotic M
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2512.07472>
+- [arXiv PDF](https://arxiv.org/pdf/2512.07472)：已通读方法部分（实验与附录以略读为准）：§3.2 Affordance 场构建、§4.1 记忆陷阱检测、§4.2 Affordance Field Intervention
 
 ## 推荐继续阅读
 

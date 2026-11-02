@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Open-Vocabulary Functional 3D Scene Graphs for Real-World Indoor Spaces——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Spatial） ｜ Datasets / Benchmarks（Data Modality: RGB-D/3D scene graph）**（清单未附方法摘要，此处不替原文概括贡献）。
+Open-Vocabulary Functional 3D Scene Graphs for Real-World Indoor Spaces——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Spatial） ｜ Datasets / Benchmarks（Data Modality: RGB-D/3D scene graph）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Open-Vocabulary Functional 3D Scene Graphs for Real-World Indoor Spaces——在
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：位姿 RGB-D 帧序列 {(I_i, D_i)}"] --> OBJ["RAM++ 识别物体标签 → GroundingDINO 检测物体框/mask/置信度"]
+  OBJ --> LLM1["GPT-4 给出各物体的交互元件标签<br/>（过滤不可交互物体，如 wall、bed）"]
+  LLM1 --> IE["GroundingDINO 用组合提示（如 door. handle）检测交互元件"]
+  OBJ --> FUSE["利用深度与相机投影反投影并跨视角融合<br/>→ 3D 物体候选 C_o、交互元件候选 C_ie"]
+  IE --> FUSE
+  FUSE --> CAP["节点描述：选 Top-Nv 视图裁剪 → LLaVA v1.6 描述<br/>（交互元件：多尺度放大 + 红框高亮）→ GPT-4 汇总为语言描述 L"]
+  CAP --> LOC["局部关系：空间重叠过滤 → LLM 判断刚性连接并生成关系描述"]
+  LOC --> REM["远程关系：LLM 提议候选目标 → VLM 评估可行性 → LLM 给出置信度"]
+  LOC --> G["合并局部与远程子图"]
+  REM --> G
+  G --> OUT["输出：功能性 3D 场景图 G = (O, I, R)"]
+```
+
+图依据：论文 §4.1–4.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +71,7 @@ Open-Vocabulary Functional 3D Scene Graphs for Real-World Indoor Spaces——在
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2503.19199)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2503.19199)。
 
 ## 评测与指标
 
@@ -89,6 +108,7 @@ Open-Vocabulary Functional 3D Scene Graphs for Real-World Indoor Spaces——在
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2503.19199>
+- [arXiv PDF](https://arxiv.org/pdf/2503.19199)：已通读方法部分（实验与附录以略读为准）：§3 问题定义、§4 方法（4.1–4.4）
 
 ## 推荐继续阅读
 

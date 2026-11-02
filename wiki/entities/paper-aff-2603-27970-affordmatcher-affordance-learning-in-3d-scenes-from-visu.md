@@ -40,6 +40,32 @@ AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG[RGB 图像 I<br/>含 n 个交互线索 visual signifiers b_i：人体部位 / 物体 / 交互特征] --> FI[视觉特征 F_I]
+  SC[3D 场景点云<br/>体素化 64^3，预训练 3D 模型分割出二值 mask 候选区域] --> FP[候选区域特征 F_P<br/>含动作描述 a_j]
+  subgraph IM["4.1 实例匹配与 3D 推理"]
+    CA[双向跨模态注意力<br/>W_M：signifier 引导的空间关键点特征<br/>W_R：来自 3D 上下文的推理反馈]
+  end
+  FI --> CA
+  FP --> CA
+  CA --> DIS["4.2 相异度矩阵 D<br/>W_M 与 W_R 的余弦相异度"]
+  DIS --> SOFT[软阈值：D_ij 小于 0.2 的高相似对可多次传播<br/>处理一对多对应]
+  DIS --> FF[展平并投影为 X<br/>FastFormer 式加性自注意力 → Match2Match 注意力图]
+  SOFT -.-> FF
+  FF --> HEAD[边界框与 mask 预测头]
+  HEAD --> OUT[场景中的 affordance 实例 mask]
+  subgraph LOSS["4.3 跨模态 affordance 学习（训练损失）"]
+    L1[嵌入单位超球归一化 + 正则 L_embed]
+    L2[对齐损失 L_align<br/>匹配输出对 S-CLIP 伪目标]
+  end
+  FF -.-> L2
+```
+
+图依据：论文 §4 / §4.1–§4.3、§5.1 实现细节（Fig.1 仅为任务示意；§4.3 中 Eq.9–10 两项损失图中未列）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +78,7 @@ AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.27970)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.27970)。
 
 ## 评测与指标
 
@@ -68,7 +94,7 @@ AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在�
 
 **本页只提供「AffordMatcher」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +115,7 @@ AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.27970>
+- [arXiv PDF](https://arxiv.org/pdf/2603.27970)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4 AffordMatcher（4.1 实例匹配与 3D 推理、4.2 相异度量化、4.3 跨模态学习中 Eq.7–8）、§5.1 实验设定；§3 数据集构建（AffordBridge）仅略读。
 
 ## 推荐继续阅读
 

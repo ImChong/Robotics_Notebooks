@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,20 @@ GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Ac
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：单视角 RGB-D (I, D) + 语言指令 l（含目标物体 o_B）"] --> EX["对象与部件提取<br/>VLM 枚举物体名 → SAM3 分割并裁剪 → VLM 为每个物体生成部件候选"]
+    EX --> SEL["工具与部件选择（语义空间）<br/>VLM 选出工具 o_A、目标 o_B，以及抓取部件 p_G、工具功能部件 p_A、目标部件 p_B"]
+    SEL --> REC["3D 重建与配准<br/>SAM3 分割 → 深度裁剪转点图 → SAM3D 重建网格 → ICP 刚体配准到点图"]
+    REC --> MV["多视角渲染（K=8）→ SAM3 按部件描述分割<br/>复杂描述时用 VLM 转包围框作回退"]
+    MV --> FU["掩码反投影到网格并取并集<br/>DBSCAN 聚类，保留最大簇 = 3D 亲和区域"]
+    FU --> ACT["仿真实验中的执行：约束定义的关键位姿<br/>Contact-GraspNet 在抓取区域采样抓取 + RRT-Connect 运动规划"]
+```
+
+图依据：论文 §3、§4.1、§4.2、Fig. 1–2；末节执行链路来自 §5.2 仿真实验设置（Skill Library）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +65,7 @@ GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Ac
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2606.30632)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法模块与数据流见上方「流程总览」（依据论文方法部分）。实验请读 [原文](https://arxiv.org/abs/2606.30632)。
 
 ## 评测与指标
 
@@ -67,7 +81,7 @@ GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Ac
 
 **本页只提供「GROW2」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 清单可确证的只有标题、出处与分类标签；方法流程见「流程总览」，实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +102,7 @@ GROW2: Grounding Which and Where for Robot Tool Use——在清单中归入 **Ac
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2606.30632>
+- [arXiv PDF](https://arxiv.org/pdf/2606.30632)：已通读方法部分（实验与附录以略读为准）：§3 问题设定、§4 Method（4.1–4.2）、§5.2 仿真实验设置（Skill Library）
 
 ## 推荐继续阅读
 
