@@ -40,6 +40,29 @@ DORA: Object Affordance-Guided Reinforcement Learning for Dexterous Robotic Mani
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph GEN["功能性抓取位姿生成（§III-B）"]
+    AM["物体 affordance map"] --> VT["Voting-Based Grasp Classification<br/>逐接触点取最近邻 affordance 标签，<br/>逐指多数投票，再按手指权重加权投票"]
+    GD["灵巧手抓取数据<br/>能量 E = EDFC + EHO + ERobot 优化<br/>附 contact semantic map"] --> VT
+    VT --> CAND["带功能类别的抓取候选集 G"]
+  end
+  subgraph RLP["Affordance-Guided RL 管线（§III-C）"]
+    CAND --> FIL["Motion-Feasibility Filtering<br/>运动规划检查可达且无碰撞"]
+    FIL -->|"Gvalid 作为约束与先验"| SAC["SAC 策略（actor-critic）"]
+    ST["状态：手/臂本体感知、物体位姿、<br/>affordance map、抓取候选、子任务阶段"] --> SAC
+    SAC --> ACT["wrist 位姿增量（Jacobian 伪逆 IK 转关节速度）<br/>+ 手关节目标位置"]
+    SUB["Sub-task Transition<br/>终止条件触发时切换子任务与奖励"] --> SAC
+  end
+  subgraph RW["奖励设计（§III-D）"]
+    RF["R = wa·Raffordance + wt·Rtask − wp·Rpenalty"] --> SAC
+  end
+```
+
+图依据：论文 §III-A–D / Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ DORA: Object Affordance-Guided Reinforcement Learning for Dexterous Robotic Mani
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2505.14819)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2505.14819)。
 
 ## 评测与指标
 
@@ -88,6 +111,7 @@ DORA: Object Affordance-Guided Reinforcement Learning for Dexterous Robotic Mani
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2505.14819>
+- [arXiv PDF](https://arxiv.org/pdf/2505.14819)：已通读方法部分（实验与附录以略读为准）：§III 问题定义与方法（A–D）及实验任务设定
 
 ## 推荐继续阅读
 

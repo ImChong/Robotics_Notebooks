@@ -40,6 +40,27 @@ SeqAffordSplat: Scene-level Sequential Affordance Reasoning on 3D Gaussian Splat
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  Q["高层语言指令 Qinstr"] --> LLM["LLM<br/>自回归生成文本与 SEG token"]
+  G["3DGS 场景"] --> Enc["3DGS Encoder<br/>PointNet 系，输入位置/旋转/尺度"]
+  Enc -->|"几何特征 Fgeo"| Dec
+  G -->|"多视角渲染 RGB"| VFM["冻结 2D VFM<br/>DINOv2 / CLIP"]
+  VFM --> Lift["免学习聚合<br/>按渲染权重提升到各 Gaussian"]
+  Lift -->|"语义特征 Fsem，多尺度加性融合"| Dec
+  LLM -->|"每个 SEG 的隐状态 hseg 作为 query"| Dec["Conditional Affordance Decoder<br/>query 式分割"]
+  Dec --> Masks["按顺序的 3D affordance mask 序列"]
+  subgraph PRE["Conditional Geometric Reconstruction 预训练"]
+    GT["GT mask"] --> ME["mask encoder → 条件嵌入 e_mask"]
+    ME -->|"作为 query 注意 Fgeo"| RC["decoder 重建 mask"]
+  end
+  RC -.->|"初始化"| Enc
+```
+
+图依据：论文 SeqSplatNet 架构 / Conditional Geometric Reconstruction Pre-train / VFM Semantic Feature Injection 各节 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +73,7 @@ SeqAffordSplat: Scene-level Sequential Affordance Reasoning on 3D Gaussian Splat
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2507.23772)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2507.23772)。
 
 ## 评测与指标
 
@@ -89,6 +110,7 @@ SeqAffordSplat: Scene-level Sequential Affordance Reasoning on 3D Gaussian Splat
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2507.23772>
+- [arXiv PDF](https://arxiv.org/pdf/2507.23772)：已通读方法部分（实验与附录以略读为准）：SeqSplatNet 架构、Conditional Geometric Reconstruction Pre-train、VFM Semantic Feature Injection 与实验设定两节
 
 ## 推荐继续阅读
 

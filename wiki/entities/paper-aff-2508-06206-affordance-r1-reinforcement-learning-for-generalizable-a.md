@@ -40,6 +40,31 @@ Affordance-R1: Reinforcement Learning for Generalizable Affordance Reasoning in 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    DS["ReasonAff 数据集<br/>基于 Instruct-Part，GPT-4o 结合 HOI 图像改写指令<br/>由 affordance mask 取框与质心点作标注"]
+    IN["输入：图像 I + 隐式文本指令 T"]
+    subgraph S1["阶段 1：推理模型（GRPO，无 SFT）"]
+        PM["Policy Model 输出<br/>think → rethink → answer（Box / Points / Affordance）"]
+        G["同一问题采样 N 个回答<br/>奖励归一化得到组内优势 A_i<br/>并带 KL 约束（参考模型）"]
+        RW["奖励<br/>(a) Format：think / rethink / answer 格式<br/>(b) Perception：IoU、L1、Box-Num<br/>(c) Recognition：word2vec 文本相似度"]
+        PM --> RW --> G -->|策略优化| PM
+    end
+    subgraph S2["阶段 2：分割模型"]
+        EX["从 answer 中提取 bounding box B 与点 P"]
+        SG["作为提示输入 SAM 等分割模型"]
+        EX --> SG
+    end
+    DS -->|训练数据| PM
+    IN --> PM
+    PM -->|推理时| EX
+    SG --> OUT["输出：细粒度 affordance mask"]
+```
+
+图依据：论文 ReasonAff 数据集构建小节（Fig. 2b / Fig. 3）、§4 Affordance-R1 Framework（§4.1 Overview、§4.2 Architecture、§4.3 GRPO 与奖励函数，Fig. 4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +77,7 @@ Affordance-R1: Reinforcement Learning for Generalizable Affordance Reasoning in 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2508.06206)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2508.06206)。
 
 ## 评测与指标
 
@@ -89,6 +114,7 @@ Affordance-R1: Reinforcement Learning for Generalizable Affordance Reasoning in 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2508.06206>
+- [arXiv PDF](https://arxiv.org/pdf/2508.06206)：已通读方法部分（实验与附录以略读为准）：数据集构建（ReasonAff）、§4 Affordance-R1 Framework（§4.1–4.3）
 
 ## 推荐继续阅读
 

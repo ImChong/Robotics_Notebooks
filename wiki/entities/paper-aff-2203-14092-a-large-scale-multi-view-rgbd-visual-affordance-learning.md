@@ -40,6 +40,25 @@ A Large Scale Multi-View RGBD Visual Affordance Learning Dataset——在清单�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Washington RGB-D 多视角物体数据集<br/>51 类，转台采集，30/45/60° 三个机位"] --> B["每 5 帧取 1 帧，避免帧间重叠"]
+    B --> C["筛选 37 类适合 affordance 的物体<br/>剔除水果、蔬菜等"]
+    C --> D["定义 15 类 affordance<br/>沿用综述 12 类 + 新增 absorb / grip / stapling"]
+    D --> E["按物体功能为每个类别指定 affordance<br/>每类至多 4 个标签"]
+    E --> F["LabelMe 在 RGB 图上画多边形标注<br/>30 名标注员，每类两人标注"]
+    F --> G["两位专家核验"]
+    F --> H["标注映射到对应深度图"]
+    G --> I["47210 张 RGBD 图 / 51304 条 affordance 标注"]
+    H --> I
+    I --> J["Affordance 分割基准<br/>U-Net / PSPNet / Segmenter / HRViT 等，80/10/10 划分"]
+    I --> K["多标签 Affordance 识别基准<br/>VGG-16 / ResNet-50 / InceptionV3，5 折 70/30"]
+```
+
+图依据：论文 §3（Dataset Curation）、§3.1、§4（Benchmarking）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ A Large Scale Multi-View RGBD Visual Affordance Learning Dataset——在清单�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2203.14092)。
+清单本身只给出标题、出处与分类标签；数据集构建与基准流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2203.14092)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ A Large Scale Multi-View RGBD Visual Affordance Learning Dataset——在清单�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2203.14092>
+- [arXiv PDF](https://arxiv.org/pdf/2203.14092)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Dataset Curation（含 3.1/3.2）、§4 Benchmarking（4.1/4.2）
 
 ## 推荐继续阅读
 

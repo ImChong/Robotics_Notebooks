@@ -40,6 +40,29 @@ Resource-Efficient Affordance Grounding with Complementary Depth and Semantic Pr
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EXO["exocentric 图像 + 深度<br/>仅训练期"] --> EB["冻结图像编码器 + BPM 块"]
+    EGO["egocentric 图像 + 深度"] --> GB["冻结图像编码器 + BPM 块<br/>逐层把深度特征融入 RGB 中间层"]
+    LBL["动作标签文本"] --> TENC["冻结文本编码器<br/>+ N 个可学习 prompt token + Linear"]
+    TENC --> FTX["文本特征 Ftext"]
+    GB --> FEGO["RGB-D 融合特征 Fego"]
+    EB --> FEXO["Fexo"]
+    FEGO --> PT["Pixel-Text 融合 → Fp"]
+    FTX --> PT
+    FEGO --> TFG["Text Feature Guidance<br/>文本引导的注意力头加权 → Ft"]
+    FTX --> TFG
+    PT --> MIX["Ff = α·Ft + (1-α)·Fp"]
+    TFG --> MIX
+    MIX --> OUT["affordance 激活图<br/>推理阶段只保留 ego 分支与文本分支"]
+    FEXO -.-> LCOS["训练损失：cosine 对齐 exo/ego 特征<br/>+ 分类损失 + 文本分类损失 + 集中损失"]
+    FEGO -.-> LCOS
+```
+
+图依据：论文 §III-A 概述 / Fig.3、§III-B BPM / Fig.4、§III-C TFG、§III-D 训练与推理
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ Resource-Efficient Affordance Grounding with Complementary Depth and Semantic Pr
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2503.02600)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2503.02600)。
 
 ## 评测与指标
 
@@ -88,6 +111,7 @@ Resource-Efficient Affordance Grounding with Complementary Depth and Semantic Pr
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2503.02600>
+- [arXiv PDF](https://arxiv.org/pdf/2503.02600)：已通读方法部分（实验与附录以略读为准）：§III（Overview、Bypass Prompt Module、Text Feature Guidance、Training and Inference）；§IV 实验略读
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-WorldAfford: Affordance Grounding based on Natural Language Instructions——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+WorldAfford: Affordance Grounding based on Natural Language Instructions——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,29 @@ WorldAfford: Affordance Grounding based on Natural Language Instructions——�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：自然语言指令 t + 场景图像 I"] --> OR["Object-Oriented Reasoning Prompting<br/>(LLM, GPT-4) 输出 k 个候选物体类别 O"]
+    OR --> FL["filter 函数：去除多余解释文字"]
+    FL --> AR["Action-Oriented Reasoning Prompting<br/>从预定义谓词表 lp 选谓词，得子动作集 A"]
+    I --> SAM["SAM：生成 N 个分割 mask"]
+    SAM --> CLIP["CLIP：mask 区域与物体类别算相似度<br/>概率高于阈值的为有效 mask"]
+    FL --> CLIP
+    CLIP --> FV["有效 mask 构成 full-view 前景掩码"]
+    FV --> MASK["掩码屏蔽背景后的图像"]
+    I --> MASK
+    MASK --> DINO["DINO-ViT（含 WCB 加权上下文广播）"]
+    DINO --> TL["Transformation Layer：前馈层 + 两层卷积"]
+    TL --> HEAD["1x1 卷积 → 各动作类别的 affordance map"]
+    AR --> AGG["聚合 LLM 给出的动作类别对应的 map 并归一化到 0-1"]
+    HEAD --> AGG
+    AGG --> OUT["输出：affordance map"]
+```
+
+图依据：论文 §4 / Fig.5（框架）、§4.1-4.3（Eq.1-4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ WorldAfford: Affordance Grounding based on Natural Language Instructions——�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2405.12461)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2405.12461)。
 
 ## 评测与指标
 
@@ -88,6 +111,7 @@ WorldAfford: Affordance Grounding based on Natural Language Instructions——�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2405.12461>
+- [arXiv PDF](https://arxiv.org/pdf/2405.12461)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 任务定义、§4.1 ARCoT 提示、§4.2 零样本多物体接地、§4.3 affordance 区域定位、§5.1-5.2 训练与实现细节
 
 ## 推荐继续阅读
 

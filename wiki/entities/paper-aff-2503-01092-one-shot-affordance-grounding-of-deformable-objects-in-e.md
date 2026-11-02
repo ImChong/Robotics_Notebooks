@@ -40,6 +40,28 @@ One-Shot Affordance Grounding of Deformable Objects in Egocentric Organizing Sce
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["单张 egocentric RGB 图像 Iego"] --> DINO["DINOv2 视觉编码器<br/>patch 特征 Fv + 全局 CLS token"]
+    IMG --> ORB["OEKFM：ORB 特征匹配提取可变形物体关键点"]
+    LBL["图像标签 L"] --> DEF
+    DINO --> DEF["DefoSEM<br/>标签引导的空间门控 + 通道门控"]
+    DEF --> META["CoCoOp 的 Meta-Net<br/>生成实例条件 prompt"]
+    META --> CLIP["CLIP 文本编码器<br/>prompt 与 affordance 标签 → 文本嵌入 Ft"]
+    DEF --> DEC["Transformer 解码器"]
+    CLIP --> DEC
+    DINO -. "CLS token" .-> DEC
+    DEC --> FP["初始 affordance 预测 Fpred"]
+    ORB --> GK["高斯核 → 关键点特征区域 M<br/>归一化到 M' ∈ [1, 2]"]
+    FP --> MUL["P = Fpred ⊙ M'"]
+    GK --> MUL
+    MUL --> OUT["clamp 到 [0, 1] → 最终预测 Pfinal"]
+```
+
+图依据：论文 §III 概述 / Fig.2、§III-A DefoSEM、§III-B OEKFM、§III-C Instance-conditional Prompt
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +74,7 @@ One-Shot Affordance Grounding of Deformable Objects in Egocentric Organizing Sce
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2503.01092)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2503.01092)。
 
 ## 评测与指标
 
@@ -89,6 +111,7 @@ One-Shot Affordance Grounding of Deformable Objects in Egocentric Organizing Sce
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2503.01092>
+- [arXiv PDF](https://arxiv.org/pdf/2503.01092)：已通读方法部分（实验与附录以略读为准）：§III（概述、DefoSEM、OEKFM、Instance-conditional Prompt）；§IV 数据集 AGDDO15 与 §V 实验仅略读
 
 ## 推荐继续阅读
 

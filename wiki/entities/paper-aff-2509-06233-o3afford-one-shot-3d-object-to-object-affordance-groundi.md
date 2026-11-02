@@ -40,6 +40,37 @@ O3Afford: One-Shot 3D Object-to-Object Affordance Grounding for Generalizable Ro
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["输入：源物体与目标物体的多视角 RGB-D 观测"]
+    subgraph A["(a) Semantic Point Cloud"]
+        D["DINOv2 提取多视角 2D 特征"]
+        P["投影并融合到各自点云（无需额外训练）<br/>得到带语义特征的 P_src / P_tgt"]
+        D --> P
+    end
+    subgraph B["(b) One-Shot Affordance Grounding"]
+        E["Point Cloud Encoder<br/>FPS 选 patch 中心 + kNN 成 patch + PointNet<br/>加源/目标 one-hot 标记"]
+        J["Joint-attention Transformer Decoder<br/>源↔目标双向 cross-attention（8 头）"]
+        I["最近邻插值回逐点 + MLP 投影头"]
+        E --> J --> I
+    end
+    subgraph C["(c) Affordance-Based Manipulation"]
+        L["LLM 依任务描述生成 Python 约束函数 S_i<br/>输入点云与 affordance 图"]
+        S["求解器优化源物体 6-DoF 变换 T<br/>min Σ λ_i · S_i"]
+        L --> S
+    end
+    IN --> D
+    P --> E
+    I --> AM["输出：逐点 affordance 图 A_src / A_tgt"]
+    AM --> L
+    S --> R["机器人执行"]
+    TASK["用户任务描述"] --> L
+```
+
+图依据：论文 §4 Methodology（§4.1 Overview、§4.2 Semantic Point Cloud、§4.3 One-Shot Affordance Grounding、§4.4 Affordance-Based Manipulation，Fig. 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +82,7 @@ O3Afford: One-Shot 3D Object-to-Object Affordance Grounding for Generalizable Ro
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2509.06233)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2509.06233)。
 
 ## 评测与指标
 
@@ -88,6 +119,7 @@ O3Afford: One-Shot 3D Object-to-Object Affordance Grounding for Generalizable Ro
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2509.06233>
+- [arXiv PDF](https://arxiv.org/pdf/2509.06233)：已通读方法部分（实验与附录以略读为准）：§3 Problem Formulation、§4 Methodology、§5.1 实验设置
 
 ## 推荐继续阅读
 

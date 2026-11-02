@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-OVAL-Prompt: Open-Vocabulary Affordance Localization for Robot Manipulation through LLM Affordance-Grounding——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+OVAL-Prompt: Open-Vocabulary Affordance Localization for Robot Manipulation through LLM Affordance-Grounding——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,23 @@ OVAL-Prompt: Open-Vocabulary Affordance Localization for Robot Manipulation thro
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：RGB 图像 + 任务描述 + 物体/affordance 列表"] --> DET["VLM (VLPart)：检测并列出图中物体<br/>丢弃置信度低于 50% 的检测"]
+    DET --> OBJ["LLM (GPT-4)：Object Prompt<br/>从物体列表中选出能完成任务的物体 + Reason"]
+    OBJ --> PART["LLM：询问与任务相关的物体部件名"]
+    PART --> SEG["VLM 对该部件做分割，生成二值 mask"]
+    SEG --> CHK{"部件分割成功?"}
+    CHK -- 否 --> ALT["重新询问 LLM：给出备选部件名<br/>(如 cup body → cup side)"]
+    ALT --> SEG
+    CHK -- 是 --> MASK["输出：affordance 二值 mask"]
+    MASK --> ROBOT["实机演示：mask + 深度图 → DexNet 建议抓取<br/>→ 改为 top-down 抓取 → MoveIt 执行"]
+```
+
+图依据：论文 §IV（OVAL-Prompt）、§V-B（机器人演示）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +68,7 @@ OVAL-Prompt: Open-Vocabulary Affordance Localization for Robot Manipulation thro
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2404.11000)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2404.11000)。
 
 ## 评测与指标
 
@@ -88,6 +105,7 @@ OVAL-Prompt: Open-Vocabulary Affordance Localization for Robot Manipulation thro
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2404.11000>
+- [arXiv PDF](https://arxiv.org/pdf/2404.11000)：已通读方法部分（实验与附录以略读为准）：§I-III 问题定义、§IV OVAL-Prompt（VLM/LLM）、§V 实验设定与机器人演示、消融
 
 ## 推荐继续阅读
 

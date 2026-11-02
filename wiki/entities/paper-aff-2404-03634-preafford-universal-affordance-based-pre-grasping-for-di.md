@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-PreAfford: Universal Affordance-Based Pre-Grasping for Diverse Objects and Environments——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+PreAfford: Universal Affordance-Based Pre-Grasping for Diverse Objects and Environments——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ PreAfford: Universal Affordance-Based Pre-Grasping for Diverse Objects and Envir
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["输入：物体 + 环境点云 O"] --> CHK["必要性检查：grasping 模块的 A2/P2 生成抓取提案<br/>C2 打分取平均得成功率 ĉ2"]
+    CHK --> D{"ĉ2 超过阈值?"}
+    D -- 是 --> GRASP["grasping 模块：A2 选接触点，P2 (cVAE) 生成夹爪朝向<br/>C2 评分，执行得分最高的抓取"]
+    D -- 否 --> A1["pre-grasping 模块：A1 对每个接触点算 affordance<br/>取 top n1 点"]
+    A1 --> P1["P1 (cVAE) 为每点生成 m1 个推动位移 Δx1"]
+    P1 --> C1["C1 评估 (p1, Δx1)，argmax 选出最优推动并执行"]
+    C1 --> NEW["物体姿态改变，得到新点云 O2"]
+    NEW --> CHK
+    GRASP --> DONE["输出：抓取执行"]
+    subgraph TRAIN["训练（relay，与推理方向相反）"]
+        T1["先在仿真数据上训练 grasping 模块"] --> T2["grasping 模块给出 ĉ2 前后差作为奖励信号"]
+        T2 --> T3["再训练 pre-grasping 模块"]
+    end
+```
+
+图依据：论文 §III-B / Fig.3（框架与 relay）、§III-D（推理四阶段与闭环控制）、§III-E（训练顺序）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ PreAfford: Universal Affordance-Based Pre-Grasping for Diverse Objects and Envir
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2404.03634)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2404.03634)。
 
 ## 评测与指标
 
@@ -88,6 +109,7 @@ PreAfford: Universal Affordance-Based Pre-Grasping for Diverse Objects and Envir
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2404.03634>
+- [arXiv PDF](https://arxiv.org/pdf/2404.03634)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法全部（预备概念、框架、网络结构、推理、损失、数据采集）、§IV-A/B 仿真设定与基线
 
 ## 推荐继续阅读
 

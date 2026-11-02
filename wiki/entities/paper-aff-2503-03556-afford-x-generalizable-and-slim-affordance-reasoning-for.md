@@ -40,6 +40,36 @@ Afford-X: Generalizable and Slim Affordance Reasoning for Task-oriented Manipula
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["图像 Xv"] --> VE["预训练视觉编码器"]
+    TXT["任务描述 Xl"] --> TE["文本编码器"]
+    VE --> FV["视觉特征 Fv"]
+    TE --> FT["文本特征 Ft"]
+    FT --> VA["VA 模块<br/>强调任务动作的文本特征"]
+    VA --> FTP["增强文本特征 Ft'"]
+    FTP --> BF["BF 模块<br/>视觉-文本双向融合"]
+    FV --> BF
+    BF --> ENC["Transformer 编码器<br/>全局自注意力"]
+    ENC --> DEC["Transformer 解码器<br/>可学习 object queries"]
+    DEC --> HEAD["并行输出头"]
+    HEAD --> BOX["边界框 Bpred"]
+    HEAD --> MASK["分割掩码 Mpred"]
+    HEAD --> PREF["偏好分数 Spred<br/>由 no-object logit 得到"]
+    subgraph DIST["训练：名词-代词蒸馏"]
+        T["教师模型<br/>输入含物体名词的描述"] --> MB["记忆库 + K-means 聚类中心"]
+        MB --> CS["学生模型 cluster selector<br/>最近邻原型替换代词特征"]
+        T --> KL["soft binary target loss<br/>KL 对齐教师与学生 logits"]
+        KL --> S["学生模型<br/>输入无类别描述"]
+        CS --> S
+    end
+    S --> INF["推理：仅用学生模型 + 固定记忆库"]
+```
+
+图依据：论文 §III-B / Fig.4（整体结构）、§III-C / Fig.5（名词-代词蒸馏）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +81,7 @@ Afford-X: Generalizable and Slim Affordance Reasoning for Task-oriented Manipula
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2503.03556)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2503.03556)。
 
 ## 评测与指标
 
@@ -88,6 +118,7 @@ Afford-X: Generalizable and Slim Affordance Reasoning for Task-oriented Manipula
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2503.03556>
+- [arXiv PDF](https://arxiv.org/pdf/2503.03556)：已通读方法部分（实验与附录以略读为准）：§III（III-A 问题定义、III-B 模型结构、III-C 名词-代词蒸馏、III-E 小结）；VA 模块细节仅略读
 
 ## 推荐继续阅读
 

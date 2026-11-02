@@ -40,6 +40,40 @@ Towards Affordance-Aware Robotic Dexterous Grasping with Human-like Priors——
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph S1["阶段 1：Human Hand Trajectory Imitating"]
+        H["OakInk2 人手运动数据（约 2,200 条右手序列）"]
+        PH["基策略 π^H<br/>奖励：指尖关键点模仿 + 动作平滑<br/>状态：机器人状态 + 物体状态 + 点云"]
+        H --> PH
+    end
+    subgraph NAA["Negative Affordance-aware Segmentation（离线，每物体一次）"]
+        T["过程式纹理化网格 → 六个方向渲染多视图图像"]
+        G["GPT-4V 生成负 affordance 描述<br/>如 blade part"]
+        SM["SAM 网格点提示 + NMS 得到候选 mask 集"]
+        CL["模糊 mask 外区域 → CLIP 与文本相似度最高者为分割结果"]
+        N["投影到 3D 点云得到负 affordance N_t"]
+        T --> G --> CL
+        T --> SM --> CL
+        CL --> N
+    end
+    subgraph S2["阶段 2：Affordance-aware Residual Learning"]
+        TP["状态式教师策略 π^T（PPO）<br/>输入含物体状态与 N_t，学习残差动作<br/>奖励含 r_n：惩罚靠近负 affordance"]
+        ACT["最终动作 a = π^H + π^T（冻结 π^H）"]
+        ST["视觉式学生策略 π^S<br/>输入：机器人状态 + 点云 + N_t<br/>DAgger 从教师蒸馏"]
+        TP --> ACT
+        TP --> ST
+    end
+    PH -->|冻结| ACT
+    N --> TP
+    N --> ST
+    ST --> OUT["部署：视觉式灵巧抓取策略"]
+```
+
+图依据：论文 §3 Methodology（§3.1 Human Hand Trajectory Imitating、§3.2 Negative Affordance-aware Segmentation、§3.3 Affordance-aware Residual Learning，Fig. 2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +85,7 @@ Towards Affordance-Aware Robotic Dexterous Grasping with Human-like Priors——
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2508.08896)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2508.08896)。
 
 ## 评测与指标
 
@@ -88,6 +122,7 @@ Towards Affordance-Aware Robotic Dexterous Grasping with Human-like Priors——
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2508.08896>
+- [arXiv PDF](https://arxiv.org/pdf/2508.08896)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.3）、§4.1–4.3 数据集 / 指标 / 实现细节
 
 ## 推荐继续阅读
 

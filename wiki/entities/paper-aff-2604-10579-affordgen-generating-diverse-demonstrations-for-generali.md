@@ -40,6 +40,24 @@ AffordGen: Generating Diverse Demonstrations for Generalizable Object Manipulati
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SD["单条专家示范"] --> PRE["源示范预处理：抓取时刻 t_grasp、技能段 τ_s<br/>affording point 与 function point 关键点<br/>SAM2 分割点云，去背景并 FPS 下采样"]
+    MESH["大规模 3D 网格（数据集或 3D 生成模型）"] --> NORM["6D 位姿估计归一化到规范空间<br/>多视角并行渲染"]
+    PRE --> COR["DINOv2 特征余弦相似度做 3D 网格语义对应<br/>加权平均得目标关键点 x'"]
+    NORM --> COR
+    COR --> RP["关键点约束的轨迹重放：<br/>抓取段 τ_g 相对 affording point，技能段相对 function point 迁移"]
+    RP --> TP["过渡段：运动规划或球面线性插值"]
+    RP --> PC["Point cloud digital cousin：仿真渲染机器人与物体点云<br/>替换源示范中的对应部分，IK 求关节位置"]
+    TP --> DATA["大规模多样化演示数据集"]
+    PC --> DATA
+    DATA --> POL["训练闭环视觉运动策略"]
+```
+
+图依据：论文 §3.1 Problem Formulation / §3.2 Source Demonstration Pre-processing / §3.3 Semantic Correspondence on 3D Meshes / §3.4 Diverse Demonstration Generation / Fig.1、3–5（策略训练仅见摘要表述）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +69,7 @@ AffordGen: Generating Diverse Demonstrations for Generalizable Object Manipulati
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2604.10579)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2604.10579)。
 
 ## 评测与指标
 
@@ -88,6 +106,7 @@ AffordGen: Generating Diverse Demonstrations for Generalizable Object Manipulati
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2604.10579>
+- [arXiv PDF](https://arxiv.org/pdf/2604.10579)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4、§4.1 实验设置
 
 ## 推荐继续阅读
 

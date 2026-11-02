@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordDexGrasp: Open-set Language-guided Dexterous Grasp with Generalizable-Instructive Affordance——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordDexGrasp: Open-set Language-guided Dexterous Grasp with Generalizable-Instructive Affordance——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ AffordDexGrasp: Open-set Language-guided Dexterous Grasp with Generalizable-Inst
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：场景点云 O + RGB 图像 I + 语言指令 C"] --> M["阶段 1：意图预理解<br/>MLLM (GPT-4o)，CoT + 视觉提示"]
+  M --> CUE["关键线索：物体类别、意图、接触部位、抓取方向（离散为 6 个方向）"]
+  CUE --> SENT["整理为一句话，如 use the mug from the left by contacting the handle"]
+  SENT --> AFM["阶段 2：Affordance Flow Matching (AFM)<br/>PointNet++ 点云 + CLIP 语言 + MLP 方向/时间<br/>→ Perceiver IO → 速度场，由噪声迭代得到 affordance"]
+  IN -->|"点云"| AFM
+  AFM --> GFM["阶段 3：Grasp Flow Matching (GFM)<br/>以 MLLM 输出与 affordance 为条件生成灵巧手位姿 (r, t, q)"]
+  SENT --> GFM
+  GFM --> OPT["Affordance 引导的抓取优化（非参数测试时适配）<br/>affordance 接触/指尖损失 + 穿透/自穿透/关节限位损失"]
+  OPT --> OUT["输出：与意图对齐的灵巧抓取位姿"]
+  TRN["训练：AFM 与 GFM 先后独立训练"] -.-> AFM
+  TRN -.-> GFM
+```
+
+图依据：论文 §3.1–3.2.4 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ AffordDexGrasp: Open-set Language-guided Dexterous Grasp with Generalizable-Inst
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2503.07360)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2503.07360)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ AffordDexGrasp: Open-set Language-guided Dexterous Grasp with Generalizable-Inst
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2503.07360>
+- [arXiv PDF](https://arxiv.org/pdf/2503.07360)：已通读方法部分（实验与附录以略读为准）：§3 Affordance Dexterous Grasp Framework（3.1 affordance 表示、3.2.1–3.2.4）
 
 ## 推荐继续阅读
 

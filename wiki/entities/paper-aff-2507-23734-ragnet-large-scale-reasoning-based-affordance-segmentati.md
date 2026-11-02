@@ -40,6 +40,32 @@ RAGNet: Large-scale Reasoning-based Affordance Segmentation Benchmark towards Ge
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph DATA["RAGNet 数据构建（§3）"]
+    S["公开数据集<br/>HANDAL / GraspNet / Open-X 等"] --> A["多种模型与人工标注<br/>得到抓取导向 affordance mask"]
+    A --> TI["模板 + GPT-4 改写<br/>生成推理式指令"]
+  end
+  subgraph VLM["AffordanceVLM（§4.1，基于 LISA）"]
+    IMG["图像"] --> VE["ViT-CLIP 图像编码器 + 线性投影"]
+    INS["指令 + You are an embodied robot"] --> TK["文本 tokenizer"]
+    VE --> LLM["LLM Vicuna-7B"]
+    TK --> LLM
+    LLM -->|"AFF 与 SEG token 的 mask embedding"| SAM["SAM 作为 mask 解码器"]
+    SAM --> M2D["2D affordance mask"]
+  end
+  subgraph POSE["Pose Generator（§4.2）"]
+    M2D --> PR["mask 筛选图像点 + 深度<br/>经相机内外参投影到 3D"]
+    PR --> GM["抓取模型生成抓取位置"]
+    GM --> G["夹爪到位并抓取"]
+  end
+  TI -.->|"训练数据"| LLM
+```
+
+图依据：论文 §3 / §4.1 / §4.2 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +78,7 @@ RAGNet: Large-scale Reasoning-based Affordance Segmentation Benchmark towards Ge
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2507.23734)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2507.23734)。
 
 ## 评测与指标
 
@@ -89,6 +115,7 @@ RAGNet: Large-scale Reasoning-based Affordance Segmentation Benchmark towards Ge
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2507.23734>
+- [arXiv PDF](https://arxiv.org/pdf/2507.23734)：已通读方法部分（实验与附录以略读为准）：§3（数据构建，3.3 起略读）、§4 AffordanceNet（4.1 AffordanceVLM、4.2 Pose Generator）
 
 ## 推荐继续阅读
 

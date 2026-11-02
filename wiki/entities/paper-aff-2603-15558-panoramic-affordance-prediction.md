@@ -40,6 +40,38 @@ Panoramic Affordance Prediction——在清单中归入 **Perception（Scope: Sc
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN[ERP 全景图 I_ERP + 任务描述 T] --> GRID
+  subgraph RVR["4.2 递归视觉路由 Recursive Visual Routing via Grid Prompting"]
+    GRID[叠加 4x3 数字网格（编号 1 至 12）<br/>全景图先被大幅降采样]
+    VLM[VLM 输出目标物体文本描述 T_obj<br/>并选择含目标的网格编号]
+    JUDGE{目标跨多个网格？}
+    CROP[目标仅在单个网格内：裁剪该网格<br/>重叠新网格再递归，降采样比逐步减小]
+    GRID --> VLM --> JUDGE
+    JUDGE -->|否，子尺度目标| CROP --> GRID
+  end
+  JUDGE -->|是，尺度足够，终止递归| GAZE
+  subgraph AG["4.3 自适应注视 Adaptive Gaze（免训练域适配）"]
+    GAZE[视线：切点对准网格中心经纬度<br/>焦距：按网格位置与大小自适应缩放 FoV]
+    PROJ[球面到切平面投影 → 局部透视图 I_persp]
+    GAZE --> PROJ
+  end
+  subgraph CAG["4.4 级联 affordance 接地"]
+    OVD[开放词汇检测器 OVD<br/>用 T_obj 在 I_persp 中得框 B 与关键点 P]
+    SAM[SAM：以 B 与 P 为提示 → 透视 mask M_persp]
+    OVD --> SAM
+  end
+  VLM -.->|T_obj| OVD
+  PROJ --> OVD
+  SAM --> INV[逆透视到球面投影映射回 ERP]
+  INV --> OUT[全景 affordance mask M_ERP]
+```
+
+图依据：论文 §4.1–§4.4 / Fig.5（PAP 框架，免训练 coarse-to-fine 流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +84,7 @@ Panoramic Affordance Prediction——在清单中归入 **Perception（Scope: Sc
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.15558)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.15558)。
 
 ## 评测与指标
 
@@ -68,7 +100,7 @@ Panoramic Affordance Prediction——在清单中归入 **Perception（Scope: Sc
 
 **本页只提供「PAP」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +121,7 @@ Panoramic Affordance Prediction——在清单中归入 **Perception（Scope: Sc
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.15558>
+- [arXiv PDF](https://arxiv.org/pdf/2603.15558)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4 PAP（4.1 概览、4.2 递归视觉路由、4.3 自适应注视、4.4 级联 affordance 接地）；§3 任务与数据集 PAP-12K 及 §5 实验仅略读。
 
 ## 推荐继续阅读
 

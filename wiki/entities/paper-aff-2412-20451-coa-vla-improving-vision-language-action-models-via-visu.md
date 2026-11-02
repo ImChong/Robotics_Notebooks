@@ -40,6 +40,32 @@ CoA-VLA: Improving Vision-Language-Action Models via Visual-Textual Chain-of-Aff
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前图像观测 I"] --> VLM
+    INS["任务指令 T"] --> VLM
+    PROP["本体感知 proprioception<br/>压缩为单个 token，与视觉 token 拼接"] --> VLM
+    VLM["VLM 主干"] --> COA["文本 Chain-of-Affordance 推理 z<br/>object / grasp / spatial / movement 四类"]
+    COA --> SEL["动态 affordance 选择<br/>按任务进度只输出所需类型"]
+    SEL --> TXTE["文本 affordance：取 VLM 最后一个 embedding<br/>+ MLP 得到 token"]
+    SEL --> VISO["视觉 affordance：把框 / 抓取点 / 目标点 / 轨迹<br/>叠加到历史观测帧上"]
+    VISO --> VIT["预训练 ViT-Small → patch tokens"]
+    TXTE --> TRF["两个 Transformer block 融合"]
+    VIT --> TRF
+    TRF --> FILM["FiLM 条件层"]
+    FILM --> DP["扩散策略（diffusion policy）"]
+    DP --> ACT["低层动作 a"]
+    subgraph DATA["训练数据：自动生成 CoA 标注"]
+        G4["GPT-4o：场景描述与相关实体"] --> BB["Grounding DINO + SAM → 物体框"]
+        G4 --> SP["RoboPoint + GPT-4o 标点 → 聚类去离群 → 空间 affordance"]
+        CT["CoTracker 跟踪夹爪 → 轨迹 / movement affordance"]
+    end
+```
+
+图依据：论文 §4.1 / Fig.2（四类 affordance 与动态选择）、§4.2（文本/视觉 affordance 与 visual-textual co-injection）、§4.3（数据自动生成）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +77,7 @@ CoA-VLA: Improving Vision-Language-Action Models via Visual-Textual Chain-of-Aff
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2412.20451)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2412.20451)。
 
 ## 评测与指标
 
@@ -88,6 +114,7 @@ CoA-VLA: Improving Vision-Language-Action Models via Visual-Textual Chain-of-Aff
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2412.20451>
+- [arXiv PDF](https://arxiv.org/pdf/2412.20451)：已通读方法部分（实验与附录以略读为准）：§3（VLA 预备）、§4 Methodology（4.1 Chain-of-Affordance 定义、4.2 格式化与 co-injection、4.3 数据生成）；§5 实验仅读真机结果段落，附录未读
 
 ## 推荐继续阅读
 

@@ -40,6 +40,35 @@ sources:
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：ROPS 预训练（PartNet）"]
+        P1["物体点云"] --> B1["可训练点 backbone"]
+        Q1["部件指代文本"] --> TE1["冻结文本编码器 + MLP"]
+        B1 --> MD["Mask Decoder"]
+        TE1 --> MD
+        MD --> M1["部件 mask<br/>BCE + Dice 损失"]
+    end
+    M1 -. "权重初始化 fPB / fAFD" .-> PB
+    subgraph S2["阶段二：IRAS 微调（3D AffordanceNet）"]
+        PC["点云 Pcloud"] --> PE["点编码器 fpe<br/>Point-BERT"]
+        PC --> PB["点 backbone fPB<br/>稠密点特征 f"]
+        PE --> PJ["投影层 fproj → 点 token"]
+        Q["推理指令 Qaff"] --> LLM["LLM（LoRA 微调）"]
+        PJ --> LLM
+        LLM --> TXT["文本回复含 token AFF"]
+        TXT --> H["取 AFF 的末层 embedding<br/>MLP Proj → haff"]
+        H --> AFD["Affordance Decoder fAFD<br/>可学习 affordance queries，两层交叉注意力"]
+        PB --> AFD
+        AFD --> MA["affordance mask"]
+        MA --> LOSS["文本生成损失 Ltxt<br/>+ mask 损失（BCE + Dice，按类别加权）"]
+    end
+```
+
+图依据：论文 §3.2 / Fig.2（3D-ADLLM 结构与 embedding-as-affordance）、§3.3 / Fig.3（多阶段训练）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +80,7 @@ sources:
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2502.20041)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2502.20041)。
 
 ## 评测与指标
 
@@ -88,6 +117,7 @@ sources:
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2502.20041>
+- [arXiv PDF](https://arxiv.org/pdf/2502.20041)：已通读方法部分（实验与附录以略读为准）：§3.2（模型结构、Embedding as Affordance）、§3.3（ROPS 预训练、IRAS 微调、sample unbalanced loss factor）；§4 实验设定与附录略读
 
 ## 推荐继续阅读
 

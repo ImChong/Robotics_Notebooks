@@ -40,6 +40,33 @@ RT-Affordance: Affordances are Versatile Intermediate Representations for Robot 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  L["任务语言指令 l + 初始图像 o_init"]
+  PRED["Affordance 预测模型 φ(q|l, o)：专用 VLA，输出末端执行器关键位姿的 xy 像素坐标（文本形式）"]
+  HUM["或：由人在 UI 上标注 affordance 计划 q"]
+  OVL["可视化算子 ψ(o, q)：在图像上叠加机械手轮廓，用不同颜色表示时间顺序"]
+  POL["Affordance 条件策略 π(a|l, ψ(o,q))：VLA，BC + 网页数据 co-train"]
+  ACT["输出动作：末端 Δ平移 / Δ旋转"]
+  RE["可选：按固定或自适应间隔重新规划 affordance"]
+  DATA["训练数据：机器人轨迹（夹爪开合变化/末帧的位姿作为 q）+ 网页数据 + 约750张廉价标注 affordance 图像"]
+  L --> PRED
+  L --> HUM
+  PRED --> OVL
+  HUM --> OVL
+  OVL --> POL
+  L --> POL
+  POL --> ACT
+  ACT -.-> RE
+  RE -.-> PRED
+  DATA -.-> PRED
+  DATA -.-> POL
+```
+
+图依据：论文 §III-A/B/C（Affordance-conditioned policies、Learning to predict affordances、Model Inference）与 Fig. 3；§IV-A 实验设定。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +78,7 @@ RT-Affordance: Affordances are Versatile Intermediate Representations for Robot 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2411.02704)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2411.02704)。
 
 ## 评测与指标
 
@@ -88,6 +115,7 @@ RT-Affordance: Affordances are Versatile Intermediate Representations for Robot 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2411.02704>
+- [arXiv PDF](https://arxiv.org/pdf/2411.02704)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A/B/C）、§IV-A 实验设定
 
 ## 推荐继续阅读
 
