@@ -108,7 +108,6 @@ flowchart TD
 - [arXiv:2610.40285](https://arxiv.org/abs/2610.40285)
 - [arXiv PDF](https://arxiv.org/pdf/2610.40285)：已通读全文：§II 硬件设计、§III 建模与仿真（本构表征、仿真框架）、验证实验
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.40285)

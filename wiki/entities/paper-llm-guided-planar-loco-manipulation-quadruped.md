@@ -109,7 +109,6 @@ flowchart TD
 - [arXiv:2610.40248](https://arxiv.org/abs/2610.40248)
 - [arXiv PDF](https://arxiv.org/pdf/2610.40248)：已通读全文：§II 预备、§III 方法（平面操作策略、导航策略、LLM 高层规划器）；§IV 实验仅读要点、附录未读
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.40248)

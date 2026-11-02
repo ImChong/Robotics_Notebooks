@@ -107,7 +107,6 @@ flowchart TD
 - [arXiv:2610.35103](https://arxiv.org/abs/2610.35103)
 - [arXiv PDF](https://arxiv.org/pdf/2610.35103)：已通读全文：§3 SFA-DOM 定义与挑战、§4 概念验证实验
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.35103)

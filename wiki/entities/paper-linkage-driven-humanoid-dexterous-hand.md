@@ -104,7 +104,6 @@ flowchart TD
 - [arXiv:2610.36789](https://arxiv.org/abs/2610.36789)
 - [arXiv PDF](https://arxiv.org/pdf/2610.36789)：已通读全文：Results 的理论模型与运动学分析、Methods 的机械设计/装配/传动与串联运动学建模；实验与补充材料仅读要点
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.36789)

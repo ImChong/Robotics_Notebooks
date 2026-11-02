@@ -104,7 +104,6 @@ flowchart TD
 - [arXiv:2610.38502](https://arxiv.org/abs/2610.38502)
 - [arXiv PDF](https://arxiv.org/pdf/2610.38502)：已通读全文：§3.4 电子系统、§4 建模与控制（运动学、混合系统、控制框图）、§5 实验验证
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.38502)

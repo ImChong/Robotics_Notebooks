@@ -108,7 +108,6 @@ flowchart TD
 - [arXiv:2610.35850](https://arxiv.org/abs/2610.35850)
 - [arXiv PDF](https://arxiv.org/pdf/2610.35850)：已通读全文：§3 方法（总体架构、Imagination Tokens、特权信息蒸馏、训练目标）与 §4.2 实现细节
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.35850)

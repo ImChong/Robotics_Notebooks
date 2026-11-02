@@ -114,7 +114,6 @@ flowchart TD
 - [arXiv:2610.37199](https://arxiv.org/abs/2610.37199)
 - [arXiv PDF](https://arxiv.org/pdf/2610.37199)：已通读全文：§III 系统模型、§IV 双层协同设计框架、§V 1D 结果、§VI 平面跳跃与着陆控制、§VII–IX
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.37199)

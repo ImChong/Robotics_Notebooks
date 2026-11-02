@@ -111,7 +111,6 @@ flowchart TD
 - [arXiv:2610.37381](https://arxiv.org/abs/2610.37381)
 - [arXiv PDF](https://arxiv.org/pdf/2610.37381)：已通读全文：§3 模型架构、§4 训练（物理预训练与联合训练）
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.37381)

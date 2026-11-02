@@ -117,7 +117,6 @@ flowchart TD
 - [arXiv:2610.38027](https://arxiv.org/abs/2610.38027)
 - [arXiv PDF](https://arxiv.org/pdf/2610.38027)：已通读全文：§III 基础策略、§IV 技能层、§V 训练数据、§VI 实验（附录未读）
 
-
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.38027)
