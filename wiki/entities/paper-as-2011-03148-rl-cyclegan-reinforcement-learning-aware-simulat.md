@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-10-06
-arxiv: "2011.03148"
+arxiv: "2006.09001"
 summary: "LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 本页是清单索引，细节以原文为准。"
 related:
   - ../entities/awesome-sim2real.md
@@ -65,7 +65,7 @@ flowchart TD
   GAN --> FRZ["训练后冻结 G，重新从头训练抓取 Q 函数"]
 ```
 
-图依据：论文 RL-CycleGAN（arXiv 2006.09001）§3.1–§3.2、§4 与 Fig.2。注意：本页 frontmatter 的 arXiv 号 2011.03148 对应 RetinaGAN（Object-aware Sim-to-Real），与页面标题 RL-CycleGAN 不符；此图按 RL-CycleGAN 原文（2006.09001）绘制，未改 frontmatter。
+图依据：论文 RL-CycleGAN（arXiv 2006.09001）§3.1–§3.2、§4 与 Fig.2。
 
 ## 核心信息
 
@@ -74,7 +74,7 @@ flowchart TD
 | 编号 | 035/139 |
 | 分组 | Observation / Domain Adaptation |
 | 出处 | 见清单 / 原文 |
-| 论文 | <https://arxiv.org/abs/2011.03148> |
+| 论文 | <https://arxiv.org/abs/2006.09001> |
 
 ## 核心机制（归纳）
 
@@ -87,7 +87,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2011.03148) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2006.09001) 为准。
 - 横向对照请回到 [技术地图](../overview/lc-awesome-sim2real-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -120,11 +120,11 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_2011_03148_rl-cyclegan-reinforcement-learning-aware.md`](../../sources/papers/lc_awesome_sim2real_2011_03148_rl-cyclegan-reinforcement-learning-aware.md) — 本条目策展摘录
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
-- 论文：<https://arxiv.org/abs/2011.03148>
+- 论文：<https://arxiv.org/abs/2006.09001>
 - [arXiv PDF](https://arxiv.org/pdf/2006.09001)：已通读方法部分（实验与附录以略读为准）：§3 背景（CycleGAN、Q-learning）、§4 RL-CycleGAN、§5 任务设置、§6 实验开头与 Table 1。
-- 编号说明：页面 arXiv 号 2011.03148 实为 RetinaGAN；RL-CycleGAN 的论文是 [arXiv 2006.09001](https://arxiv.org/abs/2006.09001)，流程总览按后者绘制。
+- 编号核对（2026-11-02）：上游清单登记的 2011.03148 经 arXiv 官方记录核对为《RetinaGAN: An Object-aware Approach to Sim-to-Real Transfer》，与本页论文不符；已更正为 2006.09001《RL-CycleGAN: Reinforcement Learning Aware Simulation-To-Real》。
 
 ## 推荐继续阅读
 
 - [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
-- [原文](https://arxiv.org/abs/2011.03148)
+- [原文](https://arxiv.org/abs/2006.09001)

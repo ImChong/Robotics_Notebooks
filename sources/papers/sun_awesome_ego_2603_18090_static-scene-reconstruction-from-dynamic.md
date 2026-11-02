@@ -6,9 +6,10 @@
 - **分组：** 24 Long-form Video Understanding & Structured Reasoning
 - **编号：** 050/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2603.18090
+- **arXiv：** 2603.22450
+- **编号核对：** 上游清单登记的 2603.18090 经 arXiv 官方记录核对为另一篇论文《MOSS-TTS Technical Report》，与本条目不符；已更正为 2603.22450《Static Scene Reconstruction from Dynamic Egocentric Videos》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2603.18090>
+- **论文：** <https://arxiv.org/abs/2603.22450>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Proposes a robust pipeline that adapts static reconstruction backbones to long-form egocentric video with a mask-aware reconstruction mechanism

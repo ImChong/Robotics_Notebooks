@@ -6,9 +6,10 @@
 - **分组：** 292 Procedural Learning
 - **编号：** 133/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2502.08123
+- **arXiv：** 2502.17753
+- **编号核对：** 上游清单登记的 2502.08123 经 arXiv 官方记录核对为另一篇论文《Provably Robust Federated Reinforcement Learning》，与本条目不符；已更正为 2502.17753《Task Graph Maximum Likelihood Estimation for Procedural Activity Understanding in Egocentric Videos》（核对日期 2026-11-02）。
 - **出处：** arXiv 2025
-- **论文：** <https://arxiv.org/abs/2502.08123>
+- **论文：** <https://arxiv.org/abs/2502.17753>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Introduces a gradient-based approach for learning task graphs from procedural activities, optimizing edge weights via maximum likelihood

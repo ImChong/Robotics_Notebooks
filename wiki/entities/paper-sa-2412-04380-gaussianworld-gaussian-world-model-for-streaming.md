@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2412.04380"
+arxiv: "2412.10373"
 venue: "arXiv 2024"
 code: https://github.com/zuosc19/GaussianWorld
 summary: "Gaussian world model for streaming 3D occupancy prediction."
@@ -66,7 +66,7 @@ flowchart TD
     GT -.->|"流式: 作为下一帧的历史 Gaussians"| G0
 ```
 
-图依据：论文 §3.2 / Fig.2-4。注：页面 frontmatter 与链接的 arXiv 号 2412.04380 对应的是 EmbodiedOcc（Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding），与本页 GaussianWorld 不符；GaussianWorld 的正确编号经 arXiv 检索为 2412.10373，本图据此论文绘制
+图依据：论文 §3.2 / Fig.2-4。
 
 ## 核心信息
 
@@ -75,7 +75,7 @@ flowchart TD
 | 编号 | 436/571 |
 | 分组 | 82 Autonomous Driving |
 | 出处 | arXiv 2024 |
-| 论文 | <https://arxiv.org/abs/2412.04380> |
+| 论文 | <https://arxiv.org/abs/2412.10373> |
 | 代码/项目 | <https://github.com/zuosc19/GaussianWorld> |
 
 ## 核心机制（归纳）
@@ -89,7 +89,7 @@ Gaussian world model for streaming 3D occupancy prediction.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2412.04380) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2412.10373) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -123,10 +123,11 @@ Gaussian world model for streaming 3D occupancy prediction.
 - [`sources/papers/sun_awesome_wm_2412_04380_gaussianworld-gaussian-world-model-for-s.md`](../../sources/papers/sun_awesome_wm_2412_04380_gaussianworld-gaussian-world-model-for-s.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2412.04380>
-- [arXiv PDF](https://arxiv.org/pdf/2412.10373)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.2 方法与 §4.3 实现细节；附录 Evolution Layer 段略读。页面原 arXiv 号 2412.04380 与 GaussianWorld 不符（实为 EmbodiedOcc），此处以 2412.10373 为准
+- 论文：<https://arxiv.org/abs/2412.10373>
+- [arXiv PDF](https://arxiv.org/pdf/2412.10373)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.2 方法与 §4.3 实现细节；附录 Evolution Layer 段略读
+- 编号核对（2026-11-02）：上游清单登记的 2412.04380 经 arXiv 官方记录核对为《EmbodiedOcc: Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding》，与本页论文不符；已更正为 2412.10373《GaussianWorld: Gaussian World Model for Streaming 3D Occupancy Prediction》。
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2412.04380)
+- [原文](https://arxiv.org/abs/2412.10373)

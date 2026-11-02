@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2409.01600"
+arxiv: "2312.03391"
 venue: "arXiv 2024"
 summary: "Proposes action scene graphs for long-form understanding of egocentric videos, enabling structured analysis of human activities from wearable device captures"
 related:
@@ -57,7 +57,7 @@ flowchart TD
     H --> J["下游：以 LLM 做动作预期与长活动摘要<br/>输入图三元组序列"]
 ```
 
-图依据：论文 §3、§4.1–4.3 / Fig.3（Ego4D-EASG 标注流程）、§5–6（基线与下游实验）。注意：页面 frontmatter 的 arXiv 号 2409.01600 对应的是另一篇无关论文（MCBA 组合服务推荐），本图按正确论文 arXiv:2312.03391（Action Scene Graphs for Long-Form Understanding of Egocentric Videos）绘制。
+图依据：论文 §3、§4.1–4.3 / Fig.3（Ego4D-EASG 标注流程）、§5–6（基线与下游实验）。
 
 ## 核心信息
 
@@ -66,7 +66,7 @@ flowchart TD
 | 编号 | 030/249 |
 | 分组 | 24 Long-form Video Understanding & Structured Reasoning |
 | 出处 | arXiv 2024 |
-| 论文 | <https://arxiv.org/abs/2409.01600> |
+| 论文 | <https://arxiv.org/abs/2312.03391> |
 
 ## 核心机制（归纳）
 
@@ -79,7 +79,7 @@ Proposes action scene graphs for long-form understanding of egocentric videos, e
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2409.01600) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2312.03391) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -112,10 +112,11 @@ Proposes action scene graphs for long-form understanding of egocentric videos, e
 - [`sources/papers/sun_awesome_ego_2409_01600_action-scene-graphs-for-long-form-unders.md`](../../sources/papers/sun_awesome_ego_2409_01600_action-scene-graphs-for-long-form-unders.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2409.01600>
-- [arXiv PDF](https://arxiv.org/pdf/2312.03391)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 EASG 定义、§4 Ego4D-EASG 数据集（4.1 标注、4.2 验证、4.3 时间重组）、§5 EASG 生成基线、§6 下游任务设定；注：页面所列编号 2409.01600 与本论文不符，正确编号为 2312.03391
+- 论文：<https://arxiv.org/abs/2312.03391>
+- [arXiv PDF](https://arxiv.org/pdf/2312.03391)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 EASG 定义、§4 Ego4D-EASG 数据集（4.1 标注、4.2 验证、4.3 时间重组）、§5 EASG 生成基线、§6 下游任务设定
+- 编号核对（2026-11-02）：上游清单登记的 2409.01600 经 arXiv 官方记录核对为《MCBA: A Matroid Constraint-Based Approach for Composite Service Recommendation Considering Compatibility and Diversity》，与本页论文不符；已更正为 2312.03391《Action Scene Graphs for Long-Form Understanding of Egocentric Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2409.01600)
+- [原文](https://arxiv.org/abs/2312.03391)

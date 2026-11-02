@@ -6,9 +6,10 @@
 - **分组：** 293 Procedural Question Answering
 - **编号：** 139/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2510.08961
+- **arXiv：** 2510.06218
+- **编号核对：** 上游清单登记的 2510.08961 经 arXiv 官方记录核对为另一篇论文《Stability Conditions and Algebraic Hearts for Acyclic Quivers》，与本条目不符；已更正为 2510.06218《EgoNight: Towards Egocentric Vision Understanding at Night with a Challenging Benchmark》（核对日期 2026-11-02）。
 - **出处：** arXiv 2025
-- **论文：** <https://arxiv.org/abs/2510.08961>
+- **论文：** <https://arxiv.org/abs/2510.06218>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** The first comprehensive benchmark for nighttime egocentric vision with VQA as the core task

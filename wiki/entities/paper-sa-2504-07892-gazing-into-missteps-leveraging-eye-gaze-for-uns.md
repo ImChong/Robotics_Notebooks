@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2504.07892"
+arxiv: "2406.08379"
 venue: "CVPR 2025"
 summary: "First unsupervised mistake detection method leveraging eye-gaze signals for skilled procedural activities"
 related:
@@ -62,7 +62,7 @@ flowchart TD
     SC --> TH["错误分数 s_t > 阈值 θ 判为错误"]
 ```
 
-图依据：论文 §3.1–3.2 / Fig.1–2。注意：页面 frontmatter 的 arXiv 号 2504.07892 实际对应一篇天文学论文（Astronomy & Astrophysics），与本页不符；《Gazing Into Missteps》的正确编号为 2406.08379（经 arXiv 检索），图按该论文绘制。
+图依据：论文 §3.1–3.2 / Fig.1–2。
 
 ## 核心信息
 
@@ -71,7 +71,7 @@ flowchart TD
 | 编号 | 120/249 |
 | 分组 | 291 Procedural Error Detection |
 | 出处 | CVPR 2025 |
-| 论文 | <https://arxiv.org/abs/2504.07892> |
+| 论文 | <https://arxiv.org/abs/2406.08379> |
 
 ## 核心机制（归纳）
 
@@ -84,7 +84,7 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.07892) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2406.08379) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -117,10 +117,11 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 - [`sources/papers/sun_awesome_ego_2504_07892_gazing-into-missteps-leveraging-eye-gaze.md`](../../sources/papers/sun_awesome_ego_2504_07892_gazing-into-missteps-leveraging-eye-gaze.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2504.07892>
-- [arXiv PDF（正确编号 2406.08379；页面 frontmatter 的 2504.07892 与本文不符）](https://arxiv.org/pdf/2406.08379)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.2、四种评分函数）
+- 论文：<https://arxiv.org/abs/2406.08379>
+- [arXiv PDF](https://arxiv.org/pdf/2406.08379)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.2、四种评分函数）
+- 编号核对（2026-11-02）：上游清单登记的 2504.07892 经 arXiv 官方记录核对为《Orbit design for mitigating interstellar scattering effects in Earth-space VLBI observations of Sgr A*》，与本页论文不符；已更正为 2406.08379《Gazing Into Missteps: Leveraging Eye-Gaze for Unsupervised Mistake Detection in Egocentric Videos of Skilled Human Activities》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2504.07892)
+- [原文](https://arxiv.org/abs/2406.08379)

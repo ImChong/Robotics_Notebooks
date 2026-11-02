@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2502.08123"
+arxiv: "2502.17753"
 venue: "arXiv 2025"
 summary: "Introduces a gradient-based approach for learning task graphs from procedural activities, optimizing edge weights via maximum likelihood"
 related:
@@ -58,7 +58,7 @@ flowchart TD
     P --> Q["任务图 G（DAG）"]
 ```
 
-图依据：论文 §III-A 任务图最大似然学习框架（Eq. 8-11）、§III-B / Fig. 3 Task Graph Transformer、§III-C 序列预处理、§III-D DAG 掩码、§III-E 输出图后处理。注意：页面 frontmatter 的 arXiv 号 2502.08123 对应的是另一篇无关论文（Provably Robust Federated Reinforcement Learning），本页标题所述论文的正确编号为 arXiv 2502.17753，本图按 2502.17753 绘制。
+图依据：论文 §III-A 任务图最大似然学习框架（Eq. 8-11）、§III-B / Fig. 3 Task Graph Transformer、§III-C 序列预处理、§III-D DAG 掩码、§III-E 输出图后处理。
 
 ## 核心信息
 
@@ -67,7 +67,7 @@ flowchart TD
 | 编号 | 133/249 |
 | 分组 | 292 Procedural Learning |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2502.08123> |
+| 论文 | <https://arxiv.org/abs/2502.17753> |
 
 ## 核心机制（归纳）
 
@@ -80,7 +80,7 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2502.08123) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2502.17753) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -113,10 +113,11 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 - [`sources/papers/sun_awesome_ego_2502_08123_task-graph-maximum-likelihood-estimation.md`](../../sources/papers/sun_awesome_ego_2502_08123_task-graph-maximum-likelihood-estimation.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2502.08123>
-- [arXiv PDF（正确论文：2502.17753，与页面 arXiv 号 2502.08123 不符；2502.08123 是联邦强化学习鲁棒性论文）](https://arxiv.org/pdf/2502.17753)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-E
+- 论文：<https://arxiv.org/abs/2502.17753>
+- [arXiv PDF](https://arxiv.org/pdf/2502.17753)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-E
+- 编号核对（2026-11-02）：上游清单登记的 2502.08123 经 arXiv 官方记录核对为《Provably Robust Federated Reinforcement Learning》，与本页论文不符；已更正为 2502.17753《Task Graph Maximum Likelihood Estimation for Procedural Activity Understanding in Egocentric Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2502.08123)
+- [原文](https://arxiv.org/abs/2502.17753)

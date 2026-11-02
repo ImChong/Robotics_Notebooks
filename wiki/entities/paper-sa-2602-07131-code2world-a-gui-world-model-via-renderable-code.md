@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.07131"
+arxiv: "2602.09856"
 venue: "arXiv 2026"
 summary: "Models GUI dynamics by generating renderable code rather than pixels."
 related:
@@ -49,7 +49,7 @@ Models GUI dynamics by generating renderable code rather than pixels.
 | 编号 | 499/571 |
 | 分组 | 83 GUI / Computer-Use Agents |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.07131> |
+| 论文 | <https://arxiv.org/abs/2602.09856> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +62,7 @@ Models GUI dynamics by generating renderable code rather than pixels.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.07131) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.09856) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +95,10 @@ Models GUI dynamics by generating renderable code rather than pixels.
 - [`sources/papers/sun_awesome_wm_2602_07131_code2world-a-gui-world-model-via-rendera.md`](../../sources/papers/sun_awesome_wm_2602_07131_code2world-a-gui-world-model-via-rendera.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.07131>
+- 论文：<https://arxiv.org/abs/2602.09856>
+- 编号核对（2026-11-02）：上游清单登记的 2602.07131 经 arXiv 官方记录核对为《Behavior Score Prediction in Resting-State Functional MRI by Deep State Space Modeling》，与本页论文不符；已更正为 2602.09856《Code2World: A GUI World Model via Renderable Code Generation》。
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.07131)
+- [原文](https://arxiv.org/abs/2602.09856)

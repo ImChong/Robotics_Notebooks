@@ -347,7 +347,7 @@
 | 337 | Residual Reinforcement Learning for Robot Control | `arxiv:1812.03201` | Sim-to-Real | natnew | [`paper-residual-rl-robot-control.md`](../../wiki/entities/paper-residual-rl-robot-control.md) | 复用 |
 | 338 | Sim-to-Real via Sim-to-Sim (Koos et al. line) | `arxiv:1812.07252` | Sim-to-Real | natnew | [`paper-pai-1812-07252-simtorealviasimtosimkooseta.md`](../../wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) | 新建 |
 | 339 | SimGAN | `arxiv:1612.07828` | Sim-to-Real | natnew | [`paper-pai-1612-07828-simgan.md`](../../wiki/entities/paper-pai-1612-07828-simgan.md) | 新建 |
-| 340 | SimOpt | `arxiv:1910.13325` | Sim-to-Real | natnew | [`paper-pai-1910-13325-simopt.md`](../../wiki/entities/paper-pai-1910-13325-simopt.md) | 新建 |
+| 340 | SimOpt | `arxiv:1810.05687` | Sim-to-Real | natnew | [`paper-pai-1910-13325-simopt.md`](../../wiki/entities/paper-pai-1910-13325-simopt.md) | 新建 |
 | 341 | SimToolReal | `url:simtoolreal.github.io` | Sim-to-Real | natnew | [`paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md`](../../wiki/entities/simtoolreal.md) | 复用 |
 | 342 | AirSim | `url:microsoft.github.io/airsim` | Simulators | natnew | [`airsim.md`](../../wiki/entities/airsim.md) | 复用 |
 | 343 | Brax | `gh:google/brax` | Simulators | natnew | [`brax.md`](../../wiki/entities/brax.md) | 复用 |

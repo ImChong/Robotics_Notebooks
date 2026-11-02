@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2606.14282"
+arxiv: "2606.15859"
 venue: "arXiv 2026"
 summary: "An efficient egocentric perception system for embodied intelligence on smart AR glasses, leveraging gaze, pose, and inertial signals to infer user intent and retain only the most informative parts of perceptual input"
 related:
@@ -49,7 +49,7 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 | 编号 | 053/249 |
 | 分组 | 25 Gaze Attention & Intention Prediction |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2606.14282> |
+| 论文 | <https://arxiv.org/abs/2606.15859> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +62,7 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.14282) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.15859) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +95,10 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 - [`sources/papers/sun_awesome_ego_2606_14282_epic-a-system-framework-for-efficient-eg.md`](../../sources/papers/sun_awesome_ego_2606_14282_epic-a-system-framework-for-efficient-eg.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2606.14282>
+- 论文：<https://arxiv.org/abs/2606.15859>
+- 编号核对（2026-11-02）：上游清单登记的 2606.14282 经 arXiv 官方记录核对为《Characterization of white-light enhancements under umbral conditions in one-dimensional simulations of solar flares》，与本页论文不符；已更正为 2606.15859《EPIC: A System Framework for Efficient Egocentric Perception on Embodied AR Glasses》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2606.14282)
+- [原文](https://arxiv.org/abs/2606.15859)

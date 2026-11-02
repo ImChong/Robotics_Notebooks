@@ -6,8 +6,9 @@
 - **分组：** Sim-to-Real
 - **编号：** 340/384
 - **入库日期：** 2026-09-20
-- **arXiv：** 1910.13325
-- **主链接：** <https://arxiv.org/abs/1910.13325>
+- **arXiv：** 1810.05687
+- **编号核对：** 上游清单登记的 1910.13325 经 arXiv 官方记录核对为另一篇论文《Fragment Graphical Variational AutoEncoding for Screening Molecules with Small Data》，与本条目不符；已更正为 1810.05687《Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience》（核对日期 2026-11-02）。
+- **主链接：** <https://arxiv.org/abs/1810.05687>
 - **代码：** 未在清单中标注
 - **清单摘要：** Simulation parameter optimization framework for reducing real-world mismatch.
 - **沉淀到 wiki：** [`wiki/entities/paper-pai-1910-13325-simopt.md`](../../wiki/entities/paper-pai-1910-13325-simopt.md)

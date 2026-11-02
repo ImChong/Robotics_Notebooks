@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2503.06789"
+arxiv: "2505.17114"
 venue: "arXiv 2025"
 summary: "Multi-modal QA framework aligning audio, video, embedded sensors and natural language for procedural scenarios"
 related:
@@ -68,7 +68,7 @@ flowchart TD
   end
 ```
 
-图依据：论文 §4（Modality-Specific Feature Encoders、QuART）与 §5（三阶段训练）、Fig.3。页面 frontmatter 的 arXiv 编号 2503.06789 对应的是无关论文（GaAs/InAs 纳米线的 Aharonov-Bohm 振荡），RAVEN 的正确编号为 2505.17114，本图按后者绘制。
+图依据：论文 §4（Modality-Specific Feature Encoders、QuART）与 §5（三阶段训练）、Fig.3。
 
 ## 核心信息
 
@@ -77,7 +77,7 @@ flowchart TD
 | 编号 | 144/249 |
 | 分组 | 293 Procedural Question Answering |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2503.06789> |
+| 论文 | <https://arxiv.org/abs/2505.17114> |
 
 ## 核心机制（归纳）
 
@@ -90,7 +90,7 @@ Multi-modal QA framework aligning audio, video, embedded sensors and natural lan
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2503.06789) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2505.17114) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -123,10 +123,11 @@ Multi-modal QA framework aligning audio, video, embedded sensors and natural lan
 - [`sources/papers/sun_awesome_ego_2503_06789_raven-query-guided-representation-alignm.md`](../../sources/papers/sun_awesome_ego_2503_06789_raven-query-guided-representation-alignm.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2503.06789>
-- [arXiv PDF](https://arxiv.org/pdf/2505.17114)：已通读方法部分（实验与附录以略读为准）：§4 RAVEN 方法（特征编码器、QuART、训练目标）与 §5 三阶段训练；§3 数据集构建（Evaluator/Critic）、§6 实验与附录略读或未读。页面 arXiv 号 2503.06789 与 RAVEN 不符（为无关物理论文），正确编号为 2505.17114。
+- 论文：<https://arxiv.org/abs/2505.17114>
+- [arXiv PDF](https://arxiv.org/pdf/2505.17114)：已通读方法部分（实验与附录以略读为准）：§4 RAVEN 方法（特征编码器、QuART、训练目标）与 §5 三阶段训练；§3 数据集构建（Evaluator/Critic）、§6 实验与附录略读或未读
+- 编号核对（2026-11-02）：上游清单登记的 2503.06789 经 arXiv 官方记录核对为《Aharonov-Bohm and Altshuler-Aronov-Spivak oscillations in the quasi-ballistic regime in phase-pure GaAs/InAs core/shell nanowires》，与本页论文不符；已更正为 2505.17114《RAVEN: Query-Guided Representation Alignment for Question Answering over Audio, Video, Embedded Sensors, and Natural Language》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2503.06789)
+- [原文](https://arxiv.org/abs/2505.17114)

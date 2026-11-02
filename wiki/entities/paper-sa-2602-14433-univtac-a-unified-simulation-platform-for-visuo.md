@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.14433"
+arxiv: "2602.10093"
 venue: "arXiv 2026"
 summary: "Unified simulation platform with eight representative visuo-tactile manipulation tasks; UniVTAC Encoder improves average success rates by 17.1%."
 related:
@@ -49,7 +49,7 @@ Unified simulation platform with eight representative visuo-tactile manipulation
 | 编号 | 054/065 |
 | 分组 | Tactile Simulation & Sim2Real |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.14433> |
+| 论文 | <https://arxiv.org/abs/2602.10093> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +62,7 @@ Unified simulation platform with eight representative visuo-tactile manipulation
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.14433) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.10093) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +95,10 @@ Unified simulation platform with eight representative visuo-tactile manipulation
 - [`sources/papers/sun_awesome_touch_2602_14433_univtac-a-unified-simulation-platform-fo.md`](../../sources/papers/sun_awesome_touch_2602_14433_univtac-a-unified-simulation-platform-fo.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
-- 论文：<https://arxiv.org/abs/2602.14433>
+- 论文：<https://arxiv.org/abs/2602.10093>
+- 编号核对（2026-11-02）：上游清单登记的 2602.14433 经 arXiv 官方记录核对为《Synthetic Reader Panels: Tournament-Based Ideation with LLM Personas for Autonomous Publishing》，与本页论文不符；已更正为 2602.10093《UniVTAC: A Unified Simulation Platform for Visuo-Tactile Manipulation Data Generation, Learning, and Benchmarking》。
 
 ## 推荐继续阅读
 
 - [Awesome Touch 仓库](https://github.com/sun254667/awesome-touch)
-- [原文](https://arxiv.org/abs/2602.14433)
+- [原文](https://arxiv.org/abs/2602.10093)

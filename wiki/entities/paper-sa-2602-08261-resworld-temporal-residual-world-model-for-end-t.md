@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.08261"
+arxiv: "2602.10884"
 venue: "arXiv 2026"
 summary: "Temporal residual world model for end-to-end autonomous driving."
 related:
@@ -49,7 +49,7 @@ Temporal residual world model for end-to-end autonomous driving.
 | 编号 | 479/571 |
 | 分组 | 82 Autonomous Driving |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.08261> |
+| 论文 | <https://arxiv.org/abs/2602.10884> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +62,7 @@ Temporal residual world model for end-to-end autonomous driving.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.08261) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.10884) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +95,10 @@ Temporal residual world model for end-to-end autonomous driving.
 - [`sources/papers/sun_awesome_wm_2602_08261_resworld-temporal-residual-world-model-f.md`](../../sources/papers/sun_awesome_wm_2602_08261_resworld-temporal-residual-world-model-f.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.08261>
+- 论文：<https://arxiv.org/abs/2602.10884>
+- 编号核对（2026-11-02）：上游清单登记的 2602.08261 经 arXiv 官方记录核对为《PRO-Bid: Pareto-Prioritized Regret Optimization for Constraint-Aware Generative Auto-Bidding》，与本页论文不符；已更正为 2602.10884《ResWorld: Temporal Residual World Model for End-to-End Autonomous Driving》。
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.08261)
+- [原文](https://arxiv.org/abs/2602.10884)

@@ -6,9 +6,10 @@
 - **分组：** 24 Long-form Video Understanding & Structured Reasoning
 - **编号：** 030/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2409.01600
+- **arXiv：** 2312.03391
+- **编号核对：** 上游清单登记的 2409.01600 经 arXiv 官方记录核对为另一篇论文《MCBA: A Matroid Constraint-Based Approach for Composite Service Recommendation Considering Compatibility and Diversity》，与本条目不符；已更正为 2312.03391《Action Scene Graphs for Long-Form Understanding of Egocentric Videos》（核对日期 2026-11-02）。
 - **出处：** arXiv 2024
-- **论文：** <https://arxiv.org/abs/2409.01600>
+- **论文：** <https://arxiv.org/abs/2312.03391>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Proposes action scene graphs for long-form understanding of egocentric videos, enabling structured analysis of human activities from wearable device captures

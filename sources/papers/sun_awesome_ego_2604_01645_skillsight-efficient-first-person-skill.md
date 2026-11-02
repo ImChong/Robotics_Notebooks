@@ -6,9 +6,10 @@
 - **分组：** 25 Gaze Attention & Intention Prediction
 - **编号：** 065/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2604.01645
+- **arXiv：** 2511.19629
+- **编号核对：** 上游清单登记的 2604.01645 经 arXiv 官方记录核对为另一篇论文《Contextualizing Sink Knowledge for Java Vulnerability Discovery》，与本条目不符；已更正为 2511.19629《SkillSight: Efficient First-Person Skill Assessment with Gaze》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2604.01645>
+- **论文：** <https://arxiv.org/abs/2511.19629>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Explores power-efficient, privacy-preserving egocentric skill assessment for deployment on resource-constrained smart glasses

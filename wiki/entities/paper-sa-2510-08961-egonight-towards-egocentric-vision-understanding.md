@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2510.08961"
+arxiv: "2510.06218"
 venue: "arXiv 2025"
 summary: "The first comprehensive benchmark for nighttime egocentric vision with VQA as the core task"
 related:
@@ -59,7 +59,7 @@ flowchart TD
     H --> V["EgoNight-VQA：3658 条 QA"]
 ```
 
-图依据：论文 §3.1 / §3.2 / Fig.2（arXiv 编号与页面不符：页面 frontmatter 的 2510.08961 对应的是无关的数学论文《Stability conditions and algebraic hearts for acyclic quivers》，经 arXiv 检索，EgoNight 的正确编号为 2510.06218）。
+图依据：论文 §3.1 / §3.2 / Fig.2。
 
 ## 核心信息
 
@@ -68,7 +68,7 @@ flowchart TD
 | 编号 | 139/249 |
 | 分组 | 293 Procedural Question Answering |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2510.08961> |
+| 论文 | <https://arxiv.org/abs/2510.06218> |
 
 ## 核心机制（归纳）
 
@@ -81,7 +81,7 @@ The first comprehensive benchmark for nighttime egocentric vision with VQA as th
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2510.08961) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2510.06218) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -114,10 +114,11 @@ The first comprehensive benchmark for nighttime egocentric vision with VQA as th
 - [`sources/papers/sun_awesome_ego_2510_08961_egonight-towards-egocentric-vision-under.md`](../../sources/papers/sun_awesome_ego_2510_08961_egonight-towards-egocentric-vision-under.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2510.08961>
-- [arXiv PDF](https://arxiv.org/pdf/2510.06218)：已通读 §3.1 视频来源与 §3.2 VQA 构建流程（§3.3 与实验、附录未读）；页面 arXiv 号 2510.08961 与该论文不符，正确编号为 2510.06218
+- 论文：<https://arxiv.org/abs/2510.06218>
+- [arXiv PDF](https://arxiv.org/pdf/2510.06218)：已通读 §3.1 视频来源与 §3.2 VQA 构建流程（§3.3 与实验、附录未读）
+- 编号核对（2026-11-02）：上游清单登记的 2510.08961 经 arXiv 官方记录核对为《Stability Conditions and Algebraic Hearts for Acyclic Quivers》，与本页论文不符；已更正为 2510.06218《EgoNight: Towards Egocentric Vision Understanding at Night with a Challenging Benchmark》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2510.08961)
+- [原文](https://arxiv.org/abs/2510.06218)

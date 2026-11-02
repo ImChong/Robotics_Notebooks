@@ -3,7 +3,7 @@ type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-10-06
-arxiv: "1910.13325"
+arxiv: "1810.05687"
 summary: "Simulation parameter optimization framework for reducing real-world mismatch."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -58,7 +58,7 @@ flowchart TD
     H --> B
 ```
 
-图依据：论文 §III-B/C、Algorithm 1 与 Fig. 3。注意：本页 arXiv 号 1910.13325 与该论文不符（对应的是一篇分子筛选的无关论文），SimOpt 的正确编号为 arXiv:1810.05687（Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience），此图按该论文绘制。
+图依据：论文 §III-B/C、Algorithm 1 与 Fig. 3。
 
 ## 核心信息
 
@@ -67,8 +67,8 @@ flowchart TD
 | 编号 | 340/384 |
 | 分组 | Sim-to-Real |
 | 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/1910.13325> |
-| arXiv | 1910.13325 |
+| 主链接 | <https://arxiv.org/abs/1810.05687> |
+| arXiv | 1810.05687 |
 
 ## 核心机制（归纳）
 
@@ -81,7 +81,7 @@ Simulation parameter optimization framework for reducing real-world mismatch.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/1910.13325) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/1810.05687) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -122,11 +122,12 @@ Simulation parameter optimization framework for reducing real-world mismatch.
 - [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/1910.13325>
-- [arXiv PDF（正确编号 1810.05687，与页面 1910.13325 不符）](https://arxiv.org/pdf/1810.05687)：已通读方法部分（实验与附录以略读为准）：§III-A 仿真随机化、§III-B 学习仿真随机化、§III-C 实现与 Algorithm 1、§IV 实验设定开头
+- 主链接：<https://arxiv.org/abs/1810.05687>
+- [arXiv PDF](https://arxiv.org/pdf/1810.05687)：已通读方法部分（实验与附录以略读为准）：§III-A 仿真随机化、§III-B 学习仿真随机化、§III-C 实现与 Algorithm 1、§IV 实验设定开头
+- 编号核对（2026-11-02）：上游清单登记的 1910.13325 经 arXiv 官方记录核对为《Fragment Graphical Variational AutoEncoding for Screening Molecules with Small Data》，与本页论文不符；已更正为 1810.05687《Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience》。
 
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/1910.13325)
+- [原文 / 官方入口](https://arxiv.org/abs/1810.05687)

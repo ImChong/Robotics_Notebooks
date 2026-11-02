@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2311.04567"
+arxiv: "2311.03550"
 venue: "WACV 2024"
 summary: "UnityGraph-based unsupervised procedure learning from unlabeled instructional videos"
 related:
@@ -58,7 +58,7 @@ flowchart TD
     KM --> ORD["按簇内 clip 平均归一化时间排序 → key-step 顺序"]
 ```
 
-图依据：论文 §3 / Fig.2–3（UnityGraph 与 GPL 框架）、§3.1.2（背景帧检测）、§3.2（Node2Vec、KMeans、排序）。注意：页面 frontmatter 的 arXiv 号 2311.04567 实际对应另一篇无关论文（CellPhoneDB v5），本图按 arXiv 2311.03550（UnityGraph，WACV 2024）绘制。
+图依据：论文 §3 / Fig.2–3（UnityGraph 与 GPL 框架）、§3.1.2（背景帧检测）、§3.2（Node2Vec、KMeans、排序）。
 
 ## 核心信息
 
@@ -67,7 +67,7 @@ flowchart TD
 | 编号 | 134/249 |
 | 分组 | 292 Procedural Learning |
 | 出处 | WACV 2024 |
-| 论文 | <https://arxiv.org/abs/2311.04567> |
+| 论文 | <https://arxiv.org/abs/2311.03550> |
 
 ## 核心机制（归纳）
 
@@ -80,7 +80,7 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2311.04567) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2311.03550) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -113,10 +113,11 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 - [`sources/papers/sun_awesome_ego_2311_04567_united-we-stand-divided-we-fall-unitygra.md`](../../sources/papers/sun_awesome_ego_2311_04567_united-we-stand-divided-we-fall-unitygra.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2311.04567>
-- [arXiv PDF](https://arxiv.org/pdf/2311.03550)：页面 arXiv 号 2311.04567 与该论文不符（2311.04567 实为 CellPhoneDB v5），正确编号为 2311.03550；已通读方法部分（实验与附录以略读为准）：§3 GPL 框架、§3.1 UnityGraph、§3.2 关键步骤与顺序
+- 论文：<https://arxiv.org/abs/2311.03550>
+- [arXiv PDF](https://arxiv.org/pdf/2311.03550)：已通读方法部分（实验与附录以略读为准）：§3 GPL 框架、§3.1 UnityGraph、§3.2 关键步骤与顺序
+- 编号核对（2026-11-02）：上游清单登记的 2311.04567 经 arXiv 官方记录核对为《CellPhoneDB v5: inferring cell-cell communication from single-cell multiomics data》，与本页论文不符；已更正为 2311.03550《United We Stand, Divided We Fall: UnityGraph for Unsupervised Procedure Learning from Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2311.04567)
+- [原文](https://arxiv.org/abs/2311.03550)

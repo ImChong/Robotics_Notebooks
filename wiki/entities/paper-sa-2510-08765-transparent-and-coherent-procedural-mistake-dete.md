@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2510.08765"
+arxiv: "2412.11927"
 venue: "EMNLP 2025"
 summary: "Generates transparent, coherent natural language explanations for detected procedural mistakes"
 related:
@@ -58,7 +58,7 @@ flowchart TD
     DPO["可选：用 DPO + QLoRA 微调 VQG 适配器，正例为排序最高的问题，负例从后半抽样，推理时仅在 VQG 启用"] -.-> VQG
 ```
 
-图依据：论文 §2.2 / Fig.1，§4.1–§4.2（arXiv 编号与页面不符：页面 frontmatter 的 2510.08765 对应的是无关的 UAV/IoT 定位论文，经 arXiv 检索，《Transparent and Coherent Procedural Mistake Detection》的正确编号为 2412.11927）。
+图依据：论文 §2.2 / Fig.1，§4.1–§4.2。
 
 ## 核心信息
 
@@ -67,7 +67,7 @@ flowchart TD
 | 编号 | 125/249 |
 | 分组 | 291 Procedural Error Detection |
 | 出处 | EMNLP 2025 |
-| 论文 | <https://arxiv.org/abs/2510.08765> |
+| 论文 | <https://arxiv.org/abs/2412.11927> |
 
 ## 核心机制（归纳）
 
@@ -80,7 +80,7 @@ Generates transparent, coherent natural language explanations for detected proce
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2510.08765) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2412.11927) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -113,10 +113,11 @@ Generates transparent, coherent natural language explanations for detected proce
 - [`sources/papers/sun_awesome_ego_2510_08765_transparent-and-coherent-procedural-mist.md`](../../sources/papers/sun_awesome_ego_2510_08765_transparent-and-coherent-procedural-mist.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2510.08765>
-- [arXiv PDF](https://arxiv.org/pdf/2412.11927)：已通读 §1、§2、§3、§4 与 §5 开头（附录与其余实验略读）；页面 arXiv 号 2510.08765 与该论文不符，正确编号为 2412.11927
+- 论文：<https://arxiv.org/abs/2412.11927>
+- [arXiv PDF](https://arxiv.org/pdf/2412.11927)：已通读 §1、§2、§3、§4 与 §5 开头（附录与其余实验略读）
+- 编号核对（2026-11-02）：上游清单登记的 2510.08765 经 arXiv 官方记录核对为《UAV-Assisted 3-D Localization for IoT Networks Using a Simple and Efficient TDOA-AOA Estimator》，与本页论文不符；已更正为 2412.11927《Transparent and Coherent Procedural Mistake Detection》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2510.08765)
+- [原文](https://arxiv.org/abs/2412.11927)

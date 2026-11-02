@@ -6,9 +6,10 @@
 - **分组：** 82 Autonomous Driving
 - **编号：** 479/571
 - **入库日期：** 2026-08-10
-- **arXiv：** 2602.08261
+- **arXiv：** 2602.10884
+- **编号核对：** 上游清单登记的 2602.08261 经 arXiv 官方记录核对为另一篇论文《PRO-Bid: Pareto-Prioritized Regret Optimization for Constraint-Aware Generative Auto-Bidding》，与本条目不符；已更正为 2602.10884《ResWorld: Temporal Residual World Model for End-to-End Autonomous Driving》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2602.08261>
+- **论文：** <https://arxiv.org/abs/2602.10884>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Temporal residual world model for end-to-end autonomous driving.

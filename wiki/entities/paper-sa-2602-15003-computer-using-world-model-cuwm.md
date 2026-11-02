@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.15003"
+arxiv: "2602.17365"
 venue: "arXiv 2026"
 summary: "Predicts next UI state given current state and candidate actions."
 related:
@@ -49,7 +49,7 @@ Predicts next UI state given current state and candidate actions.
 | 编号 | 500/571 |
 | 分组 | 83 GUI / Computer-Use Agents |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.15003> |
+| 论文 | <https://arxiv.org/abs/2602.17365> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +62,7 @@ Predicts next UI state given current state and candidate actions.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.15003) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.17365) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +95,10 @@ Predicts next UI state given current state and candidate actions.
 - [`sources/papers/sun_awesome_wm_2602_15003_computer-using-world-model-cuwm.md`](../../sources/papers/sun_awesome_wm_2602_15003_computer-using-world-model-cuwm.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.15003>
+- 论文：<https://arxiv.org/abs/2602.17365>
+- 编号核对（2026-11-02）：上游清单登记的 2602.15003 经 arXiv 官方记录核对为《Signatures of Dynes superconductivity in the THz response of ALD-grown NbN thin films》，与本页论文不符；已更正为 2602.17365《Computer-Using World Model》。
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.15003)
+- [原文](https://arxiv.org/abs/2602.17365)

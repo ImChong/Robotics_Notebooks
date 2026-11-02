@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2204.02345"
+arxiv: "2201.10990"
 venue: "CVPR 2022"
 summary: "Distant supervision based procedural activity recognition framework"
 related:
@@ -63,7 +63,7 @@ flowchart TD
     T --> O2["下一步预测 step forecasting"]
 ```
 
-图依据：论文 §3.1–§3.5 与 Fig.1；注意页面 arXiv 号 2204.02345 与本论文不符，本论文实际为 arXiv 2201.10990（图与参考来源均据此编号）。
+图依据：论文 §3.1–§3.5 与 Fig.1；注意。
 
 ## 核心信息
 
@@ -72,7 +72,7 @@ flowchart TD
 | 编号 | 128/249 |
 | 分组 | 292 Procedural Learning |
 | 出处 | CVPR 2022 |
-| 论文 | <https://arxiv.org/abs/2204.02345> |
+| 论文 | <https://arxiv.org/abs/2201.10990> |
 
 ## 核心机制（归纳）
 
@@ -85,7 +85,7 @@ Distant supervision based procedural activity recognition framework
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2204.02345) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2201.10990) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -118,10 +118,11 @@ Distant supervision based procedural activity recognition framework
 - [`sources/papers/sun_awesome_ego_2204_02345_learning-to-recognize-procedural-activit.md`](../../sources/papers/sun_awesome_ego_2204_02345_learning-to-recognize-procedural-activit.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2204.02345>
-- [arXiv PDF](https://arxiv.org/pdf/2201.10990)：已通读方法部分（实验与附录以略读为准）：§3.1 从 wikiHow 提取远程监督、§3.2 步骤嵌入学习、§3.3 活动分类、§3.4 步骤预测、§3.5 模型设计。注意：本页 frontmatter 的 arXiv 号 2204.02345 对应的是另一篇无关论文（关于 tilted fireball 椭圆流分裂的物理论文），本论文实际编号为 2201.10990
+- 论文：<https://arxiv.org/abs/2201.10990>
+- [arXiv PDF](https://arxiv.org/pdf/2201.10990)：已通读方法部分（实验与附录以略读为准）：§3.1 从 wikiHow 提取远程监督、§3.2 步骤嵌入学习、§3.3 活动分类、§3.4 步骤预测、§3.5 模型设计
+- 编号核对（2026-11-02）：上游清单登记的 2204.02345 经 arXiv 官方记录核对为《Splitting of elliptic flow in a tilted fireball》，与本页论文不符；已更正为 2201.10990《Learning To Recognize Procedural Activities with Distant Supervision》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2204.02345)
+- [原文](https://arxiv.org/abs/2201.10990)

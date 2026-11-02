@@ -6,9 +6,10 @@
 - **分组：** 83 GUI / Computer-Use Agents
 - **编号：** 500/571
 - **入库日期：** 2026-08-10
-- **arXiv：** 2602.15003
+- **arXiv：** 2602.17365
+- **编号核对：** 上游清单登记的 2602.15003 经 arXiv 官方记录核对为另一篇论文《Signatures of Dynes superconductivity in the THz response of ALD-grown NbN thin films》，与本条目不符；已更正为 2602.17365《Computer-Using World Model》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2602.15003>
+- **论文：** <https://arxiv.org/abs/2602.17365>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Predicts next UI state given current state and candidate actions.

@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
 updated: 2026-10-06
-arxiv: "2504.17614"
+arxiv: "2504.12908"
 venue: "arXiv 2025"
 summary: "High-performance simulation platform integrating IPC and ABD to model robots, tactile sensors, and objects; achieves 18-fold acceleration over real-time across thousands of parallel environments."
 related:
@@ -61,7 +61,7 @@ flowchart TD
     F --> M["多环境 GPU 并行（NVIDIA Warp）"]
 ```
 
-图依据：论文 §3 统一 IPC 仿真、§4 机器人与 VBTS 仿真、§6 应用。注：页面题名与 frontmatter 的 arXiv 号 2504.17614 实为另一篇无关论文（Bolt: Clothing Virtual Characters at Scale），Taccel 的正确编号为 arXiv 2504.12908，本图依据后者。
+图依据：论文 §3 统一 IPC 仿真、§4 机器人与 VBTS 仿真、§6 应用。
 
 ## 核心信息
 
@@ -70,7 +70,7 @@ flowchart TD
 | 编号 | 052/065 |
 | 分组 | Tactile Simulation & Sim2Real |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2504.17614> |
+| 论文 | <https://arxiv.org/abs/2504.12908> |
 
 ## 核心机制（归纳）
 
@@ -83,7 +83,7 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.17614) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.12908) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -116,10 +116,11 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 - [`sources/papers/sun_awesome_touch_2504_17614_taccel-scaling-up-vision-based-tactile-r.md`](../../sources/papers/sun_awesome_touch_2504_17614_taccel-scaling-up-vision-based-tactile-r.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
-- 论文：<https://arxiv.org/abs/2504.17614>
-- [arXiv PDF](https://arxiv.org/pdf/2504.12908)：已通读方法部分（实验与附录以略读为准）：§3 统一 IPC 仿真、§4 机器人与 VBTS 仿真（4.1–4.3）、§6 应用（6.1–6.3）；§5 评测与附录略读。注意：页面原 arXiv 号 2504.17614 对应 Bolt（另一篇无关论文），Taccel 实际编号为 2504.12908
+- 论文：<https://arxiv.org/abs/2504.12908>
+- [arXiv PDF](https://arxiv.org/pdf/2504.12908)：已通读方法部分（实验与附录以略读为准）：§3 统一 IPC 仿真、§4 机器人与 VBTS 仿真（4.1–4.3）、§6 应用（6.1–6.3）；§5 评测与附录略读
+- 编号核对（2026-11-02）：上游清单登记的 2504.17614 经 arXiv 官方记录核对为《Bolt: Clothing Virtual Characters at Scale》，与本页论文不符；已更正为 2504.12908《Taccel: Scaling Up Vision-based Tactile Robotics via High-performance GPU Simulation》。
 
 ## 推荐继续阅读
 
 - [Awesome Touch 仓库](https://github.com/sun254667/awesome-touch)
-- [原文](https://arxiv.org/abs/2504.17614)
+- [原文](https://arxiv.org/abs/2504.12908)
