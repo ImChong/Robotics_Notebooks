@@ -42,6 +42,30 @@ Learns latent action world models in the wild.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["阶段一：自然视频上联合训练"]
+        direction TB
+        VID["野外视频 YoutubeTemporal1B：16 帧 / 4 fps"] --> ENC["冻结的帧因果编码器 V-JEPA 2-L → 表征 s_t, s_t+1"]
+        ENC --> IDM["逆动力学模型 IDM g_φ：由 s_t, s_t+1 推出潜动作 z_t"]
+        IDM --> REG["信息正则：稀疏 / 加噪 / 离散化"]
+        REG --> WM["世界模型 p_ψ（ViT-L，AdaLN-zero 以 z_t 条件）预测 s_t+1"]
+        ENC --> WM
+        WM --> LOSS["L1 预测损失，与 IDM 联合训练"]
+    end
+    subgraph CTRL["阶段二：潜动作作为通用动作接口"]
+        direction TB
+        ACTS["已知动作（可选加入过去表征）"] --> CTRLM["控制器：MLP / cross-attention adapter"]
+        CTRLM -->|"L2 回归到 IDM 给出的潜动作"| LA["潜动作 z"]
+    end
+    TRAIN --> CTRL
+    LA --> PLAN["世界模型 rollout + CEM 规划：距离目标表征最小"]
+```
+
+图依据：论文 §3–§4（Fig.2 潜动作世界模型、式 L_t 与三类正则）、§5 实现细节、§7（Fig.9 控制器训练、CEM 规划）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Learns latent action world models in the wild.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.05230>
+- [arXiv PDF](https://arxiv.org/pdf/2601.05230)：已通读方法部分（实验与附录以略读为准）：§1–§4（问题设定、三类信息正则、实现细节）与 §7（控制器训练与规划）；§5–§6 与附录略读
 
 ## 推荐继续阅读
 

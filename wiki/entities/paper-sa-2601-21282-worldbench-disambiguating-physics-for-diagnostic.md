@@ -42,6 +42,30 @@ Provides a more fine‑grained and scalable framework through concept‑specific
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GEN["数据生成：Kubric（底层 PyBullet + Blender）<br/>输出 RGB、深度、法线、分割、光流等"] --> IN["初始帧 / 短输入视频"]
+    IN --> WFM["世界基础模型（WFM）/ 图生视频模型<br/>补全生成后续视频"]
+    WFM --> V["生成视频"]
+    subgraph S1["子集1：直觉物理（Physical Principles）"]
+        GT1["真值分割 → 首帧各物体 bounding box"] --> SAM["SAM2 以 box 提示，逐帧传播物体掩码"]
+        V --> SAM
+        SAM --> M1["与真值掩码比较：前景 mIoU<br/>背景 RMSE（衡量背景保持）"]
+    end
+    subgraph S2["子集2：物理参数估计（重力 / 摩擦 / 粘度）"]
+        CB["棋盘格标定：相机内参 + 每段视频外参"] --> POS["SAM2 跟踪物体（人工选提示点）<br/>掩码质心 + 恒定深度 → 3D 位置"]
+        V --> POS
+        POS --> FIT["曲线拟合：二次拟合得加速度<br/>线性拟合斜率得终端速度"]
+        FIT --> PAR["换算物理参数：g、摩擦系数、粘度<br/>与真值或可接受范围比较"]
+    end
+    V --> S1
+    V --> S2
+```
+
+图依据：论文 §3（Benchmark）、§3.1.1 与 §3.2.1（两个子集的 Evaluation Methodology）、Fig.1、Fig.2；本图画的是基准的评测流程，不是被测模型的结构。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Provides a more fine‑grained and scalable framework through concept‑specific
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.21282>
+- [arXiv PDF](https://arxiv.org/pdf/2601.21282)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Benchmark（3.1-3.2，含两处 Evaluation Methodology）。
 
 ## 推荐继续阅读
 

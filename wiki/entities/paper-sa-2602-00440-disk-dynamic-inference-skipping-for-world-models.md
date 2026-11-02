@@ -42,6 +42,32 @@ Training-free adaptive inference for autoregressive world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["上下文 c（历史帧、位姿等）<br/>+ 上一 rollout 步的摘要 s_s"] --> INIT["每个 rollout 步 s：<br/>两分支从高斯噪声 x_K 出发，重置控制器与缓存"]
+    INIT --> LOOP["扩散步 k = K → 1"]
+    LOOP --> TC["轨迹控制器：<br/>局部平滑度检验 Δ_k ≤ θ·d_k+1 → skip，否则 compute<br/>（预热 W、连续跳步上限 C_max、stall 守卫强制 compute）"]
+    LOOP --> VC["视觉控制器：同样的平滑度检验与守卫"]
+    TC --> SG{"Safety Gate σ^(t)<br/>（轨迹分支的守卫触发）"}
+    SG -->|"触发：强制视觉分支 compute"| VM
+    VC -->|"compute"| VM["视觉模块 F_v（视频 DiT）<br/>新预测并写入缓存"]
+    VC -->|"skip"| VCache["复用缓存预测 û^(v)"]
+    TC -->|"compute"| TM["轨迹模块 F_t（轨迹 DiT）<br/>新预测并写入缓存"]
+    TC -->|"skip"| TCache["复用缓存预测 û^(t)"]
+    VM --> UPD["采样器更新 x_k-1 = Ψ(...)"]
+    VCache --> UPD
+    TM --> UPD
+    TCache --> UPD
+    UPD -.->|"下一扩散步"| LOOP
+    UPD --> OUT["k=0：输出视频潜变量 x_0^(v) 与轨迹潜变量 x_0^(t)"]
+    OUT --> SUM["记录两分支摘要（compute/skip 计数、安全比例 ρ）<br/>难度分 β_s = max(ρ^(v), ρ^(t))"]
+    SUM -.->|"扩大预热窗口、放宽阈值，种入下一步 s+1"| C
+```
+
+图依据：论文 §3.1-3.3（Method）、Fig.3、Fig.4、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Training-free adaptive inference for autoregressive world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.00440>
+- [arXiv PDF](https://arxiv.org/pdf/2602.00440)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Method（3.1-3.3，含 Algorithm 1）。
 
 ## 推荐继续阅读
 

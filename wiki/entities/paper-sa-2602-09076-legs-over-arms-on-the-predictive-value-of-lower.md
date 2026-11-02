@@ -60,7 +60,7 @@ flowchart LR
   J --> K["指标：minADE / minFDE / MLADE / NLLpos"]
 ```
 
-/tmp/x_31/2.b
+图依据：论文 §III-A 问题设定、§III-C 实现细节（HST 骨干 + 附加特征流）；本图为对比研究的输入—模型流程，非新提出的网络结构。
 
 ## 核心信息
 
