@@ -42,6 +42,27 @@ Video generators as generalizable robot manipulators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  T["语言指令 T"] --> TE["T5 文本编码器：226 个 language tokens"]
+  O["当前视觉观测 O"] --> VE["CogVideoX 3D-causal VAE 编码器：首帧 latent V1"]
+  TE --> DiT
+  VE --> DiT
+  N["加噪的未来帧 latents + 加噪的 7-D 动作 chunk"] --> DiT
+  subgraph DiT["Diffusion Transformer（self-attention 堆叠，DDPM 去噪）"]
+    S["拼接序列：T、V1、未来帧 latents、动作 A"]
+  end
+  DiT --> A["去噪动作 chunk A（K 个 7-D 动作）"]
+  DiT --> F["去噪未来帧 latents"]
+  F -.->|"可选，仅用于可视化"| VD["视频解码器"]
+  A --> X["执行动作，取得新观测并重复"]
+  X --> O
+```
+
+图依据：论文 §3 Methodology / Fig.2（§3.1 问题设定、§3.3 编码器、§3.4 统一未来建模）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ Video generators as generalizable robot manipulators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.06963>
+- [arXiv PDF](https://arxiv.org/pdf/2512.06963)：已通读方法部分（实验与附录以略读为准）：§3.1 Problem Formulation 至 §3.4 Unified Future Modeling
 
 ## 推荐继续阅读
 

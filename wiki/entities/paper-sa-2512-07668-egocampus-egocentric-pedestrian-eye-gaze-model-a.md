@@ -42,6 +42,23 @@ Introduces EgoCampus dataset spanning 25 unique outdoor paths with recordings fr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["Project Aria 眼镜：第一人称视频（16 帧 / 64 帧窗口）"] --> B["预训练视频编码器 X3D：时空特征 S"]
+  A --> Q["查询帧 f_t（通常为最后一帧）"]
+  B --> C["取第 t 个时间位置特征 + ResNet blocks：S'"]
+  Q --> D["独立 ResNet blocks：图像特征 I"]
+  C --> E["沿通道维拼接：编码 gaze map G"]
+  D --> E
+  E --> F["CNN decoder 上采样"]
+  F --> G["模糊 + center prior + 归一化"]
+  G --> H["预测 gaze 热图"]
+```
+
+图依据：论文 §4 Methodology / Fig.1、Fig.5（EgoCampusNet, ECN 模型部分；数据集采集不在图内）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Introduces EgoCampus dataset spanning 25 unique outdoor paths with recordings fr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2512.07668>
+- [arXiv PDF](https://arxiv.org/pdf/2512.07668)：已通读方法部分（实验与附录以略读为准）：§4 Methodology、§5 实验设定开头
 
 ## 推荐继续阅读
 

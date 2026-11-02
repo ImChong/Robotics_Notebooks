@@ -44,6 +44,26 @@ SafeHumanoid 把「怎么调阻抗」这个低层控制问题，交给一个第�
 - **模板库范式**：用少量人工验证模板 + 近邻检索，权衡了「可解释/合规」与「自动化」
 - **延迟瓶颈**：也暴露了离板大模型 + 低频感知在动态 HRI 下的实时性天花板
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    CAM["G1 板载 PC：<br/>第一视角 RGB 帧 (1–2 Hz)"] -->|"TCP/IP over Wi-Fi"| VLM["离板工作站 Perception：<br/>Molmo-7B BnB 4-bit + 固定任务 prompt"]
+    VLM --> JSON["结构化 JSON 场景语义：<br/>任务/物体/易碎性/人是否在场/障碍/置信度等"]
+    JSON --> EMB["all-MiniLM-L6-v2<br/>384 维嵌入"]
+    EMB --> FAISS["FAISS 精确最近邻<br/>(欧氏距离) vs 场景库"]
+    FAISS --> CHK{"相似度足够<br/>且无并列?"}
+    CHK -->|"是"| PAY["Generation：取回 payload<br/>28 个 Kp/Kd + 名义速度 v"]
+    CHK -->|"否"| FB["保守 fallback 参数"]
+    PAY -->|"29 维参数返回机器人"| CTRL
+    FB --> CTRL
+    TGT["预设末端 6-DoF 目标位姿"] --> IK["IK 求解器（锁定腿/腰）<br/>输出 q_ref 与 RNEA 前馈 τ_ff"]
+    IK --> CTRL["50 Hz 关节阻抗控制器<br/>τ = Kp(q_ref-q)+Kd(q̇_ref-q̇)+τ_ff"]
+    CTRL --> ARM["G1 上半身关节执行"]
+```
+
+图依据：论文 §3.1–3.5 / Fig. 2（系统架构）；通信中断时回退保守档见 §3.2，检索低置信回退见 §3.4。
+
 ## 解决什么问题
 
 人形机器人和人**共享同一工作空间**做桌面操作（擦桌、递物、倒液体）时，安全的核心矛盾是：
@@ -128,6 +148,7 @@ SafeHumanoid 把「怎么调阻抗」这个低层控制问题，交给一个第�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance/SafeHumanoid__VLM-RAG-driven_Control_of_Upper_Body_Impedance.html>
 - 论文：<https://arxiv.org/abs/2511.23300>
 - 论文正文（场景库构建、实验与局限节）：<https://arxiv.org/html/2511.23300>
+- [arXiv PDF](https://arxiv.org/pdf/2511.23300)：已通读方法部分（实验与附录以略读为准）：§1–§3（系统架构、通信、VLM 感知、RAG、控制模块）、§4 场景库构建
 
 ## 推荐继续阅读
 
