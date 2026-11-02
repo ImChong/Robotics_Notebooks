@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] lint | health-check — 全量 lint 清零：DONIC/Spotter 陈旧页同步源核查进度、SeeR-VLA 补「与其他工作对比」、7 评测基准页 + 3 感知页 + 1 FOC 页补枢纽回链、6 篇非感知论文修正误标 perception tag、none/VGGT 加入缺页候选豁免
+
 ## [2026-11-01] ingest | 古月居转载《四足机器人开源项目深度解析》：36 个 GitHub 项目逐项目建独立节点（新建 24 / 复用 12 个节点），含 README 核对
 
 ## [2026-11-01] ingest | Zane Hub 公众号《灵巧手负载与核心指标》：新建 dexterous-hand-payload-core-metrics 概念页（工程经验综述，无论文/项目清单）
