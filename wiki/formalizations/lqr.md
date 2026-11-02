@@ -3,6 +3,7 @@ type: formalization
 tags: [control, lqr, optimal-control, linear-systems, locomotion]
 status: complete
 related:
+  - ../concepts/quarter-car-active-suspension-lqr-optimization.md
   - ./eigenvalues-eigenvectors.md
   - ./kalman-filter.md
   - ../concepts/optimal-control.md
@@ -143,6 +144,7 @@ iLQR 是迭代算法，每轮包含：
 MPC 在某种意义上是"在线、有约束、有限时域的 LQR"。
 
 ## 关联页面
+- [1/4 车主动悬架：LQR 权重与带约束增益优化案例](../concepts/quarter-car-active-suspension-lqr-optimization.md) — 手调权重几乎无效、优化器只最优写下的约束（作者实操，未复现）
 
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — LQR 是 OCP 的最经典闭式解
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — iLQR 是 TO 的核心算法
