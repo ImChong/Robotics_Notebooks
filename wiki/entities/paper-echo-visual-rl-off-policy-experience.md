@@ -12,6 +12,7 @@ related:
   - ../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/echo-visual-rl-off-policy-experience_arxiv_2610_37865.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
 summary: "Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视觉强化学习（arXiv:2610.37865）：让状态输入辅助策略反向模仿持续更新的视觉策略，并采集无需渲染的廉价经验；这些经验通过共享特权 Critic 参与离策略价值学习，直接更新视觉策略。该工作目前为初步仿真实验。"

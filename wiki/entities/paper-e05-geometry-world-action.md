@@ -12,6 +12,7 @@ related:
   - ../tasks/manipulation.md
   - ./paper-rollback-world-model.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/e05_arxiv_2610_36011.md
   - ../../sources/sites/e05_project.md
   - ../../sources/repos/e05.md

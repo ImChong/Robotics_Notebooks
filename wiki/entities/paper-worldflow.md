@@ -16,6 +16,7 @@ related:
   - ../methods/vla.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/worldflow_arxiv_2610_39278.md
   - ../../sources/repos/worldflow.md
   - ../../sources/sites/worldflow.md

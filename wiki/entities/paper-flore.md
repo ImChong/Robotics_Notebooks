@@ -17,6 +17,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/flore_arxiv_2610_35862.md
   - ../../sources/sites/flore.md

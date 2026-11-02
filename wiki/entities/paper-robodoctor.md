@@ -16,6 +16,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/robodoctor_arxiv_2610_35604.md
   - ../../sources/repos/robodoctor.md
   - ../../sources/sites/robodoctor.md
