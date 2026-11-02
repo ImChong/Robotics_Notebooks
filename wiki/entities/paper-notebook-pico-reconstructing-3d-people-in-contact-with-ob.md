@@ -38,6 +38,28 @@ summary: "从单张彩色图恢复 3D 人-物交互（HOI）很难：深度歧�
 - **VFM 检索 + 最小人工标注**是低成本造数据的范式；
 - 人-物交互重建可为人形操作提供目标/接触监督。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["输入图像 I"] --> INIT
+    subgraph INIT["初始化 §4.1"]
+        B0["OSX 回归 SMPL-X 人体 H 与初始姿态 θ*"]
+        O0["OpenShape 图像-3D 形状共享潜空间<br/>在 Objaverse-LVIS 中检索物体网格；GPT-4V 初始化尺度 s_o*"]
+        C0["接触: DECO 推断人体顶点接触 + GPT-4V 修正<br/>用其在 PICO-db 中按 IoU 检索身-物接触对应"]
+    end
+    INIT --> S1["阶段 1: 物体-人体配准 §4.2<br/>固定人体，最小化接触损失 L_c，求物体 R_o, t_o"]
+    S1 --> S2["阶段 2: 物体-图像对齐 §4.3<br/>优化物体 R_o, t_o, s_o<br/>SAM 物体掩码 IoU 损失 + 穿透损失 L_p + 尺度损失 + 接触损失"]
+    S2 --> S3["阶段 3: 人体-图像对齐 §4.4<br/>只优化接触肢体链姿态 θ_C<br/>接触损失 + 穿透损失 + SAM 人体掩码损失 + 姿态正则"]
+    S3 --> OUT["输出: 彼此配准且与图像对齐的 3D 人体与物体网格"]
+    subgraph DB["PICO-db 构建 §3"]
+        D1["DAMON 图像 → OpenShape 取 3 个候选物体网格，标注者选 1 个"] --> D2["网页工具: 标注者在物体上点两下指定接触轴<br/>把人体接触迁移到物体 (AMT 众包)"]
+    end
+    DB -.->|"接触标注库供检索"| C0
+```
+
+图依据：论文 §3（PICO-db）、§4 / Fig.4（PICO-fit 初始化与三阶段拟合）。
+
 ## 解决什么问题
 
 单图 3D 人-物交互重建难： - **深度歧义、遮挡、物体多样**； - 以往需**已知物体/接触**、只限少数类； - 缺**身-物双侧接触**标注。
@@ -89,6 +111,7 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 - [humanoid_pnb_pico.md](../../sources/papers/humanoid_pnb_pico.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects/PICO__Reconstructing_3D_People_In_Contact_with_Objects.html>
 - 论文：<https://arxiv.org/abs/2504.17695>
+- [arXiv PDF](https://arxiv.org/pdf/2504.17695)：已通读方法部分（实验与附录以略读为准）：§3 PICO-db、§4 PICO-fit（含 Fig.4）；§5 实验与附录略读
 
 ## 推荐继续阅读
 

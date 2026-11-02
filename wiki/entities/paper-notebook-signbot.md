@@ -32,7 +32,38 @@ SignBot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；论文方法的模块流程见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["摄像头观察手语使用者<br/>存为视频输入"] --> TR
+    subgraph CB["大脑 Cerebral：手语推理（§IV-C）"]
+        TR["手语翻译器<br/>LLM，视频特征对齐到语言模型维度<br/>用 CSL-Daily / How2Sign 文本微调"] --> RS["手语应答器<br/>DeepSeek-Chat API + 提示模板<br/>限定在 CSL 数据集词汇范围内"]
+        RS --> GEN["手语生成器<br/>多语言 LM 编码文本 + 词级手语 token<br/>三个解码头自回归预测 UB / LH / RH 运动 token"]
+        VQ["解耦 VQ-VAE 分词器<br/>上身 UB / 左手 LH / 右手 RH 各一个码本"] -.-> GEN
+        GEN --> REC["重建为 SMPL-X 手语运动<br/>作为模仿目标"]
+    end
+    subgraph RT["运动重定向（§IV-A）"]
+        V["手语视频 mesh"] --> BR["身体重定向<br/>双 T-pose 对齐，腕/肩增加自由度"]
+        V --> HR["手部重定向<br/>映射到 Linker 手关节<br/>优化关键点向量差 + 帧间平滑正则"]
+    end
+    V -. 与文本标签一起训练 .-> GEN
+    REC --> GOAL["模仿目标 o^y<br/>14 个参考关键点、参考关节位置与速度"]
+    BR --> GOAL
+    HR --> GOAL
+    subgraph CE["小脑 Cerebellum：控制策略训练（§IV-B）"]
+        GOAL --> UP["上身策略 π_upper<br/>跟踪重定向后的上身动作"]
+        GOAL --> LOW["下身策略 π_lower<br/>保持平衡并适应上身动作<br/>腿式 H1 用 PPO，轮式 W1 用 MPC"]
+        UP --> ACT["全身动作 a = 下身 + 上身<br/>IsaacGym 中域随机化训练"]
+        LOW --> ACT
+    end
+    ACT --> RK["Ruckig 在线轨迹生成<br/>三阶（jerk）约束，避开关节极限"]
+    RK --> ROBOT["真机执行手语<br/>H1 / W1 + Linker 灵巧手"]
+```
+
+图依据：论文 §IV-A / §IV-B / §IV-C / Fig. 2
 
 ## 核心信息
 
@@ -64,6 +95,7 @@ SignBot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - [humanoid_pnb_signbot.md](../../sources/papers/humanoid_pnb_signbot.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2505.24266)：已通读方法部分（实验与附录以略读为准）：§III 问题定义、§IV SignBot（§IV-A 运动重定向、§IV-B 小脑控制策略训练、§IV-C 大脑手语推理与 Sim-to-Real 部署）；§V 实验与附录略读
 
 
 ## 推荐继续阅读

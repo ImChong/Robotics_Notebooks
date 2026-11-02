@@ -41,6 +41,32 @@ sources:
 - 人-场景交互 task token 化；坐下/跨越等是结构化事件。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#38/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：基础技能学习（flat ground 多任务环境）"]
+        ENV["多任务环境<br/>按概率分配任务：跟随 10% / 坐 / 攀爬 / 搬运 各 30%"] --> TOK["任务 Tokenizer Tf、Ts、Tm、Tc<br/>+ 本体感觉 Tokenizer Tprop（各 MLP，输出 64 维）"]
+        ENV --> LBL["one-hot 任务标签 lt"]
+        TOK --> ENC["Transformer Encoder φ<br/>自注意力融合 + 可学习输出 token e"]
+        LBL -->|"作为 attention mask，屏蔽非目标任务 token"| ENC
+        ENC --> HEAD["Action Head H（MLP）"]
+        HEAD --> ACT["动作 at：PD 控制器的关节目标旋转（32 维）"]
+        LBL -->|"条件化"| DISC["Motion Discriminator D（风格奖励）"]
+        ACT --> PPO["PPO 训练：风格奖励 + 任务奖励"]
+        DISC --> PPO
+    end
+    subgraph S2["阶段二：策略适配（新任务 / 新环境）"]
+        FROZEN["冻结：Tprop、可学习 token e、Action Head H、Encoder φ"] --> NEWTOK["复用 / 微调已有任务 Tokenizer，<br/>并新增可训练 Tokenizer Tnew"]
+        NEWTOK --> ADP["Action Head 内零初始化 Adapter ξA<br/>+ 每个任务从头训练新的 Discriminator D"]
+        ADP --> TASKS["技能组合 / 物体与地形形状变化 / 长程任务"]
+        FSM["有限状态机 FSM 查询 one-hot 标签<br/>（长程任务自动切换）"] --> TASKS
+    end
+    S1 --> S2
+```
+
+图依据：论文 §3.3 Foundational Skill Learning、§3.4 Transformer-based Policy Adaptation / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +117,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2503.19901>
+- [arXiv PDF](https://arxiv.org/pdf/2503.19901)：已通读方法部分（实验与附录以略读为准）：§1 引言与 §2.2 中的方法概述、§3.2–3.4（物理角色控制、基础技能学习、策略适配）、§4.1 实验设定
 
 ## 推荐继续阅读
 

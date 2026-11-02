@@ -31,7 +31,44 @@ Let Humanoids Hike! Integrative Skill Development on Complex Trails 的人形机
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），结论与指标以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["(a) 特权 Oracle 策略训练 (§3.4)"]
+        T1["特权信息 X_pri + 专家朝向目标<br/>(不使用视觉)"] --> T2["Oracle 运动技能策略 π_tea"]
+    end
+    subgraph IN["机器人输入 (§3.1)"]
+        I1["GPS 2D 向量: 到终点 P_B / 中间路标"]
+        I2["本体感知 X_pro"]
+        I3["前向深度图序列 C_k"]
+    end
+    subgraph H["高层导航模块 H: TC-ViT (§3.3)"]
+        H1["目标条件时序 ViT 编码器<br/>16 帧深度序列 + 终点 P_B 早期融合 → α"]
+        H2["当前帧浅层 CNN → β"]
+        H3["γ = MLPs(concat(α, β))"]
+        H4["MLP + GRU<br/>融合 γ、P_B、路标、X_pro"]
+        H1 --> H3
+        H2 --> H3
+        H3 --> H4
+    end
+    I3 --> H1
+    I3 --> H2
+    I1 --> H4
+    I2 --> H4
+    H4 --> O["潜在轨迹表示 z_uni<br/>目标残差 δg0<br/>未来局部目标 g1, g2, g3"]
+    subgraph E["低层运动技能模块 E (§3.2)"]
+        E1["以 z_uni、X_pro、δg0、最近目标 g1 为输入<br/>软引导，不严格跟踪目标序列"]
+    end
+    O -->|"仅转发最近目标 g1，z_uni 平铺 5 次"| E1
+    E1 --> ACT["动作 a_t"]
+    T2 -->|"蒸馏初始化 E"| E1
+    LM["层级潜在匹配度量 (§3.6)<br/>掩码 VAE 潜空间对齐教师与学生动作"] -.-> E1
+```
+
+图依据：论文 §3.2–3.6 / Fig.3、Fig.4（部分内容来自图注，细节以原文为准）。
 
 ## 核心信息
 
@@ -64,6 +101,7 @@ Let Humanoids Hike! Integrative Skill Development on Complex Trails 的人形机
 - [humanoid_pnb_let-humanoids-hike-integrative-skill-development.md](../../sources/papers/humanoid_pnb_let-humanoids-hike-integrative-skill-development.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.06218>
+- [arXiv PDF](https://arxiv.org/pdf/2505.06218)：已通读方法部分（实验与附录以略读为准）：§3 LEGO-H 方法（§3.1–§3.4 与 Fig.3、Fig.4）；§3.5–§3.6、§4 实验与附录以略读为准
 
 ## 推荐继续阅读
 

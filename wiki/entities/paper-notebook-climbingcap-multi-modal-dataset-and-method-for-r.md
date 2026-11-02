@@ -38,6 +38,24 @@ summary: "人体动作恢复（HMR）研究多聚焦地面动作（如跑步）�
 - **全局位置恢复**对人形 loco-manip 的世界系跟踪相关（呼应 HiWET）；
 - 攀岩这类极限动作可作为人形高难技能的参考动作源。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    RGB["RGB 序列"] --> FE["特征提取<br/>RGB Extract (ViT) / PC Extract (PointNet++)"]
+    PC["LiDAR 点云序列"] --> FE
+    FE --> CD["Camera Coordinate Decoder<br/>迭代回归 SMPL 的 θ、β 与相机平移 Δc"]
+    FE --> GD["Global Translation Decoder<br/>迭代回归全局平移 Γtrans"]
+    CD --> PP["后处理（Adam 优化全局姿态）<br/>LLWD 肢体加权 / LSDS 速度方向平滑 / LVLR 可见肢体修复"]
+    GD --> PP
+    PP --> T["教师模型：SCD + 后处理"]
+    T --> PL["对无标注攀岩数据生成伪标签"]
+    PL --> S["学生模型（克隆教师参数）<br/>半监督训练"]
+    S --> OUT["世界坐标下的连续攀岩动作"]
+```
+
+图依据：论文 §3.1 Separate Coordinate Decoding、§3.2 Post-processing、§3.3 Semi-supervised Training / Fig.2。
+
 ## 解决什么问题
 
 攀岩这类**离地动作**的动捕被忽视： - 缺**大规模 3D 标注**攀岩数据； - 需同时恢复**复杂姿态 + 全局位置**； - 现有全局 HMR 方法难胜任。
@@ -89,6 +107,7 @@ ClimbingCap 要：建数据集（AscendMotion）+ 方法，在世界坐标下连
 - [humanoid_pnb_climbingcap.md](../../sources/papers/humanoid_pnb_climbingcap.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/ClimbingCap__Multi-Modal_Dataset_and_Method_for_Rock_Climbing_in_World_Coordinate/ClimbingCap__Multi-Modal_Dataset_and_Method_for_Rock_Climbing_in_World_Coordinate.html>
 - 论文：<https://arxiv.org/abs/2503.21268>
+- [arXiv PDF](https://arxiv.org/pdf/2503.21268)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 SCD、3.2 后处理、3.3 半监督训练）、§4 AscendMotion 数据集与标注流程（略读）
 
 ## 推荐继续阅读
 

@@ -38,6 +38,34 @@ planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界�
 - planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界问题。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#40/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DS["数据构建 §4.1"]
+        A["AMASS 动作"] --> B["PULSE 跟踪策略跟踪<br/>保留成功序列的 (s_t, a_t, z_t)"]
+        T["BABEL 帧级文本标注"] --> C["文本-状态-动作数据集<br/>4,875 条序列，约 15.7 小时"]
+        B --> C
+    end
+    subgraph TR["训练 §4.2"]
+        D["行为序列 x_t = (规范化状态 s_t, 32 维潜动作 z_t)"]
+        D --> E["每帧独立随机噪声级别 (Diffusion Forcing)"]
+        E --> F["因果 Transformer 解码器 + CLIP 文本嵌入<br/>预测干净行为序列"]
+    end
+    C --> D
+    subgraph INF["推理: 引导去噪 + 滚动时域 §4.3"]
+        G["历史 h 帧 + 待预测 H 帧噪声"] --> H["去噪矩阵逐行去噪<br/>稳定化技巧: 已去噪帧噪声指示 k 大于 0"]
+        H --> I["文本 CFG 引导 + 任务损失梯度引导 (蒙特卡洛引导 MCG)"]
+        I --> J["PULSE 解码器把 (s, z) 解码为动作 a"]
+        J --> K["执行前 Ta 步 → 物理仿真 → 更新历史"]
+        K --> G
+    end
+    F --> G
+    TASK["任务: 文本控制 / 目标到达 / 速度控制 / 动态避障<br/>(不同 h, H, Ta 与去噪调度)"] -.->|"提供引导损失"| I
+```
+
+图依据：论文 §3–§4 / Fig.3、Alg.1、Table 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +118,7 @@ planner 与 controller 在扩散框架内协同；BFM 成熟后的分层边界�
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2504.12540>
+- [arXiv PDF](https://arxiv.org/pdf/2504.12540)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4 方法（含 Fig.3、Alg.1、Table 1）；§5 实验与附录略读
 
 ## 推荐继续阅读
 

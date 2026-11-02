@@ -17,6 +17,25 @@ summary: "Diffusion-VLA（arXiv:2412.03293）：扩散解码的 VLA。"
 
 **Diffusion-VLA**（[arXiv:2412.03293](https://arxiv.org/abs/2412.03293)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["多视角图像 + 语言指令"] --> SIG["SigLIP 视觉编码<br/>(各视角共享骨干)"]
+    SIG --> TR["Transformer<br/>压缩为 N 个 visual embeddings<br/>(多视角 token 拼接)"]
+    TR --> VLM["Qwen2VL 作 VLM 骨干<br/>(2B / 7B / 72B)"]
+    VLM --> RS["自生成推理<br/>(next-token prediction)"]
+    VLM --> AT["固定数量的 action tokens"]
+    AT --> PJ["投影模块<br/>2 层 MLP + LayerNorm"]
+    PJ --> DP["扩散策略 Diffusion Policy<br/>(随机初始化)"]
+    RS -->|"最终 embedding<br/>经 FiLM 注入"| DP
+    DP --> MLP["末端 MLP 层<br/>输出关节空间动作"]
+    LOSS["训练损失<br/>L = L_diff + α·L_ntp"] -.-> DP
+    LOSS -.-> RS
+```
+
+图依据：论文 §3.1 Architecture / §3.2 Model Design Choices（reasoning injection module、Training objectives）。
+
 ## 一句话定义
 
 **在 VLA 内用扩散解码动作。**
@@ -72,6 +91,7 @@ Diffusion-VLA 把 DP 多峰优势带入 VLA。
 ## 参考来源
 
 - [wechat_lumina_vla_survey_part1_2026-09-20.md](../../sources/blogs/wechat_lumina_vla_survey_part1_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2412.03293)：已通读方法部分（实验与附录以略读为准）：§3.1 Architecture、§3.2 Model Design Choices
 
 ## 推荐继续阅读
 

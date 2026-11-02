@@ -31,7 +31,35 @@ Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL 的人形�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），结论与指标以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OBS["策略输入 / 输出 §III"]
+        I1["机器人状态: 根姿态 roll/pitch、角速度、关节位置/速度、电机电流"]
+        I2["外部状态: 模式 (站立 / 原地踏步 / 前进) 独热 + 参考速度 + 周期时钟 clock"]
+        A1["输出: 12 维腿部关节目标位置 → 低增益 PD (策略 40 Hz，PD 1000 Hz)<br/>上身关节固定"]
+    end
+    subgraph P1["训练阶段 1 §IV-C"]
+        T1["平坦刚性地面训练基础策略<br/>站立 / 原地踏步 / 前进模式随机切换"]
+    end
+    subgraph P2["训练阶段 2 §IV"]
+        T2["从预训练权重继续微调<br/>随机化脚部柔顺 solref；随机移动 MuJoCo 高度场地形 (双支撑期禁用)<br/>动力学参数 (阻尼、摩擦、质量、质心) 约每 0.5 s 重采样"]
+    end
+    I1 --> T1
+    I2 --> T1
+    T1 --> T2
+    T2 --> PPO["PPO 训练 MLP 策略/价值网络 (2 层 x 256)"]
+    PPO --> DEP["零样本迁移 HRP-5P 真机<br/>C++ mc-rtc 控制器，mc-mujoco 先行验证"]
+    subgraph V["增强策略 §V 非周期步态"]
+        V1["动作增至 13 维: 额外预测相位偏移 a_δϕ<br/>ϕ_t+1 = ϕ_t + clip(a_δϕ, -5, 5) + 1"]
+    end
+    T2 -.->|"策略输出增加 clock 调制 (Fig.2 右)"| V
+```
+
+图依据：论文 §III–§V / Fig.2（左：两阶段训练；右：预测 clock 调制的增强策略）。
 
 ## 核心信息
 
@@ -64,6 +92,7 @@ Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL 的人形�
 - [humanoid_pnb_robust-humanoid-walking-on-compliant-and-uneven.md](../../sources/papers/humanoid_pnb_robust-humanoid-walking-on-compliant-and-uneven.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2504.13619>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13619)：已通读方法部分（实验与附录以略读为准）：§III–§V 环境、训练与非周期步态（Fig.2）；§VI 实验结果略读
 
 ## 推荐继续阅读
 
