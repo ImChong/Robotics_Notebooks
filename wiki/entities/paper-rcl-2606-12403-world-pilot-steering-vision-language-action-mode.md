@@ -42,6 +42,25 @@ We present World Pilot, a VLA framework that augments the policy with priors fro
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多视角图像 O_t、语言指令 ℓ、本体状态 q_t"] --> VLM["VLM 语义骨干 → 隐状态 H_t"]
+    IN --> WAM["World-Action Model W_φ（冻结，视频预训练）<br/>VAE 编码 + DiT 去噪，共享编码器"]
+    WAM --> ZW["场景演化 latent Z_t^w"]
+    WAM --> AW["预期动作轨迹 A~_t^w"]
+    ZW --> LS["Latent Steering<br/>动力学编码器 f_dyn + 未来时间嵌入 ρ_fut → D_t^w"]
+    VLM --> XA["cross-attention + 残差<br/>H̄_t = H_t + CrossAttn(H_t, D_t^w)"]
+    LS --> XA
+    AW --> AS["Action Steering<br/>对齐到动作 horizon K → 动作编码器 f_act → 单个先验 token s_t^w"]
+    XA --> FM["flow-matching 动作生成器<br/>输入 [u_t ; s_t^w ; Q_t ; X_τ,t]，H̄_t 作 cross-attention 条件"]
+    AS --> FM
+    FM --> OUT["动作块 Â_t"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +118,7 @@ We present World Pilot, a VLA framework that augments the policy with priors fro
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.12403>
+- [arXiv PDF](https://arxiv.org/pdf/2606.12403)：已通读方法部分（实验与附录以略读为准）：§1 引言（方法概述）、§3 Method（3.1–3.4）
 
 ## 推荐继续阅读
 

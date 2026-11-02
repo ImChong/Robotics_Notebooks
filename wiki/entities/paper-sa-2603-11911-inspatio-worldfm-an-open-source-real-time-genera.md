@@ -42,6 +42,28 @@ Real-time frame model with strong multi-view consistency, supports interactive e
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线阶段"]
+        IMG["单张输入图像"] --> MV["多视角一致模型 / 全景图<br/>生成参考外观与 360° 约束"]
+        IMG --> REC["3D 重建模型<br/>得到 3D 锚点（点云）"]
+    end
+    subgraph ON["在线阶段：逐帧独立生成"]
+        CAM["用户相机运动 → 目标位姿"] --> PCR["点云在目标视角的渲染<br/>显式 3D 锚点"]
+        MV --> REF["参考帧 + 参考位姿<br/>隐式空间记忆"]
+        REC --> PCR
+        PCR --> CAT["沿宽度拼接：噪声目标潜变量 / 点云渲染 / 参考帧"]
+        REF --> CAT
+        CAT --> DIT["仅自注意力 DiT（PixArt-Σ 骨干）<br/>PRoPE 注入相机位姿"]
+        DIT --> OUTL["只保留目标部分 → VAE 解码 → 目标视角图像"]
+    end
+    TRAIN["三阶段训练：预训练 → 中期训练（真实视频 + Unreal Engine 合成数据微调）<br/>→ DMD 蒸馏为 2 步生成器"] -.-> DIT
+```
+
+图依据：论文 §2.1–2.5 / Fig.2–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Real-time frame model with strong multi-view consistency, supports interactive e
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.11911>
+- [arXiv PDF](https://arxiv.org/pdf/2603.11911)：已通读方法部分（实验与附录以略读为准）：§2（Overview、Formulation、Pre-/Middle-/Post-Training 全部子节）与 §3 评测略读
 
 ## 推荐继续阅读
 

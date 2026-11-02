@@ -42,6 +42,29 @@ Action consistency via inverse dynamics for planning with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  OBS["当前观测 o_0 与目标观测 o_g"] --> ENC["编码器 E_θ<br/>z_0 = E_θ(o_0), z_g = E_θ(o_g)"]
+  ENC --> CEM["CEM 采样 N 条候选动作序列 a_0:H-1<br/>(高斯分布，初始 μ=0, Σ=I)"]
+  CEM --> WM["动作条件世界模型 F_θ 自回归 rollout<br/>ẑ_t+1 = F_θ(ẑ_t, a_t)"]
+  WM --> CG["目标代价 c_g = ||ẑ_H − z_g||²"]
+  WM --> IDM["逆动力学 IDM G_ϕ（flow-matching 动作解码器）<br/>â_t = G_ϕ(ẑ_t, ẑ_t+1)"]
+  IDM --> CA["动作一致性代价（cycle action consistency）<br/>c_a = 1/H · Σ ||a_t − â_t||²"]
+  CG --> COST["增广代价 c = c_g + w_a · c_a"]
+  CA --> COST
+  STD["候选间标准差 σ_g, σ_a"] --> W["尺度不变自适应权重 w_a = λ · σ_g / σ_a<br/>每个 CEM 迭代重算"]
+  CG -.-> STD
+  CA -.-> STD
+  W --> COST
+  COST --> ELITE["取代价最低的 K 个 elite，更新高斯分布<br/>迭代 J 轮"]
+  ELITE -->|"下一轮采样"| CEM
+  ELITE --> EXEC["MPC：执行优化出的 H 步动作，随后用新观测重规划"]
+```
+
+图依据：论文 §3.1–3.3、Algorithm 1 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Action consistency via inverse dynamics for planning with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.02403>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02403)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.3）、Algorithm 1；IDM 实现细节仅读正文概述
 
 ## 推荐继续阅读
 

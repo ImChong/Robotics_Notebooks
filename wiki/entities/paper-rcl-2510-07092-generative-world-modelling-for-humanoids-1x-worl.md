@@ -42,6 +42,27 @@ Team Revontuli uses two separate, state-conditioned predictors: a LoRA-adapted W
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SA["采样赛道：预测 2 秒后的 512x512 帧"]
+        S1["输入：前 17 帧 x0:16 与整段机器人状态 s0:76"] --> S2["Wan2.2-VAE 编码；固定多帧 latent 掩码，将 image-to-video 改为 video-to-video；文本提示为空字符串"]
+        S1 --> S3["状态经正弦特征、MLP、1D 卷积时间压缩、MLP 得到调制量，经 adaLN-Zero 并入 flow matching 时间步调制"]
+        S2 --> S4["Wan2.2 TI2V-5B（30 层 DiT），LoRA 秩 32 微调"]
+        S3 --> S4
+        S4 --> S5["多次采样取平均，在高运动区域形成模糊"]
+        S5 --> S6["预测未来帧（评测：最后一帧的 PSNR）"]
+    end
+    subgraph CO["压缩赛道：预测未来离散 token"]
+        C1["Cosmos 8x8x8 tokeniser 把视频压成 32x32 token 网格；上下文为 3 个网格加机器人状态"] --> C2["ST-Transformer（沿用 Genie）：空间注意力与因果时间注意力交替；状态经 MLP 与 1D 卷积加性嵌入"]
+        C2 --> C3["训练：teacher forcing 交叉熵；推理：自回归贪心解码"]
+        C3 --> C4["预测未来 3 个 token 网格"]
+    end
+```
+
+图依据：论文 §2.1–§2.3 / Fig.2（采样赛道），§3.1–§3.3 / Fig.3（压缩赛道）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Team Revontuli uses two separate, state-conditioned predictors: a LoRA-adapted W
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2510.07092>
+- [arXiv PDF](https://arxiv.org/pdf/2510.07092)：已通读方法部分（实验与附录以略读为准）：§2.1–§2.3、§3.1–§3.3（含 Fig.2、Fig.3）；§2.4、§3.4 结果与 §4 结论仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ Omnidirectional explorable 3D world generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["文本或单张透视图像输入"] --> B["LoRA 图像扩散模型生成全景图 I0"]
+    B --> C["MoGe 预测全景深度 D0"]
+    C --> D["由 I0 与 D0 构建场景 mesh（深度突变像素标为不可见）"]
+    D --> E["沿用户指定相机轨迹渲染 mesh：RGB 序列 Ii 与掩码 Mi"]
+    E --> F["3D causal VAE 编码 Ii；Mi 下采样为 mask latent"]
+    F --> G["与噪声 latent 通道拼接，输入 Video Diffusion Transformer（LoRA 微调）"]
+    B --> H["CLIP 编码 I0 并融合文本嵌入，经 cross-attention 注入"]
+    H --> G
+    G --> I["轨迹引导的全景视频"]
+    I --> J["路线 1：Panorama LRM 前馈重建（视频 latent + 球面 Plücker 位姿 → 3D Gaussians）"]
+    I --> K["路线 2：优化式重建（关键帧 → 12 张透视图 → StableSR → 3DGS 优化）"]
+    J --> L["可全向探索的 3D 世界"]
+    K --> L
+```
+
+图依据：论文 §4 Method、§4.1、§4.2 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ Omnidirectional explorable 3D world generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.08086>
+- [arXiv PDF](https://arxiv.org/pdf/2508.08086)：已通读方法部分（实验与附录以略读为准）：§4 Method（含 §4.1 轨迹引导全景视频生成、§4.2 两种 3D 重建）
 
 ## 推荐继续阅读
 

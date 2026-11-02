@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Mode
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PCL["目标物体点云 Xpoint"] --> MV["3D MLLM（ShapeLLM 主干）<br/>点云编码器 ReCon++ + 投影层"]
+    INS["复杂人类指令 Xtxt"] --> LLM["大语言模型 LLaMA（LoRA 微调）"]
+    MV --> LLM
+    LLM --> RESP["文本回复：分步推理 + 多个 SEG token<br/>每个 SEG 对应一步 affordance 分割"]
+    RESP --> HSEG["取各 SEG 的末层 embedding<br/>MLP Proj → Hseg"]
+    PCL --> ENC["3D 视觉编码器<br/>中间层特征 + 稀疏全局特征 Fsparse"]
+    ENC --> MGP["多粒度特征传播<br/>FPS + 上采样逐级传播 → 稠密特征 Fdense"]
+    MGP --> PLI["点-语言融合<br/>Hseg 为 Q、Fdense 为 K/V 做 cross-attention + FFN<br/>再与 Fsparse 融合 → Af"]
+    HSEG --> PLI
+    ENC --> PLI
+    PLI --> DEC["Decoder"]
+    DEC --> MASK["按顺序的多个 affordance mask"]
+    MASK --> LOSS["训练：文本自回归交叉熵 + 分割 BCE + Dice"]
+```
+
+图依据：论文 §4.1 架构概述、§4.2 / Fig.3（主流程）与 Fig.4（Multi-Granular Language-Point Integration）、§4.3 训练目标
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +73,7 @@ SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Mode
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2412.01550)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2412.01550)。
 
 ## 评测与指标
 
@@ -68,7 +89,7 @@ SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Mode
 
 **本页只提供「SeqAfford」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +110,7 @@ SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Mode
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2412.01550>
+- [arXiv PDF](https://arxiv.org/pdf/2412.01550)：已通读方法部分（实验与附录以略读为准）：§4（架构概述、网络结构、训练目标）与附录 E.1 点上采样开头；§3 数据集与 §5 实验略读
 
 ## 推荐继续阅读
 

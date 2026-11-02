@@ -42,6 +42,22 @@ Forward-Forward JEPA unifying world models, prediction, and inverse dynamics.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前观测 / 观测历史"] --> B["Frozen Encoder E：得到潜变量 z"]
+    B --> C["Latent Planner G（action-free）：每 H 步预测下一个 subgoal 潜变量"]
+    C --> D["CEM 在 world model 预测器 P 中自回归 rollout，使预测状态逼近 subgoal"]
+    D --> E["得到 H 步动作序列并执行"]
+    E --> F["每 25 个环境步重新规划"]
+    F --> B
+    G["成功示范 → Frozen Encoder → 以步长 H 子采样得到 subgoal 序列"] --> H["训练 G：Det 版 MSE / 扩散版 DiT 去噪目标"]
+    H -.-> C
+```
+
+图依据：论文 §II-C（Subgoal planner、Training）/ Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Forward-Forward JEPA unifying world models, prediction, and inverse dynamics.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.09311>
+- [arXiv PDF](https://arxiv.org/pdf/2606.09311)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§II（A 预备知识、B 动机、C FF-JEPA）、§III-A/B 实验设定与结果
 
 ## 推荐继续阅读
 

@@ -43,6 +43,32 @@ Enhances VLA with a latent world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["阶段一：人类视频预训练（无动作标注）"]
+        H["多视角人类视频帧 + 语言指令"] --> VLM["Qwen3-VL（SigLIP-2 视觉编码）<br/>读入初始时刻 t0 观测与指令"]
+        LT["可学习潜在动作 token ⟨latent_i⟩"] --> VLM
+        VLM --> Z["潜在动作表示 z"]
+        H --> ENC["冻结 V-JEPA2 编码器，多视角拼接得到世界状态 s_t"]
+        Z --> WM["自回归世界模型（时间因果注意力）<br/>预测下一段世界状态"]
+        ENC --> WM
+        WM --> LWM["世界模型对齐损失 L_WM：预测状态对齐目标 s（stop-gradient）"]
+        ENC --> LWM
+    end
+    subgraph P2["阶段二：机器人数据微调"]
+        R["机器人多视角视频 + 指令"] --> VLM2["同一 VLM + ⟨latent_i⟩ 与 ⟨action⟩ token"]
+        VLM2 --> ZA["动作条件表示 z_a"]
+        ZA --> AH["flow-matching 动作头：噪声积分得到动作轨迹"]
+        VLM2 --> LWM2["仍保留 L_WM 对齐损失"]
+        AH --> LFM["动作预测损失 L_FM"]
+    end
+    P1 --> P2
+```
+
+图依据：论文 §3.1–3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ Enhances VLA with a latent world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.10098>
+- [arXiv PDF](https://arxiv.org/pdf/2602.10098)：已通读方法部分（实验与附录以略读为准）：Abstract、§1–2、§3.1–3.3（模型骨干、人类视频学习、联合优化目标）、§4 实验概述
 
 ## 推荐继续阅读
 

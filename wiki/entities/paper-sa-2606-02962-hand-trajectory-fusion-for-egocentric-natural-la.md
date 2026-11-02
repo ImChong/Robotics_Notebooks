@@ -42,6 +42,30 @@ Integrates hand motion cues into the NLQ grounding task for the first time, impr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["RGB 视频片段"] --> VE["Video Encoder<br/>InternVideo + EgoVLP（冻结）"]
+    QRY["文本查询<br/>例：What did I put in the dustbin?"] --> TE["Text Encoder<br/>CLIP（冻结）"]
+    VID --> HSE["Hand Skeleton Extractor<br/>MediaPipe，每手 21 个关键点"]
+    HSE --> TRJ["Trajectory Encoder（可训练，约 195K 参数）<br/>空间 cross-attention 聚合关键点 → 帧级描述子<br/>时间 self-attention 建模；未检测帧用 mask 屏蔽"]
+    VE -->|"视频 token Ev"| FUS
+    TE -->|"文本 token Et"| FUS
+    TRJ -->|"手部运动 token Eh"| FUS
+    subgraph FUS["Trajectory Fusion（堆叠 2 次）"]
+        CA1["CrossAttn：Q=Ev，KV=Eh → Evh"] --> G1["门控 gh = σ(MLPh(Evh 的时间均值))"]
+        CA2["CrossAttn：Q=Ev，KV=Et → Evt"] --> G2["门控 gt = σ(MLPt(Evt 的时间均值))"]
+        G1 --> SUM["Ev' = Ev + gh·Evh + gt·Evt"]
+        G2 --> SUM
+        SUM --> SA["SelfAttn + FFN 精炼 → Eo"]
+    end
+    FUS --> TSP["Temporal Segment Prediction"]
+    TSP --> ANS["答案时间段 [ts, te]"]
+```
+
+图依据：论文 §2、§2.1、§2.2 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Integrates hand motion cues into the NLQ grounding task for the first time, impr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.02962>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02962)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1 Trajectory Encoder、2.2 Trajectory Fusion）、§3 实验设定与结果表、§4 结论（全文仅 4 页）
 
 ## 推荐继续阅读
 

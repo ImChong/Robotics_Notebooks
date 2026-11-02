@@ -42,6 +42,22 @@ Grid-free, observation-native atmospheric world model matching the fidelity of e
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["多源异构观测<br/>地球静止/极轨卫星 + 站点/船舶/飞机等 in-situ"] --> TS["卫星 tokenizer：滑窗子图 + 缺测 mask 拼为通道<br/>masked attention 编码，形态学腐蚀筛 token"]
+    OBS --> TI["in-situ tokenizer：观测聚合到空间锚点 (KNN + point attention)<br/>再下采样到与卫星 token 对齐"]
+    TS --> PR["MMAE 模态投影器 + 模态 norm<br/>缺失/被 mask 位置用各模态可学习 domain token 填充"]
+    TI --> PR
+    PR --> LAT["MMAE 融合得到统一 Latent Observation Space (LatentOS)<br/>损失：MAE 重建 + in-situ 联合站点损失"]
+    LAT --> REC["重建：解码到任意位置的观测量"]
+    LAT --> FC["Forecast：由前 T 步各模态表示预测后 T 步<br/>统一 patch embedding + attention 块 + 各模态线性解码器"]
+    FC --> INV["Inversion：把预测观测反演为下游产品<br/>如海冰、CO2、降水"]
+```
+
+图依据：论文 §1 Main（三模块：reconstruction / prediction / inversion）与 §4 Method（4.1 观测 tokenization、4.2 MMAE 融合、4.3 Forecast 与 Inversion）/ Fig. 7。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Grid-free, observation-native atmospheric world model matching the fidelity of e
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.06337>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06337)：已通读方法部分（实验与附录以略读为准）：§1 Main、§3 Discussion、§4 Method（4.1–4.3）、§5 Dataset 开头
 
 ## 推荐继续阅读
 

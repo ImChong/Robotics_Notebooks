@@ -43,6 +43,28 @@ sources:
 7. **X-OP**（arXiv:2606.07934）：MPC 重定向跨本体全身遥操作；遥操作作 **多机器人数据入口**。
 8. **M3imic**（arXiv:2606.04829。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据（共训练，每个 batch 约 50% 人类 / 50% 机器人）"]
+        H["人类演示：桌面 ZED mini + Manus 手套 + Quest 追踪<br/>人类手关键点（MANO）→ 逐连杆关节角 → 映射到机器人手关节空间"]
+        R["人形机器人演示：Galaxea R1 Pro<br/>原生关节角（Tesollo 或 Inspire 手）"]
+    end
+    H --> ACT["统一动作表示 a = {腕位置 p, 腕朝向 r (6D), 手关节角 q}"]
+    R --> ACT
+    H --> SK["在图像上叠加手指骨架线<br/>每指唯一颜色，深度感知遮挡"]
+    R --> SK
+    SK --> VLM["π0.5 VLM：ego 图像（+ 机器人腕部相机）+ 语言指令 + 本体感觉"]
+    VLM -.->|"可选：先输出 subtask 字符串"| VLM
+    VLM --> AE["flow-matching 动作专家"]
+    ACT -->|"动作监督"| AE
+    AE --> IL["交错 token：左右手动作分到两个 32 维 token<br/>不改预训练动作投影层，有效时域 H→H/2"]
+    IL --> OUT["双手灵巧动作块"]
+```
+
+图依据：论文 §3 Ego-Pi / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -87,6 +109,7 @@ sources:
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://egopipaper.github.io/>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08107)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Ego-Pi（3.1-3.4，Fig.2-3）、§4 实现细节；§5 实验略读
 
 ## 推荐继续阅读
 

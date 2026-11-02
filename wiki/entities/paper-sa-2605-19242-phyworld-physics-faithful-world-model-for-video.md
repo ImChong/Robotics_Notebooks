@@ -42,6 +42,29 @@ Two-stage post-training (flow matching + DPO physics preference alignment) for p
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph ST1["第一阶段: 物理一致性增强 (Wan2.2-I2V-A14B 基础上)"]
+        direction TB
+        COND["条件视频 + 零填充帧 → Wan-VAE 编码为条件 latent<br/>二值掩码区分保留帧/生成帧, 与噪声 latent 沿通道拼接"] --> DITV["Wan DiT 去噪<br/>末帧 CLIP 特征经 3 层 MLP, 解耦 cross-attention 注入"]
+        DATA["OpenVid-1M: CLIP 相邻帧相似度 + UniMatch 光流 两道过滤"] --> FM["流匹配 (rectified flow) 渐进式分辨率/时长课程训练"]
+        DITV --> FM
+    end
+    ST1 -->|"得到 I2V 与 V2V 通用基础模型"| BASE["冻结基础模型 + LoRA 适配器 (策略 π) / 参考模型 ref"]
+    subgraph ST2["第二阶段: 用 DPO 强制物理定律"]
+        direction TB
+        HUM["TI2V 物理基准的人工评分 (SA / PTV / persistence)"] --> PAIR["偏好对流水线 T0→T1→T2→T3<br/>聚合分 → 配对(分差≥1.0) → 条件图过滤 → 类别均衡 1,000 对"]
+        PAIR --> DPO["Diffusion DPO 损失, 仅训练高噪声时间窗"]
+    end
+    BASE --> DPO
+    DPO --> PW["PhyWorld"]
+    PW --> EVAL["评测: 微调 Qwen3.5-9B 视频-语言评委<br/>逐维度独立打分 (SA / PTV / persistence / 各物理定律)"]
+```
+
+图依据：论文 §3 方法（Fig.1 / §3.1–3.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Two-stage post-training (flow matching + DPO physics preference alignment) for p
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.19242>
+- [arXiv PDF](https://arxiv.org/pdf/2605.19242)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 物理一致性增强、3.2 强化学习物理定律约束、3.3 物理忠实性基准）；§4 实验以略读为准
 
 ## 推荐继续阅读
 

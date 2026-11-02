@@ -42,6 +42,29 @@ Lightweight world model predicting task-relevant text sketches rather than full 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：Textual Sketch World Model（TSWM）"]
+        direction TB
+        SHOT["GUI 截图"] --> OCR["PaddleOCR-VL 抽取元素：label / text / bbox"]
+        OCR --> SK["文本草图状态 s_t（元素集合）"]
+        SK --> WM["TSWM：给定动作 a_t 预测下一状态 ŝ_t+1"]
+        WM --> LOSS["训练：Order-Invariant 元素匹配损失（最优传输）+ 交叉熵"]
+    end
+    subgraph S2["阶段二：Rollout Imagination"]
+        direction TB
+        AG["GUI Agent：由目标 g、状态 s_t、步指令 u_t 提出 M 个候选动作"] --> PRED["TSWM 预测各候选动作后的未来状态"]
+        PRED --> TREE["递归展开为深度 d 的 Tree-of-Prediction"]
+        TREE --> FB["文本摘要 + 真实截图作为反馈回 Agent"]
+        FB --> SEL["Agent 选择最优动作并在环境中执行"]
+    end
+    S1 -->|"提供世界模型"| S2
+```
+
+图依据：论文 §3（Fig.2 两阶段框架）、§3.1 TSWM 与 Order-Invariant Learning、§3.2 Rollout Imagination 与 Tree-of-Prediction
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Lightweight world model predicting task-relevant text sketches rather than full 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.04035>
+- [arXiv PDF](https://arxiv.org/pdf/2601.04035)：已通读方法部分（实验与附录以略读为准）：§1–§3（方法两阶段）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

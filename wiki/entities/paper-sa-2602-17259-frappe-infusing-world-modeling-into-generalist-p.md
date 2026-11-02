@@ -42,6 +42,35 @@ Infuses world modeling into generalist policies via multiple future representati
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph MID["中期训练 Mid-Training（单流）"]
+        A["RDT-1B 预训练权重 + 新增可学习未来前缀 prefix"] --> B["单流对齐<br/>教师为 Theia 式 86M 蒸馏编码器"]
+        B --> C["得到后训练初始化"]
+    end
+    subgraph POST["后训练 Post-Training：MiPA 并行扩展"]
+        D["语言 l、观测 o_t、本体 z_t、带噪动作、控制频率 c、扩散步 k"] --> E["共享 RDT 骨干（DiT）<br/>仅训练各专家的 prefix 与 LoRA"]
+        E --> F1["专家 1：prefix + LoRA<br/>对齐 CLIP"]
+        E --> F2["专家 2：prefix + LoRA<br/>对齐 DINOv2"]
+        E --> F3["专家 3：prefix + LoRA<br/>对齐 ViT"]
+        F1 --> G["Router 路由网络<br/>门控权重 w，label smoothing"]
+        F2 --> G
+        F3 --> G
+        G --> H["加权 latent 求和 → 共享 MLP 动作头 → 动作块 a_t"]
+    end
+    T["教师 VFM 编码未来观测 o_t+h<br/>stop-gradient"] --> L["对齐损失 L_align<br/>预测 prefix 与教师特征的余弦相似度"]
+    F1 -. "预测未来表征" .-> L
+    F2 -.-> L
+    F3 -.-> L
+    H --> M["总损失 = 动作损失 + λ1·对齐损失 + λ2·负载均衡损失"]
+    L --> M
+    C --> D
+```
+
+图依据：论文 §3.2 / Fig.2、式 (1)–(8)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ Infuses world modeling into generalist policies via multiple future representati
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.17259>
+- [arXiv PDF](https://arxiv.org/pdf/2602.17259)：已通读方法部分（实验与附录以略读为准）：§3.1 Preliminaries、§3.2（含 Mid-Training）、Fig.2；§4 仿真实验设定
 
 ## 推荐继续阅读
 

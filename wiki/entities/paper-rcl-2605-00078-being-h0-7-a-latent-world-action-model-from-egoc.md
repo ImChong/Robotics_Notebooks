@@ -42,6 +42,23 @@ Being-H0.7 trains a robot policy to anticipate useful future information inside 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    CTX["共享上下文：指令 x、观测 o、状态 s"] --> P["先验分支 Prior：可学习 latent queries Q（K=16）"]
+    CTX --> Q["后验分支 Posterior（仅训练）：未来观测经冻结 ViT + Perceiver resampler 得 K 个 future embeddings"]
+    P --> M["单序列 Mixture-of-Transformers：Understanding Expert + Action Expert，dual-branch attention mask 隔离两分支"]
+    Q --> M
+    M --> A["两分支各自 flow-matching 生成动作块"]
+    M --> AL["最后 L=9 层 latent 隐状态对齐 L_align + 防塌缩正则（范数、谱多样性）"]
+    A --> LOSS["总损失 L = L_FM + w_align·L_align + L_reg"]
+    AL --> LOSS
+    P -.-> INF["推理：仅用先验分支，无需未来帧"]
+```
+
+图依据：论文 §3.1-3.3 / Fig. 2、Fig. 3、Eq. 1-8
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Being-H0.7 trains a robot policy to anticipate useful future information inside 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.00078>
+- [arXiv PDF](https://arxiv.org/pdf/2605.00078)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1-3.3）、§4.1 训练细节
 
 ## 推荐继续阅读
 

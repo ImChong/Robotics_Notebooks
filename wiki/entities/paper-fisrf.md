@@ -42,6 +42,28 @@ summary: "FISRF（arXiv:2610.35686）：由智能体与导师协作估计当前�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    T["任务目标 G + 观测 o_t + 近 k 次反思摘要 SR"] --> A["Actor LLM M_a<br/>生成动作序列 A_t"]
+    A --> ENV["环境执行, 得到轨迹 τ_t 与反馈"]
+    ENV --> EV["Evaluator<br/>计算 DC 纠错难度 与 MI 改进幅度"]
+    EV --> D{"选择反思策略<br/>(依 Episode / DC / MI)"}
+    D -->|"Episode=1 或 MI>50%"| EXP["SR_exp: 有价值经验总结 Exp_t"]
+    D -->|"Episode>1 且 MI≤50%"| LES["SR_lvm: 从长期有价值记忆 LVM 提取失败教训 Lesson_t"]
+    D -->|"Episode=1 且 DC>0.5<br/>或 Episode>1 且 MI≤50%<br/>(进入 ZPD)"| MEN["RAG Mentor M(G, τ_t)<br/>检索知识库 D 生成指导"]
+    EXP --> SUM["SR_sum: 反思总结<br/>整合经验 / 教训 / 导师指导"]
+    LES --> SUM
+    MEN --> SUM
+    SUM --> SM["短期记忆 sm<br/>(新计划 + 轨迹 + 反思)"]
+    SM --> T
+    ENV -.->|"修正成功的轨迹"| LVM["长期有价值记忆 lvm"]
+    LVM -.-> LES
+```
+
+图依据：论文 §IV-A 至 §IV-E / Fig.2 / Fig.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +107,7 @@ summary: "FISRF（arXiv:2610.35686）：由智能体与导师协作估计当前�
 - [fisrf_arxiv_2610_35686.md](../../sources/papers/fisrf_arxiv_2610_35686.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.35686](https://arxiv.org/abs/2610.35686)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35686)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III、§IV（Actor、短长期记忆、RAG Mentor、自反思、ZPD 触发条件）、§V 实验设定
 
 ## 推荐继续阅读
 

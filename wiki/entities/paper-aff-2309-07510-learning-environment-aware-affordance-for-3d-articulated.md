@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Learning Environment-aware Affordance for 3D Articulated Object Manipulation under Occlusions——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Learning Environment-aware Affordance for 3D Articulated Object Manipulation under Occlusions——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,26 @@ Learning Environment-aware Affordance for 3D Articulated Object Manipulation und
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["场景点云 S（目标铰接物体 + 遮挡物）"] --> TE["Target Encoder：分割版 PointNet++ 提取逐点特征 f_Tp|S"]
+    R["机器人位置 R"] --> RE["Robot Encoder（MLP）：f_R"]
+    S --> OF["机器人-目标条件遮挡场 F_R,Tp：到 R 与 Tp 的向量叉积；保留场值小的点"]
+    R --> OF
+    TE -.目标点 Tp.-> OF
+    OF --> SE["Scene Encoder（PointNet）：f_S|Tp,R"]
+    TE --> AP["Affordance Predictor（MLP）：逐点 affordance 分数"]
+    RE --> AP
+    SE --> AP
+    AP --> OUT["目标点的 pushing / pulling affordance，用于引导铰接物体操作"]
+    SE -.训练.-> CL["对比学习：原任务 / 正样本（加无关遮挡物）/ 负样本（换目标点），triplet loss"]
+    AP -.训练.-> L1["L1 监督损失，总损失 = L1 + λ_CL · L_CL"]
+```
+
+图依据：论文 §4.1–4.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Learning Environment-aware Affordance for 3D Articulated Object Manipulation und
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07510)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07510)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ Learning Environment-aware Affordance for 3D Articulated Object Manipulation und
 
 **本页只提供「Learning Environment-aware Affordance for 3D Articulated Object Manipulation ...」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ Learning Environment-aware Affordance for 3D Articulated Object Manipulation und
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2309.07510>
+- [arXiv PDF](https://arxiv.org/pdf/2309.07510)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题定义、§4 方法（4.1–4.4）、§5.1–5.2 实验设定与基线
 
 ## 推荐继续阅读
 

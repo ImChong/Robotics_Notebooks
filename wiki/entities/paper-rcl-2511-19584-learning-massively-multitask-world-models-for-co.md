@@ -42,6 +42,31 @@ Newt extends TD-MPC2 into a language-conditioned agent that learns latent dynami
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["每任务 10–40 条演示<br/>(单任务 TD-MPC2 智能体采集)"] --> PRE["模型预训练：在演示上联合优化<br/>L(θ) + Lp(θ)，Q 值项暂时关闭"]
+    PRE --> WM
+    subgraph WM["Newt 世界模型（self-predictive，无解码器）"]
+        LANG["语言指令 → 冻结 CLIP-text 编码 g"] --> ENC
+        IMG["RGB 观测（可选）→ 冻结 DINOv2 编码 x"] --> ENC
+        STATE["状态向量 s_state（带 valid mask）"] --> ENC
+        ENC["状态编码器 h → 潜状态 z"] --> DYN["潜在动力学 d(z,a,g)"]
+        DYN --> RQ["奖励 R / 价值 Q 预测<br/>(离散回归 CE)"]
+        ENC --> PI["策略先验 p(z,g)"]
+    end
+    WM --> PLAN["规划：以策略先验热启动<br/>初期偏向预训练策略，约前 12% 训练线性退火至 0"]
+    PLAN --> ENV["多任务环境交互<br/>200 个任务 / 10 个域"]
+    ENV --> BUF_ON["在线交互回放缓冲"]
+    DEMO --> BUF_DEMO["演示回放缓冲"]
+    BUF_ON -->|"采样 50%"| UPD
+    BUF_DEMO -->|"采样 50%"| UPD
+    UPD["联合更新：L(θ) 自预测+奖励+价值<br/>Lp(θ) = model-based BC + Q 值 + 熵"] --> WM
+```
+
+图依据：论文 §3.1 式 (1)–(3) 与 §3.2 / Fig. 6（方法）；MMBench 基准本身（§2）不在图中展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ Newt extends TD-MPC2 into a language-conditioned agent that learns latent dynami
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2511.19584>
+- [arXiv PDF](https://arxiv.org/pdf/2511.19584)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 基准、§3 Newt 方法（3.1–3.2）、§4 实验概览
 
 ## 推荐继续阅读
 

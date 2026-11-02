@@ -17,6 +17,25 @@ sources:
 
 **一句话定义：** 先对真实三维扫描分割部件，再用截面驱动草图参数化和拉伸重建各部件。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    M["输入: 真实扫描三角网格 M"] --> PD["Part Decomposition<br/>基础模型 P3-SAM: 表面采样提示点 → 逐面部件掩码<br/>得到部件网格 M_1 ... M_K"]
+    PD --> OBB["对每个部件 M_k:<br/>OBB 规范化 (Orientation-aware)"]
+    OBB --> KP["关键切片平面估计"]
+    KP -->|"先试: 三个规范轴平面"| SE["单次 sketch-extrude<br/>截面栅格化 → 草图参数化 → 取 Chamfer 距离最优轴"]
+    SE -->|"CD ≤ δ (0.2): 接受"| CK["部件 CAD 序列 C_k"]
+    SE -->|"CD > δ: 单次拉伸不足"| MP["多拉伸: 学习式多平面检测 (transformer f_key)<br/>各平面截面参数化, 拉伸高度梯度下降优化"]
+    MP --> CK
+    CCS["CC3D Cross-Sections 数据集<br/>微调草图参数化网络 (SketchGraphs 预训练)"] -.-> SE
+    CCS -.-> MP
+    CK --> PA["Part Assembly<br/>按原空间配置合并 C = ∪ C_k"]
+    PA --> OUT["输出: 参数化 CAD 模型 (草图 + 约束 + 拉伸)"]
+```
+
+图依据：论文 Proposed Method（Part Decomposition / Part Reconstruction / Part Assembly）/ Fig.2
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -62,6 +81,7 @@ sources:
 ## 参考来源
 
 - [论文归档](../../sources/papers/cadonatello_arxiv_2610_33575.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33575)：已通读方法部分（实验与附录以略读为准）：摘要、Introduction、Problem Statement、Proposed Method 全部小节、CC3D Cross-Section Dataset、Experiments 起首的评测数据集设定
 
 ## 推荐继续阅读
 

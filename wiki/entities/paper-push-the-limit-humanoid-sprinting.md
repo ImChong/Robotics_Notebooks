@@ -38,6 +38,31 @@ summary: "Push the Limit（arXiv:2610.14840，松延动力 / 清华大学，CoRL
 - 展示了一个具体的奖励设计信号：当步态本身造成躯干偏航振荡时，转向监督可以跟踪低频速度方向，而非要求瞬时偏航角速度追随命令。
 - 与 [SPRINT 频谱先验](./paper-sprint-humanoid-athletic-sprints.md)形成有用对照：SPRINT 通过少量参考动作和频谱先验生成步态；本工作使用多技能 AMP 风格监督，并显式加入时序注意力与高速转向目标。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["指令 c_t = [vx, vy, ωz 指令, 技能 one-hot]<br/>技能标签由指令自动生成：站立/原地转向/行走/奔跑"] --> F
+    P["本体感觉历史 p_t（T 帧）<br/>角速度、欧拉角、关节位置/速度、上一动作"] --> M["因果多头注意力编码器 MHA<br/>1 层 2 头 + 正弦位置编码"]
+    M --> V["时间平均池化 → 动态摘要"]
+    V --> F["与指令嵌入融合（Fusion MLP）"]
+    F --> A["Actor MLP [512,256,128]"]
+    A --> T["关节目标位置 a_t（17 维）"]
+    T --> PD["PD 控制器 → 力矩<br/>50 Hz"]
+    PD --> R["训练：奖励 r = λ(r_task + r_reg) + (1−λ) r_style，λ=0.8"]
+    R --> H{"指令线速度 ≥ 2.0 m/s ？"}
+    H -->|是| H1["航向方向奖励<br/>监督速度方向与目标航向对齐"]
+    H -->|否| H2["偏航角速度跟踪奖励"]
+    R --> S["Skill-conditioned Multi-AMP<br/>按技能标签路由到对应判别器 D_i（共 4 个）"]
+    H1 --> PPO["PPO 更新"]
+    H2 --> PPO
+    S --> PPO
+    PPO --> A
+    PPO -.-> D["ONNX 导出，零样本部署<br/>Gazebo / 真机 50 Hz"]
+```
+
+图依据：论文 §3 Method（§3.1–3.5）/ Fig.2 系统概览。
+
 ## 核心方法
 
 ### 单策略接口
@@ -105,6 +130,7 @@ summary: "Push the Limit（arXiv:2610.14840，松延动力 / 清华大学，CoRL
 
 - [论文来源归档](../../sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md)
 - Huang et al., *Push the Limit: Learning High-Speed Sprinting and Aggressive Cornering on a Full-Scale Humanoid*, CoRL 2026, arXiv:2610.14840. <https://arxiv.org/html/2610.14840v1>
+- [arXiv PDF](https://arxiv.org/pdf/2610.14840)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.5 方法、§4.1–4.5 实验设定与消融（附录与 §4.6 未读）
 
 ## 推荐继续阅读
 

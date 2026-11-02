@@ -23,6 +23,30 @@ summary: "WholeBodyMem equips humanoid VLA policies with object-guided keyframe 
 
 **一句话定义：** WholeBodyMem 让人形 VLA 保留执行目标前观察到的物体事件，减少遮挡、物体变化和视角转动造成的历史线索丢失。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["头部相机历史帧 + 本体状态 s_t + 指令 ℓ"] --> TRK["冻结 SAM3 跟踪任务物体<br/>提示词按任务一次写定；输出掩码 / 框 / 置信度<br/>相似变换去除相机运动"]
+    TRK --> EVT["物体事件检测：出现 / 消失 / 重现 / 位移超图像对角线 3% / 形状变化<br/>按类型与置信度排序（置信度低于 0.35 忽略）"]
+    EVT --> SEL["因果选帧（Algorithm 1）：始终保留首帧 / 中间帧 / 当前帧<br/>其余名额给高分事件帧，跳过 5 帧内已覆盖同一物体的候选<br/>记忆共 3 至 7 帧"]
+    SEL --> MT["记忆 token M_t：每帧保留视觉塔原生 token（最多 539 个）<br/>加帧序号与网格位置的正弦编码"]
+    TRK --> OT["物体 token O_t：掩码加权平均 token + 框 / 面积 / 可见性等<br/>每帧至多 2 个物体，共至多 14 个"]
+    SEL --> OT
+    IN --> VLM["VLA 视觉语言骨干 + flow-matching 动作专家"]
+    MT --> XA["动作专家各 block：动作 token 对 M_t 做交叉注意力<br/>读出经 FiLM 缩放与平移（零初始化）"]
+    OT --> XA2["第二路交叉注意力读取 O_t，叠加到读出上"]
+    VLM --> XA
+    XA --> XA2
+    XA2 --> ACT["未来动作块：上身关节目标 + 下身命令<br/>（躯干朝向 / 基座高度 / 基座速度）"]
+    ACT --> LOW["下层控制器转为下肢关节 q_lower"]
+    MT --> DH["决策头（用于记忆任务）：可学习 query 读取记忆与物体 token<br/>输出各答案 logit，经 adaptive layer norm 调制并指向对应 pad token"]
+    OT --> DH
+    DH --> XA2
+```
+
+图依据：论文 §IV-A/B/C（Fig. 3、Algorithm 1、式 1–3）；决策头仅用于 HuMeGo 记忆任务，其与动作专家的连接按 §IV-C 叙述归纳。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -73,6 +97,7 @@ HuMeGo 包含六项仿真和六项真实 Unitree G1 任务。论文摘要报告�
 - [WholeBodyMem 项目页归档](../../sources/sites/wholebodymem.md)
 - [arXiv:2610.31166](https://arxiv.org/abs/2610.31166)
 - [官方项目页](https://memory-before-goal.github.io/)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31166)：已通读方法部分（实验与附录以略读为准）：§I–III 略读、§IV（A–C，Algorithm 1）、§V-A 实验设定
 
 ## 关联页面
 

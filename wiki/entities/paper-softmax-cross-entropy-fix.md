@@ -18,6 +18,23 @@ summary: "Barron、Gnanapragasam 与 Tschannen（Google DeepMind，arXiv:2610.31
 
 **A Fix for Softmax and Cross-Entropy**（Jonathan T. Barron、Dan Gnanapragasam、Michael Tschannen，Google DeepMind，[arXiv:2610.31642](https://arxiv.org/abs/2610.31642)，2026）分析常见 softmax、log-softmax 与交叉熵实现中的浮点精度问题，并提供直接计算 loss 和梯度的修正版。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Z["输入 logits z"] --> H{"目标类型"}
+    H -->|"硬标签 CE / softmax / log-softmax"| A["把目标类（或最大 logit）移位为精确 0<br/>其余项取 z_j − z_t"]
+    A --> B["对非目标项求 LSE<br/>得到 margin m = −LSE(z_j − z_t)"]
+    B --> C["loss = softplus(−m) = log1p(e^−m)<br/>不在分母里直接做 1 + e^−m"]
+    C --> D["目标梯度 g_t = −e^−m/(1+e^−m)<br/>g_j 之和为 0，直到指数下溢"]
+    H -->|"软目标 CE / 蒸馏（学生 z_S，教师 z_T）"| E["直接传入 z_T，计算 δ = z_S − z_T"]
+    E --> F["在 p 下中心化 d_k；log 空间求 s_k = log(q_k/p_k)<br/>用 expm1 / log1p 得 u_k = q_k − p_k"]
+    F --> G["|s_k| ≥ 1 时回退 u_k = q_k − p_k<br/>g = u − q·Σu 保证梯度和为 0"]
+    G --> I["stop_gradient 返回前向 loss<br/>反向替换为自定义梯度 g"]
+```
+
+图依据：论文 §2 Softmax Collapse（式 5–7）、§3 Softmax Cancellation（式 9）及对应 JAX 参考实现。
+
 ## 一句话定义
 
 **在高置信度分类与学生教师 logits 接近时，避免浮点舍入把正确梯度抹掉或制造伪梯度。**
@@ -80,3 +97,4 @@ summary: "Barron、Gnanapragasam 与 Tschannen（Google DeepMind，arXiv:2610.31
 - [arXiv HTML 全文](https://arxiv.org/html/2610.31642)
 - [arXiv PDF](https://arxiv.org/pdf/2610.31642)
 - [论文来源归档](../../sources/papers/softmax_cross_entropy_fix_arxiv_2610_31642.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31642)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Softmax Collapse、§3 Softmax Cancellation；§4–6 的 slingshot / margin 平衡 / grokking 实验仅略读

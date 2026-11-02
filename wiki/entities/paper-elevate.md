@@ -43,6 +43,34 @@ summary: "ELEVATE（arXiv:2610.38388）：ELEVATE 将持续任务失败作为寻
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-30）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["任务描述 + 仿真环境<br/>初始能力库：loco_manipulation 控制器 + floor_pickup skill"] --> CO["Coordinator 将任务交给全新上下文的 Task Subagent"]
+    CO --> TP["Task Subagent 生成 Python 任务程序<br/>调用库中 skill / controller"]
+    TP --> EV["在开发变体上仿真评估<br/>数值结果 / 执行轨迹 / 视觉反馈"]
+    EV --> OK{"任务成功且行为符合预期？"}
+    OK -- 是 --> DONE["任务完成；沉淀可复用 skill 入库"]
+    OK -- 否 --> BUD{"修复预算有剩余？<br/>（控制器权重在此阶段固定）"}
+    BUD -- 是 --> RF["据反馈修改任务程序"]
+    RF --> EV
+    BUD -- 否 --> GAP{"持续失败是否指向缺失的物理能力？<br/>（不同策略撞上同一物理限制）"}
+    GAP -- 否 --> END["结束"]
+    GAP -- 是 --> RPT["Task Subagent 向 Coordinator 报告<br/>疑似能力缺口与证据"]
+    RPT --> CS["Coordinator 审核后派出 Controller Subagent"]
+    CS --> FORM["检查机器人几何与训练代码评估可行性<br/>设计 RL 问题：场景 / 命令 / 初始状态 / 奖励 / 课程 / 终止 / 成功标准"]
+    FORM --> TRN["短 PPO pilot → 训练候选控制器<br/>初始状态取自前一控制器 rollout"]
+    TRN --> VAL{"达到预期支撑接触 / 姿态 / 到达行为？"}
+    VAL -- 否 --> REV["据数值与 rollout 修订奖励、训练条件、终止阈值"]
+    REV --> TRN
+    VAL -- 是 --> LIB["Coordinator 将控制器加入能力库<br/>（按 switch 条件受控切换）"]
+    LIB --> CO2["派出新的 Task Subagent 重试原任务"]
+    CO2 --> TP
+```
+
+图依据：论文 §III（III-A/B/C）、Fig. 2 / Fig. 3、Table I；“结束”分支（无缺口时）为按 Fig. 2 判定框的读法。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +113,7 @@ summary: "ELEVATE（arXiv:2610.38388）：ELEVATE 将持续任务失败作为寻
 - [elevate_arxiv_2610_38388.md](../../sources/papers/elevate_arxiv_2610_38388.md)
 - [wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md](../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md)
 - [arXiv:2610.38388](https://arxiv.org/abs/2610.38388)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38388)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§II、§III（A–C，Fig. 2/3、Table I）、§IV-A 实验设定，附录仅略读标题
 
 ## 推荐继续阅读
 

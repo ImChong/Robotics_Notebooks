@@ -33,6 +33,34 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 
 灵巧操作需要同时理解三维手部运动、预测动作带来的视觉变化，并规划后续动作。摘要指出，分别训练这些模块难以共享世界动态知识。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：文本指令 + 初始图像（可选：目标图像 / 视觉子目标）"] --> M
+    subgraph ENC["条件与编码"]
+        V["RGB 视频 → Wan2.1 VAE → 时空潜变量"]
+        SK["手部轨迹渲染为 2D 骨架视频 → 同一 VAE → 控制潜变量，与带噪 RGB 潜变量拼接"]
+        CAM["相机位姿（以首帧为单位位姿）→ Plücker 射线图 → 轻量卷积适配器，加到 patch 嵌入"]
+        AE["冻结的动作自编码器：每帧 3 个 token（相机 + 左右手）"]
+    end
+    V --> M
+    SK --> M
+    CAM --> M
+    AE --> M
+    M["Wan2.2-Fun-A14B-Control 视频 DiT（高 / 低噪声专家）<br/>Video Expert 与 Action Expert 共享基础权重 + 联合注意力；动作专家加 LoRA"]
+    M --> VO["未观测的 RGB 潜变量：迭代去噪 → VAE 解码为视频"]
+    M --> AO["缺失动作：可学习 query 经一次前向 → MANO 解码器 + 相机解码器"]
+    AO --> R3["PERCEIVE：读入完整视频，一次前向预测手 + 相机运动"]
+    VO --> R2["PREDICT：未来视频 + 手 / 相机轨迹"]
+    AO --> R2
+    VO --> R1["PLAN：文本 + 目标图像 → 视频 + 轨迹（长任务：图像生成器产出子目标，逐窗口规划）"]
+    AO --> R1
+    OPT["训练：L = L_video（flow matching）+ MANO 参数 / 空间 / 时序 / presence / 相机损失；每个 clip 随机采样可见模式"] -.-> M
+```
+
+图依据：论文 §3.1–3.5 / Fig. 2、Fig. 3、Fig. 4。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -100,6 +128,7 @@ summary: "P³-WAM（arXiv:2610.22363）：第一视角灵巧操作的统一世�
 - [论文归档](../../sources/papers/p3_wam_arxiv_2610_22363.md)
 - [官方项目页归档](../../sources/sites/p3-wam-project-page.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.22363)：已通读方法部分（实验与附录以略读为准）：§3.1–3.5、§4 开头
 
 ## 推荐继续阅读
 

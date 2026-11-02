@@ -39,6 +39,28 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 - **借人-人数据补人-人形数据**是规模化捷径：与 SUGAR/EgoHumanoid「借人类视频」同理，关键在如何保真转换；
 - **协作/物理交互**是人形进入人类环境的核心能力，呼应 LessMimic、HumanX 等交互方向。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["HHI 动作对<br/>(M_Hp, M_Hs) 人-人交互数据"] --> B["对齐并重塑人体骨架<br/>Pelvis Alignment + Bone-Length Fit"]
+    B --> C["PAIR Stage 1：粗粒度全局初始化<br/>优化 L_kin + L_hum + L_reg + 中等权重 L_con"]
+    C -->|"热启动"| D["PAIR Stage 2：以接触为中心精修<br/>显著增大 w_con，修正近失接触"]
+    D --> E["物理一致的 HHoI 片段<br/>机器人动作 M_R + 微调后的伙伴动作"]
+    E -->|"作为训练数据"| F
+    subgraph DSTAR["D-STAR 分层策略"]
+        F["观测历史 12 帧<br/>人形本体感知 + 人体 SMPL 关节"] --> G["Long-Short Temporal Encoder<br/>长/短两个并行 Transformer 编码器"]
+        G --> H["Phase Attention（何时动）<br/>Phase Classifier 预测 Preparation/Act/Follow-up"]
+        G --> I["Multi-Scale Spatial 模块（何处动）<br/>位置/距离/相对朝向编码"]
+        H --> J["Diffusion 规划头<br/>融合时空特征 + 语言指令 l"]
+        I --> J
+        J --> K["高层参考动作 a<br/>5 锚点、覆盖 2 s"]
+    end
+    K --> L["Whole-Body Controller<br/>生成可执行关节目标"]
+```
+
+图依据：论文 §3 / Fig.3（PAIR 两阶段）、§4 / Fig.4（D-STAR）；E→F 的数据流来自论文“用重定向数据训练策略”的整体叙述。
+
 ## 解决什么问题
 
 要学会**人-人形全身物理交互**，面临两道坎：
@@ -90,6 +112,7 @@ summary: "让人形机器人与人发生物理交互是关键前沿，但人-人
 - [humanoid_pnb_learning-whole-body-human-humanoid-interaction-f.md](../../sources/papers/humanoid_pnb_learning-whole-body-human-humanoid-interaction-f.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html>
 - 论文：<https://arxiv.org/abs/2601.09518>
+- [arXiv PDF](https://arxiv.org/pdf/2601.09518)：已通读方法部分（实验与附录以略读为准）：§3 PAIR（含 3.1/3.2）、§4 D-STAR（4.1–4.4）、§5 实验开头
 
 ## 推荐继续阅读
 

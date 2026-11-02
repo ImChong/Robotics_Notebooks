@@ -42,6 +42,37 @@ Introduces UCS-Bench, a dataset spanning 170+ hours with 8.1K+ timestamped quest
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BG["后台：视频到结构化记忆（与提问无关）"]
+        IN["egocentric 视频流，1 fps"]
+        GEO["DepthAnything3<br/>逐帧度量深度 + 相机位姿 T_w←e"]
+        DET["GroundingDINO (Objects365 词表) 检测<br/>→ SAM2 传播 mask，得到持久实例轨迹"]
+        TAG["轻量 MLLM 场景描述器<br/>逐帧语义场景标签"]
+        MAP["世界对齐度量-语义地图 M<br/>以第一帧初始化并增量更新"]
+        SG["演化场景图 G=(V,E)<br/>物体节点 + 场景区域节点；物体-物体 / 物体-区域边"]
+        IN --> GEO
+        IN --> DET
+        IN --> TAG
+        GEO --> MAP
+        DET --> MAP
+        TAG --> MAP
+        MAP --> SG
+    end
+    subgraph ON["在线：问题时刻 t 的问答"]
+        Q["问题 → 解析为结构化查询意图"]
+        SUB["仅取 t 之前观测到的节点<br/>按意图打分，保留 top-K 实例 + 关键帧（最小子图）"]
+        EGO["用 T_e←w = T_w←e^-1 把世界坐标转为当前 ego 坐标<br/>得到相对方向 / 距离 / 可达性边"]
+        LLM["MLLM 以子图 + 关键帧 + 问题生成回答"]
+        Q --> SUB --> EGO --> LLM
+    end
+    SG --> SUB
+```
+
+图依据：论文 §4 / Fig.5（§4.1 概述、§4.2 离线空间场景图记忆、§4.3 在线视频推理）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Introduces UCS-Bench, a dataset spanning 170+ hours with 8.1K+ timestamped quest
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.15200>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15200)：已通读方法部分（实验与附录以略读为准）：§4 方法（DirectMe 概述、离线空间场景图记忆、在线视频推理）；§3 UCS-Bench 构建、§5 实验与附录略读
 
 ## 推荐继续阅读
 

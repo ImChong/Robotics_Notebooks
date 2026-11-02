@@ -42,6 +42,25 @@ Simulation-based policies with asymmetric real-world residuals for assembly task
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["仿真：低维状态观测（关节角、末端位姿、目标位姿及其差）+ 稠密模仿奖励"] --> PB["PPO 预训练基策略 π_b（Isaac Lab）"]
+    PB --> ZS["真实世界零样本部署：Grounding DINO + SAM2 + FoundationPose 估计插座位姿作目标"]
+    ZS --> DC["采集演示：π_b 均值动作 + 从 N(0, σ_t) 采样的残差，保留成功轨迹"]
+    DC --> DB["Demo Buffer"]
+    RL["RL Buffer（在线交互）"] --> UP["RLPD：每次更新从两个 buffer 等量采样"]
+    DB --> UP
+    UP --> PR["残差策略 π_r：输入真实观测（本体量、力/力矩、两路腕部 RGB）+ 基动作 a_b；稀疏成功奖励"]
+    PR --> CA["执行 a = a_b + a_r"]
+    CA --> RL
+    CA --> HQ["用时短于演示中位数的成功轨迹加入 Demo Buffer"]
+    HQ --> DB
+```
+
+图依据：论文 §III-B–III-E / Fig.1、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Simulation-based policies with asymmetric real-world residuals for assembly task
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2602.23253>
+- [arXiv PDF](https://arxiv.org/pdf/2602.23253)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（B 仿真预训练、C 真实部署与策略形式、D 演示采集、E 残差策略学习）、§IV-A/B 实验设定
 
 ## 推荐继续阅读
 

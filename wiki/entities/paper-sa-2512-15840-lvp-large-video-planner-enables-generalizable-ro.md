@@ -42,6 +42,28 @@ Large video planner enables generalizable robot control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["机器人观测图像 + 文本任务指令"] --> VAE["时间因果 3D VAE\n压缩为视频 latent"]
+  VAE --> DiT["Diffusion Forcing Transformer\n基于 Wan 2.1 14B 微调, flow matching"]
+  DiT --> GUIDE["History Guidance + text CFG\n迭代去噪"]
+  GUIDE --> PLAN["VAE 解码 → 零样本视频计划"]
+  PLAN -. "多阶段: 以已生成视频为历史上下文续写" .-> DiT
+  PLAN --> HAND["HaMeR 逐帧手部位姿 (MANO)"]
+  PLAN --> DEPTH["MegaSAM 深度 / 相机参数"]
+  HAND --> ALIGN["反投影手腕点云 → 对齐平移\n平滑滤波"]
+  DEPTH --> ALIGN
+  ALIGN --> RETARGET["Dex-Retargeting\n人手映射到机器人手指关节"]
+  ALIGN --> IK["固定旋转 M 对齐到机器人控制系\ncuRobo 逆运动学求臂轨迹"]
+  RETARGET --> EXEC["机器人控制 API 执行\n手臂 + 手/夹爪轨迹"]
+  IK --> EXEC
+  DATA["LVP-1M 数据集\n人类与机器人视频"] -. 两阶段训练 .-> DiT
+```
+
+图依据：论文 §3.1 / Fig.2、§3.2、§3.3（视频计划到机器人动作）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ Large video planner enables generalizable robot control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.15840>
+- [arXiv PDF](https://arxiv.org/pdf/2512.15840)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–§3.3、§4.3 开头
 
 ## 推荐继续阅读
 

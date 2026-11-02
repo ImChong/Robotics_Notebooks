@@ -41,6 +41,28 @@ We propose JOPAT, a JOint Pixel-And-Track World-Action Model that predicts laten
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["当前观测窗口 o_{t-1:t} (两帧 RGB)"] --> EC["观测编码器 E_c<br/>全局条件特征 c_t"]
+    O --> TRK["以 o_t 为参考帧, 初始化 25x25 网格查询点 (N=625)<br/>现成点跟踪器跟踪未来 H_p 步<br/>得轨迹 P 与可见性 V"]
+    TRK --> PE["track-as-video 编码<br/>3D 卷积 Patchify 得 track tokens<br/>(可见性不输入编码器)"]
+    EC --> DIT
+    A["动作 tokens (噪声初始化)"] --> SEQ["共享序列 Z = 动作 + 未来视觉潜变量 + track tokens + register tokens"]
+    VL["未来视觉潜变量 tokens (噪声初始化)"] --> SEQ
+    PE --> SEQ
+    SEQ --> DIT["DiT 双向全注意力联合去噪<br/>c_t 经 AdaLN 注入, 三个模态各自扩散时间步"]
+    DIT --> HA["动作头 -> 动作块 a_{t:t+K-1}"]
+    DIT --> HO["视觉潜变量头"]
+    DIT --> HP["track 坐标头 + 可见性头"]
+    HA --> EXE["执行首个动作或短前缀后重规划"]
+    HO -. "仅训练监督, 推理时作隐式未来状态" .-> DIT
+    HP -. "仅训练监督, 推理时作隐式未来状态" .-> DIT
+```
+
+图依据：论文 §4.1–§4.3 / Fig.2（论文将方法命名为 JOPAT；推理时仅解码动作分支，视觉与 track 令牌作为潜在未来状态参与自注意力）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ We propose JOPAT, a JOint Pixel-And-Track World-Action Model that predicts laten
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.23856>
+- [arXiv PDF](https://arxiv.org/pdf/2605.23856)：已通读方法部分（实验与附录以略读为准）：Abstract、Introduction、Related work、§4 Methods（4.1–4.3）；实验略读
 
 ## 推荐继续阅读
 

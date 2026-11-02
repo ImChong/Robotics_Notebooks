@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AFUN: Towards an Affordance Foundation Model for Functionality Understanding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+AFUN: Towards an Affordance Foundation Model for Functionality Understanding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,35 @@ AFUN: Towards an Affordance Foundation Model for Functionality Understanding—�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 数据["数据流水线（Fig.2）"]
+        R["10 个公开来源视频<br/>人类 / 机器人 / 仿真 / 真实扫描"] --> PP["切分动作区间<br/>标准化 RGB-D、任务语言、相机参数"]
+        PP --> TK["VLM 生成可操作部件 query<br/>SAM3 跟踪被操作物体"]
+        TK --> OUT["功能 mask + 物体轨迹"]
+        OUT --> BZ["反投影取 3D 均值<br/>拟合 Bézier 样条曲线"]
+        BZ --> FL["逐步过滤 + 人工质检<br/>59,867 训练样本"]
+    end
+    subgraph 模型["AFUN 前向（Fig.4）"]
+        IN["RGB-D + 任务短语"] --> VLM["冻结 Qwen3-VL<br/>附加 MetaQuery：mq_s 与 mq_m"]
+        VLM -->|mq_s 经两层 MLP| SAM["SAM3 mask decoder<br/>功能 mask + per-object 特征"]
+        IN --> ENC["Sonata 3D 特征编码器<br/>点云 → geo feat"]
+        ENC --> MD["Motion Decoder<br/>transformer decoder"]
+        SAM -->|per-object 特征| MD
+        VLM -->|mq_m| MD
+        MD --> CV["3D Bézier 控制点<br/>P0 为 mask 深度质心"]
+        SAM --> DEP["mask 反投影为 3D 点<br/>交给 AnyGrasp 等抓取模块"]
+    end
+        subgraph 训练["三阶段训练"]
+        S1["Stage 1：MetaQuery–SAM3 对齐<br/>Visual Genome，MSE"] --> S2["Stage 2：端到端分割训练<br/>四个 affordance 数据集"] --> S3["Stage 3：分割 + 运动联合训练<br/>L_sam3 + L_curve"]
+    end
+    FL -.->|Stage 3 训练数据| S3
+```
+
+图依据：论文 §3 数据流水线（Fig.2）、§4.1 Network Architecture（Fig.4）、§4.2 Training Scheme；引言说明 mask 可反投影后交给 AnyGrasp 等抓取模块。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +80,7 @@ AFUN: Towards an Affordance Foundation Model for Functionality Understanding—�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2606.02551)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2606.02551)。
 
 ## 评测与指标
 
@@ -67,7 +96,7 @@ AFUN: Towards an Affordance Foundation Model for Functionality Understanding—�
 
 **本页只提供「AFUN」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +117,7 @@ AFUN: Towards an Affordance Foundation Model for Functionality Understanding—�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2606.02551>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02551)：已通读方法部分（实验与附录以略读为准）：引言数据流水线（Dataset Curation 至 Filtering）、§4.1–§4.2
 
 ## 推荐继续阅读
 

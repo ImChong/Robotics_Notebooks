@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articulated Objects——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articulated Objects——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,34 @@ VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articu
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph RL["RL 策略：交互式轨迹探索（仅训练期使用）"]
+        INIT["随机采样关节体形状、任务 θ、起始部件位姿<br/>夹爪初始化在接触点 p 附近"]
+        INIT --> TD3["条件 TD3 策略<br/>输入 33 维状态，输出残差夹爪位姿（下一个 waypoint）<br/>最多 5 个 waypoint"]
+        TD3 --> ENV["仿真任务环境<br/>外在奖励：成功 / 引导 / 距离惩罚"]
+        ENV --> TD3
+    end
+    ENV --> DATA["收集交互轨迹：成功样本为正例<br/>偏移任务 θ 构造负例"]
+    subgraph PER["感知网络（测试时只用这部分）"]
+        ENC["输入编码：PointNet++ 点云特征 f_s<br/>MLP 编码接触点 p、轨迹 τ、任务 θ"]
+        ENC --> TS["Trajectory Scoring：MLP 预测轨迹成功概率 r"]
+        ENC --> TP["Trajectory Proposal：cVAE 给出每点多样轨迹分布"]
+        TP --> AP["Actionability Prediction：MLP 预测每点 actionability 分数<br/>目标为 100 条提议轨迹打分后的 top-5 均值"]
+        TS --> AP
+    end
+    DATA --> ENC
+    TS -.-> CUR["好奇心反馈：内在奖励 -500·r<br/>鼓励 RL 探索当前评分低的新轨迹"]
+    CUR -.-> TD3
+    AP --> OUT["输出：actionability 热力图 + 每点多样轨迹提议 + 成功评分"]
+    TP --> OUT
+    TS --> OUT
+```
+
+图依据：论文 §4 / Fig.2（RL 策略 §4.1，感知网络 §4.2，好奇心驱动探索 §4.3；输出定义见 §3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +79,7 @@ VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articu
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2106.14440)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2106.14440)。
 
 ## 评测与指标
 
@@ -67,7 +95,7 @@ VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articu
 
 **本页只提供「VAT-Mart」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +116,7 @@ VAT-Mart: Learning Visual Action Trajectory Proposals for Manipulating 3D Articu
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2106.14440>
+- [arXiv PDF](https://arxiv.org/pdf/2106.14440)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Actionable Visual Priors、§4 VAT-Mart（4.1–4.3）、§5 实验设置（略读）
 
 ## 推荐继续阅读
 

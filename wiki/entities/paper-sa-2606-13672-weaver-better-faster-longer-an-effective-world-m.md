@@ -42,6 +42,25 @@ Multi-view WM with flow-matching loss, SOTA on robotic manipulation, satisfying 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t：多视角 RGB 图像 + 本体状态 q_t"] --> ENC["预训练编码器（SD3 VAE）：图像 patch token + 本体 token → 隐状态 z_t"]
+    ENC --> MEM["稀疏记忆（每 k 帧）+ 短期历史（最近帧）"]
+    POL["基础策略 π0.5：采样 h 步动作块 a_t"] --> WM
+    MEM --> WM["隐空间动力学模型 f_φ：2D Transformer（空间注意力 + 因果时间注意力），flow-matching 训练"]
+    WM --> ZF["预测未来隐变量 ẑ"]
+    ZF --> DEC["预训练解码器：未来多视角图像与本体状态 ô"]
+    DEC --> POL
+    ZF --> RH["隐空间奖励头 R 与 critic V"]
+    RH --> EV["策略评估：真实动作轨迹开环执行，记录预测奖励"]
+    RH --> IM["策略改进：B 条 rollout 的 H 步优势，最优者超过阈值才蒸馏进基础策略"]
+    RH --> TP["测试时规划：采样 B 个动作块，执行优势最高者（best-of-N）"]
+```
+
+图依据：论文 §3 / §3.1-§3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Multi-view WM with flow-matching loss, SOTA on robotic manipulation, satisfying 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.13672>
+- [arXiv PDF](https://arxiv.org/pdf/2606.13672)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 WEAVER（§3.1-§3.4）、§4 实验设置开头
 
 ## 推荐继续阅读
 

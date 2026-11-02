@@ -19,7 +19,7 @@ summary: "RoboMMT：调制式表达与交互机器人动作的稳定跟踪学习
 
 # RoboMMT：调制式表达与交互机器人动作的稳定跟踪学习
 
-**RoboMMT**（*RoboMMT: Learning Stable Tracking of Modulated Expressive and Interactive Robot Motion*，[arXiv:2610.26414](https://arxiv.org/abs/2610.26414)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**RoboMMT**（*RoboMMT: Learning Stable Tracking of Modulated Expressive and Interactive Robot Motion*，[arXiv:2610.26414](https://arxiv.org/abs/2610.26414)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,25 @@ summary: "RoboMMT：调制式表达与交互机器人动作的稳定跟踪学习
 ## 为什么重要
 
 - 周报所述待解决的问题：在线改变表达动作的幅度、方向和节奏时，动态不稳定的腿式平台可能接近平衡极限。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    LIB["动作库 Motion Library<br/>DMP 原语"] --> GEN["DMP 参考流生成器<br/>调制参数 m_t 含 pGoal"]
+    MOD["目标表达调制 Target Modulation"] --> GEN
+    GEN --> REF["参考关节轨迹 q_ref"]
+    REF --> TRK["跟踪策略 Tracking Policy<br/>PPO，50 Hz，残差关节位置动作"]
+    OBS["本体观测<br/>重力投影 / 角速度 / 关节状态 / 动作历史"] --> TRK
+    TRK --> PD["PD 伺服 → 关节力矩 → 机器人"]
+    PD --> IS["交互状态 o_int<br/>如目标在机器人任务空间中的坐标"]
+    IS --> GM["目标调制策略 Goal Modulation Policy<br/>每任务一个轻量 PPO 策略"]
+    GM -->|"目标偏移 Δg"| GEN
+    P1["Phase 1：在随机采样的调制参考域 D_ref 上训练跟踪策略"] -.-> TRK
+    P2["Phase 2：冻结跟踪策略，训练目标调制策略"] -.-> GM
+```
+
+图依据：论文 §IV–VI / Fig. 1–2。
 
 ## 核心机制
 
@@ -85,6 +104,7 @@ summary: "RoboMMT：调制式表达与交互机器人动作的稳定跟踪学习
 - [robommt-modulated-expressive-motion-tracking_arxiv_2610_26414.md](../../sources/papers/robommt-modulated-expressive-motion-tracking_arxiv_2610_26414.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26414](https://arxiv.org/abs/2610.26414)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26414)：已通读方法部分（实验与附录以略读为准）：§I–VI（引言、背景、方法概述、跟踪策略、交互目标调制）
 
 ## 推荐继续阅读
 

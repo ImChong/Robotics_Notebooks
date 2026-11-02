@@ -39,6 +39,35 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 - 克服**运动学干扰与遮挡**；
 - 设计**有效传感器布局策略**（针对人形结构）。 S["📷🔦 多模态传感<br/>(布局应对干扰/遮挡)"] --> F subgraph F["多模态 + 时序融合网络"] G["栅格占据 + 语义标签"] end F --> DATA["首个人形全景占据数据集"] F --> OUT["🤖 整体环境理解<br/>→ 任务规划 / 导航"] style F fill:#e8f4fd,stroke:#1f78b4,color:#0b3954 style OUT fill:#fde8e8,stroke:#c0392b,color:#641e16
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph HW["数据采集（§3.2）"]
+    S["传感器：6 路 RGB 相机 + 40 线 360 度 LiDAR<br/>装于头部，Tienkung 人形"] --> W["可穿戴采集设备<br/>同配置，采集者约 160 cm，加颈部稳定器"]
+  end
+  subgraph ANN["标注与占据真值（§3.3）"]
+    W --> BB["动态目标 3D 框标注<br/>行人 / 骑行者 / 车辆"]
+    W --> SEG["去除动态目标，多帧静态点云叠加，逐点语义标注"]
+    BB --> MERGE["静态背景对齐到逐帧 ego 系，按位姿拼入动态前景"]
+    SEG --> MERGE
+    MERGE --> VOX["体素化得到占据真值（语义 + 占据）"]
+  end
+  subgraph NET["多模态融合网络（§3.4）"]
+    IMG["6 路相机图像"] --> CE["共享 CNN backbone 图像编码（不去畸变）"]
+    PC["LiDAR 点云"] --> LE["PointPillar 编码，得到 LiDAR BEV 特征"]
+    LE -- "query" --> XA["LiDAR 到相机 cross-attention（Deformable Attention，畸变投影采样）"]
+    CE -- "key / value" --> XA
+    XA --> TF["历史 BEV 特征队列：ego-motion 对齐后与当前帧沿通道拼接"]
+    TF --> BE["BEV encoder：ResNet + FPN"]
+    BE --> HD["预测头（FlashOcc 式）：通道拆为高度 bin，3D 卷积"]
+    HD --> OUT["3D 语义占据栅格"]
+  end
+  VOX -. "监督：focal + Lovasz-softmax + affinity 损失" .-> OUT
+```
+
+图依据：论文 §3.2–§3.4 / Fig.3、Fig.5。
+
 ## 解决什么问题
 
 人形感知模块**异构、碎片化**，而**占据表示**适合人形（语义 + 几何兼备）。但要在人形上做好占据感知面临： - **运动学干扰与遮挡**（机体运动、肢体遮挡）； - **传感器布局**难（人形结构特殊）； - **缺乏人形专用数据集**。
@@ -94,6 +123,7 @@ summary: "人形技术快速演进，厂商推出各式异构视觉感知模块�
 - [humanoid_pnb_humanoid-occupancy.md](../../sources/papers/humanoid_pnb_humanoid-occupancy.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System/Humanoid_Occupancy__Generalized_Multimodal_Occupancy_Perception_System.html>
 - 论文：<https://arxiv.org/abs/2507.20217>
+- [arXiv PDF](https://arxiv.org/pdf/2507.20217)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Humanoid Occupancy（§3.1 系统概览、§3.2 传感器布局与数据采集、§3.3 标注流水线、§3.4 多模态融合网络）、§4 实验（略读）
 
 ## 推荐继续阅读
 

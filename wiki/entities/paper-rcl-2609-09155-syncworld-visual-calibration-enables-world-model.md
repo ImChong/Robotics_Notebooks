@@ -42,6 +42,30 @@ SyncWorld interprets robot commands through a short visual calibration context, 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph CAL["校准上下文构造（每个 setup s）"]
+        A1["采集校准 episode：每个自由度 d 随机执行 +d 或 −d 后回到标称位姿<br/>（不含夹爪）"] --> A2["确定性抽取 12 个有符号运动片段 C(s,d,σ)<br/>按固定规范顺序拼接为校准前缀 C^s"]
+    end
+    subgraph TRAIN["训练"]
+        T1["动作坐标增强：对校准、历史、未来动作块<br/>施加同样的符号翻转 / 轴置换 / 平移缩放，视频不变"]
+        T2["校准蒸馏：带校准的 teacher 输入<br/>vs 去掉校准的 student 输入，student 匹配 teacher 预测"]
+    end
+    A2 --> W["SyncWorld：DiT 世界模型<br/>输入 校准 C^s + 交互历史 H_t + 未来动作块 A_t<br/>预测未来视频 I_t+1:t+H"]
+    T1 -.-> W
+    T2 -.-> W
+    subgraph RANK["零样本策略改进：世界模型排序（GPC-RANK 框架）"]
+        R1["VLA 策略 π：由观测 O_t 与指令 l<br/>采样 K 个候选动作块"] --> W
+        W --> R2["对每个候选，预测未来视觉结果（多视角）"]
+        R2 --> R3["VLM 结果评估器按指令给 rollout 打分 s(k)"]
+        R3 --> R4["选 k* = argmax s(k)，执行该动作块并重复"]
+    end
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、Fig.4（式 1–6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ SyncWorld interprets robot commands through a short visual calibration context, 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.09155>
+- [arXiv PDF](https://arxiv.org/pdf/2609.09155)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.4；§4 实验与附录略读
 
 ## 推荐继续阅读
 

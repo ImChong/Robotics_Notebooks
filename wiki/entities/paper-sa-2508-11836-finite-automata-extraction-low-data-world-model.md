@@ -42,6 +42,23 @@ Low-data world model learning as programs from gameplay video.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单段 2D 游戏玩法视频"] --> B["按固定帧率抽帧 RGB 帧 F_1..F_n"]
+    B --> C["改进版 Marionette 网络<br/>(减背景图, 重建损失加权 γ)<br/>学习 sprite 字典 (至多 l 个)"]
+    C --> D["w×h 符号网格 G_1..G_n<br/>每格对应一个学到的 sprite"]
+    D --> E["相似 sprite 归并为 Sprite-Class"]
+    E --> F["人工划分 Learnable / Non-learnable<br/>(如玩家控制的为 Non-learnable)"]
+    F --> G["对每个 Learnable Sprite-Class 逐个搜索程序<br/>Retro Coder DSL: if 条件 + then 动作"]
+    G --> H["邻域搜索: 增/删一条 if-then<br/>最小化批次内帧间 AE 距离 D"]
+    H --> I["每个 sprite 一个程序 = 世界模型"]
+    I --> J["Next Frame: 每步用真值帧预测下一帧<br/>Total Simulation: 仅用首帧自回归模拟"]
+```
+
+图依据：论文 §4.1 Representation Extraction、§4.2 Retro Coder、§4.3 Search Algorithm、§5 Evaluation / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Low-data world model learning as programs from gameplay video.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.11836>
+- [arXiv PDF](https://arxiv.org/pdf/2508.11836)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1–4.3）、§5 评测设定
 
 ## 推荐继续阅读
 

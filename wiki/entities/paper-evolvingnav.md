@@ -17,6 +17,25 @@ summary: "EvolvingNav（arXiv:2609.39166；云深处 + 浙大）：把带时间�
 
 **EvolvingNav**（*Beyond the Remembered World: Predictive 4D Belief for Persistent Navigation in Evolving Worlds*，[arXiv:2609.39166](https://arxiv.org/abs/2609.39166)，Mingjian Gao、Zhaocheng Li、Haoyang Huang 等；Deeprobotics、浙江大学、UCSD、CUHK；[官方项目页](https://developer.deeprobotics.cn/research/articles/evolving-nav/index.html)）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["因果 4D 记忆<br/>RGB-D 在共享坐标系配准，版本化增量 Materialize"] --> H["目标条件历史：最近 K 个因果事件<br/>实体/候选状态/时间/seen·notseen 证据/置信度/可见性"]
+    H --> TF["事件 token 编码 + 紧凑 Transformer<br/>得到 h_1..h_K 与查询表示 h_q"]
+    TF --> PB["持久–迁移信念 b⁻<br/>持久分支 ρ_q 对应最后观测位置；<br/>迁移分支为其余候选的 pointer 分布 π_q，另含 unknown"]
+    PB --> F["事件驱动滤波：按流逝时间传播<br/>b⁻ ← b⁺·K_θ(Δt)"]
+    F --> ETA["预测各候选到达时刻 ETA 的占用<br/>b_arr = b⁺·K_θ(τ_ETA)"]
+    ETA --> SEL["冻结 VLM 控制器调用记忆/预测/导航/检查/探索工具<br/>按到达检测概率、行程代价、检查次数选择候选 i*"]
+    SEL --> MOVE["短片段移动<br/>采集 RGB-D 观测"]
+    MOVE --> UPD["可见性条件测量更新<br/>未检测到：似然 1 − r̂（unknown 为 1），再归一化得 b⁺<br/>仅新增覆盖超过阈值才更新，避免重复证据"]
+    UPD --> DEC{"目标验证匹配？"}
+    DEC -->|是| END["结束搜索"]
+    DEC -->|否| F
+```
+
+图依据：论文 §3.2 因果 4D 记忆、§3.3 持久–迁移信念、§3.4 预测式具身智能体（式 3–15）/ Fig.2。
+
 ## 一句话定义
 
 **EvolvingNav 把已记住的世界当作假设：预测到达时仍成立的状态，只检查必要之处，用证据回路持续更新 4D 记忆。**
@@ -71,3 +90,4 @@ summary: "EvolvingNav（arXiv:2609.39166；云深处 + 浙大）：把带时间�
 - [arXiv 原文](https://arxiv.org/abs/2609.39166)
 - [官方项目页](https://developer.deeprobotics.cn/research/articles/evolving-nav/index.html)
 - [云深处前沿探索](https://developer.deeprobotics.cn/research/)
+- [arXiv PDF](https://arxiv.org/pdf/2609.39166)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）；§4 EvoWorld-Bench、实验与附录略读

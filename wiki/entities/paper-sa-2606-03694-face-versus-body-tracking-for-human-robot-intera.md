@@ -42,6 +42,25 @@ A novel egocentric dataset and optimized tracking pipeline reduce identity switc
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["Furhat 机器人固定机位摄像头<br/>egocentric 视频，约 25 fps"] --> DET{"检测器 Detector"}
+    DET -->|"身体：YOLOX"| BOX["逐帧检测框<br/>（无时间记忆）"]
+    DET -->|"人脸：RetinaFace"| BOX
+    GT["人工标注 GT 框<br/>用于隔离检测误差"] -.->|"替代检测器"| BOX
+    BOX --> TRK{"跟踪器 Tracker"}
+    TRK -->|"BT：ByteTrack<br/>仅空间 IoU 关联"| ASSOC["关联检测框与轨迹<br/>（BT-30 / 120 / 2500 帧缓冲）"]
+    TRK -->|"BS：BoT-SORT-ReID / BoT-FACE-SORT<br/>IoU 距离 + 外观余弦距离"| MOD["本文改动：关闭 CMC<br/>关闭空间 ReID 门控"]
+    MOD --> ASSOC
+    ASSOC --> ID["带一致 ID 的轨迹"]
+    ID --> EVAL["TrackEval 评测<br/>HOTA / IDF1 / IDSW"]
+    ID --> FAIL["IDSW 人工归类<br/>遮挡 / 出入画 / ID 接管 / U-Turn 等"]
+```
+
+图依据：论文 §II-A、§IV-A/B/C/D（评测流水线，非作者提出的新网络）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A novel egocentric dataset and optimized tracking pipeline reduce identity switc
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.03694>
+- [arXiv PDF](https://arxiv.org/pdf/2606.03694)：已通读方法部分（实验与附录以略读为准）：§II 相关工作（II-A）、§III 数据集、§IV 实验设定、§V 结果；其余略读
 
 ## 推荐继续阅读
 

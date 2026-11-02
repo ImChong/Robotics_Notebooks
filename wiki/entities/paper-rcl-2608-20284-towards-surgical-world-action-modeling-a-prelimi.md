@@ -41,6 +41,32 @@ To bridge this gap, we present a preliminary joint visual-trajectory world-actio
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["历史 5 帧 RGB 手术画面"] --> ENC["冻结 SurgMotion ViT-L 编码器"]
+    ENC --> MID["中间层 token<br/>局部外观与空间细节"]
+    ENC --> FIN["末层 token<br/>语义与运动上下文"]
+    P["历史 2-D 器械轨迹 pt"] --> EMB["MLP 轨迹嵌入<br/>空间广播"]
+    MID --> FUSE["投影并相加融合<br/>视觉 + 运动表示 Xt"]
+    FIN --> FUSE
+    EMB --> FUSE
+    FUSE --> TS["时空编码器<br/>时间注意力 + 空间处理"]
+    TS --> CTX["最新历史状态特征 = 共享上下文 C<br/>+ 可学习未来步嵌入"]
+    CTX --> VH["视觉状态头<br/>预测相对最新观测的残差 ΔZ"]
+    CTX --> TH["轨迹头<br/>匀速估计 + 残差修正"]
+    VH --> ZOUT["未来 3 步视觉 latent"]
+    TH --> POUT["未来 3 步 2-D 轨迹点"]
+    ZOUT --> DEC["冻结视觉解码器 D<br/>仅用于可视化与图像级评测"]
+    ZOUT --> WIN["更新历史窗口<br/>丢弃最旧 3 步，追加 3 步预测"]
+    POUT --> WIN
+    WIN -->|"重复共 5 个 chunk"| FUSE
+    WIN --> OUT["15 步视觉 + 轨迹预测"]
+```
+
+图依据：论文 §2（2.1 问题定义、2.2 联合视觉-运动表示、2.3 分块自回归 rollout）/ Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ To bridge this gap, we present a preliminary joint visual-trajectory world-actio
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.20284>
+- [arXiv PDF](https://arxiv.org/pdf/2608.20284)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1-2.3）、§3.1-3.2 数据集与实现细节
 
 ## 推荐继续阅读
 

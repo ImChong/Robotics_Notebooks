@@ -42,6 +42,38 @@ Video Joint Embedding Predictive Architecture (V-JEPA) learns powerful spatiotem
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角历史帧 X1:H<br/>左/前/右/后相机"] --> E["共享在线编码器 Eθ<br/>V-JEPA 2 ViT-L"]
+    E --> C["历史上下文 token Zctx"]
+    subgraph S1["Stage 1：混合未来掩码预训练（nuPlan，无动作监督）"]
+        M["未来帧掩码<br/>Full-mask + Patch-mask"] --> Z["未来条件 token Zcond<br/>可学习 mask token + 可见 token"]
+        FF["未来帧 XH+1:H+K"] --> T["EMA 目标编码器"]
+        T --> ZS["干净未来目标 Z*future"]
+        N1["高斯噪声 + 流时间 t"] --> ZT["带噪未来 token Zt"]
+        C --> P1["未来 Flow 预测器<br/>MMDiT 风格"]
+        Z --> P1
+        ZT --> P1
+        P1 --> L1["MSE：预测干净未来 latent vs Z*future"]
+        ZS --> L1
+    end
+    subgraph S2["Stage 2：联合世界-动作建模（NAVSIM 微调，仅 Full-mask）"]
+        AH["历史动作 Y1:H + 自车状态 s"] --> AT["动作 token Tact"]
+        NA["带噪未来动作"] --> AT
+        C --> JP["联合未来-动作预测器<br/>MMDiT 风格"]
+        AT --> JP
+        JP --> FS["未来场景流"]
+        JP --> AS["动作流"]
+        AS --> LA["MSE：归一化未来动作"]
+    end
+    S1 -->|"初始化权重"| S2
+    AS --> OUT["推理：噪声迭代采样 4 步 → 反归一化 → 未来自车轨迹"]
+```
+
+图依据：论文 §Method（Overview、Stage 1、Stage 2、Planning inference）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +131,7 @@ Video Joint Embedding Predictive Architecture (V-JEPA) learns powerful spatiotem
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.20974>
+- [arXiv PDF](https://arxiv.org/pdf/2608.20974)：已通读方法部分（实验与附录以略读为准）：Method（Preliminaries、Overview、Stage 1、Stage 2、Planning inference）与 Experimental Setup 实现细节
 
 ## 推荐继续阅读
 

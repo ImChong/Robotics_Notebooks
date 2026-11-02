@@ -22,7 +22,7 @@ summary: "Fast Retargeting：面向规模化人形学习的快速动作重定向
 
 # Fast Retargeting：面向规模化人形学习的快速动作重定向流程
 
-**Fast Retargeting**（*Fast Motion Retargeting Pipeline for Scalable Humanoid Robot Learning*，[arXiv:2610.28470](https://arxiv.org/abs/2610.28470)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Fast Retargeting**（*Fast Motion Retargeting Pipeline for Scalable Humanoid Robot Learning*，[arXiv:2610.28470](https://arxiv.org/abs/2610.28470)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -38,6 +38,26 @@ summary: "Fast Retargeting：面向规模化人形学习的快速动作重定向
 ## 为什么重要
 
 - 周报所述待解决的问题：将大型人体动作库转移到不同人形机器人时，传统轨迹优化速度慢，还需要逐动作人工修复。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["人体 MoCap 动作序列"] --> SC["关键点缩放到目标机器人身体比例<br/>→ 站点对应目标位置 p*_{s,t}"]
+    SC --> CH["按 Nw 个 worker 切分为时间 chunk"]
+    CH --> P["各 chunk 并行：从 T-pose 起步"]
+    P --> B["前 N_boost 帧：多次 SQP 迭代稳定初值"]
+    B --> RTI["之后每帧 1 步 SQP（RTI），以上一帧解 warm start"]
+    RTI --> QP["SQP 每次迭代：Gauss-Newton Hessian → OSQP 求解 QP<br/>→ L1 merit 回溯线搜索 + 自适应惩罚 µ"]
+    QP --> CON["拼接各 chunk 轨迹"]
+    CON --> RB["可选 RefineBoundary：<br/>按速度/加速度 2σ 标记边界并联合重优化"]
+    RB --> REF["运动学重定向参考 q_ref"]
+    CON -.->|"追求最大吞吐时可跳过"| REF
+    REF --> CI["Contact-Implicit iLQR（MuJoCo 动力学）<br/>跟踪 q_ref，验证并精修物理可行性"]
+    CI --> OUT["物理上更合理的机器人轨迹"]
+```
+
+图依据：论文 §III-A–D（Algorithm 1–4、式 (1)–(20)）。
 
 ## 核心机制
 
@@ -89,6 +109,7 @@ summary: "Fast Retargeting：面向规模化人形学习的快速动作重定向
 - [fast-motion-retargeting-pipeline-humanoid_arxiv_2610_28470.md](../../sources/papers/fast-motion-retargeting-pipeline-humanoid_arxiv_2610_28470.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.28470](https://arxiv.org/abs/2610.28470)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28470)：已通读方法部分（实验与附录以略读为准）：§III-A 逆运动学建模、§III-B SQP、§III-C 并行处理、§III-D CI-iLQR、§IV-A 实现细节
 
 ## 推荐继续阅读
 

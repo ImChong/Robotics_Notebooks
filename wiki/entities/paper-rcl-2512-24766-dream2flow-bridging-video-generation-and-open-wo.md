@@ -42,6 +42,29 @@ Dream2Flow converts generated human-interaction videos into 3D object trajectori
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["任务指令 ℓ + 初始 RGB-D 观测<br/>（工作区图像不含机器人）"] --> V["图像到视频生成模型<br/>生成任务视频 V_t"]
+    V --> DEP["SpatialTrackerV2 视频深度<br/>首帧对齐机器人深度 D_0 标定尺度"]
+    I --> GD["Grounding DINO 框 → SAM 2 掩码"]
+    GD --> TR["CoTracker3 2D 点追踪<br/>得到轨迹与可见性"]
+    V --> TR
+    TR --> LIFT["结合深度与相机内外参提升到 3D"]
+    DEP --> LIFT
+    LIFT --> FLOW["3D 物体流 P_1:T"]
+    FLOW --> ACT["动作推断：最小化物体流跟踪代价 λ_task + 控制代价 λ_control"]
+    ACT --> D1["仿真 Push-T：学习动力学模型 + random shooting"]
+    ACT --> D2["真实世界：AnyGrasp 候选 + HaMeR 选抓取<br/>刚性抓取模型 + PyRoki 轨迹优化"]
+    ACT --> D3["仿真开门：以物体流为奖励的 SAC 强化学习"]
+    D1 --> R["机器人执行动作"]
+    D2 --> R
+    D3 --> R
+```
+
+图依据：论文 §III-A 问题形式化、§III-B 3D 物体流提取、§III-C 动作推断、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Dream2Flow converts generated human-interaction videos into 3D object trajectori
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.24766>
+- [arXiv PDF](https://arxiv.org/pdf/2512.24766)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（§III-A/B/C）
 
 ## 推荐继续阅读
 

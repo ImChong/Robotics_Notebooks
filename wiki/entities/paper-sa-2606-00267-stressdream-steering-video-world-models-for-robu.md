@@ -43,6 +43,24 @@ Steers video world models for robust policy evaluation and improvement.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：观测历史 o_hist + 候选动作序列 a<br/>+ 推理时文本描述 ℓ（如“咖啡豆洒出”“发生碰撞”）"] --> N["初始化高斯噪声 ε"]
+    N --> W["扩散视频世界模型 f_θ<br/>去噪生成想象视频 o"]
+    W --> S["语义目标 C_sem<br/>Qwen-VL 输出 yes/no 的 log 概率差"]
+    N --> PL["可信度目标 C_pla<br/>范数集中 + 各向同性 + 谱白度"]
+    S --> G["梯度近似<br/>∇ε C ≈ β∇o C_sem + ∇ε C_pla（避免回传整个去噪链）"]
+    PL --> G
+    G --> U["梯度上升更新 ε"]
+    U -->|"迭代"| W
+    U --> OUT["高影响且合理的想象结果"]
+    OUT --> EV["稳健策略评估 / 外层选择稳健动作"]
+```
+
+图依据：论文 §2–§4 / Eq. 5–8
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Steers video world models for robust policy evaluation and improvement.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.00267>
+- [arXiv PDF](https://arxiv.org/pdf/2606.00267)：已通读方法部分（实验与附录以略读为准）：§1、§2、§3、§4.1–§4.3、§5
 
 ## 推荐继续阅读
 

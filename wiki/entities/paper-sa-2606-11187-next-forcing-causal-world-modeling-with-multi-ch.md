@@ -42,6 +42,32 @@ Multi-chunk prediction framework enabling faster training, higher accuracy, and 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CTX["干净历史 chunk（teacher forcing）+ 语言指令 ℓ"] --> MAIN
+    CUR["加噪的当前 chunk"] --> MAIN["主模型：30 层 Transformer（MoT：视频流 + 动作流，跨模态注意力）"]
+    MAIN --> LV["视频 flow-matching 损失 L_video（当前 chunk）"]
+    MAIN --> ACT["动作流经逆动力学解码动作 → L_action"]
+    MAIN --> FU["多层特征融合：取第 4/12/20/30 层隐状态拼接，两层 MLP → h_fuse"]
+    FU --> M1["MCP 模块 1：预测 next1 chunk（3 个 Transformer block）"]
+    N1["加噪的 next1 目标（独立噪声，更大的 timestep shift）"] --> M1
+    M1 --> M2["MCP 模块 2：预测 next2 chunk"]
+    N2["加噪的 next2 目标"] --> M2
+    M2 --> M3["MCP 模块 3：预测 next3 chunk"]
+    N3["加噪的 next3 目标"] --> M3
+    M1 --> LM["MCP 损失 L_MCP[k]，梯度经 h_fuse 回传主模型"]
+    M2 --> LM
+    M3 --> LM
+    LV --> TOT["总损失 = L_video + L_action + Σ w_k·L_MCP[k]"]
+    ACT --> TOT
+    LM --> TOT
+    MAIN -.-> INF["推理：可丢弃 MCP 模块（零额外开销），或保留以并行生成多个 chunk"]
+```
+
+图依据：论文 §4.1-§4.5 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Multi-chunk prediction framework enabling faster training, higher accuracy, and 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.11187>
+- [arXiv PDF](https://arxiv.org/pdf/2606.11187)：已通读方法部分（实验与附录以略读为准）：§2 相关工作、§3 Preliminaries、§4 Next Forcing（§4.1-§4.5）
 
 ## 推荐继续阅读
 

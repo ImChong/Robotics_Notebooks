@@ -38,6 +38,22 @@ VLA 与世界模型单框架双向增强；RynnVLA-002 工程化连续动作与�
 - VLA 与世界模型单框架双向增强；RynnVLA-002 工程化连续动作与注意力掩码。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["Chameleon 初始化的统一自回归模型"] --> TK["三类 tokenizer：<br/>图像 VQ-GAN、文本 BPE、动作（每维 256 bin，共 7 token）<br/>全部离散为 token"]
+  TK --> AD["动作模型数据：文本指令 + 历史图像 → 动作 token<br/>只对动作 token 算 L_action"]
+  TK --> WD["世界模型数据：当前图像 + 动作 → 下一帧图像 token<br/>只对生成图像 token 算 L_world"]
+  AD --> AM["动作 chunk 注意力掩码：<br/>当前动作不可见先前动作"]
+  WD --> WM["世界模型：常规因果掩码"]
+  AM --> L["混合训练 L = L_action + α · L_world"]
+  WM --> L
+  L --> O["同一模型既输出动作，也预测未来帧"]
+```
+
+图依据：论文 §3.2–3.3 / Fig. 2、Fig. 3、式 (4)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -86,6 +102,7 @@ VLA 与世界模型单框架双向增强；RynnVLA-002 工程化连续动作与�
 - [shenlan_wm_survey_07_worldvla.md](../../sources/papers/shenlan_wm_survey_07_worldvla.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2506.21539)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1 问题形式化、3.2 架构、3.3 训练策略与注意力掩码）、Fig. 3
 
 ## 推荐继续阅读
 

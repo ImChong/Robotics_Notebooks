@@ -43,6 +43,31 @@ World model-powered VLA.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["训练数据来源（§4）"]
+        D1["真实机器人数据<br/>公开数据集 + 自采数据"]
+        D2["GigaWorld 生成数据<br/>Real2Real / View / Sim2Real / Human Video Transfer<br/>Video Generation + Inverse Dynamics / Multiview Video"]
+    end
+    D1 --> M
+    D2 --> M
+    subgraph M["GigaBrain-0 模型（§3，Mixture-of-Transformers）"]
+        I["输入：RGB-D（SigLIP，深度通道零初始化扩展）<br/>+ 语言指令 + 机器人 State"]
+        VL["Vision-Language Expert<br/>PaliGemma2 VLM"]
+        COT["Embodied CoT 中间表示<br/>10 个 Trajectory Token → GRU 解码 2D 轨迹关键点<br/>Subgoal Language（自回归）<br/>Discrete Action Token（自回归）"]
+        AE["Action Expert：Action DiT + Flow Matching<br/>输入噪声动作块"]
+        OUT["输出：连续 Action Chunk"]
+        I --> VL --> COT
+        VL --> AE
+        COT -.->|"Knowledge Insulation 隔离梯度干扰"| AE
+        AE --> OUT
+    end
+```
+
+图依据：论文 §3 / Fig.2（模型）、§4（数据来源）；COT→Action Expert 的虚线表示 Knowledge Insulation 仅隔离梯度，非数据流
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +125,7 @@ World model-powered VLA.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.19430>
+- [arXiv PDF](https://arxiv.org/pdf/2510.19430)：已通读方法部分（实验与附录以略读为准）：§3 GigaBrain-0 Model、§4 GigaBrain-0 Data（§4.1–4.2）
 
 ## 推荐继续阅读
 

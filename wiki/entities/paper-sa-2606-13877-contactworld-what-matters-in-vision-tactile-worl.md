@@ -42,6 +42,26 @@ Benchmark and systematic empirical study of vision-tactile world models across 1
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["多模态观测：腕部/前视 RGB、点云（1024 点）、TacRGB、TacDepth、TacFF"] --> EN["模态专用编码器：IMPALA 式 CNN / PointNet 式空间编码器 / TacFF 逐 taxel 编码"]
+    EN --> LF["Latent Fusion：各模态隐变量融合"]
+    LF --> WM["动作条件隐空间世界模型：自回归预测未来隐变量（JEPA 式，不重建观测）"]
+    A["动作嵌入"] --> WM
+    WM --> L["训练目标：预测损失 + VICReg 正则 + 时间相似 + 逆动力学（IDM）"]
+    LF --> P1["规划：编码当前观测 z_t 与目标观测 z_g"]
+    P1 --> CEM["CEM 采样候选动作序列（100 条，4 次迭代，保留 8 个精英）"]
+    CEM --> RO["世界模型隐空间自回归 rollout（6 步）"]
+    RO --> C["终端隐空间代价 ‖ẑ_(t+H) − z_g‖²"]
+    C --> CEM
+    C --> EX["执行首个动作并重规划（receding-horizon MPC，10 Hz）"]
+    EX --> O
+```
+
+图依据：论文 §III-B / §III-C / Fig.3（训练与规划流程）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Benchmark and systematic empirical study of vision-tactile world models across 1
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.13877>
+- [arXiv PDF](https://arxiv.org/pdf/2606.13877)：已通读方法部分（实验与附录以略读为准）：§III ContactWorld（任务、模态表示、世界模型学习与规划评测）、§I 引言；§IV 起实验仅略读
 
 ## 推荐继续阅读
 

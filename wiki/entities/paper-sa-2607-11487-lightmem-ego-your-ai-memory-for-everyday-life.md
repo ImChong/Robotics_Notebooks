@@ -42,6 +42,27 @@ Connects lightweight smartphone or AI-glasses-style clients with a backend inges
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["手机/AI 眼镜客户端<br/>采样、压缩、打时间戳，上传低速率帧与短音频块"] --> CAP["多模态生活捕获<br/>x_t = (v_t, a_t, m_t)，对齐到共享会话时间线"]
+    CAP --> SEG["事件分段<br/>按时间连续性与跨帧变化切成 micro-event"]
+    SEG --> CUR["Current 记忆 M_cur<br/>滚动缓冲，当前场景"]
+    SEG --> ST["Short-term 记忆 M_st<br/>近期事件 + 代表帧 + 描述/转写"]
+    ST -- "稳定事件异步整合" --> LT["Long-term 记忆 M_lt<br/>Episodic M_epi + Semantic M_sem"]
+    Q["用户查询 q"] --> RT{"Query Router<br/>按时间范围与语义意图选源"}
+    RT -- "当前场景" --> CUR
+    RT -- "近期回忆" --> ST
+    RT -- "回溯/习惯" --> LT
+    CUR --> EV["融合为紧凑证据 E_q"]
+    ST --> EV
+    LT --> EV
+    EV --> ANS["生成回答 ŷ = f(q, E_q)"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Connects lightweight smartphone or AI-glasses-style clients with a backend inges
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.11487>
+- [arXiv PDF](https://arxiv.org/pdf/2607.11487)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 LightMem-Ego（3.1–3.5）、Fig.1
 
 ## 推荐继续阅读
 

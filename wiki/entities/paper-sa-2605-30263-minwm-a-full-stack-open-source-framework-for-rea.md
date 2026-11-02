@@ -43,6 +43,23 @@ Full-stack open-source framework for real-time interactive video world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    B["双向多步 T2V / TI2V 基础模型<br/>Wan2.1-T2V-1.3B、HY1.5-TI2V-8B"] --> P1["阶段一：相机可控微调<br/>PRoPE 将相机内外参注入自注意力"]
+    D["相机标注数据<br/>DL3DV 重建后沿给定轨迹重渲染<br/>或 WorldPlay 按轨迹生成视频"] --> P1
+    P1 --> BI["相机可控的双向多步扩散模型"]
+    BI --> S1["蒸馏 Stage 1：AR 扩散训练<br/>teacher forcing 得到自回归多步模型"]
+    S1 --> S2["Stage 2：初始化少步 AR 模型<br/>(a) 因果 ODE 初始化 或 (b) 因果 CD 初始化"]
+    S2 --> S3["Stage 3：非对称 DMD<br/>学生自回放 rollout，双向模型提供 s_real"]
+    BI -.->|"s_real / s_fake 初始化"| S3
+    S3 --> M["相机可控的少步自回归世界模型"]
+    M --> INF["低延迟流式推理<br/>流式 DiT 去噪 + 流式 VAE 解码"]
+```
+
+图依据：论文 §2.1–§2.2、§3.3 / Fig. 1（推理环节取自 Fig. 1 的框内文字）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Full-stack open-source framework for real-time interactive video world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.30263>
+- [arXiv PDF](https://arxiv.org/pdf/2605.30263)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2.1–§2.2、§3.1–§3.3、Fig. 1
 
 ## 推荐继续阅读
 

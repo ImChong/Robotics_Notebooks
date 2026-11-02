@@ -42,6 +42,20 @@ World model for biomolecular interaction design.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：目标分子 3D 结构（蛋白 / DNA / RNA / 小分子 / 离子）与掩码，可选 hotspot 表位"] --> B["Embedding：统一生成 token（-P / -N / -L 后缀指定设计模态）"]
+    B --> C["Conditional Module：编码目标 3D 结构"]
+    C --> D["Pairformer：建模分子间相互作用，继承 AF3 类结构预测预训练权重，带 recycling"]
+    D --> E["Conditional Diffusion：解码全原子 / 骨架坐标，条件原子保持固定"]
+    E --> F["OInvFold：逆折叠分配类型，蛋白与核酸自回归，小分子非自回归并行"]
+    F --> G["输出：设计出的结合分子结构与序列 / 类型"]
+```
+
+图依据：论文 §2 Architecture and training of ODesign / Fig.1、附录 A.1.3 MaskGenerator、A.2 Architecture（A.2.1–A.2.5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +111,7 @@ World model for biomolecular interaction design.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.22304>
+- [arXiv PDF](https://arxiv.org/pdf/2510.22304)：已通读方法部分（实验与附录以略读为准）：正文 Architecture and training 一节、附录 A.1（数据、掩码、裁剪）与 A.2（架构）、A.3 损失开头；各模态设计的实验结果与其余附录未细读
 
 ## 推荐继续阅读
 

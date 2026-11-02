@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Generation at Scale——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial · Generalizable） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Generation at Scale——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial · Generalizable） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,31 @@ Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Gene
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph PIPE["Affogato-750K 自动标注流程（§3）"]
+    O["Objaverse 3D 物体"] --> R["G-Objaverse 多视角渲染"]
+    R --> G1["Stage 1：Gemma3<br/>先判物体类别（CoT），再生成每物体 5 条 affordance query"]
+    G1 --> M1["Stage 2：Molmo<br/>每个 query 在每个视角预测交互点"]
+    M1 --> S1["Stage 3：MobileSAM<br/>点提示取最小 mask，sigmoid 得 2D heatmap"]
+    S1 --> V["利用相机参数与深度投影到 3D 表面<br/>多视角投票聚合"]
+    V --> H["3D affordance heatmap"]
+    H -->|"投影到 25 个视角，选最可见视角"| H2["2D heatmap 划分"]
+  end
+  subgraph ESP["Espresso 基线（§4）"]
+    TXT["affordance 文本"] --> TE["文本编码器<br/>3D：Recap-CLIP / 2D：CLIP"]
+    VIS["3D：PartField 点云编码器<br/>2D：DINOv2"] --> DEC["text-conditioned heatmap decoder<br/>文本嵌入作 query"]
+    TE --> DEC
+    DEC --> OUT["affordance heatmap<br/>视觉与文本的跨模态相似度"]
+  end
+  H -.->|"3D 训练/评测数据"| VIS
+  H2 -.->|"2D 训练/评测数据"| VIS
+```
+
+图依据：论文 §3（数据标注流程）/ §4（Espresso）/ Fig.2、Fig.5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +77,7 @@ Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Gene
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2506.12009)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2506.12009)。
 
 ## 评测与指标
 
@@ -68,7 +93,7 @@ Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Gene
 
 **本页只提供「Affogato」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +114,7 @@ Affogato: Learning Open-Vocabulary Affordance Grounding with Automated Data Gene
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2506.12009>
+- [arXiv PDF](https://arxiv.org/pdf/2506.12009)：已通读方法部分（实验与附录以略读为准）：§3 Affogato-750K 标注流程（含 3.1、3.2 三个阶段）、§4 Espresso 模型
 
 ## 推荐继续阅读
 

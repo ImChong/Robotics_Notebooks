@@ -42,6 +42,22 @@ To address these issues, we propose SWAM (Spatial-perceiving World Action Model)
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  S["起始 / 目标 RGB 观测<br/>(训练时用单目深度估计器<br/>生成深度伪标签)"] --> V["冻结 CogVideoX 3D VAE<br/>编码 RGB / 深度 latent"]
+  V --> C["起点与终点 latent 作为条件 c"]
+  C --> D["DiT 联合去噪<br/>中间 RGB token + 深度 token + 动作 token"]
+  A["动作序列 (Δx, Δy)<br/>可学习 MLP 投影为动作 token"] --> D
+  D --> R["VGAR 视觉引导动作精炼<br/>门控残差 cross-attention"]
+  D --> O["VAE 解码<br/>中间 RGB-D 序列"]
+  R --> T["动作头输出平面轨迹"]
+  T -.训练.-> L["DDPM 损失 + TSR 轨迹尺度正则"]
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ To address these issues, we propose SWAM (Spatial-perceiving World Action Model)
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.29908>
+- [arXiv PDF](https://arxiv.org/pdf/2606.29908)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.5）；§4 实验略读
 
 ## 推荐继续阅读
 

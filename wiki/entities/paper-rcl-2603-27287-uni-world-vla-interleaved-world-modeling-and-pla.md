@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    H["历史第一人称帧 I(t-M..t-1)"] --> VQ["MagVIT-v2 编码为离散 token<br/>上下文 token c（高分辨率）+ 动态 token d（10 Hz、低分辨率）"]
+    H --> DA["Depth Anything 3 估计深度图 D<br/>缩放为两种分辨率"]
+    DA --> DE["深度编码器 CDE / DDE"]
+    VQ --> CA["交叉注意力融合<br/>token 嵌入为 query，深度特征为 key/value"]
+    DE --> CA
+    EGO["自车状态：速度、加速度、高层驾驶指令"] --> IN
+    PR["系统提示 + 用户提示<br/>要求规划前先想象近未来"] --> IN
+    CA --> IN["拼接输入序列<br/>[系统提示 | 动态与上下文 token | 用户提示 | Ego token]"]
+    IN --> LLM["Show-o（Phi-1.5 多模态 LLM）自回归生成"]
+    LLM --> FT["生成第 t+k 帧视觉 token"]
+    FT -->|"追加进上下文，输入 action query"| AQ["生成第 t+k 步动作 token"]
+    AQ -->|"k+1，重复至 N=8 步（4 秒）"| FT
+    FT --> DEC["MagVIT-v2 解码器 + 上下文 token<br/>得到未来 RGB 帧"]
+    AQ --> MLP["MLP 头回归自车位置<br/>组成规划轨迹"]
+```
+
+图依据：论文 §3（Methods）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.27287>
+- [arXiv PDF](https://arxiv.org/pdf/2603.27287)：已通读方法部分（实验与附录以略读为准）：§1–3（Inputs and tokenization、Interleaved frame-action generation、Decoding、训练目标与注意力掩码、推理、Depth integration）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

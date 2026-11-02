@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Time Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit/implicit；Action Subcategory: Integrated policy · Explicit/implicit representation） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Time Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit/implicit；Action Subcategory: Integrated policy · Explicit/implicit representation） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Ti
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["Objects365 等图像<br/>VLM 过滤出以物体为中心的可交互图像"] --> AG
+    subgraph AG["A2A-AffordGen 标注流水线（仅用于造数据）"]
+        C["点击策略 Qwen3.5-9B + LoRA<br/>模仿 SimpleClick oracle，冻结 SAM3 执行"] --> SAG["SAG：单实例迭代点击细化<br/>三个停止条件"]
+        SAG --> MAG["MAG：SAM3 文本提示候选 + Grounding DINO 框<br/>直接接受 / SAG 细化 / SAG 从零开始"]
+        MAG --> TR["Qwen3-VL-32B 生成 TRPS 任务推理指令"]
+    end
+    AG --> H["人工核验"] --> B["A2A-Bench<br/>任务指令 ↔ 一个或多个功能区域"]
+    B --> GM["A2A-GroundingModel<br/>冻结 SAM3 + 轻量 adapter + 文本条件视觉 prompt<br/>三阶段：ORPS、TRPS、成对一致性"]
+    I["图像 + 任务指令"] --> GM
+    GM --> M["功能部件 mask"]
+    M --> P1["A2A-Policy 显式：置信度最高区域作彩色叠加"]
+    M --> P2["A2A-Policy 隐式：区域内特征池化送入多模态 transformer"]
+    P1 --> DH["action-chunking 扩散动作头"]
+    P2 --> DH
+```
+
+图依据：论文 §3.1 A2A-Bench / A2A-AffordGen、§3.2 A2A-GroundingModel、§3.3 A2A-Policy / Fig.1–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +74,7 @@ Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Ti
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2606.04172)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2606.04172)。
 
 ## 评测与指标
 
@@ -68,7 +90,7 @@ Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Ti
 
 **本页只提供「Affordance2Action」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +111,7 @@ Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Ti
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2606.04172>
+- [arXiv PDF](https://arxiv.org/pdf/2606.04172)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.3、Fig.1–3
 
 ## 推荐继续阅读
 

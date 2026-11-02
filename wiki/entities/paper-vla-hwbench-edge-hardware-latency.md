@@ -20,7 +20,7 @@ summary: "VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗�
 
 # VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗时分析
 
-**VLA-HWBench**（*VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware*，[arXiv:2610.34717](https://arxiv.org/abs/2610.34717)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**VLA-HWBench**（*VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware*，[arXiv:2610.34717](https://arxiv.org/abs/2610.34717)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,23 @@ summary: "VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗�
 ## 为什么重要
 
 - 周报所述待解决的问题：VLA 的推理延迟不仅取决于模型参数量，还受到动作生成方式、算子实现、CPU 预处理和内存带宽影响。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["观测: 相机图像 + 本体状态 + 语言指令<br/>(主机端)"] --> S0["S0 CPU 预处理<br/>缩放 / 归一化"]
+  S0 --> S1["S1 主机到设备拷贝"]
+  S1 --> S2["S2 GPU 视觉编码<br/>图像转 token"]
+  S2 --> S3["S3 GPU 语言模型预填充<br/>KV cache"]
+  S3 --> S4["S4 GPU 动作生成<br/>N 次迭代, T4 约等于 N·t"]
+  S4 --> S5["S5 CPU 后处理<br/>反归一化 / 拷回"]
+  S5 --> B["动作块 H 个动作 (主机端)"]
+  S6["S6 残差: 阶段间 Python 调度等"] -.-> B
+  B --> C["各阶段耗时 Tk 之和 = 单次调用延迟 T<br/>Q1 阶段占比 / Q2 优化加速 / Q3 roofline 瓶颈"]
+```
+
+图依据：论文 §3.1–3.3、Fig.2（七阶段划分与延迟分解 T = ΣTk）
 
 ## 核心机制
 
@@ -87,6 +104,7 @@ summary: "VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗�
 - [vla-hwbench-edge-hardware-latency_arxiv_2610_34717.md](../../sources/papers/vla-hwbench-edge-hardware-latency_arxiv_2610_34717.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.34717](https://arxiv.org/abs/2610.34717)
+- [arXiv PDF](https://arxiv.org/pdf/2610.34717)：已通读方法部分（实验与附录以略读为准）：研究问题与七阶段延迟分解（§3.1）、指标与设计原则（§3.2–3.3）、各阶段占比/优化/roofline 结果概览
 
 ## 推荐继续阅读
 

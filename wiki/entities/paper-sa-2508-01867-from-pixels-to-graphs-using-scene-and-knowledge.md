@@ -42,6 +42,23 @@ Proposes a framework incorporating two complementary neuro-symbolic abstractions
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一视角视频（HD-EPIC VQA）"] --> S1["SceneNet：MLLM 按 JSON 模式生成场景图 G=(N, EB, A)（分段处理，按全局时间戳对齐）"]
+    S1 --> S2["节点：Agent / Environment / DynamicObjects 等；二元边：层级与空间；超边：带时间戳的动作交互"]
+    V --> K1["KnowledgeNet：MLLM 零样本识别厨房物体，每个物体作为根节点"]
+    K1 --> K2["在 ConceptNet 上广度优先扩展至深度 3，保留归一化置信度大于 0.7 的边"]
+    K2 --> K3["序列化为语义路径，按与厨房参考句的相似度做领域过滤，每个物体至多保留 30 条"]
+    Q["自然语言问题（必要时附带时间戳对应的帧与框）"] --> M["MLLM 推理（Gemini 2.0 Flash）"]
+    S2 --> M
+    K3 --> M
+    M --> A["多选题答案"]
+```
+
+图依据：论文 §2 Our Approach（2.1 SceneNet、2.2 KnowledgeNet、2.3 Inference）/ Fig.1–3。注意：页面 frontmatter 的 arXiv 号 2508.01867 实际对应无关论文（Counterfactual Reciprocal Recommender Systems），本图按标题匹配的正确论文 arXiv:2506.08553 绘制。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,7 +112,8 @@ Proposes a framework incorporating two complementary neuro-symbolic abstractions
 - [`sources/papers/sun_awesome_ego_2508_01867_from-pixels-to-graphs-using-scene-and-kn.md`](../../sources/papers/sun_awesome_ego_2508_01867_from-pixels-to-graphs-using-scene-and-kn.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2508.01867>
+- 论文：<https://arxiv.org/abs/2508.01867>（注：该编号对应无关论文，正确编号为 2506.08553）
+- [arXiv PDF](https://arxiv.org/pdf/2506.08553)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Our Approach（2.1–2.3）、§3 实验设置；编号与页面不符：页面所写 2508.01867 对应另一篇无关论文，正确论文为 2506.08553
 
 ## 推荐继续阅读
 

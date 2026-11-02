@@ -42,6 +42,20 @@ Perceptual 3D simulation with physical world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["参考帧 RGB I0 / 深度 D0 + 期望的相机位姿与物体 3D 变换（部分已知）"] --> G
+    G["Geometrizer Γ：由先前深度、相机内参、目标位姿、各物体变换，重投影得到目标视角的稀疏深度 D1_sparse 与光流 F(0→1)"]
+    G --> PSI
+    PSI["物理世界模型 Ψ：7B 自回归 Transformer，pointer–value 序列；以可观测变量为条件，概率预测其余 RGB / 深度 / 光流"]
+    PSI --> OUT["预测目标场景状态（新视角、刚体 / 形变 / 碰撞等）"]
+    OUT --> MEM["持久场景记忆 µ：按帧跨时间整合观测与推断的几何、3D 运动场，剪除与深度观测不一致的体素"]
+```
+
+图依据：论文 §3 / Fig. 1–3、§3.1–3.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Perceptual 3D simulation with physical world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.27575>
+- [arXiv PDF](https://arxiv.org/pdf/2606.27575)：已通读方法部分（实验与附录以略读为准）：§3 概览、§3.1 物理世界模型、§3.2 几何条件信号构造、§3.3 持久场景记忆
 
 ## 推荐继续阅读
 

@@ -41,6 +41,24 @@ In this paper, we propose AGRA, an Action-Grounded Representation Alignment obje
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前 RGB 观测 o_0、语言指令 c、本体状态 s_0"] --> VD["Video DiT（Cosmos-Predict-2.5）<br/>预测未来视觉；动作生成时只在固定高噪声 τ_v = 1 评估一次"]
+    VD --> H["沿深度均匀选取若干层的隐状态 H_vid"]
+    H --> PJ["各层 Proj_j → G_j"]
+    PJ --> AD["Action DiT：对 G_j 做 cross-attention（多层 bridge）<br/>在动作空间迭代去噪"]
+    IN --> AD
+    AD --> OUT["动作块 â(1:K)"]
+    DINO["冻结 DINOv2 编码器 g_ψ<br/>首帧特征 → 插值并时间拼接为目标 Ỹ"] --> LA
+    H -->|"默认只取第 8 层"| PR["投影器 P_k → Z_k"]
+    PR --> LA["L_AGRA = 负余弦相似度（仅训练）"]
+    LA --> LT["L = L_WAM + λ_agra · L_AGRA<br/>正则 Video DiT 暴露给动作头的特征"]
+```
+
+图依据：论文 §3.1、§3.3 / Fig.7（附录架构图）；§4.1 默认第 8 层
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ In this paper, we propose AGRA, an Action-Grounded Representation Alignment obje
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.12217>
+- [arXiv PDF](https://arxiv.org/pdf/2606.12217)：已通读方法部分（实验与附录以略读为准）：§3.1 基线架构、§3.3 AGRA 方法、§4.1 实验设定（§3.2 诊断与实验结果略读）
 
 ## 推荐继续阅读
 

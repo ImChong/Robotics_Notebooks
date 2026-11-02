@@ -42,6 +42,22 @@ The first unified framework to jointly recover human pose, object motion, and co
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入: 头部 + 双手三点追踪<br/>物体类别与规范网格"] --> B["逐帧头部中心(head-centric)表示<br/>相对头/手变换、头到地面高度等自我中心条件 E"]
+    A --> C["物体条件 CO: 类别 one-hot + PointNext 几何特征"]
+    B --> D["三变量扩散 Transformer(DiT + 旋转位置编码)<br/>联合建模人体运动 H、物体运动 O、接触 I<br/>三种模态各自独立的去噪步"]
+    C --> D
+    D --> E["输出 Ĥ(SMPL-X 身体姿态)、Ô(SE(3) 物体轨迹)、Î(人-物/人-地接触)"]
+    E --> F["平滑 inpainting 推理<br/>重叠窗口内按权重融合过去与当前预测"]
+    F --> G["任意长度的全身人-物交互序列"]
+    H["训练: 每个模态随机作为带噪目标或干净条件<br/>(已知模态噪声置 0); 混入 AMASS 学习人体先验"] -. 训练 .-> D
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2、Fig. 3、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ The first unified framework to jointly recover human pose, object motion, and co
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2508.21556>
+- [arXiv PDF](https://arxiv.org/pdf/2508.21556)：已通读方法部分（实验与附录以略读为准）：§3.1 表示、§3.2 ECHO 模型与训练、§3.3 推理；实验与补充材料略读
 
 ## 推荐继续阅读
 

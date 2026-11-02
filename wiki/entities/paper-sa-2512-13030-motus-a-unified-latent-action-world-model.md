@@ -44,6 +44,25 @@ Unified latent action world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  INP["输入: 当前观测 o_t + 语言指令 + 本体状态"] --> UND["理解专家: Qwen3-VL-2B (预训练 VLM)"]
+  INP --> GEN["生成专家: Wan 2.2 5B (预训练视频生成模型)\n预测未来视频, 帧率为动作的约 1/6"]
+  INP --> ACTX["动作专家: 与 Wan 同深度的 Transformer\nAdaLN 注入 rectified flow 时间步"]
+  UND --> MOT["Tri-model Joint Attention\n(Mixture-of-Transformers, 共享多头自注意力)"]
+  GEN --> MOT
+  ACTX --> MOT
+  MOT --> OUTV["未来视频"]
+  MOT --> OUTA["动作块 a_t+1:t+k"]
+  FLOW["光流 (DPFlow) → RGB 图"] --> VAE["DC-AE 编码为 4×512 token\n→ 轻量编码器压成 14 维潜动作"]
+  VAE -. "无动作标注数据的潜动作监督" .-> ACTX
+  ST1["阶段 1: 视频生成预训练"] --> ST2["阶段 2: 潜动作统一训练 (VLM 冻结)"] --> ST3["阶段 3: 目标机器人数据 SFT"]
+```
+
+图依据：论文 §4.1 Motus 架构 / Fig.1–2、§4.2 潜动作 / Fig.3、§4.3 三阶段训练 / Tab.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +119,7 @@ Unified latent action world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.13030>
+- [arXiv PDF](https://arxiv.org/pdf/2512.13030)：已通读方法部分（实验与附录以略读为准）：摘要、§4.1–§4.3 及 §5 实验设定开头
 
 ## 推荐继续阅读
 

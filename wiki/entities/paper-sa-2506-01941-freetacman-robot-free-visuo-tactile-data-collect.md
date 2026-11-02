@@ -43,6 +43,24 @@ Human-centric, robot-free data collection system leveraging dexterity and force 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["操作者指尖佩戴视触觉传感器的 in-situ 夹爪（采集接口）"] --> B["同步记录：腕部相机 RGB、两路视触觉图像、夹爪宽度"]
+    A --> C["NOKOV 动捕 240 Hz 追踪末端 6D 位姿，下采样与图像对齐"]
+    B --> D["每帧同步为 30 Hz 的与本体无关轨迹数据"]
+    C --> D
+    D --> E["IKPY 逆运动学：位姿映射为目标机器人关节位置（动作表示）"]
+    D --> F["触觉预训练：视觉编码器 fv 冻结，触觉编码器 ft 微调；时空融合对比损失（主正样本时间对齐、次正样本相邻时刻、记忆库负样本）"]
+    F --> G["预训练触觉编码器"]
+    E --> H["视觉嵌入与触觉嵌入拼接，输入 ACT，预测 7-DoF 关节位置"]
+    G --> H
+    H --> I["同一模块化传感器与夹爪换到执行接口（Piper / Franka）部署策略"]
+```
+
+图依据：论文 §III.A–C / Fig. 2、Fig. 3、式 (1)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Human-centric, robot-free data collection system leveraging dexterity and force 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2506.01941>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01941)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 硬件设计、B 人到机器人数据迁移、C 触觉预训练与策略学习）、§IV.A 数据集
 
 ## 推荐继续阅读
 

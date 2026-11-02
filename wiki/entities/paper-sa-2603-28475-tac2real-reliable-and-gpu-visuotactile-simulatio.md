@@ -42,6 +42,31 @@ GPU visuotactile simulation for online RL and zero-shot real-world deployment.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RL 智能体发出动作"] --> P["物理引擎执行一步<br/>Isaac Lab / Isaac Gym / PyBullet / MuJoCo 等"]
+    P --> R["提取被抓物体与触觉传感器的<br/>相对位姿及线/角速度"]
+    R --> T["外置 PNCG-IPC 触觉仿真<br/>Ray 集群，每 GPU 管理多个环境"]
+    T --> K["GelSight Mini 标记点位移场 9×7<br/>（k 近邻映射 + 加权插值）"]
+    K --> O["与引擎基础观测拼成组合观测"]
+    P --> O
+    O --> A
+    subgraph TacAlign["TacAlign 缩小 sim2real 差距"]
+        C1["机器人控制对齐<br/>交替最小化轨迹差异，校准 kp"]
+        C2["基础 IPC 标定<br/>CMA-ES 拟合 E、ν、ρ、μ"]
+        C3["任务级标定<br/>微调 Isaac 的 μ 与接触刚度"]
+        C4["域随机化<br/>控制增益、摩擦、位姿、传感噪声"]
+    end
+    C1 -.-> P
+    C2 -.-> T
+    C3 -.-> P
+    C4 -.-> A
+```
+
+图依据：论文 §3.1–3.3、§4.1–4.4 / Fig.3、Fig.4（TacAlign 各项作用于哪个环节的虚线为按所标定参数的归属推断）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ GPU visuotactile simulation for online RL and zero-shot real-world deployment.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.28475>
+- [arXiv PDF](https://arxiv.org/pdf/2603.28475)：已通读方法部分（实验与附录以略读为准）：§1–4（PNCG-IPC、触觉表示、物理引擎集成、TacAlign 四部分）；§5 实验仅略读
 
 ## 推荐继续阅读
 

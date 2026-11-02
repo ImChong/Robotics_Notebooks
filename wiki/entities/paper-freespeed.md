@@ -39,6 +39,26 @@ summary: "FreeSpeed 在冻结的生成式策略上推理时重采样动作块，
 
 FreeSpeed 将速度调节放在策略之后：无需重训基座策略，允许运行中改变速度命令，同时让动作变化大的片段趋近原策略的动作步长。它提供的是执行时间尺度调节，不会补齐错误的抓取意图或替代碰撞、安全控制。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    obs["当前观测 o_t + 语言指令 ℓ"] --> policy["冻结策略 π_θ<br/>预测动作块 A_t (Δp, Δr, 夹爪 g)"]
+    policy --> ci["平移增量余弦不一致度<br/>I_cos = 相邻对 d_cos 的最大值"]
+    rate["用户速度命令 ρ_t"] --> resample["时间重采样 R_ρ<br/>加速跳过动作 / 减速拆分动作"]
+    policy --> resample
+    rate --> factor["缩放因子<br/>f_t = f_c + (f_s − f_c)·exp(−λ·I_cos)"]
+    ci --> factor
+    resample --> scale["缩放平移与旋转增量<br/>夹爪 g 不变"]
+    factor --> scale
+    scale --> robot["机器人执行"]
+    robot -->|"下一次重规划"| obs
+```
+
+图依据：论文 §3、§4.1–4.2 / Fig.2
+
+该流程将速度控制放在动作块输出之后：基座策略保持冻结，方向变化只影响后处理幅度。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -61,22 +81,6 @@ FreeSpeed 将速度调节放在策略之后：无需重训基座策略，允许�
    \]
    其中 f_s 是命令对应的缩放因子，f_c 是保守端因子，λ 控制不一致度的衰减速度。
 4. **执行缩放结果。** 用 f_t 缩放平移和旋转增量；夹爪指令保持不变。
-
-### 流程总览
-
-\`\`\`mermaid
-flowchart LR
-  obs["当前观测"] --> policy["冻结策略预测动作块"]
-  rate["在线速度命令"] --> resample["时间重采样"]
-  policy --> resample
-  resample --> score["计算块内方向不一致度"]
-  score --> scale["自适应缩放平移与旋转"]
-  resample --> scale
-  scale --> robot["机器人执行；夹爪命令保留"]
-  robot --> obs
-\`\`\`
-
-该流程将速度控制放在动作块输出之后：基座策略保持冻结，方向变化只影响后处理幅度。
 
 ## 源码运行时序图
 
@@ -138,6 +142,7 @@ flowchart LR
 - [FreeSpeed 官方源码状态](../../sources/repos/freespeed.md)
 - [arXiv:2610.05734](https://arxiv.org/abs/2610.05734)
 - [FreeSpeed 项目页](https://yuxuanhu9.github.io/FreeSpeed/)
+- [arXiv PDF](https://arxiv.org/pdf/2610.05734)：已通读方法部分（实验与附录以略读为准）：§3 问题定义、§4 FreeSpeed（§4.1–4.2）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,34 @@ The first method to reconstruct world-space hand-object interactions (W-HOI) fro
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["egocentric 单目动态相机视频 V"] --> PRE
+    subgraph PRE["阶段一：预处理（现成基础模型）"]
+        direction TB
+        DA3["Depth-Anything3：相机内外参 + 深度图，建立世界坐标系"]
+        WIL["WiLoR：MANO 手部参数；以 MANO 深度对齐度量尺度"]
+        OBJ["SAM3D（多视角实现）得网格与初始位姿 → MEMFOF 光流 + PnP 跟踪 6DoF → SAM2 掩码 IoU 过滤不可靠帧"]
+    end
+    PRE --> BD
+    subgraph BD["阶段二：Body Diffusion"]
+        direction TB
+        CPF["CPF 帧间变换条件编码"] --> W["Body Diffusion W：生成 SMPL-X 上半身姿态"]
+        W --> TTO1["测试时优化：姿态锚定 / 手部姿态 / 2D 关键点 / 腕部损失"]
+    end
+    BD --> HD
+    subgraph HD["阶段三：HOI Diffusion"]
+        direction TB
+        COND["条件：腕坐标系下可靠 6DoF、粗平移、抓取标签、手部姿态与关节"] --> H["HOI Diffusion H：补全离散 6DoF 为连续轨迹"]
+        H --> TTO2["测试时优化：物体锚定 / 接触 / 穿透 / 时间平滑"]
+    end
+    HD --> OUT["世界坐标系下手部 + 物体 6DoF 的 W-HOI 重建"]
+```
+
+图依据：论文 §1、§3.1–3.4（Fig.2 三阶段总览、Fig.3 物体 6DoF 估计）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ The first method to reconstruct world-space hand-object interactions (W-HOI) fro
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.01050>
+- [arXiv PDF](https://arxiv.org/pdf/2601.01050)：已通读方法部分（实验与附录以略读为准）：§1–§3（预处理、Body Diffusion、HOI Diffusion 与测试时优化）与 §4.1 实现细节；§4 其余实验与附录略读
 
 ## 推荐继续阅读
 

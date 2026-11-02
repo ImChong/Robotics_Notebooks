@@ -42,6 +42,28 @@ Completely decouples world model learning from downstream task dependencies.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph WMP["世界模型预训练（任务无关）"]
+    PD["任务无关交互数据\nplay 数据 / VLA 探索 rollout\n含成功与失败"] --> WM["动作条件视频世界模型\nWan 2.1-T2V-1.3B DiT + AdaLN 动作条件\n因果掩码，rectified flow matching"]
+  end
+  subgraph RL["想象中的 RL 后训练（新任务零样本）"]
+    O0["初始观测 o0 + 任务指令"] --> POL["OpenVLA-OFT 策略\n采样动作"]
+    POL --> ROLL["WM 自回归 rollout\n首帧锚定 + 渐进锚点噪声\n得到 G 条想象轨迹"]
+    ROLL --> VLM["现成 VLM (Qwen3-VL)\n对每条轨迹给二值奖励 R_i"]
+    VLM --> DNV{"Dual-Noise Verification\n对成功轨迹用重采样噪声重放动作\nVLM 再判一次"}
+    DNV -->|仍成功| KEEP["保留进可靠子集"]
+    DNV -->|变为失败| DROP["判定为幻觉，从组中丢弃"]
+    KEEP --> GRPO["GRPO 更新策略\n组相对优势只在可靠子集上计算"]
+    GRPO --> POL
+  end
+  WM --> ROLL
+```
+
+图依据：论文 §3.1–3.2 / Fig.1、Eq.1–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Completely decouples world model learning from downstream task dependencies.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.12334>
+- [arXiv PDF](https://arxiv.org/pdf/2605.12334)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.2、§4 实验设定
 
 ## 推荐继续阅读
 

@@ -42,6 +42,31 @@ summary: "Noise-Invariant Spatial Encoding（arXiv:2610.24674）：NISE结合跨
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["多视角 RGB-D（含可能被破坏的深度）"] --> B["冻结 ViT 视觉骨干 + 可训练 DPT 风格头"]
+  B --> C["共享空间特征图"]
+  C --> D["按观测深度反投影，给每个 scene token 赋 3D 坐标"]
+  D --> E["GM3A：高斯边缘化 3D 注意力，逐 token 坐标不确定性衰减位置频带，学习残差"]
+  E --> F["动作专家（扩散）+ 本体感知"]
+  F --> G["动作输出"]
+  C -. "仅训练" .-> H["跨视角几何头 GCVSS"]
+  I["标定后的源视角带噪深度前向 warp 到目标视角"] -. "仅训练" .-> J["掩码 L1 损失 L_geo"]
+  H -.-> J
+  J -. "反向塑形共享特征" .-> C
+  E -. "仅训练" .-> K["L_reg 约束衰减系数贴近解析先验"]
+  L["总损失 = L_policy + λ_geo L_geo + λ_reg L_reg"]
+  J -.-> L
+  K -.-> L
+  F -.-> L
+  M["部署：移除几何头，无需干净深度或深度补全"]
+  G --- M
+```
+
+图依据：论文 §3.1–3.4 / Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +109,7 @@ summary: "Noise-Invariant Spatial Encoding（arXiv:2610.24674）：NISE结合跨
 - [noise_invariant_spatial_encoding_arxiv_2610_24674.md](../../sources/papers/noise_invariant_spatial_encoding_arxiv_2610_24674.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24674](https://arxiv.org/abs/2610.24674)
+- [arXiv PDF](https://arxiv.org/pdf/2610.24674)：已通读方法部分（实验与附录以略读为准）：深度噪声传播、GCVSS、GM3A 与训练/部署（§3.1–3.4）
 
 ## 推荐继续阅读
 

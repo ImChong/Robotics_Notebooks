@@ -36,6 +36,27 @@ sources:
 
 机器人策略上线后会逐步遇到新任务。逐个任务从头训练浪费已有经验；持续学习若只用 on-policy 更新，又可能采样昂贵且跨任务迁移弱。ACCRUE 将轻量 actor/critic、离策略数据复用和旧行为保持组合起来，针对“学新任务时如何少忘旧技能”提供一条训练路线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["阶段 k：新任务 T^k 的少量专家示范 D^k"] --> B["基础策略 π_base^k 在累计示范 D^1:k 上微调<br/>RL 阶段内保持固定"]
+  B --> C["预热：用 π_base^k 采集 warmup episode 放入 B^k"]
+  P["上一阶段交接：actor θ^k-1、critic ψ^k-1、<br/>旧任务记忆 B^<k（每任务保留最后 N 个 episode）"] --> I["初始化轻量 actor / critic<br/>（k=1 时随机初始化）"]
+  P --> T["缓存教师目标：冻结的上一阶段 actor<br/>在 B^<k 样本上的确定性输出（Eq.3）"]
+  C --> L["在线交互循环：s_t=(E(I_t), q_t)，E 为冻结视觉编码器<br/>参考动作块 ã_t 来自 π_base^k<br/>actor 输出 a_t ~ π_θ(s_t, ã_t) 并执行"]
+  I --> L
+  L --> S["转移存入 B^k"]
+  S --> V["critic 仅用 B^k 做 TD 更新（Eq.2）"]
+  S --> U["actor 更新（Eq.5）：<br/>当前任务项 = 最大化 Q 并贴近参考块（Eq.1），采样自 B^k<br/>旧任务项 = 对教师目标做蒸馏（Eq.4），采样自 B^<k，1:1 混合"]
+  T --> U
+  V --> L
+  U --> L
+  L --> H["阶段结束：交接 θ^k、ψ^k 与最后 N 个 episode"]
+```
+
+图依据：论文 §4 方法 / Fig.2、Algorithm 1（单阶段 ACCRUE）
+
 ## 方法
 
 1. **跨任务继承学习器。** 每个任务阶段把轻量 actor 和 critic 传给下一任务，而不是重置全部 RL 后训练状态。
@@ -91,6 +112,7 @@ sources:
 - [ACCRUE 论文摘录](../../sources/papers/accrue_arxiv_2610_18596.md)
 - [ACCRUE 项目页核查](../../sources/sites/accrue-project.md)
 - [arXiv:2610.18596](https://arxiv.org/abs/2610.18596)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18596)：已通读方法部分（实验与附录以略读为准）：§3 预备知识与问题设定、§4 方法（4.1–4.3）、Algorithm 1；§5 实验略读
 
 ## 推荐继续阅读
 

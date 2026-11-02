@@ -42,6 +42,25 @@ Cross-domain co-training converts egocentric walking videos into mobile robot im
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一人称步行视频"] --> A["视觉运动估计<br/>SuperPoint 特征提取 → LightGlue 匹配 → 本质矩阵 E + RANSAC"]
+    A --> T["累积相对位姿<br/>得到 6-DoF 相机轨迹"]
+    T --> K["运动平滑与运动学投影<br/>SE(3) 投影到 SE(2)，得到 v 与 ω"]
+    K --> F["速度裁剪 → 中值滤波 → Kalman 滤波"]
+    F --> D["动作离散化<br/>阈值离散 v、ω + 众数滤波"]
+    D --> H["人类视频派生的图像-动作数据集"]
+    R["机器人实采数据集<br/>CobotMagic 150 条"] --> C
+    H --> C["联合训练 (co-training)"]
+    C --> M["VLA：SigLIP2 + DINOv3 视觉编码 → Transformer adapter → DiT 动作专家 (条件流匹配)"]
+    I["语言指令 / 状态 / 带噪动作 / 时间步"] --> M
+    M --> O["未来 32 步动作序列"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Cross-domain co-training converts egocentric walking videos into mobile robot im
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.01951>
+- [arXiv PDF](https://arxiv.org/pdf/2606.01951)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D、§IV-A/B
 
 ## 推荐继续阅读
 

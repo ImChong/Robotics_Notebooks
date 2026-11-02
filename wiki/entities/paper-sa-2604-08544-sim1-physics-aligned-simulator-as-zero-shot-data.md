@@ -42,6 +42,24 @@ A physics-aligned real-to-sim-to-real data engine that grounds simulation in the
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实资产: 衣物 3D 扫描 / 机器人 URDF / 环境网格"] --> B["SIM1-Scene<br/>度量精确的数字场景"]
+    B --> C["SIM1-Sim: 形变稳定物理仿真<br/>(AVBD 启发的应变约束求解器)"]
+    R["真实机械臂执行 + 关节状态流式同步"] --> K["仿真孪生复现 + 渲染对比<br/>人工调参校准物理参数"]
+    K --> C
+    C --> T["仿真遥操作演示数据"]
+    T --> S["SIM1-DataGen: 轨迹分解<br/>交互段(抓取) / 运动段"]
+    S --> P["随机重组交互段 +<br/>扩散(diffusion forcing)生成过渡运动"]
+    P --> F["有效性过滤: 粒子状态规则 + 视频判别器"]
+    F --> V["Blender 视觉随机化渲染<br/>材质/光照/相机"]
+    V --> D["LeRobot 格式合成数据集<br/>用于模仿学习"]
+```
+
+图依据：论文 §3 / Fig.2–3（SIM1 的 real-to-sim-to-real 框架：Scene / Sim / DataGen）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A physics-aligned real-to-sim-to-real data engine that grounds simulation in the
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2604.08544>
+- [arXiv PDF](https://arxiv.org/pdf/2604.08544)：已通读方法部分（实验与附录以略读为准）：§3.1 SIM1-Scene、§3.2 SIM1-Sim、§3.3 SIM1-DataGen（§4 仅略读 Fig.4 图注）
 
 ## 推荐继续阅读
 

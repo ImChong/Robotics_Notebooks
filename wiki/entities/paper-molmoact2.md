@@ -8,7 +8,7 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-09-23
+updated: 2026-11-02
 arxiv: "2605.02881"
 code: https://github.com/allenai/molmoact2
 related:
@@ -20,10 +20,12 @@ related:
   - ./manda-robotics-open-policy-evaluation.md
   - ./anthropic-embody.md
   - ../overview/spatial-reasoning-benchmarks-technology-map.md
+  - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
   - ../../sources/papers/molmoact2_arxiv_2605_02881.md
   - ../../sources/sites/allenai-molmoact2.md
   - ../../sources/repos/allenai-molmoact2.md
+  - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: "MolmoAct2（arXiv:2605.02881，Ai2）：Molmo2-ER 具身推理骨干 + flow-matching 连续动作专家；开源 base/finetuned 权重、ER 数据集与 LeRobot 真机部署栈。"
 ---
 

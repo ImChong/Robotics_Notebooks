@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,21 @@ Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PC["输入：点云（n=2048 点）"] --> PN["点云网络 PointNet++ + 卷积层 + BatchNorm，逐点嵌入 P1..Pn（训练时更新）"]
+    LB["输入：自然语言 affordance 标签集合 L（可含训练时未见标签）"] --> TE["CLIP ViT-B/32 文本编码器，标签嵌入 T1..Tm（冻结）"]
+    PN --> COR["逐点嵌入与标签嵌入做余弦相似度，得相关矩阵 F"]
+    TE --> COR
+    COR --> SM["逐点 softmax（可学习温度 τ）"]
+    SM --> OUT["逐点 affordance 预测"]
+    SM --> LOSS["训练：类别加权负对数似然损失，文本编码器固定、其余端到端训练"]
+```
+
+图依据：论文 §III（Method）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +66,7 @@ Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.02401)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2303.02401)。
 
 ## 评测与指标
 
@@ -67,7 +82,7 @@ Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 
 
 **本页只提供「OpenAD」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +103,7 @@ Open-vocabulary Affordance Detection in 3D Point Clouds——在清单中归入 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2303.02401>
+- [arXiv PDF](https://arxiv.org/pdf/2303.02401)：已通读方法部分（实验与附录以略读为准）：§III Method（问题设定、文本编码器、点云网络、文本-点相关性学习、训练细节）；§IV 实验设置概览
 
 ## 推荐继续阅读
 

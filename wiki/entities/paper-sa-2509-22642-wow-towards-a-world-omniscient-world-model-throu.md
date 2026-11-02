@@ -43,6 +43,22 @@ Towards a world-omniscient world model through embodied interaction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  O["当前观测 ot + 文本指令 pt + 可选动作/相机位姿"] --> RF["Refiner Agent 将任务扩写为细致 物理约束提示"]
+  RF --> DiT["WoW 扩散世界模型 T5 文本条件 + 小波视频 VAE + DiT + DINOv2 辅助特征"]
+  DiT --> VID["候选未来视频"]
+  VID --> CR["Dynamic Critic Model Team 微调 VLM 评估任务完成 物理合理性 运动平滑等"]
+  CR -->|"判定 incomplete 或 failed 并给出结构化反馈"| RF
+  CR -->|"判定 completed"| OUT["输出想象轨迹"]
+  OUT --> IDM["FM-IDM 光流 + 掩码帧 双分支网络 输出末端 delta 动作"]
+  IDM --> ACT["可执行的机器人动作"]
+```
+
+图依据：论文 §3（Neisser 感知循环三阶段）、§4.1 / Fig.6（扩散视频世界模型）、§4.2 / Fig.7（Solver-Critic 闭环）、§4.3 / Fig.8（FM-IDM）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Towards a world-omniscient world model through embodied interaction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22642>
+- [arXiv PDF](https://arxiv.org/pdf/2509.22642)：已通读方法部分（实验与附录以略读为准）：§3 WoW 世界模型、§4 自优化框架（4.1–4.3）；§2 概念综述与 §5–§8 评测、案例、下游应用未读。
 
 ## 推荐继续阅读
 

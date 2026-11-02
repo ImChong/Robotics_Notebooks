@@ -41,6 +41,21 @@ We introduce DeMiAn (Dense Multi-aspect Annotation), a two-stage approach that f
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["已有示范数据<br/>RoboCasa / MolmoBot / EgoVerse<br/>每段一句话任务标签"] --> B["切分为单原语片段 segment<br/>每段最多均匀采样 F=10 帧"]
+  B --> C["VLM 逐 aspect 标注<br/>Qwen3-VL-30B-A3B-Instruct<br/>每 aspect 一次调用"]
+  C --> D["四类稠密标注<br/>physical_motion / scene_composition<br/>arm_pose / reasoning"]
+  D --> E["构造奖励表 w(τ,k)<br/>以各固定 aspect 跑动作策略<br/>记录逐任务验证 SR"]
+  E --> F["Learned Instructor SFT<br/>reward-weighted 目标采样<br/>全差任务目标置空 (abstain)"]
+  F --> G["部署：任务描述 + 初始场景快照<br/>Instructor 异步生成标注"]
+  G --> H["在下一个 action chunk 边界注入 prompt<br/>VLA / WAM 动作策略输出动作"]
+```
+
+图依据：论文 §3 DeMiAn（Annotation pipeline / Learned Instructor）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ We introduce DeMiAn (Dense Multi-aspect Annotation), a two-stage approach that f
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.17077>
+- [arXiv PDF](https://arxiv.org/pdf/2605.17077)：已通读方法部分（实验与附录以略读为准）：§3 DeMiAn 与 §4 开头的策略模型设置；其余实验略读
 
 ## 推荐继续阅读
 

@@ -32,6 +32,26 @@ summary: "DexStitch（arXiv:2610.17789）：把长时程人类视频切分为技
 
 摘要指出，技能之间的衔接需要满足接触关系与运动连续性。仅有单个技能的数据不足以覆盖长时程任务。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第一人称人类视频"] --> B["手位姿与接触估计<br/>HaWoR 重建 MANO 手部，HaCo 预测接触，按手指汇总得接触点"]
+    B --> C["重定向<br/>DexPilot 初始化，再用接触点以 L-BFGS-B 精修手指关节<br/>手腕经逆运动学解机械臂关节"]
+    A --> D["SAM2 跟踪手臂与物体掩码<br/>ProPainter 补全人手区域"]
+    C --> E["渲染机器人并分层合成<br/>依据接触指决定被物体遮挡的手指"]
+    D --> E
+    E --> F["合成机器人数据 D_syn：观测与动作"]
+    A --> G["技能分类器：冻结 V-JEPA 2 + 轻量 MLP 头<br/>输出技能序列(含转换技能)"]
+    G --> F
+    F --> H["技能条件策略 (Diffusion Policy)<br/>输入当前观测、当前技能、下一技能<br/>输出动作块与技能进度"]
+    I["少量遥操作机器人示范 D_tele"] --> H
+    H --> J["推理：按技能序列闭环执行<br/>策略持续预测下一技能时切换到下一对技能"]
+    G --> J
+```
+
+图依据：论文 §III（数据转换）、§IV（技能学习与组合）/ Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -97,6 +117,7 @@ DexStitch 的分类器基于 [V-JEPA 2](./paper-vjepa2.md) 特征加 MLP。以�
 
 - [论文归档](../../sources/papers/dexstitch_arxiv_2610_17789.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.17789)：已通读方法部分（实验与附录以略读为准）：§III 人机数据转换（手位姿与接触估计、重定向、机器人渲染合成）、§IV 技能学习与组合；§V 实验设定略读
 
 ## 推荐继续阅读
 

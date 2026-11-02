@@ -42,6 +42,21 @@ Exploits SO(2) symmetry of in-hand object rotation for sample-efficient visuotac
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["多模态观测：RGB 图像、本体感觉、触觉图像"] --> B["基策略 πb（Flow Matching）输出基础动作块 Tb"]
+    O --> N["可学习 MLP 将原始触觉图像重建为表面法向图 N"]
+    N --> E["SO(2) 等变网络 φ 预测目标手内偏航角 αt"]
+    E --> R["比较当前夹爪朝向，按比例增益 Kp 计算旋转残差 Tr"]
+    B --> C["右乘修正：Tb 乘以 Tr 得到修正后的动作块"]
+    R --> C
+    C --> X["执行动作：基策略低频出块，等变模块高频修正手内偏航"]
+```
+
+图依据：论文 §IV Method（Fig. 2–4，§IV-C/D/E/F）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Exploits SO(2) symmetry of in-hand object rotation for sample-efficient visuotac
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2511.07381>
+- [arXiv PDF](https://arxiv.org/pdf/2511.07381)：已通读方法部分（实验与附录以略读为准）：§IV Method（问题设定、法向图重建、等变角度残差跟踪与修正、实现细节）、§V-A 消融设置
 
 ## 推荐继续阅读
 

@@ -43,6 +43,30 @@ Dynamic 3D hand reconstruction from egocentric videos essential for AR/VR and AI
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单视角第一人称视频帧 I_t"] --> B["预训练 Image Encoder<br/>逐帧视觉 token f_t"]
+    B --> C["Temporal Convolution 层<br/>窗口 2k+1，降维并融合时序"]
+    C --> D["Pose Transformer<br/>预测 MANO 形状 β 与位姿 θ"]
+    C --> E["浅层 MLP<br/>预测平移 τ"]
+    C --> F["MLP_emb<br/>预测逐顶点 embedding"]
+    D --> G["MANO 模型<br/>得到手部网格顶点 v"]
+    E --> G
+    G --> H["按面积比例在网格表面采样 Gaussian"]
+    F --> I["重心插值得到每个 Gaussian 的 embedding"]
+    H --> I
+    I --> J["三个轻量 MLP 解码器<br/>颜色 / 尺度 / 网格相对调整"]
+    J --> K["3D Gaussian 手<br/>可微光栅化渲染"]
+    K --> L["图像损失 + 正则损失"]
+    G --> M["位姿损失<br/>伪真值来自现成手部位姿估计器"]
+    L --> N["联合优化位姿与外观<br/>评测时逐序列 TTO 200 步"]
+    M --> N
+```
+
+图依据：论文 §3.2–3.5 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Dynamic 3D hand reconstruction from egocentric videos essential for AR/VR and AI
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.19156>
 - [`sources/papers/sun_awesome_ego_2606_16930_hand-4dgs-feed-forward-3d-gaussian-splat.md`](../../sources/papers/sun_awesome_ego_2606_16930_hand-4dgs-feed-forward-3d-gaussian-splat.md) — 本条目策展摘录
+- [arXiv PDF](https://arxiv.org/pdf/2606.19156)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.5）、§4.1 实验设定
 
 ## 推荐继续阅读
 

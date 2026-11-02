@@ -42,6 +42,25 @@ Explorable native 3D world model with point latents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：彩色点云 Q（2D 图像经 2D-to-3D 逆投影得到）"] --> ENC["P2G-VAE 编码器（Point Transformer）：下采样为点潜变量 P（位置 + 特征）"]
+    ENC --> PER["Robust Position Perturbation：位置加高斯噪声"]
+    PER --> DEC["P2G-VAE 解码器：Adaptive Upsample + Adaptive Refine 逐步致密化"]
+    DEC --> GS["3D Gaussian primitives"]
+    GS --> RND["栅格化渲染，渲染监督 + Chamfer / normal / rank / 显式颜色损失"]
+    ENC -->|"点潜变量作为生成建模对象"| SP
+    SP["SPFlow：稀疏 3D 卷积 UNet，联合去噪点位置与特征（flow matching）"] --> TS["Distance-Aware Trajectory Smoothing：用 JV 算法匹配噪声与点"]
+    CON["条件模块：crop / uniform / 组合 mask 条件点潜变量"] --> SP
+    SP --> OUT["生成点潜变量，再经 P2G-VAE 解码器得到 Gaussians"]
+    OUT --> EXP["Outpainting：以已知区域为条件逐步扩展，得到可探索场景"]
+    EXP -->|"下一步探索"| CON
+```
+
+图依据：论文 §3 Proposed Approach（Fig. 2 整体流水线、Fig. 3 方法细节；3.1 Latent Point Representation、3.2 P2G-VAE、3.3 Native 3D Generative Modeling）。2D-to-3D 逆投影来自 Fig. 2 图中标注。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ Explorable native 3D world model with point latents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.14977>
+- [arXiv PDF](https://arxiv.org/pdf/2510.14977)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作（略读）、§3 方法（3.1–3.3，含三阶段训练与条件机制）、§4.1 数据集
 
 ## 推荐继续阅读
 

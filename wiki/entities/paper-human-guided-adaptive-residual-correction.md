@@ -42,6 +42,26 @@ summary: "Human-Guided Adaptive Residual Correction（arXiv:2610.37547）：冻�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-28）。项目页为 anonymous.4open.science 匿名链接，curl 返回 HTTP 400，无法核查代码。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    R["少量人工纠正 rollout<br/>(每任务约 8-10 条, SpaceMouse 叠加残差)"]
+    R --> G["WHEN: 预干预状态训练<br/>门控分类器 g_ψ(x_t)"]
+    R --> B["WHERE: 人工残差二阶矩 M_H<br/>取主特征向量得基 B_H 与尺度 σ_k"]
+    G --> H["阈值 (Youden's J) + 时间滞回<br/>得到二值门 g_t"]
+    B --> E["人工引导探索<br/>固定方向 ε = s·α·σ_k·v_k"]
+    H --> E
+    E --> D["自主 rollout 收集经验<br/>(纠正轨迹不入 replay)"]
+    D --> W["WHAT: TD3 + 多步 TD 目标<br/>actor 输出系数 u_t, 任务奖励驱动"]
+    W --> Z["残差 r_θ = B_H[(ασ_H) ⊙ π_θ(x_t)]"]
+    P["冻结 ACT 策略 π_B<br/>输出 a_B"] --> A
+    Z --> A["部署动作 a_t = a_B + g_t · r_θ"]
+    H --> A
+```
+
+图依据：论文 §3.1-3.4 / Fig.1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "Human-Guided Adaptive Residual Correction（arXiv:2610.37547）：冻�
 - [human_guided_adaptive_residual_correction_arxiv_2610_37547.md](../../sources/papers/human_guided_adaptive_residual_correction_arxiv_2610_37547.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.37547](https://arxiv.org/abs/2610.37547)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37547)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3（问题设定、WHEN、WHERE、WHAT）、§4.1 实验设定
 
 ## 推荐继续阅读
 

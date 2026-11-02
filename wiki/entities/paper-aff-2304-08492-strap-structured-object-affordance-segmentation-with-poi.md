@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-STRAP: Structured Object Affordance Segmentation with Point Supervision——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要，此处不替原文概括贡献）。
+STRAP: Structured Object Affordance Segmentation with Point Supervision——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,30 @@ STRAP: Structured Object Affordance Segmentation with Point Supervision——在
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["输入图像 X + 稀疏点标注 / 图像级 affordance 标签"] --> PL["点标注转伪标签 Y：以标注点为中心画半径 σ_d 的圆盘"]
+    X --> BB["ResNetV2-50 + Transformer 编码器（readout token）；重组 4 层 token，经 RefineNet 融合块逐步上采样得特征 F"]
+    BB --> DP["稠密预测头：全连接 + 双线性插值，输出 affordance 分割图"]
+    BB --> LAI["LAI 头（Label Affinity Inference）：隐式物体层 + 显式 affordance 层，双向 RNN 建模 inter / intra 关系，输出图像级 affordance 标签"]
+    DP --> LP["PCE 损失（对 Y）"]
+    PL --> LP
+    DP --> LS["空间损失 L_spatial：基于 RGBXY 核的稀疏连接 CRF（空间亲和）"]
+    X --> LS
+    LAI --> LL["标签损失 L_label（BCE）"]
+    subgraph ST["三阶段训练"]
+        S1["阶段一：PCE + 空间损失"] --> S2["阶段二：加入 LAI 头，PCE + 空间 + 标签损失"]
+        S2 --> S3["阶段三：EM 迭代：E 步冻结网络预测并以 flood-fill 从点标注扩展出前景区域作伪标签；M 步用伪标签微调"]
+    end
+    LP --> S1
+    LS --> S1
+    LL --> S2
+```
+
+图依据：论文 §3.1–3.4（Fig.2、Fig.3、Fig.4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +75,7 @@ STRAP: Structured Object Affordance Segmentation with Point Supervision——在
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2304.08492)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2304.08492)。
 
 ## 评测与指标
 
@@ -67,7 +91,7 @@ STRAP: Structured Object Affordance Segmentation with Point Supervision——在
 
 **本页只提供「STRAP」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +112,7 @@ STRAP: Structured Object Affordance Segmentation with Point Supervision——在
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2304.08492>
+- [arXiv PDF](https://arxiv.org/pdf/2304.08492)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 网络结构、3.2 空间亲和、3.3 标签亲和、3.4 训练）、§4 实验设置
 
 ## 推荐继续阅读
 

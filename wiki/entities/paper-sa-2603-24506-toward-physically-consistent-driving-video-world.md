@@ -42,6 +42,28 @@ Physically consistent driving video world models under challenging trajectories.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["输入：初始多视角图像 I0、静态地图 M\n+ N 个智能体 2D 轨迹 T_orig（可能违反物理）"] --> PCG
+  subgraph PCG["Physical Condition Generator"]
+    direction LR
+    E["正余弦位置编码 + MLP\n得到 agent tokens"] --> SCA["可变形空间交叉注意力\n对多视角 PV 特征"]
+    SCA --> SA["Agent-Agent 自注意力"]
+    SA --> MCA["地图交叉注意力"]
+    MCA --> FFN["FFN"]
+    FFN --> TW["Time-Wise 输出头\n时间嵌入 + TCN + MLP"]
+  end
+  TW --> T6["物理一致的 6-DoF 轨迹"]
+  T6 --> LAY["投影到各相机视角\n3D 框 + 地图折线 → 布局控制图"]
+  LAY --> PE["PE-MVGen\n基于 Wan2.1 DiT 的多视角视频生成器"]
+  PE --> VID["多视角视频 V_1:T"]
+  DATA["异质数据：nuScenes 真实 + CARLA 仿真物理挑战\n约 1:1 联合训练"] -.-> PE
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Physically consistent driving video world models under challenging trajectories.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.24506>
+- [arXiv PDF](https://arxiv.org/pdf/2603.24506)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4.1 实验设定（开头）
 
 ## 推荐继续阅读
 

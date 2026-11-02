@@ -42,6 +42,27 @@ Co-evolves textual world models and agent policies through closed-loop interacti
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["初始化训练 §3.2<br/>专家示范 SFT 预热策略与文本世界模型<br/>并构造反思模式标签（draft 动作 vs 专家动作的分支 rollout）"] --> ST
+    ST["当前状态 st"] --> DRAFT["策略 πθ 提出草稿动作 a_draft"]
+    DRAFT --> WM["世界模型（student）想象下一状态<br/>ŝt+1 = Wϕ(st, a_draft)"]
+    WM --> WG{"世界状态门<br/>训练时选 ŝt+1 来自学生预测 还是真实 st+1"}
+    WG --> REF["未来感知反思<br/>输入 [st; a_draft; ŝt+1]<br/>动作头 → a_ref；精炼头 → 精炼概率 pt"]
+    REF --> AG{"动作门<br/>采用 a_ref 还是保留 a_draft"}
+    AG --> EXEC["执行动作，环境返回真实 st+1"]
+    EXEC -->|"下一决策步"| ST
+    EXEC --> DATA["on-policy 转移 (st, at, st+1)<br/>采纳/拒绝样本构成 Dref 与标签"]
+    DATA --> TEACH["世界模型 on-policy 自蒸馏<br/>teacher 额外看到真实 st+1（特权信息）<br/>student 沿自己生成的 rollout 对齐 teacher（EMA 更新）"]
+    DATA --> PUPD["策略更新<br/>专家模仿 + 反思目标 + 精炼概率 BCE"]
+    TEACH -->|"更新 student 世界模型"| WM
+    PUPD -->|"更新策略"| DRAFT
+```
+
+图依据：论文 §3.1–§3.3、Inference 段 / Fig.2（门控细节以附录 C.2 为准，未读）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Co-evolves textual world models and agent policies through closed-loop interacti
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.02372>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02372)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1–3.3 与 Inference）；实验与附录略读
 
 ## 推荐继续阅读
 

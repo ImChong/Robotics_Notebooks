@@ -43,6 +43,26 @@ We propose the Geometric Action Model (GAM), a language-conditioned manipulation
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角 RGB 观测 o(t-H+1..t)"] --> B["观测编码器：GFM 浅层 E≤Ls<br/>（原 patch embedding）"]
+    B --> C["split layer Ls 的几何 latent Z(Ls)"]
+    L["语言指令 ℓ → 文本编码器"] --> P
+    S["本体状态 s、上一步动作 a(t-1)<br/>ψs / ψa 投影为 token"] --> P
+    C --> P["因果未来预测器 gφ<br/>block-causal self-attention"]
+    P --> F["预测未来 latent Z~(Ls)(t+1)"]
+    P --> T["预测动作 token ã"]
+    T --> R["复制 V 份，按视角拼到几何 token 后"]
+    F --> D["GFM 深层 D>Ls<br/>（global attention 同样加因果 mask）"]
+    R --> D
+    D --> H1["动作头 h_act → 动作块 â"]
+    D --> H2["深度头 h_depth → 未来深度图"]
+```
+
+图依据：论文 §4（§4.1–4.4）/ Fig.3(a)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +120,7 @@ We propose the Geometric Action Model (GAM), a language-conditioned manipulation
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.17046>
+- [arXiv PDF](https://arxiv.org/pdf/2606.17046)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4 方法（4.1–4.4）
 
 ## 推荐继续阅读
 

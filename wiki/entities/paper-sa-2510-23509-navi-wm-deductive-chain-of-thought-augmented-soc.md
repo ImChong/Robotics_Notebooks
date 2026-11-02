@@ -42,6 +42,22 @@ Deductive chain-of-thought augmented socially-aware robot navigation world model
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机器人局部观测"] --> B["世界模型：时空图 G_t，顶点为机器人与人，边为空间 / 时间关系"]
+    B --> C["转成结构化自然语言 prompt，并附固定的环境配置摘要"]
+    C --> D["LLM 多步 CoT，由 Gentzen 演绎树给出逐步逻辑引导"]
+    D --> E["D1：四类条件同时满足（活动感知、距离感知、避碰、时间约束）时生成候选动作 a0"]
+    E --> F{"验证步骤：a0 有无碰撞风险"}
+    F -->|"通过"| G["输出机器人动作"]
+    F -->|"未通过"| H["依次改用约束更弱的 D2 至 D4 重新演绎"]
+    H -->|"到 D4 后无论验证与否均强制输出"| G
+```
+
+图依据：论文 §IV.A 世界模型、§IV.B Multi-Step CoT、§IV.C Gentzen Tree 演绎流程 / Fig.3；依据 arXiv v2（题为 Logic-Guided Socially-aware Robot Navigation World Model）。页面 arXiv 号对应论文已被作者撤回，现行 PDF 链接返回撤回页，本图依据 v2 全文，与页面标题 NaVi-WM 的 Deductive CoT 版本可能不同，需以原稿为准。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Deductive chain-of-thought augmented socially-aware robot navigation world model
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.23509>
+- [arXiv PDF](https://arxiv.org/pdf/2510.23509v2)：已通读方法部分（实验与附录以略读为准）：v2 的 §I Introduction、§IV Methodology（A–C）、§V 实验设置；现行版本已撤回，本次读的是 v2（arxiv.org/pdf/2510.23509v2），结果表格与讨论未细读
 
 ## 推荐继续阅读
 

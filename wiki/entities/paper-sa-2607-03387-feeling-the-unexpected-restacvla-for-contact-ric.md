@@ -42,6 +42,35 @@ Addresses modality collapse where high-bandwidth visual features overshadow spar
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph PRE["阶段一：CMP 在多任务交互数据上独立预训练，随后冻结"]
+    W["腕部相机图像 V_wrist"] --> VE["Vision Encoder<br/>ResNet-18 + MLP 头"]
+    VE --> PRIOR["预测先验 ẑ_t (均值 μ_t) + 标量标准差 σ_t"]
+    T["触觉图像 I_tac"] --> TE["触觉编码器 (基于 UniT)<br/>→ z_t"]
+    PRIOR --> RES["残差触觉 r_t = z_t − ẑ_t"]
+    TE --> RES
+    RES --> EV["事件编码器 f_ϕ<br/>卷积残差块 + 全局最大池化 → h_t"]
+    EV --> VQ["VQ 码本 → Latent Contact Primitive q_t"]
+    VQ --> FILM["FiLM 调制先验 ẑ_t → 解码重建触觉图像"]
+    PRIOR --> FILM
+  end
+  subgraph POL["阶段二：整体策略端到端微调（基于 π0.5，CMP 冻结）"]
+    SIG["σ_t 作为跨模态 surprise"] --> GATE["Surprise-Aware Gate<br/>g_t = Sigmoid(MLP(σ_t))"]
+    VQ --> PROJ["线性层投影 → p_t"]
+    GATE --> ET["门控插值<br/>e_t = g_t · p_t + (1−g_t) · e_0（'无接触' token）"]
+    PROJ --> ET
+    CAM["多相机 RGB + 语言指令 + 本体状态<br/>PaliGemma 编码"] --> ACT
+    ET -->|"与噪声 token 拼接"| ACT["动作专家：conditional flow matching 去噪"]
+    ACT --> OUT["动作序列 A_t"]
+  end
+  PRIOR -.-> SIG
+```
+
+图依据：论文 §III-A/B/C / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ Addresses modality collapse where high-bandwidth visual features overshadow spar
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2607.03387>
+- [arXiv PDF](https://arxiv.org/pdf/2607.03387)：已通读方法部分（实验与附录以略读为准）：§III Methodology（A–C）、§IV-A 实验设置
 
 ## 推荐继续阅读
 

@@ -41,6 +41,22 @@ We propose UNIVERSE, a unified video-action model built upon a single mask-modul
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：l 帧历史观测 + 自车速度 + 可选文本指令"] --> B["Wan2.2-TI2V-5B 冻结文本编码器 → 文本 token<br/>3D 因果 VAE → 历史视觉潜变量<br/>MLP → 速度嵌入"]
+    B --> C["上下文 Cs = 历史视觉潜变量 ∪ 速度嵌入<br/>文本 token 经交叉注意力注入"]
+    D["未来视频潜变量 token V<br/>未来轨迹 token A<br/>各自输入投影 + 模态嵌入 + 时间位置嵌入"] --> E["共享 DiT 块（自注意力 + FFN）<br/>Modality-Decoupling Visibility Mask：<br/>V、A 可看 Cs；V 与 A 互相屏蔽"]
+    C --> E
+    E --> F["h_vid 视频头 → 未来视频"]
+    E --> G["h_act 动作头 → 未来轨迹（x, y, 偏航角）"]
+    H["推理控制器（按需实例化 token）：<br/>仅轨迹 / 仅视频 / 联合"] -.-> D
+    I["训练：流匹配联合目标<br/>L = L_act + λ_vid L_vid"] -.-> E
+```
+
+图依据：论文 §3.1–§3.4（Fig.2、式 1–6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ We propose UNIVERSE, a unified video-action model built upon a single mask-modul
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.05133>
+- [arXiv PDF](https://arxiv.org/pdf/2607.05133)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.5）；其余章节未细读
 
 ## 推荐继续阅读
 

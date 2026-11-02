@@ -42,6 +42,30 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["观测 o_t"] --> H["Belief Encoder h<br/>信念状态 ŝ_t"]
+  G["长期目标 g (人类给定)"] --> DEL["Goal Decomposer δ<br/>当前子目标 g_t"]
+  H --> DEL
+  H --> IDN["Identity Evolver ι<br/>自我模型 i_t (随经验更新)"]
+  H --> K["Configurator κ (System III)<br/>调控决策 u_t"]
+  DEL --> K
+  IDN --> K
+  K -->|"需要规划 / 修订计划"| P["Simulative Planner π_f (System II)<br/>生成计划 c_t"]
+  K -->|"跳过规划, 直接行动"| A
+  DEL --> P
+  IDN --> P
+  P <-->|"查询预测与价值"| WM["独立训练的 World Model f + Critic v<br/>候选动作 → 预测后果 → 评估价值"]
+  P --> A["Actor α (System I)<br/>动作 a_t"]
+  H --> A
+  A --> ENV["环境 / Universe"]
+  ENV --> OBS
+```
+
+图依据：论文 §5.2（式 7–8）、Fig. 8
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.23991>
+- [arXiv PDF](https://arxiv.org/pdf/2606.23991)：已通读方法部分（实验与附录以略读为准）：§5 GIC Agent Model（5.1–5.4）；摘要与 §1–§4 仅看标题与摘要
 
 ## 推荐继续阅读
 

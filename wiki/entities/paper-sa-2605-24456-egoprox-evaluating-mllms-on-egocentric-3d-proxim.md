@@ -42,6 +42,28 @@ Introduces EgoProx, the first benchmark for assessing whether MLLMs can model th
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["第一人称视频 + 元数据<br/>(相机位姿 / 物体 / 动作标签)<br/>+ 指定题型 (Intention / Exploration / Exploitation / Chain of Actions)"] --> AG["Agent: Gemini-2.5-Pro 调度工具"]
+    AG --> CS["Salient Clip Sampler<br/>按题型截取片段, 保证最后一帧 x_T 可回答"]
+    CS --> TS["3D Analysis Toolset"]
+    subgraph TS["3D Analysis Toolset"]
+        GP["Gaze Parser<br/>2D 眼动 -> 3D 视线并定位注视物"]
+        OM["Occupancy Map Generator<br/>+ Exploration Path Generator (8 邻接 A*)"]
+        AF["Affordance Detector"]
+        KC["Keystep Extractor + Chain Constructor"]
+    end
+    TS --> SC["Spatial Calculator<br/>Distance / Direction Calculator"]
+    SC --> GT["结构化 3D proximity 真值<br/>(近似位姿变换 + 相对空间关系)"]
+    GT --> PP["后处理: 变换离散成区间, 方向离散成 8 个朝向<br/>VLM 生成困难干扰项"]
+    PP --> HV["人工核验可回答性与真值准确性"]
+    HV --> QA["EgoProx 选择题 QA 对"]
+```
+
+图依据：论文 §4 Agentic Data Engine（§4.1–§4.4）/ Fig.2（本图为基准构造流程，非被评测模型的方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Introduces EgoProx, the first benchmark for assessing whether MLLMs can model th
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.24456>
+- [arXiv PDF](https://arxiv.org/pdf/2605.24456)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§3 Benchmark 概述与数据源、§4 Agentic Data Engine（4.1–4.4）；§5 实验略读
 
 ## 推荐继续阅读
 

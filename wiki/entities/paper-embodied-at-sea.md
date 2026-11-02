@@ -42,6 +42,32 @@ summary: "Embodied at Sea（arXiv:2610.38199）：研究比较水下操作中的
 - 开源结论：**待发布**（步骤 2.5，2026-10-30）。项目页 HTTP 200，Paper、Code、Dataset 均标注 Coming soon。
 - 同期同组工作见 [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据采集（§III-A）"]
+        TO["人类遥操作 BlueROV2<br/>泳池 1616 条 / 海上 748 条 episode"] --> DS["BlueMbodied Kit 记录为 LeRobot 数据集<br/>并人工标注"]
+    end
+    DS --> OBS
+    subgraph OBS["观测构造（§III-B）"]
+        CAM["前置 1080p 相机 RGB 视频"]
+        TEL["50Hz MAVLink 遥测：姿态 / IMU / 推进器 PWM<br/>（按消融组合选取）"]
+        DIST["扰动估计 Δ(t) = 实测加速度 − 由姿态与推进器指令预期的加速度（式 1）"]
+        TEL --> DIST
+        DIST --> WIN["时间窗口内的 Δ 经 FAST tokenizer 得到 Δ tokens"]
+    end
+    CAM --> POL
+    TEL --> POL
+    WIN --> POL
+    POL["策略：泳池用 DynamicVLA；海上用 ACT 与 SmolVLA<br/>输出 20 步动作块"] --> ACT["6 维动作 vx, vy, ωz, z_ref, c_tilt, e_ref<br/>（4 个运动指令 + 2 个工具指令）"]
+    ACT --> MAV["MAVLink MANUAL_CONTROL 消息<br/>（与遥操作采集相同接口）"]
+    MAV --> ARDU["ArduSub 自动驾驶仪"]
+    ARDU --> THR["六个推进器推力指令"]
+```
+
+图依据：论文 §III-A/B（数据、观测与动作空间、Eq. 1）、Fig. 6 图注；“20 步动作块”仅来自 Table I 图注。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +111,7 @@ summary: "Embodied at Sea（arXiv:2610.38199）：研究比较水下操作中的
 - [embodied_at_sea_arxiv_2610_38199.md](../../sources/papers/embodied_at_sea_arxiv_2610_38199.md)
 - [wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md](../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md)
 - [arXiv:2610.38199](https://arxiv.org/abs/2610.38199)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38199)：已通读方法部分（实验与附录以略读为准）：§I–II 略读、§III（数据采集、模型、观测/动作空间）、§IV 表题与图注
 
 ## 推荐继续阅读
 

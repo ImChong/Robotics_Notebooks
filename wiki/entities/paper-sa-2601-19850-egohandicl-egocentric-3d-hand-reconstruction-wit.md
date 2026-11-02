@@ -42,6 +42,26 @@ Robust 3D hand reconstruction in egocentric vision addressing depth ambiguity, s
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["查询图像 I_qry"] --> VLM["VLM (Qwen2.5-VL-72B) 检索模板"]
+    VLM --> R1["Pre-defined Visual Templates<br/>分类为 左手 / 右手 / 双手 / 无手 四类并取同类模板"]
+    VLM --> R2["Adaptive Textual Templates<br/>生成语义描述，按文本相似度检索"]
+    R1 --> TPL["模板图像 I_tpl (每个查询取 1 张)"]
+    R2 --> TPL
+    Q --> COARSE["已训练重建模型 (HaMeR / WiLoR)<br/>估计粗 MANO 参数"]
+    TPL --> COARSE
+    COARSE --> TOK["ICL Tokenizer<br/>ViT 图像 token F_i + MANO Encoder 结构 token F_m + 文本 token F_t<br/>cross-attention 融合"]
+    TOK --> T4["四组 ICL tokens：模板 input / 模板 target / 查询 input / 查询 target"]
+    T4 --> MAE["MAE 式 Transformer 掩码重建<br/>训练：随机部分掩码 target tokens<br/>推理：查询 target tokens 全部掩码"]
+    MAE --> DEC["MANO Decoder → 查询图像的 MANO 参数 → 3D 手部网格"]
+    LOSS["训练损失：L_mano + L_V + L_3D<br/>(无 MANO 真值的数据集用 L_J + L_3D)"] -.-> MAE
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Robust 3D hand reconstruction in egocentric vision addressing depth ambiguity, s
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.19850>
+- [arXiv PDF](https://arxiv.org/pdf/2601.19850)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题建模、3.2 EgoHandICL 框架、3.3 损失函数）与 §3.4 实现细节；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

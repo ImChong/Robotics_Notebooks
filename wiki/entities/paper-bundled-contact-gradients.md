@@ -29,6 +29,24 @@ summary: "该方法处理可微仿真强接触事件附近梯度不稳定的问�
 
 该方法处理可微仿真强接触事件附近梯度不稳定的问题。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["可微仿真器 + 策略 πθ<br/>SHAC 短视野 N 步可微 rollout，critic Vψ 自举"] --> B{"是否检测到接触？<br/>法向冲量超过阈值 τ"}
+    B -->|"否"| C["普通单分支转移 fκ(xk, ak)"]
+    B -->|"是"| D["接触局部扰动<br/>对接触运动链在笛卡尔空间采样位置 / 速度偏移<br/>经阻尼伪逆 Jk† 映射到关节空间"]
+    D --> E["生成 B 个分支状态 xk(i) = xk + δxk(i)<br/>(GPU 并行，保持有限大刚度 κ)"]
+    E --> F["多步 bundled rollout：H 个控制步<br/>各分支共享动作，每步执行 S 个仿真子步"]
+    F --> G["分支状态取平均 → x̄<br/>x̄ 提供观测与奖励，策略据此输出下一动作"]
+    G --> H["梯度传播：沿各分支传播敏感度<br/>再对分支敏感度取平均 (局部平滑)"]
+    C --> I["ADD 模仿奖励 r = -log(1 - Dφ(Δt))<br/>Δt 为参考与仿真运动特征残差"]
+    H --> I
+    I --> J["SHAC 的 LFO 反向传播更新策略"]
+```
+
+图依据：论文 §III-D、§IV-A 至 §IV-D / Alg.1、Fig.2
+
 ## 方法栈
 
 只在强接触邻域聚合接触相关梯度，以改善轨迹优化中的梯度信号。
@@ -70,6 +88,7 @@ summary: "该方法处理可微仿真强接触事件附近梯度不稳定的问�
 
 - [Day 6 原文归档](../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md)
 - [arXiv:2609.30951](https://arxiv.org/abs/2609.30951)
+- [arXiv PDF](https://arxiv.org/pdf/2609.30951)：已通读方法部分（实验与附录以略读为准）：§III-D SHAC、§IV Bundled Contact Gradients（A 至 D）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["多视角图像 + 历史帧 + 文本指令 l"] --> QT["QT-Former 视觉编码：scene / perception / history 查询 + 记忆库 M"]
+    QT --> MLP2["两层 MLP → scene tokens x_s、history tokens x_h"]
+    MLP2 --> LLM["LLM（Vicuna 1.5 + LoRA）：场景描述 / VQA / 动作推理"]
+    LLM --> H["VLM 推理嵌入 h_VLM"]
+    H --> PLAN["轨迹规划器：高斯隐变量 z_a 解码轨迹 a_t:t+m"]
+    PLAN -->|"规划 token 置于图像 token 之前"| GEN
+    H --> GEN
+    subgraph GEN["未来前视图像生成（二选一设计）"]
+        direction TB
+        AR["自回归：扩大码本，next-token 预测视觉 token"]
+        ARD["AR + Diffusion：可学习查询 Q 经 flow matching 的扩散解码器"]
+    end
+    GEN --> IMG["未来前视图像 Î_t+n"]
+```
+
+图依据：论文 §3（Fig.2 整体流程、Fig.3 两种图像生成架构、§3.1–3.4）与 §4.1 训练设置
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2601.04453>
+- [arXiv PDF](https://arxiv.org/pdf/2601.04453)：已通读方法部分（实验与附录以略读为准）：§1–§3 与 §4.1 训练细节；§4 其余实验略读
 
 ## 推荐继续阅读
 

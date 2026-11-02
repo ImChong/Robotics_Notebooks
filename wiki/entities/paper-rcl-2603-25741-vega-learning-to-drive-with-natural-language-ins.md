@@ -42,6 +42,25 @@ Vega learns instruction-conditioned driving by training trajectory denoising tog
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["历史前视图像 I(t-T..t)"] --> VAE["VAE 编码得到视觉潜变量<br/>另附 SigLIP2 ViT 特征"]
+    L["自然语言驾驶指令 L_t"] --> TOK["Qwen2.5 tokenizer"]
+    A["历史动作 A(t-T..t-1)<br/>相对位移 Δx, Δy, Δθ，归一化后线性投影"] --> SEQ
+    VAE --> SEQ["按顺序交错拼接：<br/>图像、动作、指令，再接带噪目标 token"]
+    TOK --> SEQ
+    SEQ --> MOT["Mixture of Transformers 全局因果注意力<br/>理解 Transformer + 生成 Transformer + 动作模块<br/>（权重初始化自 Bagel-7B）"]
+    MOT --> ACT["扩散去噪：动作规划<br/>输出动作序列 A_t"]
+    ACT -->|"以去噪完成的动作为条件"| IMG["扩散去噪：未来图像生成<br/>VAE 潜变量 F_(t+N)"]
+    ACT --> TRAJ["规划轨迹"]
+    IMG --> DEC["VAE 解码器得到未来图像"]
+    LOSS["训练：L = λ_A·L_A + λ_V·L_V<br/>动作与图像损失联合优化"] -.-> MOT
+```
+
+图依据：论文 §3.2–3.4 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Vega learns instruction-conditioned driving by training trajectory denoising tog
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.25741>
+- [arXiv PDF](https://arxiv.org/pdf/2603.25741)：已通读方法部分（实验与附录以略读为准）：§1、§3（Unified Generation and Planning、Joint Autoregressive-Diffusion Architecture、Training and Inference）、§4.1–4.2 实现细节与训练设置；§4.3 起实验仅略读
 
 ## 推荐继续阅读
 

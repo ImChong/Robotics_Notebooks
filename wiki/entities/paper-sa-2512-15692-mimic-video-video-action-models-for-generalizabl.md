@@ -42,6 +42,22 @@ Video-action models for generalizable robot control beyond VLAs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入: 过去帧上下文 (5 帧) + 语言指令 l + 本体状态 q"] --> VM["视频模型 Cosmos-Predict2 (2B latent DiT)\n3D tokenizer 编码, T5 语言 cross-attention"]
+  VM --> PART["部分去噪: 从噪声积分到中间流时间 τv\n(默认 τv = 1, 仅需一次前向)"]
+  PART --> HID["取前 k 层隐藏状态 h(τv)\n作为潜在视频计划"]
+  HID --> AD["动作解码器 (DiT, 充当逆动力学模型 IDM)\ncross-attend 视频表示, 并编码本体状态 + 带噪动作"]
+  AD --> DEN["以独立动作流时间 τa 完整去噪"]
+  DEN --> ACT["动作块 A_t"]
+  S1["训练阶段 1: LoRA 微调视频骨干\n(机器人视频数据)"] -.-> VM
+  S2["训练阶段 2: 冻结骨干, 从零训练动作解码器\n(flow matching, 独立采样 τv 与 τa)"] -.-> AD
+```
+
+图依据：论文 §IV（架构：视频模型 / 动作解码器 / 动作采样 / 训练）、Fig.3、Algorithm 1–2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Video-action models for generalizable robot control beyond VLAs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.15692>
+- [arXiv PDF](https://arxiv.org/pdf/2512.15692)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§II 略读、§IV（Preliminaries、视频模型、动作解码器、动作采样、训练）、§V 实验设定
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "任务进度追踪基准：通过错误与恢复跟踪任务进度：�
 
 # 任务进度追踪基准：通过错误与恢复跟踪任务进度：评测基准与循环分布模型
 
-**任务进度追踪基准**（*Tracking Task Progress Through Errors and Recovery: A Benchmark and Recurrent Distributional Model*，[arXiv:2610.39125](https://arxiv.org/abs/2610.39125)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**任务进度追踪基准**（*Tracking Task Progress Through Errors and Recovery: A Benchmark and Recurrent Distributional Model*，[arXiv:2610.39125](https://arxiv.org/abs/2610.39125)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,27 @@ summary: "任务进度追踪基准：通过错误与恢复跟踪任务进度：�
 ## 为什么重要
 
 - 周报所述待解决的问题：长程机器人操作中的任务进度可能倒退或恢复，单纯根据当前图像估计进度，难以区分视觉相似但执行阶段不同的状态。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["多相机图像 + 语言指令 + 机器人状态"] --> B["SigLIP 编码各相机图像为 patch token"]
+  B --> C["门控循环视觉记忆 (每相机 8 个记忆槽)<br/>Read 交叉注意力 → 候选状态 Ct"]
+  C --> D["Update: 帧间隔 Δft 条件门控 Gt<br/>Mt = LN((1-Gt)·Mt-1 + Gt·Ct)"]
+  D --> E["Readback: 当前 token 读取记忆, 残差融合"]
+  E --> F["VLA 骨干 + 语言 + 状态<br/>动作专家后缀 (全零动作输入)"]
+  F --> G["类别值头: 预测进度分布 pt(k)<br/>K 个固定进度原子"]
+  G --> H["在线峰值关联: 取候选峰中最接近上一估计的峰<br/>输出进度 y_hat_t"]
+  H -->|"作为下一步上一估计"| H
+  subgraph 训练监督["训练监督 (推理不需要)"]
+    I["语义阶段标注 + 帧级错误区间"] --> J["错误感知进度目标<br/>阶段内线性增长, 错误区间内有界下降, 再重算斜率"]
+    J --> K["软标签: 线性插值到相邻两个进度桶<br/>交叉熵监督"]
+  end
+  K -.-> G
+```
+
+图依据：论文 §3.1 总览、§3.2 错误感知进度目标、§3.3 类别预测与峰值关联、§3.4 门控循环视觉记忆、Fig.2–3
 
 ## 核心机制
 
@@ -87,6 +108,7 @@ summary: "任务进度追踪基准：通过错误与恢复跟踪任务进度：�
 - [task-progress-tracking-errors-recovery-benchmark_arxiv_2610_39125.md](../../sources/papers/task-progress-tracking-errors-recovery-benchmark_arxiv_2610_39125.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39125](https://arxiv.org/abs/2610.39125)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39125)：已通读方法部分（实验与附录以略读为准）：REMORA 方法（§3.1–3.4）；ReSTEP 数据集（§4）与实验部分仅概览，未逐项核对
 
 ## 推荐继续阅读
 

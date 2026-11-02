@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,34 @@ BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly—
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  O["观测点云 O"] --> PNO["PointNet++ → 全局特征 fO"]
+  S["想象的装配形状 S<br/>任意位姿"] --> VN["VN-DGCNN → SO3 等变特征 fS"]
+  VN --> DP["Disassembly Predictor<br/>cVAE，以 fS 为条件"]
+  DP -->|"拆解方向 v"| FV["MLP → fv"]
+  PNO --> TPd["Transformation Predictor<br/>cVAE，输入 fO 与 fv 拼接"]
+  FV --> TPd
+  TPd -->|"SE3 变换 M"| TF["M 作用于 S 与 v<br/>得 S' 与 v'"]
+  S --> TF
+  DP --> TF
+  TF --> BA
+  O --> BA
+  subgraph BA["BiAffordance Predictor：PN++ 编码 O 得 fp、S' 得 fS'，MLP 编码 v' 得 fv'"]
+    A1["Affordance Network 1<br/>MLP，逐点打分"] --> P1["选接触点 p1"]
+    P1 --> U1["Actor Network 1<br/>cVAE，输出姿态 r1"]
+    U1 -->|"第一夹爪动作 g1"| A2["Affordance Network 2<br/>另以 g1 特征为条件"]
+    A2 --> P2["接触点 p2"]
+    P2 --> U2["Actor Network 2<br/>cVAE，输出姿态 r2"]
+  end
+  U2 --> ACT["两夹爪 pick-up 动作 g1、g2"]
+  ACT --> AL["由抓取时相对位姿、预测的 M 与位姿估计<br/>得到 alignment 与 assembly 阶段夹爪位姿"]
+```
+
+图依据：论文 §4.1–4.5 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +79,7 @@ BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly—
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2506.06221)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2506.06221)。
 
 ## 评测与指标
 
@@ -67,7 +95,7 @@ BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly—
 
 **本页只提供「BiAssemble」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +116,7 @@ BiAssemble: Learning Collaborative Affordance for Bimanual Geometric Assembly—
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2506.06221>
+- [arXiv PDF](https://arxiv.org/pdf/2506.06221)：已通读方法部分（实验与附录以略读为准）：§3 问题定义、§4 方法（4.1–4.5）
 
 ## 推荐继续阅读
 

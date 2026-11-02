@@ -42,6 +42,19 @@ A benchmark for evaluating week-level egocentric video memory-driven reasoning, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["EgoLife 周级第一人称视频"] --> S1["Stage 1 证据准备：切 30 秒片段，GPT-5 生成片段 caption 与事件摘要，组织成层级事件结构"]
+    S1 --> S2["Stage 2 问题生成：按 entity / event / behavior 三类记忆，经陈述抽取、出题、干扰项生成得到多选题"]
+    S2 --> S3["Stage 3 自动过滤：无视觉盲测（多数 LLM 答对则丢弃）、视觉证据校验、证据最小时间间隔 2 小时"]
+    S3 --> S4["Stage 4 人工验证：标注者检查题目清晰度、答案正确性、选项质量，可修改或拒绝"]
+    S4 --> B["EgoMemReason：500 题，3 类记忆 / 6 类挑战"]
+```
+
+图依据：论文 §3.3 基准构建四阶段流水线 / Fig.4（本图画的是基准构建流程，不是被评测模型的方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +109,7 @@ A benchmark for evaluating week-level egocentric video memory-driven reasoning, 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.09874>
+- [arXiv PDF](https://arxiv.org/pdf/2605.09874)：已通读方法部分（实验与附录以略读为准）：摘要、§3.3 基准构建流水线与统计；§3 其余小节、§4 实验以略读为准
 
 ## 推荐继续阅读
 

@@ -43,6 +43,21 @@ Policy world model for collaborative state-action prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频片段 I_1:N"] --> B["Dual-branch Image Tokenizer<br/>高分辨率分支 Q_h（冻结，输入首帧 I_1）→ Z_1<br/>低分辨率分支 Q_l（可训练）→ 压缩 token D_t，每帧 28 个"]
+    B -->|"Fe / Fd 经 cross-attention 引导低分辨率分支"| C["{Z_1, D_1:N} 视频 token"]
+    C --> D["阶段一：Action-free 视频预训练<br/>Next-frame 并行自回归，帧内双向注意力<br/>Dynamic Focal Loss 加权动态 token"]
+    D --> E["阶段二：端到端规划微调<br/>输入：历史帧 token D_1:t + 导航指令/Ego Status E_t"]
+    E --> F["自回归预测场景文本 token X_t<br/>与未来帧 token D_t+1:t+n（Forecasting）"]
+    F --> G["m 个可学习 Action Query<br/>与预测的文本/未来帧特征交互"]
+    G --> H["轻量 Action Head 解码<br/>轨迹坐标 A_1:m"]
+```
+
+图依据：论文 §3 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ Policy world model for collaborative state-action prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.19654>
+- [arXiv PDF](https://arxiv.org/pdf/2510.19654)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1 Image Tokenizer、§3.2 Policy World Model）、Fig.2–3
 
 ## 推荐继续阅读
 

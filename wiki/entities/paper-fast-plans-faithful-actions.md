@@ -29,6 +29,24 @@ summary: "该工作研究高层路点如何被低层动作专家忠实执行。"
 
 该工作研究高层路点如何被低层动作专家忠实执行。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["示范轨迹"] --> B["AWE 动态规划提取稀疏 waypoint<br/>夹爪切换帧强制为关键帧，段长 ∈ [1, D=32]"]
+    B --> C["waypoint 编码为复用的 token<br/>(&lt;wp&gt; 关节 / 夹爪 / &lt;dur&gt; 时长)"]
+    C --> D["规划器 PaliGemma 前缀<br/>指令 + 离散当前状态 + 相机图像"]
+    D --> E["Block-AR 解码：每个 waypoint 一个块<br/>块内双向、块间因果，最多 7 块"]
+    E --> F["预测 d=0 的块表示计划结束<br/>最长 8 次前向(1 次前缀 + 7 块)"]
+    E --> G["每段后缀：起点状态、目标 (qi, gi)、时长 di"]
+    G --> H["NGM 归一化目标调制<br/>残差 r 加入各层 AdaRMS 条件<br/>相位门控 + 反捷径训练"]
+    H --> I["300M 动作专家(flow matching)<br/>去噪长度 D 的动作块"]
+    I --> J["执行前 di 个动作"]
+    J -->|"下一段从实测状态开始 / 重新规划"| D
+```
+
+图依据：论文 §4.1 至 §4.4 / Fig.2、Fig.3、Fig.4
+
 ## 方法栈
 
 规划器生成带目标配置、夹爪状态与时长的路点；动作专家据此生成连续控制，Block-AR并行解码降低延迟。
@@ -70,6 +88,7 @@ summary: "该工作研究高层路点如何被低层动作专家忠实执行。"
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.30833](https://arxiv.org/abs/2609.30833)
+- [arXiv PDF](https://arxiv.org/pdf/2609.30833)：已通读方法部分（实验与附录以略读为准）：§4 Method（4.1 waypoint 表示与执行、4.2 Block-AR、4.3 NGM、4.4 训练）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练 VLM / VLA"] --> B["SFT：在目标任务示范上微调"]
+    B --> C["在线 RL 微调 πRL（π0 / π0.5 等 flow-based VLA）"]
+    C --> D["难点：ODE 去噪确定性且无法探索，动作对数似然难算"]
+    D --> E["Flow-Noise：可学习噪声网络，单层 MDP，对整条去噪序列联合对数似然"]
+    D --> F["Flow-SDE：ODE 转等价 SDE 注入噪声，两层 MDP（内层去噪、外层环境），混合 ODE-SDE 采样缩短视野"]
+    E --> G["PPO + GAE，动作块（chunk）作为一个宏步"]
+    F --> G
+    H["Critic 放置：π0 接在 action expert，π0.5 接在 VLM"] --> G
+    G --> I["更新后的 flow-based VLA 策略（Flow-Noise 的噪声网络微调后丢弃）"]
+```
+
+图依据：论文 §1 / Fig.1（Pretraining → SFT → RL 范式）、§4.1 Flow-Noise、§4.2 Flow-SDE、§4.3 Policy Optimization / Fig.2–4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2510.25889>
+- [arXiv PDF](https://arxiv.org/pdf/2510.25889)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminary、§4 Methodology（4.1–4.3）、§5.1 Setup；§5.2 以后实验与附录未细读
 
 ## 推荐继续阅读
 

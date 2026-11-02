@@ -41,6 +41,27 @@ summary: "Self-Constructed Navigation Space（arXiv:2610.31762）：RepresentNav
 - 开源结论：**待发布**（步骤 2.5，2026-10-29）。项目页 HTTP 200，Code 标注 Coming soon（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：语言指令 L + N 个相机的 RGB 观测历史"] --> RR
+    subgraph RR["Representation Residuals：看我所需（3 层 transformer，与策略一起训练）"]
+        F1["冻结 DINOv3（语义）"] --> AD["轻量 adapter：对齐各编码器沿深度均匀取样的层特征"]
+        F2["冻结 Depth Anything 3（几何）"] --> AD
+        F3["冻结 D4RT 视频编码器（动态，OpenD4RT）"] --> AD
+        AD --> ATT["逐层对隐状态与各编码器层特征做 softmax 注意力加权"]
+        ATT --> CLS["每个视角得到 [CLS] 全局表征 + 少量空间 token"]
+    end
+    CLS --> LLM["Qwen3-VL-4B 语言模型（QA 数据共训练同一骨干）"]
+    LLM --> DREAM["潜在 chain-of-thought：自回归生成 4 个连续潜变量，预测 0.4–1.6 s 后的表征"]
+    DREAM --> HEAD["planning head：输出 8 个航点 (x, y, yaw)"]
+    FUT["训练时：未来真实观测经同一 Representation Residuals 与投影器 G 构成预测目标"] -.->|"L_wm（MSE）"| DREAM
+    FUT -.->|"VISReg 正则防止空间坍缩"| CLS
+```
+
+图依据：论文 §3 / §3.1 / §3.2 / Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +104,7 @@ summary: "Self-Constructed Navigation Space（arXiv:2610.31762）：RepresentNav
 - [self_constructed_navigation_space_arxiv_2610_31762.md](../../sources/papers/self_constructed_navigation_space_arxiv_2610_31762.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.31762](https://arxiv.org/abs/2610.31762)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31762)：已通读方法部分（实验与附录以略读为准）：§3 概述、§3.1–§3.4
 
 ## 推荐继续阅读
 

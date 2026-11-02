@@ -42,6 +42,23 @@ Rethinking driving world models as synthetic data generators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实驾驶视频 + 3D 框标注 {B_i}"] --> B["背景引导图（Depth Anything → 深度 D；由 D 导出法线 N；Canny → 边缘 E）<br/>前景物体区域被 mask"]
+    L["DriveObj3D 3D 资产库<br/>Grounded-SAM 分割 → Qwen-Image 多视图生成 → Hunyuan3D 重建 Mesh"] --> C
+    A --> C["按 3D 框把目标资产放入 3D 空间<br/>用相机内外参渲染物体图 O 与物体掩码 M"]
+    B --> G["3D-aware 引导图 {D, N, E, O, M}"]
+    C --> G
+    G --> H["Multi-Condition Fusion Adapter<br/>VAE 编码 → 3D Embedder Patchify → FusionNet 融合"]
+    H --> I["Diffusion Transformer（微调的驾驶 World Model）<br/>Control-Block → Base-Block，含 Cross-View Attention"]
+    I --> J["渲染编辑后视频（合成数据）"]
+    J --> K["与真实数据混合，用于检测/跟踪等下游感知训练"]
+```
+
+图依据：论文 §3 Dream4Drive（§3.2 / Fig.3、§3.3 / Fig.4）、§4 DriveObj3D / Fig.5、Fig.2 总览
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Rethinking driving world models as synthetic data generators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.19195>
+- [arXiv PDF](https://arxiv.org/pdf/2510.19195)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Dream4Drive（§3.1–3.3）、§4 DriveObj3D、Fig.2–5（§5 实验与附录仅略读）
 
 ## 推荐继续阅读
 

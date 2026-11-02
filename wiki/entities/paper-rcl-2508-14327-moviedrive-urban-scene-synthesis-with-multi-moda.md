@@ -42,6 +42,25 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["文本条件: 相机内外参(Fourier+MLP)<br/>+ 文本 prompt (冻结文本编码器)"] --> B["文本嵌入 f_text"]
+    C["布局条件: 2D 框图 / 道路图 / 占用语义图"] --> D["统一布局编码器<br/>(各条件 causal resnet + 共享 causal resnet)<br/>f_layout"]
+    E["上下文参考帧 (可选, 用于未来预测)"] --> F["共享预训练 3D VAE 编码器 (CogVideoX)"]
+    D --> G["条件输入 z = E_c(f_layout ⊗ E_vae(c_ref)) ⊗ 噪声 latent x"]
+    F --> G
+    H["训练: 对 GT 帧 latent 加噪<br/>推理: 高斯采样噪声"] --> G
+    G --> I["模态共享层: 时间注意力层 (3D full attention)<br/>+ 多视角时空块 (3D 空间注意力 / Hash grid 3D 嵌入 / 时空注意力 / FFN)"]
+    B -- "cross-attention 注入" --> I
+    I --> J["模态特定层: 跨模态交互层<br/>(query=本模态, K/V=其他模态)"]
+    J --> K["模态特定投影头预测噪声 -> 干净 latent x'"]
+    K --> L["VAE 解码器 -> 各模态多视角视频<br/>(RGB / 深度 / 语义)"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2508.14327>
+- [arXiv PDF](https://arxiv.org/pdf/2508.14327)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.4）、§4.1 实验设定
 
 ## 推荐继续阅读
 

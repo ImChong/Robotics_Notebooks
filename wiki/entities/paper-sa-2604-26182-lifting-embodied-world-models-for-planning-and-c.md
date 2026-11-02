@@ -42,6 +42,22 @@ Lifting methods for embodied world models in planning and control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OBS["当前观测 o_t + 上下文位姿 p_t"] --> WP["高层动作 a_HL：为骨盆、头、左手、右手标注 2D waypoint"]
+    WP --> POL["waypoint 条件扩散策略 π（DINOv3-S 编码，去噪 UNet）"]
+    OBS --> POL
+    POL --> LL["低层关节动作序列 a_LL（每步 48 维）"]
+    LL --> WM["冻结的低层世界模型 f_phi 自回归预测观测"]
+    WM --> FUT["Lifted World Model：由单个高层动作预测 o_t+T"]
+    FUT --> CEM["在高层动作空间做 CEM 规划：采样、模拟、与目标图像感知距离排序、更新分布"]
+    CEM --> EXE["选定高层动作经策略映射为低层动作执行"]
+```
+
+图依据：论文 §3.1-3.3 / Fig. 1、Fig. 5、Eq. 9-12
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Lifting methods for embodied world models in planning and control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.26182>
+- [arXiv PDF](https://arxiv.org/pdf/2604.26182)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1-3.3）
 
 ## 推荐继续阅读
 

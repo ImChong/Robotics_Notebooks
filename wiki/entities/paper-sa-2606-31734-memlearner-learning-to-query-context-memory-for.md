@@ -42,6 +42,30 @@ Learns to query context memory for video world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["历史上下文帧（无限长）"] --> B["3D VAE 编码：Context tokens C"]
+    N["随机噪声初始化 Query tokens Q（数量等于 P）"] --> L1
+    G["待生成 Predicted tokens P（加噪 Pt）"] --> L1
+    B --> L1
+    subgraph QL["Query Layers（浅层，约 n 层，5 层/共 28 层）"]
+        L1["Q 注意 P 与 C：从上下文提取信息"]
+        L2["P 注意 P 与 Q；C 不作 query、保持不变"]
+        L1 --> L2
+    end
+    L2 --> GL
+    subgraph GEN["Generative Layers（深层，m 层）"]
+        GL["仅 Q 与 P 参与：Q 注意 P，P 注意 P 与 Q"]
+    end
+    GL --> O["预测噪声，仅对 P 计算扩散损失"]
+    O --> V["解码得到当前 chunk，逐 chunk 自回归延续"]
+    CAM["相机位姿 cam 经 MLP 编码器注入"] -.-> L1
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2–4、§5.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Learns to query context memory for video world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.31734>
+- [arXiv PDF](https://arxiv.org/pdf/2606.31734)：已通读方法部分（实验与附录以略读为准）：§3.1 Preliminaries、§3.2 Learning to Query Context、§3.3 Efficient Strategies、§4.2 多数据集训练、§5.1 实现细节
 
 ## 推荐继续阅读
 

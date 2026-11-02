@@ -41,6 +41,26 @@ To address the trade-off, we present WAM4D, a fast 4D world action model that us
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["语言指令 l、多视角 RGB 历史（拼成 mosaic）、历史动作"] --> VAE["视频 VAE → 历史 / 未来视频 latent<br/>动作嵌入 E_a → 历史 / 未来动作 token"]
+    VAE --> VA["Video-Action MoT 主干（继承 LingBot-VA）<br/>因果可见性 mask，语言经 cross-attention"]
+    VA --> HV["未来视频头：L_video"]
+    VA --> HA["未来动作头：L_action"]
+    VA -. "仅训练：选定层（12/14/16/18）的历史视频特征" .-> DB["Depth Block：空间 register 作 query<br/>register 自注意力 + 对历史视频 token 的 cross-attention"]
+    REG["可学习空间 register 网格（按 mosaic 位置对齐）"] --> DB
+    DB --> PG["投影 P_g → 预训练几何头 G_φ（Depth Anything V3）"]
+    PG --> LD["预测未来深度 → L_depth<br/>反传进主干，蒸馏空间先验"]
+    HV --> LT["L = L_video + λ_act·L_action + λ_depth·L_depth"]
+    HA --> LT
+    LD --> LT
+    VA --> INF["推理：移除 register、depth block、几何头<br/>仅观测队列 + KV cache → 去噪出动作块"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.2、Fig.3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ To address the trade-off, we present WAM4D, a fast 4D world action model that us
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.14048>
+- [arXiv PDF](https://arxiv.org/pdf/2606.14048)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.5）
 
 ## 推荐继续阅读
 

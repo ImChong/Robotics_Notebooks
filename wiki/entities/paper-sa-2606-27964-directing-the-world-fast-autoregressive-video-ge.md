@@ -42,6 +42,29 @@ Fast autoregressive video generation via compositional human-camera control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BB["MMPL 块式自回归骨干（Plan-then-Populate）：先预测含终止帧 x_end 的规划帧，再填充中间帧；x_end 作下一段初始条件"]
+    subgraph S1["阶段一：人体运动控制（运动中心数据，低相机运动）"]
+        direction TB
+        SM["SMPL 序列渲染 → 空间对齐（缩放 + 包围盒重叠）→ 同一 VAE 编码得 c_smpl"] --> PJ["t-guided Dynamic Projection：按去噪时间步 t 投影 c_smpl 后注入噪声潜变量"]
+        PJ --> MC["Motion-CFG：固定文本提示，以 SMPL 条件做 CFG；无条件分支用黑视频的 VAE 潜变量"]
+    end
+    subgraph S2["阶段二：相机轨迹控制（相机中心数据，在已习得的运动先验上）"]
+        direction TB
+        CT["相机轨迹（Plücker 坐标）→ 相机编码器（全局自注意）得上下文化特征 H"] --> CW["仅注入与当前生成块帧窗口 Wi 时间对齐的相机特征"]
+    end
+    BB --> S1
+    S1 --> S2
+    S2 --> OUT["组合人体运动与相机运动的可控长视频"]
+    FS["Fast-Slow Memory 训练：原自注意 / 文本交叉注意为慢参数（小学习率 ηs），新增控制模块为快参数（大学习率 ηf）"] -.-> S1
+    FS -.-> S2
+```
+
+图依据：论文 §3.1–3.5 / Fig. 2、§3.6 数据划分（Stage-I / Stage-II）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Fast autoregressive video generation via compositional human-camera control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.27964>
+- [arXiv PDF](https://arxiv.org/pdf/2606.27964)：已通读方法部分（实验与附录以略读为准）：§3.1 Overview、§3.2 MMPL 骨干、§3.3 人体运动控制、§3.4 相机控制、§3.5 Fast-Slow 训练、§3.6 数据构建
 
 ## 推荐继续阅读
 

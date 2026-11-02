@@ -38,6 +38,23 @@ summary: "Minimalist Vision（arXiv:2501.00142）：Minimalist Vision 用任意�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。arXiv 摘要页未列代码或项目页链接；本次未做进一步检索，不能判定是否开源。
 - 同期同组工作见 [从视觉编程到 4D 重建：CV 三大会 2023–2026 Best Paper 阅读坐标](../overview/cv-best-papers-2023-2026-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["训练相机（传统相机）录制任务场景视频并标注标签"] --> B["场景图像 I(x,y)"]
+  B --> C["第一层：自由形态像素 = 光学掩码 M=σ(Mt) 对场景做线性投影，建模方向响应、有效面积模糊"]
+  C --> D["探测器模型：增益 G、读出噪声、量化噪声、带小斜率的饱和截断 → 像素输出 pf"]
+  D --> E["推理网络（全连接层 + leaky ReLU）输出任务结果"]
+  E --> F["按任务损失训练整个网络"]
+  F --> G["学得的第一层权重 = 各像素掩码形状"]
+  G --> H["喷墨打印透明膜掩码，装在光电二极管前"]
+  H --> I["极简相机原型：少数像素的测量值经放大器、复用器、微控制器"]
+  I --> J["BLE 无线传输到远端，由训练好的推理网络输出结果"]
+```
+
+图依据：论文 §3.1–3.2、§5、§6.1 / Fig.1、Fig.3、Fig.5。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -78,6 +95,7 @@ summary: "Minimalist Vision（arXiv:2501.00142）：Minimalist Vision 用任意�
 - [minimalist_vision_freeform_pixels_arxiv_2501_00142.md](../../sources/papers/minimalist_vision_freeform_pixels_arxiv_2501_00142.md)
 - [wechat_shenlan_cv_best_papers_2023_2026_labs.md](../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md)
 - [arXiv:2501.00142](https://arxiv.org/abs/2501.00142)
+- [arXiv PDF](https://arxiv.org/pdf/2501.00142)：已通读方法部分（实验与附录以略读为准）：自由形态像素作为网络第一层、传感器模型、相机硬件与实验（§3、§5、§6）
 
 ## 推荐继续阅读
 

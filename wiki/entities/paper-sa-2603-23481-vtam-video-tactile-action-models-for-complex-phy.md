@@ -42,6 +42,24 @@ Visuo-tactile world action model integrating high-resolution tactile sensing wit
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  V1["第三人称相机"] --> ENC
+  V2["第一人称相机"] --> ENC
+  V3["GelSight 触觉流"] --> ENC
+  ENC["预训练视频 VAE 编码\n共享连续潜空间"] --> BLK["B 个交替注意力块\n视图内自注意力 → 跨视图注意力"]
+  BLK --> REP["视觉-触觉多模态表征"]
+  REP -->|"cross-attention 注入"| HEAD["条件 Action 扩散头\nflow matching"]
+  ST["当前本体状态 token"] --> HEAD
+  HEAD --> OUT["联合去噪输出：动作 a + 虚拟力 f + 本体状态 s"]
+  VF["无接触参考帧 + 当前触觉帧\n→ 光流 → 虚拟力 F_t"] -.->|"L_force 监督"| OUT
+  TRAIN["训练：Stage I 视觉-触觉潜变量 flow matching\n→ Stage II 动作-状态-力联合去噪"] -.-> BLK
+```
+
+图依据：论文 §3.1–3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Visuo-tactile world action model integrating high-resolution tactile sensing wit
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.23481>
+- [arXiv PDF](https://arxiv.org/pdf/2603.23481)：已通读方法部分（实验与附录以略读为准）：Abstract、§3 方法（3.1–3.3）、§4.1 实验设定
 
 ## 推荐继续阅读
 

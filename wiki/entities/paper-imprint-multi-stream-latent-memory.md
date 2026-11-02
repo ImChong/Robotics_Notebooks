@@ -45,6 +45,45 @@ summary: "IMPRINT（arXiv:2610.14406）：联合记忆观察、动作与本体�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ENC["多流记忆编码 (§4.1)"]
+        V["历史视频帧 (完整 chunk)<br/>冻结因果视频 tokenizer (WAN)"]
+        RI["近期图像<br/>DINOv3 编码"]
+        A["已执行动作<br/>MLP 嵌入"]
+        S["本体状态<br/>MLP 嵌入"]
+        BOT["记忆瓶颈：B 个可学习 query + 任务语言 ℓ<br/>Full Attention 或 Recurrent (GDN)"]
+        MEM["固定大小潜在记忆 m_t"]
+        V --> BOT
+        RI --> BOT
+        A --> BOT
+        S --> BOT
+        BOT --> MEM
+    end
+    subgraph S1["Stage 1：记忆预训练 (§4.2.1)，不含策略"]
+        DEC["解码器 D_ϕ"]
+        REC["历史重建<br/>过去视觉特征 / 动作 / 状态"]
+        PRG["进度估计 ρ_t"]
+        MEM --> DEC
+        DEC --> REC
+        DEC --> PRG
+    end
+    subgraph S2["Stage 2：联合适配 (§4.2.2)"]
+        INIT["丢弃解码器，编码器用 Stage 1 参数初始化"]
+        AD["轻量 action-expert adapter<br/>动作 token cross-attend m_t + FiLM"]
+        VLA["VLA 策略 (π0 / π0.5 / MolmoAct2)"]
+        LOSS["动作损失，联合更新编码器、adapter、VLA"]
+        INIT --> AD --> VLA --> LOSS
+    end
+    S1 --> INIT
+    OBS["当前观测 o_t + 任务 ℓ"] --> VLA
+    VLA --> OUT["动作块 a_t"]
+```
+
+图依据：论文 §4.1、§4.2 / Fig.1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +126,7 @@ summary: "IMPRINT（arXiv:2610.14406）：联合记忆观察、动作与本体�
 - [imprint_multi_stream_latent_memory_arxiv_2610_14406.md](../../sources/papers/imprint_multi_stream_latent_memory_arxiv_2610_14406.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14406](https://arxiv.org/abs/2610.14406)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14406)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题定义、§4 方法（§4.1、§4.2.1、§4.2.2）
 
 ## 推荐继续阅读
 

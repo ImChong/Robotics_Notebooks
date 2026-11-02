@@ -42,6 +42,30 @@ summary: "vla.simd（arXiv:2609.24274）：用 SIMD 内核与计算复用加速 
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-18）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线 / 每 episode 一次"]
+        W["权重转 fp32 连续数组并打包<br/>离线选择寄存器 tile (Algorithm 1)"]
+        T5["冻结 T5-small 编码指令<br/>缓存文本 token 与 FiLM 系数"]
+    end
+    subgraph Q["每次 query (IMPACT, 无深度学习框架)"]
+        IN["两路相机帧 + 关节状态"] --> R["ResNet-18 + 各 stage FiLM 调制"]
+        R --> ENC["6 层 transformer encoder<br/>视觉 token + 文本 token + 状态 token + latent z=0"]
+        ENC --> DEC["4 层 decoder + 50 个 learned queries"]
+        DEC --> ACT["50 步 action chunk (转回机器人单位)"]
+    end
+    T5 --> R
+    T5 --> ENC
+    W --> K["SIMD micro-kernel SMK<br/>线性层 / im2col 卷积 / attention 投影共用<br/>(Apple 用 Accelerate; 可选 W8A8 量化)"]
+    K -.-> R
+    K -.-> ENC
+    ACT --> B["动作供给预算<br/>C1: d≤H 滞后执行; C2: 2d≤H 时间对齐执行"]
+```
+
+图依据：论文 §III / §IV / §V / Fig.2、Fig.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "vla.simd（arXiv:2609.24274）：用 SIMD 内核与计算复用加速 
 - [vla_simd_arxiv_2609_24274.md](../../sources/papers/vla_simd_arxiv_2609_24274.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24274](https://arxiv.org/abs/2609.24274)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24274)：已通读方法部分（实验与附录以略读为准）：§III Action-Supply Budgets、§IV The vla.simd Engine、§V IMPACT、§VI-A/B 实验设置与动作供给
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Interaction-driven · Spatial）**（清单未附方法摘要，此处不替原文概括贡献）。
+Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Interaction-driven · Spatial）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,35 @@ Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["第一人称交互视频 V（下采样到 16 帧）"]
+  S["3D 场景点云 S（体素化）"]
+  VE["Video Encoder：LaViLa 的 TimeSFormer + 投影 f_V，得到 F_V"]
+  SE["Scene Encoder：稀疏卷积 3D U-Net，解码层 i = 1..5"]
+  INT["交互意图 F_I：卷积投影 + 平均池化"]
+  ISA["ISA（每个解码层）：FPS + k-NN 子区域特征 G_i，与 F_I 做多头 cross-attention，传播回点级，经 residual gate 加回 D_i"]
+  SP["超点池化：得到超点特征 F_sp"]
+  BQD["BQD（L 层）：双向 query Q 分别对 F_a（几何）与 F_V（交互）做 cross-attention，拼接后经 MLP 更新 Q"]
+  HEAD["每层预测头：池化 Q 得到视频 affordance 类别 ŷ；F_m 与 Q_s 相乘后 sigmoid 得超点掩码；Q_s 与池化视频特征的余弦相似度作质量分"]
+  OUT["超点掩码映射回点，得到点级 3D 场景 affordance 掩码"]
+  V --> VE
+  VE --> INT
+  S --> SE
+  SE --> ISA
+  INT --> ISA
+  ISA --> SE
+  SE --> SP
+  SP --> BQD
+  VE --> BQD
+  BQD --> HEAD
+  HEAD --> OUT
+```
+
+图依据：论文 §III-A 至 §III-D 与 Fig. 2（Ego-SAG）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +80,7 @@ Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2409.19650)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2409.19650)。
 
 ## 评测与指标
 
@@ -67,7 +96,7 @@ Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归�
 
 **本页只提供「Ego-SAG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +117,7 @@ Grounding 3D Scene Affordance From Egocentric Interactions——在清单中归�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2409.19650>
+- [arXiv PDF](https://arxiv.org/pdf/2409.19650)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A–D）
 
 ## 推荐继续阅读
 

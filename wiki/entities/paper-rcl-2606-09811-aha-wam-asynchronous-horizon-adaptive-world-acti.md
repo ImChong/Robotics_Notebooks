@@ -42,6 +42,31 @@ Therefore, we propose AHA-WAM, an Asynchronous Horizon-Adaptive World-Action Mod
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["视觉观测 + 语言指令 + 本体感觉"] --> VAE["预训练 VAE 编码视觉 latent"]
+    subgraph PL["低频：视频 DiT（world planner）"]
+        VAE --> V1["视频 DiT 前向（planner refresh）"]
+        MEM[("滚动 K/V 记忆<br/>FIFO，逐层保存历史 planner 状态")] --> V1
+        V1 --> MEM
+        V1 --> CTX["逐层 planner 视频上下文 C_p = (K, V)"]
+    end
+    subgraph EX["高频：动作 DiT（executor，闭环）"]
+        OBS["最新视觉 token"] --> OV["OVCR：注意力池化得到路由查询<br/>读取 planner 上下文并预测残差 K/V 更新<br/>门控残差得到 chunk 专用上下文"]
+        CTX --> OV
+        ST["本体感觉 → 状态 token"] --> AD
+        OV --> AD["动作 DiT：逐层联合注意力<br/>对噪声动作去噪"]
+        AD --> ACT["动作块 A_t"]
+    end
+    TR["训练：联合 flow matching（动作 + 未来视频 latent）<br/>horizon-adaptive 偏移训练：动作块网格随机平移 δ"] -.-> PL
+    TR -.-> EX
+    CTX -.->|"一次 planner 上下文被多个动作块复用"| OBS
+```
+
+图依据：论文 §3 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +124,7 @@ Therefore, we propose AHA-WAM, an Asynchronous Horizon-Adaptive World-Action Mod
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.09811>
+- [arXiv PDF](https://arxiv.org/pdf/2606.09811)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Asynchronous Horizon-Adaptive World-Action Modeling（3.1-3.5）；§4 实验略读
 
 ## 推荐继续阅读
 

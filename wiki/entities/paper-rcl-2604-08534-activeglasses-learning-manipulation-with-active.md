@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["徒手演示: XREAL 眼镜 + ZED Mini 立体相机<br/>采集立体视频 + 6DoF 头部轨迹"] --> B["FoundationStereo 深度估计<br/>反投影为点云"]
+    B --> C["Grounded-SAM 去除手部点 / SAM2 分割物体"]
+    C --> D["FoundationPose 估计物体 6-DoF 轨迹"]
+    A --> E["三球标定建立世界系<br/>后续帧用头部位姿相对运动传播"]
+    E --> F["统一世界系点云"]
+    C --> F
+    F --> G["训练 3D object-centric 策略<br/>(改自 RISE)"]
+    D --> G
+    G --> H["推理: 世界系点云输入"]
+    H --> I["扩散头 1: 物体绝对轨迹"]
+    H --> J["扩散头 2: 头部相对运动轨迹"]
+    H --> K["终止标志"]
+    I --> L["主机械臂执行物体轨迹<br/>(物体位姿 -> 末端位姿)"]
+    J --> M["6DoF 桌面机械臂模仿头部运动<br/>主动感知"]
+```
+
+图依据：论文 §III.A–§III.C / Fig.2、Fig.6、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.08534>
+- [arXiv PDF](https://arxiv.org/pdf/2604.08534)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III（A 硬件、B 数据处理、C 算法设计）、§IV 开头的研究问题与 Algorithm 1
 
 ## 推荐继续阅读
 

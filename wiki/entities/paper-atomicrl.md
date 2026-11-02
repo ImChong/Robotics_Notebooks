@@ -32,6 +32,29 @@ summary: "AtomicRL post-trains VLA policies for long-horizon manipulation using 
 
 长程操作的最终成败可能由多个连续子任务决定。只在整条轨迹末端给稀疏奖励，会让早期动作承担模糊信用；如果某个子任务掌握不足，其他已会阶段的改进也难以转化成全任务成功。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["单条真机多模态示范 + 机器人元数据<br/>(+ 必要的辅助物体观测)"] --> B["Real2Sim2Real 构建流程 B<br/>重建交互式仿真环境 + 共享观测-动作接口 C + 可复现随机初始布局"]
+    B --> ENV["RLinf 并行仿真环境"]
+    PI["VLA 策略 π_θ<br/>按原子子任务序列 g_1..g_K 输出动作块"] --> ENV
+    ENV --> ROL["批量在线 rollout"]
+    PCC["Progress–Completion Critic<br/>由最近 L 步观测-动作估计子任务进度与完成<br/>→ 语义边界 b_t（离线用示范训练）"]
+    ROL --> PCC
+    PCC --> SAPO["SAPO：软门控 GAE<br/>子任务内正常传播；失败子任务跨边界衰减 κ_t"]
+    PCC --> BATE["BATE：按各子任务完成率滑动平均 μ_k<br/>调整任务采样权重与熵正则强度"]
+    PCC -.可选.-> PBSR["进度型稠密奖励 PBSR"]
+    SAPO --> UPD["策略 + 价值更新"]
+    BATE --> UPD
+    PBSR -.-> UPD
+    BATE -.定向探索 / 采样.-> ENV
+    UPD --> PI
+    UPD --> DEP["经同一接口 C 部署到真机评测"]
+```
+
+图依据：论文 §3.1 至 §3.5 与 Fig. 2。
+
 ## 核心原理
 
 AtomicRL 用原子任务结构标记进度与完成边界。SAPO 根据子任务结果控制 TD residual 跨边界传播，减少失败阶段对其他阶段的信用污染；BATE 按各原子任务掌握情况调整任务采样和局部探索，把训练集中到瓶颈环节。Real2Sim2Real 管线将仿真在线 RL 与真机部署连接。
@@ -83,6 +106,7 @@ arXiv 摘要报告：LIBERO-LONG 两种 VLA 架构的绝对表现分别比 PPO �
 
 - [AtomicRL 论文归档](../../sources/papers/atomicrl_arxiv_2610_30097.md)
 - [arXiv:2610.30097](https://arxiv.org/abs/2610.30097)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30097)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 Method（3.1–3.5）、§4.1 实验设置
 
 ## 推荐继续阅读
 

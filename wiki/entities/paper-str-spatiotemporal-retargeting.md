@@ -19,6 +19,28 @@ summary: "STR allocates motion-retargeting effort to task-critical keyframes, bo
 
 **一句话定义：** STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类演示视频<br/>+ 对齐的 SMPL 与物体轨迹"] --> B["VLM（Qwen）读取整段视频<br/>识别关键阶段，选择信号函数与关键身体部位"]
+    B --> C["自定义信号库 + 轨迹分析<br/>Δv_t 与阈值 θ 比较（θ 初值由 VLM 给出）"]
+    C --> D["关键阶段与触发帧<br/>每个阶段的首帧 = 关键帧"]
+    D --> E["时间偏好：SQP 迭代预算<br/>初始 B_init=50，关键帧 B_τ=4，普通帧 B_base=2"]
+    D --> F["空间偏好：关键部位及邻近物体顶点<br/>交互权重 α_t,i 随阶段内时间衰减"]
+    A --> G["接触目标设计 MCA<br/>初始锚点 → 接触力估计 ⇄ 锚点调整"]
+    B --> F
+    G --> H["固定的物体局部接触位置/方向目标"]
+    E --> I["带约束的逐帧 SQP 优化<br/>交互网格 Laplacian 残差 + 接触位置/方向项 + 正则"]
+    F --> I
+    H --> I
+    I --> J["稠密机器人参考轨迹（上一帧解初始化下一帧）"]
+    J --> K["STRL：PPO 全身跟踪策略<br/>关键阶段自适应起始采样"]
+    K --> L["奖励 r = r_track + λ_c·r_contact<br/>关键部位贴近物体表面目标"]
+```
+
+图依据：论文 §III-A–D / Fig.2（STR 与 STRL 总览）。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -68,6 +90,7 @@ summary: "STR allocates motion-retargeting effort to task-critical keyframes, bo
 
 - [STR 论文归档](../../sources/papers/str_arxiv_2610_30540.md)
 - [arXiv:2610.30540](https://arxiv.org/abs/2610.30540)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30540)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）；实验 §IV 与附录未读
 
 ## 关联页面
 

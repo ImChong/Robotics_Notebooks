@@ -42,6 +42,26 @@ Asynchronous architecture: tactile encoder (System 1) performs continuous stream
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["指尖 1D 力传感器, 100 Hz 触觉流"] --> B["RevIN + Channel Independence"]
+    B --> C["堆叠 Mamba block: 选择性 SSM, 参数 Δ / B / C 随输入变化"]
+    C --> D["压缩隐状态 ht, 每个新读数 O(1) 更新"]
+    subgraph S1["Stage 1: 时序判别自监督预训练"]
+        P1["按触觉梯度幅值自动切分子任务阶段"] --> P2["构造状态对 (hi, hj), 关系均衡采样"]
+        P2 --> P3["判别器分类 Early / Simultaneous / Late, 交叉熵损失"]
+    end
+    D --> P2
+    D --> S2["Stage 2: 冻结 Mamba 编码器, 把 ht 投影为 soft prompt z_tac"]
+    S2 --> V["低频 (约 1 Hz) VLA 推理, 异步注入触觉 soft prompt"]
+    P1 --> S3["Phase-Uniform Sampling: 各子任务阶段在 batch 中等权"]
+    S3 --> V
+```
+
+图依据：论文 §III、§IV-A–B（Fig. 1–3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Asynchronous architecture: tactile encoder (System 1) performs continuous stream
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.01700>
+- [arXiv PDF](https://arxiv.org/pdf/2603.01700)：已通读方法部分（实验与附录以略读为准）：§III 硬件、§IV 方法、§V-A 实验设定
 
 ## 推荐继续阅读
 

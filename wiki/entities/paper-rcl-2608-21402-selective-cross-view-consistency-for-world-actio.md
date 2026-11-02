@@ -42,6 +42,28 @@ We introduce a carve-and-hold-out evaluation protocol on the LIBERO-Plus camera 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["同一物理状态 s（演示样本）"] --> V0["名义相机渲染 o0"]
+    S --> VP["扰动相机渲染 op"]
+    V0 --> N["每对样本共享同一 (σ, 噪声 n)"]
+    VP --> N
+    N --> D0["Cosmos Policy 去噪器 D_θ，分支 0<br/>仅场景相机的潜帧序列"]
+    N --> DP["Cosmos Policy 去噪器 D_θ，分支 p"]
+    D0 --> SUP["逐视角监督项（两分支各自）<br/>覆盖 View-covariant 块：未来场景帧"]
+    DP --> SUP
+    D0 --> SEL["选择器 Π_I 只取 view-invariant 块<br/>动作 chunk / 未来本体感觉 / 价值"]
+    DP --> SEL
+    SEL --> CV["一致性项 λ·‖Π_I(D0 − Dp)‖²<br/>λ 前 2% 训练线性升至 2.0"]
+    SUP --> L["总损失 L"]
+    CV --> L
+    L --> DEP["部署接口不变：无需相机标签 / 外参 / 深度 / 视图合成<br/>配对结构只存在于损失中"]
+```
+
+图依据：论文 §III–IV.A / Fig.1a、Eq.(1)（SCVC 仅对不变块施加一致性）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ We introduce a carve-and-hold-out evaluation protocol on the LIBERO-Plus camera 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.21402>
+- [arXiv PDF](https://arxiv.org/pdf/2608.21402)：已通读方法部分（实验与附录以略读为准）：§III、§IV（含命题 1–2），§VI.A 实验设定
 
 ## 推荐继续阅读
 

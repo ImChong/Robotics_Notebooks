@@ -29,6 +29,26 @@ StarWM用注意力路由减少移动背景对任务相关预测的干扰。
 
 StarWM用注意力路由减少移动背景对任务相关预测的干扰。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 o_t"] --> B["Encoder<br/>取中间特征图 C×H×W，展开为 L=HW 个空间 token F_t"]
+    B --> C["Cross-Attention 空间路由<br/>N 个可学习 query，得注意力图 A_t（N×L）"]
+    C --> D["注意力池化特征<br/>e_attn = flatten(A_t F_t)（不含坐标）"]
+    D --> E["自监督信号训练注意力<br/>Inverse Dynamics L_inv + 时序对比 L_ctr"]
+    E -. "仅更新注意力参数" .-> C
+    C -->|"stop-gradient 副本 Ā_t"| F["动力学流：e_dyn = Ā_t V_t<br/>（V_t 含空间坐标）"]
+    F --> G["RSSM 潜动力学模型（沿用 DreamerV3，不变）<br/>用于想象 rollout 与策略学习"]
+    B --> H["残差流：Gaussian 瓶颈（类 VAE）<br/>吸收背景，不进入 RSSM、想象时丢弃"]
+    G --> I["Dual-Stream Decoder · 动力学流<br/>Spatial Broadcast 把 ê_t 按 Ā_t 画回空间位置"]
+    I --> J["特征级合成<br/>F̂ = F̂_fg ⊙ M + F̂_bg ⊙ (1−M)"]
+    H --> J
+    J --> K["转置卷积上采样 → 重建 L_img"]
+```
+
+图依据：论文 §3 / Fig.1、§3.1–§3.3（Eq.5–9）。
+
 ## 方法栈
 
 自监督动力学目标训练路由器，选择关键区域并分别解码前景内容与背景。
@@ -70,6 +90,7 @@ StarWM用注意力路由减少移动背景对任务相关预测的干扰。 评�
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.30667](https://arxiv.org/abs/2609.30667)
+- [arXiv PDF](https://arxiv.org/pdf/2609.30667)：已通读方法部分（实验与附录以略读为准）：摘要、§2 预备知识、§3 方法（3.1–3.3）、§4 实验开头
 
 ## 推荐继续阅读
 

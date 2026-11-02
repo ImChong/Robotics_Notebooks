@@ -43,6 +43,29 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始观测帧 I0 + 任务文本 (CLIP 编码 z_task)"] --> B["VLM (GPT-4o)<br/>由末端-目标相对偏移 Δp 生成<br/>Spatial Plan Table (动作类型/方向/距离)"]
+    B --> C["子目标嵌入 e_subplan<br/>(动作嵌入+方向嵌入+距离 MLP)"]
+    C --> D["全局条件 T = [z_task; e_1..e_n]"]
+    A --> D
+    D --> E["条件扩散 U-Net 视频生成<br/>预测未来 7 帧"]
+    E --> F{"GPT-4o 视频一致性检查"}
+    F -->|"未通过"| E
+    F -->|"通过"| G["取生成视频中的目标图 I_goal"]
+    G --> H["Flow-Based 动作预测<br/>输入: I_cur, I_goal, 机械臂坐标 p_cur, Farnebäck 光流 F_t"]
+    H --> I["U-Net Diffusion Policy<br/>输出动作序列 a_0:H-1"]
+    I --> J["环境逐步执行"]
+    J --> K{"规则式策略诊断<br/>位置漂移/行为停滞?"}
+    K -->|"触发"| L["重算末端-目标偏移<br/>GPT-4o 更新 Spatial Plan Table"]
+    L --> D
+    K -->|"正常"| J
+```
+
+图依据：论文 §3 Spatial Policy（§3.1–3.3）/ Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +123,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2508.15874>
+- [arXiv PDF](https://arxiv.org/pdf/2508.15874)：已通读方法部分（实验与附录以略读为准）：§3 Spatial Policy（3.1–3.3）、§4 实验设定
 
 ## 推荐继续阅读
 

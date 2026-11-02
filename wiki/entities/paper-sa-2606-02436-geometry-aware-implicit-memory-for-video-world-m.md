@@ -42,6 +42,32 @@ Proposes a geometry-aware implicit memory framework that compresses variable-len
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    HIST["历史帧 latent<br/>VAE + patch embedding"] --> PRUNE["信息引导剪枝 §3.4<br/>互信息 + 高斯过程（位姿-时间核）<br/>贪心保留至多 K 帧"]
+    PRUNE --> CAMADD["历史 token 加相机嵌入 Ec(ci)"]
+    Q0["Nm 个可学习记忆查询 Q0<br/>不含位姿"] --> ENC
+    CAMADD --> ENC["记忆编码器 §3.2（2 个 block）<br/>紧凑 self-attention（Compact/Expand）+ FFN"]
+    ENC --> MEM["固定大小记忆 token m"]
+    MEM --> DIT["扩散 DiT 骨干<br/>沿时间轴与目标 latent 拼接"]
+    ACT["动作序列 a / 动作嵌入"] --> DIT
+    DIT --> NEXT["生成下一段 latent 帧<br/>（自回归 rollout）"]
+    NEXT -->|"追加到历史"| HIST
+    DIT --> LFM["流匹配损失 LFM"]
+    subgraph TRAIN["仅训练期：相机可查询的几何监督 §3.3"]
+        SAMP["随机采样一个历史帧 i 的相机 ci"] --> RAY["射线图 → MLP + 2D 位置嵌入 → 查询 qi"]
+        RAY --> GH["几何头：CrossAttn(qi, m) → SelfAttn → FFN"]
+        GH --> LGEO["与冻结 VGGT 特征做逐 patch 余弦损失 Lgeo"]
+    end
+    MEM --> GH
+    LFM --> LOSS["总损失 L = LFM + λ·Lgeo<br/>记忆编码器、几何头、骨干端到端联合训练"]
+    LGEO --> LOSS
+```
+
+图依据：论文 §3.2–§3.5 / Fig.2（推理时丢弃 VGGT 与几何头）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Proposes a geometry-aware implicit memory framework that compresses variable-len
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.02436>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02436)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.2 记忆编码器、§3.3 几何监督、§3.4 信息引导剪枝、§3.5 训练与推理、§4.1 实验设定；§2 相关工作与实验结果略读
 
 ## 推荐继续阅读
 

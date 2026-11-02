@@ -42,6 +42,46 @@ summary: "并行 IsaacSim/IsaacGym/Genesis 等多引擎训练，把随机化从�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph TC["TrainClient（学习器）"]
+        CFG["统一训练配置<br/>scene / agent / task"] --> OBS["观测与奖励计算"]
+        OBS --> NN["策略网络"]
+        NN -->|"动作"| ACT["动作输出"]
+        NN --> OPT["优化器更新"]
+    end
+    subgraph SR["Simulator Router"]
+        PH["物理对齐<br/>Physics Harmonization"]
+        API["接口翻译<br/>API Translation"]
+        NUM["数值归一化<br/>Numerical Normalization"]
+    end
+    subgraph SS["SimServers（隔离进程，并行 rollout）"]
+        E1["IsaacGym"]
+        E2["IsaacSim"]
+        E3["Genesis"]
+        E4["MuJoCo 等"]
+    end
+    CFG -->|"统一初始化配置"| PH
+    PH --> E1
+    PH --> E2
+    PH --> E3
+    PH --> E4
+    ACT -->|"GPU 直通 RPC/NCCL"| NUM
+    NUM --> E1
+    NUM --> E2
+    NUM --> E3
+    NUM --> E4
+    E1 --> API
+    E2 --> API
+    E3 --> API
+    E4 --> API
+    API -->|"同形状 o, r, d, info"| OBS
+```
+
+图依据：论文 §III（A 训练-仿真隔离、B Simulator Router、C GPU 直通通信）、Fig.3 系统总览（Mode III）；箭头按 Fig.3 图注与正文归纳。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +130,7 @@ summary: "并行 IsaacSim/IsaacGym/Genesis 等多引擎训练，把随机化从�
 - [freedof_sim2real_19_polysim-multi-simulator-humanoid-sim2real.md](../../sources/papers/freedof_sim2real_19_polysim-multi-simulator-humanoid-sim2real.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2510.01708)：已通读方法部分（实验与附录以略读为准）：§III 方法（A/B/C）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["三视角 RGB 拼成单张 composite 图<br/>proprioception 状态 / 动作 chunk / 语言指令"] --> B["预训练 VAE 编码为视觉 token T_o、T_f<br/>线性投影得状态 token T_s、动作 token T_a"]
+    B --> C["5B 扩散 Transformer（Wan 初始化）<br/>共享 Transformer 块，语言经 cross-attention 注入"]
+    C --> D["分块因果注意力<br/>T_s、T_o 互相可见；T_a 只看 T_s、T_o；T_f 可看 T_s、T_o、T_a"]
+    D --> E["flow matching 输出<br/>动作 chunk 与稀疏未来帧"]
+    subgraph TRAIN["训练"]
+        T1["网页视频预训练的视频模型"] --> T2["具身数据预训练：机器人视频 + 第一人称人类视频<br/>仅视频 flow-matching 损失"]
+        T2 --> T3["目标机器人轨迹后训练<br/>视频损失 + 动作损失加权"]
+    end
+    subgraph INFER["推理"]
+        I1["仅采样动作 token<br/>不生成未来视频"] --> I2["执行动作，观测新状态后重复"]
+        I1 -. "可选：开启视频分支或复用 KV cache" .-> I3["未来帧预测"]
+    end
+    T3 --> C
+    E --> I1
+```
+
+图依据：论文 §3.1–3.4 / Fig.3–4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.17240>
+- [arXiv PDF](https://arxiv.org/pdf/2603.17240)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题设定、3.2 架构、3.3 训练、3.4 推理）；§1、§4 实验略读
 
 ## 推荐继续阅读
 

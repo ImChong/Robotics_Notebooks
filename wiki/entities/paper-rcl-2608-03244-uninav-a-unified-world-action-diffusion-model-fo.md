@@ -41,6 +41,22 @@ We present UniNav, a unified world-action model that generates future visual obs
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  H["历史帧 I(t-C+1:t)<br/>+ 目标图像 Ig"] --> VAE["冻结 video VAE<br/>历史/目标/未来帧 → 视觉 token"]
+  VAE --> SEQ["异构 token 序列<br/>相机 · 未来视频 · 轨迹 · 历史 · 目标 · register"]
+  GEO["冻结几何基础模型 G<br/>相机 token 目标"] --> SEQ
+  NZ["随机噪声初始化<br/>未来图像 / K 步 waypoint"] --> SEQ
+  SEQ --> DiT["共享 denoising transformer<br/>统一 flow matching"]
+  DiT --> LOSS["Lvid + Ltraj + Lcam<br/>视频 / 轨迹 / 相机 token 损失"]
+  DiT --> OUT["多步迭代去噪<br/>K 步 waypoint 轨迹 + 未来观测"]
+  DiT -.-> FAST["UniNav-Fast<br/>非对称注意力掩码训练<br/>推理去掉未来视频 token 直接采样轨迹"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ We present UniNav, a unified world-action model that generates future visual obs
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.03244>
+- [arXiv PDF](https://arxiv.org/pdf/2608.03244)：已通读方法部分（实验与附录以略读为准）：3 Method（Overview、Geometry-Aware Token Representation、Unified Flow-Matching Objective、UniNav-Full/Fast）
 
 ## 推荐继续阅读
 

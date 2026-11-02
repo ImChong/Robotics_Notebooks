@@ -41,6 +41,25 @@ summary: "X-World（arXiv:2610.34105）：用跨视角残差注意力和固定�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I[输入: 1-3 路相机 RGB<br/>语言指令 + 本体状态] --> V[LTX-Video 视频骨干<br/>保留逐视角 self-attention<br/>零初始化残差跨视角注意力 + 视角嵌入]
+  V --> Q[层对齐 Q-Former<br/>可学习 query 逐层读取骨干隐状态<br/>输出固定长度 token z]
+  Q --> D[共享动作专家 Action DiT<br/>self-attn 状态与动作 token<br/>cross-attn 到 z]
+  P[数据集专属状态投影 / 噪声动作输入投影] --> D
+  D --> H[数据集专属输出头<br/>解码为原生动作参数化]
+  H --> C[长度 H=16 的动作块]
+  C --> F[异步动作分块执行<br/>FIFO 队列 + 已提交前缀]
+  F -.剩余长度达阈值 P 时刷新.-> V
+  S1[阶段1 视频适配<br/>机器人与人类视频, L_vid] -.训练.-> V
+  S2[阶段2 动作预训练<br/>冻结骨干, L_act] -.训练.-> Q
+  S3[阶段3 目标域后训练<br/>L_vid + L_act, 更新全部模块] -.训练.-> D
+```
+
+图依据：论文 §3.1–3.4 / Fig.1、Fig.2、Table 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +102,7 @@ summary: "X-World（arXiv:2610.34105）：用跨视角残差注意力和固定�
 - [x_world_variable_view_video_priors_arxiv_2610_34105.md](../../sources/papers/x_world_variable_view_video_priors_arxiv_2610_34105.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.34105](https://arxiv.org/abs/2610.34105)
+- [arXiv PDF](https://arxiv.org/pdf/2610.34105)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法（问题与设计、变视角视频表示、共享动作专家与三阶段训练、特征提取与异步执行）、Fig.1–2、Table 1；§4 仅略读
 
 ## 推荐继续阅读
 

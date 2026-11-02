@@ -43,6 +43,22 @@ We propose ImageWAM, a simple WAM framework that repurposes pretrained image edi
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["当前观测 o_t + 任务指令 l"] --> LLM["冻结 LLM / VLM<br/>编码指令与视觉上下文"]
+  IN --> VAE["冻结 VAE 编码器"]
+  LLM --> EB["图像编辑骨干 (如 OmniGen2)<br/>扩散图像分支可训练"]
+  VAE --> EB
+  EB -->|"训练: 随机采样编辑去噪步 τ<br/>推理: 固定 τ* 只前向一步"| KV["逐层 KV cache C_edit<br/>(无需解码编辑图像)"]
+  EB -.训练.-> IMG["预测终点未来帧 o_{t+H+1}<br/>图像损失 L_img"]
+  KV -->|"联合注意力"| AE["Action Expert (可训练)<br/>以机器人状态 + 动作噪声去噪"]
+  AE --> ACT["动作块 a_{t:t+H}<br/>流匹配损失 L_act"]
+```
+
+图依据：论文 §3.1–§3.4、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +116,7 @@ We propose ImageWAM, a simple WAM framework that repurposes pretrained image edi
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.19531>
+- [arXiv PDF](https://arxiv.org/pdf/2606.19531)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）；§4 实验略读（设定与主结果）
 
 ## 推荐继续阅读
 

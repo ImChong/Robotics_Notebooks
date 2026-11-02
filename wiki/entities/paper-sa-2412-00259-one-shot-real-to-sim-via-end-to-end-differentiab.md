@@ -43,6 +43,36 @@ One-shot real-to-sim via end-to-end differentiable simulation and rendering
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["稀疏观测：RGB-D 图像、相机位姿<br/>末端位姿与接触力、分割掩码"] --> GP["几何先验：TripoSR 由单张分割 RGB 生成网格<br/>RANSAC + 带尺度 ICP 配准到首帧局部点云"]
+    GP --> REP
+    subgraph REP["可微物体表示 θ"]
+        P["带法向有向点云 P"] -->|"可微 Poisson 求解（FFT）"| CHI["指示场网格 χ（128³）"]
+        CHI -->|"可微 marching cubes"| MESH["三角网格 M"]
+        PSI["外观颜色网格 ψ"] -->|"三线性插值到顶点"| MESH
+        PH["物理参数：质量惯量、摩擦系数 μ"]
+    end
+    TER["地形：有向彩色点云 Pt<br/>被遮挡部分假设为平面补全，仅优化颜色"] --> SIM
+    MESH --> SIM["可微刚体仿真器（LCP + 灵敏度分析）+ PyTorch3D 可微渲染"]
+    PH --> SIM
+    CTRL["机器人推动轨迹与控制 ⟨e_t, u_t⟩"] --> SIM
+    SIM --> RIMG["渲染 RGB-D 与末端位置"]
+    RIMG --> L["与观测比较的损失"]
+    OBS --> L
+    L -->|"梯度回传 θ"| REP
+    subgraph OPT["两阶段优化"]
+        ST1["阶段 1：仅首帧<br/>RGB / 深度 / 单向 Chamfer / 无穿透 / 静平衡 / 正则 / 平滑"]
+        ST2["阶段 2：全时间步<br/>首帧损失 + 点云损失 + 机器人末端位置损失<br/>仅渲染两个中间帧和末帧"]
+        ST1 --> ST2
+    end
+    L -.-> OPT
+```
+
+图依据：论文 §III–§IV / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ One-shot real-to-sim via end-to-end differentiable simulation and rendering
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2412.00259>
+- [arXiv PDF](https://arxiv.org/pdf/2412.00259)：已通读方法部分（实验与附录以略读为准）：§I–§IV（III 问题定义、IV-A 至 IV-C）；§V 实验未读
 
 ## 推荐继续阅读
 

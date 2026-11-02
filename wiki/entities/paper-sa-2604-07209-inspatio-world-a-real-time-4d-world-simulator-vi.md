@@ -42,6 +42,29 @@ Translates user interactions into camera trajectories for high-precision camera-
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph INF["推理: 时空自回归 (STAR), 按 chunk 生成"]
+        R["参考视频"] --> ST["时空缓存 ST-Cache<br/>参考 latent 锚点 + 历史 latent 滑动窗口"]
+        R --> FFR["前馈重建 FFR: 深度 + 相机内参"]
+        U["用户交互指令"] --> P["6-DoF 相对位姿累积"]
+        P --> W["重投影得到 warp 特征 + 有效像素 mask"]
+        FFR --> W
+        ST --> D["DiT 去噪生成第 i 个 block"]
+        W --> D
+        D --> O["输出视频 block, 进入历史缓存"]
+    end
+    subgraph TR["训练: JDMD 联合分布匹配蒸馏 (共享权重)"]
+        V2V["V2V 重渲染任务<br/>合成数据微调教师 -> L_ctrl"] --> S["学生模型"]
+        T2V["T2V 任务<br/>Wan T2V 教师 -> L_vis"] --> S
+    end
+    S -.-> D
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2（STAR 框架与 JDMD 蒸馏）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Translates user interactions into camera trajectories for high-precision camera-
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.07209>
+- [arXiv PDF](https://arxiv.org/pdf/2604.07209)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1 问题形式化、3.2 STAR 框架、3.3 JDMD、3.4 实现细节）、§4.1 实验设定
 
 ## 推荐继续阅读
 

@@ -42,6 +42,41 @@ Visuo-tactile inference-time steering framework formulating multimodal guidance 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测 o_t<br/>RGB + GelSight 触觉图像 + 本体状态"]
+    ENC["冻结编码器<br/>视觉 DINOv3、触觉 AnyTouch2 → 潜变量 z^v, z^τ"]
+    L["任务文本 L<br/>VLM 离线分解为分阶段目标 ℓ^v_p, ℓ^τ_p"]
+    POL["预训练扩散策略 π_θ<br/>采样候选动作"]
+    WM["视觉-触觉潜在世界模型 p_φ<br/>动作条件下递归预测未来潜变量"]
+    OBS --> ENC
+    OBS --> POL
+    subgraph HI["高层：视觉采样与验证（长视野 H）"]
+        ROLL["N 条长视野候选在世界模型中滚动<br/>视觉潜变量解码为 RGB"]
+        RV["ROBOMETER 视觉奖励 R_v 打分<br/>选出最优动作模式 ā"]
+        ROLL --> RV
+    end
+    subgraph LO["低层：触觉引导扩散编辑（短视野 h）"]
+        PRIOR["取 ā 前 h 步，部分加噪到扩散层级 K"]
+        RT["触觉奖励 R_τ<br/>预测触觉潜变量与文本目标的余弦相似度"]
+        EDIT["触觉引导反向去噪<br/>在策略先验上叠加 β·R_τ"]
+        PRIOR --> EDIT
+        RT --> EDIT
+    end
+    POL --> ROLL
+    ENC --> WM
+    WM --> ROLL
+    L --> RV
+    L --> RT
+    WM --> RT
+    RV --> PRIOR
+    EDIT --> ACT["执行精炼后的动作块 a*"]
+```
+
+图依据：论文 §4 / Eq.1 与 Fig.1（§4.1 双层优化、§4.2 潜在世界模型、§4.3 验证器、§4.4 推理时优化）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +131,7 @@ Visuo-tactile inference-time steering framework formulating multimodal guidance 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.14981>
+- [arXiv PDF](https://arxiv.org/pdf/2606.14981)：已通读方法部分（实验与附录以略读为准）：§3 问题设定、§4 方法（双层视觉-触觉转向、潜在世界模型、视觉/触觉验证器、推理时优化）；§5 实验与附录略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ Trains VLMs on datasets with varying degrees of semantic alignment, including na
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    DATA["唯一允许的训练数据: BabyView 2025.1<br/>约 863 小时第一视角视频 (约 673 小时语音)<br/>不得使用其它图像/视频/文本/音频, 含编码器初始化"] --> TRAIN["参赛者自行设计架构与目标训练 VLM"]
+    TRAIN --> E1["跨模态语言落地: Machine-DevBench<br/>约 3,700 试次 / 10 任务, 词汇来自模型自身训练词表<br/>词汇聚合 + 语法聚合 + 总体"]
+    TRAIN --> E2["视觉任务 (评测视觉编码器): 6 个基准<br/>物体识别子组 + 视觉属性子组"]
+    TRAIN --> E3["语言任务 (评测文本编码器): 5 个基准<br/>句法子组 + 语义子组"]
+    E2 -->|"与同数据单模态基线比较总体分差"| BASE["单模态基线: DINOv2 / BERT 或 GPT2"]
+    E3 -->|"与同数据单模态基线比较总体分差"| BASE
+    E1 --> LB["统一评测框架与公开排行榜"]
+    BASE --> LB
+```
+
+图依据：论文 §4 The EgoBabyVLM Challenge / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Trains VLMs on datasets with varying degrees of semantic alignment, including na
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.19130>
+- [arXiv PDF](https://arxiv.org/pdf/2605.19130)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 语义对齐度量与数据集比较、§4 EgoBabyVLM Challenge；基线训练细节、实验表格与附录以略读为准
 
 ## 推荐继续阅读
 

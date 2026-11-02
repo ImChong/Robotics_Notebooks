@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignment——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignment——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,33 @@ RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignmen
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN[RGB-D 查询图 I_q + 任务标签 T]
+  MEM[(Affordance Memory<br/>Grounded-SAM 裁剪目标 + CLIP 外观嵌入 f + 任务标签 + 2D affordance 标注<br/>来源 DROID / HOI4D)]
+  IN --> R1[CLIP 文本编码器<br/>按任务相关性筛选记忆]
+  MEM --> R1
+  R1 --> R2[CLIP 图像余弦相似度<br/>检索 top-K 参考]
+  R2 -->|仅 top-1| ST[静态 affordance：接触点<br/>Stable Diffusion 稠密特征匹配，取最大余弦相似位置 c_q]
+  R2 -->|top-K| DY
+  subgraph DY["动态 affordance：检索增强跨图动作对齐"]
+    D1[共享 SigLIP-2 编码参考与查询图 patch token]
+    D2[参考 token 经动作向量 MLP 产生 FiLM 调制<br/>+ 参考 ID 嵌入]
+    D3[交叉注意力：查询 token 为 Q，K 个参考 token 为 K/V<br/>双重加权：门控网络 w_k x softmax 检索相似度]
+    D4[拼接 CLS token → Transformer 编码器 → MLP 回归 2D 动作方向 a_q]
+    D1 --> D2 --> D3 --> D4
+  end
+  ST --> LIFT
+  DY --> LIFT[采样式 2D 到 3D 提升<br/>相机内参 + 点云得 3D 接触点与 3D 位移向量]
+  LIFT --> GR[稠密抓取采样器，选最接近 3D 接触点的抓取位姿]
+  GR --> IK[逆运动学 + 无碰撞轨迹]
+  IK --> ACT[抓取后沿 3D 位移向量运动<br/>仿真位置控制 / 真机笛卡尔阻抗控制]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2（Overview of RAAP）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +78,7 @@ RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignmen
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.29419)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.29419)。
 
 ## 评测与指标
 
@@ -67,7 +94,7 @@ RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignmen
 
 **本页只提供「RAAP」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +115,7 @@ RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignmen
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.29419>
+- [arXiv PDF](https://arxiv.org/pdf/2603.29419)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III Method（A 记忆、B 检索与静态迁移、C 动态对齐、D 执行）、§IV-A 实验设定。
 
 ## 推荐继续阅读
 

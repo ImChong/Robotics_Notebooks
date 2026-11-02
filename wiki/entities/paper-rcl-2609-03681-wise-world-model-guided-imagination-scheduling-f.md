@@ -42,6 +42,24 @@ WISE post-trains a VLA action head by selectively imagining alternative behavior
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实上下文 O_t（腕部 + 第三人称视角）+ 语言指令"] --> B["想象调度器：冻结 DINOv2 + 轻量头预测交互相关性 s_t"]
+    B --> C{"s_t > κ ?"}
+    C -- 否 --> D["跳过想象"]
+    C -- 是 --> E["VLA 策略采样 M 个候选动作块 a_t,i"]
+    E --> F["冻结世界模型（改自 Open-Sora）做有界闭环想象<br/>共 L 个动作块，每块预测 H 帧"]
+    F --> G["奖励模型（独立 DINOv2）逐帧估计进度 / 置信 / 完成<br/>汇总为候选奖励 R_i；每个候选想象两次取平均"]
+    G --> H{"可靠性过滤：ΔR、排序一致性 ρ_rank、世界模型方差 σ_WM"}
+    H -- 不通过 --> D
+    H -- 通过 --> I["组内标准化得到优势 A_i"]
+    I --> J["GRPO 风格更新：仅监督真实上下文的首个动作块 a_t,i<br/>并加参考项 λ_ref L_ref"]
+```
+
+图依据：论文 §3.2–3.4 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ WISE post-trains a VLA action head by selectively imagining alternative behavior
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03681>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03681)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

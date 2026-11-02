@@ -41,6 +41,22 @@ We introduce SelfWAM, a unified self-grounded WAM built on a modality-specialize
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  CTX["当前上下文：多视角 RGB + 本体 + 语言"] --> MOT["模态专门化 MoT<br/>视频主干（Wan2.2-5B）+ 轻量动作专家<br/>混合注意力"]
+  NA["带噪未来动作 chunk"] --> MOT
+  CA["干净执行动作副本（t=0）<br/>只对未来视频 query 可见<br/>对动作预测不可见"] --> MOT
+  MOT --> AO["动作专家：去噪动作 chunk"]
+  MOT --> VP["视频分支（仅协同训练与可选 rollout）<br/>输出提示选择 RGB 或机器人 self-mask"]
+  VP --> RGB["未来 RGB 视频"]
+  VP --> MASK["未来机器人 self-mask 视频"]
+  AO --> DEP["部署：仅 action-only 路径<br/>编码当前观测后由轻量动作专家去噪"]
+```
+
+图依据：论文 §3（Problem Formulation、Architecture、Information Flow、Robot Mask Prediction、Training and Inference）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ We introduce SelfWAM, a unified self-grounded WAM built on a modality-specialize
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.00725>
+- [arXiv PDF](https://arxiv.org/pdf/2608.00725)：已通读方法部分（实验与附录以略读为准）：3 SelfWAM（Problem Formulation 至 Training and Inference）
 
 ## 推荐继续阅读
 

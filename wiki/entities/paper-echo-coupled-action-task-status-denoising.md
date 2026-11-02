@@ -21,7 +21,7 @@ summary: "Echo-VLA：Echo：面向视觉语言动作模型的动作与任务状�
 
 # Echo-VLA：Echo：面向视觉语言动作模型的动作与任务状态信号联合去噪
 
-**Echo-VLA**（*Echo: Coupled Action and Task Status Signal Denoising for Vision Language Action Models*，[arXiv:2610.31569](https://arxiv.org/abs/2610.31569)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Echo-VLA**（*Echo: Coupled Action and Task Status Signal Denoising for Vision Language Action Models*，[arXiv:2610.31569](https://arxiv.org/abs/2610.31569)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -37,6 +37,35 @@ summary: "Echo-VLA：Echo：面向视觉语言动作模型的动作与任务状�
 ## 为什么重要
 
 - 周报所述待解决的问题：VLA 需要同时决定下一步动作和判断当前任务状态。如果动作生成与任务状态估计分别学习，两者可能出现不一致。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据与监督构造"]
+        D1["成功示范 (遥操作)"] --> SUP
+        D2["终止失败 rollout"] --> SUP
+        D3["人工介入: 介入前失败片段 + 恢复示范"] --> SUP
+        SUP["按片段类型 + padding mask 构造<br/>动作 / SS / FS 目标 (Table 1)<br/>无需帧级进度标注"]
+    end
+    SUP --> TRAIN["联合 flow matching 损失<br/>L = Σ λ_q · ‖M_q ⊙ (v̂ - (ε - x0))‖²"]
+    subgraph MODEL["单一 π0.5 VLA"]
+        IN["观测 / 机器人状态 / 语言指令"] --> PRE["多模态前缀 tokens H_P"]
+        PRE --> TF["共享 Transformer (AdaRMS, 每 token flow time)<br/>动作 / SS / FS 三组 token, 独立 MLP 与输出头"]
+        TF --> ATT["受控注意力<br/>动作 token 看前缀与 SS/FS<br/>SS/FS 看动作 token, 屏蔽 SS-FS 互看"]
+        ATT --> ASYNC["异步去噪<br/>信号在 τ_clean 先于动作变干净并固定"]
+        ASYNC --> CHUNK["动作块 X_t = [动作, SS, FS]"]
+    end
+    TRAIN -.训练.-> TF
+    CHUNK --> AVG["块内平均得标量 s̄_t, f̄_t"]
+    AVG --> DEC{"s̄_t ≥ δ_s ?"}
+    DEC -- 否 --> ONG["Ongoing: 继续执行动作"]
+    DEC -- 是 --> FCHK{"f̄_t ≥ δ_f ?"}
+    FCHK -- 否 --> SUCC["Success: 停止"]
+    FCHK -- 是 --> FAIL["Terminal failure"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.2 / Table 1 / Eq.7
 
 ## 核心机制
 
@@ -88,6 +117,8 @@ summary: "Echo-VLA：Echo：面向视觉语言动作模型的动作与任务状�
 - [echo-coupled-action-task-status-denoising_arxiv_2610_31569.md](../../sources/papers/echo-coupled-action-task-status-denoising_arxiv_2610_31569.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.31569](https://arxiv.org/abs/2610.31569)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31569)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 相关工作、§3 Methodology（3.1 预备 / 3.2.1 状态表示 / 3.2.2 数据构造与监督 / 3.2.3 状态引导动作生成）、§4 实验设定与主结果表
+
 
 ## 推荐继续阅读
 

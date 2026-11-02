@@ -42,6 +42,25 @@ WHIRL learns when a human would take over a dexterous robot and uses that predic
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph HIL["人在回路遥操作（三通道）"]
+        A["SpaceMouse 控制 Franka 末端 + Manus 手套控制 LEAP 手<br/>脚踏板切换自主执行 / 人工接管"] --> B["踏板状态 i_t 作为每步二值干预标签<br/>接管时用 Δ-joint rebase 消除指令跳变"]
+    end
+    subgraph RL["残差 RL"]
+        C["冻结的行为先验 π_BC（遥操作示范训练）<br/>动作 a_t = a_BC + Δ_θ"] --> D["只在线更新残差 Δ_θ<br/>手部残差限制在低维 synergy 基"]
+    end
+    B --> E["回放缓冲区 D = D_demo ∪ D_auto ∪ D_int"]
+    D --> E
+    E --> F["干预感知世界模型（作用于 critic 编码器的 detached 潜变量 z_t）<br/>动力学集成 / 奖励头 / 终止头 / 下一步接管概率头"]
+    F --> G["Critic 路径：不确定性门 g_u 加权的想象 Bellman 辅助损失<br/>（接管概率头不进入 Bellman 目标）"]
+    F --> H["Actor 路径：效用 J = r̂ − α_d·d̂ − α_i·p̂_intv − α_u·u<br/>辅助 actor 损失，把策略推离易被接管的状态"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1–3（式 1–6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ WHIRL learns when a human would take over a dexterous robot and uses that predic
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.06009>
+- [arXiv PDF](https://arxiv.org/pdf/2609.06009)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.3；§4 实验略读
 
 ## 推荐继续阅读
 

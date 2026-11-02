@@ -42,6 +42,24 @@ Browser-based lightweight wearable assistant architecture requiring no native ap
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["智能眼镜端：音频（VAD + pre-roll）与视频（裁剪 + 降采样）并行处理"] --> W["WebRTC（LiveKit）传输：Opus 音频 + H.264 视频 + 数据通道"]
+    W --> S["云端语音管线：VAD → ASR → 多模态 LLM → TTS"]
+    S --> O["LLM 编排器：经 MCP 发现工具、制定计划、调用工具"]
+    O --> A["意图澄清模块：不确定时追问，否则直接回答"]
+    O --> R["推理核心：事件日志 E → T-CoT 短期窗口 + HCC 长期摘要 → 微调 MLLM"]
+    O --> N["神经符号工具（如棋盘助手）：感知 → 符号状态（FEN）→ 确定性引擎"]
+    A --> F["LLM 综合最终回答"]
+    R --> F
+    N --> F
+    F --> V["TTS 语音回传眼镜"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.1、Fig.2、Fig.3（澄清模块与回传语音的先后关系为概括性画法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Browser-based lightweight wearable assistant architecture requiring no native ap
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.01104>
+- [arXiv PDF](https://arxiv.org/pdf/2603.01104)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1 推理核心、3.2 LLM 编排神经符号执行、3.3 设备端与 WebRTC、3.4 意图消歧）、§4.1 实验设定
 
 ## 推荐继续阅读
 

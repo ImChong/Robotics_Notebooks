@@ -42,6 +42,28 @@ We introduce FutureNav, a VLM-based unified world-action modeling framework for 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["指令 x + 第一视角 RGB 观测历史"] --> B["VLM 视觉编码器（冻结）<br/>视觉 token E_q"]
+    A --> C["冻结空间编码器 VGGT<br/>空间特征 G → Merger 映射到语言模型隐藏空间 E_g"]
+    B --> D["残差融合 E_v = E_q + α E_g"]
+    C --> D
+    D --> E["VLM 语言模型（Qwen3-VL）<br/>输入：融合视觉 token + 指令与动作提示文本 token"]
+    E --> F["动作策略：自回归解码文本动作<br/>STOP / MOVE_FORWARD / TURN_LEFT / TURN_RIGHT<br/>L_policy"]
+    E --> G["前向动力学头 MLP<br/>当前观测状态 + 动作状态 → 预测下一空间特征<br/>L_forward（仅训练）"]
+    E --> H["逆动力学头<br/>前后观测状态与差分 → 分类动作<br/>L_inverse（仅训练）"]
+    E --> I["未来生成头<br/>不使用动作 token，预测下一空间特征<br/>L_gen（仅训练）"]
+    F --> J["总损失 L = L_policy + λf L_forward + λi L_inverse + λg L_gen"]
+    G --> J
+    H --> J
+    I --> J
+    F --> K["推理：仅使用动作策略分支直接解码动作"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2–3（式 1–11）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +121,7 @@ We introduce FutureNav, a VLM-based unified world-action modeling framework for 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.30367>
+- [arXiv PDF](https://arxiv.org/pdf/2606.30367)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.4）及 §4.1 实现细节；其余章节未细读
 
 ## 推荐继续阅读
 

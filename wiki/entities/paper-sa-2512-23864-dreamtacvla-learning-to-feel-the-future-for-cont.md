@@ -42,6 +42,31 @@ Hierarchical perception scheme with macro/local/micro vision; Hierarchical Spati
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第三人称图像 + 腕部图像<br/>触觉图像 + 语言指令 + 机器人状态"] --> ENC["多模态编码器 E_ψ<br/>CLIP ViT + 状态 MLP"]
+    subgraph S1["Stage 1：草稿动作"]
+        ENC --> HSA["HSA 层次空间对齐损失<br/>触觉对齐腕部/第三人称对应区域（InfoNCE）"]
+        HSA --> HA["对齐表示 H_align"]
+        HA --> POL1["策略 π_θ（H_null 占位）<br/>行为克隆 L1 损失"]
+        POL1 --> AD["草稿动作 a_draft"]
+    end
+    WM["触觉世界模型 W_φ<br/>V-JEPA 2，无标注触觉序列自监督预训练并冻结"] --> Z["当前触觉嵌入 z_τ"]
+    subgraph S2["Stage 2：Think-Dream-Act"]
+        AD --> FM["DREAM：预测 MLP F_η"]
+        Z --> FM
+        FM --> HD["想象的未来触觉潜变量 H_dream"]
+        HA --> POL2["ACT：策略 π_θ 再次推理"]
+        HD --> POL2
+        POL2 --> AF["最终动作 a_final"]
+    end
+    WM -. "监督 L_W（stop-gradient）" .-> FM
+```
+
+图依据：论文 §3 方法（Fig. 2、§3.1 Stage 1、§3.2 Stage 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Hierarchical perception scheme with macro/local/micro vision; Hierarchical Spati
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2512.23864>
+- [arXiv PDF](https://arxiv.org/pdf/2512.23864)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（§3.1–3.2）
 
 ## 推荐继续阅读
 

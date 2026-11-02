@@ -41,6 +41,34 @@ We propose DC-WAM, a dynamic-centric WAM framework that redistributes supervisio
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线（仅训练用）：tracker 动态图 m*"]
+        VID["episode 视频"] --> TRK["CoTracker3 点追踪（均匀采样或 SAM 前景点）"]
+        TRK --> MOT["相邻帧位移 d 超过阈值 δ_mot 的点视为动态点"]
+        MOT --> RAS["高斯核光栅化到 VAE token 网格，episode 内归一化为 m*"]
+        RAS --> DS["下采样到 DiT token 分辨率"]
+    end
+    IN["当前 RGB o_t + 语言 ℓ + 本体状态 s_t"] --> BB["Wan2.2 视觉–动作 MoT：RGB 视觉分支（未来 latent）+ 动作分支"]
+    BB --> TD["时间差分监督 L_TD：匹配相邻帧视觉流速度之差（稠密）"]
+    RAS --> TFM["TrackFM：用 m* 重加权视觉 flow-matching 误差（稀疏）"]
+    BB --> TFM
+    BB --> DR["DynaRoute：预测 token 级动态相关性 g"]
+    DS --> DRL["L_Route：BCE + soft Dice 监督 g"]
+    DR --> DRL
+    DR --> BIAS["log 空间 key 侧 attention bias，居中后在各 MoT 层共享"]
+    BIAS --> BB
+    TD --> LOSS["总损失 = L_A_FM + L_TD + L_TrackFM + L_Route"]
+    TFM --> LOSS
+    DRL --> LOSS
+    BB --> LOSS
+    BB --> INF["部署：仅动作推理 —— 视觉分支只跑一次（τ_init=1）构造带 DynaRoute bias 的视觉 KV cache，动作去噪复用该 cache"]
+```
+
+图依据：论文 §Method（Architecture、Tracker-Derived Dynamic Map、Dynamic-centric Visual Supervision、Dynamics-Aware Attention Bias、Training Objective）与 Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +125,7 @@ We propose DC-WAM, a dynamic-centric WAM framework that redistributes supervisio
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.25918>
+- [arXiv PDF](https://arxiv.org/pdf/2607.25918)：已通读方法部分（实验与附录以略读为准）：Introduction、Method（Architecture、动态图构造、DynaRoute、Training Objective）
 
 ## 推荐继续阅读
 

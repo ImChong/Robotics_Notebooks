@@ -42,6 +42,21 @@ First systematic study on robustness of latent-predictive video models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["四个冻结的 ViT-L 视频编码器<br/>V-JEPA 2.1 / V-JEPA 2<br/>VideoPrism / VideoMAEv2"] --> B["轻量 attentive probe 读出<br/>固定容量、读出协议与评测数据"]
+  B --> C["数据：Something-Something v2<br/>EGTEA Gaze+ 复现可移植轴"]
+  C --> D["五个评测轴 (§4–§8)<br/>特征可分性 / 腐蚀鲁棒性 / 细粒度动作区分<br/>遮挡鲁棒性 / 时间鲁棒性"]
+  A --> E["下游世界建模 (§9)<br/>编码器保持冻结"]
+  E --> F["训练相同的动作条件潜变量预测器<br/>4 层因果 Transformer"]
+  F --> G["CEM 规划器搜索动作序列<br/>Meta-World：drawer-open / door-close"]
+  G --> H["干净 / 扰动输入 / 留出任务 zero-shot<br/>比较规划成功率"]
+```
+
+图依据：论文 §3 Evaluation framework、§9 / Fig.7（本文为评测研究，图为其评测流程而非新模型架构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ First systematic study on robustness of latent-predictive video models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.15618>
+- [arXiv PDF](https://arxiv.org/pdf/2605.15618)：已通读方法部分（实验与附录以略读为准）：§3 Evaluation framework、§9 下游世界建模；§4–§8 各轴结果与附录略读
 
 ## 推荐继续阅读
 

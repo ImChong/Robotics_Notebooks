@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate Frames——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要，此处不替原文概括贡献）。
+Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate Frames——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,26 @@ Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["RGB-D 观测\n深度作为第 4 通道输入"] --> BB["ResNet50 + FPN 主干\n(类 Mask R-CNN)"]
+  BB --> DET["Faster R-CNN 模块\n检测框与 ROI 特征"]
+  DET --> CTX["ROI 特征与全局特征融合\nGlobal Context Block (自注意力)"]
+  CTX --> K["3D 关键点头\n种子点偏移 + deep Hough voting"]
+  CTX --> AX["有向轴头\n两个 3D 端点, 同样投票"]
+  CTX --> PAF["Part Affinity Field 头\n2D 单位向量指向关联部件"]
+  K --> CL["Mean Shift 聚类 voter\n得到关键点与轴端点"]
+  AX --> CL
+  CL --> ACF["每个部件的 ACF\n3D 关键点 + 有向轴"]
+  PAF --> ASSOC["判定哪些部件属于同一物体"]
+  ACF --> ASSOC
+  ASSOC --> ACT["机器人用估计的 ACF 执行任务\n(如抓取、倒、搅拌)"]
+```
+
+图依据：论文 §III-B（Estimation Pipeline，Fig.3）；末节「执行任务」来自 §I/§IV 对机器人使用 ACF 的描述
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2010.08202)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/2010.08202)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate
 
 **本页只提供「ACF」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ Manipulation-Oriented Object Perception in Clutter through Affordance Coordinate
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2010.08202>
+- [arXiv PDF](https://arxiv.org/pdf/2010.08202)：已通读方法部分（实验与附录以略读为准）：§III 表示与估计流程、§IV 数据集与实现细节
 
 ## 推荐继续阅读
 

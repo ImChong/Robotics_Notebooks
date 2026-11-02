@@ -34,6 +34,28 @@ summary: "Value-Guided JEPA 规划（arXiv:2601.00844，Destrade、LeCun 等）�
 
 只按「图像上是否更接近目标」规划会失败：目标隔着墙、图像上很近但要绕很远。本工作把「行动代价」写进表示空间，是把预测用于决策的一步。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["离线数据：随机轨迹（观测图像，迷宫含速度）"] --> ENC
+    subgraph TRAIN["训练"]
+        ENC["状态编码器 E_θ"] --> VF["定义 V_θ(s,g) = −‖E_θ(s) − E_θ(g)‖<br/>（或用 quasi-distance）"]
+        VF --> IQL["IQL 损失（expectile 回归）：<br/>目标 = −1[s≠g] + γ·V_θ̄(s', g)；目标位置用轨迹末状态与批内随机目标"]
+        IQL --> E2["得到价值整形后的状态编码器"]
+        E2 --> PRED["动作编码器 + 预测器：用 L_pred 预测下一步表示"]
+    end
+    SEP["两种训练方式：Sep = 先单独训练编码器再训练预测器；<br/>pred = 编码器与预测器联合训练（L_VF + L_pred）"] -.-> TRAIN
+    PRED --> MPC
+    subgraph PLAN["规划：MPC + MPPI"]
+        MPC["采样动作序列，用预测器在表示空间滚动"] --> COST["规划代价 = 预测表示到目标表示的距离<br/>（近似负价值）"]
+        COST --> MPC
+    end
+    MPC --> ACT["输出动作序列，评测规划成功率"]
+```
+
+图依据：论文 §3（3.1–3.2）、§4.2 与附录 7.2（MPC 使用 MPPI 优化器）。
+
 ## 核心信息
 
 - 作者：Matthieu Destrade、Oumayma Bounou、Quentin Le Lidec、Jean Ponce、Yann LeCun（arXiv 页）
@@ -89,6 +111,7 @@ summary: "Value-Guided JEPA 规划（arXiv:2601.00844，Destrade、LeCun 等）�
 
 - [Value-guided action planning 论文归档](../../sources/papers/value_guided_jepa_planning_arxiv_2601_00844.md)
 - [深蓝具身智能文章归档](../../sources/blogs/wechat_deepblue_lecun_jepa_11_papers_2026-10-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2601.00844)：已通读方法部分（实验与附录以略读为准）：§2 相关工作、§3 方法、§4 实验设定与结果、§5 讨论、附录 7.1–7.3
 
 ## 推荐继续阅读
 

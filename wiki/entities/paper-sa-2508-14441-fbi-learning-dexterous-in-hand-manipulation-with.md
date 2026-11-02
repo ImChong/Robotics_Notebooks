@@ -42,6 +42,27 @@ Flow Before Imitation (FBI) framework dynamically fuses tactile interactions wit
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机器人状态 s_t-1, s_t"] --> B["状态编码器 (3 层 MLP)<br/>特征 F_s"]
+    C["点云 P_t-1, P_t<br/>(裁剪+降采样)"] --> D["视觉编码器 (MLP+max-pool)<br/>特征 F_v"]
+    C --> E["Flow2Tactile 模块<br/>shortcut 模型预测物体点流 f_t-1→t"]
+    E --> F["Transformer searching T_s<br/>结合接触关键点坐标 K_t 预测触觉 R_t"]
+    G["真实触觉读数 R_t (有传感器时)"] --> H["触觉编码器 (4 层 MLP)<br/>特征 F_tac"]
+    F -. "纯视觉模式替代" .-> H
+    D --> I["Transformer 融合<br/>F_v 作 template, F_tac 作 searching"]
+    H --> I
+    I --> J["与 F_v 拼接 -> F_fuse"]
+    D --> J
+    B --> K["条件 C = F_s + F_fuse"]
+    J --> K
+    K --> L["Shortcut Model (flow matching, U-Net)<br/>一步采样动作序列 A_t"]
+```
+
+图依据：论文 §III Method（III-A/B/C）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Flow Before Imitation (FBI) framework dynamically fuses tactile interactions wit
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2508.14441>
+- [arXiv PDF](https://arxiv.org/pdf/2508.14441)：已通读方法部分（实验与附录以略读为准）：§III 方法（III-A 至 III-C）、§IV 实验设定
 
 ## 推荐继续阅读
 

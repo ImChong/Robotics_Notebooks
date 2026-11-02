@@ -44,6 +44,24 @@ summary: "Gaussian Is Enough（arXiv:2609.27070）：在多种行为模型上比
 - 开源结论：**已开源**（步骤 2.5，2026-10-18）。公众号未给代码链接；项目页列出 TRI-ML/openpi-priors 与 ToyotaResearchInstitute/lbm_eval，二者均 git ls-remote 可达。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练 LBM π_pre：LBM 1.0 / π0.5 / GR00T N1.5"] --> B["任务示范数据集 D 上微调"]
+    B --> C["观测 o 经编码器得嵌入 e，条件化动作头 v_θ"]
+    P["先验 p0：只有这一项在各实验间变化"] --> D["流匹配损失：a_t = (1-t)a0 + t·a1，回归 a1 - a0"]
+    C --> D
+    P --- P1["高斯 Z（默认）"]
+    P --- P2["自建：A_pre / A_pre+σZ / E_pre+σZ"]
+    P --- P3["文献基线：Cocos / BRIDGER / Retrieval(k-NN)"]
+    D --> E["微调后的策略"]
+    E --> F["统计检验评测：Setting A / B_sim / B_real / C（STEP、Welch t 检验、CLD 字母）"]
+    F --> G["诊断：LogME 特征质量、微调后动作相似度、编码器学习率消融"]
+```
+
+图依据：论文 §III–§V（Fig. 1、Table I–II）；§VII 诊断仅按小节标题与摘要列出。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +104,7 @@ summary: "Gaussian Is Enough（arXiv:2609.27070）：在多种行为模型上比
 - [gaussian_is_enough_flow_matching_priors_arxiv_2609_27070.md](../../sources/papers/gaussian_is_enough_flow_matching_priors_arxiv_2609_27070.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.27070](https://arxiv.org/abs/2609.27070)
+- [arXiv PDF](https://arxiv.org/pdf/2609.27070)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 先验变体、§V 实验设定、§VI 研究问题（略读）、§VII 诊断（略读）
 
 ## 推荐继续阅读
 

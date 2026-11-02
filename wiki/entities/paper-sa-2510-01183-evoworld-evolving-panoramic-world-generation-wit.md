@@ -43,6 +43,27 @@ Evolving panoramic world generation with explicit 3D memory.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X0["初始全景图 x0"] --> INIT["初始化 360° 全景世界"]
+    INIT --> LOOP
+    subgraph LOOP["第 t 步探索（t = 1…T）"]
+        ACT["采样动作 a_t<br/>→ 相机位置 δ_t、朝向 α_t"] --> PROJ["将 3D 记忆 M_t 点云重投影<br/>得到渲染图 r_t"]
+        ACT --> PLU["球面 Plücker 位姿嵌入"]
+        PREV["上一段末帧 x_{t-1}^S"] --> DIF
+        PROJ --> DIF["条件视频扩散模型 p_θ<br/>采样全景视频片段 x_t"]
+        PLU --> DIF
+        DIF --> REC["重建函数 R<br/>由 x_{0:t}、δ、α 重建点云"]
+        REC --> MEM["更新 3D 记忆 M_{t+1}（彩色点云）"]
+    end
+    MEM -->|"下一步"| PROJ
+    DIF --> OUT["全景视频序列 x_{0:T}<br/>可探索世界"]
+```
+
+图依据：论文 §2.2–§2.4、式 (1)–(3) 与 Algorithm 1（Fig.2 总体框架）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Evolving panoramic world generation with explicit 3D memory.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.01183>
+- [arXiv PDF](https://arxiv.org/pdf/2510.01183)：已通读方法部分（实验与附录以略读为准）：§2.1–§2.4 方法、Algorithm 1
 
 ## 推荐继续阅读
 

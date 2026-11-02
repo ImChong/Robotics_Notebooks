@@ -36,6 +36,25 @@ summary: "EgoExplorer（arXiv:2610.18872）：5 个 inside-out tracker + 头戴�
 | VIVE | HTC 的 VIVE 品牌追踪器；本文使用 Ultimate Tracker 的 inside-out 跟踪 |
 | WUJI | 论文中提供手指动作与区域触觉信号的手套方案 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["采集：头戴 GoPro 第一视角视频 + 5 个 VIVE Ultimate Tracker（头/手/踝）+ 手套指关节（MANUS 或带触觉的 Wuji）"] --> B["① Calibrate：校准动作序列按相位对齐参考动作库，鲁棒拟合体型、尺度与 sensor-to-anchor 变换（安装不变则复用）"]
+    B --> C["② Complete：由五个校准锚点的时序运动先验（扩展 AvatarPoser 的 Transformer）补全未观测关节，得初始轨迹 X0"]
+    C --> D["③ Constrain：联合优化 L1 骨架运动 + L2 表面间隙 + L3 身体-地面一致性"]
+    D --> E["精化后的全身轨迹 X*"]
+    A --> F["手指几何融合到 SMPL-X 手（腕局部坐标）；触觉按时间与手部区域对齐"]
+    E --> G["身体 + 手 + 触觉 融合"]
+    F --> G
+    A --> H["VLM 工具 + 专家技能文档 + 任务指令 → 子任务分段、技能标签、物体/工具角色、结果"]
+    G --> I["人工复核：视频、重建运动、触觉与文本的时间与语义一致性"]
+    H --> I
+    I --> J["时间轴对齐的多模态 episode"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig. 2、式 (3)。
+
 ## 数据规模与传感器
 
 | 项目 | 论文 / 官方页面报告 |
@@ -100,3 +119,4 @@ summary: "EgoExplorer（arXiv:2610.18872）：5 个 inside-out tracker + 头戴�
 - [作者项目页](https://internrobotics.github.io/egoexplorer.github.io/)
 - [Hugging Face 数据集](https://huggingface.co/datasets/InternRobotics/EgoExplorer)
 - [官方工具仓](https://github.com/InternRobotics/EgoExplorer)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18872)：已通读方法部分（实验与附录以略读为准）：§3 数据集与方法（3.1 采集硬件、3.2 C³ 全身重建、3.3 多模态整合与标注）、§4 数据统计；§5 实验略读

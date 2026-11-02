@@ -42,6 +42,24 @@ First multi-task visuo-tactile world model capturing physics of contact through 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  V["外部视角视频（9 帧 @ 6 fps）"] --> VE["Cosmos tokenizer → 视觉 latent s_k"]
+  T["Digit 360 触觉（4 个传感器，约 0.16 s 窗口）"] --> TE["Sparsh 编码 → 触觉 latent t_k"]
+  VE --> PJ["投影 + 正弦位置嵌入；视觉/触觉 token 沿空间维拼接"]
+  TE --> PJ
+  AC["动作：本体状态变化（平移、四元数）+ 手开合，30 Hz 按 5 个分块"] --> AT["动作 token"]
+  PJ --> TR["12 层 Transformer 预测器：空间/时间分解自注意力 ⇄ 对动作 token 的交叉注意力（RoPE）"]
+  AT --> TR
+  TR --> OUT["模态专属输出头 → 下一步 s_k+1、t_k+1"]
+  OUT --> LOSS["训练：teacher forcing 损失 + 自回归采样损失（L1，等权）"]
+  OUT --> CEM["规划：CEM 采样动作序列 → 预测 latent → 与目标图像 latent 的 ℓ2 代价 → 迭代选优 → 真机开环执行"]
+```
+
+图依据：论文 §3.2.1–§3.2.3 / Fig. 3（模型结构）；规划流程为 §3.2.3 文字描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ First multi-task visuo-tactile world model capturing physics of contact through 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2602.06001>
+- [arXiv PDF](https://arxiv.org/pdf/2602.06001)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.2，含 Fig. 3）、§4 开头的评测问题设定
 
 ## 推荐继续阅读
 

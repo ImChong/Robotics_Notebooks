@@ -36,7 +36,33 @@ SoftMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **I 柔顺与接触**（60/64）：接触：柔顺全身控制也在成为 tracking 条件。
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线：Compliant Motion Augmentation（§III-C）"]
+        A["人体动作数据集（AMASS / LAFAN1 重定向）<br/>参考动作 q_ref"]
+        B["采样交互事件：外力 wrench W_ext + 指令刚度 K_cmd"]
+        C["可行性检查：IK 失败则缩小 wrench 重试，低于传感噪声下限则丢弃"]
+        D["Differential IK 求解器（Mink + MuJoCo）<br/>优先级任务：Compliant Interaction → Foot Placement → CoM → Keypoint Posture → Joint Posture"]
+        E["增强数据集 D_aug：(q_ref, w, K_cmd, q_aug)"]
+        A --> B --> C --> D --> E
+    end
+    subgraph ON["在线：SoftMimic RL 训练（§III-B）"]
+        F["采样动作片段 + 期望刚度 + Force Field 外力<br/>（对数均匀刚度采样、按速度采样碰撞事件）"]
+        G["策略 π 观测：本体感知、基座状态、上一动作、q_ref、刚度指令（3 步历史）<br/>不直接观测外力"]
+        H["输出关节位置目标 → PD 控制器"]
+        I["奖励：与 q_aug 对齐的 DeepMimic 式跟踪奖励 + 平滑奖励 + 弹簧式柔顺奖励"]
+        F --> G --> H --> I
+    end
+    E -->|"作为奖励目标、初始化与终止判据"| I
+    I -->|"PPO 更新"| G
+    H --> J["部署：单一策略 + 运行时刚度指令<br/>Unitree G1 真机"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2
 
 ## 核心信息
 
@@ -73,6 +99,7 @@ SoftMimic 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 - [humanoid_pnb_softmimic-learning-compliant-whole-body-control.md](../../sources/papers/humanoid_pnb_softmimic-learning-compliant-whole-body-control.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.17792>
+- [arXiv PDF](https://arxiv.org/pdf/2510.17792)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III Method（§III-A–D）与 Fig.2（§IV 结果与附录仅略读）
 
 ## 推荐继续阅读
 

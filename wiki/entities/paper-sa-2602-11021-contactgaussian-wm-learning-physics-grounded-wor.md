@@ -42,6 +42,33 @@ A differentiable physics‑grounded rigid‑body world model that learns physica
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["接触丰富场景的 RGB 视频（单/多相机，已标定）"] --> SAM["SAM2 提取几何特征"]
+    subgraph S1["阶段一：SG-GS 场景初始化"]
+        G1["球形各向同性 Gaussian（旋转冻结）"] --> G2["先优化几何属性 G_geo（外观冻结）"]
+        G2 --> G3["再优化外观属性 G_vis（几何冻结）"]
+    end
+    SAM --> G1
+    V --> G1
+    G3 --> GS["统一的球形 Gaussian 表示 G*"]
+    subgraph S2["阶段二：Phys-Geo 精修"]
+        X["当前物理状态 + 动作"] --> C["可微碰撞检测（球体并集 SDF，LSE 平滑）"]
+        C --> D["无互补性接触动力学<br/>参数 θ = 质量惯量、摩擦、刚度、阻尼"]
+        D --> N["下一物理状态"]
+        N --> R["前向运动学变换 Gaussian + 3DGS 渲染下一帧图像"]
+        N -.->|"滚动到下一时间步"| X
+    end
+    GS --> C
+    GS --> R
+    R --> L["图像损失 L_Loft + L_L1"]
+    L -.->|"端到端反传：优化 θ，经碰撞交互微调 G_geo"| D
+```
+
+图依据：论文 §III A–D / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ A differentiable physics‑grounded rigid‑body world model that learns physica
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.11021>
+- [arXiv PDF](https://arxiv.org/pdf/2602.11021)：已通读方法部分（实验与附录以略读为准）：Abstract、§I、§III A–D（问题建模、SG-GS 初始化、Phys-Geo 精修、端到端梯度流）、§IV 实验概述
 
 ## 推荐继续阅读
 

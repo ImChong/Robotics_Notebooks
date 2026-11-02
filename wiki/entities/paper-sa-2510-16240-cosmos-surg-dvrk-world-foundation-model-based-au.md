@@ -42,6 +42,23 @@ World foundation model-based automated online evaluation of surgical robot polic
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["dVRK Si 数据：内窥镜视频 + 时间同步 kinematic 动作（10 Hz 采样）"] --> FT["微调 Cosmos-Predict2-2B-Video2World，得到 Cosmos-Surg-dVRK（动作条件世界模型）"]
+    R0["真实 dVRK Si 记录的首帧作为初始状态 s_i"] --> WM
+    FT --> WM["Cosmos-Surg-dVRK：给定 s_i 与 K=12 个动作，预测后续 K 帧"]
+    P["VLA 策略（π0 / GR00T N1 / N1.5）"] -->|"输出动作块，降采样到 10 Hz，取前 K 个"| WM
+    WM -->|"回灌最后一帧 s_i+K 作为新状态，自回归在线 rollout"| P
+    WM --> V["生成的 rollout 视频"]
+    V --> C["V-JEPA 2（冻结 ViT-H）+ attentive probe：分块判定成功 / 失败"]
+    C --> SR["仿真成功率"]
+    SR --> ST["与真实 dVRK 成功率对比：Pearson r / MMRV / MBE"]
+```
+
+图依据：论文 §3（Fig. 1a 系统概览，§3.1–3.2）与 §4.1（实现细节、在线评估回路）、§4.2（统计指标）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ World foundation model-based automated online evaluation of surgical robot polic
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.16240>
+- [arXiv PDF](https://arxiv.org/pdf/2510.16240)：已通读方法部分（实验与附录以略读为准）：§1 引言与贡献、§3 方法（3.1–3.2）、§4 实现与统计分析、§5.1–5.2 数据集与评估设置
 
 ## 推荐继续阅读
 

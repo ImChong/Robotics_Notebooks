@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,24 @@ Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["观测 x + 可选指令 q + 预算 B（以 skill 调用次数计）"] --> RET["用 DINO-v3 + SigLIP 联合嵌入检索<br/>两层记忆 M_cs 与 M_tt 的 top-N 条目"]
+    RET --> R["Router π_θ<br/>按收益/成本比选择 skill 与参数"]
+    R --> SK["调用 skill：检测 / 分割 / 放大 / 网络搜索 / 交互想象"]
+    SK --> ES["Evidence Store<br/>带来源（producer id）的证据记录"]
+    ES --> V["Verifier：一致性 ω、跨尺度稳定性 ζ、证据充分度 μ<br/>聚合成 v_t"]
+    V -->|"v_t ≥ δ 且 ω_t ≥ 下限"| FU["最终融合 Φ：<br/>检测 skill 定位关键点，SAM 2 以关键点为 prompt 出 mask"]
+    V -->|未通过：诊断最大短板，给出补救动作| R
+    V -->|预算耗尽| FU
+    FU --> OUT["affordance 图 A"]
+    OUT -->|仅当 v_t ≥ δ| WB["写回 M_tt（verifier 接受的 episode）"]
+```
+
+图依据：论文 §3.2 Overview / §3.3 Details of A-Harness（Eq.1–12）/ Algorithm 1 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +69,7 @@ Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2605.00663)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2605.00663)。
 
 ## 评测与指标
 
@@ -67,7 +85,7 @@ Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单�
 
 **本页只提供「A-Harness」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +106,7 @@ Affordance Agent Harness: Verification-Gated Skill Orchestration——在清单�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2605.00663>
+- [arXiv PDF](https://arxiv.org/pdf/2605.00663)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4、Algorithm 1
 
 ## 推荐继续阅读
 

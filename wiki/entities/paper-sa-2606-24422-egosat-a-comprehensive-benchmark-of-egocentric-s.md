@@ -42,6 +42,21 @@ The first comprehensive benchmark for egocentric video reasoning in streaming se
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SRC["视频源：Ego4D<br/>手-物交互人工标注区间"] --> CUR["数据整理<br/>用两类 rejection tag 过滤无可见交互的事件<br/>得到 1,997 个视频 session（56 个场景）"]
+    CUR --> QA["按固定模板构造 QA<br/>真值来自 Ego4D 标注"]
+    QA --> OPT["MCQ 四选项：1 个真值 + 2 个 hard negative + 1 个 absurd negative"]
+    OPT --> SH["随机打乱选项并离线存储"]
+    SH --> BENCH["EgoSAT：约 4,800 个 QA 对"]
+    BENCH --> T["三类建模任务<br/>当下：Now narration / State switch<br/>前瞻：短时程 / 多步 anticipation<br/>回溯：短时程 / 多步 retrieval"]
+    T --> EV["严格在线评测：在每个查询时刻 t 截断视频，仅保留视觉前缀<br/>评测离线 / 流式 / ROI 增强流式模型"]
+```
+
+图依据：论文 §3.3–3.4、§4.1（基准构造与评测协议，非模型方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ The first comprehensive benchmark for egocentric video reasoning in streaming se
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.24422>
+- [arXiv PDF](https://arxiv.org/pdf/2606.24422)：已通读方法部分（实验与附录以略读为准）：§3.3–3.4 任务与基准构造、§4.1 实验协议；§3.1–3.2 与 §4.2 以后略读
 
 ## 推荐继续阅读
 

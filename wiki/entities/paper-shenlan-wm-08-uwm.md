@@ -38,6 +38,25 @@ sources:
 - 视频与动作扩散统一 Transformer，模态特定扩散时间步表策略/动力学/生成器。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["当前观测 o：ResNet-18 编码各相机帧<br/>+ 两个扩散时间步嵌入 → AdaLN 条件"] --> T
+  B["带噪动作 a(ta) → MLP 动作嵌入"] --> T
+  C["带噪下一观测 o′(to′)：冻结 SDXL VAE 潜空间 → patchify"] --> T
+  T["扩散 Transformer（含 register token）<br/>预测 ε_a 与 ε_o′"]
+  T --> L["训练：独立采样 ta、to′，去噪损失 w_a·‖ε_a‖ + w_o′·‖ε_o′‖"]
+  V["无动作视频数据：固定 ta = T，动作用随机噪声代替"] --> L
+  T --> Q{"推理：设定 ta、to′"}
+  Q -- "to′ = T" --> P["策略 p(a|o)"]
+  Q -- "ta = T" --> VP["视频预测 p(o′|o)"]
+  Q -- "ta = 0" --> FD["前向动力学 p(o′|o, a)"]
+  Q -- "to′ = 0" --> ID["逆动力学 p(a|o, o′)"]
+```
+
+图依据：论文 §III-B 至 §III-D / Fig. 2、Fig. 3、式 (1)–(5)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -86,6 +105,7 @@ sources:
 - [shenlan_wm_survey_08_uwm.md](../../sources/papers/shenlan_wm_survey_08_uwm.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2504.02792)：已通读方法部分（实验与附录以略读为准）：§III Method（A 问题设定、B 耦合视频-动作扩散、C 架构、D 训练范式）、Fig. 2 / 3
 
 ## 推荐继续阅读
 

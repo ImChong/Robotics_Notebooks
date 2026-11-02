@@ -42,6 +42,27 @@ Reconstructs functional 3D digital twins of indoor scenes directly from egocentr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第一视角 RGB-D 交互视频"] --> B["3.1 切分为连续片段<br/>VLM 判定 静态 / 动态, 并预测 prismatic / revolute"]
+    B --> S["静态片段: 仅估计相机位姿"]
+    B --> C["动态片段: RoMA 对应 + 手/物体掩码过滤<br/>SupeRANSAC + 位姿图优化得到相机位姿"]
+    C --> D["TAPIP3D 稀疏 3D 轨迹"]
+    D --> E["关节运动聚类: 逐轨迹拟合直线/圆<br/>HDBSCAN 聚类, 选出被交互的部件"]
+    E --> F["像素对齐部件分割<br/>SAM 过度分割 + SAM2 视频传播"]
+    E --> G["部件位姿 + 关节参数联合优化<br/>(位姿图 + Ceres 非线性优化)"]
+    F --> H["静态 / 部件 两个 TSDF 融合<br/>并估计运动范围"]
+    G --> H
+    H --> I["片段子图 (submap)"]
+    S --> I
+    I --> J["3.3 全局对齐: PREDATOR 配准 + 回环 + 位姿图优化<br/>融合为统一 TSDF"]
+    J --> K["可交互的功能性 3D 数字孪生"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2（FunREC 方法总览）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Reconstructs functional 3D digital twins of indoor scenes directly from egocentr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.05621>
+- [arXiv PDF](https://arxiv.org/pdf/2604.05621)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（问题形式化、3.1 片段构建、3.2 动态片段重建、3.3 全局片段对齐）、§4 数据采集开头
 
 ## 推荐继续阅读
 

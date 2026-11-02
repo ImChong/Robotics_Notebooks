@@ -43,6 +43,25 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  RAW["五个开源数据集，约 300 万片段\nAgiBot / RoboCoin / RoboMind / Galaxea / OXE"] --> FIL["具身数据过滤\n质量门 → 光流运动 → CLIP 时间连贯 → 视觉-动作对齐"]
+  FIL --> BAL["分层分布均衡\n头部任务 8-15% / 中部 40-50% / 长尾全保留"]
+  BAL --> CAP["物理感知四阶段描述\nQwen3-VL 感知 → Qwen3 写作"]
+  CAP --> SFT["Stage 1：全量微调 Wan2.1-I2V-14B\n预测未来帧"]
+  SFT --> CAND["同一提示生成 N 个候选视频"]
+  CAND --> PROP["Proposer：Qwen3-VL 32B Thinking\n生成任务专属物理 checklist"]
+  PROP --> SCORE["Scorer：Gemini 3 Pro\n锦标赛采样选出最优 y_w / 最差 y_l"]
+  SCORE --> DPO["Stage 2：Diffusion-DPO\nLoRA rank 64，冻结 DiT"]
+  DPO --> MODEL["物理对齐的世界模型"]
+  ACT["动作向量 a ∈ R^7\n投影为 2D action map"] --> CTX["并行 context blocks\n每隔 5 个 DiT 块复制一个"]
+  CTX -->|"零初始化卷积，残差相加"| MAIN["主 DiT：动作条件视频生成"]
+```
+
+图依据：论文 §2、§3.1–3.3 / Fig.1、Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +118,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.23376>
+- [arXiv PDF](https://arxiv.org/pdf/2603.23376)：已通读方法部分（实验与附录以略读为准）：Fig.1–2 图注、§2 数据整理（2.1–2.2）、§3 方法（3.1–3.3）
 
 ## 推荐继续阅读
 

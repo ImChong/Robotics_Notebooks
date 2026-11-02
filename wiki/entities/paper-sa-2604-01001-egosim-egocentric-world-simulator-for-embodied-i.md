@@ -42,6 +42,24 @@ Closed-loop interactive simulator with persistent dynamic 3D scene states for co
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S0["3D 世界状态 S[k-1]"] --> R["静态场景渲染 Π(S[k-1]; C_k)<br/>得到场景观测视频与未渲染区域 mask M"]
+    C["相机轨迹 C_k"] --> R
+    H["手部动作 H_k：3D 手部关键点投影为关键点视频"] --> DiT
+    R --> DiT["Geometry-action-aware Observation Simulation<br/>视频 VAE latent 空间的 DiT，以 inpainting 权重初始化"]
+    DiT --> O["生成观测 O_k"]
+    O --> SR["State Reconstruction（免训练）<br/>DepthAnything3 + SAM3 + DROID-SLAM 估计分段点云"]
+    SR --> OU["Interaction-aware Object State Update<br/>VLM 识别交互物体，SAM3 跟踪，最新几何并入静态背景"]
+    OU --> F["Incremental State Fusion<br/>Sim3 Umeyama 对齐 + TSDF 融合"]
+    S0 --> F
+    F --> S1["更新后的世界状态 S[k]，进入下一阶段"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Closed-loop interactive simulator with persistent dynamic 3D scene states for co
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.01001>
+- [arXiv PDF](https://arxiv.org/pdf/2604.01001)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method 全节（3.1–3.3）、§4 数据处理管线（4.1–4.2）
 
 ## 推荐继续阅读
 

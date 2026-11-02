@@ -42,6 +42,36 @@ DexWorldModel introduces CLWM, which predicts future DINOv3 features and then ge
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["真实观测 o_t"] --> DINO["DINOv3 特征提取：f_t（语义隐特征，非像素）"]
+    DINO --> LTM["Long-Term TTT Memory：仅由真实观测与已执行动作在线更新"]
+    LTM -->|"fork 复制权重"| WTM["Working TTT Memory：生成阶段临时记忆"]
+    LANG["语言指令 l"] --> S1
+    WTM --> S1["阶段 1：Latent Video Flow Matching，预测未来语义特征 f_{t+1}"]
+    S1 -->|"生成结束后立即用预测特征更新"| WTM2["Working TTT Memory 更新"]
+    WTM2 --> S2["阶段 2：Action Flow Matching，解码动作块 a_t"]
+    S1 -->|"预测语义 f_{t+1}"| S2
+    S2 --> ACT["机器人执行动作块"]
+    ACT -->|"新的真实观测与动作"| LTM
+    subgraph SAI["Speculative Asynchronous Inference（SAI）"]
+        P1["阶段 1：执行动作期间，用预测特征 f̂ 更新 Working Memory，后台预去噪到中间流时间"]
+        P2["阶段 2：真实观测到达后，用真实特征校准 Long-Term Memory，只做剩余细粒度去噪"]
+        P1 --> P2
+    end
+    ACT -.-> P1
+    P2 -.-> S2
+    subgraph TRAIN["训练：EmbodiChain 在线数据流"]
+        GS["生成式仿真：资产与场景合成"] --> DE["轨迹扩展 / 错误恢复 / 视觉增强 / 物理约束"]
+        DE --> ODS["Online Data Streaming 直接喂给学习器"]
+    end
+    ODS -.->|"训练数据"| S1
+```
+
+图依据：论文 §3.1–3.3 / Fig.2（TTT Memory）、Fig.3（SAI）与 §4（EmbodiChain）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ DexWorldModel introduces CLWM, which predicts future DINOv3 features and then ge
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.16484>
+- [arXiv PDF](https://arxiv.org/pdf/2604.16484)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1 潜在视频与动作自回归生成、§3.2 TTT 记忆、§3.3 SAI、§4 EmbodiChain
 
 ## 推荐继续阅读
 

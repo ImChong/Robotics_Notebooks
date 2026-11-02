@@ -20,7 +20,7 @@ summary: "相机到四足位姿估计：基于序列图像的外部相机—四�
 
 # 相机到四足位姿估计：基于序列图像的外部相机—四足机器人姿态估计
 
-**相机到四足位姿估计**（*Camera-to-Quadruped Robot Pose Estimation from Sequential Images*，[arXiv:2610.36599](https://arxiv.org/abs/2610.36599)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**相机到四足位姿估计**（*Camera-to-Quadruped Robot Pose Estimation from Sequential Images*，[arXiv:2610.36599](https://arxiv.org/abs/2610.36599)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,29 @@ summary: "相机到四足位姿估计：基于序列图像的外部相机—四�
 ## 为什么重要
 
 - 周报所述待解决的问题：外部单目相机观察四足机器人时，腿部对称、自遮挡和关节持续运动会造成关键点匹配歧义。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["RGB 序列 + 相机内参 K<br/>已知 URDF 正运动学与逐帧机器人框"] --> B["裁剪并缩放机器人框"]
+  B --> C["ResNet 主干 → 线性投影为视觉 token<br/>+ 位置编码 → Transformer 编码器"]
+  C --> D["12 个 selector token 交叉注意力<br/>(各对应一个关节)"]
+  D --> E["骨架感知掩码自注意力<br/>(仅沿肩-膝-足相邻关节交互)"]
+  E --> F["SimCC: x/y 一维分布期望<br/>得到 12 个 2D 关键点"]
+  F --> G["JointNet (MLP, 预训练后冻结)<br/>预测 12 个关节角 q̂"]
+  F --> H["用 K⁻¹ 得到射线 R_i"]
+  G --> I["基座位姿头: T=5 连续帧<br/>共享 MLP + 1D 时序卷积 + 残差<br/>Score MLP softmax 加权池化"]
+  H --> I
+  I --> J["基座 6-DoF 位姿 B̂ = (R̂, t̂)"]
+  J --> K["URDF 正运动学 FK<br/>由 B̂ 与 q̂ 得初始 3D 关键点"]
+  G --> K
+  K --> L["Refine MLP: 拼接 3D/2D 关键点与关节角<br/>预测残差 Δy"]
+  F --> L
+  L --> M["输出: 精化 3D 关键点 + 18-DoF 位姿"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2–4（QuadPose 框架）
 
 ## 核心机制
 
@@ -87,6 +110,7 @@ summary: "相机到四足位姿估计：基于序列图像的外部相机—四�
 - [camera-to-quadruped-pose-estimation_arxiv_2610_36599.md](../../sources/papers/camera-to-quadruped-pose-estimation_arxiv_2610_36599.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36599](https://arxiv.org/abs/2610.36599)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36599)：已通读方法部分（实验与附录以略读为准）：§1–§6（§3 QuadPose 方法与损失、§4 QuadSyn 数据集、§5 实验含 Harper 真实数据）
 
 ## 推荐继续阅读
 

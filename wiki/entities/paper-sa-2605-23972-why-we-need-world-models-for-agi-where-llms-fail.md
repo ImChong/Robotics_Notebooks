@@ -42,6 +42,21 @@ Argues that world models operate on latent states, making causal prediction and 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    NL["FLUX 游戏的自然语言规则描述<br/>(观测空间 X: 规则 / 约束 / 目标)"] --> C["LLM 作为一次性编译器<br/>把规则编译为结构化可执行表示"]
+    C --> SIM["显式状态转移模拟器 f_theta<br/>潜状态 S = (cells, move 计数), 确定性转移"]
+    SIM --> RL["在模拟器内训练表格 Q-learning 智能体<br/>(访问潜状态空间 S)"]
+    SIM -- "状态投影为自然语言 P(x|s)" --> LLM["LLM 智能体 (提示模式)<br/>逐回合只看自然语言状态描述, 经 next-token 预测选动作"]
+    SIM --> EVAL["同一环境下逐回合对局评测<br/>对比 RL(世界模型) 与 LLM / 随机 / 启发式"]
+    RL --> EVAL
+    LLM --> EVAL
+```
+
+图依据：论文 §5 Experimental Design and Results（四阶段实验流程）/ Fig.3；本页论文以概念性观点为主，此图仅为其 FLUX 案例研究的实验流程，并非通用方法
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Argues that world models operate on latent states, making causal prediction and 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.23972>
+- [arXiv PDF](https://arxiv.org/pdf/2605.23972)：已通读方法部分（实验与附录以略读为准）：Abstract、§1 Introduction、§5 Experimental Design（5.1–5.2，含 Fig.3）；其余章节略读
 
 ## 推荐继续阅读
 

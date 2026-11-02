@@ -41,6 +41,21 @@ To make this interface independently studyable, we introduce Oracle Visuo-Tactil
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  CUR["当前观测：RGB + 左右触觉 + 8 维 qpos<br/>冻结 UniVTAC-ACT* 编码器"] --> ENC["ACT 编码器记忆<br/>零初始化 z0 · 本体 token · 当前空间 token · 12 个未来 slot"]
+  ORA["Oracle 未来源（仿真验证成功轨迹）<br/>配对 RGB + 左右触觉后缀"] --> FE["可训练 ResNet-18 未来编码器<br/>门控局部时间残差"]
+  FE --> AFM["AFM 非对称相位局部未来记忆<br/>H 读 H · L 读 L+H · R 读 R+H<br/>左右触觉互不可读 · 每模态 4 个相位 slot"]
+  AFM -->|"tanh 门控 slot"| ENC
+  ENC --> DEC["ACT 解码器：50 个 action queries"]
+  DEC --> OUT["50×8 动作 chunk<br/>L1 动作损失"]
+  FE -.->|"对照 IFM：去掉视觉到触觉读取"| AFM
+```
+
+图依据：论文 §III-A–D / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ To make this interface independently studyable, we introduce Oracle Visuo-Tactil
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.00547>
+- [arXiv PDF](https://arxiv.org/pdf/2608.00547)：已通读方法部分（实验与附录以略读为准）：III Method（Oracle Future Source and Encoding、AFM、ACT Integration and Objective）
 
 ## 推荐继续阅读
 

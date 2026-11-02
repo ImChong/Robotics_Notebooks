@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["深度图 D_t（手眼相机）"] --> B["融合为 TSDF M_t"]
+    B --> C["3D CNN 编码器：tri-plane 特征体 C（两分支共享）"]
+    C --> D["在目标 3D 包围盒内采样抓取中心 G_p"]
+    D --> E["沿视角方向 G_v 取射线特征 C_ray（max pooling）+ 局部几何特征 C_geo"]
+    E --> F["全连接网络 f_G：预测 G_r / G_q / G_w"]
+    F --> G{"最高抓取质量 G_q* 高于阈值 q_max？"}
+    G -- 是 --> H["执行 G_q 最高的抓取 G*"]
+    G -- 否 --> I{"达到最大规划步数 T_max？"}
+    I -- 是 --> J["中止（Abort）"]
+    I -- 否 --> K["生成候选观察视角，用想象的抓取 affordance 评估<br/>（共享 C → FG 预测）"]
+    K --> L["选 G_q 最高的视角作 NBV O_t+1，机械臂移动并取新深度图"]
+    L --> A
+    C -. 联合训练 .-> M["几何解码器（SDF，NeuS 式渲染）合成新视角深度图"]
+```
+
+图依据：论文 §3 / Fig.2、§4.1–4.3 / Fig.3（训练分支见 §4.2、§4.4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.09556)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.09556)。
 
 ## 评测与指标
 
@@ -67,7 +88,7 @@ Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中
 
 **本页只提供「ACE-NBV」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +109,7 @@ Affordance-Driven Next-Best-View Planning for Robotic Grasping——在清单中
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2309.09556>
+- [arXiv PDF](https://arxiv.org/pdf/2309.09556)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题定义、§4 方法（4.1–4.4）、§5 实验设定
 
 ## 推荐继续阅读
 

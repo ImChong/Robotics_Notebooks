@@ -42,6 +42,25 @@ summary: "EmbodyHOI（2026）：在冻结的 flow-matching 手-物交互生成�
 - 人手示范到机器人的适配，常在 retargeting 后破坏物体接触；本文给出把机器人约束放进生成循环的另一条路线。
 - 同一冻结生成器可跨机器人使用，无需为每个本体重训（据摘要）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["文本提示 + 带关节物体网格"] --> B["冻结的 MAD-HOI 生成器<br/>masked autoregressive transformer 分步 unmask<br/>flow-matching 头生成手/物体 token"]
+    B --> C["解码器 D 解出当前腕部轨迹 (τ, ϕ)"]
+    C --> D["目标人形上的可微 IK：联合求解臂关节与基座平移<br/>(Levenberg–Marquardt，隐式微分)"]
+    D --> E["IK 能量 E 的梯度 ∇E<br/>只作用于手 token，物体 token 梯度置零"]
+    E --> F["速度场 v − w·∇E 引导 ODE 采样<br/>每个 unmasking 步内都引导"]
+    D --> G["更新基座先验 b0，供下一个 unmasking 步使用"]
+    G --> B
+    F --> B
+    F --> H["引导后的 HOI 样本"]
+    H --> I["重定向：PyRoki 解臂关节，dex-retargeting 映射手指到 XHand<br/>并得到参考接触"]
+    I --> J["PPO 跟踪策略 (Genesis)<br/>臂与手分开的模仿奖励与终止条件"]
+```
+
+图依据：论文 §III-A、§III-B、§III-C / Fig. 2、Alg. 1。
+
 ## 方法与机制
 
 - 冻结 flow-matching 轨迹生成器；采样时以特定人形的可微 IK 求解器提供梯度，引导采样。
@@ -86,6 +105,7 @@ summary: "EmbodyHOI（2026）：在冻结的 flow-matching 手-物交互生成�
 ## 参考来源
 
 - [EmbodyHOI 论文来源归档](../../sources/papers/embodyhoi_arxiv_2610_27242.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27242)：已通读方法部分（实验与附录以略读为准）：§III-A 生成器与表示、§III-B 具身感知 IK 引导（含 Alg. 1）、§III-C 重定向与策略学习；§IV 实验设定与 Q1 略读
 
 ## 推荐继续阅读
 

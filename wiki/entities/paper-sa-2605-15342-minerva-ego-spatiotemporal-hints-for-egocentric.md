@@ -43,6 +43,22 @@ A benchmark for evaluating complex egocentric visual reasoning with spatiotempor
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["选择 (Selection)<br/>HD-EPIC 全部视频<br/>叠加已有物体真值分割掩码"] --> B["标注与验证<br/>评分员写问题 / 答案 / 推理轨迹<br/>推理轨迹引用关键物体"]
+  B --> C["质量复核<br/>另一组答题 → 答错者由第三组协调修订<br/>全程人工"]
+  C --> D["后处理<br/>识别并过滤模态偏置<br/>(如仅凭文本即可作答的题)"]
+  D --> E["Minerva-Ego 基准"]
+  B --> F["物体链接<br/>SAM2 重实现补全稀疏分割轨迹<br/>推理轨迹物体链接到物体 ID"]
+  F --> G["时空高亮提示 (§4.2, oracle)<br/>画圈/类名等视觉标注<br/>按物体出现帧做时间选择"]
+  E --> H["LVLM 评测<br/>MCQ 准确率 + 推理轨迹评分"]
+  G --> H
+```
+
+图依据：论文 §3.2 Dataset Creation Pipeline、§4.2 Spatio-temporal Highlighting（oracle 设置）；本文为基准论文，图为数据构建与提示评测流程
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ A benchmark for evaluating complex egocentric visual reasoning with spatiotempor
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.15342>
 - [`sources/papers/sun_awesome_ego_noarxiv_095_minerva-ego-spatiotemporal-hints-for-ego.md`](../../sources/papers/sun_awesome_ego_noarxiv_095_minerva-ego-spatiotemporal-hints-for-ego.md) — 本条目策展摘录
+- [arXiv PDF](https://arxiv.org/pdf/2605.15342)：已通读方法部分（实验与附录以略读为准）：§3.2 数据集构建流程、§4.1–4.2（评测与时空高亮）；附录略读
 
 ## 推荐继续阅读
 

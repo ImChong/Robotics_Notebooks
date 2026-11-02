@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,20 @@ A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：图像 I + 任务描述 T（如 open the refrigerator）"] --> DR["Dreamer：图像生成模块<br/>生成交互发生时的想象图（如手握把手、门被打开）"]
+    DR --> TH["Thinker：视觉-语言大模型<br/>对比原图与想象图，输出可操作部件的文本描述 D"]
+    IN --> TH
+    TH --> RX["Spotter 第1步：Rex-Omni 开放词汇检测<br/>输出 bounding box B 与 关键点 P"]
+    RX --> SAM["Spotter 第2步：SAM 以 B、P 为提示<br/>细化为像素级 mask M"]
+    SAM --> OUT["输出 Aff = {(B, P, M)}"]
+```
+
+图依据：论文 §4（A4-Agent）/ Fig.3；§4.3 Dreamer、§4.4 Thinker、§4.5 Spotter。无训练（training-free）的智能体框架。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +65,7 @@ A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2512.14442)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2512.14442)。
 
 ## 评测与指标
 
@@ -67,7 +81,7 @@ A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单
 
 **本页只提供「A4-Agent」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +102,7 @@ A4-Agent: An Agentic Framework for Zero-Shot Affordance Reasoning——在清单
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2512.14442>
+- [arXiv PDF](https://arxiv.org/pdf/2512.14442)：已通读方法部分（实验与附录以略读为准）：§4.1 问题定义、§4.2 框架概览、§4.3 Dreamer、§4.5 Spotter；§4.4 Thinker 仅据框架概览与 Fig.3 图注
 
 ## 推荐继续阅读
 

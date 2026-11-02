@@ -20,7 +20,7 @@ summary: "TouchBridge：从人类交互中学习接触感知灵巧操作（arXiv
 
 # TouchBridge：从人类交互中学习接触感知灵巧操作
 
-**TouchBridge**（*TouchBridge: Learning Contact-Aware Dexterous Manipulation from Human Interaction*，[arXiv:2610.40349](https://arxiv.org/abs/2610.40349)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**TouchBridge**（*TouchBridge: Learning Contact-Aware Dexterous Manipulation from Human Interaction*，[arXiv:2610.40349](https://arxiv.org/abs/2610.40349)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,26 @@ summary: "TouchBridge：从人类交互中学习接触感知灵巧操作（arXiv
 ## 为什么重要
 
 - 周报所述待解决的问题：人类操作示范能够提供动作信息，但机器人还需要学习接触发生的位置和方式，才能准确执行灵巧操作。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["TouchBridge-Cap 人类演示采集<br/>第一视角 RGB + 双腕相机 + Manus 手套 + 指尖触觉阵列"] --> B["腕部 AprilTag 离线定位<br/>指尖位姿变换到相机坐标系"]
+  B --> C["Tac-Retarget: 逐帧求解机器人双臂状态<br/>min L_pose + λC·L_contact + λG·L_graph + L_reg"]
+  A -->|"指尖触觉响应"| C
+  C --> D["机器人手基座位姿 + 手关节配置"]
+  A --> E["SAM 2 分割人手与穿戴设备<br/>ProPainter 修复第一视角视频"]
+  D --> F["在修复后的画面上渲染机器人网格<br/>得到机器人域观测"]
+  E --> F
+  D --> G["相机锚定动作构造 (遵循 UMI)<br/>手臂: 相对块起点末端位姿 / 手: 绝对关节目标"]
+  F --> H["机器人域演示数据"]
+  G --> H
+  H --> I["微调预训练 VLA"]
+  I --> J["Moz1 双臂 + Wuji 灵巧手部署<br/>配有对应指尖触觉传感器"]
+```
+
+图依据：论文 §III-A 人机视觉触觉系统、§III-B Tac-Retarget（式 1–6）、§III-C 数据转换管线、Fig.2–4
 
 ## 核心机制
 
@@ -87,6 +107,7 @@ summary: "TouchBridge：从人类交互中学习接触感知灵巧操作（arXiv
 - [touchbridge-contact-aware-dexterous-human-interaction_arxiv_2610_40349.md](../../sources/papers/touchbridge-contact-aware-dexterous-human-interaction_arxiv_2610_40349.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40349](https://arxiv.org/abs/2610.40349)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40349)：已通读方法部分（实验与附录以略读为准）：方法（§III-A 硬件、§III-B Tac-Retarget、§III-C 视觉合成与相机锚定动作）与实验设定概览（§IV-A）
 
 ## 推荐继续阅读
 

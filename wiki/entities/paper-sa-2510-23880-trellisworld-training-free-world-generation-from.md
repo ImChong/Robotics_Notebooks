@@ -42,6 +42,21 @@ Training-free world generation from object generators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["文本提示 + 目标世界尺寸 X×Y×Z"] --> B["整个世界初始化为高斯噪声 W"]
+    B --> C["切成重叠的 S×S×S 立方体 tile（步长 s 小于 S）"]
+    C --> D["每个扩散步：各 tile 并行送入 TRELLIS 去噪（稠密结构 θ1、稀疏潜变量 θ2 两阶段）"]
+    D --> E["3D 余弦掩码加权平均，把重叠 tile 聚合回世界噪声"]
+    E -->|"进入下一扩散步"| C
+    E --> F["去噪完成后分 tile 解码（s = S，不混合）"]
+    F --> G["体素 / Gaussian Splatting 3D 世界"]
+```
+
+图依据：论文 §3.2 Tiled Diffusion / Fig.2、§3.3 Implementation（Tiled Diffusion、Tiled Decoder）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Training-free world generation from object generators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.23880>
+- [arXiv PDF](https://arxiv.org/pdf/2510.23880)：已通读方法部分（实验与附录以略读为准）：Introduction、§3 Method（3.1–3.3）、§4 Experiments 中的消融与对比设定；附录未细读
 
 ## 推荐继续阅读
 

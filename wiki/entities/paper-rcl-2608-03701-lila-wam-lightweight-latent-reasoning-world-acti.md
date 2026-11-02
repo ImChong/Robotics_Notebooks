@@ -42,6 +42,31 @@ In this work, we propose LiLa-WAM, a lightweight world-action model that reasons
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前图像 o_t"] --> ENC["冻结 DINOv3 编码器 V<br/>取多层 patch 特征，通道拼接后线性投影到专家宽度 D"]
+    ENC --> AD["查询式 adapter A（可学习 query 交替自注意力/交叉注意力）<br/>压缩为 N_q 个 token：Z_v"]
+    DEM["任务 τ 的示范 episodes：首帧与末帧的全局图像嵌入"] --> VTT["Visual Transition Token：末帧嵌入减首帧嵌入，对 episode 取均值"]
+    VTT --> MLP["轻量 MLP 投影得任务 token c_τ（无需语言与目标帧）"]
+    Q["本体状态 q_t → Z_q"] --> SEQ
+    NZ["带噪动作 chunk → Z_a"] --> SEQ
+    MLP --> SEQ
+    AD --> SEQ["拼成单一 token 序列 [Z_a; Z_q; c_τ; Z_v]"]
+    SEQ --> DIT["Foresight-aware Action Expert（L 层 DiT，flow matching）"]
+    DIT --> VEL["动作 token 位置 → 线性头 → 速度场 → 动作 chunk"]
+    DIT --> FUT["观测侧输出 → 预测未来潜变量 z_t+Δ"]
+    FUT --> DEC["Q-Former 式解码器 D（仅训练使用）"]
+    DEC --> LFF["与冻结 V 对真实未来帧 o_t+Δ 提取的 patch 特征做逐 token 余弦损失 L_ff"]
+    VEL --> LFM["flow matching 损失 L_fm"]
+    LFM --> LOSS["端到端：L = L_fm + λ_ff · L_ff"]
+    LFF --> LOSS
+    LOSS --> INF["推理：丢弃解码器，选目标任务的 VTT，单次前向同时得到动作与未来感知潜变量"]
+```
+
+图依据：论文 §3.1–§3.4（Foresight-Aware Action Expert、Visual Transition Token、训练目标）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +124,7 @@ In this work, we propose LiLa-WAM, a lightweight world-action model that reasons
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.03701>
+- [arXiv PDF](https://arxiv.org/pdf/2608.03701)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）、§4.1 实现细节
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ We introduce BadWAM, a unified framework for modeling and evaluating World-Actio
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["每个 replan 步：观测 o_t + 语言指令 g（WAM 冻结，视作可查询的输入输出系统）"] --> CLEAN["干净参照查询：得到干净动作块 a 与干净想象未来 z / v"]
+    OBS --> DELTA["有界视觉扰动 δ，约束 ||δ||∞ ≤ ε"]
+    DELTA --> QUERY["扰动输入查询 WAM：得到被攻击的动作块 a_δ 与想象未来 z_δ / v_δ"]
+    CLEAN --> SCORE["打分 J"]
+    QUERY --> SCORE
+    SCORE --> OBJ["action-only：J = D_act(a_δ, a)，最大化动作偏差；imagination-preserving：J = D_act − λ·D_img，同时压低想象漂移"]
+    OBJ --> ZO["零阶优化：随机方向 u_i 正负查询的有限差分估计梯度（SPSA 式，不反传、不访问参数）"]
+    ZO --> UPD["更新 δ 并投影回 ℓ∞ 球"]
+    UPD --> BEST["在查询预算 B 内保留最优扰动"]
+    BEST --> ADV["最终对抗观测 → WAM 输出被攻击动作块"]
+    ADV --> EXEC["机器人闭环执行动作块，下一次 replan 重新攻击"]
+    EXEC --> OBS
+```
+
+图依据：论文 §4 BadWAM（§4.1 Design Motivation、§4.2 Action-Only Attack、§4.3 Imagination-Preserving Attack、§4.4 Query-Based Online Optimization、§4.5 Closed-Loop Execution）与 Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +119,7 @@ We introduce BadWAM, a unified framework for modeling and evaluating World-Actio
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.15207>
+- [arXiv PDF](https://arxiv.org/pdf/2607.15207)：已通读方法部分（实验与附录以略读为准）：§4 BadWAM（§4.1–§4.5）
 
 ## 推荐继续阅读
 

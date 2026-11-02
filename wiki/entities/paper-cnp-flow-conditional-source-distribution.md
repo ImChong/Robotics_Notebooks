@@ -45,6 +45,19 @@ summary: "CNP-Flow（arXiv:2610.05349）：通过流反演监督条件噪声预�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["阶段 1：用标准高斯 N(0,I) 作源分布<br/>预训练条件 FM，得到 v_θ(x_t, t | C_T)"] --> B["对目标样本 x1 做流反演（Eq.4）<br/>得到源样本 x̃0，按时间条件聚簇"]
+  B --> C["阶段 2：训练条件噪声预测器 CNP<br/>输出各向同性高斯 μ_φ(C_T), σ_φ(C_T)<br/>损失 = NLL + λ·KL(对 N(0,I))"]
+  C --> D["阶段 3：从 CNP 预测的源分布采样 x0<br/>替换高斯后微调 FM（Eq.7）"]
+  D --> E["推理：x0 ~ p_φ(·|C_T)<br/>FM 对向量场积分得到目标样本"]
+  E --> F["应用：视频预测 / 视频插值 / 运动规划<br/>区别仅在时间条件 C_T 的构造"]
+```
+
+图依据：论文 §4.1 / Fig.3（三阶段训练流程）、§4.2、Algo.1–4
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +99,7 @@ summary: "CNP-Flow（arXiv:2610.05349）：通过流反演监督条件噪声预�
 - [cnp_flow_conditional_source_distribution_arxiv_2610_05349.md](../../sources/papers/cnp_flow_conditional_source_distribution_arxiv_2610_05349.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.05349](https://arxiv.org/abs/2610.05349)
+- [arXiv PDF](https://arxiv.org/pdf/2610.05349)：已通读方法部分（实验与附录以略读为准）：§3 预备、§4 方法（4.1、4.2）、§5.1 实验设定、附录 A 算法
 
 ## 推荐继续阅读
 

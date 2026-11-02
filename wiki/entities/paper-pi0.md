@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-11-02
 arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
 related:
@@ -29,6 +29,7 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+- ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
 - ../../sources/papers/pi0_arxiv_2410_24164.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -36,6 +37,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: π₀（arXiv:2410.24164，Physical Intelligence）：PaliGemma 类 VLM + Flow Matching Action Expert；高频连续动作。官方仓是 Physical-Intelligence/openpi，不是 pi0。
 project_id: pi0
 venue: RSS 2025

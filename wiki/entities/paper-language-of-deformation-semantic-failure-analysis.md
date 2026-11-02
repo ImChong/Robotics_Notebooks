@@ -20,7 +20,7 @@ summary: "形变语义失败分析：形变的语言：可变形物体灵巧操�
 
 # 形变语义失败分析：形变的语言：可变形物体灵巧操作中的语义失败分析
 
-**形变语义失败分析**（*The Language of Deformation: Semantic Failure Analysis as a Prerequisite for Dexterous Manipulation of Deformable Objects*，[arXiv:2610.35103](https://arxiv.org/abs/2610.35103)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**形变语义失败分析**（*The Language of Deformation: Semantic Failure Analysis as a Prerequisite for Dexterous Manipulation of Deformable Objects*，[arXiv:2610.35103](https://arxiv.org/abs/2610.35103)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,24 @@ summary: "形变语义失败分析：形变的语言：可变形物体灵巧操�
 ## 为什么重要
 
 - 周报所述待解决的问题：可变形物体操作中的失败不仅包括滑移，还可能出现屈曲、塑性变形、局部压力异常和撕裂。传统刚体操作中的失败判断标准难以直接适用。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["可变形物体 O = (X, U, Y, f)"] --> Y["传感器观测 y_t<br/>(示意: 带触觉传感的指尖 + 信号调理)"]
+    Y --> H["上下文历史 h_t = (y_{t-k:t-1}, u_{t-k:t-1})"]
+    Y --> PHI["语义失效分类器 Φ: s_t = Φ(y_t, h_t)<br/>失效类别如 buckling / plastic deformation / tearing"]
+    H --> PHI
+    PHI --> C["纠正策略映射 C: S → Γ<br/>从纠正/规划基元库 Γ 中选取"]
+    PHI --> PI["或: 以语义状态为条件的闭环策略<br/>u_t = π(x_t, s_t)"]
+    C --> CTRL["失效专用控制器 1 ... N"]
+    CTRL --> U["失效感知控制动作 u_t"]
+    PI --> U
+    U --> O
+```
+
+图依据：论文 §3.1 Def.1 / Fig.1（SFA-DOM 概念框架，非已实现的完整系统；§4 仅为触觉信号的概念验证实验）
 
 ## 核心机制
 
@@ -87,6 +105,7 @@ summary: "形变语义失败分析：形变的语言：可变形物体灵巧操�
 - [language-of-deformation-semantic-failure-analysis_arxiv_2610_35103.md](../../sources/papers/language-of-deformation-semantic-failure-analysis_arxiv_2610_35103.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35103](https://arxiv.org/abs/2610.35103)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35103)：已通读方法部分（实验与附录以略读为准）：§3 SFA-DOM 定义与挑战、§4 概念验证实验
 
 ## 推荐继续阅读
 

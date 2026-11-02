@@ -42,6 +42,25 @@ Embodied video diffusion model for closed-loop control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["环境观测 o_1:t（真实）+ 语言指令 l"] --> G["视频扩散 Transformer G<br/>因果自回归逐块生成，KV cache"]
+    G --> GEN["生成的下一块观测"]
+    GEN --> MIDM["掩码逆动力学模型 I<br/>掩码预测器 U + 动作回归器 R"]
+    MIDM --> ACT["动作块 a_t"]
+    ACT --> ENV["环境执行动作"]
+    ENV --> GT["真实新观测"]
+    GT --> RP["Re-prefill：弹出最后生成块的 KV<br/>用真实观测做 chunk prefill"]
+    RP --> G
+    MIDM -. "学得的掩码 m" .-> EL["具身感知损失<br/>用 m 重加权扩散损失"]
+    EL -. 训练 .-> G
+    CT["因果训练（CausVid，teacher forcing）"] -. 训练 .-> G
+```
+
+图依据：论文 §2.2 掩码逆动力学模型、§3.1 模型设计、§3.2 训练、§3.3 推理（Fig. 2、Algorithm 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Embodied video diffusion model for closed-loop control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.17661>
+- [arXiv PDF](https://arxiv.org/pdf/2512.17661)：已通读方法部分（实验与附录以略读为准）：摘要、§2 预备知识（§2.2）、§3 方法（§3.1–3.3）、§4.1 实验设定
 
 ## 推荐继续阅读
 

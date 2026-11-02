@@ -42,6 +42,20 @@ Presents the first zero-shot sim-to-real transfer of a world-action model for ro
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["GPU 加速仿真环境 + 域随机化（纹理、相机位姿、光照、物体摆放）"] --> B["AnyTask：基础模型引导的运动规划（ViPR）自动生成专家演示"]
+    B --> C["每任务约 800 条合成演示（RGB 观测 + 末端执行器动作轨迹）"]
+    C --> D["Cosmos Policy 单阶段后训练：动作、未来观测、价值编码为潜帧，统一扩散过程"]
+    P["预训练视频扩散模型 Cosmos-Predict2"] --> D
+    D --> E["零样本部署 Franka Research 3：腕部与第三人称固定 RGB 视角输入"]
+    E --> F["策略输出动作并预测未来 RGB 帧"]
+```
+
+图依据：论文 §2.1–2.4（该论文为短篇早期结果，无独立架构图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Presents the first zero-shot sim-to-real transfer of a world-action model for ro
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2606.31101>
+- [arXiv PDF](https://arxiv.org/pdf/2606.31101)：已通读方法部分（实验与附录以略读为准）：§1 Motivation、§2.1 Cosmos Policy、§2.2 仿真与演示生成、§2.3 训练、§2.4 零样本迁移（全文仅 3 页）
 
 ## 推荐继续阅读
 

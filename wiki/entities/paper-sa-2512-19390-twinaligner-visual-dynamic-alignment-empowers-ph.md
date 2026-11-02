@@ -42,6 +42,32 @@ A novel Real2Sim2Real system that addresses both visual and dynamic gaps in robo
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAP["手机多视角 RGB 图像<br/>物体与场景"] --> DT["Mesh-GS 数字孪生（§III-B）"]
+    DT --> OBJ["物体：SDF 水密网格 + 以网格顶点初始化的 3DGS"]
+    DT --> SCN["场景：PGSR 3DGS + TSDF 融合网格"]
+    DT --> ROB["机器人：URDF 与场景 ICP 对齐，提取 3DGS + 正向运动学"]
+    OBJ --> ALIGN
+    SCN --> ALIGN
+    ROB --> ALIGN
+    subgraph ALIGN["视觉-动力学 Real2Sim 对齐（§III-C）"]
+        VP["视角对齐：FoundationPose 粗估 → SAM 2 掩码 BCE 损失无梯度优化精修"] --> DY["动力学对齐：Control-Hit-Slide 交互数据"]
+        DY --> RC["Control：关节状态损失对齐机器人控制器参数"]
+        DY --> OP["Slide：点云 ADD/ADD-S 损失对齐摩擦、质量、质心（无梯度优化）"]
+    end
+    ALIGN --> SIM["对齐后的仿真环境"]
+    SIM --> DATA["仿真遥操作采集 + 渲染观测"]
+    DATA --> POL["训练 Diffusion Policy / RISE"]
+    POL --> REAL["零样本部署到真实机器人"]
+    SIM --> EVAL["跨环境策略评测：Sim-Render-Policy 闭环"]
+    POL --> EVAL
+```
+
+图依据：论文 §III-A 概述、§III-B Mesh-GS 数字孪生、§III-C 视觉-动力学对齐、§III-D Sim2Real 策略学习、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ A novel Real2Sim2Real system that addresses both visual and dynamic gaps in robo
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2512.19390>
+- [arXiv PDF](https://arxiv.org/pdf/2512.19390)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（§III-A 至 §III-D）、§IV-A 开头
 
 ## 推荐继续阅读
 

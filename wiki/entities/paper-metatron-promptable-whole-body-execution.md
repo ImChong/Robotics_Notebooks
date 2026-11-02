@@ -20,7 +20,7 @@ summary: "METATRON：可提示的人形全身动作执行层（arXiv:2610.38027�
 
 # METATRON：可提示的人形全身动作执行层
 
-**METATRON**（*METATRON: A Promptable Whole-Body Execution Layer for Humanoids*，[arXiv:2610.38027](https://arxiv.org/abs/2610.38027)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**METATRON**（*METATRON: A Promptable Whole-Body Execution Layer for Humanoids*，[arXiv:2610.38027](https://arxiv.org/abs/2610.38027)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,34 @@ summary: "METATRON：可提示的人形全身动作执行层（arXiv:2610.38027�
 ## 为什么重要
 
 - 周报所述待解决的问题：不同人形任务通常分别训练控制策略，重复学习平衡和全身协调能力。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练 (§III)"]
+        T1["稠密运动跟踪器 (MLP + PPO)<br/>特权仿真状态 + 完整参考运动"] --> T2["冻结的跟踪器专家<br/>逐状态给出标签动作"]
+        T2 --> T3["掩码在线策略蒸馏<br/>学生用随机掩码的 prompt<br/>posterior 引导 + 跟踪器 rollout 混合采样"]
+        T3 --> T4["冻结 MetaTron 基础策略 (每个 embodiment 一个)"]
+    end
+    subgraph PI["策略结构 (§III-B/C)"]
+        P1["prompt g_t = 世界坐标目标 C^w / 规范化姿态 C^ℓ<br/>速度 u / 风格 ξ / 场景包围盒 b"] --> P2["先验 Transformer 编码器<br/>输出条件 d_t 与 μ_t, σ_t"]
+        O["传感器与上一动作历史 o_t, a_{t-1}"] --> P2
+        P2 --> P3["采样 latent 并投影到单位球 z_t"]
+        P2 --> P4["融合 h_t = f(d_t, z_t)"]
+        P3 --> P4
+        P4 --> P5["解码器 → 关节目标 a_t"]
+    end
+    T4 --> P1
+    subgraph SK["技能层 (§IV)"]
+        S1["技能 = 有状态的程序代码<br/>每个控制步构造/更新 prompt"] --> S2["harness 运行当前技能并管理技能切换"]
+        S3["人写初版规则 → 编码智能体<br/>分析动捕片段、拟合紧凑规则、在评测场中迭代"] --> S1
+    end
+    S2 --> P1
+    P5 --> R["Unitree G1 / SOMA 角色执行"]
+```
+
+图依据：论文 §III（基础策略、prompt 接口、生成式策略、训练）/ Fig.2、§IV 技能层 / Fig.3
 
 ## 核心机制
 
@@ -87,6 +115,7 @@ summary: "METATRON：可提示的人形全身动作执行层（arXiv:2610.38027�
 - [metatron-promptable-whole-body-execution_arxiv_2610_38027.md](../../sources/papers/metatron-promptable-whole-body-execution_arxiv_2610_38027.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.38027](https://arxiv.org/abs/2610.38027)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38027)：已通读方法部分（实验与附录以略读为准）：§III 基础策略、§IV 技能层、§V 训练数据、§VI 实验（附录未读）
 
 ## 推荐继续阅读
 

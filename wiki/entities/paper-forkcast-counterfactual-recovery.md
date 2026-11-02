@@ -32,6 +32,27 @@ summary: "ForkCast（arXiv:2610.18650）：在冻结的 VLA 之上，比较三�
 
 摘要指出，物体滑落或视觉遮挡会打断执行。现有恢复通常在训练时学习，或由监控器在失败后触发脚本式修复。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["决策点 t：冻结 VLA 策略 πθ<br/>输入观测、机器人状态、指令"] --> B["候选生成"]
+    B --> C1["COMMIT：沿用策略原动作块<br/>并恢复名义参考视角"]
+    B --> C2["REOBSERVE：头部相机移到更好视角<br/>再 re-query 冻结策略"]
+    B --> C3["REPLAN：用检测+分割+深度得到目标点云质心<br/>运动规划器规划重新抓取的臂轨迹"]
+    C1 --> D["候选编码：末端位姿增量、累计位移、相机偏移<br/>对齐到公共视野 Hf"]
+    C2 --> D
+    C3 --> D
+    H["头部相机历史 I_t"] --> E["冻结 V-JEPA 2 ViT-g 编码一次<br/>所有候选共享 Z_t"]
+    E --> F["V-JEPA 2-AC 预测器 Pϕ<br/>按 M 个里程碑自回归预测反事实未来潜变量"]
+    D --> F
+    F --> G["共享进度头 Sψ<br/>对终点潜变量打进度分"]
+    G --> S["选择终点得分最高的候选<br/>并列时优先 COMMIT"]
+    S --> X["执行所选候选，进入下一个决策点"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 2。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -97,6 +118,7 @@ summary: "ForkCast（arXiv:2610.18650）：在冻结的 VLA 之上，比较三�
 
 - [论文归档](../../sources/papers/forkcast_arxiv_2610_18650.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18650)：已通读方法部分（实验与附录以略读为准）：§III-A 问题定义、§III-B 候选生成、§III-C 反事实未来预测与打分（含训练）、§III-D 选择与执行；§IV 实验设定略读
 
 ## 推荐继续阅读
 

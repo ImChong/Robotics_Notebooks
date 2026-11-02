@@ -42,6 +42,24 @@ Scales to real-world multi-object datasets for decision-making.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频帧 I0 ... I(T-1), 可选条件 c: 动作 / 语言 / 目标图"] --> B["Encoder: 每帧编码为 M 个前景粒子 + 1 个背景粒子"]
+    B --> C["Decoder: 粒子解码为 RGBA glimpse, 拼接重建图像, 计算重建损失"]
+    B --> D["Context 模块: 因果时空 Transformer, 为每个粒子给出 latent action"]
+    D --> D1["训练: latent inverse dynamics 头, 由相邻状态推断"]
+    D --> D2["推理: 从 latent policy 先验采样, 得到随机 rollout"]
+    D1 --> E["Dynamics 模块: 因果时空 Transformer, AdaLN 注入 latent action"]
+    D2 --> E
+    B --> E
+    E --> F["预测下一步粒子状态, 并与编码后验计算逐粒子 KL"]
+    F --> G["自回归 rollout 得到未来帧"]
+```
+
+图依据：论文 §4（Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Scales to real-world multi-object datasets for decision-making.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.04553>
+- [arXiv PDF](https://arxiv.org/pdf/2603.04553)：已通读方法部分（实验与附录以略读为准）：§4 方法与 §5 实验设定（略读）
 
 ## 推荐继续阅读
 

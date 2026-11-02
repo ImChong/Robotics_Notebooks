@@ -42,6 +42,27 @@ Robotic task and motion planning guided by a hierarchical world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["任务目标 + 当前逻辑状态 X_m + 观测"] --> L["逻辑世界模型 M_L<br/>在 LIBERO-Logic 上微调的规划增强语言模型"]
+    L --> BS["束搜索：生成器 M_L^search 展开候选 (动作, 预测状态)<br/>评估器 M_L^eval + 目标进度打分，保留 top-B"]
+    BS --> LA["逻辑动作 a_{m+1} 与预测逻辑状态 X_{m+1}"]
+    LA --> VW["视觉世界模型<br/>理解专家 + 预测专家，flow matching<br/>只预测子任务终点的视觉潜变量"]
+    I --> VW
+    VW --> SG["视觉子目标 f_pred"]
+    LA --> VLA["引导 VLA（π0.5 + 目标专家）<br/>动作专家单向 cross-attention 读取理解专家与目标专家"]
+    SG --> VLA
+    VLA --> ACT["动作 chunk"]
+    ACT --> DONE{"子任务完成预测器<br/>[CLS] token + 分类头 p_done"}
+    DONE -->|"未完成"| VLA
+    DONE -->|"完成"| NEXT["推进到下一符号转移"]
+    NEXT --> VW
+```
+
+图依据：论文 §IV A–D / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Robotic task and motion planning guided by a hierarchical world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.11291>
+- [arXiv PDF](https://arxiv.org/pdf/2602.11291)：已通读方法部分（实验与附录以略读为准）：Abstract、§I、§III 预备、§IV A–D（逻辑世界模型、视觉世界模型、VLA 引导注入、子任务完成预测）、§V 实验设置概述
 
 ## 推荐继续阅读
 

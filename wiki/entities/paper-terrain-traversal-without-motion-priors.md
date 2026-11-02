@@ -20,6 +20,33 @@ sources:
 
 # Terrain Traversal Without Motion Priors：专家路由人形地形穿越
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DEP["部署边界内（两个仿真器与实机共用）"]
+        E1["板载深度流 → 深度到高程配准 → 局部高程栅格 H_t"] --> G["门控 g_φ（小型 CNN）输出 K=5 个专家的 logits"]
+        G --> Z["路由 z_t：部署用 argmax / softmax（或按 MC-dropout 分歧自适应插值）"]
+        O["本体感知 o_t"] --> EX["5 个专家 π_θ1..π_θ5：rough / stair-up / stair-down / gap / hurdles"]
+        Z --> MIX["动作 u_t = Σ z_t,k · π_θk(o_t)"]
+        EX --> MIX
+        E1 --> FH["局部落脚点细化：名义步幅 p_nom 出发，在插值地形代价场 J 上做 N=6 步闭式梯度下降 → 落脚点 q_f"]
+        FH --> SW["二次 Bézier 摆动足轨迹（沿连续高度场）"]
+        SW --> MIX
+        MIX --> ROB["机器人（50 Hz）"]
+    end
+    subgraph TRN["仅训练期（特权）"]
+        Y["地形类别标签 y_t"] --> CE["交叉熵 L_gate 监督门控（不回传策略梯度）"]
+        Y --> ORA["训练时路由用 one-hot e_yt"]
+        ENC["对比编码器 f_ψ（InfoNCE）→ a_t ∈ R^64"] --> CR["critic 条件：FiLM(a_t) 或 one-hot 标签"]
+        PPO["PPO + λ_gate·L_gate"]
+    end
+    CE -.-> G
+    ORA -.-> Z
+```
+
+图依据：论文 §III-A–D / Fig. 1。
+
 ## 一句话定义
 
 用地形分类器路由五个专家，并通过模型式连续落足优化，构建无需动作先验和蒸馏的人形感知行走系统。
@@ -90,6 +117,7 @@ sources:
 
 - [论文归档](../../sources/papers/terrain_traversal_arxiv_2610_14061.md)
 - [项目页归档](../../sources/sites/terrain-traversal-without-motion-priors.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14061)：已通读方法部分（实验与附录以略读为准）：§III-A–D、摘要与 §I–II 相关部分
 
 ## 推荐继续阅读
 

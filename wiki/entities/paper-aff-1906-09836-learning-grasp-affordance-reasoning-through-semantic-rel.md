@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Learning Grasp Affordance Reasoning through Semantic Relations——在清单中归入 **Reasoning（Reasoning Subcategory: Relation-Based Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+Learning Grasp Affordance Reasoning through Semantic Relations——在清单中归入 **Reasoning（Reasoning Subcategory: Relation-Based Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,30 @@ Learning Grasp Affordance Reasoning through Semantic Relations——在清单中
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph L["学习: 语义关系知识库 (MLN)"]
+    Q["问卷收集 3,280 个 possible worlds\n属性 / 类别 / 位置 / affordance / 抓取区域"] --> FOL["转为一阶逻辑 (FOL) 公式集\n谓词 hasShape / hasAffordance / graspRegion 等"]
+    FOL --> W["生成式学习公式权重\n(Broyden 法最大化伪对数似然)"]
+  end
+  subgraph R["推理与执行 (Algorithm 1)"]
+    IM["相机 2D 图像"] --> CNN["预训练 CNN 提取属性标签\n(形状 / 纹理 / 材质 / 类别 / 位置)"]
+    CNN --> WD["翻译为 FOL possible world 作为查询证据"]
+    W --> GS["Gibbs 采样近似后验\n得到各抓取区域的 affordance 概率"]
+    WD --> GS
+    GS --> SEL["按指定 affordance 选最优抓取区域标签\n(未指定则取最高概率者)"]
+    PC["3D 点云"] --> SEG["k-means 种子 + 层次网格分解 → 抓取 patch\nSVM 分类为候选区域标签"]
+    SEL --> G["在 3D 数据上映射得到最优 patch G*"]
+    SEG --> G
+    G --> POSE["patch 主平面质心与朝向 → 抓取位姿"]
+    POSE --> RB["发送给机器人 (PR2)"]
+  end
+```
+
+图依据：论文 §III（Proposed Method，III-A 至 III-E，Fig.2 / Fig.3、Algorithm 1）；问卷数据来自 §IV-A
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +75,7 @@ Learning Grasp Affordance Reasoning through Semantic Relations——在清单中
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/1906.09836)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/1906.09836)。
 
 ## 评测与指标
 
@@ -67,7 +91,7 @@ Learning Grasp Affordance Reasoning through Semantic Relations——在清单中
 
 **本页只提供「Learning Grasp Affordance Reasoning through Semantic Relations」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +112,7 @@ Learning Grasp Affordance Reasoning through Semantic Relations——在清单中
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/1906.09836>
+- [arXiv PDF](https://arxiv.org/pdf/1906.09836)：已通读方法部分（实验与附录以略读为准）：§III 方法（知识库、关系学习、推理、3D 抓取 patch 映射、端到端执行）、§IV-A/B 数据与评测设定
 
 ## 推荐继续阅读
 

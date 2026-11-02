@@ -47,6 +47,24 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 - Light REACT 对比 Transformer 64 帧上下文时引用；LocoFormer 代表「长上下文运动适应」前序。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["程序生成机器人任务分布<br/>双足/四足/轮足，随机化关节、质量、质心、惯量、控制增益等"] --> B["统一关节空间的观测/动作/奖励<br/>超集关节拼接，输出目标关节位置"]
+    B --> C["多 trial episode 采样<br/>自适应时间预算 u~U(0,U)，记忆跨 trial 保留"]
+    C --> D["观测经 MLP 编码为 token x_t"]
+    D --> E["Transformer-XL 策略<br/>分段缓存前一段隐藏状态（stop-gradient）作为 key/value"]
+    E --> F["Actor 头（MLP）→ 目标关节位置"]
+    E --> G["Critic 头（MLP）→ 价值估计"]
+    F --> H["大规模仿真 PPO 训练<br/>先短 trial/小 U，后延长 trial 与适应时间"]
+    G --> H
+    H -->|"更新策略"| E
+    H --> I["部署：未见机器人上上下文内适应<br/>零样本 u=0；失败时利用前序 trial 经验做少样本改进"]
+```
+
+图依据：论文 §2 / Fig.3（§2.1 预训练、§2.2 Transformer-XL 架构）；推理加速部分未读，未入图。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -108,6 +126,7 @@ summary: "LocoFormer：大规模 PPO + 程序生成机器人 + Transformer-XL �
 - [locoformer_corl_2025.md](../../sources/papers/locoformer_corl_2025.md)
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [Tech Blog](https://www.lightorigins.com/blog/light-react)
+- [arXiv PDF](https://arxiv.org/pdf/2509.23745)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 方法（2.1 预训练、2.2 Transformer-XL 架构）、Table 1
 
 ## 推荐继续阅读
 

@@ -42,6 +42,30 @@ First photorealistic open-world egocentric simulator supporting unrestricted fre
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  F["第一人称首帧"] --> VT["转换为视觉 tokens"]
+  M["人体运动序列（SMPL 参数）"] --> G["拆成三组：Body&Feet / Hands / Head"]
+  G --> ME["各组独立运动编码器（8 层 3D 卷积）"]
+  ME --> ZM["通道维拼接：part-aware 运动 latent"]
+  G -->|"仅 Head 参数"| CAM["转为仅含旋转的相机外参，Plücker ray 参数化"]
+  CAM --> CE["相机编码器"]
+  CE -->|"加到加噪视频 latent"| NV["加噪视频 latent"]
+  GT["训练时：真值视频"] --> C3["CUT3R 逐帧生成 point map"]
+  C3 --> PE["point map 编码器 + 5 层 3D 卷积 adapter"]
+  PE --> NP["加噪 point map latent"]
+  VT --> CAT["拼接"]
+  ZM --> CAT
+  NV --> CAT
+  NP --> CAT
+  CAT --> DiT["DiT 同时对视频与场景 latent 去噪"]
+  DiT --> DEC["VAE 解码器：世界一致的第一人称视频"]
+```
+
+图依据：论文 §3.2 Model Components / Fig.2、§3.3（注意：页面 arXiv 号 2512.06724 对应的是另一篇无关论文，PlayerOne 的正确编号为 arXiv:2506.09995，图按后者绘制；frontmatter 未改）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ First photorealistic open-world egocentric simulator supporting unrestricted fre
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2512.06724>
+- [arXiv PDF](https://arxiv.org/pdf/2506.09995)：PlayerOne 的正确编号为 2506.09995（页面所列 2512.06724 对应无关论文《Central elements and evaluation map for the quantum queer superalgebras》）；已通读方法部分（实验与附录以略读为准）：§3.2 Model Components、§3.3 Training Strategy
 
 ## 推荐继续阅读
 

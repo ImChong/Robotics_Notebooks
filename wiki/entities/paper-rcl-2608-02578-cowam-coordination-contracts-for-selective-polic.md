@@ -41,6 +41,25 @@ We present CoWAM, a selective intervention layer that expresses synchronization,
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  P["冻结 proposer<br/>候选池 P(t) = (a_i, z_i)<br/>i=0 为名义动作 Policy Top-1"] --> C["协调契约 Coordination Contracts<br/>同步 / 角色兼容 / 碰撞收敛<br/>类型化可采纳性 g_i"]
+  P --> V["事件条件验证器 f(o, a_i, z_i, e)<br/>满足度 / 风险 / 效用 / 机会 / 置信度"]
+  V --> S["集成保守界 R+ U-<br/>得分 S_i"]
+  C --> G["校准干预门 G_i<br/>契约有效 · 风险 · 效用保留 · 机会 · 置信度 · 相对边际"]
+  S --> G
+  G -->|"至少一个候选通过"| OV["Override<br/>执行得分最高的已验证候选"]
+  G -->|"无候选通过且名义动作可采纳"| PR["Preserve<br/>执行名义动作"]
+  G -->|"无候选通过且名义动作不可采纳"| AB["Abstain<br/>任务预设回退"]
+  OV --> R["决策记录先持久化<br/>共享仿真器随后统一标注"]
+  PR --> R
+  AB --> R
+```
+
+图依据：论文 Methods（World-Action Candidate Interface、Coordination Contracts、Event-Conditioned Contract Evidence、Selective Policy Intervention）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ We present CoWAM, a selective intervention layer that expresses synchronization,
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.02578>
+- [arXiv PDF](https://arxiv.org/pdf/2608.02578)：已通读方法部分（实验与附录以略读为准）：Methods 各小节（候选接口、协调契约、事件条件证据、选择性干预）
 
 ## 推荐继续阅读
 

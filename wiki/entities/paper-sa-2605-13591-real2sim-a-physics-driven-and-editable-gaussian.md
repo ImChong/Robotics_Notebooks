@@ -44,6 +44,26 @@ Explicitly reconstructs dynamic driving scenes as temporally continuous Gaussian
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["Waymo 多模态输入\n多相机图像 + LiDAR"] --> DET["现成检测器\n分割并跟踪每个实例"]
+  IN --> BG["静态背景 Gaussians\nLiDAR 稀疏点 + SfM 初始化"]
+  DET --> OBJ["每个动态物体一个 Gaussian cluster\n局部坐标系 + 学习的位姿 (Rt, Tt)\n4D Fourier SH 外观"]
+  BG --> REC["Street Gaussians 式重建\n（50,000 次迭代）"]
+  OBJ --> REC
+  REC --> ED["实例级编辑\n平移 / 旋转 / 复制 / 插入外部资产"]
+  ED --> PH["为物体指定物理属性\n质量、摩擦、恢复系数"]
+  PH --> MPM["可微 MPM 求解器\n每个 Gaussian 视为材料点\nP2G → 网格力 → 网格速度 → G2P"]
+  MPM --> DEF["更新 Gaussian 均值与协方差\n（不透明度与颜色系数不变）"]
+  DEF --> RND["Gaussian splatting 渲染\n背景与物体按不透明度合成"]
+  RND --> OUT["物理感知合成数据\n碰撞、撞后轨迹等 corner case"]
+  OUT --> DS["下游任务：检测 / 跟踪 / 轨迹预测 / 端到端驾驶"]
+```
+
+图依据：论文 §III.B–C、§IV.B/D/E / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -102,6 +122,7 @@ Explicitly reconstructs dynamic driving scenes as temporally continuous Gaussian
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2605.13591>
+- [arXiv PDF](https://arxiv.org/pdf/2605.13591)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（含 Algorithm 1）、§IV.A/B/D/E 实验设定
 
 ## 推荐继续阅读
 

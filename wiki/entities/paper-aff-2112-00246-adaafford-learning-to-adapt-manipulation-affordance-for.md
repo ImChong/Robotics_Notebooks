@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects via Few-shot Interactions——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects via Few-shot Interactions——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["单帧部分点云 O<br/>关节体物体"] --> W["Where2Act 预训练网络<br/>无交互的 affordance 先验 A"]
+    W --> AIP1["AIP 模块提出首个交互 u1 = (p, R)"]
+    subgraph LOOP["测试时递归交互 t = 1, 2, ..."]
+        EXE["仿真中执行 Where2Act 的任务轨迹<br/>观测部件运动 m，得到 I_t = (O, p, R, m)"]
+        EXE --> SET["交互集合 I_t = I_(t-1) ∪ {I_t}"]
+        SET --> AAP["AAP 模块<br/>Adaptive Information Encoder：逐交互编码 + 注意力加权平均 → 隐信息 z（128 维）"]
+        AAP --> POST["Adaptive Affordance Network + Adaptive Critic Network<br/>输出 affordance 后验 A_I 与动作成功分数 s_AAP"]
+        AAP --> AIP["AIP 模块<br/>AIP Affordance Network 选最高 actionability 的点 p<br/>在 p 采样 100 个动作，AIP Critic 选最高分的 R"]
+        AIP --> NEXT["下一次交互动作 u_(t+1)"]
+        NEXT --> EXE
+    end
+    AIP1 --> EXE
+    POST --> STOP{"达到交互预算<br/>或最大 AIP actionability 低于阈值（如 0.05）"}
+    STOP --> FIN["输出最终 affordance 后验 A_I = A_(I_T)"]
+```
+
+图依据：论文 §3 Problem Formulation、§4 Method / Fig.2、Fig.3（测试时流程见 §4 Test-time Overview，AAP 见 §4.1，AIP 与下一步动作选择见 §4.2，交替训练见 §4.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +73,7 @@ AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2112.00246)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2112.00246)。
 
 ## 评测与指标
 
@@ -67,7 +89,7 @@ AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects 
 
 **本页只提供「AdaAfford」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +110,7 @@ AdaAfford: Learning to Adapt Manipulation Affordance for 3D Articulated Objects 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2112.00246>
+- [arXiv PDF](https://arxiv.org/pdf/2112.00246)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Problem Formulation、§4 Method（4.1–4.3）、§5 实验（略读）
 
 ## 推荐继续阅读
 

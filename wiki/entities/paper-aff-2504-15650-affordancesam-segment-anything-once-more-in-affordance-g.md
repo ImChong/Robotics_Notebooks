@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,26 @@ AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["输入：图像 + 文本提示 '动词 + 物体名'"] --> P1["路径 i：SAM 图像编码器 E_I → SAM 图像 token I_s"]
+  I --> P2["路径 ii：BEIT-3 多模态编码器 E_M<br/>（图像 token + 文本 token + CLS）"]
+  P2 --> CLS["CLS 输出 F_c → 提示编码器 E_P"]
+  P2 -->|"文本特征"| Q["affordance queries 交叉注意力（含自注意力块）"]
+  P1 -->|"多层全局注意力特征加权融合 F_v"| Q
+  Q --> T["两层转置卷积 TransConv(Q_af)"]
+  P1 --> D["SAM 掩码解码器 D"]
+  CLS --> D
+  T -->|"与 EVF-SAM 掩码特征相加"| D
+  D --> M["输出：affordance map M_a"]
+  S1["阶段 1：Part 1 二值掩码数据<br/>仅 EVF-SAM，微调多模态编码器与提示编码器"] --> S2["阶段 2：Part 2 伪标签 affordance map<br/>加入适配模块，仅冻结 SAM 图像编码器"]
+  S2 --> S3["阶段 3：Part 3 人工标注 AGD20K<br/>损失与可训练模块同阶段 2"]
+```
+
+图依据：论文 §Approach（Preliminary / Affordance-Adaption Module / C2F-Aff 与三阶段训练）/ Fig.3、Table 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2504.15650)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2504.15650)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单
 
 **本页只提供「AffordanceSAM」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ AffordanceSAM: Segment Anything Once More in Affordance Grounding——在清单
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2504.15650>
+- [arXiv PDF](https://arxiv.org/pdf/2504.15650)：已通读方法部分（实验与附录以略读为准）：§Approach（Preliminary、Affordance-Adaption Module、Coarse-to-Fine Dataset and Training 三阶段）、实验设定（Implementation Details）
 
 ## 推荐继续阅读
 

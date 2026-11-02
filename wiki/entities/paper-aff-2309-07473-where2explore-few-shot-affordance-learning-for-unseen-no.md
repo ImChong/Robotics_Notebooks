@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Articulated Objects——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Articulated Objects——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,29 @@ Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Artic
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 训练阶段
+        A["训练类别划分：affordance 类别 C_aff 与相似性类别 C_sim"] --> B["在 C_aff 上学习逐点 affordance，形成 supporting set"]
+        A --> C["相似性模块：对 C_sim 对象预测逐点相似度，监督信号 = affordance 预测对真值交互的准确率"]
+        B -. 共享 PointNet++ 编码器 .- C
+    end
+    subgraph 新类别少样本探索循环
+        D["新类别物体的部分点云"] --> E["相似性模块预测逐点相似度，并采样多种动作方向/夹爪朝向"]
+        E --> F["选相似度最低的动作，执行短程轨迹，观察部件运动 m_i"]
+        F --> G["用交互 (O_i, p_i, R_i, m_i) 更新 affordance 模块与相似性模块"]
+        G --> H{"相似度达到阈值或交互预算用完？"}
+        H -- 否 --> E
+    end
+    B --> D
+    C --> D
+    H -- 是 --> I["适配后的 affordance 可操作该类别未见物体"]
+```
+
+图依据：论文 §4（4.1–4.4）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Artic
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07473)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07473)。
 
 ## 评测与指标
 
@@ -67,7 +90,7 @@ Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Artic
 
 **本页只提供「Where2Explore」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +111,7 @@ Where2Explore: Few-shot Affordance Learning for Unseen Novel Categories of Artic
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2309.07473>
+- [arXiv PDF](https://arxiv.org/pdf/2309.07473)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题定义、§4 方法（4.1–4.4）、§5.1–5.2 实验设定与基线
 
 ## 推荐继续阅读
 

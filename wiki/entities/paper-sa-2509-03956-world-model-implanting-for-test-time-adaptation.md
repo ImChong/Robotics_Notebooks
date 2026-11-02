@@ -42,6 +42,25 @@ World model implanting for test-time adaptation of embodied agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前状态 st(目标域观测 + 指令)"] --> B["目标检测 ΦD 得到物体级状态<br/>嵌入模型 ΦE 编码为嵌入集 E"]
+    B --> C["对 E 取 k-center 原型 p"]
+    D["各预训练世界模型 M1..MN<br/>数据集嵌入集的原型 pj"] --> E["原型相似度 δ(pj, p)<br/>Wasserstein 距离, 取 Top-K"]
+    C --> E
+    E --> F["激活选中的 K 个世界模型<br/>其余不激活"]
+    F --> G["各世界模型第 i 层输出 lMj"]
+    H["冻结的推理模型 πR 第 j 层输出 lπR"] --> I
+    G --> I["复合注意力 Cθ<br/>线性投影 Lθ → 世界级交叉注意力 → 推理级交叉注意力"]
+    I --> J["融合后的表示加入推理模型第 j+1 层输入"]
+    J --> K["LLM 策略输出动作<br/>如 grab apple"]
+    L["元学习: 内循环在世界模型子集上适应 θj<br/>外循环更新元参数 θ"] -. 训练复合注意力 .-> I
+```
+
+图依据：论文 §3.1–3.4 / Fig. 2、Fig. 3、式 (1)–(9)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ World model implanting for test-time adaptation of embodied agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.03956>
+- [arXiv PDF](https://arxiv.org/pdf/2509.03956)：已通读方法部分（实验与附录以略读为准）：§3.1 总体框架、§3.2 原型检索、§3.3 世界级复合注意力、§3.4 元学习；§4 实验略读
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,32 @@ DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Man
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["SAPIEN 仿真离线采集交互数据（随机采样，或可选 RL 增强采样）"] --> TRAIN
+    subgraph TRAIN["训练（红色箭头方向：先 M2，后 M1）"]
+        T2["先训练第二夹爪模块 M2：以 u1 为条件，学习给出协作的 u2"] --> T1["再训练第一夹爪模块 M1：用已训练 M2 提供监督的 Critic C1 评估 u1 是否便于协作"]
+    end
+    TRAIN --> ADAPT["Collaborative Adaptation：两夹爪动作在仿真中同时执行，用在线结果同步更新 M1 与 M2"]
+    IN["推理输入：部分点云 O + 任务 l"] --> M1
+    subgraph M1["第一夹爪模块 M1"]
+        A1["Affordance Network A1：逐点 affordance 图，选接触点 p1"] --> P1["Proposal Network P1（cVAE）：采样抓取朝向 R1"]
+        P1 --> C1["Critic Network C1：评估动作成功可能性"]
+    end
+    M1 -->|"u1 = (p1, R1)"| M2
+    subgraph M2["第二夹爪模块 M2（输入额外包含 u1）"]
+        A2["Affordance Network A2：协作 affordance 图，选 p2"] --> P2["Proposal Network P2（cVAE）：候选朝向 R2"]
+        P2 --> C2["Critic Network C2：评估并选择 R2"]
+    end
+    M2 --> OUT["输出 u1、u2：双夹爪协同操作"]
+    ADAPT -.-> M1
+    ADAPT -.-> M2
+```
+
+图依据：论文 §4.1–§4.5 / Fig.2、Fig.3、Fig.4（虚线表示 Collaborative Adaptation 作用于两模块，为按 §4.4 文字的归纳）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +77,7 @@ DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Man
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2207.01971)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2207.01971)。
 
 ## 评测与指标
 
@@ -67,7 +93,7 @@ DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Man
 
 **本页只提供「DualAfford」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +114,7 @@ DualAfford: Learning Collaborative Visual Affordance for Dual-gripper Object Man
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2207.01971>
+- [arXiv PDF](https://arxiv.org/pdf/2207.01971)：已通读方法部分（实验与附录以略读为准）：§4.1 框架概览、§4.2 感知模块（第一/第二夹爪模块）、§4.3 损失、§4.4 Collaborative Adaptation、§4.5 数据采集；§5 实验略读
 
 ## 推荐继续阅读
 

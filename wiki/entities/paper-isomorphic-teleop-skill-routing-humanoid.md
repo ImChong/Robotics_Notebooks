@@ -19,7 +19,7 @@ summary: "G1Exo 组合操作：基于同构遥操作与独立技能路由的组�
 
 # G1Exo 组合操作：基于同构遥操作与独立技能路由的组合式人形操作
 
-**G1Exo 组合操作**（*Compositional Humanoid Manipulation through Isomorphic Teleoperation and Independent Skill Routing*，[arXiv:2610.26169](https://arxiv.org/abs/2610.26169)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**G1Exo 组合操作**（*Compositional Humanoid Manipulation through Isomorphic Teleoperation and Independent Skill Routing*，[arXiv:2610.26169](https://arxiv.org/abs/2610.26169)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,35 @@ summary: "G1Exo 组合操作：基于同构遥操作与独立技能路由的组�
 ## 为什么重要
 
 - 周报所述待解决的问题：分别采集的左右臂技能难以自由组合，而为每种双臂技能组合重新示范成本过高。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据采集：G1Exo 同构外骨骼"]
+        EXO["操作者佩戴 G1Exo<br/>14 个关节编码器 + 2 个扳机编码器（RS-485，100 Hz）"] --> MAPJ["关节角直接映射到 G1 对应关节<br/>扳机 → 夹爪开度；VIVE Tracker → 底盘移动"]
+        MAPJ --> DEMO["全身接触操作演示<br/>+ 单臂技能标注"]
+    end
+    DEMO -.->|"训练 HS-MoDP"| POL
+    INS["自然语言指令 g + 头部图像 I_t + 任务进度 ξ_t"] --> VLM["冻结 VLM 语义调度器 G<br/>选择 (底盘技能 b, 左臂技能 s_L, 右臂技能 s_R)"]
+    VLM -->|"臂技能文本描述"| CLIP["冻结 CLIP 文本编码器 → 技能嵌入 u_a"]
+    CLIP --> SE["共享技能编码器 S_ϕ（左右臂分别带可学习 query）<br/>上下文：头部相机 + 本臂腕部相机 + 指令嵌入 → z_a"]
+    SE --> POL
+    subgraph POL["HS-MoDP：MoE 扩散策略"]
+        direction TB
+        STL["左臂动作流"] --> RL["左臂独立路由器 → 共享专家池 (top-k)"]
+        STR["右臂动作流"] --> RR["右臂独立路由器 → 共享专家池 (top-k)"]
+        RL --> HL["左臂输出头"]
+        RR --> HR["右臂输出头"]
+    end
+    POL --> CH["动作块 A_t ∈ R^(H×16)<br/>双臂关节指令 + 夹爪指令"]
+    CH --> EXE["执行配置的前缀后重新规划（滚动时域）"]
+    VLM -->|"底盘技能"| LOC["既有运动控制器：重定位"]
+    EXE -.->|"VLM 判定完成后切换"| LOC
+    LOC -.->|"完成后恢复操作"| VLM
+```
+
+图依据：论文 §III（G1Exo）、§IV-A–E / Fig. 3、式 1–6。
 
 ## 核心机制
 
@@ -86,6 +115,7 @@ summary: "G1Exo 组合操作：基于同构遥操作与独立技能路由的组�
 - [isomorphic-teleop-skill-routing-humanoid_arxiv_2610_26169.md](../../sources/papers/isomorphic-teleop-skill-routing-humanoid_arxiv_2610_26169.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26169](https://arxiv.org/abs/2610.26169)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26169)：已通读方法部分（实验与附录以略读为准）：§I–IV（引言、相关工作、G1Exo 硬件、HS-MoDP 的问题表述/技能条件化/独立路由/训练目标/技能调度）
 
 ## 推荐继续阅读
 

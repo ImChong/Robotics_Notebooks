@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via Diffusion Models——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via Diffusion Models——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,24 @@ FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["人类演示视频"] --> DATA["数据构建：RTMPose 手部关键点<br/>取 无手物体关键帧 + 最早稳定抓取帧"]
+    DATA --> GT["五指指尖 Gaussian 热图标签 H"]
+    OBJ["物体图像 + 文本提示"] --> HF["冻结 Stable Diffusion U-Net<br/>多时间步、多尺度激活聚合为 hyperfeature Ag"]
+    HF --> DEC["FPN 风格解码器 → 五个单指似然热图 Ĥ"]
+    GT -. "MSE 监督" .-> DEC
+    RGBD["RGB-D 观测"] --> REC["SAM3 分割 + SAM3D 重建 + ICP 位姿"]
+    REC --> LIFT["将 Ĥ 峰值提升到 3D：各指指尖接触候选 / affordance 区域"]
+    DEC --> LIFT
+    LIFT --> OPT["GraspQP 式抓取优化<br/>E = 力闭合 + 接触距离 + 正则 + 指级 affordance 对齐项<br/>以 affordance 一致的接触布局热启动"]
+    OPT --> EXE["三阶段执行：approach → close → hold"]
+```
+
+图依据：论文 §III（Methods）/ Fig.2、Fig.3；§III-A 数据、§III-B 扩散特征与热图、§III-C 抓取匹配与优化。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +69,7 @@ FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2601.08246)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2601.08246)。
 
 ## 评测与指标
 
@@ -67,7 +85,7 @@ FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via
 
 **本页只提供「FSAG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +106,7 @@ FSAG: Enhancing Human-to-Dexterous-Hand Finger-Specific Affordance Grounding via
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2601.08246>
+- [arXiv PDF](https://arxiv.org/pdf/2601.08246)：已通读方法部分（实验与附录以略读为准）：§III-A 数据采集、§III-B 扩散 hyperfeature 与指级热图、§III-C 重建与抓取优化
 
 ## 推荐继续阅读
 

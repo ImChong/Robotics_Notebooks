@@ -23,7 +23,7 @@ summary: "OpenTac：可定制、可扩展、可迁移的三维触觉感知开放
 
 # OpenTac：可定制、可扩展、可迁移的三维触觉感知开放生态
 
-**OpenTac**（*OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sensing*，[arXiv:2610.31661](https://arxiv.org/abs/2610.31661)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**OpenTac**（*OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sensing*，[arXiv:2610.31661](https://arxiv.org/abs/2610.31661)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,29 @@ summary: "OpenTac：可定制、可扩展、可迁移的三维触觉感知开放
 ## 为什么重要
 
 - 周报所述待解决的问题：触觉传感器的硬件结构、输出格式和标定方法存在差异，增加了触觉操作策略的数据采集和跨平台迁移难度。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    I1[输入: 2D 轮廓 DXF / 手绘区域] --> O
+    I2[输入: 3D 网格 STL 并指定传感表面<br/>逐三角形展开为 2D, 不可展曲面会被检出并报告] --> O
+    I3[输入: 文本描述<br/>LLM 代理提取 2D 轮廓] --> O
+    O[传感器轮廓] --> CAD[OpenTac-CAD<br/>按 taxel 尺寸与间距铺设 taxel<br/>沿轮廓走线, 行列分居 fPCB 两面, 校验间距<br/>分配读出板连接器引脚]
+    CAD --> FAB[制造文件: 柔性 PCB Gerber / shear-bump 外壳 3D 打印<br/>读出板 30 或 60 针, USB 输出]
+    CAD --> MAN[Shared sensor manifest<br/>taxel 物理中心, 行列索引, 引脚映射, bump 分组]
+    FAB --> HW[压阻触觉皮肤 + 弹性 bump<br/>共模响应 h_z 为法向力, 差分响应 h_x h_y 为剪切]
+    MAN --> SIM[OpenTac-Sim: MuJoCo 中 FEM 模拟 bump 传感器<br/>光滑皮肤用泡沫接触模型]
+    MAN --> TR[OpenTac-Transfer: 按物理坐标与接触帧<br/>映射不同传感器设计间的法向接触场]
+    MAN --> XS[OpenTac-Xampling: 每帧预算 M 远小于 N<br/>四叉树自适应子采样, 1/4 预算全局搜索, 其余跟踪上一帧活动区域]
+    HW --> XS
+    HW --> APP[下游机器人控制与策略学习]
+    SIM --> APP
+    TR --> APP
+    XS --> APP
+```
+
+图依据：论文 §3.1–3.5 / Fig.1 / Fig.3 / Fig.5
 
 ## 核心机制
 
@@ -90,6 +113,7 @@ summary: "OpenTac：可定制、可扩展、可迁移的三维触觉感知开放
 - [opentac-open-3d-tactile-sensing-ecosystem_arxiv_2610_31661.md](../../sources/papers/opentac-open-3d-tactile-sensing-ecosystem_arxiv_2610_31661.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.31661](https://arxiv.org/abs/2610.31661)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31661)：已通读方法部分：摘要、§1 引言、§3 方法（3.1 传感器原理、3.2 OpenTac-CAD、3.3 Sim、3.4 Transfer、3.5 Xampling）；实验与附录未读
 
 ## 推荐继续阅读
 

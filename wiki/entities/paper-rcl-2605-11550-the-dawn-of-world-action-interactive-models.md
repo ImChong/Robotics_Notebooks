@@ -42,6 +42,27 @@ Experiments show that DAWN achieves strong planning performance and favorable sa
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  O["当前观测 o"] --> SE["Student Vision-Encoder\nV-JEPA 2 Large，稠密视觉 token u"]
+  SE --> RS["Auto Encoder Resampler\n压缩为紧凑 latent z"]
+  C["条件 token c\nego-state + 高层动作 / 路线 token"] --> AD
+  RS --> AD["World-Conditioned Action Denoiser (DiT)\n提案角色：生成初始动作 a^(0)"]
+  AD --> WP["World Predictor（因果 Transformer）\n由 z、c、当前动作假设预测短程未来 latent"]
+  WP --> RF["Action Denoiser 精炼角色\n以预测的未来 latent 为条件更新动作\n（权重与提案角色共享）"]
+  RF -->|重复 K 次交互| WP
+  RF --> AH["Action Head\n解码最终轨迹"]
+  subgraph TR["仅训练期"]
+    OF["未来帧 o+"] --> TE["Teacher Vision-Encoder\n+ Resampler（EMA）"]
+    TE --> ZT["目标未来 latent"]
+  end
+  ZT -.->|监督 World Predictor| WP
+```
+
+图依据：论文 §2.2–2.4 / Fig.2、Eq.9–13
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ Experiments show that DAWN achieves strong planning performance and favorable sa
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.11550>
+- [arXiv PDF](https://arxiv.org/pdf/2605.11550)：已通读方法部分（实验与附录以略读为准）：摘要、§2.1–2.4、§3.1 实验设定
 
 ## 推荐继续阅读
 

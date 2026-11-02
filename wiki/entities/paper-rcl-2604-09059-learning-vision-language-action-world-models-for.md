@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角图像 + ego 状态 + 任务目标"] --> B["感知: 检测周围目标 / 3D 位置 / 可行驶区域"]
+    B --> C["短期预测: 0.5 s 后 waypoint 与行驶方向"]
+    C --> D["条件引导生成: 预测下一帧<br/>(VQGAN 视觉 token)"]
+    D --> E["Thinking with Visual Tokens<br/>对想象的未来帧做反思推理"]
+    E --> F["动作与轨迹规划: 3 s 精修轨迹"]
+    subgraph T["三阶段训练"]
+        direction LR
+        T1["视觉预训练<br/>多视角下一帧 token 预测"] --> T2["SFT<br/>感知/预测/生成/思考/规划 多任务"] --> T3["GRPO 强化学习<br/>规则奖励"]
+    end
+```
+
+图依据：论文 §3.2–§3.5 / Fig.2–3（VLA-World 的感知-预测-想象-反思-规划闭环与三阶段训练）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +116,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.09059>
+- [arXiv PDF](https://arxiv.org/pdf/2604.09059)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–§3.5（预训练、SFT、GRPO 强化学习）、§4.1 实验设定
 
 ## 推荐继续阅读
 

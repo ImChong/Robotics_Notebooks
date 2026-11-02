@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["基础 VLA 策略 rollout 采集轨迹"] --> B["训练初始世界模型 WM_Base"]
+    B --> C["动作条件视频世界模型<br/>Wan2.2-TI2V-5B + 双通道动作注入"]
+    C --> D["首帧锚定上下文 + 带噪上下文增强<br/>分块自回归生成"]
+    D --> E["想象 rollout：VLA 出动作 → 世界模型生成视频块"]
+    K["关键帧初始化 Keyframe-Initialized Rollouts<br/>从任务关键状态起滚"] --> E
+    E --> R["奖励模型<br/>ResNet 二值 / Qwen3-VL 稠密"]
+    R --> G["GRPO 更新 VLA 策略"]
+    G --> H["PACE：用演化后策略采集少量额外 rollout"]
+    H --> I["微调世界模型得到 WM_Evo"]
+    I --> E
+```
+
+图依据：论文 §3 / Fig.2、Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.13977>
+- [arXiv PDF](https://arxiv.org/pdf/2602.13977)：已通读方法部分（实验与附录以略读为准）：Abstract、§1、§3.1–3.3、§4 实验设定
 
 ## 推荐继续阅读
 

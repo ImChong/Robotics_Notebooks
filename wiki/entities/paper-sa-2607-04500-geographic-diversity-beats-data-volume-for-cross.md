@@ -42,6 +42,24 @@ Geographic diversity outperforms data volume for cross-domain generalization; 63
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  D1["nuPlan 训练集 (约 63K 场景)"] --> POOL["训练数据条件 (4 种)<br/>nuPlan-only 63K / Combined-63K 随机子采样<br/>AV2-only 200K / Combined-full 263K"]
+  D2["Argoverse 2 训练集 (约 200K 场景)"] --> POOL
+  POOL --> IN["输入张量 [50 时间步, 21 agent, 6 特征]<br/>位置 / 速度 / 航向 / agent 类型"]
+  IN -->|"前 30 步"| CE["Context encoder<br/>8 层 Transformer, d=512"]
+  IN -->|"后 20 步"| TE["Target encoder<br/>context encoder 的 EMA (decay 0.996)"]
+  CE --> PRED["Predictor<br/>4 层 Transformer，预测后 20 步的 latent"]
+  PRED --> S["surprise score<br/>s = (1/d) ||z_pred − z_target||²"]
+  TE --> S
+  PRED --> CKPT["按分布内验证损失选最优 checkpoint"]
+  CKPT --> EVAL["零样本迁移评测：AV2 验证集 24,988 场景<br/>(训练中从未见过)，报告平均 surprise，越低越好"]
+```
+
+图依据：论文 §3.1–3.3、§4.2 / Fig.1（模型沿用 Jaiswal 2026 的 JEPA 架构，本文仅放大并做迁移评测）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Geographic diversity outperforms data volume for cross-domain generalization; 63
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.04500>
+- [arXiv PDF](https://arxiv.org/pdf/2607.04500)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.3）、§4 Experiments
 
 ## 推荐继续阅读
 

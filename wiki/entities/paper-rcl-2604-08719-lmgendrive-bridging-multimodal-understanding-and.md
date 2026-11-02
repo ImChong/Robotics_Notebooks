@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角 RGB 图像"] --> B["视觉编码器<br/>(ResNet + Transformer 融合, BEV 解码)"]
+    B --> C["Q-Former + MLP adapter<br/>压缩为帧级视觉 token"]
+    I["导航指令 (LLaMA tokenizer)"] --> L
+    C --> L["LLM (LLaMA)<br/>+ action query + world query"]
+    L --> AP["动作头: N 个 waypoint + 指令完成标志"]
+    AP --> PID["两个 PID 控制器<br/>刹车 / 油门 / 转向"]
+    L --> W["世界 query 特征"]
+    LF["最后一帧多视角图像 (CLIP 特征)"] --> F["多视角世界融合<br/>(self-attn + cross-attn)"]
+    W --> F
+    F --> G["世界生成器: U-Net 扩散<br/>逐视角 cross-attention"]
+    G --> V["未来多视角驾驶视频"]
+    V -.->|"可选: 自回归模式回灌下一步"| L
+```
+
+图依据：论文 §3.1–§3.5 / Fig.2–3（LMGenDrive 整体框架与世界生成器）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.08719>
+- [arXiv PDF](https://arxiv.org/pdf/2604.08719)：已通读方法部分（实验与附录以略读为准）：§3（3.1 整体框架、3.2 视觉编码器、3.3 LLM、3.4 多视角世界模型、3.5 训练配方）、§4.1 实验设定
 
 ## 推荐继续阅读
 

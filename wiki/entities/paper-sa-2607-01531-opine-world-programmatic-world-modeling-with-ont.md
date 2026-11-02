@@ -42,6 +42,27 @@ Programmatic world modeling with ontology-error-prioritized interactive explorat
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["渲染观测 ω（像素）+ 奖励 r"] --> ABS["观测到对象抽象 f⁻¹<br/>对象 / 类型 / 属性 / 关系"]
+    ABS --> BUF["存入 replay buffer D<br/>更新贝叶斯信念 S_B"]
+    BUF --> CEGIS["CEGIS 程序综合<br/>预测与观测不一致 = counterexample"]
+    CEGIS --> MODEL["世界模型<br/>NL 模型：S_NL / T_NL / R_NL<br/>Python 模型：T_P / R_P"]
+    MODEL --> VER{"Φ1 预测验证<br/>与 replay 一致？"}
+    VER -- 否 --> CEGIS
+    VER -- 是 --> CHOOSE{"选择交互来源"}
+    CHOOSE -- "存在 Φ2 奖励导向计划" --> PLAN["规划器 P 在 T_P / R_P 中前向展开<br/>目标假设经 goal grounding 变为布尔谓词"]
+    CHOOSE -- "无 Φ2 计划" --> EXP["认知实验<br/>S_B 的熵标出不确定对象-动作效应<br/>NL 模型提出探索动作"]
+    PLAN --> ACT["执行动作 a"]
+    EXP --> ACT
+    ACT --> ENV["环境返回 ω(t+1), r(t)"]
+    ENV --> OBS
+```
+
+图依据：论文 §3.1 Model Representation、§3.2 Model Learning Loop（步骤 1-5）、§3.2.1-3.2.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Programmatic world modeling with ontology-error-prioritized interactive explorat
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.01531>
+- [arXiv PDF](https://arxiv.org/pdf/2607.01531)：已通读方法部分（实验与附录以略读为准）：§2、§3.1–3.2（含 3.1.1–3.2.4）
 
 ## 推荐继续阅读
 

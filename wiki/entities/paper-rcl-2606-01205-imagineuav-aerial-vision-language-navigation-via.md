@@ -42,6 +42,25 @@ To address this, we propose ImagineUAV, an imagination-driven framework leveragi
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["自然语言指令 l + UAV 第一人称观测 o_t（无全局地图）"] --> W["想象模块 W：视频扩散生成式世界模型，生成指令一致的未来第一视角视频"]
+    W --> VID["想象视频片段 V̂_(t:t+T)"]
+    VID --> D["视觉里程计式动作提取器 Dψ（Transformer）：回归相对平移 / 旋转序列 a_(t:t+T)"]
+    D --> REF["累加得到世界系参考轨迹"]
+    MAP["局部障碍图 O"] --> K
+    REF --> K["运动动力学规划器 K：B 样条梯度轨迹优化（平滑 / 避障 / 可行性 / 参考偏离）"]
+    K --> OUT["平滑、无碰撞、动力学可行轨迹 τ*（滚动时域重规划）"]
+    subgraph DEPLOY["部署加速"]
+        T["教师扩散模型"] --> S["DMD 步数蒸馏 + 蒸馏 CFG → 学生 10 步 DiT，无 CFG"]
+    end
+    S -.-> W
+```
+
+图依据：论文 §III-B 系统概述（式 1–3）/ Fig.2、§III-D 动作提取与运动动力学规划、§III-E 步数蒸馏部署。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ To address this, we propose ImagineUAV, an imagination-driven framework leveragi
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.01205>
+- [arXiv PDF](https://arxiv.org/pdf/2606.01205)：已通读方法部分（实验与附录以略读为准）：§III 方法（A–E）；§IV 实验仅略读，想象模块的网络细节（§III-C 1) 部分）略读
 
 ## 推荐继续阅读
 

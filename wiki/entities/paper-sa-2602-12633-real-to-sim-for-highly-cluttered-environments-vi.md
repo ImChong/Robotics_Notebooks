@@ -42,6 +42,26 @@ Reconstructs dynamically consistent 3D scenes from a single RGB-D observation by
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单张 RGB-D 图像（严重遮挡的杂乱场景）"] --> B["SAM3D-objects 预测几何、纹理、布局"]
+    B --> C["Open3D ICP 位姿精修"]
+    C --> D["几何-外观先验"]
+    D --> E["接触图构造 Contact Graph"]
+    E --> E1["支撑树 pt：粗筛候选父物体 + 支撑似然 H 选父"]
+    E --> E2["邻近边 E：AABB 重叠"]
+    E1 --> F["阶段一：几何感知约束<br/>SDF 接触损失全局优化位姿"]
+    E2 --> F
+    F --> G["阶段二：层次物理约束<br/>沿支撑树从根到叶逐物体优化<br/>DiffSDFSim 可微仿真"]
+    G --> H["位姿 + 质量/摩擦/质心等物理参数"]
+    H --> I["光度精修：DIB-R 可微渲染优化纹理<br/>几何固定 + TV 正则"]
+    I --> J["可仿真的数字孪生场景"]
+```
+
+图依据：论文 §IV A–D / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Reconstructs dynamically consistent 3D scenes from a single RGB-D observation by
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2602.12633>
+- [arXiv PDF](https://arxiv.org/pdf/2602.12633)：已通读方法部分（实验与附录以略读为准）：Abstract、§I、§IV A–D（初始化、接触图、两阶段物理约束优化、光度精修）、§V 实验设定
 
 ## 推荐继续阅读
 

@@ -39,6 +39,24 @@ summary: "AIM（2026）：指出动作条件视频世界模型忽略动作的根
 - 世界模型常预测「典型的专家式未来」，而不是随动作变化的未来，这会削弱其在规划与策略评估中的作用。
 - 作者证明数据的动作影响限制了任何在其上训练的模型所能表达的动作影响，因此单靠模型容量无效。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D0["初始回放数据 D_0（如专家示范）"] --> FIT
+    subgraph LOOP["批量在线采集，共 K 轮（Algorithm 1）"]
+        FIT["拟合奖励（Algorithm 2）：<br/>流匹配密度模型 q(a|s,s')、β(a|s)、d(s)，选 held-out 似然最优检查点"]
+        FIT --> ANN["标注回放：r_AIM = log q − log β + log ρ_eval − log d<br/>（动作信息项 + 参考状态覆盖项，分别标准化）"]
+        ANN --> POL["保守离线 RL：IQL critic 估值，AWR 提取到扩散策略 actor<br/>（AWR 权重截断）"]
+        POL --> COL["用该策略采集 B_k 条环境轨迹 T_k"]
+        COL --> ADD["D_k+1 = D_k ∪ T_k"]
+    end
+    ADD -->|"下一轮重新拟合密度与奖励"| FIT
+    ADD --> OUT["返回 D_K，用于下游世界模型训练"]
+```
+
+图依据：论文 §3.3–3.4 与附录 C 的 Algorithm 1 / Algorithm 2；ρ_eval 实际取目标状态空间上的均匀分布（§3.4）。
+
 ## 方法与机制
 
 - 主动采集训练 episode，目标是提高数据集的动作影响。
@@ -80,6 +98,7 @@ summary: "AIM（2026）：指出动作条件视频世界模型忽略动作的根
 ## 参考来源
 
 - [AIM 论文来源归档](../../sources/papers/aim_action_influence_maximization_arxiv_2610_27387.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27387)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）、附录 C 的 Algorithm 1/2
 
 ## 推荐继续阅读
 

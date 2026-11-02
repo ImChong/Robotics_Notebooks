@@ -43,6 +43,25 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DS["评测数据集（共 400 条，两个赛道各 200）"]
+        direction TB
+        OD["开放域赛道：互联网来源的全球多地区驾驶视频"]
+        EC["自车条件赛道：Zod / DrivingDojo / COVLA / nuPlan / WOMD"]
+    end
+    DS --> COND["每条样本：前视 RGB 图像 + Qwen 生成的场景描述 + 可选自车轨迹（仅自车条件赛道）"]
+    COND --> GEN["被评生成式世界模型（通用 / 物理 / 驾驶专用）生成视频"]
+    GEN --> M1["Distribution：FVD、FTD"]
+    GEN --> M2["Quality：主观 / 客观画质、轨迹质量"]
+    GEN --> M3["Temporal Consistency：视频 / 目标 / 目标消失 / 轨迹一致性"]
+    GEN --> M4["Trajectory Alignment：ADE、DTW"]
+```
+
+图依据：论文 §3 / Fig.1（本文为基准论文，此图为其评测流程而非模型架构）、§3.1 数据集构建、§3.2 指标分组
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +119,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=OrgL5DsU0f>
+- [arXiv PDF](https://arxiv.org/pdf/2601.01528)：已通读方法部分（实验与附录以略读为准）：§1、§3（数据集构建与四类指标）；§4 起实验与附录略读
 
 ## 推荐继续阅读
 

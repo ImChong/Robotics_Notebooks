@@ -42,6 +42,25 @@ LEAP refines an action horizon through frozen LeWorldModel dynamics, combining l
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前观测 x_t 与目标 g"] --> B["冻结 LeWM 编码器 → z_t, z_g（目标描述子 y_g 另给）"]
+    B --> C["冻结的目标条件动作提议网络 + 种子扰动 → K 个候选动作序列"]
+    C --> D["冻结自回归预测器沿候选序列 rollout，保留到动作的计算图"]
+    D --> E["潜空间目标项 C_latent：预测末态与 z_g 的距离"]
+    D --> F["冻结解码器 D_ψ 把末端潜变量映射为状态描述子 → 终端状态项 E_terminal"]
+    E --> G["总能量 E_total = C_latent + λ_s E_terminal（λ_s = 10）"]
+    F --> G
+    G --> H["L-BFGS 沿整个动作时域做梯度优化"]
+    H --> I["投影到可行动作域 Π_A"]
+    I --> J["选能量最低的候选；若无有限能量候选则拒绝该计划"]
+    J --> K["执行滚动时域前缀动作"]
+```
+
+图依据：论文 §IV（A–C）/ Fig. 2、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ LEAP refines an action horizon through frozen LeWorldModel dynamics, combining l
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03294>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03294)：已通读方法部分（实验与附录以略读为准）：§III 动机分析、§IV 方法与 Algorithm 1；§V 实验仅略读
 
 ## 推荐继续阅读
 

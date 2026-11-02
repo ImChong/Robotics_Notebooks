@@ -7,9 +7,10 @@ tags:
   - tool-use
   - open-source
 status: complete
-updated: 2026-11-01
+updated: 2026-11-02
 related:
   - ./robodojo.md
+  - ./paper-embodiedlab.md
   - ./paper-robodawn.md
   - ./paper-coap-embodied-turing-machines.md
   - ../methods/vla.md
@@ -26,7 +27,9 @@ project: https://hexafuture.ai
 code: https://github.com/HexaFuture/HexaShell
 ---
 
-# HexaShell（VLM 机器人编码 Agent Harness）
+# HexaShell：探索视觉语言模型机器人编码能力的轻量框架
+
+*HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents*
 
 **HexaShell** 是一套面向 RoboDojo 双臂操纵任务的轻量 Harness：视觉语言模型（VLM）编码 Agent 通过一个机器人命令行观察环境、调用 Python 工具并执行动作；失败轨迹可用于编写或修复工具，再把工具复用于后续任务。
 
@@ -119,6 +122,8 @@ sequenceDiagram
 - **Homepage 可访问性：** 仓库 README 链出的 HexaFuture 首页本次未能读取；具体技术与复现信息以仓库 README、代码和 arXiv 论文为准。
 
 ## 关联页面
+
+- [EmbodiedLab](./paper-embodiedlab.md) — 同团队面向科学实验的具身智能体基准，评测目标与 RoboDojo 不同。
 
 - [RoboDojo](./robodojo.md) — 42 项仿真任务与官方评测口径。
 - [RoboDawn](./paper-robodawn.md) — 冻结视觉模型 Agent 的 RoboDojo 参照路线。

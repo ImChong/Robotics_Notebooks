@@ -42,6 +42,22 @@ Dexterous visuotactile policy with generative contact grounding.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测历史 Ot: agent-view 与 wrist-view RGB, 触觉, 机器人状态"] --> B["触觉 VAE 把触觉 ut 压缩为 latent ht"]
+    A --> C["条件扩散轨迹生成器 πθ: U-Net 去噪, DDIM 采样"]
+    B --> C
+    C --> D["联合生成未来实际机器人状态与触觉 latent"]
+    D --> E["接触一致性映射 Mϕ: 残差形式, 输入预测状态与触觉, 输出目标机器人状态"]
+    E --> F["compliance controller: 臂阻抗控制 + 手关节 PD"]
+    F --> G["机器人执行, 滚动时域重规划"]
+    G --> A
+```
+
+图依据：论文 §III-A–E（Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Dexterous visuotactile policy with generative contact grounding.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.05687>
+- [arXiv PDF](https://arxiv.org/pdf/2603.05687)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction 略读，§III 方法、§IV 系统概览（略读）
 
 ## 推荐继续阅读
 

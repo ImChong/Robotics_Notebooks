@@ -42,6 +42,29 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  I["语言指令 + 历史 / 当前 RGB"] --> S2
+  subgraph S2["System 2（慢，约 2 Hz）：Qwen-VL-2.5 7B"]
+    D{"视角是否足够？"}
+    D -->|否| V["View Adjust：Turn Left/Right 15°、Look Up/Down 15°"]
+    V --> D
+    D -->|是| P["Pixel Goal：图像内下一航点 2D 坐标"]
+    P --> Q["追加 latent queries Z，经 VLM 得 Z'"]
+  end
+  Q -->|"异步 latent goal Z'"| S1
+  R["高频当前 RGB（t+k）+ System 2 时刻末帧（t）"] --> E["ViT 编码 + Self-Attention 融合 + Q-Former 压缩为 32 token"]
+  E --> S1
+  subgraph S1["System 1（快，约 30 Hz）：Diffusion Transformer"]
+    T["Flow Matching 生成 32 个稠密航点轨迹"]
+  end
+  S1 --> C["低层控制器跟随轨迹"]
+```
+
+图依据：论文 §3 / Fig.2（System 2 §3.1、System 1 §3.2；2 Hz / 30 Hz / 200 Hz 频率来自 Fig.1 示意）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.08186>
+- [arXiv PDF](https://arxiv.org/pdf/2512.08186)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 System 2、3.2 System 1、3.3 实现细节）
 
 ## 推荐继续阅读
 

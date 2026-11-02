@@ -43,6 +43,30 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ENC["动作 -> 动作图像"]
+        A["7-DoF 动作<br/>位置 / 朝向 / 夹爪开合"] --> B["3 个语义 3D 点<br/>position / normal / up"]
+        B --> C["按多视角相机内外参投影<br/>渲染 RGB 高斯热图, 蓝通道编码夹爪开合"]
+        C --> D["多视角动作视频"]
+    end
+    subgraph TRN["统一训练 (Wan 2.2 微调)"]
+        D --> E["3D-VAE 编码, 与机器人视频 latent 按时间拼接"]
+        V["多视角机器人 RGB 视频"] --> E
+        E --> F["多种 mask 策略 + 文本/相机(Plücker)条件<br/>flow matching 损失"]
+    end
+    subgraph POL["零样本策略 (联合生成 + 解码)"]
+        G["初始多视角观测 + 文本指令"] --> H["视频骨干联合生成<br/>未来视频 + 动作视频"]
+        H --> I["解码: 主视角热图质心 + 射线投射 + 侧视角匹配<br/>得到 3D 点, 还原 7-DoF 动作"]
+        I --> J["可执行控制 (open-loop)"]
+    end
+    F -.-> H
+```
+
+图依据：论文 §3.1–§3.3、§4.1 开头 / Fig.2–4（动作图像表示、解码与统一训练）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +124,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.06168>
+- [arXiv PDF](https://arxiv.org/pdf/2604.06168)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1 动作转图像、3.2 动作图像解码、3.3 统一世界动作模型训练）、§4.1 开头的 open-loop 评测设定
 
 ## 推荐继续阅读
 

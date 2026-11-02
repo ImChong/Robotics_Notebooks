@@ -42,6 +42,23 @@ summary: "Frontier LLMs RoboColiseum（arXiv:2610.27865）：Agent2Act在RoboCol
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  TASK["RoboColiseum 原始任务指令<br/>（评测中不加补充提示）"] --> LLM
+  OBS["观测：头部/左右腕相机图像 + 机器人状态 + 简要决策历史"] --> LLM["多模态 LLM 决策<br/>选择下一个操作目标、运动目标位姿与夹爪动作<br/>并给出预期可观察结果"]
+  LLM <-->|"按需只读深度查询"| DEP["深度工具（仿真中带噪声）"]
+  LLM --> VAL["Agent2Act 校验候选：运动学可行性 + 动作接口合规"]
+  VAL -->|"全部不通过：返回拒绝原因，模型修订"| LLM
+  VAL --> EXE["执行排名最高的可行候选<br/>转为机器人命令，在有限时域内执行"]
+  EXE --> FB["新观测 + 实测机器人响应"]
+  FB --> LLM
+  EXE --> EVAL["RoboColiseum 原生评测判定任务结果<br/>独立于模型自身的完成判断"]
+```
+
+图依据：论文 §II-A / §II-C / §II-D 与 Fig. 1（Agent2Act 控制环；论文主体为跨模型评测，此图仅描述其评测用 harness）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +102,7 @@ summary: "Frontier LLMs RoboColiseum（arXiv:2610.27865）：Agent2Act在RoboCol
 - [frontier_llms_robocoliseum_arxiv_2610_27865.md](../../sources/papers/frontier_llms_robocoliseum_arxiv_2610_27865.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27865](https://arxiv.org/abs/2610.27865)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27865)：已通读方法部分（实验与附录以略读为准）：§II Agent2Act harness（工作流、输入模块、动作校验与反馈、基准集成）、§III 评测结果、§IV harness 组件比较、§V 案例
 
 ## 推荐继续阅读
 

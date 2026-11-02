@@ -42,6 +42,27 @@ The first learning-based solution to the 'Out of Sight, Not out of Mind' (OSNOM)
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["第一人称长视频<br/>逐帧得到物体分割 mask"] --> OBS["构造观测 o = (a, l)"]
+    OBS --> A["外观 a：DINOv2 特征（用 mask 隔离物体）<br/>ℓ2 归一化 → PCA 降维 → 再 ℓ2 归一化"]
+    OBS --> L["3D 位置 l：单目深度对齐 3D 重建<br/>把物体中心抬升到世界坐标"]
+    MEM["Track 记忆<br/>外观：DenStream 在线聚类（persistent + transient 簇）<br/>位置：最近 W 个 3D 位置缓冲（约 1 秒）"] --> DIST
+    A --> DIST["对每个现有 track 计算距离<br/>外观距离 c^A、位置距离 c^L"]
+    L --> DIST
+    DIST --> EMB["拼接后线性投影 g → 嵌入 e_n,k"]
+    EMB --> SEQ["输入序列 S = [NT, e_1, …, e_T]<br/>New Track token 置于最前，无位置编码"]
+    SEQ --> TF["Transformer encoder<br/>所有 token 互相注意"]
+    TF --> HEAD["线性分类头 + softmax<br/>分布覆盖已有 track 与新 track"]
+    HEAD --> CF["argmax 分配；多个观测选中同一 track 时<br/>按置信度迭代解决冲突"]
+    CF --> UPD["更新 track 记忆<br/>已有 track：追加位置、更新 DenStream 簇<br/>新 track：用该观测初始化"]
+    UPD --> MEM
+```
+
+图依据：论文 §3.2–3.7 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ The first learning-based solution to the 'Out of Sight, Not out of Mind' (OSNOM)
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.08537>
+- [arXiv PDF](https://arxiv.org/pdf/2607.08537)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Whareformer（3.1–3.7）、§4.1–4.3 实验设定与结果
 
 ## 推荐继续阅读
 

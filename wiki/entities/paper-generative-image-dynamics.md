@@ -40,6 +40,25 @@ summary: "Generative Image Dynamics（arXiv:2309.07906）：Generative Image Dyn
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样（页面仅含项目页模板链接）。
 - 同期同组工作见 [从视觉编程到 4D 重建：CV 三大会 2023–2026 Best Paper 阅读坐标](../overview/cv-best-papers-2023-2026-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["单张输入图像 I0"] --> B["运动预测模块：潜扩散模型 LDM，以 I0 为条件"]
+  B --> B1["训练：真实视频逐像素轨迹 FFT 得频谱体，频率自适应归一化（按频率 95 分位缩放 + 开方）后编码为带噪潜变量"]
+  B1 --> B2["先训练预测单个 4 通道频率切片的 LDM（含频率嵌入）"]
+  B2 --> B3["冻结后在 2D 空间层间插入跨 K=16 个频带的频率注意力层并微调（频率协调去噪）"]
+  B --> C["推理：从高斯噪声迭代去噪，解码器输出频谱体 S"]
+  B3 --> C
+  C --> D["逐像素逆 FFT 得到时域运动纹理 F1..FT"]
+  D --> E["基于图像的渲染模块：特征提取器对 I0 编码多尺度特征"]
+  E --> F["按尺度缩放运动场，用平均运动幅度作权重做 softmax splatting 前向变形特征"]
+  F --> G["图像合成网络解码得到帧 Î_t（VGG 感知损失联合训练）"]
+  G --> H["输出视频；可做慢动作、幅度放大/缩小，或用运动自引导实现无缝循环"]
+```
+
+图依据：论文 §3–§6 / Fig.3、Fig.4。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +99,7 @@ summary: "Generative Image Dynamics（arXiv:2309.07906）：Generative Image Dyn
 - [generative_image_dynamics_arxiv_2309_07906.md](../../sources/papers/generative_image_dynamics_arxiv_2309_07906.md)
 - [wechat_shenlan_cv_best_papers_2023_2026_labs.md](../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md)
 - [arXiv:2309.07906](https://arxiv.org/abs/2309.07906)
+- [arXiv PDF](https://arxiv.org/pdf/2309.07906)：已通读方法部分（实验与附录以略读为准）：运动表示、频率协调扩散、图像渲染与应用（§3–§6）
 
 ## 推荐继续阅读
 

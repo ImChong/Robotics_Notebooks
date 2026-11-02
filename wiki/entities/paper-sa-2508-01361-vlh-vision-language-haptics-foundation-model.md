@@ -42,6 +42,24 @@ Unifies perception, language, and tactile feedback in aerial robotics and VR; pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["自我中心相机：VR 中用户第一视角（VR 帧）"] --> D["两帧 640×320 俯视图（真实飞行 + VR，位置姿态对齐）"]
+    B["外部相机：真实场景俯视图"] --> D
+    C["自然语言指令"] --> E["VLH 模型：LoRA 微调的 OpenVLA-7b（INT8 量化，HPC 服务器经 Flask API 提供）"]
+    D --> E
+    E --> F["7 维动作向量 (Vx, Vy, Vz, Hx, Hy, Hz, Hv)"]
+    F --> G["速度 Vx, Vy, Vz：经 ROS / MAVROS 控制无人机飞控（ArduPilot）"]
+    F --> H["触觉 Hx, Hy, Hz, Hv：OrangePi 5B 经 I2C PCA9685 驱动舵机，带动两组倒置五连杆阵列输出力与振动"]
+    G --> I["新一帧画面，逐帧闭环（约 4–5 Hz）"]
+    H --> I
+    I --> D
+```
+
+图依据：论文 §3.1 系统架构、§3.2 VLH 模型 / Fig.1、Fig.2；闭环箭头依据“逐帧控制循环”的文字描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Unifies perception, language, and tactile feedback in aerial robotics and VR; pr
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2508.01361>
+- [arXiv PDF](https://arxiv.org/pdf/2508.01361)：已通读方法部分（实验与附录以略读为准）：§3 System Overview（3.1–3.2）与 §4 数据集与训练流程；§5 仅略读
 
 ## 推荐继续阅读
 

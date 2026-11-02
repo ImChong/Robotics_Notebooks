@@ -41,6 +41,31 @@ To address this gap, we propose HarnessWAM, an agentic framework for WAMs. Harne
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["全局指令 x + 双视角 RGB 观测 + 本体状态"] --> TM["VLM Task Manager（Qwen3-VL-32B-Instruct）"]
+    TM --> ST["证据化任务状态：scene belief B、task graph G、memory M"]
+    ST --> PRJ["Capability-conditioned executable-space projection<br/>确定性编译器：检查类型/依赖/前置条件/无环"]
+    PRJ -->|"不可行：回报违反的约束"| TM
+    PRJ --> SK["WAM-executable 技能序列（局部指令 g_k）"]
+    SK --> WAM["WAM 快回路：生成 H 步 action chunk"]
+    WAM --> ENV["机器人执行并产生新观测"]
+    ENV --> PE["轻量 progress estimator<br/>输出 progress / completion / progress bin"]
+    PE -->|"里程碑 / 技能预算耗尽触发事件"| VER["Task Manager 慢回路：语义验证并更新 belief 与 binding"]
+    ENV --> VER
+    VER --> DEC{"决策 d_k"}
+    DEC -->|"CONTINUE / ADVANCE"| SK
+    DEC -->|"OBSERVE"| TM
+    DEC -->|"REPLAN：后缀修订，已执行节点不变"| PRJ
+    DEC -->|"RECOVER"| REC["关节控制回到节点起始位姿，保留 belief 与 memory，清空 WAM 局部状态"]
+    REC --> TM
+    DEC -->|"TERMINATE"| END["所有必需节点完成且最终视觉验证通过，或预算耗尽失败"]
+```
+
+图依据：论文 §3.1–§3.5 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ To address this gap, we propose HarnessWAM, an agentic framework for WAMs. Harne
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.09516>
+- [arXiv PDF](https://arxiv.org/pdf/2608.09516)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.5）、§4.1 实验设定
 
 ## 推荐继续阅读
 

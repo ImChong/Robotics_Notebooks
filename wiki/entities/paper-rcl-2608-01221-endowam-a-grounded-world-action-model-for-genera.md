@@ -41,6 +41,22 @@ We present EndoWAM, which is, to our knowledge, the first WAM for generalizable 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["当前内镜观测 o(t) + 语言指令 l"] --> WM["视频世界模型 CosmosPredict2.5-2B + LoRA<br/>当前帧为干净条件 latent<br/>未来 latent 在 rectified flow 下单次去噪"]
+  WM --> H["共享预测表征 H<br/>去噪中间层激活"]
+  H --> AD["动作解码器<br/>可学习 action queries + 双向自注意力 + 对 H 的 cross-attention<br/>逐轴类别 logits"]
+  AD --> A["三自由度控制 多步动作"]
+  H --> GD["Grounding DiT（仅训练）<br/>重建未来帧目标区域 latent"]
+  GD -.-> LG["Lground 目标区域监督"]
+  WM -.-> LV["Lvideo 视频 co-training"]
+  AD -.-> LA["Laction 加权交叉熵"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2（推理时丢弃未来帧解码与 Grounding DiT）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ We present EndoWAM, which is, to our knowledge, the first WAM for generalizable 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.01221>
+- [arXiv PDF](https://arxiv.org/pdf/2608.01221)：已通读方法部分（实验与附录以略读为准）：3 Method（Problem Formulation、Model Architecture、Training and Inference、Controlled Variants）
 
 ## 推荐继续阅读
 

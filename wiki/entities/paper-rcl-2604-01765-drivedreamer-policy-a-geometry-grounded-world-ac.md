@@ -42,6 +42,26 @@ DriveDreamer-Policy trains a shared multimodal backbone with depth, video and tr
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["语言指令 + 多视角图像 + 当前动作"] --> TK["文本 tokenizer / 视觉编码器 / 动作编码器"]
+    Q["可学习 query：depth → video → action"] --> LLM
+    TK --> LLM["LLM（Qwen3-VL-2B）<br/>因果顺序：depth query → video query → action query"]
+    LLM --> WD["depth 世界 embedding"]
+    LLM --> WV["video 世界 embedding"]
+    LLM --> WA["action embedding"]
+    WD -->|"cross-attention"| DG["深度生成器：像素空间 DiT，flow matching"]
+    WV -->|"cross-attention"| VG["视频生成器：Wan-2.1 DiT，另注入 CLIP 当前帧条件"]
+    WA -->|"cross-attention"| AG["动作生成器：独立 DiT，噪声轨迹 → 动作序列"]
+    DG --> D["深度图"]
+    VG --> V["未来视频"]
+    AG --> A["未来动作轨迹（x, y, cos θ, sin θ）"]
+```
+
+图依据：论文 §3.2（3.2.1–3.2.2）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ DriveDreamer-Policy trains a shared multimodal backbone with depth, video and tr
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.01765>
+- [arXiv PDF](https://arxiv.org/pdf/2604.01765)：已通读方法部分（实验与附录以略读为准）：§3 Methodology 全节（3.1–3.3）
 
 ## 推荐继续阅读
 

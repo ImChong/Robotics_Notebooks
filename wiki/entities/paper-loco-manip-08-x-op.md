@@ -39,6 +39,24 @@ MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 
 - MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["操作员佩戴 XR 设备（Apple Vision Pro）"] --> B["头显 / 左腕 / 右腕目标位姿 G(t)"]
+    B --> C["MPC 重定向器（KMPPI 在线求解）"]
+    C --> D["数字孪生：MuJoCo + 机器人模型 + 低层策略，预测未来 rollout"]
+    D --> C
+    C --> E["最优高层指令 a*：腰高 / 腰角 / 底盘速度 / 手臂关节等"]
+    E --> F["现成低层策略 π（如 FALCON RL 策略 / 差速控制器）"]
+    F --> G["关节力矩 → 机器人（Unitree G1 / Rainbow RB-Y1）"]
+    G --> H["传感反馈：LiDAR-惯性 SLAM 位姿、IMU、电机编码器"]
+    H --> I["状态同步：非线性最小二乘（SQP）重置 MuJoCo 状态"]
+    I --> D
+```
+
+图依据：论文 §III（MPC 重定向器、状态同步）/ Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -83,6 +101,7 @@ MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://arxiv.org/abs/2606.07934>
+- [arXiv PDF](https://arxiv.org/pdf/2606.07934)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III（A 问题形式化、B 状态同步、C 代价设计、D 输入设备）、Table I；§IV 仅略读
 
 ## 推荐继续阅读
 
