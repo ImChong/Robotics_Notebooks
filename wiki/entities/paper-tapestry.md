@@ -16,6 +16,7 @@ related:
   - ../methods/diffusion-policy.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/tapestry_arxiv_2610_36823.md
   - ../../sources/sites/tapestry.md
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md

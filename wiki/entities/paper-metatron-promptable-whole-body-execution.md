@@ -12,6 +12,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/metatron-promptable-whole-body-execution_arxiv_2610_38027.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
 summary: "METATRON：可提示的人形全身动作执行层（arXiv:2610.38027）：冻结一个接收身体部位目标、速度和风格提示的生成式基础策略；高层技能以有状态程序逐周期生成提示，使编码智能体能够通过修改程序而不是重新训练策略来构建新技能。"

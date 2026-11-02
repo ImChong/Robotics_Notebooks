@@ -16,6 +16,7 @@ related:
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/event2reward_arxiv_2610_39212.md
   - ../../sources/repos/event2reward.md
   - ../../sources/sites/event2reward.md

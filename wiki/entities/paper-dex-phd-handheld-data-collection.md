@@ -12,6 +12,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/dex-phd-handheld-data-collection_arxiv_2610_35462.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
 summary: "DEX-PHD：面向多模态数据采集的便携式灵巧手持设备（arXiv:2610.35462）：将灵巧机器人手、逐指控制、腕部相机、关节状态和指尖接触传感集成到无系留手持设备；采集的数据可在实体人形机器人上直接开环回放。"
