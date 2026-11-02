@@ -114,6 +114,7 @@
 - [axfluxmdo（轴向磁通电机多学科优化工具包）](wiki/entities/axfluxmdo.md) — axfluxmdo**（jman4162/axfluxmdo，文档 [jman4162.github.io/axf `📅unknown` `[entity_page]`
 - [Axis 可组合 Robotic 能力库](wiki/entities/axis-composable-capability-library.md) — Axis Robotics** 在 **2026-09-25** [官方博客](https://axisrobotics.ai/blogs/blog/beyond-more-tasks-axis- `📅unknown` `[entity_page]`
 - [Axis Robotics（AXIS ROBOTICS）](wiki/entities/axis-robotics.md) — Axis Robotics** 是面向 **Physical AI** 的可复用数据基础设施公司（官网）。其平台用浏览器仿真遥操作降低演示采 `📅unknown` `[entity_page]`
+- [Bambot](wiki/entities/bambot.md) — Bambot**（GitHub，官网/页面）是 [GitHubStore《19 `📅unknown` `[entity_page]`
 - [Berkeley Autonomous Race Car（BARC）](wiki/entities/barc.md) — BARC**（Berkeley Autonomous Race Car）是 **UC Berkeley** 的 **1/10 尺度自主赛车** 开源研究与教学平台，涵盖机械/电气 CAD、ROS  `📅unknown` `[entity_page]`
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`
 - [Beckhoff SSC (EtherCAT Slave Stack Code)](wiki/entities/beckhoff-ssc.md) — 倍福官方 EtherCAT 从站栈源码，ETG 会员免费获取，不在公开 GitHub 仓库发布。（分类：EtherCAT 从站协议栈；语言/形态：C（官方从站栈源码）） `📅unknown` `[entity_page]`
@@ -613,6 +614,7 @@
 - [Emil Kowalski Skills](wiki/entities/emil-kowalski-skills.md) — Emil Kowalski Skills**（emilkowalski/skills）是设计工程师 Emil K `📅unknown` `[entity_page]`
 - [EN02-OP（Westwood 开源三指末端）](wiki/entities/en02-op.md) — EN02-OP** 是 Westwood Robotics 发布的 **开源三指末端执行器**：**7 DoF**、**Ro `📅unknown` `[entity_page]`
 - [Encos Hunter 130（Hunter V2 / EC H130-V2）](wiki/entities/encos-hunter130.md) — Encos Hunter 130**（产品名 **Hunter V2**，硬件型号 **EC H130-V2**）是南京因克斯（EncosTech）与桥介数物联合推进的 **130 cm 级开源人 `📅unknown` `[entity_page]`
+- [Endeavor II](wiki/entities/endeavor-ii-humanoid.md) — Endeavor II**（GitHub）是 [GitHubStore《19 款能自己造的开源人形 `📅unknown` `[entity_page]`
 - [EngineAI Native SDK](wiki/entities/engineai-native-sdk.md) — EngineAI Native SDK](https://github.com/engineai-robotics/engineai_robotics_native_sdk) 收录于具身智能研究室  `📅unknown` `[entity_page]`
 - [engineai_rl_lab](wiki/entities/engineai-rl-lab.md) — engineai_rl_lab](https://github.com/engineai-robotics/engineai_rl_lab) 收录于具身智能研究室 [开源项目主表](https:// `📅unknown` `[entity_page]`
 - [Point-Bench](wiki/entities/er-point-bench.md) — Point-Bench**（Point-Bench：图像点定位具身推理基准）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航 `📅unknown` `[entity_page]`
@@ -718,6 +720,7 @@
 - [Gymnasium（RL 环境 API 标准）](wiki/entities/gymnasium.md) — Gymnasium** 是 Farama Foundation 维护的 **单智能体强化学习环境接口** 与参考环境集合，官方文档见 [gymnasi `📅unknown` `[entity_page]`
 - [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat-Sim**（平台常简称 **Habitat**）是 Meta AI（原 Facebook AI Research）开源的 **高速 3D 具身仿真器**（[GitHub](http `📅unknown` `[entity_page]`
 - [HabitatGS](wiki/entities/habitatgs.md) — HabitatGS**（HabitatGS：高斯泼溅场景重建（LightNav 数据引擎来源））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实 `📅unknown` `[entity_page]`
+- [Halley](wiki/entities/halley-ambassador-robot.md) — Halley**（GitHub）是 [GitHubStore《19 款能 `📅unknown` `[entity_page]`
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
@@ -811,6 +814,7 @@
 - [Jumper 六足机器人与训练部署栈](wiki/entities/jumper-crab-robot.md) — Jumper** 是 KingKongRobotics 发布的仿蟹式六足机器人和配套训练工程。其主要价值是把机器人模型、并行仿真、任务奖励、策略训练、导出契约和控制器打包放进可检查的开源工作流，而 `📅unknown` `[entity_page]`
 - [Scientific Agents（K-Dense-AI/scientific-agents）](wiki/entities/k-dense-ai-scientific-agents.md) — Scientific Agents（K-Dense-AI/scientific-agents）是以 AGENTS.md 配置集合教代理按资深科学家/工程师方式思考，属于专业人设与工作规则示例，不是专用 `📅unknown` `[entity_page]`
 - [autoresearch（karpathy/autoresearch）](wiki/entities/karpathy-autoresearch.md) — autoresearch** 是 Andrej Karpathy 的 [GitHub 仓库](https://github.com/k `📅unknown` `[entity_page]`
+- [Kayra](wiki/entities/kayra.md) — Kayra**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](https://m `📅unknown` `[entity_page]`
 - [KeenTools FaceBuilder for Blender](wiki/entities/keentools-facebuilder.md) — KeenTools FaceBuilder for Blender** 是 **KeenTools** 的 **Blender 插件**：从 **少量照片**（或非中性表情图像）在 DCC 内构建 `📅unknown` `[entity_page]`
 - [Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）](wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md) — Ken Goldberg**（UC Berkeley，Ambi / Jacobi Robotics 联创）2026-09-18 在 X 发布 [Goosebumps: a Paradigm Shi `📅unknown` `[entity_page]`
 - [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
@@ -998,6 +1002,7 @@
 - [Next AI Draw.io](wiki/entities/next-ai-draw-io.md) — Next AI Draw.io**（DayuanJiang/next-ai-draw-io，Ap `📅unknown` `[entity_page]`
 - [NEXUS（感知型基础策略 · 跨域全身遥操作）](wiki/entities/nexus-humanoid.md) — NEXUS**（*A Perceptive Foundation Policy for Cross-Domain Whole-Body Teleoperation*，[项目页](https://n `📅unknown` `[entity_page]`
 - [nordschleife-racer](wiki/entities/nordschleife-racer.md) — nordschleife-racer** 是 **yassin.app** 背后的 **浏览器竞速引擎**：**TypeScript + Three.js** 实现程序化 **纽北** 单圈、 `📅unknown` `[entity_page]`
+- [Nova Desktop Humanoid](wiki/entities/nova-desktop-humanoid.md) — Nova Desktop Humanoid**（官网/页面）是 [GitHubStore《19 款能自己造的开源人形机器人》](ht `📅unknown` `[entity_page]`
 - [数值优化学习策展（机器人 L0+）](wiki/entities/numerical-optimization-curriculum.md) — 一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses `📅unknown` `[entity_page]`
 - [Nuwa Skill（女娲.skill）](wiki/entities/nuwa-skill.md) — Nuwa Skill** 是 alchaincyf/nuwa-skill 仓库分发的 **元 skill `📅unknown` `[entity_page]`
 - [NVIDIA Brev](wiki/entities/nvidia-brev.md) — NVIDIA Brev** 提供 **即时 GPU 实例** 与 **可分享 Launchable 环境**，在 AWS/GCP/Azure 等云商上预装 NVIDIA 驱动、CUDA、Pytho `📅unknown` `[entity_page]`
@@ -5708,6 +5713,7 @@
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlatformIO Core](wiki/entities/platformio-core.md) — PlatformIO Core** 是 PlatformIO 生态的命令行核心：以 `platformio.ini` 描述嵌入式项目环境，并用 `pio` CLI 管理相关开发平台、工具链、库依赖 `📅unknown` `[entity_page]`
+- [PLEN2](wiki/entities/plen2.md) — PLEN2**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](ht `📅unknown` `[entity_page]`
 - [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler，站 [plotjuggler `📅unknown` `[entity_page]`
 - [plotly.py（Plotly Python）](wiki/entities/plotly.md) — plotly.py**（plotly/plotly.py，[文档](https://plotly.com/python `📅unknown` `[entity_page]`
 - [point_lio_unilidar](wiki/entities/point-lio-unilidar.md) — point_lio_unilidar** 把学术界 **Point-LIO**（稳健高带宽 LiDAR-Inertial Odometry）接到宇树 **L1 / L2** 雷达产品。 `📅unknown` `[entity_page]`
@@ -5755,9 +5761,11 @@
 - [RAI Institute：全身控制、动态操作与部署研究路线](wiki/entities/rai-institute.md) — RAI Institute** 是由 Marc Raibert 领导、2022 年成立的机器人与人工智能研究机构，以学习控制、动态操作、硬件设计和物理交互研究提升机器人能力。 `📅unknown` `[entity_page]`
 - [Spot 机载感知全身操作](wiki/entities/rai-spot-perceptive-manipulation.md) — RAI Institute 将轮胎全身操作从依赖外部动捕和桌面计算的实验室系统，迁移到机载深度感知、计算与技能切换，展示在未见过的场地自主执行轮胎任务。 `📅unknown` `[entity_page]`
 - [RaiSim](wiki/entities/raisim.md) — RaiSim](https://github.com/raisimTech/raisimLib) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
+- [Rapiro](wiki/entities/rapiro.md) — Rapiro**（官网/页面，相关链接）是 [G `📅unknown` `[entity_page]`
 - [RAX：把机器人在线探索编译成可复用程序](wiki/entities/rax-scaling-online-exploration.md) — RAX**（论文 PDF、[项目页](https://robot-agent-exploration. `📅unknown` `[entity_page]`
 - [Raylib：轻量的跨平台图形与游戏编程库](wiki/entities/raylib.md) — Raylib** 是以 C API 为中心的跨平台图形库，用一组清晰的模块提供窗口、输入、2D/3D 绘制、模型、文字、音频和数学功能；它适合自己写可视化程序，不附带场景编辑器或完整游戏制作工作流 `📅unknown` `[entity_page]`
 - [REA（Reverse Engineer Anything）](wiki/entities/rea.md) — REA 是面向编码代理的软件逆向调查层：通过 **MCP Server 与 CLI** 调用本机分析器或受控观测流程，返回带证据的程序结构/行为发现，供代理解释、追问并辅助重建功能。 `📅unknown` `[entity_page]`
+- [Reachy Mini](wiki/entities/reachy-mini.md) — Reachy Mini**（GitHub，[官网/页面](https://pollen-robo `📅unknown` `[entity_page]`
 - [React Bits](wiki/entities/react-bits.md) — React Bits** 是面向 React 网站的可定制动效组件集合：选一个组件、复制或安装源码，再用参数调整文字、背景和交互效果。 `📅unknown` `[entity_page]`
 - [reBot-DevArm（Seeed reBot Arm B601）](wiki/entities/rebot-devarm.md) — reBot-DevArm**（商品名 **reBot Arm B601**）是 Seeed Studio 推出的 **桌面级开源六轴 `📅unknown` `[entity_page]`
 - [Redot Engine（Godot 开源分支）](wiki/entities/redot-engine.md) — Redot Engine 是 2024 年从 Godot 分叉出来的社区维护 2D/3D 游戏引擎，采用 MIT 许可，以统一编辑器、渲染、物理、脚本和跨平台导出构建游戏与交互内容。 `📅unknown` `[entity_page]`
@@ -5815,6 +5823,7 @@
 - [roboparty_train（RoboParty 训练工作区，原 atom01_train）](wiki/entities/roboparty-train.md) — roboparty_train** 是 RoboParty 面向 RPO 与 RP1 两款人形机器人的 **Isaac Lab 3.0 + RSL-RL 5.5.1 训练工作区**：根仓库只负责依 `📅unknown` `[entity_page]`
 - [UFO（Roboparty 无监督 RL 控制框架）](wiki/entities/roboparty-ufo.md) — UFO**（*Unsupervised RL Control Development Framework*）是 Party OS 首批开源的 **无监督强化学习控 `📅unknown` `[entity_page]`
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
+- [RoboPrime](wiki/entities/roboprime.md) — RoboPrime**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](htt `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
 - [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。 `📅unknown` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial**（arXiv:2411.16537，[项目页](https://chanh.ee/RoboSpat `📅unknown` `[entity_page]`
@@ -5836,6 +5845,7 @@
 - [ROBOTIS AI Worker（ai_worker）](wiki/entities/robotis-ai-worker.md) — AI Worker** 是 ROBOTIS **Physical AI** 半人形操作平台（产品叙事 **FFW — Freedom From Work**）；官方 ROS 2 软件入口为 [`R `📅unknown` `[entity_page]`
 - [cyclo_mjlab（ROBOTIS）](wiki/entities/robotis-cyclo-mjlab.md) — cyclo_mjlab**（`ROBOTIS-GIT/cyclo_mjlab`，Apache-2.0，2 `📅unknown` `[entity_page]`
 - [ROBOTIS HX Friends](wiki/entities/robotis-hx-friends.md) — HX Friends** 是 ROBOTIS 围绕 DYNAMIXEL 执行器生态发布的模块化手部参考设计集，覆盖单指、夹爪和多指灵巧手。官方产品页说明它面向比较不 `📅unknown` `[entity_page]`
+- [ROBOTIS MINI](wiki/entities/robotis-mini.md) — ROBOTIS MINI**（GitHub，[相关链接](https://github.com/japonoph `📅unknown` `[entity_page]`
 - [ROBOTIS MuJoCo Menagerie](wiki/entities/robotis-mujoco-menagerie.md) — robotis_mujoco_menagerie**（[`ROBOTIS-GIT/robotis_mujoco_menagerie`](https://github.com/ROBOTIS-GIT `📅unknown` `[entity_page]`
 - [ROBOTIS OP3](wiki/entities/robotis-op3.md) — ROBOTIS OP3** 是 **ROBOTIS** 的 **小型人形** 开源平台：硬件结构、电气与传感器接口说明在 **[OP3 eManual](https://emanual.robot `📅unknown` `[entity_page]`
 - [ROBOTIS 机械臂 / 手（OpenMANIPULATOR 等）](wiki/entities/robotis-open-manipulator-line.md) — ROBOTIS** 在 **OpenMANIPULATOR** 品牌下维护多条 **开源机械臂与夹爪** 产品线（如 **OpenMANIPULATOR-X / P**、**Manipulator `📅unknown` `[entity_page]`
@@ -6019,6 +6029,7 @@
 - [URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）](wiki/entities/urkl.md) — URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法 `📅unknown` `[entity_page]`
 - [FreeCAD Engineering（V0v1kkk/freecad-engineering）](wiki/entities/v0v1kkk-freecad-engineering.md) — FreeCAD Engineering（V0v1kkk/freecad-engineering）是提供可编辑、带证据的 FreeCAD 工程技能与 MCP 配置，强调每个建模步骤保留可检查依据。 `📅unknown` `[entity_page]`
 - [Valen（万澜 · Multimodal System One Decision Model）](wiki/entities/valen.md) — Valen**（GitHub，HF 组织，[P `📅unknown` `[entity_page]`
+- [Valera](wiki/entities/valera.md) — Valera**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](http `📅unknown` `[entity_page]`
 - [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
 - [启明-1 Venus-1](wiki/entities/venus-1-four-link-wheel-legged-robot.md) — 启明-1 Venus-1**（GitHub）来自 [古 `📅unknown` `[entity_page]`
@@ -6083,6 +6094,7 @@
 - [Xiaomi-Robotics-1](wiki/entities/xiaomi-robotics-1.md) — Xiaomi-Robotics-1**（官网代号 **XR-1**，arXiv:2607.15330）是小米机器人实验室 2 `📅unknown` `[entity_page]`
 - [Xiaomi-Robotics-U0](wiki/entities/xiaomi-robotics-u0.md) — Xiaomi-Robotics-U0**（arXiv:2607.11643，[官网](https://robotics.xi `📅unknown` `[entity_page]`
 - [CFD SciPaper Agent（Xiuyiw/CFD-SCIPaper-Agent）](wiki/entities/xiuyiw-cfd-scipaper-agent.md) — CFD SciPaper Agent（Xiuyiw/CFD-SCIPaper-Agent）是面向 CFD 研究者的作者在环工具，把成熟计算证据整理为可辩护研究方向、可复现图表和可追溯论文文字。 `📅unknown` `[entity_page]`
+- [XLeRobot](wiki/entities/xlerobot.md) — XLeRobot**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](h `📅unknown` `[entity_page]`
 - [xpad（Linux Xbox 手柄驱动）](wiki/entities/xpad.md) — xpad**（paroj/xpad）维护主线 Linux 内核中的 **Xbox 游戏手柄 USB 驱动**，并在上游基础上合并更 `📅unknown` `[entity_page]`
 - [XPolicyLab（统一策略训推与评测适配层）](wiki/entities/xpolicylab.md) — XPolicyLab**（*A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment*，[a `📅unknown` `[entity_page]`
 - [xr_teleoperate](wiki/entities/xr-teleoperate.md) — xr_teleoperate** 用 XR 设备（Apple Vision Pro、PICO 4 Ultra Enterprise、Meta Quest 3 等）对 Unitree 人形做全身遥操 `📅unknown` `[entity_page]`
@@ -6097,6 +6109,7 @@
 - [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
 - [宅码 Common Know-How（二手知识点汇编）](wiki/entities/zhaima-common-know-how.md) — 这是一份由「宅码」公众号转载到飞书的 VLA 与机器人学习知识点汇编，适合作为入门索引，但它是二手笔记，结论需回到一手论文核对。 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
+- [Zowi](wiki/entities/zowi.md) — Zowi**（GitHub，相关链接）是 [GitHub `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
 - [OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）](wiki/entities/zyzhan417-openfoam-expert-skill.md) — OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读而非自动跑算例：让代理沿 OpenFOAM 源码定位实现，分析类继承、边界条件 `📅unknown` `[entity_page]`
 
@@ -6858,6 +6871,7 @@
 - [NVIDIA Physical AI 工具链技术地图（汇总节点）](wiki/overview/nvidia-physical-ai-toolchain-technology-map.md) — NVIDIA Physical AI 工具链** 是一条厂商自洽的机器人开发流水线：**真实数据 + 合成数据 → 世界模型策展/增广/评分 → Isaac Lab 训练 → 策略后训练与 Are `📅unknown` `[overview_page]`
 - [开源具身 7 篇：系统结构阅读坐标](wiki/overview/open-source-7-papers-system-structure-technology-map.md) — 这一批工作的重心从「继续放大模型」转向补强系统结构：给解码器意图、给工业栈接口、给故障后的世界模型或特权 critic，再用标定工具和物理反馈降低真机门槛。 `📅unknown` `[overview_page]`
 - [开源具身 8 篇：阅读坐标与技术地图](wiki/overview/open-source-8-papers-technology-map.md) — 机器人研究正从「把动作做出来」转向可验证闭环：理解物理属性、从失败中学习、主动试探、嵌入显式安全，并把人类教师与传感器攻击面纳入系统设计。 `📅unknown` `[overview_page]`
+- [能自己造的开源人形机器人 19 款：按成本与形态排序的阅读坐标](wiki/overview/open-source-buildable-humanoids-19-technology-map.md) — 这份清单把「能自己造」的机器人按成本从几十美元的 Arduino 玩具人形排到近千美元的 InMoov 上半身；其中数个项目（Bambot、Valera、Reachy Mini、XLeRobot） `📅unknown` `[overview_page]`
 - [开源可复现性：9 篇论文的阅读坐标](wiki/overview/open-source-reproducibility-9-papers-technology-map.md) — 这一批开源论文的价值不在又一个模型名，而在把表征、数据、评测与硬件同时变成可复现资产。 `📅unknown` `[overview_page]`
 - [开源系统闭环：7 篇论文的阅读坐标](wiki/overview/open-source-system-loop-7-papers-technology-map.md) — 具身智能正进入「开源入口 + 系统闭环」阶段：语言生成技能档案、VLM 统一导航、记忆与世界模型自进化、推理期纠错、多智能体编排与光学几何感知一并推进可复现部署。 `📅unknown` `[overview_page]`
 - [开源系统可靠性：8 篇论文的阅读坐标](wiki/overview/open-source-system-reliability-8-papers-technology-map.md) — 具身智能的竞争点正从单一模型能力扩展到系统级可靠性：意图保持、3D 世界模型、接触安全评测、急停可恢复性、灵巧迁移、多视角几何、部署期自改进与证据可计数融合。 `📅unknown` `[overview_page]`
