@@ -38,6 +38,28 @@ summary: "GraphPoint（arXiv:2609.18358）：CoMani Benchmark 测组合泛化；
 
 - 组合泛化需显式语义–几何接口，而非端到端低层动作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["语言指令"] --> B["LLM 分解为有序子任务图<br/>actor / patient / target + 动作类型 + 修饰词"]
+  B --> C["VLM 定位 LocateAnything<br/>patient 与 target"]
+  C --> D["SAM 2 mask 跟踪<br/>每实体采样 32 点"]
+  R["机器人几何: 6 个夹爪关键点 (actor)"] --> E
+  D --> E["TCP 相对坐标<br/>当前帧 + 9 帧历史"]
+  E --> F["角色结构实体图编码器<br/>局部实体块 (role embedding) 与全局 CLS 注意力交替 8 层<br/>链 A-P-T, 屏蔽 actor-target 直连"]
+  B -->|"l_act, l_mod 经 BGE 编码"| F
+  F --> G["记忆 M_t"]
+  G --> H["Point-trajectory flow 解码器<br/>6 层, 条件流匹配, 预测 H=10 步 actor 关键点 + 夹爪指令"]
+  G --> P["进度头 Progress head<br/>输入 patient / target CLS"]
+  H --> I["最小二乘刚体对齐 → 夹爪位姿"]
+  P --> J{"进度 > 0.9 且连续两次?"}
+  J -->|"是"| K["释放抬起夹爪, 切换下一子任务的实体与语言条件, 重置历史"]
+  J -->|"否"| L["继续当前子任务"]
+```
+
+图依据：论文 §III-B–F / Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +103,7 @@ summary: "GraphPoint（arXiv:2609.18358）：CoMani Benchmark 测组合泛化；
 - [graphpoint_arxiv_2609_18358.md](../../sources/papers/graphpoint_arxiv_2609_18358.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.18358](https://arxiv.org/abs/2609.18358)
+- arXiv PDF：<https://arxiv.org/pdf/2609.18358>（已通读全文：方法 §III、CoMani §IV、实验 §V）
 
 ## 推荐继续阅读
 

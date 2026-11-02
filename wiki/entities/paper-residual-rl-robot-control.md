@@ -41,6 +41,23 @@ summary: "Residual Reinforcement Learning for Robot Control（ICRA 2019，Siemen
 - **制造业语境的清晰问题定义**：奖励分解 $r=f(s_m)+g(s_o)$——$f$（机器人几何目标）由传统控制器离线高效优化，$g$（物体接触/摩擦目标）由 RL 在线学习；这是理解「为什么不让 RL 从零学」最清楚的论述之一。
 - **安全性论据**：纯 RL 训练期空间探索范围大，真机上危险；Residual RL 的探索被 base 约束在任务相关流形附近。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  S["状态 s_t（机器人状态 s_m + 物体状态 s_o）"] --> PH["手工控制器 π_H(s_m)"]
+  S --> PT["残差策略 π_θ(s_m, s_o)（TD3）"]
+  N["探索噪声 N_t"] --> PT
+  PT --> SUM["叠加：u' = π_θ(s_t) + N_t + π_H(s_t)"]
+  PH --> SUM
+  SUM --> ENV["环境执行，得到 s_{t+1} 与奖励 r_t = f(s_m) + g(s_o)"]
+  ENV --> RB["回放池 R 存储 (s_t, u_t, s_{t+1})"]
+  RB --> OPT["采样转移，用 RL 优化 θ（π_H 保持固定）"]
+  OPT -.更新.-> PT
+```
+
+图依据：论文 §III、Algorithm 1 / Fig.1
+
 ## 核心原理（方法）
 
 ### 系统论视角的问题分解
@@ -119,3 +136,5 @@ $$u = \pi_H(s_m) + \pi_\theta(s_m, s_o)$$
 - [Residual Policy / Residual RL 论文精读清单摘录](../../sources/personal/residual-policy-reading-list.md)
 - [residualrl.github.io 项目页归档](../../sources/sites/residualrl-github-io.md)
 - Johannink et al., *Residual Reinforcement Learning for Robot Control*, ICRA 2019. <https://arxiv.org/abs/1812.03201>
+
+- [arXiv PDF](https://arxiv.org/pdf/1812.03201)：已通读全文：§III 方法、§IV 实验设置、§V–VI 实验与结果

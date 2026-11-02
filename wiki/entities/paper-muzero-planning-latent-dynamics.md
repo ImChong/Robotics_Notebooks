@@ -36,6 +36,27 @@ summary: "MuZero（具身世界模型六路线专题）：只学树搜索需要�
 - 属于六路线 taxonomy 的 **规划主导型**：预测结果被用于 **执行时在模型中试走，外部规划/验证裁决动作。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  O["过去观测 o_1..o_t"] --> H["representation h_θ：编码为根隐状态 s_0"]
+  H --> S0["s_0"]
+  S0 --> F["prediction f_θ：输出策略 p_k 与价值 v_k"]
+  S0 --> G["dynamics g_θ(s_{k-1}, a_k)：输出即时奖励 r_k 与下一隐状态 s_k"]
+  G --> F
+  F --> M["MCTS：在隐状态空间展开假想轨迹"]
+  G --> M
+  M --> PI["搜索策略 π_t 与搜索价值 ν_t"]
+  PI --> A["采样动作 a_{t+1} ~ π_t，与环境交互"]
+  A --> E["轨迹：观测、奖励 u、搜索策略、搜索价值"]
+  E --> T["构造目标：n 步 bootstrap 价值 z_t，观测奖励 u，搜索策略 π"]
+  T --> L["联合损失 l_r + l_v + l_p + L2，对 K 步假想展开端到端训练"]
+  L -.更新 θ.-> H
+```
+
+图依据：论文 §3 / Fig.1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +95,7 @@ summary: "MuZero（具身世界模型六路线专题）：只学树搜索需要�
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/1911.08265)：已通读全文：§3 方法、§4 实验
 
 ## 推荐继续阅读
 

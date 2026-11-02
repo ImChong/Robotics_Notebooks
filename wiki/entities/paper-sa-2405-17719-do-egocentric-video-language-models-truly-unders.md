@@ -51,6 +51,32 @@ Systematically evaluates the fine-grained HOI understanding ability of egocentri
 | 出处 | ICLR 2025 |
 | 论文 | <https://arxiv.org/abs/2405.17719> |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph BM["EgoHOIBench 评测 (§2.1)"]
+    B1["视频片段 + 正确 caption"] --> B2["LLM 替换 HOI 动词或名词<br/>生成困难负例 caption"]
+    B2 --> B3["多选视频-文本匹配<br/>HOI-verb 与 HOI-noun 均选对才算成功"]
+  end
+  subgraph TRN["EgoNCE++ 继续预训练 (§3)"]
+    D1["EgoClip 视频 + 文本"] --> V["视频编码器 LoRA 微调"]
+    D1 --> TX["文本编码器冻结, 仅 word embedding 可训"]
+    D1 --> NG["HOI 负例生成<br/>预训练词表 spaCy 替换, 或 LLM"]
+    V --> LV["V2T 损失: 真实 caption 对比 batch 易负例 + 词替换难负例"]
+    TX --> LV
+    NG --> LV
+    V --> LT["T2V 损失: 仅以同名词视频为正例, 保持 object-centric 特征空间"]
+    TX --> LT
+    LV --> LS["L = L_t2v + L_v2t"]
+    LT --> LS
+  end
+  LS --> OUT["增强后的 EgoVLM (EgoVLP / EgoVLPv2 / LaViLa)"]
+  OUT -.->|"零样本评测"| B3
+```
+
+图依据：论文 §2.1–2.3、§3.1–3.3 / Fig.2–4。
+
 ## 核心机制（归纳）
 
 ### 策展导读要点
@@ -96,6 +122,7 @@ Systematically evaluates the fine-grained HOI understanding ability of egocentri
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2405.17719>
+- arXiv PDF：<https://arxiv.org/pdf/2405.17719>（已通读全文：方法 §2–3、实验 §4.1）
 
 ## 推荐继续阅读
 

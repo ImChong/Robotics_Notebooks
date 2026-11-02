@@ -52,6 +52,38 @@ Privileged Foresight Distillation (PFD) compares two attention masks on the same
 | 论文 | <https://arxiv.org/abs/2604.25859> |
 | 子类 / 象限 | 高效推理与实时控制 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TR["训练阶段"]
+    IN["含噪输入 X_tau_v, A_tau_a<br/>同一组噪声样本"] --> S["Student 前向<br/>掩码 MS: 仅当前帧视频 token + action token"]
+    IN --> T["Teacher 前向<br/>掩码 MT: 全部视频 token 含未来帧<br/>stop-gradient"]
+    S --> VB["v_base"]
+    T --> VT["v_teacher"]
+    VB --> R["Foresight 残差目标<br/>r = sg(v_teacher - v_base)"]
+    VT --> R
+    VB --> AD["残差 Adapter g_phi<br/>输出投影零初始化"]
+    AD --> DL["delta_hat"]
+    VB --> VF["v_final = v_base + delta_hat"]
+    DL --> VF
+    R --> LR["L_res: delta_hat 拟合 r"]
+    DL --> LR
+    VF --> LG["L_gt: 对齐 v_target"]
+    VF --> LT["L_teacher: 对齐 v_teacher"]
+    LR --> L["总损失 L = L_video + L_gt + L_res + L_teacher"]
+    LG --> L
+    LT --> L
+  end
+  subgraph INF["推理阶段"]
+    I1["仅 Student 掩码前向 (同 Fast-WAM)"] --> I2["Adapter 修正 v_final = v_base + g_phi(v_base)"]
+    I2 --> I3["更新 A_tau_a, 不生成未来视频"]
+  end
+  L -.->|"训练后丢弃 Teacher 路径"| I1
+```
+
+图依据：论文 §3.1–3.5 / Fig.1。
+
 ## 核心机制（归纳）
 
 ### 策展导读要点
@@ -98,6 +130,7 @@ Privileged Foresight Distillation (PFD) compares two attention masks on the same
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.25859>
+- arXiv PDF：<https://arxiv.org/pdf/2604.25859>（已通读全文：方法 §3、实验 §4.1）
 
 ## 推荐继续阅读
 

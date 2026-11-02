@@ -39,6 +39,26 @@ summary: "使用 Boston Dynamics Spot 实现自主砌砖（arXiv:2610.27472）�
 
 - 周报所述待解决的问题：建筑机器人需要在分离的供料区和施工区之间移动，并准确执行 CAD 定义的砌筑任务。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  CAD["Rhino CAD 砖块目标位姿"] --> SCR["自定义脚本导出 JSON：位姿相对 AprilTag"]
+  SCR --> CFG["配置文件：各砖的 source / target pose"]
+  REC["人工录制 autowalk 任务：供料区到施工区、返回"] --> NAV
+  CFG --> MSC["Main Sequence Controller：逐砖循环"]
+  MSC --> PICK["Pick 模块：检测 PICK-TAG，底盘移到砖后 0.8 m，下探抓取，抬至 80 cm"]
+  PICK --> NAV1["Autowalk 到施工区（GraphNav 定位 + 避障）"]
+  NAV1 --> PLACE["Place 模块：检测 PLACE-TAG，按目标 yaw 下放释放"]
+  PLACE --> NAV2["Autowalk 回供料区"]
+  NAV2 -->|下一块砖| MSC
+  NAV["GraphNav：路点图 + 视觉快照"] -.支撑.-> NAV1
+  NAV -.支撑.-> NAV2
+  MSC -.状态与点云.-> DT["Digital twin（ROS 2 / RViz）远程监控"]
+```
+
+图依据：论文 §3.1 / Fig.1b、§3.2–3.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +109,7 @@ summary: "使用 Boston Dynamics Spot 实现自主砌砖（arXiv:2610.27472）�
 - [autonomous-bricklaying-boston-dynamics-spot_arxiv_2610_27472.md](../../sources/papers/autonomous-bricklaying-boston-dynamics-spot_arxiv_2610_27472.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27472](https://arxiv.org/abs/2610.27472)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27472)：已通读全文：§3 方法、§3.5 实验设置、§4 结果
 
 ## 推荐继续阅读
 
