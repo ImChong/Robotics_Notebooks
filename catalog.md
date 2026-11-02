@@ -6338,6 +6338,7 @@
 - [Procedural Terrain Generation（程序化地形生成）](wiki/concepts/procedural-terrain-generation.md) — 程序化地形生成**：在仿真器中 **按规则或噪声参数** 自动生成多样地形 mesh/高度场，而非手工建模单个场景，用于 **批量训练** 四足越障与泛化评估。 `📅unknown` `[wiki_page]`
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
 - [过程奖励建模（Progress Reward Modeling）](wiki/concepts/progress-reward-modeling.md) — 过程奖励 / 进度模型** 回答执行中的问题：在当前目标下，机器人是在 **推进、停滞，还是回退**？它把「终局成功」之外的稠密、可比较信号用于 RL、监控、重排、过滤与恢复。 `📅unknown` `[wiki_page]`
+- [1/4 车主动悬架：状态反馈与带约束增益优化案例](wiki/concepts/quarter-car-active-suspension-lqr-optimization.md) — 主动悬架在被动悬架的弹簧与阻尼之外加一个作动器力，用全状态反馈在「车身加速度 / 悬架动行程 / 轮胎动载荷」三个互相冲突的指标间跳出被动悬架的固定折中；但增益该怎么定，决定了结果是能上车的设计还 `📅unknown` `[wiki_page]`
 - [滚动预测执行（Receding-Horizon Policy Execution）](wiki/concepts/receding-horizon-policy-execution.md) — 滚动预测执行**：模仿学习 / VLA 部署里，策略 **不是每步只吐一个动作**，而是 **预测一段未来 action sequence**，**只执行其中前缀**，再在下一周期用 **更新后的 `📅unknown` `[wiki_page]`
 - [RNN / LSTM / GRU（循环神经网络）](wiki/concepts/recurrent-neural-network.md) — RNN**：每一步用同一组参数把「当前输入 + 上一隐状态」映射为新隐状态与输出。**LSTM** 与 **GRU** 是加了 **可学习门** 的实用变体，用来减轻长时滞上的梯度消失。 `📅unknown` `[wiki_page]`
 - [递归自改进（Recursive Self-Improvement）](wiki/concepts/recursive-self-improvement.md) — 递归自改进（RSI）** 是：在足够算力下，AI 系统 **充分自主地设计、训练并部署自己的后继者**——不是「帮人写训练脚本」，而是把后继模型的规格与优化闭环从人类手里接过去。 `📅unknown` `[wiki_page]`
