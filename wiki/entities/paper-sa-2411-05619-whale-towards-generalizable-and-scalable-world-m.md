@@ -42,6 +42,32 @@ Towards generalizable and scalable world models for embodied decision-making.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["离线轨迹数据 D"] --> BCM
+    subgraph BCM["行为条件模型（§4.1 / §5.1.1）"]
+        Q["后验 q_φ(z | τ_H)"]
+        PR["先验 p_ψ(z | τ_h)"]
+        Q --> DEC["解码器 π_ω 重建动作"]
+        PR --> DEC
+    end
+    D --> TOK["视频 tokenizer：VQ-VAE 把帧离散成 token"]
+    PR -->|"行为嵌入 z_h"| DYN
+    TOK --> DYN["动态模型（ST-Transformer）：由 token、动作、z_h 预测下一帧 token"]
+    DYN --> OUT["解码为预测观测；自回归 rollout"]
+    OUT -->|"新观测再推断行为嵌入"| PR
+    OUT --> UQ
+    subgraph UQ["Retracing-rollout 不确定性（§4.2 / Fig. 2）"]
+        R1["回溯 k 步至 o_{t-k}，执行等效 retracing-action"] --> R2["与原预测比较特征级分歧（感知损失）"]
+        R2 --> R3["平均分歧 × 动态模型预测熵 = 不确定性"]
+    end
+    UQ --> USE["用于判断何时信任世界模型预测"]
+```
+
+图依据：论文 §4.1–4.2、§5.1–5.2 / Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Towards generalizable and scalable world models for embodied decision-making.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.05619>
+- [arXiv PDF](https://arxiv.org/pdf/2411.05619)：已通读方法部分（实验与附录以略读为准）：§3–§5（方法）、§6.1.1 实验设定
 
 ## 推荐继续阅读
 

@@ -41,6 +41,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：目标任务描述 lT + 环境/机器人/状态变量描述 lE"] --> B["Step 1 课程设计：Curriculum Generation LLM<br/>输出子任务语言描述序列 l1…lN（最后一个即目标任务）"]
+    B --> C["对第 n 个子任务 ln"]
+    C --> D["Step 2 任务代码采样：Task Code Generation LLM<br/>输入 ln、lE、历史 h，采样 K 个 (reward, goal 分布) 代码"]
+    D --> E["各候选在仿真中微调上一子任务策略 π*(n-1)，得 K 个候选策略"]
+    E --> F["Step 3 最优策略选择：Policy Evaluation LLM<br/>读取各策略轨迹 rollout 统计 + 历史 h"]
+    F --> G["选出 π*n，归档入策略库；更新历史 h"]
+    G -->|"n 到 N 为止，否则 n+1"| C
+    G --> H["最终得到目标任务策略"]
+```
+
+图依据：论文 §IV Method（Step 1–3）、Fig.1–3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2409.18382>
+- [arXiv PDF](https://arxiv.org/pdf/2409.18382)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 方法（A 课程生成、B 任务代码生成、C 策略评估）、Algorithm 1
 
 ## 推荐继续阅读
 

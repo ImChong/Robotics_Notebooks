@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PT["阶段一：视频生成式预训练"]
+        D1["大规模视频：Howto100M、Ego4D、SSV2、EPIC-KITCHENS、Kinetics-700、RT-1、Bridge（共 3800 万片段，经 hand filtering 与 re-captioning）"] --> TOK["冻结的文本编码器 + 冻结的 VQGAN 将图像转为离散 token"]
+        TOK --> GPT1["GPT 风格 transformer：预测未来图像 token"]
+        GPT1 --> DEC1["VQGAN 解码器还原未来图像"]
+    end
+    subgraph FT["阶段二：机器人数据微调"]
+        D2["机器人数据：语言指令、多视角图像序列、机器人状态（线性层编码）"] --> GPT2["同一 GPT 风格 transformer"]
+        GPT2 --> FV["各视角未来图像"]
+        GPT2 --> ACT["cVAE 生成动作轨迹"]
+    end
+    PT --> FT
+    ACT --> OPT["轨迹平滑优化"]
+    OPT --> WBC["Whole-Body Control：笛卡尔轨迹转关节动作，200 Hz 执行"]
+```
+
+图依据：论文 §2.1 Model & Training 与 Fig.1、式 (2)、§2.2 Real-Robot System & Deployment。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2410.06158>
+- [arXiv PDF](https://arxiv.org/pdf/2410.06158)：已通读方法部分（实验与附录以略读为准）：§2 方法、§2.1 模型与训练、§2.2 真机系统与部署
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Learns abstract world models with neuro-symbolic predicates for robot planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：环境 E、训练任务 T、初始谓词 Ψ0、初始 HLA Ω0（大多为空）"] --> EXP
+    EXP["探索：用当前谓词与 HLA 做层级规划并执行，收集成功转移、失败状态-动作与满足目标的计划"] --> CHK{"解决率 ρ 是否未提升"}
+    CHK -->|"是"| PROP["提出谓词：VLM 生成 NSP 代码（判别 / 转移建模 / 无条件生成三种策略）"]
+    CHK -->|"否"| SEL
+    PROP --> SEL["选择谓词：以 GBFS 搜索，分类精度 + 简单性偏置打分"]
+    SEL --> HLA["学习高层动作 HLA：cluster-and-intersect 学习前置条件与效果"]
+    HLA --> PLAN["层级规划：符号规划器出 HLA 序列，再调用对应技能执行"]
+    PLAN --> EXP
+    EXP -->|"无不可行计划 ν=0 或达迭代上限"| OUT["输出最佳 Ψ_best 与 Ω_best"]
+```
+
+图依据：论文 §2–§5 / Alg. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Learns abstract world models with neuro-symbolic predicates for robot planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.23156>
+- [arXiv PDF](https://arxiv.org/pdf/2410.23156)：已通读方法部分（实验与附录以略读为准）：§2–§5（方法）、§6 实验设定开头
 
 ## 推荐继续阅读
 

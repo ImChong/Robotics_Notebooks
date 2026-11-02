@@ -44,6 +44,30 @@ Gaussian world model for streaming 3D occupancy prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G0["上一帧 3D 语义 Gaussians g_(T-1) (位置 p, 尺度 s, 旋转 r, 语义概率 c, 时序特征 f)"] --> AL["Align: 按自车轨迹对全场景做全局仿射变换"]
+    AL --> DROP["丢弃超出范围的 Gaussians"]
+    DROP --> COMP["在新观测区域均匀采样随机初始化 Gaussians (保持总数不变)"]
+    X["当前帧多相机图像 x_T -> ResNet101-DCN + FPN 多尺度特征"] --> WL
+    COMP --> WL
+    subgraph WL["Gaussian world layers (多层)"]
+        SE["自编码: 体素化 + 3D 稀疏卷积"] --> CA["交叉注意力: 可变形注意力与图像特征交互"]
+        CA --> UR["统一精修块"]
+    end
+    UR --> MV["运动模式: 按语义概率划分动态 / 静态 Gaussians, 仅更新动态 Gaussians 位置, 并更新历史 Gaussians 全部属性"]
+    UR --> PM["感知模式: 预测新补全 Gaussians 的全部属性"]
+    MV --> REF["若干 refinement 层微调所有属性"]
+    PM --> REF
+    REF --> GT["当前帧 Gaussians g_T"]
+    GT --> OCC["感知头 -> 当前帧 3D 语义占据"]
+    GT -.->|"流式: 作为下一帧的历史 Gaussians"| G0
+```
+
+图依据：论文 §3.2 / Fig.2-4。注：页面 frontmatter 与链接的 arXiv 号 2412.04380 对应的是 EmbodiedOcc（Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding），与本页 GaussianWorld 不符；GaussianWorld 的正确编号经 arXiv 检索为 2412.10373，本图据此论文绘制
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +124,7 @@ Gaussian world model for streaming 3D occupancy prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.04380>
+- [arXiv PDF](https://arxiv.org/pdf/2412.10373)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.2 方法与 §4.3 实现细节；附录 Evolution Layer 段略读。页面原 arXiv 号 2412.04380 与 GaussianWorld 不符（实为 EmbodiedOcc），此处以 2412.10373 为准
 
 ## 推荐继续阅读
 

@@ -42,6 +42,35 @@ Simulation-based multimodal policy learning with all-around tactile sensing and 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SimT["仿真阶段 1：教师策略（PPO）"]
+        PI["特权信息 e_t：任务相关量 + 物理属性"] --> PE["特权编码器 → 潜变量 z_t"]
+        PE --> BP["基础策略 π_θ(o_t, z_t)，o_t 含 EE 位姿与上一动作"]
+    end
+    BP -->|"teacher rollout 产生示范"| BC
+    subgraph SimS["仿真阶段 2：学生蒸馏"]
+        TA["三路触觉图像 → 卷积编码"] --> CAT
+        PC["分割的物体 / 插座点云 → PointNet → MLP 得联合特征"] --> CAT
+        OB["观测 o_t → MLP"] --> CAT
+        CAT["拼接 f_t，堆叠 k 个历史特征"] --> TF["Transformer 学生策略"]
+        TF --> BC["先 Behavior Cloning 预热，再 DAgger 以概率 β 混合教师"]
+    end
+    BC --> DR["域随机化：动作延迟、插座扰动、触觉与点云增强"]
+    DR --> DEP["零样本部署真实机器人"]
+    subgraph Real["真实感知"]
+        RT["触觉：灰度化 + 背景减除 + 取 ROI"]
+        RV["深度 + TrackingSAM 分割 → 点云（转到机器人基座系）"]
+    end
+    RT --> TF2["已训练 Transformer 策略输出下一步动作"]
+    RV --> TF2
+    DEP --> TF2
+```
+
+图依据：论文 §III-B、§III-C、§III-D / Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ Simulation-based multimodal policy learning with all-around tactile sensing and 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2411.06408>
+- [arXiv PDF](https://arxiv.org/pdf/2411.06408)：已通读方法部分（实验与附录以略读为准）：§II–§III（方法）
 
 ## 推荐继续阅读
 

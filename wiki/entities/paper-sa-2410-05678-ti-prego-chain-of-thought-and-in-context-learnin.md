@@ -42,6 +42,22 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["在线输入视频帧窗口 f_τ-w : f_τ"] --> REC["Step Recognition 模块 ρ（MiniROAD）：识别当前步骤 s^ρ_τ"]
+    REC --> AGG["Step aggregation（NOMA：非重叠窗口取众数，再去除相邻重复），得到 AG"]
+    CTX["上下文 C：同一物体其他视频的步骤序列"] --> ANT
+    AGG --> ANT["Step Anticipation 模块 ξ（LLM）：ACoT 推理后预测下一步 s^ξ_τ，无需微调"]
+    REC --> CMP{"比较 s^ρ_τ 与 s^ξ_τ"}
+    ANT --> CMP
+    CMP -->|"不一致"| MIS["MISTAKE"]
+    CMP -->|"一致"| COR["CORRECT"]
+```
+
+图依据：论文 arXiv 2411.02570 的 §3 Methodology（§3.1–§3.4）与 Fig.2、式 (1)–(2)、§3.2 的 NOMA 聚合策略。注意：页面 frontmatter 与链接中的 arXiv 号 2410.05678 与该论文不符，其实际对应的是另一篇无关论文（Polynomial and combinatorial analogues of Gauss congruence）；TI-PREGO 的正确编号经 arXiv 检索为 2411.02570。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2410.05678>
+- [arXiv PDF](https://arxiv.org/pdf/2411.02570)：TI-PREGO 的正确 arXiv 编号为 2411.02570（页面所写 2410.05678 与该论文不符，对应一篇无关论文）；已通读方法部分（实验与附录以略读为准）：§3.1 预备、§3.2 步骤识别与聚合、§3.3 步骤预测、§3.4 错误检测
 
 ## 推荐继续阅读
 

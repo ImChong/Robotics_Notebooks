@@ -42,6 +42,23 @@ Scaling laws for pre-training agents and world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DS["数据集：Bleeding Edge 人类游戏（7 map / Sky Garden 子集）；RT-1 机器人数据"] --> ARC
+    subgraph ARC["三种任务-架构组合（Fig. 4）"]
+        WM["WM-Token：冻结 VQGAN 编码图像为离散 token，GPT-2 式因果 Transformer 预测下一图像 token"]
+        BT["BC-Token：同样的 token 序列，预测动作 token"]
+        BC["BC-CNN：小型可训练 CNN 把每帧编码成单个连续嵌入，Transformer 预测动作"]
+    end
+    ARC --> RUN["不同模型规模 N / 数据量 D 训练，C = 6ND，记录交叉熵损失"]
+    RUN --> FIT["Frontier fit 或 Parametric fit，拟合 N_opt ∝ C^a、D_opt ∝ C^b、L_opt(C)"]
+    FIT --> OUT["比较各组合的计算最优缩放系数（Table 1）"]
+```
+
+图依据：论文 §3.1–3.4 / Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Scaling laws for pre-training agents and world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.04434>
+- [arXiv PDF](https://arxiv.org/pdf/2411.04434)：已通读方法部分（实验与附录以略读为准）：§1–§3（任务、架构、数据集、缩放分析方法）
 
 ## 推荐继续阅读
 

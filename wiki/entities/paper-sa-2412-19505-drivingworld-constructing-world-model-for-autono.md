@@ -43,6 +43,25 @@ Constructs world models for autonomous driving via Video GPT.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["历史 T 个状态：车辆位姿 θ,x,y + 帧 I"] --> PT["位姿 tokenizer：相对位姿离散化为 φ 与 v"]
+    IN --> VT["视频 tokenizer：VQGAN 量化 + 前后因果时间注意力层，得到 q"]
+    PT --> WM
+    VT --> WM
+    subgraph WM["世界模型（Transformer）"]
+        NF["Next-frame AR module：causal temporal layer + multi-modal fusion layer"] --> IF["Internal-frame AR module：帧内逐 token 自回归，含 balanced attention"]
+    end
+    RMS["Random masking strategy：训练时随机替换部分真值 token，缓解漂移"] -.-> NF
+    IF --> NX["预测下一状态 token：φ、v、q"]
+    NX --> PD["位姿解码器：由 Eq.1 反算 Δθ、Δx、Δy"]
+    NX --> VD["视频解码器：码本特征 + 因果注意力 + 卷积，得到下一帧"]
+```
+
+图依据：论文 §3 Method（3.1 Tokenizer、3.3 World Model、3.4 Decoder）/ Fig.2、Fig.4、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Constructs world models for autonomous driving via Video GPT.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.19505>
+- [arXiv PDF](https://arxiv.org/pdf/2412.19505)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1–3.4）
 
 ## 推荐继续阅读
 

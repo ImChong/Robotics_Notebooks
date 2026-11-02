@@ -43,6 +43,22 @@ BAAI's Emu3, demonstrating next-token prediction unifies multimodal tasks.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["语言 / 图像 / 视频数据<br/>（视频：场景切分、OCR 过滤、光流过滤、美学过滤、再生成 caption）"] --> B["视觉 Tokenizer（基于 SBER-MoVQGAN）<br/>时间 4× / 空间 8×8 压缩，码本 32768"]
+    B --> C["离散视觉 token"]
+    D["文本经 QwenTokenizer 得文本 token"] --> E["拼成文档式序列<br/>[BOS] caption [SOV] meta [SOT] 视觉 token [EOV] [EOS]"]
+    C --> E
+    E --> F["Decoder-only Transformer（沿用 Llama-2 式架构，扩展视觉词表）"]
+    F --> G["预训练：仅 next-token prediction（视觉 token 损失权重 0.5）<br/>阶段1 文本+图像，阶段2 加入视频"]
+    G --> H["视觉生成后训练：QFT 质量微调 → DPO 偏好优化 → Emu3-DPO"]
+    G --> I["视觉语言理解后训练：图到文训练 → 指令微调"]
+```
+
+图依据：论文 §2.1–2.5（Data、Vision Tokenizer、Architecture、Pre-training、Post-training）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ BAAI's Emu3, demonstrating next-token prediction unifies multimodal tasks.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.18869>
+- [arXiv PDF](https://arxiv.org/pdf/2409.18869)：已通读方法部分（实验与附录以略读为准）：§2.1 数据、§2.2 视觉 Tokenizer、§2.3 架构、§2.4 预训练、§2.5 后训练
 
 ## 推荐继续阅读
 

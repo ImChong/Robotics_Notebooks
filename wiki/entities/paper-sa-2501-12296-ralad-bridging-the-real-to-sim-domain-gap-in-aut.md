@@ -42,6 +42,20 @@ A novel framework designed to bridge the real-to-sim gap at low cost
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DR["真实数据集 D_r（如 KITTI）"] --> ENC
+    DS["仿真数据集 D_s（CARLA）"] --> ENC["冻结的预训练模型编码器 g(·)<br/>提取真实特征 H 与仿真特征 H̃<br/>特征图展平为行向量"]
+    ENC --> OT["全局特征级 Optimal Transport 检索<br/>单张仿真图特征与全部真实图特征逐一计算 OT<br/>均匀权重 + 熵正则，取距离最小者作最优匹配 H*"]
+    OT --> CM["Convex Merge<br/>H 与匹配特征凸组合插值<br/>得到合并特征集合 D_m"]
+    CM --> FT["微调：冻结除解码器外的全部层<br/>合并特征输入解码器，学习仿真到真实的特征映射"]
+    FT --> OUT["域差距缩小后的模型<br/>在仿真数据上提升精度，同时保持真实数据表现"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C 与 Fig. 2、Fig. 3、Fig. 4。注意：§III-C 原文称对“真实特征 H”与“最优匹配的仿真特征 H̃*”做凸组合，而 §III-A 称检索目标是为每个仿真特征图找最相近的真实特征图，二者表述不完全一致，图中以“匹配特征 H*”统称。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ A novel framework designed to bridge the real-to-sim gap at low cost
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2501.12296>
+- [arXiv PDF](https://arxiv.org/pdf/2501.12296)：已通读方法部分（实验与附录以略读为准）：§I 引言末段、§III Methodology（A 问题建模、B 基于 OT 的检索增强学习、C Convex Merge and Fine-Tune）
 
 ## 推荐继续阅读
 
