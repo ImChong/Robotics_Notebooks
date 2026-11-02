@@ -38,6 +38,33 @@ summary: "从人类演示模仿学习能有效教机器人操作，但数据采�
 - **real-to-sim-to-real**闭环让合成数据落到真机；
 - 与 HumanoidGen、Mimicking-Bench 等共同壮大人形操作数据生态（同出 NVIDIA/UT 系）。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    SRC["少量人类源演示<br/>(遥操作采集)"]
+    SRC --> SEG["按手臂分段为 object-centric 子任务<br/>(人工标注或启发式), 记录参考物体位姿"]
+    SEG --> TYPE["子任务类型标注:<br/>并行 / 协调 / 顺序"]
+    SCN["新仿真场景: 随机化初始状态<br/>+ 选取一条源演示"] --> XF
+    TYPE --> XF["读取参考物体当前位姿<br/>→ SE(3) 变换源轨迹 (保持末端-物体相对位姿)"]
+    XF --> EXE["各臂并行执行与同步策略"]
+    subgraph STR["按子任务类型的执行策略"]
+        P["并行: 每臂独立动作队列, 异步出队"]
+        C["协调: 两臂用同一变换 (Transform) 或直接回放 (Replay), 剩余步数对齐同步"]
+        S["顺序: pre-subtask 完成后, 另一臂的 post-subtask 才继续"]
+    end
+    STR --> EXE
+    EXE --> FING["手指动作: 回放源演示中的手指关节动作"]
+    FING --> CHK{"任务成功?"}
+    CHK -->|"是"| KEEP["保留为生成演示"]
+    CHK -->|"否"| DROP["丢弃"]
+    KEEP --> TRAIN["BC 训练 (仿真: 图像策略;<br/>真机: Diffusion Policy)"]
+    KEEP -.->|"真机流程: 数字孪生中成功后,<br/>动作序列送真机执行"| REAL["真实→仿真→真实 (Can Sorting, Fourier GR1)"]
+    REAL --> TRAIN
+```
+
+图依据：论文 §III Prerequisites（MimicGen）/ §IV-A–D DexMimicGen Method（Fig.2–3）/ §VI-D Real-World Evaluation（数字孪生流程，Fig.1）。
+
 ## 解决什么问题
 
 模仿学习**数据采集贵**，对**双手灵巧人形**尤甚： - 人类演示**难采、量小**； - 双手灵巧协调复杂； - 需可扩展的数据来源。
@@ -97,6 +124,7 @@ DexMimicGen 要：从**极少量人类演示**在仿真里**自动合成大规�
 - [humanoid_pnb_dexmimicgen.md](../../sources/papers/humanoid_pnb_dexmimicgen.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/DexMimicGen__Automated_Data_Generation_for_Bimanual_Dexterous_Manipulation/DexMimicGen__Automated_Data_Generation_for_Bimanual_Dexterous_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2410.24185>
+- [arXiv PDF](https://arxiv.org/pdf/2410.24185)：已通读方法部分（实验与附录以略读为准）：§III Prerequisites、§IV DexMimicGen Method（A–D）、真机评测一节（Real-World Evaluation，数字孪生流程）
 
 ## 推荐继续阅读
 

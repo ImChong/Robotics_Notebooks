@@ -37,6 +37,24 @@ sources:
 - 使 BERT 类模型能处理部分可观测的时序导航输入，成为当时多 benchmark SOTA 基线架构。
 - 在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["初始化 t=0：[CLS] + 指令词 + [SEP] 送入 VLN BERT<br/>[CLS] 嵌入作为初始状态 s₀；语言 tokens 此后不再更新"] --> IN
+    VIS["视觉 tokens V_t<br/>可导航方向的图像特征，经投影 W_I<br/>（REVERIE 另加物体 tokens O_t）"] --> IN
+    IN["每步输入序列：上一步状态 token s_(t-1)<br/>+ 语言 tokens X（仅作 key/value）+ 视觉 tokens"] --> BERT["VLN BERT（初始化自 OSCAR）<br/>跨模态自注意力，12 层"]
+    BERT --> DEC["决策：最后一层中视觉 tokens 对状态 token 的<br/>多头平均注意力 = 动作概率 p(a_t)"]
+    BERT --> REF["状态细化：状态对语言 / 视觉 tokens 的注意力加权求和，<br/>逐元素相乘后与状态特征拼接并线性投影"]
+    DEC --> ACT["选择方向 a_t，在连通图上移动"]
+    ACT --> REC["记录决策：所选方向的特征送入状态 token → 新状态 s_t"]
+    REF --> REC
+    REC -- "s_t 作为下一步首个输入 token" --> IN
+    ACT -.-> TRAIN["训练：A2C 强化学习 + 模仿学习（教师动作）混合损失"]
+```
+
+图依据：论文 §3 Proposed Model（§3.1 VLN 背景、§3.3 Recurrent VLN BERT：语言/视觉处理、状态表示与细化、决策）、§3.4 Training、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +108,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2011.13922>
+- [arXiv PDF](https://arxiv.org/pdf/2011.13922)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Model（VLN 背景、BERT 回顾、Recurrent VLN BERT、训练与适配）、§4 实验设定
 
 ## 推荐继续阅读
 

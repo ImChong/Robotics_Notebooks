@@ -38,6 +38,31 @@ sources:
 - 底层 motor control 成熟后上层协作/战术才有空间。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#23/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1：低层运动控制 (§3.2)"]
+        M["约 1 小时 45 分钟足球动捕数据<br/>切成 4–8 秒片段"] --> TR["每个片段用 RL 训练跟踪策略"]
+        TR --> NP["蒸馏为单一低层控制器 NPMP<br/>潜在瓶颈 z（运动意图）→ 关节动作"]
+    end
+    subgraph S2["阶段 2：中层技能 (§3.3)"]
+        D["训练 drill：follow / dribble / shoot / kick-to-target"] --> EX["PBT + RL 训练每个 drill 的专家策略<br/>输出运动意图到固定的 NPMP"]
+        EX --> PR["蒸馏为 drill prior<br/>仅用足球任务可得的观测，KL 最小化"]
+    end
+    subgraph S3["阶段 3：长时程协同 (§3.4)"]
+        G["2v2 足球：种群内随机配对对战<br/>Nash Averaging 作为 PBT 适应度"] --> MA["多智能体 RL (MPO)<br/>复用低层控制器，更新高层策略"]
+        MA --> PL["Lpriors：KL 正则到 4 个 drill prior 的混合分布"]
+        MA --> OUT["完整足球智能体"]
+        PL --> MA
+    end
+    NP --> D
+    NP --> MA
+    PR --> PL
+```
+
+图依据：论文 §3 / Table 1、Fig.2、§3.1–3.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +115,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2105.12196>
+- [arXiv PDF](https://arxiv.org/pdf/2105.12196)：已通读方法部分（实验与附录以略读为准）：§3 Learning Framework（3.1–3.4，含 Table 1 与 Fig.2）
 
 ## 推荐继续阅读
 

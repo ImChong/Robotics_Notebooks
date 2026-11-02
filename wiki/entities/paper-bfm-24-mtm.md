@@ -39,6 +39,28 @@ sources:
 - 轨迹作为预训练对象；行为基座不必只靠传统 RL 交互。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#24/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["轨迹数据集<br/>模态：state / action / return-to-go（RTG）"] --> SEG["随机截取固定长度的轨迹片段"]
+    SEG --> TOK["Tokenize：模态专属编码器 E<br/>+ 正弦时间步编码 + 可学习模态类型编码<br/>展平为长度 N = M×T 的 1-D 序列"]
+    TOK --> MASK["随机自回归掩码<br/>随机遮挡 token，且序列最后一个元素必被遮挡"]
+    MASK --> ENC["双向 Transformer 编码器<br/>只处理未遮挡 token"]
+    ENC --> DEC["双向 Transformer 解码器<br/>遮挡位置填 mask token"]
+    DEC --> LOSS["MSE 重建完整序列（含未遮挡 token）"]
+    LOSS -.->|"训练得到同一个 MTM 网络"| INF
+    subgraph INF["推理：只更换掩码模式即可切换角色"]
+        R1["RCBC 掩码 → 离线 RL（return-conditioned BC）"]
+        R2["状态表示 → 加速传统 RL 学习"]
+        R3["行为克隆 → 策略初始化"]
+        R4["前向动力学 → 世界模型"]
+        R5["逆动力学 → 恢复跟踪参考状态轨迹的动作序列"]
+    end
+```
+
+图依据：论文 §3.1–§3.3 / Fig.1–Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -93,6 +115,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2305.02968>
+- [arXiv PDF](https://arxiv.org/pdf/2305.02968)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 相关工作、§3 Masked Trajectory Modeling（轨迹数据、架构与掩码、通用 RL 抽象）、§4 开头的实验问题设置
 
 ## 推荐继续阅读
 

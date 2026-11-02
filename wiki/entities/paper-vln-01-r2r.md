@@ -43,7 +43,7 @@ sources:
 flowchart TD
     subgraph 基准
         MP["Matterport3D 室内全景扫描"] --> SIM["Matterport3D Simulator<br/>离散导航图 + 第一人称 RGB 观测"]
-        SIM --> DATA["R2R 数据集<br/>人工撰写导航指令 + 起点/终点路径"]
+        SIM --> DATA["R2R 数据集<br/>众包导航指令 + 起点/终点路径"]
         DATA --> SPLIT["train / val seen / val unseen / test"]
     end
     subgraph Seq2Seq基线
