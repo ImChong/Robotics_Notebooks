@@ -43,6 +43,23 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入图像"] --> B["骨干 ResNet 或 Swin Transformer：多尺度特征"]
+    B --> C["Transformer 编码器 + 位置编码"]
+    C --> D["混合查询选择 Mixed Query Selection：用 top-K 编码器特征初始化锚框作位置查询"]
+    CQ["内容查询：保持可学习"] --> E
+    D --> E["Transformer 解码器：可变形注意力，逐层更新查询"]
+    E --> F["Look Forward Twice：相邻层间传递梯度的框更新"]
+    F --> G["预测头：精修锚框 + 分类结果"]
+    N["对比去噪 CDN：GT 加噪生成正查询与负查询"] --> E
+    N -.->|"仅训练时 DN 分支；正查询重建 GT，负查询预测无物体"| G
+```
+
+图依据：论文 §3.2 / Fig.2、§3.3 / Fig.3、§3.4 / Fig.5、§3.5 / Fig.6（CDN 分支与主干的连接方式为据 §3.2 文字的简化）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://iclr.cc/virtual/2023/poster/11884>
+- [arXiv PDF](https://arxiv.org/pdf/2203.03605)：已通读方法部分（实验与附录以略读为准）：§3.2 模型总览、§3.3 对比去噪训练、§3.4 混合查询选择、§3.5 Look Forward Twice
 
 ## 推荐继续阅读
 
