@@ -42,6 +42,22 @@ Explores the impact of explicit spatial signals on long-form VLM reasoning, intr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Google Sanpo 数据集<br/>长时第一人称视频"] --> B["Sanpo-D 精细人工标注<br/>647 个 Q&A，每条对应起止帧 X–Y 的时间片段"]
+    B --> C["四类导航相关问题<br/>Intersection 153 / Pedestrian 268 / Obstruction 73 / Path 153"]
+    A --> D["原始 RGB 帧"]
+    A --> E["Depth Anything 3 度量深度估计<br/>着色深度图与 RGB 融合"]
+    D --> F["VLM 零样本评测<br/>VLM-3R / VILA / LLaVA-OneVision / LLaVA-NeXT-Video / InternVL2"]
+    E --> F
+    C --> F
+    F --> G["按问题类别统计准确率<br/>对比有 / 无深度融合"]
+```
+
+图依据：数据集 / 评测流程图，论文 §1 Introduction、Fig.2（数据标注与 VLM 提示整体框架）、§2 Method（Q&A 构造与四类问题）、§3.2 Depth-Fusion Experiment
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Explores the impact of explicit spatial signals on long-form VLM reasoning, intr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.18100>
+- [arXiv PDF](https://arxiv.org/pdf/2601.18100)：已通读全文（论文约 4 页）：§1 Introduction、§2 Method、§3 Results（3.1 Sanpo-D Benchmark、3.2 Depth-Fusion Experiment）、§4 Conclusion；Fig.2 仅据正文与图题，图内文字未读
 
 ## 推荐继续阅读
 
