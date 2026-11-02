@@ -5,7 +5,7 @@ project_id: xbotics-embodied-ai-handbook
 code: https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Handbook
 tags: [course, education, tutorial, lerobot, vla, imitation-learning, reinforcement-learning, so101, open-source]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-02
 related:
   - ./lerobot.md
   - ./libero-benchmark.md
@@ -76,6 +76,32 @@ flowchart LR
 - SmolVLA 全量微调（仿真+真机混合 3698 集）：三个仿真任务成功率 罐 96% / 小方块 90% / 方块 94%。
 - GRPO 后训练 Qwen2.5-VL-3B：SuperCLEVR 数数准确率 0.095 → 0.44，格式合规率 0.22 → 0.79。
 - L16 引用论文称 FastSAC/FastTD3 在单张 RTX 4090 上约 15 分钟训出可 sim-to-real 的 G1 行走策略（文稿同时说明这是墙钟对比而非"PPO 学不会"）。
+
+## 源码运行时序图
+
+以下仅对应第 1 讲的 [minimal_reach.py](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Handbook/blob/342247fb71dd0ee15386b6eab80543c50593d3c1/code/lecture01/simulation/minimal_reach.py)，是二维数值示意，并非机械臂物理仿真或 VLA 训练流程。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant M as main
+  participant R as run_reach
+  participant P as plot_trajectory
+  participant F as 输出文件
+  U->>M: 运行 minimal_reach.py
+  M->>R: 传入 ReachConfig
+  loop 最多 max_steps 次
+    R->>R: 计算目标误差并按步长更新位置
+  end
+  R-->>M: 返回轨迹、误差与成功状态
+  M->>F: 写入 result.json
+  M->>P: 传入结果与输出路径
+  P->>F: 保存 trajectory.png
+  M-->>U: 输出结果摘要
+```
+
+默认目标为 (0.20, 0.05)，步长 0.02，距离小于 0.01 时停止；程序依赖 NumPy 和 Matplotlib，输出路径位于脚本旁的 `outputs/`。图按源码静态核对，未实际运行。
 
 ## 工程实践
 
