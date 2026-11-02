@@ -42,6 +42,25 @@ World states and “physics” are implemented in ordinary web code to ensure lo
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    U["用户动作 a_t"] --> PH["物理层 S^φ：确定性代码<br/>库存、坐标、逻辑规则"]
+    PH --> NP["新物理状态 S^φ_t+1 = f_code(S^φ_t, a_t)"]
+    NP --> TI["类型化接口（TypeScript schema）<br/>约束 LLM 输出为合法 JSON"]
+    TI --> IM["想象层 S^ψ：LLM π_θ<br/>生成描述、对话、风格"]
+    IM --> NS["新想象状态 S^ψ_t+1 ~ π_θ(· | S^φ_t+1)"]
+    NP --> W["合成的世界状态 S_t+1"]
+    NS --> W
+    W -. 循环 .-> U
+    C["坐标 (x, y)"] --> H["哈希函数 → 固定随机种子"]
+    H -. "固定 LLM 采样，同一地点重访结果一致" .-> IM
+    FI["保真度滑块：高 = 实时 LLM<br/>中 = 缓存内容，低 = 预置模板"] -. 优雅降级 .-> IM
+```
+
+图依据：论文 §2 设计原则（§2.1–2.5、Fig. 3/4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ World states and “physics” are implemented in ordinary web code to ensure lo
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.23676>
+- [arXiv PDF](https://arxiv.org/pdf/2512.23676)：已通读方法部分（实验与附录以略读为准）：摘要、§2 设计原则、§3.1 示例（Infinite Travel Atlas）开头；其余示例与实验为略读
 
 ## 推荐继续阅读
 

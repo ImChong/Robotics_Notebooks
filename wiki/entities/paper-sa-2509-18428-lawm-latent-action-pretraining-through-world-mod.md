@@ -43,6 +43,34 @@ Latent action pretraining through world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PRE["阶段一：Latent Action Pretraining（无动作标签，自监督）"]
+    V["无标注视频：机器人录像 / 人类操作视频"] --> X["当前帧 x_t"]
+    LANG["语言指令 c"] --> IL
+    X --> IL["模仿学习模型 IL_θ（实现中为 BAKU 或 Diffusion Policy）"]
+    IL --> Z["预测 n 个潜在动作 z_{t:t+n-1}"]
+    X --> WM
+    Z --> WM["世界模型 WM_φ（DreamerV3 RSSM）从 x_t 起逐步 rollout"]
+    WM --> XH["预测未来 n 帧"]
+    XH --> LOSS["与真实视频帧比较：MSE + β·KL 正则"]
+    V --> LOSS
+    LOSS -.联合优化.-> IL
+    LOSS -.联合优化.-> WM
+  end
+  IL --> PRIOR["保留预训练后的 IL_θ，丢弃世界模型"]
+  subgraph FT["阶段二：Action Finetuning（有动作标签）"]
+    PRIOR --> RE["仅重新初始化最后一层 action latent 层以匹配真实动作维度"]
+    DEMO["带真值动作的下游示范（图像、指令、机器人状态）"] --> SUP["监督微调：动作预测损失"]
+    RE --> SUP
+    SUP --> OUT["输出真值动作序列 a_{t:t+n-1}"]
+  end
+```
+
+图依据：论文 §3.1 / §3.2 与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Latent action pretraining through world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.18428>
+- [arXiv PDF](https://arxiv.org/pdf/2509.18428)：已通读方法部分（§1 引言、§3 方法）；实验（§4–§5）略读：实验设定与主要结果。
 
 ## 推荐继续阅读
 

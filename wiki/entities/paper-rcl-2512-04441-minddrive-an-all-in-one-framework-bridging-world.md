@@ -42,6 +42,30 @@ MindDrive couples action-conditioned BEV scene prediction with anchor refinement
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  P["感知模块：多视角相机 + LiDAR 融合为 BEV 特征"] --> FA
+  EG["Ego 表征：自车状态 + 初始动作意图（anchor 轨迹 → action token）"] --> FA
+  subgraph FA["Future-aware Trajectory Generator（FaTG）"]
+    SV["Scene-Variant 特征构造：action token 经双线性插值注入 BEV，得 N 个假设场景"]
+    WAM["World Action Model：Transformer 编码 → 2 个 Mamba block 时序 rollout → Transformer 解码未来场景特征"]
+    TD["Trajectory Decoder：action token 对当前 + 未来场景特征做 MHCA，解码偏移修正 anchor"]
+    SV --> WAM --> TD
+  end
+  FA -->|"候选轨迹 + 场景 token"| LF
+  PR["文本 prompt"] --> LF
+  subgraph VLOE["VLM-oriented Evaluator（VLoE）"]
+    LF["LaST-Former：场景 / 轨迹 token 编码 + Sentinel Insertion，生成 reasoning token"]
+    CR["VLM-Critic：score token 聚合隐状态 → Score Head，输出安全 / 舒适 / 效率 / 合规评分"]
+    LF --> CR
+  end
+  CR --> SEL["聚合多目标得分，选出最终轨迹"]
+```
+
+图依据：论文 §3 / Fig.2、Fig.3（WAM）、Fig.4（VLoE）；§3.1 总览段仅读图注与 §3.2、§3.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ MindDrive couples action-conditioned BEV scene prediction with anchor refinement
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.04441>
+- [arXiv PDF](https://arxiv.org/pdf/2512.04441)：已通读方法部分（实验与附录以略读为准）：Fig.2 总览图注、§3.2 Future-aware Trajectory Generator、§3.3 VLM-oriented Evaluator
 
 ## 推荐继续阅读
 

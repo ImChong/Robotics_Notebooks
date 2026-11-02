@@ -42,6 +42,28 @@ DUST augments a frozen vision-language backbone with jointly denoised actions an
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["当前观测 + 任务指令"] --> VLM["冻结 VLM（Eagle-2）：提取语义特征 Φt"]
+    ST["机器人状态"] --> MM
+    NA["带噪动作 token（独立时间步 τA）"] --> MM
+    NV["带噪未来观测嵌入 token（独立时间步 τo）"] --> MM
+    VLM -->|"条件"| MM["共享 MMDiT 层：两路 token 分流，仅在跨模态注意力处拼接；各自 AdaLN 时间步嵌入"]
+    MM --> DA["动作专用 DiT 块 → 动作速度场"]
+    MM --> DV["视觉专用 DiT 块 → 未来嵌入速度场"]
+    DA --> LA["训练：LA（动作）"]
+    DV --> LW["训练：LWM（世界建模，SigLIP-2 嵌入为目标）"]
+    LA --> LJ["LJoint = LA + λWM·LWM"]
+    LW --> LJ
+    DA --> S["推理联合采样：动作 NA 步，视觉 No = q·NA 步"]
+    DV --> S
+    S --> OUT["输出：动作块（视觉分支同时预测未来嵌入）"]
+```
+
+图依据：论文 Fig. 2（DUST 架构）、Fig. 3（联合采样）及 §4.1–4.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ DUST augments a frozen vision-language backbone with jointly denoised actions an
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2510.27607>
+- [arXiv PDF](https://arxiv.org/pdf/2510.27607)：已通读方法部分（实验与附录以略读为准）：§4 Method（4.1 DUST 架构、4.2 联合训练、4.3 联合采样）、Fig. 2–3、§5 实验设定中的骨干与世界建模目标
 
 ## 推荐继续阅读
 

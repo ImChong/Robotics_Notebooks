@@ -42,6 +42,34 @@ Diffusion world models for policy refinement with RL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段一：预训练"]
+    D1["专家示范 D_exp"] --> P1["模仿学习预训练策略 π_ξ（BC，最大化专家动作对数似然）"]
+    D2["D_exp + 预训练策略 rollout D_rollout"] --> R1["训练奖励分类器 C_ψ（ResNet18，二元交叉熵）"]
+    D3["D_exp + D_rollout + 随机 rollout D_rand"] --> W1["训练扩散转移模型 D_θ（EDM 形式，U-Net 2D）"]
+  end
+  P1 --> INIT["以 BC 策略初始化 RL 策略"]
+  W1 --> FZ["冻结世界模型，作为模拟器"]
+  R1 --> RC["奖励分类器给出稀疏二元奖励"]
+  subgraph S2["阶段二：想象环境中的策略优化"]
+    OBS["历史观测 x_{t-T:t}"] --> ACT["策略采样动作 a_t（σ 截断以减少 OOD 动作）"]
+    ACT --> TH["two-hot 编码 z_t"]
+    TH --> PRED["扩散转移模型预测下一观测 x_{t+1}"]
+    OBS --> PRED
+    PRED --> RW["奖励分类器评估 x_{t+1}，得 r_t"]
+    RW --> PPO["PPO 更新策略与价值网络"]
+    PPO --> ACT
+  end
+  INIT --> ACT
+  FZ --> PRED
+  RC --> RW
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Fig. 1 与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +125,7 @@ Diffusion world models for policy refinement with RL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.19080>
+- [arXiv PDF](https://arxiv.org/pdf/2509.19080)：已通读方法部分（§III）；实验与附录以略读为准：§I 引言、§III 方法、§IV 实验设定。
 
 ## 推荐继续阅读
 

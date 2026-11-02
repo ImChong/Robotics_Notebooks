@@ -42,6 +42,26 @@ MimicDreamer converts human demonstrations into robot-looking videos paired with
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  EGO["第一人称人类示教视频"] --> ES["EgoStabilizer 透视变换稳定 + 背景视频修补"]
+  EGO --> HAND["3D 手部轨迹 腕部位姿"]
+  HAND --> IK["约束 IK 求解 DLS 低抖动 并推断夹爪开合"]
+  IK --> ACT["机器人关节动作 14 维"]
+  ACT --> SIM["仿真渲染 机器人 URDF + 标定虚拟相机"]
+  SIM --> SV["仿真机器人视频"]
+  ES --> H2R["H2R Aligner 基于 CogVideoX-5b-I2V 的多条件视频扩散"]
+  SV --> H2R
+  H2R --> SYN["合成机器人视角视频"]
+  SYN --> TR["VLA 后训练 π0 初始化 条件流匹配损失"]
+  ACT --> TR
+  REAL["少量真实机器人示教"] --> TR
+```
+
+图依据：论文 §3 / Fig.1（MimicDreamer 总览）、§3.1（EgoStabilizer）、§3.2（动作对齐与 IK）、§3.3 / Fig.2（H2R Aligner）、§3.4（VLA 训练）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ MimicDreamer converts human demonstrations into robot-looking videos paired with
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2509.22199>
+- [arXiv PDF](https://arxiv.org/pdf/2509.22199)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）、§4 实验开头；实验数字与附录略读。
 
 ## 推荐继续阅读
 

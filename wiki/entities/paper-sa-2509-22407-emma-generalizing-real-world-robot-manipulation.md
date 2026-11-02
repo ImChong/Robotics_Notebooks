@@ -42,6 +42,22 @@ Generalizes real-world robot manipulation via generative visual transfer.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  D["真实或仿真示教视频 多视角深度视频 + 文本提示"] --> DT["DreamTransfer 双分支 DiT 主分支去噪 + ControlNet 深度结构引导"]
+  DT --> GV["多视角一致的生成视频 可编辑前景 背景 光照"]
+  GV --> F["视频质量过滤器 深度一致性 多视角一致性 文本-视频相似度"]
+  F -->|"不达标 采样权重置 0"| X["丢弃"]
+  F -->|"达标"| M["真实数据 + 高质量生成数据 均匀采样训练 VLA"]
+  M --> S["对训练样本计算动作 MSE 平滑度 关节限位 合成得分 si"]
+  S --> A["AdaMix 采样权重 p(i) 正比于 γ + λ(1 - si) 上调困难样本"]
+  A --> V["增量训练 VLA 策略 π0 或 π0.5"]
+```
+
+图依据：论文 §2.1 / Fig.2（EMMA 总览）、§2.2 / Fig.3（DreamTransfer）、§2.3（AdaMix，式 3–7）、§3.2（基座策略 π0 / π0.5）。论文 PDF 标题为 “EMMA: Enhancing Robotic Control Robustness through a Generative Visual Model”，与本页标题不同，但 arXiv 号、项目页与方法（EMMA / DreamTransfer / AdaMix）一致。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Generalizes real-world robot manipulation via generative visual transfer.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22407>
+- [arXiv PDF](https://arxiv.org/pdf/2509.22407)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1–2.3）、§3 实验设定与 §3.2 真机部分；附录与仿真实验略读。
 
 ## 推荐继续阅读
 

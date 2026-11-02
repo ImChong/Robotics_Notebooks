@@ -42,6 +42,28 @@ World model-based policy optimization for VLAs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph WMTRAIN["世界模型与奖励模型准备"]
+        OXE["Open X-Embodiment 预训练<br/>(OpenSora 视频扩散骨干，换 SDXL 2D VAE；<br/>noisy-frame conditioning + 帧级动作控制 AdaLN)"] --> FT["用策略自身的真实 rollout 微调<br/>(Policy Behavior Alignment，覆盖失败模式)"]
+        FT --> WM["世界模型 p_φ"]
+        REALT["真实轨迹：终端片段为正样本，<br/>其余片段/失败轨迹为负样本"] --> RM["奖励模型 R_ψ：VideoMAE 编码器 + 线性头<br/>滑窗判定，任一片段超阈值即成功 (二值)"]
+    end
+    subgraph LOOP["WMPO 在线策略优化循环（Fig. 2）"]
+        S0["真实环境初始帧 I_0:c + 语言指令 g"] --> GEN["(1) 想象轨迹生成：<br/>VLA 策略 π_θold 输出动作块 → 世界模型生成后续 K 帧，交替至最大长度 N"]
+        WM --> GEN
+        GEN --> SAMP["(2) 轨迹采样：每个初始帧采样一组 G 条轨迹"]
+        SAMP --> RM
+        RM --> FILT["二值奖励；若全成功或全失败则丢弃该组<br/>(Dynamic Sampling) 并补采样"]
+        FILT --> UPD["(3) 策略更新：GRPO 组内归一化优势<br/>(去除 KL 项，clip 上下界不同)"]
+        UPD -->|"更新 π_θ"| GEN
+    end
+```
+
+图依据：论文 §3.2–3.4 / Fig. 2、式 (2)–(5)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ World model-based policy optimization for VLAs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.09515>
+- [arXiv PDF](https://arxiv.org/pdf/2511.09515)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法、§4 实验设置（略读）
 
 ## 推荐继续阅读
 

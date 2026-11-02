@@ -42,6 +42,23 @@ Key frame reasoning enables effective and efficient world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  TRJ["机器人轨迹 位姿状态序列"] --> RDP["关键帧检测 RDP 算法 二分搜索阈值 ε 控制关键帧数"]
+  RDP --> KF["关键帧数据集"]
+  PR["任务文本 + 初始帧"] --> KG["关键帧生成器 CogVideoX 图生视频 DiT 在关键帧子序列上微调"]
+  KF -.->|"微调数据"| KG
+  KG --> KFS["生成的关键帧序列"]
+  KFS --> GE["间隔估计器 CNN 编码 + 帧差 + MLP 回归 预测相邻关键帧间中间帧数"]
+  KFS --> FI["帧插值器 FILM 在关键帧数据上微调"]
+  GE --> FI
+  FI --> VID["完整视频输出"]
+```
+
+图依据：论文 §3.1 / Fig.1（KeyWorld 总览）、§3.2（RDP 关键帧提取）、§3.3（关键帧生成模型）、§3.4（间隔估计器与帧插值器）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Key frame reasoning enables effective and efficient world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.21027>
+- [arXiv PDF](https://arxiv.org/pdf/2509.21027)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1–3.4）、§4.1 实验设定；结果与消融略读。
 
 ## 推荐继续阅读
 

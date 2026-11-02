@@ -42,6 +42,24 @@ Studies the emergence of in-context learning in world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  O["观测 ot"] --> E["观测编码器 fI VAE 或 MLP 得到潜状态 st"]
+  A["动作 at"] --> AE["动作编码器 fA"]
+  E --> SEQ["交错序列 s1 a1 s2 a2 ... st at"]
+  AE --> SEQ
+  SEQ --> T["序列解码器 fθ gated slot attention 线性注意力"]
+  T --> H["输出 ht"]
+  H --> LD["潜状态解码器 gS 预测高斯 ŝ"]
+  LD --> OD["观测解码器 gI 重建预测观测 ô"]
+  T -.->|"训练 分块并行 chunk-wise"| TR["长上下文训练"]
+  T -.->|"评测 循环形式 recurrent 多步预测"| EV["情境内学习 ICL 评测"]
+```
+
+图依据：论文 §3.4 / Fig.1（L2World 世界模型结构）。论文主体是 ER / EL 两种 ICL 机制的理论分析（§3.1–3.3）与 Cart-Pole、导航实验，图仅画论文自述的 L2World 模型结构。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Studies the emergence of in-context learning in world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22353>
+- [arXiv PDF](https://arxiv.org/pdf/2509.22353)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法论（3.1–3.4）、§4 实验开头设定；§4 各实验结果与附录略读。
 
 ## 推荐继续阅读
 

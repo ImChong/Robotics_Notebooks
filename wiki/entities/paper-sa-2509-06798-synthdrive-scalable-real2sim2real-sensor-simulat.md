@@ -42,6 +42,31 @@ A scalable real2sim2real system that leverages 3D generation to automate asset m
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["文本提示<br/>如 portable traffic lights、irregular obstacles"] --> B["图像挖掘: 已有驾驶数据的 CLIP 文本-图像检索<br/>+ 网络搜索引擎补充"]
+    B --> C["单视角输入图像"]
+    C --> D["Zero123++ 生成多视角图像"]
+    D --> E["InstantMesh (LRM) 初始化粗网格"]
+    D --> F["StableNormal 预测多视角法线图"]
+    E --> G["迭代网格优化<br/>可微渲染 + 法线/掩码/拉普拉斯损失 + 表面重网格化"]
+    F --> G
+    G --> H["精细网格"]
+    D --> I["扩散式超分 2 倍放大多视角图像"]
+    I --> J["显式纹理融合: 最大余弦视角取色, 接缝平滑, 补全不可见顶点"]
+    H --> J
+    J --> K["带纹理 3D 资产"]
+    L["道路重建(LiDAR 聚合 / 多视角立体)与目标跟踪"] --> M["在无碰撞区域放置资产"]
+    K --> M
+    M --> N["HDR 环境光 + 光线投射渲染前景 + 遮挡掩码"]
+    N --> O["alpha 混合合成 + 视频协调器(harmonizer)调色"]
+    O --> P["稀有场景驾驶数据"]
+```
+
+图依据：论文 §III（A 图像挖掘、B 3D 资产生成、C 场景合成）/ Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ A scalable real2sim2real system that leverages 3D generation to automate asset m
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2509.06798>
+- [arXiv PDF](https://arxiv.org/pdf/2509.06798)：已通读方法部分（实验与附录以略读为准）：§III（A 图像挖掘、B 3D 资产生成、C 场景合成）；§IV 实验略读
 
 ## 推荐继续阅读
 

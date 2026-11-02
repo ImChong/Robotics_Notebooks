@@ -42,6 +42,29 @@ Scale-wise autoregression with motion prompt for generative world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["观测帧 f_t（t ≤ T0）"] --> TOK["非对称多尺度 tokenizer（VQGAN，观测帧与未来帧使用独立码本）"]
+  OBS --> CT["CoTracker3 在首帧规则网格上采样查询点并跟踪"]
+  CT --> FILT["过滤：丢弃低置信度轨迹与近乎静止的轨迹"]
+  FILT --> MP["动态轨迹叠加到观测上，形成 motion prompt"]
+  MP --> CAT["与观测拼接（特殊 token 分隔）形成双分支输入"]
+  TOK --> FULL["观测帧：全部 L_full 个尺度的 token map"]
+  TOK --> SUB["未来帧：仅稀疏的较粗尺度 L_sub，并对观测帧做 cross-attention"]
+  FULL --> TR["decoder-only Transformer（沿用 VAR）"]
+  CAT --> TR
+  ACT["动作 a：线性投影后加到 start token [S] 嵌入"] --> TR
+  SUB --> TR
+  TR --> DEC["帧间时间因果自回归；帧内由粗到细逐尺度预测，同尺度 token 并行解码（块因果掩码）"]
+  DEC --> OUT["预测未来帧 token map，经 tokenizer 解码为视频"]
+  DEC -.可选辅助头.-> RW["线性头预测奖励（用于控制类任务）"]
+  DEC --> LOSS["训练：仅对未来帧计算多尺度交叉熵"]
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4 / §3.5 与 Fig. 2（整体框架）、Fig. 3（motion prompt 生成）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Scale-wise autoregression with motion prompt for generative world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.15536>
+- [arXiv PDF](https://arxiv.org/pdf/2509.15536)：已通读方法部分（§3.1–§3.5）；实验与附录以略读为准。
 
 ## 推荐继续阅读
 

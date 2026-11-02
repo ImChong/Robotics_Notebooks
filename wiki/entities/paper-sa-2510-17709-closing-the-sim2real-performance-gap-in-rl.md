@@ -42,6 +42,22 @@ Derives and validates mathematical tools needed to develop bi-level RL algorithm
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始化 仿真参数 θ、策略 π_ϕ、critic"] --> B["内层：在仿真 P_θ, R_θ 中用 SPG / PPO 训练 π_ϕ（N 步）"]
+    B --> C["在仿真中 rollout 收集 (s, a, s+, R)"]
+    C --> D["经隐函数定理 IFT 计算灵敏度 ∇θϕ（Eq. 11）"]
+    B --> E["在真实系统 P 上 rollout π_ϕ 收集 (s, a, s+, r)"]
+    E --> F["外层：估计真实回报 / advantage"]
+    D --> G["更新 θ：外层策略梯度 Eq. 7a（链式法则乘 ∇θϕ）"]
+    F --> G
+    G -->|"下一轮 bi-level 迭代"| B
+```
+
+图依据：论文 §5 Bi-level RL（Algorithm 1 / Algorithm 2 与 Eq. 4–11）、Fig. 1（标准 sim-to-real RL 与 bi-level RL 对比）。arXiv 页面标题为 Closing the Sim2Real Performance Gap in RL，PDF 当前版本题为 Bi-Level Reinforcement Learning Pathway for Sim-to-Real Optimality。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Derives and validates mathematical tools needed to develop bi-level RL algorithm
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2510.17709>
+- [arXiv PDF](https://arxiv.org/pdf/2510.17709)：已通读方法部分（实验与附录以略读为准）：§4 Sim-to-Real Optimality、§5 Bi-level RL（5.1–5.3，含 Algorithm 1/2）
 
 ## 推荐继续阅读
 

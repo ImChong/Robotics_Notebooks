@@ -42,6 +42,28 @@ Combines real-world demonstrations, high-fidelity tactile simulation, and RL for
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段1：真实世界预训练"]
+        D["真机遥操作示范（约 30 条 episode）：视觉 + 触觉 + 关节状态 + 动作"] --> BC["行为克隆：DDPM 扩散策略，预测 action chunk"]
+    end
+    BC -->|"预训练权重初始化 actor"| ACT
+    subgraph S2["阶段2：仿真微调（数字孪生，TacSL 触觉仿真）"]
+        PCV["仿真视觉点云 + 仿真触觉点云（经 FK 变换到相机系后合并）"] --> ENC["PointNet 编码器 + 本体感知 MLP"]
+        ENC --> ACT["Actor：扩散策略 + 去噪噪声"]
+        ACT --> AC["动作 chunk 在仿真中执行"]
+        AC --> RW["稀疏奖励：装配成功为 1，否则 0"]
+        CR["Critic（随机初始化）：输入低维环境状态，输出 value"] --> DPPO
+        RW --> DPPO["DPPO：把去噪过程视为 MDP，用 PPO 更新"]
+        DPPO --> ACT
+    end
+    ACT -->|"微调后策略"| RT["迁回真机评测（真实视觉触觉点云输入）"]
+```
+
+图依据：论文 §4 Visuo-Tactile Policy Optimization（Fig. 3 两阶段训练）与 §3 触觉仿真（Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Combines real-world demonstrations, high-fidelity tactile simulation, and RL for
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2510.14930>
+- [arXiv PDF](https://arxiv.org/pdf/2510.14930)：已通读方法部分（实验与附录以略读为准）：§3 触觉传感器与触觉仿真、§4 Visuo-Tactile Policy Optimization（Stage 1/2、奖励）、§5.1–5.2 校准与实验设置
 
 ## 推荐继续阅读
 

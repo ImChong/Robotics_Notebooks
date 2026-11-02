@@ -53,6 +53,34 @@ summary: "第一视角（egocentric）视频是学操作策略的宝贵可扩展
 - **域适应**是人到人形落地的必备环节；
 - 与 Dexterity from Smart Lenses、EgoDex 等共同推进第一视角数据规模化。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据（PHSD）"]
+        ITW["野外数据（预训练）：<br/>EgoDex / ActionNet / PH2D，1000+ 小时"]
+        ONT["任务对齐数据（后训练）：<br/>Apple Vision Pro 采集的人类与机器人演示"]
+    end
+    ITW --> UNI
+    ONT --> UNI
+    UNI["统一 human-centric 状态-动作空间<br/>头部 / 双腕 SE(3)、指尖关键点、(可选) 夹爪距离<br/>经 IK/FK + 手部 retargeting 软件套件转换"]
+    UNI --> PRE["阶段 1 预训练：人类+机器人混合数据<br/>调整采样比例（Fig. 4a）"]
+    PRE --> POST["阶段 2 后训练：任务对齐的人类+机器人演示<br/>约 70% 采样自人类数据（Fig. 4b）"]
+    subgraph MODEL["Human0 模型（语言条件 flow matching，由 π0 检查点初始化）"]
+        VIS["SigLIP 视觉 token v + 文本 n + 状态投影 x"] --> TR["Transformer → 潜 token z"]
+        TR --> FM["Action expert：flow matching<br/>L_FM = ‖f(z,a_t,t) − (a−u)‖²"]
+        VIS --> ATT["Concat(v,x) → Attention 头 → m"]
+        ATT --> GRL["梯度反转层 GRL"]
+        GRL --> DISC["判别器 D：人类 / 机器人"]
+    end
+    PRE -.-> MODEL
+    FM --> LOSS["L_final = L_FM + λ·L_D（λ=0.1）"]
+    DISC --> LOSS
+    FM --> ACTOUT["human-centric 动作 → IK 逆运动学 → 机器人动作"]
+```
+
+图依据：论文 §3.1 / §3.2.1–3.2.4 / Fig. 2；图中 FM→IK→机器人动作 一条与 Fig. 2 的 Inverse Kinematics 标注一致，具体部署细节未逐项核对。
+
 ## 解决什么问题
 
 第一视角人类数据潜力大但用不好： - **异质性大**，多数只做**简单预训练**； - 缺**如何分类与使用**数据的系统配方； - 人到人形有**域差距**。
@@ -147,6 +175,7 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 - [`sources/papers/sun_awesome_ego_2511_12643_in-n-on-scaling-egocentric-manipulation.md`](../../sources/papers/sun_awesome_ego_2511_12643_in-n-on-scaling-egocentric-manipulation.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
+- [arXiv PDF](https://arxiv.org/pdf/2511.15704)：已通读方法部分（实验与附录以略读为准）：§1–§2、§3.1 PHSD、§3.2 Human0（架构/预训练/后训练/域适应）、§4.1 实验设置
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Proposes the Ego3D-Bench spatial reasoning benchmark (8,600+ QA pairs), and the 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角图像 + 自然语言问题"] --> B["REC 模型检测问题中提到的物体<br/>每个视角输出 2D 框与指代表达"]
+    A --> C["度量深度估计器<br/>每个视角稠密深度图"]
+    B --> D["取 2D 框中心, 读取深度, 用相机内参反投影到相机坐标系"]
+    C --> D
+    D --> E["外参变换到全局坐标系<br/>以前视相机为参考"]
+    E --> F["关系尺度校正<br/>用常识高度的已知类别(如行人约 1.7 m)缩放 3D 点"]
+    F --> G["认知地图生成器 Fcog<br/>输出文本认知地图 C"]
+    G --> H["VLM 输入: 认知地图 C + 多视角图像 + 问题 q"]
+    A --> H
+    H --> I["回答 a"]
+```
+
+图依据：论文 §4（Ego3D-VLM）/ Fig. 4、Fig. 5；Ego3D-Bench 的构建（§3）不在图中。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Proposes the Ego3D-Bench spatial reasoning benchmark (8,600+ QA pairs), and the 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2509.06266>
+- [arXiv PDF](https://arxiv.org/pdf/2509.06266)：已通读方法部分（实验与附录以略读为准）：§3（Ego3D-Bench 构建与任务）、§4（Ego3D-VLM），§5 实验设定与结果略读
 
 ## 推荐继续阅读
 

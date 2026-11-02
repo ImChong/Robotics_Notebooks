@@ -42,6 +42,35 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  IN["初始观测 I0 + 长程指令 L"] --> SRH
+  subgraph SRH["Semantic Reasoning Hub（SRH）"]
+    V["VLM（Gemini-2.5-Pro）：拆成有序原子子任务 SubTask(ActionType, Object, Destination)"]
+    AF["Affordance 定位器（Affordance-R1）：物体 mask 与交互点"]
+    TR["VLM 规划轨迹：平滑曲线离散为逐帧航点"]
+    V --> AF --> TR
+  end
+  SRH --> BSB["Behavioral Semantic Bridge（BSB）：物体表征 + 分解协作轨迹（pre / interact / post）+ 阶段转换帧"]
+  BSB --> MVG
+  subgraph MVG["Motor Video Generator（MVG，CogVideoX-5B 初始化的 DiT）"]
+    G1["时空引导张量 T×C×H×W"] --> G2["Motion Embedding（时空卷积）得 G"]
+    G2 --> G3["DiT 每个 block 内加性融合 G，去噪生成子任务视频"]
+  end
+  SRH -->|"K 个候选 BSB"| MVG
+  MVG -->|"K 个短视频 rollout"| J["VLM 评审：任务成功 / 物理合理性 / 视觉质量"]
+  J -->|"达到成功阈值：选最优，进入下一子任务"| NEXT["下一子任务"]
+  J -->|"未达到：结构化文字反馈"| SRH
+  subgraph TRAIN["MVG 训练"]
+    T1["阶段 1：SFT（BSB 条件去噪）"] --> T2["阶段 2：GRPO 后训练，奖励 = 物理 PFC（V-JEPA2）+ VLM 美学"]
+  end
+  TRAIN -.-> MVG
+```
+
+图依据：论文 §3.1 Framework / Fig.2、Fig.3、§3.2 Staged Visual Future Rollouts、§3.3 MVG Training
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +127,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.06628>
+- [arXiv PDF](https://arxiv.org/pdf/2512.06628)：已通读方法部分（实验与附录以略读为准）：§3.1 Framework、§3.2 Staged Visual Future Rollouts、§3.3 MVG Training、§4.1 Experiment Settings
 
 ## 推荐继续阅读
 

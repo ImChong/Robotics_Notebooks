@@ -42,6 +42,37 @@ Self-improving embodied foundation models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段一：Supervised Fine-Tuning（SFT）"]
+    PT["预训练多模态基础模型（实验中为 PaLI 3B）"] --> EFM1["初始化 EFM"]
+    DS["模仿学习数据集 D：(o_t, a_t, g_t')"] --> BC["目标 a：目标条件行为克隆 L_BC"]
+    DS --> STG["目标 b：steps-to-go 预测 L_steps-to-go（预测距离达成目标还差多少步）"]
+    EFM1 --> BC
+    EFM1 --> STG
+    BC --> CK1["Stage 1 checkpoint"]
+    STG --> CK1
+  end
+  subgraph S2["阶段二：Self-Improvement（在线 RL）"]
+    CK1 --> POL["初始化待优化策略"]
+    CK1 --> FRZ["冻结的 Stage 1 checkpoint：用于计算奖励与成功检测"]
+    FRZ --> D["d(o,g)：期望 steps-to-go"]
+    D --> REW["奖励 r = d(o_t,g) − d(o_{t+1},g)"]
+    D --> SUC["成功检测：d(o,g) ≤ s"]
+    POL --> ROLL["采样指令 g 并执行策略"]
+    ROLL --> END["结束条件：检测到成功 / 达最大步数 / 人工终止"]
+    SUC --> END
+    END --> BUF["计算蒙特卡洛回报 R_t，存入 replay buffer"]
+    REW --> BUF
+    BUF --> UPD["REINFORCE 更新 N 步，随后清空 buffer"]
+    UPD --> POL
+  end
+```
+
+图依据：论文 §2.1 / §2.2、Fig. 1 与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Self-improving embodied foundation models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.15155>
+- [arXiv PDF](https://arxiv.org/pdf/2509.15155)：已通读方法部分（§1 引言、§2 方法、§3 奖励直觉）；实验（§4）略读：实验设定与主要结果。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,31 @@ Particle-based deformation modeling, light-field rendering for photorealistic ta
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：传感器形状、marker 图案、<br/>光学系统定义（光源）、材料属性（E、ν）"] --> DISC
+    subgraph DEF["模块 1：膜变形仿真（MPM 粒子迭代）"]
+        DISC["初始化与离散化：<br/>物体 Open3D 均匀采样为粒子；<br/>膜用 Structured Mesh 网格节点作粒子"] --> MPM["Material Point Method 迭代<br/>弹性体（E、ν），执行器速度/固定面位移约束"]
+        MPM --> POST["后处理：提取外表面粒子 → 射线投射去遮挡<br/>→ 相机投影为深度图 D → 2D 三次样条插值"]
+    end
+    subgraph OPT["模块 2：基于光场的光学渲染"]
+        LF["离线光场：线性光场 + 非线性光场<br/>(沿膜表面几何的光路)"] --> PHONG
+        POST -->|"变形深度图 D"| PHONG["在线渲染：Phong 光照模型<br/>(环境 + 漫反射 + 镜面反射)"]
+        PHONG --> IMG["触觉图像：线性光场背景<br/>(或真实未变形图像) + 非线性光场前景叠加"]
+    end
+    subgraph FRC["模块 3：力预测网络"]
+        FEMGT["离线 FEM 仿真数据（训练真值）"] -.-> STN
+        POST -->|"粒子位移体素化为稀疏张量"| STN["Sparse Tensor Network<br/>(Minkowski UNet14)"]
+        STN --> FORCE["逆体素化 → 粒子级力/形变分布"]
+    end
+    IMG --> OUT["输出：光学响应 + 力学响应"]
+    FORCE --> OUT
+```
+
+图依据：论文 §2.1–2.4 / Fig. 1b、Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Particle-based deformation modeling, light-field rendering for photorealistic ta
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2511.11456>
+- [arXiv PDF](https://arxiv.org/pdf/2511.11456)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2.1–2.5 方法与实验设置、§3.1 精度评估（略读）
 
 ## 推荐继续阅读
 

@@ -43,6 +43,39 @@ Shared Autonomy framework where human guides arm pose via VR teleoperation while
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["(a) 触觉 DexGrasp-VLA 手部策略"]
+        A1["参数化力控（68 条）+ 遥操作重定向（150 条）混合数据"] --> A2["仅用本体 + 触觉的“盲”LSTM 策略，行为克隆"]
+        A2 --> A3["自主采集抓取数据"]
+        A3 --> A4["触觉特征：指尖合力 + 卷积自编码器潜变量，经 MLP 嵌入"]
+        A4 --> A5["融合手眼相机、语言、手部关节状态，训练 DexGrasp-VLA（π0 微调）"]
+    end
+    subgraph S2["(b) 共享自主数据采集"]
+        B1["人通过 VR 遥操作机械臂末端（相对运动映射 + QP 逆运动学）"]
+        B2["DexGrasp-VLA 作为 Copilot 自主控制灵巧手"]
+        B1 --> B3["同步的臂-手示教数据集 Duni"]
+        B2 --> B3
+    end
+    subgraph S3["(c) 端到端臂-手 VLA"]
+        C1["π0 编码得到共享表征 z_share"] --> C2["两个 MLP 得到 臂特征 与 手特征"]
+        C2 --> C3["拼接 z_share、臂特征、手特征，主动作头输出统一动作"]
+        C2 --> C4["臂/手辅助预测头提供辅助损失"]
+    end
+    subgraph S4["(d) 纠正式人在回路遥操作"]
+        D1["部署 πuni；成功轨迹记为正样本"] --> D2["失败时切换共享自主，人工介入恢复"]
+        D2 --> D3["失败与恢复轨迹组成纠正数据，与成功数据一起增量 SFT"]
+    end
+    A5 --> B2
+    B3 --> C1
+    C3 --> D1
+    D3 -->|"迭代更新策略"| D1
+```
+
+图依据：论文 Fig. 2（四阶段流程）、Fig. 6（Arm-Hand Feature Enhancement）、Fig. 7，及 §3 Methods and Training Recipe。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +131,7 @@ Shared Autonomy framework where human guides arm pose via VR teleoperation while
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2511.00139>
+- [arXiv PDF](https://arxiv.org/pdf/2511.00139)：已通读方法部分（实验与附录以略读为准）：§3 Methods and Training Recipe（DexGrasp-VLA、共享自主数据采集、Arm-Hand Feature Enhancement、纠正式遥操作）、Fig. 2–7
 
 ## 推荐继续阅读
 

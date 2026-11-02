@@ -42,6 +42,23 @@ Injects gaze-derived features into ViT attention mechanism, biasing spatial feat
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["第一人称视频帧 + 眼动数据（注视位置、深度、瞳孔直径、注视方向）"] --> P["预处理：帧与注视对齐；注视位置、深度、瞳孔直径归一化；注视方向合成单位向量"]
+    P --> AUG["数据增强：沿注视方向平移注视点、裁剪/旋转/颜色抖动、缩放"]
+    AUG --> BB["DETR 式卷积骨干提取特征，展平送入 Transformer 编码器"]
+    BB --> GA["注视偏置注意力：A_gaze = A + α·GazeBias(i,j)，靠近注视点且与注视方向对齐的 patch 权重增大"]
+    GA --> DEC["Transformer 解码器（可学习 object queries）"]
+    DEC --> CLS["分类头：目标类别"]
+    DEC --> REG["边框回归头：归一化框坐标"]
+    REG --> ROI["按缩放系数 S 动态缩放 RoI 以细化定位"]
+    GA --> HI["注视感知注意力头重要性指标，用于解释模型行为"]
+```
+
+图依据：论文 §4.1 Data Preprocessing、§4.2 Eyes on Target（式 4–6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Injects gaze-derived features into ViT attention mechanism, biasing spatial feat
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2511.01237>
+- [arXiv PDF](https://arxiv.org/pdf/2511.01237)：已通读方法部分（实验与附录以略读为准）：§2 Background、§3 Datasets、§4 Proposed Methodology（预处理与 Eyes on Target）
 
 ## 推荐继续阅读
 

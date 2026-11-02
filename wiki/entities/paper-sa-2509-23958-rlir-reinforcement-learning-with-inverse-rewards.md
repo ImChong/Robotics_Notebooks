@@ -42,6 +42,22 @@ Uses inverse rewards for world model post-training.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["初始帧 x0 + 动作序列 a1..an"] --> W["世界模型 预训练 MineWorld 或 NFD"]
+  W --> V["生成视频帧 x̂1..x̂n"]
+  V --> I["逆动力学模型 IDM VPT 预训练"]
+  I --> P["恢复动作 â1..ân"]
+  P --> R["可验证奖励 R 逐步 âi 与 ai 一致记 1 否则 0 取平均"]
+  A -.->|"真值动作 ai"| R
+  R --> G["GRPO 组内相对优势 更新世界模型"]
+  G -.->|"后训练"| W
+```
+
+图依据：论文 §4 / Fig.2（RLIR 总览）、§4.1（IDM 作奖励模型，式 3）、§4.2–4.3（自回归 MineWorld 与扩散 NFD 两类世界模型）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Uses inverse rewards for world model post-training.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.23958>
+- [arXiv PDF](https://arxiv.org/pdf/2509.23958)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 预备知识、§4 方法（4.1–4.3）、§5.1 实验设定。
 
 ## 推荐继续阅读
 

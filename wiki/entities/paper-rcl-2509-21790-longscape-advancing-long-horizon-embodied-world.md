@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph TRAIN["训练"]
+    GT["带动作标签的机器人视频"] --> PART["动作引导分块 8 帧基础块 按运动幅度与夹爪状态变化合并为 8 16 24 32 帧"]
+    PART --> EXP["4 个 DiT 专家 各自从 CogVideoX 初始化 按块长度训练去噪"]
+    PART --> RT["上下文路由器 交叉注意力 以指令与当前块视觉特征预测专家编号 交叉熵训练"]
+  end
+  subgraph INFER["推理 自回归逐块生成"]
+    I0["初始帧 + 文本指令"] --> R["路由器选择专家 i*"]
+    R --> E["专家 Ei* 以前一块为条件扩散去噪生成下一块"]
+    E -->|"以新块视觉特征继续路由"| R
+    E --> CAT["拼接各块 经 VAE 解码得长视频"]
+  end
+  EXP -.-> E
+  RT -.-> R
+```
+
+图依据：论文 §3.1（块级自回归 + 块内扩散）、§3.2（动作引导分块算法）、§3.3 / Fig.2–3（CMoE 训练与推理）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2509.21790>
+- [arXiv PDF](https://arxiv.org/pdf/2509.21790)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）、§4.1 实验设定；结果与消融略读。
 
 ## 推荐继续阅读
 
