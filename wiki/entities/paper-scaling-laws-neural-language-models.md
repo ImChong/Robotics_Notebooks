@@ -39,6 +39,22 @@ summary: "Kaplan et al.（OpenAI，arXiv:2001.08361）：LM 损失对模型规�
 - **Light-O1 直接引用：** Tech Blog [10] 用 $L(D)=L_0+\alpha D^{-\eta}$ 拟合 **human action pretraining token 预算** 与适配后误差——协议对齐 Kaplan 式分析。
 - **与 Bitter Lesson 互补：** 提供 **可量化** 的「scale helps」证据，而非仅原则性论述。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["研究问题：语言建模损失 L 如何依赖<br/>模型架构 / 模型规模 / 算力 / 数据（§1）"] --> S["实验设置（§2）<br/>WebText2 + BPE；以 decoder-only Transformer 为主<br/>（另训 LSTM、Universal Transformer 对照）；指标为 1024-token 上下文平均交叉熵"]
+    S --> V["系统变化的因素（§3）<br/>非嵌入参数量 N / 数据集大小 D / 形状 / 上下文长度 / 批大小"]
+    V --> A["§3 基本幂律：L 对 N、D、C 的依赖；形状与超参数的依赖（§3.1）"]
+    A --> B["§4 无限数据极限与过拟合<br/>同时变化 N 与 D，拟合 L(N, D)"]
+    A --> C["§5 模型规模与训练时间<br/>按临界批大小 Bcrit 调整为 Smin，拟合 L(N, Smin)"]
+    B --> D["§6 算力预算的最优分配<br/>由 L(N, Smin) 预测 N、B、S、D 随 Cmin 的分配并与实验对照"]
+    C --> D
+    D --> E["§7 相关工作 → §8 讨论"]
+```
+
+图依据：实证研究设计图，论文 §1.3 记号、§2 Background and Methods、§3–§6 各节开头的研究设计叙述；不含结论数字。
+
 ## 核心方法与发现
 
 | 轴 | 规律（直觉） |
@@ -83,6 +99,7 @@ summary: "Kaplan et al.（OpenAI，arXiv:2001.08361）：LM 损失对模型规�
 
 - [kaplan_scaling_laws_arxiv_2001_08361.md](../../sources/papers/kaplan_scaling_laws_arxiv_2001_08361.md)
 - 论文：<https://arxiv.org/abs/2001.08361>
+- [arXiv PDF](https://arxiv.org/pdf/2001.08361)：已通读 §1 引言与摘要式总结、§2 背景与方法、§3 开头与 §3.1、§4 开头与 §4.1、§5 开头与 §5.1、§6 开头与 §6.1（其余实验细节与附录以略读为准）；研究设计图依据这些章节。
 
 ## 推荐继续阅读
 

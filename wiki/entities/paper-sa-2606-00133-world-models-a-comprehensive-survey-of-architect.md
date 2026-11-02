@@ -42,6 +42,29 @@ Comprehensive survey covering architectures, methodologies, reasoning paradigms,
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  B["§2 Background and Conceptual Foundations<br/>2.1 Definition and Basic Concepts；2.2 Key components；2.3 与 model-free RL 的区别；2.4 Role of latent spaces"] --> X["多轴分类（摘要：四个互补维度）"]
+  X --> A1["§3 按 Architecture 分类"]
+  X --> A2["§4 按 Methodological Families 分类"]
+  X --> A3["§5 按 Reasoning Strategy 分类"]
+  X --> A4["§6 按 Application Domains 分类"]
+  A1 --> A1a["3.1 representation：pixel、continuous latent、discrete token、joint-embedding、structured/object-centric<br/>3.2 dynamics：deterministic、stochastic、implicit generative、representation-space predictive、memory-augmented<br/>3.3 modality：visual-only、language-only、3D geometric、proprioceptive and tactile、multimodal fusion<br/>3.4 learning paradigms；3.5 downstream use"]
+  A2 --> A2a["4.1 State-space and recurrent<br/>4.2 Transformer-based<br/>4.3 Diffusion-Based<br/>4.4 Physics-informed and structured<br/>4.5 Language-augmented and multi-modal"]
+  A3 --> A3a["5.1 Imagination-based planning<br/>5.2 Policy learning with a world model<br/>5.3 Counterfactual reasoning<br/>5.4 Planning under uncertainty"]
+  A4 --> A4a["6.1 Robotics；6.2 Autonomous driving；6.3 Video prediction；6.4 Multimodal agents；6.5 RL and Games；6.6 Scientific modeling；6.7 Medical images；6.8 Educational measurement；6.9 Business and Finance"]
+  A1a --> E["§7 Evaluation Protocols and Benchmarks"]
+  A2a --> E
+  A3a --> E
+  A4a --> E
+  E --> C["§8 Major Challenges and Limitations"]
+  C --> F["§9 Discussion and Future Directions"]
+```
+
+图依据：综述分类体系图，论文摘要（四维分类）、§1 末尾的轴向说明与 Contents 目录（§2–§9 的章节层次）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Comprehensive survey covering architectures, methodologies, reasoning paradigms,
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.00133>
+- [arXiv PDF](https://arxiv.org/pdf/2606.00133)：已通读摘要、Contents 目录、§1 引言；§2–§9 正文以略读为准（图中小节名取自目录）。
 
 ## 推荐继续阅读
 
