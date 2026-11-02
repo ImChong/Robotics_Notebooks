@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Model-based vehicle control using analytic world models.
+Model-based vehicle control using analytic world models.（arXiv 当前版本题为《Unlocking Efficient Vehicle Dynamics Modeling via Analytic World Models》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -119,6 +119,7 @@ Model-based vehicle control using analytic world models.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.10012>
 - [arXiv PDF](https://arxiv.org/pdf/2502.10012)：已通读方法部分（实验与附录以略读为准）：§3 Method、§4 AWM agent architecture 与 §4.2 MPC；PDF 为 v2，标题与页面标题不符（Unlocking Efficient Vehicle Dynamics Modeling via Analytic World Models）
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-02-14）题 Dream to Drive: Model-Based Vehicle Control Using Analytic World Models，v2（2025-11-13，现行，AAAI 2026）改题；本页题名对应 v1，图按 v2 正文绘制；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

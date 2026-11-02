@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 本页是清单索引，细节以原文为准。
+LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 本页是清单索引，细节以原文为准。（arXiv 当前版本题为《Physics Context Builders: A Modular Framework for Physical Reasoning in Vision-Language Models》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -117,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2412.08619>
 - [arXiv PDF](https://arxiv.org/pdf/2412.08619)：已通读方法部分（实验与附录以略读为准）：§4 Physics Context Builders（4.1-4.3）；附录略读 。注：当前 arXiv 版本标题与本页名称不同（见图依据）
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2024-12-11）题 Synthetic Vision: Training Vision-Language Models to Understand Physics，v3（2025-10-28，现行）改题；本页题名对应 v1，图按 v3 绘制；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

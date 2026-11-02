@@ -42,6 +42,38 @@ Explores power-efficient, privacy-preserving egocentric skill assessment for dep
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["智能眼镜记录: 第一人称视频 V + 注视 G (3D 注视向量/深度/眼镜位姿)"]
+    subgraph T["SkillSight-T 教师: 视频 + 注视"]
+        T1["动作-注视交互<br/>高斯注视注意力图加入首个空间编码器 f_V,0 → e_v"]
+        T2["被注视物体序列<br/>按注视裁剪 → 图像编码器 f_I → 时间编码器 f_T → e_c"]
+        T3["注视动力学<br/>Transformer 编码器 f_g → e_g"]
+        T4["拼接 [e_v, e_c, e_g] → 融合层 f_m → 技能等级 S (交叉熵 L_CE)"]
+        T1 --> T4
+        T2 --> T4
+        T3 --> T4
+    end
+    subgraph S["SkillSight-S 学生: 推理仅用注视"]
+        S1["Transformer 编码器 f_s<br/>输入 [t_cls, t_dis, t_act, G]"]
+        S2["t_cls → 技能等级 S"]
+        S3["t_act → 子任务动作识别 (L_act)"]
+        S4["t_dis → 蒸馏损失 L_dis (对齐教师特征)"]
+        S1 --> S2
+        S1 --> S3
+        S1 --> S4
+    end
+    IN --> T1
+    IN --> T2
+    IN --> T3
+    IN --> S1
+    T4 -. "教师特征 [e_v, e_c, e_g]" .-> S4
+```
+
+图依据：论文 §3.1–3.3 / Fig.2；输入细节见 §3.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +129,7 @@ Explores power-efficient, privacy-preserving egocentric skill assessment for dep
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2511.19629>
 - 编号核对（2026-11-02）：上游清单登记的 2604.01645 经 arXiv 官方记录核对为《Contextualizing Sink Knowledge for Java Vulnerability Discovery》，与本页论文不符；已更正为 2511.19629《SkillSight: Efficient First-Person Skill Assessment with Gaze》。
+- [arXiv PDF](https://arxiv.org/pdf/2511.19629)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.4）、Fig.2 图注
 
 ## 推荐继续阅读
 

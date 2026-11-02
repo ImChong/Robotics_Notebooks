@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Temporal triplane transformers as occupancy world models.
+Temporal triplane transformers as occupancy world models.（arXiv 当前版本题为《Aligned Delta-Triplane Transformers as Occupancy World Models》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -122,6 +122,7 @@ Temporal triplane transformers as occupancy world models.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.07338>
 - [arXiv PDF](https://arxiv.org/pdf/2503.07338)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1 问题设定、3.2 运动对齐 triplane 表示、3.3 查询条件 Δ 预测）；§4 实验与附录未读。
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-03-10）题 Temporal Triplane Transformers as Occupancy World Models，v5（2026-10-29，现行）改题；本页题名对应 v1，图依据所读版本见图注；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

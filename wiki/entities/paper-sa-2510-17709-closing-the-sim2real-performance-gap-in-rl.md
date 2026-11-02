@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Derives and validates mathematical tools needed to develop bi-level RL algorithms that close the Sim2Real performance gap by directly adapting simulator parameters based on real-world performance
+Derives and validates mathematical tools needed to develop bi-level RL algorithms that close the Sim2Real performance gap by directly adapting simulator parameters based on real-world performance（arXiv 当前版本题为《Bi-Level Reinforcement Learning Pathway for Sim-to-Real Optimality》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -113,6 +113,7 @@ Derives and validates mathematical tools needed to develop bi-level RL algorithm
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2510.17709>
 - [arXiv PDF](https://arxiv.org/pdf/2510.17709)：已通读方法部分（实验与附录以略读为准）：§4 Sim-to-Real Optimality、§5 Bi-level RL（5.1–5.3，含 Algorithm 1/2）
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-10-20）题 Closing the Sim2Real Performance Gap in RL，v2（2026-08-05，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

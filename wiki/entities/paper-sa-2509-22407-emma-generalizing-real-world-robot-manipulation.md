@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Generalizes real-world robot manipulation via generative visual transfer.
+Generalizes real-world robot manipulation via generative visual transfer.（arXiv 当前版本题为《EMMA: Enhancing Robotic Control Robustness through a Generative Visual Model》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -114,6 +114,7 @@ Generalizes real-world robot manipulation via generative visual transfer.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.22407>
 - [arXiv PDF](https://arxiv.org/pdf/2509.22407)：已通读方法部分（实验与附录以略读为准）：§2 方法（2.1–2.3）、§3 实验设定与 §3.2 真机部分；附录与仿真实验略读。
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-09-26）题 EMMA: Generalizing Real-World Robot Manipulation via Generative Visual Transfer，v3（2026-10-20，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

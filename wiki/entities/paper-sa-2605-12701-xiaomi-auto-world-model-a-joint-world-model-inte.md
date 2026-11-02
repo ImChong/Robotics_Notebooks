@@ -42,6 +42,39 @@ Xiaomi's joint world model integrating reconstruction and generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["多相机多时刻图像 I_t^c"] --> WR
+    subgraph WR["WorldRec 前馈重建 (§3.1)"]
+        R1["共享权重骨干提取多尺度特征"]
+        R2["世界空间初始化 N 个稀疏 3D query<br/>按标定参数投影到各视图并双线性采样"]
+        R3["可见性感知加权聚合 (跨视角 + 相邻帧对齐) → 场景 token q_i"]
+        R4["MLP 解码 3D Gaussian 属性<br/>(位置偏移/颜色/不透明度/尺度/旋转)"]
+        R5["可微高斯光栅化渲染, 像素 + 感知损失监督"]
+        R1 --> R2 --> R3 --> R4 --> R5
+    end
+    subgraph WG["WorldGen 因果视频生成 (§3.2)"]
+        G1["阶段1 双向 DiT 预训练 (rectified flow)"]
+        G2["阶段2 因果微调: Teacher Forcing"]
+        G3["ODE 蒸馏 (50 步 → 4 步)"]
+        G4["DMD (以自身生成帧作历史上下文)"]
+        G1 --> G2 --> G3 --> G4
+    end
+    subgraph JW["Joint World Model (§3.3)"]
+        J1["scene fusion: 新观测 token 与缓存场景 token 做交叉注意力融合<br/>增量更新 Gaussian 场景"]
+        J2["场景 token 光栅化到目标相机视角, 得 Prior Image 渲染先验"]
+        J3["WorldGen 在 ego 轨迹/相机参数之外额外以渲染先验为条件<br/>补全未观测区域, 抑制几何漂移"]
+        J1 --> J2 --> J3
+    end
+    R4 --> J1
+    G4 --> J3
+    J3 --> OUT["因果多视角驾驶视频"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、Fig.4、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +130,7 @@ Xiaomi's joint world model integrating reconstruction and generation.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.18137>
 - 编号核对（2026-11-02）：上游清单登记的 2605.12701 经 arXiv 官方记录核对为《Do Fair Models Reason Fairly? Counterfactual Explanation Consistency for Procedural Fairness in Credit Decisions》，与本页论文不符；已更正为 2605.18137《Xiaomi Auto World Model: A Joint World Model Integrating Reconstruction and Generation for Autonomous Driving》。
+- [arXiv PDF](https://arxiv.org/pdf/2605.18137)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.3）、Fig.3/5 图注；图 2、图 4 为图像，仅依据正文描述
 
 ## 推荐继续阅读
 

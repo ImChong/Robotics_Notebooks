@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Unified visual imagination and control via hierarchical world models.
+Unified visual imagination and control via hierarchical world models.（arXiv 当前版本题为《MinD: Learning A Dual-System World Model for Real-Time Planning and Implicit Risk Analysis》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -117,6 +117,7 @@ Unified visual imagination and control via hierarchical world models.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.18897>
 - [arXiv PDF](https://arxiv.org/pdf/2506.18897)：已通读方法部分（实验与附录以略读为准）：方法部分 Method: Manipulation in Dream（Hierarchical Diffusion Framework、DiffMatcher、Asynchronous Co-Training、Inference via Single-Step Prediction，含 Fig.3、式 2–6）及实现细节开头；风险分析段仅略读。注：当前 arXiv 版本标题为 MinD: Learning A Dual-System World Model for Real-Time Planning and Implicit Risk Analysis，与页面所列早期标题不同
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-06-23）题 MinD: Unified Visual Imagination and Control via Hierarchical World Models，v2（2025-08-20，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

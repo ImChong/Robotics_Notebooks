@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Object-centric world models improve RL in visually complex environments.
+Object-centric world models improve RL in visually complex environments.（arXiv 当前版本题为《Object-Centric World Models from Few-Shot Annotations for Sample-Efficient Reinforcement Learning》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -118,6 +118,7 @@ Object-centric world models improve RL in visually complex environments.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.16443>
 - [arXiv PDF](https://arxiv.org/pdf/2501.16443)：已通读方法部分（实验与附录以略读为准）：§1 引言末段、§2 Preliminaries、§3 Method（3.1–3.5）。注：当前 arXiv 版标题为 Object-Centric World Models from Few-Shot Annotations（ICLR 2026），与页面标题措辞不同，编号一致
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-01-27）题 Objects matter: object-centric world models improve reinforcement learning in visually complex environments，v2（2026-02-25，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

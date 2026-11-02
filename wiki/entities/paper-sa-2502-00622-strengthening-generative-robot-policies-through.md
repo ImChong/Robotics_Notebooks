@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Strengthens generative robot policies through predictive world modeling.
+Strengthens generative robot policies through predictive world modeling.（arXiv 当前版本题为《Inference-Time Enhancement of Generative Robot Policies via Predictive World Modeling》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -120,6 +120,7 @@ Strengthens generative robot policies through predictive world modeling.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.00622>
 - [arXiv PDF](https://arxiv.org/pdf/2502.00622)：已通读方法部分（实验与附录以略读为准）：§III Overview of Generative Predictive Control、§IV World Model Learning。注：当前 arXiv 版标题为 Inference-Time Enhancement of Generative Robot Policies via Predictive World Modeling，与页面标题措辞不同，编号一致
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-02-02）题 Strengthening Generative Robot Policies through Predictive World Modeling，v4（2026-03-11，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

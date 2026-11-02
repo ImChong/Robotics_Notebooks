@@ -42,6 +42,29 @@ Temporal residual world model for end-to-end autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    I["多视角图像 t, t-1, ..., t-k"] --> G["GeoBEV 生成 BEV 特征<br/>B_t ... B_t-k"]
+    G --> A["对齐到 B_t 坐标系并融合<br/>B_fuse = Conv(Concat(...))"]
+    A --> TL["TokenLearner → 稀疏 Scene Query S_fuse<br/>+ Self-Attention"]
+    TL --> PP["Waypoint Query W 与 S_fuse 做 Cross-Attention<br/>MLP 解码 先验轨迹 T_prior"]
+    A --> SA["由 B_fuse 预测空间注意力图<br/>逐时刻提取 Scene Query S_i"]
+    G --> SA
+    SA --> RES["相邻时刻 Scene Query 相减<br/>得到 时间残差 R_i（动态物体）"]
+    RES --> TR["TR-World：对各 R_i 做 Self-Attention 并累加 → R̂"]
+    TR --> TF["TokenFuser 叠加到 B_fuse 上<br/>得到 未来 BEV 特征 B_future"]
+    A --> TF
+    TF --> FG["FGTR：Deformable Attention<br/>W 与 B_future 交互，T_prior 作参考点"]
+    PP --> FG
+    FG --> OUT["MLP 解码 最终轨迹 T_final"]
+    PP -.->|"L1 监督"| LOSS["L = L1(T_prior, T_GT) + L1(T_final, T_GT)<br/>B_future 不加真值监督"]
+    OUT -.->|"L1 监督"| LOSS
+```
+
+图依据：论文 §3.1–§3.5 / Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ Temporal residual world model for end-to-end autonomous driving.
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.10884>
 - 编号核对（2026-11-02）：上游清单登记的 2602.08261 经 arXiv 官方记录核对为《PRO-Bid: Pareto-Prioritized Regret Optimization for Constraint-Aware Generative Auto-Bidding》，与本页论文不符；已更正为 2602.10884《ResWorld: Temporal Residual World Model for End-to-End Autonomous Driving》。
+- [arXiv PDF](https://arxiv.org/pdf/2602.10884)：已通读方法部分（实验与附录以略读为准）：§3.1 先验轨迹预测、§3.2 时间残差提取、§3.3 TR-World、§3.4 FGTR、§3.5 损失
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ Proposes a robust pipeline that adapts static reconstruction backbones to long-f
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["长段第一人称 RGB 视频"] --> A1["A1 SymSkill 技能分割成短 clip<br/>输出 S-P-O 预测"]
+    A1 --> A1b["LLM 选运动诱发谓词<br/>得候选物体与交互起始时间 a_i"]
+    A1b --> A2["A2 VLM 粗定位 → JSON 提示<br/>(track id / name / box)"]
+    A2 --> A3["A3 SAM3 视频分割与持续 ID 跟踪<br/>得逐帧实例掩码 M_t"]
+    A3 --> A5["A4/A5 手掩码始终启用<br/>物体掩码自 t≥a_i 起累积启用<br/>并集得二值动态先验 D_t"]
+    A1b --> A5
+    A5 --> B1["B1 D_t 经 max-pooling 映射到 token 栅格"]
+    V --> C["按长度 K=192、重叠 O=96 切分为重叠 chunk"]
+    C --> B2["B2 逐 chunk 运行 MapAnything<br/>注意力掩码屏蔽动态 token (推理期, 无需重训)"]
+    B1 --> B2
+    B2 --> P["chunk 局部位姿与稠密点云"]
+    P --> B4["B3/B4 重叠帧相机中心做 Umeyama Sim(3) 对齐<br/>首个 chunk 作全局原点"]
+    B4 --> O["全局相机轨迹 + 融合静态点云"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.1、Fig.2、Fig.4、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ Proposes a robust pipeline that adapts static reconstruction backbones to long-f
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.22450>
 - 编号核对（2026-11-02）：上游清单登记的 2603.18090 经 arXiv 官方记录核对为《MOSS-TTS Technical Report》，与本页论文不符；已更正为 2603.22450《Static Scene Reconstruction from Dynamic Egocentric Videos》。
+- [arXiv PDF](https://arxiv.org/pdf/2603.22450)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.4）、Fig.1/2/4/5 图注
 
 ## 推荐继续阅读
 

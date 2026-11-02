@@ -42,6 +42,34 @@ Unified simulation platform with eight representative visuo-tactile manipulation
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph SIM["UniVTAC Platform（基于 TacEx / Isaac Sim）"]
+        SN["三种视触觉传感器<br/>GelSight Mini / ViTai GF225 / Xense WS"]
+        API["原子操作 API：Grasp / Move / Place / Probe / Rotate<br/>Grasp、Probe 带触觉反馈的自适应闭环速度控制"]
+        SN --> DG
+        API --> DG["接触丰富数据生成：14 种几何体压头<br/>随机抓握深度阈值 + 随机小幅旋转"]
+    end
+    DG --> DS["同步记录：带标记触觉图 I_marked、无标记图 I_pure、<br/>深度图 D、标记点 M、物体位姿 p（共 205,826 样本）"]
+    DS --> ENC["UniVTAC Encoder 预训练<br/>共享 ResNet-18 编码器 → 触觉表征"]
+    ENC --> H1["形状通路：重建 I_marked 与 I_pure"]
+    ENC --> H2["接触通路：预测深度图 D 与标记点 M"]
+    ENC --> H3["位姿通路：回归位姿 p（平移+四元数）"]
+    H1 --> L["L_total = λs·L_shape + λc·L_contact + λp·L_pose<br/>均为 MSE"]
+    H2 --> L
+    H3 --> L
+    ENC -.->|"部署时丢弃解码头，仅保留编码器"| POL["下游 Transformer / Diffusion 策略"]
+    subgraph BM["UniVTAC Benchmark（8 个任务）"]
+        EX["专家程序数据合成<br/>加入随机失败与基于接触反馈的纠正"] --> EV["训练策略并评测<br/>含穿透深度、相对滑移的物理成功判据"]
+    end
+    SIM --> EX
+    POL --> EV
+```
+
+图依据：论文 §III-A / §III-B / §III-C 与 Fig.1、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +125,7 @@ Unified simulation platform with eight representative visuo-tactile manipulation
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2602.10093>
 - 编号核对（2026-11-02）：上游清单登记的 2602.14433 经 arXiv 官方记录核对为《Synthetic Reader Panels: Tournament-Based Ideation with LLM Personas for Autonomous Publishing》，与本页论文不符；已更正为 2602.10093《UniVTAC: A Unified Simulation Platform for Visuo-Tactile Manipulation Data Generation, Learning, and Benchmarking》。
+- [arXiv PDF](https://arxiv.org/pdf/2602.10093)：已通读方法部分（实验与附录以略读为准）：§III-A UniVTAC Platform、§III-B UniVTAC Encoder、§III-C UniVTAC Benchmark
 
 ## 推荐继续阅读
 

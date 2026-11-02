@@ -5,7 +5,7 @@ tags: [paper, loco-manipulation, loco-manip-survey, humanoid, hkust-gz, xiaomi-r
 status: complete
 updated: 2026-10-06
 arxiv: "2606.09286"
-summary: "解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。"
+summary: "解耦命令（速度目标 [vx, vy, vyaw] + 0/1 交互阶段指示；物体状态不是命令，由 student 从深度图推断）+ 视觉，敏捷搬推拉滑板交互（依据 arXiv:2606.09286v1 §3.1、§3.3）。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-07-loco-manip-interface.md
@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。
+解耦命令（速度目标 [vx, vy, vyaw] + 0/1 交互阶段指示；物体状态不是命令，由 student 从深度图推断）+ 视觉，敏捷搬推拉滑板交互（依据 arXiv:2606.09286v1 §3.1、§3.3）。
 
 ## 英文缩写速查
 
@@ -37,7 +37,7 @@ sources:
 
 ## 为什么重要
 
-- 解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。
+- 解耦命令（速度目标 [vx, vy, vyaw] + 0/1 交互阶段指示；物体状态不是命令，由 student 从深度图推断）+ 视觉，敏捷搬推拉滑板交互（依据 arXiv:2606.09286v1 §3.1、§3.3）。
 
 ## 流程总览
 
@@ -81,14 +81,14 @@ flowchart TD
 
 ### 1）策展导读要点
 
-解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。
+解耦命令（速度目标 [vx, vy, vyaw] + 0/1 交互阶段指示；物体状态不是命令，由 student 从深度图推断）+ 视觉，敏捷搬推拉滑板交互（依据 arXiv:2606.09286v1 §3.1、§3.3）。
 
 ## 结论
 
-**VAIC 的取舍落在命令空间：把速度、阶段、物体状态解耦成显式命令维度并叠加视觉，用接口设计换取搬/推/拉/滑板这类敏捷交互的可控性。**
+**VAIC 的取舍落在命令空间：把速度目标与 0/1 交互阶段指示解耦成显式命令维度（物体状态由 student 从深度图推断，不属于命令）并叠加视觉，用接口设计换取搬/推/拉/滑板这类敏捷交互的可控性。**
 
 - 它在 Loco-Manip 8 篇里被归入 **03 命令空间与控制器**（#05/8），说明贡献点是控制器的输入约定，而不是新的运控基座或数据管线。
-- 解耦命令的代价是这些维度需要由上层给出；本页停留在清单索引，未交代阶段与物体状态命令的来源与上层规划。
+- 解耦命令的代价是这些维度需要由上层给出；论文中速度目标来自用户（如手柄）、阶段指示为 0/1 二值，训练时二者从重定向参考动作中提取（§3.1）；本页停留在清单索引，未交代上层规划。
 - 本页为策展编译级条目，消融与实机协议以原文 PDF / 项目页 <https://vaic-humanoid.github.io/> 为准。
 
 ## 常见误区
@@ -113,6 +113,7 @@ flowchart TD
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://vaic-humanoid.github.io/>
 - [arXiv PDF](https://arxiv.org/pdf/2606.09286)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Methodology（3.1-3.3，Fig.2）；§4 实验略读
+- 核对（2026-11-02）：对照 arXiv:2606.09286v1 摘要、§1、§3.1、§3.3，命令 u_t=(v_t,c_t) 仅含速度目标与二值交互阶段指示，物体状态由 Object Adapter 从深度流推断；已改一句话定义/summary/导读/结论，流程总览图本已一致未改。
 
 ## 推荐继续阅读
 

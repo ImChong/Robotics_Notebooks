@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Learning robotic policies without a physics simulator.
+Learning robotic policies without a physics simulator.（arXiv 当前版本题为《Uncertainty-Aware Robotic World Model Makes Offline Model-Based Reinforcement Learning Work on Real Robots》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -57,7 +57,7 @@ flowchart TD
     PPO --> DEP["纯离线训练的策略<br/>部署到真实 quadruped / humanoid"]
 ```
 
-图依据：论文 §4.1–4.2 / Fig.1–2 / Algorithm 1（注：页面标题 RWM-O 对应该 arXiv 号的论文，当前版本标题为 Uncertainty-Aware Robotic World Model Makes Offline MBRL Work on Real Robots，方法名为 RWM-U + MOPO-PPO，与页面标题不符；已按该编号 PDF 作图）
+图依据：论文 §4.1–4.2 / Fig.1–2 / Algorithm 1（注：页面标题 RWM-O 对应该 arXiv 号的论文，当前版本标题为 Uncertainty-Aware Robotic World Model Makes Offline Model-Based Reinforcement Learning Work on Real Robots，方法名为 RWM-U + MOPO-PPO；页面题名与方法名 RWM-O 对应 v1，图按现行 v3 作图）
 
 ## 核心信息
 
@@ -115,6 +115,7 @@ Learning robotic policies without a physics simulator.
 - 论文：<https://arxiv.org/abs/2504.16680>
 - [arXiv PDF](https://arxiv.org/pdf/2504.16680)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 Preliminaries、§4 Approach（4.1–4.2）、Algorithm 1、§5.4 开头
 - 编号说明：arXiv 2504.16680 当前版本题为 Uncertainty-Aware Robotic World Model Makes Offline Model-Based RL Work on Real Robots（RWM-U / MOPO-PPO），与页面标题 RWM-O 不一致，图按该编号 PDF 绘制。
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-04-23）题 Offline Robotic World Model: Learning Robotic Policies without a Physics Simulator，摘要中方法名 RWM-O；v3（2026-01-08，现行）改题并改称 RWM-U + MOPO-PPO。本页题名对应 v1，流程总览图按 v3 正文绘制，未逐项核对 v1 正文；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

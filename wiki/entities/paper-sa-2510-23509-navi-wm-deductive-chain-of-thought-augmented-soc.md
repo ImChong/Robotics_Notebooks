@@ -56,7 +56,7 @@ flowchart TD
     H -->|"到 D4 后无论验证与否均强制输出"| G
 ```
 
-图依据：论文 §IV.A 世界模型、§IV.B Multi-Step CoT、§IV.C Gentzen Tree 演绎流程 / Fig.3；依据 arXiv v2（题为 Logic-Guided Socially-aware Robot Navigation World Model）。页面 arXiv 号对应论文已被作者撤回，现行 PDF 链接返回撤回页，本图依据 v2 全文，与页面标题 NaVi-WM 的 Deductive CoT 版本可能不同，需以原稿为准。
+图依据：arXiv:2510.23509**v1**（题为 Deductive Chain-of-Thought Augmented Socially-aware Robot Navigation World Model，与本页标题一致）§III 式 (1)、§IV.A 世界模型、§IV.B Multi-Step CoT、§IV.C Gentzen Tree 演绎流程 / Fig.2–3；已用 v1 全文核对（v1 与 v2 摘要相同，v2 改题为 Logic-Guided Socially-aware Robot Navigation World Model）。该论文已于 v3（2026-07-18）被作者撤回（撤回说明：对当前范围、表述与呈现有顾虑，请勿引用此版本），现行 PDF 不可取，引用请注意。
 
 ## 核心信息
 
@@ -113,7 +113,8 @@ Deductive chain-of-thought augmented socially-aware robot navigation world model
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.23509>
-- [arXiv PDF](https://arxiv.org/pdf/2510.23509v2)：已通读方法部分（实验与附录以略读为准）：v2 的 §I Introduction、§IV Methodology（A–C）、§V 实验设置；现行版本已撤回，本次读的是 v2（arxiv.org/pdf/2510.23509v2），结果表格与讨论未细读
+- [arXiv PDF v1](https://arxiv.org/pdf/2510.23509v1)：本页标题对应的版本（2025-10-27）
+- 核对（2026-11-02）：arXiv 摘要页版本史为 v1（2025-10-27，题 Deductive CoT Augmented ...）、v2（2026-05-24，改题 Logic-Guided ...，正文称 NaviWM）、v3（2026-07-18，撤回）；已读 v1 全文方法部分（§III、§IV、Fig.2–3），流程总览图（D1 四条件、验证、D2 至 D4 降级、D4 强制输出）与 v1 §III 式 (1) 和 §IV.B–C 一致，仅更正图注的版本依据；实验表与数值未细读，页面未引用。
 
 ## 推荐继续阅读
 

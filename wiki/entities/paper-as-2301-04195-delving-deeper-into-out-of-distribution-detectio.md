@@ -4,9 +4,9 @@ tags: [paper, curated-index, awesome-sim2real, longchao-sim2real]
 status: complete
 updated: 2026-10-06
 arxiv: "2301.04195"
-venue: "IEEE Robotics and Automation"
-code: https://github.com/deeplearning-wisc/MCM.git
-summary: "LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清单索引，细节以原文为准。"
+venue: "IEEE Robotics and Automation Letters (RA-L), Vol. 8, No. 6, June 2023"
+code: https://isaac-orbit.github.io/
+summary: "ORBIT：基于 NVIDIA Isaac Sim 的统一模块化机器人学习仿真框架（RA-L 2023），以 World/Agent 抽象组织机器人、传感器、运动生成器与基准任务。LongchaoDa AwesomeSim2Real 收录，分组 Robotics Environments。"
 related:
   - ../entities/awesome-sim2real.md
   - ../overview/lc-awesome-sim2real-technology-map.md
@@ -20,26 +20,29 @@ sources:
   - ../../sources/repos/awesome-sim2real.md
 ---
 
-# Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks
+# Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments
 
-**Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSim2Real) **第 094/139** 篇，分组 **Robotics Environments**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSim2Real) **第 094/139** 篇，分组 **Robotics Environments**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
 ## 一句话定义
 
-LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清单索引，细节以原文为准。
+ORBIT 是基于 NVIDIA Isaac Sim 的开源、统一且模块化的机器人学习仿真框架，提供 16 个机器人平台、4 类传感器模态、10 种运动生成器、20 多个基准任务及 4 个学习库的封装（摘要）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
-| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
-| DR | Domain Randomization | 域随机化 |
-| FM | Foundation Model | 大模型/基础模型增强迁移 |
+| RL | Reinforcement Learning | 强化学习 |
+| LfD / IL | Learning from Demonstrations / Imitation Learning | 从示范中学习 |
+| IK | Inverse Kinematics | 逆运动学（运动生成器之一） |
+| OSC | Operational-Space Control | 操作空间控制 |
+| USD | Universal Scene Description | Omniverse 使用的分层资产文件格式 |
+| PBR | Physically-Based Rendering | 基于物理的渲染 |
 
 ## 为什么重要
 
-- LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清单索引，细节以原文为准。
+- 论文把照片级渲染、刚体/可变形体仿真与 GPU 并行集成到同一框架，用于强化学习、模仿学习与运动规划，并展示了 ANYmal 四足策略的 sim-to-real 迁移（§I、§V-D）。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
@@ -47,18 +50,27 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 
 ```mermaid
 flowchart LR
-  LBL["ID 标签集 Y_in = {y1..yK}"] --> PR["文本提示<br/>this is a photo of a y_i"]
-  PR --> TXT["CLIP 文本编码器 T<br/>(概念向量 T(t_i))"]
-  IMG["测试图像 x'"] --> IE["CLIP 图像编码器 I<br/>(特征 I(x'))"]
-  TXT --> COS["余弦相似度 s_i(x')"]
-  IE --> COS
-  COS --> SM["带温度 τ 的 softmax<br/>取最大值 = S_MCM"]
-  SM --> TH{"S_MCM ≥ λ ?"}
-  TH -- "是" --> ID["判为 ID<br/>类别 = argmax_i s_i"]
-  TH -- "否" --> OOD["判为 OOD"]
+  subgraph W["World（同一 stage）"]
+    RB["机器人<br/>(articulation + 执行器模型 + 关节控制器)"]
+    SE["传感器"]
+    OB["物体 / 可视化标记"]
+  end
+  subgraph A["Agent（计算图）"]
+    PN["感知节点<br/>(如 RGB-D 转点云/TSDF)"]
+    AN["动作节点 / 运动生成器<br/>(IK、OSC 等)"]
+  end
+  TK["Task：目标 / 奖励 / 重置<br/>(对 Agent 计算图做 graph cut)"]
+  SE -- "原始观测" --> PN
+  OB -- "原始观测" --> PN
+  PN --> AN
+  AN -- "关节级命令" --> RB
+  RB -- "经执行器模型得到<br/>关节位置/速度/力矩指令" --> SIM["Isaac Sim 物理仿真"]
+  SIM --> W
+  W -.-> TK
+  TK -.-> A
 ```
 
-图依据：论文 §3 OOD Detection via Concept Matching / Fig.1、式 (1)（注意：页面 frontmatter 的 arXiv 2301.04195 实为 ORBIT 仿真框架论文，与页面标题不符；本图依据 arXiv 2211.13445「Delving into Out-of-Distribution Detection with Vision-Language Representations」(MCM)，与页面代码链接 deeplearning-wisc/MCM 一致）。
+图依据：论文 §III Fig.3（World / Agent / graph cut 抽象）与 Fig.4（关节控制器经执行器模型下发指令）、§III-a/b/c 正文。
 
 ## 核心信息
 
@@ -66,17 +78,21 @@ flowchart LR
 |------|------|
 | 编号 | 094/139 |
 | 分组 | Robotics Environments |
-| 出处 | IEEE Robotics and Automation |
+| 出处 | IEEE Robotics and Automation Letters (RA-L) Vol. 8 No. 6, 2023（arXiv journal_ref；DOI 10.1109/LRA.2023.3270034） |
+| 作者 | Mayank Mittal, Calvin Yu, Qinxi Yu, Jingzhou Liu, Nikita Rudin, David Hoeller 等（ETH Zurich / NVIDIA / Univ. of Toronto） |
 | 论文 | <https://arxiv.org/abs/2301.04195> |
-| 代码/项目 | <https://github.com/deeplearning-wisc/MCM.git> |
+| 代码/项目 | <https://isaac-orbit.github.io/>（论文给出的文档与代码入口） |
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+### 方法要点（据论文 §III–IV）
 
-LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清单索引，细节以原文为准。
+- **World / Agent / Task 抽象：** World 含机器人、传感器、物体与可视化标记，可程序化、用扫描网格或 Isaac Sim GUI 搭建；Agent 是由感知节点与动作节点组成的计算图，节点各有内部计时器以支持不同更新频率；Task 指定目标、奖励与重置，通过对 Agent 计算图做 graph cut，使同一 World 可定义不同任务。
+- **执行器与 sim-to-real：** 关节级控制器的命令先经执行器模型（含 DC 电机与 SEA，可模拟延迟、力矩饱和）再下发到仿真器。
+- **运动生成器：** GPU 实现的 differential IK、操作空间控制与关节级控制，另有 RMPFlow、OCS2 的 CPU 实现。
+- **工作流（§V）：** RL（rl-games、RSL-rl、stable-baselines3 封装）、遥操作与模仿学习（robomimic 格式）、运动规划、ZMQ 实机部署。
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+本页不复述完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
 ## 评测与指标
 
@@ -92,9 +108,9 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 
 ## 结论
 
-**这一页能给你的是「Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**这一页能给你的是「Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
-- 可确证的只有清单坐标：分组 **Robotics Environments**；本页不自行推导新结论。
+- 可确证的有清单坐标（分组 **Robotics Environments**）与论文方法层面的框架设计；性能数字（如吞吐对比）请查原文 §V-E。
 - 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
 - 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
 
@@ -115,7 +131,8 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2301.04195>
-- [arXiv PDF](https://arxiv.org/pdf/2211.13445)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§3 概念匹配与 softmax 缩放分析、§4.1 数据集与实现细节；注意页面所列 arXiv 2301.04195 与该论文编号不符，图依据 2211.13445
+- [arXiv PDF](https://arxiv.org/pdf/2301.04195)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作（略读）、§III 抽象与接口设计（World / Agent / Task / 执行器）、§IV 特性、§V 示例工作流（略读）；§V-E 仿真评测、§VI 讨论与 §VII 未来工作未细读
+- 核对（2026-11-02）：上游清单该条目标题/作者/代码链接对应 OOD 检测相关论文（MCM），与其 arXiv 编号 2301.04195（实为 ORBIT）不一致；本页按 arXiv 记录以 ORBIT 为准。
 
 ## 推荐继续阅读
 
