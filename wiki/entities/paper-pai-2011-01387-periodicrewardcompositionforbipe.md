@@ -40,6 +40,26 @@ Siekmann et al. Periodic reward composition that transfers a single bipedal poli
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SPEC["步态规格<br/>每个脚的相位序列（swing / stance 等）<br/>相位起止时间 (a_i, b_i, κ)、左右脚周期偏移 θ_left, θ_right"] --> RC
+    RC["周期奖励组合<br/>R(s, φ) = β + Σ c_i · I_i(φ) · q_i(s)<br/>相位系数 c_i × 相位指示 I_i（Von Mises 分布）× 相位量测 q_i（脚力 / 脚速范数）"] --> EXP["取期望奖励 E[R(s, φ)]<br/>叠加指令奖励（速度/朝向）与平滑项等辅助代价"]
+    SPEC --> ST["状态编码：周期时钟 φ（含 θ 偏移）<br/>+ 各相位占比 r_j<br/>+ 骨盆姿态/角速度、关节位置/速度、速度指令"]
+    ST --> POL["LSTM 策略（2 层 × 128）<br/>输出 30 维：10 个关节目标位置 + 10 组 PD 增益<br/>策略 40 Hz"]
+    POL --> PD["PD 控制器（2000 Hz）"]
+    PD --> SIM["cassie-mujoco-sim 仿真 + 动力学随机化<br/>（执行频率 / 质量 / 阻尼 / 摩擦 / 坡度 / 编码器噪声）"]
+    SIM --> ST
+    EXP --> PPO["PPO（循环版，轨迹批采样）+ mirror loss"]
+    SIM --> PPO
+    PPO --> POL
+    PPO --> HW["sim-to-real：部署到 Cassie 真机"]
+    EXP -.-> TP["多步态训练：变化相位占比，另加 transition penalties"]
+```
+
+图依据：论文 §III（RL 框架、周期奖励组合、步态描述）与 §IV Method（网络与动作空间、状态空间、奖励、动力学随机化、PPO 训练）及 Fig.1 / Fig.3 / Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +123,7 @@ Siekmann et al. Periodic reward composition that transfers a single bipedal poli
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2011.01387>
+- [arXiv PDF](https://arxiv.org/pdf/2011.01387)：已通读方法部分（实验与附录以略读为准）：§III 周期奖励组合与步态描述、§IV 方法（网络/状态/奖励/随机化/PPO）、§V 实验结果开头（单步态与多步态）
 
 ## 推荐继续阅读
 
