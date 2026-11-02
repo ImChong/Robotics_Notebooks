@@ -42,6 +42,33 @@ Semantic exploration guided by foundation models to learn versatile world models
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph PRE["预训练: 奖励函数蒸馏 (VLM-MOTIF)"]
+    IM["自监督探索数据中的观测对"] --> VLM["VLM (GPT-4) 比较哪张更有趣"]
+    VLM --> PR["偏好数据集"]
+    PR --> RP["交叉熵训练 → 语义奖励函数 Rψ"]
+  end
+  subgraph EXP["任务无关探索"]
+    ENV["环境交互 (ot, at)"] --> RS["rsem = Rψ(ot)"]
+    ENV --> WM["RSSM 世界模型 (DreamerV3), 重建 o, c, r 并预测 rsem"]
+    RS --> WM
+    WM --> ENS["N 个模型的集成, 预测下一随机状态"]
+    ENS --> DIS["认知不确定性 rdis = 集成方差"]
+    WM --> SEMH["预测语义有趣度 r̂sem"]
+    SEMH --> SW["r̂sem ≥ 分位数 Qk ? β = βexplore : β = βgo"]
+    SW --> EXR["rexpl = r̂sem + β · rdis"]
+    DIS --> EXR
+    EXR --> POL["DreamerV3 探索策略"]
+    POL --> ENV
+  end
+  RP --> RS
+```
+
+图依据：论文 §2.1（Reward function distillation）、§2.2（World model）、§2.3（Exploration policy）与 Fig.1、Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +124,7 @@ Semantic exploration guided by foundation models to learn versatile world models
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.01584>
+- [arXiv PDF](https://arxiv.org/pdf/2503.01584)：已通读方法部分（实验与附录以略读为准）：§1 引言前部、§2 方法（2.1 奖励蒸馏、2.2 世界模型、2.3 探索策略）、§3 相关工作中集成不确定性一段；§4 实验与附录仅略读。
 
 ## 推荐继续阅读
 

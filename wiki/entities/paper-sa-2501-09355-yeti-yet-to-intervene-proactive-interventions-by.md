@@ -42,6 +42,20 @@ Proactive intervention framework for multimodal AI agents in AR procedural tasks
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["输入视频 V<br/>1 FPS 抽帧 f1..fT"] --> P["PaliGemma-3b-mix-448<br/>逐帧提示 Pobj 计数物体 Ct"]
+    P --> DC["对齐信号 ΔCi = Ci+1 − Ci"]
+    V --> SS["相邻帧 SSIM<br/>≥ τ 的静止帧被过滤"]
+    DC --> A["YETI 干预检测算法 Algorithm 1<br/>超参：SSIM 阈值 τ、对话间隔 m、<br/>局部极值范围 r、episode 间隔 k"]
+    SS --> A
+    A --> O["输出干预帧集合 I<br/>Global / Local 两种变体"]
+```
+
+图依据：论文 §3.2-3.6、Algorithm 1、Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Proactive intervention framework for multimodal AI agents in AR procedural tasks
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2501.09355>
+- [arXiv PDF](https://arxiv.org/pdf/2501.09355)：已通读方法部分（实验与附录以略读为准）：§3（3.1-3.6）与 Algorithm 1、Table 3；§4 实验略读
 
 ## 推荐继续阅读
 

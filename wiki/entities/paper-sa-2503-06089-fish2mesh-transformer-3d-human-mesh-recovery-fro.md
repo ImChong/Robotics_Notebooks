@@ -42,6 +42,26 @@ First mesh recovery pipeline optimized for wide-angle fisheye head-mounted camer
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  I["头戴鱼眼相机 RGB 图像 I"] --> EQ["等距柱状 (equirectangular) 投影: 球面 → 2D"]
+  EQ --> SP["还原球面坐标 (x3D, y3D, z3D)"]
+  SP --> PE["离散化索引 → 可学习 Egocentric Position Embedding"]
+  PE --> PM["Patch Merging 层"]
+  PM --> SW["四个 Swin Transformer 块 (窗口 / 移位窗口 MSA, 去除相对位置偏置)"]
+  SW --> H1["头: SMPL 形状 Θs / 姿态 Θp"]
+  SW --> H2["头: 相机参数 Π"]
+  SW --> H3["头: 全局朝向 L"]
+  H1 --> OUT["SMPL 人体网格 + 3D / 2D 关节"]
+  H2 --> OUT
+  H3 --> OUT
+  OUT -.-> LS["总损失 L = a(LSMPL+Lorient) + b L3D + c L2D"]
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / §3.4 与 Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ First mesh recovery pipeline optimized for wide-angle fisheye head-mounted camer
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.06089>
+- [arXiv PDF](https://arxiv.org/pdf/2503.06089)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题设定、3.2 Egocentric Position Embedding、3.3 Swin Transformer 块、3.4 任务头与损失）；§4 实验仅读数据集与结果表，附录未读。
 
 ## 推荐继续阅读
 

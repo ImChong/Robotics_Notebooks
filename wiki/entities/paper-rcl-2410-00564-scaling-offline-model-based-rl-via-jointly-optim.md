@@ -42,6 +42,33 @@ JOWA learns an Atari world model and distributional Q-function through one share
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["预训练（§4.3 两阶段）"]
+        A["Atari 离线数据：轨迹片段"] --> B["阶段 1：用图像观测训练 VQ-VAE Tokenizer"]
+        B --> C["阶段 1：训练 world-part（Transformer + 观测/奖励/终止预测头），损失 L_world，M1 步"]
+        C --> D["阶段 2：冻结 VQ-VAE，联合优化 world-action 模型，M2 步"]
+        D --> E["总损失 L = β·L_world + L_action<br/>（Q 头：CQL + 分布式 TD）"]
+    end
+    subgraph ARCH["JOWA 架构（§4.1）"]
+        F["图像观测 → K 个离散 token，与动作 token 交错，加任务嵌入"] --> G["共享 Transformer 骨干"]
+        G --> H["po / pr / pd：下一观测 token、奖励、终止"]
+        G --> I["Q 值头 hQ"]
+    end
+    subgraph INF["推理时规划（§4.2）"]
+        J["当前状态"] --> K["Q 值取 top-K 动作"]
+        K --> L["用世界模型想象 H 步，Beam Search 保留 top-K 状态"]
+        L --> M["累计回报 + 叶节点 max Q 估计 → 选最优路径首个动作"]
+    end
+    E --> G
+    H --> L
+    I --> K
+```
+
+图依据：论文 §4.1–4.3 / Fig.1（JOWA 架构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ JOWA learns an Atari world model and distributional Q-function through one share
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2410.00564>
+- [arXiv PDF](https://arxiv.org/pdf/2410.00564)：已通读方法部分（实验与附录以略读为准）：§4.1 世界-动作模型、§4.2 可并行规划、§4.3 训练流程
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测：RGB 图像 c_I、机器人位姿 c_A<br/>(真机另有深度 c_E)"] --> ENC["各模态编码<br/>RGB：冻结 VAE；位姿：MLP；深度：下采样"]
+    ENC --> CAT["条件潜变量与 k 步未来白噪声<br/>按通道拼接"]
+    CAT --> TOK["tokenize 为 t_I, t_A, t_E<br/>拼接成统一 token 序列"]
+    LANG["语言指令 l → 冻结 CLIP 文本嵌入"] --> DIT
+    TOK --> DIT["DiT 块 ×N 联合去噪<br/>masked attention 屏蔽缺失模态"]
+    DIT --> OUT["同时输出未来 k 步图像 x_I、动作 x_A (及深度 x_E)"]
+    OUT --> EXE["只执行首个动作 x_A^1<br/>再触发新一轮预测 (闭环)"]
+    EXE -.-> OBS
+    PRE["ImageNet 预训练 DiT 初始化<br/>新增层零初始化"] --> DIT
+    LOSS["训练：三模态 DDPM 损失加权 L = λI·L_I + λA·L_A + λE·L_E"] --> DIT
+```
+
+图依据：论文 §3.1 Overview / §3.2 Model Architectures 与 Fig.3 / §3.3 Training Process
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://proceedings.neurips.cc/paper_files/paper/2024/hash/cbe25fa0e7c7084049276888a09acc8d-Abstract-Conference.html>
+- [arXiv PDF](https://arxiv.org/pdf/2411.18179)：已通读方法部分（实验与附录以略读为准）：§3 PAD（3.1 至 3.3）
 
 ## 推荐继续阅读
 

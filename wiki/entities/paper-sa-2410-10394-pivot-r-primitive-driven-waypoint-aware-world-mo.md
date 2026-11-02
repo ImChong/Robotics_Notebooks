@@ -43,6 +43,25 @@ Primitive-driven waypoint-aware world model for robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["语言指令 l"] --> VLM["预训练 VLM：primitive action 解析（频率 v1，最低）"]
+    O["观测图像 O_t"] --> VLM
+    VLM --> P["waypoint 指示 P_t = (l, 解析出的 primitive action)，经 CLIP 文本编码器"]
+    P --> SP["场景预测模块 Φsp（12 层 transformer，频率 v2）：预测 waypoint 特征 F_M't"]
+    OH["历史观测 O_t-h:t，经 CLIP 视觉编码器"] --> SP
+    SP --> AP["动作预测模块 Φap（3 层 transformer，频率 v3，最高）"]
+    OH --> AP
+    ST["机器人状态 S_t-h:t，经 MLP 编码"] --> AP
+    AP --> A["动作 A't = 末端位姿增量 + 夹爪开合"]
+    SP -. "L_scene：与 CLIP 编码的真值 waypoint 做 L2" .-> LOSS["总损失 L = L_scene + L_act"]
+    AP -. "L_act：交叉熵" .-> LOSS
+```
+
+图依据：论文 §3.1–§3.5 与 Fig.2、式 (1)–(5)；三个模块的异步执行频率见 §3.4（Asynchronous Hierarchical Executor，v1 < v2 < v3；某模块未完成时先返回上一次结果）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Primitive-driven waypoint-aware world model for robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.10394>
+- [arXiv PDF](https://arxiv.org/pdf/2410.10394)：已通读方法部分（实验与附录以略读为准）：§3.1 问题定义、§3.2 输入输出、§3.3 网络、§3.4 异步分层执行器、§3.5 损失
 
 ## 推荐继续阅读
 

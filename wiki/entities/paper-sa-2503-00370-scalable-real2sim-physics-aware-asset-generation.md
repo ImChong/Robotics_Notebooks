@@ -42,6 +42,28 @@ Simulating object dynamics from real-world perception shows great promise for di
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    B1["Bin 1：机器人抓取物体"] --> SCAN["在固定 RGBD 相机前沿两条垂直轴旋转，并重抓取以减少遮挡"]
+    SCAN --> SEG["SAM2 视频分割：物体掩码 + 夹爪掩码；物体跟踪得到位姿"]
+    SEG --> REC["物体中心重建（NeRF、Gaussian Splatting 等）：alpha-transparent training，忽略夹爪掩码内像素"]
+    REC --> V["视觉几何 V：带纹理三角网格"]
+    V --> CD["近似凸分解 + 凸包"]
+    CD --> C["碰撞几何 C"]
+    B1 --> EXC["激励轨迹：有限傅里叶级数参数化，自定义增广拉格朗日 + 黑盒优化"]
+    EXC --> ID1["一次性机器人参数辨识（半定规划，物理可行性约束）"]
+    ID1 --> ID2["抓取物体后重新辨识末端连杆，两次参数之差得到物体参数"]
+    ID2 --> P["物理属性 P：质量、质心、转动惯量"]
+    V --> OUT["可仿真资产：V + C + P"]
+    C --> OUT
+    P --> OUT
+    P --> B2["放入 Bin 2，处理下一物体"]
+```
+
+图依据：论文 Fig. 1 与 §III-A 至 §III-D（视觉几何、碰撞几何、物理参数辨识）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Simulating object dynamics from real-world perception shows great promise for di
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2503.00370>
+- [arXiv PDF](https://arxiv.org/pdf/2503.00370)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III-A 至 §III-D（含 Fig. 1/2/3）；实验部分以略读为准
 
 ## 推荐继续阅读
 

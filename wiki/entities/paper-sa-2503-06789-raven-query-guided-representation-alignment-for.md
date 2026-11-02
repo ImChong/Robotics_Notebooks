@@ -42,6 +42,34 @@ Multi-modal QA framework aligning audio, video, embedded sensors and natural lan
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["视频帧"] --> V1["SigLIP-so-400m 视觉编码器"]
+  A["音频 (Kaldi-fbank)"] --> A1["BEATs 音频编码器"]
+  S["IMU 传感器流"] --> S1["LIMU-BERT 传感器编码器"]
+  V1 --> VP["投影层 → 共享空间"]
+  A1 --> AP["投影层 → 共享空间"]
+  S1 --> SP["投影层 → 共享空间"]
+  VP --> Z["拼接为统一 token 矩阵 Z"]
+  AP --> Z
+  SP --> Z
+  Q["文本问题 Q → Qwen2-7B-Instruct 词嵌入 zq"] --> QU
+  Z --> QU["QuART: zq 与 Z 做多头注意力 → 输出 M"]
+  QU --> R["相关性投影 WR: α = softmax(M WR)"]
+  R --> C["融合上下文 C = Σ αj Zj"]
+  C --> L["LLM 解码器 Π (LoRA)"]
+  L --> ANS["回答"]
+  subgraph T["三阶段训练"]
+    direction LR
+    T1["Stage I: 冻结编码器与 LLM, 仅训各模态投影头"] --> T2["Stage II: 训练 QuART + LoRA, 冻结编码器与投影"]
+    T2 --> T3["Stage III: 扰动输入 (丢帧/噪声等) + 熵正则 λ=0.001"]
+  end
+```
+
+图依据：论文 §4（Modality-Specific Feature Encoders、QuART）与 §5（三阶段训练）、Fig.3。页面 frontmatter 的 arXiv 编号 2503.06789 对应的是无关论文（GaAs/InAs 纳米线的 Aharonov-Bohm 振荡），RAVEN 的正确编号为 2505.17114，本图按后者绘制。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Multi-modal QA framework aligning audio, video, embedded sensors and natural lan
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.06789>
+- [arXiv PDF](https://arxiv.org/pdf/2505.17114)：已通读方法部分（实验与附录以略读为准）：§4 RAVEN 方法（特征编码器、QuART、训练目标）与 §5 三阶段训练；§3 数据集构建（Evaluator/Critic）、§6 实验与附录略读或未读。页面 arXiv 号 2503.06789 与 RAVEN 不符（为无关物理论文），正确编号为 2505.17114。
 
 ## 推荐继续阅读
 

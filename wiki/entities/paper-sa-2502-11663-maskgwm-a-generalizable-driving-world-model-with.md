@@ -42,6 +42,25 @@ Generalizable driving world model with video mask reconstruction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  X[多视角驾驶视频 x_0] --> LAT[潜编码 Θ + patch 编码 → 视频 token z_0]
+  LAT --> NZ[Rectified Flow 加噪 z_τ]
+  NZ --> MASK[训练时随机 token mask M<br/>Mspatial 跨时间共享 / Mtime 逐帧不同, 行式]
+  MASK -->|仅可见 token| ENC[DiT 编码器 E<br/>基于 SD3 + 空间/时间 Transformer 块]
+  COND[条件: 文本 + 动作 angle, speed, trajectory, goal point<br/>参考帧 τ=0] --> ENC
+  ENC --> FILL[以扩散相关 mask token m_τ 填回被遮挡位置]
+  FILL --> REC[重建块 F: Mspatial 用空间块 Fs, Mtime 用时间块 Ft]
+  REC --> DEC[DiT 解码器 D]
+  DEC --> LOSS[v-prediction 损失, 目标 z_0 − ε]
+  VIEW[多视角版: 跨视角行式自注意力块] -.-> ENC
+  NZ -.->|推理: 全部 token 可见, 跳过 mask 重建| ENC
+```
+
+图依据：论文 §3.1–3.4 / Fig.3–4、§4.2 训练阶段；跨视角块插入位置（虚线）为按 §3.4 文字归纳
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Generalizable driving world model with video mask reconstruction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.11663>
+- [arXiv PDF](https://arxiv.org/pdf/2502.11663)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）、§4.2 训练方案
 
 ## 推荐继续阅读
 

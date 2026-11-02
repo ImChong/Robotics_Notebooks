@@ -42,6 +42,24 @@ Self-supervised spatial world models with JEPA for LiDAR-based autonomous drivin
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PC["LiDAR 点云"] --> MK["改进 BEV 引导掩码<br/>空与非空 BEV 栅格各掩 50%"]
+    MK --> XC["未掩码点云 xc"]
+    MK --> XT["被掩码点云 xt"]
+    XC --> CE["上下文编码器 fθ<br/>reshape 成 BEV 嵌入"]
+    XT --> TE["目标编码器 fθ̄<br/>参数为上下文编码器的滑动平均"]
+    CE --> TK["可学习 empty token / mask token<br/>+ 逐栅格 L2 归一化"]
+    TK --> PR["轻量三层卷积预测器 gϕ<br/>预测被掩码栅格的 BEV 嵌入"]
+    PR --> LJ["损失：余弦嵌入预测损失(仅被掩码栅格)<br/>+ 方差正则 Lreg"]
+    TE --> LJ
+    LJ -.-> FT["预训练上下文编码器<br/>微调下游 3D 检测<br/>SECOND / PV-RCNN / CenterPoint"]
+```
+
+图依据：论文 Method 一节（Fig. 2、Fig. 3、式 (1)-(4)）与 Experiments 概述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Self-supervised spatial world models with JEPA for LiDAR-based autonomous drivin
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.04969>
+- [arXiv PDF](https://arxiv.org/pdf/2501.04969)：已通读方法部分（实验与附录以略读为准）：Abstract、Method 与 Experiments 概述；补充材料略读
 
 ## 推荐继续阅读
 

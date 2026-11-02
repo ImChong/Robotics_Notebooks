@@ -42,6 +42,31 @@ Intrinsic disagreement-based RL for vehicle exploration via curiosity-driven gen
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph P1["阶段 1: 任务无关的内在探索 (CARLA)"]
+    O["观测 st"] --> ENC["RSSM 编码器 → 随机潜状态 zt (GRU 隐状态 ht)"]
+    ENC --> ENS["K 个前向模型预测下一潜状态"]
+    ENS --> RI["内在奖励 = K 个预测的方差 (潜空间分歧)"]
+    ST["转向惩罚 rsteer"] --> RR["探索奖励"]
+    RI --> RR
+    RR --> BUF["回放缓冲 D"]
+    BUF --> WM["更新 DreamerV3 世界模型与分歧集成 (ELBO 损失)"]
+    WM --> POL["潜空间想象中更新策略 πθ / 价值 vθ (最大化内在回报)"]
+    POL -.->|滚动采集新数据| O
+  end
+  subgraph P2["阶段 2: 任务微调"]
+    EX["引入外在奖励 (车道保持 / 避撞)"]
+    EX --> ZS["零样本: 冻结世界模型, 直接评估策略"]
+    EX --> FS["少样本: 采集少量数据, 更新策略与价值"]
+  end
+  POL ==> EX
+```
+
+图依据：论文 §III-A / §III-B / §III-C / §III-D（含 Algorithm 1）与 §IV-C（两阶段训练）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Intrinsic disagreement-based RL for vehicle exploration via curiosity-driven gen
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.05573>
+- [arXiv PDF](https://arxiv.org/pdf/2503.05573)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 内在动机与世界模型、B 集成分歧、C 转向损失、D 训练流程与 Algorithm 1）、§IV-A/C 环境与训练设定；§V 结果仅略读。
 
 ## 推荐继续阅读
 

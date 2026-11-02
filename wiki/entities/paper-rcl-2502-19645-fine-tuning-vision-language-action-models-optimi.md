@@ -43,6 +43,26 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IMG["多视角图像"] --> VE["OpenVLA 双视觉编码器：每视角 256 个 patch embedding"]
+    VE --> PJ["共享投影器，映射到语言嵌入空间"]
+    ST["机器人状态（关节角、夹爪）"] --> SP["独立投影网络：1 个输入嵌入"]
+    LG["语言指令 tokens"] --> CAT
+    LG -. OFT+ 专用 .-> FL["FiLM：语言嵌入均值生成 γ、β，调制视觉特征"]
+    FL -.-> VE
+    PJ --> CAT["沿序列维度拼接所有输入嵌入"]
+    SP --> CAT
+    EMP["空的动作嵌入 K×D 个"] --> DEC
+    CAT --> DEC["LLM 解码器（LoRA 微调）：双向注意力，单次前向并行解码"]
+    DEC --> HEAD["MLP 动作头：连续动作"]
+    HEAD --> OUT["K 步动作块，L1 回归训练"]
+```
+
+图依据：论文 §IV-A（设计选择）、§IV-B（并行解码、动作分块、连续动作与 L1 回归、额外输入）、§IV-C（FiLM，Fig. 1/2/8）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +120,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2502.19645>
+- [arXiv PDF](https://arxiv.org/pdf/2502.19645)：已通读方法部分（实验与附录以略读为准）：§IV（A–C，含 Fig. 1/2/8）；§V–§VI 实验以略读为准
 
 ## 推荐继续阅读
 

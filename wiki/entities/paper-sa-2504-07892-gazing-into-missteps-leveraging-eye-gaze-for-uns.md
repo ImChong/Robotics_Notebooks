@@ -42,6 +42,28 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["第一人称视频 V 与 2D 注视轨迹 T（眼动仪）<br/>时刻 t 取最近 F 帧"] --> HM["前半段注视轨迹 → 高斯热图堆栈 Q<br/>（只取前 F/2 帧）"]
+    IN --> TOK["视频帧 → 卷积 token embedding → 视觉 token"]
+    HM --> F1["路径1 通道融合<br/>热图作为额外输入通道加到前 F/2 帧"]
+    HM --> F2["路径2 相关融合<br/>热图 → 单个注视 token"]
+    F1 --> ENC["Transformer 编码器"]
+    TOK --> ENC
+    F2 --> ENC
+    ENC --> COR["注视-视觉相关模块<br/>仅在注视 token 与视觉 token 间做注意力"]
+    COR --> DEC["Transformer 解码器"]
+    DEC --> QH["预测注视热图 Q̂（KL 散度监督，真值为后半段轨迹）"]
+    QH --> PK["峰值检测 → 预测轨迹 T̂（后半段）"]
+    PK --> SC["评分函数：与真实后半段轨迹比较<br/>欧氏距离 / DTW / 热图似然 / 熵（熵无需真值注视）"]
+    QH --> SC
+    SC --> TH["错误分数 s_t > 阈值 θ 判为错误"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.1–2。注意：页面 frontmatter 的 arXiv 号 2504.07892 实际对应一篇天文学论文（Astronomy & Astrophysics），与本页不符；《Gazing Into Missteps》的正确编号为 2406.08379（经 arXiv 检索），图按该论文绘制。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2504.07892>
+- [arXiv PDF（正确编号 2406.08379；页面 frontmatter 的 2504.07892 与本文不符）](https://arxiv.org/pdf/2406.08379)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.2、四种评分函数）
 
 ## 推荐继续阅读
 
