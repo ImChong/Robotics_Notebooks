@@ -42,6 +42,28 @@ Delivers up to 3.7× end-to-end speedups while maintaining 98% rollout quality. 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["去噪循环 t = T ... 0: 扩散世界模型 Voyager / Aether, RGB 与深度 latent 拼接"] --> B{"历史缓冲不足 3 次 FULL, 或累计漂移 Eacc 达到阈值 η?"}
+    B -- 是 --> C["FULL: 完整运行 Transformer backbone"]
+    C --> D["更新历史缓冲, 计算逐 token 曲率 κ, 按分位数分为 stable / linear / chaotic"]
+    D --> E["重置 k 与 Eacc"]
+    B -- 否 --> F["CACHE: 异构 token 预测"]
+    F --> F1["stable token: 复用上次 FULL 输出"]
+    F --> F2["linear token: 一阶线性外推"]
+    F --> F3["chaotic token: 阻尼更新, 混合最近两个速度"]
+    F1 --> G["计算 chaotic token 的曲率归一化漂移 E(t), 累加进 Eacc"]
+    F2 --> G
+    F3 --> G
+    E --> H["scheduler 更新到 z(t-1)"]
+    G --> H
+    H --> A
+```
+
+图依据：论文 §3、§4.1–4.3（Fig. 3–5, Algorithm 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Delivers up to 3.7× end-to-end speedups while maintaining 98% rollout quality. 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.06331>
+- [arXiv PDF](https://arxiv.org/pdf/2603.06331)：已通读方法部分（实验与附录以略读为准）：§3、§4（Preliminaries 与 WorldCache 方法）、§5.1 实验设定
 
 ## 推荐继续阅读
 

@@ -38,6 +38,23 @@ MetaWorld 是一个 hierarchical world model。它把系统分成三层：semant
 - 语义层用 GPT-4o 或 VLM 解析高层指令，输出技能权重；技能迁移层做动态专家选择；物理层用 TD-MPC2 和专家动作引导完成控制。
 - 这篇论文没有真实机器人实验，主要在 HumanoidBench 中验证。但它适合放在这里，因为它代表了一种不同于 SENTINEL 的路线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["任务描述 T + 观测"] --> SEM["语义层：VLM 将任务映射为专家权重向量 w<br/>解析 VLM 回复并 softmax 归一化"]
+    LIB["预训练多专家策略库 (如 walk / stand / reach)"] --> SEM
+    SEM --> FUSE
+    S["当前状态 s_t"] --> SEL["技能迁移层：状态感知的动态专家选择<br/>选择概率 p(i | s_t)"]
+    LIB --> SEL
+    SEL --> FUSE["权重融合：w̃_i = α w_i + (1-α) p(i | s_t)"]
+    FUSE --> REF["参考专家动作 a_ref = Σ w̃_i π_exp^i(s_t)"]
+    REF --> PHY["物理层：TD-MPC2 潜空间动力学模型 + MPC<br/>目标 L_total = L_TD + λ‖a_t - a_ref‖²"]
+    PHY --> ACT["输出动作 a_t，在 HumanoidBench 中执行"]
+```
+
+图依据：论文 §3.1–3.4 / Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ MetaWorld 是一个 hierarchical world model。它把系统分成三层：semant
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2601.17507)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 分层架构、3.2 语义规划、3.3 动态适应、3.4 物理执行与在线优化）与 §4 实验设定；理论分析与消融仅略读
 
 ## 推荐继续阅读
 

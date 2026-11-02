@@ -42,6 +42,22 @@ Nearly 1,000 multi-view egocentric clips captured by 12 synchronized cameras sur
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+本页论文以数据集为主；下图只画论文给出的基线方法 Stereo-guided 3DGS（逐帧、立体几何初始化），不含数据采集流程。
+
+```mermaid
+flowchart TD
+    CAM["12 个同步 rig 相机<br/>dewarp 为 6 对矫正立体图像（research 版）"] --> FS["Foundation Stereo<br/>对每对图像做左→右、右→左两个方向的立体估计"]
+    FS --> TSDF["TSDF 融合所有立体深度图"]
+    TSDF --> PTS["从融合表面采样点<br/>得到每点的法向与颜色"]
+    PTS --> INIT["用采样点初始化 3D Gaussians"]
+    INIT --> FT["少量步数微调 3DGS<br/>光度损失 L = (1−λ)·L1 + λ·L_D-SSIM，λ = 0.1"]
+    FT --> REC["逐帧独立优化，得到稠密 4D 重建"]
+```
+
+图依据：论文 §4.2 Stereo initialization for 4D reconstruction / Fig.5；立体方法选择依据 §4.1（Foundation Stereo 一致性最好）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Nearly 1,000 multi-view egocentric clips captured by 12 synchronized cameras sur
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.13741>
+- [arXiv PDF](https://arxiv.org/pdf/2603.13741)：已通读方法部分（实验与附录以略读为准）：§4 Experiments 中 4.1 立体方法评估、4.2 立体初始化的 4D 重建（Fig.5）；§3 数据集部分仅略读
 
 ## 推荐继续阅读
 

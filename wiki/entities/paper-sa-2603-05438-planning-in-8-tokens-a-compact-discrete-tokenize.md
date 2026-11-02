@@ -42,6 +42,28 @@ Compresses each observation to only 8 tokens.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["CompACT tokenizer"]
+        T1["图像 o"] --> T2["冻结 DINOv3 提取语义 patch 特征"]
+        T2 --> T3["latent resampler: 可学习 query 做 cross-attention"]
+        T3 --> T4["FSQ 量化为 N 不超过 16 个离散 token z"]
+        T4 --> T5["Dcompact: 掩码生成式解码, 以 z 为条件预测目标 token"]
+        T5 --> T6["预训练 VQGAN 目标 token (约 196 个), 解码回像素"]
+    end
+    T4 --> W["latent 世界模型: 由 zt 与动作 at 预测 z(t+1), 掩码生成式训练"]
+    W --> W1["导航: 历史窗口自回归, DiT 结构"]
+    W --> W2["机械臂 RoboNet: block-causal Transformer, 并行预测多帧"]
+    W1 --> P["规划 MPC: 初始化候选动作序列, 在 latent 中 rollout H 步"]
+    W2 --> P
+    P --> C["代价 C(a): 终态与目标观测的距离 (如 LPIPS), 或直接用 latent 距离"]
+    C --> R["取代价最小的动作序列, 采样优化或梯度下降"]
+```
+
+图依据：论文 §3.1–3.3（Fig. 1–2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Compresses each observation to only 8 tokens.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.05438>
+- [arXiv PDF](https://arxiv.org/pdf/2603.05438)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.3）
 
 ## 推荐继续阅读
 

@@ -43,6 +43,24 @@ Builds a multiplayer video world model in Minecraft.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 数据["SolarisEngine 数据采集"]
+        EP["Mineflayer 控制器 bot 执行 episode 代码（技能原语库 + 多 bot 通信层）"] --> CAM["相机 bot（官方 Java 客户端、GPU 渲染）经服务端插件镜像控制器状态与动作"]
+        CAM --> AL["视频与动作按时间戳对齐 → 多人数据集（12.64M 帧）"]
+    end
+    subgraph 训练["多阶段训练流程"]
+        S1["Stage 1 单人双向：Matrix Game 2.0 初始化，VPT 数据微调（120K 步）"] --> S2["Stage 2 多人双向：多人自注意力 + 玩家 ID 嵌入（120K 步，作 teacher）"]
+        S2 --> S3["Stage 3 多人因果：Diffusion Forcing + 滑窗因果掩码（60K 步）"]
+        S3 --> S4["Stage 4 Self Forcing：Checkpointed Self Forcing，teacher 上下文长于 student"]
+    end
+    AL --> S2
+```
+
+图依据：论文 §3（SolarisEngine）、§4.2、§5.1–5.4 / Fig.2、Fig.5、Fig.6（Stage 3 因果模型由 Stage 2 训练至 60K 步的中间检查点分支初始化，图中未画出该分支）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Builds a multiplayer video world model in Minecraft.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.22208>
+- [arXiv PDF](https://arxiv.org/pdf/2602.22208)：已通读方法部分（实验与附录以略读为准）：摘要、§3 SolarisEngine 数据系统、§4 模型设计、§5 多阶段训练流程；§6–7 评测与消融略读
 
 ## 推荐继续阅读
 

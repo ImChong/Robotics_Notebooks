@@ -42,6 +42,21 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["阶段 1 构建 SANS 数据集：成功 + 近成功轨迹（ManiSkill / LIBERO / 真机）\n含视频、动作、逐步二值奖励"] --> B["阶段 2 状态感知视频世界模型\nCosmos-Predict 2（DiT）+ 动作嵌入 MLP 加到时间步嵌入"]
+  B --> C["Reward Head：由扩散 latent 预测逐步奖励\n联合优化 流匹配损失 + 奖励回归"]
+  C --> D["ManiSkill 预训练 → 少量成功/近成功示范微调到新场景"]
+  D --> E["阶段 3 世界模型作为虚拟环境\nOpenVLA-OFT 策略出动作 → 世界模型生成后续观测与奖励（闭环）"]
+  E --> F["奖励阈值化为二值成功信号 → 组内优势 → GRPO 更新策略（SimpleVLA-RL 流程）"]
+  F --> G["阶段 4 部署更新后的策略，收集成功/近成功 rollout"]
+  G -->|"扩充 SANS 数据集"| D
+```
+
+/tmp/x_31/5.b
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.06508>
+- [arXiv PDF](https://arxiv.org/pdf/2602.06508)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1–3.3，含 Fig. 3）、§4 开头的实验设定
 
 ## 推荐继续阅读
 
