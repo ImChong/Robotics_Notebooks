@@ -42,6 +42,28 @@ A world model that predicts future physical states of embodied systems from curr
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["物理状态 s = (q, q̇)"] --> PE["Position Encoder (ResNet)<br/>输出下三角 L，M = L Lᵀ"]
+    S --> SE["State Encoder (ResNet)<br/>输出 b(s)"]
+    AC["动作 a（关节力矩等）"] --> AE["Action Encoder (MLP)<br/>输出 τ(a)"]
+    PE --> PR["Predictor<br/>q̈ = M·(b + τ)，与 q̇ 组成 ṡ_pred"]
+    SE --> PR
+    AE --> PR
+    S --> CO["Corrector (并联 ResNet)<br/>ε(s, a) 建模接触/摩擦等未建模项"]
+    AC --> CO
+    PR --> SUM["ṡ = Predictor + Corrector"]
+    CO --> SUM
+    SUM --> ODE["Neural ODE（DOPRI5 积分多个子步）"]
+    ODE --> NS["预测下一状态；滚动得到长时域预测"]
+    TR1["多阶段训练 阶段1：只训 Predictor"] --> TR2["阶段2：冻结 Predictor，训 Corrector"]
+    NS --> RL["可作为 dm_control 环境替身<br/>接入 TQC / SAC 做零样本、少样本 RL"]
+```
+
+图依据：论文 §2.1 Architecture / Fig.2、§2.3 Multi-Stage Training、§3.4（多阶段训练两节点以独立链路画出，未连入推理主干）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ A world model that predicts future physical states of embodied systems from curr
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.07095>
+- [arXiv PDF](https://arxiv.org/pdf/2504.07095)：已通读方法部分（实验与附录以略读为准）：§2.1–2.3、§3.4、§3.6–3.7
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ A real‑time interactive world model on Minecraft that generates game scenes us
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["Minecraft 游戏画面 x_i"] --> VQ["VQ-VAE 视觉 tokenizer<br/>16× 空间压缩，逐帧独立编码"]
+    A["键鼠动作 a_i"] --> AT["动作 tokenizer<br/>7 类互斥离散动作 + 相机角度分 bin"]
+    VQ --> SEQ["交错 token 序列<br/>状态 token + aBOS + 动作 token + aEOS"]
+    AT --> SEQ
+    SEQ --> TF["LLaMA 式 Transformer 解码器<br/>自回归训练 p(t_i | t_<i)"]
+    TF --> PD["并行解码 Diagonal Decoding<br/>相邻行列 token 同轮生成"]
+    PD --> NX["下一帧 token → VQ 解码器还原画面 x_i+1"]
+    TF -. 同一模型也可预测动作 .-> POL["策略模型 p(a | 历史画面)"]
+```
+
+图依据：论文 §2.1–2.3 / Fig.1、Fig.2（"VQ 解码器还原画面"一步为由 VQ-VAE 的编码-解码结构推出，非原文单独成句；策略模型分支见 §2.2 末段）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ A real‑time interactive world model on Minecraft that generates game scenes us
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.08388>
+- [arXiv PDF](https://arxiv.org/pdf/2504.08388)：已通读方法部分（实验与附录以略读为准）：§2 Framework（2.1–2.3）、§3.1–3.3
 
 ## 推荐继续阅读
 
