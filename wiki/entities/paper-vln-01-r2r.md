@@ -37,6 +37,33 @@ sources:
 - VLN 领域奠基工作：离散导航图 + Seq2Seq 基线，成为后续几乎所有 benchmark 的基础设施。
 - 提出 R2R 数据集、Matterport3D 导航图仿真与 VLN 评测基准，将任务形式化为「全景序列 + 语言指令 → 逐步动作」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 基准
+        MP["Matterport3D 室内全景扫描"] --> SIM["Matterport3D Simulator<br/>离散导航图 + 第一人称 RGB 观测"]
+        SIM --> DATA["R2R 数据集<br/>人工撰写导航指令 + 起点/终点路径"]
+        DATA --> SPLIT["train / val seen / val unseen / test"]
+    end
+    subgraph Seq2Seq基线
+        INS["导航指令 x (词序反转)"] --> ENC["Encoder LSTM -> 上下文 h̄"]
+        OBS["当前图像 o_t -> ResNet-152 特征"] --> CAT["与上一动作嵌入拼接 q_t"]
+        PREV["上一动作 a_{t-1}"] --> CAT
+        CAT --> DEC["Decoder LSTM -> h_t"]
+        ENC --> ATT["Attention: 指令上下文 c_t"]
+        DEC --> ATT
+        ATT --> ACT["softmax 动作分布<br/>(左/右/上/下/前进/停止 共 6 个)"]
+    end
+    SIM -->|"执行动作, 返回新观测"| OBS
+    ACT --> SIM
+    SPLIT --> TRAIN["训练: teacher-forcing 或 student-forcing<br/>逐步交叉熵, 目标为最短路径下一动作"]
+    TRAIN --> DEC
+    ACT --> EVAL["评测: 终点误差 < 3m 视为成功<br/>(需主动 stop)"]
+```
+
+图依据：论文 §3 Matterport3D Simulator / §4 R2R 数据集与评测 / §5.1–5.2 Sequence-to-Sequence 模型与训练
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +117,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/1711.07280>
+- [arXiv PDF](https://arxiv.org/pdf/1711.07280)：已通读方法部分（实验与附录以略读为准）：§3 模拟器、§4 R2R 数据集与评测协议、§5.1–5.2 Seq2Seq 基线与训练；§5.3 之后的实验结果略读
 
 ## 推荐继续阅读
 

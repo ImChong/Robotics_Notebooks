@@ -37,6 +37,26 @@ sources:
 - 潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#03/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["无奖励离线数据集<br/>(s_t, a_t, s_t+1)"] --> B["FB 训练：学习前向 F(s,a,z) 与后向 B(s, z)<br/>拟合后继测度 M^πz ≈ F⊤B·ρ (Bellman 残差)"]
+    B --> C["自回归特征 (FB-AWARE)：z 与 B 切成 K 个块<br/>B_i 只依赖 z_1…z_{i-1}，用层间连接掩码实现 (K=4 或 8)"]
+    A --> D["离线优化改进 (FB-AW)：策略用优势加权回归<br/>权重用 IWIS 近似；z 对每个样本独立采样"]
+    D --> E["评估期采样 ES：采 M 个动作，取 F⊤z 最大者"]
+    D --> F["不确定性：两个并行 F 网络<br/>目标后继测度取平均 (不取 min)"]
+    B --> G["训练得到 F、B、π_z"]
+    C --> G
+    E --> G
+    F --> G
+    G --> H["测试时给定奖励 r"]
+    H --> I["任务编码 z：z = E[r(s)B(s)] (FB / FB-AW)<br/>FB-AWARE 逐块计算 z_i = E[r(s)B_i(s, z_1…z_{i-1})]"]
+    I --> J["零样本执行策略 π_z，无需针对新任务再训练"]
+```
+
+图依据：论文 §2 预备（FB 框架 Eq.1-4）、§3.1 自回归特征 / Fig.1、§3.2 优势加权与其他离线改进（Eq.7-9）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -89,6 +109,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2412.04368>
+- [arXiv PDF](https://arxiv.org/pdf/2412.04368)：已通读方法部分（实验与附录以略读为准）：摘要、§2 预备、§3 方法（3.1 自回归特征、3.2 优势加权/评估期采样/不确定性表示）
 
 ## 推荐继续阅读
 

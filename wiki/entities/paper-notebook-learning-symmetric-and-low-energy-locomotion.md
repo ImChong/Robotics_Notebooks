@@ -31,7 +31,27 @@ Learning Symmetric and Low-energy Locomotion 的人形机器人学习论文条�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置、原文入口与依据论文方法部分的「流程总览」，不给指标结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["状态 s = [q, q̇, 接触 c, 目标速度 v̂]"] --> POL["策略 π_θ (PPO)<br/>动作 = 关节力矩"]
+    POL --> ROL["生成 rollout"]
+    VA["虚拟助手: 骨盆处 SPD (PD) 控制器<br/>横向平衡力 + 前向推进力"] -->|"辅助力"| ROL
+    ROL --> R["通用奖励: 前进速度 + 直立 + 横向偏移 + alive 与 力矩惩罚"]
+    R --> LPPO["PPO 损失 L_PPO"]
+    ROL --> LSYM["镜像对称损失 L_sym<br/>||π(s) - Ψa(π(Ψo(s)))||²"]
+    LPPO --> OPT["联合优化 L_PPO + w·L_sym"]
+    LSYM --> OPT
+    OPT --> POL
+    OPT --> CUR["课程调度: 调整辅助强度 x=(kp,kd)<br/>learner-centered: 五方向线搜索<br/>environment-centered: 预设线性路径 + 阶梯式衰减"]
+    CUR --> VA
+    CUR -->|"|x| < ε"| FIN["无辅助最终训练 x=(0,0)"]
+```
+
+图依据：论文 §3 Background（状态/奖励/PPO）/ §4 Locomotion Curriculum Learning（Algorithm 1–3, Fig.2）/ §5 Mirror Symmetry Loss（Eq.5–7）
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ Learning Symmetric and Low-energy Locomotion 的人形机器人学习论文条�
 - [humanoid_pnb_learning-symmetric-and-low-energy-locomotion.md](../../sources/papers/humanoid_pnb_learning-symmetric-and-low-energy-locomotion.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/1801.08093>
+- [arXiv PDF](https://arxiv.org/pdf/1801.08093)：已通读方法部分（实验与附录以略读为准）：§3 策略学习、§4 课程学习（虚拟助手与两种课程调度）、§5 镜像对称损失；§6 实验与附录略读
 
 ## 推荐继续阅读
 

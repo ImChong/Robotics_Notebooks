@@ -40,6 +40,28 @@ Xue et al. General whole-body controller targeting fine-grained humanoid locomot
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CMD["命令空间 C = 任务命令 + 行为命令<br/>任务：目标速度 (v_x, v_y, ω)<br/>行为：步频 f、摆动高度 l、身高 h、俯仰 p、腰 yaw w、相位偏移 ψ、占空比"] --> GAIT["步态相位变量 φ1, φ2<br/>由 ψ 与 f 生成（walk / jump / stand / hop）"]
+    GAIT --> CLK["期望接触概率 C(φ)<br/>+ 时钟函数 sin(2π·φ̄)"]
+    CLK --> ACTOR
+    CMD --> ACTOR
+    subgraph AAC["非对称 Actor-Critic（PPO）"]
+        ACTOR["Actor（MLP）<br/>输入：本体感觉历史 + 命令 + 上身干预指示 I(t)<br/>输出：全身关节目标"]
+        CRITIC["Critic（MLP）<br/>额外输入：特权观测 + 地形高度采样"]
+        ENC["特权信息估计 encoder<br/>(线速度、身高、摆动高度)"]
+        ENC --> ACTOR
+    end
+    RWD["奖励：任务（速度跟踪）+ 行为（身高 / 俯仰 / 腰 / 摆动轨迹 / 接触-摆动）+ 正则"] --> AAC
+    SYM["镜像函数 + 对称性损失 L_sym<br/>L = L_AAC + β·L_sym"] --> AAC
+    INT["上身干预训练<br/>以采样动作替换策略的上身动作（噪声课程）<br/>并屏蔽上身正则奖励"] --> AAC
+    AAC --> DEP["部署：Actor + encoder，50 Hz<br/>上身可由遥操作 / 重定向动作外部控制"]
+```
+
+图依据：论文 §III Background（命令空间、步态相位、观测）、§IV HugWBC（A 通用命令空间、B Detailed Observation、C 奖励设计、D Mirror Function and Symmetry Loss、E External Upper-Body Intervention Training）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +125,7 @@ Xue et al. General whole-body controller targeting fine-grained humanoid locomot
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2502.03206>
+- [arXiv PDF](https://arxiv.org/pdf/2502.03206)：已通读方法部分（实验与附录以略读为准）：§III Background、§IV HugWBC（A–E）
 
 ## 推荐继续阅读
 

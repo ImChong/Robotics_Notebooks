@@ -42,6 +42,21 @@ sources:
 - 状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#28/41）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    ENVI["与环境交互：高维观测 o_t，堆叠为状态 s_t"] --> RE["随机编码器 f_θ<br/>参数随机初始化，训练全程固定"]
+    RE --> Y["低维表示 y = f_θ(s)<br/>与转移一同存入回放池 B"]
+    Y --> KNN["在 B 中对 y_i 做 k 近邻（k=3）<br/>内在奖励 r^i = log(‖y_i − y_i^kNN‖ + 1)"]
+    KNN --> TOT["总奖励 r^total = r^e + β_t · r^i<br/>β_t = β_0 (1 − ρ)^t 指数衰减"]
+    TOT --> RL["底层 RL 更新策略 π_φ<br/>off-policy（Algorithm 1）或 on-policy（Algorithm 2）"]
+    RL --> ENVI
+    PRE["无监督预训练变体：r^e = 0，仅用 r^i 探索<br/>再用于下游任务微调"] -.-> TOT
+```
+
+图依据：论文 §3.1 / §3.2（随机编码器、k-NN 熵估计内在奖励、RE3 目标，Eq.(3)(4)）与 Algorithm 1 / 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +106,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2102.09430>
+- [arXiv PDF](https://arxiv.org/pdf/2102.09430)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1 预备知识、§3.2 随机编码器探索）、§4.1 实验设定
 
 ## 推荐继续阅读
 
