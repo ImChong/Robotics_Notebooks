@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-01] structural | roadmap 巡检：硬件设计/力矩电机/RL 运动控制三条纵深补入 11-01 新增知识节点链接
+
 ## [2026-11-02] ingest | sources/repos/unclebob-ub-mode.md — 收录编码代理技能及质量工具边界
 
 - 已核对 README 与 SKILL.md；配套工具分属独立仓库。
