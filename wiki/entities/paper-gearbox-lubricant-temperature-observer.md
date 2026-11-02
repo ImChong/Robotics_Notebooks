@@ -41,6 +41,23 @@ summary: "Gearbox Lubricant Temperature Observer（arXiv:2610.23881）：用两�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。公众号项目页入口为数据集 DOI（HTTP 200），未见代码仓库。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["测量输入：电机速度 θ̇、环境温度 T_E、壳体温度 T_H（PT100）"] --> B["两状态热传递模型：状态 T_L、T_H，输入 τf·θ̇ 与 T_E，输出 T_H"]
+  B --> C["观测器：Luenberger 观测器或 Kalman 滤波，以壳体温度 T_H 作测量修正"]
+  C --> D["估计润滑温度 T̂_L"]
+  D --> E["温度相关 Stribeck 摩擦模型：Coulomb/静摩擦/Stribeck 速度/粘性参数为温度的二次函数"]
+  A -->|"θ̇"| E
+  E --> F["摩擦力矩 τf"]
+  F -->|"反馈到热源 P_L,in = τf·θ̇"| B
+  G["参数辨识：5 组恒速加热测量，积分形式线性最小二乘辨识热模型；Levenberg-Marquardt 辨识摩擦参数"] -.-> B
+  G -.-> E
+```
+
+图依据：论文 §II-A 至 §II-C / Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +100,7 @@ summary: "Gearbox Lubricant Temperature Observer（arXiv:2610.23881）：用两�
 - [gearbox_lubricant_temperature_observer_arxiv_2610_23881.md](../../sources/papers/gearbox_lubricant_temperature_observer_arxiv_2610_23881.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23881](https://arxiv.org/abs/2610.23881)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23881)：已通读方法部分（实验与附录以略读为准）：实验台架、两状态热模型与观测器、Stribeck 摩擦模型、辨识与验证（§II、§III）
 
 ## 推荐继续阅读
 

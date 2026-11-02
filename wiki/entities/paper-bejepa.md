@@ -36,6 +36,30 @@ sources:
 
 动作跟踪器可能把姿态复现得很准，却让机器人停在参考动作原本不该出现的位置。BeJEPA把世界坐标中的根位置和朝向与身体构型共同纳入目标，使控制器能判断“先迈一步、暂时偏离姿态”是否有助于最终回到目标位姿。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["重定向人体动作数据 D_ref：提供目标与条件运动先验"] --> G["目标采样 p_g：采集目标 / 回放 / 参考状态"]
+    ENV["Isaac Sim 并行环境：goal-conditioned 转移存入 replay buffer B"] --> ENC["共享编码器 E_φ：状态 s 与目标 s_g 嵌入 z, z_g"]
+    ENC --> DYN["Dynamic Predictor D_ν(z_t, a_t) ≈ z_t+1（目标无关一步预测）"]
+    ENC --> SUC["Successor Predictor S_ξ(z_t, z_g)：折扣未来状态特征，TD 目标 + EMA 目标网络"]
+    DYN --> LW["L_world = λ_D·L_D + L_S + 表征正则（Lorth + 腕部读出）"]
+    SUC --> LW
+    LW --> ENC
+    OBS["观测历史编码器 E_η：蒸馏部署可得观测"] --> ACT["actor π_θ(z̃, h, z_g)"]
+    G --> ACT
+    DYN --> COMP["组合动作价值：先 Dynamic 预测下一嵌入，再 Successor 评估后续行为"]
+    SUC --> COMP
+    COMP --> LA["L_actor = -⟨S_ξ(D_ν(z, π_θ(·)), z_g), z_g⟩ + 运动先验 / 物理惩罚；仅更新 actor"]
+    LA --> ACT
+    ACT --> ENV
+    ACT --> MPC["部署精修：以冻结 Dynamic 滚动短时域，梯度式 latent MPC 优化有界动作残差 δ"]
+    MPC --> EXE["执行首个动作并重规划（Unitree G1）"]
+```
+
+图依据：论文 §3（问题设定、Dynamic–Successor 学习、Algorithm 1、在线对齐精修）/ Fig.2
+
 ## 核心原理
 
 ### Dynamic 与 Successor 分工
@@ -98,6 +122,7 @@ sources:
 
 - [BeJEPA 论文来源归档](../../sources/papers/bejepa_arxiv_2610_23127.md)
 - [BeJEPA 项目页核查记录](../../sources/sites/bejepa-project-page.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23127)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§4 开头（方法、Algorithm 1、latent MPC 精修、Q1 实验设置与部分结果）；后续实验、硬件部署与附录仅浏览
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "可变形物体形状伺服教程（一）：基础原理（arXiv:2610
 
 # 可变形物体形状伺服教程（一）：基础原理
 
-**形状伺服教程 Part I**（*A Tutorial on Shape Servoing of Deformable Objects-Part I: Fundamentals*，[arXiv:2610.40559](https://arxiv.org/abs/2610.40559)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**形状伺服教程 Part I**（*A Tutorial on Shape Servoing of Deformable Objects-Part I: Fundamentals*，[arXiv:2610.40559](https://arxiv.org/abs/2610.40559)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,28 @@ summary: "可变形物体形状伺服教程（一）：基础原理（arXiv:2610
 ## 为什么重要
 
 - 周报所述待解决的问题：机器人控制柔性物体达到目标形状时，需要知道机器人运动如何影响物体形变，但该关系依赖材料、几何和抓取边界条件，难以准确建模。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["相机测量 y_k"] --> PER["感知：特征映射 s_k = f(y_k)"]
+    PER --> ERR["形状误差 e_k = s* − s_k"]
+    TGT["目标形状特征 s*"] --> ERR
+    OFF["离线估计：每个驱动自由度做小幅探测运动<br/>最小二乘回归得 Ĵ0 = ΔS·ΔQ⁺"] --> JH["形变雅可比估计 Ĵ_k"]
+    JH --> CTL["控制律 u_k = α Ĵ_k⁺ e_k（Moore–Penrose 伪逆）"]
+    ERR --> CTL
+    CTL --> ROB["机器人执行速度指令 u_k，持续 Δt；Δq_k = u_k Δt"]
+    ROB --> OBJ["可变形物体准静态变形"]
+    OBJ --> CAM
+    ROB --> PAIR["动作-响应对 (Δq, Δs)"]
+    PER --> PAIR
+    PAIR --> UPD["在线更新：Broyden 规则<br/>Δq 过小时跳过更新"]
+    UPD --> JH
+    ERR --> STOP["任务级监督器：误差低于阈值时停止"]
+```
+
+图依据：论文 §II–§IV、Fig. 2、Algorithm 1（§IV-A）；局部稳定性与可达性分析见 §IV-B/C，未入图。
 
 ## 核心机制
 
@@ -87,6 +109,7 @@ summary: "可变形物体形状伺服教程（一）：基础原理（arXiv:2610
 - [shape-servoing-deformable-objects-tutorial-part1_arxiv_2610_40559.md](../../sources/papers/shape-servoing-deformable-objects-tutorial-part1_arxiv_2610_40559.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40559](https://arxiv.org/abs/2610.40559)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40559)：已通读方法部分（实验与附录以略读为准）：§II 形状伺服环路组成、§III 雅可比离线估计与在线更新、§IV 闭环算法/可达性/局部稳定性
 
 ## 推荐继续阅读
 

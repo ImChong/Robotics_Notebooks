@@ -42,6 +42,26 @@ summary: "Interventional Memory Evaluation VLA（arXiv:2610.23372）：IMEP在�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页为 anonymous.4open.science 匿名链接，curl 返回 HTTP 401，无法核查代码。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["配对单元：相同 任务-种子 或多回合链，跨条件复用"] --> B["记忆流程：先前回合写入记忆 → 查询时 VLA 读取 → 决策 → 执行"]
+  B --> C["在检索接口施加条件"]
+  C --> C1["访问/oracle：A 参考记忆，N 阻断读取或清空，O 给出正确事实/决策"]
+  C --> C2["控制：C 精确重复，U 一个 ULP 数值扰动"]
+  C --> C3["事实替换：S 同事实记录，T 不同事实记录"]
+  C1 --> D["分别读出：决策正确率（可观测时）与任务成功率，不合并"]
+  C2 --> D
+  C3 --> D
+  D --> E["Q1 净收益 D_N；Q2 条件；Q3 结果敏感度 ρ 对比重复下限；Q4 事实特异性 θ = ρ_T − ρ_S"]
+  F["解释检查：信息（历史是否必需）、投递（读取/替换覆盖率）、有效性（记录是否仍有效）"] --> E
+  G["ChainBench（LIBERO）：写入回合揭示物体所在抽屉 → 干扰回合写入其他记录 → 查询时抽屉关闭、观测相同"] --> H["先决策选定一个抽屉，再由冻结的 π0.5 执行"]
+  H --> D
+```
+
+图依据：论文 §3.1–3.5 / Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "Interventional Memory Evaluation VLA（arXiv:2610.23372）：IMEP在�
 - [interventional_memory_evaluation_vla_arxiv_2610_23372.md](../../sources/papers/interventional_memory_evaluation_vla_arxiv_2610_23372.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23372](https://arxiv.org/abs/2610.23372)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23372)：已通读全文主文：IMEP 协议、干预与读出、ChainBench（§3、§4；附录仅查阅相关设定）
 
 ## 推荐继续阅读
 

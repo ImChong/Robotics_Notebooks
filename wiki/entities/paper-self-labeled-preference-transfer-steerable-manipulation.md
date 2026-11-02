@@ -20,7 +20,7 @@ summary: "SPT 自标注偏好迁移：面向可控机器人操作的自标注偏
 
 # SPT 自标注偏好迁移：面向可控机器人操作的自标注偏好迁移
 
-**SPT 自标注偏好迁移**（*Self-Labeled Preference Transfer for Steerable Robot Manipulation*，[arXiv:2610.38000](https://arxiv.org/abs/2610.38000)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**SPT 自标注偏好迁移**（*Self-Labeled Preference Transfer for Steerable Robot Manipulation*，[arXiv:2610.38000](https://arxiv.org/abs/2610.38000)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,26 @@ summary: "SPT 自标注偏好迁移：面向可控机器人操作的自标注偏
 ## 为什么重要
 
 - 周报所述待解决的问题：VLA 可以从标注示范中学习抓取位置、绕障路径等执行偏好，但迁移到新任务后，普通微调容易提高任务成功率，却破坏原有偏好控制能力。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    SRC["带偏好标签的源任务示范 D_S<br/>(轨迹, 指令 ℓ_S, 偏好 c)"] --> A
+    subgraph A["Stage A：源域联合训练（共享 VLM 骨干）"]
+        direction TB
+        ACT["动作分支：指令后追加 Preference: w(c)<br/>动作专家预测动作块，回归损失 L_act"]
+        REC["识别分支：复用 VLM 语言头<br/>输入演示片段 + 本体状态 + 偏好问题，单 token 作答，交叉熵 L_inf"]
+    end
+    A --> LA["L_A = L_act + λ·L_inf<br/>得到策略 π_θA 与识别器 g_θA"]
+    TGT["无偏好标签的目标任务示范 D_T"] --> LAB
+    LA -->|"冻结 g_θA 副本"| LAB["Stage B(1) 自标注：ĉ = argmax g_θA(c | o, s, q)<br/>缓存标签并追加到指令"]
+    LAB --> ADP["Stage B(2) 适配：从 π_θA 初始化，仅用动作损失<br/>L_B = L_act(w(ĉ))，识别器保持冻结"]
+    LA -->|"初始化策略副本"| ADP
+    ADP --> DEP["部署：用户给目标指令 + 源词表中的偏好<br/>只运行动作策略，无额外识别调用"]
+```
+
+图依据：论文 §IV Methods（Stage A / Stage B / Deployment）、Fig. 2、式 (3)–(5)。
 
 ## 核心机制
 
@@ -87,6 +107,7 @@ summary: "SPT 自标注偏好迁移：面向可控机器人操作的自标注偏
 - [self-labeled-preference-transfer-steerable-manipulation_arxiv_2610_38000.md](../../sources/papers/self-labeled-preference-transfer-steerable-manipulation_arxiv_2610_38000.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.38000](https://arxiv.org/abs/2610.38000)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38000)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 方法（Stage A 联合训练 / Stage B 自标注与适配 / 部署）、§V 实验设定
 
 ## 推荐继续阅读
 

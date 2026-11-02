@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-02] ingest | Khushi X Article《From RT1 to MolMoAct2: A brief history of VLAs》：10 个模型各一个唯一节点（新建 SmolVLA、MolmoAct，复用 8），含时间线地图
+
 ## [2026-11-02] ingest | FACT EgoForce：核对论文全文与项目页，补充流程图及人类力标签边界；代码和数据待发布
 
 ## [2026-11-02] ingest | sources/sites/roboatom.md — 补充 RoboAtom 官方发布入口和已有论文节点，待完成全文核对

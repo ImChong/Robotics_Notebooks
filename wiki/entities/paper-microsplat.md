@@ -43,6 +43,25 @@ summary: "MicroSplat（arXiv:2610.23899）：MicroSplat用机械臂搭载消费�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["Setup（唯一人在回路阶段）：一次性标定 + 每个样本的人工居中"] --> A1["棋盘格标定：内参 + 手眼标定，机械臂人工微调对焦"]
+  A --> A2["5 个姿态人工点动对准十字线，最小二乘估计样本中心"]
+  A1 --> B
+  A2 --> B["数据采集离线规划：半球 Fibonacci 视点，look-at 朝向，最近邻排序，图像中心射线朝向修正"]
+  B --> C["SEW 解析 IK（7 自由度）枚举解，过滤碰撞与关节限位，保留约 134–135 个可达视点"]
+  C --> D["在线采集：RRT* 无碰撞运动到各视点"]
+  D --> E["每视点沿光轴推进共 40 mm，拍 30 张焦点堆栈"]
+  E --> F["预处理-聚焦堆叠：中值滤波，Tenengrad 清晰度，高斯拟合，取 μ±σ 内图像做小波 EDOF 融合"]
+  F --> G["预处理-掩码：首张图 Canny 边缘采样点提示 SAM 2，视频模式传播到全部视点"]
+  G --> H["COLMAP：SIFT 特征匹配，以机器人位姿为初值做光束法平差，输出稀疏点云"]
+  H --> I["gsplat 3DGS：调高致密化阈值 + 背景 alpha 正则 L_bg，训练高斯场"]
+```
+
+图依据：论文 §III（Setup、数据采集、预处理、重建）/ Fig.3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +105,7 @@ summary: "MicroSplat（arXiv:2610.23899）：MicroSplat用机械臂搭载消费�
 - [microsplat_arxiv_2610_23899.md](../../sources/papers/microsplat_arxiv_2610_23899.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23899](https://arxiv.org/abs/2610.23899)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23899)：已通读方法部分（实验与附录以略读为准）：硬件、标定与居中、视点规划与采集、聚焦堆叠与掩码、COLMAP + 3DGS 重建（§III）
 
 ## 推荐继续阅读
 

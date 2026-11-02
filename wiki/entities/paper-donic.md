@@ -37,6 +37,29 @@ summary: "DONIC jointly trains one bimanual dexterous reference-tracking policy 
 
 双手操作常要求两只手分工，接触时序也可能不同。仅追踪手部姿态并不能确保物体按目标移动。DONIC 把物体运动、逐手接触角色和多来源参考轨迹结合起来，尝试让单一策略掌握更多双手协调行为。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["BiHOI：32 路校准 RGB 多视角双手-物体采集"] --> B["重建：SAM3 掩码 + 多视角 Depth Anything 3 + MV-SAM3D 网格 + FoundationPose 6DoF"]
+    A --> C["手部重建：WiLoR 观测三角化 + MANO 拟合"]
+    B --> D["逐帧运动学 retargeting 到 Wuji 机器人手"]
+    C --> D
+    D --> E["参考 τ = 双手构型 + 物体位姿"]
+    P["公开数据集 GRAB / GigaHands / OakInk2 / TACO / H2O 经 retarget 与回放筛选"] --> E
+    E --> F["单一策略 π_θ 观测：本体、物体、参考目标、误差"]
+    F --> G["输出对下一参考的有界修正 a_t，PD 控制目标 q_pd"]
+    G --> H["Isaac Gym 仿真执行"]
+    H --> I["object-centered per-hand reward：手部 + 物体 + 接触 + 保持"]
+    I --> J["GAE 优势 + Clip-Centered Advantages 减去片段均值"]
+    J --> K["PPO 更新 + 示范 BC 损失 λ·MSE"]
+    H --> L["验证成功的轨迹进入示范库 D"]
+    L --> K
+    K --> F
+```
+
+图依据：论文 §3.2、§4.1–4.4 / Fig.2
+
 ## 核心原理
 
 BiHOI 以 32 个校准 RGB 视角采集 1,575 段、覆盖 229 个物体和 14.77 小时的交互。研究者重建双手与物体，再将人手动作重定向到 Wuji 机器人手参考轨迹，与公开数据源共同训练。
@@ -94,6 +117,7 @@ BiHOI 以 32 个校准 RGB 视角采集 1,575 段、覆盖 229 个物体和 14.7
 - [DONIC 官方项目页](https://ropedia.github.io/DONIC/)
 - [DONIC 官方代码仓库](https://github.com/Ropedia/DONIC)
 - [arXiv:2610.29997](https://arxiv.org/abs/2610.29997)
+- [arXiv PDF](https://arxiv.org/pdf/2610.29997)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§5.1（BiHOI 采集与重建、任务定义、参考条件控制、逐手奖励、CCA、PPO+BC 与示范库、实验设定）；结果与消融、附录仅浏览
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "DAWN：基于扩散策略的对准与螺钉拆卸流程网络（arXiv:
 
 # DAWN：基于扩散策略的对准与螺钉拆卸流程网络
 
-**DAWN**（*DAWN: Diffusion-based Alignment and unfastening Workflow Network*，[arXiv:2610.40537](https://arxiv.org/abs/2610.40537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**DAWN**（*DAWN: Diffusion-based Alignment and unfastening Workflow Network*，[arXiv:2610.40537](https://arxiv.org/abs/2610.40537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,21 @@ summary: "DAWN：基于扩散策略的对准与螺钉拆卸流程网络（arXiv:
 ## 为什么重要
 
 - 周报所述待解决的问题：自动螺钉拆卸需要完成精确对准、工具插入和持续施力，多个阶段的误差会相互影响。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["Franka 遥操作采集示教 (10 Hz)<br/>三路 RGB + 本体 + 力/力矩 + 动作"] --> B["三个子网络分别独立训练"]
+  B --> C["AlignNet (阶段 1: 对准与插入)<br/>ResNet-18 + 本体 MLP + 力 MLP<br/>+ action token 经 Transformer 解码器"]
+  C --> D["扩散策略 (1D 时序 CNN, DDPM)<br/>输出绝对末端位置动作序列"]
+  D --> E["LatchNet: 冻结 ResNet-18 图像 + 力 MLP<br/>二分类: 螺丝刀头是否稳固卡入螺钉"]
+  E -->|"未卡入"| C
+  E -->|"已卡入, 阶段切换"| F["UnfastNet (阶段 2: 拆卸)<br/>仅力输入的 3 层 MLP"]
+  F --> G["输出 delta 末端动作 (BC 损失)<br/>约束: 保持接触、反作用力 < 20 N"]
+```
+
+图依据：论文 §III-B（Fig.1–2）、§IV-A、§IV-F
 
 ## 核心机制
 
@@ -87,6 +102,7 @@ summary: "DAWN：基于扩散策略的对准与螺钉拆卸流程网络（arXiv:
 - [dawn-diffusion-alignment-unfastening_arxiv_2610_40537.md](../../sources/papers/dawn-diffusion-alignment-unfastening_arxiv_2610_40537.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40537](https://arxiv.org/abs/2610.40537)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40537)：已通读方法部分（实验与附录以略读为准）：§I–§V（§III 数据采集与三个子网络结构、§IV 实验含 LatchNet 阶段切换与完整任务评测）
 
 ## 推荐继续阅读
 

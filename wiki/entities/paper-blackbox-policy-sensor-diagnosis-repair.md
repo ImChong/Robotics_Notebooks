@@ -20,7 +20,7 @@ summary: "黑箱策略传感器诊断修复：黑盒机器人策略失效时：�
 
 # 黑箱策略传感器诊断修复：黑盒机器人策略失效时：基于透明代理的在线传感器诊断与修复
 
-**黑箱策略传感器诊断修复**（*When Black-Box Robot Policies Fail: Online Sensor Diagnosis and Repair with a Transparent Surrogate*，[arXiv:2610.36852](https://arxiv.org/abs/2610.36852)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**黑箱策略传感器诊断修复**（*When Black-Box Robot Policies Fail: Online Sensor Diagnosis and Repair with a Transparent Surrogate*，[arXiv:2610.36852](https://arxiv.org/abs/2610.36852)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,23 @@ summary: "黑箱策略传感器诊断修复：黑盒机器人策略失效时：�
 ## 为什么重要
 
 - 周报所述待解决的问题：冻结的黑盒运动策略遇到传感器故障时，无法通过访问策略内部结构定位和修复错误输入。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["冻结黑盒策略 URMA<br/>(只看输入与动作, 不取内部结构)"] --> B["离线拟合结构化代理<br/>64k 状态-动作对 + 32k 交替控制数据"]
+    B --> C["代理: 周期步态 uF(φ,v) + 截断修正项 r<br/>r = 相位基线 b + 各传感器贡献 c_i"]
+    C --> D["相位估计: 左前足触地重置步态相位"]
+    D --> E["MBD 诊断: 20 个相位桶内与健康参考比较<br/>修正偏离超 2 倍标准差则标记"]
+    E --> F["按传感器单元累加得分 S_U<br/>在 34 个传感器单元中排序"]
+    F --> G["PRR 修复所选传感器<br/>随相位变化: 替换为健康相位均值<br/>否则: 估计并减去加性偏置"]
+    G --> H["修复后输入送回冻结策略输出动作"]
+    E --> I["在线 MBD: 50 步窗口内标记比例<br/>下四分位超校准阈值则触发"]
+    I --> F
+```
+
+图依据：论文 §2 Method / Fig.1 / 式(1)-(3)
 
 ## 核心机制
 
@@ -87,6 +104,7 @@ summary: "黑箱策略传感器诊断修复：黑盒机器人策略失效时：�
 - [blackbox-policy-sensor-diagnosis-repair_arxiv_2610_36852.md](../../sources/papers/blackbox-policy-sensor-diagnosis-repair_arxiv_2610_36852.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36852](https://arxiv.org/abs/2610.36852)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36852)：已通读方法部分（实验与附录以略读为准）：§2 结构化代理、MBD 诊断、PRR 修复与在线检测，§3 实验与结果表
 
 ## 推荐继续阅读
 

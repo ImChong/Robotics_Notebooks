@@ -20,7 +20,7 @@ summary: "AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂
 
 # AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂操作
 
-**AcrossDEX 1.0**（*AcrossDEX 1.0: From Human Motion Pretraining to Bimanual Dexterous Manipulation across Hand Embodiments*，[arXiv:2610.40210](https://arxiv.org/abs/2610.40210)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**AcrossDEX 1.0**（*AcrossDEX 1.0: From Human Motion Pretraining to Bimanual Dexterous Manipulation across Hand Embodiments*，[arXiv:2610.40210](https://arxiv.org/abs/2610.40210)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,31 @@ summary: "AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂
 ## 为什么重要
 
 - 周报所述待解决的问题：不同灵巧手的手指自由度和动作空间不同，难以直接复用从人类视频学习的双手协调能力。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一: 人类运动预训练"]
+        H1["HOT3D: 5 帧图像 + 30 步手部状态历史"] --> H2["转到固定相机系, 未来运动相对当前手位姿<br/>每只手 99 维 (腕 9 + MANO 手指 90)"]
+        H2 --> H3["共享骨干: ResNet-18 + 4 层 Transformer 编码器/解码器<br/>预测未来 30 步双手运动 (BC / Diffusion / Flow 三种)"]
+    end
+    subgraph S2["阶段二: 仿真专家"]
+        E1["DexMachina 功能重定向 + PPO (Genesis 仿真)<br/>以仿真特权状态训练专家"] --> E2["记录专家最终下发的 PD 控制目标<br/>配对正面 RGB 图像"]
+    end
+    subgraph S3["阶段三: 机器人后训练"]
+        R1["保留视觉编码器 / 时序骨干 / 腕部参数<br/>新增 Inspire(6) 或 Allegro(16) 手指字段, 带有效性掩码<br/>30 步按物理时间插值为 60 步"] --> R2["Stage A: 仅学新接口 1,024 次更新"]
+        R2 --> R3["Stage B: 联合微调, 机器人:人类批次 = 4:1 (回放人类数据)"]
+    end
+    H3 --> R1
+    E2 --> R3
+    R3 --> C1["闭环部署: 单相机 + 已下发命令历史 + 任务条件<br/>预测 60 步 (1 s)"]
+    C1 --> C2["执行前 K 步 (主设置 K=6), PD 控制 60 Hz"]
+    C2 --> C3["取新图像并更新命令历史, 重新规划<br/>RTC 用前一计划的未执行部分作软前缀约束"]
+    C3 --> C1
+```
+
+图依据：论文 §II Method (A-F) / Fig.1
 
 ## 核心机制
 
@@ -87,6 +112,7 @@ summary: "AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂
 - [acrossdex-bimanual-dexterous-human-motion-pretraining_arxiv_2610_40210.md](../../sources/papers/acrossdex-bimanual-dexterous-human-motion-pretraining_arxiv_2610_40210.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40210](https://arxiv.org/abs/2610.40210)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40210)：已通读方法部分（实验与附录以略读为准）：§II 方法 A-F（预训练、专家数据、嵌入字段与参数迁移、RTC 连续性），§III 实验设置与训练细节
 
 ## 推荐继续阅读
 

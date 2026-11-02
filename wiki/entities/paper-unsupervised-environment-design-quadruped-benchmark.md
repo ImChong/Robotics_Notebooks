@@ -20,7 +20,7 @@ summary: "究竟是课程有效，还是起点简单？四足无监督环境设�
 
 # 究竟是课程有效，还是起点简单？四足无监督环境设计基准
 
-**无监督环境设计基准**（*Is It the Curriculum or Just the Easy Start? Benchmarking Unsupervised Environment Design on Quadrupeds*，[arXiv:2610.40364](https://arxiv.org/abs/2610.40364)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**无监督环境设计基准**（*Is It the Curriculum or Just the Easy Start? Benchmarking Unsupervised Environment Design on Quadrupeds*，[arXiv:2610.40364](https://arxiv.org/abs/2610.40364)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,22 @@ summary: "究竟是课程有效，还是起点简单？四足无监督环境设�
 ## 为什么重要
 
 - 周报所述待解决的问题：无监督环境设计方法主要在二维迷宫上比较，而四足地形课程使用不同机器人、预算和指标，结论无法直接对照。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["14 种课程方法<br/>DR / Terrain-CL / PLR / SFL / ACCEL / PAIRED 等"] --> B["每轮提出 256 个关卡<br/>关卡 θ = 8 维地形参数 + 噪声种子"]
+  B --> C["渲染进共享高度场<br/>每关一块 tile, 每关 32 个环境"]
+  C --> D["同一 PPO 学生训练<br/>5 种四足: W01-TEK / Go1 / Go2 / Barkour vB / Spot"]
+  D --> E["rollout 回报 / 成功率"]
+  E -->|"自适应课程: 打分 / 回放缓冲 / 编辑"| A
+  D --> F["最终策略确定性评测"]
+  F --> G["随机关卡 d=0.25/0.5/1.0<br/>留出的 7 类结构化地形<br/>平地检查 + 能力包络"]
+  G --> H["IQM + 分层自助法区间<br/>逐机器人报告不显著低于最优的方法组"]
+```
+
+图依据：论文 Fig.1、§3（基准：机器人/任务、方法、关卡空间）、§4（评测协议）
 
 ## 核心机制
 
@@ -87,6 +103,7 @@ summary: "究竟是课程有效，还是起点简单？四足无监督环境设�
 - [unsupervised-environment-design-quadruped-benchmark_arxiv_2610_40364.md](../../sources/papers/unsupervised-environment-design-quadruped-benchmark_arxiv_2610_40364.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.40364](https://arxiv.org/abs/2610.40364)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40364)：已通读 §3 基准与 §4 评测协议及 Fig.1；§5–§7 结果、指南与讨论仅浏览，未逐表核对
 
 ## 推荐继续阅读
 

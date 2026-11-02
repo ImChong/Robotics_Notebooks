@@ -43,6 +43,24 @@ summary: "FR-VLA（arXiv:2610.25981）：FR-VLA先由视觉语言上下文估计
 - 开源结论：**待发布**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["视觉-语言输入（图像 + 指令）+ 可学习 force query tokens<br/>（不携带实测力值）"] --> VLM["VLM：force query 状态 h_t^f"]
+  VLM --> PH["相位推断头 P_φ：运动相位分布 p̂_t = softmax"]
+  PH --> GATE["力准入信号 g_t^f<br/>由归一化熵衰减的 tanh 门控，带可学习尺度"]
+  W["实测 6-DoF 腕力 wrench 历史 W_t<br/>不进入 VLM token 流"] --> FT["Force Tokenizer：VQ-VAE（预训练后冻结）<br/>最近码本项 → FiLM 缩放/平移调制原始力 token"]
+  FT --> ATT["动作侧准入条件注意力（VLA-Adapter 式 action bridge）<br/>力 token 分数 + 每头偏置 β_m + g_t^f 后与 self/adapter/vision 分数联合 softmax"]
+  GATE --> ATT
+  VLM --> ATT
+  ATT --> ACT["动作专家输出 H 步 action chunk"]
+  LAB["离线相位标签：由 6D wrench 与夹爪状态划分<br/>free / approach / contact"] -.->|"交叉熵 λ_p"| PH
+  GT["示范动作 chunk"] -.->|"L1 损失"| ACT
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4 与 Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +104,7 @@ summary: "FR-VLA（arXiv:2610.25981）：FR-VLA先由视觉语言上下文估计
 - [fr_vla_arxiv_2610_25981.md](../../sources/papers/fr_vla_arxiv_2610_25981.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25981](https://arxiv.org/abs/2610.25981)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25981)：已通读方法部分（实验与附录以略读为准）：§3 方法（动机、隐式力推理模块、Force Tokenizer 与准入条件注意力、训练目标）、§4 实验
 
 ## 推荐继续阅读
 

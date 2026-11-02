@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-11-02
 arxiv: '2212.06817'
 code: https://github.com/google-research/robotics_transformer
 related:
@@ -23,6 +23,7 @@ related:
 - ../methods/generative-world-models.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+- ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
 - ../../sources/papers/rt_1_arxiv_2212_06817.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -30,6 +31,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_ref_d73223ab358ff6f8ecd9_rt-1-robotics-transformer-for-real-world.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: RT-1（arXiv:2212.06817，Google DeepMind）：大规模真机演示上的 Robotics Transformer；FiLM 语言条件 + TokenLearner + 256-bin 离散动作；google-research/robotics_transformer 已开源。
 project_id: rt-1
 venue: RSS 2023

@@ -20,7 +20,7 @@ summary: "DEX-PHD：面向多模态数据采集的便携式灵巧手持设备（
 
 # DEX-PHD：面向多模态数据采集的便携式灵巧手持设备
 
-**DEX-PHD**（*DEX-PHD: A Dexterous Portable Handheld Device for Multimodal Data Collection*，[arXiv:2610.35462](https://arxiv.org/abs/2610.35462)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**DEX-PHD**（*DEX-PHD: A Dexterous Portable Handheld Device for Multimodal Data Collection*，[arXiv:2610.35462](https://arxiv.org/abs/2610.35462)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,24 @@ summary: "DEX-PHD：面向多模态数据采集的便携式灵巧手持设备（
 ## 为什么重要
 
 - 周报所述待解决的问题：机器人运动链遥操作能够准确记录状态，但不便携；纯视觉采集便携，却缺少准确的手指状态和接触数据。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["操作者握持 DEX-PHD<br/>扳机(食/中/无名/小指/拇指) + 拇指旋钮"] --> B["按会话前标定的上下限归一化<br/>线性映射到机械手关节范围"]
+  B --> C["Ability Hand 执行<br/>(Teensy 4.0, 100 Hz 控制与记录)"]
+  C --> D["microSD 记录: 指令输入、关节位置、<br/>电流、30 个 FSR 指尖力"]
+  A --> E["腕部相机 (GoPro) 录 RGB + IMU"]
+  E --> F["视觉 SLAM (类 UMI 管线)<br/>得到腕部/末端轨迹"]
+  D --> G["同步: 拇指扳机 500 ms 内双击触发 LED<br/>后处理按 LED 闪烁对齐手部数据与视频"]
+  F --> G
+  G --> H["各平台逆运动学 (Pinocchio)<br/>关节限位 + 速度/加速度限幅 + 初始位姿偏置"]
+  H --> I["开环回放: 仿真双臂 / Unitree G1 humanoid 实机"]
+  I --> J["对比示教与回放:<br/>关节位置 MAE、相关性、接触相关性"]
+```
+
+图依据：论文 §III-A–D（Fig.2）、§IV-B–D（Fig.4–5）
 
 ## 核心机制
 
@@ -87,6 +105,7 @@ summary: "DEX-PHD：面向多模态数据采集的便携式灵巧手持设备（
 - [dex-phd-handheld-data-collection_arxiv_2610_35462.md](../../sources/papers/dex-phd-handheld-data-collection_arxiv_2610_35462.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.35462](https://arxiv.org/abs/2610.35462)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35462)：已通读方法部分（实验与附录以略读为准）：§I–§V（§III 硬件/关节映射/轨迹生成/同步，§IV 演示、IK 与实机回放）
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "随机动作标记化全身控制：基于随机动作标记化的人�
 
 # 随机动作标记化全身控制：基于随机动作标记化的人形全身控制
 
-**随机动作标记化全身控制**（*Whole-Body Humanoid Control via Stochastic Motion Tokenization*，[arXiv:2610.36452](https://arxiv.org/abs/2610.36452)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**随机动作标记化全身控制**（*Whole-Body Humanoid Control via Stochastic Motion Tokenization*，[arXiv:2610.36452](https://arxiv.org/abs/2610.36452)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,23 @@ summary: "随机动作标记化全身控制：基于随机动作标记化的人�
 ## 为什么重要
 
 - 周报所述待解决的问题：速度指令不足以描述舞蹈、格斗等复杂全身动作，而密集动作参考不适合作为高层任务接口。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["LAFAN1 / BONES-SEED 动作数据<br/>已重定向到 G1 29 自由度，30 Hz，24 帧窗口（0.8 s）"] --> FK["特征 x：q(36) + 14 个身体站点位置与 rot6d（共 162 维）"]
+    FK --> S1["Stage 1：DAPS 随机离散自编码器<br/>编码器 q_θ 输出 16 个 token（词表 1024，160 bit）"]
+    S1 --> DEC["解码器 p_φ：预测 q，再经可微正运动学得到站点"]
+    S1 -->|"冻结 q_θ，按温度 T 采样 token"| S2["Stage 2：TrajectoryGPT<br/>编码器-解码器 Transformer，12 层"]
+    C["上下文 c：行为标签 ℓ（one-hot / 文本嵌入）+ 前 N=8 个 latent 块"] --> S2
+    S2 -->|"预测下一 token 块，回灌为历史（可从 start token 起步）"| LB["滚动 latent 缓冲 L=3 块<br/>当前 0.8 s + 未来 1.6 s，可含 wildcard 块"]
+    LB --> S3["Stage 3：单个 PPO 跟踪策略<br/>观测：本体感知 + 相位 + latent 缓冲"]
+    S3 -->|"DeepMimic 式跟踪奖励 + 域随机化"| ROBOT["Unitree G1：50 Hz 部署"]
+    DEC -.->|"token 解码为参考运动，用于奖励计算"| S3
+```
+
+图依据：论文 §III-A/B/C（Stage 1–3）、Fig. 1、§V（部署循环不含 TrajectoryGPT 与 DAPS 解码器）。
 
 ## 核心机制
 
@@ -86,6 +103,7 @@ summary: "随机动作标记化全身控制：基于随机动作标记化的人�
 - [stochastic-motion-tokenization-humanoid-wbc_arxiv_2610_36452.md](../../sources/papers/stochastic-motion-tokenization-humanoid-wbc_arxiv_2610_36452.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36452](https://arxiv.org/abs/2610.36452)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36452)：已通读方法部分（实验与附录以略读为准）：§III 方法（DAPS / TrajectoryGPT / RL 跟踪）、§IV 实验、§V 讨论
 
 ## 推荐继续阅读
 

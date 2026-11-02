@@ -20,7 +20,7 @@ summary: "连续时间安全规划控制：面向敏捷四足机器人的连续�
 
 # 连续时间安全规划控制：面向敏捷四足机器人的连续时间安全规划与控制
 
-**连续时间安全规划控制**（*Continuous-Time Safe Planning and Control for Agile Quadrupeds*，[arXiv:2610.35670](https://arxiv.org/abs/2610.35670)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**连续时间安全规划控制**（*Continuous-Time Safe Planning and Control for Agile Quadrupeds*，[arXiv:2610.35670](https://arxiv.org/abs/2610.35670)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,26 @@ summary: "连续时间安全规划控制：面向敏捷四足机器人的连续�
 ## 为什么重要
 
 - 周报所述待解决的问题：离散时刻避碰不能排除两个规划点之间的碰撞，简化为单轮车模型又会丢失四足机器人的横向运动能力。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["感知 (~18 Hz): 点云 → 圆形障碍 {o_i, r_i}"] --> D
+  B["全局层: A* 给出局部目标 p_g"] --> D
+  C["状态估计前推 t_solve<br/>得到规划起点 q̂_0"] --> D
+  D["复合 Bernstein NLP (CasADi + IPOPT)<br/>变量: 位姿/输入控制点 + 时域 t_f<br/>代价: 终点吸引 + 偏航率平滑"]
+  D --> E["运动学约束施加在控制点上"]
+  D --> F["速度包络(椭圆+盒式) 与障碍间隙约束<br/>凸包性质: 控制点满足 ⇒ 全程 t 满足"]
+  E --> G["求解得到轨迹<br/>(上一解 warm-start)"]
+  F --> G
+  G --> H["输出体速度指令 u = [v_x, v_y, ω] (~36 Hz)"]
+  H --> I["运动控制器 (黑盒) 跟踪速度<br/>四足机器人 (Spot)"]
+  I -->|"里程计 / 点云反馈, 滚动重规划"| A
+  I -->|"里程计"| C
+```
+
+图依据：论文 §III-D、§IV-A–E / Fig.2（规划管线）
 
 ## 核心机制
 
@@ -87,6 +107,7 @@ summary: "连续时间安全规划控制：面向敏捷四足机器人的连续�
 - [continuous-time-safe-planning-agile-quadrupeds_arxiv_2610_35670.md](../../sources/papers/continuous-time-safe-planning-agile-quadrupeds_arxiv_2610_35670.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.35670](https://arxiv.org/abs/2610.35670)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35670)：已通读方法部分（实验与附录以略读为准）：§I–§VI（§III 问题建模、§IV 复合 Bernstein 轨迹优化与连续时间证书、§V 仿真/硬件实验）
 
 ## 推荐继续阅读
 

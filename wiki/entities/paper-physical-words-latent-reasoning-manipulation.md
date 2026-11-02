@@ -25,7 +25,7 @@ summary: "PhysWord：物理词汇：用于组织机器人操作潜在推理的�
 
 # PhysWord：物理词汇：用于组织机器人操作潜在推理的词汇体系
 
-**PhysWord**（*Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation*，[arXiv:2610.26854](https://arxiv.org/abs/2610.26854)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据项目主页与 arXiv 摘要整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**PhysWord**（*Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation*，[arXiv:2610.26854](https://arxiv.org/abs/2610.26854)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据项目主页与 arXiv 摘要整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -42,6 +42,21 @@ summary: "PhysWord：物理词汇：用于组织机器人操作潜在推理的�
 ## 为什么重要
 
 - 周报所述待解决的问题：语言推理能够描述机器人任务的语义目标，但难以表达细粒度物理变化；潜在状态推理能够预测未来，却缺少可复用的语义结构。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：语言指令 + 多视角图像历史 + 触觉（T3 encoder）"] --> TP["时序感知分支 Temporal perception branch<br/>Cosmos 初始化，预测未来 H 帧视频潜变量"]
+  IN --> RA["推理与动作分支 Reasoning-and-action branch<br/>Qwen3-VL-2B 初始化"]
+  TP <-->|"Shared attention：token 级 QKV 拼接"| RA
+  RA --> PW["自回归生成 Physical Words<br/>每 s 步一块，共 K=H/s 块，左右末端分别生成 _v / _t 变体"]
+  PW --> ACT["Noisy action tokens 关注全部前序上下文<br/>flow-matching 去噪得到 action chunk"]
+  GT["训练监督：16 个动作词 + 未来视觉/触觉潜变量目标"] -.-> L["Lvideo + LCE + Llatent 余弦 + Lact"]
+  L -.-> PW
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4 / §3.5 与 Fig. 2。
 
 ## 核心机制
 
@@ -99,6 +114,7 @@ summary: "PhysWord：物理词汇：用于组织机器人操作潜在推理的�
 - [physical-words-latent-reasoning-manipulation_arxiv_2610_26854.md](../../sources/papers/physical-words-latent-reasoning-manipulation_arxiv_2610_26854.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.26854](https://arxiv.org/abs/2610.26854)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26854)：已通读方法部分（实验与附录以略读为准）：§3 方法（架构、Physical Words、时序结构空间、训练目标）、§4 实验
 
 ## 推荐继续阅读
 
