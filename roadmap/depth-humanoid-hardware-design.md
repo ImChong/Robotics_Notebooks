@@ -240,9 +240,9 @@ flowchart LR
 | 阶段 | 核心问题 | 知识页入口 |
 |------|---------|-----------|
 | Stage 0 | 指标与质量/功率/延迟三大预算 | [Humanoid Hardware 101 技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md) · [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) |
-| Stage 1 | DoF 分配、执行器布置、惯量分布 | [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) |
-| Stage 2 | 强度、疲劳、模态与公差链 | [Hardware 101 · 机身与材料](../wiki/overview/humanoid-hardware-101-chassis-materials.md) |
-| Stage 3 | 母线、DC/DC、线束、安全回路 | [机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md) |
+| Stage 1 | DoF 分配、执行器布置、惯量分布 | [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) · [机器人关节方案选型](../wiki/concepts/robot-joint-scheme-selection.md) |
+| Stage 2 | 强度、疲劳、模态与公差链 | [Hardware 101 · 机身与材料](../wiki/overview/humanoid-hardware-101-chassis-materials.md) · [结构公差仿真工具链](../wiki/concepts/structure-tolerance-simulation-toolchain.md) |
+| Stage 3 | 母线、DC/DC、线束、安全回路 | [机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md) · [人形线束类型与防护](../wiki/concepts/humanoid-wire-harness-types-protection.md) |
 | Stage 4 | EMC、接地、PDU 落板 | [KiCad](../wiki/entities/kicad.md) · [力矩电机纵深 Stage 4](depth-torque-motor-design.md) |
 | Stage 5 | 分域、拓扑、同步、延迟预算 | [机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md) |
 | Stage 6 | bring-up、标定、验收与模型交付 | [电机测功机](../wiki/concepts/motor-dynamometer.md) · [现场排障 Query](../wiki/queries/field-robotics-troubleshooting.md) |
@@ -262,6 +262,7 @@ flowchart LR
   - [硬件通信与协议纵深](../wiki/overview/hub-communication.md) · [机器人系统工程纵深](../wiki/overview/hub-systems-engineering.md)
   - [Query：人形机器人硬件选型指南](../wiki/queries/humanoid-hardware-selection.md) · [Query：主流人形机器人硬件对比](../wiki/queries/hardware-comparison.md)
   - [开源人形机器人硬件](../wiki/entities/open-source-humanoid-hardware.md)
+  - [人形结构设计工程师的跨专业知识地图](../wiki/overview/humanoid-structure-engineer-cross-discipline-map.md)
 
 ## 参考来源
 
