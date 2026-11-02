@@ -114,7 +114,7 @@ Presents a rigorous evaluation of Real-to-Sim parameter estimation approaches fo
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2503.16310>
-- [arXiv PDF](https://arxiv.org/pdf/16310)：已通读方法部分（实验与附录以略读为准）：§IV（方法）、§V（实验方法）、§VI-A（开头）
+- [arXiv PDF](https://arxiv.org/pdf/2503.16310)：已通读方法部分（实验与附录以略读为准）：§IV（方法）、§V（实验方法）、§VI-A（开头）
 
 ## 推荐继续阅读
 

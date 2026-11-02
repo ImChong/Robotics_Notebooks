@@ -116,7 +116,7 @@ Multi-view intensive-fidelity long-term video generation world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.15875>
-- [arXiv PDF](https://arxiv.org/pdf/15875)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.5）、§4.1（实验设置）
+- [arXiv PDF](https://arxiv.org/pdf/2503.15875)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.5）、§4.1（实验设置）
 
 ## 推荐继续阅读
 
