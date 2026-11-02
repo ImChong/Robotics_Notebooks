@@ -113,7 +113,7 @@ Investigates whether test-time scaling improves world foundation models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.24320>
-- 论文 PDF：<https://arxiv.org/pdf/2503.24320>（已通读全文：方法 §3 评测工具箱、§4 SWIFT 框架；实验设定 §5 起）
+- 论文 PDF：<https://arxiv.org/pdf/2503.24320>（已通读方法部分（实验与附录以略读为准）：方法 §3 评测工具箱、§4 SWIFT 框架；实验设定 §5 起）
 
 ## 推荐继续阅读
 

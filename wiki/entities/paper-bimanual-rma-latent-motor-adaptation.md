@@ -128,7 +128,7 @@ ManiSkill 仿真三任务（YCB 物体质量、摩擦、尺度、形状随机化
 
 - [论文归档](../../sources/papers/bimanual-rma_arxiv_2610_14833.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
-- 论文 PDF：<https://arxiv.org/pdf/2610.14833>（已通读全文：方法 §III、实验设定 §IV、结果 §V 及真机部署）
+- 论文 PDF：<https://arxiv.org/pdf/2610.14833>（已通读方法部分（实验与附录以略读为准）：方法 §III、实验设定 §IV、结果 §V 及真机部署）
 
 ## 推荐继续阅读
 

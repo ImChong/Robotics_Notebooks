@@ -108,7 +108,7 @@ flowchart TD
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2311.17776>
-- arXiv PDF：<https://arxiv.org/pdf/2311.17776>（已通读全文：方法 §4、实验 §5）
+- arXiv PDF：<https://arxiv.org/pdf/2311.17776>（已通读方法部分（实验与附录以略读为准）：方法 §4、实验 §5）
 
 ## 推荐继续阅读
 

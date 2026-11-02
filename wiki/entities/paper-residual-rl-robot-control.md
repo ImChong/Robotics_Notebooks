@@ -137,4 +137,4 @@ $$u = \pi_H(s_m) + \pi_\theta(s_m, s_o)$$
 - [residualrl.github.io 项目页归档](../../sources/sites/residualrl-github-io.md)
 - Johannink et al., *Residual Reinforcement Learning for Robot Control*, ICRA 2019. <https://arxiv.org/abs/1812.03201>
 
-- [arXiv PDF](https://arxiv.org/pdf/1812.03201)：已通读全文：§III 方法、§IV 实验设置、§V–VI 实验与结果
+- [arXiv PDF](https://arxiv.org/pdf/1812.03201)：已通读方法部分（实验与附录以略读为准）：§III 方法、§IV 实验设置、§V–VI 实验与结果

@@ -110,7 +110,7 @@ flowchart TB
 - [freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md](../../sources/papers/freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
-- 论文 PDF：<https://arxiv.org/pdf/2409.10161>（已通读全文：方法 §IV、实验 §V 及 Table I）
+- 论文 PDF：<https://arxiv.org/pdf/2409.10161>（已通读方法部分（实验与附录以略读为准）：方法 §IV、实验 §V 及 Table I）
 
 ## 推荐继续阅读
 

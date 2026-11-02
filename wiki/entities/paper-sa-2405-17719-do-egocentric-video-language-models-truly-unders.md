@@ -122,7 +122,7 @@ Systematically evaluates the fine-grained HOI understanding ability of egocentri
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2405.17719>
-- arXiv PDF：<https://arxiv.org/pdf/2405.17719>（已通读全文：方法 §2–3、实验 §4.1）
+- arXiv PDF：<https://arxiv.org/pdf/2405.17719>（已通读方法部分（实验与附录以略读为准）：方法 §2–3、实验 §4.1）
 
 ## 推荐继续阅读
 

@@ -115,7 +115,7 @@ flowchart TB
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.02329>
-- 论文 PDF：<https://arxiv.org/pdf/2603.02329>（已通读全文：方法 §3、实验设定 §4.1）
+- 论文 PDF：<https://arxiv.org/pdf/2603.02329>（已通读方法部分（实验与附录以略读为准）：方法 §3、实验设定 §4.1）
 
 ## 推荐继续阅读
 

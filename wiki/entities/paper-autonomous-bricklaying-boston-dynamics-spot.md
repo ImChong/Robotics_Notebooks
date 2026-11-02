@@ -109,7 +109,7 @@ flowchart TD
 - [autonomous-bricklaying-boston-dynamics-spot_arxiv_2610_27472.md](../../sources/papers/autonomous-bricklaying-boston-dynamics-spot_arxiv_2610_27472.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27472](https://arxiv.org/abs/2610.27472)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27472)：已通读全文：§3 方法、§3.5 实验设置、§4 结果
+- [arXiv PDF](https://arxiv.org/pdf/2610.27472)：已通读方法部分（实验与附录以略读为准）：§3 方法、§3.5 实验设置、§4 结果
 
 ## 推荐继续阅读
 

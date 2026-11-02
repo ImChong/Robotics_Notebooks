@@ -103,7 +103,7 @@ flowchart TD
 - [graphpoint_arxiv_2609_18358.md](../../sources/papers/graphpoint_arxiv_2609_18358.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.18358](https://arxiv.org/abs/2609.18358)
-- arXiv PDF：<https://arxiv.org/pdf/2609.18358>（已通读全文：方法 §III、CoMani §IV、实验 §V）
+- arXiv PDF：<https://arxiv.org/pdf/2609.18358>（已通读方法部分（实验与附录以略读为准）：方法 §III、CoMani §IV、实验 §V）
 
 ## 推荐继续阅读
 

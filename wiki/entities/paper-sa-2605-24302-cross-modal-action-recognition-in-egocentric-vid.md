@@ -117,7 +117,7 @@ A cross-modal architecture based on the Mamba framework, fusing RGB video and te
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.24302>
-- 论文 PDF：<https://arxiv.org/pdf/2605.24302>（已通读全文：方法 §2 跨模态融合设计、实验 §3）
+- 论文 PDF：<https://arxiv.org/pdf/2605.24302>（已通读方法部分（实验与附录以略读为准）：方法 §2 跨模态融合设计、实验 §3）
 
 ## 推荐继续阅读
 

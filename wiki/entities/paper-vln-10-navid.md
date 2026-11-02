@@ -116,7 +116,7 @@ flowchart TD
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2402.15852>
-- arXiv PDF：<https://arxiv.org/pdf/2402.15852>（已通读全文：方法 §III–IV、实验）
+- arXiv PDF：<https://arxiv.org/pdf/2402.15852>（已通读方法部分（实验与附录以略读为准）：方法 §III–IV、实验）
 
 ## 推荐继续阅读
 

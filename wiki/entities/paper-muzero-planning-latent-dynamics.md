@@ -95,7 +95,7 @@ flowchart TD
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
-- [arXiv PDF](https://arxiv.org/pdf/1911.08265)：已通读全文：§3 方法、§4 实验
+- [arXiv PDF](https://arxiv.org/pdf/1911.08265)：已通读方法部分（实验与附录以略读为准）：§3 方法、§4 实验
 
 ## 推荐继续阅读
 

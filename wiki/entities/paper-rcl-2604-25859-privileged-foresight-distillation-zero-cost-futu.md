@@ -130,7 +130,7 @@ Privileged Foresight Distillation (PFD) compares two attention masks on the same
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.25859>
-- arXiv PDF：<https://arxiv.org/pdf/2604.25859>（已通读全文：方法 §3、实验 §4.1）
+- arXiv PDF：<https://arxiv.org/pdf/2604.25859>（已通读方法部分（实验与附录以略读为准）：方法 §3、实验 §4.1）
 
 ## 推荐继续阅读
 

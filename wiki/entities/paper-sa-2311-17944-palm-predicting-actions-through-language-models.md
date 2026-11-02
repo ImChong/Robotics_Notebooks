@@ -115,7 +115,7 @@ Introduces large language models into long-term temporal action anticipation for
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2311.17944>
-- [arXiv PDF](https://arxiv.org/pdf/2311.17944)：已通读全文：§3 方法、§4 实验、附录 B–D
+- [arXiv PDF](https://arxiv.org/pdf/2311.17944)：已通读方法部分（实验与附录以略读为准）：§3 方法、§4 实验、附录 B–D
 
 ## 推荐继续阅读
 
