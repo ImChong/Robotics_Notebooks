@@ -42,6 +42,20 @@ Crafts video diffusion models into interactive world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  PRE["预训练视频扩散模型（双向时间建模，仅视频级文本条件）"] --> C1["视频扩散因果化<br/>时间注意力加因果掩码；时间卷积用 Extrapolative 权重迁移"]
+  C1 --> C2["因果动作引导<br/>a_(t-1) 经轻量 MLP 注入第 t 帧的潜表示"]
+  C2 --> TR["训练：Diffusion Forcing（各帧独立噪声级别）+ 以概率 p 丢弃动作"]
+  TR --> RO["自回归 rollout：历史帧保持干净，只对最新帧去噪"]
+  RO --> CFG["classifier-free 动作引导：ε = (1+λ)·ε_cond − λ·ε_uncond"]
+  CFG --> OUT["交互式世界模型（逐步给动作、预测下一帧）"]
+```
+
+图依据：论文 §4 / §4.1 / §4.2（Fig.2–Fig.4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +111,7 @@ Crafts video diffusion models into interactive world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.14357>
+- [arXiv PDF](https://arxiv.org/pdf/2505.14357)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminaries（略读）、§4 Methods（4.1–4.2）、§5 Experiments（略读）
 
 ## 推荐继续阅读
 

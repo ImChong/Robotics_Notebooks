@@ -42,6 +42,23 @@ Learning 3D persistent embodied world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前 RGB-D 观测 O_t + 动作 A_t"] --> B["动作转为相对相机位姿，Plücker 嵌入"]
+    B --> C["CogVideoX 骨干：Plücker 嵌入与视频 latent 通道拼接，RGB 与深度分别经 3D VAE"]
+    M["3D 特征图记忆 M（初始为零）"] --> D["Memory block：cross-attention expert 注入 DINO-Map"]
+    C --> D
+    D --> E["生成未来 RGB-D 视频 V"]
+    E --> F["DINOv2 特征按深度与相机位姿反投影到 3D 网格，max-pooling 聚合，加 3D 位置编码"]
+    F --> G["更新记忆 M"]
+    G --> M
+    E --> H["应用：采样动作块，生成视频，按奖励排序，做 MPC / 策略学习"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Learning 3D persistent embodied world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.05495>
+- [arXiv PDF](https://arxiv.org/pdf/2505.05495)：已通读方法部分（实验与附录以略读为准）：§3.1 问题形式化、3.2 带 3D 地图的视频生成、3.3 训练与应用（含 Fig.2、Algorithm 1）；§4 实验与附录（略读）
 
 ## 推荐继续阅读
 

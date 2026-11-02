@@ -42,6 +42,26 @@ Integrates tactile perception into vision-language foundation model for contact-
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Isaac Gym 仿真数据采集：左右触觉图像序列、腕部相机图像、动作标签（28,000 样本）"] --> B["组织为指令格式：触觉在前、视觉在后（视觉引导）"]
+    B --> C["触觉图像经 ViT 提取时序触觉 token"]
+    B --> D["视觉图像经视觉编码器得视觉 token"]
+    B --> E["文本指令分词得文本 token"]
+    C --> F["Qwen2-VL 7B（冻结视觉编码器与适配器，仅调语言模型）"]
+    D --> F
+    E --> F
+    F --> G["阶段 1：NTP 损失监督微调，预测动作 [Δx,Δy,Δrz]"]
+    G --> H["微调模型对同一训练样本采样多个动作预测"]
+    H --> I["按与真值接近程度构造偏好数据：chosen / rejected"]
+    I --> J["阶段 2：DPO 偏好学习"]
+    J --> K["VTLA 策略：输出插入动作，仿真训练后真机验证"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Integrates tactile perception into vision-language foundation model for contact-
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2505.09577>
+- [arXiv PDF](https://arxiv.org/pdf/2505.09577)：已通读方法部分（实验与附录以略读为准）：§3.1 数据采集、3.2 视觉引导时序增强 token 与指令微调、3.3 偏好学习（含 Fig.3）；§4.1 实验设置与实现细节（略读）
 
 ## 推荐继续阅读
 

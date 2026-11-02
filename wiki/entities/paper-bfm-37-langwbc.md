@@ -41,6 +41,28 @@ sources:
 - 语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#37/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["MoCap 数据集 HumanML3D"] --> B["运动重定向<br/>基于 LM 的 IK 非线性最小二乘"]
+    B --> C["教师策略训练<br/>PPO + 对称损失 + 动作课程 易到难"]
+    C --> D["教师策略 π_teacher<br/>输入特权状态 + 参考运动 · 输出 27 维关节目标"]
+    E["文本指令"] --> F["CLIP 文本编码器<br/>512 维嵌入"]
+    G["本体感知历史<br/>10 Hz · 2 秒窗口"] --> H["CVAE 编码器<br/>输出 μ, σ"]
+    F --> H
+    H --> I["潜变量 z（128 维）"]
+    I --> J["CVAE 解码器<br/>结合当前观测输出动作"]
+    D -->|DAgger 查询教师动作| K["行为克隆损失 + KL 项"]
+    J --> K
+    K -->|更新学生| H
+    J --> L["学生策略部署<br/>推理取均值 μ · 零样本 sim-to-real"]
+    M["LLM 高层规划器<br/>抽象任务拆成 文本指令:秒数"] -.-> F
+    L --> N["Unitree G1 真机"]
+```
+
+图依据：论文 §III-A 教师策略、§III-B 语言引导学生策略、§IV-G LLM 集成 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +112,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2504.21738>
+- [arXiv PDF](https://arxiv.org/pdf/2504.21738)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 教师、B 学生，含 Fig. 2）、§IV-G LLM 集成；其余实验与附录略读
 
 ## 推荐继续阅读
 

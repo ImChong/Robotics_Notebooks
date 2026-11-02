@@ -43,6 +43,25 @@ Consistent interactive video scene generation with surfel-indexed view memory.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["目标相机位姿 c_T+1 … c_T+M"] --> AVG["计算平均位姿，并据此渲染 surfel 索引\n每个 surfel 记录观测过它的历史视图索引"]
+    AVG --> VOTE["统计各历史视图索引在渲染像素中的出现频率\n取 top-K，并做非极大值抑制去冗余"]
+    VOTE --> REF["检索到 K 张参考视图 (x_t, c_t)"]
+    REF --> GEN["新视角生成器 ψ（基于 SEVA）\n输入参考图 + 参考/目标相机的 Plücker 嵌入"]
+    CAM --> GEN
+    GEN --> NEW["生成新视图 x_T+1 … x_T+M"]
+    NEW --> PM["点图估计器（CUT3R）\n与检索到的参考视图联合估计点图，对齐到现有场景坐标"]
+    PM --> SF["下采样点图 → 新建 surfel（中心/法线/半径）"]
+    SF --> MG["与已有 surfel 匹配：距离与法线夹角满足阈值则追加帧索引，否则新增 surfel"]
+    MG --> MEM["更新 Surfel 索引 S(s) → S(s+1) 与视图库 V(s) → V(s+1)"]
+    MEM -->|"自回归，下一轮生成"| AVG
+```
+
+图依据：论文 §3.1–3.2 / Fig.2、Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Consistent interactive video scene generation with surfel-indexed view memory.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.18903>
+- [arXiv PDF](https://arxiv.org/pdf/2506.18903)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1 Surfel-Indexed View Memory 读/写、§3.2 新视角生成器，含 Fig.2、Fig.4）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ Cross-embodiment learning via real-to-sim-to-real
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RGBD 人类视频 + 多视角图像"] --> B["SAM 首帧掩码 + 物体网格 + FoundationPose：跟踪物体 SE(3) 位姿"]
+    A --> C["2D Gaussian Splatting 重建场景，导入 ManiSkill 仿真"]
+    B --> D["物体中心稠密奖励 r_obj = r_approach + r_goal"]
+    C --> D
+    D --> E["仿真中用 PPO 训练特权状态 RL 策略"]
+    E --> F["回放成功轨迹，随机化物体位置、相机视角、光照，渲染图像-动作对 D_synthetic"]
+    F --> G["蒸馏为图像条件 Diffusion Policy"]
+    G --> H["真机部署并收集 rollout 图像（含失败）"]
+    H --> I["仿真中回放同一机器人轨迹，得到真实-仿真配对图像 D_paired"]
+    I --> J["对比 InfoNCE 损失校准观测编码器，与 BC 损失联合训练"]
+    J --> G
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Cross-embodiment learning via real-to-sim-to-real
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2505.07096>
+- [arXiv PDF](https://arxiv.org/pdf/2505.07096)：已通读方法部分（实验与附录以略读为准）：§1 引言；§3 方法（3.1 Real-to-Sim、3.2 仿真中生成动作、3.3 Sim-to-Real，含 Fig.2、Fig.3）；§4 实验（略读）
 
 ## 推荐继续阅读
 

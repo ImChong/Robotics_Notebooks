@@ -42,6 +42,29 @@ Cross-granularity distillation for building long-term driving world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练"]
+        A["长时视频低 fps（如 1 fps）稀疏采样 K 帧，3D-VAE 逐帧独立编码"] --> B["Coarse DiT（CogVideoX 架构）：MLLM 详细标注 + T5 文本嵌入，图生视频预测；损失 = 扩散损失 + 高通滤波结构保持损失"]
+        C["短时视频连续采 K 帧，3D-VAE 编码"] --> D["Fine DiT：同时学习视频预测（因果）与视频插值（双向）"]
+        D --> E["冻结 Fine DiT 作教师；粗帧夹在细帧序列中，各段共享时间步与噪声做一步去噪"]
+        B --> F["学生 Coarse DiT 初始化自已训好的 CDiT"]
+        E --> G["Flow Distillation：细粒度 flow 蒸馏粗粒度 flow，只需数百步"]
+        F --> G
+    end
+    subgraph INFER["长视频生成"]
+        H["首帧输入 Coarse DiT，预测大运动关键帧序列"] --> I["相邻关键帧之间由 Fine DiT 并行插值出连续帧"]
+        I --> J["长时、时间连贯的驾驶视频"]
+    end
+    G -.-> H
+    D -.-> I
+    K["轨迹控制（可选）：轨迹 → 相机位姿 → 无深度图像 warp → 补丁嵌入注入 Fine DiT"] -.-> I
+```
+
+图依据：论文 §3.1 Coarse DiT / §3.2 Fine DiT / §3.3 Flow Distillation / §3.4 Warp-guided 控制（Fig. 2–3）；推理阶段先粗后细并行插值见附录实验设置
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ Cross-granularity distillation for building long-term driving world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01546>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01546)：已通读方法部分（实验与附录以略读为准）：摘要、§3.1–3.4 方法、附录中长视频预测评测设置；实验数字略读
 
 ## 推荐继续阅读
 

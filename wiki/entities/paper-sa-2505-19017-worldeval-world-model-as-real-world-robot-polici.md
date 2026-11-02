@@ -42,6 +42,21 @@ World model as real-world robot policy evaluator.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["待评测策略：视觉编码器 + 语言编码器 + 动作解码器"] --> L["在动作解码器输出前提取 latent action embedding"]
+  L --> J["投影层调维 → 乘可学习权重 α → 与语言嵌入相加"]
+  F["初始帧 + 语言指令"] --> W["WAN 2.1 视频生成模型（DiT）<br/>LoRA 微调投影层与部分 DiT 线性层"]
+  J --> W
+  W --> G["生成该策略执行的机器人视频"]
+  G --> S["Gemini-2.0 成功判定器：回答任务是否完成 yes/no"]
+  S --> R["各策略世界模型成功率排序，对照真机排序相关性"]
+```
+
+图依据：论文 §3.2 Policy2Vec / §3.3 Automated Policy Verifier（Fig.2 框架总览，仅据正文描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ World model as real-world robot policy evaluator.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.19017>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19017)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.3）、§4 Experiments（4.2 起略读）
 
 ## 推荐继续阅读
 

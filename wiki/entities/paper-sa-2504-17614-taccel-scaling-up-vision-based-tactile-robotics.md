@@ -42,6 +42,27 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["URDF 机器人 + 凝胶垫四面体网格 + 物体网格"] --> B["机器人与传感器建模<br/>连杆为仿射体 ABD · 凝胶垫为软体"]
+    B --> C["统一 ABD-IPC 能量 E_IPC(y; x)<br/>增量势能 + 对数障碍 + 摩擦势能"]
+    D["关节目标 → 连杆与凝胶表面运动学约束"] --> E["增广拉格朗日 E_IPC^AL"]
+    C --> E
+    E --> F["最小化能量，时间步进<br/>得下一步 y, x"]
+    F --> G["凝胶垫涂层表面形变"]
+    G --> H["高分辨率：深度图与法线 → 像素级 DNN 生成 RGB"]
+    G --> I["低分辨率：标记点位置与 marker flow"]
+    G --> J["3D 触觉：点云"]
+    H --> K["应用：合成数据训练物体分类，直接测试真实样本"]
+    J --> K
+    I --> L["应用：Tac-Man 铰接物体操作"]
+    F --> M["多环境 GPU 并行（NVIDIA Warp）"]
+```
+
+图依据：论文 §3 统一 IPC 仿真、§4 机器人与 VBTS 仿真、§6 应用。注：页面题名与 frontmatter 的 arXiv 号 2504.17614 实为另一篇无关论文（Bolt: Clothing Virtual Characters at Scale），Taccel 的正确编号为 arXiv 2504.12908，本图依据后者。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2504.17614>
+- [arXiv PDF](https://arxiv.org/pdf/2504.12908)：已通读方法部分（实验与附录以略读为准）：§3 统一 IPC 仿真、§4 机器人与 VBTS 仿真（4.1–4.3）、§6 应用（6.1–6.3）；§5 评测与附录略读。注意：页面原 arXiv 号 2504.17614 对应 Bolt（另一篇无关论文），Taccel 实际编号为 2504.12908
 
 ## 推荐继续阅读
 

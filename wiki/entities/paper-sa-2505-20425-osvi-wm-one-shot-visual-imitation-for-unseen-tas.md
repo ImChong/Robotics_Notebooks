@@ -42,6 +42,31 @@ One-shot visual imitation for unseen tasks using world-model-guided trajectory g
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["专家演示帧 E_1..E_N<br/>(下采样到 N=10)"] --> B["共享 ResNet-18 编码器<br/>展平为潜状态 e_1..e_N"]
+    C["智能体初始观测 R_1"] --> B2["同一编码器得 r_1"]
+    subgraph WM["World-Model-Guided Trajectory Generation"]
+        P["动作模型 π (因果 Transformer)<br/>a_i = π(r_i..r_1, e_N..e_1)"]
+        W["世界模型 W (因果 Transformer)<br/>r_{i+1} = W(r_i, a_i, ..., r_1, a_1)"]
+        P --> W
+        W -->|"递归 i = 1..M-1"| P
+    end
+    B --> P
+    B2 --> P
+    W --> T["预测的未来潜状态 r_2..r_M"]
+    T --> U["空间池化(2D softmax 期望坐标)<br/>+ 时间维注意力池化 → 2F 维向量"]
+    U --> V["两层 MLP 预测 5 个带属性路径点<br/>末端 3D 位置 + 夹爪开/合"]
+    V --> X["相机到机器人坐标变换<br/>逆运动学路径点控制器执行"]
+    X -.->|"可选: 执行失败则重新观测<br/>结合原演示重规划路径点"| C
+    T -.->|"训练: L1 世界模型损失 L_wm<br/>(真值潜状态 stop-gradient)"| L["总损失 L = L_sdtw + α(τ) L_wm"]
+    V -.->|"训练: soft-DTW 路径点损失 L_sdtw"| L
+```
+
+图依据：论文 §3 Our Method（§3.1 World-Model-Guided Trajectory Generation、§3.2 Predicting Waypoints、§3.3 Training）/ Fig.2–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ One-shot visual imitation for unseen tasks using world-model-guided trajectory g
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.20425>
+- [arXiv PDF](https://arxiv.org/pdf/2505.20425)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3
 
 ## 推荐继续阅读
 

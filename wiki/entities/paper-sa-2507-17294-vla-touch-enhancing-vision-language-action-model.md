@@ -42,6 +42,27 @@ Enhances VLA with tactile sensing without fine-tuning the base VLA; leverages pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    G["任务目标 g + 场景图像 o_t"] --> PL["VLM 任务规划器（GPT-4o）<br/>输出单句原子操作指令 I_k"]
+    PL --> VLA["基础 VLA（RDT）<br/>按视觉观察 s_t 与指令 I_k 生成动作块 a_t:t+Ta"]
+    VLA --> SEG["滑动窗口：每次取未重叠的 T_r 步 a_t:t+Tr"]
+    OBS["当前观察：RGB + 本体状态 s_t<br/>触觉力信号 m_t = (X, Y, M)<br/>由 marker tracking 估计"] --> REF
+    SEG --> REF["触觉增强控制器 π_I（BRIDGeR 插值扩散）<br/>以 VLA 动作为源分布，输出精修动作"]
+    REF --> EXE["执行精修动作并更新观察"]
+    EXE --> MORE{"动作块是否已全部精修？"}
+    MORE -- 否 --> SEG
+    MORE -- 是 --> DONE{"指令 I_k 完成或达最大步数？<br/>（执行失败则退出触发重规划）"}
+    DONE -- 否 --> VLA
+    DONE -- 是 --> TAC["采集原始触觉输入 o^m_t<br/>（GelSight，6 帧序列）"]
+    TAC --> OCT["触觉语言模型 Octopi<br/>转为粗糙度 / 硬度等语言描述 L^m_t"]
+    OCT --> PL
+```
+
+图依据：论文 §3.1–§3.2 / Fig.1、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Enhances VLA with tactile sensing without fine-tuning the base VLA; leverages pr
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2507.17294>
+- [arXiv PDF](https://arxiv.org/pdf/2507.17294)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1 触觉辅助任务规划、§3.2 触觉精修 VLA 策略、Algorithm 1），§4 实验设定略读
 
 ## 推荐继续阅读
 

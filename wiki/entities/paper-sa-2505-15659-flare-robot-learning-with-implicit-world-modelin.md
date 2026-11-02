@@ -42,6 +42,20 @@ Robot learning with implicit world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入序列：本体状态 q_t（状态编码器）+ 加噪动作块（动作编码器）+ M 个可学习未来 token"] --> DIT["DiT 策略（action flow-matching 损失 L_fm）"]
+  DIT --> AX["动作块预测"]
+  DIT -->|"取第 L 层对应未来 token 的激活，经 MLP"| AL["与未来观测嵌入 φ_(t+H) 做余弦对齐 L_align"]
+  EMB["动作感知未来嵌入模型：SigLIP-2 视觉+文本编码 → 4 层自注意力融合 → Q-former 压缩为 M=32 个 token（EMA 更新）"] --> AL
+  AL --> LOSS["总损失 L = L_fm + λ·L_align（λ=0.2）"]
+  AX --> LOSS
+```
+
+图依据：论文 §3.1 / §3.2（Fig.2、Fig.3）；无动作标签的人类第一视角视频仅用 L_align，见 §4.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +111,7 @@ Robot learning with implicit world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.15659>
+- [arXiv PDF](https://arxiv.org/pdf/2505.15659)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.2）、§4.2–4.3 实验设定
 
 ## 推荐继续阅读
 

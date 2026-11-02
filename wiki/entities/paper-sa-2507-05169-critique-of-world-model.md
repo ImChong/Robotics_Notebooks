@@ -42,6 +42,22 @@ Argues that the primary goal of world models is to simulate all actionable possi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["当前多模态感知观测 o"] --> ENC["感官编码器 h（Sensory Encoder）<br/>离散通路：分层 tokenizer → 词表 token（VQ-VAE 式抽象 token + 自然语言词）<br/>连续通路：低层细节 → 连续潜向量嵌入"]
+    ENC --> S["分层世界状态估计 ŝ = {ŝ_i}"]
+    A["拟执行的动作 a"] --> BB
+    S --> BB["世界模型骨干 f（Latent Reasoning Backbone）<br/>增强 LLM（离散概念推理）+ 扩散式下一潜嵌入预测器（连续感知动态）<br/>Learned Switch 按任务需求自适应组合"]
+    BB --> S2["预测的未来世界状态 ŝ'"]
+    S2 --> DEC["多模态解码器 g：重建未来观测 ô'"]
+    DEC --> SUP["与真实观测 o' 比较<br/>生成式监督 / 对外使用"]
+    S2 --> AG["PAN-Agent：预计算并缓存模拟结果<br/>决策时据当前信念与期望结果选动作（展望，非实验）"]
+```
+
+图依据：论文 §4.3.3 GLP 架构（Fig.5 右）、§5.2 PAN-World（Fig.9）、§5.4（Fig.10）；本文为观点文章，图为其提出的架构构想而非实验系统
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Argues that the primary goal of world models is to simulate all actionable possi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.05169>
+- [arXiv PDF](https://arxiv.org/pdf/2507.05169)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4.3.3 / §4.4（GLP 与学习目标）、§5.1、§5.2、§5.4（PAN 架构与智能体）、§6 结论；其余综述性章节与附录证明略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Learning robotic policies without a physics simulator.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["离线数据集 D<br/>(o_t, a_t, o_t+1)"] --> WM["自回归训练 RWM-U 世界模型<br/>共享 GRU 特征提取 + 集成预测头 (Eq.1)"]
+    WM --> ENS["每个集成成员预测下一观测的高斯分布<br/>方差=aleatoric；成员均值方差=epistemic 不确定性 u"]
+    D --> INIT["从 D 采样观测初始化 imagination agents"]
+    INIT --> ROLL["用策略 π 与 RWM-U 展开 T 步想象轨迹<br/>预测反馈回模型，不确定性沿时域传播"]
+    ENS --> ROLL
+    ROLL --> PEN["MOPO-PPO 惩罚奖励<br/>r̃ = r − λu (Eq.5)"]
+    PEN --> PPO["PPO 更新策略 π"]
+    PPO -->|"下一轮学习迭代"| INIT
+    PPO --> DEP["纯离线训练的策略<br/>部署到真实 quadruped / humanoid"]
+```
+
+图依据：论文 §4.1–4.2 / Fig.1–2 / Algorithm 1（注：页面标题 RWM-O 对应该 arXiv 号的论文，当前版本标题为 Uncertainty-Aware Robotic World Model Makes Offline MBRL Work on Real Robots，方法名为 RWM-U + MOPO-PPO，与页面标题不符；已按该编号 PDF 作图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,8 @@ Learning robotic policies without a physics simulator.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.16680>
+- [arXiv PDF](https://arxiv.org/pdf/2504.16680)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 Preliminaries、§4 Approach（4.1–4.2）、Algorithm 1、§5.4 开头
+- 编号说明：arXiv 2504.16680 当前版本题为 Uncertainty-Aware Robotic World Model Makes Offline Model-Based RL Work on Real Robots（RWM-U / MOPO-PPO），与页面标题 RWM-O 不一致，图按该编号 PDF 绘制。
 
 ## 推荐继续阅读
 
