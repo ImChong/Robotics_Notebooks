@@ -1,4 +1,7 @@
-// 片头主图（800×420）：三句旁白各一段——
+// 片头主图（800×420）：四句旁白各一段——
+// ⓪（2026-11-02 用户反馈「看完没理解矩阵指数的作用、为什么要学」：先从实际问题讲起）「抓杯子」右上出杯子，「六个关节各转一个角度」
+//    肩、肘、腕真的转一下、手伸向杯子，「手会停在什么位置、朝向什么方向」手上打问号、右栏写问题；
+//    「每个关节，都是绕一根螺旋轴转」三个关节依次亮一圈，手臂回到原样；
 // ① 左边第 9 集的侧视网格 + UR5（肘在 (1, 2)，肘上 ⊙），「运动旋量」「转速」「螺旋轴」右边写「运动旋量 = 转速 × 螺旋轴」，
 //    「肘关节的螺旋轴」右边出 S 的六维列向量，「零、零、一、二、负一、零」六个数按念到的顺序弹出；
 // ② 9.8 起右边换成问句：「绕着螺旋轴」肘亮一圈，「转了一个角度」小臂绕肘转 90°、标 θ，「停在什么位置」小臂上离肘两格的点旁打问号，「朝向什么方向」那里出两根小箭头；
@@ -9,13 +12,15 @@
   var E = window.EP010, K = E.K, H = E.HEX;
   var D = Math.PI / 180, A = { OX: 84, OY: 345, S: 2.2 }, RX = 450;   // 主图不缩放：UR5 放大到一格约 60 px
   var T = {
-    twist: 1.67, speed: 2.78, screw: 3.81, elbow: 4.86, nums: [6.45, 6.86, 7.33, 7.85, 8.27, 8.9], out1: 9.9,
-    ask: 10.71, axis: 12.33, turn: [13.05, 13.9], ang: 13.56, where: 15.35, dir: 16.57, out2: 18.6,
-    mexp: 19.45, sth: 20.75, times: 21.29, angle: 22.15, give: 22.78, step: 23.55, mat: 24.91, pose: 25.68
+    cup: 1.56, six: 2.77, wig: [3.5, 4.6], hand: 4.44, pos0: 5.33, dir0: 5.84, back0: [7.2, 8.1], out0: 7.6,
+    each: 7.87, axes: [9.11, 9.5, 9.9],
+    twist: 11.93, speed: 13.12, screw: 14.06, elbow: 14.85, nums: [16.56, 17.04, 17.51, 18.02, 18.47, 19.21], out1: 20.4,
+    ask: 21.46, axis: 22.64, turn: [23.35, 24.2], ang: 23.88, where: 25.68, dir: 26.9, out2: 28.9,
+    mexp: 29.77, sth: 31.07, times: 31.61, angle: 32.47, give: 33.1, step: 33.87, mat: 35.23, pose: 36.0
   };
 
   E.hero = function (K) {
-    var s = K.sceneSvg('片头主图：第九集讲过运动旋量等于转速乘以螺旋轴，肘关节的螺旋轴是 (0, 0, 1, 2, −1, 0)；这一集问：绕着螺旋轴转了一个角度，刚体停在什么位置、朝向什么方向？答案是矩阵指数：把螺旋轴乘上转过的角度交给它，一步得到一个四乘四的位姿');
+    var s = K.sceneSvg('片头主图：机械臂要去抓杯子，先得知道六个关节各转一个角度，手停在什么位置、朝向什么方向；每个关节都是绕一根螺旋轴转；第九集讲过运动旋量等于转速乘以螺旋轴，肘关节的螺旋轴是 (0, 0, 1, 2, −1, 0)；这一集问：绕着螺旋轴转了一个角度，刚体停在什么位置、朝向什么方向？答案是矩阵指数：把螺旋轴乘上转过的角度交给它，一步得到一个四乘四的位姿');
 
     /* ── 左：网格 + UR5 ── */
     var under = E.el('g', {}, s);
@@ -31,6 +36,27 @@
     thLab.style.fontFamily = 'KaTeX_Math, serif'; thLab.style.fontStyle = 'italic';
     var ax = [E.vec(top, E.X, 4.5, { head: 14 }), E.vec(top, E.Y, 4.5, { head: 14 })];
     var qm = E.halo(E.txt(top, 0, 0, '?', 34, E.HI, 'middle', 900));
+    // ⓪ 杯子、手上的问号、三个关节的亮圈；手臂各关节先记下原样（arm.aim 摆好的姿势）
+    var V0 = { lift: V.jointValue('shoulder_lift_joint'), elbow: V.jointValue('elbow_joint'), wrist: V.jointValue('wrist_1_joint') };
+    var WIG = { lift: 14 * D, elbow: -30 * D, wrist: 22 * D };
+    function pose(w, phi) {   // w：⓪ 里关节转了多少（0…1）；phi：肘关节转的角度
+      V.joints({ shoulder_lift_joint: V0.lift + WIG.lift * w, elbow_joint: V0.elbow - phi + WIG.elbow * w, wrist_1_joint: V0.wrist + WIG.wrist * w });
+    }
+    pose(1, 0); var hand1 = arm.tool(); pose(0, 0);
+    var cupG = E.el('g', {}, top), CX0 = hand1[0] + 26, CY0 = hand1[1] - 6;   // 杯子在手转过去那里的右边一点
+    K.paint(E.el('path', { d: 'M ' + (CX0 - 16) + ' ' + (CY0 - 22) + ' L ' + (CX0 + 16) + ' ' + (CY0 - 22) + ' L ' + (CX0 + 12) + ' ' + (CY0 + 20) + ' L ' + (CX0 - 12) + ' ' + (CY0 + 20) + ' Z',
+      'stroke-width': 3, 'stroke-linejoin': 'round' }, cupG), E.tint(E.INK2, 25, 'var(--demo-surface)'), E.INK);
+    K.paint(E.el('path', { d: 'M ' + (CX0 + 15) + ' ' + (CY0 - 12) + ' q 14 2 10 14 q -3 8 -12 8', fill: 'none', 'stroke-width': 3 }, cupG), null, E.INK);
+    var handQ = E.halo(E.txt(top, 0, 0, '?', 34, E.HI, 'middle', 900));
+    var jRings = ['shoulder', 'elbow', 'wrist'].map(function () { return K.paint(E.el('circle', { r: 15, fill: 'none', 'stroke-width': 3.5 }, top), null, E.WARN); });
+
+    /* ── 右 ⓪ ：要抓杯子 ── */
+    var r0 = E.el('g', {}, s);
+    E.txt(r0, RX + 160, 80, '要去抓杯子：', 30, E.INK, 'middle', 900);
+    var r0a = E.txt(r0, RX + 160, 150, '6 个关节各转一个角度', 26, E.INK2, 'middle', 900);
+    var r0b = E.txt(r0, RX + 160, 226, '手停在什么位置？', 34, E.HI, 'middle', 900);
+    var r0c = E.txt(r0, RX + 160, 290, '朝向什么方向？', 34, E.HI, 'middle', 900);
+    var r0d = E.txt(r0, RX + 160, 362, '每个关节：绕一根螺旋轴转', 24, E.WARN, 'middle', 900);
 
     /* ── 右 ① ：运动旋量 = 转速 × 螺旋轴，S 的六个数 ── */
     var r1 = E.el('g', {}, s);
@@ -72,7 +98,16 @@
         var f = E.fade, b = E.bump;
         /* ── 左 ── */
         var phi = 90 * D * f(t, T.turn[0], T.turn[1] - T.turn[0]);
-        arm.bend(phi); V.clearTint(); V.tint(RIGID, E.BODY, 0.45);
+        var w = f(t, T.wig[0], T.wig[1] - T.wig[0]) * (1 - f(t, T.back0[0], T.back0[1] - T.back0[0]));
+        pose(w, phi); V.clearTint(); V.tint(RIGID, E.BODY, 0.45);
+        // ⓪ 杯子、手上的问号、三个关节亮一圈
+        E.op(cupG, f(t, T.cup, 0.3) * (1 - f(t, T.out1 - 0.3, 0.4)));
+        var hp = arm.tool(); handQ.setAttribute('x', (hp[0] - 4).toFixed(1)); handQ.setAttribute('y', (hp[1] + 44).toFixed(1));
+        E.op(handQ, f(t, T.hand, 0.3) * (1 - f(t, T.back0[0], 0.4)));
+        [arm.shoulder(), arm.elbow(), arm.wrist()].forEach(function (q, i) {
+          jRings[i].setAttribute('cx', q[0].toFixed(1)); jRings[i].setAttribute('cy', q[1].toFixed(1));
+          var jb = b(t, T.axes[i], 1.0); E.op(jRings[i], Math.max(f(t, T.six, 0.3) * (1 - f(t, T.dir0 + 0.4, 0.3)), jb)); E.glow(jRings[i], E.WARN, jb > 0.05);
+        });
         E.op(ring, f(t, T.elbow, 0.3)); E.op(ringDot, f(t, T.elbow, 0.3));
         ring.setAttribute('r', (12 + 5 * Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8))).toFixed(2));
         E.glow(ring, E.HI, Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8)) > 0.05);
@@ -90,7 +125,9 @@
         E.op(qm, f(t, T.where, 0.3) * (1 - f(t, T.mat, 0.4)));
 
         /* ── 右 ── */
-        E.op(r1, f(t, 0.1, 0.4) * (1 - f(t, T.out1, 0.4)));
+        E.op(r0, f(t, 0.3, 0.4) * (1 - f(t, T.twist - 0.4, 0.4)));
+        E.op(r0a, f(t, T.six, 0.3)); E.op(r0b, f(t, T.pos0, 0.3)); E.op(r0c, f(t, T.dir0, 0.3)); E.op(r0d, f(t, T.each, 0.3));
+        E.op(r1, f(t, T.twist - 0.2, 0.4) * (1 - f(t, T.out1, 0.4)));
         E.op(l1, f(t, T.twist, 0.3));
         E.op(col.g, f(t, T.screw, 0.3)); E.op(sLab, f(t, T.elbow, 0.3)); E.op(sName, f(t, T.elbow + 0.4, 0.3)); E.op(sName2, f(t, T.elbow + 0.4, 0.3));
         col.cells.forEach(function (c, i) { var q = col.pos(i), pc = f(t, T.nums[i], 0.3); E.op(c, pc); E.scaleAt(c, q[0], q[1], 1 + 0.5 * (1 - pc)); });

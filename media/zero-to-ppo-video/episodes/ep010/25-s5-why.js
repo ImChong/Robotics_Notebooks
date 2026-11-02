@@ -1,4 +1,4 @@
-// 010 第 5 幕：比一比——矩阵指数好在哪。左边先是第 1 幕的网格 + UR5，中段换成三张对照卡片（占满整幅），最后是斜着看的 UR5 和它的六根关节轴。
+// 010 第 5 幕：比一比——矩阵指数好在哪。左边先是第 1 幕的网格 + UR5，后半换成三张对照卡片（占满整幅）。
 // 2026-11-01 按 005–009 的新配色复查：小臂淡黄，转动和角度蓝，打 × 用橙，手上的坐标架 x 红、y 绿、z 蓝；「九十除以二」右栏写 90° ÷ 2 = 45°。
 // 句 1「两个朝向」小臂 0° 和 90° 两个位置画成虚线（第 5 集的两个朝向），「比如小臂原样和转了九十度」两个位置依次亮一下（交代 90 从哪来），「不能直接平均」右栏打橙 ×，「矩阵指数」右栏写 exp([S] θ / 2)，
 //    「同一根轴」肘亮一圈，「只转一半的角度」小臂从 0° 转到 45°、标 45°，「九十除以二」写出 90° ÷ 2 = 45°；
@@ -7,10 +7,7 @@
 // 句 3 换成三张卡片：欧拉角、四元数、矩阵指数（亮黄框）；
 // 句 4「三个数」「万向锁」「四个数」「没有万向锁」「两套数」依次写进前两张卡片（2026-11-01 去掉「最直观」：《Modern Robotics》第 1 章说最直观的是指数坐标）；
 // 句 5「旋转矩阵」「没有万向锁」「直接连乘」「运动旋量、螺旋轴」「九个数，有冗余」依次写进第三张；
-// 句 6（2026-11-01 「都用它来写」改「也可以用它来写」：《Modern Robotics》4.5 节说多数做法用 D-H 参数）换成斜着看的 UR5：「关节」「一根螺旋轴」六根关节轴依次画出、标 S₁…S₆，「转了多少」第二根轴亮、胳膊绕它转一个角度、标 θ₂；
-// 句 7「各算一个矩阵指数」右栏指数积公式的六个因子依次框亮、对应的轴鼓一下，「再乘上」出 M，「零度时、手的位姿」下面注明 M
-//    （《Modern Robotics》式 (4.14) 最后乘 M：关节都在零位时手的位姿），「手现在的位姿」手上出坐标架，
-//    「指数积公式」写名字，「第十一集」出第 11 集卡片。
+// （2026-11-02 原先的句 6、7——UR5 的六根关节轴和指数积公式——挪到新的第 6 幕「矩阵指数用在哪」开头。）
 // 时刻取自配音的逐词时间，见 ../ep010.py。
 (function () {
   var E = window.EP010, K = E.K, H = E.HEX;
@@ -18,12 +15,9 @@
   var T = {
     ep5: 0.66, two: 1.79, mid: 2.48, avg: 3.38, ex: 5.01, mexp: 8.2, axis: 10.19, half: [11.35, 12.24], halfCalc: 12.9, log: 18.17, logEq: 22.45, out1: 24.3,
     cards: 24.55,
-    eu: [28.88, 29.91], qu: [31.25, 31.89, 33.04], mx: [36.32, 37.85, 38.95, 40.35, 43.03], out2: 45.9,
-    arm: 46.13, joint: 47.25, axes: [49.9, 50.14, 50.38, 50.62, 50.86, 51.1], turn: [51.67, 52.53], ang: 52.95,
-    each: 54.8, facs: [55.63, 55.83, 56.19, 56.41, 56.63, 56.85], mult: 57.18, mM: 58.63, zero: 60.08, hand: 62.38, name: 64.45, ep11: 65.59
+    eu: [28.88, 29.91], qu: [31.25, 31.89, 33.04], mx: [36.32, 37.85, 38.95, 40.35, 43.03]
   };
-  var END = 67.44;
-  var JN = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint'];
+  var END = 46.03;
 
   E.scenes[4] = {
     title: '比一比：矩阵指数好在哪',
@@ -33,12 +27,10 @@
       { at: 15.65, s: '两个朝向都不是原样：先求**矩阵对数**，再转一半' },
       { at: 24.46, s: '和第 6 集的另外 2 种写法比一比' },
       { at: 28.06, s: '欧拉角 3 个数，可会万向锁；四元数 4 个数，可一个朝向 2 套数' },
-      { at: 35.43, s: '**矩阵指数**给出的旋转矩阵：没有万向锁、能直接相乘、和**螺旋轴**一套说法；代价是 9 个数' },
-      { at: 46.04, s: '关节的运动也可以用它写：每个关节是一根**螺旋轴**，转了多少就是**角度**' },
-      { at: 54.7, s: '各算一个**矩阵指数**按顺序相乘，再乘 M（关节都在 0° 时手的位姿）：手的**位姿**（第 11 集）' }
+      { at: 35.43, s: '**矩阵指数**给出的旋转矩阵：没有万向锁、能直接相乘、和**螺旋轴**一套说法；代价是 9 个数' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('两个朝向取中间值不能直接平均，用矩阵指数绕同一根轴只转一半的角度；两个朝向都不是原样时先用矩阵对数求出两者之间绕什么轴、转了多少，再转一半；和第六集另外两种写法比：欧拉角三个数但会万向锁，四元数四个数没有万向锁但一个朝向两套数，矩阵指数给出的旋转矩阵没有万向锁、能直接相乘、和运动旋量螺旋轴是一套说法，代价是九个数有冗余；机械臂每个关节是一根螺旋轴，各算一个矩阵指数按顺序相乘，再乘上所有关节都在零度时手的位姿，就得到手现在的位姿，这叫指数积公式，第十一集讲');
+      var s = K.sceneSvg('两个朝向取中间值不能直接平均，用矩阵指数绕同一根轴只转一半的角度；两个朝向都不是原样时先用矩阵对数求出两者之间绕什么轴、转了多少，再转一半；和第六集另外两种写法比：欧拉角三个数但会万向锁，四元数四个数没有万向锁但一个朝向两套数，矩阵指数给出的旋转矩阵没有万向锁、能直接相乘、和运动旋量螺旋轴是一套说法，代价是九个数有冗余');
 
       /* ══ ① 网格 + UR5：取中间值 ══ */
       var g1 = E.el('g', {}, s), under = E.el('g', {}, g1);
@@ -98,48 +90,6 @@
       var iM = [item(cM, 2, 0.35, '没有万向锁', true), item(cM, 2, 1.25, '能直接相乘', true), item(cM, 2, 2.15, '和运动旋量、', true), item(cM, 2, 4.4, '9 个数，有冗余', false)];
       var iM2 = E.txt(cM, CX[2] + 46, CY + 118 + 46 * 2.15 + 30, '螺旋轴一套说法', 21, E.INK, 'start', 900);
 
-      /* ══ ③ UR5 斜视 + 六根关节轴 + 指数积公式 ══ */
-      var g3 = E.el('g', {}, s);
-      var ur = window.Robot3D.ur5(g3, 92, 404, 2.9, { az: 32, el: 16 }), V = ur.view, THREE = window.Robot3D.THREE;
-      var POSE0 = { shoulder_pan_joint: 20 * D, shoulder_lift_joint: -95 * D, elbow_joint: 75 * D, wrist_1_joint: -70 * D, wrist_2_joint: -90 * D, wrist_3_joint: 0 };
-      V.camera({ box: [0, 0, 440, 420] });
-      V.joints(POSE0);
-      var axG = E.el('g', {}, g3);
-      var axLines = JN.map(function () { return K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '8 5' }, axG), null, E.WARN); });
-      var axLabs = JN.map(function (n, i) { return E.halo(E.txt(axG, 0, 0, 'S' + '₁₂₃₄₅₆'[i], 22, E.WARN, 'middle', 900)); });
-      var thLab = E.halo(E.txt(axG, 0, 0, 'θ₂', 24, E.OMEGA, 'start', 900));
-      var toolG = E.el('g', {}, g3);
-      var toolAx = [E.X, E.Y, E.Z].map(function (c) { return E.vec(toolG, c, 4, { head: 12 }); });
-      function axisOf(name) {
-        var j = V.robot.joints[name];
-        j.updateMatrixWorld(true);
-        return { o: new THREE.Vector3().setFromMatrixPosition(j.matrixWorld), d: j.axis.clone().transformDirection(j.matrixWorld) };
-      }
-      // 标签摆法同 009 第 5 幕：[哪一端（0 / 1 / 'mid'）, dx, dy, 对齐]；每根轴从关节往两边画多长（米）
-      var LAB = [['mid', -26, 7, 'end'], [1, 22, 2, 'start'], [0, -24, 2, 'end'], [1, -8, -18, 'end'], [1, 12, 7, 'start'], [0, 0, -12, 'middle']];
-      var LEN = [[-0.05, 0.3], [-0.22, 0.22], [-0.2, 0.2], [-0.16, 0.16], [-0.15, 0.15], [-0.14, 0.14]];
-      var RK3 = E.rowKit(), r3 = E.el('g', {}, g3);
-      var b1 = RK3.line(r3, X, 60, [['关节的运动也可以用它来写：', E.INK, 900]], 22);
-      var b2 = RK3.line(r3, X, 96, [['每个关节 = 一根', E.INK2], ['螺旋轴', E.WARN, 900]], 22);
-      var b3 = RK3.line(r3, X, 132, [['转了多少 = ', E.INK2], ['角度 θ', E.OMEGA, 900]], 22);
-      var fm = E.el('g', {}, r3), FY = 190;
-      // 两行：T手 = exp([S₁]θ₁) exp([S₂]θ₂) / ⋯ exp([S₆]θ₆) M（中间三个因子写成 ⋯；上标太小，不用 e 的上标写法）
-      var tEq = E.tex(fm, X, FY, 'T_{\\text{手}}=', 24, E.HI, 'start', { w: 72, h: 44 });
-      var facs = [[1, X + 70, FY], [2, X + 184, FY], [6, X + 104, FY + 46]].map(function (q) {
-        var g = E.el('g', {}, fm);
-        var box = K.paint(E.el('rect', { x: q[1] - 4, y: q[2] - 28, width: 110, height: 40, rx: 8, 'stroke-width': 2 }, g), E.tint(E.HI, 16, 'var(--demo-surface)'), E.HI);
-        E.tex(g, q[1], q[2], '\\exp([\\mathcal S_' + q[0] + ']\\,\\theta_' + q[0] + ')', 22, E.INK, 'start', { w: 104, h: 44 });
-        return { g: g, box: box };
-      });
-      var dots = E.tex(fm, X + 70, FY + 46, '\\cdots', 22, E.INK, 'start', { w: 30, h: 44 });
-      var mTex = E.tex(fm, X + 220, FY + 46, 'M', 24, E.INK, 'start', { w: 30, h: 44 });
-      var mNote = RK3.line(r3, X, FY + 82, [['M：所有关节都在 0° 时，手的位姿', E.MUT, 700]], 17);
-      var nm = RK3.line(r3, X, FY + 122, [['指数积公式', E.HI, 900], ['（PoE）', E.INK2, 700]], 24);
-      var c11 = E.el('g', {}, r3);
-      K.paint(E.el('rect', { x: RX, y: 334, width: 340, height: 64, rx: 14, 'stroke-width': 2.5 }, c11), E.tint(E.GOOD, 10, 'var(--demo-surface)'), E.GOOD);
-      E.txt(c11, RX + 18, 362, '第 11 集 · 正运动学', 22, E.GOOD, 'start', 900);
-      E.txt(c11, RX + 18, 388, '六个关节连乘 → 手的位姿', 19, E.INK, 'start', 700);
-
       var laid = false;
       function fr(st, a) { return E.fade(st, a, 0.3); }
 
@@ -147,7 +97,7 @@
         el: s,
         draw: function (st, t) {
           if (!laid && s.isConnected) {
-            RK.layout(); RK3.layout(); laid = true;
+            RK.layout(); laid = true;
           }
           var f = E.fade, b = E.bump;
 
@@ -169,7 +119,7 @@
           E.op(a6.g, fr(st, T.log)); E.op(a7, fr(st, T.logEq));
 
           /* ── ② ── */
-          E.op(g2, f(st, T.cards, 0.4) * (1 - f(st, T.out2, 0.4)));
+          E.op(g2, f(st, T.cards, 0.4));
           E.op(cE, 1); E.op(cQ, 1); E.op(cM, 1);
           iE.forEach(function (g, k) { E.op(g, fr(st, T.eu[k])); });
           iQ.forEach(function (g, k) { E.op(g, fr(st, T.qu[k])); });
@@ -177,41 +127,6 @@
           iM.forEach(function (g, k) { E.op(g, fr(st, [T.mx[1], T.mx[2], T.mx[3], T.mx[4]][k])); });
           E.op(iM2, fr(st, T.mx[3]));
 
-          /* ── ③ ── */
-          E.op(g3, f(st, T.arm, 0.4));
-          var turn = 28 * D * f(st, T.turn[0], T.turn[1] - T.turn[0]);
-          var pose = Object.assign({}, POSE0); pose.shoulder_lift_joint = POSE0.shoulder_lift_joint + turn;
-          V.joints(pose);
-          JN.forEach(function (n, i) {
-            var a = axisOf(n), L = LEN[i];
-            var p0 = V.project(a.o.clone().addScaledVector(a.d, L[0])), p1 = V.project(a.o.clone().addScaledVector(a.d, L[1]));
-            axLines[i].setAttribute('d', 'M ' + p0[0].toFixed(1) + ' ' + p0[1].toFixed(1) + ' L ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1));
-            var on = f(st, T.axes[i], 0.35);
-            E.op(axLines[i], on); E.op(axLabs[i], on);
-            var lp = LAB[i], at = lp[0] === 'mid' ? [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2] : lp[0] ? p1 : p0;
-            axLabs[i].setAttribute('x', (at[0] + lp[1]).toFixed(1)); axLabs[i].setAttribute('y', (at[1] + lp[2]).toFixed(1)); axLabs[i].style.textAnchor = lp[3];
-            var pulse = Math.max(b(st, T.axes[i], 0.6), b(st, T.facs[i], 0.6), i === 1 ? f(st, T.turn[0], 0.3) * (1 - f(st, T.each, 0.4)) : 0);
-            axLines[i].style.strokeWidth = 3.5 + 3 * pulse; E.glow(axLines[i], E.WARN, pulse > 0.05);
-            if (i === 1) { thLab.setAttribute('x', (p1[0] + 16).toFixed(1)); thLab.setAttribute('y', (p1[1] + 32).toFixed(1)); }   // S₂ 标签下面
-          });
-          E.op(thLab, f(st, T.ang, 0.3) * (1 - f(st, T.each, 0.4)));
-          var tl = V.robot.links.tool0 || V.robot.frames && V.robot.frames.tool0;
-          V.robot.updateMatrixWorld(true);
-          var to = new THREE.Vector3().setFromMatrixPosition(tl.matrixWorld), op0 = V.project(to);
-          [new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1)].forEach(function (ax, i) {
-            var tp = V.project(to.clone().addScaledVector(ax.transformDirection(tl.matrixWorld), 0.13));
-            toolAx[i].set(op0[0], op0[1], tp[0], tp[1]);
-          });
-          var tb = b(st, T.hand, 0.9);
-          E.op(toolG, f(st, T.hand, 0.4)); E.glow(toolG, E.HI, tb > 0.05);
-          toolAx.forEach(function (a) { a.line.style.strokeWidth = 4 + 2 * tb; });
-          E.op(b1.g, fr(st, T.joint)); E.op(b2.g, fr(st, T.axes[0])); E.op(b3.g, fr(st, T.turn[0]));
-          E.op(fm, fr(st, T.each));
-          [0, 1, 5].forEach(function (i, k) { E.op(facs[k].box, b(st, T.facs[i], 0.7)); });
-          E.op(dots, 1); E.op(mTex, fr(st, T.mM)); E.op(tEq, fr(st, T.hand));
-          E.op(mNote.g, fr(st, T.zero));
-          E.op(nm.g, fr(st, T.name));
-          E.pop(c11, RX + 170, 366, f(st, T.ep11, 0.35), 0.92);
         }
       };
     }

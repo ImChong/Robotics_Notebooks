@@ -1,7 +1,7 @@
-// 组装 010：五幕按 EP010.scenes[i] 的下标排好（缺的幕先放占位，某一幕 build 出错时画出报错，不拖累别的幕），
+// 组装 010：六幕按 EP010.scenes[i] 的下标排好（缺的幕先放占位，某一幕 build 出错时画出报错，不拖累别的幕），
 // 再交给 stage.html 的 window.EpisodeVideo。旁白与 [from, to] 对时在 ../ep010.py。
 (function () {
-  var E = window.EP010, K = E.K, N = 5;
+  var E = window.EP010, K = E.K, N = 6;   // 2026-11-02 加第 6 幕「矩阵指数用在哪」
   function placeholder(title, msg) {
     return {
       title: title, dur: 4, cues: [{ at: 0, s: msg }],
@@ -42,11 +42,11 @@
     // 划重点 / 片尾里的加粗词（配色照「画面配色」）：矩阵指数、位姿亮黄；螺旋轴琥珀；朝向、角度蓝（转动）；位置紫（同 007 的 p）；螺距绿；不能 / 不是橙
     boldColors: { '矩阵指数': 'var(--hi)', 'exp': 'var(--hi)', '螺旋轴': 'var(--demo-warn)', '朝向': 'var(--demo-accent)', '角度': 'var(--demo-accent)',
       '位置': 'var(--violet)', '螺距': 'var(--demo-good)', '位姿': 'var(--hi)', '矩阵对数': 'var(--hi)', '不能': '#ff7b3a', '不是': '#ff7b3a' },
-    introDur: 26.93,
+    introDur: 37.25,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep010.py 的 recap 句对齐）
-    recapDur: 36.1,
+    recapDur: 38.04,
     recap: {
       act: '本集总结',
       title: '螺旋轴 × 角度 → 位姿',
@@ -54,9 +54,9 @@
         { c: '#ff7b3a', n: '① 不能直接乘角度', s: '前进的方向一直在变：走的是圆弧，不是直线', at: 1.87 },
         { c: 'var(--hi)', n: '② 无穷多小步：矩阵指数', s: '一步一步乘起来，名字来自指数函数 eˣ', at: 8.62 },
         { c: 'var(--demo-accent)', n: '③ 结果是位姿 T', s: '朝向：绕轴转过这个角度\n位置：轴上的点不动 + 角度 × 螺距', at: 15.5 },
-        { c: 'var(--demo-good)', n: '④ 守规矩、能直接相乘', s: '关节的运动也可以用它来写（第 11 集：指数积公式）', at: 23.57 }
+        { c: 'var(--demo-good)', n: '④ 守规矩、能直接相乘，用在哪', s: '正向运动学、更新朝向、逆向运动学（第 11、13、15 集）', at: 23.57 }
       ],
-      foot: { s: '**螺旋轴** × **角度**，交给**矩阵指数**，一步得到**位姿**', at: 29.78 }
+      foot: { s: '**螺旋轴** × **角度**，交给**矩阵指数**，一步得到**位姿**', at: 31.73 }
     },
     outroDur: 16.58,
     // 片尾不出题：下一集预告、完整内容的网址卡片和衔接语
@@ -72,8 +72,9 @@
           '**Murray、Li、Sastry**（1994）第 2 章：式 (2.40)，h = d / θ',
           '**Hall**（arXiv:math-ph/0005032）命题 3.8：(I + X/m)ᵐ → eˣ',
           '**OpenStax《College Algebra 2e》** 6.1 节表 5（复利）',
-          '**Solà 等**（arXiv:1812.01537）式 (25)(26)',
-          '**BIPM《SI 手册》** 第 9 版表 4（弧度）',
+          '**《Modern Robotics》** 例 4.5（UR5）、5.1.1 节、6.2.2 节',
+          '**Solà 等**（arXiv:1812.01537）式 (25)(26)；**SI 手册**表 4',
+          '**MuJoCo 源码**：engine_util_spatial.c 的 mju_quatIntegrate',
           '**Modern Robotics 官方代码**：MatrixExp3、MatrixLog3、MatrixExp6'
         ]
       },
