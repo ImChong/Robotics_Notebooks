@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, continual-learning, motion-tracking, lora, sim-to-real]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-02
 project_id: continual-humanoid-motion-learning
 arxiv: "2610.04231"
 code: https://anonymous.4open.science/r/continual-humanoid-learning-35D3
@@ -111,6 +111,8 @@ flowchart TB
 - [人形策略观测输入](../concepts/humanoid-policy-observation-inputs.md)可辅助理解教师和学生的观测差异。
 
 ## 关联页面
+
+- [CaRE 双层路由持续学习](./paper-care-bi-level-routing.md)：图像类别增量学习的路由与专家复用方案。
 
 - [人形策略观测输入](../concepts/humanoid-policy-observation-inputs.md)
 - [Streaming RL 分析](./paper-streaming-rl-continual-robotics.md)
