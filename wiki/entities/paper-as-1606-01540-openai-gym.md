@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    AG["智能体 agent<br/>（Gym 不提供 agent 抽象，仅示例）"]
+    ENV["环境 Environment（POMDP，带版本号如 -v0）"]
+    MON["Monitor（默认附加）<br/>记录每次 step / reset，可定期录像"]
+    WEB["gym.openai.com<br/>成绩榜 scoreboard + Writeup（附代码）"]
+    ENV -->|"reset() → 初始观测 ob0"| AG
+    AG -->|"动作 a_t"| ENV
+    ENV -->|"step(a) → ob, rew, done, info"| AG
+    ENV -.->|"done = True 则 episode 结束"| ENV
+    ENV --- MON
+    MON -->|"学习曲线 / 视频"| WEB
+```
+
+图依据：论文 §2（episode 交互循环与代码片段）、§3（Monitor、版本化、Writeup）、§4（环境类别）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1606.01540>
+- [arXiv PDF](https://arxiv.org/pdf/1606.01540)：已通读全文（论文为约 4 页的技术报告，无训练算法；图为其接口与工作流描述）：§1 引言、§2 背景、§3 设计决策、§4 环境、§5 未来方向
 
 ## 推荐继续阅读
 

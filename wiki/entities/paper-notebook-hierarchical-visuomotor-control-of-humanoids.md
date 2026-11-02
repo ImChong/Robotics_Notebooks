@@ -31,7 +31,32 @@ Hierarchical visuomotor control of humanoids 的人形机器人学习论文条�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置、原文入口与依据论文方法部分的「流程总览」，不给指标结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["动作捕捉片段 (2-6 秒)"] --> T["单片段跟踪策略 π(a|s,t)<br/>先监督预训练, 再 RL 模仿 (奖励 r=exp(-βE))"]
+    T --> LL["低层运动控制器 (仅本体感觉输入)"]
+    LL --> L1["Steerable 控制器<br/>高层输出 1 维转向角"]
+    LL --> L2["Switching 控制器<br/>1-of-k 选行为, 转移图约束"]
+    LL --> L3["Control fragments 冷切换<br/>0.1-0.3 秒微行为, 高层 1-of-K 选择"]
+    CAM["第一人称相机 (躯干根部)"] --> RES["ResNet 编码"]
+    PRO["本体感觉"] --> LIN["线性层编码"]
+    RES --> CAT["拼接"]
+    LIN --> CAT
+    CAT --> LSTM["LSTM 记忆"]
+    LSTM --> HL["高层控制器: 策略头 + 价值头<br/>(稀疏任务奖励训练)"]
+    HL -->|"每 k 步 / 每个 gait cycle 选择"| L1
+    HL --> L2
+    HL --> L3
+    L1 --> ACT["关节位置控制 -> 56 DoF 人形"]
+    L2 --> ACT
+    L3 --> ACT
+```
+
+图依据：论文 §2 Approach（§2.1 跟踪动捕片段 / §2.2 低层控制器类型 / §2.3 训练高层策略）/ Fig.1–4
 
 ## 核心信息
 
@@ -48,9 +73,9 @@ Hierarchical visuomotor control of humanoids 的人形机器人学习论文条�
 
 ## 结论
 
-**本页是分层视觉运动控制这条线的阅读进度待读，不是方法归纳：页面里可确定的只有它被归入物理动画分类与论文入口，层级如何划分、视觉如何接入控制都待深读笔记补齐。**
+**本页是分层视觉运动控制这条线的阅读进度待读，不是方法归纳：页面里可确定的只有它被归入物理动画分类与论文入口，层级划分与视觉接入的方法流程见「流程总览」，细节与指标待深读笔记补齐。**
 
-- 页面正文未给出任何方法、指标或消融，「实验与评测」已明确标注待笔记完成后补充。
+- 页面正文仅在「流程总览」给出方法流程，未给出指标或消融，「实验与评测」已明确标注待笔记完成后补充。
 - 适用边界：可用于按 13_Physics-Based_Animation 分类检索与追踪阅读进度，不可当作该工作的结论来引用。
 - 深读笔记完成后，本页会补上笔记链接与实质要点。
 
@@ -64,6 +89,7 @@ Hierarchical visuomotor control of humanoids 的人形机器人学习论文条�
 - [humanoid_pnb_hierarchical-visuomotor-control-of-humanoids.md](../../sources/papers/humanoid_pnb_hierarchical-visuomotor-control-of-humanoids.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/1811.09656>
+- [arXiv PDF](https://arxiv.org/pdf/1811.09656)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Approach（2.1–2.3）、§3.1 核心任务设定；其余实验与附录略读
 
 ## 推荐继续阅读
 

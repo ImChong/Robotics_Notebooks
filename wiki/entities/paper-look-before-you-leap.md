@@ -29,6 +29,23 @@ summary: "LBYL（arXiv:2311.17842）：规划前主动感知/验证。"
 | IL | Imitation Learning | 模仿学习 |
 | BC | Behavior Cloning | 行为克隆 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    U["高层语言指令 L<br/>(可选：目标图像 xg)"] --> V
+    X["当前视觉观测 xt"] --> V
+    V["VLM (GPT-4V) 零样本提示<br/>思维链：先识别任务相关物体与位置"] --> P["生成逐步计划 p1:N"]
+    P --> A["取首步作为文本动作 ℓt = p1"]
+    A --> E["对应策略 πℓt 在机器人上执行"]
+    E --> F["已执行步骤加入 Finished Plan"]
+    F --> N["获取新的视觉观测"]
+    N --> V
+    V -->|"输出终止符 done"| END["结束"]
+```
+
+图依据：论文 §III-A/B / Fig.2、Algorithm 1。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -70,6 +87,7 @@ LBYL 强调计划必须可被观测修正。
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2311.17842)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（问题定义、ViLa 流程、性质分析）
 
 ## 推荐继续阅读
 

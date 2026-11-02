@@ -14,7 +14,7 @@ summary: "ORCA：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔�
 
 # ORCA
 
-**ORCA: Open-Source, Reliable, Cost-Effective, Anthropomorphic Robotic Hand for Uninterrupted Dexterous Task Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+**ORCA: Open-Source, Reliable, Cost-Effective, Anthropomorphic Robotic Hand for Uninterrupted Dexterous Task Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：除分类位置与原文入口外，仅给出依据论文自标定算法的「流程总览」图（不含硬件机械设计），其余细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -32,6 +32,23 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：关节集合 J 与各关节运动范围 ROM<br/>[θ_min, θ_max]（取自 CAD 模型）"]
+    LOOP["对每个关节 j 依次执行"]
+    FLEX["向屈曲极限转动至堵转(stall)检测<br/>记录 m_min"]
+    EXT["向伸展极限转动至堵转检测<br/>记录 m_max"]
+    TRAVEL["电机行程 Δm = m_max − m_min<br/>关节 ROM Δθ = θ_max − θ_min"]
+    RATIO["电机到关节比 ρ = Δm / Δθ"]
+    MAP["线性映射 m_j = m_min + ρ·(θ_j − θ_min)<br/>期望关节角 → 电机指令"]
+    USE["跨会话一致的关节控制<br/>（遥操作 / 模仿学习执行）"]
+    IN --> LOOP --> FLEX --> EXT --> TRAVEL --> RATIO --> MAP --> USE
+```
+
+图依据：论文 §II-F 自标定（Algorithm 1）；本图只覆盖自标定流程，不含硬件机械设计与学习实验
 
 ## 核心信息
 
@@ -64,6 +81,7 @@ ORCA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_orca-open-source-reliable-cost-effective-anthrop.md](../../sources/papers/humanoid_pnb_orca-open-source-reliable-cost-effective-anthrop.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2504.04259>
+- [arXiv PDF](https://arxiv.org/pdf/2504.04259)：已通读方法部分（实验与附录以略读为准）：§II-A 腱驱动、§II-E 触觉传感、§II-F 自标定（Algorithm 1）；§II 其余硬件设计与 §III–IV 实验仅略读
 
 ## 推荐继续阅读
 

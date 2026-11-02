@@ -31,7 +31,33 @@ Design and Control of a Bipedal Robotic Character 的人形机器人学习论文
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未撰写；方法流程见下方「流程总览」（依据论文方法部分），具体数字以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 离线["离线：设计与训练"]
+        A["机械设计 ⇄ 动画工具迭代<br/>(程序化步态生成工具)"] --> B["机械设计 → 仿真模型<br/>+ 执行器模型 + 域随机化 (Isaac Gym)"]
+        A --> C["动画工具导出运动学参考<br/>(持续 perpetual / 周期 periodic / 分段 episodic)"]
+        C --> D["参考生成器 f 与路径帧<br/>+ 命令 g_t 定义"]
+        B --> E["PPO 训练，每种运动一个策略<br/>奖励=模仿+正则+存活，g_t 全范围随机"]
+        D --> E
+        E --> F["策略：站立(perpetual) / 行走(periodic)<br/>/ 多个 episodic 情绪动作"]
+    end
+    subgraph 运行["运行时"]
+        G["操作员手持遥控<br/>(摇杆 / 按钮 / 策略切换)"] --> H["动画引擎<br/>背景动画 + 触发动画 + 摇杆层"]
+        H -->|"控制命令 g_t / 策略切换"| I["冻结策略 50 Hz<br/>输出关节位置设定点"]
+        H -->|"show function 信号"| J["天线 / LED 眼 / 头灯"]
+        H -->|"同步播放命令"| K["音频引擎"]
+        I --> L["一阶保持 + 低通滤波<br/>PD 控制 600 Hz 驱动执行器"]
+        L --> M["IMU + 执行器测量<br/>状态估计 s_t"]
+        M --> I
+    end
+    F --> I
+```
+
+图依据：论文 §III 总览 / Fig.2、§V 强化学习、§VI 运行时（Fig.5 动画管线）
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ Design and Control of a Bipedal Robotic Character 的人形机器人学习论文
 - [humanoid_pnb_design-and-control-of-a-bipedal-robotic-characte.md](../../sources/papers/humanoid_pnb_design-and-control-of-a-bipedal-robotic-characte.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2501.05204>
+- [arXiv PDF](https://arxiv.org/pdf/2501.05204)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 总览、§IV 机电设计、§V 强化学习（A 动画输入、B 奖励、C 策略、D 底层控制、E 仿真）、§VI 运行时
 
 ## 推荐继续阅读
 

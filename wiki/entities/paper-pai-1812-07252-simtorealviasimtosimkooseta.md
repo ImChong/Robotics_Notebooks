@@ -40,6 +40,33 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["QT-Opt 仿真训练轨迹<br/>(Bullet, Kuka IIWA, 托盘+物体)"] --> B["每个时间步冻结场景"]
+    B --> C["施加随机化<br/>纹理 / 光照 / 臂与托盘尺寸位置"]
+    B --> D["重置为 canonical 场景<br/>统一颜色, 固定光源"]
+    C --> E["随机化 RGB 图 xs"]
+    D --> F["canonical RGB xc + 分割 mc + 深度 dc"]
+    E --> G["RCAN 生成器 G (cGAN)"]
+    G --> H["xa / ma / da"]
+    F --> I["等价损失 MPSE + L2 辅助损失"]
+    H --> I
+    H --> J["判别器 D (GAN 损失)"]
+    F --> J
+    I --> G
+    J --> G
+    K["真机图像 xt"] --> L["训练后的 G"]
+    G -.训练完成.-> L
+    L --> M["xa 与 xt 通道拼接"]
+    K --> M
+    M --> N["QT-Opt Q 网络 + CEM 选动作<br/>(仅在仿真中训练)"]
+    N --> O["真机抓取"]
+```
+
+图依据：论文 §4 Method（§4.1 数据生成 / §4.2 训练 / §4.3 QT-Opt）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +130,7 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1812.07252>
+- [arXiv PDF](https://arxiv.org/pdf/1812.07252)：已通读方法部分（实验与附录以略读为准）：§3 Background、§4 Method（4.1–4.3）、§5 实验设定；附录 A/B 略读
 
 ## 推荐继续阅读
 

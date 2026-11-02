@@ -31,7 +31,30 @@ The Role of Domain Randomization in Training Diffusion Policies for Whole-Body H
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论（论文方法流程见下方「流程总览」）。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+    AM["AMASS 动作捕捉 (10 段行走序列)<br/>手/脚关键点 → MuJoCo 逆运动学重定向到 H1"]
+    AM --> DISC["AMP 判别器<br/>(提供风格奖励)"]
+    subgraph RL["RL 数据生成器: AMP 策略 (Unitree H1, IsaacGym)"]
+        DR["训练时施加全部 Domain Randomization<br/>+ 正则化奖励 + 速度跟踪任务奖励"]
+        POL["鲁棒 RL 策略<br/>(目标: 速度命令)"]
+        DR --> POL
+    end
+    DISC --> POL
+    POL --> COL
+    subgraph DATA["数据采集: 8 种环境设置 × 3 种规模 = 24 个数据集"]
+        COL["采集时单独施加一类随机化:<br/>动力学 / 外力扰动 / 地形 / 初始状态 / 人形尺度<br/>(规模 500K / 2M / 8M transitions)"]
+    end
+    COL --> DP["训练 Diffusion Policy<br/>(2 个 MLP 编码器 + 6 层 Transformer 解码器,<br/>噪声预测 MSE, receding horizon 控制)"]
+    DP --> EV1["评测 1: 平坦地面, 无 DR"]
+    DP --> EV2["评测 2: 复杂不平地形 + 动力学随机化"]
+```
+
+图依据：论文 §3 Framework for Offline Dataset Generation / §3.1–3.2（环境与各类随机化）/ §4 Diffusion Models for Whole-Body Humanoid Control / Fig.1 / §5 评测设置。
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ The Role of Domain Randomization in Training Diffusion Policies for Whole-Body H
 - [humanoid_pnb_the-role-of-domain-randomization-in-training-dif.md](../../sources/papers/humanoid_pnb_the-role-of-domain-randomization-in-training-dif.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2411.01349>
+- [arXiv PDF](https://arxiv.org/pdf/2411.01349)：已通读方法部分（实验与附录以略读为准）：§3 Framework for Offline Dataset Generation（3.1–3.2）、§4 Diffusion Models for Whole-Body Humanoid Control、§5 评测设置
 
 ## 推荐继续阅读
 

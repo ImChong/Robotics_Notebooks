@@ -34,6 +34,26 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  CAM["前臂相机支架上的深度相机<br/>人手深度图 I_H"] --> STN["Preprocess：空间变换网络 STN"]
+  STN --> ENC["Encoder：卷积 + 残差块"]
+  ENC --> EMB["Embedding Module (全连接) → 姿态特征 Z_pose"]
+  EMB --> DEC["Decoder → 重建机器人手深度图 I_R^"]
+  DEC --> JM["Joint Module：3 层全连接 → 19 维 Shadow hand 关节角 J_hand"]
+  DEC --> LR["L_recon：关键点加权 L2"]
+  JM --> LJ["L_joint：MSE"]
+  JM --> HAND["PR2 右臂上的 Shadow hand"]
+  IMU["Perception Neuron：3 个 IMU<br/>（手掌、上臂、前臂）"] --> WP["结合连杆长度计算机器人腕部位姿"]
+  WP --> IK["BioIK 求臂关节角"]
+  IK --> VEL["关节角速度 = 前馈差分 + 反馈差分"]
+  VEL --> ARM["PR2 机械臂"]
+```
+
+图依据：论文 §III–§V（Fig. 1、Fig. 2、§V 手臂遥操作）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,7 +84,7 @@ A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU 的人形机器�
 
 - [humanoid_pnb_a-mobile-robot-hand-arm-teleoperation-system-by.md](../../sources/papers/humanoid_pnb_a-mobile-robot-hand-arm-teleoperation-system-by.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
-
+- [arXiv PDF](https://arxiv.org/pdf/2003.05212)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 问题定义、§IV Transteleop、§V 手臂遥操作系统（§VI 网络评测、§VII 操作实验略读未细读）
 
 ## 推荐继续阅读
 

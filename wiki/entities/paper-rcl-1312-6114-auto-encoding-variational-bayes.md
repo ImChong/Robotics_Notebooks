@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["数据点 x（minibatch，M=100）"] --> ENC["识别模型 / 概率编码器 q_φ(z|x)<br/>MLP 输出 μ、σ（对角高斯）"]
+    EPS["辅助噪声 ε ~ N(0, I)"] --> RP["重参数化 z = μ + σ ⊙ ε"]
+    ENC --> RP
+    RP --> DEC["生成模型 / 概率解码器 p_θ(x|z)<br/>MLP，高斯或伯努利"]
+    PRI["先验 p_θ(z) = N(0, I)"] --> KL["KL(q_φ(z|x) ‖ p_θ(z))<br/>高斯情形有解析式，起正则作用"]
+    ENC --> KL
+    DEC --> REC["重构项 log p_θ(x|z)"]
+    KL --> ELBO["SGVB 下界估计 L̃ = −KL + 重构项"]
+    REC --> ELBO
+    ELBO --> GRAD["对 θ、φ 联合求梯度<br/>(SGD / Adagrad 更新，AEVB 算法)"]
+    GRAD -.-> ENC
+    GRAD -.-> DEC
+```
+
+图依据：论文 §2.3（SGVB 估计器与 Algorithm 1）、§2.4（重参数化）、§3（VAE 示例）、Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1312.6114>
+- [arXiv PDF](https://arxiv.org/pdf/1312.6114)：已通读方法部分（实验与附录以略读为准）：§2.1 问题设定、§2.2 变分下界、§2.3 SGVB 估计器与 AEVB 算法、§2.4 重参数化技巧、§3 变分自编码器示例
 
 ## 推荐继续阅读
 

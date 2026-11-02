@@ -38,6 +38,31 @@ summary: "把策略从仿真搬到真机失败，根子在现实差（reality ga
 - **零额外硬件/标定**：不需力矩传感器、不需真机系统辨识，纯训练时技巧，落地成本低
 - **可与现有管线叠加**：τ_φ 注入与 PPO+AMP 正交，可加在大多数 RL 步行/全身控制训练上
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EP["每个 episode 开始：随机采样扰动网络权重 φ ~ 高斯<br/>（φ 不学习、不更新）"]
+    PERT["扰动网络 τ_φ：2×32 tanh MLP，无偏置<br/>τ_φ = σ_lim · tanh(MLP(o_priv/σ))，零输入得零输出"]
+    HALF["仅一半并行环境注入扰动<br/>其余环境无扰动"]
+    POL["策略 π_θ：GRU 编码器(24 维隐变量) + MLP<br/>输入本体观测 o_t，输出 12 个下肢关节动作"]
+    TAU["名义关节力矩 τ_π（PD 位置或直接力矩）"]
+    SIM["Isaac Gym 前向动力学<br/>输入 τ_π + τ_φ（含浮动基座虚拟关节力）"]
+    CRIT["Critic：额外接收特权观测 o_priv<br/>（含注入的扰动值 τ_pert、F_body_pert）"]
+    LOSS["联合训练：L_total = L_recon + L_PPO + λ_grad·L_grad"]
+    REAL["零样本实机部署 TOCABI"]
+    EP --> PERT
+    PERT --> HALF --> SIM
+    POL --> TAU --> SIM
+    SIM -->|观测 o_t、o_priv、奖励| POL
+    SIM --> CRIT --> LOSS
+    SIM --> LOSS
+    LOSS -->|更新 θ| POL
+    POL --> REAL
+```
+
+图依据：论文 §III-A、§III-B 至 §III-E（Fig. 2、Eq. 10–15）
+
 ## 解决什么问题
 
 Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为仿真器没法精确建模真实执行器（高减速比齿轮的非线性、摩擦、延迟）和接触柔顺。两条已有路线各有短板：
@@ -89,6 +114,7 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 - [humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md](../../sources/papers/humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html>
 - 论文：<https://arxiv.org/abs/2504.06585>
+- [arXiv PDF](https://arxiv.org/pdf/2504.06585)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 强化学习设置、B–D 关节力矩空间扰动、E 训练设置）；§IV 实验与附录仅略读
 
 ## 推荐继续阅读
 

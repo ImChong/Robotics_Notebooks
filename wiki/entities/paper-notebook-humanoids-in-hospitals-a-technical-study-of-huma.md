@@ -43,6 +43,29 @@ summary: "本文探索用人形机器人经遥操作执行医疗任务，以缓�
 - **力限与传感灵敏度**是当前硬件瓶颈，提示本体改进方向；
 - 系统性技术研究为后续自主化/学习化医疗操作奠基。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OP["操作员"] --> VIVE["HTC Vive 追踪器：手部位姿"]
+    OP --> CAM["双相机 C1、C2：手部关键点<br/>WiLoR + MANO"]
+    OP --> PED["双踏板脚控：离合 clutch 单臂/双臂，或激活虚拟弹簧-阻尼"]
+    CAM --> FUSE["按视角余弦可靠性 ρi 加权融合关键点"]
+    FUSE --> RET["运动学重定向：人手关键点 → Inspire Hands Gen4 关节角"]
+    RET --> GRASP["预设抓取模板：匹配最近的 Qpreconf 位姿"]
+    VIVE --> REL["相对运动映射：离合时保存手/末端位姿，释放后仅映射增量"]
+    PED --> REL
+    REL --> IMP["阻抗控制：由关节力矩估计末端力 FEE<br/>τcmd = τg + Jᵀ FEE"]
+    REL --> SD["双臂虚拟弹簧-阻尼耦合<br/>左臂（follower）参考右臂（desired）"]
+    SD --> IMP
+    IMP --> G1["Unitree G1 双臂"]
+    GRASP --> HAND["Inspire Hands 抓取医疗工具"]
+    G1 --> TASK["医疗任务：体检、BVM 通气、气管插管、超声引导注射等"]
+    HAND --> TASK
+```
+
+图依据：论文 §II-A Operator Control Interface、§II-B Humanoid Teleoperation、§II-C Grasping Medical Tools / Fig.2。
+
 ## 解决什么问题
 
 医护**人力短缺**，能否用**人形替身**远程做医疗操作？ - 医疗任务**灵巧、精密、需柔顺**； - 不清楚现有人形（G1）能做到什么程度、卡在哪。
@@ -128,6 +151,7 @@ summary: "本文探索用人形机器人经遥操作执行医疗任务，以缓�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Humanoids_in_Hospitals__Humanoid_Surrogates_for_Dexterous_Medical_Interventions/Humanoids_in_Hospitals__Humanoid_Surrogates_for_Dexterous_Medical_Interventions.html>
 - 论文：<https://arxiv.org/abs/2503.12725>
 - 论文正文（实验结果与讨论节）：<https://arxiv.org/html/2503.12725>
+- [arXiv PDF](https://arxiv.org/pdf/2503.12725)：已通读方法部分（实验与附录以略读为准）：§II Methods（A 操作界面、B 人形遥操作、C 抓取医疗工具）
 
 ## 推荐继续阅读
 

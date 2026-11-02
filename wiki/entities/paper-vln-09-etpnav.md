@@ -40,6 +40,37 @@ sources:
 - **末段精修上游：** [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 将 ETPNav-ZS/FT 作为四类 plug-and-play 骨干之一，在 REVERIE-AIM 上 ONS@0.1m 相对无精修基线约 **翻倍**（arXiv:2607.03792）。
 - 连续环境 VLN-CE 下拓扑建图、跨模态规划与底层控制（含避障）三模块串联的端到端框架。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：全景 RGB-D 观测 O_t（12 视角）+ 指令 W"]
+    subgraph M["拓扑建图 Topological Mapping"]
+        WP["Waypoint Prediction<br/>仅用深度 + 朝向特征的 transformer 预测器，NMS 采样 K 个 waypoint"]
+        GU["Graph Update<br/>Waypoint Localization F_L：并入 visited / ghost 节点或新建 ghost 节点"]
+        WP --> GU
+    end
+    subgraph P["跨模态规划 Cross-Modal Planning"]
+        TE["Text Encoder"]
+        GE["Cross-Modal Graph Encoder<br/>节点编码 + 图感知自注意力 GASA"]
+        GS["Long-term Goal Prediction<br/>对节点打分，选 ghost 节点或 stop 节点"]
+        DJ["Dijkstra 最短路 → 子目标节点序列 P_t"]
+        TE --> GE --> GS --> DJ
+    end
+    subgraph C["控制 Control"]
+        RF["Rotate-then-Forward 控制器 RF<br/>ROTATE 15° + FORWARD 0.25m"]
+        TR["Tryout：检测 FORWARD 后位置不变则尝试预设朝向脱困"]
+        RF --- TR
+    end
+    I --> WP
+    I --> TE
+    GU -->|"拓扑图 G_t"| GE
+    DJ --> RF
+    RF -->|"到达子目标后进入下一决策循环"| I
+```
+
+图依据：论文 §3 概述（Fig. 1）、§3.1（Fig. 2）、§3.2（Fig. 3）、§3.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +126,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2304.03047>
+- [arXiv PDF](https://arxiv.org/pdf/2304.03047)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1 Topological Mapping、§3.2 Cross-Modal Planning、§3.3 Control、§3.4 Training and Inference）
 
 ## 推荐继续阅读
 

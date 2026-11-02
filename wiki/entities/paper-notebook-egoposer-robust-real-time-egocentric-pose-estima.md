@@ -38,6 +38,22 @@ summary: "仅用头与手位姿做全身第一视角姿态估计是头显平台�
 - **SlowFast 长时序 + 高效**是实时全身估计的实用结构；
 - 稀疏感知驱动全身，对人形遥操作/化身有直接价值。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["HMD 追踪的头部 + 双手 3 点位姿<br/>（全局位置 p 与朝向 Θ，N=80 帧窗口）"] --> FOV["真实 FoV 建模<br/>手在头显视野外时，该手的输入特征置 0"]
+    FOV --> GMD["全局运动分解<br/>时间归一化 TN + 空间归一化 SN（仅水平平移相对头部）<br/>+ 线/角速度、6D 旋转，共 59 维输入特征"]
+    GMD --> SF["SlowFast 特征融合<br/>FAST：最近 τ/2 帧；SLOW：全窗口步长 2 采样；拼接"]
+    SF --> TE["Transformer Encoder"]
+    TE --> DEC["多头运动解码器"]
+    DEC --> OUT["全局根朝向 θ_global + 局部关节旋转 θ_local + 体型 β"]
+    OUT --> SMPL["SMPL-H 人体模型 + 前向运动学<br/>（β 经关节位置误差隐式优化，L1 正则）"]
+    SMPL --> POSE["全身 22 关节位置<br/>全局根位置由头部位置与预测关节角经 FK 得到"]
+```
+
+图依据：论文 §3.1–3.5、Fig. 2。
+
 ## 解决什么问题
 
 现有第一视角全身姿态估计**假设太理想**： - 依赖**室内动捕空间**、**连续**关节跟踪、**统一体型**； - 真实中手**常出视野**→**间歇**观测； - 全局位置变化影响稳定。
@@ -89,6 +105,7 @@ EgoPoser 要：在**稀疏间歇**观测、**任意场景、任意体型**下鲁
 - [humanoid_pnb_egoposer.md](../../sources/papers/humanoid_pnb_egoposer.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EgoPoser__Robust_Real-Time_Egocentric_Pose_Estimation_from_Sparse_Sensors/EgoPoser__Robust_Real-Time_Egocentric_Pose_Estimation_from_Sparse_Sensors.html>
 - 论文：<https://arxiv.org/abs/2308.06493>
+- [arXiv PDF](https://arxiv.org/pdf/2308.06493)：已通读方法部分（实验与附录以略读为准）：§3.1 概述、§3.2 真实 FoV 建模、§3.3 全局运动分解、§3.4 SlowFast 特征融合、§3.5 体型感知姿态优化
 
 ## 推荐继续阅读
 

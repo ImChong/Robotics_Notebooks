@@ -40,6 +40,35 @@ GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器
 - GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器人微调。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["阶段一：视频生成式预训练"]
+        V["Ego4D 视频片段 (3s)<br/>+ 语言标注"] --> PT["GR-1 预测未来帧 o(t+Δt)"]
+        PT --> LV1["Lvideo：像素空间 MSE"]
+    end
+    subgraph IN["输入编码"]
+        L["语言 l → CLIP 文本编码器 (冻结)"]
+        O["图像 o → MAE 预训练 ViT (冻结)<br/>CLS + patch → Perceiver Resampler"]
+        S["机器人状态 s<br/>(末端 6D 位姿 + 夹爪开合) → 线性层"]
+    end
+    subgraph FT["阶段二：机器人数据微调"]
+        R["机器人轨迹 (l, o, s, a)"] --> G["GR-1 因果 Transformer<br/>token 序列含 [OBS] 与 [ACT]"]
+        G --> OBS["[OBS] + mask token → 视觉解码器 → 未来帧"]
+        G --> ACT["[ACT] → 线性层 → 机械臂与夹爪动作"]
+        OBS --> LV2["Lvideo (MSE)"]
+        ACT --> LA["Larm (Smooth-L1) + Lgripper (BCE)"]
+    end
+    PRE -->|"权重初始化"| FT
+    IN --> G
+    IN --> PT
+    LV2 --> LF["Lfinetune = Larm + Lgripper + Lvideo"]
+    LA --> LF
+```
+
+图依据：论文 §3.1–3.3 / Fig.1–2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +121,7 @@ GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器
 - [shenlan_wm_survey_09_gr1.md](../../sources/papers/shenlan_wm_survey_09_gr1.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2312.13139)：已通读方法部分（实验与附录以略读为准）：§3.1 问题定义、§3.2 架构（输入/网络/输出）、§3.3 训练
 
 ## 推荐继续阅读
 

@@ -36,6 +36,30 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 - 属于六路线 taxonomy 的 **上下文主导型**：预测结果被用于 **持续维护可查询世界状态与记忆（World Proxy）。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["完整 3D 场景图 G<br/>楼层 / 房间 / 资产 / 物体"] --> COL["collapse：仅暴露顶层（楼层节点）得到 G′"]
+    I["自然语言任务指令 I"] --> S1
+    COL --> S1
+    subgraph SS["阶段一：Semantic Search"]
+        S1["LLM（提示 P + G′ + I）<br/>输出 expand / contract 指令与节点名"] --> SIM1["Scene Graph Simulator 执行<br/>expand / contract，返回更新后的 G′"]
+        SIM1 -->|"继续探索（已展开节点列表作 Memory）"| S1
+    end
+    S1 -->|"terminate：任务相关子图已找全"| SUB["任务相关子图 G′"]
+    subgraph RP["阶段二：Iterative Replanning"]
+        P1["LLM 生成高层计划<br/>节点级 goto / pickup 等动作"] --> PP["路径规划器（如 Dijkstra）<br/>补全节点间导航路径"]
+        PP --> V["Scene Graph Simulator：verify_plan<br/>前向仿真检查谓词 / 状态 / affordance"]
+        V -->|"失败：文字反馈"| P1
+    end
+    SUB --> P1
+    V -->|"success"| OUT["可执行计划"]
+    OUT --> LL["低层视觉接地运动规划执行"]
+```
+
+图依据：论文 §3.3 / Fig.1 / Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +98,7 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2307.06135)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3（问题定义、3DSG 与场景图模拟器、Semantic Search、Iterative Replanning、Algorithm 1）、§4 实验设置
 
 ## 推荐继续阅读
 

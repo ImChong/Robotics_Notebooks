@@ -40,6 +40,29 @@ Haarnoja et al. Deep RL pipeline producing whole-body soccer behaviours on a sma
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph S1["Stage 1 技能训练"]
+        A["Soccer skill<br/>对手为未训练策略，目标进球"]
+        B["Get-up skill<br/>以关键姿态序列为目标位姿"]
+    end
+    subgraph S2["Stage 2 蒸馏与自博弈"]
+        C["1v1 agent (DMPO)<br/>状态 s 在直立集合 U 内：KL 正则到 soccer skill<br/>否则：KL 正则到 get-up skill"]
+        D["Self-play<br/>对手取自历史快照池（前 1/4 快照 + 未训练 agent）"]
+    end
+    E["仿真训练：系统辨识 + 域随机化 + 随机扰动"]
+    F["零样本迁移到 OP3 真机<br/>动捕提供游戏状态"]
+    A --> C
+    B --> C
+    D -->|"对手策略"| C
+    C -->|"周期保存快照"| D
+    C --> E --> F
+```
+
+图依据：论文 Fig. 2 与 Materials and Methods（Training、Sim-to-Real Transfer）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +126,7 @@ Haarnoja et al. Deep RL pipeline producing whole-body soccer behaviours on a sma
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2304.13653>
+- [arXiv PDF](https://arxiv.org/pdf/2304.13653)：已通读方法部分（实验与附录以略读为准）：引言、Materials and Methods（Environment、Policy Optimization、Training、Sim-to-Real Transfer）
 
 ## 推荐继续阅读
 

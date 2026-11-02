@@ -41,6 +41,26 @@ Segment Anything in 3D scenes.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["带位姿的 RGB-D 帧序列<br/>（ScanNet 场景，无需训练 / 微调）"] --> SAM["逐帧 SAM 自动掩码生成<br/>重叠像素取预测 IoU 最高的 mask id"]
+    SAM --> PROJ["按深度与相机内外参把 2D mask 映射到 3D<br/>网格池化（grid pooling）下采样"]
+    PROJ --> L0["每帧一个带 mask id 的局部点云 X0"]
+    L0 --> BM["双向合并 Bidirectional Merging<br/>相邻两帧点云 X1、X2 建立对应关系"]
+    BM --> OV{"重叠点数 > δ × min(两个 mask 点数)？<br/>（δ = 0.5）"}
+    OV -->|"是：统一 mask id；X1→X2 与 X2→X1 对称各做一遍"| NEW["合并后的点云，再下采样"]
+    OV -->|"否：保留各自 mask"| NEW
+    NEW -->|"Bottom-up：相邻点云两两继续合并，重复 ⌈log2 n⌉ 轮"| BM
+    NEW -->|"合并为整场景单一点云"| SC["整个场景的 3D mask（SAM3D）"]
+    OS["场景的 over-segmentation 结果"] --> ENS
+    SC --> ENS["Mask Ensemble：融合 SAM3D 与 over-segmentation"]
+    ENS --> OUT["SAM3D (ensembled) 最终 3D 实例分割"]
+```
+
+图依据：论文 §2 / Fig.2–Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +128,7 @@ Segment Anything in 3D scenes.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2306.03908>
+- [arXiv PDF](https://arxiv.org/pdf/2306.03908)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 方法（单帧 3D mask、双向合并、自底向上合并、与 over-segmentation 集成）、§3 开头
 
 ## 推荐继续阅读
 

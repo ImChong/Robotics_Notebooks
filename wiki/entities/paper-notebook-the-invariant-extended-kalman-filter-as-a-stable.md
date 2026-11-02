@@ -38,6 +38,27 @@ summary: "标准 EKF 在非线性系统上把动力学「就地线性化」，�
 - **可观测性洞见**：本文框架下能清楚说明偏航角 / 绝对位置在仅本体感知时不可观，避免 EKF 产生「假修正」
 - **学习型滤波的对照基线**：[InEKFormer (2511.16306)](https://arxiv.org/abs/2511.16306)、KalmanNet 等「保留几何骨架 + 网络学难调部分」的工作，保留的正是本文这套李群几何结构
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SYS["李群上系统 d/dt χ = f_u(χ)<br/>满足群仿射条件 f(ab) = a f(b) + f(a) b − a f(Id) b"]
+    SYS --> T1["Theorem 1：左 / 右不变误差 η<br/>的传播与状态轨迹无关 dη/dt = g_u(η)"]
+    T1 --> T2["Theorem 2：对数线性<br/>η = exp(ξ)，dξ/dt = A ξ（任意大误差下精确）"]
+    subgraph IEKF["IEKF（连续传播 + 离散观测更新）"]
+        P["传播：d/dt χ̂ = f_u(χ̂)；Riccati：dP/dt = A P + P Aᵀ + Q̂"]
+        K["增益：S = H P Hᵀ + N̂，L = P Hᵀ S⁻¹"]
+        U["更新：χ̂⁺ = χ̂ exp(L·(χ̂⁻¹Y − d))（LIEKF）<br/>或 exp(L·(χ̂Y − d)) χ̂（RIEKF）"]
+        P --> K --> U --> P
+    end
+    T2 --> P
+    T2 --> T4["Theorem 4：线性 Kalman 滤波稳定条件（Deyst-Price, Theorem 3）<br/>在真实轨迹上成立 ⇒ IEKF 为渐近稳定观测器"]
+    IEKF --> T4
+    T4 --> EX["示例：简化小车 (§4)、平坦地球导航 (§5)"]
+```
+
+图依据：论文 §2.2–2.3（Theorem 1–2）、§3.1–3.4（IEKF 方程 (36)–(37)、Theorem 3–4）、§4–5 示例。
+
 ## 解决什么问题
 
 - **EKF 的一致性 / 收敛性没有保证**：经典 EKF 对非线性系统在「当前估计」处线性化。一旦估计有偏，雅可比就算错，滤波可能「过分自信」甚至发散。这在机器人定位、惯性导航这类大范围运动里尤其致命。 - **不变滤波此前缺乏严格的收敛分析**：人们已经观察到把状态放到李群上、用「不变误差」做 EKF（InEKF）经验上更稳，但**为什么稳、在什么条件下稳**，缺乏统一的理论说明。 - **本文的目标**：把 InEKF 当作**确定性非线性观测器**（先不谈噪声统计，只问「估计会不会收敛到真值」），刻画出一类能享受良好性质的系统，并给出可证明的局部稳定性结论。
@@ -86,6 +107,7 @@ summary: "标准 EKF 在非线性系统上把动力学「就地线性化」，�
 - [humanoid_pnb_the-invariant-extended-kalman-filter-as-a-stable.md](../../sources/papers/humanoid_pnb_the-invariant-extended-kalman-filter-as-a-stable.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html>
 - 论文：<https://arxiv.org/abs/1410.1465>
+- [arXiv PDF](https://arxiv.org/pdf/1410.1465)：已通读方法部分（实验、示例推导与附录证明以略读为准）：§2.2–2.3 群仿射系统与对数线性性质、§3 Invariant EKF（3.1 结构、3.2 增益调参、3.3 方程汇总、3.4 稳定性）
 
 ## 推荐继续阅读
 
