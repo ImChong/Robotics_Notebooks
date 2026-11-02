@@ -7,7 +7,7 @@ tags:
   - manipulation
   - google-deepmind
 status: complete
-updated: 2026-10-06
+updated: 2026-11-02
 arxiv: "2307.15818"
 related:
   - ./paper-rt-1.md
@@ -15,9 +15,11 @@ related:
   - ../methods/vla.md
   - ../methods/robotics-transformer-rt-series.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
   - ../../sources/papers/rt_2_arxiv_2307_15818.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: "RT-2（arXiv:2307.15818，Google DeepMind）：把预训练 VLM 微调为输出动作文本 token 的 VLA；co-training 保留语义推理。官方完整训练代码未开源。"
 ---
 

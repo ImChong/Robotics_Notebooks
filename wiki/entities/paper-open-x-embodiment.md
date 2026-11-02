@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "dataset", "cross-embodiment", "vla", "rt-x", "hmi-papers"]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-02
 arxiv: "2310.08864"
 code: https://github.com/google-deepmind/open_x_embodiment
 venue: "HMI curated · 2023"
@@ -13,9 +13,11 @@ related:
   - ../methods/octo-model.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
   - ../../sources/papers/hmi_p055_open-x-embodiment.md
   - ../../sources/repos/humanoid-motion-intelligence.md
+  - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 ---
 
 # Open X-Embodiment（HMI P055）

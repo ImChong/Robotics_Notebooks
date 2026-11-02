@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-28
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
+  - ../overview/vla-history-rt1-to-molmoact-technology-map.md
   - ../entities/paper-viola-human-data-control.md
   - ../overview/ai-architecture-map.md
   - ../entities/embodied-interview-qa.md
@@ -587,6 +588,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [VioLA：从人类数据学习人形通用控制](../entities/paper-viola-human-data-control.md) — human/robot 共享动作潜空间，预测身体与手部潜变量并由冻结控制器执行。
 
 ## 关联页面
+- [VLA 演进简史：从 SayCan / RT-1 到 MolmoAct 2（Khushi 长文阅读坐标）](../overview/vla-history-rt1-to-molmoact-technology-map.md) — 十个模型的时间线与动作表示三条路线
 
 - [VLA-Rolling](../entities/paper-vla-rolling.md) — 冻结 flow-matching VLA 的动作尾部复用，降低去噪步数与推理延迟
 
