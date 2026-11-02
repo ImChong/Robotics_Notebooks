@@ -35,6 +35,28 @@ summary: "SoftMimicGen：基于少量遥操作示范，经子任务标注与自�
 
 可变形物体状态与接触动力学复杂，人工收集大规模示范成本高；自动数据扩增有助于降低数据采集成本。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类遥操作采集少量源演示<br/>1–10 条"] --> B["按物体中心子任务分段<br/>人工标注或启发式信号"]
+    B --> C["源片段库"]
+    D["新目标场景<br/>采样自更宽的初始状态分布"] --> E["观测当前子任务的<br/>可变形物体节点位置 O'"]
+    E --> F["对每个源片段起始物体构型<br/>做非刚性配准 Non-Rigid Registration"]
+    C --> F
+    F --> G["选择配准代价最低的源片段"]
+    G --> H["由形变场 f 变换末端轨迹<br/>p → f(p)，R → orth(J_f·R)"]
+    H --> I["加线性插值段<br/>从当前位姿平滑过渡到变换后轨迹起点"]
+    I --> J["在目标环境执行轨迹"]
+    J -->|"下一子任务"| E
+    J --> K{"任务成功？"}
+    K -->|是| L["加入生成数据集"]
+    K -->|否| M["丢弃"]
+    L --> N["BC-RNN-GMM / Diffusion Policy 训练视觉运动策略"]
+```
+
+图依据：论文 §IV-A–C / Fig.2（SoftMimicGen 系统流程）、§V-A（策略训练）。
+
 ## 方法：核心流程
 
 1. **Record**：通过遥操作录制少量人类示范。
@@ -69,3 +91,4 @@ SoftMimicGen 将少量遥操作示范扩增为可变形物体操作训练数据�
 - 项目页及视频：https://softmimicgen.github.io/
 - 开源代码：https://github.com/NVlabs/SoftMimicGen
 - [来源归档](../../sources/papers/softmimicgen_arxiv_2603_25725.md)
+- [arXiv PDF](https://arxiv.org/pdf/2603.25725)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV-A–C 方法、§V-A 实验设定开头

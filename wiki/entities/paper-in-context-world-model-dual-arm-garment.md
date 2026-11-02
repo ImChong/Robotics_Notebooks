@@ -20,7 +20,7 @@ summary: "In-Context Garment WM：面向部分可观测柔性衣物双臂操作�
 
 # In-Context Garment WM：面向部分可观测柔性衣物双臂操作的上下文学习世界模型
 
-**In-Context Garment WM**（*In-Context Learning World Models for Robot Dual-Arm Manipulation of Soft Garment with Partial Observations*，[arXiv:2610.30988](https://arxiv.org/abs/2610.30988)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**In-Context Garment WM**（*In-Context Learning World Models for Robot Dual-Arm Manipulation of Soft Garment with Partial Observations*，[arXiv:2610.30988](https://arxiv.org/abs/2610.30988)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,28 @@ summary: "In-Context Garment WM：面向部分可观测柔性衣物双臂操作�
 ## 为什么重要
 
 - 周报所述待解决的问题：柔性衣物的形状会随接触动作持续变化。相机只能观察部分布料表面，遮挡区域的状态难以直接估计，使双臂操作规划更加复杂。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    SIM["Isaac Lab 仿真数据<br/>随机材质参数 / 抓取配置<br/>pick-and-place 折叠示范"] --> TRAIN["每类衣物训练专家模型"]
+    TRAIN --> SE["State Estimation Model<br/>ViT + flow matching<br/>部分点云 → 完整点云状态"]
+    TRAIN --> DYN["Dynamics Prediction Model<br/>监督学习 + In-Context Learning"]
+    TRAIN --> POL["Goal-Conditioned<br/>Flow-Matching 动作生成"]
+    OBS["部分点云历史 o(t-H:t)<br/>+ 上下文示范 o_c"] --> SE
+    SE --> EST["估计状态 s_hat(t-H:t)<br/>与上下文 s_hat_c"]
+    EST --> POL
+    GOAL["目标状态 s_g + 抓取掩码 M_t"] --> POL
+    POL --> PROP["K 条动作轨迹提案<br/>相对 6-DoF 末端位移"]
+    EST --> DYN
+    PROP --> DYN
+    DYN --> PRED["预测未来衣物状态"]
+    PRED --> SEL["与 s_g 比较 MSE<br/>选出最优轨迹"]
+    SEL --> EXEC["仅执行所选轨迹 a*"]
+```
+
+图依据：论文 §IV / Fig.2 / Fig.3
 
 ## 核心机制
 
@@ -87,6 +109,8 @@ summary: "In-Context Garment WM：面向部分可观测柔性衣物双臂操作�
 - [in-context-world-model-dual-arm-garment_arxiv_2610_30988.md](../../sources/papers/in-context-world-model-dual-arm-garment_arxiv_2610_30988.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.30988](https://arxiv.org/abs/2610.30988)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30988)：已通读方法部分（实验与附录以略读为准）：摘要、§I–III（问题设定）、§IV Methodology（A 状态估计 / B 上下文学习动力学 / C 目标条件动作生成）、§V-A 仿真数据与实机平台设定
+
 
 ## 推荐继续阅读
 
