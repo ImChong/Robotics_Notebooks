@@ -42,6 +42,26 @@ Neuro-symbolic world models for socially-aware robot navigation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["经验采集：随机策略 50% + A* 专家策略 50%，共 3000 episodes"] --> E["阶段 1 表征学习：卷积编码器 + Gumbel-Softmax 符号潜空间"]
+  E --> B["分解信念状态 b：N 个因子，每个因子 K 个离散值"]
+  B --> DEC["转置卷积解码器：重建观测"]
+  B --> T["FCN 局部转移模型：动作嵌入 → 预测下一步因子"]
+  B --> V["逆模型：由相邻潜状态推断动作"]
+  DEC --> L["世界模型损失 L = L_VAE + L_forward + L_inverse"]
+  T --> L
+  V --> L
+  B --> P["视角转换算子 Φ(b, x̂α, M)：想象式导航，估计他人信念 b̃α（影响分布 I 的估计）"]
+  B --> Q["阶段 2 策略学习：DQN 以自身信念 b 与他人信念 b̃α 为输入"]
+  P --> Q
+  Q --> A["输出：各离散运动基元的 Q 值"]
+```
+
+图依据：论文 §III（A–C）、§IV-B / Fig.2、Fig.3；其中 Fig.2 仅按正文描述核对。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Neuro-symbolic world models for socially-aware robot navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.20425>
+- [arXiv PDF](https://arxiv.org/pdf/20425)：已通读方法部分（实验与附录以略读为准）：§III（方法）、§IV（实验设定与结果）
 
 ## 推荐继续阅读
 

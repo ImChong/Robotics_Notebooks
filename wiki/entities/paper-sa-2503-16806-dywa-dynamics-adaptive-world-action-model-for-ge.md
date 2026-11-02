@@ -49,6 +49,26 @@ Dynamics-adaptive world action model for generalizable non-prehensile manipulati
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  TE["教师策略：PPO 训练 200K 迭代，特权信息为完整物体点云、任务状态、物理参数"] --> DA["DAgger 蒸馏 500K 迭代：模仿损失 + 适应损失监督学生"]
+  OBS["学生观测：局部点云 P_t、关节状态 J_t、末端位姿 E_t"] --> ENC["PointNet++ 编码点云；浅层 MLP 编码关节与末端位姿"]
+  GOAL["目标：初始点云按目标位姿变换得 P_G，共用点云编码器"] --> ENC
+  HIST["最近 L 步观测嵌入与上一步动作嵌入"] --> ADA["1D CNN 适应模块 → 适应嵌入 z_t"]
+  ADA --> DYN["解码为动力学嵌入 → FiLM 的 γ、β，调制世界动作模型前部层"]
+  ENC --> WAM["世界动作模型（MLP）"]
+  DYN --> WAM
+  WAM --> ACT["动作 A_t：末端子目标残差 ΔT_ee + 关节阻抗参数 P、ρ"]
+  WAM --> NS["预测下一任务状态 S_t+1（平移 T、旋转 R），世界模型损失"]
+  ACT --> IK["阻尼最小二乘 IK 得 q_d → 关节空间阻抗控制器"]
+  DA -.-> WAM
+  DA -.-> ADA
+```
+
+图依据：论文 §3.1–§3.6、附录 §7（教师策略）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +128,7 @@ Dynamics-adaptive world action model for generalizable non-prehensile manipulati
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/16806)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.6）、附录 §7（RL 教师策略）
 
 ## 推荐继续阅读
 

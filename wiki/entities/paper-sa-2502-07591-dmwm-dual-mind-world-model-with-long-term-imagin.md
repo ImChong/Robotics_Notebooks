@@ -42,6 +42,23 @@ Dual-mind world model with long-term imagination.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 ot、动作 at"] --> B["RSSM-S1（基于 DreamerV3）：确定态 ht、随机态 zt，预测 ôt 与 r̂t"]
+    B --> C["LINN-S2：状态/动作编码为逻辑向量"]
+    C --> D["局部逻辑组合：ct = vt ∧ mt"]
+    D --> E["递归蕴含推理：ct-α ∧ … ∧ ct → zt+1"]
+    E --> F["全局逻辑链 L_T（一致性条件）"]
+    F --> G["System 2 损失：逻辑相似度 + 逻辑正则 Lreg + ℓ2"]
+    B -->|"S1 到 S2 反馈：真实状态转移序列作为标注数据"| C
+    F -->|"S2 到 S1 反馈：逻辑一致性函数 C(ϕ) 进入逻辑 ELBO"| B
+    B --> H["长时程想象，供 Actor-Critic RL 或 MPC 使用"]
+```
+
+图依据：论文 §2 / Fig. 1 DMWM 框架、§2.1 RSSM-S1、§2.2 LINN-S2 与 Fig. 2 分层逻辑推理、§2.3 系统间反馈机制。“长时程想象供 RL 或 MPC 使用”一行来自引言的贡献描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Dual-mind world model with long-term imagination.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.07591>
+- [arXiv PDF](https://arxiv.org/pdf/2502.07591)：已通读方法部分（实验与附录以略读为准）：§2 Proposed DMWM Framework（2.1、2.2、2.3）、引言贡献部分
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ Multi-view intensive-fidelity long-term video generation world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：参考帧 + 路点、相机参数、帧索引、场景描述"] --> EMB["Fourier 嵌入 + MLP 编码条件，与帧嵌入相加"]
+  EMB --> DIT["Open-Sora DiT 骨干（Rectified Flow）+ 多视角增强空间注意力：空间感受野覆盖所有视角的 patch"]
+  DIT --> CO["Coarse：以低帧率嵌入预测锚点帧"]
+  CO --> RF
+  subgraph RF["(Re)fine：循环生成高帧率帧"]
+    RC["条件：上一段 (Re)fine 的高帧率帧 + Coarse 的低帧率锚点帧"]
+    JDC["JDC 联合去噪与校正流：对预测锚点帧加噪再去噪，修正不真实运动"]
+    RC --> JDC
+  end
+  TPD["TPD 时间渐进去噪调度：靠近条件帧的帧去噪更早"] --> RF
+  RF --> OUT["多视角长时视频"]
+```
+
+图依据：论文 §3.1–§3.5 / Fig.3、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ Multi-view intensive-fidelity long-term video generation world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.15875>
+- [arXiv PDF](https://arxiv.org/pdf/15875)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.5）、§4.1（实验设置）
 
 ## 推荐继续阅读
 

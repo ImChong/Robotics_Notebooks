@@ -42,6 +42,22 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG["图像输入"] --> PS["Pan & Scan：必要时切成等大的非重叠 crop 并缩放到 896×896，仅推理时使用，可关闭"]
+  PS --> SIG["SigLIP 视觉编码器 400M 变体：896×896 输入，训练中冻结，4B / 12B / 27B 共享"]
+  SIG --> VT["视觉嵌入压缩为固定 256 个向量，作为软 token"]
+  TXT["文本 token"] --> LM["Gemma 3 解码器 Transformer：GQA + QK-norm，局部滑窗与全局注意力按 5:1 交错"]
+  VT --> LM
+  LM --> PRE["预训练：知识蒸馏，每 token 采样 256 个 logits；先用 32K 序列，末段扩展到 128K"]
+  PRE --> IT["指令微调：从大型 IT 教师蒸馏 + RL 微调（BOND / WARM / WARP 的改进版）"]
+  IT --> QAT["量化感知训练 QAT：约 5000 步，以未量化 checkpoint 的概率为目标，产出 int4 / 分块 int4 / SFP8 版本"]
+```
+
+图依据：论文 §1、§2.1–§2.3、§3、§5.3–§5.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2503.19786>
+- [arXiv PDF](https://arxiv.org/pdf/19786)：已通读方法部分（实验与附录以略读为准）：§1、§2（架构、视觉模态、预训练、QAT）、§3（指令微调）、§5.3–§5.5（略读）
 
 ## 推荐继续阅读
 

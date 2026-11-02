@@ -42,6 +42,29 @@ Geometric-aware unified world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  SYN["合成 RGB-D 视频"] --> DM["动态掩码：Grounded SAM 2 分割潜在动态物体"]
+  DM --> SL["视频切片：剔除 SIFT 点不足、动态区域过大、大运动或光流不一致的帧"]
+  SL --> CE["粗相机估计：DroidCalib"]
+  CE --> CR["相机精修：CoTracker3 跟踪静态区域特征点 + 光束法平差"]
+  CR --> ANN["带相机内外参标注的 RGB-D 视频"]
+  ANN --> DEP["深度视频 → 视差 → 尺度不变归一化 → 3D VAE → 深度 latent"]
+  ANN --> RAY["相机轨迹 → raymap（6 通道）→ 下采样对齐 → 动作 latent"]
+  ANN --> COL["彩色视频 → 3D VAE → 颜色 latent"]
+  DEP --> CAT["通道拼接；条件随机掩码"]
+  RAY --> CAT
+  COL --> CAT
+  CAT --> DIF["CogVideoX-5b-I2V 初始化的视频扩散模型：阶段 1 latent MSE，阶段 2 解码后加 MS-SSIM、深度与点图损失"]
+  DIF --> T1["4D 重建：条件为完整彩色视频"]
+  DIF --> T2["视频预测：条件为首帧，可选相机轨迹"]
+  DIF --> T3["目标条件视觉规划：条件为首帧与目标帧，可选相机轨迹"]
+```
+
+图依据：论文 §2 / Fig.3（数据标注管线）、§3.1–§3.4 / Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ Geometric-aware unified world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.18945>
+- [arXiv PDF](https://arxiv.org/pdf/18945)：已通读方法部分（实验与附录以略读为准）：§1、§2（4D 合成数据标注管线）、§3（3.1–3.4）、§5（略读）
 
 ## 推荐继续阅读
 
