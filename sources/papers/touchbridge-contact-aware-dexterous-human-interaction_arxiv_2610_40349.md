@@ -2,7 +2,7 @@
 
 > 来源归档（paper）
 
-- **标题：** TouchBridge: Learning Contact-Aware Dexterous Manipulation from Human Interaction
+- **标题：** TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/2610.40349>
 - **PDF：** <https://arxiv.org/pdf/2610.40349>
@@ -26,3 +26,8 @@
 **对 wiki 的映射**
 
 - [paper-touchbridge-contact-aware-dexterous-human-interaction](../../wiki/entities/paper-touchbridge-contact-aware-dexterous-human-interaction.md)
+
+## 2026-11-02 一手摘要核验（草稿）
+
+- 依据 arXiv v1 摘要：Tac-Retarget 利用触觉保留接触斑的空间关系；四项真机任务平均成功率 72.5%，等量遥操作示范为 77.5%，采集速度快 7.0 倍。
+- **未完成：** 尚未通读全文及相关可运行源码；实验协议、局限、项目流程图与源码时序图仍需核验，不能视为完整 ingest。
