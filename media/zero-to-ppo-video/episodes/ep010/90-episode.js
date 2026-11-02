@@ -42,7 +42,7 @@
     // 划重点 / 片尾里的加粗词（配色照「画面配色」）：矩阵指数、位姿亮黄；螺旋轴琥珀；朝向、角度蓝（转动）；位置紫（同 007 的 p）；螺距绿；不能 / 不是橙
     boldColors: { '矩阵指数': 'var(--hi)', 'exp': 'var(--hi)', '螺旋轴': 'var(--demo-warn)', '朝向': 'var(--demo-accent)', '角度': 'var(--demo-accent)',
       '位置': 'var(--violet)', '螺距': 'var(--demo-good)', '位姿': 'var(--hi)', '矩阵对数': 'var(--hi)', '不能': '#ff7b3a', '不是': '#ff7b3a' },
-    introDur: 37.25,
+    introDur: 26.93,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep010.py 的 recap 句对齐）
