@@ -17,6 +17,7 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/rememberwhereyouwalk_arxiv_2610_37203.md
   - ../../sources/repos/rememberwhereyouwalk.md
   - ../../sources/sites/rememberwhereyouwalk.md

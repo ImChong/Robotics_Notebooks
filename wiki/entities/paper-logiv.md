@@ -18,6 +18,7 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/logiv_arxiv_2610_40016.md
   - ../../sources/repos/logiv.md
   - ../../sources/sites/logiv.md

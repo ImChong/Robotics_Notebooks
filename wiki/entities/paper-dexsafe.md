@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/in-hand-reorientation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/dexsafe_arxiv_2610_37652.md
   - ../../sources/sites/dexsafe.md
 ---

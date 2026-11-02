@@ -19,6 +19,7 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/umi_live_arxiv_2610_39385.md
   - ../../sources/repos/umi_live.md
   - ../../sources/sites/umi-live.md
