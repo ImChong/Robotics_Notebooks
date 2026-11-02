@@ -2979,6 +2979,7 @@
 - [ModPack（arXiv:2607.19479）](wiki/entities/paper-modpack.md) — ModPack**（Joshua Citron, Renee Zbizika, Zeyi Liu, Shuran Song；Stanford University；[arXiv:2607.1947 `📅unknown` `[entity_page]`
 - [MoeCo：知识驱动 MoE 协同识别手术三元组](wiki/entities/paper-moeco.md) — MoeCo**（*Mixture-of-Experts-guided Co-Optimization*，[arXiv:2608.22972](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [MoLingo（Motion–Language Alignment for Text-to-Human Motion Generation）](wiki/entities/paper-molingo.md) — MoLingo**（项目页，[arXiv:2512.13840](https://arxiv.or `📅unknown` `[entity_page]`
+- [MolmoAct](wiki/entities/paper-molmoact.md) — MolmoAct**（arXiv:2508.07917，[GitHub](https://github.com/allena `📅unknown` `[entity_page]`
 - [MolmoAct2：面向真机部署的 Action Reasoning Models](wiki/entities/paper-molmoact2.md) — MolmoAct2**（*Action Reasoning Models for Real-world Deployment*，[arXiv:2605.02881](https://arxiv.o `📅unknown` `[entity_page]`
 - [MomAD（Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving · arXiv:2503.03125）](wiki/entities/paper-momad.md) — MomAD**（*Don't Shake the Wheel: Momentum-Aware Planning in End-to-End Autonomous Driving*，[2503.03 `📅unknown` `[entity_page]`
 - [Momentum Control（HMI P004）](wiki/entities/paper-momentum-control-hierarchical-id.md) — Momentum Control**（*Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Hum `📅unknown` `[entity_page]`
@@ -5219,6 +5220,7 @@
 - [SmellDiffusion（arXiv:2609.20624）](wiki/entities/paper-smelldiffusion.md) — SmellDiffusion**（*SmellDiffusion: Diffusion-Based Quadruped Navigation with Olfactory Scene Graphs `📅unknown` `[entity_page]`
 - [Legged robots that keep on learning: fine-tuning locomotion policies in the real world](wiki/entities/paper-smith-legged-robots-keep-learning.md) — Legged robots that keep on learning: fine-tuning locomotion policies in the real world**（[arXiv:21 `📅unknown` `[entity_page]`
 - [SmolVLA ONNX LIBERO：闭环部署审计](wiki/entities/paper-smolvla-onnx-libero.md) — SmolVLA ONNX LIBERO 部署研究**（*When Faster VLA Deployment Changes Closed-Loop Behavior: Task Success- `📅unknown` `[entity_page]`
+- [SmolVLA](wiki/entities/paper-smolvla.md) — SmolVLA**（arXiv:2506.01844，[GitHub](https://github.com/hugging `📅unknown` `[entity_page]`
 - [SmolWAM：把世界-动作模型压到边缘设备](wiki/entities/paper-smolwam.md) — SmolWAM**（*A Latent World-Action Model for Robotic Manipulation on Edge Devices*，[arXiv:2610.13740 `📅unknown` `[entity_page]`
 - [DeCap 平滑约束（arXiv:2609.24552）](wiki/entities/paper-smoothness-constraint-locomotion.md) — DeCap 平滑约束**（*Smoothness as a Constraint for Stable Humanoid Locomotion*，[arXiv:2609.24552](https: `📅unknown` `[entity_page]`
 - [SmoothRL：异步执行下的 VLA 在线强化学习](wiki/entities/paper-smoothrl.md) — SmoothRL**（*Online Reinforcement Learning During Asynchronous Execution*，[arXiv:2608.29768](https: `📅unknown` `[entity_page]`
@@ -7002,6 +7004,7 @@
 - [视觉聚焦与数据效率：10 篇论文的阅读坐标](wiki/overview/visual-focus-data-efficiency-10-papers-technology-map.md) — 把视觉局部性、规划器经验、记忆压缩与空间/交互中间表示写进训练接口，比单纯堆数据或堆参数更省样本、更可解释。 `📅unknown` `[overview_page]`
 - [VLA 部署与系统可靠性：12 篇论文阅读坐标](wiki/overview/vla-deploy-12-papers-technology-map.md) — 「代码能否帮部署」取决于工程契约是否统一、感知退化是否被评测、以及安全/通信是否进入闭环——而非再多一个策略结构。 `📅unknown` `[overview_page]`
 - [VLA 演进：从动作 Token 到分层具身智能体](wiki/overview/vla-evolution-lineage.md) — VLA 的真正演进不是「VLM 越来越大」，而是 **语义主干与动作生成逐步解耦**，并重新发现 **多时间尺度分层**（慢语义 → 快 chunk → 更快全身稳定）；2026 年前沿把 **记忆、 `📅unknown` `[overview_page]`
+- [VLA 演进简史：从 SayCan / RT-1 到 MolmoAct 2（Khushi 长文阅读坐标）](wiki/overview/vla-history-rt1-to-molmoact-technology-map.md) — 作者的结论：没有单一赢家架构——不同设计在泛化、动作精度、推理延迟与所需机器人数据之间取舍；demo 越来越惊艳，但「做成一次」与「在不受控环境里可靠做成」之间仍有很大差距。 `📅unknown` `[overview_page]`
 - [VLA 开源复现景观（2025 策展）](wiki/overview/vla-open-source-repro-landscape-2025.md) — VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对 `📅unknown` `[overview_page]`
 - [VLA·预测·抓取：9 篇论文的阅读坐标](wiki/overview/vla-predict-grasp-9-papers-technology-map.md) — 具身智能正从「扩大模型与数据」转向部署闭环：本体迁移、动态时延、长时序约束、整机可执行抓取，以及基准与低成本任务工程共同定义真实价值。 `📅unknown` `[overview_page]`
 - [VLA 可执行性与鲁棒性：9 篇论文的阅读坐标](wiki/overview/vla-robustness-9-papers-technology-map.md) — 具身智能正在把策略学习从静态模仿推向可诊断、可适配、可闭环的系统——关键不在单一模型名，而在动作 chunk、探索噪声、人类反馈与规划结构能否稳定复用。 `📅unknown` `[overview_page]`
