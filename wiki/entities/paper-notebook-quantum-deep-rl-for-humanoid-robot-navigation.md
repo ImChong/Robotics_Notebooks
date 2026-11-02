@@ -33,6 +33,25 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    S["状态 s（17 维：关节角 / 速度 / 躯干姿态）"] --> ENC["编码电路 U_enc"]
+    ENC --> VAR["变分电路 U_var（17 qubit 量子层，data re-uploading）"]
+    VAR --> MEAS["量子测量结果"]
+    MEAS --> OBS["Observables-Policy：经典网络层"]
+    OBS --> DIST["动作分布的均值 μ 与标准差 σ（6 维关节力矩）"]
+    DIST --> ACT["重参数化采样动作"]
+    ACT --> ENV["Walker2d-v4 环境"]
+    ENV --> S
+    CRITIC["twin critics Q（取 min）"] --> OBJ["最大熵目标 J(θ)：min Q − α·log π"]
+    ACT --> OBJ
+    OBJ -.->|更新 actor 参数| VAR
+```
+
+图依据：论文 §IV-C / Fig. 2、Fig. 3 与式 (1)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +83,7 @@ summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经�
 - [humanoid_pnb_quantum-deep-rl-for-humanoid-robot-navigation.md](../../sources/papers/humanoid_pnb_quantum-deep-rl-for-humanoid-robot-navigation.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html>
 - 论文：<https://arxiv.org/abs/2509.11388>
+- [arXiv PDF](https://arxiv.org/pdf/2509.11388)：已通读方法部分（实验与附录以略读为准）：§III 问题陈述、§IV Approach（A–C）、§V 实验设定
 
 ## 推荐继续阅读
 

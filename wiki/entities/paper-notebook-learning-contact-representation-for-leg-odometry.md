@@ -33,6 +33,28 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[关节编码器 + 前向运动学<br/>5D 特征：足端相对基座垂直位置 p_z、足端速度 v_rel、小腿力矩 τ_calf] --> B[标准化并取窗口 O_t<br/>默认 W=1]
+    B --> C[加高斯噪声 + 幅值缩放]
+    C --> D[编码器 f_θ<br/>CNN 或 GRU]
+    D --> E[潜在编码 z_t<br/>D=16]
+    E --> F[解码器 g_φ<br/>1D 转置卷积]
+    F --> G[重构未污染序列<br/>MSE 损失，自监督]
+    E --> H[训练集潜在空间拟合<br/>无监督 2 成分 GMM]
+    H --> I[垂直足端位置较低的簇 = stance<br/>得到 stance belief p_t]
+    I --> J[协方差缩放<br/>R_t = α/(p_t+ε) · I]
+    J --> K[ESEKF ZUPT 更新<br/>pseudo-measurement 足端世界系速度 = 0]
+    K --> L[Mahalanobis / NIS 卡方门限<br/>超限则放弃更新]
+    L --> M[机器人里程计估计]
+    A -.对照：直接在原始特征上拟合.-> N[HMM-GMM 检测器<br/>前向算法求 stance belief]
+    N --> J
+```
+
+图依据：论文 §3.1、§3.2.1、§3.2.2 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +86,7 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 - [humanoid_pnb_learning-contact-representation-for-leg-odometry.md](../../sources/papers/humanoid_pnb_learning-contact-representation-for-leg-odometry.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2606.05501>
+- [arXiv PDF](https://arxiv.org/pdf/2606.05501)：已通读方法部分（实验与附录以略读为准）：§3.1、§3.2（含 3.2.1、3.2.2）、§4 开头实验设定、Fig.1
 
 ## 推荐继续阅读
 

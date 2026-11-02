@@ -33,6 +33,26 @@ Learning to Get Up Across Morphologies 的人形机器人学习论文条目，�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  M[7 个人形机器人 MJCF 模型 MuJoCo] --> E[每个 episode 随机选 1 个形态 16 个并行环境]
+  E --> I[随机倒地初始化 躯干与关节偏移最多 ±90°]
+  E --> DR[领域随机化 质量 摩擦 电压 IMU 偏置]
+  I --> OBS[形态无关观测 关节位置速度 期望位置 躯干欧拉角与角速度 头高 上一动作 无形态 ID]
+  DR --> OBS
+  OBS --> POL[统一策略 SAC + CrossQ 512-512-256]
+  POL --> ACT[动作 期望关节角速度 肩 肘 髋 膝 踝 pitch]
+  ACT --> SIM[MuJoCo 每 50 ms 更新目标关节角]
+  SIM --> R[形态无关奖励 R_Up + R_Pitch + R_vel + R_var + R_collision]
+  SIM --> TERM[提前终止 躯干翻转超过 135° 或动作过猛]
+  R --> POL
+  POL --> EVAL[留一法零样本评测 未见形态]
+```
+
+图依据：论文 §3.1–3.7、§4.1（文中无整体流程图，箭头为按方法各小节顺序归纳）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +84,7 @@ Learning to Get Up Across Morphologies 的人形机器人学习论文条目，�
 - [humanoid_pnb_learning-to-get-up-across-morphologies-zero-shot.md](../../sources/papers/humanoid_pnb_learning-to-get-up-across-morphologies-zero-shot.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.12230>
+- [arXiv PDF](https://arxiv.org/pdf/2512.12230)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1–3.7）、§4.1–4.3 实验设定
 
 ## 推荐继续阅读
 
