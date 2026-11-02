@@ -42,6 +42,23 @@ Surveys world model architectures and their deployment contexts in safety-critic
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["§3 World Models：基础与架构分类<br/>§4 架构与资产清单"] --> B["§5 威胁建模方法<br/>MITRE ATLAS / OWASP LLM Top 10 对齐<br/>五类攻击者能力画像、分析视角"]
+    B --> C["§6 技术威胁类别<br/>观测编码器对抗攻击 · 训练数据与表征投毒<br/>复合 rollout 误差与幻觉 · 分布偏移与 sim-to-real<br/>模型提取与隐私攻击"]
+    C --> D["§7 实证演示：轨迹持久对抗攻击<br/>GRU-RSSM proxy 概念验证"]
+    B --> E["§8 对齐、认知与涌现风险<br/>目标误泛化 · 欺骗性对齐与奖励黑客<br/>长程规划幻觉 · 自动化偏见 · 反事实推理失败"]
+    C --> F["§9 四个场景研究"]
+    D --> F
+    E --> F
+    F --> G["§10 防护机制与设计原则<br/>对抗加固 · 供应链与数据治理 · rollout 安全监控<br/>对齐工程 · 人因设计 · 治理与合规"]
+    G --> H["§11 构建者检查清单 · §12 Claim–Evidence Map · §13 结论"]
+```
+
+图依据：综述 / 威胁分析的章节组织图，论文目录、§1 Contributions 与 §3–§13 的章节结构。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Surveys world model architectures and their deployment contexts in safety-critic
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.01346>
+- [arXiv PDF](https://arxiv.org/pdf/2604.01346)：已通读摘要、目录、Introduction（含 Contributions）；§3–§13 各节只据章节标题与摘要，正文细节与实验数字未逐项核对。
 
 ## 推荐继续阅读
 

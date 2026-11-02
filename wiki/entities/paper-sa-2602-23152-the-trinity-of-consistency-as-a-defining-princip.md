@@ -42,6 +42,32 @@ Proposes that world models must be grounded on the trinity of consistency: modal
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["Trinity of Consistency<br/>世界模型须同时具备三种一致性（Fig. 1）"]
+    T --> M["Modal Consistency<br/>语义接口"]
+    T --> S["Spatial Consistency<br/>几何基础"]
+    T --> TC["Temporal Consistency<br/>因果引擎"]
+    subgraph S2["§2 Foundational Exploration of Consistencies"]
+        M --> M1["2.2 Modal：理论基础 / 架构演进 / RL 意图对齐 / 测试时计算"]
+        S --> S1["2.3 Spatial：几何分解 / 隐式连续场 / 显式拉格朗日基元 / 生成式统计先验"]
+        TC --> T1["2.4 Temporal：从频率稳定到物理合规 / 自回归 / DiT / 逻辑与因果推理"]
+    end
+    S2 --> I["§3 Initial Integration of Multiple Consistencies<br/>3.2 Modal+Spatial · 3.3 Modal+Temporal · 3.4 Spatial+Temporal<br/>3.5 Preliminary Emergence of World Models"]
+    I --> C4["§4 Challenges, Benchmarks, and Outlook<br/>通向 General World Simulator"]
+    C4 --> B["§5 CoW-Bench"]
+    subgraph BN["CoW-Bench"]
+        B --> B1["任务蓝图：Modal / Spatial / Temporal 及 M×S、M×T、S×T<br/>共 18 个子任务"]
+        B1 --> B2["Reasoning-Driven Seed Construction<br/>结构化种子实例"]
+        B2 --> B3["多源审核 / 人机协同校验"]
+        B3 --> B4["原子检查分解 → 评测视频生成模型与 UMM"]
+    end
+```
+
+图依据：综述分类体系图（兼基准构建流程），论文 Contents、Fig. 1、§2–§5（§5.1.1 Dataset Construction、§5.2 Evaluation metrics）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Proposes that world models must be grounded on the trinity of consistency: modal
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.23152>
+- [arXiv PDF](https://arxiv.org/pdf/2602.23152)：已通读摘要、目录、Introduction、§4.1–§4.3 的概述段落、§5.1 Dataset 与 §5.2 Evaluation metrics 的开头；§2、§3 各小节只据目录与章节标题，正文细节与 §5.4 之后的实验结果未逐项核对。
 
 ## 推荐继续阅读
 
