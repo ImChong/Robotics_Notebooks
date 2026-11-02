@@ -41,6 +41,33 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：L 帧第一人称视频片段"]
+    GF["全局帧特征提取（RegNet-Y 骨干）：F"]
+    HP["左 / 右手裁剪区域 hand patches，经 RegNet-Y 编码：F_lh, F_rh"]
+    IN --> GF
+    IN --> HP
+    subgraph HICE["HiCE：Hand-informed Context Enhanced 模块"]
+        EMB["二维正弦位置嵌入 + 左右手身份嵌入，展平为 token"]
+        CA["多头交叉注意力：全局 token 作 Query，手部 token 作 Key / Value"]
+        RES["残差连接 + FFN：得到手部感知的全局特征"]
+        EMB --> CA --> RES
+    end
+    GF --> CA
+    HP --> EMB
+    RES --> TRM["Temporal Reasoning Module（沿用 T-DEED 编码器-解码器，SGP 多尺度时序层）"]
+    TRM --> CLS["触碰分类头：逐帧是否触碰"]
+    TRM --> DISP["位移回归头：到真值事件时刻的帧偏移"]
+    HP --> GRASP["辅助抓取分类头（四层 MLP，9 类抓取）"]
+    CLS --> OUT["输出：精确触碰时刻（首次接触帧）"]
+    DISP --> OUT
+```
+
+图依据：论文 §4.2–4.5 / Fig.2（HiCE 模块、时序推理、预测头与训练监督）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +122,7 @@ sources:
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.12343>
+- [arXiv PDF](https://arxiv.org/pdf/2604.12343)：已通读方法部分（实验与附录以略读为准）：§3 任务设定与标注、§4 方法（4.2 HiCE、4.3 时序推理、4.4 预测头、4.5 训练监督）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ JailWAM evaluates instruction-induced robot risk by rendering predicted actions 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["越狱模板集合 T"] --> G["LLM 提示生成器 G_LLM"]
+    G --> L["候选越狱指令池 L_adv"]
+    L --> W["目标 WAM：开环预测动作序列"]
+    W --> V["Visual-Trajectory Mapping<br/>相对动作累积为末端坐标 → xy / xz 正交投影<br/>叠加环境约束渲染成轨迹图"]
+    V --> R["Risk Discriminator<br/>Qwen3-VL-2B 微调，输出等级 y"]
+    R -->|"y=0 Safety Compliance"| X["丢弃"]
+    R -->|"y=1 或 2"| S["Stage II：RoboTwin 闭环仿真执行"]
+    S --> H["人工专家复核，给出最终标签"]
+    subgraph RDT["Risk Discriminator 训练（Fig.3）"]
+        P1["Gemini 预标注等级与理由"] --> P2["人工专家校验修正"] --> P3["监督微调 SFT"]
+    end
+    P3 -.-> R
+```
+
+图依据：论文 §Method（Dual-Path Verification / VTM / Risk Discriminator）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ JailWAM evaluates instruction-induced robot risk by rendering predicted actions 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.05498>
+- [arXiv PDF](https://arxiv.org/pdf/2604.05498)：已通读方法部分（实验与附录以略读为准）：摘要、引言、§Method 全节（含 Fig.2、Fig.3）、实验设定与 Table 1
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["点云 + 末端执行器位姿"] --> B["裁剪到 1 m³ 工作空间"]
+    B --> C["三个固定虚拟视角正交投影<br/>得到多视角 RGB"]
+    A --> D["末端位姿 → 各视角截断高斯热图"]
+    C --> E["VFM 的 VAE 编码，沿 view 维拼接"]
+    D --> E
+    TX["文本指令"] --> G
+    E --> G["多视角视频扩散 Transformer<br/>基于 Wan2.2 5B，DiT 块加入 view-attention<br/>预测未来多视角 RGB 与热图视频"]
+    G --> H["VAE 解码为热图序列"] --> I["峰值反投影 → 3D 末端位置"]
+    G --> J["去噪 latent → 旋转与夹爪预测器<br/>约 170M，四层 Transformer + 两个 MLP 头"]
+    J --> K["末端旋转 + 夹爪状态"]
+    I --> L["合并为动作块，由机器人控制器执行"]
+    K --> L
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +119,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.03181>
+- [arXiv PDF](https://arxiv.org/pdf/2604.03181)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method 全节（3.1–3.4）
 
 ## 推荐继续阅读
 

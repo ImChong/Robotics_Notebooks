@@ -42,6 +42,25 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    O["历史观测缓冲 O_l（m 帧）"] --> E["Wan2.2-TI2V-5B 3D 因果 VAE 编码<br/>得到历史 latent"]
+    Q["自车状态 q_l（vx, vy）"] --> M["MLP 嵌入为状态 token"]
+    E --> C["固定条件块 X_cond（无噪声）"]
+    M --> C
+    T["语言指令 / 高层命令 T"] --> TE["冻结文本编码器 → 文本 token"]
+    C --> DiT["DiT 解码器：flow matching 联合去噪<br/>未来视频 latent + 动作 token"]
+    TE -->|"cross-attention"| DiT
+    DiT --> A["动作块：K 个未来动作（x, y, yaw）"]
+    DiT --> F["未来视频 latent（N 帧对应）"]
+    A --> U["执行动作，滑动窗口更新观测"]
+    U --> O
+```
+
+图依据：论文 §4.1–4.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.04198>
+- [arXiv PDF](https://arxiv.org/pdf/2604.04198)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Preliminary、§4 Method 全节（4.1–4.4）、§5.1 数据集设定开头
 
 ## 推荐继续阅读
 

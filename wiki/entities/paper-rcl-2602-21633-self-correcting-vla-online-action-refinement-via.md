@@ -42,6 +42,34 @@ SC-VLA adds progress and end-effector-change predictions to a GR00T N1.5-based f
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 I：Sparse World Imagination 基座策略"]
+        A["多视角图像 + 语言指令"] --> B["SigLIP-2 编码 + Eagle-2 VLM<br/>取中间层 l 隐状态 o_mid"]
+        B --> C["DiT 骨干<br/>query = 当前状态 + 进度 query + ΔState query + 动作 query"]
+        C --> D["第 N 层：Action Head<br/>输出 base action"]
+        C --> E["中间第 m 层特征<br/>Progress Head / ΔState Head"]
+        E --> F["预测任务进度 p_t 与末端相对位姿变化 ΔS_t"]
+    end
+    subgraph S2["阶段 II：Online Action Refinement（基座冻结）"]
+        G["残差观测 o_w = 状态, p_t, ΔS_t"] --> H["残差策略 π_res（MLP，SAC 训练）"]
+        H --> I["最终动作 = base action + λ · 残差动作"]
+        I --> J["环境 Env"]
+        J --> K["环境稀疏奖励"]
+        F --> L["方向引导奖励<br/>实际位移 vs 预测方向"]
+        L --> M["动态权重 η(p_t)<br/>进度越高引导越弱"]
+        M --> N["最终奖励 = η·引导奖励 + 环境奖励 - 时间惩罚"]
+        K --> N
+        N --> O["Replay Buffer → SAC 更新残差策略"]
+    end
+    D --> I
+    F --> G
+```
+
+图依据：论文 §4.1–4.2 / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ SC-VLA adds progress and end-effector-change predictions to a GR00T N1.5-based f
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.21633>
+- [arXiv PDF](https://arxiv.org/pdf/2602.21633)：已通读方法部分（实验与附录以略读为准）：§3 Preliminary、§4 Self-Correcting VLA（4.1、4.2）、§5 实验设定（5.1）；Fig.2
 
 ## 推荐继续阅读
 
