@@ -93,14 +93,14 @@ sequenceDiagram
             RN->>AL: process_env_step(rewards, dones, infos)
         end
         RN->>AL: compute_returns(critic_obs)
-        RN->>AL: update()，随后 update_mirror()（镜像对称损失，见 on_policy_runner_mirror.py）
+        RN->>AL: update()，随后 update_mirror()（均在 on_policy_runner_mirror.py 的 learn 中调用）
         RN->>RN: log（TensorBoard）；每 save_interval 保存 model_{it}.pt
     end
     P->>TR: make_env + make_alg_runner（resume=True）后 get_inference_policy
     P->>P: export_policy_as_jit 导出 logs/N1/exported/policy_jit.pt
 ```
 
-图依据：FFTAI/Wiki-GRx-Gym@25693a5，读过 `README.md`、`legged_gym/legged_gym/scripts/train.py`、`play.py`（部分）、`legged_gym/legged_gym/utils/task_registry.py`（make_env、make_alg_runner）、`legged_gym/legged_gym/envs/n1/__init__.py`、`n1_config_main_body.py`（runner_class_name / class_name 行）、`envs/base/legged_robot_code.py`（step、post_physics_step 及相邻片段）、`rsl_rl/rsl_rl/runners/on_policy_runner.py` 与 `on_policy_runner_mirror.py`（learn 循环）、`algorithms/ppo_mirror.py`（头部）。`PPO.update` 内部、`ActorCriticMLP`、奖励函数与 `IsaacGym_Preview_4_Package`（NVIDIA 闭源二进制包）未读；`update_mirror()` 的触发条件（图中省略的判断）未核对。
+图依据：FFTAI/Wiki-GRx-Gym@25693a5，读过 `README.md`、`legged_gym/legged_gym/scripts/train.py`、`play.py`（部分）、`legged_gym/legged_gym/utils/task_registry.py`（make_env、make_alg_runner）、`legged_gym/legged_gym/envs/n1/__init__.py`、`n1_config_main_body.py`（runner_class_name / class_name 行）、`envs/base/legged_robot_code.py`（step、post_physics_step 及相邻片段）、`rsl_rl/rsl_rl/runners/on_policy_runner.py` 与 `on_policy_runner_mirror.py`（learn 循环）、`algorithms/ppo_mirror.py`（头部）。`PPO.update` 内部、`ActorCriticMLP`、奖励函数与 `IsaacGym_Preview_4_Package`（NVIDIA 闭源二进制包）未读；`update_mirror()` 内部（及 `mirror_coef` 为 0 时的行为）未读。
 
 ## 参考来源
 

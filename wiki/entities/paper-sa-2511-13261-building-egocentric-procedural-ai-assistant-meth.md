@@ -42,6 +42,28 @@ For the first time, systematically proposes a complete technical framework for f
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Egocentric Procedural AI Assistant (EgoProceAssist)<br/>Fig.1 Taxonomy"] --> B["三项核心功能"]
+    A --> C["两个使能维度"]
+    B --> B1["Egocentric Procedural Error Detection（Sec.3）<br/>Only-video / Multimodal-based"]
+    B --> B2["Egocentric Procedural Learning（Sec.4）<br/>Unsupervised / Weakly-Supervised / Self-Supervised"]
+    B --> B3["Egocentric Procedural Question Answering（Sec.5）<br/>Leveraging LLMs as Reasoning Engines / Training Specialized QA Model"]
+    C --> C1["Real-time and Streaming Video Understanding（Sec.6.1）"]
+    C --> C2["Proactive Interaction in Procedural Contexts（Sec.6.2）"]
+    B1 --> D["每个领域均综述：方法 / 数据集 / 评测指标"]
+    B2 --> D
+    B3 --> D
+    C1 --> D
+    C2 --> D
+    D --> E["补充实验（Sec.7）<br/>在 EgoPER / CaptainCook4D / EgoOops / EgoproceL 上<br/>评测错误检测与程序学习"]
+    E --> F["挑战与展望（Sec.8）"]
+```
+
+图依据：综述分类体系图，论文 Fig.1（EgoProceAssist 分类总览）、§1 末尾章节安排、§2.2 三项核心功能与两个使能维度、§3–§6 章节结构、§7 补充实验设定、§8 挑战与展望
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ For the first time, systematically proposes a complete technical framework for f
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2511.13261>
+- [arXiv PDF](https://arxiv.org/pdf/2511.13261)：已读摘要、§1 Introduction、§2.2、§3–§6 的章节标题与定义/方法段落（逐篇方法略读）、§7 开头与 §7.2 开头、§8–§9；Fig.1 总览图文字由 pdftotext 抽出，子类名按正文小节核对（附录未读）
 
 ## 推荐继续阅读
 

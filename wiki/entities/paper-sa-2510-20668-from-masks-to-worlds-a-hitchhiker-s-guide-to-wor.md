@@ -42,6 +42,24 @@ A tutorial-style guide to world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ANAT["§2.2 The Anatomy of a True World Model：Generative Heart (G)、Interactive Loop (F, C)、Memory System (M) 三个子系统"]
+    S1["Stage I: Mask-based Models（§3）：Lays the foundation with masks"]
+    S2["Stage II: Unified Models（§4）：Unifies the architectures"]
+    S3["Stage III: Interactive Generative Models（§5）：Opens the loop with interaction"]
+    S4["Stage IV: Memory and Consistency（§6）：Makes the loop persistent"]
+    S5["Stage V: True World Models（§7）：Gives the world a life of its own"]
+    S1 --> S2 --> S3 --> S4 --> S5
+    ANAT --> S5
+    S5 --> P["§7.1 三项性质：Persistence（对应 M）、Agency（对应 F, C）、Emergence（G、F, C、M 共同作用）"]
+    S5 --> P2["§7.2 三个定义性挑战 · §7.3 From Simulator to Scientific Instrument"]
+```
+
+图依据：综述路线图（论文自定的五阶段演进）与子系统定义，论文 Fig. 1（五阶段演进）、Fig. 2（True World Model 架构）、§1、§2.2、§3–§7；Stage V 与三项性质同三个子系统的对应取自 §7.1 原文；§3–§6 各阶段与子系统之间的对应论文未逐一写成图，故未画。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A tutorial-style guide to world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.20668>
+- [arXiv PDF](https://arxiv.org/pdf/2510.20668)：已通读摘要、§1、§2（含 §2.2 Anatomy）、§3 Stage I 及 §4 开头；§4.2–§8 仅按章节标题与各节开头略读，用于确认路线图结构；附录未读
 
 ## 推荐继续阅读
 
