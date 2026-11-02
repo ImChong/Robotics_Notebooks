@@ -400,6 +400,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # Isaac Teleop、Cepheid、SmolWAM、ADAMS 等），是工具链基础设施，非机器人概念/
     # 方法/形式化；与 github / uv / python 同类工具链停用词。
     "pip",
+    # pi：同形异义缩写，无单一概念可建页——Modelica 的圆周率常量 `pi`、Pi 编码 agent
+    # CLI（`pi install ...`）、StarVLA 的 **PI** flow-matching 动作头、ENPIRE 的
+    # **PI**（Policy Improvement）模块、仿生多模态评测的 **PI**（Performance
+    # Improvement）指标等；π0 / π0.5 策略已由 methods/π0-policy.md
+    # 承载（正文写作 π 而非 pi），不建 concepts/pi.md。
+    "pi",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -738,6 +744,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "sim2sim",  # 迁移前的跨仿真器验证环节，已由 concepts/sim2real.md 缩写速查与 SOP 覆盖
     "ros",  # 裸名写法，已由 concepts/ros2-basics.md 覆盖（与 ros2 同一 canonical 页）
     "ros2",  # 已由 concepts/ros2-basics.md 覆盖（slug 与页面 stem 不同名）
+    # smolvla：轻量 flow-matching VLA 的模型名，命中处均为模型/策略名引用（LeRobot
+    # 策略类型、ROS2SmolVLA、ONNX 导出等）；本体已由 entities/paper-smolvla.md 承载，
+    # 所属方法族归 methods/vla.md，与 vggt 同类模型名，不建 concepts/smolvla.md。
+    "smolvla",
     "sonic",
     # state：三义各有归属——决策过程里的状态量已由 formalizations/mdp.md /
     # pomdp.md 定义（「**State** 是物理/机器人意义上的完整瞬时描述」即该形式化的

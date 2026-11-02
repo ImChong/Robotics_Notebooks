@@ -6,7 +6,7 @@ tags:
   - computer-vision
   - 3d-reconstruction
 status: complete
-updated: 2026-11-01
+updated: 2026-11-02
 arxiv: "2503.11651"
 project: https://vgg-t.github.io/
 code: https://github.com/facebookresearch/vggt
@@ -35,7 +35,6 @@ summary: "VGGT（arXiv:2503.11651）：VGGT 是前馈神经网络，直接从一
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | VGGT | Visual Geometry Grounded Transformer | 前馈统一 3D 几何的 Transformer |
-| SOTA | State of the Art | 当前最优水平 |
 
 相关工作：[Any3R：混合中心相机的前馈三维重建](paper-any3r.md)。
 
@@ -52,7 +51,7 @@ summary: "VGGT（arXiv:2503.11651）：VGGT 是前馈神经网络，直接从一
 | **arXiv** | [2503.11651](https://arxiv.org/abs/2503.11651) |
 | **开源** | **已开源** |
 | **要点** | 单个 Transformer 前馈输出相机参数、多视图深度、稠密点云与点跟踪（arXiv 摘要）。 |
-| **文内指标** | arXiv 摘要称在相机参数估计、多视图深度估计、稠密点云重建、3D 点跟踪等任务达到 SOTA；具体数字未转录。 |
+| **文内指标** | arXiv 摘要（2025-03 提交）称在相机参数估计、多视图深度估计、稠密点云重建、3D 点跟踪等任务取得发表时的最优结果；具体数字未转录，此后的前馈几何工作对比见 [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md)。 |
 
 ## 源码运行时序图
 
@@ -77,7 +76,7 @@ sequenceDiagram
 
 ## 实验与评测
 
-- arXiv 摘要称在相机参数估计、多视图深度估计、稠密点云重建、3D 点跟踪等任务达到 SOTA；具体数字未转录。
+- arXiv 摘要（2025-03 提交）称在相机参数估计、多视图深度估计、稠密点云重建、3D 点跟踪等任务取得发表时的最优结果；具体数字未转录，此后的前馈几何工作对比见 [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md)。
 - **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比

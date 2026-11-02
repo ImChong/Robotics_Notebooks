@@ -80,6 +80,46 @@ flowchart TD
 
 - **arXiv：** [2506.01844](https://arxiv.org/abs/2506.01844)（提交 2025-06-02），作者：Shukor, Aubakirova, Capuano, Kooijmans, Palma, Zouitine 等（arXiv 摘要页前 6 位）
 - 论文摘要与文章一致的部分：小型、社区数据、异步推理、flow matching 之外的「10 倍更大 VLA 可比」；文章里的 450M、前一半层、64 token、「吞吐翻倍」等具体数字来自文章，未在摘要中核对。lerobot 仓库 README 的 VLA 模型列表含 SmolVLA（文档 policy_smolvla_README），仓库 git ls-remote 可达。
+- 论文 §4.3 正文核对：主模型 450M 参数（其中动作专家约 100M），只用 VLM 内 LLM 的前 16 层，动作 chunk n=50，flow matching 推理固定 10 步；预训练冻结 VLM、只训动作专家。§4.6 实测异步推理把 Pick-Place 平均完成时间从 13.75 s 降到 9.7 s（论文称约快 30%），60 s 定时内完成 19 次 vs 9 次——文章的「吞吐大约翻倍」对应的是后一个定时计数口径。
+
+## 评测
+
+以下数字均来自论文 §4.5–4.6（Table 2–5、Fig.5），成功率单位 %：
+
+| 设置 | SmolVLA (0.45B) | 主要对照 | 备注 |
+|------|-----------------|----------|------|
+| LIBERO 平均（Spatial/Object/Goal/Long） | 87.3 | π0 (3.3B，机器人数据预训练) 86.0；OpenVLA (7B) 76.5 | SmolVLA 不做机器人数据预训练，仅 VLM 初始化 |
+| Meta-World 平均（Easy→Very Hard） | 57.3 | π0 (3.5B) 47.9；TinyVLA 31.6 | 2.25B 版本达 68.24 |
+| 真机 SO-100 三任务平均（多任务训练） | 78.3 | π0 (3.5B) 61.7；ACT（单任务）48.3 | Pick-Place / Stacking / Sorting = 75 / 90 / 70 |
+| 真机 SO-101 Pick-Place-Lego（单任务，ID / OOD） | 90 / 50 | ACT 70 / 40 | SO-101 数据未参与预训练 |
+| 社区数据预训练消融（SO-100 平均） | 78.3（有预训练） | 51.7（无预训练，多任务）；40（无预训练，单任务） | Table 5 |
+| 同步 vs 异步推理（SO-100 平均成功率） | 异步 73.3 | 同步 78.3 | 成功率相近，异步完成时间约快 30% |
+
+- **消融（LIBERO，Table 6–13）：** 交错 cross/self-attention（85.5）优于单用 CA（79.0）或 SA（74.5）；动作 token 间因果注意力优于双向；flow matching（80.25）优于 L1 回归（75.25）；状态喂给 VLM（prefix）优于喂给动作专家；chunk 大小 10–50 较均衡，每 1–10 步刷新观测明显好于整段执行完再刷新。
+- **评测口径注意：** 真机成功率是**子任务分段计分**（如 Pick-Place 抓到 0.5、放入 0.5），仿真才是二值成功；π0 真机是在目标数据上微调、ACT 是逐任务从零训练，三者训练口径不同。
+
+## 与其他工作对比
+
+| 维度 | SmolVLA（本页） | [π0](./paper-pi0.md) | [OpenVLA](./paper-openvla.md) | [ACT](./paper-act.md) |
+|------|-----------------|------|---------|-----|
+| 参数量 | 0.45B（动作专家约 0.1B） | 3.3B | 7B | 约 80M |
+| 动作生成 | flow matching 连续 chunk | flow matching 连续 chunk | 离散动作 token 自回归 | CVAE 回归 chunk |
+| 预训练数据 | 约 23k 条社区 SO-100 轨迹（单一本体） | 约 1 万小时跨本体数据 | 约 100 万条轨迹（OXE） | 无（逐任务从零训） |
+| 部署门槛 | 单 GPU 训练，消费级 GPU / CPU 推理 | 需较大显存 | 需较大显存 | 轻量 |
+| 推理栈 | 内置异步推理（观测/预测与执行解耦） | 同步 | 同步 | 同步 |
+
+- **与 π0 的关系最近：** 同为「VLM + flow matching 动作专家」，SmolVLA 的取舍是砍 VLM 深度、压视觉 token、冻结骨干；论文称相对 π0 训练快约 40%、显存省 6 倍，但 LIBERO 上只与机器人预训练版 π0 打平，并未全面超越。
+- **与 ACT 的分工：** ACT 是单任务小模型基线；SmolVLA 证明了在同样低成本硬件（SO-100/101）上，语言条件多任务 VLA 已可以超过单任务 ACT。
+- **异步推理不绑定模型：** 论文 §5 明确它与模型无关，任何输出动作 chunk 的策略（包括 [action chunking](../methods/action-chunking.md) 系）都能套用。
+
+## 结论
+
+**SmolVLA 把「flow-matching VLA」压到 0.45B、单本体社区数据也能训出可用策略，是低成本硬件上可复现的 VLA 基线，而不是大模型的替代品。**
+
+- 0.45B 参数在 LIBERO（87.3）与 SO-100 真机（78.3）上与 3B 级 π0 打平或更好
+- 社区数据预训练是关键：真机平均从 51.7 提到 78.3
+- 异步推理成功率相近、完成时间约快 30%，且与模型无关、可迁移
+- 局限（论文 §5.1）：预训练只有 SO-100 单一本体、约 23k 轨迹；主要验证短时程任务；VLM 骨干偏 OCR/文档预训练，未必最适合机器人
 
 ## 关联页面
 
@@ -99,4 +139,4 @@ flowchart TD
 - [smolvla_arxiv_2506_01844.md](../../sources/papers/smolvla_arxiv_2506_01844.md)
 - [x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md](../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md)
 - [arXiv:2506.01844](https://arxiv.org/abs/2506.01844)
-- [arXiv PDF](https://arxiv.org/pdf/2506.01844)：已通读方法部分（实验与附录以略读为准）：§3.1 模型结构、§3.2 预训练数据、§3.3 异步推理
+- [arXiv PDF](https://arxiv.org/pdf/2506.01844)：已通读方法部分与实验：§3.1 模型结构、§3.2 预训练数据、§3.3 异步推理、§4 实验（Table 2–13、Fig.5）、§5.1 局限
