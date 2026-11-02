@@ -42,6 +42,24 @@ Unifies search and policy optimization via diffusion policy representation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    B["回放缓冲区 B<br/>(在线 / 离线 / 离线转在线)"] --> W["(i) 世界模型与价值迭代<br/>编码器 E / 潜在动力学 F / 奖励预测 R<br/>价值 Q 用一步 TD, 隐式能量 E_theta 用对比目标"]
+    W --> S["训练得分网络 phi_hat<br/>(仅训练期使用)"]
+    S --> M["(ii) 扩散策略优化<br/>在 F 内想象轨迹, 蒙特卡洛估计 score<br/>按正则化回报 G 加权"]
+    M --> L["最小化 phi_hat 与 phi 的 L2 误差"]
+    L --> S
+    S -. "交替更新" .-> W
+    S --> I["推理: 从高斯先验 N(0, I) 起<br/>用 phi_hat 迭代反向去噪"]
+    I --> A["输出动作序列 a_t:t+H"]
+    A --> E["环境交互, 数据写回 B"]
+    E --> B
+```
+
+图依据：论文 §3.2–§3.3 / Fig.2（交替训练顺序与"数据写回缓冲区"为按 §3.3 文字概括，环境交互一步论文未单独成节）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Unifies search and policy optimization via diffusion policy representation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.26282>
+- [arXiv PDF](https://arxiv.org/pdf/2605.26282)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§3 Method（3.1–3.3）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

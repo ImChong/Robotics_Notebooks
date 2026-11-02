@@ -42,6 +42,27 @@ We introduce State-Adaptive Noise Trajectory Scheduler (SANTS), a lightweight sc
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 + 语言指令 + 历史"] --> B["冻结的 Video-Action Transformer f_phi<br/>(不更新 Transformer / video head / action head)"]
+    B --> C["一次视频去噪前向<br/>得到 video latent x_k 与池化隐状态 z_k"]
+    C --> D["SANTS 调度器状态 (z_k, sigma_k)"]
+    D --> E["Head A 累积风险停止<br/>Delta H_k = softplus(g(z_k, sigma_k))<br/>F_k = 1 - exp(-H_k)"]
+    D --> F["Head B 相对噪声推进<br/>r_k ~ Beta(alpha_k, beta_k)<br/>sigma_k+1 = r_k * sigma_k"]
+    E --> G{"F_k 超过阈值 eta ?"}
+    G -- "否 继续" --> H["一阶 flow-matching 更新<br/>x_k+1 = x_k + v(x_k, sigma_k, c)(sigma_k+1 - sigma_k)"]
+    F --> H
+    H --> C
+    G -- "是 停止" --> I["以终止视频表示 x_tau 条件生成动作块"]
+    I --> J["冻结 Action Head 输出 Action Chunk"]
+    J -. "训练期" .-> K["路径级奖励 R(tau)<br/>序列/时间差分动作误差增益 - lambda_c * 更新次数"]
+    K -. "PPO 仅更新调度器" .-> D
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2（部署期用 F_k 与阈值 η 判停；训练期用 h_k 做随机停止策略并以 PPO 后训练）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ We introduce State-Adaptive Noise Trajectory Scheduler (SANTS), a lightweight sc
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.27947>
+- [arXiv PDF](https://arxiv.org/pdf/2605.27947)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§2 相关工作、§3 Method（3.1–3.3）；§4 实验略读
 
 ## 推荐继续阅读
 

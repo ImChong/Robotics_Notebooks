@@ -42,6 +42,32 @@ We introduce Efficient-WAM, a World-Action Model that reduces the cost of future
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练三阶段"]
+        T1["Stage 1 视频蒸馏：WAN-2.2-5B (30层) 冻结为 teacher<br/>切片 + 蒸馏出 12 层 0.8B 紧凑视频专家<br/>(hidden 与 motion 特征匹配 + 视频 flow matching)"]
+        T2["Stage 2 动作训练：挂接动作专家<br/>冻结视频参数，L_joint"]
+        T3["Stage 3 联合微调：解冻视频 Transformer<br/>与动作专家联合训练"]
+        T1 --> T2 --> T3
+    end
+    subgraph INF["推理（每个动作块）"]
+        I1["当前观测 → VAE 编码 → 当前 latent（固定条件）"]
+        I2["语言指令 → 视频流 cross-attention"]
+        I3["机器人状态 token + 噪声动作 → 动作流"]
+        I4["未来 latent 由噪声初始化<br/>RT 版先把目标帧降采样到 192x160"]
+        I1 & I2 & I4 --> M["MoT 联合双向注意力<br/>12 层视频专家 + 12 层动作专家"]
+        I3 --> M
+        M --> J["前 2 个去噪迭代：视频 + 动作联合更新<br/>并缓存每层视频 K/V"]
+        J --> A["其余迭代：仅动作专家去噪<br/>复用缓存的视频 K/V"]
+        A --> O["输出动作块（16 个动作）"]
+    end
+    T3 -.-> INF
+```
+
+图依据：论文 §3.2-§3.5 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +125,7 @@ We introduce Efficient-WAM, a World-Action Model that reduces the cost of future
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.10040>
+- [arXiv PDF](https://arxiv.org/pdf/2606.10040)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method（3.1-3.5）、§4.1 实验设定；§4 其余实验略读
 
 ## 推荐继续阅读
 
