@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Per
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SUP["支持图像 IR + 查询部件掩码 MQ"] --> DESC["DINO-ViT 提取稠密描述子 FR、FT"]
+    TGT["目标图像 IT（目标掩码 MT 由显著性或用户给出）"] --> DESC
+    DESC --> SEL["Step1：用 MQ 与 MT 只保留前景描述子"]
+    SEL --> CLU["Step2：K-Means 聚类为 KQ 个查询质心与 KT 个目标质心"]
+    CLU --> FWD["前向匹配：质心间余弦相似度 + softmax，求和得投票 VQT"]
+    CLU --> BWD["后向匹配：目标质心对完整支持描述子 FR 匹配，得落入查询区域的概率 PTQ"]
+    FWD --> SC["Step3：得分 S = VQT · PTQ，映射回各质心所含像素"]
+    BWD --> SC
+    SC --> CRF["CRF（前景能量为得分，背景为常数阈值）→ 平滑二值掩码"]
+    CRF --> OUT["目标物体上的对应 affordance 区域"]
+    OUT --> SKILL["可选：把与该部件绑定的技能 Si 迁移到目标部件执行"]
+```
+
+图依据：论文 方法部分（Pre-processing、Forward/Backward matching、Post-processing）/ Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Per
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2209.07147)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2209.07147)。
 
 ## 评测与指标
 
@@ -67,7 +86,7 @@ One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Per
 
 **本页只提供「AffCorrs」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +107,7 @@ One-Shot Transfer of Affordance Regions? AffCorrs!——在清单中归入 **Per
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2209.07147>
+- [arXiv PDF](https://arxiv.org/pdf/2209.07147)：已通读方法部分（实验与附录以略读为准）：方法部分（问题定义、预处理、前向/后向匹配、后处理、设计选择、单次技能迁移）；实验与附录略读
 
 ## 推荐继续阅读
 

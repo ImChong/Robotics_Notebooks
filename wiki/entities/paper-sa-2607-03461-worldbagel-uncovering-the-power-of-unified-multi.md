@@ -42,6 +42,30 @@ Unified VLAW framework outperforming task-specific alternatives.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  IN["输入：多视角多步视觉观测 V<br/>+ 语言指令 L"] --> VLA
+  subgraph VLA["VLA 分支（动作预测）"]
+    VIT["ViT 编码视觉 → V_t tokens"] --> UND["UND expert<br/>跨模态 grounding"]
+    UND --> AT["追加 action_pred token（每个动作步一个）"]
+    AT --> FFAD["FFAD 动作解码器 (33M 适配器)<br/>线性投影 → 2 层 Transformer → 残差 MLP 头<br/>预测 Fourier 特征 φ(a)"]
+    FFAD --> INV["相位一致平均逆映射<br/>Fourier 特征 → 连续动作 a_t"]
+  end
+  INV -->|"FFAT 重新编码为 Fourier action tokens"| GEN
+  IN --> VAE["VAE 编码器 → 视觉 latent"]
+  subgraph WM["世界建模分支（动作条件生成）"]
+    VAE --> GEN["GEN expert<br/>flow matching 预测下一步观测 V_t+1"]
+    GEN --> DEC["VAE 解码器 → 未来帧"]
+  end
+  INV --> EXE["动作 open-loop 执行"]
+  LOSS["训练：L = L_action + 0.1 · L_vision<br/>BAGEL 初始化后 SFT，序列计划 (sequence plan) 加权采样"] -.-> VLA
+  LOSS -.-> WM
+```
+
+图依据：论文 §3.1–3.4 / Fig.1（训练时世界建模分支的动作条件用真值动作经 FFAT 编码；推理时用 FFAD 输出重新编码，见 §3.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Unified VLAW framework outperforming task-specific alternatives.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.03461>
+- [arXiv PDF](https://arxiv.org/pdf/2607.03461)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.5）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ Introduces a Real2Sim tactile calibration pipeline that constructs a contact-cal
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["1. Real2Sim 触觉标定（§3.1）"]
+        RM["真机执行 tapping / sliding 原语，记录关节轨迹与二值触觉 y_real"] --> RP["同一关节轨迹在仿真中回放，得到 y_sim(θ)"]
+        RP --> GS["网格搜索 θ=(λ_con, α, λ_pre)，最小化 ℓ1 失配"]
+    end
+    GS --> SIM["标定后的配对仿真器（SDF 接触 + 指尖串扰模型）"]
+    SIM --> S2["2. 专家数据生成：对象专属 PPO 专家（仅用本体 + 二值触觉；critic 用特权信息）"]
+    S2 --> D["成功抓取轨迹数据集 D（含仿真特权标签：物体状态/几何/接触）"]
+    D --> S3["3. 特权触觉预训练：触觉点 s=[FK 位置, 二值激活] + 历史窗口 → 时序 Transformer 编码器 g_ψ，解码器预测特权标签"]
+    S3 --> ENC["丢弃解码器，仅保留编码器 g_ψ"]
+    ENC --> S4["4. 扩散策略蒸馏：c_t=[z_t, 本体 x_t] → 动作块 A_t，在 D 的专家动作上训练"]
+    D --> S4
+    S4 --> DEP["真机零样本部署：闭环 receding-horizon，执行前几步后重规划"]
+```
+
+图依据：论文 §3 / §3.1-§3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Introduces a Real2Sim tactile calibration pipeline that constructs a contact-cal
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2606.11767>
+- [arXiv PDF](https://arxiv.org/pdf/2606.11767)：已通读方法部分（实验与附录以略读为准）：§3 Learning Tactile Blind Grasping（§3.1-§3.3）、§4 实验设置开头；附录未读
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "HumiMimic：从自然场景视频迁移人类—人形交互行为（a
 
 # HumiMimic：从自然场景视频迁移人类—人形交互行为
 
-**HumiMimic**（*HumiMimic: Mimetic Embodiment Transfer of Human-Humanoid Interaction from In-the-Wild Videos*，[arXiv:2610.36615](https://arxiv.org/abs/2610.36615)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**HumiMimic**（*HumiMimic: Mimetic Embodiment Transfer of Human-Humanoid Interaction from In-the-Wild Videos*，[arXiv:2610.36615](https://arxiv.org/abs/2610.36615)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,25 @@ summary: "HumiMimic：从自然场景视频迁移人类—人形交互行为（a
 ## 为什么重要
 
 - 周报所述待解决的问题：将拥抱、握手和双人舞等动作迁移到机器人时，既要保持单人动作，还要保持双方距离、朝向、接触和节奏。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["自然场景双人交互视频<br/>1,200 段，约 50 万帧"] --> B["自动过滤低质量帧<br/>保留约 73%"]
+  B --> C["多人跟踪 → 关键点检测 → SMPL 重建<br/>E_shape 全身形状拟合"]
+  C --> D["足地接触一致性微调<br/>E_contact = E_consist + λ_zmp E_zmp"]
+  D --> E["人体 SMPL 帧序列 + 交互伙伴 P"]
+  E --> F["逆运动学暖启动 E_IK<br/>按人形比例缩放，初始化人形姿态 R_t"]
+  E --> G["交互建模<br/>关节相对方向矩阵 J 与解剖偏移矩阵 A"]
+  G --> H["关节重要性权重<br/>语义权重 W_sem（MotionCLIP + softmax）× 距离权重 W_dis"]
+  F --> I["模仿式具身转移<br/>最小化 E_interact + E_IK（mink 求解器）"]
+  H --> I
+  I --> J["交互后优化<br/>自平衡 + 体间最小安全距离防碰撞"]
+  J --> K["HumiMimic 数据集<br/>Unitree R1 Edu / HighTorque Mini-hi"]
+```
+
+图依据：论文 §III-A–C / Fig. 2。
 
 ## 核心机制
 
@@ -86,6 +105,7 @@ summary: "HumiMimic：从自然场景视频迁移人类—人形交互行为（a
 - [humimic-human-humanoid-interaction-video_arxiv_2610_36615.md](../../sources/papers/humimic-human-humanoid-interaction-video_arxiv_2610_36615.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36615](https://arxiv.org/abs/2610.36615)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36615)：已通读方法部分（实验与附录以略读为准）：HumiTransfer 三阶段方法 §III-A–C 与实验 §IV-A 的重定向评测设定
 
 ## 推荐继续阅读
 

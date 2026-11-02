@@ -42,6 +42,25 @@ Lightweight modality-fusion approach integrating visual-tactile signals for cont
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["图像输入"] --> VB["融合视觉骨干 SigLIP + DINOv2<br/>逐 ViT 块处理 patch 特征"]
+    TAC["触觉图像（DIGIT）"] --> TE["预训练触觉表征模型<br/>T3 或 Sparsh，补丁特征取平均得池化嵌入 z_t"]
+    TE --> MLP["各 ViT 块的 MLP<br/>由 z_t 生成 γ_n、β_n"]
+    MLP --> FILM["FiLM 调制：F_n ⊙ (1+γ_n) + β_n<br/>位于归一化之后、多头自注意力之前"]
+    VB --> FILM
+    FILM --> PROJ["MLP projector<br/>投影到语言模型输入空间"]
+    TXT["语言指令"] --> CAT["与文本 token 拼接"]
+    PROJ --> CAT
+    CAT --> LLM["Llama2-7B 解码器（OpenVLA-OFT）"]
+    LLM --> HEAD["MLP action head<br/>L1 回归连续动作块"]
+    HEAD --> ACT["机器人动作"]
+```
+
+图依据：论文 §3.1 Policy Architecture / Fig.2，§3.2 触觉表征，§3.3 训练（LoRA 微调，FiLM 层从零训练）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Lightweight modality-fusion approach integrating visual-tactile signals for cont
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.14604>
+- [arXiv PDF](https://arxiv.org/pdf/2603.14604)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1-3.3）、Fig.2 图注
 
 ## 推荐继续阅读
 

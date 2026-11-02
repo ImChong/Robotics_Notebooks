@@ -42,6 +42,32 @@ A policy learning framework enabling egocentric, perception-driven rearrangement
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["阶段 1：Teacher（仅训练，PPO 在线强化学习）"]
+        A["仿真器稀疏关键点<br/>active / anchor / obstacle / target ref"] --> B["虚拟 FOV 遮挡 + 中心门控 Center-gated Visibility"]
+        B --> C["共享权重 PointNet 编码各角色组"]
+        C --> D["MLP 策略<br/>输入各组 latent + 上一步动作"]
+        D --> E["动作 v, ω → PD 控制器 → 轮速"]
+        R["分阶段奖励：reach / place 完成、进度 shaping、平滑、靠近目标减速"] --> D
+    end
+    subgraph P2["阶段 2：Student（在线 DAgger 蒸馏）"]
+        F["自我中心 RGB-D"] --> G["实例分割 + 角色分组<br/>RGB 仅用于掩码"]
+        G --> H["active / anchor / obstacle 三层 masked depth"]
+        H --> I["CNN 编码各层"]
+        I --> J["复制自 Teacher 的 MLP 主干 + 动作头"]
+        K["自维护阶段计数器<br/>连续零动作帧推进并重路由角色掩码"] --> G
+    end
+    D -- "动作标签" --> L["蒸馏损失<br/>动作回归 + 关系余弦相似度矩阵对齐"]
+    J --> L
+    D -. "权重初始化（去掉 ref 列）" .-> J
+    J --> M["部署：仅自我中心深度，零样本 sim-to-real"]
+```
+
+图依据：论文 §III-B/C/D / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ A policy learning framework enabling egocentric, perception-driven rearrangement
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.18071>
+- [arXiv PDF](https://arxiv.org/pdf/2602.18071)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）、Fig.2、Fig.3；§IV 实验仅略读
 
 ## 推荐继续阅读
 

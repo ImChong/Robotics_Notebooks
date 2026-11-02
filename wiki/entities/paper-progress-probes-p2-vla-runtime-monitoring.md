@@ -20,7 +20,7 @@ summary: "Progress Probes P²：进度探针 P²：面向视觉语言动作模�
 
 # Progress Probes P²：进度探针 P²：面向视觉语言动作模型的轻量化运行时监测
 
-**Progress Probes P²**（*Progress Probes P²: Lightweight Runtime Monitoring for Vision-Language-Action Models*，[arXiv:2610.31613](https://arxiv.org/abs/2610.31613)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Progress Probes P²**（*Progress Probes P²: Lightweight Runtime Monitoring for Vision-Language-Action Models*，[arXiv:2610.31613](https://arxiv.org/abs/2610.31613)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,36 @@ summary: "Progress Probes P²：进度探针 P²：面向视觉语言动作模�
 ## 为什么重要
 
 - 周报所述待解决的问题：VLA 执行过程中需要判断任务是否正常推进，但持续调用大型视觉语言模型进行状态评估会增加运行开销。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["离线训练：仅用成功演示"]
+        DEMO["成功演示轨迹 τ<br/>长度 T"] --> LAB["进度标签 ζ_t = 1 − t/T"]
+        DEMO --> VLA1["π0.5 VLA 前向<br/>逐层提取激活 z^i（token 维度均值池化）"]
+        VLA1 --> DS["探针数据集 D_probe"]
+        LAB --> DS
+        DS --> LR["线性回归训练探针<br/>φ(z^i) = wᵀz^i + b"]
+        DS --> CAL["20% 验证集校准检测阈值 δ"]
+    end
+    subgraph RT["运行时监控"]
+        OBS["观测 o_t：图像 + 本体 + 语言提示"] --> VLA2["π0.5 VLA 推理<br/>（激活本就在推理中算出）"]
+        VLA2 --> ACT["第 i 层激活 z^i"]
+        ACT --> PROBE["进度探针<br/>预测进度 ζ̂(o_t)"]
+        MU["成功轨迹平均长度 μ_T"] --> NOM["名义进度 ζ_nom = 1 − t/μ_T"]
+        PROBE --> SC["监控分数 s = ζ̂ − ζ_nom"]
+        NOM --> SC
+        SC --> TH{"s > δ ?"}
+        TH -->|"是：进度落后"| FAIL["判定将失败"]
+        TH -->|"否"| OK["继续执行"]
+    end
+    LR -.-> PROBE
+    CAL -.-> TH
+    DEMO -.-> MU
+```
+
+图依据：论文 §III–V（式 2–4）/ Fig. 1；校准阈值见 §VI Training。
 
 ## 核心机制
 
@@ -87,6 +117,7 @@ summary: "Progress Probes P²：进度探针 P²：面向视觉语言动作模�
 - [progress-probes-p2-vla-runtime-monitoring_arxiv_2610_31613.md](../../sources/papers/progress-probes-p2-vla-runtime-monitoring_arxiv_2610_31613.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.31613](https://arxiv.org/abs/2610.31613)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31613)：已通读方法部分（实验与附录以略读为准）：§I–V（引言、相关工作、线性探针背景、问题表述、Progress Probes 方法）与 §VI 的 Setup/Training，其余实验略读
 
 ## 推荐继续阅读
 

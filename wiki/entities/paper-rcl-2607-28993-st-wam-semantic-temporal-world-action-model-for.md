@@ -42,6 +42,31 @@ Rather than correcting the predicted futures, we propose Semantic-Temporal WAM (
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前多视角观测 o_t + 本体状态 s_t + 语言指令 ℓ"] --> ENC["冻结编码器：Wan2.2 VAE 与 DINOv3"]
+    ENC --> ZV["VAE latent：当前 token 与未来目标"]
+    ENC --> ZS["DINO feature：当前 token 与未来目标"]
+    ZV --> MOT["三分支 Mixture-of-Transformers（分层混合注意力 + 结构化注意力掩码）"]
+    ZS --> MOT
+    HIST["最近 M 帧历史 H_t"] --> DINOH["冻结 DINOv3 patch 特征 + 线性投影 + 时间嵌入 = 历史 token R_t"]
+    OBS --> QW["冻结 Qwen3-VL 隐状态 → N_I 个可学习 query 得到当前语义 token"]
+    QW --> CAIR["CAIR：L 层 cross-attention，当前语义 token 为 query、R_t 为 key/value"]
+    DINOH --> CAIR
+    CAIR --> INTENT["short-horizon intent tokens I_t"]
+    OBS --> CTX["上下文：T5(ℓ) + 本体 token"]
+    CTX --> MOT
+    MOT --> VF["视觉未来专家 Wan2.2 Video DiT：去噪未来 VAE latent（仅训练）"]
+    MOT --> SF["语义未来专家：去噪未来 DINO 特征（仅训练）"]
+    MOT --> AE["动作专家：flow matching 去噪动作块 a_t:t+H-1"]
+    INTENT -.->|"仅注入动作专家的 cross-attention"| AE
+    AE --> OUT["推理时仅保留动作分支，输出动作块"]
+```
+
+图依据：论文 §Methodology（Problem Formulation / Dual-Space Future Experts / Current-Anchored Intent Retrieval / Joint Flow-Matching Objective）与 Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +124,7 @@ Rather than correcting the predicted futures, we propose Semantic-Temporal WAM (
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.28993>
+- [arXiv PDF](https://arxiv.org/pdf/2607.28993)：已通读方法部分（实验与附录以略读为准）：Introduction、Methodology（Problem Formulation、DSFE、CAIR、Joint Flow-Matching Objective）
 
 ## 推荐继续阅读
 

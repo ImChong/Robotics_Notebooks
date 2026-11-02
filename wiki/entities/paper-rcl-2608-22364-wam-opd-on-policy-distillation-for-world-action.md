@@ -42,6 +42,21 @@ We introduce WAM-OPD, a deployment-consistent post-training recipe for a video-f
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Student 在环境中 rollout<br/>读历史 h → 预测视频 Ô → 以其生成动作 chunk A → 执行"] --> B["新观测延长历史<br/>共 K=36 条 Student 轨迹"]
+    B --> C["冻结 Teacher 在同一 Student 历史上打标<br/>视频目标 Ô^T，动作目标 Â^T（以 Teacher 自己的视频为条件）"]
+    C --> D["固定数据集<br/>24 条训练轨迹 D_train / 12 条校准轨迹 D_cal"]
+    D --> E["Student 沿用部署时的 视频→动作 计算重算<br/>视频预测 + 动作 chunk + 动作流匹配速度<br/>（视频预测 stop-gradient 后送入动作分支）"]
+    E --> F["联合损失 L_M<br/>视频 pseudo-Huber + 动作 pseudo-Huber + 速度 FM 项<br/>（可切换 视频仅 / 动作仅 / 联合）"]
+    F --> G["仅更新 rank-8 JointLoRA 适配器<br/>基础 Student / Teacher 权重冻结"]
+    G --> H["部署：一步视频 + 一步动作生成，采样预算不变"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ We introduce WAM-OPD, a deployment-consistent post-training recipe for a video-f
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.22364>
+- [arXiv PDF](https://arxiv.org/pdf/2608.22364)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3 与 Algorithm 1（含 Fig.2），§4.1 实验设定
 
 ## 推荐继续阅读
 

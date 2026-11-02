@@ -22,6 +22,25 @@ summary: "SayCan（arXiv:2204.01691，Google）：LLM 生成子任务候选，�
 
 **SayCan（Do As I Can）**（[arXiv:2204.01691](https://arxiv.org/abs/2204.01691)，[代码](https://github.com/google-research/google-research/tree/master/saycan)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["用户高层自然语言指令 i"] --> L["LLM 对每个技能描述打分<br/>p(ℓπ | i, 已选技能)（task-grounding）"]
+    Z["技能库 Π：每个技能含<br/>策略 + 价值函数 + 语言描述 ℓπ"] --> L
+    Z --> V["价值函数/affordance<br/>p(cπ | s, ℓπ)（world-grounding）"]
+    ST["当前状态 s（观测）"] --> V
+    L --> M["两者相乘，argmax 选出技能 π"]
+    V --> M
+    M --> X["执行所选技能策略<br/>（BC-Z 或 MT-Opt 训练）"]
+    X --> U["环境状态更新；ℓπ 追加到 LLM 查询"]
+    U --> D{"选出 done ?"}
+    D -->|"否"| L
+    D -->|"是"| E["结束"]
+```
+
+图依据：论文 §3 SayCan（Algorithm 1 / Fig.3）、§4 技能实现。
+
 ## 一句话定义
 
 **用语言模型的常识做计划，用学得的价值函数做「能不能做」的物理过滤器。**
@@ -81,6 +100,7 @@ SayCan 确立了 LLM+机器人最可落地的分工：规划在上、affordance 
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2204.01691)：已通读方法部分（实验与附录以略读为准）：§2 Preliminaries、§3 SayCan、§4 Implementing SayCan
 
 ## 推荐继续阅读
 

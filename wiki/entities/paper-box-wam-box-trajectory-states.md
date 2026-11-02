@@ -33,6 +33,24 @@ summary: "Box-WAM（arXiv:2610.17526）：用任务相关物体的有向边界�
 
 摘要指出，全帧视频预测在训练与推理时都昂贵。问题在于：什么样的紧凑状态表示能保留未来预测对规划与监督的收益。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第三人称 + 腕部相机 RGB<br/>本体状态 q_T，语言指令（多任务时）"] --> ENC["冻结 DINOv3 视觉编码器 → 视觉上下文 token"]
+    NZ["高斯噪声：H 个未来 box token + H 个 action token"] --> DIT
+    ENC --> DIT["rectified-flow Transformer（DiT）<br/>拼成单一序列；本体状态与流时间步经 adaptive LayerNorm 注入"]
+    DIT --> MASK["结构化注意力：action token 可看 box token；<br/>box token 不能看 action token"]
+    MASK --> OUT["欧拉积分去噪（二次时间表），box 与 action token 同步更新"]
+    OUT --> BH["线性 future-state 头 → 未来 box 轨迹<br/>（有向 3D 框 8 个角点的图像平面坐标，16 维）"]
+    OUT --> AH["线性 action 头 → 动作块（相对关节位置，反归一化后加到当前关节角）"]
+    AH --> EX["执行动作块后重新规划"]
+    GT["训练监督：仿真器真值框 / 真机 RGB-D 与已知网格重建的框<br/>仅用于标注，推理不需要"] -.-> LOSS["联合 rectified-flow 损失 = λ_X·box 损失 + λ_A·动作损失"]
+    LOSS -.-> DIT
+```
+
+图依据：论文 §3.1 与 §3.2（Fig. 2）；训练监督来源见 §3.1 末段。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -86,7 +104,7 @@ summary: "Box-WAM（arXiv:2610.17526）：用任务相关物体的有向边界�
 
 1. **紧凑表示可替代稠密预测** — 摘要以计算成本为主要动机。
 2. **物体中心的信息足够多数任务** — 摘要认为框轨迹已覆盖关键物理变化（推测：适用范围仍依赖任务）。
-3. **框的来源是隐含依赖** — 需要确认框是如何获得的（摘要未展开）。
+3. **框的来源是隐含依赖** — 训练时框监督来自仿真器真值或真机 RGB-D 重建，推理时由模型自行预测（见流程总览）。
 
 ## 局限与风险
 
@@ -103,6 +121,7 @@ summary: "Box-WAM（arXiv:2610.17526）：用任务相关物体的有向边界�
 
 - [论文归档](../../sources/papers/box-wam_arxiv_2610_17526.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.17526)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.2）、§4 实验设定与结果（未读附录）
 
 ## 推荐继续阅读
 

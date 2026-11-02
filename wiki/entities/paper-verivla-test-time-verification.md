@@ -32,6 +32,27 @@ summary: "VeriVLA（arXiv:2610.21985）：免训练的测试时验证，用两�
 
 精细操作中，一次次优动作可能不可逆地破坏任务进度。摘要指出，Flow-VLA 对同一观测的不同噪声种子会给出质量不同的动作块，但测试时通常直接提交一个样本，没有质量估计。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测 o_t + 指令 l + 本体状态 s_t"] --> VLA["Flow-VLA: 以不同噪声种子采样 k=2 个初始动作块"]
+    VLA --> NORM["每块按平均动作幅值归一化"]
+    NORM --> TT["T_temp: 块内相邻动作的均方变化 (时间轴)"]
+    NORM --> TC["T_cross: 跨样本动作方差 (样本轴)"]
+    REF["部署前少量 rollout 收集参考分布 (标定)"] --> PCT
+    TT --> PCT["换算为各自参考分布上的百分位, 取 max 得 tau"]
+    TC --> PCT
+    PCT --> TRG{"tau 大于阈值 tau_0?"}
+    TRG -- 否 --> EXE1["不额外采样, 直接执行初始样本"]
+    TRG -- 是 --> MORE["再采样至共 K 个候选动作块"]
+    MORE --> WM["Latent WM Verifier (JEPA): 动作块切成 M 个子块, 自回归预测潜在状态与 delta progress, 带任务 query token"]
+    WM --> PICK["选估计 delta progress 最大的候选"]
+    PICK --> EXE2["执行所选动作块"]
+```
+
+图依据：论文 §3.1-3.4（Problem Formulation、Overview、Two-axis Trigger、Latent World Model Verifier）/ Fig.3
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -99,6 +120,7 @@ summary: "VeriVLA（arXiv:2610.21985）：免训练的测试时验证，用两�
 
 - [论文归档](../../sources/papers/verivla_arxiv_2610_21985.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.21985)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1-3.4）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

@@ -79,7 +79,7 @@ InterAct 提供不同来源的日常交互类型，HiPHI 补充较长且同步�
 
 ## 流程总览
 
-{B}{B}{B}mermaid
+```mermaid
 flowchart TD
   data["InterAct + HiPHI<br/>人体-物体交互动作"]
   retarget["共享表示与平台筛选<br/>全身交互重定向"]
@@ -97,7 +97,9 @@ flowchart TD
   archive --> finetune
   tracker --> robot
   sim --> robot
-{B}{B}{B}
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
 
 闭环里最关键的是“微调后再执行筛选”：通过物理验证的动作不仅增加训练数据，也把基策略原本无法跟踪的变化纳入后续能力范围。
 
@@ -167,6 +169,7 @@ flowchart TD
 - [InterMimicGen 项目页](https://sirui-xu.github.io/InterMimicGen/)
 - [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 - [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.06850)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法
 
 ## 推荐继续阅读
 

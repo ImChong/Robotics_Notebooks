@@ -40,6 +40,26 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 - 属于六路线 taxonomy 的 **行动主导型**：预测结果被用于 **部署时动作生成与未来建模显式耦合。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角 RGB 观测 ot + 语言指令 ℓ"] --> B["预训练 VLM(Qwen3-VL-2B)<br/>编码为变长 patch / 语言 token ht"]
+    B --> C["World Adapter：Perceiver 式重采样<br/>K 个可学习 query 经 L 个块交叉注意"]
+    C --> D["K=256 个 world tokens qt"]
+    D --> E["动作专家：DiT flow-matching<br/>以 qt 为唯一视觉语言上下文"]
+    E --> F["H 步动作块<br/>(部署用 4 步 flow 积分)"]
+    D -.->|"仅训练"| G["投影 pρ → q_wm"]
+    H["未来 RGB 片段 vt<br/>冻结 VAE 编码为 zt"] -.->|"仅训练"| I["预训练视频去噪器 Wω(Cosmos Predict2.5-2B)<br/>以 q_wm 为交叉注意上下文"]
+    J["主视角 Canny 边缘图<br/>VAE 编码作首帧结构锚点"] -.->|"仅训练"| I
+    G -.-> I
+    I -.->|"视频去噪损失 Lvid 的梯度回传到 qt"| D
+    E --> K["总损失 L = Lact + 0.5·Lvid"]
+    I -.-> K
+```
+
+图依据：论文 §3.2 至 §3.5 / Fig.2（虚线为仅训练分支，部署时移除）
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -80,6 +100,7 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [world_tokens_arxiv_2608_09730.md](../../sources/papers/world_tokens_arxiv_2608_09730.md)
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09730)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method（3.1 至 3.5）、§4.1 实验设置
 
 ## 推荐继续阅读
 

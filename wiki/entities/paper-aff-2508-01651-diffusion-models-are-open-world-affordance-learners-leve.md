@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Diffusion Models are Open-World Affordance Learners: Leveraging Generative Priors for 3D Affordance Learning——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+Diffusion Models are Open-World Affordance Learners: Leveraging Generative Priors for 3D Affordance Learning——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,26 @@ Diffusion Models are Open-World Affordance Learners: Leveraging Generative Prior
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  I["HOI 参考图像"] --> ASE["Affordance Semantics Encoder<br/>冻结 CLIP 图像编码器 + 多层加权 + MLP"]
+  I -->|"加噪 x_t，单次前向"| UNet["冻结文生图扩散 U-Net"]
+  ASE -->|"隐式语义 Ak 作为条件"| UNet
+  UNet -->|"多尺度特征 Av"| Agg["聚合网络<br/>按层加权混合"]
+  Agg -->|"affordance priors Ag"| AB
+  T["affordance 文本"] --> TE["冻结 CLIP 文本编码器"]
+  TE -->|"At"| AB["Affordance Blocks<br/>缩放 + 自注意力 + 交叉注意力 + FFN + 池化"]
+  AB -->|"affordance embeddings Af"| Dec
+  P["点云"] --> PE["预训练点编码器<br/>+ 几何引导上采样/特征传播"]
+  PE -->|"CLS token"| Dec["Multi-Source Affordance Decoder<br/>CLS 与 Af 交叉注意力，再与点特征交叉注意力，MLP"]
+  PE -->|"点特征 fp"| Dec
+  Dec --> M["3D affordance mask"]
+```
+
+图依据：论文 §3.1–3.6 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Diffusion Models are Open-World Affordance Learners: Leveraging Generative Prior
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2508.01651)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2508.01651)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ Diffusion Models are Open-World Affordance Learners: Leveraging Generative Prior
 
 **本页只提供「DAG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ Diffusion Models are Open-World Affordance Learners: Leveraging Generative Prior
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2508.01651>
+- [arXiv PDF](https://arxiv.org/pdf/2508.01651)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.6）与实验设定（§4.1–4.2）
 
 ## 推荐继续阅读
 

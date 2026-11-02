@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environments——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Visual） ｜ Datasets / Benchmarks（Data Modality: panoramic image/text）**（清单未附方法摘要，此处不替原文概括贡献）。
+PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environments——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Visual） ｜ Datasets / Benchmarks（Data Modality: panoramic image/text）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,45 @@ PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environ
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG[360° ERP 全景图] --> VE[DINOv2 ViT-B/14 视觉编码器<br/>注意力层插入 LoRA → patch 特征 F_v]
+  TXT[C 个 affordance 类别] --> TE[CLIP 文本编码器 + CoOp 提示学习器<br/>→ 文本嵌入 F_t]
+  subgraph DASM["DASM 畸变感知频谱调制器"]
+    D1[多头交叉注意力：F_v 为 Query，F_t 为 Key/Value<br/>语义注入 → F_v']
+    D2[双频分解：Laplacian 高频 F_h / 高斯平滑低频 F_l]
+    D3[HFEM 高频增强：锐化赤道区交互边界，抑制极区伪影]
+    D4[LFSM 低频稳定：保持极区全局结构一致]
+    D5[混合门控融合：语言驱动通道门 g_ch x 自适应空间门 g_sp<br/>门控残差相加 → F_freq]
+    D6[上下文重聚合：MHSA + FFN → F_v'']
+    D1 --> D2
+    D2 --> D3
+    D2 --> D4
+    D3 --> D5
+    D4 --> D5
+    D5 --> D6
+  end
+  VE --> D1
+  TE --> D1
+  subgraph DEC["空间感知层级解码器"]
+    G1[全局语义发现：轻量 Transformer 解码器<br/>F_t 为 Query 交叉注意 F_v'' → 初始图 A_init]
+    G2[OSDH 全向球面致密化头<br/>F_v'' 球面投影得余弦亲和矩阵 S，top-k 种子 + 置信度去噪 + 最大传播]
+    G1 --> G2
+  end
+  D6 --> G1
+  D6 --> G2
+  TE --> G1
+  G2 --> OUT[致密连续的 affordance 热图 A_refined]
+  subgraph LOSS["多层级训练目标"]
+    L[L_BCE 像素级 + L_KL 分布拓扑一致 + L_RTC 区域-文本 InfoNCE 对比]
+  end
+  OUT -.-> L
+```
+
+图依据：论文 §III-A 至 §III-E / Fig.2（Overview of PanoAffordanceNet）、Fig.3（OSDH）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +91,7 @@ PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environ
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.09760)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.09760)。
 
 ## 评测与指标
 
@@ -68,7 +107,7 @@ PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environ
 
 **本页只提供「PanoAffordanceNet」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +128,7 @@ PanoAffordanceNet: Towards Holistic Affordance Grounding in 360° Indoor Environ
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.09760>
+- [arXiv PDF](https://arxiv.org/pdf/2603.09760)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III Method（A 概览至 E 训练目标）、§V 实现细节开头；§IV 数据集 360-AGD 与实验结果仅略读。
 
 ## 推荐继续阅读
 

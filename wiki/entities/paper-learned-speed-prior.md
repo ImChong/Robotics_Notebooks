@@ -41,6 +41,36 @@ summary: "Learned Speed Prior（arXiv:2610.32676）：学习式速度先验为�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-29）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PRIOR["速度先验（§3.1 至 §3.3）"]
+    SRC["源示范 src / 目标示范 tgt（带 domain 标签）"] --> ARC["按弧长重采样：每 2 cm 一个节点，窗口 17 个节点<br/>弧长增量融合平移、旋转、夹爪"]
+    ARC --> TR["Transformer 先验（从头训练）<br/>输入：指令 + 图像 + 节点 token，输出每个区间的 log 速度分布（256 bin 分类）"]
+  end
+  subgraph RETIME["重定时（§3.4）"]
+    TR --> CFG["类 classifier-free guidance：<br/>f_src(I) + λ · (f_tgt(无图) − f_src(无图))"]
+    CFG --> Q["多个窗口预测取平均，按分位数 q 解码速度 v̂"]
+    Q --> CLK["积分 1/v̂ 得时钟 t̂(s)，路径不变，暂停不计时"]
+  end
+  subgraph FT["策略微调（§3.5）"]
+    CLK --> BASE["中位数时钟 q = 0.5 重定时的源示范 → 动作块（基础时钟）"]
+    CLK --> TEMPO["更高分位数时钟 → tempo 通道 τ"]
+    BASE --> PI["微调 π0.5：预测 H 步关节航点 + 夹爪 + tempo 通道"]
+    TEMPO --> PI
+  end
+  subgraph EXEC["执行周期（§4）"]
+    PI --> SW["预留切换时刻 tb，从运行中计划 P 读取 tb 处状态与进度"]
+    SW --> DR["Draft：最小 jerk 路径过航点邻域盒，按目标速度做时间最优参数化"]
+    DR --> SP["Splice：用 Ruckig 选最早可按时进入的点，拼接过渡段"]
+    SP --> SM["Smooth：最小 jerk QP，满足全部限制"]
+    SM --> NP["新计划 P' 在 tb 切换，位置/速度/加速度连续"]
+  end
+```
+
+图依据：论文 §3.1–§3.5 / §4.1–§4.2 / Fig.1、Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +113,7 @@ summary: "Learned Speed Prior（arXiv:2610.32676）：学习式速度先验为�
 - [learned_speed_prior_arxiv_2610_32676.md](../../sources/papers/learned_speed_prior_arxiv_2610_32676.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.32676](https://arxiv.org/abs/2610.32676)
+- [arXiv PDF](https://arxiv.org/pdf/2610.32676)：已通读方法部分（实验与附录以略读为准）：§3 Learning the Pace from Demonstrations（§3.1 至 §3.5）、§4 Executing the Predicted Pace（§4.1 执行周期、§4.2 求解器）、§1 至 §2 引言与相关工作（略读）
 
 ## 推荐继续阅读
 

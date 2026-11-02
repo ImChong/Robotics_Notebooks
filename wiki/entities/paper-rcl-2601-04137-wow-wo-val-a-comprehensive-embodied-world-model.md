@@ -42,6 +42,31 @@ WoW-World-Eval tests whether instruction-conditioned robot videos are visually c
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph CUR["数据构建（半自动，Fig.2 左）"]
+        direction TB
+        SRC["开源机器人数据（RoboMIND、DROID）+ 自有轨迹 + AI 生成 OOD 样本"] --> GPT["GPT-4o 按五大能力维度打分：大规模过滤与粗分类"]
+        GPT --> HUM["人工专家核验全部样本"]
+        HUM --> ANN["标注员选初始帧并标注关键点"]
+        ANN --> ENT["基准条目：指令 + 初始图 + GT 视频 + 关键点，共 609 条"]
+    end
+    ENT --> GEN["被评世界模型：图像 + 文本 → 视频（I2V）"]
+    GEN --> M1["视觉保真：PSNR / SSIM / DINO / DreamSim / FVD"]
+    GEN --> M2["指令对齐：GPT-4o 的 Caption / Sequence Match / Execution Quality 分"]
+    GEN --> M3["物理一致：区域一致性、轨迹 MED/DTW/Fréchet、微调 Qwen-2.5-VL 打分"]
+    GEN --> M4["规划：DAG 节点正确率 + 任务完成度"]
+    M1 --> AGG["映射到 0-100 并按组加权平均得总分"]
+    M2 --> AGG
+    M3 --> AGG
+    M4 --> AGG
+    GEN -.->|"Interactive Execution：GC-IDM 把生成视频转成机器人动作"| EXE["真机执行检验"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2（本文为基准论文，此图为其自述的数据构建与评测流程，非模型架构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ WoW-World-Eval tests whether instruction-conditioned robot videos are visually c
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2601.04137>
+- [arXiv PDF](https://arxiv.org/pdf/2601.04137)：已通读方法部分（实验与附录以略读为准）：§1、§3（五大评测维度、数据构建、评测指标、总分聚合）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

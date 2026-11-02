@@ -42,6 +42,23 @@ Evaluates latent world models on partially observable safety constraints.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["数据集 D：观测 o、动作 a、安全标签 l"] --> WM["潜在世界模型：编码器 z = E(o)，潜在动力学 f(z, a)，安全分类器 r = ℓ(z)"]
+    WM --> CTRL["潜在安全控制：最小限制滤波 或 模型预测屏蔽（MPS），保护名义策略"]
+    WM --> DX1["诊断 1：在编码器嵌入上训练线性探针，估计互信息下界 I(Y;X) / H(Y)，衡量估计缺口"]
+    WM --> DX2["诊断 2：16 步开环 rollout 的失败分类，衡量预测缺口"]
+    DX1 -.->|"针对估计缺口"| M1["缓解 A：RGB 输入，但用 RGB 加 IR 多模态重建监督训练 WM_RGB-MM"]
+    DX2 -.->|"针对预测缺口"| M2["缓解 B：用共形预测（轨迹级，目标 false-safe 率 α）校准 MPS 阈值 ε"]
+    M1 --> CTRL
+    M2 --> CTRL
+    CTRL --> OUT["输出：名义动作，或回退到安全策略 / 备份动作"]
+```
+
+图依据：论文 §3.1、§4、§5.1、§5.2（诊断到缓解的虚线对应关系依据论文对 Wax Melting 估计缺口、Rice Pouring 预测缺口的叙述）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Evaluates latent world models on partially observable safety constraints.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.06492>
+- [arXiv PDF](https://arxiv.org/pdf/2510.06492)：已通读方法部分（实验与附录以略读为准）：§3 背景与实验设定、§4 诊断方法、§5.1、§5.2 缓解方法；附录略读
 
 ## 推荐继续阅读
 

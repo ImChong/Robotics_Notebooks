@@ -42,6 +42,33 @@ Zero-shot intent resolution framework boosting wearable instruction execution ac
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["用户第一人称查询（语言 + 图像）"] --> R{"歧义类型"}
+    R -->|"语义歧义（如“a good gift”）"| T1["Analyze：识别已知 Kt 与缺失信息 Mt"]
+    T1 --> T2["按优先级选最高优先级缺失项 m*"]
+    T2 --> T3["LLM 生成提问 Qt，用户回答 At 并入历史 Ht+1"]
+    T3 --> T4{"仍有高优先级缺失？"}
+    T4 -->|"是"| T1
+    T4 -->|"否"| T5["LLM 基于完整历史生成结构化意图摘要"]
+    R -->|"视觉歧义（视角不清）"| V1["VLM 零样本提取目标类别 c"]
+    V1 --> V2["开集检测器定位，得到框 B"]
+    V2 --> V3["评估构图（面积范围、边缘裁切）与清晰度 Sclarity"]
+    V3 --> V4{"构图差或低于 τblur？"}
+    V4 -->|"是"| V5["给用户纠正提示，重新取景"]
+    V5 --> V2
+    V4 -->|"否"| V6["高质量图像进入下游任务"]
+    R -->|"指代歧义（指向手势“this”）"| C1["手部分割 + 单目深度估计"]
+    C1 --> C2["指尖/指根关键点反投影为 3D 指向射线"]
+    C2 --> C3["射线投射求与场景深度的交点 Pintersect"]
+    C3 --> C4["深度自适应 ROI + 含手的上下文裁剪"]
+    C4 --> C5["裁剪图与查询送入 VLM 解释"]
+```
+
+图依据：论文 Fig. 2（总览）、Fig. 3（视觉澄清）、Fig. 4（跨模态指代）及 Methodology 各小节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Zero-shot intent resolution framework boosting wearable instruction execution ac
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2511.08971>
+- [arXiv PDF](https://arxiv.org/pdf/2511.08971)：已通读方法部分（实验与附录以略读为准）：Methodology（文本 / 视觉 / 跨模态指代澄清）、Experimental Setup、Fig. 2–4
 
 ## 推荐继续阅读
 

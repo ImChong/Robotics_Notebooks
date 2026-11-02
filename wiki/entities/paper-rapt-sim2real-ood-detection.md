@@ -42,6 +42,36 @@ summary: "仿真学习标称执行流形，部署时用预测偏差做 OOD 检�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **监控与评测** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线：训练与标定"]
+        S1["Isaac Lab 中预训练专家策略<br/>采集 Unitree G1 标称本体感知轨迹 o_t"] --> S2["训练概率循环轨迹模型<br/>残差状态编码器 → GRU 时序桥 → 潜在瓶颈 z_t → 概率解码器<br/>输出对角高斯 (μ, σ²)，以 NLL 为损失"]
+        S2 --> S3["用标称数据标定阈值<br/>（仿真批量数据 或 简短已验证的真机标称运行）"]
+    end
+    subgraph ON["在线：50 Hz 部署监控"]
+        P["预训练人形策略正常运行<br/>（监控器独立于策略，无需改动）"] --> O["本体感知观测 o_t"]
+        O --> M["RAPT 模型计算逐维 NLL 偏差 ℓ_t,i 与均值 ℓ̄_t"]
+        M --> G1["Gate 1 局部门：某一维偏差过大"]
+        M --> G2["Gate 2 全局门：平均偏差整体偏移"]
+        O -.-> RD["可选：确定性范围检测器"]
+        G1 --> OR{"逻辑 OR"}
+        G2 --> OR
+        RD -.-> OR
+        OR -->|"判为 OOD"| ALM["触发预定义安全响应"]
+    end
+    S3 -.-> G1
+    S3 -.-> G2
+    subgraph DIAG["事后诊断（不参与实时安全触发）"]
+        ALM --> SAL["时序显著性：对历史窗口的 NLL 做 integrated gradients<br/>定位何处、何时偏离标称"]
+        SAL --> LLM["多模态 LLM 零样本分类<br/>输入：显著性摘要 + 关节运动学轨迹 + 任务上下文 + 可选视觉关键帧"]
+        LLM --> RC["失效类别假设，供操作员复核"]
+    end
+```
+
+图依据：论文 §3.1-3.6（Methodology）、Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -91,6 +121,7 @@ summary: "仿真学习标称执行流形，部署时用预测偏差做 OOD 检�
 - [freedof_sim2real_37_rapt-sim2real-ood-detection.md](../../sources/papers/freedof_sim2real_37_rapt-sim2real-ood-detection.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2602.01515)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Methodology（3.1-3.6）、§4 实验设定。
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "OmniQuad：采用全向轮的轮腿混合机器人（arXiv:2610.38502�
 
 # OmniQuad：采用全向轮的轮腿混合机器人
 
-**OmniQuad**（*OmniQuad: A Wheeled-Legged Hybrid Robot with Omnidirectional Wheels*，[arXiv:2610.38502](https://arxiv.org/abs/2610.38502)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**OmniQuad**（*OmniQuad: A Wheeled-Legged Hybrid Robot with Omnidirectional Wheels*，[arXiv:2610.38502](https://arxiv.org/abs/2610.38502)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,23 @@ summary: "OmniQuad：采用全向轮的轮腿混合机器人（arXiv:2610.38502�
 ## 为什么重要
 
 - 周报所述待解决的问题：普通主动轮腿机器人在狭窄空间内侧移或保持固定朝向移动时受到轮子非完整约束。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["手柄指令<br/>线速度 Vx, Vy / 角速度 ω / 底座高度调节率"] --> P["运动规划模块<br/>由轨迹得到机器人线/角速度, 估计底座构型与足端位置"]
+    P --> OD["障碍检测模块<br/>轮电流传感器力矩 → 判断受阻并估计障碍高度"]
+    IMU["IMU 读数"] --> OC
+    OD --> OC["障碍攀越模块<br/>保持质心在支撑多边形内<br/>单轮卡住: 抬轮并持续转动; 两轮卡住: 切换腿式策略"]
+    OC --> W["更新轮/足目标位置"]
+    P --> W
+    W --> IK["逆运动学<br/>腿: 2-DOF 解析解 (式 9, 10)<br/>麦克纳姆轮: 速度 → 四轮转速 (式 11)"]
+    IK --> MT["运动跟踪模块<br/>关节 PD 控制 (腿关节 Kp=150, Kd=0.5)"]
+    MT --> HW["ROS2 硬件接口 → FD-CAN<br/>Raspberry Pi 4 + Pi3Hat → 12 个电机"]
+```
+
+图依据：论文 §4.5 / Fig.8（控制框图）、§4.5.2、§5.1
 
 ## 核心机制
 
@@ -85,6 +102,7 @@ summary: "OmniQuad：采用全向轮的轮腿混合机器人（arXiv:2610.38502�
 - [omniquad-wheeled-legged-omnidirectional_arxiv_2610_38502.md](../../sources/papers/omniquad-wheeled-legged-omnidirectional_arxiv_2610_38502.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.38502](https://arxiv.org/abs/2610.38502)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38502)：已通读方法部分（实验与附录以略读为准）：§3.4 电子系统、§4 建模与控制（运动学、混合系统、控制框图）、§5 实验验证
 
 ## 推荐继续阅读
 

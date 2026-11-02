@@ -43,6 +43,23 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["多视角图像 / 历史轨迹 / 导航指令"] --> U["理解专家<br/>Tokenizer + Vision Encoder → 理解 token"]
+    I --> P["感知专家<br/>Sparse Encoder：Det / Map / Ego / Motion / Occ 稀疏 query"]
+    N["flow matching 噪声动作"] --> AE["动作专家<br/>Action Encoder → 动作 token"]
+    U --> J["Masked Joint Attention（MoT 层，各专家独立 QKV 与 FFN）<br/>理解 token 因果掩码，感知 token 看理解 token，动作 token 看理解与感知 token"]
+    P --> J
+    AE --> J
+    J --> LM["LM Head：语言输出（Planning CoT）"]
+    J --> SD["Sparse Decoder：检测 / 地图 / 占用"]
+    J --> AD["Action Decoder：轨迹规划"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.02190>
+- [arXiv PDF](https://arxiv.org/pdf/2604.02190)：已通读方法部分（实验与附录以略读为准）：§3 Methodology 全节（3.1–3.4）
 
 ## 推荐继续阅读
 

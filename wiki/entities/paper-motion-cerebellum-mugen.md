@@ -36,6 +36,29 @@ sources:
 - 可提示小脑：多技能生成式运动控制。输入是多技能运动数据和任务条件；实现上用 VQ-VAE 离散化运动技能，再结合模型式 RL 和师生蒸馏训练统一控制器；目标是让多个 locomotion 技能共享一个生成式动作空间。
 - 运动小脑 64 篇 **#39/64** · 可提示小脑：多技能生成式运动控制。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DS["人体运动数据集<br/>(重定向 LaFAN1 运动子集)"] --> TE["Teacher 编码器 E<br/>输入特权观测 s + 参考动作 m, 得连续嵌入 z"]
+    TE --> VQ["VQ 瓶颈: 量化到最近码本项<br/>共享 VQ Codebook B"]
+    VQ --> TD["Teacher 解码器 D<br/>由码 + 当前状态输出关节目标 a"]
+    TD --> PD["PD 控制 / 仿真环境"]
+    TD --> WM["世界模型 W<br/>预测下一状态, 供反向传播"]
+    WM -. "可微预测, 反传梯度" .-> TE
+    SE["Student 编码器<br/>输入受限观测 + 受限目标<br/>L_align 对齐 Teacher 嵌入"] --> VQ2["经冻结的共享码本 B 量化"]
+    VQ -. "共享码本" .-> VQ2
+    VQ2 --> SD["Student 解码器<br/>从受限观测解码动作"]
+    TD -. "L_BC 动作级行为克隆" .-> SD
+    SD --> DEP["可部署 Student 策略<br/>(蒸馏阶段逐步接管控制)"]
+    subgraph SCH["三阶段训练"]
+        S1["1 Pretraining<br/>仅训练 Teacher + 世界模型, 建立码本"] --> S2["2 Warming up<br/>全部模块训练, 仍由 Teacher 采样"]
+        S2 --> S3["3 Distillation<br/>冻结 Teacher 与码本, Teacher 选用概率线性退火至零"]
+    end
+```
+
+图依据：论文 §III.B–§III.E / Fig.2（训练期世界模型与 Teacher 的交替更新按 §III.B 文字概括）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -83,6 +106,7 @@ sources:
 - [motion_cerebellum_survey_39_mugen.md](../../sources/papers/motion_cerebellum_survey_39_mugen.md)
 - [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+- [arXiv PDF](https://arxiv.org/pdf/2605.24592)：已通读方法部分（实验与附录以略读为准）：Abstract、I. Introduction、III. Method（A–E）；IV 实验略读
 
 ## 推荐继续阅读
 

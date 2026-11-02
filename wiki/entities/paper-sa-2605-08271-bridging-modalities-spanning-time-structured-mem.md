@@ -42,6 +42,31 @@ Proposes MAGIC-Video with multimodal memory graph and interleaved narrative chai
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线阶段：每段视频处理一次"]
+        V["超长视频"] --> PRE["预处理：ASR + 视觉 caption + LLM 合并 / 聚合 / OpenIE"]
+        PRE --> ART["多粒度 caption（30 s / 3 min / 10 min / 1 h）、命名实体、语义三元组、片段视觉嵌入、BM25 索引"]
+        ART --> MMG["Multimodal Memory Graph：Episode / Visual-clip / Entity / Semantic 四类节点，六类带类型边"]
+        ART --> NMC["Narrative Memory Chain：LLM 抽取 topic chain 与 event chain"]
+    end
+    subgraph ON["在线阶段：多轮 agentic 检索（最多 R = 5 轮 search）"]
+        Q["问题 q（可带查询时间 t）"] --> CTRL["推理 backbone 控制器：输出 search 查询或 answer"]
+        CTRL -- "search" --> PPR["跨模态 Personalized PageRank：文本 / BM25 / 视觉三路种子，作用于时间过滤子图"]
+        CTRL -- "search" --> INJ["叙事注入：两级匹配 NMC 的 topic / event chain"]
+        PPR --> CTX["合并上下文 C：按时间排序的 passage / 视觉帧 / 三元组 / 叙事事实"]
+        INJ --> CTX
+        CTX --> CTRL
+        CTRL -- "answer" --> ANS["backbone 读取完整上下文，生成最终答案"]
+    end
+    MMG --> PPR
+    NMC --> INJ
+```
+
+图依据：论文 §3（§3.1–3.4）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Proposes MAGIC-Video with multimodal memory graph and interleaved narrative chai
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.08271>
+- [arXiv PDF](https://arxiv.org/pdf/2605.08271)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3.1–3.4（预处理、记忆图构建、叙事链抽取、agentic 检索）；§4–5 实验与消融以略读为准
 
 ## 推荐继续阅读
 

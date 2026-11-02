@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,39 @@ One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perce
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["支持样本 S：support 图像 + 人体框 B_h + 物体框 B_o + 人体姿态 P"] --> BB["ResNet50 骨干提取 support 特征 X_S"]
+    Q["N 张 query 图像"] --> BQ["ResNet50 骨干提取 query 特征 X_Q"]
+    BB --> APL
+    subgraph APL["APL 动作目的学习模块"]
+        G["姿态分支：4 层 GCN（带可学习边权 M，残差）+ GAP<br/>与 X_S 拼接卷积得 F_P"]
+        OB["物体分支：物体框掩码 → 卷积 + GAP 得 f_o<br/>softmax 相关性注意力得 F_o"]
+        RP["相对位置：人/物框拼接卷积得 S_ho"]
+        OB --> HO["F_ho = Conv(concat(F_o, S_ho))"]
+        RP --> HO
+        G --> SUM["F_S = F_P + F_ho（动作目的特征）"]
+        HO --> SUM
+    end
+    SUM --> MPT
+    BQ --> MPT
+    subgraph MPT["MPT 混合目的迁移模块"]
+        EM["对 F_S 做 EM 迭代（E 步 / M 步）<br/>得到一组紧凑基 μ（高斯混合）"]
+        EM --> RC["用 μ 与注意力 Z_Q 重建 query 特征 X̃_Q<br/>拼接 X_Q 与 X̃_Q 卷积得 F_Q"]
+    end
+    RC --> DCE
+    subgraph DCE["DCE 密集协同增强模块"]
+        CS["query 两两逐像素余弦相似度，取最大值<br/>min-max 归一化得相关性掩码 M_ij"]
+        CS --> AV["对 N-1 个掩码取平均 M̄_i，乘 F_i 后与 F_i 拼接卷积得 F̂_i"]
+    end
+    AV --> DEC["解码器：多层上采样 + skip connection<br/>5 个侧输出，交叉熵监督"]
+    DEC --> OUT["query 图像中具有相同 affordance 的物体分割结果"]
+```
+
+图依据：论文 §3 / Fig.3（总体流程 §3.2，APL §3.3 Fig.4，MPT §3.4 Fig.5，DCE §3.5 Fig.6，解码器与损失 §3.6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +84,7 @@ One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perce
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2108.03658)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2108.03658)。
 
 ## 评测与指标
 
@@ -67,7 +100,7 @@ One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perce
 
 **本页只提供「OSAD-Net」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +121,7 @@ One-Shot Object Affordance Detection in the Wild——在清单中归入 **Perce
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2108.03658>
+- [arXiv PDF](https://arxiv.org/pdf/2108.03658)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.6）、§4.1 数据集构建（略读）
 
 ## 推荐继续阅读
 

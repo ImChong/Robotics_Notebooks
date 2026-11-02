@@ -42,6 +42,27 @@ ManipArena evaluates manipulation policies through controlled physical robot tri
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SCH["任务 schema：任务阶段、物体/布局变量、<br/>干扰物条件、留出条件"] --> TR["训练集采样 c ~ P_train<br/>20 个真机任务 / 10,812 条示范"]
+    SCH --> EV["同一 schema 诱导三类评测分布"]
+    TR --> POL["待测策略训练<br/>（语言标注 L1 / L2 / L3 可控）"]
+    EV --> B1["第 1–4 次试验：域内配置 P_ID"]
+    EV --> B2["第 5–8 次试验：受控视觉/配置偏移 P_shift"]
+    EV --> B3["第 9–10 次试验：最强留出条件 P_held"]
+    POL --> RUN["真机 10 次试验协议<br/>绿幕、固定光照与相机"]
+    B1 --> RUN
+    B2 --> RUN
+    B3 --> RUN
+    RUN --> SC["子目标部分得分<br/>每次试验 10 分，按 w_k 加权"]
+    SC --> AGG["汇总：得分 S 与成功率 SR（成功需 ≥ 9/10 分）"]
+    SIM["配对仿真（3 个桌面任务）<br/>仅作真机验证前的筛查诊断"] -.-> POL
+```
+
+图依据：论文 §3.1–3.5（评测协议；本图为基准的评测流程，非模型结构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ ManipArena evaluates manipulation policies through controlled physical robot tri
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.28545>
+- [arXiv PDF](https://arxiv.org/pdf/2603.28545)：已通读方法部分（实验与附录以略读为准）：§1–3（ManipArena Benchmark：schema 任务设计、分层真机评测、部分得分、语言标注与仿真扩展）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

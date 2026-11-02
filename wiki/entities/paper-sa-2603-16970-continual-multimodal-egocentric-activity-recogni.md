@@ -42,6 +42,37 @@ Proposes the MAND modality-aware framework, improving the AUC of novel activity 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多模态 egocentric 数据流<br/>class-incremental 任务序列"] --> B["各模态编码器<br/>输出模态特征 f_m"]
+    B --> C["融合 G 得到 f_main<br/>主分类器输出 z_main"]
+    B --> D["模态专属 head<br/>输出 z_m"]
+    subgraph MoRST["MoRST 训练时表征稳定"]
+        D --> E["L_Sup = CE(z_main) + λ·平均 CE(z_m)"]
+        D --> F["L_KD：每个模态 head 对齐<br/>replay 中存的该模态旧 logits"]
+        E --> G["总损失 L = L_Sup + β·L_KD"]
+        F --> G
+    end
+    R["replay buffer 样本<br/>每任务后重建参考 logit 集 L_m"]
+    subgraph MoAS["MoAS 推理时新颖性打分"]
+        H["归一化 1-NN 距离 d_m(x)"] --> I["温度 softmax 得模态权重 α_m"]
+        I --> J["z_final = z_main + Σ α_m·z_m"]
+        H --> K["已知类偏离惩罚 P(x)"]
+        D --> L["模态分歧惩罚 D_KL(x)"]
+        J --> M["s_MoAS = max z_final − η·P − γ·D_KL"]
+        K --> M
+        L --> M
+    end
+    R --> H
+    C --> J
+    M --> N["novel activity 检测"]
+    C --> O["已知类分类"]
+```
+
+图依据：论文 §2.2 / Fig.2（MoRST 训练、MoAS 推理）；公式 (1)-(10)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Proposes the MAND modality-aware framework, improving the AUC of novel activity 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.16970>
+- [arXiv PDF](https://arxiv.org/pdf/2603.16970)：已通读方法部分（实验与附录以略读为准）：§2.1 Preliminary、§2.2 MAND（MoAS / MoRST）、Fig.2
 
 ## 推荐继续阅读
 

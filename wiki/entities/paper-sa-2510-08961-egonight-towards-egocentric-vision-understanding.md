@@ -42,6 +42,25 @@ The first comprehensive benchmark for nighttime egocentric vision with VQA as th
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["EgoNight-Synthetic：Infinigen 生成室内场景，Blender 沿同一轨迹渲染日/夜视频对（50 对）"] --> TAX
+    S2["EgoNight-Sofia：真人佩戴相机录制日/夜配对视频（20 对），夜间版回放日间视频作引导"] --> TAX
+    S3["EgoNight-Oxford：采用 Oxford Day-Night 的日夜视频（20 个）"] --> TAX
+    TAX["按 12 类 QA 任务分类组织：成对类型 8 类，非成对类型 4 类"] --> C1["阶段 1 夜间字幕：GPT-4.1 按 QA 类型提示生成字幕"]
+    C1 --> C2["阶段 2 夜间问题生成：字幕加夜间片段，生成候选问题"]
+    C2 --> J{"成对类型且有对齐的日间片段 ?"}
+    J -->|"是"| A1["阶段 3 日间增强伪答案：参考对齐的日间片段合成答案"]
+    J -->|"否"| A2["阶段 3 直接由夜间片段生成答案"]
+    A1 --> H["人工精修：删除、修改、新增，每条 QA 至少人工核验一次"]
+    A2 --> H
+    H --> V["EgoNight-VQA：3658 条 QA"]
+```
+
+图依据：论文 §3.1 / §3.2 / Fig.2（arXiv 编号与页面不符：页面 frontmatter 的 2510.08961 对应的是无关的数学论文《Stability conditions and algebraic hearts for acyclic quivers》，经 arXiv 检索，EgoNight 的正确编号为 2510.06218）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ The first comprehensive benchmark for nighttime egocentric vision with VQA as th
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2510.08961>
+- [arXiv PDF](https://arxiv.org/pdf/2510.06218)：已通读 §3.1 视频来源与 §3.2 VQA 构建流程（§3.3 与实验、附录未读）；页面 arXiv 号 2510.08961 与该论文不符，正确编号为 2510.06218
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要，此处不替原文概括贡献）。
+RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["仿真环境：物体 + 机械臂（Isaac Gym）"] --> PC["实时局部点云 P"]
+    PC --> CP["Contact Predictor CP：PointNet++ 逐点特征 + MLP"]
+    CP --> MAP["逐点 affordance 图 M（含 A2O 与 O2O）"]
+    MAP --> MPO["Max-affordance Point：取 affordance 最大点，作为观测 MPO"]
+    MAP --> MA
+    MPO --> MA["MA 模块：PointNet + MLP 策略 πθ，PPO 训练；输入 P、M、关节状态 s、MPO"]
+    MPO --> MPR["Max-affordance Point Reward MPR：末端与该点距离作为额外奖励"]
+    MPR --> MA
+    MA --> ACT["动作 a：直接控制各关节"]
+    ACT --> ENV
+    ENV --> CB["接触位置存入 Contact Buffer CB"]
+    CB --> DGT["每 k 步统计半径 r 内接触数并归一化，得 Dynamic Ground Truth DGT"]
+    DGT --> CP
+```
+
+图依据：论文 §III（A 概览、B VA 模块、C MA 模块）/ Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2209.12941)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2209.12941)。
 
 ## 评测与指标
 
@@ -67,7 +88,7 @@ RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单
 
 **本页只提供「RLAfford」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +109,7 @@ RLAfford: End-to-End Affordance Learning for Robotic Manipulation——在清单
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2209.12941>
+- [arXiv PDF](https://arxiv.org/pdf/2209.12941)：已通读方法部分（实验与附录以略读为准）：§III Method（A 概览、B Visual Affordance Module、C Manipulation Module）；§IV 任务与实验设置略读
 
 ## 推荐继续阅读
 

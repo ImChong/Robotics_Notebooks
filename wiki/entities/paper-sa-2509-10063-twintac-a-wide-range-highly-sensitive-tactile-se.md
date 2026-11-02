@@ -42,6 +42,30 @@ Hardware sensor designed for high sensitivity and wide measurement range; digita
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PHY["PhysTac 硬件传感器"]
+    FAB["3D 打印外壳 + 含 8 个 MEMS 气压 taxel 的 PCB + Ecoflex 00-31 硅胶浇注（真空泵除气泡）"] --> RD["8 通道压力读数 S（I2C 经 TCA9548A 复用，55 Hz）"]
+    RD --> RBF["RBF 插值得到连续空间压力分布（用于可视化）"]
+  end
+  subgraph COL["Real2Sim 配对数据采集（相同压入条件）"]
+    SIM["Isaac Gym 中的 FEM 仿真：弹性体软体 + 刚性外壳，用 fTetWild 划分四面体网格"] --> XS["仿真数据：四面体节点质心坐标与 Von Mises 应力 X；轴向力 F_sim"]
+    REAL["X-Arm 6 末端装 ATI Mini45 力传感器与压头，压入 PhysTac"] --> SF["真实数据：taxel 压力 S；轴向力 F_real"]
+    XS --> DTW["以 F_real 与 F_sim 做 DTW 时间对齐，并据此扭曲对齐 S"]
+    SF --> DTW
+  end
+  RD --> SF
+  subgraph DIG["DigiTac 数字孪生传感器模型"]
+    DTW --> SEL["选取传感器表面、taxel 上方的 609 个节点，按每个 taxel 聚类并聚合应力（式 6）"]
+    SEL --> MLP["MLP：把聚合应力特征映射为 8 通道传感器信号（Φ: X → S；L1 损失，高斯噪声域随机化）"]
+  end
+  MLP --> OUT["在仿真中输出模拟的 taxel 读数，可用于增广真实数据"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Fig. 2（技术流程）、Fig. 3（数据采集）、Fig. 4（DigiTac 网络）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Hardware sensor designed for high sensitivity and wide measurement range; digita
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2509.10063>
+- [arXiv PDF](https://arxiv.org/pdf/2509.10063)：已通读方法部分（§III）；实验（§IV）与结论略读：仅读实验设定与下游任务说明。
 
 ## 推荐继续阅读
 

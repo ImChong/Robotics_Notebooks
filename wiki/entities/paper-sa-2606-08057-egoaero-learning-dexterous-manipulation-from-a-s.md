@@ -42,6 +42,29 @@ A dexterous manipulation learning framework without pre-scanned object assets, c
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单段第一人称 RGB-D 人类示范 + 任务描述"] --> B["MLLM 语义预处理：识别目标物体，生成 SAM3 提示，选种子帧"]
+    B --> C["SAM3 逐帧物体 mask"]
+    C --> D["无资产物体跟踪：RANSAC 粗位姿 → keyframe memory-pool 位姿优化"]
+    D --> E["神经物体场粗网格 + SAM3D 细节网格，刚性与尺度对齐"]
+    A --> F["HaWoR 的 MANO 手部估计 + RGB-D 深度修正全局平移"]
+    A --> G["RGB-D SLAM 估计相机轨迹，统一到固定桌面坐标系（Ego 运动补偿）"]
+    D --> H["Adaptive Contact Optimization：有界手部平移与局部指尖修正"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["接触一致的手-物体轨迹"]
+    I --> J["Stage I：手部轨迹跟踪策略（运动学重定向热启动）"]
+    J --> K["Stage II：物体-接触残差策略，a = a_I + Δa_R"]
+    K --> L["仿真灵巧手策略，执行到真实机器人（Fig.1）"]
+    I -.-> M["在线质量评估：accept / repairable accept / recapture"]
+```
+
+图依据：论文 §2.1（Fig.2 重建流程）、§2.2 两阶段残差策略、§3 在线质量评估 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ A dexterous manipulation learning framework without pre-scanned object assets, c
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.08057>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08057)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1 无资产手物重建、2.2 两阶段残差策略）、§3 数据采集与质量评估；附录 A–E 未读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ X-WAM adapts a pretrained video diffusion transformer to predict robot actions, 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["条件：语言指令、初始本体状态、多视角初始 RGB"] --> VAE["因果 VAE 编码 RGB；MLP 投影状态与动作"]
+    VAE --> SEQ["统一去噪序列（RGB、状态、动作），双向全注意力，基于 Wan2.2-TI2V-5B DiT"]
+    SEQ --> MAIN["主干 DiT blocks"]
+    MAIN --> OUT["预测未来 RGB（H=8）、状态（H=8）、动作（K=32）"]
+    SEQ --> DEP["深度分支：复制最后 M 个 block，单向 cross-attention 读取主干，回归逆深度"]
+    DEP --> REC["多视角 RGB-D + 末端位姿推出腕部相机位姿，融合为 4D 重建"]
+    OUT --> ANS["异步噪声采样 ANS：动作 Ta 步先去噪完成，视频继续到 TO 步"]
+    ANS --> EXE["动作立即下发机器人执行"]
+```
+
+图依据：论文 §3.1-3.4 / Fig. 1、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ X-WAM adapts a pretrained video diffusion transformer to predict robot actions, 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.26694>
+- [arXiv PDF](https://arxiv.org/pdf/2604.26694)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1-3.4）
 
 ## 推荐继续阅读
 

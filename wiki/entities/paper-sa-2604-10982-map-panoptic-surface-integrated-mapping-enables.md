@@ -42,6 +42,37 @@ Proposes a comprehensive framework that integrates geometric reinforcement to fa
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：多视角 RGB-D 帧（LiDAR 点云提供尺度信息）"]
+    subgraph GEO["几何强化（Geometric Reinforcement）"]
+        SOG["点云拟合为 SOGMM：递归分裂的平面约束高斯混合模型，每个分量给出局部平面与参考法向"]
+        INIT["初始化 2D Gaussian Surfels 的位置与朝向；持续提供点到平面距离监督"]
+        SOG --> INIT
+    end
+    IN --> SOG
+    subgraph PAN["端到端全景学习（Panoptic Learning）"]
+        FEAT["每个 surfel 携带语义特征与实例特征"]
+        PSEUDO["2D 开放词表分割的伪标签（2D 实例 / 语义掩码）"]
+        ATT["实例查询（特征 + 3D 高斯）与 surfel 做视锥内局部交叉注意力，得到实例标签"]
+        DYN["动态查询调整：剔除低使用率与重复（IoM）查询"]
+        FEAT --> ATT --> DYN
+    end
+    INIT --> FEAT
+    IN --> PSEUDO
+    DYN --> RENDER["alpha 混合渲染：RGB / 语义 / 实例图"]
+    RENDER --> LOSS["联合损失：光度 + 几何（点到平面、法向）+ 实例（Hungarian 匹配，Dice+BCE）+ 语义（CE）+ 各向异性正则"]
+    PSEUDO --> LOSS
+    LOSS -.->|"端到端反向传播"| GEO
+    LOSS -.->|"端到端反向传播"| PAN
+    RENDER --> INF["推理渲染优化：Precise Tile Intersection（紧致 AABB）+ Top-K Hard Selection"]
+    INF --> OUT["输出：实时（论文报告超过 50 FPS）全景 3D 地图，用于 Real2Sim"]
+```
+
+图依据：论文 Fig.2（框架总览）、§3.2 SOGMM 几何强化、§4.1–4.2 查询式全景学习与联合优化、§5 高效渲染
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Proposes a comprehensive framework that integrates geometric reinforcement to fa
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2604.10982>
+- [arXiv PDF](https://arxiv.org/pdf/2604.10982)：已通读方法部分（实验与附录以略读为准）：§3 几何强化（2D Gaussian Surfels、SOGMM）、§4 端到端全景重建、§5 高维特征高效渲染
 
 ## 推荐继续阅读
 

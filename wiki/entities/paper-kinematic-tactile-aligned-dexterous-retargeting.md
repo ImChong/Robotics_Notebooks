@@ -20,7 +20,7 @@ summary: "运动学-触觉对齐灵巧重定向：通过接触力旋量空间对
 
 # 运动学-触觉对齐灵巧重定向：通过接触力旋量空间对齐实现运动学与触觉联合灵巧重定向
 
-**运动学-触觉对齐灵巧重定向**（*Kinematic-Tactile Aligned Dexterous Retargeting with Contact Wrench Space Alignment*，[arXiv:2610.39582](https://arxiv.org/abs/2610.39582)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**运动学-触觉对齐灵巧重定向**（*Kinematic-Tactile Aligned Dexterous Retargeting with Contact Wrench Space Alignment*，[arXiv:2610.39582](https://arxiv.org/abs/2610.39582)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,25 @@ summary: "运动学-触觉对齐灵巧重定向：通过接触力旋量空间对
 ## 为什么重要
 
 - 周报所述待解决的问题：传统人手到机器人灵巧手的重定向主要匹配关节姿态，无法保留人类操作中的接触力信息。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["人类演示<br/>动捕 21 标记 + 19 通道触觉手套 + 物体 5 标记"] --> B["MoCap-to-MANO 重建<br/>HaMeR 估计 β，标记拟合 MANO 序列"]
+  B --> C["阶段 1：人-机运动学对齐<br/>任务向量匹配，SLSQP 逐帧求解 q_kin"]
+  C --> D["阶段 2：物理感知接触对齐<br/>MuJoCo 中 palm → finger 虚拟力优化"]
+  D --> E["仅在锚点帧 t_a=1 求接触残差<br/>Δξ_c、Δq_c 广播到全轨迹"]
+  E --> F["阶段 3：物体中心力旋量空间对齐"]
+  B --> G["人手支持函数 h_H = B_H f_H<br/>f_H 来自标定触觉法向力"]
+  F --> H["机器人指尖法向力目标 f_R<br/>单边覆盖损失 + 比例/时序/力幅正则"]
+  G --> H
+  H --> I["指尖力 F* → 广义关节力矩 τ* = Jᵀ F*"]
+  I --> J["准静态位置控制：Δq_w = Kp⁻¹ τ*"]
+  J --> K["可直接重放的关节位置轨迹 q_w<br/>Sharpa Wave + UR7e"]
+```
+
+图依据：论文 §III（Fig. 2、式 (3)–(19)）。
 
 ## 核心机制
 
@@ -87,6 +106,7 @@ summary: "运动学-触觉对齐灵巧重定向：通过接触力旋量空间对
 - [kinematic-tactile-aligned-dexterous-retargeting_arxiv_2610_39582.md](../../sources/papers/kinematic-tactile-aligned-dexterous-retargeting_arxiv_2610_39582.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39582](https://arxiv.org/abs/2610.39582)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39582)：已通读方法部分（实验与附录以略读为准）：三阶段方法 §III-A–D、实验 §IV（演示采集与真机重放）
 
 ## 推荐继续阅读
 

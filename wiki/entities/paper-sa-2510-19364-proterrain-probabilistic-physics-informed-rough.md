@@ -42,6 +42,25 @@ Models spatially correlated uncertainty of terrain parameters as a probabilistic
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["车载相机图像 z"] --> B["Terrain Encoder（同 MonoForce 主干）<br/>Lift-Splat-Shoot：逐射线深度分布 + 特征<br/>竖直累积并投影到 BEV 网格"]
+    B --> C["卷积编码器提取局部地形特征"]
+    C --> D["Probabilistic Parameter Heads<br/>每个地形参数输出均值图 μ 与对数方差图 log σ²<br/>参数：geom / height / stiffness / damping / friction"]
+    D --> E["方差图与固定高斯核 g 卷积<br/>Σ = L D Lᵀ，得空间相关的多元高斯"]
+    E --> F["概率 World Model W_t"]
+    F --> G["重参数化蒙特卡洛采样 M 份<br/>φ(m) = μ + L √D ε"]
+    G --> H["Differentiable Physics Engine<br/>输入：采样地形图 + 初始状态 s0 + 控制序列 u_1:T"]
+    H --> I["仿真轨迹 τ(m)"]
+    I --> J["逐时刻、逐坐标 x/y/z 拟合一维高斯<br/>得概率轨迹预测"]
+    E -.->|"训练：结构化 NLL（CG 求解 Σa=r）+ oFoV 方差正则"| L["L_total = Σ λφ·Lφ + λtraj·Ltraj"]
+    J -.->|"训练：轨迹异方差高斯 NLL"| L
+```
+
+图依据：论文 §V-A 至 §V-D / Fig.1–2（虚线为训练损失的监督位置）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Models spatially correlated uncertainty of terrain parameters as a probabilistic
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.19364>
+- [arXiv PDF](https://arxiv.org/pdf/2510.19364)：已通读方法部分（实验与附录以略读为准）：§III 问题定义、§IV 预备知识、§V ProTerrain Methodology（§V-A–D）、Fig.1–2
 
 ## 推荐继续阅读
 

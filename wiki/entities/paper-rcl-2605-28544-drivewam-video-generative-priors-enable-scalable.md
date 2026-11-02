@@ -42,6 +42,30 @@ We present DriveWAM, a driving world-action model that adapts a pretrained video
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph CTX["因果可得条件（决策步 k）"]
+        X["最新观测 x_k、近期自车轨迹 a_k、下一段路线指令 c_k"] --> VLM["冻结 VLM（Qwen3-VL-8B）：生成块级语义引导文本 g_k"]
+        H["历史 H_k：视频 VAE 潜变量 z_i + 动作 MLP 编码 u_i"]
+        E["自车状态 e_k（速度 / 加速度 / 曲率）→ 独立交叉注意力分支"]
+    end
+    VLM --> DiT
+    H --> DiT
+    E --> DiT
+    DiT["预训练视频 Diffusion Transformer（rectified flow）：块级因果注意力 + 分块对角文本掩码"] --> FW["未来世界建模：生成下一视频块潜变量 ẑ_(k+1)"]
+    FW --> ID["逆动力学动作流：以 ẑ_(k+1) 为条件，MLP 动作解码器输出动作块 â_(k+1)"]
+    ID --> NEXT["获得下一真实观测后编码并追加，形成 H_(k+1)"]
+    NEXT --> MEM
+    subgraph MEM["选择性 KV 记忆（仅推理期、免训练）"]
+        M1["视频池与动作池分别设预算"] --> M2["保留得分 = λ·相关性 − (1−λ)·冗余度，低分 token 逐出"]
+    end
+    MEM --> H
+```
+
+图依据：论文 §3.1 自回归视频-动作生成（式 1–4）、§3.2 场景演化驾驶引导（式 5）、§3.3 选择性 KV 记忆（式 6–7）/ Fig.1–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +123,7 @@ We present DriveWAM, a driving world-action model that adapts a pretrained video
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.28544>
+- [arXiv PDF](https://arxiv.org/pdf/2605.28544)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.3 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

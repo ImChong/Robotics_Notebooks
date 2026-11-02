@@ -43,6 +43,24 @@ Diffusion policy adaptation with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["无标注 play 数据集 Dplay"] --> B["阶段 1 世界模型学习：RSSM（编码器、动态模型、解码器），最小化负 ELBO"]
+    C["专家示范 Dexp"] --> D["世界模型编码器将观测编码为潜变量 zt"]
+    B --> D
+    D --> E["阶段 2 扩散策略预训练：潜变量上行为克隆，得到 πpre"]
+    D --> F["阶段 3 潜在奖励：成功帧潜变量训练二分类器 Cψ，奖励 R = Cψ(zt+1)"]
+    B --> G["阶段 4 Dream Diffusion MDP：把去噪步嵌入世界模型 MDP，k>1 时仅去噪，k=1 时世界模型转移到 zt+1"]
+    E --> G
+    F --> G
+    G --> H["在想象 rollout 中用 PPO 微调扩散策略，附加相对 πpre 的 BC 正则"]
+    H --> I["微调后策略直接部署到真实环境（无额外适应）"]
+```
+
+图依据：论文 §4 开头四阶段概述、§4.1–§4.5 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Diffusion policy adaptation with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.03645>
+- [arXiv PDF](https://arxiv.org/pdf/2508.03645)：已通读方法部分（实验与附录以略读为准）：§4 Offline Adaptation with DiWA（4.1–4.5）
 
 ## 推荐继续阅读
 

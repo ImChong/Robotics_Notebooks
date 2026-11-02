@@ -42,6 +42,30 @@ Video2Act turns observed video into conditioning for a separate robot action pol
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  OBS["观测序列 I + 机器人状态 + 语言指令"] --> S2
+  subgraph S2["System 2：慢，Hunyuan 视频扩散模型 VDM（前 25 个 transformer block）"]
+    H["高分辨率短窗口输入（Ts=2）：3D VAE 编码 + inversion（tdiff=0）取特征"]
+    L["常规分辨率长窗口输入（Tl=16）：3D VAE 编码 + inversion（tdiff=0）取特征"]
+    H --> SF["Spatial Filter：Sobel 算子得结构特征 St"]
+    L --> MF["Motion Filter：沿时间轴 FFT + 高通滤波得运动特征 Mt"]
+    SF --> SQ["Spatial Q-Former 压缩 token"]
+    MF --> MQ["Motion Q-Former 压缩 token"]
+  end
+  S2 -->|"低频更新的 VDM 特征 Cat(St, Mt)，异步（1 : n）"| S1
+  OBS --> ENC["SigLIP-ViT-L/14 图像 token（高频）+ 文本编码器 token"]
+  ENC --> S1
+  subgraph S1["System 1：快，1B Action DiT"]
+    D["图像 / 文本 / VDM token 经 cross-attention 注入 DiT block，条件扩散去噪"]
+  end
+  S1 --> ACT["动作 chunk（关节位置指令）"]
+```
+
+图依据：论文 §3.2 Video2Act Framework / Fig.3、§3.3 Spatio-Motional Representation Extraction、§3.4 Asynchronous Dual-System Scheme
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Video2Act turns observed video into conditioning for a separate robot action pol
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.03044>
+- [arXiv PDF](https://arxiv.org/pdf/2512.03044)：已通读方法部分（实验与附录以略读为准）：§3.1 Motivation、§3.2 Video2Act Framework、§3.3 Spatio-Motional Representation Extraction、§3.4 Asynchronous Dual-System Scheme
 
 ## 推荐继续阅读
 

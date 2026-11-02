@@ -34,6 +34,24 @@ summary: "Rectified LpJEPA（arXiv:2602.01456，ICML 2026）：用 RDMReg 把 JE
 
 稠密表示中大部分维度都会被激活，难以对应「少数相关因素决定世界」这一直觉。Rectified LpJEPA 证明稀疏、非负表示也能保持竞争力，为后续 [LpWM](./paper-lpwm.md) 把稀疏表示放进世界模型提供基础。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["同一输入的两个随机视图 x, x'"] --> F["神经网络 f_θ"]
+    F --> RL["ReLU → 非负特征 z, z'"]
+    RL --> INV["不变性项：最小化 ‖z − z'‖²"]
+    T["目标分布：Rectified Generalized Gaussian RGG(μ, σ, p)<br/>采样 y；(μ, σ, p) 决定期望 ℓ0 稀疏度"] --> PROJ
+    RL --> PROJ["随机投影方向 c ~ 单位球面均匀分布<br/>把 z, z' 和 y 投影到一维"]
+    PROJ --> SW["双样本切片 2-Wasserstein：<br/>对投影后的批内样本排序，比较 (Zc)↑ 与 (Yc)↑"]
+    SW --> REG["RDMReg 正则：z 与 z' 的投影边缘分布都对齐到目标"]
+    INV --> LOSS["总损失 = 不变性项 + RDMReg"]
+    REG --> LOSS
+    LOSS -->|"更新 θ"| F
+```
+
+图依据：论文 §4.1–§4.3（式 14–16）。为何必须用双样本检验（RGG 在线性投影下不封闭）见 §4.3；第 3 节的分布理论只略读，图中不画。
+
 ## 核心信息
 
 - 作者：Yilun Kuang、Yash Dagade、Tim G. J. Rudner、Randall Balestriero、Yann LeCun（arXiv 页）
@@ -89,6 +107,7 @@ summary: "Rectified LpJEPA（arXiv:2602.01456，ICML 2026）：用 RDMReg 把 JE
 
 - [Rectified LpJEPA 论文归档](../../sources/papers/rectified_lpjepa_arxiv_2602_01456.md)
 - [深蓝具身智能文章归档](../../sources/blogs/wechat_deepblue_lecun_jepa_11_papers_2026-10-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2602.01456)：已通读方法部分（实验与附录以略读为准）：§1 引言、§4 Rectified LpJEPA（4.1–4.5）、§5.1–5.3；§2–3 的稀疏性背景与 RGG 理论仅略读
 
 ## 推荐继续阅读
 

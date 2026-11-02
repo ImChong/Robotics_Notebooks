@@ -42,6 +42,20 @@ Closed-loop LLM decision making with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["当前状态与环境描述<br/>+ 短期行为记忆"] --> B["Reason：LLM 选择离散动作模板 g_t<br/>(如 stop / speed up / lane changing)<br/>并给出候选子动作集 U(g_t)"]
+  B --> C["Imagine：动作条件世界模型 (RSSM 式)<br/>对每个候选做短时域 rollout<br/>社交注意力 + GRU 潜状态"]
+  C --> D["安全评分器<br/>碰撞/距离/车道偏离代价<br/>S = -C，硬约束短路与覆盖"]
+  D --> E["Act：选出最安全子动作<br/>映射到 CARLA Traffic Manager 执行"]
+  E --> F["验证结果与执行摘要<br/>回写 LLM 作为反馈"]
+  F --> A
+```
+
+图依据：论文 §III.A–C / Fig.1、Fig.2（注：页面 front matter 与清单登记的 arXiv 号 2605.14723 实为另一篇脓毒症论文，本论文实际为 2605.24004）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Closed-loop LLM decision making with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.14723>
+- [arXiv PDF](https://arxiv.org/pdf/2605.24004)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 总览、B 世界模型训练、C 智能体设计与决策环路）；实验略读
 
 ## 推荐继续阅读
 

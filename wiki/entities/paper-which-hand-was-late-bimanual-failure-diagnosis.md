@@ -20,7 +20,7 @@ summary: "Which Hand Was Late：哪只手延迟了？双臂工具使用中的失
 
 # Which Hand Was Late：哪只手延迟了？双臂工具使用中的失败诊断与恢复
 
-**Which Hand Was Late**（*Which Hand Was Late? Diagnosis for Robot Failure Recovery in Bimanual Tool Use*，[arXiv:2610.37533](https://arxiv.org/abs/2610.37533)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Which Hand Was Late**（*Which Hand Was Late? Diagnosis for Robot Failure Recovery in Bimanual Tool Use*，[arXiv:2610.37533](https://arxiv.org/abs/2610.37533)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,25 @@ summary: "Which Hand Was Late：哪只手延迟了？双臂工具使用中的失
 ## 为什么重要
 
 - 周报所述待解决的问题：双臂工具操作的失败可能来自左右臂不同步、工具滑移或接触力不足。单一相机或单臂传感器未必能够区分这些原因。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["仿真双臂锁具任务<br/>双 Franka Panda: 工具手转钥匙 + 推门手"] --> B["脚本控制器每次尝试注入一个故障<br/>隐藏阈值 τ 不进入任何观测"]
+  B --> C["记录轨迹 trace<br/>758 次尝试 / 17 扇门"]
+  C --> D["按 trace 读出标签<br/>成功 / wrong / timing / force / 双因"]
+  C --> E["逐通道探针<br/>L2 逻辑回归, 按门分组 5 折, 门内 AUC"]
+  E --> F["哪个传感器能区分哪类失败<br/>工具打滑 / 哪只手晚 / 双因不可辨"]
+  D --> G["重放修复: 重新定时 / 加大推力 / 两者并用"]
+  F --> H["升级式修复策略<br/>先判是否重叠, 失败则两者并用"]
+  G --> H
+  C --> I["Qwen3-VL 8B: 前后两帧 + 是/否提问<br/>得分 logP(Yes)-logP(No)"]
+  I --> J["对残差流做线性探针<br/>对比答案读出方向 d 与探针方向"]
+  D --> J
+```
+
+图依据：论文 §3（任务、trace 标签、探针协议）、§4–§6、Fig.1–5
 
 ## 核心机制
 
@@ -87,6 +106,7 @@ summary: "Which Hand Was Late：哪只手延迟了？双臂工具使用中的失
 - [which-hand-was-late-bimanual-failure-diagnosis_arxiv_2610_37533.md](../../sources/papers/which-hand-was-late-bimanual-failure-diagnosis_arxiv_2610_37533.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.37533](https://arxiv.org/abs/2610.37533)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37533)：已通读方法部分（实验与附录以略读为准）：任务与标签读取（§3）、探针协议与各传感通道结果（§3.3、§4）、修复策略（§5）、VLM 状态/答案读出分析（§6）
 
 ## 推荐继续阅读
 

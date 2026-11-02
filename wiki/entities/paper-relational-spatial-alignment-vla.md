@@ -42,6 +42,24 @@ summary: "Relational Spatial Alignment VLA（arXiv:2610.24705）：RIGID对齐�
 - 开源结论：**已开源**（步骤 2.5，2026-11-01）。公众号未给代码链接；项目页链接的 QM-IPAlab/RIGID 经 git ls-remote 可达。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角 RGB 观测 {I(v)}"] --> B["学生 VLA: 视觉 token Z(v)<br/>(SigLIP + DINOv2 融合视觉编码, LoRA 训练)"]
+    A --> C["冻结 3D 基础模型 VGGT 作教师"]
+    B --> D["可学习 query/key 投影 gq, gk<br/>对每个视图对 (a,b) 计算注意力图 Avla"]
+    C --> E["直接取教师的单视图 (a=b) 与跨视图 (a≠b) 注意力图 A3D"]
+    D --> F["把注意力每行视为图像块上的空间分布<br/>以块坐标欧氏距离为传输代价 C"]
+    E --> F
+    F --> G["Sinkhorn 熵正则最优传输 (Wasserstein) 距离<br/>得到 L_RIGID, 只对齐成对关系, 不做逐点特征相等"]
+    B --> H["VLA 动作学习目标 L_action"]
+    G --> I["L_total = L_action + β · L_RIGID"]
+    H --> I
+```
+
+图依据：论文 §3.1-3.2 Method / 式(1)-(7) / Fig.1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +102,7 @@ summary: "Relational Spatial Alignment VLA（arXiv:2610.24705）：RIGID对齐�
 - [relational_spatial_alignment_vla_arxiv_2610_24705.md](../../sources/papers/relational_spatial_alignment_vla_arxiv_2610_24705.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24705](https://arxiv.org/abs/2610.24705)
+- [arXiv PDF](https://arxiv.org/pdf/2610.24705)：已通读方法部分（实验与附录以略读为准）：§3 方法（关系对齐动机、RIGID 注意力蒸馏与 Sinkhorn 最优传输、总损失），§4.1 实验设置与实现细节
 
 ## 推荐继续阅读
 

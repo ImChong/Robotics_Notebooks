@@ -41,6 +41,26 @@ summary: "ERR（2026）：用 ERR-Env/ERR-Bench 评测具身 VLM 的错误恢复
 - 具身 VLM 的单步执行出错后，环境可能进入需要重新规划的状态；只评测任务进度会掩盖执行可靠性问题。
 - 摘要指出不同 VLM 之间，任务进度与执行可靠性并不一致。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务生成：资产池 → LLM 选对象<br/>→ 生成指令与语义动作序列(含 error/recovery 动作)<br/>→ 转为可执行程序与任务检查器"] --> B["执行程序验证任务可完成，失败则丢弃"]
+    B --> C["ERR-Env (基于 RoboTwin 2.0)<br/>可恢复快照 + 受控错误状态 + 检查器"]
+    C --> D["ERR-Bench 数据：随机化位姿/背景/视角<br/>划分 SFT 轨迹、在线 RL 快照、留出评测集"]
+    D --> E["Recovery-aware SFT<br/>由 Qwen3-VL-2B-Thinking 冷启动"]
+    E --> F["策略在 ERR-Env 中多轮 rollout<br/>动作：pick / place / home / done"]
+    F --> G["turn 级奖励 = 接地奖励 + 动作奖励(检查器进度-惩罚) + 结果奖励"]
+    G --> H["动作分组优势估计<br/>按动作类型组内归一化"]
+    H --> I["语义优势塑形<br/>依据执行有效性与状态变化修正 pick/place 优势"]
+    I --> J["turn 级 GSPO 优化 → ERR-VLM"]
+    J --> F
+    D --> K["留出集评测：SSR、恢复率等"]
+    J --> K
+```
+
+图依据：论文 §3 Overview、§3.1–§3.3 / Fig. 1、Fig. 2。
+
 ## 方法与机制
 
 - **ERR-Env：** 给出任务进度与错误反馈的交互环境。
@@ -82,6 +102,7 @@ summary: "ERR（2026）：用 ERR-Env/ERR-Bench 评测具身 VLM 的错误恢复
 ## 参考来源
 
 - [ERR 论文来源归档](../../sources/papers/err_replan_error_recovery_arxiv_2610_27003.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27003)：已通读方法部分（实验与附录以略读为准）：§3 概览、§3.1 ERR-Env、§3.2 ERR-Bench、§3.3 AGT-GSPO；§4 实验与附录略读
 
 ## 推荐继续阅读
 

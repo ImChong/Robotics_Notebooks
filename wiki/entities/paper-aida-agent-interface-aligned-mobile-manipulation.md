@@ -45,6 +45,26 @@ summary: "AIDA（arXiv:2610.15572）：让教师通过部署时相同的技能�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TRAIN["训练：接口对齐的示范采集"]
+    A["VLM-Native 目标获取教师 π_T<br/>用仿真特权状态（mask / 路径 / 方位）选技能<br/>经与学生相同的技能接口执行"] --> B["教师轨迹<br/>失败或超步数的轨迹被剔除"]
+    B --> C["空间状态标注器（离线确定性模板）<br/>可见性 / 相对方向 / 技能就绪度 / 任务阶段<br/>生成动作前推理目标 r_t"]
+    C --> D["共享 Agent Harness 构造 prompt–输出对<br/>输出 y_t=(r_t, a_t, u_t, m_t)"]
+    D --> E["对 Qwen3-VL-8B 做 LoRA SFT"]
+  end
+  subgraph DEPLOY["部署：无特权信息"]
+    F["观测 o_t：头部 RGB、指令、技能词表、<br/>历史 H、搜索阶段的场景关键帧"] --> G["同一 harness 的 prompt 与历史格式<br/>VLM 先推理，再输出技能 a_t 与参数 u_t"]
+    G --> H["固定执行器 E 转为底层动作<br/>search / turn / nav / pick / place"]
+    H -->|"更新历史与观测"| F
+  end
+  E --> G
+```
+
+图依据：论文 §3.1–§3.5 / Fig.1、Fig.3（AIDA-OWMM 流水线）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +107,7 @@ summary: "AIDA（arXiv:2610.15572）：让教师通过部署时相同的技能�
 - [aida_agent_interface_aligned_mobile_manipulation_arxiv_2610_15572.md](../../sources/papers/aida_agent_interface_aligned_mobile_manipulation_arxiv_2610_15572.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.15572](https://arxiv.org/abs/2610.15572)
+- [arXiv PDF](https://arxiv.org/pdf/2610.15572)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.5）、§4.1 实验设定；§4.2 起实验与附录略读
 
 ## 推荐继续阅读
 

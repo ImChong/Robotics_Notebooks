@@ -42,6 +42,22 @@ To rectify this, we introduce AttenA+, an architecture-agnostic framework that p
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["专家轨迹数据集 D\n视觉 + 语言观测 + 动作 a_t"] --> V["速度场\nv_t = ‖a_t^gt‖\n（LIBERO 取前 6 维，不含 gripper）"]
+  V --> F["注意力权重函数 F_A\nw_t = F_A(v_t)\n低速 → 高权重，高速 → 低权重\n（inverse / inverse squared / exp decay / log）"]
+  F --> CL["权重裁剪\n范围 [1/clip_max, clip_max]"]
+  CL --> NM["可选损失归一化\n(1/T) Σ w_t ≈ 1"]
+  NM --> LD["判别式 VLA\n速度加权 L1 损失"]
+  NM --> LF["流匹配模型（π0 / π0.5）\n速度加权 flow-matching 损失"]
+  LD --> TR["照常训练原骨干\n无结构改动、无额外参数"]
+  LF --> TR
+```
+
+图依据：论文 §3.2–3.3 / Fig.1、Fig.3、Eq.2–5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +115,7 @@ To rectify this, we introduce AttenA+, an architecture-agnostic framework that p
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.13548>
+- [arXiv PDF](https://arxiv.org/pdf/2605.13548)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.3、§4 实验设定
 
 ## 推荐继续阅读
 

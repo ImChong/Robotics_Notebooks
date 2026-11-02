@@ -42,6 +42,31 @@ We present Bridge-WA, a lightweight world-action framework that distills a froze
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角图像 + 语言指令 ℓ + 机器人状态 s"] --> B["视觉-语言骨干<br/>编码当前上下文"]
+    subgraph LWD["潜在世界动态模块（训练时蒸馏，推理无需未来观测）"]
+        T["训练期监督：冻结 WAN-VAE / DINOv3 提取未来 token<br/>特征差分得变化图，光流得运动图"] -.->|"蒸馏损失 L_W"| P
+        P["五个可学习查询头预测<br/>WAN/DINO 未来 token、WAN/DINO 变化图、运动流"] --> CF["未来记忆 C_F"]
+        P --> CC["变化记忆 C_C"]
+        P --> CM["运动记忆 C_M"]
+    end
+    B --> P
+    CF --> W
+    CC --> W
+    CM --> W
+    subgraph WB["WorldBridge：世界到动作的选择性条件注入"]
+        W["动作 token 逐层查询各记忆（注意力）<br/>模态 / 层 / 通道 / 可靠性门控<br/>层调度：早期偏未来，后期偏变化与运动"] --> X["可靠性门控 FiLM 调制<br/>+ 适配器 A"]
+    end
+    B --> W
+    X --> Y["流匹配动作 Transformer<br/>生成动作块 A（执行前缀后重规划）"]
+    Z["训练：干净与增强观测配对<br/>共享动作标签、流噪声与插值时间<br/>动作损失 + 世界蒸馏 + 一致性损失"] -.-> Y
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2（式 1–6）；B 到 W 的连线表示骨干上下文经多模态上下文通路保留，为依据“保留 multimodal context pathway”的推断
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +124,7 @@ We present Bridge-WA, a lightweight world-action framework that distills a froze
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.02195>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02195)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.4）；其余章节未细读
 
 ## 推荐继续阅读
 

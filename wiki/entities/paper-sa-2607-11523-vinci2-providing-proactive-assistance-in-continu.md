@@ -42,6 +42,33 @@ Advances on-device assistant Vinci from reactive response toward proactivity. Pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一人称视频流<br/>切成不重叠短 clip"] --> CAP["VLM 生成 clip 级 caption c_t<br/>+ 抽样关键帧"]
+    CAP --> TM["多尺度时间记忆<br/>Clip → Activity → Session 逐级 Summarize"]
+    CAP --> KG["演化知识图谱 G<br/>LLM 抽取实体/关系并 Merge"]
+    CAP --> VA["视觉嵌入档案 A<br/>MEnc 编码关键帧"]
+    CAP --> R["LLM Reasoner<br/>输入当前 c_t 与近期上下文"]
+    Q["用户提问 q（Reactive 模式）"] -.-> R
+    R --> NR{"需要检索？"}
+    NR -- "否" --> OUT
+    NR -- "是：生成检索查询 q_r" --> RT["时间检索<br/>top-k 相似 caption（t' ≤ t）"]
+    NR -- "是" --> RS["图语义检索<br/>实体匹配 + 1-hop 邻居"]
+    NR -- "是" --> RV["视觉检索<br/>q_r 改写为视觉描述后 top-k 匹配"]
+    TM --> RT
+    KG --> RS
+    VA --> RV
+    RS --> REC["VLM caption 重建<br/>Caption Reconstruction"]
+    RV --> REC
+    RT --> CTX["汇总为检索上下文 Ĉ"]
+    REC --> CTX
+    CTX --> OUT["Reason：干预决策 d_t ∈ {0,1}<br/>+ 响应 r_t"]
+```
+
+图依据：论文 §4.1–4.2 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Advances on-device assistant Vinci from reactive response toward proactivity. Pr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.11523>
+- [arXiv PDF](https://arxiv.org/pdf/2607.11523)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 EgoServe、§4 方法（4.1–4.3）、Fig.3
 
 ## 推荐继续阅读
 

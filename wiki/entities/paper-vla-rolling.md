@@ -43,6 +43,34 @@ summary: "VLA-Rolling（2026，浙江大学）：复用 flow-matching VLA 未执
 - VLA 的推理延迟直接影响闭环控制频率；丢弃未执行尾部意味着浪费已完成的去噪进度。
 - 方法不改动冻结的 VLA，便于叠加到已有模型上（据摘要与项目页）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PREV["上一轮冻结 VLA 去噪得到动作块 A_(t-K), 缓存 o_(t-K), q_(t-K)"] --> TAIL["取未执行的动作尾部 A_tail (后 L = H - K 步)"]
+    NOW["当前观测 o_t / 本体状态 q_t"] --> DELTA["计算环境变化 delta_o, delta_q"]
+    PREV --> DELTA
+    TAIL --> CE["Action Confidence Estimator f_phi (轻量插件): 逐位置置信度 c"]
+    NOW --> CE
+    DELTA --> CE
+    CE --> RENOISE["重加噪: A_init = c * A_tail + (1 - c) * 噪声; 无继承位置用高斯噪声初始化"]
+    TAIL --> RENOISE
+    CE --> STEPS["自适应步数: N_adapt = clip(ceil((1 - c_min) * N_full), N_min, N_full)"]
+    RENOISE --> DEN["冻结 VLA 的 action expert 以 N_adapt 步去噪"]
+    STEPS --> DEN
+    DEN --> EXEC["可执行前缀送机器人执行"]
+    DEN --> TAIL2["剩余尾部缓存, 滚动进入下一轮"]
+    TAIL2 -.-> PREV
+    subgraph TR["置信度估计器训练 (离线演示)"]
+        L1["误差 E = 尾部与对齐演示动作的平方 L2"] --> L2["取 log 得风险 r"]
+        L2 --> L3["EMA 分位数归一化 (q0.1 / q0.9) 得置信度标签 c*"]
+        L3 --> L4["非对称 L1 损失 L_conf (高估惩罚更大)"]
+    end
+    L4 -.-> CE
+```
+
+图依据：论文 §3（§3.1 Action Tail Inheritance、§3.2 Action Confidence Estimation、§3.3 Confidence-Guided Refinement）/ Fig.4
+
 ## 方法与机制
 
 - **保持 VLA 冻结。**
@@ -89,6 +117,7 @@ summary: "VLA-Rolling（2026，浙江大学）：复用 flow-matching VLA 未执
 
 - [VLA-Rolling 论文来源归档](../../sources/papers/vla_rolling_arxiv_2610_25043.md)
 - [VLA-Rolling 代码与模型](../../sources/repos/vla_rolling.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25043)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1-3.3）；§2 可行性分析与 §4 实验略读
 
 ## 推荐继续阅读
 

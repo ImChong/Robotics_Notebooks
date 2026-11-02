@@ -42,6 +42,21 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GT["单帧真值观测<br/>历史缓冲区用其编码潜变量复制回填"] --> S1["S1 生成共享前缀：自回归生成 P 个片段<br/>P ~ Unif{0..9}，用模型自身输出作历史"]
+    S1 --> BUF["冻结的前缀历史缓冲区<br/>（充当 group-relative 设定中的共享 prompt）"]
+    BUF --> S2["S2 分支：独立采样 K=16 条候选续写<br/>每条 F 个片段，每片段 L=5 帧 × 三视角"]
+    S2 --> S3["S3 打分：与真值逐视角比较<br/>奖励 R = -LPIPS + SSIM + PSNR（加权，三视角平均）"]
+    S3 --> NORM["组内 z-score 归一化，裁剪到 [-1,1] 再缩放到 [0,1]<br/>得到奖励权重 r"]
+    NORM --> S4["S4 更新：奖励加权的正/负对比去噪损失<br/>x0 预测，参考为冻结 EMA 副本"]
+    S4 --> UPD["仅 LoRA 适配器与动作编码器更新<br/>骨干（Ctrl-World SVD）冻结"]
+```
+
+图依据：论文 §3.1–3.4（S1–S4 训练流程）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.25685>
+- [arXiv PDF](https://arxiv.org/pdf/2603.25685)：已通读方法部分（实验与附录以略读为准）：§1–3（闭环差距、基于奖励对比去噪的在线 RL 后训练、自回归视频的组相对训练协议、多视角视觉奖励）、§4 实现细节开头；实验结果与附录仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ Controlled study of memory mechanisms in action-conditioned world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：首帧 + 文本提示 c_text + 相对相机动作 c_act（12 维 RT）"] --> DIT
+    HIS["历史观测与位姿"] --> RET["固定 FOV 检索器 R：选出 K-1 帧历史（10% 概率丢弃，仅留锚点帧）"]
+    ANC["锚点观测（当前段起始）"] --> CTXSET["上下文集合 C（K 个历史观测）"]
+    RET --> CTXSET
+    CTXSET --> MEM["记忆模块（四类族，一次只启用一种）：Context / Compression / Spatial / State-Space"]
+    MEM --> DIT["共享视频 DiT 骨干（逐帧 VAE 隐变量）：预测速度场，仅对目标帧做 rectified-flow 回归"]
+    DIT --> SEG["生成 81 帧视频段，逐段自回归继续"]
+    SEG --> HIS
+    SEG --> EV["三分支评测"]
+    EV --> E1["Replay：沿数据集相机轨迹，PSNR / SSIM / LPIPS"]
+    EV --> E2["域内回访：180° 环路，像素 + VLM 一致性"]
+    EV --> E3["开放域回访：Qwen Edit 编辑首帧，45° 离开-返回探针，VLM 语义打分"]
+```
+
+图依据：论文 §3.1-§3.4 / §4 / §5 / Fig.2、Fig.4（共享记忆接口与评测流程；各记忆族内部结构仅见 Fig.2 概述，未画）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Controlled study of memory mechanisms in action-conditioned world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.09803>
+- [arXiv PDF](https://arxiv.org/pdf/2606.09803)：已通读方法部分（实验与附录以略读为准）：§3 Method（Design Space）、§4 Training Protocol、§5 Evaluation 开头
 
 ## 推荐继续阅读
 

@@ -35,6 +35,36 @@ ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
 
 - ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph IN["条件 y（按任务可见性掩码选择）"]
+        I1["第一视角图像特征"]
+        I2["头部轨迹"]
+        I3["文本 prompt：文本 token + CLIP-L 句级全局嵌入"]
+        I4["序列长度"]
+    end
+    N["高斯噪声 x0 → 噪声动作 token"] --> TS
+    I1 --> TS
+    I3 --> TS
+    subgraph DIT["Triple-stream DiT"]
+        TS["Triple-stream 块：动作 / 图像 / 文本三路各自投影<br/>再做联合注意力"] --> SS["拼接后进入 Single-stream DiT 块<br/>共享注意力与 MLP"]
+    end
+    I2 -.-> AD["AdaLN-Zero 条件向量<br/>流时间步 + 头部轨迹 + 序列长度 + CLIP-L 文本"]
+    I3 -.-> AD
+    I4 -.-> AD
+    AD -.-> TS
+    AD -.-> SS
+    SS --> V["速度场 v_θ → Euler 积分 τ:0→1"]
+    V --> SMPL["SMPL 全身动作序列"]
+    SMPL --> WBC["转换为现有全身控制器的输入<br/>控制器跟踪参考"]
+    WBC --> ROBOT["Unitree 人形机器人动作"]
+    MASK["任务掩码：重建 = 全序列图像+头轨迹<br/>生成 = 仅初始图像；预测 = 观测前缀"] -.-> IN
+```
+
+图依据：论文 §III Method / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -79,6 +109,7 @@ ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://arxiv.org/abs/2606.08495>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08495)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III Method（A-E，Fig.2）；§IV 实验略读
 
 ## 推荐继续阅读
 

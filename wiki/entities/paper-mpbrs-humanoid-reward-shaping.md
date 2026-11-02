@@ -21,6 +21,26 @@ summary: "MPBRS evaluates one potential-based reward configuration across nine h
 
 **一句话定义：** MPBRS 研究如何用同一组多势函数奖励结构与权重训练多种人形机器人，只提供机器人特定的结构映射和默认姿态元数据。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["观测（Table II）：指令 vx, vy, ωz、机体速度、投影重力、关节偏移与速度、上一动作<br/>critic 额外获得足端接触与足端速度"] --> POL["策略网络（PPO-Clip，RSL-RL）"]
+  POL --> ACT["归一化动作 → 期望关节位置"]
+  ACT --> PD["关节空间 PD 控制器，逐关节增益 → 力矩"]
+  PD --> SIM["IsaacLab 仿真：9 种人形，仿真 200 Hz / 控制 100 Hz"]
+  SIM --> BASE["基线奖励 r：速度跟踪 + 偏航角速度跟踪 + 正则项"]
+  SIM --> POT["三个共享势函数 Φ<br/>基于射线高度 / 重力向量的直立度 / 关节正则（左右对称、髋 yaw）"]
+  META["机器人特定元数据：关节名映射、名义高度目标"] --> POT
+  POT --> SHAPE["Multi-PBRS 项：R = Σ w_i (γΦ Φ_i(s_t+1) − Φ_i(s_t))<br/>w_i 固定为 1.0，γΦ = 1.0，复位步置零"]
+  BASE --> SUM["塑形后奖励 r̂ = r + R"]
+  SHAPE --> SUM
+  SUM --> POL
+  DRS["对照：DRS 直接加 Σ w_i Φ_i(s_t)，需逐机器人调权"] -.-> SUM
+```
+
+图依据：论文 §III-B / §IV-B / §IV-C（式 4、5，Table II、III）。DRS 虚线表示对照设置而非 MPBRS 的组成部分。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -67,6 +87,7 @@ summary: "MPBRS evaluates one potential-based reward configuration across nine h
 
 - [MPBRS 论文归档](../../sources/papers/mpbrs_arxiv_2610_30334.md)
 - [arXiv:2610.30334](https://arxiv.org/abs/2610.30334)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30334)：已通读方法部分（实验与附录以略读为准）：§III Methodology（MDP、DRS 与 Multi-PBRS）、§IV System Overview（PD 控制、训练设置、实现细节）、§V Results 的训练基准部分（略读）
 
 ## 关联页面
 

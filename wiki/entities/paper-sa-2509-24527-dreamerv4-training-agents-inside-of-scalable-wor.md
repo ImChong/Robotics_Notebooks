@@ -42,6 +42,30 @@ Trains agents inside of scalable world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["Phase 1：世界模型预训练"]
+        VID["视频帧"] --> TOKN["因果 Tokenizer<br/>MAE 掩码 + MSE/LPIPS 重建损失"]
+        TOKN --> Z["连续表征 z（冻结）"]
+        Z --> DYN["交互式动力学 Transformer<br/>与动作交错，shortcut forcing 训练（x-prediction）"]
+        ACTS["动作（可选，无标签视频仅用学习嵌入）"] --> DYN
+    end
+    subgraph P2["Phase 2：智能体微调"]
+        DYN --> AGT["插入 agent token（任务嵌入）<br/>策略头 + 奖励头，MTP 长度 L=8"]
+    end
+    subgraph P3["Phase 3：想象训练"]
+        CTX["数据集上下文起点"] --> ROLL["世界模型自回归展开<br/>从 flow head 采样 z，从策略头采样 a"]
+        AGT --> ROLL
+        ROLL --> ANN["奖励头给奖励 r，价值头给 v"]
+        ANN --> TD["TD-learning 训练价值头（λ-return）"]
+        ANN --> PMPO["PMPO 优化策略头<br/>优势符号 + 行为先验 KL"]
+    end
+```
+
+图依据：论文 §3 与 Algorithm 1（三阶段）、§3.1 Causal Tokenizer、§3.2 Interactive Dynamics、§3.3 Imagination Training、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Trains agents inside of scalable world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.24527>
+- [arXiv PDF](https://arxiv.org/pdf/2509.24527)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4 方法与 Algorithm 1
 
 ## 推荐继续阅读
 

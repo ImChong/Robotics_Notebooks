@@ -44,6 +44,33 @@ summary: "TAPDreamer（arXiv:2610.06814）：仅利用公开视觉编码器构�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线构造补丁（不查询目标策略）"]
+        SRC["单一源任务的 J=6 帧演示图像<br/>外部视角 + 腕部视角"] --> CLEAN["公开 Wan VAE 编码器 E（冻结）<br/>缓存干净潜变量 Z0"]
+        P0["补丁 p 随机初始化，固定 mask M 区域"] --> APPLY["贴补丁：T_p(x) = (1−M)⊙x + M⊙p"]
+        SRC --> APPLY
+        APPLY --> ENC["冻结编码器 E 前向"]
+        ENC --> LOSS["最大化 E(T_p(x)) 与 Z0 的 L1 位移"]
+        CLEAN --> LOSS
+        LOSS --> UPD["仅用 Adam 更新补丁像素（500 步，投影回像素范围）"]
+        UPD --> APPLY
+        UPD --> PSTAR["最终补丁 p*"]
+    end
+    PSTAR --> FREEZE["冻结补丁内容、位置与面积"]
+    subgraph ON["部署：固定补丁"]
+        FREEZE --> OBS["每步观测 o_t 贴上同一 p*"]
+        OBS --> WAM["目标 WAM（FastWAM / DreamWAM / Motus）"]
+        WAM --> ACT["动作块 a_t"]
+        ACT --> ENV["环境"]
+        ENV --> OBS
+    end
+```
+
+图依据：论文 §2.2 / §2.3（式 3–4、Algorithm 1）与 Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +112,7 @@ summary: "TAPDreamer（arXiv:2610.06814）：仅利用公开视觉编码器构�
 - [tapdreamer_adversarial_patches_wam_arxiv_2610_06814.md](../../sources/papers/tapdreamer_adversarial_patches_wam_arxiv_2610_06814.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.06814](https://arxiv.org/abs/2610.06814)
+- [arXiv PDF](https://arxiv.org/pdf/2610.06814)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 World Action Model, Threat Model, and TAPDreamer（2.1–2.3）、§3.1 实验设定
 
 ## 推荐继续阅读
 

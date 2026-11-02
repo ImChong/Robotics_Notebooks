@@ -44,6 +44,34 @@ summary: "YOCO（CoRL 2026，香港大学）：用 K=4 对样本经 HyperNet 预
 - 低成本手套与无标记追踪器的个体偏差会直接传到灵巧遥操作与数据采集中，逐人标定耗时。
 - 把标定做成少样本、免微调的一次前馈，使其更容易用于大规模遥操作数据采集（推测）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["训练 (论文 §4)"]
+        P1["阶段 1: 在干净 InterHand2.6M 上预训练 MANO estimator g_phi (MSE) 后冻结"]
+        P2["阶段 2: 对 InterHand2.6M 加合成漂移增强, 一条序列视为一个 session"]
+        P3["采样 K 组标定对 + 不相交的 query 帧"]
+        P4["仅更新 HyperNet 参数 psi, 以校准后关节与真值的 L2 / MSE 为损失"]
+        P1 --> P2 --> P3 --> P4
+    end
+    subgraph D["部署 (论文 §3.2)"]
+        S["K 组 (含噪 mocap 姿态, 目标姿态) 标定集 S"]
+        S --> H1["手部关键点 encoder (复用 g_phi 的 encoder) 编码每组"]
+        H1 --> H2["Calibration mapping: 带 RoPE 的 transformer, 每个 LoRA 矩阵一个 CLS token"]
+        H2 --> H3["DiT 风格 LoRA 参数 decoder"]
+        H3 --> DW["LoRA 矩阵 Delta W (每 session 前馈一次, 无梯度优化)"]
+        DW --> INJ["注入冻结的 g_phi, 得到 g_(phi+Delta W)"]
+        Q["每帧原始 mocap 21x3 关键点 (frame rate)"] --> INJ
+        INJ --> TH["MANO 姿态参数 theta"]
+        TH --> FK["MANO forward kinematics"]
+        FK --> OUT["校准后 3D 关节"]
+    end
+    P4 -.-> H1
+```
+
+图依据：论文 §3.1-3.4、§4.1-4.2 / Fig.2
+
 ## 方法与机制
 
 - **输入：** K = 4 组成对的原始手部姿态与目标姿态。
@@ -89,6 +117,7 @@ summary: "YOCO（CoRL 2026，香港大学）：用 K=4 对样本经 HyperNet 预
 ## 参考来源
 
 - [YOCO 论文来源归档](../../sources/papers/yoco_arxiv_2610_11657.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.11657)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（§3.1-3.4）、§4 模型训练；§5 实验设定略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ Hierarchical policy with real-world human demonstrations for tactile-conditioned
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    DEMO["人手持 UMI 夹爪示教（带触觉阵列）"] --> HL["高层触觉感知扩散策略 Diffusion Policy：输入 RGB（CLIP ViT）、夹爪位姿与宽度、触觉描述 s=(接触面积, 接触方向, 接触中心)"]
+    HL --> CMD["输出短时域序列：末端位姿目标 + 夹爪宽度 + 触觉目标"]
+    subgraph SIM["仿真 RL（Isaac Gym）两阶段课程"]
+        S1["阶段一：稳定行走与位姿跟踪（随机基座速度 + 末端目标，IK 转关节目标）"] --> S2["阶段二：触觉感知 loco-manipulation 低层策略（笛卡尔轨迹，可达性函数生成基座速度）"]
+    end
+    CMD --> LL["低层策略：输入机器人状态历史、触觉反馈、动作历史，跟踪位置与触觉指令"]
+    S2 --> LL
+    LL --> ACT["四足腿部与机械臂动作（零样本迁移实机）"]
+```
+
+图依据：论文 §III-A、§III-B / Fig. 2、Fig. 3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Hierarchical policy with real-world human demonstrations for tactile-conditioned
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2604.27224>
+- [arXiv PDF](https://arxiv.org/pdf/2604.27224)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（A、B）、§IV-A 实验设置
 
 ## 推荐继续阅读
 

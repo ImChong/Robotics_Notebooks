@@ -42,6 +42,34 @@ Point cloud completion enables more accurate dynamics learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph COMP["1 点云补全"]
+        RGBD["单视角 RGB-D"] --> SEG["VLM 生成点提示 + SAM3 分割物体<br/>深度反投影得到局部物体点云"]
+        SEG --> PC["点云补全模型<br/>ShapeNet 预训练，YCB 微调，三轴旋转增强"]
+        JQ["关节角 q + 机器人 URDF"] --> FK["正向运动学<br/>仅采样末端执行器网格点"]
+        PC --> MERGE["合并为完整场景点云 P_t"]
+        FK --> MERGE
+    end
+    subgraph DYN["2 点动力学模型"]
+        MERGE --> FEAT["逐点特征 F_t<br/>位置 + 当前速度 + 上一步速度"]
+        FEAT --> ENC["PTv3 编码器<br/>得到点特征 z_t"]
+        ACT["动作 a_t → MLP"] --> XA
+        REG["可学习 register token"] --> XA
+        ENC --> XA["cross-attention<br/>点特征为 query，动作与 register 为 key/value"]
+        XA --> SA["self-attention 传播动作影响"]
+        SA --> DEC["PTv3 解码器 + MLP<br/>预测逐点速度 v̂_t+1"]
+        DEC --> NEXT["P̂_t+1 = P_t + v̂_t+1"]
+    end
+    NEXT -- "递归 rollout" --> FEAT
+    NEXT --> MPC["MPC + MPPI 采样 K 条轨迹<br/>在完整点云空间中用代价函数优化"]
+    DEC -. 训练 .-> LOSS["多步 rollout Huber 损失<br/>预测速度 vs 真值速度"]
+```
+
+图依据：论文 §III Methodology（Obtaining Complete Point Clouds、3D Point World Model、Training Objective、Planning）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Point cloud completion enables more accurate dynamics learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.00148>
+- [arXiv PDF](https://arxiv.org/pdf/2607.00148)：已通读方法部分（实验与附录以略读为准）：§III 全部（Problem Formulation 至 Planning）、§IV 开头（实验与附录以略读为准）
 
 ## 推荐继续阅读
 

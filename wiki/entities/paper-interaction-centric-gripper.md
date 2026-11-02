@@ -29,6 +29,25 @@ summary: "交互中心表征用于缓解两指夹爪跨相机视角与夹爪域�
 
 交互中心表征用于缓解两指夹爪跨相机视角与夹爪域迁移的问题。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["语言指令 L + 当前 RGB-D 观测"] --> B["VLM (GLM-4.6V)<br/>解析任务并定位交互三元组<br/>(每 δ=5 步刷新)"]
+    B --> C["SAM 2.1 分割 / 跟踪<br/>得到交互三元组 mask"]
+    C --> D["RGB-D 投影为点云<br/>变换到夹爪 ego 坐标系 Gi"]
+    D --> E["全局：APF 表征<br/>碰撞场 + 目标场，8 关键点 → (16,4)"]
+    D --> F["局部：目标 / 被持物点云<br/>FPS + 加权采样至 256 点"]
+    E --> G["每夹爪 zone 的 4 个 token<br/>PointNet / APF Transformer / 位姿 MLP"]
+    F --> G
+    B -->|"子任务文本 Ct"| H["冻结文本编码器 + MLP adapter"]
+    G --> I["Flow-Matching Transformer 去噪器<br/>(8 层因果 Transformer)"]
+    H --> I
+    I --> J["horizon-H 的 7-DoF 动作块"]
+```
+
+图依据：论文 §IV-A 至 §IV-C / Alg.1、Fig.3
+
 ## 方法栈
 
 融合语言指定物体关系、分割点云和接触几何，再生成机械臂动作，使策略聚焦物体交互而非视角坐标。
@@ -70,6 +89,7 @@ summary: "交互中心表征用于缓解两指夹爪跨相机视角与夹爪域�
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.31207](https://arxiv.org/abs/2609.31207)
+- [arXiv PDF](https://arxiv.org/pdf/2609.31207)：已通读方法部分（实验与附录以略读为准）：§IV Method（A 感知、B 表征、C 动作、D 部署效率）
 
 ## 推荐继续阅读
 

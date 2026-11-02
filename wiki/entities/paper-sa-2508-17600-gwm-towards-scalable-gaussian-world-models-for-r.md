@@ -42,6 +42,24 @@ A 3D Gaussian Splatting‑based world model that enhances visual representation 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单/双视角图像 I"] --> B["Splatt3R 前馈 3D-GS<br/>(Mast3R 点图 + 参数预测头)"]
+    B --> C["3D Gaussian 世界状态 G"]
+    C --> D["FPS 下采样为 G_N<br/>作 query 交叉注意力聚合 G"]
+    D --> E["3D Gaussian VAE 编码器<br/>定长隐变量 x (N×D)"]
+    E --> F["Latent Diffusion Transformer<br/>条件: 历史状态 + 动作 a_t + 噪声步 τ (AdaLN)"]
+    F --> G["预测未来隐状态 x_t+1"]
+    G --> H["VAE 解码器重建未来 Gaussians"]
+    H --> I["渲染出未来图像"]
+    F -. "首个去噪步特征" .-> J["模仿学习: BC-transformer / Diffusion Policy"]
+    G --> K["MBRL: 加奖励预测头, MBPO 式策略优化"]
+```
+
+图依据：论文 §3.1 World State Encoding、§3.2 Diffusion-based Dynamics Modeling、§3.3 GWM for Policy Learning / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A 3D Gaussian Splatting‑based world model that enhances visual representation 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.17600>
+- [arXiv PDF](https://arxiv.org/pdf/2508.17600)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.3）、§4 实验设定
 
 ## 推荐继续阅读
 

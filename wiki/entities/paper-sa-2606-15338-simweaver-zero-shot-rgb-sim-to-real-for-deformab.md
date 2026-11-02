@@ -42,6 +42,33 @@ Zero-shot RGB sim-to-real framework for deformable manipulation
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    AST["SimWeaver-Asset<br/>CLOTH3D 服装网格 + 塑料袋等资产<br/>实测物理参数（RGBench 织物库）"]
+    SIM["SimWeaver-Sim<br/>RGBench 求解器 + 主动碰撞区域机制<br/>抑制穿透与抓取抖动"]
+    AST --> SIM
+    subgraph SYN["SimWeaver-Syn：拓扑感知轨迹合成"]
+        TAS["TAS 拓扑邻接选择<br/>规范网格上的语义地标图 G，边为可行双臂抓取对"]
+        PRED["拓扑感知状态谓词<br/>遮挡、分层、可达、防交叉臂等"]
+        LOOP["闭环合成<br/>重新观测 → 选取抓取对 → 执行并验证 → 失败则重选（至多 T 次）"]
+        PLAN["约束规划器生成可执行轨迹"]
+        TAS --> LOOP
+        PRED --> TAS
+        PRED --> LOOP
+        LOOP --> PLAN
+    end
+    SIM --> TAS
+    SIM --> RAND["SimWeaver-Real 域随机化<br/>物理驱动布料状态初始化、传感器感知光度增强、机器人/场景 DR"]
+    PLAN --> DEMO["每任务 200 条仿真示范"]
+    RAND --> DEMO
+    DEMO --> POL["全量微调 π0.5 RGB 策略"]
+    POL --> REAL["真机零样本部署<br/>双 Piper 臂 + 3 台 RealSense D435i"]
+```
+
+图依据：论文 Fig.1 与 §3（SimWeaver-Sim）、§4（SimWeaver-Syn）、§5（SimWeaver-Real）、§6（SimWeaver-Asset）、§7 实验设置
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Zero-shot RGB sim-to-real framework for deformable manipulation
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2606.15338>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15338)：已通读方法部分（实验与附录以略读为准）：§3–§6（SimWeaver-Sim / Syn / Real / Asset 四个方法节）、§7 实验设置与主结果；附录略读
 
 ## 推荐继续阅读
 

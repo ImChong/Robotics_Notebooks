@@ -29,6 +29,38 @@ VLaRL冻结基础VLA，在其动作上叠加由仿真训练的潜变量条件残
 
 VLaRL冻结基础VLA，在其动作上叠加由仿真训练的潜变量条件残差策略。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Step 1：微调并冻结 VLA"]
+        A["真机示教（每任务 32 条）"] --> B["微调 VLA 后冻结"]
+        A --> C["重建数字孪生仿真环境<br/>（FoundationPose 重建物体位姿）"]
+    end
+    subgraph S2["Step 2：学习潜变量映射"]
+        D["仿真观测 → VLM 得 Z_s"] --> E["Mapper M_θ（Transformer）<br/>Sinkhorn 最优传输对齐到真实分布"]
+        F["真实观测 → VLM 得 Z_r"] --> E
+    end
+    subgraph S3["Step 3：仿真中训练残差策略（VLA 与 Mapper 冻结）"]
+        G["映射后的 Z̃_s"] --> H["冻结 VLA 动作头 → 名义动作 a_VLA"]
+        G --> I["MeanPool 得 z̃_s"]
+        H --> J["残差策略 TD3<br/>输入 z + a_VLA + 本体状态 + 腕部力"]
+        I --> J
+        J --> K["a = a_VLA + α·a_RL"]
+    end
+    subgraph S4["Step 4：真机部署（无 Mapper、无真机 RL）"]
+        L["真实观测 + 语言指令 → VLM 得 Z_r"] --> M["冻结 VLA → a_VLA；MeanPool 得 z_r"]
+        M --> N["残差策略 → a = a_VLA + α·a_RL"]
+    end
+    B --> D
+    B --> F
+    C --> D
+    E --> G
+    J -. "训练好的残差策略" .-> N
+```
+
+图依据：论文 §III（Overview、Step 1–4）/ Fig.2。
+
 ## 方法栈
 
 残差策略读取视觉、本体和力反馈，潜变量映射对齐仿真与真机表征；真机执行时修正动作而不在线训练。
@@ -70,6 +102,7 @@ VLaRL冻结基础VLA，在其动作上叠加由仿真训练的潜变量条件残
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.30868](https://arxiv.org/abs/2609.30868)
+- [arXiv PDF](https://arxiv.org/pdf/2609.30868)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A–E）、§IV 实验设定、§V 结果开头
 
 ## 推荐继续阅读
 

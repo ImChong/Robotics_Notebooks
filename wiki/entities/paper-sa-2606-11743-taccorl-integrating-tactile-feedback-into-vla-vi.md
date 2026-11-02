@@ -42,6 +42,31 @@ Scalable framework that injects tactile feedback into VLA models via simulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    AL["仿真环境对齐：场景/相机、控制器 SysID、触觉统计校准（§3.1）"] --> SIM
+    subgraph DATA["数据"]
+        DR["真机演示 D_real"]
+        TP["仿真遥操作 D_sim_teleop"] --> MG["MimicGen 扩增并按成功判据过滤 → D_sim_Mimic"]
+    end
+    subgraph POL["触觉增强 π0.5 式 VLA（§3.2）"]
+        TE["触觉窗口 h_τ → 触觉编码器 E_τ + 投影 W_τ → M 个触觉 token"] --> GT["接触门控：无接触时移除触觉 token"]
+        GT --> CA["cross-attention 更新视觉-语言-本体上下文"]
+        GT --> AE["触觉 token 作为 action expert 的条件"]
+    end
+    DR --> CO["阶段1 sim-real 联合训练：α 加权的 flow-matching 损失（§3.3）"]
+    MG --> CO
+    TP --> CO
+    POL -.-> CO
+    CO --> PT["阶段2 仿真后训练：稀疏奖励 PPO + β 加权的真机监督 flow-matching 锚定（§3.4）"]
+    SIM["对齐后的仿真环境 E_sim 在线 rollout"] --> PT
+    PT --> DEP["丢弃 critic / 奖励 / 特权状态，直接部署到真机"]
+```
+
+图依据：论文 §3 / §3.1-§3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Scalable framework that injects tactile feedback into VLA models via simulation.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.11743>
+- [arXiv PDF](https://arxiv.org/pdf/2606.11743)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1-§3.4）、§4 实验开头；附录未读
 
 ## 推荐继续阅读
 

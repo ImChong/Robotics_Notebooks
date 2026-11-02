@@ -23,7 +23,7 @@ summary: "UniFlowWAM：融合视觉语义与四维几何的统一世界动作模
 
 # UniFlowWAM：融合视觉语义与四维几何的统一世界动作模型
 
-**UniFlowWAM**（*UniFlowWAM: A Unified World-Action Model with Visual Semantics and 4D Geometry*，[arXiv:2610.30991](https://arxiv.org/abs/2610.30991)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**UniFlowWAM**（*UniFlowWAM: A Unified World-Action Model with Visual Semantics and 4D Geometry*，[arXiv:2610.30991](https://arxiv.org/abs/2610.30991)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,32 @@ summary: "UniFlowWAM：融合视觉语义与四维几何的统一世界动作模
 ## 为什么重要
 
 - 周报所述待解决的问题：机器人操作需要理解物体语义和三维运动。仅使用二维视觉特征进行世界预测，难以直接表达物体在时间和空间中的几何变化。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    CTX["上下文 c_t：视觉观测 o_t、本体状态 s_t、语言指令 ℓ"] --> VLM["Qwen3-VL-4B 编码指令与当前帧"]
+    VID["训练视频 RGB"] --> TRK["预训练稠密 3D 点追踪器：得到点位置 P 与位移 F"]
+    TRK --> VAE["冻结 4D VAE 编码器：分别编码 P 与 F，通道拼接得 3D flow 隐变量 m"]
+    VAE --> PAT["flow patchifier 切成 flow tokens"]
+    CTX --> DINO["DINOv3 特征：当前帧 + 未来帧槽，线性层合并为视觉 token v"]
+    CTX --> ACT["状态 token + 动作块 token a"]
+    VLM -->|"cross-attention 条件"| MMDiT
+    PAT --> MMDiT
+    DINO --> MMDiT
+    ACT --> MMDiT
+    subgraph MMDiT["单一 MMDiT：三个专家各自私有 Q/K/V、FFN、AdaLN，经 joint self-attention 交互"]
+        EA["动作专家"]
+        EM["flow 专家"]
+        EV["视觉专家"]
+    end
+    OBJ["10 个角色条件目标：每个模态为 Target / Condition / Absent"] -->|"目标嵌入加到 timestep 嵌入"| MMDiT
+    MMDiT --> HEAD["各专家独立 head：预测 flow-matching 速度（仅对 Target 槽计算损失）"]
+    HEAD --> OUT["输出：动作 a / flow 隐变量 m / DINO 视觉特征 v"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2、Table 1。
 
 ## 核心机制
 
@@ -90,6 +116,7 @@ summary: "UniFlowWAM：融合视觉语义与四维几何的统一世界动作模
 - [uniflowwam-semantics-4d-geometry-world-action-model_arxiv_2610_30991.md](../../sources/papers/uniflowwam-semantics-4d-geometry-world-action-model_arxiv_2610_30991.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.30991](https://arxiv.org/abs/2610.30991)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30991)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.5
 
 ## 推荐继续阅读
 

@@ -42,6 +42,35 @@ First NPU-based real-time interactive world model achieving 50 FPS with 30%-50% 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据引擎"]
+        D1["数据收集<br/>开放域视频 + 游戏场景数据"] --> D2["几何补全与质量控制<br/>恢复缺失相机条件，剔除几何/视觉不可靠样本"]
+        D2 --> D3["VLM 标注<br/>场景级描述，文本不含相机运动"]
+        D3 --> D4["离线预计算缓存<br/>视频潜变量、文本嵌入、相机条件"]
+    end
+    D4 --> PRE
+    subgraph PRE["预训练（NPU 集群）"]
+        P1["条件：首帧 x0 + 文本 + 相机轨迹<br/>相机内外参 → Plücker 射线 → Camera Adapter → 加到 patch token"] --> P2["高噪/低噪 MoE DiT + camera adapter<br/>课程式训练：短 clip 125/250F → 中 500/1000F → 长 2000F"]
+    end
+    P2 -- "预训练模型作 teacher" --> AR1
+    subgraph DIST["自回归蒸馏"]
+        AR1["AR Flow Matching 预训练<br/>真值前缀 History + 锚点帧，仅监督当前 chunk"] --> AR2["Self-Forcing / DMD 式蒸馏<br/>学生真实 AR rollout；Fake Phase 与 Student Phase 交替<br/>冻结 teacher 与 Fake Model 给出分布匹配梯度"]
+        AR2 --> AR3["少步因果学生（采样步数 50 → 4）"]
+    end
+    AR3 --> INF
+    subgraph INF["实时推理"]
+        I1["首帧 + 文本 + 用户相机控制 W/A/S/D<br/>编码为初始条件，随后释放编码器权重"] --> I2["History Bank 选帧：最近帧 + 初始帧 + 相机相关历史帧<br/>与当前 chunk 拼接送入 DiT"]
+        I2 --> I3["高噪 → 低噪专家依次去噪，预测未来帧潜变量"]
+        I3 --> I4["VAE 解码并流式显示"]
+        I3 -- "写回 History Bank" --> I2
+    end
+```
+
+图依据：论文 §2（Fig.2 数据引擎）、§3.1–3.3（预训练）、§4.2–4.4（Fig.4 蒸馏）、§5.2（Fig.6 推理流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ First NPU-based real-time interactive world model achieving 50 FPS with 30%-50% 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.06216>
+- [arXiv PDF](https://arxiv.org/pdf/2607.06216)：已通读方法部分（实验与附录以略读为准）：摘要、§2 数据引擎、§3 模型预训练、§4 自回归蒸馏、§5 实时推理（5.1–5.4）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ The first online multimodal temporal action segmentation benchmark for energy aw
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    STREAM["M 个传感器的连续输入流<br/>RGB / 音频 / 凝视 / IMU / 单色相机<br/>共用离散时钟 t"] --> ROUTE
+    HIST["历史有效特征 x̃(:t-1)"] --> ROUTE["1) 路由策略 π<br/>输出二值向量 at ∈ {0,1}^M<br/>在功耗预算 B 下决定哪些传感器工作"]
+    ROUTE -->|"at = 1：传感器采集"| EXT["2) 特征提取器 φm 生成 xt<br/>计入采集能耗 Ecap"]
+    ROUTE -->|"at = 0：跳过提取"| PH["占位特征 zt<br/>= 上一时刻特征"]
+    EXT --> EFF["有效表示 x̃t = at·xt + (1-at)·zt"]
+    PH --> EFF
+    EFF --> TAS["3) 时序动作分割模型 Ψ<br/>基线实验使用 ProTAS"]
+    TAS --> PRED["当前动作类别 ŷt"]
+    EFF -->|"更新历史"| HIST
+    EXT -.-> ENERGY["能耗核算：Ecap + Ecomp + Emem<br/>任一时刻不得超过预算 B"]
+    TAS -.-> ENERGY
+```
+
+图依据：论文 §3.1 任务定义（在线推理三阶段）、§4 / Fig.3；这是基准的任务协议，不是作者提出的新模型
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ The first online multimodal temporal action segmentation benchmark for energy aw
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.02246>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02246)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§3.1–3.5 基准定义与评测协议、§4 基线策略；§5 实验与附录略读
 
 ## 推荐继续阅读
 

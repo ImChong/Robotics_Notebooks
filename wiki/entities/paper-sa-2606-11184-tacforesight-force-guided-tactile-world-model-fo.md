@@ -42,6 +42,33 @@ Lightweight force-conditioned tactile foresight framework; TacForceWM predicts s
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ST1["阶段1：力条件触觉世界模型（预训练）"]
+        T["双指触觉场（3D 标记位移）"] --> TK["触觉 tokenizer：共享空间编码器 + 位置/手指 ID 嵌入 + Transformer，[CLS] → 触觉隐变量 z_t"]
+        FT["腕部六轴力/力矩序列（高频）"] --> FE["力编码器：膨胀因果 1D 卷积 + 因果下采样 → 力条件 c_t"]
+        TK --> LD["隐空间动力学预测器 T_ψ（AdaLN 注入力条件）"]
+        FE --> LD
+        LD --> ZF["预测未来触觉隐变量块 Ẑ（偏移 Δ）"]
+        ZF --> LW["损失：预测 MSE + 一阶时间差分项 + SIGReg 正则"]
+    end
+    subgraph ST2["阶段2：预测式触觉条件策略"]
+        IMG["RGB → 冻结 DINOv2-small → 视觉特征 h_img"]
+        PRO["本体历史 → MLP → h_s"]
+        TK --> CA
+        ZF --> CA["当前-未来触觉交互：当前隐变量作 Query，预测隐变量作 Key/Value，残差得 H_tac，时间平均 → h_tac"]
+        CA --> GT["触觉引导门控 α = σ(MLP(h_tac))，按通道融合：h_vt = (1-α)h_img + α·h_tac"]
+        IMG --> GT
+        GT --> CD["与 h_s 拼接，条件编码器 → 全局条件 y_t"]
+        PRO --> CD
+        CD --> AH["条件 flow-matching 动作头（时序 U-Net）→ 动作块 A_t"]
+    end
+```
+
+图依据：论文 §III-A / §III-B / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Lightweight force-conditioned tactile foresight framework; TacForceWM predicts s
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.11184>
+- [arXiv PDF](https://arxiv.org/pdf/2606.11184)：已通读方法部分（实验与附录以略读为准）：§III Method（§III-A 力条件触觉世界模型、§III-B 预测式触觉条件策略）
 
 ## 推荐继续阅读
 

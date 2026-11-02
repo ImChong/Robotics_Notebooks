@@ -43,6 +43,23 @@ Interactive, controllable, editable language-guided 4D world simulator.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["自然语言指令 L"] --> P["命令参数化器：LLM agent 解析指令，得到执行计划 P = (M, Q)，M 为 GEN 或 EDIT"]
+    P -->|"M = GEN"| G1["LLM 把运动方向解析为轨迹 T 与逐帧 bounding box，快速运动对应更大的框间距"]
+    G1 --> G2["场景生成：文本到视频扩散，Dynamic Control 偏置交叉注意力，最小化能量函数并更新 latent（无需训练）"]
+    G2 --> G3["重建阶段：基于 MoSca 的动态 3D 高斯，并蒸馏 2D 基础模型特征，得到 4D 场景"]
+    G3 --> OUT1["生成的 4D 场景"]
+    P -->|"M = EDIT"| E1["Static Edit：LLM 迭代调整阈值，按高斯语义特征与查询特征的相似度筛选目标高斯"]
+    G3 --> E1
+    E1 --> E2["执行颜色编辑、物体移除或物体提取，同一参数应用到所有帧"]
+    E2 --> OUT2["编辑后的 4D 场景"]
+```
+
+图依据：论文 §III（Fig.2）、§III-B、§III-C。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Interactive, controllable, editable language-guided 4D world simulator.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.04390>
+- [arXiv PDF](https://arxiv.org/pdf/2510.04390)：已通读方法部分（实验与附录以略读为准）：§III MorphoSim（命令参数化器、场景生成、场景编辑模块，含 Fig.2）；§IV 实验仅略读
 
 ## 推荐继续阅读
 

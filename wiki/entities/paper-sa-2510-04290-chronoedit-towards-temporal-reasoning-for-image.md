@@ -43,6 +43,28 @@ Temporal reasoning for image editing and world simulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        A1["公开图像编辑数据对 (c, p, y) 视为两帧视频"] --> A3
+        A2["1.4M 合成视频及 VLM 生成的编辑指令：首帧为 c，末帧为 p，中间帧为 reasoning tokens"] --> A3
+        A3["联合训练：以 Wan2.1-I2V-14B 为基础微调，rectified flow 速度预测"]
+    end
+    subgraph INF["推理"]
+        IN["输入：参考图像 c 与编辑指令 y"] --> V["Wan2.1 VAE 编码 c 为首帧 latent；RoPE 把 c 锚定在时间步 0，输出 p 锚定在时间步 T"]
+        V --> TRS["时间推理阶段：clean c 拼接带噪 reasoning tokens 与带噪目标帧，先去噪 Nr 步"]
+        TRS --> DROP["丢弃 reasoning tokens，仅保留部分去噪的目标帧 latent"]
+        DROP --> GEN["编辑帧生成阶段：clean c 拼接目标 latent（重复 4 帧），完成剩余 N-Nr 步去噪"]
+        GEN --> DEC["VAE 解码，取最后一帧作为编辑结果"]
+    end
+    A3 -.->|"训练后的 ChronoEdit"| V
+    DMD["可选：DMD 蒸馏得到 8 步学生模型，加速推理"] -.-> GEN
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4、Fig.3 与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Temporal reasoning for image editing and world simulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.04290>
+- [arXiv PDF](https://arxiv.org/pdf/2510.04290)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4（含 Fig.3、Algorithm 1）；§4 实验仅略读
 
 ## 推荐继续阅读
 

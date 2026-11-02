@@ -42,6 +42,28 @@ Imaginative world modeling with scene graphs for embodied agent navigation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RGB-D 观测 ot"] --> B["符号世界建模：开放词表检测器识别物体 → 区域分组与区域 captioner → 楼层节点"]
+    B --> C["分层场景图 gt = ϕ(gt-1, ot)"]
+    C --> D["符号世界想象：占据图中未知区域中心 + 已观测节点投影到鸟瞰图 It"]
+    D --> E["VLM 补全未观测区域语义，得到 ĝt = ψ(gt, It)"]
+    E --> F["上下文感知目标验证器（VLM 查询含目标的图像）"]
+    F -->|"确认目标"| G["3D 规划器（FMM）朝目标位置规划动作"]
+    F -->|"未找到目标"| H["前沿检测器得到前沿集合"]
+    H --> I["开发增益：前沿局部子图与目标类别的语义得分（CLIP 或 LLM）"]
+    H --> J["探索增益：占据图上 raycasting 计算可见未知区域比例"]
+    I --> K["回退机制：开发增益超过阈值 λ 则选之，否则选探索增益最大的前沿"]
+    J --> K
+    K --> G
+    G --> L["执行动作，环境产生新观测"]
+    L --> A
+```
+
+图依据：论文 §III（A 世界建模与想象、B 目标验证器、C 目标信息增益、D 3D 规划器）/ Fig.2、Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Imaginative world modeling with scene graphs for embodied agent navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.06990>
+- [arXiv PDF](https://arxiv.org/pdf/2508.06990)：已通读方法部分（实验与附录以略读为准）：§III A–D（SGImagineNav 五个模块）
 
 ## 推荐继续阅读
 

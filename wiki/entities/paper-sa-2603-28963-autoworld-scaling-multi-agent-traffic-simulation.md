@@ -42,6 +42,29 @@ Scales multi-agent traffic simulation with self-supervised world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["无标注 LiDAR 序列 O"] --> V["体素化占据栅格 + VAE 编码<br/>得到潜在占据 Z"]
+    V --> W["潜在占据预测世界模型<br/>rectified flow，条件为 Z 历史与 ego 轨迹嵌入"]
+    L --> M["相邻帧占据变化 + 自车运动补偿<br/>得到运动图 / 潜在权重图 W"]
+    M -->|"加权 flow 损失"| W
+    S["初始场景：agent 状态 + 地图 + 红绿灯 + 历史 LiDAR"] --> E["Query-centric Transformer 场景编码 h"]
+    S --> W
+    W --> Z["预测未来潜在占据 ẑ"]
+    Z --> G["时间子采样 + MHCA 池化<br/>全局预测场景上下文 g"]
+    Z --> C["逐步条件 c_f = MHCA(h, ẑ ⊕ g)"]
+    G --> C
+    E --> C
+    C --> D["条件扩散去噪网络<br/>生成多 agent 联合未来轨迹"]
+    D --> O["N×M 条多样且合理的仿真 rollout"]
+    P1["占据级 DPP 引导：采样 N 个未来占据"] -.-> W
+    P2["运动级 DPP 引导：每个占据采样 M 条轨迹"] -.-> D
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Scales multi-agent traffic simulation with self-supervised world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.28963>
+- [arXiv PDF](https://arxiv.org/pdf/2603.28963)：已通读方法部分（实验与附录以略读为准）：§1–3（问题设定、Motion-Aware Latent Occupancy Forecasting、World-Model-Grounded Traffic Simulation、Cascaded Latent Sampling）；§4–5 仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,34 @@ Decouples semantic motion orchestration from visual generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph INF["推理：LLM 世界规划"]
+    IMG["初始图像"] --> EST["SAM + DepthAnything v2<br/>估计目标物体 3D 框与初始朝向"]
+    EST --> LLM["LLM (Gemini)<br/>规划物体 3D 框轨迹 + 相机路径"]
+    LLM --> PROJ["3D 轨迹投影到 2D 图像平面<br/>→ 位置条件 B (彩色 2D 框视频)"]
+  end
+  PROJ --> CH["按时间切分为连续 chunk，因果逐 chunk 生成"]
+  subgraph GEN["每个 chunk 的视频生成（基于 LingBot-World-Base DiT）"]
+    A["外观条件 A：参考裁剪映射到框位置<br/>(Temporal Drop：入镜后前 16 帧稠密，之后每 6 帧留 1 帧)"]
+    VAE["3D VAE 编码 B 与 A<br/>与带噪 latent 通道拼接"]
+    M["上下文记忆 M：静态(FoV 重叠 top-K)+动态(含活跃物体的帧)<br/>检索，序列拼接，非对称注意力使 M 不受噪声污染"]
+    CAM["相机位姿 → Plücker 坐标 → 卷积嵌入<br/>经自适应归一化注入每个 DiT block"]
+    TXT["全局提示 + 实体级提示<br/>Spatial-Aware 加权 cross-attention"]
+    A --> VAE --> DIT["DiT flow matching 去噪 → 当前 chunk"]
+    M --> DIT
+    CAM --> DIT
+    TXT --> DIT
+  end
+  CH --> GEN
+  DIT --> POOL["已生成 chunk 池"]
+  POOL -->|"更新 A、检索 M，进入下一 chunk"| GEN
+```
+
+图依据：论文 §3.2–3.4 / Fig.2、附录 C（首个 chunk 仅用初始参考帧作 A，M 为空；训练数据管线 §3.1 未入图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Decouples semantic motion orchestration from visual generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.02517>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02517)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）、附录 B/C 的推理与检索细节
 
 ## 推荐继续阅读
 

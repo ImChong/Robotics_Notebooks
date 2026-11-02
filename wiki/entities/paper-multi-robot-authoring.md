@@ -42,6 +42,26 @@ summary: "Multi-Robot Authoring（arXiv:2610.22670）：把图画表示成笔画
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["输入：平面矢量笔画（QuickDraw 路点）"] --> B["Shapely 并集插入交叉点，构建笔画图 G=(V,E) 与连通分量 C1..CK"]
+  B --> C["结构描述符：分量数 K、总长 L、分量集中度 CL、圈秩 μ、分支 B、离散度 D、笔画密度"]
+  B --> D{"分配策略"}
+  D -->|"Token（单令牌）"| E["动态分量队列：每个连通分量只分给一台机器人"]
+  E --> F["机器人移到最近顶点，沿该分量的 CPP 电路绘制，直接转下一分量"]
+  D -->|"Shared-token（分解）"| G["各分量 CPP 电路，按最近分量规则串成固定主遍历"]
+  G --> H["动态规划按 min-max 目标把主遍历连续划分给 n 台机器人"]
+  F --> I["反应式执行：圆盘机器人，固定速度，邻近冲突检测"]
+  H --> I
+  I --> J["冲突分量内按 绘制优先、剩余距离、ID 定优先级"]
+  J --> K["让行机器人记录锚点，向垂直方向侧移或等待，通过后回锚点继续原路线"]
+  K --> L["无剩余任务的机器人回仓库；统计完成时间、加速比、空闲占比"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2、Algorithm 1–2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +104,7 @@ summary: "Multi-Robot Authoring（arXiv:2610.22670）：把图画表示成笔画
 - [multi_robot_authoring_arxiv_2610_22670.md](../../sources/papers/multi_robot_authoring_arxiv_2610_22670.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22670](https://arxiv.org/abs/2610.22670)
+- [arXiv PDF](https://arxiv.org/pdf/2610.22670)：已通读方法部分（实验与附录以略读为准）：笔画图表示、Token 与 Shared-token 分配、反应式让行（§III、§IV）
 
 ## 推荐继续阅读
 

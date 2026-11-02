@@ -37,6 +37,35 @@ summary: "DIAL（arXiv:2603.29844）：VLA 中解耦 intent 与 action，用 lat
 - **Light-O1 对照：** [Light-O1 Tech Blog](https://www.lightorigins.com/en/blog/light-o1) 在 **RoboCasa GR-1 24 任务** 上与 GR00T N1.7、π0.5、**DIAL** 等 **同数据训练** 对比；Light-O1 报告 **79.3% macro success**。
 - **VLA 结构论战：** 与「VLM+action expert / flow head」路线并列，强调 **intent 层 world modeling**。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["语言指令 l_t + 当前观测 o_t + 本体状态 q_t"]
+    subgraph S2["System-2 (VLM, 如 Qwen2.5-VL-3B)"]
+        direction TB
+        VIT["冻结的预训练 ViT 提取 o_t 视觉特征"]
+        LLM["LLM 处理 视觉 patch + 指令 + N 个可学习 query"]
+        MLP["MLP 投影头 → 潜在意图 x_t (latent foresight)"]
+        VIT --> LLM --> MLP
+    end
+    subgraph S1["System-1 (flow-matching 反应式策略 / 潜在逆动力学)"]
+        direction TB
+        FUS["4 层 self-attention 融合<br/>Enc_ViT(o_t) 与 x_t"]
+        DIT["16 层 DiT 动作解码器<br/>(cross-attention 条件 + q_t 投影 token + 噪声动作 token)"]
+        FUS --> DIT
+    end
+    IN --> S2
+    MLP -->|"x_t (可微瓶颈)"| FUS
+    IN --> FUS
+    DIT --> ACT["动作块 A_t = [a_t ... a_(t+H-1)]"]
+    GT["真值未来特征 Enc_ViT(o_(t+H))"] -.->|"L_world: MSE 监督 x_t"| MLP
+    GT -.->|"Stage 1 解耦热身: 替代 x_t 喂给 System-1"| FUS
+    ACT -.->|"Stage 2 端到端: L_fm 梯度经 x_t 回传至 VLM"| MLP
+```
+
+图依据：论文 §3.1-3.4 / Fig.1 / Fig.3
+
 ## 核心机制
 
 1. **Intent 分支：** VLM 生成/维护 **latent visual roadmap** — 抽象语言 → 连贯空间-时间计划。
@@ -83,6 +112,7 @@ summary: "DIAL（arXiv:2603.29844）：VLA 中解耦 intent 与 action，用 lat
 
 - [dial_arxiv_2603_29844.md](../../sources/papers/dial_arxiv_2603_29844.md)
 - 论文：<https://arxiv.org/abs/2603.29844>
+- [arXiv PDF](https://arxiv.org/pdf/2603.29844)：已通读方法部分（实验与附录以略读为准）：摘要、§3（模型总览、System-2、System-1、两阶段训练）、§4.1 实验设定
 
 ## 推荐继续阅读
 

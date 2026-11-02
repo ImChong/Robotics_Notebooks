@@ -41,6 +41,40 @@ Dream Labs 后续公开了 [Dream-1](./dreamlabs-dream-1.md)，将其 WAM 路线
 - **数据经济学**：不必为每个新动作采集重复 teleop；异构日常轨迹 + 视频先验即可
 - **跨本体**：人类/异构机器人**仅视频**即可给目标机注入新技能先验
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["输入"]
+        A["视觉上下文（多视角拼成单帧）→ VAE 编码"]
+        B["语言指令 → 文本编码器"]
+        C["本体状态 → 状态编码器"]
+    end
+    A --> D["自回归 DiT 骨干（预训练视频扩散模型）<br/>flow matching，视频与动作共享去噪时间步"]
+    B --> D
+    C --> D
+    D --> E["视频解码器：预测未来视频帧 chunk"]
+    D --> F["动作解码器：预测动作 chunk"]
+    subgraph TR["训练"]
+        G["teacher forcing：当前带噪 chunk 以干净的历史 chunk 为上下文<br/>联合 flow-matching 损失"]
+    end
+    subgraph INF["推理（闭环）"]
+        H["联合去噪视频 + 动作，使用 KV cache"] --> I["异步执行动作 chunk<br/>推理与机器人运动并行"]
+        I --> J["真值观测回填 KV cache，替换生成帧<br/>避免误差累积"]
+        J --> H
+    end
+    F --> I
+    subgraph OPT["实时化（5.7 s/chunk → 7 Hz）"]
+        K["系统级：CFG 并行、DiT 缓存"]
+        L["实现级：torch.compile + CUDA Graphs、NVFP4 量化、kernel 与调度优化"]
+        M["模型级：DreamZero-Flash<br/>视频噪声偏向高噪，扩散步 4 → 1"]
+    end
+    D --> G
+    INF --> OPT
+```
+
+图依据：论文 §3.1–3.2 / Fig.4、Fig.5、Algorithm 1–2
+
 ## 解决什么问题
 
 SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新环境**和**新物理动作/技能**上泛化弱：
@@ -101,6 +135,7 @@ SOTA **VLA** 擅长语义泛化（换物体、换语言指令），但在**新�
 - [humanoid_pnb_dreamzero-world-action-models-are-zero-shot-poli.md](../../sources/papers/humanoid_pnb_dreamzero-world-action-models-are-zero-shot-poli.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamZero_World_Action_Models_are_Zero-shot_Policies/DreamZero_World_Action_Models_are_Zero-shot_Policies.html>
 - 论文：<https://arxiv.org/abs/2602.15922>
+- [arXiv PDF](https://arxiv.org/pdf/2602.15922)：已通读方法部分（实验与附录以略读为准）：§3 DreamZero（3.1 模型架构与训练目标、3.2 实时执行与 DreamZero-Flash）、Fig.4、Fig.5、Table 1；§4 实验设定与 §5 结果略读
 
 ## 推荐继续阅读
 

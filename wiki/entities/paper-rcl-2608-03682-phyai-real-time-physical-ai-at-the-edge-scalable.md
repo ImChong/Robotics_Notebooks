@@ -43,6 +43,24 @@ To unify them, we build PhyAI, a Physical AI inference engine with a single runt
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OPT["离线：phyai-model-optimizer 量化模型（RTN）"] -.-> MOD
+    REQ["推理请求（评测 / 云端 RL rollout / 边缘服务 / 机载）"] --> PRE["phyai-utils-tools 预处理"]
+    PRE --> SCH["Scheduler：把请求分配给 Model Runner<br/>配置并行策略 DP / TP / CFG，划分设备组"]
+    SCH --> RUN["Model Runner：持有请求可变状态<br/>中间缓冲、KV cache、CUDA Graph bucket；推进 solver / 生成循环并组装 action chunk"]
+    RUN --> MOD["无状态 Modeling modules（模型适配器）<br/>多模态前缀编码、action expert、视频-动作联合生成"]
+    MOD --> LAY["Layers 接口：融合算子与分布式算子"]
+    LAY --> SEL["Operator selector：按矩阵形状、数据类型、加速器、执行配置选核"]
+    SEL --> KER["phyai-kernel / 框架算子 / 外部库内核"]
+    KER --> HW["设备运行时与加速器硬件"]
+    RUN --> POST["phyai-utils-tools 后处理 → 输出 action chunk"]
+```
+
+图依据：论文 §4.1 Overview / Fig.3（PhyAI 运行时分层与组件归属；并行执行细节见 §4.3 / Fig.4，图中未展开）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +118,7 @@ To unify them, we build PhyAI, a Physical AI inference engine with a single runt
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.03682>
+- [arXiv PDF](https://arxiv.org/pdf/2608.03682)：已通读方法部分（实验与附录以略读为准）：摘要、§4.1–§4.3（运行时架构、优化方法、并行执行）
 
 ## 推荐继续阅读
 

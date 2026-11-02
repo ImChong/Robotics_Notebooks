@@ -42,6 +42,26 @@ Retrieval-augmented world model for computer-use agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["任务目标 g 与当前观测 o_i"] --> RR["检索 top-k 文档块（余弦相似度），再由策略模型做 LLM list-wise 重排序，得到证据集 E"]
+    KB["知识库：在线教程与手册，及由离线轨迹合成的经验式教程"] --> RR
+    G --> POL["策略模型 π_p 提出 m 个候选思考-动作对（1 ≤ m ≤ n，不确定时才多分支）"]
+    POL --> DD["动作去重：策略模型自身作校验，剔除语义等价候选"]
+    DD --> CNT{"候选动作数 > 1 ?"}
+    CNT -->|"是"| ROLL["世界模型以 E 为条件，用 LongCoT 在一次推理序列中展开 k 步想象轨迹"]
+    RR --> ROLL
+    ROLL --> RW["世界模型对各候选轨迹做 list-wise 相对奖励排序"]
+    RW --> BEST["选出最优思考-动作对"]
+    CNT -->|"否"| BEST
+    BEST --> ENV["在环境（OS / Web）中执行动作，得到 o_(i+1)"]
+    ENV -->|"任务未完成"| POL
+```
+
+图依据：论文 §4.1 / Fig.2 / Algorithm 1，§4.2（候选数为 1 时跳过 rollout 的分支取自 Fig.2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Retrieval-augmented world model for computer-use agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.11892>
+- [arXiv PDF](https://arxiv.org/pdf/2510.11892)：已通读方法部分（实验与附录以略读为准）：§4 R-WoM 框架（含 Algorithm 1、Fig.2）；§1、§3、§5 仅略读
 
 ## 推荐继续阅读
 

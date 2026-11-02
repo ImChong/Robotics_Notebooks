@@ -41,6 +41,25 @@ We introduce the Latent Evolution Operator Network (LEON), which models latent e
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Y["当前状态表示 Y (N 个 state tokens)"] --> PHI["可学习观测映射 φ → 观测坐标 H"]
+    Z["条件表示 Z<br/>语义 / 动作相关上下文"] --> C
+    PHI --> C["上下文函数 C(h, Z) → 转移上下文 ξ"]
+    C --> AL["系数 α(ξ)：低秩基 B_k 的组合<br/>A(ξ) = D + U·Diag(α)·Vᵀ"]
+    C --> FB["加性强迫项 b(ξ)"]
+    PHI --> UPD
+    AL --> UPD["观测空间更新<br/>Δh = A(ξ)h + b(ξ)；h' = h + ηΔh"]
+    FB --> UPD
+    UPD --> L["堆叠多层 LEON"]
+    L --> PSI["读出 ψ 回到 WAM 表示空间"]
+    PSI --> OUT["预测未来潜变量 X+，交给原 WAM 的动作头"]
+```
+
+图依据：论文 §3.1–3.3 / Eq.(8)–(11)（LEON 替换 VLA-JEPA 与 LaWAM 中的 Transformer 转移模块，两者仅 Z 与 ξ 的构造不同）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ We introduce the Latent Evolution Operator Network (LEON), which models latent e
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.27259>
+- [arXiv PDF](https://arxiv.org/pdf/2608.27259)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3（含 Fig.2）
 
 ## 推荐继续阅读
 

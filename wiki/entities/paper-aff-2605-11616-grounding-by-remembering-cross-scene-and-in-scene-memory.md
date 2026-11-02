@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affordances——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affordances——在清单中归入 **Reasoning（Reasoning Subcategory: Agentic Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,31 @@ Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affo
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["功能查询 q + 带位姿 RGB-D 序列"] --> A["(A) 冻结 VLM 解析查询<br/>三元组：参考物体 ℓ_ctx、交互部件 ℓ_int、空间限定 σ"]
+    A -->|ℓ_ctx 与 ℓ_int 构造文本 prompt| S1["SAM3 初始候选 mask<br/>限定搜索空间"]
+    subgraph B["(B) Cross-scene affordance memory"]
+        MB["记忆库（按类别）：已见场景 3D 标注投影到帧<br/>深度一致性过滤，质量打分取 top-K，叠加成 masked image"]
+        MB -->|按 ℓ_int 字符串匹配召回| VP["VLM 看示例图 + 查询帧<br/>输出正框（可操作核心）与负框"]
+    end
+    A --> VP
+    S1 --> VP
+    VP -->|仅正框送回 SAM3| M2["细粒度 2D 分割 mask"]
+    M2 --> POOL["反投影融合为 3D 候选池<br/>可见度/前景支持阈值 + DBSCAN 合并"]
+    subgraph C["(C) In-scene spatial memory"]
+        G["场景图：节点含 3D 质心、AABB、类型 CTX 或 INT<br/>INT 节点链接到父 CTX 节点"]
+        G --> LLM["LLM 结合 JSON 图、俯视渲染、节点 RGB 裁剪<br/>按空间限定 σ 选节点"]
+    end
+    POOL --> G
+    A -->|σ 传给实例选择| LLM
+    LLM --> OUT["输出：匹配实例的 3D mask"]
+```
+
+图依据：论文 §3 Method（§3.1 Functional Query Decomposition、§3.2 Cross-Scene Affordance Memory、§3.3 In-Scene Spatial Memory）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +76,7 @@ Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affo
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2605.11616)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2605.11616)。
 
 ## 评测与指标
 
@@ -67,7 +92,7 @@ Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affo
 
 **本页只提供「AffordMEM」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +113,7 @@ Grounding by Remembering: Cross-Scene and In-Scene Memory for 3D Functional Affo
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2605.11616>
+- [arXiv PDF](https://arxiv.org/pdf/2605.11616)：已通读方法部分（实验与附录以略读为准）：§3（含 3.1–3.3）、Fig.2
 
 ## 推荐继续阅读
 

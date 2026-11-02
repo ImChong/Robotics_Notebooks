@@ -42,6 +42,23 @@ Introduces Chain of Thought (CoT) into egocentric video understanding, proposing
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["HowTo100M 网络视频，约 30M clips"] --> B["Ego-vs-Exo 过滤：InternVideo + 两层 MLP，余 12M"]
+    B --> C["动态交互过滤：手-物检测器，余 8.7M"]
+    C --> D["并入 Ego4D / EPIC-Kitchens / EgoExoLearn / EgoExo4D，共 13M clips"]
+    D --> E["VideoChat2-HD 补字幕，DeepSeek-V3 / R1 生成 QA 与 CoT"]
+    E --> F["EgoRe-5M：short / long / CoT / 细粒度 grounding 四类数据"]
+    F --> H["阶段一 SFT：Qwen2-VL-7B，混合通用数据与 EgoRe-5M short / long / CoT"]
+    G["通用 caption / VQA / 第一人称数据"] --> H
+    H --> I["阶段二 RFT：GRPO，EgoRe-5M-FG，奖励 = 格式奖励 + 空间/时间 IoU 奖励"]
+    I --> J["EgoThinker"]
+```
+
+图依据：论文 §3.1 EgoRe-5M / Fig.2、§3.2 Training EgoThinker（Table 1）、§4 实验设定。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Introduces Chain of Thought (CoT) into egocentric video understanding, proposing
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2510.23569>
+- [arXiv PDF](https://arxiv.org/pdf/2510.23569)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.2）、§4 实验开头设定；实验表格与附录未细读
 
 ## 推荐继续阅读
 

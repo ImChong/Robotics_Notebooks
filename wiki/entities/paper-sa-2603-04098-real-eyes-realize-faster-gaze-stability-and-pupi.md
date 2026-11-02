@@ -42,6 +42,22 @@ Uses eye-tracking as a training-free side channel: gaze fixation captures visual
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频 1 fps + 眼动仪数据流"] --> B["帧级对齐: 每帧时间戳 ±50 ms 窗口内聚合眼动样本"]
+    B --> C["注视质量分 g(t) = 软注视指示 f(t) x 追踪置信度 c(t)"]
+    B --> D["瞳孔新颖度: 亮度回归校正, 减 10 秒滚动中位数, 中位数/MAD 稳健 z-score, 取 |p(t)|"]
+    C --> E["Stage 1 质量门控: 按 g(t) 保留前 k% 帧, 默认 k = 75"]
+    D --> F["Stage 2 新颖度排序: 在门控池内按 |p(t)| 取前 n = b x |F| 帧"]
+    E --> F
+    F --> G["精选帧子集, 数据预算 b"]
+    G --> H["下游评估: 冻结 DINOv2 特征 + 逻辑回归, 活动识别 / 场景识别"]
+```
+
+图依据：论文 §3–§5（Dual-Criterion Frame Curator）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Uses eye-tracking as a training-free side channel: gaze fixation captures visual
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.04098>
+- [arXiv PDF](https://arxiv.org/pdf/2603.04098)：已通读方法部分（实验与附录以略读为准）：§3、§4、§5 方法与实验设定
 
 ## 推荐继续阅读
 

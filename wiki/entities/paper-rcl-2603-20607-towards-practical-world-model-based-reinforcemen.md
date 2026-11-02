@@ -42,6 +42,21 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["VLA 策略 π 与价值头 V<br/>在真实环境交互"] --> B["数据加入回放缓冲 D"]
+    B --> C["微调 UMM 世界模型<br/>动态 Tθ 与奖励 rθ"]
+    C --> D["从 D 中任意观测<br/>起始分支 rollout（chunk 级）"]
+    D --> E["动作离散为整数 token<br/>先生成 head 视角再生成 wrist 视角<br/>（interleaved view decoding）"]
+    E --> F["想象数据缓冲"]
+    F --> G["Flow-Noise PPO<br/>更新 π 与 V"]
+    G --> A
+```
+
+图依据：论文 §3.1–3.3 / Fig.1、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.20607>
+- [arXiv PDF](https://arxiv.org/pdf/2603.20607)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1–3.3 及整体框架）
 
 ## 推荐继续阅读
 

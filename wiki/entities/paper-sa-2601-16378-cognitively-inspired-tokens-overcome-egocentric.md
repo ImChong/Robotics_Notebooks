@@ -42,6 +42,21 @@ Multimodal language models perform well on semantic vision-language tasks but fa
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["COCO 单人图像 (缩放到 336×336)"] --> EMB["Embodiment tokens 路线<br/>COCO 或 ViTPose 取左右肩 / 髋关键点<br/>由肩部坐标差计算躯干 yaw，离散为 8 个 yaw 桶"]
+    IMG --> ROT["Rotation tokens 路线<br/>参考物与查询物的 bbox 均值 (x, y) 坐标<br/>OrientAnything 提取朝向 azimuth (36° 一桶)"]
+    EMB --> NEW["扩展 LLaVA 1.5 13B 的词表加入空间 token"]
+    ROT --> NEW
+    NEW --> CUR["课程学习：token 生成 → 思维链 (CoT) 推理 → 直接回答<br/>10 个 epoch 内 token 生成占比由 100% 线性降到 10%"]
+    CUR --> FT["训练：冻结视觉骨干，语言模型 LoRA，<br/>词嵌入矩阵与 LM head 全量可训练"]
+    FT --> EVAL["在 视角采择基准 / Isle Bricks V2 / COCO 验证集 / 3DSRBench 上评测"]
+```
+
+图依据：论文 Methods（Token Construction、Training Protocol）/ Fig. 1b、1c
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Multimodal language models perform well on semantic vision-language tasks but fa
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.16378>
+- [arXiv PDF](https://arxiv.org/pdf/2601.16378)：已通读方法部分（实验与附录以略读为准）：Results 与 Methods（Token Construction、Training Protocol、Evaluation Protocol）；Feature Analysis 与表格数字仅略读
 
 ## 推荐继续阅读
 

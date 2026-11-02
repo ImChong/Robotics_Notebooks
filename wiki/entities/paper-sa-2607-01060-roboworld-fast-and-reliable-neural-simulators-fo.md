@@ -42,6 +42,29 @@ An automated evaluation pipeline combining fast autoregressive video world model
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练：Step Forcing"]
+        P["预训练双向视频模型<br/>Wan2.1-T2V-1.3B"] --> AD["改造为自回归世界模型<br/>帧级因果注意力<br/>动作 MLP + cross-attention 注入<br/>逐帧独立噪声调度"]
+        AD --> DF["先用 rectified flow 在 Diffusion Forcing 下训练"]
+        DF --> SF["Step Forcing<br/>对噪声上下文做单步 Euler 自转发 (stop-gradient)<br/>得到 self-forwarded prior"]
+        SF --> ANC["以概率 p 走 anchor step<br/>先验直接取带噪真值，保持动作-观测动力学"]
+        ANC --> LOSS["由 prior 预测干净帧<br/>对真值做平方误差"]
+    end
+    subgraph EVAL["RoboWorld 评测：闭环"]
+        OBS["当前观测"] --> POL["待评测策略<br/>预测动作"]
+        POL --> WM["世界模型 少步去噪<br/>KV cache + 滑动窗口<br/>生成下一观测"]
+        WM --> OBS
+        WM --> ROLL["生成的 rollout"]
+        ROLL --> VLM["VLM judge：0-5 任务进度评分<br/>wrist 视角检测世界模型伪影<br/>外部视角判断任务进度"]
+    end
+    LOSS --> WM
+```
+
+图依据：论文 §3.2 Step Forcing / Fig.2、§4.1–4.2 RoboWorld
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ An automated evaluation pipeline combining fast autoregressive video world model
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.01060>
+- [arXiv PDF](https://arxiv.org/pdf/2607.01060)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.2、§4.1–4.2、§5 开头与 §5.1（§5.2 起实验以略读为准）
 
 ## 推荐继续阅读
 

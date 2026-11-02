@@ -42,6 +42,32 @@ Multi-robot cooperative egocentric spatial reasoning using multimodal large lang
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    VID["N 个机器人的同步第一视角视频 V_r + 问题 q"] --> SAMP
+    subgraph SAMP["SE-MR2FS: 免训练频谱能量感知帧采样 (每个机器人独立)"]
+        direction TB
+        C1["冻结 CLIP 编码帧与问题, 余弦相似度取 top-M 候选"] --> C2["候选内对 CLIP 特征做时间维 FFT, 得频率能量 e"]
+        C2 --> C3["能量 + 语义项综合打分, 保留 K 帧"]
+    end
+    SAMP --> TOK["MLLM 视觉编码器给每个机器人 K 个视觉 token<br/>低频幅度谱经 MLP → 谱 token F_r"]
+    TOK --> FUSION
+    POSE["位姿/运动指令嵌入 P_r (训练时由仿真或动捕位姿给出)"] --> FUSION
+    subgraph FUSION["SGI-MRF: 谱与几何感知多机器人融合"]
+        direction TB
+        A1["辅助 token A_r = W_p P_r + W_f F_r + 机器人角色嵌入 E_r"] --> A2["视觉状态 μ_r 对 A_r 做 cross-attention"]
+        A2 --> A3["由视觉特征估计不确定性 σ_r → softmax 可靠性权重 w_r"]
+        A3 --> A4["加权聚合为全局团队信念 z"]
+    end
+    FUSION --> STU["学生提示 P_S = g_S(z, C), 推理时只用学生"]
+    TEACH["GMIPSD 训练期教师提示 P_T: 由真值位姿嵌入生成"] -.->|"余弦距离蒸馏 L_distill"| STU
+    STU --> LM["与 W_z z 及问题嵌入拼接成前缀 → 语言模型 LM → 答案 y"]
+```
+
+图依据：论文 §4.1–4.2 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Multi-robot cooperative egocentric spatial reasoning using multimodal large lang
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.18431>
+- [arXiv PDF](https://arxiv.org/pdf/2605.18431)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1 问题形式化、4.2 SG-CoR：SE-MR2FS、SGI-MRF、GMIPSD、训练目标）；§3 基准构建与 §5 实验以略读为准
 
 ## 推荐继续阅读
 

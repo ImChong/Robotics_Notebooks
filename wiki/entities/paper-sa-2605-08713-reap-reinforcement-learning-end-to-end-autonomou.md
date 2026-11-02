@@ -42,6 +42,28 @@ Establishes a Real2Sim2Real simulator to ensure trained reinforcement learning n
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R2S["Real2Sim：手持 LiDAR 扫描，点云初始化 3DGS，重建场景"] --> SIM["3DGS 仿真器：渲染环视图像 + 自行车模型运动学 + 2.5D 高程图 / 双层车辆模型碰撞"]
+    SIM --> IMG["环视相机图像 → IPM / BEV 特征"]
+    TGT["目标车位热力图（用户在 IPM 图上选择）"] --> ENC
+    IMG --> ENC["特征编码：BEV 特征融合，辅助任务 OCC / PSD / Target"]
+    ENC --> ACT["Actor（SAC）：预测动作 a = (v, ω)"]
+    ACT --> SIM
+    RULE["规则规划器（Reeds-Shepp 曲线）"] --> BC["可用时以概率 p 做行为克隆 L_BC"]
+    BC --> ACT
+    SIM --> PRIV["仿真特权信息：无伪影 BEV 图（占据 / 车位检测 / 目标图）"]
+    PRIV --> CRI["Critic：自编码器编码 + 动作特征，估计 Q"]
+    ACT --> CRI
+    CRI --> ACT
+    REW["奖励：稀疏（成功 / 预测碰撞 / 锚点 / 超时 / 越界）+ 稠密（IoU / 软碰撞）"] --> CRI
+    ACT --> DEP["Sim2Real：仿真中训练的策略直接部署到实车"]
+```
+
+图依据：论文 §III 任务定义、§IV-A–D / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Establishes a Real2Sim2Real simulator to ensure trained reinforcement learning n
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2605.08713>
+- [arXiv PDF](https://arxiv.org/pdf/2605.08713)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 任务定义、§IV 方法（A–D：BEV 辅助任务网络、非对称混合 RL、奖励设计、3DGS 仿真器）；§V 实验以略读为准
 
 ## 推荐继续阅读
 

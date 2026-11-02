@@ -42,6 +42,28 @@ World models on pre-trained visual features enable zero-shot planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TRAIN["离线训练：仅用轨迹数据，不需奖励"]
+    A["观测 o_t"] --> B["冻结的 DINOv2<br/>编码为 patch 特征 z_t"]
+    B --> C["ViT 转移模型 p_θ（因果注意力，帧级自回归）<br/>输入历史 z_(t-H:t-1)，并拼接动作 / 本体感知"]
+    C --> D["预测下一帧潜在状态<br/>隐空间一致性损失 L_pred（teacher forcing）"]
+    B -.-> E["可选解码器 q_θ（转置卷积）<br/>重建损失 L_rec，仅用于可视化"]
+  end
+  subgraph PLAN["测试期规划：隐空间 MPC"]
+    F["当前观测 o_0 与目标观测 o_g"] --> G["同一 DINOv2 编码 → ẑ_0, z_g"]
+    G --> H["CEM 采样动作序列<br/>用 p_θ 在隐空间展开 ẑ_T"]
+    H --> I["代价 C = ‖ẑ_T − z_g‖²<br/>取代价最低的 top-K 更新采样分布并迭代"]
+    I --> J["执行前若干个动作 → 取新观测，重新规划"]
+    J --> F
+  end
+  D --> H
+```
+
+图依据：论文 §3 / Fig.2、附录 A.5.1（CEM 的 MPC 规划）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ World models on pre-trained visual features enable zero-shot planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.04983>
+- [arXiv PDF](https://arxiv.org/pdf/2411.04983)：已通读方法部分（实验与附录以略读为准）：§3 DINO World Models（3.1 观测/转移/解码器、3.2 视觉规划）、附录 A.5 规划优化；§4 实验略读
 
 ## 推荐继续阅读
 

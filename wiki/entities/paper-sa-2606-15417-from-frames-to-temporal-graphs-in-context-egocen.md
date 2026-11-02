@@ -42,6 +42,21 @@ Proposes converting videos into Temporal Action Graphs with a multi-stage prompt
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["egocentric 视频<br/>均匀采样 M 帧 (如 16)"] --> W["去掉首尾帧，取内部帧<br/>重叠滑动窗口 W_t (最大 n=4，步长 1)"]
+    W --> S1["Stage I 语义描述<br/>VLM 对每个窗口生成自然语言叙述 N_t<br/>(锚定窗口末帧的主导交互)"]
+    S1 --> S2["Stage II 符号抽取<br/>VLM 仅读 N_t，输出 JSON 局部图 G_t<br/>三元组 (source, relation, object)"]
+    S2 --> G["按时间索引拼接局部图<br/>Temporal Action Graph G^τ"]
+    G --> SER["确定性序列化<br/>时间序三元组文本"]
+    SER --> P["VLM 在封闭动作集上预测<br/>返回前 5 个动作与置信度"]
+    EX["可选：每类 k 个带标签图示例<br/>(in-context learning)"] -.-> P
+```
+
+图依据：论文 §3 / Fig.2（§3.1 时间分解、§3.2 神经符号映射、§3.3 TAG 构建、§3.4 动作预测与 ICL）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Proposes converting videos into Temporal Action Graphs with a multi-stage prompt
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.15417>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15417)：已通读方法部分（实验与附录以略读为准）：§3 方法（时间分解、两阶段提示、TAG 构建、预测与 ICL）、§4 的推理设置；实验结果与附录略读
 
 ## 推荐继续阅读
 

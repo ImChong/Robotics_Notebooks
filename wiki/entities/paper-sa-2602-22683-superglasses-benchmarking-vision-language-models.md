@@ -42,6 +42,28 @@ First real consumer smart glasses benchmark collected across Ray-Ban Meta, Xiaom
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["输入：眼镜拍摄图像 + 用户问题"] --> DR["Demand-Adaptive Answerer：VLM 作 Domain Router 识别领域，套用领域提示"]
+    DR --> DA["先用内部知识直接作答"]
+    DR --> RT["长尾或超出内部知识时触发多模态检索（Dual-Lens Knowledge Retriever）"]
+    RT --> SR["VLM Search Router：把所需知识拆成视觉对象与文本查询"]
+    SR --> OD["开放词表 Object Detector 框出图中对象"]
+    SR --> QD["Query Decoupler 把多跳问题拆成单跳子查询"]
+    OD --> IS["图像搜索"]
+    QD --> TS["文本搜索"]
+    IS --> WR["返回 top-N 网页 HTML → Webpage Reader 清洗文本（两层 Redis 缓存）"]
+    TS --> WR
+    WR --> RR["Multimodal Reranker 切块并按文本/视觉查询加权相似度重排，取 top-K"]
+    RR --> RG["拼入 RAG 提示，由 Answerer 生成最终回答"]
+    DA --> OUT["最终回答"]
+    RG --> OUT
+```
+
+图依据：论文 §3 SuperLens（§3.1–3.2）/ Fig.4（本图仅画 SuperLens 基线方法，不含 SuperGlasses 基准构建流程 Fig.2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ First real consumer smart glasses benchmark collected across Ray-Ban Meta, Xiaom
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.22683>
+- [arXiv PDF](https://arxiv.org/pdf/2602.22683)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 SuperLens 方法（3.1 Demand-Adaptive Answerer、3.2 Dual-Lens Knowledge Retriever）、§4.1 实验设定；基准数据构建（Fig.2）仅略读
 
 ## 推荐继续阅读
 

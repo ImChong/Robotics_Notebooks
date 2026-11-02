@@ -42,6 +42,28 @@ Memory-augmented multi-view action-conditioned world models; proposes W-VMem, a 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["首帧三路相机观测<br/>（2 个第三视角 + 1 个腕部视角）"] --> B["初始化 W-VMem<br/>由首帧构建初始 surfel 集合"]
+    VLM["VLM 分析指令与初始观测<br/>识别任务相关物体类别"] --> SEG["分割模型分割物体<br/>给 surfel 打 m_k 标记"]
+    SEG --> B
+    P["策略（或回放轨迹）给出动作块 a_(t+1:t+H)"] --> FK["正运动学得到末端位姿<br/>+ 固定手眼变换 + 相机外参<br/>得到未来腕部相机位姿"]
+    FK --> AVG["取平均未来腕部位姿"]
+    B --> R["按各时间步分别渲染 surfel"]
+    AVG --> R
+    R --> SC["打分：几何可见性 × 任务相关性 × 时间衰减"]
+    SC --> NMS["Top-K + NMS 选出历史帧 H_t"]
+    NMS --> W["多视角动作条件世界模型 W<br/>输入当前观测、H_t、动作块"]
+    P --> W
+    W --> O["生成未来多视角观测"]
+    O --> U["仅用生成的腕部视角帧<br/>更新 surfel"]
+    U --> B
+```
+
+图依据：论文 §3 / Fig.1、§3.2 与 Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Memory-augmented multi-view action-conditioned world models; proposes W-VMem, a 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.18960>
+- [arXiv PDF](https://arxiv.org/pdf/2606.18960)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.2、Algorithm 1）
 
 ## 推荐继续阅读
 

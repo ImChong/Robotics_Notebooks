@@ -41,6 +41,27 @@ We propose \textbf{NoiseGate}, which combines independent per-latent timestep sa
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1：骨干示范微调"]
+        D["示范数据"] --> IS["独立采样每个预测 latent 帧的时间步 t_1..t_F 与动作时间步 t_a，构造异质加噪输入"]
+        IS --> BB["联合 video–action MoT 骨干：Wan 2.2-TI2V-5B 视频 DiT + Action-Expert DiT，共享 self-attention，模态专属 FFN"]
+    end
+    subgraph S2["Stage 2：冻结骨干，GRPO 训练 Gating Policy Network"]
+        OBS["干净观测 latent v_0（固定 t_0 = 0）+ 语言指令"] --> BB2["去噪第 k 步：骨干联合处理 观测、加噪视频 latent、动作 token"]
+        BB2 --> GPN["GPN：读取当前异质加噪 latent 块与各帧时间步，输出相对缩放 r_f"]
+        GPN --> UP["各帧时间步递减 Δt_f = δt · r_f，更新 t_f"]
+        UP --> BB2
+        BB2 --> ACT["动作 token 按全局固定调度（线性或余弦衰减）去噪，输出动作块"]
+        ACT --> REW["仿真器二值任务回报 → GRPO 组内相对优势 → 仅更新 GPN"]
+    end
+    BB --> BB2
+```
+
+图依据：论文 §3.3、§4.1–4.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ We propose \textbf{NoiseGate}, which combines independent per-latent timestep sa
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.07794>
+- [arXiv PDF](https://arxiv.org/pdf/2605.07794)：已通读方法部分（实验与附录以略读为准）：摘要、§3 问题表述、§4.1–4.4（MoT 骨干、独立 per-latent 时间步采样、GPN、GRPO 训练）；§5 实验以略读为准
 
 ## 推荐继续阅读
 

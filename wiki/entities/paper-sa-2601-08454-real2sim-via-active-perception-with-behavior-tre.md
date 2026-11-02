@@ -42,6 +42,24 @@ Constructing physically accurate simulation environments traditionally relies on
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["用户输入：仿真描述 D（MuJoCo .xml）+ 意图 R + RGB 观测 I"] --> VLM
+    SP["固定系统提示 S：6 个功能模块"] --> VLM
+    VLM["VLM 语义任务分解：识别物体 O 与最小缺失参数集 Φ"] --> SEL["从原子动作库 A 选择动作"]
+    SEL --> SYN["用组合节点 C（Sequence / Parallel）合成 Behavior Tree"]
+    SYN --> PARSE["py_trees 解析"]
+    PARSE --> EXEC["Franka Panda 执行 BT：按 tick 响应传感反馈"]
+    EXEC -->|"原语失败返回 FAILURE"| SAFE["安全中止 / 恢复分支"]
+    EXEC --> EST["由外力 w_ext 估计物理参数：质量、几何、摩擦等"]
+    EST --> XML["写回 MuJoCo .xml，几何由接触点校验"]
+    XML --> OUT["物理感知的仿真模型 M"]
+```
+
+图依据：论文 §III（Fig.1、式 1–4、Tab.I/II 与提示组成）、§IV-A/B/C
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Constructing physically accurate simulation environments traditionally relies on
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2601.08454>
+- [arXiv PDF](https://arxiv.org/pdf/2601.08454)：已通读方法部分（实验与附录以略读为准）：§I–§IV、§V 消融（Tab.III/IV）；§VI–§VII 略读
 
 ## 推荐继续阅读
 

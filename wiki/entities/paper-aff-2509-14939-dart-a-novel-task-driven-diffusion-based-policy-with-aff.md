@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Generalizable Manipulation of Articulated Objects——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit；Action Subcategory: Integrated policy · Explicit input）**（清单未附方法摘要，此处不替原文概括贡献）。
+DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Generalizable Manipulation of Articulated Objects——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit；Action Subcategory: Integrated policy · Explicit input）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,35 @@ DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Ge
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    PC["物体点云观测<br/>手指被遮挡部分用正运动学 + 指节网格采样的 imagined 点云补全"]
+    PN["冻结的 PointNet（分割预训练）<br/>提取视觉特征 o_pn"]
+    CP["Contact Planner：PointNet++ + actionable affordance 模块<br/>逐点 affordance 得分图 → top-K 点均值<br/>得到 max-affordance point observation o_MP"]
+    LTL["LTL 任务 φ → LTL progression（prog）<br/>Transformer 编码得到 LTL 表示 φ_θ"]
+    PC --> PN
+    PC --> CP
+    PN --> ND
+    CP --> ND
+    LTL --> ND
+    PR["本体感知 s_prop"] --> ND
+    ND["Diffusion-based Policy<br/>噪声估计器 ε_ξ 经 K 步反向去噪生成动作 a"]
+    ND --> ENV["环境交互 → 转移存入数据集 B"]
+    ENV -->|"RL 奖励（含 LTL 额外奖励 r_φ 与靠近 o_MP 的 MPR）"| TR
+    subgraph TR["训练阶段"]
+        U1["更新 critic 与噪声估计器"]
+        U2["Action Improvement<br/>沿 Q 值梯度改进动作"]
+        U3["成功率超阈值后用接触位置更新 Contact Planner"]
+    end
+    TR -.->|梯度回传更新 Transformer| LTL
+    U3 -.-> CP
+    U1 -.-> ND
+```
+
+图依据：论文 §III Manipulation Generalization（§III-A Overview 及 Alg. 1 描述、§III-B Feature Extraction、§III-C LTL 任务表示、§III-D Contact Planner、§III-E 扩散策略与 Action Improvement，Fig. 1 / Fig. 2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +80,7 @@ DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Ge
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2509.14939)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2509.14939)。
 
 ## 评测与指标
 
@@ -67,7 +96,7 @@ DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Ge
 
 **本页只提供「DART」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +117,7 @@ DART: A Novel Task-Driven Diffusion-Based Policy with Affordance Learning for Ge
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2509.14939>
+- [arXiv PDF](https://arxiv.org/pdf/2509.14939)：已通读方法部分（实验与附录以略读为准）：§II 预备知识、§III Manipulation Generalization（§III-A 至 §III-F）
 
 ## 推荐继续阅读
 

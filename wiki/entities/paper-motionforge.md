@@ -29,6 +29,23 @@ MotionForge生成动态物体长程操作任务，改变速度、物体、背景
 
 MotionForge生成动态物体长程操作任务，改变速度、物体、背景和光照以测域偏移。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["研究者提供 Design Prompt<br/>场景配置、目标物体、任务目标"] --> B["Coding Agent<br/>从统一 Asset Repository 选资产，做 Environment Initialization<br/>（布局/物体/光照/运动参数）"]
+    B --> C["Sub Oracle State Loop：组合预定义 Skills<br/>1 跟踪目标 6D 位姿 → 2 接近 Pre-Interaction Pose<br/>→ 3 执行任务技能 → 4 后续操作（如放置）"]
+    C --> D["候选任务在多种随机初始条件下运行<br/>记录视频与机器人/物体/执行日志"]
+    D --> E{"Examine Agent 验证<br/>oracle 成功率 >50%；4–8 个目标物体可成功；多种速度可成功"}
+    E -->|"未通过"| F["Failure Analysis<br/>交互失败 / 预抓取失败 / 执行超时 / 其他"]
+    F -->|"Failure Feedback"| B
+    E -->|"通过"| G["固定任务配置 → Trajectory Generation<br/>随机位置、并行 rollout、失败过滤、轨迹收集"]
+    G --> H["MotionForge 训练数据集"]
+    H --> I["策略评测：Factorized OOD（速度/物体/背景/光照）<br/>Decoupled Real-Time 协议：120 Hz 仿真时钟下推理期间环境不暂停"]
+```
+
+图依据：论文 §IV-A / §IV-B / Fig.5（数据生成流水线）、§III-C、§III-D（评测协议）。
+
 ## 方法栈
 
 仿真管线提供任务和示范；异步协议让环境在策略推理时继续运行，旧动作执行期间目标仍可移动。
@@ -70,6 +87,7 @@ MotionForge生成动态物体长程操作任务，改变速度、物体、背景
 
 - [Day 6 原文归档](../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md)
 - [arXiv:2609.25689](https://arxiv.org/abs/2609.25689)
+- [arXiv PDF](https://arxiv.org/pdf/2609.25689)：已通读方法部分（实验与附录以略读为准）：§III 基准设计与协议（A、C、D）、§IV 任务构建与数据生成、§V-A 实验设定
 
 ## 推荐继续阅读
 

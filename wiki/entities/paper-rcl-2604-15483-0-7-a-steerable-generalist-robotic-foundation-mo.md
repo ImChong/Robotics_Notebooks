@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    TASK["任务指令 ℓ（如 clean the kitchen）"] --> HLP["高层语义策略（同架构）或人类口头指导：产生子任务指令 ℓ̂"]
+    OBS["当前观测 o_t：最多 4 路相机 + 历史帧 + 本体状态 q_t"] --> HLP
+    HLP -->|"子任务指令 ℓ̂"| WM["轻量世界模型（BAGEL 初始化）：生成多视角子目标图像"]
+    OBS --> WM
+    META["Episode metadata：速度 / 质量 / 是否出错；另有 control mode"] --> WM
+    HLP -->|"ℓ̂"| CTX
+    WM -->|"子目标图像 g（语义变化或 4 秒刷新）"| CTX["上下文 C = ℓ, ℓ̂, g, m, c（训练时各组件随机 dropout）"]
+    META --> CTX
+    OBS --> ENC["MEM 式视频历史编码器（压缩历史帧为固定 token 数）"]
+    CTX --> VLM["4B VLM 骨干（含 400M 视觉编码器）"]
+    ENC --> VLM
+    VLM -->|"注意 VLM 激活"| AE["860M Action Expert：flow matching，50 步动作块"]
+    AE --> ACT["执行动作块的前 Ĥ 步（异步推理 + RTC）"]
+    ACT -->|"新观测"| OBS
+```
+
+图依据：论文 Fig.2 / Fig.3、§V（Diversifying the Prompt）、§VI-B（模型架构）与 §VII / Algorithm 1（运行时提示）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +121,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.15483>
+- [arXiv PDF](https://arxiv.org/pdf/2604.15483)：已通读方法部分（实验与附录以略读为准）：§III 流式 VLA 基础、§IV–V 提示组成、§VI 训练与架构、§VII 运行时提示
 
 ## 推荐继续阅读
 

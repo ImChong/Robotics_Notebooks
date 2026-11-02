@@ -42,6 +42,37 @@ Video-action foundation model with semantic visual-action tokenizer, causal pret
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：Semantic Visual-Action Tokenizer（无动作标注视频）"]
+        V["输入视频"] --> VE["ViT 视觉 tokenizer 编码器 → 视觉潜变量 z"]
+        VE --> VD["解码器重建 L_rec"]
+        VF["冻结 Perception Encoder 特征"] -.-> AL["语义对齐 L_align"]
+        VE --> AL
+        VE --> IDM["Latent Action Tokenizer：IDM 预测潜动作 ℓ_t"]
+        IDM --> FDM["FDM 重建下一帧潜变量<br/>前向预测 + 反向一致性 L_ℓ"]
+    end
+    IDM --> LAT["成对 (视觉潜变量 z, 潜动作 ℓ)：作为第二阶段训练目标"]
+    subgraph S2["阶段二：因果 Video-Action 预训练"]
+        LAT --> POL["低层 Video-Action 策略<br/>MoT：Video expert（稀疏 MoE DiT）+ Action expert"]
+        HR["人类与机器人数据联合训练<br/>共享 world model，分域 action encoder/decoder"] --> POL
+        ICL["人类示范视频作为 in-context 视觉任务提示"] --> POL
+        MCP["Multi-Chunk Prediction 辅助监督（仅训练时）"] --> POL
+    end
+    subgraph S3["推理：分层规划 + Foresight Reasoning"]
+        PL["高层 VLM Planner（约 2 Hz）<br/>输出 done / instruction / generation_instruction / local_scene_description"] --> BUF["异步共享 buffer"]
+        BUF -- "每个 action chunk 边界读取最新 subtask 上下文" --> RUN["策略预测下一 action chunk"]
+        RUN --> EXE["机器人执行当前 chunk"]
+        EXE --> OBS["真实观测编码为 z_t+1"]
+        OBS -- "覆盖 KV cache 中预测的 latent，重新 grounding" --> RUN
+    end
+    POL --> RUN
+```
+
+图依据：论文 §2.2（Fig.2）、§2.3.1（Fig.3）、§2.3.2–2.3.7（Fig.5–6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Video-action foundation model with semantic visual-action tokenizer, causal pret
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.08639>
+- [arXiv PDF](https://arxiv.org/pdf/2607.08639)：已通读方法部分（实验与附录以略读为准）：摘要、§2.1–2.3.7（Preliminary、Semantic Visual-Action Tokenizer、分层规划、MoE、MCP、ICL、人机联合训练、训练配方、Foresight Reasoning）、Fig.2–6
 
 ## 推荐继续阅读
 

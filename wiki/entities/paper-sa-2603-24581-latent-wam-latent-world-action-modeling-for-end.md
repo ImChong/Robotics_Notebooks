@@ -43,6 +43,24 @@ Latent world action modeling for trajectory planning via spatial-aware and dynam
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IMG["多视角连续帧 I"] --> SCWE["SCWE：DINOv2 编码器\n+ N=16 个可学习 scene queries\n压缩为紧凑 scene tokens"]
+  GEO["几何基础模型 WorldMirror\n（冻结，特征离线缓存）"] -.->|"余弦对齐损失 L_align，仅训练"| SCWE
+  EGO["自车状态\n指令 / 速度 / 加速度"] --> EE["Ego 状态编码器 MLP"]
+  SCWE --> SW["Scene-Ego 世界状态 S_world"]
+  EE --> SW
+  SW --> TD["轨迹解码器\n可学习轨迹查询 + 指令选择候选轨迹"]
+  TD --> TRAJ["4 秒轨迹"]
+  SW -.->|"仅训练"| DLWM["DLWM：因果 Transformer\n预测未来世界状态，推理时丢弃"]
+  TGT["目标编码器\nSCWE 的 EMA 冻结副本"] -.-> DLWM
+  DLWM --> LOSS["L_wm（MSE）+ 自车状态监督 L_ego"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ Latent world action modeling for trajectory planning via spatial-aware and dynam
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.24581>
+- [arXiv PDF](https://arxiv.org/pdf/2603.24581)：已通读方法部分（实验与附录以略读为准）：Abstract、§3 方法（3.1–3.5）、§4.1 实现细节
 
 ## 推荐继续阅读
 

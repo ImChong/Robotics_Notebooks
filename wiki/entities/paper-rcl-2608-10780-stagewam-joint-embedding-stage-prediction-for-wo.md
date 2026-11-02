@@ -41,6 +41,37 @@ We introduce StageWAM, which augments a Motus-based World Action Model (WAM) wit
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage I：训练 Stage-JEPA（goal 条件 JEPA 预测器）"]
+        TRAJ["机器人轨迹（无人工阶段标注）"] --> KEY["冻结 V-JEPA2 编码 64 帧片段<br/>表征变化打分 + 时间 NMS<br/>得到最多 5 个转换关键帧"]
+        KEY --> PAIR["阶段边界 B：首帧、关键帧、末帧<br/>每个当前帧 t 配对其下一边界 b(i+1)"]
+        PAIR --> ENCC["冻结 V-JEPA2 编码器 E<br/>当前切片 S_t → z_t；目标切片 → z_target"]
+        ENCC --> PRED["可训练预测器（V-JEPA2 predictor 初始化）<br/>+ 指令 cross-attention 适配器"]
+        INS1["任务指令 l"] --> PRED
+        PRED --> LS["预测下一阶段 token 与目标 token<br/>余弦损失 L_stage"]
+    end
+    subgraph S2["Stage II：训练阶段条件 WAM（冻结 Stage-JEPA）"]
+        OBS2["当前观测切片 + 指令 l"] --> JEPA["冻结 Stage-JEPA<br/>预测下一阶段 latent"]
+        JEPA --> POOL["均值池化 + MLP P_ψ<br/>对齐 Wan 视频 token 维度"]
+        POOL --> INJ["以有界标量门 α=0.2σ(β) 加性注入<br/>广播到所有视频 token"]
+        INJ --> MOTUS["Motus WAM（Mixture-of-Transformers）<br/>视频专家 Wan2.2 / 动作专家 / 理解专家 Qwen3-VL<br/>三模态联合注意力"]
+        MOTUS --> LOUT["L = L_video + L_action + L_reg"]
+    end
+    S1 -->|"冻结预测器"| S2
+    subgraph INFER["闭环推理"]
+        BUF["因果 64 帧观测缓冲 H_t"] --> JEPA2["Stage-JEPA 预测下一阶段 latent"]
+        JEPA2 --> WAM2["Stage-conditioned WAM<br/>预测 8 帧未来视频与 16 个动作"]
+        WAM2 --> ENV["环境执行动作块，更新缓冲后再次查询"]
+        ENV --> BUF
+    end
+    S2 --> INFER
+```
+
+图依据：论文 §Method（Stage I、Stage II、Closed-Loop Inference）、Implementation Details / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +128,7 @@ We introduce StageWAM, which augments a Motus-based World Action Model (WAM) wit
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.10780>
+- [arXiv PDF](https://arxiv.org/pdf/2608.10780)：已通读方法部分（实验与附录以略读为准）：Preliminaries/Stage-Conditioned Manipulation、Method（Stage I、Stage II、Closed-Loop Inference）与 Implementation Details
 
 ## 推荐继续阅读
 

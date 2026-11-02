@@ -42,6 +42,28 @@ An interaction-centric memory framework formulating long-horizon egocentric memo
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAP["egocentric 视频 caption<br/>EgoGPT 生成"] --> REC["LLM Qwen2.5-7B-Instruct 抽取<br/>interaction record f=(人, 动作, 物体, 起止时间)"]
+    subgraph COMP["在线记忆压缩（逐条流式）"]
+        P1["Event-Prototype Assignment<br/>结合近 k 条历史的上下文嵌入<br/>相似度超过阈值归入最近原型，否则新建原型"]
+        P2["Interaction Importance<br/>频率 × 近因衰减 × 多样性<br/>w 低于阈值 τ 的记录丢弃"]
+        P3["Interaction Consolidation<br/>与已有记忆条目相似则合并<br/>否则新建条目"]
+        P1 --> P2 --> P3
+    end
+    REC --> P1
+    P3 --> MEM["压缩记忆 M<br/>条目保留时间顺序与聚合重要性"]
+    Q["问题 q（提问时刻 t_q）"] --> CUE["LLM 抽取检索线索<br/>物体 / 动作 / 时间约束"]
+    CUE --> RANK["对 M 打分 s_k<br/>物体相似度 + 动作相似度 + 重要性<br/>取 Top-K"]
+    MEM --> RANK
+    RANK --> TF["按时间约束过滤<br/>first_time / last_time / before / after"]
+    TF --> ANS["LLM 基于证据作答"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ An interaction-centric memory framework formulating long-horizon egocentric memo
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.00696>
+- [arXiv PDF](https://arxiv.org/pdf/2607.00696)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.3、§4.1 实现细节（其余实验以略读为准）
 
 ## 推荐继续阅读
 

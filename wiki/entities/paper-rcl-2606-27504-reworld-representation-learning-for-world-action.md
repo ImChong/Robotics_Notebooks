@@ -42,6 +42,29 @@ We present ReWorld, the first representation learning framework specifically des
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  I["驾驶视频 clip + 自车运动学 s + 导航指令 g"] --> E["时空 VAE 编码<br/>+ 冻结 T5 文本条件"]
+  E --> VD["Video DiT (2B)<br/>建模未来场景演化"]
+  VD -->|"首个去噪步的 mid-denoising 块特征 F"| AD["Action DiT (133M)<br/>cross-attention 读取 F<br/>并以 s, g 为条件"]
+  AD --> TR["自车轨迹 (x, y, ψ)<br/>规划时不解码未来视频"]
+  subgraph CUR["三阶段表征课程"]
+    S1["阶段1: Video DiT<br/>L_Gen + 中间层监督 L_Mid"]
+    S2["阶段2: 冻结 Video DiT<br/>L_FM + 对齐损失 L_align"]
+    S3["阶段3: 联合微调<br/>L_FM + 硬负样本排斥 L_RDE"]
+    S1 --> S2 --> S3
+  end
+  S1 -.作用于.-> VD
+  S2 -.作用于.-> AD
+  S3 -.作用于.-> VD
+  S3 -.作用于.-> AD
+  VD -.推理采样.-> SG["自引导速度 v_w = v_i + γ(v_f - v_i)"]
+```
+
+图依据：论文 §3.1–§3.6、Fig. 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +122,7 @@ We present ReWorld, the first representation learning framework specifically des
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.27504>
+- [arXiv PDF](https://arxiv.org/pdf/2606.27504)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.6）；§4 实验设定略读
 
 ## 推荐继续阅读
 

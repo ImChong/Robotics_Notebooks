@@ -42,6 +42,34 @@ Unified VLA pretraining framework jointly leveraging heterogeneous data sources 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["第一人称人类视频 → 伪动作（五阶段流水线）"]
+        H1["1 数据集整理：6 个第一人称数据集<br/>统一格式，切 4–30 秒片段"] --> H2["2 视频筛选：ego-interaction 过滤<br/>+ 字幕过滤（需含操作动词与物体名词）"]
+        H2 --> H3["3 3D 手部重建：SAM3 跟踪 → HaMeR 局部位姿<br/>→ 两阶段全局轨迹优化（VIPE 相机位姿）"]
+        H3 --> H4["4 动作参数化：腕部为末端原点<br/>拇指-掌心距离作夹爪代理，转回头部相机系"]
+        H4 --> H5["5 质量控制：多重过滤<br/>得 1478 小时伪动作数据"]
+    end
+    subgraph UNI["统一动作表示"]
+        U1["空间：机器人末端与人手<br/>统一到头部相机坐标系，6D 旋转"]
+        U2["结构：形态 token<br/>机器人由 URDF 图编码，人类用可学习 surrogate embedding"]
+        U3["时间：按物理时长定 chunk 长度 H_d = round(f_d·T*)<br/>并按任务/阶段/长度分桶组 batch"]
+    end
+    R["机器人演示与仿真 rollout（传感器动作）"] --> U1
+    H5 --> U1
+    U1 --> U2 --> U3
+    U3 --> VLM["Qwen3-VL (4B) 处理多视角图像与语言指令"]
+    VLM --> AX["Action Expert (600M)：接收 VLM 表示与形态 token<br/>flow matching 预测相机系动作块"]
+    AX --> LR["机器人样本：主 flow-matching 损失 L_action"]
+    AX --> LH["人类样本：辅助损失 L_haux<br/>Huber + 可靠性权重 W = ρ_j · w_(t,j)，侧重位置通道"]
+    LR --> TOT["总损失 L = L_action + λ·L_haux"]
+    LH --> TOT
+```
+
+图依据：论文 §3.1–3.2、§4.2 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Unified VLA pretraining framework jointly leveraging heterogeneous data sources 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.17200>
+- [arXiv PDF](https://arxiv.org/pdf/2606.17200)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.2）、§4.1–4.2 数据与伪动作流水线（Stage 1–4 读过，Stage 5 质量控制仅据图注）
 
 ## 推荐继续阅读
 

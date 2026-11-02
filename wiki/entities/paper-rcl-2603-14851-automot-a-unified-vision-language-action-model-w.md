@@ -43,6 +43,24 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多视角多帧 RGB + 文本 prompt<br/>LiDAR BEV 特征 + 自车状态与历史"] --> UE["Understanding Expert（UE）<br/>Qwen3-VL-4B，全程冻结<br/>场景理解与 CoT 推理"]
+    UE -->|"低频更新 layer-wise K/V"| KV["共享 KV cache<br/>C_τ(t)"]
+    IN --> AE["Action Expert（AE，约 1.6B，从头训练）<br/>action queries + RGB + BEV<br/>在共享注意力空间内 joint attention"]
+    KV -->|"拼接 UE 的 K/V 与 AE 的 K/V"| AE
+    AE --> D["语义 meta-action 决策<br/>未来 3 s，1 s 间隔"]
+    AE --> TP["时间 waypoints 与空间 route points 提议"]
+    TP --> AR["Action Refiner：DiT + Mixture-of-Attention<br/>以 AE 轨迹为先验，截断反向去噪"]
+    AE -->|"latent decision states"| AR
+    IN -->|"BEV 特征"| AR
+    AR --> OUT["精修后的轨迹"]
+```
+
+图依据：论文 §3.1 Network Architecture / Fig.2-4，§3.3 异步推理与 KV caching（公式 4-5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +118,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://icml.cc/virtual/2026/poster/64489>
+- [arXiv PDF](https://arxiv.org/pdf/2603.14851)：已通读方法部分（实验与附录以略读为准）：§3 AutoMoT（3.1 Network Architecture、3.2 Training Strategy、3.3 Asynchronous Inference）
 
 ## 推荐继续阅读
 

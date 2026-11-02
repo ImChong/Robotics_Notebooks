@@ -24,6 +24,28 @@ summary: "World-T³ 通过测试时训练的位姿索引快速权重记忆，改
 
 # World-T³：测试时训练作为持久记忆
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P0[预训练文本-图像条件视频扩散模型 VDM] --> S1[阶段1 双向相机条件教师<br/>低秩适配器 + Plücker raymap 调制每个 DiT 块]
+  S1 -->|权重初始化| S2
+  subgraph S2[阶段2 自回归教师 + TTT 记忆]
+    direction TB
+    BC[块因果注意力<br/>上下文 = 首块 sink + 最近 K 个干净块] --> GEN[生成目标块 b]
+    EV[旧块移出上下文窗口] -->|key = 相机 raymap<br/>value = 干净隐状态| WR[WRITE: 递归最小二乘 RLS<br/>更新快速权重 W2 与状态 P]
+    WR --> MEM[位姿索引快速权重记忆]
+    TP[目标相机位姿 raymap] -->|READ: m = W2·gelu W1 k| MEM
+    MEM --> INJ[门控残差注入每个 DiT 块]
+    INJ --> GEN
+  end
+  S1 -->|双向分数 s_bidir| S3
+  S2 -->|带记忆分数 s_mem| S3
+  S3[阶段3 双教师 DMD 蒸馏<br/>先做一致性蒸馏 4 步初始化] --> OUT[4 步实时流式学生模型]
+```
+
+图依据：论文 §3 / §3.1–3.3、Fig.3、式 (1)–(8)。
+
 ## 一句话定义
 
 **World-T³** 是相机控制的视频世界模型：它在生成过程中将历史视觉特征写入快速权重，再按目标相机位姿读取，以改善场景重访一致性。
@@ -96,6 +118,7 @@ summary: "World-T³ 通过测试时训练的位姿索引快速权重记忆，改
 
 - [论文归档](../../sources/papers/world_t3_arxiv_2610_17434.md)
 - [项目页归档](../../sources/sites/world-t3.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.17434)：已通读方法部分（实验与附录以略读为准）：§3 方法概述、§3.1 阶段1、§3.2 阶段2（块因果、测试时记忆巩固、RLS 写入与读取）、§3.3 阶段3 双教师蒸馏、Fig.3；§4 实验略读
 
 ## 推荐继续阅读
 

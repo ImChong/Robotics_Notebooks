@@ -42,6 +42,34 @@ A benchmark for egocentric scene prediction with long-horizon reasoning: given a
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BUILD["基准构建"]
+        SRC["Ego4D / Ego-Exo4D 视频 + 自录视频<br/>按活动筛选并人工复核"] --> FR["取主活动起止帧 = 初始场景 / 最终场景图<br/>按时间戳取其间原子动作序列"]
+        FR --> TAG["对象标注：RAM++（最终场景图）+ spaCy（动作描述）<br/>LLM + 规则过滤无效标签"]
+        TAG --> GND["Grounding DINO 框出对象"]
+        GND --> AR["Qwen3-VL-235B-A22B-Instruct<br/>生成属性与对象关系三元组"]
+        AR --> INT["信息整合 → GPT-5.2 校正与补充 → 人工校正"]
+    end
+    subgraph EVAL["评测流程"]
+        IN["输入：初始场景图 + 原子动作序列"] --> MLLM["被测 MLLM 预测最终场景描述"]
+        MLLM --> DEC["拆分子描述，spaCy 提取候选对象"]
+        DEC --> SO["对象级：Sentence-BERT 相似度矩阵互为最大匹配 → Sobj"]
+        DEC --> SA["属性级：LLM 0–5 打分 → Satt"]
+        DEC --> SR["关系级：LLM 0–5 打分 → Srel"]
+        SO --> UNI["加权统一分 Suni"]
+        SA --> UNI
+        SR --> UNI
+    end
+    INT -->|"最终场景标注作为参照"| SO
+    INT --> SA
+    INT --> SR
+```
+
+图依据：论文 §3.2 标注流水线 / Fig.3 与 §3.3 评测协议
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ A benchmark for egocentric scene prediction with long-horizon reasoning: given a
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.09731>
+- [arXiv PDF](https://arxiv.org/pdf/2603.09731)：已通读方法部分（实验与附录以略读为准）：§3（概览、数据集构建与场景标注流水线、评测协议）与 §4.1 评测设置
 
 ## 推荐继续阅读
 

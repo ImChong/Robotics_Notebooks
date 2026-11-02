@@ -47,6 +47,26 @@ summary: "Shallow-π（arXiv:2601.20262，IROS 2026 最佳论文候选）：flow
 - 在 **Jetson Orin / Thor** 与人形等多平台上做工业级真机验证，衔接 [VLA 部署指南](../queries/vla-deployment-guide.md)。
 - **待发布** 官方代码/权重（步骤 2.5，2026-09-25）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  T["教师：预训练 flow-based VLA v_φ<br/>VLM 骨干 + 动作头（每层交叉注意力注入 VL 特征）"] --> I["学生初始化：对骨干与动作头的层<br/>统一子采样（TinyBERT 式），减少层数"]
+  I --> S["浅层学生 v_θ"]
+  GT["真值速度 u = a − ε"] --> L1["L_task：flow matching 任务损失"]
+  S --> L1
+  T --> L2["L_kd：学生速度对齐教师预测速度"]
+  S --> L2
+  T --> L3["L_attn：仅在中间层对齐<br/>动作 token → VL token 的交叉注意力分布（KL）"]
+  S --> L3
+  L1 --> O["联合优化三项损失"]
+  L2 --> O
+  L3 --> O
+  O --> S
+```
+
+图依据：论文 §5 / Fig.5、Eq.1–3（任务损失、速度蒸馏、注意力蒸馏）
+
 ## 核心机制
 
 - **问题：** flow-based VLA 动作头 **每层** 与 VLM 交叉注意力；传统 layer-skipping 对 π 类结构无效。
@@ -91,6 +111,7 @@ summary: "Shallow-π（arXiv:2601.20262，IROS 2026 最佳论文候选）：flow
 
 - [shallow_pi_arxiv_2601_20262.md](../../sources/papers/shallow_pi_arxiv_2601_20262.md)
 - [wechat_ai_tech_review_iros_2026_six_trends_2026-09-25.md](../../sources/blogs/wechat_ai_tech_review_iros_2026_six_trends_2026-09-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2601.20262)：已通读方法部分（实验与附录以略读为准）：§3 预备（flow-based VLA 与延迟）、§4 层跳过为何不足、§5 蒸馏目标与注意力蒸馏、§5.3 消融概述；§6 实验略读
 
 ## 推荐继续阅读
 

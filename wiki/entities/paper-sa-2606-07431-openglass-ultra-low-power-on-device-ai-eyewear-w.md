@@ -42,6 +42,30 @@ Fully open-source event camera wearable hardware stack paired with lightweight e
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph EFF["效率域（常开低功耗）"]
+        W["LIS2DW12 加速度计 / T5838 麦克风：可配置为事件唤醒源"]
+        N["nRF5340 协调器：唤醒管理与 BLE 通信"]
+    end
+    subgraph PERF["性能域（推理间断电）"]
+        P1["Phase I：GAP9 冷启动"]
+        P2["Phase II：GENX320 事件相机冷启动与采集"]
+        P3["Phase III：事件累积为 64×64 极性分离直方图帧，10 帧一个 clip，GAP9 上手势识别推理"]
+    end
+    W --> N
+    N --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> B["手势预测 + 边界框"]
+    B --> P4["Phase IV：nRF5340 经 BLE 发送给配对接收端，GAP9 与相机断电"]
+    P4 --> N
+```
+
+图依据：论文 §III 系统架构（Fig.4）、§IV-A/B 数据预处理与模型、§V-F 端到端系统评估（Table VI、Fig.7 四个阶段）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Fully open-source event camera wearable hardware stack paired with lightweight e
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.07431>
+- [arXiv PDF](https://arxiv.org/pdf/2606.07431)：已通读方法部分（实验与附录以略读为准）：摘要、§III 系统架构、§IV 神经网络、§V-F 端到端系统评估；§V 其余评估与讨论略读
 
 ## 推荐继续阅读
 

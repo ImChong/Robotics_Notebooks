@@ -42,6 +42,25 @@ First native language world models (35B-A3B and 397B-A17B) simulating agentic en
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["环境轨迹数据：专用 Agent 基础设施 / 开放交互轨迹 / 内部 Agentic 轨迹<br/>统一轨迹格式：系统提示 + 动作(user 轮) + 观测(assistant 轮)"]
+    D --> CPT["阶段 1 CPT：注入世界知识<br/>非思考轨迹 + 专业领域语料<br/>下一 token 预测，turn 级信息论 loss masking"]
+    CPT --> SFT["阶段 2 SFT：激活下一状态预测<br/>显式思考链（拒绝采样，三条 rollout 取优）"]
+    SFT --> RL["阶段 3 RL（GSPO）：提升模拟保真度<br/>奖励 = 五维 rubric（LLM judge）与规则校验器按 9:1 组合"]
+    RL --> LWM["Qwen-AgentWorld 语言世界模型<br/>ô(t+1) = f(c, o≤t, a≤t)，覆盖 7 个域"]
+    LWM --> BENCH["AgentWorldBench 评测<br/>参照真实观测的 LLM judge：Format / Factuality / Consistency / Realism / Quality"]
+    LWM --> A1["应用 I：解耦的环境模拟器<br/>Agent 与世界模型是两个模型"]
+    A1 --> A1a["可扩展环境：由少量真实轨迹合成 4k 个 OpenClaw 环境做 Sim RL"]
+    A1 --> A1b["可控模拟：自然语言指令控制扰动（如对抗性片段）做 Sim RL"]
+    LWM --> A2["应用 II：统一的 Agent 基础模型<br/>单轮、无工具调用的 LWM RL 预热"]
+    A2 --> A2a["不再额外微调，直接在多轮工具调用的 Agent 基准上评测"]
+```
+
+图依据：论文 §2.3、§3（Fig. 5）、§4、§6.1–6.2（Fig. 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ First native language world models (35B-A3B and 397B-A17B) simulating agentic en
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.24597>
+- [arXiv PDF](https://arxiv.org/pdf/2606.24597)：已通读方法部分（实验与附录以略读为准）：§2.3、§3 训练配方（3.1–3.4）、§4 AgentWorldBench、§6.1–6.2 应用；其余章节与附录未读
 
 ## 推荐继续阅读
 

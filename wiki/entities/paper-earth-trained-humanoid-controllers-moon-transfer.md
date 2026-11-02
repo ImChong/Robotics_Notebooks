@@ -19,7 +19,7 @@ summary: "Moon Walk Transfer：在地球训练的人形控制器能在月球行�
 
 # Moon Walk Transfer：在地球训练的人形控制器能在月球行走吗？重力、地形与土壤迁移研究
 
-**Moon Walk Transfer**（*Do Earth-Trained Humanoid Controllers Walk on the Moon? Gravity, Terrain, and Soil Transfer*，[arXiv:2610.30080](https://arxiv.org/abs/2610.30080)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Moon Walk Transfer**（*Do Earth-Trained Humanoid Controllers Walk on the Moon? Gravity, Terrain, and Soil Transfer*，[arXiv:2610.30080](https://arxiv.org/abs/2610.30080)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,33 @@ summary: "Moon Walk Transfer：在地球训练的人形控制器能在月球行�
 ## 为什么重要
 
 - 周报所述待解决的问题：现有研究很少同时考虑月球低重力、粗糙地形和可变形月壤，也不清楚地球策略向月球迁移是否对称。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ENV["训练环境 (Isaac Lab / Newton + MuJoCo Warp, 4096 envs, 50 Hz)"]
+        G["重力: Earth 9.81 / Moon 1.62 / 对数均匀随机 [1.62, 9.81]"]
+        T["地形: 平地 或 粗糙 40 瓦片课程 + 重力倾斜至 26°"]
+        S["地面: 刚性 或 一半环境加 3D RFT 逐脚土壤力"]
+        DR["随机化: 脚摩擦 / 躯干质量 / 质心 / 执行器增益 / 推扰"]
+    end
+    ENV --> ACT["Actor π_θ (本体感知)<br/>10 帧历史 + 速度指令 → 29 关节 PD 目标"]
+    ENV --> CRIT["Critic V_φ (仅训练)<br/>附加特权状态与土壤参数"]
+    ACT --> PPO["PPO + 镜像增广<br/>GM-Loco 奖励项 / 10k 迭代"]
+    CRIT --> PPO
+    PPO --> POL["12 种训练策略<br/>8 个从零训练的网格策略<br/>2 个 Earth→Moon 微调 (+5k 迭代)<br/>2 个重力随机化策略"]
+    SONIC["SONIC 冻结参考控制器"] --> EVAL
+    POL --> EVAL["统一评测: 8 种速度指令曲线 / 10 s 回合<br/>Earth 与 Moon 重力"]
+    EVAL --> R1["地形瓦片: 陨坑 / 岩石 / 起伏 / 组合"]
+    EVAL --> R2["坡度 5°–30° 上下坡"]
+    EVAL --> R3["土壤: 3D RFT 与 MPM / SCM / CRM 三个留出引擎"]
+    R1 --> MET["指标: 存活率 S / 通过率 T / 土壤进度比 ρ_v"]
+    R2 --> MET
+    R3 --> MET
+```
+
+图依据：论文 §III-A–C、§IV-A–C / Fig.2（本文为系统性对比研究，图为其训练—评测流程，非新算法）
 
 ## 核心机制
 
@@ -86,6 +113,8 @@ summary: "Moon Walk Transfer：在地球训练的人形控制器能在月球行�
 - [earth-trained-humanoid-controllers-moon-transfer_arxiv_2610_30080.md](../../sources/papers/earth-trained-humanoid-controllers-moon-transfer_arxiv_2610_30080.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.30080](https://arxiv.org/abs/2610.30080)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30080)：已通读方法部分（实验与附录以略读为准）：摘要、§I–II、§III 训练设定 / 策略与预算 / 重力相关设计、§IV 实验设定（地形、土壤模型、评测协议）、§V 部分结果表
+
 
 ## 推荐继续阅读
 

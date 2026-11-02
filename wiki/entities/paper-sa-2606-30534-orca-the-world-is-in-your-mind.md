@@ -42,6 +42,30 @@ BAAI's general world foundation model learning a unified latent space from multi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["预训练：Orca Encoder（原生预训练 VLM + 可学习 Query）"]
+        direction TB
+        VID["视频帧 vt（Video Data）"] --> O1["1) Observation-only 状态转移（unconscious）：Query 1 末层隐状态经两层 MLP 预测下一帧潜变量"]
+        EVT["相邻事件描述 e(t+Δ)（Event Data）"] --> O2["2) Event-conditioned 状态转移（conscious）：Query 2 末层隐状态经两层 MLP 预测目标帧潜变量"]
+        VID --> O2
+        VQA["视频 V + 问题 lq（VQA Data）"] --> O3["3) VQA 回答生成（conscious）：LM head 自回归输出答案 la"]
+        FV["冻结视觉编码器：给出目标帧潜变量作 teacher forcing"] -.-> O1
+        FV -.-> O2
+    end
+    O1 --> LAT["统一世界潜空间 World Latent"]
+    O2 --> LAT
+    O3 --> LAT
+    LAT --> FRZ["预训练后 backbone 冻结，仅训练轻量读出模块"]
+    FRZ --> R1["到语言：复用 LM head 生成文本"]
+    FRZ --> R2["到视觉：MLP adaptor + LoRA（冻结 SD3.5）多步去噪生成图像"]
+    FRZ --> R3["到动作：MLP adaptor + DiT Action Expert（flow matching），输入含 q1 潜变量、本体感觉、带噪动作，输出 Action Chunk"]
+```
+
+图依据：论文 §2.1–2.2 / Fig. 1–2、§3.1.1、§3.2 / Fig. 4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ BAAI's general world foundation model learning a unified latent space from multi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.30534>
+- [arXiv PDF](https://arxiv.org/pdf/2606.30534)：已通读方法部分（实验与附录以略读为准）：§2 Orca（建模与架构）、§3.1 预训练配方与数据、§3.2 下游后训练读出
 
 ## 推荐继续阅读
 

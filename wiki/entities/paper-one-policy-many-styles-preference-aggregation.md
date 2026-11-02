@@ -21,7 +21,7 @@ summary: "One Policy Many Styles：一个策略、多种风格：可引导人形
 
 # One Policy Many Styles：一个策略、多种风格：可引导人形控制应在何处聚合偏好？
 
-**One Policy Many Styles**（*One Policy, Many Styles: Where to Aggregate Preferences for Steerable Humanoid Control?*，[arXiv:2610.28925](https://arxiv.org/abs/2610.28925)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**One Policy Many Styles**（*One Policy, Many Styles: Where to Aggregate Preferences for Steerable Humanoid Control?*，[arXiv:2610.28925](https://arxiv.org/abs/2610.28925)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -37,6 +37,28 @@ summary: "One Policy Many Styles：一个策略、多种风格：可引导人形
 ## 为什么重要
 
 - 周报所述待解决的问题：偏好条件策略可能虽然响应风格指令，却同时改变无关行为或损害任务性能。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["采样偏好 w（Dirichlet 0.5）<br/>系数 c_k(w)：任务项固定 w_task，风格项 w_pref·w_k"] --> R["K+1 维奖励向量 r_t<br/>任务奖励 + K 个风格奖励"]
+  R --> RL["Reward-level<br/>先加权成标量奖励，单一 critic V(s,w)，一个 GAE 优势，Lclip"]
+  R --> AL["Advantage-level<br/>逐目标 critic 与 GAE，加权合成优势后再 Lclip"]
+  R --> LL["Loss-level<br/>逐目标 critic 与优势，各自 Lclip 后加权求和"]
+  LL --> PC["PCGrad<br/>梯度冲突时用梯度投影替代加权求和"]
+  RL --> ACT["PPO 更新 actor π(a|s,w)"]
+  AL --> ACT
+  LL --> ACT
+  PC --> ACT
+  ACT --> SW["轴向扫描：固定参考偏好 w0，逐维扫 α"]
+  SW --> M1["PRR 矩阵：Self-PRR / Cross-PRR"]
+  M1 --> M2["Selectivity = Self-PRR / Cross-PRR"]
+  SW --> M3["Rank Accuracy：权重序是否预测奖励序"]
+  ACT --> M4["HV / EU / 任务奖励 Jtask / 跌倒率"]
+```
+
+图依据：论文 §4.1 Aggregation Strategies / §4.2 Steerability Evaluation Suite（"PCGrad" 分支依据 §4.1 末句及附录 B 的提示，附录 B 未读）。
 
 ## 核心机制
 
@@ -88,6 +110,7 @@ summary: "One Policy Many Styles：一个策略、多种风格：可引导人形
 - [one-policy-many-styles-preference-aggregation_arxiv_2610_28925.md](../../sources/papers/one-policy-many-styles-preference-aggregation_arxiv_2610_28925.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.28925](https://arxiv.org/abs/2610.28925)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28925)：已通读方法部分（实验与附录以略读为准）：§3 Preliminary、§4 Method（§4.1 聚合策略、§4.2 可引导性评测套件）、§5 Experiments（§5.1 至 §5.2 设定与主结果）
 
 ## 推荐继续阅读
 

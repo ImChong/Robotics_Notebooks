@@ -42,6 +42,26 @@ VideoWorld 2 learns discrete visual-dynamics codes with a pretrained diffusion a
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        V["未标注真实视频片段 x_0:T"] --> ENC["因果 VQ 编码器 + N 个可学习 query 的 cross-attention<br/>压缩视觉变化"]
+        ENC --> Q["量化得到离散潜在动力学码 z"]
+        Q --> DEC["复用 VQ-VAE 解码器重建低保真、运动丰富的帧<br/>（梯度不回传到 z）"]
+        DEC -->|"ControlNet 式分支 + stop-gradient"| VDM
+        Q -->|"投影层 + 因果 cross-attention"| VDM["预训练视频扩散模型 VDM<br/>负责外观建模，重建高保真帧"]
+        Q --> AR["自回归 Transformer<br/>以初始帧 x_0 和任务指令为条件预测 z 序列"]
+    end
+    subgraph INF["推理"]
+        X0["新环境中的单帧输入"] --> AR2["自回归 Transformer 预测未来潜在动力学码"]
+        AR2 --> D2["dLDM 解码为长时序执行视频"]
+    end
+```
+
+图依据：论文 §3.1（dLDM 与自回归 Transformer）/ Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ VideoWorld 2 learns discrete visual-dynamics codes with a pretrained diffusion a
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.10102>
+- [arXiv PDF](https://arxiv.org/pdf/2602.10102)：已通读方法部分（实验与附录以略读为准）：Abstract、§1–2、§3.1（生成式知识学习、LDM、dLDM、自回归 Transformer）、Video-CraftBench 数据与评测设定
 
 ## 推荐继续阅读
 

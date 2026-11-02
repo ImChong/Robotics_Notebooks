@@ -43,6 +43,37 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ACT["机器人动作轨迹 a_t:t+H-1"] --> AV["Act-VAE（VQ-VAE）：编码、量化为动作 token 码本 C_act"]
+    AV -->|"冻结 E_act 与 C_act"| VD
+    subgraph VD["VD-VAE：跨模态动力学对齐"]
+        direction TB
+        TR["视频转移 o_t → o_t+H（机器人 + 人类视频）"] --> INV["冻结视觉骨干特征 + 逆动力学编码器"]
+        INV --> ZA["动作相关潜变量 z_v,a：用 C_act 量化"]
+        INV --> ZI["动作无关潜变量 z_v,i：用环境码本 C_env 量化，L1 稀疏"]
+        ZA --> FWD["前向解码器重建 f_t+H"]
+        ZI --> FWD
+        ZA -->|"SigLIP 对比损失"| POS["正样本：机器人用 E_act(a)；人类视频用 EMA 教师伪标签"]
+    end
+    VD --> PSEUDO["人类视频伪动作 token ẑ_a"]
+    ACT --> GT["机器人动作 token z_a"]
+    PSEUDO --> NTP
+    GT --> NTP
+    NTP["CLAP-NTP：VLM 以 next-token prediction 输出 子任务 + 动作 token"] --> POST
+    subgraph POST["后训练"]
+        direction TB
+        RF["CLAP-RF：DiT rectified-flow 动作头，经 KV cache cross-attention 读取 NTP 表征"]
+        KM["Knowledge Matching：与冻结参考 NTP 做 KL 约束"]
+        KM --> RF
+    end
+    POST --> OUT["连续动作 chunk（双臂 14 维）"]
+```
+
+图依据：论文 §III-B/C/D/E（Fig.3 CLAP 流程、Fig.4 Knowledge Matching、Algorithm 1–4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +131,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2601.04061>
+- [arXiv PDF](https://arxiv.org/pdf/2601.04061)：已通读方法部分（实验与附录以略读为准）：§I–§III（问题设定、Act-VAE、VD-VAE、CLAP-NTP、CLAP-RF 与 KM、后训练流程）；§IV 起的训练细节与实验略读
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action） ｜ Datasets / Benchmarks（Data Modality: 3D/grasp）**（清单未附方法摘要，此处不替原文概括贡献）。
+ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action） ｜ Datasets / Benchmarks（Data Modality: 3D/grasp）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,31 @@ ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph DS["ScaleADFG-Dataset 自动构建"]
+        A["互联网搜索图像"] --> B["Grounded SAM 2 过滤与分割"]
+        B --> C["预训练生成模型生成 3D 资产<br/>InstantMesh / TripoSR / TRELLIS（随机选一）"]
+        C --> D["Affordance Retrieval<br/>PTv3-object 提取点云特征<br/>与类别模板做稠密特征匹配得到功能部位与抓握部位"]
+        D --> E["Axis Alignment Initialization<br/>对齐手与物体的 GF 轴、FA 轴"]
+        E --> F["Affordance-based Optimization<br/>功能部位距离 + 抓握部位距离 + 力闭合 + 手物穿透 + 手自穿透"]
+        F --> G["质量指标过滤 + 仿真精修筛选"]
+        G --> H["功能性灵巧抓取数据集"]
+    end
+    subgraph NET["ScaleADFG-Net（CVAE）"]
+        I["物体点云 + PTv3-object 特征的前三个主成分拼接<br/>（网络整合 PTv3-object 与 PointNet）"]
+        J["Encoder → 隐变量 → Decoder<br/>预测抓取配置"]
+        K["可微前向运动学 FK"]
+        I --> J --> K
+    end
+    H --> |训练：重建损失 + KL 散度| J
+    K --> L["推理：去掉 Encoder，从 N(0,I) 采样隐变量，输出抓取配置"]
+```
+
+图依据：论文 §III（数据集合成：A 3D 资产生成、B Affordance Retrieval、C 抓取优化）、§IV（ScaleADFG-Net）、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +77,7 @@ ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2511.09602)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2511.09602)。
 
 ## 评测与指标
 
@@ -68,7 +93,7 @@ ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset�
 
 **本页只提供「ScaleADFG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +114,7 @@ ScaleADFG: Affordance-based Dexterous Functional Grasping via Scalable Dataset�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2511.09602>
+- [arXiv PDF](https://arxiv.org/pdf/2511.09602)：已通读方法部分（实验与附录以略读为准）：§III 数据集合成、§IV ScaleADFG-Net、§V-A 评测指标
 
 ## 推荐继续阅读
 

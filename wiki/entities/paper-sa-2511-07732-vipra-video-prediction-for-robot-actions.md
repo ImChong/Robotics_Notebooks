@@ -43,6 +43,25 @@ Video prediction for robot actions.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["无动作标注的人类视频与机器人视频"] --> L1["Latent Action Tokenizer（逆动力学编码器 Iβ）：读整段观测 ot:t+L，量化为离散潜在动作 z"]
+    L1 --> L2["Forward Decoder Fα：由历史观测与 z 预测下一帧"]
+    L2 --> L3["Llatent = 重建 L1 + LPIPS + 光流一致性（光流项预热后启用）"]
+    L1 --> P1["多模态预训练：基于 LWM-Chat-1M 的视频语言模型 Gθ"]
+    P0["输入：过去帧 ot-1、ot 与任务描述 c"] --> P1
+    P1 --> P2["联合预测 H 步后的未来帧 token 与潜在动作序列 zt:t+H-1"]
+    P2 --> P3["Lpretrain = Limg + Lact（交叉熵）"]
+    P3 --> F1["持续微调：Action Encoder Eγ 编码带噪连续动作"]
+    D["少量遥操作机器人示教"] --> F1
+    F1 --> F2["Flow Decoder Hη 预测流场，LFM 监督"]
+    F2 --> F3["推理：10 步 Euler 积分，输出连续动作块 at:t+H-1"]
+```
+
+图依据：论文 Fig. 2 及 Latent Action Learning / Pretraining / Continuous Adaptation 三节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Video prediction for robot actions.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.07732>
+- [arXiv PDF](https://arxiv.org/pdf/2511.07732)：已通读方法部分（实验与附录以略读为准）：Video Prediction for Robot Actions 总述、Latent Action Learning、Pretraining、Continuous Adaptation、Fig. 1–2、Experiments 环境与训练数据设定
 
 ## 推荐继续阅读
 

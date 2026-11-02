@@ -42,6 +42,32 @@ Geometry-enhanced video world models for robot manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph TR["训练: Geometry-Enhanced Velocity Alignment"]
+        direction TB
+        VID["视频 latent z (VAE 编码)"] --> DIT["Video DiT: 中层特征 m_t → 输出头 → 视频速度场"]
+        VID --> GEO["冻结几何基础模型 G<br/>(如 VGGT / Depth Anything V3)提取稠密几何表示 g0"]
+        DIT -->|"m_t 作为唯一场景级条件"| GDIT["Geometry DiT: 预测几何 latent 的速度场"]
+        GEO -->|"加噪, 作为流匹配目标"| GDIT
+        DIT --> L1["视频流匹配损失"]
+        GDIT --> L2["几何流匹配损失 (α 加权)"]
+    end
+    TR -->|"推理仅用单流视频分支, 无额外开销"| ROLL["输入: 初始观测 I0 + 指令 c → 生成未来帧 rollout"]
+    ROLL --> AIDS
+    subgraph AIDS["Adaptive Inverse Dynamic System (AIDS)"]
+        direction TB
+        S1["3D 场景定位: Qwen3.5-VL + SAM 2 得目标/末端掩码<br/>FoundationPose 对齐末端 CAD 得初始位姿"] --> S2["置信度门控跟踪: CoTracker3 跟踪末端关键点<br/>漂移 → 重锚定; 骤降 → VLM 重新定位掩码"]
+        S2 --> S3["位姿回退: FoundationPose 置信度低且时序跳变过大时<br/>平移取深度质心, 旋转做球面插值"]
+        S3 --> S4["抓取插入与动作合成: GraspGen 候选按位姿偏差选优<br/>插值平滑 → 逆运动学"]
+    end
+    S4 --> ACT["6-DoF 机械臂可执行动作序列"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ Geometry-enhanced video world models for robot manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.22882>
+- [arXiv PDF](https://arxiv.org/pdf/2605.22882)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题形式化、3.2 Geometry-Enhanced Velocity Alignment、3.3 Adaptive Inverse Dynamic System）
 
 ## 推荐继续阅读
 

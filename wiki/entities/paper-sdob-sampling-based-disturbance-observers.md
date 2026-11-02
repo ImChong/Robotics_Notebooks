@@ -45,6 +45,30 @@ summary: "SDOB（arXiv:2610.04896）：通过状态预测或代价查询估计�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页列出 GitHub 链接（sampling-based-dob/sampling-based-dob），入库日 ls-remote 不可达，按待发布处理。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    FB["每个控制步 k 开头：<br/>上一步 (x_{k-1}, u_{k-1})、反馈状态 x_k^fb、代价查询 c_{k-1}、c_k"] --> SE
+    FB --> CE
+    subgraph SE["状态效应观测器"]
+        S1["① 采样 m_x 个候选扰动"] --> S2["② 经 F_x^d 前向预测，得到反馈残差"]
+        S2 --> S3["③ 损失打分（预测误差 + 正则 + 物理可容许性）<br/>Gibbs 权重加权平均 → d^x"]
+    end
+    subgraph CE["代价扰动观测器（cost-flow）"]
+        C1["① 同一批查询点在环境更新前后的代价"] --> C2["② 局部代价匹配：<br/>在候选速度中取最小损失 d^c"]
+        C2 --> C3["核插值得到速度场 d^c(q)"]
+    end
+    S3 --> ROLL["候选控制序列滚动：用 d^x 补偿状态预测"]
+    C3 --> BACK["沿 d^c 回溯查询点，得到补偿后的预测代价"]
+    ROLL --> OBJ["目标函数：代价项 + 约束项 + 目标项 + 控制平滑项"]
+    BACK --> OBJ
+    OBJ --> U["采样式 MPC 加权更新 → 施加 u_k"]
+    U --> FB
+```
+
+图依据：论文 §4.2–4.5（式 16–32、Algorithm 1）与 Fig. 6。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +111,7 @@ summary: "SDOB（arXiv:2610.04896）：通过状态预测或代价查询估计�
 - [sdob_sampling_based_disturbance_observers_arxiv_2610_04896.md](../../sources/papers/sdob_sampling_based_disturbance_observers_arxiv_2610_04896.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.04896](https://arxiv.org/abs/2610.04896)
+- [arXiv PDF](https://arxiv.org/pdf/2610.04896)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminaries、§4 Sampling-Based Disturbance Observer（4.1–4.5）、§5.1 首个仿真任务
 
 ## 推荐继续阅读
 

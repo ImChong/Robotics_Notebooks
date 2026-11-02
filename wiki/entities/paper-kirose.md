@@ -41,6 +41,28 @@ summary: "KiRoSe（arXiv:2610.31801）：KiRoSe将重复运动模式编码为稀
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-29）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段一：转移监督的稀疏运动词表（§3.2）"]
+    X["运动学流 X：双臂末端线速度、角速度、夹爪开合率（14 维，§4.1）"] --> ENC["时间编码器 fφ：残差时间卷积，得到逐步特征 H"]
+    ANN["转移标注 (τi, yi-, yi+)，转成软边界目标 st"] --> LOSS["辅助边界预测头 bψ + focal BCE 损失<br/>训练后丢弃 bψ"]
+    ENC --> LOSS
+    ENC --> POOL["冻结 fφ，均匀网格时间池化"]
+    POOL --> VQ["最近邻量化到 K-means 码本（K = 512）"]
+    VQ --> SMT["离散运动词元序列 Z = SMT"]
+  end
+  subgraph S2["阶段二：语言模型读取（§3.3）"]
+    INS["任务指令"] --> PR["提示 P：指令 + 运动词元 + 每秒时间标记"]
+    SMT --> PR
+    PR --> LM["预训练语言模型，新增 512 个运动词元嵌入<br/>（实验中为 LoRA 适配的 Qwen3.5-9B）"]
+    LM --> JS["JSON 输出：每段起止时间 + 自然语言动作描述"]
+  end
+```
+
+图依据：论文 §3 / Fig.2 的文字描述（§3.1–§3.3）与 §4.1；Fig.2 图本身未能从文本提取，读取器型号 Qwen3.5-9B 来自 Table 2 图注。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +105,7 @@ summary: "KiRoSe（arXiv:2610.31801）：KiRoSe将重复运动模式编码为稀
 - [kirose_arxiv_2610_31801.md](../../sources/papers/kirose_arxiv_2610_31801.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.31801](https://arxiv.org/abs/2610.31801)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31801)：已通读方法部分（实验与附录以略读为准）：§3 KiRoSe Pipeline（§3.1 至 §3.3）、§4.1 实现与协议、§4 其余实验略读
 
 ## 推荐继续阅读
 

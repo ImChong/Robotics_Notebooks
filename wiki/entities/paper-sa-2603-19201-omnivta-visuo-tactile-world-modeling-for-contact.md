@@ -43,6 +43,32 @@ Large-scale OmniViTac dataset with 21,000+ tasks and 86 objects; world-model-bas
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["3D marker 位移触觉输入"] --> V1["TactileVAE<br/>时空编码器 + 隐式形变解码器"]
+    V1 --> W
+    subgraph SLOW["Slow Policy（约 4 Hz）"]
+        W["Visuo-Tactile World Model<br/>双流时空 DiT：视觉流 + 触觉流"]
+        W --> L["Latent Tactile Differential Encoder<br/>当前触觉 / 预测触觉 / 二者之差"]
+        L --> G["接触概率预测 → 门控<br/>自适应加权视觉与触觉特征"]
+        G --> P["Visuo-Tactile Diffusion Policy<br/>生成 action chunk"]
+    end
+    I["图像 15 Hz、触觉 60 Hz、本体感知"] --> W
+    I --> P
+    L -. "预测触觉 latent" .-> R
+    subgraph FAST["Fast Policy（60 Hz）"]
+        R["Reflexive Latent Tactile Controller<br/>MLP 输出修正动作"]
+    end
+    F["单帧触觉反馈"] --> R
+    P --> S["加权求和：慢速规划动作 + 快速修正动作"]
+    R --> S
+    S --> X["执行"]
+```
+
+图依据：论文 §IV-A–E / Fig.5–8（世界模型条件含 action 的 2D 投影等细节未画出）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ Large-scale OmniViTac dataset with 21,000+ tasks and 86 objects; world-model-bas
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.19201>
+- [arXiv PDF](https://arxiv.org/pdf/2603.19201)：已通读方法部分（实验与附录以略读为准）：§IV 方法全部小节（系统概览、TactileVAE、世界模型、融合策略、RLTC）；OmniViTac 数据集（§III）与实验仅略读
 
 ## 推荐继续阅读
 

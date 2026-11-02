@@ -43,6 +43,25 @@ Multiplayer interactive world models with representation autoencoders.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  V["4 名玩家各自的视频流<br/>(2v2 Rocket League)"] --> ENC["冻结 Codec 编码器<br/>DINOv3-L/16 多层特征聚合<br/>+ 线性 Space-Time Bottleneck (2x2x2, 通道 1024→32)"]
+  ENC --> Z["每玩家 latent z (10 Hz)<br/>按高度拼成一个联合 latent 网格 (Tiled views)"]
+  A["4 名玩家的键盘动作 a<br/>每玩家 embedding 后按固定顺序 concat<br/>(训练时 Action dropout)"] --> C["条件向量 c = emb(a) + emb(flow time τ)"]
+  Z --> DF["Diffusion Forcing<br/>逐帧独立 τ，加噪得 zτ"]
+  DF --> WM["Flow-matching 世界模型 vθ<br/>AdaLN 空间-时间 Transformer x N<br/>空间注意力(帧内双向) + 时间注意力(因果)"]
+  C -->|"AdaLN 缩放/偏移"| WM
+  WM --> LOSS["Flow-matching 损失<br/>||vθ − (z1 − z0)||²"]
+  WM -.->|"PSD 少步蒸馏"| FS["少步采样器 (1~2 次函数评估)"]
+  FS --> ROLL["自回归 rollout + KV cache<br/>窗口 T=20 latent，每步追加噪声 latent 去噪"]
+  ROLL --> DEC["Codec 解码器<br/>Spatial/Temporal Upsample + 因果 ST-ViT<br/>→ 20 fps 视频"]
+  DEC --> OUT["各玩家视角视频，浏览器实时展示"]
+```
+
+图依据：论文 §4.1–4.5、§5 / Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Multiplayer interactive world models with representation autoencoders.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.05352>
+- [arXiv PDF](https://arxiv.org/pdf/2607.05352)：已通读方法部分（实验与附录以略读为准）：§4 Method（4.1–4.5）、§5 Streaming inference
 
 ## 推荐继续阅读
 

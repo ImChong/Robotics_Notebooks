@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要，此处不替原文概括贡献）。
+Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,24 @@ Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    KP["稀疏关键点标注 Z"] --> INIT["初始化: 关键点半径 sigma 内像素置 1, 得到估计 Y-hat"]
+    INIT --> SPLIT["训练集三等分 A / B / C"]
+    SPLIT --> M["M-step: 在 (A,B) (B,C) (C,A) 上分别训练 CNN"]
+    M --> E["E-step: 各网络预测未参与训练的子集 (sigmoid 概率)"]
+    E --> BIN["自适应二值化: 每张图每个 affordance 类取阈值 t = min(0.5, f(关键点处预测概率))"]
+    BIN --> REF["细化 Y-hat"]
+    REF --> IT{"两轮 EM 迭代完成?"}
+    IT -- 否 --> M
+    IT -- 是 --> FIN["在整个训练集上以 Y-hat 优化 J(theta), 得到最终 CNN"]
+    CV["近似交叉验证: 用关键点命中率近似 Jaccard 指数以估计 sigma"] -.-> INIT
+```
+
+图依据：论文 §3.1 Method、§3.2 Adaptive Binarization、§3.3 近似交叉验证 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +69,7 @@ Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/1707.02850)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；模块与数据流见上文「流程总览」（依据论文方法部分），其余细节与实验请读 [原文](https://arxiv.org/abs/1707.02850)。
 
 ## 评测与指标
 
@@ -67,7 +85,7 @@ Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清�
 
 **本页只提供「Adaptive Binarization for Weakly Supervised Affordance Segmentation」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +106,7 @@ Adaptive Binarization for Weakly Supervised Affordance Segmentation——在清�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/1707.02850>
+- [arXiv PDF](https://arxiv.org/pdf/1707.02850)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（§3.1-3.3）；§4 实验略读
 
 ## 推荐继续阅读
 

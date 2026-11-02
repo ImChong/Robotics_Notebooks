@@ -43,6 +43,22 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测窗口 o 与语言指令 ℓ"] --> B["flow-matching 视频生成器 p_θ<br/>VAE 潜空间，LoRA 微调"]
+    B --> C["每个条件采样 G 条候选视频"]
+    D["冻结 IDM f_φ<br/>由视频窗口回归关节位置指令<br/>（在机器人数据上监督训练）"] --> E
+    C --> E["IDM 解码出关节指令序列<br/>计算速度 / 加速度 / jerk"]
+    E --> F["Executability 奖励<br/>Huber 平滑惩罚 + 速度加速度限幅惩罚"]
+    F --> G["组内归一化优势<br/>Flow-GRPO + KL 正则，仅更新 LoRA"]
+    G --> B
+    B --> H["部署：视频规划<br/>IDM 解码为机器人动作，执行后重规划"]
+```
+
+图依据：论文 §3、§4.1–4.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +116,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.17808>
+- [arXiv PDF](https://arxiv.org/pdf/2603.17808)：已通读方法部分（实验与附录以略读为准）：§3 问题设定、§4 Executable Video Alignment（4.1–4.3）
 
 ## 推荐继续阅读
 

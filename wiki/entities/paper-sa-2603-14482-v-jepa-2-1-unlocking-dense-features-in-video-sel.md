@@ -43,6 +43,25 @@ Unlocks dense features in video self-supervised learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["图像 / 视频<br/>2D 或 3D 卷积 patch 嵌入 + 3D RoPE + 可学习 modality 嵌入"] --> X["x 视图：随机遮挡 patch"]
+    IN --> Y["y 视图：完整输入"]
+    X --> XE["x-encoder 处理可见 token<br/>拼接中间块归一化输出，得多层嵌入"]
+    XE --> FUSE["MLP 融合多层表征并降维<br/>得到 context tokens"]
+    FUSE --> CAT["与带时空位置信息的可学习 mask tokens 拼接"]
+    CAT --> PRED["Predictor<br/>对 masked token 输出多层预测"]
+    Y --> YE["y-encoder（EMA，stop-gradient）<br/>输出多层目标"]
+    PRED --> L1["L1 损失：masked token 预测（原 V-JEPA 目标）"]
+    PRED --> L2["距离加权 L1 损失：附近 context token（Dense Predictive Loss）"]
+    YE --> L1
+    YE --> L2
+```
+
+图依据：论文 §2.1-2.3 / Fig.4（V-JEPA 2.1 Detailed Architecture）、公式 (1)(2)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +118,7 @@ Unlocks dense features in video self-supervised learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.14482>
+- [arXiv PDF](https://arxiv.org/pdf/2603.14482)：已通读方法部分（实验与附录以略读为准）：§2.1 Preliminaries、§2.2 Analysis、§2.3 开头及 Fig.4 图注（§2.3.1-2.3.5 细节仅略读）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ WAM adds inverse action prediction between consecutive encoder embeddings to a D
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["静态 + 腕部相机图像 + 本体状态"] --> ENC["双流 CNN 编码器<br/>嵌入 e_t"]
+    ENC --> POST["后验 z_t ~ q(z_t | h_t, e_t)"]
+    RSSM["RSSM 递推状态 h_t<br/>由 h_(t-1)、z_(t-1)、a_(t-1) 得到"] --> POST
+    RSSM --> PRIOR["先验 ẑ_t ~ p(z_t | h_t)"]
+    POST -->|"KL 正则"| PRIOR
+    POST --> F["潜在特征 f_t = [h_t ; z_t]"]
+    F --> DEC["解码器重建观测"]
+    F --> RW["奖励分类器"]
+    ENC --> IDM["逆动力学头 ψ<br/>输入 [e_t ; e_(t+1)]，预测动作 â_t"]
+    IDM -->|"L1 动作损失 L_action"| ENC
+    F -->|"冻结 WAM 提取特征"| BC["行为克隆：DiffusionMLP 策略 π(a_t | f_t)"]
+    BC --> FT["DPPO 离线微调：在冻结 WAM 潜空间中<br/>用先验做想象 rollout，奖励由分类器给出"]
+    PRIOR --> FT
+    RW --> FT
+```
+
+图依据：论文 §III-A、§III-B / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ WAM adds inverse action prediction between consecutive encoder embeddings to a D
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.28955>
+- [arXiv PDF](https://arxiv.org/pdf/2603.28955)：已通读方法部分（实验与附录以略读为准）：§I–III（World-Action Model、Action-Regularized World Model、下游 BC 与离线 DPPO 微调）、§IV 实验设定；结果表仅略读
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "PACT-VLA：利用执行前观测进行推测式动作块验证（arXiv
 
 # PACT-VLA：利用执行前观测进行推测式动作块验证
 
-**PACT-VLA**（*PACT-VLA: Speculative Action-Chunk Verification with Pre-Commit Observations*，[arXiv:2610.28019](https://arxiv.org/abs/2610.28019)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**PACT-VLA**（*PACT-VLA: Speculative Action-Chunk Verification with Pre-Commit Observations*，[arXiv:2610.28019](https://arxiv.org/abs/2610.28019)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,26 @@ summary: "PACT-VLA：利用执行前观测进行推测式动作块验证（arXiv
 ## 为什么重要
 
 - 周报所述待解决的问题：VLA 生成动作块后，连续执行期间的环境变化可能使后续动作失效。固定长度的开环执行难以及时处理状态偏移。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OT["推理起始观测 o_t + 语言指令 l_t"] --> GEN["候选生成：冻结的流式 VLA<br/>用原始生成流程从不同噪声采样 N 个候选动作块"]
+    GEN --> POOL["固定候选池 A_t^(1..N)<br/>之后不再被修改"]
+    PC["预提交观测 o_(t+d-1)<br/>计划切换 t+d 前一个控制步"] --> KV["视觉编码器 + VLM 骨干处理一次<br/>得到共享前缀 KV cache<br/>（与候选生成并行）"]
+    POOL --> FR
+    KV --> FR
+    subgraph FR["FlowRes 验证（批处理，无需额外训练的验证器）"]
+        direction TB
+        F1["1 构造流时间输入<br/>共享验证噪声 ε_ver，x_τ = (1−τ)A + τ·ε_ver<br/>隐含流方向 u = ε_ver − A"] --> F2["2 查询冻结 VLA action expert<br/>在预提交观测下预测速度 v̂"]
+        F2 --> F3["3 残差打分<br/>加权平方误差 ‖v̂ − u‖² 跨动作位置与流时间求和 → E_n"]
+    end
+    FR --> SEL["选择 E_n 最小的候选 n*"]
+    SEL --> SW["t+d 时刻控制器切换到所选动作块<br/>执行至下一次计划切换"]
+```
+
+图依据：论文 §2.1、§3.1–3.3 / Fig. 2–3、式 4–6。
 
 ## 核心机制
 
@@ -87,6 +107,7 @@ summary: "PACT-VLA：利用执行前观测进行推测式动作块验证（arXiv
 - [pact-vla-speculative-action-chunk-verification_arxiv_2610_28019.md](../../sources/papers/pact-vla-speculative-action-chunk-verification_arxiv_2610_28019.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.28019](https://arxiv.org/abs/2610.28019)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28019)：已通读方法部分（实验与附录以略读为准）：§1–3（引言、背景与动机、方法：概述、FlowRes 候选验证、流水线执行），§4 开头实验设定略读
 
 ## 推荐继续阅读
 

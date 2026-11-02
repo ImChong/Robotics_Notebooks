@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotations, Affordances, and Reconstructions——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial） ｜ Datasets / Benchmarks（Data Modality: RGB-D/6-DoF pose/3D mesh）**（清单未附方法摘要，此处不替原文概括贡献）。
+HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotations, Affordances, and Reconstructions——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Spatial） ｜ Datasets / Benchmarks（Data Modality: RGB-D/6-DoF pose/3D mesh）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotati
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["静态场景：移动设备相机拍摄 HD 视频（ARKit/ARCore 粗位姿）"] --> B["按 Laplacian 方差选取最清晰帧（约 1000 帧 → 120 帧）"]
+    B --> C["COLMAP 估计无尺度相机位姿"]
+    C --> D["XMem 分割前景物体"]
+    D --> E["Instant NGP 重建 + Marching Cubes 提取网格"]
+    E --> F["用 ARKit/ARCore 位姿恢复尺度并对齐重力方向"]
+    F --> G["与类别规范坐标系下的 canonical mesh 半自动配准"]
+    G --> H["逐帧物体 6-DoF 位姿 + 尺度（人工剔除重投影差的帧）"]
+    E --> I["在 3D 网格上人工标注把手区域 affordance"]
+    J["动态场景：iPad TrueDepth 视频，物体旋转 + 人手功能性抓取"] --> K["XMem 分割 + BundleSDF 重建与 6-DoF 跟踪，与 ICP 结果取平均"]
+    K --> L["同样配准到 canonical mesh，得逐帧位姿"]
+    H --> M["标准格式导出：COCO 2D 框/实例掩码，BOP 6-DoF 位姿"]
+    I --> M
+    L --> M
+```
+
+图依据：论文 §IV（A–D）数据采集与标注流程，§V-A 标注格式
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +73,7 @@ HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotati
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2308.01477)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。数据采集与标注流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2308.01477)。
 
 ## 评测与指标
 
@@ -68,7 +89,7 @@ HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotati
 
 **本页只提供「HANDAL」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +110,7 @@ HANDAL: A Dataset of Real-World Manipulable Object Categories with Pose Annotati
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2308.01477>
+- [arXiv PDF](https://arxiv.org/pdf/2308.01477)：已通读方法部分（实验与附录以略读为准）：§III 数据集概览、§IV 方法（数据采集与标注 A–D）、§V-A 数据集统计
 
 ## 推荐继续阅读
 

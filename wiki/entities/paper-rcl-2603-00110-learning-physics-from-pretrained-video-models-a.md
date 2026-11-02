@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：任务指令 l + 历史图像 O + 历史动作块 A"] --> TK["Tokenizer：冻结 Phi 语言模型 → 语言 token；冻结 3D-VAE → 帧 token；MLP → 动作 token"]
+    TK --> PT["拼接为 physical token P_n = [帧 token ; 动作 token]（动作侧前置 BOA token）"]
+    PT --> TR["Causal Transformer（承自 NOVA，LoRA 微调）：帧块内全注意力、动作时间因果"]
+    TR --> Z["条件向量 Z_n"]
+    Z --> FD["Frame Diffusion 去噪 → 预测下一帧"]
+    Z --> AD["Action-DiT 去噪（cross-attention 注入 Z_n，L-MTP 并行预测 3 个 token）→ 动作块 A_N"]
+    AD --> EX["只执行第一个预测 token，其余作 lookahead 条件"]
+    EX --> ENV["环境执行并返回新观测，重新编码接入序列（KV cache）"]
+    ENV --> TK
+```
+
+图依据：论文 §4.1–4.5 / Fig.1、Fig.2、Fig.3（「环境返回观测并重新编码」回路依据 Fig.1 的闭环描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://dl.acm.org/doi/10.1145/3805622.3810752>
+- [arXiv PDF](https://arxiv.org/pdf/2603.00110)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3 相关工作与预备知识、§4 方法（4.1–4.5）、§5.1 仿真实验设定
 
 ## 推荐继续阅读
 

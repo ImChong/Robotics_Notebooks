@@ -42,6 +42,23 @@ Differentiable Viterbi algorithm injects step-by-step procedural priors into VLA
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    K["训练集动作共现统计"] --> G["Procedural Knowledge Graph: 节点为动作, 边为有效转移, 权重 ω 为转移概率"]
+    S["起点与终点视觉状态 vs, vg (短视频片段)"] --> E["f_enc: 冻结视觉 backbone + 可学习投影"]
+    E --> M["f_emiss: Transformer 编码器 + MLP + sigmoid, 输出发射概率矩阵 b (T x N)"]
+    M --> V["Differentiable Viterbi Layer f_vit: 以 PKG 转移概率与 b 做平滑 max 解码"]
+    G --> V
+    V --> P["软计划 π̃"]
+    P --> L["训练: L_plan (与 one-hot 真值的 MSE) + L_align + L_task, 梯度经 DVL 回传到 f_emiss"]
+    E -.辅助损失.-> L
+    P --> I["推理: 标准 Viterbi 解码得到离散动作计划"]
+```
+
+图依据：论文 §3（Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Differentiable Viterbi algorithm injects step-by-step procedural priors into VLA
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.04265>
+- [arXiv PDF](https://arxiv.org/pdf/2603.04265)：已通读方法部分（实验与附录以略读为准）：§3 方法与 §4 推理设定（Experiments 开头）
 
 ## 推荐继续阅读
 

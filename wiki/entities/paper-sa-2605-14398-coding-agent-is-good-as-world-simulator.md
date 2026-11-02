@@ -42,6 +42,34 @@ Builds physics‑based world models through executable simulation code, with a f
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  U["用户 prompt\n（可选参考图）"] --> P["Plan Agent\n结构化场景计划（13 节 schema）"]
+  P --> A["资产抽取与生成\n目录 mesh / 原生车辆机器人 / 程序化基元 / 生成边界"]
+  P --> T["拓扑谓词\n按依赖顺序推导位姿"]
+  P --> UC{"用户确认 / 修改计划"}
+  UC --> C["Code Agent\n生成独立 PyChrono 程序"]
+  SK["Skill Library"] --> C
+  RAG["RAG 检索\n源码 / 文档 / demo / 论坛"] --> C
+  A --> AC["统一资产目录\n离线生成：参考图 → SAM 3D 重建"]
+  AC --> C
+  C --> L["静态 linter"]
+  L -->|未通过| C
+  L --> E["分阶段执行\n物理 pass → 首帧 pass → 完整录制"]
+  E --> V["Visual-Analysis Agent\n描述渲染视频"]
+  E --> N["确定性物理检查\n轨迹异常扫描"]
+  V --> R["Review Agent\n三路证据交叉验证"]
+  N --> R
+  R -->|缺陷报告：一次针对性补丁| C
+  R -->|通过| G["验收门\n剥离插桩 + 校验和"]
+  R -->|超出修复上限| B["blocked"]
+  G --> O["可复现的仿真程序"]
+```
+
+图依据：论文 §2.1–2.4 / Fig.2、Fig.4、Fig.5（论文方法名为 ChronoAgentic）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Builds physics‑based world models through executable simulation code, with a f
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.14398>
+- [arXiv PDF](https://arxiv.org/pdf/2605.14398)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2.1–2.4、§3 实验设定、附录 Fig.4/Fig.5 图注
 
 ## 推荐继续阅读
 

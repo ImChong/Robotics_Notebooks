@@ -42,6 +42,30 @@ Diffusion-based reconstruction generalized across all wearable camera hardware, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一视角视频<br/>任意设备（单目 RGB / Aria）"] --> PRE["预处理：SLAM 相机位姿 → 头部位姿 T_head<br/>HaWoR 或 Aria MPS → 腕部观测 H 与可见性"]
+    PRE --> COND["条件表示 Ω_t：规范化头部运动 + 手相对头部位姿<br/>不可见的手用可学习 null 嵌入"]
+    subgraph ENCB["序列级编码器 E"]
+        ESH["E_shape → 序列级体型 β̂"]
+        EGL["E_global → 可见性上下文 G"]
+        ELO["E_local → 逐帧摘要 S_1:T（经 AdaLN-Zero 受 G 调制）"]
+    end
+    COND --> ESH
+    COND --> EGL
+    COND --> ELO
+    EGL --> ELO
+    ESH --> DEC["解码器 D：DiT 去噪规范化姿态<br/>β̂ 与 n 经 AdaLN，S 经 cross-attention"]
+    ELO --> DEC
+    DEC --> GA["全局对齐：由 T_head 得根平移<br/>相对规范系根朝向 → 全局朝向"]
+    GA --> OUT["SMPL-H 全身运动 M_1:T"]
+    AUG["几何感知可见性增强<br/>模拟不同相机视场 + 信号丢失/扰动"] -. 训练 .-> EGL
+```
+
+图依据：论文 §3.1 问题形式化、§3.2 预处理与表示、§3.3 序列级扩散架构、§3.4 训练、§3.5 推理。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Diffusion-based reconstruction generalized across all wearable camera hardware, 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2512.19283>
+- [arXiv PDF](https://arxiv.org/pdf/2512.19283)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（§3.1–3.5）
 
 ## 推荐继续阅读
 

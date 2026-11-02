@@ -42,6 +42,38 @@ A simulator built on Unreal Engine 5, designed for developing and evaluating LLM
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph UE["Unreal Engine Backend"]
+    SC["场景：手工场景 + 程序化场景"]
+    AS["资产库：物体 / 角色 / 天气光照 + Text-to-3D 生成"]
+    PH["物理仿真"]
+  end
+  subgraph ENV["Environment 层"]
+    PC["Procedural City Generation：道路 → 建筑 → 街道元素（QuadTree 场景图）"]
+    SE["LLM-based Scene Editing：检索增强场景 agent，必要时调用 Text-to-3D"]
+    WP["Waypoint System：粗粒度 + 细粒度导航图"]
+    TS["Traffic System：Vehicle / Pedestrian / Intersection Manager"]
+    GY["Gym-like 接口（reset / step）：异步或同步模式"]
+    PC --> WP --> TS
+    TS --> GY
+  end
+  subgraph AG["Agent 层"]
+    OB["观测：RGB / 深度 / 语义分割 + 场景图 / 定位"]
+    RS["推理后端：LLM / VLM / VLA 等"]
+    AP["Action Planner：Parser 拆成原语动作序列 → Executor（rule-based 或 visual-based）"]
+    OB --> RS --> AP
+  end
+  UE --> ENV
+  GY -->|"观测"| OB
+  AP -->|"动作经 UnrealCV+ 执行"| GY
+  ENV -->|"UnrealCV+ 通信"| UE
+```
+
+图依据：论文 §2 The SimWorld Simulator / Fig.2（三层架构）、§2.1–§2.3；子模块间箭头按各小节文字归纳，Scene Editing 未画连线（原文未写明其与其它模块的数据流）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +128,7 @@ A simulator built on Unreal Engine 5, designed for developing and evaluating LLM
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.01078>
+- [arXiv PDF](https://arxiv.org/pdf/2512.01078)：已通读方法部分（实验与附录以略读为准）：§2.1 Unreal Engine Backend、§2.2 Environment、§2.3 Agent（§2.4 UnrealCV+ 与 §3 Delivery 案例仅略读）
 
 ## 推荐继续阅读
 

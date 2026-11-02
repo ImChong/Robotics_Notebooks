@@ -43,6 +43,30 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考帧 I + 任务描述 P"] --> B["视频扩散模型 SVD<br/>只做一次去噪前向"]
+    B --> C["取上采样块多层特征，插值对齐并按通道拼接<br/>得到 one-step 特征 F"]
+    A --> R["冻结 VFM 编码参考帧<br/>得到参考表征 Y_ref"]
+    C --> G["Geometric Decoupler<br/>时空 Transformer，拼接 F 与 Y_ref"]
+    C --> S["Semantic Decoupler<br/>时空 Transformer，拼接 F 与 Y_ref"]
+    R --> G
+    R --> S
+    G --> UP["Uni-Perceiver<br/>拼接 几何/语义 foresight 与原始 F"]
+    S --> UP
+    C --> UP
+    UP --> Q["可学习 queries：Cross-Attn、Self-Attn、FFN<br/>压缩为 token F_agg"]
+    Q --> DP["Diffusion Policy（DiT）<br/>F_agg 与任务文本嵌入经 cross-attention 条件化"]
+    DP --> ACT["预测动作序列"]
+    B -. "训练期：同一扩散轨迹的多步生成视频" .-> T["冻结 VFM（几何 / 语义）提取教师表征 Y_i"]
+    T -. "自蒸馏损失 L_i = ‖F_i^K − Y_i‖²" .-> G
+    T -. "自蒸馏损失" .-> S
+```
+
+图依据：论文 §3 / Fig.2（架构）与 Fig.1(b)（自蒸馏）；§3.2 公式 (3)-(7)，§3.3 公式 (8)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +124,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.16195>
+- [arXiv PDF](https://arxiv.org/pdf/2603.16195)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 Preliminaries、3.2 Foresight Distillation、3.3 Action Expert）、Fig.2
 
 ## 推荐继续阅读
 

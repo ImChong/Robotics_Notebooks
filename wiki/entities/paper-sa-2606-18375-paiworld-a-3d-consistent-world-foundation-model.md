@@ -42,6 +42,29 @@ DiT-based foundation model, ranked 1st on WorldArena and 2nd on AgiBot-Challenge
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角上下文帧 + 相机内外参<br/>+ 条件信号 c（文本或动作）"] --> B["Wan2.1 时空 VAE 编码<br/>得到视频潜变量"]
+    B --> C["Flow Matching DiT 骨干<br/>c 经 AdaLN 注入；动作渲染为空间动作图并拼接到噪声潜变量"]
+    A --> GR["由相机内参与外参计算<br/>像素射线方向与 12 维相机位姿特征"]
+    GR --> ROPE["Geo-RoPE<br/>射线子空间 + 位姿子空间的旋转位置编码"]
+    C --> CV["选定 DiT 层插入 Cross-View Attention<br/>各视角 Q/K 用自身几何旋转，gate 零初始化"]
+    ROPE --> CV
+    C --> SC["周期性 Spatial-Concat Self-Attention<br/>展平视角与空间做联合自注意力"]
+    CV --> OUT["预测速度场 → 多视角未来视频"]
+    SC --> OUT
+    A --> DA3["冻结的 Depth Anything 3<br/>提取 3D 感知特征"]
+    C --> PROJ["中间层特征经 3D 卷积投影器"]
+    PROJ --> REPA["Latent 3D-REPA<br/>锚点采样 token 相似度关系蒸馏<br/>帧内 spatial + 跨帧 temporal"]
+    DA3 --> REPA
+    OUT --> L["总损失 = 流匹配损失 + λ·REPA 损失"]
+    REPA --> L
+```
+
+图依据：论文 §3.1–3.7（Geo-RoPE、Cross-View Attention、Latent 3D-REPA、训练目标）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ DiT-based foundation model, ranked 1st on WorldArena and 2nd on AgiBot-Challenge
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.18375>
+- [arXiv PDF](https://arxiv.org/pdf/2606.18375)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.7）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Generates interactive videos in real time via few‑step autoregressive diffusio
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["数据: Unreal Engine + 游戏环境(Script Hook 插件)采集<br/>RGB 帧与键鼠动作同步 (逾 120 万视频片段)"] --> B["基础模型训练<br/>Wan I2V 去文本分支 + 动作模块"]
+    I["单张参考图像"] --> E["3D Causal VAE 编码器 + CLIP 图像编码器"]
+    E --> B
+    K["动作: 键盘离散动作(cross-attention, RoPE)<br/>鼠标连续视角(拼接 latent -> MLP -> 时间自注意力)"] --> B
+    B --> C["双向基础模型 (teacher)"]
+    C --> D["学生初始化: ODE 轨迹回归<br/>块级因果 mask 的因果学生"]
+    D --> F["DMD + Self-Forcing 蒸馏<br/>学生用自身生成的历史帧作条件"]
+    F --> G["少步自回归扩散模型<br/>滚动 KV-cache (固定长度, 淘汰最旧 token)"]
+    G --> H["3D VAE 解码器 -> 实时流式长视频"]
+```
+
+图依据：论文 §3.2 数据采集、§4.1 Foundation Model Architecture、§4.2 Real-time Interactive Auto-Regressive Video Generation / Fig.6–Fig.9
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Generates interactive videos in real time via few‑step autoregressive diffusio
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.13009>
+- [arXiv PDF](https://arxiv.org/pdf/2508.13009)：已通读方法部分（实验与附录以略读为准）：§3 数据采集管线、§4 Methods（4.1–4.2）、§5.1 实验设定
 
 ## 推荐继续阅读
 

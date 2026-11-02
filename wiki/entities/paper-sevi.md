@@ -42,6 +42,31 @@ summary: "SEVI（arXiv:2610.31829）：SEVI用证据式安全评论器同时估�
 - 开源结论：**待发布**（步骤 2.5，2026-10-29）。项目页 HTTP 200，Code 标注 coming soon（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线训练"]
+        O1["失败与恢复示范数据"] --> ESC["训练 Evidential Safety Critic（ESC）：NIG 证据式回归，风险 TD 目标"]
+        O2["人类遥操作恢复示范 D_rec"] --> REC["用 TD3+BC 训练恢复策略 π_rec（奖励 = -预测风险）"]
+        ESC -->|"重标注恢复数据奖励"| REC
+    end
+    subgraph RUN["运行时（在线真机 RL）"]
+        R1["任务策略 π_task 在状态 s_t 提出动作"] --> R2["ESC 评估：预测风险 Q_risk 与认知不确定性 σ²_epi"]
+        R2 --> R3{"风险 ≥ τ_risk 或不确定性 ≥ τ_epi？"}
+        R3 -->|"否"| R4["执行任务动作"]
+        R3 -->|"是"| R5["改用 π_rec 的恢复动作执行"]
+    end
+    ESC --> R2
+    REC --> R5
+    R4 --> BUF["执行的转移存入在线 replay buffer"]
+    R5 --> BUF
+    BUF --> RLPD["RLPD（SERL 框架）更新任务策略，同时使用 demo buffer 先验示范"]
+    RLPD --> R1
+```
+
+图依据：论文 §IV-A–§IV-C / Fig.2、Eq.18–20。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +110,7 @@ summary: "SEVI（arXiv:2610.31829）：SEVI用证据式安全评论器同时估�
 - [sevi_arxiv_2610_31829.md](../../sources/papers/sevi_arxiv_2610_31829.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.31829](https://arxiv.org/abs/2610.31829)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31829)：已通读方法部分（实验与附录以略读为准）：§III 问题形式化、§IV-A–§IV-C
 
 ## 推荐继续阅读
 

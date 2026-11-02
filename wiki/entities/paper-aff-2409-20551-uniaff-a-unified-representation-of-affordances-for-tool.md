@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-UniAff: A Unified Representation of Affordances for Tool Usage and Articulation with Vision-Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+UniAff: A Unified Representation of Affordances for Tool Usage and Articulation with Vision-Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,29 @@ UniAff: A Unified Representation of Affordances for Tool Usage and Articulation 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  SIM["合成数据：扫描网格 / URDF 在仿真中渲染，自动标注 A、B、G、F、J、L"]
+  FT["微调 SPHINX（LLaMA2 骨干）：视觉投影层 + 语言模型联合微调，视觉编码器冻结"]
+  IMG["输入：RGB 图像 I（+ 深度图 D）"]
+  VE["Mixed Visual Encoder：CLIP + DINOv2（局部）+ Q-Former（全局），通道拼接 + MLP Projector"]
+  Q["语言指令（如 How can a robot heat bread?）经 Llama Tokenizer"]
+  LLM["Llama 2 生成结构化输出"]
+  OUT["Part BBOX、抓取 / 功能 affordance 框、6D 位姿或关节轴、操作类型"]
+  DET["De-Tokenizer 解码并与视觉信息结合，执行机器人任务"]
+  SIM --> FT
+  FT --> LLM
+  IMG --> VE
+  VE --> LLM
+  Q --> LLM
+  LLM --> OUT
+  OUT --> DET
+```
+
+图依据：论文 §III-A/B/C 与 Fig. 2；§IV-A 模型设置。从输出到机器人执行的后续步骤论文正文只写到 De-Tokenizer 与实机实验概述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ UniAff: A Unified Representation of Affordances for Tool Usage and Articulation 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2409.20551)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2409.20551)。
 
 ## 评测与指标
 
@@ -67,7 +90,7 @@ UniAff: A Unified Representation of Affordances for Tool Usage and Articulation 
 
 **本页只提供「UniAff」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +111,7 @@ UniAff: A Unified Representation of Affordances for Tool Usage and Articulation 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2409.20551>
+- [arXiv PDF](https://arxiv.org/pdf/2409.20551)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A/B/C）、§IV-A 实验设定、§IV-F 实机实验概述
 
 ## 推荐继续阅读
 

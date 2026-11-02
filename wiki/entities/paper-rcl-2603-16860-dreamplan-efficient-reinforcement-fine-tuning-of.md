@@ -42,6 +42,22 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 o_t + 目标图 g<br/>两图各自检测关键点（不跨图匹配）"] --> B["零样本 VLM planner π_θ<br/>输出关键点动作 a_t = (源关键点, 目标关键点)"]
+    B --> C["真机执行零样本动作<br/>收集探索性 action-observation 轨迹 D"]
+    C --> D["渲染机械臂动作视频 r<br/>经 ControlNet 注入"]
+    D --> E["微调 action-conditioned 视频扩散世界模型 W_φ<br/>CogVideoX-5B I2V，预测仅含物体的裁剪视频"]
+    E --> F["对每个 (o_0, g) 从 VLM 采样 K 个候选动作"]
+    F --> G["世界模型预测各动作的未来结果"]
+    G --> H["GPT-4o 对比预测图与目标图<br/>选出最优 a*，其余为负样本"]
+    H --> I["ORPO 偏好微调 VLM planner<br/>Qwen3-VL-8B，离线、无需额外真机交互"]
+```
+
+图依据：论文 §III（A VLM Planner、B Learning World Model、C Reinforcement Fine-Tuning）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +115,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.16860>
+- [arXiv PDF](https://arxiv.org/pdf/2603.16860)：已通读方法部分（实验与附录以略读为准）：§III A/B/C、Fig.2
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["LIBERO 的 40 个评测任务（Spatial / Object / Goal / Long）"] --> P["沿 7 个扰动维度自动生成：每个子任务 500 个实例，共 14,000 候选任务"]
+    P --> E["用若干主流 VLA 基线评测成功率分布"]
+    E --> F["过滤：移除被全部或大多数模型解出的任务（避免天花板效应）"]
+    F --> B["按增强子维度均衡任务"]
+    B --> BM["LIBERO-Plus：10,030 个纯测试任务，7 个扰动因子 / 21 个底层组件"]
+    E --> LV["按 4 个代表模型的准确率分布划分 Level-1 至 Level-5 难度"]
+    LV --> BM
+    P -.-> TD["同一自动化流水线调整参数生成训练集：回放 LIBERO 的 (state, action) 并只保留成功轨迹"]
+    TD --> FT["混合微调 OpenVLA-OFT，在 LIBERO-Plus 上评测"]
+    FT --> BM
+```
+
+图依据：论文 §6.1 Benchmark Construction（Fig. 6）、§6.2 与附录 C.1 Data Generation and Filtering、D.2–D.3 训练集生成。本页是基准/分析类论文，图画的是基准构建与训练集生成流程，而非新策略架构；难度分级的四个模型以正文 Fig. 5 为准。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2510.13626>
+- [arXiv PDF](https://arxiv.org/pdf/2510.13626)：已通读方法部分（实验与附录以略读为准）：§6 LIBERO-Plus（6.1 基准构建、6.2 泛化训练集）、附录 C（扰动与基准构建）、附录 D（训练集构建）
 
 ## 推荐继续阅读
 

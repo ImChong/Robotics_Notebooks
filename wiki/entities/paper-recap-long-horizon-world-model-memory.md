@@ -45,6 +45,24 @@ summary: "ReCAP（arXiv:2610.14583）：冻结世界模型，只保留初始场�
 - 开源结论：**部分开源**（步骤 2.5，2026-10-14）。Hugging Face 提供模型权重（easylearning/recap-robot-models）；项目页写代码即将发布，入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["真实初始观测 o1:C 与初始动作"] --> ANCHOR["场景锚点 A = C0 ⊕ z0 ⊕ u0<br/>全程保留（来自真实观测，无自回归误差）"]
+    ACT["未来动作序列 a"] --> BLK
+    STEP["冻结的自回归机器人视频世界模型<br/>逐 token 预测下一帧视觉表示"] --> BLK["完整视觉-动作块 B_t = [z_t ; u_t]"]
+    BLK --> SPLIT{"按块切分历史"}
+    SPLIT -->|"最近 W 块"| REC["近期轨迹 R_t"]
+    SPLIT -->|"更早的块"| EVICT["陈旧历史 O_t：从活动上下文与 KV cache 中驱逐"]
+    ANCHOR --> PROMPT["活动上下文 P_t = A ⊕ R_t（长度有界）"]
+    REC --> PROMPT
+    PROMPT --> STEP
+    STEP --> DEC["视觉解码器 D(ẑ ; C0) → 预测帧"]
+```
+
+图依据：论文 §3 Problem Formulation、§4.1–4.2 与 Fig. 2（训练免调度器，不改模型参数，块级操作于 token 与 KV cache 空间）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +105,7 @@ summary: "ReCAP（arXiv:2610.14583）：冻结世界模型，只保留初始场�
 - [recap_long_horizon_world_model_memory_arxiv_2610_14583.md](../../sources/papers/recap_long_horizon_world_model_memory_arxiv_2610_14583.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14583](https://arxiv.org/abs/2610.14583)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14583)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Problem Formulation、§4 Methodology（4.1–4.2）、§5.1 实验设定
 
 ## 推荐继续阅读
 

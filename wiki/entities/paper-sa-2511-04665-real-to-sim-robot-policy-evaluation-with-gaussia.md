@@ -42,6 +42,28 @@ Real-to-sim robot policy evaluation with Gaussian splatting simulation of soft-b
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["真实机器人遥操作示教（GELLO）"] --> PT["仅用真实数据训练策略（ACT、Diffusion、SmolVLA、Pi-0 等）"]
+    S["iPhone 扫描工作空间与各物体，得到 Gaussian Splatting 重建"] --> SEG["分割为机器人、物体、背景"]
+    SEG --> PA["位置对齐：机器人用 ICP + RANSAC，物体对齐 PhysTwin 粒子集与网格"]
+    PA --> LS["按最近邻把高斯核绑定到机器人连杆"]
+    PA --> CA["颜色对齐：二次多项式变换（IRLS 最小二乘）对齐到真实相机颜色域"]
+    V["人-物体交互视频"] --> PHY["PhysTwin 弹簧-质点软体数字孪生（系统辨识）"]
+    PHY --> ENG["基于 NVIDIA Warp 的物理引擎：支持与末端执行器及物体的碰撞"]
+    LS --> SIM["仿真环境：状态更新传给高斯核（刚体用刚体变换，软体用 LBS）"]
+    CA --> SIM
+    ENG --> SIM
+    SIM --> API["Gym 风格接口：env.step / env.render"]
+    PT --> EV["在固定初始配置下仿真评测策略"]
+    API --> EV
+    EV --> COR["与真实世界成功率比较，计算性能相关性"]
+```
+
+图依据：论文 §III Method（Fig. 2、§III-B/C/D）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Real-to-sim robot policy evaluation with Gaussian splatting simulation of soft-b
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2511.04665>
+- [arXiv PDF](https://arxiv.org/pdf/2511.04665)：已通读方法部分（实验与附录以略读为准）：§III Method（问题定义、PhysTwin、Real-to-Sim GS 仿真构建、策略评测）、Fig. 2
 
 ## 推荐继续阅读
 

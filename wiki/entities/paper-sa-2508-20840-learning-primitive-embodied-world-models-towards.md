@@ -42,6 +42,25 @@ Towards scalable robotic learning with primitive embodied world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["语言指令 + 当前观测 O_t<br/>如 Pick up the yellow tape measure"] --> B["Stage I: VLM 规划器 (Qwen2.5-VL-7B)<br/>Reasoner → Planner(LoRA-P) 拆成原语序列 P1..PN"]
+    B --> C["Grounder(LoRA-G)<br/>为每个原语给出夹爪起点/终点像素位置 → 起止点热力图"]
+    C --> D["Verifier 检验计划可执行性<br/>通过 / 拒绝"]
+    D --> E["Stage II: 原语具身世界模型 PEWM(视频扩散)<br/>条件: 当前帧 + 原语文本(CLIP) + 起止热力图"]
+    E --> F["生成未来帧短视频 (约 ≤2 秒)"]
+    F --> G["Stage III: Gen6D 零样本位姿估计<br/>提取末端 6-DoF 轨迹"]
+    G --> H["结合度量深度提升到 3D, 变换到机器人基座坐标系"]
+    H --> I["机器人执行"]
+    I --> J["更新观测 O_t+1, 取最新帧作为下一轮输入"]
+    J -. 闭环自回归, 逐原语重复 .-> E
+    D -. 二值开合夹爪原语 .-> K["跳过视频生成 直接符号控制"]
+```
+
+图依据：论文 §4.1–4.2 / Fig. 4、Fig. 5，附录 Fig. 6、Fig. 8 与附录 C（原语规划与视频生成）。"夹爪原语跳过视频生成"来自附录 C；Verifier 与 Grounder 的先后次序按 Fig. 5/8 推断，可能与原图略有出入。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ Towards scalable robotic learning with primitive embodied world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.20840>
+- [arXiv PDF](https://arxiv.org/pdf/2508.20840)：已通读方法部分（实验与附录以略读为准）：§1–§2 原语定义、§4.1–4.2 应用与闭环流程、附录 C 方法细节；实验与数据集略读
 
 ## 推荐继续阅读
 

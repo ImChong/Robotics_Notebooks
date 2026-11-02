@@ -42,6 +42,22 @@ Runner-up submission to the EPIC-KITCHENS-100 Action Anticipation Challenge at E
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["EK-100 RGB 帧与标注<br/>预动作片段：32 帧 @ 8 FPS，裁剪 384×384，止于目标动作前 1 s"] --> E["冻结 V-JEPA 2.1 ViT-G/384 编码器<br/>输出可见上下文 tokens"]
+    E --> P["冻结预训练 predictor<br/>用 mask tokens 预测 +1 s 未来 latent tokens"]
+    E --> CAT["沿 token 维度拼接<br/>上下文 tokens + 预测未来 tokens"]
+    P --> CAT
+    CAT --> PR["8 个独立初始化的注意力探针副本<br/>4 个注意力块 + 3 个任务查询 (verb / noun / action)"]
+    PR --> S1["第一阶段融合<br/>同一 epoch 内 8 副本 sigmoid 分数加权"]
+    S1 --> S2["第二阶段融合<br/>epoch 12–20 候选按字段加权"]
+    S2 --> O["官方 JSON 输出<br/>verb / noun / action-pair 分数"]
+```
+
+图依据：论文 §2 / Fig. 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Runner-up submission to the EPIC-KITCHENS-100 Action Anticipation Challenge at E
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.00662>
+- [arXiv PDF](https://arxiv.org/pdf/2606.00662)：已通读方法部分（实验与附录以略读为准）：§1、§2.1–§2.4、§3.1–§3.2
 
 ## 推荐继续阅读
 

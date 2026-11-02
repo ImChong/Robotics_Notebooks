@@ -46,6 +46,29 @@ summary: "腿足 Sim2Real 经典流水线：电机辨识、时延补偿、动力
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph SIM["仿真构建（§V-A）"]
+    S1["拆机实测尺寸与质量，建 URDF<br/>惯量按均匀密度估计"] --> S2["理想直流电机执行器模型<br/>+ 分段线性转矩-电流关系"]
+    S2 --> S3["延迟模型：观测历史线性插值"]
+  end
+  subgraph ROB["鲁棒训练（§V-B）"]
+    R1["每个 episode 随机化动力学参数（表 I）"]
+    R2["每 200 步对机身施加随机扰动力"]
+    R3["紧凑观测：roll、pitch、角速度、8 个电机角"]
+  end
+  S3 --> T["PyBullet 中用 PPO 训练<br/>a(t,o) = ā(t) + π(o)"]
+  R1 --> T
+  R2 --> T
+  R3 --> T
+  T --> D["部署：Minitaur 传感器经 STM32 回传 Jetson TX2<br/>神经网络推理，动作回传微控制器，约 150-200Hz"]
+  D --> L["腿空间动作 (swing, extension) 映射为电机角<br/>PD 位置控制"]
+```
+
+图依据：论文 §III、§IV-B/D、§V（Fig. 2、Fig. 3、式 (3)–(7)、表 I）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -95,6 +118,7 @@ summary: "腿足 Sim2Real 经典流水线：电机辨识、时延补偿、动力
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
 - [RL+PD 动作接口与增益设计论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)
+- [arXiv PDF](https://arxiv.org/pdf/1804.10332)：已通读方法部分（实验与附录以略读为准）：§III 平台与仿真、§IV 控制器学习、§V 缩小现实差距
 
 ## 推荐继续阅读
 

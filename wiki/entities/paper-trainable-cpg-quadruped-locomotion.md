@@ -20,7 +20,7 @@ summary: "面向四足运动的可训练中央模式发生器框架（arXiv:2610
 
 # 面向四足运动的可训练中央模式发生器框架
 
-**可训练 CPG**（*A Trainable CPG Framework for Quadruped Locomotion*，[arXiv:2610.36537](https://arxiv.org/abs/2610.36537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**可训练 CPG**（*A Trainable CPG Framework for Quadruped Locomotion*，[arXiv:2610.36537](https://arxiv.org/abs/2610.36537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,29 @@ summary: "面向四足运动的可训练中央模式发生器框架（arXiv:2610
 ## 为什么重要
 
 - 周报所述待解决的问题：多步态控制通常为每种步态和转换分别训练策略，难以获得可解释且连续的统一控制。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph 离线["离线预训练 ENN"]
+    A["独立定义的足端轨迹参数<br/>身高 h / 占空比 d / 抬脚 gc / 触地深度 gp / 步长 ls / 朝向 ψ"] --> B["离线逆运动学 IK<br/>得到关节角监督"]
+    C["8 神经元 CPG 的神经元信号 x, dx/dt<br/>+ 步态 one-hot + 腿标识"] --> D["腿间共享 MLP (ENN)<br/>输入 17 维, 输出 3 个关节角"]
+    B --> D
+  end
+  subgraph 在线["在线控制 (ENN 冻结)"]
+    E["速度指令 vx, vy, ωz + 步态指令 + 本体感知"] --> F["Actor 策略 (PPO, Beta 分布)<br/>输出 6 个轨迹调制变量"]
+    F --> G["调制变量 m: h, gc, gp, ls, 转向差分, ψ"]
+    H["8 神经元 CPG 提供步态节律"] --> I["ENN: 节律 + 轨迹参数 → 12 维关节角参考 q_des"]
+    G --> I
+    I --> J["关节级 PD 控制器 → 力矩 τ_cmd"]
+    J --> K["四足机器人 Go2"]
+    K -->|"观测"| F
+  end
+  D -.-> I
+```
+
+图依据：论文 §III-A 概览、§III-B CPG–ENN 运动先验、§III-C 轨迹调制强化学习、Fig.2 / Fig.5
 
 ## 核心机制
 
@@ -87,6 +110,7 @@ summary: "面向四足运动的可训练中央模式发生器框架（arXiv:2610
 - [trainable-cpg-quadruped-locomotion_arxiv_2610_36537.md](../../sources/papers/trainable-cpg-quadruped-locomotion_arxiv_2610_36537.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36537](https://arxiv.org/abs/2610.36537)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36537)：已通读方法部分（实验与附录以略读为准）：方法（§III-A 概览、§III-B CPG-ENN 先验与 ENN 预训练、§III-C 观测/动作/奖励/Beta 策略）
 
 ## 推荐继续阅读
 

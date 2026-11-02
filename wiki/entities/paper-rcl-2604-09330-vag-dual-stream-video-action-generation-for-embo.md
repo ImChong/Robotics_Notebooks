@@ -42,6 +42,24 @@ VAG synthesizes robot videos and action sequences from an initial image and inst
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始帧 + 文本指令"] --> B["视频分支: Cosmos-Predict2 DiT<br/>(T5-XXL 文本经 cross-attention)"]
+    N1["视频潜变量噪声"] --> B
+    B --> C["每步去噪得到 clean latent z0"]
+    C --> D["自适应 3D Pooling<br/>得到全局 video embedding"]
+    D --> E["动作分支: 1D U-Net<br/>(Diffusion Policy 结构)"]
+    N2["动作噪声"] --> E
+    C -->|"N 步同步去噪"| F["VAE 解码: 生成视频"]
+    E --> G["生成动作序列 A"]
+    F --> H["对齐的 视频-动作 对<br/>用于下游策略训练"]
+    G --> H
+```
+
+图依据：论文 §3.2 / §3.3 / Fig.3（推理与训练流水线）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ VAG synthesizes robot videos and action sequences from an initial image and inst
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.09330>
+- [arXiv PDF](https://arxiv.org/pdf/2604.09330)：已通读方法部分（实验与附录以略读为准）：§1–§3（含 3.1 Flow Matching、3.2 双流生成、3.3 训练）、§4.1 实验设定
 
 ## 推荐继续阅读
 

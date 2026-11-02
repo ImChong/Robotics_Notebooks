@@ -42,6 +42,23 @@ Goal-conditioned generative simulator producing future egocentric sequences matc
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["条件 C：egocentric 首帧/短片段<br/>目标指令 y，exocentric 参考图"] --> B["融合条件嵌入<br/>自适应归一化与 cross-attention 注入"]
+    B --> C["潜空间 flow matching<br/>扩散 Transformer（Wan2.2 初始化）"]
+    V["预训练 VGGT 几何特征"] -. "cosine + scale 对齐损失 L_G" .-> C
+    C --> D["Stage 1：微调<br/>velocity 匹配损失"]
+    D --> E["GRAFT：每个条件采样 K 条 rollout"]
+    E --> F["多项奖励打分<br/>目标 / 场景 / 时序 / 感知"]
+    F --> G["归一化奖励 r<br/>隐式正负分支 negative-aware flow-matching 损失"]
+    G --> H["更新生成器 → 第一人称视频 rollout"]
+    H -. "下一轮刷新 old 模型" .-> E
+```
+
+图依据：论文 §3.1–3.2 / Fig.2–3（Stage-1/2 两阶段训练见附录，仅略读）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Goal-conditioned generative simulator producing future egocentric sequences matc
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.20169>
+- [arXiv PDF](https://arxiv.org/pdf/2603.20169)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1 扩散式 egocentric 生成器、§3.2 GRAFT
 
 ## 推荐继续阅读
 

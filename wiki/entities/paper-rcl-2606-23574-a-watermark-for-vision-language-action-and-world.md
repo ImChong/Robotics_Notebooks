@@ -42,6 +42,30 @@ To address this, we propose the \emph{keyed latent-provenance verification} meth
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph INJ["注入 (owner 侧)"]
+    K["密钥 k* + episode nonce ν_e"] --> SEL["密钥选择器 S(k*, ν_e, c)<br/>每 episode 至多标记 m 个 chunk"]
+    SEL -->|"选中 chunk"| PERT["密钥潜变量扰动<br/>z_fp = sqrt(1-β²)·z_c + β·r_c<br/>保持 N(0, I) 噪声分布"]
+    SEL -->|"未选中"| BASE["使用原始种子 z_c"]
+    PERT --> GEN["生成器 F_θ (flow matching / diffusion)<br/>VLA 或 world-action model"]
+    BASE --> GEN
+    GEN --> ACT["动作 chunk"]
+  end
+  ACT --> POST["部署侧后处理 (被审计方)<br/>clip / EMA / jitter / delay<br/>且仅可见 D_env 个执行通道"]
+  subgraph VER["验证 (owner 审计)"]
+    POST --> MAP["MAP 潜变量恢复<br/>由执行动作估计种子 ẑ_c"]
+    MAP --> SC["对候选密钥匹配滤波打分 s_e(k)<br/>(含同步滞后搜索)"]
+    SC --> Z["诱饵密钥 (decoy) 归一化<br/>得到 Z-score Z_e(k)"]
+    Z --> AGG["多 rollout 累加 T_G(k)"]
+    AGG --> DEC{"T_G(k*) 超过诱饵分布<br/>(1-α_FPR) 分位阈值?"}
+  end
+```
+
+图依据：论文 §3 威胁模型、§4.1 指纹注入、§4.2 指纹验证
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +123,7 @@ To address this, we propose the \emph{keyed latent-provenance verification} meth
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.23574>
+- [arXiv PDF](https://arxiv.org/pdf/2606.23574)：已通读方法部分（实验与附录以略读为准）：§3 威胁模型与问题设定、§4 方法（4.1–4.2）；§5 以后（评估、攻击实验）略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ A pretraining framework that recovers synchronized camera and wrist trajectories
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Ego4D 第一人称视频（单个随身 RGB 相机）"] --> B["VGGT 恢复尺度归一化相机轨迹"]
+    A --> C["UniDepth 度量深度"]
+    A --> D["SAM-3D-Body 估计左右手腕位姿"]
+    B --> E["与 VGGT 深度按中位深度比对齐，恢复度量尺度 λ"]
+    C --> E
+    E --> F["按 chunk 重新居中：把相机与手腕位姿统一到 chunk 首帧参考系"]
+    D --> F
+    F --> G["27 维统一动作：相机 9D + 左腕 9D + 右腕 9D（平移 + 6D 旋转）"]
+    G --> H["阶段一：第一人称人类视频预训练（VLM prefix + action expert，flow matching）"]
+    H --> I["阶段二：机器人数据微调，沿用同一架构与预训练权重"]
+    I --> J["人形机器人部署：主动调整视角"]
+```
+
+图依据：论文 §3.1 从第一人称视频到统一动作空间、§3.2 架构与训练策略 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A pretraining framework that recovers synchronized camera and wrist trajectories
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.06194>
+- [arXiv PDF](https://arxiv.org/pdf/2606.06194)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1、3.2）、§4.1 实验设定开头；其余实验与附录略读或未读
 
 ## 推荐继续阅读
 

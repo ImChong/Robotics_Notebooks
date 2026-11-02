@@ -41,6 +41,24 @@ To solve this problem, we propose \textbf{dVLA-RL}, shifting the learning object
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  S["状态 s_t<br/>视觉观测 + 语言指令 + 本体感知"] --> M["离散扩散 VLA (dVLA)<br/>从全 [MASK] 序列 x_K 开始<br/>K 步迭代去噪"]
+  M --> SCH["调度器按置信度<br/>Gumbel-TopK 选择 U_k<br/>解码 / 重新掩码"]
+  SCH -->|"未到 x_0"| M
+  SCH --> A["完整解码动作 a_t = x_0"]
+  A --> ENV["环境执行<br/>稀疏结果奖励 (成功 1 / 失败 0)"]
+  ENV --> ADV["价值头估计<br/>优势 A_t"]
+  SCH -.记录去噪路径 τ.-> LP["轨迹级似然 log π(τ|s)<br/>仅累加 MASK→token 的 token 生成项 M_k<br/>丢弃 unmasking 项"]
+  LP --> PPO["PPO clipped 目标<br/>更新策略 θ"]
+  ADV --> PPO
+  PPO --> M
+```
+
+图依据：论文 §3.1–§3.2、§4.1–§4.2、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ To solve this problem, we propose \textbf{dVLA-RL}, shifting the learning object
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.23623>
+- [arXiv PDF](https://arxiv.org/pdf/2606.23623)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4 方法（4.1–4.2）；§5 实验设定略读
 
 ## 推荐继续阅读
 

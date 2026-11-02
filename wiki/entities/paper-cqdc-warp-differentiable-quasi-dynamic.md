@@ -32,6 +32,29 @@ summary: "CQDC-Warp（arXiv:2610.21349）：GPU 加速的可微准动态仿真�
 
 摘要指出，基于梯度的规划有前景，但同时优化运动与接触决策很难；许多规划器运行在 CPU 上，吞吐量有限。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测状态 q_s<br/>+ 上一周期解 U*（Shift 后热启动）"] --> B["任务预先指定<br/>意图接触的机器人连杆"]
+    B --> C["重置所有规划 world 到 q_s"]
+    C --> D["H 步可微 rollout：<br/>q_k+1 = F(q_k, u_k)"]
+    subgraph SIM["CQDC-Warp 单步（GPU 批量并行）"]
+        S1["前向运动学"] --> S2["碰撞检测"]
+        S2 --> S3["接触求解：柔顺接触凸问题<br/>批量 Newton 法"]
+        S3 --> S4["积分"]
+    end
+    D --> SIM
+    SIM --> E["轨迹代价：位姿跟踪 + 正则 + 接触距离/位置代价"]
+    E --> F["反传：碰撞几何用采样 softmax 代理梯度，<br/>接触求解用隐式微分，其余用 Warp 自动微分"]
+    F --> G["命令序列梯度 G；B(G) 对平移/旋转/关节块分别归一化"]
+    G --> H["U ← U − α_j B(G)，每世界保留最优 (U, L)"]
+    H -->|"未满 N 次迭代"| C
+    H -->|"N 次迭代结束"| I["只执行最优序列的首个命令 u0<br/>下一次观测后重新规划"]
+```
+
+图依据：论文 §IV-A/B/D/E（仿真器）、§V-A Algorithm 1 与 §V-B（MPC 与代价）；单步内部顺序按 §IV-E 与 §VI-C 对前向过程的列举整理，箭头顺序为推断。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -98,6 +121,7 @@ summary: "CQDC-Warp（arXiv:2610.21349）：GPU 加速的可微准动态仿真�
 
 - [论文归档](../../sources/papers/cqdc-warp_arxiv_2610_21349.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.21349)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV CQDC-Warp、§V MPC、§VI 实验设定
 
 ## 推荐继续阅读
 

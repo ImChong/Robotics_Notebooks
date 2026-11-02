@@ -42,6 +42,32 @@ FLAM learns a video world model whose slots each carry a latent action while sha
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 (a)：预训练 VQ-VAE 编码器"]
+        A["无动作标签视频帧 o"] --> B["CNN Encoder → patch 特征 z"]
+        B --> C["FSQ 量化 → Decoder 重建<br/>重建损失 L_VQ-VAE"]
+    end
+    subgraph S2["阶段 (b)：Factored 潜动作模型（各模块联合训练）"]
+        D["特征 z_t"] --> E["Factorizer：slot attention + 因果时间注意力<br/>得到 K 个 slot"]
+        E --> F["共享 IDM：输入全部当前 slot 与该 slot 的下一帧值<br/>每个 slot 一个潜动作 a_i（KL 约束到单位正态先验）"]
+        F --> G["共享 FDM：输入全部当前 slot + a_i<br/>预测各 slot 下一帧值"]
+        G --> H["Aggregator：cross-attention 并结合 z_t<br/>映射回特征空间 → 预测下一帧特征"]
+        H --> I["下一帧预测损失，联合优化"]
+    end
+    C --> D
+    subgraph S3["第三阶段：潜动作的使用"]
+        J["可控视频生成：从先验采样或指定各 slot 潜动作"]
+        K["策略学习：小规模带动作标注示教训练 Action Decoder f<br/>给无标注视频的潜动作打伪动作标签 → 行为克隆策略 π"]
+    end
+    F --> J
+    F --> K
+```
+
+图依据：论文 §4.1–4.3 / Fig.2、Fig.3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ FLAM learns a video world model whose slots each carry a latent action while sha
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.16229>
+- [arXiv PDF](https://arxiv.org/pdf/2602.16229)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4（4.1–4.3）、Fig.2、Fig.3、Alg.1；§5 实验与附录略读
 
 ## 推荐继续阅读
 

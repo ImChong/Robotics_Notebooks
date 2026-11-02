@@ -29,6 +29,23 @@ Kintsugi-VLA从仿真失败轨迹中筛选适合学习恢复行为的起始状�
 
 Kintsugi-VLA从仿真失败轨迹中筛选适合学习恢复行为的起始状态。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["仿真中的失败 rollout<br/>(PPO 教师 33 + 基础 VLA 167，共 200 条)"] --> B["保存 simulator 快照<br/>(各 checkpoint 状态)"]
+    B --> C["恢复状态并分支<br/>固定特权专家 πE 重复续作"]
+    C --> D["自适应预算 5→15→30 次<br/>估计 recoverability + Wilson 区间"]
+    D --> E["找出末端低可恢复前沿 tf<br/>(Ui &lt; τ 的最大末端后缀)"]
+    E --> F["恢复状态选择<br/>深度 0.15 / 0.50 / 0.85"]
+    F --> G["特权专家从所选状态续作<br/>成功续作导出为恢复示范"]
+    G --> H["难度匹配 / 帧预算匹配"]
+    H --> I["与名义示范一起训练 SmolVLA"]
+    I --> J["评测 Protocol A / B / G"]
+```
+
+图依据：论文 §III / Fig.2
+
 ## 方法栈
 
 在候选状态恢复仿真并由特权教师多次续作，以成功比例估计可恢复性，再围绕低可恢复前沿采集恢复示范。
@@ -70,6 +87,7 @@ Kintsugi-VLA从仿真失败轨迹中筛选适合学习恢复行为的起始状�
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.31048](https://arxiv.org/abs/2609.31048)
+- [arXiv PDF](https://arxiv.org/pdf/2609.31048)：已通读方法部分（实验与附录以略读为准）：§III Method、§IV 实验设置（§IV-A 至 §IV-C）
 
 ## 推荐继续阅读
 

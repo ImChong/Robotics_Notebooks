@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  H["episode 历史 H_t<br/>逐帧 CLIP 视觉嵌入 x_i"] --> RC["Recap Compressor<br/>Perceiver 交叉注意力 + 可学习 query<br/>顺序感知位置编码"]
+  RC --> G["固定大小记忆 token G (K×d)"]
+  I["局部帧历史 + 语言指令 ℓ"] --> VB["视频骨干 (UNet / Cosmos DiT)<br/>预测未来视频 + 骨干特征 F_vis"]
+  G -->|"路径1: 注入骨干 cross-attention"| VB
+  VB --> ZD["去噪视频 token Z_den"]
+  G -->|"路径2: Z_obs = [G; Z_den] 直接注入动作解码器"| AD["动作策略 π_θ (动作解码器)"]
+  ZD --> AD
+  AD --> ACT["动作块 Â_t"]
+  VB --> CG["Cue Gate q_ω(F_vis, G, ℓ)<br/>任务完成分数"]
+  G --> CG
+  CG --> STOP["自主终止"]
+  T["训练: 阶段1 视频预测 + 重建辅助 + Cue Gate 损失<br/>阶段2 在记忆条件特征上训练动作策略"] -.-> VB
+```
+
+图依据：论文 §3 方法（3.1–3.6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +119,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.20679>
+- [arXiv PDF](https://arxiv.org/pdf/2606.20679)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.6）；§4 实验未读，附录未读
 
 ## 推荐继续阅读
 

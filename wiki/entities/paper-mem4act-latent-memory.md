@@ -31,6 +31,26 @@ summary: "Mem4Act（arXiv:2610.22323）：为长程机器人控制学习固定�
 
 摘要指出，现有方法或保留原始历史、或保留压缩的视觉 token、或保留语言摘要，前者让策略面对越来越长的输入，后者可能丢掉任务相关的时间、语义与感知信息。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["历史帧 H_t"] --> B["视觉历史编码<br/>SigLIP 特征池化为 4×4=16 个视觉 token<br/>+ 本体状态 / 相对时间 / 执行阶段嵌入"]
+    B --> C["多粒度时间聚合<br/>S 个可学习记忆 token 分组 cross-attention<br/>窗口数默认 32→16→8，由局部到长程"]
+    C --> D["全局 self-attention<br/>得到固定大小潜在记忆 M_t"]
+    D --> E["问答监督 QA<br/>记忆投影到 PaliGemma-2B 嵌入空间"]
+    D --> F["关键帧 DINO 特征重建<br/>预测器 gω 重建过去关键帧特征"]
+    D --> G["记忆调制 action expert<br/>cross-attention 得到逐层 scale γ 与 shift β"]
+    H["当前观测 O_t 与指令 L"] --> G
+    G --> I["flow matching 输出动作块 A_t"]
+    E --> J["阶段 1：冻结 VLA 骨干<br/>只训记忆编码器、投影与 DINO 解码器"]
+    F --> J
+    J --> K["阶段 2：联合训练策略与记忆<br/>保留 QA 与 DINO 损失，记忆编码器学习率 0.1×"]
+    I --> K
+```
+
+图依据：论文方法部分（Structured Memory Formation / Memory-Specific Supervision / Memory-Conditioned Action Policy / Memory-First Two-Stage Training）/ Fig. 2。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -97,6 +117,7 @@ summary: "Mem4Act（arXiv:2610.22323）：为长程机器人控制学习固定�
 
 - [论文归档](../../sources/papers/mem4act_arxiv_2610_22323.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.22323)：已通读方法部分（实验与附录以略读为准）：问题设定、结构化记忆形成、记忆专用监督、记忆条件动作策略、记忆优先两阶段训练；数据集/基线设定略读
 
 ## 推荐继续阅读
 

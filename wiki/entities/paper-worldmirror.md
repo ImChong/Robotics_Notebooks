@@ -42,6 +42,26 @@ summary: "WorldMirror（arXiv:2610.31834）：WorldMirror把真实到仿真建�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-29）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：野外机器人示教的 RGB 视频 V + 机器人轨迹 T"] --> WS
+    WS[("结构化世界状态 M_t = (S_t, O_t, R_t, F_t)<br/>静态场景 / 交互物体 / 空间关系 / 验证反馈")]
+    WS --> RT["Router agent：在固定构造图上选择合法动作<br/>前进 / 调用 skill / 回退前驱阶段 / 停止检查 / 接受"]
+    RT --> AG["Agent-as-Tool：Reconstruction / Calibration / Layout / Replay Agent<br/>构造阶段：场景准备 → 相机标定 → 支撑拟合 → 物体构造 → 布局 → 机器人对齐 → 轨迹回放"]
+    AG --> SK["调用构造技能库<br/>相机标定（DINOv2 对应 + 渲染到图像优化）<br/>场景/资产重建（如 Meshy、Articraft）<br/>相机锚定装配"]
+    SK --> CAND["候选状态更新"]
+    CAND --> VER{"阶段验证：视觉 / 空间 / 物理一致性"}
+    VER -- 通过 --> COM["提交更新到世界状态"]
+    COM --> WS
+    VER -- 失败 --> FB["带类型的失败反馈：失败类、回退目标、受影响组件<br/>已提交状态不变，下游相关组件标记失效并重建"]
+    FB --> WS
+    COM --> OUT["所有检查通过或达到修正预算：输出可执行数字孪生<br/>相机位姿锚定的统一世界坐标系 W，直接回放示教轨迹"]
+```
+
+图依据：论文 §3.1–§3.5、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "WorldMirror（arXiv:2610.31834）：WorldMirror把真实到仿真建�
 - [worldmirror_arxiv_2610_31834.md](../../sources/papers/worldmirror_arxiv_2610_31834.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.31834](https://arxiv.org/abs/2610.31834)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31834)：已通读方法部分（实验与附录以略读为准）：摘要、§2 略读、§3（3.1–3.5 与 Fig. 2）、§4 实验设定与表题
 
 ## 推荐继续阅读
 

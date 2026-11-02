@@ -41,6 +41,28 @@ summary: "CEL Fleet Experience（arXiv:2610.25736）：CEL用失败情境检索�
 - 开源结论：**部分开源**（步骤 2.5，2026-10-31）。公众号只给 RLinf 通用框架仓库（git ls-remote 可达）与项目页；项目页仅链接该框架，未确认含 CEL 专属代码，不当作完整开源。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["专家监督初始化策略<br/>（SFT + 多机 HG-DAgger）"] --> FLEET["机群自主执行 / 异步收集<br/>（FATS：环境 worker 在机器人端）"]
+    FLEET --> LBL["人工只给二值成败标签并复位环境"]
+    LBL -->|"成功轨迹"| BUF["集体经验缓冲 D+<br/>（滚动窗口，缓存轨迹嵌入）"]
+    LBL -->|"失败轨迹"| Q["取终点前一段观测作失败情境 query<br/>（L=90 帧，偏移 δ=10 帧）；失败动作不作监督"]
+    ENC["冻结 VLA 视觉塔特征（池化为 4×4）<br/>+ 归一化关节状态 → 检索表征 z_t"] --> BUF
+    ENC --> Q
+    Q --> RET["S-DTW 时序对齐，对每条成功轨迹取最优区间<br/>选代价最低的 K 个并前后扩展"]
+    BUF --> RET
+    RET --> PRI["提高被检索动作 chunk 的采样优先级<br/>（带衰减的重叠累加）"]
+    PRI --> FT["按优先级采样成功 action chunk<br/>监督微调（flow-matching 损失作似然代理）"]
+    FT --> POL["更新后的共享策略<br/>经云端推理下发回机群"]
+    POL --> FLEET
+    FLEET -.->|"完整已标注 episode 经 SwarmLink 数据面传至训练 worker 经验库"| BUF
+    HS["HotSwarm 控制面：检测故障并就地重启机器人 worker"] -.-> FLEET
+```
+
+图依据：论文 §3.1 FERT（Fig.3、式 (2)–(12)）、§3.2 FATS（Fig.4）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +105,7 @@ summary: "CEL Fleet Experience（arXiv:2610.25736）：CEL用失败情境检索�
 - [cel_fleet_experience_arxiv_2610_25736.md](../../sources/papers/cel_fleet_experience_arxiv_2610_25736.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25736](https://arxiv.org/abs/2610.25736)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25736)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 CEL 概览、§3.1 FERT 四步（含式 (2)–(13)）、§3.2 FATS 架构与 3.2.1–3.2.2 概览；§3.2.3 HotSwarm 控制面细节及 §3.1.5 理论分析以略读为准
 
 ## 推荐继续阅读
 

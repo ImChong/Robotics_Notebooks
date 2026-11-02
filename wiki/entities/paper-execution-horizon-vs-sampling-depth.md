@@ -43,6 +43,23 @@ summary: "Execution Horizon vs Sampling Depth（arXiv:2610.32102）：研究发�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-29）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["观测 o_t：静态视角 + 腕部视角图像、本体状态、语言指令"] --> VLA["预训练流匹配 VLA 策略（参数固定）"]
+  NZ["每次查询重新采样先验噪声 x(0) ~ N(0, I)"] --> EUL
+  VLA --> EUL["均匀前向 Euler 积分：采样深度 N 步（N = NFE）<br/>x(k+1) = x(k) − Δτ · vθ(x(k), τk, o_t)"]
+  EUL --> CH["预测 H 步动作块 â_t"]
+  CH --> EXE["仅开环执行前 s 步（执行时域 s）"]
+  EXE --> ENV["机器人与环境"]
+  ENV -- "t + s 时获得新观测 o_t+s，重新查询" --> OBS
+  EUL -. "N 小：样本离散度收缩（Cov = ρ(N)·σ0²·I，质心不变）" .-> COUP["耦合效应：<br/>s 小（频繁反馈）→ 深积分提供的多样样本有利<br/>s 大（长开环）→ 浅积分抑制漂移累积"]
+  EXE -.-> COUP
+```
+
+图依据：论文 §III-A / §III-B / §III-C / Fig.2（虚线为论文对耦合机制的解释，非数据流）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +103,7 @@ summary: "Execution Horizon vs Sampling Depth（arXiv:2610.32102）：研究发�
 - [execution_horizon_vs_sampling_depth_arxiv_2610_32102.md](../../sources/papers/execution_horizon_vs_sampling_depth_arxiv_2610_32102.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.32102](https://arxiv.org/abs/2610.32102)
+- [arXiv PDF](https://arxiv.org/pdf/2610.32102)：已通读方法部分（实验与附录以略读为准）：§III Methodology（§III-A 流匹配 VLA 策略、§III-B 滚动时域动作分块、§III-C 耦合机制与命题 1）、§IV Experiments 略读（Table I）
 
 ## 推荐继续阅读
 

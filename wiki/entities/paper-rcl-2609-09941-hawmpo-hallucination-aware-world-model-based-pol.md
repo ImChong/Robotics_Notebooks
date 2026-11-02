@@ -42,6 +42,28 @@ HaWMPO post-trains OpenVLA-OFT inside a frozen video world model. A separate hal
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练 VLA 策略 π_θ<br/>输出动作块 action chunk"] --> B["动作条件世界模型 M_φ<br/>输入当前帧 + 初始参考帧 + 动作块<br/>生成后续 8 帧"]
+    B --> C["8 个并行想象环境 rollout<br/>VLA 基于生成帧继续输出下一动作块"]
+    C --> D["Reward model R：由生成图像预测每块原始奖励 R"]
+    C --> E["Hallucination-Aware Model（HAM）<br/>输入预测块、动作、当前帧、锚点图像 I0<br/>输出块级幻觉分数 H"]
+    D --> F["Reward-Soft 调制<br/>R̂ = (1 − α·H)·R"]
+    E --> F
+    F --> G["GRPO：组内归一化优势 + KL 正则<br/>更新 π_θ"]
+    G -.->|"进入下一轮迭代"| A
+    subgraph HAMTRAIN["HAM 训练（离线）"]
+        H1["已记录动作生成视频块<br/>对比真实观测序列"] --> H2["四项指标：DINOv3 相似度、深度一致性、<br/>光流轨迹一致性、MUSIQ 画质"]
+        H2 --> H3["min-max 归一化后得幻觉目标 h*"]
+        H3 --> H4["冻结 DINOv3 + 4 层 Fusion Transformer<br/>+ 可学习 query + MLP + Sigmoid<br/>MSE 训练"]
+    end
+    H4 -.-> E
+```
+
+图依据：论文 §3.1–3.3 / Fig.1、Fig.2、Algorithm 1（式 1–7）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ HaWMPO post-trains OpenVLA-OFT inside a frozen video world model. A separate hal
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.09941>
+- [arXiv PDF](https://arxiv.org/pdf/2609.09941)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.3（含 Algorithm 1）；§4 实验略读
 
 ## 推荐继续阅读
 

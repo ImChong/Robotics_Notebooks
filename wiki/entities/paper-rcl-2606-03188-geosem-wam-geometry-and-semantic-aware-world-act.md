@@ -41,6 +41,32 @@ To address this, we propose a structured world modeling framework that enhances 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["输入"]
+        O["当前观测 → 预训练 VAE → 潜变量视频 token"]
+        L["任务指令 → T5 编码器 → 交叉注意力注入所有 token"]
+    end
+    O --> MOT
+    L --> MOT
+    subgraph MOT["Mixture-of-Transformer（视频 DiT 与动作专家 DiT 共享注意力，骨干 Wan2.2-5B）"]
+        V["视频 DiT：潜空间未来视频 flow 预测 L_rgb（仅训练）"]
+        A["动作专家 DiT：以世界表征 z_t 为条件去噪动作块 L_act"]
+    end
+    V --> DPT["DPT 风格辅助头：3D reassemble + 3D fusion（仅训练）"]
+    DPT --> GEO["几何头 H_geo：L1 损失 L_geo"]
+    DPT --> SEM["语义分割头 H_sem：逐像素交叉熵 L_sem"]
+    A --> OUT["推理：仅用首帧观测潜变量一次前向，从高斯噪声迭代去噪出动作块（不生成未来帧，丢弃 DPT 分支）"]
+    GEO --> LOSS["联合目标 L = λrgb·L_rgb + λgeo·L_geo + λsem·L_sem + λact·L_act"]
+    SEM --> LOSS
+    V --> LOSS
+    A --> LOSS
+```
+
+图依据：论文 §3.1 概述、§3.2 架构（式 1–9）/ Fig.1（MoT 架构）、Fig.2（DPT 辅助头）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ To address this, we propose a structured world modeling framework that enhances 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.03188>
+- [arXiv PDF](https://arxiv.org/pdf/2606.03188)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.2 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

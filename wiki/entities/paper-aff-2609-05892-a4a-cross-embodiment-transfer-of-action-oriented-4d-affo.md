@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demonstrations——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要，此处不替原文概括贡献）。
+A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demonstrations——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要；方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demo
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    H["人类演示数据<br/>现有 HOI 数据 + 自采 RGB-D，共 80K+ 交互片段"] --> DC["4D 亲和数据构建<br/>GroundingDINO 定位 → SAM 2 掩码 → CoTracker3 跟踪查询点<br/>→ 深度回投影得 3D 点轨迹"]
+    DC --> S["样本 S = 图像序列 + 指令 l + 交互相关查询点 3D 轨迹"]
+    subgraph P1["阶段 I：交互中心 4D 亲和预训练"]
+        IN1["语言 + 图像 + 查询点坐标"] --> E1["原生 VLM 编码 + 点投影器 P_Q"]
+        E1 --> F1["共享隐变量模块 F_theta"]
+        F1 --> HQ["4D 轨迹头 H_Q：预测未来 4D 点运动（残差于匀速预测）"]
+    end
+    S --> IN1
+    subgraph P2["阶段 II：机器人动作微调"]
+        IN2["语言 + 图像 + 机器人状态"] --> E2["同一 VLM 编码 + 状态投影器 P_S"]
+        E2 --> F2["共享隐变量模块 F_theta（由阶段 I 初始化）"]
+        F2 --> HA["机器人动作头 H_A：动作块"]
+    end
+    F1 -.沿用 VLM 编码栈与 F_theta 参数.-> F2
+```
+
+图依据：论文 §3.2、§3.3 与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +73,7 @@ A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demo
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2609.05892)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法模块与数据流见上方「流程总览」（依据论文方法部分）。训练细节与实验请读 [原文](https://arxiv.org/abs/2609.05892)。
 
 ## 评测与指标
 
@@ -67,7 +89,7 @@ A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demo
 
 **本页只提供「A4A」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 清单可确证的只有标题、出处与分类标签；方法流程见「流程总览」，实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +110,7 @@ A4A: Cross-Embodiment Transfer of Action-Oriented 4D Affordances from Human Demo
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2609.05892>
+- [arXiv PDF](https://arxiv.org/pdf/2609.05892)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.3）、§4.1 实验设置
 
 ## 推荐继续阅读
 

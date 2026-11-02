@@ -42,6 +42,25 @@ Introduces large language models into long-term temporal action anticipation for
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["未裁剪第一人称视频，已知动作片段边界"] --> CAP["图像描述模块：取片段中间帧，以意图类问题条件生成 caption（VideoBLIP，冻结）"]
+  V --> REC["动作识别模块：冻结 EgoVLP 视频编码器，n=4 片段滑窗，Transformer + 分类头出 verb/noun"]
+  CAP --> NAR["视觉上下文 narrations"]
+  REC --> PA["过去动作 verb-noun 序列"]
+  TRN["训练集"] --> MMR["MMR 范例选择：兼顾与 query 相似度和多样性（MPNet 嵌入）"]
+  NAR --> PR["构造 prompt：instruction + 范例 + query"]
+  PA --> PR
+  MMR --> PR
+  PR --> LLM["Llama 2 7B（LoRA 微调，上下文学习）预测未来动作序列"]
+  LLM --> PP["规则映射回预定义 verb/noun 词表"]
+  PP --> OUT["未来 Z 个动作（用不同范例多次 prompt 得多条预测）"]
+```
+
+图依据：论文 §3 / Fig.2–5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Introduces large language models into long-term temporal action anticipation for
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2311.17944>
+- [arXiv PDF](https://arxiv.org/pdf/2311.17944)：已通读方法部分（实验与附录以略读为准）：§3 方法、§4 实验、附录 B–D
 
 ## 推荐继续阅读
 

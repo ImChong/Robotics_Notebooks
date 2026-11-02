@@ -42,6 +42,23 @@ Audio-event triggered selective frame capture reducing total power consumption b
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["连续音频流 X（单声道，16 kHz，幅度归一化到 [-1, 1]）"] --> B["滑动窗口：窗长 wd=4 s，步长 wh=2 s，得到片段 xi"]
+    B --> C["YAMNet 预训练嵌入 + 自定义密集层分类头 fθ（TFLite 部署）"]
+    C --> D["softmax 输出手-物交互 HOI 后验 P(C1 | xi)"]
+    D --> E{"触发控制策略"}
+    E -->|"固定关闭时长"| F["P ≥ τ 则激活，保持 Tfixed（如 1 s）"]
+    E -->|"滞回阈值"| G["OFF 时 P ≥ τon 转 ON，ON 时 P < τoff 转 OFF"]
+    F --> H["激活区间 [tstart, tstop]：相机拍摄图像"]
+    G --> H
+    H --> I["仅保留激活区间内的图像，用于下游第一视角问答（评测时其余帧置黑）"]
+```
+
+图依据：论文 §3.1 EgoTrigger、§3.2 Implementation、§6.2 离线评测流程。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Audio-event triggered selective frame capture reducing total power consumption b
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2508.01915>
+- [arXiv PDF](https://arxiv.org/pdf/2508.01915)：已通读方法部分（实验与附录以略读为准）：§3 Our Approach（3.1–3.2）与 §6.2 的离线触发评测流程
 
 ## 推荐继续阅读
 

@@ -41,6 +41,22 @@ We propose OA-WAM, an Object-Addressable World Action Model for robust robot man
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第三人称 + 腕部 RGB It、本体 qt、语言指令 ℓ、过去动作 a<t"] --> P["冻结的基础感知产生六路 token 流<br/>BPE 文本 / Qwen3-VL 名词短语（仅作 SAM 3 提示）/ Chameleon VQ-GAN 图像码<br/>SAM 3 + DINOv3 + 位姿对象 slot / 本体离散化 / 过去动作离散化"]
+    P --> SL["每帧 N+1 个 slot（1 个机器人 + N 个物体）<br/>slot = addr(32 维，t=0 算出后固定) ‖ content(256 维，逐帧更新) ‖ 帧序号嵌入 ‖ 角色标签"]
+    SL --> AD["slot adapter 投影到 4096 维<br/>替换序列中的 slot 占位位置"]
+    AD --> SEQ["block-causal 序列：文本 / 状态 / 各帧 VQ-Slot-动作 / 末尾 [ACT_Q]"]
+    SEQ --> TR["Chameleon-7B trunk（32 层）<br/>slot 位置的 key 只取 addr 子向量，每层后重置 addr 切片"]
+    TR --> WH["World head：预测下一帧各物体 slot 的 content 与位姿<br/>MSE，机器人 slot 不计入"]
+    TR --> AH["Action head：读取 [ACT_Q] 隐状态<br/>flow matching，4 步 Euler 一次前向解出 16 步动作 chunk"]
+    TR --> VQ["辅助 VQ head：预测下一帧 VQ token"]
+```
+
+图依据：论文 §3.1–3.5（问题设定、slot 化与统一序列、Object-addressable attention、预测头与训练目标）/ Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ We propose OA-WAM, an Object-Addressable World Action Model for robust robot man
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.06481>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06481)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法（3.1–3.5）、§4.1 实验设置
 
 ## 推荐继续阅读
 

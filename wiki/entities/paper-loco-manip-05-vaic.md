@@ -39,6 +39,35 @@ sources:
 
 - 解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["人-物交互数据重定向到人形<br/>+ 物体几何模板 P"] --> CMD["解耦命令 u_t = (v_t, c_t)<br/>速度目标 [vx, vy, vyaw] + 交互阶段指示 c_t∈{0,1}<br/>训练时从重定向参考动作中提取"]
+    subgraph S1["Stage 1：teacher 训练 + student 热身"]
+        PE["Privilege Encoder<br/>输入：参考动作、物体几何、本体感觉、环境状态"] --> ZP["特权 latent z_priv"]
+        ZP --> TA["Teacher Actor（PPO）+ 本体感觉"]
+        TA --> TACT["teacher 动作"]
+        TACT -->|"行为克隆 L_actor"| SA1["Student Actor"]
+        CMD --> SA1
+        OA1["Object Adapter / Privilege Adapter<br/>监督回归物体状态与 z_priv（深度输入置零）"]
+    end
+    subgraph S2["Stage 2：视觉引导 student 探索（PPO）"]
+        D["噪声深度流 d_t"] --> DE["CNN-GRU Depth Encoder"]
+        DE --> OA["Object Adapter：估计物体状态"]
+        CMD2["v_t, c_t + 本体感觉"] --> OA
+        OA --> PA["Privilege Adapter：结合模板 P 重建 z_priv"]
+        PA --> SA["Student Actor"]
+        CMD2 --> SA
+        SA --> ACT["关节动作"]
+        ACT -.->|"自身 rollout 在线更新适配器"| OA
+    end
+    S1 --> S2
+    S2 --> DEP["真机部署：板载深度（RealSense D435i）+ 本体感觉 + 用户命令"]
+```
+
+图依据：论文 §3 Methodology / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -83,6 +112,7 @@ sources:
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://vaic-humanoid.github.io/>
+- [arXiv PDF](https://arxiv.org/pdf/2606.09286)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Methodology（3.1-3.3，Fig.2）；§4 实验略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,40 @@ Generalizable embodiment-centric world model for scalable data generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRIOR["训练数据：自动提取先验（论文 §III-C）"]
+        F1["机器人数据集首帧 o1 + 任务指令 ℓ"] --> VLM["GPT-5-nano 识别任务相关物体"]
+        VLM --> GS["Grounded-SAM 分割物体"]
+        GS --> OP["物体先验 Io：裁剪、随机旋转缩放<br/>放到空白画布"]
+        GS --> OMNI["OmniPaint 修复去除物体后的空洞"]
+        OMNI --> SP["场景先验 Is：干净背景图"]
+    end
+    subgraph MODE["运动来源：两种部署模式"]
+        RR["Retrieval and Rebirth<br/>T5 嵌入指令，余弦相似度检索已有轨迹<br/>Isaac Lab 重放并可换新视角"]
+        PF["Prop-Free 遥操作<br/>无真实物体的 pantomime 动作<br/>现实空场景或仿真中采集"]
+        RR --> VR["渲染的纯机器人运动视频 vrob"]
+        PF --> VR
+    end
+    subgraph DIT["多模态视频扩散 Transformer"]
+        CH["通道拼接：带噪视频 latent zt<br/>+ VAE(vrob) + VAE(Is 沿时间扩展)"]
+        OS["物体先验 token 经扩展 self-attention 注入"]
+        CA["任务指令（T5）与全局轨迹 τ（MLP）<br/>经 cross-attention 注入"]
+        CH --> TF["Transformer 去噪"]
+        OS --> TF
+        CA --> TF
+    end
+    VR --> CH
+    SP --> CH
+    OP --> OS
+    TF --> OUT["生成机器人演示视频 o1:T<br/>（多视角：各视角独立 tokenize 后堆叠 token）"]
+    OUT --> POL["训练下游策略<br/>实验中使用 Diffusion Policy"]
+```
+
+图依据：论文 §III-A/B/C/D、§IV-A / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +130,7 @@ Generalizable embodiment-centric world model for scalable data generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.02577>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02577)：已通读方法部分（实验与附录以略读为准）：§I–II 引言与相关工作（略读）、§III 方法（A–D）、§IV-A/B 实验设定；其余略读
 
 ## 推荐继续阅读
 

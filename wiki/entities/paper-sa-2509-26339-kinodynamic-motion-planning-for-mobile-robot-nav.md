@@ -42,6 +42,23 @@ Kinodynamic motion planning across inconsistent world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BASE["KEASL 单假设（SH）搜索<br/>运动基元扩展 → 碰撞检查 → 速度约束"] --> MW["多世界假设搜索空间<br/>每个节点按世界假设各存一份扩展历史<br/>并记录分歧点"]
+    MW --> VEH["VEH：扩展边须在每个假设中都有效<br/>（基线，规划偏保守）"]
+    MW --> PEH["PEH：边只需在至少一个假设有效<br/>无效假设用 Rerouter 子搜索绕障，代价取平均<br/>（规划耗时长）"]
+    MW --> GEH["GEH：延迟到边扩展至目标后<br/>对每个假设从首个分歧点 Reroute 到目标<br/>更新目标边代价并将目标节点重新入 OPEN"]
+    GEH -->|"扩展集中在目标附近"| GEGRH["GEGRH：在 GEH 上增加图修订<br/>找到所有假设的首个分歧节点 nd<br/>ne.backPointer = nd.backPointer<br/>移除 nd 的后代，标记 nd 无效"]
+    GEGRH --> SRCH["搜索继续<br/>（A* 比较 f 值，ARA* 则降低启发式膨胀）"]
+    VEH --> OUT["最终解须在最新（主）世界假设中有效"]
+    PEH --> OUT
+    SRCH --> OUT
+```
+
+图依据：论文 §III-A 至 §III-E、Algorithm 1–5；GEH 到 GEGRH 的箭头按 §III-D/E 对 GEH 缺陷的叙述归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Kinodynamic motion planning across inconsistent world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.26339>
+- [arXiv PDF](https://arxiv.org/pdf/2509.26339)：已通读方法部分（实验与附录以略读为准）：§III 技术方案（A–E）、Algorithm 1–5
 
 ## 推荐继续阅读
 

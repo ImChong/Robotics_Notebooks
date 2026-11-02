@@ -42,6 +42,24 @@ summary: "When No Worries Went Wrong（arXiv:2610.38400）：从长期人机交�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-30）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["PICK：选一个受延迟/情境变化/交接影响的<br/>面向人的 effect"] --> B["RECORD：记录 T 触发 / R 显式操作 vs 目的<br/>A 证据、来源与时效 / C 权限与顺序 / E 执行 vs 达成<br/>producer → artifact → decision owner → time → effect"]
+    B --> C["CHANGE：改变一个前提<br/>原请求保持不变"]
+    C --> D["FOLLOW：沿链路追到能改变 effect 的边界"]
+    D --> Q1["Q1 按既定策略 effect 是否应变化"]
+    Q1 --> Q2["Q2 前提是否被建立<br/>缺失 / 可得但未用"]
+    Q2 --> Q3["Q3 证据与目的是否及时到达决策边界"]
+    Q3 --> Q4["Q4 该边界能否改变、推迟或排序 effect"]
+    Q4 --> Q5["Q5 补救是否引入相反错误"]
+    Q5 --> F["FIND：最早的已证实断点<br/>或记 unknown"]
+    F --> G["DECIDE：澄清策略 / 先加观测 / 修复或验证边界 / 报告无缺口<br/>并给出成对验收场景与反向风险检查"]
+```
+
+图依据：论文 §VII（TRACE 评审卡）、§VI 五项责任；Q1–Q5 与步骤名取自该节评审卡。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +103,7 @@ summary: "When No Worries Went Wrong（arXiv:2610.38400）：从长期人机交�
 - [when_no_worries_went_wrong_arxiv_2610_38400.md](../../sources/papers/when_no_worries_went_wrong_arxiv_2610_38400.md)
 - [wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md](../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md)
 - [arXiv:2610.38400](https://arxiv.org/abs/2610.38400)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38400)：已通读方法部分（实验与附录以略读为准）：摘要、§I–VII（TRACE 与 Table I）、§VIII
 
 ## 推荐继续阅读
 

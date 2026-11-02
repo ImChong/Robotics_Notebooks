@@ -42,6 +42,31 @@ Spatiotemporal forecasting as planning with generative world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1：学习生成式世界模型 Mϕ"]
+        Y["真实未来状态 y_t+1"] --> ENC["多尺度编码器 Eϕ"]
+        ENC --> VQ["向量量化<br/>离散码本 C，取最近邻 → zq"]
+        ST1["当前状态 s_t"] --> COND["条件编码 c_t = Cϕ(s_t)"]
+        VQ --> DEC["条件解码器 Dϕ(zq, c_t)"]
+        COND --> DEC
+        DEC --> LWM["重构 + 码本 + 承诺损失 L_WM"]
+    end
+    LWM -->|"冻结 ϕ"| WM["冻结的世界模型 Mϕ"]
+    subgraph S2["Stage 2：规划 + 自训练闭环"]
+        ST2["当前状态 s_t"] --> POL["智能体策略 πθ<br/>输出潜在动作 a_t"]
+        POL --> BEAM["Beam Search 在 Mϕ 中前向探索<br/>得到 B 个候选未来"]
+        WM --> BEAM
+        BEAM --> REW["不可微领域指标 S(·) 作奖励<br/>取最高奖励 ŷ*"]
+        REW --> LOSS["伪标签监督<br/>L_policy = ‖P(πθ(s_t)) − ŷ*‖²"]
+        LOSS -->|"梯度更新 θ"| POL
+    end
+```
+
+图依据：论文 §3–§4（式 1–5）、Fig.2（条件 VQ-VAE 世界模型）、Fig.3（Stage 2 闭环）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Spatiotemporal forecasting as planning with generative world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.04020>
+- [arXiv PDF](https://arxiv.org/pdf/2510.04020)：已通读方法部分（实验与附录以略读为准）：§3 问题形式化、§4.1 Stage 1、§4.2 Stage 2
 
 ## 推荐继续阅读
 

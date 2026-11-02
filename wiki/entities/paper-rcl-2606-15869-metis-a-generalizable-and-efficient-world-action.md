@@ -41,6 +41,30 @@ To address both issues, we propose Metis, an end-to-end WAM framework that decou
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["当前帧 → VAE encoder → 当前观测 latent token"]
+    FV["未来帧 + 噪声 → 未来视频 noisy token<br/>（仅训练）"]
+    N["动作块 + 噪声 → 动作 token<br/>（Action encoder）"]
+    TX["指令文本 → 文本编码器（T5）"]
+    ES["Ego state → agent state encoder"]
+    TX --> CA["所有 token 先与语言做 cross-attention"]
+    ES --> CA
+    O --> CA
+    FV --> CA
+    N --> CA
+    CA --> MA["专家各自投影到共享隐空间<br/>Masked asymmetric attention（MoT）"]
+    MA --> VGE["视频生成专家 VGE（Wan2.2-5B）<br/>FFN → 未来帧预测"]
+    MA --> AE["动作专家 AE（diffusion transformer）<br/>FFN → 动作块"]
+    VGE -. "训练：flow matching 视频损失" .-> LS["总损失 L = L_action + λ·L_video"]
+    AE --> LS
+    AE --> OUT["推理：仅当前观测 → 直接输出动作<br/>（视频分支整体绕过）"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ To address both issues, we propose Metis, an end-to-end WAM framework that decou
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.15869>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15869)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）
 
 ## 推荐继续阅读
 

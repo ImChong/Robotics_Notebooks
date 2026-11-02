@@ -41,6 +41,24 @@ We introduce C3^3ache, a training-free method that caches and reuses these resid
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CH["新推理 chunk c：上下文 ctx_c（视频 token 在 chunk 内固定）+ 噪声"] --> STEP["对每个去噪步 k：嵌入得到 h0（含最新观测）"]
+    STEP --> Q{"该步在缓存范围内<br/>且 chunk 不是刷新 chunk？"}
+    Q -- "否（完整计算）" --> FULL["运行全部 L 个 DiT 块得到 h_L"]
+    FULL --> W["写缓存：R̃_k ← ΔR = h_L - h0<br/>（每个去噪步单独缓存一份）"]
+    Q -- "是（缓存 chunk）" --> SKIP["跳过全部 DiT 块<br/>h_L = h0 + R̃_k"]
+    W --> HEAD["输出头：velocity 预测"]
+    SKIP --> HEAD
+    HEAD --> UP["流匹配 ODE 更新 x_k"]
+    UP --> NEXT["K 步后得到动作 chunk"]
+    SCH["调度：每 τ 个 chunk 完整重算并刷新缓存；首个 chunk 总是完整计算；末尾去噪步不缓存"] -.-> Q
+```
+
+图依据：论文 §3.3 / Fig.3（缓存范围限制见 §3.2、§4.1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ We introduce C3^3ache, a training-free method that caches and reuses these resid
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.08962>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08962)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method（3.1-3.3，Fig.3）、§4.1 实验设定、§4.3 消融；其余实验略读
 
 ## 推荐继续阅读
 

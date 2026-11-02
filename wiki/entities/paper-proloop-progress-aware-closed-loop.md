@@ -20,7 +20,7 @@ summary: "ProLoop：基于结构化状态关系的进度感知长程机器人闭
 
 # ProLoop：基于结构化状态关系的进度感知长程机器人闭环规划
 
-**ProLoop**（*ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning*，[arXiv:2610.39319](https://arxiv.org/abs/2610.39319)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**ProLoop**（*ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning*，[arXiv:2610.39319](https://arxiv.org/abs/2610.39319)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,32 @@ summary: "ProLoop：基于结构化状态关系的进度感知长程机器人闭
 ## 为什么重要
 
 - 周报所述待解决的问题：长程操作通常分解为多个子目标，但 LLM 规划器对任务进度的判断主要依赖历史文本，容易误判某个子任务是否真正完成。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    PLAN["LLM 子目标规划器 P_LLM(G, M_k)<br/>每次生成一个活动子目标 g_k 和保留线索 r_k"] --> DES["期望状态构造：C_LLM(g_k, 任务状态 schema Ω)<br/>稀疏期望条件集 {χ_k,j}，每条 = ⟨字段类型, 实体绑定, 期望值⟩"]
+    EXEC["ReAct 式执行器：思考 + 动作"] --> ENV["环境 / 机器人<br/>观测与反馈 o_k,t"]
+    ENV --> GRD["执行状态落地 Φ_m + 状态更新 U<br/>文本环境：确定性解析；实体机器人：VLM 落地"]
+    GRD --> ES["执行状态 s^e_k,t<br/>agent 位置 / 目标可见 / 物体属性 / 物体关系 / 持有物"]
+    DES --> MON["状态-关系监测器（学习得到）<br/>冻结语义编码器 E_ψ + 成对特征 → MLP 关系头 f_θ"]
+    ES --> MON
+    MON --> REL["逐条件关系：supported / unresolved / contradicted"]
+    REL --> AGG["关系聚合（保守规则）"]
+    ENV -->|"无效动作反馈 Inv(o)"| AGG
+    AGG -->|"存在 contradicted 或无效动作"| DEV["deviated 偏离"]
+    AGG -->|"全部 supported 且无无效动作"| COM["completed 完成"]
+    AGG -->|"其他"| ONG["ongoing 进行中"]
+    ONG -->|"Continue：不加干预提示"| EXEC
+    DEV -->|"Correct：冲突信息构造纠正提示，生成 Corrective Reflection → 纠正动作，不换子目标"| EXEC
+    COM -->|"Transition"| MEM["完成门控记忆更新：LLM 按 r_k 总结局部轨迹为 m_k<br/>M_k+1 = M_k ⊕ (g_k, m_k)"]
+    MEM -->|"总目标未满足"| PLAN
+    MEM -->|"总目标满足"| END["结束"]
+    ANN["离线：LLM 标注三类关系标签，加权交叉熵只训练关系头"] -.-> MON
+```
+
+图依据：论文 §IV-A 至 §IV-F、Fig. 2/3、式 (11)–(14)。
 
 ## 核心机制
 
@@ -87,6 +113,7 @@ summary: "ProLoop：基于结构化状态关系的进度感知长程机器人闭
 - [proloop-progress-aware-closed-loop_arxiv_2610_39319.md](../../sources/papers/proloop-progress-aware-closed-loop_arxiv_2610_39319.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39319](https://arxiv.org/abs/2610.39319)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39319)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV 方法（子目标规划器 / 结构化状态构造 / 状态关系监测器 / 进度引导适配 / 完成门控记忆更新 / 离线关系学习）、§V-A 实验设定
 
 ## 推荐继续阅读
 

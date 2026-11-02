@@ -42,6 +42,36 @@ SV-WAM trains one shared transformer to denoise driving actions and future surro
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        A["六路环视历史图像拼接 → 冻结 Wan2.2-TI2V-5B 3D 因果 VAE → 参考视频 token"]
+        B["自车状态历史 → MLP → 状态 token"]
+        C["带噪动作 token + 带噪未来环视视频 token"]
+        D["共享 DiT + 动作中心因果掩码<br/>动作 token 不可看未来视频 token"]
+        E["动作速度 → 动作头"]
+        F["视频速度 → 视频损失"]
+        G["可微可行驶区域合规正则 L_dac<br/>（车辆四角点的带符号距离场惩罚）"]
+        A --> D
+        B --> D
+        C --> D
+        D --> E
+        D --> F
+        E --> G
+    end
+    subgraph INF["推理（仅动作）"]
+        H["六路历史观测 + 状态，前缀 KV 缓存"]
+        I["仅带噪动作 token，去掉未来视频分支"]
+        J["输出动作 / 轨迹"]
+        H --> I --> J
+    end
+    TR -. "同一套权重" .-> INF
+```
+
+图依据：论文 方法部分（输入标记化、SV-WAM 训练、可行驶区域合规正则、仅动作推理）/ Fig. 3、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ SV-WAM trains one shared transformer to denoise driving actions and future surro
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03602>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03602)：已通读方法部分（实验与附录以略读为准）：方法部分与实现细节（Fig. 3–4、式 1–19）；实验与附录仅略读
 
 ## 推荐继续阅读
 

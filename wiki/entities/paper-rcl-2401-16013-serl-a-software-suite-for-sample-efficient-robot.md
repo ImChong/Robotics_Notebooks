@@ -44,6 +44,36 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PD["先验数据：演示或次优数据"] --> RB["RLPD 采样：每个 batch 一半来自先验数据、一半来自在线 replay buffer"]
+    subgraph LN["Learner 节点（§4.1 RLPD，基于 SAC 的 off-policy actor-critic）"]
+        RB --> UP["高 UTD 比率更新 Q 函数与 actor，critic 加 layer norm"]
+    end
+    subgraph AC["Actor 节点（与 learner 并行）"]
+        PO["策略 π(a|s) 选择动作"]
+    end
+    UP --> PO
+    subgraph ENV["机器人环境（Gym 风格 adapter，§4.4）"]
+        HC["策略以 10Hz 给出目标"] --> IC["阻抗控制器 1kHz 跟踪<br/>限制参考位姿误差 |e| ≤ Δ（§4.5）"]
+        IC --> RO["Franka 机器人执行并返回观测"]
+    end
+    PO --> HC
+    RO --> RW
+    subgraph RWS["奖励 §4.2"]
+        RW["二值分类器 r = log p(e|s) / VICE / 手写奖励"]
+    end
+    RW --> RB
+    RO -.-> RS
+    subgraph RSS["免复位训练 §4.3"]
+        RS["前向策略执行任务 + 后向策略回到初始状态<br/>两个独立 RL agent，各有自己的 Q 函数与奖励"]
+    end
+```
+
+图依据：论文 §4.1–§4.5 / Fig.2 / Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -102,6 +132,7 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/10610040/>
+- [arXiv PDF](https://arxiv.org/pdf/2401.16013)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1 RLPD、4.2 奖励、4.3 免复位、4.4 软件组件、4.5 阻抗控制器）、Fig.2/4
 
 ## 推荐继续阅读
 

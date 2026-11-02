@@ -42,6 +42,29 @@ In this paper, we propose Vid2WAM, an offline distillation framework that transf
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["少量真实示范视频"] --> ADAPT["视频教师适配：微调预训练视频扩散模型 T_ψ"]
+    ADAPT --> FRZ["冻结的视频教师"]
+    INIT["额外初始状态池 o_0 + 语言指令 ℓ"] --> FRZ
+    FRZ --> ROLL["生成未来视频 rollout"]
+    ROLL --> VAE["学生 VAE 重编码为学生空间 future latents"]
+    ROLL --> IDM["冻结的 IDM（用同构型机器人的动作标注轨迹训练）"]
+    IDM --> PSE["伪动作 chunk + 机器人状态序列"]
+    VAE --> BUF["离线蒸馏缓冲区 (o_0, ℓ, future latents, 伪动作, 状态)"]
+    PSE --> BUF
+    BUF --> PD["伪数据域：监督学生视频分支与动作分支"]
+    DEMO2["真实示范：专家动作 + 观测到的未来视频"] --> RD["真实域"]
+    PD --> STU["学生 WAM：共享视频骨干与动作骨干<br/>真实域 / 伪域各配一组残差 adapter"]
+    RD --> STU
+    STU --> LOSS["flow matching：L = λ_real·L_real + λ_pseudo·L_pseudo"]
+    STU --> DEP["部署：丢弃教师、IDM、未来视频预测头与伪域 adapter，仅保留真实域 adapter 的学生 WAM 输出动作 chunk"]
+```
+
+图依据：论文 Method（Overview、Teacher-Derived Distillation Targets、Source-Aware Student Training）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +122,7 @@ In this paper, we propose Vid2WAM, an offline distillation framework that transf
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.08558>
+- [arXiv PDF](https://arxiv.org/pdf/2608.08558)：已通读方法部分（实验与附录以略读为准）：Introduction、Related Work、Method（问题设定与概述、教师派生蒸馏目标、来源感知学生训练）
 
 ## 推荐继续阅读
 

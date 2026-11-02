@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    P["当前 VLA 策略 π0.5"] --> RR["真实世界 rollout，得到 D_real（含成功与失败）"]
+    RR --> WM["世界模型后训练<br/>CtrlWorld 初始化，D_real 与 DROID 联合训练"]
+    RR --> RM["奖励模型微调<br/>Qwen3-VL-4B-Instruct，用成功标签（首轮）"]
+    WM --> IM["在世界模型中想象 rollout，得到 D_syn"]
+    P --> IM
+    IM --> F["奖励模型判成功（P yes 大于阈值 α），得到 D_syn+"]
+    RM --> F
+    F --> PT["VLA 后训练：D_real+ 与 D_syn+ 上的加权 flow-matching"]
+    RR --> PT
+    PT --> P
+```
+
+图依据：论文 §4（含 Algorithm 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://icml.cc/virtual/2026/poster/66169>
+- [arXiv PDF](https://arxiv.org/pdf/2602.12063)：已通读方法部分（实验与附录以略读为准）：Abstract、§1–2、§3 预备、§4.1–4.3、§5 实验问题设定
 
 ## 推荐继续阅读
 

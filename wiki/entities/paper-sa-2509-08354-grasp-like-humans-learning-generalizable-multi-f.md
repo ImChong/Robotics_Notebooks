@@ -42,6 +42,24 @@ Glove-mediated tactile-kinematic perception-prediction framework for grasp skill
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["人类佩戴数据手套演示抓取"] --> B["采集触觉(25 个压力片)与运动学(20 个关节 IMU)反馈"]
+    B --> C["统一编码为手部图数据<br/>节点特征: 骨长 r、关节角 θ、角速度、触觉力"]
+    C --> D["采样为专家模板"]
+    D --> E["模仿学习: TK-STGN<br/>多维子图卷积 + 双向 LSTM"]
+    E --> F["输出与专家模板的 MSE 用于优化参数"]
+    G["机器人手佩戴同款手套执行抓取"] --> H["触觉与运动学感知转成图数据"]
+    H --> I["训练后的 TK-STGN 预测期望节点状态"]
+    F -. 训练好的网络 .-> I
+    I --> J["力-位置混合映射 Γθ、Γh"]
+    J --> K["动作指令 驱动机器人手实时运动"]
+```
+
+图依据：论文 §III（A–D）/ Fig. 1；注意力 LSTM 等网络细节未画出，见原文 Fig. 5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Glove-mediated tactile-kinematic perception-prediction framework for grasp skill
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2509.08354>
+- [arXiv PDF](https://arxiv.org/pdf/2509.08354)：已通读方法部分（实验与附录以略读为准）：§III（Fig. 1 流程，A 数据手套、B 图表示、C TK-STGN、D 力-位置混合映射）
 
 ## 推荐继续阅读
 

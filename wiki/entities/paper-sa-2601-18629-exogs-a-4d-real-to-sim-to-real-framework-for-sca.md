@@ -42,6 +42,27 @@ A robot-free 4D Real-to-Sim-to-Real framework that captures both static environm
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["AirExo-3 外骨骼采集示教<br/>关节编码器记录 q_t、夹爪开度 g_t (无需真实机器人)"] --> B["多视角 RealSense D415 RGB-D<br/>统一到世界坐标系"]
+    B --> C["多视角重建 3DGS 数字资产<br/>COLMAP 位姿 + L1/SSIM 优化，机械臂与物体解耦"]
+    B --> D["FoundationPose 物体位姿跟踪<br/>多视角融合 + PoseProcess 归一化与重组"]
+    A --> E["URDF 前向运动学得到各连杆位姿"]
+    C --> F["Gaussian 渲染：回放机器人-物体交互 (real-to-sim)"]
+    D --> F
+    E --> F
+    F --> G["数据增广：相机视角 / 颜色光照 / 背景 / 物体位姿"]
+    F --> H["3DGS 生成像素级语义掩码"]
+    G --> I["Mask Adapter 阶段 1：分割预训练<br/>ViT + Mask Head → patch 级语义标签 (背景 / 机械臂 / 物体)"]
+    H --> I
+    I --> J["Mask Adapter 阶段 2：标签位置编码 + 掩码引导注意力<br/>增强 ACT 策略 (DINOv3 ViT + LoRA)，L_act + λ L_seg"]
+    J --> K["视觉模仿策略部署到真实机器人 (sim-to-real)"]
+```
+
+图依据：论文 §III-A/B/C / Fig. 3、Fig. 4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ A robot-free 4D Real-to-Sim-to-Real framework that captures both static environm
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2601.18629>
+- [arXiv PDF](https://arxiv.org/pdf/2601.18629)：已通读方法部分（实验与附录以略读为准）：§III 方法（AirExo-3 硬件、4D 数据生成与增广、Mask Adapter 策略模块）；§IV 实验仅略读
 
 ## 推荐继续阅读
 

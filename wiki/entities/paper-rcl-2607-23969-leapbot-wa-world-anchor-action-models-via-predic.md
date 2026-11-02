@@ -41,6 +41,28 @@ In this paper, we propose LeapBot-WA, which establishes a novel Predictive-Laten
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["阶段 I：对 Predictive Anchor（V-JEPA 2.1）做机器人轨迹上的 domain-adaptive LoRA 微调"] --> S2["阶段 II：训练 ISAE（重建 + KL + SIGReg 各向同性正则）"]
+    S2 --> S3["阶段 III：Asymmetric MoT 联合 flow matching"]
+    OBS["多视角观测 o"] --> PA["Predictive Anchor（微调 JEPA）→ 语义 token F(v)"]
+    PA --> ISAE["ISAE 编码为 96 维各向同性 latent z（扩散友好）"]
+    ISAE --> VIEW["View-aware residual：每个视角加可学习视角残差，再进入 Anchor DiT"]
+    CTX["共享上下文 c = Ψenc(语言 l, 本体状态 s)"] --> ANC
+    CTX --> ACT
+    VIEW --> ANC["Anchor DiT：意图条件的世界模型，预测语义 latent 的未来演化（不读动作 token）"]
+    ANC -->|"非对称掩码：动作读语义 token"| ACT["Action DiT：对动作轨迹 a 做 flow matching 去噪"]
+    ACT --> LOSS["训练损失 = λa·L_action + λs·L_semantic + λf·L_future（可选）"]
+    ANC --> LOSS
+    ISAE --> CACHE["推理：仅用当前观测 o0 计算一次语义 token 作为 expert cache H_s,cache"]
+    CACHE --> ACT
+    ACT --> OUT["输出动作；推理时不运行未来语义想象分支"]
+```
+
+图依据：论文 §Methodology（Framework Overview、ISAE、View-Aware Residual Conditioning、Intent-Conditioned Dynamics Modeling、Asymmetric Latent Dynamics Distillation）、§Implementation Details 与 Fig. 1–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ In this paper, we propose LeapBot-WA, which establishes a novel Predictive-Laten
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.23969>
+- [arXiv PDF](https://arxiv.org/pdf/2607.23969)：已通读方法部分（实验与附录以略读为准）：Methodology（Framework Overview、ISAE、View-Aware Residual、Intent-Conditioned Dynamics、Asymmetric Latent Dynamics Distillation）、Implementation Details
 
 ## 推荐继续阅读
 

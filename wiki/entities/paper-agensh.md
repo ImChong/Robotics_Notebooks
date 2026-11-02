@@ -40,6 +40,30 @@ summary: "Agensh（2026，Microsoft Research）：无中心 orchestrator 的多 
 - 多 agent 系统常依赖中心 orchestrator，规模变大时成为瓶颈；本文探讨无中心协调能否随规模提升效果。
 - 对具身与机器人软件工程而言，coding agent 协作（如 [RLE-Bench](./rle-bench.md) 所评测的工程闭环）是潜在应用方向（推测，论文未针对机器人任务）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["用户目标"] --> W["Worker 1..N：同一份 prompt，仅 worker ID 不同，异步并发"]
+    subgraph LOOP["每个 worker 的协作循环"]
+        L1["1 收集上下文：读目标、进度、消息、已有发现"] --> L2["2 认领子任务：向共享上下文追加 CLAIM；<br/>重叠冲突则用私信协商"]
+        L2 --> L3["3 执行：用工具在本地完成子任务，<br/>有帮助他人的发现就写入共享上下文"]
+        L3 --> L4["4 验证：对照子任务验收标准，不满足则修改"]
+        L4 --> L5["5 合并：合并进共享工作区并发布更新；<br/>合并冲突则吸收最新进展后重试"]
+    end
+    W --> L1
+    L5 -->|"回到收集上下文"| L1
+    L5 --> DONE["目标达成"]
+    subgraph INFRA["组织基础设施"]
+        I1["共享工作区<br/>Git 平台（Gitea），私有分支合并到 main"]
+        I2["消息接口<br/>任务频道 + 私信（Mattermost）"]
+        I3["共享上下文<br/>OBSERVED / FACT / FAIL / CLAIM / PATCH_SUMMARY"]
+    end
+    LOOP <-->|"异步读、并发写"| INFRA
+```
+
+图依据：论文 §2.1 多 agent 协作循环（Fig. 3）、§2.2 组织基础设施（Fig. 4）、§2.3 实现；附录 A/B（worker prompt 与事件投递）未读。
+
 ## 方法与机制
 
 - 无中心 orchestrator：worker 异步协调，包括收集上下文、认领与分配子任务、执行、共享发现、验证与合并。
@@ -81,6 +105,7 @@ summary: "Agensh（2026，Microsoft Research）：无中心 orchestrator 的多 
 ## 参考来源
 
 - [Agensh 论文来源归档](../../sources/papers/agensh_arxiv_2609_26781.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.26781)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1–2.3）、§3 实验结果（附录 A/B 未读）
 
 ## 推荐继续阅读
 

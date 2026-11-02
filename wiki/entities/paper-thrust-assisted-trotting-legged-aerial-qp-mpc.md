@@ -19,7 +19,7 @@ summary: "Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助�
 
 # Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑
 
-**Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Real-Time QP-MPC*，[arXiv:2610.26810](https://arxiv.org/abs/2610.26810)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Real-Time QP-MPC*，[arXiv:2610.26810](https://arxiv.org/abs/2610.26810)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,30 @@ summary: "Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助�
 ## 为什么重要
 
 - 周报所述待解决的问题：空地双足机器人小跑时需要同时调节地面反力和推进器矢量，并满足摩擦锥和实时计算要求。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    SENS["IMU 500 Hz + OptiTrack 240 Hz<br/>机载 EKF 状态估计"] --> MPC
+    REF["前向速度参考 0 或 0.1 m/s"] --> MPC
+    subgraph SAG["矢状面"]
+        MPC["QP-MPC（TSLIP）<br/>ROM 点质量模型 + 单边弹簧 SLIP 约束<br/>摩擦锥与 GRF / 推力限幅，N = 5，500 Hz"]
+        MPC -->|"最优 GRF 与推力 u*"| LEG["站立腿轨迹跟踪：u* 推进离散动力学得期望 COM<br/>换算期望足端，经腿部 IK 得关节指令"]
+    end
+    subgraph FRO["冠状面"]
+        OUT["外环 PD：质心侧向位置 / 速度误差 → 参考滚转角"] --> INN["内环 PID：跟踪滚转角 + 前馈<br/>输出侧向推力器力"]
+    end
+    SENS --> OUT
+    MPC -->|"推力 ut,x / ut,z"| THR["EDF 推力器"]
+    INN --> THR
+    SWG["摆动腿：Raibert 启发式落足点"] --> JNT["关节"]
+    LEG --> JNT
+    THR --> ROBOT["Harpy 双足机器人"]
+    JNT --> ROBOT
+```
+
+图依据：论文 §IV–§V、§VI-A（Fig.3 控制架构图仅有图题，数据流依据正文）
 
 ## 核心机制
 
@@ -85,6 +109,7 @@ summary: "Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助�
 - [thrust-assisted-trotting-legged-aerial-qp-mpc_arxiv_2610_26810.md](../../sources/papers/thrust-assisted-trotting-legged-aerial-qp-mpc_arxiv_2610_26810.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26810](https://arxiv.org/abs/2610.26810)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26810)：已通读方法部分（实验与附录以略读为准）：§II–§VI（动力学建模、QP-MPC、滚转控制器、站立腿跟踪、实验设置与结果）
 
 ## 推荐继续阅读
 

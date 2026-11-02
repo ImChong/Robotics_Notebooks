@@ -42,6 +42,32 @@ NVIDIA's real‑time generative world model for closed‑loop autonomous driving
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LOOP["闭环仿真（推理）"]
+        POL["驾驶策略模型或用户<br/>输出动作：转向 / 油门 / 刹车"] --> SIM["AlpaSim 仿真运行时<br/>更新抽象状态：地图 + 动态体 bounding box"]
+        SIM --> OD["OmniDreams<br/>因果扩散生成下一步多帧相机画面"]
+        TXT["文本提示：光照 / 天气 / 时段"] --> OD
+        CACHE["流式 KV cache<br/>历史帧记忆"] --> OD
+        FIRST["首步额外条件：单张 RGB 首帧"] -.-> OD
+        OD --> FRAME["合成相机画面<br/>SV：8 帧/步；MV：4 视角共 16 帧/步"]
+        FRAME -->|"返回给策略"| POL
+        FRAME -->|"更新"| CACHE
+    end
+    subgraph TRAIN["多阶段训练"]
+        B0["Cosmos-Predict 2.5 双向视频模型"] --> B1["RDS 数据 mid-training<br/>提升 AV 能力"]
+        B1 --> B2["多视角适配 + cross-view attention<br/>（仅 MV）"]
+        B2 --> B3["World-scenario 地图控制分支<br/>得到双向教师模型"]
+        B3 --> B4["Diffusion Forcing 因果化<br/>用于自回归生成"]
+        B4 --> B5["Self Forcing + DMD 蒸馏<br/>少步生成，减小累积误差"]
+    end
+    B5 -.->|"部署为"| OD
+```
+
+图依据：论文 §3 / §3.1、§4（训练阶段概述）/ Fig.1、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ NVIDIA's real‑time generative world model for closed‑loop autonomous driving
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.03159>
+- [arXiv PDF](https://arxiv.org/pdf/2606.03159)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 模型架构（3.1–3.2）、§4 训练（4.1–4.3）；§2 数据、§5 以后略读
 
 ## 推荐继续阅读
 

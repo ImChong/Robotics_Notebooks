@@ -31,6 +31,22 @@ summary: "Coordi-π（arXiv:2610.19753）：面向双臂灵巧操作的协调感
 
 摘要指出，现有双臂 VLA 通常在每个控制步把左右臂–手动作拼接成一个动作向量，跨手交互因此只能隐含地存在于单个向量中。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["输入：图像 + 语言指令 + 本体状态（46-D）"] --> AE["基于 π0.5 的 action expert<br/>flow matching 从噪声生成动作块"]
+    N["噪声动作块：H 步 × 左右两侧（每侧 d 维）"] --> SP["拆分为 2H 个单侧 token<br/>R0, L0, R1, L1, ..., R(H-1), L(H-1)"]
+    SP --> ID["token 输入 = 共享投影 f_in(z) + 手部身份嵌入 e_R / e_L"]
+    ID --> RP["分解式 RoPE：序列位置 s_i = i<br/>控制时间步 τ_i = ⌊i/2⌋（R_h 与 L_h 共享 τ）"]
+    RP --> AE
+    O --> AE
+    AE --> DI["输出 token 去交错：按共享控制时间步配对 R_h, L_h"]
+    DI --> CMD["H 步双臂联合命令 a_(t+h) = [R_h ; L_h]"]
+```
+
+图依据：论文 §III-A 至 §III-F 与 Fig. 2；动作专家内部的注意力细节论文未展开，图中不画。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -93,6 +109,7 @@ summary: "Coordi-π（arXiv:2610.19753）：面向双臂灵巧操作的协调感
 
 - [论文归档](../../sources/papers/coordi-pi_arxiv_2610_19753.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.19753)：已通读方法部分（实验与附录以略读为准）：§III 方法（A–F）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

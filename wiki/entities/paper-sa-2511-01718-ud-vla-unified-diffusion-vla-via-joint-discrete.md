@@ -43,6 +43,25 @@ Unified diffusion VLA via joint discrete denoising diffusion process.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：文本指令 + 当前图像"] --> T["统一离散化：文本沿用 Emu3，图像经 VQ tokenizer，动作经 FAST；用 BOI/EOI/BOA/EOA 标记"]
+    T --> S1["阶段 (i)：在大规模视频数据上后训练，序列为 文本 + 当前图像 + 未来图像，学习未来图像生成"]
+    S1 --> S2["阶段 (ii)：在下游机器人动作数据上联合优化未来图像与动作生成"]
+    S2 --> A["混合注意力：输入内文本因果、图像双向；生成块、动作块块内双向，块间因果，无动作到视觉的反向通路"]
+    A --> J["JD3P：未来图像 token 与动作 token 在同一去噪步中并行生成"]
+    J --> L["训练目标：单步 mask-predict，仅在被掩码位置算交叉熵，视觉项加权 ω 下调"]
+    J --> INF["推理：全部位置初始为 MASK，并行预测，少量迭代"]
+    INF --> K["前缀 KV Cache 缓存当前图像与提示，预填 BOI、EOI、BOA"]
+    K --> C["置信度引导解码：余弦掩码调度，按置信度取 TopK，Gumbel-max 采样"]
+    C --> M["解码空间映射：限制各模态词表范围；预测到 EOA 后固定动作长度"]
+    M --> O["输出：动作 token（及未来图像 token）"]
+```
+
+图依据：论文 Fig. 1、Fig. 2 及 §3.1 Unified Diffusion VLA、§3.2 Training、§3.3 Inference。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Unified diffusion VLA via joint discrete denoising diffusion process.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.01718>
+- [arXiv PDF](https://arxiv.org/pdf/2511.01718)：已通读方法部分（实验与附录以略读为准）：§3 Methods（统一 tokenization、混合注意力、JD3P、训练、推理）、Fig. 1–2
 
 ## 推荐继续阅读
 

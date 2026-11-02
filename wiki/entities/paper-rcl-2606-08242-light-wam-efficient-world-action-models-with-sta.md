@@ -42,6 +42,30 @@ We propose Light-WAM, a lightweight World Action Model for efficient robot manip
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前观测 o → VAE latent<br/>语言指令 l + 本体感觉 p → 上下文 C"] --> BB["Wan2.1-T2V-1.3B 视频骨干<br/>冻结 + LoRA 低秩更新<br/>稀疏深度插入 WAM adapter"]
+    BB --> H["稀疏层集合 I 的多层状态 H_ℓ"]
+    subgraph SFA["StateFusionActionExpert（单次前向）"]
+        H --> P["每层可学习 query 注意力池化<br/>对 query 取平均并 LayerNorm 得 s_ℓ"]
+        P --> F["投影并融合多层状态 → h"]
+        F --> S["加动作步 embedding 并经输出头"]
+        S --> A["一次性输出动作块 A（K 步）"]
+    end
+    subgraph TRAIN["训练期附加监督"]
+        VD["未来视频 latent 空间下采样 D(·)<br/>首帧固定为观测条件"] --> VL["视频 flow matching 损失 L_video"]
+    end
+    BB -.-> VL
+    A --> AL["动作回归损失 L_action"]
+    VL --> L["总损失 L = L_video + λ L_action"]
+    AL --> L
+    NOTE["推理：不做未来视频 rollout，无迭代动作去噪"] -.-> SFA
+```
+
+图依据：论文 §3 Methodology / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +123,7 @@ We propose Light-WAM, a lightweight World Action Model for efficient robot manip
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.08242>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08242)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Methodology（3.1-3.4，Fig.1）；§4 实验略读
 
 ## 推荐继续阅读
 

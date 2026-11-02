@@ -42,6 +42,25 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BEV["BEV 特征（BEV encoder）"] --> WL["世界-语言专家<br/>处理语言 token、BEV token、软提示（world tokens）<br/>预测未来场景 3D 点云"]
+    LANG["人类指令（语言 token）"] --> WL
+    EGO["自车状态 token + 带噪动作 token"] --> PE["规划专家（SA-MoE 层）<br/>flow matching 预测速度场"]
+    WL --> CMCA["Conditional Cross-Modal Causal Attention<br/>条件 token（BEV/world/语言/自车状态）全局可见；动作 token 仅因果可见"]
+    PE --> CMCA
+    BEV --> DSE["Deformable Scene Encoder<br/>BEV + 近场距离图 → 偏移 → 可变形卷积 → 可学习查询 MHA → HBEV（仅算一次）"]
+    DSE --> RT["每层 Linear(MeanPool(HBEV)) → softmax 得专家权重 π"]
+    CMCA --> FFN["按 π 加权融合 E 个专家 FFN 权重为单个 FFN<br/>处理规划部分隐状态"]
+    RT --> FFN
+    FFN --> ACT["输出规划轨迹（动作）"]
+    TR["训练：预训练只训世界-语言专家（语言建模 + 点云重建损失）→<br/>末阶段先无 MoE 训练，再用其权重初始化各子专家（flow matching 损失）"] -.-> PE
+```
+
+图依据：论文 §3.1–3.4 / Fig.1–2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.08113>
+- [arXiv PDF](https://arxiv.org/pdf/2603.08113)：已通读方法部分（实验与附录以略读为准）：§3（§3.1 架构、§3.2 CMCA、§3.3 Scene Adaptive MoE 与 DSE、§3.4 训练阶段）
 
 ## 推荐继续阅读
 

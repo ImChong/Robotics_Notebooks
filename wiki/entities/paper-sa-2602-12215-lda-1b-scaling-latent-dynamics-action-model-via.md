@@ -43,6 +43,26 @@ Scales latent dynamics action model via universal embodied data ingestion.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D1["EI-30k 异构数据：机器人 / 人类，真实 / 仿真"] --> R{"按数据质量分角色"}
+    R -->|"高质量示教"| T1["全部四个目标：策略、前向动力学、逆动力学、视觉预测"]
+    R -->|"低质量轨迹"| T2["仅动力学与视觉预测"]
+    R -->|"无动作标注的人类视频"| T3["仅视觉预测"]
+    T1 --> M
+    T2 --> M
+    T3 --> M
+    O["当前观测 + 语言指令"] --> V["预训练 VLM（冻结）编码为条件 tokens"]
+    V --> M["MM-DiT：动作专家与视觉专家共享自注意力<br/>AdaLN 注入时间步与任务嵌入"]
+    N["带噪动作 chunk + 带噪未来 DINO（冻结）视觉潜变量<br/>缺失模态用 register token 占位"] --> M
+    M --> Out["去噪的动作序列 + 未来 DINO 特征<br/>flow-matching 损失按任务选择性激活"]
+    Out --> Post["预训练后针对下游任务微调（仿真 / 真机）"]
+```
+
+图依据：论文 §III A–E / Fig.2、§IV
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Scales latent dynamics action model via universal embodied data ingestion.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.12215>
+- [arXiv PDF](https://arxiv.org/pdf/2602.12215)：已通读方法部分（实验与附录以略读为准）：Abstract、§I、§III A–E（UWM 预备、多任务共训练、预测目标表示、MM-DiT、预训练与微调）、§IV 数据集概述
 
 ## 推荐继续阅读
 

@@ -42,6 +42,30 @@ Tencent Hunyuan's multi‑modal world model framework that accepts text, single�
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：文本 / 单视图图像"]
+    S1["阶段 I：Panorama Generation（HY-Pano 2.0，MMDiT，生成 360 度全景）"]
+    S2["阶段 II：Trajectory Planning（场景解析：全景点云 / 网格 / 语义掩码 / NavMesh，WorldNav 规划五类相机轨迹）"]
+    S3["阶段 III：World Expansion（WorldStereo 2.0：关键帧隐空间视频扩散 + 记忆库，沿轨迹生成关键帧）"]
+    IN --> S1 --> S2 --> S3
+    S1 -->|"全景点云 P_pan"| ALIGN
+    subgraph S4["阶段 IV：World Composition"]
+        WM["WorldMirror 2.0：以相机位姿为条件估计深度与法线"]
+        ALIGN["深度对齐：以全景点云为引导，RANSAC 线性尺度/平移 + 离群修正"]
+        PC["反投影并与 P_pan 合并、体素下采样：扩展点云"]
+        GS["3DGS 优化（扩展点云初始化，MaskGaussian）"]
+        WM --> ALIGN --> PC --> GS
+    end
+    S3 -->|"生成关键帧 + 相机参数"| WM
+    GS --> OUT["输出：可导航的 3DGS 世界（WorldLens 渲染平台交互探索）"]
+    REC["世界重建：多视图图像 / 视频输入"] -.->|"WorldMirror 2.0 前馈重建"| OUT
+```
+
+图依据：论文 Fig.2（四阶段架构）、§3–§5（全景、轨迹规划、世界扩展）与 §7（World Composition）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Tencent Hunyuan's multi‑modal world model framework that accepts text, single�
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.14268>
+- [arXiv PDF](https://arxiv.org/pdf/2604.14268)：已通读方法部分（实验与附录以略读为准）：§1–2 概览、§3 全景生成、§4 轨迹规划、§5 世界扩展（WorldStereo 2.0 概要）、§6 WorldMirror 2.0（概要）、§7 世界组合
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测 z_t + 目标图像 z_g<br/>（多视角，纯视觉，无语言条件）"] --> GCWM["目标条件世界模型 GCWM<br/>Video DiT，flow matching，基于 Genie Envisioner"]
+    GCWM --> MSTH["MSTH 多尺度时间哈希<br/>近端密集帧 + 远端对数间隔稀疏帧"]
+    MSTH --> CW["分层中间特征 c_w"]
+    CW -->|逐层 cross-attention| AE["动作专家 Action DiT<br/>与世界模型同构、宽度更小"]
+    PRO["本体状态 c_p"] --> AE
+    AE --> ACTS["MSTH 结构动作：近端 + 远端<br/>部署时只执行近端动作"]
+    subgraph OFF["离线两阶段训练"]
+        T1["Stage 1：联合训练 L_v + λ·L_a"] --> T2["Stage 2：仅用 L_a 端到端行为克隆"]
+    end
+    ACTS --> ROLL["真机 rollout"]
+    ROLL --> REL["HER 式重标注：<br/>以步末观测作为目标，无需奖励/人工标注"]
+    REL --> LORA["缓冲区满后只更新 LoRA 层"]
+    LORA --> ACTS
+    OFF -. 初始化策略 .-> ACTS
+```
+
+图依据：论文 §III（Fig. 2、Fig. 3、§III-A/B/C/D、Algorithm 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +121,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.23541>
+- [arXiv PDF](https://arxiv.org/pdf/2512.23541)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（§III-A 至 §III-D）
 
 ## 推荐继续阅读
 

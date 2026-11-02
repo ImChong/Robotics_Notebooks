@@ -19,7 +19,7 @@ summary: "FORGE：面向敏捷人形运动的在线可行降阶参考生成与�
 
 # FORGE：面向敏捷人形运动的在线可行降阶参考生成与全身执行
 
-**FORGE**（*FORGE: Feasible Online Reduced-Order Reference Generation and Whole-Body Execution for Agile Humanoid Locomotion*，[arXiv:2610.37974](https://arxiv.org/abs/2610.37974)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**FORGE**（*FORGE: Feasible Online Reduced-Order Reference Generation and Whole-Body Execution for Agile Humanoid Locomotion*，[arXiv:2610.37974](https://arxiv.org/abs/2610.37974)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,28 @@ summary: "FORGE：面向敏捷人形运动的在线可行降阶参考生成与�
 ## 为什么重要
 
 - 周报所述待解决的问题：降阶动力学模型可快速生成动作，但生成的参考不一定满足完整人形机器人的运动学和执行器约束。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph s1["阶段 1：降阶模型（ROM）参考生成器训练 §IV"]
+    A["ROM 数值仿真环境<br/>单刚体 SRB 动力学 + 完整人形运动学 + 简化接触运动学"] --> B["策略观测 o_ROM<br/>基座 / 末端 / 步态相位 / 命令 / 历史"]
+    B --> C["动作 a_ROM（28 维）<br/>末端加速度 / 脚俯仰偏航 / 双脚地面反力矩 λ_F / 步周期缩放 α_T / 起跳阈值 φ_to"]
+    C --> A
+    D["奖励：任务（速度跟踪）+ 运动（步态时序）+ 步态塑形 + 正则"] -.-> B
+  end
+  s1 --> E["冻结的 ROM 策略<br/>由命令生成器驱动，在线 rollout"]
+  E --> F["逆运动学得到全身关节参考<br/>（q_FOM = [p_B, Θ_B, q_j]）"]
+  subgraph s2["阶段 2：全身跟踪 §V（基于 BeyondMimic）"]
+    G["观测：BeyondMimic 的 o_mimic<br/>+ 相位观测 + 命令观测（ROM 观测堆叠 H=3 步）"] --> H["全身跟踪策略（全阶动力学下训练）"]
+    I["奖励：BeyondMimic 奖励 + 速度指令跟踪奖励 r_twist + 腿部力矩惩罚"] -.-> H
+  end
+  F --> G
+  H --> J["Unitree G1 部署：ROM 生成器与跟踪器均 50 Hz<br/>单一策略覆盖前后行走 / 侧移 / 转向 / 单腿跳"]
+```
+
+图依据：论文 §III–V / Fig. 1、Fig. 2。
 
 ## 核心机制
 
@@ -86,6 +108,7 @@ summary: "FORGE：面向敏捷人形运动的在线可行降阶参考生成与�
 - [forge-humanoid-reduced-order-reference_arxiv_2610_37974.md](../../sources/papers/forge-humanoid-reduced-order-reference_arxiv_2610_37974.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37974](https://arxiv.org/abs/2610.37974)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37974)：已通读方法部分（实验与附录以略读为准）：两阶段框架 §III–V（SRB 背景、ROM 训练环境与 MDP、全身跟踪）及 §VI 仿真/硬件实验设定
 
 ## 推荐继续阅读
 

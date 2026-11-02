@@ -43,6 +43,34 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["多视角图像 I_t + 文本提示 T_t + 历史动作 A_t-1（转为文本） + BEV 特征 B_t（BEVFormer）"] --> TOK["各模态独立 tokenize（BEV tokenizer / 文本 tokenizer）"]
+  TOK --> VLM["VLM（InternVL）→ 共享隐表示 H_t"]
+  VLM --> XA["Cross-Attention 得 B_t'"]
+  subgraph S1["Stage 1 协同训练：未来想象 + 动作预测"]
+    XA --> D1["Denoiser 分支 1（历史条件）→ 未来 BEV"]
+    VLM --> ACT["轻量 Action Decoder → 未来动作 A'"]
+    D1 --> SEG["Seg Head 解码语义 BEV（L_seg）"]
+    ACT --> LA["模仿学习（L_act）"]
+  end
+  subgraph S2["Stage 2 动作可控性微调"]
+    XA --> D2["Denoiser 分支 2（DiT，动作条件流匹配）"]
+    GTA["真值未来动作"] --> D2
+    D2 --> LFM["L_FM"]
+  end
+  subgraph S3["Stage 3 未来引导评估与修正"]
+    ACT --> D2b["预测动作 → 分支 2 Euler 采样（25 步）→ 动作条件未来 BEV"]
+    D2b --> RW["Reward 函数 R 打分 r̂"]
+    RW --> RA["按 r̂ 加权的动作损失 L_act'；联合 L_seg、L_rew"]
+  end
+  S1 --> S2 --> S3
+```
+
+图依据：论文 §3 / Fig. 2（渐进三阶段流水线）、Fig. 3（Denoiser）、§3.1–§3.3；输入编码见 §3 开头。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +128,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://icml.cc/virtual/2026/poster/61191>
+- [arXiv PDF](https://arxiv.org/pdf/2602.06521)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.3，含 Fig. 2–3）、§4.1 实现细节
 
 ## 推荐继续阅读
 

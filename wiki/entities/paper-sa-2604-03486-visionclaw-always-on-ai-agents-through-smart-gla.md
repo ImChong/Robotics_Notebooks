@@ -42,6 +42,21 @@ Persistent background wearable agent enabling hands-free multi-scenario task exe
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    G["Meta Ray-Ban 眼镜<br/>麦克风 + 摄像头"] --> P["手机 App（DAT SDK）<br/>视频降至约 1 fps 并压为 JPEG，音频 16 kHz PCM"]
+    P -->|"持久 WebSocket"| M["Gemini Live API<br/>gemini-2.5-flash-native-audio-preview"]
+    M -->|"直接回答"| A["语音播放（24 kHz PCM）"]
+    M -->|"function / tool call"| R["ToolCallRouter → OpenClawBridge"]
+    R -->|"HTTP POST"| O["OpenClaw 网关<br/>浏览器 / 邮件 / 日历 / 记忆等 skills"]
+    O -->|"执行结果"| R
+    R -->|"tool response"| M
+```
+
+图依据：论文 §3.1–3.4、§4.1–4.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Persistent background wearable agent enabling hands-free multi-scenario task exe
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.03486>
+- [arXiv PDF](https://arxiv.org/pdf/2604.03486)：已通读方法部分（实验与附录以略读为准）：摘要、§3 System Design（3.1–3.4）、§4 Implementation（4.1–4.4）、§5.1 用户研究设置
 
 ## 推荐继续阅读
 

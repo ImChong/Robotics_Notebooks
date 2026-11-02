@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objects——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objects——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,36 @@ CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objec
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  P[多物体点云 P] --> E1[Uni3D 点编码器<br/>逐点特征 F]
+  Q[隐含意图自然语言 Query] --> E2[RoBERTa 文本编码器<br/>token 特征 T]
+  subgraph ICI["ICI 实例边界交叉注入"]
+    G1[1 实例分组<br/>半径图连通分量得实例标签]
+    G2[每实例内 FPS 选 Ng 中心<br/>取 M 近邻成 region，均值池化 + MLP]
+    G3[2 区域-语言交叉注意力<br/>text 末尾追加可学习背景 token]
+    G4[3 门控区域到点传播<br/>近邻 kp=3 反距离加权，乘性门调制点特征]
+    G1 --> G2 --> G3 --> G4
+  end
+  P --> G1
+  E1 --> G2
+  E2 --> G3
+  G4 --> D[Transformer 解码器]
+  D --> O[逐点 affordance 概率 ŷ<br/>负例查询可输出空 mask]
+  subgraph BCR["BCR 双层对比精炼（仅训练）"]
+    B1[TG-Softmax<br/>区域级：排序与意图最匹配的区域]
+    B2[TP-HardNeg<br/>点级：压制混淆表面上的高分误激活]
+  end
+  G3 -.-> B1
+  G4 -.-> B2
+  E2 -.-> B1
+  E2 -.-> B2
+```
+
+图依据：论文 §4（Method）/ §4.1 ICI、§4.2 BCR / Fig.3（Overall architecture of CompassNet）；BCR 的具体连线按 §4.2 文字推断。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +82,7 @@ CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objec
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2604.02060)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2604.02060)。
 
 ## 评测与指标
 
@@ -68,7 +98,7 @@ CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objec
 
 **本页只提供「CompassAD」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +119,7 @@ CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objec
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2604.02060>
+- [arXiv PDF](https://arxiv.org/pdf/2604.02060)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 任务与基准构建、§4 Method（4.1 ICI、4.2 BCR）、§5.3 消融与 §5.4 机器人应用（略读）。
 
 ## 推荐继续阅读
 

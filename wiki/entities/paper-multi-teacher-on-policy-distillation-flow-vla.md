@@ -32,6 +32,24 @@ summary: "Multi-Teacher On-Policy Distillation（arXiv:2610.21522）：把多个
 
 多个领域专家策略分别训练后，部署时往往需要一个统一模型。摘要指出，Flow-based VLA 的分布错配出现在两层：环境观测，以及动作生成过程中的中间状态。只在教师数据上蒸馏，无法覆盖学生部署时实际遇到的状态。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["联合 demonstration-SFT 初始化共享 student (LIBERO / Meta-World / CALVIN 三个领域)"] --> SNAP["第 r 轮: 固定当前 student 为 collecting snapshot"]
+    SNAP --> COL["Student 在各领域与环境交互 (每域相同 episode 数, 成功与失败均保留), 得到决策上下文 c = (观测, 语言指令)"]
+    COL --> TEA["领域匹配的冻结 teacher 同样接收 c"]
+    COL --> FLOW["Student 从噪声出发对 velocity field 做 ODE 积分, 得到动作流中间状态 x_tau"]
+    FLOW --> LABEL["Teacher 在 student 的每个非终端 solver 节点给出速度目标 v_T (目标与查询状态均 stop-gradient)"]
+    TEA --> LABEL
+    LABEL --> LOSS["Velocity Loss: 学生速度与教师速度的 MSE, 在 solver 节点上平均, 按固定域权重 w_k 加权"]
+    LOSS --> UPD["累积各域加权梯度, 做一次 student 优化器更新"]
+    UPD --> SNAP
+    UPD --> DEP["部署: 仅需单个 student (teacher 只用于训练, 不使用额外 reward)"]
+```
+
+图依据：论文 §3 问题设定、§4.1 Student-Driven Environment Collection、§4.2 Velocity Loss on Student Flow States、§4.3 Alternating Collection and Student Updates / Fig.1
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -99,6 +117,7 @@ summary: "Multi-Teacher On-Policy Distillation（arXiv:2610.21522）：把多个
 
 - [论文归档](../../sources/papers/multi_teacher_opd_flow_vla_arxiv_2610_21522.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.21522)：已通读方法部分（实验与附录以略读为准）：§3 问题设定、§4 方法（§4.1-4.3）；§1 引言、§5 实验与附录略读
 
 ## 推荐继续阅读
 

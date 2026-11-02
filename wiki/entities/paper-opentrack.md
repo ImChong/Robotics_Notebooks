@@ -50,6 +50,30 @@ Any2Track 的目标是 **track any motions under any disturbances**。它认为�
 - 论文提出两阶段 RL 框架，把 dynamics adaptability 作为额外能力注入 motion tracking。它不是单纯追求更低 tracking error，而是让策略在不同真实条件下保持动作执行。
 - 现在的 tracking 是：参考动作给定，但 **地面、外力、动力学、接触都可能变化**，我要在不摔的前提下尽量完成动作意图。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph AT["阶段一：AnyTracker（基础通用动作跟踪器）"]
+    DATA["动作数据集 LAFAN1 / AMASS，经 PHC 式过滤（去除依赖不可用场景的动作，保留高动态与接触丰富动作）"] --> CLU["动作聚类：LAFAN1 按已有类别；AMASS 用类别标签的 CLIP 文本嵌入做 K-means，分为 6 个子集"]
+    CLU --> SPEC["为每个动作簇训练 specialist 策略（无扰动仿真）"]
+    SPEC --> DAG["DAgger 蒸馏为 generalist 策略"]
+    CAS["规范化动作空间：tanh 输出 × 逐关节缩放 α，作为相对参考动作的残差 PD 目标"] -.用于.-> SPEC
+  end
+  DAG --> FRZ["冻结 AnyTracker 参数"]
+  subgraph AA["阶段二：AnyAdapter（在线动力学适应）"]
+    DIST["引入动力学扰动的仿真：地形、外力、物理属性变化"] --> HIST["历史 h_t（H=79 步状态-动作）"]
+    HIST --> ENC["History Encoder φ 得到动力学嵌入 e_t"]
+    ENC --> WM["World Model ω 自回归预测未来 N=20 步机器人状态（L1 损失 L_wm）"]
+    ENC --> ADP["Adapter ξ：逐层、零初始化，与冻结的 tracker 做层级特征融合"]
+    FRZ --> ADP
+    ADP --> ACT["动作 a_t，以与阶段一相同的奖励微调；adapter 与 encoder 交替更新"]
+  end
+  ACT --> DEP["在 Unitree G1 上零样本 sim2real 部署"]
+```
+
+图依据：论文 §III-A（AnyTracker）/ §III-B（AnyAdapter）与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -131,6 +155,7 @@ Any2Track 的目标是 **track any motions under any disturbances**。它认为�
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — BFM 41 篇微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 - 论文：<https://arxiv.org/abs/2509.13833>
+- [arXiv PDF](https://arxiv.org/pdf/2509.13833)：已通读方法部分（§III）；实验（§IV）与附录以略读为准：仅读实验设定。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ A benchmark constructed from long-form Ego4D videos containing 1,498 referring e
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BUILD["基准构建（半自动标注）"]
+        A["EgoTracks 标注<br/>Ego4D 完整长视频"] --> B["数据过滤<br/>视频至少 20 分钟<br/>is_active 轨迹至少 10 秒"]
+        B --> C["Gemini 2.5 Flash 阶段一<br/>生成 10 条目标描述"]
+        C --> D["阶段二<br/>聚合精炼为单条 referring expression"]
+        D --> E["人工四步审校<br/>验证过滤 / 修正 / 消歧 / 二审质检"]
+        E --> F["LongEgoRefer<br/>1,498 条样本"]
+    end
+    subgraph BASE["训练无关两阶段基线"]
+        Q["长视频 + 文本查询"] --> V["VLM 时间定位<br/>when：找出匹配片段"]
+        V --> M["取片段中间帧"]
+        M --> G["Grounding DINO<br/>检测目标得初始框"]
+        G --> S["SAM2 跟踪<br/>得到时空轨迹"]
+    end
+    F -.评测.-> Q
+```
+
+图依据：论文 §3.2 Benchmark Creation / Fig.2、§4.2 Training-free Two-stage Pipeline
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ A benchmark constructed from long-form Ego4D videos containing 1,498 referring e
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.02096>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02096)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.2、§4.1–4.2、§5.1
 
 ## 推荐继续阅读
 

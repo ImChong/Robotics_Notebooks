@@ -42,6 +42,32 @@ SA+IDM trains an action-conditioned JEPA world model with two auxiliary heads: i
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练（离线轨迹 o_t, s_t, a_t）"]
+        A["观测 o_t, o_t+1"] --> B["编码器 E（ViT-Tiny/14）→ z_t, z_t+1"]
+        B --> C["动作条件预测器 F(z_t, a_t) → 预测 z_t+1"]
+        C --> D["预测损失 L_pred（对比直接编码的 z_t+1）"]
+        B --> E["逆动力学头 H(z_t, z_t+1) 还原动作 a_t → L_idm"]
+        B --> F["状态对齐头 G(z_t-1, z_t) 回归物理状态 s_t → L_sa"]
+        D --> L["总损失 L_pred + α L_sa + β L_idm，端到端联合优化"]
+        E --> L
+        F --> L
+    end
+    subgraph DP["部署：只用 E 与 F，潜空间规划"]
+        G1["当前观测 o_t 与目标图像 o_g → z_t, z_g"]
+        G2["CEM 采样候选动作序列，F 递归 rollout"]
+        G3["终端潜变量距离 ‖ẑ_t+K − z_g‖² 最小化，更新采样分布"]
+        G4["执行最优序列，再从新观测重规划"]
+        G1 --> G2 --> G3 --> G4
+    end
+    TR -. "训练后冻结 E、F" .-> DP
+```
+
+图依据：论文 §II-A–D / Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ SA+IDM trains an action-conditioned JEPA world model with two auxiliary heads: i
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03565>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03565)：已通读方法部分（实验与附录以略读为准）：§II 方法（离线数据、模型结构、实现、潜空间规划）；§III 实验仅略读
 
 ## 推荐继续阅读
 

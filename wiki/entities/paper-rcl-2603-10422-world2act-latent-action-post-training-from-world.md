@@ -42,6 +42,34 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1：潜空间对齐（专家演示）"]
+        DEMO["专家轨迹视频"] --> WM1["冻结世界模型 Cosmos-Predict2<br/>得到视频 latent V"]
+        WM1 --> BV["CNN Video Adapter Bv → zv"]
+        ACTS["专家动作序列，按 M 步分块"] --> BA["MLP Action Adapter Ba → za"]
+        BA --> DA["MLP Action Decoder Da<br/>重建动作块（Lrecon）"]
+        BV --> CON["分块平均余弦相似度的双向 InfoNCE<br/>对齐 zv 与 za（Lcontrastive）"]
+        BA --> CON
+    end
+    subgraph S2["阶段 2：世界模型引导的潜空间残差后训练"]
+        OBS["状态 st + 指令 l"] --> VLA["冻结 VLA πbase → 基础动作块"]
+        VLA --> BA2["冻结 Ba → za_base"]
+        BA2 --> RES["残差策略 fθ（Transformer）预测 Δza"]
+        RES --> ZF["za_final = za_base 叠加 Δza"]
+        ZF --> DA2["冻结 Da 解码 → 动作块<br/>开环执行 M 步"]
+        DA2 --> SIM["B 个并行仿真环境 rollout<br/>仅取初始条件，不用奖励/成功标签"]
+        SIM --> WM2["冻结世界模型按初始观测 + 指令生成视频 latent → 冻结 Bv → zv"]
+        WM2 --> LOSS["Lcontrastive(zv, za_final)<br/>同一 rollout 为正样本，梯度只更新 fθ"]
+        ZF --> LOSS
+    end
+    S1 -->|"冻结 Bv、Ba、Da"| S2
+```
+
+图依据：论文 §3.2–3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +127,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.10422>
+- [arXiv PDF](https://arxiv.org/pdf/2603.10422)：已通读方法部分（实验与附录以略读为准）：§3（§3.1 Preliminaries、§3.2 Stage 1、§3.3 Stage 2）
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "Warping the Workspace：工作空间扭曲：通过可调触达映射�
 
 # Warping the Workspace：工作空间扭曲：通过可调触达映射扩展人形遥操作视觉范围
 
-**Warping the Workspace**（*Warping the Workspace: Expanding Visual Access with Adjustable Reach Mapping for Humanoid Teleoperation*，[arXiv:2610.28712](https://arxiv.org/abs/2610.28712)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Warping the Workspace**（*Warping the Workspace: Expanding Visual Access with Adjustable Reach Mapping for Humanoid Teleoperation*，[arXiv:2610.28712](https://arxiv.org/abs/2610.28712)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,26 @@ summary: "Warping the Workspace：工作空间扭曲：通过可调触达映射�
 ## 为什么重要
 
 - 周报所述待解决的问题：第一视角遥操作时，侧后方目标通常要求操作者和机器人同步大幅转身，降低操作效率。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    CAM["RICOH THETA X 360° 相机<br/>安装于 Unitree G1"] -->|"MJPEG 视频流"| HOST["Host PC"]
+    HOST -->|"360° 视图"| HMD["Apple Vision Pro"]
+    HMD -->|"跟踪 + 视口状态"| HOST
+    HOST --> CONV["转换到机器人对齐的公共坐标系"]
+    CONV --> PHI["φ = wrap(θ_w − θ_h)"]
+    PHI --> INV["θ_r = θ_h + W_c⁻¹(φ)<br/>逆向偏航映射"]
+    INV --> IK["IK"]
+    IK --> ARM["G1 上肢"]
+    CONV --> RET["手部重定向"]
+    RET --> HAND["DFX 灵巧手"]
+    WC["方位角映射 W_c<br/>Fixed 恒等 / GZ 360° 压缩到 180° 增益 2.0 / F+C 中央 ±15° 放大 1.5 倍"] -.->|"渲染使用 W_c"| HMD
+    WC -.->|"控制使用 W_c⁻¹"| INV
+```
+
+图依据：论文 §2 System / Fig.2 / Fig.3 / 式 (1)
 
 ## 核心机制
 
@@ -86,6 +106,7 @@ summary: "Warping the Workspace：工作空间扭曲：通过可调触达映射�
 - [warping-workspace-adjustable-reach-teleop_arxiv_2610_28712.md](../../sources/papers/warping-workspace-adjustable-reach-teleop_arxiv_2610_28712.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.28712](https://arxiv.org/abs/2610.28712)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28712)：已通读方法部分（实验与附录以略读为准）：全文（3 页短文：引言、系统、评估、结论）
 
 ## 推荐继续阅读
 

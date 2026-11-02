@@ -42,6 +42,22 @@ Safety-Aware Reward-Weighted Flow Matching (SA-RWFM) and Tactile Distillation (T
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["数据采集：成功与失败（过大抓握力致损坏）演示<br/>语言、视觉、状态 + 触觉图"] --> R["离线触觉奖励<br/>每步 r_t 与 episode 奖励 R_episode（含 risk）"]
+    R --> T["SA-RWFM 微调教师 VLA<br/>奖励作为额外条件输入 action expert<br/>样本按奖励加权的 flow matching 损失 + anchor 正则"]
+    T --> TA["Stage 1：离线预计算教师动作块 â^T"]
+    T --> TI["Stage 2：学生由教师权重初始化<br/>去掉触觉编码器，状态投影只保留本体感觉列"]
+    TA --> ST["Stage 3：混合目标训练<br/>ã = (1−α_d)·a_GT + α_d·â^T，α_d = 0.5"]
+    TI --> ST
+    ST --> S["蒸馏后的学生 VLA<br/>推理时只用视觉 + 状态，预测触觉表征"]
+    S --> O["无触觉硬件的 tactile-aware 接触丰富操作"]
+```
+
+图依据：论文 §III-A（SA-RWFM）、§III-B（Tactile Distillation）、§III-C / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Safety-Aware Reward-Weighted Flow Matching (SA-RWFM) and Tactile Distillation (T
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.15257>
+- [arXiv PDF](https://arxiv.org/pdf/2603.15257)：已通读方法部分（实验与附录以略读为准）：§III A/B/C、Fig.2
 
 ## 推荐继续阅读
 

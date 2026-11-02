@@ -41,6 +41,27 @@ In this paper, we propose DELE-w0.5, which infers robot actions from predicted f
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["语言指令 L"] --> TE["Text Encoder (Qwen3)"]
+    O["当前多视角观测 O_t (3 个视角)"] --> VE["Vision Encoder (DINO-v3)"]
+    TE --> PJ["线性投影到 1024 维 → l, z_t"]
+    VE --> PJ
+    PJ --> SS["Single-Stream Attention<br/>拼接 [l, z_t] 做自注意力"]
+    SS --> CS["条件流：AdaLN(τ=1) 调制 → Q_c, K_c, V_c"]
+    N1["带噪动作 chunk A_t^τ"] --> NS
+    N2["带噪未来潜状态 z_(t+Δt)^τ<br/>由同一 Vision Encoder 编码 O_(t+Δt)，仅训练期"] --> NS["噪声流：AdaLN(τ~U[0,1]) 调制 → Q_n, K_n, V_n"]
+    CS --> MA["拼接 Q,K,V 的 Masked Attention<br/>条件组双向；动作组看不到未来状态；未来状态组看全部"]
+    NS --> MA
+    MA --> OUT["投影头输出：动作 chunk Â_t（+ 训练期未来潜状态 ẑ_(t+Δt)）"]
+    OUT --> LOSS["流匹配损失 L = L_a + λ·L_o"]
+    OUT --> INF["推理：去掉未来状态 token，只生成动作序列，不生成视频"]
+```
+
+图依据：论文 §3.2–3.3、§4.1–4.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ In this paper, we propose DELE-w0.5, which infers robot actions from predicted f
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.22067>
+- [arXiv PDF](https://arxiv.org/pdf/2608.22067)：已通读方法部分（实验与附录以略读为准）：§1.2、§3、§4.1–4.4（含 Fig.1–3）
 
 ## 推荐继续阅读
 

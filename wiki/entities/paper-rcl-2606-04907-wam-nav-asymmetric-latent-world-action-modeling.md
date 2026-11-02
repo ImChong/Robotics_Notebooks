@@ -41,6 +41,29 @@ To address these limitations, we propose WAM-Nav, a Latent World-Action Model fo
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["目标 g：Image-Goal / Point-Goal / No-Goal"] --> E["模态专用编码 Eφ：ViT（图像）/ 正弦位置编码（坐标）/ 掩码零状态（无目标）"]
+    E --> GV["视觉语义查询 gV"]
+    E --> GG["几何查询 gG"]
+    O["历史 RGB 观测（滑动窗口 k 帧）"] --> D["DINO-v2 → 视觉记忆 V"]
+    GV --> M["目标调制：逐 patch 相关性 α，Ṽ = V + α⊙V"]
+    D --> M
+    S["已执行位姿序列 → 相对位移与航向变化 (Δx, Δy, Δθ)"] --> K["因果 Transformer 编码 → H"]
+    GG --> X["以 gG 对 H 做交叉注意力 → 运动学向量 o_kin"]
+    K --> X
+    X --> F["Transformer Decoder：o_kin 偏置可学习查询，查询 Ṽ → 条件上下文 C"]
+    M --> F
+    F --> DIT["共享 DiT 非对称联合去噪（flow matching，共享自注意力，adaLN 调制 τ）"]
+    DIT --> A["长时域动作轨迹 A"]
+    DIT --> Z["短时域潜空间视觉预见 Z（SD VAE 潜变量）"]
+    A --> R["滚动时域控制：采样 16 条候选轨迹，执行首条"]
+```
+
+图依据：论文 §3 方法（§3.1–3.4，式 1–8）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ To address these limitations, we propose WAM-Nav, a Latent World-Action Model fo
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.04907>
+- [arXiv PDF](https://arxiv.org/pdf/2606.04907)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

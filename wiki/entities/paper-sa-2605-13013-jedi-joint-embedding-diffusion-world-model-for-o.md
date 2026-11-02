@@ -42,6 +42,28 @@ Joint embedding diffusion world model for online MBRL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV["环境交互\n策略 π 在编码后的 latent 上选动作"] --> BUF["经验回放 D\n(x, a, r, d)"]
+  BUF --> ENC["编码器 E_φ\n观测 x_t → 干净 latent z_t^0\n（tanh 钳位）"]
+  ENC --> NZ["对下一步 latent z_{t+1}^0 加噪\n（stop-gradient，噪声级 τ）"]
+  NZ --> DEN["条件去噪器 D_θ（EDM 预条件）\n条件：噪声嵌入 + 过去 latent + 过去动作"]
+  DEN --> L1["联合嵌入扩散损失"]
+  L1 -->|梯度回传到编码器\n端到端，无重建| ENC
+  ENC --> RH["奖励 / 终止头 R_ψ\n交叉熵损失"]
+  RH -->|梯度回传到编码器| ENC
+  BUF --> AC["Actor-Critic 训练\n在 imagination 中展开 H 步"]
+  DEN --> IMG["推理：从噪声出发\n求解器 S 迭代去噪得到 ẑ_{t+1}"]
+  IMG --> AC
+  RH --> AC
+  AC --> POL["REINFORCE 更新策略 π_ω 与价值 V_ω\n无需穿过多步去噪反传"]
+  POL --> ENV
+```
+
+图依据：论文 §3.1–3.2、附录 A.3 Algorithm 1 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Joint embedding diffusion world model for online MBRL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.13013>
+- [arXiv PDF](https://arxiv.org/pdf/2605.13013)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.2、§4.1 实验设定、附录 A.3 Algorithm 1
 
 ## 推荐继续阅读
 

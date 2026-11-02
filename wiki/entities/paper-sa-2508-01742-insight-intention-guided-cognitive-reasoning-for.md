@@ -42,6 +42,24 @@ Proposes a two-stage framework of "HOI semantic recognition + intention reasonin
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测视频段 Sk（每段均匀采样 4 帧）"] --> B["HOI 区域检测：100DOH 检测器 + SAM2 精细掩码"]
+    A --> C["双流 EgoVideo-V：编码整帧与 HOI 区域"]
+    B --> C
+    C --> D["拼接后经线性 MLP 融合，输入 Transformer 识别模块"]
+    D --> E["动词 / 名词两个并行分类器"]
+    E --> F["动词-名词共现矩阵校正联合概率，MAP 得到观测动作 (v, n)"]
+    F --> G["阶段 2：把视觉特征与观测动作写入 VLM 提示"]
+    G --> H["GRPO 训练的 VLM 按 think → intention → answer 结构化输出"]
+    H --> I["预测未来 Z 个动词-名词动作"]
+    J["奖励：长度、标签顺序、语言一致、软超长惩罚；准确率（编辑距离）与意图奖励（Sentence-BERT 余弦）"] -.-> H
+```
+
+图依据：论文 Method（Hand-Object Semantic Action Recognition、Explicit Cognitive Reasoning for Anticipation）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Proposes a two-stage framework of "HOI semantic recognition + intention reasonin
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2508.01742>
+- [arXiv PDF](https://arxiv.org/pdf/2508.01742)：已通读方法部分（实验与附录以略读为准）：Method 全部小节（含 HOI 增强特征、共现校正、GRPO 奖励设计）
 
 ## 推荐继续阅读
 

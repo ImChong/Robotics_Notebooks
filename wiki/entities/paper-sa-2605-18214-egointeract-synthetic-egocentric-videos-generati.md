@@ -42,6 +42,21 @@ A controllable egocentric video generation simulator, achieving precise control 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["输入数据<br/>HM3D 室内场景 1,000 个<br/>Objaverse XL 目标/干扰物体"] --> B["场景生成<br/>NavMesh 可行走区域<br/>支撑面采样放置物体"]
+  B --> C["SMPL-X 全身具身智能体<br/>头部第一人称相机<br/>随机体型/肤色/服装"]
+  C --> D["抓取生成<br/>VHACD 碰撞体 + 手部碰撞代理<br/>最多 50 次试验取首个有效抓取"]
+  D --> E["轨迹生成<br/>Bézier 曲线 + 碰撞检测"]
+  E --> F["全身 IK 执行<br/>抓取 → 回到休息姿态 → 释放"]
+  F --> G["输出<br/>RGB/深度/实例分割<br/>动作与手物关系标注"]
+  G --> H["EgoInteract 数据集<br/>10,534 episode，30 FPS"]
+```
+
+图依据：论文 §3.1–3.6 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ A controllable egocentric video generation simulator, achieving precise control 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.18214>
+- [arXiv PDF](https://arxiv.org/pdf/2605.18214)：已通读方法部分（实验与附录以略读为准）：§3 EgoInteract Simulator（§3.1–3.6）；§4 实验略读
 
 ## 推荐继续阅读
 

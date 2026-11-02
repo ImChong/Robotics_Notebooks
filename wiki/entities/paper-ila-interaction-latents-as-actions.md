@@ -36,6 +36,44 @@ sources:
 
 接触丰富操作的成败往往取决于接触如何建立、力如何变化和物体如何受约束。只用末端轨迹表示动作，即使把触觉作为输入，也可能没有明确告诉策略“应该生成怎样的接触过程”。ILA 把这段交互本身纳入动作表示，并让同一潜空间服务生成、评估和离线改进。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph REP["(a) 联合交互动作表示学习 (§3.1)"]
+        IMG["多视角图像历史 → 冻结 DINOv2<br/>语义-动态 (S&D) tokens"]
+        AT["对齐的动作序列 A_t + 触觉形变场 S_t<br/>分别编码为 token"]
+        ENC["联合自注意力 + 对视觉 cross-attention<br/>时间压缩"]
+        Z["交互潜变量 z_t"]
+        DEC["时间条件隐式解码器 (插值 + 时间编码)<br/>动作头 / 触觉头 / 力(聚合形变)头"]
+        REC["重建动作与触觉形变场"]
+        IMG --> ENC
+        AT --> ENC
+        ENC --> Z --> DEC --> REC
+    end
+    subgraph POL["(b) 潜空间策略学习 (§3.2)"]
+        OBS["当前与历史视觉、触觉、本体观测"]
+        FM["chunk 级 flow matching<br/>VLA / WAM / 从零训练 DiT"]
+        ZH["预测潜变量 z^"]
+        DEC2["冻结解码器 (30 Hz 时间网格)"]
+        ACT["关节目标序列"]
+        OBS --> FM --> ZH --> DEC2 --> ACT
+    end
+    Z -. "离线编码专家 chunk 作监督目标" .-> FM
+    subgraph IMP["(c) 离线策略改进 (§3.3)"]
+        EXP["专家参考潜变量 + 专家一致性奖励模型 (flow-matching 残差)"]
+        SUC["成功 rollout：奖励加权 flow matching (Selective reinforcement)"]
+        FAIL["失败 rollout：检索兼容专家参考，构造修正目标 (Reference-guided correction)"]
+        UPD["更新策略"]
+        EXP --> SUC --> UPD
+        EXP --> FAIL --> UPD
+    end
+    ZH --> EXP
+    UPD -.-> FM
+```
+
+图依据：论文 §3.1–3.3 / Fig.2
+
 ## 方法
 
 1. **联合编码交互。** 用视觉条件下的动作–触觉联合重建学习潜变量，目标包含运动、接触演化和力施加。
@@ -92,6 +130,7 @@ sources:
 - [ILA 论文摘录](../../sources/papers/ila_arxiv_2610_18855.md)
 - [ILA 项目页核查](../../sources/sites/ila-project.md)
 - [arXiv:2610.18855](https://arxiv.org/abs/2610.18855)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18855)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（§3.1–3.3）
 
 ## 推荐继续阅读
 

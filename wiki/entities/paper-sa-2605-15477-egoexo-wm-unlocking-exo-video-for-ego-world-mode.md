@@ -42,6 +42,25 @@ Cross-view knowledge transfer pipeline leveraging abundant third-person footage 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["外中心 exocentric 视频"] --> B["EgoX-Body：外→自中心转换 (§3.2)<br/>SAM 3D Body 骨架叠加外中心帧<br/>投影 3D 手位置得到 ego 手部先验"]
+  A --> C["恢复 3D 人体动作<br/>根平移变化 + 22 关节相对旋转 (69 维)"]
+  B --> D["合成的自中心观测 x_t<br/>(视频扩散模型生成)"]
+  E["真实自中心数据<br/>如 Nymeria"] --> F["统一 观测-动作 格式"]
+  D --> F
+  C --> F
+  F --> G["DINOv3-L 编码 z_t = E(x_t)"]
+  G --> H["EgoExo-WM 预测下一潜变量<br/>输入：H 步历史潜变量 + 动作 a_t<br/>teacher forcing 自回归训练"]
+  H --> I["损失：L_latent + λ·L_wrist<br/>轻量 wrist heatmap 头"]
+  H --> J["MPC 式规划 (§3.3)<br/>UniEgoMotion 提议 N 条动作序列"]
+  J --> K["潜空间 rollout<br/>选终态最接近目标图像潜变量 z_g 的序列"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Cross-view knowledge transfer pipeline leveraging abundant third-person footage 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.15477>
+- [arXiv PDF](https://arxiv.org/pdf/2605.15477)：已通读方法部分（实验与附录以略读为准）：§3 EgoExo-WM（§3.1–3.3）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

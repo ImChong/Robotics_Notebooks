@@ -35,6 +35,35 @@ summary: "Embodied-Navigator（TAMP-Nav，arXiv:2608.17512）：VLM 选二维像
 | VLN | Vision-and-Language Navigation | 视觉与语言条件下的具身导航 |
 | SR / SPL | Success Rate / Success weighted by Path Length | 成功率 / 路径长度加权成功率 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["训练"]
+        D1["MultiNav-CoT：90k 轨迹，关键节点挖掘 + Gemini 分步生成选择性 CoT"] --> D2["Qwen2.5-VL-7B 做 SFT 冷启动"]
+        D2 --> D3["Two-Level GRPO：每条指令 G=8 条轨迹，每步 M=4 个候选动作"]
+        D3 --> D4["局部步奖励 R_local + 全局轨迹奖励 R_global，各自标准化后叠加优势"]
+    end
+    subgraph I["推理：每个导航步"]
+        A["四路自我中心图像（覆盖 360°）+ 语言指令"] --> B["拼接工作记忆与长程拓扑记忆（Anchor-Trajectory Memory）得到上下文"]
+        B --> C{"是否为关键决策节点？"}
+        C -->|是| E["Think + Action：先生成 CoT"]
+        C -->|否| F["Only Action"]
+        E --> G["选最优视角并输出二维像素 (u,v)"]
+        F --> G
+        G --> H["结合深度图与相机内参投影为局部 3D 点 P_t，转到世界系"]
+        H --> J["交给低层 SLAM 控制器执行"]
+        J --> K["新观测，进入下一步"]
+        E --> M["触发 CoT 的节点存为显式锚点 A_k = STI + 视觉特征 + CoT 状态"]
+        M --> B
+        J --> N["锚点间区间仅保留时空指示 STI（位置、yaw、时间）"]
+        N --> B
+    end
+    D4 -.-> A
+```
+
+图依据：论文 §2（MultiNav-CoT）、§3 方法 / Fig. 1、Fig. 2、§3.1–§3.3。
+
 ## 方法结构
 
 ### 1. Point：Pixel-to-3D Action Formulation
@@ -91,3 +120,4 @@ Anchor-Trajectory Memory（AT-Mem）以关键节点作为长程记忆锚点，�
 - [论文摘录](../../sources/papers/embodied_navigator_arxiv_2608_17512.md)
 - [项目主页](https://zju-omniai.github.io/Embodied-Navigator/)
 - [作者代码仓库](https://github.com/ZJU-OmniAI/Embodied-Omni)
+- [arXiv PDF](https://arxiv.org/pdf/2608.17512)：已通读方法部分（实验与附录以略读为准）：§2 MultiNav-CoT 数据集、§3 方法（3.1–3.3）；§4 实验略读

@@ -42,6 +42,27 @@ Embeds eye-tracking signals into the VLM training pipeline, gaze regularization 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  RGB["RGB 帧序列"] --> VIT["预训练 ViT"]
+  GAZE["Ego4D 眼动点 g_t"] --> HM["高斯平滑热图 H_t\n单点或 δ=200ms 内聚合"]
+  HM --> OVL["gaze-overlaid 图像"]
+  OVL --> VIT
+  HM --> GD["按 patch 统计 gaze 分布 H"]
+  VIT -->|"RGB 特征作 K, V"| ATT["Gaze-regularized attention block"]
+  VIT -->|"gaze 特征作 Q"| ATT
+  ATT --> PR["Perceiver Resampler"]
+  PR --> LM["语言模块\n输出未来事件 / 动作文本"]
+  ATT -.->|"注意力分布 A"| KL["KL 散度 D_KL(A, H)"]
+  GD -.-> KL
+  KL --> LOSS["L_total = L_CE + λ·KL"]
+  PSEUDO["测试时无眼动：热图预测模块\n生成 pseudo-gaze-overlaid 图像"] -.-> OVL
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.12
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Embeds eye-tracking signals into the VLM training pipeline, gaze regularization 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.23190>
+- [arXiv PDF](https://arxiv.org/pdf/2603.23190)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.3）、附录 6.3–6.4（部分）
 
 ## 推荐继续阅读
 

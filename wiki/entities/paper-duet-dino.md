@@ -41,6 +41,33 @@ summary: "静态侧视+腕部相机联合预测动作条件未来表征，CEM �
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练（大规模机器人操作数据集，交叉注意力与预测头从零训练）"]
+        A1["侧视图 o_side 与腕部视图 o_wrist"] --> A2["冻结 DINOv3 编码器 E_θ<br/>得到逐 patch 潜变量 z_side / z_wrist"]
+        A2 --> A3["跨视图 Cross-Attention<br/>目标视图为 Query，另一视图为 Key/Value"]
+        A3 --> A4["视图专属预测头 P_ψ<br/>输入 z̃、7-DoF 动作 a_t、末端状态 s_t"]
+        A4 --> A5["预测下一步潜变量<br/>z_side(t+1)、z_wrist(t+1)"]
+        A5 --> A6["双视图预测损失 L_pred<br/>teacher-forcing 损失 + K=2 自回归 rollout 损失"]
+    end
+    subgraph PLAN["部署：零样本潜空间规划"]
+        B0["目标图像 o_g（侧视+腕部）→ DINOv3 → 目标潜变量 z_g"]
+        B1["CEM：从高斯分布采样 N 条 7-DoF 动作序列"]
+        B2["DUET-DINO 潜变量 rollout 到视野 H<br/>得到 ẑ_(t+H)"]
+        B3["双视图代价 J<br/>两视图 L1 距离之和，除以零动作 rollout 的代价"]
+        B4["加权 top-k 更新高斯提议分布"]
+        B0 --> B3
+        B1 --> B2 --> B3 --> B4
+        B4 -.->|"下一轮 CEM 迭代"| B1
+        B4 --> B5["得到驱动机器人到达目标的动作序列"]
+    end
+    TRAIN --> PLAN
+```
+
+图依据：论文 §III-B / §III-C、Fig.2、Fig.3（式 1–7）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -98,6 +125,7 @@ summary: "静态侧视+腕部相机联合预测动作条件未来表征，CEM �
 - [duet-dino_arxiv_2609_10506.md](../../sources/papers/duet-dino_arxiv_2609_10506.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.10506](https://arxiv.org/abs/2609.10506)
+- [arXiv PDF](https://arxiv.org/pdf/2609.10506)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（问题定义、跨视图世界模型、视觉规划）、§IV-A/B 训练与实验设定；§IV-C 起结果略读
 
 ## 推荐继续阅读
 

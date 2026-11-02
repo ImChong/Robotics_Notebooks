@@ -41,6 +41,25 @@ We present AeroAct, an action-centered world-action model (WAM) for quadrotor na
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["训练数据：DiffAero 动力学 + Isaac Lab / 3DGS 渲染的仿真数据，以及手持设备采集的真实数据（同步 RGB、本体状态、语言、动作块）"] --> ENC
+    OBS["步长 Δ 的第一人称历史帧 O_t + 本体状态 s_t + 语言 l"] --> ENC["冻结视频 VAE → 参考 token T_o；MLP 编码 → 状态 token T_s、动作 token T_a；文本编码器 → 语言 token T_l（cross-attention 上下文）"]
+    ENC --> SEQ["拼接单一序列 [T_s; T_o; T_a; T_f]（Wan2.1-1.3B 视频 DiT，无独立专家）"]
+    SEQ --> MASK["块因果掩码：状态与参考 token 不读预测 token；动作 token 只读状态、参考、动作；未来帧 token 读全部"]
+    MASK --> ACTDEC["动作解码：局部五阶轨迹参数的动作块 a_t:t+p-1（p=24）"]
+    MASK --> FUT["未来帧预测 T_f（K=8 帧）：仅训练期的后果监督 L_vis"]
+    ACTDEC --> LOSS["训练损失 L = L_act + λ_vis·L_vis"]
+    FUT --> LOSS
+    SEQ --> INFER["部署：不含 T_f，仅解码动作流（4 步去噪）"]
+    INFER --> SG["自引导：重叠窗口内，用上一块动作的后缀约束新块前缀，其余部分正常采样"]
+    SG --> CTRL["轨迹控制器执行，四旋翼飞行"]
+```
+
+图依据：论文 §3 Methodology（§3.1 Problem Formulation、§3.2 Model Architecture、§3.3 Data、§3.4 Self-Guidance）与 Fig. 1、Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ We present AeroAct, an action-centered world-action model (WAM) for quadrotor na
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.14997>
+- [arXiv PDF](https://arxiv.org/pdf/2607.14997)：已通读方法部分（实验与附录以略读为准）：Introduction、§3 Methodology（§3.1–§3.4）、§4.1 实现细节
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "月球单足协同设计：面向月球单足机器人二维跳跃与�
 
 # 月球单足协同设计：面向月球单足机器人二维跳跃与着陆的双层协同设计
 
-**月球单足协同设计**（*A Bi-level Co-design Framework for Lunar Monoped with 2D Jump and Landing Control*，[arXiv:2610.37199](https://arxiv.org/abs/2610.37199)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**月球单足协同设计**（*A Bi-level Co-design Framework for Lunar Monoped with 2D Jump and Landing Control*，[arXiv:2610.37199](https://arxiv.org/abs/2610.37199)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,33 @@ summary: "月球单足协同设计：面向月球单足机器人二维跳跃与�
 ## 为什么重要
 
 - 周报所述待解决的问题：月球低重力会延长腾空时间并减小接触力，使腿部尺寸和跳跃控制器高度耦合。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OUT["外层: 差分进化 DE (§IV-A)"]
+        O1["提出大腿/小腿长度 L = (l1, l2)<br/>搜索范围 0.15-0.6 m"]
+    end
+    subgraph IN["内层: 控制器完成 0.2 m 垂直跳 (§IV-C/D)"]
+        I1["QP 任务空间控制器 QP-TSC<br/>跟踪起跳速度 v = sqrt(2·g·h) 的参考轨迹"]
+        I2["直接配点轨迹优化 (CasADi + IPOPT)<br/>最小化支撑相正机械功"]
+    end
+    O1 --> C{"选定一种内层控制器"}
+    C --> I1
+    C --> I2
+    I1 --> S["MuJoCo 仿真一次跳跃"]
+    I2 --> S
+    S --> F["适应度: 运输成本 COT = E / (m·g·h)<br/>任务失败/违反静态稳定则惩罚"]
+    F --> O1
+    F --> R["输出各控制器的最优形态与 COT 地形图, 交叉评估 (§V)"]
+    R --> P2["平面 2D 跳跃与着陆 (§VI)"]
+    P2 --> P3["轨迹优化: 起跳时质心角动量 H=0, 水平质心速度约束<br/>飞行相阻尼腿速度, 着陆时机身直立"]
+    P3 --> P4["着陆: LQR 吸收冲击并稳定<br/>足端位置经触地姿态扫描选取"]
+    P4 --> P5["仿真中扫描触地条件得到经验吸引域"]
+```
+
+图依据：论文 §IV / Fig.2（双层协同设计框架）、§VI（2D 跳跃与着陆控制）
 
 ## 核心机制
 
@@ -85,6 +112,7 @@ summary: "月球单足协同设计：面向月球单足机器人二维跳跃与�
 - [lunar-monoped-bilevel-codesign_arxiv_2610_37199.md](../../sources/papers/lunar-monoped-bilevel-codesign_arxiv_2610_37199.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37199](https://arxiv.org/abs/2610.37199)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37199)：已通读方法部分（实验与附录以略读为准）：§III 系统模型、§IV 双层协同设计框架、§V 1D 结果、§VI 平面跳跃与着陆控制、§VII–IX
 
 ## 推荐继续阅读
 

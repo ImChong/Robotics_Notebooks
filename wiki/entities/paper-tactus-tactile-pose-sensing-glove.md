@@ -20,7 +20,7 @@ summary: "Tactus：用于自然灵巧操作数据采集的触觉与姿态感知�
 
 # Tactus：用于自然灵巧操作数据采集的触觉与姿态感知手套
 
-**Tactus**（*Tactus: Tactile & Pose Sensing Glove for Natural Dexterity Data Collection*，[arXiv:2610.39076](https://arxiv.org/abs/2610.39076)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Tactus**（*Tactus: Tactile & Pose Sensing Glove for Natural Dexterity Data Collection*，[arXiv:2610.39076](https://arxiv.org/abs/2610.39076)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,33 @@ summary: "Tactus：用于自然灵巧操作数据采集的触觉与姿态感知�
 ## 为什么重要
 
 - 周报所述待解决的问题：人类灵巧操作示范需要准确的手部姿态和接触力信息，但相机在手物遮挡时难以恢复姿态，传统传感手套又可能影响自然抓取动作。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph 触觉["触觉信号链"]
+    A["电容式触觉传感器 (共 47 个位置)<br/>原始信号"] --> B["工厂标定: 气囊腔 + 弹性膜施压<br/>逐传感器三次传递函数 Y = A(X-B)^3 + C"]
+    B --> C["压力 × 面积, 聚合指尖各单元得到力"]
+    C --> D["每次佩戴的在线标定: 指尖对参考传感器施法向力<br/>单一缩放因子 α (Y = αX)"]
+    D --> E["校准后的指尖力"]
+  end
+  subgraph 位姿["手部位姿链"]
+    F["16 个 6 轴 IMU, 200 Hz<br/>每指 3 个 + 手背 1 个根参考"]
+    G["第一视角视频 → ResNet 手部位姿网络<br/>回归 26 自由度位姿"]
+    F --> H["CV+IMU 扩展卡尔曼滤波 EKF 融合<br/>实时"]
+    G --> H
+    F --> I["AVI-HT 深度学习融合<br/>IMU token 与全局视觉 token 层级交叉注意力, 实时"]
+    G --> I
+    I --> J["离线全序列非线性优化求解器<br/>精化轨迹, 用于数据集质量整理"]
+  end
+  E --> K["与手部位姿同步的灵巧操作数据"]
+  H --> K
+  I --> K
+  J --> K
+```
+
+图依据：论文 §III-A/B（传感器与 IMU 布局）、§IV-A 触觉标定流程、§IV-B 手部位姿跟踪流程、Fig.1/6
 
 ## 核心机制
 
@@ -87,6 +114,7 @@ summary: "Tactus：用于自然灵巧操作数据采集的触觉与姿态感知�
 - [tactus-tactile-pose-sensing-glove_arxiv_2610_39076.md](../../sources/papers/tactus-tactile-pose-sensing-glove_arxiv_2610_39076.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39076](https://arxiv.org/abs/2610.39076)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39076)：已通读方法部分（实验与附录以略读为准）：系统设计（§III）与信号建模（§IV-A 触觉标定、§IV-B 位姿跟踪）；评测与应用部分（§V–§VI）仅概览，未逐表核对
 
 ## 推荐继续阅读
 

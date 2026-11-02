@@ -42,6 +42,26 @@ Cross-policy visuo-tactile fusion paradigm fusing modalities within low-dimensio
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["视觉观测 V_t"] --> BP["预训练 Base Policy π_θ<br/>(diffusion / flow matching，如 π0.5 action expert)"]
+    N["初始噪声 A_t^K ~ N(0, I)"] --> BP
+    BP --> E["去噪早期：仅凭视觉生成粗动作 A_t"]
+    E --> L["去噪后期 (k ≤ K_TouchGuide)：调用 CPM 打分"]
+    T["触觉观测 T_t"] --> CPM
+    V --> CPM
+    L --> CPM["Contact Physical Model (CPM)<br/>DINOv2 编码 + Transformer 融合 → O_t<br/>动作编码器 (1D CNN + MLP) → a_t<br/>可行性分数 s = O_t^T a_t"]
+    CPM --> G["对 s 求动作梯度 ∇ s<br/>按引导系数 η 修正 ε / 速度场"]
+    G --> U["更新 A_t^{k-1}，迭代至 k=0"]
+    U --> X["输出受触觉引导的动作 A_t^0 并执行"]
+    D["少量专家示范"] --> C["对比学习训练 CPM<br/>同一时刻 (O_t, a_t) 为正样本，不同时刻为负样本"]
+    C -.-> CPM
+```
+
+图依据：论文 §IV-B/C（Fig. 3、Algorithm 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Cross-policy visuo-tactile fusion paradigm fusing modalities within low-dimensio
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2601.20239>
+- [arXiv PDF](https://arxiv.org/pdf/2601.20239)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV 方法（Classifier Guidance、Contact Physical Model、Steering）；§III TacUMI 与 §V 实验仅略读
 
 ## 推荐继续阅读
 

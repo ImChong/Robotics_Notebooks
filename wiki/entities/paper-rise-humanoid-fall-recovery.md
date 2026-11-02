@@ -36,6 +36,25 @@ summary: "RISE uses visual prediction of future body states and test-time task c
 
 起身不只是从地面回到站立状态：靠墙或处于不平地形时，恢复动作的路径和支撑转换会影响是否碰撞、能否继续任务。RISE 的重点是让任务目标改变恢复动作的选择，而不必为每个目标重新训练策略。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[录制恢复动作<br/>LAFAN1 / BONES-SEED / AMASS / 自采 G1 动作] --> B[Motion matching 组合兼容帧<br/>得到每个起始姿态的多种恢复参考]
+    B --> C[局部支撑平面旋转与垂直偏移<br/>粗对齐地形 + 几何检查]
+    C --> D[PPO 训练特权 Expert π_E<br/>输出关节目标, 用地形高度等特权信息]
+    D --> E[Expert 执行恢复<br/>验证可行性, 配对粗参考]
+    E --> F[编码器 E 将期望身体状态窗口压缩为 motion latent z<br/>反馈解码器 π 结合本体观测与 egocentric depth 输出动作<br/>DAgger 训练 + 重构损失]
+    F --> G[冻结 E 与 π, 在各地形任务上收集 rollout<br/>配对 motion latent 与实际身体状态]
+    G --> H[训练视觉扩散 Transformer 规划器<br/>先预测未来身体状态 S, 再条件生成 motion latent Z]
+    H --> I[测试时: DDIM 去噪未来状态<br/>任务代价 J 的梯度引导<br/>朝向 / 起身速度 / 路径]
+    I --> J[固定引导后的状态 S*<br/>采样条件 motion latent Z]
+    J --> K[反馈解码器输出电机动作<br/>执行短前缀后用新观测重规划]
+    K -.-> I
+```
+
+图依据：论文 §III（A–D）/ Fig.3 / Fig.4
+
 ## 核心原理
 
 RISE 先从兼容动作片段构建可组合的恢复动作库，再训练动作词汇和反馈解码器，将运动 latent 转成马达动作。视觉扩散规划器预测未来身体状态；路径、朝向或速度相关的任务代价引导这一预测，随后条件化生成运动 latent 并闭环执行。
@@ -95,6 +114,7 @@ RISE 先从兼容动作片段构建可组合的恢复动作库，再训练动作
 - [RISE 论文归档](../../sources/papers/rise_fall_recovery_arxiv_2610_30061.md)
 - [RISE 官方项目页归档](../../sources/sites/osheraz-rise.md)
 - [arXiv:2610.30061](https://arxiv.org/abs/2610.30061)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30061)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法（A–D）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

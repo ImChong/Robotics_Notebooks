@@ -42,6 +42,25 @@ summary: "VEOcc++（arXiv:2610.27704）：VEOcc++用持久稀疏体素特征贯�
 - 开源结论：**待发布**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未列 GitHub，Code 按钮标 Code coming soon（curl 扫描）。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单目图像 I_t + 几何信息 G_t（内参 / 位姿 / 局部体素几何）"] --> B["局部占据预测器（沿用 VEOcc）<br/>单目深度先验 → 局部体素特征 F_t"]
+    B --> C["观测到地图对齐<br/>位姿条件适配 + 三线性采样到全局体素中心"]
+    C --> D["可靠度引导增量更新<br/>新体素初始化；旧体素用门控 U 融合历史特征"]
+    D --> E["持久稀疏体素特征图 M_t<br/>+ 体素可靠度统计"]
+    E --> F["上下文感知解码：稀疏卷积头 H_map<br/>→ 在线语义占据图"]
+    E -->|下一帧| D
+    B -.缓存局部特征与几何.-> G["局部证据聚合<br/>残差变换 + Softmax 加权 → u_k"]
+    E -->|探索结束 持久特征 h_T| H["全局空间精修：拼接 h_T / 在线概率 / u_k"]
+    F -->|在线语义概率| H
+    G --> H
+    H --> I["稀疏 U-Net 多尺度处理<br/>→ 离线精修占据图（支撑集不变）"]
+```
+
+图依据：论文 §3.1–3.5、Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +104,7 @@ summary: "VEOcc++（arXiv:2610.27704）：VEOcc++用持久稀疏体素特征贯�
 - [veocc_plus_plus_arxiv_2610_27704.md](../../sources/papers/veocc_plus_plus_arxiv_2610_27704.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27704](https://arxiv.org/abs/2610.27704)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27704)：已通读方法部分（实验与附录以略读为准）：问题定义与方法总览（§3.1–3.2）、在线增量建图（§3.4）、离线全局精修（§3.5）
 
 ## 推荐继续阅读
 

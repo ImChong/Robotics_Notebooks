@@ -42,6 +42,37 @@ Long-horizon planning with graph world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["多视角观测 → 感知得到实例级特征<br/>ego 与周围 agent (f_i, f_ego)"]
+    SEL["Ego-centric 邻居选择<br/>距离 < τ，PadOrTrim 成 K 个邻居"]
+    STAR["星形交互图<br/>邻居 → ego 的有向边"]
+    CA1["Cross-Attention<br/>ego 规划 query Q_ego 关注邻居特征 → Q~_ego"]
+    GRU["GRU 世界编码器<br/>历史状态 H_t + 池化地图嵌入 M → s_t"]
+    CA2["Cross-Attention<br/>s_t 对 Q~_ego ∪ F_nbr → c_int"]
+    WCUR["残差注入得到<br/>当前潜在世界状态 W_cur"]
+    WTGT["目标世界状态 W_tgt<br/>由运动 / 规划 / 地图线索投影，仅作监督"]
+    FM["Flow-Matching 速度场 v_θ<br/>W(t) 在 W_cur 与 W_tgt 间插值；推理 Euler 更新(2 步)"]
+    WT["精炼世界状态 W_t"]
+    MOT["Importance Reweighting<br/>以 W_t 调制 agent 运动 query，sigmoid 权重 α"]
+    PLAN["World-to-Ego Feedback<br/>Q'_plan = Q_plan + W_ego"]
+    HEAD["任务头联合解码<br/>agent 多模态轨迹 + ego 多模态轨迹与置信度"]
+    OBS --> SEL --> STAR --> CA1
+    CA1 --> CA2
+    GRU --> CA2
+    CA2 --> WCUR --> FM
+    WTGT -.训练监督.-> FM
+    FM --> WT
+    WT --> MOT --> HEAD
+    WT --> PLAN --> HEAD
+    CA1 -.-> WTGT
+    HEAD --> LOSS["训练：两阶段<br/>I 单步端到端；II 加 W_t 对 stop-grad(W_t+1) 的 ℓ2 一致性损失"]
+```
+
+图依据：论文 §4 / Fig.3（§4.1 ECIG、§4.2 WSCP、§4.3 两阶段监督）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Long-horizon planning with graph world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.16274>
+- [arXiv PDF](https://arxiv.org/pdf/2606.16274)：已通读方法部分（实验与附录以略读为准）：§4 方法（ECIG、WSCP、两阶段时序世界状态监督）；§5 实验略读
 
 ## 推荐继续阅读
 

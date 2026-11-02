@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Perception——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Perception——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,23 @@ UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Pe
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：语言指令 + RGB 图像 和/或 点云<br/>(可缺失模态)"] --> ENC["模态编码<br/>文本分词 / SigLIP 图像编码 / SONATA 点云编码 + 投影"]
+    ENC --> PRE["拼接前缀 T_in = 文本 + 图像 + 点云"]
+    PRE --> LLM["MLLM 骨干（共享语义枢纽，LoRA）<br/>自回归生成响应隐状态 h_t"]
+    LLM --> RT["模态感知 Token Router<br/>逐状态预测 text / img / pc，屏蔽不可用分支"]
+    RT -->|text 状态| LH["语言头：文本输出"]
+    RT -->|img 状态| QI["投影为 2D 亲和查询 Q_img"]
+    RT -->|pc 状态| QP["投影为 3D 亲和查询 Q_pc"]
+    QI --> D2["SAM 式 2D 解码器<br/>查询-特征相似度热图 → 掩码提示 → 像素级亲和掩码"]
+    QP --> D3["SONATA 式 3D 解码器<br/>查询-点特征相似度 → 逐点亲和 logits"]
+```
+
+图依据：论文 §4.1 至 §4.4 与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +68,7 @@ UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Pe
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2609.37264)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法模块与数据流见上方「流程总览」（依据论文方法部分）。训练细节与实验请读 [原文](https://arxiv.org/abs/2609.37264)。
 
 ## 评测与指标
 
@@ -67,7 +84,7 @@ UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Pe
 
 **本页只提供「UNIAFFORD」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 清单可确证的只有标题、出处与分类标签；方法流程见「流程总览」，实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +105,7 @@ UNIAFFORD: Token-Routed Multitask Learning for Generalizable 2D-3D Affordance Pe
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2609.37264>
+- [arXiv PDF](https://arxiv.org/pdf/2609.37264)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 数据集与任务定义、§4 Method（4.1–4.5）
 
 ## 推荐继续阅读
 

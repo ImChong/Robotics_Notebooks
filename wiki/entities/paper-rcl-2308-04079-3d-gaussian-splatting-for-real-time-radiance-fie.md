@@ -43,6 +43,28 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMGS["静态场景多视角图像"] --> SFM["SfM 标定相机, 副产物稀疏点云"]
+    SFM --> INIT["初始化 3D Gaussians: 位置 mu, 缩放 s, 旋转四元数 q, 不透明度 alpha, SH 系数 (初始协方差取最近三点平均距离的各向同性)"]
+    INIT --> PROJ["相机投影: 3D 协方差 -> 2D splat 协方差"]
+    PROJ --> RAST["可微 tile 光栅化: 16x16 tile 视锥裁剪, GPU radix sort, 前到后 alpha-blending"]
+    RAST --> IMG["渲染图像"]
+    IMG --> LOSS["与训练视图比较: L = (1 - lambda) * L1 + lambda * D-SSIM"]
+    LOSS -->|"反向传播 (显式推导梯度)"| OPT["SGD 更新全部 Gaussian 参数"]
+    OPT --> ADC{"Adaptive Density Control (warm-up 之后每 100 次迭代)"}
+    ADC --> RM["删除 alpha 低于阈值的近透明 Gaussians; 每 N=3000 次迭代把 alpha 置近零"]
+    ADC --> CL["视空间位置梯度大且 Gaussian 小: clone (欠重建)"]
+    ADC --> SP["视空间位置梯度大且 Gaussian 大: split 为两个, 尺度除以 1.6 (过重建)"]
+    RM --> PROJ
+    CL --> PROJ
+    SP --> PROJ
+```
+
+图依据：论文 §3 Overview、§4 可微 3D Gaussian、§5 优化与自适应密度控制、§6 快速可微光栅化 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +122,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - [3DGS 奠基论文与作者代码归档](../../sources/papers/3d_gaussian_splatting_arxiv_2308_04079.md)
 - 论文：<https://doi.org/10.1145/3592433>
+- [arXiv PDF](https://arxiv.org/pdf/2308.04079)：已通读方法部分（实验与附录以略读为准）：§3-§6 方法全部；§7 实现与实验略读
 
 ## 推荐继续阅读
 

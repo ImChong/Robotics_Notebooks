@@ -41,6 +41,30 @@ To bridge this gap, we propose ForeWAM, a dynamics-conditioned direct-policy WAM
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多相机观测 o + 语言指令 l + 本体状态 p"] --> VAE["视频 VAE 编码<br/>当前帧 latent z_cur（干净）"]
+    VAE --> INIT["z_init = [z_cur ; 高斯噪声未来槽 ε_F]"]
+    subgraph INF["推理 / 动作条件通路"]
+        INIT --> PRE["Video DiT 单次 prefill（σ=1.0）<br/>含可学习 dynamics registers"]
+        PRE --> KV["缓存 Future-KV<br/>当前帧、未来槽、registers 的末层 K/V"]
+        KV --> ADIT["单层 Action DiT<br/>动作去噪全程重复读取同一缓存"]
+        ADIT --> ACT["动作块 a_1:H<br/>不生成未来视频"]
+    end
+    subgraph TRAIN["仅训练：监督通路（共享参数的第二次 Video DiT 前向）"]
+        DEMO["示教未来视频 latent（加噪）<br/>不进入动作条件前向"] --> SUP["Video DiT 监督前向"]
+        SUP --> LV["视频 flow matching 损失 L_video"]
+        SUP --> DREG["dynamics registers 池化表示 → 投影 g_ψ"]
+        TEACH["冻结 LaWAM 教师<br/>从示教前后外部相机观测提取 latent action z_LA"] --> LLA["latent-action 对齐损失"]
+        DREG --> LLA
+    end
+    ADIT -.-> LACT["动作 flow matching 损失 L_action"]
+```
+
+图依据：论文 §4 ForeWAM（4.1 Future-KV、4.2 latent-action 塑形、4.3 轻量动作解码、4.4 训练与推理）/ Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ To bridge this gap, we propose ForeWAM, a dynamics-conditioned direct-policy WAM
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.11605>
+- [arXiv PDF](https://arxiv.org/pdf/2608.11605)：已通读方法部分（实验与附录以略读为准）：§3（预测上下文设计研究）、§4 ForeWAM（4.1-4.4）
 
 ## 推荐继续阅读
 

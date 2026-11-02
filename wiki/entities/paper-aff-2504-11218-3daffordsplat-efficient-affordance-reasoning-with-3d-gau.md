@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-3DAffordSplat: Efficient Affordance Reasoning with 3D Gaussians——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: 3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+3DAffordSplat: Efficient Affordance Reasoning with 3D Gaussians——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: 3D）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ sources:
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  G["输入：3D Gaussians 结构特征 G_struct = {m, s, r}"] --> E["PointNet++ 分层 3D 编码器 + Transformer 编码器<br/>→ 3 个粒度特征 F_g^i"]
+  Q["文本查询 Q"] --> LM["预训练语言模型 (如 RoBERTa)<br/>→ &lt;Aff&gt; token 嵌入 → MLP → H_Aff"]
+  LM --> TA["文本回答 ỹ_text"]
+  E --> X["交叉注意力（H_Aff 作 query）+ 通道注意力"]
+  LM --> X
+  X --> IDW["IDW 插值统一分辨率"]
+  IDW --> GA["可学习门控权重 W_gate 的粒度自适应选择 → F_fused"]
+  GA --> UP["IDW 上采样至原 Gaussian 数量 + 有效性 mask"]
+  UP --> DK["Transformer 解码器（条件于 H_Aff）生成动态卷积核 K_dynamic"]
+  UP --> CV["与 K_dynamic 卷积 + Sigmoid"]
+  DK --> CV
+  CV --> M["输出：3D Gaussian affordance mask"]
+  PT["预训练：点云 affordance 数据 + 跨模态结构对齐 CMSA<br/>（Gaussian 与点云的结构关系余弦损失 L_consis）"] -.-> M
+  FT["微调：3DAffordSplat 的 Gaussian 标注，BCE 监督"] -.-> M
+```
+
+图依据：论文 §3.1 Architecture Overview、§4.1–4.4 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +74,7 @@ sources:
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2504.11218)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2504.11218)。
 
 ## 评测与指标
 
@@ -68,7 +90,7 @@ sources:
 
 **本页只提供「3DAffordSplat」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +111,7 @@ sources:
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2504.11218>
+- [arXiv PDF](https://arxiv.org/pdf/2504.11218)：已通读方法部分（实验与附录以略读为准）：§3 数据集与架构概览、§4 AffordSplatNet（4.1–4.4）
 
 ## 推荐继续阅读
 

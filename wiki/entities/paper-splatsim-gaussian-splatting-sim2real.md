@@ -41,6 +41,27 @@ summary: "用 3D Gaussian Splatting 从真实场景重建可渲染仿真，实�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **视觉 Sim2Real** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    SCAN["真实场景含机器人的多视角 RGB，得到 Gaussian Splat S_real"] --> ALIGN["提取机器人 3D 均值点云，ICP 对齐到仿真坐标系"]
+    ALIGN --> SEG["按 CAD 包围盒切分机器人 link；夹爪用 KNN 分类器"]
+    OBJ["物体多视角 Gaussian Splat"] --> OALIGN["ICP 对齐物体 splat 到仿真坐标系"]
+    SIM["物理仿真器 PyBullet：专家示教（Gello 遥操作或特权运动规划）"] --> TRAJ["轨迹：关节角 q_t、物体位姿"]
+    TRAJ --> FK["前向运动学得到各 link 变换，按 μ'=Rμ+t、Σ'=RΣR^T 变换 Gaussians"]
+    SEG --> FK
+    OALIGN --> OT["按物体位姿变换物体 Gaussians"]
+    TRAJ --> OT
+    FK --> RENDER["Gaussian Splatting 渲染：机器人与物体的光照真实 RGB"]
+    OT --> RENDER
+    RENDER --> DATA["合成数据集：RGB 图像 + 末端位姿 与 动作"]
+    DATA --> TRAIN["训练 Diffusion Policy（仅 RGB + 末端位姿）"]
+    TRAIN -->|"冻结后零样本部署"| REAL["真机：真实 RGB 输入"]
+```
+
+图依据：论文 §IV-A–G（Fig. 2 / Fig. 3 / Fig. 4）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +110,7 @@ summary: "用 3D Gaussian Splatting 从真实场景重建可渲染仿真，实�
 - [freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md](../../sources/papers/freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- 论文 PDF：<https://arxiv.org/pdf/2409.10161>（已通读方法部分（实验与附录以略读为准）：方法 §IV、实验 §V 及 Table I）
 
 ## 推荐继续阅读
 

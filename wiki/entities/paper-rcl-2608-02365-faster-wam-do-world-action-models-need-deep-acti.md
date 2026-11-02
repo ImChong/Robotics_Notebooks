@@ -41,6 +41,21 @@ To address this limitation, we introduce Dock of Transformer (DoT), a video-cent
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["相机观测 + 语言指令 + 本体状态"] --> VB["预训练 Wan2.2-5B 视频 DiT<br/>语言与本体仅条件化视频主干"]
+  VB --> KV["各视频层缓存 KV<br/>（观测帧 t=0）"]
+  KV --> LKF["Lite KV-Fusion<br/>每个动作层、每个 head 学习<br/>对所有视频层 KV 的 softmax 加权融合"]
+  LKF --> RR["Retracted 1D-RoPE<br/>去除视频 3D 旋转并按动作 1D 时间轴重编码融合 key"]
+  AQ["带噪动作 token"] --> ACT["单层动作 DiT<br/>与融合后的视频 KV 联合注意力<br/>无语言 / 本体旁路 cross-attention"]
+  RR --> ACT
+  ACT --> OUT["动作 chunk"]
+```
+
+图依据：论文 §2.1–2.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ To address this limitation, we introduce Dock of Transformer (DoT), a video-cent
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.02365>
+- [arXiv PDF](https://arxiv.org/pdf/2608.02365)：已通读方法部分（实验与附录以略读为准）：2 Method（Dock of Transformers、World-Model-Only Conditioning、RoPE Axis-Frequency Alignment、Training and Inference）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,32 @@ Personalizes policy training by efficiently capturing scenes with 3D Gaussian Sp
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph A["(a) 场景采集"]
+    CAP["iPhone + Polycam 录制 RGB-D"] --> NS["Nerfstudio 处理：采样 1000 帧对齐的 RGB、深度与位姿"]
+  end
+  subgraph B["(b) 重建网格"]
+    NS --> DN["DN-Splatter 训练 3D Gaussian Splatting（深度与法线正则，法线来自 Metric3D-V2）"]
+    DN --> PM["Poisson 重建得到网格 .ply（DN mesh）"]
+  end
+  CAP -.Polycam 自带网格，作对比.-> PCM["Polycam mesh"]
+  subgraph C["(c) 仿真训练"]
+    PM --> BL["Blender 转为 glb，载入 Habitat-Sim"]
+    PCM --> BL
+    BL --> EP["取最大 navmesh 岛，生成 ImageNav 训练 / 评测 episodes"]
+    PRE["HM3D 或 HSSD 上预训练的 ImageNav 策略"] --> FT["在重建场景中微调策略"]
+    EP --> FT
+  end
+  subgraph D["(d) 真实部署"]
+    FT --> DEP["在同一真实场景部署，做 image-goal navigation"]
+  end
+```
+
+图依据：论文 §3 / Fig. 2（四阶段 a–d 流水线）、§3.1–§3.3、§4.2（微调设定）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Personalizes policy training by efficiently capturing scenes with 3D Gaussian Sp
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2509.17430>
+- [arXiv PDF](https://arxiv.org/pdf/2509.17430)：已通读方法部分（§1 引言、§3 方法）；实验（§4）略读：§4.1–§4.2。
 
 ## 推荐继续阅读
 

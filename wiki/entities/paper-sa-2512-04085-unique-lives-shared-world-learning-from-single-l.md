@@ -42,6 +42,27 @@ Studies the learning problem of ultra-long life-cycle videos from a single indiv
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  L["每个参与者 i 的一段 life：第一人称视频 Di"] --> PAIR
+  subgraph PAIR["配对策略（Single-life CroCo）"]
+    TP["时间配对：时间相近帧"]
+    SP["空间配对：相机位姿 + 3D 点云，Jaccard 重叠度（有位姿时）"]
+  end
+  PAIR --> SX["源图 xs / 目标图 xt"]
+  SX --> MK["切 patch；目标图高比例随机 mask，仅留可见 patch"]
+  MK --> ENC["权重共享 ViT 编码器：zs、zt"]
+  ENC --> DEC["Transformer 解码器（zt + mask token 作 Q，zs 作 K/V 的交叉注意力）重建 mask 的目标 patch"]
+  DEC --> LOSS["MSE 像素重建损失"]
+  LOSS --> M["从随机初始化为每个 life 单独训练一个模型 θi*"]
+  M --> ALIGN["对齐：各解码器块交叉注意力平均，top-k 互近邻得 CAS 分数"]
+  M --> GEN["泛化：冻结编码器 + 轻量读出头做深度估计、零样本对应等"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.1、Fig.2（CAS）；下游任务设定来自 §5 实验设置开头
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Studies the learning problem of ultra-long life-cycle videos from a single indiv
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2512.04085>
+- [arXiv PDF](https://arxiv.org/pdf/2512.04085)：已通读方法部分（实验与附录以略读为准）：§3.1 Formulation、§3.2 Model Architecture、§3.3 Pairing Strategies、§3.4 Patch-Level Alignment Metric、§4 数据集概述
 
 ## 推荐继续阅读
 

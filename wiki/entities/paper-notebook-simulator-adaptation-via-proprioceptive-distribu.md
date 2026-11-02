@@ -40,6 +40,35 @@ summary: "仿真训出来的腿足策略一上真机就掉点，根源是仿真�
 - **分布优于轨迹**：比较分布而非逐帧轨迹，规避时间对齐难题，对噪声/相位差更鲁棒
 - **可迁人形**：方法不限四足，「少量本体数据 + 分布匹配」范式可推广到人形 sim-to-real 校准
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["在名义仿真器 M(θ0) 中用 RL 训练策略 π0"]
+    B["在真机上执行 π0：采集本体感知轨迹 D_hw（仅关节观测与动作，无需动捕、无需时间对齐）"]
+    C["在仿真器中执行 π0：采集 D_sim = D(π0, θ)"]
+    A --> B
+    A --> C
+    subgraph COST["分布匹配代价 C_S2R"]
+        F["特征：关节位置 / 关节速度 / 策略动作，按真机统计量归一化到 [-1, 1]"]
+        W["逐维 1D Wasserstein 距离取平均，三类特征求和"]
+        F --> W
+    end
+    B --> F
+    C --> F
+    subgraph MOD["可调的仿真器修改（三选一）"]
+        M1["静态仿真参数（摩擦、armature 等）"]
+        M2["Action-Delta 模型：策略频率下的残差动作目标"]
+        M3["Residual Actuator 模型：仿真频率下的残差力矩"]
+    end
+    W --> OPT["CMA-ES 黑盒优化：调整 θ 以最小化 C_S2R"]
+    MOD -.->|"被优化的参数"| OPT
+    OPT -->|"更新后的仿真器 θ1"| RT["在适配后的仿真器中重训策略，得到 π1"]
+    RT -.->|"可迭代：重新采集轨迹"| B
+```
+
+图依据：论文 §III（问题设定与迭代流程）、§IV-A（Wasserstein 代价）、§IV-B（三类仿真器修改）、§IV-C（CMA-ES 优化）
+
 ## 解决什么问题
 
 - **现象**：仿真训练的腿足策略在硬件上常**性能下降**，因为仿真与真实**动力学不一致**（摩擦、电机、延迟等）。 - **两条路线**：① 改**策略**（域随机化让策略变鲁棒 / 在线适配）；② 改**仿真器**（系统辨识让仿真更准）。本文走**第二条**：校准仿真器后，标准 RL 训出的策略可直接迁移。 - **传统系统辨识的痛点**：多数方法靠**逐时刻轨迹对齐**来比较仿真与真机，需要**精确时间对齐**和**特权/外部传感（动捕等）**，工程上昂贵且脆弱。
@@ -92,6 +121,7 @@ summary: "仿真训出来的腿足策略一上真机就掉点，根源是仿真�
 - [humanoid_pnb_simulator-adaptation-via-proprioceptive-distribu.md](../../sources/papers/humanoid_pnb_simulator-adaptation-via-proprioceptive-distribu.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching.html>
 - 论文：<https://arxiv.org/abs/2604.11090>
+- [arXiv PDF](https://arxiv.org/pdf/2604.11090)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 分布式 sim-to-real 方法（A 代价函数、B 仿真器修改、C 优化）
 
 ## 推荐继续阅读
 

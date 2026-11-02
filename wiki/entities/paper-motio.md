@@ -32,6 +32,30 @@ sources:
 
 智能体将人类动作视频、度量三维资产、运动参考及可复用技能组合成分阶段机器人程序，利用物理执行反馈与人类验证迭代，无需任务专用遥操作示范。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage I：Agentic 3D（§3.1）"]
+        SP["产品或场景的自然语言规格 + 尺寸与参考资料"] --> BL["Blender / FreeCAD 构建度量资产<br/>尺度、结构、关节、接触点"]
+        BL --> HR["人工资产评审"]
+    end
+    subgraph S2["Stage II：Agentic Skill Engineering（§3.2）"]
+        CTX["上下文：任务目标、人类动作视频、评审后资产、动作参考、G1/Revo2 技能说明、先前程序"] --> AG["Agent 推理阶段与接触，写出机器人坐标系目标与事件驱动的阶段切换"]
+        AG --> PR["机器人程序：身体与手部参考"]
+    end
+    HR --> CTX
+    PR --> MJ["MuJoCo 执行（§3.3）：检查机器人与物体状态 + 多帧 contact sheet"]
+    MJ --> RV["修订目标、阶段时序、接触逻辑或控制参考"]
+    RV --> AG
+    MJ --> HV["人工验证：任务意图与动作质量，批准可复用技能版本"]
+    HV --> SL["技能库"]
+    SL --> G1["部署（§3.4）：冻结 ScaleBFM 全身跟踪 + 任务级 IK + Revo2 手指时序<br/>MuJoCo 验证后上物理 G1"]
+    SL --> DG["可选：专家参考供 BC/DAgger 学生蒸馏为共享参考策略"]
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / §3.4 / Fig.2
+
 ## 方法与核心原理
 
 智能体将人类动作视频、度量三维资产、运动参考及可复用技能组合成分阶段机器人程序，利用物理执行反馈与人类验证迭代，无需任务专用遥操作示范。
@@ -73,6 +97,7 @@ sources:
 
 - [来源归档](../../sources/papers/motio.md)
 - [来源归档](../../sources/sites/motio.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33446)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Agentic Skill Engineering（3.1–3.4）、Fig.2
 
 ## 推荐继续阅读
 

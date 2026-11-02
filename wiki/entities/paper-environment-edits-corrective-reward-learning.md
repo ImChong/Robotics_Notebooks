@@ -20,7 +20,7 @@ summary: "环境编辑奖励学习：将环境编辑作为奖励学习的纠正�
 
 # 环境编辑奖励学习：将环境编辑作为奖励学习的纠正信号
 
-**环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https://arxiv.org/abs/2610.35659)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https://arxiv.org/abs/2610.35659)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,28 @@ summary: "环境编辑奖励学习：将环境编辑作为奖励学习的纠正�
 ## 为什么重要
 
 - 周报所述待解决的问题：人类通过纠正机器人动作表达偏好时，一次动作变化可能同时改变多个状态特征，难以确定用户真正关注的因素。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["人类在 XR 中提供特征轨迹<br/>(feature traces)"] --> B{"轨迹类型"}
+  B -->|"机器人纠正"| C["移动机器人<br/>从高特征表达到低表达"]
+  B -->|"环境编辑"| D["机器人运动固定回放<br/>人移动或修改场景物体"]
+  A -.-> N["no preference 轨迹<br/>(§4.4 要求各状态特征值相等)"]
+  C --> E["状态表示:<br/>机器人状态 + 物体位置/类型/属性"]
+  D --> E
+  N --> E
+  E --> F["Relational 模型:<br/>末端-物体关系向量 r_o(x)"]
+  E --> G["Graph / SoftGraph 模型:<br/>场景图 + 消息传递"]
+  F --> H["共享三层 MLP g_θ 逐关系打分<br/>softmax 池化 + softplus + min/max 缩放"]
+  G --> I["末端节点嵌入 → MLP<br/>softplus + min/max 缩放"]
+  H --> J["学得特征 φ_θ(x)"]
+  I --> J
+  J --> K["FERL 式 Bradley-Terry 轨迹损失<br/>沿轨迹特征单调下降"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.1；§4.4（no preference 轨迹）
 
 ## 核心机制
 
@@ -87,6 +109,7 @@ summary: "环境编辑奖励学习：将环境编辑作为奖励学习的纠正�
 - [environment-edits-corrective-reward-learning_arxiv_2610_35659.md](../../sources/papers/environment-edits-corrective-reward-learning_arxiv_2610_35659.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35659](https://arxiv.org/abs/2610.35659)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35659)：已通读方法部分（实验与附录以略读为准）：§1–§5（含 3.1 XR 采集、3.2 Relational/Graph/SoftGraph 模型、4 实验设定）
 
 ## 推荐继续阅读
 

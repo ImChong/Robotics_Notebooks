@@ -42,6 +42,21 @@ A benchmark that explicitly considers human behavior by leveraging human attenti
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["带注视轨迹的第一视角视频<br/>(Aria Everyday Activities / Nymeria)"] --> B["Step 1 视频流摘要与聚类<br/>ResNet-50 特征 + k-means + 时间平滑, 生成动作摘要"]
+    B --> C["Step 2 注视导向目标采样<br/>VLM 检测物体 + CLIP ReID 去重<br/>按到注视点距离的高斯概率采样 Target Object"]
+    C --> D["Step 3 问题生成<br/>Synthesizer Agent 起草 MCQ (可调用 GetFrame / GetSegment)"]
+    D --> E["Validator Agent 审核反馈<br/>最多两轮, 未通过则丢弃"]
+    E --> F["规则过滤 + 人工审核"]
+    F --> G["LLM 盲测过滤<br/>(无视频也能答对的题被剔除)"]
+    G --> H["EgoEverything 基准: 5000+ 选择题, 100+ 小时视频"]
+```
+
+图依据：论文 §3.2–§3.4 / Fig.3（EgoEverything 的基准构建流水线，非模型方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ A benchmark that explicitly considers human behavior by leveraging human attenti
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.08342>
+- [arXiv PDF](https://arxiv.org/pdf/2604.08342)：已通读方法部分（实验与附录以略读为准）：§1–§3（3.2 视频流摘要与聚类、3.3 注视导向目标采样、3.4 问题生成与人工整理）、§4 评测设定开头
 
 ## 推荐继续阅读
 
