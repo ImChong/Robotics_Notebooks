@@ -42,6 +42,27 @@ An egocentric world model that generates realistic human-object interactions as 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["输入图像 I"] --> ENC["预训练 VAE 编码器 E<br/>得到无噪声图像潜变量 x^I"]
+    TXT["文本描述 y（umT5 编码）"] --> DIT
+    CAM["相机外参 ζ + 内参 K"] --> RAY["Plücker 射线图 + 轻量相机适配器 C<br/>得到相机特征 z"]
+    ACT["逐帧 3D 人体/手部关键点 P_i"] --> PROJ["投影到图像平面并栅格化<br/>去除视锥外关键点，得 2D 动作图 Â"]
+    PROJ --> AENC["VAE 编码得动作潜变量 a"]
+    RAY --> CAT
+    ENC --> CAT["沿时间维拼接<br/>[x^I, x+z, a]"]
+    AENC --> CAT
+    CAT --> DIT["Wan2.1-VACE-14B<br/>冻结 DiT，仅对 VACE 模块 LoRA 微调<br/>视频与动作潜变量联合去噪（flow matching）"]
+    DIT --> GUIDE["修改后的 Inner Guidance 采样<br/>权重 w1、w2"]
+    GUIDE --> DROP["丢弃首帧 x^I 与后半段动作潜变量"]
+    DROP --> DEC["VAE 解码器 D"]
+    DEC --> VID["生成的第一人称人-物操作视频"]
+```
+
+图依据：论文 §3.2（Model Design）、§4.1 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ An egocentric world model that generates realistic human-object interactions as 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.27449>
+- [arXiv PDF](https://arxiv.org/pdf/2603.27449)：已通读方法部分（实验与附录以略读为准）：§1、§3（Preliminary、Model Design：Action Maps、Joint Action-Environment Modeling、Modified Guidance）、§4.1 实现细节；§4.2 起实验仅略读
 
 ## 推荐继续阅读
 

@@ -43,6 +43,38 @@ Energy-based joint-embedding predictive architectures.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IMG["(a) Image-JEPA"]
+        X["图像 x"] --> V["随机裁剪 / 颜色抖动<br/>得到两个视图 x, x'"]
+        V --> E1["编码器 f_θ → z, z'"]
+        E1 --> L1["视图不变损失 ‖z−z'‖² + λR"]
+    end
+    subgraph VID["(b) Video-JEPA"]
+        XT["视频帧 x_1:T"] --> E2["编码器 f_θ → z_t"]
+        E2 --> P2["预测器 g_φ<br/>由 z_t-v:t 预测 z_t+1"]
+        P2 --> L2["Lpred + λR<br/>（k 步递归 rollout 损失）"]
+    end
+    subgraph AC["(c) 动作条件 Video-JEPA（世界模型）"]
+        XA["观测 x_t"] --> E3["编码器 f_θ → z_t"]
+        AT["动作 a_t"] --> Q["动作编码器 q_ω → u_t"]
+        E3 --> P3["预测器 g_φ(z, u) → z_t+1"]
+        Q --> P3
+        P3 --> L3["Lpred + VICReg 项 + Lsim + L_IDM"]
+    end
+    R["防塌缩正则 R：VICReg 或 SIGReg<br/>（作用于投影空间）"] -.-> L1
+    R -.-> L2
+    R -.-> L3
+    L3 --> W["训练好的潜空间动力学模型"]
+    W --> PL["(d) 目标条件规划<br/>MPPI 优化动作序列 a_0:H"]
+    G["目标观测 x_g → f_θ → z_g"] --> PL
+    PL --> OUT["在潜空间 rollout，最小化到 z_g 的累计距离<br/>（Eplan）"]
+```
+
+图依据：论文 §3（统一 JEPA 框架，式 1-5、13）、§4（多步 rollout 训练与目标条件规划，式 9-14）、Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +130,7 @@ Energy-based joint-embedding predictive architectures.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.03604>
+- [arXiv PDF](https://arxiv.org/pdf/2602.03604)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Preliminaries、§4 Training and Planning with World Models、§5 实验设定。
 
 ## 推荐继续阅读
 

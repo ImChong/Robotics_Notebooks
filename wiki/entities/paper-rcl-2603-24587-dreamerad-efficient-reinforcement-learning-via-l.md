@@ -42,6 +42,22 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  H["历史观测 + 历史轨迹"] --> BASE["策略生成基线轨迹 τ_act"]
+  VOC["轨迹词表 Γ\n按人类轨迹终点过滤，K=256"] --> VS["词表采样\nsoftmax 采样 g1 条 + 高斯邻域采样 g2 条\n得到 G 条候选轨迹"]
+  BASE --> VS
+  VS --> ROLL["SF-WM 潜空间 rollout\nShortcut Forcing，1-4 步采样"]
+  ROLL --> RM["AD-RM 自回归逐步奖励\n8 项驾驶指标"]
+  RM --> AGG["时间加权聚合 r_final\n安全项 log-sigmoid + 任务项 log"]
+  AGG --> ADV["组内归一化优势 A_i"]
+  ADV --> GRPO["GRPO 更新策略\n+ BC 损失 + KL 正则"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.24587>
+- [arXiv PDF](https://arxiv.org/pdf/2603.24587)：已通读方法部分（实验与附录以略读为准）：Abstract、§1（部分）、§3 方法（3.1–3.3）、§4.1–4.2 实验设定
 
 ## 推荐继续阅读
 

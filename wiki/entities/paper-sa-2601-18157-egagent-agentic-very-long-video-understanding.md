@@ -42,6 +42,32 @@ An agent-based reasoning framework based on entity scene graphs, capable of proc
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["超长视频 (1 FPS 采样帧)"] --> VLM["VLM 生成场景描述与地点"]
+    AUD["音频转写 (带时间戳)"] --> DOC["文本文档集 D：转写 + 场景描述 + 预测地点"]
+    VLM --> DOC
+    DOC --> EX["LLM 抽取器 F：逐文档抽取实体与关系<br/>节点类型 person / object / location<br/>关系 talks-to / interacts-with / mentions / uses + (t_start, t_end)"]
+    EX --> EG["Entity Graph (SQLite 元组表)"]
+    V --> VE["帧嵌入 + 时间 / 地点属性 (SQLite)"]
+    Q["用户查询 Q"] --> PA["Planning Agent<br/>分解为子任务 (S_i, T_i, q_i)，维护 working memory M"]
+    PA --> VS["Visual Search Tool<br/>余弦相似度 kNN"]
+    PA --> AS["Audio Transcript Search Tool<br/>LLM 检索或 BM25"]
+    PA --> GS["Entity Graph Search Tool<br/>SQL 查询，strict-to-relaxed 放宽策略"]
+    VE --> VS
+    EG --> GS
+    VS --> AN["Analyzer Tool：相关性判断 / 证据抽取 / 去重"]
+    AS --> AN
+    GS --> AN
+    AN --> M["更新 working memory M"]
+    M -->|"逐个子任务循环"| PA
+    M --> VQA["VQA Agent (多模态 LLM)：基于 Q 与 M 生成最终答案 A"]
+```
+
+图依据：论文 §3.2–3.3 / Fig. 2、Fig. 3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ An agent-based reasoning framework based on entity scene graphs, capable of proc
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.18157>
+- [arXiv PDF](https://arxiv.org/pdf/2601.18157)：已通读方法部分（实验与附录以略读为准）：§3 方法（任务设定、Entity Graph 构建、EGAgent 框架）及 §4.1–4.2 评测与实现设定；§4 其余实验与附录仅略读
 
 ## 推荐继续阅读
 

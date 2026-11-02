@@ -42,6 +42,26 @@ Finds that robots can forecast human movement efficiently by watching their legs
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["机器人第一视角感知（360° 相机）"] --> B["多智能体历史轨迹 X（过去 6 步 / 2 s，3 Hz）"]
+  A --> C["骨架关键点 K（3D 33 点 或 2D COCO 17 点）"]
+  C --> D["按配置 s 选子集：全身 / 下半身 / 上半身"]
+  D --> E["派生生物力学线索 C：腿/臂关节角、步长、头朝向"]
+  D --> F["关键点 MLP 编码"]
+  E --> G["线索 MLP 编码"]
+  B --> H["与轨迹特征融合"]
+  F --> H
+  G --> H
+  H --> I["HST 全自注意力（跨智能体与时间步）"]
+  I --> J["预测未来 12 步 / 4 s，6 个模式"]
+  J --> K["指标：minADE / minFDE / MLADE / NLLpos"]
+```
+
+/tmp/x_31/2.b
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Finds that robots can forecast human movement efficiently by watching their legs
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.09076>
+- [arXiv PDF](https://arxiv.org/pdf/2602.09076)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法论（问题设定、数据集、实现细节）、§IV 评测指标部分
 
 ## 推荐继续阅读
 

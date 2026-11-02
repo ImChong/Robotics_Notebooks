@@ -42,6 +42,22 @@ Shows how inductive biases guide transformers to learn world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["行星轨迹 (x, y)，Δt 采样，自回归预测下一位置"] --> B["基线（Vafa et al. 2025）：坐标分箱 tokenization + 交叉熵 NTP"]
+  B --> C["失败：随机初始化 token 嵌入，空间地图弱、不平滑"]
+  C --> D["偏置 1 空间平滑：连续坐标 + 回归（MSE）"]
+  D --> E["新问题：回归自回归误差累积、发散"]
+  E --> F["偏置 2 空间稳定：训练时给历史输入加高斯噪声（noisy context learning）"]
+  F --> G["偏置 3 时间局部：改变上下文长度"]
+  G -->|"上下文很短（如 2）"| H["学到 Newtonian 世界模型：线性探针可读出力 F、Fx、Fy"]
+  G -->|"上下文很长（如 100）"| I["学到 Keplerian 世界模型：线性探针可读出椭圆参数 a、b、LRL 向量"]
+```
+
+/tmp/x_31/3.b
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Shows how inductive biases guide transformers to learn world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.06923>
+- [arXiv PDF](https://arxiv.org/pdf/2602.06923)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 偏置 1、§3 偏置 2、§4 偏置 3（含 Fig. 1、4–6 与相关正文）
 
 ## 推荐继续阅读
 

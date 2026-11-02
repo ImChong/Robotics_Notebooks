@@ -33,6 +33,31 @@ EgoActor 把"高层语言指令 → 低层人形动作"的落地过程统一成�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["高层任务指令 I<br/>（如 Approach and pick up the orange）"] --> M
+    O["第一视角 RGB 观测历史<br/>（10 帧历史 240p + 最近 3 个观测-动作对 480p）"] --> M
+    H["历史动作 a1:t-1"] --> M
+    M["EgoActor：Qwen3-VL 4B / 8B<br/>LoRA 微调，预测下一动作 a_t"] --> A{"动作类型"}
+    A --> S["结构化语言动作 SLA<br/>移动 / 姿态 / 头部朝向（Turn left 30.5 degrees）"]
+    A --> N["自然语言动作 NLA<br/>操作 / 人机交互 / Stop and no action"]
+    S --> P["动作解析器：提取参数"]
+    P --> V["速度 / 角度指令 → 机器人全身控制"]
+    N --> K{"关键词路由"}
+    K -->|"Speak / Ask 等"| T["TTS 语音输出"]
+    K -->|"Say Hi / Shake Hands 等"| R["预设动作"]
+    K -->|"其余"| VLA["转发预训练 VLA 执行操作"]
+    V --> E["执行后获得新观测 O"]
+    R --> E
+    VLA --> E
+    T --> E
+    E -.-> O
+```
+
+图依据：论文 §III-A/B（任务定义、SLA/NLA 与 Action Parsing）、§IV-A/B（模型与数据格式）、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +90,7 @@ EgoActor 把"高层语言指令 → 低层人形动作"的落地过程统一成�
 - [humanoid_pnb_egoactor.md](../../sources/papers/humanoid_pnb_egoactor.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum.html>
 - 论文：<https://arxiv.org/abs/2602.04515>
+- [arXiv PDF](https://arxiv.org/pdf/2602.04515)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III Framework Design、§IV Training Recipe。
 
 ## 推荐继续阅读
 

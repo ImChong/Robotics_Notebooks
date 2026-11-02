@@ -42,6 +42,34 @@ Extends interactive world models to 1000‑frame horizons through pose‑free hi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["训练数据策略（§3.3）"]
+        PT["阶段1 开放域预训练<br/>网络采集的短视频，学视觉先验与局部动力学"] --> FT["阶段2 Revisit-Dense Dataset 微调<br/>自采、重访密集的长视频，激活空间记忆"]
+    end
+    V["真实视频序列"] --> PE["VGGT 估计相邻帧相机位姿变化 ΔP"]
+    PE --> DEC["解耦为平移幅度 / 旋转幅度"]
+    DEC --> TRI["三态标注（阈值 τ1, τ2）：<br/>No-operation / Discrete Action / Uncertain"]
+    TRI --> AE["Action Encoder<br/>两层 stride-2 1D 卷积，4× 下采样 → e_act"]
+    V --> VAE["VAE 编码历史帧 → 历史潜变量 z_1:L"]
+    VAE --> HP{"上下文长度 L ≤ k·T_max ?"}
+    HP -->|"是：直接压缩"| F1["时间编码器 f_φ（k=4）→ z_com"]
+    HP -->|"否：层次压缩"| LC["滑窗切成重叠 chunk<br/>每个 chunk 局部压缩"]
+    LC --> GC["拼接后再经 f_φ 全局压缩 → z_com"]
+    F1 --> CAT["拼接：z_com + 末帧潜变量 z_loc + 加噪目标 z_t + 掩码 m"]
+    GC --> CAT
+    CAT --> ADD["逐元素加上 e_act"]
+    AE --> ADD
+    ADD --> DIT["DiT 块（Self-Attn / Cross-Attn / FFN）× n"]
+    DIT --> OUT["预测目标视频潜变量 → 生成视频"]
+    DIT -.->|"生成损失端到端联合优化 f_φ，无需位姿元数据"| F1
+    FT -.-> DIT
+```
+
+图依据：论文 §3.1-3.3（HPMC、不确定性感知动作标注、重访密集微调）、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Extends interactive world models to 1000‑frame horizons through pose‑free hi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.02393>
+- [arXiv PDF](https://arxiv.org/pdf/2602.02393)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Methodology（3.1-3.3）。
 
 ## 推荐继续阅读
 

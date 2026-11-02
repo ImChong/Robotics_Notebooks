@@ -43,6 +43,23 @@ Preliminary exploration of micro-world simulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Y["YouTube API 检索：≥720p 且 CC 授权，共 12,848 个视频"] --> SP["OpenCLIP 相邻帧相似度 < 0.85 处切分，得 67,853 个片段"]
+    SP --> CL["VideoMAE 分类器过滤非微观模拟片段"]
+    CL --> AF["OpenCV 去黑边 + EasyOCR 去字幕，剩 12,194 个"]
+    AF --> EX["专家审核：剔除无意义或物理不一致片段，剩 9,601 个"]
+    EX --> CP["GPT-4o 生成 caption：均匀采样 8 帧 + 视频标题与描述"]
+    CP --> DS["MicroSim-10K 数据集"]
+    DS --> FT["全参数微调 Wan2.1-T2V-1.3B，得 MicroVerse"]
+    FT --> BN["MicroWorldBench 评测：任务指令 + 专家修订 rubric，GPT-5 作 LLM 评审"]
+    RD["GPT-5 生成 rubric 草稿 → 专家删改并调权重"] --> BN
+```
+
+图依据：论文 §2.3、§3.1、§4、附录 A / Fig.2、Fig.3、Fig.7（各阶段片段数取自 Fig.3 与 §3.1 正文）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Preliminary exploration of micro-world simulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.00585>
+- [arXiv PDF](https://arxiv.org/pdf/2603.00585)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 MicroWorldBench（2.3 rubric 构建、2.4 评测设置）、§3.1 数据构建、§4 实验设定、附录 A 数据过滤流程
 
 ## 推荐继续阅读
 

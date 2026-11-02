@@ -42,6 +42,32 @@ Generates realistic bare-hand HOI videos from multi-modal sensing glove data, ac
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph TR["训练"]
+    direction LR
+    A1["裸手视频 + 手部姿态 P"] --> A2["3D Gaussian 手模型\n渲染 hand-only 帧"]
+    A2 --> A3["叠加到原视频\n并遮蔽腕部区域"]
+    A3 --> A4["编码为潜变量，作为条件"]
+    A4 --> A5["Diffusion hand restorer\nControlNet + AnimateDiff\n恢复原始裸手视频"]
+  end
+  subgraph INF["推理"]
+    direction LR
+    B1["手套视频 + 手套姿态 P"] --> B2["Grounding DINO + SAM-2\n提取手套 / 物体掩码"]
+    B2 --> B3["Propainter 光流修复\n擦除手套区域，保留物体像素"]
+    B1 --> B4["3D Gaussian 手模型\n渲染 hand-only 帧"]
+    B3 --> B5["粘贴渲染手"]
+    B4 --> B5
+    B5 --> B6["Diffusion hand restorer"]
+    B6 --> B7["逼真裸手视频"]
+  end
+  B7 -.->|"用于构建"| DS["HandSense 数据集\n同步触觉 + IMU"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Generates realistic bare-hand HOI videos from multi-modal sensing glove data, ac
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.20850>
+- [arXiv PDF](https://arxiv.org/pdf/2603.20850)：已通读方法部分（实验与附录以略读为准）：Abstract、§1、§3 方法（3.1–3.2）、Fig.2–3 图注
 
 ## 推荐继续阅读
 

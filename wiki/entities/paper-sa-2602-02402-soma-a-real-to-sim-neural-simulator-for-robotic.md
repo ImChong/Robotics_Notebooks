@@ -42,6 +42,31 @@ Improves resimulation accuracy and generalization on real-world robot manipulati
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：三相机同步多视角 RGB 视频<br/>+ 机器人关节状态 R_t"] --> REC["重建：多视角几何估计相机位姿<br/>→ Gaussian Splatting 得到初始 G_0"]
+    REC --> MAP["R2S 映射（§4.2.1）<br/>尺度 s 与刚体变换 (R, t) 对齐机器人/相机/世界坐标<br/>桌面平面拟合 → 重力方向"]
+    IN --> FK["关节 q_t → 正运动学得末端位姿<br/>+ 夹爪开合 c_t → 机器人动作"]
+    MAP --> FK
+    REC --> HG["层次图：splat 逐级聚类成 cluster 节点"]
+    FK --> RF["机器人力：控制点与 GS 节点的交互图<br/>图神经交互模块 Φ_θ"]
+    HG --> EF["环境力：重力 + 靠近桌面的支撑力"]
+    RF --> SUM["总作用力 f = f_env + f_rob"]
+    EF --> SUM
+    SUM --> DYN["力驱动层次动力学 ψ_θ<br/>由 G_t-1, G_t-2 与 f 预测速度/旋转<br/>自顶向下传播到 splat"]
+    DYN --> GT["下一状态 G_t"]
+    GT --> RND["渲染 Î_t,i"]
+    RND --> LOSS["混合监督：掩码图像损失 L_img<br/>+ 层级质量守恒正则 L_mom"]
+    OBS["真实图像 I_t,i + 物体掩码"] --> LOSS
+    LOSS -.-> DYN
+    TRAIN["两阶段多分辨率训练<br/>阶段1 大帧间隔 k 学全局运动<br/>阶段2 间隔 1 学细节（子序列长 n·k）"] -.-> DYN
+    GT -.->|"自回归：作为下一步输入"| DYN
+```
+
+图依据：论文 §3（层次图模拟器）、§4.1-4.2（问题定义与 SoMA 框架，式 4-13）、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Improves resimulation accuracy and generalization on real-world robot manipulati
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2602.02402>
+- [arXiv PDF](https://arxiv.org/pdf/2602.02402)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Preliminaries、§4 Method（4.1-4.2.4）。
 
 ## 推荐继续阅读
 

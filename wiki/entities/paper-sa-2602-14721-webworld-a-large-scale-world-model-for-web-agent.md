@@ -42,6 +42,33 @@ Built from over one million real web interactions; outperforms GPT-5 as a world 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据构建（分层采集）"]
+        A["目标 URL：FineWeb / CCI 3.0 等预训练语料 + 高流量网站清单"] --> B["URL 过滤：可达性、关键词、LLM 四维评分"]
+        B --> C1["Level 1 随机爬取<br/>从 A11y Tree 随机采样动作，3-10 步"]
+        B --> C2["Level 2 LLM 智能体自主探索<br/>最长 30 步"]
+        B --> C3["Level 3 任务导向执行<br/>种子任务 → 多样化 → 改写，只保留成功轨迹"]
+        C1 --> D["轨迹规则过滤<br/>剔除无状态变化、超 30k token 或 30 轮"]
+        C2 --> D
+        C3 --> D
+        D --> E["数据增强：多格式状态转换（HTML、XML、Markdown 等）、网页生成、描述式模拟、通用数据"]
+    end
+    subgraph TRAIN["两阶段训练"]
+        F["阶段 1：全量数据最大似然训练<br/>P(s_t+1 | 指令 I, 历史 h_t)"] --> G["阶段 2：少量 CoT 数据继续训练<br/>激活推理"]
+    end
+    E --> F
+    G --> W["WebWorld 世界模型（8B / 14B / 32B）"]
+    subgraph USE["下游使用"]
+        W --> H["Abstract-and-Instantiate 合成 8000 条轨迹<br/>→ 拒绝采样 → 微调 Qwen3-8B 智能体"]
+        W --> I["推理期 lookahead 搜索<br/>候选动作 → WebWorld 模拟下一状态 → 价值模型打分 → 执行最高分动作"]
+    end
+```
+
+图依据：论文 §3.1–3.5、§5.1–5.2 / Fig.1c
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Built from over one million real web interactions; outperforms GPT-5 as a world 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.14721>
+- [arXiv PDF](https://arxiv.org/pdf/2602.14721)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 Training WebWorld（3.1–3.6）、§5.1–5.2 的下游使用描述；其余实验与附录略读
 
 ## 推荐继续阅读
 

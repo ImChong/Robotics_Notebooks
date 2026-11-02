@@ -42,6 +42,37 @@ A curriculum-based framework for learning task-oriented spatiotemporal reasoning
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["EgoTSR-Data：CoT 子集 + Tag 子集 + LongTag 子集（每个样本含两帧 Ia, Ib、任务指令、完成度更接近的标签 y）"]
+    subgraph CUR["三阶段 Curriculum Learning（同一 VLM 依次训练）"]
+        S1["阶段 1 知识引导：CoT 数据，先生成空间推理路径再给结论"]
+        S2["阶段 2 能力内化：Tag 数据，抑制显式推理，直接输出判断"]
+        S3["阶段 3 泛化巩固：LongTag 数据，以子任务序列 S 作为条件"]
+        S1 --> S2 --> S3
+    end
+    DATA --> S1
+    DATA --> S2
+    DATA --> S3
+    subgraph DEC["Reasoning-Enhanced Task Decomposition"]
+        PLAN["Subtask Planner：由初始场景 I0 与任务指令生成逻辑骨架 S（正交原子子任务序列）"]
+    end
+    PLAN -->|"训练时给出 S 的标注，推理时自行生成"| S3
+    subgraph EVAL["Dual-Level Evaluation Framework"]
+        L1["Level 1 原子感知 T_short：不同帧间隔的短程两帧比较"]
+        L2["Level 2 规划一致性 T_long：依据子任务骨架做同任务内 / 相邻 / 跨多子任务比较"]
+        BI["双向评测：前向 (Ia, Ib) 与反向 (Ib, Ia)，衡量时间顺序偏置"]
+    end
+    S3 --> L1
+    S3 --> L2
+    L1 --> BI
+    L2 --> BI
+```
+
+图依据：论文 Fig.1 / Fig.2、§3.1（数据与课程学习）、§3.2（任务分解）、§3.3（双层评测）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ A curriculum-based framework for learning task-oriented spatiotemporal reasoning
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.10517>
+- [arXiv PDF](https://arxiv.org/pdf/2604.10517)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1 数据集与课程学习、3.2 任务分解、3.3 双层评测框架）
 
 ## 推荐继续阅读
 

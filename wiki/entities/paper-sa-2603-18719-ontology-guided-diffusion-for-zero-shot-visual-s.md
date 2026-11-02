@@ -42,6 +42,25 @@ Ontology-guided diffusion for zero-shot visual sim-to-real transfer
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["合成图像 x_s"] --> B["冻结 CLIP 提取全局特征 h"]
+    R["目标真实感<br/>参考真实图像 x_t 或显式 trait 配置"] --> B
+    B --> C["监督 MLP 头逐项预测 realism trait 概率<br/>（训练标签由 VLM 伪标注，推理不用 VLM）"]
+    C --> D["固定的 realism 知识图谱<br/>GraphSAGE GNN 得到图嵌入 G"]
+    C --> E["阈值二值化：源 b_s 与目标 b_t"]
+    E --> F["自动生成 PDDL 问题<br/>Fast Downward 规划 trait 变换序列"]
+    F --> H["PDDL 动作转为有序文本编辑提示"]
+    H --> I["扩散模型：文本编码器条件"]
+    D --> I
+    A --> I
+    I --> J["sim2real 编辑图像 x̂<br/>训练含 realism alignment loss"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2（x_s 作为扩散输入图像的连线为按“图像编辑”描述的推断）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Ontology-guided diffusion for zero-shot visual sim-to-real transfer
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2603.18719>
+- [arXiv PDF](https://arxiv.org/pdf/2603.18719)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 trait 表示、3.2 知识图谱与 GNN、3.3 符号规划、3.4 扩散模型）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,29 @@ Studies egocentric interaction generation from a single scene image under free-s
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["参考场景图 I_scene"] --> L["Scene Latent（VAE 编码）"]
+  V["单目第一视角视频（训练期）"] --> D["YOLO 手检测 + HaMeR 估计 MANO"]
+  V --> C["相机轨迹估计（相对首帧归一化）"]
+  D --> M["3D 手网格 → 投影渲染 S_t（轮廓 + 线框）"]
+  C --> P["Plücker 射线嵌入 P_t"]
+  M --> H["Hand Latent（VAE 编码）"]
+  L --> CC["与 Noise Latent 通道拼接 z_in"]
+  H --> CC
+  CC --> T["Wan2.1-1.3B-Control 流匹配视频 DiT"]
+  P --> AD["Camera Adapter"]
+  AD -->|"逐元素相加到 patch 嵌入"| T
+  T --> TE["双向扩散 Teacher（Hand2World）"]
+  TE --> DIST["蒸馏：ODE 预训练 + DMD + Self-Forcing"]
+  DIST --> ST["因果自回归 Student（Hand2World-AR）"]
+  ST --> OUT["分块 KV 缓存推理，任意长度视频"]
+```
+
+/tmp/x_31/1.b
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Studies egocentric interaction generation from a single scene image under free-s
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.09600>
+- [arXiv PDF](https://arxiv.org/pdf/2602.09600)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.7）、§4.1 实验设定
 
 ## 推荐继续阅读
 

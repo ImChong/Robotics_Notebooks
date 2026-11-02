@@ -42,6 +42,25 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Unity + ObiCloth 仿真<br/>Franka 抓取一角固定悬垂的布料<br/>随机化颜色、纹理、尺寸、位姿"] --> B["双相机深度图<br/>外部 stand-off 相机 + 腕部相机"]
+    B --> C["深度图 → 表面法向图<br/>Sobel 滤波，输出 64x64x3"]
+    C --> D["观测 = 两幅法向图 + 向量<br/>夹爪 XYZ、开合宽度、布料是否绷紧"]
+    E["示教 episode 预载入 replay buffer<br/>启发式脚本采集，替代纯随机探索"] --> F["Replay buffer<br/>对整个采样图像栈做一致的随机增广"]
+    D --> G["DreamerV2 世界模型<br/>预测未来状态与奖励"]
+    F --> G
+    G --> H["Actor-Critic 在潜空间想象中学习"]
+    H --> I["动作：末端 XYZ 位移 + 夹爪开合"]
+    I --> J["环境反馈：奖励 = 归一化布料表面积 - 时间惩罚"]
+    J --> F
+    H --> K["零样本 sim-to-real 部署<br/>真机同一深度到法向图流程"]
+```
+
+图依据：论文 §III-A/B（含 Fig.1、Fig.2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2602.16675>
+- [arXiv PDF](https://arxiv.org/pdf/2602.16675)：已通读方法部分（实验与附录以略读为准）：§I–II 引言与相关工作、§III Methodology（A、B）、§IV 仿真基准设定；Fig.2
 
 ## 推荐继续阅读
 
