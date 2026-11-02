@@ -37,6 +37,36 @@ sources:
 - 离散动作 token 便于规划器/语言模块组织连续轨迹。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#20/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["动作片段 M（位姿序列）"] --> E["编码器 E：1D 卷积下采样 → 潜向量 V"]
+    E --> RVQ["残差 VQ：VQ-VAE 码本 + 多层 RVQ 码本<br/>得到量化码 Z 与索引 I"]
+    RVQ --> DEC
+    subgraph DEC["解码器 D"]
+        DC["1D 反卷积上采样 → 中间码 u(t)"] --> PI["控制策略 π(s(t), u(t)) → 动作 a(t)<br/>(MoE，输出 PD 目标关节角)"]
+        PI --> SIM["物理仿真 Sim → 下一状态 s(t+1)"]
+        SIM -->|"自回归"| PI
+    end
+    DEC --> REC["重建运动"]
+    subgraph TRAIN["训练（仿真视为黑盒，不可微）"]
+        WM["世界模型 W 近似 Sim<br/>(Lw：仿真序列 vs 世界模型序列)"]
+        LOSS["更新 E、码本、π：重建 + commitment + VQ + 动作正则 Lreg<br/>(经 W 反传)"]
+        WM <-->|"交替更新"| LOSS
+    end
+    subgraph APP["下游任务"]
+        T1["通用跟踪控制：E → 量化 → D"]
+        T2["交互控制：高层策略（如转向）输出潜码 → D"]
+        T3["MoConGPT：Transformer 预测索引 p(Ik | I&lt;k) → D"]
+        T4["LLM 上下文学习：文本-索引示例 → 生成索引序列 → D"]
+    end
+    REC -.-> TRAIN
+    DEC --> APP
+```
+
+图依据：论文 §3.1–3.4（Fig.2）、§4.1–4.4（Fig.4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +120,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/pdf/2310.10198>
+- [arXiv PDF](https://arxiv.org/pdf/2310.10198)：已通读方法部分（实验与附录以略读为准）：§3 离散运动表示（3.1–3.4）、§4 应用与任务（4.1–4.4）
 
 ## 推荐继续阅读
 

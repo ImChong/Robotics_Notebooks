@@ -31,7 +31,34 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，并在「流程总览」给出据论文方法部分整理的预测控制与 Predictive Sampling 流程，不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph AG["Agent（重复）"]
+        A1["从名义计划 Π 读取当前动作 u"]
+        A2["施加到被控系统"]
+        A1 --> A2
+    end
+    subgraph PL["Planner（异步重复）"]
+        P1["测量当前状态 x"]
+        P2["以名义计划 Π(θ) 热启动<br/>优化有限时域目标 J"]
+        P3["更新 Π"]
+        P1 --> P2 --> P3
+    end
+    subgraph PS["Predictive Sampling 一次迭代（Algorithm 4）"]
+        S1["采样 N-1 组样条参数 θ_i ~ N(θ, σ²)<br/>并将动作限幅到控制范围"]
+        S2["连同名义 θ 共 N 组<br/>从 x 并行 rollout"]
+        S3["取总回报最优者<br/>θ ← argmin J(θ_i)"]
+        S1 --> S2 --> S3
+    end
+    P3 -.->|"Predictive Sampling 作为其中一种 planner"| PS
+    P3 -->|"更新后的名义计划"| A1
+```
+
+图依据：论文 §2 Algorithm 1（异步预测控制）、§3.4 Planners 中的 Predictive Sampling 与 Algorithm 4。
 
 ## 核心信息
 
@@ -48,7 +75,7 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 
 ## 结论
 
-**本页目前是待读条目而非内容实体：Predictive Sampling 已进入 Paper Notebooks 待深读清单，但页面尚未承载任何机制级归纳。**
+**本页目前是待读条目而非内容实体：Predictive Sampling 已进入 Paper Notebooks 待深读清单，机制层面仅有「流程总览」一图，尚无深读归纳。**
 
 - 现阶段可确认的只有策展元数据：分类 14_Human_Motion、arXiv 2212.00541、深读笔记待撰写。
 - 页面的作用只是登记，让你能从分类页与总索引找到这篇论文。
@@ -64,6 +91,7 @@ Predictive Sampling 的人形机器人学习论文条目，当前处于 Paper No
 - [humanoid_pnb_predictive-sampling-real-time-behaviour-synthesi.md](../../sources/papers/humanoid_pnb_predictive-sampling-real-time-behaviour-synthesi.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2212.00541>
+- [arXiv PDF](https://arxiv.org/pdf/2212.00541)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Background、§3 MuJoCo MPC（含 Predictive Sampling 算法）
 
 ## 推荐继续阅读
 

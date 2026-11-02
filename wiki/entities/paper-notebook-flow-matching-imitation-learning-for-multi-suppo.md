@@ -31,7 +31,33 @@ Flow Matching Imitation Learning for Multi-Support Manipulation 的人形机器�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见上方「流程总览」（依据论文方法部分），不含结论性判断。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph DEMO["示范采集（teleoperation 模式）"]
+        OP["人类操作者"] --> TELE["遥操作：末端目标位姿<br/>+ 接触开关指令"]
+        TELE --> DS["示范数据集<br/>末端指令 + marker 位姿"]
+    end
+    DS --> TRN["Flow Matching 训练<br/>flow 模型 f(z, t, s) 以状态 s 为条件"]
+    subgraph POLY["高层控制（autonomous / shared autonomy）"]
+        CAM["头部 RGB-D 相机<br/>AprilTags marker 位姿估计 100Hz"] --> S["策略输入状态 s<br/>末端位姿指令 · 接触状态<br/>marker 位姿 · 距上次切换 / 检测的时间"]
+        S --> INF["Flow Matching 推理<br/>噪声轨迹经 flow 积分到目标轨迹"]
+        INF --> OUT["输出：未来末端位姿轨迹<br/>+ 连续接触信号 γ"]
+        OUT --> HYS["滞后阈值 → 离散接触开关"]
+        OUT --> STI["轨迹拼接 · 线性插值<br/>5Hz 重采样到 100Hz · 低通滤波"]
+        SH["shared autonomy：操作者指令<br/>替换其控制的那个末端"] --> STI
+    end
+    TRN --> INF
+    HYS --> LOW
+    STI --> LOW["SEIKO Retargeting + SEIKO Controller<br/>基于 SQP 的多接触全身控制 500Hz"]
+    LOW --> ROB["Talos 人形机器人"]
+    ROB -.-> CAM
+```
+
+图依据：论文 §III / Fig.2（整体架构）、§III-B/C/D/E。
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ Flow Matching Imitation Learning for Multi-Support Manipulation 的人形机器�
 - [humanoid_pnb_flow-matching-imitation-learning-for-multi-suppo.md](../../sources/papers/humanoid_pnb_flow-matching-imitation-learning-for-multi-suppo.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2407.12381>
+- [arXiv PDF](https://arxiv.org/pdf/2407.12381)：已通读方法部分（实验与附录以略读为准）：§I–§III（Method 全部小节）；实验章节略读
 
 ## 推荐继续阅读
 

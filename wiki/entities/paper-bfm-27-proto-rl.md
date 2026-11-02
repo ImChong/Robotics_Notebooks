@@ -38,6 +38,31 @@ sources:
 - 原型表示组织行为空间，便于上层组合与选择技能。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#27/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P["任务无关预训练阶段（500k 环境交互）"]
+        OBS["增强后的图像帧 x_t, x_t+1<br/>（随机平移增强，3 帧堆叠）"] --> ON["在线网络：卷积编码器 f_θ → y_t<br/>投影器 g_θ → z_t；预测器 v_θ → u_t"]
+        ON --> PRO["与 M=512 个原型 c_i 做 softmax → p_t"]
+        OBS --> TG["目标网络 f_ξ, g_ξ（在线网络的 EMA）<br/>编码 x_t+1 → z_t+1"]
+        TG --> SK["Sinkhorn-Knopp 聚类 → 软分配目标 q_t+1"]
+        PRO --> LOSS["交叉熵损失 L_SSL(p_t, q_t+1)<br/>只更新在线网络与原型"]
+        SK --> LOSS
+        TG --> Q["原型聚类重平衡：候选 z 按原型分簇后均匀采样，存入队列 Q"]
+        Q --> RI["熵内在奖励 r̂_t = ‖z_t+1 − 第 k 近邻（Q 中）‖"]
+        RI --> SAC["探索智能体 SAC：在 (y_t, a_t, r̂_t, y_t+1) 上训练<br/>RL 损失梯度不回传编码器"]
+        SAC -- "新交互数据" --> OBS
+    end
+    subgraph D["下游任务阶段（500k 交互）"]
+        FZ["冻结编码器 f_θ 与原型"] --> RL["基于状态的标准 RL（SAC）<br/>奖励 r_t + α·r̂_t"]
+    end
+    LOSS --> FZ
+    RI -. "下游探索奖励" .-> RL
+```
+
+图依据：论文 §4.1 原型表示学习、§4.2 最大熵探索、§4.3 任务无关预训练、§4.4 下游任务应用与 Fig.2 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -87,6 +112,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2102.11271>
+- [arXiv PDF](https://arxiv.org/pdf/2102.11271)：已通读方法部分（实验与附录以略读为准）：§4 Proto-RL Algorithm（§4.1 至 §4.4）、§5.1 实验设定
 
 ## 推荐继续阅读
 

@@ -37,6 +37,30 @@ sources:
 - 相对单状态 token 压缩，保留完整历史视觉信息，成为历史感知 VLN 的重要参考。
 - 层次化 ViT 编码完整历史全景序列，与历史动作、当前观测一同输入跨模态 Transformer。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    W["指令 W"] --> TE["Text Encoding<br/>词 + 位置 + 类型嵌入，NL 层 BERT 式 Transformer"]
+    O["当前全景观测 Ot<br/>K 个视图 + 相对角度特征"] --> OE["Observation Encoding<br/>视觉特征 + 角度特征 + 可导航/stop 嵌入"]
+    H["历史 Ht<br/>过往全景 Oi + 已执行动作"] --> VIT["ViT 编码每个视图"]
+    VIT --> PT["Panoramic Transformer<br/>全景内空间关系（Nh 层）"]
+    PT --> HP["平均池化得全景嵌入 + 朝向视图特征<br/>加步数嵌入与动作角度 → 时间 token"]
+    HP --> CLS["历史序列 (含 cls token)"]
+    OE --> V["视觉模态 = 历史 + 当前观测"]
+    CLS --> V
+    TE --> CM["Cross-modal Transformer（Nx 层，双流）<br/>跨模态注意力 → 各自自注意力 → FFN"]
+    V --> CM
+    CM --> ACT["MLP 动作头：在可导航视图中选下一步动作"]
+    subgraph TR["训练"]
+        P1["端到端代理任务预训练<br/>MLM / MRM / ITM / SAP·SAR / SPREL<br/>先冻结 ViT，再解冻整体训练"]
+        P2["微调：A3C 强化学习 + 模仿学习 (IL)"]
+        P1 --> P2
+    end
+```
+
+图依据：论文 §3.1 / Fig.1、Fig.2a，§3.2–3.3（训练部分为论文文字描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +114,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2110.13309>
+- [arXiv PDF](https://arxiv.org/pdf/2110.13309)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 HAMT、3.2 端到端代理任务训练、3.3 RL+IL 微调）
 
 ## 推荐继续阅读
 

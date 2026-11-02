@@ -40,6 +40,41 @@ Promptable transformer for multimodal robot manipulation via in-context generali
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    P["多模态 prompt P<br/>文本 + 整景图像 + 单物体图像"]
+    subgraph PT["Prompt 分词与编码"]
+        T1["文本：t5-base tokenizer 与词嵌入"]
+        T2["整景图像：Mask R-CNN 提取物体 → 边界框 MLP + 裁剪图 ViT → 物体 token"]
+        T3["单物体图像：同样方式，边界框为 dummy"]
+        ENC["预训练 T5 encoder<br/>（物体 token 经 adapter MLP 接入，仅微调最后两层）"]
+        T1 --> ENC
+        T2 --> ENC
+        T3 --> ENC
+    end
+    subgraph HI["交互历史 H"]
+        O["观测（正面 + 俯视 RGB）→ 物体 token<br/>拼接末端执行器状态"]
+        A["过往动作 → 两层 MLP → 动作 token"]
+    end
+    subgraph DEC["VIMA 控制器：因果 transformer decoder"]
+        X["交替 L 层：cross-attention (query=历史, key/value=prompt)<br/>与 causal self-attention"]
+    end
+    OUT["动作 token → 离散化的机械臂位姿（waypoint 命令）"]
+    P --> T1
+    P --> T2
+    P --> T3
+    ENC -->|"key / value"| X
+    O --> X
+    A --> X
+    X --> OUT
+    OUT -->|"执行后得到新观测"| O
+    TR["训练：离线专家数据上的行为克隆<br/>最小化动作负对数似然，含物体检测假阳性增强"] -.-> DEC
+```
+
+图依据：论文 §4（Fig. 3、Training）与附录 C.2（Prompt Tokenization、Observation / Action Encoding、Sequence Modeling）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +138,7 @@ Promptable transformer for multimodal robot manipulation via in-context generali
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2210.03094>
+- [arXiv PDF](https://arxiv.org/pdf/2210.03094)：已通读方法部分（实验与附录以略读为准）：§4 VIMA（Fig. 3、Training）、附录 C.2 VIMA Architecture
 
 ## 推荐继续阅读
 

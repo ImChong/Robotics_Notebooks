@@ -37,6 +37,22 @@ sources:
 - 证明数据规模扩展可显著抬升 R2R 等 benchmark 上限（文中 R2R SR 约 69%→80%）。
 - 从 HM3D/Gibson 1200+ 场景自动采样路径、风格迁移与指令生成，构建 490 万指令-轨迹对预训练数据。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["HM3D（800 训练场景）+ Gibson（491 训练/验证场景）<br/>共 1200+ 无标注 3D 扫描"] --> B["构建导航图<br/>Habitat 采样视点 → 凝聚聚类合并 → 随机连边 → 图精修"]
+    A --> C["修复有缺陷的渲染图像<br/>Co-Mod GAN（在 Matterport3D 渲染-相机图像对上训练）"]
+    B --> D["轨迹采样<br/>参照 PREVALENT：两点间含 3-5 个中间节点的所有最短路径"]
+    C --> D
+    D --> E["指令生成<br/>EnvDrop Speaker（基于 LSTM，在 R2R 上训练）"]
+    E --> F["ScaleVLN 数据集<br/>约 4.9M 指令-轨迹对"]
+    F --> G["预训练 + 微调"]
+    G --> H["下游任务：R2R / CVDN / REVERIE / R2R-CE"]
+```
+
+图依据：论文 §3.1–3.2、Fig. 2；预训练/微调的具体训练配方在 §4.3 之后，本图未展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +106,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2307.15644>
+- [arXiv PDF](https://arxiv.org/pdf/2307.15644)：已通读方法部分（实验与附录以略读为准）：§3.1 VLN 训练资源、§3.2 增广数据生成（环境、导航图、图像修复、轨迹采样、指令生成）；§4 实验仅略读
 
 ## 推荐继续阅读
 

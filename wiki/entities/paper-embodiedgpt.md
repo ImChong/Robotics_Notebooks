@@ -16,6 +16,35 @@ summary: "EmbodiedGPT（arXiv:2305.15021）：面向具身场景的 GPT 式规�
 
 **EmbodiedGPT**（[arXiv:2305.15021](https://arxiv.org/abs/2305.15021)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRN["三阶段训练"]
+        T1["阶段 1：图文对话对齐预训练<br/>COCO Caption、CC3M 过滤集、LAION-400M 重标注<br/>训练 Embodied-former + 语言映射，ViT / LLaMA 冻结"] --> T2["阶段 2：复杂推理与多轮对话<br/>更新语言映射与 prefix 语言适配器"]
+        T2 --> T3["阶段 3：EgoCOT 具身思维链训练<br/>Conv3D 改造为视频编码器，输入 8 关键帧<br/>微调 patch embedding、语言映射、prefix 适配器"]
+    end
+    subgraph INF["推理：视觉语言规划（黑色箭头）"]
+        IMG["图像 / 视频输入"] --> VIT["视觉编码器 ViT"]
+        VIT --> EF["Embodied-former<br/>可学习 embodied queries 与视觉 / 文本交互"]
+        EF --> MAP["语言映射层（FC）<br/>得到 soft visual prompt"]
+        TXT["文本提示：问题 / 任务描述 / 示例 / 对话记忆"] --> LLM
+        MAP --> LLM["冻结的 LLaMA 语言模型"]
+        LLM --> OUT["字幕 / 视频问答 / 具身规划"]
+    end
+    subgraph CTL["低层控制（红色箭头）"]
+        OUT -->|"具身规划文本 x_plan"| EF2["Embodied-former 以规划为查询<br/>取出任务相关实例级特征 z_instance"]
+        VIT --> EF2
+        IMG --> CNN["ResNet50 + 全局平均池化<br/>得到全局特征 z_global"]
+        EF2 --> POL["策略网络 g（MLP）"]
+        CNN --> POL
+        POL --> ACT["可执行动作（位置 / 速度等）"]
+    end
+    T3 -.->|"得到的模型"| INF
+```
+
+图依据：论文 §3 / Fig.2、§3.1 三阶段训练、§3.2 模型架构
+
 ## 一句话定义
 
 **在具身数据上微调 LLM，输出可交给下游控制器的计划。**
@@ -70,6 +99,7 @@ EmbodiedGPT 代表具身专用 LM 规划器方向。
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2305.15021)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2、§3 方法（框架、模型架构、训练设置、EgoCOT / EgoVQA 数据构建）
 
 ## 推荐继续阅读
 

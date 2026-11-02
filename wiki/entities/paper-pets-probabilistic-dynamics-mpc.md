@@ -36,6 +36,25 @@ summary: "PETS（具身世界模型六路线专题）：概率动力学集成+�
 - 属于六路线 taxonomy 的 **规划主导型**：预测结果被用于 **执行时在模型中试走，外部规划/验证裁决动作。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["随机控制器跑 1 个 trial<br/>初始化数据集 D"] --> TRAIN["训练 PE 动力学模型<br/>B 个 bootstrap 概率网络 (各用有放回重采样的 D_b)"]
+    TRAIN --> LOOP["每个时间步 t (MPC)"]
+    LOOP --> SAMP["CEM 采样候选动作序列 a_t:t+T"]
+    SAMP --> TS["Trajectory Sampling<br/>P 个粒子, 按 bootstrap 传播 s_{t+1} ~ f_θb(s,a)"]
+    TS --> EVAL["对粒子轨迹累计奖励取平均<br/>评估动作序列"]
+    EVAL --> UPD["更新 CEM 分布"]
+    UPD -->|"迭代采样"| SAMP
+    UPD --> EXEC["仅执行最优序列的第一个动作 a*_t"]
+    EXEC --> REC["记录 (s_t, a*_t, s_{t+1}) 加入 D"]
+    REC --> LOOP
+    REC -->|"trial 结束"| TRAIN
+```
+
+图依据：论文 §4 Uncertainty-aware dynamics models（PE）/ §5 Planning and control（TS、CEM）/ §6 Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +93,7 @@ summary: "PETS（具身世界模型六路线专题）：概率动力学集成+�
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/1805.12114)：已通读方法部分（实验与附录以略读为准）：§3 MBRL 框架、§4 不确定性感知动力学模型、§5 规划与控制（含 5.1–5.2）、§6 算法摘要；§7 实验与附录略读
 
 ## 推荐继续阅读
 

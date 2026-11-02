@@ -43,6 +43,26 @@ summary: "遥操作采集机器人模仿数据受硬件可得性瓶颈——问�
 - 对人形（硬件贵、可达性受限）尤其有价值；
 - 与 EgoDex（Vision Pro 采集）同属 Apple 系数据工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类演示者佩戴 Apple Vision Pro<br/>ARKit 追踪手腕与手指骨架 (visionOS 2.0)"] --> B["骨架数据经 websocket / ROS 发送到外部计算节点"]
+    B --> C["四个指节均值定位手位姿<br/>偏移到拇指与食指中心 = 末端目标位姿"]
+    C --> D["Drake 逆运动学求关节位置<br/>IK 失败则沿用上次指令"]
+    C --> E["拇指-食指间距 超过 / 低于阈值<br/>→ 夹爪开 / 合"]
+    D --> F["仿真中的虚拟机器人跟随目标 (30 Hz 循环)"]
+    E --> F
+    F --> G["控制回路计算约束：奇异性 / 工作空间 / 速度"]
+    F -->|"各连杆变换与约束回传"| H["Vision Pro 将虚拟机器人叠加在手上 (相对桌面 QR 码定位)<br/>奇异→变黄；越界→红色墙；过快→Slow Down 文字"]
+    G --> H
+    H -->|"演示者实时看到机器人反应并调整动作"| A
+    F --> I["记录关节角轨迹 + 前置相机图像 + 人体骨架"]
+    I --> J["在真实机器人 (ViperX 300 S) 上直接回放轨迹<br/>评估回放成功率"]
+```
+
+图依据：论文 §III 系统设计（A 软件架构 / Fig.2、B 机械臂控制、C AR 反馈）、§IV 用户研究（C 实验协议）
+
 ## 解决什么问题
 
 遥操作采集受**机器人硬件**限制： - 没有实体机器人就难采"机器人兼容"的数据； - 徒手人类数据**未必符合机器人硬件限制**（够不到/超限）。
@@ -130,6 +150,7 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition/ARMADA__Augmented_Reality_for_Robot_Manipulation_and_Robot-Free_Data_Acquisition.html>
 - 论文：<https://arxiv.org/abs/2412.10631>
 - 论文正文（实验协议、Table I、结论）：<https://arxiv.org/html/2412.10631>
+- [arXiv PDF](https://arxiv.org/pdf/2412.10631)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 系统设计（A–C）、§IV 用户研究（A–D）
 
 ## 推荐继续阅读
 
