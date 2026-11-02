@@ -12,4 +12,6 @@
 
 ## 开源状态
 
-- **已开源**：仓库可达（git ls-remote）。 仓库内容以 README 与 release 为准（本次仅用 `git ls-remote` 核实可达，未逐个阅读 README）。
+- **已公开**：实验定义、运行框架及评测代码，Apache-2.0；见 [README](https://github.com/HexaFuture/EmbodiedLab/blob/main/README.md)。
+- README 的 v0.1.0 支持 T0、T1；论文中的诊断级 T2 技能库不在该发布版。
+- `./embodiedlab trial` 调用 `scripts/trial.py`；该脚本导入 `benchmark.evaluation.evaluate` 和 `benchmark.evaluation.process` 执行离线评分。
