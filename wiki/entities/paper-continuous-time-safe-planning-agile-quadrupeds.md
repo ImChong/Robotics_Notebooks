@@ -20,7 +20,7 @@ summary: "连续时间安全规划控制：面向敏捷四足机器人的连续�
 
 # 连续时间安全规划控制：面向敏捷四足机器人的连续时间安全规划与控制
 
-**连续时间安全规划控制**（*Continuous-Time Safe Planning and Control for Agile Quadrupeds*，[arXiv:2610.35670](https://arxiv.org/abs/2610.35670)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**连续时间安全规划控制**（*Continuous-Time Safe Planning and Control for Agile Quadrupeds*，[arXiv:2610.35670](https://arxiv.org/abs/2610.35670)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -107,7 +107,7 @@ flowchart TD
 - [continuous-time-safe-planning-agile-quadrupeds_arxiv_2610_35670.md](../../sources/papers/continuous-time-safe-planning-agile-quadrupeds_arxiv_2610_35670.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.35670](https://arxiv.org/abs/2610.35670)
-- [arXiv PDF](https://arxiv.org/pdf/2610.35670)：已通读全文：§I–§VI（§III 问题建模、§IV 复合 Bernstein 轨迹优化与连续时间证书、§V 仿真/硬件实验）
+- [arXiv PDF](https://arxiv.org/pdf/2610.35670)：已通读方法部分（实验与附录以略读为准）：§I–§VI（§III 问题建模、§IV 复合 Bernstein 轨迹优化与连续时间证书、§V 仿真/硬件实验）
 
 ## 推荐继续阅读
 

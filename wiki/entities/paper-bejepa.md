@@ -122,7 +122,7 @@ flowchart TD
 
 - [BeJEPA 论文来源归档](../../sources/papers/bejepa_arxiv_2610_23127.md)
 - [BeJEPA 项目页核查记录](../../sources/sites/bejepa-project-page.md)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23127)：已通读全文：摘要、§1–§4 开头（方法、Algorithm 1、latent MPC 精修、Q1 实验设置与部分结果）；后续实验、硬件部署与附录仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.23127)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§4 开头（方法、Algorithm 1、latent MPC 精修、Q1 实验设置与部分结果）；后续实验、硬件部署与附录仅浏览
 
 ## 推荐继续阅读
 

@@ -100,7 +100,7 @@ flowchart TD
 - [gearbox_lubricant_temperature_observer_arxiv_2610_23881.md](../../sources/papers/gearbox_lubricant_temperature_observer_arxiv_2610_23881.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23881](https://arxiv.org/abs/2610.23881)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23881)：已通读全文：实验台架、两状态热模型与观测器、Stribeck 摩擦模型、辨识与验证（§II、§III）
+- [arXiv PDF](https://arxiv.org/pdf/2610.23881)：已通读方法部分（实验与附录以略读为准）：实验台架、两状态热模型与观测器、Stribeck 摩擦模型、辨识与验证（§II、§III）
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "METATRON：可提示的人形全身动作执行层（arXiv:2610.38027�
 
 # METATRON：可提示的人形全身动作执行层
 
-**METATRON**（*METATRON: A Promptable Whole-Body Execution Layer for Humanoids*，[arXiv:2610.38027](https://arxiv.org/abs/2610.38027)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**METATRON**（*METATRON: A Promptable Whole-Body Execution Layer for Humanoids*，[arXiv:2610.38027](https://arxiv.org/abs/2610.38027)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -115,7 +115,7 @@ flowchart TD
 - [metatron-promptable-whole-body-execution_arxiv_2610_38027.md](../../sources/papers/metatron-promptable-whole-body-execution_arxiv_2610_38027.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.38027](https://arxiv.org/abs/2610.38027)
-- [arXiv PDF](https://arxiv.org/pdf/2610.38027)：已通读全文：§III 基础策略、§IV 技能层、§V 训练数据、§VI 实验（附录未读）
+- [arXiv PDF](https://arxiv.org/pdf/2610.38027)：已通读方法部分（实验与附录以略读为准）：§III 基础策略、§IV 技能层、§V 训练数据、§VI 实验（附录未读）
 
 ## 推荐继续阅读
 

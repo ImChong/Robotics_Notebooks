@@ -19,7 +19,7 @@ summary: "REACH：面向可适应狭窄空间穿越的分层强化学习人形�
 
 # REACH：面向可适应狭窄空间穿越的分层强化学习人形爬行框架
 
-**REACH**（*REACH: An RL-based Hierarchical Humanoid Crawling Framework for Adaptable Confined Space Traversal*，[arXiv:2610.36546](https://arxiv.org/abs/2610.36546)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**REACH**（*REACH: An RL-based Hierarchical Humanoid Crawling Framework for Adaptable Confined Space Traversal*，[arXiv:2610.36546](https://arxiv.org/abs/2610.36546)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -115,7 +115,7 @@ flowchart TD
 - [reach-humanoid-crawling-confined-space_arxiv_2610_36546.md](../../sources/papers/reach-humanoid-crawling-confined-space_arxiv_2610_36546.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36546](https://arxiv.org/abs/2610.36546)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36546)：已通读全文：§III 方法（变高度行走/爬行、双向过渡）、§IV 感知与规划（点云、EGO-Planner 改造、路径到策略接口）、§V-A 消融设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.36546)：已通读方法部分（实验与附录以略读为准）：§III 方法（变高度行走/爬行、双向过渡）、§IV 感知与规划（点云、EGO-Planner 改造、路径到策略接口）、§V-A 消融设定
 
 ## 推荐继续阅读
 

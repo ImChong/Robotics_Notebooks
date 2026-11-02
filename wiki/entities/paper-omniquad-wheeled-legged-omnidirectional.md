@@ -19,7 +19,7 @@ summary: "OmniQuad：采用全向轮的轮腿混合机器人（arXiv:2610.38502�
 
 # OmniQuad：采用全向轮的轮腿混合机器人
 
-**OmniQuad**（*OmniQuad: A Wheeled-Legged Hybrid Robot with Omnidirectional Wheels*，[arXiv:2610.38502](https://arxiv.org/abs/2610.38502)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**OmniQuad**（*OmniQuad: A Wheeled-Legged Hybrid Robot with Omnidirectional Wheels*，[arXiv:2610.38502](https://arxiv.org/abs/2610.38502)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -102,7 +102,7 @@ flowchart TD
 - [omniquad-wheeled-legged-omnidirectional_arxiv_2610_38502.md](../../sources/papers/omniquad-wheeled-legged-omnidirectional_arxiv_2610_38502.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.38502](https://arxiv.org/abs/2610.38502)
-- [arXiv PDF](https://arxiv.org/pdf/2610.38502)：已通读全文：§3.4 电子系统、§4 建模与控制（运动学、混合系统、控制框图）、§5 实验验证
+- [arXiv PDF](https://arxiv.org/pdf/2610.38502)：已通读方法部分（实验与附录以略读为准）：§3.4 电子系统、§4 建模与控制（运动学、混合系统、控制框图）、§5 实验验证
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "MUSBRIC：用于可重构肌肉骨骼机器人的乐高兼容气动肌
 
 # MUSBRIC：用于可重构肌肉骨骼机器人的乐高兼容气动肌肉模块
 
-**MUSBRIC**（*MUSBRIC: LEGO-Compatible Pneumatic Muscle Bricks for Reconfigurable Musculoskeletal Robots*，[arXiv:2610.40285](https://arxiv.org/abs/2610.40285)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**MUSBRIC**（*MUSBRIC: LEGO-Compatible Pneumatic Muscle Bricks for Reconfigurable Musculoskeletal Robots*，[arXiv:2610.40285](https://arxiv.org/abs/2610.40285)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -106,7 +106,7 @@ flowchart TD
 - [musbric-pneumatic-muscle-bricks_arxiv_2610_40285.md](../../sources/papers/musbric-pneumatic-muscle-bricks_arxiv_2610_40285.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.40285](https://arxiv.org/abs/2610.40285)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40285)：已通读全文：§II 硬件设计、§III 建模与仿真（本构表征、仿真框架）、验证实验
+- [arXiv PDF](https://arxiv.org/pdf/2610.40285)：已通读方法部分（实验与附录以略读为准）：§II 硬件设计、§III 建模与仿真（本构表征、仿真框架）、验证实验
 
 ## 推荐继续阅读
 

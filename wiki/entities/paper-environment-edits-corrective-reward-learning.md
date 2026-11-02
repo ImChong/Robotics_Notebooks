@@ -20,7 +20,7 @@ summary: "环境编辑奖励学习：将环境编辑作为奖励学习的纠正�
 
 # 环境编辑奖励学习：将环境编辑作为奖励学习的纠正信号
 
-**环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https://arxiv.org/abs/2610.35659)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https://arxiv.org/abs/2610.35659)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [environment-edits-corrective-reward-learning_arxiv_2610_35659.md](../../sources/papers/environment-edits-corrective-reward-learning_arxiv_2610_35659.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35659](https://arxiv.org/abs/2610.35659)
-- [arXiv PDF](https://arxiv.org/pdf/2610.35659)：已通读全文：§1–§5（含 3.1 XR 采集、3.2 Relational/Graph/SoftGraph 模型、4 实验设定）
+- [arXiv PDF](https://arxiv.org/pdf/2610.35659)：已通读方法部分（实验与附录以略读为准）：§1–§5（含 3.1 XR 采集、3.2 Relational/Graph/SoftGraph 模型、4 实验设定）
 
 ## 推荐继续阅读
 

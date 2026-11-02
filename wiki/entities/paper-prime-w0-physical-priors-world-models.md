@@ -20,7 +20,7 @@ summary: "PRIME W0：利用世界模型物理先验进行具身操作（arXiv:26
 
 # PRIME W0：利用世界模型物理先验进行具身操作
 
-**PRIME W0**（*PRIME W0: Physical Priors from World Models for Embodied Manipulation*，[arXiv:2610.39528](https://arxiv.org/abs/2610.39528)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**PRIME W0**（*PRIME W0: Physical Priors from World Models for Embodied Manipulation*，[arXiv:2610.39528](https://arxiv.org/abs/2610.39528)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -120,7 +120,7 @@ flowchart TD
 - [prime-w0-physical-priors-world-models_arxiv_2610_39528.md](../../sources/papers/prime-w0-physical-priors-world-models_arxiv_2610_39528.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39528](https://arxiv.org/abs/2610.39528)
-- [arXiv PDF](https://arxiv.org/pdf/2610.39528)：已通读全文：§3 方法（总体架构、四阶段训练、DAT/NTP、世界模型异步注入、历史帧编码、Adaptive MoE、协方差噪声与 ADM）；§4 实验仅浏览基线与设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.39528)：已通读方法部分（实验与附录以略读为准）：§3 方法（总体架构、四阶段训练、DAT/NTP、世界模型异步注入、历史帧编码、Adaptive MoE、协方差噪声与 ADM）；§4 实验仅浏览基线与设定
 
 ## 推荐继续阅读
 

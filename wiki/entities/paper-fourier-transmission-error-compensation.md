@@ -104,7 +104,7 @@ flowchart TD
 - [fourier_transmission_error_compensation_arxiv_2610_23882.md](../../sources/papers/fourier_transmission_error_compensation_arxiv_2610_23882.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23882](https://arxiv.org/abs/2610.23882)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23882)：已通读全文：摘要、§1–§4（建模、激光跟踪角度提取、参数辨识、补偿、结果与讨论）
+- [arXiv PDF](https://arxiv.org/pdf/2610.23882)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§4（建模、激光跟踪角度提取、参数辨识、补偿、结果与讨论）
 
 ## 推荐继续阅读
 

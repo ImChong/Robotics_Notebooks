@@ -102,7 +102,7 @@ flowchart TD
 - [frontier_llms_robocoliseum_arxiv_2610_27865.md](../../sources/papers/frontier_llms_robocoliseum_arxiv_2610_27865.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27865](https://arxiv.org/abs/2610.27865)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27865)：已通读全文：§II Agent2Act harness（工作流、输入模块、动作校验与反馈、基准集成）、§III 评测结果、§IV harness 组件比较、§V 案例
+- [arXiv PDF](https://arxiv.org/pdf/2610.27865)：已通读方法部分（实验与附录以略读为准）：§II Agent2Act harness（工作流、输入模块、动作校验与反馈、基准集成）、§III 评测结果、§IV harness 组件比较、§V 案例
 
 ## 推荐继续阅读
 

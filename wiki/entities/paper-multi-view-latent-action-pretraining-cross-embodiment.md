@@ -23,7 +23,7 @@ summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜�
 
 # Multi-View LAPA：面向跨本体机器人视频学习的多视角潜在动作预训练
 
-**Multi-View LAPA**（*Multi-View Latent Action Pretraining for Cross-Embodiment Robot Learning from Videos*，[arXiv:2610.27794](https://arxiv.org/abs/2610.27794)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Multi-View LAPA**（*Multi-View Latent Action Pretraining for Cross-Embodiment Robot Learning from Videos*，[arXiv:2610.27794](https://arxiv.org/abs/2610.27794)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md](../../sources/papers/multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.27794](https://arxiv.org/abs/2610.27794)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27794)：已通读全文：§III 方法（LAM、多视角融合、潜动作增强策略）、§IV 实现细节与数据集
+- [arXiv PDF](https://arxiv.org/pdf/2610.27794)：已通读方法部分（实验与附录以略读为准）：§III 方法（LAM、多视角融合、潜动作增强策略）、§IV 实现细节与数据集
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "HC2Robot：基于超连接 Transformer 与预测前瞻的人形多地�
 
 # HC2Robot：基于超连接 Transformer 与预测前瞻的人形多地形跑酷
 
-**HC2Robot**（*HC2Robot: Hyper-Connection Transformers with Predicted Foresight for Multi-Terrain Humanoid Parkour*，[arXiv:2610.36825](https://arxiv.org/abs/2610.36825)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**HC2Robot**（*HC2Robot: Hyper-Connection Transformers with Predicted Foresight for Multi-Terrain Humanoid Parkour*，[arXiv:2610.36825](https://arxiv.org/abs/2610.36825)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -118,7 +118,7 @@ flowchart TD
 - [hc2robot-humanoid-parkour_arxiv_2610_36825.md](../../sources/papers/hc2robot-humanoid-parkour_arxiv_2610_36825.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36825](https://arxiv.org/abs/2610.36825)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36825)：已通读全文：方法 §III-A–D（观测与特权信号、HC-Transformer、PFM 与晚期融合、训练与部署）与 §IV 实验协议
+- [arXiv PDF](https://arxiv.org/pdf/2610.36825)：已通读方法部分（实验与附录以略读为准）：方法 §III-A–D（观测与特权信号、HC-Transformer、PFM 与晚期融合、训练与部署）与 §IV 实验协议
 
 ## 推荐继续阅读
 

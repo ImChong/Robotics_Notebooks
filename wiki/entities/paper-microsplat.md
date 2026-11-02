@@ -105,7 +105,7 @@ flowchart TD
 - [microsplat_arxiv_2610_23899.md](../../sources/papers/microsplat_arxiv_2610_23899.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23899](https://arxiv.org/abs/2610.23899)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23899)：已通读全文：硬件、标定与居中、视点规划与采集、聚焦堆叠与掩码、COLMAP + 3DGS 重建（§III）
+- [arXiv PDF](https://arxiv.org/pdf/2610.23899)：已通读方法部分（实验与附录以略读为准）：硬件、标定与居中、视点规划与采集、聚焦堆叠与掩码、COLMAP + 3DGS 重建（§III）
 
 ## 推荐继续阅读
 

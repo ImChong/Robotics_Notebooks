@@ -20,7 +20,7 @@ summary: "面向四足运动的可训练中央模式发生器框架（arXiv:2610
 
 # 面向四足运动的可训练中央模式发生器框架
 
-**可训练 CPG**（*A Trainable CPG Framework for Quadruped Locomotion*，[arXiv:2610.36537](https://arxiv.org/abs/2610.36537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**可训练 CPG**（*A Trainable CPG Framework for Quadruped Locomotion*，[arXiv:2610.36537](https://arxiv.org/abs/2610.36537)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -110,7 +110,7 @@ flowchart TD
 - [trainable-cpg-quadruped-locomotion_arxiv_2610_36537.md](../../sources/papers/trainable-cpg-quadruped-locomotion_arxiv_2610_36537.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36537](https://arxiv.org/abs/2610.36537)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36537)：已通读全文：方法（§III-A 概览、§III-B CPG-ENN 先验与 ENN 预训练、§III-C 观测/动作/奖励/Beta 策略）
+- [arXiv PDF](https://arxiv.org/pdf/2610.36537)：已通读方法部分（实验与附录以略读为准）：方法（§III-A 概览、§III-B CPG-ENN 先验与 ENN 预训练、§III-C 观测/动作/奖励/Beta 策略）
 
 ## 推荐继续阅读
 

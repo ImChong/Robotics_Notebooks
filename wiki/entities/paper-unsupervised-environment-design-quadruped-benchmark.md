@@ -20,7 +20,7 @@ summary: "究竟是课程有效，还是起点简单？四足无监督环境设�
 
 # 究竟是课程有效，还是起点简单？四足无监督环境设计基准
 
-**无监督环境设计基准**（*Is It the Curriculum or Just the Easy Start? Benchmarking Unsupervised Environment Design on Quadrupeds*，[arXiv:2610.40364](https://arxiv.org/abs/2610.40364)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**无监督环境设计基准**（*Is It the Curriculum or Just the Easy Start? Benchmarking Unsupervised Environment Design on Quadrupeds*，[arXiv:2610.40364](https://arxiv.org/abs/2610.40364)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 

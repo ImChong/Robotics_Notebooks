@@ -106,7 +106,7 @@ flowchart TD
 - [umi_wm_arxiv_2610_23913.md](../../sources/papers/umi_wm_arxiv_2610_23913.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23913](https://arxiv.org/abs/2610.23913)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23913)：已通读全文：§3 数据与处理流水线，§4 UMI-WM 动作条件、多视图建模与因果生成、IDM 与 BAF，§5 实验设置，附录 B.3 训练与蒸馏
+- [arXiv PDF](https://arxiv.org/pdf/2610.23913)：已通读方法部分（实验与附录以略读为准）：§3 数据与处理流水线，§4 UMI-WM 动作条件、多视图建模与因果生成、IDM 与 BAF，§5 实验设置，附录 B.3 训练与蒸馏
 
 ## 推荐继续阅读
 

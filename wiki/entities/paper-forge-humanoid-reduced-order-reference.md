@@ -19,7 +19,7 @@ summary: "FORGE：面向敏捷人形运动的在线可行降阶参考生成与�
 
 # FORGE：面向敏捷人形运动的在线可行降阶参考生成与全身执行
 
-**FORGE**（*FORGE: Feasible Online Reduced-Order Reference Generation and Whole-Body Execution for Agile Humanoid Locomotion*，[arXiv:2610.37974](https://arxiv.org/abs/2610.37974)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**FORGE**（*FORGE: Feasible Online Reduced-Order Reference Generation and Whole-Body Execution for Agile Humanoid Locomotion*，[arXiv:2610.37974](https://arxiv.org/abs/2610.37974)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -108,7 +108,7 @@ flowchart TD
 - [forge-humanoid-reduced-order-reference_arxiv_2610_37974.md](../../sources/papers/forge-humanoid-reduced-order-reference_arxiv_2610_37974.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37974](https://arxiv.org/abs/2610.37974)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37974)：已通读全文：两阶段框架 §III–V（SRB 背景、ROM 训练环境与 MDP、全身跟踪）及 §VI 仿真/硬件实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.37974)：已通读方法部分（实验与附录以略读为准）：两阶段框架 §III–V（SRB 背景、ROM 训练环境与 MDP、全身跟踪）及 §VI 仿真/硬件实验设定
 
 ## 推荐继续阅读
 

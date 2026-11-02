@@ -117,7 +117,7 @@ BiHOI 以 32 个校准 RGB 视角采集 1,575 段、覆盖 229 个物体和 14.7
 - [DONIC 官方项目页](https://ropedia.github.io/DONIC/)
 - [DONIC 官方代码仓库](https://github.com/Ropedia/DONIC)
 - [arXiv:2610.29997](https://arxiv.org/abs/2610.29997)
-- [arXiv PDF](https://arxiv.org/pdf/2610.29997)：已通读全文：摘要、§1–§5.1（BiHOI 采集与重建、任务定义、参考条件控制、逐手奖励、CCA、PPO+BC 与示范库、实验设定）；结果与消融、附录仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.29997)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§5.1（BiHOI 采集与重建、任务定义、参考条件控制、逐手奖励、CCA、PPO+BC 与示范库、实验设定）；结果与消融、附录仅浏览
 
 ## 推荐继续阅读
 

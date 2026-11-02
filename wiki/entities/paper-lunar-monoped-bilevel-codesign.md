@@ -19,7 +19,7 @@ summary: "月球单足协同设计：面向月球单足机器人二维跳跃与�
 
 # 月球单足协同设计：面向月球单足机器人二维跳跃与着陆的双层协同设计
 
-**月球单足协同设计**（*A Bi-level Co-design Framework for Lunar Monoped with 2D Jump and Landing Control*，[arXiv:2610.37199](https://arxiv.org/abs/2610.37199)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**月球单足协同设计**（*A Bi-level Co-design Framework for Lunar Monoped with 2D Jump and Landing Control*，[arXiv:2610.37199](https://arxiv.org/abs/2610.37199)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -112,7 +112,7 @@ flowchart TD
 - [lunar-monoped-bilevel-codesign_arxiv_2610_37199.md](../../sources/papers/lunar-monoped-bilevel-codesign_arxiv_2610_37199.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37199](https://arxiv.org/abs/2610.37199)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37199)：已通读全文：§III 系统模型、§IV 双层协同设计框架、§V 1D 结果、§VI 平面跳跃与着陆控制、§VII–IX
+- [arXiv PDF](https://arxiv.org/pdf/2610.37199)：已通读方法部分（实验与附录以略读为准）：§III 系统模型、§IV 双层协同设计框架、§V 1D 结果、§VI 平面跳跃与着陆控制、§VII–IX
 
 ## 推荐继续阅读
 

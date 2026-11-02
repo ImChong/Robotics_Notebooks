@@ -20,7 +20,7 @@ summary: "VLA-Stem：基于强化学习的轻量化视觉语言动作模型安�
 
 # VLA-Stem：基于强化学习的轻量化视觉语言动作模型安全机制
 
-**VLA-Stem**（*VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning*，[arXiv:2610.37378](https://arxiv.org/abs/2610.37378)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**VLA-Stem**（*VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning*，[arXiv:2610.37378](https://arxiv.org/abs/2610.37378)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -111,7 +111,7 @@ flowchart TD
 - [vla-stem-lightweight-safety-rl_arxiv_2610_37378.md](../../sources/papers/vla-stem-lightweight-safety-rl_arxiv_2610_37378.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.37378](https://arxiv.org/abs/2610.37378)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37378)：已通读全文：方法（§III-A VLA 条件执行、§III-B 轨迹级引导、§III-C 教师–学生蒸馏、§III-D RL 与课程）
+- [arXiv PDF](https://arxiv.org/pdf/2610.37378)：已通读方法部分（实验与附录以略读为准）：方法（§III-A VLA 条件执行、§III-B 轨迹级引导、§III-C 教师–学生蒸馏、§III-D RL 与课程）
 
 ## 推荐继续阅读
 

@@ -23,7 +23,7 @@ summary: "LocoPilot：面向移动操作策略学习的单人双向遥操作（a
 
 # LocoPilot：面向移动操作策略学习的单人双向遥操作
 
-**LocoPilot**（*LocoPilot: Single-Operator Bilateral Teleoperation for Loco-Manipulation Policy Learning*，[arXiv:2610.27998](https://arxiv.org/abs/2610.27998)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**LocoPilot**（*LocoPilot: Single-Operator Bilateral Teleoperation for Loco-Manipulation Policy Learning*，[arXiv:2610.27998](https://arxiv.org/abs/2610.27998)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -112,7 +112,7 @@ flowchart TD
 - [locopilot-bilateral-teleop-loco-manipulation_arxiv_2610_27998.md](../../sources/papers/locopilot-bilateral-teleop-loco-manipulation_arxiv_2610_27998.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27998](https://arxiv.org/abs/2610.27998)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27998)：已通读全文：§II 系统概览、§III 遥操作与数据采集框架（双边遥操作、统一动作接口）、§IV 实验
+- [arXiv PDF](https://arxiv.org/pdf/2610.27998)：已通读方法部分（实验与附录以略读为准）：§II 系统概览、§III 遥操作与数据采集框架（双边遥操作、统一动作接口）、§IV 实验
 
 ## 推荐继续阅读
 

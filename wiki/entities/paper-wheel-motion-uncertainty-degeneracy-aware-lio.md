@@ -22,7 +22,7 @@ summary: "Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确�
 
 # Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确定性学习与退化感知激光—惯性里程计
 
-**Wheel Uncertainty LIO**（*Learning Wheel Motion Uncertainty for Degeneracy-Aware LiDAR-Inertial Odometry on Quadrupedal Wheel-Legged Robots*，[arXiv:2610.26550](https://arxiv.org/abs/2610.26550)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Wheel Uncertainty LIO**（*Learning Wheel Motion Uncertainty for Degeneracy-Aware LiDAR-Inertial Odometry on Quadrupedal Wheel-Legged Robots*，[arXiv:2610.26550](https://arxiv.org/abs/2610.26550)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [wheel-motion-uncertainty-degeneracy-aware-lio_arxiv_2610_26550.md](../../sources/papers/wheel-motion-uncertainty-degeneracy-aware-lio_arxiv_2610_26550.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26550](https://arxiv.org/abs/2610.26550)
-- [arXiv PDF](https://arxiv.org/pdf/2610.26550)：已通读全文：系统概览与 FK 更新（§III-A/B）、CovNet 与训练（§III-C、§IV-A）、DAP 与 LiDAR 更新（§III-D）
+- [arXiv PDF](https://arxiv.org/pdf/2610.26550)：已通读方法部分（实验与附录以略读为准）：系统概览与 FK 更新（§III-A/B）、CovNet 与训练（§III-C、§IV-A）、DAP 与 LiDAR 更新（§III-D）
 
 ## 推荐继续阅读
 

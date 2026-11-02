@@ -95,7 +95,7 @@ flowchart TD
 - [minimalist_vision_freeform_pixels_arxiv_2501_00142.md](../../sources/papers/minimalist_vision_freeform_pixels_arxiv_2501_00142.md)
 - [wechat_shenlan_cv_best_papers_2023_2026_labs.md](../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md)
 - [arXiv:2501.00142](https://arxiv.org/abs/2501.00142)
-- [arXiv PDF](https://arxiv.org/pdf/2501.00142)：已通读全文：自由形态像素作为网络第一层、传感器模型、相机硬件与实验（§3、§5、§6）
+- [arXiv PDF](https://arxiv.org/pdf/2501.00142)：已通读方法部分（实验与附录以略读为准）：自由形态像素作为网络第一层、传感器模型、相机硬件与实验（§3、§5、§6）
 
 ## 推荐继续阅读
 

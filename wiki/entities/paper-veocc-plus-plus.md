@@ -104,7 +104,7 @@ flowchart TD
 - [veocc_plus_plus_arxiv_2610_27704.md](../../sources/papers/veocc_plus_plus_arxiv_2610_27704.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27704](https://arxiv.org/abs/2610.27704)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27704)：已通读全文：问题定义与方法总览（§3.1–3.2）、在线增量建图（§3.4）、离线全局精修（§3.5）
+- [arXiv PDF](https://arxiv.org/pdf/2610.27704)：已通读方法部分（实验与附录以略读为准）：问题定义与方法总览（§3.1–3.2）、在线增量建图（§3.4）、离线全局精修（§3.5）
 
 ## 推荐继续阅读
 

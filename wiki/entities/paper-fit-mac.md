@@ -104,7 +104,7 @@ flowchart TD
 - [fit_mac_arxiv_2610_28109.md](../../sources/papers/fit_mac_arxiv_2610_28109.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28109](https://arxiv.org/abs/2610.28109)
-- [arXiv PDF](https://arxiv.org/pdf/2610.28109)：已通读全文：§3 方法（Planner / Grounder / Verifier / Correction Agent）、§4 实验设定（LIBERO-PRO）
+- [arXiv PDF](https://arxiv.org/pdf/2610.28109)：已通读方法部分（实验与附录以略读为准）：§3 方法（Planner / Grounder / Verifier / Correction Agent）、§4 实验设定（LIBERO-PRO）
 
 ## 推荐继续阅读
 

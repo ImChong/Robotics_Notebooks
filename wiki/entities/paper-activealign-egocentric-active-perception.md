@@ -19,7 +19,7 @@ summary: "ActiveAlign（主动感知）：ActiveAlign：通过主动感知对齐
 
 # ActiveAlign（主动感知）：ActiveAlign：通过主动感知对齐第一视角机器人操作
 
-**ActiveAlign（主动感知）**（*ActiveAlign: Aligning Egocentric Manipulation via Active Perception*，[arXiv:2610.36859](https://arxiv.org/abs/2610.36859)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**ActiveAlign（主动感知）**（*ActiveAlign: Aligning Egocentric Manipulation via Active Perception*，[arXiv:2610.36859](https://arxiv.org/abs/2610.36859)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -114,7 +114,7 @@ flowchart TD
 - [activealign-egocentric-active-perception_arxiv_2610_36859.md](../../sources/papers/activealign-egocentric-active-perception_arxiv_2610_36859.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36859](https://arxiv.org/abs/2610.36859)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36859)：已通读全文：§2.1 离线/在线 real2sim 流水线，§2.2 ActiveAlign-Waving，§2.3 ActiveAlign-Touching，§3 实验，附录 A-B
+- [arXiv PDF](https://arxiv.org/pdf/2610.36859)：已通读方法部分（实验与附录以略读为准）：§2.1 离线/在线 real2sim 流水线，§2.2 ActiveAlign-Waving，§2.3 ActiveAlign-Touching，§3 实验，附录 A-B
 
 ## 推荐继续阅读
 

@@ -115,7 +115,7 @@ flowchart TD
 
 - [Spotter 论文归档](../../sources/papers/spotter_arxiv_2609_36808.md)
 - [Spotter 代码仓归档](../../sources/repos/spotter.md)
-- [arXiv PDF](https://arxiv.org/pdf/2609.36808)：已通读全文：§3.2 并行监督、筛查-修复-反思、异步问题与物理重置，§4.1 实验设置与 Table 3
+- [arXiv PDF](https://arxiv.org/pdf/2609.36808)：已通读方法部分（实验与附录以略读为准）：§3.2 并行监督、筛查-修复-反思、异步问题与物理重置，§4.1 实验设置与 Table 3
 
 ## 推荐继续阅读
 

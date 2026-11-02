@@ -108,7 +108,7 @@ flowchart TD
 - [embodiment_aware_heterogeneous_bimanual_arxiv_2610_23551.md](../../sources/papers/embodiment_aware_heterogeneous_bimanual_arxiv_2610_23551.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23551](https://arxiv.org/abs/2610.23551)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23551)：已通读全文：摘要、§I–§V（问题建模、轨迹提取、抓取生成与 DPP、可行性与代价、交接转移、动态规划、beam search、实验设定）；实验结果表仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.23551)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§V（问题建模、轨迹提取、抓取生成与 DPP、可行性与代价、交接转移、动态规划、beam search、实验设定）；实验结果表仅浏览
 
 ## 推荐继续阅读
 

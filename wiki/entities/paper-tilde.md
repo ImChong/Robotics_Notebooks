@@ -109,7 +109,7 @@ flowchart TD
 - [tilde_arxiv_2610_25376.md](../../sources/papers/tilde_arxiv_2610_25376.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.25376](https://arxiv.org/abs/2610.25376)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25376)：已通读全文：§3 方法（AutoDAgger、蒸馏目标），§4.1 实验设置与实现细节
+- [arXiv PDF](https://arxiv.org/pdf/2610.25376)：已通读方法部分（实验与附录以略读为准）：§3 方法（AutoDAgger、蒸馏目标），§4.1 实验设置与实现细节
 
 ## 推荐继续阅读
 

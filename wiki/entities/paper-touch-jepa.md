@@ -108,7 +108,7 @@ flowchart TD
 - [touch_jepa_arxiv_2610_28519.md](../../sources/papers/touch_jepa_arxiv_2610_28519.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28519](https://arxiv.org/abs/2610.28519)
-- [arXiv PDF](https://arxiv.org/pdf/2610.28519)：已通读全文：几何引导掩码预测与几何编码器（§3.1–3.2）、自监督与触觉监督训练（§3.3–3.4）、Touch-JEPA-AC（§3.5）、实验设定（§4.1）
+- [arXiv PDF](https://arxiv.org/pdf/2610.28519)：已通读方法部分（实验与附录以略读为准）：几何引导掩码预测与几何编码器（§3.1–3.2）、自监督与触觉监督训练（§3.3–3.4）、Touch-JEPA-AC（§3.5）、实验设定（§4.1）
 
 ## 推荐继续阅读
 

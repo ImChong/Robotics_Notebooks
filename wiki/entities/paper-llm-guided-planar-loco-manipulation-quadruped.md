@@ -20,7 +20,7 @@ summary: "LLM 引导平面移动操作：大语言模型引导的四足平面移
 
 # LLM 引导平面移动操作：大语言模型引导的四足平面移动操作
 
-**LLM 引导平面移动操作**（*LLM-guided Planar Loco-Manipulation for Quadruped Robots*，[arXiv:2610.40248](https://arxiv.org/abs/2610.40248)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**LLM 引导平面移动操作**（*LLM-guided Planar Loco-Manipulation for Quadruped Robots*，[arXiv:2610.40248](https://arxiv.org/abs/2610.40248)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -107,7 +107,7 @@ flowchart TD
 - [llm-guided-planar-loco-manipulation-quadruped_arxiv_2610_40248.md](../../sources/papers/llm-guided-planar-loco-manipulation-quadruped_arxiv_2610_40248.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.40248](https://arxiv.org/abs/2610.40248)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40248)：已通读全文：§II 预备、§III 方法（平面操作策略、导航策略、LLM 高层规划器）；§IV 实验仅读要点、附录未读
+- [arXiv PDF](https://arxiv.org/pdf/2610.40248)：已通读方法部分（实验与附录以略读为准）：§II 预备、§III 方法（平面操作策略、导航策略、LLM 高层规划器）；§IV 实验仅读要点、附录未读
 
 ## 推荐继续阅读
 

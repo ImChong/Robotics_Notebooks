@@ -20,7 +20,7 @@ summary: "ProLoop：基于结构化状态关系的进度感知长程机器人闭
 
 # ProLoop：基于结构化状态关系的进度感知长程机器人闭环规划
 
-**ProLoop**（*ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning*，[arXiv:2610.39319](https://arxiv.org/abs/2610.39319)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**ProLoop**（*ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning*，[arXiv:2610.39319](https://arxiv.org/abs/2610.39319)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -113,7 +113,7 @@ flowchart TD
 - [proloop-progress-aware-closed-loop_arxiv_2610_39319.md](../../sources/papers/proloop-progress-aware-closed-loop_arxiv_2610_39319.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39319](https://arxiv.org/abs/2610.39319)
-- [arXiv PDF](https://arxiv.org/pdf/2610.39319)：已通读全文：§III 预备知识、§IV 方法（子目标规划器 / 结构化状态构造 / 状态关系监测器 / 进度引导适配 / 完成门控记忆更新 / 离线关系学习）、§V-A 实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.39319)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV 方法（子目标规划器 / 结构化状态构造 / 状态关系监测器 / 进度引导适配 / 完成门控记忆更新 / 离线关系学习）、§V-A 实验设定
 
 ## 推荐继续阅读
 

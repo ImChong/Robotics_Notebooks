@@ -25,7 +25,7 @@ summary: "PhysWord：物理词汇：用于组织机器人操作潜在推理的�
 
 # PhysWord：物理词汇：用于组织机器人操作潜在推理的词汇体系
 
-**PhysWord**（*Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation*，[arXiv:2610.26854](https://arxiv.org/abs/2610.26854)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据项目主页与 arXiv 摘要整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**PhysWord**（*Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation*，[arXiv:2610.26854](https://arxiv.org/abs/2610.26854)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据项目主页与 arXiv 摘要整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -114,7 +114,7 @@ flowchart TD
 - [physical-words-latent-reasoning-manipulation_arxiv_2610_26854.md](../../sources/papers/physical-words-latent-reasoning-manipulation_arxiv_2610_26854.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.26854](https://arxiv.org/abs/2610.26854)
-- [arXiv PDF](https://arxiv.org/pdf/2610.26854)：已通读全文：§3 方法（架构、Physical Words、时序结构空间、训练目标）、§4 实验
+- [arXiv PDF](https://arxiv.org/pdf/2610.26854)：已通读方法部分（实验与附录以略读为准）：§3 方法（架构、Physical Words、时序结构空间、训练目标）、§4 实验
 
 ## 推荐继续阅读
 

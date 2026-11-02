@@ -109,7 +109,7 @@ flowchart TD
 - [vla_corruption_failure_attribution_arxiv_2610_27277.md](../../sources/papers/vla_corruption_failure_attribution_arxiv_2610_27277.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27277](https://arxiv.org/abs/2610.27277)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27277)：已通读全文：问题定义（§III）、因子化风险模型与训练目标（§IV-A/B、Fig.3）、实验设定（§V–VI）
+- [arXiv PDF](https://arxiv.org/pdf/2610.27277)：已通读方法部分（实验与附录以略读为准）：问题定义（§III）、因子化风险模型与训练目标（§IV-A/B、Fig.3）、实验设定（§V–VI）
 
 ## 推荐继续阅读
 

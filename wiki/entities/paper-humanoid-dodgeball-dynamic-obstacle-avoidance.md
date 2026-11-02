@@ -19,7 +19,7 @@ summary: "Humanoid Dodgeball：人形躲避球：快速动态障碍规避动作�
 
 # Humanoid Dodgeball：人形躲避球：快速动态障碍规避动作学习
 
-**Humanoid Dodgeball**（*Humanoid Dodgeball: Learning Fast Dynamic Obstacle Avoidance Motions for Humanoids*，[arXiv:2610.40003](https://arxiv.org/abs/2610.40003)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Humanoid Dodgeball**（*Humanoid Dodgeball: Learning Fast Dynamic Obstacle Avoidance Motions for Humanoids*，[arXiv:2610.40003](https://arxiv.org/abs/2610.40003)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -107,7 +107,7 @@ flowchart TD
 - [humanoid-dodgeball-dynamic-obstacle-avoidance_arxiv_2610_40003.md](../../sources/papers/humanoid-dodgeball-dynamic-obstacle-avoidance_arxiv_2610_40003.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.40003](https://arxiv.org/abs/2610.40003)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40003)：已通读全文：方法 §III（威胁感知奖励、方向特定 AMP、训练细节）与 Fig. 2；仿真与硬件实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.40003)：已通读方法部分（实验与附录以略读为准）：方法 §III（威胁感知奖励、方向特定 AMP、训练细节）与 Fig. 2；仿真与硬件实验设定
 
 ## 推荐继续阅读
 

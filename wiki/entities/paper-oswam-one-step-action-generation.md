@@ -20,7 +20,7 @@ summary: "OSWAM：具有单步动作生成能力的高效世界动作模型（ar
 
 # OSWAM：具有单步动作生成能力的高效世界动作模型
 
-**OSWAM**（*OSWAM: An Effective World Action Model with One-Step Action Generation*，[arXiv:2610.35850](https://arxiv.org/abs/2610.35850)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**OSWAM**（*OSWAM: An Effective World Action Model with One-Step Action Generation*，[arXiv:2610.35850](https://arxiv.org/abs/2610.35850)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -106,7 +106,7 @@ flowchart TD
 - [oswam-one-step-action-generation_arxiv_2610_35850.md](../../sources/papers/oswam-one-step-action-generation_arxiv_2610_35850.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35850](https://arxiv.org/abs/2610.35850)
-- [arXiv PDF](https://arxiv.org/pdf/2610.35850)：已通读全文：§3 方法（总体架构、Imagination Tokens、特权信息蒸馏、训练目标）与 §4.2 实现细节
+- [arXiv PDF](https://arxiv.org/pdf/2610.35850)：已通读方法部分（实验与附录以略读为准）：§3 方法（总体架构、Imagination Tokens、特权信息蒸馏、训练目标）与 §4.2 实现细节
 
 ## 推荐继续阅读
 

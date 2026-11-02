@@ -107,7 +107,7 @@ flowchart TD
 - [trajwam_arxiv_2610_25763.md](../../sources/papers/trajwam_arxiv_2610_25763.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25763](https://arxiv.org/abs/2610.25763)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25763)：已通读全文：目标轨迹预测与轨迹条件视频-动作建模（§III-A/B）、解耦蒸馏（§III-C）、实验设定与实现（§IV-A）
+- [arXiv PDF](https://arxiv.org/pdf/2610.25763)：已通读方法部分（实验与附录以略读为准）：目标轨迹预测与轨迹条件视频-动作建模（§III-A/B）、解耦蒸馏（§III-C）、实验设定与实现（§IV-A）
 
 ## 推荐继续阅读
 

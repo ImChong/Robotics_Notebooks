@@ -20,7 +20,7 @@ summary: "黑箱策略传感器诊断修复：黑盒机器人策略失效时：�
 
 # 黑箱策略传感器诊断修复：黑盒机器人策略失效时：基于透明代理的在线传感器诊断与修复
 
-**黑箱策略传感器诊断修复**（*When Black-Box Robot Policies Fail: Online Sensor Diagnosis and Repair with a Transparent Surrogate*，[arXiv:2610.36852](https://arxiv.org/abs/2610.36852)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**黑箱策略传感器诊断修复**（*When Black-Box Robot Policies Fail: Online Sensor Diagnosis and Repair with a Transparent Surrogate*，[arXiv:2610.36852](https://arxiv.org/abs/2610.36852)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -104,7 +104,7 @@ flowchart TD
 - [blackbox-policy-sensor-diagnosis-repair_arxiv_2610_36852.md](../../sources/papers/blackbox-policy-sensor-diagnosis-repair_arxiv_2610_36852.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36852](https://arxiv.org/abs/2610.36852)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36852)：已通读全文：§2 结构化代理、MBD 诊断、PRR 修复与在线检测，§3 实验与结果表
+- [arXiv PDF](https://arxiv.org/pdf/2610.36852)：已通读方法部分（实验与附录以略读为准）：§2 结构化代理、MBD 诊断、PRR 修复与在线检测，§3 实验与结果表
 
 ## 推荐继续阅读
 

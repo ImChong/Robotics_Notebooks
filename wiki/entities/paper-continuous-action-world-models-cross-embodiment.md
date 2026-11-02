@@ -20,7 +20,7 @@ summary: "连续动作世界模型：学习跨本体时空动力学先验（arXi
 
 # 连续动作世界模型：学习跨本体时空动力学先验
 
-**连续动作世界模型**（*Continuous-Action World Models: Learning Cross-Embodiment Spatiotemporal Dynamics Priors*，[arXiv:2610.40401](https://arxiv.org/abs/2610.40401)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**连续动作世界模型**（*Continuous-Action World Models: Learning Cross-Embodiment Spatiotemporal Dynamics Priors*，[arXiv:2610.40401](https://arxiv.org/abs/2610.40401)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -115,7 +115,7 @@ flowchart TD
 - [continuous-action-world-models-cross-embodiment_arxiv_2610_40401.md](../../sources/papers/continuous-action-world-models-cross-embodiment_arxiv_2610_40401.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40401](https://arxiv.org/abs/2610.40401)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40401)：已通读全文：§1–§5（§3 方法：函数表示、Stage A 预训练、Stage B 接入世界模型、时间查询执行；§4 实验）
+- [arXiv PDF](https://arxiv.org/pdf/2610.40401)：已通读方法部分（实验与附录以略读为准）：§1–§5（§3 方法：函数表示、Stage A 预训练、Stage B 接入世界模型、时间查询执行；§4 实验）
 
 ## 推荐继续阅读
 

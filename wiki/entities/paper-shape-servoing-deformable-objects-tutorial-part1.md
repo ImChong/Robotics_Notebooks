@@ -20,7 +20,7 @@ summary: "可变形物体形状伺服教程（一）：基础原理（arXiv:2610
 
 # 可变形物体形状伺服教程（一）：基础原理
 
-**形状伺服教程 Part I**（*A Tutorial on Shape Servoing of Deformable Objects-Part I: Fundamentals*，[arXiv:2610.40559](https://arxiv.org/abs/2610.40559)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**形状伺服教程 Part I**（*A Tutorial on Shape Servoing of Deformable Objects-Part I: Fundamentals*，[arXiv:2610.40559](https://arxiv.org/abs/2610.40559)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [shape-servoing-deformable-objects-tutorial-part1_arxiv_2610_40559.md](../../sources/papers/shape-servoing-deformable-objects-tutorial-part1_arxiv_2610_40559.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40559](https://arxiv.org/abs/2610.40559)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40559)：已通读全文：§II 形状伺服环路组成、§III 雅可比离线估计与在线更新、§IV 闭环算法/可达性/局部稳定性
+- [arXiv PDF](https://arxiv.org/pdf/2610.40559)：已通读方法部分（实验与附录以略读为准）：§II 形状伺服环路组成、§III 雅可比离线估计与在线更新、§IV 闭环算法/可达性/局部稳定性
 
 ## 推荐继续阅读
 

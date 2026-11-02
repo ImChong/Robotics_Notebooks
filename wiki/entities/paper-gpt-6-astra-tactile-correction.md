@@ -102,7 +102,7 @@ flowchart TD
 - [gpt_6_astra_tactile_correction_arxiv_2610_28457.md](../../sources/papers/gpt_6_astra_tactile_correction_arxiv_2610_28457.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28457](https://arxiv.org/abs/2610.28457)
-- [arXiv PDF](https://arxiv.org/pdf/2610.28457)：已通读全文：§3 方法（3.1–3.4）、§4 实验（含 Insert Hole 定性分析）
+- [arXiv PDF](https://arxiv.org/pdf/2610.28457)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4 实验（含 Insert Hole 定性分析）
 
 ## 推荐继续阅读
 

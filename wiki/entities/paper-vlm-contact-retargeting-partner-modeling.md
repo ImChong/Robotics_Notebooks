@@ -22,7 +22,7 @@ summary: "面向人形—人交互的 VLM 引导接触重定向与生成式伙�
 
 # 面向人形—人交互的 VLM 引导接触重定向与生成式伙伴建模
 
-**VLM 接触重定向**（*VLM-Guided Contact Retargeting and Generative Partner Modeling for Humanoid-Human Interaction*，[arXiv:2610.28523](https://arxiv.org/abs/2610.28523)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**VLM 接触重定向**（*VLM-Guided Contact Retargeting and Generative Partner Modeling for Humanoid-Human Interaction*，[arXiv:2610.28523](https://arxiv.org/abs/2610.28523)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -110,7 +110,7 @@ flowchart TD
 - [vlm-contact-retargeting-partner-modeling_arxiv_2610_28523.md](../../sources/papers/vlm-contact-retargeting-partner-modeling_arxiv_2610_28523.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.28523](https://arxiv.org/abs/2610.28523)
-- [arXiv PDF](https://arxiv.org/pdf/2610.28523)：已通读全文：语义接触建模与重定向（§3.1）、教师与学生（§3.2）、真机部署（§4.4）
+- [arXiv PDF](https://arxiv.org/pdf/2610.28523)：已通读方法部分（实验与附录以略读为准）：语义接触建模与重定向（§3.1）、教师与学生（§3.2）、真机部署（§4.4）
 
 ## 推荐继续阅读
 

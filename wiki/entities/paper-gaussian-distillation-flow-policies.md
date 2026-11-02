@@ -20,7 +20,7 @@ summary: "流策略高斯蒸馏：Flow 策略的高斯蒸馏（arXiv:2610.40271�
 
 # 流策略高斯蒸馏：Flow 策略的高斯蒸馏
 
-**流策略高斯蒸馏**（*Gaussian Distillation of Flow Policies*，[arXiv:2610.40271](https://arxiv.org/abs/2610.40271)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**流策略高斯蒸馏**（*Gaussian Distillation of Flow Policies*，[arXiv:2610.40271](https://arxiv.org/abs/2610.40271)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [gaussian-distillation-flow-policies_arxiv_2610_40271.md](../../sources/papers/gaussian-distillation-flow-policies_arxiv_2610_40271.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40271](https://arxiv.org/abs/2610.40271)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40271)：已通读全文：§3 高斯性分析、§4 高斯蒸馏（GAR 的均值/方差/二值指令读出、拟合与执行）及 §5 实验设定（RoboCasa365、LIBERO-Long）
+- [arXiv PDF](https://arxiv.org/pdf/2610.40271)：已通读方法部分（实验与附录以略读为准）：§3 高斯性分析、§4 高斯蒸馏（GAR 的均值/方差/二值指令读出、拟合与执行）及 §5 实验设定（RoboCasa365、LIBERO-Long）
 
 ## 推荐继续阅读
 

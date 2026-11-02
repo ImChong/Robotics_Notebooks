@@ -20,7 +20,7 @@ summary: "TOPS：通过重构 Flow 源分布与传输路径实现多任务机器
 
 # TOPS：通过重构 Flow 源分布与传输路径实现多任务机器人操作
 
-**TOPS**（*TOPS: Reshaping Flow Source and Transport for Multi-Task Robot Manipulation*，[arXiv:2610.36694](https://arxiv.org/abs/2610.36694)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**TOPS**（*TOPS: Reshaping Flow Source and Transport for Multi-Task Robot Manipulation*，[arXiv:2610.36694](https://arxiv.org/abs/2610.36694)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -117,7 +117,7 @@ flowchart TD
 - [tops-flow-source-transport-multitask_arxiv_2610_36694.md](../../sources/papers/tops-flow-source-transport-multitask_arxiv_2610_36694.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.36694](https://arxiv.org/abs/2610.36694)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36694)：已通读全文：方法（§3 预备与流反演、§4 任务源构造/插值调度/训练推理）；实验设定（§5.1）仅读到概览，附录证明与超参未逐条核对
+- [arXiv PDF](https://arxiv.org/pdf/2610.36694)：已通读方法部分（实验与附录以略读为准）：方法（§3 预备与流反演、§4 任务源构造/插值调度/训练推理）；实验设定（§5.1）仅读到概览，附录证明与超参未逐条核对
 
 ## 推荐继续阅读
 

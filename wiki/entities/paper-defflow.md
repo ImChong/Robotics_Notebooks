@@ -102,7 +102,7 @@ flowchart TD
 - [defflow_arxiv_2610_22827.md](../../sources/papers/defflow_arxiv_2610_22827.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22827](https://arxiv.org/abs/2610.22827)
-- [arXiv PDF](https://arxiv.org/pdf/2610.22827)：已通读全文：摘要、§I–§V（问题设定、PTv3 流预测、IK 动作提取、仿真基准与演示收集、基线与结果）、结论；附录未单列
+- [arXiv PDF](https://arxiv.org/pdf/2610.22827)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§V（问题设定、PTv3 流预测、IK 动作提取、仿真基准与演示收集、基线与结果）、结论；附录未单列
 
 ## 推荐继续阅读
 

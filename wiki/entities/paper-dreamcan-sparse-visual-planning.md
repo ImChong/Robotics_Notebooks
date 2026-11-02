@@ -106,7 +106,7 @@ flowchart TD
 
 - [DreamCan 论文摘录](../../sources/papers/dreamcan_arxiv_2610_24981.md)
 - [DreamCan 项目页归档](../../sources/sites/dreamcan.md)
-- [arXiv PDF](https://arxiv.org/pdf/2610.24981)：已通读全文：摘要、§I–§IV（分层架构、可达性与任务效用、动态规划子目标选择、视频模型微调、低层策略）；§V 实验设定与结果仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.24981)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§IV（分层架构、可达性与任务效用、动态规划子目标选择、视频模型微调、低层策略）；§V 实验设定与结果仅浏览
 
 ## 推荐继续阅读
 

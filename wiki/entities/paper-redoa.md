@@ -102,7 +102,7 @@ flowchart TD
 - [redoa_arxiv_2610_25691.md](../../sources/papers/redoa_arxiv_2610_25691.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25691](https://arxiv.org/abs/2610.25691)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25691)：已通读全文：四阶段流程与 Observation Alignment（§III）、实验设定与实现细节（§IV）、基线对比（§V-A/B）
+- [arXiv PDF](https://arxiv.org/pdf/2610.25691)：已通读方法部分（实验与附录以略读为准）：四阶段流程与 Observation Alignment（§III）、实验设定与实现细节（§IV）、基线对比（§V-A/B）
 
 ## 推荐继续阅读
 

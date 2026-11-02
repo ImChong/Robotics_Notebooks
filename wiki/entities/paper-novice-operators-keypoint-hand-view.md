@@ -107,7 +107,7 @@ flowchart TD
 - [novice_operators_keypoint_hand_view_arxiv_2610_27907.md](../../sources/papers/novice_operators_keypoint_hand_view_arxiv_2610_27907.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27907](https://arxiv.org/abs/2610.27907)
-- [arXiv PDF](https://arxiv.org/pdf/2610.27907)：已通读全文：§III 遥操作系统与关键点手部视觉表示、§III-D 策略训练、§IV 实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.27907)：已通读方法部分（实验与附录以略读为准）：§III 遥操作系统与关键点手部视觉表示、§III-D 策略训练、§IV 实验设定
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视�
 
 # Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视觉强化学习
 
-**Echo（离策略视觉 RL）**（*Echo: Scaling Visual Reinforcement Learning with Off-Policy Experience*，[arXiv:2610.37865](https://arxiv.org/abs/2610.37865)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Echo（离策略视觉 RL）**（*Echo: Scaling Visual Reinforcement Learning with Off-Policy Experience*，[arXiv:2610.37865](https://arxiv.org/abs/2610.37865)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -107,7 +107,7 @@ flowchart TD
 - [echo-visual-rl-off-policy-experience_arxiv_2610_37865.md](../../sources/papers/echo-visual-rl-off-policy-experience_arxiv_2610_37865.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37865](https://arxiv.org/abs/2610.37865)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37865)：已通读全文：§1–§5、Algorithm 1（§4 方法：逆向蒸馏 + 共享特权 critic）
+- [arXiv PDF](https://arxiv.org/pdf/2610.37865)：已通读方法部分（实验与附录以略读为准）：§1–§5、Algorithm 1（§4 方法：逆向蒸馏 + 共享特权 critic）
 
 ## 推荐继续阅读
 

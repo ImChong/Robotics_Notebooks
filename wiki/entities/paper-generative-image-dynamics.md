@@ -99,7 +99,7 @@ flowchart TD
 - [generative_image_dynamics_arxiv_2309_07906.md](../../sources/papers/generative_image_dynamics_arxiv_2309_07906.md)
 - [wechat_shenlan_cv_best_papers_2023_2026_labs.md](../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md)
 - [arXiv:2309.07906](https://arxiv.org/abs/2309.07906)
-- [arXiv PDF](https://arxiv.org/pdf/2309.07906)：已通读全文：运动表示、频率协调扩散、图像渲染与应用（§3–§6）
+- [arXiv PDF](https://arxiv.org/pdf/2309.07906)：已通读方法部分（实验与附录以略读为准）：运动表示、频率协调扩散、图像渲染与应用（§3–§6）
 
 ## 推荐继续阅读
 

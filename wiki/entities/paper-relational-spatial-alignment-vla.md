@@ -102,7 +102,7 @@ flowchart TD
 - [relational_spatial_alignment_vla_arxiv_2610_24705.md](../../sources/papers/relational_spatial_alignment_vla_arxiv_2610_24705.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24705](https://arxiv.org/abs/2610.24705)
-- [arXiv PDF](https://arxiv.org/pdf/2610.24705)：已通读全文：§3 方法（关系对齐动机、RIGID 注意力蒸馏与 Sinkhorn 最优传输、总损失），§4.1 实验设置与实现细节
+- [arXiv PDF](https://arxiv.org/pdf/2610.24705)：已通读方法部分（实验与附录以略读为准）：§3 方法（关系对齐动机、RIGID 注意力蒸馏与 Sinkhorn 最优传输、总损失），§4.1 实验设置与实现细节
 
 ## 推荐继续阅读
 

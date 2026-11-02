@@ -20,7 +20,7 @@ summary: "Which Hand Was Late：哪只手延迟了？双臂工具使用中的失
 
 # Which Hand Was Late：哪只手延迟了？双臂工具使用中的失败诊断与恢复
 
-**Which Hand Was Late**（*Which Hand Was Late? Diagnosis for Robot Failure Recovery in Bimanual Tool Use*，[arXiv:2610.37533](https://arxiv.org/abs/2610.37533)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Which Hand Was Late**（*Which Hand Was Late? Diagnosis for Robot Failure Recovery in Bimanual Tool Use*，[arXiv:2610.37533](https://arxiv.org/abs/2610.37533)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -106,7 +106,7 @@ flowchart TD
 - [which-hand-was-late-bimanual-failure-diagnosis_arxiv_2610_37533.md](../../sources/papers/which-hand-was-late-bimanual-failure-diagnosis_arxiv_2610_37533.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.37533](https://arxiv.org/abs/2610.37533)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37533)：已通读全文：任务与标签读取（§3）、探针协议与各传感通道结果（§3.3、§4）、修复策略（§5）、VLM 状态/答案读出分析（§6）
+- [arXiv PDF](https://arxiv.org/pdf/2610.37533)：已通读方法部分（实验与附录以略读为准）：任务与标签读取（§3）、探针协议与各传感通道结果（§3.3、§4）、修复策略（§5）、VLM 状态/答案读出分析（§6）
 
 ## 推荐继续阅读
 

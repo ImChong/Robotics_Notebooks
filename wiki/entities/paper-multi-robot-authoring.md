@@ -104,7 +104,7 @@ flowchart TD
 - [multi_robot_authoring_arxiv_2610_22670.md](../../sources/papers/multi_robot_authoring_arxiv_2610_22670.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22670](https://arxiv.org/abs/2610.22670)
-- [arXiv PDF](https://arxiv.org/pdf/2610.22670)：已通读全文：笔画图表示、Token 与 Shared-token 分配、反应式让行（§III、§IV）
+- [arXiv PDF](https://arxiv.org/pdf/2610.22670)：已通读方法部分（实验与附录以略读为准）：笔画图表示、Token 与 Shared-token 分配、反应式让行（§III、§IV）
 
 ## 推荐继续阅读
 

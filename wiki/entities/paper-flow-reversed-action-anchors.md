@@ -106,7 +106,7 @@ flowchart TD
 - [flow_reversed_action_anchors_arxiv_2610_22852.md](../../sources/papers/flow_reversed_action_anchors_arxiv_2610_22852.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22852](https://arxiv.org/abs/2610.22852)
-- [arXiv PDF](https://arxiv.org/pdf/2610.22852)：已通读全文：摘要、§1–§4、§3（AnchorQ 方法、Algorithm 1、理论结论 Theorem 1–3）；附录仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.22852)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§4、§3（AnchorQ 方法、Algorithm 1、理论结论 Theorem 1–3）；附录仅浏览
 
 ## 推荐继续阅读
 

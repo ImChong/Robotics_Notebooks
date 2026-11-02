@@ -109,7 +109,7 @@ flowchart TD
 - [noise_invariant_spatial_encoding_arxiv_2610_24674.md](../../sources/papers/noise_invariant_spatial_encoding_arxiv_2610_24674.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24674](https://arxiv.org/abs/2610.24674)
-- [arXiv PDF](https://arxiv.org/pdf/2610.24674)：已通读全文：深度噪声传播、GCVSS、GM3A 与训练/部署（§3.1–3.4）
+- [arXiv PDF](https://arxiv.org/pdf/2610.24674)：已通读方法部分（实验与附录以略读为准）：深度噪声传播、GCVSS、GM3A 与训练/部署（§3.1–3.4）
 
 ## 推荐继续阅读
 

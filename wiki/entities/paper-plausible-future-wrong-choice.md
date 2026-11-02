@@ -107,7 +107,7 @@ flowchart TD
 - [plausible_future_wrong_choice_arxiv_2610_28431.md](../../sources/papers/plausible_future_wrong_choice_arxiv_2610_28431.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28431](https://arxiv.org/abs/2610.28431)
-- [arXiv PDF](https://arxiv.org/pdf/2610.28431)：已通读全文：问题定义与总览（§3.1–3.2）、结构化任务状态（§3.3）、任务状态条件未来转向（§3.4）、StageBench（§4）
+- [arXiv PDF](https://arxiv.org/pdf/2610.28431)：已通读方法部分（实验与附录以略读为准）：问题定义与总览（§3.1–3.2）、结构化任务状态（§3.3）、任务状态条件未来转向（§3.4）、StageBench（§4）
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂
 
 # AcrossDEX 1.0：从人类运动预训练到跨灵巧手本体的双臂操作
 
-**AcrossDEX 1.0**（*AcrossDEX 1.0: From Human Motion Pretraining to Bimanual Dexterous Manipulation across Hand Embodiments*，[arXiv:2610.40210](https://arxiv.org/abs/2610.40210)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**AcrossDEX 1.0**（*AcrossDEX 1.0: From Human Motion Pretraining to Bimanual Dexterous Manipulation across Hand Embodiments*，[arXiv:2610.40210](https://arxiv.org/abs/2610.40210)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -112,7 +112,7 @@ flowchart TD
 - [acrossdex-bimanual-dexterous-human-motion-pretraining_arxiv_2610_40210.md](../../sources/papers/acrossdex-bimanual-dexterous-human-motion-pretraining_arxiv_2610_40210.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40210](https://arxiv.org/abs/2610.40210)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40210)：已通读全文：§II 方法 A-F（预训练、专家数据、嵌入字段与参数迁移、RTC 连续性），§III 实验设置与训练细节
+- [arXiv PDF](https://arxiv.org/pdf/2610.40210)：已通读方法部分（实验与附录以略读为准）：§II 方法 A-F（预训练、专家数据、嵌入字段与参数迁移、RTC 连续性），§III 实验设置与训练细节
 
 ## 推荐继续阅读
 

@@ -22,7 +22,7 @@ summary: "SkateNav：通过自适应滑行学习被动轮四足机器人的高�
 
 # SkateNav：通过自适应滑行学习被动轮四足机器人的高能效导航
 
-**SkateNav**（*SkateNav: Learning Energy-Efficient Navigation through Adaptive Skating on Passive-Wheel Quadrupedal Robots*，[arXiv:2610.25962](https://arxiv.org/abs/2610.25962)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**SkateNav**（*SkateNav: Learning Energy-Efficient Navigation through Adaptive Skating on Passive-Wheel Quadrupedal Robots*，[arXiv:2610.25962](https://arxiv.org/abs/2610.25962)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [skatenav-passive-wheel-quadruped-skating_arxiv_2610_25962.md](../../sources/papers/skatenav-passive-wheel-quadruped-skating_arxiv_2610_25962.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.25962](https://arxiv.org/abs/2610.25962)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25962)：已通读全文：任务与学习目标（§V-B/C）、自适应滑行周期（§V-D）、策略架构与实现（§V-E/F）
+- [arXiv PDF](https://arxiv.org/pdf/2610.25962)：已通读方法部分（实验与附录以略读为准）：任务与学习目标（§V-B/C）、自适应滑行周期（§V-D）、策略架构与实现（§V-E/F）
 
 ## 推荐继续阅读
 

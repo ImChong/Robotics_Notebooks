@@ -20,7 +20,7 @@ summary: "SaiVLA-JEPA：评估 JEPA 条件化 VLA 控制中的未来潜在表示
 
 # SaiVLA-JEPA：评估 JEPA 条件化 VLA 控制中的未来潜在表示预测
 
-**SaiVLA-JEPA**（*SaiVLA-JEPA: Evaluating Future Latent Prediction in JEPA-Conditioned VLA Control*，[arXiv:2610.38508](https://arxiv.org/abs/2610.38508)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**SaiVLA-JEPA**（*SaiVLA-JEPA: Evaluating Future Latent Prediction in JEPA-Conditioned VLA Control*，[arXiv:2610.38508](https://arxiv.org/abs/2610.38508)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -107,7 +107,7 @@ flowchart TD
 - [saivla-jepa-future-latent-prediction_arxiv_2610_38508.md](../../sources/papers/saivla-jepa-future-latent-prediction_arxiv_2610_38508.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.38508](https://arxiv.org/abs/2610.38508)
-- [arXiv PDF](https://arxiv.org/pdf/2610.38508)：已通读全文：§2 方法（共享动作路径 / 未来头 / 推理）、§3 测试时适配（TCA 上下文适配与重试；TPA 参数适配）
+- [arXiv PDF](https://arxiv.org/pdf/2610.38508)：已通读方法部分（实验与附录以略读为准）：§2 方法（共享动作路径 / 未来头 / 推理）、§3 测试时适配（TCA 上下文适配与重试；TPA 参数适配）
 
 ## 推荐继续阅读
 

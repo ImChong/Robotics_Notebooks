@@ -19,7 +19,7 @@ summary: "随机动作标记化全身控制：基于随机动作标记化的人�
 
 # 随机动作标记化全身控制：基于随机动作标记化的人形全身控制
 
-**随机动作标记化全身控制**（*Whole-Body Humanoid Control via Stochastic Motion Tokenization*，[arXiv:2610.36452](https://arxiv.org/abs/2610.36452)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**随机动作标记化全身控制**（*Whole-Body Humanoid Control via Stochastic Motion Tokenization*，[arXiv:2610.36452](https://arxiv.org/abs/2610.36452)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -103,7 +103,7 @@ flowchart TD
 - [stochastic-motion-tokenization-humanoid-wbc_arxiv_2610_36452.md](../../sources/papers/stochastic-motion-tokenization-humanoid-wbc_arxiv_2610_36452.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36452](https://arxiv.org/abs/2610.36452)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36452)：已通读全文：§III 方法（DAPS / TrajectoryGPT / RL 跟踪）、§IV 实验、§V 讨论
+- [arXiv PDF](https://arxiv.org/pdf/2610.36452)：已通读方法部分（实验与附录以略读为准）：§III 方法（DAPS / TrajectoryGPT / RL 跟踪）、§IV 实验、§V 讨论
 
 ## 推荐继续阅读
 

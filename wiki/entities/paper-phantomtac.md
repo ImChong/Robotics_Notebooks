@@ -100,7 +100,7 @@ flowchart TD
 - [phantomtac_arxiv_2610_26174.md](../../sources/papers/phantomtac_arxiv_2610_26174.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.26174](https://arxiv.org/abs/2610.26174)
-- [arXiv PDF](https://arxiv.org/pdf/2610.26174)：已通读全文：§3 攻击模型、§4 漏洞分析（逆向工程）、§5 标签设计与制作、§6 端到端评测、§7 防御讨论
+- [arXiv PDF](https://arxiv.org/pdf/2610.26174)：已通读方法部分（实验与附录以略读为准）：§3 攻击模型、§4 漏洞分析（逆向工程）、§5 标签设计与制作、§6 端到端评测、§7 防御讨论
 
 ## 推荐继续阅读
 

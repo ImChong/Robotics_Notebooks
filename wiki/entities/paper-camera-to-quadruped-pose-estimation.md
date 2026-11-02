@@ -20,7 +20,7 @@ summary: "相机到四足位姿估计：基于序列图像的外部相机—四�
 
 # 相机到四足位姿估计：基于序列图像的外部相机—四足机器人姿态估计
 
-**相机到四足位姿估计**（*Camera-to-Quadruped Robot Pose Estimation from Sequential Images*，[arXiv:2610.36599](https://arxiv.org/abs/2610.36599)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**相机到四足位姿估计**（*Camera-to-Quadruped Robot Pose Estimation from Sequential Images*，[arXiv:2610.36599](https://arxiv.org/abs/2610.36599)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -110,7 +110,7 @@ flowchart TD
 - [camera-to-quadruped-pose-estimation_arxiv_2610_36599.md](../../sources/papers/camera-to-quadruped-pose-estimation_arxiv_2610_36599.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36599](https://arxiv.org/abs/2610.36599)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36599)：已通读全文：§1–§6（§3 QuadPose 方法与损失、§4 QuadSyn 数据集、§5 实验含 Harper 真实数据）
+- [arXiv PDF](https://arxiv.org/pdf/2610.36599)：已通读方法部分（实验与附录以略读为准）：§1–§6（§3 QuadPose 方法与损失、§4 QuadSyn 数据集、§5 实验含 Harper 真实数据）
 
 ## 推荐继续阅读
 

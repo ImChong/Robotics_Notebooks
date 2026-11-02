@@ -20,7 +20,7 @@ summary: "通过示范扩展与执行设计改善精细机器人操作（arXiv:2
 
 # 通过示范扩展与执行设计改善精细机器人操作
 
-**示范扩展与执行设计**（*Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design*，[arXiv:2610.40430](https://arxiv.org/abs/2610.40430)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**示范扩展与执行设计**（*Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design*，[arXiv:2610.40430](https://arxiv.org/abs/2610.40430)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -103,7 +103,7 @@ flowchart TD
 - [demonstration-expansion-execution-design-fine-grained_arxiv_2610_40430.md](../../sources/papers/demonstration-expansion-execution-design-fine-grained_arxiv_2610_40430.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40430](https://arxiv.org/abs/2610.40430)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40430)：已通读全文：§1–§4（§2 方法：配对示教扩展、物理一致视觉扩展、层级采样、VLA 微调、闭环执行；§3 实验）
+- [arXiv PDF](https://arxiv.org/pdf/2610.40430)：已通读方法部分（实验与附录以略读为准）：§1–§4（§2 方法：配对示教扩展、物理一致视觉扩展、层级采样、VLA 微调、闭环执行；§3 实验）
 
 ## 推荐继续阅读
 

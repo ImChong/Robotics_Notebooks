@@ -105,7 +105,7 @@ flowchart TD
 - [compositional_motion_styles_arxiv_2610_24008.md](../../sources/papers/compositional_motion_styles_arxiv_2610_24008.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24008](https://arxiv.org/abs/2610.24008)
-- [arXiv PDF](https://arxiv.org/pdf/2610.24008)：已通读全文：摘要、§I–§IV（问题设定、retargeting、弱监督表示、共识几何与聚类、条件 AMP 组合控制、Go2 案例设置）；§V 评估结果仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.24008)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§IV（问题设定、retargeting、弱监督表示、共识几何与聚类、条件 AMP 组合控制、Go2 案例设置）；§V 评估结果仅浏览
 
 ## 推荐继续阅读
 

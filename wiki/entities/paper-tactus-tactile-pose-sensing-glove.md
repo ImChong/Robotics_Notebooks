@@ -20,7 +20,7 @@ summary: "Tactus：用于自然灵巧操作数据采集的触觉与姿态感知�
 
 # Tactus：用于自然灵巧操作数据采集的触觉与姿态感知手套
 
-**Tactus**（*Tactus: Tactile & Pose Sensing Glove for Natural Dexterity Data Collection*，[arXiv:2610.39076](https://arxiv.org/abs/2610.39076)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Tactus**（*Tactus: Tactile & Pose Sensing Glove for Natural Dexterity Data Collection*，[arXiv:2610.39076](https://arxiv.org/abs/2610.39076)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -114,7 +114,7 @@ flowchart TD
 - [tactus-tactile-pose-sensing-glove_arxiv_2610_39076.md](../../sources/papers/tactus-tactile-pose-sensing-glove_arxiv_2610_39076.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39076](https://arxiv.org/abs/2610.39076)
-- [arXiv PDF](https://arxiv.org/pdf/2610.39076)：已通读全文：系统设计（§III）与信号建模（§IV-A 触觉标定、§IV-B 位姿跟踪）；评测与应用部分（§V–§VI）仅概览，未逐表核对
+- [arXiv PDF](https://arxiv.org/pdf/2610.39076)：已通读方法部分（实验与附录以略读为准）：系统设计（§III）与信号建模（§IV-A 触觉标定、§IV-B 位姿跟踪）；评测与应用部分（§V–§VI）仅概览，未逐表核对
 
 ## 推荐继续阅读
 

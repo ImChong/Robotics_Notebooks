@@ -20,7 +20,7 @@ summary: "RAIBO-Wagon：四足机器人牵引货车的实时导航系统（arXiv
 
 # RAIBO-Wagon：四足机器人牵引货车的实时导航系统
 
-**RAIBO-Wagon**（*RAIBO-Wagon: Real-Time Navigation System for a Legged Robot Towing a Wagon*，[arXiv:2610.39267](https://arxiv.org/abs/2610.39267)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**RAIBO-Wagon**（*RAIBO-Wagon: Real-Time Navigation System for a Legged Robot Towing a Wagon*，[arXiv:2610.39267](https://arxiv.org/abs/2610.39267)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -113,7 +113,7 @@ flowchart TD
 - [raibo-wagon-legged-towing-navigation_arxiv_2610_39267.md](../../sources/papers/raibo-wagon-legged-towing-navigation_arxiv_2610_39267.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.39267](https://arxiv.org/abs/2610.39267)
-- [arXiv PDF](https://arxiv.org/pdf/2610.39267)：已通读全文：§III 预备知识（MPPI、CFM+CFG）、§IV 方法（低层控制器、专家路径优化器/跟踪器、FDM、CFM 蒸馏、CFM 热启动 MPPI）、§V 实现细节；§VI 实验结果仅浏览
+- [arXiv PDF](https://arxiv.org/pdf/2610.39267)：已通读方法部分（实验与附录以略读为准）：§III 预备知识（MPPI、CFM+CFG）、§IV 方法（低层控制器、专家路径优化器/跟踪器、FDM、CFM 蒸馏、CFM 热启动 MPPI）、§V 实现细节；§VI 实验结果仅浏览
 
 ## 推荐继续阅读
 

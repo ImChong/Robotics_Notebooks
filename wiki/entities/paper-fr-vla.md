@@ -104,7 +104,7 @@ flowchart TD
 - [fr_vla_arxiv_2610_25981.md](../../sources/papers/fr_vla_arxiv_2610_25981.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25981](https://arxiv.org/abs/2610.25981)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25981)：已通读全文：§3 方法（动机、隐式力推理模块、Force Tokenizer 与准入条件注意力、训练目标）、§4 实验
+- [arXiv PDF](https://arxiv.org/pdf/2610.25981)：已通读方法部分（实验与附录以略读为准）：§3 方法（动机、隐式力推理模块、Force Tokenizer 与准入条件注意力、训练目标）、§4 实验
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "HiFOR：面向视觉语言动作模型的分层未来预测与动作�
 
 # HiFOR：面向视觉语言动作模型的分层未来预测与动作引导世界信息关联
 
-**HiFOR**（*HiFOR: Hierarchical Foresight with Action-Guided World Grounding for Vision-Language-Action Model*，[arXiv:2610.40373](https://arxiv.org/abs/2610.40373)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**HiFOR**（*HiFOR: Hierarchical Foresight with Action-Guided World Grounding for Vision-Language-Action Model*，[arXiv:2610.40373](https://arxiv.org/abs/2610.40373)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -109,7 +109,7 @@ flowchart TD
 - [hifor-hierarchical-foresight-vla_arxiv_2610_40373.md](../../sources/papers/hifor-hierarchical-foresight-vla_arxiv_2610_40373.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40373](https://arxiv.org/abs/2610.40373)
-- [arXiv PDF](https://arxiv.org/pdf/2610.40373)：已通读全文：方法 §3.1–3.6（里程碑数据构造、层次前瞻预测、结构化潜世界、AWR）、训练目标 (12) 与 §4 实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2610.40373)：已通读方法部分（实验与附录以略读为准）：方法 §3.1–3.6（里程碑数据构造、层次前瞻预测、结构化潜世界、AWR）、训练目标 (12) 与 §4 实验设定
 
 ## 推荐继续阅读
 

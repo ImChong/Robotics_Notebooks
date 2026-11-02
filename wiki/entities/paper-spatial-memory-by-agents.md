@@ -100,7 +100,7 @@ flowchart TD
 - [spatial_memory_by_agents_arxiv_2610_22736.md](../../sources/papers/spatial_memory_by_agents_arxiv_2610_22736.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22736](https://arxiv.org/abs/2610.22736)
-- [arXiv PDF](https://arxiv.org/pdf/2610.22736)：已通读全文：§III 设计者协议与冻结的构建-打包-查询评测，§IV 五条任务线与评分，§V 实验设置
+- [arXiv PDF](https://arxiv.org/pdf/2610.22736)：已通读方法部分（实验与附录以略读为准）：§III 设计者协议与冻结的构建-打包-查询评测，§IV 五条任务线与评分，§V 实验设置
 
 ## 推荐继续阅读
 

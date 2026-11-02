@@ -20,7 +20,7 @@ summary: "VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗�
 
 # VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗时分析
 
-**VLA-HWBench**（*VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware*，[arXiv:2610.34717](https://arxiv.org/abs/2610.34717)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**VLA-HWBench**（*VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware*，[arXiv:2610.34717](https://arxiv.org/abs/2610.34717)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -104,7 +104,7 @@ flowchart LR
 - [vla-hwbench-edge-hardware-latency_arxiv_2610_34717.md](../../sources/papers/vla-hwbench-edge-hardware-latency_arxiv_2610_34717.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.34717](https://arxiv.org/abs/2610.34717)
-- [arXiv PDF](https://arxiv.org/pdf/2610.34717)：已通读全文：研究问题与七阶段延迟分解（§3.1）、指标与设计原则（§3.2–3.3）、各阶段占比/优化/roofline 结果概览
+- [arXiv PDF](https://arxiv.org/pdf/2610.34717)：已通读方法部分（实验与附录以略读为准）：研究问题与七阶段延迟分解（§3.1）、指标与设计原则（§3.2–3.3）、各阶段占比/优化/roofline 结果概览
 
 ## 推荐继续阅读
 

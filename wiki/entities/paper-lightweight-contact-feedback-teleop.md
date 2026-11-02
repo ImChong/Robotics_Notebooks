@@ -107,7 +107,7 @@ flowchart TD
 - [lightweight_contact_feedback_teleop_arxiv_2610_24257.md](../../sources/papers/lightweight_contact_feedback_teleop_arxiv_2610_24257.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.24257](https://arxiv.org/abs/2610.24257)
-- [arXiv PDF](https://arxiv.org/pdf/2610.24257)：已通读全文：XRT 系统（重定向、接触信号与两种反馈显示、锁步控制）与用户研究设计（§III、§IV）
+- [arXiv PDF](https://arxiv.org/pdf/2610.24257)：已通读方法部分（实验与附录以略读为准）：XRT 系统（重定向、接触信号与两种反馈显示、锁步控制）与用户研究设计（§III、§IV）
 
 ## 推荐继续阅读
 

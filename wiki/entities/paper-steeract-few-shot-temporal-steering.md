@@ -113,7 +113,7 @@ flowchart TD
 
 - [SteerAct 论文摘录](../../sources/papers/steeract_arxiv_2610_25632.md)
 - [SteerAct 项目页归档](../../sources/sites/steeract.md)
-- [arXiv PDF](https://arxiv.org/pdf/2610.25632)：已通读全文：§3 方法（SAE、时间描述符、离线特征选择、在线支持门/失败门/转向系数），§4.1 实验设置
+- [arXiv PDF](https://arxiv.org/pdf/2610.25632)：已通读方法部分（实验与附录以略读为准）：§3 方法（SAE、时间描述符、离线特征选择、在线支持门/失败门/转向系数），§4.1 实验设置
 
 ## 推荐继续阅读
 

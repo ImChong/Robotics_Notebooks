@@ -19,7 +19,7 @@ summary: "腕目标与关节限位实证：人形手臂重定向中腕部目标�
 
 # 腕目标与关节限位实证：人形手臂重定向中腕部目标构造与关节限位的实证研究
 
-**腕目标与关节限位实证**（*An Empirical Study of Wrist-Target Construction and Joint-Angle Limits in Humanoid Arm Retargeting*，[arXiv:2610.37801](https://arxiv.org/abs/2610.37801)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**腕目标与关节限位实证**（*An Empirical Study of Wrist-Target Construction and Joint-Angle Limits in Humanoid Arm Retargeting*，[arXiv:2610.37801](https://arxiv.org/abs/2610.37801)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -103,7 +103,7 @@ flowchart TD
 - [wrist-target-joint-limit-humanoid-arm-retargeting_arxiv_2610_37801.md](../../sources/papers/wrist-target-joint-limit-humanoid-arm-retargeting_arxiv_2610_37801.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37801](https://arxiv.org/abs/2610.37801)
-- [arXiv PDF](https://arxiv.org/pdf/2610.37801)：已通读全文：方法（§III 问题形式化、§IV-A 动作捕捉与预处理、§IV-B 关节角计算）与实验设定（硬件回放协议）
+- [arXiv PDF](https://arxiv.org/pdf/2610.37801)：已通读方法部分（实验与附录以略读为准）：方法（§III 问题形式化、§IV-A 动作捕捉与预处理、§IV-B 关节角计算）与实验设定（硬件回放协议）
 
 ## 推荐继续阅读
 

@@ -106,7 +106,7 @@ flowchart TD
 - [ord_wm_arxiv_2610_23156.md](../../sources/papers/ord_wm_arxiv_2610_23156.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23156](https://arxiv.org/abs/2610.23156)
-- [arXiv PDF](https://arxiv.org/pdf/2610.23156)：已通读全文：对象中心观测、SDF-VNVAE、刚体动力学与 CEM-MPC（§3.1–3.4、§4）
+- [arXiv PDF](https://arxiv.org/pdf/2610.23156)：已通读方法部分（实验与附录以略读为准）：对象中心观测、SDF-VNVAE、刚体动力学与 CEM-MPC（§3.1–3.4、§4）
 
 ## 推荐继续阅读
 

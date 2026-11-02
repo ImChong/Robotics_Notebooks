@@ -20,7 +20,7 @@ summary: "DEX-PHD：面向多模态数据采集的便携式灵巧手持设备（
 
 # DEX-PHD：面向多模态数据采集的便携式灵巧手持设备
 
-**DEX-PHD**（*DEX-PHD: A Dexterous Portable Handheld Device for Multimodal Data Collection*，[arXiv:2610.35462](https://arxiv.org/abs/2610.35462)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**DEX-PHD**（*DEX-PHD: A Dexterous Portable Handheld Device for Multimodal Data Collection*，[arXiv:2610.35462](https://arxiv.org/abs/2610.35462)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -105,7 +105,7 @@ flowchart TD
 - [dex-phd-handheld-data-collection_arxiv_2610_35462.md](../../sources/papers/dex-phd-handheld-data-collection_arxiv_2610_35462.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.35462](https://arxiv.org/abs/2610.35462)
-- [arXiv PDF](https://arxiv.org/pdf/2610.35462)：已通读全文：§I–§V（§III 硬件/关节映射/轨迹生成/同步，§IV 演示、IK 与实机回放）
+- [arXiv PDF](https://arxiv.org/pdf/2610.35462)：已通读方法部分（实验与附录以略读为准）：§I–§V（§III 硬件/关节映射/轨迹生成/同步，§IV 演示、IK 与实机回放）
 
 ## 推荐继续阅读
 
