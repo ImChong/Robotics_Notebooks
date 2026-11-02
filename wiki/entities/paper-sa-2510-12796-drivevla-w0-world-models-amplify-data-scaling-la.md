@@ -49,6 +49,26 @@ World models amplify data scaling laws in autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：语言指令 L、前视图像 V、历史动作 A（FAST tokenizer 离散化），按 H 步交错成序列 S_t"] --> VLM["VLM 骨干（因果注意力）：VQ 版 Emu3 8B / ViT 版 Qwen2.5-VL 7B"]
+    VLM --> F["末层隐状态拆为语言 / 视觉 / 动作特征 F_L, F_V, F_A"]
+    F --> ACT["动作预测：交叉熵 L_Action，FAST 反 tokenize 成 waypoints"]
+    F --> WM{"世界模型（稠密自监督，仅训练时）"}
+    WM -->|"VQ 版"| AR["AR World Model：自回归预测当前图像的离散视觉 token，L_WM-AR"]
+    WM -->|"ViT 版"| DF["Diffusion World Model：以 F_V, F_A 为条件去噪未来图像潜变量，L_WM-Diff"]
+    ACT --> LOSS["联合损失：L_Action + α·L_WM-AR 或 β·L_WM-Diff"]
+    AR --> LOSS
+    DF --> LOSS
+    VLM --> MOE["Action Expert（500M）与 VLA Expert 经 Joint Attention 融合（MoE），预填充 A_t-1 特征"]
+    MOE --> DEC["三种动作解码：Query-based 回归 / 自回归 / Flow Matching"]
+    DEC --> WP["实时输出 waypoints（推理时跳过世界模型）"]
+```
+
+图依据：论文 §3 Methodology（§3.1 VLA Baseline、§3.2 World Modeling、§3.3 Action Expert；Fig. 2、Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +128,7 @@ World models amplify data scaling laws in autonomous driving.
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2510.12796)：已通读方法部分（实验与附录以略读为准）：§1–2 引言与相关工作（略读）、§3 方法（3.1–3.3）
 
 ## 推荐继续阅读
 

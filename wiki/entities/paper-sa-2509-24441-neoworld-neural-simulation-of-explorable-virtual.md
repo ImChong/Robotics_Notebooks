@@ -42,6 +42,30 @@ A deep learning framework that supports user‑driven object manipulation and ph
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["单张输入图像 I_i"] --> DEC["分解为前景 / 背景深度层<br/>全景分割 + 深度与法线估计"]
+    DEC --> GAU["object-centric Gaussian 层（2.5D）<br/>每个高斯带紧凑实例嵌入 γ（固定码本）"]
+    GAU --> SEL["按预定义前景类别与距相机远近选 top-N 物体<br/>或由用户提示指定"]
+    SEL --> I23D["image-to-3D（Amodal3R）补全物体"]
+    I23D --> ALIGN["对齐到场景<br/>粗对齐：位姿 token 联合扩散<br/>细对齐：深度 + 轮廓 Dice 可微渲染优化"]
+    ALIGN --> CHK{"DINOv2 特征相似度 ≥ τ ?"}
+    CHK -->|"否"| REV["回退为 2.5D 表示"]
+    CHK -->|"是"| HYB["混合场景：2.5D 背景 + 3D 前景"]
+    REV --> HYB
+    HYB --> CAM["用户移动相机，渲染新视角"]
+    CAM --> INP["图像修复补全缺失区域<br/>再做分割与高斯优化、跨视角实例对齐"]
+    INP --> GAU
+    USER["用户指令（物体操控 / 文本驱动动态）"] --> LLM["LLM（Gemini-2.5-pro）解析<br/>输出目标物体索引 I 与操作属性 A"]
+    HYB --> LLM
+    LLM --> ANIM["物体变换 / 动画 / MPM 物理仿真"]
+    ANIM --> HYB
+```
+
+图依据：论文 §3.1–§3.4、Fig.2（模型架构与渲染流水线）；「交互后回到混合场景」的箭头为按 §3.4 叙述归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ A deep learning framework that supports user‑driven object manipulation and ph
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.24441>
+- [arXiv PDF](https://arxiv.org/pdf/2509.24441)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4 方法
 
 ## 推荐继续阅读
 
