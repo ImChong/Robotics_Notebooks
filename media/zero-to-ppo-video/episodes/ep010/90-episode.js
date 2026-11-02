@@ -68,11 +68,11 @@
         items: [
           '**《Modern Robotics》** Lynch & Park：式 (3.30)(3.42)(3.51)、命题 3.25',
           '**《Modern Robotics》** 3.2.3.3 节，图 3.19、定义 3.24、例 4.20',
-          '**《Modern Robotics》** 第 1 章、2.3.2 节、式 (4.14)、4.5 节',
+          '**《Modern Robotics》** 第 1 章、2.3.2 节、式 (4.4)(4.14)、4.5 节',
           '**Murray、Li、Sastry**（1994）第 2 章：式 (2.40)，h = d / θ',
           '**Hall**（arXiv:math-ph/0005032）命题 3.8：(I + X/m)ᵐ → eˣ',
           '**OpenStax《College Algebra 2e》** 6.1 节表 5（复利）',
-          '**《Modern Robotics》** 例 4.5（UR5）、5.1.1 节、6.2.2 节',
+          '**《Modern Robotics》** 3.3.1 节、例 4.5（UR5）、5.1.1 节、6.2.2 节',
           '**Solà 等**（arXiv:1812.01537）式 (25)(26)；**SI 手册**表 4',
           '**MuJoCo 源码**：engine_util_spatial.c 的 mju_quatIntegrate',
           '**Modern Robotics 官方代码**：MatrixExp3、MatrixLog3、MatrixExp6'

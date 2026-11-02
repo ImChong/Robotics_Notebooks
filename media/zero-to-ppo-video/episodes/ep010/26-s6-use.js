@@ -4,6 +4,8 @@
 //    绕身体自己的轴转，原书式 (3.51) 下面那段），「一步一步乘起来」连走 50 步、转 1 弧度；MuJoCo 源码 engine_util_spatial.c 的
 //    mju_quatIntegrate 就是「角速度 × 时间 → 绕轴转多少 → 乘到朝向上」（用四元数写）；
 // ③ 反过来：手要去抓杯子（杯子按同一个投影画成三维圆柱杯），矩阵对数算出还差多少（原书 6.2.2 节 [V_b] = log T_bd），一点一点改关节角（第 15 集）；
+// ①b 和齐次变换连乘有什么区别（2026-11-02 用户要求加进视频）：连乘把已有的几个四乘四按顺序接起来（原书 3.3.1 节 T_ab T_bc = T_ac、式 (4.4)，第 7 集）；
+//    矩阵指数从螺旋轴和转了多少算出这次转动的四乘四（命题 3.25）；指数积公式两样都用（式 (4.14)）；矩阵指数自己也能看成同一小步连乘无穷多次（Hall 命题 3.8，第 2 幕）；
 // ④ 后面几集：第 11 集正向运动学（指数积公式）、第 13 集雅可比（对指数积公式求导，原书 5.1.1 节）、第 15 集数值逆运动学（矩阵对数，原书 6.2.2 节）。
 // 时刻取自配音的逐词时间，见 ../ep010.py。
 (function () {
@@ -12,12 +14,14 @@
   var T = {
     title: 0.65, first: 2.59, fk: 3.12, arm: 0.3, joint: 4.22, axes: [7.0, 7.25, 7.5, 7.75, 8.0, 8.25], turn: [8.97, 9.8], ang: 10.4,
     each: 11.95, facs: [12.77, 12.98, 13.28, 13.5, 13.71, 13.92], mult: 14.28, mM: 15.54, zero: 17.11, hand: 19.36, name: 21.37, ep11: 22.49, outA: 24.4,
-    two: 24.69, upd: 25.23, gyro: 26.29, omega: 28.37, w2: 30.49, dt: 31.44, mul: 32.78, res: 36.47,
-    give: 39.71, onto: 41.18, newR: 43.07, same: 44.02, run: [45.08, 47.4], sim: 47.06, outB: 50.9,
-    three: 51.15, rev: 51.83, cup: 53.29, now: 53.87, diff: 55.17, log: 56.71, axisq: 58.33, iter: [59.85, 61.9], ep15: 62.36, outC: 65.5,
-    d0: 65.74, e11: 68.07, e13: 70.09, e15: 71.72, from: 74.1
+    x0: 24.7, q7: 26.09, chA: 29.66, mats: 31.21, join: 32.87, expB: 33.56, axis: 35.27, turnQ: 36.02, calc: 36.87, out44: 38.07,
+    poe: 39.84, useExp: 43.16, thenMul: 46.13, self: 47.07, sc2: 49.87, small: 51.08, inf: 52.01, outX: 53.6,
+    two: 54.07, upd: 54.61, gyro: 55.67, omega: 57.75, w2: 59.87, dt: 60.82, mul: 62.16, res: 65.85,
+    give: 69.09, onto: 70.56, newR: 72.45, same: 73.4, run: [74.46, 76.78], sim: 76.44, outB: 80.28,
+    three: 80.53, rev: 81.21, cup: 82.67, now: 83.25, diff: 84.55, log: 86.09, axisq: 87.71, iter: [89.23, 91.28], ep15: 91.74, outC: 94.88,
+    d0: 95.12, e11: 97.45, e13: 99.47, e15: 101.1, from: 103.48
   };
-  var END = 76.73;
+  var END = 106.1;
   var JN = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint'];
   var HOP = [0.6, 0.84, 0.936, 1];
   function iterFrac(st) {   // ③ 一共 4 跳，每跳 0.35 s
@@ -32,13 +36,15 @@
     cues: [
       { at: 0, s: '矩阵指数用在哪？① 正向运动学：每个关节是一根**螺旋轴**，转了多少就是**角度**' },
       { at: 11.86, s: '各算一个**矩阵指数**按顺序相乘，再乘 M（关节都在 0° 时手的位姿）：手的**位姿**（第 11 集）' },
-      { at: 24.6, s: '② 更新**朝向**：陀螺仪测到角速度 2 弧度/秒，隔 0.01 秒：2 × 0.01 = 0.02 弧度' },
-      { at: 38.69, s: '交给**矩阵指数**、乘到原来的**朝向**上，一步一步乘（MuJoCo 源码就这样更新朝向）' },
-      { at: 51.05, s: '③ 反过来：用**矩阵对数**算出还差多少，再一点一点改关节角（第 15 集）' },
-      { at: 65.64, s: '第 11 集正向运动学、第 13 集雅可比、第 15 集数值逆运动学：都从**矩阵指数**出发' }
+      { at: 24.6, s: '连乘：已有的几个 4 × 4 **按顺序接起来**；**矩阵指数**：从螺旋轴、角度算出这次转动的 4 × 4' },
+      { at: 39.74, s: '指数积公式两样都用：每个关节先算**矩阵指数**，再**连乘**；矩阵指数自己 = 同一小步乘无穷多次' },
+      { at: 53.98, s: '② 更新**朝向**：陀螺仪测到角速度 2 弧度/秒，隔 0.01 秒：2 × 0.01 = 0.02 弧度' },
+      { at: 68.06, s: '交给**矩阵指数**、乘到原来的**朝向**上，一步一步乘（MuJoCo 源码就这样更新朝向）' },
+      { at: 80.42, s: '③ 反过来：用**矩阵对数**算出还差多少，再一点一点改关节角（第 15 集）' },
+      { at: 95.02, s: '第 11 集正向运动学、第 13 集雅可比、第 15 集数值逆运动学：都从**矩阵指数**出发' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('矩阵指数用在哪：一、正向运动学，每个关节是一根螺旋轴，各算一个矩阵指数按顺序相乘再乘上零位时手的位姿，就是手现在的位姿（指数积公式，第十一集）；二、更新朝向，陀螺仪测到角速度每秒两弧度，隔 0.01 秒转 2 × 0.01 = 0.02 弧度，交给矩阵指数乘到原来的朝向上，一步一步乘起来，物理仿真器 MuJoCo 就这样更新朝向；三、反过来用矩阵对数算出手离目标还差多少，一点一点改关节角（数值逆运动学，第十五集）；第十一集正向运动学、第十三集雅可比、第十五集数值逆运动学都从矩阵指数出发');
+      var s = K.sceneSvg('矩阵指数用在哪：一、正向运动学，每个关节是一根螺旋轴，各算一个矩阵指数按顺序相乘再乘上零位时手的位姿，就是手现在的位姿（指数积公式，第十一集）；和第七集齐次变换的连乘有什么区别：连乘把已有的几个四乘四按顺序接起来，矩阵指数从螺旋轴和转了多少算出这次转动的四乘四，指数积公式两样都用，矩阵指数自己也能看成同一小步乘无穷多次；二、更新朝向，陀螺仪测到角速度每秒两弧度，隔 0.01 秒转 2 × 0.01 = 0.02 弧度，交给矩阵指数乘到原来的朝向上，一步一步乘起来，物理仿真器 MuJoCo 就这样更新朝向；三、反过来用矩阵对数算出手离目标还差多少，一点一点改关节角（数值逆运动学，第十五集）；第十一集正向运动学、第十三集雅可比、第十五集数值逆运动学都从矩阵指数出发');
       var X = RX + 10;
       /* ══ ① 正向运动学：UR5 斜视 + 六根关节轴 + 指数积公式（2026-11-02 从第 5 幕挪过来）══ */
       var g3 = E.el('g', {}, s);
@@ -83,6 +89,52 @@
       E.txt(c11, RX + 18, 362, '第 11 集 · 正运动学', 22, E.GOOD, 'start', 900);
       E.txt(c11, RX + 18, 388, '六个关节连乘 → 手的位姿', 19, E.INK, 'start', 700);
 
+
+      /* ══ ①b 矩阵指数和齐次变换连乘有什么区别（2026-11-02 用户要求加进视频）══ */
+      var gX = E.el('g', {}, s), RX2 = E.rowKit();
+      RX2.line(gX, 190, 32, [['矩阵指数', E.HI, 900], ['和', E.INK2, 700], ['齐次变换连乘', E.INK, 900], ['：有什么区别？', E.INK2, 700]], 24);
+      // 左卡：连乘，三个已有的四乘四按顺序接起来（第 7 集）
+      var cardA = E.el('g', {}, gX);
+      var rectA = K.paint(E.el('rect', { x: 24, y: 50, width: 364, height: 150, rx: 14, 'stroke-width': 2.5 }, cardA), E.tint(E.INK2, 8, 'var(--demo-surface)'), E.INK2);
+      RX2.line(cardA, 44, 84, [['齐次变换连乘', E.INK, 900], ['（第 7 集）', E.INK2, 700]], 22);
+      var sq = [0, 1, 2].map(function (i) {
+        var g = E.el('g', {}, cardA), x0 = 56 + 92 * i;
+        K.paint(E.el('rect', { x: x0, y: 102, width: 60, height: 56, rx: 8, 'stroke-width': 2.5 }, g), E.tint(E.INK2, 22, 'var(--demo-surface)'), E.INK);
+        E.txt(g, x0 + 30, 139, 'T' + '₁₂₃'[i], 24, E.INK, 'middle', 900);
+        return g;
+      });
+      var links = [0, 1].map(function (i) { var v = E.vec(cardA, E.INK2, 3, { head: 10 }); v.set(56 + 92 * i + 64, 130, 56 + 92 * (i + 1) - 4, 130); return v; });
+      var dotsA = E.txt(cardA, 330, 138, '⋯', 24, E.INK2, 'middle', 900);
+      var capA = E.txt(cardA, 44, 186, '已有的几个 4 × 4 → 按顺序接起来', 18, E.INK2, 'start', 700);
+      // 右卡：矩阵指数，螺旋轴 + 转了多少 → 这次转动的四乘四（这一集）
+      var cardB = E.el('g', {}, gX);
+      var rectB = K.paint(E.el('rect', { x: 412, y: 50, width: 364, height: 150, rx: 14, 'stroke-width': 2.5 }, cardB), E.tint(E.HI, 10, 'var(--demo-surface)'), E.HI);
+      RX2.line(cardB, 432, 84, [['矩阵指数', E.HI, 900], ['（这一集）', E.INK2, 700]], 22);
+      var inS = E.txt(cardB, 436, 122, '螺旋轴 S', 20, E.WARN, 'start', 900);
+      var inTh = E.txt(cardB, 436, 154, '转了 θ', 20, E.OMEGA, 'start', 900);
+      var arrB = E.vec(cardB, E.INK2, 3, { head: 11 }); arrB.set(530, 130, 572, 130);
+      var boxB = E.el('g', {}, cardB);
+      K.paint(E.el('rect', { x: 580, y: 102, width: 176, height: 56, rx: 8, 'stroke-width': 2.5 }, boxB), E.tint(E.HI, 18, 'var(--demo-surface)'), E.HI);
+      E.tex(boxB, 668, 138, '\\exp([\\mathcal S]\\,\\theta)', 24, E.INK, 'middle', { w: 150, h: 44 });
+      var capB = E.txt(cardB, 432, 186, '一根轴、转了多少 → 这次转动的 4 × 4', 18, E.INK2, 'start', 700);
+      // 中间：指数积公式，每个 exp 是矩阵指数，整串是连乘
+      var FY2 = 274, X0 = 128, poe = E.el('g', {}, gX);
+      E.tex(poe, X0, FY2, 'T_{\\text{手}}=', 24, E.INK, 'start', { w: 72, h: 44 });
+      var expX = [X0 + 78, X0 + 212, X0 + 384];
+      var expBx = [1, 2, 6].map(function (j, k) {
+        var g = E.el('g', {}, poe), x = expX[k];
+        var box = K.paint(E.el('rect', { x: x - 7, y: FY2 - 29, width: 126, height: 42, rx: 8, 'stroke-width': 2 }, g), E.tint(E.HI, 16, 'var(--demo-surface)'), E.HI);
+        E.tex(g, x, FY2, '\\exp([\\mathcal S_' + j + ']\\,\\theta_' + j + ')', 22, E.INK, 'start', { w: 104, h: 44 });
+        return { g: g, box: box, lab: E.txt(poe, x + 56, FY2 + 38, '矩阵指数', 16, E.HI, 'middle', 900) };
+      });
+      E.tex(poe, X0 + 344, FY2, '\\cdots', 22, E.INK, 'start', { w: 30, h: 44 });
+      E.tex(poe, X0 + 518, FY2, 'M', 24, E.INK, 'start', { w: 30, h: 44 });
+      var BK = [X0 + 71, X0 + 540];
+      var brk = K.paint(E.el('path', { d: 'M ' + BK[0] + ' ' + (FY2 - 35) + ' V ' + (FY2 - 45) + ' H ' + BK[1] + ' V ' + (FY2 - 35), fill: 'none', 'stroke-width': 2.5 }, gX), null, E.INK);
+      var brkLab = E.txt(gX, (BK[0] + BK[1]) / 2, FY2 - 54, '连乘：按顺序接起来', 18, E.INK, 'middle', 900);
+      // 下面：矩阵指数自己，也能看成同一小步连乘无穷多次（第 2 幕）
+      var xS = RX2.line(gX, 100, 354, [['矩阵指数自己，也能看成连乘：', E.INK, 900], ['同一小步，乘无穷多次', E.HI, 900], ['（第 2 幕）', E.INK2, 700]], 20);
+      var limTex = E.tex(gX, 400, 400, '\\left(I+\\tfrac{[\\mathcal S]\\theta}{n}\\right)^{n}\\to \\textcolor{' + H.hi + '}{\\exp([\\mathcal S]\\theta)}\\quad (n\\to\\infty)', 24, E.INK, 'middle', { w: 400, h: 50 });
 
       // ③ 目标姿势（手伸到杯子那里）和 ① 末的姿势
       var POSEA = Object.assign({}, POSE0); POSEA.shoulder_lift_joint = POSE0.shoulder_lift_joint + 28 * D;
@@ -179,7 +231,7 @@
       return {
         el: s,
         draw: function (st, t) {
-          if (!laid && s.isConnected) { RK3.layout(); RC.layout(); RB.layout(); laid = true; }
+          if (!laid && s.isConnected) { RX2.layout(); RK3.layout(); RC.layout(); RB.layout(); laid = true; }
           var f = E.fade, b = E.bump;
           /* ── ① 正向运动学（UR5 到 ③ 再用一次） ── */
           var inA = f(st, T.arm, 0.4) * (1 - f(st, T.outA, 0.4)), inC = f(st, T.three, 0.4) * (1 - f(st, T.outC, 0.4));
@@ -219,6 +271,21 @@
           E.op(mNote.g, fr(st, T.zero));
           E.op(nm.g, fr(st, T.name));
           E.pop(c11, RX + 170, 366, f(st, T.ep11, 0.35), 0.92);
+
+          /* ── ①b 和连乘的区别 ── */
+          E.op(gX, f(st, T.x0 - 0.1, 0.4) * (1 - f(st, T.outX, 0.4)));
+          E.op(cardB, fr(st, T.x0 + 0.17)); E.op(cardA, fr(st, T.q7));   // 问「有什么区别」时两张卡先摆出来，讲到哪张、哪张亮一下
+          E.glow(rectA, E.INK, b(st, T.chA, 0.9) > 0.05); E.glow(rectB, E.HI, b(st, T.expB, 0.9) > 0.05);
+          sq.forEach(function (g, i) { E.op(g, fr(st, T.mats + 0.2 * i)); E.glow(g, E.INK, b(st, T.join + 0.3 * i, 0.6) > 0.05); });
+          links.forEach(function (v, i) { E.op(v.g, fr(st, T.join + 0.3 * i + 0.15)); });
+          E.op(dotsA, fr(st, T.join + 0.75)); E.op(capA, fr(st, T.join));
+          E.op(inS, fr(st, T.axis)); E.op(inTh, fr(st, T.turnQ));
+          E.op(arrB.g, fr(st, T.calc)); E.op(boxB, fr(st, T.calc)); E.glow(boxB, E.HI, b(st, T.out44, 0.8) > 0.05); E.op(capB, fr(st, T.out44));
+          E.op(poe, fr(st, T.poe));
+          expBx.forEach(function (q, k) { var pb = b(st, T.useExp + 0.25 * k, 0.7); q.box.style.strokeWidth = 2 + 2 * pb; E.glow(q.g, E.HI, pb > 0.05); E.op(q.lab, fr(st, T.useExp + 0.25 * k)); });
+          E.drawOn(brk, f(st, T.thenMul - 0.3, 0.6)); E.op(brkLab, fr(st, T.thenMul));
+          E.op(xS.g, fr(st, T.self)); E.op(xS.parts[2], fr(st, T.sc2)); E.op(xS.parts[1], fr(st, T.small));
+          E.op(limTex, fr(st, T.sc2)); E.glow(limTex, E.HI, b(st, T.inf, 0.9) > 0.05);
 
           /* ── ③ 杯子、目标、还差多少 ── */
           E.op(ghostG, f(st, T.cup, 0.3)); E.op(cupG, f(st, T.cup, 0.3));
