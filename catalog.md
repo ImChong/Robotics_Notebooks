@@ -6049,6 +6049,7 @@
 - [OpenFOAM Agent Skills（twj011/openfoam-agent-skills）](wiki/entities/twj011-openfoam-agent-skills.md) — OpenFOAM Agent Skills（twj011/openfoam-agent-skills）是作为小型 OpenFOAM Skill 集合被文章提及，与完整仿真套件或 MCP 执行服务不同， `📅unknown` `[entity_page]`
 - [Jev（TypeSafe AI · System One Model）](wiki/entities/typesafe-jev.md) — Jev** 是 TypeSafe AI 发布的首个 **System One Model**（2026-09-15 官宣早期访问）：面向 **软件自 `📅unknown` `[entity_page]`
 - [U-Mamba](wiki/entities/u-mamba.md) — U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。 `📅unknown` `[entity_page]`
+- [ub-mode（编码代理的软件工程规范）](wiki/entities/ub-mode.md) — ub-mode** 是公开的编码代理技能，把软件修改的设计、测试和交付原则写在 `SKILL.md` 中。 `📅unknown` `[entity_page]`
 - [UKMARSBOT](wiki/entities/ukmarsbot.md) — UKMARSBOT** 是 UK Micromouse and Robotics Society（UKMARS） 发布的 **低成本入门多用途开源机器 `📅unknown` `[entity_page]`
 - [Ultimaker Cura（3D 打印切片软件）](wiki/entities/ultimaker-cura.md) — 一句话定义**：Ultimaker Cura 是开源桌面切片软件，将三维模型按指定打印机、材料和参数规划为逐层打印路径，并输出 G-code。 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO](wiki/entities/ultralytics.md) — Ultralytics**（ultralytics/ultralytics，文档 [docs.ultra `📅unknown` `[entity_page]`
@@ -6327,6 +6328,7 @@
 - [Null-Space Control（零空间控制）](wiki/concepts/null-space-control.md) — 零空间控制**：当关节数 $n$ 大于任务维数 $m$ 时，主任务的雅可比 $J\in\mathbb{R}^{m\times n}$ 有非平凡核；把次级目标投影进 $\ker J$，即可在**不改 `📅unknown` `[wiki_page]`
 - [目标检测评价指标](wiki/concepts/object-detection-metrics.md) — 以 **IoU** 判定预测框与真值是否匹配，再在各类别上计算精度–召回曲线并汇总为 **mAP**（及 COCO 的 AP@[.5:.95] 等），形成检测器精度的标准报告口径。 `📅unknown` `[wiki_page]`
 - [可观测性（Logs / Metrics / Tracing）](wiki/concepts/observability-logs-metrics-tracing.md) — 可观测性** 让系统在故障时仍能回答「发生了什么、哪里慢、因果链如何」——对云边服务用三支柱，对硬实时环路用轻量指标。 `📅unknown` `[wiki_page]`
+- [开源人形机器人复现门槛与门禁清单](wiki/concepts/open-source-humanoid-reproduction-gate.md) — 把开源人形仓库跑到真机，难点不在代码而在系统集成：驱动与实时、标定、环境依赖三道坎都能在动手前估出工时量级，应先写进预算，再决定押不押这个仓库。 `📅unknown` `[wiki_page]`
 - [Open X-Embodiment（OXE）](wiki/concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`
 - [操作系统基础（进程 / 线程 / 内存 / 文件系统 / 调度）](wiki/concepts/operating-system-basics.md) — 操作系统基础** 解释主控板上「谁在跑、何时被抢占、内存如何映射、磁盘 I/O 如何饿死控制线程」——是诊断真机抖动时最先翻的一层。 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`

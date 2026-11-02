@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-02] ingest | sources/repos/unclebob-ub-mode.md — 收录编码代理技能及质量工具边界
+
+- 已核对 README 与 SKILL.md；配套工具分属独立仓库。
+
+## [2026-11-02] ingest | 智生于形《从开源仓库到真机差几步：人形机器人复现门槛与 Sim2Real 缺口》：新建复现门禁概念页（工程经验综述，无项目清单）
+
 ## [2026-11-02] ingest | 算法工程师的学习日志《从 1/4 车模型到最优控制器：MWORKS 主动悬架建模与参数优化》：新建主动悬架状态反馈与约束优化概念页（单作者实操，无项目清单）
 
 ## [2026-11-02] ingest | senlanke 具身运控lab《10.26-10.30前沿论文动态》Manipulation 57 篇逐篇建独立详情节点（新建 31 / 复用 26）
