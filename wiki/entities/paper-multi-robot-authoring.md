@@ -3,7 +3,8 @@ type: entity
 project_id: multi-robot-authoring
 tags:
   - paper
-  - perception
+  - multi-robot
+  - task-allocation
   - planning
 status: complete
 updated: 2026-11-01

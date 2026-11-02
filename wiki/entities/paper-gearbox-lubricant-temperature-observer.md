@@ -3,7 +3,7 @@ type: entity
 project_id: gearbox-lubricant-temperature-observer
 tags:
   - paper
-  - perception
+  - system-identification
   - planning
 status: complete
 updated: 2026-11-01

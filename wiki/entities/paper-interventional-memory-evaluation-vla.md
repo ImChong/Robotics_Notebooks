@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/interventional_memory_evaluation_vla_arxiv_2610_23372.md
   - ../../sources/sites/interventional-memory-evaluation-vla.md
@@ -77,6 +78,7 @@ summary: "Interventional Memory Evaluation VLA（arXiv:2610.23372）：IMEP在�
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 

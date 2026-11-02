@@ -14,6 +14,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/microsplat_arxiv_2610_23899.md
   - ../../sources/sites/microsplat.md
@@ -78,6 +79,7 @@ summary: "MicroSplat（arXiv:2610.23899）：MicroSplat用机械臂搭载消费�
 - [locomotion](../tasks/locomotion.md)
 - [sim2real](../concepts/sim2real.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
 
 ## 参考来源
 

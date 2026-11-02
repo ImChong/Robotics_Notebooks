@@ -3,7 +3,8 @@ type: entity
 project_id: fourier-transmission-error-compensation
 tags:
   - paper
-  - perception
+  - calibration
+  - system-identification
   - planning
 status: complete
 updated: 2026-11-01

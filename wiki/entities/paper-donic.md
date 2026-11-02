@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, bimanual, hand-object-tracking, imitation-learning, reinforcement-learning, ropedia]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-01
 project_id: donic-generalist-dexterous-bimanual-tracking
 arxiv: "2610.29997"
 project: https://ropedia.github.io/DONIC/
@@ -66,7 +66,7 @@ BiHOI 以 32 个校准 RGB 视角采集 1,575 段、覆盖 229 个物体和 14.7
 
 - 双手操作评估需同时衡量物体运动和每只手的接触角色，单看末端姿态误差不足以判断任务完成。
 - 若复用 BiHOI 处理 pipeline，需阅读官方仓库的第三方依赖许可；仓库注明其中包含非商业条款组件。
-- 截至 2026-10-23，官方仓库已发布处理 pipeline；DONIC 训练/评测代码、策略权重和 BiHOI 数据集仍列为待发布。
+- 截至 2026-11-01 复核，官方仓库仍只发布 BiHOI 处理 pipeline；DONIC 训练/评测代码、策略权重和 BiHOI 数据集仍列为待发布。处理代码与各第三方依赖的许可条件需分别核对。
 
 ## 结论
 

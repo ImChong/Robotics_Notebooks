@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/contactbench_1_0_arxiv_2610_24512.md
   - ../../sources/sites/contactbench-1-0.md
@@ -77,6 +78,7 @@ summary: "ContactBench 1.0（arXiv:2610.24512）：ContactBench 1.0用可打印�
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
 ## 参考来源
 
