@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["输入：指令 X + 360 度全景 RGBD 观测"] --> WP["Waypoint Predictor<br/>120 角度 x 12 距离热图<br/>得到可达 waypoint"]
+    WP --> EG["环境图 EG<br/>节点 = 已访问 waypoint 的观测特征<br/>边 = 角度与相对位移"]
+    EG --> SS["场景合成器 SS<br/>点云重投影得到 Y_p→p'<br/>合成未访问 waypoint 的 RGBD 观测"]
+    SS --> MCTS
+    subgraph MCTS["MCTS 心智规划：根节点为当前 EG"]
+        direction LR
+        SEL["Selection<br/>UCT 选边"] --> EXP["Expansion<br/>追加新叶节点"] --> ROL["Rollout<br/>以距离函数 Fd 为策略<br/>最多 K 步"] --> BAK["Back-up<br/>自底向上更新 N、Q、V"]
+    end
+    FD["距离函数 Fd<br/>GAT + MLP，条件为 EG 与指令"] -.->|"奖励与 rollout 策略"| MCTS
+    MCTS --> ACT["取 Q 最大的 waypoint a*"]
+    ACT --> MOVE["在连续环境中低层动作移动到 a*<br/>未访问过则更新 EG 并重新规划<br/>已访问过则 stop"]
+    MOVE -.-> OBS
+```
+
+图依据：论文 §3 Methodology（Waypoint Action Space、§3.1 World Model 的 EG 与 SS、§3.2 MCTS Mental Planning 及 Reward / Rollout Policy）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openaccess.thecvf.com/content/ICCV2023/html/Wang_DREAMWALKER_Mental_Planning_for_Continuous_Vision-Language_Navigation_ICCV_2023_paper.html>
+- [arXiv PDF](https://arxiv.org/pdf/2308.07498)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1 世界模型、§3.2 心智规划）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph LOOP["训练循环 (Algorithm 1)"]
+    CE["collect_experience<br/>当前策略在真实环境采集 → 回放数据 D"] --> UW["update_world_model<br/>训练 E, D 与 Transformer G"]
+    UW --> UB["update_behavior<br/>在想象中训练策略 π 与价值 V"]
+    UB --> CE
+  end
+  X["帧 x_t"] --> E["离散自编码器 E<br/>(CNN + 最近嵌入 → K 个 token)"]
+  E --> Z["token z_t"]
+  Z --> G["GPT 式 Transformer G<br/>(帧 token 与动作 token 交错)"]
+  A["动作 a_t"] --> G
+  G --> OUT["预测 下一帧 token ẑ_(t+1)、奖励 r̂_t、终止 d̂_t"]
+  OUT --> DEC["CNN 解码器 D → x̂_(t+1)"]
+  DEC --> PI["策略 π(a|x̂_≤t)"]
+  PI -. "想象展开 H 步, 预测终止则停止" .-> A
+```
+
+图依据：论文 §2 Method（§2.1 图像到 token、§2.2 动力学建模、§2.3 想象中学习）/ Fig.1 与 Algorithm 1（附录 D）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=vhFu1Acb0xb>
+- [arXiv PDF](https://arxiv.org/pdf/2209.00588)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§2.1–2.3、附录 D Algorithm 1；§3 实验仅略读
 
 ## 推荐继续阅读
 

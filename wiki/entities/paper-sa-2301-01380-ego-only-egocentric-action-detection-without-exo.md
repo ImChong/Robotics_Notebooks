@@ -42,6 +42,21 @@ Proves for the first time that models trained with pure first-person data can ou
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  V["长视频 (第一人称)"] --> MAE["阶段 1: MAE 预训练<br/>(90% 随机遮挡, 按视频时长比例采样)"]
+  MAE --> FT["阶段 2: 时序分割式微调<br/>每帧预测动作类别 (输出 L ∈ R^(T×C))"]
+  FT --> LOSS["逐帧 BCE (多标签) + focal loss<br/>logit 偏向背景初始化 + 按动作长度反比加权"]
+  LOSS --> FT
+  FT --> FE["冻结骨干, 滑窗抽取特征<br/>同一时间戳跨窗口平均池化"]
+  FE --> DET["阶段 3: 训练时序动作检测器<br/>(默认 ActionFormer)"]
+  DET --> OUT["时间段 + 动作类别"]
+```
+
+图依据：论文 §3.1 / Fig.4（三阶段与微调、检测阶段）、§3.2（损失、不平衡处理、特征提取）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Proves for the first time that models trained with pure first-person data can ou
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2301.01380>
+- [arXiv PDF](https://arxiv.org/pdf/2301.01380)：已通读方法部分（实验与附录以略读为准）：§3 Method 全部（§3.1、§3.2、Fig.4），§4 实验仅略读
 
 ## 推荐继续阅读
 

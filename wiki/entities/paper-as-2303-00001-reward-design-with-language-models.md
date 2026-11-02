@@ -41,6 +41,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / Reward Shaping。 本页是�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  U["用户给出目标 ρ2\n（若干示例或自然语言描述）"] --> PR
+  T["任务描述 ρ1"] --> PR
+  EP["RL 回合结果\n(状态, 动作)"] -->|"解析器 f"| P3["回合文本描述 ρ3"]
+  P3 --> PR
+  Q["问题 ρ4：行为 ρ3 是否满足目标 ρ2？"] --> PR
+  PR["拼接成提示 ρ"] --> LLM["LLM 作为代理奖励\n（文中为 text-davinci-002，temperature 0）"]
+  LLM -->|"解析器 g：文本输出 → {0,1}"| R["奖励信号"]
+  R --> RL["RL 智能体更新权重\n并 rollout 新回合"]
+  RL --> EP
+```
+
+图依据：论文 §3 Using LLMs as a Reward Signal / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +112,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / Reward Shaping。 本页是�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2303.00001>
+- [arXiv PDF](https://arxiv.org/pdf/2303.00001)：已通读方法部分（实验与附录以略读为准）：§3 Using LLMs as a reward signal、§4 实验设定（任务与评估指标）
 
 ## 推荐继续阅读
 

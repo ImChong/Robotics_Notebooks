@@ -36,6 +36,20 @@ summary: "DayDreamer（具身世界模型六路线专题）：世界模型直接
 - 属于六路线 taxonomy 的 **学习主导型**：预测结果被用于 **训练时在想象经验中优化另一套策略。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  ROB["真实机器人<br/>(actor 线程计算动作并交互)"] --> RB["Replay buffer"]
+  RB --> WM["世界模型 RSSM<br/>Encoder 融合多传感器 → 隐表征 z_t<br/>Dynamics 预测 / Decoder 重建 / Reward 网络"]
+  WM --> IMG["隐空间想象 rollout<br/>(H = 16 步, 无需解码观测)"]
+  IMG --> AC["Actor π(a|s) + Critic v(s)<br/>(λ-return)"]
+  AC --> ACT["更新后的策略"]
+  ACT --> ROB
+```
+
+图依据：论文 §2 Approach / Fig.2（整体流水线）、Fig.3（世界模型与行为学习）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +88,7 @@ summary: "DayDreamer（具身世界模型六路线专题）：世界模型直接
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2206.14176)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§2 Approach（World Model Learning、Actor Critic Learning、Fig.2–3）；实验仅略读
 
 ## 推荐继续阅读
 

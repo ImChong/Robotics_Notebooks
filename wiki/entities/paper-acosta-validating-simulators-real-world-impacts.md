@@ -41,6 +41,27 @@ summary: "用方块抛落与 Cassie 跳跃落地真机冲击数据检验 Drake/M
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph DATA["真实数据（视为 ground truth）"]
+    CUBE["立方体抛掷<br/>550 条轨迹"]
+    CASSIE["Cassie 跳跃落地<br/>22 次实验"]
+  end
+  CUBE --> INIT["取真实初始状态<br/>（Cassie 另加实测电机力矩，开环）"]
+  CASSIE --> INIT
+  INIT --> SIM["仿真器复现轨迹<br/>Drake / MuJoCo / Bullet<br/>（Cassie 仅 Drake、MuJoCo）"]
+  THETA["接触参数 θ<br/>摩擦 μ / 刚度 k / 阻尼 b"] --> SIM
+  SIM --> ERR["与真实轨迹比较<br/>cube: e_q / Cassie: 加权 e_cassie（冲击前后 50 ms）"]
+  ERR --> LOSS["数据集平均损失 L(θ)"]
+  LOSS --> OPT["NGOpt 无梯度优化<br/>θ* = argmin L(θ)"]
+  OPT -->|更新 θ| THETA
+  OPT --> RES["各仿真器最优参数<br/>+ 参数敏感性分析 + 优劣对比"]
+```
+
+图依据：论文 §III 实验设置、§IV 参数辨识（Eq. 3–7，NGOpt 优化）、§V 结果；「NGOpt 更新 θ」的迭代回路为优化过程的通用表示，非论文单独画出的流程图。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +110,7 @@ summary: "用方块抛落与 Cassie 跳跃落地真机冲击数据检验 Drake/M
 - [freedof_sim2real_21_acosta-validating-simulators-real-world-impacts.md](../../sources/papers/freedof_sim2real_21_acosta-validating-simulators-real-world-impacts.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2110.00541)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 背景、§III 实验设置、§IV 参数辨识、§V 结果开头
 
 ## 推荐继续阅读
 

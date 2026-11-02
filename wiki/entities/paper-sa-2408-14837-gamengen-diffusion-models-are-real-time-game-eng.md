@@ -42,6 +42,24 @@ Diffusion models are real-time game engines.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["阶段一：RL 智能体与 DOOM 环境交互<br/>(PPO，输入降采样画面+地图+最近 32 个动作)"] --> B["记录整个训练过程的动作-观测轨迹 T_agent<br/>（含各技能水平）"]
+    B --> C["阶段二：训练生成式扩散模型<br/>由 Stable Diffusion v1.4 初始化，去掉文本条件"]
+    D["过去动作 a_<n → 动作嵌入 A_emb<br/>替代文本 cross-attention"] --> C
+    E["过去帧 o_<n → 自编码器 φ 编码<br/>在通道维与加噪 latent 拼接"] --> C
+    F["噪声增强：对上下文帧加随机高斯噪声<br/>噪声级别离散成桶并作为输入嵌入"] --> E
+    C --> G["v-prediction 扩散损失<br/>（teacher forcing）"]
+    G --> H["推理：自回归逐帧生成<br/>DDIM 4 步 + 对过去观测的 CFG"]
+    H --> I["自编码器解码器输出画面<br/>（解码器单独微调以改善 HUD 细节）"]
+    I -.->|"新帧加入上下文"| E
+    J["玩家实时按键"] --> D
+```
+
+图依据：论文 §3 / Fig.3（方法总览）、§3.1 智能体数据采集、§3.2 生成模型训练（含 §3.2.1 噪声增强、潜在解码器微调）、推理设置。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Diffusion models are real-time game engines.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2408.14837>
+- [arXiv PDF](https://arxiv.org/pdf/2408.14837)：已通读方法部分（实验与附录以略读为准）：§2 交互式世界模拟定义、§3 方法（3.1 智能体采集数据、3.2 训练扩散模型、噪声增强、解码器微调、推理采样步数）、附录训练细节略读
 
 ## 推荐继续阅读
 

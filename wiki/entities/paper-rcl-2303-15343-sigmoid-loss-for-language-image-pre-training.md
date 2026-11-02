@@ -43,6 +43,25 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  B["mini-batch 图文对 (Ii, Ti)"] --> IM["图像模型 f(·)\n→ img_emb，L2 归一化"]
+  B --> TM["文本模型 g(·)\n→ txt_emb，L2 归一化"]
+  IM --> LG["成对 logits = zimg·ztxt^T × t + b\n（t 为可学习温度，b 为可学习偏置）"]
+  TM --> LG
+  LG --> LB["标签 z：匹配对 +1，其余 -1"]
+  LB --> LS["Sigmoid 损失\n每个图文对独立二分类\n无需全局归一化"]
+  subgraph CH["分块实现（数据并行 D 个设备）"]
+    A["各设备先算本地正样本\n+ 本地负样本损失"] --> SW["在设备间交换（置换）文本表示\n计算来自其他设备的负样本损失"]
+    SW --> SUM["各设备损失求和\n不实例化 |B|×|B| 相似度矩阵"]
+  end
+  LS -.-> CH
+```
+
+图依据：论文 §3.2 Sigmoid 损失、§3.3 分块实现 / Algorithm 1、Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +119,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openaccess.thecvf.com/content/ICCV2023/html/Zhai_Sigmoid_Loss_for_Language_Image_Pre-Training_ICCV_2023_paper.html>
+- [arXiv PDF](https://arxiv.org/pdf/2303.15343)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）、§4.1–4.2 实验设定
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBJ["物体模型<br/>(ShapeNet / YCB 等, 归一化到单位球 + 5 档缩放)"] --> MESH["Remesh 成流形 + CoACD 凸分解碰撞网格"]
+  MESH --> INIT["初始化手位姿<br/>(在膨胀凸包上采样 → 抖动平移/旋转/关节角)"]
+  INIT --> OPT["能量优化 (梯度下降, 少于 6000 迭代)<br/>E_fc + E_dis + E_pen + E_spen + E_joints"]
+  OPT --> G["抓取 g = (T, R, θ)"]
+  G --> SIM["Isaac Gym 验证<br/>6 个重力方向下 100 步仍接触"]
+  G --> PEN["穿透验证<br/>最大穿透深度 ≤ 0.1cm"]
+  SIM --> KEEP["通过两项者写入 DexGraspNet"]
+  PEN --> KEEP
+  KEEP --> BM["基准: 在 DDG / GraspTTA 上训练并评测"]
+```
+
+图依据：论文 §III-A 物体准备、§III-B 抓取生成（初始化、反向穿透能量、能量项）、§III-C 抓取验证、§V 基准。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +116,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/10160982/>
+- [arXiv PDF](https://arxiv.org/pdf/2210.02697)：已通读方法部分（实验与附录以略读为准）：§III Dataset Generation Method（A–C）、§V-A 基准方法与 §V-B 指标；§IV、§VI 仅略读
 
 ## 推荐继续阅读
 

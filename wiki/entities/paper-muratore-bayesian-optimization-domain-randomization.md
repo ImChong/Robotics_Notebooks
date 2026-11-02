@@ -41,6 +41,24 @@ summary: "用贝叶斯优化调 DR 分布，只需成功率等稀疏表现信号
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始化阶段：从 Φ 随机采样 n_init 组<br/>域分布参数 φ"] --> B["下层：PolOpt 在随机化仿真器 ν(ξ;φ) 中训练策略 θ*"]
+    B --> C["在目标域（真机）评估 n_τ 次 rollout<br/>得到回报估计 Ĵreal(θ*)"]
+    C --> D["把 (φ, Ĵreal) 加入数据集 D<br/>更新高斯过程 GP 后验"]
+    D --> E["上层：最大化 acquisition function<br/>得到新的 φ*"]
+    E --> F["PolOpt 在 ν(ξ;φ*) 中训练策略 θ*"]
+    F --> G["目标域评估 Ĵreal(θ*)"]
+    G --> H["增广 D 并更新 GP"]
+    H --> I{"Ĵreal ≥ J_succ<br/>或达到最大迭代数？"}
+    I -->|"否"| E
+    I -->|"是"| J["输出 MAP 域分布参数 φ* 与策略 π(θ*)"]
+```
+
+图依据：论文 §III 与 Algorithm 1（BayRn）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "用贝叶斯优化调 DR 分布，只需成功率等稀疏表现信号
 - [freedof_sim2real_15_muratore-bayesian-optimization-domain-randomization.md](../../sources/papers/freedof_sim2real_15_muratore-bayesian-optimization-domain-randomization.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2003.02471)：已通读方法部分（实验与附录以略读为准）：§II 背景、§III BayRn 与 Algorithm 1、§IV 实验设定开头
 
 ## 推荐继续阅读
 

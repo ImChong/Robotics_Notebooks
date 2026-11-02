@@ -43,6 +43,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  LBL["ID 标签集 Y_in = {y1..yK}"] --> PR["文本提示<br/>this is a photo of a y_i"]
+  PR --> TXT["CLIP 文本编码器 T<br/>(概念向量 T(t_i))"]
+  IMG["测试图像 x'"] --> IE["CLIP 图像编码器 I<br/>(特征 I(x'))"]
+  TXT --> COS["余弦相似度 s_i(x')"]
+  IE --> COS
+  COS --> SM["带温度 τ 的 softmax<br/>取最大值 = S_MCM"]
+  SM --> TH{"S_MCM ≥ λ ?"}
+  TH -- "是" --> ID["判为 ID<br/>类别 = argmax_i s_i"]
+  TH -- "否" --> OOD["判为 OOD"]
+```
+
+图依据：论文 §3 OOD Detection via Concept Matching / Fig.1、式 (1)（注意：页面 frontmatter 的 arXiv 2301.04195 实为 ORBIT 仿真框架论文，与页面标题不符；本图依据 arXiv 2211.13445「Delving into Out-of-Distribution Detection with Vision-Language Representations」(MCM)，与页面代码链接 deeplearning-wisc/MCM 一致）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2301.04195>
+- [arXiv PDF](https://arxiv.org/pdf/2211.13445)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§3 概念匹配与 softmax 缩放分析、§4.1 数据集与实现细节；注意页面所列 arXiv 2301.04195 与该论文编号不符，图依据 2211.13445
 
 ## 推荐继续阅读
 
