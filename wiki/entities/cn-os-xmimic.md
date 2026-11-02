@@ -55,6 +55,47 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：先 `python scripts/gmr_to_npz_inter.py --input_file <gmr.pkl> --robot tiangong3_23dof ...` 把 xGMR 输出转成 NPZ，再 `python scripts/rsl_rl/train.py --task=Tracking-Tiangong3-23DoF-v0 --motion_file <npz> --headless`（评估为 `scripts/rsl_rl/play.py`）。训练与评估依赖 Isaac Lab / Isaac Sim，MuJoCo 仿真与真机部署在 README 所指的其它仓库（xSIM_MUJOCO、Deploy_Tienkung），不在本仓库内。
+
+```mermaid
+sequenceDiagram
+    participant C as scripts/gmr_to_npz_inter.py
+    participant T as scripts/rsl_rl/train.py
+    participant R as tasks/tracking/config/tiangong3/__init__.py
+    participant E as ManagerBasedRLEnv (tracking_env_cfg.py)
+    participant MC as mdp/commands.py MotionCommand
+    participant ML as utils/motion_loader.py MotionLoader
+    participant RN as utils/my_on_policy_runner.py MotionOnPolicyRunner
+    participant P as scripts/rsl_rl/play.py
+    C->>C: AppLauncher 启动 Isaac Sim，MotionLoader 读 xGMR 的 pkl 并插值到 output_fps
+    loop 每帧 get_next_state()
+        C->>C: write_root_state_to_sim + write_joint_state_to_sim，只 sim.render() 不做物理步进
+        C->>C: 记录 joint_pos 与 body_pos_w 等
+    end
+    C->>C: np.savez 写 body_names/joint_names/fps 等到 output_dir/output_name.npz
+    T->>T: AppLauncher 启动 Isaac Sim，hydra_task_config 读取任务配置
+    T->>R: import whole_body_tracking.tasks，gym.register Tracking-Tiangong3-23DoF-v0
+    T->>E: env_cfg.commands.motion.motion_file = --motion_file，gym.make(task)
+    E->>MC: 构造 MotionCommand
+    MC->>ML: MotionLoader(motion_file, body_names, robot.joint_names)
+    T->>RN: RslRlVecEnvWrapper 包装后构造 MotionOnPolicyRunner，runner.learn()
+    loop 每个 PPO 迭代
+        RN->>E: env.step(actions)
+        E->>MC: _update_command：time_steps += 1，到末尾则 _resample_command
+        E-->>RN: 观测 + 奖励（motion_global_anchor_pos 等 DeepMimic 项）
+    end
+    RN->>RN: save()：保存 checkpoint 后 export_motion_policy_as_onnx + attach_onnx_metadata
+    P->>E: gym.make + OnPolicyRunner.load(resume_path)
+    P->>P: get_inference_policy，导出 exported/policy.onnx
+    loop 仿真运行
+        P->>E: actions = policy(obs)，env.step(actions)
+    end
+```
+
+图依据：Open-X-Humanoid/xMimic@0385122，读过 `README.md`、`scripts/gmr_to_npz_inter.py`、`scripts/rsl_rl/train.py`、`scripts/rsl_rl/play.py`、`whole_body_tracking/tasks/tracking/config/tiangong3/__init__.py`、`tracking_env_cfg.py`、`mdp/commands.py`、`utils/my_on_policy_runner.py`。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +107,7 @@ institutions:
 - [xMimic 源码归档](../../sources/repos/xmimic.md)（<https://github.com/Open-X-Humanoid/xMimic>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/xMimic@0385122，读过 README.md、scripts/gmr_to_npz_inter.py、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py、whole_body_tracking/tasks/tracking/config/tiangong3/__init__.py、tracking_env_cfg.py、mdp/commands.py、utils/my_on_policy_runner.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
