@@ -42,6 +42,36 @@ Proposes a hierarchical reasoning and diffusion framework to generate language-d
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第一人称首帧 I0 + 语言指令 L + 初始运动 X0"]
+    subgraph S1["阶段 I：Cognitive Reasoning 预训练"]
+        TOK["RVQ-VAE 残差运动量化：L 级码本，得到离散运动 token"]
+        VLM["PaliGemma-2（SigLIP + Gemma-2）VLM"]
+        DPM["Delay Parallel Modeling：L 个并行预测头自回归预测延迟 token"]
+        TOK -->|"目标 token"| DPM
+        VLM --> DPM
+    end
+    IN --> VLM
+    DPM -->|"得到 VLM 特征 H_VL"| HVL["H_VL：任务感知条件信号"]
+    subgraph S2["阶段 II：Motion Generation（统一 Conditional Transformer，cross-attention 读取 H_VL）"]
+        AR["范式 1：Autoregressive 自回归"]
+        PMM["范式 2：Parallel Masked Modeling"]
+        LD["范式 3：Latent Space Diffusion（VAE 隐空间 Flow Matching）"]
+    end
+    HVL --> AR
+    HVL --> PMM
+    HVL --> LD
+    LD --> DEC["VAE Decoder 解码"]
+    AR --> OUT["输出：3D 人体运动序列 X"]
+    PMM --> OUT
+    DEC --> OUT
+```
+
+图依据：论文 §3 / Fig.2（§3.1 Cognitive Reasoning 预训练，§3.2 三种 Motion Generation 范式）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +126,7 @@ Proposes a hierarchical reasoning and diffusion framework to generate language-d
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.19105>
+- [arXiv PDF](https://arxiv.org/pdf/2604.19105)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 残差运动量化与生成式预训练、3.2 三种运动生成范式）、§4.1 实验设定
 
 ## 推荐继续阅读
 

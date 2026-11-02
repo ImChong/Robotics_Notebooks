@@ -41,6 +41,26 @@ Motivated by these findings, we propose HarmoWAM, an end-to-end WAM that fully l
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：语言指令 l_t + 当前观测 I_t"] --> WM["World Model（Wan2.2-TI2V-5B，机器人数据预训练）：视频扩散"]
+    WM --> V["预测未来视频 V_{t:t+H}"]
+    WM --> F["隐特征 F^V_{t:t+H}"]
+    I --> G["Process-Adaptive Gating：MLP，复用当前观测视觉 token，输出 s_t"]
+    G --> Q{"s_t > 0.5 ?"}
+    Q -- "是：交互阶段" --> P["Predictive Expert：Action DiT + SigLIP 图像特征 + 文本特征，cross-attention 读取当前步隐特征"]
+    Q -- "否：transit 阶段" --> R["Reactive Expert：DINOv2 提取预测帧特征，与隐特征拼接，Orientation Decoder 输出动作"]
+    F --> P
+    V --> R
+    F --> R
+    P --> A["动作序列 a_{t+1:t+H}"]
+    R --> A
+```
+
+图依据：论文 §3.3–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Motivated by these findings, we propose HarmoWAM, an end-to-end WAM that fully l
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.10942>
+- [arXiv PDF](https://arxiv.org/pdf/2605.10942)：已通读方法部分（实验与附录以略读为准）：§3.1 预备、§3.2 动机、§3.3 HarmoWAM 框架、§3.4 门控机制、§3.5 训练配方
 
 ## 推荐继续阅读
 

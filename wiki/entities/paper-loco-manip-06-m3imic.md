@@ -39,6 +39,31 @@ sources:
 
 - 多模态动作参考 → 共享 latent 命令 → 统一全身控制器。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["(a) 动作数据预处理"]
+        D1["大规模人体动作数据集"] --> D2["过滤与重定向"]
+        D2 --> D3["多模态参考数据集：机器人关节角 / SMPL-X 人体姿态 / 末端位姿"]
+    end
+    D3 --> CUR["课程式采样：1 秒片段，EMA 失败率，与均匀采样按 α 混合并裁剪"]
+    subgraph TRN["(b) 策略训练（仿真，域随机化）"]
+        CUR --> ENC["模态专用编码器 Er / Eh / Ee（MLP）→ 64 维共享潜变量 z"]
+        ENC --> DEC["各模态解码器重建；对齐损失 + 一致性损失（多模态自编码器）"]
+        ENC --> ACT["Actor：潜变量 z + 本体状态 → 动作解码器 → 动作 a_t"]
+        ACT --> ENV["仿真环境步进"]
+        ENV --> CRI["非对称 Critic（特权信息）→ PPO 损失 Lπ"]
+    end
+    subgraph DEP["(c) 部署"]
+        P1["同一策略：输入机器人关节角 π_r / 人体姿态 π_h / 末端位姿 π_e"] --> P2["对应模态编码器 → 共享潜变量 → 动作解码器"]
+        P2 --> P3["零样本 sim-to-real：跟踪与遥操作"]
+    end
+    ACT -.-> P1
+```
+
+图依据：论文 §III（A 问题定义与多模态编码、B 课程学习、C Sim-to-Real）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -83,6 +108,7 @@ sources:
 - [loco_manip_8_papers_catalog.md](../../sources/papers/loco_manip_8_papers_catalog.md)
 - [wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)
 - 论文/项目：<https://github.com/Renforce-Dynamics/MultiModalWBC>
+- [arXiv PDF](https://arxiv.org/pdf/2606.04829)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A–C）、§IV-D 实机部署小节；其余实验仅略读
 
 ## 推荐继续阅读
 

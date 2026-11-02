@@ -42,6 +42,24 @@ A gaze-empowered egocentric video understanding framework to detect driver cogni
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第一人称驾驶视频 + 时间对齐的注视坐标 (x_t, y_t)"] --> B["基于注视的视频预处理：圆点叠加 / 热力图遮罩 / 裁剪"]
+    B --> VE["Video Encoder（预训练）：视频 class token v_CLS + 视频 patch tokens"]
+    A --> GE["Gaze Encoder：线性投影 + 轻量 Transformer：gaze class token g_CLS + 逐帧 gaze feature tokens"]
+    VE --> SEL["按注视点位置选取周围 h 个 patch，得到 gaze-based patch tokens"]
+    SEL --> GD
+    GE --> GD["GDSQ：gaze feature tokens 作 query，gaze-based patch tokens 作 key / value，cross-attention 重复 M 次，池化为 s_CLS"]
+    VE --> CAT
+    GE --> CAT
+    GD --> CAT["拼接 v_CLS + s_CLS + g_CLS"]
+    CAT --> MLP["MLP 二分类：Attentive / Distracted"]
+```
+
+图依据：论文 §4（Our Design: EyeCue）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A gaze-empowered egocentric video understanding framework to detect driver cogni
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.07859>
+- [arXiv PDF](https://arxiv.org/pdf/2605.07859)：已通读方法部分（实验与附录以略读为准）：摘要、§3 关键洞察与挑战、§4 EyeCue 设计（视频编码器、注视编码器、GDSQ）；CogDrive 数据集构建与 §5 实验以略读 / 未读为准
 
 ## 推荐继续阅读
 

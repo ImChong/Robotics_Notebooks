@@ -42,6 +42,22 @@ Efficient minute-scale world modeling with hybrid linear diffusion transformer.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["数据管线 (§4)<br/>7 个开源视频源 → 度量尺度 6-DoF 位姿标注<br/>(VIPE + Pi3X / MoGe-2)，DL3DV 经 3DGS 渲染 + DiFix3D 增强<br/>过滤与场景静态描述 → 213K clip"] --> B["Stage 1：VAE 适配<br/>换用 LTX2-VAE，微调 50k 步"]
+  B --> C["Stage 2：混合架构适配<br/>SANA-Video → Hybrid GDN/Softmax<br/>先在短片段上优化"]
+  C --> D["Stage 3：分钟级扩展 + 动作条件<br/>Dual-Branch Camera Control"]
+  D --> E["Stage 4：Chunk-Causal 微调<br/>self-forcing 蒸馏到 4 步去噪<br/>softmax 层加 attention sink + 局部时间窗"]
+  F["相机条件：粗分支 UCPE（潜帧级 6-DoF 位姿）<br/>+ 细分支 Plücker mixing（VAE stride 内 8 个原始帧）"] --> D
+  G["主干 (Fig.2)：文本 / 视频 / 位姿 token<br/>交替 GDN 与 softmax attention 块<br/>(每 4 块换一个 softmax)"] --> C
+  E --> H["Stage-1 SANA-WM 输出视频"]
+  H --> I["Stage-2 Refiner (§3.4)<br/>截断 σ flow matching (σ_start=0.9)<br/>条件：文本 / 相机 / 参考图，LTX-2 + LoRA"]
+```
+
+图依据：论文 §3.1–3.4、§4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Efficient minute-scale world modeling with hybrid linear diffusion transformer.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.15178>
+- [arXiv PDF](https://arxiv.org/pdf/2605.15178)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.4）、§4 Data Pipeline；§5 实验与附录略读
 
 ## 推荐继续阅读
 

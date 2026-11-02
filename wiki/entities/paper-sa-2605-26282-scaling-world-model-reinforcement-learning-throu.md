@@ -114,7 +114,7 @@ Unifies search and policy optimization via diffusion policy representation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.26282>
-- [arXiv PDF](https://arxiv.org/pdf/2605.26282)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§3 Method（3.1–3.3）；§4 实验与附录略读
+- [arXiv PDF](https://arxiv.org/pdf/2605.26282)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§3 Method（3.1–3.3）、附录 D Algorithm 1；§4 实验略读
 
 ## 推荐继续阅读
 

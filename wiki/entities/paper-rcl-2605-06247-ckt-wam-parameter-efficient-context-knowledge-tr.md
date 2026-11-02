@@ -42,6 +42,27 @@ We propose \textbf{CKT-WAM}, a parameter-efficient \textbf{C}ontext \textbf{K}no
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测图像 token Ximg + 文本 token Xtext"] --> T["教师 WAM（冻结）：单次前向，时间步固定 t=0<br/>取中间层 ℓ* 隐状态 HT，不预测未来视频/动作"]
+    T --> BA["共享 bottleneck adapter<br/>映射到学生特征空间得 Z"]
+    BA --> LQ["LQCA 可学习 query 交叉注意力压缩<br/>得 Cg0（Kg 个 token）与 Cs0（Ks 个 token）"]
+    LQ --> GA["始终开启的 generalized adapter → Cg"]
+    LQ --> SA["M 个 specialized adapter，top-k 稀疏执行"]
+    T --> RT["HT 平均池化 → router 得路由概率 p"]
+    RT --> SA
+    SA --> CS["按重归一化权重加权聚合 → Cs"]
+    GA --> CA["拼接得到迁移上下文 CA = [Cg ; Cs]"]
+    CS --> CA
+    CA --> INJ["拼到学生文本嵌入后：[Et ; SEP ; CA]"]
+    INJ --> ST["学生 WAM（冻结）：仅经 cross-attention 条件注入<br/>去噪预测未来视频与动作"]
+    ST --> LOSS["损失：动作 + 视频扩散损失 + 负载均衡损失<br/>仅训练 CKT 模块"]
+```
+
+图依据：论文 §3.1 / Fig. 1（总览）、§3.2（教师侧单次隐状态提取）、§3.3（LQCA、generalized / specialized adapter、route-first 稀疏执行）、§3.4（学生侧文本上下文注入）、§3.5（训练目标）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ We propose \textbf{CKT-WAM}, a parameter-efficient \textbf{C}ontext \textbf{K}no
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.06247>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06247)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.5）、§4 实验设置与 LIBERO-Plus 主结果表
 
 ## 推荐继续阅读
 

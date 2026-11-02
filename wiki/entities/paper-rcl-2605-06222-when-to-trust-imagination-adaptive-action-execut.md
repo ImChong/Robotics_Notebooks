@@ -41,6 +41,24 @@ In this work, we formulate adaptive WAM execution as a future-reality verificati
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前观测 ot + 语言指令 ℓ"] --> WAM["WAM（Motus 骨干）一次推理<br/>输出动作 chunk Â 与预测视频 token Ô，理解专家输出语义 token L"]
+    WAM --> KV["Â、Ô、L 存入 KV cache"]
+    KV --> FFDC["FFDC 验证器（N 层 Transformer，局部窗口 + 结构化因果掩码）<br/>输入 [L, Ô过去, Ot, Ô未来, Â, CLS]"]
+    RO["执行中最新真实观测 Ot"] --> FFDC
+    FFDC --> SC["CLS → MLP 头 → sigmoid<br/>得到执行置信度 et"]
+    SC --> D{"et ≥ τ (τ=0.5) ?"}
+    D -->|"是"| EX["继续执行剩余动作"]
+    D -->|"否"| RP["重新规划：再次调用 WAM"]
+    EX -->|"下一检查步"| RO
+    RP --> IN
+```
+
+图依据：论文 §3.1（自适应执行，式 3–4）、§3.2 / Fig. 2（FFDC 验证器与 KV cache）。训练侧（Mixture-of-Horizon 与验证器二分类数据）见 §3.3，未画入图。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ In this work, we formulate adaptive WAM execution as a future-reality verificati
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.06222>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06222)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.3）、§4 实验设置
 
 ## 推荐继续阅读
 

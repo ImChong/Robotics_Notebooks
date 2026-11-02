@@ -42,6 +42,26 @@ Redefines world modeling as embodied belief inference in 3D space.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["新观测 o_{t+1}（RGB + 相机位姿）"] --> D
+    B["当前 3D belief z_t = 观测 Gaussians z_t^o + 想象 Gaussians z_t^i"] --> D
+    C["采样噪声图像 n_{t+1}"] --> D
+    D["3D Scene Diffusion：U-ViT 主干 + 多视图 Transformer / cost volume 深度预测"] --> E["3DGS 参数（μ, Σ, α, SH, 语义嵌入）"]
+    D --> S["语义头：CLIP 蒸馏的逐像素语义特征"]
+    E --> F["z_{t+1}：观测部分扩展，想象部分整体重采样"]
+    S --> F
+    F --> G["GS 渲染：RGB / 深度 / 语义特征图"]
+    G --> H["导航规划：frontier 采样 waypoint + A* 候选路径"]
+    H --> I["沿路径渲染想象观测，用语义查询打分（目标进展 + 信息增益）"]
+    I --> J["执行最优计划的一小段，更新观测后重复"]
+    J -.-> A
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3；规划部分见 §4.3 / Fig.6 与附录 A4.2.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Redefines world modeling as embodied belief inference in 3D space.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.11367>
+- [arXiv PDF](https://arxiv.org/pdf/2605.11367)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4（公式、架构、扩散训练、目标函数）、§4.3 规划设定、附录 A4.2.1 规划实现
 
 ## 推荐继续阅读
 

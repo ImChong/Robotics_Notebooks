@@ -42,6 +42,29 @@ Investigates how mobile world models guide GUI agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["移动端 GUI 轨迹数据集（AITW / AMEX / AITZ / AndroidControl / GUI-Odyssey）"] --> T["转为状态转移三元组 (s_t, a_t, s_t+1)"]
+    T --> F["过滤：图级去重 → 渲染保真度过滤 → 动作逻辑过滤 → 页面噪声移除"]
+    F --> L["用 VLM 重标注：delta 描述 / 完整描述 / 可渲染 HTML 代码"]
+    L --> W["训练 Mobile World Model：输入 (s_t, a_t)，四种预测格式"]
+    W --> W1["Delta Text：只预测变化"]
+    W --> W2["Full Text：完整描述下一页面"]
+    W --> W3["Code2Image：预测可渲染代码再渲染成图"]
+    W --> W4["Diffusion Image：直接生成下一截图"]
+    W1 --> U
+    W2 --> U
+    W3 --> U
+    W4 --> U
+    U["三种用法"] --> U1["先验感知 prior：决策前查询世界模型"]
+    U --> U2["后验 posterior：评判 / 反思已采样动作（可由熵门控触发）"]
+    U --> U3["想象训练：Code2Image 作虚拟环境采轨迹，过滤后微调 action model"]
+```
+
+图依据：论文 §2.1–2.2（数据构建与四种预测格式）、§4.2（先验 / 后验交互）、§5（想象训练）；Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Investigates how mobile world models guide GUI agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.10347>
+- [arXiv PDF](https://arxiv.org/pdf/2605.10347)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 构建 Mobile World Model（预测格式、转移级数据构建、数据统计）、§4.2 交互模式、§5 想象训练；§3 与 §4.1、§4.3 以略读为准
 
 ## 推荐继续阅读
 

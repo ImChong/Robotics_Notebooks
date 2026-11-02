@@ -42,6 +42,30 @@ Differentiable forearm representation + unified arm-hand Transformer. MPJPE redu
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  F["单目第一视角 RGB 帧\n（已标定相机）"] --> CR["提取手部裁剪 224×224\n与前臂裁剪 112×112\n（左右手分别处理）"]
+  CR --> UD["去除镜头畸变\n切 patch 并线性投影成 token"]
+  UD --> CIT["Crop Intrinsics Token (CIT)\n与每个 patch token 融合"]
+  CIT --> M{"前臂在视野内?"}
+  M -->|否| MASK["arm token 换成 missing-arm [MASK]"]
+  M -->|是| VIT
+  MASK --> VIT["ViT 骨干\n手 + 臂 token 联合编码"]
+  VIT --> DEC["Transformer 解码器\n4 个手 query + 3 个臂 query\n（自注意力跨肢体交互）"]
+  DEC --> PRI["前臂不可见时\n手条件变分先验补全 arm 特征"]
+  DEC --> J2["2D 关节解码\nheatmap + soft-argmax + 逐关节置信度 w"]
+  DEC --> REG["参数回归器\nMANO 手参数 + FARM 前臂参数\n（根相对，t 置零）"]
+  PRI --> REG
+  J2 --> RSS["Ray Space Solver\n点到射线约束的加权最小二乘\n求共享相机空间平移 t"]
+  REG --> RSS
+  RSS --> KF["Kalman 滤波\n稳定逐帧平移估计"]
+  KF --> OUT["相机空间 3D 手 + 前臂 mesh"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Differentiable forearm representation + unified arm-hand Transformer. MPJPE redu
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.12498>
+- [arXiv PDF](https://arxiv.org/pdf/2605.12498)：已通读方法部分（实验与附录以略读为准）：摘要、§1–2、§3.1–3.4、§4 实验设定
 
 ## 推荐继续阅读
 

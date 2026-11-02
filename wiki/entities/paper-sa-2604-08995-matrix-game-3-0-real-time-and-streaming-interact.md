@@ -43,6 +43,24 @@ Real-time and streaming interactive world model with long-horizon memory.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["鼠标/键盘动作 + 当前 prediction 噪声 latent"] --> D
+    M["相机感知记忆检索<br/>(相机位姿 + 视野重叠, 相对 Plücker 编码)"] --> D
+    H["近期历史帧 latent"] --> D
+    D["统一 DiT: memory / history / 当前目标<br/>联合 self-attention"]
+    D --> O["预测当前帧"]
+    D -.->|"残差收集"| E["Error Buffer"]
+    E -.->|"训练时误差注入 条件"| D
+    O --> S["训练-推理对齐的少步蒸馏<br/>(多段自生成 rollout + DMD)"]
+    S --> R["实时推理加速<br/>INT8 量化 / VAE 剪枝 / GPU 记忆检索"]
+    R --> V["5B 模型 720p 最高 40 FPS 流式生成"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2、Fig.4、Fig.6（四个核心组件）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Real-time and streaming interactive world model with long-horizon memory.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.08995>
+- [arXiv PDF](https://arxiv.org/pdf/2604.08995)：已通读方法部分（实验与附录以略读为准）：§1、§3（3.1 误差感知基础模型、3.2 相机感知记忆、3.3 训练-推理对齐少步蒸馏、3.4 实时推理、3.5 大模型扩展）、§4 数据系统概述
 
 ## 推荐继续阅读
 

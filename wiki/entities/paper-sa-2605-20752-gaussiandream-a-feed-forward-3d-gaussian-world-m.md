@@ -43,6 +43,27 @@ Feed-forward 3D Gaussian world model for robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    OBS["时序多视角观测 o_{t-10}, o_{t-5}, o_t"] --> VGGT["VGGT 提取多尺度 3D 感知特征 → 池化为 32x32 时序 token"]
+    VGGT --> TGE["Temporal Gaussian Evolution (TGE): 12 个注意力块<br/>可学习 GaussianDream 查询 Q_GD 与时序 token 交互"]
+    TGE --> PREFIX["GaussianDream 前缀 token Z_GD"]
+    subgraph AUX["仅训练期的辅助 Gaussian 监督"]
+        direction TB
+        REC["当前重建: 32x32 网格 → 解码为 256x256 稠密特征<br/>几何头/外观头 → 当前 3D Gaussian G_t"] --> RENDER["渲染 RGB 与深度监督"]
+        PRED["未来预测: 动态头 + 视野嵌入 e_Δ 预测 Gaussian 中心位移<br/>得 G_{t+Δ} (Δ = 1..5)"] --> FLOW["深度/渲染/伪 3D 场景流损失"]
+    end
+    PREFIX --> REC
+    PREFIX --> PRED
+    PREFIX -->|"注入 PaliGemma 前缀上下文"| POL["基础策略 π: 图像 + 语言 + 状态 + Z_GD"]
+    POL --> ACT["流匹配动作专家 → 动作 a_t"]
+    NOTE["推理时丢弃全部渲染 / 深度 / 速度 / Gaussian 解码头, 只保留前缀"] -.-> PREFIX
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Feed-forward 3D Gaussian world model for robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.20752>
+- [arXiv PDF](https://arxiv.org/pdf/2605.20752)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 概览、3.2 当前 Gaussian 重建、3.3 未来 Gaussian 预测、3.4 训练与推理）
 
 ## 推荐继续阅读
 

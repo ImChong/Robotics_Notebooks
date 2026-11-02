@@ -42,6 +42,23 @@ Employs Group Relative Policy Optimization (GRPO) to enhance the interaction und
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["输入：第一人称图像 I<br/>+ 用户查询 T_q"] --> B["第一阶段：粗粒度解读<br/>分析指令 T_a + 视觉/文本编码器<br/>分析 VLM 解码器 D_vlm"]
+  B --> C["文本交互描述 T_ana<br/>(交叉熵 L_des 监督)"]
+  B --> D["全局交互描述子 F_ana<br/>(D_vlm 最后一层隐层嵌入)"]
+  A --> E["第二阶段：细粒度响应<br/>视觉编码器 E_v + 文本编码器 E_t'<br/>Qwen2.5-VL 对齐融合得 F_emb"]
+  D --> F["Analysis-guided Feature Synthesizer (AFS)<br/>F_ana → MLP → LN → 卷积得 Q/K/V → 自注意力<br/>F_out = F_emb + MLP(F)"]
+  E --> F
+  F --> G["回答 VLM 解码器<br/>输出文本回答 T_ans + 边界框 B"]
+  G --> H["SAM2 (G_sam)<br/>由框生成像素级掩码 M"]
+  G --> I["GRPO 训练第二阶段<br/>奖励：格式 R_f + 回答相关 R_a + 定位精度 R_g<br/>E_v / E_t' / G_sam 冻结"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Employs Group Relative Policy Optimization (GRPO) to enhance the interaction und
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.14742>
+- [arXiv PDF](https://arxiv.org/pdf/2605.14742)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.4）；§4 实验与附录略读（未读全部奖励公式细节）
 
 ## 推荐继续阅读
 

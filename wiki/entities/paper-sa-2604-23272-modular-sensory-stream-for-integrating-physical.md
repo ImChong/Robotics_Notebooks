@@ -42,6 +42,23 @@ Modular sensory stream for integrating physical feedback in VLA models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["指令 l + 视觉 I_t"] --> VLM["预训练 VLA 的 VLM 主干得到 h_t"]
+    VLM --> AS["动作流 Action stream（原 action expert，输入本体状态 s_t）"]
+    PH["物理信号（如触觉、力矩）"] --> PS["各模态独立传感流 Physical stream（镜像 action expert 结构、随机初始化）"]
+    VLM --> PS
+    AS <--> JA["各层联合跨模态自注意力：拼接 Q、K、V 后共享注意力"]
+    PS <--> JA
+    AS --> ACT["动作块（flow matching，L_act）"]
+    PS --> FUT["预测未来物理信号（辅助损失 L_phy）"]
+    T1["阶段一 物理对齐：冻结 action expert，仅训练传感流"] --> T2["阶段二 联合微调：解冻全部参数，优化 L_act + λ·L_phy"]
+```
+
+图依据：论文 §3.1-3.3 / Fig. 2、Eq. 1-3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Modular sensory stream for integrating physical feedback in VLA models.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2604.23272>
+- [arXiv PDF](https://arxiv.org/pdf/2604.23272)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1-3.3）、§4.1 实验设置
 
 ## 推荐继续阅读
 

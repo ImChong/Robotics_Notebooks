@@ -42,6 +42,33 @@ First formalization of Spatially Prompted Visual Trajectory Prediction (SP-VTP).
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph TASK["Task Encoder (任务规范, 首帧)"]
+        direction TB
+        F0["首帧 I0 + 物体/目标提示 (框或点)"] --> VP["把框渲染到首帧得视觉提示图"]
+        F0 --> CP["归一化坐标 → Fourier 特征 + MLP + 角色嵌入 = 坐标提示 token"]
+        VP --> DINO0["冻结 DINOv2 ViT-B/14 → 首帧视觉 token F0"]
+        CP --> XA["Transformer 解码器 cross-attention: 提示查询首帧 token"]
+        DINO0 --> XA
+        XA --> ZT["任务 token Z_task = 图像摘要 token + 融合提示 token"]
+    end
+    subgraph OBS["Observation Encoder (每个时间步)"]
+        direction TB
+        IT["当前第一视角帧 I_t"] --> DINO1["同一冻结 DINOv2 → 图像 token"]
+        HT["最近 K 个动作历史 H_t"] --> EH["MLP 历史编码 + 时间/类型嵌入"]
+        DINO1 --> ZO["Z_obs"]
+        EH --> ZO
+    end
+    ZT --> GEN
+    ZO --> GEN
+    GEN["Trajectory Generator: Transformer 解码器, 条件 Z_cond = Z_task 与 Z_obs 拼接<br/>flow matching 默认头 (也支持 diffusion), 推理用少量 Euler 步"] --> OUT["未来 H=16 步末端轨迹块: 相对平移 + 6D 旋转 + 夹爪宽度"]
+```
+
+图依据：论文 §4 SPOT / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ First formalization of Spatially Prompted Visual Trajectory Prediction (SP-VTP).
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.20085>
+- [arXiv PDF](https://arxiv.org/pdf/2605.20085)：已通读方法部分（实验与附录以略读为准）：§4 SPOT（问题形式化、Task Encoder、Observation Encoder、Trajectory Generator）；§5 实验与附录以略读为准
 
 ## 推荐继续阅读
 

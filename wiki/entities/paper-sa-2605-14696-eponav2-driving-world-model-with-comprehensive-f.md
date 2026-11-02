@@ -42,6 +42,24 @@ Driving world model with comprehensive future reasoning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["输入：N 帧前视视频 + 相对运动 ΔA<br/>冻结 DINO-Tok 编码为特征 F_i"] --> B["世界模型主干 (VLM 初始化)<br/>因果注意力掩码<br/>推断未来表征 F'_i, ΔA'_i"]
+  B --> C["整流流匹配轨迹规划器 v_traj<br/>由噪声采样生成轨迹"]
+  B --> D["下一帧预测头 v_img<br/>规划器预测的 ΔA 在推理时作为控制输入"]
+  B --> E["深度头 f_d<br/>预测下一帧度量深度与置信度<br/>Depth-Anything-V3 伪标签"]
+  B --> F["语义头 f_sam<br/>预测下一帧 SAM3 文本对齐特征"]
+  C --> G["阶段一：联合优化<br/>L = L_traj + L_img + L_d + L_s<br/>DINO-Tok 冻结"]
+  D --> G
+  E --> G
+  F --> G
+  G --> H["阶段二：Flow-GRPO 微调规划器<br/>SDE 采样 G 条轨迹，组内标准化优势<br/>奖励：控制仿真车辆的轨迹与真值轨迹的差异<br/>+ 模仿损失 L_il；仅更新 v_traj"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Driving world model with comprehensive future reasoning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.14696>
+- [arXiv PDF](https://arxiv.org/pdf/2605.14696)：已通读方法部分（实验与附录以略读为准）：§3 Methods（§3.1–3.3，含两阶段优化）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

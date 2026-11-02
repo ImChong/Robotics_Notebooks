@@ -42,6 +42,31 @@ Joint-embedding predictive architecture for one-shot cross-embodiment imitation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    S0["Stage 0: 预训练目标具身的动作条件世界模型<br/>JEPA 编码器 E + 动力学预测器 F_wm (VJEPA2.1)"] --> S1
+    S1["Stage 1: 仅训练 Dreamer Predictor<br/>用无动作的跨具身示范, 潜在重建损失 L_pred<br/>(含时间扰动)"] --> S2
+    S2["Stage 2: 冻结 Dreamer Predictor, 解冻 F_wm<br/>规划损失 L_plan 做 Action Co-Training"] --> INF
+    subgraph DP["Dreamer Predictor (共享 JEPA 潜空间)"]
+        direction TB
+        Z["当前目标观测 z_t, 源示范帧对 z_s_k, z_s_k+n"] --> CA["两个 cross-attention: f_emb 跨具身对应, f_mot 示范时序演化"]
+        CA --> FUSE["与 z_t 拼接 → 3D 卷积融合 → Transformer 预测器"]
+        FUSE --> GOAL["目标具身兼容的潜在目标 z_goal"]
+    end
+    subgraph INF["推理: 自适应目标更新"]
+        direction TB
+        G1["Dreamer Predictor 给出 z_goal"] --> G2["CEM 在世界模型中优化动作序列, 使预测潜状态匹配 z_goal"]
+        G2 --> G3["执行动作, 计算新状态与目标的潜在距离 D_k"]
+        G3 -->|"D_k < ε: 推进到下一源参考帧对"| G1
+        G3 -->|"否则: 保持当前目标, 跳过 Predictor"| G2
+    end
+    DP -.-> G1
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Algorithm 3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Joint-embedding predictive architecture for one-shot cross-embodiment imitation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.20811>
+- [arXiv PDF](https://arxiv.org/pdf/2605.20811)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题形式化、3.2 Demo-JEPA、3.3 实现细节含三阶段训练与推理）
 
 ## 推荐继续阅读
 

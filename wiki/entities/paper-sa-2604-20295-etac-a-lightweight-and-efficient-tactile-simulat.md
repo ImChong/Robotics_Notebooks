@@ -42,6 +42,20 @@ Lightweight and efficient tactile simulation framework for learning dexterous ma
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    MESH["步骤一 离散化：机械手表面网格 → 传感节点"] --> SDF["步骤二 接触：SDF 检测，penalty-based 接触模型得到主动节点位移"]
+    SDF --> PROP["混合传播模型：被动节点位移 = 衰减线性传播 ΩU_a + PointNet 残差修正网络 Φ"]
+    FEM["步骤三 标定：FEM 仿真数据监督学习衰减参数 α 与网络权重"] --> PROP
+    PROP --> TAC["位移场作为触觉输入"]
+    TAC --> RL["PPO 策略（输入关节本体感觉、触觉位移、上一动作）：盲抓取 ShadowHand"]
+    RL --> ACT["输出手腕六自由度与 18 个关节力矩"]
+```
+
+图依据：论文 §III-A、§III-B / Fig. 2、Fig. 3、Eq. 1-4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Lightweight and efficient tactile simulation framework for learning dexterous ma
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2604.20295>
+- [arXiv PDF](https://arxiv.org/pdf/2604.20295)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（A、B）、§IV 实验开头
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ Proposes a decoupled verb-noun detection + dynamic weighted fusion strategy, ach
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["未裁剪第一人称视频<br/>(EPIC-KITCHENS, 30 FPS)"] --> F["VideoMAE-L 特征<br/>(OpenTAD 预提取, clip 16 / stride 8)"]
+    F --> SW["滑窗推理: 窗长最多 4608 特征步, 50% 重叠"]
+    SW --> NS["名词检测流 (CausalTAD 风格)<br/>因果投影 + 7 层特征金字塔 + 无锚点头"]
+    SW --> VS["动词检测流 (CausalTAD 风格)<br/>因果投影 + 7 层特征金字塔 + 无锚点头"]
+    NS --> NP["名词边界 b_n 与类别分数 P_n"]
+    VS --> VP["动词边界 b_v 与类别分数 P_v"]
+    NP --> COMP["组合动作打分<br/>各取 top-10 名词 / 动词<br/>S = sqrt(P_n * P_v)"]
+    VP --> COMP
+    NP --> DWF["Dynamic Weighted Fusion<br/>C = 各流最大类别置信度<br/>W_n = C_n / (C_n + C_v), W_v 同理<br/>b = W_n * b_n + W_v * b_v"]
+    VP --> DWF
+    COMP --> POST["按置信度过滤并取 top 候选"]
+    DWF --> POST
+    POST --> NMS["跨滑窗输出的类别内 Soft-NMS"]
+    NMS --> OUT["转换为 JSON 提交检测结果"]
+```
+
+图依据：论文 §2.2–§2.6 / Fig.1（§2.4 跨流可靠性引导仅为对照的双流变体，最终提交保持解耦，故未入图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Proposes a decoupled verb-noun detection + dynamic weighted fusion strategy, ach
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.24496>
+- [arXiv PDF](https://arxiv.org/pdf/2605.24496)：已通读方法部分（实验与附录以略读为准）：Abstract、§1 Introduction、§2 Methodology（2.1–2.6）；§3 实验略读
 
 ## 推荐继续阅读
 

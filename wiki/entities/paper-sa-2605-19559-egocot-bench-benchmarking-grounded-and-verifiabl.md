@@ -42,6 +42,23 @@ A fine-grained egocentric benchmark comprising 3,172 verifiable QA pairs over 35
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    RAW["原始第一视角视频 (按多样性与任务相关性收集)"] --> STSG["转换为 ego 适配的时空场景图 STSG<br/>物体实例 / 操作者身体部位 / 动作轨迹 / 交互关系 / 时序状态 / 边界框"]
+    STSG --> FIX["人工检查并修正 STSG<br/>身份、交互链接、状态转换、空间对齐"]
+    FIX --> PATH["沿任务特定证据路径遍历, 派生候选样本"]
+    PATH --> LLM["LLM 仅负责把已验证的结构化事实渲染为<br/>问题 / 选项 / 推理依据"]
+    LLM --> META["保留结构化元数据: 时间戳 / 物体身份 / 动作历史 / 交互关系 / 边界框"]
+    META --> R1["多轮人工审核: 4 位标注员独立初筛"]
+    R1 --> R2["不同审核者交叉核对问题-答案-推理一致性"]
+    R2 --> R3["主审终审裁定"]
+    R3 --> BENCH["EgoCoT-Bench: 问题、答案、推理依据、证据彼此一致且可追溯"]
+```
+
+图依据：论文 §3.2.3 Construction Pipeline / Fig.1（Data Construction Pipeline）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ A fine-grained egocentric benchmark comprising 3,172 verifiable QA pairs over 35
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.19559>
+- [arXiv PDF](https://arxiv.org/pdf/2605.19559)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 EgoCoT-Bench（3.1 概览、3.2.1–3.2.4 视频收集/任务分类/构建流程/评测指标）；实验表格以略读为准
 
 ## 推荐继续阅读
 

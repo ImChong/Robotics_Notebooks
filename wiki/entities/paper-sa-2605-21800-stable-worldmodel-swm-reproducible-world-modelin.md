@@ -42,6 +42,21 @@ A modular, tested, and well‑documented ecosystem for world model research, off
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    ENV["World: Gymnasium 兼容环境封装<br/>(可注入视觉/几何/物理 FoV)"] -->|"Policy 采集 (随机/专家/检查点)"| DATA["数据层: Lance 存储<br/>(MP4 / HDF5 / LeRobot 可一键转换)"]
+    DATA --> TRAIN["用户自定义训练: 世界模型基线<br/>(DINO-WM / PLDM / LeWM / TD-MPC2) 或 GCRL 基线<br/>(GCBC / GCIVL / GCIQL)"]
+    TRAIN --> WM["世界模型: 编码器 E + 预测器 P<br/>提供 get_cost"]
+    WM --> SOLVER["Solver: CEM / iCEM / MPPI / Predictive Sampling<br/>Gradient Descent / PGD / GRASP"]
+    SOLVER -->|"MPCPolicy: 编码当前观测, 优化动作序列"| MPC["执行前 K 个动作后重新规划"]
+    MPC -->|"world.evaluate, 可叠加 FoV"| ENV
+    ENV --> MET["成功率等指标"]
+```
+
+图依据：论文 §2–3 / Fig.1、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ A modular, tested, and well‑documented ecosystem for world model research, off
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.21800>
+- [arXiv PDF](https://arxiv.org/pdf/2605.21800)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 背景、§3.1–3.4（设计原则与接口、系统组件、基准评测）；附录以略读为准
 
 ## 推荐继续阅读
 

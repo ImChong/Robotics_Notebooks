@@ -41,6 +41,25 @@ To bridge this gap, we present EA-WM, an Event-Aware Generative World Model that
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机器人动作 / 运动学状态<br/>关节值 qt、夹爪 gt、末端位姿 ξt、相机参数 (Kt, Et)"] --> FK["正向运动学得到连杆关键点<br/>投影到相机平面并栅格化"]
+    FK --> K["KVAF：相机对齐的可视化动作场视频<br/>深度感知骨架、关节、夹爪、末端热图、位姿轴"]
+    K --> VAEK["视频 VAE 编码 → KVAF latent → patchify 得 token 流 Hk"]
+    X["初始 RGB 观测 + 语言指令（Wan2.2-TI2V 文本条件）"] --> VAEV["视频 VAE 编码 → 加噪视频 latent → patchify 得 token 流 Hv"]
+    VAEV --> VS["视频流：原 Wan2.2 DiT 块"]
+    VAEK --> KS["KVAF 流：DiT 块的全深度副本"]
+    VS <--> FU["稀疏层集合 S 上的事件感知双向融合<br/>事件 MLP 产生 gate Gℓ 与事件 latent<br/>gate 调制两路 cross-attention 的残差注入"]
+    KS <--> FU
+    VS --> HV["视频头 → 未来视频"]
+    KS --> HK["KVAF 头 → 预测 KVAF"]
+    FD["真实帧差 |Iτ − Iτ-1| 经同一 VAE 编码"] -.->|"EDLS 监督事件 latent"| FU
+```
+
+图依据：论文 §3 / Fig. 2（总览）、§3.1（KVAF 构造，式 1–3）、§3.2（双流结构、事件感知融合与 EDLS，式 4–8）、附录 A.1 网络流程与算法 1–2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ To bridge this gap, we present EA-WM, an Event-Aware Generative World Model that
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.06192>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06192)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.2）、附录 A.1–A.2 的网络流程与 KVAF 构造
 
 ## 推荐继续阅读
 
