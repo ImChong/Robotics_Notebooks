@@ -118,6 +118,8 @@ flowchart TD
 
 ## 关联页面
 
+- [人类上丘的感觉预测与反应](./paper-human-superior-colliculus-predictive-7t.md)：人类神经成像研究，与本文的机器人仿真机制分析互补。
+
 - [人形行走](../tasks/humanoid-locomotion.md)
 - [步态生成](../concepts/gait-generation.md)
 - [强化学习](../methods/reinforcement-learning.md)
