@@ -42,7 +42,7 @@
     boldColors: { '指数积公式': 'var(--hi)', '矩阵指数': 'var(--hi)', '位姿': 'var(--hi)', '正向运动学': 'var(--hi)', '螺旋轴': 'var(--demo-warn)',
       '朝向': 'var(--demo-accent)', '角度': 'var(--demo-accent)', '位置': 'var(--violet)', '零位': 'var(--demo-good)',
       '不能': '#ff7b3a', '不是': '#ff7b3a', '扯断': '#ff7b3a' },
-    introDur: 30.58,
+    introDur: 30.56,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep011.py 的 recap 句对齐）
