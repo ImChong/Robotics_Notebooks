@@ -42,6 +42,25 @@ Systematic study comparing egocentric human video and teleoperated real-robot tr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1：预训练（各 5,000 小时，控制变量）"]
+        E["第一人称人类视频<br/>取自 HumanNet 的 egocentric 部分<br/>重定向手部姿态 → 估计末端位姿与夹爪状态（伪动作标签）"]
+        RB["真实机器人数据<br/>多本体遥操作轨迹，含精确末端位姿与夹爪状态"]
+    end
+    M["自回归 World Action Model（Mix-of-Transformers）<br/>视频专家初始化自 Wan 2.2，动作专家经插值初始化"]
+    E --> M
+    RB --> M
+    M --> S2["Stage 2：后训练<br/>AgiBot World 的 15 个操作任务 × 100 条专家示教 = 1,500 条轨迹<br/>后训练数据、算力与评测协议保持固定"]
+    S2 --> EVS["评测：Seen（15 个后训练任务的留出轨迹）<br/>flow-matching 动作验证损失"]
+    S2 --> EVU["评测：Unseen（分布外任务）<br/>flow-matching 动作验证损失"]
+    S2 --> REAL["真机验证：AgiBot 双臂平台 3 个任务<br/>分布内 / 分布外物体"]
+```
+
+图依据：论文 §3（Stage 1/2 与评测协议）、§4.3（实验对照设计，非新算法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Systematic study comparing egocentric human video and teleoperated real-robot tr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.20521>
+- [arXiv PDF](https://arxiv.org/pdf/2606.20521)：已通读方法部分（实验与附录以略读为准）：摘要、§3 具身预训练设定、§4 实验设定与 §4.3 真机实验；§2 与附录略读
 
 ## 推荐继续阅读
 

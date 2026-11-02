@@ -43,6 +43,21 @@ Adaptive latent world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["离线预训练 JEPA 世界模型<br/>sensory encoder + action encoder + predictor<br/>预测未来潜表示，无需重建像素"] --> COPY["每个 episode 从同一预训练模型出发<br/>维护自己的模型副本与空 buffer B"]
+    COPY --> PLAN["用当前模型规划 (MPC)<br/>最小化潜空间目标代价 Σ α_k·d(ẑ, z_g)"]
+    GOAL["目标观测 o_g → 潜表示 z_g"] --> PLAN
+    PLAN --> EXEC["只执行第一个动作 a_t<br/>观测 o_t+1"]
+    EXEC --> BUF["写入 (o_t, a_t, o_t+1) 到 buffer B<br/>超出 N 则裁剪：recent-N 或 hard-N"]
+    BUF --> ADAPT["测试时自适应<br/>U 次梯度更新参数子集 Ω<br/>自监督预测损失 + stop-gradient"]
+    ADAPT --> PLAN
+```
+
+图依据：论文 §3.1–3.2 / Fig.1a、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ Adaptive latent world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.32026>
+- [arXiv PDF](https://arxiv.org/pdf/2606.32026)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.2（含 Algorithm 1）
 
 ## 推荐继续阅读
 

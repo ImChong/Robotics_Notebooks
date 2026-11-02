@@ -42,6 +42,27 @@ Layer-wise world-model-guided VLM planning, achieving 92.0 on the NAVSIM benchma
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前帧四视角图像 + 自车状态 + 导航信息 + 可学习 action queries"] --> VLM["Qwen2.5-VL 分支：产生逐层隐状态"]
+    VLM --> TD["Trajectory Decoder：意图级粗轨迹 Ŷ0"]
+    VLM -.->|"仅训练：前一阶段"| WH["World Head：以冻结 VAE 编码的未来帧潜变量为目标，约束隐状态含未来信息"]
+    VLM --> TPM["Trajectory Proposal Module：由 action-query 潜变量 + 自车状态编码 + 可学习 proposal embedding 初始化候选轨迹池 P0"]
+    TPM --> FCP
+    subgraph FCP["Foresight Cascade Planner：每隔 M 个 Qwen action 层做一次，共 R 个阶段"]
+        BA["Bridge Attention：候选间自注意 + action-query/自车状态记忆 + 该层 VLM foresight 特征"]
+        BEV["BEV 轨迹精炼：对当前帧多视角 BEV 特征做注意力，预测残差更新 ΔY"]
+        BA --> BEV
+    end
+    FCP --> POOL["精炼后的候选轨迹池 P^R"]
+    POOL --> SC["Score Head：为每条候选打分"]
+    SC --> OUT["取得分最高者作为规划轨迹"]
+```
+
+图依据：论文 §3.1–3.4 / Fig. 2–3、式 (1)–(15)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Layer-wise world-model-guided VLM planning, achieving 92.0 on the NAVSIM benchma
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.29879>
+- [arXiv PDF](https://arxiv.org/pdf/2606.29879)：已通读方法部分（实验与附录以略读为准）：§3.1 Overview、§3.2 World-Model-Supervised Coarse Planning、§3.3 Foresight Cascade Planner、§3.4 Scoring and Training、§4.1 实验设置
 
 ## 推荐继续阅读
 

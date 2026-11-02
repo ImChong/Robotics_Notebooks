@@ -42,6 +42,25 @@ A hierarchical multi-teacher distillation framework producing a unified egocentr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph L1["Level-I：Proxy Learning（逐教师独立蒸馏）"]
+        T["9 个教师 Tr：跨 ego/exo 视角、RGB / 深度 / 骨架模态<br/>及 DINOv2、SigLIP、DepthAnything 等基础模型"]
+        T -->|"特征级蒸馏：余弦距离 + 分类交叉熵"| P["R 个同构 Proxy 模型 Pr<br/>（均为第一人称 student，参数独立）"]
+    end
+    subgraph L2["Level-II：Proxy Merging + Selective Proxy Distillation (SPD)"]
+        P --> M["Proxy Merging 初始化<br/>θU = Σ αr* θr，α* 在概率单纯形上最小化分类损失"]
+        P --> SEL["逐样本 Proxy 选择<br/>仅保留预测正确的 proxy，取交叉熵最低的 top-K<br/>无正确 proxy 则跳过该样本的蒸馏"]
+        M --> U["UNIEGO（统一第一人称编码器）"]
+        SEL -->|"特征级 + logit 级（KL）蒸馏"| U
+    end
+    U --> INF["推理：仅输入第一人称 RGB<br/>无需教师 / exo 流 / proxy"]
+```
+
+图依据：论文 §3 / Fig. 2、§3.1–3.2、§4.1（Table 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A hierarchical multi-teacher distillation framework producing a unified egocentr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.20559>
+- [arXiv PDF](https://arxiv.org/pdf/2606.20559)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.2）、§4.1 实验设定；§4.2 以后略读
 
 ## 推荐继续阅读
 

@@ -44,6 +44,32 @@ Action-conditioned world model for digital teleoperation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        P1["阶段一：第一人称人类视频预训练<br/>EgoDex + VITRA，配对 (2D 骨架, RGB)"] --> P2["阶段二：机器人域适配<br/>配对遥操作数据，人手姿态经 IK 映射到机器人动作"]
+        P2 --> T["双向教师：Wan-I2V 视频 DiT<br/>+ 并行 control patch-embedding（分布对齐、可学习门控 α）"]
+        T --> D1["因果 flow-matching 预热<br/>得到帧级因果学生（因果 mask + KV cache，参考图作 sink token）"]
+        D1 --> D2["DMD 分布匹配蒸馏<br/>4 步采样，梯度跨 chunk 经 KV cache 回传"]
+    end
+    subgraph INF["数字遥操作数据生成"]
+        H["操作员手部姿态流（21 关节）"] --> SK["渲染深度感知骨架视频 S（16 FPS）"]
+        SK --> VAE["预训练 VAE 编码 → 控制潜变量 c"]
+        REF["参考图 I_ref"] --> GEN
+        VAE --> GEN["蒸馏后的因果学生<br/>按 81 帧 chunk 生成机器人第一人称视频"]
+        GEN --> VID["生成视频"]
+        GEN -- "后续 chunk 以机器人相机真实帧作新 I_ref（re-anchoring，抑制漂移）" --> GEN
+        H --> RT["Retargeting：坐标变换链 + DLS 逆运动学<br/>得到 54 维机器人动作 a"]
+        VID --> PAIR["成对 (视频, 动作) 轨迹 → 模仿学习"]
+        RT --> PAIR
+    end
+    D2 --> GEN
+```
+
+图依据：论文 §3.1–3.5 / Fig.3、§4.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -101,6 +127,7 @@ Action-conditioned world model for digital teleoperation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.06558>
+- [arXiv PDF](https://arxiv.org/pdf/2607.06558)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.5）、§4 数字遥操作系统（4.1–4.2）、Fig.3
 
 ## 推荐继续阅读
 

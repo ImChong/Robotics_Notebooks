@@ -42,6 +42,26 @@ Introduces R3D-Bench with 3,033 quantitative spatial reasoning questions across 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  IN["输入：egocentric RGB-D 视频 + 相机位姿 + 问题"] --> SEG["场景构建：SAM3 对每个物体做 mask 跟踪"]
+  SEG --> LIFT["用深度与位姿把各帧 mask 内像素提升到 3D<br/>得到物体点云"]
+  LIFT --> F1["过滤 1：投票<br/>丢弃出现在少于 50% 帧 mask 中的点"]
+  F1 --> F2["过滤 2：KNN 离群点移除 (k=6)"]
+  F2 --> PC["每个物体的点云（场景）"]
+  PC --> BB["bounding box 表示<br/>重力对齐，水平朝向由 XZ 平面 2D PCA 确定<br/>（距离 / 位置 / 尺寸）"]
+  PC --> MESH["网格表示（体积类问题）<br/>SAM3D 由首个 SAM3 分割估计网格 → 按尺度因子缩放到场景度量<br/>→ 体素 cavity 检测得到功能体积"]
+  BB --> TOOLS["8 个可组合空间工具<br/>list_objects / get_object_ids / get_distance / get_position<br/>get_object_size / get_object_volume / get_distance_from_me / get_my_position"]
+  MESH --> TOOLS
+  Q["问题"] --> LLM["tool-calling LLM（如 Qwen3-VL 235B，无需训练）<br/>多步调用工具，先用 ID 解析物体"]
+  TOOLS <--> LLM
+  LLM --> ANS["输出答案"]
+```
+
+图依据：论文 §4.1 Scene Construction、§4.2 Multi-Step Tool Calling / Fig.1（图示仅覆盖 R3D 方法；R3D-Bench 基准构建见 §3，未入图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Introduces R3D-Bench with 3,033 quantitative spatial reasoning questions across 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.02921>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02921)：已通读方法部分（实验与附录以略读为准）：摘要、§4 R3D（4.1–4.2）、§5 主结果部分略读
 
 ## 推荐继续阅读
 

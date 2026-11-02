@@ -42,6 +42,26 @@ First RL in World-Action paradigm jointly optimizing world and action models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练 World-Action 模型<br/>世界模型（DiT 视频生成器）+ 动作模型（actor）"] --> WM["世界模型生成想象的未来观测<br/>（潜空间）"]
+    WM --> ACT["Actor 消费世界模型中间潜特征<br/>翻译为可执行动作"]
+    ACT --> ENV["环境执行动作<br/>得到真实观测"]
+    WM --> REW["重建式稠密奖励 r_t<br/>比较想象观测与真实观测的相似度<br/>可选 MSE / 光流 / DINOv2 / V-JEPA2"]
+    ENV --> REW
+    REW --> RL["策略梯度优化 actor"]
+    ENV --> SUC{"轨迹成功？"}
+    SUC -- "是" --> SFT["Online Video SFT<br/>在成功轨迹上微调世界模型"]
+    FROZEN["冻结的预训练世界模型副本<br/>潜特征高斯近似（固定协方差）"] --> KL["KL 正则<br/>约束更新后潜特征分布"]
+    SFT --> KL
+    KL --> WM
+    RL --> ACT
+```
+
+图依据：论文 §3.2–3.4 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ First RL in World-Action paradigm jointly optimizing world and action models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.17906>
+- [arXiv PDF](https://arxiv.org/pdf/2606.17906)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4.1 实现细节
 
 ## 推荐继续阅读
 

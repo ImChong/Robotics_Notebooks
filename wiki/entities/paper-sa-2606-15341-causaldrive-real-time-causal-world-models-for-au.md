@@ -42,6 +42,28 @@ Real-time causal world models for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["Stage 0/1：Causal AR Teacher (Teacher Forcing)"]
+        P["ego 轨迹 P<br/>Plücker 相机位姿 → MLP → h_geo"]
+        B["社会学提示 B<br/>文本编码器 → E_socio"]
+        DIT["DiT block（Block Causal Attention）<br/>AdaLN(h_geo) + SelfAttn；CrossAttn(E_socio)"]
+        HIST["真值历史 C_&lt;k（KV 缓存）"]
+        P --> DIT
+        B --> DIT
+        HIST --> DIT
+        DIT --> TEA["Causal AR Teacher v_θ^AR<br/>continuous flow matching，约 50 步"]
+    end
+    TEA --> ODE["Causal ODE 蒸馏<br/>用教师 PF-ODE 轨迹训练 AR 学生 G_φ"]
+    ODE --> DMD["Context-Forced DMD<br/>学生 N-chunk 自回归 self-rollout 得到 Ĉ_stu<br/>教师在 Ĉ_stu 条件下给出 real score"]
+    DMD --> STU["少步（1–4 步）自回归学生<br/>实时 ≥ 12 FPS"]
+    STU --> APP["下游：闭环仿真 / 视频到奖励 V2R 的 RL 后训练 / 人在回路仿真"]
+```
+
+图依据：论文 §3 / Fig.2（§3.2 因果 AR 教师、§3.3 少步蒸馏、§3.4 下游应用）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Real-time causal world models for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.15341>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15341)：已通读方法部分（实验与附录以略读为准）：§3 方法（预备知识、社会学感知因果 AR 教师、少步蒸馏、下游应用）、§4 SocioDrive-Bench 标注流程；§5 实验略读
 
 ## 推荐继续阅读
 

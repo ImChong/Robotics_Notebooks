@@ -42,6 +42,24 @@ Identifies "instruction leakage" problem in goal-conditioned world models and pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["图像序列"] --> ENC["ViT-tiny 编码器 → 全局 JEPA 潜变量 z + patch 特征"]
+    ENC --> REF["Referential 模块：从 patch 特征读出稀疏度量点锚 p<br/>并用锚点条件化潜变量"]
+    REF --> PRED["动作条件 Transformer 预测器<br/>滚动 (z, p) → 预测 ẑ′ 与 p̂′"]
+    ACT["动作"] --> PRED
+    G["语言目标 g（模板：move the target to the r of the anchor）"] -. "泄漏路径：goal-conditioned 模型把 g 送入动力学<br/>GoalFree 删除此边" .-> PRED
+    PRED --> COST["Planner cost：由预测锚点计算软关系满足度"]
+    G -- "GoalFree：目标只进入 planner cost" --> COST
+    COST --> MPC["采样式 MPC（CEM）规划 8 步推动<br/>每步重新编码真实场景并前向滚动候选动作"]
+    MPC --> EXEC["执行第一个动作 → 仿真环境，循环重复"]
+    EXEC --> IMG
+```
+
+图依据：论文 §3 / Fig.1（模型与泄漏路径）、§4 Control（规划流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Identifies "instruction leakage" problem in goal-conditioned world models and pr
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.06925>
+- [arXiv PDF](https://arxiv.org/pdf/2607.06925)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Task and model、§4 Evaluation protocol、§5.1–5.3 结果
 
 ## 推荐继续阅读
 

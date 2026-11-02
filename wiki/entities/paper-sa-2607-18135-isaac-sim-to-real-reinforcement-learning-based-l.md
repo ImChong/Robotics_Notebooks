@@ -42,6 +42,29 @@ Utilizes NVIDIA's Isaac Sim and Isaac Lab for training, achieving zero-shot sim-
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  REC["真机记录关节位置 / 速度与力矩数据"] --> ACTNET["Actuator-net<br/>MLP，3 层 × 64，soft-sign"]
+  subgraph TRAIN["Isaac Sim / Isaac Lab 训练（4096 并行环境）"]
+    DR["域随机化 + 地形课程 + 随机推力"] --> ENV["Go1 仿真环境"]
+    OBS["48 维观测<br/>线速度 / 角速度 / 投影重力 / 速度指令<br/>关节位置 / 关节速度 / 上一动作"] --> PI["Actor-Critic MLP<br/>512-256-128，ELU，PPO"]
+    PI --> ACT["12 维关节位置动作<br/>缩放 0.2 + 名义姿态偏置"]
+    ACT --> ACTNET
+    ACTNET --> TAU["关节力矩"]
+    TAU --> ENV
+    ENV --> OBS
+    ENV --> RW["奖励与惩罚项<br/>速度跟踪 / 步态 / 足端离地 / 平滑性 / 关节限位等"]
+    RW --> PI
+  end
+  PI -->|"零样本部署"| ONNX["ONNX 导出<br/>Jetson Nano 推理"]
+  KF["卡尔曼滤波估计线速度<br/>C++ 实现"] --> ONNX
+  ONNX --> GO1["Unitree Go1 真机"]
+```
+
+图依据：论文 §II.B–§II.E、§III.A。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Utilizes NVIDIA's Isaac Sim and Isaac Lab for training, achieving zero-shot sim-
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2607.18135>
+- [arXiv PDF](https://arxiv.org/pdf/2607.18135)：已通读方法部分（实验与附录以略读为准）：§II 强化学习框架（问题定义、Sim-to-Real 技术、动作空间、观测、奖励）、§III.A 网络架构与训练、§III.B–C 实验与结果
 
 ## 推荐继续阅读
 

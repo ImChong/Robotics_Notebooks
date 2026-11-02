@@ -42,6 +42,26 @@ Discretizes continuous camera trajectories into action primitives for improved a
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["连续相机轨迹 T（4×4 位姿序列）"] --> B["时间分段（每段 k=4）"]
+    B --> C["相邻段终点相对位姿 ΔT = ΔR, Δt"]
+    C --> D["阈值量化：平移 9 类 + 旋转 3 类（共 27 种离散动作）"]
+    D --> E["离散动作序列 a_seq"]
+    E --> F["两张可学习查表 E_trans / E_rot → 投影得到动作嵌入"]
+    F --> G["与视频 latent 逐元素相加，再经自注意力 + 线性层"]
+    H["初始帧 x0 + 文本 τ"] --> I["预训练图生视频扩散骨干（DiT 块）"]
+    G --> I
+    I --> J["Action-Controllable Teacher"]
+    J --> K["ODE 轨迹初始化（因果掩码：sink token + 滑动窗口）"]
+    K --> L["DMD 自强制（self-forcing）蒸馏，滚动 KV-cache"]
+    L --> M["四步自回归 Student：长时程动作可控视频生成"]
+```
+
+图依据：论文 §3.1–3.4（Action Discretization、Teacher Model、Action-Guided Distillation）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Discretizes continuous camera trajectories into action primitives for improved a
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.07967>
+- [arXiv PDF](https://arxiv.org/pdf/2606.07967)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言开头、§3 方法（3.1 概览、3.2 动作离散化、3.3 教师模型、3.4 动作引导蒸馏）；§4 实验略读
 
 ## 推荐继续阅读
 
