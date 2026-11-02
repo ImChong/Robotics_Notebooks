@@ -3,7 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-09-15
-arxiv: "2307.01871"
+arxiv: "2307.06135"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-context.md
@@ -41,7 +41,7 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 | 项 | 内容 |
 |----|------|
 | **路线** | 上下文主导型 |
-| **出处** | [arXiv:2307.01871](https://arxiv.org/abs/2307.01871) |
+| **出处** | [arXiv:2307.06135](https://arxiv.org/abs/2307.06135) |
 | **文内角色** | 从大型场景图检索任务子图并用符号约束检查计划。 |
 
 ## 结论
@@ -54,7 +54,7 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2307.01871](https://arxiv.org/abs/2307.01871) 为准。
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2307.06135](https://arxiv.org/abs/2307.06135) 为准。
 - **该路线该看的指标**：长时 / 多阶段任务成功率，以及记忆或场景图规模与检索开销的关系。
 - **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
 
@@ -77,4 +77,6 @@ summary: "SayPlan（具身世界模型六路线专题）：从大型场景图检
 
 ## 推荐继续阅读
 
-- [arXiv:2307.01871](https://arxiv.org/abs/2307.01871)
+- [arXiv:2307.06135](https://arxiv.org/abs/2307.06135)
+
+- 核对（2026-11-02）：原 arXiv 编号 2307.01871 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2307.06135。

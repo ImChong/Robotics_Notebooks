@@ -6,7 +6,7 @@
 - **类型：** paper
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html>
 - **分类：** 04_Loco-Manipulation_and_WBC
-- **arXiv：** <https://arxiv.org/abs/2501.17173>
+- **arXiv：** <https://arxiv.org/abs/2602.16705>
 - **入库日期：** 2026-06-07
 - **一句话说明：** HERO (Humanoid End-effector ContROl) 结合了大型视觉模型的开放词汇识别能力与高精度仿真训练的全身控制，实现了人形机器人对任意现实物体的"边走边抓"。
 
@@ -23,4 +23,4 @@
 ## 参考来源（原始）
 
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html>
-- 论文：<https://arxiv.org/abs/2501.17173>
+- 论文：<https://arxiv.org/abs/2602.16705>

@@ -3,7 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
-arxiv: "1805.08034"
+arxiv: "1805.12114"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-planning.md
@@ -41,7 +41,7 @@ summary: "PETS（具身世界模型六路线专题）：概率动力学集成+�
 | 项 | 内容 |
 |----|------|
 | **路线** | 规划主导型 |
-| **出处** | [arXiv:1805.08034](https://arxiv.org/abs/1805.08034) |
+| **出处** | [arXiv:1805.12114](https://arxiv.org/abs/1805.12114) |
 | **文内角色** | 概率动力学集成+不确定性传播增强 CEM，真机样本高效 MBRL 代表。 |
 
 ## 结论
@@ -54,7 +54,7 @@ summary: "PETS（具身世界模型六路线专题）：概率动力学集成+�
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:1805.08034](https://arxiv.org/abs/1805.08034) 为准。
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:1805.12114](https://arxiv.org/abs/1805.12114) 为准。
 - **该路线该看的指标**：任务成功率、规划时延与 rollout 步数、模型误差随预测时域的放大速度。
 - **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
 
@@ -77,4 +77,6 @@ summary: "PETS（具身世界模型六路线专题）：概率动力学集成+�
 
 ## 推荐继续阅读
 
-- [arXiv:1805.08034](https://arxiv.org/abs/1805.08034)
+- [arXiv:1805.12114](https://arxiv.org/abs/1805.12114)
+
+- 核对（2026-11-02）：原 arXiv 编号 1805.08034 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 1805.12114。

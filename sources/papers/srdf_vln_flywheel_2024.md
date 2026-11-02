@@ -4,8 +4,8 @@
 
 - **标题：** Bootstrapping Language-Guided Navigation Learning with Self-Refining Data Flywheel
 - **类型：** paper
-- **arXiv：** <https://arxiv.org/abs/2407.07689>
-- **PDF：** <https://arxiv.org/pdf/2407.07689>
+- **arXiv：** <https://arxiv.org/abs/2412.08467>
+- **PDF：** <https://arxiv.org/pdf/2412.08467>
 - **Tech Blog：** <https://www.lightorigins.com/blog/lightnav-0>
 - **入库日期：** 2026-09-21
 - **一句话说明：** Self-Refining Data Flywheel 导航数据自举；LightNav SFT 数据池 4.7M 样本来源之一（博客脚注 SRDF）。

@@ -4,8 +4,8 @@
 
 - **标题：** Open-Vocabulary Object Goal Navigation with Embodied Foundation Models
 - **类型：** paper
-- **arXiv：** <https://arxiv.org/abs/2409.01535>
-- **PDF：** <https://arxiv.org/pdf/2409.01535>
+- **arXiv：** <https://arxiv.org/abs/2409.14296>
+- **PDF：** <https://arxiv.org/pdf/2409.14296>
 - **Tech Blog：** <https://www.lightorigins.com/blog/lightnav-0>
 - **入库日期：** 2026-09-21
 - **一句话说明：** HM3D 上开放词汇目标导航设定；LightNav-0 十项单目评测之一。

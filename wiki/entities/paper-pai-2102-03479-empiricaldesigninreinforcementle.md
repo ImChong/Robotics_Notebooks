@@ -3,7 +3,7 @@ type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-09-20
-arxiv: "2102.03479"
+arxiv: "2304.01315"
 summary: "Guidance on experimental design choices that materially affect reported results."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -47,8 +47,8 @@ Guidance on experimental design choices that materially affect reported results.
 | 编号 | 108/384 |
 | 分组 | Evaluation Methodology |
 | 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/2102.03479> |
-| arXiv | 2102.03479 |
+| 主链接 | <https://arxiv.org/abs/2304.01315> |
+| arXiv | 2304.01315 |
 
 ## 核心机制（归纳）
 
@@ -61,7 +61,7 @@ Guidance on experimental design choices that materially affect reported results.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2102.03479) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2304.01315) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -102,10 +102,12 @@ Guidance on experimental design choices that materially affect reported results.
 - [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/2102.03479>
+- 主链接：<https://arxiv.org/abs/2304.01315>
 
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/2102.03479)
+- [原文 / 官方入口](https://arxiv.org/abs/2304.01315)
+
+- 核对（2026-11-02）：原 arXiv 编号 2102.03479 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2304.01315。

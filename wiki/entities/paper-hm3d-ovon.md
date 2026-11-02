@@ -8,7 +8,7 @@ tags:
   - benchmark
 status: complete
 updated: 2026-09-23
-arxiv: "2409.01535"
+arxiv: "2409.14296"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
@@ -52,7 +52,7 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 | **类型** | paper |
 | **出处** | 2024 |
 | **开源** | **待核实** |
-| **arXiv** | [2409.01535](https://arxiv.org/abs/2409.01535) |
+| **arXiv** | [2409.14296](https://arxiv.org/abs/2409.14296) |
 
 
 ## 源码运行时序图
@@ -64,7 +64,7 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 - **评测设定：** HM3D 场景上的 **开放词汇目标导航（OVON）**——目标类别在评测期可以是训练未见的自然语言名词，因此不能用闭集 ObjectNav 的类别表兜底。
 - **主指标：** 导航类基准通用的 **SR（成功率）** 与 **SPL（按路径长度加权的成功率）**；SR 高而 SPL 低意味着「能找到但绕远」。
 - **在 LightNav 中的位置：** 作为 [LightNav-0](./paper-lightnav-0.md) **十项单目评测之一** 被引用，用于验证零样本导航的开放词汇覆盖面。
-- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各方法的 SR/SPL **以 [原文](https://arxiv.org/abs/2409.01535) 为准**，勿用博客脚注回填。
+- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各方法的 SR/SPL **以 [原文](https://arxiv.org/abs/2409.14296) 为准**，勿用博客脚注回填。
 
 ## 与其他工作对比
 
@@ -104,3 +104,5 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 
 - [Light Origins 官网](https://www.lightorigins.com/)
 - [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+
+- 核对（2026-11-02）：原 arXiv 编号 2409.01535 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2409.14296。

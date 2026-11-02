@@ -4,7 +4,7 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
 updated: 2026-06-25
-arxiv: "2106.14910"
+arxiv: "2108.13956"
 venue: "2021 · ICML"
 code: https://github.com/rll-research/url_benchmark
 summary: "任务到来前的主动预训练；低层身体需先积累可迁移经验。"
@@ -45,7 +45,7 @@ sources:
 | 编号 | 26/41 |
 | 分组 | 03 Intrinsic reward 预训练 |
 | 出处 | 2021 · ICML |
-| 论文 | <https://arxiv.org/abs/2106.14910> |
+| 论文 | <https://arxiv.org/abs/2108.13956> |
 - **代码/项目：** <https://github.com/rll-research/url_benchmark>
 
 ## 核心机制（归纳）
@@ -86,9 +86,11 @@ sources:
 - [bfm_awesome_aps_icml_2021.md](../../sources/papers/bfm_awesome_aps_icml_2021.md) — awesome-bfm 策展摘录
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
-- 论文：<https://arxiv.org/abs/2106.14910>
+- 论文：<https://arxiv.org/abs/2108.13956>
 
 ## 推荐继续阅读
 
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 完整列表与数据集表
 - [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487) — TPAMI 2025 综述
+
+- 核对（2026-11-02）：原 arXiv 编号 2106.14910 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2108.13956。

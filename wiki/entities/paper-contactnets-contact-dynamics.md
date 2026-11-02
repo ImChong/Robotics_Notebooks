@@ -3,7 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
-arxiv: "2011.08903"
+arxiv: "2009.11193"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-model-building.md
@@ -41,7 +41,7 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 | 项 | 内容 |
 |----|------|
 | **路线** | 模型构建型 |
-| **出处** | [arXiv:2011.08903](https://arxiv.org/abs/2011.08903) |
+| **出处** | [arXiv:2009.11193](https://arxiv.org/abs/2009.11193) |
 | **文内角色** | 结构化状态空间学习接触几何与物理约束的动力学；以预测精度与穿透检验为终点。 |
 
 ## 结论
@@ -54,7 +54,7 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2011.08903](https://arxiv.org/abs/2011.08903) 为准。
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2009.11193](https://arxiv.org/abs/2009.11193) 为准。
 - **该路线该看的指标**：长程预测误差与漂移、物理一致性（穿模 / 能量 / 接触是否自洽）。
 - **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
 
@@ -77,4 +77,6 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 
 ## 推荐继续阅读
 
-- [arXiv:2011.08903](https://arxiv.org/abs/2011.08903)
+- [arXiv:2009.11193](https://arxiv.org/abs/2009.11193)
+
+- 核对（2026-11-02）：原 arXiv 编号 2011.08903 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2009.11193。

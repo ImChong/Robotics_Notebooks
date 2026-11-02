@@ -3,7 +3,7 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
-arxiv: "2501.17173"
+arxiv: "2602.16705"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -39,7 +39,7 @@ HERO (Humanoid End-effector ContROl) 结合了大型视觉模型的开放词汇�
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
 | 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html> |
-| arXiv | <https://arxiv.org/abs/2501.17173> |
+| arXiv | <https://arxiv.org/abs/2602.16705> |
 
 ## 实验与评测
 
@@ -63,8 +63,10 @@ HERO (Humanoid End-effector ContROl) 结合了大型视觉模型的开放词汇�
 
 - [humanoid_pnb_learning-humanoid-end-effector-control-for-open.md](../../sources/papers/humanoid_pnb_learning-humanoid-end-effector-control-for-open.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html>
-- 论文：<https://arxiv.org/abs/2501.17173>
+- 论文：<https://arxiv.org/abs/2602.16705>
 
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：HERO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html)
+
+- 核对（2026-11-02）：原 arXiv 编号 2501.17173 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2602.16705。

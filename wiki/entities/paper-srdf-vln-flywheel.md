@@ -7,7 +7,7 @@ tags:
   - navigation
 status: complete
 updated: 2026-09-23
-arxiv: "2407.07689"
+arxiv: "2412.08467"
 related:
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
@@ -50,7 +50,7 @@ summary: "SRDF：Self-Refining Data Flywheel 导航数据自举；LightNav SFT �
 | **类型** | paper |
 | **出处** | 2024 |
 | **开源** | **待核实** |
-| **arXiv** | [2407.07689](https://arxiv.org/abs/2407.07689) |
+| **arXiv** | [2412.08467](https://arxiv.org/abs/2412.08467) |
 
 
 ## 源码运行时序图
@@ -61,7 +61,7 @@ summary: "SRDF：Self-Refining Data Flywheel 导航数据自举；LightNav SFT �
 
 - **评的是数据飞轮而非单个模型：** SRDF 的主张是 **generator 与 navigator 互相精炼**——生成器造指令-轨迹对、导航器筛选与反馈，迭代提升语料质量，因此评测看的是 **迭代轮次带来的下游导航指标增益**，而不是某一版模型的绝对分。
 - **在 LightNav 中的位置：** 作为 **SFT 数据池 4.7M 样本** 的来源之一被引用（博客脚注口径），衡量的是语料供给规模。
-- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各轮次指标与下游 VLN 成绩 **以 [原文](https://arxiv.org/abs/2407.07689) 为准**；开源状态 **待核实**，暂无法独立重跑。
+- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各轮次指标与下游 VLN 成绩 **以 [原文](https://arxiv.org/abs/2412.08467) 为准**；开源状态 **待核实**，暂无法独立重跑。
 
 ## 与其他工作对比
 
@@ -100,3 +100,5 @@ summary: "SRDF：Self-Refining Data Flywheel 导航数据自举；LightNav SFT �
 
 - [Light Origins 官网](https://www.lightorigins.com/)
 - [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+
+- 核对（2026-11-02）：原 arXiv 编号 2407.07689 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2412.08467。
