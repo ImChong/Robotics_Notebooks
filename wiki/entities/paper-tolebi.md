@@ -33,11 +33,11 @@ summary: "TOLEBI：在线关节状态估计 + fallibility rewards 学双足容�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| MDP | Markov Decision Process | 马尔可夫决策过程，论文把电机故障下的行走建模为 MDP（§III） |
+| PPO | Proximal Policy Optimization | 近端策略优化，训练策略所用算法（Isaac Gym） |
+| GRU | Gated Recurrent Unit | 关节状态估计器的结构（单层，隐藏 128） |
+| DSP / RSSP / LSSP | Double / Right Single / Left Single Support Phase | 双支撑 / 右单支撑 / 左单支撑相，用于足接触奖励 |
+| RMSE / MBE | Root Mean Square Error / Mean Bias Error | 速度跟踪误差指标（§V） |
 
 ## 为什么重要
 
@@ -127,6 +127,7 @@ flowchart TD
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [Tech Blog](https://www.lightorigins.com/blog/light-react)
 - [arXiv PDF](https://arxiv.org/pdf/2602.05596)：已通读方法部分（实验与附录以略读为准）：§I–II 引言与相关工作、§III 预备、§IV TOLEBI 框架（A–E）、§V-A 实验设定；§V 结果与消融略读
+- 核对（2026-11-02）：对照 arXiv:2602.05596v2 全文缩写（MDP、PPO、GRU、DSP/RSSP/LSSP、RMSE/MBE），把「英文缩写速查」中与本文无关的 VLM/VLN/ER/RL/R2S2R 条目替换为本文实际使用的缩写。
 
 ## 推荐继续阅读
 

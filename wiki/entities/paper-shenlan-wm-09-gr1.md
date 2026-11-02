@@ -81,19 +81,19 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 1）策展导读要点
+### 1）GPT 风格因果 Transformer，无扩散
 
-未来观测与动作在同一扩散/自回归骨干中联合建模，减少级联误差累积；适合端到端 VLA/操控闭环。
+GR-1 是 GPT 风格因果 Transformer：输入语言（冻结 CLIP 文本编码器）、观测图像（冻结 MAE ViT，CLS + patch 经 Perceiver Resampler）、机器人状态，输出下一步动作与未来图像；损失为未来帧像素 MSE、机械臂动作 Smooth-L1、夹爪动作 BCE，论文未使用扩散或其他生成式解码（依据 arXiv:2312.13139 §3.2–§3.3）。
 
-### 2）策展导读要点
+### 2）训练配方
 
-GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器人微调。
+Ego4D（>3,500 小时，取 3s 片段）视频生成式预训练，再在机器人数据上微调；预训练与微调阶段均冻结 CLIP 与 MAE 编码器（依据 §3.3）。
 
 ## 结论
 
 **GR-1 代表联合架构的路线取舍：把动作与未来图像放进同一个 GPT 风格骨干，用大规模视频预训练换操控端到端的表征。**
 
-- 联合建模的直接收益是 **减少级联误差累积**，适合端到端 VLA / 操控闭环；代价是模块不再像级联那样可拆分复用。
+- 论文结论：统一的 GPT 风格 Transformer + 大规模视频生成式预训练，CALVIN ABCD→D 成功率 88.9% → 94.9%，ABC→D 零样本 53.3% → 85.4%（依据摘要）；「减少级联误差累积」是策展归纳，论文未做此对比。
 - 训练配方是「大规模视频预训练 → 机器人数据微调」，因此效果高度取决于预训练视频域与下游操控域的匹配程度。
 - 本页为 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02** 的清单索引条目（ICLR 2024，引用 358）；引用量与下游增益无线性关系，量化指标以原文为准。
 
@@ -121,6 +121,7 @@ GPT 风格端到端预测动作+未来图像；大规模视频预训练后机器
 - [shenlan_wm_survey_09_gr1.md](../../sources/papers/shenlan_wm_survey_09_gr1.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- 核对（2026-11-02）：对照 arXiv:2312.13139 摘要、§3.2–§3.3，核心机制「扩散/自回归骨干」改为 GPT 风格因果 Transformer（MSE / Smooth-L1 / BCE，无扩散）；流程图与论文一致，未改。
 - [arXiv PDF](https://arxiv.org/pdf/2312.13139)：已通读方法部分（实验与附录以略读为准）：§3.1 问题定义、§3.2 架构（输入/网络/输出）、§3.3 训练
 
 ## 推荐继续阅读

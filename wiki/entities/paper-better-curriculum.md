@@ -19,7 +19,7 @@ sources:
   - ../../sources/papers/better-curriculum_arxiv_2609_25887.md
   - ../../sources/sites/better-curriculum.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md
-summary: "Better Curriculum（arXiv:2609.25887）：采集期 25 Hz 触觉反射教师塑形示范，学生 ACT/π0.5 推理无触觉；名义塑料杯稳定抓取 95% vs 5%。"
+summary: "Better Curriculum（arXiv:2609.25887）：采集期 25 Hz 触觉反射教师塑形示范，学生 ACT/π0.5 推理无触觉；名义塑料杯稳定抓取（reflex 示范 vs 目视筛选人工示范）：ACT 95% vs 15%，π0.5 95% vs 5%（依据 arXiv:2609.25887 表 1、表 3）。"
 ---
 
 # Better Curriculum（arXiv:2609.25887）
@@ -28,7 +28,7 @@ summary: "Better Curriculum（arXiv:2609.25887）：采集期 25 Hz 触觉反射
 
 ## 一句话定义
 
-**采集期 25 Hz 触觉反射教师塑形示范，学生 ACT/π0.5 推理无触觉；名义塑料杯稳定抓取 95% vs 5%。**
+**采集期 25 Hz 触觉反射教师塑形示范，学生 ACT/π0.5 推理无触觉；名义塑料杯稳定抓取（reflex 示范 vs 目视筛选人工示范）：ACT 95% vs 15%，π0.5 95% vs 5%（依据 arXiv:2609.25887 表 1、表 3）。**
 
 ## 英文缩写速查
 
@@ -69,7 +69,7 @@ flowchart TD
 |----|------|
 | **arXiv** | [2609.25887](https://arxiv.org/abs/2609.25887) |
 | **开源** | **待发布** |
-| **要点** | 导纳式 kinesthetic + 触觉 reflex 记录 follower 动作；学生仅 RGB+状态；部署可选 re-engage arbiter。 |
+| **要点** | SO101 leader arm 遥操作 Piper follower + TactileReflex 25 Hz 触觉反射，记录 follower 实际动作（依据 §3.1，非导纳式 kinesthetic）；学生仅 RGB+状态；部署可选 re-engage arbiter。 |
 | **文内指标** | 30 demo / 20 trial；扰动下 policy-only 55% vs +arbiter 100%；入库日无官方 GitHub。 |
 
 ## 源码运行时序图
@@ -90,7 +90,7 @@ flowchart TD
 **Better Curriculum 的「curriculum」指示范分布而非分阶段训练；部署期保护仍不可省。**
 
 1. 开源边界：**待发布** — 以项目页实际链接为准（入库日 2026-09-23）。
-2. 核心机制：导纳式 kinesthetic + 触觉 reflex 记录 follower 动作；学生仅 RGB+状态；部署可选 re-engage arbiter。…
+2. 核心机制：SO101 leader arm 遥操作 Piper follower + TactileReflex 25 Hz 触觉反射，记录 follower 实际动作（依据 §3.1，非导纳式 kinesthetic）；学生仅 RGB+状态；部署可选 re-engage arbiter。…
 3. 部署前核对任务协议与硬件条件，勿直接横比公众号摘录数字。
 
 ## 关联页面
@@ -106,6 +106,7 @@ flowchart TD
 - [wechat_embodied_station_12_papers_collab_wm_2026-09-23.md](../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md)
 - [arXiv:2609.25887](https://arxiv.org/abs/2609.25887)
 - [arXiv PDF](https://arxiv.org/pdf/2609.25887)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method（3.1–3.3）、§4 实验设定
+- 核对（2026-11-02）：对照 arXiv:2609.25887 §3.1、表 1、表 3、表 5；采集方式由「导纳式 kinesthetic」改为 SO101 leader arm 遥操作 + TactileReflex；「95% vs 5%」补明是 π0.5（ACT 为 95% vs 15%）。
 
 ## 推荐继续阅读
 

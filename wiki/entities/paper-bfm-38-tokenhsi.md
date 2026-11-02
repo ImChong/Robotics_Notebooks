@@ -79,25 +79,25 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 1）策展导读要点
+### 1）统一 Transformer 多任务策略
 
-语言、VLA、扩散或规划器作为上层，**调用** 已封装的底层全身能力（tracking / WBC / latent skill）。
+本体感觉 token 与各任务 token（跟随、坐、攀爬、搬运）由 Transformer 编码器自注意力融合，one-hot 任务标签作 attention mask 屏蔽非目标任务 token，MLP Action Head 输出 32 维 PD 目标；用 PPO + 条件化的 motion discriminator（AMP 风格奖励）训练（依据 arXiv:2503.19901 §3.3）。
 
-### 2）策展导读要点
+### 2）适配：冻结主体 + 零初始化 adapter
 
-接口设计（命令空间、时序、安全层）决定上层智能能否稳定使用身体。
+冻结 Tprop、可学习 token e、Action Head H、Encoder φ，在 Action Head 加零初始化 adapter，新增 / 微调任务 tokenizer，每个新任务从头训练新的 discriminator；长程任务由有限状态机（FSM）切换 one-hot 标签（依据 §3.4）。论文无「上层语言 / VLA 调用底层 WBC / latent skill」的分层结构。
 
 ## 结论
 
-**TokenHSI 的立场是把人–场景交互当成可 token 化的结构化事件（坐下、跨越等），由上层调用已封装的底层全身能力，而不是端到端重学交互。**
+**TokenHSI 的立场是用一个 Transformer 多任务策略统一多种人–场景交互技能：任务 token 化 + 掩码，再以零初始化 adapter 和任务 tokenizer 适配新任务，而不是分层调用底层控制器。**
 
-- 归位在 **05 Hierarchical control**（#38/41）：语言、VLA、扩散或规划器在上，tracking / WBC / latent skill 在下，**接口设计（命令空间、时序、安全层）** 决定上层智能能否稳定使用身体。
-- 常见误判是把瓶颈全算在 token 设计上——实际上限往往在 **底层跟踪鲁棒性**。
+- 起作用的是架构：共享本体感觉 token + 可变长度任务 token，使技能可组合、可适配到新物体 / 地形形状（依据 arXiv:2503.19901 摘要、§3.4）。
+- 归位在 awesome-bfm 的 **05 Hierarchical control** 是策展分类；论文策略本身是单一 Transformer 策略，长程任务靠 FSM 切换任务标签。
 - 与 [COINS](./paper-coins-compositional-human-scene-interaction.md) 的对照定位：后者做静态语义姿态生成，本文是 **task token 驱动的控制**；代码见 <https://github.com/liangpan99/TokenHSI>。
 
 ## 常见误区
 
-1. 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。
+1. 不要把 TokenHSI 读成「语言 / VLA 上层 + WBC 下层」的分层系统：它是仿真角色上的 Transformer 多任务策略与 adapter 适配（依据 §3.3–§3.4）。
 
 ## 实验与评测
 
@@ -117,6 +117,7 @@ flowchart TD
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2503.19901>
+- 核对（2026-11-02）：对照 arXiv:2503.19901 摘要、§3.3–§3.4，把「核心机制 / 结论 / 常见误区」中的上层语言 / VLA 调用 WBC 分层套话改为论文的 Transformer 多任务策略 + 零初始化 adapter；流程图与论文一致，未改。
 - [arXiv PDF](https://arxiv.org/pdf/2503.19901)：已通读方法部分（实验与附录以略读为准）：§1 引言与 §2.2 中的方法概述、§3.2–3.4（物理角色控制、基础技能学习、策略适配）、§4.1 实验设定
 
 ## 推荐继续阅读

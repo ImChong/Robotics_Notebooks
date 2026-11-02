@@ -73,30 +73,29 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 1）策展导读要点
+### 1）训练：轨迹上的随机掩码重建
 
-以 **goal / reference / command** 为条件训练全身跟踪或交互策略，扩展人形可执行动作库。
+轨迹 τ = (s, a, RTG …) 各模态经模态专属编码器 tokenize，加正弦时间步编码与可学习模态类型编码后展平；用「随机自回归掩码」（序列最后一个元素必被遮挡）遮挡 token，双向 Transformer 编码器只处理未遮挡 token，解码器填 mask token 后以 MSE 重建整条序列（依据 arXiv:2305.02968 §3.1–§3.2）。
 
-### 2）策展导读要点
+### 2）推理：只换掩码即换用途
 
-数据侧常融合 MoCap、视频、遥操作与 HOI；控制侧强调 **抗扰、恢复与跨参考泛化**。
+同一网络通过不同掩码模式充当 return-conditioned BC（RCBC，离线 RL）、行为克隆、前向 / 逆动力学、状态表示等（依据 §3.2 Masking Pattern、Fig. 1、Fig. 3）。
 
-### 3）策展导读要点
+### 3）论文声称的性质
 
-在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
+通用性、对异模态（state-only 与 state-action 混合）数据的缺失补全（heteromodality）、数据效率（依据 §1）。
 
 ## 结论
 
 **MTM 的取舍是把预训练对象从「与环境交互」换成「轨迹本身」：行为基座因此不再被传统 RL 的在线采样成本卡住。**
 
-- 起作用的是数据形态而非新控制器——轨迹直接作为预训练对象，goal / reference / command 的条件化能力从离线数据长出来。
-- 在 taxonomy 中归 **02 Goal-conditioned 学习**，回答的仍是「身体能覆盖多少目标条件技能」，而非覆盖面之外的实机鲁棒性。
-- 局限与同族一致：条件化跟踪不等于 unlimited skills，仍受数据分布、接触建模与实机 Sim2Real 约束。
+- 起作用的是数据形态与训练目标而非新控制器——在 state / action / RTG 轨迹上做随机掩码重建，推理时换掩码即可充当 RCBC、BC、前向 / 逆动力学、状态表示（依据 arXiv:2305.02968 §3）。
+- 本页归入 awesome-bfm 的 **02 Goal-conditioned 学习** 是策展分类；论文本身是通用轨迹预训练框架，其「goal-conditioned」读法（如用 RTG 或参考轨迹作条件）以原文为准。
 - 本页为清单索引策展编译，量化 benchmark 与消融以 arXiv:2305.02968 原文及 `facebookresearch/mtm` 为准。
 
 ## 常见误区
 
-1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。
+1. 不要把 MTM 读成人形全身跟踪控制器：论文实验面向通用 RL / 连续控制基准（依据 arXiv:2305.02968 §4），不含人形全身控制或实机结论。
 
 ## 实验与评测
 
@@ -115,6 +114,7 @@ flowchart TD
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2305.02968>
+- 核对（2026-11-02）：对照 arXiv:2305.02968 §1、§3.1–§3.3、Fig. 1–3，把「核心机制」的 BFM 通用套话（goal/reference/command 条件跟踪等）改为论文的掩码重建机制；流程图与论文一致，未改。
 - [arXiv PDF](https://arxiv.org/pdf/2305.02968)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 相关工作、§3 Masked Trajectory Modeling（轨迹数据、架构与掩码、通用 RL 抽象）、§4 开头的实验问题设置
 
 ## 推荐继续阅读

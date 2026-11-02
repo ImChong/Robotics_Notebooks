@@ -5,7 +5,7 @@ tags: [paper, vln, vln-survey, navigation, embodied-ai, anu, adelaide]
 status: complete
 updated: 2026-09-15
 arxiv: "2011.13922"
-summary: "在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。"
+summary: "在 Transformer 中引入循环状态 token，将历史压缩后与当前可导航方向的视图 tokens、指令联合编码以输出下一步动作。"
 related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-category-02-algorithm-frameworks.md
@@ -22,7 +22,7 @@ sources:
 
 ## 一句话定义
 
-在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。
+在 Transformer 中引入循环状态 token，将历史压缩后与当前可导航方向的视图 tokens、指令联合编码以输出下一步动作。
 
 ## 英文缩写速查
 
@@ -35,7 +35,7 @@ sources:
 ## 为什么重要
 
 - 使 BERT 类模型能处理部分可观测的时序导航输入，成为当时多 benchmark SOTA 基线架构。
-- 在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。
+- 在 Transformer 中引入循环状态 token，将历史压缩后与当前可导航方向的视图 tokens、指令联合编码以输出下一步动作。
 
 ## 流程总览
 
@@ -68,7 +68,7 @@ flowchart TD
 
 ### 1）策展导读要点
 
-**任务形式：** 在 Transformer 中引入循环状态 token，将历史压缩后与当前全景、指令联合编码以输出下一步动作。
+**任务形式：** 在 Transformer 中引入循环状态 token，将历史压缩后与当前可导航方向的视图 tokens、指令联合编码以输出下一步动作。
 
 ### 2）策展导读要点
 
@@ -82,7 +82,7 @@ flowchart TD
 
 **VLN↻BERT 解决的是「预训练 Transformer 天然处理不了部分可观测的时序决策」这个错配：加一个循环状态 token，把历史压成定长状态，BERT 类模型就能接进逐步导航。**
 
-- 真正起作用的就是那个 **recurrent state token**：历史压缩后与当前全景、指令联合编码输出下一步动作，无需显式维护完整历史序列。
+- 真正起作用的就是那个 **recurrent state token**：历史压缩后与当前可导航方向的视图 tokens、指令联合编码输出下一步动作（输入不是整个 360° 全景，依据论文 §3.3 Vision Processing 与 §4 Scene Features），无需显式维护完整历史序列。
 - 它的定位是 **02 算法框架**（#05/10）：价值在于被后续工作继承的架构骨架——当时多 benchmark 的 SOTA 基线——而不是某一组具体数字。
 - 同受 VLN 的通用边界约束：离散图设定下的 benchmark 提升不等于真机部署，与 VLN-CE 结果不可直接混比；量化指标以原文 PDF 为准。
 
@@ -108,6 +108,7 @@ flowchart TD
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2011.13922>
+- 核对（2026-11-02）：对照 arXiv:2011.13922 §3.3 与 §4，视觉输入为「可导航方向的图像特征」而非整个全景，已把页内「当前全景」改为「可导航方向的视图 tokens」；流程图原已如此，未改。
 - [arXiv PDF](https://arxiv.org/pdf/2011.13922)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Model（VLN 背景、BERT 回顾、Recurrent VLN BERT、训练与适配）、§4 实验设定
 
 ## 推荐继续阅读

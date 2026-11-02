@@ -94,7 +94,7 @@ flowchart TD
 | [Safety Filter](../concepts/safety-filter.md) | 通用定义：最小修改把名义动作投影回安全集；CrossSafe 用 **Hamilton–Jacobi 可达性** 值函数 + 安全最大化策略实现过滤，并让两者 **跨本体共享** |
 | [Control Barrier Function](../concepts/control-barrier-function.md) | 通常按机器人解析设计 $h(x)$；CrossSafe 在 **形态感知 latent** 中做 HJ 可达性分析，安全概念可迁移、同时显式条件化各机身形态与运动学 |
 | 共享末端动作空间的通才 VLA | 末端动作空间不刻画「安全依赖形态」——同一动作对一台机身安全、对另一台不安全；这正是 CrossSafe 要补的缺口 |
-| 单本体安全过滤 | 每台机器人单独训练；CrossSafe 四本体 × 五任务联合训练后 **零样本** 迁移到留出本体、降低名义策略碰撞率，且训练本体越多泛化越好（摘要口径） |
+| 单本体安全过滤 | 每台机器人单独训练；CrossSafe 共 5 本体（Piper、Franka-Panda、ARX-X5、UR5-WSG、Aloha-AgileX）× 5 任务，做 5 折留一本体评测：每折用其余 4 本体 × 5 任务联合训练，**零样本** 迁移到留出本体（依据 arXiv:2609.28984 摘要与 §V）、降低名义策略碰撞率，且训练本体越多泛化越好（摘要口径） |
 
 ## 关联页面
 
@@ -107,6 +107,7 @@ flowchart TD
 - [crosssafe 论文归档](../../sources/papers/crosssafe_arxiv_2609_28984.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
 - [arXiv PDF](https://arxiv.org/pdf/2609.28984)：已通读方法部分（实验与附录以略读为准）：§III 预备知识（HJ 可达性）、§IV 形态感知潜空间安全过滤（A 至 D）、§V-A/B/C 设定、训练与在线过滤
+- 核对（2026-11-02）：对照 arXiv:2609.28984 摘要、引言与 §V-A/B；「四本体×五任务联合训练」补全为 5 本体×5 任务的留一评测（每折 4 本体训练）。
 
 ## 推荐继续阅读
 
