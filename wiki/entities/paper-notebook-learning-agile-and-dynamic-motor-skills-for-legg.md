@@ -36,6 +36,18 @@ summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LS
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["步骤 1：辨识机器人物理参数并估计不确定度（惯性参数随机化，30 个 ANYmal 模型）"] --> S3
+    S2["步骤 2：在实机采集关节数据，监督学习 actuator net（位置误差与速度历史 → 关节力矩）"] --> S3
+    S3["步骤 3：刚体仿真 + actuator net 组成混合仿真器，用 TRPO 训练 MLP 策略（观测 → 关节位置目标）"]
+    S3 --> S4["步骤 4：将训练好的策略直接部署到 ANYmal 实机"]
+```
+
+图依据：论文 Fig.1（四步流程）与 Materials and Methods（Modeling rigid-body dynamics / Modeling the actuation / Policy training details）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -68,6 +80,7 @@ summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LS
 - [humanoid_pnb_learning-agile-and-dynamic-motor-skills-for-legg.md](../../sources/papers/humanoid_pnb_learning-agile-and-dynamic-motor-skills-for-legg.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html>
 - 论文：<https://arxiv.org/abs/1901.08652>
+- [arXiv PDF](https://arxiv.org/pdf/1901.08652)：已通读方法部分（实验与附录以略读为准）：引言、Fig.1 方法概述、Materials and Methods（刚体建模、actuator net、策略训练与部署细节）；结果与补充材料仅略读
 
 ## 推荐继续阅读
 

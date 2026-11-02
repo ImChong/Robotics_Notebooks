@@ -42,6 +42,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["观测：障碍物位置 / 速度 / 半径 + 相对目标位置（含历史）"] --> NN["LSTM 集成（bootstrap）× MC-Dropout（p=0.7）：N=n_d·n_b 次前向"]
+    NN --> ST["对 11 个候选 motion primitive 各得碰撞概率均值 E 与方差 Var"]
+    O --> TG["简单模型估计各 primitive 末端到目标的 t_goal（直线距离）"]
+    ST --> MPC["MPC：u* = argmin λv·Var + λc·E + λg·t_goal"]
+    TG --> MPC
+    MPC --> EX["在环境中执行 u* 一步"]
+    EX --> DS["回合结束得碰撞标签，与观测 / 动作历史一起存入经验集"]
+    DS --> TR["随机抽样子集训练集成网络"]
+    TR --> NN
+    AV["自适应方差：训练中线性增大 λv"] -.-> MPC
+```
+
+图依据：论文 §III（Approach）A-E 与 Fig.2 系统架构。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1810.08700>
+- [arXiv PDF](https://arxiv.org/pdf/1810.08700)：已通读方法部分（实验与附录以略读为准）：§I-§III（含 Fig.2 系统架构）与 §IV 实验设定；§IV 结果与 §V 仅略读
 
 ## 推荐继续阅读
 

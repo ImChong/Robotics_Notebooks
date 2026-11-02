@@ -42,6 +42,20 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  REF["参考路径 R"] --> COST["逐点距离 δ(ri, qj)\n离散环境用图上最短距离"]
+  QRY["智能体路径 Q"] --> COST
+  COST --> DTW["动态时间规整 DTW(R,Q)\n在保序、首尾对齐的约束下\n最小化累计代价"]
+  DTW --> NORM["除以 |R|·dth\ndth 为判定成功的阈值距离"]
+  NORM --> EXP["取负指数 exp(-x)\n得到 0 到 1 之间的 nDTW"]
+  EXP --> SDTW["SDTW = SR × nDTW\nSR 为是否成功（0 或 1）"]
+```
+
+图依据：论文 §2（Dynamic Time Warping for Navigation）、式 (1)(2) 与 SDTW 定义。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +112,7 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1907.05446>
+- [arXiv PDF](https://arxiv.org/pdf/1907.05446)：已通读方法部分（实验与附录以略读为准）：§2 面向导航的 DTW（nDTW / SDTW 定义）、§3 评测设置
 
 ## 推荐继续阅读
 
