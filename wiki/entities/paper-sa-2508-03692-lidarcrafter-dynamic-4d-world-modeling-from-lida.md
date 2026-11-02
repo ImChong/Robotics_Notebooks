@@ -43,6 +43,29 @@ Dynamic 4D world modeling from LiDAR sequences.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["用户自由文本指令"] --> B["Text2Layout：LLM 构建以自车为中心的场景图 G=(V,E)（节点含类别与运动状态，边为空间关系）"]
+    B --> C["图融合编码器：冻结 CLIP 文本嵌入 + L 层 TripletGCN"]
+    C --> D["三分支扩散解码器：3D 框 b、位移轨迹 δ、形状先验点 p"]
+    D --> E["4D 前景布局 Oi"]
+    B --> F["Layout2Scene：稀疏物体条件嵌入（位置、类别、框）"]
+    E --> F
+    F --> G["距离图（range image）扩散 U-Net 去噪，生成首帧静态 LiDAR 扫描 I0"]
+    G --> H["Scene2Seq：反投影为点云，按布局框拆分背景与前景"]
+    H --> I["背景按自车位姿变换，前景按各自运动先验变换（warp）"]
+    I --> J["球面投影得条件距离图 Icond，与噪声样本拼接送入扩散主干"]
+    J --> K["自回归生成下一帧距离图，逐帧迭代"]
+    K --> I
+    K --> L["时序连贯的 4D LiDAR 序列"]
+    G -.-> M["布局驱动场景编辑：修改布局后掩码混合重新去噪"]
+    L --> N["EvalSuite：物体、布局、时序三类指标评测"]
+```
+
+图依据：论文 §3（三阶段框架）、§3.1 Text2Layout、§3.2 Layout2Scene、§3.3 Scene2Seq、§3.4 EvalSuite / Fig.2–4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Dynamic 4D world modeling from LiDAR sequences.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.03692>
+- [arXiv PDF](https://arxiv.org/pdf/2508.03692)：已通读方法部分（实验与附录以略读为准）：§3 LiDARCrafter 全部小节（3.1–3.4）
 
 ## 推荐继续阅读
 
