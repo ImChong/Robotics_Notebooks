@@ -43,6 +43,27 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["约 17B 张 Instagram 公开网图数据池"] --> B["分层 k-means 平衡采样 -> LVD-1689M"]
+    A --> C["基于种子数据集的检索式筛选"]
+    D["公开视觉数据集<br/>ImageNet1k/22k, Mapillary SLS"]
+    B --> E["采样器混合: 10% 迭代为 ImageNet1k 同质批次<br/>其余为各部分混合批次"]
+    C --> E
+    D --> E
+    E --> F["阶段一: 7B ViT 自监督预训练<br/>L_Pre = L_DINO + L_iBOT + 0.1 L_DKoleo<br/>(RoPE-box jittering, 恒定学习率/WD/EMA 动量)"]
+    F --> G["阶段二: Gram anchoring 精炼 (1M 迭代后)<br/>L_Ref = w_D L_DINO + L_iBOT + w_DK L_DKoleo + w_Gram L_Gram<br/>Gram teacher = 早期 teacher 迭代, 每 10k 迭代更新"]
+    G --> H["高分辨率特征作 Gram teacher (L_HRef)<br/>2 倍分辨率输入 -> 双三次 2× 下采样"]
+    H --> I["高分辨率适配 (混合分辨率 10k 迭代)<br/>仍使用 Gram anchoring"]
+    I --> J["DINOv3 ViT-7B"]
+    J --> K["单教师-多学生并行蒸馏<br/>ViT-S / S+ / B / L / H+ (不用 Gram anchoring)"]
+    J --> L["文本对齐: 冻结视觉主干 + 2 层 transformer<br/>从头训练文本编码器 (LiT 式对比学习)"]
+```
+
+图依据：论文 §3 Training at scale（3.1 数据、3.2 SSL 训练）、§4 Gram Anchoring、§5 Post-Training（5.1–5.3）/ Fig.12
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +121,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=2NlGyqNjns>
+- [arXiv PDF](https://arxiv.org/pdf/2508.10104)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3–§5（数据、预训练、Gram anchoring、后训练）、§6 评测设置概述
 
 ## 推荐继续阅读
 
