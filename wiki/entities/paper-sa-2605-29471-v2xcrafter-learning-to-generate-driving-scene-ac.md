@@ -42,6 +42,23 @@ Learns to generate driving scenes across agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多车条件输入<br/>BEV 地图 + 3D 框 + 类别 + 相机内外参 + 文本"] --> OBJ["物体 token<br/>Fourier 位置编码 + CLIP 类别嵌入<br/>共同观测物体叠加可学习修饰符 V*"]
+    IN --> ENC["FPV-BEV 联合编码器<br/>逐相机 FPV 语义掩码 + 全局 BEV 图<br/>F_cond = F_FPV + η·F_BEV"]
+    OBJ --> UNET["冻结 Stable Diffusion UNet<br/>经 ControlNet 与 cross-attention 注入"]
+    ENC --> UNET
+    UNET --> S1["阶段一：自车视角注意力 (Ego-view Attn)<br/>静态车内相机视图图，保证单车多相机一致"]
+    S1 -->|"冻结自车层"| S2["阶段二：跨车注意力 (Cross-agent Attn)<br/>动态协同视图图 + 共同观测 ROI 掩码偏置"]
+    G1["边构建 Step I：共享物体 ID 的相机对"] --> S2
+    G2["边构建 Step II：BEV 视锥重叠的相机对"] --> S2
+    S2 --> OUT["多车多视角一致的驾驶场景图像"]
+```
+
+图依据：论文 §4.1–§4.4 / Fig. 2（论文中方法名写作 V2VCrafter，页面标题为 V2XCrafter）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Learns to generate driving scenes across agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.29471>
+- [arXiv PDF](https://arxiv.org/pdf/2605.29471)：已通读方法部分（实验与附录以略读为准）：§4.1–§4.4、§5.1
 
 ## 推荐继续阅读
 

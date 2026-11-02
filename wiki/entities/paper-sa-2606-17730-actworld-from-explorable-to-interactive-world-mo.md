@@ -42,6 +42,33 @@ Extends navigation-centric generators to support object interactions.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["训练视频切成 33 帧 chunk<br/>每个 chunk 取 5 个关键帧"] --> CoT["GPT-5.4 做 CoT 逐 chunk 标注<br/>交互标志、6 类交互阶段、1-2 句描述"]
+    CoT --> TXT["冻结 UMT5 编码 chunk 描述<br/>作为 cross-attention 条件"]
+    CoT --> LAB["结构化标签（交互标志、阶段）<br/>+ 视频级动作类别 a"]
+    KM["键盘 / 鼠标控制"] --> PL["相机轨迹 → Plücker 射线<br/>PlückerFiLM 逐 token 缩放与平移（仅当前 chunk）"]
+    KM --> SYM["命令映射为文本模板<br/>UMT5 编码，与 chunk 描述拼接"]
+    SYM --> TXT
+    HIST["过往 chunk 历史"] --> EAFR["EAFR：按阶段先验 + 近因打分<br/>重新分配 fine / mid / coarse 三档历史桶"]
+    LAB --> EAFR
+    LAB --> ACHA["ACHA：动作类别 embedding<br/>放大自注意力中的历史 key"]
+    LAB --> BANK["持久动作记忆库（至多 16 token，FIFO + 阶段固定）<br/>事件 token + DINOv3 物体 token"]
+    HIST --> BANK
+    EAFR --> DIT["自回归 DiT 逐 chunk 生成"]
+    ACHA --> DIT
+    BANK --> DIT
+    PL --> DIT
+    TXT --> DIT
+    DIT --> OUT["新 chunk"]
+    OUT -. "进入历史；交互 chunk 写入记忆库" .-> HIST
+    DIT --> DST["少步蒸馏：多分辨率 flow matching + DMD 式蒸馏<br/>50 步教师 → 3 步生成器"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Extends navigation-centric generators to support object interactions.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.17730>
+- [arXiv PDF](https://arxiv.org/pdf/2606.17730)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）
 
 ## 推荐继续阅读
 

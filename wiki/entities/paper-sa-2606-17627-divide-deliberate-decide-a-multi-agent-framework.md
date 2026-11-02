@@ -42,6 +42,22 @@ A fully-local, zero-shot multi-agent framework where VLM specialists engage in s
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一人称视频 V + 动作标签集 Λ"] --> S1["Stage 1 Divide：切成最长 t_max 的 chunk<br/>降帧率并统一分辨率"]
+    S1 --> ORC["VLM Orchestrator 把 chunk 划分为单动作 segment<br/>并给出每段初始 top-k 候选列表 Y(0)"]
+    ORC --> PRI["Stage 2 Deliberate：各 VLM 专家独立给出<br/>自己的 top-k 先验排序"]
+    PRI --> Q["先验共享；有分歧时<br/>每个专家至多提一个事实性问题，互相回答"]
+    Q --> POST["所有专家看到完整交流后<br/>更新为后验排序（不强制一致）"]
+    POST --> BORDA["Stage 3 Decide：Borda 计数聚合专家排序<br/>得到聚合 top-k"]
+    BORDA --> FIN["Orchestrator 综合 Y(0)、各专家排序、聚合排序与 Borda 分数<br/>输出最终排序 Y(F)，不得引入新标签"]
+    ORC --> FIN
+```
+
+图依据：论文 §3.1–3.3 / Fig.1（图本身未逐图核对，依正文）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ A fully-local, zero-shot multi-agent framework where VLM specialists engage in s
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.17627>
+- [arXiv PDF](https://arxiv.org/pdf/2606.17627)：已通读方法部分（实验与附录以略读为准）：§3 方法（Stage 1–3）、§4 实验设置
 
 ## 推荐继续阅读
 

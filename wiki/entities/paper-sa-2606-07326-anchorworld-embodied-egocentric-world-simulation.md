@@ -42,6 +42,30 @@ Anchor-keyframe constrained controllable egocentric simulator, with anchor match
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始第一人称帧 I0"] --> V["Wan2.2 DiT 视频生成骨干（flow matching）"]
+    M["SMPL-X 人体动作 M"] --> ME["motion encoder → 动作 token z_m"]
+    C["相机位姿（训练时先外部视角，后头部第一人称视角）"] --> CE["camera encoder → 位姿 token z_c"]
+    ME --> SPA["Spatial Pose Attention：与视频 token 拼接做自注意力，之后截断辅助 token"]
+    CE --> SPA
+    SPA --> V
+    S["锚点视图 (RGB 图像 Ii, 6-DoF 位姿 ci, 演化提示 ti)"] --> IMG["图像 latent 沿帧维拼接（in-context）+ 3D RoPE"]
+    S --> POSE["View Pose Injection：位姿嵌入加到视觉 token"]
+    S --> TXT["演化提示 ti：带注意力掩码的 cross-attention"]
+    IMG --> V
+    POSE --> V
+    TXT --> V
+    V --> OUT["第一人称世界模拟视频"]
+    subgraph TRAIN["渐进式四阶段训练"]
+        T1["Stage I：第三人称动作训练"] --> T2["Stage II：第一人称动作训练"] --> T3["Stage III：静态锚点视图定制"] --> T4["Stage IV：动态锚点视图演化"]
+    end
+```
+
+图依据：论文 §3 方法（3.1 混合视角动作控制、3.2 可演化锚点视图定制、3.3 渐进式多阶段训练）/ Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Anchor-keyframe constrained controllable egocentric simulator, with anchor match
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.07326>
+- [arXiv PDF](https://arxiv.org/pdf/2606.07326)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（含 3.1–3.3）、§4.1 实验设定开头；其余实验与附录略读或未读
 
 ## 推荐继续阅读
 
