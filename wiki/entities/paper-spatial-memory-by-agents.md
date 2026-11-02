@@ -90,6 +90,8 @@ flowchart TD
 
 ## 关联页面
 
+- [HarnessPro](paper-harnesspro.md) — 另一种通过执行反馈改进智能体运行框架的方法。
+
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [manipulation](../tasks/manipulation.md)
