@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-02] ingest | sources/papers/any3r_arxiv_2610_36150.md — 收录 Any3R 论文、项目与推理源码，全文与附录待复核
+
 ## [2026-11-02] ingest | senlanke 具身运控lab《10.26-10.30前沿论文动态》人形/四足 33 篇逐篇建独立详情节点（新建 23 / 复用 10）
 
 ## [2026-11-02] ingest | GitHubStore《19款能自己造的开源人形机器人》：19 个项目逐项目建独立节点（新建 13 / 复用 6），含 README 核对与归类存疑标注
