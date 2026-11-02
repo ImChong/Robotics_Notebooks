@@ -55,6 +55,43 @@ CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）是将 CONVERGE Studio 工�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：`node studio-mcp/dist/src/index.js`（`npm run build` 后以 stdio 注册到 MCP 客户端；运行需 Windows、Windows PowerShell 5.1 与已授权的 CONVERGE Studio，`CONVERGE_STUDIO_CMD` 指向厂商 `CONVERGE_Studio.cmd`）。下图为 `studio_execute` 工具路径；`studio_gui`、`solver_*` 等工具未画。
+
+```mermaid
+sequenceDiagram
+    participant C as MCP 客户端
+    participant I as studio-mcp/src/index.ts（main）
+    participant S as server.ts（studio_execute）
+    participant B as bridge.ts（StudioBridge）
+    participant INV as studio-js/invoke-studio-command.ps1
+    participant RUN as studio-js/run-studio-script.ps1
+    participant ST as CONVERGE_Studio.cmd（厂商 Studio）
+    participant JS as studio-js/js/codex_case_runner.js
+
+    I->>I: loadConfig()，new StudioBridge，new SolverManager
+    I->>S: createConvergeStudioServer，server.connect(StdioServerTransport)
+    C->>S: 调用 studio_execute(command, cvgFile, params)
+    S->>B: bridge.execute(args, signal)
+    B->>B: enqueue 串行排队，getBridgeCommand 校验命令，检查 .cvg 与变更门控
+    B->>INV: spawn powershell -File invoke-studio-command.ps1 -CvgFile -Command -ParamsJson（可选 -CopyCvgToTemp 工作副本）
+    INV->>INV: 写 codex-request.json（id、command、params、cvgFile、execution）
+    INV->>INV: 把请求/响应路径替换进 codex_case_runner.js 生成 generated 脚本
+    INV->>RUN: 调用 run-studio-script.ps1（ScriptPath=生成脚本，ExpectedFilePath=响应文件）
+    RUN->>ST: CONVERGE_Studio.cmd --cvg_file ... --script_path 生成脚本
+    ST->>JS: Studio 脚本引擎执行 main()
+    JS->>JS: readRequest() 即 CSI.ReadAsciiFile，handleCommand 按命令名分发
+    JS->>ST: 调用 CSI.* 接口（读取或修改几何/边界）
+    JS->>JS: writeResponse() 即 CSI.WriteToFile(codex-response.json)
+    RUN-->>INV: 等待响应文件出现（WaitSeconds）
+    INV->>INV: 补 execution 字段，写 run-records，stdout 输出 JSON
+    INV-->>B: 退出码与 stdout
+    B-->>C: JSON.parse 响应并附 mcp.commandRisk 等字段
+```
+
+图依据：converge-studio-mcp@671ea2b，读过 `README.md`、`studio-mcp/package.json`、`studio-mcp/src/index.ts`、`studio-mcp/src/bridge.ts`（StudioBridge.execute/enqueue/executeNow）、`studio-mcp/src/server.ts`（工具注册，studio_execute 段）、`studio-js/invoke-studio-command.ps1`（第 396 行起）、`studio-js/run-studio-script.ps1`（第 125 行起）、`studio-js/js/codex_case_runner.js`（头部与 main）。`solver.ts`、`studio-gui-driver.ps1`、各命令 handler 内部未读。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +102,7 @@ CONVERGE Studio MCP（Legiiiit/converge-studio-mcp）是将 CONVERGE Studio 工�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/legiiiit-converge-studio-mcp.md)
 - [Legiiiit/converge-studio-mcp 官方仓库](<https://github.com/Legiiiit/converge-studio-mcp>)
+- 源码核对（2026-11-02）：Legiiiit/converge-studio-mcp@671ea2b，读过 README.md、studio-mcp/package.json、studio-mcp/src/{index.ts,bridge.ts,server.ts}、studio-js/{invoke-studio-command.ps1,run-studio-script.ps1}、studio-js/js/codex_case_runner.js；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -45,10 +45,44 @@ summary: "LIO-SAM 基于 GTSAM 因子图实现紧耦合 LiDAR-惯性 SLAM，支�
 - **算力**：比 FAST-LIO 更重；实时性需硬件匹配。
 - **ROS 版本**：注意 ROS1/ROS2 移植包选择。
 
+## 源码运行时序图
+
+入口：`roslaunch lio_sam run.launch`（`launch/run.launch` 加载 `config/params.yaml`，经 `module_loam.launch` 启动 4 个节点：`lio_sam_imuPreintegration`、`lio_sam_imageProjection`、`lio_sam_featureExtraction`、`lio_sam_mapOptmization`），另开终端 `rosbag play your-bag.bag -r 3`。
+
+```mermaid
+sequenceDiagram
+    participant Bag as rosbag / 传感器
+    participant IP as imageProjection.cpp (cloudHandler / imuHandler)
+    participant FE as featureExtraction.cpp (laserCloudInfoHandler)
+    participant MO as mapOptmization.cpp (laserCloudInfoHandler)
+    participant IMU as imuPreintegration.cpp (IMUPreintegration + TransformFusion)
+    Bag->>IP: imuTopic、点云 pointCloudTopic
+    Bag->>IMU: imuTopic -> imuHandler，入队 imuQueOpt / imuQueImu
+    IP->>IP: cachePointCloud, deskewInfo (imuDeskewInfo / odomDeskewInfo)
+    IP->>IP: projectPointCloud, cloudExtraction
+    IP->>FE: lio_sam/deskew/cloud_info
+    FE->>FE: calculateSmoothness, markOccludedPoints, extractFeatures
+    FE->>MO: lio_sam/feature/cloud_info（含 cloud_corner / cloud_surface）
+    MO->>MO: updateInitialGuess, extractSurroundingKeyFrames, downsampleCurrentScan
+    loop 最多 30 次 scan2MapOptimization
+        MO->>MO: cornerOptimization, surfOptimization, combineOptimizationCoeffs, LMOptimization
+    end
+    MO->>MO: saveKeyFramesAndFactor：addOdomFactor, addGPSFactor, addLoopFactor, isam->update
+    MO->>MO: correctPoses
+    MO-->>IMU: lio_sam/mapping/odometry_incremental
+    MO-->>IMU: lio_sam/mapping/odometry（TransformFusion 用）
+    IMU->>IMU: odometryHandler：ImuFactor + BetweenFactor(bias) + PriorFactor(位姿)，ISAM2 update
+    IMU-->>IP: odomTopic+"_incremental"（IMU 高频里程计，供去畸变）
+    Note over MO: 另有 loopClosureThread（performLoopClosure）与 visualizeGlobalMapThread；gpsHandler 订阅 gpsTopic，loopInfoHandler 订阅 lio_loop/loop_closure_detection
+```
+
+图依据：LIO-SAM@0be1fbe，`README.md`、`launch/run.launch`、`launch/include/module_loam.launch`、`src/imageProjection.cpp`、`src/featureExtraction.cpp`、`src/mapOptmization.cpp`、`src/imuPreintegration.cpp`（各 handler 与话题订阅/发布、主流程函数；函数内部数值细节未逐行读）。
+
 ## 参考来源
 
 - [sources/repos/lio_sam.md](../../sources/repos/lio_sam.md)
 - [TixiaoShan/LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)
+- 源码核对（2026-11-02）：TixiaoShan/LIO-SAM@0be1fbe，读过 README.md、launch/run.launch、launch/include/module_loam.launch、src/imageProjection.cpp、src/featureExtraction.cpp、src/mapOptmization.cpp、src/imuPreintegration.cpp（主流程与话题连接，非逐行）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

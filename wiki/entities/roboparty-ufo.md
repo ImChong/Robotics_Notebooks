@@ -106,6 +106,58 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - **许可与硬件口径：** CC BY-NC 4.0 不允许商用；文内 4090 / H200 训练时长为宣传口径，仓库 README 当前给出的实测为 H20 表（见上）。
 - **命名冲突：** 检索时注意与无关「UFO」项目区分，使用 `Roboparty/UFO` 全名。
 
+## 源码运行时序图
+
+入口：`./run_train.sh --robot g1 --agent fb --gpu-ids all`（脚本最终 `exec uv run python -m ufo.train`）。下图为 `--agent fb` 的训练主循环；多卡时 `launch()` 经 `torch.distributed.run.elastic_launch` 为每张卡拉起一个 `run_train` 进程，图中只画单进程。
+
+```mermaid
+sequenceDiagram
+    participant SH as run_train.sh
+    participant TR as ufo/train.py (launch / run_train)
+    participant CFG as build_mjlab_config + TrainConfig
+    participant T as ufo/training/trainer.py Trainer
+    participant ENV as MJLabVectorEnv (ufo/envs/vector_env.py)
+    participant AG as FBcprAuxAgent (agents/fb_cpr_aux/agent.py)
+    participant RB as replay_buffer["train"/"expert"]
+
+    SH->>TR: python -m ufo.train（设置 UFO_CACHE_DIR 等）
+    TR->>TR: parse_args；launch 检查动作数据存在，创建 work_dir
+    TR->>TR: elastic_launch 拉起各 rank 的 run_train（单卡则直接调用）
+    TR->>CFG: build_mjlab_config(...) 内调 build_fb_agent
+    TR->>T: cfg.build() 即 Trainer(cfg)
+    T->>ENV: cfg.env.build(num_envs) 构造 mjlab 向量环境
+    T->>AG: create_agent_or_load_checkpoint；compile_network_forwards
+    TR->>T: trainer.train()
+    T->>RB: _prepare_replay_buffers
+    T->>ENV: reset(to_numpy=False)
+    loop 每个 local_time
+        opt 到达 checkpoint / buffer 间隔
+            T->>T: save(...) 写 checkpoint 与 replay
+        end
+        opt 到达评估间隔
+            T->>T: _evaluate_training（跟踪评估）
+        end
+        T->>AG: maybe_update_rollout_context（更新隐变量 z）
+        alt local_time 小于 num_seed_steps
+            T->>ENV: 随机动作 action_space.sample()
+        else
+            T->>AG: act(obs, z, mean=False)
+        end
+        T->>ENV: step(action)
+        T->>RB: replay_buffer["train"].extend(transition)
+        opt 达到更新间隔且 replay 可采样
+            T->>AG: _update_agent 内 agent.update(replay_buffer, local_time)
+            AG->>RB: expert 与 train 各 sample(batch_size)
+            AG->>AG: encode_expert、update_discriminator、sample_mixed_z
+            AG->>AG: update_fb、update_critic、update_actor、soft update
+        end
+    end
+```
+
+推理入口：`./run_inference.sh {tracking,reward,goal} --model-folder RUN`，经 `python -m ufo.inference` 的 `__main__.py` 按子命令导入 `ufo.inference.<task>_inference`；本图未画。
+
+图依据：Roboparty/UFO@4f1a6f6，读过 `run_train.sh`、`run_inference.sh`、`ufo/train.py`、`ufo/training/trainer.py`、`ufo/training/config.py`、`ufo/agents/fb_cpr_aux/agent.py`（`update` 的调用顺序）、`ufo/envs/vector_env.py`（仅类/方法签名）、`ufo/inference/__main__.py`、`docs/ARCHITECTURE.md`、`docs/TRAIN_INFERENCE.md`。
+
 ## 关联页面
 
 - [Party OS](./party-os.md)
@@ -132,6 +184,7 @@ UFO 定位为 **多种行为表征的无监督学习统一实验平台**，而�
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
+- 源码核对（2026-11-02）：Roboparty/UFO@4f1a6f6，读过 run_train.sh、run_inference.sh、ufo/train.py、ufo/training/trainer.py、ufo/training/config.py、ufo/agents/fb_cpr_aux/agent.py、ufo/envs/vector_env.py、ufo/inference/__main__.py、docs/ARCHITECTURE.md、docs/TRAIN_INFERENCE.md；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

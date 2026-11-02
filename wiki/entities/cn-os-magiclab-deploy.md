@@ -76,7 +76,7 @@ sequenceDiagram
     Ctl->>SDK: subscribe_body_imu / leg / arm / waist / head state（回调写入缓存）
     M->>Ctl: start_joystick_thread()（手柄或 SSH 键盘读指令）
     M->>Ctl: zero_torque_state()
-    Ctl->>SDK: publish_*_command（kp=kd=toq=0），等待启动指令
+    Ctl->>SDK: publish_*_command（kp=kd=toq=0），循环直到 cmd_btn[0] 启动指令
     M->>Ctl: move_to_default_pos()
     Ctl->>SDK: 插值发送默认姿态 PD 指令
     M->>Ctl: default_pos_state()，等待进入 ACTIVE_CONTROL
@@ -93,7 +93,7 @@ sequenceDiagram
     Ctl->>SDK: disconnect() / shutdown()
 ```
 
-图依据：magiclab_deploy@5f58d6a，读过 README.md、deploy_real_z1.py（initialize_robot、send_zero_torque_commands、run_active_control、main 等）。config_z1.py、configs/z1_12dof.yaml、gamepad_reader_btp.py、run_nx.sh 未读内部；`move_to_default_pos` / `default_pos_state` 内部细节未读，仅依据函数名与 README 的状态机描述。
+图依据：magiclab_deploy@5f58d6a，读过 README.md、deploy_real_z1.py（initialize_robot、send_zero_torque_commands、run_active_control、main 等）。config_z1.py、configs/z1_12dof.yaml、gamepad_reader_btp.py、run_nx.sh 未读内部。
 
 ## 关联页面
 

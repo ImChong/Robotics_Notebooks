@@ -55,6 +55,40 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+仓库是两个独立的离线小工具，无训练/服务进程。入口：质量扫描 `python robomind_check/scan_robomind_quality.py -o full_report.csv`（可加 `--benchmarks` / `--robot-types` / `--task-names` / `--ee-tolerance`）；末端位姿重算 `python eepose/example.py`（需 `pinocchio`，调用 `eepose/joint2pose.py` 的 `get_kinematics`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant S as scan_robomind_quality.py
+    participant P as multiprocessing.Pool
+    participant C as robomind_data_check.check_episode
+    participant H as h5py / trajectory.hdf5
+    participant E as eepose/example.py
+    participant K as joint2pose.get_kinematics → JointToEePose
+
+    U->>S: main() 解析 --base-dirs/--robot-types/--ee-tolerance 等
+    S->>S: discover_files：os.walk 找 trajectory.hdf5，按 success_episodes 前的路径层级过滤
+    S->>P: scan_parallel：imap_unordered(check_episode, files)
+    P->>C: check_episode(file_path, config)
+    C->>C: _parse_path_into 解析 benchmark/robot_type/task/split/episode
+    C->>H: detect_keys 在 puppet/end_effector、puppet/joint_position、master/joint_position 候选键中找首个存在者
+    C->>C: check_array_quality：逐维 max-min 与容差比较判 is_stuck，并统计 unique 比例
+    C-->>S: EpisodeQualityResult
+    S->>S: write_csv(CSV_COLUMNS) 与 print_summary
+    S-->>U: robomind_quality_report.csv / full_report.csv
+    U->>E: python eepose/example.py（MODEL_NAME）
+    E->>K: get_kinematics(model_name) → _find_urdf_for_model(eepose/urdf/<机型>)
+    K->>K: 改写 URDF 中 package:// 路径，pin.buildModelFromUrdf，按 _MODEL_FRAME_CONFIG 选 base/TCP 帧与臂关节
+    E->>K: get_left_tcp_pose(q_left) / get_right_tcp_pose / get_tcp_pose(q)
+    K->>K: 写入 self.q，pin.forwardKinematics + updateFramePlacements，取 base→TCP 相对位姿
+    K-->>E: Pose(position, quat_xyzw)
+```
+
+图依据：Open-X-Humanoid/RoboMIND-dataset-utils@77d7b31，读过 `README.md`、`robomind_check/scan_robomind_quality.py`、`robomind_check/robomind_data_check.py`、`eepose/example.py`、`eepose/joint2pose.py`。`full_report.csv` 与各 URDF 文件内容未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +100,7 @@ institutions:
 - [RoboMIND-dataset-utils 源码归档](../../sources/repos/robomind-dataset-utils.md)（<https://github.com/Open-X-Humanoid/RoboMIND-dataset-utils>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/RoboMIND-dataset-utils@77d7b31，读过 README.md、robomind_check/scan_robomind_quality.py、robomind_check/robomind_data_check.py、eepose/example.py、eepose/joint2pose.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

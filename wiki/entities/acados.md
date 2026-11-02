@@ -55,10 +55,48 @@ summary: "acados：面向嵌入式 NMPC/OCP 的快速结构 exploiting 求解器
 - [Pinocchio](./pinocchio.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 
+## 源码运行时序图
+
+入口：`python minimal_example_ocp.py`（`examples/acados_python/getting_started/`，Python 接口 `acados_template`）
+
+```mermaid
+sequenceDiagram
+    participant U as minimal_example_ocp.py main()
+    participant S as AcadosOcpSolver (acados_ocp_solver.py)
+    participant O as AcadosOcp (acados_ocp.py)
+    participant T as 模板渲染 render_template (Tera)
+    participant B as make / CMake 构建
+    participant L as libacados_ocp_solver_name.so (ctypes)
+    participant C as acados_solver.in.c 生成代码 + libacados
+
+    U->>O: AcadosOcp() 然后 设 model / cost / constraints / solver_options
+    U->>S: AcadosOcpSolver(ocp)
+    S->>O: make_consistent()
+    S->>S: is_code_reuse_possible() 检查能否复用旧代码
+    alt 需要生成
+        S->>O: generate_external_functions() 经 CasADi 导出 C 函数
+        S->>O: dump_to_json() 写 acados_ocp_nlp.json
+        S->>O: render_templates() 读 json 渲染 C 模板
+        O->>T: render_template(...) 输出 acados_solver / main / Makefile 等
+    end
+    S->>B: build(): make clean_ocp_shared_lib 然后 make ocp_shared_lib
+    B-->>S: 生成求解器共享库
+    S->>L: DllLoader 加载 libacados 与求解器库
+    S->>L: name_acados_create_capsule() 然后 name_acados_create(capsule)
+    L->>C: 建立 nlp_config / dims / in / opts / solver
+    U->>S: solve()
+    S->>L: name_acados_solve(capsule)
+    L->>C: ocp_nlp_solve(nlp_solver, nlp_in, nlp_out)
+    C-->>U: status（经 solve 返回），get_iterate() 取解
+```
+
+图依据：acados/acados@51db6db，读过 `README.md`、`examples/acados_python/getting_started/minimal_example_ocp.py`、`interfaces/acados_template/acados_template/acados_ocp_solver.py`（`generate` / `build` / `__init__` / `solve`）、`acados_ocp.py`（`render_templates` / `dump_to_json` / `generate_external_functions`）、`c_templates_tera/acados_solver.in.c`（`acados_solve` 调用 `ocp_nlp_solve`）。
+
 ## 参考来源
 
 - [sources/repos/acados.md](../../sources/repos/acados.md)
 - [wechat_robot_yanfa_opensource_algorithms_compendium.md](../../sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md)
+- 源码核对（2026-11-02）：acados/acados@51db6db，读过 README.md、examples/acados_python/getting_started/minimal_example_ocp.py、interfaces/acados_template/acados_template/{acados_ocp_solver.py,acados_ocp.py,c_templates_tera/acados_solver.in.c}；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

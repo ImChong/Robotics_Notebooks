@@ -55,6 +55,34 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`pip install MechEyeAPI` 并安装 Mech-Eye SDK 后，进入 `area_scan_3d_camera/` 运行 `python connect_and_capture_images.py`（README 的运行方式为 `python sample_name.py`；本仓库样例按 `basic/`、`advanced/`、`util/` 分目录，此处以 `basic/connect_and_capture_images.py` 与 `basic/capture_point_cloud.py` 为代表）。`find_and_connect`、`show_error` 等辅助函数来自 `mecheye.area_scan_3d_camera_utils` / `mecheye.shared`（pip 包，不在本仓库内，其内部未读）。
+
+```mermaid
+sequenceDiagram
+    participant S as basic/connect_and_capture_images.py (ConnectAndCaptureImages.main)
+    participant U as mecheye.area_scan_3d_camera_utils
+    participant Cam as mecheye.area_scan_3d_camera.Camera
+    participant HW as Mech-Eye 工业 3D 相机
+    S->>Cam: Camera()
+    S->>U: find_and_connect(camera)（列出相机并按序号选择）
+    U->>Cam: 连接所选相机
+    Cam->>HW: 建立连接
+    S->>Cam: get_camera_resolutions(CameraResolutions)
+    S->>Cam: capture_2d(Frame2D)
+    Cam->>HW: 触发 2D 采集
+    HW-->>S: frame2d.get_color_image()
+    S->>U: confirm_capture_3d()（用户确认后才继续）
+    S->>Cam: capture_3d(Frame3D)
+    Cam->>HW: 触发 3D 采集
+    HW-->>S: frame3d.get_depth_map() / get_untextured_point_cloud()
+    S->>Cam: disconnect()
+    Note over S,Cam: basic/capture_point_cloud.py 将 capture_3d 换成 capture_2d_and_3d(Frame2DAnd3D)，<br/>再 save_untextured_point_cloud / save_textured_point_cloud(FileFormat_PLY, 文件名)
+```
+
+图依据：mecheye_python_samples@0b6a0b2，读过 README.md、area_scan_3d_camera/README.md、area_scan_3d_camera/basic/connect_and_capture_images.py、area_scan_3d_camera/basic/capture_point_cloud.py。`profiler/` 目录样例与其余 advanced/util 样例未读；与相机之间的通信协议由闭源 `MechEyeAPI` 实现，不在本仓库内，图中 HW 一列为概念性参与者。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +94,7 @@ institutions:
 - [mecheye_python_samples 源码归档](../../sources/repos/mecheye_python_samples.md)（<https://github.com/MechMindRobotics/mecheye_python_samples>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：MechMindRobotics/mecheye_python_samples@0b6a0b2，读过 README.md、area_scan_3d_camera/README.md、area_scan_3d_camera/basic/connect_and_capture_images.py、area_scan_3d_camera/basic/capture_point_cloud.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

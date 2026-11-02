@@ -62,10 +62,51 @@ PageIndex 属于文档检索基础设施，可作为机器人研究者处理论�
 - [DeepTutor](deeptutor.md) 的 Knowledge Center 将 PageIndex 列为可选 RAG 引擎；PageIndex 本身则聚焦文档树索引与检索。
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) 强调把多来源知识编译成可维护页面；PageIndex 解决的是对原始长文档按需检索的问题。两者处于不同的知识处理阶段。
 
+## 源码运行时序图
+
+入口：`pip install -U pageindex` 后，Python 中 `PageIndexClient(index=..., chat=...)` → `submit_document("report.pdf")` → `chat("问题", doc_id=...)`（README Quickstart；无 `api_key` 时为本地模式）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户脚本
+    participant C as client.py<br/>PageIndexClient
+    participant L as local_api.py<br/>LocalAPI
+    participant F as flash/<br/>page_index_flash
+    participant S as local_store.py<br/>DocStore
+    participant LC as local_chat.py<br/>run_chat_completions
+    participant AG as OpenAI Agents SDK<br/>Agent("PageIndex")
+    participant T as agent_tools.py<br/>call_tool
+
+    U->>C: submit_document("report.pdf")
+    C->>L: submit_document(file_path, mode=None)
+    L->>L: 仅接受 PDF；_extract_page_texts 用 PyPDF2 取每页文本
+    Note over L: mode 缺省为 flash；standard 走 page_index_classic.page_index_main
+    L->>F: _index_flash → page_index_flash(summary=True, ...)
+    F-->>L: structure（树）；flash_rejection_reason 检查是否拒收
+    L->>L: write_node_id；generate_doc_description（调 LLM 写文档描述）
+    L->>S: save_document(doc_id, meta, structure, pages)
+    L-->>U: {"doc_id": "pi-<uuid>", ...}
+    U->>C: chat("问题", doc_id=doc_id)
+    C->>C: chat() 校验参数；字符串消息经 chat_completions 包成 user 消息
+    C->>LC: run_chat_completions(client, messages, doc_id, ...)
+    LC->>AG: _chat_agent 构建 Agent(tools=build_openai_tools(...))
+    LC->>AG: Runner.run(agent, input=items)
+    loop 模型逐轮决定调用工具
+        AG->>T: browse_documents / get_document / get_document_structure / get_page_content
+        T->>S: 读取树与页面文本（经 LocalAPI）
+        T-->>AG: JSON envelope
+    end
+    AG-->>LC: 最终回答
+    LC-->>U: chat 返回结果
+```
+
+图依据：VectifyAI/PageIndex@2e0f4dd，读过 README.md、pageindex/client.py、pageindex/local_api.py、pageindex/local_chat.py、pageindex/agent_tools.py、pageindex/__init__.py。
+
 ## 参考来源
 
 - [PageIndex 仓库归档](../../sources/repos/pageindex.md)
 - [PageIndex 官网归档](../../sources/sites/pageindex-ai.md)
+- 源码核对（2026-11-02）：VectifyAI/PageIndex@2e0f4dd，读过 README.md、pageindex/client.py、pageindex/local_api.py、pageindex/local_chat.py、pageindex/agent_tools.py、pageindex/__init__.py；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 
