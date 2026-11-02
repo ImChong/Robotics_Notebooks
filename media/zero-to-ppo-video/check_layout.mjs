@@ -155,6 +155,20 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         const d = cut(n.tagName === 'text' ? ink(r) : r);
         if (d > 2) out.push(`${robot ? 'robot' : n.tagName + ' "' + name(n) + '"'} cut off by ${Math.round(d)}px`);
       }
+      // 机器人被它自己的视景框裁掉：robot3d.js 的画布只画视景框（camera box）里面那一块，上面那个透明外框也夹在视景框里，量不出来；
+      // 画布四条边上有不透明的像素，就是模型伸出了视景框，画面上会被齐刷刷切掉一截（011 片头的 UR5 就是这样漏掉的）
+      for (const fo of host.querySelectorAll('foreignObject')) {
+        const cv = fo.querySelector('canvas');
+        if (!cv || !cv.width || !cv.height || alpha(fo) < 0.1) continue;
+        const cx = cv.getContext('2d'), W = cv.width, H = cv.height, sides = [];
+        const edge = (x, y, w, h) => { const d = cx.getImageData(x, y, w, h).data; let k = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 40) k++; return k; };
+        if (edge(0, 0, W, 1) > 3) sides.push('top');
+        if (edge(0, H - 1, W, 1) > 3) sides.push('bottom');
+        if (edge(0, 0, 1, H) > 3) sides.push('left');
+        if (edge(W - 1, 0, 1, H) > 3) sides.push('right');
+        const where = (sc.querySelector('.stage') && sc.querySelector('.card .title')) ? sc.querySelector('.card .title').textContent.trim() : 'hero';
+        if (sides.length) out.push('robot clipped by its view box (' + sides.join(', ') + ') in 「' + where + '」');
+      }
       // 字块：svg 的 text 各算一块；KaTeX 公式按文字逐段量（不算 MathML 副本），同一条公式里的段不互查
       const words = [];
       for (const n of host.querySelectorAll('text')) {
