@@ -1,0 +1,521 @@
+// 010 第 2 幕：切成无穷多小步——矩阵指数。左边同第 1 幕的网格（肘在 (1, 2)，小臂上的点从 (3, 2) 出发，要走的四分之一圆描成灰虚线），
+// 右栏一行行写算式；中段左边换成复利的条形图；最后换回网格。
+// 2026-11-01 按 009 的用户反馈「全篇的计算都展开讲不要跳过」「纯公式推导没有画面观众会看不懂」重做：分两步的每一步都算出来、在网格上画出来，
+// 式子里的符号在屏幕上逐个说明；配色同第 1 幕（转动蓝、点紫、走歪的橙）。
+// 同日再按用户反馈「计算步骤需要展开，不要直接给结果」：两步里的加减、转 90°（照第 3 集按列拿份：第一列红、第二列绿，同第 3 幕）、
+// 两段各乘 0.785 都逐项算；分四步也逐步算（每步 1.57 ÷ 4 ≈ 0.39，数留两位小数，照算到 (1.22, 4.65)，电脑精确算是 (1.20, 4.66)），
+// 网格上一段一段画；八步、一百步说明交给电脑；复利把头两个月的乘法算出来。
+// 2026-11-02 用户反馈「第二幕有些枯燥」，选了「小臂跟着一步一步转」：网格上一直有一支淡淡的小臂（2 格长）和小臂上的那一点（紫）、
+//    它的车头（紫箭头 = 这时候的方向）；每一步先绕肘把小臂转到这一步起点的方向、车头对准和连线垂直的方向，点再直走一段
+//    （点离开小臂尖、跑到圆外，看得出走直线的偏差）；八步一跳一跳地走，一百步几乎顺着圆走，无穷多步小臂带着点在圆上转、长度不变。
+// 句 1「每走一小步」「停下来」「这时候的方向」「再走下一步」右栏三行；
+// 句 2「分两步」「每步转四十五度」四分之一圈上 45° 处标一道，「第一幕算过，九十度约一点五七弧度」右栏写出（跨幕的数要交代出处，用户反馈），
+//    「一点五七除以二」「零点七八五」右栏写出；
+// 句 3「离肘两格」量出 2 格，「朝上走」出朝上的小箭头，「二乘零点七八五」「一点五七格」右栏写出、网格上画第一段（琥珀），「二加一点五七」「三点五七」写出；
+// 句 4「离肘多远」肘到拐点画虚线（黄），「三减一」「三点五七减二」右栏写出，「右边两格、上边一点五七格」虚线旁写 (2, 1.57)；
+// 句 5「垂直」拐点标直角，「转九十度」虚线平移到拐点、绕拐点逆时针转 90°（蓝弧画满 90°），「第一列拿两份」红的一段往上 2，
+//    「第二列拿一点五七份」绿的一段接在红的尖上往左 1.57（头尾相接）；
+// 句 6「加起来」右栏写出 (−1.57, 2)，「各乘零点七八五」红绿两段缩成 0.785 倍，「约一点五七」「约一点二三」右栏写出；
+// 句 7「走过去」画第二段（琥珀），「三减一点二三」「三点五七加上一点五七」右栏写出；
+// 句 8「一点七七、五点一四」终点写出，「折了一次」拐点鼓一下，「离圆近了一些」终点和第 1 幕的 (3, 5.14) 各连一条到 (1, 4) 的灰虚线；
+// 句 9「分四步」右栏换成四步的算式，「二十二点五度」「一点五七除以四」「零点三九」写出，「每一步都照第二步那样」写出做法；
+// 句 10–13 每一步：肘到这一步起点画虚线（黄），「转九十度」虚线平移到起点、转 90°，「乘零点三九」缩成 0.39 倍，「加上去」画这一段（灰白）、标出新点；
+// 句 14「加上肘」右栏逐项加，「停在」写 (1.22, 4.65)；
+// 句 15「分八步」画八步的折线，「交给电脑」右栏写，「八步停在」写出，「贴着圆走」灰虚线亮一下；
+// 句 16「一百步」画第五条，「一、四点零二」写出，「无穷多步」绿色圆弧画出，「一、四」打勾；
+// 句 17「乘同一个矩阵」右栏出一步的矩阵，「乘上几次」出 n 次方，「无穷多步」n → ∞，「矩阵指数」写出 exp([S]θ)，下面逐个说明 I、[S]、θ、n；
+// 句 18–21 复利（2026-11-01 按一手资料核对：不说「高中学过」，名字说成「从指数函数来」）：「存一块钱」第一条先有 1 块，「一加一」长到 2；
+//    「十二个月」第二条出来，「一加十二分之一」「一点零八三」右栏写出，「第一个月后」「第二个月」各长一格、右栏写出乘法，
+//    「乘满十二次」再一格一格长到 2.61；「按天算」第三条长到 2.71，「二点七一八」画出竖虚线，「自然常数」写 e；
+// 句 22「几次方，叫指数函数」右栏写 eˣ，「矩阵指数的名字」左边换回网格，「同一个做法」两行对照，「一步一步滚起来」一个点沿圆一小步一小步走，
+//    「不是钱，是位姿」点上长出两根小箭头（位置 + 朝向）。
+// 时刻取自配音的逐词时间，见 ../ep010.py。
+(function () {
+  var E = window.EP010, K = E.K, H = E.HEX;
+  var A = E.ARM, RX = A.RX;
+  var T = {
+    each: 1.97, stop: 3.08, dir: 3.71, next: 4.89, out0: 6.7,
+    two: 7.27, deg: 8.1, rec: 9.07, recV: 10.77, div: 12.17, h: 13.81,
+    first: 16.27, r2: 16.89, upA: 17.74, mul1: 18.35, len1: 19.96, seg1: [19.96, 21.03], add1: 21.22, add1v: 22.6, k1: 23.89,
+    second: 26.44, legs: 27.73, subA: 29.15, subAv: 29.86, subB: 30.34, subBv: 31.61, legsB: 32.57,
+    perp: 35.97, perp2: 37.2, turn: [39.36, 40.23], mat: 40.43, col1: 41.65, col1v: 42.87, col2: 43.83, col2v: 45.58,
+    sum: 48.19, sumV: 49.1, scale: [50.98, 52.53], r157: 52.74, r157v: 54.4, r123: 55.42, r123v: 57.71,
+    go: [59.64, 60.43], sub: 60.5, sub2: 62, add: 63, add2: 65.22,
+    stopAt: 67.1, kink: 69.25, near: 70.05, out1: 71.83,
+    n4: 72.15, d22: 73.44, d4: 74.91, d4v: 76.61, recipe: 78.38,
+    lgPos: 80.31, lgDir: 83.05, lgRad: 85.07, lgMul: 85.77, lgStep: 89.52, lgAdd: 91.21, lgNew: 93.38,
+    st4: [
+      { start: 95.71, rot: 98.22, rotV: 100.18, mul: 101.03, mulV: 102.99, add: 104.38, addX: 105.11, addY: 105.8, addV: 106.21 },
+      { start: 108.17, rot: 108.78, rotV: 110.78, mul: 112.34, mulV: 114.03, add: 116.12, addX: 116.93, addY: 118.99, addV: 121.28 },
+      { start: 123.19, rot: 123.9, rotV: 125.86, mul: 127.63, mulV: 129.42, add: 131.56, addX: 132.34, addY: 135.09, addV: 137.0 },
+      { start: 138.84, rot: 139.59, rotV: 141.64, mul: 143.59, mulV: 145.27, add: 147.46, addX: 148.24, addY: 151.09, addV: 153.35 }
+    ],
+    elb: 155.35, ex: 156.94, exV: 158.15, ey: 159.32, eyV: 160.48, at4: 161.92, near4: 164.34, out4: 165.98,
+    n8: 166.3, pc: 169.84, at8: 171.65, hug: 174.23,
+    n100: 177.07, at100: 178.25, inf: 181.44, arc: 182.87, at: 184.37,
+    one: 186.77, same: 188.34, times: 190.01, nInf: 191.53, name: 193.76, legend: [187.49, 188.49, 189.49, 190.89],
+    out2: 196.08, why: 196.59, e0: 197.61, coin: 198.97, rate: 200.09, once: 201.41, onePlus: 202.76, two2: 203.51,
+    m12: 205.32, cmp: 207.33, perM: 208.92, r1083: 210.7, mo1: 212.81, mo1v: 215.19, mo2: 216.31, mo2v: 218.48,
+    k12: [219.47, 220.74], v12: 221.31, day: 223.25, fine: [224.01, 225.48], d365: 225.65, lim: 227.95, eNum: 229.73,
+    pow: 231.91, fn: 233.31, back: 233.97, same2: 236.4, roll: [237.45, 240.12], money: 241.3, pose: 242.06
+  };
+  var END = 243.51, TH = Math.PI / 2, NS = [1, 2, 4, 8, 100], HH = TH / 2;
+  var COLS = [E.ERR, E.WARN, E.INK2, E.INK, E.GOOD];
+  // 分四步照算（每步 × 0.39，数留两位小数）：离肘的位置 d0 … d4
+  var D4 = [[2, 0], [2, 0.78], [1.7, 1.56], [1.09, 2.22], [0.22, 2.65]], F4 = 0.39;
+
+  // 切成 n 步：d ← d + (θ / n) · 转 90°(d)，d 是相对肘的位置；返回各拐点（格）
+  function steps(n) {
+    var d = [2, 0], h = TH / n, pts = [[3, 2]];
+    for (var k = 0; k < n; k++) { d = [d[0] - h * d[1], d[1] + h * d[0]]; pts.push([1 + d[0], 2 + d[1]]); }
+    return pts;
+  }
+
+  // 八步、一百步：点沿折线跑多久（秒，分镜时间）；无穷多步沿圆弧跑
+  var RUN = [0, 0, 0, 2.6, 1.4], ARC = 0.9;
+  var C8 = steps(8), C100 = steps(100);
+  function ang(p) { return Math.atan2(p[1] - 2, p[0] - 1); }
+  function lerp(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+  function lerpA(a, b, t) { var d = b - a; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return a + d * t; }
+  function walkAlong(pts, t) { var n = pts.length - 1, x = Math.min(n - 1e-6, Math.max(0, t * n)), k = Math.floor(x); return { p: lerp(pts[k], pts[k + 1], x - k), from: pts[k] }; }
+  function fd(st, a, d) { return E.fade(st, a, d); }
+  // 这一刻：点在哪（格）、小臂朝哪（角）、车头朝哪（角）、看不看得见
+  function walkState(st) {
+    var c2 = steps(2), V = D4.map(function (d) { return [1 + d[0], 2 + d[1]]; }), r;
+    if (st < T.n4 - 0.2) {                       // 分两步
+      var p = lerp(c2[0], c2[1], fd(st, T.seg1[0], T.seg1[1] - T.seg1[0]));
+      if (st >= T.go[0]) p = lerp(c2[1], c2[2], fd(st, T.go[0], T.go[1] - T.go[0]));
+      // 走完最后一段，小臂也转到终点的方向（用户反馈：分 8 步小臂最后没转到对的位置；各段同样处理）
+      r = { p: p, armAng: lerpA(lerpA(ang(c2[0]), ang(c2[1]), fd(st, T.legs, 0.8)), ang(c2[2]), fd(st, T.stopAt, 0.6)),
+        hd: lerpA(Math.PI / 2, ang(c2[1]) + Math.PI / 2, fd(st, T.turn[0], T.turn[1] - T.turn[0])),
+        hOn: Math.max(fd(st, T.dir, 0.3) * (1 - fd(st, T.out0, 0.3)), fd(st, T.upA, 0.3)) * (1 - fd(st, T.go[1] + 0.3, 0.3)),   // 走到了就收起车头：终点要写坐标
+        on: fd(st, 0.3, 0.4) * (1 - fd(st, T.out1, 0.4)) };
+    } else if (st < T.n8 - 0.2) {               // 分四步：照算的四段
+      var k = 0; T.st4.forEach(function (S, i) { if (st >= S.start - 0.3) k = i; });
+      var S = T.st4[k], pk = lerp(V[k], V[k + 1], fd(st, S.add, 0.6));
+      var aK = lerpA(ang(V[Math.max(0, k - 1)]), ang(V[k]), fd(st, S.start - 0.3, 0.6));
+      r = { p: pk, armAng: k === 3 ? lerpA(aK, ang(V[4]), fd(st, T.at4, 0.6)) : aK,
+        hd: lerpA(ang(V[Math.max(0, k - 1)]) + Math.PI / 2, ang(V[k]) + Math.PI / 2, fd(st, S.rot, 0.8)),
+        hOn: 1 - fd(st, T.st4[3].add + 0.8, 0.3), on: fd(st, T.n4, 0.4) * (1 - fd(st, T.out4, 0.4)) };
+    } else if (st < T.n100 - 0.2) {             // 八步：一跳一跳
+      var w8 = walkAlong(C8, fd(st, T.n8, RUN[3]));
+      r = { p: w8.p, armAng: lerpA(ang(w8.from), ang(C8[8]), fd(st, T.n8 + RUN[3], 0.5)), hd: ang(w8.from) + Math.PI / 2, hOn: 1 - fd(st, T.n8 + RUN[3], 0.3), on: fd(st, T.n8, 0.3) * (1 - fd(st, T.n100 - 0.5, 0.3)) };
+    } else if (st < T.arc - 0.2) {              // 一百步：几乎是顺着圆走
+      var w1 = walkAlong(C100, fd(st, T.n100, RUN[4]));
+      r = { p: w1.p, armAng: lerpA(ang(w1.from), ang(C100[100]), fd(st, T.n100 + RUN[4], 0.5)), hd: ang(w1.from) + Math.PI / 2, hOn: 1 - fd(st, T.n100 + RUN[4], 0.3), on: fd(st, T.n100, 0.3) * (1 - fd(st, T.arc - 0.5, 0.3)) };
+    } else {                                     // 无穷多步：小臂带着点在圆上转，长度不变
+      var a = TH * fd(st, T.arc, ARC);
+      r = { p: [1 + 2 * Math.cos(a), 2 + 2 * Math.sin(a)], armAng: a, hd: a + Math.PI / 2, hOn: 1 - fd(st, T.arc + ARC, 0.3), on: fd(st, T.arc, 0.3) * (1 - fd(st, T.out2, 0.3)) };
+    }
+    return r;
+  }
+
+  E.scenes[1] = {
+    title: '切成无穷多小步：矩阵指数',
+    dur: END,
+    cues: [
+      { at: 0, s: '分成几小步：每走一小步就停下来，按这时候的方向再走下一步' },
+      { at: 6.84, s: '分 2 步、每步 45°：第 1 幕算过 90° ≈ 1.57 弧度，1.57 ÷ 2 ≈ 0.785 弧度' },
+      { at: 16.18, s: '第一步：2 × 0.785 ≈ 1.57，2 + 1.57 = 3.57，走到 (3, 3.57)' },
+      { at: 26.35, s: '第二步：离肘 3 − 1 = 2，3.57 − 2 = 1.57' },
+      { at: 35.88, s: '转 90°：第一列拿 2 份 (0, 2)，第二列拿 1.57 份 (−1.57, 0)' },
+      { at: 48.1, s: '加起来 (−1.57, 2)；各乘 0.785：2 × 0.785 ≈ 1.57，1.57 × 0.785 ≈ 1.23' },
+      { at: 59.55, s: '走过去：3 − 1.23 = 1.77，3.57 + 1.57 = 5.14' },
+      { at: 67.01, s: '停在 (1.77, 5.14)：折了一次，离圆近了一些' },
+      { at: 72.05, s: '分 4 步：1.57 ÷ 4 ≈ 0.39 弧度；离肘的位置转 90° = 前进方向（长 = 半径），× 0.39 = 这一步（半径 × 角度），加上去 = 新位置' },
+      { at: 95.62, s: '① 离肘 (2, 0) → 前进方向 (0, 2) → × 0.39：这一步 (0, 0.78) → 新位置 (2, 0.78)' },
+      { at: 108.07, s: '② (−0.78, 2) × 0.39 = (−0.3, 0.78)；2 − 0.3 = 1.7，0.78 + 0.78 = 1.56' },
+      { at: 123.14, s: '③ (−1.56, 1.7) × 0.39 = (−0.61, 0.66)；1.7 − 0.61 = 1.09，1.56 + 0.66 = 2.22' },
+      { at: 138.79, s: '④ (−2.22, 1.09) × 0.39 = (−0.87, 0.43)；1.09 − 0.87 = 0.22，2.22 + 0.43 = 2.65' },
+      { at: 155.26, s: '加上肘：1 + 0.22 = 1.22，2 + 2.65 = 4.65，停在 (1.22, 4.65)' },
+      { at: 166.21, s: '8 步、100 步：同样的算法交给电脑算；8 步停在 (1.05, 4.33)' },
+      { at: 176.98, s: '100 步停在 (1, 4.02)，无穷多步正好停在 (1, 4)' },
+      { at: 186.68, s: '每一小步乘同一个矩阵；无穷多步乘出来的，叫**矩阵指数**' },
+      { at: 196.23, s: '名字要从自然常数 e 说起：存 1 块，年利率 100%，一年算 1 次：1 + 1 = 2 块' },
+      { at: 205.23, s: '12 个月利滚利（复利）：每月乘 (1 + 1/12) ≈ 1.083' },
+      { at: 212.72, s: '1 × 1.083 = 1.083，再乘 1.083 ≈ 1.17；乘满 12 次是 2.61' },
+      { at: 223.16, s: '按天算乘 365 次约 2.71；越分越细，接近 2.718 = e' },
+      { at: 231.54, s: 'eˣ 叫指数函数，**矩阵指数**的名字从这来：同一个做法，滚起来的是**位姿**' }
+    ],
+    build: function (K) {
+      var s = K.sceneSvg('小臂上的点绕肘转九十度：分成几小步，每走一小步就按这时候的方向再走下一步；分两步每步转 45°，约 0.785 弧度：第一步朝上走 2 × 0.785 ≈ 1.57 格，2 + 1.57 = 3.57，到 (3, 3.57)；第二步离肘 3 − 1 = 2、3.57 − 2 = 1.57，前进方向和连线垂直，把 (2, 1.57) 转 90°：第一列拿两份 (0, 2)、第二列拿 1.57 份 (−1.57, 0)，加起来 (−1.57, 2)，各乘 0.785 得 1.57 和 1.23，3 − 1.23 = 1.77、3.57 + 1.57 = 5.14，停在 (1.77, 5.14)；分四步每步约 0.39 弧度，每步把离肘的位置转 90°、乘 0.39、加上去，四步算到 (0.22, 2.65)，加上肘得 (1.22, 4.65)；八步、一百步交给电脑算，一百步停在 (1, 4.02)，无穷多步正好停在 (1, 4)；每一小步乘同一个矩阵，无穷多步乘出来的叫矩阵指数；名字要从自然常数 e 说起：存一块钱年利率百分之百，一年算一次利息是两块，分十二个月利滚利（复利）每月乘 1.083，1 × 1.083 = 1.083、再乘 1.083 ≈ 1.17，乘满十二次是 2.61，按天算是 2.71，越分越接近 2.718；e 的几次方叫指数函数，矩阵指数的名字从这来，是同一个做法，滚起来的是位姿');
+
+      /* ══ 左：网格 + 折线 ══ */
+      // 这一幕没有 UR5：网格放大到一格 60 px，只画 x 0…4、y 0…6（要走的路都在肘的右上方，分两步那几段要画得开）
+      var gridG = E.el('g', {}, s), u = 60;
+      var pl = E.plane(gridG, { ox: 74, oy: 400, u: u, x0: 0, x1: 4, y0: 0, y1: 6 });
+      var P = pl.P, Q = P(1, 2);
+      function onArc(a) { return P(1 + 2 * Math.cos(a), 2 + 2 * Math.sin(a)); }
+      var pts40 = []; for (var k = 0; k <= 40; k++) pts40.push(onArc(TH * k / 40));
+      var arcGrey = K.paint(E.el('path', { d: E.poly(pts40), fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 7' }, gridG), null, E.INK2);
+      // 淡淡的小臂（2 格长，用户选的「小臂跟着一步一步转」）：每一步先绕肘转到这一步起点的方向，点再按车头直走一段
+      var armBar = K.paint(E.el('path', { fill: 'none', 'stroke-width': 14, 'stroke-linecap': 'round' }, gridG), null, E.BODY);
+      armBar.style.opacity = 0.4;
+      var tick45 = K.paint(E.el('path', { d: E.poly([onArc(HH), P(1 + 2.35 * Math.cos(HH), 2 + 2.35 * Math.sin(HH))]), fill: 'none', 'stroke-width': 3 }, gridG), null, E.OMEGA);
+      var tick45L = E.halo(E.txt(gridG, P(1 + 1.55 * Math.cos(HH), 2 + 1.55 * Math.sin(HH))[0], P(1 + 1.55 * Math.cos(HH), 2 + 1.55 * Math.sin(HH))[1] + 7, '45°', 20, E.OMEGA, 'middle', 900));   // 写在弧里面：弧外是 x = 3 的竖线
+      var paths = NS.map(function (n, i) {
+        var p = K.paint(E.el('path', { d: E.poly(steps(n).map(function (q) { return P(q[0], q[1]); })), fill: 'none', 'stroke-width': n > 50 ? 3.5 : 4,
+          'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, gridG), null, COLS[i]);
+        if (i === 0) p.setAttribute('stroke-dasharray', '9 6');
+        return p;
+      });
+      var arcOk = K.paint(E.el('path', { d: E.poly(pts40), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.GOOD);
+      // 分两步：第一段、第二段（琥珀）分开画，好跟着旁白
+      var c2 = steps(2), K1 = P(c2[1][0], c2[1][1]), K2 = P(c2[2][0], c2[2][1]), S0 = P(3, 2);
+      var segA = K.paint(E.el('path', { d: E.poly([S0, K1]), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.WARN);
+      var segB = K.paint(E.el('path', { d: E.poly([K1, K2]), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.WARN);
+      var dimG = E.el('g', {}, gridG), dy = -0.42 * u;
+      K.paint(E.el('path', { d: 'M ' + Q[0] + ' ' + (Q[1] - dy - 8) + ' V ' + (Q[1] - dy + 8) + ' M ' + Q[0] + ' ' + (Q[1] - dy) + ' H ' + S0[0] + ' M ' + S0[0] + ' ' + (Q[1] - dy - 8) + ' V ' + (Q[1] - dy + 8),
+        fill: 'none', 'stroke-width': 2.5 }, dimG), null, E.INK);
+      E.halo(E.txt(dimG, (Q[0] + S0[0]) / 2, Q[1] - dy + 26, '2 格', 20, E.INK, 'middle', 900));   // 量尺画在小臂下面：上面要画第一段
+      var k1Dot = K.paint(E.el('circle', { cx: K1[0], cy: K1[1], r: 6.5, 'stroke-width': 2.5 }, gridG), E.S1, E.WARN);
+      var k1Lab = E.halo(E.txt(gridG, K1[0] + 14, K1[1] + 8, '(3, 3.57)', 20, E.WARN, 'start', 900));
+      // 第二步：肘 → 拐点的虚线（黄）、(2, 1.57)、直角、平移到拐点并转 90°（蓝弧）、红绿两段
+      var spoke = E.vec(gridG, E.HI, 3, { head: 12, dash: '6 5' });
+      var spokeLab = E.halo(E.txt(gridG, P(1.75, 2.75)[0], P(1.75, 2.75)[1], '(2, 1.57)', 20, E.HI, 'end', 900));   // 虚线的左上：右下是 x = 3 那条竖线
+      var corner = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5 }, gridG), null, E.INK);
+      var spoke2 = E.vec(gridG, E.HI, 3, { head: 12, dash: '6 5' });      // 平移到拐点的那一份，绕拐点转 90°
+      var turnArc = E.arcArrow(gridG, K1[0], K1[1], 0.62 * u, E.OMEGA, 3, { head: 11 });
+      // 转 90° 按列拿份（同第 3 幕）：第一列 (0, 1) 拿 2 份 → 红，往上；第二列 (−1, 0) 拿 1.57 份 → 绿，接在红的尖上往左
+      var legR = E.vec(gridG, E.X, 4.5, { head: 13 }), legG = E.vec(gridG, E.Y, 4.5, { head: 13 });
+      var k2Dot = K.paint(E.el('circle', { cx: K2[0], cy: K2[1], r: 6.5, 'stroke-width': 2.5 }, gridG), E.S1, E.WARN);
+      var k2Lab = E.halo(E.txt(gridG, K2[0] - 12, K2[1] - 12, '(1.77, 5.14)', 20, E.WARN, 'end', 900));
+      var nearG = E.el('g', {}, gridG), endOk = P(1, 4);
+      [P(3, 2 + TH * 2), K2].forEach(function (a) { K.paint(E.el('path', { d: E.poly([a, endOk]), fill: 'none', 'stroke-width': 2.2, 'stroke-dasharray': '4 5' }, nearG), null, E.INK2); });
+      // 分四步：照算的四段（灰白）、肘到这一步起点的虚线（黄）、转 90° 再缩成 0.39 倍的那一份（黄虚线）、各步的新点
+      var V4 = D4.map(function (d) { return P(1 + d[0], 2 + d[1]); });
+      var seg4 = [0, 1, 2, 3].map(function (k) {
+        return K.paint(E.el('path', { d: E.poly([V4[k], V4[k + 1]]), fill: 'none', 'stroke-width': 4.5, 'stroke-linecap': 'round' }, gridG), null, E.INK2);
+      });
+      var dot4 = [1, 2, 3, 4].map(function (k) { return K.paint(E.el('circle', { cx: V4[k][0], cy: V4[k][1], r: 5.5, 'stroke-width': 2.5 }, gridG), E.S1, E.INK2); });
+      var spoke4 = E.vec(gridG, E.HI, 3, { head: 11, dash: '6 5' });
+      var turn4 = E.vec(gridG, E.VEL, 3.5, { head: 11, dash: '6 5' });   // 前进方向：紫，同车头
+      var turn4Arc = E.arcArrow(gridG, 0, 0, 0.45 * u, E.OMEGA, 3, { head: 10 });
+      var lab4 = E.halo(E.txt(gridG, V4[4][0] - 14, V4[4][1] - 14, '(1.22, 4.65)', 20, E.INK2, 'end', 900));
+      // 句 9 的演示：第一步的样子 + 四个名字（离肘的位置、前进方向、这一步、新位置）
+      var preSeg = K.paint(E.el('path', { d: E.poly([V4[0], V4[1]]), fill: 'none', 'stroke-width': 4.5, 'stroke-linecap': 'round' }, gridG), null, E.INK2);
+      var preDot = K.paint(E.el('circle', { cx: V4[1][0], cy: V4[1][1], r: 5.5, 'stroke-width': 2.5 }, gridG), E.S1, E.INK2);
+      var lbPos = E.halo(E.txt(gridG, (Q[0] + V4[0][0]) / 2, Q[1] + 30, '离肘的位置', 18, E.HI, 'middle', 900));
+      var lbDir = E.halo(E.txt(gridG, V4[0][0] + 14, V4[0][1] - 1.2 * u, '前进方向（长 = 半径）', 18, E.VEL, 'start', 900));
+      var lbStep = E.halo(E.txt(gridG, V4[0][0] + 14, V4[0][1] - 0.3 * u, '这一步', 18, E.INK2, 'start', 900));
+      var lbNew = E.halo(E.txt(gridG, V4[1][0] + 14, V4[1][1] - 8, '新位置', 18, E.INK, 'start', 900));
+      // 走的那一点（紫）和它的车头（这时候的方向，紫箭头）
+      var headV = E.vec(gridG, E.VEL, 4, { head: 13 });
+      var walker = K.paint(E.el('circle', { r: 8, 'stroke-width': 3 }, gridG), E.VEL, E.S1);
+      // 肘、出发点、终点标签
+      var outOf = E.el('g', {}, gridG);
+      K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 12, 'stroke-width': 3.5 }, outOf), E.S1, E.HI);
+      K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 4 }, outOf), E.HI);
+      K.paint(E.el('circle', { cx: S0[0], cy: S0[1], r: 7, 'stroke-width': 3 }, gridG), E.VEL, E.S1);
+      var lab100 = E.halo(E.txt(gridG, endOk[0] - 22, endOk[1] - 40, '(1, 4.02)', 20, E.GOOD, 'end', 900));
+      var labOk = E.halo(E.txt(gridG, endOk[0] - 22, endOk[1] - 16, '(1, 4)', 24, E.GOOD, 'end', 900));
+      // 句 22：沿圆一小步一小步走的点 + 两根小箭头（位姿）
+      var rollG = E.el('g', {}, gridG);
+      var rAx = [E.vec(rollG, E.X, 4.5, { head: 13 }), E.vec(rollG, E.Y, 4.5, { head: 13 })];
+      var rDot = K.paint(E.el('circle', { r: 8, 'stroke-width': 3 }, rollG), E.VEL, E.S1);
+
+      /* ══ 左：复利条形图 ══ */
+      var money = E.el('g', {}, s), X0 = 64, UX = 112, BH = 34, BY = [112, 212, 312];
+      var bars = BY.map(function (y, i) {
+        var g = E.el('g', {}, money);
+        var base = K.paint(E.el('rect', { x: X0, y: y, width: UX, height: BH, rx: 6, 'stroke-width': 2 }, g), E.tint(E.INK2, 30, 'var(--demo-surface)'), E.INK2);
+        var grow = K.paint(E.el('rect', { x: X0 + UX, y: y, width: 0, height: BH, rx: 6, 'stroke-width': 2 }, g), E.tint(E.HI, 30, 'var(--demo-surface)'), E.HI);
+        var ticks = E.el('g', {}, g);
+        var head = E.txt(g, X0, y - 12, ['一年算 1 次利息', '12 个月利滚利（复利）', '天天利滚利（365 次）'][i], 20, E.INK2, 'start', 700);
+        var val = E.txt(g, 0, y + BH / 2 + 8, '', 22, E.HI, 'start', 900);
+        return { g: g, base: base, grow: grow, ticks: ticks, head: head, val: val, y: y };
+      });
+      var one = E.txt(money, X0 + UX / 2, BY[0] + BH / 2 + 8, '1 块', 20, E.INK, 'middle', 900);
+      for (var m = 1; m < 12; m++) {
+        var v = Math.pow(1 + 1 / 12, m);
+        K.paint(E.el('line', { x1: X0 + UX * v, x2: X0 + UX * v, y1: BY[1] + 4, y2: BY[1] + BH - 4, 'stroke-width': 1.5 }, bars[1].ticks), null, E.HI);
+      }
+      var eX = X0 + UX * Math.E;
+      var limLine = K.paint(E.el('path', { d: 'M ' + eX.toFixed(1) + ' 84 V 362', fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '7 6' }, money), null, E.GOOD);
+      var limLab = E.txt(money, eX - 10, 74, '2.718…', 22, E.GOOD, 'end', 900);   // 竖虚线顶上：底下是刻度，右边是右栏
+      var eLab = E.txt(money, eX + 10, 76, 'e', 30, E.HI, 'start', 900);
+      eLab.style.fontFamily = 'KaTeX_Math, serif'; eLab.style.fontStyle = 'italic';
+      var scaleG = E.el('g', {}, money);
+      K.paint(E.el('line', { x1: X0, x2: X0 + UX * 3, y1: 368, y2: 368, 'stroke-width': 2 }, scaleG), null, E.MUT);
+      [0, 1, 2, 3].forEach(function (k) {
+        K.paint(E.el('line', { x1: X0 + UX * k, x2: X0 + UX * k, y1: 362, y2: 374, 'stroke-width': 2 }, scaleG), null, E.MUT);
+        if (k !== 0) E.txt(scaleG, X0 + UX * k, 396, k + ' 块', 18, E.MUT, 'middle', 700);
+      });
+
+      /* ══ 右栏 ══ */
+      var RK = E.rowKit(), Rg = E.el('g', {}, s), X = RX + 10;
+      var t0 = E.el('g', {}, Rg);
+      var z1 = RK.line(t0, X, 80, [['分成几小步：', E.INK, 900]], 24);
+      var z2 = RK.line(t0, X, 130, [['每走一小步 → ', E.INK2], ['停下来', E.WARN, 900]]);
+      var z3 = RK.line(t0, X, 176, [['按这时的方向 → ', E.INK2], ['再走一步', E.WARN, 900]]);
+      // 分两步（逐项算）
+      var t1 = E.el('g', {}, Rg), SZ = 19;
+      var w1 = RK.line(t1, X, 36, [['分 2 步：', E.INK, 900], ['每步转 45°', E.OMEGA, 900]], SZ);
+      // 1.57 从哪来：第 1 幕算过 90° ≈ 1.57 弧度（用户反馈「跨幕的信息要交代一下」）
+      var w1b = RK.line(t1, X, 64, [['第 1 幕：', E.INK2], ['90° ≈ 1.57 弧度', E.OMEGA, 900]], SZ);
+      var w2 = RK.line(t1, X, 92, [['1.57 ÷ 2 ≈ ', E.INK2], ['0.785 弧度', E.OMEGA, 900]], SZ);
+      var w3 = RK.line(t1, X, 124, [['① ', E.WARN, 900], ['2 × 0.785 ≈ 1.57', E.INK, 900]], SZ);
+      var w3b = RK.line(t1, X, 152, [['　 2 + 1.57 = 3.57', E.INK, 900], [' → ', E.INK2], ['(3, 3.57)', E.WARN, 900]], SZ);
+      var w4 = RK.line(t1, X, 184, [['② 离肘：', E.WARN, 900], ['3 − 1 = 2', E.INK, 900], ['，', E.INK2], ['3.57 − 2 = 1.57', E.INK, 900]], SZ);
+      var w5 = RK.line(t1, X, 214, [['转 90°：', E.OMEGA, 900], ['2 × (0, 1)', E.X, 900], [' + ', E.INK2], ['1.57 × (−1, 0)', E.Y, 900]], SZ);
+      var w5b = RK.line(t1, X, 244, [['　= ', E.INK2], ['(0, 2)', E.X, 900], [' + ', E.INK2], ['(−1.57, 0)', E.Y, 900], [' = (−1.57, 2)', E.INK, 900]], SZ);
+      var w6 = RK.line(t1, X, 274, [['× 0.785：', E.INK2], ['2 → 1.57', E.X, 900], ['，', E.INK2], ['1.57 → 1.23', E.Y, 900]], SZ);
+      var w7 = RK.line(t1, X, 304, [['3 − ', E.INK, 900], ['1.23', E.Y, 900], [' = 1.77', E.INK, 900]], SZ);
+      var w8 = RK.line(t1, X, 332, [['3.57 + ', E.INK, 900], ['1.57', E.X, 900], [' = 5.14', E.INK, 900]], SZ);
+      var w9 = RK.line(t1, X, 364, [['→ ', E.INK2], ['(1.77, 5.14)', E.WARN, 900], ['：折了一次', E.INK2]], 21);
+      // 分四步（逐步算）
+      var t1b = E.el('g', {}, Rg), S4 = 17;
+      var q1 = RK.line(t1b, X, 34, [['分 4 步：', E.INK, 900], ['1.57 ÷ 4 ≈ ', E.INK2], ['0.39 弧度', E.OMEGA, 900]], 19);
+      // 每个数是什么（用户反馈「没理解分四步这些数字的物理含义」）：颜色和网格上一致——离肘的位置（黄虚线）、前进方向（紫）、这一步（灰白）
+      var q2 = RK.line(t1b, X, 60, [['离肘的位置', E.HI, 900], [' 转 90° = ', E.INK2], ['前进方向', E.VEL, 900], ['（长 = 半径）', E.MUT, 700]], 16);
+      var q2b = RK.line(t1b, X, 82, [['× 0.39 = ', E.INK2], ['这一步走多远', E.INK2, 900], ['（半径 × 角度）', E.MUT, 700]], 16);
+      var q2c = RK.line(t1b, X, 104, [['加上去 = ', E.INK2], ['离肘的新位置', E.INK, 900]], 16);
+      var Q4 = [
+        ['①', '(0, 2)', '(0, 0.78)', '　 2 + 0 = 2，', '0 + 0.78 = 0.78'],
+        ['②', '(−0.78, 2)', '(−0.3, 0.78)', '　 2 − 0.3 = 1.7，', '0.78 + 0.78 = 1.56'],
+        ['③', '(−1.56, 1.7)', '(−0.61, 0.66)', '　 1.7 − 0.61 = 1.09，', '1.56 + 0.66 = 2.22'],
+        ['④', '(−2.22, 1.09)', '(−0.87, 0.43)', '　 1.09 − 0.87 = 0.22，', '2.22 + 0.43 = 2.65']
+      ].map(function (r, k) {
+        var y = 134 + 52 * k;
+        var a = RK.line(t1b, X, y, [[r[0] + ' ', E.INK, 900], [r[1], E.VEL, 900], [' × 0.39 = ', E.INK2], [r[2], E.INK2, 900]], S4);
+        var bb = RK.line(t1b, X, y + 24, [[r[3], E.INK, 900], [r[4], E.INK, 900]], S4);
+        return { a: a, b: bb };
+      });
+      var q7 = RK.line(t1b, X, 346, [['+ 肘：', E.HI, 900], ['1 + 0.22 = 1.22', E.INK, 900], ['，', E.INK2], ['2 + 2.65 = 4.65', E.INK, 900]], S4);
+      var q8 = RK.line(t1b, X, 374, [['→ ', E.INK2], ['(1.22, 4.65)', E.INK, 900], ['：又近了一些', E.INK2]], 20);
+      var t2 = E.el('g', {}, Rg);
+      var r0 = RK.line(t2, X, 46, [['分几步', E.INK2, 700], ['　→　', E.MUT], ['停在', E.INK2, 700]], 21);
+      var LABS = ['(3, 5.14)', '(1.77, 5.14)', '(1.22, 4.65)', '(1.05, 4.33)', '(1.00, 4.02)'];
+      var rowsN = NS.map(function (n, i) {
+        return RK.line(t2, X, 84 + 34 * i, [[n + ' 步', COLS[i], 900], ['　→　', E.MUT], [LABS[i], COLS[i], 900]], 21);
+      });
+      var pcRow = RK.line(t2, X, 84 + 34 * 5 + 6, [['8 步起：同样的算法交给电脑算', E.INK2, 700]], 19);
+      var rowInf = RK.line(t2, X, 84 + 34 * 6 + 14, [['无穷多步', E.GOOD, 900], ['　→　', E.MUT], ['(1, 4)', E.GOOD, 900]], 22);
+      var infOk = E.check(rowInf.g, X + 230, 84 + 34 * 6 - 4, 20, E.GOOD, 4);
+      var t3 = E.el('g', {}, Rg);
+      var f1 = RK.line(t3, X, 44, [['每一小步：乘同一个矩阵', E.INK, 900]], 21);
+      var f2 = E.el('g', {}, t3);
+      E.tex(f2, X, 100, '\\left(I+\\tfrac{[\\mathcal S]\\,\\theta}{n}\\right)^{n}', 26, E.INK, 'start', { w: 170, h: 56 });
+      var f3 = E.el('g', {}, t3);
+      E.txt(f3, X + 186, 102, '分几步，乘几次', 19, E.INK2, 'start', 700);
+      var f4 = E.el('g', {}, t3);
+      K.paint(E.el('rect', { x: RX, y: 128, width: 340, height: 96, rx: 14, 'stroke-width': 3 }, f4), E.tint(E.HI, 10, 'var(--demo-surface)'), E.HI);
+      E.tex(f4, X + 4, 166, 'n\\to\\infty:\\ \\textcolor{' + H.hi + '}{\\exp\\big([\\mathcal S]\\,\\theta\\big)}', 26, E.INK, 'start', { w: 240, h: 50 });
+      var fName = E.txt(f4, RX + 170, 206, '矩阵指数', 24, E.HI, 'middle', 900);
+      var lg = [['I', '：单位矩阵（第 5 集）', E.INK], ['[S]', '：螺旋轴排成的矩阵', E.WARN], ['θ', '：转过的角度', E.OMEGA], ['n', '：分几步', E.INK2]].map(function (r, i) {
+        var g = E.el('g', {}, t3), y = 258 + 36 * i;
+        var sym = E.txt(g, X + 30, y, r[0], 22, r[2], 'middle', 900);
+        sym.style.fontFamily = 'KaTeX_Math, serif'; sym.style.fontStyle = r[0] === '[S]' ? 'normal' : 'italic';
+        E.txt(g, X + 54, y, r[1], 20, E.INK, 'start', 700);
+        return g;
+      });
+      var t4 = E.el('g', {}, Rg);
+      var m1 = RK.line(t4, X, 46, [['为什么叫「指数」？', E.HI, 900]], 24);
+      var m2 = RK.line(t4, X, 84, [['先说', E.INK2], ['自然常数 e', E.HI, 900]], 21);
+      var m3 = RK.line(t4, X, 120, [['存 1 块，年利率 100%', E.INK, 900]], 20);
+      var m4 = RK.line(t4, X, 156, [['一年算 1 次：', E.INK2], ['1 + 1 = 2', E.HI, 900]], 20);
+      var m5 = RK.line(t4, X, 196, [['12 个月：每月 × ', E.INK2], ['(1 + 1/12)', E.HI, 900], [' ≈ 1.083', E.INK, 900]], 19);
+      var m5b = RK.line(t4, X, 230, [['1 × 1.083 = 1.083', E.INK, 900], ['，', E.INK2], ['× 1.083 ≈ 1.17', E.INK, 900]], 19);
+      var m6 = RK.line(t4, X, 264, [['乘满 12 次 → ', E.INK2], ['2.61', E.HI, 900]], 20);
+      var m7 = RK.line(t4, X, 302, [['按天：乘 365 次 → ', E.INK2], ['2.71', E.HI, 900]], 20);
+      var m8 = RK.line(t4, X, 342, [['越分越细 → ', E.INK2], ['2.718… = e', E.GOOD, 900]], 21);
+      var t5 = E.el('g', {}, Rg);
+      var x1 = E.el('g', {}, t5);
+      E.tex(x1, X, 66, 'e^{x}', 34, E.HI, 'start', { w: 60, h: 56 });
+      E.txt(x1, X + 64, 66, '：自然常数的 x 次方，叫指数函数', 19, E.INK, 'start', 700);
+      var x2 = E.el('g', {}, t5);
+      E.txt(x2, X, 126, '同一个做法：', 22, E.INK, 'start', 900);
+      E.tex(x2, X, 182, '\\left(1+\\tfrac{x}{n}\\right)^{n}\\to e^{x}', 26, E.INK, 'start', { w: 260, h: 50 });
+      E.tex(x2, X, 246, '\\left(I+\\tfrac{[\\mathcal S]\\theta}{n}\\right)^{n}\\to \\textcolor{' + H.hi + '}{\\exp([\\mathcal S]\\theta)}', 26, E.INK, 'start', { w: 330, h: 50 });
+      var x3 = RK.line(t5, X, 316, [['滚起来的不是钱，', E.INK2, 700]], 22);
+      var x3x = E.cross(x3.g, X + 196, 308, 9, E.ERR, 4);
+      var x4 = RK.line(t5, X, 356, [['是', E.INK2, 700], ['位姿', E.HI, 900]], 24);
+      var x4ok = E.check(x4.g, X + 80, 338, 22, E.GOOD, 4);
+
+      var laid = false;
+      function fr(st, a) { return E.fade(st, a, 0.3); }
+
+      return {
+        el: s,
+        draw: function (st, t) {
+          if (!laid && s.isConnected) { RK.layout(); laid = true; }
+          var f = E.fade, b = E.bump;
+
+          /* ── 左：网格 ↔ 复利 ── */
+          E.op(gridG, Math.min(1, (1 - f(st, T.out2, 0.4)) + f(st, T.back, 0.5)));
+          E.op(money, f(st, T.out2 + 0.3, 0.4) * (1 - f(st, T.back - 0.3, 0.4)));
+          var back = st > T.back;
+
+          /* ── 分两步（句 2–8） ── */
+          var two = 1 - f(st, T.out1, 0.4);
+          E.op(tick45, f(st, T.deg, 0.3) * (1 - f(st, T.first, 0.3))); E.op(tick45L, f(st, T.deg, 0.3) * (1 - f(st, T.first, 0.3)));
+          E.op(dimG, f(st, T.r2, 0.3) * (1 - f(st, T.upA + 0.6, 0.3)));
+          E.drawOn(segA, f(st, T.seg1[0], T.seg1[1] - T.seg1[0])); E.op(segA, (f(st, T.seg1[0], 0.1) > 0 ? 1 : 0) * two);
+          E.op(k1Dot, f(st, T.add1v, 0.3) * two); k1Dot.setAttribute('r', (6.5 + 4 * b(st, T.kink, 0.8)).toFixed(2));
+          E.op(k1Lab, f(st, T.k1, 0.3) * (1 - f(st, T.legs - 0.3, 0.3)));
+          // 肘 → 拐点的虚线（黄），旁边写 (2, 1.57)
+          var sp = f(st, T.legs, 0.5);
+          spoke.set(Q[0], Q[1], Q[0] + (K1[0] - Q[0]) * sp, Q[1] + (K1[1] - Q[1]) * sp);
+          var stepOff = 1 - f(st, T.go[0], 0.4);
+          E.op(spoke.g, (sp > 0 ? 1 : 0) * stepOff); E.op(spokeLab, f(st, T.legsB, 0.3) * stepOff);
+          // 直角：拐点处，「连线方向（指回肘）」和「前进方向」
+          var dd = [c2[1][0] - 1, c2[1][1] - 2], dl = Math.hypot(dd[0], dd[1]), ud = [-dd[0] / dl, -dd[1] / dl], nd = [-dd[1] / dl, dd[0] / dl], mm = 0.28;
+          var kq = c2[1];
+          corner.setAttribute('d', E.poly([P(kq[0] + ud[0] * mm, kq[1] + ud[1] * mm), P(kq[0] + (ud[0] + nd[0]) * mm, kq[1] + (ud[1] + nd[1]) * mm), P(kq[0] + nd[0] * mm, kq[1] + nd[1] * mm)]));
+          E.op(corner, f(st, T.perp2, 0.3) * stepOff);
+          // 平移到拐点的那一份（尾巴在拐点），绕拐点转 90°（蓝弧）
+          var tr = f(st, T.turn[0], T.turn[1] - T.turn[0]), ang = Math.atan2(dd[1], dd[0]) + TH * tr;
+          var sp2 = P(kq[0] + dl * Math.cos(ang), kq[1] + dl * Math.sin(ang));
+          spoke2.set(K1[0], K1[1], sp2[0], sp2[1]);
+          E.op(spoke2.g, f(st, T.perp, 0.3) * (1 - f(st, T.col1, 0.3)));
+          turnArc.set(Math.atan2(dd[1], dd[0]), Math.max(Math.atan2(dd[1], dd[0]) + 1e-3, ang));   // 画满 90°：从虚线原来的方向到转完的方向（同 009 第 3 幕的修正）
+          E.op(turnArc.g, f(st, T.turn[0], 0.2) * (1 - f(st, T.col1 + 0.6, 0.3)));
+          // 红（第一列 2 份：往上）、绿（第二列 1.57 份：往左）两段：先是整份，句 6 缩成 0.785 倍，头尾相接
+          var sc = 1 - (1 - HH) * f(st, T.scale[0], T.scale[1] - T.scale[0]);
+          var a0 = kq, a1 = [kq[0], kq[1] + dd[0] * sc * f(st, T.col1, 0.5)], a2 = [a1[0] - dd[1] * sc * f(st, T.col2, 0.5), a1[1]];
+          var A0 = P(a0[0], a0[1]), A1 = P(a1[0], a1[1]), A2 = P(a2[0], a2[1]);
+          legR.set(A0[0], A0[1], A1[0], A1[1]); legG.set(A1[0], A1[1], A2[0], A2[1]);
+          var legOn = 1 - f(st, T.stopAt, 0.4);
+          E.op(legR.g, (f(st, T.col1, 0.1) > 0 ? 1 : 0) * legOn); E.op(legG.g, (f(st, T.col2, 0.1) > 0 ? 1 : 0) * legOn);
+          E.drawOn(segB, f(st, T.go[0], T.go[1] - T.go[0])); E.op(segB, (f(st, T.go[0], 0.1) > 0 ? 1 : 0) * two);
+          E.op(k2Dot, f(st, T.stopAt, 0.3) * two); E.op(k2Lab, f(st, T.stopAt, 0.3) * two);
+          E.op(nearG, f(st, T.near, 0.4) * two);
+
+          /* ── 分四步（句 9–14）：一步一步照算 ── */
+          var cur = -1;
+          T.st4.forEach(function (S, k) { if (st >= S.start - 0.3) cur = k; });
+          seg4.forEach(function (p, k) {
+            var S = T.st4[k], on = f(st, S.add, 0.6);
+            E.drawOn(p, on);
+            var dimLater = 1 - 0.6 * Math.max(f(st, T.n8, 0.4), f(st, T.arc, 0.5));
+            p.style.opacity = (on > 0 ? 1 : 0) * dimLater * (1 - f(st, T.out2, 0.3)) * (back ? 0 : 1);
+          });
+          dot4.forEach(function (c, k) { E.op(c, f(st, T.st4[k].addV, 0.3) * (1 - f(st, T.out4, 0.4))); });
+          // 句 9 讲每个数是什么时，先拿第一步的样子演一遍（不写数）：离肘的位置 → 转 90° 是前进方向 → × 0.39 是这一步 → 加上去是新位置
+          var PV = { start: T.lgPos, rot: T.lgDir, mul: T.lgMul, add: T.lgAdd, addV: T.lgNew };
+          var pre = cur < 0 && st >= T.lgPos - 0.3;
+          E.drawOn(preSeg, f(st, PV.add, 0.6)); E.op(preSeg, (f(st, PV.add, 0.1) > 0 ? 0.6 : 0) * (1 - f(st, T.st4[0].start - 0.5, 0.3)));
+          E.op(preDot, f(st, PV.addV, 0.3) * (1 - f(st, T.st4[0].start - 0.5, 0.3)));
+          var lb = [[lbPos, T.lgPos, T.lgDir + 0.4], [lbDir, T.lgDir + 0.6, T.lgMul], [lbStep, T.lgMul + 0.5, T.lgAdd + 0.6], [lbNew, T.lgNew, T.st4[0].start - 0.5]];
+          lb.forEach(function (q) { E.op(q[0], f(st, q[1], 0.3) * (1 - f(st, q[2], 0.3))); });
+          if ((cur >= 0 || pre) && st < T.out4) {
+            var S = pre ? PV : T.st4[cur], d = D4[pre ? 0 : cur], vs = V4[pre ? 0 : cur], len = Math.hypot(d[0], d[1]);
+            var stepOn = f(st, S.start - 0.3, 0.3) * (1 - f(st, S.add + 0.5, 0.3));
+            spoke4.set(Q[0], Q[1], vs[0], vs[1]); E.op(spoke4.g, stepOn);
+            var a = Math.atan2(d[1], d[0]) + TH * f(st, S.rot, 0.8), ln = len * (1 - (1 - F4) * f(st, S.mul, 0.6));
+            var tip = P(1 + d[0] + ln * Math.cos(a), 2 + d[1] + ln * Math.sin(a));
+            turn4.set(vs[0], vs[1], tip[0], tip[1]); E.op(turn4.g, f(st, S.rot - 0.2, 0.3) * (1 - f(st, S.add + 0.3, 0.3)));
+            E.op(turn4Arc.g, f(st, S.rot, 0.2) * (1 - f(st, S.mul, 0.3)));
+            // 蓝弧画满转过的角度：圆心在这一步的起点
+            turn4Arc.g.setAttribute('transform', 'translate(' + vs[0].toFixed(1) + ' ' + vs[1].toFixed(1) + ')');
+            turn4Arc.set(Math.atan2(d[1], d[0]), Math.max(Math.atan2(d[1], d[0]) + 1e-3, a));
+          } else { E.op(spoke4.g, 0); E.op(turn4.g, 0); E.op(turn4Arc.g, 0); }
+          E.op(lab4, f(st, T.at4, 0.3) * (1 - f(st, T.out4, 0.4)));
+
+          /* ── 走的那一点 + 淡淡的小臂 + 车头：每一步先转小臂、对准车头，再直走一段 ── */
+          var wk = walkState(st);
+          var armA = wk.armAng, tipA = P(1 + 2 * Math.cos(armA), 2 + 2 * Math.sin(armA));
+          armBar.setAttribute('d', E.poly([Q, tipA])); E.op(armBar, 0.4 * wk.on * (back ? 0 : 1));
+          var wp = P(wk.p[0], wk.p[1]);
+          walker.setAttribute('cx', wp[0].toFixed(1)); walker.setAttribute('cy', wp[1].toFixed(1)); E.op(walker, wk.on * (back ? 0 : 1));
+          headV.set(wp[0], wp[1], wp[0] + Math.cos(wk.hd) * 0.8 * u, wp[1] - Math.sin(wk.hd) * 0.8 * u); E.op(headV.g, wk.on * wk.hOn * (back ? 0 : 1));
+
+          /* ── 折线 1 / 8 / 100（句 15–16） ── */
+          var drawT = [null, null, null, T.n8, T.n100];
+          paths.forEach(function (p, i) {
+            if (i === 1 || i === 2) { E.op(p, 0); return; }                 // 分两步、分四步由上面的分段画
+            var on = i === 0 ? 1 : f(st, drawT[i], RUN[i]);   // 和走的那一点同步画出
+            if (i > 0) E.drawOn(p, on);
+            var later = [3, 4].map(function (j) { return j > i ? f(st, drawT[j], 0.4) : 0; }).reduce(function (x, y) { return Math.max(x, y); }, 0);
+            if (i === 0) later = Math.max(later, f(st, T.n4, 0.4));
+            var dim = 1 - 0.6 * Math.max(later, f(st, T.arc, 0.5));
+            p.style.opacity = (i === 0 ? 0.85 : 1) * dim * (1 - f(st, T.out2, 0.3)) * (on > 0 ? 1 : 0);   // 没画出来的折线不留圆头线帽的点
+            if (back) p.style.opacity = i === 4 ? 0.45 : 0;
+          });
+          segA.style.opacity = +segA.style.opacity * (1 - 0.6 * f(st, T.n4, 0.4)); segB.style.opacity = +segB.style.opacity * (1 - 0.6 * f(st, T.n4, 0.4));
+          if (st > T.out1) { E.op(segA, (1 - 0.6 * f(st, T.n4, 0.4)) * (1 - 0.6 * f(st, T.arc, 0.5)) * (1 - f(st, T.out2, 0.3)) * (back ? 0 : 1)); E.op(segB, +segA.style.opacity); }
+          E.op(arcGrey, (1 - f(st, T.arc, 0.4)) * (1 - f(st, T.out2, 0.3)));
+          var hb = b(st, T.hug, 1.0);
+          arcGrey.style.strokeWidth = 3 + 2.5 * hb; E.glow(arcGrey, E.INK2, hb > 0.05);
+          E.drawOn(arcOk, f(st, T.arc, 0.9));
+          E.op(lab100, f(st, T.at100, 0.3) * (1 - f(st, T.at - 0.4, 0.3)));
+          E.op(labOk, f(st, T.at, 0.3) * (1 - f(st, T.out2, 0.3)));
+          // 句 22：一小步一小步滚
+          var rk = Math.min(16, Math.floor(16 * E.clamp((st - T.roll[0]) / (T.roll[1] - T.roll[0]), 0, 1)));
+          var a16 = TH * rk / 16, rp = onArc(a16);
+          rDot.setAttribute('cx', rp[0].toFixed(1)); rDot.setAttribute('cy', rp[1].toFixed(1));
+          var ro = [Math.cos(a16), Math.sin(a16)], rt = [-Math.sin(a16), Math.cos(a16)];
+          rAx[0].set(rp[0], rp[1], rp[0] + ro[0] * 0.9 * u, rp[1] - ro[1] * 0.9 * u);
+          rAx[1].set(rp[0], rp[1], rp[0] + rt[0] * 0.9 * u, rp[1] - rt[1] * 0.9 * u);
+          E.op(rollG, f(st, T.roll[0] - 0.4, 0.3));
+          rAx.forEach(function (a) { E.op(a.g, f(st, T.pose, 0.3)); });
+          E.glow(rDot, E.HI, b(st, T.pose, 1) > 0.05);
+
+          /* ── 左：复利 ── */
+          E.op(bars[0].g, f(st, T.coin, 0.3)); E.op(one, f(st, T.coin, 0.3));
+          var g0 = f(st, T.onePlus, 1.0);
+          bars[0].grow.setAttribute('width', (UX * g0).toFixed(1));
+          bars[0].val.textContent = '2'; bars[0].val.setAttribute('x', (X0 + UX * (1 + g0) + 10).toFixed(1)); E.op(bars[0].val, f(st, T.two2, 0.3));
+          E.op(bars[1].g, f(st, T.m12, 0.3));
+          // 第一个月、第二个月各长一格（旁白算出来的那两次），之后「乘满十二次」再一格一格长到 12 格
+          var k12 = (st >= T.mo1v ? 1 : 0) + (st >= T.mo2v ? 1 : 0) + Math.floor(10 * E.clamp((st - T.k12[0]) / (T.k12[1] - T.k12[0]), 0, 1) + 1e-9);
+          var v12 = Math.pow(1 + 1 / 12, k12);
+          bars[1].grow.setAttribute('width', (UX * (v12 - 1)).toFixed(1));
+          Array.prototype.forEach.call(bars[1].ticks.children, function (ln, j) { E.op(ln, j + 1 < k12 ? 0.8 : 0); });
+          bars[1].val.textContent = '2.61'; bars[1].val.setAttribute('x', (eX + 12).toFixed(1)); E.op(bars[1].val, f(st, T.v12, 0.3));   // 条尾离竖虚线只有 12 px：数写到虚线右边
+          E.op(bars[2].g, f(st, T.day - 0.2, 0.3));
+          var g3 = f(st, T.fine[0], T.fine[1] - T.fine[0]), v365 = Math.pow(1 + 1 / 365, 365);
+          bars[2].grow.setAttribute('width', (UX * (v365 - 1) * g3).toFixed(1));
+          bars[2].val.textContent = '2.71'; bars[2].val.setAttribute('x', (eX + 12).toFixed(1)); E.op(bars[2].val, f(st, T.d365, 0.3));
+          E.drawOn(limLine, f(st, T.lim, 0.5)); E.op(limLab, f(st, T.lim, 0.3));
+          E.pop(eLab, eX + 18, 66, f(st, T.eNum, 0.35), 0.6);
+          E.op(scaleG, f(st, T.coin, 0.3));
+
+          /* ── 右栏 ── */
+          E.op(t0, 1 - f(st, T.out0, 0.4));
+          E.op(z1.g, fr(st, 0.6)); E.op(z2.g, fr(st, T.each)); E.op(z2.parts[1], fr(st, T.stop)); E.op(z3.g, fr(st, T.dir)); E.op(z3.parts[1], fr(st, T.next));
+          E.op(t1, f(st, T.out0 + 0.2, 0.4) * (1 - f(st, T.out1, 0.4)));
+          E.op(w1.g, fr(st, T.two)); E.op(w1.parts[1], fr(st, T.deg)); E.op(w1b.g, fr(st, T.rec)); E.op(w1b.parts[1], fr(st, T.recV)); E.op(w2.g, fr(st, T.div)); E.op(w2.parts[1], fr(st, T.h));
+          E.op(w3.g, fr(st, T.mul1)); E.op(w3b.g, fr(st, T.add1)); E.op(w3b.parts[1], fr(st, T.k1)); E.op(w3b.parts[2], fr(st, T.k1));
+          E.op(w4.g, fr(st, T.subA)); E.op(w4.parts[2], fr(st, T.subB)); E.op(w4.parts[3], fr(st, T.subB));
+          E.op(w5.g, fr(st, T.mat)); E.op(w5.parts[1], fr(st, T.col1)); E.op(w5.parts[2], fr(st, T.col2)); E.op(w5.parts[3], fr(st, T.col2));
+          E.op(w5b.g, fr(st, T.col1v)); E.op(w5b.parts[2], fr(st, T.col2v)); E.op(w5b.parts[3], fr(st, T.col2v)); E.op(w5b.parts[4], fr(st, T.sumV));
+          E.op(w6.g, fr(st, T.scale[0])); E.op(w6.parts[1], fr(st, T.r157)); E.op(w6.parts[2], fr(st, T.r123)); E.op(w6.parts[3], fr(st, T.r123));
+          E.op(w7.g, fr(st, T.sub)); E.op(w7.parts[2], fr(st, T.sub2));
+          E.op(w8.g, fr(st, T.add)); E.op(w8.parts[2], fr(st, T.add2));
+          E.op(w9.g, fr(st, T.stopAt)); E.op(w9.parts[2], fr(st, T.kink));
+          E.op(t1b, f(st, T.out1 + 0.2, 0.4) * (1 - f(st, T.out4, 0.4)));
+          E.op(q1.g, fr(st, T.n4)); E.op(q1.parts[1], fr(st, T.d4)); E.op(q1.parts[2], fr(st, T.d4v)); E.op(q2.g, fr(st, T.lgPos)); E.op(q2.parts[2], fr(st, T.lgDir)); E.op(q2.parts[3], fr(st, T.lgRad));
+          E.op(q2b.g, fr(st, T.lgMul)); E.op(q2b.parts[1], fr(st, T.lgStep)); E.op(q2b.parts[2], fr(st, T.lgStep)); E.op(q2c.g, fr(st, T.lgAdd)); E.op(q2c.parts[1], fr(st, T.lgNew));
+          Q4.forEach(function (r, k) {
+            var S = T.st4[k];
+            E.op(r.a.g, fr(st, S.rotV)); E.op(r.a.parts[2], fr(st, S.mul)); E.op(r.a.parts[3], fr(st, S.mulV));
+            E.op(r.b.g, fr(st, S.addX)); E.op(r.b.parts[1], fr(st, S.addY));
+          });
+          E.op(q7.g, fr(st, T.elb)); E.op(q7.parts[1], fr(st, T.ex)); E.op(q7.parts[2], fr(st, T.ey)); E.op(q7.parts[3], fr(st, T.ey));
+          E.op(q8.g, fr(st, T.at4)); E.op(q8.parts[2], fr(st, T.near4));
+          E.op(t2, f(st, T.out4 + 0.2, 0.4) * (1 - f(st, T.one - 0.3, 0.4)));
+          E.op(r0.g, 1);
+          var rowT = [0, 0, 0, T.at8, T.at100];
+          rowsN.forEach(function (r, i) { E.op(r.g, i < 3 ? 1 : fr(st, rowT[i])); });
+          E.op(pcRow.g, fr(st, T.pc));
+          E.op(rowInf.g, fr(st, T.inf)); E.op(rowInf.parts[2], fr(st, T.at)); E.drawOn(infOk, f(st, T.at + 0.3, 0.3));
+          E.op(t3, f(st, T.one - 0.1, 0.4) * (1 - f(st, T.out2, 0.4)));
+          E.op(f1.g, fr(st, T.one)); E.op(f2, fr(st, T.same)); E.op(f3, fr(st, T.times)); E.pop(f4, RX + 170, 176, f(st, T.nInf, 0.35), 0.9);
+          E.op(fName, fr(st, T.name));
+          lg.forEach(function (g, i) { E.op(g, fr(st, T.legend[i])); });
+          E.op(t4, f(st, T.out2 + 0.3, 0.4) * (1 - f(st, T.pow - 0.3, 0.4)));
+          E.op(m1.g, fr(st, T.why)); E.op(m2.g, fr(st, T.e0)); E.op(m3.g, fr(st, T.coin)); E.op(m4.g, fr(st, T.once)); E.op(m4.parts[1], fr(st, T.onePlus));
+          E.op(m5.g, fr(st, T.m12)); E.op(m5.parts[1], fr(st, T.perM)); E.op(m5.parts[2], fr(st, T.r1083));
+          E.op(m5b.g, fr(st, T.mo1)); E.op(m5b.parts[1], fr(st, T.mo2)); E.op(m5b.parts[2], fr(st, T.mo2));
+          E.op(m6.g, fr(st, T.k12[0])); E.op(m6.parts[1], fr(st, T.v12));
+          E.op(m7.g, fr(st, T.day)); E.op(m7.parts[1], fr(st, T.d365)); E.op(m8.g, fr(st, T.lim));
+          E.op(t5, f(st, T.pow, 0.4));
+          E.op(x1, fr(st, T.pow)); E.op(x2, fr(st, T.same2));
+          E.op(x3.g, fr(st, T.money)); E.drawOn(x3x, f(st, T.money + 0.2, 0.3));
+          E.op(x4.g, fr(st, T.pose)); E.drawOn(x4ok, f(st, T.pose + 0.2, 0.3));
+        }
+      };
+    }
+  };
+})();
