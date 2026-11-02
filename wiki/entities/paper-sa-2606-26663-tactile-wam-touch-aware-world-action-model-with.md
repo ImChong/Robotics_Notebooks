@@ -42,6 +42,31 @@ Introduces Tactile Asymmetric Attention Mechanism (TAAM) with VideoClean mask to
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    RGB["RGB 历史观测"] --> VAE
+    TAC["左 / 右触觉图像 → 横向拼接 mosaic"] --> VAE
+    VAE["共享冻结 Wan2.2 VAE：视觉潜变量与触觉潜变量（各加模态嵌入）"]
+    LANG["语言指令（UMT5-XXL，经交叉注意注入）"] --> DIT
+    ST["本体感觉状态 + 带噪动作"] --> DIT
+    VAE --> DIT
+    subgraph DIT["语言条件 Wan DiT：联合预测未来视觉潜变量、未来触觉潜变量、动作块"]
+        direction TB
+        VC["VideoClean 掩码：阻断视觉 query 访问触觉 key（保护视觉先验）"]
+        TB["Touch-aware 注意力偏置：按因果块把 action query 导向触觉 key"]
+    end
+    TAC --> PHI["可微形变估计器 Φ（无可学习参数）：由相邻触觉帧得 6 维 touch-aware proxy"]
+    PHI -->|"接触强度 sc → 偏置 bc"| TB
+    DIT --> OUTV["未来视频帧"]
+    DIT --> OUTT["未来触觉潜变量 → 冻结解码器 → 触觉图像"]
+    DIT --> OUTA["动作块"]
+    OUTT -.->|"训练：proxy 损失监督"| PHI
+```
+
+图依据：论文 §4 Method（架构概览、Tactile Asymmetric Attention Mask、Touch-aware Proxy）/ Fig. 4、附录 B
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Introduces Tactile Asymmetric Attention Mechanism (TAAM) with VideoClean mask to
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.26663>
+- [arXiv PDF](https://arxiv.org/pdf/2606.26663)：已通读方法部分（实验与附录以略读为准）：§4 方法（架构概览、联合视觉-触觉-动作建模、非对称注意力掩码、touch-aware 偏置与 proxy）、附录 B 模型细节
 
 ## 推荐继续阅读
 
