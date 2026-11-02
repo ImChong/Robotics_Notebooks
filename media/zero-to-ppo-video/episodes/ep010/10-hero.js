@@ -57,8 +57,9 @@
     var a1 = E.vec(r3, E.INK2, 3.5, { head: 13 }), a2 = E.vec(r3, E.INK2, 3.5, { head: 13 });
     var box = E.el('g', {}, r3);
     K.paint(E.el('rect', { x: CX - 150, y: 112, width: 300, height: 84, rx: 16, 'stroke-width': 3.5 }, box), E.tint(E.HI, 12, 'var(--demo-surface)'), E.HI);
-    E.tex(box, CX - 126, 168, '\\exp', 42, E.HI, 'start', { w: 90, h: 62 });
-    E.txt(box, CX + 130, 166, '矩阵指数', 32, E.HI, 'end', 900);
+    // 「exp = 矩阵指数」连着写（用户反馈：exp 和「矩阵指数」中间空一大段，意义不明）
+    E.tex(box, CX - 114, 168, '\\exp', 42, E.HI, 'start', { w: 90, h: 62 });
+    E.txt(box, CX - 34, 166, '= 矩阵指数', 32, E.HI, 'start', 900);
     var oneStep = E.txt(r3, CX + 16, 236, '一步', 24, E.GOOD, 'start', 900);
     var tG = E.el('g', {}, r3);
     E.tex(tG, CX - 140, 340, 'T=\\begin{bmatrix}\\textcolor{' + H.acc + '}{R} & \\textcolor{' + H.violet + '}{p}\\\\ 0 & 1\\end{bmatrix}', 42, E.INK, 'start', { w: 220, h: 130 });
@@ -75,7 +76,8 @@
         E.op(ring, f(t, T.elbow, 0.3)); E.op(ringDot, f(t, T.elbow, 0.3));
         ring.setAttribute('r', (12 + 5 * Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8))).toFixed(2));
         E.glow(ring, E.HI, Math.max(b(t, T.elbow, 0.8), b(t, T.axis, 0.8)) > 0.05);
-        spin.set(0, Math.max(1e-3, phi));   // 画满转过的角度：从小臂原来的方向到现在的方向（同 009 第 3 幕的修正） E.op(spin.g, f(t, T.turn[0], 0.2));
+        // 画满转过的角度：从小臂原来的方向到现在的方向（同 009 第 3 幕的修正）；小臂开始转才出现（用户反馈：一开始就显示多余）
+        spin.set(0, Math.max(1e-3, phi)); E.op(spin.g, f(t, T.turn[0], 0.2));
         var tl = P(1 + 1.35 * Math.cos(40 * D), 2 + 1.35 * Math.sin(40 * D));
         thLab.setAttribute('x', tl[0].toFixed(1)); thLab.setAttribute('y', (tl[1] + 8).toFixed(1)); E.op(thLab, f(t, T.ang, 0.3));
         // 小臂上离肘两格的点（转完在 (1, 4)）：问号写在它左边，两根小箭头（沿小臂、垂直小臂）
