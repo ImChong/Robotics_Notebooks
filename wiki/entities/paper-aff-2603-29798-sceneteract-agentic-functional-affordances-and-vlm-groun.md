@@ -40,6 +40,34 @@ SceneTeract: Agentic Functional Affordances and VLM Grounding in 3D Scenes——
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  T[活动描述 T<br/>自然语言高层意图] --> C
+  A[智能体画像 A<br/>w_clear / h_eye / h_arm / r_arm / 行走或轮式] --> C
+  S[3D 场景 S = 物体集 O + 几何 G] --> C
+  C[多模态输入上下文 C<br/>文本序列化 Π_txt + 俯视渲染 Π_vis] --> VLM
+  subgraph SD["阶段一：语义分解"]
+    VLM[VLM Φ<br/>在封闭原子动作库 A 中规划] --> PLAN[语义计划 π<br/>动作-物体步骤序列 a_t, o_t]
+  end
+  subgraph GV["阶段二：几何验证 Ψ"]
+    FAM[按动作族取固定有序属性清单<br/>Mobility / Contact / Handling / Perception]
+    CHK[逐项布尔几何检查<br/>navigable / reachable / interactable / clearance / visible]
+    FAM --> CHK
+  end
+  PLAN --> FAM
+  CHK --> STEP[步骤结论 v_t = 各检查合取]
+  STEP --> LABEL[活动标签 = 各步骤合取]
+  CHK --> REP[诊断报告 R<br/>失败步骤与量化原因]
+  LABEL --> REP
+  REP --> U1[应用：审计 3D 场景]
+  REP --> U2[应用：评测 VLM 可行性判断]
+  REP --> U3[应用：验证器奖励 + GRPO 后训练 VLM]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.1、Fig.3、Tab.1–2（各动作族内部检查顺序见 Tab.1，图中从简）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +79,7 @@ SceneTeract: Agentic Functional Affordances and VLM Grounding in 3D Scenes——
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.29798)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.29798)。
 
 ## 评测与指标
 
@@ -67,7 +95,7 @@ SceneTeract: Agentic Functional Affordances and VLM Grounding in 3D Scenes——
 
 **本页只提供「SceneTeract」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +116,7 @@ SceneTeract: Agentic Functional Affordances and VLM Grounding in 3D Scenes——
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.29798>
+- [arXiv PDF](https://arxiv.org/pdf/2603.29798)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Method（3.1 输入三元组、3.2 验证接口、3.3 执行流程、验证器反馈后训练）。
 
 ## 推荐继续阅读
 

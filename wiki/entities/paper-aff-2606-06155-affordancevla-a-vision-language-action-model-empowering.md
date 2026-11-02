@@ -40,6 +40,27 @@ AffordanceVLA: A Vision-Language-Action Model Empowering Action Generation throu
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：观测 O_t + 语言指令 l"] --> U["Understanding Expert M_und<br/>得到 instruction-aware 表征 h_und"]
+    U --> G["Affordance Generation Expert M_gen<br/>预测结构化 affordance Â_t"]
+    G --> W1["Which2Act：目标框裁剪的视觉 latent<br/>MSE 重建"]
+    G --> W2["Where2Act：2D affordance 热图<br/>BCE"]
+    G --> W3["How2Act：3D 形状 latent 扩散去噪<br/>+ 10-DoF layout 回归"]
+    W1 --> A
+    W2 --> A
+    W3 --> A
+    U --> A["Action Expert M_act<br/>生成动作块 â_t:t+k"]
+    S["本体状态 s_t"] --> A
+    subgraph 训练["三阶段训练"]
+        T1["Stage I：通用 affordance grounding 预训练<br/>仅训练 Affordance Generation Expert"] --> T2["Stage II：机器人数据协同训练<br/>L_act + L_afd 端到端"] --> T3["Stage III：目标任务后训练<br/>affordance 权重退火"]
+    end
+```
+
+图依据：论文 §3.1 AffordanceVLA Architecture / §3.2 Affordance Knowledge Prediction / §3.3 Training Strategy / Fig.2（UAA 注意力：Affordance 专家只读 Understanding 专家，Action 专家读前两者）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ AffordanceVLA: A Vision-Language-Action Model Empowering Action Generation throu
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2606.06155)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2606.06155)。
 
 ## 评测与指标
 
@@ -88,6 +109,7 @@ AffordanceVLA: A Vision-Language-Action Model Empowering Action Generation throu
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2606.06155>
+- [arXiv PDF](https://arxiv.org/pdf/2606.06155)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.3（架构、affordance 预测、三阶段训练）
 
 ## 推荐继续阅读
 

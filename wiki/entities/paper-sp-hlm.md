@@ -35,6 +35,25 @@ summary: "SP-HLM combines five explicit task-critical body poses with a learned 
 
 高层策略若直接预测完整关节配置，动作维度高且要同时表达任务意图和全身协调；只给稀疏末端目标又不足以确定躯干、腿部如何配合。SP-HLM 将两种信息分开表示，减少高层动作接口负担。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["egocentric RGB + 语言指令 + 机器人状态"] --> VLA["SP-VLA（GR00T N1.7 初始化，仅微调流匹配动作头）<br/>异步 action-chunk 推理"]
+    VLA -->|五点世界系目标位姿序列<br/>骨盆 / 双腕 / 双踝| MGM["SP-MGM：蒸馏后的扩散运动生成<br/>生成全身运动轨迹"]
+    VLA -->|手指关节位置目标| HAND["双手 PD 控制器"]
+    MGM --> ENC["预训练运动 VAE 编码器 E_phi<br/>得到运动 latent z_t"]
+    VLA -->|五点目标变换到当前骨盆系| GMT
+    ENC --> GMT["SP-GMT 跟踪策略 π_theta<br/>输入 z_t + 显式五点目标 + 本体状态 + 上一动作"]
+    GMT --> ACT["身体关节位置目标"]
+    subgraph TR["SP-MGM 两阶段蒸馏"]
+        S1["Stage I：离线监督微调<br/>冻结教师预测 + 真值运动"] --> S2["Stage II：rollout-aware 蒸馏<br/>学生访问状态上的教师监督 + 时序平滑"]
+    end
+    S2 -.训练得到.-> MGM
+```
+
+图依据：论文 §III-A 至 §III-D 与 Fig. 2。
+
 ## 核心原理
 
 框架显式提供骨盆、左右手腕、左右脚踝五个任务关键姿态，同时由预训练运动编码器提供全身协调 latent。SP-VLA 从多模态观察和指令预测稀疏姿态与手指关节；SP-MGM 经两阶段蒸馏从稀疏目标生成全身动作；SP-GMT 将姿态约束与运动 latent 一起用于跟踪控制。
@@ -89,6 +108,7 @@ summary: "SP-HLM combines five explicit task-critical body poses with a learned 
 - [SP-HLM 论文归档](../../sources/papers/sp_hlm_arxiv_2610_30044.md)
 - [SP-HLM 项目页归档](../../sources/sites/sp-hlm.md)
 - [arXiv:2610.30044](https://arxiv.org/abs/2610.30044)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30044)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）、§IV 实验设定开头
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordanceGrasp-R1: Leveraging Reasoning-Based Affordance Segmentation with Reinforcement Learning for Robotic Grasping——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordanceGrasp-R1: Leveraging Reasoning-Based Affordance Segmentation with Reinforcement Learning for Robotic Grasping——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,30 @@ AffordanceGrasp-R1: Leveraging Reasoning-Based Affordance Segmentation with Rein
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：RGB 图像 I + 语言指令 T"] --> MLLM["MLLM 模块：Qwen2.5-VL-7B<br/>输出思考过程 + 结构化提示"]
+    subgraph TRAIN["MLLM 两阶段后训练"]
+        COT["CoT 冷启动数据（QVQ-72B 生成推理轨迹，Qwen2.5-VL-72B 蒸馏规则并校验）"] --> SFT["阶段1：SFT 冷启动"]
+        SFT --> GRPO["阶段2：GRPO 强化学习<br/>奖励：格式 / 非重复 / 精度"]
+    end
+    GRPO -.-> MLLM
+    MLLM --> BP["bounding box B + 关键点 P"]
+    BP --> SAM["分割模块：LoRA 微调 SAM 2"]
+    IN --> SAM
+    SAM --> MASK["affordance mask M"]
+    DEPTH["深度图 D"] --> PC["反投影得到全场景点云 S"]
+    PC --> GAG["GA-Grasp 生成 6D 抓取候选"]
+    MASK --> FILT["掩码引导的语义过滤<br/>+ 3D IoU 匹配"]
+    GAG --> FILT
+    FILT --> RANK["打分排序 + NMS"]
+    RANK --> EXEC["最终可执行抓取位姿 → 真机执行"]
+```
+
+图依据：论文 §4（Method）/ Fig.4、Fig.5；CoT 数据生成见 §3 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +75,7 @@ AffordanceGrasp-R1: Leveraging Reasoning-Based Affordance Segmentation with Rein
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2602.03547)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2602.03547)。
 
 ## 评测与指标
 
@@ -88,6 +112,7 @@ AffordanceGrasp-R1: Leveraging Reasoning-Based Affordance Segmentation with Rein
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2602.03547>
+- [arXiv PDF](https://arxiv.org/pdf/2602.03547)：已通读方法部分（实验与附录以略读为准）：§3 数据构建、§4.1 MLLM、§4.2 分割模块、§4.3 抓取模块
 
 ## 推荐继续阅读
 

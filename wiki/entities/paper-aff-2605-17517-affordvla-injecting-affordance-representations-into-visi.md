@@ -40,6 +40,31 @@ AffordVLA: Injecting Affordance Representations into Vision-Language-Action Mode
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["RGB 观测 I_t + 语言指令 l_t + 机器人状态 s_t"]
+    subgraph T["Zero-shot Affordance Teacher（仅训练时使用，冻结）"]
+        P["多模态任务解析 Qwen3-VL<br/>生成部件级概念 prompt p_t"] --> PE["开放词表 affordance 感知<br/>SAM3 感知编码器 + Affordance Fusion Encoder"]
+        PE --> Z["affordance 视觉表征 Z_aff<br/>+ 像素级预测 M_aff"]
+    end
+    IN --> P
+    subgraph U["Understanding Expert（π0.5 的 VLM 主干）"]
+        V["视觉编码器 / 文本 token / 状态 token"] --> C["VLM Transformer<br/>输出上下文 C_t"]
+    end
+    IN --> V
+    C -->|中间层视觉特征<br/>Resize + Norm + 两层 MLP| AL["表征对齐<br/>最大化余弦相似度 L_align"]
+    Z -->|对齐目标 Z_aff + 位置嵌入| AL
+    C --> AE["Action Expert<br/>conditional flow matching"]
+    AE --> A["动作块 A_t，损失 L_action"]
+    AL -.-> LT["总损失 L_action + λ·L_align"]
+    A -.-> LT
+    C --> INF["推理：去掉 teacher，沿用标准 VLA 流程"]
+```
+
+图依据：论文 §III-A Architecture Overview / §III-B Zero-Shot Affordance Teacher / §III-C Implicit Affordance Representation Alignment / Fig.2–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +76,7 @@ AffordVLA: Injecting Affordance Representations into Vision-Language-Action Mode
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2605.17517)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2605.17517)。
 
 ## 评测与指标
 
@@ -88,6 +113,7 @@ AffordVLA: Injecting Affordance Representations into Vision-Language-Action Mode
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2605.17517>
+- [arXiv PDF](https://arxiv.org/pdf/2605.17517)：已通读方法部分（实验与附录以略读为准）：§III-A–§III-D
 
 ## 推荐继续阅读
 

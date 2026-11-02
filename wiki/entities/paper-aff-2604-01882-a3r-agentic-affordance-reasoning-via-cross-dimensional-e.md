@@ -40,6 +40,34 @@ A3R: Agentic Affordance Reasoning via Cross-Dimensional Evidence in 3D Gaussian 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I[输入：3DGS 场景 S + affordance 查询 q] --> S0[初始化决策状态 s_t<br/>工作区 S_t + affordance 置信图 h_t + 动作-证据历史 m_t]
+  S0 --> CTX[渲染多视角视觉上下文 V_t<br/>叠加 h_t 与历史结果，并拼文本历史 ξ_t、任务 prompt、算子 schema]
+  CTX --> POL[MLLM 智能体策略 π_θ<br/>选择 u_t = 算子类型 + 参数]
+  POL -->|Term| OUT[对 h 取阈值 δ<br/>输出逐 Gaussian 预测 ŷ]
+  POL -->|Inst / Part / SAM2D / Zoom| OP[执行证据获取算子]
+  subgraph OPS["跨维度证据算子"]
+    O1[Inst：3D 实例分割]
+    O2[Part：3D 部件分割]
+    O3[SAM2D：渲染视图 2D 分割并提升到 3D]
+    O4[Zoom：收缩到局部子场景]
+  end
+  OP --> OPS
+  OPS --> PRJ[投影回 Gaussian 支持 e_t]
+  PRJ -->|Part / SAM2D| UB[替换更新置信图 h]
+  PRJ -->|Inst / Zoom| UW[细化工作区，置信图不变]
+  UB --> UH[更新历史 m 与工作区 S]
+  UW --> UH
+  UH --> CTX
+  UH -.->|达到步数预算 T| OUT
+  GRPO[GRPO 训练策略<br/>奖励 = IoU 与成功项 - 步数惩罚，LoRA，算子冻结] -.-> POL
+```
+
+图依据：论文 §3.1–§3.5 / Fig.2、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +79,7 @@ A3R: Agentic Affordance Reasoning via Cross-Dimensional Evidence in 3D Gaussian 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2604.01882)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2604.01882)。
 
 ## 评测与指标
 
@@ -67,7 +95,7 @@ A3R: Agentic Affordance Reasoning via Cross-Dimensional Evidence in 3D Gaussian 
 
 **本页只提供「A3R」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +116,7 @@ A3R: Agentic Affordance Reasoning via Cross-Dimensional Evidence in 3D Gaussian 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2604.01882>
+- [arXiv PDF](https://arxiv.org/pdf/2604.01882)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3.1–§3.5 方法（含 Algorithm 1）、§4.1 实验设定。
 
 ## 推荐继续阅读
 

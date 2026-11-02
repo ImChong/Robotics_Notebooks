@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-A3D: Adaptive Affordance Assembly with Dual-Arm Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+A3D: Adaptive Affordance Assembly with Dual-Arm Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ A3D: Adaptive Affordance Assembly with Dual-Arm Manipulation——在清单中�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["输入：furniture 部件局部点云 O（含法向）+ 操作点 p_op"] --> VFE["视觉特征提取：PointNet++ 逐点特征"]
+    VFE --> AFF["Affordance 模块：逐点预测 support affordance 分数<br/>取 Top-K 个支撑候选点"]
+    AFF --> PROP["Action Proposal 模块（cVAE）<br/>为每个候选点生成多个支撑方向 d"]
+    PROP --> SCORE["Action Scoring 模块：为每个 点-方向 对打成功分数<br/>选出最优支撑动作 u = (p_sp, d)"]
+    SCORE --> EXEC["支撑臂移动夹爪到推荐位姿，辅助操作臂完成装配"]
+    EXEC --> CHK{"部件是否发生位移<br/>（支撑不足）？"}
+    CHK -- 否 --> DONE["继续装配 / 完成"]
+    CHK -- 是 --> LOG["记录 交互上下文 I：支撑前点云、已执行动作、位移"]
+    LOG --> CTX["Interaction Context 提取器<br/>MLP + 注意力加权聚合得到 f_I"]
+    CTX -.-> AFF
+    CTX -.-> PROP
+    CTX -.-> SCORE
+    LOG --> REPRED["用更新后的点云与累积上下文重新预测支撑动作"]
+    REPRED --> AFF
+```
+
+图依据：论文 Method（Problem Formulation、Support Affordance Module、Interaction Context Adaptation Module）/ Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +73,7 @@ A3D: Adaptive Affordance Assembly with Dual-Arm Manipulation——在清单中�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2601.11076)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2601.11076)。
 
 ## 评测与指标
 
@@ -88,6 +110,7 @@ A3D: Adaptive Affordance Assembly with Dual-Arm Manipulation——在清单中�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2601.11076>
+- [arXiv PDF](https://arxiv.org/pdf/2601.11076)：已通读方法部分（实验与附录以略读为准）：Method 全部小节（问题形式化、Support Affordance Module、Interaction Context Adaptation Module、训练损失）
 
 ## 推荐继续阅读
 

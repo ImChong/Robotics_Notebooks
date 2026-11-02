@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-GLOVER++: Unleashing the Potential of Affordance Learning from Human Behaviors for Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要，此处不替原文概括贡献）。
+GLOVER++: Unleashing the Potential of Affordance Learning from Human Behaviors for Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ GLOVER++: Unleashing the Potential of Affordance Learning from Human Behaviors f
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["输入：RGB 图像 I_R + 语言指令 T"] --> B["LLaVA-1.5 多模态编码"]
+  B --> C["取出 affordance token &lt;AFF&gt;"]
+  C --> D["全局解码 F_dec^glo：&lt;AFF&gt; + 视觉特征 v"]
+  D --> E["全局语义图 M_sem"]
+  E -->|"作 mask prompt"| F["局部解码 F_dec^loc"]
+  F --> G["affordance 热图 M_A"]
+  G --> H["取最大概率像素 P_2D"]
+  H -->|"相机内参投影"| I["3D affordable 点 A_3D"]
+  I --> J["零样本操作：位姿估计 / 几何约束 + IK 运动规划"]
+  I --> K["模仿学习：affordance 表示调制注意力"]
+  GT["Gaussian 热图 M_gt"] -.->|"Focal + KLD 损失监督"| G
+```
+
+图依据：论文 §4.1–4.3 / Fig.1, Fig.5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +71,7 @@ GLOVER++: Unleashing the Potential of Affordance Learning from Human Behaviors f
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2505.11865)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2505.11865)。
 
 ## 评测与指标
 
@@ -89,6 +108,7 @@ GLOVER++: Unleashing the Potential of Affordance Learning from Human Behaviors f
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2505.11865>
+- [arXiv PDF](https://arxiv.org/pdf/2505.11865)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 数据集、§4 方法（4.1–4.3）、§5.2–5.3 实验设定
 
 ## 推荐继续阅读
 

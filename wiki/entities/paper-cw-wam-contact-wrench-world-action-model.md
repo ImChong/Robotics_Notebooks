@@ -21,7 +21,7 @@ summary: "CW-WAM：面向力敏感操作的结构化接触力旋量世界动作�
 
 # CW-WAM：面向力敏感操作的结构化接触力旋量世界动作模型
 
-**CW-WAM**（*CW-WAM: A Structured Contact-Wrench World Action Model for Force-Sensitive Manipulation*，[arXiv:2610.30117](https://arxiv.org/abs/2610.30117)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**CW-WAM**（*CW-WAM: A Structured Contact-Wrench World Action Model for Force-Sensitive Manipulation*，[arXiv:2610.30117](https://arxiv.org/abs/2610.30117)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -37,6 +37,37 @@ summary: "CW-WAM：面向力敏感操作的结构化接触力旋量世界动作�
 ## 为什么重要
 
 - 周报所述待解决的问题：机器人接触操作不仅取决于物体的视觉位置，还取决于接触力和力矩。缺少接触动力学信息的世界模型难以准确表达力敏感任务。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph INP["输入"]
+        V["3 路 RGB 视角 → VAE 视频 latent"]
+        ST["机器人状态 → MLP"]
+        LANG["语言指令 → UMT5 / OpenCLIP 经 cross-attention"]
+        HIS["近期动作-腕力历史 H^AW<br/>(Hs 个区间, 动作 token 与力 token 配对)"]
+        LTM["长时腕力记忆 LTM H^W<br/>(仅力, Hℓ 区间)"]
+    end
+    V --> DIT
+    ST --> DIT
+    LANG --> DIT
+    HIS --> DIT
+    LTM --> DIT
+    DIT["Wan2.2-TI2V-5B DiT (扩展自 DreamZero)<br/>视频 / 动作 / 力 token 共享 self-attention<br/>Pair-causal 注意力: W_i 看 A_i<br/>联合 flow-matching 去噪 (推理 4 步)"]
+    DIT --> OV["未来视频 latent (控制时不解码)"]
+    DIT --> OA["未来动作块 A: 位置 + 6D 旋转 + 夹爪"]
+    DIT --> OW["配对预测腕力 W: TCP 系 6D 力/力矩"]
+    OA --> NOM["名义 TCP 位姿轨迹<br/>C2 连续插值, 20 Hz"]
+    OW --> REF["力参考: 按测量 TCP 位姿匹配进度 φ_w"]
+    NOM --> ADM["导纳修正<br/>e_w = ŵ(φ_w) - w_meas<br/>M·Δẍ + C·Δẋ + Ka·Δx = -S(e_w + k_I·η)"]
+    REF --> ADM
+    MEAS["测量腕力 (去偏置 + 工具重力补偿 + 低通)"] --> ADM
+    ADM --> IK["修正后位姿 → 逆运动学<br/>每 50 ms 重规划 0.5 s 五次多项式关节轨迹"]
+    IK --> CTRL["1 kHz 关节阻抗控制器"]
+```
+
+图依据：论文 §III–IV / Fig.2 / Fig.3
 
 ## 核心机制
 
@@ -88,6 +119,8 @@ summary: "CW-WAM：面向力敏感操作的结构化接触力旋量世界动作�
 - [cw-wam-contact-wrench-world-action-model_arxiv_2610_30117.md](../../sources/papers/cw-wam-contact-wrench-world-action-model_arxiv_2610_30117.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.30117](https://arxiv.org/abs/2610.30117)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30117)：已通读方法部分（实验与附录以略读为准）：摘要、§I–II、§III 结构化接触-腕力世界动作建模（问题设定 / 交互历史与配对预测 / 训练与推理）、§IV 慢-快运动-力控制、§V 任务设定与开环预测结果
+
 
 ## 推荐继续阅读
 

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Token-Based Affordance Grounding with Large Vision-Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+Token-Based Affordance Grounding with Large Vision-Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Token-Based Affordance Grounding with Large Vision-Language Models——在清�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第一视角图像 I + 目标物体 O + 动作 A"] --> PR["构造文本提示 P<br/>When people perform A with O, which part of the O is used for A ? Answer in one sentence."]
+    PR --> LV["冻结 LVLM（视觉塔 + 语言层）<br/>零样本，不引入外部监督"]
+    IN --> LV
+    LV --> TK["生成输出 token 序列 t_1 ... t_N"]
+    TK --> AA["注意力聚合：对每个 token 汇总<br/>所有层、所有头的 token-to-image 注意力图 M_ti"]
+    IN --> CS["CLIPSeg 生成目标物体二值掩码 M_obj"]
+    AA --> MK["物体区域约束：M_ti 与 M_obj 逐元素相乘"]
+    CS --> MK
+    MK --> SC["对掩码后注意力求和，得到每个 token 的得分 S_i"]
+    SC --> SEL["选 argmax 得分的单个 token t*"]
+    SEL --> UP["对 t* 的掩码注意力图双线性上采样<br/>得到最终亲和热图 H"]
+```
+
+图依据：论文 §3 与 §3.1、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Token-Based Affordance Grounding with Large Vision-Language Models——在清�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2607.03595)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法模块与数据流见上方「流程总览」（依据论文方法部分）。实验请读 [原文](https://arxiv.org/abs/2607.03595)。
 
 ## 评测与指标
 
@@ -67,7 +86,7 @@ Token-Based Affordance Grounding with Large Vision-Language Models——在清�
 
 **本页只提供「TokAG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 清单可确证的只有标题、出处与分类标签；方法流程见「流程总览」，实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +107,7 @@ Token-Based Affordance Grounding with Large Vision-Language Models——在清�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2607.03595>
+- [arXiv PDF](https://arxiv.org/pdf/2607.03595)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.2）、§4.1 实验设置
 
 ## 推荐继续阅读
 

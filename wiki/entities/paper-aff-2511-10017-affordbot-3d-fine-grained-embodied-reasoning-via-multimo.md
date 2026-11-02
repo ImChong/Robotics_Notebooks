@@ -40,6 +40,33 @@ AffordBot: 3D Fine-grained Embodied Reasoning via Multimodal Large Language Mode
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["输入：3D 场景点云 S + 自然语言指令 T"]
+    subgraph REP["Holistic Multimodal Representation"]
+        V["Enriched Visual Synthesis<br/>场景中心 360° 水平环视，生成 N 个 surround-view 视图"]
+        G["Geometry-Semantic Descriptors<br/>实例分割提取 affordance 元素<br/>位置 C、尺寸 Σ、语义类型 S"]
+        A["3D-2D Associations<br/>3D 框投影到各视图并带 ID 标注<br/>adaptive labeling 避免标签重叠"]
+        V --> A
+        G --> A
+    end
+    subgraph COT["Chain-of-Thought（MLLM，observe-then-infer）"]
+        S1["Step 1 Active View Selection<br/>选出能看清所有被指元素的视图"]
+        S2["Step 2 Affordance Grounding<br/>输出目标元素 ID"]
+        S3["Step 3 Motion Estimation<br/>输出运动类型与运动轴方向"]
+        S1 --> S2 --> S3
+    end
+    IN --> V
+    IN --> G
+    A --> S1
+    IN -.->|指令 T| S1
+    S3 --> OUT["输出：(3D 实例 mask, 运动类型, 运动轴) 三元组"]
+```
+
+图依据：论文 §3 Methodology（§3.1 Overview、§3.2 Holistic Multimodal Representation、§3.3 Chain-of-thought Reasoning，Fig. 2 / Fig. 4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +78,7 @@ AffordBot: 3D Fine-grained Embodied Reasoning via Multimodal Large Language Mode
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2511.10017)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2511.10017)。
 
 ## 评测与指标
 
@@ -88,6 +115,7 @@ AffordBot: 3D Fine-grained Embodied Reasoning via Multimodal Large Language Mode
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2511.10017>
+- [arXiv PDF](https://arxiv.org/pdf/2511.10017)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.3）
 
 ## 推荐继续阅读
 

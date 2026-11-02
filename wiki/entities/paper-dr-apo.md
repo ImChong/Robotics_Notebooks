@@ -18,6 +18,26 @@ summary: "DR-APO（arXiv:2610.16618；云深处）：把策略改进与策略表
 
 **DR-APO**（*DR-APO: Decoupled-Representation Advantage-Guided Policy Optimization from Continuous Control to Embodied Navigation*，[arXiv:2610.16618](https://arxiv.org/abs/2610.16618)，Runhua Zhang、Yingjie Niu、Chao Li；DEEP Robotics、浙江大学；[官方项目页](https://developer.deeprobotics.cn/research/articles/dr-apo/index.html)）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前策略 π_k 在线 rollout<br/>得到 (状态, 执行动作, 优势估计)"] --> B["拟合可微优势估计器 A_phi<br/>并取执行动作处的动作梯度"]
+    B --> C["优势引导局部细化<br/>沿梯度方向、半径 rho 内修正动作"]
+    A --> D["标准化优势 → 指数重加权<br/>得到样本权重 w_i"]
+    C --> E["目标集 T_k+ = (s_i, a_i+, w_i)"]
+    D --> E
+    E --> F{"策略表示"}
+    F -->|Gaussian| G["对策略均值做加权回归"]
+    F -->|Diffusion / Flow| H["行为锚定输入 → 多个中间 readout 取平均<br/>→ 直接动作拟合"]
+    H --> I["叠加原生去噪 / 流匹配损失<br/>作辅助正则"]
+    G --> J["更新后的策略 π_k+1"]
+    I --> J
+    J -.下一轮迭代.-> A
+```
+
+图依据：论文 §III-A/B/C 与 Fig. 2（推理期不做多候选 critic 选择，见 §III 与 Fig. 2 标注）。
+
 ## 一句话定义
 
 **DR-APO 是一种与策略表示无关的 RL 更新：先用优势信息构造局部改进的目标动作，再用各策略族自带的读出方式直接拟合这些目标，避免似然比 actor 更新与推理期多候选 critic 选择。**
@@ -73,3 +93,4 @@ summary: "DR-APO（arXiv:2610.16618；云深处）：把策略改进与策略表
 - [arXiv 原文](https://arxiv.org/abs/2610.16618)
 - [官方项目页](https://developer.deeprobotics.cn/research/articles/dr-apo/index.html)
 - [云深处前沿探索](https://developer.deeprobotics.cn/research/)
+- [arXiv PDF](https://arxiv.org/pdf/2610.16618)：已通读方法部分（实验与附录以略读为准）：§III Method（A–C）、§IV 实验设定

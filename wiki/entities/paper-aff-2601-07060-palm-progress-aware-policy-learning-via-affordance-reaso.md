@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon Robotic Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要，此处不替原文概括贡献）。
+PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon Robotic Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: implicit；Action Subcategory: Integrated policy · Implicit representation）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,24 @@ PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon R
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：语言指令 l、图像观测 o_t、机器人状态 s_t"] --> ENC["多模态编码器：CLIP 文本 / MAE + Perceiver Resampler 视觉 / MLP 状态"]
+    ENC --> BB["GPT-2 风格 transformer 骨干（因果注意力）"]
+    BB --> AQ["细粒度 affordance 查询：Global / Local / Spatial / Dynamic"]
+    AQ --> FL["未来 affordance 潜变量 F̂(t+n)"]
+    AQ -.->|"仅训练：四个监督头"| SUP["Global 掩码 / Local 接触热图 / Spatial 放置点 / Dynamic 运动区域"]
+    BB --> PQ["action-progress 查询"]
+    FL --> PQ
+    PQ --> DIT["扩散 transformer（逆动力学解码）"]
+    FL --> DIT
+    DIT --> OUT["输出：动作序列 a(t:t+n-1) + 子任务进度 p(t:t+n-1)"]
+```
+
+图依据：论文 §3（Method）/ Fig.2；§3.2 架构、§3.3 细粒度 affordance 预测、§3.4 progress-aware 逆动力学策略。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +69,7 @@ PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon R
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2601.07060)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2601.07060)。
 
 ## 评测与指标
 
@@ -88,6 +106,7 @@ PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon R
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2601.07060>
+- [arXiv PDF](https://arxiv.org/pdf/2601.07060)：已通读方法部分（实验与附录以略读为准）：§3.1 问题形式化、§3.2 PALM 架构、§3.3 细粒度 affordance 预测、§3.4 progress-aware 策略
 
 ## 推荐继续阅读
 

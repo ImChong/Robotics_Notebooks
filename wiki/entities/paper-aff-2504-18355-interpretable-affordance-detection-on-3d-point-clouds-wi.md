@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Interpretable Affordance Detection on 3D Point Clouds with Probabilistic Prototypes——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要，此处不替原文概括贡献）。
+Interpretable Affordance Detection on 3D Point Clouds with Probabilistic Prototypes——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要；论文方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,22 @@ Interpretable Affordance Detection on 3D Point Clouds with Probabilistic Prototy
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["输入：点云 X（S 个点，xyz）"] --> B["骨干网络编码器<br/>PointNet++ / DGCNN / PointTransformerV3"]
+  B --> C["逐点特征 z（D=128）"]
+  C --> D["原型层 1：z 与原型锚点 α 的余弦相似度 s"]
+  D --> E["原型层 2：截断高斯 PDF 激活 φ(z|p)<br/>（每类 P_a 个概率原型 α, μ, σ）"]
+  E --> F["分类头 + softmax"]
+  F --> G["逐点 affordance 伪概率"]
+  G -.-> L["损失 L = CE + Dice + 聚类 L_Clst + 分离 L_Sep"]
+  E -.-> L
+```
+
+图依据：论文 §3.2–3.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +67,7 @@ Interpretable Affordance Detection on 3D Point Clouds with Probabilistic Prototy
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2504.18355)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」，更多机制与实验请读 [原文](https://arxiv.org/abs/2504.18355)。
 
 ## 评测与指标
 
@@ -88,6 +104,7 @@ Interpretable Affordance Detection on 3D Point Clouds with Probabilistic Prototy
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2504.18355>
+- [arXiv PDF](https://arxiv.org/pdf/2504.18355)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4 实验设定
 
 ## 推荐继续阅读
 

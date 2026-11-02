@@ -40,6 +40,36 @@ Task-Aware 3D Affordance Segmentation via 2D Guidance and Geometric Refinement�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["输入：任务描述 T + 场景点云 PC + 多视角 RGB 帧"]
+    subgraph S1["阶段 1：Task-Aware 2D Affordance Detection"]
+        C["Affordance Concept Extraction<br/>VLM 从 T 提取交互部件概念（如 handle）"]
+        F["Affordance-Weighted Frame Selection<br/>CLIP 相似度 + 概念加权相似度，取 top-K 帧"]
+        P["Manipulable Point Validation<br/>VLM 给出候选 2D 点"]
+        R["Reverse Validation<br/>VLM 逆向验证，剔除错误点"]
+        B["Fallback Query<br/>无候选点时按概念重新询问 VLM"]
+        C --> F --> P
+        P --> R
+        P -.->|候选点为空| B
+    end
+    subgraph S2["阶段 2：3D Affordance Refinement"]
+        G["Geometric Initialization<br/>预训练分割模型出 2D mask，经相机内外参投影到点云得到初始 3D mask"]
+        N["取初始 mask 的 N 近邻点"]
+        T["基于 Point Transformer Layer 的编码器-解码器精修"]
+        G --> N --> T
+    end
+    IN --> C
+    IN --> F
+    R --> G
+    B --> G
+    T --> O["输出：3D affordance mask"]
+```
+
+图依据：论文 Method 节（Overview、Task-Aware 2D Affordance Detection、Double-Check Mechanism / Fig. 3、3D Affordance Refinement，Fig. 2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +81,7 @@ Task-Aware 3D Affordance Segmentation via 2D Guidance and Geometric Refinement�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2511.11702)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2511.11702)。
 
 ## 评测与指标
 
@@ -88,6 +118,7 @@ Task-Aware 3D Affordance Segmentation via 2D Guidance and Geometric Refinement�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2511.11702>
+- [arXiv PDF](https://arxiv.org/pdf/2511.11702)：已通读方法部分（实验与附录以略读为准）：Method 全节（含训练目标）、Experimental Settings
 
 ## 推荐继续阅读
 

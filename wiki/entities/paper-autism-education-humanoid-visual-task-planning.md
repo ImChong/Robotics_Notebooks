@@ -19,7 +19,7 @@ summary: "面向孤独症教育人形机器人的视觉任务建模与自动规�
 
 # 面向孤独症教育人形机器人的视觉任务建模与自动规划
 
-**孤独症教育 NAO 规划**（*Visual Task Modeling and Automated Planning for Humanoid Robots in Education of Individuals with Autism Spectrum Disorder*，[arXiv:2610.27162](https://arxiv.org/abs/2610.27162)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**孤独症教育 NAO 规划**（*Visual Task Modeling and Automated Planning for Humanoid Robots in Education of Individuals with Autism Spectrum Disorder*，[arXiv:2610.27162](https://arxiv.org/abs/2610.27162)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,36 @@ summary: "面向孤独症教育人形机器人的视觉任务建模与自动规�
 ## 为什么重要
 
 - 周报所述待解决的问题：教育机器人需要仅根据教具外观理解任务目标，并规划可向学生演示的操作步骤。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG0["初始配置照片<br/>(手机网页上传或 PC 相机)"] --> VLM1
+    DOM["通用 PDDL domain 文件<br/>+ 示例 problem 文件 + 分析规则 prompt"] --> VLM1
+    VLM1["VLM (ChatGPT) 视觉分析<br/>检测物体 / 区分可移动项与静态目标<br/>确定性命名 / 推断分配目标"] --> PDDL["PDDL problem 文件<br/>物体列表 + 初始状态 + 目标<br/>注释中含无序动作计划"]
+    PDDL --> VAL{"按 domain 校验 PDDL"}
+    VAL -- "失败 (如拒答)" --> RETRY["重复请求"]
+    RETRY --> VLM1
+    VAL -- 通过 --> PLAN["无序动作集合<br/>move_to_target / move_to_container"]
+    PLAN --> EXEC["执行动作"]
+    subgraph MODE["Nao 机器人接口 (取决于教学模式)"]
+        EXEC --> M1["操作模式: 机器人自主 Pick&Place"]
+        EXEC --> M2["语音引导模式: 语音指令 + 手势"]
+        EXEC --> M3["学生手动完成, 机器人提醒或建议"]
+    end
+    M1 --> IMG1
+    M2 --> IMG1
+    M3 --> IMG1
+    IMG1["新照片"] --> VLM2["VLM 输入: 最新 PDDL + 上一图 + 当前图<br/>重识别物体, 判断已执行动作"]
+    VLM2 --> UPD["更新 PDDL 谓词, 从剩余计划中移除已执行动作"]
+    UPD --> CHK{"计划为空?"}
+    CHK -- 是 --> DONE["目标达成"]
+    CHK -- "状态无效" --> FAIL["报告失败"]
+    CHK -- 否 --> EXEC
+```
+
+图依据：论文 §II-A–D / Fig.2（感知–分析–动作循环）
 
 ## 核心机制
 
@@ -86,6 +116,8 @@ summary: "面向孤独症教育人形机器人的视觉任务建模与自动规�
 - [autism-education-humanoid-visual-task-planning_arxiv_2610_27162.md](../../sources/papers/autism-education-humanoid-visual-task-planning_arxiv_2610_27162.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27162](https://arxiv.org/abs/2610.27162)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27162)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II Method（系统总览 / 视觉-语言分析 / PDDL 问题生成 / 机器人接口）、§III 实验设定与结果表、§IV 结论（全文较短，基本通读）
+
 
 ## 推荐继续阅读
 
