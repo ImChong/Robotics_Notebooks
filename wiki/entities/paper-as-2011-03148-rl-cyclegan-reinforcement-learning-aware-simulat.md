@@ -41,6 +41,32 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  X["仿真图像 x + 动作 a"] --> G["Sim2Real 生成器 G → G(x)"]
+  G --> F1["Real2Sim 生成器 F → F(G(x))"]
+  Y["真实图像 y + 动作 a"] --> F2["Real2Sim 生成器 F → F(y)"]
+  F2 --> G2["Sim2Real 生成器 G → G(F(y))"]
+  X --> QS["Q_sim：原图与循环还原图"]
+  F1 --> QS
+  F2 --> QS
+  G --> QR["Q_real：生成的拟真图与真实图"]
+  Y --> QR
+  G2 --> QR
+  QS --> L["每个三元组的 Q 值一致：RL-scene consistency 损失"]
+  QR --> L
+  QS --> TD["TD 损失（QT-Opt 分布式 Q-learning）"]
+  QR --> TD
+  L --> G
+  L --> F1
+  G --> GAN["GAN 对抗损失 + 循环一致性损失"]
+  GAN --> FRZ["训练后冻结 G，重新从头训练抓取 Q 函数"]
+```
+
+图依据：论文 RL-CycleGAN（arXiv 2006.09001）§3.1–§3.2、§4 与 Fig.2。注意：本页 frontmatter 的 arXiv 号 2011.03148 对应 RetinaGAN（Object-aware Sim-to-Real），与页面标题 RL-CycleGAN 不符；此图按 RL-CycleGAN 原文（2006.09001）绘制，未改 frontmatter。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +121,8 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2011.03148>
+- [arXiv PDF](https://arxiv.org/pdf/2006.09001)：已通读方法部分（实验与附录以略读为准）：§3 背景（CycleGAN、Q-learning）、§4 RL-CycleGAN、§5 任务设置、§6 实验开头与 Table 1。
+- 编号说明：页面 arXiv 号 2011.03148 实为 RetinaGAN；RL-CycleGAN 的论文是 [arXiv 2006.09001](https://arxiv.org/abs/2006.09001)，流程总览按后者绘制。
 
 ## 推荐继续阅读
 

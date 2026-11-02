@@ -42,6 +42,26 @@ Investigates whether transformer world models give better policy gradients.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENVD["与环境交互\n用当前策略 π_θ 采集一个 episode"] --> BUF["数据缓冲区 B"]
+  BUF --> WML["世界模型学习\n最小化下一状态预测误差"]
+  WML --> WM["世界模型\n(Markov 模型 / HWM / AWM)"]
+  WM --> UNR["展开世界模型\n计算回报 J(θ; ψ)"]
+  UNR --> BP["反向传播得到策略梯度\n更新策略参数 θ"]
+  BP --> ENVD
+  subgraph CMP["三类世界模型的梯度路径"]
+    MK["Markov 模型 f\ns_t+1 = f(s_t, a_t)"] --> CIRC["梯度经过自回归状态预测\n形成迂回梯度路径"]
+    HWM["历史世界模型 HWM\n条件于完整状态-动作历史"] --> CIRC
+    AWM["动作世界模型 AWM\n仅以初始状态与动作序列 a_1:t 预测状态"] --> DIRECT["梯度从奖励直接回到动作"]
+  end
+  WM -.-> CMP
+```
+
+图依据：论文 Background（BPO，Algorithm 1）、§3 History World Models（Fig. 1、Theorem 1）、§4 Actions World Models（Proposition 1、Theorem 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Investigates whether transformer world models give better policy gradients.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.05290>
+- [arXiv PDF](https://arxiv.org/pdf/2402.05290)：已通读方法部分（实验与附录以略读为准）：Background、History World Models 与 Actions World Models 各节（实验部分略读）
 
 ## 推荐继续阅读
 

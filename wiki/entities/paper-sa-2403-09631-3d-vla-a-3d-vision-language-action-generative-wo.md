@@ -42,6 +42,30 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["3D 场景输入 + 语言指令"]
+    BB["骨干: 3D-LLM 式多视角特征 + BLIP2-FlanT5XL"]
+    TOK["交互 token: obj, loc, scene, 动作 token (aloc, arot, gripper)"]
+    OUT["LLM 输出: 语言 / 3D 框 / 动作 token / 目标模态标记 (image, pcd)"]
+    PROJ["Transformer 投影器: 对齐 LLM 特征与扩散模型"]
+    DM1["RGB-D 扩散模型 (Stable Diffusion V1.4 预训练)"]
+    DM2["点云扩散模型 (Point-E 预训练)"]
+    GOAL["目标图像 / 深度 / 点云 (想象的未来状态)"]
+    IN --> BB
+    TOK --> BB
+    BB --> OUT
+    OUT --> PROJ
+    PROJ --> DM1
+    PROJ --> DM2
+    DM1 --> GOAL
+    DM2 --> GOAL
+```
+
+图依据：论文 §4.1 Overview, §4.2 3D-VLA (骨干, 交互 token), §4.3 目标生成 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.09631>
+- [arXiv PDF](https://arxiv.org/pdf/2403.09631)：已通读方法部分（实验与附录以略读为准）：§4 Methods (4.1, 4.2, 4.3)
 
 ## 推荐继续阅读
 

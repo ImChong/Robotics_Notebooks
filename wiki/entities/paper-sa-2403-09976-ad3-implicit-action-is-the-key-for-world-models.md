@@ -42,6 +42,36 @@ Implicit action is the key for world models to distinguish diverse visual distra
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OBS["观测 o_t, o_(t+1)"]
+    ENC["编码得到状态 s_t, s_(t+1)"]
+    ACT["智能体动作 a_t"]
+    TAID["TAID 编码器 G: 由 s_t, a_t, s_(t+1) 推断隐式动作"]
+    CAT["类别型离散瓶颈 (categorical latent)"]
+    FIAD["FIAD 解码器 F: 由 s_t, a_t, 隐式动作 预测 s_(t+1)"]
+    LOSS["IAG 损失: 余弦一致性 + 差分图重建 + 单步图像重建"]
+    WMR["任务相关世界模型 (以 a_t 为条件)"]
+    WMI["任务无关世界模型 (以隐式动作为条件)"]
+    POL["策略仅在任务相关隐状态上想象训练: pi(a | z+), v(z+)"]
+    OBS --> ENC
+    ENC --> TAID
+    ACT --> TAID
+    TAID --> CAT
+    CAT --> FIAD
+    ACT --> FIAD
+    FIAD --> LOSS
+    CAT --> WMI
+    ACT --> WMR
+    ENC --> WMR
+    ENC --> WMI
+    WMR --> POL
+```
+
+图依据：论文 §4.1 Implicit Action Generator / §4.2 / §4.3 / Fig.1b (箭头为按文字描述的归纳)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +126,7 @@ Implicit action is the key for world models to distinguish diverse visual distra
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.09976>
+- [arXiv PDF](https://arxiv.org/pdf/2403.09976)：已通读方法部分（实验与附录以略读为准）：§4 Methods (4.1 至 4.3 及 Remarks)
 
 ## 推荐继续阅读
 

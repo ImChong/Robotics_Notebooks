@@ -42,6 +42,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  ENV["延迟环境<br/>观测 / 动作存在常数或随机延迟"] -->|"最近到达的观测 s_(t-d)"| IS
+  BUF["动作缓冲区<br/>该观测之后已执行的动作<br/>不足处补 no-action ∅"] --> IS
+  K["首次观测到该状态的时刻 k<br/>（仅随机延迟需要）"] --> IS
+  IS["信息状态 I_t<br/>增广状态，恢复 Markov 性"] --> Q["DQN 式 Q 网络<br/>（DRDQN，其余同 vanilla DQN）"]
+  Q --> ACT["动作 a_t"]
+  ACT --> ENV
+  ACT -->|追加| BUF
+  ENV --> RW["简化代价结构的等价无延迟 MDP<br/>最优策略与原延迟 MDP 一致"]
+  RW --> Q
+```
+
+图依据：论文 §2 Decision Making with Delays / Fig. 1、§4 MDPs with Delays（Def. 1–2、Lemma 1、Theorem 1）、§5 Delay-Resolved Q-learning；「奖励回流到 Q 网络」的箭头为对等价 MDP 训练过程的概括，非论文单独画出的流程图。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2108.07555>
+- [arXiv PDF](https://arxiv.org/pdf/2108.07555)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 延迟下的决策、§3 相关工作、§4 带延迟的 MDP、§5 Delay-Resolved Q-learning；实验图表仅略读
 
 ## 推荐继续阅读
 

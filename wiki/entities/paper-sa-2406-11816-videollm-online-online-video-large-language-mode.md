@@ -42,6 +42,32 @@ Online video LLM framework designed for streaming egocentric video input
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DA["数据 §3.2"]
+        A["在线标注<br/>Ego4D 叙述本身即流式"] --> C["视频流对话数据"]
+        B["离线标注<br/>随机插入模板问题 + LLM 在关键时间点生成回复"] --> C
+    end
+    subgraph TRN["训练 §3.3"]
+        C --> E["视频帧 2 FPS<br/>CLIP ViT-L 编码 + MLP 投影成帧 token"]
+        E --> F["帧 token 与文本 token 按时间交错<br/>输入 Llama-2 或 Llama-3 + LoRA"]
+        F --> G["LM loss + 流式 EOS 预测 loss<br/>无需回复的帧预测 EOS"]
+    end
+    subgraph INF["推理 §3.4"]
+        H["逐帧输入视频流"] --> J["帧编码器与 LLM 并行<br/>FIFO 队列缓存帧 token"]
+        J --> K["LLM 带连续 KV cache"]
+        K --> L{"P of EOS 是否小于阈值 θ"}
+        L -- 否 --> H
+        L -- 是 --> M["解码回复"]
+        M --> H
+    end
+    G -.训练好的模型.-> K
+```
+
+图依据：论文 §3.1–§3.4 / Fig.3、Fig.4、Fig.5、Eq.5（阈值判断的分支方向按 §3.4 Probability Correction 的文字表述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,8 @@ Online video LLM framework designed for streaming egocentric video input
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2406.11816>
+- [arXiv PDF](https://arxiv.org/pdf/2406.11816)：已通读方法部分（实验与附录以略读为准）：§3.1 问题定义、§3.2 数据、§3.3 模型训练、§3.4 推理、§4.1 实现细节；§4 其余实验与附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

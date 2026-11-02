@@ -42,6 +42,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    XS["带标签源域样本 xs, ys"] --> G["特征生成器 G"]
+    XT["无标签目标域样本 xt"] --> G
+    G --> C["分类器 C<br/>输出预测概率 p"]
+    C --> PL["目标域伪标签 ŷt<br/>置信度超过阈值 δ"]
+    G --> D["噪声校正域判别器 D<br/>sigmoid 输出噪声向量 ξ"]
+    D --> CM["class-wise uniform 混淆矩阵 η"]
+    PL --> COR["η 乘以伪标签向量<br/>得到校正标签 c"]
+    CM --> COR
+    COR --> LADV["对抗损失 LAdv<br/>源域目标为真值 ys，目标域目标为反向分布 u"]
+    LADV -->|"D 最小化；经 GRL，G 最大化"| G
+    COR --> LT["目标域校正损失 LT<br/>以 unhinged loss 为基础损失"]
+    LT --> C
+    XS --> LCE["源域交叉熵 LCE"]
+    LCE --> C
+```
+
+图依据：论文 Fig. 1–2 与 Adversarial-Learned Loss 各小节（Eq. 4–15）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2001.01046>
+- [arXiv PDF](https://arxiv.org/pdf/2001.01046)：已通读方法部分（实验与附录以略读为准）：Preliminaries、Adversarial-Learned Loss（噪声校正域判别、正则项、校正损失）、Theoretical Insight
 
 ## 推荐继续阅读
 

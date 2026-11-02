@@ -42,6 +42,33 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph LOOP["想象式 RL (Algorithm 3)"]
+    REAL["用当前策略在真实环境采集数据"] --> BUF["数据缓冲区 D"]
+    BUF --> TRAIN["训练去噪模型 ε_θ\n(Algorithm 1)"]
+    TRAIN --> POLY["PolyGRAD 生成\n一批 on-policy 合成轨迹"]
+    POLY --> RL["在合成轨迹上做 on-policy RL\n更新策略 π_φ"]
+    POLY --> TUNE["按标准化动作的标准差\n更新动作更新尺度 δ"]
+    RL --> REAL
+    TUNE --> POLY
+  end
+  subgraph GEN["PolyGRAD 单次轨迹扩散 (Algorithm 2)"]
+    INIT["初始化: 随机的 状态 / 奖励 / 动作 序列\n初始状态 s_0 从 D 采样并通过 inpainting 固定"] --> DN["去噪模型 ε_θ 以当前动作序列为条件\n预测噪声"]
+    DN --> X0["得到预测的完全去噪状态序列"]
+    X0 --> ACT["策略以其为条件\n沿 ∇_a log π_φ(a|s) 方向更新动作 (尺度 δ)"]
+    DN --> ST["标准扩散更新状态与奖励序列"]
+    ACT --> NEXT["进入下一扩散步"]
+    ST --> NEXT
+    NEXT -->|"重复 N 步"| FIN["返回完整 on-policy 轨迹"]
+  end
+  POLY -.-> GEN
+```
+
+图依据：论文 §3 的 Denoising Model Training（Algorithm 1）、Policy-Guided Trajectory Diffusion（Algorithm 2、Fig. 2）与 Imagined RL in PolyGRAD World Models（Algorithm 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=9CcgO0LhKG>
+- [arXiv PDF](https://arxiv.org/pdf/2312.08533)：已通读方法部分（实验与附录以略读为准）：§2 背景与 §3 方法（Algorithm 1–3）；实验与理论推导以略读为准
 
 ## 推荐继续阅读
 

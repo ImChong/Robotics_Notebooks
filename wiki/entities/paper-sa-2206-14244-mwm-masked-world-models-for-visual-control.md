@@ -56,8 +56,7 @@ flowchart TD
   RSSM --> RD["重建表征 ẑ^{c,0}_t + 预测奖励 r̂_t"]
   RSSM --> AC["Dreamer 式 actor-critic 在隐空间想象中学习"]
   AC --> ACT["动作 → 环境交互采样"]
-  ACT --> O
-  RD -. "重复: (i) 更新自编码器 (ii) 学动力学 (iii) 采集数据" .-> O
+  ACT -. "循环: 更新自编码器 / 学动力学 / 采集数据" .-> O
 ```
 
 图依据：论文 §4 Masked World Models（§4.1 视觉表征学习、§4.2 隐动力学学习、Optimization）/ Fig.1。

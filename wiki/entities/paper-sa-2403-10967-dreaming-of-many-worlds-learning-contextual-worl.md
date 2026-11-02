@@ -43,6 +43,34 @@ Learning contextual world models aids zero-shot generalization.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    C["上下文 c (cMDP 环境参数)"]
+    O["观测 o_t, 奖励 r_t, 动作 a_t"]
+    ENC["编码器 q(z_t | h_t, o_t)"]
+    DET["确定性状态 h_t = f(h_(t-1), z_(t-1), a_(t-1), c)"]
+    STO["随机状态 z_t"]
+    HEADS["观测 / 奖励 / 继续 预测头 (均条件于 c)"]
+    IMG["从 s_tau 出发的想象轨迹"]
+    CF["反事实上下文 c_CF 替换 c_F: Dreaming of Many Worlds"]
+    AC["Actor-Critic: pi(a | s, c), v(s, c)"]
+    O --> ENC
+    C --> ENC
+    ENC --> STO
+    C --> DET
+    DET --> STO
+    DET --> HEADS
+    STO --> HEADS
+    STO --> IMG
+    CF --> IMG
+    IMG --> AC
+    C --> AC
+```
+
+图依据：论文 §4.1 (cRSSM, Fig.1b, 想象与反事实上下文, Actor-Critic) / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Learning contextual world models aids zero-shot generalization.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.10967>
+- [arXiv PDF](https://arxiv.org/pdf/2403.10967)：已通读方法部分（实验与附录以略读为准）：§3 Background, §4 Method (4.1 cRSSM, 4.1.2, 4.1.3, 4.2)
 
 ## 推荐继续阅读
 

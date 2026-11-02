@@ -42,6 +42,29 @@ Google DeepMind's generative interactive environments.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph TRAIN["训练 (论文 §2，Fig. 3)"]
+    V["无标注互联网视频 x_1:T"] --> TOK["视频分词器 Video Tokenizer\nVQ-VAE + ST-transformer，得到离散 token z"]
+    V --> LAM["潜在动作模型 LAM\n输入历史帧与下一帧，输出离散潜在动作 a~ (|A| = 8)"]
+    TOK --> DYN["动力学模型 Dynamics Model\n解码器式 MaskGIT transformer"]
+    LAM -->|"潜在动作作为加性嵌入"| DYN
+    DYN --> LOSS["交叉熵：预测 token z^_2:T 对真实 token"]
+  end
+  subgraph INF["推理：动作可控的视频生成 (Fig. 8)"]
+    P["提示图像 x_1"] --> T1["分词器编码为 z_1"]
+    U["玩家选择离散潜在动作 a_1"] --> CB["查 VQ 码本得到 a~_1"]
+    T1 --> D2["动力学模型预测下一帧 token"]
+    CB --> D2
+    D2 --> DEC["分词器解码器还原帧 x^_2"]
+    DEC -->|"自回归继续"| D2
+  end
+```
+
+图依据：论文 §2 Methodology（LAM、Video Tokenizer、Dynamics Model）、§2.2 Inference 与 Fig. 3 / Fig. 8；训练分两阶段：先训分词器，再联合训 LAM 与动力学模型，推理时丢弃 LAM。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ Google DeepMind's generative interactive environments.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.15391>
+- [arXiv PDF](https://arxiv.org/pdf/2402.15391)：已通读方法部分（实验与附录以略读为准）：§2 Methodology 与 §2.2 Inference（训练设定与实验仅略读）
 
 ## 推荐继续阅读
 

@@ -43,6 +43,28 @@ Million-length video and language world model based on RingAttention.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  BASE["Llama-2 7B"] --> S1
+  subgraph S1["阶段 I：长上下文语言模型 (§3)"]
+    BK["Books3 书籍文本\n逐级加长: 32K → 128K → 256K → 512K → 1M"] --> RING["Blockwise RingAttention + FlashAttention\nRoPE θ 随上下文长度放大"]
+    QA["模型生成的问答数据\n1000 token 分块生成问答后拼接成长序列"] --> CHAT["对话微调\n混合 UltraChat 与问答数据 (约 7:3)"]
+    RING --> TXT["LWM-Text-1M"]
+    TXT --> CHAT
+  end
+  TXT --> S2
+  subgraph S2["阶段 II：长视频 + 语言联合训练 (§4)"]
+    VQ["VQGAN 逐帧分词\n每帧 256 个 token，视觉用 vision 标记包裹"] --> MIX["文本与视觉 token 交错拼接\n自回归预测下一个 token"]
+    ST["渐进训练: LWM-1K 文本-图像 → LWM-8K 文本-视频 → LWM-Chat-32K / 128K / 1M"] --> MIX
+    PACK["masked sequence packing\n每个文本-视觉对只关注自身并重加权损失"] --> MIX
+  end
+  MIX --> OUT["LWM / LWM-Chat\n长视频理解、文本到图像 / 视频生成"]
+```
+
+图依据：论文 Method Overview、§3（阶段 I）、§4.1–4.2（阶段 II）、Fig. 3 / Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Million-length video and language world model based on RingAttention.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.08268>
+- [arXiv PDF](https://arxiv.org/pdf/2402.08268)：已通读方法部分（实验与附录以略读为准）：Method Overview、§3 Stage I、§4.1–4.2 Stage II（评测与附录略读）
 
 ## 推荐继续阅读
 

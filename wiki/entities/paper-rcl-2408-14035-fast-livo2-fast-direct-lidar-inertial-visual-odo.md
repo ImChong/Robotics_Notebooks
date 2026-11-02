@@ -43,6 +43,28 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["IMU 测量"] --> P["ESIKF 传播 Propagation<br/>先验状态与协方差，后向传播补偿运动畸变"]
+    B["异步 LiDAR 原始点"] --> C["Scan Recombination<br/>按相机采样时刻切分为 LiDAR 扫描"]
+    C --> P
+    P --> U1["顺序更新 ①：LiDAR 更新<br/>帧到地图 point-to-plane 残差"]
+    M["统一体素地图<br/>(平面几何 + 视觉地图点与参考 patch)"] --> U1
+    U1 --> V1["视觉地图点选择：可见体素查询 + 按需 raycasting<br/>剔除遮挡 / 深度不连续离群点"]
+    M --> V1
+    V1 --> U2["顺序更新 ②：视觉更新<br/>帧到地图图像光度误差（稀疏直接法）"]
+    U2 --> X["输出位姿状态（含曝光时间估计）"]
+    X --> L["局部建图更新：LiDAR 更新地图几何<br/>生成并更新视觉地图点与 patch"]
+    L --> R["参考 patch 更新"]
+    R --> N["独立线程：法向量精化"]
+    L --> M
+    N --> M
+```
+
+图依据：论文 §III 系统概述 / Fig.2、§IV ESIKF 顺序更新、§V 局部建图、§VI LiDAR 测量模型、§VII 视觉测量模型。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +122,7 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/10757429/>
+- [arXiv PDF](https://arxiv.org/pdf/2408.14035)：已通读方法部分（实验与附录以略读为准）：§III 系统概述、§IV ESIKF（Scan Recombination、传播、顺序更新）、§V 局部建图（视觉地图点生成与参考 patch 更新）、§VII-A 视觉地图点选择；§VI、实验与附录略读
 
 ## 推荐继续阅读
 

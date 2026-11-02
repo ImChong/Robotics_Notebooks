@@ -49,6 +49,30 @@ Towards real-world-driven world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["第一阶段: 训练 Auto-DM 理解结构化交通信息"]
+        direction TB
+        A1["Step 1: 单帧 HDMap + 3D box 条件<br/>单帧图像监督 (无 temporal attention)"] --> A2["Step 2: 多帧条件 + 视频监督<br/>加入 temporal attention"]
+    end
+    subgraph S2["第二阶段: 视频预测训练 (世界模型)"]
+        direction TB
+        I0["参考帧 I_0 + 初始 HDMap H_0 / 3D box B_0"] --> AF["ActionFormer<br/>自注意力 + 交叉注意力(驾驶动作) + GRU 迭代"]
+        ACT["历史驾驶动作 A"] --> AF
+        AF -->|"未来结构化条件 (特征级)"| DM["Auto-DM 扩散模型<br/>基于 Stable Diffusion v1.4"]
+        TXT["文本提示 (天气/时间)"] --> DM
+        DM --> VID["未来驾驶视频"]
+        DM -->|"多尺度 UNet 特征"| AD["动作解码器"]
+        ACT --> AD
+        AD --> FA["未来驾驶动作"]
+    end
+    S1 -->|"预训练权重"| S2
+```
+
+图依据：论文 §3 概述 / Fig.2（两阶段训练）与 Fig.3、§3.1（Auto-DM Step 1/2）、§3.2 / Fig.5（ActionFormer）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +132,7 @@ Towards real-world-driven world models.
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2309.09777)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 DriveDreamer（3.1 第一阶段训练、3.2 第二阶段训练）、§4 实验设置；实验结果与附录略读
 
 ## 推荐继续阅读
 

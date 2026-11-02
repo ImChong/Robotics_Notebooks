@@ -42,6 +42,30 @@ Hierarchical imagination on structured state space sequence world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["环境<br/>观测 o / 奖励 r"] --> L0
+    subgraph L0["subactor 0 最低层 (唯一与环境交互)"]
+        WM0["S5 世界模型 S5WM<br/>h_t 确定性 + z_t 随机"] --> AC0["actor-critic<br/>在想象 rollout 上训练"]
+        WM0 --> AE0["subgoal autoencoder<br/>压缩 h_t 为离散子目标"]
+    end
+    AC0 -->|"动作 a"| ENV
+    L0 -->|"连续 k 个世界模型状态作为观测"| L1
+    subgraph L1["subactor 1 更高层"]
+        WM1["S5WM"] --> AC1["actor-critic"]
+        WM1 --> AE1["subgoal autoencoder"]
+    end
+    AC1 -->|"子目标 g, 每 k 步更新"| AC0
+    AE0 -.->|"子目标奖励 r_g 与新颖性奖励 r_nov"| AC0
+    L1 -.->|"更高层同理, 可继续堆叠"| LN["subactor i ..."]
+    ENV -.-> BUF["经验数据集<br/>ETBS 时间均衡 O(1) 采样"]
+    BUF -.-> WM0
+```
+
+图依据：论文 §2.1-§2.3 / Fig.1（层级结构）；奖励 r = r_extr + w_g·r_g + w_nov·r_nov（Eq.1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Hierarchical imagination on structured state space sequence world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2310.05167>
+- [arXiv PDF](https://arxiv.org/pdf/2310.05167)：已通读方法部分（实验与附录以略读为准）：§1 引言（贡献）、§2 Methodology（2.1 多层层级想象、2.2 S5WM、2.3 ETBS）；§3 实验、附录略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,34 @@ Efficient RL by thinking in latent world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  X["特权输入 x_t\n周围 agent 包围盒 / HD-Map / 红绿灯状态"] --> ENC["世界模型编码器\nF_Enc 编码为状态 s_t = h_t, z_t"]
+  ENC --> PL["规划器 π_η\n输出动作 a_t"]
+  PL --> PRE["世界模型预测\n奖励 r_t / 终止 c_t / 下一状态 s_t+1"]
+  PRE -->|"在隐空间 rollout T 步 (T=15)"| AC["Actor-Critic 学习\nCritic 估计 T 步之后的回报"]
+  AC --> PL
+  subgraph WM["世界模型 (沿用 DreamerV3 的 RSSM)"]
+    SEQ["序列模型 h_t"] --- REP["编码器 / 解码器 z_t"]
+    REP --- HEAD["奖励预测 / 终止预测"]
+  end
+  PRE -.-> WM
+  PL --> OUT["控制信号\n油门 / 转向 / 刹车 (离散为 30 个动作)"]
+  subgraph BR["针对 CARLA v2 的 7 个 Brick"]
+    B1["规划器参数重置"] --- B2["自动场景生成器"]
+    B2 --- B3["终止优先采样"]
+    B3 --- B4["转向代价"]
+    B4 --- B5["课程式热身训练"]
+    B5 --- B6["规划器训练比例递增为世界模型 4 倍"]
+    B6 --- B7["CARLA 异步重载 / 并行封装"]
+  end
+  BR -.-> AC
+```
+
+图依据：论文 §3.1–3.3（Problem Formulation、World Model / Planner Learning、7 个 Brick）与 §5（输入输出表示、奖励塑形）；对应论文的 “think” 迭代式（Eq. 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Efficient RL by thinking in latent world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.16720>
+- [arXiv PDF](https://arxiv.org/pdf/2402.16720)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.3）与 §5 Implement Details
 
 ## 推荐继续阅读
 

@@ -41,6 +41,21 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  S["当前状态 s_t"] --> FM["近似前向模型 f：连续 m 次，依次施加待执行动作队列 a_(t-m)…a_(t-1)"]
+  Q["待执行动作队列（长度 m）"] --> FM
+  FM --> SH["推断的未来状态 ŝ_(t+m)"]
+  SH --> POL["策略 π（Q 函数）选择 a_t"]
+  POL --> Q
+  POL --> BUF["长度 m 的样本缓冲：把 a_t 移位配到 (s_(t+m), r_(t+m), s_(t+m+1))"]
+  BUF --> RB["回放缓冲 → Q-learning 更新"]
+```
+
+图依据：论文 §6 Delayed-Q 算法描述与 Fig.3；“a_t 移位进元组再入回放缓冲”依据 §6 末段；前向模型的具体形式见 §7（表格型迷宫用最高访问频率预测）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +110,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2101.11992>
+- [arXiv PDF](https://arxiv.org/pdf/2101.11992)：已通读方法部分（实验与附录以略读为准）：§1 引言、§4 状态增广方法、§5 执行延迟 MDP、§6 Delayed-Q、§7 实验设定段。
 
 ## 推荐继续阅读
 

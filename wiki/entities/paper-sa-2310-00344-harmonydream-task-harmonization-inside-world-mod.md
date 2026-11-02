@@ -43,6 +43,26 @@ Task harmonization inside world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["观测 o_t"] --> R["Representation 模型<br/>z_t ~ q(z_t | z_t-1, a_t-1, o_t)"]
+    R --> Z["隐状态 z_t"]
+    T["Transition 模型<br/>预测 z^_t"] --> Z
+    Z --> OM["观测模型 重建 o^_t<br/>损失 L_o"]
+    Z --> RM["奖励模型 预测 r^_t<br/>损失 L_r"]
+    Z --> DM["动力学损失 L_d<br/>KL 对齐预测与表征"]
+    OM --> H["Harmonizers<br/>可学习 σ_i, 权重 1/σ_i"]
+    RM --> H
+    DM --> H
+    H --> LOSS["Harmonious loss (Eq.5)<br/>Σ L_i/σ_i + log(1+σ_i)"]
+    LOSS -->|"更新世界模型"| R
+    Z --> BEH["基于世界模型的行为学习<br/>(Dreamer 系 actor-critic)"]
+```
+
+图依据：论文 §2.2（Dreamer 世界模型三项损失）、§3 / Fig.4（harmonizers 与 Eq.4-5）；下游行为学习沿用 Dreamer（§2.2 自述基于 DreamerV2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Task harmonization inside world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2310.00344>
+- [arXiv PDF](https://arxiv.org/pdf/2310.00344)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 多任务分析（含 2.2 世界模型学习概览）、§3 HarmonyDream；§4 实验、§5-6 略读
 
 ## 推荐继续阅读
 

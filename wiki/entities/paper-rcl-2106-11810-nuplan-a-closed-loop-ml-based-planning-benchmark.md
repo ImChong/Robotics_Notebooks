@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  USER["用户提交 ML 规划代码<br/>按模板、容器化打包"] --> SRV["评测服务器<br/>在保密测试集上闭环评测"]
+  DATA["nuPlan 数据<br/>自动标注轨迹 / 语义地图<br/>（端到端开环方法可直接用原始传感器）"] --> PLAN
+  SRV --> PLAN["Planner：被查询某时间步<br/>返回 ego 的规划位置与朝向"]
+  PLAN --> CTRL["提供的控制器<br/>紧跟规划轨迹"]
+  CTRL --> MOTION["预定义运动模型<br/>仿真 ego 运动"]
+  MOTION -->|"闭环：新状态进入下一时间步"| PLAN
+  AGENTS["其他智能体<br/>非反应式：回放观测轨迹<br/>反应式：提供规划模型"] --> PLAN
+  MOTION --> TRAJ["最终实际行驶轨迹"]
+  TRAJ --> METRIC["规划指标<br/>通用：交通规则违反 / 与人类驾驶相似度 / 车辆动力学 / 目标达成<br/>另有场景化指标"]
+```
+
+图依据：论文 §4.1 Overview、§4.2 Tasks（开环 / 非反应式闭环 / 反应式闭环）、§4.3 Metrics；本篇为基准论文，图仅表示论文自述的评测协议，开环任务中规划轨迹不控制车辆（图中仅画闭环路径）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +116,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2106.11810>
+- [arXiv PDF](https://arxiv.org/pdf/2106.11810)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 相关工作、§3 数据集、§4 基准（概览/任务/指标）、§5 结论
 
 ## 推荐继续阅读
 

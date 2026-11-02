@@ -42,6 +42,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["VTD 仿真：四路车载相机语义分割图<br/>+ 无人机视角 BEV 真值"] --> O["真值预处理：加入遮挡类 occluded<br/>（逐相机射线投射，所有视角均遮挡才标记）"]
+    S --> H["IPM 单应变换 (PM)^-1<br/>由相机内外参 K[R|t] 与平面假设得到"]
+    H --> V1["变体 1：各相机 IPM 后拼成 homography 图像<br/>DeepLabv3+（MobileNetV2 / Xception）修正 IPM 误差"]
+    S --> V2["变体 2 uNetXST：多输入 U-Net<br/>每路输入一条独立编码器"]
+    H --> T["跳连处 Spatial Transformer (ϑ)<br/>用固定单应变换特征图"]
+    V2 --> T
+    T --> F["拼接各路特征 → 卷积 → 与解码器上采样输出拼接"]
+    V1 --> OUT["输出 BEV 语义分割图"]
+    F --> OUT
+    O -.-> L["训练标签"]
+    L --> OUT
+    OUT --> R["真机应用：先用额外 CNN 对相机图做语义分割<br/>再作为输入得到 BEV"]
+```
+
+图依据：论文 §III-A–D（Fig. 2–4）、§IV-A 与 §V-B。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2005.04078>
+- [arXiv PDF](https://arxiv.org/pdf/2005.04078)：已通读方法部分（实验与附录以略读为准）：§III 方法（遮挡处理、IPM 预处理、两种网络变体）、§IV 实验设定、§V-B 真实应用
 
 ## 推荐继续阅读
 

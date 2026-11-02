@@ -43,6 +43,33 @@ Planning with adaptive world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRN["训练 BehaviorNet §III"]
+        A["nuPlan 训练日志"] --> B["网格搜索 IDM 参数 θ0..θ4<br/>使仿真位置贴合日志 Eq.1"]
+        B --> C["对逐日志参数做 K-means 聚类<br/>K 取 16 个行为簇"]
+        C --> D["BehaviorNet 分类训练<br/>K 路 softmax 损失"]
+    end
+    subgraph NET["BehaviorNet 结构 Fig.3"]
+        N1["车道图经 GCN 提取地图特征"] --> N3["Agent-Map 特征融合"]
+        N2["智能体过去轨迹特征"] --> N3
+        N3 --> N4["MLP 输出 IDM 控制参数"]
+    end
+    subgraph PLN["规划 Fig.5"]
+        E["自车历史 + 周围智能体历史 + 车道图"] --> F["BehaviorNet 预测各智能体 IDM 参数"]
+        G["图搜索 找最近中心线"] --> H["生成多条轨迹提议<br/>IDM 变化纵向速度与横向偏移"]
+        F --> I["反应式世界模型 rollout"]
+        H --> I
+        I --> J["按世界模型对每条提议打分<br/>执行得分最高者"]
+    end
+    D --> F
+    NET -.结构.-> F
+```
+
+图依据：论文 §III / Fig.3、Fig.4、Fig.5、Eq.1（City-BehaviorNet 为按城市优化参数的变体，图中只画 Log-BehaviorNet）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,8 @@ Planning with adaptive world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.10714>
+- [arXiv PDF](https://arxiv.org/pdf/2406.10714)：已通读方法部分（实验与附录以略读为准）：§III Planning with an Ensemble of Models（PDM-C 局限、BehaviorNet、自适应行为参数学习、Log-BehaviorNet、规划架构）；§IV 实验以略读/未读为准
+
 
 ## 推荐继续阅读
 

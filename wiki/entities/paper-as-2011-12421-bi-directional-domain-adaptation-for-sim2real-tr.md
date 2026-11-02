@@ -42,6 +42,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P0["在仿真中训练行为策略 π_sim"] --> COL["用 π_sim 在仿真与现实（实验中为目标仿真器）各采集 rollout"]
+  COL --> IMGS["非配对 RGB-D 图像 I_sim、I_real"]
+  COL --> TR["现实侧 (s_t, a_t, s_t+1) 转移样本"]
+  IMGS --> OA["训练观测适配模块 OA（CycleGAN，real2sim：I_real → I_sim）"]
+  TR --> DA["训练动力学适配模块 DA（3 层 MLP，回归仿真与现实转移的残差）"]
+  DA --> SIMDA["用 DA 增强的仿真器 Sim_DA"]
+  SIMDA --> FT["在 Sim_DA 中微调 π_sim"]
+  FT --> DEP["部署：测试时对观测先过 OA，再交给策略"]
+  OA --> DEP
+  DEP --> REAL["在现实（目标环境）中测试"]
+```
+
+图依据：论文 §II（Algorithm 1、§II-A 系统架构：Observation Adaptation / Dynamics Adaptation）与 Fig.1；实验为 Sim2Sim 迁移，以目标仿真器代替现实（§III）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2011.12421>
+- [arXiv PDF](https://arxiv.org/pdf/2011.12421)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 方法（Algorithm 1 与 Observation / Dynamics Adaptation）、§III 实验设置开头；其余实验段略读。
 
 ## 推荐继续阅读
 

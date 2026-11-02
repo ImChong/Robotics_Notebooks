@@ -42,6 +42,32 @@ Collaborative world models for offline visual RL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["预训练源域世界模型<br/>DreamerV2 + 状态对齐模块 g"] --> LOOP
+    subgraph LOOP["迭代：离线 - 在线 - 离线"]
+        direction TB
+        subgraph A["A 离线到在线状态对齐"]
+            A1["目标域离线数据 B_T 同时输入<br/>目标世界模型 M_ϕ 与源世界模型 M_ϕ'"] --> A2["最小化域对齐 KL<br/>以停梯度的源编码为目标<br/>并加世界模型自身损失"]
+        end
+        subgraph B["B 在线到离线奖励对齐"]
+            B1["源 agent 在在线环境交互<br/>数据存入 B_S"] --> B2["用源模型处理目标轨迹<br/>重标注奖励 = 1 减 k 倍源预测 + k 倍真实目标奖励"]
+            B2 --> B3["源奖励预测器用混合数据训练<br/>η 从 1 逐渐降到 0.1<br/>源 actor 与 critic 在想象中更新"]
+        end
+        subgraph C["C 在线到离线值约束"]
+            C1["目标 agent 在目标世界模型中想象轨迹"] --> C2["目标 critic 损失 = 值回归<br/>+ α 倍对目标与停梯度源 critic 取最大值"]
+            C2 --> C3["训练目标 actor"]
+        end
+        A --> C
+        B --> C
+    end
+    LOOP --> RES["输出：目标域离线策略"]
+```
+
+图依据：论文 §3 Method（§3.1 状态对齐、§3.2 奖励对齐、§3.3 Min-Max 值约束）/ Fig.1、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Collaborative world models for offline visual RL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2305.15260>
+- [arXiv PDF](https://arxiv.org/pdf/2305.15260)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Problem Setup、§3 Method（含 Algorithm 1）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

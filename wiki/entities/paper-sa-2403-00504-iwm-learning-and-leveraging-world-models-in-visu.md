@@ -42,6 +42,32 @@ Learns and leverages world models in visual representation learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IMG["图像 I"]
+    TGT["目标视图 y: 翻转 + 裁剪 + 颜色抖动"]
+    SRC["源视图 x: 在 y 上再加颜色抖动, 灰度/模糊/日晒, 并做 I-JEPA 式掩码"]
+    ACT["动作 a: x 到 y 的变换参数 (颜色差 + 破坏性增强是否应用)"]
+    ENC["编码器 f_theta (ViT-B/16)"]
+    EMA["EMA 编码器 f_theta^EMA"]
+    PRED["预测器 p_phi: 以 a 与 mask token 为条件 (特征条件化)"]
+    LOSS["L2 损失: 预测表征 vs 目标表征"]
+    DOWN["下游: 微调预测器(而非编码器), 可多任务微调"]
+    IMG --> TGT
+    TGT --> SRC
+    SRC --> ENC
+    TGT --> EMA
+    ENC --> PRED
+    ACT --> PRED
+    PRED --> LOSS
+    EMA --> LOSS
+    PRED -.-> DOWN
+```
+
+图依据：论文 §3 Method (源/目标视图, 动作, 损失), §4.2, §5 (预测器微调) / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Learns and leverages world models in visual representation learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.00504>
+- [arXiv PDF](https://arxiv.org/pdf/2403.00504)：已通读方法部分（实验与附录以略读为准）：§3 Method、§4.2 Learning a strong Image World Model、§5 Leveraging world models 开头
 
 ## 推荐继续阅读
 

@@ -49,6 +49,32 @@ LLM-enhanced world models for diverse driving video generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    Q["用户文本提示"]
+    LLM["微调 LLM (GPT-3.5) + 轨迹生成函数库, 输出 Python 脚本"]
+    TRAJ["智能体轨迹数组"]
+    MAP["HDMap 生成器 (扩散模型, 以 BEV 轨迹图为条件)"]
+    HD["BEV HDMap (车道边界/分隔线/人行横道)"]
+    BOX["3D 框: 由轨迹导出并投影到图像平面"]
+    UNI["UniMVM: 多视角拼成统一图像, 通过掩码 m 统一生成设定"]
+    ENC["编码器: HDMap, 3D 框, 图像帧 -> y_H, y_B, y_I"]
+    VID["多视角驾驶视频生成 (DriveDreamer 框架)"]
+    Q --> LLM
+    LLM --> TRAJ
+    TRAJ --> MAP
+    MAP --> HD
+    TRAJ --> BOX
+    HD --> ENC
+    BOX --> ENC
+    UNI --> VID
+    ENC --> VID
+```
+
+图依据：论文 §3.1 Customized Traffic Simulation, §3.2 UniMVM / Fig.2, Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +134,7 @@ LLM-enhanced world models for diverse driving video generation.
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2403.06845)：已通读方法部分（实验与附录以略读为准）：§3 DriveDreamer-2 (3.1, 3.2)
 
 ## 推荐继续阅读
 
