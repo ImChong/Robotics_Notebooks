@@ -55,6 +55,40 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`from fourier_grx_client import RobotClient`（库，无独立 CLI；示例脚本 `examples/move/movej.py`，需先在机器人上运行 `fourier-grx` 服务端，服务端不在本仓库内）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户脚本 examples/move/movej.py
+    participant C as RobotClient (client.py)
+    participant Z as ZenohSession (zenoh_utils.py)
+    participant S as grx 服务端 (fourier-grx，另一仓库/PyPI)
+    U->>C: RobotClient(namespace, server_ip)
+    C->>C: _retrieve_namespace() 未传 namespace 时读 GRX_ROBOT_ID 或 ~/.fourier/robot_id.yaml
+    C->>Z: super().__init__(prefix, zenoh_config) 连接 tcp/server_ip:7447
+    C->>Z: liveness_check() → _call_service_wait("robot/info")
+    Z->>S: session.get(prefix/robot/info)
+    S-->>C: 机器人信息（超时则抛 FourierConnectionError）
+    C->>S: declare_subscriber imu/* joint/* base/*
+    C->>S: declare_publisher control/joints/position|velocity|effort|current、control/impedance
+    S-->>C: 状态 sample → _state_callback 更新 _states
+    U->>C: enable()
+    C->>S: get control/enable，值 "ON"
+    U->>C: movej(sides, target_positions)
+    C->>S: get control/movej（轨迹规划在服务端）
+    S-->>C: traj
+    loop 逐步回放轨迹（间隔 ctrl_dt=1/200 s）
+        C->>S: _publish("position", dest_pos) 到 control/joints/position
+    end
+    U->>C: close()
+    C->>C: abort() 置位 _abort_event，_update_pos()
+    C->>Z: close() 撤销订阅/发布并 session.close()
+```
+
+图依据：FFTAI/fourier-grx-client@94b14a1，读过 README.md、pyproject.toml、src/fourier_grx_client/client.py、src/fourier_grx_client/zenoh_utils.py、examples/move/movej.py。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +100,7 @@ institutions:
 - [fourier-grx-client 源码归档](../../sources/repos/fourier-grx-client.md)（<https://github.com/FFTAI/fourier-grx-client>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/fourier-grx-client@94b14a1，读过 README.md、pyproject.toml、src/fourier_grx_client/client.py、src/fourier_grx_client/zenoh_utils.py、examples/move/movej.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
