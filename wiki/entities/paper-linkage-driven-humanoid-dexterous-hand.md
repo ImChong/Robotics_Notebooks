@@ -36,6 +36,22 @@ summary: "连杆驱动人形灵巧手：基于连杆驱动的全关节人形灵�
 
 - 周报所述待解决的问题：现有灵巧手难以同时实现类人关节结构、高负载、机械可靠性和简单可控性。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["掌内微型电机 ψ_i<br/>(每个功能自由度独立一路)"] --> SC["丝杠传动 (滚珠丝杠 / 梯形丝杠) + 导轨滑块<br/>s_i = p_i/(2π) · ψ_i"]
+    SC --> L["连杆机构 (曲柄滑块)<br/>θ_i = f_i(s_i), 几何闭环关系"]
+    L --> J["关节角向量 q_f (4 指 4 DOF) / q_t (拇指 5 DOF)"]
+    L -. "PIP 滑块经共享连杆驱动 DIP 四杆机构<br/>自由运动时 PIP-DIP 耦合" .-> J
+    X["指尖接触或 DIP 受载:<br/>可压缩连杆使 DIP 退化为曲柄滑块, 与 PIP 解耦"] -.-> L
+    J --> DH["串联 Denavit-Hartenberg 运动学<br/>齐次变换依次相乘 (掌系 → 指尖系)"]
+    DH --> P["指尖位姿 (位置取自变换矩阵平移分量)"]
+    P --> E["评测: 蒙特卡洛工作空间 / 轨迹跟踪与重复定位<br/>指尖力与负载 / Kapandji 与 33 种抓取分类 / 3×3 任务矩阵"]
+```
+
+图依据：论文 Results（Theory model、Kinematic analysis / Fig.2–3）与 Methods（Actuation, linkage transmission and serial kinematic modeling）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +102,8 @@ summary: "连杆驱动人形灵巧手：基于连杆驱动的全关节人形灵�
 - [linkage-driven-humanoid-dexterous-hand_arxiv_2610_36789.md](../../sources/papers/linkage-driven-humanoid-dexterous-hand_arxiv_2610_36789.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36789](https://arxiv.org/abs/2610.36789)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36789)：已通读全文：Results 的理论模型与运动学分析、Methods 的机械设计/装配/传动与串联运动学建模；实验与补充材料仅读要点
+
 
 ## 推荐继续阅读
 

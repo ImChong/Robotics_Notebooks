@@ -42,6 +42,26 @@ summary: "Fourier Transmission Error Compensation（arXiv:2610.23882）：通过
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。公众号项目页入口为数据集 DOI（HTTP 200），未见代码仓库。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["激光跟踪仪 laser tracker 点集 p_i"] --> B["SVD 最佳拟合平面 + 线性最小二乘圆拟合"]
+    B --> C["径向向量 v_i 经 atan2 得负载侧角 q"]
+    D["TwinCAT 记录电机编码器角 θ"] --> E["时间对齐 + 计算 θ_TE = q - θ"]
+    C --> E
+    E --> F["线性最小二乘估 a2~a0，减去三阶多项式"]
+    F --> G["各速度下求 A_k, φ_k"]
+    G --> H["对速度二次拟合得系数 p"]
+    H --> I["速度相关傅里叶 TE 模型"]
+    I --> J["FMU 联合仿真 virtual commissioning"]
+    I --> K["TwinCAT PLC 前馈补偿"]
+    L["CNC 角度设定值"] --> K
+    K --> M["修正后的设定值经 EtherCAT / uniVAL 发给机器人"]
+```
+
+图依据：论文 §2.2–2.4、§1.2 / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +104,7 @@ summary: "Fourier Transmission Error Compensation（arXiv:2610.23882）：通过
 - [fourier_transmission_error_compensation_arxiv_2610_23882.md](../../sources/papers/fourier_transmission_error_compensation_arxiv_2610_23882.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23882](https://arxiv.org/abs/2610.23882)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23882)：已通读全文：摘要、§1–§4（建模、激光跟踪角度提取、参数辨识、补偿、结果与讨论）
 
 ## 推荐继续阅读
 

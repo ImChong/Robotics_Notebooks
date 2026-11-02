@@ -37,6 +37,27 @@ summary: "钩子拆卸力驱动 RL：通过约束感知的物体中心强化学�
 
 - 周报所述待解决的问题：工业卡扣连接通常被外壳遮挡，机器人难以仅根据视觉判断正确的拆解方向。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["策略动作 a_t = [d_x, d_y, d_z, α]<br/>方向 d̂ 归一化，α 映射为步长 → 位移 Δx = α d̂"] --> B["笛卡尔阻抗控制器执行<br/>（部署：KUKA LBR IIWA + 腕部力/力矩传感器）"]
+  B --> C["接触力响应：指数平滑 F_t → 归一化标量 f_t"]
+  C --> D["粒子滤波器：N 个单位向量粒子表示可行拔出方向<br/>斐波那契球面均匀初始化，权重相等"]
+  A --> D
+  D --> E["训练期更新：仅用力证据<br/>对齐模型似然 + 均匀混合 + 有效样本数低时重采样"]
+  D --> F["部署期更新：力 + 运动双证据，按条件门控<br/>自适应力归一化、回火与遗忘、自适应扰动、粒子重注入、N=256"]
+  E --> G["信念输出：加权平均方向 p̄ 与置信度 c"]
+  F --> G
+  G --> H["策略观测：15 维状态 + 信念(p̄, c) = 19 维<br/>堆叠最近 K=12 步 → 228 维"]
+  H --> I["SAC 策略（MuJoCo 物体中心仿真，随机化关节轴，POMDP）"]
+  I --> A
+  J["奖励：效率加权进度 + 轴对齐奖励 + 信念对齐奖励<br/>− 接触力惩罚 − 停滞惩罚 − 时间惩罚 + 成功奖励<br/>（真实关节轴仅训练期可用）"] -.-> I
+  I --> K["零微调部署到真机：星形销孔、两段式拆卸、<br/>空调螺旋桨、前盖"]
+```
+
+图依据：论文 §III-A–D / Fig. 3、式 (1)–(20)；§IV-B。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +108,7 @@ summary: "钩子拆卸力驱动 RL：通过约束感知的物体中心强化学�
 - [force-driven-hook-disassembly-object-centric-rl_arxiv_2610_38513.md](../../sources/papers/force-driven-hook-disassembly-object-centric-rl_arxiv_2610_38513.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.38513](https://arxiv.org/abs/2610.38513)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38513)：已通读全文：框架 §III（粒子滤波信念、训练/部署期更新、强化学习形式化与奖励）及 §IV 实验设定
 
 ## 推荐继续阅读
 

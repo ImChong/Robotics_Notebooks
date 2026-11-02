@@ -42,6 +42,29 @@ summary: "TrajWAM（arXiv:2610.25763）：TrajWAM用目标掩码轨迹引导未�
 - 开源结论：**已开源**（步骤 2.5，2026-10-31）。公众号未给代码链接；项目页链接的 KevinGeng3/TrajWAM 经 git ls-remote 可达。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练（多步，轨迹引导）"]
+        A["第三视角 RGB + 语言指令 ℓ"] --> B["冻结语言条件分割模型（部署用 SAM3）→ 目标物体掩码历史 (K=4, 步长 4)"]
+        B --> C["2D U-Net 掩码预测器<br/>一次前向预测 H_v=8 个未来掩码"]
+        C --> D["视频 VAE 编码 → 轨迹潜变量 z_M"]
+        D --> E["Trajectory ControlNet<br/>逐层残差注入视频块"]
+        E --> F["视频分支：Wan2.2-5B 初始化<br/>生成轨迹受控的未来视频表示"]
+        F --> G["非对称视频-动作注意力<br/>动作 query 读视频 + 动作，视频不读动作"]
+        G --> H["动作专家 → 动作块 (Ta=32)<br/>视频/动作联合 flow matching 损失"]
+    end
+    subgraph DS["三阶段解耦蒸馏"]
+        I["1 视频骨干 DMD 蒸馏为一步生成器"] --> J["2 ControlNet 重对齐<br/>重建 + 对抗损失"]
+        J --> K["3 动作 rollout 蒸馏<br/>一步学生匹配 10 步教师动作块"]
+    end
+    H --> I
+    K --> L["推理：SAM3 在线更新掩码历史<br/>一步视频 + 一步动作 → 闭环执行（执行 8 步后重规划）"]
+```
+
+图依据：论文 §III-A/B/C、Fig.2–4、§IV-A 实现细节。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +107,7 @@ summary: "TrajWAM（arXiv:2610.25763）：TrajWAM用目标掩码轨迹引导未�
 - [trajwam_arxiv_2610_25763.md](../../sources/papers/trajwam_arxiv_2610_25763.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.25763](https://arxiv.org/abs/2610.25763)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25763)：已通读全文：目标轨迹预测与轨迹条件视频-动作建模（§III-A/B）、解耦蒸馏（§III-C）、实验设定与实现（§IV-A）
 
 ## 推荐继续阅读
 

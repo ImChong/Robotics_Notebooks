@@ -37,6 +37,25 @@ summary: "OSWAM：具有单步动作生成能力的高效世界动作模型（ar
 
 - 周报所述待解决的问题：WAM 依赖多步去噪生成动作，推理延迟较高。直接减少去噪步数又容易损害动作质量。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前帧 f0 + 可选任务指令<br/>(驾驶任务另加 ego 状态)"] --> B["Video DiT (Wan2.2-5B, LoRA)<br/>首帧视觉 token 仅单次前向"]
+    N1["噪声初始化 AIT<br/>(Action Imagination Tokens)"] --> B
+    N2["噪声初始化 SIT<br/>(Scene Imagination Tokens)"] --> B
+    B --> C["AIT 表征<br/>(Role-aware 3D RoPE, 结构化注意力掩码)"]
+    C --> D["辅助解码器 → 动作速度 v_A<br/>结构化动作先验 ā = ε − v_A"]
+    D --> E["detach 后用同一噪声再加噪<br/>a_init = (1−σr)·sg(ā) + σr·ε"]
+    E --> F["Action DiT (MoT 共享注意力)<br/>预测修正速度 v_act"]
+    F --> G["单步去噪 â = a_init − σr·v_act<br/>输出动作块 a_1:H"]
+    T["特权教师 Video DiT (冻结)<br/>AIT 关注完整未来视频片段"] -. "仅训练: 多层特征蒸馏 L_dist" .-> C
+    B -. "仅训练: 视频流匹配 L_vid" .-> V["未来视频 latent"]
+    D -. "L_AIT" .-> L["总损失 L = L_vid + L_AIT + λ·L_dist + L_act"]
+```
+
+图依据：论文 §3.2–3.5 / Fig.3、Fig.4
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +106,8 @@ summary: "OSWAM：具有单步动作生成能力的高效世界动作模型（ar
 - [oswam-one-step-action-generation_arxiv_2610_35850.md](../../sources/papers/oswam-one-step-action-generation_arxiv_2610_35850.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35850](https://arxiv.org/abs/2610.35850)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35850)：已通读全文：§3 方法（总体架构、Imagination Tokens、特权信息蒸馏、训练目标）与 §4.2 实现细节
+
 
 ## 推荐继续阅读
 

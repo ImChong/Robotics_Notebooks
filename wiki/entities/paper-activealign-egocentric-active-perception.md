@@ -36,6 +36,34 @@ summary: "ActiveAlign（主动感知）：ActiveAlign：通过主动感知对齐
 
 - 周报所述待解决的问题：被动采集的图像难以准确恢复相机外参和物体位置，导致真实场景与仿真场景错位，影响毫米级操作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线阶段"]
+        A["多帧 RGB-D 重建场景与物体<br/>3DGS + BundleSDF"] --> B["GPT-6-Astra 经 Blender / MuJoCo<br/>生成仿真资产"]
+        C["机器人 3DGS 模型 + LBS 形变 (DRRobot)<br/>用 MuJoCo 渲染采样相机参数与关节构型训练"]
+    end
+    subgraph ON["在线阶段 (实时)"]
+        D["FoundationPose + GroundingDINO + SAM2<br/>把 RGB-D 观测映射为仿真模型"]
+    end
+    B --> D
+    C --> W
+    subgraph WAVE["ActiveAlign-Waving: 相机外参标定"]
+        W["重要性采样: 假设相机朝向末端执行器"] --> X["挥手 / 取录制轨迹静止区间<br/>收集多个 (深度 Dk, 位姿 pk)"]
+        X --> Y["可微渲染最小化深度损失 (式 2)<br/>初值取 URDF 相机位姿或 FoundationPose"]
+    end
+    D --> W
+    Y --> Z["标定后的相机参数"]
+    subgraph TOUCH["ActiveAlign-Touching: 触觉对齐"]
+        T1["以待操作部件为兴趣点<br/>指尖缓慢下压至力超过阈值 Tforce"] --> T2["建立局部高度图 (action-to-height map)"]
+        T2 --> T3["触觉修正后的运动基元<br/>用于按钮 / 滑杆毫米级操作"]
+    end
+    Z --> T1
+```
+
+图依据：论文 §2.1 Background / §2.2 Waving / §2.3 Touching / Fig.2-3 / 附录 A-B
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +114,7 @@ summary: "ActiveAlign（主动感知）：ActiveAlign：通过主动感知对齐
 - [activealign-egocentric-active-perception_arxiv_2610_36859.md](../../sources/papers/activealign-egocentric-active-perception_arxiv_2610_36859.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36859](https://arxiv.org/abs/2610.36859)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36859)：已通读全文：§2.1 离线/在线 real2sim 流水线，§2.2 ActiveAlign-Waving，§2.3 ActiveAlign-Touching，§3 实验，附录 A-B
 
 ## 推荐继续阅读
 

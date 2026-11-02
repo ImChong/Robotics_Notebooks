@@ -37,6 +37,26 @@ summary: "SaiVLA-JEPA：评估 JEPA 条件化 VLA 控制中的未来潜在表示
 
 - 周报所述待解决的问题：JEPA 可以学习未来视觉表示，但增加未来预测监督是否一定能改善 VLA 的闭环操作性能，仍需要直接验证。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["当前图像"] --> VJ["冻结 V-JEPA 编码器<br/>JEPA token 图 z_t，由 64 池化到 32 并投影"]
+    IMG --> VLM["冻结 VLM（每次重规划运行一次）<br/>LayerNorm + 自注意力块"]
+    ST["机器人状态 s_t"] --> DIT
+    VJ -->|"接在原生 32 个可学习前缀 token 之后，自注意力序列内"| DIT["DiT 动作专家（流匹配）<br/>序列：状态 | 原生前缀 | JEPA token | 带噪动作 x_τ"]
+    VLM -->|"每个 DiT 块的交叉注意力"| DIT
+    DIT --> EUL["4 步 Euler 求解 → 16 步动作块<br/>开环执行一个重规划间隔后重新采样"]
+    DIT -.->|"仅 FutureJEPA 训练期"| FH["残差未来头：偏移 h=4、16<br/>预测 z_t+h，逐 token MSE，目标来自冻结 V-JEPA（detach）"]
+    FH -.-> LOSS["L_total = L_flow + 0.1·L_future<br/>推理时不使用未来头"]
+    EUL --> TCA["SaiVLA-JEPA-TCA（上下文适配，权重冻结）"]
+    TCA --> OBS["每执行 4 个动作：冻结观测器预测 ẑ_t+4<br/>对 m、u 做 2 步梯度下降"]
+    OBS -->|"更新后的 e=[m;u] 用于下一个动作块"| EUL
+    OBS --> RETRY["失败后重试（最多 5 次）：保留衰减/门控的 m，清空 u"]
+```
+
+图依据：论文 §2.1–2.4、Fig. 1（SaiVLA-JEPA 架构与 FutureJEPA）、§3.1–3.2、Fig. 2（TCA 上下文通路与重试）；TPA 参数适配（§3.3）未入图。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +107,7 @@ summary: "SaiVLA-JEPA：评估 JEPA 条件化 VLA 控制中的未来潜在表示
 - [saivla-jepa-future-latent-prediction_arxiv_2610_38508.md](../../sources/papers/saivla-jepa-future-latent-prediction_arxiv_2610_38508.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.38508](https://arxiv.org/abs/2610.38508)
+- [arXiv PDF](https://arxiv.org/pdf/2610.38508)：已通读全文：§2 方法（共享动作路径 / 未来头 / 推理）、§3 测试时适配（TCA 上下文适配与重试；TPA 参数适配）
 
 ## 推荐继续阅读
 

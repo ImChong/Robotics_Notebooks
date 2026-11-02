@@ -37,6 +37,28 @@ summary: "PDRVLA：具有物理动力学表示的视觉语言动作模型（arXi
 
 - 周报所述待解决的问题：VLA 缺少对环境物理变化的有效建模，而在控制循环中直接生成未来视频会增加推理延迟。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角观测 + 任务指令<br/>(前缀 embodiment / arm / hand / control Hz)"] --> B["Qwen3.5-4B VLM 骨干"]
+    B --> C["第 8 层中间特征 H_t^(8)"]
+    B --> D["最后一层特征 H_t^last"]
+    C --> E["Physical Dynamics Module<br/>50 个可学习 query, 4 个 Transformer 块<br/>(cross-attn / self-attn / FFN)"]
+    E --> F["50 个物理 Token C_t"]
+    D --> G["拼接条件序列 X_t = H_t^last ; C_t"]
+    F --> G
+    H["本体状态 q_t (前缀 token)"] --> I
+    G --> I["DiT 动作专家 (conditional flow matching)<br/>self-attn + 对 X_t cross-attn"]
+    J["高斯噪声初始化动作块"] --> I
+    I --> K["预测速度场, 4 步 Euler 积分"]
+    K --> L["动作块 a_t,0 ... a_t,7 (K=8)"]
+    F -. "训练: 直接预测头" .-> M["未来 RGB / 深度 / 光流 latent 特征"]
+    F -. "仅预训练: 条件输入" .-> N["冻结 LingBot-Video-Dense-1.3B<br/>辅助 L_WM 监督"]
+```
+
+图依据：论文 §3 / Fig.3、§4.1 / Fig.4
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +109,8 @@ summary: "PDRVLA：具有物理动力学表示的视觉语言动作模型（arXi
 - [pdrvla-physical-dynamics-representations_arxiv_2610_37381.md](../../sources/papers/pdrvla-physical-dynamics-representations_arxiv_2610_37381.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.37381](https://arxiv.org/abs/2610.37381)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37381)：已通读全文：§3 模型架构、§4 训练（物理预训练与联合训练）
+
 
 ## 推荐继续阅读
 

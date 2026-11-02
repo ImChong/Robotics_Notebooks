@@ -37,6 +37,25 @@ summary: "MUSBRIC：用于可重构肌肉骨骼机器人的乐高兼容气动肌
 
 - 周报所述待解决的问题：肌肉骨骼机器人改变肌肉连接位置或肢体结构时，通常需要重新加工执行器和骨架。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    H["肌肉砖 (muscle brick)<br/>纤维增强伸长型 PAM + LEGO 兼容端帽 (销/轴孔)"] --> T["单轴拉伸测试 0-500 kPa<br/>准静态力-应变数据"]
+    T --> ID["联合拟合有效力坐标<br/>三次多项式 c0..c3, S0, α (表 I)"]
+    ID --> M["执行器模型<br/>T = Tqs(ε, p) + b·L̇ (式 5, 6)"]
+    H --> A["LEGO 装配: 骨架 + 肌肉砖<br/>得到拓扑与路径长度 ℓ(q)"]
+    A --> S["每个时间步: L = ℓ − 2Lc, 得 ε 与 L̇"]
+    P["气压 p(t)、L0、材料参数"] --> M
+    S --> M
+    M --> J["张力映射为广义力矩<br/>τ_act = −J_ℓ(q)^T · T (式 7)"]
+    J --> D["MuJoCo 约束动力学积分 (基于 EquiMus)"]
+    D --> O["输出关节运动 q(t)"]
+    O --> V["肘关节 / 机械手 / 15 种腿构型<br/>仿真与硬件对照 → 四足行走"]
+```
+
+图依据：论文 §II 硬件设计、§III 建模与仿真 / Fig.2、§IV–V 验证
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +106,8 @@ summary: "MUSBRIC：用于可重构肌肉骨骼机器人的乐高兼容气动肌
 - [musbric-pneumatic-muscle-bricks_arxiv_2610_40285.md](../../sources/papers/musbric-pneumatic-muscle-bricks_arxiv_2610_40285.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.40285](https://arxiv.org/abs/2610.40285)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40285)：已通读全文：§II 硬件设计、§III 建模与仿真（本构表征、仿真框架）、验证实验
+
 
 ## 推荐继续阅读
 

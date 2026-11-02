@@ -37,6 +37,26 @@ summary: "RoKON：面向机器人操作的高效自适应数据驱动预测控�
 
 - 周报所述待解决的问题：机器人操作中的摩擦等动力学参数可能随环境变化。依赖固定动力学模型的预测控制难以及时适应这些变化。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OFF["离线数据：仅在起始表面采集的输入-输出轨迹"] --> BUF["初始缓冲 B_0：连续的 Hankel 列<br/>前 H_p 列为受保护离线列 B^p，其余为可替换列 B^r"]
+    BUF --> PRED["重建预测器矩阵：U_P、Y_P、U_F、Y_F、Gram 矩阵 K、M_r、M_k"]
+    PRED --> GN["阻尼 Gauss–Newton 求解未来输入序列 u<br/>残差 ρ(u)，解 (JᵀJ + ηI)δu = −Jᵀρ，投影到输入集 U；代价上升则增大阻尼重算"]
+    WS["上一步最优序列平移一位作热启动 (23)"] --> GN
+    GN --> APPLY["只施加首个输入 u_k（力），测量输出 y_k+1（块速度）"]
+    APPLY --> RES["一步预测残差 e_k+1 = y_k+1 − ŷ_k+1⁻"]
+    APPLY -->|"更新 u_ini、y_ini，滚动时域下一步"| GN
+    RES --> ADM{"新连续列有效？<br/>缓冲未满，或 |e| > ε_online"}
+    ADM -->|"未满：追加"| PEND["待重建计数 n_pending++"]
+    ADM -->|"已满：替换最旧的可替换列，受保护列不替换"| PEND
+    PEND -->|"n_pending ≥ n_batch 且无重建在进行"| BG["后台线程 REBUILD(缓冲副本)"]
+    BG -->|"完成后安装新矩阵"| PRED
+```
+
+图依据：论文 §II-B（RoKDeePC 预测器）、§III-A（阻尼 Gauss–Newton）、§III-B（混合缓冲）、Algorithm 1；§IV 实验设定为推箱子速度跟踪。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +107,7 @@ summary: "RoKON：面向机器人操作的高效自适应数据驱动预测控�
 - [rokon-data-enabled-predictive-control_arxiv_2610_35458.md](../../sources/papers/rokon-data-enabled-predictive-control_arxiv_2610_35458.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.35458](https://arxiv.org/abs/2610.35458)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35458)：已通读全文：§II 背景（DeePC / RoKDeePC）、§III-A 阻尼 Gauss–Newton、§III-B 混合缓冲、Algorithm 1、§IV-A 实验设定
 
 ## 推荐继续阅读
 

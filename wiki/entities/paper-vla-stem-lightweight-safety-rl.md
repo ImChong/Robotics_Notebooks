@@ -37,6 +37,30 @@ summary: "VLA-Stem：基于强化学习的轻量化视觉语言动作模型安�
 
 - 周报所述待解决的问题：VLA 主要学习完成操作任务，但面对动态障碍物和空间约束时，原始动作块可能发生碰撞。直接重新微调 VLA 成本较高。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["冻结的基座 VLA (π0 / π0.5)<br/>每隔 h 步被查询一次"] --> B["输出 h 步动作块 A_VLA"]
+  B --> C["转为相对末端位姿的运动参考轨迹 τ_rel"]
+  C --> D["Stem 策略 π_stem"]
+  P["本体感知 x_t: 关节位置 + 末端位姿"] --> D
+  O["局部障碍信息: 中心 + 包围盒尺寸"] --> D
+  D --> E["每个控制步输出可执行动作 a_exec"]
+  E --> F["执行 h 步后用新观测重新查询 VLA"]
+  F --> A
+  subgraph 训练["训练阶段"]
+    G["教师策略: 额外输入目标物体位置等特权信息<br/>PPO + 课程: 轨迹跟随 → 静态约束 → 动态障碍"]
+    H["奖励 = 任务 + 碰撞 + 轨迹级引导<br/>前向走廊匹配参考段, exp(-k·d)"]
+    I["学生策略: PPO 损失 + λ·KL(学生||教师), λ=0.1<br/>仅用可部署观测"]
+    G --> I
+    H --> G
+  end
+  I -.-> D
+```
+
+图依据：论文 §III-A 至 §III-D、Fig.2、式 (1)–(9)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +111,7 @@ summary: "VLA-Stem：基于强化学习的轻量化视觉语言动作模型安�
 - [vla-stem-lightweight-safety-rl_arxiv_2610_37378.md](../../sources/papers/vla-stem-lightweight-safety-rl_arxiv_2610_37378.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.37378](https://arxiv.org/abs/2610.37378)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37378)：已通读全文：方法（§III-A VLA 条件执行、§III-B 轨迹级引导、§III-C 教师–学生蒸馏、§III-D RL 与课程）
 
 ## 推荐继续阅读
 

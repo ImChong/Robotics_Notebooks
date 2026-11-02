@@ -43,6 +43,29 @@ summary: "VLA Corruption Failure Attribution（arXiv:2610.27277）：将场景�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前图像 φ_t + 任务指令 ℓ"] --> B["冻结 SigLIP 图文编码器 → 特征 x_t"]
+    B --> C["INLP 零空间投影<br/>去除线性可解码的扰动信息 → x̃_t"]
+    B --> E2["扰动编码器 E_c → z_c<br/>按 K 种扰动分块"]
+    C --> E1["场景编码器 E_s → z_s"]
+    E1 -.对抗判别器 D：置信损失.-> E1
+    E2 --> P["每块线性存在头 → 扰动存在概率 ρ̂_k"]
+    E1 --> H["共享失败预测头 r̂(z_c; z_s)"]
+    E2 --> H
+    H --> R["失败风险 r̂"]
+    E2 --> Z["潜变量干预：将 z_c 的第 k 块置零 (z_c\\k)，z_s 不变"]
+    Z --> H2["再次评估失败头 r̂(z_c\\k; z_s)"]
+    R --> D["归因 Δ̂_k = ReLU(r̂ − r̂ 干预后)"]
+    H2 --> D
+    D --> O["逐扰动修复优先级建议 / 在线失败监控"]
+    T["训练目标：存在损失 + 锚定损失 + 失败 BCE<br/>+ 反事实一致性损失 + 对抗损失"] -.联合训练 E_s / E_c / 头.-> H
+```
+
+图依据：论文 §III 问题定义、§IV-A/B（式 1–7）/ Fig.3、Fig.1 在线监控。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +109,7 @@ summary: "VLA Corruption Failure Attribution（arXiv:2610.27277）：将场景�
 - [vla_corruption_failure_attribution_arxiv_2610_27277.md](../../sources/papers/vla_corruption_failure_attribution_arxiv_2610_27277.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27277](https://arxiv.org/abs/2610.27277)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27277)：已通读全文：问题定义（§III）、因子化风险模型与训练目标（§IV-A/B、Fig.3）、实验设定（§V–VI）
 
 ## 推荐继续阅读
 

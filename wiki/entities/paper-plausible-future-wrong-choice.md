@@ -41,6 +41,30 @@ summary: "Plausible Future, Wrong Choice（arXiv:2610.28431）：TaskWAM以任�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["语言指令 ℓ"] --> B["T5 编码器 → 文本嵌入 C"]
+    B --> C["路由头：软分配到 K_prior 个可学习 mode<br/>从 mode 码本检索 mode 槽位（粗先验）"]
+    C --> D["Q_ground：以槽位为 query 对语言 token 做交叉注意力"]
+    B --> D
+    D --> M["Mode Tokens M（指令要求，跨阶段保留）"]
+    H["交互历史：动作块 A_{k-1} + Wan Video VAE 观测潜变量 F_k 及其变化 ΔF_k"] --> Q["Q-Former 聚合为每次交互 token e_k"]
+    Q --> E["因果时间编码器（最近 K 次交互）"]
+    E --> S["State Tokens S_t（执行进度）"]
+    M --> T["任务状态 T_t = [M; S_t]"]
+    S --> T
+    T --> K1["任务状态条件：T_t 并入世界/动作两路 key-value 上下文<br/>+ 逐层 AdaLN（由池化 Mode Token 调制）"]
+    K1 --> V["WAM 骨干生成未来世界 W 与动作 A"]
+    T --> R["流转向：轻量交叉注意力头 R_b 读取 T_t<br/>预测世界/动作速度残差 Δv"]
+    V --> R
+    R --> O["修正后速度 v̂ = v + γ·Δv → 预期阶段的未来世界 + 动作"]
+    O -->|执行动作 获得新观测| H
+```
+
+图依据：论文 §3.1–3.4、Fig.2（TaskWAM 框架）；§4 StageBench 为基准，未入图。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "Plausible Future, Wrong Choice（arXiv:2610.28431）：TaskWAM以任�
 - [plausible_future_wrong_choice_arxiv_2610_28431.md](../../sources/papers/plausible_future_wrong_choice_arxiv_2610_28431.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28431](https://arxiv.org/abs/2610.28431)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28431)：已通读全文：问题定义与总览（§3.1–3.2）、结构化任务状态（§3.3）、任务状态条件未来转向（§3.4）、StageBench（§4）
 
 ## 推荐继续阅读
 

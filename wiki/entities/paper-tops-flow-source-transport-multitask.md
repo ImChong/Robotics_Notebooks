@@ -37,6 +37,36 @@ summary: "TOPS：通过重构 Flow 源分布与传输路径实现多任务机器
 
 - 周报所述待解决的问题：多任务 Flow Matching Policy 通常对所有任务使用相同的高斯噪声分布和线性插值路径，但不同操作任务的动作分布差异很大。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph 离线["离线构造 (训练前, 之后固定)"]
+    A["标准 FM 预热得到基础策略 vθ0<br/>高斯源 + 线性插值"] --> B["对专家动作块做流反演<br/>x1 → x0_hat, 按任务汇总为噪声库 Bτ"]
+    B --> C["每个任务拟合 MPPCA 多模态源 qτ<br/>EM 估计"]
+    C --> D["源协方差 Cs 与专家协方差 Cd<br/>高斯最优传输映射 Tτ"]
+    D --> E["特征分解得 Rτ 与缩放比 sτj<br/>sτj>1 为扩张方向"]
+    E --> F["调度强度 ρτj = κ·tanh(γ·log sτj)<br/>aτj(t) = (1-t)·exp(ρτj·t), 构成 Kτ"]
+    G["轻量语言选择器 ψ: MiniLM + MLP"]
+  end
+  subgraph 训练["继续训练速度场"]
+    H["x0 ~ qτ, 专家动作 x1"] --> I["xt = x1 + (1-t)·exp(-tKτ)(x0-x1)<br/>速度目标 ut"]
+    I --> J["FM 损失训练 vθ"]
+  end
+  subgraph 推理["推理"]
+    K["语言指令 ℓ"] --> L["选择器得 τ_hat, 取 qτ_hat 与 Kτ_hat"]
+    L --> M["采样 x0 ~ qτ_hat"]
+    M --> N["调度感知求解器<br/>默认一个两阶段步, 两次网络评估"]
+    N --> O["动作块"]
+  end
+  C --> H
+  F --> I
+  G --> L
+  J --> N
+```
+
+图依据：论文 §3.2 流反演、§4.1–4.4（任务源构造、插值调度、训练与推理）、Fig.2、式 (3)–(10)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +117,7 @@ summary: "TOPS：通过重构 Flow 源分布与传输路径实现多任务机器
 - [tops-flow-source-transport-multitask_arxiv_2610_36694.md](../../sources/papers/tops-flow-source-transport-multitask_arxiv_2610_36694.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.36694](https://arxiv.org/abs/2610.36694)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36694)：已通读全文：方法（§3 预备与流反演、§4 任务源构造/插值调度/训练推理）；实验设定（§5.1）仅读到概览，附录证明与超参未逐条核对
 
 ## 推荐继续阅读
 

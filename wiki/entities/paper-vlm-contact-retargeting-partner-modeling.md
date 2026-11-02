@@ -39,6 +39,27 @@ summary: "面向人形—人交互的 VLM 引导接触重定向与生成式伙�
 
 - 周报所述待解决的问题：近距离人机接触会造成严重遮挡，使人体姿态估计失效；人类示范数据本身也可能因互相遮挡而产生错误。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人-人动捕示范（Inter-X，SMPL-X）"] --> B["几何候选接触：宽松网格距离筛选"]
+    B --> C["VLM（Gemini 2.0 Flash）校验<br/>多视角渲染 + 候选接触 + 交互描述 → 保留语义接触"]
+    S["Laplacian 正则非刚性 ICP<br/>SMPL-X 顶点 → 人形表面对应"] --> D
+    C --> D["阶段 1：OmniRetarget 式运动学重定向<br/>手端锚定示范接触位置"]
+    D --> E["阶段 2：语义接触驱动的人-人形协同优化<br/>接触点吸附 + 距离保持场 + SDF 防穿插"]
+    E --> F["特权教师 π_T（PPO）<br/>可见完整伙伴状态；HOMIE 运动 + 上身残差；接触奖励"]
+    C -.语义接触标注.-> F
+    F --> G["DAgger 蒸馏到学生 π_S"]
+    H["仿真内 SMPL-X 人体渲染<br/>逼真深度图"] --> G
+    G --> I["ResNet 深度编码 + TCN 本体历史 → 嵌入 c_t → CVAE"]
+    I --> J["扩散式 Interaction Denoiser<br/>预测伙伴过去/现在/未来动作与人形近期轨迹"]
+    J --> K["联合损失 L_BC + KL + 生成预测 + 位姿估计"]
+    I --> L["零样本部署 Unitree G1<br/>DepthAnything 3 由 RGB 估计深度 + 本体感知"]
+```
+
+图依据：论文 §3.1、§3.2.1–3.2.2 / Fig.2、§4.4 真机部署。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +110,7 @@ summary: "面向人形—人交互的 VLM 引导接触重定向与生成式伙�
 - [vlm-contact-retargeting-partner-modeling_arxiv_2610_28523.md](../../sources/papers/vlm-contact-retargeting-partner-modeling_arxiv_2610_28523.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.28523](https://arxiv.org/abs/2610.28523)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28523)：已通读全文：语义接触建模与重定向（§3.1）、教师与学生（§3.2）、真机部署（§4.4）
 
 ## 推荐继续阅读
 

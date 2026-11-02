@@ -40,6 +40,25 @@ summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜�
 
 - 周报所述待解决的问题：不同机器人动作空间不一致，而视频通常不包含可直接使用的机器人控制标签。单一视角还可能无法完整观察操作运动。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["跨形态无动作视频 D_v<br/>同步多视角帧对 O_t = (o_t, o_t+H)"] --> ENC["多视角时空编码器 Φ<br/>空间块：跨视角联合注意力；时间块：跨 t∈{0,H} 注意力；视角平均融合"]
+  ENC --> BN["瓶颈 B 压缩<br/>z_t = B(Φ_H(O_t)) − B(Φ_0(O_t))"]
+  BN --> FDM["FDM：由 sg[e_t] 与 z_t 重建 o_t+H<br/>Huber 重建损失 L_LAM"]
+  BN --> LAB["所有 D_v 与 D_a 样本的潜动作标签 z"]
+  A["目标机器人少量带动作示范 D_a<br/>也经 LAM 得到潜动作"] --> LAB
+  X["上下文 x_t = (o_t, 指令 ℓ)<br/>冻结 VLM 主干 SmolVLM2-500M"] --> LE["潜动作专家 latent expert<br/>flow matching 预测潜计划 z_[t]（M=K/H 个）"]
+  LAB -->|"潜动作监督"| LE
+  LE --> AE["动作专家 action expert<br/>条件 (x_t, z_[t])，输出 K 步 action chunk"]
+  X --> AE
+  A -->|"动作监督"| AE
+  AE --> OUT["目标机器人动作 a_t:t+K"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C 与 Fig. 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +109,7 @@ summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜�
 - [multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md](../../sources/papers/multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.27794](https://arxiv.org/abs/2610.27794)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27794)：已通读全文：§III 方法（LAM、多视角融合、潜动作增强策略）、§IV 实现细节与数据集
 
 ## 推荐继续阅读
 

@@ -36,6 +36,38 @@ summary: "HC2Robot：基于超连接 Transformer 与预测前瞻的人形多地�
 
 - 周报所述待解决的问题：非对称 Actor–Critic 中，Critic 能够看到特权接触和地形信息，但部署 Actor 只能使用机载观测，导致复杂地形落脚决策存在信息差。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph inp["可部署输入"]
+    A["本体感觉历史 H_t（长度 L）<br/>角速度 / 重力投影 / 指令 / 关节 / 上一动作"]
+    B["深度图历史 → 深度编码器 E_d → 深度 token z_d"]
+  end
+  A --> C["Actor 编码器 E_a → 可部署特征 x_t"]
+  B --> C
+  C --> D["预测前瞻模块 PFM（输入为 x_t 的 detach 副本）<br/>逐脚预测下一次触地：时间（对数正态）/ 位置 / 支撑属性 / 不确定度<br/>另有一步速度与质心辅助头"]
+  D --> E["前瞻特征 e_t（28 维，含置信度）→ 适配器 → 32 维潜变量 u_t"]
+  A --> F["HC Transformer 骨干<br/>H_t 与 z_d 作 key-value，两个查询 token 复制到 S 条并行流<br/>每子层：流聚合 → 计算一次 → 分发并与残差流混合"]
+  B --> F
+  F --> G["运动头：预测两个未来运动状态"]
+  F --> H["晚期融合（仅在策略头）<br/>h = W_f [b_t ; u_t]"]
+  E --> H
+  H --> I["动作头：29 维高斯策略均值 → 关节动作"]
+  subgraph tr["仅训练时"]
+    J["特权信号：基线速度 / 质心 / 双脚落脚点描述符 → Critic"]
+    J --> K["仿真轨迹标注触地事件（含右删失）→ L_PFM"]
+    L["AMP 判别器 + 参考运动 → 风格奖励"]
+    M["PPO（clip）+ 未来运动状态 MSE"]
+  end
+  K -.监督.-> D
+  J -.价值函数.-> M
+  L -.-> M
+  M -.更新.-> F
+```
+
+图依据：论文 §III-A–D / Fig. 2、式 (2)–(16)。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +118,7 @@ summary: "HC2Robot：基于超连接 Transformer 与预测前瞻的人形多地�
 - [hc2robot-humanoid-parkour_arxiv_2610_36825.md](../../sources/papers/hc2robot-humanoid-parkour_arxiv_2610_36825.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.36825](https://arxiv.org/abs/2610.36825)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36825)：已通读全文：方法 §III-A–D（观测与特权信号、HC-Transformer、PFM 与晚期融合、训练与部署）与 §IV 实验协议
 
 ## 推荐继续阅读
 

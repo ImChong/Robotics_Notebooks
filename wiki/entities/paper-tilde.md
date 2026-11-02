@@ -41,6 +41,32 @@ summary: "TILDE（arXiv:2610.25376）：TILDE同时学习示范、学生访问�
 - 开源结论：**已开源**（步骤 2.5，2026-11-01）。公众号未给代码链接；项目页链接的 hku-sail/TILDE 经 git ls-remote 可达。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类示教数据 Ddemo"] --> B["微调预训练 EFM (π0.5) 得到教师 πT, 之后冻结"]
+    A --> C["学生 πS: 骨干预训练 (PaliGemma), 无机器人动作预训练<br/>先用 Ddemo 做行为克隆初始化"]
+    subgraph AD["AutoDAgger 数据采集"]
+        D["每个 episode 先由学生执行"] --> E["任务监视器: 奖励模型 Robometer<br/>输出任务进度 pt 与成功概率 qt"]
+        E --> F["执行管理器: 进度持续停滞且 qt ≤ θs 达 Tfail<br/>判定失败"]
+        F --> G["停止学生, 教师接管执行恢复轨迹"]
+        G --> H{"教师恢复<br/>成功?"}
+        H -- "否" --> I["丢弃该 episode"]
+        H -- "是" --> J["学生 rollout + 教师恢复拼成组合轨迹<br/>加入聚合数据集 Drec / Droll"]
+    end
+    B --> G
+    C --> D
+    J --> K["动作空间蒸馏: 按样本来源选损失"]
+    A --> K
+    K --> L["Ddemo, Drec: 执行动作行为克隆 + λKD 教师蒸馏"]
+    K --> M["Droll (学生访问状态): 仅教师蒸馏"]
+    L --> N["更新后的学生策略"]
+    M --> N
+```
+
+图依据：论文 §3.2-3.4 / Fig.2 / 式(2)-(9)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +109,7 @@ summary: "TILDE（arXiv:2610.25376）：TILDE同时学习示范、学生访问�
 - [tilde_arxiv_2610_25376.md](../../sources/papers/tilde_arxiv_2610_25376.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.25376](https://arxiv.org/abs/2610.25376)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25376)：已通读全文：§3 方法（AutoDAgger、蒸馏目标），§4.1 实验设置与实现细节
 
 ## 推荐继续阅读
 

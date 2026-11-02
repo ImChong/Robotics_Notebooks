@@ -41,6 +41,23 @@ summary: "Spatial Memory by Agents（arXiv:2610.22736）：在固定预算内迭
 - 开源结论：**待发布**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["共享模块池: YOLOE / FastSAM / OpenCLIP / DINOv3<br/>Qwen3.5-4B 描述 / Qwen3-VL-Embedding-2B"] --> B["设计者智能体 (coding agent) 从未实现的 builder 起步<br/>可改: 记忆构建器 B, 检索工具 T, 工具使用说明 p"]
+    P["公开开发数据与反馈 (1,284 条查询)"] --> B
+    B --> C["实现 → 评估 → 检查 → 保留/回退 → 修订 循环<br/>固定查询智能体 Qwen3.5-4B 评测, 24 小时预算<br/>依据资源修正后的公开得分 Jreport"]
+    C --> B
+    C --> D["冻结实现 (仅用公开反馈选择)"]
+    D --> E["从留出的观测历史 O 构建记忆包 Ms = B(O)<br/>构建时不接触下游问题"]
+    E --> F["固定查询智能体经检索工具 T 与说明 p 回答<br/>a = Aθ0(q; Ms, T, p)"]
+    F --> G["五条任务线评测 (留出 9,063 条查询)<br/>T1 类别定位 · T2 指代定位 · T3 空间问答 · T4 时间问答 · T5 导航历史问答"]
+    G --> H["Unified = 五线等权平均; 另报构建时间、包大小、延迟"]
+```
+
+图依据：论文 §III Spatial Memory Design with Coding Agents / §IV 评测协议 / Fig.1-3 / 式(1)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +100,7 @@ summary: "Spatial Memory by Agents（arXiv:2610.22736）：在固定预算内迭
 - [spatial_memory_by_agents_arxiv_2610_22736.md](../../sources/papers/spatial_memory_by_agents_arxiv_2610_22736.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.22736](https://arxiv.org/abs/2610.22736)
+- [arXiv PDF](https://arxiv.org/pdf/2610.22736)：已通读全文：§III 设计者协议与冻结的构建-打包-查询评测，§IV 五条任务线与评分，§V 实验设置
 
 ## 推荐继续阅读
 

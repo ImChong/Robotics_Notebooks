@@ -37,6 +37,34 @@ summary: "连续动作世界模型：学习跨本体时空动力学先验（arXi
 
 - 周报所述待解决的问题：不同机器人具有不同动作维度和控制频率。直接学习离散动作序列，会使策略依赖特定本体与采样频率。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph SA["Stage A: 跨本体动作函数预训练"]
+    A1["带时间戳的末端轨迹<br/>+ 有效性掩码 + 执行上下文 c"] --> A2["同一轨迹取两种采样率视图 A1 / A2"]
+    A2 --> A3["MoT 编码器 E<br/>XYZ / Q / G 三流 + 联合注意力<br/>96 个 token × 256 维"]
+    A3 --> A4["函数隐变量 Z(1), Z(2)"]
+    A4 --> A5["时间查询解码器 D<br/>重建源时间戳与 73 点查询网格"]
+    A4 --> A6["两视图隐变量一致性损失 (MSE)"]
+  end
+  subgraph SB["Stage B: 接入世界模型 (E 与 D 冻结)"]
+    B1["RGB (头/双腕) + 语言 → VLM 特征<br/>世界解码器预测未来视觉特征"] --> B2["观测模型 + 隐变量预测头<br/>(含本体状态; 当前视觉特征作输出残差)"]
+    B2 --> B3["预测函数隐变量 Ẑ"]
+    B4["专家未来轨迹 → 冻结 E → 目标 Z*"] --> B5["隐变量余弦损失 L_latent"]
+    B3 --> B5
+    B3 --> B6["冻结 D 解码动作 → 物理重建损失 L_phys"]
+  end
+  A5 -.->|"冻结 E 与 D 供 Stage B 使用"| B4
+  subgraph SI["推理"]
+    I1["当前观测 → 预测 Ẑ"] --> I2["按执行频率 f 取时间查询 τ_k<br/>D 解码末端动作 (锚定当前位姿)"]
+    I2 --> I3["末端 / 控制接口执行"]
+  end
+  B6 -.->|"训练后部署"| I1
+```
+
+图依据：论文 §3.1–3.5 / Fig.1（Training Stage A、Stage B、Inference）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +115,7 @@ summary: "连续动作世界模型：学习跨本体时空动力学先验（arXi
 - [continuous-action-world-models-cross-embodiment_arxiv_2610_40401.md](../../sources/papers/continuous-action-world-models-cross-embodiment_arxiv_2610_40401.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40401](https://arxiv.org/abs/2610.40401)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40401)：已通读全文：§1–§5（§3 方法：函数表示、Stage A 预训练、Stage B 接入世界模型、时间查询执行；§4 实验）
 
 ## 推荐继续阅读
 

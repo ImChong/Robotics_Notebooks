@@ -41,6 +41,31 @@ summary: "Touch-JEPA（arXiv:2610.28519）：Touch-JEPA在手部几何上预测�
 - 开源结论：**部分开源**（步骤 2.5，2026-10-31）。公众号未给代码链接；项目页链接 mnseong/touch-jepa，git ls-remote 失败（仓库不存在或私有），页面另含 soon 字样，不能当作已开源。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["手-物体 RGB 视频片段 x（T=16 帧）"] --> B["冻结 HaWoR 估计 MANO 手部几何 g<br/>778 顶点 + 21 关节，含投影与网格可见性"]
+    A --> Y["y-encoder（x-encoder 的 EMA 教师）<br/>输入未遮挡 RGB → 视觉特征场"]
+    B --> Y2["在手表面投影位置采样 → 手表面目标 ȳ（stop-grad）"]
+    Y --> Y2
+    A --> M["交互遮挡 + 解剖区域遮挡 → 遮挡 RGB x̂"]
+    M --> X["x-encoder（几何编码器）<br/>V-JEPA 2.1 ViT-B/16 + LoRA；顶点/关节 token、部位注意力、全局与时间交换"]
+    B --> X
+    X --> Z["手表面潜变量 z"]
+    Z --> P["残差预测器 q_ω → 预测目标特征"]
+    P --> L1["L_SSL = 稠密预测 + 0.5 补丁重建 + 0.05 WeakSIGReg"]
+    Y2 --> L1
+    Z -->|仅有标注的子集| T["两层头 → 接触 logit 与幅值<br/>L_tactile"]
+    L1 --> J["联合目标 L = L_SSL + λ_tac·L_tactile"]
+    T --> J
+    J --> D["训练后丢弃预测器与头<br/>冻结 y-encoder + 新读出头"]
+    D --> O["接触判别 / 触觉幅值估计"]
+    D --> R["Touch-JEPA-AC：动作条件预测器 + CEM 规划（仿真机器人手）"]
+```
+
+图依据：论文 §3.1–3.5、Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +108,7 @@ summary: "Touch-JEPA（arXiv:2610.28519）：Touch-JEPA在手部几何上预测�
 - [touch_jepa_arxiv_2610_28519.md](../../sources/papers/touch_jepa_arxiv_2610_28519.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28519](https://arxiv.org/abs/2610.28519)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28519)：已通读全文：几何引导掩码预测与几何编码器（§3.1–3.2）、自监督与触觉监督训练（§3.3–3.4）、Touch-JEPA-AC（§3.5）、实验设定（§4.1）
 
 ## 推荐继续阅读
 

@@ -40,6 +40,28 @@ summary: "LocoPilot：面向移动操作策略学习的单人双向遥操作（a
 
 - 周报所述待解决的问题：单人难以同时控制四足底盘、身体姿态、机械臂和夹爪，而无实机示范又缺少平台特有观测和动作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OP["操作者：右手握 Leader 臂手柄 + 两个 JoyCon"] --> LDR["Leader：Piper L 臂<br/>重力补偿 + 轻阻尼 + 反射力 αΛr"]
+  OP -->|"JoyCon 摇杆/按键"| CMD["手柄指令：底座速度 vx, vy、偏航率 ωz、机身俯仰 θ、夹爪开度 g<br/>（另有回合标记）"]
+  LDR -->|"关节位置通道：Follower 做 PD + 重力补偿跟踪"| FOL["Follower：Go2 四足 + Piper L 臂<br/>夹爪相机 D435 + 头部相机 D405"]
+  FOL -->|"动量残差观测器 + 5 Hz 低通估计外力矩 r"| PASS["被动层：能量罐 H 调制 α"]
+  PASS --> LDR
+  CMD --> ACT["统一 11 维 loco-manipulation 动作 a"]
+  LDR --> ACT
+  ACT --> LOCO["RL 运动策略（BinWalker 改）→ 12 个腿关节目标"]
+  ACT --> ARM["机械臂关节参考 → 低层关节控制器"]
+  ACT --> GRP["夹爪接口"]
+  FOL --> REC["记录模块：双相机 RGB-D + 本体状态 + 动作 + 语言指令<br/>导出 LeRobot 格式"]
+  ACT --> REC
+  REC -.->|"训练 VLA"| POL["部署：策略推理节点替换 Leader/遥操作/记录模块<br/>输出同一 11 维动作"]
+  POL -.-> ACT
+```
+
+图依据：论文 §II-A / §II-B / §III-A / §III-B 与 Fig. 2–3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +112,7 @@ summary: "LocoPilot：面向移动操作策略学习的单人双向遥操作（a
 - [locopilot-bilateral-teleop-loco-manipulation_arxiv_2610_27998.md](../../sources/papers/locopilot-bilateral-teleop-loco-manipulation_arxiv_2610_27998.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27998](https://arxiv.org/abs/2610.27998)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27998)：已通读全文：§II 系统概览、§III 遥操作与数据采集框架（双边遥操作、统一动作接口）、§IV 实验
 
 ## 推荐继续阅读
 

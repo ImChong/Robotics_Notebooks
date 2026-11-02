@@ -37,6 +37,27 @@ summary: "Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视�
 
 - 周报所述待解决的问题：直接视觉 RL 需要持续渲染图像并执行视觉网络，计算成本高；Teacher–Student 两阶段蒸馏又存在模仿误差。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["N 个并行环境分两路"] --> B["M 个渲染环境:<br/>视觉策略 π_θ(o) 采样"]
+  A --> C["N−M 个不渲染环境:<br/>状态模仿器 μ_ψ(s) 采样"]
+  B --> D["共享 replay D<br/>(s,a,r,s',d)"]
+  C --> D
+  B --> E["渲染 replay D_nom<br/>配对 (s,o)"]
+  E --> F["逆向蒸馏: μ_ψ(s) 拟合<br/>stop-grad 的无噪声 π_θ(o)<br/>(L_aux)"]
+  F --> G["EMA 副本 μ_ψ̄<br/>提供续接动作"]
+  D --> H["共享特权 critic 更新<br/>(FastTD3 双分布式 critic)"]
+  G -->|"TD 目标的 s' 续接动作<br/>无需后继图像"| H
+  E --> I["视觉策略更新:<br/>固定 critic，最大化 Q_ϕ(s, π_θ(o))"]
+  H --> I
+  I -->|"策略演化，模仿器持续跟踪"| B
+  I --> J["部署: 仅用 π_θ(o)"]
+```
+
+图依据：论文 §4 / Algorithm 1 / Fig.1–2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +107,7 @@ summary: "Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视�
 - [echo-visual-rl-off-policy-experience_arxiv_2610_37865.md](../../sources/papers/echo-visual-rl-off-policy-experience_arxiv_2610_37865.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.37865](https://arxiv.org/abs/2610.37865)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37865)：已通读全文：§1–§5、Algorithm 1（§4 方法：逆向蒸馏 + 共享特权 critic）
 
 ## 推荐继续阅读
 

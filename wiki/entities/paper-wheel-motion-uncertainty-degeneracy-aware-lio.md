@@ -39,6 +39,27 @@ summary: "Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确�
 
 - 周报所述待解决的问题：走廊等几何退化环境需要轮运动提供额外约束，但打滑、悬空会使轮速预测失真，二值接触状态不能反映不同方向上的可靠性。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["IMU / 关节与轮编码器 / LiDAR"] --> B["IMU 传播：标准 IMU 动力学<br/>+ 四个轮心作为持久状态"]
+    A --> C["无滑移滚动模型<br/>由接触向量与滚动率得到名义轮心速度 u_i"]
+    C --> B
+    A --> D["CovNet：本体历史 H=20 → MLP<br/>输出每轮方向相关过程噪声 Σ_i"]
+    D --> B
+    B --> E["FK 更新：正运动学轮心位置观测<br/>EKF 更新状态与协方差"]
+    E --> F["FK 后验作为 LiDAR 先验"]
+    A --> G["LiDAR 去畸变 + 点到面残差（同 FAST-LIO2）"]
+    G --> H["DAP：信息矩阵 EVD<br/>保留大特征值方向，投影 Jacobian"]
+    F --> I["迭代 LiDAR 更新（ESIKF）"]
+    H --> I
+    I --> J["位姿估计与点云地图"]
+    K["Isaac Lab 仿真数据<br/>可微滤波 + 速度误差损失"] -.离线训练，冻结后部署.-> D
+```
+
+图依据：论文 §III-A–D、Fig.2 / Fig.4、§IV-A 训练设定。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +109,7 @@ summary: "Wheel Uncertainty LIO：面向四足轮腿机器人的轮运动不确�
 - [wheel-motion-uncertainty-degeneracy-aware-lio_arxiv_2610_26550.md](../../sources/papers/wheel-motion-uncertainty-degeneracy-aware-lio_arxiv_2610_26550.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26550](https://arxiv.org/abs/2610.26550)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26550)：已通读全文：系统概览与 FK 更新（§III-A/B）、CovNet 与训练（§III-C、§IV-A）、DAP 与 LiDAR 更新（§III-D）
 
 ## 推荐继续阅读
 

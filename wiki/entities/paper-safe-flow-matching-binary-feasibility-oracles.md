@@ -37,6 +37,26 @@ summary: "二值可行性安全流匹配：通过二值可行性判定学习安�
 
 - 周报所述待解决的问题：Flow Matching 生成的机器人动作可能违反关节限制或碰撞约束，而真实系统中的可行域不一定具有可微解析表达式。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测与语言指令 o_t，任务上下文 ξ_t"] --> X0["构造可行初始样本 X_0<br/>在当前关节状态邻域采样，经 oracle 过滤，沿时域重复"]
+    X0 --> EXP["动作专家 Δ_θ(X_k, k, o_t) 预测有限更新 D_k"]
+    EXP --> FWD["前向：oracle 射线搜索首次出界<br/>粗扫描 + 局部二分，得 α̂_k"]
+    FWD --> SAFE["安全更新 Δ_k^safe = α̂_k·d_k<br/>X_{k+1} = X_k + Δ_k^safe（逐时域元素）"]
+    SAFE -->|"k+1 &lt; T，继续迭代"| EXP
+    SAFE -->|"k = T"| OUT["输出 H 步动作块，每个配置均在可行域内"]
+    FWD -->|"仅训练期，截断更新时"| NRM["后向：在首次出界点 z_c 附近做对称二值查询 z_c ± ρu_i<br/>投票估计外法向 n̂_k"]
+    NRM --> JAC["边界感知代理 Jacobian<br/>J_k ≈ α̂_k (I − d_k n̂_kᵀ / n̂_kᵀ d_k)"]
+    JAC --> LOSS["损失 ‖D_k^safe − D_k*‖²，经 J_k 反传更新 θ"]
+    LOSS -.-> EXP
+    OR["二值可行性 oracle O_s(q; ξ_t) ∈ {0,1}"] -.-> FWD
+    OR -.-> NRM
+```
+
+图依据：论文 §2 预备知识、§3 Oracle-Guided Differentiable Safeguard、Algorithm 1、Fig. 1、附录 B；训练与推理使用同一 safeguard。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +107,7 @@ summary: "二值可行性安全流匹配：通过二值可行性判定学习安�
 - [safe-flow-matching-binary-feasibility-oracles_arxiv_2610_40075.md](../../sources/papers/safe-flow-matching-binary-feasibility-oracles_arxiv_2610_40075.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40075](https://arxiv.org/abs/2610.40075)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40075)：已通读全文：§2 问题表述（离散时间流匹配）、§3 safeguard 前向/后向、Algorithm 1、附录 A–C
 
 ## 推荐继续阅读
 

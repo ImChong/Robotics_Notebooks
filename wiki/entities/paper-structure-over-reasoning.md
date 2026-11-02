@@ -42,6 +42,34 @@ summary: "Structure over Reasoning（arXiv:2610.25130）：把小VLM的方向判
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页为 anonymous.4open.science 匿名链接，curl 返回 HTTP 401，无法核查代码。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["每步输入: 12 视角 RGB + 深度全景, 位姿, 语言指令"] --> B["深度 → 距离扫描 → 占据栅格 (鸟瞰地图)<br/>可达自由空间 St 与测地距离"]
+    B --> C["自由空间提取骨架图<br/>节点为走廊/房间中心, 边界节点为 frontier"]
+    A --> D["Qwen3-VL-4B 问题一: 逐视角打 0-4 分<br/>该方向看起来像目标吗"]
+    D --> E["路线无关语义场 (belief field)<br/>中心化得分投影到 30° 楔形, 对数域回火更新 + 小均匀泄漏"]
+    C --> F{"指令含路线子句?<br/>(精细粒度 kr > 0)"}
+    F -- "是" --> G["门控路线查询 (CoT): 给出 frontier 列表<br/>模型选出路线所指的 frontier 作为提案"]
+    G --> H["测地核重加权场, 按 λ̃ 收缩耦合<br/>(提案只重分配场内质量)"]
+    F -- "否 (粗粒度)" --> I["门关闭, 仅语义场驱动"]
+    E --> H
+    E --> I
+    H --> J["动作效用: 场质量 + 提案牵引 + 探索奖励<br/>− 行程代价 − 折返惩罚"]
+    I --> J
+    J --> K["在基准航点预测器给出的候选中取 argmax 并移动"]
+    A --> L["Qwen3-VL-4B 问题二: 最佳视角 + 指令 + 轨迹<br/>此处是否应停止 (一词回答)"]
+    L --> M{"终止器阶段一: 轨迹门<br/>当前轨迹得分不低于历史最佳 − δ?"}
+    M -- "接受" --> N["停止, 结束 episode"]
+    M -- "拒绝" --> K
+    K --> O{"终止器阶段二: 剩余预算 T−t > 回到最佳位置所需步数 + 1?"}
+    O -- "是" --> A
+    O -- "否" --> P["回走到轨迹得分最佳位置并结束"]
+```
+
+图依据：论文 §III Method (A-D) / Fig.1 / 式(1)-(9)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +113,7 @@ summary: "Structure over Reasoning（arXiv:2610.25130）：把小VLM的方向判
 - [structure_over_reasoning_arxiv_2610_25130.md](../../sources/papers/structure_over_reasoning_arxiv_2610_25130.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.25130](https://arxiv.org/abs/2610.25130)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25130)：已通读全文：§III 方法（鸟瞰图与骨架图、路线无关语义场、路线通道与门控耦合、两阶段终止器），§IV 实验与消融
 
 ## 推荐继续阅读
 

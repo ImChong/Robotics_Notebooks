@@ -44,6 +44,29 @@ summary: "Spotter（2026）：具身模型持续执行，并行的本地 screene
 - 具身模型失败后很少能自我恢复，而 VLM 主导的串行规划会带来延迟与长段误差。
 - 把 VLM 的职责缩小为「发现、修复、检查」，使本地开源 Qwen 也能工作，无需任务成功信号（据 README）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["冻结的具身模型 π (System 1)<br/>输入图像 + 机器人状态 + 语言指令, 输出 H 步动作块 Ci"] --> B["持续执行下一块<br/>仅当领先检查不超过 K 块 (i − j ≤ K)"]
+    A --> C["每块记录 zi: 相机画面 + 遥测<br/>送入本地筛查器"]
+    C --> D["筛查器 S (本地 Qwen): 风险分 ri<br/>ri ≥ τ 或空夹爪证据或调用失败 则打标 (偏重召回)"]
+    D --> E{"连续两次打标<br/>或空夹爪证据?"}
+    E -- "否" --> B
+    E -- "是" --> F["前沿 VLM 法官 J 判定 (异步, π 继续运行)<br/>输入: 近期块 + 回合历史; 看不到深度和成功信号"]
+    F --> G{"裁决 v"}
+    G -- "ok" --> B
+    G -- "giveup" --> H["交还控制给 π"]
+    G -- "intervene" --> I["给出诊断 δ、期望 e 与原语计划 p<br/>(Move to point / Lift / Rotate wrist / Set gripper / Retreat / Act ...)"]
+    I --> J["执行器用深度把像素目标抬升到 3-D<br/>分段执行, 每段后法官看新图决定继续/已修复/放弃"]
+    J --> K["Hand back: 交还控制, π 从修复后状态继续, 不回滚"]
+    K --> L["下一监督窗口仅观察: 法官先判断期望是否成立<br/>成立则不再重复修复, 否则换一种修复方式"]
+    L --> B
+    H --> B
+```
+
+图依据：论文 §3.2 Spotter（Parallel supervision / Screening, repair, and reflection）/ Fig.3 / 式(1)-(3) / Table 2
+
 ## 方法与机制
 
 - **具身模型（System 1）：** 持续执行，常规路径不等待 VLM。
@@ -92,6 +115,7 @@ summary: "Spotter（2026）：具身模型持续执行，并行的本地 screene
 
 - [Spotter 论文归档](../../sources/papers/spotter_arxiv_2609_36808.md)
 - [Spotter 代码仓归档](../../sources/repos/spotter.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.36808)：已通读全文：§3.2 并行监督、筛查-修复-反思、异步问题与物理重置，§4.1 实验设置与 Table 3
 
 ## 推荐继续阅读
 

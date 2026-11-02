@@ -37,6 +37,28 @@ summary: "HiFOR：面向视觉语言动作模型的分层未来预测与动作�
 
 - 周报所述待解决的问题：VLA 引入未来状态预测后，短期动作变化与长期任务目标通常分别建模。预测得到的大量未来信息也不一定与当前动作有关。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["指令 L + 多视角观测 O_t + 机器人状态 s_t"] --> B["视觉语言模型 VLM<br/>得到视觉 token V_t 与语言 token E_L"]
+  subgraph data["训练数据构造（§3.3 / Fig. 3）"]
+    D1["规划 Agent 把指令拆成语义里程碑模板"] --> D2["在专家示范中自动定位里程碑完成时刻 t_k<br/>夹爪跳变 / 运动阶段 / 状态证据 + 时序一致性 + 置信度"]
+    D2 --> D3["冻结 DINOv2 ViT-L/14 特征<br/>池化为 4×4 空间网格 → 短期 / 里程碑 / 目标三层监督"]
+  end
+  B --> C["层次前瞻预测 §3.4<br/>三组可学习查询 Q_s、Q_m、Q_g + 层次依赖掩码 HDM"]
+  C --> E["视觉预测头 → 各层未来 DINOv2 特征<br/>短期另加未来机器人状态预测头"]
+  D3 -.监督 L_HFP.-> E
+  E --> F["结构感知潜世界建模 §3.5<br/>加视角 / 空间 / 时域位置编码 → 结构化世界 W_t（水平 × 视图 × 空间）"]
+  F --> G["动作引导的分解式世界检索 AWR §3.6<br/>按去噪步用动作专家隐状态生成查询<br/>依次做 horizon、view、space 注意力"]
+  H["动作专家（含噪声动作）"] -- "隐状态" --> G
+  G -- "检索到的未来特征经残差注入" --> H
+  H --> I["动作块 A_t"]
+  I --> J["总损失 L = L_ACT（流匹配）+ L_HFP"]
+```
+
+图依据：论文 §3.1–3.6、式 (12) / Fig. 2、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +109,7 @@ summary: "HiFOR：面向视觉语言动作模型的分层未来预测与动作�
 - [hifor-hierarchical-foresight-vla_arxiv_2610_40373.md](../../sources/papers/hifor-hierarchical-foresight-vla_arxiv_2610_40373.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40373](https://arxiv.org/abs/2610.40373)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40373)：已通读全文：方法 §3.1–3.6（里程碑数据构造、层次前瞻预测、结构化潜世界、AWR）、训练目标 (12) 与 §4 实验设定
 
 ## 推荐继续阅读
 

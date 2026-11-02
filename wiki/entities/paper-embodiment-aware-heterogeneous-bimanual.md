@@ -42,6 +42,29 @@ summary: "Embodiment-Aware Heterogeneous Bimanual（arXiv:2610.23551）：从单
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单次人类示范 RGB-D"] --> B["FoundationPose 6D 位姿跟踪 + 时间滤波"]
+    B --> C["物体轨迹离散为 N 段 ξ_i"]
+    M["已知物体 CAD mesh"] --> B
+    M --> G["geometry-based 抓取生成器 SampleGrasps"]
+    G --> H["DPP 熵子集选择：兼顾抓取质量与多样性"]
+    H --> I["为每个候选抓取生成末端轨迹"]
+    C --> I
+    I --> J["可行性检查：抓取 / EAIK 解析逆解 / 碰撞自由运动规划"]
+    J --> K["可行 arm-trajectory 状态 s_i = (r_i, τ_i)"]
+    K --> L["段代价 C：平滑度 C1 + Yoshikawa 可操作度 C2"]
+    K --> N["转移代价 Φ：交接 handover 代价 / 抓取对不兼容或同臂换轨迹为无穷"]
+    L --> O["动态规划 Bellman 递推 V_i(s)"]
+    N --> O
+    O --> P["回溯前驱 π_i(s) 得全局最优臂分配序列"]
+    P --> Q["双 Franka FR3 执行（吸盘 + 平行夹爪）"]
+```
+
+图依据：论文 §IV-A–E / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +108,7 @@ summary: "Embodiment-Aware Heterogeneous Bimanual（arXiv:2610.23551）：从单
 - [embodiment_aware_heterogeneous_bimanual_arxiv_2610_23551.md](../../sources/papers/embodiment_aware_heterogeneous_bimanual_arxiv_2610_23551.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23551](https://arxiv.org/abs/2610.23551)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23551)：已通读全文：摘要、§I–§V（问题建模、轨迹提取、抓取生成与 DPP、可行性与代价、交接转移、动态规划、beam search、实验设定）；实验结果表仅浏览
 
 ## 推荐继续阅读
 

@@ -43,6 +43,26 @@ summary: "UMI-WM（arXiv:2610.23913）：UMI-WM分别注入左右手动作，再
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-01）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["数据金字塔: 公开机器人数据 / 开放场景 UMI / 棚内 UMI<br/>统一为 30 Hz 腕部相机观测-动作模式"] --> B["每臂相对首帧的 10D 动作<br/>相对位置 + rot6d 旋转 + 夹爪宽度"]
+    B --> C["输入: 双腕观测历史 + 每臂动作 + 相机内外参<br/>冻结 VAE 编码, 共享时序 Transformer 编码动作"]
+    C --> D["视频 DiT (初始化自 Matrix-Game 3.5)<br/>各臂动作经门控注入自己的腕部视图流"]
+    D --> E["SRAE 身份编码 + Sparse Hub Attention<br/>稀疏 hub token 在两路视图间交换场景信息"]
+    E --> F["相机感知几何条件<br/>CameraNoise + CamRay / PRoPE"]
+    F --> G["Teacher: 双向, 30 步去噪<br/>三阶段渐进训练 (单腕 → 双腕 → 校准双腕)"]
+    G --> H["块因果适配 + 蒸馏为 Student (4 步去噪)<br/>逐块自回归生成"]
+    H --> I["联合生成左右腕部视频"]
+    I --> J["IDM: X2SAM 前景掩码 + VGGT 背景特征估位姿<br/>夹爪裁剪估宽度"]
+    J --> K["恢复的相对位姿与夹爪宽度"]
+    K --> L["BAF: 与条件动作比较, 评估动作遵循"]
+    K --> M["经逆运动学用于机器人执行"]
+```
+
+图依据：论文 §3.2、§4.1-4.3 / Fig.4 / 附录 B.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +106,7 @@ summary: "UMI-WM（arXiv:2610.23913）：UMI-WM分别注入左右手动作，再
 - [umi_wm_arxiv_2610_23913.md](../../sources/papers/umi_wm_arxiv_2610_23913.md)
 - [wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md](../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md)
 - [arXiv:2610.23913](https://arxiv.org/abs/2610.23913)
+- [arXiv PDF](https://arxiv.org/pdf/2610.23913)：已通读全文：§3 数据与处理流水线，§4 UMI-WM 动作条件、多视图建模与因果生成、IDM 与 BAF，§5 实验设置，附录 B.3 训练与蒸馏
 
 ## 推荐继续阅读
 

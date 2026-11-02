@@ -37,6 +37,22 @@ summary: "通过示范扩展与执行设计改善精细机器人操作（arXiv:2
 
 - 周报所述待解决的问题：精细操作不仅依赖策略预测，还受到示范覆盖范围、相机变化、动作执行周期和夹爪控制映射的影响。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["同一初始场景 x_0 + 指令族 L_z<br/>官方专家规划器 E 生成各指令轨迹"] --> B["仅保留所有指令变体均成功的场景族<br/>(指令配对)"]
+  B --> C["ManiSkill3/SAPIEN 重渲染<br/>恢复状态 x_t，改变相机/光照参数 η<br/>本体与动作目标保持不变"]
+  C --> D["层级采样: 增广类别 → 指令 → 基轨迹<br/>→ 渲染变体 → 窗口起点"]
+  D --> E["监督微调预训练 Xiaomi-Robotics-1<br/>输入: 指令 + 基座/手眼 RGB + 关节/夹爪状态<br/>输出: K=30 步末端动作 (flow matching)"]
+  E --> F["部署: 末端局部偏移 → 世界系目标<br/>逆运动学 → 7 个关节增量"]
+  F --> G["夹爪映射: 指缝目标裁剪 [−0.01, 0.04] m<br/>低于阈值 θ_g 则全闭合 (T3 用连续目标)"]
+  G --> H["执行前 H ≤ K 步动作后重新观测<br/>(receding-horizon 重规划)"]
+  H -->|"新观测"| E
+```
+
+图依据：论文 §2.1–2.4 / Fig.1 / Table 1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +103,7 @@ summary: "通过示范扩展与执行设计改善精细机器人操作（arXiv:2
 - [demonstration-expansion-execution-design-fine-grained_arxiv_2610_40430.md](../../sources/papers/demonstration-expansion-execution-design-fine-grained_arxiv_2610_40430.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.40430](https://arxiv.org/abs/2610.40430)
+- [arXiv PDF](https://arxiv.org/pdf/2610.40430)：已通读全文：§1–§4（§2 方法：配对示教扩展、物理一致视觉扩展、层级采样、VLA 微调、闭环执行；§3 实验）
 
 ## 推荐继续阅读
 
