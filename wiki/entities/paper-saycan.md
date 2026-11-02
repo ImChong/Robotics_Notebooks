@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm, planning, manipulation, google]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-02
 arxiv: "2204.01691"
 code: https://github.com/google-research/google-research/tree/master/saycan
 related:
@@ -11,8 +11,10 @@ related:
   - ../methods/saycan.md
   - ../methods/vla.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
   - ../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md
+  - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: "SayCan（arXiv:2204.01691，Google）：LLM 生成子任务候选，价值/成功率估计作 affordance 过滤器，分层规划真机厨房任务。"
 ---
 
