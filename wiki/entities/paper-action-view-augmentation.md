@@ -38,6 +38,30 @@ summary: "Action-View Augmentation（CoRL 2025）：单次鱼眼手眼示范→�
 
 微小初始位姿变化或新障碍就让 visuomotor 策略崩溃；采集千次真机不现实。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[手持鱼眼 UMI 采集<br/>场景扫描视频 + 任务示范视频] --> B[COLMAP 重建场景点云]
+    A --> C[训练 Fisheye 3DGS<br/>KB8 鱼眼射线采样]
+    B --> D[按碰撞阈值切分<br/>pre-contact / post-contact]
+    D --> E[轨迹优化<br/>funnel / collision / render / smooth 损失]
+    F[Objaverse 障碍物点云] --> G[RRT* 初始轨迹<br/>+ 凸包碰撞约束]
+    G --> E
+    E --> H[自由空间轨迹<br/>不同初始位姿]
+    E --> I[避障轨迹]
+    H --> J[Fisheye 3DGS 渲染鱼眼观测]
+    I --> K[叠加障碍物 Fisheye 3DGS 渲染]
+    C --> J
+    C --> K
+    J --> L[SAM2 分割并叠加夹爪]
+    K --> L
+    L --> M[增广 action-view 数据 D~]
+    M --> N[原始 D ∪ D~ 训练 Diffusion Policy]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2。
+
 ## 核心原理（方法）
 
 单次扫描+示范 → 鱼眼适配 3DGS → 轨迹优化生成无碰撞路径 → 多视角鱼眼渲染。
@@ -78,6 +102,7 @@ summary: "Action-View Augmentation（CoRL 2025）：单次鱼眼手眼示范→�
 
 - [action_view_augmentation_arxiv_2606_19586.md](../../sources/papers/action_view_augmentation_arxiv_2606_19586.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2606.19586)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4、Fig.2
 
 ## 推荐继续阅读
 
