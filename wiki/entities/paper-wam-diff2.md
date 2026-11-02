@@ -42,6 +42,24 @@ summary: "层次 AR→扩散蒸馏的高效智驾 VLA：分块适配/蒸馏/跨�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["多视角图像 + 语言指令 + 带噪 response tokens<br/>(统一 token 空间)"] --> BASE["Qwen3-VL 架构<br/>视觉编码器 + 跨模态 adapter + decoder-only 骨干"]
+  BASE --> ATT["块因果注意力<br/>块内双向并行 / 块间因果"]
+  P1["(可选) 多任务 AR 预训练<br/>next-token, 5 epochs"] --> S1["阶段 I 渐进块适配<br/>B: 1→4→8→16→32, 逐级初始化"]
+  S1 --> S2["阶段 II 块级蒸馏<br/>小块扩散教师 → 大块学生 (JSD)<br/>4→8→16→32"]
+  S2 --> S3["阶段 III 跨尺度整模蒸馏 (非必需)<br/>8B B=32 扩散教师 → 2B 学生 (JSD)"]
+  S3 --> M["WAM-Diff2 (2B, B=32)"]
+  M --> DEC["并行 remasking 解码<br/>全 mask 起步, 保留高置信 token, 其余重 mask"]
+  DEC --> OPT["FlashInfer 注意力核 + CUDA Graph"]
+  DEC --> OUT["理解 / 感知 / 规划输出<br/>(文本、2D 框、未来 waypoint)"]
+  ATT -.-> S1
+```
+
+图依据：论文 §3.2–§3.3 / Fig. 2（阶段 I–III 与 Phase 1–3 训练流程、系统级推理优化）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "层次 AR→扩散蒸馏的高效智驾 VLA：分块适配/蒸馏/跨�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.01035](https://arxiv.org/abs/2608.01035)
+- [arXiv PDF](https://arxiv.org/pdf/2608.01035)：已通读方法部分（实验与附录以略读为准）：摘要、Fig. 1–2、§3.1 预备、§3.2 AR-to-Diffusion 转换、§3.3 架构与训练、§4.1 实验设置
 
 ## 推荐继续阅读
 

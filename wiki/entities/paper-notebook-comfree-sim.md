@@ -38,6 +38,22 @@ summary: "接触建模慢、难并行的老问题，根子在于经典 LCP/NCP �
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前状态 q, v + 非接触力 τ, c"] --> B["Kernel 1：预测无接触速度<br/>v_smooth = v + M⁻¹(τ − c)dt"]
+    B --> C["碰撞对：符号间距 φ、接触 Jacobian<br/>(切向 / 扭转 / 滚动)"]
+    C --> D["对偶锥线性化为多面体约束<br/>J̃s v + φ̃/dt ≥ 0"]
+    D --> E["Kernel 2：按接触、按锥面并行<br/>阻抗式 prediction–correction 闭式求解 λs<br/>(弹簧 K 项 + 阻尼 D 项，(·)+ 激活)"]
+    H["对偶锥阻抗启发式<br/>K = k_user·M(φ)/dt, D = d_user·M(φ)/dt<br/>(MuJoCo 兼容超参 r_min, r_max, w, m, p)"] -.-> E
+    E --> F["Kernel 3：累积广义冲量 Σ J̃sᵀ λs dt"]
+    F --> G["Kernel 4：速度修正<br/>v⁺ = v_smooth + M⁻¹ Σ J̃sᵀ λs dt"]
+    G --> I["下一步状态<br/>(Warp 实现，MuJoCo 兼容 API，替代 MJWarp 后端)"]
+```
+
+图依据：论文 §III（式 (1)–(13)、Fig. 2）与 Algorithm 1（GPU 核心四个 Kernel）
+
 ## 解决什么问题
 
 **问题陈述**：接触密集任务的仿真为什么慢？因为主流物理引擎（MuJoCo、Bullet 等）把接触当成一个**互补问题**来解——所有接触点之间相互耦合，必须用迭代器（PGS、CG、Newton 等）**全局**求一个约束优化。接触越多，耦合越强，迭代越慢，而且这种全局耦合**很难切成 GPU 上互不依赖的并行任务**。
@@ -89,6 +105,7 @@ summary: "接触建模慢、难并行的老问题，根子在于经典 LCP/NCP �
 - [humanoid_pnb_comfree-sim.md](../../sources/papers/humanoid_pnb_comfree-sim.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ComFree-Sim__GPU-Parallelized_Analytical_Contact_Physics_Engine/ComFree-Sim__GPU-Parallelized_Analytical_Contact_Physics_Engine.html>
 - 论文：<https://arxiv.org/abs/2603.12185>
+- [arXiv PDF](https://arxiv.org/pdf/2603.12185)：已通读方法部分（实验与附录以略读为准）：摘要、§III ComFree-Sim 方法（A 免互补接触建模、B 对偶锥阻抗启发式、C GPU 实现 / Algorithm 1）；§IV–VI 基准与应用仅略读
 
 ## 推荐继续阅读
 

@@ -37,6 +37,30 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 - **共享自治(shared autonomy)范式**：示范了"听人 + 自动兜底"的好分工：人给意图，系统在零空间里保平衡
 - **与算法/界面路线互补**：同模块 [SEW-Mimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html) 解决"重定向到哪"，本文解决"重定向时别失稳"
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    U["操作员：Valve Index VR 手柄 + 头显"] --> IK
+    U --> CoMin["摇杆设定 CoM 目标；手动触发支撑手加载 / 卸载"]
+    CoMin --> IK
+    subgraph SA["稳定性分析"]
+        S1["稳定区域 LP（摩擦锥 + 关节力矩约束），18 个固定查询方向"] --> S2["稳定裕度 m = CoM 到区域边界最小距离"]
+        S2 --> S3["LP 灵敏度分析：对接触点 / 位形的解析梯度"]
+    end
+    S2 -->|"CoM 约束 m ≥ mmin"| IK
+    S3 --> CR["接触重定向：接触前预览稳定区域，沿墙面平面按面积梯度调整支撑手位置"]
+    S3 --> PR["姿态重定向：接触后在零空间按裕度梯度调整支撑手朝向 / 胸 / 骨盆 / CoM 高度"]
+    PR -.- M["三档：正常 / 重定向 / 冻结（Eq.15），冻结用于避免状态来回切换"]
+    CR --> IK["IK 模块（QP）：计算全身期望速度"]
+    PR --> IK
+    IK --> WBC["全身控制器 + 状态估计"]
+    WBC --> R["人形机器人（液压下肢 + 电驱上肢）"]
+    R -->|"当前位形与接触"| SA
+```
+
+图依据：论文 §IV-A~D / Fig. 4（控制流）、§III 稳定性分析、§V 实时集成
+
 ## 解决什么问题
 
 遥操作人形机器人做 loco-manipulation 时，常需要**手部接触环境**来辅助平衡或施力（撑墙、按住、推门）。但一旦接触面**不共面、不规则**，问题就来了：
@@ -90,6 +114,7 @@ summary: "当人形机器人需要用手去推墙、撑天花板、按在斜面/
 - [humanoid_pnb_stability-aware-retargeting-for-humanoid-multi-c.md](../../sources/papers/humanoid_pnb_stability-aware-retargeting-for-humanoid-multi-c.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html>
 - 论文：<https://arxiv.org/abs/2510.04353>
+- [arXiv PDF](https://arxiv.org/pdf/2510.04353)：已通读方法部分（实验与附录以略读为准）：摘要、§I-II 背景（稳定区域 LP、LP 灵敏度分析）、§III 稳定性分析、§IV 稳定性感知遥操作（框架、重定向策略、接触与姿态重定向）、§V 实时控制器集成；实验仅略读。
 
 ## 推荐继续阅读
 

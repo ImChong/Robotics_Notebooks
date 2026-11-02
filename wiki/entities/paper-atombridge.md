@@ -39,6 +39,30 @@ summary: "AtomBridge（arXiv:2602.09430）：异步 VLA 换指令时旧动作仍
 - 策展机构：东南大学、同济大学
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["固定的原子任务 VLA 策略 τ_i<br/>（π0 / π0.5，不重训）"]
+  SW["Intervention Switch<br/>冻结 CLIP 图文编码器 → 完成概率 p_t<br/>连续 w 次 ≥ η 或 t ≥ H_i 触发"]
+  PAUSE["暂停当前策略"]
+  MEM[("原子任务 memory M<br/>每任务一条离线演示")]
+  RET["ready-state 检索<br/>视觉 judge + 滑窗搜索 → s_ready"]
+  PLAN["Planning Agent<br/>输入 s_cur、s_ready、标定相机视图 V、参数 κ"]
+  TOOL["Tool Box：检索 / 碰撞检查 / 代码检查"]
+  CODE["Coding Agent<br/>生成模板化 Python 过渡动作代码"]
+  CHK["固定指令集校验<br/>schema / 限幅 / 仅过渡 / 碰撞"]
+  EXE["执行过渡动作 a_tr<br/>到达下一任务 pre-contact 状态"]
+  R["重置历史，恢复 VLA 执行 τ_{i+1}"]
+  A --> SW --> PAUSE --> PLAN
+  MEM --> RET --> PLAN
+  PLAN <--> TOOL
+  PLAN --> CODE --> CHK --> EXE --> R
+  R -. 循环：完成→过渡→恢复 .-> A
+```
+
+图依据：论文 §3、§3.1–3.2、Fig. 2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +104,7 @@ summary: "AtomBridge（arXiv:2602.09430）：异步 VLA 换指令时旧动作仍
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2602.09430](https://arxiv.org/abs/2602.09430)
+- [arXiv PDF](https://arxiv.org/pdf/2602.09430)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Related Work、§3 AtomBridge（含 3.1 Intervention Switch、3.2 Transition Generation）、§4.1 实验设定；§4 其余实验与补充材料仅略读/未读
 
 ## 推荐继续阅读
 

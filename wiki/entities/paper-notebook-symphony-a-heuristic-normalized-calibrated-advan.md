@@ -31,7 +31,32 @@ Symphony 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，指标与结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  X[初始化 Actor-Critic 单一对象 A_phi Q_theta 与 Target Critic] --> EXP[探索 N_exp = 10240 步 估计 r̄_n 并归一化奖励]
+  EXP --> FILL[重复探索转移 50 次 填满 Fading Replay Buffer 512000]
+  FILL --> ACT[Actor 输出动作 加有限 Gaussian 噪声 与环境交互]
+  ACT --> STORE[存入 Fading Replay Buffer]
+  STORE --> SAMP[按 tanh 渐隐优先级采样 batch 384]
+  SAMP --> UPD[每帧 G = 3 次更新]
+  subgraph ONE[单次更新]
+    NA[Online Actor 预测下一动作 a' 与 σ β] --> TC[Target Critic 3 个 Critic 共 384 节点 排序后固定权重加权求和 得 Q_target]
+    TC --> TA[Temporal Advantage Q_target 对比其指数滑动平均 Q_T 再除以 abs Q_T]
+    TA --> LA[Actor 损失 ReHAE 加 Swaddling 正则]
+    TC --> LC[Critic 损失 ReHSE TD 误差]
+  end
+  UPD --> NA
+  LA --> POLY[同时更新 Online Actor 与 Critic]
+  LC --> POLY
+  POLY --> SOFT[Polyak 平均更新 Target Critic]
+  SOFT --> ACT
+```
+
+图依据：论文 §III Foundation 与 Symphony: Pseudo-code（箭头按伪代码与正文归纳）
 
 ## 核心信息
 
@@ -64,6 +89,7 @@ Symphony 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - [humanoid_pnb_symphony-a-heuristic-normalized-calibrated-advan.md](../../sources/papers/humanoid_pnb_symphony-a-heuristic-normalized-calibrated-advan.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.10477>
+- [arXiv PDF](https://arxiv.org/pdf/2512.10477)：已通读方法部分（实验与附录以略读为准）：Preliminary、§III Foundation（Target Critic、Temporal Advantage、Fading Replay Buffer、ReSine、ReHSE/ReHAE、Swaddling）与伪代码
 
 ## 推荐继续阅读
 

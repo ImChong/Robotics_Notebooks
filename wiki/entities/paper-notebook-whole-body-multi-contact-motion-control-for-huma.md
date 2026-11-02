@@ -33,6 +33,34 @@ Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SEQ["目标接触序列（人工或全局规划器给定）"]
+    TAC["分布式触觉传感器：接触区域 + 接触力"]
+    MPC["质心 MPC（DDP）：规划接触力尺度 λ 与质心状态"]
+    STAB["质心稳定：PD 修正合力旋量 Δw"]
+    IMU["IMU + EKF + 机器人模型：估计实际质心状态"]
+    DIST["旋量分配（QP）：期望合力旋量 → 各接触区域期望旋量"]
+    DAMP["阻尼控制：期望旋量 vs 触觉测得旋量 → 柔顺位姿"]
+    IK["加速度级全身逆运动学 IK"]
+    JOINT["关节指令（位置控制机器人）"]
+    SEQ --> MPC
+    TAC -->|"在线更新接触多边形"| MPC
+    TAC -->|"更新接触多边形"| DIST
+    MPC --> STAB
+    IMU --> STAB
+    STAB --> DIST
+    DIST --> DAMP
+    TAC -->|"测得接触旋量"| DAMP
+    MPC -->|"CoM、基座姿态指令"| IK
+    DAMP -->|"接触区域位姿"| IK
+    IK --> JOINT
+```
+
+图依据：论文 §II、§III-A–D、§IV-A–C、§V-A（Fig.1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +92,7 @@ Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed
 - [humanoid_pnb_whole-body-multi-contact-motion-control-for-huma.md](../../sources/papers/humanoid_pnb_whole-body-multi-contact-motion-control-for-huma.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.19580>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19580)：已通读方法部分（实验与附录以略读为准）：§I 相关工作与贡献、§II–§IV（方法）、§V-A 实现（仿真与真机实验略读）
 
 ## 推荐继续阅读
 

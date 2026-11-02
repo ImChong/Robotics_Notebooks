@@ -34,6 +34,28 @@ SMAP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    HM["人体动作数据（CMU MoCap）"]
+    RM["人形机器人动作数据：目标条件 RL 策略在仿真中录制"]
+    ADA["Humanoid-Adapter：两个 VQ-PAE 共享 codebook，学习共享相位流形"]
+    ADAPTED["物理可行的人形机器人动作"]
+    TEACH["教师策略（PPO，特权信息；先用适配后动作、再逐步引入重定向人体动作的课程）"]
+    DIST["DAgger 蒸馏：学生策略模仿教师动作"]
+    STUDENT["学生策略（sim-to-real 本体观测历史）"]
+    REAL["PD 控制器 → Unitree H1 真机"]
+    REWARD["解耦奖励：上身高权重（精度），下身低权重（平衡）"]
+    HM --> ADA
+    RM --> ADA
+    ADA --> ADAPTED --> TEACH
+    REWARD -.-> TEACH
+    TEACH --> DIST --> STUDENT --> REAL
+```
+
+图依据：论文 §3、§4.1、§4.2（Fig.3 / Fig.4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +86,7 @@ SMAP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - [humanoid_pnb_smap.md](../../sources/papers/humanoid_pnb_smap.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2505.19463)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4（方法）、§5.1 实现细节与 §5.2 数据集（实验与附录略读）
 
 
 ## 推荐继续阅读

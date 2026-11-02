@@ -31,7 +31,29 @@ SKATER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」（依据论文方法部分），不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph SIM[Isaac Lab 4096 并行环境, PPO 非对称 Actor-Critic]
+        DR[域随机化: 轮地接触 / 惯性 / 执行器增益 / 外部扰动<br/>指令范围与随机化幅度渐进扩大]
+        RW[参考无关奖励, 共 22 项: 速度跟踪 + 四类物理偏置<br/>双足间距上下界 / 轮轴向滑移抑制 / ZMP 支撑稳定 / 左右对称]
+    end
+    OBS[Actor 观测: 5 步本体感知历史<br/>关节位置速度 + 角速度 + 投影重力 + 速度指令 + 上一动作] --> ACTOR[策略网络 π_θ]
+    PRIV[Critic 特权观测: 无噪真值线速度 / ZMP 偏移 / 脚间距 / 踝角度] --> CRITIC[Critic]
+    ACTOR --> ACT[25 维动作 q_default + 0.25 · a]
+    ACT --> PD[关节 PD 控制器 -> 力矩]
+    PD --> ROBOT[SKATER 33 DoF: 25 驱动 + 8 被动轮]
+    DR --> ROBOT
+    ROBOT -->|奖励| RW
+    RW --> CRITIC
+    ACTOR -.->|MuJoCo sim-to-sim| MJ[MuJoCo 验证]
+    MJ --> HW[真机部署与实验]
+```
+
+图依据：论文 §III-B（Fig. 3、Table I/II）、§IV。
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ SKATER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - [humanoid_pnb_skater-synthesized-kinematics-for-advanced-trave.md](../../sources/papers/humanoid_pnb_skater-synthesized-kinematics-for-advanced-trave.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2601.04948>
+- [arXiv PDF](https://arxiv.org/pdf/2601.04948)：已通读方法部分（实验与附录以略读为准）：§III-A 硬件设计、§III-B 强化学习（观测/动作/奖励/sim-to-real）、§IV 实验设置
 
 ## 推荐继续阅读
 

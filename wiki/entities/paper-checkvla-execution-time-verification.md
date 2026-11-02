@@ -36,6 +36,31 @@ summary: "CheckVLA（具身世界模型六路线专题）：执行时用动作�
 - 属于六路线 taxonomy 的 **规划主导型**：预测结果被用于 **执行时在模型中试走，外部规划/验证裁决动作。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["指令 L + 多视角观测 o_t + 情节上下文 ρ_t"] --> VLM["π0.5 骨干 VLM 编码 c_t"]
+  VLM --> ACT["解耦的 mobility / manipulation action experts<br/>输出 action chunk A_t"]
+  ACT --> EXE["执行 chunk (开环)"]
+  EXE --> OBSN["执行中陆续到达的新观测"]
+  OBSN --> ENC["冻结监测编码器 φ (V-JEPA 2-AC)<br/>得到特征 z"]
+  ACT --> WM["冻结动作条件世界模型 Ψ<br/>由最新观测 + 剩余动作预测后 k 步特征"]
+  ENC --> WM
+  WM --> DIS["预测 vs 实际特征距离 d_t<br/>用留出成功样本统计标准化"]
+  ENC --> DIS
+  DIS --> RISK["因果 risk head R<br/>聚合窗口内差异, 得 r_t"]
+  MEM["事件驱动关键帧库 B_t<br/>(摘要 m(ρ_t) 供 risk head)"] --> RISK
+  RISK --> THR{"r_t > 共形校准阈值 δ_t ?"}
+  THR -- "否" --> EXE
+  THR -- "是: 首次越界 t*" --> REP["同一 VLA 重写后缀<br/>硬前缀 (推理时延内动作固定)"]
+  RISK -. "超出量 e 决定旧 chunk 保留权重" .-> REP
+  REP --> EXE
+  MEM -. "门控 cross-attention 读取" .-> VLM
+```
+
+图依据：论文 Method 各小节与 Fig. 2（Rolling Prediction / Calibrated Risk Triggering / Suffix Rewriting / Episodic Context；risk head 输入含 m(ρ_t) 见式 (5)）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +99,7 @@ summary: "CheckVLA（具身世界模型六路线专题）：执行时用动作�
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2607.26789)：已通读方法部分（实验与附录以略读为准）：摘要、Introduction、Method（Problem Formulation 至 Implementation）、Fig. 1–2、Table 3；补充材料未读
 
 ## 推荐继续阅读
 

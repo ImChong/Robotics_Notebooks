@@ -33,6 +33,32 @@ summary: "不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V[野外视频 2D 关键点轨迹 X] --> TR[单视角训练 View-agnostic 2D Tracking Policy]
+  subgraph TRN[单视角 2D 跟踪训练 §3.3]
+    PR[本体感知 s_t 与未来 L 帧 2D 参考 且不输入相机信息] --> POLICY[策略输出 PD 目标 对角高斯]
+    POLICY --> SIM[物理仿真角色 3D 关键点投影到相机 C]
+    SIM --> RW[2D 跟踪奖励 重投影距离 加能耗惩罚]
+    SIM --> ET[重投影误差过大则提前终止]
+    BUF[自适应状态初始化 每个参考帧一个缓冲 critic 高分状态入池] --> SIM
+  end
+  TR --> PR
+  POLICY --> MV[View Aggregation 多视角 2D 观测特征取平均 零样本得到 3D 跟踪]
+  V --> GEN[分层控制 §3.4]
+  subgraph GENP[2D 运动生成器]
+    CAN[规范化 2D 运动表示 根平移 尺度 局部姿态] --> VQ[因果卷积 VQ-VAE 离散 token]
+    VQ --> GPT[因果 Transformer 自回归生成 token]
+    GPT --> DEC[VQ-VAE 解码 再逆变换到全局 2D 坐标]
+  end
+  GEN --> CAN
+  DEC --> POLICY
+```
+
+图依据：论文 §3.1–3.4 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +90,7 @@ summary: "不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽
 - [humanoid_pnb_mimic2dm.md](../../sources/papers/humanoid_pnb_mimic2dm.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html>
 - 论文：<https://arxiv.org/abs/2512.08500>
+- [arXiv PDF](https://arxiv.org/pdf/2512.08500)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 Method（含 Fig.3 Overview）、§4.1 实验设定开头
 
 ## 推荐继续阅读
 

@@ -31,7 +31,26 @@ CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids 的人形机器人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["iRonCub-Mk3 CAD 基线<br/>8 个几何参数：喷气发动机角度/偏移/高度、前臂长、肩宽、髋距、踝连杆高、脚长"] --> B["Uniform Latin Hypercube 采样<br/>生成 5000 个设计实例"]
+    B --> C["CAD 自动提取质量/质心/惯量<br/>写入 URDF 与 MuJoCo XML；FEM 结构校验，不合格者剔除"]
+    C --> D["K-means 聚类（几何参数空间）<br/>得到 N 个代表性质心模型（50/100/250）"]
+    E["最小加加速度轨迹<br/>由空间航点插值，输出 CoM 位置/速度参考"] --> F
+    D --> F["NSGA-II 候选解：质心模型索引 + 8 个 MPC 代价权重"]
+    F --> G["仿真：所选模型 + 线性化 MPC 跟踪固定轨迹"]
+    G --> H["目标 1：CoM 跟踪 MSE<br/>目标 2：推力能耗 E"]
+    G -->|"QP 失败或误差 > 2.5 m"| X["惩罚 / 剔除"]
+    H --> I["Pareto 支配排序，迭代进化"]
+    I --> F
+    I --> J["输出 Pareto 最优的设计-控制组合"]
+```
+
+图依据：论文 §III-A–D / Algorithm 1，§II-C。
 
 ## 核心信息
 
@@ -64,6 +83,7 @@ CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids 的人形机器人�
 - [humanoid_pnb_cad-driven-co-design-for-flight-ready-jet-powere.md](../../sources/papers/humanoid_pnb_cad-driven-co-design-for-flight-ready-jet-powere.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.14935>
+- [arXiv PDF](https://arxiv.org/pdf/2509.14935)：已通读方法部分（实验与附录以略读为准）：§II-C 几何参数与控制权重、§III Co-Design Framework（III-A–D、Algorithm 1、Table II）
 
 ## 推荐继续阅读
 

@@ -31,7 +31,32 @@ DoublyAware 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    ST["状态 s_t"] --> ENC["编码器 h_θ → 潜状态 z_t"]
+    ENC --> POL["策略网络 π_θ 采样 N_π 条先验轨迹"]
+    ENC --> MPPI["MPPI 规划器采样 N 条候选轨迹<br/>分布 N(μ_j, σ_j²I)，J 次迭代"]
+    POL --> SET["候选集合 A = A_π ∪ A_mppi"]
+    MPPI --> SET
+    SET --> ROLL["潜动力学 d_θ 展开 H 步<br/>TD 代价 V_θ = ΣγR_θ + γ^H·Q_θ"]
+    ROLL --> SCORE["归一化不一致性分数 s̄ = 1 - 归一化代价"]
+    SCORE --> QHAT["共形分位数阈值 q̂（风险水平 α）"]
+    QHAT --> FILT["保留 s̄ ≤ q̂ 的共形轨迹 A_conformal"]
+    FILT -->|"更新 μ_j, σ_j"| MPPI
+    FILT --> ACT["输出动作 a_t，执行并写入回放缓冲 D"]
+    ACT --> BUF["潜缓冲 D"]
+    BUF --> GRP["每个状态采样 G 个动作组，用 Q_θ 评估"]
+    GRP --> ADV["softmax 组相对优势 A_i"]
+    ADV --> LPI["GRPC 策略目标：A_i·log π_θ + β·与 MPPI 先验的 KL 信赖域约束"]
+    LPI -->|"更新策略 π_θ"| POL
+    BUF --> MODEL["模型损失：潜动力学 / 奖励 / Q 的 TD 目标<br/>同时训练 h_θ, d_θ, R_θ, Q_θ"]
+```
+
+图依据：论文 §III-A/B/C（Fig. 2、Fig. 3、Alg. 1、Alg. 2）。
 
 ## 核心信息
 
@@ -64,6 +89,7 @@ DoublyAware 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 - [humanoid_pnb_doublyaware-dual-planning-and-policy-awareness-f.md](../../sources/papers/humanoid_pnb_doublyaware-dual-planning-and-policy-awareness-f.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.12095>
+- [arXiv PDF](https://arxiv.org/pdf/2506.12095)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-C（含 Alg. 1、Alg. 2）
 
 ## 推荐继续阅读
 

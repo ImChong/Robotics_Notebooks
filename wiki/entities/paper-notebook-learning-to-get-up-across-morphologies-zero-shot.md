@@ -31,7 +31,7 @@ Learning to Get Up Across Morphologies 的人形机器人学习论文条目，�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，指标与结论以论文为准。
 
 ## 流程总览
 

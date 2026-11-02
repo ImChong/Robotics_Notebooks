@@ -42,6 +42,24 @@ A JEPA-based Future Action Anticipation method achieving first place in the EgoV
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[EK-100 动作片段] --> B["构造 pre-action clip<br/>32 帧 RGB，8 FPS，384×384<br/>验证/测试固定 1.0 s 预判间隔"]
+    B --> C["冻结 V-JEPA 2.1 ViT-G/384 编码器<br/>提取已观测时空 token"]
+    C --> D["冻结 predictor<br/>预测近未来 latent token"]
+    C --> E[拼接 观测 token + 预测 token]
+    D --> E
+    E --> F["注意力探针：4 个 attentive probe block，16 头<br/>3 个可学习 query（verb / noun / action）"]
+    F --> G[三个线性分类器<br/>verb 97 类 / noun 300 类 / action 为 verb-noun 对]
+    G --> H["20 个探针头（不同学习率/权重衰减）<br/>每个 epoch 在验证集选最佳头作为候选"]
+    H --> I["field-aware ensemble<br/>verb、noun、action 分别选择并加权多个 epoch 候选"]
+    I --> J["提交文件：verb 分数、noun 分数、action top-100 verb-noun 对"]
+```
+
+图依据：论文 §2.1–§2.4 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A JEPA-based Future Action Anticipation method achieving first place in the EgoV
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.20904>
+- [arXiv PDF](https://arxiv.org/pdf/2605.20904)：已通读方法部分（实验与附录以略读为准）：§1 任务设定、§2.1–§2.4、§3.1 实验协议、Fig.1
 
 ## 推荐继续阅读
 

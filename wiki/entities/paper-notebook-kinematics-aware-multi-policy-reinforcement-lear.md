@@ -38,6 +38,32 @@ summary: "人形机器人有类人形态，在工业里潜力大。但现有 loc
 - **上下身解耦**契合人形结构，呼应 EGM 的上下身专家分设；
 - **与 HAFO、FALCON、CHIP、HMC 等力/柔顺工作同向**，共同推进「会发力」的人形。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T1["阶段一：上身策略 π_u"]
+        samp["Alg.1 采样末端位姿<br/>任务空间 + 肘/末端夹角 < 90° + 左右镜像"] --> ru["启发式奖励 R_u = α_joint·r_joint + α_pose·r_pose<br/>隐式嵌入 FK 先验；早期重关节项，收敛后加重任务空间项"]
+        ru --> pu["上身策略 π_u<br/>（14 个上身关节）"]
+    end
+    subgraph T2["阶段二：下身策略 π_l"]
+        fs["力目标 f* 采样<br/>10% 取 0 / 40% 取 U(0, f_max) / 50% 取 f_max"] --> cur["力课程<br/>C_lin ∧ C_ang ∧ C_dis ∧ C_force 满足则 f_max 增加 Δf"]
+        cur --> pl["下身策略 π_l<br/>（15 个下身关节，速度 + 力指令）"]
+    end
+    subgraph T3["阶段三：delta 指令策略 π_h"]
+        wg["世界系末端目标 G^h"] --> ph["π_h 输出 a^h ∈ R^6<br/>末端高度与 roll-pitch 的增量"]
+        ph --> gu["F(a^h, G_ref^u) 修正上身目标"]
+    end
+    pu --> T3
+    pl --> T3
+    gu --> pu2["上身策略执行修正后的目标"]
+    pu2 --> act["a_t = [λu·a^u, λl·a^l]<br/>q_des = a_t + q_default"]
+    pl --> act
+    act --> pd["关节级 PD 控制 → 力矩 τ"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.1。
+
 ## 解决什么问题
 
 **高负载工业**场景要求人形**既灵巧又能主动发力**，但现有 loco-manip： - 多只做**灵巧操作**，缺**主动力交互**； - 直接端到端学「又灵巧又发力」收敛慢、性能差。
@@ -88,6 +114,7 @@ summary: "人形机器人有类人形态，在工业里潜力大。但现有 loc
 - [humanoid_pnb_kinematics-aware-multi-policy-rl-for-force-capab.md](../../sources/papers/humanoid_pnb_kinematics-aware-multi-policy-rl-for-force-capab.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Kinematics-Aware_Multi-Policy_RL_for_Force-Capable_Humanoid_Loco-Manipulation/Kinematics-Aware_Multi-Policy_RL_for_Force-Capable_Humanoid_Loco-Manipulation.html>
 - 论文：<https://arxiv.org/abs/2511.21169>
+- [arXiv PDF](https://arxiv.org/pdf/2511.21169)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D（含 Fig.1、Alg.1）
 
 ## 推荐继续阅读
 

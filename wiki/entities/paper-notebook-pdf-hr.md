@@ -36,6 +36,32 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TR["学习 Pose Distance Field（Fig. 1）"]
+    DP["正样本 D_p：PHUMA / LaFAN1 / AMASS<br/>重定向到 G1 的姿态，交叉验证过滤不可靠样本"]
+    DN["负样本 D_n：混合采样（附录 A）"]
+    D["数据集 D = D_p ∪ D_n"]
+    REG["监督回归 f_ϕ(q) → 到最近 D_p 样本的最小测地距离<br/>（29 关节，L1 乘积度量）"]
+    PDF["PDF-HR：连续可微的姿态距离场<br/>f_ϕ(q)=0 为合理姿态流形"]
+    DP --> D
+    DN --> D
+    D --> REG --> PDF
+  end
+  PDF --> A1
+  PDF --> A2
+  PDF --> A3
+  subgraph APP["下游使用（§IV 式14、§V）"]
+    A1["RL 运动跟踪<br/>姿态得分 s=clip((f_ϕ−d_good)/(d_bad−d_good),0,1)<br/>pose-prior 奖励 r^P = exp(−α·s)<br/>r = w_G·r^G + w_T·r^T + w_P·r^P"]
+    A2["运动重定向<br/>将 f_ϕ 作为正则项并入 GMR 逐帧 IK 优化"]
+    A3["姿态投影<br/>沿 −∇f_ϕ 迭代梯度更新并施加关节限位 P(·)"]
+  end
+```
+
+图依据：论文 §IV（式 13–14）、§V-A/B（式 15–18）、Fig. 1（重定向中正则项的具体形式未逐式核对，仅按文中“作为正则项引入优化环”绘制）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -69,6 +95,7 @@ PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"
 - [humanoid_pnb_pdf-hr.md](../../sources/papers/humanoid_pnb_pdf-hr.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/PDF-HR__Pose_Distance_Fields_for_Humanoid_Robots/PDF-HR__Pose_Distance_Fields_for_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2602.04851>
+- [arXiv PDF](https://arxiv.org/pdf/2602.04851)：已通读方法部分（实验与附录以略读为准）：§I–III 引言/相关工作/背景、§IV Methods、§V-A/B 应用；§VI 实验仅读设定与指标定义，其余略读
 
 ## 推荐继续阅读
 

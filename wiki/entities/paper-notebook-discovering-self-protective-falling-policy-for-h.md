@@ -38,6 +38,23 @@ summary: "受形态、动力学与控制策略限制，人形比四足/轮式更
 - **与 SafeFall、Robot Crash Course、VIGOR、Unified Fall-Safety Policy 同主题**，共同构成人形「跌落安全」研究簇；
 - **域多样化课程**是覆盖长尾跌倒场景的实用手段。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV[IsaacGym 并行仿真 数千环境 Unitree G1 29 DoF] --> CUR[域多样化课程 推力大小 方向 部位 初始关节 初始速度 执行器失效 难度随训练进度 p 增大]
+  CUR --> OBS[观测 躯干角速度 骨盆 roll pitch 关节位置速度 上一动作 加 ROA 特权信息]
+  OBS --> POL[DRL 策略 29 维动作 50 Hz]
+  POL --> PD[PD 控制器 200 Hz 输出力矩]
+  PD --> FALL[摔倒过程]
+  FALL --> RW[损伤最小化奖励 根速度 关键刚体接触力 执行器冲量 关节限位 力矩 动作变化率]
+  RW --> POL
+  POL --> EVAL[基准评测 stance-push walk-push walk-break 指标 接触力 动能 执行器冲量]
+  POL --> REAL[真机部署 预训练行走策略在原地行走 被推时切换到摔倒策略]
+```
+
+图依据：论文 §III-B、§IV-B/C、§V-A/E / Fig.2（箭头为按文字顺序归纳）
+
 ## 解决什么问题
 
 人形**易摔且摔得重**（体重大、质心高、自由度高），不受控跌倒会损坏硬件与环境。已有**控制法**： - **难覆盖多样跌倒**（方向/初速/地形各异）； - **易引入不当人类先验**（人为规定姿态未必适配机器人）。
@@ -88,6 +105,7 @@ summary: "受形态、动力学与控制策略限制，人形比四足/轮式更
 - [humanoid_pnb_discovering-self-protective-falling-policy-for-h.md](../../sources/papers/humanoid_pnb_discovering-self-protective-falling-policy-for-h.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL/Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robot_via_Deep_RL.html>
 - 论文：<https://arxiv.org/abs/2512.01336>
+- [arXiv PDF](https://arxiv.org/pdf/2512.01336)：已通读方法部分（实验与附录以略读为准）：§III Background、§IV Learning to Discover Self-Protective Falling Policy、§V-A 实验设置与 §V-E 真机部署
 
 ## 推荐继续阅读
 

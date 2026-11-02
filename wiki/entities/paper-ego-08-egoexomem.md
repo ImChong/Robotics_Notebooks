@@ -36,6 +36,25 @@ sources:
 - 它研究的是同步的 ego-exo 视频记忆推理。很多问题单靠第一视角答不出来，单靠外部视角也答不出来。第一视角知道操作者看到了什么，外部视角知道人与物体的整体关系。
 - 这个结论对机器人也很有启发。只看机器人自己的相机，很多空间关系会丢；只看外部摄像头，又容易丢掉机器人的局部意图和接触细节。
 
+## 流程总览
+
+本图只画论文提出的免训练选帧方法 E2-Select（论文另含基准构建流程，此处不展开）。
+
+```mermaid
+flowchart TD
+    Q[问题 q] --> S
+    E[第一视角帧序列 N_e] --> S["独立视角打分<br/>CLIP 余弦相似度 s_e(i) 与 s_x(j)，两视角分别计算"]
+    X[第三视角帧序列 N_x] --> S
+    S --> B["相关性预算分配<br/>K_e 按两视角相关性总和比例分配，K_x = K − K_e"]
+    B --> DE["第一视角 k-DPP 采样<br/>质量-多样性核 L_e，取 K_e 帧"]
+    B --> DX["第三视角 k-DPP 采样<br/>取 K_x 帧"]
+    DE --> M[按原始时间戳排序合并]
+    DX --> M
+    M --> L[共 K 帧作为 MLLM 的视觉输入]
+```
+
+图依据：论文 §4 E2-Select（公式 1–6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -89,6 +108,7 @@ sources:
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md) — 9 篇总表
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) — 微信公众号编译导读
 - 论文/项目：<https://arxiv.org/abs/2605.18734>
+- [arXiv PDF](https://arxiv.org/pdf/2605.18734)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4 E2-Select
 
 ## 推荐继续阅读
 

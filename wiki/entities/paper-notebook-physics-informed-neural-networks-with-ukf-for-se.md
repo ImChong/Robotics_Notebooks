@@ -33,6 +33,26 @@ summary: "要让一台没有关节力矩传感器的人形机器人也能做力�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["电机/关节速度缓冲<br/>经定制 Kalman Filter 平滑速度估计"] --> B["PINN 摩擦估计器<br/>2 层 ReLU + dropout，线性输出<br/>损失 = 数据项 + SCV 物理项"]
+    B --> C["摩擦力矩 τF 预测"]
+    C --> D["UKF 关节力矩估计器<br/>τF 作为测量输入<br/>状态含关节速度、电机力矩、摩擦、FT 外力、IMU"]
+    E["测量：关节速度、电机电流、FT 传感器、<br/>IMU 加速度/角速度"] --> D
+    D --> F["估计关节力矩 τ"]
+    G["高层动量控制器 100 Hz<br/>输出期望关节力矩 τd"] --> H["低层关节力矩 PI 控制器 1 kHz<br/>τd 前馈 + τ 反馈 + 摩擦补偿"]
+    F --> H
+    C --> H
+    H --> I["期望电机电流 id<br/>由电机/减速器动力学 Eq.2 得到"]
+    I --> J["ergoCub 电机<br/>电流环 20 kHz"]
+    J --> K["机器人状态"]
+    K --> D
+```
+
+图依据：论文 §III-A、§III-B、§IV-A / Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +85,7 @@ summary: "要让一台没有关节力矩传感器的人形机器人也能做力�
 - [humanoid_pnb_physics-informed-neural-networks-with-ukf-for-se.md](../../sources/papers/humanoid_pnb_physics-informed-neural-networks-with-ukf-for-se.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html>
 - 论文：<https://arxiv.org/abs/2507.10105>
+- [arXiv PDF](https://arxiv.org/pdf/2507.10105)：已通读方法部分（实验与附录以略读为准）：§II-C 电机与减速器动力学、§III 方法（PINN 架构、UKF）、§IV-A 控制器架构
 
 ## 推荐继续阅读
 

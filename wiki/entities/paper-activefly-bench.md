@@ -43,6 +43,24 @@ summary: "空中具身问答与 VLA 对齐基准：拆分问答、观察行为�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  Q["具身问题 Q + 初始观测 O0"] --> VLM1["VLM: 观测行为规划 (OBP)<br/>输出文本观测计划 L_ob"]
+  VLM1 --> VLA["VLA: 细粒度语言引导 UAV 控制 (FLUC)<br/>输入 L_ob + 当前观测 O_t + UAV 状态 x_t"]
+  VLA --> ACT["动作 a_t ∈ R5<br/>3D 平移 + yaw + gimbal pitch"]
+  ACT --> UAV["UAV 执行并获得新观测"]
+  UAV -->|"未完成计划轨迹"| VLA
+  UAV -->|"轨迹执行完毕"| HIST["观测历史 O_0:N<br/>均匀取 n=16 张图像"]
+  HIST --> VLM2["VLM 结合问题 Q 作答 (Air-EQA)"]
+  Q --> VLM2
+  VLM2 --> ANS["答案 A"]
+  DEP["实机部署: 地面站跑 VLM+VLA, UAV 端只跑 SLAM 与路径规划<br/>Stop-and-infer: 等待下一动作到达再执行"] -.-> UAV
+```
+
+图依据：论文 §3 Problem Formulation（式 1–3）、§5 ActiveFly Agent（Closed-loop System Design、Real-world Deployment）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -91,6 +109,7 @@ summary: "空中具身问答与 VLA 对齐基准：拆分问答、观察行为�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2607.10180](https://arxiv.org/abs/2607.10180)
+- [arXiv PDF](https://arxiv.org/pdf/2607.10180)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Problem Formulation、§4.3 OBP 数据构造、§5 ActiveFly Agent、§6.1 实验设置；§4 其余数据采集与 §6 结果略读
 
 ## 推荐继续阅读
 

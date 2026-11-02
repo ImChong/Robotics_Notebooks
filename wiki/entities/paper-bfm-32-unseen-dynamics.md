@@ -42,6 +42,29 @@ sources:
 - 负载/地面/硬件参数变化下的零样本动力学适配。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **04 Adaptation**（#32/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["离线无奖励数据集 D_train（多种训练 context 的轨迹）"] --> B["随机 episode 的转移集合 (s, a, s')"]
+    B --> C["置换不变 Transformer 编码器 f_dyn"]
+    C --> D["动力学编码向量 h（隐 context 的 belief）"]
+    C --> E["自监督预训练：h 服从 Gaussian 先验 + 投影头结合 (s, a) 预测 s'"]
+    D --> F["Belief-FB (BFB)：拼接 [h; z_FB] 仅条件化 Forward 网络 F"]
+    D --> G["Rotation-FB (RFB)：z_FB ~ vMF(μ=h, κ)，经 Householder 反射旋转到 h 方向"]
+    G --> F
+    H["Backward 网络 B（跨 context 共享，不条件化）"] --> I["后继测度近似 F(s,a,[h;z])ᵀ B(s')"]
+    F --> I
+    I --> J["FB 训练，DDPG 近似贪心策略 π_z"]
+    K["测试：新 context 的短条无奖励轨迹"] --> C
+    L["任务奖励 r_test"] --> M["z_test ≈ E[r_test · B]"]
+    D --> N["零样本策略：π(s) = argmax_a F(s,a,[h; z_test])ᵀ z_test"]
+    M --> N
+    J --> N
+```
+
+图依据：论文 §2 BFM/FB 背景、§3.2 Belief State Modeling、§3.3 Structuring Directions in the Latent Space、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +113,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2505.13150>
+- [arXiv PDF](https://arxiv.org/pdf/2505.13150)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 BFM 背景、§3 Method（3.1-3.3）、§4 开头实验设定
 
 ## 推荐继续阅读
 

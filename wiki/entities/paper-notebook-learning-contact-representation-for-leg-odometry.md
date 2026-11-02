@@ -31,7 +31,7 @@ Learning Contact Representation for Leg Odometry 的人形机器人学习论文�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」（依据论文方法部分）。
 
 ## 流程总览
 
@@ -45,7 +45,7 @@ flowchart TD
     F --> G[重构未污染序列<br/>MSE 损失，自监督]
     E --> H[训练集潜在空间拟合<br/>无监督 2 成分 GMM]
     H --> I[垂直足端位置较低的簇 = stance<br/>得到 stance belief p_t]
-    I --> J[协方差缩放<br/>R_t = α/(p_t+ε) · I]
+    I --> J["协方差缩放<br/>R_t = α/(p_t+ε) · I"]
     J --> K[ESEKF ZUPT 更新<br/>pseudo-measurement 足端世界系速度 = 0]
     K --> L[Mahalanobis / NIS 卡方门限<br/>超限则放弃更新]
     L --> M[机器人里程计估计]

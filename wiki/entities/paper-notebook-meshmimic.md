@@ -35,6 +35,27 @@ MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-�
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 - 与 [EgoHTR](./paper-egohtr.md) 对照：MeshMimic 走单目重建路径，EgoHTR 用可穿戴+扫描锚定厘米级，并给出 foothold 精度门槛实证。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["单目 RGB 视频"] --> PRE["预处理<br/>π3 重建场景：深度、相机位姿、内参<br/>ViTDet 检测人 + SAM2 跨帧跟踪 + SAM3D 重建 SMPL-X"]
+    PRE --> SCENE["场景近似为平面多边形基元"]
+    PRE --> CON["深度边缘引导的接触预测"]
+    PRE --> ALIGN["度量尺度人-场景对齐<br/>优化逐帧平移与单一场景尺度 α"]
+    CON --> OPT["运动学一致性联合优化<br/>对齐 + 接触 + 穿透 + 轨迹平滑 + 脚吸附"]
+    ALIGN --> OPT
+    SCENE --> OPT
+    OPT --> MR["MeshRetargeting<br/>最小化交互网格的 Laplacian 形变能量<br/>SQP 求解，含碰撞/关节限位/支撑脚锚定约束"]
+    MR --> TSDF["基于 TSDF 的机器人全局平移穿透修正"]
+    TSDF --> REF["地形感知参考轨迹"]
+    REF --> PT["通用全身运动跟踪器预训练<br/>约 50 小时非交互人体动作"]
+    PT --> FT["场景交互参考上微调<br/>IsaacLab，非对称 PPO，BeyondMimic 风格奖励"]
+    FT --> DEP["部署 Unitree G1<br/>板载 50 Hz"]
+```
+
+图依据：论文 §3（Fig. 3、Fig. 4）、§4.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -67,6 +88,7 @@ MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-�
 - [humanoid_pnb_meshmimic.md](../../sources/papers/humanoid_pnb_meshmimic.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi.html>
 - 论文：<https://arxiv.org/abs/2602.15733>
+- [arXiv PDF](https://arxiv.org/pdf/2602.15733)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.3 方法、§4.2 训练与部署配置
 
 ## 推荐继续阅读
 

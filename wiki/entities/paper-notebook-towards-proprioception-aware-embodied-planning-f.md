@@ -44,6 +44,31 @@ summary: "近年多模态大模型（MLLM）能做高层规划，让机器人遵
 - **本体感受 + 跨空间编码**是把语言规划接到物理身体的桥；
 - 与 BiBo（现成 VLM 控人形）形成"增强 MLLM vs 借现成 VLM"的对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["Proprio-MLLM 三阶段训练"]
+        T0["HumanML3D → 重定向到 H1/X1 → DualTHOR 回放；PHC 过滤得 11k 轨迹"] --> T1["阶段1：运动 VQ-VAE 分词器"]
+        T1 --> T2["阶段2：LoRA 对齐训练（运动 / 图像 / 文本，先冻结图文再联合）"]
+        T2 --> T3["阶段3：SELU 采集数据做指令微调"]
+    end
+    OBS["第一视角 RGB 观测"] --> V2["Qwen2.5-VL 视觉编码器 → 2D 特征"]
+    OBS --> V3["CUT3R → 点图 3D 特征"]
+    V2 --> CSE["跨空间编码器 CSE：MLP 融合 → 视觉 token"]
+    V3 --> CSE
+    CSE --> MPE["运动位置嵌入 MPE（以机器人质心为中心的方向编码）"]
+    PRO["本体关节状态 → VQ-VAE → Proprio token"] --> LLM
+    MPE --> LLM["Qwen2.5-VL-7B-Instruct"]
+    TXT["任务指令（文本 token）"] --> LLM
+    LLM --> PLAN["文本规划（子任务序列）"]
+    PLAN --> SIM["DualTHOR 执行：IK 服务 + 随机意外机制"]
+    SIM -->|"执行反馈：成功 / 失败"| OBS
+    T3 -.-> LLM
+```
+
+图依据：论文 §IV（Fig. 4）、§III-C/D（Fig. 3）；闭环回到观测为 Fig. 3 对重规划的描述的推断
+
 ## 解决什么问题
 
 MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连续过渡/意外）； - MLLM **缺具身感知**，不"知道"自己身体状态，规划脱离物理。
@@ -134,6 +159,7 @@ MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots/Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2510.07882>
 - 论文正文（Table II–IV、消融）：<https://arxiv.org/html/2510.07882>
+- [arXiv PDF](https://arxiv.org/pdf/2510.07882)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III DualTHOR（含低层控制与意外机制）、§IV 方法（数据、三阶段训练、MPE、跨空间编码器）；§V 实验仅略读。
 
 ## 推荐继续阅读
 

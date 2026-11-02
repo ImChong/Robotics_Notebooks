@@ -32,7 +32,28 @@ One-shot Humanoid Whole-body Motion Learning 的人形机器人学习论文条�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多段行走片段（135 条 Walk）"] --> B["行走先验：Base Model（目标动作前先在行走动作上训练）"]
+    A --> C["OPOT：Order-Preserving Optimal Transport（Sinkhorn）计算与单条非行走目标片段的序列距离，得到软传输计划"]
+    T["单条非行走目标片段（如 Dance / Jump）"] --> C
+    C --> D["选距离最小的 Q=10 条行走动作"]
+    C --> E["软传输计划 → 硬分配（Hungarian 算法，每个目标帧匹配唯一行走帧，行走帧可复用）"]
+    D --> E
+    E --> F["在 R3 x SO(3)^J 乘积流形上沿测地线插值（线性 + SLERP），每对生成 6 条中间动作"]
+    F --> G["碰撞消除优化：球/胶囊能量 + 乘积流形 Riemannian 梯度下降"]
+    G --> H["重定向到人形机器人（Unitree H1）"]
+    T --> H
+    H --> I["PPO 目标条件 RL 在 Isaac Gym 训练：上身跟踪参考，腿部跟随 root 指令保持平衡"]
+    B --> J["用生成动作微调 Base Model（Geo. FT Base Model）"]
+    I --> J
+```
+
+图依据：论文 §3 Methods（3.1–3.5）/ Fig.2、Algorithm 1，微调部分见 §4 Experiments
 
 ## 核心信息
 
@@ -64,6 +85,7 @@ One-shot Humanoid Whole-body Motion Learning 的人形机器人学习论文条�
 
 - [humanoid_pnb_one-shot-humanoid-whole-body-motion-learning.md](../../sources/papers/humanoid_pnb_one-shot-humanoid-whole-body-motion-learning.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2510.25241)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1–3.5、Algorithm 1）、§4 的训练方案与基线设定
 
 
 ## 推荐继续阅读

@@ -38,6 +38,35 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 - **自动化数据流水线**是人形数据飞轮的引擎，与 SUGAR、UniAct 的数据观一致；
 - **260+ 小时**的体量在人形动作领域可观，利于探究 scaling law。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["Humanoid-Union 数据流水线（约 260 小时 / 17 万序列）"]
+        vid["人类视频"] --> mocap["检测跟踪 + 姿态估计与精修<br/>输出 SMPL 格式人体动作"]
+        mocap --> vlm["视觉语言模型生成文本描述"]
+        pub["公开带语义标注的人体动作数据 + 自采数据"] --> rt
+        vlm --> rt["动作重定向：绑定虚拟关键点 → T-pose 尺度校准<br/>→ IK 求关节 → FK 得关键点位姿 → 高度修正与平滑"]
+        rt --> trk["通用全身跟踪器过滤与后处理<br/>（AMASS 训练，约 10% 动作被滤除）"]
+        trk --> ds["Humanoid-Union：机器人动作 + 文本"]
+    end
+    subgraph SCHUR["SCHUR 两阶段"]
+        rep["动作表示 e = root 位置/朝向 + 关节 + 虚拟关键点位姿"] --> enc["动作编码器 → 潜向量 z"]
+        enc --> fsq["FSQ 量化：ẑ = round(f(z))<br/>无 argmin，缓解码本坍塌"]
+        fsq --> tok["离散动作 token"]
+        fsq --> dec["动作解码器 → 重建机器人动作"]
+        txt["文本 → T5-XL 文本 token（前缀）"] --> ar["LLaMA 式 decoder-only Transformer<br/>前缀双向注意力 + RMSNorm，自回归生成动作 token"]
+        tok --> ar
+    end
+    ds --> rep
+    ds --> txt
+    ar --> dec
+    dec --> out["文本驱动的机器人动作"]
+    trk -.同一跟踪器用于真机执行.-> out
+```
+
+图依据：论文 §III-A 至 §III-D / §IV-A 至 §IV-D / Fig.2、Fig.4。
+
 ## 解决什么问题
 
 人形高层控制的核心瓶颈是**数据**： - 人类视频/动作虽**海量免费**，但**如何挖掘、抽取机器人可学表示、做可扩展学习**没解决； - 还缺**带语义标注**的大规模人形动作数据来支撑高层（语义）控制。
@@ -88,6 +117,7 @@ summary: "数据规模一直是机器人学习的瓶颈。对人形而言，人�
 - [humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md](../../sources/papers/humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid/Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level_Control_for_Humanoid.html>
 - 论文：<https://arxiv.org/abs/2511.09241>
+- [arXiv PDF](https://arxiv.org/pdf/2511.09241)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D、§IV-A 至 §IV-D
 
 ## 推荐继续阅读
 

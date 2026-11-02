@@ -45,6 +45,24 @@ summary: "目标是让人形从少量视频示例高效解决新操作任务。�
 - **随机块遮挡**是缓解人-机视觉差异过拟合的简单有效技巧；
 - 与 In-N-On、Masquerade 等"从人类视频学操作"路线互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["人类 play 视频（仅 RGB 帧）"] --> HP["手部姿态估计 f（WiLoR）：腕部位姿 + 抓取信号"]
+    HP --> ACT["未来 k 步手部姿态作为动作标签 a_t；当前手部姿态作为本体感觉 h_t"]
+    ACT --> SEG["随机采样目标片段 σ_tgt"]
+    SEG --> RET["检索 top-k 相似片段作为上下文 σ_ctx"]
+    FEAT["片段特征 φ：DINOv2 逐帧特征时间均值池化 + 动作序列"] --> RET
+    RET --> MASK["视觉遮罩：随机遮挡 1–n 个图像 patch（概率 p）"]
+    MASK --> POL["策略 π_θ：条件于过去观测 / 动作与 k 个上下文片段，预测 l 步动作块"]
+    POL --> LOSS["Meta-ICL 行为克隆：动作块 L1 损失"]
+    POL --> DEP["测试时：少量人类演示作上下文，无需更新参数"]
+    DEP --> IK["人手腕部位姿重定向到人形腕部位姿 + 逆运动学求关节角"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 2、式 (1)–(3)。
+
 ## 解决什么问题
 
 让人形**少样本快速学新任务**： - ICL 有前景，但**依赖遥操作数据**，难规模化； - 想用**人类玩耍视频**（海量、无标注），但有**具身差距**与**人类特有线索过拟合**。
@@ -137,6 +155,7 @@ MimicDroid 要：**仅用人类玩耍视频**训练出有 ICL 能力的人形操
 - 论文：<https://arxiv.org/abs/2509.09769>
 - 论文正文（Table I、真机结果与局限节）：<https://arxiv.org/html/2509.09769>
 - 基准代码：<https://github.com/UT-Austin-RPL/mimicdroid-robocasa/tree/latest>
+- [arXiv PDF](https://arxiv.org/pdf/2509.09769)：已通读方法部分（实验与附录以略读为准）：§III Methodology（A–D）、§IV 实验设定
 
 ## 推荐继续阅读
 

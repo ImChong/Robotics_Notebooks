@@ -40,6 +40,23 @@ Self-supervised method that treats embodied reasoning as a latent variable and d
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  D["机器人演示数据集<br/>(上下文 C, 动作 A)"]
+  FM["基础模型 / VQA 生成推理原语<br/>Plan、Visible Objects、Subtask、Ego 等"]
+  DROP["Reasoning Dropout<br/>每个原语以概率 d 丢弃<br/>构造 warmstart 数据集 D_warm"]
+  TRAIN["联合训练一个 VLA<br/>先验 p(Z,A|C) 与后验 q(Z|C,A)"]
+  SAMP["对每条演示从后验采样<br/>K 条候选推理 Z_k"]
+  W["计算重要性权重<br/>w(Z_k)=p(Z_k,A|C)/q(Z_k|C,A)"]
+  RES["按 Cat(w) 重采样出 Z*<br/>得到 D_refined"]
+  FIN["用 D_refined 重训最终 VLA<br/>输出推理 + 动作"]
+  D --> FM --> DROP --> TRAIN --> SAMP --> W --> RES --> FIN
+```
+
+图依据：论文 §IV-A/B/C、Alg. 1、Alg. 2、Fig. 3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +120,7 @@ Self-supervised method that treats embodied reasoning as a latent variable and d
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2602.08167>
+- [arXiv PDF](https://arxiv.org/pdf/2602.08167)：已通读方法部分（实验与附录以略读为准）：摘要、§I–III（含变分推断预备）、§IV R&B-EnCoRe Framework（Alg. 1/2）；§V 实验与附录仅略读
 
 ## 推荐继续阅读
 

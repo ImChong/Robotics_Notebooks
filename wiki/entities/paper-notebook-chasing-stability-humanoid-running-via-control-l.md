@@ -31,7 +31,25 @@ Chasing Stability 的人形机器人学习论文条目，当前处于 Paper Note
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多域轨迹优化 (Casadi/Pinocchio/IPOPT)<br/>单支撑 SSP → 腾空 FLT 的半周期 + 周期性约束"] --> B["步态库：1.1–3.0 m/s 多速度步态<br/>由快到慢热启动 + 站立姿态"]
+    B --> C["Bézier 曲线拟合优化节点<br/>得到虚拟约束 y_d(t)（末端位姿/关节）"]
+    C --> D["按指令前向速度 v_x^d 选取最近速度步态"]
+    D --> E["误差 η → CLF V(η)=ηᵀPη<br/>CLF 跟踪奖励 r_v + CLF 衰减条件奖励 r_v̇"]
+    E --> F["总奖励 R = r_reg + r_v + r_v̇ + r_dom<br/>（r_dom：SSP 支撑脚静止 / 腾空接触力惩罚）"]
+    F --> G["PPO 训练 (IsaacLab)：Actor 观测含相位 sin/cos<br/>Critic 含特权信息；域随机化"]
+    G --> H["策略部署 Unitree G1"]
+    L["Fast-LIO 激光雷达里程计<br/>位置/偏航估计"] --> PD["分层 PD 控制器：横向位置 + 航向<br/>输出 v_y、v_ω 指令（按训练范围饱和）"]
+    PD --> H
+    H --> I["直线跑步（跑步机 / 室外）"]
+```
+
+图依据：论文 §III-A、§III-B、§III-C / Fig.2、Fig.5、式 (11)–(15)。
 
 ## 核心信息
 
@@ -64,6 +82,7 @@ Chasing Stability 的人形机器人学习论文条目，当前处于 Paper Note
 - [humanoid_pnb_chasing-stability-humanoid-running-via-control-l.md](../../sources/papers/humanoid_pnb_chasing-stability-humanoid-running-via-control-l.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.19573>
+- [arXiv PDF](https://arxiv.org/pdf/2509.19573)：已通读方法部分（实验与附录以略读为准）：§III Running Controller（III-A/B/C）；§IV 结果略读
 
 ## 推荐继续阅读
 

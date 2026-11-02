@@ -39,6 +39,24 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 - **DAgger 式回灌依旧好使**：在执行分布上补数据这一经典思路，对人形长时程组合同样有效，工程代价低；
 - **基准化很重要**：Humanoid Hanoi 这类「可量化长时程」的任务，有助于公平比较共享/非共享与不同数据策略，呼应本仓 11 仿真与基准板块。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BOX["各箱体 SE(3) 位姿与尺寸"] --> SEQ["任务级序列器<br/>汉诺塔递归生成技能序列（PDDL 接口已实现）"]
+    SEQ --> SK["独立训练的技能策略<br/>GoTo / GoTo-with-Box / Pickup / Place"]
+    BOX --> SK
+    SK -->|"任务级全身指令（含基座指令 stand bit、平面速度、偏航率）"| WBC["共享、任务无关的 WBC<br/>输入本体感知 + 部分指定的运动指令"]
+    WBC -->|"关节级 PD 目标"| PD["固定增益 PD 控制器"]
+    PD --> ROBOT["机器人（仿真 / Digit V3）"]
+    ROBOT -->|"本体感知"| WBC
+    ROBOT -->|"状态"| SK
+    ROBOT -.->|"组合执行产生的闭环 rollout"| AGG["任务驱动的数据聚合<br/>用 Pickup / Place 成功指令序列扩充 WBC 参考集"]
+    AGG -.->|"同一跟踪目标与域随机化重训"| WBC
+```
+
+图依据：论文 §4、§5（Fig. 3）；每个问题实例分为 7 次移动，每次依次执行 GoTo、Pickup、GoTo-with-Box、Place（Fig. 2）。
+
 ## 解决什么问题
 
 人形机器人做**长时程箱体重排**（搬来搬去、堆叠）需要把多个技能**连续串接**执行。一个自然的设计是：**让所有技能共用一个全身控制器**，从而获得统一的闭环组合接口。但这带来一个核心问题：
@@ -89,6 +107,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 - [humanoid_pnb_humanoid-hanoi.md](../../sources/papers/humanoid_pnb_humanoid-hanoi.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement.html>
 - 论文：<https://arxiv.org/abs/2602.13850>
+- [arXiv PDF](https://arxiv.org/pdf/2602.13850)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 挑战问题、§4 共享 WBC 系统概览、§5 覆盖扩展、§6 对比方法设定
 
 ## 推荐继续阅读
 

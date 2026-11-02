@@ -33,6 +33,24 @@ FastTD3 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    ENV["大规模并行仿真环境（IsaacLab / MuJoCo Playground / HumanoidBench）"]
+    ACT["Actor MLP 512-256-128 + 混合高斯探索噪声（σ_max=0.4）"]
+    BUF["回放缓冲区：N × num_envs，整体放在 GPU"]
+    BATCH["大批量采样（batch 32768）"]
+    CRITIC["分布式 Critic C51 + Clipped Double Q-learning；MLP 1024-512-256"]
+    UPD["TD3 更新：低 UTD（每 128–4096 个并行环境步 2/4/8 次梯度更新）"]
+    ACT -->|"动作"| ENV
+    ENV -->|"转移数据"| BUF
+    BUF --> BATCH --> CRITIC --> UPD
+    UPD -->|"更新"| ACT
+```
+
+图依据：论文 §2 / §2.1 / §2.2（设计选择与实现细节）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +82,7 @@ FastTD3 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - [humanoid_pnb_fasttd3-simple-fast-and-capable-reinforcement-le.md](../../sources/papers/humanoid_pnb_fasttd3-simple-fast-and-capable-reinforcement-le.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.22642>
+- [arXiv PDF](https://arxiv.org/pdf/2505.22642)：已通读方法部分（实验与附录以略读为准）：§1 概述、§2.1 设计选择、§2.2 实现细节（实验与附录略读）
 
 ## 推荐继续阅读
 

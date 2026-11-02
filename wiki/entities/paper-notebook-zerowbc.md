@@ -33,6 +33,26 @@ ZeroWBC 把"教人形机器人做事"的重心从昂贵的真机遥操作搬到�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D1["数据：Nymeria (300h 第一人称视频 + 动作 + 文本)<br/>HumanML3D<br/>自采 5 小时第一人称数据 (胸前 GoPro + MoCap 服)"] --> T["3.2 Motion Tokenizer<br/>SMPL 动作 → VQ-VAE → 离散 motion token"]
+    T --> F["3.3 微调 Qwen2.5-VL-3B<br/>阶段 1：公开 image-text-motion 数据<br/>阶段 2：自采第一人称数据（仅微调 LM decoder）"]
+    I["初始第一人称图像 + 语言指令"] --> G["Stage 1 运动生成：VLM 自回归一次性预测<br/>完整未来 motion token（开环）"]
+    F --> G
+    G --> DEC["VQ-VAE Decoder → 连续人体全身动作 (SMPL)"]
+    DEC --> RT["重定向到 Unitree G1<br/>参考动作 m_ref = (q_ref, q̇_ref)"]
+    DEC --> K["关键部位轨迹 g_inter<br/>(root / 双腕 / 双脚 的位置、速度，root 角速度)"]
+    RT --> P["Stage 2 通用交互跟踪策略 (RL)<br/>目标 G = (g_inter, m_ref)"]
+    K --> P
+    C["训练：自适应动作调度 + 渐进难度课程<br/>+ 未来动作编码 + 非对称 PPO<br/>交互导向跟踪奖励"] -.-> P
+    P --> J["G1 机载计算机输出关节命令"]
+    S["部署：G1 发送初始图像到外部 RTX 4090 服务器<br/>服务器运行 VLM 生成并重定向"] -.-> G
+```
+
+图依据：论文 §3（Fig. 1 / Fig. 2 ZeroWBC 架构；3.1–3.4）与附录 D 真机部署
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +84,7 @@ ZeroWBC 把"教人形机器人做事"的重心从昂贵的真机遥操作搬到�
 - [humanoid_pnb_zerowbc.md](../../sources/papers/humanoid_pnb_zerowbc.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZeroWBC__Learning_Natural_Visuomotor_Humanoid_Control_from_Egocentric_Video/ZeroWBC__Learning_Natural_Visuomotor_Humanoid_Control_from_Egocentric_Video.html>
 - 论文：<https://arxiv.org/abs/2603.09170>
+- [arXiv PDF](https://arxiv.org/pdf/2603.09170)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1 数据采集、3.2 Motion Tokenizer、3.3 VLM 微调、3.4 通用交互跟踪）、§4.1 数据集、附录 D 真机部署；其余实验与附录略读
 
 ## 推荐继续阅读
 

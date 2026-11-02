@@ -33,6 +33,24 @@ summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph ACT[远端执行器模块: 可装于躯干]
+        M[Dynamixel XC330 舵机<br/>每指 3 个, 5 层堆叠共 15 个] --> B[绕线盘 bobbin<br/>拮抗线对反向缠绕, 装配时设预紧]
+    end
+    B --> BC[30 根 Bowden 线 = 15 对拮抗线对<br/>0.75 mm 钢丝 + PTFE 套管 + 加强弹簧 + 导线器]
+    BC --> RCJ
+    subgraph RCJ[滚动接触关节 RCJ, 3D 打印手指]
+        K[运动学优化滚动半径 r_i<br/>使屈肌与伸肌线长变化之和 ΔcF + ΔcE 约为 0] --> J[单电机驱动一个关节的屈伸 / 桡尺偏]
+    end
+    J --> F[5 指 20 DOF 仿人尺度手: 手部 236 g]
+    F --> E[指尖力 / 速度 / Cutkosky 抓取 / 拇指对掌指数 评测]
+```
+
+图依据：论文 §II、§III-A（Fig. 5）、§III-B（Fig. 6）、§III-D。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +82,7 @@ summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电�
 - [humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md](../../sources/papers/humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html>
 - 论文：<https://arxiv.org/abs/2512.24657>
+- [arXiv PDF](https://arxiv.org/pdf/2512.24657)：已通读方法部分（实验与附录以略读为准）：§II 手部总体设计、§III-A 拮抗滚动接触关节、§III-B Bowden 线传动、§III-C 拇指与手指布局、§III-D 执行器单元
 
 ## 推荐继续阅读
 

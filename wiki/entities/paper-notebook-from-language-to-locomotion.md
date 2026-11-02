@@ -32,7 +32,24 @@ From Language to Locomotion 的人形机器人学习论文条目，当前处于 
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["文本指令 T（如 A person walks in a circle）"] --> G["阶段一：连续自回归运动生成器（LaMP 文本编码 + Causal Transformer 掩码预测 + Diffusion 头）"]
+    G --> L["运动潜变量 l_ref（不解码为显式运动序列，无需重定向）"]
+    D["筛选后的重定向动作数据集（初始策略 π0 跟踪误差 e(s)>0.6 的序列被剔除）"] --> TP["阶段二：MoE 教师策略 π_t（PPO，特权信息 + 参考动作，输出 23 维目标关节位置经 PD 控制）"]
+    CAS["Causal Adaptive Sampling：按失败区间向前归因，提高前因区间采样概率"] --> TP
+    TP -->|"DAgger 式 rollout，查询教师动作"| ST["扩散学生策略 π_s：对教师动作加噪，以 l_ref + 本体感知 + 历史观测经 latent encoder 条件去噪（x0 预测，MSE）"]
+    L --> ST
+    ST --> INF["部署推理：高斯噪声 + DDIM 采样 + AdaLN 以 l_ref、本体感知、历史观测为条件"]
+    INF --> ACT["动作 a 经 PD 控制直接驱动人形机器人"]
+    L -.->|"推理时仅需 l_ref"| INF
+```
+
+图依据：论文 §3.1 Overview、§3.2–3.4 / Fig.2（RoboGhost）；PD 控制输出见 §3.3.1
 
 ## 核心信息
 
@@ -64,6 +81,7 @@ From Language to Locomotion 的人形机器人学习论文条目，当前处于 
 
 - [humanoid_pnb_from-language-to-locomotion.md](../../sources/papers/humanoid_pnb_from-language-to-locomotion.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2510.14952)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）与 Fig.2
 
 
 ## 推荐继续阅读

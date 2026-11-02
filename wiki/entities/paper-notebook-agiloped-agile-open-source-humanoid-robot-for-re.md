@@ -33,6 +33,22 @@ AGILOped 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    HL["高层控制：开源 ROS 软件栈（插件化步态 / 运动控制器，关键帧轨迹编辑器）"] --> PI["RosPi 低层控制器：Raspberry Pi 3B+（CAN 总线主站）"]
+    JET["可选 NVIDIA Jetson AGX Orin（更高算力需求）"] -->|Ethernet| PI
+    IMU["低成本 AHRS：RP2040 + BNO085（最高 1 kHz 姿态输出）"] -->|USB / rosserial| PI
+    PI --> IMP["阻抗控制器：τ = min(K_P·Δq + K_D·Δq̇ + τ_ff, τ_max)"]
+    IMP -->|"2 路 CAN 总线，每路 5 台电机"| ACT["10 × MyActuator RMD X6-40 准直驱执行器"]
+    ACT -->|"位置 / 速度 / 力矩反馈"| PI
+    ACT --> LEG["双 4 连杆并联腿：q_h = q_th，q_k = q_sh − q_th，q_a = −q_sh"]
+    PI --> SAFE["软件安全：通信中断 100 ms 停机 / 温度电压监测"]
+```
+
+图依据：论文 §IV Control Architecture（A–C）/ Fig. 5、式 (1)–(3)。本文为硬件平台论文，图为系统控制架构而非学习算法。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +80,7 @@ AGILOped 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - [humanoid_pnb_agiloped-agile-open-source-humanoid-robot-for-re.md](../../sources/papers/humanoid_pnb_agiloped-agile-open-source-humanoid-robot-for-re.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.09364>
+- [arXiv PDF](https://arxiv.org/pdf/2509.09364)：已通读方法部分（实验与附录以略读为准）：§III Design（A–C）、§IV Control Architecture（A–C）、§V Evaluation 略读
 
 ## 推荐继续阅读
 
