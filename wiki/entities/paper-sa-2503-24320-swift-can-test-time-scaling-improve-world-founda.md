@@ -43,6 +43,21 @@ Investigates whether test-time scaling improves world foundation models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["输入视频块 v0 与提示 c"] --> WFM["自回归 WFM（COSMOS）每步生成 k 帧"]
+    WFM --> CAND["每个 beam 成员扩展 M 个候选，共 M x K 个"]
+    CAND --> FT["Fast tokenizer：离散 token 解码器快速解码，约 0.015 s"]
+    FT --> VER["规则型 verifier R（评测工具箱指标）打分"]
+    VER --> TOPK["概率式 Top-K 剪枝：softmax(r/τ) 无放回采样 K 个"]
+    TOPK -->|"保留 K 条 beam，进入下一步"| WFM
+    TOPK -->|"生成结束"| OUT["输出最优视频"]
+```
+
+图依据：论文 §4.1–4.4（Fig. 1 / Fig. 4）、§3 评测工具箱。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ Investigates whether test-time scaling improves world foundation models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.24320>
+- 论文 PDF：<https://arxiv.org/pdf/2503.24320>（已通读全文：方法 §3 评测工具箱、§4 SWIFT 框架；实验设定 §5 起）
 
 ## 推荐继续阅读
 

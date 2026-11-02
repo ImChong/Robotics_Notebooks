@@ -40,6 +40,32 @@ HAMMER: Harnessing MLLMs via Cross-Modal Integration for Intention-Driven 3D Aff
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IMG["交互图像 I + 文本提示 T（含物体类别）"] --> MLLM["MLLM F_θ（Qwen2.5-VL，LoRA 微调）"]
+    MLLM --> HID["最后一层隐状态 h"]
+    MLLM --> TXT["文本响应：affordance 标签（辅助 L_txt 监督）"]
+    HID --> CONT["[CONT] token 隐状态 → MLP ψ_c → 意图嵌入 f_c"]
+    PC["点云 P"] --> ENC["点云编码器（PointNet++）→ 瓶颈特征"]
+    HID --> PROJ["MLP ϕ_h 投影 → f_h"]
+    ENC --> CA["瓶颈阶段：Cross-Attn（query=点特征，key/value=f_h）"]
+    PROJ --> CA
+    CA --> DECP["点云解码器：多尺度特征 + 全分辨率 f_p"]
+    PROJ --> GATE["门控加权汇聚得全局描述子 f_hg"]
+    DECP --> FUS["特征层：拼接 f_p 与复制的 f_hg，经 MLP → 增强点特征"]
+    GATE --> FUS
+    CONT --> LIFT["多粒度几何提升：逐尺度 Cross-Attn（q=f_c，k/v=多尺度点特征）+ FFN"]
+    DECP -->|"多尺度点特征"| LIFT
+    LIFT --> F3D["3D 感知意图嵌入 f_c3D"]
+    FUS --> DEC["Affordance 解码器：point-to-intention attention + MLP + sigmoid"]
+    F3D --> DEC
+    DEC --> OUT["点级 affordance 图 p（L_aff = focal + dice）"]
+```
+
+图依据：论文 §3.1–3.5（Fig. 2，Eq. 1–12）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -89,6 +115,7 @@ HAMMER: Harnessing MLLMs via Cross-Modal Integration for Intention-Driven 3D Aff
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.02329>
+- 论文 PDF：<https://arxiv.org/pdf/2603.02329>（已通读全文：方法 §3、实验设定 §4.1）
 
 ## 推荐继续阅读
 

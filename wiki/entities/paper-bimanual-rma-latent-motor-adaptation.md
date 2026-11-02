@@ -32,6 +32,34 @@ summary: "Scaling Latent Motor Adaptation（arXiv:2610.14833）：把 RMA 式潜
 
 摘要指出，双臂协作带来更高维控制、耦合接触和共享物体受力，RMA 能否在这种设定下成立需要验证。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph S1["阶段一：特权 base policy 训练（仿真，PPO）"]
+        E["环境 e：物体实例/类别 embedding + 尺度、密度、摩擦"] --> ENC["环境编码器 μ（MLP）"]
+        PRIV["特权状态：物体朝向、夹爪-物体接触冲量"] --> ENC
+        ENC --> Z["环境嵌入 z_t"]
+        Z --> POL["集中式双臂策略 π（14-DoF 联合动作）"]
+        X["策略观测 x_t 与目标 g"] --> POL
+    end
+    subgraph S2["阶段二：Adapter 训练（冻结 π 与 μ）"]
+        HIST["50 步本体感知-动作历史"] --> CNN1["1D CNN ω"]
+        DEPTH["双腕 32x32 深度图"] --> CNN2["共享 CNN ψ"]
+        CNN1 --> AD["Adapter ϕ"]
+        CNN2 --> AD
+        AD --> ZH["预测嵌入 z_hat_t"]
+        ZH -->|"MSE 回归到真值 z_t"| Z
+    end
+    subgraph S3["部署（真机，无微调）"]
+        AD2["Adapter 10Hz 估计 z_hat"] --> POL2["Base policy 50Hz 输出关节位置增量"]
+        POL2 --> CTRL["1kHz 阻抗控制器 → 双 Franka"]
+    end
+    S1 --> S2 --> S3
+```
+
+图依据：论文 §III（Fig. 2）、§III-A/B/C、§IV、§V（部署设定）。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -100,6 +128,7 @@ ManiSkill 仿真三任务（YCB 物体质量、摩擦、尺度、形状随机化
 
 - [论文归档](../../sources/papers/bimanual-rma_arxiv_2610_14833.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- 论文 PDF：<https://arxiv.org/pdf/2610.14833>（已通读全文：方法 §III、实验设定 §IV、结果 §V 及真机部署）
 
 ## 推荐继续阅读
 

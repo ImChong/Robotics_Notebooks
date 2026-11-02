@@ -42,6 +42,27 @@ A cross-modal architecture based on the Mamba framework, fusing RGB video and te
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    VID["RGB 视频 T 帧"] --> VE["视频嵌入 + 位置/时间嵌入"]
+    VE --> VM["VideoMamba 模块（预训练）"]
+    VM --> VT["视频 token 与 video CLS"]
+    SK["手部骨架序列"] --> SE["骨架嵌入"]
+    SE --> SM["Mamba 块堆叠（骨架编码器）"]
+    SM --> ST["骨架 token 与 skeleton CLS"]
+    VT --> FUSE["融合模块：加可学习模态嵌入后拼接，去掉两个原 CLS，引入 Mixed CLS"]
+    ST --> FUSE
+    VT -.->|"CLS 初始化 Mixed CLS"| MIX["Mixed CLS 四种策略：Naive / Average / Weighted / Context-based"]
+    ST -.-> MIX
+    MIX --> FUSE
+    FUSE --> MB["单个 Mamba 块"]
+    MB --> HEAD["分类头 → 动作类别"]
+```
+
+图依据：论文 §2.1–2.2（Fig. 1 / Fig. 2，Eq. 1–2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ A cross-modal architecture based on the Mamba framework, fusing RGB video and te
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.24302>
+- 论文 PDF：<https://arxiv.org/pdf/2605.24302>（已通读全文：方法 §2 跨模态融合设计、实验 §3）
 
 ## 推荐继续阅读
 
