@@ -42,6 +42,24 @@ A large-scale replay-grounded egocentric Counter-Strike dataset for world models
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["采集 HLTV 公开职业 CS:GO / CS2 demo"] --> B["按 demo+round+player+tick 区间<br/>用 CS Demo Manager 渲染第一人称视频"]
+    B --> C["渲染视频过滤：去除观战视角、录屏失败、<br/>视角缺失或时长与 tick 区间不符"]
+    A --> D["demoparser2 解析 demo<br/>逐 tick 玩家状态 ticks.csv"]
+    D --> E["键鼠重建 + 规则检测原子动作 events.csv"]
+    E --> F["动作时间线 → 合并 cut-protected 保护链"]
+    F --> G["动态规划切分训练段 dp_segments.json"]
+    C --> H["先验引导 VLM 字幕<br/>动作 / 移动 / 相机先验 + 片段视频"]
+    G --> H
+    H --> I["结构化 JSON：scene_draft、long_prompt、<br/>confidence、flags"]
+    I --> J["发布：>400K 视频 / >10K 小时 / 多粒度标注"]
+```
+
+图依据：数据采集与标注流程图，论文 §3（Overview、§3.1 Demo Collection/Rendering/Filtering、§3.2 Parsing and Segmentation、§3.3 Prior-Guided VLM Captioning）与 Fig. 2；规模数字见 Table 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ A large-scale replay-grounded egocentric Counter-Strike dataset for world models
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.18180>
 - 编号核对（2026-11-02）：上游清单登记的 2606.16186 经 arXiv 官方记录核对为《MOSAIC: Mobile Object Segmentation under Adverse Imaging Conditions for Rapid L-PBF Keyhole Behavior Characterization》，与本页论文不符；已更正为 2606.18180《EgoCS-400K: An Egocentric Gameplay Dataset for World Models》。
+- [arXiv PDF](https://arxiv.org/pdf/2606.18180)：已通读 §1 引言、§2 相关工作、§3 方法（§3.1–§3.3）与 §4 分析与局限（实验与附录以略读为准）；流程图依据论文 §3 与 Fig. 2。
 
 ## 推荐继续阅读
 
