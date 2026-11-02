@@ -41,6 +41,31 @@ summary: "Coherent4D + HIGFlow（arXiv:2609.08636）：233K 样本连续 4D 交�
 - Coherent4D：233,828 样本，Cooking/Health/Bike Repair 三域
 - Stage1 Qwen3-VL + V-JEPA 预测连续手部位点；Stage2 flow matching 姿态
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：Semantic-Dynamic Location Forecasting"]
+        IN["观测上下文 C_loc<br/>第一视角帧 / 环境描述 / 位置历史 / 任务提示"] --> QW["Qwen3-VL 编码<br/>取各未来步 hidden state h_k^Q"]
+        IN --> VJ["冻结 V-JEPA 编码视频<br/>投影并重采样为动态记忆 token"]
+        QW --> AD["gated residual adapter<br/>融合语义与动态特征得 h_k^F"]
+        VJ --> AD
+        AD --> DEC["坐标解码器<br/>回归连续 3D 交互位置 ŷ_k"]
+    end
+    subgraph S2["阶段二：Hand-Conditioned Residual Flow Matching"]
+        PH["观测姿态历史 H_pose<br/>SMPL 24 节点图 + pose history Transformer"] --> ANC["确定性 anchor 预测<br/>X̂^a_k = MLP(h, f_k)"]
+        FC["未来条件编码器<br/>位置 ŷ_k、位移、相对步 k/K"] --> ANC
+        ANC --> GATE["残差门控 γ_k<br/>由历史、位置条件、anchor 得到"]
+        GATE --> FM["条件 Flow Matching<br/>从先验采样，Heun 积分 N_ODE 步得残差"]
+        ANC --> COMP["anchor + 残差"]
+        FM --> COMP
+    end
+    DEC -- "推理时作为 Ỹ" --> FC
+    COMP --> OUT["S 个候选全身 SMPL 姿态序列<br/>+ 交互位置序列 Ŷ"]
+```
+
+图依据：论文 §IV-A/B / Fig.5 / Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -98,6 +123,7 @@ summary: "Coherent4D + HIGFlow（arXiv:2609.08636）：233K 样本连续 4D 交�
 - [from_where_to_how_arxiv_2609_08636.md](../../sources/papers/from_where_to_how_arxiv_2609_08636.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08636](https://arxiv.org/abs/2609.08636)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08636)：已通读方法部分（实验与附录以略读为准）：§IV Method（A 问题形式化、B HIGFlow 框架与 Algorithm 1）；§III 数据集与 §V 实验以略读为准
 
 ## 推荐继续阅读
 

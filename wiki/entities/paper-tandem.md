@@ -38,6 +38,29 @@ summary: "TANDEM（arXiv:2609.28314）：规划器能走的步骤交给 TAMP，�
 - 纳入 [13 篇技术地图](../overview/embodied-13-papers-technology-map.md) 阅读坐标。
 - 开源结论（步骤 2.5，2026-09-24）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    In["输入：语言指令 ℓ + 初始观测 o0<br/>+ 目标 VLA 预训练数据中的示例轨迹"] --> Chk["VLM 对照基础 TAMP 域 M0 = ⟨Ψ0, Ω0⟩<br/>识别缺失能力"]
+    Chk --> Gen["VLM 联合生成<br/>新谓词 Ψ∆（附自然语言定义）<br/>+ 人类执行的 magic operator Ω∆"]
+    Gen --> Ext["扩展域 MH = ⟨Ψ0 ∪ Ψ∆, Ω0 ∪ Ω∆⟩"]
+    Ext --> Plan["VLM 任务规划器<br/>输出 phase 序列 Φ = (ϕ1 … ϕN)<br/>每个 phase = 子目标 + 执行者（robot / human）"]
+    Plan --> Next{"执行下一个 phase"}
+    Next -->|"robot phase"| Tamp["TiPToP TAMP 自主规划并执行<br/>运动生成用 DATAFARM 对齐预训练分布"]
+    Next -->|"human phase"| Tele["向操作员给出自然语言子目标<br/>遥操作执行"]
+    Tamp --> Perc["重新感知：采集新图像更新场景"]
+    Tele --> Perc
+    Perc -->|"human phase 之后"| Ver{"VLM 谓词分类器 g_ψ<br/>验证预期效果是否成立"}
+    Ver -->|"不成立"| Drop["终止该 trial，轨迹不入数据集"]
+    Ver -->|"成立"| Next
+    Perc -->|"robot phase 之后"| Next
+    Next -->|"所有 phase 完成"| Demo["完整 demonstration<br/>τ = ((τ1, ϕ1) … (τN, ϕN))"]
+    Demo --> FT["微调 π0.5-DROID（VLA）"]
+```
+
+图依据：论文 §IV-A–E 与 Fig. 1/2（phase 序列、重新感知与验证、示范拼接与 VLA 微调）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +104,7 @@ summary: "TANDEM（arXiv:2609.28314）：规划器能走的步骤交给 TAMP，�
 
 - [13 篇盘点（公众号）](../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md)
 - [TANDEM: Task and Motion Planning with As-Needed Demonstrations for Efficient Vision-Language-Action Model Fine-tuning](../../sources/papers/tandem_arxiv_2609_28314.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28314)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 问题设定、§IV 方法（A–E）、§V-A 实验设定（略读 §V-B 及之后）
 
 ## 推荐继续阅读
 

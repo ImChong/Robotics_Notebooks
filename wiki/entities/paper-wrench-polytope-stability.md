@@ -39,6 +39,31 @@ summary: "力旋多面体稳定（arXiv:2609.17405）：高效六维多面体交
 
 - 复杂多接触下实时力旋分析是稳定控制瓶颈。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["各足接触 c：摩擦模型或实测滑移阈值"] --> B["摩擦多面体 FP_c (V 表示)"]
+    C["关节力矩限位 + RNEA 逆动力学变换 T_ID"] --> D["可驱动多面体 AP_c (H 表示)<br/>加力矩为 0 的虚拟关节滤除奇异方向"]
+    B --> E{"接触构型改变？"}
+    D --> E
+    E -->|是| F["精确求交 FP_c ∩ AP_c<br/>(H 表示求交后转回 V 表示)"]
+    E -->|否| G["缩放法：超限顶点按比例缩放到 AP_c 边界"]
+    F --> H["接触 wrench 多面体 CW_c"]
+    G --> H
+    H --> I["叠加 CoM 力矩关系 r_c × f，得到 CWm_c"]
+    I --> J["不展开完整 Minkowski 和<br/>目标 wrench w_goal 作为输入"]
+    J --> K["找含原点的初始 simplex"]
+    K --> L["沿与 w_goal 相交的面法向<br/>搜极值点并替换 simplex 顶点"]
+    L --> M{"出口面已在 FW 边界？"}
+    M -->|否| L
+    M -->|是| N["把交点缩放到 w_goal 长度，插值得到各足 wrench"]
+    N --> O["T_ID 转为各关节力矩"]
+    P["位姿误差 → PID → 基座目标 wrench"] --> J
+```
+
+图依据：论文 §III–V（Fig. 2–5）与 §VI 控制器架构（Fig. 6）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -82,6 +107,7 @@ summary: "力旋多面体稳定（arXiv:2609.17405）：高效六维多面体交
 - [wrench-polytope-stability_arxiv_2609_17405.md](../../sources/papers/wrench-polytope-stability_arxiv_2609_17405.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.17405](https://arxiv.org/abs/2609.17405)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17405)：已通读方法部分（实验与附录以略读为准）：§I–V（稳定判据、CW_c 构造、FW 迭代分析），§VI 控制器架构与实验设定
 
 ## 推荐继续阅读
 

@@ -38,6 +38,27 @@ summary: "FMHP（arXiv:2609.17946）：指令条件傅里叶级数生成关节�
 
 - 参数化谐波轨迹 + 闭环反馈可在保持可解释性的同时提高速度鲁棒性。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["速度指令 (v_cmd, ω_cmd)<br/>+ 参考状态特征 (34 维)"] --> B["Context network<br/>2×128 GELU MLP"]
+    B --> C["名义谐波参数<br/>频率 f_nom / 关节偏置 / 傅里叶系数 a, b (K=3)"]
+    B --> D["反馈网络权重与偏置"]
+    E["机器人状态观测历史 + 相位特征 sin/cos<br/>+ 速度指令"] --> F["Feedback network F_w<br/>2×32 tanh MLP"]
+    D --> F
+    F --> G["有界修正 m_t<br/>频率 / 关节偏置 / 谐波增益 / 相位"]
+    C --> H["谐波求和 + 相位更新<br/>p_{t+1} = p_t + f_t·Δt + Δp_t"]
+    G --> H
+    H --> I["关节目标 u_t = 参考角 + 偏置 + 谐波项<br/>裁剪到执行器限位"]
+    I --> J["PD 伺服 + 机器人 (Go2)"]
+    J -->|状态观测| E
+    K["训练: 指令跟踪 + 目标可行性 + 能耗代价<br/>联合学习波形参数与反馈"] -.-> B
+    K -.-> F
+```
+
+图依据：论文 §III-A（式 1–4）/ Fig. 2；训练代价仅据 §III-B 开头与引言概述
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +102,8 @@ summary: "FMHP（arXiv:2609.17946）：指令条件傅里叶级数生成关节�
 - [fmhp-quadruped-harmonic-policies_arxiv_2609_17946.md](../../sources/papers/fmhp-quadruped-harmonic-policies_arxiv_2609_17946.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.17946](https://arxiv.org/abs/2609.17946)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17946)：已通读方法部分（实验与附录以略读为准）：§I 引言要点、§III-A 上下文条件控制器（式 1–4）、§III-B 训练目标开头
+
 
 ## 推荐继续阅读
 

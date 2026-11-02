@@ -35,6 +35,32 @@ summary: "VLBiMan++（arXiv:2609.14310）：单次人类双臂示范拆技能 + 
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入: 任务文本描述 T + 单次人类示教 D + 新场景 S_new"] --> SEG
+    subgraph DEC["§III-B 任务感知双臂分解"]
+        SEG["时空轨迹分割<br/>(关键位姿检测 + 轻量人工修正, 真机回放验证)"] --> ATOM["原子技能提取<br/>(物体-末端耦合 bind 且几何一致 -> 不变段, 否则可适配段)"]
+        ATOM --> ABS["状态感知技能抽象<br/>状态不变技能 S_SI / 状态条件技能 S_SC"]
+    end
+    subgraph ADA["§III-C 视觉-语言锚定适配"]
+        VLM["VLM 场景理解: Florence-2 + SAM2 得语义掩码<br/>双目立体匹配重建点云并提升到物体级"] --> ANC["物体中心几何锚点<br/>刚体: 质心/接触点 + 图像矩主轴朝向 (Alg. 1)<br/>铰接: 功能部件锚定; 可形变: 矩形角点/线状骨架 (Alg. 2)"]
+        ANC --> STA["物体状态感知适配 A(M_j, Δs_k)<br/>仅更新状态条件技能"]
+    end
+    subgraph COMP["§III-D 自主轨迹组合"]
+        IK["渐进 IK 精炼<br/>(样条插值笛卡尔路点)"] --> COL["动态碰撞补偿<br/>(近端/垂直偏移 + 一次物理回放修正路点)"]
+        COL --> EXE["执行双臂轨迹"]
+        EXE --> RE["闭环重观测: |s_exec - s_plan| > ε"]
+    end
+    IN --> VLM
+    ABS --> STA
+    STA --> IK
+    RE -->|触发则重新 grounding 并重组, 保留未受影响的不变技能| VLM
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 2、Fig. 3、Fig. 4、Alg. 1、Alg. 2。
+
 ## 核心原理（方法）
 
 VLBiMan++ 要回避的成本很具体：**大规模遥操作示范 + 策略重训**。它的替代方案是把「一次人类示范」提炼成 **可复用的任务先验**，再靠视觉-语言接地做几何适配，全程 **不重训策略**：
@@ -101,6 +127,7 @@ VLBiMan++ 要回避的成本很具体：**大规模遥操作示范 + 策略重�
 
 - [VLBiMan++ 论文摘录](../../sources/papers/vlbiman_plus_arxiv_2609_14310.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14310)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 问题形式化、B 任务感知双臂分解、C 视觉-语言锚定适配、D 自主轨迹组合）
 
 ## 推荐继续阅读
 

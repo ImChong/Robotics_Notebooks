@@ -39,6 +39,23 @@ summary: "VLA Task Progress（arXiv:2608.13474）：VLA 内部表征含可读的
 - 策展机构：康奈尔大学
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["1. 数据收集：N 条专家示范轨迹<br/>进度标签免费：τ = 1 − t/T"] --> B["2. 激活提取：π0.5 逐层残差流 z^i<br/>对 token 维度均值池化"]
+    B --> C["训练线性探针 φ(z) = wᵀz + b 回归任务进度"]
+    C --> D["弱可解码性：分布内验证"]
+    C --> E["强可解码性：反事实变换（如换语言指令）下不重训评测"]
+    C --> F["可操纵性：沿 w 方向注入激活<br/>对比真实反事实的动作分布"]
+    C --> G["下游：OOD 检测"]
+    G --> H["每次 replan 解码 τ_pred<br/>残差 V_τ = τ_pred − (1 − t/E[T|ℓ])"]
+    H --> I["V_τ 首次超过阈值 δ → 标记 OOD（进度停滞）"]
+    C --> J["下游：语言落地诊断<br/>（微调后语言敏感度下降）"]
+```
+
+图依据：论文 §3.1–3.4、Fig. 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +97,7 @@ summary: "VLA Task Progress（arXiv:2608.13474）：VLA 内部表征含可读的
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.13474](https://arxiv.org/abs/2608.13474)
+- [arXiv PDF](https://arxiv.org/pdf/2608.13474)：已通读方法部分（实验与附录以略读为准）：§1 引言贡献、§3.1–3.4（含 Fig. 1）
 
 ## 推荐继续阅读
 

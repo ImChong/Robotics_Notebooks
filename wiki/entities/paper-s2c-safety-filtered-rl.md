@@ -35,6 +35,24 @@ summary: "S2C（2609.27312）：先学鲁棒安全过滤器，再在过滤环境
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["阶段 1：Robust Filter Synthesis<br/>MAGICS 对抗 RL（每个玩家独立、与任务目标无关）"] --> B["安全回退策略 π† + 安全 critic Q†<br/>（同时训练最坏情况对手策略）"]
+    B --> C["Robust Safety Filter ϕi(s, πi)"]
+    C --> D["阶段 2：Filtered Multi-Agent RL<br/>把滤波器嵌入 RL 环境，IPPO 同时训练双方任务策略"]
+    E["策略池 P：历史 checkpoint<br/>以概率 p 作为对手采样"] --> D
+    D -->|"周期性加入新策略"| E
+    D --> F["任务策略 π1 / π2"]
+    F --> G["部署：任务策略提出动作"]
+    C -->|"同一滤波器"| G
+    G --> H["Q-CBF：满足安全约束则原样放行<br/>否则修正；找不到安全动作则用回退策略"]
+    H --> I["执行动作 a"]
+```
+
+图依据：论文 §V（Fig. 3、Algorithm 1）、§V-A/B/C
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -80,6 +98,7 @@ summary: "S2C（2609.27312）：先学鲁棒安全过滤器，再在过滤环境
 
 - [论文归档](../../sources/papers/s2c_safety_filtered_rl_arxiv_2609_27312.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.27312)：已通读方法部分（实验与附录以略读为准）：§I 引言、§V 方法（V-A/B/C）、§VI 实验设定
 
 ## 推荐继续阅读
 

@@ -41,6 +41,28 @@ summary: "CAST（arXiv:2609.08853）：交替 state-value 目标把规划器行�
 - 14 任务 1M 步：均值回报 764±63，高于 BMPC 644±43、BOOM 721±41
 - Q→V critic + 扩展 k 步策略梯度
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["环境 env<br/>观测 s_t"] --> ENC["Encoder h_ξ<br/>z_t = h_ξ(s_t)"]
+    ENC --> PLAN["MPPI 规划器<br/>策略 π_θ 提供部分初始候选序列"]
+    WM["世界模型<br/>Dynamics d_ξ / Reward R_ξ"] --> PLAN
+    VT["目标状态价值 V̄_ψ<br/>H 步末端终值"] --> PLAN
+    PLAN --> ACT["执行首个动作 a_t<br/>行为策略 β = 规划器增强的 π_θ"]
+    ACT --> ENV
+    ACT --> BUF["Replay buffer D<br/>(s_t, a_t, r_t, s_t+1)"]
+    BUF --> TGT["交替 state-value 目标<br/>y = r_t + γR_ξ(z_t+1, ã) + γV̄_ψ(d_ξ(z_t+1, ã))<br/>真实 β 转移 + 想象 π_θ 转移"]
+    TGT --> LV["更新 encoder / dynamics / reward / V_ψ 集成<br/>π_θ 不在此优化器内"]
+    LV --> POLY["Polyak 平均更新 V̄_ψ"]
+    POLY --> VT
+    LV --> PG["扩展策略梯度<br/>J = R_ξ + γV̄_ψ(d_ξ(z, π_θ(z)))<br/>经世界模型反传，主配置 Hπ=1"]
+    PG --> POL["更新策略 π_θ"]
+    POL --> PLAN
+```
+
+图依据：论文 §III-A–E / Fig.2 / Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -99,6 +121,7 @@ summary: "CAST（arXiv:2609.08853）：交替 state-value 目标把规划器行�
 - [cast_mbrl_arxiv_2609_08853.md](../../sources/papers/cast_mbrl_arxiv_2609_08853.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08853](https://arxiv.org/abs/2609.08853)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08853)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III Method（A–E）、Algorithm 1；§IV 实验设置略读
 
 ## 推荐继续阅读
 

@@ -35,6 +35,31 @@ summary: "aSSMPy（arXiv:2609.14376）：扩展 aSSM 降阶 + 姿态控制；FEM
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线: 数据驱动 aSSM 降阶 (§III-B)"]
+        A1["从 U 采样 N_u 个静态输入<br/>记录每个输入下 N_t 条衰减轨迹的观测量 y (延迟嵌入)"] --> A2["拟合临界流形 S: 静态输入 -> 稳态观测<br/>并拟合逆映射 S†"]
+        A1 --> A3["对平移到零的轨迹做 SVD<br/>取前 d 个左奇异向量 V -> 全局谱子空间"]
+        A3 --> A4["投影 η = V^T (y - S(ū))"]
+        A4 --> A5["多项式回归: 流形参数化 W 与降阶动力学 R"]
+        A1 --> A6["加噪输入轨迹 -> 回归线性控制矩阵 B(ū)"]
+    end
+    A2 --> M
+    A5 --> M
+    A6 --> M
+    M["aSSM 降阶模型<br/>η̇ = R(η,u_s) + B(u_s)u_d; y = W(η,u_s) + S(u_s)"] --> MPC
+    subgraph ON["在线: aSSM-MPC (§IV)"]
+        T["工作空间目标 Γ(t)"] --> MPC["每步求解 MPC: 同时优化慢输入 u_s 与偏差输入 u_d<br/>(跟踪代价 + 输入/斜率约束, GuSTO 序列凸规划)"]
+        MPC --> U["施加 u = u_s + u_d<br/>(低层 PID/PD 执行)"]
+        U --> R["软体臂 SoPrA 位置/姿态观测量 y"]
+        R -->|测量得到 η 初值| MPC
+    end
+```
+
+图依据：论文 §III-B、§IV、§V（图为据 §III-B 与 §IV 的方法描述绘制）。
+
 ## 核心原理（方法）
 
 软体机器人要做安全关键交互，位置与 **姿态** 都得控准；但它的动力学是 **无穷维非线性** 的，MPC 需要的模型必须 **同时准确且便宜**——这对矛盾正是全篇要解的：
@@ -99,6 +124,7 @@ summary: "aSSMPy（arXiv:2609.14376）：扩展 aSSM 降阶 + 姿态控制；FEM
 
 - [aSSMPy 论文摘录](../../sources/papers/assmpy_arxiv_2609_14376.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14376)：已通读方法部分（实验与附录以略读为准）：§II 问题设定、§III 数据驱动 aSSM 降阶（A、B）、§IV aSSM-MPC、§V 软体臂控制设置
 
 ## 推荐继续阅读
 

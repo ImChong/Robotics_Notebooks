@@ -35,6 +35,28 @@ summary: "FMAPPO（arXiv:2609.14567）：2D LiDAR + 任务状态去中心化 MAP
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["LiDAR 扫描<br/>(下采样, 超量程截断, 归一化到 0-1)"] --> C1["LiDAR 分支: 3 个 Conv1D 块<br/>(ReLU + MaxPool)"]
+    C1 --> C2["全连接 + ReLU + LayerNorm<br/>得到 LiDAR 嵌入"]
+    C2 --> AG["与自身位置、速度拼接<br/>Agent encoder -> agent 嵌入"]
+    M["机器"] --> ME["各实体独立 encoder<br/>(FC + ReLU + LayerNorm)"]
+    S["存储区"] --> ME
+    N["其他机器人"] --> ME
+    AG --> ATT["每类实体一个 Multi-head Attention<br/>agent 嵌入为 query, 实体嵌入为 key/value"]
+    ME --> ATT
+    ATT --> CAT["agent 嵌入 + 3 个 context 向量拼接<br/>= 观测嵌入"]
+    CAT --> ACT["Actor: 3 个 FC 块 + 线性层输出动作均值<br/>(log std 为可学习参数)"]
+    ACT --> ACTION["连续 x/y 线速度指令<br/>(训练时高斯采样, 评估时取均值)"]
+    CAT -->|对每个机器人并行编码| CRIT["集中式 Critic: 可学习 query 的 Multi-head Attention<br/>聚合全局状态 -> LayerNorm -> 3 个 FC 块 -> 状态价值"]
+    CRIT -.->|"仅训练期 (CTDE), 指导 Actor"| ACT
+    ACTION --> DEP["真机部署: FMAPPO Wrapper<br/>订阅 ROS 话题构造观测, 推理并发布速度指令<br/>(去中心化, Zenoh 通信)"]
+```
+
+图依据：论文 §IV-A（Fig. 1）、§IV-B、§IV-E（Fig. 4）。
+
 ## 核心原理（方法）
 
 任务场景是工厂 **多机器人多机台看护（multi-machine tending）**：若干移动机器人要自己决定「去服务哪台机床」并安全导航过去。论文的立场是 **去中心化**——不设中央调度器，每台机从本地观测决策：
@@ -109,6 +131,7 @@ summary: "FMAPPO（arXiv:2609.14567）：2D LiDAR + 任务状态去中心化 MAP
 
 - [FMAPPO 论文摘录](../../sources/papers/fmappo_arxiv_2609_14567.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14567)：已通读方法部分（实验与附录以略读为准）：§III 问题形式化、§IV 方法（A FMAPPO 编码器与 actor/critic、B 观测/奖励/动作、C 仿真、D/E 真机平台与部署架构）
 
 ## 推荐继续阅读
 

@@ -37,6 +37,26 @@ summary: "SmellDiffusion（arXiv:2609.20624）：开放词汇嗅觉场景图保�
 
 - 搜救/巡检等需非视觉化学源定位；嗅觉图 + 扩散规划是新传感模态组合。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["离线：每种气体一次 GADEN 仿真（按物种独立浓度场）"] --> B["虚拟电子鼻蛇形扫掠（z=0.5 m，0.1 m 网格）"]
+    B --> C["高斯平滑 + 自适应阈值划分 gas zone"]
+    C --> D["每个 zone 存峰值源估计 + 512 维 CLIP 文本嵌入"]
+    D --> E["Olfactory Scene Graph：Environment / Zone / Source 节点"]
+    F["峰值局部 gate：射线到 CAD 障碍物距离 ≤ ℓmax 且流速 ≥ umin"] --> G["触发则用同入口风速训练库做 forward matching 修正源估计"]
+    D --> F
+    G --> E
+    H["在线：自然语言查询 → CLIP 文本编码，与 zone 描述打分"] --> I["选中 zone 的源估计作为导航目标"]
+    E --> I
+    I --> J["A* 规划 或 条件扩散规划（起点/终点 inpainting，可选 clearance 引导）"]
+    J --> K["扩散提案投影出占据格，相交线段用 A* 子路径替换"]
+    K --> L["pure-pursuit 控制器在 Gazebo 中跟踪路径"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、§IV-C、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -79,6 +99,7 @@ summary: "SmellDiffusion（arXiv:2609.20624）：开放词汇嗅觉场景图保�
 - [smelldiffusion_arxiv_2609_20624.md](../../sources/papers/smelldiffusion_arxiv_2609_20624.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.20624](https://arxiv.org/abs/2609.20624)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20624)：已通读方法部分（实验与附录以略读为准）：§III-A/B/C 方法、§IV-A~D 源估计与 peak-local gate；§V 起仅略读
 
 ## 推荐继续阅读
 

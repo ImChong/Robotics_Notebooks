@@ -40,6 +40,27 @@ summary: "LEAP（四足主动感知）（arXiv:2609.17628）：连续深度图�
 
 - 四足危险地形导航需主动视角；显式 gaze 模块不如 curriculum 涌现稳定。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机身云台深度相机 (pan-tilt η_t)"] --> B["深度图 → 点云 → 累积到 cell 高度均值/方差"]
+    B --> C["两个 yaw 对齐的 egocentric 信念图<br/>精细 0.1 m (3.2 m) + 粗略 0.6 m (19.2 m)<br/>通道: 高度均值/方差, 射线数, 目标命中数, 访问轨迹"]
+    D["机器人状态 s_rob<br/>(4 步动作窗口, 相机方向, 云台速度, 高度, 重力)"] --> E
+    C --> E["导航策略 π_nav: Transformer 编码器<br/>belief 图 patch token + [CLS]"]
+    P["特权信息 (仅训练): GT 地图 token + [CRITIC] token<br/>(地形类型 / cost-to-go φ / 目标位置)"] -.-> E
+    E -->|"注意力 mask: actor 读 [CLS], 看不到特权 token"| F["动作 a_t: 前进速度 v + 偏航率 + 云台 pan/tilt 速度"]
+    E -.->|"[CRITIC] 全可见, 价值头"| V["Critic 价值估计 (PPO)"]
+    F -->|"unicycle twist, 10 Hz"| G["运动策略 π_loco (50 Hz)<br/>actor 仅看 T 形高度扫描 (取自 BM_fine)"]
+    G --> H["Go2 关节位置目标"]
+    F -->|云台速度| A
+    H --> I["环境 / 新观测"]
+    I --> A
+    R["奖励: 程序化地形的 cost-to-go 图"] -.-> V
+```
+
+图依据：论文 §IV-A–F / Fig. 4（策略架构）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +105,8 @@ summary: "LEAP（四足主动感知）（arXiv:2609.17628）：连续深度图�
 - [leap-quadruped-active-perception_arxiv_2609_17628.md](../../sources/papers/leap-quadruped-active-perception_arxiv_2609_17628.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.17628](https://arxiv.org/abs/2609.17628)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17628)：已通读方法部分（实验与附录以略读为准）：§IV 方法（地形与 cost-to-go、观测空间、动作、导航策略架构、运动策略、训练）；§III 问题定义与 §V 实验仅略读
+
 
 ## 推荐继续阅读
 

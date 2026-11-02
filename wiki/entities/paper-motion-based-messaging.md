@@ -40,6 +40,22 @@ summary: "Motion-based messaging（arXiv:2609.08920）：在预训练策略动�
 - Discovery / Reacher / Lunar Lander / Football 四环境验证
 - 真机 RoboMaster 多机：路径 10% 处即可解码目标意图
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[待发送消息<br/>有限字母表 M 个符号 每符号 log2 M 比特] --> B[密钥编码器<br/>每个符号 i 对应独立的密钥种子 k_i]
+    B --> C[CoNoCo 水印原语<br/>由 k_i 生成集中在秘密频带的有色高斯噪声 CGN]
+    C --> D[动作 = 预训练策略的随机性被替换为带密钥噪声<br/>注入一个或多个运动通道]
+    D --> E[机器人正常执行任务运动]
+    E --> F[远程传感: 视频或动捕<br/>得到运动轨迹观测]
+    F --> G[审计方用共享密钥重生成各候选噪声<br/>按时间窗计算 CoNoCo 谱相干性得分]
+    G --> H[每个符号窗口选得分最高的候选<br/>逐窗口重复恢复完整消息]
+    I[通道策略: 单通道 / 同消息池化 / 分段并行<br/>字母表大小 M 与每符号时间 T 的设计权衡] -.-> D
+```
+
+图依据：论文 §V Method（§V-A 通道、§V-B 编码与解码、§V-C 设计空间）/ Fig. 1（Messaging through motion）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -97,6 +113,7 @@ summary: "Motion-based messaging（arXiv:2609.08920）：在预训练策略动�
 - [motion_based_messaging_arxiv_2609_08920.md](../../sources/papers/motion_based_messaging_arxiv_2609_08920.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08920](https://arxiv.org/abs/2609.08920)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08920)：已通读方法部分（实验与附录以略读为准）：§IV 预备（CoNoCo 水印原语）、§V 方法（通道、编码与解码、设计空间）
 
 ## 推荐继续阅读
 

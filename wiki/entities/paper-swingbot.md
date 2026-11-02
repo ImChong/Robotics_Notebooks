@@ -41,6 +41,28 @@ summary: "人形全身荡杠：生物启发关键帧 + privileged transition；�
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[左/右先导手指令 c_t] --> B[Actor 策略 PPO<br/>输入: 四帧本体感觉历史 + RSSM 确定性潜变量 h_t<br/>输出残差动作 a_pi]
+    K[稀疏关键帧参考轨迹<br/>释放 / 摆荡 / 抓取 三阶段姿态] --> C[残差关键帧引导<br/>u = beta_e·a_pi + 1-beta_e 倍 a_key<br/>beta_e 随训练 epoch 退火 T=2000]
+    B --> C
+    C --> D[一阶低通滤波<br/>得 q_cmd]
+    D --> E[裁剪到关节限位]
+    E --> F[PD 控制器<br/>20 自由度 12 腿 + 8 臂]
+    F --> G[机器人交替左右手摆荡 连续 brachiation]
+    G --> H[本体感觉 观测]
+    H --> I[RSSM 世界模型<br/>50 Hz 递推 在换手/重置处用编码器稀疏校正]
+    I --> B
+    J[仿真特权变量 y_t<br/>位移 / 左右钩接触] -.-> I
+    J -.-> L[Critic 额外输入特权信息 仅训练]
+    G --> M[成功末态存入按指令索引的缓冲区<br/>用于初始化相反手指令]
+    M -.-> A
+```
+
+图依据：论文 §3.1–§3.4 / Fig. 2（SwingBot framework）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -97,6 +119,7 @@ summary: "人形全身荡杠：生物启发关键帧 + privileged transition；�
 - [swingbot_arxiv_2609_10283.md](../../sources/papers/swingbot_arxiv_2609_10283.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.10283](https://arxiv.org/abs/2609.10283)
+- [arXiv PDF](https://arxiv.org/pdf/2609.10283)：已通读方法部分（实验与附录以略读为准）：§3.1 问题表述、§3.2 残差关键帧引导、§3.3 世界模型、§3.4 训练细节
 
 ## 推荐继续阅读
 

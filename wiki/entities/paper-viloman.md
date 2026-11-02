@@ -48,6 +48,33 @@ summary: "ViLoMan（arXiv:2609.19340）：人类–物体交互重定向 + 特�
 - arXiv 已列出作者和机构；截至 2026-10-03，项目补充页仍显示 “Anonymous Authors”，并未列出代码仓库或数据下载入口。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["III-B 可物理执行的 loco-manipulation 数据"]
+        H["TRUMANS 人类关门交互（SMPL-X）"] --> RT["OmniRetarget<br/>交互保持重定向 → 人形-门耦合片段"]
+        RT --> AP["Kimodo 生成接近轨迹<br/>并与交互片段拼接（71 段 × 10 = 710 条）"]
+        AP --> DG["DoorGym 门资产增广<br/>把手类型 / 铰链侧 / 初始角度 / 尺寸"]
+        DG --> PR["物理感知精修<br/>逐轨迹训练跟踪策略，取最可行 rollout"]
+        PR --> FL["过滤 → 409 训练 + 106 测试轨迹"]
+    end
+    FL --> GMT["III-C 通用运动跟踪先验 π_GMT<br/>（GentleHumanoid，冻结）"]
+    GMT --> SUM["a_teacher = a_gmt + π_Res(o_teacher)"]
+    CTX["交互上下文 c_int<br/>任务阶段 / 门状态 / 接触目标 / 参考铰链运动"] --> RES["残差策略 π_Res<br/>PPO + 阶段条件奖励 + 域随机化"]
+    RES --> SUM
+    FL --> CLU["按运动特征聚类<br/>每簇一个残差专家"]
+    CLU --> RES
+    SUM --> TEA["特权教师 π_Teacher<br/>（各专家共同构成）"]
+    TEA -->|"教师动作作为监督"| DAG["III-D 在线 DAgger 蒸馏<br/>学生 rollout 状态；2/3 当前批 + 1/3 回放缓冲；L2 动作损失"]
+    OBS["学生观测：本体历史 + 4 帧自我中心深度<br/>残差 CNN → 32 维特征，深度高斯模糊随机化"] --> STU["学生策略 π_Student"]
+    STU --> DAG
+    DAG --> STU
+    STU --> OUT["部署：板载深度 + 本体感知<br/>→ 29 维关节位置动作（无需参考与中间指令）"]
+```
+
+图依据：论文 §III（A–D）与 Fig. 2、式 (1)–(5)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -104,6 +131,7 @@ summary: "ViLoMan（arXiv:2609.19340）：人类–物体交互重定向 + 特�
 - [viloman.md](../../sources/sites/viloman.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.19340](https://arxiv.org/abs/2609.19340)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19340)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法 A–D（实验与附录以略读为准）
 
 ## 推荐继续阅读
 

@@ -39,6 +39,23 @@ summary: "AURORA（arXiv:2609.08493）：Ray-GPIS 不确定性驱动 next-best-v
 - Leap Hand + BundleTrack + 视觉融合管线
 - 30s 操作预算：online F@10 mean 0.9671，active 优于 x/y/z 单轴与固定 schedule
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["固定 RGB-D 相机 + Leap Hand 抓持物体"] --> TRK["BundleTrack 无 CAD 6D 位姿跟踪<br/>估计 T_CO(t)"]
+    TRK --> KF["可见性感知 keyframe 过滤<br/>可见度 / 位姿稳定 / 相对上一 keyframe 的运动"]
+    KF --> PC["物体系增量点云 P_t<br/>反投影 + 融合 + 体素降采样/去离群"]
+    PC --> RG["Ray-GPIS 方向不确定性 U(u)<br/>物体中心射线 + 命中射线锚点拟合 GPIS<br/>在局部感受野内积分后验方差"]
+    RG --> NBV["Next-Best-View 选择<br/>最大化 U(u) × 几何新颖度 η(u)"]
+    NBV --> ACT["转换为手系旋转原语<br/>a* ∈ {-x, -y, +z}"]
+    ACT --> POL["触觉 in-hand 旋转策略<br/>（改自 Rotating without Seeing）"]
+    POL --> CAM
+    PC -- "循环结束（固定交互预算）" --> MESH["FaCE 法向估计 + NKSR<br/>得到 watertight mesh"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、式(1)–(9)
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -95,6 +112,7 @@ summary: "AURORA（arXiv:2609.08493）：Ray-GPIS 不确定性驱动 next-best-v
 - [aurora_hand_reconstruction_arxiv_2609_08493.md](../../sources/papers/aurora_hand_reconstruction_arxiv_2609_08493.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08493](https://arxiv.org/abs/2609.08493)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08493)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.3）、§4.1 系统设置；§4 其余实验与附录以略读为准
 
 ## 推荐继续阅读
 

@@ -37,6 +37,29 @@ summary: "PROPRA（arXiv:2609.29822）：本体+动作片段分别锚定接近�
 - 公众号强调的可操作读法：先看 **任务信息需求**（如 PolyUMI 旋灯泡仍以视觉最优）与 **评测口径**（如 Self-Adaptive 多 trial、BeyondRetarget 仿真片段非真机 SR）。
 - 开源状态（步骤 2.5）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["阶段一：传感器编码器预训练（锚定，不使用图像）"]
+        TAC["触觉历史 x_tac（最近 L 步）"] --> ETAC["触觉编码器：4 层 pre-norm Transformer，输出 512 维"]
+        PROX["接近觉历史 x_prox（最近 L 步）"] --> EPROX["接近觉编码器：同结构，参数不共享"]
+        ANCH["锚点 h_t = 当前本体状态 q_t + H 步动作块 a_t..a_t+H-1"] --> EANC["锚点编码器（MLP）"]
+        ETAC --> NCE["对称 InfoNCE：各模态只与锚点嵌入对齐"]
+        EPROX --> NCE
+        EANC --> NCE
+    end
+    NCE -. "无传感器之间的直接配对；跨传感器对应仅经共享锚点形成" .-> NOTE["共享嵌入空间"]
+    ETAC -->|"仅迁移传感器编码器，随策略端到端微调"| POL
+    EPROX -->|"锚点及其编码器不迁移"| POL
+    subgraph POLICY["阶段二：策略学习与推理"]
+        OBS["两路相机图像 + 机器人本体状态 + 传感器历史"] --> POL["Transformer 扩散策略：观测 tokenizer → 自注意力观测编码器 → 噪声预测解码器"]
+        POL --> ACT["去噪生成动作块（关节位置 + 夹爪指令）"]
+    end
+```
+
+图依据：论文 §III-B/C（动机与锚点条件）、§IV-A/B/C / Fig.2、Fig.3
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "PROPRA（arXiv:2609.29822）：本体+动作片段分别锚定接近�
 
 - [propra-fingertip-anchoring 论文归档](../../sources/papers/propra-fingertip-anchoring_arxiv_2609_29822.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.29822)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV 方法（预训练与策略集成）、§V-A/B 数据与训练设定
 
 ## 推荐继续阅读
 

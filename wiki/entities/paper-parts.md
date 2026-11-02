@@ -45,6 +45,31 @@ summary: "PARTS（arXiv:2609.21788）：冻结预训练策略，仅在抓取/插
 - **德克萨斯大学奥斯汀分校；Autel US；加州大学伯克利分校**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 长时程任务常卡在少数瓶颈；PARTS 把真机 RL 预算集中到这些子任务。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人工示教 D_exp + 开源数据"] --> B["SFT 得到 π0.5 base policy π0"]
+    B --> C["真机评估 π0，人工识别 bottleneck 子任务 K"]
+    C --> D["人工为每个 bottleneck 写 contract：entry 集、可修正动作维度与界、结果判据 φ_k、动作预算"]
+    D --> E["编码 agent 据 contract 生成三类可执行程序"]
+    E --> F["Policy Selector：entry 条件成立才激活 residual"]
+    E --> G["Success Verifier：SAM3 + VLM 判定，输出局部奖励 r_k"]
+    E --> H["Auto-Reset Policy：重试或复位"]
+    B --> I["冻结 VLA 提供 nominal chunk 与视觉特征"]
+    I --> J["每个 bottleneck 一个 residual actor-critic（chunk 级 TD3+BC，带掩码与物理界）"]
+    F --> J
+    G --> J
+    H --> J
+    J --> K["在线 RL 采集 rollout，存入回放 D_k"]
+    K --> L["Success-Reweighted Retraining：保留全部成功 + 比例 ρ 的失败"]
+    L --> M["选 checkpoint 并重新部署继续在线采集"]
+    M --> K
+    J --> N["推理：到 entry 激活 residual，到 exit 交还 base policy"]
+```
+
+图依据：论文 §III-B / §III-C / §III-D、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -93,6 +118,7 @@ summary: "PARTS（arXiv:2609.21788）：冻结预训练策略，仅在抓取/插
 - [parts_arxiv_2609_21788.md](../../sources/papers/parts_arxiv_2609_21788.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.21788](https://arxiv.org/abs/2609.21788)
+- [arXiv PDF](https://arxiv.org/pdf/2609.21788)：已通读方法部分（实验与附录以略读为准）：§III-A 问题设定、§III-B 残差 RL 与 TD3+BC、§III-C Agentic Scaffolding、§III-D Success-Reweighted Retraining、§IV-A/B 任务与基线
 
 ## 推荐继续阅读
 

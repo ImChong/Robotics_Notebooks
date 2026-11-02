@@ -37,6 +37,30 @@ summary: "Wrap（arXiv:2609.29407）：无夹具多机装配；联动 wrench、�
 - 公众号强调的可操作读法：先看 **任务信息需求**（如 PolyUMI 旋灯泡仍以视觉最优）与 **评测口径**（如 Self-Adaptive 多 trial、BeyondRetarget 仿真片段非真机 SR）。
 - 开源状态（步骤 2.5）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：零件网格、场景初始状态、装配依赖图、装配所需 mating wrench"] --> PRE["预处理：稳定放置姿态 + 对跖（antipodal）采样抓取（真空吸盘用法向采样）"]
+    PRE --> TASK["任务规划：按依赖图拆成 milestone，逐个装配步骤搜索"]
+    subgraph SEARCH["Milestone 搜索（动作：pick/place/assemble/handover/add grasp/release）"]
+        BWD["后向搜索：投影状态上反向 Dijkstra 得启发式（抓取按「能否传递装配 wrench」分类）"]
+        FWD["前向搜索：贪心惰性最短路，用 IK 求构型"]
+        BWD --> FWD
+    end
+    TASK --> BWD
+    LP["受力检验：线性规划判断静力平衡（含鲁棒外力顶点）"] -.-> BWD
+    LP -.-> FWD
+    FWD --> PLAN["有效任务计划"]
+    PLAN --> KF["关键帧联合优化（动态规划，不改变任务序列）"]
+    KF --> MP["运动规划：多模态多目标多机器人路径规划"]
+    MP -->|"超时则挂起该计划，稍后加大力度，再取下一候选"| TASK
+    MP --> RT["重定时与同步：满足运动学动力学约束"]
+    RT --> EXE["执行：接触丰富片段由局部控制器处理"]
+```
+
+图依据：论文 §IV-A~E、Algorithm 1/2 / Fig.2
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -82,6 +106,7 @@ summary: "Wrap（arXiv:2609.29407）：无夹具多机装配；联动 wrench、�
 
 - [wrap-wrench-aware-assembly 论文归档](../../sources/papers/wrap-wrench-aware-assembly_arxiv_2609_29407.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.29407)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV 多机器人装配规划（A 受力约束至 E 重定时与执行）
 
 ## 推荐继续阅读
 

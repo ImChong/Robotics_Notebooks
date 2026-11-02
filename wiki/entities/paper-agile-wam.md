@@ -47,6 +47,26 @@ summary: "Agile-WAM（arXiv:2609.20761）：轻量触觉 WAM：共享 latent + v
 - **加州大学戴维斯分校（UC Davis）；Analog Devices**；开源结论：**待发布**（步骤 2.5，2026-09-18）。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前观测：RGB 图像 + 触觉力场 TacFF + 本体状态 q_t"] --> B["视觉编码器（ImageNet 预训练 ResNet-18）"]
+    A --> C["触觉编码器（ResNet-18，从头训练）"]
+    B --> D["拼接本体状态 → 线性投影融合"]
+    C --> D
+    D --> E["观测 latent z0 = flow 的源（只注入一次，无额外条件模块）"]
+    E --> F["轻量 MLP 速度场 v_θ：ODE 积分 τ 从 0 到 1（Euler 6 步）"]
+    F --> G["联合 latent：动作 / 未来视觉 / 未来触觉"]
+    G --> H["动作解码器 D_a → 动作 chunk，执行前 h 步后重规划"]
+    I["动作编码器 E_a 构成结构化动作 latent 空间（训练期，L_AE）"] -.-> G
+    J["多 horizon 目标：视觉取 t+h，触觉取 t+1"] --> K["latent 空间预测损失 L_vis / L_tac"]
+    G -.-> K
+    G -.-> L["L_act：解码 ODE 生成的动作 latent 并监督"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Fig. 2；§IV-A 骨干设定。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -99,6 +119,7 @@ summary: "Agile-WAM（arXiv:2609.20761）：轻量触觉 WAM：共享 latent + v
 - [agile_wam_arxiv_2609_20761.md](../../sources/papers/agile_wam_arxiv_2609_20761.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.20761](https://arxiv.org/abs/2609.20761)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20761)：已通读方法部分（实验与附录以略读为准）：§III-A/B/C 方法、§IV-A 实验设定与骨干
 
 ## 推荐继续阅读
 

@@ -42,6 +42,33 @@ summary: "Skills in Weights, Memory in Code：VLA 学低层可复用动作，cod
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph W["权重空间: 运动技能学习"]
+        D["专家示范 D"] --> FT["flow matching 模仿学习<br/>微调预训练 VLA (如 π0.5)"]
+        FT --> POL["Markovian VLA πθ*<br/>权重此后冻结"]
+    end
+    subgraph C["代码空间: 记忆策略学习(编码代理)"]
+        P0["可执行启发式程序 P = (C, V, U)<br/>约束选择 / 事件验证 / 记忆更新规则"]
+        ROLL["rollout 符号执行轨迹 + benchmark 分阶段结论"] --> EDIT["编码代理定位失败阶段<br/>修订约束奖励或验证规则 P(n+1) = Edit(...)"]
+        EDIT --> P0
+    end
+    INS["指令 + 当前观测 ot(SAM / DINOv2 提取关键点)"] --> MEM["符号记忆 st<br/>plan, 当前阶段, 绑定, 计数, 持久状态"]
+    P0 --> MEM
+    MEM --> RW["当前阶段的可微约束奖励 Rt"]
+    RW --> ST["Steer: 约束梯度注入 flow-matching 速度场<br/>引导强度 λt 随接近交互区域衰减"]
+    POL --> ST
+    ST --> ACT["执行动作块 at"]
+    ACT --> PACE["PACE 多模态阶段完成验证<br/>本体感知 OR 多帧 VLM(Qwen3-VL-8B)<br/>最近 w=5 次查询中至少 k=3 次通过"]
+    PACE --> UPD["记忆更新 U: 推进阶段, 更新绑定/计数/状态"]
+    UPD --> MEM
+    ACT -.-> ROLL
+```
+
+图依据：论文 Method 各节（Motor-Skill Learning / Memory-Strategy Learning / Memory-Conditioned Action Steering / PACE）/ Fig.2、Eq.(1)–(15)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +116,7 @@ summary: "Skills in Weights, Memory in Code：VLA 学低层可复用动作，cod
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.09410](https://arxiv.org/abs/2608.09410)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09410)：已通读方法部分（实验与附录以略读为准）：Introduction、Problem Formulation、Method（权重空间运动技能学习、代码空间记忆策略学习、记忆条件动作 steering、PACE 多模态进度验证）、Experiments 实验设定
 
 ## 推荐继续阅读
 

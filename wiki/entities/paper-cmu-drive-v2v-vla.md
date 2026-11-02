@@ -43,6 +43,26 @@ summary: "协作式多车 V2V-VLA 与 CMU-Drive 闭环基准：一次前向同�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SEL["通信对象选择 CAVc<br/>默认: 最近的前方协作车<br/>若上一步语言输出建议某 CAVk 能看到自车不可见的关键物体,<br/>则下一步改用 CAVk"] --> OC
+    IE["自车前视 RGB 图像 Iego"] --> VE
+    OE["自车相机 BEV 占据图 Oego<br/>(UniAD 生成)"] --> OR
+    OC["通信车 BEV 占据图 Oc<br/>按位姿 Pego, Pc 做坐标变换 → Oc→ego"] --> OR["逐元素 OR 合并 → Omerged<br/>渲染为 RGB 图像"]
+    OR --> VE["视觉编码器 InternViT<br/>得到视觉 token Vinput"]
+    LI["语言输入: 提示模板 + 其他协作车在自车坐标系下的相对位置"] --> LLM
+    AI["动作输入: 目标 waypoint 经 MLP 编码"] --> LLM
+    VE --> LLM["LLM (Qwen2, LoRA 微调)<br/>单次前向"]
+    LLM --> LO["语言输出: 动作 + 推理 + 关键物体 + 建议通信对象"]
+    LLM --> WP["未来等时/等距 waypoints"]
+    WP --> PID["PID 控制器 → steer / throttle / brake"]
+    LO -.->|"建议的通信对象, 用于下一时间步"| SEL
+```
+
+图依据：论文 §3.1–§3.2 / Fig.2、Eq.(7)–(10)（仅 V2V-VLA 模型，不含 CMU-Drive 基准）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +110,7 @@ summary: "协作式多车 V2V-VLA 与 CMU-Drive 闭环基准：一次前向同�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.07621](https://arxiv.org/abs/2608.07621)
+- [arXiv PDF](https://arxiv.org/pdf/2608.07621)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 CMU-Drive 基准构建与评测指标、§3.1 V2V 通信算法、§3.2 模型架构、§3.3–3.5 训练数据与训练细节、§4 实验结果
 
 ## 推荐继续阅读
 

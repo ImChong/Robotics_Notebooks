@@ -39,6 +39,24 @@ summary: "UniTexture（arXiv:2608.13453）：多任务 VLA 易受对抗纹理误
 - 策展机构：同济大学、MBZUAI、电子科技大学
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务套件 S 的多任务示范帧<br/>每帧：观测 I、指令 L、相机 C、物体 6-DoF 位姿 P、掩码 M"] --> B["离线渲染器标定<br/>在带原纹理的干净帧上拟合各视角光照与物体材质 ψ，之后冻结"]
+    B --> C["可微渲染共享 UV 纹理 θ（网格固定）"]
+    A --> C
+    C --> D["按 M 合成进观测：agent 视角（π0.5 另含 wrist 视角）"]
+    D --> E["冻结的 VLA（OpenVLA 或 π0.5）<br/>输入合成观测 + 指令"]
+    E --> F["目标动作损失<br/>OpenVLA：目标 token 交叉熵；π0.5：目标维度 flow-matching 残差"]
+    F --> G["仅对 θ 反传，AdamW 更新并裁剪到 [0,1]"]
+    G -->|"外层迭代：采样 minibatch 后连续 R 次更新"| C
+    G --> H["输出单一共享纹理 θ*"]
+    H --> I["原样部署到套件内所有任务，不做逐任务微调"]
+```
+
+图依据：论文 Method（Threat Model、Calibrating and Freezing the Renderer、Model-Specific Targeted Objectives、Optimization、Algorithm 1）、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +98,7 @@ summary: "UniTexture（arXiv:2608.13453）：多任务 VLA 易受对抗纹理误
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.13453](https://arxiv.org/abs/2608.13453)
+- [arXiv PDF](https://arxiv.org/pdf/2608.13453)：已通读方法部分（实验与附录以略读为准）：Method 全部小节（含 Algorithm 1、Fig. 2）与实验设定段
 
 ## 推荐继续阅读
 

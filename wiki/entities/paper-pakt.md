@@ -45,6 +45,25 @@ summary: "PAKT（arXiv:2609.25630）：导纳控制把人施加力映射为动�
 - 开源结论：**待发布**（步骤 2.5，2026-09-23）。
 - 与 [12 篇技术地图](../overview/collab-wm-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RL 策略 πθ（RLPD / SAC）<br/>观测：双腕部 RGB + 笛卡尔位姿 + 速度<br/>动作：6-DoF 笛卡尔 delta 位姿，10 Hz"] -->|"σ = 0：策略驱动"| D
+    B["人工按住 dead-man 按钮<br/>策略暂停，进入 guide mode"] --> C["人施加外力 f_ext → 导纳控制器<br/>Ka = 0，可自由引导"]
+    C -->|"σ = 1：引导模式"| D
+    D["参考生成器：临界阻尼三阶滤波器<br/>对 jerk / 加速度 / 速度施加运动学限幅"]
+    D --> E["笛卡尔阻抗控制器 + 零空间控制器<br/>输出力矩指令（导纳 / 参考生成器 / 阻抗均 1 kHz）"]
+    E --> F["机器人执行"]
+    D -->|"引导轨迹降采样到 10 Hz<br/>存储限幅后的 body 系 delta 位姿"| G["干预数据：观测-动作-奖励"]
+    G --> H["加入 Ddemo 与 Drl"]
+    H --> I["RLPD 更新：minibatch 取自 Ddemo ∪ Drl"]
+    I --> A
+    R["学习到的成功分类器 fψ<br/>sigmoid > 0.85 时 r = 1"] --> I
+```
+
+图依据：论文 §3.1–3.3（Fig. 1、Eq. 3–12）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +106,7 @@ summary: "PAKT（arXiv:2609.25630）：导纳控制把人施加力映射为动�
 - [pakt_arxiv_2609_25630.md](../../sources/papers/pakt_arxiv_2609_25630.md)
 - [wechat_embodied_station_12_papers_collab_wm_2026-09-23.md](../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md)
 - [arXiv:2609.25630](https://arxiv.org/abs/2609.25630)
+- [arXiv PDF](https://arxiv.org/pdf/2609.25630)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1–3.3）、§2 相关工作
 
 ## 推荐继续阅读
 

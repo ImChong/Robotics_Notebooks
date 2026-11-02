@@ -41,6 +41,29 @@ summary: "可靠 VLA 测试时训练：在独立「试用区」结合当前画�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["RGB 观测 ot + 语言指令 l"] --> VLM["QwenPi VLM<br/>末层投影表示的最后有效 token ct"]
+    VLM --> RT["MoLP 上下文路由器<br/>线性 router + Top-2, 共享 8 个 latent prompt 的 prompt bank<br/>无需任务 ID"]
+    RT --> PT["有效 latent prompt pt"]
+    PT --> POL["QwenPi 策略(flow matching)<br/>输出动作块 At (16 x 7)"]
+    POL --> ACT["执行动作 at(由当前 live 提示 Pold 生成)"]
+    PT --> WPI["WPI: Latent-Action DiT<br/>输入 pt + 当前 V-JEPA 2 视觉 token Zt + 带噪动作 token<br/>预测未来视觉表示"]
+    FUT["后续真实观测 ot+k<br/>冻结 V-JEPA 2 编码为目标 Zt+k(无奖励/专家动作)"] --> LOSS["Lwpi: 预测与目标的 MSE"]
+    WPI --> LOSS
+    ACT --> EVT{"AGV-TTT 内生事件检测<br/>action-to-VLM / action-to-latent 注意力跨层变化异常?"}
+    EVT -->|"是"| SH["影子副本上对 prompt bank 做一步更新<br/>(聚焦高注意力 token 的损失)<br/>得到候选 Pcand, live 提示不变"]
+    SH --> VAL["在后续 Hv 个 WPI 配对上<br/>以相同输入/聚焦权重/噪声比较 Pold 与 Pcand"]
+    LOSS --> VAL
+    VAL --> CK{"聚焦损失改善, 全局损失不退化,<br/>且多数未来配对支持?"}
+    CK -->|"是"| CM["原子提交 prompt bank 与优化器状态"]
+    CK -->|"否"| RB["回滚, 丢弃候选"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.1、Eq.(1)–(8)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +111,7 @@ summary: "可靠 VLA 测试时训练：在独立「试用区」结合当前画�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.09448](https://arxiv.org/abs/2608.09448)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09448)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 Overview、§3.2 MoLP、§3.3 WPI、§3.4 AGV-TTT；§4 仅略读（未读附录算法细节）
 
 ## 推荐继续阅读
 

@@ -38,6 +38,25 @@ summary: "DR-MPC（arXiv:2609.20035）：动力学等式与仿射输入约束转
 
 - 腿式 MPC 常因硬动力学约束导致不可行或慢；松弛保可行且实时。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["状态估计 + 规划的接触时序 + 参考轨迹"] --> B["SRBD 接触相关预测：free response w，预测矩阵 F"]
+    B --> C["Dynamics-Relaxed BoxQP：动力学残差与摩擦输出残差二次惩罚（ρd、ρf），仅保留非空 box 约束"]
+    C --> D["Contact-aware 输入参数化 U = T·U_r"]
+    D --> E["摆动足力消除（名义零力）"]
+    D --> F["接触对齐 move blocking（每次接触模式切换设块边界，horizon 起点处更细）"]
+    E --> G["降维后的 BoxQP（块箭头 Hessian）"]
+    F --> G
+    G --> H["定制内点法：仿射变量变换到 [-1, 1]，Mehrotra 预测-校正"]
+    H --> I["直接装配降维预测矩阵 + 局部摩擦块更新 + Schur 消元，仅对 n_r×n_r 的 Schur 补做 Cholesky"]
+    I --> J["对角回代恢复辅助变量 → 足端力"]
+    J --> K["执行首段控制后滚动重规划"]
+```
+
+图依据：论文 §III-A / §III-B、§IV-A，Fig. 2 概述；§I-B 贡献概述。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +100,7 @@ summary: "DR-MPC（arXiv:2609.20035）：动力学等式与仿射输入约束转
 - [dr-mpc_arxiv_2609_20035.md](../../sources/papers/dr-mpc_arxiv_2609_20035.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.20035](https://arxiv.org/abs/2609.20035)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20035)：已通读方法部分（实验与附录以略读为准）：§I-B/C 方法概述与贡献、§III-A/B 松弛 BoxQP 与输入参数化、§IV 内点求解器（至 §IV-A）
 
 ## 推荐继续阅读
 

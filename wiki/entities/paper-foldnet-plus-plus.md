@@ -44,6 +44,22 @@ summary: "6 种机器人、1K T 恤、1K 环境资产、120K episode 合成数�
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-14）。
 - 与 [11 篇技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[生成 1,000 件 T 恤网格<br/>带语义关键点标注 沿用文献 6 的方法] --> B[导入 Style3D 物理仿真<br/>FEM 布料模拟 + Blender 渲染]
+    B --> C[随机抓取衣物一点<br/>悬挂于 0,0,0.6 m 后释放自由落体<br/>得到任意皱缩初始状态]
+    C --> D[基于关键点 3D 坐标 + 机器人 IK<br/>规则化运动生成]
+    D --> E[展开规则<br/>先 fling 甩平 再 pick-and-place 调整位置与领口朝向]
+    E --> F[折叠规则<br/>Fold1 Drag1 Fold2 Drag2 Fold3 Flip Drag3]
+    G[域随机化<br/>相机内外参 / 机器人基座位姿 / 布料物理属性<br/>夹爪张开时 5% 时间步扰动] --> B
+    F --> H[120K episode<br/>三视角观测 + 机器人动作 + 子任务标注]
+    H --> I[训练 VA / VLA / WAM 三类模型<br/>仿真与真机 零样本与少样本评测]
+```
+
+图依据：论文 §3 FoldNet++ Dataset（§3.1–§3.4）/ Fig. 1、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -106,6 +122,7 @@ summary: "6 种机器人、1K T 恤、1K 环境资产、120K episode 合成数�
 - [foldnet-plus-plus_arxiv_2609_12433.md](../../sources/papers/foldnet-plus-plus_arxiv_2609_12433.md)
 - [wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.12433](https://arxiv.org/abs/2609.12433)
+- [arXiv PDF](https://arxiv.org/pdf/2609.12433)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 数据集生成流程（机器人设置、折叠规则、展开规则、仿真环境）、§4 实验设定
 
 ## 推荐继续阅读
 

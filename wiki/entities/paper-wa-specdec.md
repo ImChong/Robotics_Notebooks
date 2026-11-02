@@ -41,6 +41,28 @@ summary: "世界感知 VLA 投机解码：按环境与接触风险调节猜测�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IT["当前 RGB 帧 It"] --> VAE["冻结 VAE 编码器 Evae<br/>潜在图 Zt"]
+    VAE --> WT["World-Aware Bias (WAB) 模块<br/>tokenize + 空间 VideoEncoder → 世界 token Ut<br/>SpatialAlign + 投影 → 世界偏置 wt"]
+    IT --> VB["冻结视觉骨干 + 多模态投影器<br/>视觉 patch 嵌入 Vt"]
+    WT --> ADD["逐 patch 相加: Vt_wa = Vt + wt<br/>(不增加 token, 序列长度不变)"]
+    VB --> ADD
+    X["任务指令 x → 文本嵌入"] --> PRE
+    ADD --> PRE["LoRA 适配的 LLM 做 prefill<br/>得到 world-aware prefill 隐状态 h_wa"]
+    PRE --> DR["轻量 draft 模型<br/>从 h_wa 一次提出 γ 个动作 token"]
+    PRE --> TG["target VLA 并行验证<br/>以自身 argmax 作为参考 token"]
+    DR --> ACC["relaxed acceptance(规则不变)<br/>距离 ≤ ρ 则接受"]
+    TG --> ACC
+    ACC --> OUT["执行被接受的前缀并反 token 化为连续控制<br/>首个被拒 token 由 target token 替换, 进入下一轮"]
+    WT -.->|"仅训练: VideoHead 预测下一帧 VAE 潜在图<br/>Lvideo (MSE), 推理时丢弃"| AUX["总损失 L = Laction + λ Lvideo<br/>更新 WAB 与 LoRA"]
+    TG -.->|"训练后冻结 target, KL 蒸馏 draft"| DR
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2、Eq.(3)–(15)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +110,7 @@ summary: "世界感知 VLA 投机解码：按环境与接触风险调节猜测�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.08725](https://arxiv.org/abs/2608.08725)
+- [arXiv PDF](https://arxiv.org/pdf/2608.08725)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Preliminaries（relaxed acceptance）、§3.1 Overview、§3.2 World-Aware Bias Module、§3.3 World-Aware Target Model；§4 实验仅读设定开头
 
 ## 推荐继续阅读
 

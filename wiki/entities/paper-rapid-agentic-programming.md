@@ -37,6 +37,26 @@ summary: "RAPID（arXiv:2609.30249）：从示范推断目标/原语/可交互�
 - 公众号强调的可操作读法：先看 **任务信息需求**（如 PolyUMI 旋灯泡仍以视觉最优）与 **评测口径**（如 Self-Adaptive 多 trial、BeyondRetarget 仿真片段非真机 SR）。
 - 开源状态（步骤 2.5）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["单次视觉人类示范 D + 语言描述 l"] --> SEG["分段：子 agent 切成 K 个交互片段 D1..DK"]
+    SEG --> REC["Real-to-sim 重建：VLM 识别物体 → SAM 3 分割 → SAM 3D 重建网格 → FoundationPose 配准 → MuJoCo 环境"]
+    SEG --> SPEC["推断每段子目标 Gi 与成功判据 Ψi"]
+    REC --> VAR["合成可行场景变体：随机化外观/尺寸/位姿/物理参数 + agent 写过滤器"]
+    SPEC --> PROP["coding agent 生成 primitive：关系接口 Ci、几何解析器 ρi、代价 Ji（局部轨迹优化程序，CEM 求解）"]
+    VAR --> LOOP["执行-验证-修订循环：在重建环境与变体上跑 Ψi，失败则诊断并修订"]
+    PROP --> LOOP
+    LOOP --> LIB["验证通过的 primitive 冻结入库 P"]
+    LIB --> STRAT["推断整体目标 GΠ 与 ΨΠ；用角色映射 mk 与连接约束 ck 组合 primitive 为 strategy Π"]
+    STRAT --> LOOP2["同样的验证-修订循环：primitive 固定，只改组合"]
+    LOOP2 --> FROZEN["冻结的 strategy Π"]
+    FROZEN --> DEP["部署：新场景 RGB-D + 指令 → 重建仿真 → 轻量语义绑定 → 实例化 Π → 轨迹优化 → 机器人执行"]
+```
+
+图依据：论文 §III（Strategy Construction/Deployment）、§IV、§V / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -83,6 +103,7 @@ summary: "RAPID（arXiv:2609.30249）：从示范推断目标/原语/可交互�
 
 - [rapid-agentic-programming 论文归档](../../sources/papers/rapid-agentic-programming_arxiv_2609_30249.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.30249)：已通读方法部分（实验与附录以略读为准）：§III 概述、§IV 对象中心关系程序、§V 示范驱动的 agentic 编程（含 Algorithm 1）
 
 ## 推荐继续阅读
 

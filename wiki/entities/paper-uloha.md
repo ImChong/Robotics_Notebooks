@@ -47,6 +47,30 @@ summary: "ULOHA（arXiv:2609.19200）：水下双臂 dry leader + 三相机 + Le
 - **大阪大学（Osaka University）；神户大学（Kobe University）**；开源结论：**待发布**（步骤 2.5，2026-09-18）。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OP["操作者（空气中）"] --> LEAD["2 条干式 leader 臂<br/>XM430-W350，扭矩关闭（单向遥操作）"]
+    LEAD -->|"关节位置对应<br/>LeRobot 校准/归一化映射"| FOL["2 条水下 follower 臂<br/>防水 XW430-T333，6 关节 + 夹爪"]
+    subgraph SENSE["感知（水箱 1.2×0.6×0.6 m）"]
+        CAM["3 路相机：顶视 1 + 每臂手眼 1<br/>1920×1280 缩放为 480×320，30 fps AV1"]
+    end
+    FOL --> CAM
+    LEAD --> REC["30 Hz 记录<br/>归一化 leader 目标 + follower 状态（14 维）+ 3 路图像 + 语言任务描述"]
+    FOL --> REC
+    CAM --> REC
+    REC --> DS["示教数据集（LeRobot 栈存储）"]
+    DS --> TR["策略训练（LeRobot 扩展）<br/>ACT / Diffusion Policy / SmolVLA"]
+    TR --> POL["学习策略"]
+    CAM -->|"3 路图像"| POL
+    FOL -->|"14 维状态"| POL
+    POL -->|"归一化动作序列，执行前缀后重规划"| CTRL["follower 控制器<br/>关节目标"]
+    CTRL --> FOL
+```
+
+图依据：论文 §III-A–D 与 Fig. 1–3（系统概览、硬件、感知与数据采集、遥操作与模仿学习）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -98,6 +122,7 @@ summary: "ULOHA（arXiv:2609.19200）：水下双臂 dry leader + 三相机 + Le
 - [uloha_arxiv_2609_19200.md](../../sources/papers/uloha_arxiv_2609_19200.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.19200](https://arxiv.org/abs/2609.19200)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19200)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 系统（A–D）（§IV 实验以略读为准）
 
 ## 推荐继续阅读
 

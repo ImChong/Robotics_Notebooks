@@ -46,6 +46,35 @@ summary: "Dreaming the Sound of Contact（arXiv:2609.19137）：Seedance 2.0 联
 - 开源结论：**待发布**（步骤 2.5，2026-09-20）。
 - 与 [11 篇技术地图](../overview/constraint-control-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：初始 RGB I0 + 深度 D0 + 相机位姿 ᵇT꜀ + 任务提示 p"] --> GEN["Seedance 2.0 视频+音频生成<br/>仅用 I0 与 p，相机固定、强调接触声"]
+    GEN --> VID["生成视频 V"]
+    GEN --> AUD["同步音频 A"]
+    subgraph VIS["视觉通路（III-B 2–3, 5）"]
+        VID --> SEG["MolmoPoint 定位两个接触实体 → SAM 2 掩码传播"]
+        SEG --> TRK["TAPIP3D 深度估计与 3D 点跟踪"]
+        D0["D0 传感器深度"] --> CAL["首帧 RANSAC 线性拟合<br/>标定预测深度的尺度与偏移"]
+        TRK --> CAL
+        CAL --> RIG["夹爪 3D 点刚体配准 → 相机系相对位姿<br/>经 ᵇT꜀ 变换到基座系，叠加到机器人初始末端位姿"]
+        CAL --> DIR["夹爪-物体点云最近邻向量<br/>距离小于 d_th 才有接触，平均得力方向 d_t"]
+    end
+    subgraph AUDP["音频通路（III-B 4）"]
+        AUD --> SA["SAM-Audio 文本提示分离接触声"]
+        SA --> LUFS["逐帧响度 LUFS → 丢弃低能量帧<br/>相对响度比 r_t"]
+        LUFS --> MAG["min-max 归一化到 [F_min, F_max]<br/>得期望力 F_t*"]
+    end
+    RIG --> TRAJ["力感知轨迹 {x_t, d_t, F_t*}"]
+    DIR --> TRAJ
+    MAG --> TRAJ
+    TRAJ --> EXE["III-C 执行（Franka Panda）<br/>1 kHz 笛卡尔阻抗控制 + 50 Hz 力调节<br/>沿接触方向积分虚拟目标位移 δ 跟踪 F*"]
+    EXE -.->|"IV-D：成功 rollout 作为示教"| DP["CNN Diffusion Policy 训练<br/>（无力输入 / 带力输入两种变体）"]
+```
+
+图依据：论文 §III（A–C）与 Fig. 2、式 (1)–(14)；IV-D 数据生成用法
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +118,7 @@ summary: "Dreaming the Sound of Contact（arXiv:2609.19137）：Seedance 2.0 联
 - [dreaming-sound-of-contact_arxiv_2609_19137.md](../../sources/papers/dreaming-sound-of-contact_arxiv_2609_19137.md)
 - [wechat_embodied_station_11_papers_constraint_control_2026-09-20.md](../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md)
 - [arXiv:2609.19137](https://arxiv.org/abs/2609.19137)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19137)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法 A–C、§IV-D 数据生成设定（其余实验以略读为准）
 
 ## 推荐继续阅读
 

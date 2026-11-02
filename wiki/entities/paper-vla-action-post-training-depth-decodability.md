@@ -42,6 +42,22 @@ summary: "诊断 VLM→VLA 动作后训练如何削弱深度可解码性：逐�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PAIR["权重匹配的 VLM / VLA 对<br/>Molmo2-ER (基座 VLM) vs MolmoAct2-LIBERO (VLA)<br/>共享 36 层解码器, 区别仅在动作后训练"] --> OBS["LIBERO 观测帧(两个相机视角)<br/>取各解码器层视觉 token 位置的隐状态"]
+    OBS --> PROBE["§4.1 逐层深度探针<br/>每层、每个模型训练容量一致的 DPT 头<br/>监督信号: Depth-Anything-3, 指标 d1"]
+    PROBE --> F1["发现 floor: VLA 每层都低于 VLM"]
+    PROBE --> F2["发现 cliff: 末几层 VLM 上升, VLA 骤降"]
+    F2 --> ABL["§4.2 因果定位: 窗口消融<br/>把某模块(MLP 或 attention)对残差流的写入置零<br/>3 层窗口 x 12 个窗口, 末层 L35 重新训练探针读深度"]
+    ABL --> LOC["晚期 MLP 写入被消融时 VLA 的末层深度可解码性明显回升<br/>attention 消融与 VLM 同样干预无可比恢复"]
+    LOC --> DEC["§4.3 模块级分解<br/>分别探测残差流与累积 MLP 写入<br/>(DPT 探针 + 线性 ridge 探针 SNR)"]
+    DEC --> CON["结论: 基座 VLM 的深度信息在累积 MLP 写入中更易读出<br/>动作后训练使其在末几层崩塌"]
+```
+
+图依据：论文 §3（Preliminaries）、§4.1–§4.3 / Fig.2（探针示意）；本文是分析型工作，此图画的是论文的分析流程而非新模型架构
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +105,7 @@ summary: "诊断 VLM→VLA 动作后训练如何削弱深度可解码性：逐�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.08904](https://arxiv.org/abs/2608.08904)
+- [arXiv PDF](https://arxiv.org/pdf/2608.08904)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminaries（含深度探针与干预工具）、§4.1 深度探针、§4.2 因果定位、§4.3 模块级分解；补充材料未读
 
 ## 推荐继续阅读
 

@@ -40,6 +40,28 @@ summary: "POSE（arXiv:2609.19460）：POSE 规划器把机身 pitch/roll 纳入
 
 - 狭窄未知环境探索中机身姿态影响传感器覆盖；纯平移视点规划不足。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SENS["LiDAR + 360° 全向相机<br/>（标定后融合）"] --> MAP["IV-A 融合与语义建图<br/>实例分割 + LiDAR 深度 → 背景/物体体素地图 + 稠密点云"]
+    MAP --> FRONT["IV-E 几何探索视点<br/>前沿采样，路径奖励 r(P)（沿 [5]）"]
+    MAP --> SAMP["IV-B 位姿感知语义视点采样<br/>物体周围分扇区×standoff 采样候选"]
+    SAMP --> VIS["可见度评分 S(v)<br/>过滤遮挡与低于 S_min"]
+    VIS --> POST["姿态选择：在 Θ×Φ 网格上最大化 posture gain G<br/>仅当 G 大于水平姿态 G0 才采用倾斜"]
+    POST --> VLM["IV-C 物体级 VLM 会话剪枝<br/>地图裁剪 + 扇区图 + 候选表 + 文本提示 → JSON 判决 keep / done"]
+    VLM -->|"VLM 不可用 / 判决过期"| FB["回退：每扇区几何最优视点"]
+    VLM --> PRUNED["剪枝后的语义视点"]
+    FB --> PRUNED
+    PRUNED --> TSP["全局开放 TSP 规划<br/>探索视点 + 语义检查视点，滚动重规划"]
+    FRONT --> TSP
+    TSP --> AIM["IV-D 瞄准对齐姿态执行<br/>在俯仰/滚转限位内搜索最小偏航调整，再求 pitch/roll"]
+    AIM --> LOCO["5-DoF 航点 (x,y,ψ,θ,φ)<br/>→ 局部路径 + 运动控制器"]
+    LOCO --> MAP
+```
+
+图依据：论文 §IV（A–E）与 Fig. 2–4、Algorithm 1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +106,7 @@ summary: "POSE（arXiv:2609.19460）：POSE 规划器把机身 pitch/roll 纳入
 - [pose-semantic-legged-exploration_arxiv_2609_19460.md](../../sources/papers/pose-semantic-legged-exploration_arxiv_2609_19460.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.19460](https://arxiv.org/abs/2609.19460)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19460)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 问题定义、§IV 方法 A–E（实验章节略读）
 
 ## 推荐继续阅读
 
