@@ -43,6 +43,29 @@ Unleashes generalization of end-to-end autonomous driving with controllable long
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角视频 latent + BEV 布局序列"] --> B["按相机参数投影为相机布局（前景框 / 背景线）"]
+    B --> C["布局 Encoder 嵌入，经 cross-attention 注入 U-Net"]
+    D["VLM 稠密描述 + Long-CLIP 文本嵌入"] --> E["文本 cross-attention 注入 U-Net"]
+    A --> F["Noise Reinitialization Module：跨时间/视角共享噪声"]
+    F --> G["U-Net 去噪生成"]
+    C --> G
+    E --> G
+    G --> H["Feature-aligned Temporal Consistency Module：Scene-aware + Instance-aware Attention"]
+    H --> I["Delphi 长时多视角视频（最多 40 帧）"]
+    J["1 评测端到端模型，收集失败案例"] --> K["2 VLM 分析失败数据模式"]
+    K --> L["3 在训练集中检索相似场景"]
+    L --> M["4 扩展描述，用 Delphi 生成新数据"]
+    I --> M
+    M --> N["增量训练更新端到端模型"]
+    N -.-> J
+```
+
+图依据：论文 §3.1（Fig. 2）、§3.1.1、§3.1.2、§3.2（Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Unleashes generalization of end-to-end autonomous driving with controllable long
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.01349>
+- [arXiv PDF](https://arxiv.org/pdf/2406.01349)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法全部；§4 实验与附录补充材料略读
 
 ## 推荐继续阅读
 

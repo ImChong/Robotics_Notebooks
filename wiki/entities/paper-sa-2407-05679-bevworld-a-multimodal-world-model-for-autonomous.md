@@ -43,6 +43,29 @@ Multimodal world model via unified BEV latent space.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["历史与当前多视角图像 + Lidar 观测"] --> ENC
+    subgraph TOK["多模态 Tokenizer（训练后冻结）"]
+        ENC["BEV 编码器：Swin 图像骨干 + 点柱 Lidar 骨干，可变形注意力融合，压缩到 C'=4"] --> BEV["统一 BEV 表征 x"]
+        BEV --> DECV["BEV 解码器：升采样 + Swin 块得到 3D 体素特征"]
+        DECV --> RAY["体素 NeRF 式射线渲染"]
+        RAY --> IMGR["相机射线 → 图像重建（L1 + 感知 + GAN 损失）"]
+        RAY --> LIDR["Lidar 射线 → 深度重建（L1 深度损失）"]
+    end
+    BEV --> NORM["通道维标准化"]
+    ACT["自车运动 / 动作 token"] --> STT
+    NORM --> STT["Latent BEV Sequence Diffusion：历史 BEV token 作条件，未来 BEV token 加噪；时间注意力（因果掩码）→ 空间注意力，AdaLN 注入动作与扩散时间步"]
+    STT --> NOISE["预测噪声（L1 扩散损失）"]
+    STT --> DDIM["测试：DDIM 从纯噪声一次性还原多帧未来 BEV token"]
+    DDIM --> DENORM["反标准化 → BEV 解码器与渲染网络"]
+    DENORM --> PRED["未来多视角图像与 Lidar 点云"]
+```
+
+图依据：论文 §3 Method（Fig.1 总览、§3.1 多模态 Tokenizer 与 Fig.2/Fig.3、§3.2 Latent BEV Sequence Diffusion 与 Fig.4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Multimodal world model via unified BEV latent space.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2407.05679>
+- [arXiv PDF](https://arxiv.org/pdf/2407.05679)：已通读方法部分（实验与附录以略读为准）：§3 方法（多模态 Tokenizer、Latent BEV Sequence Diffusion）；§4 实验略读
 
 ## 推荐继续阅读
 

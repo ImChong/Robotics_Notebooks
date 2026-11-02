@@ -41,6 +41,27 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实实验：1/6 比例 ART 车，IMU + GPS-RTK，共 40 次"] --> B["真实 IMU/GPS 数据"]
+    S["仿真复现：Chrono 与 AirSim 的 5 种传感器噪声模型"] --> C["仿真 IMU/GPS 数据"]
+    B --> J1["Judge：robot_localization 状态估计器"]
+    C --> J2["Judge：robot_localization 状态估计器"]
+    J1 --> V1["真实速度估计 v_re"]
+    J2 --> V2["仿真速度估计 v_se"]
+    G1["真值：SBG Ellipse2-D INS 速度 v_rg"] --> E1["RMSE 与 Wiener Entropy：E_r、S_r"]
+    G2["真值：仿真器直接查询 v_sg"] --> E2["RMSE 与 Wiener Entropy：E_s、S_s"]
+    V1 --> E1
+    V2 --> E2
+    E1 --> W["K 次测试得到点集 A1 A2 与 B1 B2，计算 Wasserstein 距离 W1 与 W2"]
+    E2 --> W
+    W --> M["VEPD = 二者平均，衡量 sim2real 差距"]
+```
+
+图依据：论文 §II-A 至 §II-E / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2403.11000>
+- [arXiv PDF](https://arxiv.org/pdf/2403.11000)：已通读方法部分（§II-A Judge、§II-B 真实实验、§II-C 仿真与传感器模型、§II-D 真值速度、§II-E 误差指标）与 Fig.1 图注；实验与附录以略读为准
 
 ## 推荐继续阅读
 

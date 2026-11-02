@@ -42,6 +42,23 @@ Online real-time mistake detection framework tailored for egocentric procedural 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    V["第一视角流程视频：截至当前帧 f_τ 的在线输入"] --> R["步骤识别分支 ρ：MiniROAD 在线动作检测"]
+    R --> U["连续相同预测只保留一次，得到已识别动作序列 a1 至 a_τ-1"]
+    U --> P["提示词：上下文转录 C + 当前动作序列"]
+    C["同类流程的转录文本作为上下文示例"] --> P
+    P --> L["步骤预测分支 ξ：LLM 零样本 in-context 预测下一步"]
+    R --> X{"识别动作 与 预测动作 是否一致"}
+    L --> X
+    X -->|一致| OK["CORRECT"]
+    X -->|不一致| ERR["MISTAKE"]
+```
+
+图依据：论文 §4.1 至 §4.4 / Fig.1、Fig.2。注意：页面 frontmatter 与链接中的 arXiv 号 2404.01688 与论文不符（该号对应另一篇 Bayesian 建模工作流论文），PREGO 的正确编号为 2404.01933。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Online real-time mistake detection framework tailored for egocentric procedural 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2404.01688>
+- [arXiv PDF](https://arxiv.org/pdf/2404.01933)：已通读方法部分（§4.1 问题形式化、§4.2 步骤识别、§4.3 步骤预测、§4.4 错误检测）与 Fig.1、Fig.2；实验与附录以略读为准。注意：本页 arXiv 号 2404.01688 与 PREGO 不符（对应另一篇 Bayesian 建模论文），PREGO 的 arXiv 号为 2404.01933，上述内容按后者核对
 
 ## 推荐继续阅读
 

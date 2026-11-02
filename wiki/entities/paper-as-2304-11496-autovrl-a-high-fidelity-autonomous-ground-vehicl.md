@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  URDF["URDF 模型\nAGV 数字孪生 + 环境"] --> PB
+  subgraph SIM["仿真侧"]
+    PB["PyBullet / Bullet 物理引擎\nGPS / IMU / LiDAR 光线追踪 / 相机"]
+    GYM["OpenAI Gym 接口\n观测 / 奖励 / 回合终止判断"]
+    PB -->|"更新后的观测"| GYM
+  end
+  GYM -->|"观测、奖励、终止"| DRL["SB3 DRL 算法\n（如 SAC）策略学习与更新"]
+  DRL -->|"动作 aT, aδ ∈ [-1,1]"| ACT["动作转换\n油门 T、转向角 δ\n+ 阻力/摩擦修正"]
+  ACT -->|"setJointMotorControlArray"| PB
+  GYM -.->|"学得策略部署：以 ROS 等硬件接口替换 PyBullet 的控制与传感器函数"| REAL["真实 AGV\n（如 XTENTH-CAR）"]
+```
+
+图依据：论文 §II Architecture / Fig.1，§V Actuation
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2304.11496>
+- [arXiv PDF](https://arxiv.org/pdf/2304.11496)：已通读方法部分（实验与附录以略读为准）：§II 架构、§III 模型与环境、§IV 传感、§V 执行器、§VI 部分结果
 
 ## 推荐继续阅读
 

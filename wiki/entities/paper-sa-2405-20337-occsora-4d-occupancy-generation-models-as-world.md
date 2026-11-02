@@ -43,6 +43,23 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实 4D 占据 R_in"] --> B["Class Tokenizer：类别嵌入"]
+    B --> C["3D Video Encoder：Conv3D 时空下采样 + cross-channel attention"]
+    C --> D["Codebook 量化（最近码字）：压缩 token R_mi"]
+    D --> E["3D Video Decoder：上采样重建 R_o"]
+    D --> F["展平 + 位置编码"]
+    G["自车轨迹 Tr 经 MLP 编码"] --> H["Diffusion Transformer（以 timestep + 轨迹为条件）"]
+    F --> H
+    H --> I["去噪训练 / 噪声采样生成 token T_o"]
+    I --> J["Tokenizer Decoder 解码为轨迹可控的 4D 占据序列"]
+```
+
+图依据：论文 §3.1、§3.2（Fig. 3）、§3.3（Fig. 4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.20337>
+- [arXiv PDF](https://arxiv.org/pdf/2405.20337)：已通读方法部分（实验与附录以略读为准）：§3 方法全部（3.1–3.3）；§4 实验与结论略读
 
 ## 推荐继续阅读
 

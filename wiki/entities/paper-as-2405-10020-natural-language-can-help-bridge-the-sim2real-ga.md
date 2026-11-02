@@ -41,6 +41,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["仿真数据 Ds（脚本策略）+ 真实少样本数据 Dt"] --> B["自动语言标注：脚本阶段编号 → 模板字符串"]
+  B --> C["图像-语言对 (I, l)"]
+  C --> D["预训练 ResNet-18 图像编码器 fcnn（语言模型 miniLM 冻结）"]
+  D --> E["变体 A：Language-Regression，预测语言嵌入"]
+  D --> F["变体 B：Language-Distance，图像嵌入距离回归 BLEURT 语言距离"]
+  E --> G["冻结 fcnn（末层可微调），插入 FiLM 适配器 + 策略头"]
+  F --> G
+  G --> H["k+1 多任务多域行为克隆：k 个仿真任务 + 1 个真实少样本任务"]
+  H --> I["真实环境部署：语言条件策略"]
+```
+
+图依据：论文 §IV-A / §IV-B / §IV-C / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +112,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2405.10020>
+- [arXiv PDF](https://arxiv.org/pdf/2405.10020)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV 方法（A–C）
 
 ## 推荐继续阅读
 

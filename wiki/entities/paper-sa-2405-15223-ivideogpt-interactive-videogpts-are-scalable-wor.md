@@ -43,6 +43,25 @@ Interactive VideoGPTs are scalable world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["上下文帧 o1:T0"] --> B["条件 VQGAN 编码：上下文帧 N 个 token"]
+  C["后续帧"] --> D["条件编码：以上下文为条件，仅 n 个 token (n≪N)"]
+  B --> E["token 序列，帧间插入 slot token [S]"]
+  D --> E
+  F["动作：线性投影后加到 [S] 嵌入（微调时）"] --> E
+  E --> G["自回归 Transformer iVideoGPT：逐 token 预测"]
+  G --> H["预测后续帧 token → 解码器还原视频"]
+  G --> I["奖励头：线性头接在观测末 token 隐状态（微调时）"]
+  J["预训练：OXE + SSv2 无动作视频预测 (交叉熵)"] --> G
+  H --> K["下游：用世界模型 rollout 扩充回放池，训练无模型 RL (DrQ-v2)"]
+  I --> K
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / Fig.3 / Fig.6
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Interactive VideoGPTs are scalable world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.15223>
+- [arXiv PDF](https://arxiv.org/pdf/2405.15223)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）与 §4.3 模型强化学习设定（后者为略读）
 
 ## 推荐继续阅读
 

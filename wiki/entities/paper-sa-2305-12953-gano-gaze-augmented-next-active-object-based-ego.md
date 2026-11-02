@@ -42,6 +42,25 @@ Aims at the next active object prediction task, proposing a gaze-guided attentio
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["RGB 视频帧（等间隔采样）"] --> C3["Conv3D\n帧 patch 特征"]
+  V --> DET["目标检测器\n（Ego4D 预训练）→ 边界框"]
+  DET --> MLP["MLP → object embeddings"]
+  C3 -->|"Q"| GA["Object-Guided Attention\n(多头注意力)"]
+  MLP -->|"K, V"| GA
+  GA --> ENC["Transformer 编码器\nMulti-Scale Attention + 时空位置编码\n→ Fe"]
+  DET -->|"末帧检测框 ROI；不足则补可学习 query"| Q["Object queries"]
+  ENC --> DEC["解码器\nMulti-Scale Attention"]
+  Q --> DEC
+  DEC --> OUT["每个 query 的输出\n名词类别 n / 边界框 b / 动词 v / 接触时间 TTC δ"]
+  OUT --> LOSS["损失 L = λ1·box + λ2·noun + λ3·verb + λ4·ttc"]
+```
+
+图依据：论文 §3 方法 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Aims at the next active object prediction task, proposing a gaze-guided attentio
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2305.12953>
+- [arXiv PDF](https://arxiv.org/pdf/2305.12953)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Method（特征提取、Object Guided Attention、Transformer 编码器/解码器、Learning）、§4 实验设定
 
 ## 推荐继续阅读
 

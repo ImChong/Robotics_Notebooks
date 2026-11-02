@@ -41,6 +41,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["文本查询 + 图像输入"] --> B["Text Grounder（LLM, GPT-3.5 Turbo）"]
+  B --> C["Refined Query（如 Picture）"]
+  C --> D["Candidate Positioning（Grounding DINO 生成候选框）"]
+  A --> D
+  D --> E["Setting Marks：给每个候选框中心标数字编号"]
+  E --> F["Visual Grounder（LMM, GPT-4V）"]
+  A -->|原始查询文本| F
+  F --> G["输出目标编号，索引已存候选框得到最终目标"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2405.17104>
+- [arXiv PDF](https://arxiv.org/pdf/2405.17104)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（Text Grounder、Candidate Positioning and Setting Marks、Visual Grounder）、§4.1–§4.4
 
 ## 推荐继续阅读
 

@@ -42,6 +42,21 @@ Systematically studies the cross-domain few-shot scenario of egocentric action r
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["源域标注数据 + 目标域无标注数据（RGB / 光流 / 手部姿态热图）"] --> B["I 预训练：每个模态独立训练 VideoMAE（Tube Masking）"]
+    B --> C["联合目标：源+目标域重建 L2 + 源域动作分类交叉熵"]
+    C --> D["II 多模态蒸馏：冻结各模态教师编码器"]
+    D --> E["学生 RGB 编码器 + 投影 MLP，对齐教师特征（L2，stop-gradient）"]
+    E --> F["III 少样本适应：保留 RGB 学生编码器，用 N-way K-shot 支持集训练分类头 G'"]
+    F --> G["IV Ensemble Masked Inference：对查询样本施加 P 种 Tube Mask，平均 softmax 概率"]
+    G --> H["输出动作类别"]
+```
+
+图依据：论文 §3.1–3.4（Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Systematically studies the cross-domain few-shot scenario of egocentric action r
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2405.19917>
+- [arXiv PDF](https://arxiv.org/pdf/2405.19917)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法全部；§4 实验与附录略读
 
 ## 推荐继续阅读
 

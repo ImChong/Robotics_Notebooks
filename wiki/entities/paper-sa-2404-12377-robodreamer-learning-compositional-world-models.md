@@ -43,6 +43,23 @@ Learns compositional world models for robot imagination.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["语言指令，如 pick orange from bottom drawer and place on counter"] --> P["文本解析器：预训练 parser + 规则，拆为动词短语与介词短语"]
+    P --> C["组件 l1 ... lN：动作 / 空间关系"]
+    M["可选多模态条件：目标图像、目标草图"] --> D
+    C --> D["组合扩散模型：每个组件各一路分数 ε_θ(τ_t, t | l_i)"]
+    D --> AVG["分数合成（组件分数平均/加权）去噪"]
+    AVG --> V["生成视频计划 τ = x1 ... xH"]
+    V --> ID["逆动力学模型：相邻两帧 x_t、x_t+1 推断动作"]
+    ID --> EX["依次执行动作"]
+    EX -->|"闭环：定期重新生成视频计划"| L
+```
+
+图依据：论文 §2.1-§2.2、§3.1-§3.3 / Fig.2、Fig.3、Algorithm 1-2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Learns compositional world models for robot imagination.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2404.12377>
+- [arXiv PDF](https://arxiv.org/pdf/2404.12377)：已通读方法部分（§2 背景、§3.1 Text Parser、§3.2 Compositional Generation、§3.3 多模态组合）与 Fig.2、Fig.3、Algorithm 1/2；实验与附录以略读为准
 
 ## 推荐继续阅读
 

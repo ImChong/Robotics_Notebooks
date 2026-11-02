@@ -43,6 +43,25 @@ Learns a 3D occupancy world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SENS["历史传感器输入（相机 / LiDAR）"] --> OCC["3D 占据 y（H×W×D 体素，模态无关）"]
+    OCC --> TOK["3D Occupancy Scene Tokenizer：类别嵌入沿高度拼成 BEV → 2D 卷积编码 e → VQ-VAE 码本量化"]
+    TOK --> ST["scene tokens z"]
+    EGO["ego token z0（编码自车位置）"] --> WT
+    ST --> WT["世界 tokens T = 场景 tokens + ego token"]
+    WT --> SA["Spatial Aggregation 空间自注意力，2×2 窗口合并，多尺度 tokens T0..TK"]
+    SA --> TA["各尺度子世界模型：逐位置 Temporal Causal Attention 预测下一帧 token"]
+    TA --> UNET["U-net 式聚合多尺度预测"]
+    UNET --> PT["预测的下一时刻世界 tokens"]
+    PT --> DEC["scene decoder d → 未来 3D 占据"]
+    PT --> EDEC["ego decoder d_ego → 自车位移 / 轨迹"]
+```
+
+图依据：论文 §3.2（Scene Tokenizer）、§3.3 / Fig.4（Spatial-Temporal Generative Transformer）、§3.4（解码与两阶段训练：先训 tokenizer 与 decoder，再训世界模型）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Learns a 3D occupancy world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2311.16038>
+- [arXiv PDF](https://arxiv.org/pdf/2311.16038)：已通读方法部分（实验与附录以略读为准）：§3.1 世界模型形式化、§3.2 Scene Tokenizer、§3.3 时空生成 Transformer、§3.4 OccWorld 与训练
 
 ## 推荐继续阅读
 

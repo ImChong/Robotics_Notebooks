@@ -43,6 +43,26 @@ Unsupervised occupancy fields for perception and forecasting.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["过去 H 帧 LiDAR 扫描"] --> B["体素化为 BEV 表示"]
+    B --> C["LiDAR Encoder（ResNet）"]
+    C --> D["BEV Feature Map Z"]
+    D --> E["Implicit Occupancy Decoder（deformable attention）"]
+    F["未来 LiDAR 数据"] --> G["已知传感器位姿射线投射：占据/空闲伪标签"]
+    G --> H["采样 4D 查询点 q=(x,y,z,t)，N+ = N-"]
+    H --> E
+    E --> I["各查询点占据概率"]
+    I --> J["二元交叉熵损失 L_world（自监督）"]
+    G --> J
+    I -.-> K["下游一：冻结 UnO + 轻量渲染网络 g_γ 预测射线深度（点云预测）"]
+    I -.-> L["下游二：z 换成可学习参数 ψ，微调 BEV 语义占据预测"]
+```
+
+图依据：论文 §3（Fig. 2、Fig. 3）、§4.1、§4.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Unsupervised occupancy fields for perception and forecasting.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.08691>
+- [arXiv PDF](https://arxiv.org/pdf/2406.08691)：已通读方法部分（实验与附录以略读为准）：§3（方法、架构、训练）、§4.1–4.2（下游迁移）；§5 实验设定与表格略读
 
 ## 推荐继续阅读
 

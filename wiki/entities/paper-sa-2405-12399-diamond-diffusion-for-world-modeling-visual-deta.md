@@ -43,6 +43,20 @@ Visual details matter in Atari for diffusion world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["真实环境交互：收集数据"] --> B["训练扩散世界模型 Dθ（EDM，U-Net 2D）"]
+  A --> C["训练奖励/终止模型 Rψ（CNN + LSTM）"]
+  B --> D["想象环境：过去 L 帧观测与动作作条件，去噪生成下一帧（Euler 采样）"]
+  C --> D
+  D --> E["在想象中用 REINFORCE（带价值基线）训练 actor-critic"]
+  E --> A
+```
+
+图依据：论文 §3.1 / §3.2 / Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +112,7 @@ Visual details matter in Atari for diffusion world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.12399>
+- [arXiv PDF](https://arxiv.org/pdf/2405.12399)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1–3.2）
 
 ## 推荐继续阅读
 

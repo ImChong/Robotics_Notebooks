@@ -41,6 +41,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  LOG["NetEase 游戏真实日志<br/>两个原始数据集"] --> SPLIT["RL 部署前后日志分离<br/>Dataset-SL / Dataset-RL"]
+  SPLIT -->|train| RAWTR["训练集 RawData"]
+  SPLIT -->|test| RAWTE["测试集 RawData"]
+  RAWTR --> SIMTR["训练集上构建<br/>Simu. Env"]
+  RAWTE --> SIMTE["测试集上构建<br/>Simu. Env"]
+  SIMTR --> EV1["① 环境模拟评估<br/>predictive performance"]
+  RAWTR -->|offline training| BATCH["imitation learning / batch RL"]
+  SIMTR -->|online training| ONRL["DQN / DDPG / PPO 等"]
+  BATCH --> POL["学得策略"]
+  ONRL --> POL
+  POL -->|"② online evaluation"| SIMTE
+  POL -->|"③ offline evaluation<br/>反事实策略评估 CPE"| RAWTE
+```
+
+图依据：论文 §5 与 Fig. 5（评测框架）、附录 E / Fig. 6；本篇为数据集/基准论文，图仅表示论文自述的评测框架，细节箭头（如测试集环境的构建方式）以附录 E 为准。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2110.11073>
+- [arXiv PDF](https://arxiv.org/pdf/2110.11073)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Impact、§3 数据描述、§4 数据理解工具、§5 评测框架、附录 E 策略评估框架
 
 ## 推荐继续阅读
 

@@ -42,6 +42,29 @@ Urban world model for 3D city generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    LAYOUT["2.5D 城市布局数据：OSM / 语义+高度图"] --> MESH["3D 城市布局生成：无纹理 3D 网格，资产逐个拆分并记录中心位置"]
+    INSTR["用户文本指令"] --> MLLM["Urban MLLM（VILA-1.5 微调）：为每个资产生成外观与材质描述"]
+    MESH --> REND
+    MLLM --> REND
+    REF["可选：参考图像"] --> REND
+    subgraph REND["逐资产纹理渲染（Fig.2）"]
+        DEPTH["多视角深度图"] --> CN["深度感知 ControlNet + 2D 扩散：生成多视角图像"]
+        CN --> UV["反投影到 UV 空间并按视角掩码合并"]
+        UV --> INP["UV 位置图编码器引导的纹理补全（inpainting）"]
+        INP --> UP["ControlNet-tile 图像放大"]
+    end
+    REND --> ASM["按布局元数据位置重组资产"]
+    ASM --> REF2["MLLM 辅助精修：Urban MLLM 找出与提示不一致处并给出修改后的提示"]
+    REF2 -->|"重新渲染相关资产"| REND
+    REF2 --> OUT["细节更高的 3D 城市环境"]
+```
+
+图依据：论文 §3 Methodology（§3.1 布局生成、§3.2 MLLM 场景设计、§3.3 纹理渲染 Fig.2、§3.4 精修 Fig.3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Urban world model for 3D city generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2407.11965>
+- [arXiv PDF](https://arxiv.org/pdf/2407.11965)：已通读方法部分（实验与附录以略读为准）：§3 方法（布局生成、MLLM 场景设计、纹理渲染、MLLM 精修）；§4 实验略读
 
 ## 推荐继续阅读
 

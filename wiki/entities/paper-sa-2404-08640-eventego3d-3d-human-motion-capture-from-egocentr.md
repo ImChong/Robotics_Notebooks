@@ -42,6 +42,24 @@ High-speed human motion capture system leveraging asynchronous event camera foot
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    E["头戴设备 HMD 的事件相机：egocentric 事件流"] --> L["按时间窗 T 聚合为 LNES 帧 L_q，192x256x2"]
+    L --> F["帧缓冲融合：L̂_q = L̂_q-1 ⊙ C_q-1 ⊕ L_q"]
+    F --> U["EPM：U-Net 编码器，Blaze blocks"]
+    U --> H["热图解码器：16 个关节 2D heatmap"]
+    H --> Lift["Heatmap-to-3D lifting 模块"]
+    Lift --> J["输出 16x3 的 3D 人体关节 Ĵ_q"]
+    U --> SD["REPM 分割解码器：人体 mask Ŝ_q"]
+    SD --> CD["置信度解码器：置信图 C_q = sigmoid(Ŝ_q ⊙ S_F)"]
+    CD --> B["帧缓冲：保存 L̂_q 与 C_q，供下一帧使用"]
+    B -.->|"上一帧 L̂_q-1 与 C_q-1"| F
+```
+
+图依据：论文 §3.2 / Fig.2、Fig.3、式 (1)-(5)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ High-speed human motion capture system leveraging asynchronous event camera foot
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2404.08640>
+- [arXiv PDF](https://arxiv.org/pdf/2404.08640)：已通读方法部分（§3.1 事件表示 LNES、§3.2 EPM 与 REPM、§3.3 损失与监督）与 Fig.2、Fig.3；实验与附录以略读为准
 
 ## 推荐继续阅读
 

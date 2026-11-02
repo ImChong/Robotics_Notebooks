@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Gymnasium 环境 + ModifiedParamsEnv 接口（set_params / get_params）"] --> B["MuJoCo 物理引擎"]
+    C["Uncertainty Set（M2TD3 风格 1D/2D/3D 或 RARL 风格外力集）"] --> D["Adversary 从不确定集取参数"]
+    D -->|"set_params"| A
+    B --> E["Agent 观察状态并行动"]
+    E --> B
+    A --> F["Wrappers：DomainRandomization / Adversarial / ProbabilisticActionRobust"]
+    F --> G["基线算法：TD3、DR、NR-MDP、RARL、M2TD3"]
+    C --> H["generate_evaluation_set：参数均匀网格评测环境"]
+    G --> H
+    H --> I["最坏情形与平均情形性能评估"]
+```
+
+图依据：论文 §4（Fig. 2 RRLS architecture）、§5 实验设定开头。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2406.08406>
+- [arXiv PDF](https://arxiv.org/pdf/2406.08406)：已通读方法部分（实验与附录以略读为准）：§2 问题陈述、§4（环境、不确定集、Wrappers、评测流程）、§5 实验设定开头；§5 结果、附录略读
 
 ## 推荐继续阅读
 

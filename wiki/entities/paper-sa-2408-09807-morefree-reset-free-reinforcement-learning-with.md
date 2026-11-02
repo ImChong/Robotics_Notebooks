@@ -42,6 +42,28 @@ World models increase autonomy in RL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PEG["PEG 骨干：RSSM 世界模型 + 目标条件策略 πG + 探索策略 πE + 动力学距离奖励"] --> LOOP
+    LOOP["无重置在线循环"] --> R{"随机数 r < α ?"}
+    R -- "是" --> BF["Back-and-Forth Go-Explore：采样评估目标 g* 与初始目标 g0"]
+    BF --> FWDGO["Go 到 g*（Forward 轨迹）+ Explore"]
+    FWDGO --> BACKGO["从终点继续 Go 到 g0（Back 轨迹）+ Explore"]
+    R -- "否" --> EXPL["从探索目标分布 ρE 采样目标，执行 Go-Explore"]
+    FWDGO --> BUF["数据加入回放缓冲 D"]
+    BACKGO --> BUF
+    EXPL --> BUF
+    BUF --> WM["用 D 更新世界模型"]
+    WM --> PE["在想象中更新 πE"]
+    WM --> PG["在想象中更新 πG：目标按 α/2 取评估目标、α/2 取初始状态、1-α 取缓冲状态"]
+    PE --> LOOP
+    PG --> LOOP
+```
+
+图依据：论文 §3.2 Model-based RL setup（Algorithm 1）、§4.1 Back-and-Forth Go-Explore（Algorithm 2、3）、§4.2 想象中学习相关目标。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ World models increase autonomy in RL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2408.09807>
+- [arXiv PDF](https://arxiv.org/pdf/2408.09807)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4 方法（Back-and-Forth Go-Explore、想象中学习相关目标、实现细节）；§5 实验略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Proposes action scene graphs for long-form understanding of egocentric videos, e
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Ego4D 动作片段 C_i 的 PRE / PNR / POST 帧标注<br/>(名词 n、物体框 b_o、左右手框、叙述 r)"] --> B["图初始化：相机佩戴者节点 + 动词节点<br/>动词取自叙述，物体节点取自标注，加 direct object 边"]
+    B --> C["图精修：3 位独立 AMT 标注员<br/>核对动词-名词；补充间接物体、介词边及 PRE/PNR/POST 框"]
+    C --> D["得到 3 份候选图 G1, G2, G3"]
+    D --> E["图验证：最多 4 类问题<br/>动词-名词 / 边介词 / 使用哪只手 / 空间关系"]
+    E --> F["每个片段每个时刻一张静态图 G_i(t)"]
+    F --> G["时间重组 Temporal Recollection<br/>静态图串成时间动态图 EASG"]
+    G --> H["Ego4D-EASG 数据集"]
+    H --> I["EASG 生成基线：Edge Cls / SG Cls / EASG Cls<br/>(SlowFast 片段特征 + ROIAlign + 全连接层)"]
+    H --> J["下游：以 LLM 做动作预期与长活动摘要<br/>输入图三元组序列"]
+```
+
+图依据：论文 §3、§4.1–4.3 / Fig.3（Ego4D-EASG 标注流程）、§5–6（基线与下游实验）。注意：页面 frontmatter 的 arXiv 号 2409.01600 对应的是另一篇无关论文（MCBA 组合服务推荐），本图按正确论文 arXiv:2312.03391（Action Scene Graphs for Long-Form Understanding of Egocentric Videos）绘制。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Proposes action scene graphs for long-form understanding of egocentric videos, e
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2409.01600>
+- [arXiv PDF](https://arxiv.org/pdf/2312.03391)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 EASG 定义、§4 Ego4D-EASG 数据集（4.1 标注、4.2 验证、4.3 时间重组）、§5 EASG 生成基线、§6 下游任务设定；注：页面所列编号 2409.01600 与本论文不符，正确编号为 2312.03391
 
 ## 推荐继续阅读
 
