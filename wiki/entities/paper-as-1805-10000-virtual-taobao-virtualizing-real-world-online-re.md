@@ -41,6 +41,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CD["真实顾客数据（约 4 亿条历史记录）"] --> GS["GAN-SD：生成顾客及其请求，分布受熵与 KL 约束"]
+    CD --> MAIL["MAIL：多智能体对抗模仿学习，同时学习顾客策略与平台策略"]
+    GS -->|"顾客分布 P^c"| MAIL
+    MAIL <-->|"判别器区分真实与仿真交互，输出作为奖励"| DISC["判别器"]
+    GS --> VT["Virtual Taobao：虚拟顾客 + 虚拟平台"]
+    MAIL --> VT
+    VT --> RL["在虚拟环境中用强化学习（TRPO）训练平台搜索策略"]
+    ANC["ANC：动作范数过大时惩罚奖励，抑制对虚拟环境过拟合"] --> RL
+    RL --> REAL["部署到真实 Taobao 在线评估"]
+```
+
+图依据：论文 §1 / Fig.1（Virtual-Taobao 架构）、§3.2 GAN-SD（Algorithm 1）、§3.3 MAIL（Algorithm 2）、§3.4 ANC、§4.1 实验设置。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +112,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1805.10000>
+- [arXiv PDF](https://arxiv.org/pdf/1805.10000)：已通读方法部分（实验与附录以略读为准）：§1 引言与 Fig.1、§2 背景、§3 Virtual Taobao（GAN-SD、MAIL、ANC）、§4.1 实验设置
 
 ## 推荐继续阅读
 

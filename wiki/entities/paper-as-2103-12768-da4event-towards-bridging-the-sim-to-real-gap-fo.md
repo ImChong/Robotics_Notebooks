@@ -42,6 +42,27 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  SRC["源域：ESIM 仿真事件<br/>带标签"] --> REPS
+  TGT["目标域：真实事件相机采集<br/>无标签"] --> REPT
+  REPS["切分 B 个时间 bin<br/>得到多通道事件表示 R_E（如 voxel grid）"] --> VIEWS
+  REPT["同样处理，得到多通道事件表示"] --> VIEWT
+  VIEWS["每 3 通道分组为一个 view<br/>（源域与目标域的 batch 随机、无配对）"] --> FS
+  VIEWT["分组为 3 通道 views"] --> FT
+  FS["共享特征提取器 F<br/>ImageNet 预训练 ResNet，各 view 并行"] --> MVPS["MVP 多视角池化：对 view 与空间平均<br/>得到源域特征向量"]
+  FT["共享特征提取器 F"] --> MVPT["MVP 多视角池化<br/>得到目标域特征向量"]
+  MVPS --> G["主分类器 G<br/>仅用带标签的源域特征做预测"]
+  MVPS --> DAB
+  MVPT --> DAB["DABlock 域适应模块<br/>GRL / MMD / AFN / ROT / ENT 之一"]
+  DAB --> LOSS["促使源 / 目标特征域不变<br/>缩小 sim-to-real gap"]
+  G --> PRED["物体类别预测"]
+```
+
+图依据：论文 §III.B MV-DA4Event、§III.C Network architecture / Fig. 3（MV-DA4E 架构）、§IV UDA 算法（DABlock 内可选方法）；不使用多视角时（DA4E）事件表示作为单一多通道张量送入 F 且去掉 MVP。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2103.12768>
+- [arXiv PDF](https://arxiv.org/pdf/2103.12768)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III DA4Event（含 MV-DA4Event 与网络结构）、§IV UDA 算法、§V 实验设置；结果表略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Common Crawl 过滤版（与高质量参考语料相似度过滤）<br/>+ 文档级模糊去重"] --> M["训练数据混合<br/>CC / WebText2 / Books1 / Books2 / Wikipedia<br/>高质量数据采样更频繁"]
+    B["补充语料：WebText2、Books1、Books2、Wikipedia"] --> M
+    M --> T["自回归语言模型预训练<br/>GPT-2 架构 + 稠密与局部稀疏注意力交替<br/>8 种规模 125M–175B，n_ctx = 2048，共 300B tokens"]
+    T --> G["GPT-3（无梯度更新地使用）"]
+    G --> Z["Zero-shot：仅自然语言任务说明"]
+    G --> O["One-shot：说明 + 1 个示例"]
+    G --> F["Few-shot：上下文放入 K 个示例（K 约 10–100）"]
+    Z --> E["前向推理评测<br/>选择题比较补全似然；自由生成用 beam search"]
+    O --> E
+    F --> E
+```
+
+图依据：论文 §2（Fig. 2.1、Table 2.1–2.2）与 §2.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://proceedings.neurips.cc/paper_files/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html>
+- [arXiv PDF](https://arxiv.org/pdf/2005.14165)：已通读方法部分（实验与附录以略读为准）：§2 Approach（2.1 模型与架构、2.2 训练数据、2.3 训练过程、2.4 评测）
 
 ## 推荐继续阅读
 

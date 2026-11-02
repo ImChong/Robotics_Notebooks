@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    X["输入 x"] --> ENC["编码器：输出 ze(x)"]
+    ENC --> VQ["最近邻查表：在嵌入空间 e 中找最近的 e_k"]
+    E["嵌入表 e（K 个 D 维向量）"] --> VQ
+    VQ --> ZQ["离散潜变量 zq(x) = e_k"]
+    ZQ --> DEC["解码器 p(x|zq)"]
+    DEC --> XR["重构 x"]
+    DEC -. "反向传播：梯度直通估计，复制到 ze(x)" .-> ENC
+    ZQ -. "VQ 损失更新嵌入；承诺损失约束编码器" .-> E
+    ZQ --> PRIOR["训练后：在离散潜变量上拟合自回归先验（图像用 PixelCNN，语音用 WaveNet）"]
+    PRIOR --> GEN["祖先采样生成 x"]
+```
+
+图依据：论文 §3 VQ-VAE（§3.1 离散潜变量、§3.2 学习与式 (3)、§3.3 先验）/ Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://proceedings.neurips.cc/paper/2017/hash/7a98af17e63a0ac09ce2e96d03992fbc-Abstract.html>
+- [arXiv PDF](https://arxiv.org/pdf/1711.00937)：已通读方法部分（实验与附录以略读为准）：§1-2 引言与相关工作、§3 VQ-VAE（3.1-3.3）、§4.1-4.2 实验设置开头
 
 ## 推荐继续阅读
 

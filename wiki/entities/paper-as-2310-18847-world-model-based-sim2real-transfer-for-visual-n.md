@@ -41,6 +41,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SIM["CARLA 仿真（差速机器人，天气随机化 + 非玩家交通）→ FPV-BEV 图像序列"] --> PTRAIN["训练感知模型：ResNet-50（ImageNet 初始化）FPV → 嵌入 z_t，损失 L_CR = 重建损失 L_R + β·InfoNCE"]
+    PTRAIN --> BEVDEC["BEV decoder 由 z_t 重建 BEV 图"]
+    SIM --> MTRAIN["训练 Memory 模型：LSTM + MDN，输入 (z, a) 历史序列"]
+    OBS["RGB 观测 o_t（真实机器人，冻结模型零样本部署）"] --> RES["ResNet-50 编码 → z_t"]
+    RES --> ASC["ASC：在 1439 个 BEV anchor 嵌入中取最近邻，替换 z_t 得 z̄_t"]
+    ASC --> TSC["TSC：置信度 τ_t ≥ ρ 则采用 z̄_t，否则采用 LSTM 上一步预测"]
+    TSC --> LSTM["LSTM 记忆模型：结合上一动作 a_t-1 与历史，输出 ẑ_t（亦用于观测延迟时插值）"]
+    LSTM --> POL["控制策略（RL 训练）→ 动作 a_t（油门、转向）"]
+    LSTM --> BEVDEC
+    BEVDEC --> PLAN["BEV 重建用于规划导航"]
+    PLAN --> ACTOUT["动作指令 a_t"]
+    POL --> ACTOUT
+```
+
+图依据：论文 §III（Fig.2 感知模型训练、Fig.3 系统总览、Fig.4 鲁棒性模块 TSC / ASC，Eq.4–8）、§IV-A/B（平台与数据）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2310.18847>
+- [arXiv PDF](https://arxiv.org/pdf/2310.18847)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（感知模型、Memory 模型、TSC / ASC）、§IV-A/B 平台与数据
 
 ## 推荐继续阅读
 

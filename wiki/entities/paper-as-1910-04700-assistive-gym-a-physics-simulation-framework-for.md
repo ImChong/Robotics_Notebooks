@@ -42,6 +42,30 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph setup["环境创建（PyBullet）"]
+    HUMAN["人体模型\n男 / 女，40 个可控关节\n随机施加震颤 / 关节无力 / 活动范围受限之一"]
+    ROBOT["机器人：PR2 / Jaco / Baxter / Sawyer\n基座位姿采样 100 个，按 IK 与 JLWKI 选择"]
+    TASK["六类任务环境\n抓痒 / 擦浴 / 喝水 / 喂食 / 穿衣 / 手臂操作"]
+  end
+  HUMAN --> TASK
+  ROBOT --> TASK
+  TASK --> OBS["观测：末端位姿、关节位置、末端受力、人体关键关节位置"]
+  OBS --> POLICY["PPO 策略\n2 层 64 节点 tanh"]
+  POLICY --> ACT["动作：关节位置增量 ΔP"]
+  ACT --> STEP["仿真一步\n人体手臂姿态经关节限位网络检查\n无效则回退到上一步构型"]
+  STEP --> REWARD["奖励 r(s) = rR(s) + rH(s)\n任务成功奖励 + 人体偏好惩罚"]
+  REWARD --> POLICY
+  STEP --> OBS
+  POLICY -.->|"协同优化：人体策略与机器人策略共享 r(s) 同时训练"| HPOL["人体策略（手臂 / 头部）"]
+  HPOL -.-> STEP
+```
+
+图依据：论文 §III-A 至 §III-E、§IV（策略学习与控制）、§V-B（协同优化）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1910.04700>
+- [arXiv PDF](https://arxiv.org/pdf/1910.04700)：已通读方法部分（实验与附录以略读为准）：§III Assistive Gym（人体与机器人、任务、关节限位、基座位姿、人体偏好）、§IV 策略学习与控制、§V 评测设置
 
 ## 推荐继续阅读
 

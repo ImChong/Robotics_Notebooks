@@ -42,6 +42,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练时：Algorithm 1"]
+        T1["采样相邻任务对 (Ti, Ti+1)"] --> T2["用 πθ 在 Ti 上采集 K 条轨迹"]
+        T2 --> T3["多步元梯度更新（步长 α 可学习）得到 φ"]
+        T3 --> T4["用 πφ 在 Ti+1 上采集轨迹并计算元损失"]
+        T4 --> T5["同时更新 θ 与 α"]
+    end
+    subgraph EXEC["执行时：Algorithm 2"]
+        E1["初始化 φ = θ*"] --> E2["用 πφ 解当前任务并收集轨迹"]
+        E2 --> E3["重要性权重修正后更新 φ"]
+        E3 --> E2
+    end
+    T5 -->|"得到 θ*, α*"| E1
+```
+
+图依据：论文 §3 方法（§3.1 MAML 概率视角、§3.2 持续适应，Fig.1、Algorithm 1 / 2，式 (6)(7)(9)）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1710.03641>
+- [arXiv PDF](https://arxiv.org/pdf/1710.03641)：已通读方法部分（实验与附录以略读为准）：§1-2 引言与相关工作、§3 方法（3.1-3.2）、§4 实验设置开头
 
 ## 推荐继续阅读
 

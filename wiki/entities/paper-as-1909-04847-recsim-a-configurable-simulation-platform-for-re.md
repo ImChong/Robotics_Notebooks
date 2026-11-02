@@ -41,6 +41,30 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph envb["环境 Environment"]
+    UM["用户模型\n先验采样用户特征（潜在 / 可观测 / 行为）\n含状态转移模型"]
+    DM["文档模型\n先验采样候选文档特征"]
+    CM["用户选择模型\n如 multinomial logit、exponentiated cascade"]
+  end
+  SIM["仿真器 Simulator\n逐用户顺序仿真，一个 episode 对应一个用户"]
+  AGENT["推荐 Agent"]
+  UM -->|"1. 用户状态"| SIM
+  DM -->|"1. 候选文档"| SIM
+  SIM -->|"2. 候选文档 + 用户可观测状态"| AGENT
+  AGENT -->|"3. 返回推荐 slate"| SIM
+  SIM -->|"4. slate + 完整用户状态"| CM
+  CM -->|"5. 用户选择 / 响应"| SIM
+  SIM -->|"6. 选择与响应"| UM
+  SIM -->|"6. 选择与响应 / 奖励"| AGENT
+  SIM --> LOG["按 iteration 汇总并记录指标\n可记录轨迹用于离线 batch RL"]
+```
+
+图依据：论文 §3.1、§4.1 / Fig.1、Fig.2（单用户控制流）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +119,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1909.04847>
+- [arXiv PDF](https://arxiv.org/pdf/1909.04847)：已通读方法部分（实验与附录以略读为准）：§1.1 概览、§3 仿真组件、§4.1 至 §4.3 软件架构
 
 ## 推荐继续阅读
 
