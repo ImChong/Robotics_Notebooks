@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-LEMON: Learning 3D Human-Object Interaction Relation from 2D Images——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Interaction-driven） ｜ Datasets / Benchmarks（Data Modality: image-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+LEMON: Learning 3D Human-Object Interaction Relation from 2D Images——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Interaction-driven） ｜ Datasets / Benchmarks（Data Modality: image-3D）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,21 @@ LEMON: Learning 3D Human-Object Interaction Relation from 2D Images——在清�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：人体 SMPL-H 顶点 H + 物体点云 O + 图像 I"] --> BB["骨干网络：HRNet 提取 Fi，DGCNN 提取 Fh、Fo"]
+    BB --> S1["§3.1 Interaction Intention Excavation<br/>可学习 token To/Th 拼入 Fo/Fh，以 Fi 为 key/value 做多分支注意力<br/>得到意图特征 T̄o、T̄h，用余弦相似度约束语义一致"]
+    S1 --> S2["§3.2 Curvature-guided Geometric Correlation<br/>法曲率 Co、Ch 编码后互相 cross-attention，与几何特征融合得 F̄co、F̄ch<br/>以 T̄o、T̄h 为条件做 cross-transformer，得 affordance 特征 ϕa 与 contact 特征 ϕc"]
+    S2 --> S3["§3.3 Contact-aware Spatial Relation<br/>以 ϕc 为约束，用物体中心 token Tsp 建模物体空间特征 ϕp"]
+    S2 --> DEC
+    S3 --> DEC["解码器：三个投影头（线性/归一化/激活）"]
+    DEC --> OUT["输出：人体 contact ϕ̄c、物体 affordance ϕ̄a、物体中心位置 ϕ̄p"]
+```
+
+图依据：论文 §3 开头 / Fig.3（LEMON pipeline）、§3.1-3.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +67,7 @@ LEMON: Learning 3D Human-Object Interaction Relation from 2D Images——在清�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2312.08963)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2312.08963)。
 
 ## 评测与指标
 
@@ -89,6 +104,7 @@ LEMON: Learning 3D Human-Object Interaction Relation from 2D Images——在清�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2312.08963>
+- [arXiv PDF](https://arxiv.org/pdf/2312.08963)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1-3.4，含 Fig.3）；§4 数据集与 §5 实验未细读
 
 ## 推荐继续阅读
 

@@ -34,6 +34,24 @@ summary: "UniW(A)M（arXiv:2610.18697）：基于扩散 Transformer 的混合专
 
 摘要指出，世界模型与世界动作模型都从具身轨迹学习物理动态与交互语义，但通常独立训练，限制了预测与控制之间的知识复用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["历史观测 + 语言指令 + 状态 (经 VAE / 文本编码器 / 动作 MLP 成 token)"] --> DIT["统一 DiT backbone: interface 专属 attention mask + MoE FFN (由稠密 FFN 初始化)"]
+    DIT --> ROUTE["CATR: 按 token 组的预测角色限定可选专家, 可学习 router 给出组级混合权重"]
+    ROUTE --> EXP["专家: Shared (所有接口) + 原子能力 VGM / VLA / WM / IDM"]
+    EXP --> IFS["五种接口 (训练时每步均匀采样一种): AC-WM / Joint-WAM / IDM-WAM / Action-Centric-WAM / Action-Only-WAM"]
+    IFS --> S1["Stage I: 统一世界-动作联合训练"]
+    S1 --> FZ["冻结 backbone"]
+    FZ --> PAIR["Stage II: PAIR 分类头, 用目标任务少量 chunk 场景离线训练"]
+    PAIR --> TGT["各 WAM 接口预测动作, 与真值算 MAE, min-max 归一化后得 softmax 软目标 (近似最优时偏好快接口)"]
+    TGT --> CE["交叉熵训练 PAIR"]
+    CE --> DEP["部署: 每个 action chunk 选概率最高的 WAM 接口并执行其动作, 更新观测历史后再选"]
+```
+
+图依据：论文 §3.1 统一建模、§3.2 架构（Heterogeneous Expert Activation、CATR）、§3.3 PAIR、§4.1 / Fig.1-2
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -100,6 +118,7 @@ summary: "UniW(A)M（arXiv:2610.18697）：基于扩散 Transformer 的混合专
 
 - [论文归档](../../sources/papers/uniw-a-m_arxiv_2610_18697.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18697)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1-3.3）、§4.1 实验设定；附录与实验结果略读
 
 ## 推荐继续阅读
 

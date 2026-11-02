@@ -43,6 +43,46 @@ summary: "StairMaster（2026，上海交通大学）：三阶段 RL 框架，用
 - 镂空楼梯的风险在于腿部被卡住，而深度感知稀疏且噪声大；两者叠加使 RL 策略难以学会踩点。
 - 作者声称这是首个在真实世界实现此类陡峭镂空楼梯攀爬的 RL 策略（作者声称，未独立核实）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ST1["Stage 1: 特权 Teacher (PPO, 仿真)"]
+        T1["特权 heightmap -> CNN (keys / values)"]
+        T2["本体感知 o_t -> MLP (query)"]
+        T1 --> T3["Cross-Attention -> MLP"]
+        T2 --> T3
+        T3 --> T4["Teacher actor / critic (PPO + 定制奖励)"]
+    end
+    subgraph ST2["Stage 2: Student 蒸馏 (MSE, 模仿 teacher 动作)"]
+        N1["仿真深度 -> 深度噪声建模与预处理 (见下)"] --> S1["CNN 提取视觉特征 f_v (keys / values)"]
+        S2["本体感知 o_t -> MLP f_p (query)"]
+        S1 --> S3["Multi-head Cross-Attention"]
+        S2 --> S3
+        S3 --> S4["Spatial-aware LSTM (SRU): 空间变换门 s_t 对齐历史隐状态与细胞状态"]
+        S4 --> S5["Student actor: 关节角指令"]
+    end
+    subgraph ST3["Stage 3: PPO 微调 (仿真, 特权信息 critic)"]
+        F1["蒸馏得到的 student 与环境交互, PPO 更新, 修正次优行为"]
+    end
+    T4 -->|"蒸馏 MSE loss"| S5
+    S5 --> F1
+    F1 --> DEP["零样本部署真机 Go2 (深度相机 10 Hz, 关节指令 50 Hz)"]
+    subgraph RW["Stage 1 / 3 额外奖励"]
+        R1["3D waypoint 主动感知 (pitch) 奖励"]
+        R2["镂空缝隙运动学惩罚"]
+        R3["楼梯边缘惩罚"]
+    end
+    RW -.-> T4
+    RW -.-> F1
+    subgraph NZ["深度噪声建模"]
+        D1["Gaussian / Uniform / Hole / Edge / Stereo matching / Gaussian shift 噪声"] --> D2["裁剪, 截断, resize, Gaussian blur"]
+    end
+    NZ -.-> N1
+```
+
+图依据：论文 Method（Overview、Visuospatial Encoder、Depth Noise Modeling、Customized Reward Design）/ Fig.2-4；部署频率据 Fig.2 标注
+
 ## 方法与机制
 
 - **Cross-Attention：** 从噪声深度输入中提取结构特征。
@@ -88,6 +128,7 @@ summary: "StairMaster（2026，上海交通大学）：三阶段 RL 框架，用
 ## 参考来源
 
 - [StairMaster 论文来源归档](../../sources/papers/stairmaster_arxiv_2606_25765.md)
+- [arXiv PDF](https://arxiv.org/pdf/2606.25765)：已通读方法部分（实验与附录以略读为准）：Method 全部小节；实验与附录略读
 
 ## 推荐继续阅读
 

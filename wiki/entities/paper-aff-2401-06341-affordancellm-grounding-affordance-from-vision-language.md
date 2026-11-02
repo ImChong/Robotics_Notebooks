@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordanceLLM: Grounding Affordance from Vision Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordanceLLM: Grounding Affordance from Vision Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ AffordanceLLM: Grounding Affordance from Vision Language Models——在清单�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["输入：单张图像 I"] --> DPT["DPT 深度估计 → 伪深度图 D"]
+    IMG --> ENC["图像编码器 OWL-ViT（替换 CLIP，768x768 输入）<br/>576 个 token，每 token 投影到 1024 并拼接相邻 4 个"]
+    DPT --> ENC2["同一编码器编码深度图 → FD，与图像特征 FI 拼接"]
+    ENC --> LLM
+    ENC2 --> LLM
+    Q["文本查询 T：What part of the object should we interact with<br/>in order to action it?"] --> TOK["文本 tokenizer → FT"]
+    TOK --> LLM["LLM (LLaMA-7B, LLaVA 框架)<br/>输出文本 A 与特殊 token mask token"]
+    LLM --> HID["mask token 隐状态 → 投影为 query 嵌入 q"]
+    HID --> DEC["Affordance Decoder（SAM / 3DOI 类结构 + 额外转置卷积）<br/>输入 FI 与 q"]
+    ENC --> DEC
+    DEC --> MAP["输出：dense affordance map M"]
+```
+
+图依据：论文 §3 / Fig.3（总览）、§3.1-3.2（Eq.1-3 与网络结构）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ AffordanceLLM: Grounding Affordance from Vision Language Models——在清单�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2401.06341)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2401.06341)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ AffordanceLLM: Grounding Affordance from Vision Language Models——在清单�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2401.06341>
+- [arXiv PDF](https://arxiv.org/pdf/2401.06341)：已通读方法部分（实验与附录以略读为准）：§3 方法全部（3.1 总览与训练目标、3.2 网络结构与实现细节）
 
 ## 推荐继续阅读
 

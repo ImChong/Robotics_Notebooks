@@ -40,6 +40,31 @@ Learning Dexterous Grasping with Object-Centric Visual Affordances——在清�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段 I: 从图像预测抓取 affordance"]
+    CD["ContactDB 热成像接触图\nk-medoids 取每个物体的代表接触图"] --> RD["MuJoCo 中渲染物体图像\n得到 图像-affordance 掩码对 (约 15k)"]
+    RD --> G["G: X → Y\nFPN + ResNet-50 分割网络\n输出二值 affordance 图"]
+  end
+  subgraph S2["阶段 II: 用 affordance 训练抓取策略"]
+    IMG["手部相机 RGB-D 图像 x+"] --> ENC["CNN 编码器"]
+    G --> AM["affordance 图 y = G(x)\n(首帧推断, 反投影后持续跟踪)"]
+    AM --> ENC
+    AM --> DIST["手-affordance 区域接触距离 d"]
+    PRO["本体感知 p"] --> FC["全连接编码器"]
+    DIST --> FC
+    ENC --> AC["拼接后 FC → Actor-Critic (PPO)"]
+    FC --> AC
+    AC --> ACT["30 DoF 手臂-手关节位置增量动作"]
+    ACT --> R["奖励 r = α·成功 + β·进入 affordance 区域 + η·熵"]
+    R --> AC
+  end
+```
+
+图依据：论文 §III（Approach，III-A 与 III-B，Fig.3 / Fig.4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +76,7 @@ Learning Dexterous Grasping with Object-Centric Visual Affordances——在清�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2009.01439)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/2009.01439)。
 
 ## 评测与指标
 
@@ -88,6 +113,7 @@ Learning Dexterous Grasping with Object-Centric Visual Affordances——在清�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2009.01439>
+- [arXiv PDF](https://arxiv.org/pdf/2009.01439)：已通读方法部分（实验与附录以略读为准）：§III-A 图像 affordance 预测、§III-B 基于 affordance 的灵巧抓取策略
 
 ## 推荐继续阅读
 

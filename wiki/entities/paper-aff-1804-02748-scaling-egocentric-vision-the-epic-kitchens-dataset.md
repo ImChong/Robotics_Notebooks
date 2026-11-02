@@ -40,6 +40,22 @@ Scaling egocentric vision: The epic-kitchens dataset——在清单中归入 **D
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["3.1 数据采集\n32 名参与者头戴 GoPro\n在自家厨房连续记录 3 天"] --> B["参与者事后观看自己的视频并口述旁白\n(英语或母语)"]
+  B --> C["AMT 人工转写旁白\n+ YouTube 自动字幕对齐工具得到时间戳"]
+  C --> D["3.2 动作片段标注\nAMT 每个 HIT 由 4 人标注起止时间\n按 IoU 一致性取最终片段"]
+  C --> E["3.3 活动物体框标注\n对旁白名词在动作前后 2 秒内的帧\nAMT 3 人标注, 选一致性最高者"]
+  C --> F["3.4 动词/名词归类\n取首个动词与名词, 人工/半自动聚类\n得到 125 个动词类与 331 个名词类"]
+  D --> G["3.5 质量检查\n随机抽 300 个样本人工核对"]
+  E --> G
+  F --> G
+```
+
+图依据：论文 §3（Dataset Collection and Annotation，§3.1–3.5）；本图为数据集采集与标注流程，论文未提出识别模型
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +67,7 @@ Scaling egocentric vision: The epic-kitchens dataset——在清单中归入 **D
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/1804.02748)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的数据集采集与标注流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/1804.02748)。
 
 ## 评测与指标
 
@@ -88,6 +104,7 @@ Scaling egocentric vision: The epic-kitchens dataset——在清单中归入 **D
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/1804.02748>
+- [arXiv PDF](https://arxiv.org/pdf/1804.02748)：已通读方法部分（实验与附录以略读为准）：§3.1–3.5 数据采集与标注流程；§4 挑战任务与基线以略读为准
 
 ## 推荐继续阅读
 

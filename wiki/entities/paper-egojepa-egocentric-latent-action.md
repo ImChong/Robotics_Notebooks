@@ -32,6 +32,20 @@ summary: "EgoJEPA（arXiv:2610.20904）：三阶段从第一视角人类视频�
 
 摘要指出，基于重定向的方法需要为每种本体重新标定映射，并会把手部跟踪误差传递到控制策略中。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第一人称人类视频 + 手部标注<br/>(腕位姿、21 个 3D 关键点)"] --> B["阶段 1：人类动作预训练 (JEPA)<br/>动作编码器 Aψ 编码相邻帧手部运动差 Δm<br/>预测器 Pϕ 预测未来视觉表征，目标分支 EMA + stop-gradient"]
+    B --> C["有效果感知的潜在动作空间<br/>冻结 Aψ 与视觉编码器 Eθ"]
+    C --> D["阶段 2：潜在动作世界模型 Wω<br/>在人类视频上联合 flow matching<br/>同时预测未来视觉表征与潜在动作"]
+    D --> E["阶段 3：具身特定微调<br/>在动作分支插入输入/输出 Action Adapter Dη"]
+    F["机器人示范数据<br/>动作表示为相邻状态差分 Δa"] --> E
+    E --> G["适配后的 Dη∘Wω：输出机器人相对动作块"]
+```
+
+图依据：论文 Fig. 2 与 Stage 1–3 方法节。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -96,6 +110,7 @@ summary: "EgoJEPA（arXiv:2610.20904）：三阶段从第一视角人类视频�
 
 - [论文归档](../../sources/papers/egojepa_arxiv_2610_20904.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.20904)：已通读方法部分（实验与附录以略读为准）：Stage 1 人类动作预训练、Stage 2 潜在动作世界模型、Stage 3 具身特定微调；实验设定略读
 
 ## 推荐继续阅读
 

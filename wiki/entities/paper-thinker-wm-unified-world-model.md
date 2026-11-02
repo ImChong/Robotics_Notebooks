@@ -42,6 +42,31 @@ summary: "Thinker-WM（arXiv:2610.18447）以共享 Unified Dynamics Transformer
 | HF | Hugging Face | 官方模型权重发布入口 |
 | CC BY-NC-SA | Creative Commons Attribution-NonCommercial-ShareAlike | 代码仓库标注的非商用署名-相同方式共享许可证 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 o_t + 任务条件 c"] --> B["冻结 Qwen3-VL-2B 处理 Task/Scene/Action 结构化提示，线性桥 + 4 个残差 MLP 得条件序列 h_und"]
+    A --> C["RGB 与深度：冻结 Wan2.2 VAE 编码，patchify 得各 3900 token"]
+    A --> D["机器人动作：映射到 20 维统一相对 EEF 动作空间 + 有效掩码，时间卷积压成 48 个 token"]
+    R["每个机器人 8 个可学习 robot token"] --> E
+    B --> E["与 robot token 拼成 cross-attention 上下文 c"]
+    C --> F["模态专属编码器 Ev,d"]
+    D --> G["动作编码器 Ea"]
+    F --> H["Unified Dynamics Transformer：RGB/深度/动作 token 拼接，联合自注意力演化"]
+    G --> H
+    E --> H
+    H --> I["RGB / 深度解码器 Dv,d"]
+    H --> J["动作解码器 Da"]
+    I --> K["预测 RGB 与深度的 flow-matching 速度场（50 步，CFG 仅用于视觉流）"]
+    J --> L["预测动作速度场（10 步，无 CFG）"]
+    K --> M["输出 v̂, d̂"]
+    L --> N["输出 â"]
+    H -.-> O["功能模式：WAM / WM / VLA / A2V / V2A / Uncond，由条件模态是否 σ=0 或省略决定"]
+```
+
+图依据：论文 §3.1 式 (4) / Fig. 2、§3.2、§3.3、§3.4（Table 2 / Fig. 5）、§3.5。
+
 ## 核心机制
 
 论文提出 Unified Dynamics Transformer（统一动态 Transformer）作为共享中间骨干：各模态经专属编码器进入共享表征，在动态表征中共同演化，再由专属解码器生成不同模态。由此把外观、几何和动作联系起来，同时保留其输出结构差异。
@@ -98,3 +123,4 @@ summary: "Thinker-WM（arXiv:2610.18447）以共享 Unified Dynamics Transformer
 - [代码仓库归档](../../sources/repos/thinker-wm.md)
 - [项目页归档](../../sources/sites/thinker-wm.md)
 - [模型仓库归档](../../sources/models/thinker-wm.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18447)：已通读方法部分（实验与附录以略读为准）：§3 模型架构（3.1–3.6）、§6 训练策略；§4 数据、§5 基础设施、§7 Motion Probe、§8 实验仅略读

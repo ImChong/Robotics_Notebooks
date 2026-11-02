@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondenc
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph MEM["§3.1 从人类视频构建 affordance memory"]
+        V1["人类视频：手-物检测器找首个手-物接触帧 Fj<br/>得手/物体框 Bh、Bo"] --> V2["皮肤分割取 Bh 与 Bo 交集区域<br/>随机采样接触点 P"]
+        V2 --> V3["在 Fj 附近窗口 W 内用 Laplacian 选最清晰且物体无遮挡的帧 Fc<br/>homography 把 P 映射到 Fc"]
+        V3 --> V4["按 Bo 裁剪得物体图 Io，存入 affordance memory：(Io, P)"]
+    end
+    NEW["新物体图像 It"] --> R1["§3.2 langsam 裁剪目标物体<br/>图像编码器 (CLIP) 特征 + 余弦相似度检索"]
+    V4 --> R1
+    R1 --> R2["见过的类别：在同类中检索；新类别：在整个 memory 中检索"]
+    R2 --> SC["§3.3 语义对应：扩散模型特征 (DIFT) 把检索物体的接触点映射到 It<br/>对源图做 8 种旋转/翻转，取相似度最高者"]
+    SC --> CP["It 上的接触点"]
+    CP --> G["§3.4 AnyGrasp 对场景点云给出 7-DOF 抓取候选<br/>选离接触点最近的候选作为抓取位姿，驱动机器人"]
+```
+
+图依据：论文 §3.1-3.4 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondenc
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2401.07487)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2401.07487)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondenc
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2401.07487>
+- [arXiv PDF](https://arxiv.org/pdf/2401.07487)：已通读方法部分（实验与附录以略读为准）：§3 方法全部（3.1-3.4）
 
 ## 推荐继续阅读
 

@@ -40,6 +40,25 @@ Relationship Oriented Affordance Learning through Manipulation Graph Constructio
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["RGB 图像：包含多个物体的场景"] --> RPN["RPN 生成类别无关的物体候选<br/>（objectness 二分类，不预测类别）"]
+    RPN --> FC["两两配对，构建有向全连接图<br/>每条边是一个候选 (subject, relationship, object)"]
+    FC --> SG["取 subject 与 object 的 union box 作为 subgraph<br/>subgraph clustering 合并相同三元组的子图"]
+    SG --> FT["全连接层 / 2D 卷积<br/>得到物体特征 o 与 subgraph 特征图 S"]
+    FT --> CTX["Context 模块（注意力）<br/>用物体特征加权聚合到 subgraph：Ŝ = S + α·Ô"]
+    FT --> ATT["Attribute 模块：多标签预测 R=6 类属性<br/>仅训练时作辅助任务，推理时丢弃"]
+    ATT -.-> FT
+    CTX --> PRED["p_ij = FC(ReLU(o_i + Ŝ + o_j))<br/>R 类操作关系 + 背景"]
+    PRED --> NMS["Top-1 关系 + 三元组得分 + triplet NMS"]
+    NMS --> MRG["操作关系图 MRG<br/>节点=物体，边=关系，三元组得分为边权"]
+    MRG --> ROB["机器人执行：AffordanceNet 分割 subject 与 object<br/>取 grasp point 与 effect point，运动基元执行"]
+```
+
+图依据：论文 §IV（AR-Net 流程概述与 A–D 小节）/ Fig.3，§V-C（物理操作实验中的 grasp / effect point 计算，Fig.6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Relationship Oriented Affordance Learning through Manipulation Graph Constructio
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2110.14137)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2110.14137)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ Relationship Oriented Affordance Learning through Manipulation Graph Constructio
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2110.14137>
+- [arXiv PDF](https://arxiv.org/pdf/2110.14137)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III MRG 定义、§IV AR-Net（A–D）、§V 实验设置（含 SMRD 数据集与物理操作实验设置）
 
 ## 推荐继续阅读
 

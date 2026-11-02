@@ -40,6 +40,27 @@ Recognizing Object Affordances to Support Scene Reasoning for Manipulation Tasks
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["RGB-D 图像对"] --> BB["Faster R-CNN 式主干 (VGG16)\n保留 RPN, 提出类别无关的候选区域"]
+  BB --> DET["检测分支\nobjectness + 边框回归"]
+  BB --> ATT["训练期辅助任务: 属性预测\n预测区域内存在哪些 affordance\n(推理时丢弃)"]
+  BB --> SEG["分割分支: 反卷积上采样到 30×30 特征图"]
+  SEG --> SA["区域自注意力 (K/Q/V)\n捕获区域内长程上下文"]
+  SA --> DC["两次反卷积得到 244×244\n逐像素 affordance 置信度图"]
+  DET --> OUT["输出: 边框 + 多层 affordance 掩码"]
+  DC --> OUT
+  OUT --> INIT["由 objectness 与对应 affordance 构成 PDDL 初始状态"]
+  OD["可选: 通用预训练物体检测器\n用于在相似功能工具中选择"] --> INIT
+  INIT --> PL["PDDL 问题 + 目标状态\nFast Downward 求解动作序列"]
+  SK["状态保持器 state keeper\n保存上一轮规划的终止状态"] <--> PL
+  PL --> ACT["机械臂执行原子动作"]
+```
+
+图依据：论文 Approach 节（Fig.3 AffContext 网络结构、Fig.4 注意力模块、Regional Attention and Attribute Embedding、Planning with PDDL）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ Recognizing Object Affordances to Support Scene Reasoning for Manipulation Tasks
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/1909.05770)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/1909.05770)。
 
 ## 评测与指标
 
@@ -88,6 +109,7 @@ Recognizing Object Affordances to Support Scene Reasoning for Manipulation Tasks
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/1909.05770>
+- [arXiv PDF](https://arxiv.org/pdf/1909.05770)：已通读方法部分（实验与附录以略读为准）：Approach（网络结构、辅助属性任务、区域注意力、PDDL 规划与状态保持器）、Vision Evaluation 的数据集与训练设定
 
 ## 推荐继续阅读
 

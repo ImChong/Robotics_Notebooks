@@ -31,6 +31,23 @@ summary: "ContinuousCloth（arXiv:2610.14342）：在神经轨迹模型中嵌入
 
 摘要指出，经典的时间步进模拟器只在离散积分网格上给出轨迹；离散时间的预测模型也难以描述不同时间间隔下的布料运动。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入条件：初始状态、边界条件（固定/移动顶点）、物理参数 θ"] --> FE["时空坐标 (t, s) → 多尺度 Fourier 特征<br/>MFPSG：变长时间窗 + 固定数量时间配点"]
+    FE --> NF["神经场 X_ϕ(t, s) → 顶点 3D 位置<br/>（MLP 或 Transformer 骨干）"]
+    NF --> AD["对 t 自动微分 → 速度、加速度"]
+    AD --> RES["弹簧–质点 ODE 残差：m·ẍ − F(X, Ẋ; θ)<br/>（结构/剪切/弯曲弹簧 + 阻尼 + 重力/全局阻尼）"]
+    RES --> LOSS["总损失 = λphys·物理残差 + λbc·边界 + λic·初始条件 + λdata·数据"]
+    OBS["稀疏带噪观测（可选）"] -.-> LOSS
+    LOSS -->|"更新 ϕ（估计参数时同时更新 θ）"| NF
+    NF --> Q["训练后：任意时刻 t 单次前向查询轨迹"]
+    Q --> APP["下游：纯物理前向仿真 / 轨迹插值 / 物理参数估计"]
+```
+
+图依据：论文 §3（含 §3.1–3.3）与 Fig. 2；下游三类用途依据 §4 开头与 Fig. 2。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -98,6 +115,7 @@ summary: "ContinuousCloth（arXiv:2610.14342）：在神经轨迹模型中嵌入
 
 - [论文归档](../../sources/papers/continuous-cloth-pinn_arxiv_2610_14342.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14342)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）、§4 实验设定（4.1 至 4.2 数据采集）
 
 ## 推荐继续阅读
 

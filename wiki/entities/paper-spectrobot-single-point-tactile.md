@@ -42,6 +42,21 @@ summary: "SpectRobot（arXiv:2609.24621）：把高带宽单点传感信号转�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-18）。公众号给的 GitHub 为组织主页（本环境访问返回 403，无法核实具体仓库）；项目页为 Hugging Face 个人主页，未见具体项目链接。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["单点触觉传感器 (装在夹爪上部, 与接触点机械耦合)"] --> ACQ["高带宽采集 (Dewesoft + openDAQ)<br/>最高 200 kS/s, 约 100 kHz 奈奎斯特带宽"]
+    ACQ --> SPEC["每 33 ms 一个窗口 -> 功率谱密度谱图<br/>Tukey 窗, 50% 重叠, 线性频率轴<br/>224x224 灰度图 (不保留原始时域信号)"]
+    CAM["相机图像"] --> RES["ResNet-18 (与 transformer 联合训练)"]
+    SPEC -->|"与相机流同样的输入方式"| RES
+    RES --> ACT["ACT (Action Chunking with Transformers)"]
+    ACT --> ROB["SO-101 机械臂 动作指令 (约每 33 ms)"]
+    DEMO["真机 leader-follower 遥操作示范<br/>每数据集 40 episode, LeRobot 训练 10 万步"] -.-> ACT
+```
+
+图依据：论文 §II-A / §II-B / §II-D / Fig.1(b)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +98,7 @@ summary: "SpectRobot（arXiv:2609.24621）：把高带宽单点传感信号转�
 - [spectrobot_single_point_tactile_arxiv_2609_24621.md](../../sources/papers/spectrobot_single_point_tactile_arxiv_2609_24621.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24621](https://arxiv.org/abs/2609.24621)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24621)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II Material and Methods（II-A–II-D）、§III-A 触觉分拣任务；其余结果略读
 
 ## 推荐继续阅读
 

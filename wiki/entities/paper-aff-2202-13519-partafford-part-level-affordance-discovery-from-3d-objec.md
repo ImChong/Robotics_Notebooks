@@ -40,6 +40,33 @@ PartAfford: Part-level Affordance Discovery from 3D Objects——在清单中归
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["输入：3D 物体体素 V（32^3）<br/>+ 物体级 affordance 标签集合 A"] --> ENC
+    subgraph ENC["Abstraction Encoder（无监督抽象）"]
+        F["特征提取：5 层 3D CNN<br/>+ 绝对位置编码"] --> SA["3D Slot Attention<br/>M 个 slot，GRU 迭代 T 次，slot 竞争覆盖输入几何"]
+    end
+    SA --> DEC
+    subgraph DEC["Affordance Decoder（三分支，参数跨 slot 共享）"]
+        R["3D Part Reconstruction<br/>3 层转置卷积 + MLP，输出每 slot 体素值与 mask"]
+        P["Affordance Prediction<br/>两层 MLP，每 slot 预测一个 affordance 标签"]
+        C["Cuboidal Primitive Regularization<br/>每 slot 预测长方体：尺度向量 s + 四元数 r"]
+    end
+    R --> CMP["softmax 归一化 mask，加权求和<br/>合成完整 3D 物体 V̂"]
+    CMP --> LR["L_recon：BCE(V, V̂)，自监督分部"]
+    P --> HM["匈牙利匹配：预测集合 vs 标签集合 A<br/>L_pred（集合监督，无逐体素标签）"]
+    C --> LC["L_cuboid：长方体拟合重建部件"]
+    R --> LC
+    LR --> TOT["L_total = λ_recon L_recon + λ_pred L_pred + λ_cuboid L_cuboid"]
+    HM --> TOT
+    LC --> TOT
+    SA -.-> OUT["输出：每个 slot 对应一个部件及其 affordance"]
+```
+
+图依据：论文 §4 Method / Fig.2（编码器 §4.1，解码器三分支 §4.2，总损失 §4.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +79,7 @@ PartAfford: Part-level Affordance Discovery from 3D Objects——在清单中归
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2202.13519)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2202.13519)。
 
 ## 评测与指标
 
@@ -89,6 +116,7 @@ PartAfford: Part-level Affordance Discovery from 3D Objects——在清单中归
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2202.13519>
+- [arXiv PDF](https://arxiv.org/pdf/2202.13519)：已通读方法部分（实验与附录以略读为准）：§3 Task Definition、§4 Method（4.1–4.3）、§5 Part Affordance Dataset（略读）
 
 ## 推荐继续阅读
 

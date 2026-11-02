@@ -40,6 +40,32 @@ INTRA: Interaction Relationship-aware Weakly Supervised Affordance Grounding—�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  EXO["训练输入：仅 exocentric 图像 + 交互标签"]
+  SYN["文本同义词增强：LLM 为每个交互生成 k_s 个同义词，剔除与其他交互标签重叠者，随机替换条件文本"]
+  IE["图像编码器 DINOv2 → F_exo"]
+  TE["文本编码器 ALBEF → F_text，类别 token 经线性层对齐"]
+  MAP["Affordance map 生成模块：拼接后过 Transformer Encoder，图像部分经卷积 + min-max 归一化得 M_aff"]
+  FEAT["用 M_aff 对 F_exo 加权池化得 f_exo，MLP 投影归一化得 z_exo"]
+  LLMR["LLM 三步 CoT 判断交互对是否作用于同一物体部件，得到交互关系图 R"]
+  LOSS["总损失：L_inter（按 R 的对比损失）+ λ_obj · L_obj（物体方差缓解损失）"]
+  INF["推理：M_aff 直接作为热力图输出"]
+  EXO --> IE
+  EXO --> SYN
+  SYN --> TE
+  IE --> MAP
+  TE --> MAP
+  MAP --> FEAT
+  FEAT --> LOSS
+  LLMR --> LOSS
+  MAP --> INF
+```
+
+图依据：论文 §3、§3.1、§3.2 与 Fig. 2(b)、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +77,7 @@ INTRA: Interaction Relationship-aware Weakly Supervised Affordance Grounding—�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2409.06210)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2409.06210)。
 
 ## 评测与指标
 
@@ -88,6 +114,7 @@ INTRA: Interaction Relationship-aware Weakly Supervised Affordance Grounding—�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2409.06210>
+- [arXiv PDF](https://arxiv.org/pdf/2409.06210)：已通读方法部分（实验与附录以略读为准）：§2.2 相关工作、§3 方法（3.1、3.2）
 
 ## 推荐继续阅读
 

@@ -39,6 +39,26 @@ ASENA 的核心不是再训练一个更大的机器人模型，而是把机器�
 
 这让导航从孤立的“到达目标”变成搜索、查看、空间推理、抓取、携物和交接等任务的一部分。它也保留了独立视觉导航策略，让 Agent 在需要时把局部移动交给策略执行。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["任务 + 上下文"] --> CA["Coding agent (模型权重固定)<br/>写 / 运行 / 检查程序"]
+    CA --> WS["持久工作区 W_k = (笔记 N_k, 可执行技能 S_k)"]
+    CA --> TOOLS["感知与可调用工具"]
+    TOOLS --> NAV["导航: LiDAR 占据图几何规划<br/>或 ASENA-VLN (可选)"]
+    TOOLS --> MAN["操作: SAM 2 掩膜 + 深度 -> 抓取候选 (可补 GraspGenX)<br/>IK + 运动规划 + 场景检查"]
+    NAV --> EXE["机器人执行 (Unitree G1)<br/>SONIC 全身控制 / YAM 夹爪 / 语音"]
+    MAN --> EXE
+    EXE --> REC["MCAP 执行记录<br/>状态 + 动作 + 反馈 + 代码 + 可视化"]
+    REC -->|"回放并检查"| CA
+    REC --> IMP["improver (权重固定)<br/>W_k+1 = I(W_k, 轨迹, 反馈)"]
+    IMP --> WS
+    VLN["ASENA-VLN (Qwen3-VL-4B)<br/>≤8 帧前向 RGB + JSON 指令 -> ≤8 个机身系 waypoint"] -.-> NAV
+```
+
+图依据：论文 §3 / §3.1–3.3 / Fig.2、Fig.3
+
 ## 方法栈：系统结构
 
 1. **读取现场信息。** Agent 通过统一 robot harness 获取 360° 与 RGB-D 相机、LiDAR、机身状态等观测，并可执行几何计算。
@@ -124,6 +144,7 @@ ASENA-VLN 基于 Qwen3-VL-4B-Instruct，读取最多 8 帧前向 RGB 历史与�
 - [ASENA 论文 v2 摘录](../../sources/papers/asena_arxiv_2609_39207.md)
 - [NVIDIA GEAR ASENA 项目页核查](../../sources/sites/asena-nvidia-gear.md)
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.39207)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method（3.1–3.3）；§4 实验以略读为准
 
 ## 推荐继续阅读
 

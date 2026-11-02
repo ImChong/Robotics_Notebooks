@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-NaturalVLM: Leveraging Fine-grained Natural Language for Affordance-Guided Visual Manipulation——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+NaturalVLM: Leveraging Fine-grained Natural Language for Affordance-Guided Visual Manipulation——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,20 @@ NaturalVLM: Leveraging Fine-grained Natural Language for Affordance-Guided Visua
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["输入（每一步）：场景点云 + agent 状态 (4-DoF)<br/>高层指令 + 细粒度指令序列"] --> IS["InstrSel：CLIP 文本特征 + PointNet++ 全局特征 + 状态 MLP<br/>算相似度 → softmax 加权，选出当前最相关的细粒度指令"]
+    IS --> AFF["AFF-NET (MLP)：逐点 affordance 得分，形成 affordance map<br/>过滤低分区域，选定接触点 p'"]
+    AFF --> ACT["ACT-NET (MLP 编码器 + 4 个解码器)<br/>预测位移 a_move、旋转 a_rot、夹爪开合 a_open、碰撞状态 a_collide"]
+    ACT --> OUT["夹爪动作 a_pose = p' + a_move 与 a_rot 组合，加上 a_open / a_collide"]
+    PB["可选 perception-prompt 模块<br/>按名词从 prompt 库检索 → 增强 AFF-NET"] -.-> AFF
+    AB["可选 action-prompt 模块<br/>按动词从 prompt 库检索 → 增强 ACT-NET"] -.-> ACT
+```
+
+图依据：论文 §IV-A~E / Fig.3（整体框架；端到端训练，prompt 模块可选）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +65,7 @@ NaturalVLM: Leveraging Fine-grained Natural Language for Affordance-Guided Visua
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2403.08355)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2403.08355)。
 
 ## 评测与指标
 
@@ -88,6 +102,7 @@ NaturalVLM: Leveraging Fine-grained Natural Language for Affordance-Guided Visua
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2403.08355>
+- [arXiv PDF](https://arxiv.org/pdf/2403.08355)：已通读方法部分（实验与附录以略读为准）：§III 基准构建与细粒度指令标注、§IV 方法全部（任务形式、框架、InstrSel、Affordance/Actor 网络、Prompt 模块与损失）
 
 ## 推荐继续阅读
 

@@ -40,6 +40,32 @@ O2O-Afford: Annotation-Free Large-Scale Object-Object Affordance Learning——�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["训练数据：仿真交互，无标注"]
+        T["SAPIEN + ShapeNet / PartNet<br/>随机生成场景与 acting object<br/>四类任务：placement / fitting / pushing / stacking"]
+        T --> TR["在 applicable 且 possible 的点 p 上<br/>执行硬编码短程直线轨迹 τ_T(p)"]
+        TR --> OUT["按任务指标判定成功 / 失败<br/>作为逐点监督标签"]
+    end
+    subgraph NET["网络"]
+        S["场景部分点云 S"] --> ES["Enc_scene（PointNet++）→ 场景逐点特征 F_S"]
+        O["完整 acting object 点云 O"] --> EO["Enc_object（PointNet++）→ 物体逐点特征 F_O 与全局特征 F_g"]
+        ES --> FPS["FPS 采样 k 个场景 seed 点"]
+        FPS --> KER["Object-kernel 点卷积：把 O 移到每个 seed 点<br/>逆距离加权插值查询场景特征 F_(S|O)<br/>拼接 F_O 后经 PointNet（MLP + max-pool）得 seed 特征"]
+        EO --> KER
+        KER --> DEC["Dec_critic（MLP + Sigmoid）<br/>融合 seed 卷积特征、局部场景特征、全局物体特征"]
+        EO --> DEC
+        DEC --> INTERP["逆距离加权插值回全部场景点"]
+        INTERP --> A["逐点 affordance 热力图 A_scene"]
+    end
+    OUT --> LOSS["二值交叉熵损失，端到端训练<br/>每个任务单独训练网络"]
+    A --> LOSS
+```
+
+图依据：论文 §4 Task Definition and Data Generation（4.1–4.2）、§5 Method for Affordance Prediction / Fig.3（网络 §5.1，训练与损失 §5.2）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +77,7 @@ O2O-Afford: Annotation-Free Large-Scale Object-Object Affordance Learning——�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2106.15087)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2106.15087)。
 
 ## 评测与指标
 
@@ -88,6 +114,7 @@ O2O-Afford: Annotation-Free Large-Scale Object-Object Affordance Learning——�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2106.15087>
+- [arXiv PDF](https://arxiv.org/pdf/2106.15087)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Problem Formulation、§4 Task Definition and Data Generation、§5 Method（5.1–5.2）、§6 实验设置（略读）
 
 ## 推荐继续阅读
 

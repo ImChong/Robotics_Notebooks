@@ -45,6 +45,25 @@ summary: "Residual Compliant Policy（arXiv:2610.14035）：遥操作中显式�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["Haption 触觉遥操作 + 数字孪生<br/>（Newton 仿真同步真机，MuJoCo 预测 + FoundationPose 视觉校正）"] --> DH["少量人类示教 D_h<br/>记录末端位姿、物体位姿、参考位姿 x_ref、刚度 k"]
+    DH --> AUG["示教增广：按刚度切分自由空间 / 接触段<br/>自由空间：Laplacian 轨迹编辑 + SLERP<br/>接触段：力调制或 CEM 优化"]
+    AUG --> DA["增广数据集 D_a"]
+    DA --> BASE["柔顺基策略 π_θ（多段 consistency flow matching，1-D U-Net）<br/>输出参考位姿块 x_ref 与刚度模式 k ∈ {k_l, k_h}"]
+    BASE -. 冻结 .-> RES["残差策略 π_ϕ（仿真中 PPO 训练）<br/>只输出 3D 位置偏移 δ"]
+    RES --> CMD["组合指令：p_ref + δ，姿态与刚度沿用基策略"]
+    BASE --> CMD
+    CMD --> ADM["Cartesian 导纳控制器<br/>M·ẍ + D·ẋ + K(x − x_ref) = F_ext"]
+    ADM --> ROBOT["Franka FR3 末端执行"]
+    ROBOT -- 物体位姿 + 末端位姿 + 滤波力反馈 --> BASE
+    ROBOT -- 相对物体编码的观测 --> RES
+```
+
+图依据：论文 §III-A 至 §III-E（式 1–4）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +106,7 @@ summary: "Residual Compliant Policy（arXiv:2610.14035）：遥操作中显式�
 - [residual_compliant_policy_arxiv_2610_14035.md](../../sources/papers/residual_compliant_policy_arxiv_2610_14035.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14035](https://arxiv.org/abs/2610.14035)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14035)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III Method（A–E）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

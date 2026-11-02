@@ -43,6 +43,26 @@ summary: "MIGU（arXiv:2609.24995）：融合语言语义与指向手势的三�
 - 开源结论：**待发布**（步骤 2.5，2026-10-18）。项目页 HTTP 200，含 coming soon 字样，未列 GitHub。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多模态指令 I=(L, O)<br/>语言 L (Whisper 转写) + RGB-D 含指向手势 (MediaPipe Hands 关键帧)"] --> GEO["几何不确定性建模<br/>眼-指尖几何 + 视线方向/深度噪声 -> 切平面高斯<br/>每个 3D 候选点的手势似然 p(g_obs | x_i)"]
+    IN --> VLM["VLM 识别候选 bounding box<br/>+ 语义置信度 c_h"]
+    VLM --> SEG["类无关分割模型 -> mask M_h<br/>RGB-D 对应出 3D 点集 X_h"]
+    GEO --> FUSE["Bayes 风格融合<br/>q_h(x_i) ∝ p(g_obs|x_i) · c_h · I[x_i∈X_h]<br/>对每个假设 max pooling 并归一化 -> 信念 b(h)"]
+    SEG --> FUSE
+    FUSE --> PLAN["单步 belief-space 决策 (one-step POMDP)<br/>V_exec vs 最优属性二值提问 V_query"]
+    PLAN -->|"V_query > V_exec"| ASK["向用户提出一次属性澄清问题<br/>(颜色 / 大小 / 形状 / 相对位置)"]
+    ASK -->|"yes / no -> 后验信念"| EXEC
+    PLAN -->|"否则"| EXEC["执行 MAP 假设 h*"]
+    EXEC --> G["grounded 物体 / 区域 固定为下游规划目标"]
+    G --> MM["移动操作: 逆可达图 + cuRoboV2 IK 选基座位姿<br/>ContactGraspNet 抓取 + VAMP 臂运动规划"]
+    G --> TAMP["桌面 TAMP: PDDLStream<br/>目标如 on(og, o) / near(o, rg)"]
+```
+
+图依据：论文 §IV-A–E / Fig.2、Fig.6
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "MIGU（arXiv:2609.24995）：融合语言语义与指向手势的三�
 - [migu_multimodal_instruction_grounding_arxiv_2609_24995.md](../../sources/papers/migu_multimodal_instruction_grounding_arxiv_2609_24995.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24995](https://arxiv.org/abs/2609.24995)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24995)：已通读方法部分（实验与附录以略读为准）：§III 问题形式化、§IV Methods（IV-A–IV-E）；§V 实验略读
 
 ## 推荐继续阅读
 

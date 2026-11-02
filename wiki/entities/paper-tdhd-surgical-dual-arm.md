@@ -43,6 +43,26 @@ summary: "双臂手术 VLA 的轨迹分歧视界决策：生成两份轻微扰�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角图像 + 语言指令 + 机械臂本体状态"] --> B["VLM Transformer 融合视觉/语言/状态 token，得到前缀 KV Cache（每个控制周期算一次）"]
+    B --> C["采样主噪声 z1 与扰动噪声 z2 = z1 + εη"]
+    C --> D["同一 flow matching 速度场 vθ 生成 A(1) 与 A(2)"]
+    D --> E["逐步计算分歧 δi = ‖A(1)_i − A(2)_i‖2"]
+    E --> F{"Abs：δi > θabs ？或 Ratio：δi/(δ(i-1)+ξ) > r_thresh ？"}
+    F -->|"都未触发"| G["ŝ = s_max"]
+    F -->|"最早触发步"| H["ŝ = min(i_abs, i_rat)"]
+    G --> I["s* = max(s_min, min(ŝ, s_max))"]
+    H --> I
+    I --> J["仅执行 A(1) 的前 s* 步"]
+    J --> K["获取新观测并重新预测动作块（重规划）"]
+    K --> B
+```
+
+图依据：论文 §III.C / Fig. 1、式 (2)–(6)。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -91,6 +111,7 @@ summary: "双臂手术 VLA 的轨迹分歧视界决策：生成两份轻微扰�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.09125](https://arxiv.org/abs/2608.09125)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09125)：已通读方法部分（实验与附录以略读为准）：§III 方法（A–C）、§IV.A 实验设置；§IV.B–E 实验与消融略读
 
 ## 推荐继续阅读
 

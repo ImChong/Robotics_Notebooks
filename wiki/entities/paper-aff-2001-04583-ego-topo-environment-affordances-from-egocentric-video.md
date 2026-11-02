@@ -40,6 +40,21 @@ Ego-Topo: Environment Affordances from Egocentric Video——在清单中归入 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["第一人称长视频\n(EPIC-Kitchens / EGTEA+)"] --> L["3.1 区域定位网络 L\nSiamese ResNet-18 + 5 层 MLP\n预测两帧是否属于同一 zone"]
+  L --> G["3.2 构建拓扑 affordance 图 (Algorithm 1)\n逐帧与已有节点比较相似度\n合并进节点 / 新建节点, 并连边"]
+  G --> LK["跨视频、跨环境链接\n按节点动作/物体分布的 KL 相似度\n层次聚类得到合并后的图"]
+  G --> AF
+  LK --> AF["3.3 环境 affordance 学习\n节点标签 = 各次访问中交互的并集\n多标签分类 (2 层 MLP + 线性 + sigmoid, BCE)"]
+  G --> AN
+  LK --> AN["3.4 长时程动作预测\n节点特征经 GCN 融合邻居信息\n平均后线性分类预测未来动作"]
+```
+
+图依据：论文 §3（Ego-Topo Approach，§3.1–3.4，Fig.1 / Fig.4、Algorithm 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +66,7 @@ Ego-Topo: Environment Affordances from Egocentric Video——在清单中归入 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2001.04583)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，实验数字仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/2001.04583)。
 
 ## 评测与指标
 
@@ -88,6 +103,7 @@ Ego-Topo: Environment Affordances from Egocentric Video——在清单中归入 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2001.04583>
+- [arXiv PDF](https://arxiv.org/pdf/2001.04583)：已通读方法部分（实验与附录以略读为准）：§3.1 区域发现、§3.2 拓扑图构建、§3.3 环境 affordance 推断、§3.4 长视频动作预测、§4 数据集与基线设定
 
 ## 推荐继续阅读
 

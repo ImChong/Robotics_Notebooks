@@ -43,6 +43,26 @@ summary: "Touch2Robot（arXiv:2609.24660）：把手套触觉、人体动作和�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-18）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["人类示范 D_H: 手部动作 q + 触觉 τ + 物体 6D 位姿 x"] --> TP["语义接触区域 (指尖/掌/侧面)<br/>二值接触向量 -> tactile preference"]
+    D --> REF["人手动作转为机器人侧参考 q_ref"]
+    TP --> RL["阶段一: 物体专属 RL teacher (MTBench 共享多轨迹)<br/>q_tar = q_ref + 残差动作 a_R"]
+    REF --> RL
+    RL --> RW["奖励 = 物体运动跟踪 + 触觉偏好(接触状态+接触变化) + 残差动作惩罚"]
+    CUR["guided-to-free 动力学课程<br/>自由动力学前缀 T_f 逐步增大至 T"] --> RL
+    RL -->|"teacher rollouts"| DIS["阶段二: 统一 retargeter 蒸馏<br/>PointNet 物体几何特征 g_o + 人类历史 h_t -> 因果 Transformer"]
+    DIS --> OUT["预测机器人目标关节 q_tar + 接触状态 c_R"]
+    OUT --> SIM["阶段三: 仿真重建机器人手与接触<br/>映射到目标手语义触觉区域"]
+    SIM --> VR["VR 回显机器人手动作 + 接触区域 (30 Hz, 端到端 122 ms)"]
+    VR -->|"示范者在线调整动作"| D
+    D --> VIS["SAM + ProPainter 去除人手<br/>渲染重定向后的机器人手 -> robot-ready 视觉观测"]
+```
+
+图依据：论文 §III / §IV-C / Fig.2、Fig.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "Touch2Robot（arXiv:2609.24660）：把手套触觉、人体动作和�
 - [touch2robot_arxiv_2609_24660.md](../../sources/papers/touch2robot_arxiv_2609_24660.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24660](https://arxiv.org/abs/2609.24660)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24660)：已通读方法部分（实验与附录以略读为准）：§III Method（III-A、III-B）、§IV-C 闭环示范采集、§IV-A 实验设置与 Table I/II 略读
 
 ## 推荐继续阅读
 

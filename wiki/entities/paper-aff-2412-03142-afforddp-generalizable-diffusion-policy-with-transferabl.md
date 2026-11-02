@@ -40,6 +40,33 @@ AffordDP: Generalizable Diffusion Policy with Transferable Affordance——在�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph MEM["Affordance memory M"]
+        DEMO["演示：GroundedSAM 裁剪物体 + CLIP 图像特征 z<br/>记录接触点 c（静态）与接触后末端轨迹 τ（动态）<br/>及点云 P"]
+    end
+    TGT["目标物体图像 + 任务 T"] --> RET["在同任务子集内按 CLIP 特征余弦相似度检索最相似源物体"]
+    DEMO --> RET
+    RET --> STA["静态 affordance 迁移<br/>SD-DINOv2 逐像素特征匹配（argmax）→ 目标 2D 接触点 → 反投影为 3D 接触点 c3D"]
+    STA --> DYN["动态 affordance 迁移<br/>平移 t = 源/目标 3D 接触点之差<br/>Point-SAM 以 c3D 为 prompt 分割可操作部件 → ICP 配准得旋转 R"]
+    DYN --> TAU["目标轨迹 τT = R·τS + t"]
+    subgraph POL["Affordance 引导的扩散策略（基于 DDIM）"]
+        OT["场景点云 Ot：裁剪降采样 + MLP"] --> FT
+        ST["本体感知 St：MLP"] --> FT
+        STA --> FC["接触点 c：MLP"]
+        TAU --> FTR["轨迹 τ：带 CLS token 的 Transformer 编码器"]
+        FC --> FT["条件特征 ft = fO, fS, fΦ"]
+        FTR --> FT
+        FT --> EPS["噪声预测网络 εθ 迭代去噪"]
+        EPS --> ACT["动作 a0"]
+        GUIDE["推理时自适应 affordance 引导<br/>末端位置与 c3D 距离小于阈值 θ 时才施加梯度修正"] --> EPS
+    end
+```
+
+图依据：论文 §3（Fig.3，affordance 记忆检索与静/动态迁移）、§4.1-4.3（条件扩散模型与 affordance 引导采样）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +78,7 @@ AffordDP: Generalizable Diffusion Policy with Transferable Affordance——在�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2412.03142)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2412.03142)。
 
 ## 评测与指标
 
@@ -88,6 +115,7 @@ AffordDP: Generalizable Diffusion Policy with Transferable Affordance——在�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2412.03142>
+- [arXiv PDF](https://arxiv.org/pdf/2412.03142)：已通读方法部分（实验与附录以略读为准）：§3.1-3.3（Affordance memory、静态/动态迁移）、§4.1-4.3（条件、训练、引导采样）；§5 实验与附录略读
 
 ## 推荐继续阅读
 

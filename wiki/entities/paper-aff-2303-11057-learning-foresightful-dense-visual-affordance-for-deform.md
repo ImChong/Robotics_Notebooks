@@ -40,6 +40,26 @@ Learning Foresightful Dense Visual Affordance for Deformable Object Manipulation
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DC["Fold to Unfold 多阶段数据采集（由终态向复杂态）"]
+        D1["阶段 i 的状态 o_i：选 p_pick、p_place 得 o_i+1"] --> D2["执行反向动作（拾取 p_place、放到 p_pick）得 o_i'"]
+        D2 --> D3{"o_i' 与 o_i 相似？"}
+        D3 -- 是 --> D4["o_i+1 作为阶段 i+1 的起始状态，并采样多样动作及其结果"]
+    end
+    subgraph TRN["逐阶段监督学习（与推理顺序相反）"]
+        T1["第 1 阶段：以直接距离 1 - dist(o', T) 监督放置 affordance"] --> T2["第 i 阶段：以 α·value + β·(1 - dist) 监督，value 来自上一阶段已训练的 M_pick"]
+        T2 --> T3["每阶段先训练 M_place，再用其最大放置 affordance 监督 M_pick"]
+        T3 --> T4["集成系统训练 IST：以 M_pick + M_place 为策略在线执行，同时更新两网络"]
+    end
+    D4 --> T1
+    T4 --> INF["推理：M_pick 选 affordance 最高的拾取点 → M_place 在该拾取点条件下选最高放置点 → 执行 pick-and-place"]
+```
+
+图依据：论文 §4（4.1–4.7）/ Fig.2、Fig.3、Fig.5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Learning Foresightful Dense Visual Affordance for Deformable Object Manipulation
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.11057)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.11057)。
 
 ## 评测与指标
 
@@ -88,6 +108,7 @@ Learning Foresightful Dense Visual Affordance for Deformable Object Manipulation
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2303.11057>
+- [arXiv PDF](https://arxiv.org/pdf/2303.11057)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1–4.7）；§1–3 与实验部分未精读
 
 ## 推荐继续阅读
 

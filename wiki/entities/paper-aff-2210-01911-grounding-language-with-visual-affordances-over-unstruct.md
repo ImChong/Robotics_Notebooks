@@ -40,6 +40,27 @@ Grounding Language with Visual Affordances over Unstructured Data——在清单
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PLAY["无结构遥操作 play 数据（&lt;1% 序列带语言标注）"] --> EXT["以夹爪闭合信号为启发式：把末端位置投影到相机图像，得到像素标注 + 语言指令"]
+    EXT --> AFF["训练 affordance 模型 Fa(I,l)：U-Net 编码器-解码器，语言条件化"]
+    AFF --> HEAD1["视觉头：逐像素 afforded 热图 A"]
+    AFF --> HEAD2["深度头：预测高斯分布，采样得深度估计 d"]
+    IN["测试：静态相机图像 + 语言指令"] --> AFF
+    HEAD1 --> LOC["选取 afforded 像素，结合深度 d 得到 3D 目标位置"]
+    HEAD2 --> LOC
+    LOC --> SW{"末端投影像素与预测像素距离大于阈值？"}
+    SW -- 是 --> MOD["基于模型的规划 πmod 移动到预测位置"]
+    SW -- 否 --> FREE["语言条件模仿学习策略 πfree（HULC 基础，RGB 来自夹爪与静态相机）"]
+    MOD --> FREE
+    PLAY --> FREE
+    LLM["可选：LLM 把抽象指令分解为一串子任务指令"] --> IN
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.3（图中 LLM 到指令输入的箭头为按 §III-D 概述的归纳）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ Grounding Language with Visual Affordances over Unstructured Data——在清单
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2210.01911)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2210.01911)。
 
 ## 评测与指标
 
@@ -88,6 +109,7 @@ Grounding Language with Visual Affordances over Unstructured Data——在清单
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2210.01911>
+- [arXiv PDF](https://arxiv.org/pdf/2210.01911)：已通读方法部分（实验与附录以略读为准）：§III Method（A 从无结构数据提取 affordance、B 语言条件视觉 affordance 模型、C 低层策略、D LLM 指令分解）；§IV 实验略读
 
 ## 推荐继续阅读
 

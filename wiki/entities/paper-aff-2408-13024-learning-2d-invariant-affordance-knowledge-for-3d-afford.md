@@ -40,6 +40,43 @@ Learning 2D Invariant Affordance Knowledge for 3D Affordance Grounding——在�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMGS["n 张参考图像 I_1..I_n（同一 affordance 类别、外观各异）"]
+  PC["3D 点云 P_c，点云特征 P_in"]
+  subgraph IAM["IAM：不变 affordance 知识提取（多层迭代）"]
+    Q["可学习的 affordance query tokens：对图像特征做多头 cross-attention 更新"]
+    MLP["MLP 对齐聚合各图像的 query，得到 Q_f"]
+    FB["图像特征分支：以 Q_f 做 cross-attention + 多头 self-attention 更新"]
+    SIM["逐层对各图像特征施加相似度损失 L_Sim"]
+  end
+  DICT["最后一层 query 分支输出：Invariant Affordance Knowledge Dictionary"]
+  subgraph ADM["ADM：字典自适应融合"]
+    IQ["IQDCA：点云特征为 query，字典为 key/value，余弦相似度加权得 P_q"]
+    SW["self-weighted attention 丢弃无关 token 得 P_mix"]
+  end
+  FUSE["P_mix 与 P_in 结合得 P_out"]
+  DEC["Affordance decoder f_d → 点级 affordance 预测 P_pred"]
+  CLS["IAM 末层图像特征池化 → affordance 类别 logits ŷ（L_CE）"]
+  IMGS --> Q
+  Q --> MLP
+  MLP --> FB
+  FB --> Q
+  FB --> SIM
+  Q --> DICT
+  DICT --> IQ
+  PC --> IQ
+  IQ --> SW
+  SW --> FUSE
+  PC --> FUSE
+  FUSE --> DEC
+  FB --> CLS
+```
+
+图依据：论文 §3.1–3.4（Overview、IAM、ADM、Decoder and Loss）与 Fig. 2；P_in 的具体点云编码器未在所读段落中明确，图中不展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +88,7 @@ Learning 2D Invariant Affordance Knowledge for 3D Affordance Grounding——在�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2408.13024)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2408.13024)。
 
 ## 评测与指标
 
@@ -88,6 +125,7 @@ Learning 2D Invariant Affordance Knowledge for 3D Affordance Grounding——在�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2408.13024>
+- [arXiv PDF](https://arxiv.org/pdf/2408.13024)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法
 
 ## 推荐继续阅读
 

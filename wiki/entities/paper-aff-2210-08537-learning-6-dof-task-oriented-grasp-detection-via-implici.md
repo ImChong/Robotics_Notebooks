@@ -40,6 +40,26 @@ Learning 6-DoF Task-oriented Grasp Detection via Implicit Estimation and Visual 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["RGB-D 单视角深度图 → 2.5D 局部点云 P"] --> IEN["隐式估计网络：多 stream PointNet++（每个 stream 对应一个 affordance 标签），隐式最大似然估计生成 SE(3) 抓取"]
+    IEN --> GEN["多样抓取候选"]
+    GEN --> GEV["抓取评估网络：PointNet++ 输入物体点云 + 夹爪点云，输出成功概率"]
+    GEV --> GC["粗抓取候选 GC + 置信度 SO"]
+    CAM --> VAP["视觉 affordance 预测模块：PointNet + DGCNN(EdgeConv) + MHSA 嵌入，MLP 度量解码器"]
+    VAP --> HM["各任务的 3D affordance 热图 SM"]
+    HM --> TOP["取热图值最高的 100 个点"]
+    TOP --> SV["计算视觉引导分 SV：点到抓取中间控制点的最小 L2 距离"]
+    GC --> SV
+    GC --> FUSE["融合：SF = α1·SC + α2·SV（α 均取 0.5）"]
+    SV --> FUSE
+    FUSE --> GF["精抓取候选 GF → 变换到相机坐标系执行"]
+```
+
+图依据：论文 §III–§IV、§V-A（Fine Grasp Candidate Generation）/ Fig.1、Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Learning 6-DoF Task-oriented Grasp Detection via Implicit Estimation and Visual 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2210.08537)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2210.08537)。
 
 ## 评测与指标
 
@@ -88,6 +108,7 @@ Learning 6-DoF Task-oriented Grasp Detection via Implicit Estimation and Visual 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2210.08537>
+- [arXiv PDF](https://arxiv.org/pdf/2210.08537)：已通读方法部分（实验与附录以略读为准）：§III 问题定义、§IV 框架（数据集、抓取检测、视觉 affordance 模块、损失）、§V-A 实现细节与精抓取生成；§V 其余实验略读
 
 ## 推荐继续阅读
 

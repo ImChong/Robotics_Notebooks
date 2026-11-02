@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Open-Vocabulary Affordance Detection using Knowledge Distillation and Text-Point Correlation——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+Open-Vocabulary Affordance Detection using Knowledge Distillation and Text-Point Correlation——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial · Generalizable）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,28 @@ Open-Vocabulary Affordance Detection using Knowledge Distillation and Text-Point
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PC["输入：点云 C (n 个点)"] --> TE["教师网络（大数据集预训练，冻结）：逐点嵌入"]
+    PC --> ST["学生网络（轻量）：逐点嵌入 P1..Pn"]
+    TE --> GEO["FPS + KNN 构造局部区域，得点间相对关系 R"]
+    ST --> GEO
+    GEO --> L1["几何迁移损失 Lgeo_transfer：教师与学生的 R 做 MSE"]
+    TE --> CAT["Cross-Attention Projector → 教师注意力图 Ωte"]
+    ST --> CAS["Cross-Attention Projector → 学生注意力图 Ωst"]
+    CAT --> L2["注意力迁移损失 Latt_transfer = MSE(Ωte, Ωst)"]
+    CAS --> L2
+    LAB["开放词表 affordance 文本标签（如 take a seat, sittable, drivable）"] --> TXT["CLIP 文本编码器（冻结）：文本嵌入 T"]
+    ST --> COR["Text-Point Correlation：点与文本相关性 w(i,j)<br/>加权求和得文本注意力特征 T̂i"]
+    TXT --> COR
+    COR --> SM["逐点 softmax 得各 affordance 概率<br/>加权负对数似然损失"]
+    SM --> OUT["输出：逐点 affordance 预测"]
+```
+
+图依据：论文 §III-A~C / Fig.2（两个分支：point-point attention 知识蒸馏 + text-point correlation）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +73,7 @@ Open-Vocabulary Affordance Detection using Knowledge Distillation and Text-Point
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.10932)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2309.10932)。
 
 ## 评测与指标
 
@@ -88,6 +110,7 @@ Open-Vocabulary Affordance Detection using Knowledge Distillation and Text-Point
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2309.10932>
+- [arXiv PDF](https://arxiv.org/pdf/2309.10932)：已通读方法部分（实验与附录以略读为准）：§III 方法全部（A 概述、B 点-点注意力知识蒸馏、C 文本-点相关性）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

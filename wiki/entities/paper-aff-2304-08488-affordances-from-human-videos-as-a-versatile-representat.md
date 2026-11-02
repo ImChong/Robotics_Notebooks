@@ -40,6 +40,29 @@ Affordances from Human Videos as a Versatile Representation for Robotics——�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph EX["从人类第一视角视频提取标签"]
+        V["视频 V = {I_1..I_T}"] --> HD["手-物检测模型：每帧手框 h_t 与接触变量 o_t"]
+        HD --> TC["取首次接触时刻 t_contact"]
+        TC --> CP["肤色分割：手周边与接触物体框相交的点 → 拟合 GMM 得接触点 c"]
+        TC --> TJ["t_contact 之后的手框序列 → 后接触轨迹 τ"]
+        TJ --> HG["单应矩阵补偿相机自运动，映射回起始坐标系"]
+        CP --> HL["映射回人未入镜的首帧（消除人-机视觉域差）"]
+        HG --> HL
+    end
+    HL --> TR["训练 affordance 模型 f_θ：ResNet 编码 + 反卷积出 K 个热图（空间 softmax）+ Transformer 预测轨迹；局部裁剪作输入"]
+    TR --> AF["(c, τ) = f_θ(I_t)：接触点 + 后接触轨迹"]
+    AF --> P1["离线数据收集 → k-NN / 行为克隆"]
+    AF --> P2["无奖励探索：精英轨迹拟合分布 h 引导采样"]
+    AF --> P3["目标条件学习：以到目标图像的距离排序轨迹"]
+    AF --> P4["affordance 作为动作空间：GMM 得离散 (c, τ) 集合供搜索"]
+```
+
+图依据：论文 §3.1–3.3（Fig.2、Fig.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ Affordances from Human Videos as a Versatile Representation for Robotics——�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2304.08488)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2304.08488)。
 
 ## 评测与指标
 
@@ -88,6 +111,7 @@ Affordances from Human Videos as a Versatile Representation for Robotics——�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2304.08488>
+- [arXiv PDF](https://arxiv.org/pdf/2304.08488)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 可操作表示、3.2 从第一视角视频学习 affordance、3.3 四种机器人学习范式）、§4 实验设置开头
 
 ## 推荐继续阅读
 

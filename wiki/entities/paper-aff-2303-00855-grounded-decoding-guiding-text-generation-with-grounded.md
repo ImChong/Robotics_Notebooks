@@ -40,6 +40,23 @@ Grounded Decoding: Guiding Text Generation with Grounded Models for Embodied Age
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INS["高层语言指令 l + 已执行动作历史"] --> LLM["LLM：给出下一个 token 的概率 pLLM(wn | w1:n-1, l)"]
+    ST["环境状态 s（图像 / 本体感知 / 环境状态）"] --> GF["grounding 函数 pG(w1:n | s)：判断文本是否与物理状态相符（如 affordance）"]
+    LLM --> COMB["相乘打分，选 token：argmax pLLM x pG"]
+    GF --> COMB
+    COMB --> APP["将选中 token 追加到前缀，继续解码"]
+    APP --> TERM{"选中终止集合中的 token（如句号）？"}
+    TERM -- 否 --> LLM
+    TERM -- 是 --> POL["单步指令 w1:i 交给语言条件策略 pi(a | s, w1:i) 执行"]
+    POL --> ST
+```
+
+图依据：论文 §3.3 Algorithm 1 / Fig.2（箭头 策略→状态 为执行后状态更新的推断，原文未画箭头）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +68,7 @@ Grounded Decoding: Guiding Text Generation with Grounded Models for Embodied Age
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.00855)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2303.00855)。
 
 ## 评测与指标
 
@@ -88,6 +105,7 @@ Grounded Decoding: Guiding Text Generation with Grounded Models for Embodied Age
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2303.00855>
+- [arXiv PDF](https://arxiv.org/pdf/2303.00855)：已通读方法部分（实验与附录以略读为准）：§3 Grounded Decoding（3.1–3.5：公式推导、算法、grounding 函数获取方式、与 prompt 方法对比）；§4 实验仅略读
 
 ## 推荐继续阅读
 

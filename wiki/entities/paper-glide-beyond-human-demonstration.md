@@ -43,6 +43,26 @@ summary: "GLIDE（arXiv:2609.24996）：从任务描述和遥操作代码推断�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-18）。项目页 HTTP 200；页面仅含 nerfies 模板作者链接，无项目代码。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务描述 ℓ + 遥操作代码 T"] --> B["编码智能体 Write：推断失败点与状态信号，生成初始护栏 G0"]
+    B --> C["带护栏遥操作：人提出命令 a_t，护栏滤波得 ã_t 下发机器人"]
+    C --> D["记录头/腕视频 V_j、轨迹 τ_j（a_t, s_t, ã_t）"]
+    D --> E["GLIDE 诊断成败 y_j 与失败模式，存入 D(k)"]
+    E --> F{"k < K ?"}
+    F -->|是| G["Revise：据 ℓ、当前护栏、D(k) 修订护栏"]
+    G --> C
+    F -->|否| H["按成功率选 k*，得最优护栏 G*"]
+    H --> I["汇总示范池 D_pool，分成功集 / 混合质量集"]
+    I --> J["flow-matching 模仿学习训练策略"]
+    J --> K["部署：G* 过滤策略预测动作后执行"]
+    H -.-> K
+```
+
+图依据：论文 §3 / Fig. 2、Alg. 1、式 (1)–(6)。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,7 @@ summary: "GLIDE（arXiv:2609.24996）：从任务描述和遥操作代码推断�
 - [glide_beyond_human_demonstration_arxiv_2609_24996.md](../../sources/papers/glide_beyond_human_demonstration_arxiv_2609_24996.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24996](https://arxiv.org/abs/2609.24996)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24996)：已通读方法部分（实验与附录以略读为准）：§3 GLIDE（3.1–3.3、Alg. 1）、§4 实验设定
 
 ## 推荐继续阅读
 
