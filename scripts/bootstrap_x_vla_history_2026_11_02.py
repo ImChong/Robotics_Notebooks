@@ -12,6 +12,7 @@ from __future__ import annotations
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 TODAY = date.today().isoformat()
@@ -34,7 +35,7 @@ MODELS = [
     (10, "MolmoAct 2", "paper-molmoact2", False),
 ]
 
-NEW = {
+NEW: dict[str, dict[str, Any]] = {
     "paper-smolvla": dict(
         arxiv="2506.01844",
         name="SmolVLA",
