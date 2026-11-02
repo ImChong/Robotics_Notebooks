@@ -42,6 +42,26 @@ VLM-guided JEPA-style framework with dual temporal pathways.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  V["输入视频 v"] --> U["均匀采样 v_u\n大时间感受野"]
+  V --> DN["稠密采样 v_d\n短观测窗口"]
+  U --> VLM["VLM thinker：Qwen3-VL Thinking\n缓存中间表示"]
+  P["文本 prompt p\n通用摘要请求"] --> VLM
+  VLM --> PYR["金字塔表征提取\nViT 视觉 token + 若干 LM 层隐状态\n池化并投影为引导特征 φ(v_u)"]
+  DN --> VJ["V-JEPA 编码器\n过去 latent tokens F_past"]
+  VJ --> PRED["V-JEPA 预测器\n掩码 token Transformer"]
+  PYR -->|"FiLM 逐层调制 γ, β"| PRED
+  PRED --> FUT["未来 latent F_fut"]
+  FUT -.->|"超出窗口：递归 rollout"| PRED
+  FUT --> CAT["与过去 latent 拼接"]
+  CAT --> HEAD["任务头：轨迹回归"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ VLM-guided JEPA-style framework with dual temporal pathways.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.22281>
+- [arXiv PDF](https://arxiv.org/pdf/2603.22281)：已通读方法部分（实验与附录以略读为准）：Fig.1 图注、§3 方法（3.1–3.4）
 
 ## 推荐继续阅读
 

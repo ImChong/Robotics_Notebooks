@@ -42,6 +42,24 @@ We propose HALO-WA, a hybrid-attention latent-guided online reinforcement learni
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角观测 o、机器人状态 s_r、任务指令 p"] --> B["冻结的 WA 模型 π_WA<br/>输出参考动作块（长度 H）+ 视觉 / 动作生成过程的潜特征 Z"]
+    B --> C["RL 状态 s = (机器人状态, 前 C 个参考动作, Z)"]
+    C --> D["查询侧 token：状态与参考动作<br/>潜记忆 token：由 Z 编码"]
+    D --> E["Actor：自注意力 → 交叉注意力<br/>（查询读潜记忆）→ 精修动作块 a"]
+    D --> F["Critic：加入候选动作，自注意力 → 交叉注意力<br/>→ 双 Q 头（TD3）"]
+    E --> G["机器人执行<br/>人工干预时人类动作覆盖 Actor 输出"]
+    G --> H["实际执行动作 + 奖励 + 下一状态<br/>存入回放缓冲区"]
+    H --> I["TD3 在线更新：块级 TD 目标训练 Critic<br/>Actor 最大化 Q + BC 正则（λ_BC）"]
+    I --> E
+    I --> F
+```
+
+图依据：论文 §3.1–§3.3（Fig.2、式 1–7）、附录 7.8
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ We propose HALO-WA, a hybrid-attention latent-guided online reinforcement learni
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.04265>
+- [arXiv PDF](https://arxiv.org/pdf/2607.04265)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1–3.3）、附录 7.8 Actor-Critic Adapter 架构；其余章节未细读
 
 ## 推荐继续阅读
 

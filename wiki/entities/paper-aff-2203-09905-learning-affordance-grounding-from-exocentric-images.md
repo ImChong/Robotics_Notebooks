@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Learning Affordance Grounding from Exocentric Images——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Interaction-driven） ｜ Datasets / Benchmarks（Data Modality: image-image）**（清单未附方法摘要，此处不替原文概括贡献）。
+Learning Affordance Grounding from Exocentric Images——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Interaction-driven） ｜ Datasets / Benchmarks（Data Modality: image-image）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,36 @@ Learning Affordance Grounding from Exocentric Images——在清单中归入 **P
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练"]
+        X["N 张 exocentric 交互图 I_exo"] --> R1["ResNet50 特征提取 Z_exo"]
+        R1 --> AIM["AIM 模块：NMF 低秩分解 X≈WH<br/>得到 affordance 不变特征 M，剔除个体差异 E<br/>F_i = Z_i + Conv(M_i)"]
+        AIM --> CE["共享卷积层得到 D_exo → GAP → f_exo"]
+        Y["egocentric 物体图 I_ego"] --> R2["ResNet50 特征提取 Z_ego"]
+        R2 --> CV["两层卷积映射到 exo 嵌入空间 F_ego"]
+        CV --> CG["共享卷积层得到 D_ego → GAP → f_ego"]
+        CE --> KT["L_KT：L2 对齐 f_exo 与 f_ego"]
+        CG --> KT
+        CE --> FC["共享 FC 层：affordance 分类预测 s / g"]
+        CG --> FC
+        FC --> CLS["L_cls：两分支交叉熵之和"]
+        FC --> ACP["ACP：softmax 得 p、q，构造共关联矩阵 P=ppT、Q=qqT<br/>交叉熵对齐得 L_ACP"]
+        KT --> LOSS["总损失 L = λ1 L_cls + λ2 L_ACP + λ3 L_KT"]
+        CLS --> LOSS
+        ACP --> LOSS
+    end
+    subgraph INFER["推理"]
+        Z["egocentric 物体图 + affordance 标签 C_a"] --> EGO["仅走 egocentric 分支"]
+        EGO --> CAM["CAM 加权最后一层卷积特征"]
+        CAM --> HM["affordance 区域热力图"]
+    end
+```
+
+图依据：论文 §3 / Fig.3（AIM 见 §3.1，ACP 见 §3.2，推理见 §3.3，总损失见式 9）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +82,7 @@ Learning Affordance Grounding from Exocentric Images——在清单中归入 **P
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2203.09905)。
+清单本身只给出标题、出处与分类标签；方法流程见上文「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2203.09905)。
 
 ## 评测与指标
 
@@ -68,7 +98,7 @@ Learning Affordance Grounding from Exocentric Images——在清单中归入 **P
 
 **本页只提供「Cross-view-AG」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +119,7 @@ Learning Affordance Grounding from Exocentric Images——在清单中归入 **P
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2203.09905>
+- [arXiv PDF](https://arxiv.org/pdf/2203.09905)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.3）、§4 Dataset、§5.1 Benchmark Setting
 
 ## 推荐继续阅读
 

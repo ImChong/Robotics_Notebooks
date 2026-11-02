@@ -41,6 +41,28 @@ We introduce a model-agnostic diagnostic framework that compares WAMs and VLAs t
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    P["待比较策略：直接 VLA 与三类 WAM（联合 / 顺序 / 辅助）"] --> R["在 LIBERO 与 RoboTwin2.0 上 rollout"]
+    R --> B["行为 rollout 分析"]
+    R --> H["提取各模态流末层或近末层隐变量：当前视觉 / 未来想象 / 动作"]
+    B --> B1["结果指标：成功率"]
+    B --> B2["动作动力学：delta / 加速度 / jerk、低运动失败、chunk 边界跳变"]
+    B --> B3["物体交互：目标物进度、回退步数、干扰物漂移与路径长度"]
+    H --> S["每个模型每类隐变量各训练 TopK 稀疏自编码器（AuxK 辅助重构损失）"]
+    S --> M["特征描述子：覆盖率、onset、相对 run 长度、幅值 + FCS / HS / AP"]
+    M --> C["多项逻辑回归分类（人工审核样本训练）"]
+    C --> L["特征标签：predictive-general / reactive-general / memorized"]
+    B1 --> J["对照行为差异与内部表征标签"]
+    B2 --> J
+    B3 --> J
+    L --> J
+```
+
+图依据：论文 §3.2 行为 rollout 分析、§3.3 稀疏自编码器特征分析 / Fig.1（诊断框架）。注意：这是诊断评测协议而非新策略模型。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ We introduce a model-agnostic diagnostic framework that compares WAMs and VLAs t
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.01095>
+- [arXiv PDF](https://arxiv.org/pdf/2606.01095)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 评测协议（3.1–3.3）；§4 实验结果与附录仅略读
 
 ## 推荐继续阅读
 

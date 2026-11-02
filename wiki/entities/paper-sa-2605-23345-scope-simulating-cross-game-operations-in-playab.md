@@ -43,6 +43,26 @@ Simulates cross-game operations in playable environments for FPS world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["初始帧 I_1 + 文本条件 + 玩家动作序列 a_1:T"] --> VAE["3D VAE 编码为潜变量, patchify 为 token 序列 x"]
+    VAE --> BLK["预训练视频 DiT 块 (约 5B 参数, L=30)<br/>AdaLN -> 自注意力(3D RoPE) -> 文本交叉注意力"]
+    BLK --> RS["SCOPE 模块 (插在文本交叉注意力与 FFN 之间)<br/>Spatial Reshape: 重排为逐像素时间序列"]
+    AC["连续控制 a_c (4 维: 移动 2 轴 + 相机 2 轴)"] --> CP
+    AD["离散事件 a_d (6 维: fire / ADS / reload / jump / melee / switch)"] --> DP
+    RS --> DP["离散通路: MLP 嵌入动作 -> 交叉注意力<br/>(像素特征作 Query, 动作作 K/V), 约束在 in-scope 区域"]
+    RS --> CP["连续通路: 取时间窗拼接像素特征 -> 融合 MLP -> 时间自注意力(RoPE)<br/>负责 out-of-scope 自运动"]
+    DP --> ADD["残差相加: x + dx_c + dx_d, 重排回标准 token 布局"]
+    CP --> ADD
+    ADD --> FFN["FFN, 进入下一 DiT 块"]
+    FFN --> OUT["流匹配去噪, 解码得视频续写 V_2:T"]
+    OUT -. "推理: Action-CFG 在无条件与有条件速度间插值" .-> OUT
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2（SCOPE 输出投影零初始化、整体端到端训练；Fig.3 为 CrossFPS 数据集概览，未入图）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Simulates cross-game operations in playable environments for FPS world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.23345>
+- [arXiv PDF](https://arxiv.org/pdf/2605.23345)：已通读方法部分（实验与附录以略读为准）：Abstract、§1 Introduction、§3 Method（3.1–3.4）、§4.1 Setup；其余实验略读
 
 ## 推荐继续阅读
 

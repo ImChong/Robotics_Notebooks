@@ -32,6 +32,32 @@ summary: "WAVE-0（arXiv:2610.18568）：用 257M 参数的轻量潜在世界模
 
 摘要指出，多数 WAM 依赖昂贵的视频生成；而纯潜在方法要么只把预测未来当辅助目标，要么需要大规模视频预训练才能从次优的视觉转移中推断潜在动作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1: Latent World Model 训练 (论文 §3.2)"]
+        A1["当前图像 I_t / 未来图像 I_t+h"] --> A2["冻结 SigLIP encoder + visual projector, 空间池化得到 S_t / S_t+h"]
+        A3["真值动作序列 A_t + 机器人状态 s_t"] --> A4["Action encoder 得到 Z_a; State encoder 得到 z_s"]
+        A2 --> A5["World model: 带 action-conditioned AdaLN-Zero 的 Transformer, 预测潜在残差"]
+        A4 --> A5
+        A5 --> A6["预测未来表征 = S_t + 残差"]
+        A6 --> A7["损失: 未来余弦距离 + 残差 SmoothL1 + 反事实动作排序 (错配动作作负样本)"]
+    end
+    subgraph S2["Stage 2: 未来条件策略微调"]
+        B1["当前观测 + 语言指令 + 可学习 latent action queries"] --> B2["PaliGemma VLM planner (来自 pi0.5)"]
+        B2 --> B3["线性投影得到 latent action plan"]
+        B3 --> B4["冻结的 world model 预测未来视觉表征"]
+        B4 --> B5["Resampler 池化为 12 个未来 conditioning tokens"]
+        B5 --> B6["Action expert (flow matching): 与 VLM 上下文一起 attend, 去噪生成动作块"]
+        B3 -.-> B8["对齐损失: 与 Stage 1 的 Z_a 对齐"]
+    end
+    A7 --> B4
+    A4 -.-> B8
+```
+
+图依据：论文 §3.1-3.2（Latent World Model / Latent Action Planning / Future-Conditioned Action Generation）、§4.1 / Fig.2
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -98,6 +124,7 @@ summary: "WAVE-0（arXiv:2610.18568）：用 257M 参数的轻量潜在世界模
 
 - [论文归档](../../sources/papers/wave-0_arxiv_2610_18568.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18568)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1-3.2）、§4.1 实现细节；§4 实验、附录略读
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "HuMiT：基于紧凑参考跟踪的低延迟人形全身遥操作（ar
 
 # HuMiT：基于紧凑参考跟踪的低延迟人形全身遥操作
 
-**HuMiT**（*HuMiT: Low-Latency Whole-Body Humanoid Teleoperation via Compact Reference Tracking*，[arXiv:2610.29903](https://arxiv.org/abs/2610.29903)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**HuMiT**（*HuMiT: Low-Latency Whole-Body Humanoid Teleoperation via Compact Reference Tracking*，[arXiv:2610.29903](https://arxiv.org/abs/2610.29903)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,32 @@ summary: "HuMiT：基于紧凑参考跟踪的低延迟人形全身遥操作（ar
 ## 为什么重要
 
 - 周报所述待解决的问题：密集全身参考、未来帧条件和在线动作重定向会显著增加遥操作延迟。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 离线训练
+        CLIP["人体动作片段<br/>AMASS / LAFAN1 / BONES-SEED<br/>过滤 + 镜像增广"] --> IK["优化式 IK 重定向<br/>得到完整参考 g_full"]
+        IK --> PPO["PPO 并行训练<br/>8192 环境 / Isaac Sim"]
+        PPO --> ACT["Actor π<br/>仅观测 s_prop + g_cpt"]
+        PPO --> CRIT["Critic<br/>观测 s_prop + s_priv + g_full"]
+        IK --> RW["稠密跟踪奖励<br/>用 g_full 计算"]
+        RW --> PPO
+    end
+    subgraph 在线部署
+        VR["PICO 4 Ultra 头显 + 手柄 + 腿部 Tracker<br/>24 点 6DoF 骨架 约 80 Hz / Wi-Fi"] --> KP["提取手腕与脚踝 4 个关键点 SE(3)"]
+        KP --> CAL["一次性尺度标定<br/>逐肢缩放系数 α_j"]
+        CAL --> CRT["紧凑参考 CRT g_cpt<br/>根高度 + 根速度 + 4 关键点位姿"]
+        CRT --> POLICY["训练好的 Actor π"]
+        PROP["G1 本体感知 s_prop"] --> POLICY
+        POLICY --> JOINT["关节偏移 a_t → q_target"]
+        JOINT --> PD["PD 控制器 → 力矩<br/>Unitree G1 29 DoF"]
+    end
+    ACT -.部署.-> POLICY
+```
+
+图依据：论文 §IV-A–C / Fig.2
 
 ## 核心机制
 
@@ -87,6 +113,8 @@ summary: "HuMiT：基于紧凑参考跟踪的低延迟人形全身遥操作（ar
 - [humit-low-latency-whole-body-teleop_arxiv_2610_29903.md](../../sources/papers/humit-low-latency-whole-body-teleop_arxiv_2610_29903.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.29903](https://arxiv.org/abs/2610.29903)
+- [arXiv PDF](https://arxiv.org/pdf/2610.29903)：已通读方法部分（实验与附录以略读为准）：摘要、§I–III、§IV Method（系统总览 / 人体动作到紧凑参考 / 全身跟踪策略与奖励、训练与部署）、§V 的延迟测量协议与基线设定
+
 
 ## 推荐继续阅读
 

@@ -42,6 +42,29 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练动作条件视频世界模型"]
+        DEMO["人类遥操作演示轨迹"] --> DS["训练数据集"]
+        ROLL["不同水平策略的 rollout<br/>(补充失败/多样动作分布)"] --> DS
+        BASE["预训练 Cosmos-Predict2-Video2World-2B<br/>(DiT，2B 参数)"] --> WM
+        DS --> WM["动作条件视频预测模型<br/>p(o_t+1 | o_1:t, a_1:t)<br/>EDM 目标端到端训练"]
+        ACT["动作（末端位姿）→ Fourier 特征映射 → MLP<br/>→ 潜动作 token，加到 time embedding"] --> WM
+    end
+    subgraph EVAL["策略评测流程（Fig. 1）"]
+        INIT["初始帧 + 待评测策略 π"] --> LOOP["自回归 rollout：π 看世界模型生成的帧输出动作<br/>→ 世界模型预测下一观测"]
+        WM --> LOOP
+        LOOP --> VID["rollout 视频"]
+        VID --> VLM["子采样帧 + 任务完成定义 prompt<br/>→ VLM 判定成功/失败"]
+        VLM --> PERF["预测策略成功率"]
+        PERF --> CORR["与真实/模拟器成功率比较：<br/>Pearson 相关系数、MMRV"]
+    end
+```
+
+图依据：论文 §III-A/B/C 与 Fig. 1、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2511.11520>
+- [arXiv PDF](https://arxiv.org/pdf/2511.11520)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A–C）、§IV 实验设置（略读）
 
 ## 推荐继续阅读
 

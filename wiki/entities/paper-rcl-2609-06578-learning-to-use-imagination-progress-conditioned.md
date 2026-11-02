@@ -42,6 +42,44 @@ ProWAM learns execution progress from recent action–observation feedback and r
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1：训练 SS-DTPE（自监督，随后冻结）"]
+        L1["示范轨迹的时间顺序 + 指令前缀作为天然监督"] --> L2["损失：语义进度对齐 L_sem + 单调顺序 L_ord + 时间对比 L_temp"]
+    end
+    subgraph SSD["SS-DTPE：双时间尺度进度编码器"]
+        A["当前观测 O_t + 上一动作 a_t-1 + 指令 L"] --> B["短期 Action-Observation 编码器<br/>FiLM + 双向 Cross-Attention → 证据 E_t"]
+        C["上一步进度 tokens Z_t-1"] --> D["长期 Mamba 进度聚合器<br/>得记忆过滤表示"]
+        B --> E["Progress Attention：进度状态吸收短期证据"]
+        D --> E
+        E --> F["进度 tokens Z_t"]
+    end
+    subgraph HP["HPIM：层次化进度条件想象调制（每个 MoT 层）"]
+        G["Inter-progress 全局门 d_t"]
+        H["Intra-progress 未来 latent 相关性 ω_t,f"]
+        I["中间层加强的层系数 η_l"]
+        G --> J["调制权重 β = η_l·((1 − d_t) + d_t·ω)"]
+        H --> J
+        I --> J
+    end
+    F --> G
+    F --> H
+    J --> K["作用于 MoT 中 action token → 未来 latent 的注意力 logit<br/>加 log β"]
+    subgraph WAM["联合视频–动作 WAM 骨干（MoT）"]
+        V["未来 latent 流（video expert）"] --> K
+        W["action 流（action expert）"] --> K
+        K --> X["ActHead 输出动作块 Â_t"]
+    end
+    X --> Y["以滚动时域方式执行；新执行的动作用于下一次进度更新"]
+    Y -.-> A
+    L2 -.-> SSD
+    SSD -.->|"阶段 2：冻结 SS-DTPE，训练 WAM + HPIM"| HP
+```
+
+图依据：论文 §4.1–4.4 / Fig.3、Fig.4（式 6–36）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +136,7 @@ ProWAM learns execution progress from recent action–observation feedback and r
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.06578>
+- [arXiv PDF](https://arxiv.org/pdf/2609.06578)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.2 诊断分析、§4.1–4.4 方法与训练推理流程、§5.1 实现细节；其余实验与附录略读
 
 ## 推荐继续阅读
 

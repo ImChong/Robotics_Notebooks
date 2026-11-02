@@ -44,6 +44,23 @@ summary: "TempoWAM（arXiv:2608.09492）：RPM 监测任务进度 + AEP 按需�
 - 开源结论：**待发布**（步骤 2.5，2026-09-23）。
 - 与 [具身前沿算法技术地图](../overview/embodied-frontier-algorithms-technology-map.md) 同路线条目可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["当前观测 o 与任务指令 ℓ"] --> B["骨干 WAM 生成动作 chunk c"]
+  B --> C["无条件执行前 np 个动作"]
+  C --> D["取剩余动作的前 nt 个作为候选前缀"]
+  D --> E["RPM：输入 观测、候选前缀、上一步进度 v(t-1)、指令<br/>GRU 输出进度估计 v_t"]
+  E --> F["AEP：计算实际进度速率 与 所需进度速率<br/>比值 r̃ = ρcur / ρneed"]
+  F --> G["校准：κ_final = κ · δ′<br/>离线 κ_task + episode 内 EMA + 跨 episode 成功率调整"]
+  G --> H{"r = r̃ / κ_final ≥ 1 ?"}
+  H -- "是：继续执行" --> D
+  H -- "否：丢弃剩余动作" --> B
+```
+
+图依据：论文 §3.2–3.4 / Fig. 2、式 (6)–(11)。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -97,6 +114,7 @@ summary: "TempoWAM（arXiv:2608.09492）：RPM 监测任务进度 + AEP 按需�
 - [tempowam_arxiv_2608_09492.md](../../sources/papers/tempowam_arxiv_2608_09492.md)
 - [wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md](../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md)
 - [arXiv:2608.09492](https://arxiv.org/abs/2608.09492)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09492)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method（3.1–3.5）、Fig. 2、表 1
 
 ## 推荐继续阅读
 

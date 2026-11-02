@@ -3,15 +3,17 @@ type: entity
 project_id: dreamcan-sparse-visual-planning
 tags: [paper, robot-manipulation, long-horizon-planning, video-model]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 arxiv: "2610.24981"
 project: "https://dreamcan.github.io"
 related:
   - ../entities/paper-hint-robot-manipulation.md
   - ../entities/unifolm-world-model-action.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/dreamcan_arxiv_2610_24981.md
   - ../../sources/sites/dreamcan.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "DreamCan 将预训练视频模型用作长程操作高层规划器，生成稀疏视觉子目标，再由低层视觉运动策略执行；论文报告 LIBERO-Long 成功率为 91.2%。"
 ---
 
@@ -33,6 +35,26 @@ DreamCan 从预训练视频模型产生稀疏视觉子目标，由低层 visuomo
 ## 为什么重要
 
 视频模型可以预测看似合理的未来画面，但视觉上合理的轨迹未必可由机器人执行。DreamCan 通过少量、可达的视觉目标约束高层规划，并由专门的低层策略完成动作落地。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["离线无动作机器人视频 D_vid + 语言指令"] --> R["可达性价值 V_R：goal-conditioned expectile 离线 RL（冻结 RADIO 特征）"]
+    V --> U["任务效用 U：RoboMeter + LoRA，或 VLM / SAM 进度估计"]
+    R --> DP["动态规划选 K 个子目标：reachability 代价 + 间距先验 - 终点 utility"]
+    U --> DP
+    DP --> SG["稀疏子目标图像序列 g_1..g_K + 末帧"]
+    SG --> FT["LoRA 微调 Wan2.2-TI2V-5B 作为稀疏视觉规划器 P_θ"]
+    FT --> PL["推理：观测 o_t + 指令 ℓ 生成子目标 ĝ_1..ĝ_K"]
+    PL --> POL["goal-conditioned 低层 flow-matching Transformer 策略 π_φ（0.1B）"]
+    POL --> ACT["输出动作块 a_t:t+H-1"]
+    ACT --> OBS["新观测，定期重规划（closed-loop）"]
+    OBS --> PL
+    PL -.-> TTS["test-time search：保留前缀子目标，重生成剩余部分"]
+```
+
+图依据：论文 §III-A、§IV-A–E / Fig.1、Fig.3
 
 ## 核心原理
 
@@ -84,6 +106,7 @@ DreamCan 从预训练视频模型产生稀疏视觉子目标，由低层 visuomo
 
 - [DreamCan 论文摘录](../../sources/papers/dreamcan_arxiv_2610_24981.md)
 - [DreamCan 项目页归档](../../sources/sites/dreamcan.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.24981)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§IV（分层架构、可达性与任务效用、动态规划子目标选择、视频模型微调、低层策略）；§V 实验设定与结果仅浏览
 
 ## 推荐继续阅读
 

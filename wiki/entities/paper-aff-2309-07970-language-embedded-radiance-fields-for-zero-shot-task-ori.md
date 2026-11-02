@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["腕载相机半球轨迹采集约 60 张图像（丢弃模糊帧）"] --> B["预提取 DINO 特征、多尺度 CLIP、ZoeDepth"]
+    B --> C["训练 LERF：DINO 场 + 尺度条件 CLIP 场"]
+    Q["自然语言查询：物体查询 + 部件查询"] --> D
+    C --> D["俯视渲染，DINO 第一主成分阈值得前景掩码；物体查询找到最相关 3D 点"]
+    D --> E["围绕该点渲染物体中心点云；按 DINO 相似度迭代 flood-fill，得 3D 物体掩码"]
+    E --> F["条件 LERF 查询：仅在 3D 物体掩码内查询部件，得 3D 部件相关度"]
+    C --> G["半球虚拟相机 + 预训练 GraspNet 采样 6-DoF 抓取，NMS 去重"]
+    G --> H["抓取排序：s = 0.95 s_sem + 0.05 s_geom"]
+    F --> H
+    H --> I["执行排名最高的抓取并提起"]
+    L["可选：LLM 少样本提示 + 多数投票生成物体/部件对与动作原语"] -.-> Q
+```
+
+图依据：论文 §4（4.1–4.4）/ Fig.3，LLM 部分见 §5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07970)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2309.07970)。
 
 ## 评测与指标
 
@@ -67,7 +86,7 @@ Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在�
 
 **本页只提供「LERF-TOGO」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +107,7 @@ Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping——在�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2309.07970>
+- [arXiv PDF](https://arxiv.org/pdf/2309.07970)：已通读方法部分（实验与附录以略读为准）：§2.3 LERF 预备、§3 问题设定、§4 方法（4.1–4.4）、§5 实验设定与 LLM 集成
 
 ## 推荐继续阅读
 

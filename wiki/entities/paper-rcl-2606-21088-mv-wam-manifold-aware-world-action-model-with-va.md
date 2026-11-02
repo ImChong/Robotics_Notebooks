@@ -42,6 +42,29 @@ Recent world action models achieve strong in-domain performance, yet their gains
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["语言指令 L → umT5 编码<br/>多视角观测 → SigLIP2 / 视频帧 → VAE 编码"]
+  subgraph MOT["流形感知 Mixture-of-Transformers (DiT 堆叠)"]
+    VE["Video Expert (基于 WoW-1.3B)<br/>预测速度场, 目标 L_v"]
+    AVE["Action-Value Expert<br/>动作 / 状态 token 与独立 value token<br/>直接回归干净 action latent, 目标 L_a"]
+    VE -->|"动作 / 状态 token 可 attend 视频上下文"| AVE
+  end
+  IN --> VE
+  IN --> AVE
+  VE --> VOUT["未来视频 latent → VAE 解码"]
+  AVE --> ACT["动作块 (128 维统一动作)"]
+  AVE --> VAL["进度价值 value<br/>(MC 折扣回报监督)"]
+  VAL --> MON{"value 低于峰值 c_peak - δ ?"}
+  MON -->|"是: 回滚到 c_peak 对应检查点<br/>重新扩散采样新动作块"| AVE
+  MON -->|"否: 继续执行"| ACT
+  T["两阶段训练: 阶段1 视频预训练<br/>阶段2 视频-动作联合训练, L = λv·L_v + λa·L_a"] -.-> MOT
+```
+
+图依据：论文 §2.2、§3.1、§3.2、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Recent world action models achieve strong in-domain performance, yet their gains
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.21088>
+- [arXiv PDF](https://arxiv.org/pdf/2606.21088)：已通读方法部分（实验与附录以略读为准）：§2 问题定义与分析、§3 方法（3.1–3.2）；§4 实验未读
 
 ## 推荐继续阅读
 

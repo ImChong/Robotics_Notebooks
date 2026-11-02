@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, reinforcement-learning, genesis, locomotion, wheel-legged, rsl-rl, sim2sim, independent-maintainer]
 status: complete
-updated: 2026-08-28
+updated: 2026-11-01
 related:
   - ./genesis-sim.md
   - ./rsl-rl.md
@@ -14,8 +14,10 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
   - ../concepts/curriculum-learning.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/repos/wheel_legged_genesis.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Albusgive/wheel_legged_genesis：在 Genesis 上用 RSL-RL 训练 CJ-003 双轮足（轮足/点足），含课程与自定义地形，策略可 JIT 导出并迁到 MuJoCo sim2sim。"
 ---
 

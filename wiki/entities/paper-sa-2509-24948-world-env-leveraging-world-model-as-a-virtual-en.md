@@ -42,6 +42,29 @@ Leveraging world models as virtual environments for VLA post-training.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["初始观测 o1、状态 s1、语言指令 g"] --> POL["VLA 策略 πθ<br/>预测基础动作 μt"]
+    POL --> SCALE["尺度头输出 log-scale βt"]
+    SCALE --> SAMP["Laplace(μt, βt) 采样动作 at"]
+    SAMP --> FK["正运动学 → 下一本体状态 s(t+1)"]
+    FK --> MAP["投影到图像平面得到 action map"]
+    MAP --> SIM["物理一致世界模拟器（U-Net 去噪扩散）<br/>输入 action map + 记忆库历史观测<br/>VGGT 与 CLIP 特征经 cross-attention 注入"]
+    SIM --> OBS["想象的下一观测 o(t+1)"]
+    OBS --> REF["VLM 引导 Instant Reflector<br/>逐步奖励 R(o1:t, g) ∈ [0,1]"]
+    REF -->|"R > η=0.5 或达到最大步数 T"| TERM["终止 rollout"]
+    REF -->|"未终止"| POL
+    OBS -.->|"o(t+1)、s(t+1) 回灌策略"| POL
+    TERM --> ROLL["每个初始状态采 N 条 rollout<br/>轨迹奖励 Rn = R(o1:t_end, g)"]
+    ROLL --> ADV["RLOO 留一基线<br/>An = Rn − bn"]
+    ADV --> PPO["LOOP（RLOO + PPO）更新 πθ"]
+    PPO --> POL
+```
+
+图依据：论文 §4 总述、§4.1 世界模拟器（Fig.4）、§4.2 Instant Reflector、§4.3 RLOO/LOOP 后训练（式 4–5）、Fig.3 总览。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Leveraging world models as virtual environments for VLA post-training.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.24948>
+- [arXiv PDF](https://arxiv.org/pdf/2509.24948)：已通读方法部分（实验与附录以略读为准）：§4.1–§4.3 方法
 
 ## 推荐继续阅读
 

@@ -41,6 +41,32 @@ Motivated by this observation, we propose \textbf{AdaWAM}, a world action model 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练阶段"]
+        T1["演示轨迹：末端运动 / 夹爪状态等线索"] --> T2["候选子任务窗口 + 精细操作区间"]
+        T2 --> T3["Qwen3-VL 8B 局部语义验证子任务完成帧"]
+        T3 --> T4["逐帧子任务标签与推理模式标签"]
+        T4 --> T5["阶段 1：联合训练 VideoDiT + ActionDiT + 动态路由器（flow matching + BCE）"]
+        T5 --> T6["阶段 2：冻结骨干与路由器，仅微调文本推理模块（NLL）"]
+    end
+    subgraph INFER["推理阶段（每个 action chunk）"]
+        I1["当前观测潜变量 z≤t + 全局指令 l + 当前子任务文本 c_t"] --> I2["动态路由器 → 预测 TR 与 VR 令牌"]
+        I2 -->|"TR=1"| I3["文本推理模块（VLM）自回归更新子任务指令"]
+        I2 -->|"TR=0"| I4["保留上一条子任务指令"]
+        I3 --> I5{"VR 令牌"}
+        I4 --> I5
+        I5 -->|"VR=1"| I6["VideoDiT 生成未来视觉潜变量（物理预见）"]
+        I5 -->|"VR=0"| I7["跳过视频生成以省延迟"]
+        I6 --> I8["ActionDiT：以 z≤t、子任务指令、预见为条件，积分 flow 采样动作块"]
+        I7 --> I8
+    end
+```
+
+图依据：论文 §3.1 标注流水线 / Fig.2、§3.2 模型架构 / Fig.3、§3.3 训练、§3.4 推理（式 3–5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ Motivated by this observation, we propose \textbf{AdaWAM}, a world action model 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.07089>
+- [arXiv PDF](https://arxiv.org/pdf/2606.07089)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ First recurrent architecture iteratively refining latent states with shared tran
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["观测 o_k"] --> E["Observation Encoder E_φ<br/>得到 e_k"]
+    A["动作 a_k"] --> AE["Action Embedder A_ψ<br/>得到 u_k"]
+    H0["上一步潜状态 h_(k-1)"] --> P
+    E --> P["Prelude P<br/>拼接 h、e、u 后经 LN 得条件信号 e"]
+    AE --> P
+    P --> R["Recurrent Block R（参数共享）<br/>循环 T 次：h(t+1) = Ā h(t) + B̄ e + R̄(h(t), e)<br/>Ā 为 (0,1) 对角阵，谱半径 < 1"]
+    R --> G{"Exit gate g(t) 超过阈值 τ？"}
+    G -- "否，继续内循环" --> R
+    G -- "是，推理时提前退出" --> C["Coda C：独立参数层 + 投影，得 h_k"]
+    C --> D["Prediction Heads D_ξ（轻量 MLP）<br/>下一观测 / 奖励 / 继续标志"]
+    C -. "外循环：h_k 作为下一环境步的初始状态" .-> H0
+    C -. "Deferred Decoding：连续 K 步仅在潜空间推进，仅在末步 h_K 解码一次" .-> D
+```
+
+图依据：论文 §3.1–3.5 / Fig.1（Fig.1 仅依正文描述，未逐图核对）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ First recurrent architecture iteratively refining latent states with shared tran
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.18208>
+- [arXiv PDF](https://arxiv.org/pdf/2606.18208)：已通读方法部分（实验与附录以略读为准）：§3 Looped World Model（3.1–3.5）
 
 ## 推荐继续阅读
 

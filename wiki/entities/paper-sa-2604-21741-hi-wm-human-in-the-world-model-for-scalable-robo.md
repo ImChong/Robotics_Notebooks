@@ -43,6 +43,23 @@ Post-training framework using learned world model as corrective substrate.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    PRE["(a) 预训练：真实数据训练基础策略"] --> ROLL["(b) 策略在交互式世界模型内闭环 rollout（观测 → 策略 → 动作 → 世界模型 → 下一观测）"]
+    ROLL --> CHK{"rollout 偏离或失败？"}
+    CHK -- 否 --> ROLL
+    CHK -- 是 --> INT["(c) 人类经硬件无关界面介入（键盘、机械臂、VR），统一动作映射器转为策略动作空间，纠正动作在世界模型内执行"]
+    INT --> CACHE["状态缓存与回滚：可回到更早状态分支出多条纠正轨迹"]
+    CACHE --> BACK["纠正后交还策略继续"]
+    BACK --> ROLL
+    INT --> DATA["收集纠正片段，与真实演示合并"]
+    DATA --> POST["(d) 后训练基础策略"]
+```
+
+图依据：论文 §3.1-3.5 / Fig. 2、Fig. 3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Post-training framework using learned world model as corrective substrate.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.21741>
+- [arXiv PDF](https://arxiv.org/pdf/2604.21741)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1-3.5）、§4.3 策略性能
 
 ## 推荐继续阅读
 

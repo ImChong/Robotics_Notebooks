@@ -42,6 +42,21 @@ The first open platform for benchmarking world models in a closed‑loop world, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["环境观测 o_t + 任务目标 g"] --> B["❶ Proposal Policy π_proposal<br/>采样 M 个候选动作计划 Â_t(m)"]
+    B --> C["❷ Unified Action API：I = C(Â)<br/>转为文本 Prompt / 相机轨迹 / 低层动作"]
+    C --> D["❸ Visual World Model g_θ<br/>对每个候选做反事实 Rollout，预测未来观测 Ô_t(m)"]
+    D --> E["❹ Revision Policy π_revision<br/>评估所有 (计划, Rollout)，选出或合成最优决策 D*_t"]
+    E --> F["在环境中执行 D*_t"]
+    F -->|"得到新观测 o_t+1，进入下一轮"| A
+    P["可选：Post-Training<br/>用目标环境的动作-观测数据微调预训练视频生成器"] -.-> D
+```
+
+图依据：论文 §2.1 Unified Strategy for Closed-Loop Online Planning / Fig.3、§2.2、§2.4（本文为基准，图为其统一评测接口的闭环规划流程，非单一新模型）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ The first open platform for benchmarking world models in a closed‑loop world, 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.18135>
+- [arXiv PDF](https://arxiv.org/pdf/2510.18135)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 World-in-World（§2.1–2.4）与 Fig.3（§3 评测结果、§4 讨论与附录仅略读）
 
 ## 推荐继续阅读
 

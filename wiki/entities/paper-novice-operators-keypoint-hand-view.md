@@ -41,6 +41,30 @@ summary: "Novice Operators Keypoint Hand View（arXiv:2610.27907）：PointHand�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  H["操作者手部追踪（Leap Motion 2）"] --> RT["DexPilot 重定向（dex-retargeting）<br/>手到机器人缩放 1.15"]
+  RT --> ACT["动作 a_t：腕位置 + 四元数 + 手指关节角<br/>Pinocchio 闭环 IK 转为臂关节目标"]
+  ACT --> SIM["ManiSkill 仿真执行"]
+  SIM --> FK["前向运动学得到 11 个手部关键点"]
+  FK --> V1["BASELINE：真实手形"]
+  FK --> V2["KP-STANDARD：全部关键点强调"]
+  FK --> V3["KP-SALIENT：仅拇指与食指强调"]
+  V1 --> OP["操作者 2D 显示（接触时亮度变化）"]
+  V2 --> OP
+  V3 --> OP
+  OP --> H
+  SIM --> D["示范集 D = (o_t, a_t)"]
+  D --> P1["DP3：场景点云 + 本体状态"]
+  D --> P2["DP-KP：13 个关键点（手 11 + 物体 2）"]
+  P1 --> DIFF["ConditionalUNet1D 扩散头<br/>DDPM 训练，DDIM 推理"]
+  P2 --> DIFF
+```
+
+图依据：论文 §III-A / §III-C / §III-D 与 Fig. 1–3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "Novice Operators Keypoint Hand View（arXiv:2610.27907）：PointHand�
 - [novice_operators_keypoint_hand_view_arxiv_2610_27907.md](../../sources/papers/novice_operators_keypoint_hand_view_arxiv_2610_27907.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27907](https://arxiv.org/abs/2610.27907)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27907)：已通读方法部分（实验与附录以略读为准）：§III 遥操作系统与关键点手部视觉表示、§III-D 策略训练、§IV 实验设定
 
 ## 推荐继续阅读
 

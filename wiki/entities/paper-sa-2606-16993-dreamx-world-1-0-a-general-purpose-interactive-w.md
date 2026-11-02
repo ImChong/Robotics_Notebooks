@@ -43,6 +43,21 @@ General-purpose interactive world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["数据系统：UE 渲染 + 游戏录像 + 真实视频<br/>基础过滤 → 相机位姿几何清洗 → 字幕与属性标注"] --> S0["初始化：Wan2.2-TI2V 双向视频生成器"]
+    S0 --> S1["3.1 相机感知训练<br/>E-PRoPE：空间降采样 token 上算投影相机注意力<br/>冻结 DiT 骨干，仅训 PRoPE 模块，输出上采样后加回"]
+    S1 --> S2["3.2 记忆条件场景持久化<br/>几何检索（相机位姿 + 视角重叠）选记忆帧<br/>与近期历史、目标帧打包 [记忆 | 历史 | 目标]<br/>残差回收：仅对条件 token 注入误差"]
+    S2 --> S3["3.3 Event Instruction Tuning<br/>结构化事件指令渲染成文本提示，微调整个 DiT"]
+    S3 --> S4["3.4 自回归蒸馏<br/>causal forcing → 长序列 rollout → DMD 蒸馏<br/>双向 E-PRoPE 教师 → 少步自回归学生"]
+    S4 --> S5["3.5 强化学习后训练（DiffusionNFT 软更新）<br/>相机控制奖励 + 视频质量奖励融合，KL 约束"]
+    S5 --> INF["§4 流式推理：逐 chunk 从噪声去噪<br/>相机控制 + 滚动 KV cache，chunk 相对位姿<br/>混合精度 / 残差复用 / 剪枝 VAE / 异步流水线并行"]
+```
+
+图依据：论文 §2–§4 / Fig.2、Fig.5–Fig.9（训练阶段顺序依 §3 与 Fig.2 的 Progressive Training 描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ General-purpose interactive world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.16993>
+- [arXiv PDF](https://arxiv.org/pdf/2606.16993)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2.1–2.2 数据、§3 渐进训练（3.1–3.5）、§4 推理加速；§2.3 事件数据与 §5 评测略读
 
 ## 推荐继续阅读
 

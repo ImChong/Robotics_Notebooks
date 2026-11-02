@@ -43,6 +43,34 @@ Efficient and multi-modal navigation system with a one-step world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph WM["单步导航世界模型（3D U-Net）"]
+        direction TB
+        OBS["当前观测 s_τ"] --> VAE["预训练 VAE 编码到 latent"]
+        ACT["动作 a_τ：N 个相对路点 (x,y,φ)"] --> MLP["4 层 MLP 动作嵌入"]
+        VAE --> UNET["3D U-Net：CNN + Spatial Attn + Temporal Attn"]
+        MLP -->|"cross-attention"| UNET
+        UNET --> GEN["shortcut 目标：一步生成 11 帧未来 latent"]
+        GEN --> DEC["VAE 解码为未来图像"]
+    end
+    subgraph PL["基于 CEM 的规划"]
+        direction TB
+        INIT["anchor 初始化：固定线/角速度候选轨迹"] --> CAND["32 个候选动作"]
+        CAND --> ROLL["世界模型预测未来图像"]
+        ROLL --> SCORE["按目标打分：LPIPS / SigLIP / 距离+Depth-Anything 深度项"]
+        SCORE --> CEM["CEM 选 top-5 并迭代 5 次"]
+        CEM -->|"更新采样分布"| CAND
+        CEM --> BEST["输出最优动作"]
+    end
+    GOAL["多模态目标：图像 / 语言 / 点目标"] --> SCORE
+    WM -.->|"作为前向模型"| ROLL
+```
+
+图依据：论文 §3.1–3.4 / Fig.2 / Fig.3；§5.1 的打分函数与 CEM 设置（32 样本、top-5、5 次迭代）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Efficient and multi-modal navigation system with a one-step world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.12277>
+- [arXiv PDF](https://arxiv.org/pdf/2601.12277)：已通读方法部分（实验与附录以略读为准）：§1–§5（含 3.1 单步世界模型、3.2 架构、3.3 训练、3.4 规划、5.1 导航评测设定）
 
 ## 推荐继续阅读
 

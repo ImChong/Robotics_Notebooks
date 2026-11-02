@@ -42,6 +42,19 @@ Achieves self-evolution of world models through counterfactual controllability.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    G["1 Generation<br/>生成干预条件下的反事实未来帧<br/>指标：Novelty"] --> B["2 Binding<br/>将未来帧绑定到具身约束<br/>（本体 / 传感 / 驱动 / 能量）<br/>指标：Consistency"]
+    B --> V["3 Verification<br/>在分布偏移下验证与校准<br/>拒绝或降权漂移分支<br/>指标：Out-of-Distribution"]
+    V --> D["4 Distillation<br/>将幸存分支压缩为紧凑决策变量<br/>指标：Efficiency"]
+    D -->|"自进化反馈：蒸馏出的动作知识回到下一轮想象"| G
+    D --> O["输出：动作有效的想象未来<br/>（Self-Evolving World Model）"]
+```
+
+图依据：论文 §2 与 Fig. 1、§5（概念性四阶段框架，非实验系统）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +109,7 @@ Achieves self-evolution of world models through counterfactual controllability.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.24152>
+- [arXiv PDF](https://arxiv.org/pdf/2606.24152)：已通读方法部分（实验与附录以略读为准）：全文（§1–§5，观点/框架型短文，无实验）
 
 ## 推荐继续阅读
 

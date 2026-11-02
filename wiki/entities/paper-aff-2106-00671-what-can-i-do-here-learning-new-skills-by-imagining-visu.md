@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在清单中归入 **Action（Architecture: E2E；Affordance Usage: reward；Action Subcategory: Integrated policy · Optimization signal）**（清单未附方法摘要，此处不替原文概括贡献）。
+What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在清单中归入 **Action（Architecture: E2E；Affordance Usage: reward；Action Subcategory: Integrated policy · Optimization signal）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,23 @@ What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["先验数据 D\n来自先前环境的成功轨迹"] --> A["A. 离线 affordance 学习\nVQVAE 学潜空间 z = φ(s)\n条件 PixelCNN 学 p(zt | z0)"]
+  D --> B["B. 离线行为学习\nAWAC 训练目标条件策略 π(a | z, zg)\n稀疏目标到达奖励 + 目标重标记"]
+  A --> B
+  N["新环境 Enew\n观测初始图像 s0, z0 = φ(s0)"] --> C1["C. 在线行为学习\n从 affordance 模型采样目标 zg ~ pθ(· | z0)"]
+  A --> C1
+  C1 --> C2["执行 π(a | z, zg)\n收集探索数据入 replay buffer"]
+  B --> C2
+  C2 --> C3["off-policy RL 微调 π 与 Q"]
+  C3 --> C1
+```
+
+图依据：论文 §V（Visuomotor Affordance Learning，A/B/C 三阶段）、Algorithm 1 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +68,7 @@ What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2106.00671)。
+清单只给出标题、出处与分类标签，没有方法摘要；论文自述的方法流程见上方「流程总览」，训练细节仍以原文为准；需要机制与实验请读 [原文](https://arxiv.org/abs/2106.00671)。
 
 ## 评测与指标
 
@@ -67,7 +84,7 @@ What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在
 
 **本页只提供「VAL」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +105,7 @@ What Can I Do Here? Learning New Skills by Imagining Visual Affordances——在
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2106.00671>
+- [arXiv PDF](https://arxiv.org/pdf/2106.00671)：已通读方法部分（实验与附录以略读为准）：§III–V（问题设定与 VAL 的三个学习阶段）、§VI–VII 实验设定
 
 ## 推荐继续阅读
 

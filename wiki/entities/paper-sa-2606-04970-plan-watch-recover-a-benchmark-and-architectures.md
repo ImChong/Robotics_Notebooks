@@ -42,6 +42,27 @@ Releases EgoProactive, a large-scale wearable-egocentric dataset for proactive p
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["用户请求 q<br/>例：Help me make an espresso"] --> P0["规划器 Planner pϕ<br/>写出初始计划 P0：步骤 + 完成视觉线索<br/>（t=0 视为一次 interrupt，P-1 为空）"]
+    P0 --> PS["当前计划状态 Pt-1<br/>结构化文本块，置于交互模型输入"]
+    OBS["观测 ot：以 t 结尾的 8 s 视频片段<br/>每 500 ms 一次决策"] --> IM
+    PS --> IM["交互模型 pθ（Watch）<br/>对照当前步骤及线索判断"]
+    IM -->|"dt = Silent"| KEEP["保持沉默<br/>Pt = Pt-1（计划不变）"]
+    IM -->|"dt = Interrupt，输出话语 ut"| CALL["异步调用规划器<br/>交互模型不等待，继续处理观测"]
+    CALL --> UPD{"步骤完成 还是 OOP 偏离？"}
+    UPD -->|"步骤完成"| ADV["推进当前步骤状态<br/>写新的完成线索"]
+    UPD -->|"OOP 偏离"| REC["Recover：用恢复步骤<br/>替换剩余步骤"]
+    ADV --> VAL["新状态 Pt 通过 schema 校验后<br/>替换 Pt-1"]
+    REC --> VAL
+    VAL --> PS
+    KEEP --> PS
+```
+
+图依据：论文 §3 / §3.2 / Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Releases EgoProactive, a large-scale wearable-egocentric dataset for proactive p
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.04970>
+- [arXiv PDF](https://arxiv.org/pdf/2606.04970)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2.1 任务与标注、§3 方法（§3.1–3.3，Fig.1/Fig.2）；其余略读
 
 ## 推荐继续阅读
 

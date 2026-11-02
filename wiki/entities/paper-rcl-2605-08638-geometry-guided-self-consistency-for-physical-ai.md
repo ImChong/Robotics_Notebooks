@@ -42,6 +42,24 @@ State-of-the-art physical AI models generate a chunk of actions per inference th
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["编码上下文 c_t：任务指令 + 相机观测 + 机器人状态"] --> P["共享前缀只算一次：VLA 的 VLM 前缀 / KV cache，或 WAM 的视频骨干潜变量"]
+    P --> S["并行采样：K 个独立噪声 ε_i，批量去噪 / flow 更新，得到 K 个动作块 a_i"]
+    S --> D["展平为向量，批量计算两两 L2 距离 Δ_ij"]
+    D --> G{"均值与全局 medoid 的归一化距离 s < τ ?"}
+    G -- "是：已近似单簇" --> M1["返回全局 medoid"]
+    G -- "否" --> K["k-means 聚类（默认 C = 2）"]
+    K --> L["取最大簇，返回簇内 medoid"]
+    M1 --> O["输出一个真实采样的动作块，按原格式交给下游执行"]
+    L --> O
+    O -.-> C
+```
+
+图依据：论文 §3.1–3.4（KeyStone）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ State-of-the-art physical AI models generate a chunk of actions per inference th
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.08638>
+- [arXiv PDF](https://arxiv.org/pdf/2605.08638)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3.1–3.4（方法概览、延迟保持的并行采样、候选选择、部署循环）；§4 评测以略读为准
 
 ## 推荐继续阅读
 

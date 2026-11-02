@@ -41,6 +41,28 @@ We introduce ZimaBlue, a scalable framework for learning generalizable World Act
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRN["三阶段训练"]
+        T1["Stage I 视频预训练：只训练 Slow，纯视频流匹配"]
+        T2["Stage II 视频-动作中期训练：Slow 加动作辅助监督，统一 100 维语义状态-动作空间"]
+        T3["Stage III 后训练：先特化 Slow 到目标域，再冻结 Slow，用纯动作流匹配训练 Fast"]
+        T1 --> T2 --> T3
+    end
+    subgraph DEP["部署：Slow-Fast 异步推理"]
+        A["观测 + 机器人状态 + 语言指令"] --> B["Slow DiT 5B：低频长时域 rollout，导出逐层视频 K/V 缓存"]
+        C["最新观测 + 最新状态 + 带噪动作块"] --> D["Fast DiT 0.5B：交叉注意力读取前 12 层 Slow 视频 K/V"]
+        B -- "K/V 缓存" --> D
+        D --> E["动作块；异步更新时只替换尚未执行的动作，RTC 前缀保证衔接"]
+        E --> F["机器人执行"]
+    end
+    T3 --> DEP
+```
+
+图依据：论文 §3.2、§4.1、§4.4、§5.1–5.2 / Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ We introduce ZimaBlue, a scalable framework for learning generalizable World Act
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.00188>
+- [arXiv PDF](https://arxiv.org/pdf/2609.00188)：已通读方法部分（实验与附录以略读为准）：§3 模型结构、§4.1 与 §4.4 训练流程、§5.1–5.2 加速方案；§6 实验与附录仅略读
 
 ## 推荐继续阅读
 

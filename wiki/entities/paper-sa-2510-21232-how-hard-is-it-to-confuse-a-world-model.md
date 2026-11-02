@@ -42,6 +42,26 @@ Studies the robustness of world models to confusion.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考 VAE World Model M_θ = (φ, ψ, ξ)<br/>+ 最优策略 π* + 次优策略 π_sub"] --> B["冻结 Encoder φ 与 Decoder ξ<br/>只复制并扰动 Latent Dynamics ψ̃"]
+    B --> C["采样 N 个初始状态 s0<br/>编码得 z0 = φ(s0)"]
+    C --> D["在 M_θ̃ 中分别 Rollout π* 与 π_sub"]
+    D --> E["沿轨迹平均逐点 KL(p_ψ ‖ p_ψ̃)<br/>平均回报 V* 与 V_sub"]
+    E --> F{"约束 c = V* - V_sub ≤ 0 ?"}
+    F -->|"是：策略排序被反转"| G["记录当前 KL，更新 K_best = min(K_best, KL)"]
+    F -->|"否"| H["保持 λ 惩罚"]
+    G --> I["Primal：梯度下降更新 ψ̃<br/>最小化 KL + λ·max(0, c)"]
+    H --> I
+    I --> J["Dual：λ ← max(0, λ + η·c)"]
+    J -->|"迭代 K 次"| C
+    J -->|"结束"| K["输出 Suboptimality Cost K"]
+```
+
+图依据：论文 §2（Lagrangian 松弛与 Primal–Dual 交替）、§3.2 与 Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Studies the robustness of world models to confusion.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.21232>
+- [arXiv PDF](https://arxiv.org/pdf/2510.21232)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Most Confusing Instance Search、§3.1–3.3（含 Algorithm 1）
 
 ## 推荐继续阅读
 

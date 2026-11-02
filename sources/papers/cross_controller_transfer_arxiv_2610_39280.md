@@ -26,3 +26,8 @@
 
 - [paper-cross-controller-transfer](../../wiki/entities/paper-cross-controller-transfer.md)
 - [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../../wiki/overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+
+## 2026-11-02 一手摘要核验（草稿）
+
+- 依据 arXiv v1 摘要：命令与实际运动组成上下文，经 Transformer 编码；真实实验较朴素混训平均提高 33 个百分点，未见模式和增益分别为 50% 和 52%。
+- **未完成：** 尚未通读全文及相关可运行源码；实验协议、局限、项目流程图与源码时序图仍需核验，不能视为完整 ingest。

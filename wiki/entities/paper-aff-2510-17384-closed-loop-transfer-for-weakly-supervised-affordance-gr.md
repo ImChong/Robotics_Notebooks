@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要，此处不替原文概括贡献）。
+Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,38 @@ Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["输入：成对的 exocentric / egocentric 图像<br/>+ 图像级 affordance 类别标签"]
+    F["DINO 提取 patch 特征 F_exo / F_ego"]
+    subgraph S1["阶段 1：Interaction → Activation"]
+        SC["Shared CAM（SCAM）<br/>exo 与 ego 共享参数联合训练<br/>得到激活图 G_exo / G_ego"]
+        NH["noise-absorbing heads<br/>吸收 exo 图中的背景与人体噪声"]
+    end
+    subgraph S2["阶段 2：Activation → Localization"]
+        CL["DINO 特征无监督聚类<br/>把 ego 图划分为 K 个物体部件"]
+        PM["选出与 G_ego 阈值化区域 IoU 最大的部件<br/>作为伪 mask"]
+        PD["Pixel Decoder 以伪 mask 监督<br/>输出 ego 逐像素 affordance 定位图"]
+        CL --> PM --> PD
+    end
+    subgraph S3["阶段 3：Localization → Activation"]
+        DD["Denoising Distillation<br/>exo 激活特征向 ego 定位特征靠拢<br/>并远离噪声特征"]
+    end
+    IN --> F --> SC
+    SC --- NH
+    SC -->|G_ego| CL
+    F -->|F_ego| CL
+    F -->|F_ego| PD
+    PD --> OUT["输出：egocentric affordance 定位图"]
+    PD -->|定位特征反馈| DD
+    NH --> DD
+    DD -->|反向蒸馏回 SCAM| SC
+```
+
+图依据：论文 §3 Preliminary（特征提取与 CAM）、§4 Method（§4.1 Unified Exo-to-Ego Activation、§4.2 Region Activation to Pixel Localization、§4.3 Ego-to-Exo Denoising Distillation，Fig. 3 / Fig. 4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +83,7 @@ Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2510.17384)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上文「流程总览」（依据论文方法部分），实验与结果请读 [原文](https://arxiv.org/abs/2510.17384)。
 
 ## 评测与指标
 
@@ -67,7 +99,7 @@ Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单�
 
 **本页只提供「LoopTrans」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +120,7 @@ Closed-Loop Transfer for Weakly-supervised Affordance Grounding——在清单�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2510.17384>
+- [arXiv PDF](https://arxiv.org/pdf/2510.17384)：已通读方法部分（实验与附录以略读为准）：§3 Preliminary、§4 Method（§4.1–4.3）、§5.1 数据集与实现
 
 ## 推荐继续阅读
 

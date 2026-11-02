@@ -6,6 +6,7 @@ tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
 updated: 2026-10-28
 related:
+  - ./stringman.md
   - ./flux-3-action.md
   - ../overview/robot-opensource-algorithms-compendium-wechat.md
   - ../concepts/lerobot-envhub.md
@@ -57,6 +58,8 @@ sources:
 | HF Hub | Hugging Face Hub | 模型、数据集、仿真环境与 Spaces 的托管分发平台 |
 | EnvHub | Environment Hub | 从 Hub 仓里的 `env.py` 动态加载仿真环境，见 [LeRobot EnvHub](../concepts/lerobot-envhub.md) |
 | Sim2Real | Simulation to Real | 把仿真里训练 / 评测的策略迁移到真机 |
+
+[Stringman](./stringman.md) 是接入 LeRobot 的房间尺度绳索机器人，可通过遥操作采集示范并训练抓取策略。
 
 ## 为什么重要
 

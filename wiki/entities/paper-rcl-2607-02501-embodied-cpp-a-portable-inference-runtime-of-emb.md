@@ -42,6 +42,23 @@ We present Embodied..cpp, a portable C++ inference runtime for embodied models. 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["传感器：相机 / 力 / 触觉 / IMU<br/>数据集：LIBERO / DROID / BridgeData / RT-X"] --> B["输入适配器 Input Adapters<br/>统一的类型化具身接口"]
+    B --> C["序列构建器 Sequence Builders"]
+    C --> D["骨干执行 Backbone Execution<br/>VLA / WAM / 未来变体共享的执行区"]
+    D --> E["头插件 Head Plugins<br/>未来预测 / 动作专家 / 最终动作生成"]
+    E --> F["部署适配器 Deployment Adapters<br/>（输出适配器，仿真 / 真机）"]
+    F --> G["仿真器 / 真实机器人软件栈"]
+    H["模块化多速率执行<br/>解耦调度与运行时状态"] -.-> D
+    I["延迟优先 batch-1 异构硬件执行<br/>CPU / GPU / NPU 后端"] -.-> D
+    J["具身 AI 内核仓库<br/>可复用算子与模型专用内核"] -.-> D
+```
+
+图依据：论文 §3.2 / Fig.2 与摘要（五层结构：input adapters / sequence builders / backbone execution / head plugins / deployment adapters）；层间顺序为按层名与 Fig.2 左到右的推断，论文正文对 sequence builders 无细述
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +116,7 @@ We present Embodied..cpp, a portable C++ inference runtime for embodied models. 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.02501>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02501)：已通读方法部分（实验与附录以略读为准）：摘要、§3 项目概览（3.1–3.2，含 Fig.2）；其余章节未细读
 
 ## 推荐继续阅读
 

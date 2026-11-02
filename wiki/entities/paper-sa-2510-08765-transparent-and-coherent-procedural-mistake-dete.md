@@ -42,6 +42,24 @@ Generates transparent, coherent natural language explanations for detected proce
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：程序文本 T 与单帧视频画面 F"] --> VQG["VQG：VLM 依据 T 与对话历史生成问题（beam search 得 4 个候选）"]
+    ICL["可选：in-context learning，依据人工示例问题再生成 4 个候选"] -.-> SEL
+    VQG --> SEL["候选选择：默认取最可能且未问过的；或按 相关性 × 潜在信息量 重排序（NLI 模型 BART + MNLI 打分）"]
+    SEL --> VQA["VQA：VLM 仅依据问题与画面作答；答案概率超过 60% 记 Yes/No，否则记 Unsure"]
+    VQA --> HIST["问答追加进对话历史"]
+    HIST --> CLS["成功/错误分类：依据画面与完整对话，用置信阈值 τ 判定（该步不进入历史）"]
+    CLS --> STOP{"早停 ？似然变化小于 δ 连续两轮，或高度确信，或已达 10 个问题"}
+    STOP -->|"否"| VQG
+    STOP -->|"是"| OUT["输出：成功/错误决策 y 与理由 R = (问题序列 Q, 答案序列 A)"]
+    DPO["可选：用 DPO + QLoRA 微调 VQG 适配器，正例为排序最高的问题，负例从后半抽样，推理时仅在 VQG 启用"] -.-> VQG
+```
+
+图依据：论文 §2.2 / Fig.1，§4.1–§4.2（arXiv 编号与页面不符：页面 frontmatter 的 2510.08765 对应的是无关的 UAV/IoT 定位论文，经 arXiv 检索，《Transparent and Coherent Procedural Mistake Detection》的正确编号为 2412.11927）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Generates transparent, coherent natural language explanations for detected proce
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2510.08765>
+- [arXiv PDF](https://arxiv.org/pdf/2412.11927)：已通读 §1、§2、§3、§4 与 §5 开头（附录与其余实验略读）；页面 arXiv 号 2510.08765 与该论文不符，正确编号为 2412.11927
 
 ## 推荐继续阅读
 

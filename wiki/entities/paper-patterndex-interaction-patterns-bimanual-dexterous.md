@@ -46,6 +46,41 @@ summary: "PatternDex（arXiv:2610.04765）：从人类示范学习交互模式�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["人类 hand-object 示范 (ARCTIC)<br/>物体状态 O_t + 人类腕部位姿 W_t"]
+    subgraph P["预测阶段：guidance predictor G"]
+        F["空间网络 f (MLP)<br/>O_t, W_t → 空间 token"]
+        T["时间网络 T (自注意力 4 层)<br/>H+1 帧 token 序列"]
+        PI["interaction pattern P_I<br/>与手型无关"]
+        R["机器人手描述 R (URDF)"]
+        PHI["embodiment encoder φ → 嵌入 token T_E"]
+        M["memory M = [P_I ; T_E]"]
+        DEC["解码器 D (6 层，ACT 式 chunk 预测)<br/>wrist head + contact head"]
+        F --> T --> PI --> M
+        R --> PHI --> M
+        M --> DEC
+    end
+    D --> F
+    DEC --> W["估计的机器人腕部运动 W^"]
+    DEC --> C["估计的接触点 C^"]
+    subgraph L["引导策略学习阶段：PPO (Isaac Gym)"]
+        POL["策略 π：输入 s_t、参考物体轨迹 O_t:t+H、C^"]
+        ACT["动作：手指目标关节角 + 腕部残差 Δa"]
+        REW["奖励 = 物体奖励 r_obj + 接触奖励 r_cont"]
+        POL --> ACT --> REW
+        REW -.-> POL
+    end
+    W --> ACT
+    C --> POL
+    ACT --> OUT["双手 Allegro + xArm6：仿真与真机开微波炉"]
+    PI -. "换新手型只需微调 D 与 φ" .-> DEC
+```
+
+图依据：论文 §III、§IV-A/B / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +124,7 @@ summary: "PatternDex（arXiv:2610.04765）：从人类示范学习交互模式�
 - [patterndex_interaction_patterns_bimanual_dexterous_arxiv_2610_04765.md](../../sources/papers/patterndex_interaction_patterns_bimanual_dexterous_arxiv_2610_04765.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.04765](https://arxiv.org/abs/2610.04765)
+- [arXiv PDF](https://arxiv.org/pdf/2610.04765)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 问题定义、§IV 方法（预测阶段与引导策略学习）、§V 评测设定
 
 ## 推荐继续阅读
 

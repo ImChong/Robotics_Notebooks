@@ -42,6 +42,30 @@ Enhances 4D world models using in-the-wild monocular videos.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练（全程仅用单目视频）"]
+        direction TB
+        KF["单目视频稀疏关键帧"] --> OFR["在线前馈重建得 4DGS"]
+        OFR --> DEG["单目退化模拟：可见性高斯剔除（遮挡）、平均几何滤波（飞边像素 / 畸变）"]
+        DEG --> CTRL["退化渲染 RGB / 深度 / 掩码 + Plücker 嵌入 → 控制分支"]
+        CTRL --> GENM["Wan-T2V 14B 视频生成（rectified flow）：冻结主干，仅训练控制分支；原视频作目标"]
+    end
+    subgraph INF["推理"]
+        direction TB
+        VID["单目输入视频"] --> REC["位姿无关前馈 4DGS 重建（VGGT 骨干 + 双向运动编码）"]
+        REC --> OUT1["动态 4D 高斯 + 逐帧相机参数"]
+        OUT1 --> MS["全局运动跟踪：按速度分离静态 / 动态高斯，可选时间聚合与插值"]
+        MS --> RND["沿新轨迹渲染退化条件"]
+        RND --> GEN2["生成模型输出新视角视频"]
+    end
+    TR -.->|"训练得到的生成模型"| GEN2
+```
+
+图依据：论文 §3.1–3.4（Fig.2 框架、Fig.3 退化模拟、训练与推理流程）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Enhances 4D world models using in-the-wild monocular videos.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.00393>
+- [arXiv PDF](https://arxiv.org/pdf/2601.00393)：已通读方法部分（实验与附录以略读为准）：§3（4DGS 重建、双向运动建模、退化模拟、训练方案、推理）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

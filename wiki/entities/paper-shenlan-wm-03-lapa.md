@@ -39,6 +39,19 @@ sources:
 - 无动作标签互联网视频学离散潜在动作，少量机器人微调超越完整标签 SOTA VLA。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 01**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["无动作标注视频 + 语言指令"] --> B["1. Latent Action Quantization（VQ-VAE 目标，NSVQ）<br/>编码器输入当前帧 x_t 与未来帧 x_t+H → 离散潜动作 z_t<br/>解码器用 z_t 与 x_t 重建 x_t+H"]
+  B --> C["用编码器作逆动力学模型，给所有帧标注潜动作 z_t"]
+  C --> D["2. Latent Pretraining<br/>预训练 VLM 根据指令与当前图像预测 z_t（行为克隆形式）<br/>接单层 MLP 潜动作头，冻结视觉编码器"]
+  D --> E["3. Action Finetuning<br/>少量带真实动作（末端 delta）的轨迹<br/>丢弃潜动作头，换新动作头"]
+  E --> F["可在真机执行的 LAPA 策略"]
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -87,6 +100,7 @@ sources:
 - [shenlan_wm_survey_03_lapa.md](../../sources/papers/shenlan_wm_survey_03_lapa.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2410.11758)：已通读方法部分（实验与附录以略读为准）：§3 LAPA（3.1 Latent Action Quantization、3.2 Latent Pretraining、3.3 Action Finetuning）、Fig. 2
 
 ## 推荐继续阅读
 

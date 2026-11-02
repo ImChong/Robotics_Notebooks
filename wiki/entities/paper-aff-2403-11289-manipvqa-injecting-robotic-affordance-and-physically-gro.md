@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into Multi-Modal Large Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into Multi-Modal Large Language Models——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["指令数据集构建 (§III-B)"]
+        D1["机器人 affordance：HANDAL、RGB-D Part Affordance"]
+        D2["物理概念：PhysObjects（透明/储液/可密封）"]
+        D3["通用视觉推理：PACO、RefCOCO、Visual Genome"]
+        D4["GPT-4 生成复杂 affordance grounding 任务（Listing 1 提示）"]
+    end
+    D1 --> VQA["统一为 VQA 格式：REC / REG 及 REC-Grounding-Affordance、REC-Physical"]
+    D2 --> VQA
+    D3 --> VQA
+    D4 --> VQA
+    VQA --> FT["微调 SPHINX MLLM：LLaMA2 语言骨干<br/>CLIP 视觉编码器 + Q-Former，448 图切 4 个 224 子图<br/>视觉编码器冻结，统一交叉熵损失"]
+    FT --> OUT["输出：目标区域 bounding box 或物理属性回答"]
+    OUT --> POL["接机器人策略：SAM-HQ 由框得 mask<br/>mask 几何中心作为接触点 + 启发式策略 (SAPIEN 仿真)"]
+```
+
+图依据：论文 §III-B 数据集构建、§III-C 任务形式、§III-D 模型与微调、§IV-A-2 / Fig.6（接入机器人策略）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +72,7 @@ ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2403.11289)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2403.11289)。
 
 ## 评测与指标
 
@@ -67,7 +88,7 @@ ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into 
 
 **本页只提供「ManipVQA」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +109,7 @@ ManipVQA: Injecting Robotic Affordance and Physically Grounded Information into 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2403.11289>
+- [arXiv PDF](https://arxiv.org/pdf/2403.11289)：已通读方法部分（实验与附录以略读为准）：§III 方法（affordance 与物理概念建模、数据集构建、任务形式、MLLM 微调策略）、§IV-A 实现细节、§IV-C 仿真中的机器人操作与 Fig.6 图注
 
 ## 推荐继续阅读
 

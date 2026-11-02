@@ -21,7 +21,7 @@ summary: "Distilled Tree Search Rearrangement：通过连续动作空间树搜�
 
 # Distilled Tree Search Rearrangement：通过连续动作空间树搜索蒸馏实现长程多物体重排
 
-**Distilled Tree Search Rearrangement**（*Long-Horizon Multi-Object Rearrangement via Distilled Tree Search over Continuous Actions*，[arXiv:2610.25785](https://arxiv.org/abs/2610.25785)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Distilled Tree Search Rearrangement**（*Long-Horizon Multi-Object Rearrangement via Distilled Tree Search over Continuous Actions*，[arXiv:2610.25785](https://arxiv.org/abs/2610.25785)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -37,6 +37,31 @@ summary: "Distilled Tree Search Rearrangement：通过连续动作空间树搜�
 ## 为什么重要
 
 - 周报所述待解决的问题：长程物体重排需要考虑当前动作对后续操作的影响。树搜索能够规划未来，但在连续高维动作空间中直接搜索计算成本很高。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["单物体 Pick / Place 子任务示范 D"] --> BC["行为克隆预训练策略 π_θ<br/>(改自 3D FlowMatch Actor)"]
+    BC --> SEL
+    subgraph SEARCH["训练期: 仿真中的渐进拓宽 MCTS (GPU 并行, ManiSkill3)"]
+        SEL["UCB 选择顶点"] --> PWC{"子节点数 < k·N(v)^α ?"}
+        PWC -- 是 --> EXP["Vertex Expansion<br/>π_θ 采样连续动作 → 运动规划 → 仿真得新状态"]
+        PWC -- 否 --> ROLL
+        EXP --> ROLL["Value-Guided Rollout<br/>批量采样动作, 按 Q_φ 选最高分<br/>至目标 / 视野耗尽 / 无可行动作"]
+        ROLL --> BP["回传进度回报 R = κ(s_T) - κ(s_0)<br/>更新访问数与 Q"]
+        BP --> SUCC["记录成功终止顶点 V_succ / 恢复计划"]
+    end
+    SUCC --> DIS{"达到蒸馏间隔 N_distill ?"}
+    BP --> DIS
+    DIS -- 否 --> SEL
+    DIS -- 是 --> DST["Iterative Distillation<br/>价值: 子树成功叶子比例 + 加权 BCE 训练 Q_φ<br/>策略: 所有可行边的 flow-matching 损失训练 π_θ"]
+    DST --> RST["重置搜索树, 以更新后的 π_θ / Q_φ 继续搜索"]
+    RST --> SEL
+    DST --> DEP["测试期: 点云 → 蒸馏策略-价值模型直接出动作<br/>无需仿真器与搜索"]
+```
+
+图依据：论文 §4.1–4.3 / Fig.2 / Algorithm 1
 
 ## 核心机制
 
@@ -88,6 +113,8 @@ summary: "Distilled Tree Search Rearrangement：通过连续动作空间树搜�
 - [distilled-tree-search-multi-object-rearrangement_arxiv_2610_25785.md](../../sources/papers/distilled-tree-search-multi-object-rearrangement_arxiv_2610_25785.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.25785](https://arxiv.org/abs/2610.25785)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25785)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 问题设定、§4 DISCO（4.1 连续动作 MCTS / 4.2 价值引导 rollout / 4.3 迭代蒸馏，含 Algorithm 1）、§5 实验设定与表 1
+
 
 ## 推荐继续阅读
 

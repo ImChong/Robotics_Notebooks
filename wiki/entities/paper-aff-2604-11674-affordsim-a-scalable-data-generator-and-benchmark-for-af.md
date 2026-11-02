@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action · Simulation benchmark） ｜ Datasets / Benchmarks（Data Modality: simulation/3D/robot action）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic Manipulation——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action · Simulation benchmark） ｜ Datasets / Benchmarks（Data Modality: simulation/3D/robot action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["自然语言任务描述"] --> VS["VLM 场景解析（Qwen-VL-Plus）<br/>物体与关系 → 场景图 G"]
+    IN --> VT["VLM 任务解析<br/>操作原语与 object-action 条目"]
+    VS --> AR["按类别与属性检索 USD 资产<br/>拒绝采样做无碰撞摆放，装配仿真场景"]
+    VT --> Q["每个功能接触区域一条 affordance query"]
+    subgraph GS["两阶段抓取选择（§3.2）"]
+        A3D["开放词表 3D affordance 模型<br/>输入资产自带点云 + query，输出逐点二值 mask"] --> S1["Stage 1：mean-shift 聚类取接触点<br/>PCA 估法向，采样 K 个接近方向得到候选抓取"]
+        S1 --> S2["Stage 2：cuRobo 规划预抓取轨迹<br/>得分 = 1/关节空间弧长，碰撞则为 0，取最高分"]
+    end
+    Q --> A3D
+    AR --> A3D
+    S2 --> EX["cuRobo 规划闭合、抬起、任务完成段<br/>仿真执行完整轨迹"]
+    EX --> DR["域随机化：背景（纹理或 3DGS 真实场景重建）、<br/>光照、物体纹理、物体位姿、图像噪声"]
+    DR --> OUT["可用于模仿学习的演示数据"]
+```
+
+图依据：论文 §3 AffordSim Framework 开头概述、§3.1 VLM-Powered Task and Scene Generation、§3.2 Affordance-Aware Trajectory Collection、§3.3 Domain Randomization（50 任务基准见 §3.4，未入图）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +73,7 @@ AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2604.11674)。
+清单只给出标题、出处与分类标签，没有方法摘要；网络结构与流程见上方「流程总览」（依据论文方法部分），训练细节与实验请读 [原文](https://arxiv.org/abs/2604.11674)。
 
 ## 评测与指标
 
@@ -68,7 +89,7 @@ AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic 
 
 **本页只提供「AffordSim」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +110,7 @@ AffordSim: A Scalable Data Generator and Benchmark for Affordance-Aware Robotic 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2604.11674>
+- [arXiv PDF](https://arxiv.org/pdf/2604.11674)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4
 
 ## 推荐继续阅读
 

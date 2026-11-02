@@ -42,6 +42,27 @@ Uses a pretrained VLM as the source of both scene understanding and cross-scan m
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考 / 源 RGB 序列<br/>V_ref、V_src"] --> B["几何基础模型 VGGT-Ω<br/>逐帧深度、内参、相机位姿"]
+    A --> C["VLM 对象列表<br/>(至多 20 个、五类 prompt 设计)"]
+    C --> D["SAM 3 文本提示视频分割<br/>实例级持久 mask"]
+    B --> E["反投影 + 体素化 per-instance fusion<br/>逐体素多数投票合并 ID"]
+    D --> E
+    E --> F["开放词汇场景图<br/>G_ref、G_src"]
+    F --> G["按重力轴高度分 K=5 分位桶<br/>相邻桶 20% 重叠"]
+    G --> H["VLM + Set-of-Marks 两面板匹配<br/>候选对"]
+    H --> I["same? / different? 双问复核<br/>一致才保留 → 对应集 C"]
+    I --> J["每个匹配对 RANSAC<br/>得到候选变换 T_i"]
+    J --> K["按内点率打分<br/>取最高者为最终 T ∈ SE(3)"]
+    I -. C 为空 .-> L["回退：用同一描述子<br/>直接配准整幅点云"]
+    L -.-> K
+```
+
+图依据：论文 §3 / Fig.2（§3.1 场景解析、§3.2 跨扫描对应、§3.3 位姿假设与投票）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Uses a pretrained VLM as the source of both scene understanding and cross-scan m
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.16569>
+- [arXiv PDF](https://arxiv.org/pdf/2606.16569)：已通读方法部分（实验与附录以略读为准）：§3 方法（场景解析、跨扫描实例对应、位姿假设与投票）、§4.1 实现细节；§4 其余部分略读
 
 ## 推荐继续阅读
 

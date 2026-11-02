@@ -42,6 +42,24 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  AUD["当前音频片段 → 频谱图\n(水填充任务: log Mel, 128x128)"] --> AE["AudioMAE 编码器\n得到音频 latent"]
+  AE --> FM["Latent flow matching 世界模型\n(DiT 改造的向量场预测器, 条件: 当前音频 latent)\n损失 = flow matching + 速度(时间差分)损失"]
+  FM --> ODE["从噪声起多步 ODE 积分\n得到未来音频 latent"]
+  ODE --> DEC["AudioMAE 解码器 → 未来频谱图"]
+  AUD --> POL
+  IMG["当前图像观测 (224x224)"] --> POL
+  DEC --> POL["Flow matching 机器人策略\n条件: 当前音频 + 图像 + 预测的未来音频"]
+  POL --> ACT["末端执行器速度动作块 (16 步)"]
+  ACT -. 闭环执行 .-> AUD
+  PIANO["钢琴任务替换件: MusicVAE 编解码 MIDI,\n策略换为 SAC; 预测的未来音乐作为目标状态"] -.-> FM
+```
+
+图依据：论文 §2 方法（音频自编码器、latent flow matching、机器人策略、训练细节）/ Fig.1、§3 实验设定中的闭环与钢琴替换件
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=z3DcbKdjom>
+- [arXiv PDF](https://arxiv.org/pdf/2512.08405)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 方法、§3.1–§3.2 实验设定
 
 ## 推荐继续阅读
 

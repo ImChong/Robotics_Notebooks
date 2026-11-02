@@ -42,6 +42,24 @@ summary: "VecTile（arXiv:2610.31472）：VecTile以硅胶凸点将三轴接触�
 - 开源结论：**待发布**（步骤 2.5，2026-10-29）。项目页 HTTP 200，页面写 Code upon acceptance（论文录用后释出）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    F["接触力 Fx, Fy, Fz 作用于硅胶 nub"] --> NUB["nub-lever 机制：Fz 使四个象限读数同升<br/>剪切使 nub 倾斜，载荷由后侧转向前侧"]
+    NUB --> Q["每个 taxel 的四个压阻象限：银纤维织物受压电阻下降<br/>4×4 taxel = 8×8 行列矩阵（FPC）"]
+    Q --> SCAN["驱动一列、读一行的矩阵扫描<br/>LM358 跨阻放大器保持非激活列为 0 V 虚地"]
+    SCAN --> ADC["Arduino Nano ADC：10 位转换后舍弃低 2 位<br/>每象限 1 字节；64 字节帧以 2 Mbaud 传输，约 343 Hz"]
+    ADC --> FEAT["基线扣除；象限和得法向特征 Σ，对向象限差投影得剪切特征 D"]
+    FEAT --> DEC["每个 taxel 的二次多项式解码器（最小二乘）<br/>四个象限读数 → Fx, Fy, Fz"]
+    CAL["校准：ATI Mini40 F/T 参考<br/>机器人受控采集，或每个 nub 手动快速加载约数分钟"] --> DEC
+    DEC --> SUM["多 nub 接触：对各 taxel 的法向与剪切力求和"]
+    SUM --> APP1["应用 A：单个 taxel 剪切变化超过 0.1 N 阈值时手术刀-气球反射回撤"]
+    SUM --> APP2["应用 B：96 个基线扣除通道 → PCA 取 16 个主成分<br/>与 ResNet-18 图像特征、末端位姿、夹爪宽度一起输入视觉触觉 Diffusion Policy"]
+```
+
+图依据：论文 §III（Fig. 2、nub-lever 机制）、§IV-C/D（解码器与校准）、§V（Fig. 8 两个演示）；“多 nub 求和”见 §IV-D。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +103,7 @@ summary: "VecTile（arXiv:2610.31472）：VecTile以硅胶凸点将三轴接触�
 - [vectile_arxiv_2610_31472.md](../../sources/papers/vectile_arxiv_2610_31472.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.31472](https://arxiv.org/abs/2610.31472)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31472)：已通读方法部分（实验与附录以略读为准）：§I、§III（A–C）、§IV（A–D）、§V（A、B）
 
 ## 推荐继续阅读
 

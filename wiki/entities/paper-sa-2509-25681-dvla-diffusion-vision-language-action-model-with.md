@@ -42,6 +42,26 @@ Diffusion VLA with multimodal chain-of-thought.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["多视角观测图像 o"] --> TOK1["MAGVIT-v2 图像 token"]
+    LANG["语言指令 l"] --> TOK2["LLaDA 文本 tokenizer"]
+    STATE["机器人状态 s（离散化为文本 token）"] --> TOK2
+    TOK1 --> SEQ["统一离散 token 序列<br/>[o, l, s | o_goal, r, a_chunk]"]
+    TOK2 --> SEQ
+    SEQ --> MMADA["dVLA：基于 MMaDA 初始化的离散扩散模型<br/>训练：随机掩码各模态 token，仅对被掩码位置算损失 L_unify"]
+    MMADA --> COT1["视觉 CoT：子目标图像 o_goal"]
+    MMADA --> COT2["文本 CoT：推理 / 子任务 r"]
+    COT1 --> ACT["动作 token a_chunk"]
+    COT2 --> ACT
+    ACT --> DETOK["Fast tokenizer 解码<br/>得到连续动作块并执行"]
+    ACC["加速：前缀注意力掩码（两块 [o,l,s] 与 [o_goal,r,a_chunk]）<br/>+ dLLM-Cache KV 缓存"] -.-> MMADA
+```
+
+图依据：论文 §3.1–§3.4（式 1、Fig.1 架构、多模态 CoT 序列格式）；末端 Fast tokenizer 解码为连续动作按 §3.1/§3.5 的 tokenization 与去归一化描述归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Diffusion VLA with multimodal chain-of-thought.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.25681>
+- [arXiv PDF](https://arxiv.org/pdf/2509.25681)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.5 方法与实验设定
 
 ## 推荐继续阅读
 

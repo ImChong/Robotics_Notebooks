@@ -42,6 +42,26 @@ Recovers simulatable human motion and scene geometry from monocular video. Reduc
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["单目人类视频 (人与静态场景交互)"] --> INIT["MegaSAM (深度估计换为 MoGe)\n相机内外参 + 稠密点云 P"]
+  V --> GV["GVHMR\nSMPL 人体网格, 用相机位姿提升到世界系"]
+  INIT --> SCALE["以人体尺度恢复度量尺度点云"]
+  GV --> SCALE
+  SCALE --> PLANE["法向 K-means 聚类 → DBSCAN 空间拆分\n→ 光流跨帧合并 → RANSAC 拟合平面\n得到约 50 个凸平面 cuboid 基元"]
+  GV --> CONTACT["InteractVLM 预测 SMPL 顶点接触\n时间-运动学过滤"]
+  CONTACT --> COMP["接触点补全被遮挡的支撑面几何"]
+  PLANE --> SCENE["可仿真场景几何"]
+  COMP --> SCENE
+  SCENE --> RL["Isaac Gym 中 PPO 训练人形运动跟踪策略\n(MaskedMimic 式观测 / 动作 / 奖励)"]
+  GV --> RL
+  RL --> OUT["物理可行的人体运动 + 交互环境"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.3、附录 B–C 算法
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Recovers simulatable human motion and scene geometry from monocular video. Reduc
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2512.14696>
+- [arXiv PDF](https://arxiv.org/pdf/2512.14696)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–§3.4、附录 B–C
 
 ## 推荐继续阅读
 

@@ -43,6 +43,37 @@ In this paper, we propose FAWAM, a force-aware world action model that incorpora
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph A["Force-Envisioned Action Model（1 Hz）"]
+        F1["近期 6 轴力/力矩历史 w"] --> F2["力编码器 Enc_f（MLP）→ 接触特征 c_t"]
+        V1["多视角视觉历史 + 语言指令"] --> V2["视频世界模型（基于 GE-Base 微调）<br/>→ 视觉特征"]
+        F2 --> M["force-conditioned AdaLN-Zero 调制<br/>为各 action DiT 块的参数加偏移"]
+        V2 --> D["action DiT 解码器（基于 GE-Act）"]
+        Q["本体感觉 q_t"] --> D
+        M --> D
+        D --> O["联合输出：动作块 A + 未来 wrench 轨迹 W"]
+    end
+    subgraph B["Force-Guided Residual Corrector（10 Hz）"]
+        O -->|"基础动作块 a_base 与预测 wrench w_pred"| R["三层 MLP Res_φ"]
+        MEAS["实时 wrench 反馈 w_meas"] --> E["wrench 预测偏差 e_w = w_pred - w_meas"]
+        O -->|"w_pred"| E
+        E --> R
+        F2 -.->|"同一冻结力编码器的 c_t"| R
+        R --> RES["残差动作 Δa + 残差门 g_res"]
+        RES --> G{"g_res > τ = 0.8 ?"}
+        G -- "是" --> COR["a_cor = a_base + Δa"]
+        G -- "否" --> BASE["保持 a_base"]
+    end
+    COR --> EXE["执行"]
+    BASE --> EXE
+    TRN["训练：Stage1 微调视频世界模型 → Stage2 冻结视频模型、训练动作+力联合流匹配；<br/>残差模块用 FACTR 遥操作人工干预数据训练"] -.-> A
+```
+
+图依据：论文 §3 Method / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +131,7 @@ In this paper, we propose FAWAM, a force-aware world action model that incorpora
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.08555>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08555)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method（3.1-3.3，Fig.2）；§4 实验略读
 
 ## 推荐继续阅读
 

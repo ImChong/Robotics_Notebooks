@@ -42,6 +42,25 @@ Proposes a real-to-sim-to-real shared autonomy framework that augments human tel
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["少量真实遥操作示教"] --> B["real-to-sim：拟合 kNN Pilot<br/>标定仿真控制器与物理参数"]
+    B --> C["仿真环境<br/>kNN Pilot 作为人类替身 + 导纳控制"]
+    C --> D["pilot 指令 a_h：动作 chunk + 局部平滑扰动"]
+    D --> E["Residual Copilot（MLP 高斯策略）<br/>输入环境状态与 pilot 指令，输出残差 a_res"]
+    E --> F["最终指令 a = a_h ⊕ α·a_res"]
+    F --> G["导纳控制执行<br/>虚拟弹簧-质量-阻尼"]
+    G --> H["奖励 R_general + R_success<br/>PPO 无模型强化学习更新 Copilot"]
+    H --> E
+    E --> I["sim-to-real 部署<br/>控制器参数与物体位姿观测的域随机化"]
+    I --> J["真实遥操作辅助"]
+    K["真实人类 pilot"] --> J
+```
+
+图依据：论文 §III-A–D（Problem Definition、Human Surrogate、Admittance Control、Real-to-Sim-to-Real）、附录 B 表 IV（域随机化）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Proposes a real-to-sim-to-real shared autonomy framework that augments human tel
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2603.17016>
+- [arXiv PDF](https://arxiv.org/pdf/2603.17016)：已通读方法部分（实验与附录以略读为准）：§III 方法全部小节；附录 B 略读；§IV 实验略读
 
 ## 推荐继续阅读
 

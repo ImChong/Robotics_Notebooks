@@ -20,7 +20,7 @@ summary: "Live Thread Reconstruction：面向自主操作的实时线状物体�
 
 # Live Thread Reconstruction：面向自主操作的实时线状物体重建
 
-**Live Thread Reconstruction**（*Live Thread Reconstruction for Autonomous Manipulation*，[arXiv:2610.30694](https://arxiv.org/abs/2610.30694)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Live Thread Reconstruction**（*Live Thread Reconstruction for Autonomous Manipulation*，[arXiv:2610.30694](https://arxiv.org/abs/2610.30694)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,28 @@ summary: "Live Thread Reconstruction：面向自主操作的实时线状物体�
 ## 为什么重要
 
 - 周报所述待解决的问题：线状柔性物体容易发生弯曲、遮挡和形变，机器人需要持续估计其形状才能进行精细操作。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["dVRK 立体图像（校正后立体对）+ 二值分割掩码 M"] --> KP["关键点选择<br/>SSD 立体匹配 → 3D → 工作空间滤波 → 聚类"]
+    KP --> INT["交叉检测<br/>2D 结构张量 + RANSAC 臂段"]
+    INT --> ORD["关键点排序"]
+    ORD -->|"首帧：冷排序"| CO["邻接图最短路径参数 s_i"]
+    ORD -->|"后续帧：暖排序"| WO["与上一帧 EKF 后验匹配<br/>得到匹配质量 q_i"]
+    CO --> INIT["首帧初始化<br/>B 样条控制点 QP：最小化弯曲能量"]
+    WO --> EKF["样条状态 EKF<br/>过程模型：控制点随工具运动形变<br/>量测：关键点，按 c_i·q_i 加权"]
+    INIT --> EKF
+    EKF -->|"后验作为下一帧参考"| WO
+    EKF --> GRASP["约束抓取点优化<br/>安全与任务准则"]
+    GRASP --> MAN["操作策略（按任务）"]
+    MAN --> NP["针拾取：沿线上移抓取，拉-抬-固定循环"]
+    MAN --> DT["解缠：抬起最高的链段并解开交叉"]
+    MAN --> KT["线结收紧：接力式拉紧至手持点到达线结"]
+```
+
+图依据：论文 §I（四个组成部分）、§II-A–F、Fig. 1–2；“抓取点优化 → 操作”的衔接依据引言对四个组成部分的顺序描述。
 
 ## 核心机制
 
@@ -87,6 +109,7 @@ summary: "Live Thread Reconstruction：面向自主操作的实时线状物体�
 - [live-thread-reconstruction-manipulation_arxiv_2610_30694.md](../../sources/papers/live-thread-reconstruction-manipulation_arxiv_2610_30694.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.30694](https://arxiv.org/abs/2610.30694)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30694)：已通读方法部分（实验与附录以略读为准）：§I–III（引言、方法全文、实验设定与结果）
 
 ## 推荐继续阅读
 

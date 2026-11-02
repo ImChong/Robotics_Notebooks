@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-02
 summary: "Humanoid Hardware 101 · 06 传感与末端 — IMU/相机可commodity；触觉占手部 BOM 大头；多数任务不必 24DoF 全驱动灵巧手。"
 related:
+  - ../concepts/dexterous-hand-payload-core-metrics.md
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../concepts/visuo-tactile-fusion.md
@@ -47,6 +48,7 @@ sources:
 - 文内：工业取放、家务（[Sunday 三指](../entities/sunday-robotics-act2.md) 等）证明 **不必人手形态** 才能干活；韩国 [DEUX](../entities/xyz-deux.md)（XYZ，2026）同样押注 **三指专有手 + Glove X 1:1 采数**；自变量 [TwinDEX](../entities/twindex.md)（2026-09）把三指定为「灵巧最小可行解」并用 **7 主动 / 2 被动** 外骨骼–机械手共设计做无本体采数。
 
 ## 关联页面
+- [灵巧手负载与核心指标](../concepts/dexterous-hand-payload-core-metrics.md)
 
 - [ACT-2 / Sunday Robotics](../entities/sunday-robotics-act2.md) — Memo 家用平台与三指家务夹爪产业案例
 - [DEUX（XYZ）](../entities/xyz-deux.md) — 半人形服务机器人 + 三指手 + Glove X 商业样本

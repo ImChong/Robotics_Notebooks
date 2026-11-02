@@ -42,6 +42,29 @@ A mixed-initiative framework for annotating egocentric procedural video by const
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第一人称视频片段 + 单手流的部分事件状态<br/>(onset、verb、noun 存在性、noun；各字段状态 空/建议/已确认)"] --> HOP["HOP 手部引导的 onset 先验<br/>由手部轨迹生成候选并打分，选出 onset 与 onset band<br/>证据不足时弃权，退回时间线引导"]
+    HOP --> FEAT["事件局部特征：部分状态 + verb/noun 线索 + 冻结视频骨干的全局与 onset 局部特征"]
+    FEAT --> AD["轻量语义 adapter<br/>联合输出 onset / verb / noun 存在性 / noun 的分数"]
+    AD --> SCR["SCR 统计引导协同精修<br/>用历史统计（先验、共现、无 noun 倾向）确定性重加权<br/>依赖顺序：noun 存在性 → noun → verb → onset"]
+    SCR --> RD["特征回注并二次解码<br/>二次结果仅在联合得分提升时采纳"]
+    LOCK["人工锁定字段：clamp 到已确认值 + 本体合法性约束"] --> DEC["Lock 约束解码得到事件假设"]
+    RD --> DEC
+    DEC --> TSC["TSC 信任校准监督控制器<br/>候选干预按 效用 + 增益 − 代价 − 覆盖风险 排序<br/>剔除违反锁或超出权限者"]
+    TSC --> Q["直接询问人工"]
+    TSC --> C["给出建议待人工确认"]
+    TSC --> A["保守的局部自动补全"]
+    Q --> H["标注员响应：接受/编辑 → 字段变为已确认"]
+    C --> H
+    A --> H
+    H -->|"更新事件状态，记录交互日志用于重新校准"| IN
+```
+
+图依据：论文 §III（A 问题设定、B HOP、C 事件局部补全含 SCR 与特征回注、D 人工锁 clamp-and-re-decode、E TSC、F 人机监督闭环）/ Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ A mixed-initiative framework for annotating egocentric procedural video by const
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.01666>
+- [arXiv PDF](https://arxiv.org/pdf/2605.01666)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法（A–F）、§IV 用户研究协议与主结果
 
 ## 推荐继续阅读
 

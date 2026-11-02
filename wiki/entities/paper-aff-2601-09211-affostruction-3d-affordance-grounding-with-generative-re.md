@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affostruction: 3D Affordance Grounding with Generative Reconstruction——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affostruction: 3D Affordance Grounding with Generative Reconstruction——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Spatial）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,23 @@ Affostruction: 3D Affordance Grounding with Generative Reconstruction——在�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：多视角 RGBD 图像 + 相机参数；affordance 文本查询 q"] --> S1["阶段1：生成式多视角重建<br/>DINOv2 特征按深度反投影为稀疏体素并融合（重叠体素取平均）+ 3D 位置编码"]
+    S1 --> FT["TRELLIS 流 transformer（cross-attention 条件）<br/>补全含未观测区域的完整 3D 结构"]
+    FT --> SP["稀疏结构（占据体素）"]
+    Q["CLIP 文本编码器"] --> S2
+    SP --> S2["阶段2：基于流的 affordance 接地<br/>稀疏流 transformer 在完整形状上去噪生成 affordance logits"]
+    S2 --> HM["affordance 热图（3D 完整形状）"]
+    HM --> S3["阶段3：affordance 驱动的主动视角选择<br/>渲染 affordance 着色网格，候选位姿中取可见度分数最高者"]
+    S3 --> NV["采集下一视角 RGBD，加入视角集合"]
+    NV --> S1
+```
+
+图依据：论文 §3（Affostruction）/ Fig.2；§3.2 重建、§3.3 affordance 接地、§3.4 主动视角选择。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +68,7 @@ Affostruction: 3D Affordance Grounding with Generative Reconstruction——在�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2601.09211)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2601.09211)。
 
 ## 评测与指标
 
@@ -67,7 +84,7 @@ Affostruction: 3D Affordance Grounding with Generative Reconstruction——在�
 
 **本页只提供「Affostruction」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +105,7 @@ Affostruction: 3D Affordance Grounding with Generative Reconstruction——在�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2601.09211>
+- [arXiv PDF](https://arxiv.org/pdf/2601.09211)：已通读方法部分（实验与附录以略读为准）：§3.1 TRELLIS 预备、§3.2 生成式多视角重建、§3.3 流式 affordance 接地、§3.4 主动视角选择
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Drive-HWM couples a periodically refreshed predictor of future motion latents wi
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["历史观测与指令"] --> B["慢世界模型 VL-JEPA：每 N 步更新一次<br/>由同一历史并行预测 K 个未来偏移"]
+    B --> C["动态感知潜变量 DAL（光流解码前的隐表示）"]
+    B -. "训练：光流监督 L_flow" .-> O["光流解码器 D_flow → 未来光流"]
+    C --> D["取最近一次慢更新的对齐 DAL：q_t"]
+    E["当前观测（Emu3 视觉 tokenizer）+ 指令 + 动作历史"] --> F["Emu3-8B 骨干得到隐状态 H_t"]
+    D --> G["FiLM 调制各层隐状态"]
+    F --> G
+    G --> H["自回归动作专家"]
+    H --> I["下一步动作 token"]
+    H -. "训练：下一帧视觉 token 辅助损失 L_img" .-> J["预测下一帧 V_t+1"]
+```
+
+图依据：论文 §III（A–C 节）/ Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Drive-HWM couples a periodically refreshed predictor of future motion latents wi
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03572>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03572)：已通读方法部分（实验与附录以略读为准）：§III 方法（总览、慢世界模型、快世界模型）；实验仅略读
 
 ## 推荐继续阅读
 

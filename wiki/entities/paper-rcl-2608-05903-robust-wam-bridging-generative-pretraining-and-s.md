@@ -42,6 +42,26 @@ To overcome this dilemma, we propose Robust-WAM, a general post-training method 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前观测 o_t + 语言指令 ℓ"] --> VGM["预训练视频生成模型 VGM（VAE 潜空间）<br/>去噪未来 T_f 帧的 VAE 潜变量 → 视频隐状态 H_v"]
+    VGM -->|"action blocks 通过注意力读取 H_v"| ACT
+    Q["K 个可学习 query token（每个未来帧 × 相机视角一个）"] --> POS["借用对应动作步的位置编码 Φ(q, τ_j)"]
+    AT["带噪动作 token h_a（L 个，每个控制步一个）"] --> ACT
+    POS --> ACT["动作流（原 action blocks 不改）：query 与动作 token 同序列拼接，互相注意力"]
+    ACT --> AH["动作 token 输出 → 原动作头 → 动作 chunk"]
+    ACT --> QO["query 输出 → 线性头 g"]
+    GT["训练时：未来真值帧 → 冻结 DINOv3 取 CLS 嵌入 z*"] --> AL["逐 query 余弦对齐损失 L_align"]
+    QO --> AL
+    AL --> LOSS["总损失：L = L_WAM(L_video + λ_a·L_act) + λ_align·L_align"]
+    AH --> LOSS
+    LOSS --> INF["推理：丢弃 DINOv3 教师与头 g，仅保留 K 个 query token 留在动作流中"]
+```
+
+图依据：论文 §3.1–§3.3（语义前瞻对齐）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +119,7 @@ To overcome this dilemma, we propose Robust-WAM, a general post-training method 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.05903>
+- [arXiv PDF](https://arxiv.org/pdf/2608.05903)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.3）、§4.1 实验设定
 
 ## 推荐继续阅读
 

@@ -12,7 +12,7 @@ tags:
 - repo
 - vision-language-action
 status: complete
-updated: 2026-10-06
+updated: 2026-11-02
 arxiv: '2406.09246'
 code: https://github.com/openvla/openvla
 related:
@@ -29,12 +29,14 @@ related:
 - ../overview/vla-open-source-repro-landscape-2025.md
 - ./paper-temporal-grpo.md
 - ./paper-arcadia.md
+- ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
 - ../../sources/papers/openvla_arxiv_2406_09246.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
 - ../../sources/blogs/wechat_freedof_openvla_perception_to_action_chain_2026-09-30.md
 - ../../sources/repos/openvla.md
 - ../../sources/papers/arcadia_arxiv_2512_00076.md
+- ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 summary: OpenVLA（arXiv:2406.09246）：7B 开源 VLA；DINOv2+SigLIP + Llama 2；OXE 预训练；LoRA/OFT 微调；openvla/openvla 已开源。
 project_id: openvla
 ---

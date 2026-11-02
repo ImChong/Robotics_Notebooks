@@ -20,6 +20,31 @@ summary: "ThinkWorld 用世界想象强化跨具身的动作动力学链，从�
 
 # ThinkWorld
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SFT["阶段一：监督微调（有动作标注的人类与机器人数据）"]
+        MS["运动片段 m_t：机器人轨迹或人手轨迹，统一为归一化 delta 末端表示"] --> TOK["FAST 风格运动 tokenizer"]
+        TOK --> CODT["目标 CoD 序列 c*_t（离散运动 token）"]
+        IN1["指令 l、历史帧 h_t、当前观测 o_t"] --> VLM1["VLM（Qwen3-VL-2B）自回归生成 CoD"]
+        VLM1 -->|"交叉熵 L_CoD"| CODT
+        CODT -->|"teacher-forced"| VLM2["VLM 读取 CoD 与可学习 future queries"]
+        VLM2 --> DEC["轻量解码器 D_future：预测未来 DINO 特征 z_(t+Δ)"]
+        FUT["真实未来帧 o_(t+Δ) → 冻结 DINO 编码器 → 目标 z*_(t+Δ)"] -->|"L_future"| DEC
+    end
+    SFT --> RL
+    subgraph RL["阶段二：世界想象强化学习（无需动作标注的视频）"]
+        S1["同一视觉上下文下采样多个候选 CoD"] --> S2["每个候选预测未来特征 z_(t+Δ)"]
+        S2 --> S3["与观测未来特征比较：运动加权特征相似度作为奖励 r_world"]
+        S3 --> S4["GRPO 更新 VLM + 监督 replay"]
+    end
+    RL -->|"训练后的 VLM 表征（RL 阶段动作专家冻结）"| ACT["动作专家：生成连续动作"]
+    ACT --> DEP["部署：不运行 CoD 生成与未来预测"]
+```
+
+图依据：论文 §3.1–§3.3、§4.1 / Fig.2。
+
 ## 一句话定义
 
 ThinkWorld 是一种 VLA 学习框架：用动作动力学链表示动作推理，并通过预测未来状态与视频实际结果的一致性强化该表示。
@@ -89,6 +114,7 @@ ThinkWorld 展示了利用视频中的状态变化增强动作推理，并在特
 
 - [论文摘录](../../sources/papers/thinkworld_arxiv_2610_37666.md)
 - [项目页核查记录](../../sources/sites/thinkworld.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37666)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.3、§4.1、附录 A.1、A.5、A.6
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ Holistic sim-to-real recipe combining scalable tactile simulation, current-to-to
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph SIM["IsaacLab 仿真训练 (XHand 12-DoF)"]
+    TS["快速触觉仿真<br/>并行 FK 计算虚拟 tactile unit 到物体距离<br/>每指 120 个，共 600 个"] --> TF["触觉特征 Ti = (总接触力 Fi, 力加权接触中心 μi)<br/>力由 Mooney-Rivlin 应力-应变近似"]
+    AM["随机化执行器模型<br/>PD + backlash 死区 + 速度相关力矩饱和 + 系数 η"] --> TQ["关节力矩"]
+    TF --> OBS["观测<br/>关节角 / 关节力矩 / 接触力 / 接触中心 / 指尖位置 / 任务指令"]
+    TQ --> OBS
+    OBS --> AC["非对称 Actor-Critic PPO<br/>Actor 只用真机可测观测，Critic 额外用特权信息"]
+    AC --> TASK["任务<br/>力自适应抓取 (倒置 catch-the-object) / 绕单轴手内旋转"]
+  end
+  subgraph CAL["电流-力矩标定"]
+    CUR["真机电机电流 vs 触觉力"] --> MAP["准静态拟合电流→力矩映射<br/>归一化后与仿真力矩对齐"]
+  end
+  AC --> POL["训练好的策略"]
+  MAP --> POL
+  POL -->|"零样本部署，不微调"| REAL["真机 XHand<br/>电流估计力矩 + 指尖触觉反馈"]
+```
+
+图依据：论文 §III（C 任务设定、D 仿真策略学习、E Sim-to-Real Transfer）/ Fig.2–4、Tab.I–III；摘要
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Holistic sim-to-real recipe combining scalable tactile simulation, current-to-to
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2607.04940>
+- [arXiv PDF](https://arxiv.org/pdf/2607.04940)：已通读方法部分（实验与附录以略读为准）：摘要、§III Methodology（A–E）
 
 ## 推荐继续阅读
 

@@ -19,6 +19,34 @@ summary: "DR-VLA（arXiv:2610.18373；云深处）：Mixture-of-Transformers，�
 
 **DR-VLA**（*DR-VLA: Learning Human-Like Quadruped Navigation from Egocentric Web Videos via Domain-Invariant Scene Representations*，[arXiv:2610.18373](https://arxiv.org/abs/2610.18373)，Jun Tian、Yingjie Niu、Ruo Chen、Hongyi Lin、Chao Li；Deep Robotics、UIUC、浙江大学、清华大学、MIT；[官方项目页](https://developer.deeprobotics.cn/research/articles/dr-vla/index.html)）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DISR["DISR 预训练（Eϕ 之后冻结）"]
+        I["帧 I_i（可为未矫正鱼眼）"] --> S["SAM 3 语义掩码 S_i"]
+        I --> D["Depth Anything 3 相对深度 D_i"]
+        S --> E["编码器 Eϕ<br/>M=10 帧，因果时空自注意力"]
+        D --> E
+        E --> Z["DISR 潜变量 z"]
+        Z --> DEC["轻量解码器 Dϕ 重建 S_i, D_i"]
+    end
+    O["4 路鱼眼图像 + 指令 ℓ"] --> U["理解专家（Qwen3-VL-2B）<br/>前缀 token；训练期生成 caption（L_cap）"]
+    U --> W["世界专家<br/>可学习 world tokens + 时空关系层<br/>预测未来 K 帧 DISR ẑ"]
+    Z -.->|"冻结 Eϕ 给出监督目标 L_world"| W
+    U --> A["动作专家<br/>条件流匹配，4 步 Euler 积分"]
+    W --> A
+    ST["自身状态 s_t"] --> A
+    A --> T["动作块：N_a=10 个平面位姿 (x, y, θ)，覆盖 1 s"]
+    subgraph TRAIN["两阶段训练"]
+        S1["阶段 1：EgoLynx-Web 无动作人类视频<br/>训练理解 + 世界专家，L1 = L_cap + λ_w·L_world"]
+        S2["阶段 2：EgoLynx-Robot 遥操作数据<br/>初始化动作专家，全参数微调，L2 = L1 + λ_a·L_act"]
+        S1 --> S2
+    end
+```
+
+图依据：论文 §3 任务建模、§4.1 DISR、§4.2 Mixture-of-Transformers 架构 / Fig.2、§4.3 两阶段训练。
+
 ## 一句话定义
 
 **DR-VLA 用分割 + 相对深度 + 因果时空注意力构成的域不变场景表示（DISR）作为人类视频与机器人轨迹之间的接口：先用无动作标签的人类视频学场景理解与未来预测，再用遥操作数据学动作。**
@@ -73,3 +101,4 @@ summary: "DR-VLA（arXiv:2610.18373；云深处）：Mixture-of-Transformers，�
 - [arXiv 原文](https://arxiv.org/abs/2610.18373)
 - [官方项目页](https://developer.deeprobotics.cn/research/articles/dr-vla/index.html)
 - [云深处前沿探索](https://developer.deeprobotics.cn/research/)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18373)：已通读方法部分（实验与附录以略读为准）：§3 任务建模、§4.1–4.3 方法、§5.1 实验设定；§5.2 起结果与附录略读

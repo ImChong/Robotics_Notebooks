@@ -11,6 +11,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/in-hand-reorientation.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/dexsafe_arxiv_2610_37652.md
   - ../../sources/sites/dexsafe.md
 ---
@@ -18,6 +19,25 @@ sources:
 # DexSafe：灵巧手位姿到达与安全过滤
 
 **DexSafe** 在仿真训练灵巧手移动手中物体到目标位姿，并以学习式残差过滤器降低掉落风险。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  G[LightningGrasp 生成抓取数据集<br/>目标位姿与初始状态来源] --> A1[A1 特权教师<br/>PPO + 非对称 critic<br/>摩擦课程 + 目标课程]
+  A1 --> A2[A2 在线 DAgger<br/>蒸馏为状态学生]
+  A2 --> A3[A3 PPO 微调<br/>得到状态策略 π_s]
+  A3 --> A4[A4 DAgger 蒸馏<br/>手腕深度图 CNN 替换物体位姿<br/>得到深度策略 π_d]
+  A3 --> B1[B1 ResSafe 残差 RL<br/>冻结 π_s 训练状态过滤器 π_δ]
+  B1 --> B2[B2 在线 DAgger<br/>蒸馏为深度过滤器 π_δ_d]
+  A4 --> B2
+  W[保守度权重 w<br/>训练时采样 U 0,2 并作为输入<br/>部署默认 0.5] --> B1
+  A3 --> R[部署: 任务动作 a_nom + 残差 δ<br/>裁剪后执行]
+  B1 --> R
+  R --> Z[零样本迁移到真机 LEAP 手]
+```
+
+图依据：论文 §V / Fig.4（训练流程）、§V-B 式 (7)。
 
 ## 英文缩写速查
 
@@ -71,6 +91,7 @@ sources:
 
 - [论文归档](../../sources/papers/dexsafe_arxiv_2610_37652.md)
 - [项目页归档](../../sources/sites/dexsafe.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37652)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 问题定义、§V-A 位姿到达策略、§V-B 残差安全过滤器、Fig.4
 
 ## 推荐继续阅读
 

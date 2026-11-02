@@ -4,6 +4,7 @@ tags: [humanoid, hardware, manufacturing, dfm, supply-chain, reliability, yield]
 status: complete
 updated: 2026-09-19
 related:
+  - structure-tolerance-simulation-toolchain.md
   - ./embodied-foundation-model-hardware-codesign.md
   - ../overview/humanoid-hardware-101-supply-chain-economics.md
   - ../overview/humanoid-hardware-101-actuation-sensing-chain.md
@@ -138,6 +139,7 @@ flowchart LR
 - **地缘与产能叙事**：[产业与成本](../overview/humanoid-hardware-101-supply-chain-economics.md) 中的中美供应链框架仍约束 **谁能先拿到稳定四大件**。
 
 ## 关联页面
+- [机器人结构公差仿真工具链](structure-tolerance-simulation-toolchain.md)
 
 - [Humanoid Hardware 101 · 产业与成本](../overview/humanoid-hardware-101-supply-chain-economics.md) — BOM、DFM 与地缘  
 - [Humanoid Hardware 101 · 传动与感知链](../overview/humanoid-hardware-101-actuation-sensing-chain.md) — 谐波/电机/编码器部件层  

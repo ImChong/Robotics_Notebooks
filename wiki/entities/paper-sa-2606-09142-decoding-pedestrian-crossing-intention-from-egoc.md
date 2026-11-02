@@ -42,6 +42,23 @@ Uses VLM to decode pedestrian crossing intention for the first time, with accura
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["2 秒第一人称视频片段 V"] --> B["GroundingDINO 检测车辆与白色穿越圈"]
+    B --> C["几何过滤 / 跨标签抑制 / SORT 时序跟踪"]
+    C --> D["Set-of-Mark 叠加带持久 ID 的视觉提示"]
+    D --> G["VLM（Qwen3-VL / InternVL3 / VLP）"]
+    X["可选上下文 C：ego motion、vehicle motion、eye gaze、个人属性"] --> P["拼入提示：附在末尾或与对应输入并置"]
+    Q["封闭式 VQA 问题：(A) cross / (B) yield，标准或 CoT 提示"] --> G
+    P --> G
+    G --> Y["预测未来 1 秒意图 cross / yield"]
+    S["LoRA 监督微调：语言 / cross-modal 模块，视觉编码器冻结"] -.-> G
+```
+
+图依据：论文 §III（A 问题定义至 D 上下文表示及微调部分）/ Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Uses VLM to decode pedestrian crossing intention for the first time, with accura
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.09142>
+- [arXiv PDF](https://arxiv.org/pdf/2606.09142)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（问题定义、VQA 构造与提示、视觉提示、上下文表示、LoRA 微调）、§IV 实验设定；§V 结果略读
 
 ## 推荐继续阅读
 

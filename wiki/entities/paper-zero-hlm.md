@@ -12,6 +12,8 @@ related:
   - ./isaac-gr00t.md
   - ../methods/sonic-motion-tracking.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/zero_hlm_arxiv_2610_35075.md
   - ../../sources/sites/zero-hlm.md
 ---

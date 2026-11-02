@@ -42,6 +42,26 @@ A controlled study examining the role of future-privileged supervision in causal
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["egocentric RGB 视频片段"] --> ENC["冻结 DINOv3 场景编码器<br/>逐帧 patch 特征"]
+    ENC --> DEC["共享参数的轻量 spatio-temporal 解码器<br/>divided space-time attention"]
+    DEC --> T["上支路 future-aware teacher<br/>时间掩码：过去 + 当前 + H 个未来帧"]
+    DEC --> S["下支路 strictly causal student<br/>下三角掩码：仅过去 + 当前"]
+    T --> TG["GLF 模块 + 卷积头<br/>teacher heatmap"]
+    S --> SG["GLF 模块 + 卷积头<br/>student heatmap"]
+    TG -- "stop-gradient，温度 τ=2" --> LF["L_FPS：KL 蒸馏<br/>student 对齐 teacher"]
+    SG --> LF
+    SG --> LG["L_GT：对 GT heatmap 的 KL"]
+    LF --> LOSS["L = α·L_GT + β·L_FPS"]
+    LG --> LOSS
+    SG -. 推理 .-> OUT["仅部署 student<br/>严格因果的注视预测"]
+```
+
+图依据：论文 §3.2 Framework Overview / Fig.2、§3.3 Training Objective
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ A controlled study examining the role of future-privileged supervision in causal
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.01437>
+- [arXiv PDF](https://arxiv.org/pdf/2607.01437)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.3、§4.1（实验结果 §4.3 以略读为准）
 
 ## 推荐继续阅读
 

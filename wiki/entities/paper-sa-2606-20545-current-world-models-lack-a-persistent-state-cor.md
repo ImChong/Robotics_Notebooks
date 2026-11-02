@@ -42,6 +42,29 @@ Argues that generators must maintain a continuously evolving world state rather 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    N["Natural-25 提示集<br/>25 个场景族 × 四级事件设计（空间位移 vs 状态变化）"] --> REC["事件-视角记录 ri = (x0, e, τ, ν, π)<br/>初始观测 / 事件 / 视角干预 / 可见性 / 提示变体"]
+    REC --> LIB["WRBenchLib：按各模型可接受的接口转换输入<br/>（相机轨迹 / 源视频 / 几何条件 / 纯文本提示）<br/>记录实际送达条件、生成视频与 provenance"]
+    LIB --> VID["各生成模型输出视频"]
+    VID --> D1["(i) 请求相机精度 / (ii) 提示-相机对齐<br/>VGGT-Ω 轨迹恢复 / CamAlign"]
+    VID --> D3["(iii) 视觉完整性<br/>DINOv2 特征代理"]
+    VID --> D4["(iv) 可见时空间与状态一致性<br/>Qwen-3.5-9B 的是非探针"]
+    VID --> D5{"(v) 重观测支持？<br/>Qwen-3-VL-8B 门控：隐藏区间 + 目标返回 + 可辨识"}
+    D5 -->|"满足"| D6["(vi) 重观测后空间与状态一致性"]
+    D5 -->|"不满足"| NA["记为 NA（支持不足），不计入 (vi)"]
+    D1 --> OUT["六维诊断画像（不合并为单一分数）"]
+    D3 --> OUT
+    D4 --> OUT
+    D6 --> OUT
+    NA --> OUT
+    OUT -.-> HUM["人工偏好标注：六个维度逐轴独立标注<br/>用于校准自动评测器"]
+```
+
+图依据：论文 §3.1–3.5 / Fig. 2（基准评测流程，非生成模型方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Argues that generators must maintain a continuously evolving world state rather 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.20545>
+- [arXiv PDF](https://arxiv.org/pdf/2606.20545)：已通读方法部分（实验与附录以略读为准）：摘要、§3 WRBench 套件（3.1–3.5）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

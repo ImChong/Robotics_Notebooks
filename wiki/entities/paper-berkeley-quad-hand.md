@@ -42,6 +42,23 @@ summary: "Berkeley QUAD Hand（arXiv:2609.27240）：用非对称驱动和柔顺
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-18）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["尺侧 QDD 电机 CubeMars AKE60-8"] --> B["齿条-小齿轮"]
+    B --> C["预紧柔顺尺侧传输（六杆机构）：link 1 接齿条"]
+    C --> D{"中指指尖力是否超过约 3.2 N 阈值？"}
+    D -->|否：弹簧不变形| E["link 1/2/3 同向竖直运动"]
+    E --> F["中指 MCP 直接被驱动；无名指 MCP/IP 随之同步（镜像中指）"]
+    D -->|是：弹簧变形| G["link 2 相对 link 1 运动，中指顺应"]
+    G --> H["经 link 6 带动输出 link 3 向桡侧内扫"]
+    H --> I["无名指绕 CMC 内收，向抓握中心合拢，施加更好的闭合力"]
+    J["拇指、食指：指根 QDD GIM3505-08"] --> K["各自独立驱动，负责灵巧操作"]
+```
+
+图依据：论文 §III（Fig. 2，A. Hybrid Actuation Strategy、B. Finger Transmissions）及摘要。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +100,7 @@ summary: "Berkeley QUAD Hand（arXiv:2609.27240）：用非对称驱动和柔顺
 - [berkeley_quad_hand_arxiv_2609_27240.md](../../sources/papers/berkeley_quad_hand_arxiv_2609_27240.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.27240](https://arxiv.org/abs/2609.27240)
+- [arXiv PDF](https://arxiv.org/pdf/2609.27240)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 设计、§IV 运动学分析（略读）、§V 实验评估（略读）
 
 ## 推荐继续阅读
 

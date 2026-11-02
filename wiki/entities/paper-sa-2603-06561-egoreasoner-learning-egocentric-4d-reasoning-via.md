@@ -42,6 +42,27 @@ A two-stage framework for egocentric 4D reasoning tasks featuring task-adaptive 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["元数据驱动的数据构建（Ego-Exo4D 厨房子集）"]
+        V["第一人称视频 + 旁白"] --> SG["空间定位：Detic 2D 掩码<br/>+ SLAM 标定 2D-3D 对齐 → 3D 物体定位"]
+        V --> TA["时序语义对齐：Gemini 将旁白精炼为带时间戳的动作描述"]
+        SG --> MF["元数据融合：时空匹配 → 4D Descriptions"]
+        TA --> MF
+        MF --> QA["Gemini 生成多跳 QA（2–5 分钟窗口、干扰项、帧复核、人工审核）"]
+        MF --> COT["任务自适应思维模板 + Gemini 由答案“倒推”生成 CoT"]
+    end
+    QA --> SFT["阶段 I：结构化冷启动 SFT（4.3K QA）<br/>Qwen2.5-VL 输出 think 推理 + answer 答案"]
+    COT --> SFT
+    SFT -->|"作为参考模型 πref"| RFT["阶段 II：GRPO 强化微调（12K QA）<br/>每题采样 G 条推理轨迹，组内归一化优势 + KL 约束"]
+    RFT --> RW["任务感知奖励：准确 + 实体/时间定位 + 逻辑（固定设施/时长与序列/角度）+ 格式<br/>正则解析推理轨迹，对照 4D Descriptions"]
+    RW --> RFT
+```
+
+图依据：论文 §3.1–3.2 / Fig.2–4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ A two-stage framework for egocentric 4D reasoning tasks featuring task-adaptive 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.06561>
+- [arXiv PDF](https://arxiv.org/pdf/2603.06561)：已通读方法部分（实验与附录以略读为准）：§3（§3.1 元数据驱动 QA/CoT 生成、§3.2 两阶段优化与奖励设计）与 §4.1–4.2 实验设置
 
 ## 推荐继续阅读
 

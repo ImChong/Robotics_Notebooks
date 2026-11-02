@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, open-source, education, ros2, sim2real, raspberry-pi]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-01
 project_id: mini-pupper
 code: https://github.com/mangdangroboticsclub/mini_pupper
 summary: "Mini Pupper：MangDang 的小型开源四足，自研 3-DoF coreless 智能舵机 + Raspberry Pi，支持 ROS/ROS2、OpenCV、OAK-D 与 MuJoCo/Isaac RL，Apache-2.0。"
@@ -12,8 +12,10 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/ros2-basics.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 ---
 
 # Mini Pupper

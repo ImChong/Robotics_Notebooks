@@ -42,6 +42,23 @@ We propose DynamicWAM, a compact WAM for dynamic object manipulation with dual-p
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  OBS["历史帧（K=4 个区间）"] --> OF["Farnebäck 稠密光流<br/>前后向一致性检查，屏蔽不可靠流"]
+  OF --> RF["渲染流图 R_k<br/>方向 → 色相，幅值 → 强度"]
+  OF --> KD["12 维运动学描述子 m_k<br/>位移 / 速度 / 加速度 / 区间时长"]
+  RF --> VAE["冻结视频 VAE<br/>与当前观测 O(t) 一并编码"]
+  KD --> MLP["两层 MLP → 运动学 token e_1..e_K"]
+  VAE --> JA["World-Action 骨干：层级联合注意力<br/>视频专家（Wan2.2-TI2V-5B 蒸馏）"]
+  MLP --> AX["动作专家<br/>状态 · 带噪动作 · 运动学 token"]
+  AX <--> JA
+  JA --> OUT["动作 chunk A(t)（Ha=16）<br/>联合 flow matching 训练"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +116,7 @@ We propose DynamicWAM, a compact WAM for dynamic object manipulation with dual-p
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.00793>
+- [arXiv PDF](https://arxiv.org/pdf/2608.00793)：已通读方法部分（实验与附录以略读为准）：3 Method（World-Action Backbone、Dual-Path Motion Conditioning、Joint Training Objective）
 
 ## 推荐继续阅读
 

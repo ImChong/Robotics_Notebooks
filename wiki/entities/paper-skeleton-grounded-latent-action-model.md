@@ -23,7 +23,7 @@ summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜
 
 # Skeleton Latent Action：面向机器人世界模型的骨架约束潜在动作模型
 
-**Skeleton Latent Action**（*Skeleton-Grounded Latent Action Model for Robot World Models*，[arXiv:2610.31474](https://arxiv.org/abs/2610.31474)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Skeleton Latent Action**（*Skeleton-Grounded Latent Action Model for Robot World Models*，[arXiv:2610.31474](https://arxiv.org/abs/2610.31474)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,33 @@ summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜
 ## 为什么重要
 
 - 周报所述待解决的问题：从视频学习潜在动作时，模型需要将视觉变化与机器人实际运动联系起来。缺少运动结构约束的潜在动作表示，可能难以表达机器人本体的运动规律。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：骨架 grounding 的潜在动作学习"]
+        RGB["RGB 转移 (o_t, o_t+1)"] --> ENC1["RGB Transformer 编码器"]
+        ENC1 --> ZK["RGB 运动学潜变量 z_kin"]
+        ENC1 --> ZR["残差潜变量 z_res"]
+        SKE["骨架图转移 (s_t, s_t+1)（机器人关节构型）"] --> ENC2["骨架编码器（先重建初始化，后冻结）→ 骨架运动潜变量"]
+        ZK -->|"经冻结骨架解码器重建下一帧骨架（L_ground）并与骨架运动潜变量对齐（L_align）"| ENC2
+        ENC2 -->|"swap 重建：用骨架潜变量代替 z_kin（L_swap）"| DEC["RGB 解码器：重建 o_t+1"]
+        ZR --> DEC
+    end
+    S1 --> S2
+    subgraph S2["阶段二：结构化世界模型训练（视频）"]
+        P1["冻结 RGB 编码器提取各转移的 z_kin、z_res；分别经 MLP 投影后相加得条件 h_i"] --> P2["随机分支 dropout：保留全部 / 丢 kin / 丢 res / 全丢"]
+        P2 --> WM["世界模型预测未来观测 o_t+1:t+H"]
+    end
+    S2 --> S3
+    subgraph S3["阶段三：机器人动作适配"]
+        A1["轻量 MLP 适配器 A_ψ：机器人动作 → 运动学潜变量（回归冻结编码器的 z_kin 均值）"] --> A2["用预测的运动学潜变量微调世界模型整个骨干"]
+    end
+    S3 --> INF["推理：当前观测 + 机器人动作 → A_ψ → 世界模型 rollout（残差分支置零）"]
+```
+
+图依据：论文 §3 / §3.1 / §3.2 / Fig.1–2、Eq.2–14。
 
 ## 核心机制
 
@@ -90,6 +117,7 @@ summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜
 - [skeleton-grounded-latent-action-model_arxiv_2610_31474.md](../../sources/papers/skeleton-grounded-latent-action-model_arxiv_2610_31474.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.31474](https://arxiv.org/abs/2610.31474)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31474)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1、§3.2）
 
 ## 推荐继续阅读
 

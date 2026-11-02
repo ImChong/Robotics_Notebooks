@@ -25,3 +25,8 @@
 
 - [paper-schedulegen](../../wiki/entities/paper-schedulegen.md)
 - [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../../wiki/overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+
+## 2026-11-02 一手摘要核验（草稿）
+
+- 依据 arXiv v1 摘要：28 个仿真任务变体的数据生成平均成功率 79.6%，策略平均成功率 65.5%；8 个真机变体成功率 50–80%，包括 sim-to-real 与 real-to-sim-to-real。
+- **未完成：** 尚未通读全文及相关可运行源码；实验协议、局限、项目流程图与源码时序图仍需核验，不能视为完整 ingest。

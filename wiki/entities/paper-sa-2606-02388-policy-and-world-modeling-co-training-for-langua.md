@@ -42,6 +42,26 @@ Adds auxiliary WM supervision to policy during RL without changing inference.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["环境（ALFWorld / WebShop / 搜索 QA）"] <-->|"交互 rollout：Obs → Act → Obs"| POL["LLM 策略 πθ<br/>同一模型同时负责策略与世界建模"]
+    POL --> POOL["按任务分组的 rollout group<br/>转移池 P = {(ht, at, rt, ot+1)}"]
+    POOL --> RL["基础 RL 损失 LRL<br/>对 group 内全部动作 token 计算（action-token mask）"]
+    POOL --> ENT["动作熵过滤 §3.1<br/>按 action-token 熵取 Top-α 转移 Sα"]
+    ENT --> CMAE["Clipped MAE 世界模型损失 §3.2<br/>预测下一观测 ot+1（observation-token mask）<br/>置信度已够高的 token 被屏蔽"]
+    POOL --> RET["group 平均回报 R̄g"]
+    RET --> LAM["奖励自适应系数 §3.3<br/>λWM,g = [1 − R̄g / Rmax]+"]
+    LAM --> SUM
+    CMAE --> SUM["LPaW = LRL + λWM,g · LCMAE<br/>同一参数 θ，同一次 forward 内联合更新"]
+    RL --> SUM
+    SUM -->|"更新"| POL
+    POL -.->|"推理时无变化：像普通策略一样生成动作"| ACT["动作 at"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Adds auxiliary WM supervision to policy during RL without changing inference.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.02388>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02388)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§2 预备知识、§3 方法（3.1–3.4 与 Algorithm 1）、§4 实验设定；实验结果与附录略读
 
 ## 推荐继续阅读
 

@@ -20,7 +20,7 @@ summary: "Tactile-Aware Hand Rep：从人手与物体交互数据中学习触觉
 
 # Tactile-Aware Hand Rep：从人手与物体交互数据中学习触觉感知手部表示
 
-**Tactile-Aware Hand Rep**（*Learning Tactile-Aware Hand Representations from Human Hand-Object Interaction Data*，[arXiv:2610.27995](https://arxiv.org/abs/2610.27995)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Tactile-Aware Hand Rep**（*Learning Tactile-Aware Hand Representations from Human Hand-Object Interaction Data*，[arXiv:2610.27995](https://arxiv.org/abs/2610.27995)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,36 @@ summary: "Tactile-Aware Hand Rep：从人手与物体交互数据中学习触觉
 ## 为什么重要
 
 - 周报所述待解决的问题：人类手部操作数据包含丰富的接触行为，但单纯学习手部姿态，难以完整表示手与物体之间的触觉交互。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1：人类 HOI 预训练（不使用真实触觉与机器人数据）"]
+        H["HOT3D / OakInk-v2 / TACO / ARCTIC<br/>MANO 手 → 统一 21 关节骨架"] --> C1["腕部局部坐标系下 5 指尖坐标 × 2 手"]
+        H --> P1["指尖垫 MANO 顶点到物体表面距离<br/>面积加权聚合为 1 维伪接触信号 s"]
+    end
+    subgraph ARCH["HuTact 骨架"]
+        T1["坐标 tokenizer"] --> FE["帧编码器：4 层 Transformer + 2D RoPE<br/>[CLS] + 坐标 token + 触觉 token"]
+        T2["触觉 tokenizer（独立嵌入）"] --> FE
+        FE -->|"15 帧 [CLS]"| TE["时序编码器（RoPE，独立参数）"]
+        TE --> Z["窗口级表示 ĥCLS"]
+    end
+    C1 --> T1
+    P1 --> T2
+    OBJ["目标：DINOv2 式 EMA 教师自蒸馏<br/>+ 掩码 token 预测"] -.-> ARCH
+    Z --> S2
+    subgraph S2["阶段 2（可选）：机器人 play 数据中训练"]
+        R1["Revo2 遥操作 play 数据<br/>指尖坐标 + 4 通道触觉"] --> R2["重新初始化触觉 tokenizer，保留其余参数，同目标继续自监督"]
+    end
+    S2 --> S3
+    Z -.->|"跳过阶段 2 时同样重置触觉 tokenizer"| S3
+    subgraph S3["阶段 3：下游迁移"]
+        D1["全量微调编码器 + 注意力池化任务头"] --> D2["抓取预测 / 滑移检测 / 物体分类 / 触觉条件策略"]
+    end
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.1 / Fig.2
 
 ## 核心机制
 
@@ -87,6 +117,7 @@ summary: "Tactile-Aware Hand Rep：从人手与物体交互数据中学习触觉
 - [tactile-aware-hand-representations-human-hoi_arxiv_2610_27995.md](../../sources/papers/tactile-aware-hand-representations-human-hoi_arxiv_2610_27995.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.27995](https://arxiv.org/abs/2610.27995)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27995)：已通读方法部分（实验与附录以略读为准）：§I–§III、§IV-A 实验设置（§IV-B 起的结果未读）
 
 ## 推荐继续阅读
 

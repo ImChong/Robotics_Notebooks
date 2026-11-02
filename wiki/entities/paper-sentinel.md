@@ -46,6 +46,35 @@ SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它�
 - 但读细之后会发现，它并没有绕过运动控制。它先训练一个能跟踪人类动作的全身控制器，然后用这个控制器在仿真里 rollout，得到机器人自己的 state-action trajectories，再用语言标注训练 language-action model。
 - 也就是说，SENTINEL 的监督信号不是“人体应该怎么动”，而是“机器人在动力学里实际能怎么动”。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段 1：WBC 训练与数据采集"]
+    HM["带语言描述的人体动作数据"] --> RT["重定向到机器人"]
+    RT --> WBC["全身控制器 MoE 策略<br/>PPO + IsaacLab"]
+    WBC --> SIM["仿真 rollout<br/>域随机化"]
+    SIM --> DS["语言-动作数据集<br/>语言 + 机器人 state-action 轨迹"]
+  end
+  subgraph S2["阶段 2：行为克隆预训练"]
+    CLIP["CLIP 文本编码器"] --> ENC["Language-State Encoder<br/>Transformer，输入语言 + 多尺度状态历史"]
+    ENC -->|"KV cache"| AE["Action Expert<br/>flow matching Transformer 解码器"]
+    ENC --> DONE["Done Prediction<br/>MLP 头"]
+    AE --> CH["动作块 action chunk<br/>含动作与下一步状态预测"]
+  end
+  subgraph S3["阶段 3：残差后训练"]
+    RES["残差动作头<br/>PPO，冻结 LA 模型"]
+  end
+  DS --> ENC
+  DS --> AE
+  CH --> RES
+  RES --> ACT["最终动作 = 动作 + 残差<br/>执行前 K 步，滚动重新生成"]
+  DONE -.->|"连续多个 chunk 概率超阈值则终止"| ACT
+  ACT --> ROBOT["人形机器人<br/>29 DoF 目标"]
+```
+
+图依据：论文 §4.1–§4.2 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -123,6 +152,7 @@ SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它�
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — BFM 41 篇微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 - 论文：<https://arxiv.org/abs/2511.19236>
+- [arXiv PDF](https://arxiv.org/pdf/2511.19236)：已通读方法部分（实验与附录以略读为准）：§3 Preliminary、§4.1 数据构建、§4.2 模型与残差后训练、§4.3 模态扩展
 
 ## 推荐继续阅读
 

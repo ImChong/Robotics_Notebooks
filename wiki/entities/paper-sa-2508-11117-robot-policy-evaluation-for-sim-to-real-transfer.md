@@ -42,6 +42,20 @@ A benchmarking perspective on robot policy evaluation for sim-to-real transfer
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Task Library<br/>场景 / 机器人 / 语言指令 / 成功判定"] --> D["高保真仿真评测 (IsaacLab)"]
+    B["Scene Perturbations<br/>光照 / 纹理 / 相机位姿 / 物体位姿"] --> D
+    P["待评策略 Policy 1..N<br/>(Unified Policy API)"] -- "动作" --> D
+    D --> M["Metrics Library<br/>轨迹 / 时序 / 失败模式 / 任务成功 / 完成率"]
+    M --> R["Sim-to-Real Performance Transfer<br/>成功率差 / 轨迹散度 / 期望真机成功率"]
+    X["真机对应实验 (文中为计划)"] --> R
+```
+
+图依据：论文 §IV Proposed Benchmarking Framework、§III-A/C / Fig.1（这是立场/基准设想论文，图为其提出的评测框架，真机实验在文中为计划而非已完成）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ A benchmarking perspective on robot policy evaluation for sim-to-real transfer
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2508.11117>
+- [arXiv PDF](https://arxiv.org/pdf/2508.11117)：已通读方法部分（实验与附录以略读为准）：§I–§IV（含 Fig.1 框架图；全文仅数页，其余为讨论与参考文献）
 
 ## 推荐继续阅读
 

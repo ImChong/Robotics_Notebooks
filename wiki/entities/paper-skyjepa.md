@@ -33,6 +33,31 @@ summary: "SkyJEPA（arXiv:2606.23444）：JEPA 潜动力学加物理启发探针
 
 多数 JEPA 工作停在离线推演；本工作把世界模型预测直接用于高频闭环控制，并在真实室外空域验证，是 JEPA 走向真实控制的一个具体样例。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["仿真数据合成"]
+        D1["高斯过程生成随机平滑参考轨迹<br/>+ 微分平坦得到完整参考"] --> D2["在域随机化四旋翼仿真中闭环跟踪<br/>（NMPC 与 MPPI 两类控制器）"]
+        D2 --> D3["记录状态–动作轨迹（500 个域，2 万条）"]
+    end
+    D3 --> ST1
+    subgraph TRAIN["两阶段训练"]
+        ST1["阶段 1：状态历史、动作历史分别经 TCN 编码器 Enc_θ / Enc_ϕ<br/>GRU 预测器在潜空间递归展开"] --> L1["损失 = 多步潜预测一致性 + λ·SIGReg 防坍塌"]
+        L1 --> ST2["阶段 2：冻结编码器与预测器，仅训练探针 ψ"]
+        ST2 --> PR["探针输出残差平移加速度 Δv̇ 与残差角加速度参数 K<br/>经可微运动学积分得到物理状态，监督损失 L_prober（潜变量停梯度）"]
+    end
+    PR --> MPPI
+    subgraph CTRL["机载 MPPI 闭环控制"]
+        MPPI["对名义动作序列加噪声采样 S 条并裁剪到执行器范围"] --> ROLL["潜空间展开 → 探针映射为物理状态"]
+        ROLL --> COST["轨迹跟踪代价（状态与控制加权二次项）"]
+        COST --> UPD["softmax 权重更新名义序列，只执行首个动作，滚动重规划"]
+    end
+    UPD --> FLY["零样本室外实飞（无实机微调）"]
+```
+
+图依据：论文 §IV-A 至 §IV-E（Fig. 2、Fig. 3）与 §V-B/C/D 的数据与训练设定；Fig. 2 各框的名称仅按图注与正文对应，未核对图中箭头细节。
+
 ## 核心信息
 
 - 作者：Pratyaksh Rao、Wancong Zhang、Randall Balestriero、Yann LeCun、Giuseppe Loianno（arXiv 页）
@@ -89,6 +114,7 @@ summary: "SkyJEPA（arXiv:2606.23444）：JEPA 潜动力学加物理启发探针
 
 - [SkyJEPA 论文归档](../../sources/papers/skyjepa_arxiv_2606_23444.md)
 - [深蓝具身智能文章归档](../../sources/blogs/wechat_deepblue_lecun_jepa_11_papers_2026-10-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2606.23444)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 背景、§IV 方法（A–E）、§V 实现细节、§VI 实验开头（VI-A 起部分）
 
 ## 推荐继续阅读
 

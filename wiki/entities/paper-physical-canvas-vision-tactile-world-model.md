@@ -23,7 +23,7 @@ summary: "Physical Canvas：面向机器人策略评估与学习的视觉触觉�
 
 # Physical Canvas：面向机器人策略评估与学习的视觉触觉世界模型
 
-**Physical Canvas**（*Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning*，[arXiv:2610.28613](https://arxiv.org/abs/2610.28613)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Physical Canvas**（*Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning*，[arXiv:2610.28613](https://arxiv.org/abs/2610.28613)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,36 @@ summary: "Physical Canvas：面向机器人策略评估与学习的视觉触觉�
 ## 为什么重要
 
 - 周报所述待解决的问题：仅根据视觉预测操作结果，难以完整表达接触丰富任务中的物理交互。机器人策略评估还需要考虑接触状态及其变化。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 画布["统一多模态画布 Unified Canvas"]
+        O[多视角 RGB / 触觉图像 / 标记点位移 / 任务状态<br/>位移 xyz 映射为 RGB 通道, 状态以颜色与纹理编码] --> X[Rasterize: 摄像头横向排列, 各模态图块纵向堆叠成画布 x]
+        AC[关节目标序列 a_t:t+H<br/>URDF + 相机内外参投影为各视角 action image m] --> ZA[视频 VAE 编码并 tokenize 得 z_a]
+        X --> Z[视频 VAE 编码并 tokenize 得画布 token z]
+        Z --> F[去噪时位置对齐相加 z_a<br/>任务状态 token 位置不加动作]
+        ZA --> F
+        F --> W[Wan 2.2 扩散 Transformer<br/>参考 token r 输入 + 初始 RGB 锚 z_anc 交叉注意力<br/>flow matching 训练]
+        W --> P[预测未来 H 帧多模态画布]
+    end
+    subgraph 后训练["一致性感知后训练 冻结奖励模型"]
+        P --> DEC[由预测速度恢复干净画布估计并 VAE 解码]
+        DEC --> RS[State Reward Model<br/>BCE 对齐真实任务结果]
+        DEC --> RC[Scene Reward Model<br/>最大化场景保持得分]
+        DEC --> RM[Modality Reward Model<br/>最大化 RGB-触觉-位移兼容得分]
+        RS --> U[更新世界模型<br/>并保留 flow matching MSE 损失]
+        RC --> U
+        RM --> U
+    end
+    subgraph 应用["策略评估与学习"]
+        P --> E[闭环策略 rollout<br/>策略读生成观测并输出动作, 比较世界模型与真实成功率]
+        P --> G[想象交互 + State Reward Model 打分<br/>GRPO 仅更新策略]
+    end
+```
+
+图依据：论文 §3.2–3.4 / Fig.3
 
 ## 核心机制
 
@@ -90,6 +120,7 @@ summary: "Physical Canvas：面向机器人策略评估与学习的视觉触觉�
 - [physical-canvas-vision-tactile-world-model_arxiv_2610_28613.md](../../sources/papers/physical-canvas-vision-tactile-world-model_arxiv_2610_28613.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.28613](https://arxiv.org/abs/2610.28613)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28613)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1–3.4）、§4.1 实验设定
 
 ## 推荐继续阅读
 

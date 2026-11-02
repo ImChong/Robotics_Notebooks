@@ -42,6 +42,25 @@ CoVAR co-generates instruction-conditioned video and robot actions through separ
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["初始图像 v_0 + 初始关节状态 a_0 + 语言指令 c"] --> VD
+    IN --> AD
+    subgraph MM["多模态扩散模型（rectified flow 联合去噪）"]
+        VD["视频 DiT：预训练 OpenSora 骨干"]
+        AD["并行动作 DiT：MLP 动作编码 + UNet 解码器"]
+        VD <-->|"Bridge Attention：各自独立 Q/K/V，拼接后联合注意力再拆分"| AD
+    end
+    VD --> VOUT["生成视频帧 v"]
+    AD --> AOUT["与视频配对的动作 a"]
+    AOUT -->|"低分辨率数据集（如 Libero90）"| REF["动作精炼模型：动作 token 与图像 token 自注意力<br/>→ 文本 cross-attention → 解码"]
+    REF --> FIN["高精度动作"]
+```
+
+图依据：论文 §III 方法（§III-A 至 §III-D、Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ CoVAR co-generates instruction-conditioned video and robot actions through separ
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2512.16023>
+- [arXiv PDF](https://arxiv.org/pdf/2512.16023)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（§III-A 至 §III-D）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

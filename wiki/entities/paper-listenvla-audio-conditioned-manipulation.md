@@ -31,6 +31,30 @@ summary: "ListenVLA（arXiv:2610.16313）：以 GR00T N1.7 为底座的音频条
 
 摘要指出，许多操作任务依赖无法仅从视觉可靠推断的听觉线索，有时必须通过物理交互才能激发。仅用视觉、语言和本体感知的策略会遗漏这类信息。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["过去 2 秒音频 → 3 个重叠 1 秒窗口 W1–W3"] --> B["冻结 CLAP 语义嵌入<br/>+ 波形声学线索 (对数 RMS、200–4000 Hz 能量及其变化)"]
+    B --> C["窗口 token + 时间编码器<br/>(2 层 transformer + masked mean pooling)"]
+    C --> D["音频上下文 z_t"]
+    I["外部与腕部图像 I_t、指令 ℓ"] --> V["冻结 GR00T 视觉语言骨干<br/>得到 V_t"]
+    D --> E["音频 token (共 18 个) 与 V_t 拼接<br/>self-attention 融合得到 C_t"]
+    V --> E
+    E --> F["DiT 动作 expert"]
+    D --> G["AdaLN 残差：加到 flow-time 嵌入"]
+    D --> H["输出 FiLM：scale / shift"]
+    G --> F
+    F --> H
+    H --> J["动作块 A_t (flow matching)"]
+    K["上下文匹配的示范对<br/>视觉与机器人状态相近、声音与后续动作不同"] --> L["音频替换：同一噪声 ε̃ 下做两次预测<br/>非音频输入固定"]
+    L --> M["音频–动作绑定损失<br/>预测差异对齐示范动作差异 (前 8 步)"]
+    M --> N["总损失 L = 2·L_all + L_bind<br/>(绑定仅训练时使用)"]
+    J --> N
+```
+
+图依据：论文 §III-A、§III-B、§III-C / Fig. 2。
+
 ## 核心信息
 
 | 项目 | 内容 |
@@ -96,6 +120,7 @@ summary: "ListenVLA（arXiv:2610.16313）：以 GR00T N1.7 为底座的音频条
 
 - [论文归档](../../sources/papers/listenvla_arxiv_2610_16313.md)
 - [公众号综述摘录（33 篇 Manipulation）](../../sources/raw/wechat_senlanke_manipulation_33_papers_2026-10-12_16.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.16313)：已通读方法部分（实验与附录以略读为准）：§III-A 问题设定与概览、§III-B 时序音频表示与动作网络条件注入、§III-C 音频–动作绑定训练；§IV 实验略读
 
 ## 推荐继续阅读
 

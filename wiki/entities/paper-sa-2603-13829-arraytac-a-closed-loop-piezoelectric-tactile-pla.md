@@ -42,6 +42,25 @@ Piezoelectric-driven tactile display capable of simultaneously rendering shape, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SRC["多源触觉信息<br/>物理仿真 / 由图像做 AI 推理 / 实时远端传感器"] --> WIN["用户通过 XYZ 滑动平台<br/>以 sliding window 实时采样感兴趣区域"]
+    WIN --> SEM["多维触觉语义算法<br/>形状、刚度、摩擦"]
+    SEM --> HOST["主机经串口把采样的触觉信息<br/>发送给驱动电路"]
+    HOST --> DRV["驱动电路驱动 4×4 压电执行器阵列"]
+    DRV --> UNIT["每个单元：压电陶瓷 + 三级微杠杆放大<br/>末端位移最大约 5 mm"]
+    UNIT --> HALL["末端 Hall 传感器反馈位移"]
+    HALL --> PID["PID 闭环：跟踪目标高度（形状）"]
+    PID --> UNIT
+    SEM -. "刚度指令 k：两阶段控制（PID + 前馈惩罚项）" .-> PID
+    SEM -. "摩擦指令 f：在高度指令上叠加正弦振动" .-> PID
+    UNIT --> OUT["指尖感受到形状、刚度、摩擦的触觉渲染"]
+```
+
+图依据：论文 Results「Tactile Platform Architecture」/ Fig.1a-b，「Multidimensional Tactile Rendering Principles」/ Fig.3（该论文为硬件系统论文，图描述其系统信息流与单元级控制）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Piezoelectric-driven tactile display capable of simultaneously rendering shape, 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2603.13829>
+- [arXiv PDF](https://arxiv.org/pdf/2603.13829)：已通读方法部分（实验与附录以略读为准）：Results 中 Tactile Platform Architecture、Multidimensional Tactile Rendering Principles 及 Fig.1 / Fig.3 图注（Methods 章节与应用实验仅略读）
 
 ## 推荐继续阅读
 

@@ -41,6 +41,27 @@ We propose Donk, a unified video-action denoising model for dexterous hands.
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["语言指令 c"] --> TOK
+    I["首帧图像 I0（TI2VA 模式提供，训练时以 0.30 概率丢弃）"] --> VAE["Wan VAE 编码：首帧替换第一视频潜变量帧，时间步为 0"]
+    VAE --> TOK
+    G["手-相机锚点 g0 = 首帧 MANO 手状态 + 相机内参"] --> MAP["渲染彩色 MANO 骨架锚点图 M0 → 冻结 Wan VAE → 锚点图适配器"]
+    MAP --> INJ["逐层 MLP 生成锚点提示，门控注入首帧视频 token（门控零初始化）"]
+    INJ --> TOK
+    TOK["token 序列：视频 token + 动作 token（带噪 MANO）+ 锚点 token"] --> DEN["统一去噪 Transformer（初始化自 Wan2.2 TI2V-5B）：视频保持型联合注意力掩码"]
+    DEN --> VH["视频头 → 视频流速度"]
+    DEN --> AH["动作头 → 动作（MANO）流速度"]
+    VH --> OUT["生成交互视频 + 对齐的双手 MANO 动作轨迹"]
+    AH --> OUT
+    OUT --> M1["TI2VA：动作策略模式"]
+    OUT --> M2["T2VA：数据引擎模式（无首帧图像，文本条件初始化器生成 g̃0）"]
+```
+
+图依据：论文 §3.1–3.3（式 1–10）/ Fig.2、Fig.3（注意力掩码）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ We propose Donk, a unified video-action denoising model for dexterous hands.
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.03868>
+- [arXiv PDF](https://arxiv.org/pdf/2606.03868)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.3 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

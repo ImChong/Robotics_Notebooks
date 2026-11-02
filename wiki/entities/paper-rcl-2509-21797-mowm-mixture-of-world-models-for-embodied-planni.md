@@ -43,6 +43,24 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  IN["初始帧 x0 + 语言指令 l"] --> PW["像素世界模型 SVD 加文本交叉注意力 单步去噪"]
+  IN --> LW["潜空间世界模型 V-JEPA 2 ViT-g 编码器 + Transformer 预测下一状态 token"]
+  PW --> FP["U-Net 多层上采样特征 双线性上采样后通道拼接 得 Φpixel"]
+  LW --> FL["潜空间输出特征 Φlatent"]
+  FP --> PJ["线性投影到共享维度 D"]
+  FL --> PJ
+  PJ --> FU["拼接 + 线性投影得 Φfused"]
+  FU --> RS["可学习门控残差 Φfinal = Wgate Φfused + Φ'pixel"]
+  RS --> DP["Diffusion Policy 以融合特征为条件多步去噪"]
+  DP --> ACT["动作"]
+```
+
+图依据：论文 §3 / Fig.1（整体框架）、§3.1（两类世界模型的指令条件预训练，式 1–2）、§3.2（特征融合与动作规划，式 3–7）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +118,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2509.21797>
+- [arXiv PDF](https://arxiv.org/pdf/2509.21797)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.2）、§4.1 实验设定；结果与消融略读。
 
 ## 推荐继续阅读
 

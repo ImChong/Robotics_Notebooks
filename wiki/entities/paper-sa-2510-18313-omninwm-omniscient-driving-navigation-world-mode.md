@@ -42,6 +42,26 @@ Omniscient driving navigation world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：参考全景图像 + 输入轨迹"] --> B["Normalized Panoramic Plücker Ray-map（§3.2）<br/>参数无关编码 → 尺度/位姿归一化到规范参考系<br/>下采样并 Patchify 为 Plücker token"]
+    A --> C["3D VAE 编码<br/>RGB / 着色语义 / 度量深度拼接为联合 latent"]
+    B --> D["Panoramic Diffusion Transformer (PDiT)<br/>Plücker token 与 latent token 一起做 3D Full-Attention + Cross-view Attention"]
+    C --> D
+    D --> E["联合生成全景 RGB / 语义 / 度量深度视频"]
+    E --> F["Geometric Lifting：EfficientNet-B7 U-Net 提图像特征<br/>与深度、语义特征 3D 卷积聚合，外积得体素 → 3D Occupancy"]
+    F --> G["Occupancy-Grounded 内在奖励<br/>碰撞 / 可行驶区域 / 车速效率"]
+    E --> H["Tri-MMI（Tri-Modal Mamba-based Interpreter）<br/>融合 RGB、深度、语义上下文"]
+    H --> I["OmniNWM-VLA（基于 Qwen-VL）<br/>输出未来轨迹 (x, y, θ)"]
+    I -->|"轨迹作为动作，重新编码为 Ray-map，闭环生成下一状态"| B
+    G -.->|"评估规划轨迹"| I
+    S["训练：Structured Panoramic Forcing（§3.3）<br/>在 view 维与 frame 维独立注入结构化噪声"] -.-> D
+```
+
+图依据：论文 §3.1–3.3 / Fig.2（Architecture overview）、Fig.6；“评估规划轨迹”虚线为按奖励用途推断的箭头
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ Omniscient driving navigation world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.18313>
+- [arXiv PDF](https://arxiv.org/pdf/2510.18313)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1 PDiT/占据/奖励/VLA、§3.2 Plücker Ray-map、§3.3 Structured Panoramic Forcing）与 Fig.2–6（§4 实验与附录仅略读）
 
 ## 推荐继续阅读
 

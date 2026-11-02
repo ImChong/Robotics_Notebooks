@@ -42,6 +42,24 @@ Proposes world-language-action (WLA) models as a new class of embodied foundatio
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：当前观测 o_t、历史观测 o_t-h、指令 ℓ、本体状态 q_t、记忆 M"] --> AR["AR Transformer 骨干（VLM 初始化）"]
+    AR --> TXT["文本意图：预测未来子任务窗口 S_t（并更新记忆 M）"]
+    TXT -.-> M2["M ← M ⊕ 已预测子任务"]
+    Q["meta-queries Q（因果注意力聚合上下文）"] --> AR
+    AR --> H["物理动态表征 h_t（隐式 latent action）"]
+    H --> ACT["Action Expert：a_t:t+n = f_act(h_t, q_t)"]
+    H --> WM["World Expert：预测未来帧 o_t+n 的 VAE 特征（推理时可关闭）"]
+    ACT --> EXEC["执行 n 步 action chunk，滚动时域重复"]
+    WM -.->|"TTS 模式"| VAL["Value Model 对 K 个候选 chunk 的想象未来帧打分"]
+    VAL -.-> EXEC
+```
+
+图依据：论文 §3 方法（3.1 World-Language-Action Models）/ Fig.2、Inference Optimization（TTS 模式）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Proposes world-language-action (WLA) models as a new class of embodied foundatio
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.05979>
+- [arXiv PDF](https://arxiv.org/pdf/2606.05979)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1 含文本意图、物理动态建模、训练目标）、推理优化（Efficient / TTS 模式）；实验与附录略读
 
 ## 推荐继续阅读
 

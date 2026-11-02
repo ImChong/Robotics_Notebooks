@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Interaction-driven）**（清单未附方法摘要，此处不替原文概括贡献）。
+Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Interaction-driven）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos—�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["输入：T 帧观测视频片段"] --> DET["检测器得到手 / 物体框；TSN 编码每帧特征"]
+    DET --> TOK["RoIAlign 得到手、物体特征，全局特征由平均池化得到；经 MLP 成为手 / 物体 / 全局 token"]
+    TOK --> ENC["Transformer 编码器：对所有 token 做时空自注意力，输出 Z1..ZT"]
+    ENC --> DEC["自回归解码器：以编码器末帧输出 ZT 为 key/value 做 cross-attention，依次生成未来手特征 X(T+t)"]
+    HPREV["上一步手位置 h(T+t-1)（起点为 hT）"] --> DEC
+    DEC --> HVAE["手 C-VAE：以手特征 token 为条件，输出未来手位置 h(T+t)"]
+    HVAE --> HPREV
+    HVAE --> HTRAJ["未来手轨迹 H"]
+    HTRAJ --> OVAE["物体 C-VAE：以全局 token ZgT + 未来手轨迹为条件，输出接触点"]
+    ENC --> OVAE
+    OVAE --> OUT["未来物体接触点 / 交互热点 O"]
+```
+
+图依据：论文 §3（问题设定与标签生成）、§4.1–§4.4 / Fig.3（HVAE→HPREV 回路依据 §4.2 自回归描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos—�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2204.01696)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2204.01696)。
 
 ## 评测与指标
 
@@ -67,7 +86,7 @@ Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos—�
 
 **本页只提供「OCT」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +107,7 @@ Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos—�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2204.01696>
+- [arXiv PDF](https://arxiv.org/pdf/2204.01696)：已通读方法部分（实验与附录以略读为准）：§3 问题设定（任务描述、训练数据生成、预处理）、§4 Object-Centric Transformer（编码器、解码器、head 网络、训练与推理）；§5 实验设置与数据集略读
 
 ## 推荐继续阅读
 

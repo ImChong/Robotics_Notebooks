@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要，此处不替原文概括贡献）。
+Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,39 @@ Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors—�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph PL["伪标签生成（§3.3）"]
+    OA["物体类别 o + affordance 类别 a"] --> PM["映射 P(o, a) 为部件名<br/>人工定义，仅用于生成伪标签"]
+    PM --> VLP["VLpart 检测部件框"]
+    VLP --> SAM1["SAM 以框为提示得 mask"]
+    SAM1 --> HPL["伪标签热图 Hpl"]
+  end
+  subgraph RF["伪标签精炼（§3.5）"]
+    EX1["利用 exo 图中交互区域被人遮挡的线索<br/>Lpretrain 单独训练一个阶段"] --> MP2["mask 预测<br/>再用 SAM 自动 mask 后处理"]
+    MP2 --> HR["精炼伪标签 Hpl-refined"]
+  end
+  HPL -.->|"Hpl 不可靠时由精炼结果替代"| HR
+  subgraph TR["训练（§3.2、3.4、3.6）"]
+    EGO["ego 图像"] --> EV["CLIP 视觉编码器 → FV_ego"]
+    Q["affordance query a"] --> ET["CLIP 文本编码器 → fT"]
+    EV -->|"类别 token"| RS["Reasoning Module<br/>两个 MLP 先预测物体再预测部件特征，加到 fT"]
+    ET --> RS
+    RS --> FU["cross-modal fuser<br/>文本为 query、图像为 key/value"]
+    EV --> FU
+    FU -->|"fA"| DEC["SAM 式 decoder"]
+    EV --> DEC
+    DEC --> HP["预测热图 Hpred"]
+    EXO["exo 图像（同物体同 affordance）"] --> XV["CLIP 视觉编码器 + 物体 mask 的 masked average pooling → fE"]
+    XV -->|"Lalign 与 Lexo-cls"| FU
+  end
+  HR -->|"L_KL 监督"| HP
+```
+
+图依据：论文 §3.2–3.6 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +84,7 @@ Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors—�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2505.24103)。
+清单本身只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（依据论文方法部分，只画论文明确写出的模块与数据流）。完整机制与实验请读 [原文](https://arxiv.org/abs/2505.24103)。
 
 ## 评测与指标
 
@@ -67,7 +100,7 @@ Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors—�
 
 **本页只提供「Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +121,7 @@ Weakly-Supervised Affordance Grounding Guided by Part-Level Semantic Priors—�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2505.24103>
+- [arXiv PDF](https://arxiv.org/pdf/2505.24103)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.6）、§4.1–4.2 数据集与实现细节
 
 ## 推荐继续阅读
 

@@ -47,6 +47,26 @@ summary: "PILOT (Visual Subgoals)（arXiv:2610.14335）：先生成中间视觉�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。与库内 PILOT 足式节点为不同论文。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前观测 o_t + 语言指令 ℓ"] --> VID["视频预测模型（Wan2.1-1.3B 微调）<br/>生成 T_v 帧预测视频"]
+    VID --> SUB["均匀选取 K 个视觉子目标 g_1…g_K"]
+    SUB --> LOOP["按顺序处理当前子目标 g_k，重复 R 轮 MPC 更新"]
+    IN --> POL["策略先验 π_ψ（微调 π0）<br/>输出 h 步动作提议，不直接执行"]
+    LOOP --> ENC["编码 z_t = φ(o_t)；子目标 z_gk = φ(g_k)"]
+    POL --> CEM["CEM 局部动作优化<br/>以策略提议初始化均值"]
+    ENC --> CEM
+    WM["动作条件世界模型 P_θ（JEPA-WM）<br/>潜空间滚动预测 ẑ_{t+h}"] --> CEM
+    CEM -- "代价 J_k = ‖ẑ_{t+h} − z_gk‖²" --> WM
+    CEM --> EXEC["执行最优序列前 h_exec 步"]
+    EXEC --> OBS["观测新的 o_t，重新规划"]
+    OBS --> LOOP
+```
+
+图依据：论文 §III-A 至 §III-D 与 Fig. 2、Algorithm 1（子目标推进的切换条件论文未在已读部分明确给出，图中仅表示按顺序处理）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +110,7 @@ summary: "PILOT (Visual Subgoals)（arXiv:2610.14335）：先生成中间视觉�
 - [pilot_visual_subgoal_world_model_planning_arxiv_2610_14335.md](../../sources/papers/pilot_visual_subgoal_world_model_planning_arxiv_2610_14335.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14335](https://arxiv.org/abs/2610.14335)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14335)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III Method（A–D，含 Algorithm 1）
 
 ## 推荐继续阅读
 

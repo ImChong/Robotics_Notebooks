@@ -42,6 +42,23 @@ VLMs act as agents to autonomously construct scene representations and select co
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入: 单张图像 I + 文本描述 C"] --> GEN["生成提示: 任务说明 + 环境说明 (Simulator 基类)\n+ 工具箱说明"]
+  TOOLS["Vision API 工具箱\nSAM 3 / MoGe-2 / SAM 3D / RANSAC 基元拟合等"] --> VLM
+  GEN --> VLM["VLM 智能体 (推理时提示, 不微调)\n充当逆动力学 / 动作推断引擎"]
+  VLM --> WP["世界程序 (单个 Python 脚本)\nP_s 初始场景程序 + a_0:T 推断动作 + P_τ 转移程序 + R 渲染函数"]
+  WP --> S0["s_0 = Exec(P_s, I)"]
+  S0 --> ROLL["s_t+1 = Exec(P_τ, s_t, a_t)\n选定模拟方法: 刚体 / 流体 / 逻辑等"]
+  ROLL --> RENDER["R 渲染 → 预测的未来视频"]
+  RENDER -. "读取输出帧与运动历史, 迭代修正代码" .-> VLM
+  USER["用户干预: 改描述 / 改动作 / 改转移函数 / 改初始状态"] -.-> WP
+```
+
+图依据：论文 §3 / §3.1–§3.3 与 Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ VLMs act as agents to autonomously construct scene representations and select co
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.11061>
+- [arXiv PDF](https://arxiv.org/pdf/2512.11061)：已通读方法部分（实验与附录以略读为准）：摘要、§3（含 §3.1–§3.3）；其余章节略读
 
 ## 推荐继续阅读
 

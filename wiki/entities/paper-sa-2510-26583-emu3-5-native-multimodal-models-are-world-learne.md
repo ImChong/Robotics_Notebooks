@@ -42,6 +42,22 @@ Native multimodal models are world learners.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["视频交错数据（连续帧 + 转录文本）、图文对、any-to-image、纯文本数据"] --> TK["统一离散化：文本沿用 Qwen tokenizer，图像用 IBQ 视觉 tokenizer 转为视觉 token"]
+    TK --> P1["预训练（两阶段，约 13T token）：decoder-only Transformer，统一 next-token prediction"]
+    P1 --> SFT["监督微调 SFT：建立统一多模态生成接口"]
+    SFT --> RL["强化学习：多任务奖励系统 + GRPO"]
+    RL --> DIDA["DiDA 离散扩散适配：用自蒸馏数据，图像 token 由顺序解码改为并行生成"]
+    DIDA --> INF["混合推理：文本顺序生成 + 图像并行生成；FSM 调度器管理文本/图像阶段切换"]
+    INF --> DEC["图像解码器（可选扩散解码器）/ 关键帧 token 条件下的扩散视频解码器"]
+    DEC --> OUT["交错的图文（含视频关键帧）输出"]
+```
+
+图依据：论文 Fig. 3（架构）、Fig. 4（训练流程）、Fig. 9–10，及 §2 Model Architecture、§4.3 DiDA 与推理框架。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Native multimodal models are world learners.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.26583>
+- [arXiv PDF](https://arxiv.org/pdf/2510.26583)：已通读方法部分（实验与附录以略读为准）：§2 Model Architecture（Fig. 3–4、tokenizer 与解码器）、预训练数据概述、§4.3 DiDA 与推理基础设施（Fig. 9–10）
 
 ## 推荐继续阅读
 

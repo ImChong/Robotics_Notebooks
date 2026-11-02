@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, open-source, 3d-printing, teensy, inverse-kinematics]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-01
 project_id: open-quadruped
 code: https://github.com/adham-elarabawy/open-quadruped
 summary: "OpenQuadruped：全 3D 打印 12 自由度开源四足，Teensy 实时控制，Bezier 步态 + 6 轴身体姿态控制 + 自定义腿部逆运动学，MIT。"
@@ -12,8 +12,10 @@ related:
   - ./stanford-doggo-and-pupper.md
   - ../concepts/gait-generation.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 ---
 
 # OpenQuadruped

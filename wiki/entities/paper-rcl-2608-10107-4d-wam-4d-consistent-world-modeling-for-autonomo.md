@@ -41,6 +41,31 @@ To alleviate this issue, we present 4D-WAM, a model that leverages geometric fou
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["历史帧 v(-Th:0)、当前自车状态 e0、文本驾驶指令 q"] --> ENC["视频 VAE 编码历史帧 → 干净历史 latent（条件前缀）<br/>T5 编码指令；自车状态线性投影并接到文本 token 后"]
+    ENC --> MOT
+    subgraph MOT["MoT 骨干（Stage I：联合视频-动作流匹配训练）"]
+        VE["视频专家<br/>由 Wan2.2 video DiT 初始化<br/>输入：历史 latent + 噪声未来视频 latent"]
+        AEX["动作专家<br/>结构对齐的 action DiT<br/>输入：噪声轨迹线性投影的动作 token"]
+        VE <-->|"非对称掩码混合注意力<br/>条件 token 只看自己；视频/动作 token 可看三组"| AEX
+    end
+    VE --> FV["预测未来视频"]
+    AEX --> TRJ["自车轨迹（4 s、2 Hz）"]
+    subgraph SUP["Stage II：4D 一致性监督（仅训练时，推理无额外开销）"]
+        VE -.-> CLEAN["由速度预测恢复干净 latent 估计<br/>VAE 解码得到预测未来帧"]
+        CLEAN --> GEO["冻结几何基础模型 VGGT-Ω<br/>输出多层特征与深度"]
+        GT["真值未来帧"] --> GEO
+        GEO --> L4D["L_4D = λ_feat·L_feat（特征余弦）+ λ_depth·L_depth（对数深度 SmoothL1）"]
+    end
+    DS["决策导向时间步采样<br/>噪声水平向高噪声（决策区 θ ≥ 0.90）偏置"] -.->|"决定训练时间步"| SUP
+    L4D -.->|"反传至骨干"| MOT
+```
+
+图依据：论文 §Method（Overview 与 MoT 非对称注意力、4D Consistency Supervision、Decision-Oriented Timestep Sampling）、Implementation Details / Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ To alleviate this issue, we present 4D-WAM, a model that leverages geometric fou
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.10107>
+- [arXiv PDF](https://arxiv.org/pdf/2608.10107)：已通读方法部分（实验与附录以略读为准）：Method（MoT 骨干、4D 一致性监督、决策导向时间步采样）与 Implementation Details
 
 ## 推荐继续阅读
 

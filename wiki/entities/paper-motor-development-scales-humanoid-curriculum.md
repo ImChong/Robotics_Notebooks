@@ -19,7 +19,7 @@ summary: "MotorDev-RL：利用人形机器人验证人类运动发育量表（ar
 
 # MotorDev-RL：利用人形机器人验证人类运动发育量表
 
-**MotorDev-RL**（*Validation of Human Motor Development Scales with Humanoid Robots*，[arXiv:2610.25701](https://arxiv.org/abs/2610.25701)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**MotorDev-RL**（*Validation of Human Motor Development Scales with Humanoid Robots*，[arXiv:2610.25701](https://arxiv.org/abs/2610.25701)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,25 @@ summary: "MotorDev-RL：利用人形机器人验证人类运动发育量表（ar
 ## 为什么重要
 
 - 周报所述待解决的问题：人形机器人学习从躺卧、翻身到站立和行走的一系列技能时，缺少有科学依据的课程顺序。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    SC["婴幼儿运动发育量表<br/>AIMS / BSID / GMFM / PDMS"] --> MG["主图 master graph<br/>每个粗大运动里程碑一个节点，有向边为前置条件/姿态转换（无环）"]
+    MG --> MINI["上肢直立类复合里程碑分解为 mini-graph<br/>如站立：双脚平放 → 小腿直立 → 大腿直立 → 躯干直立 → 手臂收拢"]
+    SC --> GEO["量表中的姿态描述 → 几何奖励<br/>静态姿态：身体部位朝向余弦相似度；动态动作：沿躯干轴的速度"]
+    MG --> NR["节点奖励 r_i,t ∈ [−1, 1]"]
+    MINI --> NR
+    GEO --> NR
+    NR --> GATE["成就门控：父节点奖励超过通过分数 p_ij 才激活子节点<br/>主图父节点只需达成一次；mini-graph 前驱须同时保持"]
+    TOPO["由图拓扑自动分配层级乘数 m_j<br/>主图二次增长；偏置 b_j 在运行时自动计算"] --> GATE
+    GATE --> RT["总奖励 R_t = Σ_j Σ_(i∈P(j)) a_ij,t · ( m_j·r_j,t + b_j )"]
+    RT --> PPO["PPO 训练（Isaac Lab，4096 并行环境）<br/>21-DoF 人形，MLP [800,400,200,100]"]
+    PPO --> POL["输出归一化关节力矩动作 21 维"]
+```
+
+图依据：论文 §III-A / III-B（式 1–2）、Fig. 1–2、§IV 实验设定。
 
 ## 核心机制
 
@@ -86,6 +105,7 @@ summary: "MotorDev-RL：利用人形机器人验证人类运动发育量表（ar
 - [motor-development-scales-humanoid-curriculum_arxiv_2610_25701.md](../../sources/papers/motor-development-scales-humanoid-curriculum_arxiv_2610_25701.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.25701](https://arxiv.org/abs/2610.25701)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25701)：已通读方法部分（实验与附录以略读为准）：§I–IV（引言、相关工作、发育图与奖励函数、实验设定），§V 结果略读
 
 ## 推荐继续阅读
 

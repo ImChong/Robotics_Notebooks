@@ -20,7 +20,7 @@ summary: "Traversal Tubes：面向双足人形姿态感知导航的自适应通�
 
 # Traversal Tubes：面向双足人形姿态感知导航的自适应通行管道
 
-**Traversal Tubes**（*Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids*，[arXiv:2610.27688](https://arxiv.org/abs/2610.27688)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Traversal Tubes**（*Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids*，[arXiv:2610.27688](https://arxiv.org/abs/2610.27688)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,25 @@ summary: "Traversal Tubes：面向双足人形姿态感知导航的自适应通�
 ## 为什么重要
 
 - 周报所述待解决的问题：传统导航只规划路径和速度，无法主动利用侧身姿态穿越窄通道或为行人让路。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Mid-360 LiDAR + FAST-LIO2 式定位<br/>先验地图上的机器人位姿"] --> B["全局 A* 参考路径<br/>局部 Hybrid A* 近场细化"]
+    B --> C["ATT：静态几何宽度 w_static(s)<br/>距离变换净空 → clip(2c − m_safe, w_min, w_nom)"]
+    D["检测到附近行人/agent"] -.-> E["社交压缩宽度<br/>由到 agent 舒适边界的剩余距离得到"]
+    C --> F["w(s) = min(w_static, 社交宽度)"]
+    E --> F
+    F --> G["IVH：侧身比 ρ(s)<br/>w ≥ w_sh → 0；w ≤ w_dp → 1；其间 smoothstep"]
+    G --> H["期望航向 θ_des = ψ + σ·π/2·ρ<br/>σ 最小偏航规则 + 迟滞锁存"]
+    H --> I["体坐标速度指令 (vx, vy, ωz)<br/>路径跟踪 + 横向修正 + 限速/低通"]
+    I --> J["速度条件 AMP 运动先验（默认）<br/>或通用板载控制器（兼容回退）"]
+    K["离线：人类视频 → GVHMR → GMR 重定向到 G1<br/>正向/侧步/过渡参考动作"] --> L["PPO + AMP 判别器训练<br/>r = λ_task·r_task + λ_disc·r_disc"]
+    L --> J
+```
+
+图依据：论文 §III-A 系统概览 / Fig.2、§III-B ATT、§III-C IVH、§III-D 侧步增强 AMP。
 
 ## 核心机制
 
@@ -87,6 +106,7 @@ summary: "Traversal Tubes：面向双足人形姿态感知导航的自适应通�
 - [adaptive-traversal-tubes-bipedal-navigation_arxiv_2610_27688.md](../../sources/papers/adaptive-traversal-tubes-bipedal-navigation_arxiv_2610_27688.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.27688](https://arxiv.org/abs/2610.27688)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27688)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）、§IV 规划评测协议、§V 结论
 
 ## 推荐继续阅读
 

@@ -42,6 +42,20 @@ WorldMove enables live session migration within 18.8ms.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["register_state<br/>绑定 live 状态树，生成 typed manifest<br/>（逐叶 path/dtype/shape/bytes、拓扑哈希、确定性层级）"] --> B{"admit：准入判据<br/>T_migrate(S) &lt; H 且 B_fabric ≥ S/H + D"}
+    B -- "不满足" --> REJ["拒绝迁移"]
+    B -- "满足" --> M["migrate：WorldMove 写入 shadow slot<br/>flatten 缓存 → 传输 → CRC 校验 → rehydrate"]
+    M --> V["verify：用注册时的指纹重新比对暂存副本"]
+    V -- "字节一致" --> C["commit：再校验后原子切换为 live"]
+    V -- "不一致" --> RB["rollback：原状态保持权威，丢弃暂存副本"]
+```
+
+图依据：论文 §4.1（准入条件与 WorldMove 的 extract/transmit/verify/commit）、§5 Table 1（session API）/ Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ WorldMove enables live session migration within 18.8ms.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.10389>
+- [arXiv PDF](https://arxiv.org/pdf/2607.10389)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 测量研究、§4 Exact-State Schedulability、§5 设计与实现（Table 1）
 
 ## 推荐继续阅读
 

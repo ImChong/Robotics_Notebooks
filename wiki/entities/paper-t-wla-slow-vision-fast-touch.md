@@ -23,7 +23,7 @@ summary: "T-WLA：连接低频视觉与高频触觉（arXiv:2610.28814）：T-WL
 
 # T-WLA：连接低频视觉与高频触觉
 
-**T-WLA**（*T-WLA: Bridging Slow Vision and Fast Touch*，[arXiv:2610.28814](https://arxiv.org/abs/2610.28814)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**T-WLA**（*T-WLA: Bridging Slow Vision and Fast Touch*，[arXiv:2610.28814](https://arxiv.org/abs/2610.28814)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,30 @@ summary: "T-WLA：连接低频视觉与高频触觉（arXiv:2610.28814）：T-WL
 ## 为什么重要
 
 - 周报所述待解决的问题：视觉信息适合识别物体和规划操作，但接触发生后的状态变化往往需要更高频率的触觉反馈。两种模态的更新频率不同，增加了实时控制的融合难度。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph VIS["视觉分支（低频，每次 RGB 更新运行）"]
+        V1["当前 RGB、任务指令、视场（FoV）与状态 token"] --> V2["视觉语言模型 f_V"]
+        BANK["记忆库：最近 K 组视觉输出记忆"] -->|"learned queries 检索"| V2
+        V2 --> MEM["视觉记忆 M_V"]
+        MEM -->|"追加并保留最近 K 组"| BANK
+        MEM --> AE["Action expert f_act"]
+        AE --> BASE["基础动作块 A_base（H 步）"]
+    end
+    MEM -->|"缓存，两次 RGB 更新之间保持不变"| ED
+    BASE -->|"缓存"| ED
+    subgraph TAC["触觉分支（高频，每次触觉更新运行，不重跑视觉分支）"]
+        T1["近期触觉历史"] --> T2["触觉编码器（CNN + BiGRU，相对固定参考）→ 触觉上下文 Z"]
+        T2 --> ED["残差编辑器：Transformer 融合视觉记忆、基础动作块与已过时间；FiLM 用触觉上下文调制；残差头输出动作修正 ΔA"]
+    end
+    ED --> FIN["最终动作块 = 缓存的 A_base + ΔA（仅修正尚未执行的动作）"]
+    FIN --> EXE["执行动作"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2、Fig.3、Eq.1–3。
 
 ## 核心机制
 
@@ -90,6 +114,7 @@ summary: "T-WLA：连接低频视觉与高频触觉（arXiv:2610.28814）：T-WL
 - [t-wla-slow-vision-fast-touch_arxiv_2610_28814.md](../../sources/papers/t-wla-slow-vision-fast-touch_arxiv_2610_28814.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.28814](https://arxiv.org/abs/2610.28814)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28814)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4（含 Fig.2–3）
 
 ## 推荐继续阅读
 

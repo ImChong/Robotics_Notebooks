@@ -19,6 +19,34 @@ summary: "将第一视角记录转换为静态三维对象、动态轨迹与时�
 
 # Holi-World：从第一视角经验构建世界理解
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAP["Eagle Capture Device：同步双目 RGB + IMU"] --> PREP
+    subgraph FOUNDRY["HoliWorld-Foundry"]
+        PREP["几何准备：视觉惯性 SLAM 得位姿与稀疏点 → Depth Anything 3 估深度 → 优化 3DGS 场景 G，动态区域用逐帧 DA3 深度补全"] --> VLM0["VLM 从关键帧提取类别 / 属性 / 运动与交互线索，把物体分流到静态或动态路径"]
+        VLM0 --> ST
+        VLM0 --> DY
+        subgraph ST["静态物体感知"]
+            S1["图像路径：Boxer 左右目 2D 检测抬升为 3D 框并跨帧关联<br/>点云路径：TR3D 检测重建点云"] --> S2["框合并 + 点支持度几何过滤，预选一个备选框"]
+            S2 --> S3["VLM 验证：保留 / 修正几何 / 改标签 / 拒绝；拒绝则备选框重试一次"]
+        end
+        subgraph DY["动态物体感知"]
+            D1["手部区域 + VLM 交互描述 → 跨片段身份关联"] --> D2["SAM 按身份选初始掩码并在片段内传播"]
+            D2 --> D3["有效深度反投影到世界系 → 拟合逐帧 OBB → 按身份连接成 4D 轨迹"]
+        end
+        S3 --> U["统一世界表示 S(t)：观测、2D 框 / 掩码、G、P、静态 / 动态 3D 框、标签 / 身份 / 交互语义 / 证据链接"]
+        D3 --> U
+    end
+    U --> DATA["HoliWorld-Data：grounding、caption、空间 / 时序 / 交互 QA（约 80K QA）"]
+    DATA --> VL["训练 HoliWorld-VL"]
+    HUM["人工标注留出录像 → HoliWorld-Bench"] -.-> U
+    HUM -.-> VL
+```
+
+图依据：论文 §3.1–3.4 / Fig. 2–5。
+
 ## 一句话定义
 
 将第一视角记录转换为静态三维对象、动态轨迹与时空推理监督。
@@ -76,6 +104,7 @@ ScanNet AP50 只衡量静态检测；若关心动态物体与时序推理，应�
 - [论文归档](../../sources/papers/holi-world.md)
 - [项目页归档](../../sources/sites/holi-world.md)
 - [官方仓库归档](../../sources/repos/holi-world.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26549)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§4 开头
 
 ## 推荐继续阅读
 

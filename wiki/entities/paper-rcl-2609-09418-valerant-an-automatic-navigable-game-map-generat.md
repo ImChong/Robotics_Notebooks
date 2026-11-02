@@ -42,6 +42,28 @@ Valerant expands one game screenshot into a persistent 3D point-cloud map by gen
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单张输入图像 o0"] --> B["冻结的预训练动作条件视频世界模型<br/>从同一视觉上下文出发"]
+    B --> C["5 条候选动作序列 {uw, jw, lw, jq, lq}<br/>各自生成未来 rollout"]
+    C --> D["视觉 SLAM 处理每条 rollout<br/>恢复相机轨迹与候选场景几何"]
+    D --> E["鲁棒地面估计<br/>归一化地面相对高度 h̄"]
+    E --> F["互补碰撞检测<br/>点云碰撞 + 深度碰撞，任一触发即 B=1"]
+    D --> G["评估探索覆盖 C 与前进进度 P"]
+    F --> H["在无碰撞候选中选 m*<br/>最大化 λcov·C + λprog·P"]
+    G --> H
+    H --> I["恢复预动作状态，仅提交 A(m*)<br/>更新视觉上下文 O 与全局地图 M，丢弃其余分支"]
+    I -.->|"重复至探索预算用尽"| B
+    I --> J["输出：3D 点云游戏地图"]
+    I --> K{"持续无进展？<br/>（所有平移候选碰撞或进度可忽略）"}
+    K -->|"是：Dead-Pocket Rewind"| L["回滚到更早的 WM–SLAM 检查点<br/>并把已走过的格子记入 failed-region 记忆"]
+    L -.-> B
+```
+
+图依据：论文 §3.2 概览、§3.3.1–3.3.3、Fig.2（式 5–11）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Valerant expands one game screenshot into a persistent 3D point-cloud map by gen
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.09418>
+- [arXiv PDF](https://arxiv.org/pdf/2609.09418)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.3；§4 实验略读
 
 ## 推荐继续阅读
 

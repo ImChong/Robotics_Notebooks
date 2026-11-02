@@ -19,6 +19,36 @@ summary: "以统一世界坐标系联合重建第一视角视频中的相机、�
 
 # EgoXperience：世界坐标系中的第一视角重建
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ENG["EgoX-Engine 标注流程"]
+        A["HOMIE Gen2 头戴采集<br/>前向双目 stereo 度量深度 + 四鱼眼 SLAM 相机轨迹"] --> F["SLAM 坐标系作为 session 固定帧"]
+        B["31 相机 dome 扫描 + SAM 3 掩码<br/>MV-SAM3D 重建物体 mesh，AprilTag 定尺度"] --> C["首帧掩码锁定目标物体<br/>指定交互区间"]
+        A --> C
+        C --> D["初始 6DoF 位姿估计<br/>FoundationPose 跟踪"]
+        D --> E{"位姿与观测深度一致?"}
+        E -- 通过 --> F
+        A --> G["双目深度反投影得场景几何<br/>跨视角三角化手关键点，MANO 拟合"]
+        G --> F
+    end
+    F --> H["EgoX-Data-6M<br/>50 小时、101 个刚体、二级任务 caption"]
+    H --> I["EgoX-Bench 留出 1 小时评测"]
+    H --> J["训练 EgoX（另并入统一格式的公开数据集，按可用标签监督）"]
+    subgraph MODEL["EgoX 单次前向"]
+        K["单目第一视角视频 + 首帧物体掩码"] --> L["DINOv3 patch 特征<br/>+ 相机 / 手 / 物体 token"]
+        L --> M["视内与跨视角注意力 Transformer"]
+        M --> N["相机内外参 + 稠密深度 + MANO 手 + 物体位姿"]
+        N --> O["按式 U_t 变换到首帧相机系 W"]
+        O --> P["ScaleHead 预测度量尺度 s"]
+    end
+    J --> MODEL
+    P --> Q["L = L_local + L_dense + L_coupled + L_scale"]
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3、Fig.3 / Fig.4
+
 ## 一句话定义
 
 以统一世界坐标系联合重建第一视角视频中的相机、场景、手和物体。
@@ -76,6 +106,7 @@ EgoX-Engine 通过几何验证的物体跟踪与 SLAM 对齐构造多模态监�
 - [论文归档](../../sources/papers/egoxperience.md)
 - [项目页归档](../../sources/sites/egoxperience.md)
 - [官方仓库归档](../../sources/repos/egoxperience.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26625)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–§3.3、§4 开头与主结果（附录未读）
 
 ## 推荐继续阅读
 

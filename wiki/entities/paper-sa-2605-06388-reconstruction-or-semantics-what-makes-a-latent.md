@@ -42,6 +42,25 @@ Investigates what makes a latent space useful for robotic world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["BridgeV2 观测历史 ot-H:t + 动作 at-H:t+K-1"] --> ENC["冻结编码器 fφ 得到空间 latent zt<br/>重建类：SD3 VAE / VA-VAE / Cosmos<br/>语义类：V-JEPA 2.1 / Web-DINO / SigLIP 2"]
+    ENC --> AD{"语义编码器是否用 adapter ?"}
+    AD -->|"是"| S["冻结 S-VAE adapter 压缩到 d=96"]
+    AD -->|"否 / 重建类恒等映射"| Z["直接使用 latent"]
+    S --> DIT["动作条件 DiT（flow matching）<br/>空间块 + 因果时间块，唯一被训练的模块"]
+    Z --> DIT
+    DIT --> DEC["冻结解码器：VAE 原生解码器<br/>或 adapter 像素解码器"]
+    DEC --> ROLL["自回归 rollout：每次一帧，10 帧滑动上下文"]
+    ROLL --> E1["轴 1：规划与下游策略表现"]
+    ROLL --> E2["轴 2：像素保真度与场景几何"]
+    ROLL --> E3["轴 3：latent 表征质量（如 IDM 探针）"]
+```
+
+图依据：论文 §2.1（Latent Space World Models）、§3.1（Dataset and Training）、§3.2（三条评测轴）与附录 B.2 的推理流程；本文是编码器 latent 空间的对比研究，图为其统一实验协议而非新模型。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Investigates what makes a latent space useful for robotic world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.06388>
+- [arXiv PDF](https://arxiv.org/pdf/2605.06388)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 问题设定与 latent 空间世界模型、§3.1–3.2 实验协议与评测轴、附录 B 架构与训练细节
 
 ## 推荐继续阅读
 

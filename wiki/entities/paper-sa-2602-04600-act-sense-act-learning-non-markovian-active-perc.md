@@ -42,6 +42,30 @@ Introduces CoMe-VLA, a cognitive and memory-aware VLA framework leveraging large
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph IN["输入"]
+    V["第一视角视觉：当前帧 + 过去 5 秒内 5 帧历史"]
+    TX["子任务文本，如 find the croissant"]
+    CT["可学习 [COG] 认知 token"]
+    PR["时序本体状态（proprioception）"]
+  end
+  V --> VLM["预训练 VLM：Qwen3-VL-2B（GR00T 风格，无 LM head）"]
+  TX --> VLM
+  CT --> VLM
+  PR --> PM["Proprioceptive Memory Encoder（Transformer）"]
+  VLM -->|"[COG] 隐状态"| CH["Cognitive Auxiliary Head（MLP）→ 二值标签 c_t：信息是否已足够"]
+  CH -->|"c_t = 1"| SW["切换子任务文本（探索 → 利用）"]
+  SW -.->|"重新条件化"| TX
+  VLM -->|"视觉-语义上下文"| AD["流匹配 Action Decoder：每层对两路记忆做 Cross-Attention"]
+  PM -->|"本体记忆上下文"| AD
+  AD --> OUT["29 维动作块 A_t：视点 pos+rot6d、双臂末端 pos+rot6d、双夹爪"]
+```
+
+图依据：论文 §5 / Fig. 3（CoMe-VLA 概览）、§5.1 模型结构、§5.2 三阶段训练（阶段 1：认知预训练；阶段 2：认知-动作联合预训练；阶段 3：机器人数据微调，三阶段未画入图中）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Introduces CoMe-VLA, a cognitive and memory-aware VLA framework leveraging large
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.04600>
+- [arXiv PDF](https://arxiv.org/pdf/2602.04600)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§5 模型设计（5.1 架构、5.2 训练策略，含 Fig. 3）、§6.1 实现细节
 
 ## 推荐继续阅读
 

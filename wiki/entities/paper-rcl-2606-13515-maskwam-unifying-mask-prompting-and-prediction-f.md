@@ -41,6 +41,24 @@ To overcome these limitations, we introduce MaskWAM, an object-centric world-act
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["当前 RGB 观测 I0"] --> VAE["冻结 Video VAE（因果 3D）编码"]
+    M0["可选首帧目标 mask M0<br/>（SAM-3：文本 / 点击 / 框 / 粗 mask；训练时以 p=0.5 置零）"] --> VAE
+    VAE --> Z["RGB latent 与 mask latent 通道拼接<br/>z = [z_v ; z_m]"]
+    NZ["带噪未来 RGB / mask latent"] --> DiT
+    Z --> DiT["视觉分支：统一 DiT（Wan 2.2）<br/>块因果注意力，T5 语言经 cross-attention"]
+    DiT <-->|"MoT 联合注意力"| AE["动作专家<br/>输入：本体状态 + 带噪动作（投影层）"]
+    DiT --> OV["输出：未来 RGB 与未来 mask 的速度（L_video, L_mask）"]
+    AE --> OA["输出：动作块速度（L_act）"]
+    DiT -.-> INF["推理：对 RGB-mask 流只做一步去噪，KV cache<br/>动作专家基于部分去噪 latent 生成动作块"]
+    INF -.-> AE
+```
+
+图依据：论文 §1、§3（3.1–3.3）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ To overcome these limitations, we introduce MaskWAM, an object-centric world-act
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.13515>
+- [arXiv PDF](https://arxiv.org/pdf/2606.13515)：已通读方法部分（实验与附录以略读为准）：§1 引言（贡献部分）、§3 Method（3.1–3.3）
 
 ## 推荐继续阅读
 

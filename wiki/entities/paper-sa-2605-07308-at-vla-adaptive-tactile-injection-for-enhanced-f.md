@@ -42,6 +42,25 @@ Adaptive tactile injection strategy for enhanced feedback reaction in VLA models
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["头部/双腕相机图像 I + 语言指令 L"] --> VLM["慢流：Vision-Language Model (GO-1, InternVL-2B)<br/>低频提取视觉-语言特征"]
+    VLM --> KV["图像/文本 token 作为 cross attention 的 key 与 value"]
+    T["触觉反馈 T (3D 法向 + 3D 切向力)"] --> TE["Tactile Encoder (轻量 MLP)"]
+    TE --> G["Tactile Gate (MLP)：接触分数 > 0.5 ?"]
+    G -->|"否：非接触"| QS["query = 状态 token zS<br/>与原 VLA 结构一致"]
+    G -->|"是：接触"| QT["query 换成触觉 token zT<br/>快流高频推理，快:慢 = 3:1"]
+    S["本体状态 S"] --> QS
+    KV --> AE["Action Expert (DiT)：Adaptive Cross Attention"]
+    QS --> AE
+    QT --> AE
+    AE --> A["动作 chunk A：双臂 14-DoF 末端位姿"]
+```
+
+图依据：论文 §3.1 / Fig. 2（整体框架）、§3.2（Tactile Gating 与 Adaptive Cross Attention）、§3.3（Tactile Reaction Dual-Stream，3:1 频率比）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Adaptive tactile injection strategy for enhanced feedback reaction in VLA models
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2605.07308>
+- [arXiv PDF](https://arxiv.org/pdf/2605.07308)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法（3.1–3.3）、§4.1 实验设置
 
 ## 推荐继续阅读
 

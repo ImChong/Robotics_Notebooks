@@ -43,6 +43,27 @@ Flexible, adaptive, and efficient 4D occupancy world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["多帧多视角图像 + 历史自车轨迹 w"] --> BB["Image Backbone：多尺度图像特征"]
+    I --> AS["Adaptive Scaling：MLP 编码历史轨迹得 γ，缩放 query 初始坐标 P0"]
+    LQ["可学习 queries Q0 + 4D 坐标"] --> AS
+    AS --> RAP["Range-Adaptive Perception：L 层 coarse-to-fine decoder"]
+    BB --> RAP
+    RAP --> D1["每层：特征采样 → Adaptive Mixing → Temporal-Spatial MHSA → 占据头"]
+    D1 --> Q["扩展范围场景 queries Q 与位置 P（当前时刻）"]
+    Q --> PART["按 timestamp 划分为 Q0 … Qf"]
+    PART --> SCF["State-Conditioned Forecasting：自车 query 与场景 query 空间交叉注意力"]
+    SCF --> REG["回归式迁移：逐帧解码偏移并细化位置（替代逐体素分类）"]
+    REG -->|"自回归 ×f"| SCF
+    REG --> OCC["4D 占据预测解码头"]
+    SCF --> PLAN["规划解码头：输出 waypoints"]
+```
+
+图依据：论文 §Methodology（Fig. 2 整体架构；Range-Adaptive Perception、State-Conditioned Continuous Forecasting；式 3–7）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Flexible, adaptive, and efficient 4D occupancy world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.17482>
+- [arXiv PDF](https://arxiv.org/pdf/2510.17482)：已通读方法部分（实验与附录以略读为准）：Introduction、Methodology（Preliminary、Range-Adaptive Perception、State-Conditioned Continuous Forecasting、Timestamp-Aware Self-Scheduling Training）
 
 ## 推荐继续阅读
 

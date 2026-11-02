@@ -42,6 +42,30 @@ summary: "AdaPolicy（arXiv:2610.34280）：当前动作头同时输出动作与
 - 开源结论：**部分开源**（步骤 2.5，2026-10-28）。公众号未给代码链接；项目页链接 teee111/ADWM-Code，git ls-remote 失败（仓库不存在或私有），不能当作已开源。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["当前观测 o_t + 任务指令 l + 本体状态 p_t"] --> B["冻结的预训练编码器（DINOv3 或 Qwen3-VL-2B）"]
+    B --> CA["Context Adapter：可学习 queries 压缩为条件 token"]
+    I -.-> PR["线性层投影 p_t"]
+    CA --> CT["条件 token c_t（与投影后的 p_t 拼接）"]
+    PR --> CT
+    CT --> OH["Online Action Head（DiT，flow matching）"]
+    N0["当前块噪声动作 token"] --> OH
+    OH --> A0["当前动作块的速度场 → L_curr"]
+    OH --> Z["演化潜状态 ẑ_(t+h)"]
+    Z --> UH["Unrolled Action Head（仅训练期，参数为 Online 头的 EMA，不做梯度更新）"]
+    N1["下一块噪声动作 token"] --> UH
+    UH --> A1["下一动作块的速度场 → L_next"]
+    A1 -. "L_next 梯度经 ẑ 回传至 Online 头与 Context Adapter" .-> Z
+    A0 --> LT["L_total = L_curr + γ·L_next"]
+    A1 --> LT
+    OH -. "推理：仅用 Online 头，ODE 去噪 10 步得当前动作块；丢弃 Unrolled 头" .-> OUT["执行动作"]
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +109,7 @@ summary: "AdaPolicy（arXiv:2610.34280）：当前动作头同时输出动作与
 - [adapolicy_arxiv_2610_34280.md](../../sources/papers/adapolicy_arxiv_2610_34280.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.34280](https://arxiv.org/abs/2610.34280)
+- [arXiv PDF](https://arxiv.org/pdf/2610.34280)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§4.1 实现细节
 
 ## 推荐继续阅读
 

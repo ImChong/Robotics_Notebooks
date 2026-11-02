@@ -43,6 +43,22 @@ Infers symbolic world models for stochastic environments from unguided explorati
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EX["LLM 驱动的探索策略：仅给通用 genre 先验，在 Crafter-OO 中做单次无引导 episode"] --> D["交互数据：(s_t, a_t, s_t+1) 转移"]
+    D --> SYN["Law Synthesizer：逐转移比较对象状态，找出变化的属性，LLM 为每个变化写出带 precondition / effect 的 Python 原子 law"]
+    SYN --> POOL["候选 law 池（含错误假设）"]
+    POOL --> INF["推理：L-BFGS 最大化转移对数似然，只对适用 law 反传（动态计算图）以学习权重 θ"]
+    D --> INF
+    INF --> WM["世界模型：加权 product-of-experts 的 law 混合，无效 law 权重趋零"]
+    WM --> SIM["前向模拟：每个 observable 的预测分布 → 采样 → 重建下一状态 s_t+1"]
+    WM --> EVAL["评测：state ranking（MRR）与 state fidelity（编辑距离）"]
+```
+
+图依据：论文 §3 Overview of OneLife（§3.2 law 混合、§3.3 探索与 law 合成、§3.4 参数推理、§3.5 前向模拟；Fig. 1、Fig. 2），评测指标见 §4 与 Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Infers symbolic world models for stochastic environments from unguided explorati
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.12088>
+- [arXiv PDF](https://arxiv.org/pdf/2510.12088)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.5）、§4 评测指标（概览）
 
 ## 推荐继续阅读
 

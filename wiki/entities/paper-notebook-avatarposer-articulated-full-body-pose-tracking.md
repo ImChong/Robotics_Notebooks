@@ -38,6 +38,24 @@ summary: "在 VR/AR 头显平台上驱动关节化化身，通常只能拿到稀
 - **IK 微调对齐末端**是把学习预测与硬约束结合的经典做法；
 - 三点驱动化身的范式启发人形遥操作的稀疏输入控制。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["HMD + 双手柄 三点输入<br/>位置 p / 旋转 θ（6D）/ 线速度 v / 角速度 ω<br/>每时刻 54 维，取最近 N 帧"] --> B["Linear Embedding<br/>升到 256 维"]
+    B --> C["Transformer Encoder<br/>3 层自注意力、8 头"]
+    C --> D["Stabilizer（2 层 MLP）<br/>预测 pelvis 全局朝向"]
+    C --> E["2 层 MLP<br/>预测各关节局部旋转 θlocal（22 关节）"]
+    D --> F["全局朝向 + 头部位置<br/>沿运动学链得全局平移"]
+    E --> G["FK Module<br/>由骨架模型 + 旋转算关节位置"]
+    F --> G
+    G --> H["IK Module<br/>仅优化肩/肘旋转，使手位置对齐输入"]
+    A -. 手部目标位置 .-> H
+    H --> I["Animator 输出<br/>全身 22 关节姿态"]
+```
+
+图依据：论文 §3.3 / Fig.2、Fig.3（IK 仅在推理时使用，训练不含 IK Module，见 §3.3 Loss Function）。
+
 ## 解决什么问题
 
 头显平台只有**三点稀疏信号**，却要驱动**全身化身**： - 从极稀疏输入推全身**欠约束**； - 要**实时**、手部要**精确对齐**输入； - 全局漂移影响稳定。
@@ -89,6 +107,7 @@ AvatarPoser 要：从三点稀疏输入实时、精确地重建全身关节姿�
 - [humanoid_pnb_avatarposer.md](../../sources/papers/humanoid_pnb_avatarposer.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html>
 - 论文：<https://arxiv.org/abs/2207.13784>
+- [arXiv PDF](https://arxiv.org/pdf/2207.13784)：已通读方法部分（实验与附录以略读为准）：§1–§3 方法（问题定义、输入输出表示、整体框架、Loss）、§4.1–4.2 实验设定与结果
 
 ## 推荐继续阅读
 

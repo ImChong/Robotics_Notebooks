@@ -42,6 +42,23 @@ General interactive world model with autoregressive denoising.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  HIS["历史视频 chunk z_1:i-1\n(训练时注入噪声当作 mask; 保留首帧并压缩中间历史)"] --> FT
+  TXT["文本提示 c (可选)"] --> FT
+  ACTS["多模态动作输入: 相机位姿 / 机器人位姿 / 键鼠指令"] --> PROJ["各模态投影器 → 共享动作空间\n+ 过去/当前动作二值标记"]
+  PROJ --> ROUTER["MoAE 路由器: top-K 专家 (MLP)\n按门控分数聚合为动作嵌入"]
+  ROUTER --> ENC["动作编码器 + ACT-Adapter\n逐块逐元素相加, 自注意力后接恒等初始化线性层"]
+  ENC --> FT["Action-Aware Flow Transformer\n(预训练视频 flow matching DiT, 仅自注意力与适配器可训练)"]
+  FT --> AFG["推理: 无动作引导 AFG\nv = v(∅) + s·(v(a) − v(∅))"]
+  AFG --> NEXT["去噪得到下一视频 chunk z_i"]
+  NEXT -. "追加到历史, 自回归生成下一块" .-> HIS
+```
+
+图依据：论文 §3（§3.1 自回归去噪、§3.2 ACT-Adapter 与 AFG、§3.3 噪声历史记忆、§3.4 MoAE）/ Fig.2–4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ General interactive world model with autoregressive denoising.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.08931>
+- [arXiv PDF](https://arxiv.org/pdf/2512.08931)：已通读方法部分（实验与附录以略读为准）：摘要、§2 相关工作略读、§3.1–§3.4；§4 实验未细读
 
 ## 推荐继续阅读
 

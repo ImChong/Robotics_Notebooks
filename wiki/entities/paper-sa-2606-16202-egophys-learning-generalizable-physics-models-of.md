@@ -51,6 +51,28 @@ Constructs deformable physical digital twins from egocentric RGB-only video usin
 | 出处 | arXiv 2026 |
 | 论文 | <https://arxiv.org/abs/2606.16202> |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["单段第一人称 RGB 视频<br/>Meta Project Aria"] --> B["抽帧 + 分割<br/>Grounded-SAM2 物体/操作器 mask"]
+  B --> C["CoTracker3 稠密 2D 跟踪"]
+  C --> D["VGGT 逐帧 3D 提升<br/>置信度与深度过滤"]
+  D --> E["时序一致的 4D 点云<br/>遮挡严重时 TRELLIS 补全几何"]
+  E --> F["CMA-ES 粗初始化<br/>弹簧图拓扑 + 全局刚度 k"]
+  F --> G["静态特征 + 动态特征<br/>应变 / 应变率 / 朝向 / 高度"]
+  G --> H["共享 MLP 编码<br/>拉伸头 / 压缩头 softmax 软分配"]
+  H --> I["拉伸 / 压缩 Codebook<br/>log k = log k_bar + Delta"]
+  I --> J["Warp 可微仿真器 rollout"]
+  J --> K["Chamfer 几何损失 + 运动跟踪损失<br/>+ 稠密刚度蒸馏项"]
+  K -.->|"训练期反向传播"| H
+  I --> L["测试期: 无需逐弹簧优化<br/>预测稠密弹簧刚度 = 可变形数字孪生"]
+  L --> M["MPPI 规划器以 EgoPhys 为前向模型"]
+  M --> N["路点经标定变换 → xArm6 执行"]
+```
+
+图依据：论文 §3.1–3.3、§4.4 / Fig.2–4。
+
 ## 核心机制（归纳）
 
 ### 策展导读要点
@@ -96,6 +118,7 @@ Constructs deformable physical digital twins from egocentric RGB-only video usin
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.16202>
+- arXiv PDF：<https://arxiv.org/pdf/2606.16202>（已通读方法部分（实验与附录以略读为准）：方法 §3、实验 §4.1/§4.4）
 
 ## 推荐继续阅读
 

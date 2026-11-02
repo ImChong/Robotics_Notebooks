@@ -251,6 +251,71 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-02] ingest | sources/papers/care_arxiv_2602_03473.md — 收录 CaRE 双层路由持续学习及官方代码数据
+
+## [2026-11-02] ingest | sources/sites/moss-api-platform.md — 收录模思开放平台接口与开源边界
+
+## [2026-11-02] ingest | Khushi X Article《From RT1 to MolMoAct2: A brief history of VLAs》：10 个模型各一个唯一节点（新建 SmolVLA、MolmoAct，复用 8），含时间线地图
+
+## [2026-11-02] ingest | FACT EgoForce：核对论文全文与项目页，补充流程图及人类力标签边界；代码和数据待发布
+
+## [2026-11-02] ingest | sources/sites/roboatom.md — 补充 RoboAtom 官方发布入口和已有论文节点，待完成全文核对
+
+## [2026-11-01] structural | roadmap 巡检：硬件设计/力矩电机/RL 运动控制三条纵深补入 11-01 新增知识节点链接
+
+## [2026-11-02] ingest | sources/repos/unclebob-ub-mode.md — 收录编码代理技能及质量工具边界
+
+- 已核对 README 与 SKILL.md；配套工具分属独立仓库。
+
+## [2026-11-02] ingest | 智生于形《从开源仓库到真机差几步：人形机器人复现门槛与 Sim2Real 缺口》：新建复现门禁概念页（工程经验综述，无项目清单）
+
+## [2026-11-02] ingest | 算法工程师的学习日志《从 1/4 车模型到最优控制器：MWORKS 主动悬架建模与参数优化》：新建主动悬架状态反馈与约束优化概念页（单作者实操，无项目清单）
+
+## [2026-11-02] ingest | senlanke 具身运控lab《10.26-10.30前沿论文动态》Manipulation 57 篇逐篇建独立详情节点（新建 31 / 复用 26）
+
+## [2026-11-02] ingest | sources/papers/human_superior_colliculus_predictive_7t_2026.md — 归档上丘感觉预测论文与公开分析代码，全文待核读
+
+## [2026-11-02] ingest | sources/papers/any3r_arxiv_2610_36150.md — 收录 Any3R 论文、项目与推理源码，全文与附录待复核
+
+## [2026-11-02] ingest | senlanke 具身运控lab《10.26-10.30前沿论文动态》人形/四足 33 篇逐篇建独立详情节点（新建 23 / 复用 10）
+
+## [2026-11-02] ingest | GitHubStore《19款能自己造的开源人形机器人》：19 个项目逐项目建独立节点（新建 13 / 复用 6），含 README 核对与归类存疑标注
+
+## [2026-11-02] ingest | GRAFT 地形残差适配
+
+- 通读论文 v1，记录冻结跟踪器、下肢残差、蒸馏、评测与局限。
+- 项目页未发现算法代码或权重入口；待后续核实开放状态。
+
+## [2026-11-01] lint | health-check — 全量 lint 清零：DONIC/Spotter 陈旧页同步源核查进度、SeeR-VLA 补「与其他工作对比」、7 评测基准页 + 3 感知页 + 1 FOC 页补枢纽回链、6 篇非感知论文修正误标 perception tag、none/VGGT 加入缺页候选豁免
+
+## [2026-11-01] ingest | 古月居转载《四足机器人开源项目深度解析》：36 个 GitHub 项目逐项目建独立节点（新建 24 / 复用 12 个节点），含 README 核对
+
+## [2026-11-01] ingest | Zane Hub 公众号《灵巧手负载与核心指标》：新建 dexterous-hand-payload-core-metrics 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《机器人关节方案选型》：新建 robot-joint-scheme-selection 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组减速器的难度拆解》：新建 joint-module-reducer-difficulty 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组电磁隔离》：新建 joint-module-electromagnetic-isolation 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组：额定电流小于负载电流的后果》：新建 joint-motor-rated-current-overload 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组空载：速度环与力矩环的输出扭矩区别》：新建 joint-module-no-load-velocity-vs-torque-loop 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《关节模组轴的径向热膨胀校核》：新建 joint-module-shaft-thermal-expansion 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub 公众号《机器人结构公差仿真工具链》：新建 structure-tolerance-simulation-toolchain 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | Zane Hub《人形机器人结构设计工程师需要懂哪些跨专业知识？》：新建跨专业知识地图（无论文/项目清单，不做逐项目节点）
+
+## [2026-11-01] ingest | sources/sites/qiayuan-liao-homepage.md — 收录个人主页与相关人形控制研究和开源入口
+
+## [2026-11-01] ingest | Zane Hub 公众号《人形机器人线束类型与防护》：新建 humanoid-wire-harness-types-protection 概念页（工程经验综述，无论文/项目清单）
+
+## [2026-11-01] ingest | 深蓝具身智能《四年十篇顶会Best Paper，谁在持续霸榜？》：正文 9 篇 CV 三大会 Best Paper 逐篇建独立详情节点（新建 7 / 复用 2）
+
+## [2026-11-01] ingest | 具身智能小站 2026-11-01《模型还在思考，目标已经移动》56 篇逐篇建独立详情节点（新建 43 / 复用 13）
+
 ## [2026-11-01] ingest | sources/blogs/videodb_how_a_robot_remembers_2026-10-27.md — 收录外部视频记忆架构并区分 SDK 与服务端开放范围
 
 ## [2026-11-01] ingest | sources/repos/semi-design.md — 收录 React 组件库及设计系统，待补完整技术文档核对

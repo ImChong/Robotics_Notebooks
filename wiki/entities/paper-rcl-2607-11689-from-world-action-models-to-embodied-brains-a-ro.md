@@ -41,6 +41,22 @@ Building on this analysis, we propose a co-evolution roadmap for physical intell
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多模态观测 / 任务上下文<br/>记忆 / 可用能力描述"] --> B["具身大脑 Embodied Brain<br/>整合证据，比较候选干预，确定意图"]
+    B --> C["中间意图表示<br/>目标状态转移或能力请求，非执行器指令"]
+    C --> D["物理 Harness<br/>意图落地、解析工具模型与控制器、监督执行"]
+    D --> E["工具模型 / 控制器 / 验证器<br/>作用于物理环境"]
+    E --> F["世界变化被记录为 Trace"]
+    F --> G["评估；溯源与质量足够才准入学习"]
+    G -.->|"已准入轨迹回流"| B
+    G -.-> D
+```
+
+图依据：论文 §4.1 与 Fig.11–12（路线图的“一条操作流”；这是综述提出的概念框架，非实验方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Building on this analysis, we propose a co-evolution roadmap for physical intell
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.11689>
+- [arXiv PDF](https://arxiv.org/pdf/2607.11689)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4.1–§4.2（路线图总览、具身大脑与 WAM 预测契约）；其余章节未细读
 
 ## 推荐继续阅读
 

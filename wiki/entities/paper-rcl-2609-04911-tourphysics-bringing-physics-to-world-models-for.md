@@ -42,6 +42,25 @@ TourPhysics renders persistent camera tours and object manipulations from a sing
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单张图像 I0 + 物理场景声明 Θdecl"] --> B["场景提升（仅一次）：SAM 3 / SAM 3D Objects 得到实例 mesh<br/>LaMa 修补出背景板 B0；拟合参考相机与仿射深度"]
+    B --> R["只读参考记录 R（I0 作永久外观锚点）"]
+    R --> C["窗口 n 的已提交状态 S_n（物理 / 相机 / 外观记忆 K_n / 尾部证据）"]
+    C --> D["仿真器与相机控制器克隆状态<br/>按动作 a_n 生成固定轨迹 + 几何记录 G_n"]
+    D --> E["生成器侧相对深度控制 D_gen<br/>（由 G_n 构造，并融合已接受的尾部证据）"]
+    E --> F["扩散视频模型合成窗口 Y_Wn<br/>条件：G_n、D_gen、I0、K_n"]
+    F --> G{"质量门（边界 / 黑帧 / 冻结运动）"}
+    G -- 通过 --> H["原子提交：终端仿真/相机状态 + 外观页 + 尾部证据一并发布"]
+    G -- 未通过 --> I["回滚候选，重试：仅可换采样种子，轨迹与控制不变"]
+    I --> F
+    H --> C
+```
+
+图依据：论文 §4.1–4.6 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ TourPhysics renders persistent camera tours and object manipulations from a sing
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.04911>
+- [arXiv PDF](https://arxiv.org/pdf/2609.04911)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1–4.6）与 §5.1 实验设置
 
 ## 推荐继续阅读
 

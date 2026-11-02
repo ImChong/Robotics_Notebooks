@@ -42,6 +42,22 @@ Social world model-augmented mechanism design policy learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["环境（Background Agents，潜在 Trait 不可观测）"] -->|"交互轨迹 τ = (s_obs, π, r_soc)"| BUF["Environment Buffer"]
+    BUF --> POST["Posterior Trait Tracker<br/>读取完整轨迹，推断 m̂_post"]
+    POST --> SWM["Social World Model 学习<br/>预测 s_obs(t+1) 与 r_soc<br/>J_SWM = 状态预测误差 + c·KL(p(m̂_post) ‖ U(m))"]
+    POST -->|"作为监督目标"| PRIOR["Prior Trait Tracker 学习<br/>仅用部分历史 s≤t, π<t，推断 m̂_prior<br/>J_Prior"]
+    PRIOR --> POL["Mechanism Design Policy Π(π_t | s_obs, m̂_prior)<br/>PPO 训练，奖励 = 社会福利 r_soc"]
+    POL -->|"部署机制决策：Tax / Location / Team"| ENV
+    POL <-->|"想象轨迹（Imagined trajectories）<br/>提升样本效率"| SWM
+    PRIOR -->|"m̂_prior 同时输入 SWM 用于想象 rollout"| SWM
+```
+
+图依据：论文 §3.1–3.2 / Fig.2、式 (3)(4)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Social world model-augmented mechanism design policy learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.19270>
+- [arXiv PDF](https://arxiv.org/pdf/2510.19270)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1 问题定义、§3.2 SWM-AP 架构与目标函数、Fig.2（§3.3 ELBO 推导与 §4 实验仅略读）
 
 ## 推荐继续阅读
 

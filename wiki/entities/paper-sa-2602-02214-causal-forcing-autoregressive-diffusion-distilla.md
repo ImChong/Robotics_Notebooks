@@ -43,6 +43,23 @@ Real-time interactive video generation via autoregressive diffusion distillation
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    B["预训练双向视频扩散模型"] -.->|"现有做法（Self Forcing）：<br/>直接蒸馏 AR 学生，违反 frame-level injectivity"| X["ODE 初始化效果差（条件期望解，视频模糊）"]
+    D["真实视频数据"] --> S1["阶段1：自回归扩散训练<br/>采用 Teacher Forcing（以干净前缀为条件）<br/>优于 Diffusion Forcing"]
+    S1 --> T["AR 扩散模型 = 教师"]
+    T --> S2A["采样教师 PF-ODE 轨迹<br/>真实干净帧作历史，从高斯噪声生成当前帧"]
+    D --> S2A
+    S2A --> S2["阶段2：因果 ODE 蒸馏<br/>学生 G_θ 由 (x_t^i, 干净历史) 回归干净帧 x_0^i"]
+    S2 --> S3["阶段3：非对称 DMD（同 Self Forcing）<br/>学生以自身生成的前缀自回归 rollout"]
+    S3 --> OUT["少步自回归学生模型<br/>实时交互视频生成"]
+    S2 -.->|"扩展（§3.4）"| CD["因果一致性蒸馏 Causal CD<br/>可替代阶段2，留作未来工作"]
+```
+
+图依据：论文 §3.2-3.4（现有方法分析与 Causal Forcing 三阶段流程）、Fig.3、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Real-time interactive video generation via autoregressive diffusion distillation
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.02214>
+- [arXiv PDF](https://arxiv.org/pdf/2602.02214)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Background、§3 Method（3.1-3.4）。
 
 ## 推荐继续阅读
 

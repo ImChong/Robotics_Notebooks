@@ -42,6 +42,28 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["训练（机器人交互数据 D）"]
+        S1["阶段 1：自编码器<br/>编码器 Eφ(o) → 潜变量 z；一致性模型解码器 Dθ（CTM 式训练）"] -->|"冻结 Eφ、Dθ，逐帧编码为 zt"| S2["阶段 2：动作条件潜空间动力学 Fψ（一致性模型）<br/>3D 卷积 + FiLM + 时空注意力；仅对最后一帧加满噪声；历史上下文注入小噪声"]
+    end
+    subgraph INF["推理：自回归 rollout"]
+        O0["初始图像 o0 → z0 = Eφ(o0)"] --> CTXL["历史潜变量 + 附加的噪声潜变量 + 动作 a"]
+        CTXL --> F["Fψ 去噪出下一帧潜变量"]
+        F -->|"并入上下文，超过阈值丢弃旧 latent"| CTXL
+        F --> DEC["解码器 Dθ 渲染图像 ô"]
+    end
+    S2 --> F
+    DEC --> USE1["数据生成：人类经键盘/遥操作设备下发动作<br/>得到 (ot, at) 轨迹，用于 DP / ACT / π 系列模仿学习"]
+    DEC --> USE2["策略评测：策略消费预测帧产出动作，再送回模拟器闭环交互"]
+    USE2 -.->|"动作"| CTXL
+    USE1 -.->|"动作"| CTXL
+```
+
+图依据：论文 §III-B–III-D / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +121,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.08546>
+- [arXiv PDF](https://arxiv.org/pdf/2603.08546)：已通读方法部分（实验与附录以略读为准）：§III Method（III-A 至 III-D）与 §IV-A 实验设置
 
 ## 推荐继续阅读
 

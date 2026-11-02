@@ -46,6 +46,35 @@ summary: "EAPN（arXiv:2610.06090）：按实际执行位移对齐跨动作块�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SRC["执行对齐的结构化噪声源 (§III-B)"]
+        G["跨调用持续的共享 AR(1) 过程 G_t"]
+        U["窗口内私有 AR(1) 过程 U_k,h"]
+        Z["源 token z_k,h = √γ·G_(T_k+h) + √(1−γ)·U_k,h<br/>按实际窗口位移 Δ_k 重新索引共享轨迹"]
+        G --> Z
+        U --> Z
+    end
+    subgraph HIST["历史条件噪声表示 (§III-C)"]
+        PREV["上一次的源 Z_(k−1)"]
+        ALIGN["按实际执行位移 Δ_(k−1) 对齐 A(·)<br/>有效性掩码 m_k 标记无历史位置"]
+        COND["条件器 C_φ(对齐历史, Δ_(k−1), D_k, m_k) → c_hist"]
+        PREV --> ALIGN --> COND
+    end
+    OBS["观测 o_k"] --> V
+    Z --> FLOW["flow matching 生成未来后缀"]
+    COND --> V["速度场 v_θ(o_k, X, τ, c_hist)<br/>已提交前缀 token 固定，flow time 逐 token"]
+    V --> FLOW
+    FLOW --> CHUNK["新动作块 A_k：前 D_k 个已提交动作保持不变"]
+    CHUNK --> EXE["异步执行，消耗 Δ_k 步"]
+    EXE -->|"共享轨迹前进 Δ_k，存下当前源"| G
+    Z -.->|"存为下一次的上一源"| PREV
+```
+
+图依据：论文 §III-B/C/D / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +118,7 @@ summary: "EAPN（arXiv:2610.06090）：按实际执行位移对齐跨动作块�
 - [eapn_execution_aligned_progressive_noise_arxiv_2610_06090.md](../../sources/papers/eapn_execution_aligned_progressive_noise_arxiv_2610_06090.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.06090](https://arxiv.org/abs/2610.06090)
+- [arXiv PDF](https://arxiv.org/pdf/2610.06090)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（§III-A 至 §III-D）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ Bypasses video generation to predict temporal evolution of frozen geometry found
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["观测历史帧 k 个视图"] --> ENC["冻结 VGGT 编码器 Φenc（第 0–4 层）<br/>得到几何状态 z1:k"]
+    ENC --> CTX["最近 k 个几何状态作为条件 ci"]
+    CTX --> FD["双流因果处理器 Fdual<br/>目标块 cross-attend 条件，adaLN 注入流时间 τ"]
+    FD --> FS["单流空间去噪器 Fsingle<br/>块内自注意力"]
+    FS --> ZP["z-prediction flow matching<br/>直接预测干净目标块 Ẑi"]
+    ZP -->|"滑动窗口取最新 k 帧作 ci+1"| CTX
+    ZP --> CAT["拼接 z1:k 与预测块 Ẑ1:S"]
+    ENC --> CAT
+    CAT --> DEC["冻结 Φdec（第 5–47 层）联合传播"]
+    DEC --> HEAD["原 VGGT 3D heads"]
+    HEAD --> OUT["点云 P1:T 与深度图 D1:T"]
+    TR["训练：Stage 1 教师强制 → Stage 2 部分去噪自身 rollout 混合历史<br/>λ 由 0 线性退火到 1"] -.-> FS
+```
+
+图依据：论文 §3.1–3.3 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ Bypasses video generation to predict temporal evolution of frozen geometry found
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.12655>
+- [arXiv PDF](https://arxiv.org/pdf/2603.12655)：已通读方法部分（实验与附录以略读为准）：§3（Overview、§3.1 几何世界建模、§3.2 块转移、§3.3 Latent Flow Forcing 课程）
 
 ## 推荐继续阅读
 

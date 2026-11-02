@@ -22,7 +22,7 @@ summary: "SkateNav：通过自适应滑行学习被动轮四足机器人的高�
 
 # SkateNav：通过自适应滑行学习被动轮四足机器人的高能效导航
 
-**SkateNav**（*SkateNav: Learning Energy-Efficient Navigation through Adaptive Skating on Passive-Wheel Quadrupedal Robots*，[arXiv:2610.25962](https://arxiv.org/abs/2610.25962)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**SkateNav**（*SkateNav: Learning Energy-Efficient Navigation through Adaptive Skating on Passive-Wheel Quadrupedal Robots*，[arXiv:2610.25962](https://arxiv.org/abs/2610.25962)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -38,6 +38,27 @@ summary: "SkateNav：通过自适应滑行学习被动轮四足机器人的高�
 ## 为什么重要
 
 - 周报所述待解决的问题：速度跟踪奖励会抑制滑行动作固有的速度起伏，使被动轮机器人频繁蹬地而无法充分利用惯性。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["全局规划器给出航点序列 G<br/>每个航点带时间预算"] --> B["导航指令 c = 当前航点 + 下一航点 + 归一化剩余时间 τ"]
+    C["21×21 局部高程图 o_m"] --> D["地形编码器 e_T → z_m"]
+    E["本体感知 o_p（5 步历史）"] --> F["接触估计器 e_C → 估计接触 ô_c<br/>训练时以真值接触监督"]
+    G["机体线速度 + 滑行相位 sin/cos(2πφ_i)"] --> H
+    D --> H["策略骨干 b_SN（PPO，非对称 actor-critic）"]
+    F --> H
+    B --> H
+    H --> I["动作 a = [Δq (12), a_f]"]
+    I --> J["Δq → PD 控制器 → 关节力矩"]
+    I --> K["a_f → 滑行频率 f_phase = clip(1.5 + 0.25·a_f, 0, 3)"]
+    K --> L["共享相位 φ 推进；左右腿对半周期偏移<br/>相位划分 Glide 55% / Push 15% / Recovery 30%"]
+    L -->|相位观测反馈| G
+    J --> M["Mini Cheetah 被动轮机器人<br/>仿真训练，零样本迁移真机"]
+```
+
+图依据：论文 §V-B–F、Fig.3 / Fig.5 / Fig.6。
 
 ## 核心机制
 
@@ -88,6 +109,7 @@ summary: "SkateNav：通过自适应滑行学习被动轮四足机器人的高�
 - [skatenav-passive-wheel-quadruped-skating_arxiv_2610_25962.md](../../sources/papers/skatenav-passive-wheel-quadruped-skating_arxiv_2610_25962.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.25962](https://arxiv.org/abs/2610.25962)
+- [arXiv PDF](https://arxiv.org/pdf/2610.25962)：已通读方法部分（实验与附录以略读为准）：任务与学习目标（§V-B/C）、自适应滑行周期（§V-D）、策略架构与实现（§V-E/F）
 
 ## 推荐继续阅读
 

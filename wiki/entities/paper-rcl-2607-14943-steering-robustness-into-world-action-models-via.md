@@ -42,6 +42,24 @@ World Action Models (WAMs) enable semantically- and physically-informed control 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["对比输入对 ξ+ / ξ-<br/>干净 vs 扰动（相机位姿 / 初始夹爪位置 / 高斯噪声）"] --> B["完整前向传播<br/>收集 DiT 各层 l、去噪步 t 的激活"]
+    B --> C["机理分析：激活 token 平均池化<br/>对比方向 d = x+ - x-，取前 3 个 PCA 主成分"]
+    C --> D["线性 SVM + hinge loss<br/>判断线性可分性（可转向性诊断）"]
+    D --> E["开环 ActAdd<br/>平均对比方向 a 乘强度 γ 加到激活"]
+    D --> F["WA-LQR 降维<br/>流式随机 SVD 得低维对比子空间 P，潜在激活 z = P x"]
+    F --> G["特征设定点<br/>特征强度目标 = λ 倍对比方向范数"]
+    G --> H["每个 chunk 索引 τ 与去噪步 t<br/>对 L 个 DiT 块求解 LQR，得增益 K"]
+    H --> I["推理时在 DiT 块内加反馈控制 u<br/>x_(l+1) = φ(x_l) + u"]
+    E --> J["DiT 块输出 → 调度器 STEP → 下一去噪步"]
+    I --> J
+```
+
+图依据：论文 §3（式 3–5）、§4（式 6–7）、§5.1（式 8–10）、§5.2（式 11–14）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ World Action Models (WAMs) enable semantically- and physically-informed control 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.14943>
+- [arXiv PDF](https://arxiv.org/pdf/2607.14943)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§5（含 §3 预备知识、§4 机理分析、§5 ActAdd 与 WA-LQR）；§6 仅读了开头
 
 ## 推荐继续阅读
 

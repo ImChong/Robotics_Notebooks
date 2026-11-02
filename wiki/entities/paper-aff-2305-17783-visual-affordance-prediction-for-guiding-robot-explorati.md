@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Visual Affordance Prediction for Guiding Robot Exploration——在清单中归入 **Action（Architecture: E2E；Affordance Usage: reward；Action Subcategory: Integrated policy · Optimization signal）**（清单未附方法摘要，此处不替原文概括贡献）。
+Visual Affordance Prediction for Guiding Robot Exploration——在清单中归入 **Action（Architecture: E2E；Affordance Usage: reward；Action Subcategory: Integrated policy · Optimization signal）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,29 @@ Visual Affordance Prediction for Guiding Robot Exploration——在清单中归�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线学习：affordance 模型（仅用被动数据）"]
+        D["互联网被动数据：配对帧 (o_c, o_g)<br/>SSv2 / Berkeley / JHU CoStar"] --> V["训练 VQ-VAE：编码器、码本、解码器"]
+        V --> Z["配对帧编码为离散潜码 z_c, z_g"]
+        Z --> T["训练自回归 Transformer：p(z_g | z_c)"]
+    end
+    subgraph ON["机器人探索与策略学习"]
+        O["初始观测 o_1"] --> E["VQ-VAE 编码得 z_c"]
+        E --> S["Transformer 采样潜码 z_g，经 VQ-VAE 解码得目标图像 o_g"]
+        S --> P["当前目标条件策略 π(a|o,o_g) 执行 rollout"]
+        P --> B["轨迹存入回放池 R"]
+        B --> H["事后重标注：目标改为轨迹末帧 o_T"]
+        H --> U["行为克隆更新策略 π"]
+        U --> P
+    end
+    T --> S
+```
+
+图依据：论文 §III-A/B 与 Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ Visual Affordance Prediction for Guiding Robot Exploration——在清单中归�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2305.17783)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2305.17783)。
 
 ## 评测与指标
 
@@ -67,7 +90,7 @@ Visual Affordance Prediction for Guiding Robot Exploration——在清单中归�
 
 **本页只提供「Visual Affordance Prediction for Guiding Robot Exploration」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +111,7 @@ Visual Affordance Prediction for Guiding Robot Exploration——在清单中归�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2305.17783>
+- [arXiv PDF](https://arxiv.org/pdf/2305.17783)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 学习想象目标、B affordance 驱动的机器人探索）、§IV-A 实验设定（数据与基线）
 
 ## 推荐继续阅读
 

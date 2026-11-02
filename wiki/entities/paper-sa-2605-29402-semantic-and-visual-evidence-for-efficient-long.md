@@ -42,6 +42,29 @@ Decouples long video reasoning into semantic evidence and visual evidence, achie
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["完整长视频"] --> C["粗粒度阶段<br/>低帧率采样整段视频，MLLM 生成全局摘要"]
+    C --> F["细粒度阶段<br/>切成定长不重叠片段并更密采样<br/>MLLM 结合全局摘要输出结构化信息"]
+    F --> SDB["语义证据库<br/>按 video ID 索引"]
+    V --> DET["目标检测器逐帧提取<br/>边界框提议 + 视觉嵌入"]
+    DET --> VDB["视觉证据库<br/>含 video ID 与时间戳"]
+    Q["在线输入：问题 + 选项 + video ID<br/>（可选：带框参考图像）"] --> QE["增强问题与选项"]
+    Q --> QO["提取查询物体<br/>文本编码后与边界框嵌入算余弦相似度，阈值 τ"]
+    SDB --> RS["检索语义证据"]
+    QO --> RV["检索视觉证据（匹配时间戳）"]
+    VDB --> RV
+    RV --> SEL["选出紧凑的任务相关帧"]
+    RS --> M["MLLM 联合预测"]
+    SEL --> M
+    QE --> M
+    M --> A["答案"]
+```
+
+图依据：论文 §2.1–§2.4 / Fig. 2（不同题型按需提供帧、语义证据或两者，图中为通用形态）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Decouples long video reasoning into semantic evidence and visual evidence, achie
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.29402>
+- [arXiv PDF](https://arxiv.org/pdf/2605.29402)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2.1–§2.4、§3.1
 
 ## 推荐继续阅读
 

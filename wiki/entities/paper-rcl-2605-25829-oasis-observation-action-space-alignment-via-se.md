@@ -41,6 +41,30 @@ We propose OASIS, a visuomotor policy that aligns the intermediate representatio
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["图像观测 o_t + 语言指令 l"] --> ENC
+    subgraph ENC["3D-aware Feature Encoder"]
+        VL["VLM (Qwen2.5-0.5B 骨干)<br/>视觉隐状态 h_v + 语言隐状态 h_l"]
+        DEP["冻结 Depth Anything 3 (DA3 Metric-Large)<br/>度量深度特征 h_d"]
+    end
+    VL --> CAT["拼接得 3D-aware 表示<br/>h_3D = [h_l, h_v, h_d]"]
+    DEP --> CAT
+    CAT --> TP["SE(3) Trajectory Predictor<br/>H 个可学习轨迹 query: 自注意力(RoPE) + 对 h_3D 交叉注意力"]
+    TP --> HT["位姿监督的隐状态 h_traj"]
+    HT --> LIN["线性头: 相机系 SE(3) 轨迹<br/>位置 p + 轴角 theta, Rodrigues 得旋转"]
+    HT --> AD["Action Decoder<br/>H 个可学习动作 query 交叉注意力 [h_traj, h_state]"]
+    ST["当前末端状态 e_t"] --> SE["线性投影得 h_state"]
+    SE --> AD
+    AD --> OUT["动作块 A_t: 6-DoF 相对动作 + 夹爪指令"]
+    LIN -. "L_traj (L1)" .-> LOSS["总损失 L = 0.1 * L_traj + L_act"]
+    OUT -. "L_act (L1)" .-> LOSS
+```
+
+图依据：论文 §3.2、§4.1–§4.4 / Fig.2、式(5)–(13)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ We propose OASIS, a visuomotor policy that aligns the intermediate representatio
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.25829>
+- [arXiv PDF](https://arxiv.org/pdf/2605.25829)：已通读方法部分（实验与附录以略读为准）：Abstract/Introduction、§3 Problem Formulation、§4 Methodology（4.1–4.4）；§5 实验略读
 
 ## 推荐继续阅读
 

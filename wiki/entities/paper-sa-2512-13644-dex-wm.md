@@ -42,6 +42,25 @@ Dexterous world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG["第一视角 RGB 观测 I"] --> ENC["冻结 DINOv2 编码器\npatch 级特征作为潜在状态 s"]
+  HIST["历史潜在状态 s_k0 … s_kn"] --> PRED
+  ENC --> HIST
+  ACT["动作 a: 相邻时刻 21 点 MANO 手部关键点差\n(左右手, 同一参考系)\n+ 相机平移 / 朝向变化"] --> PRED["预测器 f_θ: Conditional Diffusion Transformer (CDiT)\nAdaLN 注入动作, 直接回归下一状态 (无迭代去噪)"]
+  PRED --> NEXT["下一潜在状态 ŝ"]
+  NEXT --> LS["L_state: 与真值 DINOv2 嵌入的 MSE"]
+  NEXT --> HM["热图预测头 g_θ: 指尖 / 手腕热图"]
+  HM --> LHC["手部一致性损失 L_HC (λ=100)"]
+  NEXT -. 自回归多步预测 .-> PRED
+  NEXT --> PLAN["规划: CEM 优化机器人关节角 Θ\n正运动学 G 得到动作, 最小化 C = C_state + μ·C_kp"]
+  PLAN --> GOAL["到达目标状态 s_g 的零样本灵巧操作"]
+```
+
+图依据：论文 §3（问题定义、§3.1 状态与动作、§3.2 预测器、§3.3 损失、§3.4 规划）/ Fig.2–4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ Dexterous world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.13644>
+- [arXiv PDF](https://arxiv.org/pdf/2512.13644)：已通读方法部分（实验与附录以略读为准）：摘要、§3.1–§3.4（规划代价 C_kp 细节与附录 CEM 参数未细读）
 
 ## 推荐继续阅读
 

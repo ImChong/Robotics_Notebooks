@@ -3,16 +3,18 @@ type: entity
 project_id: humanoid-srl
 tags: [paper, humanoid, supernumerary-robotic-limbs, loco-manipulation, reinforcement-learning, trajectory-optimization, diffusion-policy, georgia-tech]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-01
 arxiv: "2610.25628"
 venue: "2026 · arXiv"
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/reinforcement-learning.md
   - ../methods/diffusion-motion-generation.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/humanoid_srl_arxiv_2610_25628.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "Humanoid SRL 研究在人形机器人上集成超冗余机械臂，以模型式轨迹优化生成动态可行运动、训练目标条件强化学习控制器，并将仿真策略零样本迁移至硬件；同时展示基于硬件示范训练的扩散策略用于视觉引导自主执行。"
 ---
 
@@ -41,6 +43,25 @@ summary: "Humanoid SRL 研究在人形机器人上集成超冗余机械臂，以
 | 目标条件强化学习（RL） | 学习新增肢体与原有身体协调的控制策略 |
 | 仿真到硬件迁移 | 论文报告控制器从仿真零样本迁移至硬件 |
 | 示范学习扩散策略 | 从硬件示范训练，在选定任务上执行视觉引导自主操作 |
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["任务规格：末端参考、接触计划、稀疏子目标"] --> B["全身轨迹优化 TO：DDP（Crocoddyl + Pinocchio），含动力学、接触、冲击、关节/力矩限位、摩擦锥约束"]
+  B --> C["离线参考库：基座与关节状态、关节力矩、末端运动"]
+  C --> D["Learn-to-Teach：特权教师（PPO）与可部署学生同一阶段联合训练，MuJoCo 仿真"]
+  D --> D1["按概率 α_mix 混合教师/学生动作采样，共享经验；学生模仿教师（L_IL）"]
+  D1 --> E["学生策略：仅用本体感知 + 动作历史 + 任务参考，输出关节位置目标，经 PD 转力矩"]
+  E --> F["仿真到硬件零样本部署：Digit + 4 自由度 SRL（颈部或背部安装）"]
+  G["硬件上用 RL 学生控制器执行预定义参考，同步记录 RGB-D（躯干与 SRL 相机）、关节状态、参考动作"] --> H["训练扩散策略（DDPM）"]
+  F --> G
+  H --> I["部署：接收 RGB-D 与本体感知，预测短时程末端参考块 + 夹爪指令 + 控制器选择"]
+  I --> J["执行前缀后重规划（滚动时域），插值后交给所选 RL 学生控制器"]
+  J --> E
+```
+
+图依据：论文 Materials and Methods（TO、Learn-to-Teach、视觉引导自主）/ Fig.7。
 
 ## 评测与验证
 
@@ -72,3 +93,4 @@ Humanoid SRL 将机器人形态扩展与全身控制一起研究：新增机械�
 
 - [Humanoid SRL 来源摘录](../../sources/papers/humanoid_srl_arxiv_2610_25628.md)
 - arXiv：<https://arxiv.org/abs/2610.25628>
+- [arXiv PDF](https://arxiv.org/pdf/2610.25628)：已通读全文主文与方法：Digit + SRL 硬件、TO、L2T 强化学习、扩散策略视觉引导（Materials and Methods）

@@ -41,6 +41,29 @@ summary: "GEMS（arXiv:2610.33158）：以持续更新的高斯地图只记录�
 - 开源结论：**已开源**（步骤 2.5，2026-10-28）。公众号未给代码链接；项目页链接的 abwerby/GEMS 经 git ls-remote 可达（页面另含 soon 字样，可能指部分资源）。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    O0["首次访问 O_0<br/>(posed RGB-D)"] --> G0["gsplat 构建初始 3DGS 地图 G^0"]
+    Ot["后续重访 O_t"] --> KF["关键帧选择<br/>(位姿距离 > τ_pose)"]
+    G0 --> RR["在同一位姿渲染上一状态<br/>RGB / 深度"]
+    KF --> RR
+    RR --> CS["变化分数 c = 1 - [w·SSIM + (1-w)·DINOv3 余弦]<br/>阈值化得二值变化掩码"]
+    CS --> CL["按连通域深度误差分类<br/>Add / Remove / Refine"]
+    CL --> UP["局部更新受影响高斯<br/>(静态高斯冻结, 仅优化活跃高斯)"]
+    UP --> LS["每个高斯带生命周期 [b, d)<br/>时间切片 G^t = {g | b ≤ t < d}"]
+    LS --> M["时空记忆 M = 高斯集合 G + 各重访关键帧位姿"]
+    Q["自然语言问题 q"] --> PL["LLM planner<br/>(有限状态机限制可用工具)"]
+    M --> TL["记忆工具: 检索 sweep/search/covisible/recall<br/>推理 time_view/relook/locate/obj_view/compare/track"]
+    PL -->|"选择工具与参数"| TL
+    TL -->|"证据 e_k"| PL
+    PL -->|"exit / report"| RP["证据报告"]
+    RP --> AS["Answer synthesizer<br/>输出答案 + 理由 + 置信度"]
+```
+
+图依据：论文 §III-A / §III-B / Fig.2 / Fig.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "GEMS（arXiv:2610.33158）：以持续更新的高斯地图只记录�
 - [gems_arxiv_2610_33158.md](../../sources/papers/gems_arxiv_2610_33158.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.33158](https://arxiv.org/abs/2610.33158)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33158)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（时空高斯地图、变化检测、局部更新、智能体问答）；§IV-V 略读
 
 ## 推荐继续阅读
 

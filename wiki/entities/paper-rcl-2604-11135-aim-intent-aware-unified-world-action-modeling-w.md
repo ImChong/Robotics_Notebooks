@@ -42,6 +42,38 @@ AIM jointly generates future RGB observations, spatial contact maps and continuo
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["三路相机观测（头部 + 左右腕）打包为单张 T-pose 画布"] --> VAE["Wan2.2 VAE 编码：观测 token z^o"]
+    ACTH["历史动作 a"] --> EA["轻量 MLP 编码：动作 token z^a"]
+    TXT["语言指令 c"] --> T5["T5 编码：语言 token"]
+    VAE --> PREFIX["自回归前缀：当前与近期观测 + 近期动作 + 指令"]
+    EA --> PREFIX
+    T5 --> PREFIX
+    subgraph MOT["Mixture-of-Transformers（共享掩码自注意力，Intent-Causal 掩码）"]
+        VID["视频生成模型（Wan2.2-TI2V-5B 初始化）：去噪未来 RGB token；T5 仅经交叉注意力注入"]
+        VAL["价值流：去噪未来 ASVM（空间价值图）token，初始为全黑图"]
+        ACT["动作头：去噪未来动作 token（逆动力学）"]
+        VID -->|"未来视频 token"| VAL
+        VAL -->|"仅经价值表征传递未来信息，动作头看不到未来 RGB"| ACT
+    end
+    PREFIX --> VID
+    PREFIX --> VAL
+    PREFIX --> ACT
+    ACT --> DEC["解码器：未来 RGB 帧 + 空间价值图 + 双臂连续动作"]
+    subgraph RL["Stage II：Self-Distillation RL 后训练（GRPO）"]
+        RW["奖励 = 稠密奖励（动作落点投影到预测价值图上）+ 稀疏任务成功奖励"]
+        UP["仅更新动作头；视频生成器与价值头冻结"]
+        RW --> UP
+    end
+    DEC -.-> RW
+    UP -.-> ACT
+```
+
+图依据：论文 §4.1 模型架构、§4.2 Intent-Causal Self-Attention 与 §4.3 Self-Distillation RL 后训练
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +130,7 @@ AIM jointly generates future RGB observations, spatial contact maps and continuo
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2604.11135>
+- [arXiv PDF](https://arxiv.org/pdf/2604.11135)：已通读方法部分（实验与附录以略读为准）：§4 Method（4.1 模型架构、4.2 Intent-Causal 自注意力、4.3 自蒸馏 RL 后训练）
 
 ## 推荐继续阅读
 

@@ -9,7 +9,7 @@ tags:
   - legged-robot
   - deepmind
 status: complete
-updated: 2026-09-15
+updated: 2026-11-01
 arxiv: "2305.14654"
 venue: "RSS 2018"
 code: https://github.com/google-deepmind/barkour_robot
@@ -25,11 +25,13 @@ related:
   - ../concepts/terrain-adaptation.md
   - ./paper-tan-quadruped-agile-locomotion-sim2real.md
   - ./paper-walk-these-ways-quadruped-mob.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/papers/barkour_arxiv_2305_14654.md
   - ../../sources/blogs/google-research-barkour-quadruped-agility-2023-05-26.md
   - ../../sources/repos/google_deepmind_barkour_robot.md
   - ../../sources/repos/mujoco_menagerie_google_barkour_models.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Barkour：受犬敏捷赛启发的四足障碍课与 0–1 敏捷分；专长 PPO + 导航状态机与 Locomotion-Transformer 蒸馏两基线；配套开源机体/固件与 MuJoCo Menagerie（v0/vB）。"
 ---
 

@@ -42,6 +42,24 @@ Geometry-consistent world modeling via unified video and 3D prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  IN["参考图像 + 可选文本 + 目标相机轨迹"] --> ENC["预训练编码 CLIP 图像 umT5 文本 Plücker 射线相机编码"]
+  ENC --> PCB["预条件块 PCB 复用冻结 Wan2.1 前 16 层 对视频潜变量部分去噪"]
+  PCB --> IRG["堆叠 IRG 块 Integrated Reconstruction and Generation"]
+  subgraph BLK["每个 IRG 块"]
+    IP["想象先验分支 Wan2.1 外观与时空特征"] <-->|"双向交叉注意力 MM-BiCrossAttn"| GC["几何一致分支 几何对齐潜空间"]
+  end
+  IRG --> BLK
+  IP --> VO["几何一致的视频帧"]
+  GC --> DPT["3D DPT 头 取后期扩散块特征"]
+  DPT --> GO["深度图 点图 相机位姿"]
+```
+
+图依据：论文 §3.1 / Fig.2（总览与 IRG 块）、§3.2（预条件块）、§3.3（IRG 块与 DPT 头）、§3.4（两阶段训练：潜变量桥接、统一联合优化）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Geometry-consistent world modeling via unified video and 3D prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.21657>
+- [arXiv PDF](https://arxiv.org/pdf/2509.21657)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、§4.1 实现细节；实验结果与附录略读。
 
 ## 推荐继续阅读
 

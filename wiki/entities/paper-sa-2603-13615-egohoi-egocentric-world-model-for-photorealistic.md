@@ -42,6 +42,25 @@ The first egocentric HOI world model, embedding physical priors into generative 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I1["首帧图像 I1"] --> VAE["Wan VAE 编码 → 初始潜变量 z1"]
+    I1 --> CLIP["CLIP 图像编码 → 全局图像嵌入"]
+    H["手部 3D 重建渲染序列 Ht"] --> HKE["Hand Kinematic Embeddings<br/>时序 3D 卷积 + 首帧参考手分支"]
+    C["度量头部位姿 Ct"] --> EME["Ego-Motion Embeddings<br/>Plücker 射线场 + 因果 3D 卷积"]
+    SEG["首帧物体分割图"] --> OEE["Object Entity Embeddings<br/>冻结 VAE 编码 + 3D 卷积 patchify"]
+    VAE --> DIT["冻结 Wan-DiT（LoRA）去噪"]
+    CLIP -->|"交叉注意力固定 K/V"| DIT
+    HKE -->|"门控残差加到主 token"| DIT
+    EME -->|"前 D 个 block 零初始化线性适配器残差"| DIT
+    OEE -->|"KV-only 上下文 token"| DIT
+    DIT --> DEC["解码 → 未来第一人称视频 Î2:L+1"]
+```
+
+图依据：论文 §3.2–3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ The first egocentric HOI world model, embedding physical priors into generative 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.13615>
+- [arXiv PDF](https://arxiv.org/pdf/2603.13615)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4（含 Preliminary、Latent-Space World Modeling、Physics-Informed Embeddings、Latent Space Integration）与 §4.1 实验设定
 
 ## 推荐继续阅读
 

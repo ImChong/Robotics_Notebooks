@@ -42,6 +42,21 @@ Leverages simulators to generate physically plausible and diverse demonstrations
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["短段真实交互视频"] --> B["提取点云并填充内部，构建 MPM 数字孪生；Qwen3 选择本构模型"]
+    B --> C["可微 MPM 重放手部轨迹，以 Chamfer 与 L1 损失做物性优化（先全局、后逐粒子）"]
+    C --> D["示范合成：Bézier 曲线生成运动轨迹，PartField 部件感知物性扰动"]
+    D --> E["MPM 数字孪生生成多样交互示范"]
+    E --> F["训练物性条件的 GNN 世界模型（FPS 控制粒子、控制点、多步消息传递）"]
+    F --> G["冻结 GNN 网络参数，用真实数据微调物性"]
+    G --> H["实时未来状态预测；3DGS 加 LBS 做动作条件视频预测"]
+```
+
+图依据：论文 §PhysWorld 的 Physics-Consistent Digital Twin、Augmented Interaction Demonstration Synthesis、GNN-based World Models 三节 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Leverages simulators to generate physically plausible and diverse demonstrations
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.21447>
+- [arXiv PDF](https://arxiv.org/pdf/2510.21447)：已通读方法部分（实验与附录以略读为准）：方法部分（PhysWorld 全节）与实验设置；实验结果与附录未细读
 
 ## 推荐继续阅读
 

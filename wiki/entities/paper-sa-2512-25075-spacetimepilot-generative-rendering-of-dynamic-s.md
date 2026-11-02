@@ -43,6 +43,26 @@ Generative rendering of dynamic scenes across space and time.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["源视频 V_src"] --> P["预训练位姿估计器<br/>估计源/目标相机位姿"]
+    CT["目标相机轨迹 c_trg"] --> E1
+    P --> E1["相机编码 E_cam<br/>c_src 与 c_trg"]
+    TS["时间控制 t_src, t_trg<br/>可倒放/冻结/慢放"] --> E2["动画时间嵌入 E_ani<br/>SinPE + 两层 Conv1D"]
+    A --> VAE["3D VAE 编码为视频 token"]
+    VAE --> ADD["token + E_cam + E_ani<br/>目标与源沿帧维拼接"]
+    E1 --> ADD
+    E2 --> ADD
+    ADD --> DiT["Wan-2.1 T2V-1.3B 视频扩散 DiT"]
+    DiT --> OUT["目标视频 V_trg<br/>相机与时间解耦控制"]
+    OUT -. "长视频：以 V_prv 与 V_src 为条件<br/>自回归生成下一段" .-> ADD
+    DS["训练数据：多视角视频 + 时间扭曲增强<br/>+ 合成数据集 Cam×Time"] -. 监督 .-> DiT
+```
+
+图依据：论文 §3.2 时间表示与数据、§3.3 源感知相机条件、§3.4 长视频自回归、§4 实现细节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Generative rendering of dynamic scenes across space and time.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.25075>
+- [arXiv PDF](https://arxiv.org/pdf/2512.25075)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（§3.1–3.4）、§4 实现细节
 
 ## 推荐继续阅读
 

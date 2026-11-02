@@ -42,6 +42,33 @@ We present Teach-and-Grow Learning (TGL), an agent-centered architecture for gen
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["少量成功示教 Dn<br/>示教是加速器而非前提"] --> AG
+    TASK["任务指令 + 当前观测"] --> AG
+    subgraph STATE["持久状态（模型权重 θ 固定，不做梯度更新）"]
+        LIB["Skill Library B<br/>已验证的 Skill Block"]
+        MEM["Experience Memory M<br/>上下文、结果、诊断、修复"]
+    end
+    LIB --> AG
+    MEM --> AG
+    AG["AI Agent<br/>理解任务、检索候选 block、组成工作计划"] --> ABS["跨示教抽象<br/>按任务状态变化切段并对齐<br/>合成共享策略 ρ"]
+    ABS --> BLK["新 Skill Block<br/>目标 g / 范围 S / 策略 ρ / 接地 γ / 执行器 Π / 检验 v / 恢复 R"]
+    AG --> SEL["选择 block 与执行器 πi"]
+    SEL --> GR["在当前场景接地<br/>物体位姿、抓取、路径"]
+    GR --> EX["执行器闭环执行<br/>VLA / 规划器 / 伺服 / 触觉策略等"]
+    EX --> VER["执行后观测 + 执行器证据<br/>通过 / 失败 / 不确定"]
+    VER -->|"符合预期，继续下一块"| AG
+    VER -->|"不符：重看、换执行器或路线、请求示教"| AG
+    BLK --> VAL["准入校验<br/>范围、执行器兼容、结果检验、恢复、来源"]
+    VAL -->|"通过"| LIB
+    VER -->|"结果、失败、修复"| MEM
+```
+
+图依据：论文 §III（Skill Block、Experience Memory）、§IV（Agentic 架构与组合、Few-Shot Teaching、Skill Block 在当前场景执行）/ Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ We present Teach-and-Grow Learning (TGL), an agent-centered architecture for gen
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.17209>
+- [arXiv PDF](https://arxiv.org/pdf/2608.17209)：已通读方法部分（实验与附录以略读为准）：§III（A-D）、§IV（A-E）与 §V 开头的实验设定
 
 ## 推荐继续阅读
 

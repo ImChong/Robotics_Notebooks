@@ -4,6 +4,7 @@ tags: [friction, control, sim2real, feedforward, quadruped]
 status: complete
 updated: 2026-08-13
 related:
+  - joint-module-no-load-velocity-vs-torque-loop.md
   - ./joint-friction-models.md
   - ./sim2real.md
   - ./system-identification.md
@@ -78,6 +79,7 @@ $$
 - **只靠补偿不做安全限幅**：前馈饱和可导致过流；需与 [实机安全协议](../concepts/sim2real.md) 联用。
 
 ## 关联页面
+- [关节模组空载：速度环与力矩环的输出扭矩区别](joint-module-no-load-velocity-vs-torque-loop.md)
 
 - [Gravity Compensation](./gravity-compensation.md) — 真机示教几乎总是 $g(q)+\hat\tau_f$
 - [Joint Friction Models](./joint-friction-models.md)

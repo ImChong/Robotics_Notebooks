@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, 4d-reconstruction, point-tracking, depth-estimation, camera-pose, feedforward, foundation-model, deepmind, oxford, cvpr-2026, dynamic-scene]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-01
 arxiv: "2512.08924"
 venue: "CVPR 2026"
 related:
@@ -13,9 +13,11 @@ related:
   - ../overview/hub-state-estimation.md
   - ../concepts/visual-representation-for-policy.md
   - ../concepts/3d-spatial-vqa.md
+  - ../overview/cv-best-papers-2023-2026-technology-map.md
 sources:
   - ../../sources/papers/d4rt_arxiv_2512_08924.md
   - ../../sources/sites/d4rt-paper.md
+  - ../../sources/blogs/wechat_shenlan_cv_best_papers_2023_2026_labs.md
 summary: "D4RT（Google DeepMind×牛津 VGG 等，CVPR 2026，arXiv:2512.08924）：ViT-g 编码 Global Scene Representation + 独立时空查询解码器，统一深度/相机/动态 3D 跟踪与全像素 4D 重建；相对 VGGT/MegaSaM/SpatialTrackerV2 18–300× 跟踪吞吐、TAPVid-3D 与多深度基准 SOTA 级；截至入库日确认未开源。"
 ---
 

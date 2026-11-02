@@ -145,6 +145,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [ub-mode](./ub-mode.md) — 以 TDD 和独立质量工具组织编码代理实践。
+
 - [Answer with HTML](./answer-me-with-html.md) — Markdown 草稿到可离线阅读的单页解释页
 
 - [Superpowers（obra）](superpowers-obra.md) — 子代理 + worktree + 强制 TDD 管线

@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,33 @@ PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["输入点云 P（2048×3）"]
+  T["文本指令 T"]
+  AUG["Llama-3.1 70B 文本增强：生成更丰富的 3D 相关问答对"]
+  ENC["Geometric-guided Point Encoder：分组 + Transformer 块 + Feature Propagation（上采样 + DGCNN）得到逐点嵌入 P_em"]
+  ALIGN["3D Image-Bind 对齐点云与文本特征（对比式对齐损失 L_ca）"]
+  LLM["多模态 Llama-2（LLaMA-Adapter 微调）预测 <mask label>"]
+  Q["隐状态转为查询嵌入 q"]
+  DEC["3D affordance decoder：输入 P_em 与 (P ⊕ q)"]
+  OUT["逐点 affordance 图 M（每点得分 0 到 1）"]
+  P --> ENC
+  P --> ALIGN
+  T --> AUG
+  AUG --> ALIGN
+  ALIGN --> LLM
+  LLM --> Q
+  Q --> DEC
+  ENC --> DEC
+  P --> DEC
+  DEC --> OUT
+```
+
+图依据：论文 §III（Overview 与 A–E 各小节）与 Fig. 2 / Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +78,7 @@ PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2410.11564)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2410.11564)。
 
 ## 评测与指标
 
@@ -67,7 +94,7 @@ PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language 
 
 **本页只提供「PAVLM」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +115,7 @@ PAVLM: Advancing Point Cloud based Affordance Understanding Via Vision-Language 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2410.11564>
+- [arXiv PDF](https://arxiv.org/pdf/2410.11564)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（A–E）、§IV-A 实验设定开头
 
 ## 推荐继续阅读
 

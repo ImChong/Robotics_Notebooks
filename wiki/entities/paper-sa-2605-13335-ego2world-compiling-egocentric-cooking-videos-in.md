@@ -42,6 +42,32 @@ Turns egocentric cooking videos into executable symbolic worlds governed by grap
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["HD-EPIC 第一视角烹饪视频标注\n（narration）"] --> B["动作分组与归一化\nprimitive actions / skills / tasks / episodes"]
+  B --> QC["确定性 + LLM 辅助质检\n与任务目标对齐"]
+  QC --> R["转移规则库 R\n(precondition, effect)"]
+  QC --> W["隐藏可执行世界图 G^w_t\n（节点 / 边 / 属性）"]
+  W --> OBS["局部观测\n参考帧 + 文本状态差异"]
+  OBS --> BG["Agent 信念图 G^b_t\n由初始观测初始化"]
+  BG --> LLM["LLM 规划\n输出技能序列 P"]
+  LLM --> BIND["实例绑定 + 区域路由"]
+  BIND --> SIM["VCSS 执行技能\n展开为 primitive actions\n匹配规则 R 并检查前置条件"]
+  R --> SIM
+  SIM --> W
+  SIM --> FB["反馈 f_t\nSUCCESS 或 FAIL(首个违反的前置条件 c)"]
+  FB --> UPD["信念更新 U(G^b_t, o_t, f_t)"]
+  OBS --> UPD
+  UPD --> BG
+  FB -->|失败 / 信念陈旧| RP["Replan(τ, P_old, c, G^b)"]
+  RP --> LLM
+  W --> GOAL["成功判据：目标谓词 Φ_τ(G^w_t) = 1"]
+```
+
+图依据：论文 §3、§4.1–4.3、附录 A.1 / Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Turns egocentric cooking videos into executable symbolic worlds governed by grap
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.13335>
+- [arXiv PDF](https://arxiv.org/pdf/2605.13335)：已通读方法部分（实验与附录以略读为准）：摘要、§3、§4.1–4.3、附录 A.1 构建流程；§5 仅略读
 
 ## 推荐继续阅读
 

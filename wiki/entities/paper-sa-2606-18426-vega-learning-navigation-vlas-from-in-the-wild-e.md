@@ -42,6 +42,29 @@ An approach for training navigation Vision-Language-Action models from unlabeled
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["无标注第一人称导航视频<br/>按固定帧率采样 RGB 帧 I_t"] --> B["MoGe-2 重建稠密度量点图 P_t"]
+    B --> C["RANSAC 拟合地面<br/>对齐到机器人坐标系"]
+    C --> D["投影到局部 BEV<br/>高度过滤得障碍占用栅格"]
+    D --> E["光线投射得可见性掩码<br/>区分已知自由 / 占用 / 未观测"]
+    E --> F["计算 Visibility-aware ESDF"]
+    A --> G["Florence2 检测物体标签与框"]
+    G --> H["映射到点图并投影到地面<br/>得文本 / 图像区域 / 路点三种目标"]
+    F --> I["自由空间中额外采样路点目标"]
+    H --> J["航向感知 Dijkstra 搜索<br/>在 ESDF 上生成无碰撞路径"]
+    I --> J
+    J --> K["ESDF 上优化内部路点<br/>避障 + 平滑，得参考轨迹"]
+    K --> L["训练元组<br/>I_t + 目标 + 目标模态 + 参考轨迹"]
+    L --> M["基于 pi0.5 的多模态目标条件 VLA<br/>SigLIP / Gemma 冻结，路点编码器与动作专家训练"]
+    M --> N["flow matching 目标训练"]
+    N --> O["部署：仅 RGB 与目标<br/>动作专家输出路点轨迹，无需重建或 ESDF"]
+```
+
+图依据：论文 §IV-A、§IV-B / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ An approach for training navigation Vision-Language-Action models from unlabeled
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.18426>
+- [arXiv PDF](https://arxiv.org/pdf/2606.18426)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV 方法（A 轨迹分布生成、B 多模态目标条件 VLA）、§V-A 实验设置开头
 
 ## 推荐继续阅读
 

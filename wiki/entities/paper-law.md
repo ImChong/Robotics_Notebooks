@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, robot-learning, pku, x-humanoid, vla, wam, manipulation]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-01
 project_id: law
 arxiv: "2610.23334"
 project: https://hey-cjj.github.io/LAW-project/
@@ -13,10 +13,12 @@ related:
   - ../tasks/manipulation.md
   - ./paper-fast-wam.md
   - ./paper-openwam.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/law_arxiv_2610_23334.md
   - ../../sources/sites/law.md
   - ../../sources/repos/law.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "LAW（arXiv:2610.23334）：以语义子任务进度为共同接口，闭环连接 VLM 规划、WAM 候选动作生成与异步完成检测；RoboTwin 50 任务均值成功率 94.21%，OpenWAM 后端 95.56%，三项真实机器人任务均值完成率 65%。"
 ---
 

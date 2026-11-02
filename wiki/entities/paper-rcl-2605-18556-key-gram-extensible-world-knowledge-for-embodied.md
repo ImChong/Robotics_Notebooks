@@ -41,6 +41,28 @@ In this paper, we introduce Key-Gram, a conditional-memory framework that separa
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    INS["语言指令 I"] --> PARSE["轻量 LM / API 解析器抽取固定数量的短 key-gram<br/>(例: put mug in microwave)"]
+    PARSE --> HASH["补零定长 → 乘法-XOR 哈希, 映射到 H 个 hash head<br/>确定性 O(1) 查表, 取静态记忆嵌入并拼接"]
+    TABLE["外部记忆: 由 slot x head 物理子表组成的逻辑表<br/>可加 slot / 扩容子表, 可放主机内存"] -.-> HASH
+    HASH --> FUSE
+    V0["初始视觉观测 V0"] --> BB["视觉骨干 (π0 / π0.5)"]
+    subgraph FUSE["Context-Adaptive Key-Gram Fusion (选定 Transformer 层, 注意力前残差)"]
+        direction TB
+        KV["记忆 → 投影为 K_m, V_m"] --> GATE["视觉 token 对 K_m 计算逐 token 门控 A"]
+        GATE --> CONV["A ⊙ V_m → 长跨度卷积 → 残差加回隐状态"]
+    end
+    BB --> FUSE
+    FUSE --> BB
+    BB -->|"最终层隐状态"| VQ["可学习查询 + cross-attention + 两级上采样 → 未来视觉 latent (VAE 空间)"]
+    BB -->|"KV cache"| AE["较小的动作专家: 流匹配去噪 → 动作轨迹"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ In this paper, we introduce Key-Gram, a conditional-memory framework that separa
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.18556>
+- [arXiv PDF](https://arxiv.org/pdf/2605.18556)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 概览、3.2 稀疏 key-gram 检索、3.3 上下文自适应融合、3.4 视觉与动作预测、3.5 可扩展记忆分配）；§4 实验以略读为准
 
 ## 推荐继续阅读
 

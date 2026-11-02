@@ -42,6 +42,41 @@ VLA embodied foundation model with multi-source multi-level pretraining integrat
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SRC["多源数据"]
+        WEB["网页多模态数据"]
+        EGO["第一人称人类操作视频"]
+        SIM["仿真轨迹"]
+        REAL["真实机器人数据"]
+    end
+    UAS["统一动作空间：相机系末端位姿（平移 + 轴角）+ 固定维度动作向量，缺失自由度做 mask"]
+    EGO -->|"重定向到目标本体"| UAS
+    SIM --> UAS
+    REAL --> UAS
+    subgraph TRAIN["三阶段训练"]
+        T1["阶段 1：VLM Co-Pretraining（自回归损失，含 VQA、FAST 离散动作 token）"]
+        T2["阶段 2：VLA Co-Pretraining（自回归损失 + flow matching 损失）"]
+        T3["阶段 3：目标机器人 Post-Training（仅 flow matching）"]
+        T1 --> T2 --> T3
+    end
+    WEB --> T1
+    UAS --> T1
+    UAS --> T2
+    subgraph MODEL["模型"]
+        IN["多视角观测 + 语言指令 + 本体状态"]
+        VLM["VLM：空间落地的多模态表征，先生成子任务文本"]
+        EXP["感知-动作专家：Perceiver 注意力块，flow matching 预测速度场"]
+        IN --> VLM --> EXP
+    end
+    T3 -.->|"训练得到"| MODEL
+    EXP --> OUT["连续动作块 a_t:t+H"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.1、Fig.3（注意：清单给出的 arXiv 号 2604.13863 实为另一篇论文，本图依据 JoyAI-RA 0.1 的正确论文 arXiv:2604.20100）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +131,7 @@ VLA embodied foundation model with multi-source multi-level pretraining integrat
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.13863>
+- [arXiv PDF](https://arxiv.org/pdf/2604.20100)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 概览、3.2 数据源、3.3 统一动作空间、3.4 模型架构、3.5 训练配方）；注：本页 front matter 与上方链接的 2604.13863 与该论文标题不符，JoyAI-RA 0.1 的 arXiv 号为 2604.20100
 
 ## 推荐继续阅读
 

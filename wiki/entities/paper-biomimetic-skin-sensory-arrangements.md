@@ -41,6 +41,29 @@ summary: "Biomimetic Skin Sensory Arrangements（arXiv:2610.26680）：在柔性
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-31）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SK["分层仿生皮肤：表皮 Dragon Skin 30 / 真皮 Ecoflex Gel 2 / 皮下 Soma Foama 15<br/>（0.2 / 2 / 20 mm，90 mm 见方）"] --> PAT["中央 50 mm 区域嵌入受体类似传感器<br/>应变片（Merkel 类，SA）+ 加速度计（Pacinian 类，RA）"]
+    PAT --> ARR["三种排列 A / B / C<br/>（按加速度计深度区分：浅表 / 深真皮至皮下 / 更深皮下）"]
+    ARR --> ACQ["Arduino MEGA → 串口 + ROS → PC<br/>应变片约 360 Hz，加速度计约 500 Hz"]
+    ARR --> IND["压痕测试：估计约化杨氏模量 E*"]
+    ACQ --> T1["任务1 两点辨别：HIRO-NX 单点 / 两点（5、10、15 mm）压入，位置与角度加随机噪声"]
+    ACQ --> T2["任务2 微小力检测：HIRO-NX 20 次接触，峰值超过 µ+2σ 记为有效检测"]
+    ACQ --> T3["任务3 纹理辨识：PR2 以 2/3/6 cm/s 摩擦金属、软木、粗糙软木、布料"]
+    T1 --> F1["去基线 → 提取波形峰值特征"]
+    F1 --> RF1["Random Forest（200 棵树）<br/>5 折分层交叉验证 ×3 次"]
+    T2 --> F2["峰值检测 + 阈值"]
+    T3 --> F3["加速度 RMS 窗口分段 → FFT 特征<br/>RMS / 主频 / 谱质心 / 带宽 / ZCR"]
+    F3 --> RF3["Random Forest，5 折交叉验证<br/>每个速度单独训练"]
+    RF1 --> CMP["比较 A / B / C 三种排列的表现"]
+    F2 --> CMP
+    RF3 --> CMP
+```
+
+图依据：论文 §2 Material and Methods（§2.1–2.5、Fig.1–3）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "Biomimetic Skin Sensory Arrangements（arXiv:2610.26680）：在柔性
 - [biomimetic_skin_sensory_arrangements_arxiv_2610_26680.md](../../sources/papers/biomimetic_skin_sensory_arrangements_arxiv_2610_26680.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.26680](https://arxiv.org/abs/2610.26680)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26680)：已通读方法部分（实验与附录以略读为准）：§1 引言（节选）、§2 Material and Methods（2.1 皮肤设计与实现、2.2 压痕测试、2.3 两点辨别、2.4 微小力检测、2.5 摩擦纹理辨识）；§3 结果以略读为准
 
 ## 推荐继续阅读
 

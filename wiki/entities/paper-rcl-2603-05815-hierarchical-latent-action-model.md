@@ -42,6 +42,25 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["无动作视频 V"] --> B["预训练 IDM (UniSkill) 提取低层 latent action 序列"]
+    B --> C["H-Net 动态分块: 编码器, 边界预测, Chunk, 主网络, DeChunk, 逐级堆叠 (实现为两阶段)"]
+    C --> D["预测下一个 latent action"]
+    C --> E["阶段 2 表示按边界展开回每个时间步, 得到 latent skill"]
+    D --> L["训练损失: L_latent + L_rec (预训练 FDM 重建未来帧) + L_ratio (H-Net 比例正则)"]
+    E --> P1["预训练: 高层策略 πh 由观测与语言指令预测 latent skill"]
+    B --> P2["预训练: 低层策略 πl 由观测与 latent skill 预测 latent action"]
+    P1 --> P2
+    P1 --> F["微调: 冻结 πh"]
+    P2 --> G["微调: 用带动作标注的专家演示训练 πl, 输出真实动作 a_t"]
+    F --> G
+```
+
+图依据：论文 §3.1–3.3（Fig. 1–2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=IUaiouMYXp>
+- [arXiv PDF](https://arxiv.org/pdf/2603.05815)：已通读方法部分（实验与附录以略读为准）：§3 方法与 §4.1 实验设定
 
 ## 推荐继续阅读
 

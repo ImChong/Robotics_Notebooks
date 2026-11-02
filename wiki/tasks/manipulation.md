@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-10-31
+updated: 2026-11-01
 related:
+  - ../entities/paper-seer-vla.md
   - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
   - ../entities/paper-commander-executor-coordination.md
@@ -555,6 +556,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [DreamTrue：动作保真的机器人世界模型](../entities/paper-dreamtrue-action-faithful-world-model.md) — 研究机器人操作视频的动作保真预测及反事实交互后训练。
 
 ## 关联页面
+
+- [SeeR-VLA：机器人中心点图](../entities/paper-seer-vla.md)
 
 - [AdaDex](../entities/paper-adadex.md) — 单条手-物轨迹训练可适应灵巧技能；混合灵巧模仿
 

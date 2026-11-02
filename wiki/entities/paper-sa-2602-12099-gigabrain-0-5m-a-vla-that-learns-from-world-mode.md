@@ -43,6 +43,24 @@ VLA that learns from world model-based RL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["阶段 1：世界模型预训练<br/>Wan2.2 DiT，flow matching<br/>联合预测未来视觉潜变量与价值"] --> S2
+    P0["GigaBrain-0.5 预训练检查点<br/>PaliGemma-2 VLM + 动作 DiT"] --> S2
+    S2["阶段 2：世界模型条件策略训练<br/>输入未来状态 token z + 优势指示 I"] --> S3
+    S2 -.-> ADV["价值 → n 步 TD 优势 A → 二值指示 I"]
+    S3["阶段 3：人在回路 rollout 数据采集<br/>自主执行 + 专家干预，去除干预边界伪影"] --> S4
+    S4["阶段 4：用 rollout 数据持续训练策略<br/>世界模型同步用 HILR 数据 + 基础数据训练"]
+    S4 -->|"迭代闭环"| S3
+    S4 --> INF{"推理：固定 I = 1"}
+    INF --> E1["高效模式：绕过世界模型，z 不可见"]
+    INF --> E2["标准模式：世界模型生成 z 提供前瞻"]
+```
+
+图依据：论文 §3.1–3.2（RAMP 四阶段与推理）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ VLA that learns from world model-based RL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.12099>
+- [arXiv PDF](https://arxiv.org/pdf/2602.12099)：已通读方法部分（实验与附录以略读为准）：Abstract、§1–2、§3.1 GigaBrain-0.5、§3.2 RAMP（四阶段与推理）、§4 实验概述
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Redefines world models as fully differentiable physics engines with a decoupled 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["统一资产与世界表示 (§3.1)<br/>物理状态 x_t / 静态场景描述 x̄<br/>资产属性 + 世界配置"] --> B["OrbiSim-Dynamics (§3.2)<br/>对象级 token：机器人 + N 个物体<br/>Transformer Coupling Module (AdaLN 注入动作与属性)"]
+  B --> C["GRU 递归更新 h_t<br/>transition 预测潜状态<br/>解码为下一步物理状态 x̂_t"]
+  C --> D["OrbiSim-Vision (§3.3)<br/>以预测状态 x̂_t 与 x̄ 为条件<br/>潜空间扩散 U-Net + 前 K 帧上下文"]
+  D --> E["VAE 解码为下一帧观测 ô_t"]
+  C --> F["可微 rollout (§3.4)"]
+  E --> F
+  F --> G["梯度控制优化<br/>终端奖励反传到动作/策略参数"]
+  F --> H["Real-to-Sim 物理参数推断 η<br/>状态或图像差异 L_SysID"]
+  G <--> I["交替协同优化<br/>固定动作更新 η，固定 η 优化动作"]
+  H <--> I
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Redefines world models as fully differentiable physics engines with a decoupled 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.16395>
+- [arXiv PDF](https://arxiv.org/pdf/2605.16395)：已通读方法部分（实验与附录以略读为准）：§3 OrbiSim 全部小节（§3.1–3.4）；§4 实验略读
 
 ## 推荐继续阅读
 

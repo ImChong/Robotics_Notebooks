@@ -46,6 +46,32 @@ sources:
 | 出处 | RSS 2024 · arXiv:2402.15852 |
 | 机构 | 北京大学、BAAI 等 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["单目 RGB 视频 x_0..x_t"] --> EN["EVA-CLIP 视觉编码 X_t (256 patch)"]
+  I["自然语言指令 I"] --> QG
+  EN --> QG["Q-Former 查询生成器 G_Q<br/>得到指令感知 Query Q_t"]
+  QG --> TQ["指令查询 token<br/>cross-attention + 池化 + 投影 P_Q, 每帧 1 个"]
+  EN --> GP["Grid pooling + 投影 P_V<br/>指令无关 token"]
+  GP --> HC["历史帧 4 个 / 当前帧 64 个"]
+  TQ --> SEQ
+  HC --> SEQ["拼接序列<br/>HIS 历史 /HIS, OBS 当前帧 /OBS, NAV 指令"]
+  I --> SEQ
+  SEQ --> LLM["Vicuna-7B LLM"]
+  LLM --> TXT["语言形式输出的下一步动作"]
+  TXT --> PS["正则解析器"]
+  PS --> ACT["FORWARD 距离 / TURN-LEFT 角度 / TURN-RIGHT 角度 / STOP"]
+  subgraph TR["混合训练"]
+    T1["oracle 轨迹 320k + 非 oracle 轨迹 180k"] --> T3["联合训练"]
+    T2["辅助任务: 指令推理 10k + 视频问答"] --> T3
+  end
+  T3 -.-> LLM
+```
+
+图依据：论文 §III–IV / Fig.2–3。
+
 ## 核心机制（归纳）
 
 ### 1）策展导读要点
@@ -90,6 +116,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2402.15852>
+- arXiv PDF：<https://arxiv.org/pdf/2402.15852>（已通读方法部分（实验与附录以略读为准）：方法 §III–IV、实验）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ A Real2Sim2Real framework that uses 3D Gaussian Splatting and mesh primitives to
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务场景多视角图像（每个场景约 10 分钟人工扫描）"] --> B["背景重建：3DGS，并为每个高斯附加 CLIP 对齐的语义特征"]
+    A --> C["物体重建：ARCode 自动分割，得到静态网格"]
+    C --> D["MLLM 关节推理：识别类别，提出关节类型与待分离部件标签"]
+    D --> E["开放词汇分割（AffordDex）：按标签切出静态底座与可动部件"]
+    E --> F["MLLM 再次给出关节轴与运动范围，生成 URDF 兼容关节"]
+    C --> G["MLLM 物理估计：四张正交视图，估计密度、杨氏模量、泊松比"]
+    B --> H["世界坐标系对齐：机器人点云（URDF 与 3DGS）做 ICP 求刚体变换"]
+    F --> H
+    G --> H
+    H --> I["相机位姿对齐：可微 3DGS 渲染，梯度下降最小化渲染图与真实图的 L1 误差"]
+    I --> J["整体场景增强：物体 6-DoF 位姿与尺度、相机视角、光照、轨迹 via-point（IK）"]
+    J --> K["仿真数据训练策略（Diffusion Policy、π0），零样本部署到真实机器人"]
+```
+
+图依据：论文 §3（Fig.1，§3.1 场景重建、§3.2 环境对齐、§3.3 整体场景增强）与 §4.1.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ A Real2Sim2Real framework that uses 3D Gaussian Splatting and mesh primitives to
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2510.10637>
+- [arXiv PDF](https://arxiv.org/pdf/2510.10637)：已通读方法部分（实验与附录以略读为准）：§1、§3 全部（§3.1–§3.3）、§4.1.2 与 Table 1；§2 相关工作与其余实验仅略读
 
 ## 推荐继续阅读
 

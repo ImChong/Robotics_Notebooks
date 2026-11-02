@@ -42,6 +42,30 @@ Action-conditioned motion modeling + kinematic joint embedding for robust wearab
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CLIP["第一人称 RGB 视频片段"] --> HM["冻结 2D 热图网络<br/>ConvNeXt-Tiny + FPN，输出 J=15 关节热图与 96 通道 FPN 特征"]
+    HM --> TOKEN["热图 token 化：软质心处采样 FPN 特征<br/>融合为关节 token s0"]
+    TOKEN --> SJT["Spatial Joint Transformer + MLP 头"]
+    SJT --> PSP["空间姿态 P_sp（独立监督，作为锚点）"]
+    CLIP --> DINO["冻结 DINOv2 ViT-S/14"]
+    HM -->|"热图作软空间 query"| POOL["热图引导 DINO 池化<br/>得关节局部外观特征 l"]
+    DINO --> POOL
+    DINO -->|"CLS token 序列"| AF["Ego4D 预训练 ActionFormer<br/>多尺度融合为时间动作上下文 A<br/>仅微调投影层与最后两个块"]
+    SJT --> Q["关节 query q = LN(s + f(l))"]
+    POOL --> Q
+    Q --> RET["逐关节时间检索：query 对 A 做交叉注意力<br/>MLP 预测残差 ΔP（末层零初始化）"]
+    AF --> RET
+    HM -->|"热图统计量：质心、方差、熵、峰值等"| GATE["小 MLP 得有界门 α ∈ [0.05, 0.80]"]
+    PSP --> OUT["P = P_sp + α·ΔP"]
+    RET --> OUT
+    GATE --> OUT
+```
+
+图依据：论文 §3.1–3.3 / Fig.1、Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Action-conditioned motion modeling + kinematic joint embedding for robust wearab
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.25175>
+- [arXiv PDF](https://arxiv.org/pdf/2603.25175)：已通读方法部分（实验与附录以略读为准）：§3（Spatial Pose Anchor、Joint-Local Appearance and Action Context、Heatmap-Statistics-Gated Residual Decoder、Training Objective）、§4.2 实现细节开头；实验结果仅略读
 
 ## 推荐继续阅读
 

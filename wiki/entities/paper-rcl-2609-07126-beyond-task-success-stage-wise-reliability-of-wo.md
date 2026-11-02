@@ -42,6 +42,18 @@ This diagnostic study follows synthetic sensing disturbances through an existing
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["10 种合成传感退化<br/>外观/可见性 5 种 + 时间 5 种<br/>仅作用于观测/历史，目标观测保持干净"] --> B["Stage 1 表征<br/>冻结视觉编码器：干净 vs 退化潜变量距离<br/>按模型一步正常变化归一化"]
+    B --> C["Stage 2 预测<br/>同一动作序列输入干净/退化上下文<br/>度量未来表征差异 D5 / D_context"]
+    C --> D["Stage 3 规划<br/>固定 CEM 第 0 轮的 300 条候选序列<br/>看干净最优候选在退化上下文中的排名 / same-top"]
+    D --> E["Stage 4 结果<br/>干净与退化条件各自独立运行规划器并执行<br/>配对比较成功率 ΔSR（同一 50 个任务）"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1（本图为论文的分阶段评测流程，并非新提出的策略或模型架构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +110,7 @@ This diagnostic study follows synthetic sensing disturbances through an existing
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.07126>
+- [arXiv PDF](https://arxiv.org/pdf/2609.07126)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.3（退化条件、分阶段分析、评测设定）；§4 结果略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Open-sourced world simulator stemming from video generation with high fidelity a
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DE["数据引擎（§2）"]
+        ACQ["数据获取：通用视频 + 游戏数据（画面与 WASD 键位/相机配对）<br/>+ Unreal Engine 合成渲染（真值相机位姿）"] --> PRO["数据画像：分辨率/时长过滤、切片<br/>VLM 语义分析、缺位姿者用位姿估计补伪标签"]
+        PRO --> CAP["分层标注（VLM）：叙事 caption /<br/>静态场景 caption / 稠密时序 caption"]
+    end
+    CAP --> S1["Stage I 预训练：Wan2.2 14B 图生视频扩散模型<br/>通用视频先验"]
+    S1 --> S2A["Stage II 中期训练：基础世界模型<br/>MoE 高噪/低噪双专家（共 28B），5 秒→60 秒课程训练<br/>图生视频 + 视频续写多任务"]
+    S2A --> S2B["动作条件化：相机旋转 Plücker 嵌入 + 键盘多热向量<br/>经 AdaLN 注入 DiT 块；冻结主干，只训动作适配层"]
+    S2B --> S3A["Stage III 后训练：因果架构适配<br/>由高噪专家初始化，块因果注意力 + KV cache<br/>diffusion forcing 训练"]
+    S3A --> S3B["少步蒸馏：DMD + 对抗优化 + self-rollout 长程训练<br/>中期训练 MoE 作 real score"]
+    S3B --> OUT["实时自回归交互世界模型<br/>（摘要：16 fps、延迟 < 1 秒）"]
+```
+
+图依据：论文 §2（Data Engine）、§3.1-3.4（三阶段训练流程）、Fig.4、Fig.5、Fig.6。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Open-sourced world simulator stemming from video generation with high fidelity a
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.20540>
+- [arXiv PDF](https://arxiv.org/pdf/2601.20540)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 Data Engine、§3 训练流程（3.1-3.4）。
 
 ## 推荐继续阅读
 

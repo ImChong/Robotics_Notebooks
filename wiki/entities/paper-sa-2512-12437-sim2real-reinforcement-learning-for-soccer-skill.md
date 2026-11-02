@@ -42,6 +42,25 @@ Presents a more efficient and effective approach to training control-related tas
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ROB["Bez 机器人 URDF 模型\n(18 关节, 位置控制)"] --> ISAAC["Isaac Gym 并行仿真 (120 Hz)\n每回合: 任务 + 可选足球"]
+  ISAAC --> OBS["观测向量: 关节位置/速度, 角速度/线速度,\n朝向目标单位向量, 球位置 (踢球), 足底接触 (可选)"]
+  OBS --> PPO["PPO Actor-Critic (RL Games)\n策略 / 价值网络均为 400x200x100 全连接 ReLU"]
+  PPO --> ACTION["动作: 18 维关节位置目标 → 电机"]
+  ACTION --> ISAAC
+  ISAAC --> RW["奖励: 踢球 / 行走 用任务奖励 + 课程 (Curriculum)"]
+  MOCAP["CMU / SFU 动捕数据\nPoselib 重定向到 Bez 骨架"] --> AMP["跳跃: 仅模仿参考动作的奖励 (AMP 风格)"]
+  RW --> PPO
+  AMP --> PPO
+  PPO --> DR["加入高斯噪声的域随机化再训练"]
+  DR --> WEB["迁移到 Webots, 经 ROS 收发传感器与电机指令"]
+```
+
+图依据：论文（硕士论文）§4 仿真环境、§5 训练流程（5.1–5.6）、§6 技能规格（踢球 / 行走课程、跳跃的动捕模仿）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Presents a more efficient and effective approach to training control-related tas
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2512.12437>
+- [arXiv PDF](https://arxiv.org/pdf/2512.12437)：已通读方法部分（实验与附录以略读为准）：摘要、§4–§6、§7.4 与 §7.6 / §8 结论（§1–§3 背景与相关工作、其余实验分析略读）
 
 ## 推荐继续阅读
 

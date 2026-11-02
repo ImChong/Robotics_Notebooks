@@ -41,6 +41,26 @@ Existing adaptive-inference and world-action-model systems use cheap-stage outpu
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["物理查询 Q：当前观测 X、下游任务 T、候选动作集 A"] --> MED["运行 Medium 预测器<br/>得到预测后果 S_M(Q,a)（始终先付该开销）"]
+    MED --> ROUTER["预测接口路由器<br/>仅看任务 T 与 Medium 的预测后果"]
+    ROUTER -->|"π = 0"| AM["沿用 Medium 选出的动作 A_M"]
+    ROUTER -->|"π = 1：付出 Full 增量延迟 d_F"| FULL["运行冻结的 Full 预测器<br/>采用 Full 选出的动作 A_F"]
+    subgraph OFF["离线拟合与审计（部署时不可见）"]
+        RESET["精确重置：每个候选动作都从同一仿真状态执行<br/>观测真实后果 Y(Q,a)"] --> REG["候选集物理后悔 L_M、L_F"]
+        REG --> LABEL["配对标签 B = L_M - L_F - λ·d_F"]
+    end
+    LABEL -.->|"监督路由器：回归 L_M - L_F，验证集选阈值"| ROUTER
+    AM --> COST["开销计入的决策代价<br/>决策后悔 + λ × 实测延迟"]
+    FULL --> COST
+    RESET -.->|"评估物理结果"| COST
+```
+
+图依据：论文 Fig.1、§2.1-2.2（决策账本、配对标签 B）与 §3.1（通用协议：Medium 先行、路由器、阈值选择）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ Existing adaptive-inference and world-action-model systems use cheap-stage outpu
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.14650>
+- [arXiv PDF](https://arxiv.org/pdf/2608.14650)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2（决策账本：2.1-2.4）、§3.1-3.2 配对物理路由协议；Fig.1
 
 ## 推荐继续阅读
 

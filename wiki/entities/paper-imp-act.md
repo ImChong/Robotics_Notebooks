@@ -29,6 +29,26 @@ Imp-ACT从示范同时学习动作块和接触柔顺度。
 
 Imp-ACT从示范同时学习动作块和接触柔顺度。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 演示阶段
+        A["操作员经 VR 界面<br/>只给期望末端位姿 + 夹爪指令"] --> B["自调节笛卡尔阻抗控制器<br/>沿运动方向高刚度、正交方向 kmin"]
+        B --> C["按跟踪误差与外力下降率<br/>在线更新 kst (kmin ≤ kst ≤ kmax)"]
+        C --> D["刚度 kst 同步记录进动作向量<br/>(LeRobot 格式)"]
+    end
+    D --> E["训练 Imp-ACT<br/>观测：双相机 RGB + 18 维状态(含力/力矩 wrench)"]
+    E --> F["输出 50 步动作块<br/>11 维动作 = 位姿 + 夹爪 + k̃st"]
+    subgraph 部署阶段
+        F --> G["时间集成平滑(权重 0.1)"]
+        G --> H["k̃st 经式(4)-(8)<br/>映射为平移刚度与阻尼"]
+        H --> I["低层笛卡尔阻抗控制器执行"]
+    end
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2、Alg.1
+
 ## 方法栈
 
 操作者给出末端位姿示范，阻抗控制记录接触力及方向相关刚度，Transformer策略由观察生成动作与刚度。
@@ -70,6 +90,7 @@ Imp-ACT从示范同时学习动作块和接触柔顺度。 评读时应将问题
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)
 - [arXiv:2609.31225](https://arxiv.org/abs/2609.31225)
+- [arXiv PDF](https://arxiv.org/pdf/2609.31225)：已通读方法部分（实验与附录以略读为准）：§III Methodology（A 至 D）及引言中的框架概述
 
 ## 推荐继续阅读
 

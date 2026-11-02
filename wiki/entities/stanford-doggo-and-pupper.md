@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, open-source, stanford, legged, education, research, pupper, ros2, vlm]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-01
 related:
   - ./quadruped-robot.md
   - ./easy-quadruped.md
@@ -15,6 +15,7 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ./awesome-physical-ai-natnew.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/quadruped-open-source-projects-technology-map.md
 sources:
   - ../../sources/sites/pupper-v3-documentation-readthedocs.md
   - ../../sources/repos/pupperv3_monorepo.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Stanford Doggo 与 Pupper 开源四足生态：Doggo 偏高动态跳跃（QDD 同步带 + ODrive）；Pupper 从教学版演进至 v3 伴侣平台（~$2000 自组、Pi 5 + GIM4305、仿真 RL、VLM/语音、ROS 2 monorepo 与 CS 123 课程）。"
 ---
 

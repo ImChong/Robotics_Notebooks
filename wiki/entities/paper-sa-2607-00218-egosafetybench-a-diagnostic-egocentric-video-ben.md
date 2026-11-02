@@ -42,6 +42,24 @@ An egocentric video benchmark of 1,200 robot-view scenarios annotated at half-se
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["1 SceneGen 场景编写<br/>按 family / entity / action / target 规划覆盖<br/>构造对照阶梯 contrastive ladder"] --> S2
+    subgraph S2["2 过滤闸门"]
+        direction TB
+        F1["结构闸门<br/>schema / 枚举 / 兼容性"] --> F2["嵌入去重"]
+        F2 --> F3["LLM rubric judge + LLM mechanism classifier"]
+        F3 --> F4["pair validator<br/>共享设置、单变量翻转"]
+    end
+    S2 --> S3["3 渲染<br/>Kling v3 文生视频 5 秒片段<br/>VLM candidate judge 选最优候选"]
+    S3 --> S4["4 标注<br/>切成十个 0.5 秒 chunk<br/>VLM 标注员按 situational / VCM 两轴打标<br/>200 个视频人工校验"]
+    S4 --> S5["5 评测<br/>VLM 作为运行时安全 guard<br/>stateless 与 causal-window 两种协议"]
+```
+
+图依据：论文 §3.4 Generation and Filtering Pipeline、§3.5 Annotation / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ An egocentric video benchmark of 1,200 robot-view scenarios annotated at half-se
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.00218>
+- [arXiv PDF](https://arxiv.org/pdf/2607.00218)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.2、§3.4–3.5（评测结果与附录以略读为准）
 
 ## 推荐继续阅读
 

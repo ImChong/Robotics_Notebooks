@@ -42,6 +42,24 @@ Programmable World Model makes a rule-executing engine authoritative for world f
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考图像 I0 + 自然语言描述"] --> B["3D 检测器：恢复可见实体<br/>初始 3D OBB 与持久 ID"]
+    B --> C["Coding agent / agent orchestrator<br/>生成引擎可读的 world program<br/>（状态、关系、规则、事件、目标）"]
+    C --> D["轻量引擎实例化规范世界状态 s0"]
+    P["玩家动作 a_t"] --> E
+    D --> E["引擎转移 F：校验动作、应用规则、解析事件<br/>得到 s_t+1（含屏外与非视觉属性）"]
+    E --> F["状态编译器 P：按目标相机 C_t+1 投影 OBB<br/>栅格化 identity / semantic / direction 控制图"]
+    CAM["目标相机轨迹 C"] --> F
+    F --> G["生成式渲染器 G：LingBot-World-v1 + Structured Spatial ControlNet<br/>合成视频块 I_t+1"]
+    G --> H["已完成视频块 → 时间历史 + 几何对齐空间记忆"]
+    H -.->|"条件输入下一块"| G
+```
+
+图依据：论文 §4.1–4.4 / Fig.3（式 3–14）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Programmable World Model makes a rule-executing engine authoritative for world f
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.10540>
+- [arXiv PDF](https://arxiv.org/pdf/2609.10540)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 Fig.3、§4.1–4.5（含训练数据管线）；§5–6 略读
 
 ## 推荐继续阅读
 

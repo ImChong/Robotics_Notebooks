@@ -42,6 +42,25 @@ A minimalist implementation of future video prediction that supports exporting g
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["统一数据 / 环境接口<br/>(D4RL, DMC, CS:GO, RT-1 等)<br/>观测序列 + 可选动作序列"] --> E["观测编码 enc: VAE / Web-DINO / V-JEPA 2.1<br/>得潜变量 x_t"]
+    E --> NZ["Diffusion Forcing: 为每帧分配噪声指数 k_t<br/>上下文帧干净或近干净, 未来帧高噪声"]
+    NZ --> TR["NanoWM Transformer<br/>时空交错注意力, S / B / L / XL 四种规模"]
+    A["动作序列 a_T:T+H-1"] --> INJ["动作注入: 逐元素相加 / AdaLN / FiLM / 交叉注意力"]
+    INJ --> TR
+    TR --> OBJ["生成目标: 扩散或 Flow Matching<br/>x / eps / v 预测"]
+    OBJ --> SAMP["采样得未来潜变量, 解码为帧"]
+    SAMP --> LONG["长程 rollout: 滑动窗口 + 自回归<br/>生成帧作为新上下文"]
+    SAMP --> EVAL["固定种子评测与日志<br/>PSNR / SSIM / LPIPS / FID"]
+    LONG --> APP1["导出 rollout 到下游深度/相机估计, 得 3D 点云"]
+    SAMP --> APP2["MPC 目标条件规划<br/>批量 rollout 候选动作, 评分后执行首个动作并重规划"]
+```
+
+图依据：论文 §3.1–§3.8 / Fig.1（框架级流程，非单一算法；各环节为可替换的配置项）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A minimalist implementation of future video prediction that supports exporting g
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.23993>
+- [arXiv PDF](https://arxiv.org/pdf/2605.23993)：已通读方法部分（实验与附录以略读为准）：Abstract、§1 Introduction、§2 Preliminaries、§3 Methods Supported（3.1–3.8）；§4 Findings 略读
 
 ## 推荐继续阅读
 

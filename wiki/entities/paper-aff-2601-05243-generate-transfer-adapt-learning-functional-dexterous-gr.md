@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single Human Demonstration——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: implicit；Action Subcategory: Hierarchical affordance-to-action · Retrieval-based）**（清单未附方法摘要，此处不替原文概括贡献）。
+Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single Human Demonstration——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: implicit；Action Subcategory: Hierarchical affordance-to-action · Retrieval-based）**（清单未附方法摘要；方法流程见「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,32 @@ Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ENGINE["数据引擎（单段人类演示 → 合成训练数据）"]
+        DEMO["单段人类演示视频"] --> GEN["生成多样物体：检索同类互联网图像<br/>（不足时 GPT-Image 补图）→ Rodin 2D-to-3D 生成网格"]
+        DEMO --> CT["重建手网格与物体点云 → 提取 3D 指尖接触点"]
+        GEN --> TR["2D 匹配（演示帧 ↔ 新物体多视角渲染）<br/>反投影到 3D，密度聚类取前 3 个簇中心为带置信度的候选接触点"]
+        CT --> TR
+        TR --> ADP["物理引导的抓取适配优化<br/>接触先验 / 稳定接触 / 辅助接触 / 关节限位 / 碰撞 / 自穿透损失"]
+        ADP --> VER["仿真六方向外力验证稳定性"]
+        VER --> RND["Blender 渲染 RGB-D 训练数据"]
+    end
+    RND --> TRAIN["训练 CorDex 抓取预测网络"]
+    subgraph NET["CorDex 预测网络"]
+        IN["单视角 RGB-D + 机器人手点云"] --> ENC["图像 / 点云编码器 → 逐点语义 + 几何特征"]
+        ENC --> SAMP["重要性感知采样：4096 → 1024 点"]
+        SAMP --> LG["局部-全局融合：自适应半径局部交叉注意力 + 全局自注意力"]
+        LG --> XA["与机器人手特征交叉注意力 → 手-物距离矩阵"]
+        XA --> OPT["多边测量 + 逆运动学恢复抓取 g"]
+    end
+    TRAIN -.-> NET
+```
+
+图依据：论文 §IV（基于对应关系的数据合成）/ Fig.2、§V（多模态融合抓取预测）/ Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +77,7 @@ Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2601.05243)。
+清单本身只给出标题、出处与分类标签；机制见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2601.05243)。
 
 ## 评测与指标
 
@@ -67,7 +93,7 @@ Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single 
 
 **本页只提供「CorDex」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +114,7 @@ Generate, Transfer, Adapt: Learning Functional Dexterous Grasping from a Single 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2601.05243>
+- [arXiv PDF](https://arxiv.org/pdf/2601.05243)：已通读方法部分（实验与附录以略读为准）：§IV-A/B/C 数据引擎、§V 多模态融合抓取预测网络
 
 ## 推荐继续阅读
 

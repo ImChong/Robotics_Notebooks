@@ -247,4 +247,6 @@ flowchart LR
 - [Locomotion](../wiki/tasks/locomotion.md)
 - [WBC vs RL 对比](../wiki/comparisons/wbc-vs-rl.md)
 - [Sim2Real](../wiki/concepts/sim2real.md)
+- [四足机器人开源项目技术地图（36 个 GitHub 项目）](../wiki/overview/quadruped-open-source-projects-technology-map.md) — 可复现的四足/轮足 RL 与 MPC 起步项目：[rl-mpc-locomotion](../wiki/entities/rl-mpc-locomotion.md) · [Wheel-Legged-Gym](../wiki/entities/wheel-legged-gym.md)
+- [ABS（Agile But Safe）](../wiki/entities/abs-agile-but-safe.md) · [SuperMimic Parkour](../wiki/entities/supermimic-parkour.md) — 安全敏捷与跑酷跟踪的 RL locomotion 实例
 - "AMP: Adversarial Motion Priors" (Peng et al., 2021)

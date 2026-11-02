@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through Anticipatory Collaboration——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through Anticipatory Collaboration——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,36 @@ BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN[输入：物体点云 O + 语言指令 l] --> GA1
+  subgraph S1["3.2 预期阶段：Goal Affordance Network（主臂）"]
+    GA1[PointNet++ 逐点特征 + CLIP 文本特征<br/>MLP 融合 → 逐点接触得分 s]
+    GA1 --> GA2[取高分点 p_goal<br/>cVAE 预测夹爪朝向 d_goal → 预期目标动作 a_goal]
+  end
+  subgraph S2["3.3 Pre-Affordance Network（辅臂）"]
+    PA1[融合 f_p, f_l 与预期目标特征<br/>MLP → 逐点预备 affordance]
+    PA1 --> PA2[cVAE 采样朝向 d_pre → 预备动作 a_pre]
+  end
+  GA2 --> PA1
+  PA2 --> PG[辅臂预抓取物体]
+  subgraph S3["3.4 物体位姿预测与重定向"]
+    OP[Anticipatory Object Pose Predictor<br/>输入 goal/pre 动作特征 + 全局物体特征 → 预期物体变换 T_obj]
+    RA[Reorient Actor<br/>输入 O' 与预抓取观测 O_grasped → 6D 重定向运动]
+    OP --> RA
+  end
+  GA2 --> OP
+  PA2 --> OP
+  PG --> RA
+  RA --> UPD[更新后的场景：物体已重定向，辅臂在位]
+  UPD --> GA3[3.5 重新调用 Goal Affordance Network<br/>参数共享，同一语言指令]
+  GA3 --> EXE[主臂执行目标导向操作]
+```
+
+图依据：论文 §3.1 Overview、§3.2–§3.5 / Fig.3（The BiPreManip pipeline）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +81,7 @@ BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2603.21679)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2603.21679)。
 
 ## 评测与指标
 
@@ -67,7 +97,7 @@ BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through 
 
 **本页只提供「BiPreManip」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +118,7 @@ BiPreManip: Learning Affordance-Based Bimanual Preparatory Manipulation through 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2603.21679>
+- [arXiv PDF](https://arxiv.org/pdf/2603.21679)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Method 全部（3.1 概览至 3.6 训练与损失）。
 
 ## 推荐继续阅读
 

@@ -4,6 +4,7 @@ tags: [humanoid, hardware, bom, actuators, supply-chain, survey]
 status: complete
 updated: 2026-08-19
 related:
+  - ./humanoid-structure-engineer-cross-discipline-map.md
   - ./humanoid-actuator-102-technology-map.md
   - ../concepts/humanoid-mechanical-layout-design.md
   - ../concepts/robot-power-distribution-architecture.md
@@ -118,6 +119,7 @@ flowchart TB
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [人形量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 2026 量产叙事：DFM、良率与 CPK
+- [结构工程师跨专业知识地图](./humanoid-structure-engineer-cross-discipline-map.md) — 以结构岗视角串起传动、材料、疲劳、热与合规
 - [Agent Reach](../entities/agent-reach.md) — 本文抓取工具链
 
 ## 推荐继续阅读

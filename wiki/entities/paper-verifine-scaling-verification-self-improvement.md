@@ -44,6 +44,34 @@ summary: "VeriFine（arXiv:2610.08761）：策略、课程与评分器共同演�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PIL["Policy Improvement Loop"]
+        A["当前策略在锚点评测子集 P 上生成输出"] --> B["参考无关 rubric 评分器 J 给出总分 s、结构化诊断分 z、解释 e"]
+        B --> C["Agent 汇总各场景与 rubric 维度，识别反复出现的失败模式"]
+        C --> D["转为对候选池 U 的可执行筛选条件：优先策略弱点场景，过滤不可靠训练目标"]
+        D --> E["课程 D_t = CurriculumSelect"]
+        E --> F["策略更新：驾驶用 GRPO 以评分器总分为奖励；导航用 SFT，评分器只决定样本入选"]
+        F --> A
+    end
+    F --> G{"改进停滞或评分器奖励与锚点表现不一致？（基于 ΔP 均值与 G_t）"}
+    G -->|否| A
+    G -->|是| H
+    subgraph JIL["Judge Improvement Loop"]
+        H["构造评分器评估集 H_t：不确定、不一致、高影响案例，来自新策略的输出"] --> I["累积评估集 J_t = J_(t-1) ∪ H_t"]
+        I --> J["人类专家先对 J_t 粗校准评分"]
+        J --> K["Agent 迭代提出并评估 rubric 修订"]
+        K --> L["对齐停滞时，把分歧案例连同诊断分与解释交给人类：确认、修正维度、澄清标准或改自己的旧评分"]
+        L --> M["反复直到对齐无进一步提升 = coactive calibration"]
+    end
+    M --> N["教师 VLM 评分器更新，并蒸馏到紧凑学生 VLM"]
+    N --> A
+```
+
+图依据：论文 §3.1–§3.4 / Fig. 2、式 (1)–(8)。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +113,7 @@ summary: "VeriFine（arXiv:2610.08761）：策略、课程与评分器共同演�
 - [verifine_scaling_verification_self_improvement_arxiv_2610_08761.md](../../sources/papers/verifine_scaling_verification_self_improvement_arxiv_2610_08761.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.08761](https://arxiv.org/abs/2610.08761)
+- [arXiv PDF](https://arxiv.org/pdf/2610.08761)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 VeriFine（3.1–3.4）；§4 实验略读
 
 ## 推荐继续阅读
 

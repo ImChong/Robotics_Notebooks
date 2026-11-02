@@ -42,6 +42,24 @@ Efficient world models via hierarchical extrapolation and refresh.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Aether (MMDiT 世界模型)<br/>视频/深度/相机 latent 通道拼接"] --> B["时间步 t: 全部层完整计算并缓存<br/>特征 G, H 与差分 ΔG, ΔH"]
+    B --> C["后续时间步 t-k (k=1..M)"]
+    C --> D{"层号 l < K ?"}
+    D -->|"是: 浅层"| E["选择函数 S 选出 token<br/>(久未被选的 token 概率更高)"]
+    E --> F["仅对选中 token 重算 FullAttn/FFN"]
+    F --> G["其余 token 复用 t 时刻缓存特征"]
+    D -->|"否: 深层"| H["线性外推<br/>G = G_t + ΔG/M · k (H 同理)"]
+    H --> I["跳过 FullAttn/FFN 计算"]
+    G --> J["得到各层更新特征 -> 去噪输出"]
+    I --> J
+```
+
+图依据：论文 §3.2–§3.4 / Fig.3、Fig.4、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Efficient world models via hierarchical extrapolation and refresh.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.17588>
+- [arXiv PDF](https://arxiv.org/pdf/2508.17588)：已通读方法部分（实验与附录以略读为准）：§3 Efficient World Models（3.1–3.4、Algorithm 1）
 
 ## 推荐继续阅读
 

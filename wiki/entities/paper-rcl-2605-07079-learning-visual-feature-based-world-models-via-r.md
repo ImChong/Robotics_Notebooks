@@ -42,6 +42,28 @@ Building on RLA, we propose *RLA World Model* (RLA-WM), which predicts RLA value
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph AE["RLA 自编码器（Fig. 1a）"]
+        S1["DINO tokens st 与 st+h"] --> R["残差 st+h − st"]
+        R --> ENC["fenc：自注意力 + 可学习 queries<br/>投影到低维得到 RLA z"]
+        ENC --> DEC["fdec：由 z 与 st 单次前向重建 st+h<br/>单一回归损失"]
+    end
+    subgraph WM["RLA-WM（Fig. 2）"]
+        A["动作 at:t+h → MLP 嵌入"] --> C["与 st、可学习 queries 拼接<br/>自注意力得到条件 token（只执行一次）"]
+        C --> FM["在紧凑 RLA 空间做 flow matching<br/>噪声 ε 经 ODE 积分得 z1"]
+        FM --> D2["fdec(z1, st) 得到预测 ŝt+h"]
+    end
+    ENC -. "训练目标 z = fenc(st+h − st)" .-> FM
+    DEC -. "fdec 复用" .-> D2
+    D2 --> APP1["应用一：BC 策略加线性头预测 RLA<br/>最简 WAM，可用无动作视频训练（§4.2）"]
+    D2 --> APP2["应用二：策略在 RLA-WM 内部 rollout<br/>Video Aligned Reward + PPO（§4.3）"]
+```
+
+图依据：论文 §3（Learning Latent Actions on DINO Residuals、RLA World Model）/ Fig. 1a、Fig. 2；两个应用见 §4.2 / Fig. 4 与 §4.3 / Fig. 5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +121,7 @@ Building on RLA, we propose *RLA World Model* (RLA-WM), which predicts RLA value
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.07079>
+- [arXiv PDF](https://arxiv.org/pdf/2605.07079)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法、§4.1 预测质量评测、§4.2 最简 WAM、§4.3 世界模型内视觉 RL 的动机与图注
 
 ## 推荐继续阅读
 

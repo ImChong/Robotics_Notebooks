@@ -41,6 +41,31 @@ To answer it, we introduce the Surgical World-Action Model (Surgical WAM), a uni
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ST1["Stage 1：无动作视频预训练"]
+        V1["无动作手术视频<br/>（采用 He et al. 2026 的手术视频世界模型权重）"] --> L1["仅去噪未来视频 latent<br/>损失 L_pre，动作/状态槽不参与"]
+        L1 --> W1["权重填入视觉与未来预测槽<br/>动作与状态槽重新初始化"]
+    end
+    subgraph ST2["Stage 2：带动作标注的联合微调（固定标注预算）"]
+        D2["动作标注示教 (o, s, a, c)<br/>内窥镜图像、dVRK 本体状态、动作、任务嵌入"] --> SEQ["共享 latent 序列<br/>当前图像 / 机器人状态 / 未来预测 / 动作 槽"]
+        SEQ --> DIT["Cosmos Policy 扩散 Transformer<br/>联合去噪未来预测与动作 token"]
+        DIT --> L2["联合扩散去噪损失 L_ft"]
+    end
+    W1 -->|"初始化 θ0"| ST2
+    subgraph DEP["部署：闭环 receding-horizon 控制"]
+        OBS["当前内窥镜帧 + 机器人状态 + 任务文本"] --> SAMP["扩散采样：联合生成动作块 H_c 与未来预测槽"]
+        SAMP --> EXE["仅执行前 H_e ≤ H_c 个动作<br/>未来预测输出丢弃"]
+        EXE --> ENV["SurRoL 仿真 dVRK"]
+        ENV -->|"重新观测并重规划"| OBS
+    end
+    ST2 --> DEP
+```
+
+图依据：论文 §3 Method（3.1 模型、3.2 两阶段训练、3.3 闭环执行）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ To answer it, we introduce the Surgical World-Action Model (Surgical WAM), a uni
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.11204>
+- [arXiv PDF](https://arxiv.org/pdf/2608.11204)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1-3.3）、§2.3 相关工作、§4.1 实验设定
 
 ## 推荐继续阅读
 

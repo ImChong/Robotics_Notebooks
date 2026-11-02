@@ -42,6 +42,31 @@ summary: "Real2Sem2Real（arXiv:2610.28880）：Real2Sem2Real通过三维追踪�
 - 开源结论：**待发布**（步骤 2.5，2026-10-29）。项目页 HTTP 200，Code 标注 coming soon（脚本扫描）。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I1[1 段人类 RGB 演示视频] --> A
+    I2[手机扫描演示物体] --> B[物体模型<br/>Gaussian splat + DINOv3 特征蒸馏<br/>SAM3 分割, RANSAC 拟合桌面, 缩放到真实高度]
+    B --> A[渲染-比较位姿跟踪<br/>损失: rgb / DINOv3 feat / 轮廓 / 深度排序<br/>上直立朝向初始化, 排除手部遮挡像素]
+    A --> T[物体 SE3 轨迹 T_t]
+    I1 --> H[HaMeR 恢复手部网格<br/>用单目深度对齐到 splat 渲染深度]
+    H --> G[手到夹爪映射<br/>取搬运阶段无碰撞的对向抓取 G, 存于物体坐标系]
+    I3[少量 cousin 物体照片] --> C[SAM3 + SAM3D / MV-SAM3D<br/>生成 cousin splat 与网格, 缩放到真实高度, 蒸馏 DINOv3]
+    C --> S[语义对齐<br/>Semantic ICP: 特征聚类匹配后的 ICP<br/>Task-weighted ICP: VLM 选关键帧与功能区域, 区域点 20 倍加权<br/>投影为绕桌面法线的 yaw]
+    T --> X[轨迹迁移 T_t·A 与抓取迁移<br/>抓取做力闭合与碰撞检查]
+    G --> X
+    S --> X
+    X --> K[逆运动学 IK<br/>任意并联夹爪机械臂]
+    L[Viser 交互式场景布局 + 相机位姿优化] --> E
+    K --> E[Episode 采样: 随机 cousin 组合与新物体位姿<br/>弯折示范轨迹连接新起点与迁移目标]
+    E --> SIM[IsaacSim 照片级渲染 或 MuJoCo 接触物理<br/>随机化纹理 / 光照 / 相机]
+    SIM --> D[约 2000 条演示, 记录 RGB / 末端位姿 / 夹爪开度]
+    D --> P[微调 VLA 策略]
+```
+
+图依据：论文 §III-A–F / Fig.1 / Fig.3 / Fig.4
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +109,7 @@ summary: "Real2Sem2Real（arXiv:2610.28880）：Real2Sem2Real通过三维追踪�
 - [real2sem2real_arxiv_2610_28880.md](../../sources/papers/real2sem2real_arxiv_2610_28880.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.28880](https://arxiv.org/abs/2610.28880)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28880)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法（A–F）、§IV-A 实验设定开头
 
 ## 推荐继续阅读
 

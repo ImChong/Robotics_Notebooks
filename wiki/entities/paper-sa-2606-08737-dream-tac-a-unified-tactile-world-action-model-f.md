@@ -42,6 +42,27 @@ Unified Tactile-World Action Model jointly modeling actions, future visual obser
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["语言指令 l"] --> T5["预训练 T5 文本编码器"]
+    O["当前视觉观测 o"] --> VAE["预训练视频 VAE 编码"]
+    X["当前触觉图像 x（左 / 右）"] --> VAE
+    S["机器人状态与 action chunk"] --> PAD["填充为 latent-frame tokens 注入"]
+    VAE --> LAT["统一 latent 序列：视觉 + 触觉 + 状态 + 动作 token"]
+    PAD --> LAT
+    LAT --> DIT["N 个 DiT 块：联合去噪（含 Contact-Aware Self Attention）"]
+    T5 -->|"cross-attention"| DIT
+    X --> GATE["相邻帧触觉平均绝对差 → 取左右最大 → sigmoid 得 contact gate g_t"]
+    GATE -->|"缩放 tactile 注意力 logit 偏置"| DIT
+    DIT --> OUT1["未来视觉 v"]
+    DIT --> OUT2["未来触觉 x"]
+    DIT --> OUT3["动作 a（action chunk）"]
+```
+
+图依据：论文 §3.2 Dream-Tac Architecture、§3.3 Contact-Aware Self Attention、§3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Unified Tactile-World Action Model jointly modeling actions, future visual obser
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.08737>
+- [arXiv PDF](https://arxiv.org/pdf/2606.08737)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题形式化、3.2 架构、3.3 CASA、3.4 训练目标、3.5 效率设计开头）；§4 实验略读
 
 ## 推荐继续阅读
 

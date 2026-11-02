@@ -40,6 +40,23 @@ sources:
 - 视频生成 + 动作扩散模块化端到端；无动作视频对泛化至关重要。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 01**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["初始场景图像 v0 + 任务描述 c<br/>（CLIP 编码，经 cross-attention 注入）"] --> V
+  N1["未来帧噪声"] --> V
+  V["Video U-Net μθ（基于 SVD）<br/>v0 经 VAE 通道拼接，逐去噪步生成视频潜变量"]
+  V --> P["预测视频帧 {v̂_t}"]
+  V --> H["取解码器 5 层隐层特征（第 9/14/17/20/23 层）<br/>CNN adapter 压成全局向量 h_i"]
+  N2["动作噪声"] --> AU
+  H --> AU["Action U-Net αθ（1D CNN，改自 Diffusion Policy）"]
+  AU --> ACT["机器人末端动作序列 {a_t}，直接执行"]
+  TR["训练分两阶段：先训练视频预测，再用行为克隆训练动作头<br/>L_action 的梯度不回传 Video U-Net"] -.-> V
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2、式 (1)–(5)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -88,6 +105,7 @@ sources:
 - [shenlan_wm_survey_06_video-gen-robot-policies.md](../../sources/papers/shenlan_wm_survey_06_video-gen-robot-policies.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2508.00795)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1 概览、3.2 架构、3.3 学习）、Fig. 2
 
 ## 推荐继续阅读
 

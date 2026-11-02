@@ -3,7 +3,7 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-02
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
@@ -16,11 +16,13 @@ related:
   - ./disney-research-la.md
   - ./pollen-microduck.md
   - ./open-duck-mini-viewer.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/repos/open_duck_mini.md
   - ../../sources/sites/tnkr-open-duck-mini-v2.md
   - ../../sources/sites/disney-research-la.md
   - ../../sources/repos/open_duck_mini_viewer.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 约 42 cm、BOM 目标 <$400）：Onshape CAD + Feetech 舵机 + 四仓分工（Hub / Playground / 参考运动 / Runtime），完整覆盖 CAD→MJX→RL→Pi Zero 2W 真机。"
 ---
 

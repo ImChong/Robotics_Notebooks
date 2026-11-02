@@ -43,6 +43,28 @@ Memory-augmented planning and foresight for visual navigation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        T1["轨迹滑窗采样：规划样本与世界模型样本在同一 batch 内交错"] --> T2["三类分词：VQ 图像 token、BPE 文本与位姿 token、bin 动作 token"]
+        T2 --> T3["统一自回归 MLLM Fθ（基于 Chameleon / Anole），分词器冻结，仅更新 Transformer"]
+        T3 --> T4["损失：规划用离散 bin token 损失 L_plan，世界模型用重建损失 L_world"]
+    end
+    subgraph INF["推理（每一步 t）"]
+        I1["输入：起点观测 o_s、目标观测 o_g、初始位姿 p0、当前观测"] --> I2["重置 intra-step 记忆，从当前观测 token 段的选定解码层抽取 K、V"]
+        I2 --> I3["时空融合：与 cross-step 记忆库做 top-k 余弦相似度门控，加指数时间衰减，得到融合记忆"]
+        I3 --> I4["子步 A 规划：Fθ 预测下一动作"]
+        I4 -->|"输出 Stop"| I7["结束导航"]
+        I4 --> I5["子步 B 世界模型：Fθ 预测执行动作后的下一观测"]
+        I5 --> I6["当前 intra-step 记忆追加进 cross-step 记忆库"]
+        I6 --> I2
+    end
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Memory-augmented planning and foresight for visual navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.08713>
+- [arXiv PDF](https://arxiv.org/pdf/2510.08713)：已通读方法部分（实验与附录以略读为准）：§3.1 预备与统一表述、§3.2 统一训练方案、§3.3 记忆库推理（含 Fig.2、Fig.3）；§4 实验未读
 
 ## 推荐继续阅读
 

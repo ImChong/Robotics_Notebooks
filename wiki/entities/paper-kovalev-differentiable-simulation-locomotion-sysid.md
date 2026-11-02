@@ -41,6 +41,24 @@ summary: "用可微仿真梯度替代纯采样优化，在高维参数空间做�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **系统辨识** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真机电机固定在桌面，负载为已知质量与惯量的杆"] --> B["傅里叶模态叠加生成期望速度，裁剪到电机最大速度后积分得期望角度 a = qdes"]
+    B --> C["PD 控制器（Kp=20, Kd=1）驱动真机电机"]
+    C --> D["记录真实状态序列 s = [q, v]，重采样到 1 ms"]
+    D --> E["轨迹按长度 N=4 分段"]
+    E --> F["MJX 可微仿真：显式 Euler 积分，逐段滚动预测 s'"]
+    F --> G["最小化仿真与真实状态的平方误差，梯度下降更新 MuJoCo 电机参数 z（armature、frictionloss、damping）"]
+    G --> F
+    G --> H["辨识后的机器人 MuJoCo 模型"]
+    H --> I["LeggedGym 中训练行走策略（内置奖励，无随机化）"]
+    I --> J["真机部署并与基线模型训练的策略对比"]
+```
+
+图依据：论文 §III 问题定义（式 1–3）、§IV 方法 A–D / Fig.1、Fig.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "用可微仿真梯度替代纯采样优化，在高维参数空间做�
 - [freedof_sim2real_07_kovalev-differentiable-simulation-locomotion-sysid.md](../../sources/papers/freedof_sim2real_07_kovalev-differentiable-simulation-locomotion-sysid.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2508.04696)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 问题定义、§IV 方法 A–D
 
 ## 推荐继续阅读
 

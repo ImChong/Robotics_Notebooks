@@ -42,6 +42,37 @@ Geometry world action model for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  VID["输入视频序列 (T 帧)"] --> ENC["DINOv2 视觉编码器<br/>图像 patch token"]
+  subgraph VG["视频几何模型 EgoStreamVGGT（基于 StreamVGGT）"]
+    ENC --> DEC["24 块 Transformer 解码器<br/>frame-attention + global-attention"]
+    DEC --> MS["取第 4 / 11 / 17 / 23 层<br/>多尺度几何 token G"]
+    MS --> DPT["DPT 头 + 相机 token<br/>点图 / 深度 / 相机位姿（4D 重建，训练监督）"]
+  end
+  EGO["自车状态<br/>速度 / 转向 / 高层指令 → MLP 嵌入"] --> GWM
+  subgraph GW["几何世界模型"]
+    GWM["Q-Former 式聚合<br/>可学习未来 token 交叉注意各层几何 token<br/>再做因果未来自注意力（4 阶段）"] --> QF["潜在未来几何 token Q_fut"]
+    QF --> FD["预测未来深度（训练监督，2 秒 / 4 个 chunk）"]
+  end
+  MS --> GWM
+  subgraph AM["几何导向动作模型"]
+    TQ["可学习轨迹 queries<br/>64 个提案"] --> P4["4 阶段现在几何聚合<br/>逐尺度交叉注意 G 与自车嵌入"]
+    P4 --> PF["1 阶段未来几何精炼<br/>交叉注意 Q_fut"]
+    PF --> TRJ["轨迹提案 (x, y, θ)"]
+    PF --> SC["提案评分头"]
+  end
+  MS --> P4
+  EGO --> P4
+  QF --> PF
+  TRJ --> OUT["规划轨迹"]
+  SC --> OUT
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +127,7 @@ Geometry world action model for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.17521>
+- [arXiv PDF](https://arxiv.org/pdf/2607.17521)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 视频几何模型、§3.2 几何世界模型、§3.3 几何世界动作模型、§4.1 数据集与指标
 
 ## 推荐继续阅读
 

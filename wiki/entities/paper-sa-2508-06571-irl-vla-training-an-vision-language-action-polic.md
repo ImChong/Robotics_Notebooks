@@ -44,6 +44,25 @@ Training a VLA policy via reward world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角相机图像 + 自车状态"] --> B["阶段一 模仿学习：VLM 语义推理（Senna-VLM）+ BEV 3D 推理（检测 token / 地图 token）"]
+    B --> C["统一扩散规划器：锚点轨迹加噪后条件去噪，MLP 回归头输出多模态轨迹"]
+    C --> D["预训练 VLA 策略"]
+    D --> E["阶段二 逆环境学习：记录扩散过程轨迹，在 NAVSIM 中得到 EPDMS 各子分数"]
+    E --> F["训练 Reward World Model：轨迹特征 → MLP 预测各子指标，加权求和为 EPDMS 奖励"]
+    D --> G["阶段三 闭环强化学习：VLA 策略采样轨迹"]
+    F --> H["RWM 给出奖励（无需传感器渲染与物理仿真）"]
+    G --> H
+    H --> I["PPO 更新策略（GAE 优势估计）"]
+    I --> G
+    I --> J["优化后的 VLA 驾驶策略"]
+```
+
+图依据：论文 §3.2 模仿策略学习、§3.3 逆环境学习、§3.4 基于 RWM 的强化学习 / Fig.2、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +119,7 @@ Training a VLA policy via reward world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2508.06571>
+- [arXiv PDF](https://arxiv.org/pdf/2508.06571)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）
 
 ## 推荐继续阅读
 

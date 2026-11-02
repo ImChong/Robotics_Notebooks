@@ -42,6 +42,22 @@ Shows that VLAs can be RL fine-tuned without sacrificing generality by leveragin
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务描述<br/>如 put the pen in the pen holder"] --> B["GPT-4o 场景设计器<br/>解析为 scene graph / scene tree 布局"]
+    B --> C["GPT-4o 质量检查循环<br/>剔除物理不合理的布局"]
+    C --> D["EmbodiedGen 生成可交互 3D 场景<br/>text-to-3D 资产 + 布局组合"]
+    D --> E["ManiSkill 3 并行仿真"]
+    P["π0 在 BridgeV2 上模仿预训练 π_pre"] --> F
+    E --> F["PPOFlow 强化学习微调<br/>流匹配注入可学习噪声 + 价值头，稀疏规则成功奖励"]
+    F --> G["微调后 VLA 策略"]
+    G --> H["Sim-to-real 部署<br/>域随机化 + PD 控制与重力补偿"]
+```
+
+图依据：论文 Methodology（Generative simulation / MDP / Flow matching / PPOFlow）、§1 贡献 3 / Fig.1–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Shows that VLAs can be RL fine-tuned without sacrificing generality by leveragin
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2603.18532>
+- [arXiv PDF](https://arxiv.org/pdf/2603.18532)：已通读方法部分（实验与附录以略读为准）：Methodology 全部小节（Generative simulation、MDP、Flow matching、PPOFlow）与 §1 引言贡献；实验与附录仅略读
 
 ## 推荐继续阅读
 

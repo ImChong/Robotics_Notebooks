@@ -42,6 +42,29 @@ Shapes the closed-loop behavior of physical actuators to match idealized second-
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph TRAIN["仿真训练"]
+    POL["RL 策略 π (PPO, IsaacLab)<br/>输出目标关节角 θ̄"] --> REFSIM["仿真关节 = 理想二阶参考模型<br/>I_sim θ̈ = Kp(θ̄−θ) − Dθ̇ + f"]
+  end
+  subgraph REAL["真机：每关节 Actuator Reality Shaping（500 Hz 驱动层）"]
+    G["策略目标关节角 θ̄"] --> OUT["位置外环 2-DoF 控制器<br/>前馈 F1 = 二阶参考响应 + PID 反馈"]
+    OUT -->|"目标关节速度"| IN["速度内环 2-DoF 控制器<br/>前馈 F2 + PID 反馈"]
+    IN --> CUR["指令电流"]
+    DOB["干扰观测器 DOB<br/>由指令力矩与测得速度估计扰动力矩 (低通滤波)"] -->|"减去补偿力矩"| CUR
+    CUR --> MOTOR["真实电机 + 减速器<br/>(外部负载、摩擦、齿槽扰动)"]
+    MOTOR -->|"测得 θ, θ̇"| OUT
+    MOTOR --> IN
+    MOTOR --> DOB
+  end
+  REFSIM -.->|"闭环响应对齐到同一参考模型"| OUT
+  POL ==>|"同一策略，零样本部署，无需任务级微调"| G
+```
+
+图依据：论文 §3 Problem Formulation、§4 Method / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Shapes the closed-loop behavior of physical actuators to match idealized second-
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2607.02205>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02205)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Problem Formulation、§4 Method、§5 实验设置
 
 ## 推荐继续阅读
 

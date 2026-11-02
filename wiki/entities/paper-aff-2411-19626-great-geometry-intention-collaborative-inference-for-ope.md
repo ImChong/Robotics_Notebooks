@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object Affordance Grounding——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: image-language-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object Affordance Grounding——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: image-language-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,36 @@ GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object 
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["交互图像 I"] --> RES["ResNet → 图像特征 Fi"]
+    PCL["物体点云 Pc"] --> PN["PointNet++ → 点特征 Fp"]
+    IMG --> MLLM["微调的 InternVL（adapter，LoRA rank 16）<br/>Multi-Head Affordance CoT"]
+    subgraph MH["Multi-Head Affordance Chain-of-Thought"]
+        OH["Object-Head：<br/>1 交互部件感知 → 2 几何结构推理"]
+        AH["Affordance-Head：<br/>3 交互详细描述 → 4 类比推理（再列两种交互）"]
+    end
+    MLLM --> OH
+    MLLM --> AH
+    OH --> RB1["Roberta 文本编码 → To"]
+    AH --> RB2["Roberta 文本编码 → Ta"]
+    RB1 --> XA["交叉注意力 + 自注意力<br/>对齐几何属性与交互意图"]
+    RB2 --> XA
+    XA --> TO["物体几何知识 To_bar"]
+    XA --> TA["交互意图知识 Ta_bar"]
+    TO --> CM["CMAFM：把几何知识注入 PointNet++ 最深层点特征<br/>→ Feature Propagation → Ftp"]
+    PN --> CM
+    TA --> FI["与图像特征融合 → Fti"]
+    RES --> FI
+    CM --> DEC["解码器：拼接 Ftp 与 Fti → 输出头 + sigmoid"]
+    FI --> DEC
+    DEC --> OUT["3D 物体 affordance 热图 φ<br/>损失：focal + dice"]
+```
+
+图依据：论文 §3.1 概述 / Fig.2、§3.2 Multi-Head Affordance CoT、§3.3 CMAFM、§3.4 解码器与损失
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +82,7 @@ GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object 
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2411.19626)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；方法流程见上方「流程总览」（仅画论文方法部分明确写出的模块与数据流，不含推测），训练细节与实验请读 [原文](https://arxiv.org/abs/2411.19626)。
 
 ## 评测与指标
 
@@ -68,7 +98,7 @@ GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object 
 
 **本页只提供「GREAT」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +119,7 @@ GREAT: Geometry-Intention Collaborative Inference for Open-Vocabulary 3D Object 
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2411.19626>
+- [arXiv PDF](https://arxiv.org/pdf/2411.19626)：已通读方法部分（实验与附录以略读为准）：§3（概述、Multi-Head Affordance Chain-of-Thought、Cross-Modal Adaptive Fusion Module、Decoder and Loss Functions）；§4 数据集 PIADv2 与实验略读，附录未读
 
 ## 推荐继续阅读
 

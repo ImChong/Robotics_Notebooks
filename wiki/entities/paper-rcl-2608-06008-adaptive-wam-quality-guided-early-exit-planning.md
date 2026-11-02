@@ -41,6 +41,26 @@ Based on this observation, we introduce Adaptive-WAM, a quality-aware multi-exit
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["前视相机当前帧 I + 文本描述 d(o) + 自车状态 + 导航指令"] --> WAN["Wan2.2-TI2V-5B 条件分支<br/>固定视频噪声索引 s*=17，只做一次视频特征前向"]
+    WAN --> EXIT["在选定 DiT 块 ℓ∈{5, 9, 15, 18, 22, 30} 取隐状态 h_ℓ"]
+    EXIT --> PROJ["投影 P_ℓ 转为轨迹条件 token"]
+    PROJ --> HEAD["独立扩散轨迹头 G_ℓ（5 步 DDIM）生成一条轨迹 τ_ℓ"]
+    HEAD --> SC["轨迹质量打分器 S_ϕ（DINOv2-Small + 6 个 MLP 头）<br/>预测 NC/DAC/DDC/TTC/EP/Comf 并合成 Q"]
+    SC --> POOL["累计已解码轨迹，缓存分数，取当前最高分 q̂ 对应的 τ̂"]
+    POOL --> CHK{"q̂ ≥ 阈值 η 或已到最后一个出口（块 30）？"}
+    CHK -->|"是：提前退出"| OUT["返回 τ̂"]
+    CHK -->|"否：复用缓存隐状态，只算尚未执行的块"| EXIT
+    VID["训练期：未来视频损失 L_vid（LoRA 适配 Wan，仅作表征监督）"] -.-> WAN
+    HEAD -.->|"训练损失 L_traj，各出口独立"| TR["训练：L_actor = λ_vid·L_vid + Σ λ_ℓ·L_traj"]
+    VID --> TR
+```
+
+图依据：论文 Method（Problem and Backbone、Multi-Exit Trajectory Decoding、Training）/ Fig.4 与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ Based on this observation, we introduce Adaptive-WAM, a quality-aware multi-exit
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.06008>
+- [arXiv PDF](https://arxiv.org/pdf/2608.06008)：已通读方法部分（实验与附录以略读为准）：Abstract、Introduction、Method（Problem and Backbone、Multi-Exit Trajectory Decoding、Training）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,29 @@ VLA reinforcement fine-tuning with verified rewards in world simulators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["Stage I 预训练"]
+    D["离线数据集 D"] --> WMT["世界模型（tokenizer + 自回归 Transformer）：最大似然训练"]
+    D --> VLAT["VLA：VLM 编码器 + flow-matching 动作头，MSE flow 损失预训练"]
+  end
+  subgraph S2["Stage II 世界模型中的强化微调"]
+    IN["初始帧 o_i + 语言指令 l_i + 机器人状态 s_i"] --> SDE["SDE-Policy：Sigma Net 给出方差，K=10 步高斯采样得动作块"]
+    SDE --> ROLL["N 条 rollout 的动作块"]
+    ROLL --> WMS["世界模型自回归生成未来帧轨迹"]
+    WMS --> RW["verified reward：与真值帧的 L1 + LPIPS 之负加权和"]
+    RW --> ADV["组内基线：Adv_n = R_n - 组平均 R"]
+    ADV --> GRPO["GRPO 更新策略与 Sigma Net（含辅助 flow MSE 与熵项）"]
+    GRPO -.下一轮.-> SDE
+  end
+  WMT --> WMS
+  VLAT --> SDE
+```
+
+图依据：论文 §3 / Fig.2、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ VLA reinforcement fine-tuning with verified rewards in world simulators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.00406>
+- [arXiv PDF](https://arxiv.org/pdf/2510.00406)：已通读方法部分（实验与附录以略读为准）：§3 方法、§4 实验
 
 ## 推荐继续阅读
 

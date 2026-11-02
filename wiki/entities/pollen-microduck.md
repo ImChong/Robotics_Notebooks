@@ -2,7 +2,7 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, pollen-robotics, pollen, rust, onnx]
 status: complete
-updated: 2026-09-13
+updated: 2026-11-02
 related:
   - ./pollen-microduck-rl.md
   - ./motrix.md
@@ -14,11 +14,13 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/microduck-ball-balance.md
   - ../overview/zhixing-microduck-primer-album-technology-map.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/sites/pollen-robotics-microduck.md
   - ../../sources/repos/microduck.md
   - ../../sources/repos/microduck_rl.md
   - ../../sources/repos/motrixlab.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 summary: "Pollen Robotics Microduck：约 25 cm / 800 g 桌面双足商品；机载 Rust daemon 以 50 Hz 跑 ONNX 策略，训练在隔壁 mjlab 仓。软件 Apache-2.0 已开源，整机预售而非 DIY BOM。"
 ---
 

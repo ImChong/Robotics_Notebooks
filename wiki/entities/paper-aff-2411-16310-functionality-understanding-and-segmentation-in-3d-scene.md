@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Functionality Understanding and Segmentation in 3D Scenes——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要，此处不替原文概括贡献）。
+Functionality Understanding and Segmentation in 3D Scenes——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,35 @@ Functionality Understanding and Segmentation in 3D Scenes——在清单中归�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：场景点云 C + 带位姿 RGBD 视图 V + 任务描述 D"]
+  LLM["LLM 解析 D（Chain-of-Thought + 动作列表约束）"]
+  FO["功能物体 F（如 handle）"]
+  CO["上下文物体 O（物体层级的第一项）"]
+  SEG["开放词表分割 O：OWLv2 + RobustSAM"]
+  SEL["视图打分选择：掩码置信度 + 距离/角度分布 KL 均匀度，取 top-V̂ 视图"]
+  VLM["VLM Molmo：Point to all the F in order to D"]
+  SAM["SAM 以点为提示生成 F 的 2D 掩码"]
+  LIFT["按相机位姿把 2D 掩码提升到点云，累计各点像素计数得热力图"]
+  OUT["阈值 τ 过滤，输出 F 的 3D 掩码 M"]
+  IN --> LLM
+  LLM --> FO
+  LLM --> CO
+  CO --> SEG
+  IN --> SEG
+  SEG --> SEL
+  SEL --> VLM
+  FO --> VLM
+  VLM --> SAM
+  SAM --> LIFT
+  LIFT --> OUT
+```
+
+图依据：论文 §3.1–3.5（Overview、任务描述理解、多视图功能理解、点云功能分割）与 §4.1 Implementation details。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +80,7 @@ Functionality Understanding and Segmentation in 3D Scenes——在清单中归�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2411.16310)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2411.16310)。
 
 ## 评测与指标
 
@@ -67,7 +96,7 @@ Functionality Understanding and Segmentation in 3D Scenes——在清单中归�
 
 **本页只提供「Fun3DU」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +117,7 @@ Functionality Understanding and Segmentation in 3D Scenes——在清单中归�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2411.16310>
+- [arXiv PDF](https://arxiv.org/pdf/2411.16310)：已通读方法部分（实验与附录以略读为准）：§3.1–3.5、§4.1 实现细节
 
 ## 推荐继续阅读
 

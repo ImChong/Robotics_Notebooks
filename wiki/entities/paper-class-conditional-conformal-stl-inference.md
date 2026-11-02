@@ -44,6 +44,20 @@ summary: "类条件保形 STL 推断（arXiv:2610.14352）：指出时序逻辑�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页（Google Sites）入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["数据划分：训练 / 验证 / 校准 / 测试<br/>D_tr, D_val, D_cal, D_test"] --> B["判别式多类 STL 学习（§III-A）<br/>K 个 STL 公式 + 固定码矩阵 M<br/>目标：L_disc（含 margin 与 ranking 惩罚）"]
+  B --> C["按验证集准确率选出判别模型"]
+  C --> D["紧致性精修（§III-B）<br/>固定逻辑结构与时间区间，只调谓词阈值<br/>L_ref = tight + sign + rank + anchor"]
+  D --> E["在 D_val 上选候选：精度不低于容忍度<br/>无合格候选则保留判别模型"]
+  E --> F["类条件保形校准（§III-C）<br/>以解码损失 d(x,c) 为 nonconformity score<br/>按类估计阈值 q_c"]
+  F --> G["输出预测集合 C(x) = { c | d(x,c) ≤ q_c }<br/>保证类内覆盖 ≥ 1-α"]
+```
+
+图依据：论文 §III 方法 / Fig.1（判别学习、紧致性精修、类条件保形校准）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +99,7 @@ summary: "类条件保形 STL 推断（arXiv:2610.14352）：指出时序逻辑�
 - [class_conditional_conformal_stl_inference_arxiv_2610_14352.md](../../sources/papers/class_conditional_conformal_stl_inference_arxiv_2610_14352.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14352](https://arxiv.org/abs/2610.14352)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14352)：已通读方法部分（实验与附录以略读为准）：§II 问题设定、§III 方法（A 判别学习、B 紧致性精修、C 类条件保形校准）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,38 @@ To address this, we present HiMem-WAM, a Hierarchical Memory-Gated WAM that inte
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage I：低层潜动作 tokenizer"]
+        A1["演示轨迹 / 无动作视频"] --> A2["DPFlow 多视角光流"]
+        A2 --> A3["变分 tokenizer<br/>重建光流 + 弱对齐动作"]
+        A3 --> A4["冻结，离线得到低层潜动作序列 Z^l"]
+    end
+    subgraph S2["Stage II：层次潜动作预训练"]
+        A4 --> B1["动态分块：编码器 + 边界预测 + 段池化"]
+        B1 --> B2["高层技能潜变量 Z^h 与技能边界"]
+        B2 --> B3["预训练 planner 与 executor<br/>（无外部记忆）"]
+    end
+    subgraph S3["Stage III：记忆门控微调"]
+        B3 --> C1["激活记忆模块<br/>在带动作演示上微调全策略"]
+    end
+    subgraph INF["推理（因果，无未来视频 / 光流生成）"]
+        D1["RGB + 本体感觉 + 指令"] --> D2["状态编码 x_t"]
+        D2 --> D3["读门：从记忆库 M_t 注意力检索"]
+        D3 --> D4["Planner (Qwen3-VL-4B)<br/>预测技能 z^h 与边界分数"]
+        D4 --> D5["Executor：展开为低层潜动作块"]
+        D5 --> D6["Action decoder：动作块"]
+        D4 --> D7{"写门 α_w > η ?"}
+        D7 -- "是" --> D8["写入新记忆 token 到 M_t"]
+        D8 -.-> D3
+    end
+    C1 -.-> INF
+```
+
+图依据：论文 §3 Method / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +131,7 @@ To address this, we present HiMem-WAM, a Hierarchical Memory-Gated WAM that inte
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.10363>
+- [arXiv PDF](https://arxiv.org/pdf/2606.10363)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Method（Eq.1-9、训练三阶段、推理）、§4 实验设定与结果略读
 
 ## 推荐继续阅读
 

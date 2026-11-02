@@ -43,6 +43,27 @@ summary: "SurgCast（arXiv:2610.15645）：先由机器人状态与未来动作�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：参考图 I0、当前器械骨架 S0、机器人状态 r0、未来动作序列 a1:H"] --> COMP["bbox 条件关键点补全<br/>估计缺失的当前关键点"]
+    COMP --> PRED["Action-to-Future-Skeleton Predictor<br/>因果 Transformer，预测相对当前构型的坐标偏移与可见性"]
+    PRED --> SK["预测的未来骨架 S^1:H"]
+    SK --> GEO["几何路径：栅格化关键点与边<br/>多尺度空间金字塔 + 时序差分残差"]
+    SK --> KIN["运动学路径：从关键点轨迹推导描述符<br/>全局 / 局部时间编码器 → 调制"]
+    GEO --> INJ["双路径注入视频 DiT（零初始化投影，保留原动作通路）"]
+    KIN --> INJ
+    IN --> INJ
+    INJ --> TEA["全序列教师（rectified-flow 训练）"]
+    TEA -. 训练时 ODE 预热 + DMD2 非对称蒸馏 .-> STU["因果学生（四步去噪）"]
+    INJ --> STU
+    TEA --> OUT["Wan 2.2 解码 → 可控手术视频 I1:H"]
+    STU --> OUT
+```
+
+图依据：论文 §III-A/B/C/D 与 Fig. 2（教师与学生是可替换的两种视频生成器，教师到学生的箭头仅表示训练期蒸馏）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +105,7 @@ summary: "SurgCast（arXiv:2610.15645）：先由机器人状态与未来动作�
 - [surgcast_surgical_world_model_skeletons_arxiv_2610_15645.md](../../sources/papers/surgcast_surgical_world_model_skeletons_arxiv_2610_15645.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.15645](https://arxiv.org/abs/2610.15645)
+- [arXiv PDF](https://arxiv.org/pdf/2610.15645)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§III Method（A–D）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

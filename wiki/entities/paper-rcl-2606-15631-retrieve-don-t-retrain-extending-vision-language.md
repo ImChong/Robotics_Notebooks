@@ -42,6 +42,24 @@ On PushT, we study how retrieval provides a reusable high-level motion prior for
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["当前 query 观测 / 状态 s_t^query"] --> R["检索：在池 D_pool 中取 t′ = argmin d(s_t, s_t′)<br/>先按 ψ0 取 top-K 轨迹，再算加权距离"]
+    DB["池数据库 D_pool<br/>（训练：配对池；测试：新池示范，可随时扩充）"] --> R
+    R --> CH["检索到的池 chunk<br/>(s_pool, a_pool)(t′:t′+H)"]
+    CH --> ENC["与当前帧一起编码为干净 latent 帧<br/>沿时间轴前置作条件"]
+    Q --> ENC
+    LG["语言指令 → cross-attention"] --> WAM
+    ENC --> WAM["Cosmos Policy 骨干：query 侧未来动作与未来观测<br/>作为一段视频从噪声去噪（冻结，不更新参数）"]
+    WAM --> RES["残差动作：â = a_pool + Δa"]
+    WAM --> NS["预测下一观测 ŝ_(t+H)"]
+    RES --> OUT["执行 query 动作块 â(t:t+H)"]
+```
+
+图依据：论文 §3、§4.1–4.2 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ On PushT, we study how retrieval provides a reusable high-level motion prior for
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.15631>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15631)：已通读方法部分（实验与附录以略读为准）：§3 Problem Formulation、§4 Proposed Method（4.1–4.2）
 
 ## 推荐继续阅读
 

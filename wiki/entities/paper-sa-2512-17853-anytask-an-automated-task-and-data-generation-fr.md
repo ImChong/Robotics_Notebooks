@@ -42,6 +42,27 @@ Introduces three AnyTask agents for generating expert demonstrations, trains beh
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DB["物体数据库：VLM 多视角标注 +<br/>Sentence-T5 嵌入 + faiss 检索"] --> TG
+    HL["人工给出的任务族、机器人规格、工作空间约束"] --> TG["任务生成器 LLM<br/>物体驱动 或 任务驱动的物体提议"]
+    TG --> SG["仿真生成器 LLM：生成 IsaacLab 代码<br/>check_success 先生成，再生成 reset、compose_state、reward_function、scripted_policy"]
+    SG --> AG
+    subgraph AG["AnyTask 专家 Agent"]
+        VIPR["ViPR：LLM 任务运动规划程序<br/>K 路并行 rollout + VLM 反馈迭代修正"]
+        EUR["ViPR-Eureka：LLM 奖励迭代 + 网格接触采样"]
+        VRL["ViPR-RL：运动规划 + 训练好的 RL 技能"]
+    end
+    AG --> COL["状态策略并行 rollout，仅保留成功轨迹"]
+    COL --> REP["状态/动作回放，渲染视觉数据 + 稠密语言标注"]
+    REP --> BC["行为克隆训练视觉运动策略"]
+    BC --> SIMV["仿真验证 → 零样本部署真机"]
+```
+
+图依据：论文 §III AnyTask（Object Database、Task Generator、Simulation Generator、Dense Annotation）、§IV 三类 Agent、§V 基础设施。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Introduces three AnyTask agents for generating expert demonstrations, trains beh
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2512.17853>
+- [arXiv PDF](https://arxiv.org/pdf/2512.17853)：已通读方法部分（实验与附录以略读为准）：摘要、§III–§V（框架、Agent、基础设施）；§VI 实验为略读
 
 ## 推荐继续阅读
 

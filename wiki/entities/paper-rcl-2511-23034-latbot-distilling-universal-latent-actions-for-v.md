@@ -42,6 +42,37 @@ LatBot learns scene and motion latents from language-conditioned robot and human
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LAM["阶段 1：预训练 Latent Action Model（教师）"]
+        IN1["多帧观测 V_t:t+k + 任务指令 ℓ<br/>(机器人与人手视频)"] --> F1["VLM f_vlm + 可学习 token<br/>[CP_SCE] / [CP_MOT]"]
+        F1 --> ZS["Z_sce：被动场景变化"]
+        F1 --> ZM["Z_mot：机器人主动运动"]
+        ZS --> DEC["Unified Decoder（SANA 初始化）<br/>逐层双向融合 scene / motion"]
+        ZM --> DEC
+        DEC --> REC["解码未来帧 V_t+k"]
+        DEC --> ACT["解码帧间动作 A_t:t+k"]
+    end
+    subgraph DIST["阶段 2：知识蒸馏到 VLA 的 VLM（学生）"]
+        IN2["首帧 V_1 + 指令 ℓ"] --> STU["学生 VLM：Ẑ_a = f_vlm(ℓ, V_1)"]
+        LAMZ["教师 Z_a = f_lam(ℓ, {V_t})<br/>(梯度截断)"] --> LA["Latent Action Alignment Loss L_a<br/>MSE + KL"]
+        STU --> LA
+        STU --> LR["Reasoning Preservation Loss L_r<br/>下一 token 预测，生成子任务描述"]
+        LA --> TOT["L = L_a + λ_r·L_r (λ_r=0.5)"]
+        LR --> TOT
+    end
+    subgraph FT["阶段 3：Action Expert 微调"]
+        FEAT["蒸馏后 VLM 特征"] --> AE["Action Expert<br/>(输入噪声 → 动作块)"]
+        AE --> OUT["Action chunks<br/>L_ee(MSE) + L_gripper(BCE)"]
+    end
+    ACT -.->|"预训练得到 LAM"| LAMZ
+    TOT --> FEAT
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2；阶段间连线为按 §3.3「预训练 LAM 后蒸馏、再微调 Action Expert」的叙述归纳，Action Expert 内部结构论文正文未展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +129,7 @@ LatBot learns scene and motion latents from language-conditioned robot and human
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2511.23034>
+- [arXiv PDF](https://arxiv.org/pdf/2511.23034)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3.1–3.3 方法、§4.1 实现细节
 
 ## 推荐继续阅读
 

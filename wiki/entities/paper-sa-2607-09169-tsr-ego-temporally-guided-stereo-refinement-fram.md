@@ -42,6 +42,26 @@ A temporally guided stereo framework coupling short-term motion evidence with pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["因果窗口内的双目鱼眼图像<br/>左/右视图，仅用当前及过去帧"] --> E["Stereo Visual Encoder<br/>ResNet-18 + FPN → stride-4 稠密特征 F"]
+    E --> T["Causal Temporal Feature Mixer (TFM)<br/>沿时间轴的因果深度可分离 1D 卷积<br/>不混合空间位置 → 特征 F̃"]
+    Q["可学习关节 query Q0<br/>+ 可学习 3D 参考位姿 P0"] --> D1
+    subgraph DEC["Causal Stereo Decoder（L 层重复）"]
+        D1["因果时间自注意力<br/>对每个关节跨时间，含 age embedding"] --> D2["关节自注意力<br/>每帧内 J 个关节"]
+        D2 --> D3["鱼眼投影当前 3D 位姿 → 各视图 2D 参考点<br/>可变形立体交叉注意力采样 F̃，出视野视图置零"]
+        D3 --> D4["FFN 精炼"]
+        D4 --> H["本层 Pose Head：P̂ℓ = P0 + hℓ(LN(Qℓ))"]
+    end
+    T --> D3
+    H -- "detach 后作为下一层投影参考" --> D3
+    H --> O["最终层输出绝对 3D 位姿<br/>各层均以 MPJPE 监督"]
+```
+
+图依据：论文 §3 / Fig.1（§3.1–3.6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ A temporally guided stereo framework coupling short-term motion evidence with pr
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.09169>
+- [arXiv PDF](https://arxiv.org/pdf/2607.09169)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Method（3.1–3.6）、Fig.1
 
 ## 推荐继续阅读
 

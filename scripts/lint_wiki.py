@@ -184,6 +184,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "true",
     "false",
     "null",
+    # none：命中处均为 Python 空值 `None` 或配置枚举默认值 `none`（WeVisOne-VL /
+    # GroundingPI 的拒答输出、Gymnasium 的 `render_mode=None`、AW-0 服务响应字段、
+    # diagram-design 动效默认值），与 null/true/false 同类字面量，非可成页概念。
+    "none",
     "id",
     "title",
     # code：各页正文里的 `code` 均为 frontmatter 来源键引用（「官方入口见
@@ -772,6 +776,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "step",
     "twist2",
     "urdf",  # 已由 concepts/urdf-robot-description.md 覆盖（slug 与页面 stem 不同名）
+    # vggt：Visual Geometry Grounded Transformer，命中处均为前馈 3D 重建骨干的模型名
+    # 引用；本体已由 entities/paper-vggt-visual-geometry-grounded-transformer.md 承载，
+    # 后续工作谱系由 overview/vggt-geometric-state-survey.md 汇总，不建 concepts/vggt.md。
+    "vggt",
     "vlm",  # 模型家族标签，已由 comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md 定义
 }
 

@@ -43,6 +43,28 @@ Optical flow as a unified action representation for WAMs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  VID["视频帧"] --> OF["光流估计"]
+  OF --> HSV["HSV 色轮编码<br/>光流转为与 RGB 同格式的 flow 视频"]
+  VID --> VAE["冻结 VAE 编码器"]
+  HSV --> VAE
+  REF["参考图像 I0 + 语言指令"] --> DIT
+  VAE --> DIT["双流 DiT<br/>RGB / Flow 流各有 patch embed 与输出头<br/>共享 Transformer 块，联合自注意力"]
+  DIT -->|"策略模式：RGB 与 Flow 均从噪声去噪"| GEN["生成未来 RGB 与 Flow"]
+  GEN --> AEX["Action Expert<br/>交叉注意各层 RGB / Flow 隐状态 + 本体状态<br/>flow matching 预测动作块"]
+  AEX --> ACT["可执行机器人动作"]
+  DES["期望运动轨迹的 Flow"] -->|"世界模型模式：Flow 固定，仅去噪 RGB"| DIT
+  DIT -.-> WM["符合指定运动的未来 RGB 视频"]
+  subgraph TRN["两阶段训练"]
+    S1["阶段 1：无动作标注的人类视频 EgoDex<br/>仅优化视频损失，更新双流 DiT"] --> S2["阶段 2：RoboTwin 2.0 联合训练<br/>视频损失 + 动作损失，接入 Action Expert"]
+  end
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2；两阶段训练细节见附录 A.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Optical flow as a unified action representation for WAMs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.13017>
+- [arXiv PDF](https://arxiv.org/pdf/2607.13017)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 总览、§3.2 统一视频-光流生成、§3.3 光流隐变量动作预测、§3.4 训练，略读附录 A.2 两阶段训练
 
 ## 推荐继续阅读
 

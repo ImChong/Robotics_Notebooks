@@ -38,6 +38,24 @@ sources:
 - 视频生成与实时策略推理同一模型；联合潜表示与解耦解码。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["历史图像 O 与历史动作 chunk A"] --> B["VAE 编码器 (kl-f16) → FC<br/>得到 N 个视觉 token；动作重复 M 次 → FC 得到动作 token"]
+  C["未来观测帧（训练时随机 mask 部分 token；推理时从空序列开始）"] --> D["同样 VAE + FC，与历史 token 通道拼接，<br/>时间维拼接"]
+  L["语言指令：CLIP 文本编码（如 Libero10）"] --> E
+  B --> D
+  D --> E["Transformer 融合<br/>得到联合视频-动作潜变量 Z"]
+  E --> F["视频扩散解码器 → VAE 解码器 → 未来帧"]
+  E --> G["动作扩散解码器（卷积 + MLP 聚合 Z）→ 动作 chunk"]
+  F --> H["训练：L = L_action + L_video"]
+  G --> H
+  G --> I["策略推理：跳过视频解码，只解码动作"]
+```
+
+图依据：论文 §III-A 至 §III-C / Fig. 2；§III-D 的多任务 mask 训练未画入。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -86,6 +104,7 @@ sources:
 - [shenlan_wm_survey_10_uva.md](../../sources/papers/shenlan_wm_survey_10_uva.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2503.00200)：已通读方法部分（实验与附录以略读为准）：§III Unified Video Action Model（A 编码历史、B 掩码自编码预测观测、C 解耦视频与动作扩散、D 掩码训练）、Fig. 2
 
 ## 推荐继续阅读
 

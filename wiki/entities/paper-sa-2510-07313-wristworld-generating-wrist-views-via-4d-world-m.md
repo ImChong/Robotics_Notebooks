@@ -43,6 +43,24 @@ Generates wrist-views via 4D world models for robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：多路外部（anchor）视角视频"] --> B["VGGT 聚合器：融合多视角特征，重建 4D 点云"]
+    B --> C["Wrist Head：可学习 wrist queries 经 Transformer decoder，回归腕部相机外参 R_w、T_w"]
+    SPC["SPC 损失：锚点-腕部 2D 匹配，提升为 3D-2D 对，按预测腕部位姿投影，仅用 RGB 监督"] -.-> C
+    C --> D["腕视角投影：把重建点云投影到腕部成像平面，得到逐帧对齐的条件图"]
+    B --> D
+    D --> E["视频 VAE 编码条件图为 z^c，与带噪腕部 latent z^w 沿通道拼接，patch embedding 输入扩展为 2C 通道"]
+    A --> F["CLIP 编码各外部视角帧，加文本嵌入、时间嵌入与视角嵌入，形成语义条件 c"]
+    E --> G["DiT 视频生成模型"]
+    F --> G
+    G --> H["生成腕部视角视频，可补充 VLA 训练数据"]
+```
+
+图依据：论文 §3 / Fig.2 / Fig.3（§3.2 重建阶段、§3.3 生成阶段）；VLA 数据增强用途取自 Fig.2 图注与 §4.3 标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Generates wrist-views via 4D world models for robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2510.07313>
+- [arXiv PDF](https://arxiv.org/pdf/2510.07313)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.3（含 Fig.2、Fig.3）；§4 实验仅略读
 
 ## 推荐继续阅读
 

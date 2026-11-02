@@ -43,6 +43,27 @@ We build on this generative capability to propose Recurrent Generative Replay (R
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["预训练 WAM 策略 π_θ<br/>(同时预测动作块与未来观测)"]
+  N["新任务 T_k 示范 D_k"] --> INIT["初始化阶段 0≤t<H<br/>输入取自 D_k 的真实观测"]
+  L["旧任务语言指令 ℓ_i<br/>(不保留旧任务轨迹)"] --> INIT
+  INIT --> GEN["递归生成阶段 H≤t≤T_max<br/>π_θ 输出 (动作块, 未来观测)<br/>生成观测回灌作下一步输入"]
+  P --> GEN
+  GEN -->|"未结束"| GEN
+  GEN --> TERM{"终止: 达 T_max 或<br/>goal reward 连续 3 步 >0.99<br/>且至少一次为 1.0"}
+  TERM --> PT["伪轨迹 τ_i<br/>(观测, 动作块首个动作)"]
+  PT --> R["R_k = 全部旧任务伪轨迹"]
+  R --> U["D_k+ = D_k ∪ R_k"]
+  N --> U
+  U --> BC["行为克隆 L_BC 更新策略"]
+  BC --> P2["更新后策略 π_θk"]
+```
+
+图依据：论文 §4.1–§4.2、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +121,7 @@ We build on this generative capability to propose Recurrent Generative Replay (R
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.27374>
+- [arXiv PDF](https://arxiv.org/pdf/2606.27374)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1–4.2）；§5 实验设定略读
 
 ## 推荐继续阅读
 

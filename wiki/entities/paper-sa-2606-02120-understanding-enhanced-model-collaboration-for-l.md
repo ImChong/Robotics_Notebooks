@@ -42,6 +42,31 @@ Proposes UE-MCM combining efficient coarse-grained video understanding with accu
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VC["粗粒度动作视频 Vc(0:T)"] --> SM
+    VF["细粒度动作片段 Vf(t:t+τ)"] --> SM
+    VF --> LM
+    subgraph SM["小模型分支：工作流级一致性"]
+        DCR["DCR（Diffusion Contrastive Reconstruction）<br/>增强 CLIP 视觉表征"] --> ENC["CLIP4CLIP 视频编码器 φs（冻结）"]
+        ENC --> FUSE["hs = ψs([hcs; hfs; hcs ⊙ hfs])"]
+        FUSE --> GS["分类头 gs → 小分支 logits zs"]
+    end
+    subgraph LM["大模型分支：动作级正确性"]
+        QW["Qwen3-VL Embedding φl（冻结）→ hl"] --> GL["分类头 gl → 大分支 logits zl"]
+    end
+    FUSE --> GATE
+    QW --> GATE["协作门<br/>投影 Ps / Pl，[αs, αl] = softmax(Wg[h̄s; h̄l; h̄s ⊙ h̄l] + bg)"]
+    GS --> OUT
+    GL --> OUT
+    GATE --> OUT["最终 logits z = αs·zs + αl·zl<br/>0 = 正确，1 = 错误"]
+    OUT --> LT["训练时长尾优化 L = LWCE + λAUC·LAUC + λLA·LLA<br/>重加权交叉熵 / AUC 损失 / 标签感知调整"]
+```
+
+图依据：论文 §2.1–§2.5 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Proposes UE-MCM combining efficient coarse-grained video understanding with accu
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.02120>
+- [arXiv PDF](https://arxiv.org/pdf/2606.02120)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1–2.5）、§3.1 实现细节；§3 其余结果表略读（全文仅 4 页）
 
 ## 推荐继续阅读
 

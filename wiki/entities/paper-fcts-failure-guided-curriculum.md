@@ -3,7 +3,7 @@ type: entity
 project_id: fcts-failure-guided-curriculum-tree-search
 tags: [paper, locomotion, parkour, curriculum, reinforcement-learning, cmu, fieldai]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-01
 arxiv: "2610.22619"
 venue: "arXiv 2026"
 project: https://narayananpp.github.io/fcts/
@@ -12,9 +12,11 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./paper-better-curriculum.md
   - ./paper-deep-whole-body-parkour.md
+  - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/fcts_failure_guided_curriculum_tree_search_arxiv_2610_22619.md
   - ../../sources/sites/fcts-project.md
+  - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "FCTS（arXiv:2610.22619）用局部跑酷失败条件化生成地形，并通过预算约束的蒙特卡洛树搜索选择训练课程；在扫描施工场地 medium / hard held-out 路线及四足真机上验证，项目页未列公开代码。"
 ---
 

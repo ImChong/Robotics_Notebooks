@@ -37,6 +37,27 @@ summary: "PACE（arXiv:2610.16308）将触觉分作持续接触状态、突发�
 
 接触丰富插入中，视觉负责粗对位，但隐藏插针、微小间隙与突然卡滞需要触觉反馈。将整条触觉流简单拼接到策略输入，会把持续状态、瞬时事件和未来接触影响混在一个融合通路里。PACE 按时间作用拆分通路，同时保留动作块的连续生成，并给突发接触单独的纠正入口。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t<br/>全局 RGB / 腕部 RGB / 本体 / 低维触觉"] --> ENC["各模态专用编码器<br/>ACT 风格 CVAE-Transformer 骨干"]
+    TAC["共享触觉流 w_t"] --> EMA["Phase：EMA 平滑接触状态<br/>w_state = (1−α)·w_state(t−1) + α·w_t"]
+    TAC --> EVT["Event：短窗口触觉变化 Δw 及其模长 → 事件线索 e_s"]
+    EMA --> AFF["逐层仿射调制 Transformer 编码器特征<br/>h~ = (1+γ)⊙LN(h) + β"]
+    ENC --> AFF
+    AFF --> DEC["解码器 → 生成动作块 A_gen"]
+    DEC --> COR["Event 门控残差修正<br/>仅修正前 h_corr = 5 步：A_corr = A_gen + g⊙R"]
+    EVT --> COR
+    COR --> TE["时间集成缓冲（ACT 骨干原有执行机制）<br/>指数衰减加权聚合重叠动作块"]
+    TE --> EXE["执行动作 a_exec"]
+    DEC -. "仅训练：预测头 Pred." .-> PRD["预测未来触觉增量 ΔW<br/>L_pred（推理时移除）"]
+    COR -. "训练" .-> LOSS["总损失 L = L_act + λ_kl·L_KL + λ_pred·L_pred"]
+    PRD -.-> LOSS
+```
+
+图依据：论文 §3.1–3.5 / Fig. 2、附录 A.6 推理流程。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -119,6 +140,7 @@ PACE 的可迁移证据来自将框架用于 Diffusion Policy 与替代物理反
 - [PACE 论文归档](../../sources/papers/pace_arxiv_2610_16308.md)
 - [PACE 项目页归档](../../sources/sites/pace-insertion.md)
 - [PACE arXiv](https://arxiv.org/abs/2610.16308)
+- [arXiv PDF](https://arxiv.org/pdf/2610.16308)：已通读方法部分（实验与附录以略读为准）：§1–3（引言、相关工作、方法：概述、Phase/Event/Pred. 三条通路、训练目标）与附录 A.6 推理流程，§4 实验设定略读
 
 ## 推荐继续阅读
 

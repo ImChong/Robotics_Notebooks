@@ -66,3 +66,5 @@ sim2real 的榜单包含 **SONIC、SONIC-Low-Latency 与 SONIC-v1.1** 三个策�
 - [SuperMimic](./paper-supermimic.md) — 用可微世界模型降低动作跟踪训练成本的相关路线。
 - [sim2real leaderboard 映射](./egalahad-sim2real.md) — SONIC 三个运行配置共用本项目实体。
 - [TRACE（人形跨形态迁移）](./paper-trace-humanoid-transfer.md) — 把预训练 SONIC 从 Unitree G1 迁到 H2：投影注入运动学先验 + 编码器蒸馏 + 低秩 RL，约 8 GPU 小时
+
+- [GRAFT](./paper-graft.md) — 冻结 SONIC 并以地形感知下肢残差适配复杂地形。

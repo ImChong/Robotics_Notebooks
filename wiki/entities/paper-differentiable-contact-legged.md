@@ -15,6 +15,7 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/differentiable_contact_legged_arxiv_2610_35852.md
   - ../../sources/sites/differentiable-contact-legged.md
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
@@ -40,6 +41,28 @@ summary: "Differentiable Contact Legged（arXiv:2610.35852）：只在反向传�
 - 接触前向保持硬约束，反向平滑。平滑梯度帮助跨越接触模式边界，应用于腿式策略与接触隐式轨迹优化，并展示无需微调的硬件迁移。
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    XU["(x_t, u_t)"] --> FW["前向: 硬接触求解<br/>得 λ, σ 与 x_(t+1)<br/>(separating / clamping / sliding)"]
+    FW --> OUT["下一状态 x_(t+1) (rollout 保持可行)"]
+    subgraph BW["仅反向传播: 松弛接触灵敏度"]
+        direction TB
+        SO["de Saxcé 修正: Signorini + Coulomb 摩擦锥 + 最大耗散<br/>统一为单一二阶锥互补问题 SOCCP"]
+        CP["沿 central path 松弛 (ρ > 0)<br/>λ̃ ∘ σ̃ = ρe"]
+        NW["Algorithm 1: 正则化 Newton 迭代<br/>以硬接触解为初值, 得 (λ*, σ*)<br/>(法向自由速度偏移 δ)"]
+        SE["统一灵敏度方程 (Mλ + Mσ A) dλ = ..."]
+        JA["转移 Jacobian f_x, f_u<br/>(刚体导数由 Pinocchio 解析计算)"]
+        SO --> CP --> NW --> SE --> JA
+    end
+    FW -->|"硬接触解 λ_h 与 Delassus 对 (A, b)"| NW
+    JA --> PL["策略学习: BPTT 反向递推<br/>(单环境, RaiSim 前向)"]
+    JA --> TO["接触隐式轨迹优化:<br/>DDP / iLQR 反向 Riccati 扫描"]
+```
+
+图依据：论文 §III、§V-A 至 §V-C、§VI-A / Fig.5 / Algorithm 1
 
 ## 核心机制
 
@@ -83,6 +106,7 @@ summary: "Differentiable Contact Legged（arXiv:2610.35852）：只在反向传�
 - [differentiable_contact_legged_arxiv_2610_35852.md](../../sources/papers/differentiable_contact_legged_arxiv_2610_35852.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.35852](https://arxiv.org/abs/2610.35852)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35852)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（背景与接触模式、de Saxcé SOCCP、灵敏度）、§IV、§V（松弛灵敏度与 Newton 迭代）、§VI（实现）、§VII 起首；§VII-VIII 实验以略读为准
 
 ## 推荐继续阅读
 

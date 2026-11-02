@@ -41,6 +41,24 @@ To explain this behavior, we introduce the Temporal Ratio (TR), an attention-bas
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前图像 + 语言指令"] --> B["Cosmos-Predict 2.5 视频 DiT（流匹配）<br/>当前帧作为干净锚点，部分去噪未来 rollout"]
+    B --> C["提取第 k 块中间特征（k=20/28）<br/>特征投影 + 视频噪声水平 σ_v"]
+    C --> D["Gemma Action Head（300M，流匹配）<br/>视频 token + 本体状态 token + 带噪动作 token"]
+    D --> E["去噪动作 token"]
+    D --> F["时间比 TR：动作 token 对未来帧的注意力<br/>除以对当前帧的注意力（前向传播中在线获得）"]
+    F --> G["引导权重 w = w_base × s<br/>s = clip(TR / TR0 - 1, 0, s_max)"]
+    H["语言引导 Δv_lang<br/>去掉文本条件，v_cond - v_uncond"] --> I["v_guided = v_cond + w_lang Δv_lang + w_plan Δv_plan"]
+    J["规划引导 Δv_plan<br/>用更长视频时域 T' 再截回 T，v_plan - v_cond"] --> I
+    G --> I
+    I --> E
+```
+
+图依据：论文 §2.1 / Fig.2（VAM 架构）、§4 式 (3)、§4.2（自适应 TR 引导）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ To explain this behavior, we introduce the Temporal Ratio (TR), an attention-bas
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.08127>
+- [arXiv PDF](https://arxiv.org/pdf/2607.08127)：已通读方法部分（实验与附录以略读为准）：摘要、§2 设计空间、§4 Temporal Ratio 与自适应引导；其余章节未细读
 
 ## 推荐继续阅读
 

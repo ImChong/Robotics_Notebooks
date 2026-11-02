@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/ebench_frontier_agent_profiling_arxiv_2610_35832.md
   - ../../sources/sites/ebench-frontier-agent-profiling.md
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
@@ -41,6 +42,25 @@ summary: "EBench Frontier Agent Profiling（arXiv:2610.35832）：在统一视�
 - 看清通用智能体与专用策略的分工。混合执行能互补，但调用时机、子目标缺失和重新接管造成的抓握破坏仍限制整体表现。
 - 开源结论：**已开源**（步骤 2.5，2026-10-28）。公众号未给代码链接；项目页链接的 InternRobotics/EBench 经 git ls-remote 可达。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["任务指令 ℓ_s + 单条示范标注 c_τ<br/>(10-18 关键帧的单样本 ICL)"] --> AG
+    AG["Agent: MLLM 核心 GPT-6-Astra<br/>+ Harness (提示 / 观测接口 / 工具集)"]
+    AG -->|"每个决策步发出工具调用 a_t 与 stated reason"| ACT{"调用类型"}
+    ACT -->|"A_EEF: EEF / 底盘 / 夹爪 waypoint"| INT["插值为 action chunk<br/>在仿真器执行"]
+    ACT -->|"仅 Harness with policy: A_pol<br/>调用冻结 π0.5 或 InternW0-Δ, 指定 1-300 物理步"| POL["策略在固定任务指令下自主执行"]
+    ACT -->|"A_info: 查看相机图与机器人状态<br/>(harness 配置下还可再查示范)"| INFO["返回信息, 不推进物理"]
+    ACT -->|"stop"| END["结束, 机器人保持末位姿<br/>由评测服务器计算 SR / score"]
+    INT --> OBS["观测接口: 3 路 RGB + 本体状态<br/>(无深度 / 标定 / 真值位姿)"]
+    POL --> OBS
+    INFO --> OBS
+    OBS -->|"更新交互历史 h_t"| AG
+```
+
+图依据：论文 §3.1-3.2 / §4.2-4.3 / §6.1（Agent 与 Harness 配置；Fig.1 仅据正文描述）
 
 ## 核心机制
 
@@ -85,6 +105,7 @@ summary: "EBench Frontier Agent Profiling（arXiv:2610.35832）：在统一视�
 - [ebench_frontier_agent_profiling_arxiv_2610_35832.md](../../sources/papers/ebench_frontier_agent_profiling_arxiv_2610_35832.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.35832](https://arxiv.org/abs/2610.35832)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35832)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3、§4.1-4.4、§6.1；§5 与 §6.2 起的结果与失败分析、附录以略读为准
 
 ## 推荐继续阅读
 

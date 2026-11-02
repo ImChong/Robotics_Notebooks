@@ -5,6 +5,7 @@ status: complete
 updated: 2026-06-02
 summary: "Actuator 102 · 04 — 谐波低效率致热堆积；峰值与持续力矩比目标 3:1+；FOC 电流环 >20kHz、力矩带宽 50–100Hz、指令延迟 <1ms。"
 related:
+  - ../concepts/joint-module-shaft-thermal-expansion.md
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-compliance-sensing.md
   - ./humanoid-hardware-101-power-compute-electronics.md
@@ -47,6 +48,7 @@ sources:
 - 实现依赖：**低电感**、**48–100 V 母线**、最小背隙/柔顺、**EtherCAT / CAN-FD**。
 
 ## 关联页面
+- [关节模组轴的径向热膨胀校核](../concepts/joint-module-shaft-thermal-expansion.md)
 
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)

@@ -42,6 +42,26 @@ First large-scale dataset for emulative simulation of mental exploration.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["场景: HM3D / ScanNet++ / 真实全景录制"] --> B["WanderDream-Gen: 从当前状态 s0 到目标情境 sT 的想象轨迹全景视频"]
+    B --> B1["机器人: 19 类地标 object navigation, Habitat-Sim 最短路径, 离散为 MOVE_FORWARD / TURN_LEFT / TURN_RIGHT"]
+    B --> B2["人类: interacting / standing / sitting; 无障碍时直接插值, 有障碍时 3D PRM + Dijkstra"]
+    B1 --> C["WanderDream-QA: GPT-5 + Set-of-Mark 生成, 每视频 10 问: 起点 3 / 路径 4 / 终点 3"]
+    B2 --> C
+    C --> D["数据质量控制与统计 + 真实世界测试集"]
+    D --> E["emulative simulation 评测框架"]
+    E --> F["当前观测 s0 + 问题"]
+    F --> G["MLLM 提示扩展: 把目标轨迹分解为动作序列"]
+    G --> H["世界模型生成想象视频轨迹: HunyuanVideo / CogVideoX / Wan, 零样本或在 WanderDream-Gen 上微调"]
+    H --> I["MLLM 沿想象轨迹推理并回答: Qwen3-VL / LLaVA-OneVision"]
+    E -.对照.-> J["MindJourney 闭环: MLLM 逐步提出相机动作 + SVC 新视角合成, 仅用于真实测试集"]
+```
+
+图依据：论文 §3.1–3.3（Fig. 4–5）、§4（Fig. 6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ First large-scale dataset for emulative simulation of mental exploration.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2603.06445>
+- [arXiv PDF](https://arxiv.org/pdf/2603.06445)：已通读方法部分（实验与附录以略读为准）：§1、§3、§4、§5.1 的方法与实验设定
 
 ## 推荐继续阅读
 

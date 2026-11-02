@@ -44,6 +44,25 @@ summary: "CFG-Policy（arXiv:2610.14936）：把探索与利用拆成两条生�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列代码仓库。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  S["当前观测 s，同一中间样本 x_t"] --> A["分支 A：生成场 v_A"]
+  S --> B["分支 B：生成场 v_B"]
+  A --> C["采样期组合生成场<br/>v_w = (1-w)·v_A + w·v_B"]
+  B --> C
+  C --> D["组合策略 π_w 采样动作"]
+  D --> E{"应用场景"}
+  E -->|"在线 RL"| F["冻结探索策略 π_E，训练利用策略 π_X<br/>π_w 作行为策略采集数据<br/>critic 与 π_X 沿用基础 RL 算法目标"]
+  E -->|"RL 后训练"| G["冻结预训练策略 π_X⁰，训练转向策略 π_E^θ<br/>梯度不经过 π_X⁰，只更新 π_E^θ"]
+  F --> H["评测：w=1，仅执行 π_X"]
+  G --> I["推理：冻结基策略 + 转向策略 + 引导系数 w"]
+  C -.-> J["自适应组合：在 Dpath(w)≥δ 约束下<br/>按 critic 值代理更新全局 w"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、Algo.1–2（附录 A.1）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +105,7 @@ summary: "CFG-Policy（arXiv:2610.14936）：把探索与利用拆成两条生�
 - [cfg_policy_unified_diffusion_policy_arxiv_2610_14936.md](../../sources/papers/cfg_policy_unified_diffusion_policy_arxiv_2610_14936.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14936](https://arxiv.org/abs/2610.14936)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14936)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）、附录 A.1 算法细节；§4 实验仅略读
 
 ## 推荐继续阅读
 

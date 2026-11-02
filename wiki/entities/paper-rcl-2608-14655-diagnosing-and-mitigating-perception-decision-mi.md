@@ -41,6 +41,33 @@ To rectify this, we propose Modality Subspace Activation (MSA), a training-free 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BENCH["CausalMSBench（617 条）<br/>压低语言先验、强制多模态依赖"] --> FULL["Omni-LLM 全模态输入 X<br/>视觉 V + 音频 A + 文本 T"]
+    BENCH --> PERT["模态扰动 X\\{Mi}<br/>去掉视觉或音频"]
+    FULL --> LOG1["选项空间 logits z(X)"]
+    PERT --> LOG2["选项空间 logits z(X\\Mi)"]
+    LOG1 --> ARR["ARR：top-1 答案是否保持不变<br/>（宏观）"]
+    LOG2 --> ARR
+    LOG1 --> LAD["LAD：零均值化选项 logits 的<br/>1 - 余弦相似度（微观）"]
+    LOG2 --> LAD
+    ARR --> CMS["CMS = ((1 - ARR) + LAD) / 2<br/>越低表示感知-决策越错位"]
+    LAD --> CMS
+    subgraph MSA["Modality Subspace Activation（免训练，推理时）"]
+        ANCHOR["与评测集不相交的锚样本<br/>单模态输入取最后隐状态"] --> SVD["按模态做均值中心化 + SVD<br/>取前 k 个奇异向量作模态子空间"]
+        SVD --> PROJ["推理时将隐状态 h 投影到各模态子空间<br/>投影 L2 范数 = 激活强度"]
+        PROJ --> SORT["按激活强度排序<br/>找出最强与最弱模态"]
+        SORT --> REG["h* = h + λ·proj_weak - (1-λ)·proj_strong"]
+        REG --> HEAD["送入语言模型头，解码最终选项"]
+    end
+    CMS -.->|"诊断出低 CMS 后"| MSA
+    HEAD -.->|"重新用 ARR/LAD 评估"| ARR
+```
+
+图依据：论文 §Method（CMS 诊断：LAD、ARR、CMS；Modality Subspace Activation）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +124,7 @@ To rectify this, we propose Modality Subspace Activation (MSA), a training-free 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.14655>
+- [arXiv PDF](https://arxiv.org/pdf/2608.14655)：已通读方法部分（实验与附录以略读为准）：Method（LAD / ARR / CMS 定义、Modality Subspace Activation）与 Experimental Settings 开头
 
 ## 推荐继续阅读
 

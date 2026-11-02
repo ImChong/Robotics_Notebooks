@@ -44,6 +44,29 @@ summary: "π0.5 CALL Astra（arXiv:2610.14117）：冻结 π0.5，用复用策�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测：外部 + 腕部 RGB、任务指令、机器人状态"] --> PI["冻结的 π0.5 策略<br/>输出 10×7 动作块提议"]
+    PI --> FEAT["复用策略前向特征<br/>h_sem（视觉/语言）、h_act（动作）、u（状态 + 动作块统计）"]
+    FEAT --> HEAD["CALL 头（本地小网络）<br/>输出求助分数 p_help"]
+    HEAD --> TRIG{"时间触发<br/>p ≥ τ_hard，或最近 5 次查询中至少 4 次 ≥ τ（有冷却期）"}
+    TRIG -- 否 --> RUN["继续执行 π0.5 动作块（每次查询消费 5 个动作）"]
+    RUN --> OBS
+    TRIG -- 是 --> HAND["清空 π0.5 动作队列，移交控制给 Astra"]
+    HAND --> ASTRA["Astra 接收图像、指令、状态、策略提议、执行历史<br/>输出 EEF 修正块，或直接交还"]
+    ASTRA --> RET["执行修正块 → 刷新观测与 π0.5 新提议<br/>继续恢复或交还控制"]
+    RET --> OBS
+    subgraph TRAIN["离线训练 CALL 头"]
+        LR["LIBERO-Recovery 失败状态 + 正常进展状态"] --> CF["π0.5 反事实续跑 M 次，成功 K 次<br/>q = K/M"]
+        CF --> LAB["软标签 y_help = 1 − q"]
+        LAB --> HEAD
+    end
+```
+
+图依据：论文 §2.1–2.4 与 Fig. 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +108,7 @@ summary: "π0.5 CALL Astra（arXiv:2610.14117）：冻结 π0.5，用复用策�
 - [pi05_learn_to_call_astra_arxiv_2610_14117.md](../../sources/papers/pi05_learn_to_call_astra_arxiv_2610_14117.md)
 - [wechat_embodied_station_41_papers_streamingwam_2026-10-14.md](../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md)
 - [arXiv:2610.14117](https://arxiv.org/abs/2610.14117)
+- [arXiv PDF](https://arxiv.org/pdf/2610.14117)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Method（2.1–2.4）、§3.1–3.3 实验设定与结果
 
 ## 推荐继续阅读
 

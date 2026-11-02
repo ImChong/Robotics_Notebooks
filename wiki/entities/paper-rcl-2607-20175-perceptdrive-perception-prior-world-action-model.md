@@ -41,6 +41,30 @@ Experiments show that PerceptDrive achieves state-of-the-art performance with 90
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["输入：前视图像历史 I_t、自车状态 e_t、导航指令 c_t"] --> VLM["冻结感知 provider：驾驶适配的 InternVL3-2B，[GEO]/[SEM]/[DYN] 专家槽 → 高层表示 H_t"]
+    OBS --> VJ["冻结 V-JEPA 2-L 视频编码器 → 稠密观测 latent F_t"]
+    D1["阶段 1a：驾驶 QA 全量微调（LM 损失）"] --> D2["阶段 1b：多教师蒸馏 VGGT / V-JEPA 2 ViT-g / Wan 2.1，之后合并 LoRA 并冻结"]
+    D2 --> VLM
+    VLM --> POOL["投影并拼接为 perception pool P_t"]
+    VJ --> POOL
+    POOL --> QB["可学习 query banks（全局、动作、时序，以及 geo / sem / dyn 三个专家分支）经共享 cross-attention 读取"]
+    QB --> BB["双向 Transformer 骨干 Ψ，融合 ego 状态与指令 embedding"]
+    BB --> SC["场景向量 s_t"]
+    SC --> ROUTER["两层 MLP 路由器：softmax 软门控 α，加权混合三个专家条件 → ĉ_exp"]
+    BB --> RET["训练期 retention 探针：令各专家分支读出贴近各自 provider 先验"]
+    BB --> FUT["future head：预测未来约 2 s 的冻结编码器 latent（动作无关 v̂_free）"]
+    ROUTER --> ACTOR["flow-matching actor：以 ĉ_act、ĉ_exp 与 v̂_free 为条件"]
+    FUT --> ACTOR
+    ACTOR --> TRAJ["单条轨迹：H=8 个路点（4 s）"]
+    SC --> PRIV["仅训练：特权规则子指标监督（辅助质量回归 + 路由器蒸馏）；推理时不使用，无需候选打分或重排"]
+```
+
+图依据：论文 §3 Method（§3.1–§3.4）与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Experiments show that PerceptDrive achieves state-of-the-art performance with 90
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.20175>
+- [arXiv PDF](https://arxiv.org/pdf/2607.20175)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–§3.4）
 
 ## 推荐继续阅读
 

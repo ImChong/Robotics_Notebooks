@@ -41,6 +41,25 @@ sources:
 - 微调 Cosmos-Predict2 视频基础模型实现视觉运动控制与规划。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["预训练 Cosmos-Predict2-2B-Video2World<br/>（潜空间视频扩散）"] --> B["Latent frame injection：本体状态、动作 chunk、<br/>未来状态、状态价值、多相机图像写成新的潜帧<br/>序列顺序 (s, a, s′, V(s′))"]
+  B --> C["联合训练：50% 演示数据训练策略 p(a, s′, V(s′)|s)<br/>50% rollout 数据一半训练世界模型、一半训练价值函数"]
+  C --> D["策略模型 policy model"]
+  D --> E{"部署方式"}
+  E -- "直接策略" --> F["并行解码，只取动作"]
+  E -- "规划" --> G["采集策略 rollout 数据<br/>微调 checkpoint：90% 世界模型/价值，10% 策略"]
+  G --> H["规划模型 planning model（世界模型 + 价值函数）"]
+  D --> I["策略模型采样 N 个动作提案"]
+  I --> J["规划模型预测每个提案的未来状态与价值<br/>多次查询后 majority mean 聚合"]
+  H --> J
+  J --> K["选择预测价值最高的动作并执行完整 chunk"]
+```
+
+图依据：论文 §4.1–4.3 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +110,7 @@ sources:
 - [shenlan_wm_survey_11_cosmos-policy.md](../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2601.16163)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4 Cosmos Policy（4.1 Latent Frame Injection、4.2 联合训练、4.3 规划）、Fig. 2
 
 ## 推荐继续阅读
 

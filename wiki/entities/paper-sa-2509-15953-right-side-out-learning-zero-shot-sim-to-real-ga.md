@@ -42,6 +42,30 @@ A zero-shot sim-to-real framework that solves garment reversal by exploiting tas
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph SIM["(a) MPM 仿真数据生成"]
+    RND["域随机化：材料 / 接触参数、程序化生成服装几何、相机内外参、深度与掩码噪声"] --> MPM["GPU 并行 MPM 仿真器执行双臂动作原语 rollout"]
+    MPM --> DATA["合成数据：深度图、掩码、各原语的关键点监督标签"]
+  end
+  subgraph NET["(b) 参数化价值预测"]
+    DATA --> UN["各原语独立的 U-Net：输入深度 + 掩码，输出稠密像素价值图"]
+  end
+  subgraph DEP["(c) 零样本真实部署"]
+    RGBD["真实顶视深度图经 D3RoMa 精修；SAM 分割掩码"] --> UN2["同一套 U-Net 预测价值图，argmax 取关键点"]
+    UN2 --> MAP["像素反投影到 3D，固定模板执行末端运动"]
+  end
+  UN -->|"训练好的网络直接部署，无真实世界微调"| UN2
+  MAP --> P1["Drag：从领口单层区域拖拽，使下摆出现单层"]
+  P1 --> P2["Fling：抓取下摆一对点，拉伸并甩动"]
+  P2 --> P3["Insert&Pull：左臂提起形成开口，右臂伸入抓取并拉出翻面"]
+  P3 --> OK["成功判据：顶视图 right-side-out 覆盖率 ≥ 0.80"]
+```
+
+图依据：论文 §IV-B / §IV-C / §IV-D、Fig. 4（系统概览）与 Fig. 5（原语参数化）、Fig. 3（成功判据）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ A zero-shot sim-to-real framework that solves garment reversal by exploiting tas
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2509.15953>
+- [arXiv PDF](https://arxiv.org/pdf/2509.15953)：已通读方法部分（§III 问题设定、§IV 方法）；实验（§V）略读。
 
 ## 推荐继续阅读
 

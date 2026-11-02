@@ -43,6 +43,29 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1：Dynamics Tokenizer 训练"]
+        P["相邻帧 Ot、Ot+1 → ViT patchifier"] --> ENC["Dynamics Encoder Edyn<br/>+ 可学习查询 Qego / Qenv"]
+        ENC --> VQ["双码本 VQ 量化<br/>Dego（自车动态）+ Denv（环境动态）= Dynamics Tokens"]
+        VQ --> DECI["图像解码器：Ot + 动态 token → 预测 Ot+1"]
+        VQ --> DECB["BEV 解码器：BEVt + 动态 token → 预测 BEVt+1<br/>（跨视角一致性正则）"]
+        VQ -->|"Dego"| ACT["两层 MLP 动作解码器<br/>对齐自车动作（Act-reg）"]
+    end
+    subgraph S2["阶段 2：Dynamics CoT 的 SFT"]
+        CTX["输入 Ot, Ot-1, 文本指令 Tt, 自车状态 St"] --> LLM["VLA 自回归生成"]
+        LLM --> SEQ["BOD, 动态 token Dt:t+K-1, EOD,<br/>BOA, FAST 动作 token At:t+N-1, EOA"]
+    end
+    subgraph S3["阶段 3：RFT"]
+        SEQ --> GRPO["GRPO：G 条候选序列<br/>奖励 = PDMS 轨迹奖励 + 格式奖励，KL 约束参考模型"]
+    end
+    S1 -->|"冻结的 Edyn 生成 SFT 目标动态 token"| S2
+```
+
+图依据：论文 §3.1–3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +123,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://icml.cc/virtual/2026/poster/63736>
+- [arXiv PDF](https://arxiv.org/pdf/2603.11041)：已通读方法部分（实验与附录以略读为准）：§3（§3.1 Dynamics Tokenizer、§3.2 SFT on Dynamics CoT、§3.3 RFT）与 §4.2 奖励设计
 
 ## 推荐继续阅读
 

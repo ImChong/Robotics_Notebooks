@@ -42,6 +42,22 @@ Energy-based predictive world model for multi-step visual planning via latent en
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["观测 x_t（视频片段或图像）"] --> E["冻结编码器 E（V-JEPA 2 预训练）"]
+    E --> H["指数映射 exp_0 投到 Poincaré 球 → 双曲潜状态 s_H"]
+    H --> P["动作条件预测器 P_ϕ（约 300M 参数 Transformer）预测 s_{t+1,H}"]
+    P --> S1["阶段一 H-JEPA 监督后训练：teacher-forcing 损失 + 两步 rollout 损失（双曲测地距离 d_H）"]
+    S1 --> S2["阶段二 Geometric RL：奖励 = −d_H 能量代价，加三角不等式正则 L_Δ"]
+    S2 --> PL["能量规划（冻结 E 与 P）：编码当前观测与目标观测"]
+    PL --> C["CEM 搜索动作序列，最小化预测终态到目标的双曲距离"]
+    C --> A["输出 T 步动作序列"]
+```
+
+图依据：论文 §3.2–3.5、§4.3 / Fig.3、Eq.(2)–(22)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Energy-based predictive world model for multi-step visual planning via latent en
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.23058>
+- [arXiv PDF](https://arxiv.org/pdf/2602.23058)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.2 H-JEPA、3.3 训练目标、3.4 Geometric RL、3.5 能量规划）、§4.1–4.3 实验设定与实现细节
 
 ## 推荐继续阅读
 

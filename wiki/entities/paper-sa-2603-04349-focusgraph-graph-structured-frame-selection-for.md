@@ -42,6 +42,23 @@ Graph-based frame filtering pipeline, using Scene-Caption LLM selector to retrie
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["长视频 V"] --> B["切分为 N = 90 个等时长不重叠 clip"]
+    B --> C["SG-Ego: MLLM 抽取 triplet, GroundingDINO 定位, SAM2 + DINOv2 跟踪, 合并为 clip 级场景图"]
+    C --> D["与问题无关的 clip 图记忆, 按时间排序"]
+    D --> E["序列化 triplet: 冻结 ModernBERT-large + MLP 投影为 LLM token, 加 clip 位置 token 与 clip 结束 token"]
+    Q["问题"] --> F
+    E --> F["Scene-Graph LLM Selector: 沿用 GeLM 的 grounding, 输出逐 clip 检索分数"]
+    F --> G["保留分数超过阈值比例的 clip, 得到候选帧集合"]
+    G --> H["PSFR: 稀疏光流 + 外观线索, 在候选帧中选出最多 K 个非冗余帧"]
+    H --> I["下游 MLLM 基于所选原始帧回答"]
+```
+
+图依据：论文 §III-A–D（Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Graph-based frame filtering pipeline, using Scene-Caption LLM selector to retrie
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.04349>
+- [arXiv PDF](https://arxiv.org/pdf/2603.04349)：已通读方法部分（实验与附录以略读为准）：§I–III 方法部分（A–D 小节）
 
 ## 推荐继续阅读
 

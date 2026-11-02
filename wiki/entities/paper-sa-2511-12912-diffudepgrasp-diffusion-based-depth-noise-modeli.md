@@ -42,6 +42,33 @@ A deploy-efficient sim2real framework enabling zero-shot transfer through simula
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph A["(A) 教师策略训练（仿真）"]
+        PRIV["特权状态：关节位置/速度、末端位姿、<br/>目标物位姿、抓取位姿、类别 ID（40 维）"] --> PPO["PPO + Isaac Gym 大规模并行<br/>8 维动作：7 关节增量 + 夹爪开/合"]
+        PPO --> TEACH["状态型 RL 教师策略"]
+    end
+    subgraph B["(B) Diffusion Depth Generator（DDG）"]
+        REAL["少量真实 RGB-D：80 条轨迹 / 6 个物体<br/>(RealSense D455)"] --> VDA["Video Depth Anything<br/>RGB 序列 → 干净相对深度 c"]
+        VDA --> UNET["条件扩散 U-Net ε_θ<br/>输入 d_k ⊕ c，DDPM 噪声预测损失"]
+        REAL -->|"真实带噪深度 d_0"| UNET
+        UNET --> GEN["推理：以仿真条件深度 c 从高斯噪声反向去噪<br/>→ d_pred（含传感器伪影）"]
+        GEN --> MASK["Noise Grafting：阈值得伪影掩码 M"]
+        SIMD["仿真 GT 深度 d_sim"] --> MASK
+        MASK --> FINAL["d_final = d_sim⊙(1−M) + d_pred⊙M"]
+    end
+    subgraph C["(C) 学生策略蒸馏"]
+        TEACH --> COL["域随机化下采集约 1.2k 条成功轨迹<br/>(深度/RGB/关节状态/专家动作)"]
+        COL --> FINAL
+        FINAL --> STU["深度模仿学习策略（扩散策略式）：<br/>ResNet-18 深度编码器 + MLP 状态编码器 → 动作头"]
+    end
+    STU --> D["(D) Sim2Real 零样本部署<br/>输入连续 3 帧原始真实深度 + 关节角<br/>无在线深度修复，10 Hz 闭环"]
+```
+
+图依据：论文 §III 总述 / Fig. 1（A–D 四阶段）、§III-B 式 (8)(9)、§III-C。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ A deploy-efficient sim2real framework enabling zero-shot transfer through simula
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2511.12912>
+- [arXiv PDF](https://arxiv.org/pdf/2511.12912)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（A–D）、§IV-A 实验设置与基线
 
 ## 推荐继续阅读
 

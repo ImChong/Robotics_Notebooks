@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,30 @@ Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architect
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：RGB-D 图像（腕部相机）+ 语言提示（物体 + 部件，如 mug, handle）"]
+  DET["阶段 1 物体检测：开放词表检测器，按置信度取 top 框"]
+  CROP["检测框放大 5% 后裁剪图像"]
+  SEG["阶段 2 部件分割：VLPart + 部件提示，输出部件二值掩码"]
+  UP["掩码上采样到原图分辨率并与深度图对齐"]
+  GRASP["阶段 3 6-DoF 抓取预测：Contact-GraspNet（支持掩码条件）或 AnyGrasp（事后按掩码重投影过滤）"]
+  OUT["输出：针对目标部件的 6-DoF 抓取位姿排序列表"]
+  EXE["机器人执行抓取并抬升 10 cm"]
+  IN --> DET
+  DET --> CROP
+  CROP --> SEG
+  SEG --> UP
+  UP --> GRASP
+  IN --> GRASP
+  GRASP --> OUT
+  OUT --> EXE
+```
+
+图依据：论文 §III-A/B（AnyPart Framework）与 Fig. 1；执行步骤取自 §V-B 的实验协议。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +75,7 @@ Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architect
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2406.05951)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），其余机制与实验请读 [原文](https://arxiv.org/abs/2406.05951)。
 
 ## 评测与指标
 
@@ -67,7 +91,7 @@ Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architect
 
 **本页只提供「AnyPart」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +112,7 @@ Open-Vocabulary Part-Based Grasping——在清单中归入 **Action（Architect
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2406.05951>
+- [arXiv PDF](https://arxiv.org/pdf/2406.05951)：已通读方法部分（实验与附录以略读为准）：§III 方法、§IV 数据集、§V-A/B 实验设定
 
 ## 推荐继续阅读
 

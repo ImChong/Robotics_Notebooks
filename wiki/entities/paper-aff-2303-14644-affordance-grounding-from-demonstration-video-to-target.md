@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance Grounding From Demonstration Video To Target Image——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Interaction-driven）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance Grounding From Demonstration Video To Target Image——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Interaction-driven）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,29 @@ Affordance Grounding From Demonstration Video To Target Image——在清单中�
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["MaskAHand 自监督预训练（§4）"]
+        LV["长演示视频"] --> HD["手交互检测器（100DOH 上训练的 Faster R-CNN）：手框 + 交互状态"]
+        HD --> CL["手交互片段挖掘：32 帧一段、步长 16、交互分数阈值 0.99，作为视频 V"]
+        CL --> SY["合成目标图像 I：选含交互手的帧 → 遮挡手区域（手上下文掩码）→ 加随机上下文掩码 → 随机透视变换"]
+        SY --> GT["手框掩码（同样透视变换、高斯模糊）作为伪 GT 热图"]
+    end
+    subgraph AF["Afformer（§3）"]
+        E["视频 / 图像共享编码器（多尺度特征）"] --> DEC["多尺度细粒度解码器：图像自注意力 + 以图像为 query、视频为 key/value 的交叉注意力，逐级上采样"]
+        DEC --> PH["预测头：反卷积出热图 H；MLP + 池化出动作类别 A"]
+    end
+    CL --> E
+    SY --> E
+    PH --> KL["KL 散度热图损失"]
+    GT --> KL
+    KL --> ZS["预训练后可零样本做 video-to-image affordance grounding，或用监督数据微调"]
+```
+
+图依据：论文 §3.1–3.2（Fig.2）、§4.1–4.3（Fig.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +74,7 @@ Affordance Grounding From Demonstration Video To Target Image——在清单中�
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.14644)。
+清单只给出标题、出处与分类标签，**没有**方法摘要。方法流程见上方「流程总览」（依据论文方法部分）；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.14644)。
 
 ## 评测与指标
 
@@ -67,7 +90,7 @@ Affordance Grounding From Demonstration Video To Target Image——在清单中�
 
 **本页只提供「Afformer」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +111,7 @@ Affordance Grounding From Demonstration Video To Target Image——在清单中�
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2303.14644>
+- [arXiv PDF](https://arxiv.org/pdf/2303.14644)：已通读方法部分（实验与附录以略读为准）：§3 Affordance Transformer、§4 Masked Affordance Hand Grounding、§5.1 实验设置
 
 ## 推荐继续阅读
 

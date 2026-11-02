@@ -42,6 +42,21 @@ Diagnoses dynamic consistency in world action models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测 o0:t + 本体状态 qt + 任务指令 G"] --> B["WAM 采样 N 个候选分支<br/>每支含预测动作与预测未来观测"]
+    B --> C["对 N 个预测未来取均值<br/>得到共识未来"]
+    C --> D["逐分支计算一致性分数<br/>exp(-α·MSE)，MSE 在 VAE 解码前的隐空间"]
+    D --> E["winner-takes-all：取分数最高分支"]
+    E --> F["执行该分支的预测动作"]
+    B -.->|"诊断/上界：Consistency-Exploring"| G["各分支在环境中执行<br/>用真实观测与预测观测算一致性"]
+    G -.-> E
+```
+
+图依据：论文 §2（一致性定义，式 3）、§4.1–4.2 / Fig. 6（Consistency-Exploring 与 Consistency-Consensus 两种 best-of-N 选择）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Diagnoses dynamic consistency in world action models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.07514>
+- [arXiv PDF](https://arxiv.org/pdf/2605.07514)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 WAM 与一致性定义、§3 一致性刻画、§4 一致性引导的测试时选择、§5 实验设置与结果
 
 ## 推荐继续阅读
 

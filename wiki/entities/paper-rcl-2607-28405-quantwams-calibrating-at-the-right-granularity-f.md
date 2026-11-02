@@ -41,6 +41,28 @@ We present QuantWAMs, a PTQ framework that aligns quantization decisions with th
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CKPT["已发布的预训练 WAM（Fast-WAM 双流 MoT / LingBot-VA 共享主干）：FP16，不更新权重"] --> CAL["32 条训练轨迹作为校准集"]
+    CAL --> A1["3.1 共享基底异常值校准：按架构给出候选分组，仅在坐标兼容的模块间共享"]
+    A1 --> A2["公共 Hadamard 旋转 + 各上下文的对角平滑 S_i，统计通道能量并 pooled"]
+    A2 --> A3["按 N_cal 与 N* 判断是否 pooling，取 Top-K 通道保持 FP16，其余激活量化到 A4"]
+    CAL --> B1["3.2 协同训练目标显著性：视频与动作损失联合 λv·ℓv + λa·ℓa 的梯度"]
+    B1 --> B2["Kronecker-factored empirical Fisher 估计各层 bit 失真，得到升位收益 B_L"]
+    B2 --> B3["按层总分升级前 20% 的候选 Linear 到更高权重精度（GPTQ 补偿）"]
+    ROLL["32 条 FP16 闭环 rollout（与校准集轨迹不重叠）"] --> C1["3.3 固定干预真实 rollout 审计：恢复快照，在统一未保护干预 q0 下 replay"]
+    C1 --> C2["逐去噪步敏感度 S_ref，取 Top-K 步作为受保护步 T_replay"]
+    C2 --> C3["在独立验证集上确定去噪步精度调度并冻结"]
+    A3 --> Q["量化后的 WAM（W4A4 为主）"]
+    B3 --> Q
+    C3 --> Q
+    Q --> EVAL["RoboTwin 2.0 / LIBERO / AgiBot G2 真机闭环评测"]
+```
+
+图依据：论文 §3 Method（§3.1、§3.2、§3.3）、§4.1 与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ We present QuantWAMs, a PTQ framework that aligns quantization decisions with th
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.28405>
+- [arXiv PDF](https://arxiv.org/pdf/2607.28405)：已通读方法部分（实验与附录以略读为准）：Introduction、§3 Method（§3.1–§3.3）、§4.1 实验设置
 
 ## 推荐继续阅读
 

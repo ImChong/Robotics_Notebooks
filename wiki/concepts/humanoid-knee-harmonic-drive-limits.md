@@ -4,6 +4,7 @@ tags: [humanoid, hardware, actuator, harmonic-drive, knee, leg, roller-screw, qd
 status: complete
 updated: 2026-09-19
 related:
+  - joint-module-reducer-difficulty.md
   - ./planetary-roller-screw-humanoid-leg-actuation.md
   - ../overview/humanoid-actuator-102-split-architecture.md
   - ../overview/humanoid-hardware-101-actuation-sensing-chain.md
@@ -112,6 +113,7 @@ flowchart TB
 - **路线无唯一解**：PRS / RV / QDD 各解不同约束；任务动态等级与供应链成熟度会改排序。
 
 ## 关联页面
+- [关节模组减速器的难度拆解](joint-module-reducer-difficulty.md)
 
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](./planetary-roller-screw-humanoid-leg-actuation.md) — 膝侧最常见替代路线的机制与权衡
 - [Actuator 102 · 旋转-直线分离架构](../overview/humanoid-actuator-102-split-architecture.md) — 上肢谐波 + 膝踝滚柱的产业趋同

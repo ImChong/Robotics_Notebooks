@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-One-Shot Open Affordance Learning with Foundation Models——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要，此处不替原文概括贡献）。
+One-Shot Open Affordance Learning with Foundation Models——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Visual · Generalizable）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -49,9 +49,29 @@ One-Shot Open Affordance Learning with Foundation Models——在清单中归入
 | 分组 1 | Perception · Scope: Object；Perception Subcategory: Visual · Generalizable |
 | 论文 | <https://arxiv.org/abs/2311.17776> |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG["输入图像"] --> VE["DINOv2 视觉编码器<br/>稠密 patch 特征 + CLS token"]
+  VE --> MF["多层特征融合<br/>取最后 j 层, 线性投影后可学习权重 alpha 加权求和"]
+  MF --> EM["Embedder: 单层 MLP 对齐维度"]
+  LBL["affordance 标签"] --> PL["文本提示学习 CoOp<br/>p 个可学习上下文向量, CLIP 文本编码器不微调"]
+  PL --> TE["文本 embedding F_t"]
+  EM --> DEC
+  TE --> DEC["CLS 引导 Transformer 解码器 (t 层)<br/>文本为 Query, 视觉为 Key/Value<br/>CLS 生成 M_cls 约束 masked cross-attention"]
+  VE -->|"CLS token"| DEC
+  DEC --> OUT["解码输出 与 原始视觉特征 做矩阵乘"]
+  EM --> OUT
+  OUT --> PRED["affordance 分割预测<br/>BCE 损失训练"]
+  PRED -.->|"推理: 新物体 / 新 affordance 文本"| TE
+```
+
+图依据：论文 §4.1–4.2 / Fig.3。
+
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2311.17776)。
+来源清单只给出标题、出处与分类标签，没有方法摘要；网络结构以上方「流程总览」为准（依据论文 §4.1–4.2 全文），训练细节与实验请读 [原文](https://arxiv.org/abs/2311.17776)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ One-Shot Open Affordance Learning with Foundation Models——在清单中归入
 
 **本页只提供「OOAL」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ One-Shot Open Affordance Learning with Foundation Models——在清单中归入
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2311.17776>
+- arXiv PDF：<https://arxiv.org/pdf/2311.17776>（已通读方法部分（实验与附录以略读为准）：方法 §4、实验 §5）
 
 ## 推荐继续阅读
 

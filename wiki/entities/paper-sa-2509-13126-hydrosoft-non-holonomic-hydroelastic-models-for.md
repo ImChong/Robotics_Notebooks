@@ -42,6 +42,29 @@ Computationally efficient non-holonomic hydroelastic model for path-dependent co
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  PRB["问题设定：已知几何与物理参数的刚体物体，机器人通过 N 个被动柔顺元件（触觉传感器）操作，输出附着点 SE(3) 位姿序列"] --> HYD["Hydroelastic 接触：由 SDF 穿透量和面积给出法向力，Coulomb 摩擦给出切向力"]
+  HYD --> NH["非完整增量 hydroelastic 模型：跟踪穿透位移累计力，投影到摩擦锥，物体离开 H 时力复位"]
+  NH --> SM["平滑版本：令 α_d = 1，并用 sigmoid 替代 Heaviside，使模型可微、利于梯度优化"]
+  subgraph QD["准动力学单步 f_dyn(x_k, u_k)，状态 x = (物体位姿, 元件位姿, 接触力)"]
+    S1["1. 施加控制：q^H_{k+1} = q^H_k + u_k"] --> S2["2. 汇总接触力得到作用在物体上的 wrench"]
+    S2 --> S3["3. 积分物体动力学"]
+    S3 --> S4["4. 计算下一时刻接触力"]
+  end
+  SM --> S2
+  S4 --> MPC
+  subgraph MPC["MPC 轨迹优化（Algorithm 1：迭代 cross-entropy + 梯度）"]
+    M1["从控制分布采样 B 条控制序列"] --> M2["用 f_dyn 展开轨迹并计算代价 J，对控制做梯度下降"]
+    M2 --> M3["取代价最低的 M 条精英轨迹更新分布参数"]
+    M3 --> M4["执行最优轨迹的第一个控制 u_h，重新测量状态再求解（滚动时域）"]
+  end
+```
+
+图依据：论文 §IV-A 至 §IV-E（含 Fig. 3 动力学计算图与 Algorithm 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Computationally efficient non-holonomic hydroelastic model for path-dependent co
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2509.13126>
+- [arXiv PDF](https://arxiv.org/pdf/2509.13126)：已通读方法部分（§III 问题设定、§IV 方法）；实验（§V）略读。
 
 ## 推荐继续阅读
 

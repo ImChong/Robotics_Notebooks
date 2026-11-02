@@ -47,6 +47,31 @@ Faster and stronger WAM with a mixture-of-experts transformer architecture, achi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["左 / 前 / 右三视角图像<br/>拼成复合观测 o_comp"] --> VAE["Wan 视觉 VAE 编码<br/>视觉潜变量 token"]
+  ST["本体状态 s_t / 动作块"] --> MLP["MLP 映射<br/>状态 token / 动作 token"]
+  LANG["语言指令"] --> T5["umT5 文本嵌入"]
+  subgraph MOT["Mixture-of-Transformers 因果 DiT 块"]
+    VE["Visual Expert<br/>当前与未来视觉 token，GigaWorld-1 初始化"]
+    AE["Action Expert<br/>动作 token 去噪，由视觉专家权重截取初始化"]
+    VE <-->|"多模态自注意力 + 动作中心因果掩码<br/>未来视觉可看动作，动作不可看未来视觉"| AE
+  end
+  VAE --> VE
+  MLP --> AE
+  T5 --> VE
+  T5 --> AE
+  VE -.->|"仅训练：未来视觉预测作为稠密监督"| FV["未来视觉观测"]
+  AE --> ACT["动作块<br/>推理时仅解码动作（跳过未来视觉 token）"]
+  subgraph TRN["训练流程"]
+    P0["GigaWorld-1 视觉专家初始化"] --> P1["机器人数据预训练<br/>AC-WM + WAM 混合训练"] --> P2["目标机器人后训练<br/>动作 + 未来视觉联合优化"]
+  end
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -106,6 +131,7 @@ Faster and stronger WAM with a mixture-of-experts transformer architecture, achi
 - 论文：<https://arxiv.org/abs/2607.13960>
 - [GigaWorld-Policy 源码归档](../../sources/repos/giga-world-policy.md)（<https://github.com/open-gigaai/giga-world-policy>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- [arXiv PDF](https://arxiv.org/pdf/2607.13960)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 总览、§3.2 模型架构、§3.3 训练流程、§3.4 推理加速，略读 §4 实验设定与 AutoResearch 超参搜索
 
 ## 推荐继续阅读
 

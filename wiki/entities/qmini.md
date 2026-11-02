@@ -2,14 +2,16 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, quadruped, open-hardware, education]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-02
 related:
   - ./unitree.md
   - ./quadruped-robot.md
   - ../tasks/locomotion.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/repos/Qmini.md
   - ../../sources/repos/unitree.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 summary: "Qmini 是宇树相关的小型开源四足平台：BOM、STEP、URDF 与 DIY 文档齐全，默认参考树莓派 4B，执行器使用 Unitree 8010 电机；软件核心另见 RoboTamer4Qmini。"
 ---
 

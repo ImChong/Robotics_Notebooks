@@ -42,6 +42,27 @@ Augments WAM with Diverse Historical Event Memory (DHEM).
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["决策段 i 结束后的当前观测：视觉特征 Xi"] --> W
+    subgraph DHEM["DHEM：K 个并行记忆库，每库 N 个有界槽位（成本 O(KN)）"]
+        direction TB
+        W["写入：各库用可学习 summary query 对同一观测做注意力汇总，得候选事件特征"] --> MG["维护：槽 1 固定为初始状态锚点，槽 N 为最新事件；库满时按冗余优先级（余弦相似 + 时间衰减）合并最冗余的相邻中间历史对，或丢弃冗余的新候选"]
+    end
+    MG --> RD["协作读取：有效事件 token 按槽优先、库次之展平，加 bank 身份嵌入与 RoPE 槽位时间顺序，得可读记忆 token 序列 Ri"]
+    LOC["滑动窗口 WAM 的局部 KV 上下文 Ci"] --> WAM
+    LANG["语言指令 c"] --> WAM
+    RD --> WAM["WAM：记忆 token 同时条件化视频与动作两个去噪分支"]
+    WAM --> PRED["预测未来 H 步视觉潜变量 ẑ 与动作 â"]
+    RD -.->|"仅训练"| PH["进度头：预测粗粒度任务进度区间（辅助损失 Lprog，不参与推理决策）"]
+    MG -.->|"仅训练"| DV["多样性损失 Ldiv：抑制各记忆库塌缩"]
+    PRED -.->|"执行后产生新观测"| OBS
+```
+
+图依据：论文 §III-A 至 III-E / Fig. 2–3、式 (2)–(19)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Augments WAM with Diverse Historical Event Memory (DHEM).
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.27677>
+- [arXiv PDF](https://arxiv.org/pdf/2606.27677)：已通读方法部分（实验与附录以略读为准）：§III-A 概览、§III-B 多样历史事件记忆库、§III-C 写入与维护、§III-D 协作读取、§III-E 任务进度感知训练
 
 ## 推荐继续阅读
 

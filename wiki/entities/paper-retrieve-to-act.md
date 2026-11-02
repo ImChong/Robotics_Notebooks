@@ -15,6 +15,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/papers/retrieve_to_act_arxiv_2610_37215.md
   - ../../sources/sites/retrieve-to-act.md
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
@@ -43,6 +44,30 @@ summary: "Retrieve to Act（arXiv:2610.37215）：把成功示范构成时空运
 - 从旧示范中检索几何纠偏线索。跨多种视觉语言动作模型考察扰动鲁棒性，基础策略无需微调，检索模块仍需学习。
 - 开源结论：**待发布**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 离线["离线阶段"]
+        D[成功示范集 D] --> G[Graph-Index<br/>切分示范片段为节点: 关节位姿 / 位移 / 夹爪 / 时间位置编码<br/>附任务标签与进度分数]
+        G --> H[运动基元图 G<br/>时间边 Etemp + 空间边 Espatial]
+    end
+    subgraph 在线["测试时执行"]
+        S0[OOD 初始关节状态] --> R[条件扩散模型 M_phi<br/>Rectify 回训练分布 q0_rect]
+        R --> V[冻结 VLA 预测<br/>动作块 A_pi]
+        V --> Q[构造运动学查询 Q_t<br/>A_pi 位姿 + 近期状态 + 近期已执行动作, 经 Encoder]
+        Q --> N[Query-dependent GNN 消息传递<br/>输出节点相关性 w_v]
+        H --> N
+        N --> M[边缘化得任务分布与进度估计<br/>重排序并取 Top-K 节点]
+        M --> A[得分加权融合<br/>参考动作块 A_ref]
+        A --> Z["Harmonize: 逐维门控矩阵 S_t<br/>A_exec_pose = A_pi_pose + S_t ⊙ (A_ref - A_pi_pose)<br/>夹爪指令保持 VLA 输出"]
+        V --> Z
+        Z --> X[执行动作 A_exec]
+    end
+```
+
+图依据：论文 §3.2–3.5 / §4 / Fig.1
 
 ## 核心机制
 
@@ -88,6 +113,7 @@ summary: "Retrieve to Act（arXiv:2610.37215）：把成功示范构成时空运
 - [retrieve_to_act_arxiv_2610_37215.md](../../sources/papers/retrieve_to_act_arxiv_2610_37215.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.37215](https://arxiv.org/abs/2610.37215)
+- [arXiv PDF](https://arxiv.org/pdf/2610.37215)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 相关工作、§3 方法（3.1–3.5）、§4 Action Harmonization
 
 ## 推荐继续阅读
 
