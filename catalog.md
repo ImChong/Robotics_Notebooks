@@ -2447,6 +2447,7 @@
 - [GR-BC：用目标可达图给混合质量数据里的动作块加权](wiki/entities/paper-gr-bc.md) — GR-BC** 是一种离线迭代的 VLA 后训练方法：在混合质量的演示、成功与失败 rollout 以及人工接管片段上构建任务条件的目标可达图，用反向图搜索得到的剩余步数衡量每个动作块的进展贡献， `📅unknown` `[entity_page]`
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GR00T N1.5：通用人形 VLA 的改进版](wiki/entities/paper-gr00t-n1-5.md) — GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页 `📅unknown` `[entity_page]`
+- [GRAFT：面向基础跟踪器的几何感知残差适配](wiki/entities/paper-graft.md) — GRAFT** 将冻结的全身动作跟踪器与地形感知的下肢残差策略组合，在保持参考动作接口的同时调整地形上的执行目标。本文依据 [arXiv v1 全文](https://arxiv.org/html `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
 - [GraphPoint（arXiv:2609.18358）](wiki/entities/paper-graphpoint.md) — GraphPoint**（*GraphPoint: Semantic Entity Graphs and Point Trajectories for Compositional Robot Ma `📅unknown` `[entity_page]`
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
