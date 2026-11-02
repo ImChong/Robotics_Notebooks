@@ -66,7 +66,7 @@
       refs: {
         at: 10.87,
         items: [
-          '**《Modern Robotics》** Lynch & Park：式 (3.42)(3.51)、命题 3.25',
+          '**《Modern Robotics》** Lynch & Park：式 (3.30)(3.42)(3.51)、命题 3.25',
           '**《Modern Robotics》** 3.2.3.3 节，图 3.19、定义 3.24、例 4.20',
           '**《Modern Robotics》** 第 1 章、2.3.2 节、式 (4.14)、4.5 节',
           '**Murray、Li、Sastry**（1994）第 2 章：式 (2.40)，h = d / θ',

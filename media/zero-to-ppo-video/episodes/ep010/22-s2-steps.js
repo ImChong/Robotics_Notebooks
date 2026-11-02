@@ -42,23 +42,24 @@
     sum: 48.19, sumV: 49.1, scale: [50.98, 52.53], r157: 52.74, r157v: 54.4, r123: 55.42, r123v: 57.71,
     go: [59.64, 60.43], sub: 60.5, sub2: 62, add: 63, add2: 65.22,
     stopAt: 67.1, kink: 69.25, near: 70.05, out1: 71.83,
-    n4: 72.14, d22: 73.42, d4: 74.88, d4v: 76.56, recipe: 78.32,
+    n4: 72.15, d22: 73.44, d4: 74.91, d4v: 76.61, recipe: 78.38,
+    lgPos: 80.31, lgDir: 83.05, lgRad: 85.07, lgMul: 85.77, lgStep: 89.52, lgAdd: 91.21, lgNew: 93.38,
     st4: [
-      { start: 85.05, rot: 86.28, rotV: 87.35, mul: 88.23, mulV: 89.66, add: 91.07, addX: 91.82, addY: 92.46, addV: 92.46 },
-      { start: 94.46, rot: 95.08, rotV: 96.13, mul: 97.71, mulV: 98.95, add: 100.87, addX: 101.65, addY: 103.67, addV: 105.96 },
-      { start: 107.93, rot: 108.65, rotV: 109.69, mul: 111.4, mulV: 112.91, add: 114.92, addX: 115.69, addY: 118.48, addV: 120.29 },
-      { start: 122.24, rot: 123, rotV: 124.12, mul: 126.03, mulV: 127.32, add: 129.39, addX: 130.12, addY: 132.94, addV: 135.21 }
+      { start: 95.71, rot: 98.22, rotV: 100.18, mul: 101.03, mulV: 102.99, add: 104.38, addX: 105.11, addY: 105.8, addV: 106.21 },
+      { start: 108.17, rot: 108.78, rotV: 110.78, mul: 112.34, mulV: 114.03, add: 116.12, addX: 116.93, addY: 118.99, addV: 121.28 },
+      { start: 123.19, rot: 123.9, rotV: 125.86, mul: 127.63, mulV: 129.42, add: 131.56, addX: 132.34, addY: 135.09, addV: 137.0 },
+      { start: 138.84, rot: 139.59, rotV: 141.64, mul: 143.59, mulV: 145.27, add: 147.46, addX: 148.24, addY: 151.09, addV: 153.35 }
     ],
-    elb: 137.2, ex: 138.79, exV: 140, ey: 141.17, eyV: 142.33, at4: 143.77, near4: 146.19, out4: 147.83,
-    n8: 148.15, pc: 151.69, at8: 153.5, hug: 156.08,
-    n100: 158.92, at100: 160.1, inf: 163.29, arc: 164.72, at: 166.22,
-    one: 168.62, same: 170.19, times: 171.86, nInf: 173.38, name: 175.61, legend: [169.34, 170.34, 171.34, 172.74],
-    out2: 177.93, why: 178.44, e0: 179.46, coin: 180.82, rate: 181.94, once: 183.26, onePlus: 184.61, two2: 185.36,
-    m12: 187.17, cmp: 189.18, perM: 190.77, r1083: 192.55, mo1: 194.66, mo1v: 197.04, mo2: 198.16, mo2v: 200.33,
-    k12: [201.32, 202.59], v12: 203.16, day: 205.1, fine: [205.86, 207.33], d365: 207.5, lim: 209.8, eNum: 211.58,
-    pow: 213.76, fn: 215.16, back: 215.82, same2: 218.25, roll: [219.3, 221.97], money: 223.15, pose: 223.91
+    elb: 155.35, ex: 156.94, exV: 158.15, ey: 159.32, eyV: 160.48, at4: 161.92, near4: 164.34, out4: 165.98,
+    n8: 166.3, pc: 169.84, at8: 171.65, hug: 174.23,
+    n100: 177.07, at100: 178.25, inf: 181.44, arc: 182.87, at: 184.37,
+    one: 186.77, same: 188.34, times: 190.01, nInf: 191.53, name: 193.76, legend: [187.49, 188.49, 189.49, 190.89],
+    out2: 196.08, why: 196.59, e0: 197.61, coin: 198.97, rate: 200.09, once: 201.41, onePlus: 202.76, two2: 203.51,
+    m12: 205.32, cmp: 207.33, perM: 208.92, r1083: 210.7, mo1: 212.81, mo1v: 215.19, mo2: 216.31, mo2v: 218.48,
+    k12: [219.47, 220.74], v12: 221.31, day: 223.25, fine: [224.01, 225.48], d365: 225.65, lim: 227.95, eNum: 229.73,
+    pow: 231.91, fn: 233.31, back: 233.97, same2: 236.4, roll: [237.45, 240.12], money: 241.3, pose: 242.06
   };
-  var END = 225.36, TH = Math.PI / 2, NS = [1, 2, 4, 8, 100], HH = TH / 2;
+  var END = 243.51, TH = Math.PI / 2, NS = [1, 2, 4, 8, 100], HH = TH / 2;
   var COLS = [E.ERR, E.WARN, E.INK2, E.INK, E.GOOD];
   // 分四步照算（每步 × 0.39，数留两位小数）：离肘的位置 d0 … d4
   var D4 = [[2, 0], [2, 0.78], [1.7, 1.56], [1.09, 2.22], [0.22, 2.65]], F4 = 0.39;
@@ -84,22 +85,24 @@
     if (st < T.n4 - 0.2) {                       // 分两步
       var p = lerp(c2[0], c2[1], fd(st, T.seg1[0], T.seg1[1] - T.seg1[0]));
       if (st >= T.go[0]) p = lerp(c2[1], c2[2], fd(st, T.go[0], T.go[1] - T.go[0]));
-      r = { p: p, armAng: lerpA(ang(c2[0]), ang(c2[1]), fd(st, T.legs, 0.8)),
+      // 走完最后一段，小臂也转到终点的方向（用户反馈：分 8 步小臂最后没转到对的位置；各段同样处理）
+      r = { p: p, armAng: lerpA(lerpA(ang(c2[0]), ang(c2[1]), fd(st, T.legs, 0.8)), ang(c2[2]), fd(st, T.stopAt, 0.6)),
         hd: lerpA(Math.PI / 2, ang(c2[1]) + Math.PI / 2, fd(st, T.turn[0], T.turn[1] - T.turn[0])),
         hOn: Math.max(fd(st, T.dir, 0.3) * (1 - fd(st, T.out0, 0.3)), fd(st, T.upA, 0.3)) * (1 - fd(st, T.go[1] + 0.3, 0.3)),   // 走到了就收起车头：终点要写坐标
         on: fd(st, 0.3, 0.4) * (1 - fd(st, T.out1, 0.4)) };
     } else if (st < T.n8 - 0.2) {               // 分四步：照算的四段
       var k = 0; T.st4.forEach(function (S, i) { if (st >= S.start - 0.3) k = i; });
       var S = T.st4[k], pk = lerp(V[k], V[k + 1], fd(st, S.add, 0.6));
-      r = { p: pk, armAng: lerpA(ang(V[Math.max(0, k - 1)]), ang(V[k]), fd(st, S.start - 0.3, 0.6)),
+      var aK = lerpA(ang(V[Math.max(0, k - 1)]), ang(V[k]), fd(st, S.start - 0.3, 0.6));
+      r = { p: pk, armAng: k === 3 ? lerpA(aK, ang(V[4]), fd(st, T.at4, 0.6)) : aK,
         hd: lerpA(ang(V[Math.max(0, k - 1)]) + Math.PI / 2, ang(V[k]) + Math.PI / 2, fd(st, S.rot, 0.8)),
         hOn: 1 - fd(st, T.st4[3].add + 0.8, 0.3), on: fd(st, T.n4, 0.4) * (1 - fd(st, T.out4, 0.4)) };
     } else if (st < T.n100 - 0.2) {             // 八步：一跳一跳
       var w8 = walkAlong(C8, fd(st, T.n8, RUN[3]));
-      r = { p: w8.p, armAng: ang(w8.from), hd: ang(w8.from) + Math.PI / 2, hOn: 1 - fd(st, T.n8 + RUN[3], 0.3), on: fd(st, T.n8, 0.3) * (1 - fd(st, T.n100 - 0.5, 0.3)) };
+      r = { p: w8.p, armAng: lerpA(ang(w8.from), ang(C8[8]), fd(st, T.n8 + RUN[3], 0.5)), hd: ang(w8.from) + Math.PI / 2, hOn: 1 - fd(st, T.n8 + RUN[3], 0.3), on: fd(st, T.n8, 0.3) * (1 - fd(st, T.n100 - 0.5, 0.3)) };
     } else if (st < T.arc - 0.2) {              // 一百步：几乎是顺着圆走
       var w1 = walkAlong(C100, fd(st, T.n100, RUN[4]));
-      r = { p: w1.p, armAng: ang(w1.from), hd: ang(w1.from) + Math.PI / 2, hOn: 1 - fd(st, T.n100 + RUN[4], 0.3), on: fd(st, T.n100, 0.3) * (1 - fd(st, T.arc - 0.5, 0.3)) };
+      r = { p: w1.p, armAng: lerpA(ang(w1.from), ang(C100[100]), fd(st, T.n100 + RUN[4], 0.5)), hd: ang(w1.from) + Math.PI / 2, hOn: 1 - fd(st, T.n100 + RUN[4], 0.3), on: fd(st, T.n100, 0.3) * (1 - fd(st, T.arc - 0.5, 0.3)) };
     } else {                                     // 无穷多步：小臂带着点在圆上转，长度不变
       var a = TH * fd(st, T.arc, ARC);
       r = { p: [1 + 2 * Math.cos(a), 2 + 2 * Math.sin(a)], armAng: a, hd: a + Math.PI / 2, hOn: 1 - fd(st, T.arc + ARC, 0.3), on: fd(st, T.arc, 0.3) * (1 - fd(st, T.out2, 0.3)) };
@@ -119,20 +122,20 @@
       { at: 48.1, s: '加起来 (−1.57, 2)；各乘 0.785：2 × 0.785 ≈ 1.57，1.57 × 0.785 ≈ 1.23' },
       { at: 59.55, s: '走过去：3 − 1.23 = 1.77，3.57 + 1.57 = 5.14' },
       { at: 67.01, s: '停在 (1.77, 5.14)：折了一次，离圆近了一些' },
-      { at: 72.05, s: '分 4 步：1.57 ÷ 4 ≈ 0.39；每步：离肘的位置转 90°，× 0.39，加上去' },
-      { at: 84.96, s: '① (2, 0) 转 90° 是 (0, 2)，× 0.39 = (0, 0.78)，加上去是 (2, 0.78)' },
-      { at: 94.37, s: '② (−0.78, 2) × 0.39 = (−0.3, 0.78)；2 − 0.3 = 1.7，0.78 + 0.78 = 1.56' },
-      { at: 107.83, s: '③ (−1.56, 1.7) × 0.39 = (−0.61, 0.66)；1.7 − 0.61 = 1.09，1.56 + 0.66 = 2.22' },
-      { at: 122.14, s: '④ (−2.22, 1.09) × 0.39 = (−0.87, 0.43)；1.09 − 0.87 = 0.22，2.22 + 0.43 = 2.65' },
-      { at: 137.11, s: '加上肘：1 + 0.22 = 1.22，2 + 2.65 = 4.65，停在 (1.22, 4.65)' },
-      { at: 148.06, s: '8 步、100 步：同样的算法交给电脑算；8 步停在 (1.05, 4.33)' },
-      { at: 158.83, s: '100 步停在 (1, 4.02)，无穷多步正好停在 (1, 4)' },
-      { at: 168.53, s: '每一小步乘同一个矩阵；无穷多步乘出来的，叫**矩阵指数**' },
-      { at: 178.08, s: '名字要从自然常数 e 说起：存 1 块，年利率 100%，一年算 1 次：1 + 1 = 2 块' },
-      { at: 187.08, s: '12 个月利滚利（复利）：每月乘 (1 + 1/12) ≈ 1.083' },
-      { at: 194.57, s: '1 × 1.083 = 1.083，再乘 1.083 ≈ 1.17；乘满 12 次是 2.61' },
-      { at: 205.01, s: '按天算乘 365 次约 2.71；越分越细，接近 2.718 = e' },
-      { at: 213.39, s: 'eˣ 叫指数函数，**矩阵指数**的名字从这来：同一个做法，滚起来的是**位姿**' }
+      { at: 72.05, s: '分 4 步：1.57 ÷ 4 ≈ 0.39 弧度；离肘的位置转 90° = 前进方向（长 = 半径），× 0.39 = 这一步（半径 × 角度），加上去 = 新位置' },
+      { at: 95.62, s: '① 离肘 (2, 0) → 前进方向 (0, 2) → × 0.39：这一步 (0, 0.78) → 新位置 (2, 0.78)' },
+      { at: 108.07, s: '② (−0.78, 2) × 0.39 = (−0.3, 0.78)；2 − 0.3 = 1.7，0.78 + 0.78 = 1.56' },
+      { at: 123.14, s: '③ (−1.56, 1.7) × 0.39 = (−0.61, 0.66)；1.7 − 0.61 = 1.09，1.56 + 0.66 = 2.22' },
+      { at: 138.79, s: '④ (−2.22, 1.09) × 0.39 = (−0.87, 0.43)；1.09 − 0.87 = 0.22，2.22 + 0.43 = 2.65' },
+      { at: 155.26, s: '加上肘：1 + 0.22 = 1.22，2 + 2.65 = 4.65，停在 (1.22, 4.65)' },
+      { at: 166.21, s: '8 步、100 步：同样的算法交给电脑算；8 步停在 (1.05, 4.33)' },
+      { at: 176.98, s: '100 步停在 (1, 4.02)，无穷多步正好停在 (1, 4)' },
+      { at: 186.68, s: '每一小步乘同一个矩阵；无穷多步乘出来的，叫**矩阵指数**' },
+      { at: 196.23, s: '名字要从自然常数 e 说起：存 1 块，年利率 100%，一年算 1 次：1 + 1 = 2 块' },
+      { at: 205.23, s: '12 个月利滚利（复利）：每月乘 (1 + 1/12) ≈ 1.083' },
+      { at: 212.72, s: '1 × 1.083 = 1.083，再乘 1.083 ≈ 1.17；乘满 12 次是 2.61' },
+      { at: 223.16, s: '按天算乘 365 次约 2.71；越分越细，接近 2.718 = e' },
+      { at: 231.54, s: 'eˣ 叫指数函数，**矩阵指数**的名字从这来：同一个做法，滚起来的是**位姿**' }
     ],
     build: function (K) {
       var s = K.sceneSvg('小臂上的点绕肘转九十度：分成几小步，每走一小步就按这时候的方向再走下一步；分两步每步转 45°，约 0.785 弧度：第一步朝上走 2 × 0.785 ≈ 1.57 格，2 + 1.57 = 3.57，到 (3, 3.57)；第二步离肘 3 − 1 = 2、3.57 − 2 = 1.57，前进方向和连线垂直，把 (2, 1.57) 转 90°：第一列拿两份 (0, 2)、第二列拿 1.57 份 (−1.57, 0)，加起来 (−1.57, 2)，各乘 0.785 得 1.57 和 1.23，3 − 1.23 = 1.77、3.57 + 1.57 = 5.14，停在 (1.77, 5.14)；分四步每步约 0.39 弧度，每步把离肘的位置转 90°、乘 0.39、加上去，四步算到 (0.22, 2.65)，加上肘得 (1.22, 4.65)；八步、一百步交给电脑算，一百步停在 (1, 4.02)，无穷多步正好停在 (1, 4)；每一小步乘同一个矩阵，无穷多步乘出来的叫矩阵指数；名字要从自然常数 e 说起：存一块钱年利率百分之百，一年算一次利息是两块，分十二个月利滚利（复利）每月乘 1.083，1 × 1.083 = 1.083、再乘 1.083 ≈ 1.17，乘满十二次是 2.61，按天算是 2.71，越分越接近 2.718；e 的几次方叫指数函数，矩阵指数的名字从这来，是同一个做法，滚起来的是位姿');
@@ -186,9 +189,16 @@
       });
       var dot4 = [1, 2, 3, 4].map(function (k) { return K.paint(E.el('circle', { cx: V4[k][0], cy: V4[k][1], r: 5.5, 'stroke-width': 2.5 }, gridG), E.S1, E.INK2); });
       var spoke4 = E.vec(gridG, E.HI, 3, { head: 11, dash: '6 5' });
-      var turn4 = E.vec(gridG, E.HI, 3, { head: 11, dash: '6 5' });
+      var turn4 = E.vec(gridG, E.VEL, 3.5, { head: 11, dash: '6 5' });   // 前进方向：紫，同车头
       var turn4Arc = E.arcArrow(gridG, 0, 0, 0.45 * u, E.OMEGA, 3, { head: 10 });
       var lab4 = E.halo(E.txt(gridG, V4[4][0] - 14, V4[4][1] - 14, '(1.22, 4.65)', 20, E.INK2, 'end', 900));
+      // 句 9 的演示：第一步的样子 + 四个名字（离肘的位置、前进方向、这一步、新位置）
+      var preSeg = K.paint(E.el('path', { d: E.poly([V4[0], V4[1]]), fill: 'none', 'stroke-width': 4.5, 'stroke-linecap': 'round' }, gridG), null, E.INK2);
+      var preDot = K.paint(E.el('circle', { cx: V4[1][0], cy: V4[1][1], r: 5.5, 'stroke-width': 2.5 }, gridG), E.S1, E.INK2);
+      var lbPos = E.halo(E.txt(gridG, (Q[0] + V4[0][0]) / 2, Q[1] + 30, '离肘的位置', 18, E.HI, 'middle', 900));
+      var lbDir = E.halo(E.txt(gridG, V4[0][0] + 14, V4[0][1] - 1.2 * u, '前进方向（长 = 半径）', 18, E.VEL, 'start', 900));
+      var lbStep = E.halo(E.txt(gridG, V4[0][0] + 14, V4[0][1] - 0.3 * u, '这一步', 18, E.INK2, 'start', 900));
+      var lbNew = E.halo(E.txt(gridG, V4[1][0] + 14, V4[1][1] - 8, '新位置', 18, E.INK, 'start', 900));
       // 走的那一点（紫）和它的车头（这时候的方向，紫箭头）
       var headV = E.vec(gridG, E.VEL, 4, { head: 13 });
       var walker = K.paint(E.el('circle', { r: 8, 'stroke-width': 3 }, gridG), E.VEL, E.S1);
@@ -256,20 +266,23 @@
       // 分四步（逐步算）
       var t1b = E.el('g', {}, Rg), S4 = 17;
       var q1 = RK.line(t1b, X, 34, [['分 4 步：', E.INK, 900], ['1.57 ÷ 4 ≈ ', E.INK2], ['0.39 弧度', E.OMEGA, 900]], 19);
-      var q2 = RK.line(t1b, X, 64, [['每步：离肘的位置转 90° → × 0.39 → 加上去', E.INK2, 700]], S4);
+      // 每个数是什么（用户反馈「没理解分四步这些数字的物理含义」）：颜色和网格上一致——离肘的位置（黄虚线）、前进方向（紫）、这一步（灰白）
+      var q2 = RK.line(t1b, X, 60, [['离肘的位置', E.HI, 900], [' 转 90° = ', E.INK2], ['前进方向', E.VEL, 900], ['（长 = 半径）', E.MUT, 700]], 16);
+      var q2b = RK.line(t1b, X, 82, [['× 0.39 = ', E.INK2], ['这一步走多远', E.INK2, 900], ['（半径 × 角度）', E.MUT, 700]], 16);
+      var q2c = RK.line(t1b, X, 104, [['加上去 = ', E.INK2], ['离肘的新位置', E.INK, 900]], 16);
       var Q4 = [
-        [['① (0, 2)，× 0.39 = (0, 0.78)'], ['　 2 + 0 = 2，0 + 0.78 = 0.78']],
-        [['② (−0.78, 2)，× 0.39 = (−0.3, 0.78)'], ['　 2 − 0.3 = 1.7，0.78 + 0.78 = 1.56']],
-        [['③ (−1.56, 1.7)，× 0.39 = (−0.61, 0.66)'], ['　 1.7 − 0.61 = 1.09，1.56 + 0.66 = 2.22']],
-        [['④ (−2.22, 1.09)，× 0.39 = (−0.87, 0.43)'], ['　 1.09 − 0.87 = 0.22，2.22 + 0.43 = 2.65']]
+        ['①', '(0, 2)', '(0, 0.78)', '　 2 + 0 = 2，', '0 + 0.78 = 0.78'],
+        ['②', '(−0.78, 2)', '(−0.3, 0.78)', '　 2 − 0.3 = 1.7，', '0.78 + 0.78 = 1.56'],
+        ['③', '(−1.56, 1.7)', '(−0.61, 0.66)', '　 1.7 − 0.61 = 1.09，', '1.56 + 0.66 = 2.22'],
+        ['④', '(−2.22, 1.09)', '(−0.87, 0.43)', '　 1.09 − 0.87 = 0.22，', '2.22 + 0.43 = 2.65']
       ].map(function (r, k) {
-        var y = 96 + 58 * k;
-        var a = RK.line(t1b, X, y, [[r[0][0].split('，× ')[0] + '，', E.INK, 900], ['× ' + r[0][0].split('，× ')[1], E.INK, 900]], S4);
-        var bb = RK.line(t1b, X, y + 26, [[r[1][0].split('，')[0] + '，', E.INK, 900], [r[1][0].split('，')[1], E.INK, 900]], S4);
+        var y = 134 + 52 * k;
+        var a = RK.line(t1b, X, y, [[r[0] + ' ', E.INK, 900], [r[1], E.VEL, 900], [' × 0.39 = ', E.INK2], [r[2], E.INK2, 900]], S4);
+        var bb = RK.line(t1b, X, y + 24, [[r[3], E.INK, 900], [r[4], E.INK, 900]], S4);
         return { a: a, b: bb };
       });
-      var q7 = RK.line(t1b, X, 334, [['+ 肘：', E.HI, 900], ['1 + 0.22 = 1.22', E.INK, 900], ['，', E.INK2], ['2 + 2.65 = 4.65', E.INK, 900]], S4);
-      var q8 = RK.line(t1b, X, 366, [['→ ', E.INK2], ['(1.22, 4.65)', E.INK, 900], ['：又近了一些', E.INK2]], 20);
+      var q7 = RK.line(t1b, X, 346, [['+ 肘：', E.HI, 900], ['1 + 0.22 = 1.22', E.INK, 900], ['，', E.INK2], ['2 + 2.65 = 4.65', E.INK, 900]], S4);
+      var q8 = RK.line(t1b, X, 374, [['→ ', E.INK2], ['(1.22, 4.65)', E.INK, 900], ['：又近了一些', E.INK2]], 20);
       var t2 = E.el('g', {}, Rg);
       var r0 = RK.line(t2, X, 46, [['分几步', E.INK2, 700], ['　→　', E.MUT], ['停在', E.INK2, 700]], 21);
       var LABS = ['(3, 5.14)', '(1.77, 5.14)', '(1.22, 4.65)', '(1.05, 4.33)', '(1.00, 4.02)'];
@@ -378,8 +391,15 @@
             p.style.opacity = (on > 0 ? 1 : 0) * dimLater * (1 - f(st, T.out2, 0.3)) * (back ? 0 : 1);
           });
           dot4.forEach(function (c, k) { E.op(c, f(st, T.st4[k].addV, 0.3) * (1 - f(st, T.out4, 0.4))); });
-          if (cur >= 0 && st < T.out4) {
-            var S = T.st4[cur], d = D4[cur], vs = V4[cur], len = Math.hypot(d[0], d[1]);
+          // 句 9 讲每个数是什么时，先拿第一步的样子演一遍（不写数）：离肘的位置 → 转 90° 是前进方向 → × 0.39 是这一步 → 加上去是新位置
+          var PV = { start: T.lgPos, rot: T.lgDir, mul: T.lgMul, add: T.lgAdd, addV: T.lgNew };
+          var pre = cur < 0 && st >= T.lgPos - 0.3;
+          E.drawOn(preSeg, f(st, PV.add, 0.6)); E.op(preSeg, (f(st, PV.add, 0.1) > 0 ? 0.6 : 0) * (1 - f(st, T.st4[0].start - 0.5, 0.3)));
+          E.op(preDot, f(st, PV.addV, 0.3) * (1 - f(st, T.st4[0].start - 0.5, 0.3)));
+          var lb = [[lbPos, T.lgPos, T.lgDir + 0.4], [lbDir, T.lgDir + 0.6, T.lgMul], [lbStep, T.lgMul + 0.5, T.lgAdd + 0.6], [lbNew, T.lgNew, T.st4[0].start - 0.5]];
+          lb.forEach(function (q) { E.op(q[0], f(st, q[1], 0.3) * (1 - f(st, q[2], 0.3))); });
+          if ((cur >= 0 || pre) && st < T.out4) {
+            var S = pre ? PV : T.st4[cur], d = D4[pre ? 0 : cur], vs = V4[pre ? 0 : cur], len = Math.hypot(d[0], d[1]);
             var stepOn = f(st, S.start - 0.3, 0.3) * (1 - f(st, S.add + 0.5, 0.3));
             spoke4.set(Q[0], Q[1], vs[0], vs[1]); E.op(spoke4.g, stepOn);
             var a = Math.atan2(d[1], d[0]) + TH * f(st, S.rot, 0.8), ln = len * (1 - (1 - F4) * f(st, S.mul, 0.6));
@@ -465,10 +485,11 @@
           E.op(w8.g, fr(st, T.add)); E.op(w8.parts[2], fr(st, T.add2));
           E.op(w9.g, fr(st, T.stopAt)); E.op(w9.parts[2], fr(st, T.kink));
           E.op(t1b, f(st, T.out1 + 0.2, 0.4) * (1 - f(st, T.out4, 0.4)));
-          E.op(q1.g, fr(st, T.n4)); E.op(q1.parts[1], fr(st, T.d4)); E.op(q1.parts[2], fr(st, T.d4v)); E.op(q2.g, fr(st, T.recipe));
+          E.op(q1.g, fr(st, T.n4)); E.op(q1.parts[1], fr(st, T.d4)); E.op(q1.parts[2], fr(st, T.d4v)); E.op(q2.g, fr(st, T.lgPos)); E.op(q2.parts[2], fr(st, T.lgDir)); E.op(q2.parts[3], fr(st, T.lgRad));
+          E.op(q2b.g, fr(st, T.lgMul)); E.op(q2b.parts[1], fr(st, T.lgStep)); E.op(q2b.parts[2], fr(st, T.lgStep)); E.op(q2c.g, fr(st, T.lgAdd)); E.op(q2c.parts[1], fr(st, T.lgNew));
           Q4.forEach(function (r, k) {
             var S = T.st4[k];
-            E.op(r.a.g, fr(st, S.rot)); E.op(r.a.parts[1], fr(st, S.mul));
+            E.op(r.a.g, fr(st, S.rotV)); E.op(r.a.parts[2], fr(st, S.mul)); E.op(r.a.parts[3], fr(st, S.mulV));
             E.op(r.b.g, fr(st, S.addX)); E.op(r.b.parts[1], fr(st, S.addY));
           });
           E.op(q7.g, fr(st, T.elb)); E.op(q7.parts[1], fr(st, T.ex)); E.op(q7.parts[2], fr(st, T.ey)); E.op(q7.parts[3], fr(st, T.ey));

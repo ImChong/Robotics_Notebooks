@@ -3,7 +3,7 @@
 // ② 更新朝向：俯视一块「身体」，陀螺仪测到角速度 2 弧度/秒，每 0.01 秒转 2 × 0.01 = 0.02 弧度，交给矩阵指数、乘到原来的朝向上（右乘：
 //    绕身体自己的轴转，原书式 (3.51) 下面那段），「一步一步乘起来」连走 50 步、转 1 弧度；MuJoCo 源码 engine_util_spatial.c 的
 //    mju_quatIntegrate 就是「角速度 × 时间 → 绕轴转多少 → 乘到朝向上」（用四元数写）；
-// ③ 反过来：手要去抓杯子，矩阵对数算出还差多少（原书 6.2.2 节 [V_b] = log T_bd），一点一点改关节角（第 15 集）；
+// ③ 反过来：手要去抓杯子（杯子按同一个投影画成三维圆柱杯），矩阵对数算出还差多少（原书 6.2.2 节 [V_b] = log T_bd），一点一点改关节角（第 15 集）；
 // ④ 后面几集：第 11 集正向运动学（指数积公式）、第 13 集雅可比（对指数积公式求导，原书 5.1.1 节）、第 15 集数值逆运动学（矩阵对数，原书 6.2.2 节）。
 // 时刻取自配音的逐词时间，见 ../ep010.py。
 (function () {
@@ -96,10 +96,28 @@
       V.joints(POSEB); var GT = toolFrame(); V.joints(POSE0);
       var ghostG = E.el('g', {}, g3);
       [E.X, E.Y, E.Z].forEach(function (c, i) { var v = E.vec(ghostG, c, 3, { head: 11, dash: '5 4' }); v.set(GT.o[0], GT.o[1], GT.ax[i][0], GT.ax[i][1]); });
-      var cupG = E.el('g', {}, g3), CX0 = GT.o[0] + 30, CY0 = GT.o[1] + 4;
-      K.paint(E.el('path', { d: 'M ' + (CX0 - 15) + ' ' + (CY0 - 20) + ' L ' + (CX0 + 15) + ' ' + (CY0 - 20) + ' L ' + (CX0 + 11) + ' ' + (CY0 + 18) + ' L ' + (CX0 - 11) + ' ' + (CY0 + 18) + ' Z',
-        'stroke-width': 3, 'stroke-linejoin': 'round' }, cupG), E.tint(E.INK2, 25, 'var(--demo-surface)'), E.INK);
-      K.paint(E.el('path', { d: 'M ' + (CX0 + 14) + ' ' + (CY0 - 11) + ' q 13 2 9 13 q -3 7 -11 7', fill: 'none', 'stroke-width': 3 }, cupG), null, E.INK);
+      // 杯子按 UR5 同一个投影画成三维的圆柱杯（用户反馈：机器人是三维的，杯子也要三维）：杯口在目标手的正下方，竖直向上（URDF 的 z）
+      var cupG = E.el('g', {}, g3);
+      (function () {
+        V.joints(POSEB); V.robot.updateMatrixWorld(true);
+        var tl = V.robot.links.tool0 || V.robot.frames && V.robot.frames.tool0;
+        var o3 = new THREE.Vector3().setFromMatrixPosition(tl.matrixWorld);
+        var up = new THREE.Vector3(0, 0, 1).transformDirection(V.robot.matrixWorld);
+        var e1 = new THREE.Vector3(1, 0, 0).transformDirection(V.robot.matrixWorld), e2 = new THREE.Vector3().crossVectors(up, e1).normalize();
+        V.joints(POSE0); V.robot.updateMatrixWorld(true);
+        var R = 0.04, H0 = -0.15, H1 = -0.05;   // 半径 4 cm；杯底、杯口在手下面 15 cm、5 cm
+        function ring(h) { var pts = []; for (var k = 0; k < 48; k++) { var a = 2 * Math.PI * k / 48; pts.push(V.project(o3.clone().addScaledVector(up, h).addScaledVector(e1, R * Math.cos(a)).addScaledVector(e2, R * Math.sin(a)))); } return pts; }
+        var top = ring(H1), bot = ring(H0), all = top.concat(bot).slice().sort(function (p, q) { return p[0] - q[0] || p[1] - q[1]; });
+        function cross(o, a, b) { return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]); }
+        var lo = [], hi = [];
+        all.forEach(function (p) { while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); });
+        all.slice().reverse().forEach(function (p) { while (hi.length >= 2 && cross(hi[hi.length - 2], hi[hi.length - 1], p) <= 0) hi.pop(); hi.push(p); });
+        var hull = lo.slice(0, -1).concat(hi.slice(0, -1));
+        K.paint(E.el('path', { d: E.poly(hull, true), 'stroke-width': 3, 'stroke-linejoin': 'round' }, cupG), E.tint(E.INK2, 25, 'var(--demo-surface)'), E.INK);
+        K.paint(E.el('path', { d: E.poly(top, true), fill: 'none', 'stroke-width': 2.5 }, cupG), null, E.INK);   // 杯口一圈
+        var hd = []; for (var k = 0; k <= 16; k++) { var f = Math.PI * k / 16; hd.push(V.project(o3.clone().addScaledVector(up, (H0 + H1) / 2 + 0.028 * Math.cos(f)).addScaledVector(e1, R + 0.026 * Math.sin(f)))); }
+        K.paint(E.el('path', { d: E.poly(hd), fill: 'none', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, cupG), null, E.INK);   // 把手
+      })();
       var gapPath = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '7 6' }, g3), null, E.HI);
       var gapLab = E.halo(E.txt(g3, 0, 0, '还差多少？', 20, E.HI, 'middle', 900));
       var RC = E.rowKit(), rC = E.el('g', {}, s);

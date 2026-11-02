@@ -120,7 +120,9 @@
       E.tex(a3, X, 204, '\\textcolor{' + H.hi + '}{\\exp([\\mathcal S]\\,\\theta)}=', 28, E.INK, 'start', { w: 170, h: 50 });
       E.txt(a3, X + 176, 204, '一个位姿 T', 24, E.HI, 'start', 900);
       var mG = E.el('g', {}, Rg);
-      E.tex(mG, X + 2, MY + 10, 'T=', 30, E.INK, 'start', { w: 60, h: 50 });
+      // 「T =」右端离括号 8 px，按括号的实际位置摆（同第 4 幕）
+      var EXT3 = E.matExt([[0, -1, 3], [1, 0, 1], [0, 0, 1]], { size: 28, dx: 62 });
+      E.tex(mG, MX - EXT3[0] - 8, MY + 10, 'T=', 30, E.INK, 'end', { w: 60, h: 50 });
       var M = E.matN(mG, MX, MY, [['?', '?', '?'], ['?', '?', '?'], [0, 0, 1]], { size: 28, dx: 62, dy: 40, wide: [[0, -1, 3], [1, 0, 1], [0, 0, 1]],
         color: function (i, j) { return i === 2 ? E.MUT : j === 0 ? E.X : j === 1 ? E.Y : E.VEL; } });
       M.cells.forEach(function (row) { row.forEach(function (n) { n.__col = n.style.fill; }); });   // 填数前先写灰色问号
