@@ -61,11 +61,46 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`bash process_data.sh <路径列表文件>`（逐行读取路径，依次调用下列三个 Python 脚本）
+
+```mermaid
+sequenceDiagram
+    participant SH as process_data.sh
+    participant M as mcap_visualization/mcap_to_aloha_data.py
+    participant X as extract.py
+    participant V as openvla/openvla-7b (HF AutoModelForVision2Seq)
+    participant A as embedding_analysis.py
+
+    loop 路径列表文件中的每一行 path
+        SH->>M: python mcap_to_aloha_data.py --datasetDir data_sample/path --alohaYaml aloha_data_params.yaml
+        M->>M: get_mcap_files() 然后 process_file()
+        M->>M: rosbag2_py.SequentialReader 读 mcap，按 yaml 的话题配置落盘到 aloha/episode*/
+        M-->>SH: 失败则 continue 跳过该路径
+        SH->>X: python extract.py --data_root .../aloha --output_dir features/path/ --n_segments 3
+        X->>V: init_model(): AutoProcessor / AutoModelForVision2Seq.from_pretrained
+        loop 每个 episode 的 front / left / right 三个视角
+            X->>V: processor(图像) 然后 vision_backbone.featurizer(pixel_values)
+            V-->>X: 每帧 CLS 特征 vision_outputs[:, 0]
+            X->>X: entropy_weighted_mean() 按 n_segments 分段聚合并拼接
+        end
+        X->>X: 三视角拼接，np.save(episodeN_fused.npy)
+        SH->>A: python embedding_analysis.py --feature_dir features/path/ --output_dir features/path/
+        A->>A: load_features() 然后 analyze_features()
+        A->>A: 聚类、视角贡献度、时序一致性、TSNE、zscore 离群
+        A-->>SH: 写 cluster_assignments.csv 与 advanced_visualization.png
+    end
+```
+
+图依据：agilexrobotics/DataEval@2c8312c，读过 `README.md`、`process_data.sh`、`extract.py`、`embedding_analysis.py`（`load_features` / `analyze_features` / `main`，其中聚类细节仅看了函数名与 import）、`mcap_visualization/mcap_to_aloha_data.py`（`main` / `process_file` 开头）。仓库另含从 OpenVLA 拷入的 `prismatic/`、`experiments/`、`vla-scripts/`，本图未覆盖。
+
 ## 参考来源
 
 - [DataEval 源码归档](../../sources/repos/dataeval.md)（<https://github.com/agilexrobotics/DataEval>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/DataEval@2c8312c，读过 README.md、process_data.sh、extract.py、embedding_analysis.py、mcap_visualization/mcap_to_aloha_data.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

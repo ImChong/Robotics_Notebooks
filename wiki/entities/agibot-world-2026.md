@@ -52,6 +52,45 @@ summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操�
 1. **与 EWMBench 混为同一数据集** — EWMBench 是 **评测基准**；AGIBOT WORLD 2026 是 **2026 轮 IL 数据发布**。
 2. **「数据越多越好」** — 文内强调须反映真实部署的 **物理过程与失败修正**。
 
+## 源码运行时序图
+
+说明：下图对应仓库中可运行的 GO-1 模型代码（推理服务与 LIBERO 评测），不是 AGIBOT WORLD 2026 数据发布本身的处理流程；仓库 README 没有给出 2026 数据集的下载/处理脚本入口。
+
+入口：服务端 `python evaluate/deploy.py --model_path <ckpt> --data_stats_path <dataset_stats.json> --port <PORT>`，客户端 `bash evaluate/libero/eval_libero.sh <TASK_SUITE> <SAVE_NAME> <HOST> <PORT>`（调用 `evaluate/libero/main.py`）。
+
+```mermaid
+sequenceDiagram
+    participant EV as evaluate/libero/main.py
+    participant ENV as LIBERO env
+    participant SRV as evaluate/deploy.py GO1Server (FastAPI /act)
+    participant INF as GO1Infer
+    participant DS as go1/internvl/train/dataset.py
+    participant M as go1/internvl/model/go1/modeling_go1.py GO1Model
+    SRV->>INF: GO1Infer(model_path, data_stats_path)，GO1Model.from_pretrained 与 tokenizer、dataset_stats 加载
+    SRV->>SRV: uvicorn.run，监听 POST /act
+    EV->>ENV: env.reset 与 set_init_state，发送 num_steps_wait 步 dummy action
+    loop 每个仿真步
+        alt action_plan 为空
+            EV->>SRV: POST /act（图像、instruction、state、ctrl_freqs），json_numpy 编码
+            SRV->>INF: inference(payload)
+            INF->>INF: final_prompt = "What action should the robot take to ...?"
+            INF->>DS: multi_image_get_item：build_transform 与 preprocess_internvl2_5
+            INF->>M: predict_action → go1(pixel_values, input_ids, state, ctrl_freqs)
+            M->>M: common_process（InternVL VLM）取各层 kv_cache，k_proj 与 v_proj 投影
+            opt enable_lam
+                M->>M: latent_planner(kv_cache, attention_mask)
+            end
+            M->>M: condition_sample：action expert 以扩散方式生成动作块
+            M-->>INF: action_logits
+            INF-->>EV: 反归一化后的动作块
+            EV->>EV: action_plan.extend(action_chunk[:replan_steps])
+        end
+        EV->>ENV: env.step(action_plan.popleft())
+    end
+```
+
+图依据：OpenDriveLab/AgiBot-World@98f136e（README 中指向 AgibotTech/AgiBot-World），读过 `README.md`、`evaluate/deploy.py`、`evaluate/libero/main.py`、`evaluate/libero/eval_libero.sh`、`go1/shell/train.sh`、`go1/internvl/model/go1/modeling_go1.py`（仅 `forward`）；`condition_sample`、`latent_planner` 内部与 `go1_train.py` 训练流程未逐行读。
+
 ## 关联页面
 
 - [数据入口分类 hub](../overview/agibot-release-category-01-data-entry.md)
@@ -65,6 +104,7 @@ summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操�
 
 - [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)
 - [agibot-world.md](../../sources/sites/agibot-world.md)
+- 源码核对（2026-11-02）：OpenDriveLab/AgiBot-World@98f136e，读过 README.md、evaluate/deploy.py、evaluate/libero/main.py、evaluate/libero/eval_libero.sh、go1/shell/train.sh、go1/internvl/model/go1/modeling_go1.py（仅 forward）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

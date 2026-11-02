@@ -61,6 +61,39 @@ LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含�
 - 相机标定、深度单位和输入分辨率不匹配会系统性影响点云。
 - Depth 2.0 的 150M 训练规模不代表 150M 数据全量公开。
 
+## 源码运行时序图
+
+入口：`python example.py`（可加 `--example 0..7`、`--model <HF ID 或本地 model.pt>`、`--output result`、`--device`）。
+
+```mermaid
+sequenceDiagram
+    participant E as example.py main()
+    participant IO as preprocess_input_image / load_depth_map / load_intrinsics
+    participant M as mdm.model.v2.MDMModel
+    participant HF as huggingface_hub(hf_hub_download)
+    participant ENC as DINOv2_RGBD_Encoder
+    participant NK as neck(ConvStack)
+    participant HD as depth_head / mask_head
+    participant G as depth_to_pointcloud
+    E->>IO: 读 examples/N 的 rgb、raw_depth.png(除以 1000 转米)、intrinsics.txt(按宽高归一化)
+    E->>M: MDMModel.from_pretrained(args.model)
+    M->>HF: 非本地路径则下载 model.pt
+    M->>M: torch.load，按 checkpoint['model_config'] 构建并 load_state_dict
+    E->>M: model.infer(image, depth_in, apply_mask, intrinsics)
+    Note over M: infer 按 resolution_level 算 num_tokens，bfloat16 autocast
+    M->>ENC: encoder(image, depth, base_h, base_w)
+    ENC-->>M: features, cls_token
+    M->>NK: neck(5 级特征，各级拼接归一化 UV)
+    NK->>HD: depth_head、mask_head 解码
+    HD-->>M: depth_reg(exp 还原)、mask_prob(sigmoid)
+    M->>G: depth_to_pointcloud(depth, intrinsics)
+    G-->>M: points
+    M-->>E: depth / points / mask(apply_mask 时 mask 外置 inf)
+    E->>E: 保存 depth_input.npy、depth_refined.npy、对比 PNG、point_cloud.ply
+```
+
+图依据：Robbyant/LingBot-Depth@f3a237e，读过 README.md、example.py、mdm/model/v2.py（from_pretrained、forward、infer）；encoder、neck、decoder、depth_to_pointcloud 的内部实现未读。
+
 ## 关联页面
 
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
@@ -73,6 +106,7 @@ LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含�
 
 - [LingBot-Depth 官方仓库核查](../../sources/repos/lingbot-depth.md)
 - [官方组织资产索引](../../sources/sites/robbyant_github.md)
+- 源码核对（2026-11-02）：Robbyant/LingBot-Depth@f3a237e，读过 README.md、example.py、mdm/model/v2.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

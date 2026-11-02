@@ -55,10 +55,50 @@ summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器�
 - **对照：[FLAP](./paper-flap-fov-active-perception-3d-navigation.md)** — 同机构（ZJU）**无先验地图** 路线，把 **FOV 主动感知** 嵌入 MINCO 轨迹优化；EGO 不显式优化传感器可见性，FLAP 侧重窄 FOV 与竖向机动安全。
 - **对照：[SANDO](./paper-sando.md)** — 显式追踪动态障碍并以 STSFC + 硬约束 MIQP 做连续时间避碰分析；EGO 的核心路线仍是 ESDF + B-spline 快速局部规划。两者的安全保证和评测场景不能仅凭成功率横比。
 
+## 源码运行时序图
+
+入口：`roslaunch ego_planner simple_run.launch`（`plan_manage/launch/simple_run.launch` 包含 `rviz.launch` 与 `swarm.launch`；`swarm.launch` 启动 `map_generator/random_forest`，并对每架无人机 include `run_in_sim.launch`，后者再包含 `advanced_param.xml`（`ego_planner_node`）、`traj_server` 与 `simulator.xml`（`poscmd_2_odom`、`odom_visualization`、`local_sensing_node/pcl_render_node`））。
+
+```mermaid
+sequenceDiagram
+    participant L as roslaunch (swarm.launch / run_in_sim.launch)
+    participant MG as map_generator/random_forest
+    participant SIM as fake_drone/poscmd_2_odom
+    participant PR as local_sensing/pcl_render_node
+    participant GM as plan_env/GridMap
+    participant FSM as plan_manage/EGOReplanFSM (ego_planner_node)
+    participant PM as EGOPlannerManager + BsplineOptimizer
+    participant TS as plan_manage/traj_server
+    L->>MG: 启动并发布 /map_generator/global_cloud
+    L->>FSM: 启动 ego_planner_node（每机一个，参数来自 advanced_param.xml）
+    FSM->>PM: init：initPlanModules（GridMap.initMap、BsplineOptimizer、AStar）
+    Note over FSM: PRESET_TARGET(flight_type=2) 时 readGivenWps 读取 fsm/waypoint*
+    SIM-->>PR: odometry
+    MG-->>PR: global_map
+    PR-->>GM: depth + camera_pose（GridMap 更新占据栅格）
+    SIM-->>FSM: odom_world（odometryCallback）
+    loop execFSMCallback 每 10 ms
+        FSM->>FSM: INIT -> WAIT_TARGET -> SEQUENTIAL_START
+        FSM->>PM: planFromGlobalTraj -> callReboundReplan -> reboundReplan
+        PM->>PM: 多项式/当前轨迹初始化，initControlPoints（A* 绕障），BsplineOptimizeTrajRebound，refineTrajAlgo
+        PM-->>FSM: local_data_ 中的 B 样条
+        FSM-->>TS: planning/bspline (traj_utils/Bspline)
+        FSM-->>FSM: publishSwarmTrajs -> 广播 B 样条给其他机
+        TS-->>SIM: position_cmd（cmdCallback 每 10 ms）
+    end
+    Note over FSM: EXEC_TRAJ 中 t_cur 超过 thresh_replan_time 则转 REPLAN_TRAJ，planFromCurrentTraj
+    loop checkCollisionCallback 每 50 ms
+        FSM->>FSM: 检查轨迹碰撞与深度超时，必要时 EMERGENCY_STOP 并 callEmergencyStop
+    end
+```
+
+图依据：ZJU-FAST-Lab/ego-planner-swarm@92fe9f7，读过 `README.md`、`plan_manage/launch/{simple_run,swarm,run_in_sim,advanced_param,simulator}.xml/launch`、`plan_manage/src/{ego_planner_node,ego_replan_fsm,planner_manager,traj_server}.cpp`、`plan_manage/include/plan_manage/ego_replan_fsm.h`、`plan_env/src/grid_map.cpp`、`uav_simulator` 下 `poscmd_2_odom.cpp`、`pcl_render_node.cpp`、`random_forest_sensing.cpp`（仅看订阅/发布与定时器）。`bspline_opt` 内部优化细节、`drone_detect`、`rosmsg_tcp_bridge` 未读，未画。
+
 ## 参考来源
 
 - [sources/repos/ego_planner_swarm.md](../../sources/repos/ego_planner_swarm.md)
 - [ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-swarm)
+- 源码核对（2026-11-02）：ZJU-FAST-Lab/ego-planner-swarm@92fe9f7，读过 README.md、plan_manage 的 launch 文件与 ego_planner_node.cpp、ego_replan_fsm.cpp/.h、planner_manager.cpp、traj_server.cpp、plan_env/grid_map.cpp、uav_simulator 的 poscmd_2_odom.cpp、pcl_render_node.cpp、random_forest_sensing.cpp；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

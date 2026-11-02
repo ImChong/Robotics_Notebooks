@@ -55,6 +55,49 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/rsl_rl/train.py --task=WalkRun12dof-E1-v0 --num_envs=4096 --headless`（训练）→ `python scripts/rsl_rl/play.py --task=WalkRun12dof-E1-v0 --num_envs=1`（回放并导出 ONNX）→ `python scripts/sim2sim_12dof.py --policy .../exported/policy.onnx`（MuJoCo 跨仿真验证）。下图画 WalkRun12dof（AMP-PPO）链路；`Mimic-E1-v0` 任务另有 `tasks/mimic`，本次未读。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 train.py
+    participant T as scripts/rsl_rl/train.py
+    participant TK as NoetixE1/tasks/walkrun12dof (gym.register)
+    participant E as ManagerBasedRLAmpEnv (env/manager_based_rl_amp_env.py)
+    participant W as RslRlVecEnvWrapper (isaaclab_rl)
+    participant R as rsl_rl/runners AmpOnPolicyRunner
+    participant P as AMPPPO + Discriminator
+    participant PL as scripts/rsl_rl/play.py
+    participant S as scripts/sim2sim_12dof.py
+    U->>T: --task --num_envs --headless
+    T->>T: AppLauncher 启动 Isaac Sim，import NoetixE1.tasks 触发 gym.register
+    T->>TK: hydra_task_config 取 WalkRunFlatEnvCfg 与 AmpPpoRunnerCfg
+    T->>E: gym.make("WalkRun12dof-E1-v0", cfg)
+    T->>W: RslRlVecEnvWrapper(env, clip_actions)
+    T->>R: eval(agent_cfg.class_name) 得 AmpOnPolicyRunner(env, cfg, log_dir)
+    R->>P: _construct_algorithm 用 env.unwrapped.motion_loader 作 AMP 专家数据，建 Discriminator
+    T->>R: runner.learn(max_iterations, init_at_random_ep_len=True)
+    loop 每个 iteration
+        R->>P: alg.act(obs)
+        R->>W: env.step(actions)
+        W->>E: ManagerBasedRLAmpEnv.step 物理步进、奖励、终止、重置
+        E-->>R: obs 含 discriminator 观测
+        R->>P: discriminator.predict_amp_reward 得风格奖励，与任务奖励按 amp_reward_lerp 混合
+        R->>P: alg.process_env_step 入 storage
+        R->>P: alg.update() 更新策略与判别器
+    end
+    R->>R: save() 保存含 discriminator_state_dict 的 checkpoint
+    U->>PL: play.py --task
+    PL->>R: runner.load(resume_path)，get_inference_policy
+    PL->>PL: export_policy_as_onnx + attach_onnx_metadata 写 exported/policy.onnx
+    PL->>W: 循环 policy(obs)，env.step
+    U->>S: sim2sim_12dof.py --policy policy.onnx
+    S->>S: onnxruntime 推理，PD 力矩 data.ctrl，mujoco.mj_step
+```
+
+图依据：Noetix-Robotics/noetix_e1_lab@5a1d62d，读过 README.md、scripts/rsl_rl/{train,play}.py、scripts/sim2sim_12dof.py（run 循环）、source/NoetixE1/NoetixE1/tasks/walkrun12dof/noetix_e1/{__init__.py,agents/rsl_rl_amp_ppo_cfg.py,env/manager_based_rl_amp_env.py}（仅 step 文档串与类定义）、rsl_rl/rsl_rl/runners/amp_on_policy_runner.py（learn、save、_construct_algorithm 相关段）；Isaac Lab 自身代码、mdp 奖励细节、`tasks/mimic` 与 `sim2sim_mimic.py` 未读。注意 play.py 里文件前半部分是被注释掉的旧版本，实际生效的是 318 行之后的代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +109,7 @@ institutions:
 - [noetix_e1_lab 源码归档](../../sources/repos/noetix_e1_lab.md)（<https://github.com/Noetix-Robotics/noetix_e1_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Noetix-Robotics/noetix_e1_lab@5a1d62d，读过 README.md、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py、scripts/sim2sim_12dof.py、walkrun12dof 的 __init__.py / agents/rsl_rl_amp_ppo_cfg.py / env/manager_based_rl_amp_env.py、rsl_rl/rsl_rl/runners/amp_on_policy_runner.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

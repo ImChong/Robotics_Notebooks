@@ -71,6 +71,36 @@ sources:
 - 版本日志只列部分亮点且只写年月。
 - 论文数字（3–10 倍、约 10,000 FPS、约 90% 抓取成功率）来自官网转述，本次未重读论文全文。
 
+## 源码运行时序图
+
+本页是公司页；可运行实现对应其开源训练框架 MotrixLab（`Motphys/MotrixLab`，物理引擎 MotrixSim 本体未在该仓库内）。详细的异步 collector/learner 流程见 [Motrix（MotrixSim / MotrixLab）](./motrix.md)，下图只画命令入口到训练器的主调用链。
+
+入口：`mxlab train task=microduck-walk-flat/motrix.fastsac play=true`（`mxlab = motrixlab.cli:main`，见 `motrixlab/pyproject.toml`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 mxlab train
+    participant CLI as motrixlab/cli.py main()
+    participant TR as motrix_rl/commands/train.py
+    participant RN as motrix_rl/runner.py
+    participant FW as motrix_rl_builtin/fastsac/framework.py FastSacProvider
+    participant Tn as fastsac 的 Trainer（async_impl 或 sync）
+    U->>CLI: mxlab train task=...
+    CLI->>TR: import_module("motrix_rl.commands.train").main()
+    TR->>TR: load_plugins()（Hydra 组合配置之前注册框架配置）
+    TR->>TR: hydra.main(config_name="train") → to_typed_config(TrainConfig)
+    TR->>RN: runner.train(TrainRequest(config, render))
+    RN->>FW: frameworks.get_agent_provider(rllib, algo, train_backend)
+    RN->>FW: create_trainer(context)
+    FW->>Tn: rl_cfg.asynchronous 为真用 async_impl.train.Trainer，否则 sync.train.Trainer
+    RN->>Tn: create_training_handle(request).train()
+    Tn-->>RN: 训练完成
+    RN-->>TR: TrainResult
+    TR->>TR: cfg.play 为真时 train_result.play(RenderConfig())
+```
+
+图依据：Motphys/MotrixLab@8a1b6c3，读过 README.md、motrixlab/src/motrixlab/cli.py、motrixlab/pyproject.toml（scripts）、motrix_rl/src/motrix_rl/commands/train.py、motrix_rl/src/motrix_rl/runner.py（函数列表与 train/create_training_handle 片段）、motrix_rl_builtin/src/motrix_rl_builtin/fastsac/framework.py（函数列表与 create_trainer）。Trainer 内部、MotrixSim 环境实现未读。
+
 ## 关联页面
 
 - [Motrix（MotrixSim / MotrixLab）](./motrix.md)
@@ -84,6 +114,7 @@ sources:
 - [Motphys 官网首页、关于、研究与版本日志核查（2026-10-17）](../../sources/sites/motphys.md)
 - [Motrix 仓库归档](../../sources/repos/motphys-motrix.md)
 - 官网：<https://www.motphys.com/zh/>
+- 源码核对（2026-11-02）：Motphys/MotrixLab@8a1b6c3，读过 README.md、motrixlab/src/motrixlab/cli.py、motrix_rl/src/motrix_rl/commands/train.py、motrix_rl/src/motrix_rl/runner.py、motrix_rl_builtin/src/motrix_rl_builtin/fastsac/framework.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
