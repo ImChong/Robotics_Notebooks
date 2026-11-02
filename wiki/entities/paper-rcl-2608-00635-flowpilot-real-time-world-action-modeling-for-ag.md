@@ -41,6 +41,21 @@ We present FlowPilot, a compact world-action model for real-time onboard UAV nav
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["当前深度图 o + 状态目标向量 s<br/>+ 巡航速度指令 c + 上一条轨迹"] --> VE["视频专家<br/>冻结 Wan2.2 VAE 编码深度<br/>预测未来深度 latent 速度场"]
+  IN --> AEX["动作专家<br/>预测 5 个自由 Bernstein 控制点速度场"]
+  VE <-->|"共享联合注意力"| AEX
+  AEX --> BZ["度-7 Bernstein 多项式轨迹<br/>前 3 个控制点由当前状态约束<br/>闭式速度 / 加速度 / jerk"]
+  BZ --> CTRL["下游控制器跟踪参考轨迹"]
+  VE -.->|"训练提供稠密监督；部署不需解码未来深度"| NOTE["部署：只输出去噪后的控制点"]
+  PH1["阶段一：仅世界建模预训练<br/>三层深度金字塔"] --> PH2["阶段二：联合 flow matching 对齐<br/>全 token 联合注意力"]
+```
+
+图依据：论文 §III-A–F / Fig.2–4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ We present FlowPilot, a compact world-action model for real-time onboard UAV nav
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.00635>
+- [arXiv PDF](https://arxiv.org/pdf/2608.00635)：已通读方法部分（实验与附录以略读为准）：III Method（Problem Formulation、Network Architecture、Bernstein Polynomial Action Representation、Training Data、Flow-Matching Objective、Two-Phase Training）
 
 ## 推荐继续阅读
 

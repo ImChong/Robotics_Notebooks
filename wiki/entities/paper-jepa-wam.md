@@ -41,6 +41,30 @@ summary: "V-JEPA 潜空间联合嵌入世界动作模型：共享预测器学习
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前多视角观测 O_t + 任务指令 ℓ + 本体状态 s_t"] --> ENC["冻结 V-JEPA 2.1 编码器<br/>逐视角编码，按固定相机顺序拼接 patch tokens 得 Z_t"]
+    ENC --> PRJ["视觉投影器 P_vis"]
+    PRJ --> PRED["共享预测器 F_θ（Qwen2.5-0.5B + LoRA）<br/>输入：投影后的视觉 token、指令、动作占位 token"]
+    PRED --> Q["视觉 token 位置的隐状态 Q_t"]
+    PRED --> C["动作占位 token 的表示 C_t"]
+    C --> ACT["DiT 动作专家（条件 flow matching）"]
+    ACT --> OUT["动作 chunk"]
+    ACT --> LACT["动作损失 L_act"]
+    FUT["未来观测 O_t+δ"] --> JT["冻结 V-JEPA 2.1 联合编码<br/>当前+未来两帧沿时间堆叠，stop-gradient，得目标 Y"]
+    OBS --> JT
+    Q --> HEAD["预测头 G_ϕ"]
+    HEAD --> LWM["patch 级余弦距离损失 L_wm"]
+    JT --> LWM
+    LACT --> LOSS["联合训练：L = L_act + λ_wm · L_wm，两项损失都更新 F_θ"]
+    LWM --> LOSS
+    OUT --> DEP["部署：移除目标分支与预测头，只保留动作生成"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.3（§3.4 / Fig.4 为迁移到预训练 VLA 的变体，图中未画）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +113,7 @@ summary: "V-JEPA 潜空间联合嵌入世界动作模型：共享预测器学习
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.09381](https://arxiv.org/abs/2608.09381)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09381)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.4）、§4.1 实验设定
 
 ## 推荐继续阅读
 

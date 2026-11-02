@@ -41,6 +41,35 @@ We introduce AcrossWAM1.0, a modularization and scaling study of this latent wor
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1：潜在世界模型（继承自 LaWAM）"]
+        A["转移对 (o_t, o_t+Δ) → 冻结 DINOv3 → 补丁特征 h_t, h_t+Δ"]
+        B["逆动力学 Q-Former → 32 维潜动作 z_t（训练期教师）"]
+        C["潜在世界解码器 D_ω（AdaLN 受 z_t 调制）→ 预测未来特征"]
+        D["状态落地：g_ξ(s_t, z_t) 预测状态位移"]
+        A --> B --> C
+        B --> D
+    end
+    subgraph S2["Stage 2：策略学习与推理"]
+        E["指令 + 主视角 + 腕部/辅助视角 → Qwen-VL 或 AcrossVAM 骨干适配器"]
+        F["ACT 查询（8 个）→ 交叉注意力映射 → 预测潜动作 ẑ_t"]
+        G["流查询（8 个）→ 动作专家的骨干上下文"]
+        H["D_ω(h_t, ẑ_t) → 潜在视觉子目标 ĥ_t+Δ"]
+        I["Flow-DiT 动作专家：条件 = 骨干上下文 + (h_t, ĥ_t+Δ) + 可选状态"]
+        J["动作块"]
+        E --> F --> H --> I
+        E --> G --> I
+        I --> J
+    end
+    B -. "蒸馏目标 z*（仅训练）" .-> F
+    C -. "保留解码器" .-> H
+```
+
+图依据：论文 §3.3–3.5 / Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +126,7 @@ We introduce AcrossWAM1.0, a modularization and scaling study of this latent wor
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.29937>
+- [arXiv PDF](https://arxiv.org/pdf/2608.29937)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.5）；实验与部署导出验证仅略读
 
 ## 推荐继续阅读
 

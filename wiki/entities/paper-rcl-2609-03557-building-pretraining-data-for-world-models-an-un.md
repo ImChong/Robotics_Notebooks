@@ -42,6 +42,23 @@ This paper documents the Unreal Engine synthetic-data component used in EchoWM: 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["资产准备：Fab 场景包 + 角色资产，自动扫描生成全局渲染配置"] --> B["预生产筛选：可渲染性检查（5 段 10 秒 540p 人工看）"]
+    B --> C["视觉质量过滤：aes > 5.5 且 25 < lum < 140，关卡通过率 > 25% 才保留"]
+    C --> D["中央任务分配器：按节点划分关卡池，HTTP 拉取任务"]
+    D --> E["节点调度器管理槽位（每槽一个 UE 进程）"]
+    E --> F["Stage I：PIE 物理仿真，随机九态按键动作 + 兴趣点引导 + 死角恢复<br/>记录角色位姿 / 动作 / 五路相机轨迹"]
+    F --> G["中间轨迹文件（两阶段之间的契约）"]
+    G --> H["Stage II：新 UE 进程逐帧回放，Movie Render Queue 离线高质量渲染"]
+    H --> I["输出：scene / level / instance / trajectory 层级目录"]
+    I --> J["异步上传器：传到对象存储，成功后才删本地副本"]
+```
+
+图依据：论文 §3.2、§4.2、§5–§8 / Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ This paper documents the Unreal Engine synthetic-data component used in EchoWM: 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.03557>
+- [arXiv PDF](https://arxiv.org/pdf/2609.03557)：已通读方法部分（实验与附录以略读为准）：§3–§8（数据生成总览、资产与筛选、系统架构、轨迹生成、离线渲染、可靠性）；§9 起及附录略读
 
 ## 推荐继续阅读
 

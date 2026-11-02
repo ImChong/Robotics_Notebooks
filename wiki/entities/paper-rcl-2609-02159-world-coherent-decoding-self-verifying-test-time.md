@@ -41,6 +41,26 @@ We propose World-Coherent-Decoding (WCD), a self-verifying test-time planning fr
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["已执行历史缓存 C_m"] --> B["冻结 WAM 采样 N 个候选：想象未来潜变量 + 动作块"]
+    B --> C["视频侧流惊异度 s_surp（预热前）或在线预测器得分 s_pred（预热后）"]
+    B --> D["动作侧路径力度 s_a（去噪更新量）"]
+    C --> E["各自在 N 个候选间标准化后按 λ_m 融合 c_m,n"]
+    D --> E
+    E --> F["选 c 最小的候选，执行其动作块"]
+    F --> G["真实观测 z_real 到来，与被选想象比较：后向误差 b_m"]
+    G --> H["自适应调整融合权重 λ_m+1"]
+    G --> I["规划期特征 φ 与误差向量存入回放缓冲区 B"]
+    I --> J["在线训练轻量预测器 f_ψ，预测未来想象-现实偏差"]
+    J -- "|B| 达到阈值后切换" --> C
+    H --> E
+```
+
+图依据：论文 §3.1–3.4 / Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ We propose World-Coherent-Decoding (WCD), a self-verifying test-time planning fr
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.02159>
+- [arXiv PDF](https://arxiv.org/pdf/2609.02159)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.4）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

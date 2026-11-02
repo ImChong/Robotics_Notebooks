@@ -41,6 +41,24 @@ We introduce GameWAM, to our knowledge the first WAM for native closed-loop game
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CTX["条件上下文 Γ<br/>当前 cycle 的干净观测 + 语言指令 + 跨 cycle 视觉历史 H + 可选本体状态"] --> VIS["Video DiT 编码干净前缀<br/>得到逐层 K/V 状态，视频与动作分支共享"]
+    VIS --> VD["Video DiT 分支<br/>视频 latent 流匹配"]
+    VIS --> AD["Action DiT 分支<br/>流匹配预测完整原生动作向量"]
+    AD --> RT["逐时间步路由器<br/>gameplay / GUI 两个预测分支"]
+    RT --> PLAN["P 步动作计划"]
+    PLAN --> EXE["仅执行前 E 个动作 (E < P)"]
+    EXE --> OBS["环境返回新观测<br/>仅已执行的观测进入干净因果上下文"]
+    OBS -->|"更新 cycle K/V cache，重规划重叠的 P-E 后缀"| CTX
+    OBS -->|"cycle 结束"| HIS["Conv3D(VAE) 压缩已执行片段<br/>近期 FIFO 缓冲 + 注意力池化长期记忆槽<br/>→ 跨 cycle 历史 H；cycle K/V cache 清空重置"]
+    HIS --> CTX
+```
+
+图依据：论文 §4.1–4.2 / Fig.3（block–cycle 控制与分层历史）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ We introduce GameWAM, to our knowledge the first WAM for native closed-loop game
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.26200>
+- [arXiv PDF](https://arxiv.org/pdf/2608.26200)：已通读方法部分（实验与附录以略读为准）：§4.1–4.3（含 Fig.3）
 
 ## 推荐继续阅读
 

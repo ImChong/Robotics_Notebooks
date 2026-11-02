@@ -42,6 +42,32 @@ We present SimWAM, a simple yet effective WAM that leverages future-video predic
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["前视相机当前帧 o_t + 自车状态 s_t + 导航指令 l"] --> VAEc["视频 VAE 编码当前帧 z(o_t)，作为干净条件"]
+    IN --> T5["T5 文本编码器编码导航指令，经 cross-attention 注入"]
+    IN --> MLP["自车状态经小 MLP 嵌入"]
+    VAEc --> VDIT["视频专家 Video DiT（Wan2.2-5B 初始化）"]
+    T5 --> VDIT
+    FUT["N 帧未来帧（加噪，仅训练）"] --> VDIT
+    VDIT -->|"共享注意力：只传递当前帧表示"| ADIT["动作专家 Action DiT（hidden 1024，flow matching）"]
+    MLP --> ADIT
+    NA["带噪轨迹"] --> ADIT
+    FUT -.->|"隔离注意力掩码：动作 token 看不到未来帧 token"| ADIT
+    ADIT --> TRAJ["自车轨迹 a_t+1:t+H（x, y, 航向）"]
+    VDIT --> LV["未来帧 flow matching 损失 L_vid"]
+    ADIT --> LA["轨迹 flow matching 损失 L_act"]
+    LV --> CO["联合训练：L = L_act + λ · L_vid"]
+    LA --> CO
+    TRAJ --> RL["强化学习：SDE 仅在去噪最后 3 步采样，G 个候选，按驾驶奖励做组相对优势（GRPO 类）+ 锚定正则"]
+    RL --> ADIT
+    TRAJ --> INF["推理与 RL 时不生成未来帧，直接输出轨迹"]
+```
+
+图依据：论文 §4.1 模型架构、§4.2 强化学习 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +125,7 @@ We present SimWAM, a simple yet effective WAM that leverages future-video predic
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.07468>
+- [arXiv PDF](https://arxiv.org/pdf/2608.07468)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Preliminary、§4 Method（4.1–4.3）
 
 ## 推荐继续阅读
 

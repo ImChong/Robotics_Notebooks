@@ -41,6 +41,30 @@ We propose \textbf{GaussianWAM}, a training-time representation-enhancement fram
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["离线 Gaussian 教师（仅训练期）"]
+        A["当前多视角观测 I^v"] --> B["冻结 VGGT：深度 / 置信度 / 相机参数<br/>过滤得到几何有效掩码"]
+        A --> C["冻结 CLIP ViT-B/16 稠密特征<br/>投影到 64 维"]
+        B --> D["初始化 3D Gaussian 场<br/>每个有效位置一个基元"]
+        C --> D
+        D --> E["多视角可微渲染拟合 N_fit=50<br/>语义 + 深度 + 覆盖率损失"]
+        E --> F["离线缓存教师 T<br/>语义 / 深度 / 覆盖率 α / 有效掩码"]
+    end
+    subgraph W["WAM 训练（FastWAM 式 MoT 或 Cosmos-Policy 式统一 DiT）"]
+        G["WAM 末层当前观测 hidden tokens"] --> H["三个轻量辅助头<br/>预测语义 / 深度 / 覆盖率"]
+        G --> L0["原 WAM 动作与世界预测路径及目标 L_WAM"]
+    end
+    F -->|"仅在有效位置做蒸馏监督 L_G"| H
+    H --> TL["总损失 L_WAM + λ_G · L_G"]
+    L0 --> TL
+    TL --> INF["推理：移除教师与辅助头，沿用原 WAM 前向路径"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.2、Eq.(1)–(15)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ We propose \textbf{GaussianWAM}, a training-time representation-enhancement fram
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.24714>
+- [arXiv PDF](https://arxiv.org/pdf/2608.24714)：已通读方法部分（实验与附录以略读为准）：§3.1–3.5
 
 ## 推荐继续阅读
 

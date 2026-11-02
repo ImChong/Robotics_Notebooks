@@ -41,6 +41,24 @@ This work presents RepWAM, a representation-centric world action model (WAM) bui
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["视觉观测 o(1:T)"] --> VT["视觉 tokenizer（ViT 自编码器，时间因果 mask）<br/>编码器 Eθ → 视频 latent z"]
+    VFM["冻结视觉基础模型 G"] -. "L_align：特征对齐" .-> VT
+    VT --> REC["解码器 Dθ → 重建帧（L_rec）"]
+    VT -->|"冻结，z_t 与 z_(t+1)"| IDM["潜动作 tokenizer：IDM q_φ → 潜动作 ℓ_t"]
+    IDM --> FDM["FDM f_ψ(z_t, ℓ_t) → 传输矩阵 K_t 与残差 δ_t<br/>ẑ_(t+1) = K_t·z_t + δ_t（L_fwd / L_cons）"]
+    VT --> CH
+    IDM --> CH["视觉 latent + 潜动作 按 chunk 组成序列<br/>前缀：语言 token c 与初始 z_1"]
+    LG["语言指令 y → 文本编码器"] --> CH
+    CH --> WAM["因果 diffusion transformer（block-causal mask）<br/>视觉专家 / 动作专家共享注意力、各自 FFN<br/>flow matching 联合预训练"]
+    WAM --> AD["用带连续电机指令的真机数据适配<br/>→ 闭环操作"]
+```
+
+图依据：论文 §3.1–3.3、§4.1 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ This work presents RepWAM, a representation-centric world action model (WAM) bui
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.13674>
+- [arXiv PDF](https://arxiv.org/pdf/2606.13674)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method（3.1–3.3）、§4.1 实现细节
 
 ## 推荐继续阅读
 

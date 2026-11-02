@@ -41,6 +41,25 @@ We present TacWAM, a mechanics-aware tactile WAM that addresses this challenge i
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测：视觉 o_v、触觉 o_tac（修正图像 + 稠密力场 + 网格形变流）、本体状态 q、任务语言 l"] --> SAF["阶段一：SAF 触觉编码器 E_SAF 得到触觉 latent z_tac；R_tac 重建力场、形变流与双侧合力矩（wrench）"]
+    SAF --> FREEZE["冻结触觉编码器与解码器"]
+    FREEZE --> HIST["触觉历史编码器 E_hist：近期 z_tac → 块级触觉上下文 c_tac（经自适应归一化调制触觉专家）"]
+    FREEZE --> TOK["token 排布：[V0, V1:H | T0, T1:H | A]（V0、T0 为干净锚点）"]
+    OBS --> TOK
+    TOK --> MOT["三流 Mixture-of-Transformers：视觉 / 触觉 / 动作专家，AGT 掩码约束的混合自注意力；语言与本体经 cross-attention 提供"]
+    HIST --> MOT
+    MOT --> VF["未来视觉预测 V1:H（仅训练监督）"]
+    MOT --> TF["未来触觉预测 T1:H；冻结可微 R_tac 解码做一致性正则"]
+    MOT --> ACT["动作块 A：仅读 V0、T0 与动作 token，不能读未来视觉/触觉 token"]
+    ACT --> EXEC["部署：块级推理 → 执行一个动作块 → 新观测 → 下一块（滚动时域闭环）"]
+```
+
+图依据：论文 §3.1–§3.6 与 Fig. 1、Table 1（AGT visibility）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ We present TacWAM, a mechanics-aware tactile WAM that addresses this challenge i
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.28391>
+- [arXiv PDF](https://arxiv.org/pdf/2607.28391)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–§3.6）、§4.1 实验设置
 
 ## 推荐继续阅读
 

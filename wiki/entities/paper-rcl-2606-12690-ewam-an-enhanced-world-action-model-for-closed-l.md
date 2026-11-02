@@ -41,6 +41,32 @@ In this paper, we propose the Enhanced World Action Model (EWAM), a closed-loop 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["视觉观测 o_t、本体状态 q_t、语言指令 l"] --> VLE["视觉-语言编码器 VLE（冻结）→ h_VLE"]
+    VLE --> AR["自回归 Reasoner（冻结）→ 推理上下文 c_t"]
+    AR --> DIT["DiT 动作生成器（冻结），其第 l_mem = 6 层插入<br/>神经经验记忆层"]
+    MEM[("经验记忆 M<br/>top-k = 5 检索")] --> DIT
+    DIT --> SH["状态预测头 → ŝ(t+1)"]
+    DIT --> AH["动作头 → 原始动作块 a0"]
+    SH --> AN["神经异常检测层 → 异常向量 ι_t<br/>（预测残差、动力学不一致、碰撞、空抓、幻觉、力违规）"]
+    AH --> AN
+    AN --> RT["神经策略路由层 → r_t"]
+    RT -->|"direct"| COR["神经动作修正层 → 修正动作 a*"]
+    RT -->|"conservative"| COR
+    RT -->|"rollback：从记忆取最近稳定状态的保守动作"| COR
+    AH --> COR
+    COR --> ENV["环境执行"]
+    ENV --> FLT["经验过滤质量门（安全 / 任务 / 效率阈值）"]
+    FLT -->|"合格"| UPD["写入记忆 M；间歇更新四个神经层与轻量 adapter"]
+    UPD --> MEM
+    FLT -->|"不合格"| LOG["仅记录诊断，不入记忆、不参与更新"]
+```
+
+图依据：论文 §3.1–3.10 / Fig.1、Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ In this paper, we propose the Enhanced World Action Model (EWAM), a closed-loop 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.12690>
+- [arXiv PDF](https://arxiv.org/pdf/2606.12690)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.11；实验 §4 略读）
 
 ## 推荐继续阅读
 

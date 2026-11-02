@@ -42,6 +42,32 @@ WorldAgen shares a Transformer between action prediction and future-observation 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["预训练（机器人示范轨迹，teacher forcing）"]
+        P1["轨迹切分与动作分块<br/>轨迹单元 U_i = (G_i, O_i, S_i, A_i, A_p, O_p)"] --> P2["共享 Transformer 骨干 + Mixed Unidirectional Attention Mask<br/>（局部 mask + 全局 mask，严格因果）"]
+        P2 --> P3["Agent model 头：预测动作块 Â_i（条件含指令 G_i）"]
+        P2 --> P4["World model 头：预测下一观测块 Ô_i（任务无关，看不到 G_i）"]
+        P3 --> P5["联合损失 L = L_a + λ·L_o"]
+        P4 --> P5
+    end
+    subgraph INF["两步推理（对每个轨迹单元 i）"]
+        I1["Agent model 步：零初始化动作占位 A_p 输入，预测 Â_i 并覆盖占位"] --> I2["World model 步：基于 Â_i 预测下一观测块 Ô_i"]
+        I2 --> I3["执行动作，环境产生下一单元 U_i+1"]
+        I3 -.-> I1
+    end
+    subgraph TTT["测试时训练 TTT（部署到新环境）"]
+        T1["阶段 1：随机探索<br/>记录 (O_i, S_i, A_i)，指令统一换成 no-lang token"] --> T2["阶段 2：仅用观测重建损失 L_o<br/>对共享骨干做 LoRA 微调，策略头冻结"]
+    end
+    PRE --> INF
+    PRE --> TTT
+    T2 -.->|"更新后的世界模型表征"| INF
+```
+
+图依据：论文 Method 各小节（Task Formulation、Joint State–Action Prediction、Mixed Unidirectional Attention Mask、Two-Step Inference、Test-Time Training）/ Fig.1–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ WorldAgen shares a Transformer between action prediction and future-observation 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2609.08162>
+- [arXiv PDF](https://arxiv.org/pdf/2609.08162)：已通读方法部分（实验与附录以略读为准）：摘要、Introduction、Method 全部小节、Experiments 的 Implementation Details；结果表略读
 
 ## 推荐继续阅读
 

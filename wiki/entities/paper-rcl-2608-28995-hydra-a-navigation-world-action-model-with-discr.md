@@ -41,6 +41,23 @@ In this paper, we present Hydra, a discrete World Action Model that closes this 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["观测历史 H_t<br/>图像 I / 位姿 p / 上一动作 a"] --> B["统一早期融合编码<br/>冻结 VAE 视觉潜变量 + Fourier Feature 位姿/动作"]
+    B --> C["Transformer Encoder<br/>与 H 个可学习 context tokens 拼接"]
+    C --> D["Transformer Decoder<br/>cross-attend 未来位姿/动作 → intent tokens"]
+    D --> E["按模态 VQ 码本<br/>视觉 2048 / 位姿 64 / 动作 64"]
+    E --> F["离散潜空间规划 DLP<br/>无偏专家先验初始化 + 高斯噪声 + Gumbel 扰动采样"]
+    F --> G["KPC 多目标代价在 intent token 上排序<br/>几何/语义目标 + 专家先验 NLL + 视觉熵 + 流形拒绝"]
+    G -->|"最低代价种子, 迭代"| F
+    G --> H["仅对选中轨迹做 Flow Matching 解码<br/>三个 DiT 流解码头: 图像/位姿/动作"]
+    H --> I["Action Chunking 闭环执行"]
+```
+
+图依据：论文 §3.2–3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ In this paper, we present Hydra, a discrete World Action Model that closes this 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.28995>
+- [arXiv PDF](https://arxiv.org/pdf/2608.28995)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4（含 Fig.2/Fig.3）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ These models can achieve exceptional visual quality, but they lack explicit spat
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["过去 RGB 帧 I_0:t"] --> B["4DGS 重建器<br/>得到 Gaussian 基元 G_0:t，取当前活跃快照 G_t"]
+    A --> C["视觉基础模型 VFM<br/>分割 / 光流 / 深度 / 相机位姿"]
+    C --> D["物体掩码关联 Gaussians<br/>动态物体 G_t^(o) + 静态背景 G_static"]
+    C --> E["抬升到 3D：物体中心轨迹 T_0:t 与 3D 流对应 F"]
+    B --> D
+    D --> S["抽象状态 s_t"]
+    E --> S
+    S --> P["时间条件策略 π(s_t, h)<br/>memory token + 因果时间注意力 + actor kNN 注意力<br/>一次评估得到每个 actor 的目标时域 SE(3) 动作"]
+    P -->|"含 ego 动作 → 未来相机位姿"| W
+    D --> W["世界模型 W(G_t, a, h)<br/>part tokens 上预测残差 SE(3) twist，混合到 splats 并与动作复合；残差外观更新"]
+    W --> G["未来 splats Ĝ_t′ ∪ G_static"]
+    G --> R["在目标相机位姿渲染未来观测 Î_t′"]
+    E -.->|"训练：3D 流监督 W"| W
+```
+
+图依据：论文 §3.1–3.2 / Fig.1、Fig.3、Eq.(1)–(5)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ These models can achieve exceptional visual quality, but they lack explicit spat
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.25956>
+- [arXiv PDF](https://arxiv.org/pdf/2608.25956)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.3）
 
 ## 推荐继续阅读
 

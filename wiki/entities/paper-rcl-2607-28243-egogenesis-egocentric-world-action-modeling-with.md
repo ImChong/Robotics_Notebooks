@@ -41,6 +41,26 @@ We present \method, an egocentric world-action simulator that synthesizes contro
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：首帧 I0、语言指令 y、相机内外参、动作几何（MANO / 灵巧手骨架 / 机器人末端轨迹）"] --> GEN["分块（chunkwise）因果 DiT：逐块 flow matching 去噪，首帧固定"]
+    IN --> OAPM["OAPM：不可变首帧锚点 Ma + 可替换的近期快照 Mr，经 VGGT-Ω 编码得到 3D 场景记忆 Mb"]
+    OAPM --> GCA["选定 DiT 层的门控 cross-attention：H ← H + GatedCrossAttn(Q, K, V)"]
+    IN --> A3D["A3D-RoPE：骨架 / 末端 latent 带度量 3D 坐标，作为旋转相位用于骨架到视频的 cross-attention"]
+    GCA --> GEN
+    A3D --> GEN
+    GEN --> COMMIT["Z_b 去噪完成 → 提交到因果 KV cache（供下一块使用）"]
+    COMMIT --> REFRESH["每隔 s_r 块：解码最近帧并编码成新快照，仅替换近期槽 Mr，锚点不覆盖"]
+    REFRESH --> OAPM
+    COMMIT --> PAIR["生成的视频–动作配对轨迹"]
+    PAIR --> AUG["与真实示教混合（400 条真实 + 400 条生成）"]
+    AUG --> FT["微调下游 WAM（LingBot-VA 官方 checkpoint），评测 OOD 泛化"]
+```
+
+图依据：论文 §3 Preliminaries、§4 Method（Model Overview / OAPM / A3D-RoPE）与 Fig. 3、附录 Downstream WAM Training 与 §5 Downstream WAM Generalization。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ We present \method, an egocentric world-action simulator that synthesizes contro
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.28243>
+- [arXiv PDF](https://arxiv.org/pdf/2607.28243)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminaries、§4 Method（Model Overview、OAPM、A3D-RoPE）；§5 下游 WAM 泛化与附录下游训练细节为略读
 
 ## 推荐继续阅读
 

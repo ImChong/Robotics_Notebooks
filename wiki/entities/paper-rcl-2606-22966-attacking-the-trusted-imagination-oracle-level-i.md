@@ -41,6 +41,23 @@ Many recent vision-language-action (VLA) policies adopt an imagine-then-act desi
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  O["当前相机观测 o"] --> ADD["o + δ<br/>ℓ∞ 预算 ||δ||∞ ≤ ε"]
+  ADD --> E["冻结编码器 E"]
+  E --> W["冻结世界模型 W (条件: 指令 c)"]
+  W --> Z["想象的未来 z̃_adv"]
+  Z --> V["下游 oracle V<br/>(gate / MPC / verifier) 据 z̃ 决策"]
+  Z --> L["攻击目标 L(δ)<br/>untargeted: 远离 z̃_clean (1-cos)<br/>targeted: 逼近 z̃_tgt"]
+  L -->|"∇δ 反传经 W、E, PGD: δ ← Π(δ - α·sign(g))"| ADD
+  Z --> DET["防御: denoiser 自一致性检测<br/>小噪声级的未来帧 velocity 预测范数 s(z̃)<br/>无需干净参照"]
+  DET -->|"s(z̃) > τ"| FLAG["判定想象被破坏"]
+```
+
+图依据：论文 §3 威胁模型、§4 方法（Algorithm 1）、Fig. 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Many recent vision-language-action (VLA) policies adopt an imagine-then-act desi
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.22966>
+- [arXiv PDF](https://arxiv.org/pdf/2606.22966)：已通读方法部分（实验与附录以略读为准）：§3 威胁模型、§4 方法；§5 实验仅读 5.1、5.2、5.6、5.7，其余略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ We present FlowDAgger, a sample- and compute-efficient method for adapting froze
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["部署：冻结的生成式基座策略 π_gp<br/>噪声 w 经 ODE 积分得动作块"] --> B["噪声策略 π_w：观测编码器 + MLP<br/>用 π_w(s) 代替 w ~ N(0, I)<br/>a = π_gp(s, π_w(s))"]
+    B --> C["人类操作员在环<br/>行为不满意时接管，给出纠正动作 a*"]
+    C --> D["纠正对 (s, a*)"]
+    D --> E["动作反演 Action Inversion<br/>K 步 Euler 逐步倒推，每步用不动点迭代<br/>得噪声目标 w*（WAM 则反演联合潜变量）"]
+    E --> F["干预缓冲区 (s, w*)"]
+    G["自主成功 rollout 中产生<br/>各转移的噪声"] --> H["自主缓冲区"]
+    F --> I["训练批：两缓冲区等比例采样<br/>回归损失 ‖π_w(s) - w*‖²"]
+    H --> I
+    I --> J["仅更新噪声策略 π_w 的参数 ϕ<br/>基座策略权重保持冻结"]
+    J --> B
+```
+
+图依据：论文 §3、§4.1–§4.3（式 1–5）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ We present FlowDAgger, a sample- and compute-efficient method for adapting froze
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.08877>
+- [arXiv PDF](https://arxiv.org/pdf/2607.08877)：已通读方法部分（实验与附录以略读为准）：摘要、§3 背景、§4 方法（4.1–4.3）、§5.1 实验设定；其余章节未细读
 
 ## 推荐继续阅读
 

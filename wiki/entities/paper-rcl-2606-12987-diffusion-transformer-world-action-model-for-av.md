@@ -42,6 +42,24 @@ Action-conditioned world models let an autonomous vehicle predict future camera 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["前视相机帧 x_t（CAM_FRONT, 256×256）"] --> ENC["冻结 SD-VAE 编码器 → 32×32×4 latent z_t<br/>patchify 为 8×8 = 64 个空间 token"]
+    A["自车动作 a(t+1:t+H)<br/>（steer, accel，z-score 归一化）"] --> FE["可学习 Fourier 动作嵌入 u"]
+    ENC --> C["条件 c = 时间步 τ + 池化 z_t + 动作嵌入 u"]
+    FE --> C
+    ENC --> IN["输入 token：扩散模式为带噪未来 latent<br/>直接回归模式为复制的 z_t"]
+    C --> DIT["Anchored VAE DiT（4 个 block，adaLN-Zero）<br/>预测残差 Δ_k"]
+    IN --> DIT
+    ENC -->|"残差锚点 z_t"| ADD["ẑ(t+k) = z_t + Δ_k"]
+    DIT --> ADD
+    ADD --> DEC["冻结 VAE 解码器 → 未来帧 x̂(t+1:t+H)"]
+```
+
+图依据：论文 §3、§4.2 / Fig.1（单次前向主模型；4.2 的 chain-anchor jump 模型未画入）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +117,7 @@ Action-conditioned world models let an autonomous vehicle predict future camera 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2606.12987>
+- [arXiv PDF](https://arxiv.org/pdf/2606.12987)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Dataset and Features、§4.1–4.3 Methods（实验 §5 略读）
 
 ## 推荐继续阅读
 

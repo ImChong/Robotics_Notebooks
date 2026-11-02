@@ -41,6 +41,26 @@ We propose SG-WAM, a self-guided framework that learns geometry-aware action-con
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IN["多视角观测 + 语言指令"] --> VLM["VLM 主干 Qwen3.5-0.8B<br/>视觉 / 语言 / 可学习 dynamics tokens 联合编码"]
+  VLM --> HV["主视角视觉 token 状态"]
+  VGGT["冻结 VGGT 教师<br/>几何特征"] -.-> GEO["几何对齐 Lgeo<br/>余弦相似度"]
+  HV --> GEO
+  VLM --> HQ["dynamics-token 状态"]
+  HQ --> SGWP["Self-Guided World Predictor<br/>结合干预动作序列预测未来 latent"]
+  ACT["干预动作序列 A(Δ)"] --> SGWP
+  FUT["未来观测"] --> EMA["EMA 策略副本<br/>生成预测目标"]
+  EMA -.-> LP["Lpred：MSE 对齐，stop-gradient"]
+  SGWP --> LP
+  VLM --> AE["条件 flow-matching 动作专家<br/>以 Ht = 视觉 · 语言 · dynamics 状态 为条件"]
+  AE --> OUT["动作 chunk"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.2（推理时去掉 VGGT 教师、SGWP 与 EMA 目标分支）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ We propose SG-WAM, a self-guided framework that learns geometry-aware action-con
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.01397>
+- [arXiv PDF](https://arxiv.org/pdf/2608.01397)：已通读方法部分（实验与附录以略读为准）：3 Method（Problem Formulation、Overall Framework、Self-Guided World Modeling、Action Expert、Training Objective）
 
 ## 推荐继续阅读
 

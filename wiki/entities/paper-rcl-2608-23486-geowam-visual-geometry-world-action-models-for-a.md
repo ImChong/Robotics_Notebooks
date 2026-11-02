@@ -41,6 +41,25 @@ Building on this insight, we introduce \textbf{GeoWAM}, a visual geometry world 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["K 帧多视角历史图像 I"] --> B["几何编码器 DVGT-2<br/>输出 L 个层级的 geometry tokens + ego tokens"]
+    B --> M["多层级历史记忆 Z_t"]
+    M --> GD["未来几何解码器<br/>可学习几何 query + 时间/视角/2D 位置嵌入<br/>因果时间自注意力 → 对 Z_t 交叉注意力"]
+    GD --> U["未来几何 token Û"]
+    U --> GH["共享几何头<br/>稠密点图 + 逐像素置信度"]
+    M --> PD["未来位姿解码器<br/>ego query 同时对 Z_t 与 sg(Û) 交叉注意力"]
+    U -->|"stop-gradient 单向连接"| PD
+    PD --> EG["未来 ego tokens"]
+    M -->|"历史 ego tokens"| TH
+    EG --> TH["轨迹头<br/>历史+未来 ego tokens 经因果时间 Transformer 精炼<br/>可学习轨迹 query 交叉注意力 → 回归头"]
+    TH --> TR["未来轨迹"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.2（两阶段：先几何预训练，再加动作头联合微调）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Building on this insight, we introduce \textbf{GeoWAM}, a visual geometry world 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.23486>
+- [arXiv PDF](https://arxiv.org/pdf/2608.23486)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.2）
 
 ## 推荐继续阅读
 

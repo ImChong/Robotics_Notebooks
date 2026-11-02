@@ -42,6 +42,23 @@ To address this, we propose Feedback Flow Matching (FBFM), a training-free infer
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  PREV["前一动作 chunk 执行中"] --> ENV["真实转移：编码为观测 latent z(t+i)<br/>在求解器各步之前到达"]
+  PREV --> OVL["与新 chunk 对齐的重叠区<br/>已承诺动作作为固定目标"]
+  FM["冻结的预训练 WAM<br/>flow matching 速度场 + 求解器"] --> GUIDE["伪逆引导修正（Eq.19）<br/>带掩码的速度场修正，每个求解步生效"]
+  ENV -->|"动态状态掩码"| GUIDE
+  OVL -->|"固定动作掩码"| GUIDE
+  GUIDE --> SW["分阶段 WAM：状态流修正 → 刷新状态上下文 → 动作流修正"]
+  GUIDE --> JT["联合生成 WAM：状态与动作联合修正<br/>经交叉 Jacobian 块直接修正动作"]
+  SW --> OUT["修正后的新 chunk（免训练）"]
+  JT --> OUT
+```
+
+图依据：论文 §3.1–3.5 / Fig.1–2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ To address this, we propose Feedback Flow Matching (FBFM), a training-free infer
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.29235>
+- [arXiv PDF](https://arxiv.org/pdf/2607.29235)：已通读方法部分（实验与附录以略读为准）：3 Method（Feedback Flow Matching with Overlapping Chunks、Unified Pseudoinverse-Guided Flow Correction、Stage-Wise 与 Joint-Generation 两种实例化、Training-Free Inference）
 
 ## 推荐继续阅读
 

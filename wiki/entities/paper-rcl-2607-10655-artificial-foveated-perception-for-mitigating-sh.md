@@ -41,6 +41,30 @@ We propose Artificial Foveated Perception (AFP), a lightweight, policy-agnostic 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph AFP["AFP 掩码预测器（轻量、与策略无关）"]
+        A["RGB 帧序列 + 语言指令"] --> B["特征路径<br/>MobileNetV3-Large 多尺度特征金字塔<br/>→ Deformable Transformer 编码器"]
+        B --> C["查询路径<br/>可学习区域查询 + Deformable 解码器<br/>VMFormer 时序模块"]
+        A --> D["冻结 CLIP 文本编码器<br/>FiLM Adapter 调制查询"]
+        D --> C
+        B --> E["Mask Head：稠密特征图与<br/>语言条件查询做匹配 → sigmoid"]
+        C --> E
+        E --> F["任务相关掩码 M（0 到 1 连续值）"]
+    end
+    F --> G["平均池化到图像 token 网格 → w"]
+    H["策略注意力 ā<br/>在可训练层 / 头 / 查询位置上取平均"] --> I["辅助对齐损失 L_AFP<br/>对齐归一化的 ā 与 w"]
+    G --> I
+    J["动作损失 L_act"] --> K["PCGrad 式梯度投影<br/>冲突时将 AFP 梯度投影掉 L_act 方向"]
+    I --> K
+    K --> L["微调 VLA / WAM 策略"]
+    L --> M["推理：直接使用原始观测<br/>控制环中不再调用 AFP"]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2、式 (1)–(6)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ We propose Artificial Foveated Perception (AFP), a lightweight, policy-agnostic 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2607.10655>
+- [arXiv PDF](https://arxiv.org/pdf/2607.10655)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1–3.4）；其余章节未细读
 
 ## 推荐继续阅读
 
