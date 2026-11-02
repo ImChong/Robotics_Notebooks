@@ -2222,7 +2222,7 @@
 - [EmbodiedBrain（arXiv:2510.20578）](wiki/entities/paper-embodiedbrain.md) — EmbodiedBrain**（*EmbodiedBrain: Expanding Performance Boundaries of Task Planning for Embodied Int `📅unknown` `[entity_page]`
 - [EmbodiedGen V2（Simulation-Ready 3D World Engine · arXiv:2607.07459）](wiki/entities/paper-embodiedgen-v2-sim-ready-world-engine.md) — EmbodiedGen V2**（*\calmfont EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embod `📅unknown` `[entity_page]`
 - [EmbodiedGPT](wiki/entities/paper-embodiedgpt.md) — EmbodiedGPT**（arXiv:2305.15021）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
-- [EmbodiedLab（arXiv:2610.35385）](wiki/entities/paper-embodiedlab.md) — EmbodiedLab**（*EmbodiedLab: Benchmarking Embodied Agents That Act to Know*，[arXiv:2610.35385](http `📅unknown` `[entity_page]`
+- [EmbodiedLab：通过行动获取知识的具身智能体基准](wiki/entities/paper-embodiedlab.md) — EmbodiedLab: Benchmarking Embodied Agents That Act to Know `📅unknown` `[entity_page]`
 - [EmbodiedSkills（Orchestrating, Training, and Deploying VLA Agents）](wiki/entities/paper-embodiedskills.md) — EmbodiedSkills**（arXiv:2609.01281，[GitHub](https://github.com/ `📅unknown` `[entity_page]`
 - [EmbodiedSWE（arXiv:2609.27308）](wiki/entities/paper-embodiedswe.md) — EmbodiedSWE**（*Coding Agents for Long-Horizon Dexterous Robotics*，[项目页](https://embodiedswe.github `📅unknown` `[entity_page]`
 - [EmbodiedVAE：为操作世界模型解耦的视频 VAE](wiki/entities/paper-embodiedvae.md) — EmbodiedVAE**（*Disentangled Video VAE for Efficient and Controllable Embodied Manipulation*；[arXiv `📅unknown` `[entity_page]`
@@ -2521,7 +2521,7 @@
 - [Heracles：跟踪精度与生成式恢复的扩散中间件](wiki/entities/paper-heracles-humanoid-diffusion.md) — Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv `📅unknown` `[entity_page]`
 - [Hermite Curves VLA（arXiv:2608.01265）](wiki/entities/paper-hermite-curves-vla-trajectory-priors.md) — Hermite Curves VLA**（arXiv:2608.01265）收录于 [多模空间 · 一周 VLA 研究趋势简 `📅unknown` `[entity_page]`
 - [HERON（arXiv:2610.38233）](wiki/entities/paper-heron-obstacle-aware-reachability-maps.md) — HERON**（*HERON: Real-Time Obstacle-Aware Reachability Maps for Mobile Manipulators*，[arXiv:2610.38 `📅unknown` `[entity_page]`
-- [HexaShell（VLM 机器人编码 Agent Harness）](wiki/entities/paper-hexashell.md) — HexaShell** 是一套面向 RoboDojo 双臂操纵任务的轻量 Harness：视觉语言模型（VLM）编码 Agent 通过一个机器人命令行观察环境、调用 Python 工具并执行动作； `📅unknown` `[entity_page]`
+- [HexaShell：探索视觉语言模型机器人编码能力的轻量框架](wiki/entities/paper-hexashell.md) — HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents `📅unknown` `[entity_page]`
 - [HF-WM：向人类交互学习并建模失败动力学的世界模型](wiki/entities/paper-hf-wm-failure-dynamics-world-model.md) — HF-WM**（论文 *Beyond Successful Robot Demonstrations: Learning from Human Interactions and Modeling  `📅unknown` `[entity_page]`
 - [Hi Robot：分层交互式指令跟随](wiki/entities/paper-hi-robot.md) — Hi Robot**（*Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Mo `📅unknown` `[entity_page]`
 - [HiBRIDGE](wiki/entities/paper-hibridge-dialogue.md) — HiBRIDGE**（*A Hierarchical Bayesian Neural Network Framework for Interpretable Dialogue Management `📅unknown` `[entity_page]`
