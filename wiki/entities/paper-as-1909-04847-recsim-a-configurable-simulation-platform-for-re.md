@@ -59,7 +59,7 @@ flowchart TD
   SIM -->|"4. slate + 完整用户状态"| CM
   CM -->|"5. 用户选择 / 响应"| SIM
   SIM -->|"6. 选择与响应"| UM
-  SIM -->|"6. 选择与响应 / 奖励"| AGENT
+  SIM -->|"6. 选择与响应"| AGENT
   SIM --> LOG["按 iteration 汇总并记录指标\n可记录轨迹用于离线 batch RL"]
 ```
 
