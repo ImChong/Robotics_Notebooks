@@ -967,6 +967,7 @@
 - [Molmo2](wiki/entities/molmo2-vlm.md) — Molmo2**（Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Gro `📅unknown` `[entity_page]`
 - [MOS9 开源人形机器人](wiki/entities/mos9-open-source-humanoid.md) — MOS9 开源人形机器人](https://github.com/THMOS2025/MOS-9-Open-Source-Humanoid-Robot) 收录于具身智能研究室 [开源项目主表](ht `📅unknown` `[entity_page]`
 - [Eclipse Mosquitto](wiki/entities/mosquitto.md) — Eclipse Mosquitto** 是最广泛部署的 **开源 MQTT Broker** 之一，附带 **libmosquitto** C 库与 `mosquitto_pub` / `mosq `📅unknown` `[entity_page]`
+- [MOSS API Open Platform / 模思开放平台](wiki/entities/moss-api-platform.md) — MOSS API** 是模思智能的多模态模型云端接口与开发者平台，提供 Playground、模型目录和 API 文档。 `📅unknown` `[entity_page]`
 - [MOSS-Image](wiki/entities/moss-image.md) — MOSS-Image** 是 OpenMOSS 的 5B 单流 Diffusion Transformer 文生图模型家族，目标是生成含有长文本与复杂布局的信息密集型图像。 `📅unknown` `[entity_page]`
 - [MOSS（开源履带式垃圾拾取机器人）](wiki/entities/moss.md) — MOSS 是 Show Robotics 开发的开源移动操作机器人原型：履带底盘载着收纳箱与 SO-101 衍生机械臂，目标是在户外拾取垃圾；软件和固件已公开，硬件 CAD 仍在定版。 `📅unknown` `[entity_page]`
 - [moteus（mjbots 关节驱动器）](wiki/entities/moteus.md) — moteus** 是 mjbots 的开源无刷伺服控制器栈（GitHub）：多板 `📅unknown` `[entity_page]`
