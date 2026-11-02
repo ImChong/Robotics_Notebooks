@@ -15,6 +15,7 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../overview/embodied-station-2026-10-28-59-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/differentiable_contact_legged_arxiv_2610_35852.md
   - ../../sources/sites/differentiable-contact-legged.md
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md

@@ -17,6 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/catch_it_all_arxiv_2610_39044.md
   - ../../sources/repos/catch_it_all.md
   - ../../sources/sites/catch-it-all.md

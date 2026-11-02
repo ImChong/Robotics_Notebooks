@@ -13,6 +13,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/graft_arxiv_2610_36507.md
   - ../../sources/sites/graft-humanoid.md
 ---
