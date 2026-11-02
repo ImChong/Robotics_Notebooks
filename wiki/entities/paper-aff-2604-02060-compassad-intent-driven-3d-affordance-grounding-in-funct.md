@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objects——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+CompassAD: Intent-Driven 3D Affordance Grounding in Functionally Competing Objects——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: language-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 

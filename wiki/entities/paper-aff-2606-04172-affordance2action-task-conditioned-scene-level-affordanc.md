@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Time Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit/implicit；Action Subcategory: Integrated policy · Explicit/implicit representation） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance2Action: Task-Conditioned Scene-level Affordance Grounding for Real-Time Manipulation——在清单中归入 **Action（Architecture: E2E；Affordance Usage: explicit/implicit；Action Subcategory: Integrated policy · Explicit/implicit representation） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -90,7 +90,7 @@ flowchart TD
 
 **本页只提供「Affordance2Action」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述方法流程（依据论文方法部分）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 

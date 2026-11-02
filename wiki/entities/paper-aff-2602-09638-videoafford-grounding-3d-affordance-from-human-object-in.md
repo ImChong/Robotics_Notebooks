@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Multimodal Large Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: video-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Multimodal Large Language Model——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: video-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 

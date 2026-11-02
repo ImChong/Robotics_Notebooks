@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignment——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要，此处不替原文概括贡献）。
+RAAP: Retrieval-Augmented Affordance Prediction with Cross-Image Action Alignment——在清单中归入 **Action（Architecture: Hierarchical model；Affordance Usage: explicit；Action Subcategory: Hierarchical affordance-to-action）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 

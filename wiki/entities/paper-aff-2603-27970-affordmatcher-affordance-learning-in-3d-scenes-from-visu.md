@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Spatial） ｜ Datasets / Benchmarks（Data Modality: image-3D）**（清单未附方法摘要，此处不替原文概括贡献）。
+AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers——在清单中归入 **Perception（Scope: Scene；Perception Subcategory: Spatial） ｜ Datasets / Benchmarks（Data Modality: image-3D）**（清单未附方法摘要；方法流程见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
