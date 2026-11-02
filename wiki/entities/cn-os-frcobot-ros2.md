@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`ros2 run fairino_hardware ros2_cmd_server`（`CMakeLists.txt` 中 `add_executable(ros2_cmd_server ...)`，`src/command_server_node.cpp`）；ros2_control 路径则由 MoveIt/控制器管理器加载插件 `fairino_hardware/FairinoHardwareInterface`（`fairino_hardware.xml`）。下图以 `fairino_hardware_v4_0_1` 为例，各 `fairino_hardware_v*` 目录对应不同机器人软件版本。
+
+```mermaid
+sequenceDiagram
+    participant U as ROS2 客户端（examples/srv_test_client 或 ros2 service call）
+    participant N as command_server_node.cpp main()
+    participant CS as robot_command_thread（command_server.cpp）
+    participant CN as CNDE_recv_thread（CNDE_thread.cpp）
+    participant SDK as libfairino FRRobot
+    participant C as 法奥机器人控制器
+    participant HW as FairinoHardwareInterface（fairino_hardware_interface.cpp）
+    participant MI as MoveIt / ros2_control
+
+    N->>CS: make_shared<robot_command_thread>("fr_command_server")
+    N->>CN: make_shared<CNDE_recv_thread>("CNDE_thread")
+    CS->>SDK: SetRobotRealtimeStateConfig；RPC(controller_ip)，失败按重试次数重连
+    SDK->>C: 建立 XML-RPC 连接
+    CS->>CS: create_service(RemoteCmdInterface)；publisher nonrt_state_data；10ms / 100ms 定时器
+    CN->>C: UDP socket 接收 104 字节状态帧（recvfrom）
+    U->>CS: RemoteCmdInterface.cmd_str，如 "MoveJ(JNT1,100)"
+    CS->>CS: _parseROSCommandData_callback：正则解析函数名与参数，查 _fr_function_list
+    CS->>SDK: 对应包装函数，如 MoveJ -> GetForwardKin / GetInverseKinExaxis -> _ptr_robot->MoveJ
+    SDK->>C: 下发运动指令
+    CS-->>U: Response.cmd_res（"0" 成功 / "-1" 失败）
+    loop 10ms 定时器
+        CS->>SDK: GetRobotRealTimeState
+        CS-->>U: 发布 nonrt_state_data
+    end
+    MI->>HW: on_activate
+    HW->>SDK: RPC(ip)；GetActualJointPosDegree 同步初始指令位置
+    loop 控制周期
+        MI->>HW: read -> GetActualJointPosDegree（度转弧度）
+        MI->>HW: write -> ServoJ(关节指令，周期 0.008)
+        HW->>SDK: ServoJ
+        SDK->>C: 伺服指令
+    end
+```
+
+图依据：FAIR-INNOVATION/frcobot_ros2@eb6d7ce，读过 `README.md`、`fairino_msgs/srv/RemoteCmdInterface.srv`、`fairino_hardware_master/CMakeLists.txt`、`fairino_hardware_master/src/command_server_node.cpp`、`fairino_hardware_master/src/fairino_hardware_interface.cpp`、`fairino_hardware_master/src/CNDE_thread.cpp`（接收部分）、`fairino_hardware_v4_0_1/src/command_server.cpp`（构造函数、`_parseROSCommandData_callback`、`MoveJ` 片段、状态回调片段）、`fairino_hardware_v4_0_1/src/fairino_hardware_interface.cpp`（grep 到的 RPC/ServoJ/GetActualJointPosDegree 调用）。`libfairino.so` 为预编译二进制，内部未读；`fairino_*_moveit2_config` 的 `ros2_control.xacro` 默认使用 `mock_components/GenericSystem`，接入真机插件需自行替换（仅读了 fairino10 一份配置）。
+
 ## 参考来源
 
 - [frcobot_ros2 源码归档](../../sources/repos/frcobot_ros2.md)（<https://github.com/FAIR-INNOVATION/frcobot_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FAIR-INNOVATION/frcobot_ros2@eb6d7ce，读过 README.md、fairino_msgs/srv/RemoteCmdInterface.srv、fairino_hardware_master 与 fairino_hardware_v4_0_1 的 CMakeLists.txt / command_server.cpp（部分）/ command_server_node.cpp / fairino_hardware_interface.cpp / CNDE_thread.cpp（部分）、fairino10_v6_moveit2_config 的 ros2_control.xacro 与 demo.launch.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
