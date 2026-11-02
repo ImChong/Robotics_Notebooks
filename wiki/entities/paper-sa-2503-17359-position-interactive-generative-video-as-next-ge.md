@@ -113,7 +113,7 @@ Proposes interactive generative video (IGV) as the foundation of generative game
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.17359>
-- [arXiv PDF](https://arxiv.org/pdf/17359)：已通读方法部分（实验与附录以略读为准）：§4（模块分解）、§5.1–§5.6（各模块概念段，技术路线部分略读）
+- [arXiv PDF](https://arxiv.org/pdf/2503.17359)：已通读方法部分（实验与附录以略读为准）：§4（模块分解）、§5.1–§5.6（各模块概念段，技术路线部分略读）
 
 ## 推荐继续阅读
 

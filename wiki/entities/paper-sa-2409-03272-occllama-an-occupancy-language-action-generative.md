@@ -42,6 +42,25 @@ Occupancy-language-action generative world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["占据栅格 x (H×W×D)<br/>语义 occupancy"] --> B["稀疏编码：丢弃 air 体素<br/>→ 按 BEV 柱的伪点云 (高度 d, 语义 l)"]
+    B --> C["Pillars 嵌入 + Swin Transformer<br/>→ BEV 特征 z"]
+    C --> D["向量量化 (码本 Z)<br/>→ 离散场景 token"]
+    D --> E["解码器：voxel head 给占据 mask<br/>class head 仅监督被占据体素语义"]
+    D --> F["统一词表 V：场景 token + 语言 token<br/>+ 动作 token(waypoint 分箱) + 功能 token"]
+    G["语言输入 / 历史动作"] --> F
+    F --> H["LLaMA 生成式世界模型<br/>next token 预测 + next scene 预测<br/>(场景查询 + 空间注意力，一次前向预测整幅场景)"]
+    H --> I["输出：未来占据 / 场景描述与问答 / 规划动作"]
+    J["训练阶段 1：场景 tokenizer<br/>(之后冻结)"] -.-> D
+    K["阶段 2：占据-语言-动作预训练<br/>世界模型目标 + 场景 caption 目标"] -.-> H
+    L["阶段 3：指令微调 (LoRA)"] -.-> H
+```
+
+图依据：论文 §3（Fig.2 框架）、§3.2 场景 tokenizer、§3.3 生成式世界模型 / Algorithm 1、§3.4 三阶段训练。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Occupancy-language-action generative world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.03272>
+- [arXiv PDF](https://arxiv.org/pdf/2409.03272)：已通读方法部分（实验与附录以略读为准）：§3 方法（概述、3.2 场景 tokenizer、3.3 生成式世界模型、3.4 三阶段训练）、§4 实验设定与实现细节
 
 ## 推荐继续阅读
 

@@ -128,7 +128,7 @@ Dynamics-adaptive world action model for generalizable non-prehensile manipulati
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- [arXiv PDF](https://arxiv.org/pdf/16806)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.6）、附录 §7（RL 教师策略）
+- [arXiv PDF](https://arxiv.org/pdf/2503.16806)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.6）、附录 §7（RL 教师策略）
 
 ## 推荐继续阅读
 

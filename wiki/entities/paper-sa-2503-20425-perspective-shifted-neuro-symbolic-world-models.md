@@ -116,7 +116,7 @@ Neuro-symbolic world models for socially-aware robot navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.20425>
-- [arXiv PDF](https://arxiv.org/pdf/20425)：已通读方法部分（实验与附录以略读为准）：§III（方法）、§IV（实验设定与结果）
+- [arXiv PDF](https://arxiv.org/pdf/2503.20425)：已通读方法部分（实验与附录以略读为准）：§III（方法）、§IV（实验设定与结果）
 
 ## 推荐继续阅读
 

@@ -120,7 +120,7 @@ Geometric-aware unified world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.18945>
-- [arXiv PDF](https://arxiv.org/pdf/18945)：已通读方法部分（实验与附录以略读为准）：§1、§2（4D 合成数据标注管线）、§3（3.1–3.4）、§5（略读）
+- [arXiv PDF](https://arxiv.org/pdf/2503.18945)：已通读方法部分（实验与附录以略读为准）：§1、§2（4D 合成数据标注管线）、§3（3.1–3.4）、§5（略读）
 
 ## 推荐继续阅读
 

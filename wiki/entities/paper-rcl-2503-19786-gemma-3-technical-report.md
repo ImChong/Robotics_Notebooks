@@ -114,7 +114,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2503.19786>
-- [arXiv PDF](https://arxiv.org/pdf/19786)：已通读方法部分（实验与附录以略读为准）：§1、§2（架构、视觉模态、预训练、QAT）、§3（指令微调）、§5.3–§5.5（略读）
+- [arXiv PDF](https://arxiv.org/pdf/2503.19786)：已通读方法部分（实验与附录以略读为准）：§1、§2（架构、视觉模态、预训练、QAT）、§3（指令微调）、§5.3–§5.5（略读）
 
 ## 推荐继续阅读
 

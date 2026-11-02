@@ -124,7 +124,7 @@ Learns adaptable world models with latent actions.
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- [arXiv PDF](https://arxiv.org/pdf/18938)：已通读方法部分（实验与附录以略读为准）：§2（2.1–2.3）、附录 B（实现细节与 B.4 视觉规划）
+- [arXiv PDF](https://arxiv.org/pdf/2503.18938)：已通读方法部分（实验与附录以略读为准）：§2（2.1–2.3）、附录 B（实现细节与 B.4 视觉规划）
 
 ## 推荐继续阅读
 
