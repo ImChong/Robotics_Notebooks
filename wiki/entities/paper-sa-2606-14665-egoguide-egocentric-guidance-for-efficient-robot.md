@@ -42,6 +42,31 @@ A collection interface recording synchronized wrist and head/egocentric observat
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph HW["EgoGuide-UMI 硬件（基于 exUMI）"]
+        W["手持夹爪：腕部鱼眼相机 I_W + 夹爪宽度 g（20 Hz）"]
+        Q["Meta Quest 头显：头部图像 I_H、头部位姿 T_H、腕部位姿 T_W（72 Hz）"]
+        W --> S["UDP 同步，打包观测 o 发往工作站"]
+        Q --> S
+    end
+    S --> C["在线覆盖度引导（2 Hz）：DINOv2 / CLIP 特征近邻相似度 + 腕部位姿相似度，转为新颖度百分位"]
+    C --> AR["AR 界面显示三项 0-100 新颖度，演示者调整初始状态后录制"]
+    AR --> E["录制 episode（支持从任务中途开始的 partial demonstration）"]
+    E --> F["静态过滤：缺模态 / 过短 / 位姿跳变 / 模糊或亮度异常则拒收"]
+    F --> M["合格 episode 降采样后入特征记忆库"]
+    M -.-> C
+    F --> D["演示数据集"]
+    D --> B["阶段1 腕部基础策略：A_b = π_b(I_W, T_W, ℓ)，flow-matching 训练后冻结"]
+    D --> R["阶段2 egocentric 残差专家：(A_r, α) = π_r(I_H, T_H←W, ℓ)"]
+    B --> G["门控融合：Â = (1-α)·A_b + α·A_r"]
+    R --> G
+```
+
+图依据：论文 §3.1 / §3.2 / §4 / Fig.1-3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ A collection interface recording synchronized wrist and head/egocentric observat
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.14665>
+- [arXiv PDF](https://arxiv.org/pdf/2606.14665)：已通读方法部分（实验与附录以略读为准）：§3 EgoGuide System、§4 Algorithm、§5.3 与 §6 结论
 
 ## 推荐继续阅读
 

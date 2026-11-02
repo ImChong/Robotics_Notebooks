@@ -42,6 +42,22 @@ Given a small budget of real-robot data, systematically studies whether it is be
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["现实模拟器 R<br/>隐藏参数 θ* = (m*, ℓ*) = (2.0, 1.5)，代替真实机器人"]
+    R -->|"n 条 rollout，随机力矩激励 U(-2,2) N·m<br/>角速度加高斯传感器噪声 σ=1.0"| ID["系统辨识<br/>在 [0.3, 3.0]² 上 61×61 网格搜索<br/>最小化单步角速度预测误差"]
+    ID --> EST["点估计 θ̂ = (m̂, ℓ̂)"]
+    N0["n = 0：跳过辨识，围绕先验 θ0 = (1.0, 1.0)"] --> W
+    EST --> W["随机化宽度 w<br/>每个 episode 在 [θ̂(1-w), θ̂(1+w)] 内<br/>对 (m, ℓ) 均匀重采样"]
+    W --> TR["训练模拟器 T 中训练 SAC 策略（75,000 步）"]
+    TR --> EV["在隐藏系统 R 上零样本评估<br/>20 个确定性 episode，200 步"]
+    EV --> SW["扫描 n ∈ {0,5,10,25,50} × w ∈ {0,0.1,0.2,0.3,0.5}<br/>每格 10 个种子，共 250 次运行"]
+```
+
+图依据：论文 §II-A/B/C（实验设计流程；论文自述不提出新算法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Given a small budget of real-robot data, systematically studies whether it is be
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2606.22062>
+- [arXiv PDF](https://arxiv.org/pdf/2606.22062)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 方法（A–C）、§III 结果、§IV 局限、§V 结论（全文约 6 页）
 
 ## 推荐继续阅读
 

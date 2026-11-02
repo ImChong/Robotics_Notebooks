@@ -41,6 +41,24 @@ summary: "可微接触模型突破腿足部署瓶颈，首个完全在可微仿�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **可微仿真** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph SIM["可微刚体仿真（NVIDIA Warp，自动微分）"]
+    A["广义坐标动力学<br/>Moreau 时间步进"] --> B["Gauss-Seidel 求解硬接触 NCP"]
+    B --> C["解析平滑：冲量按 sigmoid(d, κ) 缩放<br/>得到可用的一阶梯度"]
+  end
+  ACT["PD 律执行器模型<br/>由真机执行器数据拟合"] --> A
+  DR["域随机化"] --> A
+  RW["可微奖励<br/>足端高度轨迹替代 feet air time"] --> SHAC
+  C --> SHAC["SHAC 训练<br/>短视野 (h=12) 一阶梯度反向传播 + 值函数近似长期回报"]
+  SHAC --> POL["速度跟踪策略<br/>ANYmal D"]
+  POL -->|"零样本部署"| REAL["真实四足机器人"]
+```
+
+图依据：论文 §3.2–§3.4、§4（短视野长度 h=12 见 §4 Fig.5 讨论）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "可微接触模型突破腿足部署瓶颈，首个完全在可微仿�
 - [freedof_sim2real_41_schwarke-differentiable-simulation-locomotion-corl.md](../../sources/papers/freedof_sim2real_41_schwarke-differentiable-simulation-locomotion-corl.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2404.02887)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.4）、§4 Experimental Results、§5 Conclusion
 
 ## 推荐继续阅读
 

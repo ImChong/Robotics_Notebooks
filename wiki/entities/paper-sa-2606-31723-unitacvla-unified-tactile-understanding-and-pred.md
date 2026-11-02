@@ -42,6 +42,29 @@ Unified tactile learning framework modeling tactile signals as dynamic interacti
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["视觉观测 Vt"] --> VLM
+    L["语言指令 L"] --> VLM
+    T["触觉观测 Tt 经 VMAE 编码器得到触觉 tokens"] --> VLM
+    Q["统一触觉 tokens Qt（N 个可学习 query）"] --> VLM
+    VLM["VLM：提取多模态信息，构成统一触觉潜空间 ztq"]
+    VLM --> ZQ["策略条件状态 zt（含触觉特征与触觉先验 ztq）"]
+    VLM --> LLM["T-CoT：ztq 作前缀，LLM 自回归生成触觉推理链（仅训练）"]
+    VLM --> MLP["MLP：ztq 映射为粗粒度未来触觉 z_coarse"]
+    MLP --> DIT["DiT：以 ztq 为条件细化，得 z_fine（预测未来触觉潜变量）"]
+    ZQ --> AE["Action Expert：flow matching 生成低频动作块 a"]
+    DIT --> CTRL
+    AE --> CTRL["Action-Tactile Mixed Controller（轻量 Transformer）：输入 a、预测触觉潜变量、实时触觉"]
+    RT["实时触觉反馈"] --> CTRL
+    CTRL --> RES["残差 Δa = tanh(·)，高频修正"]
+    RES --> EXE["执行动作 a_final = a + Δa"]
+```
+
+图依据：论文 §3.1–3.3 / Fig. 1、式 (2)–(8)；两阶段训练见 §3.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Unified tactile learning framework modeling tactile signals as dynamic interacti
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2606.31723>
+- [arXiv PDF](https://arxiv.org/pdf/2606.31723)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1 Preliminaries、§3.2 统一触觉理解与预测、§3.3 Action-Tactile Mixed Controller、§3.4 Training、§4.1 实验设置
 
 ## 推荐继续阅读
 

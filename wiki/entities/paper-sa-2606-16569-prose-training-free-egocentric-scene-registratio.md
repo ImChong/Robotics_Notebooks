@@ -117,7 +117,7 @@ Uses a pretrained VLM as the source of both scene understanding and cross-scan m
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.16569>
-- [arXiv PDF](https://arxiv.org/pdf/2606.16569)：已通读方法部分（实验与附录以略读为准）：§1–§3 方法（场景解析、跨扫描实例对应、位姿假设与投票）、§4.1 实现细节；§4 其余部分略读
+- [arXiv PDF](https://arxiv.org/pdf/2606.16569)：已通读方法部分（实验与附录以略读为准）：§3 方法（场景解析、跨扫描实例对应、位姿假设与投票）、§4.1 实现细节；§4 其余部分略读
 
 ## 推荐继续阅读
 

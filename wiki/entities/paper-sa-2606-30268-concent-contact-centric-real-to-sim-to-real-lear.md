@@ -42,6 +42,25 @@ Proposes a contact-centric real-to-sim-to-real RL framework that uses task-relev
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["单条真实 RGB-D 演示"] --> B["SAM2 + TAPIR 提取物体点云轨迹 V"]
+    B --> C["接触几何优化：进化策略迭代回放，最小化 Chamfer 距离，得 C*（接触基元：位置、质量、摩擦）"]
+    C --> D["在仿真中回放演示：记录接触发生时刻与涉及的机器人连杆 / 基元 ID"]
+    D --> E["接触事件序列 E = (e1 ... eS)"]
+    E --> F["作为结构化奖励：reaching 项 + 正则项 + VCP 惩罚"]
+    E --> V["VCP：仅把出现在接触序列中的基元作为碰撞体，其余用距离惩罚代替"]
+    V --> F
+    F --> G["PPO（Brax）训练接触中心 RL 策略"]
+    G --> H["仿真 rollout：3DGS 物体渲染 + U-Net 流匹配渲染机器人与背景"]
+    H --> I["合成数据训练 VLA（FLOWER）"]
+    I --> J["真实世界部署，无额外真实数据"]
+```
+
+图依据：论文 §3.1–3.2 / Fig. 1、式 (1)–(3)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Proposes a contact-centric real-to-sim-to-real RL framework that uses task-relev
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2606.30268>
+- [arXiv PDF](https://arxiv.org/pdf/2606.30268)：已通读方法部分（实验与附录以略读为准）：§3.1 接触几何优化与接触事件序列提取、§3.2 接触中心 RL / VCP / VLA 蒸馏、§4.1 实验设置
 
 ## 推荐继续阅读
 

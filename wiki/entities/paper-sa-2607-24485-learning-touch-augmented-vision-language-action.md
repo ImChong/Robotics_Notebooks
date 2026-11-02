@@ -42,6 +42,34 @@ Learns touch-augmented VLA models from future visual supervision.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG["多视角 RGB 图像<br/>腕部 / 第三视角"] --> VE["Vision Encoder + Projector<br/>视觉 token"]
+  LANG["语言指令 + 本体状态"] --> TXT["文本 token"]
+  TAC["左右夹爪视触觉信号<br/>法向图 + 剪切图"] --> TE["Touch Encoder<br/>由 π0.5 视觉编码器初始化"]
+  TE --> TA["Touch Adapter<br/>线性投影到 VLA 隐空间"]
+  VE --> LLM["π0.5 大语言模型<br/>视觉 / 语言 / 触觉 token 拼接融合"]
+  TXT --> LLM
+  TA --> LLM
+  LLM --> AX["Action Expert<br/>条件 flow matching"]
+  NOISE["噪声"] --> AX
+  AX --> OUT["预测动作块"]
+  subgraph TR["JEPA 式自监督分支（仅训练时）"]
+    ACTSEQ["专家动作序列 → Action Encoder"] --> PRED["Predictor（3 层 MLP）"]
+    TA --> PRED
+    PRED --> PV["预测未来视觉特征变化"]
+    FUT["未来帧 → 视觉编码器<br/>目标特征变化（stop-gradient）"] --> LOSS["触觉变化加权余弦对齐损失<br/>L_SSL"]
+    PV --> LOSS
+  end
+  OUT --> IL["模仿学习损失 L_IL"]
+  IL --> TOT["总损失 L_IL + λ·L_SSL<br/>端到端联合训练"]
+  LOSS --> TOT
+```
+
+图依据：论文 §3.1–§3.2 / Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Learns touch-augmented VLA models from future visual supervision.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2607.24485>
+- [arXiv PDF](https://arxiv.org/pdf/2607.24485)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 模型架构、§3.2 训练策略、§3.3 TacAura 数据集
 
 ## 推荐继续阅读
 

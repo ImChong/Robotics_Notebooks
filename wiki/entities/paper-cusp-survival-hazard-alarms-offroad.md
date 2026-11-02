@@ -44,6 +44,37 @@ summary: "CUSP（arXiv:2610.07882）：把人类感知危险时刻与实际接�
 - 开源结论：**待发布**（步骤 2.5，2026-10-14）。项目页含「coming soon」字样，入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["(a) 训练 (Fig.2a)"]
+        ANN["事后标注：3 位标注者对每个事件标 perception onset o_i，<br/>取中位数；干预前一帧为 end"]
+        IMU["IMU 倾角 → 证据权重 w_i<br/>(仅训练使用，运行时不用)"]
+        TGT["离散时间生存目标 (H=4 s)：<br/>onset 前各 bin 监督“尚未发生”，onset bin 为唯一正例 (权重 w_i)，onset 后 bin 掩码"]
+        LOSS["训练目标 = 事件损失 (类别加权 BCE) + λ·光度一致性损失"]
+        ANN --> TGT
+        IMU --> TGT
+        TGT --> LOSS
+    end
+    subgraph RUN["(b) 运行时 (§III-C、§III-F)"]
+        IMG["相机图像 I_t → 冻结 DINOv3 patch 特征"]
+        FEAT["沿已提交路径走廊池化 f_plan，及其与约 1 s、2 s 前的差分；<br/>全局均值 f_glob → 拼接 x_t"]
+        FILM["FiLM：路径曲率 + 速度调制"]
+        HEAD["hazard head → 各 bin 条件 hazard p_t,b"]
+        SCORE["s_t = 1 − ∏(1 − p_t,b)"]
+        STD["按本站点正常驾驶的 med/MAD 稳健标准化 → z_t"]
+        CUSUM["单边 CUSUM：C_t = max(0, C_(t−1) + z_t − k)"]
+        ALARM["C_t ≥ h 时报警，随后复位"]
+        IMG --> FEAT --> FILM --> HEAD --> SCORE --> STD --> CUSUM --> ALARM
+    end
+    LOSS -.->|"训练 hazard head"| HEAD
+    WARM["站点调试：短时无标注 warm-up 驾驶 →<br/>med0, MAD0，并取使正常驾驶误报率 ≤ α/小时的最小 h"] -.-> STD
+    WARM -.-> CUSUM
+```
+
+图依据：论文 §III-B–F / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +117,7 @@ summary: "CUSP（arXiv:2610.07882）：把人类感知危险时刻与实际接�
 - [cusp_survival_hazard_alarms_offroad_arxiv_2610_07882.md](../../sources/papers/cusp_survival_hazard_alarms_offroad_arxiv_2610_07882.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.07882](https://arxiv.org/abs/2610.07882)
+- [arXiv PDF](https://arxiv.org/pdf/2610.07882)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（§III-A 至 §III-F）
 
 ## 推荐继续阅读
 

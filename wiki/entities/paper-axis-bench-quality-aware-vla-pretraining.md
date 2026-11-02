@@ -121,7 +121,7 @@ AXIS-Bench 使用 5,000 条自然次优人类示范和 24 个目标任务，在�
 - [AXIS-Bench 论文摘录](../../sources/papers/axis_bench_arxiv_2610_18869.md)
 - [AXIS-Bench 项目页核查](../../sources/sites/axis-bench-project.md)
 - [arXiv:2610.18869](https://arxiv.org/abs/2610.18869)
-- [arXiv PDF](https://arxiv.org/pdf/2610.18869)：已通读方法部分（实验与附录以略读为准）：§III 基准设计、§IV 状态派生质量与预训练、§V 仿真实验概述；§VI 真实世界与附录略读
+- [arXiv PDF](https://arxiv.org/pdf/2610.18869)：已通读方法部分（实验与附录以略读为准）：§III 基准设计、§IV 状态派生质量与预训练；§V–§VI 实验与附录略读
 
 ## 推荐继续阅读
 

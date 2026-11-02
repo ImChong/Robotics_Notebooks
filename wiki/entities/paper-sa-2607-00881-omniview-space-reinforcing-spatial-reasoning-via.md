@@ -42,6 +42,33 @@ A framework maintaining spatial consistency through multimodal egocentric eviden
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["问题 q + 多视角图像 I"] --> POL["策略 MLLM 分析问题<br/>选择 ego anchor（相机 / 物体 / 方向）与 object hints"]
+    subgraph MPSM["MPSM 工具包（Sec. 3.1）"]
+        R1["Step 1：场景重建<br/>稠密几何模型预测 point map / 置信度 / 位姿<br/>promptable 分割器接地 object hints<br/>置信度门控、融合、体素化、聚类成物体实例"]
+        R2["Step 2：ego 系实例化<br/>重力对齐后按 anchor 取原点与朝向<br/>变换到 query 指定 ego 系"]
+        R1 --> R2
+        R2 --> VIS["视觉 BEV cognitive map"]
+        R2 --> TXT["文本 spatial graph"]
+    end
+    POL -- "tool_call：cogmap_visualization / cogmap_graph" --> R1
+    VIS --> LOOP["返回证据，多轮交织推理"]
+    TXT --> LOOP
+    LOOP --> POL
+    LOOP --> ANS["最终答案"]
+    ANS --> RL1["GRPO：答案奖励 + 格式奖励"]
+    subgraph DIST["蒸馏（Sec. 3.3）"]
+        SFT["MPSM 轨迹 + Qwen3-VL-235B 推理痕迹<br/>构造 SFT 轨迹并过滤"] --> SELF["模型自行预测 JSON 格式 cogmap<br/>渲染为 BEV 后再推理作答"]
+        SELF --> RL2["GRPO：答案 + 格式 + map 对齐奖励<br/>MPSM 作参考，仅对答对样本<br/>物体对齐 + 相机对齐"]
+    end
+    RL1 -.蒸馏.-> SFT
+```
+
+图依据：论文 §3 Methodology（§3.1 MPSM / Fig.3、§3.2 / Fig.2、§3.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ A framework maintaining spatial consistency through multimodal egocentric eviden
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2607.00881>
+- [arXiv PDF](https://arxiv.org/pdf/2607.00881)：已通读方法部分（实验与附录以略读为准）：§1、§3.1–3.3（实验 §4 以略读为准）
 
 ## 推荐继续阅读
 

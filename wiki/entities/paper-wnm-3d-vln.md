@@ -41,6 +41,26 @@ summary: "3D 场景条件闭环 VLN 世界导航模型：冻结几何编码器�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["K 帧单目第一人称 RGB 历史 Ht"] --> B["冻结几何编码器 VGGT-Ω<br/>多层 patch 特征"]
+    B --> C["3D Scene-to-Token Adapter<br/>多层门控融合 → 3D query 重采样<br/>→ 时空精炼"]
+    C --> D["固定长度的几何感知历史前缀 Ct"]
+    E["当前帧 It + 语言指令 ℓ"] --> F["原生交叉注意路径 Gt"]
+    D --> G["World-Action DiT<br/>前缀 + 带噪未来视觉块 + 带噪动作块<br/>块因果自注意"]
+    F --> G
+    G --> H["联合 flow matching<br/>预测未来视角 latent 与对齐的导航动作块"]
+    H --> I["仅执行第一个动作块 At,1<br/>然后重规划(预测视觉 latent 不解码、不回灌历史)"]
+    subgraph 三阶段训练
+        S1["Stage-I：离线专家 SFT"] --> S2["Stage-II：闭环 DAgger-SFT"] --> S3["Stage-III：反事实 DanceGRPO"]
+    end
+    S3 -.-> G
+```
+
+图依据：论文 §3.1 至 §3.5 / Fig.1、Fig.2、Fig.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +108,7 @@ summary: "3D 场景条件闭环 VLN 世界导航模型：冻结几何编码器�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.07267](https://arxiv.org/abs/2608.07267)
+- [arXiv PDF](https://arxiv.org/pdf/2608.07267)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 至 3.5）
 
 ## 推荐继续阅读
 
