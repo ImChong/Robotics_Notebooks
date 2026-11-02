@@ -5,6 +5,9 @@
 // 同日再按用户反馈「计算步骤需要展开，不要直接给结果」：两步里的加减、转 90°（照第 3 集按列拿份：第一列红、第二列绿，同第 3 幕）、
 // 两段各乘 0.785 都逐项算；分四步也逐步算（每步 1.57 ÷ 4 ≈ 0.39，数留两位小数，照算到 (1.22, 4.65)，电脑精确算是 (1.20, 4.66)），
 // 网格上一段一段画；八步、一百步说明交给电脑；复利把头两个月的乘法算出来。
+// 2026-11-02 用户反馈「第二幕有些枯燥」，选了「小臂跟着一步一步转」：网格上一直有一支淡淡的小臂（2 格长）和小臂上的那一点（紫）、
+//    它的车头（紫箭头 = 这时候的方向）；每一步先绕肘把小臂转到这一步起点的方向、车头对准和连线垂直的方向，点再直走一段
+//    （点离开小臂尖、跑到圆外，看得出走直线的偏差）；八步一跳一跳地走，一百步几乎顺着圆走，无穷多步小臂带着点在圆上转、长度不变。
 // 句 1「每走一小步」「停下来」「这时候的方向」「再走下一步」右栏三行；
 // 句 2「分两步」「每步转四十五度」四分之一圈上 45° 处标一道，「第一幕算过，九十度约一点五七弧度」右栏写出（跨幕的数要交代出处，用户反馈），
 //    「一点五七除以二」「零点七八五」右栏写出；
@@ -67,6 +70,43 @@
     return pts;
   }
 
+  // 八步、一百步：点沿折线跑多久（秒，分镜时间）；无穷多步沿圆弧跑
+  var RUN = [0, 0, 0, 2.6, 1.4], ARC = 0.9;
+  var C8 = steps(8), C100 = steps(100);
+  function ang(p) { return Math.atan2(p[1] - 2, p[0] - 1); }
+  function lerp(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+  function lerpA(a, b, t) { var d = b - a; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return a + d * t; }
+  function walkAlong(pts, t) { var n = pts.length - 1, x = Math.min(n - 1e-6, Math.max(0, t * n)), k = Math.floor(x); return { p: lerp(pts[k], pts[k + 1], x - k), from: pts[k] }; }
+  function fd(st, a, d) { return E.fade(st, a, d); }
+  // 这一刻：点在哪（格）、小臂朝哪（角）、车头朝哪（角）、看不看得见
+  function walkState(st) {
+    var c2 = steps(2), V = D4.map(function (d) { return [1 + d[0], 2 + d[1]]; }), r;
+    if (st < T.n4 - 0.2) {                       // 分两步
+      var p = lerp(c2[0], c2[1], fd(st, T.seg1[0], T.seg1[1] - T.seg1[0]));
+      if (st >= T.go[0]) p = lerp(c2[1], c2[2], fd(st, T.go[0], T.go[1] - T.go[0]));
+      r = { p: p, armAng: lerpA(ang(c2[0]), ang(c2[1]), fd(st, T.legs, 0.8)),
+        hd: lerpA(Math.PI / 2, ang(c2[1]) + Math.PI / 2, fd(st, T.turn[0], T.turn[1] - T.turn[0])),
+        hOn: Math.max(fd(st, T.dir, 0.3) * (1 - fd(st, T.out0, 0.3)), fd(st, T.upA, 0.3)) * (1 - fd(st, T.go[1] + 0.3, 0.3)),   // 走到了就收起车头：终点要写坐标
+        on: fd(st, 0.3, 0.4) * (1 - fd(st, T.out1, 0.4)) };
+    } else if (st < T.n8 - 0.2) {               // 分四步：照算的四段
+      var k = 0; T.st4.forEach(function (S, i) { if (st >= S.start - 0.3) k = i; });
+      var S = T.st4[k], pk = lerp(V[k], V[k + 1], fd(st, S.add, 0.6));
+      r = { p: pk, armAng: lerpA(ang(V[Math.max(0, k - 1)]), ang(V[k]), fd(st, S.start - 0.3, 0.6)),
+        hd: lerpA(ang(V[Math.max(0, k - 1)]) + Math.PI / 2, ang(V[k]) + Math.PI / 2, fd(st, S.rot, 0.8)),
+        hOn: 1 - fd(st, T.st4[3].add + 0.8, 0.3), on: fd(st, T.n4, 0.4) * (1 - fd(st, T.out4, 0.4)) };
+    } else if (st < T.n100 - 0.2) {             // 八步：一跳一跳
+      var w8 = walkAlong(C8, fd(st, T.n8, RUN[3]));
+      r = { p: w8.p, armAng: ang(w8.from), hd: ang(w8.from) + Math.PI / 2, hOn: 1 - fd(st, T.n8 + RUN[3], 0.3), on: fd(st, T.n8, 0.3) * (1 - fd(st, T.n100 - 0.5, 0.3)) };
+    } else if (st < T.arc - 0.2) {              // 一百步：几乎是顺着圆走
+      var w1 = walkAlong(C100, fd(st, T.n100, RUN[4]));
+      r = { p: w1.p, armAng: ang(w1.from), hd: ang(w1.from) + Math.PI / 2, hOn: 1 - fd(st, T.n100 + RUN[4], 0.3), on: fd(st, T.n100, 0.3) * (1 - fd(st, T.arc - 0.5, 0.3)) };
+    } else {                                     // 无穷多步：小臂带着点在圆上转，长度不变
+      var a = TH * fd(st, T.arc, ARC);
+      r = { p: [1 + 2 * Math.cos(a), 2 + 2 * Math.sin(a)], armAng: a, hd: a + Math.PI / 2, hOn: 1 - fd(st, T.arc + ARC, 0.3), on: fd(st, T.arc, 0.3) * (1 - fd(st, T.out2, 0.3)) };
+    }
+    return r;
+  }
+
   E.scenes[1] = {
     title: '切成无穷多小步：矩阵指数',
     dur: END,
@@ -105,8 +145,9 @@
       function onArc(a) { return P(1 + 2 * Math.cos(a), 2 + 2 * Math.sin(a)); }
       var pts40 = []; for (var k = 0; k <= 40; k++) pts40.push(onArc(TH * k / 40));
       var arcGrey = K.paint(E.el('path', { d: E.poly(pts40), fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 7' }, gridG), null, E.INK2);
-      var radius = K.paint(E.el('path', { d: E.poly([Q, P(3, 2)]), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.BODY);
-      radius.style.opacity = 0.5;
+      // 淡淡的小臂（2 格长，用户选的「小臂跟着一步一步转」）：每一步先绕肘转到这一步起点的方向，点再按车头直走一段
+      var armBar = K.paint(E.el('path', { fill: 'none', 'stroke-width': 14, 'stroke-linecap': 'round' }, gridG), null, E.BODY);
+      armBar.style.opacity = 0.4;
       var tick45 = K.paint(E.el('path', { d: E.poly([onArc(HH), P(1 + 2.35 * Math.cos(HH), 2 + 2.35 * Math.sin(HH))]), fill: 'none', 'stroke-width': 3 }, gridG), null, E.OMEGA);
       var tick45L = E.halo(E.txt(gridG, P(1 + 1.55 * Math.cos(HH), 2 + 1.55 * Math.sin(HH))[0], P(1 + 1.55 * Math.cos(HH), 2 + 1.55 * Math.sin(HH))[1] + 7, '45°', 20, E.OMEGA, 'middle', 900));   // 写在弧里面：弧外是 x = 3 的竖线
       var paths = NS.map(function (n, i) {
@@ -120,7 +161,6 @@
       var c2 = steps(2), K1 = P(c2[1][0], c2[1][1]), K2 = P(c2[2][0], c2[2][1]), S0 = P(3, 2);
       var segA = K.paint(E.el('path', { d: E.poly([S0, K1]), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.WARN);
       var segB = K.paint(E.el('path', { d: E.poly([K1, K2]), fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, gridG), null, E.WARN);
-      var upA = E.vec(gridG, E.VEL, 4, { head: 13 }); upA.set(S0[0], S0[1], S0[0], S0[1] - 0.9 * u);
       var dimG = E.el('g', {}, gridG), dy = -0.42 * u;
       K.paint(E.el('path', { d: 'M ' + Q[0] + ' ' + (Q[1] - dy - 8) + ' V ' + (Q[1] - dy + 8) + ' M ' + Q[0] + ' ' + (Q[1] - dy) + ' H ' + S0[0] + ' M ' + S0[0] + ' ' + (Q[1] - dy - 8) + ' V ' + (Q[1] - dy + 8),
         fill: 'none', 'stroke-width': 2.5 }, dimG), null, E.INK);
@@ -149,6 +189,9 @@
       var turn4 = E.vec(gridG, E.HI, 3, { head: 11, dash: '6 5' });
       var turn4Arc = E.arcArrow(gridG, 0, 0, 0.45 * u, E.OMEGA, 3, { head: 10 });
       var lab4 = E.halo(E.txt(gridG, V4[4][0] - 14, V4[4][1] - 14, '(1.22, 4.65)', 20, E.INK2, 'end', 900));
+      // 走的那一点（紫）和它的车头（这时候的方向，紫箭头）
+      var headV = E.vec(gridG, E.VEL, 4, { head: 13 });
+      var walker = K.paint(E.el('circle', { r: 8, 'stroke-width': 3 }, gridG), E.VEL, E.S1);
       // 肘、出发点、终点标签
       var outOf = E.el('g', {}, gridG);
       K.paint(E.el('circle', { cx: Q[0], cy: Q[1], r: 12, 'stroke-width': 3.5 }, outOf), E.S1, E.HI);
@@ -294,7 +337,6 @@
           var two = 1 - f(st, T.out1, 0.4);
           E.op(tick45, f(st, T.deg, 0.3) * (1 - f(st, T.first, 0.3))); E.op(tick45L, f(st, T.deg, 0.3) * (1 - f(st, T.first, 0.3)));
           E.op(dimG, f(st, T.r2, 0.3) * (1 - f(st, T.upA + 0.6, 0.3)));
-          E.op(upA.g, f(st, T.upA, 0.3) * (1 - f(st, T.seg1[1], 0.3)));
           E.drawOn(segA, f(st, T.seg1[0], T.seg1[1] - T.seg1[0])); E.op(segA, (f(st, T.seg1[0], 0.1) > 0 ? 1 : 0) * two);
           E.op(k1Dot, f(st, T.add1v, 0.3) * two); k1Dot.setAttribute('r', (6.5 + 4 * b(st, T.kink, 0.8)).toFixed(2));
           E.op(k1Lab, f(st, T.k1, 0.3) * (1 - f(st, T.legs - 0.3, 0.3)));
@@ -350,11 +392,19 @@
           } else { E.op(spoke4.g, 0); E.op(turn4.g, 0); E.op(turn4Arc.g, 0); }
           E.op(lab4, f(st, T.at4, 0.3) * (1 - f(st, T.out4, 0.4)));
 
+          /* ── 走的那一点 + 淡淡的小臂 + 车头：每一步先转小臂、对准车头，再直走一段 ── */
+          var wk = walkState(st);
+          var armA = wk.armAng, tipA = P(1 + 2 * Math.cos(armA), 2 + 2 * Math.sin(armA));
+          armBar.setAttribute('d', E.poly([Q, tipA])); E.op(armBar, 0.4 * wk.on * (back ? 0 : 1));
+          var wp = P(wk.p[0], wk.p[1]);
+          walker.setAttribute('cx', wp[0].toFixed(1)); walker.setAttribute('cy', wp[1].toFixed(1)); E.op(walker, wk.on * (back ? 0 : 1));
+          headV.set(wp[0], wp[1], wp[0] + Math.cos(wk.hd) * 0.8 * u, wp[1] - Math.sin(wk.hd) * 0.8 * u); E.op(headV.g, wk.on * wk.hOn * (back ? 0 : 1));
+
           /* ── 折线 1 / 8 / 100（句 15–16） ── */
           var drawT = [null, null, null, T.n8, T.n100];
           paths.forEach(function (p, i) {
             if (i === 1 || i === 2) { E.op(p, 0); return; }                 // 分两步、分四步由上面的分段画
-            var on = i === 0 ? 1 : f(st, drawT[i], i === 4 ? 0.8 : 0.5);
+            var on = i === 0 ? 1 : f(st, drawT[i], RUN[i]);   // 和走的那一点同步画出
             if (i > 0) E.drawOn(p, on);
             var later = [3, 4].map(function (j) { return j > i ? f(st, drawT[j], 0.4) : 0; }).reduce(function (x, y) { return Math.max(x, y); }, 0);
             if (i === 0) later = Math.max(later, f(st, T.n4, 0.4));
