@@ -37,6 +37,39 @@ summary: "PRIME W0：利用世界模型物理先验进行具身操作（arXiv:26
 
 - 周报所述待解决的问题：VLA 通常只使用当前观测生成动作，缺少长期历史信息和未来环境变化的有效条件化。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["每个控制周期 t 的输入"]
+        direction TB
+        OBS["多视角 RGB o_t，经视觉编码器 E_ϕ 得到 patch token"]
+        PROP["本体状态 q_t → MLP 得 s_t"]
+        LANG["语言指令 ℓ → token W_ℓ"]
+        HIST["历史帧 o_t-τ..o_t-1 → 冻结 DINOv2 → 线性投影 + LayerNorm → W_hist"]
+    end
+    PREV["上一帧 o_t-1（及上一动作、指令）"] -->|"后台异步，不等待当前帧"| WM["世界模型 Φ_wm：预测子目标 RGB 图像<br/>经同一视觉编码器编码为子目标 token"]
+    OBS --> VLM
+    PROP --> VLM
+    LANG --> VLM
+    HIST --> VLM
+    WM -->|"就绪即注入 VLM 序列"| VLM["预训练 VLM 骨干 F_VLM"]
+    VLM -->|"提取每一层的 K、V 投影"| KV["逐层 KV 表示"]
+    KV -->|"各层交叉注意力，VLM 不反传梯度（Stage 3）"| MOE["Adaptive MoE 动作专家（DiT 式）<br/>逐层时序门控：[token ∥ 历史聚合向量] → Top-K 选择 + 独立权重网络"]
+    NOISE["协方差结构噪声 ε = Lξ（L 来自示教动作块协方差的 Cholesky 分解）"] --> MOE
+    MOE --> ODE["ADM 流匹配：沿线性路径用 Euler / RK4 积分速度场（实验用 8 步 Euler）"]
+    ODE --> ACT["动作块 A_t（H 步）：执行前 h_exec 步后滑动窗口"]
+
+    subgraph TRAIN["四阶段训练"]
+        direction TB
+        T1["Stage 1：VLM 预训练"] --> T2["Stage 2：DAT 动作 tokenizer（寄存器瓶颈 + FSQ）+ NTP 视觉动作预训练"]
+        T2 --> T3["Stage 3：冻结 VLM，训练 DiT/Adaptive MoE 流匹配解码器，注入世界模型与历史编码器"]
+        T3 --> T4["Stage 4：VLM、世界模型、动作专家端到端 SFT<br/>L_total = L_FM + λ_bal·L_bal + λ_aux·L_aux"]
+    end
+```
+
+图依据：论文 §3.1 总体架构与闭环推理（式 (1)–(3)）、§3.2 四阶段训练、§3.4 DAT/NTP、§3.5 世界模型异步注入、§3.6 历史帧编码、§3.7 Adaptive MoE、§3.8–3.9 协方差噪声与 ADM、Fig. 1/2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +120,7 @@ summary: "PRIME W0：利用世界模型物理先验进行具身操作（arXiv:26
 - [prime-w0-physical-priors-world-models_arxiv_2610_39528.md](../../sources/papers/prime-w0-physical-priors-world-models_arxiv_2610_39528.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39528](https://arxiv.org/abs/2610.39528)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39528)：已通读全文：§3 方法（总体架构、四阶段训练、DAT/NTP、世界模型异步注入、历史帧编码、Adaptive MoE、协方差噪声与 ADM）；§4 实验仅浏览基线与设定
 
 ## 推荐继续阅读
 

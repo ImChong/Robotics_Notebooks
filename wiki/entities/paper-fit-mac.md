@@ -43,6 +43,24 @@ summary: "FIT-MAC（arXiv:2610.28109）：FIT-MAC在冻结VLA外增加规划、�
 - 开源结论：**部分开源**（步骤 2.5，2026-10-31）。公众号代码入口为 anonymous.4open.science 匿名链接（HTTP 401，无法核查）；项目页 HTTP 200，未见 GitHub 链接。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：语言指令 x + 视觉观测 I_t + 低维机器人状态 o_t"] --> PL["Planner Agent<br/>抽取目标物、源/目的描述、空间关系、参照物<br/>多步指令拆为有序子任务"]
+  PL --> GR["Grounder Agent<br/>Grounding DINO 检测候选 → 与描述匹配（不确定时 VLM resolver）<br/>几何评分选目标并锁定 target lock"]
+  GR --> PR["grounded prompt x̃：写入共享执行状态"]
+  PR --> VLA["冻结 VLA π_VLA：默认动作生成器"]
+  VLA --> VE["Verifier Agent<br/>目标绑定置信度 κ_t 与一致性检查；<br/>pick/place 阶段距离缩减、停滞与超时检测"]
+  VE -->|"diagnosis = none"| VLA
+  VE -->|"target-failure（优先）"| RB["Correction Agent：目标重绑定<br/>Grounder 重新检测并更新 g_t、重生成 x̃"]
+  RB --> GR
+  VE -->|"pick-failure / place-failure"| RC["Correction Agent：保留 target lock<br/>有界局部控制器 π_pick / π_place 沿阶段路点恢复"]
+  RC --> VLA
+```
+
+图依据：论文 §3.1–3.5 与 Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +104,7 @@ summary: "FIT-MAC（arXiv:2610.28109）：FIT-MAC在冻结VLA外增加规划、�
 - [fit_mac_arxiv_2610_28109.md](../../sources/papers/fit_mac_arxiv_2610_28109.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.28109](https://arxiv.org/abs/2610.28109)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28109)：已通读全文：§3 方法（Planner / Grounder / Verifier / Correction Agent）、§4 实验设定（LIBERO-PRO）
 
 ## 推荐继续阅读
 
