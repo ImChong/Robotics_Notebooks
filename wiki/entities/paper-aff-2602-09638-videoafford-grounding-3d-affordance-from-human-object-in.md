@@ -40,6 +40,35 @@ VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Mu
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V[HOI 视频 V：采样 N 帧] --> VE[Video-LLaVA 视频编码器 e<br/>稀疏编码得视频 token]
+  V --> AE[预训练潜在动作编码器 m<br/>每帧压缩为 2 个动作 token A_c]
+  T[文本指令 T] --> LLM
+  VE --> LLM[Video-LLaVA 的 LLM（视频 MLLM g）<br/>视频 token 与动作 token 拼接作为输入]
+  AE --> LLM
+  LLM --> J[输出理解文本 J<br/>含特殊 token AFF（承载 affordance 世界知识）]
+  J --> Q[取 AFF 的隐状态 H_aff<br/>投影为查询嵌入 A_m]
+  PC[物体点云 P_c] --> PE[预训练 3D 点编码器 f → P_s<br/>几何引导上采样（Point-BERT 式）→ 稠密点特征 P_d]
+  subgraph DEC["Transformer 轻量 affordance 解码器"]
+    CA[交叉注意力：A_m 为 Query，P_d 为 Key/Value → A_f]
+    ML[MLP → 逐点 affordance mask A_mask]
+    CA --> ML
+  end
+  Q --> CA
+  PE --> CA
+  ML --> OUT[3D affordance 分割结果]
+  subgraph LOSS["训练目标（端到端）"]
+    L[文本交叉熵 L_ce + BCE + IoU + 空间连续性 Dice 损失 L_spatial]
+  end
+  J -.-> L
+  ML -.-> L
+```
+
+图依据：论文 §4.1–§4.3 / Fig.4（VideoAfford 架构）；点编码器与动作编码器的具体预训练模型见论文补充材料，未读。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +81,7 @@ VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Mu
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2602.09638)。
+清单本身没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验与细节请读 [原文](https://arxiv.org/abs/2602.09638)。
 
 ## 评测与指标
 
@@ -68,7 +97,7 @@ VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Mu
 
 **本页只提供「VideoAfford」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的是标题、出处、分类标签与「流程总览」所述方法流程；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +118,7 @@ VideoAfford: Grounding 3D Affordance from Human-Object-Interaction Videos via Mu
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2602.09638>
+- [arXiv PDF](https://arxiv.org/pdf/2602.09638)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§4 Methods（4.1 概览、4.2 网络结构、4.3 训练目标）；§5 实验与补充材料未读/略读。
 
 ## 推荐继续阅读
 

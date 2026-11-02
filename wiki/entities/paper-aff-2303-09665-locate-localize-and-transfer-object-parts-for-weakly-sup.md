@@ -40,6 +40,28 @@ LOCATE: Localize and Transfer Object Parts for Weakly Supervised Affordance Grou
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EXO["输入：多张 exocentric 交互图像"] --> DINO["DINO-ViT 提取深层特征 Fexo"]
+    EGO["输入：一张 egocentric 物体图像"] --> DINO2["DINO-ViT 提取深层特征 Fego"]
+    DINO --> CAM["类别感知卷积 ψcam 生成定位图 Pexo，GAP 得分类分数，Lcls"]
+    CAM --> EMB["按阈值 τ 取高激活位置的 embedding，拼接为 fexo"]
+    EMB --> PS["PartSelect：k-means 得 K 个 prototype"]
+    DINO2 --> PS
+    PS --> SIM["prototype 与 Fego 余弦距离得相似图，结合 DINO 自注意力显著图计算 PartIoU"]
+    SIM --> SEL["PartIoU 最大且高于阈值 µ 的 prototype 作为物体部件表示 fop"]
+    DINO2 --> CAME["ego 分支 ψcam 生成定位图 Pego，Lcls"]
+    CAME --> MAP["与特征做 masked average pooling 得 ego embedding"]
+    SEL --> COS["余弦嵌入损失 Lcos 监督 ego embedding 向 fop 靠拢"]
+    MAP --> COS
+    CAME --> CON["集中损失 Lc 使 Pego 激活集中连通"]
+    CAME --> OUT["测试时仅保留 ego 分支：按 affordance 标签取第 t 张定位图作预测"]
+```
+
+图依据：论文 §3 / Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +73,7 @@ LOCATE: Localize and Transfer Object Parts for Weakly Supervised Affordance Grou
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2303.09665)。
+清单只给出标题、出处与分类标签，没有方法摘要；方法流程见上方「流程总览」（依据论文方法部分），实验细节请读 [原文](https://arxiv.org/abs/2303.09665)。
 
 ## 评测与指标
 
@@ -88,6 +110,7 @@ LOCATE: Localize and Transfer Object Parts for Weakly Supervised Affordance Grou
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2303.09665>
+- [arXiv PDF](https://arxiv.org/pdf/2303.09665)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 定位交互区域、3.2 PartSelect、3.3 部件级知识迁移与总损失）
 
 ## 推荐继续阅读
 

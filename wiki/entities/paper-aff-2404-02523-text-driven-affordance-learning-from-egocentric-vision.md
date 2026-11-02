@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Text-driven Affordance Learning from Egocentric Vision——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Interaction-driven）**（清单未附方法摘要，此处不替原文概括贡献）。
+Text-driven Affordance Learning from Egocentric Vision——在清单中归入 **Perception（Scope: Object；Perception Subcategory: Interaction-driven）**（方法流程见下方「流程总览」）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Text-driven Affordance Learning from Egocentric Vision——在清单中归入 *
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["第一人称视频（Ego4D / Epic-Kitchens）<br/>动作描述 + 起止时间戳 → Fobs / Finter"] --> IC["交互分类：LLaMA2-70B 判断 hand-object 还是 tool-object<br/>（拼接前两条描述，system prompt + few-shot），并取工具名"]
+    IC --> SEG["开放词表分割：在 Finter 上用 hand 或工具名得分割图<br/>与手-物检测器的物体框求交，得接触区域"]
+    V --> H["手-物检测器给出框作掩码；SURF 对应点 + RANSAC 估计相邻帧 homography"]
+    SEG --> PC["接触区域经 homography 投影到 Fobs<br/>拟合 GMM → 采样点 + Gaussian blur 得接触点热图"]
+    H --> PC
+    V --> TR["CoTracker 稠密点追踪 (tinter 到 tinter+1.0 秒)<br/>homography 投影到 Fobs 得轨迹 P"]
+    H --> TR
+    TR --> FIT["曲线回归：拟合旋转+平移的参数化轨迹 f(t)"]
+    PC --> DS["TextAFF80K：图像 x / 动作描述 d / 接触点 p / 轨迹 t"]
+    FIT --> DS
+    DS --> NET["训练扩展后的 MDETR / CLIPSeg<br/>输入 x + d，输出接触点热图 + 轨迹函数参数"]
+```
+
+图依据：论文 §III / Fig.2（伪标签生成）、§III-B（网络结构）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +70,7 @@ Text-driven Affordance Learning from Egocentric Vision——在清单中归入 *
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2404.02523)。
+清单本身只给出标题、出处与分类标签；方法流程见上方「流程总览」，实验细节请读 [原文](https://arxiv.org/abs/2404.02523)。
 
 ## 评测与指标
 
@@ -88,6 +107,7 @@ Text-driven Affordance Learning from Egocentric Vision——在清单中归入 *
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2404.02523>
+- [arXiv PDF](https://arxiv.org/pdf/2404.02523)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 文本驱动 affordance 学习（伪标签生成与网络结构）
 
 ## 推荐继续阅读
 

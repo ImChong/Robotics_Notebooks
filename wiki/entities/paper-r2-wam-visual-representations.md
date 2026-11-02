@@ -39,6 +39,25 @@ R²-WAM 是一项受控实证研究及其实例化配方，用来回答 WAM 应�
 
 视频生成式 WAM 的 VAE 潜变量继承了强时空先验，但其训练目标偏向重建视频。机器人操作还需要视觉特征保留与任务相关的物体语义、空间关系和交互线索。若同时换表征与接入方式，就很难判断收益来自哪一部分；这篇工作通过受控实验把二者拆开比较。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入: RGB 观测 + 语言指令 + 机器人状态"] --> B["Video expert (初始化自 Wan 2.2)<br/>预测未来视频 VAE latent"]
+    A --> C["Action expert<br/>预测 action chunk"]
+    L["T5 语言特征"] -.->|cross-attention| B
+    L -.->|cross-attention| C
+    B -->|"video token 仅看 video token"| J["非对称掩码 joint attention"]
+    C -->|"action token 可看 video + action token"| J
+    A --> E["冻结视觉编码器<br/>13 种预训练表征"]
+    E --> F["5 种集成机制:<br/>REPA / 门控 cross-attention / 通道维 concat / token 维 concat / Feature expert"]
+    F --> J
+    J --> O["联合去噪 (flow matching)<br/>未来视频 latent + 动作"]
+    F --> R["R²-WAM 配方: DINOv3 + UniTok + V-JEPA 2.1<br/>通道维 concat"]
+```
+
+图依据：论文 §3.1 / §3.3 / §4.5 / Fig.2
+
 ## 核心原理
 
 论文围绕三个问题组织实验：
@@ -95,6 +114,7 @@ R²-WAM 是一项受控实证研究及其实例化配方，用来回答 WAM 应�
 
 - [论文摘录](../../sources/papers/r2_wam_visual_representations_arxiv_2610_13024.md)
 - [项目页核查](../../sources/sites/r2-wam-visual-representations-project.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.13024)：已通读方法部分（实验与附录以略读为准）：§3 Study Design（3.1–3.3）、§4.5 配方与验证、§5 结论
 
 ## 推荐继续阅读
 
