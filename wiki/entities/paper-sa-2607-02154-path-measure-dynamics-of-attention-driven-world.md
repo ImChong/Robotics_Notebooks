@@ -42,6 +42,25 @@ Studies how attention enables world models to condition on entire histories for 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["问题：伴文论文假设预测作用量时间局部；<br/>注意力带来的历史依赖下，局部性何时成立？"] --> M1["§II.A 因果自注意力 → 记忆核<br/>（可分离假设下的合理性论证，非推导）"]
+    M1 --> M2["§II.C 增广 Markov 动力学<br/>隐辅助场 w 以弛豫尺度 τ 耦合到观测 z，噪声只进观测通道"]
+    M2 --> E["消去 w（Mori–Zwanzig 式投影）<br/>得到非局域广义 Langevin 方程，记忆核由消元生成"]
+    E --> N["§III.A 非局域 Onsager–Machlup 作用量<br/>记忆以非局域二次型进入，而非力"]
+    N --> K["§III.B 核类：完全单调<br/>等价于有限弛豫谱的隐 Markov 嵌入（Bernstein–Widder）"]
+    N --> X["§III.C 按尺度分离参数 ε = τ_mem / τ_dyn 展开"]
+    X --> L["领头阶 = 伴文论文的局部 OM 作用量<br/>修正项 A1 = O(ε)、A2 = O(ε²)"]
+    X --> V["§III.D 与精确可解向量线性模型<br/>逐项对照可逆部分"]
+    L --> I["§IV 不可逆通道（漂移反对称部分）在投影后保留"]
+    K --> I
+    I --> D["§V 讨论：核测量、作用量参数测量、记忆与不可逆性、适用范围"]
+```
+
+图依据：理论论证结构图，论文 §II 模型、§III 非局域路径测度及其短记忆极限（式 (2)–(15)）、§IV、§V；无实验流程。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Studies how attention enables world models to condition on entire histories for 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.02154>
+- [arXiv PDF](https://arxiv.org/pdf/2607.02154)：已通读 §I 引言、§II 模型、§III 非局域路径测度与短记忆极限、§IV 不可逆通道、§V 讨论（推导细节与参考文献以略读为准）；论证结构图依据 §II–§V。
 
 ## 推荐继续阅读
 

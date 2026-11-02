@@ -55,7 +55,7 @@ flowchart TD
     S1 --> S2 --> S3 --> S4 --> S5
     ANAT --> S5
     S5 --> P["§7.1 三项性质：Persistence（对应 M）、Agency（对应 F, C）、Emergence（G、F, C、M 共同作用）"]
-    S5 --> P2["§7.2 三个定义性挑战 · §7.3 From Simulator to Scientific Instrument"]
+    S5 --> P2["§7.2 三个定义性挑战：Coherence Problem (Evaluation)、Compression Problem (Scaling)、Alignment Problem (Safety) · §7.3 From Simulator to Scientific Instrument"]
 ```
 
 图依据：综述路线图（论文自定的五阶段演进）与子系统定义，论文 Fig. 1（五阶段演进）、Fig. 2（True World Model 架构）、§1、§2.2、§3–§7；Stage V 与三项性质同三个子系统的对应取自 §7.1 原文；§3–§6 各阶段与子系统之间的对应论文未逐一写成图，故未画。
