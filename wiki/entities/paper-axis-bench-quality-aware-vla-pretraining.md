@@ -36,6 +36,25 @@ sources:
 
 机器人示范往往不是全成功的。过滤低质量片段可能丢失有价值的状态覆盖；直接模仿又可能让策略学到错误动作。研究质量标签究竟应该改变样本权重、过滤数据还是作为条件输入，需要控制数据规模和训练预算，否则难以区分策略收益与资源差异。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["人类示范 + 场景资产<br/>可回放仿真轨迹<br/>(记录物体几何、接触、任务进度、有效掩码)"] --> B["状态派生进度奖励<br/>物体中心奖励 r_t / approach-aware 奖励 R_t<br/>(以首次持续指-物接触区分接近与操作)"]
+  B --> C["质量分数<br/>chunk 级 Δ_t (H=10 窗口奖励变化)<br/>episode 级 P_e (正进展时间步占比)"]
+  C --> D["分五个等频档得到条件标签 q ∈ {1..5}<br/>(conditioning 用)"]
+  C --> W["加权 weighting<br/>AWR 式权重 / 加权 flow-matching 损失"]
+  C --> F["过滤 filtering<br/>保留 top-50% 时间步"]
+  D --> Q["条件化 conditioning<br/>在语言指令后追加 Quality: q 标签"]
+  W --> P["VLA 预训练<br/>(三个 VLA，匹配示范数与训练预算)"]
+  F --> P
+  Q --> P
+  P --> T["目标任务微调与评测<br/>24 个仿真桌面任务；固定标签微调可选"]
+  P --> R["真实世界：仿真预训练后微调并评测"]
+```
+
+图依据：论文 §III–§IV（IV-A 进展奖励、IV-B 质量标签、IV-C 加权/过滤/条件化）/ Fig.1–2
+
 ## 方法
 
 AXIS-Bench 使用 5,000 条自然次优人类示范和 24 个目标任务，在三个 VLA 上进行预算匹配的比较：
@@ -102,6 +121,7 @@ AXIS-Bench 使用 5,000 条自然次优人类示范和 24 个目标任务，在�
 - [AXIS-Bench 论文摘录](../../sources/papers/axis_bench_arxiv_2610_18869.md)
 - [AXIS-Bench 项目页核查](../../sources/sites/axis-bench-project.md)
 - [arXiv:2610.18869](https://arxiv.org/abs/2610.18869)
+- [arXiv PDF](https://arxiv.org/pdf/2610.18869)：已通读方法部分（实验与附录以略读为准）：§III 基准设计、§IV 状态派生质量与预训练、§V 仿真实验概述；§VI 真实世界与附录略读
 
 ## 推荐继续阅读
 

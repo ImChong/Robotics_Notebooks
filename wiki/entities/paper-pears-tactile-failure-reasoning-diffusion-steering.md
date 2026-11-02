@@ -45,6 +45,27 @@ summary: "PEARS（arXiv:2610.08784）：VLM 失败诊断转为接触力边界，
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-14）。项目页入库日未列 GitHub。
 - 同期同组工作见 [失败导向采集与可组合世界动作模型：具身智能小站 10-13 期 34 篇阅读坐标](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t：腕部 + 外部图像、本体状态 p_t、双指力/力矩 f^L、f^R"] --> ACTOR["触觉条件的潜空间 RL actor<br/>复用冻结 VLM 视觉 token；Transformer 融合三类特征<br/>输出 10 维潜噪声 w_t"]
+    ACTOR --> BC["冻结的 BC 策略（GR00T N1.7 微调）<br/>噪声 w_t + 观测 → 动作块 a_t"]
+    BC --> ARB{"接触阶段判定 χ_t<br/>(双边抓握成立 且 力 ≥ ρ·f_min)"}
+    ARB -- "χ=0 自由空间" --> EXEC["执行动作 u_t = VLA 动作"]
+    ARB -- "χ=1 接触阶段" --> FC["导纳力控制器（50 Hz）<br/>在 A 选定的轴上调节力至 PFR 区间中点<br/>其余坐标仍跟随 VLA"]
+    FC --> EXEC
+    EXEC --> ENVR["真机交互 → 奖励、transition 存入回放缓冲"]
+    ENVR --> OBS
+    ENVR --> SAC["DSRL-SAC 更新 critic / actor<br/>critic 输入 (o_t, g_t, w_t)"]
+    SAC --> ACTOR
+    ENVR -- "每个 episode 结束后" --> PFR["PFR 模块：VLM 读取末帧接触图像、力轨迹、所用力界<br/>诊断力不足 / 过大 / 恰当 / 非力因素"]
+    PFR --> GOAL["更新任务力目标区间 [f_min, f_max]<br/>（历史累积进 VLM 上下文）"]
+    GOAL --> FC
+```
+
+图依据：论文 §IV Methodology（A–C）、§III-B（式 1–11）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +108,7 @@ summary: "PEARS（arXiv:2610.08784）：VLM 失败诊断转为接触力边界，
 - [pears_tactile_failure_reasoning_diffusion_steering_arxiv_2610_08784.md](../../sources/papers/pears_tactile_failure_reasoning_diffusion_steering_arxiv_2610_08784.md)
 - [wechat_embodied_station_34_papers_mulligan_2026-10-13.md](../../sources/blogs/wechat_embodied_station_34_papers_mulligan_2026-10-13.md)
 - [arXiv:2610.08784](https://arxiv.org/abs/2610.08784)
+- [arXiv PDF](https://arxiv.org/pdf/2610.08784)：已通读方法部分（实验与附录以略读为准）：§I Introduction（略读）、§III Preliminaries、§IV Methodology（A–C）
 
 ## 推荐继续阅读
 

@@ -41,6 +41,23 @@ summary: "通用策略 + 在线辨识器：从历史估计动力学参数并调�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **在线适应** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["离线：采样动力学参数 μ ~ 均匀分布"] --> B["TRPO 训练 Universal Policy π(x, μ)<br/>状态拼接 μ"]
+  B --> C["用 π(x, μ) 在 f_μ 中 rollout<br/>采集历史片段与真实 μ 存入 buffer"]
+  C --> D["监督训练 OSI φ：历史 → μ（式 1 回归）"]
+  D --> E["迭代 3-5 次：控制用 OSI 预测 μ̂<br/>仿真用真实 μ，加入失配样本再训练 OSI"]
+  E --> F["部署：OSI 读取最近 h 步 状态-动作 历史"]
+  F --> G["预测动力学参数 μ"]
+  G --> H["UP 输入 当前状态 x 与 μ，输出控制 u"]
+  H --> I["执行 u，推入历史队列"]
+  I --> F
+```
+
+图依据：论文 §III（Fig. 1、Algorithm 1 / 2）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +106,7 @@ summary: "通用策略 + 在线辨识器：从历史估计动力学参数并调�
 - [freedof_sim2real_23_up-osi-universal-policy-online-sysid.md](../../sources/papers/freedof_sim2real_23_up-osi-universal-policy-online-sysid.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/1702.02453)：已通读方法部分（实验与附录以略读为准）：§III Methods（A. Learning Universal Policy、B. Learning Online System Identification Model）、Fig. 1、Algorithm 1 / 2
 
 ## 推荐继续阅读
 

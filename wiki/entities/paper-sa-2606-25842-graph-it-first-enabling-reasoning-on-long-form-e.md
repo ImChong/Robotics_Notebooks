@@ -42,6 +42,24 @@ Introduces Egocentric Scene Graphs (EgoSGs) to overcome MLLM input constraints, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["长视频 V（时长 T）"] --> S["切分为不重叠 60 秒片段<br/>v1 … vN（1 FPS）"]
+    S --> G1["片段 v1：Gemini Flash 2.0<br/>提取环境元素 / 动态对象 / 动作 → 图 G1"]
+    G1 --> U["片段 vi（i>1）：提示 MLLM 基于 G(i-1) 与 vi<br/>更新得到 Gi = Update(G(i-1), vi)"]
+    U -->|"迭代至 i=N"| GN["最终图 GN = 整段视频的紧凑表示<br/>节点 N + 二元边 EB + 动作超边 A"]
+    GN --> P["后处理：序列化为文本<br/>ENVIRONMENT ELEMENTS / DYNAMIC OBJECTS / EVENTS<br/>连续相同动作合并为时间区间"]
+    P --> F{"拼接后的图是否<br/>超出上下文窗口？"}
+    F -->|"否"| IN["EgoSG 文本 + 问题 Q"]
+    F -->|"是"| SUM["改用各片段文本摘要拼接 + 问题 Q"]
+    IN --> M["下游 MLLM 推理<br/>f: (G, Q) → 答案 a*"]
+    SUM --> M
+```
+
+图依据：论文 §3.1–3.5（Fig. 3）、§4.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Introduces Egocentric Scene Graphs (EgoSGs) to overcome MLLM input constraints, 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2606.25842>
+- [arXiv PDF](https://arxiv.org/pdf/2606.25842)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.5）、§4.2 实现细节
 
 ## 推荐继续阅读
 

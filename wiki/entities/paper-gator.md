@@ -51,6 +51,30 @@ summary: "GATOR（NVIDIA × SFU，arXiv:2610.11215）：从随手拍多视图 RG
 - **编辑由证据约束：** agent 使用原图、mask 和已有几何，在匹配相机与光照下比较修改前后的渲染；对无图像支持或效果变差的编辑可撤销。
 - **与资产生成方法互补：** [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) 从单视图生成带部件与关节物理语义的资产；GATOR 更强调从场景图像恢复实例外观、结构和相对位姿。选择时要看目标是重建场景物体，还是生成可动部件资产。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["N 张随手拍图像：RGB、目标 mask、相机位姿/深度（可由图像估计）+ 类别文本"] --> B["共享 patch 网格编码：冻结 DINOv3 编码 RGB 与 mask，可训练点编码器编码 pointmap；加位置与 Plücker 射线嵌入"]
+    B --> C["Modality Mixer：每个 patch 内 RGB/mask/pointmap 三 token 残差注意力"]
+    C --> D["结构流：稠密结构 latent 跨视角 cross-attention；SigLIP2 类别文本经 adaLN 调制 → 稀疏结构"]
+    D --> E["将冻结 DINOv3 与 NAF 上采样特征投影到稀疏坐标，跨有效视角取平均"]
+    E --> F["几何流：生成 shape latent（T5Gemma2 文本 token）"]
+    F --> G["外观流：以 shape latent 为条件生成 PBR 材质 latent"]
+    G --> H["放置步骤：可微渲染轮廓/深度 + 点对齐，细化平移与各向同性尺度"]
+    H --> I["场景对齐的完整带纹理初始资产"]
+    I --> J["多模态 agent + Blender：补全缺失部件、修复拓扑、修正 UV/材质"]
+    J --> K["在匹配相机与光照下对比修改前后渲染"]
+    K -->|效果变差| L["回退该编辑"]
+    K -->|有图像证据支持| M["保留编辑"]
+    L --> N{"支持的修复已完成或证据不足？（固定时间预算内）"}
+    M --> N
+    N -->|否| J
+    N -->|是| O["选出最佳已检查资产作为最终输出"]
+```
+
+图依据：论文 §3.1–§3.5 / Fig. 2（智能体循环的“选最佳资产”按 Fig. 2 图注）。
+
 ## 核心原理
 
 ### 生成阶段：多视图线索与语义条件化
@@ -123,6 +147,7 @@ GATOR 将 RGB、目标 mask 和 pointmap 的 patch 对齐特征进行局部混�
 
 - [GATOR 论文摘录（arXiv:2610.11215）](../../sources/papers/gator_arxiv_2610_11215.md)
 - [NVIDIA GATOR 项目页归档](../../sources/sites/nvidia-gator-project.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.11215)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1–3.5）、§4.1 实验设定；§4.2–4.3 结果略读
 
 ## 推荐继续阅读
 

@@ -39,6 +39,29 @@ sources:
 - 首个开源通用 4D 机器人 WM：RGB+深度+法线视频与动作预测，跨域泛化优于 2D 视频 WM。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 01**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["现有机器人视频数据集<br/>RLBench 仿真 / Fractal / Bridge / SSv2"] --> B["自动标注深度与法线<br/>DSINE / RollingDepth / Marigold"]
+  B --> C["RGB-DN 4D 具身视频数据集"]
+  C --> D["CogVideoX 3D VAE 分别编码<br/>RGB / Depth / Normal"]
+  D --> E["加噪潜变量 + 首帧潜变量<br/>三个 Projector 嵌入后求和"]
+  T["文本指令 + 机械臂名称"] --> F
+  E --> F["DiT 主干<br/>CogVideoX 初始化微调"]
+  F --> G["RGB 输出 Projector<br/>预测 RGB 噪声"]
+  F --> H["DN 输出 Projector<br/>结合 Conv3D 融合特征"]
+  G --> H
+  G --> I["生成 RGB-DN 视频"]
+  H --> I
+  I --> J["4D 场景重建<br/>法线积分 + 光流一致性 + 正则损失逐帧优化深度"]
+  J --> K["4D 点云序列"]
+  K --> L["逆动力学模型<br/>PointNet + 指令嵌入 + MLP"]
+  L --> M["7-DoF 动作"]
+```
+
+图依据：论文 §4.1–§4.4 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -87,6 +110,7 @@ sources:
 - [shenlan_wm_survey_01_tesseract.md](../../sources/papers/shenlan_wm_survey_01_tesseract.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2504.20995)：已通读方法部分（实验与附录以略读为准）：§4.1 数据集、§4.2 模型架构与训练、§4.3 4D 场景重建、§4.4 动作规划，略读 §5.2 实验设定
 
 ## 推荐继续阅读
 

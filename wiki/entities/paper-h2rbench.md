@@ -31,6 +31,32 @@ H2RBench把人类视频到机器人操作的迁移放进统一real-to-sim评测�
 
 H2RBench把人类视频到机器人操作的迁移放进统一real-to-sim评测协议。 评读时应将问题、观测条件与执行接口一并记录，避免从单个演示或指标外推能力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一: Real-to-Sim 重建"]
+        SC["真实场景捕获"] --> SG["场景重建: Marble (3D mesh + Gaussian Splatting)"]
+        OB["多视角参考图 -> TRELLIS 重建物体<br/>按真实尺寸缩放"] --> ENV
+        SG --> ENV["Isaac Lab 仿真环境 (基于 PolaRiS)"]
+    end
+    subgraph S2["阶段二: 任务数据采集 (4 个任务)"]
+        HD["真实人类示范: 第三视角 RGB 视频<br/>相机位姿与仿真场景一致"]
+        RD["机器人示范: 仿真 (cuRobo 规划) / 真机 (Franka + GELLO)"]
+    end
+    ENV --> RD
+    subgraph S3["阶段三: 仿真中训练与评测"]
+        M["H2R 方法: Phantom / Point Policy / AMPLIFY / GHOST<br/>机器人示范数量固定, 变化人类示范数量"]
+        EV["多阶段成功率 (最终阶段 SR + 各阶段平均)"]
+    end
+    HD --> M
+    RD --> M
+    M --> EV
+    EV --> SVR["Sim-vs.-Real 验证: 真机管线同样训练评测<br/>Pearson / Spearman / MMRV 比较方法排名"]
+```
+
+图依据：论文 §3.1 / §3.3 / §3.4 / §4 / Fig.2
+
 ## 方法栈
 
 共同比较人类示范、仿真机器人数据和真实执行，并区分交互意图与精细动作控制迁移。
@@ -72,6 +98,7 @@ H2RBench把人类视频到机器人操作的迁移放进统一real-to-sim评测�
 
 - [Day 6 原文归档](../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md)
 - [arXiv:2609.24778](https://arxiv.org/abs/2609.24778)
+- [arXiv PDF](https://arxiv.org/pdf/2609.24778)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 H2RBench（3.1–3.4）、§4 被评测方法、§5.1 实验设置；其余实验与附录略读
 
 ## 推荐继续阅读
 

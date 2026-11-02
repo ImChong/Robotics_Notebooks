@@ -41,6 +41,24 @@ summary: "真机持续微调 locomotion 策略，机器人可在真实世界中�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **残差学习** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["参考动作 M_i（如 pacing）+ 站立姿态<br/>→ 动作模仿奖励"] --> B["仿真预训练：每个技能独立训练 π_i<br/>含恢复（reset）策略，用 REDQ 离策略 RL"]
+  B --> C["部署真机：继续用同一 RL 方法微调<br/>重置各策略 replay buffer D_i"]
+  C --> D["选择技能执行（如前进/后退 pacing，取更靠近原点者）"]
+  D --> E["执行一个 episode，数据存入 D_i<br/>Kalman 滤波估计速度用于奖励"]
+  E --> F["REDQ 更新 Q 集成与策略 π_i"]
+  E --> G{"机器人摔倒?"}
+  G -- "是" --> H["reset 策略恢复站立（真机不再微调）"]
+  G -- "否" --> D
+  H --> D
+  F --> D
+```
+
+图依据：论文 §III（Fig. 3、Algorithm 1 / 2）、§IV-B / C。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "真机持续微调 locomotion 策略，机器人可在真实世界中�
 - [freedof_sim2real_36_smith-legged-robots-keep-learning.md](../../sources/papers/freedof_sim2real_36_smith-legged-robots-keep-learning.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2110.05457)：已通读方法部分（实验与附录以略读为准）：§III 真机微调系统、§IV 系统设计（状态动作、奖励、reset 控制器）、Fig. 3、Algorithm 1 / 2
 
 ## 推荐继续阅读
 
