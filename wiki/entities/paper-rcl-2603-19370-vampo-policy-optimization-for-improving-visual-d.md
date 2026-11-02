@@ -43,6 +43,23 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["条件 c_v = 观测 o 与语言指令 l"] --> B["视频预测模型 VPM<br/>SVD 潜空间扩散，EDM 式采样"]
+    B --> C["首个去噪步取预测视觉表征 h"]
+    C --> D["动作生成模型 AGM<br/>以 h 与 l 为条件，输出动作序列"]
+    B --> E["VAMPO 后训练：去噪过程视作 MDP"]
+    E --> F["Euler Hybrid 采样<br/>仅首步 SDE 注入噪声，其余步确定性 ODE"]
+    F --> G["每个条件采样 G 个未来潜表征"]
+    G --> H["可验证奖励<br/>与专家未来潜表征的 L1 与余弦相似度"]
+    H --> I["组内归一化优势 → GRPO 更新 VPM"]
+    I --> B
+```
+
+图依据：论文 §2.2、§3.1–3.3 / Algorithm 1（VPM→AGM 的连接取自 §2.2 的两阶段范式）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.19370>
+- [arXiv PDF](https://arxiv.org/pdf/2603.19370)：已通读方法部分（实验与附录以略读为准）：§2.2 潜空间范式实例化、§3 方法（问题形式化、Euler Hybrid 采样、GRPO 与奖励）
 
 ## 推荐继续阅读
 
