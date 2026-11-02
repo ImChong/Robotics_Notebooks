@@ -31,7 +31,27 @@ No More Marching 的人形机器人学习论文条目，当前处于 Paper Noteb
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["仿真训练：IsaacLab，Digit-V3，4096 个并行机器人"]
+        G["采样 SE(2) 目标：原地站立 / 直行 / 侧移 / 原地转向 / 平移加转向，4 至 8 秒重采样"] --> ENV["仿真环境 + 域随机化"]
+        ENV --> RW["奖励 r = r_con + r_sty + r_reg，其中 r_con 为 constellation 奖励"]
+        RW --> PPO["PPO + mirror loss 对称约束"]
+    end
+    PPO --> POL
+    subgraph RUN["GoTo 控制器：50 Hz"]
+        DX["当前位姿与目标位姿之差 Δx, Δy, Δθ"] --> POL["2 层 LSTM（128, 128）"]
+        ST["机器人状态：关节位置、关节速度、根朝向、根角速度"] --> POL
+        POL --> ACT["20 个执行器的关节 PD 设定点"]
+    end
+    ACT -->|"底层 PD 1000 Hz"| HW["Digit 机器人"]
+```
+
+图依据：论文 §IV（奖励）、§V-A / §V-B（网络结构与训练）/ Fig. 1。
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ No More Marching 的人形机器人学习论文条目，当前处于 Paper Noteb
 - [humanoid_pnb_no-more-marching-learning-humanoid-locomotion-fo.md](../../sources/papers/humanoid_pnb_no-more-marching-learning-humanoid-locomotion-fo.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.14098>
+- [arXiv PDF](https://arxiv.org/pdf/2508.14098)：已通读方法部分（实验与附录以略读为准）：摘要、§III 问题定义、§IV 奖励设计、§V 控制器结构与训练设置
 
 ## 推荐继续阅读
 

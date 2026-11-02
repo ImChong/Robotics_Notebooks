@@ -34,6 +34,32 @@ TTT-Parkour 把"对一段陌生地形拍 RGB-D 视频 → 前馈式快速重建�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段 1：预训练"]
+    PG["程序化生成的多样地形<br/>深度图仿真 + 网格碰撞仿真"]
+    PRE["通用策略（PPO，POMDP）<br/>本体感觉历史 + 深度历史 → CNN 深度编码器 → 视觉 embedding<br/>输出目标关节位置，PD 执行"]
+    PG --> PRE
+  end
+  subgraph S2["阶段 2：测试时训练 TTT"]
+    CAP["真实地形采集（RGB-D）"]
+    FF["feed-forward 重建 → 尺度未定点云<br/>Screened Poisson 生成网格"]
+    SC["尺度恢复<br/>预测深度与 RGB-D 实测深度对齐<br/>（取深度图下半部中位数比值）"]
+    AL["物理一致坐标对齐<br/>3D 语义分割 + RANSAC + PCA 对齐重力 z 轴<br/>起止平台质心连线对齐 x 轴"]
+    MESH["可仿真的高保真网格"]
+    FT["在该地形上仿真微调<br/>（同一 POMDP、观测、奖励）"]
+    CAP --> FF --> SC --> AL --> MESH --> FT
+  end
+  subgraph S3["阶段 3：部署"]
+    DEP["适配后策略 sim-to-real 零样本部署<br/>机器人上不再更新策略"]
+  end
+  PRE --> FT --> DEP
+```
+
+图依据：论文 §3.2–3.4、Fig. 2、Fig. 3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +91,7 @@ TTT-Parkour 把"对一段陌生地形拍 RGB-D 视频 → 前馈式快速重建�
 - [humanoid_pnb_ttt-parkour.md](../../sources/papers/humanoid_pnb_ttt-parkour.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/TTT-Parkour__Rapid_Test-Time_Training_for_Perceptive_Robot_Parkour/TTT-Parkour__Rapid_Test-Time_Training_for_Perceptive_Robot_Parkour.html>
 - 论文：<https://arxiv.org/abs/2602.02331>
+- [arXiv PDF](https://arxiv.org/pdf/2602.02331)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3.2 策略预训练、§3.3 几何重建、§3.4 测试时训练、§4.1–4.2 实验设定与对比；其余实验、附录略读
 
 ## 推荐继续阅读
 

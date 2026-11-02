@@ -31,7 +31,30 @@ End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy 的人形机器
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    PC["LiDAR 点云历史（Livox Mid-360）"] --> FPS["最远点采样与特征提取，得到 64 维 LiDAR 特征"]
+    FPS --> GRU["GRU 处理 LiDAR 特征历史"]
+    PROP["本体感觉与指令历史（10 步）"] --> CAT["拼接"]
+    GRU --> CAT
+    CAT --> MLP["MLP"]
+    MLP --> ACT["actor 输出关节动作"]
+    ACT --> SIMU["Isaac Sim 训练环境"]
+    SIMU --> RWD["奖励：速度与偏航跟踪 + 舒适性奖励（近距离、接近速度 / 加速度、切向避障等）"]
+    SIMU --> CST["代价：LDCBF 屏障代价、安全距离违反（0.8 m）、关节与力矩限位、自碰撞"]
+    SIMU --> PRIV["特权信息：8 方向最近障碍距离与速度、全身接触力等"]
+    PRIV --> CRI["奖励 critic 与安全 critic（额外输入特权信息）"]
+    RWD --> P3O["P3O 约束强化学习"]
+    CST --> P3O
+    CRI --> P3O
+    P3O -->|"更新"| ACT
+```
+
+图依据：论文 §IV-A（网络输入与架构）、§IV-B（LDCBF 代价）、§IV-C / §IV-D（奖励、代价与 P3O）/ Fig. 2、Table I。
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy 的人形机器
 - [humanoid_pnb_end-to-end-humanoid-robot-safe-and-comfortable-l.md](../../sources/papers/humanoid_pnb_end-to-end-humanoid-robot-safe-and-comfortable-l.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.07611>
+- [arXiv PDF](https://arxiv.org/pdf/2508.07611)：已通读方法部分（实验与附录以略读为准）：摘要、§III 定义、§IV 方法（网络输入与架构、LDCBF 代价、奖励与代价、P3O 训练）、§V-A 实验设置
 
 ## 推荐继续阅读
 

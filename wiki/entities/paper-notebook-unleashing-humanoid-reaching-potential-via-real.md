@@ -32,7 +32,31 @@ Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space 的人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LIB["III-A 原始技能库（各自 PPO 训练，目标条件策略）"]
+        L1["Locomotion：速度指令 (vx, vy, ω)，周期步态奖励"]
+        L2["Body-Pose-Adjustment：身高 h、俯仰 b，对称性奖励"]
+        L3["Hand-Reaching：末端 6D 位姿 e"]
+    end
+    LIB --> T["教师策略：下半身 {π_loco, π_body} + 上半身 {π_hand}"]
+    ENV["异构技能训练环境：多部位同时下发指令（协调）+ 技能随机切换（过渡）"] --> STU
+    T --> STU["III-B 学生策略 π_ensem：DAgger 模仿 + PPO（λ1 由 0.95 降到 0.05，λ2 反向调整）"]
+    STU --> ENC["变分编码器 E(z | s, g) + 可学习条件先验 P(z | s)"]
+    ENC --> Z["统一潜技能空间 z（R2S2）"]
+    Z --> DEC["解码器 D(a | s, z) → 逐关节 PD 目标"]
+    LOSS["L_Total = L_Ensem + λ3·L_Regu（相邻潜码一致）+ λ4·L_KL"] -.-> ENC
+    DEC --> FZ["冻结解码器 D"]
+    TASK["III-C 任务级高层规划器 π_plan：RL 训练，动作为潜码 z"] --> FZ
+    RW["r_plan = r_task + r_regularization"] -.-> TASK
+    FZ --> OUT["每关节动作 → PD 控制器 → 真机人形"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Fig.2
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space 的人�
 
 - [humanoid_pnb_unleashing-humanoid-reaching-potential-via-real.md](../../sources/papers/humanoid_pnb_unleashing-humanoid-reaching-potential-via-real.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2505.10918)：已通读方法部分（实验与附录以略读为准）：§III 全部（原始技能库、异构技能集成、潜技能空间高层规划）；§IV 实验与 §V 遥操作略读
 
 
 ## 推荐继续阅读

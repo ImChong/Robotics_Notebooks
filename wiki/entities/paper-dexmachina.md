@@ -39,6 +39,34 @@ summary: "DexMachina（ICML 2026）：VOC 课程+任务/运动/接触奖励的�
 
 双手灵巧操作动作空间大、时空不连续、人机手形态差大，直接模仿易失败。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["人类手-物示范 D<br/>密集跟踪的物体状态 G 与手部姿态 H<br/>关节物体：部件位姿 + 旋转关节角"] --> KR
+    subgraph PRE["示范预处理"]
+        KR["仅运动学重定向<br/>匹配灵巧手与人手姿态"] --> REF["仿真回放（物体固定、软控制目标）<br/>得到碰撞感知的参考关节 Q 与参考关键点 X"]
+        KR --> CON["基于距离近似手-物接触<br/>得到接触位置 C 与有效掩码 M"]
+    end
+    REF --> ACT
+    subgraph RL["RL 环境（PPO，Genesis 仿真，双手同时控制）"]
+        ACT["混合动作<br/>6-DoF 手腕：参考关节作基础动作 + 策略残差<br/>手指：按关节限位归一化的绝对动作"]
+        RW["奖励加权和<br/>任务奖励（位置×旋转×关节角，乘积形式）<br/>运动模仿 r_imi + 行为克隆 r_bc + 接触奖励 r_con"]
+    end
+    REF --> RW
+    CON --> RW
+    subgraph CUR["VOC 自动课程"]
+        VOC["虚拟物体控制器<br/>PD 弹簧-阻尼驱动物体沿示范轨迹运动<br/>（仿真特权信息）"] --> DEC["按近期奖励均值达到阈值<br/>指数衰减增益 kp、kv，直至为 0"]
+    end
+    ACT --> POL["策略 π（RL 训练）"]
+    RW --> POL
+    VOC -. 早期强辅助，后期撤除 .-> POL
+    POL --> DEC
+    POL --> OUT["无 VOC 下的双手灵巧策略<br/>跟踪示范的物体轨迹"]
+```
+
+图依据：论文 §4.1–4.3 / Fig. 2 / Algorithm 1
+
 ## 核心原理（方法）
 
 从示范提取任务/运动/接触奖励；VOC 先驱动物体到目标再让策略接管；多灵巧手多任务 benchmark。
@@ -81,6 +109,8 @@ DexMachina 把 VOC 课程做成可复现的灵巧功能重定向平台，但真�
 
 - [dexmachina_arxiv_2505_24853.md](../../sources/papers/dexmachina_arxiv_2505_24853.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2505.24853)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 功能重定向问题定义、§4 方法（§4.1 RL 环境与任务奖励、§4.2 动作与辅助奖励、§4.3 虚拟物体控制器自动课程）；§5 实验仅略读，附录未读
+
 
 ## 推荐继续阅读
 

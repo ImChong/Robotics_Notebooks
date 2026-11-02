@@ -38,6 +38,24 @@ summary: "现有机器人数据集与仿真基准多面向机械臂平台；对�
 - **MCTS 补 LLM 长时程推理**是实用组合；
 - 与 DexMimicGen、HumanoidGen 等数据生成工作共同壮大人形操作数据。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["空间标注准备<br/>资产与灵巧手的关键点/关键轴<br/>手部原子操作：grasp / pinch / press 等"] --> B["场景生成：LLM 规划器<br/>输入资产库、场景、任务描述<br/>输出场景配置代码与成功判据"]
+    B --> C["LLM 任务分解<br/>长时程任务拆成 n 步，每步左右手各一个<br/>手部原子操作 Ai 或 臂运动 Mi"]
+    C --> D["空间约束链<br/>目标位姿约束 + 路径约束（点/轴重合、平行等）<br/>含主动避碰与碰撞忽略列表"]
+    D --> E["约束求解器 / 轨迹优化器<br/>得到臂与手的动作"]
+    E --> F["仿真执行 SAPIEN<br/>Unitree H1-2 + Inspire 手"]
+    F --> G{"执行成功？"}
+    G -- "是" --> H["记录成功轨迹作为演示<br/>场景扩展到 120+ 房间级场景"]
+    G -- "否（长时程/标注不足）" --> I["MCTS + STCR<br/>分段-截断-合并-恢复，抽象规划树<br/>Selection / Expansion / Backpropagation"]
+    I --> C
+    H --> J["HGen-Bench 20 个任务<br/>训练 2D / 3D 扩散策略"]
+```
+
+图依据：论文 §2（Fig. 1、Fig. 3）、§2.1 至 §2.3
+
 ## 解决什么问题
 
 人形**双手灵巧操作**缺数据： - 现有数据/基准多为**单臂**； - 双手灵巧需**协调臂 + 手**，**自主采集难**； - 缺高质量演示来训策略。
@@ -88,6 +106,7 @@ HumanoidGen 要：**自动**生成双手灵巧任务与高质量演示。
 - [humanoid_pnb_humanoidgen.md](../../sources/papers/humanoid_pnb_humanoidgen.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning.html>
 - 论文：<https://arxiv.org/abs/2507.00833>
+- [arXiv PDF](https://arxiv.org/pdf/2507.00833)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Method（空间标注与场景生成、LLM 任务规划、MCTS/STCR、场景扩展）
 
 ## 推荐继续阅读
 

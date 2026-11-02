@@ -32,7 +32,23 @@ Task and Motion Planning for Humanoid Loco-manipulation 的人形机器人学习
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务与场景：初始符号状态 s1 与目标 sg（接触对 + 接触类型）"] --> B["符号接触规划：树搜索，深度上限 Kmax"]
+    SK["操作骨架 manipulation skeleton：grasp / lift / place / release，可由 PDDL 等逻辑规划生成"] -->|"剪枝：只保留符合骨架的接触转移"| B
+    PR["其他剪枝：非法状态与非法转移"] --> B
+    B --> C["候选接触序列 s1 → … → sK"]
+    C --> D["接触显式轨迹优化 TO：机器人 + 物体全身动力学，各接触阶段时长一并优化"]
+    D --> E{"约束满足且任务完成？"}
+    E -->|"否：再次查询接触规划器"| B
+    E -->|"是"| F["全身动力学一致的状态-控制轨迹"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 1、Fig. 2（保留 Nit 次迭代中代价与约束违反最低的轨迹）。
 
 ## 核心信息
 
@@ -65,7 +81,7 @@ Task and Motion Planning for Humanoid Loco-manipulation 的人形机器人学习
 
 - [humanoid_pnb_task-and-motion-planning-for-humanoid-loco-manip.md](../../sources/papers/humanoid_pnb_task-and-motion-planning-for-humanoid-loco-manip.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2508.14099)：已通读方法部分（实验与附录以略读为准）：摘要、§III Method（A 至 D）、Fig. 1–2、§IV-A 任务设定
 
 ## 推荐继续阅读
 
