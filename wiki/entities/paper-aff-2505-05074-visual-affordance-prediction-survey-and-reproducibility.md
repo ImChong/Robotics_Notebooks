@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Visual Affordance Prediction: Survey and Reproducibility——在清单中归入 **Related Surveys（Focus: Visual affordance prediction with an emphasis on reproducibility）**（清单未附方法摘要，此处不替原文概括贡献）。
+Visual Affordance Prediction: Survey and Reproducibility——在清单中归入 **Related Surveys（Focus: Visual affordance prediction with an emphasis on reproducibility）**（清单未附方法摘要；论文的组织结构见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,26 @@ Visual Affordance Prediction: Survey and Reproducibility——在清单中归入
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+下图是论文自己的章节框架与统一形式化（综述组织结构，非本页自创分类）。
+
+```mermaid
+flowchart TD
+    DEF["§II 统一形式化<br/>f(x_v, T, e) → {a, o, S, P}<br/>what: 动作 a 与物体 o / where: 交互区域 S / how: 手部位姿 P"] --> LOC
+    subgraph REV["§III 按子任务综述方法"]
+        LOC["A. Object localisation<br/>定位任务相关物体"] --> CLS["B. Functional classification<br/>预测每个物体上的动作"]
+        CLS --> SEG["C. Functional segmentation<br/>affordance detection and segmentation / affordance grounding"]
+        SEG --> HAND["D. Hand pose estimation and synthesis<br/>估计手部位姿并渲染到图像"]
+    end
+    HAND --> DS["§IV Datasets: review and limitations<br/>图像数据集对比与标注局限"]
+    DS --> REP["§V Affordance prediction reproducibility<br/>A. 可复现性挑战 RC1-RC5<br/>B. Affordance Sheets"]
+    REP --> SHEET["Affordance Sheet 六部分<br/>问题 / 数据集 RC1 / 模型 RC2-3 / 实验设置 RC4 / 性能度量 RC5 / 机器人验证"]
+    SHEET --> FUT["§VI Future directions<br/>物体物理属性 / AI agent 集成 / 扩大数据集规模 / 基准评测"]
+```
+
+图依据：综述组织结构图（章节框架），论文 §II（式 1）、§III 开头的五个子任务列表与 §III-A 至 §III-D、§IV、§V-A/B（Table IX 的六部分 Affordance Sheet）、§VI。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -51,7 +71,7 @@ Visual Affordance Prediction: Survey and Reproducibility——在清单中归入
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2505.05074)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；论文的组织结构见上文「流程总览」（依据论文各章节，未逐页核对实验数字），其余细节与实验请读 [原文](https://arxiv.org/abs/2505.05074)。
 
 ## 评测与指标
 
@@ -67,7 +87,7 @@ Visual Affordance Prediction: Survey and Reproducibility——在清单中归入
 
 **本页只提供「Visual Affordance Prediction」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述的论文的组织结构（依据论文各章节，未逐页核对实验数字）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -88,6 +108,7 @@ Visual Affordance Prediction: Survey and Reproducibility——在清单中归入
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2505.05074>
+- [arXiv PDF](https://arxiv.org/pdf/2505.05074)：已通读 §I 引言、§II 问题形式化、§V 可复现性与 Affordance Sheet、§VI 未来方向；§III 各子任务与 §IV 数据集读各节开头与总述（方法 / 数据集对比表略读）；附录 Affordance Sheet 表未逐项读
 
 ## 推荐继续阅读
 

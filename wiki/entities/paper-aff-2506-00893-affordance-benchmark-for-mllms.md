@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要，此处不替原文概括贡献）。
+Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning Subcategory: Language-Centric Affordance Reasoning） ｜ Datasets / Benchmarks（Data Modality: image）**（清单未附方法摘要；基准构建与评测协议见「流程总览」，贡献概括以原文为准）。
 
 ## 英文缩写速查
 
@@ -40,6 +40,25 @@ Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning S
 - 综述把 affordance 学习拆成感知、推理、引导动作三段（见 [综述实体页](../entities/paper-affordance-learning-embodied-ai-survey.md)），本条目是其中一段的代表文献之一。
 - 可顺着 [技术地图](../overview/affordance-awesome-technology-map.md) 的同分组条目横向阅读同方向工作。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRIN["设计原则: 同时考察 constitutive 与 transformative affordance"] --> CON["Constitutive affordance: 1,282 题<br/>4 大类 9 个子学科: Daily Life / Natural and Rural / Urban and Industrial / Medical and Scientific"]
+    PRIN --> TRA["Transformative affordance: 718 题<br/>Misleading / Time-dependent / Cross-cultural / Individual-variant"]
+    ANN["人工专家标注: 60 人 = 10 资深专家 + 20 初级研究员 + 30 普通研究员<br/>资深专家出 transformative 题, 其余出基础题<br/>每题至少由 5 位其他标注者审核"] --> BENCH
+    CON --> BENCH["A4Bench: 2,000 道多模态问答<br/>Yes-or-No 占 7.8%, What 占 92.2%"]
+    TRA --> BENCH
+    DIFF["难度保障三策略<br/>人类 - MLLM 混合迭代修订至模型答错 / 把物体名替换为 this object / 不公开正确选项个数"] --> BENCH
+    BENCH --> PROT["评测协议: 零样本, 输入含概念提示 + 格式提示 + 问题 + 选项<br/>选项与正确答案随机化, 以 prompt-human progressive choice 校验回答"]
+    PROT --> MLLM["17 个 MLLM: 9 个闭源 + 8 个开源"]
+    PROT --> HUM["人类被试: 受控实验室, 记录最好 / 最差表现"]
+    MLLM --> METRIC["指标: exact match accuracy, 另设随机猜测基线"]
+    HUM --> METRIC
+```
+
+图依据：基准构建与评测协议图，论文 Fig. 2（A4Bench 结构）、Constructing the A4Bench（Key Principles / Focused Aspects / Question Collection / Human Expert Annotation / Question Response）、Experiment Results（Benchmark Candidates / Human Performance）、Table 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -52,7 +71,7 @@ Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning S
 
 ## 核心机制（归纳）
 
-清单只给出标题、出处与分类标签，**没有**方法摘要。本页不凭标题推测网络结构或训练细节；需要机制与实验请读 [原文](https://arxiv.org/abs/2506.00893)。
+清单只给出标题、出处与分类标签，**没有**方法摘要；基准构建与评测协议见上文「流程总览」（依据论文 Constructing the A4Bench 与 Experiment Results 的设定部分，未核对实验数字），其余细节与实验请读 [原文](https://arxiv.org/abs/2506.00893)。
 
 ## 评测与指标
 
@@ -68,7 +87,7 @@ Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning S
 
 **本页只提供「A4Bench」在 affordance 综述清单中的坐标与原文入口，不能替代原文。**
 
-- 可确证的只有标题、出处与分类标签；方法与结果未经本页核实。
+- 可确证的有标题、出处与分类标签，以及「流程总览」所述的基准构建与评测协议（依据论文 Constructing the A4Bench 与 Experiment Results 的设定部分，未核对实验数字）；实验结果未经本页核实。
 - 开源状态清单未标注，入库时未打开项目页核查，复现前请自行确认。
 - 要深读：从原文入手，再回综述实体页对照 perception → reasoning → action 的位置。
 
@@ -89,6 +108,7 @@ Affordance Benchmark for MLLMs——在清单中归入 **Reasoning（Reasoning S
 - [`sources/papers/affordance_awesome_catalog.md`](../../sources/papers/affordance_awesome_catalog.md) — 列表总表
 - [`sources/repos/awesome-affordance-learning.md`](../../sources/repos/awesome-affordance-learning.md)
 - 论文：<https://arxiv.org/abs/2506.00893>
+- [arXiv PDF](https://arxiv.org/pdf/2506.00893)：已通读 Introduction、Constructing the A4Bench（Key Principles 至 Question Response）、Experiment Results 的 Benchmark Candidates 与 Human Performance 设定；各模型结果与 Findings 及其后章节未读
 
 ## 推荐继续阅读
 
