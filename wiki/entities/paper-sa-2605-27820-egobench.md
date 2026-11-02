@@ -41,6 +41,26 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["Stage 1：第一人称视频收集<br/>自采（智能眼镜/手机）+ Ego4D，10–30 s，物体特征鲜明且有时间顺序"] --> S2["Stage 2：工具库与数据库构建<br/>数据库含视频可见属性 + 视频不可见的补充信息（视觉-数据信息差）"]
+    S2 --> S3["Stage 3：任务设计与真值标注<br/>多模态引用 → 工具检索不可见属性 → 条件分支与筛选 → 修改数据库状态<br/>真值 = 关键工具调用序列，两名标注员独立标注"]
+    S3 --> ENV["评测环境：被测智能体 + 工具/数据库 + 模拟用户"]
+    subgraph SU["模拟用户 (Actor-Evaluator-Summarizer)"]
+        ACT["Actor 生成用户回复"] --> EVA["Evaluator 按四项二值准则检查"]
+        EVA -->|"不通过：反馈修订"| ACT
+        EVA -->|"通过"| SUM["Summarizer 压缩对话并记录任务进度"]
+        SUM --> ACT
+    end
+    ENV <--> SU
+    ENV --> JV["联合验证<br/>过程：真值工具调用是否被覆盖<br/>结果：最终数据库状态哈希是否等价"]
+    JV --> JSR["Joint Success Rate"]
+```
+
+图依据：论文 §3.1–§3.5 / Fig. 2；本图描述基准构建与评测流程，非被测模型的方法
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +115,7 @@ sources:
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.27820>
+- [arXiv PDF](https://arxiv.org/pdf/2605.27820)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–§3.5
 
 ## 推荐继续阅读
 

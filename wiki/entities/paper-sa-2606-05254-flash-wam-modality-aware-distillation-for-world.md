@@ -42,6 +42,24 @@ Compresses WAM inference to a single step per modality, 348× speedup on RoboTwi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["上下文 C：历史观测、历史动作、语言指令"] --> T["冻结 Teacher WAM（带 CFG 的 Euler 步）"]
+    T --> TG["教师 Euler 步得到更低噪声目标点"]
+    TG --> EMA["EMA target 网络"]
+    C --> S["Student（视频流与动作流共享骨干）"]
+    S --> FV["视频流：标准 consistency 函数 f_v = c_skip·x + c_out·x̂0"]
+    S --> FA["动作流：线性缩放 consistency 函数 f_a = x − σ·v_a"]
+    EMA --> LOSS["consistency 损失：Student 输出与 EMA 目标一致"]
+    FV --> LOSS
+    FA --> LOSS
+    LOSS --> D["部署：每个模态单步去噪（视频 + 动作）"]
+```
+
+图依据：论文 §2 Background、§3.2 问题形式化、§4 方法（4.1–4.2）/ Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Compresses WAM inference to a single step per modality, 348× speedup on RoboTwi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.05254>
+- [arXiv PDF](https://arxiv.org/pdf/2606.05254)：已通读方法部分（实验与附录以略读为准）：摘要、§2 Background（流匹配与 consistency distillation）、§3.2 问题形式化、§4 方法（4.1、4.2）；联合目标的具体组合式与实验章节略读
 
 ## 推荐继续阅读
 
