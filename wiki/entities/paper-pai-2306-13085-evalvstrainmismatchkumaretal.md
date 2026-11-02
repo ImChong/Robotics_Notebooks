@@ -103,6 +103,7 @@ Methodology paper on why offline metrics mispredict deployed robot performance.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2306.13085>
+- 核对（2026-11-02）：arXiv:2306.13085 实为《Harnessing Mixed Offline Reinforcement Learning Datasets via Trajectory Weighting》(Hong 等, 2023-06-22)，与本页不符，待查（候选 Kumar 等 2109.10813（离线 RL 工作流）主题与「离线指标错误预测部署表现」不完全吻合，未采用）
 
 ## 推荐继续阅读
 
