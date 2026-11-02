@@ -5,6 +5,7 @@ tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
 updated: 2026-09-28
 related:
+  - ../concepts/open-source-humanoid-reproduction-gate.md
   - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
   - ./roboto-origin.md
@@ -55,6 +56,8 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 | Sim2Real | Simulation to Real | 硬件–仿真模型一致性影响迁移 |
 
 ## 微信策展索引（更多开源整机入口）
+
+- [开源人形复现门槛与门禁清单](../concepts/open-source-humanoid-reproduction-gate.md) — 从仓库到真机的三道坎与四项门禁（文章经验，未核实）
 
 第三方清单文将 **傅利叶 N1、智元灵犀 X1、天工、ODRI、Berkeley Humanoid Lite** 等与 **ROBOTIS 教育/人形线** 并列收录，已拆成独立实体页，入口见：[机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)。本页下文的 **Berkeley / ODRI** 小节可与 [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)、[ODRI Solo / Bolt](./odri-solo-and-bolt.md) 交叉阅读。
 
