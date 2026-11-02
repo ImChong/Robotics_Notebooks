@@ -40,6 +40,22 @@ Survey on neural implicit representations for robotics applications.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    NF["Neural Fields in Robotics: A Survey"] --> S2["Sec. II 表示形式<br/>Occupancy Fields / SDFs / Radiance Fields (NeRF, 3D Gaussian Splatting)"]
+    NF --> S3["Sec. III 五大机器人应用领域"]
+    NF --> S4["Sec. IV Open Challenges<br/>Efficiency / Dynamic environments / Sensor integration / Generalization / Multi-modal, multi-task scene understanding / Performance evaluation / Collaborative frameworks"]
+    S3 --> PE["III-A Pose Estimation<br/>Camera Pose Estimation / Object Pose Estimation"]
+    S3 --> MA["III-B Manipulation<br/>Occupancy / Radiance Fields / SDF / Feature Fields / Visual & Tactile sensing / Diffusion Models"]
+    S3 --> NA["III-C Navigation<br/>Planning / Exploration / Visual Localization / Feature Field"]
+    S3 --> PH["III-D Physics<br/>Model-Free / Model-Based"]
+    S3 --> AD["III-E Autonomous Driving<br/>Manipulability / Photorealistic Simulators / Generalizability"]
+```
+
+图依据：综述分类体系图，论文 Fig. 5（Taxonomy of selected key Neural Fields papers in five major robotics application areas）、§I 章节组织说明、§II–§IV 小节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +119,7 @@ Survey on neural implicit representations for robotics applications.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2410.20220>
+- [arXiv PDF](https://arxiv.org/pdf/2410.20220)：已通读章节结构（§I 引言、§II 表示形式、§III 各应用领域小节标题与 Fig. 3/5、§IV Open Challenges）；各方法细节与实验以略读为准
 
 ## 推荐继续阅读
 

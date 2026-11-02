@@ -40,6 +40,20 @@ Foundational paper on statistical pitfalls and reproducibility in RL evaluation.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["问题：深度 RL 结果难复现、难判断提升是否有意义"] --> B["研究设计：聚焦连续控制中的策略梯度（PG）方法<br/>OpenAI Baselines 的 ACKTR / PPO / DDPG / TRPO<br/>MuJoCo：Hopper-v1、HalfCheetah-v1（训练 2M 样本）"]
+  B --> C["外在因素（Experimental Analysis）<br/>超参数：网络结构、激活函数、Reward Scale<br/>代码库 Codebases"]
+  B --> D["内在因素<br/>随机种子与平均试验次数 Random Seeds<br/>环境特性 Environments"]
+  C --> E["Reporting Evaluation Metrics<br/>平均回报 / 置信区间 / bootstrap<br/>2-sample t-test / Kolmogorov-Smirnov / 显著性检验"]
+  D --> E
+  E --> F["Discussion and Conclusion<br/>可复现性建议：超参数、多种子、显著性检验"]
+```
+
+图依据：分析 / 实证研究的研究设计图，论文 Experimental Analysis（超参数、随机种子、环境、代码库）、Reporting Evaluation Metrics（含 Significance）、Discussion and Conclusion；不含具体结果数字。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +117,7 @@ Foundational paper on statistical pitfalls and reproducibility in RL evaluation.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1709.06560>
+- [arXiv PDF](https://arxiv.org/pdf/1709.06560)：已通读正文 Introduction、Experimental Analysis、Reporting Evaluation Metrics、Discussion and Conclusion；补充材料（附录）仅读标题
 
 ## 推荐继续阅读
 

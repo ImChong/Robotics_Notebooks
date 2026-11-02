@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`render-cli --data_file robo_splatter/config/gs_data_basic.yaml --camera_extrinsic ... --camera_intrinsic ... --image_height 480 --image_width 640 --output_dir ./output/background`（`pyproject.toml` 中 `render-cli = robo_splatter.scripts.render_scene:entrypoint`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 render-cli
+    participant E as scripts/render_scene.py entrypoint
+    participant V as models/gaussians.py VanillaGaussians（背景）
+    participant R as models/gaussians.py RigidsGaussians（前景实例）
+    participant S as render/scenes.py Scene
+    participant C as models/camera.py Camera
+    participant G as gsplat.rendering.rasterization
+
+    U->>E: parse_args（数据 yaml、相机位姿/内参、图像尺寸）
+    E->>V: init_from_yaml(data_file)，读 background.model_path（.ply）
+    E->>R: init_from_yaml(data_file)，读 foreground.instances（GSInstance）
+    E->>S: Scene(RenderConfig, background_models, foreground_models, device)
+    S->>S: 模型 .to(device)，set_eval
+    loop 每个相机位姿 idx
+        E->>C: Camera.init_from_pose_list([x,y,z,qx,qy,qz,qw], K, H, W)
+        E->>S: scene.render(camera, instances_poses, scene_type, coord_system)
+        S->>S: collect_gaussians(c2w, instances_pose, render_type)
+        S->>R: get_gaussians(c2w, instances_pose)（_compute_transform 把实例位姿作用到前景高斯）
+        S->>V: get_gaussians(c2w)
+        S->>S: SCENE 模式下前景与背景高斯拼接为 GaussianData
+        S->>G: rasterization(means, quats, scales, opacities, colors, viewmats, Ks, render_mode="RGB+ED")
+        G-->>S: renders, alphas, info
+        S-->>E: RenderResult(rgb, depth, opacity)
+    end
+    E->>E: 全局深度归一化并 applyColorMap，拼接 RGB 与深度图
+    E->>E: cv2.imwrite(output_dir/image_XXXX.png)
+    opt 指定 --gen_mp4_path
+        E->>E: utils/helper.create_mp4_from_images(fps=10)
+    end
+```
+
+图依据：HorizonRobotics/RoboSplatter@8f2c4a9，读过 README.md、pyproject.toml、robo_splatter/config/gs_data_basic.yaml、robo_splatter/scripts/render_scene.py、robo_splatter/render/scenes.py、robo_splatter/models/gaussians.py（init_from_yaml 与 RigidsGaussians.get_gaussians）、robo_splatter/models/camera.py（init_from_pose_list）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [RoboSplatter 源码归档](../../sources/repos/robosplatter.md)（<https://github.com/HorizonRobotics/RoboSplatter>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HorizonRobotics/RoboSplatter@8f2c4a9，读过 README.md、pyproject.toml、robo_splatter/config/gs_data_basic.yaml、robo_splatter/scripts/render_scene.py、robo_splatter/render/scenes.py、robo_splatter/models/{gaussians,camera}.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,40 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：高层 `cd demo/zsl-1/cpp && mkdir build && cd build && cmake .. && make -j6 && ./highlevel_demo`，或 `python3 demo/zsl-1/python/examples/highlevel_demo_Interactive.py`；底层 `python3 demo/zsl-1/python/examples/lowlevel_demo.py`。仓库公开的是头文件 `include/zsl-1/*.h`、示例与预编译库 `lib/zsl-1/<arch>/`（`libmc_sdk_zsl_1_*.so` 及 Python 扩展 `mc_sdk_zsl_1_py*.so`）；`docs/architecture.md` 明确不涉及 `/src` 内部实现，故以下只画示例对公开接口的调用。
+
+```mermaid
+sequenceDiagram
+    participant U as 操作员
+    participant H as demo/zsl-1/python/examples/highlevel_demo_Interactive.py
+    participant L as demo/zsl-1/python/examples/lowlevel_demo.py MotorControl
+    participant S as mc_sdk_zsl_1_py（预编译 SDK 库）
+    participant R as 机器狗运动控制
+    U->>H: python3 highlevel_demo_Interactive.py
+    H->>H: 按 platform.machine 把 lib/zsl-1/arch 加入 sys.path，import mc_sdk_zsl_1_py
+    H->>S: HighLevel().initRobot("127.0.0.1", 43988, "127.0.0.1")
+    H->>S: standUp() 后 sleep 3 秒
+    S->>R: 经 SDK 通信链路下发（协议在闭源库内）
+    loop 菜单循环
+        U->>H: 输入编号
+        H->>S: move(vx, vy, yaw) / jump / frontJump / backflip / shakeHand / attitudeControl / lieDown
+        H->>S: 移动类动作 sleep 后 move(0, 0, 0)，再 standUp 回到稳定状态
+    end
+    U->>L: python3 lowlevel_demo.py
+    L->>S: LowLevel().initRobot(local_ip, local_port, dog_ip)
+    loop 每 2ms
+        L->>S: getMotorState() 与 haveMotorData()
+        S-->>L: 关节 q_abad / q_hip / q_knee
+        L->>L: 线性插值，两阶段目标姿态
+        L->>S: sendMotorCmd(MotorCommand q_des kp kd)
+        S->>R: 电机指令
+    end
+```
+
+图依据：AgibotTech/agibot_D1_Edu-Ultra@b5fe0a8，读过 `README.md`、`docs/architecture.md`、`demo/zsl-1/python/examples/highlevel_demo_Interactive.py`、`demo/zsl-1/python/examples/lowlevel_demo.py`（前 90 行）、`demo/zsl-1/cpp/highlevel_demo.cpp`（`main` 与按键分支）、`include/zsl-1/highlevel.h` 与 `lowlevel.h`（接口签名）。`zsl-1w` 示例、`switch_control.cpp`、`video.py` 与 `docs/` 其余文档未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +100,7 @@ institutions:
 - [agibot_D1_Edu-Ultra 源码归档](../../sources/repos/agibot_d1_edu-ultra.md)（<https://github.com/AgibotTech/agibot_D1_Edu-Ultra>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：AgibotTech/agibot_D1_Edu-Ultra@b5fe0a8，读过 README.md、docs/architecture.md、demo/zsl-1/python/examples/highlevel_demo_Interactive.py、lowlevel_demo.py、demo/zsl-1/cpp/highlevel_demo.cpp、include/zsl-1/highlevel.h、lowlevel.h（接口签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

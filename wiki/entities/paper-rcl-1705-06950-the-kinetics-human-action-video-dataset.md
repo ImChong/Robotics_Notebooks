@@ -42,6 +42,20 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Stage 1 获取动作列表<br/>已有动作数据集 / Motion capture 文件标题 / Mechanical Turk 众包补充"] --> B["Stage 2 获取候选 clips<br/>Step 1 按视频标题匹配 YouTube 动作名<br/>Step 2 用 Google Image Search 训练的图像分类器逐帧定位, 取 top-k (k=2) 响应处前后各 5 秒成 10 秒 clip"]
+    B --> C["Stage 3 人工标注 (Amazon Mechanical Turk)<br/>问 Can you see a human performing the action class-name?<br/>每 clip 至多 5 人标注, 至少 3 个 Yes 才入选<br/>注入 groundtruth clips 估计工人准确率"]
+    C --> D["Stage 4 清理与去噪<br/>每个 YouTube 视频只保留一个 clip<br/>Inception-V1 特征 + cosine 相似度阈值 + 连通分量去重<br/>two-stream 分类器检测 noisy classes, 合并/拆分/删除类别<br/>最终人工 clip 过滤"]
+    D --> E["导出 video id / clip 时间 / 标签"]
+    E --> F["发布 Kinetics: 400 类<br/>train / validation / test 三个划分"]
+    F --> G["Sec. 4 基线: ConvNet+LSTM / Two-Stream / 3D ConvNet<br/>在 UCF-101, HMDB-51 与 Kinetics 上比较"]
+```
+
+图依据：数据采集流程图，论文 §3 How the Dataset was Built（§3.1–§3.4 四个 Stage）、§2 Statistics（Tab. 2 划分）、§4 Benchmark Performance。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +112,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1705.06950>
+- [arXiv PDF](https://arxiv.org/pdf/1705.06950)：已通读 §2 An Overview of the Kinetics Dataset、§3 How the Dataset was Built（含 §3.5–3.6 数据偏差讨论）、§4 Benchmark Performance 的基线描述；实验数字与附录以略读为准
 
 ## 推荐继续阅读
 

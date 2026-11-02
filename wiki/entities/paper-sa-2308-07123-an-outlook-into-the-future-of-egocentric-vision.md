@@ -42,6 +42,32 @@ Co-authored by authoritative scholars in the field, combined with future scenari
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  S["未来到当下（future-to-present）视角的综述<br/>设想可穿戴设备 EgoAI"]
+  S --> N["Sec. 2 Imagining the Future：五个角色化用例"]
+  N --> N1["EGO-Home"]
+  N --> N2["EGO-Worker"]
+  N --> N3["EGO-Tourist"]
+  N --> N4["EGO-Police"]
+  N --> N5["EGO-Designer"]
+  N --> T["Sec. 3 From Narratives to Research Tasks<br/>把故事片段对应到研究任务（Fig. 6）"]
+  T --> RT["Sec. 4 Research Tasks and Capabilities"]
+  RT --> G1["定位与场景：4.1 Localisation · 4.2 3D Scene Understanding"]
+  RT --> G2["动作层任务：4.3 Recognition · 4.4 Anticipation<br/>4.5 Gaze Understanding and Prediction"]
+  RT --> G3["理解人：4.6 Social Behaviour Understanding · 4.7 Full-body Pose Estimation<br/>4.8 Hand and Hand-Object Interactions · 4.9 Person Identification"]
+  RT --> G4["用户交互：4.10 Summarisation · 4.11 Dialogue"]
+  RT --> G5["4.12 Privacy"]
+  RT --> G6["4.13 Beyond individual tasks"]
+  RT --> P["每个任务的小节结构：seminal works → 当前 SOTA → 数据集 → 局限"]
+  S --> D["Sec. 5 General Datasets"]
+  S --> C["Sec. 6 Conclusion：近期值得探索的方向"]
+```
+
+图依据：综述分类体系图，依据论文 §1 末段对全文组织的说明、目录、§3 对任务分组的叙述与 §4 开头对各任务小节内容的说明；EGO-* 用例名与 4.x 任务名取自原文。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Co-authored by authoritative scholars in the field, combined with future scenari
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2308.07123>
+- [arXiv PDF](https://arxiv.org/pdf/2308.07123)：已读与流程图相关的章节（其余部分以略读为准）：摘要、目录、§1、§2 的用例概述、§3 全文、§4 开头与各小节标题、§5 开头与 Tab. 3、§6；§4 各任务的具体方法综述与参考文献略读
 
 ## 推荐继续阅读
 

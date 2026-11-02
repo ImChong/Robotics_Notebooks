@@ -31,7 +31,27 @@ Deep Reinforcement Learning for Bipedal Locomotion 的人形机器人学习论�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法分类见上文流程总览（依据论文 Fig.2），不含对各方法的结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["DeepRL for robotic bipedal locomotion framework<br/>（Fig.2 分类）"] --> B["End-to-end（§II）"]
+  A --> C["Hierarchy（§III）"]
+  B --> D["Reference-free learning"]
+  B --> E["Reference-based learning"]
+  E --> F["Residual learning"]
+  E --> G["Guided learning"]
+  C --> H["Hybrid control scheme"]
+  C --> I["Learned hierarchy scheme（§III-C）"]
+  H --> J["Deep planning hybrid scheme（§III-A）"]
+  H --> K["Learning-based feedback hybrid scheme（§III-B）"]
+  A --> L["§IV Limitations and Challenges"]
+  L --> M["§V Future Directions and Opportunities<br/>含 §V-C 两个统一框架概念模型"]
+```
+
+图依据：综述分类体系图，论文 Fig.2（DRL 控制方案分类）及 §I 文末的章节安排（§II 端到端、§III 层级、§IV 局限与挑战、§V 未来方向）。
 
 ## 核心信息
 
@@ -50,7 +70,7 @@ Deep Reinforcement Learning for Bipedal Locomotion 的人形机器人学习论�
 
 **本页目前只能支撑一个结论：这是一条已进入 05_Locomotion 深读队列、但尚未产出笔记的条目，它现在的价值只是可检索，而不是内容。**
 
-- 页面能确证的信息仅限分类（05_Locomotion）、arXiv 编号与计划文件夹路径；该综述的覆盖范围、方法分类与结论均未经消化。
+- 页面能确证的信息仅限分类（05_Locomotion）、arXiv 编号与计划文件夹路径；该综述的覆盖范围与结论未经消化（方法分类见流程总览）。
 - 因此本页 **不可作为技术判断依据**：任何关于双足 RL 现状的引用都应回到论文原文，或等 PROGRESS.md 追踪的深读笔记完成。
 - 定位是 **待读条目**，方便你按分类找到它；笔记完成后应补成完整摘要，并重写本节为面向内容的结论。
 
@@ -64,6 +84,7 @@ Deep Reinforcement Learning for Bipedal Locomotion 的人形机器人学习论�
 - [humanoid_pnb_deep-reinforcement-learning-for-bipedal-locomoti.md](../../sources/papers/humanoid_pnb_deep-reinforcement-learning-for-bipedal-locomoti.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2404.17070>
+- [arXiv PDF](https://arxiv.org/pdf/2404.17070)：已通读 §I（含 Fig.2 与章节安排）、§II 开头与 §II-A 起始、§III 章节标题、§IV 与 §V 标题及 §V-A 开头；其余各小节细节未读
 
 ## 推荐继续阅读
 

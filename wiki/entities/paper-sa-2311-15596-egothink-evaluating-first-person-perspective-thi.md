@@ -42,6 +42,23 @@ Introduces a novel visual question-answering benchmark that encompasses six core
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EGO4D["Ego4D 第一人称视频子集：逐帧抽取，约每数十帧采样一张图"] --> FILTER["图像筛选：剔除不清晰或无第一人称特征的图；每个视频至多保留 2 张"]
+    FILTER --> CAND["第一人称候选图像"]
+    CAND --> ANNO["6 名标注员手工标注问答对：每人负责 2 个维度，选中的图像从候选集移除以免重复"]
+    ANNO --> REVIEW["另 3 名标注员复核：三人一致认为符合维度定义才保留"]
+    REVIEW --> BENCH["EgoThink 基准：6 类能力 / 12 个细分维度（Object、Activity、Localization、Reasoning、Forecasting、Planning）"]
+    BENCH --> ZS["零样本评测 VLM：输入第一人称图像 + 问题，生成开放式回答"]
+    ZS --> JUDGE["GPT-4 作为自动评判（single-answer grading）：问题、模型输出、参考答案组成提示"]
+    JUDGE --> SCORE["每条回答打分 0 / 0.5 / 1（错 / 部分正确 / 正确）"]
+    SCORE -.-> AGREE["§5.2 一致性检验：GPT-3.5-Turbo、Claude-2、人工作为对照评判者"]
+```
+
+图依据：数据采集与评测协议流程图，依据论文 §3.1、§3.2（Fig.2）、§4.1 single-answer grading、§5.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Introduces a novel visual question-answering benchmark that encompasses six core
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2311.15596>
+- [arXiv PDF](https://arxiv.org/pdf/2311.15596)：已读摘要、§1、§3（3.1 核心能力、3.2 数据采集与统计）、§4.1 实验设定（含 single-answer grading）、§5.2 评判者一致性、§6；§4.2 结果与附录略读
 
 ## 推荐继续阅读
 

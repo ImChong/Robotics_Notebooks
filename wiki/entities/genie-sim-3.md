@@ -71,6 +71,44 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 | Genie Sim 3.0 | **场景级仿真** 训练与 benchmark |
 | GO-2 | 文内在 Genie Sim Benchmark 与 Sim2Real 评测中报告领先结果 |
 
+## 源码运行时序图
+
+入口：`geniesim benchmark run <TASK> --infer-host=127.0.0.1:8999 --benchmark.num_episode=1`（`source/geniesim_benchmark/benchmark_test_docs.md`；先 `geniesim docker5.1 up` 起 `geniesim3` 容器并 `geniesim ros build dev`）。下图只画 Benchmark 评测链路，且取 `runtime=isaac` 分支；同一 CLI 还会按任务配置派发到 `run_mujoco.py`（mujoco）或 `geniesim_benchmark.{newton,libuipc}.runner`，这些分支及 `geniesim_ros` 的 RT Engine、`geniesim_teleop`、`geniesim_scene_agent`、`geniesim_world` 等其它模块未读，不在图中。
+
+```mermaid
+sequenceDiagram
+    participant CLI as geniesim_cli/commands/benchmark.py
+    participant App as geniesim_benchmark/app/app.py (Isaac Sim)
+    participant TM as app/task_manager.py (worker 线程)
+    participant TB as benchmark/task_benchmark.py (TaskBenchmark)
+    participant Env as benchmark/envs (PiEnv 等)
+    participant Pol as benchmark/policy/corobotpolicy.py
+    participant Srv as 用户推理服务 (WebSocket + msgpack)
+
+    CLI->>CLI: _do_run：_resolve_config(TASK)，_task_runtime 判定运行时
+    CLI->>App: os.execvp(python app.py --config ... --benchmark.infer_host=...)
+    App->>App: AppLauncher 启动 simulation_app，main() 建 World / UIBuilder / APICore
+    App->>TM: TaskManager(api_core, cfg.benchmark).start()
+    TM->>TB: worker 线程内 TaskBenchmark(config, api_core).evaluate_policy()
+    App->>App: 主线程 while simulation_app.is_running() 循环 step_world；物理回调 api_core.physics_step
+    TB->>Pol: create_policy：model_arc==corobot 时建 CoRobotPolicy(host, port)
+    TB->>Env: create_env(episode_file, instance_id)
+    loop evaluate_episode 每步
+        TB->>Pol: act(observation, task_instruction, gen_config)
+        alt action_buffer 为空
+            Pol->>Srv: infer(payload)：ws.send(msgpack) 并 ws.recv()
+            Srv-->>Pol: 动作序列 chunk，写入 action_buffer
+        end
+        Pol-->>TB: action
+        TB->>Env: step(action)
+        Env->>App: api_core 下发关节 / 底盘指令
+        Env-->>TB: observation, done, task_progress
+    end
+    TB->>TB: 汇总评测结果（evaluate_summary）
+```
+
+图依据：AgibotTech/genie_sim@f2d37a7，读过 README.md、source/geniesim_benchmark/benchmark_test_docs.md、source/geniesim_cli/src/geniesim_cli/commands/benchmark.py（_do_run、_build_app_cmd、_do_check_inference）、source/geniesim_benchmark/src/geniesim_benchmark/app/app.py、app/task_manager.py、benchmark/task_benchmark.py（create_policy、evaluate_episode 片段）、benchmark/policy/corobotpolicy.py（infer、act）、benchmark/envs/pi_env.py（仅 grep 到 api_core 调用，未通读）。
+
 ## 关联页面
 
 - [仿真训练与评测分类 hub](../overview/agibot-release-category-02-sim-training-eval.md)
@@ -88,6 +126,8 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - [Genie Sim 项目页归档](../../sources/sites/genie_sim.md)
 
 - [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)
+
+- 源码核对（2026-11-02）：AgibotTech/genie_sim@f2d37a7，读过 README.md、source/geniesim_benchmark/benchmark_test_docs.md、source/geniesim_cli/src/geniesim_cli/commands/benchmark.py、geniesim_benchmark/app/{app.py,task_manager.py}、benchmark/task_benchmark.py、benchmark/policy/corobotpolicy.py、benchmark/envs/pi_env.py（片段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

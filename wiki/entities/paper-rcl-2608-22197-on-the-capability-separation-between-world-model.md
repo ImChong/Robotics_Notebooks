@@ -41,6 +41,27 @@ World-action models predict a future outcome and then infer an associated action
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  Q["问题：仅用同一批观测示范训练时，<br/>未来预测是否带来更强的控制能力？"]
+  Q --> P["三类范式（§1、§3.5）"]
+  P --> PA["π_A：H → A<br/>直接行为克隆"]
+  P --> PWA["π_WA：H → Y → A<br/>模仿式 world-action（先预测未来再反推动作）"]
+  P --> PWM["π_WM：(H, A) → Y → 效用<br/>动作条件世界模型 + 决策 / 优化"]
+  PA --> R1["§4 观测等价：架构层 flattening（Thm 4.4）<br/>人口层等价（Thm 4.6，需可实现性、精确优化、共同信息）<br/>近似等价（Prop 4.8）"]
+  PWA --> R1
+  PWM --> R2["§5 干预识别与决策分离"]
+  R2 --> R21["动作无条件的未来预测器存在不可约的<br/>action-specific 预测误差（Thm 5.1）"]
+  R2 --> R22["world-action 联合分布 → 前向模型需要因果识别<br/>且需 action-clamping 部署（Prop 5.2、Cor 5.3）"]
+  R2 --> R23["观测数据下的不可识别性（Thm 5.4）<br/>与观测 / 干预学习者的严格分离（Cor 5.5、Thm 5.6）"]
+  R1 --> C["结论（§6）：区别不在是否预测未来，<br/>而在是否识别并比较指定替代动作下的未来"]
+  R23 --> C
+```
+
+图依据：论证结构图，依据论文 §1（三种范式与 Main results）、§3.5、§4（Thm 4.4 / 4.6、Prop 4.8）、§5（Thm 5.1 / 5.4 / 5.6 等）与摘要末句；定理编号取自论文目录级标题，具体条件以原文为准。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ World-action models predict a future outcome and then infer an associated action
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.22197>
+- [arXiv PDF](https://arxiv.org/pdf/2608.22197)：已读与流程图相关的章节（其余部分以略读为准）：摘要、§1（含 Main results 与全文组织）、§3 的框架与三种范式定义、§4 与 §5 的定理 / 命题标题及其前后说明、§6 开头；证明与附录略读
 
 ## 推荐继续阅读
 

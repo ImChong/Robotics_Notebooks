@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`source env.sh && python3 astribot_simulation.py`（默认读 `config/astribot_s1/simulation_mujoco_param.yaml`）
+
+```mermaid
+sequenceDiagram
+    participant Main as astribot_simulation.py main()
+    participant Fac as AstribotEnvsFactory (astribot_envs_factory.py)
+    participant Gym as gymnasium.make
+    participant Env as AstribotMujocoEnv (astribot_mujoco_env.py)
+    participant Base as AstribotBaseEnv (astribot_base_env.py)
+    participant Ros as MultiRobotRosInterface / RobotRosInterface (robot_ros_interface.py)
+    participant MJ as mujoco (mj_step)
+
+    Main->>Fac: load_yaml_file(yaml)（model_path 拼上 ASTRIBOT_SIMU_ROOT）
+    Main->>Fac: create_simulation_env(data)
+    Fac->>Gym: make("astribot_envs/AstribotMujocoEnv-v0", param=data)
+    Gym->>Env: __init__(param)
+    Env->>Base: super().__init__：读 YAML 参数、setup_ros_node（rospy/rclpy init）
+    Base->>Ros: setup_joint_interface：建 joint_space_states 发布与 joint_space_command 订阅
+    Env->>MJ: MjModel.from_xml_path / MjData，建 MujocoRenderer
+    Fac->>Fac: 起线程运行 simu_env_loop（Isaac Lab 则主线程）
+    Fac->>Env: reset()
+    loop while running()（ROS rate 50Hz）
+        Fac->>Env: step(action_space.sample())
+        Env->>Base: update_reset_flag / update_joint_states
+        Base->>Ros: publish_joint_states（仿真关节状态发布）
+        Ros-->>Base: get_joint_position/velocity/torque_command（来自 joint_command_callback）
+        Env->>Env: 按 controller_mode 1/2/3 设置 data.ctrl（含重力补偿、速度补偿）
+        loop frame_skip=3
+            Env->>MJ: mj_step(model, data)
+        end
+        Env->>Env: render()（human 窗口或异步相机渲染）
+    end
+    Fac->>Env: close()
+```
+
+图依据：Astribot-Dev/astribot_simulation@1403f96，读过 `README.md`、`astribot_simulation.py`、`src/astribot_envs/astribot_envs_factory.py`、`astribot_mujoco_env.py`、`astribot_base_env.py`、`src/simu_utils/robot_ros_interface.py`、`env.sh`。仅画 MuJoCo 后端默认路径；Genesis / ManiSkill / Isaac Lab 后端未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [astribot_simulation 源码归档](../../sources/repos/astribot_simulation.md)（<https://github.com/Astribot-Dev/astribot_simulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Astribot-Dev/astribot_simulation@1403f96，读过 README.md、astribot_simulation.py、src/astribot_envs/astribot_envs_factory.py、astribot_mujoco_env.py、astribot_base_env.py、src/simu_utils/robot_ros_interface.py、env.sh；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

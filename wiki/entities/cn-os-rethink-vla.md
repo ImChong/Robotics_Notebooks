@@ -55,6 +55,49 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（评测）：`bash shell/eval-libero-relative.sh`，脚本先后台起 `python -m src.inference.run_server_vla`，再在 conda 环境 `libero` 中跑 `python -m src.benchmark.libero.run_libero_eval_fast`；两进程经 ZeroMQ（REQ/REP）通信。
+
+```mermaid
+sequenceDiagram
+    participant SH as shell/eval-libero-relative.sh
+    participant SRV as src/inference/run_server_vla.py
+    participant POL as InternVLPolicy (internvl_policy.py)
+    participant ZS as InternVLInferenceServer (ZMQ REP)
+    participant EV as benchmark/libero/run_libero_eval_fast.py
+    participant PC as Policy_Libero (benchmark/utils/policy.py)
+    participant ENV as LIBERO env
+    participant M as BeingH.get_action_bagel (model/beingvla.py)
+
+    SH->>SRV: nohup python -m ... --model-path --port --data-config-name
+    SRV->>POL: InternVLPolicy(...) 读 experiment_cfg 元数据与 *.safetensors
+    SRV->>ZS: register get_action / get_modality_config 后 server.run()
+    SH->>SH: 轮询日志直到出现 Server is ready
+    SH->>EV: 对每个 libero_suite 启动评测进程
+    EV->>PC: initialize_model -> Policy_Libero(port, exec_chunk_size)
+    loop 每个 episode
+        EV->>ENV: env.reset / set_init_state
+        EV->>PC: policy.reset()
+        loop t < max_steps
+            EV->>PC: policy.get_action(obs_dict)
+            alt 本地动作块用尽（t == exec_chunk_size）
+                PC->>ZS: ExternalRobotInferenceClient.get_action (ZMQ REQ)
+                ZS->>POL: policy.get_action(observations)
+                POL->>POL: _modality_transform + _prepare_packed_inputs
+                POL->>M: model.get_action_bagel(**packed_inputs)
+                Note over M: 噪声动作 + Euler 积分，num_steps 次 forward_train 预测速度场
+                M-->>POL: action_pred (chunk_length 步)
+                POL-->>PC: 反归一化后的动作块
+            end
+            PC-->>EV: 第 t 步动作（eef_relative 变换为世界系）
+            EV->>ENV: env.step(action)
+        end
+    end
+```
+
+图依据：BeingBeyond/Rethink_VLA@d3739ab，读过 `README.md`、`shell/eval-libero-relative.sh`、`shell/relative-post-libero-full-eef_relative-5shot.sh`、`src/inference/run_server_vla.py`、`src/inference/internvl_service.py`、`src/inference/service.py`、`src/inference/internvl_policy.py`、`src/benchmark/libero/run_libero_eval_fast.py`、`src/benchmark/utils/policy.py`、`src/model/beingvla.py`、`src/train/pretrain_unified_navit.py`。训练入口为 `torchrun src/train/pretrain_unified_navit.py`（`BeingH` + `PackedDataset` + FSDP，损失 `action_loss + und_loss`），未单独画图。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +109,7 @@ institutions:
 - [Rethink_VLA 源码归档](../../sources/repos/rethink_vla.md)（<https://github.com/BeingBeyond/Rethink_VLA>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：BeingBeyond/Rethink_VLA@d3739ab，读过 README.md、shell/eval-libero-relative.sh、src/inference/{run_server_vla,internvl_service,service,internvl_policy}.py、src/benchmark/libero/run_libero_eval_fast.py、src/benchmark/utils/policy.py、src/model/beingvla.py、src/train/pretrain_unified_navit.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

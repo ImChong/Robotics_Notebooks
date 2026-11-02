@@ -70,6 +70,43 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 - 调试状态机逻辑与协作策略。
 - 模拟不同的比赛地形与光照条件。
 
+## 源码运行时序图
+
+入口：真机 `./scripts/start.sh`（依次 `ros2 launch vision launch.py`、`ros2 launch brain launch.py`、`ros2 launch game_controller launch.py`）；仿真用 `scripts/sim_start.sh`（brain）与 `scripts/start_vision.sh`（vision，`sim:=true`）。
+
+```mermaid
+sequenceDiagram
+    participant GC as 裁判机 (UDP 广播)
+    participant GCN as game_controller_node.cpp<br/>GameControllerNode::spin
+    participant VN as vision_node.cpp<br/>VisionNode
+    participant Det as YoloV8Detector<br/>(Inference)
+    participant BR as brain.cpp<br/>Brain (main.cpp)
+    participant BT as brain_tree.cpp<br/>BehaviorTree.CPP 行为树
+    participant RC as robot_client.cpp<br/>RobotClient
+    participant Rb as 机器人运控 (LocoApiTopic...Req)
+
+    Note over BR: main.cpp：Brain::init() 加载 config.yaml 与 behavior_trees/game.xml；线程 t 以 100Hz 调 brain->tick()
+    GC->>GCN: UDP 包 (recvfrom)
+    GCN->>GCN: 校验长度/版本/IP 白名单, handle_packet
+    GCN->>BR: 发布 /booster_soccer/game_controller
+    BR->>BT: gameControlCallback 写入 gc_game_state 等黑板条目
+    Note over VN: 订阅相机彩色/深度/内参话题
+    VN->>Det: ColorCallback → ProcessData → detector_->Inference(color)
+    Det-->>VN: 检测框 (按类别置信度后处理)
+    VN->>BR: 发布 /booster_soccer/detection (Detections)
+    VN->>BR: 发布 /booster_soccer/line_segments (分割后的场线)
+    BR->>BR: detectionsCallback 分组为 Ball/Goalpost/Robot 等并更新 data
+    loop 每个 tick (HZ=100)
+        BR->>BR: updateMemory / handleSpecialStates / handleCooperation
+        BR->>BT: tree->tick() → tree.tickOnce()
+        BT->>BT: MainTree：按 control_state / gc_game_state 切换 CamFindAndTrackBall、StrikerDecide、Chase、Kick 等节点
+        BT->>RC: client->setVelocity / moveHead / RLVisionKick
+        RC->>Rb: call() 发布 RpcReqMsg (api_id + JSON body)
+    end
+```
+
+图依据：BoosterRobotics/robocup_demo@fa4f31c，读过 README.md、scripts/start.sh、scripts/sim_start.sh、scripts/start_vision.sh、src/brain/src/main.cpp、brain.cpp（init/tick/各 Callback）、brain_tree.cpp、robot_client.cpp、src/brain/behavior_trees/game.xml、src/vision/src/vision_node.cpp、src/game_controller/src/game_controller_node.cpp。
+
 ## 关联页面
 
 - [htwk-gym (足球 RL 训练框架)](../methods/htwk-gym.md) — 为该项目提供底层技能支持。
@@ -82,3 +119,4 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 
 - [BoosterRobotics/robocup_demo 源码仓库](../../sources/repos/booster-robocup-demo.md)
 - Booster Robotics 官方文档
+- 源码核对（2026-11-02）：BoosterRobotics/robocup_demo@fa4f31c，读过 README.md、scripts/start.sh、scripts/sim_start.sh、scripts/start_vision.sh、src/brain/src/main.cpp、brain.cpp、brain_tree.cpp、robot_client.cpp、behavior_trees/game.xml、src/vision/src/vision_node.cpp、src/game_controller/src/game_controller_node.cpp；时序图依据以上文件，未运行代码。

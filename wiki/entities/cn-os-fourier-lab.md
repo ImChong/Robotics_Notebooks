@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`../IsaacLab/isaaclab.sh -p scripts/rsl_rl/train.py --task PPV211HumanoidRoughEnvCfg_WBC_LOWER --headless`（README 给出的训练命令；回放用 `scripts/rsl_rl/play.py --task ..._Play`）。依赖 IsaacLab v2.3.0 / Isaac Sim 5.1.0，`rsl_rl/` 为仓库内置副本。
+
+```mermaid
+sequenceDiagram
+    participant T as scripts/rsl_rl/train.py
+    participant L as isaaclab.app.AppLauncher
+    participant G as gym.make 与 GRX_humanoid.tasks 注册表
+    participant E as MultiStageManagerBasedRLEnv (env/multi_stage_manager_based_rl_env.py)
+    participant W as RslRlVecEnvWrapper (isaaclab_rl)
+    participant R as rsl_rl.runners.OnPolicyRunner
+    T->>L: AppLauncher(args_cli) 启动 Isaac Sim，simulation_app
+    T->>T: import GRX_humanoid.tasks，各 config/*/__init__.py 执行 gym.register
+    T->>G: parse_env_cfg(task) 与 cli_args.parse_rsl_rl_cfg(task)（取 env_cfg_entry_point / rsl_rl_cfg_entry_point）
+    T->>G: gym.make(task, cfg=env_cfg)
+    G->>E: 以注册的 entry_point 构造环境，load_managers()
+    T->>W: RslRlVecEnvWrapper(env)
+    T->>R: runner_class(env, agent_cfg.to_dict(), log_dir, device)
+    opt agent_cfg.resume
+        T->>R: load(resume_path)
+    end
+    T->>R: learn(num_learning_iterations, init_at_random_ep_len=True)
+    loop 每次迭代
+        loop num_steps_per_env 步
+            R->>R: alg.act(obs)
+            R->>W: env.step(actions)
+            W-->>R: obs, rewards, dones, extras
+            R->>R: alg.process_env_step(...)
+        end
+        R->>R: alg.compute_returns(obs) 后 alg.update()
+        R->>R: 每 save_interval 保存 model_{it}.pt
+    end
+    T->>W: env.close()，simulation_app.close()
+```
+
+图依据：FFTAI/fourier_lab@74249f7，读过 README.md、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py（仅 runner/策略导出部分）、exts/GRX_humanoid/GRX_humanoid/tasks/locomotion/velocity/config/ppv211_humanoid/__init__.py、env/multi_stage_manager_based_rl_env.py（仅类声明）、rsl_rl/rsl_rl/runners/on_policy_runner.py（learn 部分）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,7 @@ institutions:
 - [fourier_lab 源码归档](../../sources/repos/fourier_lab.md)（<https://github.com/FFTAI/fourier_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/fourier_lab@74249f7，读过 README.md、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py、tasks/locomotion/velocity/config/ppv211_humanoid/__init__.py、env/multi_stage_manager_based_rl_env.py（仅类声明）、rsl_rl/rsl_rl/runners/on_policy_runner.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

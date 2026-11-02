@@ -61,11 +61,53 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`./servoj_example --robot-ip=<ip> --use-headless-mode=true`（`example/servoj_example.cpp`，由 `example/CMakeLists.txt` 构建；库本身无独立可执行入口）
+
+```mermaid
+sequenceDiagram
+    participant M as servoj_example.cpp main()
+    participant D as ELITE::EliteDriver (source/Elite/EliteDriver.cpp)
+    participant P as PrimaryPortInterface (source/Primary)
+    participant S as TcpServer 侧接口 ReverseInterface / TrajectoryInterface / ScriptCommandInterface
+    participant RT as RtsiIOInterface (source/Rtsi)
+    participant R as 艾利特 CS 控制器
+    participant X as external_control.script (在机器人端运行)
+
+    M->>D: EliteDriver(config) -> init()
+    D->>P: connect(robot_ip, PRIMARY_PORT)，取 getLocalIP()
+    D->>D: readScriptFile + scriptParamWrite（替换 IP/端口/servoj 参数占位符）
+    D->>S: 创建 reverse / trajectory / script_command 三个 TCP 服务端
+    alt headless_mode
+        D->>P: sendExternalControlScript() -> sendScript(externalControl 脚本)
+        P->>R: 经 primary 端口发送脚本
+    else 非 headless
+        D->>S: 创建 ScriptSender（等待机器人侧 External Control 插件取脚本）
+    end
+    M->>RT: RtsiIOInterface(output/input recipe).connect(robot_ip)
+    M->>P: powerOn() / brakeRelease()
+    R->>X: 运行脚本
+    X->>S: socket_open 连接 reverse/trajectory/script_command 端口
+    M->>D: isRobotConnected() 轮询直到为真
+    loop 每 4ms，直到正反向转到 ±3 rad
+        M->>RT: getActualJointPositions()
+        M->>D: writeServoj(target_joint, 100, false)
+        D->>S: ReverseInterface::writeJointCommand(MODE_SERVOJ)
+        S->>X: reverse_socket 发送整数编码的关节目标
+        X->>R: servoj(joints, t=SERVOJ_TIME, ...)
+    end
+    M->>D: stopControl()
+```
+
+图依据：Elite-Robots/Elite_Robots_CS_SDK@75bb7ea，读过 `example/servoj_example.cpp`、`source/Elite/EliteDriver.cpp`（init、writeServoj、sendExternalControlScript）、`source/resources/external_control.script`（socket_open、servoj 相关行）。`ReverseInterface.cpp`、`RtsiClient.cpp`、`PrimaryPortInterface.cpp` 内部实现未逐行读，相应消息按 EliteDriver.cpp 的调用关系画出。
+
 ## 参考来源
 
 - [Elite_Robots_CS_SDK 源码归档](../../sources/repos/elite_robots_cs_sdk.md)（<https://github.com/Elite-Robots/Elite_Robots_CS_SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Elite-Robots/Elite_Robots_CS_SDK@75bb7ea，读过 example/servoj_example.cpp、source/Elite/EliteDriver.cpp、source/resources/external_control.script（部分行）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

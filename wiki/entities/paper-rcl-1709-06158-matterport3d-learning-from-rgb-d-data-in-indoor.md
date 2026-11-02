@@ -43,6 +43,20 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["3.1 数据采集: 三脚架 Matterport 相机 (3 个 color + 3 个 depth)<br/>绕重力方向转 6 个朝向, 每个 panorama 得 18 张 RGB-D<br/>沿可步行平面约每 2.5m 一个 panorama; 用户在 iPad app 标记 windows 与 mirrors"] --> B["Matterport 处理<br/>1) panorama 拼接成 skybox<br/>2) 全局 bundle adjustment 估计每张图 6 DoF 位姿<br/>3) 重建单个 textured mesh"]
+    B --> C["原始数据: 90 栋建筑, 194,400 张 RGB-D, 10,800 个 panorama"]
+    C --> D["3.2 语义标注<br/>先由标注者画 floor plan, 抽取 room-like regions (含类别)<br/>再对每个 region 抽 mesh (screened Poisson)<br/>用 ScanNet 众包界面 paint 三角形标注 object instances"]
+    D --> E["AMT 初始标签 → 十名专家标注者补全/修正/验证<br/>自由文本标签规整为 40 个 object categories (WordNet synsets)"]
+    E --> F["发布: RGB-D 图像 + 位姿 + skybox + textured mesh + region 与 object 语义标注<br/>划分 61 场景 train / 11 validation / 18 test"]
+    F --> G["Sec. 4 五个任务及 baseline<br/>Keypoint Matching / View Overlap Prediction / Surface Normal Estimation / Region-Type Classification / Semantic Voxel Labeling"]
+```
+
+图依据：数据采集与标注流程图，论文 §3.1 Data Acquisition Process、§3.2 Semantic Annotation（Fig. 2–4）、§4 开头的 train/val/test 划分与五个任务小节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +114,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/8374622/>
+- [arXiv PDF](https://arxiv.org/pdf/1709.06158)：已通读 §1 Introduction、§3 Matterport3D Dataset（§3.1–3.3）、§4 Learning from the Data 的任务设定；各任务实验数字与补充材料以略读为准
 
 ## 推荐继续阅读
 

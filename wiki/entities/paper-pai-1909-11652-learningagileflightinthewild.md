@@ -40,6 +40,29 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TRAIN["仿真训练（Method 节）"]
+    ENV["仿真环境：Poisson 点过程生成树木/凸形体（850 个）"] --> EXP["特权专家：完整 3D 点云 + 全状态 + 全局无碰撞轨迹 τgbl"]
+    EXP --> MH["Metropolis-Hastings 采样 B-spline 轨迹分布 P(τ | τref, C)"]
+    MH --> TOP3["去除碰撞轨迹，取代价最低的 3 条"]
+    SIM["仿真 SGM 立体深度 + 速度/姿态 + 期望方向"] --> STU["学生感知运动策略（Depth/States backbone + Conv1D）"]
+    TOP3 -->|"模仿学习（R-WTA 多假设损失 + 碰撞代价监督）"| STU
+    STU -->|"DAgger：学生 rollout，专家重新标注访问到的状态"| EXP
+  end
+  subgraph DEPLOY["部署（零样本迁移到真机）"]
+    CAM["机载双目 → SGM 深度；机载状态估计的速度/姿态；期望方向"] --> POL["学生策略预测 3 条轨迹及碰撞代价 ck"]
+    POL --> PROJ["投影到多项式轨迹空间并按 ck 排序"]
+    PROJ --> SEL["取 ck 最低者（5% 内取执行代价最小者）"]
+    SEL --> MPC["模型预测控制（MPC）跟踪"]
+  end
+  STU -.->|"训练好的策略"| POL
+```
+
+图依据：论文 Fig. 6（Method overview A/B/C）与 Methods 节「The privileged expert」「The student policy」「Training environments」及 DAgger 说明。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -104,6 +127,7 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2110.05113>
 - 核对（2026-11-02）：原编号 1909.11652 对应《Deep Dynamics Models for Learning Dexterous Manipulation》，已按 arXiv 官方记录更正为 2110.05113（依据：API 标题《Learning High-Speed Flight in the Wild》/作者 Loquercio, Kaufmann, Ranftl, Müller, Koltun, Scaramuzza/提交日期 2021-10-11；摘要为仿真特权学习、零样本迁移真机的高速四旋翼飞行，与本页一句话定义相符；清单标题 Agile 为清单写法）
+- [arXiv PDF](https://arxiv.org/pdf/2110.05113)：已通读方法部分（实验与附录以略读为准）：Introduction、Methods（Fig. 6 方法概览、A. The privileged expert、B. The student policy、C. Training environments、D. Method validation 消融）；Results 与 Supplementary 略读
 
 ## 推荐继续阅读
 

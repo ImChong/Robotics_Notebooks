@@ -42,6 +42,24 @@ A high-quality benchmark designed to systematically evaluate the embodied cognit
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["视频采集：HM3D 中由 object navigation agent 与 embodied QA agent 录制的机器人第一人称视频；ScanNet、MultiScan 的真实扫描视频；RealSense 自采的反直觉场景与动态场景视频"] --> TAX["能力分类（Fig.2）：静态场景 / 动态场景 / 幻觉 三个子集，共 30 个具身认知维度"]
+    TAX --> ANN["类别独立的人工标注：志愿者按每个认知维度分配固定数量的任务"]
+    ANN --> SCREEN["常识问题筛选：GPT-4o 不看视觉输入回答每题 6 次；对总是答对的题人工修改以增强视觉依赖；迭代 3 轮"]
+    SCREEN --> XVAL["对所有问题做严格交叉验证"]
+    XVAL --> BENCH["ECBench：静态场景 QA、动态场景 QA、幻觉 QA"]
+    BENCH --> SPLIT["ECEval：划分为封闭式题与开放式题"]
+    SPLIT --> CLOSE["封闭式：GPT-4o 二值评分（0 或 1）"]
+    SPLIT --> OPEN["开放式：人工为每题标注 0.5 分参考答案；GPT-4o 以 0.2 为间隔在 0 到 1 间评分"]
+    CLOSE --> EVAL["评测对象：Video-LVLM、开源与闭源 Image-LVLM、具身 / 第一人称 LVLM"]
+    OPEN --> EVAL
+```
+
+图依据：基准构建与评测协议图，依据论文 §3.1（Video Collection、Capability Taxonomy、Construction of Question-Answer Pairs、Evaluation Framework）、Fig.2、§4 开头及 §4.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A high-quality benchmark designed to systematically evaluate the embodied cognit
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2501.05031>
+- [arXiv PDF](https://arxiv.org/pdf/2501.05031)：已读摘要、§1、§3.1 基准构建（视频采集、能力分类、QA 构建、评测框架）、§3.2 数据统计、§4 开头的评测对象说明与 §4.5 ECEval；§4.1–4.4 结果与附录略读
 
 ## 推荐继续阅读
 

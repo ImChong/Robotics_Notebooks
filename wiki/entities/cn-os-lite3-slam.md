@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：建图 `roslaunch faster_lio mapping_velodyne.launch`（启动 `run_mapping_online`，节点名 `laserMapping`）；建图完成后的栅格化用 `pcd2grid/launch/pcd2grid.launch`（启动 `octomap_server` 包的 `my_octomap_node`；README 写的是 `roslaunch build_octomap.launch`，与仓库内 launch 文件名不一致），再 `rosrun map_server map_saver`（见 `pcd2grid/README.md`）。仓库为 ROS1 的 `faster-lio`、`octomap_mapping`、`map_server`、`pcd2grid` 四个子包的合集。
+
+```mermaid
+sequenceDiagram
+    participant S as 激光雷达与 IMU 话题（lid_topic、imu_topic）
+    participant Main as run_mapping_online.cc main()
+    participant LM as LaserMapping（laser_mapping.cc）
+    participant IMU as ImuProcess p_imu_
+    participant KF as kf_（IKFoM 迭代卡尔曼）
+    participant IV as ivox_ 增量地图
+    participant OC as my_octomap_node（MyOctomap）
+    participant MS as map_saver
+
+    Main->>LM: make_shared LaserMapping，InitROS(nh)
+    LM->>LM: LoadParams，SubAndPubToROS 订阅 lid_topic / imu_topic
+    S->>LM: StandardPCLCallBack / LivoxPCLCallBack、IMUCallBack 入缓冲
+    loop while ros::ok()，5000 Hz
+        Main->>Main: ros::spinOnce()
+        Main->>LM: Run()
+        LM->>LM: SyncPackages() 对齐一帧点云与 IMU
+        LM->>IMU: Process(measures_, kf_, scan_undistort_) 预测并去畸变
+        LM->>LM: voxel_scan_ 降采样
+        LM->>KF: update_iterated_dyn_share_modified（内部调用 ObsModel 做最近邻与点到面残差）
+        LM->>IV: MapIncremental() 增量更新地图
+        LM-->>S: 发布 /Odometry、/path、/cloud_registered（视参数）
+    end
+    Main->>LM: Finish()，Savetrajectory(traj_log_file)
+    Note over LM: pcd_save_en 为 true 时 PCD 经 PublishFrameWorld 累积保存
+    Note over OC: 之后单独运行栅格化
+    OC->>OC: loadPCDFile(file_path)，VoxelGrid(filter_leaf_size_m)
+    OC->>OC: 定时器发布点云到 octomap，生成 projected_map（OccupancyGrid）
+    MS->>OC: 订阅 /map 并保存栅格地图
+```
+
+图依据：DeepRoboticsLab/Lite3_SLAM@dcc3190，读过 `README.md`、`faster-lio/launch/mapping_velodyne.launch`、`faster-lio/app/run_mapping_online.cc`、`faster-lio/src/laser_mapping.cc`（`SubAndPubToROS`、`Run`、`SyncPackages` 开头）、`faster-lio/config/velodyne.yaml`（片段）、`pcd2grid/README.md`、`pcd2grid/launch/pcd2grid.launch`、`octomap_mapping/octomap_server/src/my_octomap_node.cpp`、`octomap_mapping/octomap_server/src/MyOctomap.cpp`（构造函数片段与发布函数名）；`ImuProcess`、`ObsModel`、`MapIncremental`、`MyOctomap` 定时器回调内部细节未读；末两步中 `map_saver` 订阅话题名 `/map` 取自 README 的描述，`my_octomap_node` 的 `projected_map` 到 `/map` 的话题重映射关系未核对，属推断。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,7 @@ institutions:
 - [Lite3_SLAM 源码归档](../../sources/repos/lite3_slam.md)（<https://github.com/DeepRoboticsLab/Lite3_SLAM>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/Lite3_SLAM@dcc3190，读过 README.md、faster-lio/launch/mapping_velodyne.launch、faster-lio/app/run_mapping_online.cc、faster-lio/src/laser_mapping.cc（部分）、pcd2grid/README.md、pcd2grid/launch/pcd2grid.launch、octomap_mapping/octomap_server/src/{my_octomap_node,MyOctomap}.cpp（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

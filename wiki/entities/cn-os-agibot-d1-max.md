@@ -56,6 +56,38 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`cd example && mkdir build && cd build && cmake .. && make -j6`，随后 `./control <ip> <port>`（交互遥控示例；机器人默认 IP 为 `192.168.234.1`）。仓库公开的是头文件 `include/robot_sdk/*.hpp`、示例 `example/*.cpp` 与预编译的 `lib/<arch>/librobot_sdk.so`；SDK 内部的协议与运动控制在闭源动态库中，以下只画示例代码对公开接口的调用，不推断库内部实现。
+
+```mermaid
+sequenceDiagram
+    participant U as 操作员键盘
+    participant M as example/control.cpp main()
+    participant C as robot_sdk::SDKClient（librobot_sdk.so）
+    participant CB as DataCallback / ControlCallback
+    participant R as D1 Max 机器人
+    U->>M: ./control 192.168.234.1 port
+    M->>C: SDKClient 构造，打印 Version() 与 ProtocolVersion()
+    M->>C: SetDataCallback(data_cb)、SetControlCallback(ctrl_cb)
+    M->>C: Connect(ip, port, false, handler) 异步连接
+    C->>R: 建立连接（握手细节在闭源库内）
+    C-->>M: handler(ec) 经 condition_variable 唤醒，最多等 10 秒
+    M->>C: GetConnectionState() 须为 CONNECTED，再取 SystemVersion()
+    R-->>CB: OnRobotStateData 更新 g_robot_state，OnFaultData / OnControlLost 打印告警
+    loop 主循环 getchar 读键
+        U->>M: 按键（如 t / z / w / 空格）
+        M->>C: TakeControl() 先取得控制权（T 键）
+        M->>C: SetMode / SetSpeed / StandUp / Move(x, y, yaw) / Turn / ControlHead / FrontLight 等
+        C->>R: 下发控制指令
+        R-->>CB: OnTakeControlAck / OnStandUp / OnMode / OnSpeed 等确认回调
+    end
+    U->>M: 按 q 退出
+    M->>C: Disconnect(false, handler)，等待至多 3 秒
+```
+
+图依据：AgibotTech/Agibot_D1_Max@83bdebb，读过 `README.md`、`ubuntu22.04(x86_64_arm64)/RobotSDK-0.1.1/example/control.cpp`、`example/sync.cpp`（前 120 行）、`example/CMakeLists.txt`、`include/robot_sdk/sdk_client.hpp`（仅 grep 接口签名）。其余示例（async、auto_reconnect、data、take_control 等）与 `docs/source` 文档未逐一读；`urdf/` 为机器人描述，不在本图范围。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -69,6 +101,7 @@ institutions:
 - [Agibot_D1_Max 源码归档](../../sources/repos/agibot_d1_max.md)（<https://github.com/AgibotTech/Agibot_D1_Max>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：AgibotTech/Agibot_D1_Max@83bdebb，读过 README.md、ubuntu22.04(x86_64_arm64)/RobotSDK-0.1.1/example/control.cpp、example/sync.cpp（前段）、example/CMakeLists.txt、include/robot_sdk/sdk_client.hpp（接口签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -19,7 +19,7 @@ summary: "Networked Humanoid Intelligence：网络化人形智能：通信、协
 
 # Networked Humanoid Intelligence：网络化人形智能：通信、协调、协作与社会交互
 
-**Networked Humanoid Intelligence**（*Networked Humanoid Intelligence: Communication, Coordination, Collaboration, and Social Interaction*，[arXiv:2610.34740](https://arxiv.org/abs/2610.34740)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Networked Humanoid Intelligence**（*Networked Humanoid Intelligence: Communication, Coordination, Collaboration, and Social Interaction*，[arXiv:2610.34740](https://arxiv.org/abs/2610.34740)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文分类体系与章节结构（见参考来源），未逐页核对各章细节；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -35,6 +35,32 @@ summary: "Networked Humanoid Intelligence：网络化人形智能：通信、协
 ## 为什么重要
 
 - 周报所述待解决的问题：人形研究通常将机器人视为独立个体，缺少对多机器人共享信息、任务、基础设施和知识的统一分析。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["Networked Humanoid Intelligence 综述<br/>四个 function，每个 function 对应一个 question（§2.2）"]
+    F["§2 Foundations<br/>§2.1 The Humanoid as a Network Node · §2.2 Four Functions, Four Questions<br/>§2.3 One Deployment, Four Functions: A Factory Scenario · §2.4 Taxonomy and Review Dimensions"]
+    R --> F
+    F --> C3["§3 Communication and Networking<br/>3.1 Connectivity, Medium Access, and Middleware<br/>3.2 Selective and Learned Information Exchange<br/>3.3 Communication-Computation Co-Design<br/>3.4 Communication Inside the Control Loop"]
+    F --> C4["§4 Coordination<br/>4.1 Who Does What: Allocation and Scheduling<br/>4.2 Agreeing on Shared Decisions<br/>4.3 Spatial Coordination<br/>4.4 Runtime Conflict Resolution and Repair"]
+    F --> C5["§5 Collaboration<br/>5.1 Physically Coupled Joint Execution<br/>5.2 Reasoning and Capability Composition<br/>5.3 Fleet Learning and Cross-Embodiment Transfer"]
+    F --> C6["§6 Social Intelligence and Human Interaction<br/>6.1 Intentions · 6.2 Expectations<br/>6.3 Responsibilities and Control"]
+    D["六个分析维度（§2.4）<br/>interaction architecture · exchanged information · physical coupling<br/>timescale · system scale · embodiment evidence（HR / HS / RR / RS / AB）"]
+    D -.-> C3
+    D -.-> C4
+    D -.-> C5
+    D -.-> C6
+    C3 --> E7
+    C4 --> E7
+    C5 --> E7
+    C6 --> E7
+    E7["§7 Evaluation, Safety, and Open Problems<br/>7.1 Platforms, Simulators, Datasets, and Benchmarks<br/>7.2 What Current Evaluations Cannot Compare<br/>7.3 Safety: The Per-Robot Floor and the Risks the Network Adds<br/>7.4 Open Problems and Research Agenda"]
+    E7 --> Z["§8 Conclusion"]
+```
+
+图依据：综述分类体系图（论文 §1.3 Organization、§2.2 Four Functions, Four Questions、§2.4 Taxonomy and Review Dimensions、Fig. 2，以及 §3–§8 章节标题）
 
 ## 核心机制
 
@@ -86,6 +112,7 @@ summary: "Networked Humanoid Intelligence：网络化人形智能：通信、协
 - [networked-humanoid-intelligence-survey_arxiv_2610_34740.md](../../sources/papers/networked-humanoid-intelligence-survey_arxiv_2610_34740.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
 - [arXiv:2610.34740](https://arxiv.org/abs/2610.34740)
+- [arXiv PDF](https://arxiv.org/pdf/2610.34740)：已通读 Abstract、§1.3 Contributions and Organization、§2.2 与 §2.4 的功能定义和分类维度，并核对 §3–§8 各章节标题；各章内容正文以略读为准
 
 ## 推荐继续阅读
 

@@ -38,6 +38,25 @@ BiGym 是一个面向移动双手、演示驱动机器人操作的新基准与�
 - **演示驱动 RL** 是 IL 与 RL 的折中，值得在人形任务上探索；
 - 与 RoboCasa、ManiSkill-HAB 等家居基准互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["BiGym 仿真平台（MuJoCo）<br/>Unitree H1 + Robotiq 2F-85 夹爪<br/>头部 / 左腕 / 右腕 3 个 RGB-D 相机"] --> B["40 个移动双手任务<br/>到达 / 桌面 / 洗碗机 / 厨房台面<br/>稀疏奖励：成功 1，否则 0"]
+  B --> C["VR 遥操作采集人类演示<br/>500 Hz 物理频率，仅存动作信号"]
+  C --> D["demo player 回放<br/>重放得到 RGB / 深度观测<br/>可下采样到 20–500 Hz"]
+  A --> E["动作模式（delta 或 absolute）<br/>whole-body：控制全身关节<br/>bi-manual：下半身为全向浮动底座，由经典控制器控制"]
+  D --> F["Gymnasium 接口"]
+  E --> F
+  B --> F
+  F --> G["IL 算法：BC / ACT / Diffusion Policy"]
+  F --> H["演示驱动 RL：DrQ-v2 / AWAC / IQL / CQN"]
+  G --> I["各任务评测<br/>附录 C"]
+  H --> I
+```
+
+图依据：基准构建与评测协议图（基准），论文 §3.2 仿真平台与 Fig.2、§3.3 演示采集与管理、§3.4 任务与奖励、§4 实验（评测对象）；各算法的具体结果在附录 C，图中未画数字。
+
 ## 解决什么问题
 
 移动双手操作缺**演示驱动**的统一基准： - 现有基准少覆盖**移动 + 双手 + 家居多样任务**； - 缺**人类演示**反映真实轨迹多样性； - 缺统一环境评测 IL 与演示驱动 RL。
@@ -88,6 +107,7 @@ BiGym 要：一个**演示驱动、移动双手、家居多任务**的基准与�
 - [humanoid_pnb_bigym.md](../../sources/papers/humanoid_pnb_bigym.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark.html>
 - 论文：<https://arxiv.org/abs/2407.07788>
+- [arXiv PDF](https://arxiv.org/pdf/2407.07788)：已通读 §1–§5（含 §3.1–3.4 平台、演示数据集、任务，§4 实验设置，§5 讨论）；附录 C 实验结果未读
 
 ## 推荐继续阅读
 

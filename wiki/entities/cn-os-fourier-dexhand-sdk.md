@@ -55,6 +55,39 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：C++ 示例 `example/cpp/build` 后运行 `../bin/fourier_dexhand_sdk_demo`；Python 示例 `python3 example/python/fourier_dexhand_sdk_demo.py`（依赖 pip 包 `dexhandpy`）。本仓库只含头文件、预编译 `libFourierDexHand.so` 和示例，`DexHand`/`Fhand` 的实现体不在仓库内，下图只画头文件声明与示例 `main()` 能确认的调用。
+
+```mermaid
+sequenceDiagram
+    participant M as fourier_dexhand_sdk_demo.cpp main()
+    participant D as FdHand::DexHand (dexhand.h)
+    participant F as hand_ws::Fhand (hand/fhand.h)
+    participant B as BaseHand 子类 fdhv1/fdhv2/inspire (fourierdexhand/)
+    participant H as 灵巧手设备（UDP，默认 192.168.137.19/39）
+    M->>D: 构造 DexHand 后 init()
+    D->>F: Fhand::init() 搜索设备（broadcast/find_hand 为私有声明）
+    F-->>D: ip_unique/name/type/driver_ver/hardware_ver
+    D-->>M: Ret::SUCCESS
+    M->>D: get_ip_list()
+    D-->>M: 设备 IP 列表
+    loop 每个 IP 一个 std::thread
+        M->>D: get_name/get_type/get_driver_ver/get_hardware_ver(ip)
+        M->>D: get_pos(ip)
+        D->>F: get_position(ip, position)
+        F->>B: get_pos(fdb)
+        B->>H: UDP 请求，端口 2333 控制/2334 通信/2335 fast（basehand.h 常量）
+        H-->>B: 响应，由 BaseHandProtocol::HandProtocol 解析并校验 CRC
+        M->>D: get_pvc(ip) / get_hand_config(ip)
+        M->>D: reboot(ip)
+        D->>F: reboot(ip)
+    end
+    Note over D,B: 具体 UDP 收发与 BaseHand 子类选择逻辑在 libFourierDexHand.so 内，源码未开放，不画
+```
+
+图依据：FFTAI/fourier_dexhand_sdk@e8e831c，读过 README.md、example/cpp/fourier_dexhand_sdk_demo.cpp、example/cpp/CMakeLists.txt、example/cpp/include/dexhand.h、hand/fhand.h、hand/fourierdexhand/basehand.h、handprotocol.h、example/python/fourier_dexhand_sdk_demo.py。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +99,7 @@ institutions:
 - [fourier_dexhand_sdk 源码归档](../../sources/repos/fourier_dexhand_sdk.md)（<https://github.com/FFTAI/fourier_dexhand_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/fourier_dexhand_sdk@e8e831c，读过 README.md、example/cpp/fourier_dexhand_sdk_demo.cpp、example/cpp/CMakeLists.txt、example/cpp/include/dexhand.h、hand/fhand.h、hand/fourierdexhand/basehand.h、handprotocol.h、example/python/fourier_dexhand_sdk_demo.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

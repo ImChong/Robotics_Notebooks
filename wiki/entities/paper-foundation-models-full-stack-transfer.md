@@ -37,6 +37,32 @@ summary: "全栈迁移综述（arXiv:2602.22001）：从 LLM/VLM/VLA 视角梳�
 
 VLA 爆发期需要一张「迁移发生在哪一层」的地图，避免把语义泛化误当成动力学泛化。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    F1["Fig. 1：transfer stack（Jaquier et al. 的四个迁移层级）<br/>full-stack transfer = 各层级都能迁移"]
+    S2["§2 Transfer in Higher Layers：LLMs and VLMs<br/>linguistic stream"]
+    S3["§3 Transfer in Lower Layers：Visuomotor policies<br/>visuomotor stream：diffusion policy / flow matching"]
+    S4["§4 Towards Full-stack Transfer：VLAs"]
+    S41["§4.1 VLAs with Discrete Action Tokens"]
+    S42["§4.2 Action Compression with Tokenizers"]
+    S43["§4.3 Knowledge Insulation through Gradient Stopping"]
+    S44["§4.4 Knowledge Insulation through In-painting"]
+    S45["§4.5 Approaches for Cross-embodiment Transfer in VLAs"]
+    S5["§5 Collecting Action Data"]
+    S6["§6 Benchmarking Transfer in the Age of Foundation Models"]
+    S7["§7 Conclusion"]
+    F1 --> S2
+    F1 --> S3
+    S2 --> S4
+    S3 --> S4
+    S4 --> S41 --> S42 --> S43 --> S44 --> S45
+    S45 --> S5 --> S6 --> S7
+```
+
+图依据：综述章节框架图（论文 §1 末段「The main structure of this article follows Figure 2」、Fig. 1、Fig. 2 与 §2–§7 各章节标题）
+
 ## 核心原理（方法）
 
 按抽象层级回顾 LLM/VLM/VLA、运动原语与世界模型；对比 OpenVLA、π₀-FAST、π₀ 等架构；讨论数据收集与 transfer benchmark。
@@ -77,6 +103,7 @@ VLA 爆发期需要一张「迁移发生在哪一层」的地图，避免把语�
 
 - [foundation_models_full_stack_transfer_arxiv_2602_22001.md](../../sources/papers/foundation_models_full_stack_transfer_arxiv_2602_22001.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2602.22001)：已通读 §1 Introduction、§2–§4 的章节结构与 §4.1–§4.5 的论述、§5 Collecting Action Data、§6 Benchmarking、§7 Conclusion（图只用到章节标题与各章定位）
 
 ## 推荐继续阅读
 

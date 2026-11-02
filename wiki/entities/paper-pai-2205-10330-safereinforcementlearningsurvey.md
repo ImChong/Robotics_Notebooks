@@ -40,6 +40,32 @@ Survey of safe-RL methods, benchmarks, and open deployment challenges.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  Q["关键问题：如何在真实应用中保证 RL 的安全？"] --> P["“2H3W” 五个问题（Fig. 1）"]
+  P --> P1["(1) Safety Policy：如何搜索安全策略"]
+  P --> P2["(2) Safety Complexity：找到安全策略需要多少训练数据"]
+  P --> P3["(3) Safety Applications：安全 RL 应用的最新进展"]
+  P --> P4["(4) Safety Benchmarks：用什么基准公平全面地评测"]
+  P --> P5["(5) Safety Challenges：未来研究面临的挑战"]
+  subgraph ORG["论文章节组织（§1 末段）"]
+    S2["§2 Background：CMDP 问题形式化、相关综述"] --> S3["§3 Methods：基于模型 / 无模型；单智能体 / 多智能体"]
+    S3 --> S4["§4 Theory：primal-dual、约束策略优化、样本复杂度与安全违反分析"]
+    S4 --> S5["§5 Applications：自动驾驶、机器人、其他"]
+    S5 --> S6["§6 Benchmarks：单智能体 / 多智能体基准"]
+    S6 --> S7["§7 Challenges and Outlook"]
+    S7 --> S8["§8 Conclusion"]
+  end
+  P1 -.->|"§3 自述回答此问题"| S3
+  P3 -.->|"§5 自述针对此问题"| S5
+  S3 --> M["§3.1 Model-Based（策略优化 / 控制理论 / 形式化方法 / 高斯过程）"]
+  S3 --> N["§3.2 Model-Free（同类四种）、§3.3 Safe MARL"]
+```
+
+图依据：综述分类体系与章节框架图，依据论文 §1（2H3W 问题与 Fig. 1、章节安排段落）、§3 开头段、§5 开头段及各节标题；仅 (1)(3) 与章节的对应是原文明说的，其余问题与章节的对应论文未逐一写明，图中未连线。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +129,7 @@ Survey of safe-RL methods, benchmarks, and open deployment challenges.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2205.10330>
+- [arXiv PDF](https://arxiv.org/pdf/2205.10330)：已通读摘要、§1 引言（2H3W 与 Fig. 1、章节安排）、§3 开头与小节标题、§3.4/§4/§5 开头段；其余各节正文与附录未逐节通读
 
 ## 推荐继续阅读
 
