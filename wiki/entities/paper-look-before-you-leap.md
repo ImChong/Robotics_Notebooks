@@ -9,7 +9,7 @@ related:
   - ./paper-voxposer.md
 sources:
   - ../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md
-summary: "LBYL（arXiv:2311.17842）：规划前主动感知/验证。"
+summary: "LBYL / ViLa（arXiv:2311.17842）：GPT-4V 零样本看图生成逐步计划并闭环重规划。"
 ---
 
 # Look Before You Leap（LBYL）

@@ -108,6 +108,7 @@ TEDi 要：把扩散的渐进性"搬到"运动时间轴，**滑动缓冲**式地
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/TEDi__Temporally-Entangled_Diffusion_for_Long-Term_Motion_Synthesis/TEDi__Temporally-Entangled_Diffusion_for_Long-Term_Motion_Synthesis.html>
 - 论文：<https://arxiv.org/abs/2307.15042>
 - [arXiv PDF](https://arxiv.org/pdf/2307.15042)：已通读方法部分（实验与附录以略读为准）：§3.1 运动表示、§3.2–3.3 时间纠缠扩散与训练（损失函数）、§3.4 推理
+- 核对（2026-11-02）：对照 arXiv:2307.15042 摘要与 §3.3、§3.4、结论；「每个扩散步只推进运动时间轴、扩散时间轴保持静止」即摘要原话（stationary diffusion time-axis，结论称 stationary motion buffer），与 §3.3 的 T=K（两轴等同）及每步并行去噪整个缓冲区并不矛盾，未改正文。
 
 ## 推荐继续阅读
 

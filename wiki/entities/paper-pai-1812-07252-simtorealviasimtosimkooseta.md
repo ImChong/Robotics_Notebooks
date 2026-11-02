@@ -4,7 +4,7 @@ tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-09-20
 arxiv: "1812.07252"
-summary: "Bridging the reality gap with progressively more realistic intermediate simulators."
+summary: "James et al. RCAN (Randomized-to-Canonical Adaptation Networks): a cGAN translates randomized sim images to a canonical sim image, so a QT-Opt grasping agent trained only in simulation transfers to real images (70% zero-shot, 91% after 5,000 real grasps; CVPR 2019)."
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
@@ -17,13 +17,13 @@ sources:
   - ../../sources/repos/awesome-physical-ai-aichr.md
 ---
 
-# Sim-to-Real via Sim-to-Sim (Koos et al. line)
+# Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks
 
-**Sim-to-Real via Sim-to-Sim (Koos et al. line)** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
+**Sim-to-Real via Sim-to-Sim（RCAN；清单原标注 “Koos et al. line”，论文实为 James 等，未引用 Koos）** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
 
 ## 一句话定义
 
-Bridging the reality gap with progressively more realistic intermediate simulators.
+James et al. RCAN (Randomized-to-Canonical Adaptation Networks): a cGAN translates randomized sim images to a canonical sim image, so a QT-Opt grasping agent trained only in simulation transfers to real images (70% zero-shot, 91% after 5,000 real grasps; CVPR 2019).
 
 ## 英文缩写速查
 
@@ -36,7 +36,7 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 
 ## 为什么重要
 
-- Bridging the reality gap with progressively more realistic intermediate simulators.
+- James et al. RCAN (Randomized-to-Canonical Adaptation Networks): a cGAN translates randomized sim images to a canonical sim image, so a QT-Opt grasping agent trained only in simulation transfers to real images (70% zero-shot, 91% after 5,000 real grasps; CVPR 2019).
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
@@ -81,7 +81,7 @@ flowchart LR
 
 ### 策展导读要点
 
-Bridging the reality gap with progressively more realistic intermediate simulators.
+James et al. RCAN (Randomized-to-Canonical Adaptation Networks): a cGAN translates randomized sim images to a canonical sim image, so a QT-Opt grasping agent trained only in simulation transfers to real images (70% zero-shot, 91% after 5,000 real grasps; CVPR 2019).
 
 本页不复述论文公式与完整实验表；工程落地请回到原文 / 项目页，并对照站内 VLA、Sim2Real 或任务页。
 
@@ -99,7 +99,7 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 
 ## 结论
 
-**这一页能给你的是「Sim-to-Real via Sim-to-Sim (Koos et al. line)」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**这一页能给你的是「Sim-to-Real via Sim-to-Sim（RCAN）」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
 
 1. **策展坐标** — 分组 **Sim-to-Real**，来源 natnew。
 2. **适用边界** — 本页不能替代原文 PDF / 官方文档；开源状态以项目页实际链接为准。
@@ -130,6 +130,7 @@ Bridging the reality gap with progressively more realistic intermediate simulato
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1812.07252>
+- 核对（2026-11-02）：对照 arXiv:1812.07252v3（CVPR 2019；作者 James、Wohlhart、Kalakrishnan、Kalashnikov、Irpan、Ibarz、Levine、Hadsell、Bousmalis；Imperial College / X / Google Brain / DeepMind 等）摘要与 Table 1：原「逐级更真实的中间仿真器 (Koos et al. line)」不成立，论文方法是 RCAN（随机化→canonical 的 cGAN）+ QT-Opt，全文未引用 Koos；数字取自 Table 1（RCAN 零样本真机 70%，+5,000 抓取 91%，QT-Opt 580,000 真机抓取 87%）。流程图与论文一致，未改。
 - [arXiv PDF](https://arxiv.org/pdf/1812.07252)：已通读方法部分（实验与附录以略读为准）：§3 Background、§4 Method（4.1–4.3）、§5 实验设定；附录 A/B 略读
 
 ## 推荐继续阅读
