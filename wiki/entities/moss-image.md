@@ -93,6 +93,8 @@ Base 指南建议以约 1M–2M 总像素、Euler 采样和至少 50 步作为�
 
 ## 关联页面
 
+- [MOSS API 开放平台](moss-api-platform.md) — 多模态模型的云端接入入口。
+
 - [Diffusion Transformer](../concepts/diffusion-transformer.md) — 生成骨干的架构背景
 - [Qwen-Image-2.1](./qwen-image-2-1.md) — 同类开放图像生成模型
 - [生成式数据增强](../methods/generative-data-augmentation.md) — 合成视觉素材用于机器人数据的边界与实践
