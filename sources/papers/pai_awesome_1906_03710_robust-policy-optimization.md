@@ -6,10 +6,10 @@
 - **分组：** Safety & Robustness
 - **编号：** 318/384
 - **入库日期：** 2026-09-20
-- **arXiv：** 1906.03710
-- **主链接：** <https://arxiv.org/abs/1906.03710>
+- **arXiv：** 2212.07536
+- **主链接：** <https://arxiv.org/abs/2212.07536>
 - **代码：** 未在清单中标注
-- **清单摘要：** Distributional-robust RL approach for improved policy reliability under uncertainty.
+- **清单摘要：** Robust Policy Optimization (RPO)：对 PPO 的高斯策略均值扰动以维持策略熵、改善探索的策略梯度方法（Rahman & Xue, 2022）。
 - **沉淀到 wiki：** [`wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md`](../../wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md)
 
 ---

@@ -325,7 +325,7 @@
 | 315 | Realistic Adversarial Driving (Wang et al.) | `arxiv:2003.01197` | Safety & Robustness | natnew | [`paper-pai-2003-01197-realisticadversarialdrivingwange.md`](../../wiki/entities/paper-pai-2003-01197-realisticadversarialdrivingwange.md) | 新建 |
 | 316 | Responsibility-Sensitive Safety (RSS) | `url:mobileye.com/technology/responsibili` | Safety & Robustness | natnew | [`painode-316-responsibilitysensitivesafetyrss.md`](../../wiki/entities/painode-316-responsibilitysensitivesafetyrss.md) | 新建 |
 | 317 | Robot Trust & Safety (Stanford CRFM) | `url:crfm.stanford.edu` | Safety & Robustness | natnew | [`painode-317-robottrustsafetystanfordcrfm.md`](../../wiki/entities/painode-317-robottrustsafetystanfordcrfm.md) | 新建 |
-| 318 | Robust Policy Optimization | `arxiv:1906.03710` | Safety & Robustness | natnew | [`paper-pai-1906-03710-robustpolicyoptimization.md`](../../wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) | 新建 |
+| 318 | Robust Policy Optimization | `arxiv:2212.07536` | Safety & Robustness | natnew | [`paper-pai-1906-03710-robustpolicyoptimization.md`](../../wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) | 新建 |
 | 319 | S-TaLiRo | `url:sites.google.com/a/asu.edu/s-taliro` | Safety & Robustness | natnew | [`painode-319-staliro.md`](../../wiki/entities/painode-319-staliro.md) | 新建 |
 | 320 | Safe Control Gym | `gh:utiasdsl/safe-control-gym` | Safety & Robustness | natnew | [`painode-320-safecontrolgym.md`](../../wiki/entities/painode-320-safecontrolgym.md) | 新建 |
 | 321 | Safe Reinforcement Learning Survey | `arxiv:2205.10330` | Safety & Robustness | natnew | [`paper-pai-2205-10330-safereinforcementlearningsurvey.md`](../../wiki/entities/paper-pai-2205-10330-safereinforcementlearningsurvey.md) | 新建 |
@@ -340,7 +340,7 @@
 | 330 | DeXtreme (NVIDIA) | `url:dextreme.org` | Sim-to-Real | natnew | [`painode-330-dextremenvidia.md`](../../wiki/entities/painode-330-dextremenvidia.md) | 新建 |
 | 331 | Domain Randomization (Tobin et al.) | `arxiv:1703.06907` | Sim-to-Real | natnew | [`paper-notebook-domain-randomization-for-transferring-deep-neura.md`](../../wiki/entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) | 复用 |
 | 332 | Eureka (NVIDIA) | `url:eureka-research.github.io` | Sim-to-Real | natnew | [`painode-332-eurekanvidia.md`](../../wiki/entities/painode-332-eurekanvidia.md) | 新建 |
-| 333 | Learning Agile Flight in the Wild | `arxiv:1909.11652` | Sim-to-Real | natnew | [`paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) | 新建 |
+| 333 | Learning Agile Flight in the Wild | `arxiv:2110.05113` | Sim-to-Real | natnew | [`paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) | 新建 |
 | 334 | Learning Dexterous In-Hand Manipulation (OpenAI) | `arxiv:1808.00177` | Sim-to-Real | natnew | [`paper-pai-1808-00177-learningdexterousinhandmanipulat.md`](../../wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) | 新建 |
 | 335 | Learning Robust Perceptive Locomotion (Miki et al.) | `url:leggedrobotics.github.io/rl-percepti` | Sim-to-Real | natnew | [`paper-robust-perceptive-locomotion-wild.md`](../../wiki/entities/paper-robust-perceptive-locomotion-wild.md) | 复用 |
 | 336 | Privileged Learning for Rapid Motor Adaptation | `arxiv:2109.11978` | Sim-to-Real | natnew | [`paper-anymal-walk-minutes-parallel-drl.md`](../../wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) | 复用 |

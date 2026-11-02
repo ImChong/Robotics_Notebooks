@@ -3,8 +3,8 @@ type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-09-20
-arxiv: "1906.03710"
-summary: "Distributional-robust RL approach for improved policy reliability under uncertainty."
+arxiv: "2212.07536"
+summary: "Robust Policy Optimization (RPO)：对 PPO 的高斯策略均值扰动以维持策略熵、改善探索的策略梯度方法（Rahman & Xue, 2022）。"
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
@@ -23,7 +23,7 @@ sources:
 
 ## 一句话定义
 
-Distributional-robust RL approach for improved policy reliability under uncertainty.
+Robust Policy Optimization (RPO)：对 PPO 的高斯策略均值扰动以维持策略熵、改善探索的策略梯度方法（Rahman & Xue, 2022）。
 
 ## 英文缩写速查
 
@@ -36,7 +36,7 @@ Distributional-robust RL approach for improved policy reliability under uncertai
 
 ## 为什么重要
 
-- Distributional-robust RL approach for improved policy reliability under uncertainty.
+- Robust Policy Optimization (RPO)：对 PPO 的高斯策略均值扰动以维持策略熵、改善探索的策略梯度方法（Rahman & Xue, 2022）。
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
@@ -47,21 +47,21 @@ Distributional-robust RL approach for improved policy reliability under uncertai
 | 编号 | 318/384 |
 | 分组 | Safety & Robustness |
 | 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/1906.03710> |
-| arXiv | 1906.03710 |
+| 主链接 | <https://arxiv.org/abs/2212.07536> |
+| arXiv | 2212.07536 |
 
 ## 核心机制（归纳）
 
 ### 策展导读要点
 
-Distributional-robust RL approach for improved policy reliability under uncertainty.
+Robust Policy Optimization (RPO)：对 PPO 的高斯策略均值扰动以维持策略熵、改善探索的策略梯度方法（Rahman & Xue, 2022）。
 
 本页不复述论文公式与完整实验表；工程落地请回到原文 / 项目页，并对照站内 VLA、Sim2Real 或任务页。
 
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/1906.03710) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2212.07536) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -102,10 +102,11 @@ Distributional-robust RL approach for improved policy reliability under uncertai
 - [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/1906.03710>
+- 主链接：<https://arxiv.org/abs/2212.07536>
+- 核对（2026-11-02）：原编号 1906.03710 对应《Curiosity-Driven Multi-Criteria Hindsight Experience Replay》，已按 arXiv 官方记录更正为 2212.07536（依据：API 标题《Robust Policy Optimization in Deep Reinforcement Learning》/作者 Md Masudur Rahman, Yexiang Xue/提交日期 2022-12-14；原一句话定义「distributional-robust」与摘要不符，已按摘要改写）
 
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/1906.03710)
+- [原文 / 官方入口](https://arxiv.org/abs/2212.07536)

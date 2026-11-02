@@ -3,7 +3,7 @@ type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-09-20
-arxiv: "1909.11652"
+arxiv: "2110.05113"
 summary: "Sim-to-real pipeline for high-speed quadrotor control under real-world disturbances."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -47,8 +47,8 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 | 编号 | 333/384 |
 | 分组 | Sim-to-Real |
 | 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/1909.11652> |
-| arXiv | 1909.11652 |
+| 主链接 | <https://arxiv.org/abs/2110.05113> |
+| arXiv | 2110.05113 |
 
 ## 核心机制（归纳）
 
@@ -61,7 +61,7 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/1909.11652) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2110.05113) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -102,10 +102,11 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 - [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/1909.11652>
+- 主链接：<https://arxiv.org/abs/2110.05113>
+- 核对（2026-11-02）：原编号 1909.11652 对应《Deep Dynamics Models for Learning Dexterous Manipulation》，已按 arXiv 官方记录更正为 2110.05113（依据：API 标题《Learning High-Speed Flight in the Wild》/作者 Loquercio, Kaufmann, Ranftl, Müller, Koltun, Scaramuzza/提交日期 2021-10-11；摘要为仿真特权学习、零样本迁移真机的高速四旋翼飞行，与本页一句话定义相符；清单标题 Agile 为清单写法）
 
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/1909.11652)
+- [原文 / 官方入口](https://arxiv.org/abs/2110.05113)
