@@ -42,6 +42,30 @@ summary: "SceneAgent（arXiv:2610.34745）：组织重建、物性估计、部�
 - 开源结论：**待发布**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未列 GitHub，页面含 soon 字样（脚本扫描）。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN[输入: RGB 图像序列 / 3DGS / 摄影测量 / LiDAR / AI 生成 3DGS 场景] --> PREP[输入准备<br/>RGB 序列经 COLMAP + splatfacto 训练 3DGS]
+  VID[动态场景视频] --> V4D[4D 通路: 帧序列 → 动态材质与仿真器]
+  PREP --> REC[物体重建与背景补全<br/>SAM 掩码 + OpenCLIP / DINOv2 特征 → 3D 实例]
+  REC --> PHY[物性估计: 物理先验 MLP + VLM 审核 + 关键词先验加权投票]
+  PHY --> PART[部件拆分 PartSAM → 补全缺失几何 CubePart<br/>关节建模 Articulate Anything]
+  PART --> PK[打包场景 → 检查器在 Isaac Lab 中审阅导出结果]
+  V4D --> PK
+  ORC[编排智能体: 规划整体转换步骤] -.-> REC
+  ORC -.-> PHY
+  RUN[执行智能体: actor-critic 视觉审查每一步<br/>审查者检查配准叠加与多视角渲染] -.-> REC
+  RUN -.-> PART
+  PK -->|发现尺度/朝向/配准问题| FIX[智能体提出修正位姿或其他修复并重新审查]
+  FIX --> PK
+  PK --> SIS[数字姊妹 digital sisters<br/>物体变体 + 布局与光照随机化]
+  SIS --> DEMO[脚本化专家示范<br/>使用仿真真值状态规划, 渲染相机观测]
+  DEMO --> FT[微调预训练 VLA 策略]
+```
+
+图依据：论文 §3 / Fig.2、§3.1（智能体编排与验证）、§3.2–3.4、§3.6、§3.8、§3.10。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +108,7 @@ summary: "SceneAgent（arXiv:2610.34745）：组织重建、物性估计、部�
 - [sceneagent_arxiv_2610_34745.md](../../sources/papers/sceneagent_arxiv_2610_34745.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.34745](https://arxiv.org/abs/2610.34745)
+- [arXiv PDF](https://arxiv.org/pdf/2610.34745)：已通读方法部分（实验与附录以略读为准）：§3 概述、§3.1 智能体编排与验证、§3.2 输入准备、§3.3 物体重建（开头）、§3.4 物性/部件/关节、§3.6 从 3D 到 4D（开头）、§3.8 数字姊妹、§3.10 示范生成（开头）、Fig.2；§4 起实验略读
 
 ## 推荐继续阅读
 

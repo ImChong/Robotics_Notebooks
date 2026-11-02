@@ -42,6 +42,27 @@ summary: "Plan First, Act Later（arXiv:2610.29329）：PAL将视觉流整理成
 - 开源结论：**部分开源**（步骤 2.5，2026-10-29）。公众号未给代码链接；项目页挂 Code 入口、链接 QinghangLiu/PAL_official，但 git ls-remote 失败（仓库不存在或私有），不能当作已开源。
 - 同期同组工作见 [多样成功示范、触觉工具链与预见式感知：具身智能小站 10-29 期 58 篇阅读坐标](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O[流式观测图像块 C_t<br/>自上次查询以来的新帧] --> M
+    PM[上一步分层记忆 M_t-Δt<br/>视觉缓冲 V / 语义事件记忆 E / 可执行子任务列表 P] --> M
+    L[任务指令 L] --> M
+    M[高层 VLM g_θ<br/>视觉缓冲与 C_t 合并并降采样到固定帧数]
+    M --> OUT[输出三项: 新事件 ΔE_t / 新子任务 ΔP_t / 当前子任务 ℓ_t<br/>证据不足时 ΔE 或 ΔP 为空]
+    OUT --> UP[更新记忆<br/>P 追加 ΔP; ΔP 非空则清空 E 后再追加 ΔE<br/>发生更新则清空视觉缓冲, 否则追加 C_t]
+    UP --> PM
+    OUT --> A[低层 VLA 策略 π_VLA<br/>a_t = π_VLA o_t, ℓ_t, L]
+    A --> ACT[执行低层动作]
+    subgraph 训练["两阶段训练"]
+        S1[Stage 1 稠密更新时机监督<br/>稀疏标注扩展为多个查询时刻样本<br/>前半区间空目标, 后半区间参考标签] --> S2[Stage 2 自标注与任务验证<br/>Stage 1 模型 rollout, 验证器清除错误或重复更新为空<br/>仅保留各更新点均通过的 rollout 再微调]
+    end
+    S2 -.-> M
+```
+
+图依据：论文 §3 / §4.2–4.3 / Fig.1–3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +106,7 @@ summary: "Plan First, Act Later（arXiv:2610.29329）：PAL将视觉流整理成
 - [plan_first_act_later_arxiv_2610_29329.md](../../sources/papers/plan_first_act_later_arxiv_2610_29329.md)
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 - [arXiv:2610.29329](https://arxiv.org/abs/2610.29329)
+- [arXiv PDF](https://arxiv.org/pdf/2610.29329)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 相关工作、§3 预备知识、§4 方法（4.1–4.3）、§5 实验开头
 
 ## 推荐继续阅读
 

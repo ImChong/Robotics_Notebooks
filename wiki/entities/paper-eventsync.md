@@ -41,6 +41,29 @@ summary: "EventSync（arXiv:2610.27917）：EventSync结合图像和末端轨迹
 - 开源结论：**待发布**（步骤 2.5，2026-10-31）。项目页 HTTP 200，Code 按钮标 Coming soon（curl 扫描）。
 - 同期同组工作见 [单图重建仿真、VLA 适配评测与跨形态世界模型：具身智能小站 10-31 期 50 篇阅读坐标](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["语言指令 ℓ（部分任务另有示范视频 D）"] --> MR["Memory Reasoner（VLM）"]
+    D["示范视频 D"] -.-> SUM["结构化事件序列 + 任务计划 P<br/>（固定，供执行期复用）"]
+    SUM --> MR
+    MEM["任务记忆：已完成子目标历史 G<br/>+ 视觉历史 H（均匀采样历史图像）"] --> MR
+    IMG["当前图像 I_t"] --> MR
+    MR --> SG["子目标 g_t：动作指令 + 图像内空间坐标"]
+    SG --> AE["Action Executor（VLA）<br/>可选视觉历史特征"]
+    AE --> AC["动作 chunk a_t:t+Ka-1"]
+    SG --> EM["Event Monitor（轻量）<br/>DINOv2 视觉 token + 末端轨迹 token + 事件条件 u"]
+    AC --> ROB["机器人执行并产生新观测"]
+    ROB --> EM
+    EM -->|"完成概率 p_c / 事件增量 p_inc（含 GRU 时序状态）"| EV{"有完成证据?"}
+    EV -->|"否"| AE
+    EV -->|"是：当前子目标写入 G"| MEM
+    EV -->|"触发下一步推理"| MR
+```
+
+图依据：论文 §III-A/B/C（Fig.2、式 (1)–(3)）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "EventSync（arXiv:2610.27917）：EventSync结合图像和末端轨迹
 - [eventsync_arxiv_2610_27917.md](../../sources/papers/eventsync_arxiv_2610_27917.md)
 - [wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md](../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md)
 - [arXiv:2610.27917](https://arxiv.org/abs/2610.27917)
+- [arXiv PDF](https://arxiv.org/pdf/2610.27917)：已通读方法部分（实验与附录以略读为准）：§III-A 框架概览、§III-B 任务记忆与子目标推理、§III-C 事件监控、§IV-A 实验设定
 
 ## 推荐继续阅读
 

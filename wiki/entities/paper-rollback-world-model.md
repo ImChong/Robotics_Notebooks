@@ -34,6 +34,31 @@ Rollback 在世界模型中回到关键决策点探索替代动作，并利用�
 
 真实世界难以完全重置和比较同一决策的替代结果；模型内回溯提供了针对关键动作进行分支比较的途径。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[种子轨迹<br/>离线示范或真机采集轨迹] --> B[构造参考路径<br/>保留 action chunk 边界处观测]
+    B --> C[MCTS 选节点<br/>PUCT: 利用成功率 + 探索低访问分支]
+    C --> D[恢复该节点缓存的<br/>World Model 时序上下文 m_t]
+    D --> E[Policy 以最高 bin 条件采样新 action chunk]
+    E --> F[GE-Sim 2.0 预测多视角画面与本体状态<br/>得到想象观测]
+    F --> G[展开至成功或深度上限<br/>World judge 奖励模型给出 0/1 结果]
+    G --> H[沿树回传 N 与 W<br/>子树叶节点成功率得到 chunk 价值]
+    H --> I{同级子树落入<br/>不同价值 bin?}
+    I -- 是 --> J[Disagreement-Driven Refinement<br/>补充 rollout 直至各分支访问数达 n_conf]
+    J --> C
+    I -- 否 --> K[兄弟间按最优值归一化并离散为 K 个 bin<br/>得到树监督 D_tree]
+    K --> L[Advantage-Conditioned Policy Update<br/>flow-matching, 混合示范与真机数据]
+    M[真机执行最新策略<br/>上传带标签轨迹至 D_real] --> N[World Model 适配<br/>LoRA SFT 后接 DMD<br/>test-time physics grounding]
+    L -->|新策略快照| E
+    L -->|策略部署| M
+    N -->|更新后的世界模型| F
+    M -.->|真实轨迹作为新种子| A
+```
+
+图依据：论文 §4.1–4.3 / §5.3 / Fig.2
+
 ## 核心机制
 
 世界模型回到关键决策点，生成替代动作的未来并对比分支，将成败归因转化为动作级监督，无需额外训练价值模型。分布式模型搜索与异步真机执行形成循环，真实转移经轻量 LoRA 校正世界模型，论文称之为 test-time physics grounding。
@@ -73,6 +98,7 @@ Rollback 在世界模型中回到关键决策点探索替代动作，并利用�
 
 - [论文摘录](../../sources/papers/rollback_arxiv_2610_36068.md)
 - [项目页核查](../../sources/sites/rollback-wm.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.36068)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 预备知识、§4 方法（4.1–4.3）、§5 异步训练系统（5.2–5.3）、§6.1 实验设定
 
 ## 推荐继续阅读
 

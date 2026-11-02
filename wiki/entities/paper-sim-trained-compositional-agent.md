@@ -41,6 +41,29 @@ summary: "Sim-Trained Compositional Agent（arXiv:2610.35817）：先用预训�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-28）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  BASE[预训练 VLM Qwen 3.6 27B<br/>提供场景理解与推理] --> WU[短程 GRPO 预热<br/>过采样较难任务]
+  WU -->|挖掘自身成功轨迹| SFT[SFT 初始化<br/>用模型自身成功轨迹微调]
+  WU -->|仍无成功的任务| PT[前缀树搜索<br/>对部分回合做最佳优先树搜索]
+  PT -->|补充成功轨迹| SFT
+  SFT --> RL[GRPO 强化学习<br/>40 个仿真任务 + 稠密奖励阶梯<br/>无效调用与缺失调用回合受负优势惩罚]
+  RL --> ZAP[ZAP 策略]
+  subgraph H[工具 harness: 仿真与真机一致]
+    direction TB
+    CAM[相机图像] --> SAM[SAM 3.1 分割模型所指物体<br/>+ 标定深度 → 物体 3D 读数]
+    SAM --> AG[模型: 写计划并发起工具调用<br/>move_to / set_gripper / change_query / update_todo / done]
+    AG -->|change_query 调整感知查询| SAM
+    AG -->|绝对末端位姿 + 夹爪开度| CTRL[运动控制器] --> FB[结果反馈]
+    FB --> AG
+  end
+  ZAP --> AG
+```
+
+图依据：论文 §3.1 / Fig.2、§3.2、§3.3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "Sim-Trained Compositional Agent（arXiv:2610.35817）：先用预训�
 - [sim_trained_compositional_agent_arxiv_2610_35817.md](../../sources/papers/sim_trained_compositional_agent_arxiv_2610_35817.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.35817](https://arxiv.org/abs/2610.35817)
+- [arXiv PDF](https://arxiv.org/pdf/2610.35817)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1 仿真与真机统一接口、§3.2 仿真中学习运动（GRPO 与稠密奖励）、§3.3 模型初始化（自身成功轨迹 SFT 与前缀树搜索）、Fig.2；§4 起实验与附录略读
 
 ## 推荐继续阅读
 

@@ -44,6 +44,32 @@ summary: "RoboReason（arXiv:2610.33778）：构建帧时序、物体深度与�
 - 开源结论：**待发布**（步骤 2.5，2026-10-28）。项目页 HTTP 200，仅见项目页模板链接，页面含 soon 字样（脚本扫描）。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D[DROID 带语言标注的轨迹<br/>随机抽样] --> T[时序排序样本<br/>轨迹均分 5 段, 每段随机取 1 帧<br/>三路相机拼接为一张图; 3 帧设定取第 1/3/5 帧]
+  T --> TG[真值: 轨迹时间戳]
+  D --> L[取随机帧的左相机视图]
+  L --> O[GPT-5 识别物体名<br/>GroundingDINO 生成边界框]
+  O --> F[过滤: 掩码 IoU / 框 IoU / 包含阈值<br/>不足 5 个合格物体则丢弃轨迹; 多于 5 个则均匀采样 5 个]
+  F --> DEP[深度排序样本]
+  F --> LR[左右排序样本<br/>去除大尺寸场景物体, 取同一水平层最大簇<br/>去除几乎完全重叠的物体]
+  F --> SEG[Grounded SAM 2 物体掩码]
+  SEG --> DG[Marigold 单目深度图 → 掩码内平均深度作真值]
+  DG --> DEP
+  LR --> LG[真值: 框中心 x 坐标]
+  TG --> DS[流程生成的训练数据<br/>SFT 实验每任务 8857 条]
+  DEP --> DS
+  LG --> DS
+  DS --> SFT[监督微调 Qwen3-VL-8B]
+  DS --> RL[GRPO 强化学习<br/>奖励 = 预测排序与真值的 Kendall τ<br/>Qwen2-VL-2B / SmolVLM2-2.2B]
+  SFT --> EV[排序任务与下游机器人/视觉推理评测]
+  RL --> EV
+```
+
+图依据：论文 §2 / §2.1 数据生成流程、强化学习微调段落（GRPO 与 Kendall τ 奖励）及 §1 贡献描述。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +114,7 @@ summary: "RoboReason（arXiv:2610.33778）：构建帧时序、物体深度与�
 - [roboreason_arxiv_2610_33778.md](../../sources/papers/roboreason_arxiv_2610_33778.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.33778](https://arxiv.org/abs/2610.33778)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33778)：已通读方法部分（实验与附录以略读为准）：§1 引言与贡献、§2 三类排序任务形式化与 §2.1 数据生成流程、强化学习微调设定（GRPO 与 Kendall τ 奖励）；§3 评测与附录略读
 
 ## 推荐继续阅读
 

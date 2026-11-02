@@ -36,6 +36,32 @@ summary: "X-WBC（arXiv:2609.15213）：九种仿真人形联合训练；VR 稀�
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  M1[完整人类动作<br/>动捕] --> E1[人类动作命令编码器<br/>共享]
+  M1 -->|GMR 重定向| M2[机器人参考动作]
+  M2 --> E2[机器人动作命令编码器<br/>按 robot ID 选择]
+  M1 -->|抽取头 + 四肢末端 5 个关键点| M3[稀疏 VR 动作]
+  M3 --> E3[稀疏 VR 命令编码器<br/>共享]
+  E1 --> T[三类命令 token<br/>训练时按 1:1:1 采样一类]
+  E2 --> T
+  E3 --> T
+  T -.对齐损失 L_align<br/>两两 MSE.-> T
+  S[机器人本体感知<br/>补零到最大维度] --> PE[本体感知编码器<br/>按 robot ID 选择]
+  T --> B[共享因果 Transformer 骨干<br/>长度 L 的历史窗口<br/>推理时 KV cache]
+  PE --> B
+  B --> AD[动作解码器<br/>按 robot ID 选择<br/>仅保留有效关节维度]
+  AD --> PD[PD 控制器转力矩]
+  PD --> R[Isaac Lab 多机器人仿真 rollout]
+  R -->|混合多机器人转移 PPO batch<br/>L = L_PPO + λ·L_align| B
+  R --> AS[自适应动作片段采样<br/>失败多的片段概率升高]
+  AS --> M1
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、式 (1)(2)。
+
 ## 核心原理（方法）
 
 X-WBC 的出发点是一条工程观察：**一机一策略** 让运动经验被困在各自本体里，换台机器人就要从头训。它的解法是把全身控制拆成 **可共享的** 与 **不可共享的** 两半：
@@ -104,6 +130,7 @@ X-WBC 的出发点是一条工程观察：**一机一策略** 让运动经验被
 
 - [X-WBC 论文摘录](../../sources/papers/x_wbc_arxiv_2609_15213.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.15213)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法（多机器人动作跟踪形式化、命令编码、共享骨干与机器人专属模块、训练）、Fig.2；§4 实验设定略读
 
 ## 推荐继续阅读
 

@@ -22,7 +22,7 @@ summary: "Laparoscopic Distillation：重新研究腹腔镜机器人操作中从
 
 # Laparoscopic Distillation：重新研究腹腔镜机器人操作中从状态到视觉的策略蒸馏分布匹配
 
-**Laparoscopic Distillation**（*Revisiting Distribution Matching for State-to-Vision Policy Distillation in Laparoscopic Robotic Manipulation*，[arXiv:2610.31010](https://arxiv.org/abs/2610.31010)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Laparoscopic Distillation**（*Revisiting Distribution Matching for State-to-Vision Policy Distillation in Laparoscopic Robotic Manipulation*，[arXiv:2610.31010](https://arxiv.org/abs/2610.31010)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -38,6 +38,30 @@ summary: "Laparoscopic Distillation：重新研究腹腔镜机器人操作中从
 ## 为什么重要
 
 - 周报所述待解决的问题：使用完整状态训练的教师策略能够获得更多环境信息，但视觉学生策略只能根据相机观测执行动作。两者的输入信息和闭环状态分布存在差异。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph T["(a) 训练状态教师策略"]
+    E1["SurRoL 仿真环境<br/>PSM 执行操作，ECM 提供 RGB"] --> B1["回放缓冲 B1"]
+    PS["特权状态：物体坐标、朝向等"] --> TA["状态教师 actor + critic（SAC）"]
+    B1 --> TA
+    TA --> E1
+  end
+  subgraph S["(b) 师生蒸馏"]
+    TA -- "冻结" --> FT["冻结教师策略 πt = N(μt, σt²)"]
+    FT --> E2["教师驱动与环境交互（teacher-driven）"]
+    E2 --> B2["新回放缓冲 B2<br/>避开 B1 中早期教师版本的转移"]
+    B2 --> ST["视觉学生 actor πs = N(μs, σs²)<br/>输入：ECM RGB 帧 + 本体感知，不用特权状态"]
+    PS2["教师输入：特权状态 ot"] --> FT
+    FT --> DM["分布匹配损失 Ldistill = D(πt, πs)<br/>闭式高斯：FKL / RKL / JD / WD / MSE"]
+    ST --> DM
+    DM --> ST
+  end
+```
+
+图依据：论文 §III 开头 / Fig.1（a)(b) 与图注）、§III-B / §III-C。B2 的缘由来自 Fig.1 图注；a 图中 回放缓冲到 actor 的箭头为按 SAC 背景（§III-A）的推断。
 
 ## 核心机制
 
@@ -89,6 +113,7 @@ summary: "Laparoscopic Distillation：重新研究腹腔镜机器人操作中从
 - [laparoscopic-state-to-vision-policy-distillation_arxiv_2610_31010.md](../../sources/papers/laparoscopic-state-to-vision-policy-distillation_arxiv_2610_31010.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.31010](https://arxiv.org/abs/2610.31010)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31010)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III Methods（§III-A 至 §III-F：SAC 背景、状态到视觉蒸馏、分布匹配目标、梯度与 Hessian 分析）、§IV 实验（仅略读表 II）
 
 ## 推荐继续阅读
 

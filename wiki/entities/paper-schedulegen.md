@@ -43,6 +43,30 @@ summary: "ScheduleGen（arXiv:2610.39429）：ScheduleGen 联合技能迁移、�
 - 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-10-30）。项目页 HTTP 200，未列 GitHub，也无 coming soon 字样（脚本扫描）。
 - 同期同组工作见 [进度奖励、接触监督与规划验证：具身智能小站 10-30 期 28 篇阅读坐标](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["少量带标注源示教 D<br/>（分段为 skill）"] --> SS["采样初始状态 s0 与示教 d<br/>segment-skills 得到 skill plan ⟨Ψ, P⟩"]
+    SS --> P1["阶段一 serialized-planner：按 P 拓扑排序 skill"]
+    P1 --> AD["相对物体坐标系适配 skill 位姿<br/>（MimicGen 式位姿不变假设）+ IK 得到 τψ"]
+    AD --> MP["motion-planner 规划连接运动 τm<br/>与其他臂的碰撞约束先不考虑"]
+    MP --> F1{"IK / 运动规划失败？"}
+    F1 -- 是 --> RS["拒绝该候选，重采样 s0 与示教"]
+    F1 -- 否 --> T["每臂轨迹 T = τm + τψ 序列"]
+    T --> CC["GPU 碰撞检查（cuRobo 球体自碰撞核）<br/>找出冲突的轨迹段对"]
+    CC --> P2["阶段二 schedule-robots：MILP<br/>最小化 makespan + w·Σ结束时间<br/>约束：起点为 0、最小时间步 Δt、时序约束 P、析取碰撞约束"]
+    P2 --> F2{"MILP 可行？"}
+    F2 -- 否 --> RS
+    F2 -- 是 --> EX["取整时间变量并执行联合轨迹<br/>仿真并行回放"]
+    EX --> F3{"末状态属于目标集 S*？"}
+    F3 -- 是 --> DS["加入成功示教数据集"]
+    F3 -- 否 --> RS
+    DS --> IL["模仿学习：flow-matching visuomotor 策略"]
+```
+
+图依据：论文 §3（问题描述）、§4 与 Algorithm 1/2、Fig. 2；末端“模仿学习”一步取自 §5.1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +111,7 @@ summary: "ScheduleGen（arXiv:2610.39429）：ScheduleGen 联合技能迁移、�
 - [schedulegen_arxiv_2610_39429.md](../../sources/papers/schedulegen_arxiv_2610_39429.md)
 - [wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md](../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md)
 - [arXiv:2610.39429](https://arxiv.org/abs/2610.39429)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39429)：已通读方法部分（实验与附录以略读为准）：§1–§4（含 Algorithm 1/2、MILP 公式）、§5.1 实验设定
 
 ## 推荐继续阅读
 

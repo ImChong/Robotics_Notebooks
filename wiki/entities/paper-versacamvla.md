@@ -36,6 +36,28 @@ topic: [vla, manipulation]
 
 机器人部署现场的相机数量、安装位置和朝向可能与训练时不同。若策略把固定相机槽位与任务动作绑定，新增或移动相机可能要求重新采集数据或改造模型输入。VersaCamVLA 将“相机集合如何表示”作为独立接口处理，目标是在已有 VLA 周围增加适配层。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 I：统一场景 token 接口学习"]
+        A["带位姿 RGB 视图集合（数量与位姿可变）<br/>WAPS：静态相机随机取 1..全部，腕部相机各以 0.5 概率纳入"] --> B["每视图：Plücker 射线嵌入 + RGB，ViT 式 patch 化为源 token"]
+        B --> C["拼接 L 个可学习场景 token，Transformer 场景编码器"]
+        C --> D["固定大小场景 token Z（只保留场景 token 输出）"]
+        D --> E["场景解码器（仅训练期）：目标相机射线 token 查询 Z"]
+        E --> F["RGB / 语义图 / 边缘图 预测头"]
+        F --> G["L_scene = L_rgb + λ_sem·L_sem + λ_edge·L_edge<br/>目标集合 = 全部静态 + 腕部相机"]
+    end
+    D --> H["阶段 II：丢弃解码器与预测头，冻结场景编码器"]
+    H --> I["卷积空间编码器 g（随机初始化）压缩 Z 为紧凑场景表示"]
+    I --> J["π0.5 VLM：指令 L + RGB 观测 + 补充场景表示 + 本体状态 P"]
+    J --> K["Action Expert，flow matching 速度场回归 L_action"]
+    K --> L["动作块 A_t"]
+    L -.-> M["部署：仅场景编码器 + 空间编码器 + π0.5 在推理路径上"]
+```
+
+图依据：论文 §3.1–3.4 / Fig. 2。
+
 ## 核心机制
 
 1. **统一多视角表征：** 输入为任意数量、带位姿信息的 RGB 视图，输出固定大小的潜在场景 token。
@@ -86,6 +108,7 @@ topic: [vla, manipulation]
 
 - [VersaCamVLA 论文归档](../../sources/papers/versacamvla_arxiv_2610_12451.md)
 - [VersaCamVLA 官方项目页归档](../../sources/sites/versacamvla.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.12451)：已通读方法部分（实验与附录以略读为准）：§3 全部（3.1–3.4）
 
 ## 推荐继续阅读
 

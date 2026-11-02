@@ -30,6 +30,37 @@ sources:
 
 将第一视角视频的潜在动作分解为可迁移的共享操作先验与具身特有运动学，借共享动作表示向不同机器人传递操作语义。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph S1["Stage 1 训练 Factorized Action Tokenizer"]
+        direction TB
+        DATA["人类第一视角视频动作 (MANO 手部位姿)<br/>+ 机器人动作 (末端位姿)"] --> RT["按路由表 (routing table) 分组"]
+        RT --> SH["共享组: 腕 / 末端 3D 位置<br/>(自我中心相机系)"]
+        RT --> SP["特有组: 旋转 / 手指关节 / 夹爪"]
+        SH --> CB1["共享码本 (RVQ, 人机共用)"]
+        SP --> CB2["各域独立特有码本"]
+        CB1 --> AL["跨域对齐: InfoNCE<br/>+ 语言引导关系蒸馏 (冻结 Qwen3-Embedding)"]
+        CB1 --> REC["解码重建动作"]
+        CB2 --> REC
+    end
+    S1 -->|"冻结 tokenizer, 输出离散动作码作监督"| S2
+    subgraph S2["Stage 2 跨具身 VLM 预训练 (Florence-2-large)"]
+        direction TB
+        IN2["图像 + 指令 + 动作占位符"] --> VLM2["VLM 预测码本索引<br/>人类数据仅预测共享码; 机器人数据预测共享码 + 特有码"]
+    end
+    S2 -->|"加载 Stage 2 权重"| S3
+    subgraph S3["Stage 3 下游机器人微调"]
+        direction TB
+        IN3["图像 + 指令 + 机器人状态"] --> VLM3["VLM 隐藏态 + Bridge Features<br/>(占位符位置的隐藏态)"]
+        VLM3 --> AE["Action Expert (动作 Transformer)<br/>连续动作回归"]
+    end
+    AE --> OUT["部署: 无 tokenizer / 码本, 直接输出连续机器人动作"]
+```
+
+图依据：论文 §III-A/B/C / Fig.1 / Fig.2
+
 ## 方法与核心原理
 
 将第一视角视频的潜在动作分解为可迁移的共享操作先验与具身特有运动学，借共享动作表示向不同机器人传递操作语义。
@@ -70,6 +101,7 @@ sources:
 ## 参考来源
 
 - [来源归档](../../sources/papers/exe-cross-embodiment.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33685)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（三阶段）、§IV-A/B 实验设定
 
 ## 推荐继续阅读
 

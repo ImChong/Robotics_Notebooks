@@ -46,6 +46,22 @@ summary: "MolmoAct（arXiv:2508.07917）：MolmoAct 提出 Action Reasoning Mode
 - 在长文的演进线里属于「显式空间推理（深度 → 轨迹 → 动作）路线」。
 - 摘要要点：论文摘要称：MolmoAct 将观测与指令编码为深度感知 token，生成作为可编辑的轨迹的中层空间规划，再预测精确低层动作；MolmoAct-7B-D 在 SimplerEnv Visual Matching 零样本 70.5%，超过闭源 Pi-0 与 GR00T N1.5；LIBERO 平均成功率 86.6%，长时程比 ThinkAct 多 6.3%；真实世界微调较 Pi-0-FAST 单臂多 10%、双臂多 22.7% 任务进度；分布外泛化多 23.3%；并首次发布含 1 万+ 高质量轨迹的 MolmoAct Dataset（中期训练，平均带来 5.5% 提升），开源全部权重、训练代码与数据。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["RGB 图像观测 I（多视角）"] --> VLM["Molmo 骨干：ViT 视觉编码器<br/>+ 两层 MLP connector + 解码器 LLM"]
+    T["语言指令 T（含 action CoT 提示）"] --> VLM
+    VLM --> D["① 深度感知 token d<br/>（VQ-VAE codebook 索引，M=100）"]
+    D --> R["② 视觉推理轨迹 τ<br/>（图像上 1–5 个末端点 polyline）"]
+    R --> A["③ 动作 token a<br/>（256 bin 离散化，D 维自由度）"]
+    A --> C["执行动作（后训练使用 N=8 的 action chunk）"]
+    SP["专家深度估计器（Depth Anything V2）"] -.->|"训练时提供 d 的真值"| D
+    U["用户在图像上绘制轨迹 τ"] -.->|"叠加为 I⁺，直接引导 a"| A
+```
+
+图依据：论文 §2.2–2.4（式 (4)(5)）、§4.3；Fig.2 训练流程。
+
 ## 长文的讲法（作者表述）
 
 文章称其三阶段为：用 Depth Anything v2 与 VQ-VAE 把深度图压成 10×10 离散 token（作为训练目标，推理时不需再跑深度估计器）→ 预测至多 5 个图像空间点描述末端轨迹 → 输出 8 个离散化动作的 chunk；优点是能检查预测的深度与意图轨迹而非只看最终动作，缺点是生成中间 token 增加推理延迟，且「轨迹看着合理不等于执行正确」。文章称 MolmoAct 2 在其基础上提升空间推理、自适应深度预测并换成连续 flow-matching 动作专家。
@@ -69,3 +85,4 @@ summary: "MolmoAct（arXiv:2508.07917）：MolmoAct 提出 Action Reasoning Mode
 - [molmoact_arxiv_2508_07917.md](../../sources/papers/molmoact_arxiv_2508_07917.md)
 - [x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md](../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md)
 - [arXiv:2508.07917](https://arxiv.org/abs/2508.07917)
+- [arXiv PDF](https://arxiv.org/pdf/2508.07917)：已通读方法部分（实验与附录以略读为准）：§2 MolmoAct（2.1–2.4）、§4 训练方案（4.1–4.3）

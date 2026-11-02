@@ -21,7 +21,7 @@ summary: "特征级示范学习：基于特征级感知与提示式目标检测�
 
 # 特征级示范学习：基于特征级感知与提示式目标检测的人形机器人数据高效示范学习
 
-**特征级示范学习**（*Data-Efficient Learning from Demonstration for Humanoid Robots via Feature-Level Perception and Prompt-Based Object Detection*，[arXiv:2610.26170](https://arxiv.org/abs/2610.26170)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**特征级示范学习**（*Data-Efficient Learning from Demonstration for Humanoid Robots via Feature-Level Perception and Prompt-Based Object Detection*，[arXiv:2610.26170](https://arxiv.org/abs/2610.26170)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -37,6 +37,28 @@ summary: "特征级示范学习：基于特征级感知与提示式目标检测�
 ## 为什么重要
 
 - 周报所述待解决的问题：从原始图像端到端学习人形操作通常需要大量示范和计算资源。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    K["Kinect 采集人类示范<br/>RGB + 深度 + 骨架"] --> J["Kinect Skeleton API 关节位置<br/>→ 换算为 NAO 关节角特征（肩/肘）"]
+    K --> Y["YOLO-World 提示词检测<br/>（如 red ball / green box / block）"]
+    Y --> O["检测框 + Kinect 深度 + 相机模型<br/>→ 物体三维位置"]
+    J --> F["特征向量：人体臂配置 + 物体位置<br/>+ 任务状态 + 进度，并归一化"]
+    O --> F
+    F --> W["10 步输入窗口"]
+    W --> LS["LSTM"]
+    SE["step embedding（执行步）"] --> CC["拼接 Concatenation"]
+    GE["三值 grasp/task state embedding"] --> CC
+    LS --> CC
+    CC --> FC["全连接线性输出层<br/>预测 NAO 4 个臂关节角"]
+    FC --> LIM["限制到 NAO 关节可行范围"]
+    LIM --> R["NAO 执行（仿真 CoppeliaSim / 真机）"]
+    R -.->|"自回归：预测结果并入下一输入窗口"| W
+```
+
+图依据：论文 §II 提出的框架（Fig.1、Fig.2、§II-A/B/C）。
 
 ## 核心机制
 
@@ -88,6 +110,7 @@ summary: "特征级示范学习：基于特征级感知与提示式目标检测�
 - [feature-level-lfd-prompt-detection-nao_arxiv_2610_26170.md](../../sources/papers/feature-level-lfd-prompt-detection-nao_arxiv_2610_26170.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md)
 - [arXiv:2610.26170](https://arxiv.org/abs/2610.26170)
+- [arXiv PDF](https://arxiv.org/pdf/2610.26170)：已通读方法部分（实验与附录以略读为准）：§I 引言（节选）、§II-A 特征提取、§II-B 时序模型、§II-C 人到机器人执行、§III 实验设定
 
 ## 推荐继续阅读
 

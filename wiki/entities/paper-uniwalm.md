@@ -43,6 +43,28 @@ summary: "UniWALM（2026）：在同一 mixture-of-transformers 骨干中联合�
 - 具身任务中，很多失败来自需要记住历史信息的步骤；把语言作为可读写的记忆，可以在不增加外部规划器的情况下处理这类任务。
 - 统一世界、动作与语言的骨干，使三者在同一表征内相互影响（据摘要的设计描述）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：当前观测 O（多视角 RGB）、本体感觉 S、任务指令 T、可选视觉记忆 F"] --> MOT
+    TM["上一步生成的文本记忆"] -->|"作为下一步 prompt 重新输入"| IN
+    subgraph MOT["Mixture-of-Transformers 共享表征（统一 self-attention）"]
+        VD["Video DiT（Wan2.2 初始化）"]
+        LD["Language DiT（离散语言扩散）"]
+        AD["Action DiT"]
+    end
+    VD -.->|"推理时关闭视频生成"| X["不生成未来帧"]
+    LD --> L["子任务 + 文本记忆 字符串 L"]
+    AD --> A["动作块 A（N 步）+ 任务完成信号 β"]
+    A -->|"β 触发子任务完成"| G["门控：仅在子任务边界更新文本记忆"]
+    L --> G
+    G --> TM
+    A --> EXE["执行动作"]
+```
+
+图依据：论文 §3.1 / §3.3 / Fig.2。
+
 ## 方法与机制
 
 - **统一骨干：** mixture-of-transformers 联合生成视频、动作与语言。
@@ -88,6 +110,7 @@ summary: "UniWALM（2026）：在同一 mixture-of-transformers 骨干中联合�
 ## 参考来源
 
 - [UniWALM 论文来源归档](../../sources/papers/uniwalm_arxiv_2610_28626.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.28626)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.5（含 Fig.2–4、Algo.1）
 
 ## 推荐继续阅读
 

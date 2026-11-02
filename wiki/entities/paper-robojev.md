@@ -42,6 +42,28 @@ summary: "RoboJev（arXiv:2610.33718）：以任务指令、操作视频抽帧�
 - 开源结论：**已开源**（步骤 2.5，2026-10-28）。公众号只给 Hugging Face 模型页；页面链接的 GitHub 仓库 josefchen/robojev 经 git ls-remote 可达。
 - 同期同组工作见 [潜在动作、免渲染事件仿真与机器人评测：具身智能小站 10-28 期 59 篇阅读坐标](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务指令 u"] --> P["Prompt：指令 + 时间顺序 + 其他视角说明"]
+    B["主相机视频 V：均匀抽 K=10 帧"] --> P
+    C["各辅助相机最后一帧"] --> P
+    P --> M["JEV-27B-VL 视觉语言模型<br/>冻结视觉编码器与 merger + 语言模型 LoRA rank 32"]
+    M --> Z["答案位 false / true 两个 token 的 logits"]
+    Z --> R["校准读出：加偏置 b，温度 T=0.9 softmax"]
+    R --> O["P(success)：episode 结束时是否完成任务"]
+    subgraph TR["仅训练阶段"]
+        D["52,598 条 episode：RBM-1M、ArmnetBench、社区、ViFailback、DROID"] --> L["加权二元交叉熵"]
+        T["基座 JEV 教师（LoRA 关闭，无梯度）"] --> K["KL(base ∥ adapted)，仅研究数据源，λ=1"]
+        L --> U["更新 LoRA"]
+        K --> U
+    end
+    U -.-> M
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +107,7 @@ summary: "RoboJev（arXiv:2610.33718）：以任务指令、操作视频抽帧�
 - [robojev_arxiv_2610_33718.md](../../sources/papers/robojev_arxiv_2610_33718.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.33718](https://arxiv.org/abs/2610.33718)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33718)：已通读方法部分（实验与附录以略读为准）：§3.1 输入与读出、§3.2 训练数据、§3.3 适配与校准、Fig.2
 
 ## 推荐继续阅读
 

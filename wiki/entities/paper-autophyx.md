@@ -21,6 +21,30 @@ summary: "以三维资产和文本为条件预测空间变化的杨氏模量、�
 
 以三维资产和文本为条件预测空间变化的杨氏模量、泊松比与密度体素场，供物理仿真使用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["3D 物体：多视角图像"] --> B["提取 2D OpenCLIP 特征（视作 feature radiance）"]
+    B --> C["固定 NeRF 密度场 σ，体渲染优化连续 3D 特征场 Φ（遮挡处被抑制）"]
+    C --> D["分层 ray-casting（偶奇规则）填充内部体素，最近邻继承表面特征"]
+    D --> E["3D OpenCLIP 体素网格"]
+    T["文本描述"] --> TE["冻结 OpenCLIP 文本编码器 → e_text"]
+    TE --> M["MLP 预测各层 γ、β"]
+    M --> U["3D U-Net：FiLM 逐层调制体素特征"]
+    E --> U
+    U --> V["体素场：杨氏模量 E、泊松比 ν、密度 ρ"]
+    V --> S["下游物理仿真（网格 / 点云 / Gaussian Splatting）"]
+    subgraph DG["训练数据构造（Text2PhyX）"]
+        G1["15 视角渲染 + VLM 列出部件关键词 → OpenCLIP 体素按余弦相似度分割"] --> G2["VLM 生成文本描述 + 查 MatWeb / Wikipedia / Engineering Toolbox 取参数范围并采样"]
+        G2 --> G3["100 帧仿真一致性检查，失败最多重采样 5 次"]
+    end
+    G3 -. "文本 + 真值参数" .-> L["占据体素上的 L_phys（MSE）监督"]
+    V --> L
+```
+
+图依据：论文 §3.1–3.3 / Fig. 2、Fig. 3。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -75,6 +99,7 @@ summary: "以三维资产和文本为条件预测空间变化的杨氏模量、�
 
 - [论文归档](../../sources/papers/autophyx_arxiv_2610_29517.md)
 - [项目页归档](../../sources/sites/autophyx-project.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.29517)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§4、§5 设定
 
 
 ## 推荐继续阅读

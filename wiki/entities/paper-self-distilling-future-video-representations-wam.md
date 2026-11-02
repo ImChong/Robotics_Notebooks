@@ -23,7 +23,7 @@ summary: "Self-Distilling WAM：面向世界动作模型的未来视频表示自
 
 # Self-Distilling WAM：面向世界动作模型的未来视频表示自蒸馏
 
-**Self-Distilling WAM**（*Self-Distilling Future Video Representations for World Action Models*，[arXiv:2610.30320](https://arxiv.org/abs/2610.30320)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**Self-Distilling WAM**（*Self-Distilling Future Video Representations for World Action Models*，[arXiv:2610.30320](https://arxiv.org/abs/2610.30320)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -39,6 +39,26 @@ summary: "Self-Distilling WAM：面向世界动作模型的未来视频表示自
 ## 为什么重要
 
 - 周报所述待解决的问题：WAM 需要利用未来视觉变化学习动作，但完整视频预测会带来较高计算成本。如何保留未来信息中的控制相关特征，是提高模型效率的重要问题。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：当前观测 o_t + H 帧短历史、文本指令 c、本体状态 q_t"] --> STU
+    EPS["高斯噪声 ε"] --> STU["学生（在线）VDM 编码器 f_θ：单次前向，得到未来视频表示 h"]
+    FUT["真实未来观测 o_(t+1) 加噪 → o^τ_(t+1)"] --> TEA["教师（动量）VDM 编码器 f_θ-：得到目标表示 h^τ"]
+    STU --> GS["逐 patch 投影头 g_θ + softmax（温度 γ1）→ 分布 p"]
+    TEA --> GT["投影头 g_θ- + 中心化 + 锐化 softmax（温度 γ2）→ 分布 p^τ"]
+    GS --> KL["自蒸馏损失 L_SD：KL(p^τ ‖ p)，对所有 patch 平均"]
+    GT --> KL
+    KL -->|"与视频 flow-matching 损失 L_FM 相加（权重 λ_SD）更新 θ"| STU
+    STU -.->|"EMA 动量更新"| TEA
+    STU -->|"推理：h 作为条件"| DEC["独立动作解码器 π_φ（扩散，Euler ODE 采样；动作损失只更新 φ，不更新 θ）"]
+    Q["本体状态 q_t"] --> DEC
+    DEC --> ACT["动作 a_t"]
+```
+
+图依据：论文 §3.1–§3.2 / Fig.2、Eq.1–4。
 
 ## 核心机制
 
@@ -90,6 +110,7 @@ summary: "Self-Distilling WAM：面向世界动作模型的未来视频表示自
 - [self-distilling-future-video-representations-wam_arxiv_2610_30320.md](../../sources/papers/self-distilling-future-video-representations-wam_arxiv_2610_30320.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - [arXiv:2610.30320](https://arxiv.org/abs/2610.30320)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30320)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.2、§4.1 实现细节
 
 ## 推荐继续阅读
 

@@ -20,6 +20,34 @@ sources:
 
 **一句话定义**：C-GMT 为预训练通用运动跟踪器加入参考动作残差，使机器人在跟踪多样动作时对外力产生全身柔顺响应。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BASE["力鲁棒 GMT"]
+        S1["SONIC 预训练跟踪器<br/>参考运动经编码器 + FSQ 量化为 universal motion token z"] --> S2["冻结运动编码器，微调解码器<br/>手部负载与持续外力扰动，按 clip 缩放力预算"]
+    end
+    subgraph TEACH["特权教师（训练期）"]
+        T1["外力 F + 指令刚度 k"] --> T2["弹簧律 p_des = p_ref + F / k"]
+        T2 --> T3["柔顺 IK：受力连杆位姿 &gt; 脚位 / 质心 &gt; 姿态正则"]
+        T3 --> T4["柔顺参考运动"]
+        T4 --> T5["仿真扫描筛选可行的力方向与刚度范围"]
+    end
+    subgraph ADAPT["残差适配器（学生）"]
+        A1["10 步本体感知与历史动作 + token z + log k"] --> A2["MLP：残差头 Δz（64 维）+ 门控头 g + 辅助力预测头"]
+        A2 --> A3["z' = z + g ⊙ Δz，死区 0.005 以下置零"]
+    end
+    S2 --> TEACH
+    S2 --> ADAPT
+    T4 -->|"蒸馏：匹配教师动作与 token"| A2
+    A3 --> S3["冻结的力鲁棒 GMT 解码并执行"]
+    S3 --> R["Unitree G1 关节指令"]
+    U["运动片段 / 遥操作 / VLA"] --> S1
+    K["运行时指令刚度 k"] --> A1
+```
+
+图依据：论文 §III（Fig.2）
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -72,6 +100,7 @@ C-GMT 提供了把柔顺性加入通用动作跟踪器的模块化思路。
 
 - [论文资料归档](../../sources/papers/compliant_gmt_arxiv_2610_22119.md)
 - [项目页归档](../../sources/sites/compliant-gmt.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.22119)：已通读方法部分（实验与附录以略读为准）：§I–§III（含 III-A 至 III-D）、§IV 开头三小节
 
 ## 推荐继续阅读
 

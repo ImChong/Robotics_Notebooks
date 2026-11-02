@@ -19,6 +19,28 @@ sources:
 
 **一句话定义：** 神经布料预测器之后加入可调摩擦的接触算子，估计法向载荷、执行库仑修正并传播布料运动。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    S["当前状态 x_t 与 x_(t-1)<br/>+ 身体运动"] --> GNN["冻结 GNN 预测器 (HOOD / ContourCraft)<br/>输出试探状态 x̂_(t+1)"]
+    GNN --> CS["近邻接触集 C_ε<br/>(带符号身体距离 d_i < ε)"]
+    subgraph MCO["Modular Contact Operator P_μ (推理时, 无需重训)"]
+        direction LR
+        N["1 法向载荷估计 λ̂_n<br/>由提议的加速度偏离自由落体推得"]
+        C["2 闭式 Coulomb 修正<br/>弧停长度 b ∝ μ·λ̂_n, 决定 stick / slip"]
+        T["3 Geometry-Aware Contact Traversal<br/>沿身体三角面展开路径落点"]
+        P["4 Friction-Induced Motion Propagation<br/>线性化膜波传播并限制边应变"]
+        N --> C --> T --> P
+    end
+    CS --> N
+    MU["推理时设定摩擦系数 μ"] --> C
+    P --> X["修正后状态 x_(t+1)"]
+    X -->|"进入自回归历史"| S
+```
+
+图依据：论文 §3.3、§4.1-4.5 / Fig.2
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -66,6 +88,7 @@ sources:
 
 - [论文归档](../../sources/papers/explicit-friction_arxiv_2610_33492.md)
 - [项目页核查](../../sources/sites/explicit-friction-ngs.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.33492)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3、§4（四个阶段）、§5.1-5.3 实验设定与消融
 
 ## 推荐继续阅读
 
