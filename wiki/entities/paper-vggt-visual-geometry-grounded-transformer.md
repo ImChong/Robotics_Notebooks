@@ -37,6 +37,8 @@ summary: "VGGT（arXiv:2503.11651）：VGGT 是前馈神经网络，直接从一
 | VGGT | Visual Geometry Grounded Transformer | 前馈统一 3D 几何的 Transformer |
 | SOTA | State of the Art | 当前最优水平 |
 
+相关工作：[Any3R：混合中心相机的前馈三维重建](paper-any3r.md)。
+
 ## 为什么重要
 
 - 统一此前各自专用的 3D 视觉任务；摘要称重建不到 1 秒，且无需几何优化后处理仍优于需要后处理的方法（公众号归属：牛津 VGG 组 + Meta AI）。
