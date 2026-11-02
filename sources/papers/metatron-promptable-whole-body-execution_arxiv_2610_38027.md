@@ -26,3 +26,8 @@
 **对 wiki 的映射**
 
 - [paper-metatron-promptable-whole-body-execution](../../wiki/entities/paper-metatron-promptable-whole-body-execution.md)
+
+## 2026-11-02 一手摘要核验（草稿）
+
+- 依据 arXiv v1 摘要：冻结策略接收身体部位目标、速度和风格提示；同一 G1 检查点用于行走、恢复、遥操作拾物与坐下。
+- **未完成：** 尚未通读全文及相关可运行源码；实验协议、局限、项目流程图与源码时序图仍需核验，不能视为完整 ingest。
