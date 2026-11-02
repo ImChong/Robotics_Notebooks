@@ -43,6 +43,30 @@ Learning motion-aware world models for echocardiography probe guidance.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["示教数据：机械臂持探头的心脏超声扫描<br/>每个 scan 为 (图像 I_t, 探头位姿 p_t) 序列"] --> PRE
+    subgraph PRE["阶段一：预训练心脏世界模型 (§4.1)"]
+        SP["空间世界建模：遮挡图像块<br/>context encoder 处理可见块，predictor 以 mask token 预测被遮区域特征 (L_spatial)"]
+        MO["运动世界建模：同一 scan 的 I_a、I_b + 相对运动 p_a→b<br/>运动编码器 A_ψ 得 z，predictor 预测目标平均池化特征 (InfoNCE, L_motion)"]
+        TG["target encoder 为 context encoder 的 EMA"]
+        SP --> JOINT["L_total = L_spatial + λ·L_motion (λ=0.1)"]
+        MO --> JOINT
+        TG -.-> SP
+        TG -.-> MO
+    end
+    PRE --> FT
+    subgraph FT["阶段二：运动感知探头引导微调 (§4.2)"]
+        HIST["历史视觉-运动序列 {I_ti, p_ti}"] --> FEAT["预训练视觉编码器与运动编码器提取特征"]
+        FEAT --> MAA["motion-aware attention：<br/>相对位姿差 z_i→j 嵌入 key / value"]
+        MAA --> HEAD["预测头回归到目标平面的探头运动 â_t<br/>L_guide = ‖a_t − â_t‖₁"]
+    end
+```
+
+图依据：论文 §3.2、§4.1–4.2 / Fig.2、Fig.5 / Eq.1–12
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Learning motion-aware world models for echocardiography probe guidance.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.13065>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13065)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3（背景与数据）、§4 EchoWorld（4.1–4.2）、§5.2 评测协议开头
 
 ## 推荐继续阅读
 

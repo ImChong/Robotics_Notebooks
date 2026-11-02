@@ -41,6 +41,30 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph Q["RAG free-form 查询生成器 G"]
+        S["语料：S1 医生报告 EMR（Med-BERT 嵌入）、S2 非专业人士查询、S3 GPT-4o 合成"] --> G["RAG 生成器 G"]
+        L["器官标签 l（24 类）"] --> G
+        BB["真值 mask 的 Bbox 空间类别：largest / smallest / left-most 等"] --> G
+        G --> QI["anatomy-informed 查询"]
+        G --> QA["anatomy-agnostic 查询"]
+    end
+    QI --> TE["CLIP 文本编码器 得到 t_p"]
+    QA --> TE
+    TE --> IH["intention head（线性层，24 类）"]
+    X["任意朝向的医学图像 x"] --> CN["canonicalization network h：映射到规范朝向"]
+    CN --> IE["图像编码器 得到 z_x"]
+    TE --> MD["mask decoder"]
+    IE --> MD
+    MD --> M["分割 mask"]
+    IH -. "意图交叉熵 + Dice/CE 联合训练（式 1–2）" .-> M
+```
+
+图依据：论文 §3.1–§3.3 与 Fig.2、Fig.3、Fig.4、式 (1)–(2)。三阶段训练顺序见 §3.4（先训练 canonicalization 网络，再训练文本提示分割，最后在随机 O(2) 变换下联合训练对齐）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +119,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2410.12831>
+- [arXiv PDF](https://arxiv.org/pdf/2410.12831)：已通读方法部分（实验与附录以略读为准）：§3.1 RAG 查询生成器、§3.2 自由形式语言分割、§3.3 canonicalization、§3.4 训练策略（注：论文标题为 FLanS，页面题名为 Segment as you wish，arXiv 号对应同一篇）
 
 ## 推荐继续阅读
 

@@ -39,6 +39,30 @@ sources:
 - 统一头/手/身体/根目标的神经全身接口，供上层规划器调用。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#14/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    M1["AMASS 人体动作数据集"] --> M2["动作重定向到人形<br/>FK 关键点 → 拟合 SMPL → 梯度下降匹配"]
+    M2 --> M3["重定向动作数据集"]
+    M3 --> O1["Oracle 策略 π_oracle<br/>大规模人体动作模仿 RL<br/>(特权本体感知 + 全刚体参考目标)"]
+    subgraph DIST["DAgger 蒸馏 (§II-E)"]
+        S0["学生策略 π_student 仿真 rollout"]
+        S1["命令掩码：mode mask × sparsity mask<br/>(上/下半身独立, Bernoulli(0.5), 每 episode 固定)"]
+        S2["学生输入：最近 25 步本体感知 + 掩码后的任务命令"]
+        S3["监督损失 L = ‖â_t − a_t‖²"]
+        S1 --> S2
+        S0 --> S1
+        S2 --> S0
+        S2 --> S3
+    end
+    O1 -->|"同一状态下查询 oracle 参考动作 â_t"| S3
+    S3 -->|"更新"| S0
+    S3 --> H["HOVER 统一策略<br/>单一网络支持多种控制模式<br/>(头/手/身体关键点、关节角、根跟踪)"]
+```
+
+图依据：论文 §II-C 动作重定向、§II-D Oracle 训练、§II-E 蒸馏（Fig. 2 HOVER distillation process）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +116,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2410.21229>
+- [arXiv PDF](https://arxiv.org/pdf/2410.21229)：已通读方法部分（实验与附录以略读为准）：§II-A～E。
 
 ## 推荐继续阅读
 

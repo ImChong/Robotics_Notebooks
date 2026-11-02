@@ -42,6 +42,26 @@ Introduces the first dataset for egocentric visual intention grounding, challeng
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DS["EgoIntention 数据集构建 (§3.2)"]
+        A1["Ego4D 图像 + PACO 物体框"] --> A2["GPT-4 生成意图句<br/>context-aware / uncommon 两类"]
+        A2 --> A3["MTurk 人工校验语义有效性<br/>过滤低质量或歧义句子"]
+        A3 --> A4["MTurk 补充替代物体与边界框"]
+    end
+    subgraph ROG["Reason-to-Ground (RoG) 指令微调 (§4.2–4.3)"]
+        B1["第一人称图像 I + 隐含意图句 Q"] --> B2["阶段一：以 reason token 提问<br/>MLLM 输出目标物体类别"]
+        B2 --> B3["阶段二：以 ref token + 显式物体描述<br/>MLLM 定位目标"]
+        B3 --> B4["输出边界框 (x1, y1, x2, y2)"]
+    end
+    A4 -->|"与 RefCOCO / RefCOCO+ / RefCOCOg 联合"| FT["LoRA 监督微调 MLLM"]
+    FT --> B1
+```
+
+图依据：论文 §3.1–3.2 / Fig.3、§4.2–4.3 / Fig.4（“微调后的模型用于推理”的箭头为据 §4.3 的示意）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Introduces the first dataset for egocentric visual intention grounding, challeng
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2504.13621>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13621)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3.1–3.2、§4 Method、§5.1–5.4 开头
 
 ## 推荐继续阅读
 

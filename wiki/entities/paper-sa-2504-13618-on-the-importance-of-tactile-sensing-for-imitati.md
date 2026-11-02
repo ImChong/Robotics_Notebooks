@@ -42,6 +42,29 @@ Multimodal visuotactile imitation learning framework with modular transformer ar
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["kinesthetic teaching 人类示教<br/>记录腕部相机、Evetac 触觉(40 ms 事件积分成图)、末端速度、末端位姿"] --> TRAIN["训练 SE(3) rectified linear flow matching 策略<br/>目标：拟合平移/旋转速度场"]
+    subgraph POL["推理时的策略 (Fig.2)"]
+        IMG["RGB 图像"] --> ENC["各模态独立编码为 64 维 latent<br/>(ResNet18 / 触觉编码器)"]
+        TAC["触觉图像(可缺省)"] --> ENC
+        VEL["末端速度"] --> ENC
+        ENC --> TF["4 层 4 头 Transformer<br/>观测 token 全连接；动作 token 仅 cross-attend 观测"]
+        ACT0["噪声初始动作序列<br/>16 个 SE(3) 位姿 + 时间索引"] --> TF
+        TF --> VELO["输出速度，迭代细化动作序列 (K=5)"]
+        VELO -->|"未完成则继续"| TF
+    end
+    TRAIN --> POL
+    VELO --> FIRST["只执行序列中的第一个动作"]
+    FIRST --> CTRL["Cartesian Impedance Controller 跟踪执行"]
+    CTRL -.->|"异步用最新观测重新推理"| IMG
+    MASK["masked training：训练时以 50% 概率遮去触觉输入<br/>(用于 vision-only 策略)"] -.-> ENC
+```
+
+图依据：论文 §III-A–D / Fig.2（“迭代细化”回环与“异步重新推理”虚线为据正文 III-B/D 的示意）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Multimodal visuotactile imitation learning framework with modular transformer ar
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2504.13618>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13618)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（A–D）、§IV 实验设置开头
 
 ## 推荐继续阅读
 

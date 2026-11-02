@@ -42,6 +42,23 @@ Breaks time limits in driving world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DA["驾驶视频数据 (1700+ 小时)"] --> CAP["§3.3 多模态模型重标注<br/>相机位置前缀 + 场景/车道/动作描述"]
+    CAP --> JT["I2V 与 T2V 联合训练 (DiT)"]
+    DA --> S1["§3.1.1 动态信息密度调整<br/>随机分辨率缩放 α，帧数 L/α²"]
+    S1 --> SR["skip-RoPE：按原始帧率编码时间位置"]
+    SR --> S2["§3.1.2 扩展时间范围课程训练<br/>16 → 32 → 64 → 128 帧"]
+    S2 --> MI["§3.2.1 记忆注入：前 M 帧 t=0 不加噪<br/>未来帧正常扩散去噪"]
+    JT --> MI
+    MI --> LOSS["§3.2.2 记忆曲线自适应损失<br/>w(T)=e^(-λT)，近未来权重大"]
+    LOSS --> ROLL["长时 rollout：迭代预测短片段<br/>以上一片段末帧作为下一段条件"]
+```
+
+图依据：论文 §3.1 STCM、§3.2 Long-Term Rollouts、§3.3 Enhanced Scenario Diversity 与 Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Breaks time limits in driving world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.01522>
+- [arXiv PDF](https://arxiv.org/pdf/2412.01522)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 至 3.3）、Table 1
 
 ## 推荐继续阅读
 

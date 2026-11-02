@@ -42,6 +42,37 @@ Infinite anime life simulation with next game state prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["阶段(a)：动画镜头 tokenization / detokenization"]
+        FV["首帧 → CLIP 嵌入 f_v"] --> EA["动画镜头编码器 E_a"]
+        FMD["动作描述（如 Softly talk）→ T5 嵌入 f_md"] --> EA
+        EA --> SA["动作感知多模态表征 s_a"]
+        FMS["运动幅度 f_ms（光流表示动作强度）"] --> DA["动画镜头解码器 D_a<br/>基于 CogVideoX 的视频扩散"]
+        SA --> DA
+        DA --> REC["重建视频片段"]
+    end
+    subgraph P2["阶段(b)：MLLM 预测下一游戏状态"]
+        HIS["历史指令 + 历史游戏状态表征"] --> MLLM["AnimeGamer（Mistral-7B 初始化的 MLLM）"]
+        INS["当前玩家指令"] --> MLLM
+        QRY["N=226 个可学习 query"] --> MLLM
+        MLLM --> OSA["下一状态表征 s_a（MSE 损失）"]
+        MLLM --> OSC["角色状态 s_c（stamina / social / entertainment）与 f_ms<br/>（next-token 预测，CE 损失）"]
+    end
+    subgraph P3["阶段(c)：解码器适配"]
+        ADP["用 MLLM 预测的表征微调 D_a"]
+    end
+    SA -.->|"作为 MLLM 的历史状态表征"| HIS
+    OSA --> ADP
+    OSC -->|"f_ms 作为附加条件"| ADP
+    ADP --> OUT["输出动画镜头 + 角色状态，作为下一轮游戏状态"]
+    OUT -.->|"多轮循环"| HIS
+```
+
+图依据：论文 §3.1–3.2 / Fig.3（三阶段训练）、Fig.4（编码器-解码器结构）；"输出作为下一轮历史"的回环由多轮设定（§3.1）推出。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +128,7 @@ Infinite anime life simulation with next game state prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.01014>
+- [arXiv PDF](https://arxiv.org/pdf/2504.01014)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.3–4）
 
 ## 推荐继续阅读
 

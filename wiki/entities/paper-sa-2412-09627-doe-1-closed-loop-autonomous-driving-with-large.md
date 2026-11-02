@@ -43,6 +43,27 @@ Closed-loop autonomous driving with large world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["驾驶数据重组为时序: 图像 o / 文本描述 d / 动作 a"] --> TOK
+    subgraph TOK["三类 tokenizer -> 离散 token"]
+        OT["观测: Lumina-mGPT 图像 tokenizer (1024 token, 码本 8192)"]
+        DT["描述: Chameleon BPE 文本 tokenizer, 浮点数按 0.02 m 离散并用正弦位置编码"]
+        AT["动作: (dx, dy, yaw) 序列, 位置编码 + 首尾锚点 token"]
+    end
+    TOK --> SEQ["拼接成 1D 序列: o_t, d_t, a_t, o_t+1, d_t+1, ..."]
+    SEQ --> LM["Chameleon 式统一多模态自回归 Transformer (Lumina-mGPT 7B 初始化), next-token prediction"]
+    LM --> DEC["解码 o_t+1 / d_t+1 / a_t+1"]
+    DEC -.->|"闭环: 预测结果回填作为下一步上下文"| SEQ
+    LM --> T1["提示: 观测 token -> 生成描述 / 回答问题 (VQA)"]
+    LM --> T2["提示: 观测 + 动作 token -> 生成下一帧观测"]
+    LM --> T3["提示: 观测 token -> 生成描述与动作 (运动规划)"]
+```
+
+图依据：论文 §3.1-§3.3 / Fig.4-6
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Closed-loop autonomous driving with large world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.09627>
+- [arXiv PDF](https://arxiv.org/pdf/2412.09627)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1-3.3）与 §4.1 数据设定
 
 ## 推荐继续阅读
 

@@ -43,6 +43,30 @@ Language-conditioned imitation learning with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph ph1["阶段一：从无标注 play 数据学世界模型"]
+    A["无标注 play 数据集 D"] --> B["RSSM 世界模型<br/>循环状态 + 后验 / 先验随机状态 + 图像解码器"]
+    B --> C["最小化负变分下界<br/>重构损失 + KL"]
+  end
+  subgraph ph2["阶段二：在世界模型潜空间内训练 actor-critic"]
+    D["想象轨迹（用先验状态）"] --> E["内在奖励：潜空间中与专家潜状态轨迹的相似度"]
+    F["seq2seq CVAE 潜在 plan 编码<br/>plan 识别器 / plan 提议器，最小化 L_KL"] --> G["目标条件 actor πθ 与 critic vψ<br/>世界模型冻结"]
+    H["世界模型潜特征与语言特征对比对齐 L_contrast"] --> G
+    E --> G
+  end
+  C --> D
+  subgraph inf["推理"]
+    I["语言指令 + 当前观测"] --> J["语言条件策略 πθ(a|s,l)"]
+    J --> K["真实环境动作"]
+  end
+  G --> J
+```
+
+图依据：论文 §IV LUMOS（A. 世界模型、B. Behavior Learning，Eq. 1-6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Language-conditioned imitation learning with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.10370>
+- [arXiv PDF](https://arxiv.org/pdf/2503.10370)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV 方法，实验结果与附录略读
 
 ## 推荐继续阅读
 

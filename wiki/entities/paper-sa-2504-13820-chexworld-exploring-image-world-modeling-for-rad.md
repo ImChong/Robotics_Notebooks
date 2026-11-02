@@ -43,6 +43,25 @@ Explores image world modeling for radiograph representation learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["胸部 X 光片"] --> CROP["随机裁出两个 crop：目标 y1、y2"]
+    CROP --> CTX["对每个 y_i 施加增强 T_ai(模糊/亮度/对比度/gamma)<br/>再随机遮挡 M_i，得到上下文 x1、x2"]
+    CTX --> CE["Context encoder f_θ(仅处理可见 patch)<br/>得 h_x1、h_x2"]
+    CROP --> TE["Target encoder f'_θ'<br/>得 h_y1、h_y2"]
+    CE --> PRED["Predictor g_φ<br/>以 mask token 为查询，条件为 M_i、a_i、相对位移 Δ"]
+    PRED --> L11["同一 crop(x_i→y_i)：局部结构 + 域变化预测"]
+    PRED --> L12["跨 crop(x_i→y_j)：全局布局 + 域变化预测"]
+    TE --> L11
+    TE --> L12
+    L11 --> LOSS["L = L1→1 + L2→2 + L1→2 + L2→1<br/>(特征空间 L2 损失)"]
+    L12 --> LOSS
+```
+
+图依据：论文 §4.1–4.4 / Fig.1(d)（目标编码器的参数更新方式本页未画，以论文为准）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Explores image world modeling for radiograph representation learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.13820>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13820)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3、§4 CheXWorld（4.1–4.4，含 Eq.2–12）、§5 实验设定开头
 
 ## 推荐继续阅读
 

@@ -43,6 +43,24 @@ Trajectory world models for heterogeneous environments.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    UT["UniTraj 数据集<br/>合并 5 个公开数据集及自采多形态数据<br/>1.3M 轨迹，80 个异构环境"] --> SC["标量化 Scalarization<br/>轨迹展平为 T×M 矩阵<br/>M = 状态维 + 动作维 + 1 个奖励，r0 与 a_T-1 补零"]
+    SC --> DIS["离散化<br/>每个 variate 划 B 个均匀 bin<br/>one-hot 或 Gaussian histogram"]
+    DIS --> EMB["线性投影 + 三种嵌入<br/>timestep / variate / prediction embedding"]
+    EMB --> BLK["L 个 Transformer 块交替执行<br/>时间注意力（因果，按 variate 独立）→ FFN<br/>→ variate 注意力（同一时刻，无掩码）→ FFN"]
+    BLK --> HEAD["线性预测头 + softmax<br/>预测下一步各 variate 的类别分布"]
+    HEAD --> LOSS["交叉熵损失，next-step 预测"]
+    LOSS --> PRE["在 UniTraj 上预训练得到通用 TrajWorld"]
+    PRE -->|"历史上下文代替环境 ID，in-context 推断动力学"| ZS["零样本泛化到未见环境"]
+    PRE --> FT["在下游环境上微调"]
+    FT --> DS["下游任务<br/>转移预测 / 离策略评估 OPE / 模型预测控制 MPC"]
+```
+
+图依据：论文 §3（UniTraj）、§4.2（Architecture）、§4.3 与 Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Trajectory world models for heterogeneous environments.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.01366>
+- [arXiv PDF](https://arxiv.org/pdf/2502.01366)：已通读方法部分（实验与附录以略读为准）：§2 问题设定、§3 UniTraj 数据集、§4 Trajectory World Models（4.1–4.3）、§5 实验设定
 
 ## 推荐继续阅读
 

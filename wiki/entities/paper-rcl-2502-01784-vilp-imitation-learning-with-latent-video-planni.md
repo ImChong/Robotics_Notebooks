@@ -42,6 +42,24 @@ VILP learns observation-conditioned future videos in a compressed latent space, 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["示教视频数据集 Dv<br/>多视角 / RGBD 观测 o"] --> AE["VQGAN 自编码器<br/>编码器 E 压缩帧为潜变量 z<br/>训练后固定"]
+    AE --> LVDM["潜空间视频扩散模型<br/>3D 卷积 UNet，DDIM 去噪<br/>每个视角各训一个"]
+    OBS["当前观测 o_t"] --> ENC["视觉编码器 ResNet-18<br/>每个相机独立，拼接为 c_t"]
+    ENC -->|"cross-attention 条件"| LVDM
+    LVDM --> ZF["未来帧潜变量序列 z_t"]
+    ZF --> DEC["VQGAN 解码器 D<br/>重建未来视频帧"]
+    DEC --> LLP["低级策略 goal-conditioned<br/>相邻两帧 → 两个 CNN 编码器 + MLP 头"]
+    LLP --> ACT["动作序列"]
+    ACT --> EXE["receding horizon：只执行前 Ne 步"]
+    EXE -.->|"新观测，重新规划"| OBS
+```
+
+图依据：论文 §IV（Latent Video Planning）、§V（Imitation Learning with Video Planning）与 Fig. 2 / Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ VILP learns observation-conditioned future videos in a compressed latent space, 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2502.01784>
+- [arXiv PDF](https://arxiv.org/pdf/2502.01784)：已通读方法部分（实验与附录以略读为准）：§III 背景、§IV Latent Video Planning、§V Imitation Learning with Video Planning
 
 ## 推荐继续阅读
 

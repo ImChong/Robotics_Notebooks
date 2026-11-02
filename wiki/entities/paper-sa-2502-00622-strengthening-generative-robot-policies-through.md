@@ -42,6 +42,28 @@ Strengthens generative robot policies through predictive world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["专家示教数据 D_expert<br/>滑动窗口切成 状态-动作片段"] --> POL["生成式策略训练<br/>Diffusion Policy（DDPM）<br/>输入 I_t，输出动作块 a_t:t+T"]
+    DEMO --> WMD
+    EXP["探索数据 D_explore<br/>人为随机扰动系统，不求完成任务"] --> WMD["世界模型数据 D_W<br/>= D_expert ∪ D_explore"]
+    WMD --> WM["预测式世界模型 W<br/>输入 I_t 与 a_t:t+T，预测 I_t+1:t+T+1<br/>视觉版：条件扩散，单步图像预测器递归调用<br/>两阶段训练，推理时固定噪声"]
+    POL --> PROP["在线：从策略采样 K 个动作提议"]
+    PROP --> RANK["GPC-RANK<br/>W 预测各提议的未来，奖励模型 R 打分，选最高者"]
+    PROP --> OPT["GPC-OPT<br/>以提议为热启动，对 R(W(·)) 做 M 步梯度上升"]
+    WM --> RANK
+    WM --> OPT
+    RANK --> ACT["执行所选动作块，receding horizon"]
+    OPT --> ACT
+    RW["奖励模型 R：训练的小网络，或 VLM 直接挑选"] --> RANK
+    RW --> OPT
+    ACT -.->|"新观测"| PROP
+```
+
+图依据：论文 §III（Overview of Generative Predictive Control）、§IV（World Model Learning）与 Fig. 2、Alg. 1。GPC-RANK+OPT 为两者的组合（对 K 个提议各做优化后选最高者）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ Strengthens generative robot policies through predictive world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.00622>
+- [arXiv PDF](https://arxiv.org/pdf/2502.00622)：已通读方法部分（实验与附录以略读为准）：§III Overview of Generative Predictive Control、§IV World Model Learning。注：当前 arXiv 版标题为 Inference-Time Enhancement of Generative Robot Policies via Predictive World Modeling，与页面标题措辞不同，编号一致
 
 ## 推荐继续阅读
 

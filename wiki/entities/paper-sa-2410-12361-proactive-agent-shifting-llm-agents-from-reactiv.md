@@ -42,6 +42,28 @@ Paradigm shifting LLM agents from reactive response to proactive procedural assi
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph G["Environment Gym"]
+        RD["真实世界数据：Activity Watcher 采集的事件"] --> SG["场景生成：由种子 job 生成 job、实体、实体状态与示例事件"]
+        SG --> EG["事件生成：根据历史事件与环境状态生成新事件 E_t+1"]
+        EG --> SM["状态维护：更新实体状态 S_t+1 与模拟时间"]
+        SM --> EG
+    end
+    EG -->|"新事件 E_t"| PA["Proactive Agent：更新 memory，检测需求 Detect Needs，预测任务 P_t"]
+    PA -->|"无潜在任务则保持沉默"| EG
+    PA -->|"草稿预测 Draft Prediction"| UA["User Agent：判断接受或拒绝（由人工标注训练的 reward model 模拟）"]
+    UA -->|"反馈 Feedback"| PA
+    UA -->|"拒绝"| EG
+    UA -->|"接受 Accepted Task"| EX["Task Execution：Proactive Agent 用工具在 Gym 中多轮执行"]
+    EX --> EG
+    UA -->|"用户活动 A_t"| EG
+```
+
+图依据：论文 §3.2 流程概述与 Fig.2、§3.3–§3.5、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Paradigm shifting LLM agents from reactive response to proactive procedural assi
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2410.12361>
+- [arXiv PDF](https://arxiv.org/pdf/2410.12361)：已通读方法部分（实验与附录以略读为准）：§3.1 任务定义、§3.2 流程概述、§3.3 Environment Gym、§3.4 Proactive Agent、§3.5 User Agent
 
 ## 推荐继续阅读
 

@@ -42,6 +42,20 @@ Learning predictive models for robotic surgical tasks.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["手术缝合视频：102 段训练录像"] --> B["专家标注 sub-stitch 起止时间<br/>与 ideal / non-ideal 二值技术评分"]
+  B --> C["切分 1836 个片段<br/>按标注与任务类型自动生成文本描述"]
+  C --> D["微调 latent 视频扩散模型<br/>LTX-Video 2B / HunyuanVideo 13B<br/>LoRA 或全参数微调"]
+  P["文本提示：ideal / non-ideal 的某针法动作 + 任务类型"] --> D
+  V["可选视觉输入（图像到视频 i2v）"] --> D
+  D --> O["生成缝合动作视频<br/>可输出 ideal 或 non-ideal 一类"]
+```
+
+图依据：论文 §3.1 Dataset、§3.2 Models、§4.1 Training、Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +111,7 @@ Learning predictive models for robotic surgical tasks.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.12531>
+- [arXiv PDF](https://arxiv.org/pdf/2503.12531)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Methodology、§4 Experiments、§5 Conclusion
 
 ## 推荐继续阅读
 

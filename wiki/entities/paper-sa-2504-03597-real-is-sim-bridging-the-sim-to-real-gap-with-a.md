@@ -42,6 +42,25 @@ A novel behavior cloning framework that incorporates a dynamic digital twin (bas
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["真实世界相机 RGB 图像 o_rgb"] --> COR["修正机制 C(o_rgb, s_t)<br/>Embodied Gaussians：虚拟力/力矩 u_t"]
+    COR --> SIM["可修正物理仿真器<br/>s_t+1, r_t+1 = F(s_t, u_t, r_t)"]
+    SIM --> REP["表征 r_t = g(s_t)<br/>物体位姿 / 虚拟相机渲染图（ResNet 编码）"]
+    REP --> POL["策略 π(r_t, q_t)<br/>输出 H=1s、m=32 个路点的轨迹，含 q' 与进度 p"]
+    POL --> SR["仿真机器人按轨迹更新期望关节 q'"]
+    SR --> SIM
+    SIM -->|"在线模式：真实机器人跟随仿真关节位置 q"| ROB["真实机器人（follower）"]
+    ROB --> CAM
+    SIM -.->|"离线模式：关闭真实耦合与 u_t，可并行"| EVAL["虚拟环境策略评测（5–8× 加速）"]
+    DEMO["演示采集：仿真器在环，60Hz 记录仿真状态"] --> TRAIN["策略训练：行为克隆，进度值 p 由时间标注"]
+    TRAIN --> POL
+```
+
+图依据：论文 §3.1 Framework / Fig.3–5、§3.2 Pipeline（Scene Setup / Demonstration Collection / Policy Training / Deployment / Evaluation）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A novel behavior cloning framework that incorporates a dynamic digital twin (bas
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2504.03597>
+- [arXiv PDF](https://arxiv.org/pdf/2504.03597)：已通读方法部分（实验与附录以略读为准）：§2 Preliminaries（略读）、§3.1–3.2
 
 ## 推荐继续阅读
 

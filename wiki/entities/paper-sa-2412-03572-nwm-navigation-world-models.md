@@ -42,6 +42,24 @@ Navigation world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["egocentric 视频 + 导航动作 a=(u, φ)<br/>(可含无标注视频)"] --> T["训练：采样目标帧 s_τ+1 与时间偏移 k<br/>前向加噪，同一状态采样多个目标"]
+    T --> C["CDiT 块 ×N<br/>目标帧 self-attn + 对过去帧 cross-attn"]
+    A["条件 ξ = ψa + ψk + ψt<br/>经 AdaLN 调制"] --> C
+    C --> L["去噪训练目标 L_simple + L_vlb"]
+    C --> R["自回归 rollout：预测下一状态 s"]
+    R --> P["规划：能量 E = -相似度 + 动作/状态约束"]
+    P --> M["MPC，用 Cross-Entropy Method 优化动作序列"]
+    G["目标图像 s*"] --> P
+    N["已有策略 NoMaD 采样轨迹"] --> K["用 NWM 能量排序，选能量最低者"]
+    R --> K
+```
+
+图依据：论文 §3.1 Formulation / §3.2 CDiT 与 Fig.2 / §3.3 Navigation Planning（含 Ranking Navigation Trajectories）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Navigation world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.03572>
+- [arXiv PDF](https://arxiv.org/pdf/2412.03572)：已通读方法部分（实验与附录以略读为准）：§3 Navigation World Models（3.1 至 3.3）、§4 实验设置与基线
 
 ## 推荐继续阅读
 

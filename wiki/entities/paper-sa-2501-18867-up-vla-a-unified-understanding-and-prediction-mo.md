@@ -43,6 +43,35 @@ Unified understanding and prediction model for embodied agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：预测与理解预训练"]
+        D1["Bridge 机器人数据<br/>用于未来图像预测"]
+        D2["LLaVA-tuning-665k 图文对<br/>用于多模态理解"]
+    end
+    D1 --> BB["统一 VLM 主干<br/>以 Show-o 初始化，LLM 为 Phi-1.5<br/>全量微调 LLM，冻结各编码器"]
+    D2 --> BB
+    OBS["当前观测 O_t"] --> E2["VQ-GAN 离散编码器 E2<br/>当前图像 → 离散 token"]
+    OBS --> E1["连续编码器 E1 = MLP(ViT)<br/>图像 → 语言嵌入空间"]
+    INS["语言指令 L"] --> BB
+    E2 --> BB
+    E1 --> BB
+    BB --> MMU["理解分支：自回归预测下一个语言 token<br/>损失 L_MMU，生成场景描述"]
+    BB --> PRE["预测分支：在图像 token 位置直接预测未来图像 token<br/>损失 L_PRE，离散解码器重建 O_t+Δt"]
+    MMU -->|"场景描述并入扩展提示 L'"| ACT
+    subgraph S2["阶段二：动作微调（继续混合图文数据）"]
+        ACT["联合预测 + 理解<br/>(Ô_t+Δt, Â_t:t+Δt) = π(O_t, L')"]
+        ACT --> HEAD["动作头：MAP 注意力模块 + 线性层"]
+        HEAD --> AOUT["低级动作<br/>位置 MSE，夹爪状态 BCE，损失 L_ACT"]
+    end
+    BB --> ACT
+    PRE -.- ACT
+```
+
+图依据：论文 §4.1–§4.4 与 Fig. 3、Fig. 4。总损失为 λ1·L_MMU + λ2·L_PRE + λ3·L_ACT。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +127,7 @@ Unified understanding and prediction model for embodied agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.18867>
+- [arXiv PDF](https://arxiv.org/pdf/2501.18867)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4 Methodology（4.1 Backbone、4.2 Bridging Visual Prediction and Multi-modal Understanding、4.3 Enhancing Action Learning、4.4 Training Strategy）
 
 ## 推荐继续阅读
 

@@ -41,6 +41,29 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Foundation Models。 本页�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph P1["阶段 1：对象级 RL 专家"]
+        A1["仿真中处理资产<br/>UnidexGrasp 3.5K 物体 / PartNet 2.6K 把手"] --> A2["PPO 训练 3.5K+ 单物体<br/>state-based RL 专家<br/>(pick/place/grasp handle/open/close)"]
+    end
+    subgraph P2["阶段 2：蒸馏通才策略"]
+        B1["Multi-task DAgger<br/>(带 replay buffer 的变体)"] --> B2["通才视觉运动局部策略 π_loc<br/>局部深度图 + 分割掩码 + 相对本体感知"]
+    end
+    subgraph D["部署：零样本长时程操作"]
+        C0["用户语言指令 g + 场景图像 O"] --> C1["VLM (GPT-4o)<br/>分解为 (object, skill) 子目标序列"]
+        C1 --> C2["Grounded SAM 分割点云<br/>估计目标位姿 X_targ"]
+        C2 --> C3["IK 得目标关节 q_f<br/>Neural MP 运动规划 (π_reach)"]
+        C3 --> C4["执行局部策略 π_loc<br/>(Task Space Impedance 控制器)"]
+        C4 -->|"任务未完成：下一子目标"| C2
+    end
+    A2 -->|"特权状态专家示范"| B1
+    B2 --> C4
+```
+
+图依据：论文 §III（Fig. 3 ManipGen Method Overview；§III-A Framework、B 训练局部策略、C 蒸馏、D 零样本部署）。循环箭头依据 §III-D「alternate between motion planning and deploying local policies until the task is complete」。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +118,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Foundation Models。 本页�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2410.22332>
+- [arXiv PDF](https://arxiv.org/pdf/2410.22332)：已通读方法部分（实验与附录以略读为准）：§III-A～D。
 
 ## 推荐继续阅读
 
