@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, open-source, 3d-printing, dynamixel, sim2real, rhoban]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-02
 project_id: microban-humanoid
 code: https://github.com/Rhoban/microban
 summary: "Microban：Rhoban 团队（波尔多大学 LaBRI）的约 30 cm 开源人形，19 个 XL330 舵机 + Pi Zero 2W，全 PLA 打印，目标成本约 550–600 美元，附 MuJoCo RL 环境。"
@@ -11,8 +11,10 @@ related:
   - ./open-source-humanoid-hardware.md
   - ./mujoco.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 ---
 
 # Microban

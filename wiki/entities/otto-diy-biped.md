@@ -2,7 +2,7 @@
 type: entity
 tags: [biped, education, open-source, arduino, 3d-printing]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-02
 project_id: otto-diy-biped
 code: https://github.com/OttoDIY/OttoDIYLib
 summary: "Otto DIY：面向教育的低成本 Arduino 兼容开源双足机器人，全 3D 打印，4 舵机基本版，Blockly 图形编程，MIT/GPL 为主。"
@@ -10,8 +10,10 @@ related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 ---
 
 # Otto DIY

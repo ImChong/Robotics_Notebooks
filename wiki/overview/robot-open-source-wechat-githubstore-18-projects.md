@@ -4,6 +4,7 @@ tags: [open-source, hardware, humanoid, quadruped, manipulator, mobile-robot, we
 status: complete
 updated: 2026-10-27
 related:
+  - ./open-source-buildable-humanoids-19-technology-map.md
   - ./robot-open-source-wechat-issue01-curator.md
   - ./robot-open-source-wechat-issue02-curator.md
   - ../entities/open-source-humanoid-hardware.md
@@ -77,6 +78,7 @@ summary: "微信公众号 GitHubStore《想进入机器人领域吗？学习这1
 - 机械臂/移动操作：SO-ARM100 → LeKiwi；OpenMANIPULATOR-X 偏 ROS/MoveIt 教学。
 
 ## 关联页面
+- [能自己造的开源人形机器人 19 款（同账号后续一篇）](./open-source-buildable-humanoids-19-technology-map.md)
 
 - [机器人开源宝库（微信策展第01期）](./robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](./robot-open-source-wechat-issue02-curator.md)
