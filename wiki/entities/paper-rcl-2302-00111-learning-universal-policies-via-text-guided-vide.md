@@ -42,6 +42,23 @@ UniPi turns a language instruction and current image into a video plan, refines 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：初始观测帧 x0 + 文本指令 c"] --> VP
+  subgraph VP["通用视频规划器 ρ(τ | x0, c)"]
+    T5["T5 语言特征编码文本"] --> VD
+    VD["视频扩散（粗时间分辨率）\n以首帧为显式条件训练\nclassifier-free guidance"] --> SR["时间超分辨率扩散\n将观测帧沿时间平铺 (tiling) 并与含噪帧拼接\n保持环境状态一致"]
+  end
+  VP --> VID["合成的 H 帧视频计划"]
+  VID --> ID["逆动力学模型（小型、任务特定）\n由相邻图像估计动作"]
+  ID --> ACT["H 个动作"]
+  ACT --> EXE["动作执行\n文中实验用开环控制；\n也可每步重规划（MPC，闭环）"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.2（UniPi）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ UniPi turns a language instruction and current image into a video plan, refines 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2302.00111>
+- [arXiv PDF](https://arxiv.org/pdf/2302.00111)：已通读方法部分（实验与附录以略读为准）：§2 背景（扩散模型与条件去噪）、§3 UniPi 方法（3.1 视频规划器、3.2 动作适配）、§4 实验设定开头
 
 ## 推荐继续阅读
 
