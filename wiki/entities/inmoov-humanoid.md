@@ -2,13 +2,15 @@
 type: entity
 tags: [humanoid, diy, open-source, inmoov, 3d-printing, arduino]
 status: complete
-updated: 2026-05-18
+updated: 2026-11-02
 related:
   - ./humanoid-robot.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../tasks/manipulation.md
+  - ../overview/open-source-buildable-humanoids-19-technology-map.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
+  - ../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md
 summary: "InMoov：Gael Langevin 发起的开源 3D 打印真人比例人形，Arduino + MyRobotLab；官网与分步组装指南为主入口，模型文件常以云盘分发。"
 ---
 

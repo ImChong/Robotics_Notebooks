@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-02] ingest | GitHubStore《19款能自己造的开源人形机器人》：19 个项目逐项目建独立节点（新建 13 / 复用 6），含 README 核对与归类存疑标注
+
 ## [2026-11-02] ingest | GRAFT 地形残差适配
 
 - 通读论文 v1，记录冻结跟踪器、下肢残差、蒸馏、评测与局限。
