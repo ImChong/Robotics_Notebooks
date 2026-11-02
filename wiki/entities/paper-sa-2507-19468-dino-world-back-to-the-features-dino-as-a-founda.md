@@ -42,6 +42,26 @@ Uses DINO features as a foundation for video world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    V["视频帧 v_1..v_t + 时间戳 τ_1..τ_t<br/>（训练时按均匀 Δτ 采样，支持可变 FPS）"] --> ENC["冻结 DINOv2 编码器<br/>输出 patch token x_t,i,j（状态）"]
+    ENC --> CTX["过去全部 patch tokens x_1:t"]
+    Q["目标未来坐标 (τ_t+1, i', j')<br/>可学习 query token q"] --> BLK
+    CTX --> BLK
+    subgraph PRED["预测器：N 个残差 pre-norm cross-attention 块"]
+        direction TB
+        BLK["Cross-Attention：q 关注过去 tokens<br/>3 轴 RoPE 注入时间 / 水平 / 垂直坐标"] --> MLP["MLP"]
+        MLP --> ACTB["（可选）action block：q + MLP(LN([q, a_t]))<br/>零初始化，动作条件微调时加入"]
+    end
+    ACTB --> HEAD["线性投影 → 预测 patch token x̂_t+1"]
+    HEAD --> LOSS["smooth L1 损失<br/>teacher forcing + 块三角注意力掩码并行训练"]
+    HEAD --> PLAN["下游：dense 特征预测 / 规划<br/>（候选轨迹 rollout，按目标距离评估）"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.1、式 (1)–(4)、§4.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Uses DINO features as a foundation for video world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.19468>
+- [arXiv PDF](https://arxiv.org/pdf/2507.19468)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–§3.3，含 Fig.1），§4 / §4.3 实验设定略读
 
 ## 推荐继续阅读
 

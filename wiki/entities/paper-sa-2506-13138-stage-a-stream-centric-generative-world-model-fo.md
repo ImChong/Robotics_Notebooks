@@ -42,6 +42,30 @@ Stream-centric generative world model for long-horizon driving-scene simulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：初始帧 I0 + HD map + 3D bounding box<br/>（锚帧 = I0 的 latent，条件帧 = 上一帧 I(T-1) 的 latent）"] --> GEN
+    subgraph GEN["逐帧流式生成（Stable Diffusion U-Net，第 T 帧、第 t 步去噪）"]
+        BUF["StreamingBuffer：FIFO 缓存前 N=10 帧特征<br/>（按去噪步各维护一份）"] --> SEL["Selector：取前第 1、5、10 帧特征"]
+        SEL --> HTFT["HTFT 分层时间特征迁移：<br/>GroupNorm+Linear → CrossAttn → 融合特征 F_fused"]
+        HTFT --> UN["引导 U-Net 去噪 → 第 T 帧 latent → 解码为图像 I(T)"]
+        UN -->|更新缓存| BUF
+    end
+    GEN --> OUT["长时程驾驶视频 I0 … I(T)"]
+    subgraph INF["无限生成（数据集条件用尽时）"]
+        MILE["MILE 预测自车朝向/速度/加速度<br/>与前视 BEV 标签 L(t+1)"] --> PRJ["提取车道线/人行横道 → HD map；人/车 → bbox<br/>经 T(ego→cam) 与内参 K 投影到前视"]
+    end
+    UN --> MILE
+    PRJ -->|作为下一帧条件| IN
+    subgraph TR["三阶段训练"]
+        S1["Stage 1 流式学习：关闭 HTFT"] --> S2["Stage 2 HTFT 学习：冻结 HTFT 之前参数，缓存特征"] --> S3["Stage 3 模拟推理：条件帧换成推理生成的图像"]
+    end
+```
+
+图依据：论文 §III-A–D / Fig.2（含 StreamingBuffer、HTFT 公式、三阶段训练、MILE 无限生成）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Stream-centric generative world model for long-horizon driving-scene simulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.13138>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13138)：已通读方法部分（实验与附录以略读为准）：§III-A–D 方法（含训练策略与无限生成）
 
 ## 推荐继续阅读
 

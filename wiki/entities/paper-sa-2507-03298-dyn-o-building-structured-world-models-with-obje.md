@@ -42,6 +42,41 @@ Builds structured world models with object-centric representations.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["阶段1 物体中心表征学习（Cosmos 编解码器冻结）"]
+        direction TB
+        O["图像观测 o"] --> CE["Cosmos Encoder<br/>patch 特征 f"]
+        CE --> SA["Slot Attention<br/>K 个 slot 竞争绑定物体"]
+        SAM["SAM2 分割掩码 m<br/>作为 attention mask"] -.->|"概率按 log 调度退火至不用"| SA
+        SA --> Z["物体 slot z = [z1..zK]"]
+        Z --> SD["Slot-Dec 重建特征 f̂"]
+        SD --> CD["Cosmos Decoder 重建 ô"]
+    end
+    Z --> DYN
+    subgraph P2["阶段2 动力学学习"]
+        direction TB
+        DYN["slot 间 Self-Attn（无位置编码，含动作 a_t）"] --> SSM["共享 SSM 更新每个 slot 的隐状态 h"]
+        SSM --> PZ["Pred：下一步 slot ẑ_t+1"]
+        SSM --> PR["Cross-Attn 查询 r_cls：奖励 r̂_t"]
+        SSM --> PD["Cross-Attn 查询 d_cls：终止 d̂_t"]
+    end
+    subgraph P3["静动态解耦（可选，与世界模型联合优化）"]
+        direction TB
+        Z2["slot z"] --> MC["Mc → 静态特征 c<br/>时间不变性 + InfoNCE 对比"]
+        Z2 --> MV["Mv → 动态特征 v"]
+        MC --> MZ["Mz 重建 ẑ（c 停梯度）"]
+        MV --> MZ
+        MC --> DISC["判别器 Disc（Wasserstein + LeCam）<br/>对抗降低 c 与 v 的互信息"]
+        MV --> DISC
+    end
+    Z --> Z2
+```
+
+图依据：论文 §3 / §3.1 / §3.2、Fig.2（表征学习与动力学学习）、Fig.3（静动态解耦）、Alg.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +131,7 @@ Builds structured world models with object-centric representations.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.03298>
+- [arXiv PDF](https://arxiv.org/pdf/2507.03298)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.2，含静动态解耦与 Alg.1）
 
 ## 推荐继续阅读
 

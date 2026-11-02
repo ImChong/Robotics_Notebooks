@@ -42,6 +42,25 @@ Synergizes reasoning, acting, and world model simulation in AI agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["计算机使用任务<br/>POMDP: 观测 o_i 为截图或 accessibility tree"] --> B["DIT: Dyna-Think 模仿学习"]
+    B --> B1["R1 思考过程经 GPT-4o 少样本提示重构<br/>只保留推理 + 最终动作 + 与动作相关的世界模型模拟"]
+    B1 --> B2["在重构数据上模仿学习<br/>得到 π_W(θ): 思考中做世界模拟的策略"]
+    B2 --> C["DDT: Dyna-Think Dyna 训练"]
+    C --> C1["用 π_W(θ) 在真实环境中 rollout<br/>收集轨迹 τ = (o_0, a_1, o_1, ..., a_T)"]
+    C1 --> C2["构造世界模型数据<br/>下一状态 / 状态变化 Diff / 批评 Critic 三种形式"]
+    C1 --> C3["构造策略数据<br/>按任务成功奖励, 论文用拒绝采样"]
+    C2 --> D["第一阶段: 同一模型上世界模型训练 (SFT)"]
+    D --> E["第二阶段: 同一模型上策略训练"]
+    C3 --> E
+    E --> F["更新后的 π_W(θ)"]
+```
+
+图依据：论文 §3.1 Task Definition、§3.2 DIT、§3.3 DDT / Fig.2–3、§4.2 Training Details。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Synergizes reasoning, acting, and world model simulation in AI agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.00320>
+- [arXiv PDF](https://arxiv.org/pdf/2506.00320)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3（任务定义、DIT、DDT）、§4.2 实验设定
 
 ## 推荐继续阅读
 

@@ -42,6 +42,28 @@ Video world models with long-term spatial memory.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    H["历史生成帧"] --> R["CUT3R 在线重建静态点图 + TSDF-Fusion 滤除动态部分"]
+    R --> SM["长期空间记忆: 静态点云"]
+    SM --> RD["沿输入相机轨迹渲染静态点云"]
+    RD --> VE["3DVAE 编码为条件 latent"]
+    VE --> CD["Condition DiT: 复制 CogVideoX 前 18 个 DiT block, 零初始化线性层加回主 DiT"]
+    H --> RF["最近帧 (短期工作记忆): 最后 5 帧源 token 与目标 token 沿帧维拼接"]
+    H --> EP["代表性历史帧 (情景记忆): 新揭示未知区域超过阈值时入选"]
+    EP --> XA["3DVAE + patchify 为参考 token, 视频 token 作 query 做 historical cross attention"]
+    TX["动作文本 (T5)"] --> DD
+    CD --> DD["去噪 DiT (CogVideoX) 自回归生成新帧"]
+    RF --> DD
+    XA --> DD
+    DD --> N["新生成帧"]
+    N -->|更新点云与记忆| H
+```
+
+图依据：论文 §3.2-3.3 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ Video world models with long-term spatial memory.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.05284>
+- [arXiv PDF](https://arxiv.org/pdf/2506.05284)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1-3.4）
 
 ## 推荐继续阅读
 

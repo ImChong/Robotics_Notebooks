@@ -42,6 +42,20 @@ City-scale traffic simulation via a generative world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["场景元素 Multi-Tensor\n智能体张量 [A,T,Da] 与交通灯张量 [L,T,Dl]\n特征含 validity 有效位；位置按 AV 自车位姿归一化"] --> M["任务以 inpainting 方式定义\n条件掩码 + 上下文值 + 全局上下文 roadgraph"]
+    M --> TR["训练：无效步的值置零，仅监督有效步的全部特征\n与无效步的 validity；v-prediction 扩散损失"]
+    TR --> DN["去噪器\n各张量投影到相同隐维度 → 沿元素轴拼接\n→ SceneDiffuser 轴向注意力 Transformer → 拆分并反投影"]
+    DN --> CL["推理：每步预测去噪解后做 soft clipping\n用预测的有效度加权数值，再加噪到更低噪声级"]
+    CL --> OUT["输出场景张量\n智能体与交通灯，含生成/移除/遮挡"]
+    OUT --> LP["Trip 级闭环：Full AR 滚动\n每隔 replan 步，规划器控制 AV，世界模型控制其余智能体与交通灯"]
+```
+
+图依据：论文 §3 / Fig.2、Fig.3、§4.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ City-scale traffic simulation via a generative world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.21976>
+- [arXiv PDF](https://arxiv.org/pdf/2506.21976)：已通读方法部分（实验与附录以略读为准）：§3 方法（Scene Tensor / Multi-Tensor / 任务 / 架构 / 稀疏张量学习与 soft clipping，含 Fig.2、Fig.3、式 1–2）、§4.1 试验设定
 
 ## 推荐继续阅读
 

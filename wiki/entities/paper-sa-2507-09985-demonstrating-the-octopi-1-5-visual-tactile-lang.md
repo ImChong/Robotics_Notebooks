@@ -42,6 +42,25 @@ Demonstration of Octopi-1.5 with ability to process tactile signals from multipl
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    TV["GelSight mini 触觉视频（可含物体多个部件）"] --> SF["显著帧选择<br/>与前一帧差异最大的前 10 帧"]
+    SF --> TE["触觉编码器：微调 CLIP (L/14) + 投影层<br/>→ 触觉 token"]
+    TXT["语言指令（如：描述该物体 / 排序）"] --> LLM
+    VIS["视觉输入（可选）经视觉编码器"] -.-> LLM
+    TE --> LLM["Qwen2-VL 7B 解码器 Transformer"]
+    LLM --> DESC["触觉描述 / 硬度与粗糙度排序"]
+    SF --> AVG["对显著帧嵌入取平均"]
+    AVG --> RET["检索模块：在已有触觉嵌入库中<br/>余弦相似度检索 top-5 相似物体，按命中数排序"]
+    RET --> AUG["用相似物体的标签与触觉描述补充"]
+    DESC --> AUG
+    AUG --> OUT["RAG 增强后的描述"]
+```
+
+图依据：论文 §III-A / Fig.2、Fig.4（视觉输入分支为 Fig.2 所示编码器，虚线表示可选）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Demonstration of Octopi-1.5 with ability to process tactile signals from multipl
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2507.09985>
+- [arXiv PDF](https://arxiv.org/pdf/2507.09985)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 背景、§III-A（模型结构、训练、RAG 描述）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入观测 v_0<br/>初始化记忆池 M = {ŝ_0}"] --> B["4D 状态 ŝ_t = (v_t, g_t)<br/>g_t = 深度 d_t(视差平方根) + 相机射线图 raymap"]
+    B --> C["通道拼接三种模态<br/>复用预训练 VAE 潜空间"]
+    M["记忆池 M<br/>历史状态对齐到初始观测坐标系"] --> S["选择机制 ψ<br/>按相机位姿检索空间相邻的历史状态"]
+    T["文本动作 a_t<br/>相机位姿变化可算法生成文本"] --> F
+    C --> F["自回归预测 f_θ<br/>输入: a_t、当前状态、最近 m 个状态、检索的空间条件"]
+    S --> F
+    F --> G["预测未来状态序列 ŝ_{t+1:t+k}<br/>写入缓存与记忆池"]
+    G --> W["滑动窗口: 末尾 m 个状态作下一窗口上下文<br/>按 d_max 重新缩放后继续推理"]
+    W --> F
+```
+
+图依据：论文 §2.1 Problem Formulation、§2.2 Model Components、§2.4 Long-Duration Inference / Algorithm 1、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01103>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01103)：已通读方法部分（实验与附录以略读为准）：§2.1–2.4（问题形式化、模型组件、数据集构建、长时推理）
 
 ## 推荐继续阅读
 

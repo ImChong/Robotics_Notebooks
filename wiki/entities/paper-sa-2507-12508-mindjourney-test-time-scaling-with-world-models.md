@@ -42,6 +42,25 @@ Test-time scaling with world models for spatial reasoning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：初始图像 x0 + 空间推理问题 q"] --> B0["初始 beam：空轨迹"]
+    B0 --> EXP["轨迹扩展 Trajectory Expansion<br/>动作集 A = 前进 / 左转 / 右转，每个动作最多连续重复 k 次<br/>剔除立即反向或超出平移/旋转预算的候选"]
+    EXP --> WM["世界模型 W（姿态条件视频扩散）<br/>x0 + 相机位姿序列 → 想象的第一人称视频帧"]
+    WM --> SV["搜索 VLM：对 ⟨q, 轨迹描述, 想象帧⟩ 打分<br/>s_exp（值得继续探索）/ s_help（对回答有帮助）"]
+    SV --> TH["按阈值 γ_exp、γ_help 剔除低分候选"]
+    TH --> NB["top-B（按 s_exp）→ 下一层 beam"]
+    TH --> EV["top-H（按 s_help）→ 有用观测缓冲 Helpful Observation Buffer"]
+    NB -->|"未达 n 步且 beam 非空"| EXP
+    NB -->|"达到 n 步或 beam 为空"| QA
+    EV --> QA["问答 VLM V_QA：原图 + 缓冲中的多视角证据"]
+    QA --> ANS["最终答案"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +116,7 @@ Test-time scaling with world models for spatial reasoning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.12508>
+- [arXiv PDF](https://arxiv.org/pdf/2507.12508)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1 流程概览、3.2 世界模型形式化、3.3 Spatial Beam Search、3.4 SWM 简述）、Algorithm 1
 
 ## 推荐继续阅读
 

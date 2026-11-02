@@ -42,6 +42,22 @@ CogRobot adapts video diffusion to bimanual control through three learned compon
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始观测 o_0 + 任务指令 l"] --> B["阶段一 Text-to-Flow<br/>CogVideoX 微调, 生成光流序列 F_0:N"]
+    B --> B1["光流转 flow video<br/>幅值映射饱和度, 方向映射色轮颜色<br/>规则转换, 无需额外训练 flow VAE"]
+    B1 --> C["阶段二 Flow-to-Video<br/>flow 潜变量与带噪视频潜变量<br/>在通道维拼接后输入 CogVideoX"]
+    A --> C
+    C --> D["预测双臂轨迹视频<br/>每帧视为机器人要到达的目标观测"]
+    D --> E["Goal-reaching Diffusion Policy<br/>π(a_0:n | o_0, o_n)"]
+    E --> F["可执行的低层双臂动作"]
+    G["训练细节: 先在 RDT + RoboMIND 混合数据上微调<br/>再在下游仿真/真机演示上微调<br/>真值光流由 FlowFormer++ 提取"] -.-> B
+```
+
+图依据：论文 §3 Methods（§3.1 Text-to-Flow、§3.2 Flow-to-Video、§3.3 Diffusion Policy from Videos）、§5.1 Architecture Details / Fig.1(b)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ CogRobot adapts video diffusion to bimanual control through three learned compon
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.24156>
+- [arXiv PDF](https://arxiv.org/pdf/2505.24156)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§5.1 实验设定
 
 ## 推荐继续阅读
 

@@ -43,6 +43,22 @@ A unified design supporting multitasking across diverse egocentric perception an
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["8 个第一人称数据集<br/>RGB / 深度 / 视线 gaze / 相机轨迹"] --> B["数据整理: 切分为 clip → 标注 (RollingDepth 伪深度, EgoGen 合成数据) → 标准化"]
+    B --> C["分词器: Cosmos 编码 RGB 与深度<br/>Transformer VQ-VAE 编码 gaze 与相机轨迹"]
+    C --> D["多模态 token 库 (约 40 亿 token)<br/>缺失模态记为占位并遮蔽"]
+    D --> E["按数据集再按模态采样<br/>互斥的可见输入 token 与目标 token"]
+    E --> F["模态专属 Embedding + 位置编码"]
+    F --> G["T5-Base 风格编码器-解码器<br/>多模态掩码预训练, 交叉熵损失"]
+    G --> H["推理: 多步并行解码<br/>classifier-free guidance + nucleus 采样"]
+    H --> I["任意模态到任意模态: 相机跟踪 / gaze 估计 / 单目深度 / 条件视频生成"]
+```
+
+图依据：论文 §3.1-3.4 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ A unified design supporting multitasking across diverse egocentric perception an
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.07886>
+- [arXiv PDF](https://arxiv.org/pdf/2506.07886)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1-3.5）
 
 ## 推荐继续阅读
 

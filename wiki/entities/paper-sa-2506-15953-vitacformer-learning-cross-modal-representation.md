@@ -42,6 +42,33 @@ Cross-modal representation learning for visuo-tactile dexterous manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练期（CVAE 风格）"]
+        PA["本体感觉（关节）+ 专家动作序列"] --> ENC["Transformer 编码器"] --> Z["风格变量 z<br/>推理时置零"]
+    end
+    subgraph OBS["多模态观测"]
+        V["视觉：ZED Mini 立体 + 两个腕部鱼眼相机"]
+        T["触觉：10 指尖 3 轴力/力矩"]
+        J["本体感觉：双臂/灵巧手/颈部关节"]
+    end
+    V --> CA1["跨注意力融合（第 1 次）<br/>视觉查询触觉、触觉查询视觉，拼接为隐状态"]
+    T --> CA1
+    CA1 --> FT["自回归预测未来触觉 token<br/>输入：z + 本体感觉 + 视触觉观测"]
+    Z --> FT
+    J --> FT
+    FT --> CA2["拼接预测触觉与当前输入 token<br/>跨注意力融合（第 2 次）"]
+    CA2 --> DEC["Transformer 编码器-解码器 → 动作序列（100 帧）"]
+    DEC --> EXE["时间平滑后 10 Hz 执行"]
+    FT -. "训练监督：L_tactile" .-> LOSS["总损失 = KL + 关节 L1 + 触觉 L1 + 末端位姿 L_arm"]
+    DEC -. "训练监督" .-> LOSS
+    FT -. "前 75% epoch 用真值触觉 token，后 25% 改用预测值" .-> CUR["两阶段课程（Scheduled Sampling 思路）"]
+```
+
+图依据：论文 §IV-A / Fig.3（跨注意力融合）、§IV-B（触觉预测与两阶段课程）、§IV-C / Fig.2 与式 (1)(2)（CVAE 架构与损失）、§IV-D 实现细节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Cross-modal representation learning for visuo-tactile dexterous manipulation.
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2506.15953>
+- [arXiv PDF](https://arxiv.org/pdf/2506.15953)：已通读方法部分（实验与附录以略读为准）：§III 问题与硬件、§IV-A/B/C/D 方法与实现细节、附录 A–D 输入与推理细节。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ Constructs cognitive maps through linguistic-visual synergy, breaking through th
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["第一视角视频 V + 语言指令 I"] --> SEG["切成固定时长片段（如 30 s）"]
+    SEG --> VD["VLM：生成每段粗粒度视觉描述"]
+    VD --> LX["LLM：抽取实体/动作/关系<br/>并按指令标出关键实体"]
+    LX --> CM["初始 Cognitive Map<br/>导航图 G_nav（时间段）+ 关系图 G_rel"]
+    LX --> EM["初始 Evidence Memory<br/>问题、交互历史、证据 E=(r, τ, O)"]
+    CM --> JUDGE{"LLM 判断信息是否足够<br/>或达到最大迭代数"}
+    EM --> JUDGE
+    JUDGE -- "不足" --> SUB["LLM 生成子指令 + 指定时间段"]
+    SUB --> VF["VLM：对该片段做聚焦感知"]
+    VF --> PARSE["解析关键实体、关系与依据"]
+    PARSE --> UPD["更新 Cognitive Map 与 Evidence Memory"]
+    UPD --> JUDGE
+    JUDGE -- "足够" --> ANS["LLM 整合上下文，生成最终答案"]
+```
+
+图依据：论文 §3.2 / Fig.2（三阶段框架）、§3.3 / Fig.3（Cognitive Map 与 Evidence Memory 定义及更新）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Constructs cognitive maps through linguistic-visual synergy, breaking through th
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.17629>
+- [arXiv PDF](https://arxiv.org/pdf/2506.17629)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3 问题定义、框架总览、Cognitive Map 与 Evidence Memory（§3.4 提示设计仅略读）。
 
 ## 推荐继续阅读
 

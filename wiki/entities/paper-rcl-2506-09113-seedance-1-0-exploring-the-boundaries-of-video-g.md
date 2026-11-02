@@ -42,6 +42,37 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据（§3）"]
+        RAW["多源原始视频 → 合规预筛"] --> CUR["多阶段清洗：时序切分、叠加物矫正、语义去重、质量与安全过滤、分布再平衡"]
+        CUR --> CAP["视频稠密描述（captioning）"] --> ENC["VAE 编码 + 文本嵌入离线打包"]
+    end
+    ENC --> PT
+    subgraph TRN["基座模型训练（§4）"]
+        PT["预训练：flow matching；256px 图像 → 视频逐步提升分辨率/帧率；I2V 占比 20%"] --> CT["Continue Training：I2V 占比提至 40%，精选高美学/高动态数据"]
+        CT --> SFT["SFT：人工精选数据，多个子集模型合并（model merging）"]
+        SFT --> RLHF["RLHF：基础/运动/美学三类奖励模型，直接最大化奖励"]
+    end
+    subgraph ARCH["模型结构（§2）"]
+        VAE["时间因果 VAE（压缩比 4×16×16, C=48）"] --> DIT["MMDiT 扩散 Transformer：解耦空间层/时间层，Multishot MM-RoPE"]
+        LLM["LLM 文本编码器"] --> DIT
+    end
+    ARCH -.-> TRN
+    subgraph INF["推理（§2.3, §2.4, §5）"]
+        UP["用户提示 → Prompt Engineering（Qwen2.5-14B，SFT + DPO）改写为稠密描述"] --> BASE["基座 DiT 生成 480p 视频"]
+        BASE --> REF["扩散精修器（Refiner）→ 720p / 1080p"]
+        REF --> OUT["输出视频"]
+    end
+    RLHF --> BASE
+    RLHF --> RRL["对精修器同样做 RLHF（以低分辨率 latent 为条件）"] --> REF
+    DIST["加速：TSCD + RayFlow 分数蒸馏 + 对抗训练；瘦 VAE 解码器；量化/稀疏/并行"] -.-> INF
+```
+
+图依据：论文 §2.1–2.4（模型设计）、§3.1–3.2（数据，Fig.3）、§4.1–4.4（训练，Fig.5）、§5（推理优化）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +129,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2506.09113>
+- [arXiv PDF](https://arxiv.org/pdf/2506.09113)：已通读方法部分（实验与附录以略读为准）：§2 模型设计、§3 数据（图 3）、§4 模型训练、§5 推理优化（§3.1–3.3、§6 训练基础设施与 §7 评测以略读为准）
 
 ## 推荐继续阅读
 
