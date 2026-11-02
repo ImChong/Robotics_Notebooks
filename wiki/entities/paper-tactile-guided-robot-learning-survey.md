@@ -38,6 +38,27 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 - **按功能组织便于选型：** 表示、策略、预测控制与基础模型各自的问题不同，按功能分章比按传感器分章更利于判断该读哪一块。
 - **明确列出开放问题：** 物理表示迁移、语义推理与接触级控制结合、异构数据扩展，是后续研究可以直接对接的题目。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["按触觉在学习中的功能角色组织（Fig. 1）"] --> S1["II Tactile Representation Learning"]
+    R --> S2["III Tactile-Conditioned Policy Learning"]
+    R --> S3["IV Tactile Foundation Models and Embodied World Models"]
+    R --> S4["V Predictive and Adaptive Tactile Manipulation"]
+    R --> S5["VI Generalization of Tactile-Conditioned Policies"]
+    S1 --> S1a["A Self-Supervised Tactile Representation Learning<br/>B Multimodal Touch Representations<br/>C Cross-Modal Alignment and Grounding<br/>D Transferability and Generalization"]
+    S2 --> S2a["A Imitation Learning for Contact-Rich Manipulation<br/>B Reinforcement Learning with Tactile Feedback"]
+    S5 --> S5a["A Object and Task Generalization<br/>B Sensor and Embodiment Generalization<br/>C Sim-to-Real Generalization"]
+    S1 --> S6["VII Open Challenges and Future Directions"]
+    S2 --> S6
+    S3 --> S6
+    S4 --> S6
+    S5 --> S6
+```
+
+图依据：综述章节结构图（论文 Fig. 1 与 §I 的 RQ1–RQ6 组织说明；§II–§VII 各章及已列出的小节标题）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -121,6 +142,7 @@ summary: "触觉引导机器人学习综述（arXiv:2610.20134）：按触觉在
 - [tactile_guided_survey_arxiv_2610_20134.md](../../sources/papers/tactile_guided_survey_arxiv_2610_20134.md) — 综述摘录与开源核查
 - [配套文献库来源页](../../sources/sites/touch-in-robot-learning-review.md) — 官方站点范围与资源类型
 - [arXiv:2610.20134](https://arxiv.org/abs/2610.20134) — 原文（v1，2026-10-14）
+- [arXiv PDF](https://arxiv.org/pdf/2610.20134)：已通读摘要与 §I 引言（含 Fig. 1、RQ1–RQ6），并核对 §II–§VII 的章节与小节标题（各章正文以略读为准）
 
 ## 推荐继续阅读
 

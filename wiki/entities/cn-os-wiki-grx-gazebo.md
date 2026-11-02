@@ -61,11 +61,52 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`roslaunch rl_sim gazebo_gr1t1.launch`（或 `gazebo_gr1t2.launch`；ROS Noetic + catkin，需 libtorch）
+
+```mermaid
+sequenceDiagram
+    participant L as rl_sim/launch/gazebo_gr1t1.launch
+    participant G as Gazebo（empty_world + stairs.world）
+    participant CM as controller_manager spawner
+    participant JC as robot_joint_controller（RobotJointController 插件）
+    participant RS as rl_sim 节点（rl_sim.cpp: RL_Sim）
+    participant K as 键盘线程 KeyboardInterface
+    participant SC as RL::StateController（rl_sdk.cpp）
+    participant P as TorchScript 策略 model_4000_jit.pt
+
+    L->>G: include empty_world.launch（paused=true）
+    L->>G: spawn_model 载入 GR1T1_lower_limb.urdf（z=1.0）
+    L->>CM: 加载 robot_control.yaml，spawn joint_state_controller 与 10 个 *_controller
+    CM->>JC: 实例化每个关节控制器，订阅 <joint>/command
+    L->>RS: 启动 rl_sim 节点
+    RS->>RS: ReadYaml(config.yaml[robot_name])；torch::jit::load(models/<robot>/model_4000_jit.pt)
+    RS->>RS: 订阅 /cmd_vel、/gazebo/model_states、joint_states；启动 loop_keyboard / loop_control(dt) / loop_rl(dt*decimation)
+    K->>RS: Enter 切换仿真；0 起立；p 进入 RL；w/a/s/d/j/l 改速度指令
+    RS->>G: /gazebo/unpause_physics（Enter 后）
+    loop loop_control 每 dt (config.yaml: 0.001 s)
+        RS->>RS: GetState（model_states 的 IMU 姿态/角速度 + joint_states 的 q、dq、effort）
+        RS->>SC: StateController(state, command)
+        SC-->>RS: GETUP 阶段线性插值到 default_dof_pos；RL_RUNNING 阶段用 output_dof_pos 与 rl_kp/rl_kd
+        RS->>JC: 发布 robot_msgs/MotorCommand（q、dq、kp、kd、tau）
+        JC->>G: update(): tau = kp*(q_des-q) + kd*(dq_des-dq) + tau_ff，joint.setCommand
+    end
+    loop loop_rl 每 dt*decimation (0.001*20 s)
+        RS->>RS: 填充 obs（角速度、四元数、commands、dof_pos、dof_vel）
+        RS->>P: Forward(): ComputeObservation 后 model.forward
+        P-->>RS: 动作，clamp 后 ComputePosition 得 output_dof_pos
+    end
+```
+
+图依据：FFTAI/Wiki-GRx-Gazebo@3617042，读过 `README.md`、`src/rl_sim/launch/gazebo_gr1t1.launch`、`src/rl_sim/config.yaml`（gr1t1 段）、`src/rl_sim/src/rl_sim.cpp`、`src/rl_sim/library/rl_sdk/rl_sdk.cpp`（StateController、KeyboardInterface、ReadYaml 部分）、`src/robot_joint_controller/src/robot_joint_controller.cpp`（update 与订阅部分）、`src/robots/gr1t1_description/config/robot_control.yaml`（头部）。`ComputePosition`/`ComputeTorques` 内部、`rl_sdk.hpp`、`loop.hpp` 与 gr1t2 的差异未读；STATE_RL_RUNNING 之后的 GETDOWN 分支未读完。
+
 ## 参考来源
 
 - [Wiki-GRx-Gazebo 源码归档](../../sources/repos/wiki-grx-gazebo.md)（<https://github.com/FFTAI/Wiki-GRx-Gazebo>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/Wiki-GRx-Gazebo@3617042，读过 README.md、src/rl_sim/launch/gazebo_gr1t1.launch、src/rl_sim/config.yaml、src/rl_sim/src/rl_sim.cpp、src/rl_sim/library/rl_sdk/rl_sdk.cpp（部分）、src/robot_joint_controller/src/robot_joint_controller.cpp（部分）、src/robots/gr1t1_description/config/robot_control.yaml（头部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ First systematic survey of World Action Models (WAMs), clarifying boundaries bet
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["综述：World Action Models（WAM）<br/>先厘清 VLA / 世界模型 / 视频生成 / WAM 的边界（§2）"] --> V1["视角一：三种设计哲学（§3）<br/>按「各方法必须生成什么」"]
+    S --> V2["视角二：四轴解剖（§4）<br/>每个 WAM 记为 4 元组"]
+    V1 --> P1["Render-and-Decode<br/>生成到像素再解码动作"]
+    V1 --> P2["Latent-Only<br/>像素解码前停止，用中间表示"]
+    V1 --> P3["Video-Generation-Free<br/>不经视频生成"]
+    V2 --> A1["预测基底 Predictive Substrate<br/>像素 / 特征 / 几何基元 / affordance 图"]
+    V2 --> A2["动作耦合 Action Coupling<br/>动作条件 rollout / 联合生成 / 预测后动作头"]
+    V2 --> A3["架构骨干 Architectural Backbone<br/>迭代去噪 / 自回归 / 联合嵌入预测 / 混合 / LLM-VLM"]
+    V2 --> A4["部署形态 Deployment Regime<br/>开环 rollout / 分块闭环 / 单步闭环 / 交互式模拟器"]
+    V1 --> C["核心性质（§5）<br/>交互性 / 因果性 / 持久性 / 物理合理性 / 泛化"]
+    V2 --> C
+    C --> D["数据与评测（§6）→ 开放挑战（§7）"]
+```
+
+图依据：综述分类体系图（论文自身的组织结构），论文 §1 引言的章节路线、§3 三种设计哲学（Fig. 2）、§4 四轴解剖、§5–§7 目录。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ First systematic survey of World Action Models (WAMs), clarifying boundaries bet
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.20781>
+- [arXiv PDF](https://arxiv.org/pdf/2606.20781)：已通读目录、§1 引言、§2 World Action Models 的由来、§3 三种设计哲学开头与 §4 各小节标题（其余章节与表格以略读为准）；流程图依据论文目录与 §1/§3/§4 的组织描述。
 
 ## 推荐继续阅读
 
