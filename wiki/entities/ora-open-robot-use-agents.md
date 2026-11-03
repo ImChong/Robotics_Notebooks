@@ -117,3 +117,5 @@ sequenceDiagram
 
 - [ORA 官方博客](https://haoailab.com/blogs/ora/)
 - [ORA 官方代码仓库](https://github.com/hao-ai-lab/ORA)
+
+- [Uni-Robot-Agent](paper-uni-robot-agent.md) — 开放权重模型与统一工具调度的相关框架。
