@@ -406,6 +406,18 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # Improvement）指标等；π0 / π0.5 策略已由 methods/π0-policy.md
     # 承载（正文写作 π 而非 pi），不建 concepts/pi.md。
     "pi",
+    # run / evaluate / make：命令行与 API 动词 token——`ros2 run`、`docker run`、
+    # Gymnasium `gym.make`、robosuite `suite.make`、`make` 构建目标、rsl_rl /
+    # TensorFlow / Pelican-VL 的 `evaluate` 函数或子命令、GR00T 流程的 **Evaluate**
+    # 步骤标题；与 infer / validate / choice 同为代码 token，非机器人概念，不建独立页。
+    "run",
+    "evaluate",
+    "make",
+    # sim：仿真/真机切换开关的参数值（AUBO MoveIt `sim:=false`、Crazyswarm2
+    # `backend:=sim`、LeTools deploy.yaml 的 `sim`/`real`）与 RoboSimStudio 的 `Sim`
+    # 类名、AnyTouch2 数据集的 **Sim** 子集标签；仿真概念本体已由
+    # concepts/robot-simulation-three-layers.md / sim2real.md 承载，不建 concepts/sim.md。
+    "sim",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -748,6 +760,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 策略类型、ROS2SmolVLA、ONNX 导出等）；本体已由 entities/paper-smolvla.md 承载，
     # 所属方法族归 methods/vla.md，与 vggt 同类模型名，不建 concepts/smolvla.md。
     "smolvla",
+    # nvidia：机构名（论文作者单位 **NVIDIA**、`nvidia` 驱动/容器 runtime 名），
+    # 由 entities/nvidia-*.md（Isaac Lab、Jetson、CUDA、GEAR Lab 等）分项承载，
+    # 机构不是概念/方法，不建 concepts/nvidia.md。
+    "nvidia",
     "sonic",
     # state：三义各有归属——决策过程里的状态量已由 formalizations/mdp.md /
     # pomdp.md 定义（「**State** 是物理/机器人意义上的完整瞬时描述」即该形式化的
