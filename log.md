@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-03] ingest | sources/papers/uni_robot_agent_arxiv_2611_01560.md — 收录开放模型机器人智能体，原文及项目页面待完成核查
+
 ## [2026-11-03] ingest | 具身智能小站 2026-11-03《机器人不仅要完成任务，还要知道哪里出了错》49 篇逐篇建独立详情节点（新建 44 / 复用 5）
 
 ## [2026-11-03] ingest | sources/repos/sts32xx-firmware.md — 收录伺服固件控制流程、源码路径与演示边界

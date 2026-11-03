@@ -5513,6 +5513,7 @@
 - [UMV：用自行车底盘做动态平衡、跳跃与翻转](wiki/entities/paper-umv-ultra-mobility-vehicle.md) — Ultra Mobility Vehicle（UMV）** 是 RAI Institute 的单轨自行车机器人：它把自行车的高速、低能耗移动与一个可大幅移动的高位质量机构结合，靠质心和角动量调节实 `📅unknown` `[entity_page]`
 - [水下四足姿态控制（arXiv:2609.09217）](wiki/entities/paper-underwater-quadruped-attitude-control.md) — 水下四足姿态控制**（[Design and Attitude Control of an Underwater Quadruped Robot](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [Uni-LaViRA：统一具身导航的语言–视觉–机器人动作翻译](wiki/entities/paper-uni-lavira.md) — Uni-LaViRA**（*Language-Vision-Robot Actions Translation for Unified Embodied Navigation*，arXiv:[26 `📅unknown` `[entity_page]`
+- [Democratizing Robot-Use Agents: A Unified Harness with Open Models｜开放模型的统一机器人智能体框架](wiki/entities/paper-uni-robot-agent.md) — Uni-Robot-Agent 将模型、共享机器人工具与环境适配器连接成可反馈的操作闭环，支持开放权重模型进行零样本机器人任务。 `📅unknown` `[entity_page]`
 - [Uni-VLaT（arXiv:2609.35450）](wiki/entities/paper-uni-vlat.md) — Uni-VLaT**（*Whole-Body Tactile Adaptation of VLA Policies for Humanoid Loco-Manipulation*，[arXiv:2 `📅unknown` `[entity_page]`
 - [UniAD（Planning-oriented Autonomous Driving · arXiv:2212.10156）](wiki/entities/paper-uniad.md) — UniAD**（*Planning-oriented Autonomous Driving*，2212.10156，CVPR `📅unknown` `[entity_page]`
 - [统一连续体机器人驱动平台：设计与表征](wiki/entities/paper-unified-continuum-actuation.md) — 统一连续体机器人驱动平台**（*Design and Characterization of a Unified Continuum Robot Actuation Platform*，[arXi `📅unknown` `[entity_page]`
