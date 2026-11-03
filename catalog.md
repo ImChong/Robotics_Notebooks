@@ -2482,6 +2482,7 @@
 - [Goal Images Are Control Targets（arXiv:2610.24885）](wiki/entities/paper-goal-images-are-control-targets.md) — Goal Images Are Control Targets**（*Goal Images Are Control Targets: Spatially-Grounded Goal-Image  `📅unknown` `[entity_page]`
 - [目标泛化失效的策略对齐：三类失效与恢复层次](wiki/entities/paper-goal-misgeneralization-policy-alignment.md) — 一句话定义：** 研究智能体在分布外能力仍在、但追求的目标发生错配（目标泛化失效）时，失效究竟出在目标如何被表示、如何影响策略、还是如何参与动作选择，并据此决定恢复措施。 `📅unknown` `[entity_page]`
 - [Goal-Oriented Comms for Physical AI（arXiv:2609.15895）](wiki/entities/paper-goal-oriented-comms-physical-ai.md) — Goal-Oriented Comms for Physical AI**（*Goal-Oriented Communications for Physical AI: Design and Te `📅unknown` `[entity_page]`
+- [GoalDex: Learning Image-Goal-Conditioned Policies for Dexterous In-Hand Manipulation / 基于图像目标的灵巧手内操作策略](wiki/entities/paper-goaldex.md) — GoalDex 将当前单目 RGB、目标图像与本体感知输入循环策略，直接输出关节目标；训练时由特权状态教师蒸馏并辅以状态重建与连续对比对齐。 `📅unknown` `[entity_page]`
 - [GOLEM：把人形工业拆解拆成可替换模块](wiki/entities/paper-golem-humanoid.md) — GOLEM**（*Generalized Open Library of Embodied Modules*；*Modular Humanoid Autonomy Towards Electric `📅unknown` `[entity_page]`
 - [Sim-to-real transfer with neural-augmented robot simulation](wiki/entities/paper-golemo-neural-augmented-robot-simulation.md) — Sim-to-real transfer with neural-augmented robot simulation**（CoRL 2018）收录于 [自由度FreeDof · Sim2Real `📅unknown` `[entity_page]`
 - [GOTT（arXiv:2610.03861）](wiki/entities/paper-gott-cross-embodiment-contact-primitive.md) — GOTT**（*GOTT: Object-centric Dexterous Manipulation with a Reusable Cross-Embodiment Primitive*，[a `📅unknown` `[entity_page]`
@@ -5576,6 +5577,7 @@
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
 - [VioLA：从人类数据学习人形通用控制](wiki/entities/paper-viola-human-data-control.md) — 一句话定义：** VioLA 不让通用策略直接输出高维关节命令，而是预测与冻结机器人控制器对齐的身体和手部动作潜变量；人类动作因此可以直接构成策略的动作标签。 `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
+- [ViserDex: Visual Sim-to-Real for Robust Dexterous In-hand Reorientation / 鲁棒灵巧手内重定向的视觉仿真到真实迁移](wiki/entities/paper-viserdex.md) — ViserDex 用三维高斯泼溅及渲染前增强训练单目物体姿态估计器，再将其接入课程强化学习和教师学生蒸馏得到的手内重定向策略。 `📅unknown` `[entity_page]`
 - [VisForce：视觉对齐当前力与目标力](wiki/entities/paper-visforce-force-grounding.md) — VisForce 把当前指尖力和子任务目标力渲染至对应视觉图像，再用目标条件策略生成力感知操作动作。 `📅unknown` `[entity_page]`
 - [Visible-Reachable Workspace（arXiv:2609.08905）](wiki/entities/paper-visible-reachable-workspace-humanoid-design.md) — Visible-Reachable Workspace**（*Visible-Reachable Workspace for Perception-Aware Humanoid Design*， `📅unknown` `[entity_page]`
 - [Vision Aided Dynamic Exploration of Unstructured Terrain](wiki/entities/paper-vision-aided-dynamic-exploration-mini-cheetah.md) — Kim et al.（MIT，ICRA 2020，[DOI:10.1109/ICRA40945.2020.9196777](https://doi.org/10.1109/ICRA40945.20 `📅unknown` `[entity_page]`
