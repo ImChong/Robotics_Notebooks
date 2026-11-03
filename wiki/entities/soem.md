@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, ethercat, fieldbus, embedded, open-source, middleware, robotics, realtime, soem, rt-labs]
 status: complete
-updated: 2026-08-12
+updated: 2026-11-03
 related:
   - ../concepts/ethercat-protocol.md
   - ../queries/ethercat-master-optimization.md
@@ -12,10 +12,12 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ../concepts/clock-synchronization-algorithms.md
   - ./canfestival.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/repos/soem.md
   - ../../sources/sites/openethercatsociety-github-io.md
   - ../../sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "SOEM（Simple Open EtherCAT Master）是 OpenEtherCATsociety / RT-Labs 维护的用户态、轻量 EtherCAT 主站 C 库（GPLv3 + 商业双许可）；适合科研原型与嵌入式 MainDevice，与 IgH 内核主站形成选型对照。"
 ---
 
@@ -126,6 +128,20 @@ sequenceDiagram
 - **文档门禁：** 官方 Sphinx 文档需 RT-Labs 账号；社区问答与 samples 是公开主入口。
 - **不等于 CiA 402 全家桶：** 栈提供 CoE 通信；伺服 Profile / PDO 映射 / 安全回退仍要按驱动器 ESI 与运控自行实现。
 - **贡献 CLA：** 上游贡献需签 RT-Labs CLA，fork 长期维护需评估。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/OpenEtherCATsociety/SOEM](https://github.com/OpenEtherCATsociety/SOEM) |
+| **许可（核查）** | GPLv3 + 商业双许可（LICENSE.md：Dual-licensed；商业产品「likely need to buy a license」；版权含 RT-Labs AB） |
+| **最近提交** | 2026-10-14 |
+| **论文 / 文档** | 无论文；官方文档见仓库 README |
+
+- **文章说法：** C；许可 GPL；EtherCAT 主站协议栈，与伺服驱动器通信
+- **核对结论：** 文章只写「GPL」，漏了关键约束：LICENSE.md 明确这是 GPLv3 + 商业双许可，用于商业产品多半需要购买商业许可。
 
 ## 关联页面
 
