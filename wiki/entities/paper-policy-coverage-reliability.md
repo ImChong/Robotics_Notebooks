@@ -70,6 +70,18 @@ flowchart TD
 - 真机 Push-T 使用 680 条训练演示、60 条验证演示；20 个固定起点各运行五次，所选第 46 轮与最终第 200 轮的 pass@1 分别为 0.62、0.52，pass@5 分别为 0.95、0.75。该结果来自单任务、小样本实验。
 - 真机早期策略采集数据训练世界模型的预测质量优于最终策略采集数据；这是该实验设置下的结果。
 
+## 与其他工作对比
+
+| 维度 | 本页 | [Validation Loss vs Real-Robot Success](./paper-validation-loss-vs-real-robot-success.md) | [DRIVE](./paper-drive-diversity-rl-vla.md) |
+|------|------|------|------|
+| 关注阶段 | 预训练检查点选择与后训练起点 | 模仿策略的离线误差与真机闭环成功 | VLA 的 RL 微调 |
+| 对“覆盖”的处理 | 固定起点 pass@k 度量覆盖；离线用动作误差分位数选点 | 指出静止不动等失败无法由专家示范验证集暴露 | 以 Pass@K / Coverage@K 做分析，把成功轨迹多样性写成塑形奖励 |
+| 实验平台 | MimicGen、RoboCasa 仿真 + 真机 Push-T | 低成本机械臂 | LIBERO-Plus、ManiSkill3、RoboTwin 2.0 + AgileX PiPER-X |
+| 代码 | 项目页 Code 链接为空 | 项目页未列 GitHub | 未见官方仓库 |
+
+- **怎么选**：要一个可落地的离线选点规则看本页；只想确认“验证损失能否跨模型排名”看 Validation Loss vs Real-Robot Success（站内为索引级页）；已进入 RL 微调、担心行为收窄看 DRIVE。
+- **读法**：三者都提示单一平均成功率或验证损失会掩盖覆盖变化，但指标与实验协议各不相同。
+
 ## 结论
 
 选择预训练模型时，平均成功率应结合成功覆盖及后训练预算一起判断。

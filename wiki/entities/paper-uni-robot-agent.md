@@ -11,6 +11,7 @@ summary: "Uni-Robot-Agent 通过共享工具、资源调度及环境适配器，
 related:
   - ../entities/ora-open-robot-use-agents.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/uni_robot_agent_arxiv_2611_01560.md
   - ../../sources/repos/uni-robot-agent.md
@@ -91,6 +92,18 @@ sequenceDiagram
 
 去除仿真深度但保留相机标定时 Qwen 为 31.39 分；进一步去除相机参数降至 9.13。技能库消融为 30.31 分。论文通过轨迹分析指出视觉理解、空间定位、几何代码及具身推理四类失败；其相关性分析不等于因果证明。
 
+## 与其他工作对比
+
+| 维度 | 本页 Uni-Robot-Agent | [ORA](./ora-open-robot-use-agents.md) | [GPT-6-Astra 具身智能报告](./paper-gpt-6-astra-embodied-intelligence.md) |
+|------|------|------|------|
+| 定位 | 共享工具、资源调度与环境适配器组成的统一 harness | 面向机器人使用任务的开源 ReAct harness | 评测通用模型在仿真、控制框架与真机上的表现 |
+| 闭环方式 | 工具请求经编排执行，可后台调用重叠推理与执行；动作带请求身份防重复 | 逐轮调用工具，supervisor 执行有界动作并返回回执 | 模型生成动作或动作序列，可使用冻结 ICL 知识包与扩展步数 |
+| 主要评测 | RoboDojo 42 任务 252 episodes；真机 19 任务计分 | RoboTwin C2R、LIBERO-Pro 仿真 | 12 个仿真设置 + G1 真机抓放与行走 |
+| 信息边界 | 不提供仿真真值深度或任务验证器反馈，保留 RGB 与相机标定 | 不向模型提供成功判定实现、仿真真值与接触信息 | 允许用训练示范构建知识包 |
+
+- **怎么选**：要在 RoboDojo 上复现开放模型 agent 并研究调度与观测消融看本页；要跨 RoboTwin / LIBERO-Pro 的工具调用基线看 ORA；要理解示范与预算对通用模型分数的影响看 GPT-6-Astra 报告。
+- **读法**：三者基准、模型与观测条件均不同，成功率只能在各自协议内解读。
+
 ## 结论
 
 共享接口和执行机制可显著影响机器人智能体的实验表现，但评价必须保留模型、观测和评测协议的条件。
@@ -107,6 +120,7 @@ sequenceDiagram
 
 - [ORA](ora-open-robot-use-agents.md) — 另一套机器人使用智能体框架。
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 理解工具与控制接口的分层。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：RoboDojo 成功率随模型与 harness 组合、深度与相机标定条件变化，真机 0–100 计分含部分完成，防止跨 harness 横比或把计分当成功率。
 
 ## 参考来源
 
