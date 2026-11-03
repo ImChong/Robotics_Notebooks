@@ -1764,7 +1764,7 @@
 - [AtomicRL：长程操作的原子任务强化学习](wiki/entities/paper-atomicrl.md) — 一句话定义：** AtomicRL 把长程操作拆成原子子任务，并依据语义边界处理信用分配、根据薄弱子任务调整探索。 `📅unknown` `[entity_page]`
 - [AtomicVLA：原子技能学习的统一规划–执行 VLA](wiki/entities/paper-atomicvla.md) — AtomicVLA**（*AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots*，[arXiv:2603.07 `📅unknown` `[entity_page]`
 - [Attention Is All You Need](wiki/entities/paper-attention-is-all-you-need.md) — Attention Is All You Need**（Vaswani et al.，arXiv:1706.03762，Ne `📅unknown` `[entity_page]`
-- [AuRA（arXiv:2610.34452）](wiki/entities/paper-aura.md) — AuRA**（*AuRA: From Atoms to Bits through Autonomous Robot Interaction*，[arXiv:2610.34452](https:// `📅unknown` `[entity_page]`
+- [AuRA: From Atoms to Bits through Autonomous Robot Interaction｜从原子到比特：通过自主机器人交互构建数字孪生](wiki/entities/paper-aura.md) — AuRA 在人工放置物体和初始化后，自动执行抓取与抬升，采集可变形物体交互数据，用于构建包含几何、外观及动力学的数字孪生。 `📅unknown` `[entity_page]`
 - [AURORA](wiki/entities/paper-aurora-hand-reconstruction.md) — AURORA**（*Active Uncertainty-Driven Re-Orientation for In-Hand Reconstruction*，[arXiv:2609.08493 `📅unknown` `[entity_page]`
 - [面向孤独症教育人形机器人的视觉任务建模与自动规划](wiki/entities/paper-autism-education-humanoid-visual-task-planning.md) — 孤独症教育 NAO 规划**（*Visual Task Modeling and Automated Planning for Humanoid Robots in Education of In `📅unknown` `[entity_page]`
 - [AutoBio+：带动态实验现象的生物实验室灵巧操作基准](wiki/entities/paper-autobio-plus-lab-dexterous-benchmark.md) — AutoBio+**（*Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic L `📅unknown` `[entity_page]`
