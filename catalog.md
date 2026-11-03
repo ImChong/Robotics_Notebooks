@@ -1717,7 +1717,7 @@
 - [DROPO](wiki/entities/paper-as-2201-08434-dropo-sim-to-real-transfer-with-offline-domain-r.md) — DROPO: Sim-to-real transfer with offline domain randomization** 收录于 [AwesomeSim2Real](https://gith `📅unknown` `[entity_page]`
 - [Sim-to-real learning for bipedal locomotion under unsensed dynamic loads](wiki/entities/paper-as-2204-04340-sim-to-real-learning-for-bipedal-locomotion-unde.md) — Sim-to-real learning for bipedal locomotion under unsensed dynamic loads** 收录于 [AwesomeSim2Real](h `📅unknown` `[entity_page]`
 - [InterSim](wiki/entities/paper-as-2210-14413-intersim-interactive-traffic-simulation-via-expl.md) — InterSim: Interactive Traffic Simulation via Explicit Relation Modeling** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
-- [Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks](wiki/entities/paper-as-2301-04195-delving-deeper-into-out-of-distribution-detectio.md) — Delving Deeper into Out-of-Distribution Detection in Deep Neural Networks** 收录于 [AwesomeSim2Real `📅unknown` `[entity_page]`
+- [Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments](wiki/entities/paper-as-2301-04195-delving-deeper-into-out-of-distribution-detectio.md) — Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments** 收录于 [AwesomeSi `📅unknown` `[entity_page]`
 - [EvoPrompting](wiki/entities/paper-as-2302-14838-evoprompting-language-models-for-code-level-neur.md) — EvoPrompting: language models for code-level neural architecture search** 收录于 [AwesomeSim2Real](ht `📅unknown` `[entity_page]`
 - [Reward design with language models](wiki/entities/paper-as-2303-00001-reward-design-with-language-models.md) — Reward design with language models** 收录于 [AwesomeSim2Real](https://github.com/LongchaoDa/AwesomeSi `📅unknown` `[entity_page]`
 - [Gpt-4 technical report](wiki/entities/paper-as-2303-08774-gpt-4-technical-report.md) — Gpt-4 technical report** 收录于 AwesomeSim2Real **第  `📅unknown` `[entity_page]`
@@ -2996,7 +2996,7 @@
 - [MOSS Transcribe Diarize（长时多说话人 SATS）](wiki/entities/paper-moss-transcribe-diarize.md) — MOSS Transcribe Diarize**（*MOSS Transcribe Diarize Technical Report*，[arXiv:2601.01554](https://ar `📅unknown` `[entity_page]`
 - [MOTIO: Agentic Skill Engineering for Reality-Grounded Humanoid Loco-Manipulation](wiki/entities/paper-motio.md) — 一句话定义：** 智能体将人类动作视频、度量三维资产、运动参考及可复用技能组合成分阶段机器人程序，利用物理执行反馈与人类验证迭代，无需任务专用遥操作示范。 `📅unknown` `[entity_page]`
 - [Motion-as-Prompt：先把运动画给 MLLM 看](wiki/entities/paper-motion-as-prompt.md) — Motion-as-Prompt（MaP）**（*Enhancing Motion Reasoning in Multimodal Large Language Models via Motion `📅unknown` `[entity_page]`
-- [Motion-based messaging](wiki/entities/paper-motion-based-messaging.md) — Motion-based messaging**（*Remotely Detectable Keyed Communication through Motion*，[arXiv:2609.0892 `📅unknown` `[entity_page]`
+- [Motion-based messaging](wiki/entities/paper-motion-based-messaging.md) — Motion-based messaging**（*Remotely Detectable Keyed Communication through Motion*（v1 标题；v2 改名 *Rob `📅unknown` `[entity_page]`
 - [主动空间大脑与泛化动作小脑](wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) — 主动空间大脑与泛化动作小脑** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 `📅unknown` `[entity_page]`
 - [CEER](wiki/entities/paper-motion-cerebellum-ceer.md) — CEER**（*Compliant End-Effector and Root Control as a Unified Interface for Hierarchical Humanoid L `📅unknown` `[entity_page]`
 - [ConstrainedMimic](wiki/entities/paper-motion-cerebellum-constrainedmimic.md) — ConstrainedMimic** 收录于 具身智能研究室 · 运动小脑 64 篇长文  `📅unknown` `[entity_page]`
@@ -3522,7 +3522,7 @@
 - [Constrained Policy Optimization (Achiam et al.)](wiki/entities/paper-pai-1705-10528-constrainedpolicyoptimizationachi.md) — Constrained Policy Optimization (Achiam et al.)** 收录于 awesome-physical-ai（natnew）**第 312/384** 条，分 `📅unknown` `[entity_page]`
 - [Deep RL That Matters](wiki/entities/paper-pai-1709-06560-deeprlthatmatters.md) — Deep RL That Matters** 收录于 awesome-physical-ai（natnew）**第 107/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
 - [Learning Dexterous In-Hand Manipulation (OpenAI)](wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) — Learning Dexterous In-Hand Manipulation (OpenAI)** 收录于 awesome-physical-ai（natnew）**第 334/384** 条， `📅unknown` `[entity_page]`
-- [Sim-to-Real via Sim-to-Sim (Koos et al. line)](wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) — Sim-to-Real via Sim-to-Sim (Koos et al. line)** 收录于 awesome-physical-ai（natnew）**第 338/384** 条，分组  `📅unknown` `[entity_page]`
+- [Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks](wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) — Sim-to-Real via Sim-to-Sim（RCAN；清单原标注 “Koos et al. line”，论文实为 James 等，未引用 Koos）** 收录于 awesome-phys `📅unknown` `[entity_page]`
 - [SimPLe](wiki/entities/paper-pai-1903-00374-simple.md) — SimPLe** 收录于 awesome-physical-ai（natnew）**第 380/384** 条，分组 **World Models**。本页是 **清单索引**：给出它在清单中的位 `📅unknown` `[entity_page]`
 - [BayesSim](wiki/entities/paper-pai-1906-01728-bayessim.md) — BayesSim** 收录于 awesome-physical-ai（natnew）**第 328/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给出它在清单中的 `📅unknown` `[entity_page]`
 - [Robust Policy Optimization](wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) — Robust Policy Optimization** 收录于 awesome-physical-ai（natnew）**第 318/384** 条，分组 **Safety & Robustne `📅unknown` `[entity_page]`
@@ -4269,7 +4269,7 @@
 - [Ego-Only](wiki/entities/paper-sa-2301-01380-ego-only-egocentric-action-detection-without-exo.md) — Ego-Only: Egocentric Action Detection without Exocentric Transferring** 收录于 [Awesome Egocentric Vi `📅unknown` `[entity_page]`
 - [Neuro-Symbolic World Models for Adapting to Open World Novelty](wiki/entities/paper-sa-2301-06294-neuro-symbolic-world-models-for-adapting-to-open.md) — Neuro-Symbolic World Models for Adapting to Open World Novelty** 收录于 [Awesome World Models](https: `📅unknown` `[entity_page]`
 - [I-JEPA](wiki/entities/paper-sa-2301-08243-i-jepa-self-supervised-learning-from-images-with.md) — I-JEPA: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture** 收录于  `📅unknown` `[entity_page]`
-- [GANO](wiki/entities/paper-sa-2305-12953-gano-gaze-augmented-next-active-object-based-ego.md) — GANO: Gaze-Augmented Next Active Object-Based Egocentric Action Anticipation** 收录于 [Awesome Egocen `📅unknown` `[entity_page]`
+- [GANO](wiki/entities/paper-sa-2305-12953-gano-gaze-augmented-next-active-object-based-ego.md) — GANO（Guided Attention for Next active Objects）**（清单标题写作 "Gaze-Augmented Next Active Object-Based E `📅unknown` `[entity_page]`
 - [RAP](wiki/entities/paper-sa-2305-14992-rap-reasoning-with-language-model-is-planning-wi.md) — RAP: Reasoning with language model is planning with world model** 收录于 [Awesome World Models](https `📅unknown` `[entity_page]`
 - [CoWorld](wiki/entities/paper-sa-2305-15260-coworld-making-offline-rl-online-collaborative-w.md) — CoWorld: Making Offline RL Online: Collaborative World Models for Offline Visual RL** 收录于 [Awesome `📅unknown` `[entity_page]`
 - [DiAReL](wiki/entities/paper-sa-2306-09010-diarel-reinforcement-learning-with-disturbance-a.md) — DiAReL: Reinforcement Learning with Disturbance Awareness for Robust Sim2Real Policy Transfer in R `📅unknown` `[entity_page]`
@@ -5518,7 +5518,7 @@
 - [ViBe：感知人形全身控制的视觉行为适配](wiki/entities/paper-vibe.md) — ViBe**（*Visual Behavior Adaptation for Perceptive Humanoid Whole-Body Control*，[arXiv:2609.09918 `📅unknown` `[entity_page]`
 - [VICAR：面向人形交互技能的视频模仿与接触感知重定向](wiki/entities/paper-vicar-contact-aware-video-imitation.md) — VICAR: Video Imitation with Contact-Aware Retargeting for Humanoid Interactive Skills**（Dvij Kalar `📅unknown` `[entity_page]`
 - [ViDAL：视觉动力学锚定的 VLA 动作潜空间](wiki/entities/paper-vidal-visual-dynamics-action-latent-vla.md) — ViDAL**（arXiv:2610.08150）让 VLA 不再直接预测动作 token/块，而是预测一个**既能重构动作 `📅unknown` `[entity_page]`
-- [视频世界模型综述：Reading, Writing, Sharing, and Interacting](wiki/entities/paper-video-world-model-survey.md) — 这篇综述以世界建模为视角，将视频理解、视频生成、理解与生成的统一以及交互预测组织为四种互补操作。 `📅unknown` `[entity_page]`
+- [视频世界模型综述：Reading, Writing, Sharing, and Interacting](wiki/entities/paper-video-world-model-survey.md) — mermaid `📅unknown` `[entity_page]`
 - [Video2DoorTraversal](wiki/entities/paper-video2door-traversal.md) — Video2DoorTraversal**（*Push Door Traversal via Simulated Door Twins*，[arXiv:2608.20251](https://ar `📅unknown` `[entity_page]`
 - [Video2World（arXiv:2610.04432）](wiki/entities/paper-video2world-coding-agents-benchmark.md) — Video2World**（*Video2World: Benchmarking Coding Agents for Interactive World Modeling from Embodie `📅unknown` `[entity_page]`
 - [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
@@ -6681,6 +6681,7 @@
 
 ### Wiki Comparisons（对比页）
 
+- [ACP、SuperMimic 与 PHP：接触规划、训练方法和跑酷数据](wiki/comparisons/acp-supermimic-php.md) — 这四项工作分别关注接触规划、世界模型训练、感知跑酷和社区跑酷复现，不能仅凭名称推断它们已经组合为同一个系统。 `📅unknown` `[comparison_page]`
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](wiki/comparisons/anygrasp-vs-graspnet.md) — 背景**：在「点云 / RGBD → 6-DoF 抓取候选」这条链路上，最常被同时提及的是 **GraspNet 家族**（GraspNet-1Billion / Contact-GraspNet `📅unknown` `[comparison_page]`
 - [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引用时按 **org 前缀** 区分，别混成一个。 `📅unknown` `[comparison_page]`
