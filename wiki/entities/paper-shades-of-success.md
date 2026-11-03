@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/shades_of_success_arxiv_2611_01250.md
   - ../../sources/sites/shades-of-success.md
@@ -77,6 +78,7 @@ summary: "Shades of Success（arXiv:2611.01250）：从成功示范中学习物�
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层的过程/质量评测：按任务进度衡量物体相对位姿约束偏差，防止二元成功率掩盖刚体操作的几何质量差异。
 
 ## 参考来源
 

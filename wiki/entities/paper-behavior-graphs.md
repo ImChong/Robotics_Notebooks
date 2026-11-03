@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/behavior_graphs_arxiv_2611_00405.md
   - ../../sources/sites/behavior-graphs.md
@@ -77,6 +78,7 @@ summary: "Behavior Graphs（arXiv:2611.00405）：Behavior Graphs 将无结构�
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层的部署后归因环节：把部署轨迹压成行为图定位易失败阶段，防止只看聚合成功率均值而掩盖长尾失败阶段。
 
 ## 参考来源
 

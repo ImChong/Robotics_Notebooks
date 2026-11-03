@@ -15,6 +15,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/simulator_contact_artifacts_audit_arxiv_2610_41857.md
   - ../../sources/repos/simulator_contact_artifacts_audit.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [sim2real](../concepts/sim2real.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 评测 gap 校准层：重放物理步异常、定位接触碰撞伪影，防止把仿真器造成的物体弹飞等失败全部归因于策略。
 
 ## 参考来源
 

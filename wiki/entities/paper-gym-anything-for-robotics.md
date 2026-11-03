@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/gym_anything_for_robotics_arxiv_2610_40565.md
   - ../../sources/repos/gym_anything_for_robotics.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 评测 gap 校准层的上游：代码智能体批量生成的仿真任务扩大了覆盖面，但须独立核验物理有效性，防止把「仿真可复现 / 任务多」误当真机代表性。
 
 ## 参考来源
 

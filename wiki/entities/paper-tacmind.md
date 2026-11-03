@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/tactile-sensing.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/tacmind_arxiv_2611_00455.md
   - ../../sources/repos/tacmind.md
@@ -98,6 +99,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层的触觉交互分支：在不同扰动下检验历史触觉对精细操作、识别与动态交互的贡献，防止只用纯视觉任务成功率评估接触密集策略。
 
 ## 参考来源
 

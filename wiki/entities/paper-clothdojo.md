@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/clothdojo_arxiv_2611_01190.md
   - ../../sources/repos/clothdojo.md
@@ -98,6 +99,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [bimanual-manipulation](../tasks/bimanual-manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层（双臂衣物展平/折叠）：固定初态与统一成功判据，防止在初态与成功口径不一致的衣物实验之间跨论文直接比榜。
 
 ## 参考来源
 
