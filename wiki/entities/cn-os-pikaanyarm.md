@@ -61,11 +61,53 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`roslaunch pika_remote_piper teleop_rand_single_piper.launch`（Piper 单臂；该 launch 先 include `piper/launch/start_single_piper.launch`，再起 `piper_FK.py`、`piper_IK.py`、`teleop_piper_publish.py` 三个节点；`/pika_pose` 由仓库外的 pika_ros 提供）
+
+```mermaid
+sequenceDiagram
+    participant P as Pika Sense（仓库外，发布 /pika_pose）
+    participant T as teleop_piper_publish.py
+    participant FK as piper_FK.py
+    participant IK as piper_IK.py（Arm_IK，pinocchio）
+    participant D as piper_ctrl_single_node.py
+    participant R as Piper 机械臂（piper_sdk C_PiperInterface，CAN）
+
+    D->>R: C_PiperInterface(can_port).ConnectPort()，auto_enable 时 EnableArm
+    loop 约 200 Hz（Pubilsh）
+        D-->>FK: 发布 /joint_states_single
+    end
+    loop 约 200 Hz（calc）
+        FK->>FK: arm_fk.get_pose(关节 1~6)
+        FK-->>T: /piper_FK/urdf_end_pose_orient
+    end
+    Note over T: teleop_trigger 服务（std_srvs/Trigger）触发后，status_changing 在两个位姿回调中各锁存一次基准位姿，随后 status=True
+    P-->>T: /pika_pose（localization_pose_callback）
+    T->>T: 目标位姿 = 机械臂基准末端位姿 x inv(Pika 基准位姿) x 当前 Pika 位姿
+    T-->>IK: /piper_IK/ctrl_end_pose
+    T-->>T: 同时发布 /teleop_status（TeleopStatus）
+    IK->>IK: arm_end_pose_callback：pin.SE3 目标，arm_ik.ik_fun
+    alt 有解且位置偏差不超过 0.3
+        IK-->>IK: ArmControlStatus over_limit=False，更新 sol_q
+        loop 约 50 Hz（publishing）
+            IK-->>D: /joint_states（线性插值 ctrl，单步超过 30 度时按 1 度分步 200 Hz）
+        end
+    else 无解或偏差过大
+        IK-->>IK: 发布 /arm_control_status over_limit=True
+    end
+    Note over D,IK: start_single_piper.launch 把 joint_ctrl_single 重映射为 /joint_states_gripper，而 IK 发布的是 /joint_states，二者如何接通本仓库内未看到
+    D->>R: joint_callback：MotionCtrl_2 然后 JointCtrl（夹爪 GripperCtrl）
+```
+
+图依据：agilexrobotics/PikaAnyArm@d2b8b84，读过 `README.md`、`piper/pika_remote_piper/launch/teleop_rand_single_piper.launch`、`piper/pika_remote_piper/scripts/{teleop_piper_publish.py,piper_FK.py,piper_IK.py}`、`piper/piper_ros/piper/launch/start_single_piper.launch`、`piper/piper_ros/piper/scripts/piper_ctrl_single_node.py`（仅看了发布/订阅/SDK 调用行）。仓库另含 `ur/`、`xarm/` 两套同构遥操作包，本图未覆盖。
+
 ## 参考来源
 
 - [PikaAnyArm 源码归档](../../sources/repos/pikaanyarm.md)（<https://github.com/agilexrobotics/PikaAnyArm>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/PikaAnyArm@d2b8b84，读过 README.md、piper/pika_remote_piper/launch/teleop_rand_single_piper.launch、piper/pika_remote_piper/scripts/{teleop_piper_publish.py,piper_FK.py,piper_IK.py}、piper/piper_ros/piper/launch/start_single_piper.launch、piper/piper_ros/piper/scripts/piper_ctrl_single_node.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

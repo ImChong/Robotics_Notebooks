@@ -94,6 +94,50 @@ Roboto Origin（RPO）是独立于 RP1 的已开放人形项目；[RoboParty Lab
   项目仍需要较强的 Linux/ROS2/硬件调试能力。
 - **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。
 
+## 源码运行时序图
+
+`roboto_origin` 本身是聚合快照；其中可运行的真机部署链在快照目录 `modules/roboparty_deploy/`（ROS2 Humble + C++17 + ONNX Runtime）。训练（`modules/roboparty_train`）、固件等模块未读，下图只画部署侧。
+
+入口：`./tools/start_robot.sh --robot rpo --policy default`（在 `modules/roboparty_deploy/` 下执行；脚本先 `colcon build --symlink-install`，再在 `screen` 会话里启动 `ros2 launch roboparty_inference inference.launch.py robot:=rpo policy:=default` 与 `ros2 run joy joy_node`）。
+
+```mermaid
+sequenceDiagram
+    participant SH as tools/start_robot.sh
+    participant L as launch/inference.launch.py
+    participant N as src/inference_node.cpp main()
+    participant IN as InferenceNode (inference_node.hpp)
+    participant RI as RobotInterface (robot_interface.cpp)
+    participant ORT as ONNX Runtime Session
+    participant JOY as joy_node (/joy)
+
+    SH->>SH: colcon build；screen 启动 inference_session 与 joy_session
+    SH->>L: ros2 launch roboparty_inference inference.launch.py
+    L->>N: Node inference_node，参数为 robots/rpo/configs/default.yaml 与 robot.yaml 路径
+    N->>N: rclcpp::init；mlockall
+    N->>IN: make_shared InferenceNode
+    IN->>IN: load_config 读取参数
+    IN->>RI: make_shared RobotInterface(robot.yaml) 配置 IMU 与电机
+    IN->>ORT: setup_model 加载 models/policy.onnx
+    IN->>IN: 创建订阅 /joy /cmd_vel /joint_ref_states 与发布 /action /imu /joint_states
+    IN->>IN: 启动 inference 线程与 control 线程；注册 init_motors 等 Trigger 服务
+    N->>N: MultiThreadedExecutor.spin
+    JOY-->>IN: subs_joy_callback，按键初始化电机、启停推理，摇杆写 cmd_vel
+    loop inference 线程，周期 dt 乘 decimation
+        IN->>RI: read_imu
+        IN->>IN: update_obs_segments；裁剪；堆叠历史观测
+        IN->>ORT: session Run
+        ORT-->>IN: 动作输出
+        IN->>IN: 裁剪并缩放，加默认关节角，写入 act_
+        IN-->>IN: publish_imu、publish_joint_states、publish_action
+    end
+    loop control 线程，周期 dt
+        IN->>IN: apply_action，对 act_ 做低通 act_alpha
+        IN->>RI: robot_->apply_action(last_act_)
+    end
+```
+
+图依据：Roboparty/roboto_origin@d94afba，读过 `README.md`、`modules/roboparty_deploy/README.md`、`modules/roboparty_deploy/tools/start_robot.sh`（启动命令部分）、`modules/roboparty_deploy/src/inference/launch/inference.launch.py`、`src/inference/src/inference_node.cpp`、`inference_node.hpp`、`ros_interface.cpp`（订阅回调与服务名）、`robot_interface.cpp`（构造函数）。`RobotInterface::apply_action` 内部的电机总线收发、`obs_manager.cpp` 的观测拼装未读，故未画。
+
 ## 关联页面
 
 - [RoboParty（公司）](./roboparty.md)
@@ -126,3 +170,4 @@ Roboto Origin（RPO）是独立于 RP1 的已开放人形项目；[RoboParty Lab
 - [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)
 - [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)
 - [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)
+- 源码核对（2026-11-02）：Roboparty/roboto_origin@d94afba，读过 README.md、modules/roboparty_deploy/README.md、modules/roboparty_deploy/tools/start_robot.sh、modules/roboparty_deploy/src/inference/launch/inference.launch.py、src/inference/src/inference_node.cpp、inference_node.hpp、ros_interface.cpp、robot_interface.cpp；时序图依据以上文件，未运行代码。

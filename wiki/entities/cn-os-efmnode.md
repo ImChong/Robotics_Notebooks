@@ -55,6 +55,50 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`./scripts/run.sh`（设置环境变量后执行 `python3 run.py [--model-path <ckpt_dir>]`；`run.py` 读取 `config.toml` 或 `<model_path>/efmnode.toml`）。模型网络结构由 `GalaxeaFM`（`galaxea_fm`）包提供，本仓库只负责 ROS2 收发、预处理/后处理与调度。
+
+```mermaid
+sequenceDiagram
+    participant R as run.py
+    participant S as scheduler/scheduler.py Scheduler
+    participant B as core/communication/ros2_bridge.py Ros2Bridge
+    participant IM as scheduler/instruction/instruction.py InstructionManager
+    participant P as core/processor (create_processor)
+    participant E as core/inference (PyTorchEngine / TensorRTEngine)
+    participant TM as scheduler/trajectory/manager.py TrajectoryManager
+    R->>R: load_config(--model-path)
+    R->>S: Scheduler(config).run()
+    S->>S: _setup_all：processor、trajectory_manager、instruction_manager、ros2_bridge、inference_engine
+    S->>P: initialize(ckpt_dir/dataset_stats.json)
+    S->>E: create_inference_engine(use_trt) 并 load_model()
+    S->>B: register_subscription(String, hs/vlm_out2vla, 指令回调)
+    loop while ros2_bridge.is_running()
+        S->>B: gather_obs()
+        B-->>S: obs_time, obs（图像、关节状态等，按时间戳匹配）
+        S->>IM: get_instruction(obs)
+        alt RESET
+            S->>B: reset()
+        else CONTINUE
+            S->>P: preprocess(obs)
+            S->>E: predict_action(batch)
+            E-->>S: batch["action"], batch["proprio"]
+            S->>P: postprocess(batch)
+            P-->>S: actions
+        end
+        alt step_mode == sync
+            S->>B: publish_action 逐步发布 action_steps 个动作，按 control_frequency 休眠
+        else step_mode == async
+            S->>TM: add_actions(actions, obs_time)
+            B->>TM: 定时回调 _async_publish → get_action(now)
+            B->>B: publish_action(action)
+        end
+    end
+```
+
+图依据：OpenGalaxea/EFMNode@154b69c，读过 `README.md`、`run.py`、`scripts/run.sh`、`scripts/launch_server.sh`、`config.toml`、`scheduler/scheduler.py`、`core/inference/factory.py`、`core/inference/pytorch_engine.py`（函数骨架）、`core/communication/ros2_bridge.py`（函数骨架）、`serving/policy_server.py`（函数骨架）；`processor`、`trajectory/manager.py`、`instruction.py` 内部未逐行读。`serving/policy_server.py` 的 WebSocket 服务路径（`scripts/launch_server.sh`）未画入图中。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +110,7 @@ institutions:
 - [EFMNode 源码归档](../../sources/repos/efmnode.md)（<https://github.com/OpenGalaxea/EFMNode>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：OpenGalaxea/EFMNode@154b69c，读过 README.md、run.py、scripts/run.sh、scripts/launch_server.sh、config.toml、scheduler/scheduler.py、core/inference/factory.py、core/inference/pytorch_engine.py、core/communication/ros2_bridge.py、serving/policy_server.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
